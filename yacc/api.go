@@ -16,14 +16,14 @@
 //	string		Eg. "Start" represents rule component Start
 //
 //	*Action		Mid rule action or rule semantic action
-package parser
+package parser // import "modernc.org/parser/yacc"
 
 import (
 	"bytes"
 	"fmt"
 	"go/token"
 
-	"github.com/cznic/golex/lex"
+	"modernc.org/golex/lex"
 )
 
 const (

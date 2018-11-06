@@ -2,7 +2,7 @@
 // Use of this source code is governed by a BSD-style
 // license that can be found in the LICENSE file.
 
-package parser
+package parser // import "modernc.org/parser/yacc"
 
 import (
 	"bytes"
@@ -15,8 +15,8 @@ import (
 	"strconv"
 	"strings"
 
-	"github.com/cznic/golex/lex"
-	"github.com/cznic/strutil"
+	"modernc.org/golex/lex"
+	"modernc.org/strutil"
 )
 
 // Node represents an AST node.

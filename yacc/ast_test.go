@@ -14,7 +14,7 @@
 //
 // Grammar for the input to yacc.
 
-package parser
+package parser // import "modernc.org/parser/yacc"
 
 import (
 	"fmt"

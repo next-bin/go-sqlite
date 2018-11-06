@@ -6,12 +6,12 @@
 
 // CAUTION: Generated file (unless this is go.l) - DO NOT EDIT!
 
-package parser
+package parser // import "modernc.org/parser/yacc"
 
 import (
 	"fmt"
 
-	"github.com/cznic/golex/lex"
+	"modernc.org/golex/lex"
 )
 
 func (l *lexer) scanGo() lex.Char {

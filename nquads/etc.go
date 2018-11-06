@@ -18,13 +18,13 @@
 //  [7]: http://www.w3.org/TR/n-quads/#grammar-production-predicate
 //  [8]: http://www.w3.org/TR/n-quads/#grammar-production-object
 //  [9]: http://www.w3.org/TR/n-quads/#grammar-production-graphLabel
-package parser
+package parser // import "modernc.org/parser/nquads"
 
 import (
 	"fmt"
 	"strings"
 
-	"github.com/cznic/scanner/nquads"
+	"modernc.org/scanner/nquads"
 )
 
 type lexer struct {
