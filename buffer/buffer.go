@@ -30,10 +30,10 @@
 //	b := *buffer.Get(size)
 //	...
 //	buffer.Put(&b)
-package buffer
+package buffer // import "modernc.org/internal/buffer"
 
 import (
-	"github.com/cznic/internal/slice"
+	"modernc.org/internal/slice"
 	"io"
 )
 

@@ -2,7 +2,7 @@
 // Use of this source code is governed by a BSD-style
 // license that can be found in the LICENSE file.
 
-package file
+package file // import "modernc.org/internal/file"
 
 import (
 	"bytes"
@@ -17,8 +17,8 @@ import (
 	"strings"
 	"testing"
 
-	"github.com/cznic/fileutil"
-	"github.com/cznic/internal/buffer"
+	"modernc.org/fileutil"
+	"modernc.org/internal/buffer"
 )
 
 func caller(s string, va ...interface{}) {

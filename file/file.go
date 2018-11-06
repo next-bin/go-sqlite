@@ -3,7 +3,7 @@
 // license that can be found in the LICENSE file.
 
 // Package file provides an os.File-like interface of a memory mapped file.
-package file
+package file // import "modernc.org/internal/file"
 
 import (
 	"fmt"
@@ -11,9 +11,9 @@ import (
 	"os"
 	"time"
 
-	"github.com/cznic/fileutil"
-	"github.com/cznic/internal/buffer"
-	"github.com/cznic/mathutil"
+	"modernc.org/fileutil"
+	"modernc.org/internal/buffer"
+	"modernc.org/mathutil"
 	"github.com/edsrzf/mmap-go"
 )
 

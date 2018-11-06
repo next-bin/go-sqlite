@@ -3,12 +3,12 @@
 // license that can be found in the LICENSE file.
 
 // Package slice implements pools of pointers to slices.
-package slice
+package slice // import "modernc.org/internal/slice"
 
 import (
 	"sync"
 
-	"github.com/cznic/mathutil"
+	"modernc.org/mathutil"
 )
 
 var (

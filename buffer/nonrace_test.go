@@ -4,7 +4,7 @@
 
 // +build !race
 
-package buffer
+package buffer // import "modernc.org/internal/buffer"
 
 import (
 	"testing"
