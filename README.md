@@ -3,6 +3,6 @@ Package ir implements intermediate representation of compiled programs. (Work In
 
 Installation
 
-    $ go get github.com/cznic/ir
+    $ go get modernc.org/ir
 
-Documentation: [godoc.org/github.com/cznic/ir](http://godoc.org/github.com/cznic/ir)
+Documentation: [godoc.org/modernc.org/ir](http://godoc.org/modernc.org/ir)
