@@ -60,7 +60,7 @@
    License along with the GNU C Library; if not, see
    <http://www.gnu.org/licenses/>.  */
 
-package stat
+package stat // import "modernc.org/ccir/libc/sys/stat"
 
 const (
 	XS_IFBLK             = 24576

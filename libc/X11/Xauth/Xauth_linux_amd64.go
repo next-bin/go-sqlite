@@ -125,7 +125,7 @@ see the files COPYING3 and COPYING.RUNTIME respectively.  If not, see
    This exception applies to code released by its copyright holders
    in files containing the exception.  */
 
-package Xauth
+package Xauth // import "modernc.org/ccir/libc/X11/Xauth"
 
 const (
 	XBUFSIZ                 = 8192

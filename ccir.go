@@ -16,7 +16,7 @@
 // If you can access a machine with a not yet supported os/arch and you would
 // like to contribute to porting this package, you may want to start by trying
 //
-//	$ cd $GOPATH/src/github.com/cznic/ccir/libc
+//	$ cd $GOPATH/src/modernc.org/ccir/libc
 //	$ go generate
 //
 // Please fill an issue for the port and let's discuss it there.
@@ -25,8 +25,8 @@
 //
 // Referenced from elsewhere
 //
-//  [0]: https://github.com/cznic/cc
-package ccir
+//  [0]: https://modernc.org/cc
+package ccir // import "modernc.org/ccir"
 
 import (
 	"fmt"
@@ -38,13 +38,13 @@ import (
 	"runtime"
 	"strings"
 
-	"github.com/cznic/cc"
-	"github.com/cznic/internal/buffer"
-	"github.com/cznic/ir"
-	"github.com/cznic/mathutil"
-	"github.com/cznic/strutil"
-	"github.com/cznic/virtual"
-	"github.com/cznic/xc"
+	"modernc.org/cc"
+	"modernc.org/internal/buffer"
+	"modernc.org/ir"
+	"modernc.org/mathutil"
+	"modernc.org/strutil"
+	"modernc.org/virtual"
+	"modernc.org/xc"
 )
 
 const (

@@ -46,7 +46,7 @@ see the files COPYING3 and COPYING.RUNTIME respectively.  If not, see
    License along with the GNU C Library; if not, see
    <http://www.gnu.org/licenses/>.  */
 
-package stdlib
+package stdlib // import "modernc.org/ccir/libc/stdlib"
 
 const (
 	XEXIT_FAILURE      = 1

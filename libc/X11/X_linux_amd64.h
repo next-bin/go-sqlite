@@ -2,20 +2,20 @@
 
 // +build ignore
 
-	typedef unsigned long XID ;
-typedef unsigned long Mask ;
-typedef unsigned long Atom ;
-typedef unsigned long VisualID ;
-typedef unsigned long Time ;
-typedef XID Window ;
-typedef XID Drawable ;
-typedef XID Font ;
-typedef XID Pixmap ;
-typedef XID Cursor ;
-typedef XID Colormap ;
-typedef XID GContext ;
-typedef XID KeySym ;
-typedef unsigned char KeyCode ;
+typedef unsigned long XID;
+typedef unsigned long Mask;
+typedef unsigned long Atom;
+typedef unsigned long VisualID;
+typedef unsigned long Time;
+typedef XID Window;
+typedef XID Drawable;
+typedef XID Font;
+typedef XID Pixmap;
+typedef XID Cursor;
+typedef XID Colormap;
+typedef XID GContext;
+typedef XID KeySym;
+typedef unsigned char KeyCode;
 #define Above (0)
 #define AllTemporary (0l)
 #define AllocAll (1)
@@ -358,14 +358,14 @@ typedef unsigned char KeyCode ;
 #define WindingRule (1)
 #define XYBitmap (0)
 #define XYPixmap (1)
-#define X_H 
+#define X_H
 #define X_PROTOCOL (11)
 #define X_PROTOCOL_REVISION (0)
 #define YSorted (1)
 #define YXBanded (3)
 #define YXSorted (2)
 #define ZPixmap (2)
-#define _XTYPEDEF_ATOM 
-#define _XTYPEDEF_FONT 
-#define _XTYPEDEF_MASK 
+#define _XTYPEDEF_ATOM
+#define _XTYPEDEF_FONT
+#define _XTYPEDEF_MASK
 #define _XTYPEDEF_XID

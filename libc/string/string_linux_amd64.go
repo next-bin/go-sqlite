@@ -46,7 +46,7 @@ see the files COPYING3 and COPYING.RUNTIME respectively.  If not, see
    License along with the GNU C Library; if not, see
    <http://www.gnu.org/licenses/>.  */
 
-package string
+package string // import "modernc.org/ccir/libc/string"
 
 const (
 	X_STRING_H = 1

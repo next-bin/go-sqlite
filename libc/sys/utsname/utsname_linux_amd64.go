@@ -20,7 +20,7 @@
    License along with the GNU C Library; if not, see
    <http://www.gnu.org/licenses/>.  */
 
-package utsname
+package utsname // import "modernc.org/ccir/libc/sys/utsname"
 
 const (
 	X_SYS_UTSNAME_H           = 1

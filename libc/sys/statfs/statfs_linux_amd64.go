@@ -20,7 +20,7 @@
    License along with the GNU C Library; if not, see
    <http://www.gnu.org/licenses/>.  */
 
-package statfs
+package statfs // import "modernc.org/ccir/libc/sys/statfs"
 
 const (
 	X_BITS_TYPES_H  = 1

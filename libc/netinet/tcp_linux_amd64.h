@@ -2,7 +2,7 @@
 
 // +build ignore
 
-	#define TCP_CONGESTION (13)
+#define TCP_CONGESTION (13)
 #define TCP_COOKIE_TRANSACTIONS (15)
 #define TCP_CORK (3)
 #define TCP_DEFER_ACCEPT (9)

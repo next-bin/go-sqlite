@@ -22,7 +22,6 @@
    License along with the GNU C Library; if not, see
    <http://www.gnu.org/licenses/>.  */
 
-
 // ----------------------------------------------------------------------------
 //      /usr/include/sys/types.h
 // ----------------------------------------------------------------------------
@@ -42,7 +41,6 @@
    You should have received a copy of the GNU Lesser General Public
    License along with the GNU C Library; if not, see
    <http://www.gnu.org/licenses/>.  */
-
 
 // ----------------------------------------------------------------------------
 //      /usr/lib64/gcc/x86_64-suse-linux/4.8/include/stddef.h
@@ -70,7 +68,6 @@ a copy of the GCC Runtime Library Exception along with this program;
 see the files COPYING3 and COPYING.RUNTIME respectively.  If not, see
 <http://www.gnu.org/licenses/>.  */
 
-
 // ----------------------------------------------------------------------------
 //      /usr/include/bits/uio.h
 // ----------------------------------------------------------------------------
@@ -90,7 +87,6 @@ see the files COPYING3 and COPYING.RUNTIME respectively.  If not, see
    You should have received a copy of the GNU Lesser General Public
    License along with the GNU C Library; if not, see
    <http://www.gnu.org/licenses/>.  */
-
 
 // ----------------------------------------------------------------------------
 //      /usr/include/sys/uio.h
@@ -112,7 +108,6 @@ see the files COPYING3 and COPYING.RUNTIME respectively.  If not, see
    License along with the GNU C Library; if not, see
    <http://www.gnu.org/licenses/>.  */
 
-
 // ----------------------------------------------------------------------------
 //      /usr/include/netinet/in.h
 // ----------------------------------------------------------------------------
@@ -132,7 +127,6 @@ see the files COPYING3 and COPYING.RUNTIME respectively.  If not, see
    You should have received a copy of the GNU Lesser General Public
    License along with the GNU C Library; if not, see
    <http://www.gnu.org/licenses/>.  */
-
 
 // ----------------------------------------------------------------------------
 //      /usr/include/arpa/inet.h
@@ -154,194 +148,242 @@ see the files COPYING3 and COPYING.RUNTIME respectively.  If not, see
    License along with the GNU C Library; if not, see
    <http://www.gnu.org/licenses/>.  */
 
-	typedef signed char int8_t ;
-typedef short int int16_t ;
-typedef int int32_t ;
-typedef long int int64_t ;
-typedef unsigned char uint8_t ;
-typedef unsigned short int uint16_t ;
-typedef unsigned int uint32_t ;
-typedef unsigned long int uint64_t ;
-typedef signed char int_least8_t ;
-typedef short int int_least16_t ;
-typedef int int_least32_t ;
-typedef long int int_least64_t ;
-typedef unsigned char uint_least8_t ;
-typedef unsigned short int uint_least16_t ;
-typedef unsigned int uint_least32_t ;
-typedef unsigned long int uint_least64_t ;
-typedef signed char int_fast8_t ;
-typedef long int int_fast16_t ;
-typedef long int int_fast32_t ;
-typedef long int int_fast64_t ;
-typedef unsigned char uint_fast8_t ;
-typedef unsigned long int uint_fast16_t ;
-typedef unsigned long int uint_fast32_t ;
-typedef unsigned long int uint_fast64_t ;
-typedef long int intptr_t ;
-typedef unsigned long int uintptr_t ;
-typedef long int intmax_t ;
-typedef unsigned long int uintmax_t ;
+typedef signed char int8_t;
+typedef short int int16_t;
+typedef int int32_t;
+typedef long int int64_t;
+typedef unsigned char uint8_t;
+typedef unsigned short int uint16_t;
+typedef unsigned int uint32_t;
+typedef unsigned long int uint64_t;
+typedef signed char int_least8_t;
+typedef short int int_least16_t;
+typedef int int_least32_t;
+typedef long int int_least64_t;
+typedef unsigned char uint_least8_t;
+typedef unsigned short int uint_least16_t;
+typedef unsigned int uint_least32_t;
+typedef unsigned long int uint_least64_t;
+typedef signed char int_fast8_t;
+typedef long int int_fast16_t;
+typedef long int int_fast32_t;
+typedef long int int_fast64_t;
+typedef unsigned char uint_fast8_t;
+typedef unsigned long int uint_fast16_t;
+typedef unsigned long int uint_fast32_t;
+typedef unsigned long int uint_fast64_t;
+typedef long int intptr_t;
+typedef unsigned long int uintptr_t;
+typedef long int intmax_t;
+typedef unsigned long int uintmax_t;
 // /usr/include/bits/types.h
 
-typedef unsigned char __u_char ;
-typedef unsigned short int __u_short ;
-typedef unsigned int __u_int ;
-typedef unsigned long int __u_long ;
-typedef signed char __int8_t ;
-typedef unsigned char __uint8_t ;
-typedef signed short int __int16_t ;
-typedef unsigned short int __uint16_t ;
-typedef signed int __int32_t ;
-typedef unsigned int __uint32_t ;
-typedef signed long int __int64_t ;
-typedef unsigned long int __uint64_t ;
-typedef long int __quad_t ;
-typedef unsigned long int __u_quad_t ;
-typedef unsigned long int __dev_t ;
-typedef unsigned int __uid_t ;
-typedef unsigned int __gid_t ;
-typedef unsigned long int __ino_t ;
-typedef unsigned long int __ino64_t ;
-typedef unsigned int __mode_t ;
-typedef unsigned long int __nlink_t ;
-typedef long int __off_t ;
-typedef long int __off64_t ;
-typedef int __pid_t ;
-typedef struct {int __val [2 ];}__fsid_t ;
-typedef long int __clock_t ;
-typedef unsigned long int __rlim_t ;
-typedef unsigned long int __rlim64_t ;
-typedef unsigned int __id_t ;
-typedef long int __time_t ;
-typedef unsigned int __useconds_t ;
-typedef long int __suseconds_t ;
-typedef int __daddr_t ;
-typedef int __key_t ;
-typedef int __clockid_t ;
-typedef void *__timer_t ;
-typedef long int __blksize_t ;
-typedef long int __blkcnt_t ;
-typedef long int __blkcnt64_t ;
-typedef unsigned long int __fsblkcnt_t ;
-typedef unsigned long int __fsblkcnt64_t ;
-typedef unsigned long int __fsfilcnt_t ;
-typedef unsigned long int __fsfilcnt64_t ;
-typedef long int __fsword_t ;
-typedef long int __ssize_t ;
-typedef long int __syscall_slong_t ;
-typedef unsigned long int __syscall_ulong_t ;
-typedef __off64_t __loff_t ;
-typedef __quad_t *__qaddr_t ;
-typedef char *__caddr_t ;
-typedef long int __intptr_t ;
-typedef unsigned int __socklen_t ;
+typedef unsigned char __u_char;
+typedef unsigned short int __u_short;
+typedef unsigned int __u_int;
+typedef unsigned long int __u_long;
+typedef signed char __int8_t;
+typedef unsigned char __uint8_t;
+typedef signed short int __int16_t;
+typedef unsigned short int __uint16_t;
+typedef signed int __int32_t;
+typedef unsigned int __uint32_t;
+typedef signed long int __int64_t;
+typedef unsigned long int __uint64_t;
+typedef long int __quad_t;
+typedef unsigned long int __u_quad_t;
+typedef unsigned long int __dev_t;
+typedef unsigned int __uid_t;
+typedef unsigned int __gid_t;
+typedef unsigned long int __ino_t;
+typedef unsigned long int __ino64_t;
+typedef unsigned int __mode_t;
+typedef unsigned long int __nlink_t;
+typedef long int __off_t;
+typedef long int __off64_t;
+typedef int __pid_t;
+typedef struct {
+	int __val[2];
+} __fsid_t;
+typedef long int __clock_t;
+typedef unsigned long int __rlim_t;
+typedef unsigned long int __rlim64_t;
+typedef unsigned int __id_t;
+typedef long int __time_t;
+typedef unsigned int __useconds_t;
+typedef long int __suseconds_t;
+typedef int __daddr_t;
+typedef int __key_t;
+typedef int __clockid_t;
+typedef void *__timer_t;
+typedef long int __blksize_t;
+typedef long int __blkcnt_t;
+typedef long int __blkcnt64_t;
+typedef unsigned long int __fsblkcnt_t;
+typedef unsigned long int __fsblkcnt64_t;
+typedef unsigned long int __fsfilcnt_t;
+typedef unsigned long int __fsfilcnt64_t;
+typedef long int __fsword_t;
+typedef long int __ssize_t;
+typedef long int __syscall_slong_t;
+typedef unsigned long int __syscall_ulong_t;
+typedef __off64_t __loff_t;
+typedef __quad_t *__qaddr_t;
+typedef char *__caddr_t;
+typedef long int __intptr_t;
+typedef unsigned int __socklen_t;
 // /usr/include/sys/types.h
 
-typedef __loff_t loff_t ;
-typedef __ino64_t ino_t ;
-typedef __ino64_t ino64_t ;
-typedef __dev_t dev_t ;
-typedef __gid_t gid_t ;
-typedef __mode_t mode_t ;
-typedef __nlink_t nlink_t ;
-typedef __uid_t uid_t ;
-typedef __off64_t off_t ;
-typedef __off64_t off64_t ;
-typedef __pid_t pid_t ;
-typedef __id_t id_t ;
-typedef __ssize_t ssize_t ;
-typedef __key_t key_t ;
-typedef __useconds_t useconds_t ;
-typedef __suseconds_t suseconds_t ;
+typedef __loff_t loff_t;
+typedef __ino64_t ino_t;
+typedef __ino64_t ino64_t;
+typedef __dev_t dev_t;
+typedef __gid_t gid_t;
+typedef __mode_t mode_t;
+typedef __nlink_t nlink_t;
+typedef __uid_t uid_t;
+typedef __off64_t off_t;
+typedef __off64_t off64_t;
+typedef __pid_t pid_t;
+typedef __id_t id_t;
+typedef __ssize_t ssize_t;
+typedef __key_t key_t;
+typedef __useconds_t useconds_t;
+typedef __suseconds_t suseconds_t;
 // /usr/lib64/gcc/x86_64-suse-linux/4.8/include/stddef.h
 
-typedef long unsigned int size_t ;
+typedef long unsigned int size_t;
 // /usr/include/sys/types.h
 
-typedef unsigned char u_int8_t ;
-typedef unsigned short int u_int16_t ;
-typedef unsigned int u_int32_t ;
-typedef unsigned long int u_int64_t ;
-typedef int register_t ;
-typedef __blksize_t blksize_t ;
-typedef __blkcnt64_t blkcnt_t ;
-typedef __fsblkcnt64_t fsblkcnt_t ;
-typedef __fsfilcnt64_t fsfilcnt_t ;
-typedef __blkcnt64_t blkcnt64_t ;
-typedef __fsblkcnt64_t fsblkcnt64_t ;
-typedef __fsfilcnt64_t fsfilcnt64_t ;
+typedef unsigned char u_int8_t;
+typedef unsigned short int u_int16_t;
+typedef unsigned int u_int32_t;
+typedef unsigned long int u_int64_t;
+typedef int register_t;
+typedef __blksize_t blksize_t;
+typedef __blkcnt64_t blkcnt_t;
+typedef __fsblkcnt64_t fsblkcnt_t;
+typedef __fsfilcnt64_t fsfilcnt_t;
+typedef __blkcnt64_t blkcnt64_t;
+typedef __fsblkcnt64_t fsblkcnt64_t;
+typedef __fsfilcnt64_t fsfilcnt64_t;
 // /usr/include/bits/uio.h
 
-struct iovec {void *iov_base ;size_t iov_len ;};
+struct iovec {
+	void *iov_base;
+	size_t iov_len;
+};
 // /usr/include/sys/uio.h
 
-extern ssize_t readv (int __fd ,const struct iovec *__iovec ,int __count );
-extern ssize_t writev (int __fd ,const struct iovec *__iovec ,int __count );
+extern ssize_t readv(int __fd, const struct iovec *__iovec, int __count);
+extern ssize_t writev(int __fd, const struct iovec *__iovec, int __count);
 // /usr/include/bits/socket.h
 
-typedef __socklen_t socklen_t ;
+typedef __socklen_t socklen_t;
 // /usr/include/bits/sockaddr.h
 
-typedef unsigned short int sa_family_t ;
+typedef unsigned short int sa_family_t;
 // /usr/include/bits/socket.h
 
-struct sockaddr {sa_family_t sa_family ;char sa_data [14 ];};
-struct sockaddr_storage {sa_family_t ss_family ;unsigned long int __ss_align ;char __ss_padding [112ul ];};
-enum {MSG_OOB =1 ,MSG_PEEK =2 ,MSG_DONTROUTE =4 ,MSG_CTRUNC =8 ,MSG_PROXY =16 ,MSG_TRUNC =32 ,MSG_DONTWAIT =64 ,MSG_EOR =128 ,MSG_WAITALL =256 ,MSG_FIN =512 ,MSG_SYN =1024 ,MSG_CONFIRM =2048 ,MSG_RST =4096 ,MSG_ERRQUEUE =8192 ,MSG_NOSIGNAL =16384 ,MSG_MORE =32768 ,MSG_WAITFORONE =65536 ,MSG_FASTOPEN =536870912 ,MSG_CMSG_CLOEXEC =1073741824 };
-struct msghdr {void *msg_name ;socklen_t msg_namelen ;struct iovec *msg_iov ;size_t msg_iovlen ;void *msg_control ;size_t msg_controllen ;int msg_flags ;};
-struct cmsghdr {size_t cmsg_len ;int cmsg_level ;int cmsg_type ;unsigned char __cmsg_data [];};
-extern struct cmsghdr *__cmsg_nxthdr (struct msghdr *__mhdr ,struct cmsghdr *__cmsg );
-enum {SCM_RIGHTS =1 };
-struct linger {int l_onoff ;int l_linger ;};
+struct sockaddr {
+	sa_family_t sa_family;
+	char sa_data[14];
+};
+struct sockaddr_storage {
+	sa_family_t ss_family;
+	unsigned long int __ss_align;
+	char __ss_padding[112ul];
+};
+enum { MSG_OOB = 1, MSG_PEEK = 2, MSG_DONTROUTE = 4, MSG_CTRUNC = 8, MSG_PROXY = 16, MSG_TRUNC = 32, MSG_DONTWAIT = 64, MSG_EOR = 128, MSG_WAITALL = 256, MSG_FIN = 512, MSG_SYN = 1024, MSG_CONFIRM = 2048, MSG_RST = 4096, MSG_ERRQUEUE = 8192, MSG_NOSIGNAL = 16384, MSG_MORE = 32768, MSG_WAITFORONE = 65536, MSG_FASTOPEN = 536870912, MSG_CMSG_CLOEXEC = 1073741824 };
+struct msghdr {
+	void *msg_name;
+	socklen_t msg_namelen;
+	struct iovec *msg_iov;
+	size_t msg_iovlen;
+	void *msg_control;
+	size_t msg_controllen;
+	int msg_flags;
+};
+struct cmsghdr {
+	size_t cmsg_len;
+	int cmsg_level;
+	int cmsg_type;
+	unsigned char __cmsg_data[];
+};
+extern struct cmsghdr *__cmsg_nxthdr(struct msghdr *__mhdr, struct cmsghdr *__cmsg);
+enum { SCM_RIGHTS = 1 };
+struct linger {
+	int l_onoff;
+	int l_linger;
+};
 // /usr/include/sys/socket.h
 
-enum {SHUT_RD =0 ,SHUT_WR ,SHUT_RDWR };
-extern int socket (int __domain ,int __type ,int __protocol );
-extern int socketpair (int __domain ,int __type ,int __protocol ,int __fds [2 ]);
-extern int bind (int __fd ,const struct sockaddr *__addr ,socklen_t __len );
-extern int getsockname (int __fd ,struct sockaddr *__addr ,socklen_t *__len );
-extern int connect (int __fd ,const struct sockaddr *__addr ,socklen_t __len );
-extern int getpeername (int __fd ,struct sockaddr *__addr ,socklen_t *__len );
-extern ssize_t send (int __fd ,const void *__buf ,size_t __n ,int __flags );
-extern ssize_t recv (int __fd ,void *__buf ,size_t __n ,int __flags );
-extern ssize_t sendto (int __fd ,const void *__buf ,size_t __n ,int __flags ,const struct sockaddr *__addr ,socklen_t __addr_len );
-extern ssize_t recvfrom (int __fd ,void *__buf ,size_t __n ,int __flags ,struct sockaddr *__addr ,socklen_t *__addr_len );
-extern ssize_t sendmsg (int __fd ,const struct msghdr *__message ,int __flags );
-extern ssize_t recvmsg (int __fd ,struct msghdr *__message ,int __flags );
-extern int getsockopt (int __fd ,int __level ,int __optname ,void *__optval ,socklen_t *__optlen );
-extern int setsockopt (int __fd ,int __level ,int __optname ,const void *__optval ,socklen_t __optlen );
-extern int listen (int __fd ,int __n );
-extern int accept (int __fd ,struct sockaddr *__addr ,socklen_t *__addr_len );
-extern int shutdown (int __fd ,int __how );
+enum { SHUT_RD = 0, SHUT_WR, SHUT_RDWR };
+extern int socket(int __domain, int __type, int __protocol);
+extern int socketpair(int __domain, int __type, int __protocol, int __fds[2]);
+extern int bind(int __fd, const struct sockaddr *__addr, socklen_t __len);
+extern int getsockname(int __fd, struct sockaddr *__addr, socklen_t * __len);
+extern int connect(int __fd, const struct sockaddr *__addr, socklen_t __len);
+extern int getpeername(int __fd, struct sockaddr *__addr, socklen_t * __len);
+extern ssize_t send(int __fd, const void *__buf, size_t __n, int __flags);
+extern ssize_t recv(int __fd, void *__buf, size_t __n, int __flags);
+extern ssize_t sendto(int __fd, const void *__buf, size_t __n, int __flags, const struct sockaddr *__addr, socklen_t __addr_len);
+extern ssize_t recvfrom(int __fd, void *__buf, size_t __n, int __flags, struct sockaddr *__addr, socklen_t * __addr_len);
+extern ssize_t sendmsg(int __fd, const struct msghdr *__message, int __flags);
+extern ssize_t recvmsg(int __fd, struct msghdr *__message, int __flags);
+extern int getsockopt(int __fd, int __level, int __optname, void *__optval, socklen_t * __optlen);
+extern int setsockopt(int __fd, int __level, int __optname, const void *__optval, socklen_t __optlen);
+extern int listen(int __fd, int __n);
+extern int accept(int __fd, struct sockaddr *__addr, socklen_t * __addr_len);
+extern int shutdown(int __fd, int __how);
 // /usr/include/netinet/in.h
 
-typedef uint32_t in_addr_t ;
-struct in_addr {in_addr_t s_addr ;};
-enum {IPPROTO_IP =0 ,IPPROTO_ICMP =1 ,IPPROTO_IGMP =2 ,IPPROTO_IPIP =4 ,IPPROTO_TCP =6 ,IPPROTO_EGP =8 ,IPPROTO_PUP =12 ,IPPROTO_UDP =17 ,IPPROTO_IDP =22 ,IPPROTO_TP =29 ,IPPROTO_DCCP =33 ,IPPROTO_IPV6 =41 ,IPPROTO_RSVP =46 ,IPPROTO_GRE =47 ,IPPROTO_ESP =50 ,IPPROTO_AH =51 ,IPPROTO_MTP =92 ,IPPROTO_BEETPH =94 ,IPPROTO_ENCAP =98 ,IPPROTO_PIM =103 ,IPPROTO_COMP =108 ,IPPROTO_SCTP =132 ,IPPROTO_UDPLITE =136 ,IPPROTO_RAW =255 ,IPPROTO_MAX };
-enum {IPPROTO_HOPOPTS =0 ,IPPROTO_ROUTING =43 ,IPPROTO_FRAGMENT =44 ,IPPROTO_ICMPV6 =58 ,IPPROTO_NONE =59 ,IPPROTO_DSTOPTS =60 ,IPPROTO_MH =135 };
-typedef uint16_t in_port_t ;
-enum {IPPORT_ECHO =7 ,IPPORT_DISCARD =9 ,IPPORT_SYSTAT =11 ,IPPORT_DAYTIME =13 ,IPPORT_NETSTAT =15 ,IPPORT_FTP =21 ,IPPORT_TELNET =23 ,IPPORT_SMTP =25 ,IPPORT_TIMESERVER =37 ,IPPORT_NAMESERVER =42 ,IPPORT_WHOIS =43 ,IPPORT_MTP =57 ,IPPORT_TFTP =69 ,IPPORT_RJE =77 ,IPPORT_FINGER =79 ,IPPORT_TTYLINK =87 ,IPPORT_SUPDUP =95 ,IPPORT_EXECSERVER =512 ,IPPORT_LOGINSERVER =513 ,IPPORT_CMDSERVER =514 ,IPPORT_EFSSERVER =520 ,IPPORT_BIFFUDP =512 ,IPPORT_WHOSERVER =513 ,IPPORT_ROUTESERVER =520 ,IPPORT_RESERVED =1024 ,IPPORT_USERRESERVED =5000 };
-struct in6_addr {union {uint8_t __u6_addr8 [16 ];}__in6_u ;};
-extern const struct in6_addr in6addr_any ;
-extern const struct in6_addr in6addr_loopback ;
-struct sockaddr_in {sa_family_t sin_family ;in_port_t sin_port ;struct in_addr sin_addr ;unsigned char sin_zero [8ul ];};
-struct sockaddr_in6 {sa_family_t sin6_family ;in_port_t sin6_port ;uint32_t sin6_flowinfo ;struct in6_addr sin6_addr ;uint32_t sin6_scope_id ;};
-struct ipv6_mreq {struct in6_addr ipv6mr_multiaddr ;unsigned int ipv6mr_interface ;};
-extern uint32_t ntohl (uint32_t __netlong );
-extern uint16_t ntohs (uint16_t __netshort );
-extern uint32_t htonl (uint32_t __hostlong );
-extern uint16_t htons (uint16_t __hostshort );
+typedef uint32_t in_addr_t;
+struct in_addr {
+	in_addr_t s_addr;
+};
+enum { IPPROTO_IP = 0, IPPROTO_ICMP = 1, IPPROTO_IGMP = 2, IPPROTO_IPIP = 4, IPPROTO_TCP = 6, IPPROTO_EGP = 8, IPPROTO_PUP = 12, IPPROTO_UDP = 17, IPPROTO_IDP = 22, IPPROTO_TP = 29, IPPROTO_DCCP = 33, IPPROTO_IPV6 = 41, IPPROTO_RSVP = 46, IPPROTO_GRE = 47, IPPROTO_ESP = 50, IPPROTO_AH = 51, IPPROTO_MTP = 92, IPPROTO_BEETPH = 94, IPPROTO_ENCAP = 98, IPPROTO_PIM = 103, IPPROTO_COMP = 108, IPPROTO_SCTP = 132, IPPROTO_UDPLITE = 136, IPPROTO_RAW = 255, IPPROTO_MAX };
+enum { IPPROTO_HOPOPTS = 0, IPPROTO_ROUTING = 43, IPPROTO_FRAGMENT = 44, IPPROTO_ICMPV6 = 58, IPPROTO_NONE = 59, IPPROTO_DSTOPTS = 60, IPPROTO_MH = 135 };
+typedef uint16_t in_port_t;
+enum { IPPORT_ECHO = 7, IPPORT_DISCARD = 9, IPPORT_SYSTAT = 11, IPPORT_DAYTIME = 13, IPPORT_NETSTAT = 15, IPPORT_FTP = 21, IPPORT_TELNET = 23, IPPORT_SMTP = 25, IPPORT_TIMESERVER = 37, IPPORT_NAMESERVER = 42, IPPORT_WHOIS = 43, IPPORT_MTP = 57, IPPORT_TFTP = 69, IPPORT_RJE = 77, IPPORT_FINGER = 79, IPPORT_TTYLINK = 87, IPPORT_SUPDUP = 95, IPPORT_EXECSERVER = 512, IPPORT_LOGINSERVER = 513, IPPORT_CMDSERVER = 514, IPPORT_EFSSERVER = 520, IPPORT_BIFFUDP = 512, IPPORT_WHOSERVER = 513, IPPORT_ROUTESERVER = 520, IPPORT_RESERVED = 1024, IPPORT_USERRESERVED = 5000 };
+struct in6_addr {
+	union {
+		uint8_t __u6_addr8[16];
+	} __in6_u;
+};
+extern const struct in6_addr in6addr_any;
+extern const struct in6_addr in6addr_loopback;
+struct sockaddr_in {
+	sa_family_t sin_family;
+	in_port_t sin_port;
+	struct in_addr sin_addr;
+	unsigned char sin_zero[8ul];
+};
+struct sockaddr_in6 {
+	sa_family_t sin6_family;
+	in_port_t sin6_port;
+	uint32_t sin6_flowinfo;
+	struct in6_addr sin6_addr;
+	uint32_t sin6_scope_id;
+};
+struct ipv6_mreq {
+	struct in6_addr ipv6mr_multiaddr;
+	unsigned int ipv6mr_interface;
+};
+extern uint32_t ntohl(uint32_t __netlong);
+extern uint16_t ntohs(uint16_t __netshort);
+extern uint32_t htonl(uint32_t __hostlong);
+extern uint16_t htons(uint16_t __hostshort);
 // /usr/include/arpa/inet.h
 
-extern in_addr_t inet_addr (const char *__cp );
-extern in_addr_t inet_lnaof (struct in_addr __in );
-extern struct in_addr inet_makeaddr (in_addr_t __net ,in_addr_t __host );
-extern in_addr_t inet_netof (struct in_addr __in );
-extern in_addr_t inet_network (const char *__cp );
-extern char *inet_ntoa (struct in_addr __in );
-extern int inet_pton (int __af ,const char *__cp ,void *__buf );
-extern const char *inet_ntop (int __af ,const void *__cp ,char *__buf ,socklen_t __len );
+extern in_addr_t inet_addr(const char *__cp);
+extern in_addr_t inet_lnaof(struct in_addr __in);
+extern struct in_addr inet_makeaddr(in_addr_t __net, in_addr_t __host);
+extern in_addr_t inet_netof(struct in_addr __in);
+extern in_addr_t inet_network(const char *__cp);
+extern char *inet_ntoa(struct in_addr __in);
+extern int inet_pton(int __af, const char *__cp, void *__buf);
+extern const char *inet_ntop(int __af, const void *__cp, char *__buf, socklen_t __len);
 #define AF_ALG PF_ALG
 #define AF_APPLETALK PF_APPLETALK
 #define AF_ASH PF_ASH
@@ -610,33 +652,33 @@ extern const char *inet_ntop (int __af ,const void *__cp ,char *__buf ,socklen_t
 #define _BITS_SOCKADDR_H (1)
 #define _BITS_TYPES_H (1)
 #define _BITS_UIO_H (1)
-#define _BSD_SIZE_T_ 
-#define _BSD_SIZE_T_DEFINED_ 
-#define _GCC_SIZE_T 
+#define _BSD_SIZE_T_
+#define _BSD_SIZE_T_DEFINED_
+#define _GCC_SIZE_T
 #define _NETINET_IN_H (1)
-#define _SIZET_ 
-#define _SIZE_T 
-#define _SIZE_T_ 
-#define _SIZE_T_DECLARED 
-#define _SIZE_T_DEFINED 
-#define _SIZE_T_DEFINED_ 
+#define _SIZET_
+#define _SIZE_T
+#define _SIZE_T_
+#define _SIZE_T_DECLARED
+#define _SIZE_T_DEFINED
+#define _SIZE_T_DEFINED_
 #define _SS_PADSIZE ( _SS_SIZE - ( 2 * sizeof ( __ss_aligntype ) ) )
 #define _SS_SIZE (128)
 #define _STDINT_H (1)
-#define _SYS_SIZE_T_H 
+#define _SYS_SIZE_T_H
 #define _SYS_SOCKET_H (1)
 #define _SYS_TYPES_H (1)
 #define _SYS_UIO_H (1)
-#define _T_SIZE 
-#define _T_SIZE_ 
-#define __BITS_SOCKET_H 
+#define _T_SIZE
+#define _T_SIZE_
+#define __BITS_SOCKET_H
 #define __BIT_TYPES_DEFINED__ (1)
 #define __CONST_SOCKADDR_ARG const struct sockaddr *
 #define __S16_TYPE short int
 #define __S32_TYPE int
 #define __S64_TYPE long int
-#define __SIZE_T 
-#define __SIZE_T__ 
+#define __SIZE_T
+#define __SIZE_T__
 #define __SLONG32_TYPE int
 #define __SLONGWORD_TYPE long int
 #define __SOCKADDR_ARG struct sockaddr * __restrict
@@ -651,32 +693,32 @@ extern const char *inet_ntop (int __af ,const void *__cp ,char *__buf ,socklen_t
 #define __ULONGWORD_TYPE unsigned long int
 #define __UQUAD_TYPE unsigned long int
 #define __UWORD_TYPE unsigned long int
-#define ___int_size_t_h 
-#define __blkcnt_t_defined 
-#define __blksize_t_defined 
-#define __dev_t_defined 
-#define __fsblkcnt_t_defined 
-#define __fsfilcnt_t_defined 
-#define __gid_t_defined 
-#define __id_t_defined 
-#define __ino64_t_defined 
-#define __ino_t_defined 
-#define __int8_t_defined 
-#define __intptr_t_defined 
-#define __key_t_defined 
-#define __mode_t_defined 
-#define __need_clockid_t 
-#define __nlink_t_defined 
-#define __off64_t_defined 
-#define __off_t_defined 
-#define __pid_t_defined 
-#define __size_t 
-#define __size_t__ 
-#define __socklen_t_defined 
+#define ___int_size_t_h
+#define __blkcnt_t_defined
+#define __blksize_t_defined
+#define __dev_t_defined
+#define __fsblkcnt_t_defined
+#define __fsfilcnt_t_defined
+#define __gid_t_defined
+#define __id_t_defined
+#define __ino64_t_defined
+#define __ino_t_defined
+#define __int8_t_defined
+#define __intptr_t_defined
+#define __key_t_defined
+#define __mode_t_defined
+#define __need_clockid_t
+#define __nlink_t_defined
+#define __off64_t_defined
+#define __off_t_defined
+#define __pid_t_defined
+#define __size_t
+#define __size_t__
+#define __socklen_t_defined
 #define __ss_aligntype unsigned long int
-#define __ssize_t_defined 
-#define __suseconds_t_defined 
-#define __uid_t_defined 
-#define __uint32_t_defined 
-#define __useconds_t_defined 
+#define __ssize_t_defined
+#define __suseconds_t_defined
+#define __uid_t_defined
+#define __uint32_t_defined
+#define __useconds_t_defined
 #define s6_addr __in6_u . __u6_addr8

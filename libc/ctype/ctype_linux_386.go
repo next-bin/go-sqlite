@@ -20,7 +20,7 @@
    License along with the GNU C Library; if not, see
    <http://www.gnu.org/licenses/>.  */
 
-package ctype
+package ctype // import "modernc.org/ccir/libc/ctype"
 
 const (
 	X_BITS_TYPES_H = 1

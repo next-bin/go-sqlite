@@ -20,7 +20,7 @@
    License along with the GNU C Library; if not, see
    <http://www.gnu.org/licenses/>.  */
 
-package stdint
+package stdint // import "modernc.org/ccir/libc/stdint"
 
 const (
 	XINT16_MAX        = 32767

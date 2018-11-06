@@ -60,7 +60,7 @@
    License along with the GNU C Library; if not, see
    <http://www.gnu.org/licenses/>.  */
 
-package wait
+package wait // import "modernc.org/ccir/libc/sys/wait"
 
 const (
 	X_BITS_PTHREADTYPES_H              = 1

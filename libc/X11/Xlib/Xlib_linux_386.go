@@ -55,7 +55,7 @@ in this Software without prior written authorization from The Open Group.
 
 */
 
-package Xlib
+package Xlib // import "modernc.org/ccir/libc/X11/Xlib"
 
 const (
 	XAbove                           = 0

@@ -146,7 +146,7 @@ see the files COPYING3 and COPYING.RUNTIME respectively.  If not, see
    License along with the GNU C Library; if not, see
    <http://www.gnu.org/licenses/>.  */
 
-package Xos
+package Xos // import "modernc.org/ccir/libc/X11/Xos"
 
 const (
 	XFD_CLOEXEC            = 1

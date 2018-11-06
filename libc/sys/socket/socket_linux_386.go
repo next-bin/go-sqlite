@@ -86,7 +86,7 @@ see the files COPYING3 and COPYING.RUNTIME respectively.  If not, see
    License along with the GNU C Library; if not, see
    <http://www.gnu.org/licenses/>.  */
 
-package socket
+package socket // import "modernc.org/ccir/libc/sys/socket"
 
 const (
 	XAF_ALG                           = 38

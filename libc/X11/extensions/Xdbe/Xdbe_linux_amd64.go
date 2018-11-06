@@ -55,7 +55,7 @@ in this Software without prior written authorization from The Open Group.
 
 */
 
-package Xdbe
+package Xdbe // import "modernc.org/ccir/libc/X11/extensions/Xdbe"
 
 const (
 	XAbove                           = 0

@@ -2,16 +2,16 @@
 // Use of this source code is governed by a BSD-style
 // license that can be found in the LICENSE file.
 
-package ccir
+package ccir // import "modernc.org/ccir"
 
 import (
 	"go/scanner"
 	"go/token"
 	"strings"
 
-	"github.com/cznic/cc"
-	"github.com/cznic/ir"
-	"github.com/cznic/xc"
+	"modernc.org/cc"
+	"modernc.org/ir"
+	"modernc.org/xc"
 )
 
 var (

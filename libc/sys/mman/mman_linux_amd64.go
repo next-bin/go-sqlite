@@ -26,7 +26,7 @@ a copy of the GCC Runtime Library Exception along with this program;
 see the files COPYING3 and COPYING.RUNTIME respectively.  If not, see
 <http://www.gnu.org/licenses/>.  */
 
-package mman
+package mman // import "modernc.org/ccir/libc/sys/mman"
 
 const (
 	XMAP_FIXED      = 16

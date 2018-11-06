@@ -21,10 +21,10 @@ import (
 	"sort"
 	"strings"
 
-	"github.com/cznic/cc"
-	"github.com/cznic/ccir"
-	"github.com/cznic/internal/buffer"
-	"github.com/cznic/xc"
+	"modernc.org/cc"
+	"modernc.org/ccir"
+	"modernc.org/internal/buffer"
+	"modernc.org/xc"
 )
 
 var (

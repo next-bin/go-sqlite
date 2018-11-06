@@ -20,7 +20,7 @@
    License along with the GNU C Library; if not, see
    <http://www.gnu.org/licenses/>.  */
 
-package locale
+package locale // import "modernc.org/ccir/libc/locale"
 
 const (
 	XLC_ADDRESS          = 9
