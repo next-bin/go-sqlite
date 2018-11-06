@@ -19,14 +19,14 @@
 //
 // Referenced from elsewhere:
 //
-//  [0]: http://godoc.org/github.com/cznic/goyacc
+//  [0]: http://godoc.org/modernc.org/goyacc
 //  [1]: http://people.via.ecp.fr/~stilgar/doc/compilo/parser/Generating%20LR%20Syntax%20Error%20Messages.pdf
 //  [2]: http://dinosaur.compilertools.net/yacc/
 //  [3]: http://dinosaur.compilertools.net/lex/index.html
 //  [4]: https://www.gnu.org/software/bison/manual/html_node/Using-Mid_002dRule-Actions.html
 //  [5]: http://www.gnu.org/software/bison/manual/html_node/Precedence-Only.html#Precedence-Only
 //  [6]: http://www.gnu.org/software/bison/manual/html_node/Token-Decl.html#Token-Decl
-package y
+package y // import "modernc.org/y"
 
 import (
 	"bytes"
@@ -39,8 +39,8 @@ import (
 	"strconv"
 	"strings"
 
-	yparser "github.com/cznic/parser/yacc"
-	"github.com/cznic/sortutil"
+	yparser "modernc.org/parser/yacc"
+	"modernc.org/sortutil"
 )
 
 // Values of {AssocDef,Rule,Sym}.Associativity

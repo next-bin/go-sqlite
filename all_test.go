@@ -2,7 +2,7 @@
 // Use of this source code is governed by a BSD-style
 // license that can be found in the LICENSE file.
 
-package y
+package y // import "modernc.org/y"
 
 import (
 	"bytes"
@@ -22,7 +22,7 @@ import (
 	"testing"
 	"time"
 
-	yparser "github.com/cznic/parser/yacc"
+	yparser "modernc.org/parser/yacc"
 )
 
 func init() {

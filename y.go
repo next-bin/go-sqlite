@@ -2,7 +2,7 @@
 // Use of this source code is governed by a BSD-style
 // license that can be found in the LICENSE file.
 
-package y
+package y // import "modernc.org/y"
 
 import (
 	"bytes"
@@ -17,9 +17,9 @@ import (
 	"strconv"
 	"strings"
 
-	"github.com/cznic/mathutil"
-	yparser "github.com/cznic/parser/yacc"
-	"github.com/cznic/strutil"
+	"modernc.org/mathutil"
+	yparser "modernc.org/parser/yacc"
+	"modernc.org/strutil"
 )
 
 const (
@@ -1565,7 +1565,7 @@ func (y *y) resolve(s *State, si int, sym *Symbol, conflict [2]action) (resolved
 			s.actions[sym] = append(s.actions[sym], conflict[0])
 			return true, true
 		case sym.Associativity == AssocNone:
-			y.err(sym.Pos, "%nonassoc symbol %s conflict in state %d", sym, si)
+			y.err(sym.Pos, "%%nonassoc symbol %s conflict in state %d", sym, si)
 		}
 	case 'r':
 		// nop
