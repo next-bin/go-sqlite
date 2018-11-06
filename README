@@ -1,4 +1,4 @@
 Packages in this repository:
 
-Install: $ go get github.com/cznic/sortutil
-Godocs:  http://godoc.org/github.com/cznic/sortutil
+Install: $ go get modernc.org/sortutil
+Godocs:  http://godoc.org/modernc.org/sortutil
