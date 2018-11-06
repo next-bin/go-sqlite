@@ -2,12 +2,12 @@
 // Use of this source code is governed by a BSD-style
 // license that can be found in the LICENSE file.
 
-package ir
+package ir // import "modernc.org/ir"
 
 import (
 	"fmt"
 
-	"github.com/cznic/internal/buffer"
+	"modernc.org/internal/buffer"
 )
 
 var (

@@ -2,7 +2,7 @@
 // Use of this source code is governed by a BSD-style
 // license that can be found in the LICENSE file.
 
-package ir
+package ir // import "modernc.org/ir"
 
 import (
 	"bytes"
@@ -679,7 +679,7 @@ func TestObjects(t *testing.T) {
 		t.Fatal(err)
 	}
 
-	if _, err := Objects(out).WriteTo(f); err != nil {
+	if _, err := out.WriteTo(f); err != nil {
 		t.Fatal(err)
 	}
 

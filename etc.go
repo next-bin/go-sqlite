@@ -2,7 +2,7 @@
 // Use of this source code is governed by a BSD-style
 // license that can be found in the LICENSE file.
 
-package ir
+package ir // import "modernc.org/ir"
 
 import (
 	"encoding/gob"
@@ -10,8 +10,8 @@ import (
 	"go/token"
 	"reflect"
 
-	"github.com/cznic/strutil"
-	"github.com/cznic/xc"
+	"modernc.org/strutil"
+	"modernc.org/xc"
 )
 
 func init() {

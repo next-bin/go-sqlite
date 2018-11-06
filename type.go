@@ -2,13 +2,13 @@
 // Use of this source code is governed by a BSD-style
 // license that can be found in the LICENSE file.
 
-package ir
+package ir // import "modernc.org/ir"
 
 import (
 	"fmt"
 	"math"
 
-	"github.com/cznic/internal/buffer"
+	"modernc.org/internal/buffer"
 )
 
 var (
@@ -99,7 +99,7 @@ func newPointerType(t Type) Type {
 // TypeID is a numeric identifier of a type specifier as registered in a global
 // dictionary[0].
 //
-//  [0]: https://godoc.org/github.com/cznic/xc#pkg-variables
+//  [0]: https://godoc.org/modernc.org/xc#pkg-variables
 type TypeID int
 
 // Equal implements Type.

@@ -36,13 +36,13 @@
 // probably just to verify a particular IR generator or to provide an
 // interpreter for scripts loaded/entered at run time. A "standard" back-end
 // should normally produce machine code,
-package ir
+package ir // import "modernc.org/ir"
 
 import (
 	"fmt"
 	"go/token"
 
-	"github.com/cznic/internal/buffer"
+	"modernc.org/internal/buffer"
 )
 
 var (
@@ -56,7 +56,7 @@ var (
 // NameID is a numeric identifier of an identifier as registered in a global
 // dictionary[0].
 //
-//  [0]: https://godoc.org/github.com/cznic/xc#pkg-variables
+//  [0]: https://godoc.org/modernc.org/xc#pkg-variables
 type NameID int
 
 // String implements fmt.Stringer.
@@ -76,7 +76,7 @@ func (t NameID) GobEncode() ([]byte, error) {
 // StringID is a numeric identifier of a string literal as registered in a
 // global dictionary[0].
 //
-//  [0]: https://godoc.org/github.com/cznic/xc#pkg-variables
+//  [0]: https://godoc.org/modernc.org/xc#pkg-variables
 type StringID int
 
 // String implements fmt.Stringer.
