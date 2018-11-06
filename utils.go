@@ -8,7 +8,7 @@
 // Positions attached to particular ebnf package types instances are ignored in
 // most, if not all places. Positions make sense after Parse, but usually no
 // more after mutating the grammar in any way.
-package ebnfutil
+package ebnfutil // import "modernc.org/ebnfutil"
 
 import (
 	"bytes"
@@ -19,7 +19,7 @@ import (
 	"strings"
 
 	"golang.org/x/exp/ebnf"
-	"github.com/cznic/strutil"
+	"modernc.org/strutil"
 )
 
 var (

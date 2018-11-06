@@ -2,7 +2,7 @@
 // Use of this source code is governed by a BSD-style
 // license that can be found in the LICENSE file.
 
-package ebnfutil
+package ebnfutil // import "modernc.org/ebnfutil"
 
 import (
 	"bytes"
@@ -16,7 +16,7 @@ import (
 	"testing"
 
 	"golang.org/x/exp/ebnf"
-	"github.com/cznic/strutil"
+	"modernc.org/strutil"
 )
 
 func dbg(s string, va ...interface{}) {
