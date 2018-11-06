@@ -10,14 +10,14 @@
 //
 // Referenced from elsewhere
 //
-//  [0]: https://github.com/cznic/ccir
-package virtual
+//  [0]: https://modernc.org/ccir
+package virtual // import "modernc.org/virtual"
 
 import (
 	"fmt"
 	"io"
 
-	"github.com/cznic/xc"
+	"modernc.org/xc"
 )
 
 var (

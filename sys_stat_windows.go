@@ -2,7 +2,7 @@
 // Use of this source code is governed by a BSD-style
 // license that can be found in the LICENSE file.
 
-package virtual
+package virtual // import "modernc.org/virtual"
 
 // int fstat64(int fildes, struct stat64 *buf);
 func (c *cpu) fstat64() { panic("unreachable") }

@@ -4,6 +4,6 @@
 
 // +build virtual.trace
 
-package virtual
+package virtual // import "modernc.org/virtual"
 
 const trace = true

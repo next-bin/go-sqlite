@@ -2,7 +2,7 @@
 // Use of this source code is governed by a BSD-style
 // license that can be found in the LICENSE file.
 
-package virtual
+package virtual // import "modernc.org/virtual"
 
 import (
 	"bytes"
@@ -11,8 +11,8 @@ import (
 	"sort"
 	"strings"
 
-	"github.com/cznic/internal/buffer"
-	"github.com/cznic/ir"
+	"modernc.org/internal/buffer"
+	"modernc.org/ir"
 )
 
 var (

@@ -4,6 +4,6 @@
 
 // +build !virtual.profile
 
-package virtual
+package virtual // import "modernc.org/virtual"
 
 const profile = false

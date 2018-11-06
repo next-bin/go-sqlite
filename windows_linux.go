@@ -6,7 +6,7 @@
 
 // +build !windows
 
-package virtual
+package virtual // import "modernc.org/virtual"
 
 func (c *cpu) InterlockedCompareExchange() {
 	winStub("InterlockedCompareExchange")

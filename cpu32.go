@@ -4,7 +4,7 @@
 
 // +build 386 arm arm64be armbe mips mipsle ppc ppc64le s390 s390x sparc
 
-package virtual
+package virtual // import "modernc.org/virtual"
 
 import (
 	"math"

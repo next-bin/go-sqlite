@@ -4,6 +4,6 @@
 
 // +build virtual.ptrace
 
-package virtual
+package virtual // import "modernc.org/virtual"
 
 const ptrace = true

@@ -2,10 +2,10 @@
 // Use of this source code is governed by a BSD-style
 // license that can be found in the LICENSE file.
 
-package virtual
+package virtual // import "modernc.org/virtual"
 
 import (
-	"github.com/cznic/ccir/libc/errno"
+	"modernc.org/ccir/libc/errno"
 )
 
 func init() {

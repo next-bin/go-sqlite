@@ -2,7 +2,7 @@
 // Use of this source code is governed by a BSD-style
 // license that can be found in the LICENSE file.
 
-package virtual
+package virtual // import "modernc.org/virtual"
 
 import (
 	"fmt"
@@ -14,11 +14,11 @@ import (
 	"sync/atomic"
 	"unsafe"
 
-	"github.com/cznic/ccir/libc/stdlib"
-	"github.com/cznic/internal/buffer"
-	"github.com/cznic/mathutil"
-	"github.com/cznic/memory"
 	"github.com/edsrzf/mmap-go"
+	"modernc.org/ccir/libc/stdlib"
+	"modernc.org/internal/buffer"
+	"modernc.org/mathutil"
+	"modernc.org/memory"
 )
 
 const (

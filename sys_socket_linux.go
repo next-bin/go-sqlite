@@ -4,7 +4,7 @@
 
 //TODO strace
 
-package virtual
+package virtual // import "modernc.org/virtual"
 
 import (
 	"fmt"
@@ -15,8 +15,8 @@ import (
 	"syscall"
 	"unsafe"
 
-	sockconst "github.com/cznic/ccir/libc/sys/socket"
 	"golang.org/x/sys/unix"
+	sockconst "modernc.org/ccir/libc/sys/socket"
 )
 
 func init() {

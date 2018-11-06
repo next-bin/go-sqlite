@@ -2,15 +2,15 @@
 // Use of this source code is governed by a BSD-style
 // license that can be found in the LICENSE file.
 
-package virtual
+package virtual // import "modernc.org/virtual"
 
 import (
 	"fmt"
 	"os"
 	"sync"
 
-	"github.com/cznic/ccir/libc/errno"
-	"github.com/cznic/ccir/libc/pthread"
+	"modernc.org/ccir/libc/errno"
+	"modernc.org/ccir/libc/pthread"
 )
 
 func init() {

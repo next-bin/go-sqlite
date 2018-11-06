@@ -4,13 +4,13 @@
 
 // +build virtual.strace
 
-package virtual
+package virtual // import "modernc.org/virtual"
 
 import (
 	"fmt"
 	"strings"
 
-	fcntl2 "github.com/cznic/ccir/libc/fcntl"
+	fcntl2 "modernc.org/ccir/libc/fcntl"
 )
 
 func cmdString(cmd int32) string {

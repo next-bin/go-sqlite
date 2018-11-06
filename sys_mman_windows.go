@@ -2,7 +2,7 @@
 // Use of this source code is governed by a BSD-style
 // license that can be found in the LICENSE file.
 
-package virtual
+package virtual // import "modernc.org/virtual"
 
 // void *mmap(void *addr, size_t len, int prot, int flags, int fildes, off_t off);
 func (c *cpu) mmap64() { panic("unreachable") }

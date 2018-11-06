@@ -2,7 +2,7 @@
 // Use of this source code is governed by a BSD-style
 // license that can be found in the LICENSE file.
 
-package virtual
+package virtual // import "modernc.org/virtual"
 
 import (
 	"bufio"
@@ -22,9 +22,9 @@ import (
 	"unicode/utf16"
 	"unsafe"
 
-	"github.com/cznic/internal/buffer"
-	"github.com/cznic/ir"
-	"github.com/cznic/mathutil"
+	"modernc.org/internal/buffer"
+	"modernc.org/ir"
+	"modernc.org/mathutil"
 )
 
 var (

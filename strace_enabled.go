@@ -4,6 +4,6 @@
 
 // +build virtual.strace
 
-package virtual
+package virtual // import "modernc.org/virtual"
 
 const strace = true
