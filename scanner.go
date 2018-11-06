@@ -2,11 +2,11 @@
 // Use of this source code is governed by a BSD-style
 // license that can be found in the LICENSE file.
 
-package lex
+package lex // import "modernc.org/lex"
 
 import (
 	"fmt"
-	"github.com/cznic/lexer"
+	"modernc.org/lexer"
 )
 
 func (t *tokenizer) Lex(lval *yySymType) (c int) {
@@ -81,18 +81,18 @@ func init() {
 			`/^%}\n/`:                          tVERBATIM_CLOSE,
 			`/^.*\n/`:                          tVERBATIM_LINE,
 			`/^</`:                             tSTARTS,
-			`/[a-zA-Z_][-a-zA-Z0-9_]*/`: tNAME,
-			`/^[^< \t\n].*/`:            tPATTERN_LINE,
-			`/[^< \t\n].*/`:             tSTARTS_PATTERN_LINE,
-			`/\n|.+\n?/`:                tUSER_CODE_LINE,
-			`/^%s/`:                     tSSTART,
-			`/^%x/`:                     tXSTART,
-			`/^%yyt/`:                   tYYT,
-			`/^%yyb/`:                   tYYB,
-			`/^%yyc/`:                   tYYC,
-			`/^%yyn/`:                   tYYN,
-			`/^%yym/`:                   tYYM,
-			`/^%option.*/`:              tOPTION,
+			`/[a-zA-Z_][-a-zA-Z0-9_]*/`:        tNAME,
+			`/^[^< \t\n].*/`:                   tPATTERN_LINE,
+			`/[^< \t\n].*/`:                    tSTARTS_PATTERN_LINE,
+			`/\n|.+\n?/`:                       tUSER_CODE_LINE,
+			`/^%s/`:                            tSSTART,
+			`/^%x/`:                            tXSTART,
+			`/^%yyt/`:                          tYYT,
+			`/^%yyb/`:                          tYYB,
+			`/^%yyc/`:                          tYYC,
+			`/^%yyn/`:                          tYYN,
+			`/^%yym/`:                          tYYM,
+			`/^%option.*/`:                     tOPTION,
 		},
 		"",
 		"",

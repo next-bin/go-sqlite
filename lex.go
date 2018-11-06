@@ -73,19 +73,19 @@
 //	- Anything special after '(?'.
 //	- Matching <<EOF>>. Still \0 is OK in a pattern.
 //	- And probably more.
-package lex
+package lex // import "modernc.org/lex"
 
 import (
 	"bytes"
 	"errors"
 	"fmt"
-	"github.com/cznic/lexer"
 	"go/token"
 	"io"
+	"modernc.org/lexer"
 	"sort"
 	"strings"
 
-	"github.com/cznic/fileutil"
+	"modernc.org/fileutil"
 )
 
 type rule struct {

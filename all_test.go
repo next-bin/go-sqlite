@@ -2,7 +2,7 @@
 // Use of this source code is governed by a BSD-style
 // license that can be found in the LICENSE file.
 
-package lex
+package lex // import "modernc.org/lex"
 
 import (
 	"bytes"
@@ -121,7 +121,7 @@ F  {D}"."{D}?{E}?|{D}{E}?|"."{D}{E}?
 
     return NUM
 
-	// https://github.com/cznic/golex/issues/1
+	// https://gitlab.com/cznic/golex/issues/1
 a[ \-*]
 b[ -*]
 c[ \-*]

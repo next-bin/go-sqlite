@@ -2,11 +2,11 @@
 // Use of this source code is governed by a BSD-style
 // license that can be found in the LICENSE file.
 
-package lex
+package lex // import "modernc.org/lex"
 
 import (
 	"fmt"
-	"github.com/cznic/lexer"
+	"modernc.org/lexer"
 	"sort"
 	"unicode"
 )
