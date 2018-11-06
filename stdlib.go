@@ -4,6 +4,6 @@
 
 // +build !go1.4
 
-package lexer
+package lexer // import "modernc.org/lexer"
 
 const stdlib = "pkg"

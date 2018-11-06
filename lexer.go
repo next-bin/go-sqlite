@@ -183,7 +183,7 @@ Unicode character class names--scripts:
 	Yi                     Yi
 
 */
-package lexer
+package lexer // import "modernc.org/lexer"
 
 import (
 	"bytes"

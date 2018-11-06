@@ -2,7 +2,7 @@
 // Use of this source code is governed by a BSD-style
 // license that can be found in the LICENSE file.
 
-package lexer
+package lexer // import "modernc.org/lexer"
 
 import (
 	"bufio"
@@ -319,7 +319,7 @@ func TestDevParse(t *testing.T) {
 	t.Log(nfa)
 }
 
-// https://github.com/cznic/golex/issues/1
+// https://gitlab.com/cznic/golex/issues/1
 func TestBug1(t *testing.T) {
 	data := []string{
 		`[ \-\*]`,
