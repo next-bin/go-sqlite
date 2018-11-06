@@ -2,7 +2,7 @@
 // Use of this source code is governed by a BSD-style
 // license that can be found in the LICENSE file.
 
-package irgo
+package irgo // import "modernc.org/irgo"
 
 //TODO var x[n]T; (*T)(unsafe.Pointer(&x)) -> &x[0]
 
@@ -12,9 +12,9 @@ import (
 	"reflect"
 	"sort"
 
-	"github.com/cznic/ir"
-	"github.com/cznic/sortutil"
-	"github.com/cznic/strutil"
+	"modernc.org/ir"
+	"modernc.org/sortutil"
+	"modernc.org/strutil"
 )
 
 var (
@@ -73,7 +73,7 @@ func (s stackItem) String() string {
 
 type stack []stackItem
 
-func (s stack) pop() stack              { return s[:len(s)-1 : len(s)-1] }
+func (s stack) pop() stack              { return s[: len(s)-1 : len(s)-1] }
 func (s stack) push(v stackItem) stack  { return append(s[:len(s):len(s)], v) }
 func (s stack) pushT(t ir.TypeID) stack { return append(s[:len(s):len(s)], stackItem{TypeID: t}) }
 func (s stack) tos() stackItem          { return s[len(s)-1] }

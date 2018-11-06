@@ -6,7 +6,7 @@
 
 //TODO P2U(U2P(x))
 
-package irgo
+package irgo // import "modernc.org/irgo"
 
 import (
 	"go/ast"

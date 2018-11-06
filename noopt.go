@@ -4,7 +4,7 @@
 
 // +build irgo.noopt
 
-package irgo
+package irgo // import "modernc.org/irgo"
 
 import (
 	"go/format"

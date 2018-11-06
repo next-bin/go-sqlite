@@ -3,7 +3,7 @@
 // license that can be found in the LICENSE file.
 
 // Package irgo translates intermediate representations to Go. (Work In Progress)
-package irgo
+package irgo // import "modernc.org/irgo"
 
 import (
 	"bytes"
@@ -21,10 +21,10 @@ import (
 	"strings"
 	"unsafe"
 
-	"github.com/cznic/internal/buffer"
-	"github.com/cznic/ir"
-	"github.com/cznic/mathutil"
-	"github.com/cznic/xc"
+	"modernc.org/internal/buffer"
+	"modernc.org/ir"
+	"modernc.org/mathutil"
+	"modernc.org/xc"
 )
 
 const (
@@ -963,7 +963,7 @@ func (g *gen) int32(n *exprNode) {
 	case uint16:
 		g.w("int32(%v)", int32(x))
 	case int32:
-		g.w("int32(%v)", int32(x))
+		g.w("int32(%v)", x)
 	case uint32:
 		g.w("int32(%v)", int32(x))
 	case int64:
@@ -1001,7 +1001,7 @@ func (g *gen) int64(n *exprNode) {
 	case uint32:
 		g.w("int64(%v)", int64(x))
 	case int64:
-		g.w("int64(%v)", int64(x))
+		g.w("int64(%v)", x)
 	case uint64:
 		g.w("int64(%v)", int64(x))
 	default:
