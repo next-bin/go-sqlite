@@ -12,15 +12,15 @@
 //
 // Installation
 //
-//     $ go get github.com/cznic/crt
+//     $ go get modernc.org/crt
 //
-// Documentation: http://godoc.org/github.com/cznic/crt
+// Documentation: http://godoc.org/modernc.org/crt
 //
 // The vast majority of this package is a mechanical translation of the musl
 // libc project:
 //
 //	https://www.musl-libc.org/
-package crt
+package crt // import "modernc.org/crt"
 
 import (
 	"fmt"
@@ -35,9 +35,9 @@ import (
 	"sync/atomic"
 	"unsafe"
 
-	"github.com/cznic/internal/buffer" //TODO-
-	"github.com/cznic/memory"
-	"github.com/cznic/strutil"
+	"modernc.org/internal/buffer" //TODO-
+	"modernc.org/memory"
+	"modernc.org/strutil"
 )
 
 var (
