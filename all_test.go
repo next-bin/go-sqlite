@@ -2,7 +2,7 @@
 // Use of this source code is governed by a BSD-style
 // license that can be found in the LICENSE file.
 
-package sortutil
+package sortutil // import "modernc.org/sortutil"
 
 import (
 	"fmt"
@@ -14,7 +14,7 @@ import (
 	"strings"
 	"testing"
 
-	"github.com/cznic/mathutil"
+	"modernc.org/mathutil"
 )
 
 func dbg(s string, va ...interface{}) {
