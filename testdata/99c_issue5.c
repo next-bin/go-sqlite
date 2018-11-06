@@ -26,7 +26,7 @@ static void BoundaryPM(Node * (*lists)[2], int index)
 }
 
 int main()
-{				// https://github.com/cznic/99c/issues/5
+{				// https://gitlab.com/cznic/99c/issues/5
 	Node n;
 	n.count = 12345678;
 	Node *a[2];

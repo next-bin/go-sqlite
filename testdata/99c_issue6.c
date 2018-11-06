@@ -24,7 +24,7 @@ static void BoundaryPM(Node * (*lists)[2])
 }
 
 int main()
-{				// https://github.com/cznic/99c/issues/6
+{				// https://gitlab.com/cznic/99c/issues/6
 	Node *(*lists)[2];
 	lists = (Node * (*)[2]) malloc(42 * sizeof(*lists));
 	foo(lists);

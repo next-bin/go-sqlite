@@ -1,8 +1,8 @@
 # ccir
-Package ccir translates [cc](https://github.com/cznic/cc) ASTs to internal representation. (Work In Progress)
+Package ccir translates [cc](https://modernc.org/cc) ASTs to internal representation. (Work In Progress)
 
 Installation
 
-    $ go get github.com/cznic/ccir
+    $ go get modernc.org/ccir
 
-Documentation: [godoc.org/github.com/cznic/ccir](http://godoc.org/github.com/cznic/ccir)
+Documentation: [godoc.org/modernc.org/ccir](http://godoc.org/modernc.org/ccir)
