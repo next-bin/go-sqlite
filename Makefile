@@ -16,7 +16,7 @@ all: editor
 	gosimple || true
 	#maligned || true
 	unconvert -apply
-	go install -v github.com/cznic/ccgo/v2/...
+	go install -v modernc.org/ccgo/v2/...
 
 clean:
 	go clean
