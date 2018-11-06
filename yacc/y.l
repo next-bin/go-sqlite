@@ -8,7 +8,7 @@
 package parser
 
 import (
-	"github.com/cznic/golex/lex"
+	"modernc.org/golex/lex"
 )
 
 func (l *lexer) scan() lex.Char {
