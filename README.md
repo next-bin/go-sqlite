@@ -1,9 +1,9 @@
 # irgo
 
-Package irgo translates [internal representations](https://github.com/cznic/ir) to Go. (Work In Progress)
+Package irgo translates [internal representations](https://modernc.org/ir) to Go. (Work In Progress)
 
 Installation
 
-    $ go get github.com/cznic/irgo
+    $ go get modernc.org/irgo
 
-Documentation: [godoc.org/github.com/cznic/irgo](http://godoc.org/github.com/cznic/irgo)
+Documentation: [godoc.org/modernc.org/irgo](http://godoc.org/modernc.org/irgo)
