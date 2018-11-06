@@ -4,7 +4,7 @@
 
 // Package token is variant of the stdlib package token with types FileSet and
 // Token removed.
-package token
+package token // import "modernc.org/token"
 
 import (
 	"fmt"
