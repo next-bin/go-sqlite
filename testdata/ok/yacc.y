@@ -23,8 +23,8 @@ import (
 	"go/token"
 	"strings"
 
-	"github.com/cznic/scanner/yacc"
-	"github.com/cznic/strutil"
+	"modernc.org/scanner/yacc"
+	"modernc.org/strutil"
 )
 
 %}
@@ -420,7 +420,7 @@ type Prec struct {
 type Act struct{
 	token.Pos
 	Src string
-	Tok scanner.Token       // github.com/cznic/scanner/yacc.DLR_* or zero
+	Tok scanner.Token       // modernc.org/scanner/yacc.DLR_* or zero
 	Tag string              // DLR_TAG_*
 	Num int                 // DLR_NUM, DLR_TAG_NUM
 }
