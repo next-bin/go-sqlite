@@ -2,7 +2,7 @@
 
 // +build linux,amd64
 
-package crt // import "modernc.org/crt"
+package crt
 
 import (
 	"math"

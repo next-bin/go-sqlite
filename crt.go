@@ -325,7 +325,7 @@ func a_dec(p uintptr) {
 
 //static inline int a_fetch_add(volatile int *p, int v)
 func a_fetch_add(p uintptr, v int32) int32 {
-	return atomic.AddInt32((*int32)(unsafe.Pointer(p)), v)
+	return atomic.AddInt32((*int32)(unsafe.Pointer(p)), v) - v
 }
 
 // Realloc reallocates memory.
