@@ -124,23 +124,6 @@ static inline void a_crash()
 	__GO__("panic(`hlt`)\n");
 }
 
-#define a_ctz_32 a_ctz_32
-static inline int a_ctz_32(uint32_t x)
-{
-	__assert_fail("TODO(ccgo)", __FILE__, __LINE__, __func__);
-	// int r;
-	// __asm__( "bsf %1,%0" : "=r"(r) : "r"(x) );
-	// return r;
-}
-
-#define a_clz_32 a_clz_32
-static inline int a_clz_32(uint32_t x)
-{
-	__assert_fail("TODO(ccgo)", __FILE__, __LINE__, __func__);
-	// __asm__( "bsr %1,%0 ; xor $31,%0" : "=r"(x) : "r"(x) );
-	// return x;
-}
-
 #define a_clz_64 a_clz_64
 static inline int a_clz_64(uint64_t x)
 {
