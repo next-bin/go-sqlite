@@ -186,6 +186,8 @@ func VAuintptr(ap uintptr) (v uintptr) {
 	switch x := s[0].(type) {
 	case int32:
 		v = uintptr(x)
+	case uint32:
+		v = uintptr(x)
 	case uintptr:
 		v = x
 	default:

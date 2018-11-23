@@ -39,7 +39,7 @@ editor:
 	unconvert -apply
 	gofmt -l -s -w *.go
 
-	#TODO GOOS=linux GOARCH=386 go build 2>&1 | tee -a log
+	GOOS=linux GOARCH=386 go build 2>&1 | tee -a log
 	GOOS=linux GOARCH=amd64 go build 2>&1 | tee -a log
 	#TODO GOOS=linux GOARCH=arm go build 2>&1 | tee log
 	#TODO GOOS=windows GOARCH=386 go build 2>&1 | tee -a log

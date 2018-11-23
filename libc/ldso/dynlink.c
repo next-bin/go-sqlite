@@ -1309,6 +1309,7 @@ void __libc_exit_fini()
 
 static void do_init_fini(struct dso *p)
 {
+	return; //TODO(ccgo)
 	size_t dyn[DYN_CNT];
 	int need_locking = libc.threads_minus_1;
 	/* Allow recursive calls that arise when a library calls
@@ -1784,112 +1785,113 @@ static void prepare_lazy(struct dso *p)
 
 void *dlopen(const char *file, int mode)
 {
-	struct dso *volatile p, *orig_tail, *orig_syms_tail, *orig_lazy_head, *next;
-	struct tls_module *orig_tls_tail;
-	size_t orig_tls_cnt, orig_tls_offset, orig_tls_align;
-	size_t i;
-	int cs;
-	jmp_buf jb;
-
-	if (!file) return head;
-
-	pthread_setcancelstate(PTHREAD_CANCEL_DISABLE, &cs);
-	pthread_rwlock_wrlock(&lock);
-	__inhibit_ptc();
-
-	p = 0;
-	orig_tls_tail = tls_tail;
-	orig_tls_cnt = tls_cnt;
-	orig_tls_offset = tls_offset;
-	orig_tls_align = tls_align;
-	orig_lazy_head = lazy_head;
-	orig_syms_tail = syms_tail;
-	orig_tail = tail;
-	noload = mode & RTLD_NOLOAD;
-
-	rtld_fail = &jb;
-	if (setjmp(*rtld_fail)) {
-		/* Clean up anything new that was (partially) loaded */
-		revert_syms(orig_syms_tail);
-		for (p=orig_tail->next; p; p=next) {
-			next = p->next;
-			while (p->td_index) {
-				void *tmp = p->td_index->next;
-				free(p->td_index);
-				p->td_index = tmp;
-			}
-			free(p->funcdescs);
-			if (p->rpath != p->rpath_orig)
-				free(p->rpath);
-			if (p->deps != &nodeps_dummy)
-				free(p->deps);
-			unmap_library(p);
-			free(p);
-		}
-		if (!orig_tls_tail) libc.tls_head = 0;
-		tls_tail = orig_tls_tail;
-		if (tls_tail) tls_tail->next = 0;
-		tls_cnt = orig_tls_cnt;
-		tls_offset = orig_tls_offset;
-		tls_align = orig_tls_align;
-		lazy_head = orig_lazy_head;
-		tail = orig_tail;
-		tail->next = 0;
-		p = 0;
-		goto end;
-	} else p = load_library(file, head);
-
-	if (!p) {
-		error(noload ?
-			"Library %s is not already loaded" :
-			"Error loading shared library %s: %m",
-			file);
-		goto end;
-	}
-
-	/* First load handling */
-	int first_load = !p->deps;
-	if (first_load) {
-		load_deps(p);
-		if (!p->relocated && (mode & RTLD_LAZY)) {
-			prepare_lazy(p);
-			for (i=0; p->deps[i]; i++)
-				if (!p->deps[i]->relocated)
-					prepare_lazy(p->deps[i]);
-		}
-	}
-	if (first_load || (mode & RTLD_GLOBAL)) {
-		/* Make new symbols global, at least temporarily, so we can do
-		 * relocations. If not RTLD_GLOBAL, this is reverted below. */
-		add_syms(p);
-		for (i=0; p->deps[i]; i++)
-			add_syms(p->deps[i]);
-	}
-	if (first_load) {
-		reloc_all(p);
-	}
-
-	/* If RTLD_GLOBAL was not specified, undo any new additions
-	 * to the global symbol table. This is a nop if the library was
-	 * previously loaded and already global. */
-	if (!(mode & RTLD_GLOBAL))
-		revert_syms(orig_syms_tail);
-
-	/* Processing of deferred lazy relocations must not happen until
-	 * the new libraries are committed; otherwise we could end up with
-	 * relocations resolved to symbol definitions that get removed. */
-	redo_lazy_relocs();
-
-	update_tls_size();
-	_dl_debug_state();
-	orig_tail = tail;
-end:
-	__release_ptc();
-	if (p) gencnt++;
-	pthread_rwlock_unlock(&lock);
-	if (p) do_init_fini(orig_tail);
-	pthread_setcancelstate(cs, 0);
-	return p;
+	__assert_fail("TODO(ccgo)", __FILE__, __LINE__, __func__);
+//TODO(ccgo)		struct dso *volatile p, *orig_tail, *orig_syms_tail, *orig_lazy_head, *next;
+//TODO(ccgo)		struct tls_module *orig_tls_tail;
+//TODO(ccgo)		size_t orig_tls_cnt, orig_tls_offset, orig_tls_align;
+//TODO(ccgo)		size_t i;
+//TODO(ccgo)		int cs;
+//TODO(ccgo)		jmp_buf jb;
+//TODO(ccgo)	
+//TODO(ccgo)		if (!file) return head;
+//TODO(ccgo)	
+//TODO(ccgo)		pthread_setcancelstate(PTHREAD_CANCEL_DISABLE, &cs);
+//TODO(ccgo)		pthread_rwlock_wrlock(&lock);
+//TODO(ccgo)		__inhibit_ptc();
+//TODO(ccgo)	
+//TODO(ccgo)		p = 0;
+//TODO(ccgo)		orig_tls_tail = tls_tail;
+//TODO(ccgo)		orig_tls_cnt = tls_cnt;
+//TODO(ccgo)		orig_tls_offset = tls_offset;
+//TODO(ccgo)		orig_tls_align = tls_align;
+//TODO(ccgo)		orig_lazy_head = lazy_head;
+//TODO(ccgo)		orig_syms_tail = syms_tail;
+//TODO(ccgo)		orig_tail = tail;
+//TODO(ccgo)		noload = mode & RTLD_NOLOAD;
+//TODO(ccgo)	
+//TODO(ccgo)		rtld_fail = &jb;
+//TODO(ccgo)		if (setjmp(*rtld_fail)) {
+//TODO(ccgo)			/* Clean up anything new that was (partially) loaded */
+//TODO(ccgo)			revert_syms(orig_syms_tail);
+//TODO(ccgo)			for (p=orig_tail->next; p; p=next) {
+//TODO(ccgo)				next = p->next;
+//TODO(ccgo)				while (p->td_index) {
+//TODO(ccgo)					void *tmp = p->td_index->next;
+//TODO(ccgo)					free(p->td_index);
+//TODO(ccgo)					p->td_index = tmp;
+//TODO(ccgo)				}
+//TODO(ccgo)				free(p->funcdescs);
+//TODO(ccgo)				if (p->rpath != p->rpath_orig)
+//TODO(ccgo)					free(p->rpath);
+//TODO(ccgo)				if (p->deps != &nodeps_dummy)
+//TODO(ccgo)					free(p->deps);
+//TODO(ccgo)				unmap_library(p);
+//TODO(ccgo)				free(p);
+//TODO(ccgo)			}
+//TODO(ccgo)			if (!orig_tls_tail) libc.tls_head = 0;
+//TODO(ccgo)			tls_tail = orig_tls_tail;
+//TODO(ccgo)			if (tls_tail) tls_tail->next = 0;
+//TODO(ccgo)			tls_cnt = orig_tls_cnt;
+//TODO(ccgo)			tls_offset = orig_tls_offset;
+//TODO(ccgo)			tls_align = orig_tls_align;
+//TODO(ccgo)			lazy_head = orig_lazy_head;
+//TODO(ccgo)			tail = orig_tail;
+//TODO(ccgo)			tail->next = 0;
+//TODO(ccgo)			p = 0;
+//TODO(ccgo)			goto end;
+//TODO(ccgo)		} else p = load_library(file, head);
+//TODO(ccgo)	
+//TODO(ccgo)		if (!p) {
+//TODO(ccgo)			error(noload ?
+//TODO(ccgo)				"Library %s is not already loaded" :
+//TODO(ccgo)				"Error loading shared library %s: %m",
+//TODO(ccgo)				file);
+//TODO(ccgo)			goto end;
+//TODO(ccgo)		}
+//TODO(ccgo)	
+//TODO(ccgo)		/* First load handling */
+//TODO(ccgo)		int first_load = !p->deps;
+//TODO(ccgo)		if (first_load) {
+//TODO(ccgo)			load_deps(p);
+//TODO(ccgo)			if (!p->relocated && (mode & RTLD_LAZY)) {
+//TODO(ccgo)				prepare_lazy(p);
+//TODO(ccgo)				for (i=0; p->deps[i]; i++)
+//TODO(ccgo)					if (!p->deps[i]->relocated)
+//TODO(ccgo)						prepare_lazy(p->deps[i]);
+//TODO(ccgo)			}
+//TODO(ccgo)		}
+//TODO(ccgo)		if (first_load || (mode & RTLD_GLOBAL)) {
+//TODO(ccgo)			/* Make new symbols global, at least temporarily, so we can do
+//TODO(ccgo)			 * relocations. If not RTLD_GLOBAL, this is reverted below. */
+//TODO(ccgo)			add_syms(p);
+//TODO(ccgo)			for (i=0; p->deps[i]; i++)
+//TODO(ccgo)				add_syms(p->deps[i]);
+//TODO(ccgo)		}
+//TODO(ccgo)		if (first_load) {
+//TODO(ccgo)			reloc_all(p);
+//TODO(ccgo)		}
+//TODO(ccgo)	
+//TODO(ccgo)		/* If RTLD_GLOBAL was not specified, undo any new additions
+//TODO(ccgo)		 * to the global symbol table. This is a nop if the library was
+//TODO(ccgo)		 * previously loaded and already global. */
+//TODO(ccgo)		if (!(mode & RTLD_GLOBAL))
+//TODO(ccgo)			revert_syms(orig_syms_tail);
+//TODO(ccgo)	
+//TODO(ccgo)		/* Processing of deferred lazy relocations must not happen until
+//TODO(ccgo)		 * the new libraries are committed; otherwise we could end up with
+//TODO(ccgo)		 * relocations resolved to symbol definitions that get removed. */
+//TODO(ccgo)		redo_lazy_relocs();
+//TODO(ccgo)	
+//TODO(ccgo)		update_tls_size();
+//TODO(ccgo)		_dl_debug_state();
+//TODO(ccgo)		orig_tail = tail;
+//TODO(ccgo)	end:
+//TODO(ccgo)		__release_ptc();
+//TODO(ccgo)		if (p) gencnt++;
+//TODO(ccgo)		pthread_rwlock_unlock(&lock);
+//TODO(ccgo)		if (p) do_init_fini(orig_tail);
+//TODO(ccgo)		pthread_setcancelstate(cs, 0);
+//TODO(ccgo)		return p;
 }
 
 __attribute__((__visibility__("hidden")))

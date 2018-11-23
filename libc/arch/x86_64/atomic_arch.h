@@ -43,10 +43,10 @@ static inline int a_fetch_add(volatile int *p, int v)
 #define a_and a_and
 static inline void a_and(volatile int *p, int v)
 {
-	__assert_fail("TODO(ccgo)", __FILE__, __LINE__, __func__);
 	// __asm__ __volatile__(
 	// 	"lock ; and %1, %0"
 	// 	: "=m"(*p) : "r"(v) : "memory" );
+	__GO__("a_and(_p, _v)\n");
 }
 
 #define a_or a_or
@@ -122,18 +122,6 @@ static inline void a_crash()
 {
 	// __asm__ __volatile__( "hlt" : : : "memory" );
 	__GO__("panic(`hlt`)\n");
-}
-
-#define a_ctz_64 a_ctz_64
-static inline int a_ctz_64(uint64_t x)
-{
-	// __asm__( "bsf %1,%0" : "=r"(x) : "r"(x) );
-	// return x;
-	__GO__(
-		"for ; r < 64 && _x&(1<<uint(r)) == 0; r++ {\n"
-		"}\n"
-		"return r\n"
-	);
 }
 
 #define a_clz_64 a_clz_64

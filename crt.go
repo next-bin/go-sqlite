@@ -306,10 +306,24 @@ func a_or_64(p uintptr, v uint64) {
 	globalMutex.Unlock()
 }
 
+// static inline void a_and(volatile int *p, int v)
+func a_and(p uintptr, v int32) {
+	globalMutex.Lock()
+	*(*int32)(unsafe.Pointer(p)) &= v
+	globalMutex.Unlock()
+}
+
 //static inline void a_and_64(volatile uint64_t *p, uint64_t v)
 func a_and_64(p uintptr, v uint64) {
 	globalMutex.Lock()
 	*(*uint64)(unsafe.Pointer(p)) &= v
+	globalMutex.Unlock()
+}
+
+//static inline void a_or(volatile int *p, int v)
+func a_or(p uintptr, v int32) {
+	globalMutex.Lock()
+	*(*int32)(unsafe.Pointer(p)) |= v
 	globalMutex.Unlock()
 }
 
@@ -381,7 +395,7 @@ func WatchPtr(tls TLS, s string, p uintptr) {
 
 	v := *(*uintptr)(unsafe.Pointer(p))
 	watches[p] = &ptrwatch{s, v}
-	watching(tls, []string{fmt.Sprintf("%q @ %#x is initially %#x)", s, p, v)})
+	watching(tls, []string{fmt.Sprintf("%q @ %#x is initially %#x", s, p, v)})
 }
 
 func WatchInt16(tls TLS, s string, p uintptr) {
@@ -509,15 +523,17 @@ func File(fd uintptr) *os.File {
 	return f
 }
 
+var (
+	logBuf  [1 << 10]byte
+	logBufp = uintptr(unsafe.Pointer(&logBuf))
+)
+
 func X__log(tls TLS, format uintptr, args ...interface{}) {
-	const sz = 1 << 10
 	if !logging {
 		return
 	}
-	buf := Xmalloc(tls, sz)
-	defer Xfree(tls, buf)
 	ap := X__builtin_va_start(tls, args)
-	n := Xvsnprintf(tls, buf, sz, format, ap)
-	Log("%s", GoStringLen(buf, int(n)))
+	n := Xvsnprintf(tls, logBufp, size_t(len(logBuf)-1), format, ap)
+	Log("%s", GoStringLen(logBufp, int(n)))
 	X__builtin_va_end(tls, ap)
 }
