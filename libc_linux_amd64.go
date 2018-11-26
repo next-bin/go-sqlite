@@ -16716,12 +16716,11 @@ func Xsetlocale(tls TLS, _cat int32, _name uintptr /* *int8 */) (r uintptr /* *i
 		return null
 	}
 	X__lock(tls, x676lock)
-	if (((_cat == int32(6)) || (_cat == int32(0))) && (_name != 0)) && (*(*int8)(unsafe.Pointer(_name)) != 0) {
-		currentLocale = GoString(_name)
+	if ((_cat == int32(6)) || (_cat == int32(0))) && (_name != 0) {
+		setCurrentLocale(GoString(_name))
 	}
 	if _cat == int32(6) {
 		if _name != 0 {
-			currentLocale = GoString(_name)
 			*(*[24]int8)(unsafe.Pointer(_part)) = *(*[24]int8)(unsafe.Pointer(ts + 1728 /* "C.UTF-8\x00\x00\x00\x00\x00\x00\x00\x00\x00..." */))
 			_p = _name
 			for _i = int32(0); _i < int32(6); _i++ {

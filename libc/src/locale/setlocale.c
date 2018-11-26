@@ -27,8 +27,8 @@ char *setlocale(int cat, const char *name)
 
 	LOCK(lock);
 
-	if ((cat == LC_ALL || cat == LC_CTYPE) && name && *name) {
-		__GO__("currentLocale = GoString(_name)\n");
+	if ((cat == LC_ALL || cat == LC_CTYPE) && name) {
+		__GO__("setCurrentLocale(GoString(_name))\n");
 	}
 	/* For LC_ALL, setlocale is required to return a string which
 	 * encodes the current setting for all categories. The format of
@@ -38,7 +38,6 @@ char *setlocale(int cat, const char *name)
 	if (cat == LC_ALL) {
 		int i;
 		if (name) {
-			__GO__("currentLocale = GoString(_name)\n");
 			char part[LOCALE_NAME_MAX+1] = "C.UTF-8";
 			const char *p = name;
 			for (i=0; i<LC_ALL; i++) {

@@ -541,11 +541,7 @@ func X__log(tls TLS, format uintptr, args ...interface{}) {
 // ctype
 
 func Xisalnum(tls TLS, c int32) (r int32) {
-	if c < 0 || c > 255 {
-		return 0
-	}
-
-	if ctype[currentLocale][byte(c)]&isalnum != 0 {
+	if c >= 0 && currentLocale[byte(c)]&isalnum != 0 {
 		return 1
 	}
 
@@ -553,11 +549,7 @@ func Xisalnum(tls TLS, c int32) (r int32) {
 }
 
 func Xisalpha(tls TLS, c int32) (r int32) {
-	if c < 0 || c > 255 {
-		return 0
-	}
-
-	if ctype[currentLocale][byte(c)]&isalpha != 0 {
+	if c >= 0 && currentLocale[byte(c)]&isalpha != 0 {
 		return 1
 	}
 
@@ -565,11 +557,7 @@ func Xisalpha(tls TLS, c int32) (r int32) {
 }
 
 func Xisblank(tls TLS, c int32) (r int32) {
-	if c < 0 || c > 255 {
-		return 0
-	}
-
-	if ctype[currentLocale][byte(c)]&isblank != 0 {
+	if c >= 0 && currentLocale[byte(c)]&isblank != 0 {
 		return 1
 	}
 
@@ -577,11 +565,7 @@ func Xisblank(tls TLS, c int32) (r int32) {
 }
 
 func Xiscntrl(tls TLS, c int32) (r int32) {
-	if c < 0 || c > 255 {
-		return 0
-	}
-
-	if ctype[currentLocale][byte(c)]&iscntrl != 0 {
+	if c >= 0 && currentLocale[byte(c)]&iscntrl != 0 {
 		return 1
 	}
 
@@ -589,11 +573,7 @@ func Xiscntrl(tls TLS, c int32) (r int32) {
 }
 
 func Xisdigit(tls TLS, c int32) (r int32) {
-	if c < 0 || c > 255 {
-		return 0
-	}
-
-	if ctype[currentLocale][byte(c)]&isdigit != 0 {
+	if c >= 0 && currentLocale[byte(c)]&isdigit != 0 {
 		return 1
 	}
 
@@ -601,11 +581,7 @@ func Xisdigit(tls TLS, c int32) (r int32) {
 }
 
 func Xisgraph(tls TLS, c int32) (r int32) {
-	if c < 0 || c > 255 {
-		return 0
-	}
-
-	if ctype[currentLocale][byte(c)]&isgraph != 0 {
+	if c >= 0 && currentLocale[byte(c)]&isgraph != 0 {
 		return 1
 	}
 
@@ -613,11 +589,7 @@ func Xisgraph(tls TLS, c int32) (r int32) {
 }
 
 func Xislower(tls TLS, c int32) (r int32) {
-	if c < 0 || c > 255 {
-		return 0
-	}
-
-	if ctype[currentLocale][byte(c)]&islower != 0 {
+	if c >= 0 && currentLocale[byte(c)]&islower != 0 {
 		return 1
 	}
 
@@ -627,11 +599,7 @@ func Xislower(tls TLS, c int32) (r int32) {
 func X__builtin_isprint(tls TLS, c int32) (r int32) { return Xisprint(tls, c) }
 
 func Xisprint(tls TLS, c int32) (r int32) {
-	if c < 0 || c > 255 {
-		return 0
-	}
-
-	if ctype[currentLocale][byte(c)]&isprint != 0 {
+	if c >= 0 && currentLocale[byte(c)]&isprint != 0 {
 		return 1
 	}
 
@@ -639,11 +607,7 @@ func Xisprint(tls TLS, c int32) (r int32) {
 }
 
 func Xispunct(tls TLS, c int32) (r int32) {
-	if c < 0 || c > 255 {
-		return 0
-	}
-
-	if ctype[currentLocale][byte(c)]&ispunct != 0 {
+	if c >= 0 && currentLocale[byte(c)]&ispunct != 0 {
 		return 1
 	}
 
@@ -651,11 +615,7 @@ func Xispunct(tls TLS, c int32) (r int32) {
 }
 
 func Xisspace(tls TLS, c int32) (r int32) {
-	if c < 0 || c > 255 {
-		return 0
-	}
-
-	if ctype[currentLocale][byte(c)]&isspace != 0 {
+	if c >= 0 && currentLocale[byte(c)]&isspace != 0 {
 		return 1
 	}
 
@@ -663,11 +623,7 @@ func Xisspace(tls TLS, c int32) (r int32) {
 }
 
 func Xisupper(tls TLS, c int32) (r int32) {
-	if c < 0 || c > 255 {
-		return 0
-	}
-
-	if ctype[currentLocale][byte(c)]&isupper != 0 {
+	if c >= 0 && currentLocale[byte(c)]&isupper != 0 {
 		return 1
 	}
 
@@ -675,13 +631,19 @@ func Xisupper(tls TLS, c int32) (r int32) {
 }
 
 func Xisxdigit(tls TLS, c int32) (r int32) {
-	if c < 0 || c > 255 {
-		return 0
-	}
-
-	if ctype[currentLocale][byte(c)]&isxdigit != 0 {
+	if c >= 0 && currentLocale[byte(c)]&isxdigit != 0 {
 		return 1
 	}
 
 	return 0
+}
+
+func setCurrentLocale(s string) {
+	switch s {
+	case "", "POSIX":
+		s = "C"
+	}
+	if p := ctype[s]; p != nil {
+		currentLocale = p
+	}
 }
