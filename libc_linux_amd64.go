@@ -6743,7 +6743,7 @@ func xsha256crypt(tls TLS, _key uintptr /* *int8 */, _setting uintptr /* *int8 *
 	_r = uint32(5000)
 	if Xstrncmp(tls, _salt, ts+480 /* "rounds=" */, uint64(7)) == int32(0) {
 		_salt += uintptr(7)
-		if !(uint32(*(*int8)(unsafe.Pointer(_salt)))-uint32('0') < uint32(10)) {
+		if Xisdigit(tls, int32(*(*int8)(unsafe.Pointer(_salt)))) == 0 {
 			return null
 		}
 		_u = Xstrtoul(tls, _salt, _end, int32(10))
@@ -7088,7 +7088,7 @@ func xsha512crypt(tls TLS, _key uintptr /* *int8 */, _setting uintptr /* *int8 *
 	_r = uint32(5000)
 	if Xstrncmp(tls, _salt, ts+480 /* "rounds=" */, uint64(7)) == int32(0) {
 		_salt += uintptr(7)
-		if !(uint32(*(*int8)(unsafe.Pointer(_salt)))-uint32('0') < uint32(10)) {
+		if Xisdigit(tls, int32(*(*int8)(unsafe.Pointer(_salt)))) == 0 {
 			return null
 		}
 		_u = Xstrtoul(tls, _salt, _end, int32(10))
@@ -7603,31 +7603,7 @@ type t5int32_t = int32
 
 // linking isalnum.o
 
-// Xisalnum is defined at isalnum.c:4:5
-func Xisalnum(tls TLS, _c int32) (r int32) {
-	return bool2int((uint32(_c)|uint32(32)-uint32('a') < uint32(26)) || (uint32(_c)-uint32('0') < uint32(10)))
-}
-
-// X__isalnum_l is defined at isalnum.c:9:5
-func X__isalnum_l(tls TLS, _c int32, _l uintptr /* Tlocale_t = *S__locale_struct */) (r int32) {
-	return Xisalnum(tls, _c)
-}
-
-type s4__locale_struct = struct{ Fcat [6]uintptr }
-
 // linking isalpha.o
-
-// Xisalpha is defined at isalpha.c:5:5
-func Xisalpha(tls TLS, _c int32) (r int32) {
-	return bool2int(uint32(_c)|uint32(32)-uint32('a') < uint32(26))
-}
-
-// X__isalpha_l is defined at isalpha.c:10:5
-func X__isalpha_l(tls TLS, _c int32, _l uintptr /* Tlocale_t = *S__locale_struct */) (r int32) {
-	return Xisalpha(tls, _c)
-}
-
-type s5__locale_struct = struct{ Fcat [6]uintptr }
 
 // linking isascii.o
 
@@ -7638,129 +7614,21 @@ func Xisascii(tls TLS, _c int32) (r int32) {
 
 // linking isblank.o
 
-// Xisblank is defined at isblank.c:4:5
-func Xisblank(tls TLS, _c int32) (r int32) {
-	return bool2int((_c == int32(' ')) || (_c == int32('\t')))
-}
-
-// X__isblank_l is defined at isblank.c:9:5
-func X__isblank_l(tls TLS, _c int32, _l uintptr /* Tlocale_t = *S__locale_struct */) (r int32) {
-	return Xisblank(tls, _c)
-}
-
-type s6__locale_struct = struct{ Fcat [6]uintptr }
-
 // linking iscntrl.o
-
-// Xiscntrl is defined at iscntrl.c:4:5
-func Xiscntrl(tls TLS, _c int32) (r int32) {
-	return bool2int((uint32(_c) < uint32(0x20)) || (_c == int32(0x7f)))
-}
-
-// X__iscntrl_l is defined at iscntrl.c:9:5
-func X__iscntrl_l(tls TLS, _c int32, _l uintptr /* Tlocale_t = *S__locale_struct */) (r int32) {
-	return Xiscntrl(tls, _c)
-}
-
-type s7__locale_struct = struct{ Fcat [6]uintptr }
 
 // linking isdigit.o
 
-// Xisdigit is defined at isdigit.c:5:5
-func Xisdigit(tls TLS, _c int32) (r int32) {
-	return bool2int(uint32(_c)-uint32('0') < uint32(10))
-}
-
-// X__isdigit_l is defined at isdigit.c:10:5
-func X__isdigit_l(tls TLS, _c int32, _l uintptr /* Tlocale_t = *S__locale_struct */) (r int32) {
-	return Xisdigit(tls, _c)
-}
-
-type s8__locale_struct = struct{ Fcat [6]uintptr }
-
 // linking isgraph.o
-
-// Xisgraph is defined at isgraph.c:5:5
-func Xisgraph(tls TLS, _c int32) (r int32) {
-	return bool2int(uint32(_c)-uint32(0x21) < uint32(0x5e))
-}
-
-// X__isgraph_l is defined at isgraph.c:10:5
-func X__isgraph_l(tls TLS, _c int32, _l uintptr /* Tlocale_t = *S__locale_struct */) (r int32) {
-	return Xisgraph(tls, _c)
-}
-
-type s9__locale_struct = struct{ Fcat [6]uintptr }
 
 // linking islower.o
 
-// Xislower is defined at islower.c:5:5
-func Xislower(tls TLS, _c int32) (r int32) {
-	return bool2int(uint32(_c)-uint32('a') < uint32(26))
-}
-
-// X__islower_l is defined at islower.c:10:5
-func X__islower_l(tls TLS, _c int32, _l uintptr /* Tlocale_t = *S__locale_struct */) (r int32) {
-	return Xislower(tls, _c)
-}
-
-type s10__locale_struct = struct{ Fcat [6]uintptr }
-
 // linking isprint.o
-
-// Xisprint is defined at isprint.c:5:5
-func Xisprint(tls TLS, _c int32) (r int32) {
-	return bool2int(uint32(_c)-uint32(0x20) < uint32(0x5f))
-}
-
-// X__isprint_l is defined at isprint.c:10:5
-func X__isprint_l(tls TLS, _c int32, _l uintptr /* Tlocale_t = *S__locale_struct */) (r int32) {
-	return Xisprint(tls, _c)
-}
-
-type s11__locale_struct = struct{ Fcat [6]uintptr }
 
 // linking ispunct.o
 
-// Xispunct is defined at ispunct.c:4:5
-func Xispunct(tls TLS, _c int32) (r int32) {
-	return bool2int((uint32(_c)-uint32(0x21) < uint32(0x5e)) && (Xisalnum(tls, _c) == 0))
-}
-
-// X__ispunct_l is defined at ispunct.c:9:5
-func X__ispunct_l(tls TLS, _c int32, _l uintptr /* Tlocale_t = *S__locale_struct */) (r int32) {
-	return Xispunct(tls, _c)
-}
-
-type s12__locale_struct = struct{ Fcat [6]uintptr }
-
 // linking isspace.o
 
-// Xisspace is defined at isspace.c:5:5
-func Xisspace(tls TLS, _c int32) (r int32) {
-	return bool2int((_c == int32(' ')) || (uint32(_c)-uint32('\t') < uint32(5)))
-}
-
-// X__isspace_l is defined at isspace.c:10:5
-func X__isspace_l(tls TLS, _c int32, _l uintptr /* Tlocale_t = *S__locale_struct */) (r int32) {
-	return Xisspace(tls, _c)
-}
-
-type s13__locale_struct = struct{ Fcat [6]uintptr }
-
 // linking isupper.o
-
-// Xisupper is defined at isupper.c:5:5
-func Xisupper(tls TLS, _c int32) (r int32) {
-	return bool2int(uint32(_c)-uint32('A') < uint32(26))
-}
-
-// X__isupper_l is defined at isupper.c:10:5
-func X__isupper_l(tls TLS, _c int32, _l uintptr /* Tlocale_t = *S__locale_struct */) (r int32) {
-	return Xisupper(tls, _c)
-}
-
-type s14__locale_struct = struct{ Fcat [6]uintptr }
 
 // linking iswalnum.o
 
@@ -7776,7 +7644,7 @@ func X__iswalnum_l(tls TLS, _c uint32, _l uintptr /* Tlocale_t = *S__locale_stru
 
 type Twint_t = uint32
 
-type s15__locale_struct = struct{ Fcat [6]uintptr }
+type s4__locale_struct = struct{ Fcat [6]uintptr }
 
 // linking iswalpha.o
 
@@ -7801,7 +7669,7 @@ type t1wint_t = uint32
 // xtable [3680]uint8, escapes: true, iswalpha.c:4:28
 var x3table = ds + 13384
 
-type s16__locale_struct = struct{ Fcat [6]uintptr }
+type s5__locale_struct = struct{ Fcat [6]uintptr }
 
 // linking iswblank.o
 
@@ -7817,7 +7685,7 @@ func X__iswblank_l(tls TLS, _c uint32, _l uintptr /* Tlocale_t = *S__locale_stru
 
 type t2wint_t = uint32
 
-type s17__locale_struct = struct{ Fcat [6]uintptr }
+type s6__locale_struct = struct{ Fcat [6]uintptr }
 
 // linking iswcntrl.o
 
@@ -7833,7 +7701,7 @@ func X__iswcntrl_l(tls TLS, _c uint32, _l uintptr /* Tlocale_t = *S__locale_stru
 
 type t3wint_t = uint32
 
-type s18__locale_struct = struct{ Fcat [6]uintptr }
+type s7__locale_struct = struct{ Fcat [6]uintptr }
 
 // linking iswctype.o
 
@@ -7928,7 +7796,7 @@ type Twctype_t = uint64
 // x1names [73]int8, escapes: true, iswctype.c:54:20
 var x580names = ds + 17064
 
-type s19__locale_struct = struct{ Fcat [6]uintptr }
+type s8__locale_struct = struct{ Fcat [6]uintptr }
 
 // linking iswdigit.o
 
@@ -7944,7 +7812,7 @@ func X__iswdigit_l(tls TLS, _c uint32, _l uintptr /* Tlocale_t = *S__locale_stru
 
 type t5wint_t = uint32
 
-type s20__locale_struct = struct{ Fcat [6]uintptr }
+type s9__locale_struct = struct{ Fcat [6]uintptr }
 
 // linking iswgraph.o
 
@@ -7960,7 +7828,7 @@ func X__iswgraph_l(tls TLS, _c uint32, _l uintptr /* Tlocale_t = *S__locale_stru
 
 type t6wint_t = uint32
 
-type s21__locale_struct = struct{ Fcat [6]uintptr }
+type s10__locale_struct = struct{ Fcat [6]uintptr }
 
 // linking iswlower.o
 
@@ -7976,7 +7844,7 @@ func X__iswlower_l(tls TLS, _c uint32, _l uintptr /* Tlocale_t = *S__locale_stru
 
 type t7wint_t = uint32
 
-type s22__locale_struct = struct{ Fcat [6]uintptr }
+type s11__locale_struct = struct{ Fcat [6]uintptr }
 
 // linking iswprint.o
 
@@ -8001,7 +7869,7 @@ func X__iswprint_l(tls TLS, _c uint32, _l uintptr /* Tlocale_t = *S__locale_stru
 
 type t8wint_t = uint32
 
-type s23__locale_struct = struct{ Fcat [6]uintptr }
+type s12__locale_struct = struct{ Fcat [6]uintptr }
 
 // linking iswpunct.o
 
@@ -8023,7 +7891,7 @@ type t9wint_t = uint32
 // xtable [3648]uint8, escapes: true, iswpunct.c:4:28
 var x4table = ds + 17144
 
-type s24__locale_struct = struct{ Fcat [6]uintptr }
+type s13__locale_struct = struct{ Fcat [6]uintptr }
 
 // linking iswspace.o
 
@@ -8042,7 +7910,7 @@ type t10wint_t = uint32
 // x1spaces [22]int32, escapes: true, iswspace.c:11:23
 var x581spaces = ds + 20792
 
-type s25__locale_struct = struct{ Fcat [6]uintptr }
+type s14__locale_struct = struct{ Fcat [6]uintptr }
 
 type Twchar_t = int32
 
@@ -8060,7 +7928,7 @@ func X__iswupper_l(tls TLS, _c uint32, _l uintptr /* Tlocale_t = *S__locale_stru
 
 type t11wint_t = uint32
 
-type s26__locale_struct = struct{ Fcat [6]uintptr }
+type s15__locale_struct = struct{ Fcat [6]uintptr }
 
 // linking iswxdigit.o
 
@@ -8076,21 +7944,9 @@ func X__iswxdigit_l(tls TLS, _c uint32, _l uintptr /* Tlocale_t = *S__locale_str
 
 type t12wint_t = uint32
 
-type s27__locale_struct = struct{ Fcat [6]uintptr }
+type s16__locale_struct = struct{ Fcat [6]uintptr }
 
 // linking isxdigit.o
-
-// Xisxdigit is defined at isxdigit.c:4:5
-func Xisxdigit(tls TLS, _c int32) (r int32) {
-	return bool2int((uint32(_c)-uint32('0') < uint32(10)) || (uint32(_c)|uint32(32)-uint32('a') < uint32(6)))
-}
-
-// X__isxdigit_l is defined at isxdigit.c:9:5
-func X__isxdigit_l(tls TLS, _c int32, _l uintptr /* Tlocale_t = *S__locale_struct */) (r int32) {
-	return Xisxdigit(tls, _c)
-}
-
-type s28__locale_struct = struct{ Fcat [6]uintptr }
 
 // linking toascii.o
 
@@ -8103,7 +7959,7 @@ func Xtoascii(tls TLS, _c int32) (r int32) {
 
 // Xtolower is defined at tolower.c:4:5
 func Xtolower(tls TLS, _c int32) (r int32) {
-	if uint32(_c)-uint32('A') < uint32(26) {
+	if Xisupper(tls, _c) != 0 {
 		return _c | int32(32)
 	}
 	return _c
@@ -8114,13 +7970,13 @@ func X__tolower_l(tls TLS, _c int32, _l uintptr /* Tlocale_t = *S__locale_struct
 	return Xtolower(tls, _c)
 }
 
-type s29__locale_struct = struct{ Fcat [6]uintptr }
+type s17__locale_struct = struct{ Fcat [6]uintptr }
 
 // linking toupper.o
 
 // Xtoupper is defined at toupper.c:4:5
 func Xtoupper(tls TLS, _c int32) (r int32) {
-	if uint32(_c)-uint32('a') < uint32(26) {
+	if Xislower(tls, _c) != 0 {
 		return _c & int32(0x5f)
 	}
 	return _c
@@ -8131,7 +7987,7 @@ func X__toupper_l(tls TLS, _c int32, _l uintptr /* Tlocale_t = *S__locale_struct
 	return Xtoupper(tls, _c)
 }
 
-type s30__locale_struct = struct{ Fcat [6]uintptr }
+type s18__locale_struct = struct{ Fcat [6]uintptr }
 
 // linking towctrans.o
 
@@ -8228,7 +8084,7 @@ func x__towcase(tls TLS, _wc int32, _lower int32) (r int32) {
 	return _wc
 }
 
-type s31__locale_struct = struct{ Fcat [6]uintptr }
+type s19__locale_struct = struct{ Fcat [6]uintptr }
 
 type t1wchar_t = int32
 
@@ -8302,7 +8158,7 @@ func X__towctrans_l(tls TLS, _c uint32, _t uintptr /* Twctrans_t = *int32 */, _l
 
 type t14wint_t = uint32
 
-type s32__locale_struct = struct{ Fcat [6]uintptr }
+type s20__locale_struct = struct{ Fcat [6]uintptr }
 
 // linking wcwidth.o
 
@@ -9003,7 +8859,7 @@ type s4__ptcb = struct {
 	F__next uintptr // *S__ptcb
 }
 
-type s33__locale_struct = struct{ Fcat [6]uintptr }
+type s21__locale_struct = struct{ Fcat [6]uintptr }
 
 type TElf64_Word = uint32
 
@@ -9264,7 +9120,7 @@ type s5__ptcb = struct {
 	F__next uintptr // *S__ptcb
 }
 
-type s34__locale_struct = struct{ Fcat [6]uintptr }
+type s22__locale_struct = struct{ Fcat [6]uintptr }
 
 // linking __stack_chk_fail.o
 
@@ -9347,7 +9203,7 @@ type s6__ptcb = struct {
 	F__next uintptr // *S__ptcb
 }
 
-type s35__locale_struct = struct{ Fcat [6]uintptr }
+type s23__locale_struct = struct{ Fcat [6]uintptr }
 
 // linking clearenv.o
 
@@ -9649,7 +9505,7 @@ type s7__ptcb = struct {
 	F__next uintptr // *S__ptcb
 }
 
-type s36__locale_struct = struct{ Fcat [6]uintptr }
+type s24__locale_struct = struct{ Fcat [6]uintptr }
 
 // linking strerror.o
 
@@ -9682,7 +9538,7 @@ func Xstrerror(tls TLS, _e int32) (r uintptr /* *int8 */) {
 	return X__strerror_l(tls, _e, *(*uintptr)(unsafe.Pointer(x6__pthread_self(tls) + 192)))
 }
 
-type s37__locale_struct = struct{ Fcat [6]uintptr }
+type s25__locale_struct = struct{ Fcat [6]uintptr }
 
 // xerrid [88]uint8, escapes: true, strerror.c:7:28
 var xerrid = ds + 25736
@@ -10309,7 +10165,7 @@ _4:
 _5:
 	return float64(0)
 _1:
-	for x__isspace(tls, set624(&_c, func() int32 {
+	for Xisspace(tls, set624(&_c, func() int32 {
 		if *(*uintptr)(unsafe.Pointer(_f + 8)) < *(*uintptr)(unsafe.Pointer(_f + 184)) {
 			return int32(*(*uint8)(unsafe.Pointer(postinc625((*uintptr)(unsafe.Pointer(_f + 8))))))
 		}
@@ -10462,11 +10318,6 @@ type S_IO_FILE = struct {
 }
 
 type t27size_t = uint64
-
-// x__isspace is defined at ctype.h:26:21
-func x__isspace(tls TLS, __c int32) (r int32) {
-	return bool2int((__c == int32(' ')) || (uint32(__c)-uint32('\t') < uint32(5)))
-}
 
 func postinc627(p *int64) int64 { r := *p; *p += -1; return r }
 
@@ -10981,7 +10832,7 @@ func xdecfloat(tls TLS, _f uintptr /* *TFILE = S_IO_FILE */, _c int32, _bits int
 
 type t18off_t = int64
 
-type s38__locale_struct = struct{ Fcat [6]uintptr }
+type s26__locale_struct = struct{ Fcat [6]uintptr }
 
 type t16uint32_t = uint32
 
@@ -11050,10 +10901,10 @@ func xscanexp(tls TLS, _f uintptr /* *TFILE = S_IO_FILE */, _pok int32) (r int64
 	return _y
 }
 
-// x5th [2]uint32, escapes: true, floatscan.c:69:24
+// x4th [2]uint32, escapes: true, floatscan.c:69:24
 var x632th = ds + 27640
 
-// x6p10s [8]int32, escapes: true, floatscan.c:82:19
+// x5p10s [8]int32, escapes: true, floatscan.c:82:19
 var x631p10s = ds + 27648
 
 type t10uint64_t = uint64
@@ -11080,7 +10931,7 @@ func X__intscan(tls TLS, _f uintptr /* *TFILE = S_IO_FILE */, _base uint32, _pok
 		*(*int32)(unsafe.Pointer(X__errno_location(tls))) = int32(22)
 		return uint64(0)
 	}
-	for x1__isspace(tls, set633(&_c, func() int32 {
+	for Xisspace(tls, set633(&_c, func() int32 {
 		if *(*uintptr)(unsafe.Pointer(_f + 8)) < *(*uintptr)(unsafe.Pointer(_f + 184)) {
 			return int32(*(*uint8)(unsafe.Pointer(postinc634((*uintptr)(unsafe.Pointer(_f + 8))))))
 		}
@@ -11274,16 +11125,11 @@ type s1_IO_FILE = struct {
 // xtable [257]uint8, escapes: true, intscan.c:7:28
 var x6table = ds + 27680
 
-// x__isspace is defined at ctype.h:26:21
-func x1__isspace(tls TLS, __c int32) (r int32) {
-	return bool2int((__c == int32(' ')) || (uint32(__c)-uint32('\t') < uint32(5)))
-}
-
 type t28size_t = uint64
 
 type t19off_t = int64
 
-type s39__locale_struct = struct{ Fcat [6]uintptr }
+type s27__locale_struct = struct{ Fcat [6]uintptr }
 
 // linking libc.o
 
@@ -11313,7 +11159,7 @@ type S__libc = struct {
 	Ftls_align       uint64
 	Ftls_cnt         uint64
 	Fpage_size       uint64
-	Fglobal_locale   s40__locale_struct
+	Fglobal_locale   s28__locale_struct
 }
 
 type t29size_t = uint64
@@ -11327,7 +11173,7 @@ type s2tls_module = struct {
 	Foffset uint64
 }
 
-type s40__locale_struct = struct{ Fcat [6]uintptr }
+type s28__locale_struct = struct{ Fcat [6]uintptr }
 
 // linking procfdname.o
 
@@ -11438,7 +11284,7 @@ type s2_IO_FILE = struct {
 
 type t30size_t = uint64
 
-type s41__locale_struct = struct{ Fcat [6]uintptr }
+type s29__locale_struct = struct{ Fcat [6]uintptr }
 
 // linking syscall_ret.o
 
@@ -12304,7 +12150,7 @@ type s9__ptcb = struct {
 	F__next uintptr // *S__ptcb
 }
 
-type s42__locale_struct = struct{ Fcat [6]uintptr }
+type s30__locale_struct = struct{ Fcat [6]uintptr }
 
 // linking dlinfo.o
 
@@ -14431,7 +14277,7 @@ type s10__ptcb = struct {
 	F__next uintptr // *S__ptcb
 }
 
-type s43__locale_struct = struct{ Fcat [6]uintptr }
+type s31__locale_struct = struct{ Fcat [6]uintptr }
 
 // linking __mo_lookup.o
 
@@ -14537,7 +14383,7 @@ var xempty_mo = ds + 28048
 
 type t59size_t = uint64
 
-type s44__locale_struct = struct{ Fcat [6]uintptr }
+type s32__locale_struct = struct{ Fcat [6]uintptr }
 
 type t22uint32_t = uint32
 
@@ -14689,11 +14535,11 @@ func X__duplocale(tls TLS, _old uintptr /* Tlocale_t = *S__locale_struct */) (r 
 	if _old == uintptr(18446744073709551615) {
 		_old = X__libc + 64
 	}
-	*(*s45__locale_struct)(unsafe.Pointer(_new)) = *(*s45__locale_struct)(unsafe.Pointer(_old))
+	*(*s33__locale_struct)(unsafe.Pointer(_new)) = *(*s33__locale_struct)(unsafe.Pointer(_old))
 	return _new
 }
 
-type s45__locale_struct = struct{ Fcat [6]uintptr }
+type s33__locale_struct = struct{ Fcat [6]uintptr }
 
 type t61size_t = uint64
 
@@ -14706,7 +14552,7 @@ func Xfreelocale(tls TLS, _l uintptr /* Tlocale_t = *S__locale_struct */) {
 	}
 }
 
-type s46__locale_struct = struct{ Fcat [6]uintptr }
+type s34__locale_struct = struct{ Fcat [6]uintptr }
 
 // linking iconv.o
 
@@ -16027,7 +15873,7 @@ func xcombine_to_from(tls TLS, _t uint64, _f uint64) (r uintptr /* Ticonv_t = *v
 // x4__func__ [6]int8, escapes: true, iconv.c:241:1
 var x661__func__ = ds + 33000
 
-type s47__locale_struct = struct{ Fcat [6]uintptr }
+type s35__locale_struct = struct{ Fcat [6]uintptr }
 
 type t4wchar_t = int32
 
@@ -16276,7 +16122,7 @@ func X__nl_langinfo(tls TLS, _item int32) (r uintptr /* *int8 */) {
 
 type Tnl_item = int32
 
-type s48__locale_struct = struct{ Fcat [6]uintptr }
+type s36__locale_struct = struct{ Fcat [6]uintptr }
 
 // xc_numeric [3]int8, escapes: true, langinfo.c:28:19
 var xc_numeric = ds + 34248
@@ -16590,12 +16436,12 @@ func X__newlocale(tls TLS, _mask int32, _name uintptr /* *int8 */, _loc uintptr 
 	X__assert_fail(tls, ts+0 /* "TODO(ccgo)" */, ts+1872 /* "src/locale/newlo..." */, int32(43), x670__func__)
 	X__assert_fail(tls, ts+0 /* "TODO(ccgo)" */, ts+1872 /* "src/locale/newlo..." */, int32(45), x670__func__)
 	if set669(&_loc, Xmalloc(tls, uint64(48))) != 0 {
-		*(*s49__locale_struct)(unsafe.Pointer(_loc)) = *(*s49__locale_struct)(unsafe.Pointer(_tmp))
+		*(*s37__locale_struct)(unsafe.Pointer(_loc)) = *(*s37__locale_struct)(unsafe.Pointer(_tmp))
 	}
 	return _loc
 }
 
-type s49__locale_struct = struct{ Fcat [6]uintptr }
+type s37__locale_struct = struct{ Fcat [6]uintptr }
 
 // x1__func__ [19]int8, escapes: true, newlocale.c:8:1
 var x667__func__ = ds + 34664
@@ -16698,7 +16544,7 @@ func xevalprim(tls TLS, _st uintptr /* *Sst */, _s uintptr /* *int8 */, _d int32
 		return ts + 112 /* "" */
 	}
 	_s = xskipspace(tls, _s)
-	if uint32(*(*int8)(unsafe.Pointer(_s)))-uint32('0') < uint32(10) {
+	if Xisdigit(tls, int32(*(*int8)(unsafe.Pointer(_s)))) != 0 {
 		*(*uint64)(unsafe.Pointer(_st)) = Xstrtoul(tls, _s, _e, int32(10))
 		if (*(*uintptr)(unsafe.Pointer(_e)) == _s) || (*(*uint64)(unsafe.Pointer(_st)) == uint64(18446744073709551615)) {
 			return ts + 112 /* "" */
@@ -16834,7 +16680,7 @@ _1:
 
 // xskipspace is defined at pleval.c:31:19
 func xskipspace(tls TLS, _s uintptr /* *int8 */) (r uintptr /* *int8 */) {
-	for x2__isspace(tls, int32(*(*int8)(unsafe.Pointer(_s)))) != 0 {
+	for Xisspace(tls, int32(*(*int8)(unsafe.Pointer(_s)))) != 0 {
 		_s++
 	}
 	return _s
@@ -16845,11 +16691,6 @@ var x673opch = ds + 34720
 
 // x10opch2 [6]int8, escapes: true, pleval.c:90:20
 var x674opch2 = ds + 34736
-
-// x__isspace is defined at ctype.h:26:21
-func x2__isspace(tls TLS, __c int32) (r int32) {
-	return bool2int((__c == int32(' ')) || (uint32(__c)-uint32('\t') < uint32(5)))
-}
 
 // linking setlocale.o
 
@@ -16875,8 +16716,12 @@ func Xsetlocale(tls TLS, _cat int32, _name uintptr /* *int8 */) (r uintptr /* *i
 		return null
 	}
 	X__lock(tls, x676lock)
+	if (((_cat == int32(6)) || (_cat == int32(0))) && (_name != 0)) && (*(*int8)(unsafe.Pointer(_name)) != 0) {
+		currentLocale = GoString(_name)
+	}
 	if _cat == int32(6) {
 		if _name != 0 {
+			currentLocale = GoString(_name)
 			*(*[24]int8)(unsafe.Pointer(_part)) = *(*[24]int8)(unsafe.Pointer(ts + 1728 /* "C.UTF-8\x00\x00\x00\x00\x00\x00\x00\x00\x00..." */))
 			_p = _name
 			for _i = int32(0); _i < int32(6); _i++ {
@@ -16964,7 +16809,7 @@ func Xstrcoll(tls TLS, _l uintptr /* *int8 */, _r uintptr /* *int8 */) (r int32)
 	return X__strcoll_l(tls, _l, _r, *(*uintptr)(unsafe.Pointer(x11__pthread_self(tls) + 192)))
 }
 
-type s50__locale_struct = struct{ Fcat [6]uintptr }
+type s38__locale_struct = struct{ Fcat [6]uintptr }
 
 // x__pthread_self is defined at pthread_arch.h:1:30
 func x11__pthread_self(tls TLS) (r uintptr /* *S__pthread */) {
@@ -17052,7 +16897,7 @@ type t69size_t = uint64
 
 type t15ssize_t = int64
 
-type s51__locale_struct = struct{ Fcat [6]uintptr }
+type s39__locale_struct = struct{ Fcat [6]uintptr }
 
 func postinc678(p *uintptr) uintptr { r := *p; *p += 1; return r }
 
@@ -17158,18 +17003,18 @@ _7:
 	goto _6
 
 _8:
-	for _fw = int32(0); uint32(*(*int8)(unsafe.Pointer(_fmt)))-uint32('0') < uint32(10); _fmt++ {
+	for _fw = int32(0); Xisdigit(tls, int32(*(*int8)(unsafe.Pointer(_fmt)))) != 0; _fmt++ {
 		_fw = int32(10)*_fw + (int32(*(*int8)(unsafe.Pointer(_fmt))) - int32('0'))
 	}
 	_lp = int32(0)
 	_rp = int32(2)
 	if int32(*(*int8)(unsafe.Pointer(_fmt))) == int32('#') {
-		for func() uintptr { _lp = int32(0); return postinc678(&_fmt) }(); uint32(*(*int8)(unsafe.Pointer(_fmt)))-uint32('0') < uint32(10); _fmt++ {
+		for func() uintptr { _lp = int32(0); return postinc678(&_fmt) }(); Xisdigit(tls, int32(*(*int8)(unsafe.Pointer(_fmt)))) != 0; _fmt++ {
 			_lp = int32(10)*_lp + (int32(*(*int8)(unsafe.Pointer(_fmt))) - int32('0'))
 		}
 	}
 	if int32(*(*int8)(unsafe.Pointer(_fmt))) == int32('.') {
-		for func() uintptr { _rp = int32(0); return postinc678(&_fmt) }(); uint32(*(*int8)(unsafe.Pointer(_fmt)))-uint32('0') < uint32(10); _fmt++ {
+		for func() uintptr { _rp = int32(0); return postinc678(&_fmt) }(); Xisdigit(tls, int32(*(*int8)(unsafe.Pointer(_fmt)))) != 0; _fmt++ {
 			_rp = int32(10)*_rp + (int32(*(*int8)(unsafe.Pointer(_fmt))) - int32('0'))
 		}
 	}
@@ -17267,7 +17112,7 @@ func Xstrxfrm(tls TLS, _dest uintptr /* *int8 */, _src uintptr /* *int8 */, _n u
 
 type t70size_t = uint64
 
-type s52__locale_struct = struct{ Fcat [6]uintptr }
+type s40__locale_struct = struct{ Fcat [6]uintptr }
 
 // x__pthread_self is defined at pthread_arch.h:1:30
 func x13__pthread_self(tls TLS) (r uintptr /* *S__pthread */) {
@@ -17395,7 +17240,7 @@ func X__uselocale(tls TLS, _new uintptr /* Tlocale_t = *S__locale_struct */) (r 
 	return _old
 }
 
-type s53__locale_struct = struct{ Fcat [6]uintptr }
+type s41__locale_struct = struct{ Fcat [6]uintptr }
 
 type s18__pthread = struct {
 	Fself          uintptr // *S__pthread
@@ -17465,7 +17310,7 @@ func Xwcscoll(tls TLS, _l uintptr /* *Twchar_t = int32 */, _r uintptr /* *Twchar
 	return X__wcscoll_l(tls, _l, _r, *(*uintptr)(unsafe.Pointer(x15__pthread_self(tls) + 192)))
 }
 
-type s54__locale_struct = struct{ Fcat [6]uintptr }
+type s42__locale_struct = struct{ Fcat [6]uintptr }
 
 // x__pthread_self is defined at pthread_arch.h:1:30
 func x15__pthread_self(tls TLS) (r uintptr /* *S__pthread */) {
@@ -17546,7 +17391,7 @@ func Xwcsxfrm(tls TLS, _dest uintptr /* *Twchar_t = int32 */, _src uintptr /* *T
 
 type t74size_t = uint64
 
-type s55__locale_struct = struct{ Fcat [6]uintptr }
+type s43__locale_struct = struct{ Fcat [6]uintptr }
 
 type t5wchar_t = int32
 
@@ -34701,7 +34546,7 @@ type s19__ptcb = struct {
 	F__next uintptr // *S__ptcb
 }
 
-type s56__locale_struct = struct{ Fcat [6]uintptr }
+type s44__locale_struct = struct{ Fcat [6]uintptr }
 
 // linking c16rtomb.o
 
@@ -35076,7 +34921,7 @@ type s20__ptcb = struct {
 	F__next uintptr // *S__ptcb
 }
 
-type s57__locale_struct = struct{ Fcat [6]uintptr }
+type s45__locale_struct = struct{ Fcat [6]uintptr }
 
 // linking mbsinit.o
 
@@ -35403,7 +35248,7 @@ type s21__ptcb = struct {
 	F__next uintptr // *S__ptcb
 }
 
-type s58__locale_struct = struct{ Fcat [6]uintptr }
+type s46__locale_struct = struct{ Fcat [6]uintptr }
 
 // linking mbstowcs.o
 
@@ -35577,7 +35422,7 @@ type s22__ptcb = struct {
 	F__next uintptr // *S__ptcb
 }
 
-type s59__locale_struct = struct{ Fcat [6]uintptr }
+type s47__locale_struct = struct{ Fcat [6]uintptr }
 
 // linking wcrtomb.o
 
@@ -35681,7 +35526,7 @@ type s23__ptcb = struct {
 	F__next uintptr // *S__ptcb
 }
 
-type s60__locale_struct = struct{ Fcat [6]uintptr }
+type s48__locale_struct = struct{ Fcat [6]uintptr }
 
 // linking wcsnrtombs.o
 
@@ -35927,7 +35772,7 @@ type s24__ptcb = struct {
 	F__next uintptr // *S__ptcb
 }
 
-type s61__locale_struct = struct{ Fcat [6]uintptr }
+type s49__locale_struct = struct{ Fcat [6]uintptr }
 
 // linking wctomb.o
 
@@ -37305,7 +37150,7 @@ func xreverse_hosts(tls TLS, _buf uintptr /* *int8 */, _a uintptr /* *uint8 */, 
 			*(*int8)(unsafe.Pointer(postinc800(&_p))) = int8('\n')
 			*(*int8)(unsafe.Pointer(_p)) = int8(0)
 		}
-		for _p = _line; (*(*int8)(unsafe.Pointer(_p)) != 0) && (x3__isspace(tls, int32(*(*int8)(unsafe.Pointer(_p)))) == 0); _p++ {
+		for _p = _line; (*(*int8)(unsafe.Pointer(_p)) != 0) && (Xisspace(tls, int32(*(*int8)(unsafe.Pointer(_p)))) == 0); _p++ {
 		}
 		*(*int8)(unsafe.Pointer(postinc800(&_p))) = int8(0)
 		X__assert_fail(tls, ts+0 /* "TODO(ccgo)" */, ts+2796 /* "src/network/getn..." */, int32(66), x803__func__)
@@ -37318,9 +37163,9 @@ func xreverse_hosts(tls TLS, _buf uintptr /* *int8 */, _a uintptr /* *uint8 */, 
 		if (Xmemcmp(tls, _a, _iplit+8, uint64(16)) != 0) || (*(*uint32)(unsafe.Pointer(_iplit + 4)) != _scopeid) {
 			continue
 		}
-		for ; (*(*int8)(unsafe.Pointer(_p)) != 0) && (x3__isspace(tls, int32(*(*int8)(unsafe.Pointer(_p)))) != 0); _p++ {
+		for ; (*(*int8)(unsafe.Pointer(_p)) != 0) && (Xisspace(tls, int32(*(*int8)(unsafe.Pointer(_p)))) != 0); _p++ {
 		}
-		for _z = _p; (*(*int8)(unsafe.Pointer(_z)) != 0) && (x3__isspace(tls, int32(*(*int8)(unsafe.Pointer(_z)))) == 0); _z++ {
+		for _z = _p; (*(*int8)(unsafe.Pointer(_z)) != 0) && (Xisspace(tls, int32(*(*int8)(unsafe.Pointer(_z)))) == 0); _z++ {
 		}
 		*(*int8)(unsafe.Pointer(_z)) = int8(0)
 		if int64(_z-_p) < int64(256) {
@@ -37381,7 +37226,7 @@ func xreverse_services(tls TLS, _buf uintptr /* *int8 */, _port int32, _dgram in
 			*(*int8)(unsafe.Pointer(postinc800(&_p))) = int8('\n')
 			*(*int8)(unsafe.Pointer(_p)) = int8(0)
 		}
-		for _p = _line; (*(*int8)(unsafe.Pointer(_p)) != 0) && (x3__isspace(tls, int32(*(*int8)(unsafe.Pointer(_p)))) == 0); _p++ {
+		for _p = _line; (*(*int8)(unsafe.Pointer(_p)) != 0) && (Xisspace(tls, int32(*(*int8)(unsafe.Pointer(_p)))) == 0); _p++ {
 		}
 		if *(*int8)(unsafe.Pointer(_p)) == 0 {
 			continue
@@ -37455,16 +37300,11 @@ type s7_IO_FILE = struct {
 	Flocale       uintptr // *S__locale_struct
 }
 
-// x__isspace is defined at ctype.h:26:21
-func x3__isspace(tls TLS, __c int32) (r int32) {
-	return bool2int((__c == int32(' ')) || (uint32(__c)-uint32('\t') < uint32(5)))
-}
-
 type t5uint8_t = uint8
 
 type t32off_t = int64
 
-type s62__locale_struct = struct{ Fcat [6]uintptr }
+type s50__locale_struct = struct{ Fcat [6]uintptr }
 
 // linking getpeername.o
 
@@ -38078,7 +37918,7 @@ func X__inet_aton(tls TLS, _s0 uintptr /* *int8 */, _dest uintptr /* *Sin_addr *
 	Copy(_a, ts+2940 /* "\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00..." */, 32)
 	for _i = int32(0); _i < int32(4); _i++ {
 		*(*uint64)(unsafe.Pointer(_a + 8*uintptr(_i))) = Xstrtoul(tls, _s, _z, int32(0))
-		if ((*(*uintptr)(unsafe.Pointer(_z)) == _s) || ((*(*int8)(unsafe.Pointer(*(*uintptr)(unsafe.Pointer(_z)))) != 0) && (int32(*(*int8)(unsafe.Pointer(*(*uintptr)(unsafe.Pointer(_z))))) != int32('.')))) || (!(uint32(*(*int8)(unsafe.Pointer(_s)))-uint32('0') < uint32(10))) {
+		if ((*(*uintptr)(unsafe.Pointer(_z)) == _s) || ((*(*int8)(unsafe.Pointer(*(*uintptr)(unsafe.Pointer(_z)))) != 0) && (int32(*(*int8)(unsafe.Pointer(*(*uintptr)(unsafe.Pointer(_z))))) != int32('.')))) || (Xisdigit(tls, int32(*(*int8)(unsafe.Pointer(_s)))) == 0) {
 			return int32(0)
 		}
 		if *(*int8)(unsafe.Pointer(*(*uintptr)(unsafe.Pointer(_z)))) == 0 {
@@ -38323,7 +38163,7 @@ func Xinet_pton(tls TLS, _af int32, _s uintptr /* *int8 */, _a0 uintptr /* *void
 	_need_v4 = int32(0)
 	if _af == int32(2) {
 		for _i = int32(0); _i < int32(4); _i++ {
-			for _v = set818(&_j, int32(0)); (_j < int32(3)) && (uint32(*(*int8)(unsafe.Pointer(_s + uintptr(_j))))-uint32('0') < uint32(10)); _j++ {
+			for _v = set818(&_j, int32(0)); (_j < int32(3)) && (Xisdigit(tls, int32(*(*int8)(unsafe.Pointer(_s + uintptr(_j))))) != 0); _j++ {
 				_v = int32(10)*_v + int32(*(*int8)(unsafe.Pointer(_s + uintptr(_j)))) - int32('0')
 			}
 			if ((_j == int32(0)) || ((_j > int32(1)) && (int32(*(*int8)(unsafe.Pointer(_s))) == int32('0')))) || (_v > int32(255)) {
@@ -39347,9 +39187,9 @@ _1:
 			}
 			continue
 		}
-		if (Xstrncmp(tls, _line, ts+3184 /* "options" */, uint64(7)) == 0) && (x4__isspace(tls, int32(*(*int8)(unsafe.Pointer(_line + 7)))) != 0) {
+		if (Xstrncmp(tls, _line, ts+3184 /* "options" */, uint64(7)) == 0) && (Xisspace(tls, int32(*(*int8)(unsafe.Pointer(_line + 7)))) != 0) {
 			_p = Xstrstr(tls, _line, ts+3192 /* "ndots:" */)
-			if (_p != 0) && (uint32(*(*int8)(unsafe.Pointer(_p + 6)))-uint32('0') < uint32(10)) {
+			if (_p != 0) && (Xisdigit(tls, int32(*(*int8)(unsafe.Pointer(_p + 6)))) != 0) {
 				_p += uintptr(6)
 				_x = Xstrtoul(tls, _p, _z, int32(10))
 				if *(*uintptr)(unsafe.Pointer(_z)) != _p {
@@ -39361,7 +39201,7 @@ _1:
 				}
 			}
 			_p = Xstrstr(tls, _line, ts+3200 /* "attempts:" */)
-			if (_p != 0) && (uint32(*(*int8)(unsafe.Pointer(_p + 9)))-uint32('0') < uint32(10)) {
+			if (_p != 0) && (Xisdigit(tls, int32(*(*int8)(unsafe.Pointer(_p + 9)))) != 0) {
 				_p += uintptr(9)
 				_1x = Xstrtoul(tls, _p, _z, int32(10))
 				if *(*uintptr)(unsafe.Pointer(_z)) != _p {
@@ -39373,7 +39213,7 @@ _1:
 				}
 			}
 			_p = Xstrstr(tls, _line, ts+3212 /* "timeout:" */)
-			if (_p != 0) && ((uint32(*(*int8)(unsafe.Pointer(_p + 8)))-uint32('0') < uint32(10)) || (int32(*(*int8)(unsafe.Pointer(_p + 8))) == int32('.'))) {
+			if (_p != 0) && ((Xisdigit(tls, int32(*(*int8)(unsafe.Pointer(_p + 8)))) != 0) || (int32(*(*int8)(unsafe.Pointer(_p + 8))) == int32('.'))) {
 				_p += uintptr(8)
 				_2x = Xstrtoul(tls, _p, _z, int32(10))
 				if *(*uintptr)(unsafe.Pointer(_z)) != _p {
@@ -39386,13 +39226,13 @@ _1:
 			}
 			continue
 		}
-		if (Xstrncmp(tls, _line, ts+3224 /* "nameserver" */, uint64(10)) == 0) && (x4__isspace(tls, int32(*(*int8)(unsafe.Pointer(_line + 10)))) != 0) {
+		if (Xstrncmp(tls, _line, ts+3224 /* "nameserver" */, uint64(10)) == 0) && (Xisspace(tls, int32(*(*int8)(unsafe.Pointer(_line + 10)))) != 0) {
 			if _nns >= int32(3) {
 				continue
 			}
-			for _p = _line + uintptr(11); x4__isspace(tls, int32(*(*int8)(unsafe.Pointer(_p)))) != 0; _p++ {
+			for _p = _line + uintptr(11); Xisspace(tls, int32(*(*int8)(unsafe.Pointer(_p)))) != 0; _p++ {
 			}
-			for *(*uintptr)(unsafe.Pointer(_z)) = _p; (*(*int8)(unsafe.Pointer(*(*uintptr)(unsafe.Pointer(_z)))) != 0) && (x4__isspace(tls, int32(*(*int8)(unsafe.Pointer(*(*uintptr)(unsafe.Pointer(_z)))))) == 0); *(*uintptr)(unsafe.Pointer(_z))++ {
+			for *(*uintptr)(unsafe.Pointer(_z)) = _p; (*(*int8)(unsafe.Pointer(*(*uintptr)(unsafe.Pointer(_z)))) != 0) && (Xisspace(tls, int32(*(*int8)(unsafe.Pointer(*(*uintptr)(unsafe.Pointer(_z)))))) == 0); *(*uintptr)(unsafe.Pointer(_z))++ {
 			}
 			*(*int8)(unsafe.Pointer(*(*uintptr)(unsafe.Pointer(_z)))) = int8(0)
 			X__assert_fail(tls, ts+0 /* "TODO(ccgo)" */, ts+3236 /* "src/network/reso..." */, int32(67), x833__func__)
@@ -39402,10 +39242,10 @@ _1:
 		if _search == 0 {
 			continue
 		}
-		if ((Xstrncmp(tls, _line, ts+3264 /* "domain" */, uint64(6)) != 0) && (Xstrncmp(tls, _line, ts+3272 /* "search" */, uint64(6)) != 0)) || (x4__isspace(tls, int32(*(*int8)(unsafe.Pointer(_line + 6)))) == 0) {
+		if ((Xstrncmp(tls, _line, ts+3264 /* "domain" */, uint64(6)) != 0) && (Xstrncmp(tls, _line, ts+3272 /* "search" */, uint64(6)) != 0)) || (Xisspace(tls, int32(*(*int8)(unsafe.Pointer(_line + 6)))) == 0) {
 			continue
 		}
-		for _p = _line + uintptr(7); x4__isspace(tls, int32(*(*int8)(unsafe.Pointer(_p)))) != 0; _p++ {
+		for _p = _line + uintptr(7); Xisspace(tls, int32(*(*int8)(unsafe.Pointer(_p)))) != 0; _p++ {
 		}
 		_l = Xstrlen(tls, _p)
 		if _l >= _search_sz {
@@ -39473,11 +39313,6 @@ type s8_IO_FILE = struct {
 	Flocale       uintptr // *S__locale_struct
 }
 
-// x__isspace is defined at ctype.h:26:21
-func x4__isspace(tls TLS, __c int32) (r int32) {
-	return bool2int((__c == int32(' ')) || (uint32(__c)-uint32('\t') < uint32(5)))
-}
-
 type s2address = struct {
 	Ffamily  int32
 	Fscopeid uint32
@@ -39487,7 +39322,7 @@ type s2address = struct {
 
 type t33off_t = int64
 
-type s63__locale_struct = struct{ Fcat [6]uintptr }
+type s51__locale_struct = struct{ Fcat [6]uintptr }
 
 type t12uint8_t = uint8
 
@@ -42131,7 +41966,7 @@ type s26__ptcb = struct {
 	F__next uintptr // *S__ptcb
 }
 
-type s64__locale_struct = struct{ Fcat [6]uintptr }
+type s52__locale_struct = struct{ Fcat [6]uintptr }
 
 // linking posix_spawn.o
 
@@ -43505,7 +43340,7 @@ type s27__ptcb = struct {
 	F__next uintptr // *S__ptcb
 }
 
-type s65__locale_struct = struct{ Fcat [6]uintptr }
+type s53__locale_struct = struct{ Fcat [6]uintptr }
 
 // linking glob.o
 
@@ -46741,14 +46576,14 @@ type t20wchar_t = int32
 // xparse_dup_count is defined at regcomp.c:710:19
 func xparse_dup_count(tls TLS, _s uintptr /* *int8 */, _n uintptr /* *int32 */) (r uintptr /* *int8 */) {
 	*(*int32)(unsafe.Pointer(_n)) = int32(-1)
-	if !(uint32(*(*int8)(unsafe.Pointer(_s)))-uint32('0') < uint32(10)) {
+	if Xisdigit(tls, int32(*(*int8)(unsafe.Pointer(_s)))) == 0 {
 		return _s
 	}
 	*(*int32)(unsafe.Pointer(_n)) = int32(0)
 	for {
 		*(*int32)(unsafe.Pointer(_n)) = int32(10)**(*int32)(unsafe.Pointer(_n)) + (int32(*(*int8)(unsafe.Pointer(_s))) - int32('0'))
 		_s++
-		if (!(uint32(*(*int8)(unsafe.Pointer(_s)))-uint32('0') < uint32(10))) || (*(*int32)(unsafe.Pointer(_n)) > int32(255)) {
+		if (Xisdigit(tls, int32(*(*int8)(unsafe.Pointer(_s)))) == 0) || (*(*int32)(unsafe.Pointer(_n)) > int32(255)) {
 			break
 		}
 	}
@@ -48226,7 +48061,7 @@ type s28__ptcb = struct {
 	F__next uintptr // *S__ptcb
 }
 
-type s66__locale_struct = struct{ Fcat [6]uintptr }
+type s54__locale_struct = struct{ Fcat [6]uintptr }
 
 // linking sched_cpucount.o
 
@@ -50896,7 +50731,7 @@ type t203size_t = uint64
 
 type t41off_t = int64
 
-type s67__locale_struct = struct{ Fcat [6]uintptr }
+type s55__locale_struct = struct{ Fcat [6]uintptr }
 
 // linking __fdopen.o
 
@@ -51021,7 +50856,7 @@ type t204size_t = uint64
 
 type t42off_t = int64
 
-type s68__locale_struct = struct{ Fcat [6]uintptr }
+type s56__locale_struct = struct{ Fcat [6]uintptr }
 
 // linking __fmodeflags.o
 
@@ -51132,7 +50967,7 @@ func x46__syscall3(tls TLS, _n int64, _a1 int64, _a2 int64, _a3 int64) (r int64)
 
 type t43off_t = int64
 
-type s69__locale_struct = struct{ Fcat [6]uintptr }
+type s57__locale_struct = struct{ Fcat [6]uintptr }
 
 // linking __lockfile.o
 
@@ -51252,7 +51087,7 @@ type t206size_t = uint64
 
 type t44off_t = int64
 
-type s70__locale_struct = struct{ Fcat [6]uintptr }
+type s58__locale_struct = struct{ Fcat [6]uintptr }
 
 type s31__pthread = struct {
 	Fself          uintptr // *S__pthread
@@ -51380,7 +51215,7 @@ type t207size_t = uint64
 
 type t45off_t = int64
 
-type s71__locale_struct = struct{ Fcat [6]uintptr }
+type s59__locale_struct = struct{ Fcat [6]uintptr }
 
 // linking __stdio_close.o
 
@@ -51439,7 +51274,7 @@ type t208size_t = uint64
 
 type t46off_t = int64
 
-type s72__locale_struct = struct{ Fcat [6]uintptr }
+type s60__locale_struct = struct{ Fcat [6]uintptr }
 
 // linking __stdio_exit.o
 
@@ -51518,7 +51353,7 @@ type t209size_t = uint64
 
 type t47off_t = int64
 
-type s73__locale_struct = struct{ Fcat [6]uintptr }
+type s61__locale_struct = struct{ Fcat [6]uintptr }
 
 // linking __stdio_read.o
 
@@ -51623,7 +51458,7 @@ func x48__syscall3(tls TLS, _n int64, _a1 int64, _a2 int64, _a3 int64) (r int64)
 
 type t48off_t = int64
 
-type s74__locale_struct = struct{ Fcat [6]uintptr }
+type s62__locale_struct = struct{ Fcat [6]uintptr }
 
 // linking __stdio_seek.o
 
@@ -51680,7 +51515,7 @@ func x49__syscall3(tls TLS, _n int64, _a1 int64, _a2 int64, _a3 int64) (r int64)
 
 type t211size_t = uint64
 
-type s75__locale_struct = struct{ Fcat [6]uintptr }
+type s63__locale_struct = struct{ Fcat [6]uintptr }
 
 // linking __stdio_write.o
 
@@ -51795,7 +51630,7 @@ func x50__syscall3(tls TLS, _n int64, _a1 int64, _a2 int64, _a3 int64) (r int64)
 
 type t50off_t = int64
 
-type s76__locale_struct = struct{ Fcat [6]uintptr }
+type s64__locale_struct = struct{ Fcat [6]uintptr }
 
 // linking __stdout_write.o
 
@@ -51867,7 +51702,7 @@ func x51__syscall3(tls TLS, _n int64, _a1 int64, _a2 int64, _a3 int64) (r int64)
 
 type t51off_t = int64
 
-type s77__locale_struct = struct{ Fcat [6]uintptr }
+type s65__locale_struct = struct{ Fcat [6]uintptr }
 
 // linking __string_read.o
 
@@ -51934,7 +51769,7 @@ type s35_IO_FILE = struct {
 
 type t52off_t = int64
 
-type s78__locale_struct = struct{ Fcat [6]uintptr }
+type s66__locale_struct = struct{ Fcat [6]uintptr }
 
 // linking __toread.o
 
@@ -52013,7 +51848,7 @@ type t215size_t = uint64
 
 type t53off_t = int64
 
-type s79__locale_struct = struct{ Fcat [6]uintptr }
+type s67__locale_struct = struct{ Fcat [6]uintptr }
 
 // linking __towrite.o
 
@@ -52083,7 +51918,7 @@ type t216size_t = uint64
 
 type t54off_t = int64
 
-type s80__locale_struct = struct{ Fcat [6]uintptr }
+type s68__locale_struct = struct{ Fcat [6]uintptr }
 
 // linking __uflow.o
 
@@ -52142,7 +51977,7 @@ type t217size_t = uint64
 
 type t55off_t = int64
 
-type s81__locale_struct = struct{ Fcat [6]uintptr }
+type s69__locale_struct = struct{ Fcat [6]uintptr }
 
 // linking asprintf.o
 
@@ -52219,7 +52054,7 @@ type t218size_t = uint64
 
 type t56off_t = int64
 
-type s82__locale_struct = struct{ Fcat [6]uintptr }
+type s70__locale_struct = struct{ Fcat [6]uintptr }
 
 // linking dprintf.o
 
@@ -52334,7 +52169,7 @@ type t219size_t = uint64
 
 type t57off_t = int64
 
-type s83__locale_struct = struct{ Fcat [6]uintptr }
+type s71__locale_struct = struct{ Fcat [6]uintptr }
 
 // linking ext2.o
 
@@ -52408,7 +52243,7 @@ type s41_IO_FILE = struct {
 
 type t58off_t = int64
 
-type s84__locale_struct = struct{ Fcat [6]uintptr }
+type s72__locale_struct = struct{ Fcat [6]uintptr }
 
 // linking fclose.o
 
@@ -52501,7 +52336,7 @@ type t221size_t = uint64
 
 type t59off_t = int64
 
-type s85__locale_struct = struct{ Fcat [6]uintptr }
+type s73__locale_struct = struct{ Fcat [6]uintptr }
 
 // linking feof.o
 
@@ -52564,7 +52399,7 @@ type t222size_t = uint64
 
 type t60off_t = int64
 
-type s86__locale_struct = struct{ Fcat [6]uintptr }
+type s74__locale_struct = struct{ Fcat [6]uintptr }
 
 // linking ferror.o
 
@@ -52627,7 +52462,7 @@ type t223size_t = uint64
 
 type t61off_t = int64
 
-type s87__locale_struct = struct{ Fcat [6]uintptr }
+type s75__locale_struct = struct{ Fcat [6]uintptr }
 
 // linking fflush.o
 
@@ -52738,7 +52573,7 @@ type t224size_t = uint64
 
 type t62off_t = int64
 
-type s88__locale_struct = struct{ Fcat [6]uintptr }
+type s76__locale_struct = struct{ Fcat [6]uintptr }
 
 // linking fgetc.o
 
@@ -52805,7 +52640,7 @@ type t225size_t = uint64
 
 type t63off_t = int64
 
-type s89__locale_struct = struct{ Fcat [6]uintptr }
+type s77__locale_struct = struct{ Fcat [6]uintptr }
 
 // linking fgetln.o
 
@@ -52887,7 +52722,7 @@ type t226size_t = uint64
 
 type t64off_t = int64
 
-type s90__locale_struct = struct{ Fcat [6]uintptr }
+type s78__locale_struct = struct{ Fcat [6]uintptr }
 
 // linking fgetpos.o
 
@@ -52943,7 +52778,7 @@ type t65off_t = int64
 
 type t227size_t = uint64
 
-type s91__locale_struct = struct{ Fcat [6]uintptr }
+type s79__locale_struct = struct{ Fcat [6]uintptr }
 
 // linking fgets.o
 
@@ -53069,7 +52904,7 @@ type t228size_t = uint64
 
 type t66off_t = int64
 
-type s92__locale_struct = struct{ Fcat [6]uintptr }
+type s80__locale_struct = struct{ Fcat [6]uintptr }
 
 // linking fgetwc.o
 
@@ -53148,7 +52983,7 @@ type s50_IO_FILE = struct {
 	Flocale       uintptr // *S__locale_struct
 }
 
-type s93__locale_struct = struct{ Fcat [6]uintptr }
+type s81__locale_struct = struct{ Fcat [6]uintptr }
 
 type t22wchar_t = int32
 
@@ -53351,7 +53186,7 @@ type t230size_t = uint64
 
 type t68off_t = int64
 
-type s94__locale_struct = struct{ Fcat [6]uintptr }
+type s82__locale_struct = struct{ Fcat [6]uintptr }
 
 // linking fileno.o
 
@@ -53411,7 +53246,7 @@ type t231size_t = uint64
 
 type t69off_t = int64
 
-type s95__locale_struct = struct{ Fcat [6]uintptr }
+type s83__locale_struct = struct{ Fcat [6]uintptr }
 
 // linking flockfile.o
 
@@ -53470,7 +53305,7 @@ type t232size_t = uint64
 
 type t70off_t = int64
 
-type s96__locale_struct = struct{ Fcat [6]uintptr }
+type s84__locale_struct = struct{ Fcat [6]uintptr }
 
 type s33__pthread = struct {
 	Fself          uintptr // *S__pthread
@@ -53739,7 +53574,7 @@ func xmclose(tls TLS, _m uintptr /* *TFILE = S_IO_FILE */) (r int32) {
 	return int32(0)
 }
 
-type s97__locale_struct = struct{ Fcat [6]uintptr }
+type s85__locale_struct = struct{ Fcat [6]uintptr }
 
 type TFILE = s54_IO_FILE
 
@@ -53833,7 +53668,7 @@ type t234size_t = uint64
 
 type t72off_t = int64
 
-type s98__locale_struct = struct{ Fcat [6]uintptr }
+type s86__locale_struct = struct{ Fcat [6]uintptr }
 
 // linking fopencookie.o
 
@@ -54094,7 +53929,7 @@ func xcookieclose(tls TLS, _f uintptr /* *TFILE = S_IO_FILE */) (r int32) {
 	return int32(0)
 }
 
-type s99__locale_struct = struct{ Fcat [6]uintptr }
+type s87__locale_struct = struct{ Fcat [6]uintptr }
 
 type t1FILE = s56_IO_FILE
 
@@ -54189,7 +54024,7 @@ type t236size_t = uint64
 
 type t74off_t = int64
 
-type s100__locale_struct = struct{ Fcat [6]uintptr }
+type s88__locale_struct = struct{ Fcat [6]uintptr }
 
 // linking fputs.o
 
@@ -54241,7 +54076,7 @@ type t237size_t = uint64
 
 type t75off_t = int64
 
-type s101__locale_struct = struct{ Fcat [6]uintptr }
+type s89__locale_struct = struct{ Fcat [6]uintptr }
 
 // linking fputwc.o
 
@@ -54351,7 +54186,7 @@ type s60_IO_FILE = struct {
 	Flocale       uintptr // *S__locale_struct
 }
 
-type s102__locale_struct = struct{ Fcat [6]uintptr }
+type s90__locale_struct = struct{ Fcat [6]uintptr }
 
 // x__pthread_self is defined at pthread_arch.h:1:30
 func x28__pthread_self(tls TLS) (r uintptr /* *S__pthread */) {
@@ -54495,7 +54330,7 @@ type t25wchar_t = int32
 
 type t239size_t = uint64
 
-type s103__locale_struct = struct{ Fcat [6]uintptr }
+type s91__locale_struct = struct{ Fcat [6]uintptr }
 
 // x__pthread_self is defined at pthread_arch.h:1:30
 func x29__pthread_self(tls TLS) (r uintptr /* *S__pthread */) {
@@ -54654,7 +54489,7 @@ type s62_IO_FILE = struct {
 
 type t78off_t = int64
 
-type s104__locale_struct = struct{ Fcat [6]uintptr }
+type s92__locale_struct = struct{ Fcat [6]uintptr }
 
 // linking freopen.o
 
@@ -54780,7 +54615,7 @@ type t241size_t = uint64
 
 type t79off_t = int64
 
-type s105__locale_struct = struct{ Fcat [6]uintptr }
+type s93__locale_struct = struct{ Fcat [6]uintptr }
 
 // linking fscanf.o
 
@@ -54897,7 +54732,7 @@ type s65_IO_FILE = struct {
 
 type t242size_t = uint64
 
-type s106__locale_struct = struct{ Fcat [6]uintptr }
+type s94__locale_struct = struct{ Fcat [6]uintptr }
 
 // linking fsetpos.o
 
@@ -54946,7 +54781,7 @@ type t243size_t = uint64
 
 type t81off_t = int64
 
-type s107__locale_struct = struct{ Fcat [6]uintptr }
+type s95__locale_struct = struct{ Fcat [6]uintptr }
 
 // linking ftell.o
 
@@ -55041,7 +54876,7 @@ type s67_IO_FILE = struct {
 
 type t244size_t = uint64
 
-type s108__locale_struct = struct{ Fcat [6]uintptr }
+type s96__locale_struct = struct{ Fcat [6]uintptr }
 
 // linking ftrylockfile.o
 
@@ -55205,7 +55040,7 @@ type t245size_t = uint64
 
 type t83off_t = int64
 
-type s109__locale_struct = struct{ Fcat [6]uintptr }
+type s97__locale_struct = struct{ Fcat [6]uintptr }
 
 // x4__func__ [8]int8, escapes: true, atomic_arch.h:99:1
 var x990__func__ = ds + 45088
@@ -55271,7 +55106,7 @@ type t246size_t = uint64
 
 type t84off_t = int64
 
-type s110__locale_struct = struct{ Fcat [6]uintptr }
+type s98__locale_struct = struct{ Fcat [6]uintptr }
 
 // linking fwide.o
 
@@ -55346,7 +55181,7 @@ type t247size_t = uint64
 
 type t85off_t = int64
 
-type s111__locale_struct = struct{ Fcat [6]uintptr }
+type s99__locale_struct = struct{ Fcat [6]uintptr }
 
 // linking fwprintf.o
 
@@ -55467,7 +55302,7 @@ type s72_IO_FILE = struct {
 
 type t86off_t = int64
 
-type s112__locale_struct = struct{ Fcat [6]uintptr }
+type s100__locale_struct = struct{ Fcat [6]uintptr }
 
 // linking fwscanf.o
 
@@ -55550,7 +55385,7 @@ type t249size_t = uint64
 
 type t87off_t = int64
 
-type s113__locale_struct = struct{ Fcat [6]uintptr }
+type s101__locale_struct = struct{ Fcat [6]uintptr }
 
 // linking getc_unlocked.o
 
@@ -55606,7 +55441,7 @@ type t250size_t = uint64
 
 type t88off_t = int64
 
-type s114__locale_struct = struct{ Fcat [6]uintptr }
+type s102__locale_struct = struct{ Fcat [6]uintptr }
 
 // linking getchar.o
 
@@ -55798,7 +55633,7 @@ type t251size_t = uint64
 
 type t89off_t = int64
 
-type s115__locale_struct = struct{ Fcat [6]uintptr }
+type s103__locale_struct = struct{ Fcat [6]uintptr }
 
 // linking getline.o
 
@@ -55892,7 +55727,7 @@ type t254size_t = uint64
 
 type t90off_t = int64
 
-type s116__locale_struct = struct{ Fcat [6]uintptr }
+type s104__locale_struct = struct{ Fcat [6]uintptr }
 
 // linking getwchar.o
 
@@ -55962,7 +55797,7 @@ type t255size_t = uint64
 
 type t91off_t = int64
 
-type s117__locale_struct = struct{ Fcat [6]uintptr }
+type s105__locale_struct = struct{ Fcat [6]uintptr }
 
 // linking ofl_add.o
 
@@ -56020,7 +55855,7 @@ type t256size_t = uint64
 
 type t92off_t = int64
 
-type s118__locale_struct = struct{ Fcat [6]uintptr }
+type s106__locale_struct = struct{ Fcat [6]uintptr }
 
 // linking open_memstream.o
 
@@ -56186,7 +56021,7 @@ func xms_close(tls TLS, _f uintptr /* *TFILE = S_IO_FILE */) (r int32) {
 	return int32(0)
 }
 
-type s119__locale_struct = struct{ Fcat [6]uintptr }
+type s107__locale_struct = struct{ Fcat [6]uintptr }
 
 type t2FILE = s82_IO_FILE
 
@@ -56374,7 +56209,7 @@ func xwms_close(tls TLS, _f uintptr /* *TFILE = S_IO_FILE */) (r int32) {
 	return int32(0)
 }
 
-type s120__locale_struct = struct{ Fcat [6]uintptr }
+type s108__locale_struct = struct{ Fcat [6]uintptr }
 
 type t3FILE = s83_IO_FILE
 
@@ -56471,7 +56306,7 @@ type t259size_t = uint64
 
 type t95off_t = int64
 
-type s121__locale_struct = struct{ Fcat [6]uintptr }
+type s109__locale_struct = struct{ Fcat [6]uintptr }
 
 // linking perror.o
 
@@ -56542,7 +56377,7 @@ type t260size_t = uint64
 
 type t96off_t = int64
 
-type s122__locale_struct = struct{ Fcat [6]uintptr }
+type s110__locale_struct = struct{ Fcat [6]uintptr }
 
 // linking popen.o
 
@@ -56671,7 +56506,7 @@ type t261size_t = uint64
 
 type t97off_t = int64
 
-type s123__locale_struct = struct{ Fcat [6]uintptr }
+type s111__locale_struct = struct{ Fcat [6]uintptr }
 
 // linking printf.o
 
@@ -56752,7 +56587,7 @@ type t262size_t = uint64
 
 type t98off_t = int64
 
-type s124__locale_struct = struct{ Fcat [6]uintptr }
+type s112__locale_struct = struct{ Fcat [6]uintptr }
 
 // linking putc_unlocked.o
 
@@ -56810,7 +56645,7 @@ type t263size_t = uint64
 
 type t99off_t = int64
 
-type s125__locale_struct = struct{ Fcat [6]uintptr }
+type s113__locale_struct = struct{ Fcat [6]uintptr }
 
 // linking putchar.o
 
@@ -56931,7 +56766,7 @@ type t265size_t = uint64
 
 type t100off_t = int64
 
-type s126__locale_struct = struct{ Fcat [6]uintptr }
+type s114__locale_struct = struct{ Fcat [6]uintptr }
 
 // linking putwchar.o
 
@@ -57036,7 +56871,7 @@ type t266size_t = uint64
 
 type t101off_t = int64
 
-type s127__locale_struct = struct{ Fcat [6]uintptr }
+type s115__locale_struct = struct{ Fcat [6]uintptr }
 
 // linking scanf.o
 
@@ -57158,7 +56993,7 @@ type s95_IO_FILE = struct {
 
 type t102off_t = int64
 
-type s128__locale_struct = struct{ Fcat [6]uintptr }
+type s116__locale_struct = struct{ Fcat [6]uintptr }
 
 // linking snprintf.o
 
@@ -57280,7 +57115,7 @@ type t272size_t = uint64
 
 type t103off_t = int64
 
-type s129__locale_struct = struct{ Fcat [6]uintptr }
+type s117__locale_struct = struct{ Fcat [6]uintptr }
 
 type t4FILE = s96_IO_FILE
 
@@ -57362,7 +57197,7 @@ type t273size_t = uint64
 
 type t104off_t = int64
 
-type s130__locale_struct = struct{ Fcat [6]uintptr }
+type s118__locale_struct = struct{ Fcat [6]uintptr }
 
 type t5FILE = s97_IO_FILE
 
@@ -57446,7 +57281,7 @@ type t274size_t = uint64
 
 type t105off_t = int64
 
-type s131__locale_struct = struct{ Fcat [6]uintptr }
+type s119__locale_struct = struct{ Fcat [6]uintptr }
 
 type t6FILE = s98_IO_FILE
 
@@ -57654,7 +57489,7 @@ type t277size_t = uint64
 
 type t107off_t = int64
 
-type s132__locale_struct = struct{ Fcat [6]uintptr }
+type s120__locale_struct = struct{ Fcat [6]uintptr }
 
 // linking tmpnam.o
 
@@ -57812,7 +57647,7 @@ type t278size_t = uint64
 
 type t109off_t = int64
 
-type s133__locale_struct = struct{ Fcat [6]uintptr }
+type s121__locale_struct = struct{ Fcat [6]uintptr }
 
 // linking ungetwc.o
 
@@ -57905,7 +57740,7 @@ type s101_IO_FILE = struct {
 // x1__func__ [8]int8, escapes: true, ungetwc.c:10:1
 var x1034__func__ = ds + 45136
 
-type s134__locale_struct = struct{ Fcat [6]uintptr }
+type s122__locale_struct = struct{ Fcat [6]uintptr }
 
 // x__pthread_self is defined at pthread_arch.h:1:30
 func x31__pthread_self(tls TLS) (r uintptr /* *S__pthread */) {
@@ -58056,7 +57891,7 @@ type t281size_t = uint64
 
 type t111off_t = int64
 
-type s135__locale_struct = struct{ Fcat [6]uintptr }
+type s123__locale_struct = struct{ Fcat [6]uintptr }
 
 // linking vfprintf.o
 
@@ -58242,7 +58077,7 @@ _5:
 	if _l != 0 {
 		goto _2
 	}
-	if (uint32(*(*int8)(unsafe.Pointer(*(*uintptr)(unsafe.Pointer(_s)) + 1)))-uint32('0') < uint32(10)) && (int32(*(*int8)(unsafe.Pointer(*(*uintptr)(unsafe.Pointer(_s)) + 2))) == int32('$')) {
+	if (Xisdigit(tls, int32(*(*int8)(unsafe.Pointer(*(*uintptr)(unsafe.Pointer(_s)) + 1)))) != 0) && (int32(*(*int8)(unsafe.Pointer(*(*uintptr)(unsafe.Pointer(_s)) + 2))) == int32('$')) {
 		_l10n = uint32(1)
 		_argpos = int32(*(*int8)(unsafe.Pointer(*(*uintptr)(unsafe.Pointer(_s)) + 1))) - int32('0')
 		*(*uintptr)(unsafe.Pointer(_s)) += uintptr(3)
@@ -58257,7 +58092,7 @@ _5:
 		goto _6
 	}
 
-	if !((uint32(*(*int8)(unsafe.Pointer(*(*uintptr)(unsafe.Pointer(_s)) + 1)))-uint32('0') < uint32(10)) && (int32(*(*int8)(unsafe.Pointer(*(*uintptr)(unsafe.Pointer(_s)) + 2))) == int32('$'))) {
+	if !((Xisdigit(tls, int32(*(*int8)(unsafe.Pointer(*(*uintptr)(unsafe.Pointer(_s)) + 1)))) != 0) && (int32(*(*int8)(unsafe.Pointer(*(*uintptr)(unsafe.Pointer(_s)) + 2))) == int32('$'))) {
 		goto _8
 	}
 
@@ -58304,7 +58139,7 @@ _7:
 		goto _13
 	}
 
-	if !((uint32(*(*int8)(unsafe.Pointer(*(*uintptr)(unsafe.Pointer(_s)) + 2)))-uint32('0') < uint32(10)) && (int32(*(*int8)(unsafe.Pointer(*(*uintptr)(unsafe.Pointer(_s)) + 3))) == int32('$'))) {
+	if !((Xisdigit(tls, int32(*(*int8)(unsafe.Pointer(*(*uintptr)(unsafe.Pointer(_s)) + 2)))) != 0) && (int32(*(*int8)(unsafe.Pointer(*(*uintptr)(unsafe.Pointer(_s)) + 3))) == int32('$'))) {
 		goto _15
 	}
 
@@ -58716,7 +58551,7 @@ type t282size_t = uint64
 
 type t112off_t = int64
 
-type s136__locale_struct = struct{ Fcat [6]uintptr }
+type s124__locale_struct = struct{ Fcat [6]uintptr }
 
 type Tuintmax_t = uint64
 
@@ -58733,7 +58568,7 @@ func xout(tls TLS, _f uintptr /* *TFILE = S_IO_FILE */, _s uintptr /* *int8 */, 
 func xgetint(tls TLS, _s uintptr /* **int8 */) (r int32) {
 	var _i int32
 
-	for _i = int32(0); uint32(**(**int8)(unsafe.Pointer(_s)))-uint32('0') < uint32(10); *(*uintptr)(unsafe.Pointer(_s))++ {
+	for _i = int32(0); Xisdigit(tls, int32(**(**int8)(unsafe.Pointer(_s)))) != 0; *(*uintptr)(unsafe.Pointer(_s))++ {
 		if (uint32(_i) > uint32(214748364)) || (int32(**(**int8)(unsafe.Pointer(_s)))-int32('0') > int32(0x7fffffff)-int32(10)*_i) {
 			_i = int32(-1)
 		} else {
@@ -59433,12 +59268,12 @@ _1:
 	}
 
 	_alloc = int32(0)
-	if x5__isspace(tls, int32(*(*uint8)(unsafe.Pointer(_p)))) != 0 {
-		for x5__isspace(tls, int32(*(*uint8)(unsafe.Pointer(_p + 1)))) != 0 {
+	if Xisspace(tls, int32(*(*uint8)(unsafe.Pointer(_p)))) != 0 {
+		for Xisspace(tls, int32(*(*uint8)(unsafe.Pointer(_p + 1)))) != 0 {
 			_p++
 		}
 		X__shlim(tls, _f, int64(0))
-		for x5__isspace(tls, func() int32 {
+		for Xisspace(tls, func() int32 {
 			if *(*uintptr)(unsafe.Pointer(_f + 8)) < *(*uintptr)(unsafe.Pointer(_f + 184)) {
 				return int32(*(*uint8)(unsafe.Pointer(postinc1048((*uintptr)(unsafe.Pointer(_f + 8))))))
 			}
@@ -59458,7 +59293,7 @@ _1:
 	X__shlim(tls, _f, int64(0))
 	if int32(*(*uint8)(unsafe.Pointer(_p))) == int32('%') {
 		_p++
-		for x5__isspace(tls, set1049(&_c, func() int32 {
+		for Xisspace(tls, set1049(&_c, func() int32 {
 			if *(*uintptr)(unsafe.Pointer(_f + 8)) < *(*uintptr)(unsafe.Pointer(_f + 184)) {
 				return int32(*(*uint8)(unsafe.Pointer(postinc1048((*uintptr)(unsafe.Pointer(_f + 8))))))
 			}
@@ -59495,13 +59330,13 @@ _4:
 	if int32(*(*uint8)(unsafe.Pointer(_p))) == int32('*') {
 		_dest = null
 		_p++
-	} else if (uint32(*(*uint8)(unsafe.Pointer(_p)))-uint32('0') < uint32(10)) && (int32(*(*uint8)(unsafe.Pointer(_p + 1))) == int32('$')) {
+	} else if (Xisdigit(tls, int32(*(*uint8)(unsafe.Pointer(_p)))) != 0) && (int32(*(*uint8)(unsafe.Pointer(_p + 1))) == int32('$')) {
 		_dest = xarg_n(tls, _ap, uint32(int32(*(*uint8)(unsafe.Pointer(_p)))-int32('0')))
 		_p += uintptr(2)
 	} else {
 		_dest = VAuintptr(_ap)
 	}
-	for _width = int32(0); uint32(*(*uint8)(unsafe.Pointer(_p)))-uint32('0') < uint32(10); _p++ {
+	for _width = int32(0); Xisdigit(tls, int32(*(*uint8)(unsafe.Pointer(_p)))) != 0; _p++ {
 		_width = int32(10)*_width + int32(*(*uint8)(unsafe.Pointer(_p))) - int32('0')
 	}
 	if int32(*(*uint8)(unsafe.Pointer(_p))) == int32('m') {
@@ -59658,7 +59493,7 @@ _39:
 
 _40:
 	X__shlim(tls, _f, int64(0))
-	for x5__isspace(tls, func() int32 {
+	for Xisspace(tls, func() int32 {
 		if *(*uintptr)(unsafe.Pointer(_f + 8)) < *(*uintptr)(unsafe.Pointer(_f + 184)) {
 			return int32(*(*uint8)(unsafe.Pointer(postinc1048((*uintptr)(unsafe.Pointer(_f + 8))))))
 		}
@@ -60107,11 +59942,6 @@ type t1mbstate_t = struct {
 	F__opaque2 uint32
 }
 
-// x__isspace is defined at ctype.h:26:21
-func x5__isspace(tls TLS, __c int32) (r int32) {
-	return bool2int((__c == int32(' ')) || (uint32(__c)-uint32('\t') < uint32(5)))
-}
-
 // xarg_n is defined at vfscanf.c:45:13
 func xarg_n(tls TLS, _ap uintptr, _n uint32) (r uintptr /* *void */) {
 	var (
@@ -60174,7 +60004,7 @@ type t31wchar_t = int32
 
 type t47uintptr_t = uint64
 
-type s137__locale_struct = struct{ Fcat [6]uintptr }
+type s125__locale_struct = struct{ Fcat [6]uintptr }
 
 // linking vfwprintf.o
 
@@ -60396,7 +60226,7 @@ _7:
 		goto _13
 	}
 
-	if !((uint32(*(*int32)(unsafe.Pointer(*(*uintptr)(unsafe.Pointer(_s)) + 8)))-uint32('0') < uint32(10)) && (*(*int32)(unsafe.Pointer(*(*uintptr)(unsafe.Pointer(_s)) + 12)) == int32('$'))) {
+	if !((Xisdigit(tls, *(*int32)(unsafe.Pointer(*(*uintptr)(unsafe.Pointer(_s)) + 8))) != 0) && (*(*int32)(unsafe.Pointer(*(*uintptr)(unsafe.Pointer(_s)) + 12)) == int32('$'))) {
 		goto _15
 	}
 
@@ -60719,7 +60549,7 @@ type t284size_t = uint64
 
 type t114off_t = int64
 
-type s138__locale_struct = struct{ Fcat [6]uintptr }
+type s126__locale_struct = struct{ Fcat [6]uintptr }
 
 type t1uintmax_t = uint64
 
@@ -60933,7 +60763,7 @@ type t115off_t = int64
 
 type t285size_t = uint64
 
-type s139__locale_struct = struct{ Fcat [6]uintptr }
+type s127__locale_struct = struct{ Fcat [6]uintptr }
 
 // linking vprintf.o
 
@@ -61082,7 +60912,7 @@ func xsn_write(tls TLS, _f uintptr /* *TFILE = S_IO_FILE */, _s uintptr /* *uint
 
 type t116off_t = int64
 
-type s140__locale_struct = struct{ Fcat [6]uintptr }
+type s128__locale_struct = struct{ Fcat [6]uintptr }
 
 // linking vsprintf.o
 
@@ -61160,7 +60990,7 @@ type t288size_t = uint64
 
 type t117off_t = int64
 
-type s141__locale_struct = struct{ Fcat [6]uintptr }
+type s129__locale_struct = struct{ Fcat [6]uintptr }
 
 // linking vswprintf.o
 
@@ -61288,7 +61118,7 @@ func xsw_write(tls TLS, _f uintptr /* *TFILE = S_IO_FILE */, _s uintptr /* *uint
 
 type t118off_t = int64
 
-type s142__locale_struct = struct{ Fcat [6]uintptr }
+type s130__locale_struct = struct{ Fcat [6]uintptr }
 
 type t33wchar_t = int32
 
@@ -61389,7 +61219,7 @@ func xwstring_read(tls TLS, _f uintptr /* *TFILE = S_IO_FILE */, _buf uintptr /*
 
 type t119off_t = int64
 
-type s143__locale_struct = struct{ Fcat [6]uintptr }
+type s131__locale_struct = struct{ Fcat [6]uintptr }
 
 // linking vwprintf.o
 
@@ -61462,7 +61292,7 @@ func Xatoi(tls TLS, _s uintptr /* *int8 */) (r int32) {
 	)
 	_n = int32(0)
 	_neg = int32(0)
-	for x6__isspace(tls, int32(*(*int8)(unsafe.Pointer(_s)))) != 0 {
+	for Xisspace(tls, int32(*(*int8)(unsafe.Pointer(_s)))) != 0 {
 		_s++
 	}
 	switch int32(*(*int8)(unsafe.Pointer(_s))) {
@@ -61478,18 +61308,13 @@ _2:
 _3:
 	_s++
 _1:
-	for uint32(*(*int8)(unsafe.Pointer(_s)))-uint32('0') < uint32(10) {
+	for Xisdigit(tls, int32(*(*int8)(unsafe.Pointer(_s)))) != 0 {
 		_n = int32(10)*_n - (int32(*(*int8)(unsafe.Pointer(postinc1069(&_s)))) - int32('0'))
 	}
 	if _neg != 0 {
 		return _n
 	}
 	return -_n
-}
-
-// x__isspace is defined at ctype.h:26:21
-func x6__isspace(tls TLS, __c int32) (r int32) {
-	return bool2int((__c == int32(' ')) || (uint32(__c)-uint32('\t') < uint32(5)))
 }
 
 // linking atol.o
@@ -61504,7 +61329,7 @@ func Xatol(tls TLS, _s uintptr /* *int8 */) (r int64) {
 	)
 	_n = int64(0)
 	_neg = int32(0)
-	for x7__isspace(tls, int32(*(*int8)(unsafe.Pointer(_s)))) != 0 {
+	for Xisspace(tls, int32(*(*int8)(unsafe.Pointer(_s)))) != 0 {
 		_s++
 	}
 	switch int32(*(*int8)(unsafe.Pointer(_s))) {
@@ -61520,18 +61345,13 @@ _2:
 _3:
 	_s++
 _1:
-	for uint32(*(*int8)(unsafe.Pointer(_s)))-uint32('0') < uint32(10) {
+	for Xisdigit(tls, int32(*(*int8)(unsafe.Pointer(_s)))) != 0 {
 		_n = int64(10)*_n - int64(int32(*(*int8)(unsafe.Pointer(postinc1070(&_s))))-int32('0'))
 	}
 	if _neg != 0 {
 		return _n
 	}
 	return -_n
-}
-
-// x__isspace is defined at ctype.h:26:21
-func x7__isspace(tls TLS, __c int32) (r int32) {
-	return bool2int((__c == int32(' ')) || (uint32(__c)-uint32('\t') < uint32(5)))
 }
 
 // linking atoll.o
@@ -61546,7 +61366,7 @@ func Xatoll(tls TLS, _s uintptr /* *int8 */) (r int64) {
 	)
 	_n = int64(0)
 	_neg = int32(0)
-	for x8__isspace(tls, int32(*(*int8)(unsafe.Pointer(_s)))) != 0 {
+	for Xisspace(tls, int32(*(*int8)(unsafe.Pointer(_s)))) != 0 {
 		_s++
 	}
 	switch int32(*(*int8)(unsafe.Pointer(_s))) {
@@ -61562,18 +61382,13 @@ _2:
 _3:
 	_s++
 _1:
-	for uint32(*(*int8)(unsafe.Pointer(_s)))-uint32('0') < uint32(10) {
+	for Xisdigit(tls, int32(*(*int8)(unsafe.Pointer(_s)))) != 0 {
 		_n = int64(10)*_n - int64(int32(*(*int8)(unsafe.Pointer(postinc1071(&_s))))-int32('0'))
 	}
 	if _neg != 0 {
 		return _n
 	}
 	return -_n
-}
-
-// x__isspace is defined at ctype.h:26:21
-func x8__isspace(tls TLS, __c int32) (r int32) {
-	return bool2int((__c == int32(' ')) || (uint32(__c)-uint32('\t') < uint32(5)))
 }
 
 // linking bsearch.o
@@ -62188,7 +62003,7 @@ type t12FILE = s111_IO_FILE
 
 type t294size_t = uint64
 
-type s144__locale_struct = struct{ Fcat [6]uintptr }
+type s132__locale_struct = struct{ Fcat [6]uintptr }
 
 // linking strtol.o
 
@@ -62294,7 +62109,7 @@ type t295size_t = uint64
 
 type t121off_t = int64
 
-type s145__locale_struct = struct{ Fcat [6]uintptr }
+type s133__locale_struct = struct{ Fcat [6]uintptr }
 
 // linking wcstod.o
 
@@ -62426,7 +62241,7 @@ type t34wchar_t = int32
 
 type t122off_t = int64
 
-type s146__locale_struct = struct{ Fcat [6]uintptr }
+type s134__locale_struct = struct{ Fcat [6]uintptr }
 
 type t29wint_t = uint32
 
@@ -62579,7 +62394,7 @@ type t35wchar_t = int32
 
 type t123off_t = int64
 
-type s147__locale_struct = struct{ Fcat [6]uintptr }
+type s135__locale_struct = struct{ Fcat [6]uintptr }
 
 type t30wint_t = uint32
 
@@ -63254,7 +63069,7 @@ func X__strcasecmp_l(tls TLS, _l uintptr /* *int8 */, _r uintptr /* *int8 */, _l
 	return Xstrcasecmp(tls, _l, _r)
 }
 
-type s148__locale_struct = struct{ Fcat [6]uintptr }
+type s136__locale_struct = struct{ Fcat [6]uintptr }
 
 // linking strcasestr.o
 
@@ -63528,7 +63343,7 @@ func X__strncasecmp_l(tls TLS, _l uintptr /* *int8 */, _r uintptr /* *int8 */, _
 
 type t322size_t = uint64
 
-type s149__locale_struct = struct{ Fcat [6]uintptr }
+type s137__locale_struct = struct{ Fcat [6]uintptr }
 
 // linking strncat.o
 
@@ -64031,7 +63846,7 @@ func Xstrverscmp(tls TLS, _l0 uintptr /* *int8 */, _r0 uintptr /* *int8 */) (r i
 		if _c == 0 {
 			return int32(0)
 		}
-		if !(uint32(_c)-uint32('0') < uint32(10)) {
+		if Xisdigit(tls, _c) == 0 {
 			_dp = _i + uint64(1)
 			_z = int32(1)
 		} else if _c != int32('0') {
@@ -64039,15 +63854,15 @@ func Xstrverscmp(tls TLS, _l0 uintptr /* *int8 */, _r0 uintptr /* *int8 */) (r i
 		}
 	}
 	if (int32(*(*uint8)(unsafe.Pointer(_l + uintptr(_dp)))) != int32('0')) && (int32(*(*uint8)(unsafe.Pointer(_r + uintptr(_dp)))) != int32('0')) {
-		for _j = _i; uint32(*(*uint8)(unsafe.Pointer(_l + uintptr(_j))))-uint32('0') < uint32(10); _j++ {
-			if !(uint32(*(*uint8)(unsafe.Pointer(_r + uintptr(_j))))-uint32('0') < uint32(10)) {
+		for _j = _i; Xisdigit(tls, int32(*(*uint8)(unsafe.Pointer(_l + uintptr(_j))))) != 0; _j++ {
+			if Xisdigit(tls, int32(*(*uint8)(unsafe.Pointer(_r + uintptr(_j))))) == 0 {
 				return int32(1)
 			}
 		}
-		if uint32(*(*uint8)(unsafe.Pointer(_r + uintptr(_j))))-uint32('0') < uint32(10) {
+		if Xisdigit(tls, int32(*(*uint8)(unsafe.Pointer(_r + uintptr(_j))))) != 0 {
 			return int32(-1)
 		}
-	} else if ((_z != 0) && (_dp < _i)) && ((uint32(*(*uint8)(unsafe.Pointer(_l + uintptr(_i))))-uint32('0') < uint32(10)) || (uint32(*(*uint8)(unsafe.Pointer(_r + uintptr(_i))))-uint32('0') < uint32(10))) {
+	} else if ((_z != 0) && (_dp < _i)) && ((Xisdigit(tls, int32(*(*uint8)(unsafe.Pointer(_l + uintptr(_i))))) != 0) || (Xisdigit(tls, int32(*(*uint8)(unsafe.Pointer(_r + uintptr(_i))))) != 0)) {
 		return int32(uint8(int32(*(*uint8)(unsafe.Pointer(_l + uintptr(_i))))-int32('0'))) - int32(uint8(int32(*(*uint8)(unsafe.Pointer(_r + uintptr(_i))))-int32('0')))
 	}
 	return int32(*(*uint8)(unsafe.Pointer(_l + uintptr(_i)))) - int32(*(*uint8)(unsafe.Pointer(_r + uintptr(_i))))
@@ -64109,7 +63924,7 @@ func Xwcscasecmp_l(tls TLS, _l uintptr /* *Twchar_t = int32 */, _r uintptr /* *T
 	return Xwcscasecmp(tls, _l, _r)
 }
 
-type s150__locale_struct struct{ uintptr }
+type s138__locale_struct struct{ uintptr }
 
 // linking wcscat.o
 
@@ -64259,7 +64074,7 @@ func Xwcsncasecmp_l(tls TLS, _l uintptr /* *Twchar_t = int32 */, _r uintptr /* *
 
 type t345size_t = uint64
 
-type s151__locale_struct struct{ uintptr }
+type s139__locale_struct struct{ uintptr }
 
 // linking wcsncat.o
 
@@ -65412,7 +65227,7 @@ type s36__ptcb = struct {
 	F__next uintptr // *S__ptcb
 }
 
-type s152__locale_struct = struct{ Fcat [6]uintptr }
+type s140__locale_struct = struct{ Fcat [6]uintptr }
 
 // linking __wait.o
 
@@ -66116,7 +65931,7 @@ type s37__ptcb = struct {
 	F__next uintptr // *S__ptcb
 }
 
-type s153__locale_struct = struct{ Fcat [6]uintptr }
+type s141__locale_struct = struct{ Fcat [6]uintptr }
 
 // x5__func__ [8]int8, escapes: true, atomic_arch.h:99:1
 var x1171__func__ = ds + 47008
@@ -66609,7 +66424,7 @@ type s38__ptcb = struct {
 	F__next uintptr // *S__ptcb
 }
 
-type s154__locale_struct = struct{ Fcat [6]uintptr }
+type s142__locale_struct = struct{ Fcat [6]uintptr }
 
 // x7__func__ [18]int8, escapes: true, pthread_cancel.c:80:1
 var x1185__func__ = ds + 47080
@@ -67149,7 +66964,7 @@ type s40__ptcb = struct {
 	F__next uintptr // *S__ptcb
 }
 
-type s155__locale_struct = struct{ Fcat [6]uintptr }
+type s143__locale_struct = struct{ Fcat [6]uintptr }
 
 // x14__func__ [8]int8, escapes: true, atomic_arch.h:99:1
 var x1191__func__ = ds + 47120
@@ -67748,7 +67563,7 @@ func x2__futexwait(tls TLS, _addr uintptr /* *void */, _val int32, _priv int32) 
 	}
 }
 
-type s156__locale_struct = struct{ Fcat [6]uintptr }
+type s144__locale_struct = struct{ Fcat [6]uintptr }
 
 // x__syscall3 is defined at syscall_arch.h:33:22
 func x62__syscall3(tls TLS, _n int64, _a1 int64, _a2 int64, _a3 int64) (r int64) {
@@ -67828,7 +67643,7 @@ type s42__ptcb = struct {
 	F__next uintptr // *S__ptcb
 }
 
-type s157__locale_struct = struct{ Fcat [6]uintptr }
+type s145__locale_struct = struct{ Fcat [6]uintptr }
 
 // linking pthread_equal.o
 
@@ -67952,7 +67767,7 @@ type s43__ptcb = struct {
 	F__next uintptr // *S__ptcb
 }
 
-type s158__locale_struct = struct{ Fcat [6]uintptr }
+type s146__locale_struct = struct{ Fcat [6]uintptr }
 
 // linking pthread_getconcurrency.o
 
@@ -68021,7 +67836,7 @@ type s44__ptcb = struct {
 	F__next uintptr // *S__ptcb
 }
 
-type s159__locale_struct = struct{ Fcat [6]uintptr }
+type s147__locale_struct = struct{ Fcat [6]uintptr }
 
 // linking pthread_getschedparam.o
 
@@ -68110,7 +67925,7 @@ type s45__ptcb = struct {
 	F__next uintptr // *S__ptcb
 }
 
-type s160__locale_struct = struct{ Fcat [6]uintptr }
+type s148__locale_struct = struct{ Fcat [6]uintptr }
 
 type s42timespec = struct {
 	Ftv_sec  int64
@@ -68187,7 +68002,7 @@ type s46__ptcb = struct {
 	F__next uintptr // *S__ptcb
 }
 
-type s161__locale_struct = struct{ Fcat [6]uintptr }
+type s149__locale_struct = struct{ Fcat [6]uintptr }
 
 // linking pthread_join.o
 
@@ -68306,7 +68121,7 @@ type s47__ptcb = struct {
 	F__next uintptr // *S__ptcb
 }
 
-type s162__locale_struct = struct{ Fcat [6]uintptr }
+type s150__locale_struct = struct{ Fcat [6]uintptr }
 
 type t59time_t = int64
 
@@ -68456,7 +68271,7 @@ type s48__ptcb = struct {
 	F__next uintptr // *S__ptcb
 }
 
-type s163__locale_struct = struct{ Fcat [6]uintptr }
+type s151__locale_struct = struct{ Fcat [6]uintptr }
 
 // linking pthread_kill.o
 
@@ -68534,7 +68349,7 @@ type s49__ptcb = struct {
 	F__next uintptr // *S__ptcb
 }
 
-type s164__locale_struct = struct{ Fcat [6]uintptr }
+type s152__locale_struct = struct{ Fcat [6]uintptr }
 
 // linking pthread_mutex_consistent.o
 
@@ -68609,7 +68424,7 @@ type s50__ptcb = struct {
 	F__next uintptr // *S__ptcb
 }
 
-type s165__locale_struct = struct{ Fcat [6]uintptr }
+type s153__locale_struct = struct{ Fcat [6]uintptr }
 
 // linking pthread_mutex_destroy.o
 
@@ -68829,7 +68644,7 @@ type s51__ptcb = struct {
 	F__next uintptr // *S__ptcb
 }
 
-type s166__locale_struct = struct{ Fcat [6]uintptr }
+type s154__locale_struct = struct{ Fcat [6]uintptr }
 
 // linking pthread_mutex_trylock.o
 
@@ -68966,7 +68781,7 @@ type s52__ptcb = struct {
 	F__next uintptr // *S__ptcb
 }
 
-type s167__locale_struct = struct{ Fcat [6]uintptr }
+type s155__locale_struct = struct{ Fcat [6]uintptr }
 
 // linking pthread_mutex_unlock.o
 
@@ -69094,7 +68909,7 @@ type s53__ptcb = struct {
 	F__next uintptr // *S__ptcb
 }
 
-type s168__locale_struct = struct{ Fcat [6]uintptr }
+type s156__locale_struct = struct{ Fcat [6]uintptr }
 
 // x__syscall3 is defined at syscall_arch.h:33:22
 func x63__syscall3(tls TLS, _n int64, _a1 int64, _a2 int64, _a3 int64) (r int64) {
@@ -69678,7 +69493,7 @@ type s55__ptcb = struct {
 	F__next uintptr // *S__ptcb
 }
 
-type s169__locale_struct = struct{ Fcat [6]uintptr }
+type s157__locale_struct = struct{ Fcat [6]uintptr }
 
 // linking pthread_setattr_default_np.o
 
@@ -69773,7 +69588,7 @@ type s56__ptcb = struct {
 	F__next uintptr // *S__ptcb
 }
 
-type s170__locale_struct = struct{ Fcat [6]uintptr }
+type s158__locale_struct = struct{ Fcat [6]uintptr }
 
 // linking pthread_setcanceltype.o
 
@@ -69851,7 +69666,7 @@ type s57__ptcb = struct {
 	F__next uintptr // *S__ptcb
 }
 
-type s171__locale_struct = struct{ Fcat [6]uintptr }
+type s159__locale_struct = struct{ Fcat [6]uintptr }
 
 // linking pthread_setconcurrency.o
 
@@ -69956,7 +69771,7 @@ type s58__ptcb = struct {
 	F__next uintptr // *S__ptcb
 }
 
-type s172__locale_struct = struct{ Fcat [6]uintptr }
+type s160__locale_struct = struct{ Fcat [6]uintptr }
 
 // linking pthread_setschedparam.o
 
@@ -70037,7 +69852,7 @@ type s59__ptcb = struct {
 	F__next uintptr // *S__ptcb
 }
 
-type s173__locale_struct = struct{ Fcat [6]uintptr }
+type s161__locale_struct = struct{ Fcat [6]uintptr }
 
 type s47timespec = struct {
 	Ftv_sec  int64
@@ -70122,7 +69937,7 @@ type s60__ptcb = struct {
 	F__next uintptr // *S__ptcb
 }
 
-type s174__locale_struct = struct{ Fcat [6]uintptr }
+type s162__locale_struct = struct{ Fcat [6]uintptr }
 
 // linking pthread_setspecific.o
 
@@ -70202,7 +70017,7 @@ type s61__ptcb = struct {
 	F__next uintptr // *S__ptcb
 }
 
-type s175__locale_struct = struct{ Fcat [6]uintptr }
+type s163__locale_struct = struct{ Fcat [6]uintptr }
 
 // linking pthread_sigmask.o
 
@@ -70894,7 +70709,7 @@ type s63__ptcb = struct {
 	F__next uintptr // *S__ptcb
 }
 
-type s176__locale_struct = struct{ Fcat [6]uintptr }
+type s164__locale_struct = struct{ Fcat [6]uintptr }
 
 // linking thrd_exit.o
 
@@ -71070,7 +70885,7 @@ type s64__ptcb = struct {
 	F__next uintptr // *S__ptcb
 }
 
-type s177__locale_struct = struct{ Fcat [6]uintptr }
+type s165__locale_struct = struct{ Fcat [6]uintptr }
 
 // linking vmlock.o
 
@@ -73208,7 +73023,7 @@ type s15tm = struct {
 	Ftm_zone   uintptr // *int8
 }
 
-type s178__locale_struct = struct{ Fcat [6]uintptr }
+type s166__locale_struct = struct{ Fcat [6]uintptr }
 
 type t2nl_item = int32
 
@@ -73338,8 +73153,8 @@ _1:
 	}
 
 	if int32(*(*int8)(unsafe.Pointer(_f))) != int32('%') {
-		if x9__isspace(tls, int32(*(*int8)(unsafe.Pointer(_f)))) != 0 {
-			for ; (*(*int8)(unsafe.Pointer(_s)) != 0) && (x9__isspace(tls, int32(*(*int8)(unsafe.Pointer(_s)))) != 0); _s++ {
+		if Xisspace(tls, int32(*(*int8)(unsafe.Pointer(_f)))) != 0 {
+			for ; (*(*int8)(unsafe.Pointer(_s)) != 0) && (Xisspace(tls, int32(*(*int8)(unsafe.Pointer(_s)))) != 0); _s++ {
 			}
 		} else if int32(*(*int8)(unsafe.Pointer(_s))) != int32(*(*int8)(unsafe.Pointer(_f))) {
 			return null
@@ -73353,7 +73168,7 @@ _1:
 	if int32(*(*int8)(unsafe.Pointer(_f))) == int32('+') {
 		_f++
 	}
-	if uint32(*(*int8)(unsafe.Pointer(_f)))-uint32('0') < uint32(10) {
+	if Xisdigit(tls, int32(*(*int8)(unsafe.Pointer(_f)))) != 0 {
 		_w = int32(Xstrtoul(tls, _f, _new_f, int32(10)))
 		_f = *(*uintptr)(unsafe.Pointer(_new_f))
 	} else {
@@ -73502,7 +73317,7 @@ _18:
 
 _19:
 _20:
-	for ; (*(*int8)(unsafe.Pointer(_s)) != 0) && (x9__isspace(tls, int32(*(*int8)(unsafe.Pointer(_s)))) != 0); _s++ {
+	for ; (*(*int8)(unsafe.Pointer(_s)) != 0) && (Xisspace(tls, int32(*(*int8)(unsafe.Pointer(_s)))) != 0); _s++ {
 	}
 	goto _3
 
@@ -73611,11 +73426,11 @@ _34:
 	return null
 	goto lnumeric_range
 lnumeric_range:
-	if !(uint32(*(*int8)(unsafe.Pointer(_s)))-uint32('0') < uint32(10)) {
+	if Xisdigit(tls, int32(*(*int8)(unsafe.Pointer(_s)))) == 0 {
 		return null
 	}
 	*(*int32)(unsafe.Pointer(_dest)) = int32(0)
-	for _i = int32(1); (_i <= _min+_range) && (uint32(*(*int8)(unsafe.Pointer(_s)))-uint32('0') < uint32(10)); func() { _i = _i * int32(10) }() {
+	for _i = int32(1); (_i <= _min+_range) && (Xisdigit(tls, int32(*(*int8)(unsafe.Pointer(_s)))) != 0); func() { _i = _i * int32(10) }() {
 		*(*int32)(unsafe.Pointer(_dest)) = *(*int32)(unsafe.Pointer(_dest))*int32(10) + int32(*(*int8)(unsafe.Pointer(postinc1255(&_s)))) - int32('0')
 	}
 	if uint32(*(*int32)(unsafe.Pointer(_dest))-_min) >= uint32(_range) {
@@ -73640,10 +73455,10 @@ lnumeric_digits:
 		_neg = int32(1)
 		_s++
 	}
-	if !(uint32(*(*int8)(unsafe.Pointer(_s)))-uint32('0') < uint32(10)) {
+	if Xisdigit(tls, int32(*(*int8)(unsafe.Pointer(_s)))) == 0 {
 		return null
 	}
-	for *(*int32)(unsafe.Pointer(_dest)) = set1256(&_i, int32(0)); (_i < _w) && (uint32(*(*int8)(unsafe.Pointer(_s)))-uint32('0') < uint32(10)); _i++ {
+	for *(*int32)(unsafe.Pointer(_dest)) = set1256(&_i, int32(0)); (_i < _w) && (Xisdigit(tls, int32(*(*int8)(unsafe.Pointer(_s)))) != 0); _i++ {
 		*(*int32)(unsafe.Pointer(_dest)) = *(*int32)(unsafe.Pointer(_dest))*int32(10) + int32(*(*int8)(unsafe.Pointer(postinc1255(&_s)))) - int32('0')
 	}
 	if _neg != 0 {
@@ -73713,11 +73528,6 @@ type s16tm = struct {
 var x1257__func__ = ds + 47496
 
 type t399size_t = uint64
-
-// x__isspace is defined at ctype.h:26:21
-func x9__isspace(tls TLS, __c int32) (r int32) {
-	return bool2int((__c == int32(' ')) || (uint32(__c)-uint32('\t') < uint32(5)))
-}
 
 type t3nl_item = int32
 
@@ -74028,7 +73838,7 @@ type s66__ptcb = struct {
 	F__next uintptr // *S__ptcb
 }
 
-type s179__locale_struct = struct{ Fcat [6]uintptr }
+type s167__locale_struct = struct{ Fcat [6]uintptr }
 
 type t1pthread_barrier_t = struct {
 	F__u struct {
@@ -74142,7 +73952,7 @@ type s67__ptcb = struct {
 	F__next uintptr // *S__ptcb
 }
 
-type s180__locale_struct = struct{ Fcat [6]uintptr }
+type s168__locale_struct = struct{ Fcat [6]uintptr }
 
 // x4__func__ [8]int8, escapes: true, atomic_arch.h:99:1
 var x1263__func__ = ds + 47536
@@ -74222,7 +74032,7 @@ type s68__ptcb = struct {
 	F__next uintptr // *S__ptcb
 }
 
-type s181__locale_struct = struct{ Fcat [6]uintptr }
+type s169__locale_struct = struct{ Fcat [6]uintptr }
 
 // linking timer_gettime.o
 
@@ -74304,7 +74114,7 @@ type s69__ptcb = struct {
 	F__next uintptr // *S__ptcb
 }
 
-type s182__locale_struct = struct{ Fcat [6]uintptr }
+type s170__locale_struct = struct{ Fcat [6]uintptr }
 
 type t83time_t = int64
 
@@ -74388,7 +74198,7 @@ type s70__ptcb = struct {
 	F__next uintptr // *S__ptcb
 }
 
-type s183__locale_struct = struct{ Fcat [6]uintptr }
+type s171__locale_struct = struct{ Fcat [6]uintptr }
 
 type t84time_t = int64
 
@@ -74580,7 +74390,7 @@ type s18tm = struct {
 	Ftm_zone   uintptr // *int8
 }
 
-type s184__locale_struct = struct{ Fcat [6]uintptr }
+type s172__locale_struct = struct{ Fcat [6]uintptr }
 
 type t56wchar_t = int32
 
@@ -82387,8 +82197,6 @@ var X__builtin_exit = Xexit
 
 var X__builtin_ffs = Xffs
 
-var X__builtin_isprint = Xisprint
-
 var X__builtin_memcmp = Xmemcmp
 
 var X__builtin_memcpy = Xmemcpy
@@ -82651,28 +82459,6 @@ var Xhsearch_r = X__hsearch_r
 
 var Xinet_aton = X__inet_aton
 
-var Xisalnum_l = X__isalnum_l
-
-var Xisalpha_l = X__isalpha_l
-
-var Xisblank_l = X__isblank_l
-
-var Xiscntrl_l = X__iscntrl_l
-
-var Xisdigit_l = X__isdigit_l
-
-var Xisgraph_l = X__isgraph_l
-
-var Xislower_l = X__islower_l
-
-var Xisprint_l = X__isprint_l
-
-var Xispunct_l = X__ispunct_l
-
-var Xisspace_l = X__isspace_l
-
-var Xisupper_l = X__isupper_l
-
 var Xiswalnum_l = X__iswalnum_l
 
 var Xiswalpha_l = X__iswalpha_l
@@ -82698,8 +82484,6 @@ var Xiswspace_l = X__iswspace_l
 var Xiswupper_l = X__iswupper_l
 
 var Xiswxdigit_l = X__iswxdigit_l
-
-var Xisxdigit_l = X__isxdigit_l
 
 var Xlgamma_r = X__lgamma_r
 
