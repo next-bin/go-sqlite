@@ -130,7 +130,7 @@ long int nrand48 (unsigned short [3]);
 long mrand48 (void);
 long jrand48 (unsigned short [3]);
 void srand48 (long);
-//TODO(ccgo)	unsigned short *seed48 (unsigned short [3]);
+unsigned short *seed48 (unsigned short [3]);
 void lcong48 (unsigned short [7]);
 #endif
 

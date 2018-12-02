@@ -42,7 +42,6 @@ static int checkver(Verdef *def, int vsym, const char *vername, char *strings)
 
 void *__vdsosym(const char *vername, const char *name)
 {
-	__GO__("return 0\n");
 	size_t i;
 	for (i=0; libc.auxv[i] != AT_SYSINFO_EHDR; i+=2)
 		if (!libc.auxv[i]) return 0;

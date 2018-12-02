@@ -1,6 +1,6 @@
+#include <libc.h>
 #include <string.h>
 #include <stdint.h>
-#include <libc.h>
 
 void *memset(void *dest, int c, size_t n)
 {

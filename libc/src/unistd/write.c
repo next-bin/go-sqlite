@@ -1,7 +1,6 @@
 #include <unistd.h>
 #include "syscall.h"
 #include "libc.h"
-#include <assert.h>
 
 ssize_t write(int fd, const void *buf, size_t count)
 {

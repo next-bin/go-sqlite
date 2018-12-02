@@ -4,7 +4,6 @@
 #include <limits.h>
 #include <ctype.h>
 #include <string.h>
-#include <assert.h>
 
 wint_t ungetwc(wint_t c, FILE *f)
 {
@@ -25,10 +24,8 @@ wint_t ungetwc(wint_t c, FILE *f)
 		return WEOF;
 	}
 
-	__assert_fail("TODO(ccgo)", __FILE__, __LINE__, __func__);
-//TODO(ccgo)		if (isascii(c)) *--f->rpos = c;
-	__assert_fail("TODO(ccgo)", __FILE__, __LINE__, __func__);
-//TODO(ccgo)		else memcpy(f->rpos -= l, mbc, l);
+	if (isascii(c)) *--f->rpos = c;
+	else memcpy(f->rpos -= l, mbc, l);
 
 	f->flags &= ~F_EOF;
 

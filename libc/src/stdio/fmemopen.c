@@ -2,7 +2,6 @@
 #include <errno.h>
 #include <string.h>
 #include <inttypes.h>
-#include <assert.h>
 
 struct cookie {
 	size_t pos, len, size;
@@ -18,19 +17,17 @@ struct mem_FILE {
 
 static off_t mseek(FILE *f, off_t off, int whence)
 {
-	ssize_t base;
-	struct cookie *c = f->cookie;
-	if (whence>2U) {
-fail:
-		errno = EINVAL;
-		return -1;
-	}
-	__assert_fail("TODO(ccgo)", __FILE__, __LINE__, __func__);
-//TODO(ccgo)		base = (size_t [3]){0, c->pos, c->len}[whence];
-	__assert_fail("TODO(ccgo)", __FILE__, __LINE__, __func__);
-//TODO(ccgo)		if (off < -base || off > (ssize_t)c->size-base) goto fail;
-	__assert_fail("TODO(ccgo)", __FILE__, __LINE__, __func__);
-//TODO(ccgo)		return c->pos = base+off;
+	__GO__("panic(`TODO`)\n");
+// 	ssize_t base;
+// 	struct cookie *c = f->cookie;
+// 	if (whence>2U) {
+// fail:
+// 		errno = EINVAL;
+// 		return -1;
+// 	}
+// 	base = (size_t [3]){0, c->pos, c->len}[whence];
+// 	if (off < -base || off > (ssize_t)c->size-base) goto fail;
+// 	return c->pos = base+off;
 }
 
 static size_t mread(FILE *f, unsigned char *buf, size_t len)
@@ -116,6 +113,7 @@ FILE *fmemopen(void *restrict buf, size_t size, const char *restrict mode)
 	if (!plus) f->f.flags = (*mode == 'r') ? F_NOWR : F_NORD;
 	if (*mode == 'r') f->c.len = size;
 	else if (*mode == 'a') f->c.len = f->c.pos = strnlen(buf, size);
+	else if (plus) *f->c.buf = 0;
 
 	f->f.read = mread;
 	f->f.write = mwrite;

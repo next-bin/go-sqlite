@@ -3,7 +3,6 @@
 #include "pthread_impl.h"
 #include "syscall.h"
 #include "libc.h"
-#include <assert.h>
 
 __attribute__((__visibility__("hidden")))
 long __cancel(), __syscall_cp_asm(), __syscall_cp_c();
@@ -58,11 +57,13 @@ static void cancel_handler(int sig, siginfo_t *si, void *ctx)
 	a_barrier();
 	if (!self->cancel || self->canceldisable == PTHREAD_CANCEL_DISABLE) return;
 
-	__assert_fail("TODO(ccgo)", __FILE__, __LINE__, __func__);
-//TODO(ccgo)		_sigaddset(&uc->uc_sigmask, SIGCANCEL);
+	_sigaddset(&uc->uc_sigmask, SIGCANCEL);
 
 	if (self->cancelasync || pc >= (uintptr_t)__cp_begin && pc < (uintptr_t)__cp_end) {
 		uc->uc_mcontext.MC_PC = (uintptr_t)__cp_cancel;
+#ifdef CANCEL_GOT
+		uc->uc_mcontext.MC_GOT = CANCEL_GOT;
+#endif
 		return;
 	}
 
@@ -78,13 +79,13 @@ void __testcancel()
 
 static void init_cancellation()
 {
-	__assert_fail("TODO(ccgo)", __FILE__, __LINE__, __func__);
-//TODO(ccgo)		struct sigaction sa = {
-//TODO(ccgo)			.sa_flags = SA_SIGINFO | SA_RESTART,
-//TODO(ccgo)			.sa_sigaction = cancel_handler
-//TODO(ccgo)		};
-//TODO(ccgo)		memset(&sa.sa_mask, -1, _NSIG/8);
-//TODO(ccgo)		__libc_sigaction(SIGCANCEL, &sa, 0);
+	__GO__("panic(`TODO`)\n");
+// 	struct sigaction sa = {
+// 		.sa_flags = SA_SIGINFO | SA_RESTART,
+// 		.sa_sigaction = cancel_handler
+// 	};
+// 	memset(&sa.sa_mask, -1, _NSIG/8);
+// 	__libc_sigaction(SIGCANCEL, &sa, 0);
 }
 
 int pthread_cancel(pthread_t t)
@@ -95,7 +96,10 @@ int pthread_cancel(pthread_t t)
 		init = 1;
 	}
 	a_store(&t->cancel, 1);
-	__assert_fail("TODO(ccgo)", __FILE__, __LINE__, __func__);
-//TODO(ccgo)		if (t == pthread_self() && !t->cancelasync) return 0;
+	if (t == pthread_self()) {
+		if (t->canceldisable == PTHREAD_CANCEL_ENABLE && t->cancelasync)
+			pthread_exit(PTHREAD_CANCELED);
+		return 0;
+	}
 	return pthread_kill(t, SIGCANCEL);
 }

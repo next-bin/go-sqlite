@@ -1,7 +1,6 @@
 #include <string.h>
 #include <stdint.h>
 #include <endian.h>
-#include <libc.h>
 
 void *memcpy(void *restrict dest, const void *restrict src, size_t n)
 {
@@ -123,5 +122,3 @@ void *memcpy(void *restrict dest, const void *restrict src, size_t n)
 	for (; n; n--) *d++ = *s++;
 	return dest;
 }
-
-weak_alias(memcpy, __builtin_memcpy);

@@ -5,7 +5,6 @@
 #include <spawn.h>
 #include "stdio_impl.h"
 #include "syscall.h"
-#include <assert.h>
 
 extern char **__environ;
 
@@ -52,26 +51,16 @@ FILE *popen(const char *cmd, const char *mode)
 	e = ENOMEM;
 	if (!posix_spawn_file_actions_init(&fa)) {
 		if (!posix_spawn_file_actions_adddup2(&fa, p[1-op], 1-op)) {
-			__assert_fail("TODO(ccgo)", __FILE__, __LINE__, __func__);
-//TODO(ccgo)				if (!(e = posix_spawn(&pid, "/bin/sh", &fa, 0,
-			__assert_fail("TODO(ccgo)", __FILE__, __LINE__, __func__);
-//TODO(ccgo)				    (char *[]){ "sh", "-c", (char *)cmd, 0 }, __environ))) {
-			__assert_fail("TODO(ccgo)", __FILE__, __LINE__, __func__);
-//TODO(ccgo)					posix_spawn_file_actions_destroy(&fa);
-			__assert_fail("TODO(ccgo)", __FILE__, __LINE__, __func__);
-//TODO(ccgo)					f->pipe_pid = pid;
-			__assert_fail("TODO(ccgo)", __FILE__, __LINE__, __func__);
-//TODO(ccgo)					if (!strchr(mode, 'e'))
-			__assert_fail("TODO(ccgo)", __FILE__, __LINE__, __func__);
-//TODO(ccgo)						fcntl(p[op], F_SETFD, 0);
-			__assert_fail("TODO(ccgo)", __FILE__, __LINE__, __func__);
-//TODO(ccgo)					__syscall(SYS_close, p[1-op]);
-			__assert_fail("TODO(ccgo)", __FILE__, __LINE__, __func__);
-//TODO(ccgo)					FUNLOCK(f);
-			__assert_fail("TODO(ccgo)", __FILE__, __LINE__, __func__);
-//TODO(ccgo)					return f;
-			__assert_fail("TODO(ccgo)", __FILE__, __LINE__, __func__);
-//TODO(ccgo)				}
+			if (!(e = posix_spawn(&pid, "/bin/sh", &fa, 0,
+			    (char *[]){ "sh", "-c", (char *)cmd, 0 }, __environ))) {
+				posix_spawn_file_actions_destroy(&fa);
+				f->pipe_pid = pid;
+				if (!strchr(mode, 'e'))
+					fcntl(p[op], F_SETFD, 0);
+				__syscall(SYS_close, p[1-op]);
+				FUNLOCK(f);
+				return f;
+			}
 		}
 		posix_spawn_file_actions_destroy(&fa);
 	}

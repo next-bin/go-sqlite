@@ -8,7 +8,6 @@
 #include <errno.h>
 #include <stddef.h>
 #include "libc.h"
-#include <assert.h>
 
 struct match
 {
@@ -51,96 +50,96 @@ static int append(struct match **tail, const char *name, size_t len, int mark)
 
 static int match_in_dir(const char *d, const char *p, int flags, int (*errfunc)(const char *path, int err), struct match **tail)
 {
-	__assert_fail("TODO(ccgo)", __FILE__, __LINE__, __func__);
-//TODO(ccgo)		DIR *dir;
-//TODO(ccgo)		struct dirent de_buf, *de;
-//TODO(ccgo)		char pat[strlen(p)+1];
-//TODO(ccgo)		char *p2;
-//TODO(ccgo)		size_t l = strlen(d);
-//TODO(ccgo)		int literal;
-//TODO(ccgo)		int fnm_flags= ((flags & GLOB_NOESCAPE) ? FNM_NOESCAPE : 0)
-//TODO(ccgo)			| ((!(flags & GLOB_PERIOD)) ? FNM_PERIOD : 0);
-//TODO(ccgo)		int error;
-//TODO(ccgo)	
-//TODO(ccgo)		if ((p2 = strchr(p, '/'))) {
-//TODO(ccgo)			strcpy(pat, p);
-//TODO(ccgo)			pat[p2-p] = 0;
-//TODO(ccgo)			for (; *p2 == '/'; p2++);
-//TODO(ccgo)			p = pat;
-//TODO(ccgo)		}
-//TODO(ccgo)		literal = is_literal(p, !(flags & GLOB_NOESCAPE));
-//TODO(ccgo)		if (*d == '/' && !*(d+1)) l = 0;
-//TODO(ccgo)	
-//TODO(ccgo)		/* rely on opendir failing for nondirectory objects */
-//TODO(ccgo)		dir = opendir(*d ? d : ".");
-//TODO(ccgo)		error = errno;
-//TODO(ccgo)		if (!dir) {
-//TODO(ccgo)			/* this is not an error -- we let opendir call stat for us */
-//TODO(ccgo)			if (error == ENOTDIR) return 0;
-//TODO(ccgo)			if (error == EACCES && !*p) {
-//TODO(ccgo)				struct stat st;
-//TODO(ccgo)				if (!stat(d, &st) && S_ISDIR(st.st_mode)) {
-//TODO(ccgo)					if (append(tail, d, l, l))
-//TODO(ccgo)						return GLOB_NOSPACE;
-//TODO(ccgo)					return 0;
-//TODO(ccgo)				}
-//TODO(ccgo)			}
-//TODO(ccgo)			if (errfunc(d, error) || (flags & GLOB_ERR))
-//TODO(ccgo)				return GLOB_ABORTED;
-//TODO(ccgo)			return 0;
-//TODO(ccgo)		}
-//TODO(ccgo)		if (!*p) {
-//TODO(ccgo)			error = append(tail, d, l, l) ? GLOB_NOSPACE : 0;
-//TODO(ccgo)			closedir(dir);
-//TODO(ccgo)			return error;
-//TODO(ccgo)		}
-//TODO(ccgo)		while (!(error = readdir_r(dir, &de_buf, &de)) && de) {
-//TODO(ccgo)			char namebuf[l+de->d_reclen+2], *name = namebuf;
-//TODO(ccgo)			if (!literal && fnmatch(p, de->d_name, fnm_flags))
-//TODO(ccgo)				continue;
-//TODO(ccgo)			if (literal && strcmp(p, de->d_name))
-//TODO(ccgo)				continue;
-//TODO(ccgo)			if (p2 && de->d_type && !S_ISDIR(de->d_type<<12) && !S_ISLNK(de->d_type<<12))
-//TODO(ccgo)				continue;
-//TODO(ccgo)			/* With GLOB_PERIOD, don't allow matching . or .. unless
-//TODO(ccgo)			 * fnmatch would match them with FNM_PERIOD rules in effect. */
-//TODO(ccgo)			if (p2 && (flags & GLOB_PERIOD) && de->d_name[0]=='.'
-//TODO(ccgo)			    && (!de->d_name[1] || de->d_name[1]=='.' && !de->d_name[2])
-//TODO(ccgo)			    && fnmatch(p, de->d_name, fnm_flags | FNM_PERIOD))
-//TODO(ccgo)				continue;
-//TODO(ccgo)			if (*d) {
-//TODO(ccgo)				memcpy(name, d, l);
-//TODO(ccgo)				name[l] = '/';
-//TODO(ccgo)				strcpy(name+l+1, de->d_name);
-//TODO(ccgo)			} else {
-//TODO(ccgo)				name = de->d_name;
-//TODO(ccgo)			}
-//TODO(ccgo)			if (p2) {
-//TODO(ccgo)				if ((error = match_in_dir(name, p2, flags, errfunc, tail))) {
-//TODO(ccgo)					closedir(dir);
-//TODO(ccgo)					return error;
-//TODO(ccgo)				}
-//TODO(ccgo)			} else {
-//TODO(ccgo)				int mark = 0;
-//TODO(ccgo)				if (flags & GLOB_MARK) {
-//TODO(ccgo)					if (de->d_type && !S_ISLNK(de->d_type<<12))
-//TODO(ccgo)						mark = S_ISDIR(de->d_type<<12);
-//TODO(ccgo)					else {
-//TODO(ccgo)						struct stat st;
-//TODO(ccgo)						stat(name, &st);
-//TODO(ccgo)						mark = S_ISDIR(st.st_mode);
-//TODO(ccgo)					}
-//TODO(ccgo)				}
-//TODO(ccgo)				if (append(tail, name, l+de->d_reclen+1, mark)) {
-//TODO(ccgo)					closedir(dir);
-//TODO(ccgo)					return GLOB_NOSPACE;
-//TODO(ccgo)				}
-//TODO(ccgo)			}
-//TODO(ccgo)		}
-//TODO(ccgo)		closedir(dir);
-//TODO(ccgo)		if (error && (errfunc(d, error) || (flags & GLOB_ERR)))
-//TODO(ccgo)			return GLOB_ABORTED;
-//TODO(ccgo)		return 0;
+	__GO__("panic(`TODO`)\n");
+// 	DIR *dir;
+// 	struct dirent de_buf, *de;
+// 	char pat[strlen(p)+1];
+// 	char *p2;
+// 	size_t l = strlen(d);
+// 	int literal;
+// 	int fnm_flags= ((flags & GLOB_NOESCAPE) ? FNM_NOESCAPE : 0)
+// 		| ((!(flags & GLOB_PERIOD)) ? FNM_PERIOD : 0);
+// 	int error;
+// 
+// 	if ((p2 = strchr(p, '/'))) {
+// 		strcpy(pat, p);
+// 		pat[p2-p] = 0;
+// 		for (; *p2 == '/'; p2++);
+// 		p = pat;
+// 	}
+// 	literal = is_literal(p, !(flags & GLOB_NOESCAPE));
+// 	if (*d == '/' && !*(d+1)) l = 0;
+// 
+// 	/* rely on opendir failing for nondirectory objects */
+// 	dir = opendir(*d ? d : ".");
+// 	error = errno;
+// 	if (!dir) {
+// 		/* this is not an error -- we let opendir call stat for us */
+// 		if (error == ENOTDIR) return 0;
+// 		if (error == EACCES && !*p) {
+// 			struct stat st;
+// 			if (!stat(d, &st) && S_ISDIR(st.st_mode)) {
+// 				if (append(tail, d, l, l))
+// 					return GLOB_NOSPACE;
+// 				return 0;
+// 			}
+// 		}
+// 		if (errfunc(d, error) || (flags & GLOB_ERR))
+// 			return GLOB_ABORTED;
+// 		return 0;
+// 	}
+// 	if (!*p) {
+// 		error = append(tail, d, l, l) ? GLOB_NOSPACE : 0;
+// 		closedir(dir);
+// 		return error;
+// 	}
+// 	while (!(error = readdir_r(dir, &de_buf, &de)) && de) {
+// 		char namebuf[l+de->d_reclen+2], *name = namebuf;
+// 		if (!literal && fnmatch(p, de->d_name, fnm_flags))
+// 			continue;
+// 		if (literal && strcmp(p, de->d_name))
+// 			continue;
+// 		if (p2 && de->d_type && !S_ISDIR(de->d_type<<12) && !S_ISLNK(de->d_type<<12))
+// 			continue;
+// 		/* With GLOB_PERIOD, don't allow matching . or .. unless
+// 		 * fnmatch would match them with FNM_PERIOD rules in effect. */
+// 		if (p2 && (flags & GLOB_PERIOD) && de->d_name[0]=='.'
+// 		    && (!de->d_name[1] || de->d_name[1]=='.' && !de->d_name[2])
+// 		    && fnmatch(p, de->d_name, fnm_flags | FNM_PERIOD))
+// 			continue;
+// 		if (*d) {
+// 			memcpy(name, d, l);
+// 			name[l] = '/';
+// 			strcpy(name+l+1, de->d_name);
+// 		} else {
+// 			name = de->d_name;
+// 		}
+// 		if (p2) {
+// 			if ((error = match_in_dir(name, p2, flags, errfunc, tail))) {
+// 				closedir(dir);
+// 				return error;
+// 			}
+// 		} else {
+// 			int mark = 0;
+// 			if (flags & GLOB_MARK) {
+// 				if (de->d_type && !S_ISLNK(de->d_type<<12))
+// 					mark = S_ISDIR(de->d_type<<12);
+// 				else {
+// 					struct stat st;
+// 					stat(name, &st);
+// 					mark = S_ISDIR(st.st_mode);
+// 				}
+// 			}
+// 			if (append(tail, name, l+de->d_reclen+1, mark)) {
+// 				closedir(dir);
+// 				return GLOB_NOSPACE;
+// 			}
+// 		}
+// 	}
+// 	closedir(dir);
+// 	if (error && (errfunc(d, error) || (flags & GLOB_ERR)))
+// 		return GLOB_ABORTED;
+// 	return 0;
 }
 
 static int ignore_err(const char *path, int err)

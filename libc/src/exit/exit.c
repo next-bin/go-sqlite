@@ -1,7 +1,6 @@
 #include <stdlib.h>
 #include <stdint.h>
 #include "libc.h"
-#include <assert.h>
 
 static void dummy()
 {
@@ -18,9 +17,9 @@ extern void (*const __fini_array_start)(void), (*const __fini_array_end)(void);
 
 static void libc_exit_fini(void)
 {
-	uintptr_t a = (uintptr_t)&__fini_array_end;
-	for (; a>(uintptr_t)&__fini_array_start; a-=sizeof(void(*)()))
-		(*(void (**)())(a-sizeof(void(*)())))();
+//TODO(ccgo) 	uintptr_t a = (uintptr_t)&__fini_array_end;
+//TODO(ccgo) 	for (; a>(uintptr_t)&__fini_array_start; a-=sizeof(void(*)()))
+//TODO(ccgo) 		(*(void (**)())(a-sizeof(void(*)())))();
 	_fini();
 }
 

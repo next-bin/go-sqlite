@@ -3,7 +3,6 @@
 #include "locale_impl.h"
 #include "libc.h"
 #include "atomic.h"
-#include <assert.h>
 
 const char *__lctrans_impl(const char *msg, const struct __locale_map *lm)
 {

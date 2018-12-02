@@ -1,5 +1,5 @@
-#include <string.h>
 #include <libc.h>
+#include <string.h>
 
 char *__stpcpy(char *, const char *);
 

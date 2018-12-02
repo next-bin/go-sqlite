@@ -1,6 +1,6 @@
+#include <libc.h>
 #include <strings.h>
 #include "atomic.h"
-#include <libc.h>
 
 int ffs(int i)
 {

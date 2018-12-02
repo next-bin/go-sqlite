@@ -4,7 +4,6 @@
 #include <unistd.h>
 #include "pwf.h"
 #include "nscd.h"
-#include <assert.h>
 
 static char *itoa(char *p, uint32_t x)
 {
@@ -63,8 +62,7 @@ int __getpw_a(const char *name, uid_t uid, struct passwd *pw, char **buf, size_t
 			key = itoa(uidbuf, uid);
 		}
 
-		__assert_fail("TODO(ccgo)", __FILE__, __LINE__, __func__);
-//TODO(ccgo)			f = __nscd_query(req, key, passwdbuf, sizeof passwdbuf, (int[]){0});
+		f = __nscd_query(req, key, passwdbuf, sizeof passwdbuf, (int[]){0});
 		if (!f) { rv = errno; goto done; }
 
 		if(!passwdbuf[PWFOUND]) { rv = 0; goto cleanup_f; }

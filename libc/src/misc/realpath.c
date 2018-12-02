@@ -6,7 +6,6 @@
 #include <unistd.h>
 #include <string.h>
 #include "syscall.h"
-#include <assert.h>
 
 void __procfdname(char *, unsigned);
 

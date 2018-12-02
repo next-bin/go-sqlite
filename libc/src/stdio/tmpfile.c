@@ -1,7 +1,6 @@
 #include <stdio.h>
 #include <fcntl.h>
 #include "stdio_impl.h"
-#include <assert.h>
 
 #define MAXTRIES 100
 

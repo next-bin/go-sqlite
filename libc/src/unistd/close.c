@@ -2,7 +2,6 @@
 #include <errno.h>
 #include "syscall.h"
 #include "libc.h"
-#include <assert.h>
 
 static int dummy(int fd)
 {

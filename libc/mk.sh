@@ -22,14 +22,15 @@ go install $CRTBOOTSTRAP -v modernc.org/ccgo/v2/ccgo
 rm -f log-ccgo
 make distclean
 make clean
-./configure CC=ccgo CFLAGS='-D__typeof=typeof --ccgo-define-values' \
+#DBG ./configure CC=ccgo CFLAGS='-D__typeof=typeof -D__inline=inline --ccgo-define-values --ccgo-full-paths' \
+./configure CC=ccgo CFLAGS='-D__typeof=typeof -D__inline=inline --ccgo-define-values' \
 	--target=$MUSLARCH --disable-shared |& tee log-configure
 make AR=ar RANLIB=ranlib |& tee log-make
 mv -v obj/include/bits/*.h arch/$MUSLARCH/bits/
 ccgo -ffreestanding -D_XOPEN_SOURCE=700 -I./arch/$MUSLARCH -I./arch/generic \
        	-Iobj/src/internal -I./src/internal -Iobj/include -I./include \
-	-D__typeof=typeof --ccgo-import os,runtime/debug,sync/atomic \
+	-D__typeof=typeof --ccgo-import runtime/debug,sync/atomic \
 	--ccgo-pkg-name crt -o ../$LIBC ccgo.c lib/libc.a |& tee -a log-ccgo
+make distclean
 go install -v modernc.org/ccgo/v2/ccgo
-rm -f *.o
 date

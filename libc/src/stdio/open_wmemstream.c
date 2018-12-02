@@ -3,7 +3,6 @@
 #include <errno.h>
 #include <limits.h>
 #include <string.h>
-#include <assert.h>
 
 struct cookie {
 	wchar_t **bufp;
@@ -23,18 +22,18 @@ struct wms_FILE {
 
 static off_t wms_seek(FILE *f, off_t off, int whence)
 {
-	ssize_t base;
-	struct cookie *c = f->cookie;
-	if (whence>2U) {
-fail:
-		errno = EINVAL;
-		return -1;
-	}
-	__assert_fail("TODO(ccgo)", __FILE__, __LINE__, __func__);
-//TODO(ccgo)		base = (size_t [3]){0, c->pos, c->len}[whence];
-	if (off < -base || off > SSIZE_MAX/4-base) goto fail;
-	memset(&c->mbs, 0, sizeof c->mbs);
-	return c->pos = base+off;
+	__GO__("panic(`TODO`)\n");
+// 	ssize_t base;
+// 	struct cookie *c = f->cookie;
+// 	if (whence>2U) {
+// fail:
+// 		errno = EINVAL;
+// 		return -1;
+// 	}
+// 	base = (size_t [3]){0, c->pos, c->len}[whence];
+// 	if (off < -base || off > SSIZE_MAX/4-base) goto fail;
+// 	memset(&c->mbs, 0, sizeof c->mbs);
+// 	return c->pos = base+off;
 }
 
 static size_t wms_write(FILE *f, const unsigned char *buf, size_t len)
@@ -95,6 +94,8 @@ FILE *open_wmemstream(wchar_t **bufp, size_t *sizep)
 	f->f.close = wms_close;
 
 	if (!libc.threaded) f->f.lock = -1;
+
+	fwide(&f->f, 1);
 
 	return __ofl_add(&f->f);
 }

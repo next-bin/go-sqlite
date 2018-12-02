@@ -1,24 +1,23 @@
 #include <unistd.h>
 #include <stdarg.h>
-#include <assert.h>
 
 int execlp(const char *file, const char *argv0, ...)
 {
-	__assert_fail("TODO(ccgo)", __FILE__, __LINE__, __func__);
-//TODO(ccgo)		int argc;
-//TODO(ccgo)		va_list ap;
-//TODO(ccgo)		va_start(ap, argv0);
-//TODO(ccgo)		for (argc=1; va_arg(ap, const char *); argc++);
-//TODO(ccgo)		va_end(ap);
-//TODO(ccgo)		{
-//TODO(ccgo)			int i;
-//TODO(ccgo)			char *argv[argc+1];
-//TODO(ccgo)			va_start(ap, argv0);
-//TODO(ccgo)			argv[0] = (char *)argv0;
-//TODO(ccgo)			for (i=1; i<argc; i++)
-//TODO(ccgo)				argv[i] = va_arg(ap, char *);
-//TODO(ccgo)			argv[i] = NULL;
-//TODO(ccgo)			va_end(ap);
-//TODO(ccgo)			return execvp(file, argv);
-//TODO(ccgo)		}
+	__GO__("panic(`TODO`)\n");
+// 	int argc;
+// 	va_list ap;
+// 	va_start(ap, argv0);
+// 	for (argc=1; va_arg(ap, const char *); argc++);
+// 	va_end(ap);
+// 	{
+// 		int i;
+// 		char *argv[argc+1];
+// 		va_start(ap, argv0);
+// 		argv[0] = (char *)argv0;
+// 		for (i=1; i<argc; i++)
+// 			argv[i] = va_arg(ap, char *);
+// 		argv[i] = NULL;
+// 		va_end(ap);
+// 		return execvp(file, argv);
+// 	}
 }

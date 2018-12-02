@@ -8,7 +8,6 @@
  */
 #include <string.h>
 #include <stdint.h>
-#include <assert.h>
 
 /* public domain md5 implementation based on rfc1321 and libtomcrypt */
 
@@ -197,77 +196,77 @@ static char *to64(char *s, unsigned int u, int n)
 
 static char *md5crypt(const char *key, const char *setting, char *output)
 {
-	struct md5 ctx;
-	unsigned char md[16];
-	unsigned int i, klen, slen;
-	const char *salt;
-	char *p;
-
-	/* reject large keys */
-	klen = strnlen(key, KEY_MAX+1);
-	if (klen > KEY_MAX)
-		return 0;
-
-	/* setting: $1$salt$ (closing $ is optional) */
-	if (strncmp(setting, "$1$", 3) != 0)
-		return 0;
-	salt = setting + 3;
-	for (i = 0; i < SALT_MAX && salt[i] && salt[i] != '$'; i++);
-	slen = i;
-
-	/* md5(key salt key) */
-	md5_init(&ctx);
-	md5_update(&ctx, key, klen);
-	md5_update(&ctx, salt, slen);
-	md5_update(&ctx, key, klen);
-	md5_sum(&ctx, md);
-
-	/* md5(key $1$ salt repeated-md weird-key[0]-0) */
-	md5_init(&ctx);
-	md5_update(&ctx, key, klen);
-	md5_update(&ctx, setting, 3 + slen);
-	for (i = klen; i > sizeof md; i -= sizeof md)
-		md5_update(&ctx, md, sizeof md);
-	md5_update(&ctx, md, i);
-	md[0] = 0;
-	for (i = klen; i; i >>= 1)
-		if (i & 1)
-			md5_update(&ctx, md, 1);
-		else
-			md5_update(&ctx, key, 1);
-	md5_sum(&ctx, md);
-
-	/* md = f(md, key, salt) iteration */
-	for (i = 0; i < 1000; i++) {
-		md5_init(&ctx);
-		if (i % 2)
-			md5_update(&ctx, key, klen);
-		else
-			md5_update(&ctx, md, sizeof md);
-		if (i % 3)
-			md5_update(&ctx, salt, slen);
-		if (i % 7)
-			md5_update(&ctx, key, klen);
-		if (i % 2)
-			md5_update(&ctx, md, sizeof md);
-		else
-			md5_update(&ctx, key, klen);
-		md5_sum(&ctx, md);
-	}
-
-	/* output is $1$salt$hash */
-	memcpy(output, setting, 3 + slen);
-	p = output + 3 + slen;
-	*p++ = '$';
-	__assert_fail("TODO(ccgo)", __FILE__, __LINE__, __func__);
-//TODO(ccgo)		static const unsigned char perm[][3] = {
-//TODO(ccgo)			0,6,12,1,7,13,2,8,14,3,9,15,4,10,5 };
-//TODO(ccgo)		for (i=0; i<5; i++) p = to64(p,
-//TODO(ccgo)			(md[perm[i][0]]<<16)|(md[perm[i][1]]<<8)|md[perm[i][2]], 4);
-//TODO(ccgo)		p = to64(p, md[11], 2);
-//TODO(ccgo)		*p = 0;
-//TODO(ccgo)	
-//TODO(ccgo)		return output;
+	__GO__("panic(`TODO`)\n");
+// 	struct md5 ctx;
+// 	unsigned char md[16];
+// 	unsigned int i, klen, slen;
+// 	const char *salt;
+// 	char *p;
+// 
+// 	/* reject large keys */
+// 	klen = strnlen(key, KEY_MAX+1);
+// 	if (klen > KEY_MAX)
+// 		return 0;
+// 
+// 	/* setting: $1$salt$ (closing $ is optional) */
+// 	if (strncmp(setting, "$1$", 3) != 0)
+// 		return 0;
+// 	salt = setting + 3;
+// 	for (i = 0; i < SALT_MAX && salt[i] && salt[i] != '$'; i++);
+// 	slen = i;
+// 
+// 	/* md5(key salt key) */
+// 	md5_init(&ctx);
+// 	md5_update(&ctx, key, klen);
+// 	md5_update(&ctx, salt, slen);
+// 	md5_update(&ctx, key, klen);
+// 	md5_sum(&ctx, md);
+// 
+// 	/* md5(key $1$ salt repeated-md weird-key[0]-0) */
+// 	md5_init(&ctx);
+// 	md5_update(&ctx, key, klen);
+// 	md5_update(&ctx, setting, 3 + slen);
+// 	for (i = klen; i > sizeof md; i -= sizeof md)
+// 		md5_update(&ctx, md, sizeof md);
+// 	md5_update(&ctx, md, i);
+// 	md[0] = 0;
+// 	for (i = klen; i; i >>= 1)
+// 		if (i & 1)
+// 			md5_update(&ctx, md, 1);
+// 		else
+// 			md5_update(&ctx, key, 1);
+// 	md5_sum(&ctx, md);
+// 
+// 	/* md = f(md, key, salt) iteration */
+// 	for (i = 0; i < 1000; i++) {
+// 		md5_init(&ctx);
+// 		if (i % 2)
+// 			md5_update(&ctx, key, klen);
+// 		else
+// 			md5_update(&ctx, md, sizeof md);
+// 		if (i % 3)
+// 			md5_update(&ctx, salt, slen);
+// 		if (i % 7)
+// 			md5_update(&ctx, key, klen);
+// 		if (i % 2)
+// 			md5_update(&ctx, md, sizeof md);
+// 		else
+// 			md5_update(&ctx, key, klen);
+// 		md5_sum(&ctx, md);
+// 	}
+// 
+// 	/* output is $1$salt$hash */
+// 	memcpy(output, setting, 3 + slen);
+// 	p = output + 3 + slen;
+// 	*p++ = '$';
+// 	static const unsigned char perm[][3] = {
+// 		0,6,12,1,7,13,2,8,14,3,9,15,4,10,5 };
+// 	for (i=0; i<5; i++) p = to64(p,
+// 		(md[perm[i][0]]<<16)|(md[perm[i][1]]<<8)|md[perm[i][2]], 4);
+// 	p = to64(p, md[11], 2);
+// 	*p = 0;
+// 
+// 	return output;
 }
 
 char *__crypt_md5(const char *key, const char *setting, char *output)

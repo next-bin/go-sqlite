@@ -9,7 +9,6 @@
 #include <ctype.h>
 #include "lookup.h"
 #include "stdio_impl.h"
-#include <assert.h>
 
 int __dns_parse(const unsigned char *, int, int (*)(void *, int, const void *, int, const void *), void *);
 int __dn_expand(const unsigned char *, const unsigned char *, const unsigned char *, char *, int);
@@ -63,10 +62,8 @@ static void reverse_hosts(char *buf, const unsigned char *a, unsigned scopeid, i
 
 		for (p=line; *p && !isspace(*p); p++);
 		*p++ = 0;
-		__assert_fail("TODO(ccgo)", __FILE__, __LINE__, __func__);
-//TODO(ccgo)			if (__lookup_ipliteral(&iplit, line, AF_UNSPEC)<=0)
-		__assert_fail("TODO(ccgo)", __FILE__, __LINE__, __func__);
-//TODO(ccgo)				continue;
+		if (__lookup_ipliteral(&iplit, line, AF_UNSPEC)<=0)
+			continue;
 
 		if (iplit.family == AF_INET) {
 			memcpy(iplit.addr+12, iplit.addr, 4);

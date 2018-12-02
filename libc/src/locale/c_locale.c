@@ -10,6 +10,6 @@ const struct __locale_map __c_dot_utf8 = {
 };
 
 const struct __locale_struct __c_locale = { 0 };
-//TODO(ccgo)	const struct __locale_struct __c_dot_utf8_locale = {
-//TODO(ccgo)		.cat[LC_CTYPE] = &__c_dot_utf8
-//TODO(ccgo)	};
+//TODO(ccgo) const struct __locale_struct __c_dot_utf8_locale = {
+//TODO(ccgo) 	.cat[LC_CTYPE] = &__c_dot_utf8
+//TODO(ccgo) };

@@ -1,7 +1,6 @@
 #include <unistd.h>
 #include "syscall.h"
 #include "libc.h"
-#include <assert.h>
 
 ssize_t pwrite(int fd, const void *buf, size_t size, off_t ofs)
 {

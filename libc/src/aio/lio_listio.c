@@ -40,22 +40,15 @@ static int lio_wait(struct lio_state *st)
 
 static void notify_signal(struct sigevent *sev)
 {
-	__assert_fail("TODO(ccgo)", __FILE__, __LINE__, __func__);
-//TODO(ccgo)		siginfo_t si = {
-	__assert_fail("TODO(ccgo)", __FILE__, __LINE__, __func__);
-//TODO(ccgo)			.si_signo = sev->sigev_signo,
-	__assert_fail("TODO(ccgo)", __FILE__, __LINE__, __func__);
-//TODO(ccgo)			.si_value = sev->sigev_value,
-	__assert_fail("TODO(ccgo)", __FILE__, __LINE__, __func__);
-//TODO(ccgo)			.si_code = SI_ASYNCIO,
-	__assert_fail("TODO(ccgo)", __FILE__, __LINE__, __func__);
-//TODO(ccgo)			.si_pid = getpid(),
-	__assert_fail("TODO(ccgo)", __FILE__, __LINE__, __func__);
-//TODO(ccgo)			.si_uid = getuid()
-	__assert_fail("TODO(ccgo)", __FILE__, __LINE__, __func__);
-//TODO(ccgo)		};
-	__assert_fail("TODO(ccgo)", __FILE__, __LINE__, __func__);
-//TODO(ccgo)		__syscall(SYS_rt_sigqueueinfo, si.si_pid, si.si_signo, &si);
+	__GO__("panic(`TODO`)");
+// 	siginfo_t si = {
+// 		.si_signo = sev->sigev_signo,
+// 		.si_value = sev->sigev_value,
+// 		.si_code = SI_ASYNCIO,
+// 		.si_pid = getpid(),
+// 		.si_uid = getuid()
+// 	};
+// 	__syscall(SYS_rt_sigqueueinfo, si.si_pid, si.si_signo, &si);
 }
 
 static void *wait_thread(void *p)

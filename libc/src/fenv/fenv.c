@@ -2,8 +2,6 @@
 
 /* Dummy functions for archs lacking fenv implementation */
 
-//TODO(ccgo)
-
 int feclearexcept(int mask)
 {
 	return 0;

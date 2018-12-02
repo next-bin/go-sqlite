@@ -4,7 +4,6 @@
 #include <errno.h>
 #include "syscall.h"
 #include "libc.h"
-#include <assert.h>
 
 int fcntl(int fd, int cmd, ...)
 {

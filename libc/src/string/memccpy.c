@@ -1,3 +1,4 @@
+#include <libc.h>
 #include <string.h>
 #include <stdint.h>
 #include <limits.h>
@@ -29,3 +30,5 @@ tail:
 	if (*s==c) return d+1;
 	return 0;
 }
+
+weak_alias(memcpy, __builtin_memcpy);

@@ -71,8 +71,10 @@ const (
 )
 
 var (
-	currentLocale = ctype["C"]
-	ctype = map[string]*[256]uint16{
+	currentLocaleBits = ctypeBits["C"]
+	currentLocaleToLower = ctypeToLower["C"]
+	currentLocaleToUpper = ctypeToUpper["C"]
+	ctypeBits = map[string]*[256]uint16{
 `)
 	for _, locale := range a {
 		r := C.GoString(C.setlocale(C.LC_CTYPE, C.CString(locale)))
@@ -140,10 +142,74 @@ var (
 			}
 		}
 		fmt.Printf("\n},")
-		// for i := 0; i < 256; i++ {
-		// 	// p.tolower = int(C.tolower(i))
-		// 	// p.toupper = int(C.toupper(i))
-		// }
+	}
+	fmt.Printf("\n}")
+	fmt.Printf(`
+		ctypeToLower = map[string]*[256]byte{
+`)
+	for _, locale := range a {
+		r := C.GoString(C.setlocale(C.LC_CTYPE, C.CString(locale)))
+		if r != locale {
+			continue
+		}
+
+		fmt.Printf(`
+	%q: {
+`, locale)
+		for i := 0; ; i++ {
+			i := C.int(i)
+			if i == 256 {
+				i = crt.DEOF
+			}
+			j := int(C.tolower(i))
+			if i == crt.DEOF {
+				if j != crt.DEOF {
+					log.Fatalf("internal error: %v", j)
+				}
+
+				break
+			}
+
+			fmt.Printf("%#02x, ", j)
+			if (i+1)%16 == 0 && i != 255 {
+				fmt.Printf("\n")
+			}
+		}
+		fmt.Printf("\n},")
+	}
+	fmt.Printf("\n}")
+	fmt.Printf(`
+		ctypeToUpper = map[string]*[256]byte{
+`)
+	for _, locale := range a {
+		r := C.GoString(C.setlocale(C.LC_CTYPE, C.CString(locale)))
+		if r != locale {
+			continue
+		}
+
+		fmt.Printf(`
+	%q: {
+`, locale)
+		for i := 0; ; i++ {
+			i := C.int(i)
+			if i == 256 {
+				i = crt.DEOF
+			}
+			j := int(C.toupper(i))
+			if i == crt.DEOF {
+				if j != crt.DEOF {
+					log.Fatalf("internal error: %v", j)
+				}
+
+				break
+			}
+
+			fmt.Printf("%#02x, ", j)
+			if (i+1)%16 == 0 && i != 255 {
+				fmt.Printf("\n")
+			}
+		}
+		fmt.Printf("\n},")
 	}
 	fmt.Printf("\n}")
 	fmt.Printf("\n)")

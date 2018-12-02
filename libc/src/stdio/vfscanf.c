@@ -6,7 +6,6 @@
 #include <limits.h>
 #include <string.h>
 #include <stdint.h>
-#include <assert.h>
 
 #include "stdio_impl.h"
 #include "shgetc.h"
@@ -230,36 +229,21 @@ int vfscanf(FILE *restrict f, const char *restrict fmt, va_list ap)
 					wcs = dest;
 				}
 				st = (mbstate_t){0};
-				__assert_fail("TODO(ccgo)", __FILE__, __LINE__, __func__);
-//TODO(ccgo)					while (scanset[(c=shgetc(f))+1]) {
-				__assert_fail("TODO(ccgo)", __FILE__, __LINE__, __func__);
-//TODO(ccgo)						switch (mbrtowc(&wc, &(char){c}, 1, &st)) {
-				__assert_fail("TODO(ccgo)", __FILE__, __LINE__, __func__);
-//TODO(ccgo)						case -1:
-				__assert_fail("TODO(ccgo)", __FILE__, __LINE__, __func__);
-//TODO(ccgo)							goto input_fail;
-				__assert_fail("TODO(ccgo)", __FILE__, __LINE__, __func__);
-//TODO(ccgo)						case -2:
-				__assert_fail("TODO(ccgo)", __FILE__, __LINE__, __func__);
-//TODO(ccgo)							continue;
-				__assert_fail("TODO(ccgo)", __FILE__, __LINE__, __func__);
-//TODO(ccgo)						}
-				__assert_fail("TODO(ccgo)", __FILE__, __LINE__, __func__);
-//TODO(ccgo)						if (wcs) wcs[i++] = wc;
-				__assert_fail("TODO(ccgo)", __FILE__, __LINE__, __func__);
-//TODO(ccgo)						if (alloc && i==k) {
-				__assert_fail("TODO(ccgo)", __FILE__, __LINE__, __func__);
-//TODO(ccgo)							k+=k+1;
-				__assert_fail("TODO(ccgo)", __FILE__, __LINE__, __func__);
-//TODO(ccgo)							wchar_t *tmp = realloc(wcs, k*sizeof(wchar_t));
-				__assert_fail("TODO(ccgo)", __FILE__, __LINE__, __func__);
-//TODO(ccgo)							if (!tmp) goto alloc_fail;
-				__assert_fail("TODO(ccgo)", __FILE__, __LINE__, __func__);
-//TODO(ccgo)							wcs = tmp;
-				__assert_fail("TODO(ccgo)", __FILE__, __LINE__, __func__);
-//TODO(ccgo)						}
-				__assert_fail("TODO(ccgo)", __FILE__, __LINE__, __func__);
-//TODO(ccgo)					}
+				while (scanset[(c=shgetc(f))+1]) {
+					switch (mbrtowc(&wc, &(char){c}, 1, &st)) {
+					case -1:
+						goto input_fail;
+					case -2:
+						continue;
+					}
+					if (wcs) wcs[i++] = wc;
+					if (alloc && i==k) {
+						k+=k+1;
+						wchar_t *tmp = realloc(wcs, k*sizeof(wchar_t));
+						if (!tmp) goto alloc_fail;
+						wcs = tmp;
+					}
+				}
 				if (!mbsinit(&st)) goto input_fail;
 			} else if (alloc) {
 				s = malloc(k);

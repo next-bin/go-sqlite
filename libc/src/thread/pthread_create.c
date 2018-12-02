@@ -5,7 +5,6 @@
 #include <sys/mman.h>
 #include <string.h>
 #include <stddef.h>
-#include <assert.h>
 
 void *__mmap(void *, size_t, int, int, int, off_t);
 int __munmap(void *, size_t);
@@ -143,10 +142,8 @@ static int start(void *p)
 {
 	pthread_t self = p;
 	if (self->unblock_cancel)
-		__assert_fail("TODO(ccgo)", __FILE__, __LINE__, __func__);
-//TODO(ccgo)			__syscall(SYS_rt_sigprocmask, SIG_UNBLOCK,
-	__assert_fail("TODO(ccgo)", __FILE__, __LINE__, __func__);
-//TODO(ccgo)				SIGPT_SET, 0, _NSIG/8);
+		__syscall(SYS_rt_sigprocmask, SIG_UNBLOCK,
+			SIGPT_SET, 0, _NSIG/8);
 	__pthread_exit(self->start(self->start_arg));
 	return 0;
 }
@@ -168,8 +165,8 @@ static void *dummy_tsd[1] = { 0 };
 weak_alias(dummy_tsd, __pthread_tsd_main);
 
 volatile int __block_new_threads = 0;
-size_t __default_stacksize = DEFAULT_STACK_SIZE;
-size_t __default_guardsize = DEFAULT_GUARD_SIZE;
+extern size_t __default_stacksize;
+extern size_t __default_guardsize;
 
 static FILE *volatile dummy_file = 0;
 weak_alias(dummy_file, __stdin_used);
@@ -205,11 +202,7 @@ int __pthread_create(pthread_t *restrict res, const pthread_attr_t *restrict att
 		init_file_lock(__stdin_used);
 		init_file_lock(__stdout_used);
 		init_file_lock(__stderr_used);
-		//TODO(ccgo) __syscall(SYS_rt_sigprocmask, SIG_UNBLOCK, SIGPT_SET, 0, _NSIG/8);
-		unsigned long xxx [65/8/sizeof(long)];
-		xxx[sizeof(long)==4] = 3UL<<(32*(sizeof(long)>4));
-		void *p = &xxx[0];
-		__syscall(SYS_rt_sigprocmask, SIG_UNBLOCK, p, 0, _NSIG/8);
+		__syscall(SYS_rt_sigprocmask, SIG_UNBLOCK, SIGPT_SET, 0, _NSIG/8);
 		self->tsd = (void **)__pthread_tsd_main;
 		libc.threaded = 1;
 	}
@@ -313,6 +306,7 @@ int __pthread_create(pthread_t *restrict res, const pthread_attr_t *restrict att
 
 	if (do_sched) {
 		__futexwait(&ssa.futex, -1, 1);
+		ret = ssa.futex;
 		if (ret) return ret;
 	}
 

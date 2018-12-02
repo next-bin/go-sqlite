@@ -9,7 +9,6 @@
 #include "atomic.h"
 #include "libc.h"
 #include "pthread_impl.h"
-#include <assert.h>
 
 /* The following is a threads-based implementation of AIO with minimal
  * dependence on implementation details. Most synchronization is
@@ -137,54 +136,53 @@ static void __aio_unref_queue(struct aio_queue *q)
 
 static void cleanup(void *ctx)
 {
-	struct aio_thread *at = ctx;
-	struct aio_queue *q = at->q;
-	struct aiocb *cb = at->cb;
-	struct sigevent sev = cb->aio_sigevent;
-
-	/* There are four potential types of waiters we could need to wake:
-	 *   1. Callers of aio_cancel/close.
-	 *   2. Callers of aio_suspend with a single aiocb.
-	 *   3. Callers of aio_suspend with a list.
-	 *   4. AIO worker threads waiting for sequenced operations.
-	 * Types 1-3 are notified via atomics/futexes, mainly for AS-safety
-	 * considerations. Type 4 is notified later via a cond var. */
-
-	cb->__ret = at->ret;
-	if (a_swap(&at->running, 0) < 0)
-		__wake(&at->running, -1, 1);
-	if (a_swap(&cb->__err, at->err) != EINPROGRESS)
-		__wake(&cb->__err, -1, 1);
-	if (a_swap(&__aio_fut, 0))
-		__wake(&__aio_fut, -1, 1);
-
-	pthread_mutex_lock(&q->lock);
-
-	if (at->next) at->next->prev = at->prev;
-	if (at->prev) at->prev->next = at->next;
-	else q->head = at->next;
-
-	/* Signal aio worker threads waiting for sequenced operations. */
-	pthread_cond_broadcast(&q->cond);
-
-	__aio_unref_queue(q);
-
-	if (sev.sigev_notify == SIGEV_SIGNAL) {
-		siginfo_t si;
-		__assert_fail("TODO(ccgo)", __FILE__, __LINE__, __func__);
-//TODO(ccgo)			siginfo_t si = {
-//TODO(ccgo)				.si_signo = sev.sigev_signo,
-//TODO(ccgo)				.si_value = sev.sigev_value,
-//TODO(ccgo)				.si_code = SI_ASYNCIO,
-//TODO(ccgo)				.si_pid = getpid(),
-//TODO(ccgo)				.si_uid = getuid()
-//TODO(ccgo)			};
-		__syscall(SYS_rt_sigqueueinfo, si.si_pid, si.si_signo, &si);
-	}
-	if (sev.sigev_notify == SIGEV_THREAD) {
-		a_store(&__pthread_self()->cancel, 0);
-		sev.sigev_notify_function(sev.sigev_value);
-	}
+	__GO__("panic(`TODO`)");
+// 	struct aio_thread *at = ctx;
+// 	struct aio_queue *q = at->q;
+// 	struct aiocb *cb = at->cb;
+// 	struct sigevent sev = cb->aio_sigevent;
+// 
+// 	/* There are four potential types of waiters we could need to wake:
+// 	 *   1. Callers of aio_cancel/close.
+// 	 *   2. Callers of aio_suspend with a single aiocb.
+// 	 *   3. Callers of aio_suspend with a list.
+// 	 *   4. AIO worker threads waiting for sequenced operations.
+// 	 * Types 1-3 are notified via atomics/futexes, mainly for AS-safety
+// 	 * considerations. Type 4 is notified later via a cond var. */
+// 
+// 	cb->__ret = at->ret;
+// 	if (a_swap(&at->running, 0) < 0)
+// 		__wake(&at->running, -1, 1);
+// 	if (a_swap(&cb->__err, at->err) != EINPROGRESS)
+// 		__wake(&cb->__err, -1, 1);
+// 	if (a_swap(&__aio_fut, 0))
+// 		__wake(&__aio_fut, -1, 1);
+// 
+// 	pthread_mutex_lock(&q->lock);
+// 
+// 	if (at->next) at->next->prev = at->prev;
+// 	if (at->prev) at->prev->next = at->next;
+// 	else q->head = at->next;
+// 
+// 	/* Signal aio worker threads waiting for sequenced operations. */
+// 	pthread_cond_broadcast(&q->cond);
+// 
+// 	__aio_unref_queue(q);
+// 
+// 	if (sev.sigev_notify == SIGEV_SIGNAL) {
+// 		siginfo_t si = {
+// 			.si_signo = sev.sigev_signo,
+// 			.si_value = sev.sigev_value,
+// 			.si_code = SI_ASYNCIO,
+// 			.si_pid = getpid(),
+// 			.si_uid = getuid()
+// 		};
+// 		__syscall(SYS_rt_sigqueueinfo, si.si_pid, si.si_signo, &si);
+// 	}
+// 	if (sev.sigev_notify == SIGEV_THREAD) {
+// 		a_store(&__pthread_self()->cancel, 0);
+// 		sev.sigev_notify_function(sev.sigev_value);
+// 	}
 }
 
 static void *io_thread_func(void *ctx)

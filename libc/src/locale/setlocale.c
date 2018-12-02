@@ -30,6 +30,7 @@ char *setlocale(int cat, const char *name)
 	if ((cat == LC_ALL || cat == LC_CTYPE) && name) {
 		__GO__("setCurrentLocale(GoString(_name))\n");
 	}
+
 	/* For LC_ALL, setlocale is required to return a string which
 	 * encodes the current setting for all categories. The format of
 	 * this string is unspecified, and only the following code, which

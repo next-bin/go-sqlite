@@ -8,106 +8,106 @@
 #include "lookup.h"
 #include "stdio_impl.h"
 
-//TODO(ccgo)	int __lookup_serv(struct service buf[static MAXSERVS], const char *name, int proto, int socktype, int flags)
-//TODO(ccgo)	{
-//TODO(ccgo)		char line[128];
-//TODO(ccgo)		int cnt = 0;
-//TODO(ccgo)		char *p, *z = "";
-//TODO(ccgo)		unsigned long port = 0;
-//TODO(ccgo)	
-//TODO(ccgo)		switch (socktype) {
-//TODO(ccgo)		case SOCK_STREAM:
-//TODO(ccgo)			switch (proto) {
-//TODO(ccgo)			case 0:
-//TODO(ccgo)				proto = IPPROTO_TCP;
-//TODO(ccgo)			case IPPROTO_TCP:
-//TODO(ccgo)				break;
-//TODO(ccgo)			default:
-//TODO(ccgo)				return EAI_SERVICE;
-//TODO(ccgo)			}
-//TODO(ccgo)			break;
-//TODO(ccgo)		case SOCK_DGRAM:
-//TODO(ccgo)			switch (proto) {
-//TODO(ccgo)			case 0:
-//TODO(ccgo)				proto = IPPROTO_UDP;
-//TODO(ccgo)			case IPPROTO_UDP:
-//TODO(ccgo)				break;
-//TODO(ccgo)			default:
-//TODO(ccgo)				return EAI_SERVICE;
-//TODO(ccgo)			}
-//TODO(ccgo)		case 0:
-//TODO(ccgo)			break;
-//TODO(ccgo)		default:
-//TODO(ccgo)			if (name) return EAI_SERVICE;
-//TODO(ccgo)			buf[0].port = 0;
-//TODO(ccgo)			buf[0].proto = proto;
-//TODO(ccgo)			buf[0].socktype = socktype;
-//TODO(ccgo)			return 1;
-//TODO(ccgo)		}
-//TODO(ccgo)	
-//TODO(ccgo)		if (name) {
-//TODO(ccgo)			if (!*name) return EAI_SERVICE;
-//TODO(ccgo)			port = strtoul(name, &z, 10);
-//TODO(ccgo)		}
-//TODO(ccgo)		if (!*z) {
-//TODO(ccgo)			if (port > 65535) return EAI_SERVICE;
-//TODO(ccgo)			if (proto != IPPROTO_UDP) {
-//TODO(ccgo)				buf[cnt].port = port;
-//TODO(ccgo)				buf[cnt].socktype = SOCK_STREAM;
-//TODO(ccgo)				buf[cnt++].proto = IPPROTO_TCP;
-//TODO(ccgo)			}
-//TODO(ccgo)			if (proto != IPPROTO_TCP) {
-//TODO(ccgo)				buf[cnt].port = port;
-//TODO(ccgo)				buf[cnt].socktype = SOCK_DGRAM;
-//TODO(ccgo)				buf[cnt++].proto = IPPROTO_UDP;
-//TODO(ccgo)			}
-//TODO(ccgo)			return cnt;
-//TODO(ccgo)		}
-//TODO(ccgo)	
-//TODO(ccgo)		if (flags & AI_NUMERICSERV) return EAI_NONAME;
-//TODO(ccgo)	
-//TODO(ccgo)		size_t l = strlen(name);
-//TODO(ccgo)	
-//TODO(ccgo)		unsigned char _buf[1032];
-//TODO(ccgo)		FILE _f, *f = __fopen_rb_ca("/etc/services", &_f, _buf, sizeof _buf);
-//TODO(ccgo)		if (!f) switch (errno) {
-//TODO(ccgo)		case ENOENT:
-//TODO(ccgo)		case ENOTDIR:
-//TODO(ccgo)		case EACCES:
-//TODO(ccgo)			return EAI_SERVICE;
-//TODO(ccgo)		default:
-//TODO(ccgo)			return EAI_SYSTEM;
-//TODO(ccgo)		}
-//TODO(ccgo)	
-//TODO(ccgo)		while (fgets(line, sizeof line, f) && cnt < MAXSERVS) {
-//TODO(ccgo)			if ((p=strchr(line, '#'))) *p++='\n', *p=0;
-//TODO(ccgo)	
-//TODO(ccgo)			/* Find service name */
-//TODO(ccgo)			for(p=line; (p=strstr(p, name)); p++) {
-//TODO(ccgo)				if (p>line && !isspace(p[-1])) continue;
-//TODO(ccgo)				if (p[l] && !isspace(p[l])) continue;
-//TODO(ccgo)				break;
-//TODO(ccgo)			}
-//TODO(ccgo)			if (!p) continue;
-//TODO(ccgo)	
-//TODO(ccgo)			/* Skip past canonical name at beginning of line */
-//TODO(ccgo)			for (p=line; *p && !isspace(*p); p++);
-//TODO(ccgo)	
-//TODO(ccgo)			port = strtoul(p, &z, 10);
-//TODO(ccgo)			if (port > 65535 || z==p) continue;
-//TODO(ccgo)			if (!strncmp(z, "/udp", 4)) {
-//TODO(ccgo)				if (proto == IPPROTO_TCP) continue;
-//TODO(ccgo)				buf[cnt].port = port;
-//TODO(ccgo)				buf[cnt].socktype = SOCK_DGRAM;
-//TODO(ccgo)				buf[cnt++].proto = IPPROTO_UDP;
-//TODO(ccgo)			}
-//TODO(ccgo)			if (!strncmp(z, "/tcp", 4)) {
-//TODO(ccgo)				if (proto == IPPROTO_UDP) continue;
-//TODO(ccgo)				buf[cnt].port = port;
-//TODO(ccgo)				buf[cnt].socktype = SOCK_STREAM;
-//TODO(ccgo)				buf[cnt++].proto = IPPROTO_TCP;
-//TODO(ccgo)			}
-//TODO(ccgo)		}
-//TODO(ccgo)		__fclose_ca(f);
-//TODO(ccgo)		return cnt > 0 ? cnt : EAI_SERVICE;
-//TODO(ccgo)	}
+int __lookup_serv(struct service buf[static MAXSERVS], const char *name, int proto, int socktype, int flags)
+{
+	char line[128];
+	int cnt = 0;
+	char *p, *z = "";
+	unsigned long port = 0;
+
+	switch (socktype) {
+	case SOCK_STREAM:
+		switch (proto) {
+		case 0:
+			proto = IPPROTO_TCP;
+		case IPPROTO_TCP:
+			break;
+		default:
+			return EAI_SERVICE;
+		}
+		break;
+	case SOCK_DGRAM:
+		switch (proto) {
+		case 0:
+			proto = IPPROTO_UDP;
+		case IPPROTO_UDP:
+			break;
+		default:
+			return EAI_SERVICE;
+		}
+	case 0:
+		break;
+	default:
+		if (name) return EAI_SERVICE;
+		buf[0].port = 0;
+		buf[0].proto = proto;
+		buf[0].socktype = socktype;
+		return 1;
+	}
+
+	if (name) {
+		if (!*name) return EAI_SERVICE;
+		port = strtoul(name, &z, 10);
+	}
+	if (!*z) {
+		if (port > 65535) return EAI_SERVICE;
+		if (proto != IPPROTO_UDP) {
+			buf[cnt].port = port;
+			buf[cnt].socktype = SOCK_STREAM;
+			buf[cnt++].proto = IPPROTO_TCP;
+		}
+		if (proto != IPPROTO_TCP) {
+			buf[cnt].port = port;
+			buf[cnt].socktype = SOCK_DGRAM;
+			buf[cnt++].proto = IPPROTO_UDP;
+		}
+		return cnt;
+	}
+
+	if (flags & AI_NUMERICSERV) return EAI_NONAME;
+
+	size_t l = strlen(name);
+
+	unsigned char _buf[1032];
+	FILE _f, *f = __fopen_rb_ca("/etc/services", &_f, _buf, sizeof _buf);
+	if (!f) switch (errno) {
+	case ENOENT:
+	case ENOTDIR:
+	case EACCES:
+		return EAI_SERVICE;
+	default:
+		return EAI_SYSTEM;
+	}
+
+	while (fgets(line, sizeof line, f) && cnt < MAXSERVS) {
+		if ((p=strchr(line, '#'))) *p++='\n', *p=0;
+
+		/* Find service name */
+		for(p=line; (p=strstr(p, name)); p++) {
+			if (p>line && !isspace(p[-1])) continue;
+			if (p[l] && !isspace(p[l])) continue;
+			break;
+		}
+		if (!p) continue;
+
+		/* Skip past canonical name at beginning of line */
+		for (p=line; *p && !isspace(*p); p++);
+
+		port = strtoul(p, &z, 10);
+		if (port > 65535 || z==p) continue;
+		if (!strncmp(z, "/udp", 4)) {
+			if (proto == IPPROTO_TCP) continue;
+			buf[cnt].port = port;
+			buf[cnt].socktype = SOCK_DGRAM;
+			buf[cnt++].proto = IPPROTO_UDP;
+		}
+		if (!strncmp(z, "/tcp", 4)) {
+			if (proto == IPPROTO_UDP) continue;
+			buf[cnt].port = port;
+			buf[cnt].socktype = SOCK_STREAM;
+			buf[cnt++].proto = IPPROTO_TCP;
+		}
+	}
+	__fclose_ca(f);
+	return cnt > 0 ? cnt : EAI_SERVICE;
+}

@@ -6,7 +6,6 @@
 #include <string.h>
 #include <pthread.h>
 #include "netlink.h"
-#include <assert.h>
 
 #define IFADDRS_HASH_SIZE 64
 
@@ -83,34 +82,34 @@ static int netlink_msg_to_nameindex(void *pctx, struct nlmsghdr *h)
 
 struct if_nameindex *if_nameindex()
 {
-	__assert_fail("TODO(ccgo)", __FILE__, __LINE__, __func__);
-//TODO(ccgo)		struct ifnameindexctx _ctx, *ctx = &_ctx;
-//TODO(ccgo)		struct if_nameindex *ifs = 0, *d;
-//TODO(ccgo)		struct ifnamemap *s;
-//TODO(ccgo)		char *p;
-//TODO(ccgo)		int i;
-//TODO(ccgo)		int cs;
-//TODO(ccgo)	
-//TODO(ccgo)		pthread_setcancelstate(PTHREAD_CANCEL_DISABLE, &cs);
-//TODO(ccgo)		memset(ctx, 0, sizeof(*ctx));
-//TODO(ccgo)		if (__rtnetlink_enumerate(AF_UNSPEC, AF_INET, netlink_msg_to_nameindex, ctx) < 0) goto err;
-//TODO(ccgo)	
-//TODO(ccgo)		ifs = malloc(sizeof(struct if_nameindex[ctx->num+1]) + ctx->str_bytes);
-//TODO(ccgo)		if (!ifs) goto err;
-//TODO(ccgo)	
-//TODO(ccgo)		p = (char*)(ifs + ctx->num + 1);
-//TODO(ccgo)		for (i = ctx->num, d = ifs, s = ctx->list; i; i--, s++, d++) {
-//TODO(ccgo)			d->if_index = s->index;
-//TODO(ccgo)			d->if_name = p;
-//TODO(ccgo)			memcpy(p, s->name, s->namelen);
-//TODO(ccgo)			p += s->namelen;
-//TODO(ccgo)			*p++ = 0;
-//TODO(ccgo)		}
-//TODO(ccgo)		d->if_index = 0;
-//TODO(ccgo)		d->if_name = 0;
-//TODO(ccgo)	err:
-//TODO(ccgo)		pthread_setcancelstate(cs, 0);
-//TODO(ccgo)		free(ctx->list);
-//TODO(ccgo)		errno = ENOBUFS;
-//TODO(ccgo)		return ifs;
+	__GO__("panic(`TODO`)\n");
+// 	struct ifnameindexctx _ctx, *ctx = &_ctx;
+// 	struct if_nameindex *ifs = 0, *d;
+// 	struct ifnamemap *s;
+// 	char *p;
+// 	int i;
+// 	int cs;
+// 
+// 	pthread_setcancelstate(PTHREAD_CANCEL_DISABLE, &cs);
+// 	memset(ctx, 0, sizeof(*ctx));
+// 	if (__rtnetlink_enumerate(AF_UNSPEC, AF_INET, netlink_msg_to_nameindex, ctx) < 0) goto err;
+// 
+// 	ifs = malloc(sizeof(struct if_nameindex[ctx->num+1]) + ctx->str_bytes);
+// 	if (!ifs) goto err;
+// 
+// 	p = (char*)(ifs + ctx->num + 1);
+// 	for (i = ctx->num, d = ifs, s = ctx->list; i; i--, s++, d++) {
+// 		d->if_index = s->index;
+// 		d->if_name = p;
+// 		memcpy(p, s->name, s->namelen);
+// 		p += s->namelen;
+// 		*p++ = 0;
+// 	}
+// 	d->if_index = 0;
+// 	d->if_name = 0;
+// err:
+// 	pthread_setcancelstate(cs, 0);
+// 	free(ctx->list);
+// 	errno = ENOBUFS;
+// 	return ifs;
 }

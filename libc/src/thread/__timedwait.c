@@ -4,7 +4,6 @@
 #include "futex.h"
 #include "syscall.h"
 #include "pthread_impl.h"
-#include <assert.h>
 
 int __pthread_setcancelstate(int, int *);
 int __clock_gettime(clockid_t, struct timespec *);
@@ -29,10 +28,8 @@ int __timedwait_cp(volatile int *addr, int val,
 		top = &to;
 	}
 
-	__assert_fail("TODO(ccgo)", __FILE__, __LINE__, __func__);
-//TODO(ccgo)		r = -__syscall_cp(SYS_futex, addr, FUTEX_WAIT|priv, val, top);
-	__assert_fail("TODO(ccgo)", __FILE__, __LINE__, __func__);
-//TODO(ccgo)		if (r == ENOSYS) r = -__syscall_cp(SYS_futex, addr, FUTEX_WAIT, val, top);
+	r = -__syscall_cp(SYS_futex, addr, FUTEX_WAIT|priv, val, top);
+	if (r == ENOSYS) r = -__syscall_cp(SYS_futex, addr, FUTEX_WAIT, val, top);
 	if (r != EINTR && r != ETIMEDOUT && r != ECANCELED) r = 0;
 
 	return r;

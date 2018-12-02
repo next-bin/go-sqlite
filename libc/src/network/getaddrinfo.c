@@ -8,7 +8,6 @@
 #include <endian.h>
 #include <errno.h>
 #include "lookup.h"
-#include <assert.h>
 
 int getaddrinfo(const char *restrict host, const char *restrict serv, const struct addrinfo *restrict hint, struct addrinfo **restrict res)
 {
@@ -48,86 +47,87 @@ int getaddrinfo(const char *restrict host, const char *restrict serv, const stru
 		}
 	}
 
-	__assert_fail("TODO(ccgo)", __FILE__, __LINE__, __func__);
-//TODO(ccgo)		if (flags & AI_ADDRCONFIG) {
-//TODO(ccgo)			/* Define the "an address is configured" condition for address
-//TODO(ccgo)			 * families via ability to create a socket for the family plus
-//TODO(ccgo)			 * routability of the loopback address for the family. */
-//TODO(ccgo)			static const struct sockaddr_in lo4 = {
-//TODO(ccgo)				.sin_family = AF_INET, .sin_port = 65535,
-//TODO(ccgo)				.sin_addr.s_addr = __BYTE_ORDER == __BIG_ENDIAN
-//TODO(ccgo)					? 0x7f000001 : 0x0100007f
-//TODO(ccgo)			};
-//TODO(ccgo)			static const struct sockaddr_in6 lo6 = {
-//TODO(ccgo)				.sin6_family = AF_INET6, .sin6_port = 65535,
-//TODO(ccgo)				.sin6_addr = IN6ADDR_LOOPBACK_INIT
-//TODO(ccgo)			};
-//TODO(ccgo)			int tf[2] = { AF_INET, AF_INET6 };
-//TODO(ccgo)			const void *ta[2] = { &lo4, &lo6 };
-//TODO(ccgo)			socklen_t tl[2] = { sizeof lo4, sizeof lo6 };
-//TODO(ccgo)			for (i=0; i<2; i++) {
-//TODO(ccgo)				if (family==tf[1-i]) continue;
-//TODO(ccgo)				int s = socket(tf[i], SOCK_CLOEXEC|SOCK_DGRAM,
-//TODO(ccgo)					IPPROTO_UDP);
-//TODO(ccgo)				if (s>=0) {
-//TODO(ccgo)					int cs;
-//TODO(ccgo)					pthread_setcancelstate(
-//TODO(ccgo)						PTHREAD_CANCEL_DISABLE, &cs);
-//TODO(ccgo)					int r = connect(s, ta[i], tl[i]);
-//TODO(ccgo)					pthread_setcancelstate(cs, 0);
-//TODO(ccgo)					close(s);
-//TODO(ccgo)					if (!r) continue;
-//TODO(ccgo)				}
-//TODO(ccgo)				if (errno != EAFNOSUPPORT) return EAI_SYSTEM;
-//TODO(ccgo)				if (family == tf[i]) return EAI_NONAME;
-//TODO(ccgo)				family = tf[1-i];
-//TODO(ccgo)			}
-//TODO(ccgo)		}
-//TODO(ccgo)	
-//TODO(ccgo)		nservs = __lookup_serv(ports, serv, proto, socktype, flags);
-//TODO(ccgo)		if (nservs < 0) return nservs;
-//TODO(ccgo)	
-//TODO(ccgo)		naddrs = __lookup_name(addrs, canon, host, family, flags);
-//TODO(ccgo)		if (naddrs < 0) return naddrs;
-//TODO(ccgo)	
-//TODO(ccgo)		nais = nservs * naddrs;
-//TODO(ccgo)		canon_len = strlen(canon);
-//TODO(ccgo)		out = calloc(1, nais * sizeof(*out) + canon_len + 1);
-//TODO(ccgo)		if (!out) return EAI_MEMORY;
-//TODO(ccgo)	
-//TODO(ccgo)		if (canon_len) {
-//TODO(ccgo)			outcanon = (void *)&out[nais];
-//TODO(ccgo)			memcpy(outcanon, canon, canon_len+1);
-//TODO(ccgo)		} else {
-//TODO(ccgo)			outcanon = 0;
-//TODO(ccgo)		}
-//TODO(ccgo)	
-//TODO(ccgo)		for (k=i=0; i<naddrs; i++) for (j=0; j<nservs; j++, k++) {
-//TODO(ccgo)			out[k].ai = (struct addrinfo){
-//TODO(ccgo)				.ai_family = addrs[i].family,
-//TODO(ccgo)				.ai_socktype = ports[j].socktype,
-//TODO(ccgo)				.ai_protocol = ports[j].proto,
-//TODO(ccgo)				.ai_addrlen = addrs[i].family == AF_INET
-//TODO(ccgo)					? sizeof(struct sockaddr_in)
-//TODO(ccgo)					: sizeof(struct sockaddr_in6),
-//TODO(ccgo)				.ai_addr = (void *)&out[k].sa,
-//TODO(ccgo)				.ai_canonname = outcanon,
-//TODO(ccgo)				.ai_next = &out[k+1].ai };
-//TODO(ccgo)			switch (addrs[i].family) {
-//TODO(ccgo)			case AF_INET:
-//TODO(ccgo)				out[k].sa.sin.sin_family = AF_INET;
-//TODO(ccgo)				out[k].sa.sin.sin_port = htons(ports[j].port);
-//TODO(ccgo)				memcpy(&out[k].sa.sin.sin_addr, &addrs[i].addr, 4);
-//TODO(ccgo)				break;
-//TODO(ccgo)			case AF_INET6:
-//TODO(ccgo)				out[k].sa.sin6.sin6_family = AF_INET6;
-//TODO(ccgo)				out[k].sa.sin6.sin6_port = htons(ports[j].port);
-//TODO(ccgo)				out[k].sa.sin6.sin6_scope_id = addrs[i].scopeid;
-//TODO(ccgo)				memcpy(&out[k].sa.sin6.sin6_addr, &addrs[i].addr, 16);
-//TODO(ccgo)				break;			
-//TODO(ccgo)			}
-//TODO(ccgo)		}
-//TODO(ccgo)		out[nais-1].ai.ai_next = 0;
-//TODO(ccgo)		*res = &out->ai;
-//TODO(ccgo)		return 0;
+	if (flags & AI_ADDRCONFIG) {
+		/* Define the "an address is configured" condition for address
+		 * families via ability to create a socket for the family plus
+		 * routability of the loopback address for the family. */
+		__GO__("panic(`TODO`)\n");
+		static const struct sockaddr_in lo4;
+//TODO(ccgo) 		static const struct sockaddr_in lo4 = {
+//TODO(ccgo) 			.sin_family = AF_INET, .sin_port = 65535,
+//TODO(ccgo) 			.sin_addr.s_addr = __BYTE_ORDER == __BIG_ENDIAN
+//TODO(ccgo) 			? 0x7f000001 : 0x0100007f
+//TODO(ccgo) 		};
+		static const struct sockaddr_in6 lo6 = {
+			.sin6_family = AF_INET6, .sin6_port = 65535,
+			.sin6_addr = IN6ADDR_LOOPBACK_INIT
+		};
+		int tf[2] = { AF_INET, AF_INET6 };
+		const void *ta[2] = { &lo4, &lo6 };
+		socklen_t tl[2] = { sizeof lo4, sizeof lo6 };
+		for (i=0; i<2; i++) {
+			if (family==tf[1-i]) continue;
+			int s = socket(tf[i], SOCK_CLOEXEC|SOCK_DGRAM,
+				IPPROTO_UDP);
+			if (s>=0) {
+				int cs;
+				pthread_setcancelstate(
+					PTHREAD_CANCEL_DISABLE, &cs);
+				int r = connect(s, ta[i], tl[i]);
+				pthread_setcancelstate(cs, 0);
+				close(s);
+				if (!r) continue;
+			}
+			if (errno != EAFNOSUPPORT) return EAI_SYSTEM;
+			if (family == tf[i]) return EAI_NONAME;
+			family = tf[1-i];
+		}
+	}
+
+	nservs = __lookup_serv(ports, serv, proto, socktype, flags);
+	if (nservs < 0) return nservs;
+
+	naddrs = __lookup_name(addrs, canon, host, family, flags);
+	if (naddrs < 0) return naddrs;
+
+	nais = nservs * naddrs;
+	canon_len = strlen(canon);
+	out = calloc(1, nais * sizeof(*out) + canon_len + 1);
+	if (!out) return EAI_MEMORY;
+
+	if (canon_len) {
+		outcanon = (void *)&out[nais];
+		memcpy(outcanon, canon, canon_len+1);
+	} else {
+		outcanon = 0;
+	}
+
+	for (k=i=0; i<naddrs; i++) for (j=0; j<nservs; j++, k++) {
+		out[k].ai = (struct addrinfo){
+			.ai_family = addrs[i].family,
+			.ai_socktype = ports[j].socktype,
+			.ai_protocol = ports[j].proto,
+			.ai_addrlen = addrs[i].family == AF_INET
+				? sizeof(struct sockaddr_in)
+				: sizeof(struct sockaddr_in6),
+			.ai_addr = (void *)&out[k].sa,
+			.ai_canonname = outcanon,
+			.ai_next = &out[k+1].ai };
+		switch (addrs[i].family) {
+		case AF_INET:
+			out[k].sa.sin.sin_family = AF_INET;
+			out[k].sa.sin.sin_port = htons(ports[j].port);
+			memcpy(&out[k].sa.sin.sin_addr, &addrs[i].addr, 4);
+			break;
+		case AF_INET6:
+			out[k].sa.sin6.sin6_family = AF_INET6;
+			out[k].sa.sin6.sin6_port = htons(ports[j].port);
+			out[k].sa.sin6.sin6_scope_id = addrs[i].scopeid;
+			memcpy(&out[k].sa.sin6.sin6_addr, &addrs[i].addr, 16);
+			break;			
+		}
+	}
+	out[nais-1].ai.ai_next = 0;
+	*res = &out->ai;
+	return 0;
 }

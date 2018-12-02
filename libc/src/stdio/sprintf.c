@@ -1,6 +1,6 @@
+#include <libc.h>
 #include <stdio.h>
 #include <stdarg.h>
-#include <libc.h>
 
 int sprintf(char *restrict s, const char *restrict fmt, ...)
 {

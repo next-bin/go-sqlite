@@ -15,12 +15,11 @@ int __init_tp(void *p)
 	pthread_t td = p;
 	__ccgo_main_tls = td;
 	td->self = td;
-	// int r = __set_thread_area(TP_ADJ(p));
-	int r = 0; //TODO(ccgo)
-	if (r < 0) return -1;
-	if (!r) libc.can_do_threads = 1;
+//TODO(ccgo) 	int r = __set_thread_area(TP_ADJ(p));
+//TODO(ccgo) 	if (r < 0) return -1;
+//TODO(ccgo) 	if (!r) libc.can_do_threads = 1;
 	td->detach_state = DT_JOINABLE;
-//TODO(ccgo)	td->tid = __syscall(SYS_set_tid_address, &td->detach_state);
+//TODO(ccgo) 	td->tid = __syscall(SYS_set_tid_address, &td->detach_state);
 	td->locale = &libc.global_locale;
 	td->robust_list.head = &td->robust_list.head;
 	return 0;
@@ -91,8 +90,10 @@ static void static_init_tls(size_t *aux)
 		phdr = (void *)p;
 		if (phdr->p_type == PT_PHDR)
 			base = aux[AT_PHDR] - phdr->p_vaddr;
-		if (phdr->p_type == PT_DYNAMIC && _DYNAMIC)
-			base = (size_t)_DYNAMIC - phdr->p_vaddr;
+//TODO(ccgo) 		if (phdr->p_type == PT_DYNAMIC && _DYNAMIC)
+//TODO(ccgo) 			base = (size_t)_DYNAMIC - phdr->p_vaddr;
+		if (phdr->p_type == PT_DYNAMIC)
+			__GO__("panic(`TODO`)\n");
 		if (phdr->p_type == PT_TLS)
 			tls_phdr = phdr;
 	}

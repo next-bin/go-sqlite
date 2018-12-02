@@ -1,7 +1,6 @@
 #include <time.h>
 #include <setjmp.h>
 #include "pthread_impl.h"
-#include <assert.h>
 
 struct ksigevent {
 	union sigval sigev_value;
@@ -32,8 +31,7 @@ static void cleanup_fromsig(void *p)
 	self->cancelasync = 0;
 	self->unblock_cancel = 0;
 	__reset_tls();
-	__assert_fail("TODO(ccgo)", __FILE__, __LINE__, __func__);
-//TODO(ccgo)		longjmp(p, 1);
+	longjmp(p, 1);
 }
 
 static void timer_handler(int sig, siginfo_t *si, void *ctx)
@@ -52,16 +50,12 @@ static void timer_handler(int sig, siginfo_t *si, void *ctx)
 
 static void install_handler()
 {
-	__assert_fail("TODO(ccgo)", __FILE__, __LINE__, __func__);
-//TODO(ccgo)		struct sigaction sa = {
-	__assert_fail("TODO(ccgo)", __FILE__, __LINE__, __func__);
-//TODO(ccgo)			.sa_sigaction = timer_handler,
-	__assert_fail("TODO(ccgo)", __FILE__, __LINE__, __func__);
-//TODO(ccgo)			.sa_flags = SA_SIGINFO | SA_RESTART
-	__assert_fail("TODO(ccgo)", __FILE__, __LINE__, __func__);
-//TODO(ccgo)		};
-	__assert_fail("TODO(ccgo)", __FILE__, __LINE__, __func__);
-//TODO(ccgo)		__libc_sigaction(SIGTIMER, &sa, 0);
+	__GO__("panic(`TODO`)\n");
+// 	struct sigaction sa = {
+// 		.sa_sigaction = timer_handler,
+// 		.sa_flags = SA_SIGINFO | SA_RESTART
+// 	};
+// 	__libc_sigaction(SIGTIMER, &sa, 0);
 }
 
 static void *start(void *arg)
@@ -76,18 +70,12 @@ static void *start(void *arg)
 	self->start_arg = args->sev->sigev_value.sival_ptr;
 
 	pthread_barrier_wait(&args->b);
-	__assert_fail("TODO(ccgo)", __FILE__, __LINE__, __func__);
-//TODO(ccgo)		if ((id = self->timer_id) >= 0) {
-	__assert_fail("TODO(ccgo)", __FILE__, __LINE__, __func__);
-//TODO(ccgo)			__syscall(SYS_rt_sigprocmask, SIG_UNBLOCK,
-	__assert_fail("TODO(ccgo)", __FILE__, __LINE__, __func__);
-//TODO(ccgo)				SIGTIMER_SET, 0, _NSIG/8);
-	__assert_fail("TODO(ccgo)", __FILE__, __LINE__, __func__);
-//TODO(ccgo)			__wait(&self->timer_id, 0, id, 1);
-	__assert_fail("TODO(ccgo)", __FILE__, __LINE__, __func__);
-//TODO(ccgo)			__syscall(SYS_timer_delete, id);
-	__assert_fail("TODO(ccgo)", __FILE__, __LINE__, __func__);
-//TODO(ccgo)		}
+	if ((id = self->timer_id) >= 0) {
+		__syscall(SYS_rt_sigprocmask, SIG_UNBLOCK,
+			SIGTIMER_SET, 0, _NSIG/8);
+		__wait(&self->timer_id, 0, id, 1);
+		__syscall(SYS_timer_delete, id);
+	}
 	return 0;
 }
 

@@ -2,7 +2,6 @@
 #include <fcntl.h>
 #include <string.h>
 #include <errno.h>
-#include <assert.h>
 
 FILE *fopen(const char *restrict filename, const char *restrict mode)
 {

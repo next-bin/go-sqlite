@@ -5,7 +5,6 @@
 #include <signal.h>
 #include <unistd.h>
 #include "syscall.h"
-#include <assert.h>
 
 struct args {
 	pthread_barrier_t barrier;
@@ -20,15 +19,14 @@ static void *start(void *p)
 	ssize_t n;
 	int s = args->sock;
 	void (*func)(union sigval) = args->sev->sigev_notify_function;
-	__assert_fail("TODO(ccgo)", __FILE__, __LINE__, __func__);
-//TODO(ccgo)		union sigval val = args->sev->sigev_value;
-//TODO(ccgo)	
-//TODO(ccgo)		pthread_barrier_wait(&args->barrier);
-//TODO(ccgo)		n = recv(s, buf, sizeof(buf), MSG_NOSIGNAL|MSG_WAITALL);
-//TODO(ccgo)		close(s);
-//TODO(ccgo)		if (n==sizeof buf && buf[sizeof buf - 1] == 1)
-//TODO(ccgo)			func(val);
-//TODO(ccgo)		return 0;
+	union sigval val = args->sev->sigev_value;
+
+	pthread_barrier_wait(&args->barrier);
+	n = recv(s, buf, sizeof(buf), MSG_NOSIGNAL|MSG_WAITALL);
+	close(s);
+	if (n==sizeof buf && buf[sizeof buf - 1] == 1)
+		func(val);
+	return 0;
 }
 
 int mq_notify(mqd_t mqd, const struct sigevent *sev)

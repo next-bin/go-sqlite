@@ -4,7 +4,6 @@
 #include <errno.h>
 #include <string.h>
 #include <netinet/in.h>
-#include <assert.h>
 
 int __get_resolv_conf(struct resolvconf *conf, char *search, size_t search_sz)
 {
@@ -64,10 +63,8 @@ int __get_resolv_conf(struct resolvconf *conf, char *search, size_t search_sz)
 			for (p=line+11; isspace(*p); p++);
 			for (z=p; *z && !isspace(*z); z++);
 			*z=0;
-			__assert_fail("TODO(ccgo)", __FILE__, __LINE__, __func__);
-//TODO(ccgo)				if (__lookup_ipliteral(conf->ns+nns, p, AF_UNSPEC) > 0)
-			__assert_fail("TODO(ccgo)", __FILE__, __LINE__, __func__);
-//TODO(ccgo)					nns++;
+			if (__lookup_ipliteral(conf->ns+nns, p, AF_UNSPEC) > 0)
+				nns++;
 			continue;
 		}
 
@@ -86,8 +83,7 @@ int __get_resolv_conf(struct resolvconf *conf, char *search, size_t search_sz)
 
 no_resolv_conf:
 	if (!nns) {
-		__assert_fail("TODO(ccgo)", __FILE__, __LINE__, __func__);
-//TODO(ccgo)			__lookup_ipliteral(conf->ns, "127.0.0.1", AF_UNSPEC);
+		__lookup_ipliteral(conf->ns, "127.0.0.1", AF_UNSPEC);
 		nns = 1;
 	}
 

@@ -10,7 +10,6 @@
 #include <errno.h>
 #include <fcntl.h>
 #include "pthread_impl.h"
-#include <assert.h>
 
 static void reap(pid_t pid)
 {
@@ -20,10 +19,8 @@ static void reap(pid_t pid)
 
 static char *getword(FILE *f)
 {
-	__assert_fail("TODO(ccgo)", __FILE__, __LINE__, __func__);
-//TODO(ccgo)		char *s = 0;
-	__assert_fail("TODO(ccgo)", __FILE__, __LINE__, __func__);
-//TODO(ccgo)		return getdelim(&s, (size_t [1]){0}, 0, f) < 0 ? 0 : s;
+	char *s = 0;
+	return getdelim(&s, (size_t [1]){0}, 0, f) < 0 ? 0 : s;
 }
 
 static int do_wordexp(const char *s, wordexp_t *we, int flags)

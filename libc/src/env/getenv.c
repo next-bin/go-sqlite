@@ -1,7 +1,6 @@
 #include <stdlib.h>
 #include <string.h>
 #include "libc.h"
-#include <assert.h>
 
 char *__strchrnul(const char *, int);
 

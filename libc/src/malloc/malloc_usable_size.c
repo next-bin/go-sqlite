@@ -1,5 +1,4 @@
 #include <malloc.h>
-#include <assert.h>
 
 void *(*const __realloc_dep)(void *, size_t) = realloc;
 

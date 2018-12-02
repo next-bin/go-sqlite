@@ -7,7 +7,6 @@
 #include <string.h>
 #include <stdlib.h>
 #include "lookup.h"
-#include <assert.h>
 
 #define ALIGN (sizeof(struct { char a; char *b; }) - sizeof(char *))
 
@@ -35,23 +34,22 @@ int getservbyname_r(const char *name, const char *prots,
 	else if (!strcmp(prots, "udp")) proto = IPPROTO_UDP;
 	else return EINVAL;
 
-	__assert_fail("TODO(ccgo)", __FILE__, __LINE__, __func__);
-//TODO(ccgo)		cnt = __lookup_serv(servs, name, proto, 0, 0);
-//TODO(ccgo)		if (cnt<0) switch (cnt) {
-//TODO(ccgo)		case EAI_MEMORY:
-//TODO(ccgo)		case EAI_SYSTEM:
-//TODO(ccgo)			return ENOMEM;
-//TODO(ccgo)		default:
-//TODO(ccgo)			return ENOENT;
-//TODO(ccgo)		}
-//TODO(ccgo)	
-//TODO(ccgo)		se->s_name = (char *)name;
-//TODO(ccgo)		se->s_aliases = (void *)buf;
-//TODO(ccgo)		se->s_aliases[0] = se->s_name;
-//TODO(ccgo)		se->s_aliases[1] = 0;
-//TODO(ccgo)		se->s_port = htons(servs[0].port);
-//TODO(ccgo)		se->s_proto = servs[0].proto == IPPROTO_TCP ? "tcp" : "udp";
-//TODO(ccgo)	
-//TODO(ccgo)		*res = se;
-//TODO(ccgo)		return 0;
+	cnt = __lookup_serv(servs, name, proto, 0, 0);
+	if (cnt<0) switch (cnt) {
+	case EAI_MEMORY:
+	case EAI_SYSTEM:
+		return ENOMEM;
+	default:
+		return ENOENT;
+	}
+
+	se->s_name = (char *)name;
+	se->s_aliases = (void *)buf;
+	se->s_aliases[0] = se->s_name;
+	se->s_aliases[1] = 0;
+	se->s_port = htons(servs[0].port);
+	se->s_proto = servs[0].proto == IPPROTO_TCP ? "tcp" : "udp";
+
+	*res = se;
+	return 0;
 }

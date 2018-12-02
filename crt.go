@@ -8,6 +8,22 @@
 //TODO go:generate go run generator.go -goos windows -goarch 386
 //TODO go:generate go run generator.go -goos windows -goarch amd64
 
+//TODO(ccgo) Restore src/fenv/x86_64/*.s
+//TODO(ccgo) Restore src/internal/x86_64/*.s
+//TODO(ccgo) Restore src/math/x86_64/*.s
+//TODO(ccgo) Restore src/signal/x86_64/*.s
+//TODO(ccgo) Restore src/string/x86_64/*.s
+//TODO(ccgo) Restore src/thread/x86_64/*.s
+//TODO/ccgo) Restore src/setjmp/x86_64/*.s
+
+//TODO(ccgo) Restore src/fenv/i386/*.s
+//TODO(ccgo) Restore src/internal/i386/*.s
+//TODO(ccgo) Restore src/math/i386/*.s
+//TODO(ccgo) Restore src/signal/i386/*.s
+//TODO(ccgo) Restore src/string/i386/*.s
+//TODO(ccgo) Restore src/thread/i386/*.s
+//TODO/ccgo) Restore src/setjmp/i386/*.s
+
 // Package crt provides C-runtime services. Work In Progress. API unstable.
 //
 // Installation
@@ -47,6 +63,7 @@ var (
 	files     = map[uintptr]*os.File{}
 	filesMu   sync.Mutex
 	logging   bool
+	mainTLS   TLS
 
 	Log = func(s string, a ...interface{}) {}
 
@@ -64,8 +81,9 @@ func init() {
 	Nz32 = -Nz32
 	Nz64 = -Nz64
 
-	X__libc_start_main(0)
-	if tls := MainTLS(); (*s1__pthread)(unsafe.Pointer(tls)).Fself != uintptr(tls) { // sanity check
+	X__libc_start_main(0, 0, 0, 0)
+	mainTLS = TLS(*(*uintptr)(unsafe.Pointer(X__ccgo_main_tls)))
+	if (*s1__pthread)(unsafe.Pointer(mainTLS)).Fself != uintptr(mainTLS) { // sanity check
 		panic("internal error")
 	}
 
@@ -119,9 +137,7 @@ func Main(main func(TLS, int32, uintptr) int32) {
 	Xexit(tls, main(tls, int32(len(os.Args)), *(*uintptr)(unsafe.Pointer(X__ccgo_argv))))
 }
 
-func MainTLS() TLS {
-	return TLS(*(*uintptr)(unsafe.Pointer(X__ccgo_main_tls)))
-}
+func MainTLS() TLS { return mainTLS }
 
 // TLS represents a virtual C thread.
 type TLS uintptr
@@ -224,7 +240,7 @@ func DS(init []byte) uintptr {
 }
 
 // Copy copies n bytes form src to dest and returns n.
-func Copy(dst, src uintptr, n int) int { //TODO-
+func Copy(dst, src uintptr, n int) int {
 	if n != 0 {
 		return copy((*rawmem)(unsafe.Pointer(dst))[:n], (*rawmem)(unsafe.Pointer(src))[:n])
 	}
@@ -541,7 +557,7 @@ func X__log(tls TLS, format uintptr, args ...interface{}) {
 // ctype
 
 func Xisalnum(tls TLS, c int32) (r int32) {
-	if c >= 0 && currentLocale[byte(c)]&isalnum != 0 {
+	if c >= 0 && currentLocaleBits[byte(c)]&isalnum != 0 {
 		return 1
 	}
 
@@ -549,7 +565,7 @@ func Xisalnum(tls TLS, c int32) (r int32) {
 }
 
 func Xisalpha(tls TLS, c int32) (r int32) {
-	if c >= 0 && currentLocale[byte(c)]&isalpha != 0 {
+	if c >= 0 && currentLocaleBits[byte(c)]&isalpha != 0 {
 		return 1
 	}
 
@@ -557,7 +573,7 @@ func Xisalpha(tls TLS, c int32) (r int32) {
 }
 
 func Xisblank(tls TLS, c int32) (r int32) {
-	if c >= 0 && currentLocale[byte(c)]&isblank != 0 {
+	if c >= 0 && currentLocaleBits[byte(c)]&isblank != 0 {
 		return 1
 	}
 
@@ -565,7 +581,7 @@ func Xisblank(tls TLS, c int32) (r int32) {
 }
 
 func Xiscntrl(tls TLS, c int32) (r int32) {
-	if c >= 0 && currentLocale[byte(c)]&iscntrl != 0 {
+	if c >= 0 && currentLocaleBits[byte(c)]&iscntrl != 0 {
 		return 1
 	}
 
@@ -573,7 +589,7 @@ func Xiscntrl(tls TLS, c int32) (r int32) {
 }
 
 func Xisdigit(tls TLS, c int32) (r int32) {
-	if c >= 0 && currentLocale[byte(c)]&isdigit != 0 {
+	if c >= 0 && currentLocaleBits[byte(c)]&isdigit != 0 {
 		return 1
 	}
 
@@ -581,7 +597,7 @@ func Xisdigit(tls TLS, c int32) (r int32) {
 }
 
 func Xisgraph(tls TLS, c int32) (r int32) {
-	if c >= 0 && currentLocale[byte(c)]&isgraph != 0 {
+	if c >= 0 && currentLocaleBits[byte(c)]&isgraph != 0 {
 		return 1
 	}
 
@@ -589,7 +605,7 @@ func Xisgraph(tls TLS, c int32) (r int32) {
 }
 
 func Xislower(tls TLS, c int32) (r int32) {
-	if c >= 0 && currentLocale[byte(c)]&islower != 0 {
+	if c >= 0 && currentLocaleBits[byte(c)]&islower != 0 {
 		return 1
 	}
 
@@ -599,7 +615,7 @@ func Xislower(tls TLS, c int32) (r int32) {
 func X__builtin_isprint(tls TLS, c int32) (r int32) { return Xisprint(tls, c) }
 
 func Xisprint(tls TLS, c int32) (r int32) {
-	if c >= 0 && currentLocale[byte(c)]&isprint != 0 {
+	if c >= 0 && currentLocaleBits[byte(c)]&isprint != 0 {
 		return 1
 	}
 
@@ -607,7 +623,7 @@ func Xisprint(tls TLS, c int32) (r int32) {
 }
 
 func Xispunct(tls TLS, c int32) (r int32) {
-	if c >= 0 && currentLocale[byte(c)]&ispunct != 0 {
+	if c >= 0 && currentLocaleBits[byte(c)]&ispunct != 0 {
 		return 1
 	}
 
@@ -615,7 +631,7 @@ func Xispunct(tls TLS, c int32) (r int32) {
 }
 
 func Xisspace(tls TLS, c int32) (r int32) {
-	if c >= 0 && currentLocale[byte(c)]&isspace != 0 {
+	if c >= 0 && currentLocaleBits[byte(c)]&isspace != 0 {
 		return 1
 	}
 
@@ -623,7 +639,7 @@ func Xisspace(tls TLS, c int32) (r int32) {
 }
 
 func Xisupper(tls TLS, c int32) (r int32) {
-	if c >= 0 && currentLocale[byte(c)]&isupper != 0 {
+	if c >= 0 && currentLocaleBits[byte(c)]&isupper != 0 {
 		return 1
 	}
 
@@ -631,11 +647,27 @@ func Xisupper(tls TLS, c int32) (r int32) {
 }
 
 func Xisxdigit(tls TLS, c int32) (r int32) {
-	if c >= 0 && currentLocale[byte(c)]&isxdigit != 0 {
+	if c >= 0 && currentLocaleBits[byte(c)]&isxdigit != 0 {
 		return 1
 	}
 
 	return 0
+}
+
+func Xtolower(tls TLS, c int32) (r int32) {
+	if c >= 0 {
+		return int32(currentLocaleToLower[byte(c)])
+	}
+
+	return c
+}
+
+func Xtoupper(tls TLS, c int32) (r int32) {
+	if c >= 0 {
+		return int32(currentLocaleToUpper[byte(c)])
+	}
+
+	return c
 }
 
 func setCurrentLocale(s string) {
@@ -643,7 +675,18 @@ func setCurrentLocale(s string) {
 	case "", "POSIX":
 		s = "C"
 	}
-	if p := ctype[s]; p != nil {
-		currentLocale = p
+	if p := ctypeBits[s]; p != nil {
+		currentLocaleBits = p
+	}
+	if p := ctypeToLower[s]; p != nil {
+		currentLocaleToLower = p
+	}
+	if p := ctypeToUpper[s]; p != nil {
+		currentLocaleToUpper = p
 	}
 }
+
+func X__ccgo_arg(tls TLS, i int32) uintptr { return MustCString(os.Args[i]) }
+func X__ccgo_argc(tls TLS) int32           { return int32(len(os.Args)) }
+func X__ccgo_env(tls TLS, i int32) uintptr { return MustCString(env[i]) }
+func X__ccgo_envc(tls TLS) int32           { return int32(len(env)) }

@@ -2,7 +2,6 @@
 #include <stdarg.h>
 #include "syscall.h"
 #include "libc.h"
-#include <assert.h>
 
 int open(const char *filename, int flags, ...)
 {

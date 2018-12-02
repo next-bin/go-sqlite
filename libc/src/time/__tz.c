@@ -4,7 +4,6 @@
 #include <stdlib.h>
 #include <string.h>
 #include "libc.h"
-#include <assert.h>
 
 long  __timezone = 0;
 int   __daylight = 0;
@@ -21,7 +20,7 @@ const char __utc[] = "UTC";
 static int dst_off;
 static int r0[5], r1[5];
 
-static const unsigned char *zi, *trans, *sindex, *types, *abbrevs, *abbrevs_end;
+static const unsigned char *zi, *trans, *index, *types, *abbrevs, *abbrevs_end;
 static size_t map_size;
 
 static char old_tz_buf[32];
@@ -178,17 +177,14 @@ static void do_tzset()
 	if (map) {
 		int scale = 2;
 		if (sizeof(time_t) > 4 && map[4]=='2') {
-			//TODO(ccgo) size_t skip = zi_dotprod(zi+20, VEC(1,1,8,5,6,1), 6);
-			// cpp: size_t skip = zi_dotprod(zi+20, ((const unsigned char[]){1, 1, 8, 5, 6, 1}), 6);
-			unsigned char literal[] = {1, 1, 8, 5, 6, 1};
-			size_t skip = zi_dotprod(zi+20, literal, 6);
+			size_t skip = zi_dotprod(zi+20, VEC(1,1,8,5,6,1), 6);
 			trans = zi+skip+44+44;
 			scale++;
 		} else {
 			trans = zi+44;
 		}
-		sindex = trans + (zi_read32(trans-12) << scale);
-		types = sindex + zi_read32(trans-12);
+		index = trans + (zi_read32(trans-12) << scale);
+		types = index + zi_read32(trans-12);
 		abbrevs = types + 6*zi_read32(trans-8);
 		abbrevs_end = abbrevs + zi_read32(trans-4);
 		if (zi[map_size-1] == '\n') {
@@ -234,7 +230,7 @@ static void do_tzset()
 			dst_off = __timezone - 3600;
 	} else {
 		__daylight = 0;
-		dst_off = 0;
+		dst_off = __timezone;
 	}
 
 	if (*s == ',') s++, getrule(&s, r0);
@@ -250,7 +246,7 @@ static size_t scan_trans(long long t, int local, size_t *alt)
 	uint64_t x;
 	int off = 0;
 
-	size_t a = 0, n = (sindex-trans)>>scale, m;
+	size_t a = 0, n = (index-trans)>>scale, m;
 
 	if (!n) {
 		if (alt) *alt = 0;
@@ -263,7 +259,7 @@ static size_t scan_trans(long long t, int local, size_t *alt)
 		x = zi_read32(trans + (m<<scale));
 		if (scale == 3) x = x<<32 | zi_read32(trans + (m<<scale) + 4);
 		else x = (int32_t)x;
-		if (local) off = (int32_t)zi_read32(types + 6 * sindex[m-1]);
+		if (local) off = (int32_t)zi_read32(types + 6 * index[m-1]);
 		if (t - off < (int64_t)x) {
 			n /= 2;
 		} else {
@@ -274,13 +270,13 @@ static size_t scan_trans(long long t, int local, size_t *alt)
 
 	/* First and last entry are special. First means to use lowest-index
 	 * non-DST type. Last means to apply POSIX-style rule if available. */
-	n = (sindex-trans)>>scale;
+	n = (index-trans)>>scale;
 	if (a == n-1) return -1;
 	if (a == 0) {
 		x = zi_read32(trans + (a<<scale));
 		if (scale == 3) x = x<<32 | zi_read32(trans + (a<<scale) + 4);
 		else x = (int32_t)x;
-		if (local) off = (int32_t)zi_read32(types + 6 * sindex[a-1]);
+		if (local) off = (int32_t)zi_read32(types + 6 * index[a-1]);
 		if (t - off < (int64_t)x) {
 			for (a=0; a<(abbrevs-types)/6; a++) {
 				if (types[6*a+4] != types[4]) break;
@@ -298,15 +294,15 @@ static size_t scan_trans(long long t, int local, size_t *alt)
 
 	/* Try to find a neighboring opposite-DST-status rule. */
 	if (alt) {
-		if (a && types[6*sindex[a-1]+4] != types[6*sindex[a]+4])
-			*alt = sindex[a-1];
-		else if (a+1<n && types[6*sindex[a+1]+4] != types[6*sindex[a]+4])
-			*alt = sindex[a+1];
+		if (a && types[6*index[a-1]+4] != types[6*index[a]+4])
+			*alt = index[a-1];
+		else if (a+1<n && types[6*index[a+1]+4] != types[6*index[a]+4])
+			*alt = index[a+1];
 		else
-			*alt = sindex[a];
+			*alt = index[a];
 	}
 
-	return sindex[a];
+	return index[a];
 }
 
 static int days_in_month(int m, int is_leap)

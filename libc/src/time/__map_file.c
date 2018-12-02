@@ -2,7 +2,6 @@
 #include <fcntl.h>
 #include <sys/stat.h>
 #include "syscall.h"
-#include <assert.h>
 
 void *__mmap(void *, size_t, int, int, int, off_t);
 

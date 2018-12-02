@@ -1,5 +1,5 @@
-#include <string.h>
 #include <libc.h>
+#include <string.h>
 
 int strcmp(const char *l, const char *r)
 {

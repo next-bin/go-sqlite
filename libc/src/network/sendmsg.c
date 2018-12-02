@@ -4,7 +4,6 @@
 #include <errno.h>
 #include "syscall.h"
 #include "libc.h"
-#include <assert.h>
 
 ssize_t sendmsg(int fd, const struct msghdr *msg, int flags)
 {
@@ -27,6 +26,5 @@ ssize_t sendmsg(int fd, const struct msghdr *msg, int flags)
 		}
 	}
 #endif
-	__assert_fail("TODO(ccgo)", __FILE__, __LINE__, __func__);
-//TODO(ccgo)		return socketcall_cp(sendmsg, fd, msg, flags, 0, 0, 0);
+	return socketcall_cp(sendmsg, fd, msg, flags, 0, 0, 0);
 }

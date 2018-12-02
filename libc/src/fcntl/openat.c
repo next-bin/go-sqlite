@@ -2,7 +2,6 @@
 #include <stdarg.h>
 #include "syscall.h"
 #include "libc.h"
-#include <assert.h>
 
 int openat(int fd, const char *filename, int flags, ...)
 {
@@ -15,8 +14,7 @@ int openat(int fd, const char *filename, int flags, ...)
 		va_end(ap);
 	}
 
-	__assert_fail("TODO(ccgo)", __FILE__, __LINE__, __func__);
-//TODO(ccgo)		return syscall_cp(SYS_openat, fd, filename, flags|O_LARGEFILE, mode);
+	return syscall_cp(SYS_openat, fd, filename, flags|O_LARGEFILE, mode);
 }
 
 LFS64(openat);

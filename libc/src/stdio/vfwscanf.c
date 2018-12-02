@@ -6,7 +6,6 @@
 #include <wctype.h>
 #include <limits.h>
 #include <string.h>
-#include <assert.h>
 
 #include "stdio_impl.h"
 #include "shgetc.h"
@@ -98,238 +97,237 @@ int vfwscanf(FILE *restrict f, const wchar_t *restrict fmt, va_list ap)
 	int invert;
 	int matches=0;
 	off_t pos = 0, cnt;
-	__assert_fail("TODO(ccgo)", __FILE__, __LINE__, __func__);
-//TODO(ccgo)		static const char size_pfx[][3] = { "hh", "h", "", "l", "L", "ll" };
-//TODO(ccgo)		char tmp[3*sizeof(int)+10];
-//TODO(ccgo)		const wchar_t *set;
-//TODO(ccgo)		size_t i, k;
-//TODO(ccgo)	
-//TODO(ccgo)		FLOCK(f);
-//TODO(ccgo)	
-//TODO(ccgo)		fwide(f, 1);
-//TODO(ccgo)	
-//TODO(ccgo)		for (p=fmt; *p; p++) {
-//TODO(ccgo)	
-//TODO(ccgo)			alloc = 0;
-//TODO(ccgo)	
-//TODO(ccgo)			if (iswspace(*p)) {
-//TODO(ccgo)				while (iswspace(p[1])) p++;
-//TODO(ccgo)				while (iswspace((c=getwc(f)))) pos++;
-//TODO(ccgo)				ungetwc(c, f);
-//TODO(ccgo)				continue;
-//TODO(ccgo)			}
-//TODO(ccgo)			if (*p != '%' || p[1] == '%') {
-//TODO(ccgo)				if (*p == '%') {
-//TODO(ccgo)					p++;
-//TODO(ccgo)					while (iswspace((c=getwc(f)))) pos++;
-//TODO(ccgo)				} else {
-//TODO(ccgo)					c = getwc(f);
-//TODO(ccgo)				}
-//TODO(ccgo)				if (c!=*p) {
-//TODO(ccgo)					ungetwc(c, f);
-//TODO(ccgo)					if (c<0) goto input_fail;
-//TODO(ccgo)					goto match_fail;
-//TODO(ccgo)				}
-//TODO(ccgo)				pos++;
-//TODO(ccgo)				continue;
-//TODO(ccgo)			}
-//TODO(ccgo)	
-//TODO(ccgo)			p++;
-//TODO(ccgo)			if (*p=='*') {
-//TODO(ccgo)				dest = 0; p++;
-//TODO(ccgo)			} else if (iswdigit(*p) && p[1]=='$') {
-//TODO(ccgo)				dest = arg_n(ap, *p-'0'); p+=2;
-//TODO(ccgo)			} else {
-//TODO(ccgo)				dest = va_arg(ap, void *);
-//TODO(ccgo)			}
-//TODO(ccgo)	
-//TODO(ccgo)			for (width=0; iswdigit(*p); p++) {
-//TODO(ccgo)				width = 10*width + *p - '0';
-//TODO(ccgo)			}
-//TODO(ccgo)	
-//TODO(ccgo)			if (*p=='m') {
-//TODO(ccgo)				wcs = 0;
-//TODO(ccgo)				s = 0;
-//TODO(ccgo)				alloc = !!dest;
-//TODO(ccgo)				p++;
-//TODO(ccgo)			} else {
-//TODO(ccgo)				alloc = 0;
-//TODO(ccgo)			}
-//TODO(ccgo)	
-//TODO(ccgo)			size = SIZE_def;
-//TODO(ccgo)			switch (*p++) {
-//TODO(ccgo)			case 'h':
-//TODO(ccgo)				if (*p == 'h') p++, size = SIZE_hh;
-//TODO(ccgo)				else size = SIZE_h;
-//TODO(ccgo)				break;
-//TODO(ccgo)			case 'l':
-//TODO(ccgo)				if (*p == 'l') p++, size = SIZE_ll;
-//TODO(ccgo)				else size = SIZE_l;
-//TODO(ccgo)				break;
-//TODO(ccgo)			case 'j':
-//TODO(ccgo)				size = SIZE_ll;
-//TODO(ccgo)				break;
-//TODO(ccgo)			case 'z':
-//TODO(ccgo)			case 't':
-//TODO(ccgo)				size = SIZE_l;
-//TODO(ccgo)				break;
-//TODO(ccgo)			case 'L':
-//TODO(ccgo)				size = SIZE_L;
-//TODO(ccgo)				break;
-//TODO(ccgo)			case 'd': case 'i': case 'o': case 'u': case 'x':
-//TODO(ccgo)			case 'a': case 'e': case 'f': case 'g':
-//TODO(ccgo)			case 'A': case 'E': case 'F': case 'G': case 'X':
-//TODO(ccgo)			case 's': case 'c': case '[':
-//TODO(ccgo)			case 'S': case 'C':
-//TODO(ccgo)			case 'p': case 'n':
-//TODO(ccgo)				p--;
-//TODO(ccgo)				break;
-//TODO(ccgo)			default:
-//TODO(ccgo)				goto fmt_fail;
-//TODO(ccgo)			}
-//TODO(ccgo)	
-//TODO(ccgo)			t = *p;
-//TODO(ccgo)	
-//TODO(ccgo)			/* Transform S,C -> ls,lc */
-//TODO(ccgo)			if ((t&0x2f)==3) {
-//TODO(ccgo)				size = SIZE_l;
-//TODO(ccgo)				t |= 32;
-//TODO(ccgo)			}
-//TODO(ccgo)	
-//TODO(ccgo)			if (t != 'n') {
-//TODO(ccgo)				if (t != '[' && (t|32) != 'c')
-//TODO(ccgo)					while (iswspace((c=getwc(f)))) pos++;
-//TODO(ccgo)				else
-//TODO(ccgo)					c=getwc(f);
-//TODO(ccgo)				if (c < 0) goto input_fail;
-//TODO(ccgo)				ungetwc(c, f);
-//TODO(ccgo)			}
-//TODO(ccgo)	
-//TODO(ccgo)			switch (t) {
-//TODO(ccgo)			case 'n':
-//TODO(ccgo)				store_int(dest, size, pos);
-//TODO(ccgo)				/* do not increment match count, etc! */
-//TODO(ccgo)				continue;
-//TODO(ccgo)	
-//TODO(ccgo)			case 's':
-//TODO(ccgo)			case 'c':
-//TODO(ccgo)			case '[':
-//TODO(ccgo)				if (t == 'c') {
-//TODO(ccgo)					if (width<1) width = 1;
-//TODO(ccgo)					invert = 1;
-//TODO(ccgo)					set = L"";
-//TODO(ccgo)				} else if (t == 's') {
-//TODO(ccgo)					invert = 1;
-//TODO(ccgo)					static const wchar_t spaces[] = {
-//TODO(ccgo)						' ', '\t', '\n', '\r', 11, 12,  0x0085,
-//TODO(ccgo)						0x2000, 0x2001, 0x2002, 0x2003, 0x2004, 0x2005,
-//TODO(ccgo)						0x2006, 0x2008, 0x2009, 0x200a,
-//TODO(ccgo)						0x2028, 0x2029, 0x205f, 0x3000, 0 };
-//TODO(ccgo)					set = spaces;
-//TODO(ccgo)				} else {
-//TODO(ccgo)					if (*++p == '^') p++, invert = 1;
-//TODO(ccgo)					else invert = 0;
-//TODO(ccgo)					set = p;
-//TODO(ccgo)					if (*p==']') p++;
-//TODO(ccgo)					while (*p!=']') {
-//TODO(ccgo)						if (!*p) goto fmt_fail;
-//TODO(ccgo)						p++;
-//TODO(ccgo)					}
-//TODO(ccgo)				}
-//TODO(ccgo)	
-//TODO(ccgo)				s = (size == SIZE_def) ? dest : 0;
-//TODO(ccgo)				wcs = (size == SIZE_l) ? dest : 0;
-//TODO(ccgo)	
-//TODO(ccgo)				int gotmatch = 0;
-//TODO(ccgo)	
-//TODO(ccgo)				if (width < 1) width = -1;
-//TODO(ccgo)	
-//TODO(ccgo)				i = 0;
-//TODO(ccgo)				if (alloc) {
-//TODO(ccgo)					k = t=='c' ? width+1U : 31;
-//TODO(ccgo)					if (size == SIZE_l) {
-//TODO(ccgo)						wcs = malloc(k*sizeof(wchar_t));
-//TODO(ccgo)						if (!wcs) goto alloc_fail;
-//TODO(ccgo)					} else {
-//TODO(ccgo)						s = malloc(k);
-//TODO(ccgo)						if (!s) goto alloc_fail;
-//TODO(ccgo)					}
-//TODO(ccgo)				}
-//TODO(ccgo)				while (width) {
-//TODO(ccgo)					if ((c=getwc(f))<0) break;
-//TODO(ccgo)					if (in_set(set, c) == invert)
-//TODO(ccgo)						break;
-//TODO(ccgo)					if (wcs) {
-//TODO(ccgo)						wcs[i++] = c;
-//TODO(ccgo)						if (alloc && i==k) {
-//TODO(ccgo)							k += k+1;
-//TODO(ccgo)							wchar_t *tmp = realloc(wcs, k*sizeof(wchar_t));
-//TODO(ccgo)							if (!tmp) goto alloc_fail;
-//TODO(ccgo)							wcs = tmp;
-//TODO(ccgo)						}
-//TODO(ccgo)					} else if (size != SIZE_l) {
-//TODO(ccgo)						int l = wctomb(s?s+i:tmp, c);
-//TODO(ccgo)						if (l<0) goto input_fail;
-//TODO(ccgo)						i += l;
-//TODO(ccgo)						if (alloc && i > k-4) {
-//TODO(ccgo)							k += k+1;
-//TODO(ccgo)							char *tmp = realloc(s, k);
-//TODO(ccgo)							if (!tmp) goto alloc_fail;
-//TODO(ccgo)							s = tmp;
-//TODO(ccgo)						}
-//TODO(ccgo)					}
-//TODO(ccgo)					pos++;
-//TODO(ccgo)					width-=(width>0);
-//TODO(ccgo)					gotmatch=1;
-//TODO(ccgo)				}
-//TODO(ccgo)				if (width) {
-//TODO(ccgo)					ungetwc(c, f);
-//TODO(ccgo)					if (t == 'c' || !gotmatch) goto match_fail;
-//TODO(ccgo)				}
-//TODO(ccgo)	
-//TODO(ccgo)				if (alloc) {
-//TODO(ccgo)					if (size == SIZE_l) *(wchar_t **)dest = wcs;
-//TODO(ccgo)					else *(char **)dest = s;
-//TODO(ccgo)				}
-//TODO(ccgo)				if (t != 'c') {
-//TODO(ccgo)					if (wcs) wcs[i] = 0;
-//TODO(ccgo)					if (s) s[i] = 0;
-//TODO(ccgo)				}
-//TODO(ccgo)				break;
-//TODO(ccgo)	
-//TODO(ccgo)			case 'd': case 'i': case 'o': case 'u': case 'x':
-//TODO(ccgo)			case 'a': case 'e': case 'f': case 'g':
-//TODO(ccgo)			case 'A': case 'E': case 'F': case 'G': case 'X':
-//TODO(ccgo)			case 'p':
-//TODO(ccgo)				if (width < 1) width = 0;
-//TODO(ccgo)				snprintf(tmp, sizeof tmp, "%.*s%.0d%s%c%%lln",
-//TODO(ccgo)					1+!dest, "%*", width, size_pfx[size+2], t);
-//TODO(ccgo)				cnt = 0;
-//TODO(ccgo)				if (fscanf(f, tmp, dest?dest:&cnt, &cnt) == -1)
-//TODO(ccgo)					goto input_fail;
-//TODO(ccgo)				else if (!cnt)
-//TODO(ccgo)					goto match_fail;
-//TODO(ccgo)				pos += cnt;
-//TODO(ccgo)				break;
-//TODO(ccgo)			default:
-//TODO(ccgo)				goto fmt_fail;
-//TODO(ccgo)			}
-//TODO(ccgo)	
-//TODO(ccgo)			if (dest) matches++;
-//TODO(ccgo)		}
-//TODO(ccgo)		if (0) {
-//TODO(ccgo)	fmt_fail:
-//TODO(ccgo)	alloc_fail:
-//TODO(ccgo)	input_fail:
-//TODO(ccgo)			if (!matches) matches--;
-//TODO(ccgo)	match_fail:
-//TODO(ccgo)			if (alloc) {
-//TODO(ccgo)				free(s);
-//TODO(ccgo)				free(wcs);
-//TODO(ccgo)			}
-//TODO(ccgo)		}
-//TODO(ccgo)		FUNLOCK(f);
-//TODO(ccgo)		return matches;
+	static const char size_pfx[][3] = { "hh", "h", "", "l", "L", "ll" };
+	char tmp[3*sizeof(int)+10];
+	const wchar_t *set;
+	size_t i, k;
+
+	FLOCK(f);
+
+	fwide(f, 1);
+
+	for (p=fmt; *p; p++) {
+
+		alloc = 0;
+
+		if (iswspace(*p)) {
+			while (iswspace(p[1])) p++;
+			while (iswspace((c=getwc(f)))) pos++;
+			ungetwc(c, f);
+			continue;
+		}
+		if (*p != '%' || p[1] == '%') {
+			if (*p == '%') {
+				p++;
+				while (iswspace((c=getwc(f)))) pos++;
+			} else {
+				c = getwc(f);
+			}
+			if (c!=*p) {
+				ungetwc(c, f);
+				if (c<0) goto input_fail;
+				goto match_fail;
+			}
+			pos++;
+			continue;
+		}
+
+		p++;
+		if (*p=='*') {
+			dest = 0; p++;
+		} else if (iswdigit(*p) && p[1]=='$') {
+			dest = arg_n(ap, *p-'0'); p+=2;
+		} else {
+			dest = va_arg(ap, void *);
+		}
+
+		for (width=0; iswdigit(*p); p++) {
+			width = 10*width + *p - '0';
+		}
+
+		if (*p=='m') {
+			wcs = 0;
+			s = 0;
+			alloc = !!dest;
+			p++;
+		} else {
+			alloc = 0;
+		}
+
+		size = SIZE_def;
+		switch (*p++) {
+		case 'h':
+			if (*p == 'h') p++, size = SIZE_hh;
+			else size = SIZE_h;
+			break;
+		case 'l':
+			if (*p == 'l') p++, size = SIZE_ll;
+			else size = SIZE_l;
+			break;
+		case 'j':
+			size = SIZE_ll;
+			break;
+		case 'z':
+		case 't':
+			size = SIZE_l;
+			break;
+		case 'L':
+			size = SIZE_L;
+			break;
+		case 'd': case 'i': case 'o': case 'u': case 'x':
+		case 'a': case 'e': case 'f': case 'g':
+		case 'A': case 'E': case 'F': case 'G': case 'X':
+		case 's': case 'c': case '[':
+		case 'S': case 'C':
+		case 'p': case 'n':
+			p--;
+			break;
+		default:
+			goto fmt_fail;
+		}
+
+		t = *p;
+
+		/* Transform S,C -> ls,lc */
+		if ((t&0x2f)==3) {
+			size = SIZE_l;
+			t |= 32;
+		}
+
+		if (t != 'n') {
+			if (t != '[' && (t|32) != 'c')
+				while (iswspace((c=getwc(f)))) pos++;
+			else
+				c=getwc(f);
+			if (c < 0) goto input_fail;
+			ungetwc(c, f);
+		}
+
+		switch (t) {
+		case 'n':
+			store_int(dest, size, pos);
+			/* do not increment match count, etc! */
+			continue;
+
+		case 's':
+		case 'c':
+		case '[':
+			if (t == 'c') {
+				if (width<1) width = 1;
+				invert = 1;
+				set = L"";
+			} else if (t == 's') {
+				invert = 1;
+				static const wchar_t spaces[] = {
+					' ', '\t', '\n', '\r', 11, 12,  0x0085,
+					0x2000, 0x2001, 0x2002, 0x2003, 0x2004, 0x2005,
+					0x2006, 0x2008, 0x2009, 0x200a,
+					0x2028, 0x2029, 0x205f, 0x3000, 0 };
+				set = spaces;
+			} else {
+				if (*++p == '^') p++, invert = 1;
+				else invert = 0;
+				set = p;
+				if (*p==']') p++;
+				while (*p!=']') {
+					if (!*p) goto fmt_fail;
+					p++;
+				}
+			}
+
+			s = (size == SIZE_def) ? dest : 0;
+			wcs = (size == SIZE_l) ? dest : 0;
+
+			int gotmatch = 0;
+
+			if (width < 1) width = -1;
+
+			i = 0;
+			if (alloc) {
+				k = t=='c' ? width+1U : 31;
+				if (size == SIZE_l) {
+					wcs = malloc(k*sizeof(wchar_t));
+					if (!wcs) goto alloc_fail;
+				} else {
+					s = malloc(k);
+					if (!s) goto alloc_fail;
+				}
+			}
+			while (width) {
+				if ((c=getwc(f))<0) break;
+				if (in_set(set, c) == invert)
+					break;
+				if (wcs) {
+					wcs[i++] = c;
+					if (alloc && i==k) {
+						k += k+1;
+						wchar_t *tmp = realloc(wcs, k*sizeof(wchar_t));
+						if (!tmp) goto alloc_fail;
+						wcs = tmp;
+					}
+				} else if (size != SIZE_l) {
+					int l = wctomb(s?s+i:tmp, c);
+					if (l<0) goto input_fail;
+					i += l;
+					if (alloc && i > k-4) {
+						k += k+1;
+						char *tmp = realloc(s, k);
+						if (!tmp) goto alloc_fail;
+						s = tmp;
+					}
+				}
+				pos++;
+				width-=(width>0);
+				gotmatch=1;
+			}
+			if (width) {
+				ungetwc(c, f);
+				if (t == 'c' || !gotmatch) goto match_fail;
+			}
+
+			if (alloc) {
+				if (size == SIZE_l) *(wchar_t **)dest = wcs;
+				else *(char **)dest = s;
+			}
+			if (t != 'c') {
+				if (wcs) wcs[i] = 0;
+				if (s) s[i] = 0;
+			}
+			break;
+
+		case 'd': case 'i': case 'o': case 'u': case 'x':
+		case 'a': case 'e': case 'f': case 'g':
+		case 'A': case 'E': case 'F': case 'G': case 'X':
+		case 'p':
+			if (width < 1) width = 0;
+			snprintf(tmp, sizeof tmp, "%.*s%.0d%s%c%%lln",
+				1+!dest, "%*", width, size_pfx[size+2], t);
+			cnt = 0;
+			if (fscanf(f, tmp, dest?dest:&cnt, &cnt) == -1)
+				goto input_fail;
+			else if (!cnt)
+				goto match_fail;
+			pos += cnt;
+			break;
+		default:
+			goto fmt_fail;
+		}
+
+		if (dest) matches++;
+	}
+	if (0) {
+fmt_fail:
+alloc_fail:
+input_fail:
+		if (!matches) matches--;
+match_fail:
+		if (alloc) {
+			free(s);
+			free(wcs);
+		}
+	}
+	FUNLOCK(f);
+	return matches;
 }
 
 weak_alias(vfwscanf,__isoc99_vfwscanf);

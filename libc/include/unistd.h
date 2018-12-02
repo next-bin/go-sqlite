@@ -172,7 +172,7 @@ void setusershell(void);
 void endusershell(void);
 char *getusershell(void);
 int acct(const char *);
-//TODO(ccgo)	long syscall(long, ...);
+//TODO(ccgo) long syscall(long, ...);
 int execvpe(const char *, char *const [], char *const []);
 int issetugid(void);
 int getentropy(void *, size_t);

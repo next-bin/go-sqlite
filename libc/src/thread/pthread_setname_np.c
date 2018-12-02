@@ -3,7 +3,6 @@
 #include <string.h>
 #include <unistd.h>
 #include <sys/prctl.h>
-#include <assert.h>
 
 #include "pthread_impl.h"
 
@@ -15,10 +14,8 @@ int pthread_setname_np(pthread_t thread, const char *name)
 
 	if ((len = strnlen(name, 16)) > 15) return ERANGE;
 
-	__assert_fail("TODO(ccgo)", __FILE__, __LINE__, __func__);
-//TODO(ccgo)		if (thread == pthread_self())
-	__assert_fail("TODO(ccgo)", __FILE__, __LINE__, __func__);
-//TODO(ccgo)			return prctl(PR_SET_NAME, (unsigned long)name, 0UL, 0UL, 0UL) ? errno : 0;
+	if (thread == pthread_self())
+		return prctl(PR_SET_NAME, (unsigned long)name, 0UL, 0UL, 0UL) ? errno : 0;
 
 	snprintf(f, sizeof f, "/proc/self/task/%d/comm", thread->tid);
 	pthread_setcancelstate(PTHREAD_CANCEL_DISABLE, &cs);
