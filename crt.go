@@ -549,7 +549,7 @@ func X__log(tls TLS, format uintptr, args ...interface{}) {
 		return
 	}
 	ap := X__builtin_va_start(tls, args)
-	n := Xvsnprintf(tls, logBufp, size_t(len(logBuf)-1), format, ap)
+	n := Xvsnprintf(tls, logBufp, SizeT(len(logBuf)-1), format, ap)
 	Log("%s", GoStringLen(logBufp, int(n)))
 	X__builtin_va_end(tls, ap)
 }

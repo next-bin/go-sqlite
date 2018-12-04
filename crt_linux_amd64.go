@@ -7,5 +7,6 @@ package crt // import "modernc.org/crt"
 type (
 	long   = int64 //TODO-
 	rawmem [1<<50 - 1]byte
-	size_t = uint64
+	// C.size_t
+	SizeT = uint64
 )

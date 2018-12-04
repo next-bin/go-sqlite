@@ -8235,7 +8235,7 @@ func X__init_libc(tls TLS, _envp uintptr /* **int8 */, _pn uintptr /* *int8 */) 
 
 func postinc606(p *uintptr) uintptr { r := *p; *p += 8; return r }
 
-// X__libc_start_main is defined at __libc_start_main.c:126:5
+// X__libc_start_main is defined at __libc_start_main.c:127:5
 func X__libc_start_main(tls TLS, _main_ignored uintptr /* *func(TLS, int32, uintptr, uintptr) int32 */, _argc_ignored int32, _argv_ignored uintptr /* **int8 */) (r int32) {
 	var (
 		_argc int32

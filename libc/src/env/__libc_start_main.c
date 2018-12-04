@@ -122,9 +122,13 @@ char *__ccgo_arg(int);
 char *__ccgo_env(int);
 int __ccgo_argc(void);
 int __ccgo_envc(void);
+extern int __malloc_replaced;
 
 int __libc_start_main(int (*main_ignored)(int,char **,char **), int argc_ignored, char **argv_ignored)
 {
+#ifdef __GO_MALLOC
+	__malloc_replaced = 1;
+#endif
 	int argc = __ccgo_argc();
 	int envc = __ccgo_envc();
 	__ccgo_argv = malloc(sizeof(char**)*(argc+1+envc+1));
