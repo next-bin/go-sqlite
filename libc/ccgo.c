@@ -52,7 +52,7 @@ void *aligned_alloc(size_t, size_t) {
 }
 
 size_t malloc_usable_size(void *p) {
-	__GO__("return size_t(UsableSize(_p))\n");
+	__GO__("return SizeT(UsableSize(_p))\n");
 }
 #endif /* __GO_MALLOC */
 
