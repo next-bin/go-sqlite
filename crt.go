@@ -81,6 +81,9 @@ func init() {
 	Nz32 = -Nz32
 	Nz64 = -Nz64
 
+	for log := 0; log <= 16; log++ { // Preallocate some mmap pages.
+		MustMalloc(1 << uint(log))
+	}
 	X__libc_start_main(0, 0, 0, 0)
 	mainTLS = TLS(*(*uintptr)(unsafe.Pointer(X__ccgo_main_tls)))
 	if (*s1__pthread)(unsafe.Pointer(mainTLS)).Fself != uintptr(mainTLS) { // sanity check
