@@ -17,6 +17,8 @@ all: editor
 	#maligned || true
 	unconvert -apply
 	go install -v modernc.org/ccgo/v2/...
+	grep -n 'FAIL\|PASS' log
+	date
 
 clean:
 	go clean
@@ -34,17 +36,13 @@ edit:
 
 editor:
 	date | tee log
-
-	#TODO go generate 2>&1 | tee -a log
 	unconvert -apply
 	gofmt -l -s -w *.go
-
 	GOOS=linux GOARCH=386 go build 2>&1 | tee -a log
 	GOOS=linux GOARCH=amd64 go build 2>&1 | tee -a log
 	#TODO GOOS=linux GOARCH=arm go build 2>&1 | tee log
 	#TODO GOOS=windows GOARCH=386 go build 2>&1 | tee -a log
 	#TODO GOOS=windows GOARCH=amd64 go build 2>&1 | tee -a log
-
 	go test -i
 	go test 2>&1 | tee -a log
 	go install
