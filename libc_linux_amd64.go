@@ -74089,6 +74089,7 @@ func Xgetcwd(tls TLS, _buf uintptr /* *int8 */, _size uint64) (r uintptr /* *int
 		_tmp uintptr // **int8
 		_ret int64
 	)
+	/*TODO initDeclarator: tmp is VLA */
 	if _buf == 0 {
 		_buf = _tmp
 		_size = uint64(func() int32 { panic(`TODO sizeof VLA`) }())
