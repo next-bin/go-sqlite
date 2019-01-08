@@ -298,7 +298,7 @@ var globalMutex sync.Mutex
 
 // static inline int a_cas(volatile int *p, int t, int s)
 func a_cas(p uintptr, t, s int32) int32 {
-	globalMutex.Lock()
+	globalMutex.Lock() // pcre CCGo bench linux/amd64 use: 0
 	old := *(*int32)(unsafe.Pointer(p))
 	if *(*int32)(unsafe.Pointer(p)) == t {
 		*(*int32)(unsafe.Pointer(p)) = s
@@ -309,7 +309,7 @@ func a_cas(p uintptr, t, s int32) int32 {
 
 // static inline void *a_cas_p(volatile void *p, void *t, void *s)
 func a_cas_p(p, t, s uintptr) uintptr {
-	globalMutex.Lock()
+	globalMutex.Lock() // pcre CCGo bench linux/amd64 use: 0
 	old := *(*uintptr)(unsafe.Pointer(p))
 	if *(*uintptr)(unsafe.Pointer(p)) == t {
 		*(*uintptr)(unsafe.Pointer(p)) = s
@@ -320,28 +320,28 @@ func a_cas_p(p, t, s uintptr) uintptr {
 
 //static inline void a_or_64(volatile uint64_t *p, uint64_t v)
 func a_or_64(p uintptr, v uint64) {
-	globalMutex.Lock()
+	globalMutex.Lock() // pcre CCGo bench linux/amd64 use: 15
 	*(*uint64)(unsafe.Pointer(p)) |= v
 	globalMutex.Unlock()
 }
 
 // static inline void a_and(volatile int *p, int v)
 func a_and(p uintptr, v int32) {
-	globalMutex.Lock()
+	globalMutex.Lock() // pcre CCGo bench linux/amd64 use: 0
 	*(*int32)(unsafe.Pointer(p)) &= v
 	globalMutex.Unlock()
 }
 
 //static inline void a_and_64(volatile uint64_t *p, uint64_t v)
 func a_and_64(p uintptr, v uint64) {
-	globalMutex.Lock()
+	globalMutex.Lock() // pcre CCGo bench linux/amd64 use: 15
 	*(*uint64)(unsafe.Pointer(p)) &= v
 	globalMutex.Unlock()
 }
 
 //static inline void a_or(volatile int *p, int v)
 func a_or(p uintptr, v int32) {
-	globalMutex.Lock()
+	globalMutex.Lock() // pcre CCGo bench linux/amd64 use: 0
 	*(*int32)(unsafe.Pointer(p)) |= v
 	globalMutex.Unlock()
 }
