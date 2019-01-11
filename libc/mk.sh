@@ -1,5 +1,6 @@
 set -e
 
+go version
 if [[ -z $GOOS ]] ; then GOOS=$(go env GOOS) ; fi
 if [[ -z $GOARCH ]] ; then GOARCH=$(go env GOARCH) ; fi
 
@@ -33,4 +34,5 @@ ccgo -ffreestanding -D_XOPEN_SOURCE=700 -I./arch/$MUSLARCH -I./arch/generic \
 	--ccgo-pkg-name crt -o ../$LIBC ccgo.c lib/libc.a |& tee -a log-ccgo
 make distclean
 go install -v modernc.org/ccgo/v2/ccgo
+go version
 date

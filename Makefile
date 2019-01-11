@@ -11,13 +11,14 @@ all: editor
 	go vet 2>&1 | grep -v $(ngrep) || true
 	golint 2>&1 | grep -v $(ngrep) || true
 	make todo
-	#unused . || true
 	misspell *.go
-	gosimple || true
+	staticcheck || true
 	#maligned || true
 	unconvert -apply
 	go install -v modernc.org/ccgo/v2/...
 	grep -n 'FAIL\|PASS' log
+	git status
+	go version
 	date
 
 clean:
@@ -36,6 +37,7 @@ edit:
 
 editor:
 	date | tee log
+	go version | tee -a log
 	unconvert -apply
 	gofmt -l -s -w *.go
 	GOOS=linux GOARCH=386 go build 2>&1 | tee -a log
