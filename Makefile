@@ -13,8 +13,6 @@ all: editor
 	make todo
 	misspell *.go
 	staticcheck || true
-	#maligned || true
-	unconvert -apply
 	go install -v modernc.org/ccgo/v2/...
 	grep -n 'FAIL\|PASS' log
 	git status
@@ -38,9 +36,9 @@ edit:
 editor:
 	date | tee log
 	go version | tee -a log
-	unconvert -apply
+	$(shell until `unconvert .` ; do unconvert -apply . ; done)
 	gofmt -l -s -w *.go
-	GOOS=linux GOARCH=386 go build 2>&1 | tee -a log
+	#TODO GOOS=linux GOARCH=386 go build 2>&1 | tee -a log
 	GOOS=linux GOARCH=amd64 go build 2>&1 | tee -a log
 	#TODO GOOS=linux GOARCH=arm go build 2>&1 | tee log
 	#TODO GOOS=windows GOARCH=386 go build 2>&1 | tee -a log
