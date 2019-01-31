@@ -14,6 +14,7 @@ all: editor
 	misspell *.go
 	staticcheck || true
 	go install -v modernc.org/ccgo/v2/...
+	grep -c MustMalloc libc_*.go | tee -a log
 	grep -n 'FAIL\|PASS' log
 	git status
 	go version
@@ -36,7 +37,7 @@ edit:
 editor:
 	date | tee log
 	go version | tee -a log
-	$(shell until `unconvert .` ; do unconvert -apply . ; done)
+	./unconvert.sh
 	gofmt -l -s -w *.go
 	#TODO GOOS=linux GOARCH=386 go build 2>&1 | tee -a log
 	GOOS=linux GOARCH=amd64 go build 2>&1 | tee -a log

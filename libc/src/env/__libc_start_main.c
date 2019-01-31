@@ -61,7 +61,7 @@ extern pthread_t __ccgo_main_tls;
 void __init_libc(char **envp, char *pn)
 {
 	size_t i, *auxv, aux[AUX_CNT] = { 0 };
-	__environ = envp;
+	environ = envp;
 	for (i=0; envp[i]; i++);
 	libc.auxv = auxv = (void *)(envp+i+1);
 	for (i=0; auxv[i]; i+=2) if (auxv[i]<AUX_CNT) aux[auxv[i]] = auxv[i+1];

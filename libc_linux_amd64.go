@@ -14,7 +14,7 @@ import (
 const null = uintptr(0)
 
 var _ = math.Pi
-var _ = unsafe.Pointer(null)
+var _ unsafe.Pointer
 
 // linking ccgo.o
 
@@ -65,12 +65,12 @@ func x__bswap_64(tls TLS, ___x uint64) (r uint64) {
 	return (uint64(x__bswap_32(tls, uint32(___x)))+uint64(0))<<(uint(32)%64) | uint64(x__bswap_32(tls, uint32(___x>>(uint(32)%64))))
 }
 
-type Tsyscall_arg_t = int64
-
 // x__syscall6 is defined at syscall_arch.h:61:22
 func x__syscall6(tls TLS, _n int64, _a1 int64, _a2 int64, _a3 int64, _a4 int64, _a5 int64, _a6 int64) (r int64) {
 	return X__syscall(tls, _n, _a1, _a2, _a3, _a4, _a5, _a6)
 }
+
+type Tsyscall_arg_t = int64
 
 // x__bswap_32 is defined at byteswap.h:12:26
 func x__bswap_32(tls TLS, ___x uint32) (r uint32) {
@@ -174,6 +174,7 @@ func X__aio_close(tls TLS, _fd int32) (r int32) {
 	return _fd
 }
 
+// Saiocb is defined at aio.h:17:1
 type Saiocb = struct {
 	Faio_fildes     int32
 	Faio_lio_opcode int32
@@ -265,6 +266,7 @@ func xa_barrier(tls TLS) {
 	aBarier()
 }
 
+// Saio_thread is defined at aio.c:51:1
 type Saio_thread = struct {
 	Ftd      uintptr // Tpthread_t = *S__pthread
 	Fcb      uintptr // *Saiocb
@@ -277,6 +279,7 @@ type Saio_thread = struct {
 	Fret     int64
 }
 
+// Saio_queue is defined at aio.c:61:1
 type Saio_queue = struct {
 	Ffd       int32
 	Fseekable int32
@@ -398,6 +401,7 @@ var xaio_fd_cnt = bss + 16
 
 type Tsize_t = uint64
 
+// Ssigevent is defined at signal.h:179:1
 type Ssigevent = struct {
 	Fsigev_value             Usigval
 	Fsigev_signo             int32
@@ -409,6 +413,7 @@ type Ssigevent = struct {
 
 type Toff_t = int64
 
+// S__pthread is defined at pthread_impl.h:15:1
 type s1__pthread = struct {
 	Fself          uintptr // *S__pthread
 	Fdtv           uintptr // **void
@@ -449,6 +454,7 @@ type s1__pthread = struct {
 	Fdtv_copy         uintptr // **void
 }
 
+// Saio_args is defined at aio.c:44:1
 type Saio_args = struct {
 	Fcb  uintptr // *Saiocb
 	Fop  int32
@@ -456,6 +462,7 @@ type Saio_args = struct {
 	Fsem struct{ F__val [8]int32 }
 }
 
+// Npthread_attr_t is defined at alltypes.h:66:9
 type Tpthread_attr_t = struct {
 	F__u struct {
 		F__i  [0][14]int32
@@ -582,6 +589,7 @@ _2:
 	return null
 }
 
+// Npthread_mutex_t is defined at alltypes.h:71:9
 type Tpthread_mutex_t = struct {
 	F__u struct {
 		F__i  [0][10]int32
@@ -592,6 +600,7 @@ type Tpthread_mutex_t = struct {
 	}
 }
 
+// Npthread_cond_t is defined at alltypes.h:81:9
 type Tpthread_cond_t = struct {
 	F__u struct {
 		F__i  [0][12]int32
@@ -613,6 +622,7 @@ func xa_inc(tls TLS, _p uintptr /* *int32 */) {
 	panic(`TODO`)
 }
 
+// Usigval is defined at signal.h:92:1
 type Usigval = struct {
 	Fsival_int [0]int32
 	Fsival_ptr [0]uintptr // *void
@@ -621,14 +631,17 @@ type Usigval = struct {
 
 type Tuintptr_t = uint64
 
+// S__ptcb is defined at pthread.h:200:1
 type S__ptcb = struct {
 	F__f    uintptr // *func(TLS, uintptr)
 	F__x    uintptr // *void
 	F__next uintptr // *S__ptcb
 }
 
+// S__locale_struct is defined at libc.h:10:1
 type S__locale_struct = struct{ Fcat [6]uintptr }
 
+// Nsem_t is defined at semaphore.h:17:9
 type Tsem_t = struct{ F__val [8]int32 }
 
 // x__pthread_self is defined at pthread_arch.h:1:30
@@ -647,7 +660,7 @@ func xcleanup(tls TLS, _ctx uintptr /* *void */) {
 func add556(p *int64, v int64) (r int64) { r = *p + v; *p = r; return r }
 
 // Xaio_suspend is defined at aio_suspend.c:10:5
-func Xaio_suspend(tls TLS, _cbs uintptr /* uintptr */, _cnt int32, _ts uintptr /* *Stimespec */) (r int32) {
+func Xaio_suspend(tls TLS, _cbs uintptr /* **Saiocb */, _cnt int32, _ts uintptr /* *Stimespec */) (r int32) {
 	esc := MustMalloc(20)
 	var (
 		_i         int32
@@ -762,11 +775,7 @@ _8:
 	return r
 }
 
-type Stimespec = struct {
-	Ftv_sec  int64
-	Ftv_nsec int64
-}
-
+// Saiocb is defined at aio.h:17:1
 type s1aiocb = struct {
 	Faio_fildes     int32
 	Faio_lio_opcode int32
@@ -782,6 +791,12 @@ type s1aiocb = struct {
 	F__next         uintptr // *void
 	F__prev         uintptr // *void
 	F__dummy4       [16]int8
+}
+
+// Stimespec is defined at alltypes.h:270:1
+type Stimespec = struct {
+	Ftv_sec  int64
+	Ftv_nsec int64
 }
 
 type Ttime_t = int64
@@ -800,6 +815,7 @@ func x1__pthread_self(tls TLS) (r uintptr /* *S__pthread */) {
 
 type t1size_t = uint64
 
+// Ssigevent is defined at signal.h:179:1
 type s1sigevent = struct {
 	Fsigev_value             u1sigval
 	Fsigev_signo             int32
@@ -813,8 +829,7 @@ type t1ssize_t = int64
 
 type t1off_t = int64
 
-type Tclockid_t = int32
-
+// S__pthread is defined at pthread_impl.h:15:1
 type s2__pthread = struct {
 	Fself          uintptr // *S__pthread
 	Fdtv           uintptr // **void
@@ -855,6 +870,7 @@ type s2__pthread = struct {
 	Fdtv_copy         uintptr // **void
 }
 
+// Usigval is defined at signal.h:92:1
 type u1sigval = struct {
 	Fsival_int [0]int32
 	Fsival_ptr [0]uintptr // *void
@@ -863,12 +879,14 @@ type u1sigval = struct {
 
 type t1uintptr_t = uint64
 
+// S__ptcb is defined at pthread.h:200:1
 type s1__ptcb = struct {
 	F__f    uintptr // *func(TLS, uintptr)
 	F__x    uintptr // *void
 	F__next uintptr // *S__ptcb
 }
 
+// S__locale_struct is defined at libc.h:10:1
 type s1__locale_struct = struct{ Fcat [6]uintptr }
 
 // linking lio_listio.o
@@ -895,7 +913,7 @@ func Xlio_listio(tls TLS, _mode int32, _cbs uintptr /* **Saiocb */, _cnt int32, 
 		return -1
 	}
 	if (_mode == int32(0)) || ((_sev != 0) && (*(*int32)(unsafe.Pointer(_sev + 12)) != int32(1))) {
-		if set557(&_st, Xmalloc(tls, uint64(24)+uint64(_cnt)*uint64(8))) == 0 {
+		if set557(&_st, Xmalloc(tls, uint64(16)+uint64(_cnt)*uint64(8))) == 0 {
 			*(*int32)(unsafe.Pointer(X__errno_location(tls))) = int32(11)
 			return -1
 		}
@@ -989,6 +1007,7 @@ _3:
 	return 0
 }
 
+// Saiocb is defined at aio.h:17:1
 type s2aiocb = struct {
 	Faio_fildes     int32
 	Faio_lio_opcode int32
@@ -1006,6 +1025,7 @@ type s2aiocb = struct {
 	F__dummy4       [16]int8
 }
 
+// Ssigevent is defined at signal.h:179:1
 type s2sigevent = struct {
 	Fsigev_value             u2sigval
 	Fsigev_signo             int32
@@ -1015,12 +1035,13 @@ type s2sigevent = struct {
 	F__pad                   [32]int8
 }
 
+// Slio_state is defined at lio_listio.c:8:1
 type Slio_state = struct {
 	Fsev uintptr // *Ssigevent
 	Fcnt int32
-	Fcbs uintptr
 }
 
+// S__pthread is defined at pthread_impl.h:15:1
 type s3__pthread = struct {
 	Fself          uintptr // *S__pthread
 	Fdtv           uintptr // **void
@@ -1101,6 +1122,7 @@ func xlio_wait(tls TLS, _st uintptr /* *Slio_state */) (r int32) {
 	return r
 }
 
+// Npthread_attr_t is defined at alltypes.h:66:9
 type t1pthread_attr_t = struct {
 	F__u struct {
 		F__i  [0][14]int32
@@ -1149,6 +1171,7 @@ type t2ssize_t = int64
 
 type t2off_t = int64
 
+// Usigval is defined at signal.h:92:1
 type u2sigval = struct {
 	Fsival_int [0]int32
 	Fsival_ptr [0]uintptr // *void
@@ -1157,12 +1180,14 @@ type u2sigval = struct {
 
 type t2uintptr_t = uint64
 
+// S__ptcb is defined at pthread.h:200:1
 type s2__ptcb = struct {
 	F__f    uintptr // *func(TLS, uintptr)
 	F__x    uintptr // *void
 	F__next uintptr // *S__ptcb
 }
 
+// S__locale_struct is defined at libc.h:10:1
 type s2__locale_struct = struct{ Fcat [6]uintptr }
 
 // xnotify_signal is defined at lio_listio.c:41:13
@@ -1174,7 +1199,7 @@ func xnotify_signal(tls TLS, _sev uintptr /* *Ssigevent */) {
 
 // X__ldexp_cexp is defined at __cexp.c:67:16
 func X__ldexp_cexp(tls TLS, _z complex128, _expt int32) (r complex128) {
-	esc := MustMalloc(80)
+	esc := MustMalloc(40)
 	var (
 		_x         float64
 		_y         float64
@@ -1183,27 +1208,12 @@ func X__ldexp_cexp(tls TLS, _z complex128, _expt int32) (r complex128) {
 		_scale2    float64
 		_ex_expt   = esc // *int32
 		_half_expt int32
-		_unnamed1  = esc + 16 // *struct{F__z [0]complex128;F__xy [0][2]float64;F int64; _ [8]byte}
-		___u       = esc + 32 // *struct{Ff [0]float64;Fi [0]uint64;F int64}
-		_1__u      = esc + 48 // *struct{Ff [0]float64;Fi [0]uint64;F int64}
-		_unnamed2  = esc + 64 // *struct{F__z [0]complex128;F__xy [0][2]float64;F int64; _ [8]byte}
+		___u       = esc + 16 // *struct{Ff [0]float64;Fi [0]uint64;F int64}
+		_1__u      = esc + 32 // *struct{Ff [0]float64;Fi [0]uint64;F int64}
 	)
 	defer Free(esc)
 	_x = real(_z)
-	_y = *(*float64)(unsafe.Pointer(func() uintptr {
-		*(*struct {
-			F__z  [0]complex128
-			F__xy [0][2]float64
-			F     int64
-			_     [8]byte
-		})(unsafe.Pointer(_unnamed1)) = *(*struct {
-			F__z  [0]complex128
-			F__xy [0][2]float64
-			F     int64
-			_     [8]byte
-		})(unsafe.Pointer(&struct{ f complex128 }{_z}))
-		return _unnamed1
-	}() + 8))
+	_y = imag(_z)
 	_exp_x = x__frexp_exp(tls, _x, _ex_expt)
 	_expt = _expt + *(*int32)(unsafe.Pointer(_ex_expt))
 	_half_expt = _expt / int32(2)
@@ -1212,23 +1222,7 @@ func X__ldexp_cexp(tls TLS, _z complex128, _expt int32) (r complex128) {
 	_half_expt = _expt - _half_expt
 	*(*uint64)(unsafe.Pointer(_1__u)) = uint64((int32(0x3ff)+_half_expt)<<(uint(20)%32))<<(uint(32)%64) | uint64(0)
 	_scale2 = *(*float64)(unsafe.Pointer(_1__u))
-	return *(*complex128)(unsafe.Pointer(func() uintptr {
-		*(*struct {
-			F__z  [0]complex128
-			F__xy [0][2]float64
-			F     int64
-			_     [8]byte
-		})(unsafe.Pointer(_unnamed2)) = *(*struct {
-			F__z  [0]complex128
-			F__xy [0][2]float64
-			F     int64
-			_     [8]byte
-		})(unsafe.Pointer(&struct{ f [2]float64 }{[2]float64{
-			0: float64(float64(Xcos(tls, _y)*_exp_x)*_scale1) * _scale2,
-			1: float64(float64(Xsin(tls, _y)*_exp_x)*_scale1) * _scale2,
-		}}))
-		return _unnamed2
-	}()))
+	return complex(float64(float64(Xcos(tls, _y)*_exp_x)*_scale1)*_scale2, float64(float64(Xsin(tls, _y)*_exp_x)*_scale1)*_scale2)
 }
 
 type t1uint64_t = uint64
@@ -1272,7 +1266,7 @@ var xk = uint32(1799)
 
 // X__ldexp_cexpf is defined at __cexpf.c:51:15
 func X__ldexp_cexpf(tls TLS, _z complex64, _expt int32) (r complex64) {
-	esc := MustMalloc(72)
+	esc := MustMalloc(36)
 	var (
 		_x         float32
 		_y         float32
@@ -1281,27 +1275,12 @@ func X__ldexp_cexpf(tls TLS, _z complex64, _expt int32) (r complex64) {
 		_scale2    float32
 		_ex_expt   = esc // *int32
 		_half_expt int32
-		_unnamed1  = esc + 16 // *struct{F__z [0]complex64;F__xy [0][2]float32;F int32; _ [4]byte}
-		___u       = esc + 32 // *struct{Ff [0]float32;Fi [0]uint32;F int32}
-		_1__u      = esc + 48 // *struct{Ff [0]float32;Fi [0]uint32;F int32}
-		_unnamed2  = esc + 64 // *struct{F__z [0]complex64;F__xy [0][2]float32;F int32; _ [4]byte}
+		___u       = esc + 16 // *struct{Ff [0]float32;Fi [0]uint32;F int32}
+		_1__u      = esc + 32 // *struct{Ff [0]float32;Fi [0]uint32;F int32}
 	)
 	defer Free(esc)
 	_x = real(_z)
-	_y = *(*float32)(unsafe.Pointer(func() uintptr {
-		*(*struct {
-			F__z  [0]complex64
-			F__xy [0][2]float32
-			F     int32
-			_     [4]byte
-		})(unsafe.Pointer(_unnamed1)) = *(*struct {
-			F__z  [0]complex64
-			F__xy [0][2]float32
-			F     int32
-			_     [4]byte
-		})(unsafe.Pointer(&struct{ f complex64 }{_z}))
-		return _unnamed1
-	}() + 4))
+	_y = imag(_z)
 	_exp_x = x__frexp_expf(tls, _x, _ex_expt)
 	_expt = _expt + *(*int32)(unsafe.Pointer(_ex_expt))
 	_half_expt = _expt / int32(2)
@@ -1310,23 +1289,7 @@ func X__ldexp_cexpf(tls TLS, _z complex64, _expt int32) (r complex64) {
 	_half_expt = _expt - _half_expt
 	*(*uint32)(unsafe.Pointer(_1__u)) = uint32((int32(0x7f) + _half_expt) << (uint(23) % 32))
 	_scale2 = *(*float32)(unsafe.Pointer(_1__u))
-	return *(*complex64)(unsafe.Pointer(func() uintptr {
-		*(*struct {
-			F__z  [0]complex64
-			F__xy [0][2]float32
-			F     int32
-			_     [4]byte
-		})(unsafe.Pointer(_unnamed2)) = *(*struct {
-			F__z  [0]complex64
-			F__xy [0][2]float32
-			F     int32
-			_     [4]byte
-		})(unsafe.Pointer(&struct{ f [2]float32 }{[2]float32{
-			0: float32(float32(Xcosf(tls, _y)*_exp_x)*_scale1) * _scale2,
-			1: float32(float32(Xsinf(tls, _y)*_exp_x)*_scale1) * _scale2,
-		}}))
-		return _unnamed2
-	}()))
+	return complex(float32(float32(Xcosf(tls, _y)*_exp_x)*_scale1)*_scale2, float32(float32(Xsinf(tls, _y)*_exp_x)*_scale1)*_scale2)
 }
 
 type t2uint32_t = uint32
@@ -1360,46 +1323,14 @@ var x1k = uint32(235)
 
 // Xcabs is defined at cabs.c:3:8
 func Xcabs(tls TLS, _z complex128) (r float64) {
-	esc := MustMalloc(16)
-	var _unnamed1 = esc // *struct{F__z [0]complex128;F__xy [0][2]float64;F int64; _ [8]byte}
-	defer Free(esc)
-	return Xhypot(tls, real(_z), *(*float64)(unsafe.Pointer(func() uintptr {
-		*(*struct {
-			F__z  [0]complex128
-			F__xy [0][2]float64
-			F     int64
-			_     [8]byte
-		})(unsafe.Pointer(_unnamed1)) = *(*struct {
-			F__z  [0]complex128
-			F__xy [0][2]float64
-			F     int64
-			_     [8]byte
-		})(unsafe.Pointer(&struct{ f complex128 }{_z}))
-		return _unnamed1
-	}() + 8)))
+	return Xhypot(tls, real(_z), imag(_z))
 }
 
 // linking cabsf.o
 
 // Xcabsf is defined at cabsf.c:3:7
 func Xcabsf(tls TLS, _z complex64) (r float32) {
-	esc := MustMalloc(8)
-	var _unnamed1 = esc // *struct{F__z [0]complex64;F__xy [0][2]float32;F int32; _ [4]byte}
-	defer Free(esc)
-	return Xhypotf(tls, real(_z), *(*float32)(unsafe.Pointer(func() uintptr {
-		*(*struct {
-			F__z  [0]complex64
-			F__xy [0][2]float32
-			F     int32
-			_     [4]byte
-		})(unsafe.Pointer(_unnamed1)) = *(*struct {
-			F__z  [0]complex64
-			F__xy [0][2]float32
-			F     int32
-			_     [4]byte
-		})(unsafe.Pointer(&struct{ f complex64 }{_z}))
-		return _unnamed1
-	}() + 4)))
+	return Xhypotf(tls, real(_z), imag(_z))
 }
 
 // linking cabsl.o
@@ -1413,172 +1344,32 @@ func Xcabsl(tls TLS, _z complex128) (r float64) {
 
 // Xcacos is defined at cacos.c:7:16
 func Xcacos(tls TLS, _z complex128) (r complex128) {
-	esc := MustMalloc(32)
-	var (
-		_unnamed1 = esc      // *struct{F__z [0]complex128;F__xy [0][2]float64;F int64; _ [8]byte}
-		_unnamed2 = esc + 16 // *struct{F__z [0]complex128;F__xy [0][2]float64;F int64; _ [8]byte}
-	)
-	defer Free(esc)
 	_z = Xcasin(tls, _z)
-	return *(*complex128)(unsafe.Pointer(func() uintptr {
-		*(*struct {
-			F__z  [0]complex128
-			F__xy [0][2]float64
-			F     int64
-			_     [8]byte
-		})(unsafe.Pointer(_unnamed2)) = *(*struct {
-			F__z  [0]complex128
-			F__xy [0][2]float64
-			F     int64
-			_     [8]byte
-		})(unsafe.Pointer(&struct{ f [2]float64 }{[2]float64{
-			0: float64(1.5707963267948966) - real(_z),
-			1: -*(*float64)(unsafe.Pointer(func() uintptr {
-				*(*struct {
-					F__z  [0]complex128
-					F__xy [0][2]float64
-					F     int64
-					_     [8]byte
-				})(unsafe.Pointer(_unnamed1)) = *(*struct {
-					F__z  [0]complex128
-					F__xy [0][2]float64
-					F     int64
-					_     [8]byte
-				})(unsafe.Pointer(&struct{ f complex128 }{_z}))
-				return _unnamed1
-			}() + 8)),
-		}}))
-		return _unnamed2
-	}()))
+	return complex(float64(1.5707963267948966)-real(_z), -imag(_z))
 }
 
 // linking cacosf.o
 
 // Xcacosf is defined at cacosf.c:5:15
 func Xcacosf(tls TLS, _z complex64) (r complex64) {
-	esc := MustMalloc(24)
-	var (
-		_unnamed1 = esc      // *struct{F__z [0]complex64;F__xy [0][2]float32;F int32; _ [4]byte}
-		_unnamed2 = esc + 16 // *struct{F__z [0]complex64;F__xy [0][2]float32;F int32; _ [4]byte}
-	)
-	defer Free(esc)
 	_z = Xcasinf(tls, _z)
-	return *(*complex64)(unsafe.Pointer(func() uintptr {
-		*(*struct {
-			F__z  [0]complex64
-			F__xy [0][2]float32
-			F     int32
-			_     [4]byte
-		})(unsafe.Pointer(_unnamed2)) = *(*struct {
-			F__z  [0]complex64
-			F__xy [0][2]float32
-			F     int32
-			_     [4]byte
-		})(unsafe.Pointer(&struct{ f [2]float32 }{[2]float32{
-			0: float32(1.5707964) - real(_z),
-			1: -*(*float32)(unsafe.Pointer(func() uintptr {
-				*(*struct {
-					F__z  [0]complex64
-					F__xy [0][2]float32
-					F     int32
-					_     [4]byte
-				})(unsafe.Pointer(_unnamed1)) = *(*struct {
-					F__z  [0]complex64
-					F__xy [0][2]float32
-					F     int32
-					_     [4]byte
-				})(unsafe.Pointer(&struct{ f complex64 }{_z}))
-				return _unnamed1
-			}() + 4)),
-		}}))
-		return _unnamed2
-	}()))
+	return complex(float32(1.5707964)-real(_z), -imag(_z))
 }
 
 // linking cacosh.o
 
 // Xcacosh is defined at cacosh.c:5:16
 func Xcacosh(tls TLS, _z complex128) (r complex128) {
-	esc := MustMalloc(32)
-	var (
-		_unnamed1 = esc      // *struct{F__z [0]complex128;F__xy [0][2]float64;F int64; _ [8]byte}
-		_unnamed2 = esc + 16 // *struct{F__z [0]complex128;F__xy [0][2]float64;F int64; _ [8]byte}
-	)
-	defer Free(esc)
 	_z = Xcacos(tls, _z)
-	return *(*complex128)(unsafe.Pointer(func() uintptr {
-		*(*struct {
-			F__z  [0]complex128
-			F__xy [0][2]float64
-			F     int64
-			_     [8]byte
-		})(unsafe.Pointer(_unnamed2)) = *(*struct {
-			F__z  [0]complex128
-			F__xy [0][2]float64
-			F     int64
-			_     [8]byte
-		})(unsafe.Pointer(&struct{ f [2]float64 }{[2]float64{
-			0: -*(*float64)(unsafe.Pointer(func() uintptr {
-				*(*struct {
-					F__z  [0]complex128
-					F__xy [0][2]float64
-					F     int64
-					_     [8]byte
-				})(unsafe.Pointer(_unnamed1)) = *(*struct {
-					F__z  [0]complex128
-					F__xy [0][2]float64
-					F     int64
-					_     [8]byte
-				})(unsafe.Pointer(&struct{ f complex128 }{_z}))
-				return _unnamed1
-			}() + 8)),
-			1: real(_z),
-		}}))
-		return _unnamed2
-	}()))
+	return complex(-imag(_z), real(_z))
 }
 
 // linking cacoshf.o
 
 // Xcacoshf is defined at cacoshf.c:3:15
 func Xcacoshf(tls TLS, _z complex64) (r complex64) {
-	esc := MustMalloc(24)
-	var (
-		_unnamed1 = esc      // *struct{F__z [0]complex64;F__xy [0][2]float32;F int32; _ [4]byte}
-		_unnamed2 = esc + 16 // *struct{F__z [0]complex64;F__xy [0][2]float32;F int32; _ [4]byte}
-	)
-	defer Free(esc)
 	_z = Xcacosf(tls, _z)
-	return *(*complex64)(unsafe.Pointer(func() uintptr {
-		*(*struct {
-			F__z  [0]complex64
-			F__xy [0][2]float32
-			F     int32
-			_     [4]byte
-		})(unsafe.Pointer(_unnamed2)) = *(*struct {
-			F__z  [0]complex64
-			F__xy [0][2]float32
-			F     int32
-			_     [4]byte
-		})(unsafe.Pointer(&struct{ f [2]float32 }{[2]float32{
-			0: -*(*float32)(unsafe.Pointer(func() uintptr {
-				*(*struct {
-					F__z  [0]complex64
-					F__xy [0][2]float32
-					F     int32
-					_     [4]byte
-				})(unsafe.Pointer(_unnamed1)) = *(*struct {
-					F__z  [0]complex64
-					F__xy [0][2]float32
-					F     int32
-					_     [4]byte
-				})(unsafe.Pointer(&struct{ f complex64 }{_z}))
-				return _unnamed1
-			}() + 4)),
-			1: real(_z),
-		}}))
-		return _unnamed2
-	}()))
+	return complex(-imag(_z), real(_z))
 }
 
 // linking cacoshl.o
@@ -1599,46 +1390,14 @@ func Xcacosl(tls TLS, _z complex128) (r complex128) {
 
 // Xcarg is defined at carg.c:3:8
 func Xcarg(tls TLS, _z complex128) (r float64) {
-	esc := MustMalloc(16)
-	var _unnamed1 = esc // *struct{F__z [0]complex128;F__xy [0][2]float64;F int64; _ [8]byte}
-	defer Free(esc)
-	return Xatan2(tls, *(*float64)(unsafe.Pointer(func() uintptr {
-		*(*struct {
-			F__z  [0]complex128
-			F__xy [0][2]float64
-			F     int64
-			_     [8]byte
-		})(unsafe.Pointer(_unnamed1)) = *(*struct {
-			F__z  [0]complex128
-			F__xy [0][2]float64
-			F     int64
-			_     [8]byte
-		})(unsafe.Pointer(&struct{ f complex128 }{_z}))
-		return _unnamed1
-	}() + 8)), real(_z))
+	return Xatan2(tls, imag(_z), real(_z))
 }
 
 // linking cargf.o
 
 // Xcargf is defined at cargf.c:3:7
 func Xcargf(tls TLS, _z complex64) (r float32) {
-	esc := MustMalloc(8)
-	var _unnamed1 = esc // *struct{F__z [0]complex64;F__xy [0][2]float32;F int32; _ [4]byte}
-	defer Free(esc)
-	return Xatan2f(tls, *(*float32)(unsafe.Pointer(func() uintptr {
-		*(*struct {
-			F__z  [0]complex64
-			F__xy [0][2]float32
-			F     int32
-			_     [4]byte
-		})(unsafe.Pointer(_unnamed1)) = *(*struct {
-			F__z  [0]complex64
-			F__xy [0][2]float32
-			F     int32
-			_     [4]byte
-		})(unsafe.Pointer(&struct{ f complex64 }{_z}))
-		return _unnamed1
-	}() + 4)), real(_z))
+	return Xatan2f(tls, imag(_z), real(_z))
 }
 
 // linking cargl.o
@@ -1652,344 +1411,50 @@ func Xcargl(tls TLS, _z complex128) (r float64) {
 
 // Xcasin is defined at casin.c:7:16
 func Xcasin(tls TLS, _z complex128) (r complex128) {
-	esc := MustMalloc(80)
 	var (
-		_w        complex128
-		_x        float64
-		_y        float64
-		_unnamed1 = esc      // *struct{F__z [0]complex128;F__xy [0][2]float64;F int64; _ [8]byte}
-		_unnamed2 = esc + 16 // *struct{F__z [0]complex128;F__xy [0][2]float64;F int64; _ [8]byte}
-		_r        complex128
-		_unnamed3 = esc + 32 // *struct{F__z [0]complex128;F__xy [0][2]float64;F int64; _ [8]byte}
-		_unnamed4 = esc + 48 // *struct{F__z [0]complex128;F__xy [0][2]float64;F int64; _ [8]byte}
-		_unnamed5 = esc + 64 // *struct{F__z [0]complex128;F__xy [0][2]float64;F int64; _ [8]byte}
+		_w complex128
+		_x float64
+		_y float64
+		_r complex128
 	)
-	defer Free(esc)
 	_x = real(_z)
-	_y = *(*float64)(unsafe.Pointer(func() uintptr {
-		*(*struct {
-			F__z  [0]complex128
-			F__xy [0][2]float64
-			F     int64
-			_     [8]byte
-		})(unsafe.Pointer(_unnamed1)) = *(*struct {
-			F__z  [0]complex128
-			F__xy [0][2]float64
-			F     int64
-			_     [8]byte
-		})(unsafe.Pointer(&struct{ f complex128 }{_z}))
-		return _unnamed1
-	}() + 8))
-	_w = *(*complex128)(unsafe.Pointer(func() uintptr {
-		*(*struct {
-			F__z  [0]complex128
-			F__xy [0][2]float64
-			F     int64
-			_     [8]byte
-		})(unsafe.Pointer(_unnamed2)) = *(*struct {
-			F__z  [0]complex128
-			F__xy [0][2]float64
-			F     int64
-			_     [8]byte
-		})(unsafe.Pointer(&struct{ f [2]float64 }{[2]float64{
-			0: float64(1) - float64(float64(_x-_y)*float64(_x+_y)),
-			1: float64(float64(-2)*_x) * _y,
-		}}))
-		return _unnamed2
-	}()))
-	_r = Xclog(tls, *(*complex128)(unsafe.Pointer(func() uintptr {
-		*(*struct {
-			F__z  [0]complex128
-			F__xy [0][2]float64
-			F     int64
-			_     [8]byte
-		})(unsafe.Pointer(_unnamed3)) = *(*struct {
-			F__z  [0]complex128
-			F__xy [0][2]float64
-			F     int64
-			_     [8]byte
-		})(unsafe.Pointer(&struct{ f [2]float64 }{[2]float64{
-			0: -_y,
-			1: _x,
-		}}))
-		return _unnamed3
-	}()))+Xcsqrt(tls, _w))
-	return *(*complex128)(unsafe.Pointer(func() uintptr {
-		*(*struct {
-			F__z  [0]complex128
-			F__xy [0][2]float64
-			F     int64
-			_     [8]byte
-		})(unsafe.Pointer(_unnamed5)) = *(*struct {
-			F__z  [0]complex128
-			F__xy [0][2]float64
-			F     int64
-			_     [8]byte
-		})(unsafe.Pointer(&struct{ f [2]float64 }{[2]float64{
-			0: *(*float64)(unsafe.Pointer(func() uintptr {
-				*(*struct {
-					F__z  [0]complex128
-					F__xy [0][2]float64
-					F     int64
-					_     [8]byte
-				})(unsafe.Pointer(_unnamed4)) = *(*struct {
-					F__z  [0]complex128
-					F__xy [0][2]float64
-					F     int64
-					_     [8]byte
-				})(unsafe.Pointer(&struct{ f complex128 }{_r}))
-				return _unnamed4
-			}() + 8)),
-			1: -real(_r),
-		}}))
-		return _unnamed5
-	}()))
+	_y = imag(_z)
+	_w = complex(float64(1)-float64(float64(_x-_y)*float64(_x+_y)), float64(float64(-2)*_x)*_y)
+	_r = Xclog(tls, complex(-_y, _x)+Xcsqrt(tls, _w))
+	return complex(imag(_r), -real(_r))
 }
 
 // linking casinf.o
 
 // Xcasinf is defined at casinf.c:5:15
 func Xcasinf(tls TLS, _z complex64) (r complex64) {
-	esc := MustMalloc(72)
 	var (
-		_w        complex64
-		_x        float32
-		_y        float32
-		_unnamed1 = esc      // *struct{F__z [0]complex64;F__xy [0][2]float32;F int32; _ [4]byte}
-		_unnamed2 = esc + 16 // *struct{F__z [0]complex64;F__xy [0][2]float32;F int32; _ [4]byte}
-		_r        complex64
-		_unnamed3 = esc + 32 // *struct{F__z [0]complex64;F__xy [0][2]float32;F int32; _ [4]byte}
-		_unnamed4 = esc + 48 // *struct{F__z [0]complex64;F__xy [0][2]float32;F int32; _ [4]byte}
-		_unnamed5 = esc + 64 // *struct{F__z [0]complex64;F__xy [0][2]float32;F int32; _ [4]byte}
+		_w complex64
+		_x float32
+		_y float32
+		_r complex64
 	)
-	defer Free(esc)
 	_x = real(_z)
-	_y = *(*float32)(unsafe.Pointer(func() uintptr {
-		*(*struct {
-			F__z  [0]complex64
-			F__xy [0][2]float32
-			F     int32
-			_     [4]byte
-		})(unsafe.Pointer(_unnamed1)) = *(*struct {
-			F__z  [0]complex64
-			F__xy [0][2]float32
-			F     int32
-			_     [4]byte
-		})(unsafe.Pointer(&struct{ f complex64 }{_z}))
-		return _unnamed1
-	}() + 4))
-	_w = *(*complex64)(unsafe.Pointer(func() uintptr {
-		*(*struct {
-			F__z  [0]complex64
-			F__xy [0][2]float32
-			F     int32
-			_     [4]byte
-		})(unsafe.Pointer(_unnamed2)) = *(*struct {
-			F__z  [0]complex64
-			F__xy [0][2]float32
-			F     int32
-			_     [4]byte
-		})(unsafe.Pointer(&struct{ f [2]float32 }{[2]float32{
-			0: float32(float64(1) - float64(float32(_x-_y)*float32(_x+_y))),
-			1: float32(float64(float64(-2)*float64(_x)) * float64(_y)),
-		}}))
-		return _unnamed2
-	}()))
-	_r = Xclogf(tls, *(*complex64)(unsafe.Pointer(func() uintptr {
-		*(*struct {
-			F__z  [0]complex64
-			F__xy [0][2]float32
-			F     int32
-			_     [4]byte
-		})(unsafe.Pointer(_unnamed3)) = *(*struct {
-			F__z  [0]complex64
-			F__xy [0][2]float32
-			F     int32
-			_     [4]byte
-		})(unsafe.Pointer(&struct{ f [2]float32 }{[2]float32{
-			0: -_y,
-			1: _x,
-		}}))
-		return _unnamed3
-	}()))+Xcsqrtf(tls, _w))
-	return *(*complex64)(unsafe.Pointer(func() uintptr {
-		*(*struct {
-			F__z  [0]complex64
-			F__xy [0][2]float32
-			F     int32
-			_     [4]byte
-		})(unsafe.Pointer(_unnamed5)) = *(*struct {
-			F__z  [0]complex64
-			F__xy [0][2]float32
-			F     int32
-			_     [4]byte
-		})(unsafe.Pointer(&struct{ f [2]float32 }{[2]float32{
-			0: *(*float32)(unsafe.Pointer(func() uintptr {
-				*(*struct {
-					F__z  [0]complex64
-					F__xy [0][2]float32
-					F     int32
-					_     [4]byte
-				})(unsafe.Pointer(_unnamed4)) = *(*struct {
-					F__z  [0]complex64
-					F__xy [0][2]float32
-					F     int32
-					_     [4]byte
-				})(unsafe.Pointer(&struct{ f complex64 }{_r}))
-				return _unnamed4
-			}() + 4)),
-			1: -real(_r),
-		}}))
-		return _unnamed5
-	}()))
+	_y = imag(_z)
+	_w = complex(float32(1)-float32(float32(_x-_y)*float32(_x+_y)), float32(float32(-2)*_x)*_y)
+	_r = Xclogf(tls, complex(-_y, _x)+Xcsqrtf(tls, _w))
+	return complex(imag(_r), -real(_r))
 }
 
 // linking casinh.o
 
 // Xcasinh is defined at casinh.c:5:16
 func Xcasinh(tls TLS, _z complex128) (r complex128) {
-	esc := MustMalloc(64)
-	var (
-		_unnamed1 = esc      // *struct{F__z [0]complex128;F__xy [0][2]float64;F int64; _ [8]byte}
-		_unnamed2 = esc + 16 // *struct{F__z [0]complex128;F__xy [0][2]float64;F int64; _ [8]byte}
-		_unnamed3 = esc + 32 // *struct{F__z [0]complex128;F__xy [0][2]float64;F int64; _ [8]byte}
-		_unnamed4 = esc + 48 // *struct{F__z [0]complex128;F__xy [0][2]float64;F int64; _ [8]byte}
-	)
-	defer Free(esc)
-	_z = Xcasin(tls, *(*complex128)(unsafe.Pointer(func() uintptr {
-		*(*struct {
-			F__z  [0]complex128
-			F__xy [0][2]float64
-			F     int64
-			_     [8]byte
-		})(unsafe.Pointer(_unnamed2)) = *(*struct {
-			F__z  [0]complex128
-			F__xy [0][2]float64
-			F     int64
-			_     [8]byte
-		})(unsafe.Pointer(&struct{ f [2]float64 }{[2]float64{
-			0: -*(*float64)(unsafe.Pointer(func() uintptr {
-				*(*struct {
-					F__z  [0]complex128
-					F__xy [0][2]float64
-					F     int64
-					_     [8]byte
-				})(unsafe.Pointer(_unnamed1)) = *(*struct {
-					F__z  [0]complex128
-					F__xy [0][2]float64
-					F     int64
-					_     [8]byte
-				})(unsafe.Pointer(&struct{ f complex128 }{_z}))
-				return _unnamed1
-			}() + 8)),
-			1: real(_z),
-		}}))
-		return _unnamed2
-	}())))
-	return *(*complex128)(unsafe.Pointer(func() uintptr {
-		*(*struct {
-			F__z  [0]complex128
-			F__xy [0][2]float64
-			F     int64
-			_     [8]byte
-		})(unsafe.Pointer(_unnamed4)) = *(*struct {
-			F__z  [0]complex128
-			F__xy [0][2]float64
-			F     int64
-			_     [8]byte
-		})(unsafe.Pointer(&struct{ f [2]float64 }{[2]float64{
-			0: *(*float64)(unsafe.Pointer(func() uintptr {
-				*(*struct {
-					F__z  [0]complex128
-					F__xy [0][2]float64
-					F     int64
-					_     [8]byte
-				})(unsafe.Pointer(_unnamed3)) = *(*struct {
-					F__z  [0]complex128
-					F__xy [0][2]float64
-					F     int64
-					_     [8]byte
-				})(unsafe.Pointer(&struct{ f complex128 }{_z}))
-				return _unnamed3
-			}() + 8)),
-			1: -real(_z),
-		}}))
-		return _unnamed4
-	}()))
+	_z = Xcasin(tls, complex(-imag(_z), real(_z)))
+	return complex(imag(_z), -real(_z))
 }
 
 // linking casinhf.o
 
 // Xcasinhf is defined at casinhf.c:3:15
 func Xcasinhf(tls TLS, _z complex64) (r complex64) {
-	esc := MustMalloc(56)
-	var (
-		_unnamed1 = esc      // *struct{F__z [0]complex64;F__xy [0][2]float32;F int32; _ [4]byte}
-		_unnamed2 = esc + 16 // *struct{F__z [0]complex64;F__xy [0][2]float32;F int32; _ [4]byte}
-		_unnamed3 = esc + 32 // *struct{F__z [0]complex64;F__xy [0][2]float32;F int32; _ [4]byte}
-		_unnamed4 = esc + 48 // *struct{F__z [0]complex64;F__xy [0][2]float32;F int32; _ [4]byte}
-	)
-	defer Free(esc)
-	_z = Xcasinf(tls, *(*complex64)(unsafe.Pointer(func() uintptr {
-		*(*struct {
-			F__z  [0]complex64
-			F__xy [0][2]float32
-			F     int32
-			_     [4]byte
-		})(unsafe.Pointer(_unnamed2)) = *(*struct {
-			F__z  [0]complex64
-			F__xy [0][2]float32
-			F     int32
-			_     [4]byte
-		})(unsafe.Pointer(&struct{ f [2]float32 }{[2]float32{
-			0: -*(*float32)(unsafe.Pointer(func() uintptr {
-				*(*struct {
-					F__z  [0]complex64
-					F__xy [0][2]float32
-					F     int32
-					_     [4]byte
-				})(unsafe.Pointer(_unnamed1)) = *(*struct {
-					F__z  [0]complex64
-					F__xy [0][2]float32
-					F     int32
-					_     [4]byte
-				})(unsafe.Pointer(&struct{ f complex64 }{_z}))
-				return _unnamed1
-			}() + 4)),
-			1: real(_z),
-		}}))
-		return _unnamed2
-	}())))
-	return *(*complex64)(unsafe.Pointer(func() uintptr {
-		*(*struct {
-			F__z  [0]complex64
-			F__xy [0][2]float32
-			F     int32
-			_     [4]byte
-		})(unsafe.Pointer(_unnamed4)) = *(*struct {
-			F__z  [0]complex64
-			F__xy [0][2]float32
-			F     int32
-			_     [4]byte
-		})(unsafe.Pointer(&struct{ f [2]float32 }{[2]float32{
-			0: *(*float32)(unsafe.Pointer(func() uintptr {
-				*(*struct {
-					F__z  [0]complex64
-					F__xy [0][2]float32
-					F     int32
-					_     [4]byte
-				})(unsafe.Pointer(_unnamed3)) = *(*struct {
-					F__z  [0]complex64
-					F__xy [0][2]float32
-					F     int32
-					_     [4]byte
-				})(unsafe.Pointer(&struct{ f complex64 }{_z}))
-				return _unnamed3
-			}() + 4)),
-			1: -real(_z),
-		}}))
-		return _unnamed4
-	}()))
+	_z = Xcasinf(tls, complex(-imag(_z), real(_z)))
+	return complex(imag(_z), -real(_z))
 }
 
 // linking casinhl.o
@@ -2010,33 +1475,16 @@ func Xcasinl(tls TLS, _z complex128) (r complex128) {
 
 // Xcatan is defined at catan.c:86:16
 func Xcatan(tls TLS, _z complex128) (r complex128) {
-	esc := MustMalloc(32)
 	var (
-		_w        complex128
-		_a        float64
-		_t        float64
-		_x        float64
-		_x2       float64
-		_y        float64
-		_unnamed1 = esc      // *struct{F__z [0]complex128;F__xy [0][2]float64;F int64; _ [8]byte}
-		_unnamed2 = esc + 16 // *struct{F__z [0]complex128;F__xy [0][2]float64;F int64; _ [8]byte}
+		_w  complex128
+		_a  float64
+		_t  float64
+		_x  float64
+		_x2 float64
+		_y  float64
 	)
-	defer Free(esc)
 	_x = real(_z)
-	_y = *(*float64)(unsafe.Pointer(func() uintptr {
-		*(*struct {
-			F__z  [0]complex128
-			F__xy [0][2]float64
-			F     int64
-			_     [8]byte
-		})(unsafe.Pointer(_unnamed1)) = *(*struct {
-			F__z  [0]complex128
-			F__xy [0][2]float64
-			F     int64
-			_     [8]byte
-		})(unsafe.Pointer(&struct{ f complex128 }{_z}))
-		return _unnamed1
-	}() + 8))
+	_y = imag(_z)
 	_x2 = _x * _x
 	_a = float64(float64(1)-_x2) - float64(_y*_y)
 	_t = float64(0.5) * Xatan2(tls, float64(2)*_x, _a)
@@ -2045,23 +1493,7 @@ func Xcatan(tls TLS, _z complex128) (r complex128) {
 	_a = _x2 + float64(_t*_t)
 	_t = _y + float64(1)
 	_a = float64(_x2+float64(_t*_t)) / _a
-	_w = *(*complex128)(unsafe.Pointer(func() uintptr {
-		*(*struct {
-			F__z  [0]complex128
-			F__xy [0][2]float64
-			F     int64
-			_     [8]byte
-		})(unsafe.Pointer(_unnamed2)) = *(*struct {
-			F__z  [0]complex128
-			F__xy [0][2]float64
-			F     int64
-			_     [8]byte
-		})(unsafe.Pointer(&struct{ f [2]float64 }{[2]float64{
-			0: real(_w),
-			1: float64(0.25) * Xlog(tls, _a),
-		}}))
-		return _unnamed2
-	}()))
+	_w = complex(real(_w), float64(0.25)*Xlog(tls, _a))
 	return _w
 }
 
@@ -2104,148 +1536,16 @@ func Xcatanf(tls TLS, _z complex64) (r complex64) {
 
 // Xcatanh is defined at catanh.c:5:16
 func Xcatanh(tls TLS, _z complex128) (r complex128) {
-	esc := MustMalloc(64)
-	var (
-		_unnamed1 = esc      // *struct{F__z [0]complex128;F__xy [0][2]float64;F int64; _ [8]byte}
-		_unnamed2 = esc + 16 // *struct{F__z [0]complex128;F__xy [0][2]float64;F int64; _ [8]byte}
-		_unnamed3 = esc + 32 // *struct{F__z [0]complex128;F__xy [0][2]float64;F int64; _ [8]byte}
-		_unnamed4 = esc + 48 // *struct{F__z [0]complex128;F__xy [0][2]float64;F int64; _ [8]byte}
-	)
-	defer Free(esc)
-	_z = Xcatan(tls, *(*complex128)(unsafe.Pointer(func() uintptr {
-		*(*struct {
-			F__z  [0]complex128
-			F__xy [0][2]float64
-			F     int64
-			_     [8]byte
-		})(unsafe.Pointer(_unnamed2)) = *(*struct {
-			F__z  [0]complex128
-			F__xy [0][2]float64
-			F     int64
-			_     [8]byte
-		})(unsafe.Pointer(&struct{ f [2]float64 }{[2]float64{
-			0: -*(*float64)(unsafe.Pointer(func() uintptr {
-				*(*struct {
-					F__z  [0]complex128
-					F__xy [0][2]float64
-					F     int64
-					_     [8]byte
-				})(unsafe.Pointer(_unnamed1)) = *(*struct {
-					F__z  [0]complex128
-					F__xy [0][2]float64
-					F     int64
-					_     [8]byte
-				})(unsafe.Pointer(&struct{ f complex128 }{_z}))
-				return _unnamed1
-			}() + 8)),
-			1: real(_z),
-		}}))
-		return _unnamed2
-	}())))
-	return *(*complex128)(unsafe.Pointer(func() uintptr {
-		*(*struct {
-			F__z  [0]complex128
-			F__xy [0][2]float64
-			F     int64
-			_     [8]byte
-		})(unsafe.Pointer(_unnamed4)) = *(*struct {
-			F__z  [0]complex128
-			F__xy [0][2]float64
-			F     int64
-			_     [8]byte
-		})(unsafe.Pointer(&struct{ f [2]float64 }{[2]float64{
-			0: *(*float64)(unsafe.Pointer(func() uintptr {
-				*(*struct {
-					F__z  [0]complex128
-					F__xy [0][2]float64
-					F     int64
-					_     [8]byte
-				})(unsafe.Pointer(_unnamed3)) = *(*struct {
-					F__z  [0]complex128
-					F__xy [0][2]float64
-					F     int64
-					_     [8]byte
-				})(unsafe.Pointer(&struct{ f complex128 }{_z}))
-				return _unnamed3
-			}() + 8)),
-			1: -real(_z),
-		}}))
-		return _unnamed4
-	}()))
+	_z = Xcatan(tls, complex(-imag(_z), real(_z)))
+	return complex(imag(_z), -real(_z))
 }
 
 // linking catanhf.o
 
 // Xcatanhf is defined at catanhf.c:3:15
 func Xcatanhf(tls TLS, _z complex64) (r complex64) {
-	esc := MustMalloc(56)
-	var (
-		_unnamed1 = esc      // *struct{F__z [0]complex64;F__xy [0][2]float32;F int32; _ [4]byte}
-		_unnamed2 = esc + 16 // *struct{F__z [0]complex64;F__xy [0][2]float32;F int32; _ [4]byte}
-		_unnamed3 = esc + 32 // *struct{F__z [0]complex64;F__xy [0][2]float32;F int32; _ [4]byte}
-		_unnamed4 = esc + 48 // *struct{F__z [0]complex64;F__xy [0][2]float32;F int32; _ [4]byte}
-	)
-	defer Free(esc)
-	_z = Xcatanf(tls, *(*complex64)(unsafe.Pointer(func() uintptr {
-		*(*struct {
-			F__z  [0]complex64
-			F__xy [0][2]float32
-			F     int32
-			_     [4]byte
-		})(unsafe.Pointer(_unnamed2)) = *(*struct {
-			F__z  [0]complex64
-			F__xy [0][2]float32
-			F     int32
-			_     [4]byte
-		})(unsafe.Pointer(&struct{ f [2]float32 }{[2]float32{
-			0: -*(*float32)(unsafe.Pointer(func() uintptr {
-				*(*struct {
-					F__z  [0]complex64
-					F__xy [0][2]float32
-					F     int32
-					_     [4]byte
-				})(unsafe.Pointer(_unnamed1)) = *(*struct {
-					F__z  [0]complex64
-					F__xy [0][2]float32
-					F     int32
-					_     [4]byte
-				})(unsafe.Pointer(&struct{ f complex64 }{_z}))
-				return _unnamed1
-			}() + 4)),
-			1: real(_z),
-		}}))
-		return _unnamed2
-	}())))
-	return *(*complex64)(unsafe.Pointer(func() uintptr {
-		*(*struct {
-			F__z  [0]complex64
-			F__xy [0][2]float32
-			F     int32
-			_     [4]byte
-		})(unsafe.Pointer(_unnamed4)) = *(*struct {
-			F__z  [0]complex64
-			F__xy [0][2]float32
-			F     int32
-			_     [4]byte
-		})(unsafe.Pointer(&struct{ f [2]float32 }{[2]float32{
-			0: *(*float32)(unsafe.Pointer(func() uintptr {
-				*(*struct {
-					F__z  [0]complex64
-					F__xy [0][2]float32
-					F     int32
-					_     [4]byte
-				})(unsafe.Pointer(_unnamed3)) = *(*struct {
-					F__z  [0]complex64
-					F__xy [0][2]float32
-					F     int32
-					_     [4]byte
-				})(unsafe.Pointer(&struct{ f complex64 }{_z}))
-				return _unnamed3
-			}() + 4)),
-			1: -real(_z),
-		}}))
-		return _unnamed4
-	}()))
+	_z = Xcatanf(tls, complex(-imag(_z), real(_z)))
+	return complex(imag(_z), -real(_z))
 }
 
 // linking catanhl.o
@@ -2266,135 +1566,37 @@ func Xcatanl(tls TLS, _z complex128) (r complex128) {
 
 // Xccos is defined at ccos.c:5:16
 func Xccos(tls TLS, _z complex128) (r complex128) {
-	esc := MustMalloc(32)
-	var (
-		_unnamed1 = esc      // *struct{F__z [0]complex128;F__xy [0][2]float64;F int64; _ [8]byte}
-		_unnamed2 = esc + 16 // *struct{F__z [0]complex128;F__xy [0][2]float64;F int64; _ [8]byte}
-	)
-	defer Free(esc)
-	return Xccosh(tls, *(*complex128)(unsafe.Pointer(func() uintptr {
-		*(*struct {
-			F__z  [0]complex128
-			F__xy [0][2]float64
-			F     int64
-			_     [8]byte
-		})(unsafe.Pointer(_unnamed2)) = *(*struct {
-			F__z  [0]complex128
-			F__xy [0][2]float64
-			F     int64
-			_     [8]byte
-		})(unsafe.Pointer(&struct{ f [2]float64 }{[2]float64{
-			0: -*(*float64)(unsafe.Pointer(func() uintptr {
-				*(*struct {
-					F__z  [0]complex128
-					F__xy [0][2]float64
-					F     int64
-					_     [8]byte
-				})(unsafe.Pointer(_unnamed1)) = *(*struct {
-					F__z  [0]complex128
-					F__xy [0][2]float64
-					F     int64
-					_     [8]byte
-				})(unsafe.Pointer(&struct{ f complex128 }{_z}))
-				return _unnamed1
-			}() + 8)),
-			1: real(_z),
-		}}))
-		return _unnamed2
-	}())))
+	return Xccosh(tls, complex(-imag(_z), real(_z)))
 }
 
 // linking ccosf.o
 
 // Xccosf is defined at ccosf.c:3:15
 func Xccosf(tls TLS, _z complex64) (r complex64) {
-	esc := MustMalloc(24)
-	var (
-		_unnamed1 = esc      // *struct{F__z [0]complex64;F__xy [0][2]float32;F int32; _ [4]byte}
-		_unnamed2 = esc + 16 // *struct{F__z [0]complex64;F__xy [0][2]float32;F int32; _ [4]byte}
-	)
-	defer Free(esc)
-	return Xccoshf(tls, *(*complex64)(unsafe.Pointer(func() uintptr {
-		*(*struct {
-			F__z  [0]complex64
-			F__xy [0][2]float32
-			F     int32
-			_     [4]byte
-		})(unsafe.Pointer(_unnamed2)) = *(*struct {
-			F__z  [0]complex64
-			F__xy [0][2]float32
-			F     int32
-			_     [4]byte
-		})(unsafe.Pointer(&struct{ f [2]float32 }{[2]float32{
-			0: -*(*float32)(unsafe.Pointer(func() uintptr {
-				*(*struct {
-					F__z  [0]complex64
-					F__xy [0][2]float32
-					F     int32
-					_     [4]byte
-				})(unsafe.Pointer(_unnamed1)) = *(*struct {
-					F__z  [0]complex64
-					F__xy [0][2]float32
-					F     int32
-					_     [4]byte
-				})(unsafe.Pointer(&struct{ f complex64 }{_z}))
-				return _unnamed1
-			}() + 4)),
-			1: real(_z),
-		}}))
-		return _unnamed2
-	}())))
+	return Xccoshf(tls, complex(-imag(_z), real(_z)))
 }
 
 // linking ccosh.o
 
 // Xccosh is defined at ccosh.c:41:16
 func Xccosh(tls TLS, _z complex128) (r complex128) {
-	esc := MustMalloc(272)
+	esc := MustMalloc(24)
 	var (
-		_x         float64
-		_y         float64
-		_h         float64
-		_hx        int32
-		_hy        int32
-		_ix        int32
-		_iy        int32
-		_lx        int32
-		_ly        int32
-		_unnamed1  = esc       // *struct{F__z [0]complex128;F__xy [0][2]float64;F int64; _ [8]byte}
-		___u       = esc + 16  // *struct{Ff [0]float64;Fi [0]uint64;F int64}
-		_1__u      = esc + 32  // *struct{Ff [0]float64;Fi [0]uint64;F int64}
-		_unnamed2  = esc + 48  // *struct{F__z [0]complex128;F__xy [0][2]float64;F int64; _ [8]byte}
-		_unnamed3  = esc + 64  // *struct{F__z [0]complex128;F__xy [0][2]float64;F int64; _ [8]byte}
-		_unnamed4  = esc + 80  // *struct{F__z [0]complex128;F__xy [0][2]float64;F int64; _ [8]byte}
-		_unnamed5  = esc + 96  // *struct{F__z [0]complex128;F__xy [0][2]float64;F int64; _ [8]byte}
-		_unnamed6  = esc + 112 // *struct{F__z [0]complex128;F__xy [0][2]float64;F int64; _ [8]byte}
-		_unnamed7  = esc + 128 // *struct{F__z [0]complex128;F__xy [0][2]float64;F int64; _ [8]byte}
-		_unnamed8  = esc + 144 // *struct{F__z [0]complex128;F__xy [0][2]float64;F int64; _ [8]byte}
-		_unnamed9  = esc + 160 // *struct{F__z [0]complex128;F__xy [0][2]float64;F int64; _ [8]byte}
-		_unnamed10 = esc + 176 // *struct{F__z [0]complex128;F__xy [0][2]float64;F int64; _ [8]byte}
-		_unnamed11 = esc + 192 // *struct{F__z [0]complex128;F__xy [0][2]float64;F int64; _ [8]byte}
-		_unnamed12 = esc + 208 // *struct{F__z [0]complex128;F__xy [0][2]float64;F int64; _ [8]byte}
-		_unnamed13 = esc + 224 // *struct{F__z [0]complex128;F__xy [0][2]float64;F int64; _ [8]byte}
-		_unnamed14 = esc + 240 // *struct{F__z [0]complex128;F__xy [0][2]float64;F int64; _ [8]byte}
-		_unnamed15 = esc + 256 // *struct{F__z [0]complex128;F__xy [0][2]float64;F int64; _ [8]byte}
+		_x    float64
+		_y    float64
+		_h    float64
+		_hx   int32
+		_hy   int32
+		_ix   int32
+		_iy   int32
+		_lx   int32
+		_ly   int32
+		___u  = esc      // *struct{Ff [0]float64;Fi [0]uint64;F int64}
+		_1__u = esc + 16 // *struct{Ff [0]float64;Fi [0]uint64;F int64}
 	)
 	defer Free(esc)
 	_x = real(_z)
-	_y = *(*float64)(unsafe.Pointer(func() uintptr {
-		*(*struct {
-			F__z  [0]complex128
-			F__xy [0][2]float64
-			F     int64
-			_     [8]byte
-		})(unsafe.Pointer(_unnamed1)) = *(*struct {
-			F__z  [0]complex128
-			F__xy [0][2]float64
-			F     int64
-			_     [8]byte
-		})(unsafe.Pointer(&struct{ f complex128 }{_z}))
-		return _unnamed1
-	}() + 8))
+	_y = imag(_z)
 	*(*float64)(unsafe.Pointer(___u)) = _x
 	_hx = int32(*(*uint64)(unsafe.Pointer(___u)) >> (uint(32) % 64))
 	_lx = int32(uint32(*(*uint64)(unsafe.Pointer(___u))))
@@ -2405,262 +1607,41 @@ func Xccosh(tls TLS, _z complex128) (r complex128) {
 	_iy = int32(0x7fffffff) & _hy
 	if (_ix < int32(0x7ff00000)) && (_iy < int32(0x7ff00000)) {
 		if _iy|_ly == int32(0) {
-			return *(*complex128)(unsafe.Pointer(func() uintptr {
-				*(*struct {
-					F__z  [0]complex128
-					F__xy [0][2]float64
-					F     int64
-					_     [8]byte
-				})(unsafe.Pointer(_unnamed2)) = *(*struct {
-					F__z  [0]complex128
-					F__xy [0][2]float64
-					F     int64
-					_     [8]byte
-				})(unsafe.Pointer(&struct{ f [2]float64 }{[2]float64{
-					0: Xcosh(tls, _x),
-					1: _x * _y,
-				}}))
-				return _unnamed2
-			}()))
+			return complex(Xcosh(tls, _x), _x*_y)
 		}
 		if _ix < int32(0x40360000) {
-			return *(*complex128)(unsafe.Pointer(func() uintptr {
-				*(*struct {
-					F__z  [0]complex128
-					F__xy [0][2]float64
-					F     int64
-					_     [8]byte
-				})(unsafe.Pointer(_unnamed3)) = *(*struct {
-					F__z  [0]complex128
-					F__xy [0][2]float64
-					F     int64
-					_     [8]byte
-				})(unsafe.Pointer(&struct{ f [2]float64 }{[2]float64{
-					0: Xcosh(tls, _x) * Xcos(tls, _y),
-					1: Xsinh(tls, _x) * Xsin(tls, _y),
-				}}))
-				return _unnamed3
-			}()))
+			return complex(Xcosh(tls, _x)*Xcos(tls, _y), Xsinh(tls, _x)*Xsin(tls, _y))
 		}
 		if _ix < int32(0x40862e42) {
 			_h = Xexp(tls, Xfabs(tls, _x)) * float64(0.5)
-			return *(*complex128)(unsafe.Pointer(func() uintptr {
-				*(*struct {
-					F__z  [0]complex128
-					F__xy [0][2]float64
-					F     int64
-					_     [8]byte
-				})(unsafe.Pointer(_unnamed4)) = *(*struct {
-					F__z  [0]complex128
-					F__xy [0][2]float64
-					F     int64
-					_     [8]byte
-				})(unsafe.Pointer(&struct{ f [2]float64 }{[2]float64{
-					0: _h * Xcos(tls, _y),
-					1: Xcopysign(tls, _h, _x) * Xsin(tls, _y),
-				}}))
-				return _unnamed4
-			}()))
+			return complex(_h*Xcos(tls, _y), Xcopysign(tls, _h, _x)*Xsin(tls, _y))
 		} else if _ix < int32(0x4096bbaa) {
-			_z = X__ldexp_cexp(tls, *(*complex128)(unsafe.Pointer(func() uintptr {
-				*(*struct {
-					F__z  [0]complex128
-					F__xy [0][2]float64
-					F     int64
-					_     [8]byte
-				})(unsafe.Pointer(_unnamed5)) = *(*struct {
-					F__z  [0]complex128
-					F__xy [0][2]float64
-					F     int64
-					_     [8]byte
-				})(unsafe.Pointer(&struct{ f [2]float64 }{[2]float64{
-					0: Xfabs(tls, _x),
-					1: _y,
-				}}))
-				return _unnamed5
-			}())), int32(-1))
-			return *(*complex128)(unsafe.Pointer(func() uintptr {
-				*(*struct {
-					F__z  [0]complex128
-					F__xy [0][2]float64
-					F     int64
-					_     [8]byte
-				})(unsafe.Pointer(_unnamed7)) = *(*struct {
-					F__z  [0]complex128
-					F__xy [0][2]float64
-					F     int64
-					_     [8]byte
-				})(unsafe.Pointer(&struct{ f [2]float64 }{[2]float64{
-					0: real(_z),
-					1: *(*float64)(unsafe.Pointer(func() uintptr {
-						*(*struct {
-							F__z  [0]complex128
-							F__xy [0][2]float64
-							F     int64
-							_     [8]byte
-						})(unsafe.Pointer(_unnamed6)) = *(*struct {
-							F__z  [0]complex128
-							F__xy [0][2]float64
-							F     int64
-							_     [8]byte
-						})(unsafe.Pointer(&struct{ f complex128 }{_z}))
-						return _unnamed6
-					}() + 8)) * Xcopysign(tls, float64(1), _x),
-				}}))
-				return _unnamed7
-			}()))
+			_z = X__ldexp_cexp(tls, complex(Xfabs(tls, _x), _y), int32(-1))
+			return complex(real(_z), imag(_z)*Xcopysign(tls, float64(1), _x))
 		} else {
 			_h = xhuge * _x
-			return *(*complex128)(unsafe.Pointer(func() uintptr {
-				*(*struct {
-					F__z  [0]complex128
-					F__xy [0][2]float64
-					F     int64
-					_     [8]byte
-				})(unsafe.Pointer(_unnamed8)) = *(*struct {
-					F__z  [0]complex128
-					F__xy [0][2]float64
-					F     int64
-					_     [8]byte
-				})(unsafe.Pointer(&struct{ f [2]float64 }{[2]float64{
-					0: float64(_h*_h) * Xcos(tls, _y),
-					1: _h * Xsin(tls, _y),
-				}}))
-				return _unnamed8
-			}()))
+			return complex(float64(_h*_h)*Xcos(tls, _y), _h*Xsin(tls, _y))
 		}
 	}
 	if (_ix|_lx == int32(0)) && (_iy >= int32(0x7ff00000)) {
-		return *(*complex128)(unsafe.Pointer(func() uintptr {
-			*(*struct {
-				F__z  [0]complex128
-				F__xy [0][2]float64
-				F     int64
-				_     [8]byte
-			})(unsafe.Pointer(_unnamed9)) = *(*struct {
-				F__z  [0]complex128
-				F__xy [0][2]float64
-				F     int64
-				_     [8]byte
-			})(unsafe.Pointer(&struct{ f [2]float64 }{[2]float64{
-				0: _y - _y,
-				1: Xcopysign(tls, float64(0), _x*float64(_y-_y)),
-			}}))
-			return _unnamed9
-		}()))
+		return complex(_y-_y, Xcopysign(tls, float64(0), _x*float64(_y-_y)))
 	}
 	if (_iy|_ly == int32(0)) && (_ix >= int32(0x7ff00000)) {
 		if _hx&int32(0xfffff)|_lx == int32(0) {
-			return *(*complex128)(unsafe.Pointer(func() uintptr {
-				*(*struct {
-					F__z  [0]complex128
-					F__xy [0][2]float64
-					F     int64
-					_     [8]byte
-				})(unsafe.Pointer(_unnamed10)) = *(*struct {
-					F__z  [0]complex128
-					F__xy [0][2]float64
-					F     int64
-					_     [8]byte
-				})(unsafe.Pointer(&struct{ f [2]float64 }{[2]float64{
-					0: _x * _x,
-					1: Xcopysign(tls, float64(0), _x) * _y,
-				}}))
-				return _unnamed10
-			}()))
+			return complex(_x*_x, Xcopysign(tls, float64(0), _x)*_y)
 		}
-		return *(*complex128)(unsafe.Pointer(func() uintptr {
-			*(*struct {
-				F__z  [0]complex128
-				F__xy [0][2]float64
-				F     int64
-				_     [8]byte
-			})(unsafe.Pointer(_unnamed11)) = *(*struct {
-				F__z  [0]complex128
-				F__xy [0][2]float64
-				F     int64
-				_     [8]byte
-			})(unsafe.Pointer(&struct{ f [2]float64 }{[2]float64{
-				0: _x * _x,
-				1: Xcopysign(tls, float64(0), float64(_x+_x)*_y),
-			}}))
-			return _unnamed11
-		}()))
+		return complex(_x*_x, Xcopysign(tls, float64(0), float64(_x+_x)*_y))
 	}
 	if (_ix < int32(0x7ff00000)) && (_iy >= int32(0x7ff00000)) {
-		return *(*complex128)(unsafe.Pointer(func() uintptr {
-			*(*struct {
-				F__z  [0]complex128
-				F__xy [0][2]float64
-				F     int64
-				_     [8]byte
-			})(unsafe.Pointer(_unnamed12)) = *(*struct {
-				F__z  [0]complex128
-				F__xy [0][2]float64
-				F     int64
-				_     [8]byte
-			})(unsafe.Pointer(&struct{ f [2]float64 }{[2]float64{
-				0: _y - _y,
-				1: _x * float64(_y-_y),
-			}}))
-			return _unnamed12
-		}()))
+		return complex(_y-_y, _x*float64(_y-_y))
 	}
 	if (_ix >= int32(0x7ff00000)) && (_hx&int32(0xfffff)|_lx == int32(0)) {
 		if _iy >= int32(0x7ff00000) {
-			return *(*complex128)(unsafe.Pointer(func() uintptr {
-				*(*struct {
-					F__z  [0]complex128
-					F__xy [0][2]float64
-					F     int64
-					_     [8]byte
-				})(unsafe.Pointer(_unnamed13)) = *(*struct {
-					F__z  [0]complex128
-					F__xy [0][2]float64
-					F     int64
-					_     [8]byte
-				})(unsafe.Pointer(&struct{ f [2]float64 }{[2]float64{
-					0: _x * _x,
-					1: _x * float64(_y-_y),
-				}}))
-				return _unnamed13
-			}()))
+			return complex(_x*_x, _x*float64(_y-_y))
 		}
-		return *(*complex128)(unsafe.Pointer(func() uintptr {
-			*(*struct {
-				F__z  [0]complex128
-				F__xy [0][2]float64
-				F     int64
-				_     [8]byte
-			})(unsafe.Pointer(_unnamed14)) = *(*struct {
-				F__z  [0]complex128
-				F__xy [0][2]float64
-				F     int64
-				_     [8]byte
-			})(unsafe.Pointer(&struct{ f [2]float64 }{[2]float64{
-				0: float64(_x*_x) * Xcos(tls, _y),
-				1: _x * Xsin(tls, _y),
-			}}))
-			return _unnamed14
-		}()))
+		return complex(float64(_x*_x)*Xcos(tls, _y), _x*Xsin(tls, _y))
 	}
-	return *(*complex128)(unsafe.Pointer(func() uintptr {
-		*(*struct {
-			F__z  [0]complex128
-			F__xy [0][2]float64
-			F     int64
-			_     [8]byte
-		})(unsafe.Pointer(_unnamed15)) = *(*struct {
-			F__z  [0]complex128
-			F__xy [0][2]float64
-			F     int64
-			_     [8]byte
-		})(unsafe.Pointer(&struct{ f [2]float64 }{[2]float64{
-			0: float64(_x*_x) * float64(_y-_y),
-			1: float64(_x+_x) * float64(_y-_y),
-		}}))
-		return _unnamed15
-	}()))
+	return complex(float64(_x*_x)*float64(_y-_y), float64(_x+_x)*float64(_y-_y))
 }
 
 type Tint32_t = int32
@@ -2676,49 +1657,21 @@ var xhuge = float64(8.98846567431158e+307)
 
 // Xccoshf is defined at ccoshf.c:35:15
 func Xccoshf(tls TLS, _z complex64) (r complex64) {
-	esc := MustMalloc(264)
+	esc := MustMalloc(20)
 	var (
-		_x         float32
-		_y         float32
-		_h         float32
-		_hx        int32
-		_hy        int32
-		_ix        int32
-		_iy        int32
-		_unnamed1  = esc       // *struct{F__z [0]complex64;F__xy [0][2]float32;F int32; _ [4]byte}
-		___u       = esc + 16  // *struct{Ff [0]float32;Fi [0]uint32;F int32}
-		_1__u      = esc + 32  // *struct{Ff [0]float32;Fi [0]uint32;F int32}
-		_unnamed2  = esc + 48  // *struct{F__z [0]complex64;F__xy [0][2]float32;F int32; _ [4]byte}
-		_unnamed3  = esc + 64  // *struct{F__z [0]complex64;F__xy [0][2]float32;F int32; _ [4]byte}
-		_unnamed4  = esc + 80  // *struct{F__z [0]complex64;F__xy [0][2]float32;F int32; _ [4]byte}
-		_unnamed5  = esc + 96  // *struct{F__z [0]complex64;F__xy [0][2]float32;F int32; _ [4]byte}
-		_unnamed6  = esc + 112 // *struct{F__z [0]complex64;F__xy [0][2]float32;F int32; _ [4]byte}
-		_unnamed7  = esc + 128 // *struct{F__z [0]complex64;F__xy [0][2]float32;F int32; _ [4]byte}
-		_unnamed8  = esc + 144 // *struct{F__z [0]complex64;F__xy [0][2]float32;F int32; _ [4]byte}
-		_unnamed9  = esc + 160 // *struct{F__z [0]complex64;F__xy [0][2]float32;F int32; _ [4]byte}
-		_unnamed10 = esc + 176 // *struct{F__z [0]complex64;F__xy [0][2]float32;F int32; _ [4]byte}
-		_unnamed11 = esc + 192 // *struct{F__z [0]complex64;F__xy [0][2]float32;F int32; _ [4]byte}
-		_unnamed12 = esc + 208 // *struct{F__z [0]complex64;F__xy [0][2]float32;F int32; _ [4]byte}
-		_unnamed13 = esc + 224 // *struct{F__z [0]complex64;F__xy [0][2]float32;F int32; _ [4]byte}
-		_unnamed14 = esc + 240 // *struct{F__z [0]complex64;F__xy [0][2]float32;F int32; _ [4]byte}
-		_unnamed15 = esc + 256 // *struct{F__z [0]complex64;F__xy [0][2]float32;F int32; _ [4]byte}
+		_x    float32
+		_y    float32
+		_h    float32
+		_hx   int32
+		_hy   int32
+		_ix   int32
+		_iy   int32
+		___u  = esc      // *struct{Ff [0]float32;Fi [0]uint32;F int32}
+		_1__u = esc + 16 // *struct{Ff [0]float32;Fi [0]uint32;F int32}
 	)
 	defer Free(esc)
 	_x = real(_z)
-	_y = *(*float32)(unsafe.Pointer(func() uintptr {
-		*(*struct {
-			F__z  [0]complex64
-			F__xy [0][2]float32
-			F     int32
-			_     [4]byte
-		})(unsafe.Pointer(_unnamed1)) = *(*struct {
-			F__z  [0]complex64
-			F__xy [0][2]float32
-			F     int32
-			_     [4]byte
-		})(unsafe.Pointer(&struct{ f complex64 }{_z}))
-		return _unnamed1
-	}() + 4))
+	_y = imag(_z)
 	*(*float32)(unsafe.Pointer(___u)) = _x
 	_hx = int32(*(*uint32)(unsafe.Pointer(___u)))
 	*(*float32)(unsafe.Pointer(_1__u)) = _y
@@ -2727,262 +1680,41 @@ func Xccoshf(tls TLS, _z complex64) (r complex64) {
 	_iy = int32(0x7fffffff) & _hy
 	if (_ix < int32(0x7f800000)) && (_iy < int32(0x7f800000)) {
 		if _iy == int32(0) {
-			return *(*complex64)(unsafe.Pointer(func() uintptr {
-				*(*struct {
-					F__z  [0]complex64
-					F__xy [0][2]float32
-					F     int32
-					_     [4]byte
-				})(unsafe.Pointer(_unnamed2)) = *(*struct {
-					F__z  [0]complex64
-					F__xy [0][2]float32
-					F     int32
-					_     [4]byte
-				})(unsafe.Pointer(&struct{ f [2]float32 }{[2]float32{
-					0: Xcoshf(tls, _x),
-					1: _x * _y,
-				}}))
-				return _unnamed2
-			}()))
+			return complex(Xcoshf(tls, _x), _x*_y)
 		}
 		if _ix < int32(0x41100000) {
-			return *(*complex64)(unsafe.Pointer(func() uintptr {
-				*(*struct {
-					F__z  [0]complex64
-					F__xy [0][2]float32
-					F     int32
-					_     [4]byte
-				})(unsafe.Pointer(_unnamed3)) = *(*struct {
-					F__z  [0]complex64
-					F__xy [0][2]float32
-					F     int32
-					_     [4]byte
-				})(unsafe.Pointer(&struct{ f [2]float32 }{[2]float32{
-					0: Xcoshf(tls, _x) * Xcosf(tls, _y),
-					1: Xsinhf(tls, _x) * Xsinf(tls, _y),
-				}}))
-				return _unnamed3
-			}()))
+			return complex(Xcoshf(tls, _x)*Xcosf(tls, _y), Xsinhf(tls, _x)*Xsinf(tls, _y))
 		}
 		if _ix < int32(0x42b17218) {
 			_h = Xexpf(tls, Xfabsf(tls, _x)) * float32(0.5)
-			return *(*complex64)(unsafe.Pointer(func() uintptr {
-				*(*struct {
-					F__z  [0]complex64
-					F__xy [0][2]float32
-					F     int32
-					_     [4]byte
-				})(unsafe.Pointer(_unnamed4)) = *(*struct {
-					F__z  [0]complex64
-					F__xy [0][2]float32
-					F     int32
-					_     [4]byte
-				})(unsafe.Pointer(&struct{ f [2]float32 }{[2]float32{
-					0: _h * Xcosf(tls, _y),
-					1: Xcopysignf(tls, _h, _x) * Xsinf(tls, _y),
-				}}))
-				return _unnamed4
-			}()))
+			return complex(_h*Xcosf(tls, _y), Xcopysignf(tls, _h, _x)*Xsinf(tls, _y))
 		} else if _ix < int32(0x4340b1e7) {
-			_z = X__ldexp_cexpf(tls, *(*complex64)(unsafe.Pointer(func() uintptr {
-				*(*struct {
-					F__z  [0]complex64
-					F__xy [0][2]float32
-					F     int32
-					_     [4]byte
-				})(unsafe.Pointer(_unnamed5)) = *(*struct {
-					F__z  [0]complex64
-					F__xy [0][2]float32
-					F     int32
-					_     [4]byte
-				})(unsafe.Pointer(&struct{ f [2]float32 }{[2]float32{
-					0: Xfabsf(tls, _x),
-					1: _y,
-				}}))
-				return _unnamed5
-			}())), int32(-1))
-			return *(*complex64)(unsafe.Pointer(func() uintptr {
-				*(*struct {
-					F__z  [0]complex64
-					F__xy [0][2]float32
-					F     int32
-					_     [4]byte
-				})(unsafe.Pointer(_unnamed7)) = *(*struct {
-					F__z  [0]complex64
-					F__xy [0][2]float32
-					F     int32
-					_     [4]byte
-				})(unsafe.Pointer(&struct{ f [2]float32 }{[2]float32{
-					0: real(_z),
-					1: *(*float32)(unsafe.Pointer(func() uintptr {
-						*(*struct {
-							F__z  [0]complex64
-							F__xy [0][2]float32
-							F     int32
-							_     [4]byte
-						})(unsafe.Pointer(_unnamed6)) = *(*struct {
-							F__z  [0]complex64
-							F__xy [0][2]float32
-							F     int32
-							_     [4]byte
-						})(unsafe.Pointer(&struct{ f complex64 }{_z}))
-						return _unnamed6
-					}() + 4)) * Xcopysignf(tls, float32(1), _x),
-				}}))
-				return _unnamed7
-			}()))
+			_z = X__ldexp_cexpf(tls, complex(Xfabsf(tls, _x), _y), int32(-1))
+			return complex(real(_z), imag(_z)*Xcopysignf(tls, float32(1), _x))
 		} else {
 			_h = x1huge * _x
-			return *(*complex64)(unsafe.Pointer(func() uintptr {
-				*(*struct {
-					F__z  [0]complex64
-					F__xy [0][2]float32
-					F     int32
-					_     [4]byte
-				})(unsafe.Pointer(_unnamed8)) = *(*struct {
-					F__z  [0]complex64
-					F__xy [0][2]float32
-					F     int32
-					_     [4]byte
-				})(unsafe.Pointer(&struct{ f [2]float32 }{[2]float32{
-					0: float32(_h*_h) * Xcosf(tls, _y),
-					1: _h * Xsinf(tls, _y),
-				}}))
-				return _unnamed8
-			}()))
+			return complex(float32(_h*_h)*Xcosf(tls, _y), _h*Xsinf(tls, _y))
 		}
 	}
 	if (_ix == int32(0)) && (_iy >= int32(0x7f800000)) {
-		return *(*complex64)(unsafe.Pointer(func() uintptr {
-			*(*struct {
-				F__z  [0]complex64
-				F__xy [0][2]float32
-				F     int32
-				_     [4]byte
-			})(unsafe.Pointer(_unnamed9)) = *(*struct {
-				F__z  [0]complex64
-				F__xy [0][2]float32
-				F     int32
-				_     [4]byte
-			})(unsafe.Pointer(&struct{ f [2]float32 }{[2]float32{
-				0: _y - _y,
-				1: Xcopysignf(tls, float32(0), _x*float32(_y-_y)),
-			}}))
-			return _unnamed9
-		}()))
+		return complex(_y-_y, Xcopysignf(tls, float32(0), _x*float32(_y-_y)))
 	}
 	if (_iy == int32(0)) && (_ix >= int32(0x7f800000)) {
 		if _hx&int32(0x7fffff) == int32(0) {
-			return *(*complex64)(unsafe.Pointer(func() uintptr {
-				*(*struct {
-					F__z  [0]complex64
-					F__xy [0][2]float32
-					F     int32
-					_     [4]byte
-				})(unsafe.Pointer(_unnamed10)) = *(*struct {
-					F__z  [0]complex64
-					F__xy [0][2]float32
-					F     int32
-					_     [4]byte
-				})(unsafe.Pointer(&struct{ f [2]float32 }{[2]float32{
-					0: _x * _x,
-					1: Xcopysignf(tls, float32(0), _x) * _y,
-				}}))
-				return _unnamed10
-			}()))
+			return complex(_x*_x, Xcopysignf(tls, float32(0), _x)*_y)
 		}
-		return *(*complex64)(unsafe.Pointer(func() uintptr {
-			*(*struct {
-				F__z  [0]complex64
-				F__xy [0][2]float32
-				F     int32
-				_     [4]byte
-			})(unsafe.Pointer(_unnamed11)) = *(*struct {
-				F__z  [0]complex64
-				F__xy [0][2]float32
-				F     int32
-				_     [4]byte
-			})(unsafe.Pointer(&struct{ f [2]float32 }{[2]float32{
-				0: _x * _x,
-				1: Xcopysignf(tls, float32(0), float32(_x+_x)*_y),
-			}}))
-			return _unnamed11
-		}()))
+		return complex(_x*_x, Xcopysignf(tls, float32(0), float32(_x+_x)*_y))
 	}
 	if (_ix < int32(0x7f800000)) && (_iy >= int32(0x7f800000)) {
-		return *(*complex64)(unsafe.Pointer(func() uintptr {
-			*(*struct {
-				F__z  [0]complex64
-				F__xy [0][2]float32
-				F     int32
-				_     [4]byte
-			})(unsafe.Pointer(_unnamed12)) = *(*struct {
-				F__z  [0]complex64
-				F__xy [0][2]float32
-				F     int32
-				_     [4]byte
-			})(unsafe.Pointer(&struct{ f [2]float32 }{[2]float32{
-				0: _y - _y,
-				1: _x * float32(_y-_y),
-			}}))
-			return _unnamed12
-		}()))
+		return complex(_y-_y, _x*float32(_y-_y))
 	}
 	if (_ix >= int32(0x7f800000)) && (_hx&int32(0x7fffff) == int32(0)) {
 		if _iy >= int32(0x7f800000) {
-			return *(*complex64)(unsafe.Pointer(func() uintptr {
-				*(*struct {
-					F__z  [0]complex64
-					F__xy [0][2]float32
-					F     int32
-					_     [4]byte
-				})(unsafe.Pointer(_unnamed13)) = *(*struct {
-					F__z  [0]complex64
-					F__xy [0][2]float32
-					F     int32
-					_     [4]byte
-				})(unsafe.Pointer(&struct{ f [2]float32 }{[2]float32{
-					0: _x * _x,
-					1: _x * float32(_y-_y),
-				}}))
-				return _unnamed13
-			}()))
+			return complex(_x*_x, _x*float32(_y-_y))
 		}
-		return *(*complex64)(unsafe.Pointer(func() uintptr {
-			*(*struct {
-				F__z  [0]complex64
-				F__xy [0][2]float32
-				F     int32
-				_     [4]byte
-			})(unsafe.Pointer(_unnamed14)) = *(*struct {
-				F__z  [0]complex64
-				F__xy [0][2]float32
-				F     int32
-				_     [4]byte
-			})(unsafe.Pointer(&struct{ f [2]float32 }{[2]float32{
-				0: float32(_x*_x) * Xcosf(tls, _y),
-				1: _x * Xsinf(tls, _y),
-			}}))
-			return _unnamed14
-		}()))
+		return complex(float32(_x*_x)*Xcosf(tls, _y), _x*Xsinf(tls, _y))
 	}
-	return *(*complex64)(unsafe.Pointer(func() uintptr {
-		*(*struct {
-			F__z  [0]complex64
-			F__xy [0][2]float32
-			F     int32
-			_     [4]byte
-		})(unsafe.Pointer(_unnamed15)) = *(*struct {
-			F__z  [0]complex64
-			F__xy [0][2]float32
-			F     int32
-			_     [4]byte
-		})(unsafe.Pointer(&struct{ f [2]float32 }{[2]float32{
-			0: float32(_x*_x) * float32(_y-_y),
-			1: float32(_x+_x) * float32(_y-_y),
-		}}))
-		return _unnamed15
-	}()))
+	return complex(float32(_x*_x)*float32(_y-_y), float32(_x+_x)*float32(_y-_y))
 }
 
 type t1int32_t = int32
@@ -3010,161 +1742,48 @@ func Xccosl(tls TLS, _z complex128) (r complex128) {
 
 // Xcexp is defined at cexp.c:34:16
 func Xcexp(tls TLS, _z complex128) (r complex128) {
-	esc := MustMalloc(144)
+	esc := MustMalloc(24)
 	var (
-		_x        float64
-		_y        float64
-		_exp_x    float64
-		_hx       uint32
-		_hy       uint32
-		_lx       uint32
-		_ly       uint32
-		_unnamed1 = esc       // *struct{F__z [0]complex128;F__xy [0][2]float64;F int64; _ [8]byte}
-		___u      = esc + 16  // *struct{Ff [0]float64;Fi [0]uint64;F int64}
-		_unnamed2 = esc + 32  // *struct{F__z [0]complex128;F__xy [0][2]float64;F int64; _ [8]byte}
-		_1__u     = esc + 48  // *struct{Ff [0]float64;Fi [0]uint64;F int64}
-		_unnamed3 = esc + 64  // *struct{F__z [0]complex128;F__xy [0][2]float64;F int64; _ [8]byte}
-		_unnamed4 = esc + 80  // *struct{F__z [0]complex128;F__xy [0][2]float64;F int64; _ [8]byte}
-		_unnamed5 = esc + 96  // *struct{F__z [0]complex128;F__xy [0][2]float64;F int64; _ [8]byte}
-		_unnamed6 = esc + 112 // *struct{F__z [0]complex128;F__xy [0][2]float64;F int64; _ [8]byte}
-		_unnamed7 = esc + 128 // *struct{F__z [0]complex128;F__xy [0][2]float64;F int64; _ [8]byte}
+		_x     float64
+		_y     float64
+		_exp_x float64
+		_hx    uint32
+		_hy    uint32
+		_lx    uint32
+		_ly    uint32
+		___u   = esc      // *struct{Ff [0]float64;Fi [0]uint64;F int64}
+		_1__u  = esc + 16 // *struct{Ff [0]float64;Fi [0]uint64;F int64}
 	)
 	defer Free(esc)
 	_x = real(_z)
-	_y = *(*float64)(unsafe.Pointer(func() uintptr {
-		*(*struct {
-			F__z  [0]complex128
-			F__xy [0][2]float64
-			F     int64
-			_     [8]byte
-		})(unsafe.Pointer(_unnamed1)) = *(*struct {
-			F__z  [0]complex128
-			F__xy [0][2]float64
-			F     int64
-			_     [8]byte
-		})(unsafe.Pointer(&struct{ f complex128 }{_z}))
-		return _unnamed1
-	}() + 8))
+	_y = imag(_z)
 	*(*float64)(unsafe.Pointer(___u)) = _y
 	_hy = uint32(*(*uint64)(unsafe.Pointer(___u)) >> (uint(32) % 64))
 	_ly = uint32(*(*uint64)(unsafe.Pointer(___u)))
 	_hy = _hy & uint32(0x7fffffff)
 	if _hy|_ly == uint32(0) {
-		return *(*complex128)(unsafe.Pointer(func() uintptr {
-			*(*struct {
-				F__z  [0]complex128
-				F__xy [0][2]float64
-				F     int64
-				_     [8]byte
-			})(unsafe.Pointer(_unnamed2)) = *(*struct {
-				F__z  [0]complex128
-				F__xy [0][2]float64
-				F     int64
-				_     [8]byte
-			})(unsafe.Pointer(&struct{ f [2]float64 }{[2]float64{
-				0: Xexp(tls, _x),
-				1: _y,
-			}}))
-			return _unnamed2
-		}()))
+		return complex(Xexp(tls, _x), _y)
 	}
 	*(*float64)(unsafe.Pointer(_1__u)) = _x
 	_hx = uint32(*(*uint64)(unsafe.Pointer(_1__u)) >> (uint(32) % 64))
 	_lx = uint32(*(*uint64)(unsafe.Pointer(_1__u)))
 	if _hx&uint32(0x7fffffff)|_lx == uint32(0) {
-		return *(*complex128)(unsafe.Pointer(func() uintptr {
-			*(*struct {
-				F__z  [0]complex128
-				F__xy [0][2]float64
-				F     int64
-				_     [8]byte
-			})(unsafe.Pointer(_unnamed3)) = *(*struct {
-				F__z  [0]complex128
-				F__xy [0][2]float64
-				F     int64
-				_     [8]byte
-			})(unsafe.Pointer(&struct{ f [2]float64 }{[2]float64{
-				0: Xcos(tls, _y),
-				1: Xsin(tls, _y),
-			}}))
-			return _unnamed3
-		}()))
+		return complex(Xcos(tls, _y), Xsin(tls, _y))
 	}
 	if _hy >= uint32(0x7ff00000) {
 		if (_lx != uint32(0)) || (_hx&uint32(0x7fffffff) != uint32(0x7ff00000)) {
-			return *(*complex128)(unsafe.Pointer(func() uintptr {
-				*(*struct {
-					F__z  [0]complex128
-					F__xy [0][2]float64
-					F     int64
-					_     [8]byte
-				})(unsafe.Pointer(_unnamed4)) = *(*struct {
-					F__z  [0]complex128
-					F__xy [0][2]float64
-					F     int64
-					_     [8]byte
-				})(unsafe.Pointer(&struct{ f [2]float64 }{[2]float64{
-					0: _y - _y,
-					1: _y - _y,
-				}}))
-				return _unnamed4
-			}()))
+			return complex(_y-_y, _y-_y)
 		} else if (_hx & uint32(0x80000000)) != 0 {
-			return *(*complex128)(unsafe.Pointer(func() uintptr {
-				*(*struct {
-					F__z  [0]complex128
-					F__xy [0][2]float64
-					F     int64
-					_     [8]byte
-				})(unsafe.Pointer(_unnamed5)) = struct {
-					F__z  [0]complex128
-					F__xy [0][2]float64
-					F     int64
-					_     [8]byte
-				}{}
-				return _unnamed5
-			}()))
+			return complex(float64(0), float64(0))
 		} else {
-			return *(*complex128)(unsafe.Pointer(func() uintptr {
-				*(*struct {
-					F__z  [0]complex128
-					F__xy [0][2]float64
-					F     int64
-					_     [8]byte
-				})(unsafe.Pointer(_unnamed6)) = *(*struct {
-					F__z  [0]complex128
-					F__xy [0][2]float64
-					F     int64
-					_     [8]byte
-				})(unsafe.Pointer(&struct{ f [2]float64 }{[2]float64{
-					0: _x,
-					1: _y - _y,
-				}}))
-				return _unnamed6
-			}()))
+			return complex(_x, _y-_y)
 		}
 	}
 	if (_hx >= xexp_ovfl) && (_hx <= xcexp_ovfl) {
 		return X__ldexp_cexp(tls, _z, int32(0))
 	} else {
 		_exp_x = Xexp(tls, _x)
-		return *(*complex128)(unsafe.Pointer(func() uintptr {
-			*(*struct {
-				F__z  [0]complex128
-				F__xy [0][2]float64
-				F     int64
-				_     [8]byte
-			})(unsafe.Pointer(_unnamed7)) = *(*struct {
-				F__z  [0]complex128
-				F__xy [0][2]float64
-				F     int64
-				_     [8]byte
-			})(unsafe.Pointer(&struct{ f [2]float64 }{[2]float64{
-				0: _exp_x * Xcos(tls, _y),
-				1: _exp_x * Xsin(tls, _y),
-			}}))
-			return _unnamed7
-		}()))
+		return complex(_exp_x*Xcos(tls, _y), _exp_x*Xsin(tls, _y))
 	}
 	return r
 }
@@ -3183,157 +1802,44 @@ var xcexp_ovfl = uint32(0x4096b8e4)
 
 // Xcexpf is defined at cexpf.c:34:15
 func Xcexpf(tls TLS, _z complex64) (r complex64) {
-	esc := MustMalloc(136)
+	esc := MustMalloc(20)
 	var (
-		_x        float32
-		_y        float32
-		_exp_x    float32
-		_hx       uint32
-		_hy       uint32
-		_unnamed1 = esc       // *struct{F__z [0]complex64;F__xy [0][2]float32;F int32; _ [4]byte}
-		___u      = esc + 16  // *struct{Ff [0]float32;Fi [0]uint32;F int32}
-		_unnamed2 = esc + 32  // *struct{F__z [0]complex64;F__xy [0][2]float32;F int32; _ [4]byte}
-		_1__u     = esc + 48  // *struct{Ff [0]float32;Fi [0]uint32;F int32}
-		_unnamed3 = esc + 64  // *struct{F__z [0]complex64;F__xy [0][2]float32;F int32; _ [4]byte}
-		_unnamed4 = esc + 80  // *struct{F__z [0]complex64;F__xy [0][2]float32;F int32; _ [4]byte}
-		_unnamed5 = esc + 96  // *struct{F__z [0]complex64;F__xy [0][2]float32;F int32; _ [4]byte}
-		_unnamed6 = esc + 112 // *struct{F__z [0]complex64;F__xy [0][2]float32;F int32; _ [4]byte}
-		_unnamed7 = esc + 128 // *struct{F__z [0]complex64;F__xy [0][2]float32;F int32; _ [4]byte}
+		_x     float32
+		_y     float32
+		_exp_x float32
+		_hx    uint32
+		_hy    uint32
+		___u   = esc      // *struct{Ff [0]float32;Fi [0]uint32;F int32}
+		_1__u  = esc + 16 // *struct{Ff [0]float32;Fi [0]uint32;F int32}
 	)
 	defer Free(esc)
 	_x = real(_z)
-	_y = *(*float32)(unsafe.Pointer(func() uintptr {
-		*(*struct {
-			F__z  [0]complex64
-			F__xy [0][2]float32
-			F     int32
-			_     [4]byte
-		})(unsafe.Pointer(_unnamed1)) = *(*struct {
-			F__z  [0]complex64
-			F__xy [0][2]float32
-			F     int32
-			_     [4]byte
-		})(unsafe.Pointer(&struct{ f complex64 }{_z}))
-		return _unnamed1
-	}() + 4))
+	_y = imag(_z)
 	*(*float32)(unsafe.Pointer(___u)) = _y
 	_hy = *(*uint32)(unsafe.Pointer(___u))
 	_hy = _hy & uint32(0x7fffffff)
 	if _hy == uint32(0) {
-		return *(*complex64)(unsafe.Pointer(func() uintptr {
-			*(*struct {
-				F__z  [0]complex64
-				F__xy [0][2]float32
-				F     int32
-				_     [4]byte
-			})(unsafe.Pointer(_unnamed2)) = *(*struct {
-				F__z  [0]complex64
-				F__xy [0][2]float32
-				F     int32
-				_     [4]byte
-			})(unsafe.Pointer(&struct{ f [2]float32 }{[2]float32{
-				0: Xexpf(tls, _x),
-				1: _y,
-			}}))
-			return _unnamed2
-		}()))
+		return complex(Xexpf(tls, _x), _y)
 	}
 	*(*float32)(unsafe.Pointer(_1__u)) = _x
 	_hx = *(*uint32)(unsafe.Pointer(_1__u))
 	if _hx&uint32(0x7fffffff) == uint32(0) {
-		return *(*complex64)(unsafe.Pointer(func() uintptr {
-			*(*struct {
-				F__z  [0]complex64
-				F__xy [0][2]float32
-				F     int32
-				_     [4]byte
-			})(unsafe.Pointer(_unnamed3)) = *(*struct {
-				F__z  [0]complex64
-				F__xy [0][2]float32
-				F     int32
-				_     [4]byte
-			})(unsafe.Pointer(&struct{ f [2]float32 }{[2]float32{
-				0: Xcosf(tls, _y),
-				1: Xsinf(tls, _y),
-			}}))
-			return _unnamed3
-		}()))
+		return complex(Xcosf(tls, _y), Xsinf(tls, _y))
 	}
 	if _hy >= uint32(0x7f800000) {
 		if _hx&uint32(0x7fffffff) != uint32(0x7f800000) {
-			return *(*complex64)(unsafe.Pointer(func() uintptr {
-				*(*struct {
-					F__z  [0]complex64
-					F__xy [0][2]float32
-					F     int32
-					_     [4]byte
-				})(unsafe.Pointer(_unnamed4)) = *(*struct {
-					F__z  [0]complex64
-					F__xy [0][2]float32
-					F     int32
-					_     [4]byte
-				})(unsafe.Pointer(&struct{ f [2]float32 }{[2]float32{
-					0: _y - _y,
-					1: _y - _y,
-				}}))
-				return _unnamed4
-			}()))
+			return complex(_y-_y, _y-_y)
 		} else if (_hx & uint32(0x80000000)) != 0 {
-			return *(*complex64)(unsafe.Pointer(func() uintptr {
-				*(*struct {
-					F__z  [0]complex64
-					F__xy [0][2]float32
-					F     int32
-					_     [4]byte
-				})(unsafe.Pointer(_unnamed5)) = struct {
-					F__z  [0]complex64
-					F__xy [0][2]float32
-					F     int32
-					_     [4]byte
-				}{}
-				return _unnamed5
-			}()))
+			return complex(float32(0), float32(0))
 		} else {
-			return *(*complex64)(unsafe.Pointer(func() uintptr {
-				*(*struct {
-					F__z  [0]complex64
-					F__xy [0][2]float32
-					F     int32
-					_     [4]byte
-				})(unsafe.Pointer(_unnamed6)) = *(*struct {
-					F__z  [0]complex64
-					F__xy [0][2]float32
-					F     int32
-					_     [4]byte
-				})(unsafe.Pointer(&struct{ f [2]float32 }{[2]float32{
-					0: _x,
-					1: _y - _y,
-				}}))
-				return _unnamed6
-			}()))
+			return complex(_x, _y-_y)
 		}
 	}
 	if (_hx >= x1exp_ovfl) && (_hx <= x1cexp_ovfl) {
 		return X__ldexp_cexpf(tls, _z, int32(0))
 	} else {
 		_exp_x = Xexpf(tls, _x)
-		return *(*complex64)(unsafe.Pointer(func() uintptr {
-			*(*struct {
-				F__z  [0]complex64
-				F__xy [0][2]float32
-				F     int32
-				_     [4]byte
-			})(unsafe.Pointer(_unnamed7)) = *(*struct {
-				F__z  [0]complex64
-				F__xy [0][2]float32
-				F     int32
-				_     [4]byte
-			})(unsafe.Pointer(&struct{ f [2]float32 }{[2]float32{
-				0: _exp_x * Xcosf(tls, _y),
-				1: _exp_x * Xsinf(tls, _y),
-			}}))
-			return _unnamed7
-		}()))
+		return complex(_exp_x*Xcosf(tls, _y), _exp_x*Xsinf(tls, _y))
 	}
 	return r
 }
@@ -3357,133 +1863,47 @@ func Xcexpl(tls TLS, _z complex128) (r complex128) {
 
 // Xcimag is defined at cimag.c:3:8
 func Xcimag(tls TLS, _z complex128) (r float64) {
-	esc := MustMalloc(16)
-	var _unnamed1 = esc // *struct{F__z [0]complex128;F__xy [0][2]float64;F int64; _ [8]byte}
-	defer Free(esc)
-	return *(*float64)(unsafe.Pointer(func() uintptr {
-		*(*struct {
-			F__z  [0]complex128
-			F__xy [0][2]float64
-			F     int64
-			_     [8]byte
-		})(unsafe.Pointer(_unnamed1)) = *(*struct {
-			F__z  [0]complex128
-			F__xy [0][2]float64
-			F     int64
-			_     [8]byte
-		})(unsafe.Pointer(&struct{ f complex128 }{_z}))
-		return _unnamed1
-	}() + 8))
+	return imag(_z)
 }
 
 // linking cimagf.o
 
 // Xcimagf is defined at cimagf.c:3:7
 func Xcimagf(tls TLS, _z complex64) (r float32) {
-	esc := MustMalloc(8)
-	var _unnamed1 = esc // *struct{F__z [0]complex64;F__xy [0][2]float32;F int32; _ [4]byte}
-	defer Free(esc)
-	return *(*float32)(unsafe.Pointer(func() uintptr {
-		*(*struct {
-			F__z  [0]complex64
-			F__xy [0][2]float32
-			F     int32
-			_     [4]byte
-		})(unsafe.Pointer(_unnamed1)) = *(*struct {
-			F__z  [0]complex64
-			F__xy [0][2]float32
-			F     int32
-			_     [4]byte
-		})(unsafe.Pointer(&struct{ f complex64 }{_z}))
-		return _unnamed1
-	}() + 4))
+	return imag(_z)
 }
 
 // linking cimagl.o
 
 // Xcimagl is defined at cimagl.c:3:13
 func Xcimagl(tls TLS, _z complex128) (r float64) {
-	esc := MustMalloc(16)
-	var _unnamed1 = esc // *struct{F__z [0]complex128;F__xy [0][2]float64;F int64; _ [8]byte}
-	defer Free(esc)
-	return *(*float64)(unsafe.Pointer(func() uintptr {
-		*(*struct {
-			F__z  [0]complex128
-			F__xy [0][2]float64
-			F     int64
-			_     [8]byte
-		})(unsafe.Pointer(_unnamed1)) = *(*struct {
-			F__z  [0]complex128
-			F__xy [0][2]float64
-			F     int64
-			_     [8]byte
-		})(unsafe.Pointer(&struct{ f complex128 }{_z}))
-		return _unnamed1
-	}() + 8))
+	return imag(_z)
 }
 
 // linking clog.o
 
 // Xclog is defined at clog.c:7:16
 func Xclog(tls TLS, _z complex128) (r complex128) {
-	esc := MustMalloc(16)
 	var (
-		_r        float64
-		_phi      float64
-		_unnamed1 = esc // *struct{F__z [0]complex128;F__xy [0][2]float64;F int64; _ [8]byte}
+		_r   float64
+		_phi float64
 	)
-	defer Free(esc)
 	_r = Xcabs(tls, _z)
 	_phi = Xcarg(tls, _z)
-	return *(*complex128)(unsafe.Pointer(func() uintptr {
-		*(*struct {
-			F__z  [0]complex128
-			F__xy [0][2]float64
-			F     int64
-			_     [8]byte
-		})(unsafe.Pointer(_unnamed1)) = *(*struct {
-			F__z  [0]complex128
-			F__xy [0][2]float64
-			F     int64
-			_     [8]byte
-		})(unsafe.Pointer(&struct{ f [2]float64 }{[2]float64{
-			0: Xlog(tls, _r),
-			1: _phi,
-		}}))
-		return _unnamed1
-	}()))
+	return complex(Xlog(tls, _r), _phi)
 }
 
 // linking clogf.o
 
 // Xclogf is defined at clogf.c:5:15
 func Xclogf(tls TLS, _z complex64) (r complex64) {
-	esc := MustMalloc(8)
 	var (
-		_r        float32
-		_phi      float32
-		_unnamed1 = esc // *struct{F__z [0]complex64;F__xy [0][2]float32;F int32; _ [4]byte}
+		_r   float32
+		_phi float32
 	)
-	defer Free(esc)
 	_r = Xcabsf(tls, _z)
 	_phi = Xcargf(tls, _z)
-	return *(*complex64)(unsafe.Pointer(func() uintptr {
-		*(*struct {
-			F__z  [0]complex64
-			F__xy [0][2]float32
-			F     int32
-			_     [4]byte
-		})(unsafe.Pointer(_unnamed1)) = *(*struct {
-			F__z  [0]complex64
-			F__xy [0][2]float32
-			F     int32
-			_     [4]byte
-		})(unsafe.Pointer(&struct{ f [2]float32 }{[2]float32{
-			0: Xlogf(tls, _r),
-			1: _phi,
-		}}))
-		return _unnamed1
-	}()))
+	return complex(Xlogf(tls, _r), _phi)
 }
 
 // linking clogl.o
@@ -3497,126 +1917,21 @@ func Xclogl(tls TLS, _z complex128) (r complex128) {
 
 // Xconj is defined at conj.c:3:16
 func Xconj(tls TLS, _z complex128) (r complex128) {
-	esc := MustMalloc(32)
-	var (
-		_unnamed1 = esc      // *struct{F__z [0]complex128;F__xy [0][2]float64;F int64; _ [8]byte}
-		_unnamed2 = esc + 16 // *struct{F__z [0]complex128;F__xy [0][2]float64;F int64; _ [8]byte}
-	)
-	defer Free(esc)
-	return *(*complex128)(unsafe.Pointer(func() uintptr {
-		*(*struct {
-			F__z  [0]complex128
-			F__xy [0][2]float64
-			F     int64
-			_     [8]byte
-		})(unsafe.Pointer(_unnamed2)) = *(*struct {
-			F__z  [0]complex128
-			F__xy [0][2]float64
-			F     int64
-			_     [8]byte
-		})(unsafe.Pointer(&struct{ f [2]float64 }{[2]float64{
-			0: real(_z),
-			1: -*(*float64)(unsafe.Pointer(func() uintptr {
-				*(*struct {
-					F__z  [0]complex128
-					F__xy [0][2]float64
-					F     int64
-					_     [8]byte
-				})(unsafe.Pointer(_unnamed1)) = *(*struct {
-					F__z  [0]complex128
-					F__xy [0][2]float64
-					F     int64
-					_     [8]byte
-				})(unsafe.Pointer(&struct{ f complex128 }{_z}))
-				return _unnamed1
-			}() + 8)),
-		}}))
-		return _unnamed2
-	}()))
+	return complex(real(_z), -imag(_z))
 }
 
 // linking conjf.o
 
 // Xconjf is defined at conjf.c:3:15
 func Xconjf(tls TLS, _z complex64) (r complex64) {
-	esc := MustMalloc(24)
-	var (
-		_unnamed1 = esc      // *struct{F__z [0]complex64;F__xy [0][2]float32;F int32; _ [4]byte}
-		_unnamed2 = esc + 16 // *struct{F__z [0]complex64;F__xy [0][2]float32;F int32; _ [4]byte}
-	)
-	defer Free(esc)
-	return *(*complex64)(unsafe.Pointer(func() uintptr {
-		*(*struct {
-			F__z  [0]complex64
-			F__xy [0][2]float32
-			F     int32
-			_     [4]byte
-		})(unsafe.Pointer(_unnamed2)) = *(*struct {
-			F__z  [0]complex64
-			F__xy [0][2]float32
-			F     int32
-			_     [4]byte
-		})(unsafe.Pointer(&struct{ f [2]float32 }{[2]float32{
-			0: real(_z),
-			1: -*(*float32)(unsafe.Pointer(func() uintptr {
-				*(*struct {
-					F__z  [0]complex64
-					F__xy [0][2]float32
-					F     int32
-					_     [4]byte
-				})(unsafe.Pointer(_unnamed1)) = *(*struct {
-					F__z  [0]complex64
-					F__xy [0][2]float32
-					F     int32
-					_     [4]byte
-				})(unsafe.Pointer(&struct{ f complex64 }{_z}))
-				return _unnamed1
-			}() + 4)),
-		}}))
-		return _unnamed2
-	}()))
+	return complex(real(_z), -imag(_z))
 }
 
 // linking conjl.o
 
 // Xconjl is defined at conjl.c:3:21
 func Xconjl(tls TLS, _z complex128) (r complex128) {
-	esc := MustMalloc(32)
-	var (
-		_unnamed1 = esc      // *struct{F__z [0]complex128;F__xy [0][2]float64;F int64; _ [8]byte}
-		_unnamed2 = esc + 16 // *struct{F__z [0]complex128;F__xy [0][2]float64;F int64; _ [8]byte}
-	)
-	defer Free(esc)
-	return *(*complex128)(unsafe.Pointer(func() uintptr {
-		*(*struct {
-			F__z  [0]complex128
-			F__xy [0][2]float64
-			F     int64
-			_     [8]byte
-		})(unsafe.Pointer(_unnamed2)) = *(*struct {
-			F__z  [0]complex128
-			F__xy [0][2]float64
-			F     int64
-			_     [8]byte
-		})(unsafe.Pointer(&struct{ f [2]float64 }{[2]float64{
-			0: real(_z),
-			1: -*(*float64)(unsafe.Pointer(func() uintptr {
-				*(*struct {
-					F__z  [0]complex128
-					F__xy [0][2]float64
-					F     int64
-					_     [8]byte
-				})(unsafe.Pointer(_unnamed1)) = *(*struct {
-					F__z  [0]complex128
-					F__xy [0][2]float64
-					F     int64
-					_     [8]byte
-				})(unsafe.Pointer(&struct{ f complex128 }{_z}))
-				return _unnamed1
-			}() + 8)),
-		}}))
-		return _unnamed2
-	}()))
+	return complex(real(_z), -imag(_z))
 }
 
 // linking cpow.o
@@ -3644,47 +1959,8 @@ func Xcpowl(tls TLS, _z complex128, _c complex128) (r complex128) {
 
 // Xcproj is defined at cproj.c:3:16
 func Xcproj(tls TLS, _z complex128) (r complex128) {
-	esc := MustMalloc(64)
-	var (
-		_unnamed1 = esc // *struct{F__z [0]complex128;F__xy [0][2]float64;F int64; _ [8]byte}
-		_         = _unnamed1
-		_unnamed2 = esc + 16 // *struct{F__z [0]complex128;F__xy [0][2]float64;F int64; _ [8]byte}
-		_         = _unnamed2
-		_unnamed3 = esc + 32 // *struct{F__z [0]complex128;F__xy [0][2]float64;F int64; _ [8]byte}
-		_unnamed4 = esc + 48 // *struct{F__z [0]complex128;F__xy [0][2]float64;F int64; _ [8]byte}
-	)
-	defer Free(esc)
-	if (x__DOUBLE_BITS(tls, real(_z))&uint64(9223372036854775807) == uint64(9218868437227405312)) || (x__DOUBLE_BITS(tls, *(*float64)(unsafe.Pointer(func() uintptr {
-		*(*struct {
-			F__z  [0]complex128
-			F__xy [0][2]float64
-			F     int64
-			_     [8]byte
-		})(unsafe.Pointer(_unnamed3)) = *(*struct {
-			F__z  [0]complex128
-			F__xy [0][2]float64
-			F     int64
-			_     [8]byte
-		})(unsafe.Pointer(&struct{ f complex128 }{_z}))
-		return _unnamed3
-	}() + 8)))&uint64(9223372036854775807) == uint64(9218868437227405312)) {
-		return *(*complex128)(unsafe.Pointer(func() uintptr {
-			*(*struct {
-				F__z  [0]complex128
-				F__xy [0][2]float64
-				F     int64
-				_     [8]byte
-			})(unsafe.Pointer(_unnamed4)) = *(*struct {
-				F__z  [0]complex128
-				F__xy [0][2]float64
-				F     int64
-				_     [8]byte
-			})(unsafe.Pointer(&struct{ f [2]float64 }{[2]float64{
-				0: float64(float32(math.Inf(1))),
-				1: Xcopysign(tls, float64(0), real(_z)),
-			}}))
-			return _unnamed4
-		}()))
+	if (x__DOUBLE_BITS(tls, real(_z))&uint64(9223372036854775807) == uint64(9218868437227405312)) || (x__DOUBLE_BITS(tls, imag(_z))&uint64(9223372036854775807) == uint64(9218868437227405312)) {
+		return complex(math.Inf(1), Xcopysign(tls, float64(0), real(_z)))
 	}
 	return _z
 }
@@ -3702,45 +1978,8 @@ func x__DOUBLE_BITS(tls TLS, ___f float64) (r uint64) {
 
 // Xcprojf is defined at cprojf.c:3:15
 func Xcprojf(tls TLS, _z complex64) (r complex64) {
-	esc := MustMalloc(40)
-	var (
-		_unnamed1 = esc // *struct{F__z [0]complex64;F__xy [0][2]float32;F int32; _ [4]byte}
-		_         = _unnamed1
-		_unnamed2 = esc + 16 // *struct{F__z [0]complex64;F__xy [0][2]float32;F int32; _ [4]byte}
-		_unnamed3 = esc + 32 // *struct{F__z [0]complex64;F__xy [0][2]float32;F int32; _ [4]byte}
-	)
-	defer Free(esc)
-	if (x__FLOAT_BITS(tls, real(_z))&uint32(0x7fffffff) == uint32(0x7f800000)) || (x__FLOAT_BITS(tls, *(*float32)(unsafe.Pointer(func() uintptr {
-		*(*struct {
-			F__z  [0]complex64
-			F__xy [0][2]float32
-			F     int32
-			_     [4]byte
-		})(unsafe.Pointer(_unnamed2)) = *(*struct {
-			F__z  [0]complex64
-			F__xy [0][2]float32
-			F     int32
-			_     [4]byte
-		})(unsafe.Pointer(&struct{ f complex64 }{_z}))
-		return _unnamed2
-	}() + 4)))&uint32(0x7fffffff) == uint32(0x7f800000)) {
-		return *(*complex64)(unsafe.Pointer(func() uintptr {
-			*(*struct {
-				F__z  [0]complex64
-				F__xy [0][2]float32
-				F     int32
-				_     [4]byte
-			})(unsafe.Pointer(_unnamed3)) = *(*struct {
-				F__z  [0]complex64
-				F__xy [0][2]float32
-				F     int32
-				_     [4]byte
-			})(unsafe.Pointer(&struct{ f [2]float32 }{[2]float32{
-				0: float32(math.Inf(1)),
-				1: Xcopysignf(tls, float32(0), real(_z)),
-			}}))
-			return _unnamed3
-		}()))
+	if (x__FLOAT_BITS(tls, real(_z))&uint32(0x7fffffff) == uint32(0x7f800000)) || (x__FLOAT_BITS(tls, imag(_z))&uint32(0x7fffffff) == uint32(0x7f800000)) {
+		return complex(float32(math.Inf(1)), Xcopysignf(tls, float32(0), real(_z)))
 	}
 	return _z
 }
@@ -3786,199 +2025,39 @@ func Xcreall(tls TLS, _z complex128) (r float64) {
 
 // Xcsin is defined at csin.c:5:16
 func Xcsin(tls TLS, _z complex128) (r complex128) {
-	esc := MustMalloc(64)
-	var (
-		_unnamed1 = esc      // *struct{F__z [0]complex128;F__xy [0][2]float64;F int64; _ [8]byte}
-		_unnamed2 = esc + 16 // *struct{F__z [0]complex128;F__xy [0][2]float64;F int64; _ [8]byte}
-		_unnamed3 = esc + 32 // *struct{F__z [0]complex128;F__xy [0][2]float64;F int64; _ [8]byte}
-		_unnamed4 = esc + 48 // *struct{F__z [0]complex128;F__xy [0][2]float64;F int64; _ [8]byte}
-	)
-	defer Free(esc)
-	_z = Xcsinh(tls, *(*complex128)(unsafe.Pointer(func() uintptr {
-		*(*struct {
-			F__z  [0]complex128
-			F__xy [0][2]float64
-			F     int64
-			_     [8]byte
-		})(unsafe.Pointer(_unnamed2)) = *(*struct {
-			F__z  [0]complex128
-			F__xy [0][2]float64
-			F     int64
-			_     [8]byte
-		})(unsafe.Pointer(&struct{ f [2]float64 }{[2]float64{
-			0: -*(*float64)(unsafe.Pointer(func() uintptr {
-				*(*struct {
-					F__z  [0]complex128
-					F__xy [0][2]float64
-					F     int64
-					_     [8]byte
-				})(unsafe.Pointer(_unnamed1)) = *(*struct {
-					F__z  [0]complex128
-					F__xy [0][2]float64
-					F     int64
-					_     [8]byte
-				})(unsafe.Pointer(&struct{ f complex128 }{_z}))
-				return _unnamed1
-			}() + 8)),
-			1: real(_z),
-		}}))
-		return _unnamed2
-	}())))
-	return *(*complex128)(unsafe.Pointer(func() uintptr {
-		*(*struct {
-			F__z  [0]complex128
-			F__xy [0][2]float64
-			F     int64
-			_     [8]byte
-		})(unsafe.Pointer(_unnamed4)) = *(*struct {
-			F__z  [0]complex128
-			F__xy [0][2]float64
-			F     int64
-			_     [8]byte
-		})(unsafe.Pointer(&struct{ f [2]float64 }{[2]float64{
-			0: *(*float64)(unsafe.Pointer(func() uintptr {
-				*(*struct {
-					F__z  [0]complex128
-					F__xy [0][2]float64
-					F     int64
-					_     [8]byte
-				})(unsafe.Pointer(_unnamed3)) = *(*struct {
-					F__z  [0]complex128
-					F__xy [0][2]float64
-					F     int64
-					_     [8]byte
-				})(unsafe.Pointer(&struct{ f complex128 }{_z}))
-				return _unnamed3
-			}() + 8)),
-			1: -real(_z),
-		}}))
-		return _unnamed4
-	}()))
+	_z = Xcsinh(tls, complex(-imag(_z), real(_z)))
+	return complex(imag(_z), -real(_z))
 }
 
 // linking csinf.o
 
 // Xcsinf is defined at csinf.c:3:15
 func Xcsinf(tls TLS, _z complex64) (r complex64) {
-	esc := MustMalloc(56)
-	var (
-		_unnamed1 = esc      // *struct{F__z [0]complex64;F__xy [0][2]float32;F int32; _ [4]byte}
-		_unnamed2 = esc + 16 // *struct{F__z [0]complex64;F__xy [0][2]float32;F int32; _ [4]byte}
-		_unnamed3 = esc + 32 // *struct{F__z [0]complex64;F__xy [0][2]float32;F int32; _ [4]byte}
-		_unnamed4 = esc + 48 // *struct{F__z [0]complex64;F__xy [0][2]float32;F int32; _ [4]byte}
-	)
-	defer Free(esc)
-	_z = Xcsinhf(tls, *(*complex64)(unsafe.Pointer(func() uintptr {
-		*(*struct {
-			F__z  [0]complex64
-			F__xy [0][2]float32
-			F     int32
-			_     [4]byte
-		})(unsafe.Pointer(_unnamed2)) = *(*struct {
-			F__z  [0]complex64
-			F__xy [0][2]float32
-			F     int32
-			_     [4]byte
-		})(unsafe.Pointer(&struct{ f [2]float32 }{[2]float32{
-			0: -*(*float32)(unsafe.Pointer(func() uintptr {
-				*(*struct {
-					F__z  [0]complex64
-					F__xy [0][2]float32
-					F     int32
-					_     [4]byte
-				})(unsafe.Pointer(_unnamed1)) = *(*struct {
-					F__z  [0]complex64
-					F__xy [0][2]float32
-					F     int32
-					_     [4]byte
-				})(unsafe.Pointer(&struct{ f complex64 }{_z}))
-				return _unnamed1
-			}() + 4)),
-			1: real(_z),
-		}}))
-		return _unnamed2
-	}())))
-	return *(*complex64)(unsafe.Pointer(func() uintptr {
-		*(*struct {
-			F__z  [0]complex64
-			F__xy [0][2]float32
-			F     int32
-			_     [4]byte
-		})(unsafe.Pointer(_unnamed4)) = *(*struct {
-			F__z  [0]complex64
-			F__xy [0][2]float32
-			F     int32
-			_     [4]byte
-		})(unsafe.Pointer(&struct{ f [2]float32 }{[2]float32{
-			0: *(*float32)(unsafe.Pointer(func() uintptr {
-				*(*struct {
-					F__z  [0]complex64
-					F__xy [0][2]float32
-					F     int32
-					_     [4]byte
-				})(unsafe.Pointer(_unnamed3)) = *(*struct {
-					F__z  [0]complex64
-					F__xy [0][2]float32
-					F     int32
-					_     [4]byte
-				})(unsafe.Pointer(&struct{ f complex64 }{_z}))
-				return _unnamed3
-			}() + 4)),
-			1: -real(_z),
-		}}))
-		return _unnamed4
-	}()))
+	_z = Xcsinhf(tls, complex(-imag(_z), real(_z)))
+	return complex(imag(_z), -real(_z))
 }
 
 // linking csinh.o
 
 // Xcsinh is defined at csinh.c:41:16
 func Xcsinh(tls TLS, _z complex128) (r complex128) {
-	esc := MustMalloc(272)
+	esc := MustMalloc(24)
 	var (
-		_x         float64
-		_y         float64
-		_h         float64
-		_hx        int32
-		_hy        int32
-		_ix        int32
-		_iy        int32
-		_lx        int32
-		_ly        int32
-		_unnamed1  = esc       // *struct{F__z [0]complex128;F__xy [0][2]float64;F int64; _ [8]byte}
-		___u       = esc + 16  // *struct{Ff [0]float64;Fi [0]uint64;F int64}
-		_1__u      = esc + 32  // *struct{Ff [0]float64;Fi [0]uint64;F int64}
-		_unnamed2  = esc + 48  // *struct{F__z [0]complex128;F__xy [0][2]float64;F int64; _ [8]byte}
-		_unnamed3  = esc + 64  // *struct{F__z [0]complex128;F__xy [0][2]float64;F int64; _ [8]byte}
-		_unnamed4  = esc + 80  // *struct{F__z [0]complex128;F__xy [0][2]float64;F int64; _ [8]byte}
-		_unnamed5  = esc + 96  // *struct{F__z [0]complex128;F__xy [0][2]float64;F int64; _ [8]byte}
-		_unnamed6  = esc + 112 // *struct{F__z [0]complex128;F__xy [0][2]float64;F int64; _ [8]byte}
-		_unnamed7  = esc + 128 // *struct{F__z [0]complex128;F__xy [0][2]float64;F int64; _ [8]byte}
-		_unnamed8  = esc + 144 // *struct{F__z [0]complex128;F__xy [0][2]float64;F int64; _ [8]byte}
-		_unnamed9  = esc + 160 // *struct{F__z [0]complex128;F__xy [0][2]float64;F int64; _ [8]byte}
-		_unnamed10 = esc + 176 // *struct{F__z [0]complex128;F__xy [0][2]float64;F int64; _ [8]byte}
-		_unnamed11 = esc + 192 // *struct{F__z [0]complex128;F__xy [0][2]float64;F int64; _ [8]byte}
-		_unnamed12 = esc + 208 // *struct{F__z [0]complex128;F__xy [0][2]float64;F int64; _ [8]byte}
-		_unnamed13 = esc + 224 // *struct{F__z [0]complex128;F__xy [0][2]float64;F int64; _ [8]byte}
-		_unnamed14 = esc + 240 // *struct{F__z [0]complex128;F__xy [0][2]float64;F int64; _ [8]byte}
-		_unnamed15 = esc + 256 // *struct{F__z [0]complex128;F__xy [0][2]float64;F int64; _ [8]byte}
+		_x    float64
+		_y    float64
+		_h    float64
+		_hx   int32
+		_hy   int32
+		_ix   int32
+		_iy   int32
+		_lx   int32
+		_ly   int32
+		___u  = esc      // *struct{Ff [0]float64;Fi [0]uint64;F int64}
+		_1__u = esc + 16 // *struct{Ff [0]float64;Fi [0]uint64;F int64}
 	)
 	defer Free(esc)
 	_x = real(_z)
-	_y = *(*float64)(unsafe.Pointer(func() uintptr {
-		*(*struct {
-			F__z  [0]complex128
-			F__xy [0][2]float64
-			F     int64
-			_     [8]byte
-		})(unsafe.Pointer(_unnamed1)) = *(*struct {
-			F__z  [0]complex128
-			F__xy [0][2]float64
-			F     int64
-			_     [8]byte
-		})(unsafe.Pointer(&struct{ f complex128 }{_z}))
-		return _unnamed1
-	}() + 8))
+	_y = imag(_z)
 	*(*float64)(unsafe.Pointer(___u)) = _x
 	_hx = int32(*(*uint64)(unsafe.Pointer(___u)) >> (uint(32) % 64))
 	_lx = int32(uint32(*(*uint64)(unsafe.Pointer(___u))))
@@ -3989,262 +2068,41 @@ func Xcsinh(tls TLS, _z complex128) (r complex128) {
 	_iy = int32(0x7fffffff) & _hy
 	if (_ix < int32(0x7ff00000)) && (_iy < int32(0x7ff00000)) {
 		if _iy|_ly == int32(0) {
-			return *(*complex128)(unsafe.Pointer(func() uintptr {
-				*(*struct {
-					F__z  [0]complex128
-					F__xy [0][2]float64
-					F     int64
-					_     [8]byte
-				})(unsafe.Pointer(_unnamed2)) = *(*struct {
-					F__z  [0]complex128
-					F__xy [0][2]float64
-					F     int64
-					_     [8]byte
-				})(unsafe.Pointer(&struct{ f [2]float64 }{[2]float64{
-					0: Xsinh(tls, _x),
-					1: _y,
-				}}))
-				return _unnamed2
-			}()))
+			return complex(Xsinh(tls, _x), _y)
 		}
 		if _ix < int32(0x40360000) {
-			return *(*complex128)(unsafe.Pointer(func() uintptr {
-				*(*struct {
-					F__z  [0]complex128
-					F__xy [0][2]float64
-					F     int64
-					_     [8]byte
-				})(unsafe.Pointer(_unnamed3)) = *(*struct {
-					F__z  [0]complex128
-					F__xy [0][2]float64
-					F     int64
-					_     [8]byte
-				})(unsafe.Pointer(&struct{ f [2]float64 }{[2]float64{
-					0: Xsinh(tls, _x) * Xcos(tls, _y),
-					1: Xcosh(tls, _x) * Xsin(tls, _y),
-				}}))
-				return _unnamed3
-			}()))
+			return complex(Xsinh(tls, _x)*Xcos(tls, _y), Xcosh(tls, _x)*Xsin(tls, _y))
 		}
 		if _ix < int32(0x40862e42) {
 			_h = Xexp(tls, Xfabs(tls, _x)) * float64(0.5)
-			return *(*complex128)(unsafe.Pointer(func() uintptr {
-				*(*struct {
-					F__z  [0]complex128
-					F__xy [0][2]float64
-					F     int64
-					_     [8]byte
-				})(unsafe.Pointer(_unnamed4)) = *(*struct {
-					F__z  [0]complex128
-					F__xy [0][2]float64
-					F     int64
-					_     [8]byte
-				})(unsafe.Pointer(&struct{ f [2]float64 }{[2]float64{
-					0: Xcopysign(tls, _h, _x) * Xcos(tls, _y),
-					1: _h * Xsin(tls, _y),
-				}}))
-				return _unnamed4
-			}()))
+			return complex(Xcopysign(tls, _h, _x)*Xcos(tls, _y), _h*Xsin(tls, _y))
 		} else if _ix < int32(0x4096bbaa) {
-			_z = X__ldexp_cexp(tls, *(*complex128)(unsafe.Pointer(func() uintptr {
-				*(*struct {
-					F__z  [0]complex128
-					F__xy [0][2]float64
-					F     int64
-					_     [8]byte
-				})(unsafe.Pointer(_unnamed5)) = *(*struct {
-					F__z  [0]complex128
-					F__xy [0][2]float64
-					F     int64
-					_     [8]byte
-				})(unsafe.Pointer(&struct{ f [2]float64 }{[2]float64{
-					0: Xfabs(tls, _x),
-					1: _y,
-				}}))
-				return _unnamed5
-			}())), int32(-1))
-			return *(*complex128)(unsafe.Pointer(func() uintptr {
-				*(*struct {
-					F__z  [0]complex128
-					F__xy [0][2]float64
-					F     int64
-					_     [8]byte
-				})(unsafe.Pointer(_unnamed7)) = *(*struct {
-					F__z  [0]complex128
-					F__xy [0][2]float64
-					F     int64
-					_     [8]byte
-				})(unsafe.Pointer(&struct{ f [2]float64 }{[2]float64{
-					0: real(_z) * Xcopysign(tls, float64(1), _x),
-					1: *(*float64)(unsafe.Pointer(func() uintptr {
-						*(*struct {
-							F__z  [0]complex128
-							F__xy [0][2]float64
-							F     int64
-							_     [8]byte
-						})(unsafe.Pointer(_unnamed6)) = *(*struct {
-							F__z  [0]complex128
-							F__xy [0][2]float64
-							F     int64
-							_     [8]byte
-						})(unsafe.Pointer(&struct{ f complex128 }{_z}))
-						return _unnamed6
-					}() + 8)),
-				}}))
-				return _unnamed7
-			}()))
+			_z = X__ldexp_cexp(tls, complex(Xfabs(tls, _x), _y), int32(-1))
+			return complex(real(_z)*Xcopysign(tls, float64(1), _x), imag(_z))
 		} else {
 			_h = x2huge * _x
-			return *(*complex128)(unsafe.Pointer(func() uintptr {
-				*(*struct {
-					F__z  [0]complex128
-					F__xy [0][2]float64
-					F     int64
-					_     [8]byte
-				})(unsafe.Pointer(_unnamed8)) = *(*struct {
-					F__z  [0]complex128
-					F__xy [0][2]float64
-					F     int64
-					_     [8]byte
-				})(unsafe.Pointer(&struct{ f [2]float64 }{[2]float64{
-					0: _h * Xcos(tls, _y),
-					1: float64(_h*_h) * Xsin(tls, _y),
-				}}))
-				return _unnamed8
-			}()))
+			return complex(_h*Xcos(tls, _y), float64(_h*_h)*Xsin(tls, _y))
 		}
 	}
 	if (_ix|_lx == int32(0)) && (_iy >= int32(0x7ff00000)) {
-		return *(*complex128)(unsafe.Pointer(func() uintptr {
-			*(*struct {
-				F__z  [0]complex128
-				F__xy [0][2]float64
-				F     int64
-				_     [8]byte
-			})(unsafe.Pointer(_unnamed9)) = *(*struct {
-				F__z  [0]complex128
-				F__xy [0][2]float64
-				F     int64
-				_     [8]byte
-			})(unsafe.Pointer(&struct{ f [2]float64 }{[2]float64{
-				0: Xcopysign(tls, float64(0), _x*float64(_y-_y)),
-				1: _y - _y,
-			}}))
-			return _unnamed9
-		}()))
+		return complex(Xcopysign(tls, float64(0), _x*float64(_y-_y)), _y-_y)
 	}
 	if (_iy|_ly == int32(0)) && (_ix >= int32(0x7ff00000)) {
 		if _hx&int32(0xfffff)|_lx == int32(0) {
-			return *(*complex128)(unsafe.Pointer(func() uintptr {
-				*(*struct {
-					F__z  [0]complex128
-					F__xy [0][2]float64
-					F     int64
-					_     [8]byte
-				})(unsafe.Pointer(_unnamed10)) = *(*struct {
-					F__z  [0]complex128
-					F__xy [0][2]float64
-					F     int64
-					_     [8]byte
-				})(unsafe.Pointer(&struct{ f [2]float64 }{[2]float64{
-					0: _x,
-					1: _y,
-				}}))
-				return _unnamed10
-			}()))
+			return complex(_x, _y)
 		}
-		return *(*complex128)(unsafe.Pointer(func() uintptr {
-			*(*struct {
-				F__z  [0]complex128
-				F__xy [0][2]float64
-				F     int64
-				_     [8]byte
-			})(unsafe.Pointer(_unnamed11)) = *(*struct {
-				F__z  [0]complex128
-				F__xy [0][2]float64
-				F     int64
-				_     [8]byte
-			})(unsafe.Pointer(&struct{ f [2]float64 }{[2]float64{
-				0: _x,
-				1: Xcopysign(tls, float64(0), _y),
-			}}))
-			return _unnamed11
-		}()))
+		return complex(_x, Xcopysign(tls, float64(0), _y))
 	}
 	if (_ix < int32(0x7ff00000)) && (_iy >= int32(0x7ff00000)) {
-		return *(*complex128)(unsafe.Pointer(func() uintptr {
-			*(*struct {
-				F__z  [0]complex128
-				F__xy [0][2]float64
-				F     int64
-				_     [8]byte
-			})(unsafe.Pointer(_unnamed12)) = *(*struct {
-				F__z  [0]complex128
-				F__xy [0][2]float64
-				F     int64
-				_     [8]byte
-			})(unsafe.Pointer(&struct{ f [2]float64 }{[2]float64{
-				0: _y - _y,
-				1: _x * float64(_y-_y),
-			}}))
-			return _unnamed12
-		}()))
+		return complex(_y-_y, _x*float64(_y-_y))
 	}
 	if (_ix >= int32(0x7ff00000)) && (_hx&int32(0xfffff)|_lx == int32(0)) {
 		if _iy >= int32(0x7ff00000) {
-			return *(*complex128)(unsafe.Pointer(func() uintptr {
-				*(*struct {
-					F__z  [0]complex128
-					F__xy [0][2]float64
-					F     int64
-					_     [8]byte
-				})(unsafe.Pointer(_unnamed13)) = *(*struct {
-					F__z  [0]complex128
-					F__xy [0][2]float64
-					F     int64
-					_     [8]byte
-				})(unsafe.Pointer(&struct{ f [2]float64 }{[2]float64{
-					0: _x * _x,
-					1: _x * float64(_y-_y),
-				}}))
-				return _unnamed13
-			}()))
+			return complex(_x*_x, _x*float64(_y-_y))
 		}
-		return *(*complex128)(unsafe.Pointer(func() uintptr {
-			*(*struct {
-				F__z  [0]complex128
-				F__xy [0][2]float64
-				F     int64
-				_     [8]byte
-			})(unsafe.Pointer(_unnamed14)) = *(*struct {
-				F__z  [0]complex128
-				F__xy [0][2]float64
-				F     int64
-				_     [8]byte
-			})(unsafe.Pointer(&struct{ f [2]float64 }{[2]float64{
-				0: _x * Xcos(tls, _y),
-				1: float64(float32(math.Inf(1))) * Xsin(tls, _y),
-			}}))
-			return _unnamed14
-		}()))
+		return complex(_x*Xcos(tls, _y), math.Inf(1)*Xsin(tls, _y))
 	}
-	return *(*complex128)(unsafe.Pointer(func() uintptr {
-		*(*struct {
-			F__z  [0]complex128
-			F__xy [0][2]float64
-			F     int64
-			_     [8]byte
-		})(unsafe.Pointer(_unnamed15)) = *(*struct {
-			F__z  [0]complex128
-			F__xy [0][2]float64
-			F     int64
-			_     [8]byte
-		})(unsafe.Pointer(&struct{ f [2]float64 }{[2]float64{
-			0: float64(_x*_x) * float64(_y-_y),
-			1: float64(_x+_x) * float64(_y-_y),
-		}}))
-		return _unnamed15
-	}()))
+	return complex(float64(_x*_x)*float64(_y-_y), float64(_x+_x)*float64(_y-_y))
 }
 
 type t2int32_t = int32
@@ -4260,49 +2118,21 @@ var x2huge = float64(8.98846567431158e+307)
 
 // Xcsinhf is defined at csinhf.c:35:15
 func Xcsinhf(tls TLS, _z complex64) (r complex64) {
-	esc := MustMalloc(264)
+	esc := MustMalloc(20)
 	var (
-		_x         float32
-		_y         float32
-		_h         float32
-		_hx        int32
-		_hy        int32
-		_ix        int32
-		_iy        int32
-		_unnamed1  = esc       // *struct{F__z [0]complex64;F__xy [0][2]float32;F int32; _ [4]byte}
-		___u       = esc + 16  // *struct{Ff [0]float32;Fi [0]uint32;F int32}
-		_1__u      = esc + 32  // *struct{Ff [0]float32;Fi [0]uint32;F int32}
-		_unnamed2  = esc + 48  // *struct{F__z [0]complex64;F__xy [0][2]float32;F int32; _ [4]byte}
-		_unnamed3  = esc + 64  // *struct{F__z [0]complex64;F__xy [0][2]float32;F int32; _ [4]byte}
-		_unnamed4  = esc + 80  // *struct{F__z [0]complex64;F__xy [0][2]float32;F int32; _ [4]byte}
-		_unnamed5  = esc + 96  // *struct{F__z [0]complex64;F__xy [0][2]float32;F int32; _ [4]byte}
-		_unnamed6  = esc + 112 // *struct{F__z [0]complex64;F__xy [0][2]float32;F int32; _ [4]byte}
-		_unnamed7  = esc + 128 // *struct{F__z [0]complex64;F__xy [0][2]float32;F int32; _ [4]byte}
-		_unnamed8  = esc + 144 // *struct{F__z [0]complex64;F__xy [0][2]float32;F int32; _ [4]byte}
-		_unnamed9  = esc + 160 // *struct{F__z [0]complex64;F__xy [0][2]float32;F int32; _ [4]byte}
-		_unnamed10 = esc + 176 // *struct{F__z [0]complex64;F__xy [0][2]float32;F int32; _ [4]byte}
-		_unnamed11 = esc + 192 // *struct{F__z [0]complex64;F__xy [0][2]float32;F int32; _ [4]byte}
-		_unnamed12 = esc + 208 // *struct{F__z [0]complex64;F__xy [0][2]float32;F int32; _ [4]byte}
-		_unnamed13 = esc + 224 // *struct{F__z [0]complex64;F__xy [0][2]float32;F int32; _ [4]byte}
-		_unnamed14 = esc + 240 // *struct{F__z [0]complex64;F__xy [0][2]float32;F int32; _ [4]byte}
-		_unnamed15 = esc + 256 // *struct{F__z [0]complex64;F__xy [0][2]float32;F int32; _ [4]byte}
+		_x    float32
+		_y    float32
+		_h    float32
+		_hx   int32
+		_hy   int32
+		_ix   int32
+		_iy   int32
+		___u  = esc      // *struct{Ff [0]float32;Fi [0]uint32;F int32}
+		_1__u = esc + 16 // *struct{Ff [0]float32;Fi [0]uint32;F int32}
 	)
 	defer Free(esc)
 	_x = real(_z)
-	_y = *(*float32)(unsafe.Pointer(func() uintptr {
-		*(*struct {
-			F__z  [0]complex64
-			F__xy [0][2]float32
-			F     int32
-			_     [4]byte
-		})(unsafe.Pointer(_unnamed1)) = *(*struct {
-			F__z  [0]complex64
-			F__xy [0][2]float32
-			F     int32
-			_     [4]byte
-		})(unsafe.Pointer(&struct{ f complex64 }{_z}))
-		return _unnamed1
-	}() + 4))
+	_y = imag(_z)
 	*(*float32)(unsafe.Pointer(___u)) = _x
 	_hx = int32(*(*uint32)(unsafe.Pointer(___u)))
 	*(*float32)(unsafe.Pointer(_1__u)) = _y
@@ -4311,262 +2141,41 @@ func Xcsinhf(tls TLS, _z complex64) (r complex64) {
 	_iy = int32(0x7fffffff) & _hy
 	if (_ix < int32(0x7f800000)) && (_iy < int32(0x7f800000)) {
 		if _iy == int32(0) {
-			return *(*complex64)(unsafe.Pointer(func() uintptr {
-				*(*struct {
-					F__z  [0]complex64
-					F__xy [0][2]float32
-					F     int32
-					_     [4]byte
-				})(unsafe.Pointer(_unnamed2)) = *(*struct {
-					F__z  [0]complex64
-					F__xy [0][2]float32
-					F     int32
-					_     [4]byte
-				})(unsafe.Pointer(&struct{ f [2]float32 }{[2]float32{
-					0: Xsinhf(tls, _x),
-					1: _y,
-				}}))
-				return _unnamed2
-			}()))
+			return complex(Xsinhf(tls, _x), _y)
 		}
 		if _ix < int32(0x41100000) {
-			return *(*complex64)(unsafe.Pointer(func() uintptr {
-				*(*struct {
-					F__z  [0]complex64
-					F__xy [0][2]float32
-					F     int32
-					_     [4]byte
-				})(unsafe.Pointer(_unnamed3)) = *(*struct {
-					F__z  [0]complex64
-					F__xy [0][2]float32
-					F     int32
-					_     [4]byte
-				})(unsafe.Pointer(&struct{ f [2]float32 }{[2]float32{
-					0: Xsinhf(tls, _x) * Xcosf(tls, _y),
-					1: Xcoshf(tls, _x) * Xsinf(tls, _y),
-				}}))
-				return _unnamed3
-			}()))
+			return complex(Xsinhf(tls, _x)*Xcosf(tls, _y), Xcoshf(tls, _x)*Xsinf(tls, _y))
 		}
 		if _ix < int32(0x42b17218) {
 			_h = Xexpf(tls, Xfabsf(tls, _x)) * float32(0.5)
-			return *(*complex64)(unsafe.Pointer(func() uintptr {
-				*(*struct {
-					F__z  [0]complex64
-					F__xy [0][2]float32
-					F     int32
-					_     [4]byte
-				})(unsafe.Pointer(_unnamed4)) = *(*struct {
-					F__z  [0]complex64
-					F__xy [0][2]float32
-					F     int32
-					_     [4]byte
-				})(unsafe.Pointer(&struct{ f [2]float32 }{[2]float32{
-					0: Xcopysignf(tls, _h, _x) * Xcosf(tls, _y),
-					1: _h * Xsinf(tls, _y),
-				}}))
-				return _unnamed4
-			}()))
+			return complex(Xcopysignf(tls, _h, _x)*Xcosf(tls, _y), _h*Xsinf(tls, _y))
 		} else if _ix < int32(0x4340b1e7) {
-			_z = X__ldexp_cexpf(tls, *(*complex64)(unsafe.Pointer(func() uintptr {
-				*(*struct {
-					F__z  [0]complex64
-					F__xy [0][2]float32
-					F     int32
-					_     [4]byte
-				})(unsafe.Pointer(_unnamed5)) = *(*struct {
-					F__z  [0]complex64
-					F__xy [0][2]float32
-					F     int32
-					_     [4]byte
-				})(unsafe.Pointer(&struct{ f [2]float32 }{[2]float32{
-					0: Xfabsf(tls, _x),
-					1: _y,
-				}}))
-				return _unnamed5
-			}())), int32(-1))
-			return *(*complex64)(unsafe.Pointer(func() uintptr {
-				*(*struct {
-					F__z  [0]complex64
-					F__xy [0][2]float32
-					F     int32
-					_     [4]byte
-				})(unsafe.Pointer(_unnamed7)) = *(*struct {
-					F__z  [0]complex64
-					F__xy [0][2]float32
-					F     int32
-					_     [4]byte
-				})(unsafe.Pointer(&struct{ f [2]float32 }{[2]float32{
-					0: real(_z) * Xcopysignf(tls, float32(1), _x),
-					1: *(*float32)(unsafe.Pointer(func() uintptr {
-						*(*struct {
-							F__z  [0]complex64
-							F__xy [0][2]float32
-							F     int32
-							_     [4]byte
-						})(unsafe.Pointer(_unnamed6)) = *(*struct {
-							F__z  [0]complex64
-							F__xy [0][2]float32
-							F     int32
-							_     [4]byte
-						})(unsafe.Pointer(&struct{ f complex64 }{_z}))
-						return _unnamed6
-					}() + 4)),
-				}}))
-				return _unnamed7
-			}()))
+			_z = X__ldexp_cexpf(tls, complex(Xfabsf(tls, _x), _y), int32(-1))
+			return complex(real(_z)*Xcopysignf(tls, float32(1), _x), imag(_z))
 		} else {
 			_h = x3huge * _x
-			return *(*complex64)(unsafe.Pointer(func() uintptr {
-				*(*struct {
-					F__z  [0]complex64
-					F__xy [0][2]float32
-					F     int32
-					_     [4]byte
-				})(unsafe.Pointer(_unnamed8)) = *(*struct {
-					F__z  [0]complex64
-					F__xy [0][2]float32
-					F     int32
-					_     [4]byte
-				})(unsafe.Pointer(&struct{ f [2]float32 }{[2]float32{
-					0: _h * Xcosf(tls, _y),
-					1: float32(_h*_h) * Xsinf(tls, _y),
-				}}))
-				return _unnamed8
-			}()))
+			return complex(_h*Xcosf(tls, _y), float32(_h*_h)*Xsinf(tls, _y))
 		}
 	}
 	if (_ix == int32(0)) && (_iy >= int32(0x7f800000)) {
-		return *(*complex64)(unsafe.Pointer(func() uintptr {
-			*(*struct {
-				F__z  [0]complex64
-				F__xy [0][2]float32
-				F     int32
-				_     [4]byte
-			})(unsafe.Pointer(_unnamed9)) = *(*struct {
-				F__z  [0]complex64
-				F__xy [0][2]float32
-				F     int32
-				_     [4]byte
-			})(unsafe.Pointer(&struct{ f [2]float32 }{[2]float32{
-				0: Xcopysignf(tls, float32(0), _x*float32(_y-_y)),
-				1: _y - _y,
-			}}))
-			return _unnamed9
-		}()))
+		return complex(Xcopysignf(tls, float32(0), _x*float32(_y-_y)), _y-_y)
 	}
 	if (_iy == int32(0)) && (_ix >= int32(0x7f800000)) {
 		if _hx&int32(0x7fffff) == int32(0) {
-			return *(*complex64)(unsafe.Pointer(func() uintptr {
-				*(*struct {
-					F__z  [0]complex64
-					F__xy [0][2]float32
-					F     int32
-					_     [4]byte
-				})(unsafe.Pointer(_unnamed10)) = *(*struct {
-					F__z  [0]complex64
-					F__xy [0][2]float32
-					F     int32
-					_     [4]byte
-				})(unsafe.Pointer(&struct{ f [2]float32 }{[2]float32{
-					0: _x,
-					1: _y,
-				}}))
-				return _unnamed10
-			}()))
+			return complex(_x, _y)
 		}
-		return *(*complex64)(unsafe.Pointer(func() uintptr {
-			*(*struct {
-				F__z  [0]complex64
-				F__xy [0][2]float32
-				F     int32
-				_     [4]byte
-			})(unsafe.Pointer(_unnamed11)) = *(*struct {
-				F__z  [0]complex64
-				F__xy [0][2]float32
-				F     int32
-				_     [4]byte
-			})(unsafe.Pointer(&struct{ f [2]float32 }{[2]float32{
-				0: _x,
-				1: Xcopysignf(tls, float32(0), _y),
-			}}))
-			return _unnamed11
-		}()))
+		return complex(_x, Xcopysignf(tls, float32(0), _y))
 	}
 	if (_ix < int32(0x7f800000)) && (_iy >= int32(0x7f800000)) {
-		return *(*complex64)(unsafe.Pointer(func() uintptr {
-			*(*struct {
-				F__z  [0]complex64
-				F__xy [0][2]float32
-				F     int32
-				_     [4]byte
-			})(unsafe.Pointer(_unnamed12)) = *(*struct {
-				F__z  [0]complex64
-				F__xy [0][2]float32
-				F     int32
-				_     [4]byte
-			})(unsafe.Pointer(&struct{ f [2]float32 }{[2]float32{
-				0: _y - _y,
-				1: _x * float32(_y-_y),
-			}}))
-			return _unnamed12
-		}()))
+		return complex(_y-_y, _x*float32(_y-_y))
 	}
 	if (_ix >= int32(0x7f800000)) && (_hx&int32(0x7fffff) == int32(0)) {
 		if _iy >= int32(0x7f800000) {
-			return *(*complex64)(unsafe.Pointer(func() uintptr {
-				*(*struct {
-					F__z  [0]complex64
-					F__xy [0][2]float32
-					F     int32
-					_     [4]byte
-				})(unsafe.Pointer(_unnamed13)) = *(*struct {
-					F__z  [0]complex64
-					F__xy [0][2]float32
-					F     int32
-					_     [4]byte
-				})(unsafe.Pointer(&struct{ f [2]float32 }{[2]float32{
-					0: _x * _x,
-					1: _x * float32(_y-_y),
-				}}))
-				return _unnamed13
-			}()))
+			return complex(_x*_x, _x*float32(_y-_y))
 		}
-		return *(*complex64)(unsafe.Pointer(func() uintptr {
-			*(*struct {
-				F__z  [0]complex64
-				F__xy [0][2]float32
-				F     int32
-				_     [4]byte
-			})(unsafe.Pointer(_unnamed14)) = *(*struct {
-				F__z  [0]complex64
-				F__xy [0][2]float32
-				F     int32
-				_     [4]byte
-			})(unsafe.Pointer(&struct{ f [2]float32 }{[2]float32{
-				0: _x * Xcosf(tls, _y),
-				1: float32(math.Inf(1)) * Xsinf(tls, _y),
-			}}))
-			return _unnamed14
-		}()))
+		return complex(_x*Xcosf(tls, _y), float32(math.Inf(1))*Xsinf(tls, _y))
 	}
-	return *(*complex64)(unsafe.Pointer(func() uintptr {
-		*(*struct {
-			F__z  [0]complex64
-			F__xy [0][2]float32
-			F     int32
-			_     [4]byte
-		})(unsafe.Pointer(_unnamed15)) = *(*struct {
-			F__z  [0]complex64
-			F__xy [0][2]float32
-			F     int32
-			_     [4]byte
-		})(unsafe.Pointer(&struct{ f [2]float32 }{[2]float32{
-			0: float32(_x*_x) * float32(_y-_y),
-			1: float32(_x+_x) * float32(_y-_y),
-		}}))
-		return _unnamed15
-	}()))
+	return complex(float32(_x*_x)*float32(_y-_y), float32(_x+_x)*float32(_y-_y))
 }
 
 type t3int32_t = int32
@@ -4594,132 +2203,30 @@ func Xcsinl(tls TLS, _z complex128) (r complex128) {
 
 // Xcsqrt is defined at csqrt.c:42:16
 func Xcsqrt(tls TLS, _z complex128) (r complex128) {
-	esc := MustMalloc(128)
 	var (
-		_result   complex128
-		_a        float64
-		_b        float64
-		_t        float64
-		_scale    int32
-		_unnamed1 = esc       // *struct{F__z [0]complex128;F__xy [0][2]float64;F int64; _ [8]byte}
-		_unnamed2 = esc + 16  // *struct{F__z [0]complex128;F__xy [0][2]float64;F int64; _ [8]byte}
-		_unnamed3 = esc + 32  // *struct{F__z [0]complex128;F__xy [0][2]float64;F int64; _ [8]byte}
-		_unnamed4 = esc + 48  // *struct{F__z [0]complex128;F__xy [0][2]float64;F int64; _ [8]byte}
-		_unnamed5 = esc + 64  // *struct{F__z [0]complex128;F__xy [0][2]float64;F int64; _ [8]byte}
-		_unnamed6 = esc + 80  // *struct{F__z [0]complex128;F__xy [0][2]float64;F int64; _ [8]byte}
-		_unnamed7 = esc + 96  // *struct{F__z [0]complex128;F__xy [0][2]float64;F int64; _ [8]byte}
-		_unnamed8 = esc + 112 // *struct{F__z [0]complex128;F__xy [0][2]float64;F int64; _ [8]byte}
+		_result complex128
+		_a      float64
+		_b      float64
+		_t      float64
+		_scale  int32
 	)
-	defer Free(esc)
 	_a = real(_z)
-	_b = *(*float64)(unsafe.Pointer(func() uintptr {
-		*(*struct {
-			F__z  [0]complex128
-			F__xy [0][2]float64
-			F     int64
-			_     [8]byte
-		})(unsafe.Pointer(_unnamed1)) = *(*struct {
-			F__z  [0]complex128
-			F__xy [0][2]float64
-			F     int64
-			_     [8]byte
-		})(unsafe.Pointer(&struct{ f complex128 }{_z}))
-		return _unnamed1
-	}() + 8))
+	_b = imag(_z)
 	if _z == complex(float64(complex(float64(0), 0)), 0) {
-		return *(*complex128)(unsafe.Pointer(func() uintptr {
-			*(*struct {
-				F__z  [0]complex128
-				F__xy [0][2]float64
-				F     int64
-				_     [8]byte
-			})(unsafe.Pointer(_unnamed2)) = *(*struct {
-				F__z  [0]complex128
-				F__xy [0][2]float64
-				F     int64
-				_     [8]byte
-			})(unsafe.Pointer(&struct{ f [2]float64 }{[2]float64{
-				1: _b,
-			}}))
-			return _unnamed2
-		}()))
+		return complex(float64(0), _b)
 	}
 	if x1__DOUBLE_BITS(tls, _b)&uint64(9223372036854775807) == uint64(9218868437227405312) {
-		return *(*complex128)(unsafe.Pointer(func() uintptr {
-			*(*struct {
-				F__z  [0]complex128
-				F__xy [0][2]float64
-				F     int64
-				_     [8]byte
-			})(unsafe.Pointer(_unnamed3)) = *(*struct {
-				F__z  [0]complex128
-				F__xy [0][2]float64
-				F     int64
-				_     [8]byte
-			})(unsafe.Pointer(&struct{ f [2]float64 }{[2]float64{
-				0: float64(float32(math.Inf(1))),
-				1: _b,
-			}}))
-			return _unnamed3
-		}()))
+		return complex(math.Inf(1), _b)
 	}
 	if x1__DOUBLE_BITS(tls, _a)&uint64(9223372036854775807) > uint64(9218868437227405312) {
 		_t = float64(_b-_b) / float64(_b-_b)
-		return *(*complex128)(unsafe.Pointer(func() uintptr {
-			*(*struct {
-				F__z  [0]complex128
-				F__xy [0][2]float64
-				F     int64
-				_     [8]byte
-			})(unsafe.Pointer(_unnamed4)) = *(*struct {
-				F__z  [0]complex128
-				F__xy [0][2]float64
-				F     int64
-				_     [8]byte
-			})(unsafe.Pointer(&struct{ f [2]float64 }{[2]float64{
-				0: _a,
-				1: _t,
-			}}))
-			return _unnamed4
-		}()))
+		return complex(_a, _t)
 	}
 	if x1__DOUBLE_BITS(tls, _a)&uint64(9223372036854775807) == uint64(9218868437227405312) {
 		if int32(x1__DOUBLE_BITS(tls, _a)>>(uint(63)%64)) != 0 {
-			return *(*complex128)(unsafe.Pointer(func() uintptr {
-				*(*struct {
-					F__z  [0]complex128
-					F__xy [0][2]float64
-					F     int64
-					_     [8]byte
-				})(unsafe.Pointer(_unnamed5)) = *(*struct {
-					F__z  [0]complex128
-					F__xy [0][2]float64
-					F     int64
-					_     [8]byte
-				})(unsafe.Pointer(&struct{ f [2]float64 }{[2]float64{
-					0: Xfabs(tls, _b-_b),
-					1: Xcopysign(tls, _a, _b),
-				}}))
-				return _unnamed5
-			}()))
+			return complex(Xfabs(tls, _b-_b), Xcopysign(tls, _a, _b))
 		} else {
-			return *(*complex128)(unsafe.Pointer(func() uintptr {
-				*(*struct {
-					F__z  [0]complex128
-					F__xy [0][2]float64
-					F     int64
-					_     [8]byte
-				})(unsafe.Pointer(_unnamed6)) = *(*struct {
-					F__z  [0]complex128
-					F__xy [0][2]float64
-					F     int64
-					_     [8]byte
-				})(unsafe.Pointer(&struct{ f [2]float64 }{[2]float64{
-					0: _a,
-					1: Xcopysign(tls, _b-_b, _b),
-				}}))
-				return _unnamed6
-			}()))
+			return complex(_a, Xcopysign(tls, _b-_b, _b))
 		}
 	}
 	if (Xfabs(tls, _a) >= float64(7.446288774449766e+307)) || (Xfabs(tls, _b) >= float64(7.446288774449766e+307)) {
@@ -4731,42 +2238,10 @@ func Xcsqrt(tls TLS, _z complex128) (r complex128) {
 	}
 	if _a >= float64(0) {
 		_t = Xsqrt(tls, float64(_a+Xhypot(tls, _a, _b))*float64(0.5))
-		_result = *(*complex128)(unsafe.Pointer(func() uintptr {
-			*(*struct {
-				F__z  [0]complex128
-				F__xy [0][2]float64
-				F     int64
-				_     [8]byte
-			})(unsafe.Pointer(_unnamed7)) = *(*struct {
-				F__z  [0]complex128
-				F__xy [0][2]float64
-				F     int64
-				_     [8]byte
-			})(unsafe.Pointer(&struct{ f [2]float64 }{[2]float64{
-				0: _t,
-				1: _b / float64(float64(2)*_t),
-			}}))
-			return _unnamed7
-		}()))
+		_result = complex(_t, _b/float64(float64(2)*_t))
 	} else {
 		_t = Xsqrt(tls, float64(float64(-_a)+Xhypot(tls, _a, _b))*float64(0.5))
-		_result = *(*complex128)(unsafe.Pointer(func() uintptr {
-			*(*struct {
-				F__z  [0]complex128
-				F__xy [0][2]float64
-				F     int64
-				_     [8]byte
-			})(unsafe.Pointer(_unnamed8)) = *(*struct {
-				F__z  [0]complex128
-				F__xy [0][2]float64
-				F     int64
-				_     [8]byte
-			})(unsafe.Pointer(&struct{ f [2]float64 }{[2]float64{
-				0: Xfabs(tls, _b) / float64(float64(2)*_t),
-				1: Xcopysign(tls, _t, _b),
-			}}))
-			return _unnamed8
-		}()))
+		_result = complex(Xfabs(tls, _b)/float64(float64(2)*_t), Xcopysign(tls, _t, _b))
 	}
 	if _scale != 0 {
 		_result = _result * complex(float64(complex(float64(2), 0)), 0)
@@ -4787,170 +2262,36 @@ func x1__DOUBLE_BITS(tls TLS, ___f float64) (r uint64) {
 
 // Xcsqrtf is defined at csqrtf.c:39:15
 func Xcsqrtf(tls TLS, _z complex64) (r complex64) {
-	esc := MustMalloc(120)
 	var (
-		_a        float32
-		_b        float32
-		_unnamed1 = esc // *struct{F__z [0]complex64;F__xy [0][2]float32;F int32; _ [4]byte}
-		_t        float64
-		_unnamed2 = esc + 16  // *struct{F__z [0]complex64;F__xy [0][2]float32;F int32; _ [4]byte}
-		_unnamed3 = esc + 32  // *struct{F__z [0]complex64;F__xy [0][2]float32;F int32; _ [4]byte}
-		_unnamed4 = esc + 48  // *struct{F__z [0]complex64;F__xy [0][2]float32;F int32; _ [4]byte}
-		_unnamed5 = esc + 64  // *struct{F__z [0]complex64;F__xy [0][2]float32;F int32; _ [4]byte}
-		_unnamed6 = esc + 80  // *struct{F__z [0]complex64;F__xy [0][2]float32;F int32; _ [4]byte}
-		_unnamed7 = esc + 96  // *struct{F__z [0]complex64;F__xy [0][2]float32;F int32; _ [4]byte}
-		_unnamed8 = esc + 112 // *struct{F__z [0]complex64;F__xy [0][2]float32;F int32; _ [4]byte}
+		_a float32
+		_b float32
+		_t float64
 	)
-	defer Free(esc)
 	_a = real(_z)
-	_b = *(*float32)(unsafe.Pointer(func() uintptr {
-		*(*struct {
-			F__z  [0]complex64
-			F__xy [0][2]float32
-			F     int32
-			_     [4]byte
-		})(unsafe.Pointer(_unnamed1)) = *(*struct {
-			F__z  [0]complex64
-			F__xy [0][2]float32
-			F     int32
-			_     [4]byte
-		})(unsafe.Pointer(&struct{ f complex64 }{_z}))
-		return _unnamed1
-	}() + 4))
+	_b = imag(_z)
 	if _z == complex(float32(0), 0) {
-		return *(*complex64)(unsafe.Pointer(func() uintptr {
-			*(*struct {
-				F__z  [0]complex64
-				F__xy [0][2]float32
-				F     int32
-				_     [4]byte
-			})(unsafe.Pointer(_unnamed2)) = *(*struct {
-				F__z  [0]complex64
-				F__xy [0][2]float32
-				F     int32
-				_     [4]byte
-			})(unsafe.Pointer(&struct{ f [2]float32 }{[2]float32{
-				1: _b,
-			}}))
-			return _unnamed2
-		}()))
+		return complex(float32(0), _b)
 	}
 	if x1__FLOAT_BITS(tls, _b)&uint32(0x7fffffff) == uint32(0x7f800000) {
-		return *(*complex64)(unsafe.Pointer(func() uintptr {
-			*(*struct {
-				F__z  [0]complex64
-				F__xy [0][2]float32
-				F     int32
-				_     [4]byte
-			})(unsafe.Pointer(_unnamed3)) = *(*struct {
-				F__z  [0]complex64
-				F__xy [0][2]float32
-				F     int32
-				_     [4]byte
-			})(unsafe.Pointer(&struct{ f [2]float32 }{[2]float32{
-				0: float32(math.Inf(1)),
-				1: _b,
-			}}))
-			return _unnamed3
-		}()))
+		return complex(float32(math.Inf(1)), _b)
 	}
 	if x1__FLOAT_BITS(tls, _a)&uint32(0x7fffffff) > uint32(0x7f800000) {
 		_t = float64(float32(_b-_b) / float32(_b-_b))
-		return *(*complex64)(unsafe.Pointer(func() uintptr {
-			*(*struct {
-				F__z  [0]complex64
-				F__xy [0][2]float32
-				F     int32
-				_     [4]byte
-			})(unsafe.Pointer(_unnamed4)) = *(*struct {
-				F__z  [0]complex64
-				F__xy [0][2]float32
-				F     int32
-				_     [4]byte
-			})(unsafe.Pointer(&struct{ f [2]float32 }{[2]float32{
-				0: _a,
-				1: float32(_t),
-			}}))
-			return _unnamed4
-		}()))
+		return complex(_a, float32(_t))
 	}
 	if x1__FLOAT_BITS(tls, _a)&uint32(0x7fffffff) == uint32(0x7f800000) {
 		if int32(x1__FLOAT_BITS(tls, _a)>>(uint(31)%32)) != 0 {
-			return *(*complex64)(unsafe.Pointer(func() uintptr {
-				*(*struct {
-					F__z  [0]complex64
-					F__xy [0][2]float32
-					F     int32
-					_     [4]byte
-				})(unsafe.Pointer(_unnamed5)) = *(*struct {
-					F__z  [0]complex64
-					F__xy [0][2]float32
-					F     int32
-					_     [4]byte
-				})(unsafe.Pointer(&struct{ f [2]float32 }{[2]float32{
-					0: Xfabsf(tls, _b-_b),
-					1: Xcopysignf(tls, _a, _b),
-				}}))
-				return _unnamed5
-			}()))
+			return complex(Xfabsf(tls, _b-_b), Xcopysignf(tls, _a, _b))
 		} else {
-			return *(*complex64)(unsafe.Pointer(func() uintptr {
-				*(*struct {
-					F__z  [0]complex64
-					F__xy [0][2]float32
-					F     int32
-					_     [4]byte
-				})(unsafe.Pointer(_unnamed6)) = *(*struct {
-					F__z  [0]complex64
-					F__xy [0][2]float32
-					F     int32
-					_     [4]byte
-				})(unsafe.Pointer(&struct{ f [2]float32 }{[2]float32{
-					0: _a,
-					1: Xcopysignf(tls, _b-_b, _b),
-				}}))
-				return _unnamed6
-			}()))
+			return complex(_a, Xcopysignf(tls, _b-_b, _b))
 		}
 	}
 	if _a >= float32(0) {
 		_t = Xsqrt(tls, float64(float64(_a)+Xhypot(tls, float64(_a), float64(_b)))*float64(0.5))
-		return *(*complex64)(unsafe.Pointer(func() uintptr {
-			*(*struct {
-				F__z  [0]complex64
-				F__xy [0][2]float32
-				F     int32
-				_     [4]byte
-			})(unsafe.Pointer(_unnamed7)) = *(*struct {
-				F__z  [0]complex64
-				F__xy [0][2]float32
-				F     int32
-				_     [4]byte
-			})(unsafe.Pointer(&struct{ f [2]float32 }{[2]float32{
-				0: float32(_t),
-				1: float32(float64(_b) / float64(float64(2)*_t)),
-			}}))
-			return _unnamed7
-		}()))
+		return complex(float32(_t), float32(float64(_b)/float64(float64(2)*_t)))
 	} else {
 		_t = Xsqrt(tls, float64(float64(-_a)+Xhypot(tls, float64(_a), float64(_b)))*float64(0.5))
-		return *(*complex64)(unsafe.Pointer(func() uintptr {
-			*(*struct {
-				F__z  [0]complex64
-				F__xy [0][2]float32
-				F     int32
-				_     [4]byte
-			})(unsafe.Pointer(_unnamed8)) = *(*struct {
-				F__z  [0]complex64
-				F__xy [0][2]float32
-				F     int32
-				_     [4]byte
-			})(unsafe.Pointer(&struct{ f [2]float32 }{[2]float32{
-				0: float32(float64(Xfabsf(tls, _b)) / float64(float64(2)*_t)),
-				1: Xcopysignf(tls, float32(_t), _b),
-			}}))
-			return _unnamed8
-		}()))
+		return complex(float32(float64(Xfabsf(tls, _b))/float64(float64(2)*_t)), Xcopysignf(tls, float32(_t), _b))
 	}
 	return r
 }
@@ -4975,220 +2316,53 @@ func Xcsqrtl(tls TLS, _z complex128) (r complex128) {
 
 // Xctan is defined at ctan.c:5:16
 func Xctan(tls TLS, _z complex128) (r complex128) {
-	esc := MustMalloc(64)
-	var (
-		_unnamed1 = esc      // *struct{F__z [0]complex128;F__xy [0][2]float64;F int64; _ [8]byte}
-		_unnamed2 = esc + 16 // *struct{F__z [0]complex128;F__xy [0][2]float64;F int64; _ [8]byte}
-		_unnamed3 = esc + 32 // *struct{F__z [0]complex128;F__xy [0][2]float64;F int64; _ [8]byte}
-		_unnamed4 = esc + 48 // *struct{F__z [0]complex128;F__xy [0][2]float64;F int64; _ [8]byte}
-	)
-	defer Free(esc)
-	_z = Xctanh(tls, *(*complex128)(unsafe.Pointer(func() uintptr {
-		*(*struct {
-			F__z  [0]complex128
-			F__xy [0][2]float64
-			F     int64
-			_     [8]byte
-		})(unsafe.Pointer(_unnamed2)) = *(*struct {
-			F__z  [0]complex128
-			F__xy [0][2]float64
-			F     int64
-			_     [8]byte
-		})(unsafe.Pointer(&struct{ f [2]float64 }{[2]float64{
-			0: -*(*float64)(unsafe.Pointer(func() uintptr {
-				*(*struct {
-					F__z  [0]complex128
-					F__xy [0][2]float64
-					F     int64
-					_     [8]byte
-				})(unsafe.Pointer(_unnamed1)) = *(*struct {
-					F__z  [0]complex128
-					F__xy [0][2]float64
-					F     int64
-					_     [8]byte
-				})(unsafe.Pointer(&struct{ f complex128 }{_z}))
-				return _unnamed1
-			}() + 8)),
-			1: real(_z),
-		}}))
-		return _unnamed2
-	}())))
-	return *(*complex128)(unsafe.Pointer(func() uintptr {
-		*(*struct {
-			F__z  [0]complex128
-			F__xy [0][2]float64
-			F     int64
-			_     [8]byte
-		})(unsafe.Pointer(_unnamed4)) = *(*struct {
-			F__z  [0]complex128
-			F__xy [0][2]float64
-			F     int64
-			_     [8]byte
-		})(unsafe.Pointer(&struct{ f [2]float64 }{[2]float64{
-			0: *(*float64)(unsafe.Pointer(func() uintptr {
-				*(*struct {
-					F__z  [0]complex128
-					F__xy [0][2]float64
-					F     int64
-					_     [8]byte
-				})(unsafe.Pointer(_unnamed3)) = *(*struct {
-					F__z  [0]complex128
-					F__xy [0][2]float64
-					F     int64
-					_     [8]byte
-				})(unsafe.Pointer(&struct{ f complex128 }{_z}))
-				return _unnamed3
-			}() + 8)),
-			1: -real(_z),
-		}}))
-		return _unnamed4
-	}()))
+	_z = Xctanh(tls, complex(-imag(_z), real(_z)))
+	return complex(imag(_z), -real(_z))
 }
 
 // linking ctanf.o
 
 // Xctanf is defined at ctanf.c:3:15
 func Xctanf(tls TLS, _z complex64) (r complex64) {
-	esc := MustMalloc(56)
-	var (
-		_unnamed1 = esc      // *struct{F__z [0]complex64;F__xy [0][2]float32;F int32; _ [4]byte}
-		_unnamed2 = esc + 16 // *struct{F__z [0]complex64;F__xy [0][2]float32;F int32; _ [4]byte}
-		_unnamed3 = esc + 32 // *struct{F__z [0]complex64;F__xy [0][2]float32;F int32; _ [4]byte}
-		_unnamed4 = esc + 48 // *struct{F__z [0]complex64;F__xy [0][2]float32;F int32; _ [4]byte}
-	)
-	defer Free(esc)
-	_z = Xctanhf(tls, *(*complex64)(unsafe.Pointer(func() uintptr {
-		*(*struct {
-			F__z  [0]complex64
-			F__xy [0][2]float32
-			F     int32
-			_     [4]byte
-		})(unsafe.Pointer(_unnamed2)) = *(*struct {
-			F__z  [0]complex64
-			F__xy [0][2]float32
-			F     int32
-			_     [4]byte
-		})(unsafe.Pointer(&struct{ f [2]float32 }{[2]float32{
-			0: -*(*float32)(unsafe.Pointer(func() uintptr {
-				*(*struct {
-					F__z  [0]complex64
-					F__xy [0][2]float32
-					F     int32
-					_     [4]byte
-				})(unsafe.Pointer(_unnamed1)) = *(*struct {
-					F__z  [0]complex64
-					F__xy [0][2]float32
-					F     int32
-					_     [4]byte
-				})(unsafe.Pointer(&struct{ f complex64 }{_z}))
-				return _unnamed1
-			}() + 4)),
-			1: real(_z),
-		}}))
-		return _unnamed2
-	}())))
-	return *(*complex64)(unsafe.Pointer(func() uintptr {
-		*(*struct {
-			F__z  [0]complex64
-			F__xy [0][2]float32
-			F     int32
-			_     [4]byte
-		})(unsafe.Pointer(_unnamed4)) = *(*struct {
-			F__z  [0]complex64
-			F__xy [0][2]float32
-			F     int32
-			_     [4]byte
-		})(unsafe.Pointer(&struct{ f [2]float32 }{[2]float32{
-			0: *(*float32)(unsafe.Pointer(func() uintptr {
-				*(*struct {
-					F__z  [0]complex64
-					F__xy [0][2]float32
-					F     int32
-					_     [4]byte
-				})(unsafe.Pointer(_unnamed3)) = *(*struct {
-					F__z  [0]complex64
-					F__xy [0][2]float32
-					F     int32
-					_     [4]byte
-				})(unsafe.Pointer(&struct{ f complex64 }{_z}))
-				return _unnamed3
-			}() + 4)),
-			1: -real(_z),
-		}}))
-		return _unnamed4
-	}()))
+	_z = Xctanhf(tls, complex(-imag(_z), real(_z)))
+	return complex(imag(_z), -real(_z))
 }
 
 // linking ctanh.o
 
 // Xctanh is defined at ctanh.c:68:16
 func Xctanh(tls TLS, _z complex128) (r complex128) {
-	esc := MustMalloc(128)
+	esc := MustMalloc(24)
 	var (
-		_x        float64
-		_y        float64
-		_t        float64
-		_beta     float64
-		_s        float64
-		_rho      float64
-		_denom    float64
-		_hx       uint32
-		_ix       uint32
-		_lx       uint32
-		_unnamed1 = esc      // *struct{F__z [0]complex128;F__xy [0][2]float64;F int64; _ [8]byte}
-		___u      = esc + 16 // *struct{Ff [0]float64;Fi [0]uint64;F int64}
-		_unnamed2 = esc + 32 // *struct{F__z [0]complex128;F__xy [0][2]float64;F int64; _ [8]byte}
-		_1__u     = esc + 48 // *struct{Ff [0]float64;Fi [0]uint64;F int64}
-		_unnamed3 = esc + 64 // *struct{F__z [0]complex128;F__xy [0][2]float64;F int64; _ [8]byte}
-		_unnamed4 = esc + 80 // *struct{F__z [0]complex128;F__xy [0][2]float64;F int64; _ [8]byte}
-		_exp_mx   float64
-		_unnamed5 = esc + 96  // *struct{F__z [0]complex128;F__xy [0][2]float64;F int64; _ [8]byte}
-		_unnamed6 = esc + 112 // *struct{F__z [0]complex128;F__xy [0][2]float64;F int64; _ [8]byte}
+		_x      float64
+		_y      float64
+		_t      float64
+		_beta   float64
+		_s      float64
+		_rho    float64
+		_denom  float64
+		_hx     uint32
+		_ix     uint32
+		_lx     uint32
+		___u    = esc      // *struct{Ff [0]float64;Fi [0]uint64;F int64}
+		_1__u   = esc + 16 // *struct{Ff [0]float64;Fi [0]uint64;F int64}
+		_exp_mx float64
 	)
 	defer Free(esc)
 	_x = real(_z)
-	_y = *(*float64)(unsafe.Pointer(func() uintptr {
-		*(*struct {
-			F__z  [0]complex128
-			F__xy [0][2]float64
-			F     int64
-			_     [8]byte
-		})(unsafe.Pointer(_unnamed1)) = *(*struct {
-			F__z  [0]complex128
-			F__xy [0][2]float64
-			F     int64
-			_     [8]byte
-		})(unsafe.Pointer(&struct{ f complex128 }{_z}))
-		return _unnamed1
-	}() + 8))
+	_y = imag(_z)
 	*(*float64)(unsafe.Pointer(___u)) = _x
 	_hx = uint32(*(*uint64)(unsafe.Pointer(___u)) >> (uint(32) % 64))
 	_lx = uint32(*(*uint64)(unsafe.Pointer(___u)))
 	_ix = _hx & uint32(0x7fffffff)
 	if _ix >= uint32(0x7ff00000) {
 		if (_ix&uint32(0xfffff) | _lx) != 0 {
-			return *(*complex128)(unsafe.Pointer(func() uintptr {
-				*(*struct {
-					F__z  [0]complex128
-					F__xy [0][2]float64
-					F     int64
-					_     [8]byte
-				})(unsafe.Pointer(_unnamed2)) = *(*struct {
-					F__z  [0]complex128
-					F__xy [0][2]float64
-					F     int64
-					_     [8]byte
-				})(unsafe.Pointer(&struct{ f [2]float64 }{[2]float64{
-					0: _x,
-					1: func() float64 {
-						if _y == float64(0) {
-							return _y
-						}
-						return _x * _y
-					}(),
-				}}))
-				return _unnamed2
-			}()))
+			return complex(_x, func() float64 {
+				if _y == float64(0) {
+					return _y
+				}
+				return _x * _y
+			}())
 		}
 		*(*float64)(unsafe.Pointer(_1__u)) = _x
 		{
@@ -5200,95 +2374,31 @@ func Xctanh(tls TLS, _z complex128) (r complex128) {
 			*p = *p | uint64(_hx-uint32(0x40000000))<<(uint(32)%64)
 		}
 		_x = *(*float64)(unsafe.Pointer(_1__u))
-		return *(*complex128)(unsafe.Pointer(func() uintptr {
-			*(*struct {
-				F__z  [0]complex128
-				F__xy [0][2]float64
-				F     int64
-				_     [8]byte
-			})(unsafe.Pointer(_unnamed3)) = *(*struct {
-				F__z  [0]complex128
-				F__xy [0][2]float64
-				F     int64
-				_     [8]byte
-			})(unsafe.Pointer(&struct{ f [2]float64 }{[2]float64{
-				0: _x,
-				1: Xcopysign(tls, float64(0), func() float64 {
-					if x2__DOUBLE_BITS(tls, _y)&uint64(9223372036854775807) == uint64(9218868437227405312) {
-						return _y
-					}
-					return Xsin(tls, _y) * Xcos(tls, _y)
-				}()),
-			}}))
-			return _unnamed3
+		return complex(_x, Xcopysign(tls, float64(0), func() float64 {
+			if x2__DOUBLE_BITS(tls, _y)&uint64(9223372036854775807) == uint64(9218868437227405312) {
+				return _y
+			}
+			return Xsin(tls, _y) * Xcos(tls, _y)
 		}()))
 	}
 	if !(x2__DOUBLE_BITS(tls, _y)&uint64(9223372036854775807) < uint64(9218868437227405312)) {
-		return *(*complex128)(unsafe.Pointer(func() uintptr {
-			*(*struct {
-				F__z  [0]complex128
-				F__xy [0][2]float64
-				F     int64
-				_     [8]byte
-			})(unsafe.Pointer(_unnamed4)) = *(*struct {
-				F__z  [0]complex128
-				F__xy [0][2]float64
-				F     int64
-				_     [8]byte
-			})(unsafe.Pointer(&struct{ f [2]float64 }{[2]float64{
-				0: func() float64 {
-					if _x != 0 {
-						return _y - _y
-					}
-					return _x
-				}(),
-				1: _y - _y,
-			}}))
-			return _unnamed4
-		}()))
+		return complex(func() float64 {
+			if _x != 0 {
+				return _y - _y
+			}
+			return _x
+		}(), _y-_y)
 	}
 	if _ix >= uint32(0x40360000) {
 		_exp_mx = Xexp(tls, -Xfabs(tls, _x))
-		return *(*complex128)(unsafe.Pointer(func() uintptr {
-			*(*struct {
-				F__z  [0]complex128
-				F__xy [0][2]float64
-				F     int64
-				_     [8]byte
-			})(unsafe.Pointer(_unnamed5)) = *(*struct {
-				F__z  [0]complex128
-				F__xy [0][2]float64
-				F     int64
-				_     [8]byte
-			})(unsafe.Pointer(&struct{ f [2]float64 }{[2]float64{
-				0: Xcopysign(tls, float64(1), _x),
-				1: float64(float64(float64(float64(4)*Xsin(tls, _y))*Xcos(tls, _y))*_exp_mx) * _exp_mx,
-			}}))
-			return _unnamed5
-		}()))
+		return complex(Xcopysign(tls, float64(1), _x), float64(float64(float64(float64(4)*Xsin(tls, _y))*Xcos(tls, _y))*_exp_mx)*_exp_mx)
 	}
 	_t = Xtan(tls, _y)
 	_beta = float64(1) + float64(_t*_t)
 	_s = Xsinh(tls, _x)
 	_rho = Xsqrt(tls, float64(1)+float64(_s*_s))
 	_denom = float64(1) + float64(float64(_beta*_s)*_s)
-	return *(*complex128)(unsafe.Pointer(func() uintptr {
-		*(*struct {
-			F__z  [0]complex128
-			F__xy [0][2]float64
-			F     int64
-			_     [8]byte
-		})(unsafe.Pointer(_unnamed6)) = *(*struct {
-			F__z  [0]complex128
-			F__xy [0][2]float64
-			F     int64
-			_     [8]byte
-		})(unsafe.Pointer(&struct{ f [2]float64 }{[2]float64{
-			0: float64(float64(_beta*_rho)*_s) / _denom,
-			1: _t / _denom,
-		}}))
-		return _unnamed6
-	}()))
+	return complex(float64(float64(_beta*_rho)*_s)/_denom, _t/_denom)
 }
 
 type t9uint32_t = uint32
@@ -5308,162 +2418,63 @@ func x2__DOUBLE_BITS(tls TLS, ___f float64) (r uint64) {
 
 // Xctanhf is defined at ctanhf.c:33:15
 func Xctanhf(tls TLS, _z complex64) (r complex64) {
-	esc := MustMalloc(120)
+	esc := MustMalloc(20)
 	var (
-		_x        float32
-		_y        float32
-		_t        float32
-		_beta     float32
-		_s        float32
-		_rho      float32
-		_denom    float32
-		_hx       uint32
-		_ix       uint32
-		_unnamed1 = esc      // *struct{F__z [0]complex64;F__xy [0][2]float32;F int32; _ [4]byte}
-		___u      = esc + 16 // *struct{Ff [0]float32;Fi [0]uint32;F int32}
-		_unnamed2 = esc + 32 // *struct{F__z [0]complex64;F__xy [0][2]float32;F int32; _ [4]byte}
-		_1__u     = esc + 48 // *struct{Ff [0]float32;Fi [0]uint32;F int32}
-		_unnamed3 = esc + 64 // *struct{F__z [0]complex64;F__xy [0][2]float32;F int32; _ [4]byte}
-		_unnamed4 = esc + 80 // *struct{F__z [0]complex64;F__xy [0][2]float32;F int32; _ [4]byte}
-		_exp_mx   float32
-		_unnamed5 = esc + 96  // *struct{F__z [0]complex64;F__xy [0][2]float32;F int32; _ [4]byte}
-		_unnamed6 = esc + 112 // *struct{F__z [0]complex64;F__xy [0][2]float32;F int32; _ [4]byte}
+		_x      float32
+		_y      float32
+		_t      float32
+		_beta   float32
+		_s      float32
+		_rho    float32
+		_denom  float32
+		_hx     uint32
+		_ix     uint32
+		___u    = esc      // *struct{Ff [0]float32;Fi [0]uint32;F int32}
+		_1__u   = esc + 16 // *struct{Ff [0]float32;Fi [0]uint32;F int32}
+		_exp_mx float32
 	)
 	defer Free(esc)
 	_x = real(_z)
-	_y = *(*float32)(unsafe.Pointer(func() uintptr {
-		*(*struct {
-			F__z  [0]complex64
-			F__xy [0][2]float32
-			F     int32
-			_     [4]byte
-		})(unsafe.Pointer(_unnamed1)) = *(*struct {
-			F__z  [0]complex64
-			F__xy [0][2]float32
-			F     int32
-			_     [4]byte
-		})(unsafe.Pointer(&struct{ f complex64 }{_z}))
-		return _unnamed1
-	}() + 4))
+	_y = imag(_z)
 	*(*float32)(unsafe.Pointer(___u)) = _x
 	_hx = *(*uint32)(unsafe.Pointer(___u))
 	_ix = _hx & uint32(0x7fffffff)
 	if _ix >= uint32(0x7f800000) {
 		if (_ix & uint32(0x7fffff)) != 0 {
-			return *(*complex64)(unsafe.Pointer(func() uintptr {
-				*(*struct {
-					F__z  [0]complex64
-					F__xy [0][2]float32
-					F     int32
-					_     [4]byte
-				})(unsafe.Pointer(_unnamed2)) = *(*struct {
-					F__z  [0]complex64
-					F__xy [0][2]float32
-					F     int32
-					_     [4]byte
-				})(unsafe.Pointer(&struct{ f [2]float32 }{[2]float32{
-					0: _x,
-					1: func() float32 {
-						if _y == float32(0) {
-							return _y
-						}
-						return _x * _y
-					}(),
-				}}))
-				return _unnamed2
-			}()))
+			return complex(_x, func() float32 {
+				if _y == float32(0) {
+					return _y
+				}
+				return _x * _y
+			}())
 		}
 		*(*uint32)(unsafe.Pointer(_1__u)) = _hx - uint32(0x40000000)
 		_x = *(*float32)(unsafe.Pointer(_1__u))
-		return *(*complex64)(unsafe.Pointer(func() uintptr {
-			*(*struct {
-				F__z  [0]complex64
-				F__xy [0][2]float32
-				F     int32
-				_     [4]byte
-			})(unsafe.Pointer(_unnamed3)) = *(*struct {
-				F__z  [0]complex64
-				F__xy [0][2]float32
-				F     int32
-				_     [4]byte
-			})(unsafe.Pointer(&struct{ f [2]float32 }{[2]float32{
-				0: _x,
-				1: Xcopysignf(tls, float32(0), func() float32 {
-					if x2__FLOAT_BITS(tls, _y)&uint32(0x7fffffff) == uint32(0x7f800000) {
-						return _y
-					}
-					return Xsinf(tls, _y) * Xcosf(tls, _y)
-				}()),
-			}}))
-			return _unnamed3
+		return complex(_x, Xcopysignf(tls, float32(0), func() float32 {
+			if x2__FLOAT_BITS(tls, _y)&uint32(0x7fffffff) == uint32(0x7f800000) {
+				return _y
+			}
+			return Xsinf(tls, _y) * Xcosf(tls, _y)
 		}()))
 	}
 	if !(x2__FLOAT_BITS(tls, _y)&uint32(0x7fffffff) < uint32(0x7f800000)) {
-		return *(*complex64)(unsafe.Pointer(func() uintptr {
-			*(*struct {
-				F__z  [0]complex64
-				F__xy [0][2]float32
-				F     int32
-				_     [4]byte
-			})(unsafe.Pointer(_unnamed4)) = *(*struct {
-				F__z  [0]complex64
-				F__xy [0][2]float32
-				F     int32
-				_     [4]byte
-			})(unsafe.Pointer(&struct{ f [2]float32 }{[2]float32{
-				0: func() float32 {
-					if _ix != 0 {
-						return _y - _y
-					}
-					return _x
-				}(),
-				1: _y - _y,
-			}}))
-			return _unnamed4
-		}()))
+		return complex(func() float32 {
+			if float32(_ix) != 0 {
+				return _y - _y
+			}
+			return _x
+		}(), _y-_y)
 	}
 	if _ix >= uint32(0x41300000) {
 		_exp_mx = Xexpf(tls, -Xfabsf(tls, _x))
-		return *(*complex64)(unsafe.Pointer(func() uintptr {
-			*(*struct {
-				F__z  [0]complex64
-				F__xy [0][2]float32
-				F     int32
-				_     [4]byte
-			})(unsafe.Pointer(_unnamed5)) = *(*struct {
-				F__z  [0]complex64
-				F__xy [0][2]float32
-				F     int32
-				_     [4]byte
-			})(unsafe.Pointer(&struct{ f [2]float32 }{[2]float32{
-				0: Xcopysignf(tls, float32(1), _x),
-				1: float32(float32(float32(float32(4)*Xsinf(tls, _y))*Xcosf(tls, _y))*_exp_mx) * _exp_mx,
-			}}))
-			return _unnamed5
-		}()))
+		return complex(Xcopysignf(tls, float32(1), _x), float32(float32(float32(float32(4)*Xsinf(tls, _y))*Xcosf(tls, _y))*_exp_mx)*_exp_mx)
 	}
 	_t = Xtanf(tls, _y)
 	_beta = float32(float64(1) + float64(_t*_t))
 	_s = Xsinhf(tls, _x)
 	_rho = Xsqrtf(tls, float32(1)+float32(_s*_s))
 	_denom = float32(1) + float32(float32(_beta*_s)*_s)
-	return *(*complex64)(unsafe.Pointer(func() uintptr {
-		*(*struct {
-			F__z  [0]complex64
-			F__xy [0][2]float32
-			F     int32
-			_     [4]byte
-		})(unsafe.Pointer(_unnamed6)) = *(*struct {
-			F__z  [0]complex64
-			F__xy [0][2]float32
-			F     int32
-			_     [4]byte
-		})(unsafe.Pointer(&struct{ f [2]float32 }{[2]float32{
-			0: float32(float32(_beta*_rho)*_s) / _denom,
-			1: _t / _denom,
-		}}))
-		return _unnamed6
-	}()))
+	return complex(float32(float32(_beta*_rho)*_s)/_denom, _t/_denom)
 }
 
 type t10uint32_t = uint32
@@ -5664,11 +2675,13 @@ _1:
 // x1values [249]int16, escapes: true, sysconf.c:27:21
 var x563values = ds + 48
 
+// Srlimit is defined at resource.h:22:1
 type Srlimit = struct {
 	Frlim_cur uint64
 	Frlim_max uint64
 }
 
+// Ssysinfo is defined at sysinfo.h:10:1
 type Ssysinfo = struct {
 	Fuptime     uint64
 	Floads      [3]uint64
@@ -5870,7 +2883,7 @@ func xBF_crypt(tls TLS, _key uintptr /* *int8 */, _setting uintptr /* *int8 */, 
 func set568(p *uint32, v uint32) uint32 { *p = v; return v }
 
 // xBF_set_key is defined at crypt_blowfish.c:499:13
-func xBF_set_key(tls TLS, _key uintptr /* *int8 */, _expanded uintptr /* [18]uint32 */, _initial uintptr /* [18]uint32 */, _flags uint8) {
+func xBF_set_key(tls TLS, _key uintptr /* *int8 */, _expanded uintptr /* *TBF_word = Tuint32_t = uint32 */, _initial uintptr /* *TBF_word = Tuint32_t = uint32 */, _flags uint8) {
 	esc := MustMalloc(8)
 	var (
 		_ptr    uintptr // *int8
@@ -5933,6 +2946,7 @@ func xBF_set_key(tls TLS, _key uintptr /* *int8 */, _expanded uintptr /* [18]uin
 // x4flags_by_subtype [26]uint8, escapes: true, crypt_blowfish.c:603:29
 var x567flags_by_subtype = ds + 624
 
+// NBF_ctx is defined at crypt_blowfish.c:61:9
 type TBF_ctx = struct {
 	Fs [0]struct {
 		FP [18]uint32
@@ -5943,6 +2957,7 @@ type TBF_ctx = struct {
 	_   [4164]byte
 }
 
+// NBF_key is defined at crypt_blowfish.c:59:17
 type TBF_key = [18]uint32
 
 func postinc569(p *uintptr) uintptr { r := *p; *p += 1; return r }
@@ -6120,8 +3135,6 @@ func xBF_encode(tls TLS, _dst uintptr /* *int8 */, _src uintptr /* *TBF_word = T
 	}
 }
 
-type t4size_t = uint64
-
 // linking crypt_des.o
 
 func set572(p *uint32, v uint32) uint32 { *p = v; return v }
@@ -6262,6 +3275,7 @@ func X__crypt_des(tls TLS, _key uintptr /* *int8 */, _setting uintptr /* *int8 *
 	return ts + 208 /* "*" */
 }
 
+// Sexpanded_key is defined at crypt_des.c:59:1
 type Sexpanded_key = struct {
 	Fl [16]uint32
 	Fr [16]uint32
@@ -6473,8 +3487,6 @@ func xsetup_salt(tls TLS, _salt uint32) (r uint32) {
 	return _saltbits
 }
 
-type t5size_t = uint64
-
 // linking crypt_md5.o
 
 // X__crypt_md5 is defined at crypt_md5.c:272:6
@@ -6509,8 +3521,6 @@ func xmd5crypt(tls TLS, _key uintptr /* *int8 */, _setting uintptr /* *int8 */, 
 	return r
 }
 
-type t6size_t = uint64
-
 // linking crypt_r.o
 
 // X__crypt_r is defined at crypt_r.c:12:6
@@ -6535,6 +3545,7 @@ func X__crypt_r(tls TLS, _key uintptr /* *int8 */, _salt uintptr /* *int8 */, _d
 	return X__crypt_des(tls, _key, _salt, _output)
 }
 
+// Scrypt_data is defined at crypt.h:8:1
 type Scrypt_data = struct {
 	Finitialized int32
 	F__buf       [256]int8
@@ -6574,8 +3585,6 @@ func xsha256crypt(tls TLS, _key uintptr /* *int8 */, _setting uintptr /* *int8 *
 	return r
 }
 
-type t7size_t = uint64
-
 // linking crypt_sha512.o
 
 // X__crypt_sha512 is defined at crypt_sha512.c:358:6
@@ -6609,8 +3618,6 @@ func xsha512crypt(tls TLS, _key uintptr /* *int8 */, _setting uintptr /* *int8 *
 	panic(`TODO`)
 	return r
 }
-
-type t8size_t = uint64
 
 // linking encrypt.o
 
@@ -6681,6 +3688,7 @@ type t13uint32_t = uint32
 // x__encrypt_key Sexpanded_key, escapes: true, encrypt.c:15:28
 var x__encrypt_key = bss + 208
 
+// Sexpanded_key is defined at encrypt.c:5:1
 type s1expanded_key = struct {
 	Fl [16]uint32
 	Fr [16]uint32
@@ -6713,14 +3721,13 @@ func X__ctype_get_mb_cur_max(tls TLS) (r uint64) {
 	}())
 }
 
-type t9size_t = uint64
-
 // x__pthread_self is defined at pthread_arch.h:1:30
 func x2__pthread_self(tls TLS) (r uintptr /* *S__pthread */) {
 	return uintptr(tls)
 	return r
 }
 
+// S__pthread is defined at pthread_impl.h:15:1
 type s4__pthread = struct {
 	Fself          uintptr // *S__pthread
 	Fdtv           uintptr // **void
@@ -6763,12 +3770,16 @@ type s4__pthread = struct {
 
 type t3uintptr_t = uint64
 
+type t4size_t = uint64
+
+// S__ptcb is defined at pthread.h:200:1
 type s3__ptcb = struct {
 	F__f    uintptr // *func(TLS, uintptr)
 	F__x    uintptr // *void
 	F__next uintptr // *S__ptcb
 }
 
+// S__locale_struct is defined at libc.h:10:1
 type s3__locale_struct = struct{ Fcat [6]uintptr }
 
 // linking __ctype_tolower_loc.o
@@ -6813,6 +3824,7 @@ func X__isalnum_l(tls TLS, _c int32, _l uintptr /* Tlocale_t = *S__locale_struct
 	return r
 }
 
+// S__locale_struct is defined at libc.h:10:1
 type s4__locale_struct = struct{ Fcat [6]uintptr }
 
 // linking isalpha.o
@@ -6823,6 +3835,7 @@ func X__isalpha_l(tls TLS, _c int32, _l uintptr /* Tlocale_t = *S__locale_struct
 	return r
 }
 
+// S__locale_struct is defined at libc.h:10:1
 type s5__locale_struct = struct{ Fcat [6]uintptr }
 
 // linking isascii.o
@@ -6840,6 +3853,7 @@ func X__isblank_l(tls TLS, _c int32, _l uintptr /* Tlocale_t = *S__locale_struct
 	return r
 }
 
+// S__locale_struct is defined at libc.h:10:1
 type s6__locale_struct = struct{ Fcat [6]uintptr }
 
 // linking iscntrl.o
@@ -6850,6 +3864,7 @@ func X__iscntrl_l(tls TLS, _c int32, _l uintptr /* Tlocale_t = *S__locale_struct
 	return r
 }
 
+// S__locale_struct is defined at libc.h:10:1
 type s7__locale_struct = struct{ Fcat [6]uintptr }
 
 // linking isdigit.o
@@ -6860,6 +3875,7 @@ func X__isdigit_l(tls TLS, _c int32, _l uintptr /* Tlocale_t = *S__locale_struct
 	return r
 }
 
+// S__locale_struct is defined at libc.h:10:1
 type s8__locale_struct = struct{ Fcat [6]uintptr }
 
 // linking isgraph.o
@@ -6870,6 +3886,7 @@ func X__isgraph_l(tls TLS, _c int32, _l uintptr /* Tlocale_t = *S__locale_struct
 	return r
 }
 
+// S__locale_struct is defined at libc.h:10:1
 type s9__locale_struct = struct{ Fcat [6]uintptr }
 
 // linking islower.o
@@ -6880,6 +3897,7 @@ func X__islower_l(tls TLS, _c int32, _l uintptr /* Tlocale_t = *S__locale_struct
 	return r
 }
 
+// S__locale_struct is defined at libc.h:10:1
 type s10__locale_struct = struct{ Fcat [6]uintptr }
 
 // linking isprint.o
@@ -6890,6 +3908,7 @@ func X__isprint_l(tls TLS, _c int32, _l uintptr /* Tlocale_t = *S__locale_struct
 	return r
 }
 
+// S__locale_struct is defined at libc.h:10:1
 type s11__locale_struct = struct{ Fcat [6]uintptr }
 
 // linking ispunct.o
@@ -6900,6 +3919,7 @@ func X__ispunct_l(tls TLS, _c int32, _l uintptr /* Tlocale_t = *S__locale_struct
 	return r
 }
 
+// S__locale_struct is defined at libc.h:10:1
 type s12__locale_struct = struct{ Fcat [6]uintptr }
 
 // linking isspace.o
@@ -6910,6 +3930,7 @@ func X__isspace_l(tls TLS, _c int32, _l uintptr /* Tlocale_t = *S__locale_struct
 	return r
 }
 
+// S__locale_struct is defined at libc.h:10:1
 type s13__locale_struct = struct{ Fcat [6]uintptr }
 
 // linking isupper.o
@@ -6920,6 +3941,7 @@ func X__isupper_l(tls TLS, _c int32, _l uintptr /* Tlocale_t = *S__locale_struct
 	return r
 }
 
+// S__locale_struct is defined at libc.h:10:1
 type s14__locale_struct = struct{ Fcat [6]uintptr }
 
 // linking iswalnum.o
@@ -6936,6 +3958,7 @@ func X__iswalnum_l(tls TLS, _c uint32, _l uintptr /* Tlocale_t = *S__locale_stru
 
 type Twint_t = uint32
 
+// S__locale_struct is defined at libc.h:10:1
 type s15__locale_struct = struct{ Fcat [6]uintptr }
 
 // linking iswalpha.o
@@ -6961,6 +3984,7 @@ type t1wint_t = uint32
 // xtable [3680]uint8, escapes: true, iswalpha.c:4:28
 var x3table = ds + 16504
 
+// S__locale_struct is defined at libc.h:10:1
 type s16__locale_struct = struct{ Fcat [6]uintptr }
 
 // linking iswblank.o
@@ -6975,9 +3999,10 @@ func X__iswblank_l(tls TLS, _c uint32, _l uintptr /* Tlocale_t = *S__locale_stru
 	return Xiswblank(tls, _c)
 }
 
-type t2wint_t = uint32
-
+// S__locale_struct is defined at libc.h:10:1
 type s17__locale_struct = struct{ Fcat [6]uintptr }
+
+type t2wint_t = uint32
 
 // linking iswcntrl.o
 
@@ -6993,6 +4018,7 @@ func X__iswcntrl_l(tls TLS, _c uint32, _l uintptr /* Tlocale_t = *S__locale_stru
 
 type t3wint_t = uint32
 
+// S__locale_struct is defined at libc.h:10:1
 type s18__locale_struct = struct{ Fcat [6]uintptr }
 
 // linking iswctype.o
@@ -7081,13 +4107,14 @@ func X__wctype_l(tls TLS, _s uintptr /* *int8 */, _l uintptr /* Tlocale_t = *S__
 	return Xwctype(tls, _s)
 }
 
-type t4wint_t = uint32
-
 type Twctype_t = uint64
+
+type t4wint_t = uint32
 
 // x1names [73]int8, escapes: true, iswctype.c:54:20
 var x588names = ds + 20184
 
+// S__locale_struct is defined at libc.h:10:1
 type s19__locale_struct = struct{ Fcat [6]uintptr }
 
 // linking iswdigit.o
@@ -7104,6 +4131,7 @@ func X__iswdigit_l(tls TLS, _c uint32, _l uintptr /* Tlocale_t = *S__locale_stru
 
 type t5wint_t = uint32
 
+// S__locale_struct is defined at libc.h:10:1
 type s20__locale_struct = struct{ Fcat [6]uintptr }
 
 // linking iswgraph.o
@@ -7120,6 +4148,7 @@ func X__iswgraph_l(tls TLS, _c uint32, _l uintptr /* Tlocale_t = *S__locale_stru
 
 type t6wint_t = uint32
 
+// S__locale_struct is defined at libc.h:10:1
 type s21__locale_struct = struct{ Fcat [6]uintptr }
 
 // linking iswlower.o
@@ -7136,6 +4165,7 @@ func X__iswlower_l(tls TLS, _c uint32, _l uintptr /* Tlocale_t = *S__locale_stru
 
 type t7wint_t = uint32
 
+// S__locale_struct is defined at libc.h:10:1
 type s22__locale_struct = struct{ Fcat [6]uintptr }
 
 // linking iswprint.o
@@ -7161,6 +4191,7 @@ func X__iswprint_l(tls TLS, _c uint32, _l uintptr /* Tlocale_t = *S__locale_stru
 
 type t8wint_t = uint32
 
+// S__locale_struct is defined at libc.h:10:1
 type s23__locale_struct = struct{ Fcat [6]uintptr }
 
 // linking iswpunct.o
@@ -7183,6 +4214,7 @@ type t9wint_t = uint32
 // xtable [3648]uint8, escapes: true, iswpunct.c:4:28
 var x4table = ds + 20264
 
+// S__locale_struct is defined at libc.h:10:1
 type s24__locale_struct = struct{ Fcat [6]uintptr }
 
 // linking iswspace.o
@@ -7197,12 +4229,13 @@ func X__iswspace_l(tls TLS, _c uint32, _l uintptr /* Tlocale_t = *S__locale_stru
 	return Xiswspace(tls, _c)
 }
 
-type t10wint_t = uint32
-
 // x1spaces [22]int32, escapes: true, iswspace.c:11:23
 var x589spaces = ds + 23912
 
+// S__locale_struct is defined at libc.h:10:1
 type s25__locale_struct = struct{ Fcat [6]uintptr }
+
+type t10wint_t = uint32
 
 type Twchar_t = int32
 
@@ -7220,6 +4253,7 @@ func X__iswupper_l(tls TLS, _c uint32, _l uintptr /* Tlocale_t = *S__locale_stru
 
 type t11wint_t = uint32
 
+// S__locale_struct is defined at libc.h:10:1
 type s26__locale_struct = struct{ Fcat [6]uintptr }
 
 // linking iswxdigit.o
@@ -7236,6 +4270,7 @@ func X__iswxdigit_l(tls TLS, _c uint32, _l uintptr /* Tlocale_t = *S__locale_str
 
 type t12wint_t = uint32
 
+// S__locale_struct is defined at libc.h:10:1
 type s27__locale_struct = struct{ Fcat [6]uintptr }
 
 // linking isxdigit.o
@@ -7246,6 +4281,7 @@ func X__isxdigit_l(tls TLS, _c int32, _l uintptr /* Tlocale_t = *S__locale_struc
 	return r
 }
 
+// S__locale_struct is defined at libc.h:10:1
 type s28__locale_struct = struct{ Fcat [6]uintptr }
 
 // linking toascii.o
@@ -7263,6 +4299,7 @@ func X__tolower_l(tls TLS, _c int32, _l uintptr /* Tlocale_t = *S__locale_struct
 	return r
 }
 
+// S__locale_struct is defined at libc.h:10:1
 type s29__locale_struct = struct{ Fcat [6]uintptr }
 
 // linking toupper.o
@@ -7273,6 +4310,7 @@ func X__toupper_l(tls TLS, _c int32, _l uintptr /* Tlocale_t = *S__locale_struct
 	return r
 }
 
+// S__locale_struct is defined at libc.h:10:1
 type s30__locale_struct = struct{ Fcat [6]uintptr }
 
 // linking towctrans.o
@@ -7370,6 +4408,7 @@ func x__towcase(tls TLS, _wc int32, _lower int32) (r int32) {
 	return _wc
 }
 
+// S__locale_struct is defined at libc.h:10:1
 type s31__locale_struct = struct{ Fcat [6]uintptr }
 
 type t1wchar_t = int32
@@ -7403,8 +4442,6 @@ func Xwcswidth(tls TLS, _wcs uintptr /* *Twchar_t = int32 */, _n uint64) (r int3
 	}
 	return _l
 }
-
-type t10size_t = uint64
 
 type t2wchar_t = int32
 
@@ -7444,6 +4481,7 @@ func X__towctrans_l(tls TLS, _c uint32, _t uintptr /* Twctrans_t = *int32 */, _l
 
 type t14wint_t = uint32
 
+// S__locale_struct is defined at libc.h:10:1
 type s32__locale_struct = struct{ Fcat [6]uintptr }
 
 // linking wcwidth.o
@@ -7497,8 +4535,7 @@ func X__getdents(tls TLS, _fd int32, _buf uintptr /* *Sdirent */, _len uint64) (
 	return int32(X__syscall_ret(tls, uint64(x1__syscall3(tls, int64(217), int64(_fd), int64(_buf), int64(_len)))))
 }
 
-type t11size_t = uint64
-
+// Sdirent is defined at dirent.h:24:1
 type Sdirent = struct {
 	Fd_ino    uint64
 	Fd_off    int64
@@ -7523,6 +4560,7 @@ func Xalphasort(tls TLS, _a uintptr /* **Sdirent */, _b uintptr /* **Sdirent */)
 	return Xstrcoll(tls, *(*uintptr)(unsafe.Pointer(_a))+19, *(*uintptr)(unsafe.Pointer(_b))+19)
 }
 
+// Sdirent is defined at dirent.h:24:1
 type s1dirent = struct {
 	Fd_ino    uint64
 	Fd_off    int64
@@ -7546,6 +4584,7 @@ func Xclosedir(tls TLS, _dir uintptr /* *TDIR = S__dirstream */) (r int32) {
 	return _ret
 }
 
+// S__dirstream is defined at __dirent.h:1:1
 type S__dirstream = struct {
 	Ftell    int64
 	Ffd      int32
@@ -7564,6 +4603,7 @@ func Xdirfd(tls TLS, _d uintptr /* *TDIR = S__dirstream */) (r int32) {
 	return *(*int32)(unsafe.Pointer(_d + 8))
 }
 
+// S__dirstream is defined at __dirent.h:1:1
 type s1__dirstream = struct {
 	Ftell    int64
 	Ffd      int32
@@ -7602,6 +4642,7 @@ func Xfdopendir(tls TLS, _fd int32) (r uintptr /* *TDIR = S__dirstream */) {
 	return _dir
 }
 
+// S__dirstream is defined at __dirent.h:1:1
 type s2__dirstream = struct {
 	Ftell    int64
 	Ffd      int32
@@ -7611,6 +4652,7 @@ type s2__dirstream = struct {
 	Fbuf     [2048]int8
 }
 
+// Sstat is defined at stat.h:4:1
 type Sstat = struct {
 	Fst_dev     uint64
 	Fst_ino     uint64
@@ -7647,12 +4689,11 @@ type Tblksize_t = int64
 
 type Tblkcnt_t = int64
 
+// Stimespec is defined at alltypes.h:270:1
 type s1timespec = struct {
 	Ftv_sec  int64
 	Ftv_nsec int64
 }
-
-type t12size_t = uint64
 
 type t1time_t = int64
 
@@ -7679,6 +4720,7 @@ func Xopendir(tls TLS, _name uintptr /* *int8 */) (r uintptr /* *TDIR = S__dirst
 	return _dir
 }
 
+// S__dirstream is defined at __dirent.h:1:1
 type s3__dirstream = struct {
 	Ftell    int64
 	Ffd      int32
@@ -7694,8 +4736,6 @@ func x__syscall1(tls TLS, _n int64, _a1 int64) (r int64) {
 }
 
 type t8off_t = int64
-
-type t13size_t = uint64
 
 // linking readdir.o
 
@@ -7725,6 +4765,7 @@ func Xreaddir(tls TLS, _dir uintptr /* *TDIR = S__dirstream */) (r uintptr /* *S
 	return _de
 }
 
+// S__dirstream is defined at __dirent.h:1:1
 type s4__dirstream = struct {
 	Ftell    int64
 	Ffd      int32
@@ -7734,6 +4775,7 @@ type s4__dirstream = struct {
 	Fbuf     [2048]int8
 }
 
+// Sdirent is defined at dirent.h:24:1
 type s2dirent = struct {
 	Fd_ino    uint64
 	Fd_off    int64
@@ -7781,6 +4823,7 @@ func Xreaddir_r(tls TLS, _dir uintptr /* *TDIR = S__dirstream */, _buf uintptr /
 	return 0
 }
 
+// S__dirstream is defined at __dirent.h:1:1
 type s5__dirstream = struct {
 	Ftell    int64
 	Ffd      int32
@@ -7790,6 +4833,7 @@ type s5__dirstream = struct {
 	Fbuf     [2048]int8
 }
 
+// Sdirent is defined at dirent.h:24:1
 type s3dirent = struct {
 	Fd_ino    uint64
 	Fd_off    int64
@@ -7801,8 +4845,6 @@ type s3dirent = struct {
 type t10off_t = int64
 
 type t4ino_t = uint64
-
-type t14size_t = uint64
 
 // linking rewinddir.o
 
@@ -7817,6 +4859,7 @@ func Xrewinddir(tls TLS, _dir uintptr /* *TDIR = S__dirstream */) {
 	X__unlock(tls, _dir+20)
 }
 
+// S__dirstream is defined at __dirent.h:1:1
 type s6__dirstream = struct {
 	Ftell    int64
 	Ffd      int32
@@ -7901,6 +4944,7 @@ func Xscandir(tls TLS, _path uintptr /* *int8 */, _res uintptr /* ***Sdirent */,
 	return int32(_cnt)
 }
 
+// Sdirent is defined at dirent.h:24:1
 type s4dirent = struct {
 	Fd_ino    uint64
 	Fd_off    int64
@@ -7909,7 +4953,7 @@ type s4dirent = struct {
 	Fd_name   [256]int8
 }
 
-type t15size_t = uint64
+type t5size_t = uint64
 
 type t5ino_t = uint64
 
@@ -7929,6 +4973,7 @@ func Xseekdir(tls TLS, _dir uintptr /* *TDIR = S__dirstream */, _off int64) {
 	X__unlock(tls, _dir+20)
 }
 
+// S__dirstream is defined at __dirent.h:1:1
 type s8__dirstream = struct {
 	Ftell    int64
 	Ffd      int32
@@ -7947,6 +4992,7 @@ func Xtelldir(tls TLS, _dir uintptr /* *TDIR = S__dirstream */) (r int64) {
 	return *(*int64)(unsafe.Pointer(_dir))
 }
 
+// S__dirstream is defined at __dirent.h:1:1
 type s9__dirstream = struct {
 	Ftell    int64
 	Ffd      int32
@@ -7965,6 +5011,7 @@ func Xversionsort(tls TLS, _a uintptr /* **Sdirent */, _b uintptr /* **Sdirent *
 	return Xstrverscmp(tls, *(*uintptr)(unsafe.Pointer(_a))+19, *(*uintptr)(unsafe.Pointer(_b))+19)
 }
 
+// Sdirent is defined at dirent.h:24:1
 type s5dirent = struct {
 	Fd_ino    uint64
 	Fd_off    int64
@@ -7979,8 +5026,8 @@ type t15off_t = int64
 
 // linking __environ.o
 
-// X__environ **int8, escapes: true, __environ.c:3:6
-var X__environ = bss + 360
+// Xenviron **int8, escapes: true, __environ.c:3:6
+var Xenviron = bss + 360
 
 // linking __init_tls.o
 
@@ -8020,6 +5067,7 @@ func X__copy_tls(tls TLS, _mem uintptr /* *uint8 */) (r uintptr /* *void */) {
 	return _td
 }
 
+// S__pthread is defined at pthread_impl.h:15:1
 type s5__pthread = struct {
 	Fself          uintptr // *S__pthread
 	Fdtv           uintptr // **void
@@ -8060,6 +5108,7 @@ type s5__pthread = struct {
 	Fdtv_copy         uintptr // **void
 }
 
+// Stls_module is defined at libc.h:14:1
 type Stls_module = struct {
 	Fnext   uintptr // *Stls_module
 	Fimage  uintptr // *void
@@ -8069,7 +5118,7 @@ type Stls_module = struct {
 	Foffset uint64
 }
 
-type t16size_t = uint64
+type t6size_t = uint64
 
 type t4uintptr_t = uint64
 
@@ -8130,12 +5179,14 @@ func xstatic_init_tls(tls TLS, _aux uintptr /* *Tsize_t = uint64 */) {
 	}
 }
 
+// S__ptcb is defined at pthread.h:200:1
 type s4__ptcb = struct {
 	F__f    uintptr // *func(TLS, uintptr)
 	F__x    uintptr // *void
 	F__next uintptr // *S__ptcb
 }
 
+// S__locale_struct is defined at libc.h:10:1
 type s33__locale_struct = struct{ Fcat [6]uintptr }
 
 type TElf64_Word = uint32
@@ -8186,7 +5237,7 @@ func X__init_libc(tls TLS, _envp uintptr /* **int8 */, _pn uintptr /* *int8 */) 
 	)
 	defer Free(esc)
 	Copy(_aux, ts+312 /* "\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00..." */, 304)
-	*(*uintptr)(unsafe.Pointer(X__environ)) = _envp
+	*(*uintptr)(unsafe.Pointer(Xenviron)) = _envp
 	for _i = uint64(0); *(*uintptr)(unsafe.Pointer(_envp + 8*uintptr(_i))) != 0; _i++ {
 	}
 	*(*uintptr)(unsafe.Pointer(X__libc + 16)) = set605(&_auxv, (_envp+8*uintptr(_i))+8*uintptr(1))
@@ -8275,8 +5326,9 @@ func xdummy(tls TLS) {
 func xdummy1(tls TLS, _p uintptr /* *void */) {
 }
 
-type t17size_t = uint64
+type t7size_t = uint64
 
+// Spollfd is defined at poll.h:31:1
 type Spollfd = struct {
 	Ffd      int32
 	Fevents  int16
@@ -8332,6 +5384,7 @@ func X__reset_tls(tls TLS) {
 	}
 }
 
+// S__pthread is defined at pthread_impl.h:15:1
 type s7__pthread = struct {
 	Fself          uintptr // *S__pthread
 	Fdtv           uintptr // **void
@@ -8372,6 +5425,7 @@ type s7__pthread = struct {
 	Fdtv_copy         uintptr // **void
 }
 
+// Stls_module is defined at libc.h:14:1
 type s1tls_module = struct {
 	Fnext   uintptr // *Stls_module
 	Fimage  uintptr // *void
@@ -8381,7 +5435,7 @@ type s1tls_module = struct {
 	Foffset uint64
 }
 
-type t18size_t = uint64
+type t8size_t = uint64
 
 // x__pthread_self is defined at pthread_arch.h:1:30
 func x3__pthread_self(tls TLS) (r uintptr /* *S__pthread */) {
@@ -8391,12 +5445,14 @@ func x3__pthread_self(tls TLS) (r uintptr /* *S__pthread */) {
 
 type t5uintptr_t = uint64
 
+// S__ptcb is defined at pthread.h:200:1
 type s5__ptcb = struct {
 	F__f    uintptr // *func(TLS, uintptr)
 	F__x    uintptr // *void
 	F__next uintptr // *S__ptcb
 }
 
+// S__locale_struct is defined at libc.h:10:1
 type s34__locale_struct = struct{ Fcat [6]uintptr }
 
 // linking __stack_chk_fail.o
@@ -8432,8 +5488,7 @@ func x2a_crash(tls TLS) {
 	panic(`a_crash`)
 }
 
-type t19size_t = uint64
-
+// S__pthread is defined at pthread_impl.h:15:1
 type s8__pthread = struct {
 	Fself          uintptr // *S__pthread
 	Fdtv           uintptr // **void
@@ -8474,12 +5529,16 @@ type s8__pthread = struct {
 	Fdtv_copy         uintptr // **void
 }
 
+type t9size_t = uint64
+
+// S__ptcb is defined at pthread.h:200:1
 type s6__ptcb = struct {
 	F__f    uintptr // *func(TLS, uintptr)
 	F__x    uintptr // *void
 	F__next uintptr // *S__ptcb
 }
 
+// S__locale_struct is defined at libc.h:10:1
 type s35__locale_struct = struct{ Fcat [6]uintptr }
 
 // linking clearenv.o
@@ -8490,8 +5549,8 @@ func postinc609(p *uintptr) uintptr { r := *p; *p += 8; return r }
 func Xclearenv(tls TLS) (r int32) {
 	var _e uintptr // **int8
 
-	_e = *(*uintptr)(unsafe.Pointer(X__environ))
-	*(*uintptr)(unsafe.Pointer(X__environ)) = null
+	_e = *(*uintptr)(unsafe.Pointer(Xenviron))
+	*(*uintptr)(unsafe.Pointer(Xenviron)) = null
 	if _e != 0 {
 		for *(*uintptr)(unsafe.Pointer(_e)) != 0 {
 			X__env_rm_add(tls, *(*uintptr)(unsafe.Pointer(postinc609(&_e))), null)
@@ -8513,8 +5572,8 @@ func Xgetenv(tls TLS, _name uintptr /* *int8 */) (r uintptr /* *int8 */) {
 		_e uintptr // **int8
 	)
 	_l = uint64(int64(X__strchrnul(tls, _name, int32('=')) - _name))
-	if ((_l != 0) && (*(*int8)(unsafe.Pointer(_name + uintptr(_l))) == 0)) && (*(*uintptr)(unsafe.Pointer(X__environ)) != 0) {
-		for _e = *(*uintptr)(unsafe.Pointer(X__environ)); *(*uintptr)(unsafe.Pointer(_e)) != 0; _e += 8 {
+	if ((_l != 0) && (*(*int8)(unsafe.Pointer(_name + uintptr(_l))) == 0)) && (*(*uintptr)(unsafe.Pointer(Xenviron)) != 0) {
+		for _e = *(*uintptr)(unsafe.Pointer(Xenviron)); *(*uintptr)(unsafe.Pointer(_e)) != 0; _e += 8 {
 			if (Xstrncmp(tls, _name, *(*uintptr)(unsafe.Pointer(_e)), _l) == 0) && (int32(*(*int8)(unsafe.Pointer(*(*uintptr)(unsafe.Pointer(_e)) + uintptr(_l)))) == int32('=')) {
 				return (*(*uintptr)(unsafe.Pointer(_e)) + uintptr(_l)) + uintptr(1)
 			}
@@ -8523,7 +5582,7 @@ func Xgetenv(tls TLS, _name uintptr /* *int8 */) (r uintptr /* *int8 */) {
 	return null
 }
 
-type t20size_t = uint64
+type t10size_t = uint64
 
 // linking putenv.o
 
@@ -8540,8 +5599,8 @@ func X__putenv(tls TLS, _s uintptr /* *int8 */, _l uint64, _r uintptr /* *int8 *
 		_newenv uintptr // **int8
 	)
 	_i = uint64(0)
-	if *(*uintptr)(unsafe.Pointer(X__environ)) != 0 {
-		for _e = *(*uintptr)(unsafe.Pointer(X__environ)); *(*uintptr)(unsafe.Pointer(_e)) != 0; func() uint64 { _e += 8; return postinc610(&_i) }() {
+	if *(*uintptr)(unsafe.Pointer(Xenviron)) != 0 {
+		for _e = *(*uintptr)(unsafe.Pointer(Xenviron)); *(*uintptr)(unsafe.Pointer(_e)) != 0; func() uint64 { _e += 8; return postinc610(&_i) }() {
 			if Xstrncmp(tls, _s, *(*uintptr)(unsafe.Pointer(_e)), _l+uint64(1)) == 0 {
 				_tmp = *(*uintptr)(unsafe.Pointer(_e))
 				*(*uintptr)(unsafe.Pointer(_e)) = _s
@@ -8550,7 +5609,7 @@ func X__putenv(tls TLS, _s uintptr /* *int8 */, _l uint64, _r uintptr /* *int8 *
 			}
 		}
 	}
-	if !(*(*uintptr)(unsafe.Pointer(X__environ)) == x612oldenv) {
+	if !(*(*uintptr)(unsafe.Pointer(Xenviron)) == x612oldenv) {
 		goto _1
 	}
 
@@ -8574,13 +5633,13 @@ _1:
 
 _4:
 	if _i != 0 {
-		Xmemcpy(tls, _newenv, *(*uintptr)(unsafe.Pointer(X__environ)), uint64(8)*_i)
+		Xmemcpy(tls, _newenv, *(*uintptr)(unsafe.Pointer(Xenviron)), uint64(8)*_i)
 	}
 	Xfree(tls, x612oldenv)
 _2:
 	*(*uintptr)(unsafe.Pointer(_newenv + 8*uintptr(_i))) = _s
 	*(*uintptr)(unsafe.Pointer(_newenv + 8*uintptr(_i+uint64(1)))) = null
-	*(*uintptr)(unsafe.Pointer(X__environ)) = set611(&x612oldenv, _newenv)
+	*(*uintptr)(unsafe.Pointer(Xenviron)) = set611(&x612oldenv, _newenv)
 	if _r != 0 {
 		X__env_rm_add(tls, null, _r)
 	}
@@ -8606,10 +5665,10 @@ func Xputenv(tls TLS, _s uintptr /* *int8 */) (r int32) {
 func x2dummy(tls TLS, _old uintptr /* *int8 */, _new uintptr /* *int8 */) {
 }
 
-type t21size_t = uint64
-
 // x2oldenv **int8, escapes: false, putenv.c:22:14
 var x612oldenv uintptr
+
+type t11size_t = uint64
 
 // linking setenv.o
 
@@ -8676,7 +5735,7 @@ var x616env_alloced uintptr
 // x2env_alloced_n Tsize_t = uint64, escapes: false, setenv.c:11:16
 var x615env_alloced_n uint64
 
-type t22size_t = uint64
+type t12size_t = uint64
 
 // linking unsetenv.o
 
@@ -8694,8 +5753,8 @@ func Xunsetenv(tls TLS, _name uintptr /* *int8 */) (r int32) {
 		*(*int32)(unsafe.Pointer(X__errno_location(tls))) = int32(22)
 		return -1
 	}
-	if *(*uintptr)(unsafe.Pointer(X__environ)) != 0 {
-		_e = *(*uintptr)(unsafe.Pointer(X__environ))
+	if *(*uintptr)(unsafe.Pointer(Xenviron)) != 0 {
+		_e = *(*uintptr)(unsafe.Pointer(Xenviron))
 		_eo = _e
 		for ; *(*uintptr)(unsafe.Pointer(_e)) != 0; _e += 8 {
 			if (Xstrncmp(tls, _name, *(*uintptr)(unsafe.Pointer(_e)), _l) == 0) && (int32(*(*int8)(unsafe.Pointer(*(*uintptr)(unsafe.Pointer(_e)) + uintptr(_l)))) == int32('=')) {
@@ -8717,7 +5776,7 @@ func Xunsetenv(tls TLS, _name uintptr /* *int8 */) (r int32) {
 func x3dummy(tls TLS, _old uintptr /* *int8 */, _new uintptr /* *int8 */) {
 }
 
-type t23size_t = uint64
+type t13size_t = uint64
 
 // linking __errno_location.o
 
@@ -8732,6 +5791,7 @@ func x5__pthread_self(tls TLS) (r uintptr /* *S__pthread */) {
 	return r
 }
 
+// S__pthread is defined at pthread_impl.h:15:1
 type s9__pthread = struct {
 	Fself          uintptr // *S__pthread
 	Fdtv           uintptr // **void
@@ -8774,14 +5834,16 @@ type s9__pthread = struct {
 
 type t7uintptr_t = uint64
 
-type t24size_t = uint64
+type t14size_t = uint64
 
+// S__ptcb is defined at pthread.h:200:1
 type s7__ptcb = struct {
 	F__f    uintptr // *func(TLS, uintptr)
 	F__x    uintptr // *void
 	F__next uintptr // *S__ptcb
 }
 
+// S__locale_struct is defined at libc.h:10:1
 type s36__locale_struct = struct{ Fcat [6]uintptr }
 
 // linking strerror.o
@@ -8815,6 +5877,7 @@ func Xstrerror(tls TLS, _e int32) (r uintptr /* *int8 */) {
 	return X__strerror_l(tls, _e, *(*uintptr)(unsafe.Pointer(x6__pthread_self(tls) + 192)))
 }
 
+// S__locale_struct is defined at libc.h:10:1
 type s37__locale_struct = struct{ Fcat [6]uintptr }
 
 // xerrid [89]uint8, escapes: true, strerror.c:7:28
@@ -8829,6 +5892,7 @@ func x6__pthread_self(tls TLS) (r uintptr /* *S__pthread */) {
 	return r
 }
 
+// S__pthread is defined at pthread_impl.h:15:1
 type s10__pthread = struct {
 	Fself          uintptr // *S__pthread
 	Fdtv           uintptr // **void
@@ -8871,8 +5935,9 @@ type s10__pthread = struct {
 
 type t8uintptr_t = uint64
 
-type t25size_t = uint64
+type t15size_t = uint64
 
+// S__ptcb is defined at pthread.h:200:1
 type s8__ptcb = struct {
 	F__f    uintptr // *func(TLS, uintptr)
 	F__x    uintptr // *void
@@ -9030,6 +6095,7 @@ var xhead uintptr
 // xslot int32, escapes: false, atexit.c:15:12
 var xslot int32
 
+// Sfl is defined at atexit.c:8:8
 type Sfl = struct {
 	Fnext uintptr // *Sfl
 	Ff    [32]uintptr
@@ -9047,8 +6113,6 @@ func xcall(tls TLS, _p uintptr /* *void */) {
 }
 
 type t9uintptr_t = uint64
-
-type t26size_t = uint64
 
 // linking exit.o
 
@@ -9087,8 +6151,6 @@ func x5dummy(tls TLS) {
 func Xcreat(tls TLS, _filename uintptr /* *int8 */, _mode uint32) (r int32) {
 	return Xopen(tls, _filename, int32(577), _mode)
 }
-
-type t1mode_t = uint32
 
 // linking fcntl.o
 
@@ -9168,6 +6230,7 @@ _6:
 	return r
 }
 
+// Sf_owner_ex is defined at fcntl.h:158:1
 type Sf_owner_ex = struct {
 	Ftype int32
 	Fpid  int32
@@ -9184,8 +6247,6 @@ type Tpid_t = int32
 func x2__syscall1(tls TLS, _n int64, _a1 int64) (r int64) {
 	return X__syscall(tls, _n, _a1, int64(0), int64(0), int64(0), int64(0), int64(0))
 }
-
-type t1syscall_arg_t = int64
 
 // linking open.o
 
@@ -9209,14 +6270,12 @@ func Xopen(tls TLS, _filename uintptr /* *int8 */, _flags int32, ap ...interface
 	return int32(X__syscall_ret(tls, uint64(_fd)))
 }
 
-type t2mode_t = uint32
+type t1mode_t = uint32
 
 // x__syscall3 is defined at syscall_arch.h:31:22
 func x5__syscall3(tls TLS, _n int64, _a1 int64, _a2 int64, _a3 int64) (r int64) {
 	return X__syscall(tls, _n, _a1, _a2, _a3, int64(0), int64(0), int64(0))
 }
-
-type t2syscall_arg_t = int64
 
 // linking openat.o
 
@@ -9235,9 +6294,7 @@ func Xopenat(tls TLS, _fd int32, _filename uintptr /* *int8 */, _flags int32, ap
 	return int32(X__syscall_ret(tls, uint64(X__syscall_cp(tls, int64(257), int64(_fd), int64(_filename), int64(_flags|int32(0)), int64(_mode), int64(0), int64(0)))))
 }
 
-type t3mode_t = uint32
-
-type t3syscall_arg_t = int64
+type t2mode_t = uint32
 
 // linking posix_fadvise.o
 
@@ -9246,12 +6303,12 @@ func Xposix_fadvise(tls TLS, _fd int32, _base int64, _len int64, _advice int32) 
 	return int32(-x__syscall4(tls, int64(221), int64(_fd), _base, _len, int64(_advice)))
 }
 
-type t16off_t = int64
-
 // x__syscall4 is defined at syscall_arch.h:40:22
 func x__syscall4(tls TLS, _n int64, _a1 int64, _a2 int64, _a3 int64, _a4 int64) (r int64) {
 	return X__syscall(tls, _n, _a1, _a2, _a3, _a4, int64(0), int64(0))
 }
+
+type t16off_t = int64
 
 // linking posix_fallocate.o
 
@@ -9260,12 +6317,12 @@ func Xposix_fallocate(tls TLS, _fd int32, _base int64, _len int64) (r int32) {
 	return int32(-x1__syscall4(tls, int64(285), int64(_fd), int64(0), _base, _len))
 }
 
-type t17off_t = int64
-
 // x__syscall4 is defined at syscall_arch.h:40:22
 func x1__syscall4(tls TLS, _n int64, _a1 int64, _a2 int64, _a3 int64, _a4 int64) (r int64) {
 	return X__syscall(tls, _n, _a1, _a2, _a3, _a4, int64(0), int64(0))
 }
+
+type t17off_t = int64
 
 // linking __flt_rounds.o
 
@@ -9546,6 +6603,7 @@ _1:
 	return xdecfloat(tls, _f, _c, _bits, _emin, _sign, _pok)
 }
 
+// S_IO_FILE is defined at stdio_impl.h:22:1
 type S_IO_FILE = struct {
 	Fflags        uint32
 	Frpos         uintptr // *uint8
@@ -9582,7 +6640,7 @@ type S_IO_FILE = struct {
 	Flocale       uintptr // *S__locale_struct
 }
 
-type t27size_t = uint64
+type t16size_t = uint64
 
 func postinc631(p *int64) int64 { r := *p; *p += -1; return r }
 
@@ -10097,6 +7155,7 @@ func xdecfloat(tls TLS, _f uintptr /* *TFILE = S_IO_FILE */, _c int32, _bits int
 
 type t18off_t = int64
 
+// S__locale_struct is defined at libc.h:10:1
 type s38__locale_struct = struct{ Fcat [6]uintptr }
 
 type t15uint32_t = uint32
@@ -10351,6 +7410,7 @@ ldone:
 	return _y ^ uint64(_neg) - uint64(_neg)
 }
 
+// S_IO_FILE is defined at stdio_impl.h:22:1
 type s1_IO_FILE = struct {
 	Fflags        uint32
 	Frpos         uintptr // *uint8
@@ -10390,10 +7450,11 @@ type s1_IO_FILE = struct {
 // xtable [257]uint8, escapes: true, intscan.c:7:28
 var x6table = ds + 30784
 
-type t28size_t = uint64
+type t17size_t = uint64
 
 type t19off_t = int64
 
+// S__locale_struct is defined at libc.h:10:1
 type s39__locale_struct = struct{ Fcat [6]uintptr }
 
 // linking libc.o
@@ -10413,6 +7474,7 @@ var X__progname = bss + 1744
 // X__progname_full *int8, escapes: true, libc.c:7:21
 var X__progname_full = bss + 1752
 
+// S__libc is defined at libc.h:20:1
 type S__libc = struct {
 	Fcan_do_threads  int32
 	Fthreaded        int32
@@ -10427,8 +7489,7 @@ type S__libc = struct {
 	Fglobal_locale   s40__locale_struct
 }
 
-type t29size_t = uint64
-
+// Stls_module is defined at libc.h:14:1
 type s2tls_module = struct {
 	Fnext   uintptr // *Stls_module
 	Fimage  uintptr // *void
@@ -10438,6 +7499,9 @@ type s2tls_module = struct {
 	Foffset uint64
 }
 
+type t18size_t = uint64
+
+// S__locale_struct is defined at libc.h:10:1
 type s40__locale_struct = struct{ Fcat [6]uintptr }
 
 // linking procfdname.o
@@ -10509,8 +7573,7 @@ func X__shgetc(tls TLS, _f uintptr /* *TFILE = S_IO_FILE */) (r int32) {
 	return _c
 }
 
-type t20off_t = int64
-
+// S_IO_FILE is defined at stdio_impl.h:22:1
 type s2_IO_FILE = struct {
 	Fflags        uint32
 	Frpos         uintptr // *uint8
@@ -10547,8 +7610,11 @@ type s2_IO_FILE = struct {
 	Flocale       uintptr // *S__locale_struct
 }
 
-type t30size_t = uint64
+type t20off_t = int64
 
+type t19size_t = uint64
+
+// S__locale_struct is defined at libc.h:10:1
 type s41__locale_struct = struct{ Fcat [6]uintptr }
 
 // linking syscall.o
@@ -10683,7 +7749,7 @@ _3:
 	return null
 }
 
-type t31size_t = uint64
+type t20size_t = uint64
 
 type TElf64_Half = uint16
 
@@ -10746,8 +7812,7 @@ func Xftok(tls TLS, _path uintptr /* *int8 */, _id int32) (r int32) {
 	return int32(*(*uint64)(unsafe.Pointer(_st + 8))&uint64(0xffff) | *(*uint64)(unsafe.Pointer(_st))&uint64(0xff)<<(uint(16)%64) | uint64(uint32(_id)&uint32(0xff)<<(uint(24)%32)))
 }
 
-type Tkey_t = int32
-
+// Sstat is defined at stat.h:4:1
 type s1stat = struct {
 	Fst_dev     uint64
 	Fst_ino     uint64
@@ -10772,7 +7837,7 @@ type t1dev_t = uint64
 
 type t1nlink_t = uint64
 
-type t4mode_t = uint32
+type t3mode_t = uint32
 
 type t1uid_t = uint32
 
@@ -10784,6 +7849,7 @@ type t1blksize_t = int64
 
 type t1blkcnt_t = int64
 
+// Stimespec is defined at alltypes.h:270:1
 type s2timespec = struct {
 	Ftv_sec  int64
 	Ftv_nsec int64
@@ -10801,6 +7867,7 @@ func Xmsgctl(tls TLS, _q int32, _cmd int32, _buf uintptr /* *Smsqid_ds */) (r in
 	return int32(X__syscall_ret(tls, uint64(_r)))
 }
 
+// Smsqid_ds is defined at msg.h:1:1
 type Smsqid_ds = struct {
 	Fmsg_perm   Sipc_perm
 	Fmsg_stime  int64
@@ -10819,6 +7886,7 @@ func x6__syscall3(tls TLS, _n int64, _a1 int64, _a2 int64, _a3 int64) (r int64) 
 	return X__syscall(tls, _n, _a1, _a2, _a3, int64(0), int64(0), int64(0))
 }
 
+// Sipc_perm is defined at ipc.h:1:1
 type Sipc_perm = struct {
 	Fkey    int32
 	Fuid    uint32
@@ -10839,13 +7907,13 @@ type Tmsglen_t = uint64
 
 type t1pid_t = int32
 
-type t1key_t = int32
+type Tkey_t = int32
 
 type t2uid_t = uint32
 
 type t2gid_t = uint32
 
-type t5mode_t = uint32
+type t4mode_t = uint32
 
 // linking msgget.o
 
@@ -10853,8 +7921,6 @@ type t5mode_t = uint32
 func Xmsgget(tls TLS, _k int32, _flag int32) (r int32) {
 	return int32(X__syscall_ret(tls, uint64(x1__syscall2(tls, int64(68), int64(_k), int64(_flag)))))
 }
-
-type t2key_t = int32
 
 // x__syscall2 is defined at syscall_arch.h:22:22
 func x1__syscall2(tls TLS, _n int64, _a1 int64, _a2 int64) (r int64) {
@@ -10868,22 +7934,12 @@ func Xmsgrcv(tls TLS, _q int32, _m uintptr /* *void */, _len uint64, _type int64
 	return X__syscall_ret(tls, uint64(X__syscall_cp(tls, int64(70), int64(_q), int64(_m), int64(_len), _type, int64(_flag), int64(0))))
 }
 
-type t32size_t = uint64
-
-type t3ssize_t = int64
-
-type t4syscall_arg_t = int64
-
 // linking msgsnd.o
 
 // Xmsgsnd is defined at msgsnd.c:6:5
 func Xmsgsnd(tls TLS, _q int32, _m uintptr /* *void */, _len uint64, _flag int32) (r int32) {
 	return int32(X__syscall_ret(tls, uint64(X__syscall_cp(tls, int64(69), int64(_q), int64(_m), int64(_len), int64(_flag), int64(0), int64(0)))))
 }
-
-type t33size_t = uint64
-
-type t5syscall_arg_t = int64
 
 // linking semctl.o
 
@@ -10903,8 +7959,6 @@ func Xsemget(tls TLS, _key int32, _n int32, _fl int32) (r int32) {
 	return int32(X__syscall_ret(tls, uint64(x7__syscall3(tls, int64(64), int64(_key), int64(_n), int64(_fl)))))
 }
 
-type t3key_t = int32
-
 // x__syscall3 is defined at syscall_arch.h:31:22
 func x7__syscall3(tls TLS, _n int64, _a1 int64, _a2 int64, _a3 int64) (r int64) {
 	return X__syscall(tls, _n, _a1, _a2, _a3, int64(0), int64(0), int64(0))
@@ -10917,8 +7971,7 @@ func Xsemop(tls TLS, _id int32, _buf uintptr /* *Ssembuf */, _n uint64) (r int32
 	return int32(X__syscall_ret(tls, uint64(x8__syscall3(tls, int64(65), int64(_id), int64(_buf), int64(_n)))))
 }
 
-type t34size_t = uint64
-
+// Ssembuf is defined at sem.h:51:1
 type Ssembuf = struct {
 	Fsem_num uint16
 	Fsem_op  int16
@@ -10937,14 +7990,14 @@ func Xsemtimedop(tls TLS, _id int32, _buf uintptr /* *Ssembuf */, _n uint64, _ts
 	return int32(X__syscall_ret(tls, uint64(x2__syscall4(tls, int64(220), int64(_id), int64(_buf), int64(_n), int64(_ts)))))
 }
 
-type t35size_t = uint64
-
+// Ssembuf is defined at sem.h:51:1
 type s1sembuf = struct {
 	Fsem_num uint16
 	Fsem_op  int16
 	Fsem_flg int16
 }
 
+// Stimespec is defined at alltypes.h:270:1
 type s3timespec = struct {
 	Ftv_sec  int64
 	Ftv_nsec int64
@@ -10979,6 +8032,7 @@ func Xshmctl(tls TLS, _id int32, _cmd int32, _buf uintptr /* *Sshmid_ds */) (r i
 	return int32(X__syscall_ret(tls, uint64(_r)))
 }
 
+// Sshmid_ds is defined at shm.h:3:1
 type Sshmid_ds = struct {
 	Fshm_perm   s1ipc_perm
 	Fshm_segsz  uint64
@@ -10997,6 +8051,7 @@ func x10__syscall3(tls TLS, _n int64, _a1 int64, _a2 int64, _a3 int64) (r int64)
 	return X__syscall(tls, _n, _a1, _a2, _a3, int64(0), int64(0), int64(0))
 }
 
+// Sipc_perm is defined at ipc.h:1:1
 type s1ipc_perm = struct {
 	Fkey    int32
 	Fuid    uint32
@@ -11009,19 +8064,19 @@ type s1ipc_perm = struct {
 	F__pad2 int64
 }
 
-type t36size_t = uint64
+type t21size_t = uint64
 
 type t5time_t = int64
 
 type t2pid_t = int32
 
-type t4key_t = int32
+type t1key_t = int32
 
 type t3uid_t = uint32
 
 type t3gid_t = uint32
 
-type t6mode_t = uint32
+type t5mode_t = uint32
 
 // linking shmdt.o
 
@@ -11045,9 +8100,7 @@ func Xshmget(tls TLS, _key int32, _size uint64, _flag int32) (r int32) {
 	return int32(X__syscall_ret(tls, uint64(x11__syscall3(tls, int64(29), int64(_key), int64(_size), int64(_flag)))))
 }
 
-type t5key_t = int32
-
-type t37size_t = uint64
+type t22size_t = uint64
 
 // x__syscall3 is defined at syscall_arch.h:31:22
 func x11__syscall3(tls TLS, _n int64, _a1 int64, _a2 int64, _a3 int64) (r int64) {
@@ -11070,7 +8123,7 @@ func xstatic_dl_iterate_phdr(tls TLS, _callback uintptr /* *func(TLS, uintptr, u
 	return r
 }
 
-type t38size_t = uint64
+type t23size_t = uint64
 
 // linking dladdr.o
 
@@ -11158,6 +8211,7 @@ func X__dl_seterr(tls TLS, _fmt uintptr /* *int8 */, ap ...interface{}) {
 	X__builtin_va_end(tls, _ap)
 }
 
+// S__pthread is defined at pthread_impl.h:15:1
 type s11__pthread = struct {
 	Fself          uintptr // *S__pthread
 	Fdtv           uintptr // **void
@@ -11204,7 +8258,7 @@ func x7__pthread_self(tls TLS) (r uintptr /* *S__pthread */) {
 	return r
 }
 
-type t39size_t = uint64
+type t24size_t = uint64
 
 // xstub_invalid_handle is defined at dlerror.c:58:12
 func xstub_invalid_handle(tls TLS, _h uintptr /* *void */) (r int32) {
@@ -11214,12 +8268,14 @@ func xstub_invalid_handle(tls TLS, _h uintptr /* *void */) (r int32) {
 
 type t10uintptr_t = uint64
 
+// S__ptcb is defined at pthread.h:200:1
 type s9__ptcb = struct {
 	F__f    uintptr // *func(TLS, uintptr)
 	F__x    uintptr // *void
 	F__next uintptr // *S__ptcb
 }
 
+// S__locale_struct is defined at libc.h:10:1
 type s42__locale_struct = struct{ Fcat [6]uintptr }
 
 // linking dlinfo.o
@@ -11324,6 +8380,7 @@ func Xcuserid(tls TLS, _buf uintptr /* *int8 */) (r uintptr /* *int8 */) {
 	return _buf
 }
 
+// Spasswd is defined at pwd.h:20:1
 type Spasswd = struct {
 	Fpw_name   uintptr // *int8
 	Fpw_passwd uintptr // *int8
@@ -11337,8 +8394,6 @@ type Spasswd = struct {
 type t4uid_t = uint32
 
 type t4gid_t = uint32
-
-type t40size_t = uint64
 
 // linking daemon.o
 
@@ -11494,7 +8549,7 @@ func Xftw(tls TLS, _path uintptr /* *int8 */, _fn uintptr /* *func(TLS, uintptr,
 // linking futimes.o
 
 // Xfutimes is defined at futimes.c:5:5
-func Xfutimes(tls TLS, _fd int32, _tv uintptr /* [2]Stimeval */) (r int32) {
+func Xfutimes(tls TLS, _fd int32, _tv uintptr /* *Stimeval */) (r int32) {
 	esc := MustMalloc(32)
 	var _times = esc // *[2]Stimespec
 	defer Free(esc)
@@ -11508,11 +8563,13 @@ func Xfutimes(tls TLS, _fd int32, _tv uintptr /* [2]Stimeval */) (r int32) {
 	return Xfutimens(tls, _fd, _times)
 }
 
+// Stimeval is defined at alltypes.h:265:1
 type Stimeval = struct {
 	Ftv_sec  int64
 	Ftv_usec int64
 }
 
+// Stimespec is defined at alltypes.h:270:1
 type s4timespec = struct {
 	Ftv_sec  int64
 	Ftv_nsec int64
@@ -11536,6 +8593,7 @@ func Xgetdtablesize(tls TLS) (r int32) {
 	return int32(0x7fffffff)
 }
 
+// Srlimit is defined at resource.h:22:1
 type s1rlimit = struct {
 	Frlim_cur uint64
 	Frlim_max uint64
@@ -11569,6 +8627,7 @@ func Xgetloadavg(tls TLS, _a uintptr /* *float64 */, _n int32) (r int32) {
 	return _n
 }
 
+// Ssysinfo is defined at sysinfo.h:10:1
 type s1sysinfo = struct {
 	Fuptime     uint64
 	Floads      [3]uint64
@@ -11650,6 +8709,7 @@ func Xgetpass(tls TLS, _prompt uintptr /* *int8 */) (r uintptr /* *int8 */) {
 // x1password [128]int8, escapes: true, getpass.c:13:14
 var x647password = bss + 1760
 
+// Stermios is defined at termios.h:1:1
 type Stermios = struct {
 	Fc_iflag    uint32
 	Fc_oflag    uint32
@@ -11661,15 +8721,13 @@ type Stermios = struct {
 	F__c_ospeed uint32
 }
 
-type t4ssize_t = int64
+type t3ssize_t = int64
 
 type Ttcflag_t = uint32
 
 type Tcc_t = uint8
 
 type Tspeed_t = uint32
-
-type t41size_t = uint64
 
 // linking getusershell.o
 
@@ -11717,15 +8775,13 @@ var xf uintptr
 // xdefshells [18]int8, escapes: true, getusershell.c:5:19
 var xdefshells = ds + 31056
 
-type t5ssize_t = int64
+type t4ssize_t = int64
 
 // xline *int8, escapes: true, getusershell.c:7:13
 var xline = bss + 1888
 
 // xlinesize Tsize_t = uint64, escapes: true, getusershell.c:8:15
 var xlinesize = bss + 1896
-
-type t42size_t = uint64
 
 type s3_IO_FILE struct{ uintptr }
 
@@ -11742,7 +8798,7 @@ func Xisastream(tls TLS, _fd int32) (r int32) {
 // linking lutimes.o
 
 // Xlutimes is defined at lutimes.c:6:5
-func Xlutimes(tls TLS, _filename uintptr /* *int8 */, _tv uintptr /* [2]Stimeval */) (r int32) {
+func Xlutimes(tls TLS, _filename uintptr /* *int8 */, _tv uintptr /* *Stimeval */) (r int32) {
 	esc := MustMalloc(32)
 	var _times = esc // *[2]Stimespec
 	defer Free(esc)
@@ -11753,11 +8809,13 @@ func Xlutimes(tls TLS, _filename uintptr /* *int8 */, _tv uintptr /* [2]Stimeval
 	return Xutimensat(tls, int32(-100), _filename, _times, int32(0x100))
 }
 
+// Stimeval is defined at alltypes.h:265:1
 type s1timeval = struct {
 	Ftv_sec  int64
 	Ftv_usec int64
 }
 
+// Stimespec is defined at alltypes.h:270:1
 type s5timespec = struct {
 	Ftv_sec  int64
 	Ftv_nsec int64
@@ -11791,6 +8849,7 @@ func Xulimit(tls TLS, _cmd int32, ap ...interface{}) (r int64) {
 	return int64(*(*uint64)(unsafe.Pointer(_rl)) / uint64(512))
 }
 
+// Srlimit is defined at resource.h:22:1
 type s2rlimit = struct {
 	Frlim_cur uint64
 	Frlim_max uint64
@@ -11838,6 +8897,7 @@ func X__utmpxname(tls TLS, _f uintptr /* *int8 */) (r int32) {
 	return -1
 }
 
+// Sutmpx is defined at utmpx.h:17:1
 type Sutmpx = struct {
 	Fut_type int16
 	Fut_pid  int32
@@ -11857,6 +8917,7 @@ type Sutmpx = struct {
 
 type t4pid_t = int32
 
+// Stimeval is defined at alltypes.h:265:1
 type s2timeval = struct {
 	Ftv_sec  int64
 	Ftv_usec int64
@@ -11873,7 +8934,7 @@ func Xvalloc(tls TLS, _size uint64) (r uintptr /* *void */) {
 	return Xmemalign(tls, uint64(4096), _size)
 }
 
-type t43size_t = uint64
+type t25size_t = uint64
 
 // linking adjtime.o
 
@@ -11909,11 +8970,13 @@ func Xadjtime(tls TLS, _in uintptr /* *Stimeval */, _out uintptr /* *Stimeval */
 	return 0
 }
 
+// Stimeval is defined at alltypes.h:265:1
 type s3timeval = struct {
 	Ftv_sec  int64
 	Ftv_usec int64
 }
 
+// Stimex is defined at timex.h:19:1
 type Stimex = struct {
 	Fmodes     uint32
 	Foffset    int64
@@ -11954,6 +9017,7 @@ func Xadjtimex(tls TLS, _tx uintptr /* *Stimex */) (r int32) {
 	return int32(X__syscall_ret(tls, uint64(x5__syscall1(tls, int64(159), int64(_tx)))))
 }
 
+// Stimex is defined at timex.h:19:1
 type s1timex = struct {
 	Fmodes     uint32
 	Foffset    int64
@@ -11983,6 +9047,7 @@ func x5__syscall1(tls TLS, _n int64, _a1 int64) (r int64) {
 	return X__syscall(tls, _n, _a1, int64(0), int64(0), int64(0), int64(0), int64(0))
 }
 
+// Stimeval is defined at alltypes.h:265:1
 type s4timeval = struct {
 	Ftv_sec  int64
 	Ftv_usec int64
@@ -12049,8 +9114,7 @@ func Xclock_adjtime(tls TLS, _clock_id int32, _utx uintptr /* *Stimex */) (r int
 	return int32(X__syscall_ret(tls, uint64(x4__syscall2(tls, int64(305), int64(_clock_id), int64(_utx)))))
 }
 
-type t1clockid_t = int32
-
+// Stimex is defined at timex.h:19:1
 type s2timex = struct {
 	Fmodes     uint32
 	Foffset    int64
@@ -12080,6 +9144,7 @@ func x4__syscall2(tls TLS, _n int64, _a1 int64, _a2 int64) (r int64) {
 	return X__syscall(tls, _n, _a1, _a2, int64(0), int64(0), int64(0), int64(0))
 }
 
+// Stimeval is defined at alltypes.h:265:1
 type s5timeval = struct {
 	Ftv_sec  int64
 	Ftv_usec int64
@@ -12151,6 +9216,7 @@ func x7__syscall1(tls TLS, _n int64, _a1 int64) (r int64) {
 	return X__syscall(tls, _n, _a1, int64(0), int64(0), int64(0), int64(0), int64(0))
 }
 
+// Sepoll_event is defined at epoll.h:48:1
 type Sepoll_event = struct {
 	Fevents uint32
 	Fdata   struct {
@@ -12174,6 +9240,7 @@ func x2__syscall6(tls TLS, _n int64, _a1 int64, _a2 int64, _a3 int64, _a4 int64,
 
 type t17uint32_t = uint32
 
+// Nepoll_data_t is defined at epoll.h:41:9
 type Tepoll_data_t = struct {
 	Fptr [0]uintptr
 	Ffd  [0]int32
@@ -12231,10 +9298,6 @@ type Teventfd_t = uint64
 
 type t10uint64_t = uint64
 
-type t44size_t = uint64
-
-type t6ssize_t = int64
-
 // linking fallocate.o
 
 // Xfallocate is defined at fallocate.c:6:5
@@ -12242,12 +9305,12 @@ func Xfallocate(tls TLS, _fd int32, _mode int32, _base int64, _len int64) (r int
 	return int32(X__syscall_ret(tls, uint64(x4__syscall4(tls, int64(285), int64(_fd), int64(_mode), _base, _len))))
 }
 
-type t22off_t = int64
-
 // x__syscall4 is defined at syscall_arch.h:40:22
 func x4__syscall4(tls TLS, _n int64, _a1 int64, _a2 int64, _a3 int64, _a4 int64) (r int64) {
 	return X__syscall(tls, _n, _a1, _a2, _a3, _a4, int64(0), int64(0))
 }
+
+type t22off_t = int64
 
 // linking fanotify.o
 
@@ -12290,12 +9353,6 @@ func Xgetrandom(tls TLS, _buf uintptr /* *void */, _buflen uint64, _flags uint32
 	return X__syscall_ret(tls, uint64(X__syscall_cp(tls, int64(318), int64(_buf), int64(_buflen), int64(_flags), int64(0), int64(0), int64(0))))
 }
 
-type t45size_t = uint64
-
-type t7ssize_t = int64
-
-type t6syscall_arg_t = int64
-
 // linking inotify.o
 
 // Xinotify_init is defined at inotify.c:5:5
@@ -12333,8 +9390,6 @@ func x9__syscall1(tls TLS, _n int64, _a1 int64) (r int64) {
 func x__syscall0(tls TLS, _n int64) (r int64) {
 	return X__syscall(tls, _n, int64(0), int64(0), int64(0), int64(0), int64(0), int64(0))
 }
-
-type t18uint32_t = uint32
 
 // x__syscall3 is defined at syscall_arch.h:31:22
 func x12__syscall3(tls TLS, _n int64, _a1 int64, _a2 int64, _a3 int64) (r int64) {
@@ -12404,7 +9459,7 @@ func Xmlock2(tls TLS, _addr uintptr /* *void */, _len uint64, _flags uint32) (r 
 	return int32(X__syscall_ret(tls, uint64(x15__syscall3(tls, int64(325), int64(_addr), int64(_len), int64(_flags)))))
 }
 
-type t46size_t = uint64
+type t26size_t = uint64
 
 // x__syscall3 is defined at syscall_arch.h:31:22
 func x15__syscall3(tls TLS, _n int64, _a1 int64, _a2 int64, _a3 int64) (r int64) {
@@ -12502,22 +9557,20 @@ func Xppoll(tls TLS, _fds uintptr /* *Spollfd */, _n uint64, _to uintptr /* *Sti
 	}()), int64(_mask), int64(8), int64(0)))))
 }
 
-type Tnfds_t = uint64
-
+// Spollfd is defined at poll.h:31:1
 type s1pollfd = struct {
 	Ffd      int32
 	Fevents  int16
 	Frevents int16
 }
 
+// Stimespec is defined at alltypes.h:270:1
 type s6timespec = struct {
 	Ftv_sec  int64
 	Ftv_nsec int64
 }
 
 type t12time_t = int64
-
-type t7syscall_arg_t = int64
 
 // linking prctl.o
 
@@ -12575,8 +9628,7 @@ func Xprlimit(tls TLS, _pid int32, _resource int32, _new_limit uintptr /* *Srlim
 	return _r
 }
 
-type t5pid_t = int32
-
+// Srlimit is defined at resource.h:22:1
 type s3rlimit = struct {
 	Frlim_cur uint64
 	Frlim_max uint64
@@ -12601,10 +9653,7 @@ func Xprocess_vm_readv(tls TLS, _pid int32, _lvec uintptr /* *Siovec */, _liovcn
 	return X__syscall_ret(tls, uint64(x3__syscall6(tls, int64(310), int64(_pid), int64(_lvec), int64(_liovcnt), int64(_rvec), int64(_riovcnt), int64(_flags))))
 }
 
-type t6pid_t = int32
-
-type t8ssize_t = int64
-
+// Siovec is defined at alltypes.h:380:1
 type Siovec = struct {
 	Fiov_base uintptr // *void
 	Fiov_len  uint64
@@ -12615,7 +9664,7 @@ func x3__syscall6(tls TLS, _n int64, _a1 int64, _a2 int64, _a3 int64, _a4 int64,
 	return X__syscall(tls, _n, _a1, _a2, _a3, _a4, _a5, _a6)
 }
 
-type t47size_t = uint64
+type t27size_t = uint64
 
 // linking ptrace.o
 
@@ -12648,7 +9697,7 @@ func Xptrace(tls TLS, _req int32, ap ...interface{}) (r int64) {
 	return *(*int64)(unsafe.Pointer(_result))
 }
 
-type t7pid_t = int32
+type t5pid_t = int32
 
 // x__syscall5 is defined at syscall_arch.h:50:22
 func x3__syscall5(tls TLS, _n int64, _a1 int64, _a2 int64, _a3 int64, _a4 int64, _a5 int64) (r int64) {
@@ -12674,16 +9723,12 @@ func Xreadahead(tls TLS, _fd int32, _pos int64, _len uint64) (r int64) {
 	return X__syscall_ret(tls, uint64(x17__syscall3(tls, int64(187), int64(_fd), _pos, int64(_len))))
 }
 
-type t23off_t = int64
-
-type t48size_t = uint64
-
-type t9ssize_t = int64
-
 // x__syscall3 is defined at syscall_arch.h:31:22
 func x17__syscall3(tls TLS, _n int64, _a1 int64, _a2 int64, _a3 int64) (r int64) {
 	return X__syscall(tls, _n, _a1, _a2, _a3, int64(0), int64(0), int64(0))
 }
+
+type t23off_t = int64
 
 // linking reboot.o
 
@@ -12704,8 +9749,6 @@ func Xremap_file_pages(tls TLS, _addr uintptr /* *void */, _size uint64, _prot i
 	return int32(X__syscall_ret(tls, uint64(x4__syscall5(tls, int64(216), int64(_addr), int64(_size), int64(_prot), int64(_pgoff), int64(_flags)))))
 }
 
-type t49size_t = uint64
-
 // x__syscall5 is defined at syscall_arch.h:50:22
 func x4__syscall5(tls TLS, _n int64, _a1 int64, _a2 int64, _a3 int64, _a4 int64, _a5 int64) (r int64) {
 	return X__syscall(tls, _n, _a1, _a2, _a3, _a4, _a5, int64(0))
@@ -12721,8 +9764,6 @@ func Xsbrk(tls TLS, _inc int64) (r uintptr /* *void */) {
 	return uintptr(x12__syscall1(tls, int64(12), int64(0)))
 }
 
-type Tintptr_t = int64
-
 // x__syscall1 is defined at syscall_arch.h:14:22
 func x12__syscall1(tls TLS, _n int64, _a1 int64) (r int64) {
 	return X__syscall(tls, _n, _a1, int64(0), int64(0), int64(0), int64(0), int64(0))
@@ -12734,10 +9775,6 @@ func x12__syscall1(tls TLS, _n int64, _a1 int64) (r int64) {
 func Xsendfile(tls TLS, _out_fd int32, _in_fd int32, _ofs uintptr /* *Toff_t = int64 */, _count uint64) (r int64) {
 	return X__syscall_ret(tls, uint64(x7__syscall4(tls, int64(40), int64(_out_fd), int64(_in_fd), int64(_ofs), int64(_count))))
 }
-
-type t50size_t = uint64
-
-type t10ssize_t = int64
 
 // x__syscall4 is defined at syscall_arch.h:40:22
 func x7__syscall4(tls TLS, _n int64, _a1 int64, _a2 int64, _a3 int64, _a4 int64) (r int64) {
@@ -12751,8 +9788,6 @@ func Xsetfsgid(tls TLS, _gid uint32) (r int32) {
 	return int32(X__syscall_ret(tls, uint64(x13__syscall1(tls, int64(123), int64(_gid)))))
 }
 
-type t5gid_t = uint32
-
 // x__syscall1 is defined at syscall_arch.h:14:22
 func x13__syscall1(tls TLS, _n int64, _a1 int64) (r int64) {
 	return X__syscall(tls, _n, _a1, int64(0), int64(0), int64(0), int64(0), int64(0))
@@ -12765,8 +9800,6 @@ func Xsetfsuid(tls TLS, _uid uint32) (r int32) {
 	return int32(X__syscall_ret(tls, uint64(x14__syscall1(tls, int64(122), int64(_uid)))))
 }
 
-type t5uid_t = uint32
-
 // x__syscall1 is defined at syscall_arch.h:14:22
 func x14__syscall1(tls TLS, _n int64, _a1 int64) (r int64) {
 	return X__syscall(tls, _n, _a1, int64(0), int64(0), int64(0), int64(0), int64(0))
@@ -12775,11 +9808,9 @@ func x14__syscall1(tls TLS, _n int64, _a1 int64) (r int64) {
 // linking setgroups.o
 
 // Xsetgroups is defined at setgroups.c:5:5
-func Xsetgroups(tls TLS, _count uint64, _list uintptr /* uintptr */) (r int32) {
+func Xsetgroups(tls TLS, _count uint64, _list uintptr /* *Tgid_t = uint32 */) (r int32) {
 	return int32(X__syscall_ret(tls, uint64(x13__syscall2(tls, int64(116), int64(_count), int64(_list)))))
 }
-
-type t51size_t = uint64
 
 // x__syscall2 is defined at syscall_arch.h:22:22
 func x13__syscall2(tls TLS, _n int64, _a1 int64, _a2 int64) (r int64) {
@@ -12792,8 +9823,6 @@ func x13__syscall2(tls TLS, _n int64, _a1 int64, _a2 int64) (r int64) {
 func Xsethostname(tls TLS, _name uintptr /* *int8 */, _len uint64) (r int32) {
 	return int32(X__syscall_ret(tls, uint64(x14__syscall2(tls, int64(170), int64(_name), int64(_len)))))
 }
-
-type t52size_t = uint64
 
 // x__syscall2 is defined at syscall_arch.h:22:22
 func x14__syscall2(tls TLS, _n int64, _a1 int64, _a2 int64) (r int64) {
@@ -12819,11 +9848,13 @@ func Xsettimeofday(tls TLS, _tv uintptr /* *Stimeval */, _tz uintptr /* *Stimezo
 	return int32(X__syscall_ret(tls, uint64(x16__syscall2(tls, int64(164), int64(_tv), int64(0)))))
 }
 
+// Stimeval is defined at alltypes.h:265:1
 type s6timeval = struct {
 	Ftv_sec  int64
 	Ftv_usec int64
 }
 
+// Stimezone is defined at time.h:27:1
 type Stimezone = struct {
 	Ftz_minuteswest int32
 	Ftz_dsttime     int32
@@ -12877,10 +9908,6 @@ func Xsplice(tls TLS, _fd_in int32, _off_in uintptr /* *Toff_t = int64 */, _fd_o
 	return X__syscall_ret(tls, uint64(x4__syscall6(tls, int64(275), int64(_fd_in), int64(_off_in), int64(_fd_out), int64(_off_out), int64(_len), int64(_flags))))
 }
 
-type t53size_t = uint64
-
-type t11ssize_t = int64
-
 // x__syscall6 is defined at syscall_arch.h:61:22
 func x4__syscall6(tls TLS, _n int64, _a1 int64, _a2 int64, _a3 int64, _a4 int64, _a5 int64, _a6 int64) (r int64) {
 	return X__syscall(tls, _n, _a1, _a2, _a3, _a4, _a5, _a6)
@@ -12899,6 +9926,7 @@ func Xstime(tls TLS, _t uintptr /* *Ttime_t = int64 */) (r int32) {
 	return Xsettimeofday(tls, _tv, null)
 }
 
+// Stimeval is defined at alltypes.h:265:1
 type s7timeval = struct {
 	Ftv_sec  int64
 	Ftv_usec int64
@@ -12937,12 +9965,12 @@ func Xsync_file_range(tls TLS, _fd int32, _pos int64, _len int64, _flags uint32)
 	return int32(X__syscall_ret(tls, uint64(x9__syscall4(tls, int64(277), int64(_fd), _pos, _len, int64(_flags)))))
 }
 
-type t24off_t = int64
-
 // x__syscall4 is defined at syscall_arch.h:40:22
 func x9__syscall4(tls TLS, _n int64, _a1 int64, _a2 int64, _a3 int64, _a4 int64) (r int64) {
 	return X__syscall(tls, _n, _a1, _a2, _a3, _a4, int64(0), int64(0))
 }
+
+type t24off_t = int64
 
 // linking syncfs.o
 
@@ -12963,6 +9991,7 @@ func X__lsysinfo(tls TLS, _info uintptr /* *Ssysinfo */) (r int32) {
 	return int32(X__syscall_ret(tls, uint64(x17__syscall1(tls, int64(99), int64(_info)))))
 }
 
+// Ssysinfo is defined at sysinfo.h:10:1
 type s2sysinfo = struct {
 	Fuptime     uint64
 	Floads      [3]uint64
@@ -12992,10 +10021,6 @@ func Xtee(tls TLS, _src int32, _dest int32, _len uint64, _flags uint32) (r int64
 	return X__syscall_ret(tls, uint64(x10__syscall4(tls, int64(276), int64(_src), int64(_dest), int64(_len), int64(_flags))))
 }
 
-type t54size_t = uint64
-
-type t12ssize_t = int64
-
 // x__syscall4 is defined at syscall_arch.h:40:22
 func x10__syscall4(tls TLS, _n int64, _a1 int64, _a2 int64, _a3 int64, _a4 int64) (r int64) {
 	return X__syscall(tls, _n, _a1, _a2, _a3, _a4, int64(0), int64(0))
@@ -13023,6 +10048,7 @@ func x18__syscall2(tls TLS, _n int64, _a1 int64, _a2 int64) (r int64) {
 	return X__syscall(tls, _n, _a1, _a2, int64(0), int64(0), int64(0), int64(0))
 }
 
+// Sitimerspec is defined at time.h:80:1
 type Sitimerspec = struct {
 	Fit_interval s7timespec
 	Fit_value    s7timespec
@@ -13033,6 +10059,7 @@ func x11__syscall4(tls TLS, _n int64, _a1 int64, _a2 int64, _a3 int64, _a4 int64
 	return X__syscall(tls, _n, _a1, _a2, _a3, _a4, int64(0), int64(0))
 }
 
+// Stimespec is defined at alltypes.h:270:1
 type s7timespec = struct {
 	Ftv_sec  int64
 	Ftv_nsec int64
@@ -13055,10 +10082,11 @@ func x18__syscall1(tls TLS, _n int64, _a1 int64) (r int64) {
 // linking utimes.o
 
 // Xutimes is defined at utimes.c:7:5
-func Xutimes(tls TLS, _path uintptr /* *int8 */, _times uintptr /* [2]Stimeval */) (r int32) {
+func Xutimes(tls TLS, _path uintptr /* *int8 */, _times uintptr /* *Stimeval */) (r int32) {
 	return X__futimesat(tls, int32(-100), _path, _times)
 }
 
+// Stimeval is defined at alltypes.h:265:1
 type s8timeval = struct {
 	Ftv_sec  int64
 	Ftv_usec int64
@@ -13087,10 +10115,7 @@ func Xvmsplice(tls TLS, _fd int32, _iov uintptr /* *Siovec */, _cnt uint64, _fla
 	return X__syscall_ret(tls, uint64(x12__syscall4(tls, int64(278), int64(_fd), int64(_iov), int64(_cnt), int64(_flags))))
 }
 
-type t55size_t = uint64
-
-type t13ssize_t = int64
-
+// Siovec is defined at alltypes.h:380:1
 type s1iovec = struct {
 	Fiov_base uintptr // *void
 	Fiov_len  uint64
@@ -13101,6 +10126,8 @@ func x12__syscall4(tls TLS, _n int64, _a1 int64, _a2 int64, _a3 int64, _a4 int64
 	return X__syscall(tls, _n, _a1, _a2, _a3, _a4, int64(0), int64(0))
 }
 
+type t28size_t = uint64
+
 // linking wait3.o
 
 // Xwait3 is defined at wait3.c:6:7
@@ -13108,8 +10135,7 @@ func Xwait3(tls TLS, _status uintptr /* *int32 */, _options int32, _usage uintpt
 	return Xwait4(tls, int32(-1), _status, _options, _usage)
 }
 
-type t8pid_t = int32
-
+// Srusage is defined at resource.h:27:1
 type Srusage = struct {
 	Fru_utime    s9timeval
 	Fru_stime    s9timeval
@@ -13130,6 +10156,9 @@ type Srusage = struct {
 	F__reserved  [16]int64
 }
 
+type t6pid_t = int32
+
+// Stimeval is defined at alltypes.h:265:1
 type s9timeval = struct {
 	Ftv_sec  int64
 	Ftv_usec int64
@@ -13146,8 +10175,7 @@ func Xwait4(tls TLS, _pid int32, _status uintptr /* *int32 */, _options int32, _
 	return int32(X__syscall_ret(tls, uint64(x13__syscall4(tls, int64(61), int64(_pid), int64(_status), int64(_options), int64(_usage)))))
 }
 
-type t9pid_t = int32
-
+// Srusage is defined at resource.h:27:1
 type s1rusage = struct {
 	Fru_utime    s10timeval
 	Fru_stime    s10timeval
@@ -13173,6 +10201,7 @@ func x13__syscall4(tls TLS, _n int64, _a1 int64, _a2 int64, _a3 int64, _a4 int64
 	return X__syscall(tls, _n, _a1, _a2, _a3, _a4, int64(0), int64(0))
 }
 
+// Stimeval is defined at alltypes.h:265:1
 type s10timeval = struct {
 	Ftv_sec  int64
 	Ftv_usec int64
@@ -13244,10 +10273,6 @@ func Xfremovexattr(tls TLS, _fd int32, _name uintptr /* *int8 */) (r int32) {
 	return int32(X__syscall_ret(tls, uint64(x19__syscall2(tls, int64(199), int64(_fd), int64(_name)))))
 }
 
-type t56size_t = uint64
-
-type t14ssize_t = int64
-
 // x__syscall4 is defined at syscall_arch.h:40:22
 func x14__syscall4(tls TLS, _n int64, _a1 int64, _a2 int64, _a3 int64, _a4 int64) (r int64) {
 	return X__syscall(tls, _n, _a1, _a2, _a3, _a4, int64(0), int64(0))
@@ -13285,6 +10310,7 @@ func x6dummy(tls TLS, _msg uintptr /* *int8 */, _lm uintptr /* *S__locale_map */
 	return _msg
 }
 
+// S__locale_map is defined at locale_impl.h:11:1
 type S__locale_map = struct {
 	Fmap      uintptr // *void
 	Fmap_size uint64
@@ -13298,8 +10324,9 @@ func x8__pthread_self(tls TLS) (r uintptr /* *S__pthread */) {
 	return r
 }
 
-type t57size_t = uint64
+type t29size_t = uint64
 
+// S__pthread is defined at pthread_impl.h:15:1
 type s12__pthread = struct {
 	Fself          uintptr // *S__pthread
 	Fdtv           uintptr // **void
@@ -13342,12 +10369,14 @@ type s12__pthread = struct {
 
 type t11uintptr_t = uint64
 
+// S__ptcb is defined at pthread.h:200:1
 type s10__ptcb = struct {
 	F__f    uintptr // *func(TLS, uintptr)
 	F__x    uintptr // *void
 	F__next uintptr // *S__ptcb
 }
 
+// S__locale_struct is defined at libc.h:10:1
 type s43__locale_struct = struct{ Fcat [6]uintptr }
 
 // linking __mo_lookup.o
@@ -13404,9 +10433,7 @@ func X__mo_lookup(tls TLS, _p uintptr /* *void */, _size uint64, _s uintptr /* *
 	return null
 }
 
-type t58size_t = uint64
-
-type t19uint32_t = uint32
+type t18uint32_t = uint32
 
 // xswapc is defined at __mo_lookup.c:4:24
 func xswapc(tls TLS, _x uint32, _c int32) (r uint32) {
@@ -13415,6 +10442,8 @@ func xswapc(tls TLS, _x uint32, _c int32) (r uint32) {
 	}
 	return _x
 }
+
+type t30size_t = uint64
 
 // linking bind_textdomain_codeset.o
 
@@ -13442,6 +10471,7 @@ func init() {
 // X__c_locale S__locale_struct, escapes: true, c_locale.c:12:30
 var X__c_locale = bss + 1952
 
+// S__locale_map is defined at locale_impl.h:11:1
 type s1__locale_map = struct {
 	Fmap      uintptr // *void
 	Fmap_size uint64
@@ -13452,11 +10482,12 @@ type s1__locale_map = struct {
 // xempty_mo [5]uint32, escapes: true, c_locale.c:4:23
 var xempty_mo = ds + 31080
 
-type t59size_t = uint64
+type t31size_t = uint64
 
+// S__locale_struct is defined at libc.h:10:1
 type s44__locale_struct = struct{ Fcat [6]uintptr }
 
-type t20uint32_t = uint32
+type t19uint32_t = uint32
 
 // linking catclose.o
 
@@ -13531,9 +10562,8 @@ func X__duplocale(tls TLS, _old uintptr /* Tlocale_t = *S__locale_struct */) (r 
 	return _new
 }
 
+// S__locale_struct is defined at libc.h:10:1
 type s45__locale_struct = struct{ Fcat [6]uintptr }
-
-type t60size_t = uint64
 
 // linking freelocale.o
 
@@ -13544,6 +10574,7 @@ func Xfreelocale(tls TLS, _l uintptr /* Tlocale_t = *S__locale_struct */) {
 	}
 }
 
+// S__locale_struct is defined at libc.h:10:1
 type s46__locale_struct = struct{ Fcat [6]uintptr }
 
 // linking iconv.o
@@ -13596,8 +10627,9 @@ func Xiconv(tls TLS, _cd uintptr /* Ticonv_t = *void */, _in uintptr /* **int8 *
 	return r
 }
 
-type t61size_t = uint64
+type t32size_t = uint64
 
+// Sstateful_cd is defined at iconv.c:120:1
 type Sstateful_cd = struct {
 	Fbase_cd uintptr // Ticonv_t = *void
 	Fstate   uint32
@@ -13661,7 +10693,7 @@ func Xiconv_close(tls TLS, _cd uintptr /* Ticonv_t = *void */) (r int32) {
 	return 0
 }
 
-type t62size_t = uint64
+type t33size_t = uint64
 
 // linking langinfo.o
 
@@ -13746,9 +10778,10 @@ func X__nl_langinfo(tls TLS, _item int32) (r uintptr /* *int8 */) {
 	return X__nl_langinfo_l(tls, _item, *(*uintptr)(unsafe.Pointer(x9__pthread_self(tls) + 192)))
 }
 
-type Tnl_item = int32
-
+// S__locale_struct is defined at libc.h:10:1
 type s47__locale_struct = struct{ Fcat [6]uintptr }
+
+type Tnl_item = int32
 
 // xc_numeric [3]int8, escapes: true, langinfo.c:28:19
 var xc_numeric = ds + 35992
@@ -13765,6 +10798,7 @@ func x9__pthread_self(tls TLS) (r uintptr /* *S__pthread */) {
 	return r
 }
 
+// S__pthread is defined at pthread_impl.h:15:1
 type s13__pthread = struct {
 	Fself          uintptr // *S__pthread
 	Fdtv           uintptr // **void
@@ -13807,8 +10841,9 @@ type s13__pthread = struct {
 
 type t12uintptr_t = uint64
 
-type t63size_t = uint64
+type t34size_t = uint64
 
+// S__ptcb is defined at pthread.h:200:1
 type s11__ptcb = struct {
 	F__f    uintptr // *func(TLS, uintptr)
 	F__x    uintptr // *void
@@ -13926,6 +10961,7 @@ func X__get_locale(tls TLS, _cat int32, _val uintptr /* *int8 */) (r uintptr /* 
 	return _new
 }
 
+// S__locale_map is defined at locale_impl.h:11:1
 type s2__locale_map = struct {
 	Fmap      uintptr // *void
 	Fmap_size uint64
@@ -13933,7 +10969,7 @@ type s2__locale_map = struct {
 	Fnext     uintptr // *S__locale_map
 }
 
-type t64size_t = uint64
+type t35size_t = uint64
 
 // x1lock [1]int32, escapes: true, locale_map.c:29:22
 var x654lock = bss + 2000
@@ -13951,6 +10987,7 @@ func Xlocaleconv(tls TLS) (r uintptr /* *Slconv */) {
 	return xposix_lconv
 }
 
+// Slconv is defined at locale.h:24:1
 type Slconv = struct {
 	Fdecimal_point      uintptr // *int8
 	Fthousands_sep      uintptr // *int8
@@ -14024,6 +11061,7 @@ func X__newlocale(tls TLS, _mask int32, _name uintptr /* *int8 */, _loc uintptr 
 	return r
 }
 
+// S__locale_struct is defined at libc.h:10:1
 type s48__locale_struct = struct{ Fcat [6]uintptr }
 
 // linking pleval.o
@@ -14041,6 +11079,7 @@ func X__pleval(tls TLS, _s uintptr /* *int8 */, _n uint64) (r uint64) {
 	return uint64(18446744073709551615)
 }
 
+// Sst is defined at pleval.c:25:1
 type Sst = struct {
 	Fr  uint64
 	Fn  uint64
@@ -14335,6 +11374,7 @@ func Xsetlocale(tls TLS, _cat int32, _name uintptr /* *int8 */) (r uintptr /* *i
 // x1lock [1]int32, escapes: true, setlocale.c:24:22
 var x660lock = bss + 2104
 
+// S__locale_map is defined at locale_impl.h:11:1
 type s3__locale_map = struct {
 	Fmap      uintptr // *void
 	Fmap_size uint64
@@ -14342,7 +11382,7 @@ type s3__locale_map = struct {
 	Fnext     uintptr // *S__locale_map
 }
 
-type t65size_t = uint64
+type t36size_t = uint64
 
 func set661(p *uintptr, v uintptr) uintptr { *p = v; return v }
 
@@ -14376,6 +11416,7 @@ func Xstrcoll(tls TLS, _l uintptr /* *int8 */, _r uintptr /* *int8 */) (r int32)
 	return X__strcoll_l(tls, _l, _r, *(*uintptr)(unsafe.Pointer(x10__pthread_self(tls) + 192)))
 }
 
+// S__locale_struct is defined at libc.h:10:1
 type s49__locale_struct = struct{ Fcat [6]uintptr }
 
 // x__pthread_self is defined at pthread_arch.h:1:30
@@ -14384,6 +11425,7 @@ func x10__pthread_self(tls TLS) (r uintptr /* *S__pthread */) {
 	return r
 }
 
+// S__pthread is defined at pthread_impl.h:15:1
 type s14__pthread = struct {
 	Fself          uintptr // *S__pthread
 	Fdtv           uintptr // **void
@@ -14426,8 +11468,9 @@ type s14__pthread = struct {
 
 type t13uintptr_t = uint64
 
-type t66size_t = uint64
+type t37size_t = uint64
 
+// S__ptcb is defined at pthread.h:200:1
 type s12__ptcb = struct {
 	F__f    uintptr // *func(TLS, uintptr)
 	F__x    uintptr // *void
@@ -14460,11 +11503,10 @@ func Xstrfmon(tls TLS, _s uintptr /* *int8 */, _n uint64, _fmt uintptr /* *int8 
 	return _ret
 }
 
-type t67size_t = uint64
-
-type t15ssize_t = int64
-
+// S__locale_struct is defined at libc.h:10:1
 type s50__locale_struct = struct{ Fcat [6]uintptr }
+
+type t5ssize_t = int64
 
 func postinc662(p *uintptr) uintptr { r := *p; *p += 1; return r }
 
@@ -14605,12 +11647,15 @@ _3:
 	return int64(_s - _s0)
 }
 
+type t38size_t = uint64
+
 // x__pthread_self is defined at pthread_arch.h:1:30
 func x11__pthread_self(tls TLS) (r uintptr /* *S__pthread */) {
 	return uintptr(tls)
 	return r
 }
 
+// S__pthread is defined at pthread_impl.h:15:1
 type s15__pthread = struct {
 	Fself          uintptr // *S__pthread
 	Fdtv           uintptr // **void
@@ -14653,6 +11698,7 @@ type s15__pthread = struct {
 
 type t14uintptr_t = uint64
 
+// S__ptcb is defined at pthread.h:200:1
 type s13__ptcb = struct {
 	F__f    uintptr // *func(TLS, uintptr)
 	F__x    uintptr // *void
@@ -14677,9 +11723,10 @@ func Xstrxfrm(tls TLS, _dest uintptr /* *int8 */, _src uintptr /* *int8 */, _n u
 	return X__strxfrm_l(tls, _dest, _src, _n, *(*uintptr)(unsafe.Pointer(x12__pthread_self(tls) + 192)))
 }
 
-type t68size_t = uint64
-
+// S__locale_struct is defined at libc.h:10:1
 type s51__locale_struct = struct{ Fcat [6]uintptr }
+
+type t39size_t = uint64
 
 // x__pthread_self is defined at pthread_arch.h:1:30
 func x12__pthread_self(tls TLS) (r uintptr /* *S__pthread */) {
@@ -14687,6 +11734,7 @@ func x12__pthread_self(tls TLS) (r uintptr /* *S__pthread */) {
 	return r
 }
 
+// S__pthread is defined at pthread_impl.h:15:1
 type s16__pthread = struct {
 	Fself          uintptr // *S__pthread
 	Fdtv           uintptr // **void
@@ -14729,6 +11777,7 @@ type s16__pthread = struct {
 
 type t15uintptr_t = uint64
 
+// S__ptcb is defined at pthread.h:200:1
 type s14__ptcb = struct {
 	F__f    uintptr // *func(TLS, uintptr)
 	F__x    uintptr // *void
@@ -14780,7 +11829,7 @@ func Xngettext(tls TLS, _msgid1 uintptr /* *int8 */, _msgid2 uintptr /* *int8 */
 // xcurrent_domain *int8, escapes: false, textdomain.c:9:13
 var xcurrent_domain uintptr
 
-type t69size_t = uint64
+type t40size_t = uint64
 
 // linking uselocale.o
 
@@ -14807,8 +11856,10 @@ func X__uselocale(tls TLS, _new uintptr /* Tlocale_t = *S__locale_struct */) (r 
 	return _old
 }
 
+// S__locale_struct is defined at libc.h:10:1
 type s52__locale_struct = struct{ Fcat [6]uintptr }
 
+// S__pthread is defined at pthread_impl.h:15:1
 type s17__pthread = struct {
 	Fself          uintptr // *S__pthread
 	Fdtv           uintptr // **void
@@ -14857,8 +11908,9 @@ func x13__pthread_self(tls TLS) (r uintptr /* *S__pthread */) {
 
 type t16uintptr_t = uint64
 
-type t70size_t = uint64
+type t41size_t = uint64
 
+// S__ptcb is defined at pthread.h:200:1
 type s15__ptcb = struct {
 	F__f    uintptr // *func(TLS, uintptr)
 	F__x    uintptr // *void
@@ -14877,6 +11929,7 @@ func Xwcscoll(tls TLS, _l uintptr /* *Twchar_t = int32 */, _r uintptr /* *Twchar
 	return X__wcscoll_l(tls, _l, _r, *(*uintptr)(unsafe.Pointer(x14__pthread_self(tls) + 192)))
 }
 
+// S__locale_struct is defined at libc.h:10:1
 type s53__locale_struct = struct{ Fcat [6]uintptr }
 
 // x__pthread_self is defined at pthread_arch.h:1:30
@@ -14885,6 +11938,7 @@ func x14__pthread_self(tls TLS) (r uintptr /* *S__pthread */) {
 	return r
 }
 
+// S__pthread is defined at pthread_impl.h:15:1
 type s18__pthread = struct {
 	Fself          uintptr // *S__pthread
 	Fdtv           uintptr // **void
@@ -14927,8 +11981,9 @@ type s18__pthread = struct {
 
 type t17uintptr_t = uint64
 
-type t71size_t = uint64
+type t42size_t = uint64
 
+// S__ptcb is defined at pthread.h:200:1
 type s16__ptcb = struct {
 	F__f    uintptr // *func(TLS, uintptr)
 	F__x    uintptr // *void
@@ -14956,9 +12011,10 @@ func Xwcsxfrm(tls TLS, _dest uintptr /* *Twchar_t = int32 */, _src uintptr /* *T
 	return X__wcsxfrm_l(tls, _dest, _src, _n, *(*uintptr)(unsafe.Pointer(x15__pthread_self(tls) + 192)))
 }
 
-type t72size_t = uint64
-
+// S__locale_struct is defined at libc.h:10:1
 type s54__locale_struct = struct{ Fcat [6]uintptr }
+
+type t43size_t = uint64
 
 type t4wchar_t = int32
 
@@ -14968,6 +12024,7 @@ func x15__pthread_self(tls TLS) (r uintptr /* *S__pthread */) {
 	return r
 }
 
+// S__pthread is defined at pthread_impl.h:15:1
 type s19__pthread = struct {
 	Fself          uintptr // *S__pthread
 	Fdtv           uintptr // **void
@@ -15010,6 +12067,7 @@ type s19__pthread = struct {
 
 type t18uintptr_t = uint64
 
+// S__ptcb is defined at pthread.h:200:1
 type s17__ptcb = struct {
 	F__f    uintptr // *func(TLS, uintptr)
 	F__x    uintptr // *void
@@ -15023,7 +12081,7 @@ func Xaligned_alloc(tls TLS, _align uint64, _len uint64) (r uintptr /* *void */)
 	return X__memalign(tls, _align, _len)
 }
 
-type t73size_t = uint64
+type t44size_t = uint64
 
 // linking expand_heap.o
 
@@ -15068,7 +12126,7 @@ var x664brk uint64
 // x2mmap_step uint32, escapes: false, expand_heap.c:43:18
 var x665mmap_step uint32
 
-type t74size_t = uint64
+type t45size_t = uint64
 
 type t19uintptr_t = uint64
 
@@ -15108,11 +12166,7 @@ func xtraverses_stack_p(tls TLS, _old uint64, _new uint64) (r int32) {
 	return 0
 }
 
-type t25off_t = int64
-
 // linking lite_malloc.o
-
-type t75size_t = uint64
 
 // x__simple_malloc is defined at lite_malloc.c:11:13
 func x__simple_malloc(tls TLS, _n uint64) (r uintptr /* *void */) {
@@ -15174,6 +12228,8 @@ var x668end uintptr
 
 // x5lock [1]int32, escapes: true, lite_malloc.c:14:22
 var x666lock = bss + 2256
+
+type t46size_t = uint64
 
 type t20uintptr_t = uint64
 
@@ -15464,6 +12520,7 @@ func X__malloc_donate(tls TLS, _start uintptr /* *int8 */, _end uintptr /* *int8
 	X__bin_chunk(tls, _c)
 }
 
+// Schunk is defined at malloc_impl.h:9:1
 type Schunk = struct {
 	Fpsize uint64
 	Fcsize uint64
@@ -15471,7 +12528,7 @@ type Schunk = struct {
 	Fprev  uintptr // *Schunk
 }
 
-type t76size_t = uint64
+type t47size_t = uint64
 
 type t21uintptr_t = uint64
 
@@ -15765,6 +12822,7 @@ func xa_swap(tls TLS, _p uintptr /* *int32 */, _v int32) (r int32) {
 	return r
 }
 
+// Sbin is defined at malloc_impl.h:14:1
 type Sbin = struct {
 	Flock [2]int32
 	Fhead uintptr // *Schunk
@@ -15788,8 +12846,6 @@ func x__wake(tls TLS, _addr uintptr /* *void */, _cnt int32, _priv int32) {
 		x21__syscall3(tls, int64(202), int64(_addr), int64(1), int64(_cnt))
 	}
 }
-
-type t26off_t = int64
 
 // x24heap_lock [2]int32, escapes: true, malloc.c:130:13
 var x671heap_lock = bss + 3824
@@ -15827,7 +12883,7 @@ func x21__syscall3(tls TLS, _n int64, _a1 int64, _a2 int64, _a3 int64) (r int64)
 // x29debruijn64 [64]int8, escapes: true, atomic.h:274:20
 var x673debruijn64 = ds + 36512
 
-type t21uint32_t = uint32
+type t20uint32_t = uint32
 
 // xa_ctz_32 is defined at atomic.h:256:19
 func xa_ctz_32(tls TLS, _x uint32) (r int32) {
@@ -15854,7 +12910,7 @@ func Xmalloc_usable_size(tls TLS, _p uintptr /* *void */) (r uint64) {
 	return uint64(0)
 }
 
-type t77size_t = uint64
+type t48size_t = uint64
 
 // linking memalign.o
 
@@ -15905,14 +12961,15 @@ func X__memalign(tls TLS, _align uint64, _len uint64) (r uintptr /* *void */) {
 	return _new
 }
 
-type t78size_t = uint64
-
+// Schunk is defined at malloc_impl.h:9:1
 type s1chunk = struct {
 	Fpsize uint64
 	Fcsize uint64
 	Fnext  uintptr // *Schunk
 	Fprev  uintptr // *Schunk
 }
+
+type t49size_t = uint64
 
 type t22uintptr_t = uint64
 
@@ -15933,7 +12990,7 @@ func Xposix_memalign(tls TLS, _res uintptr /* **void */, _align uint64, _len uin
 	return 0
 }
 
-type t79size_t = uint64
+type t50size_t = uint64
 
 // linking __cos.o
 
@@ -16021,7 +13078,7 @@ func X__expo2(tls TLS, _x float64) (r float64) {
 
 type t12uint64_t = uint64
 
-type t22uint32_t = uint32
+type t21uint32_t = uint32
 
 // xk int32, escapes: false, __expo2.c:4:18
 var x2k = int32(2043)
@@ -16044,7 +13101,7 @@ func X__expo2f(tls TLS, _x float32) (r float32) {
 	return float32(Xexpf(tls, _x-x3kln2)*_scale) * _scale
 }
 
-type t23uint32_t = uint32
+type t22uint32_t = uint32
 
 // xk int32, escapes: false, __expo2f.c:4:18
 var x3k = int32(235)
@@ -16124,7 +13181,7 @@ func X__fpclassifyf(tls TLS, _x float32) (r int32) {
 	return 4
 }
 
-type t24uint32_t = uint32
+type t23uint32_t = uint32
 
 // linking __fpclassifyl.o
 
@@ -16326,7 +13383,7 @@ type t14uint64_t = uint64
 
 type t2double_t = float64
 
-type t25uint32_t = uint32
+type t24uint32_t = uint32
 
 // xpio2_1 float64, escapes: false, __rem_pio2.c:40:1
 var xpio2_1 = float64(1.5707963267341256)
@@ -16690,7 +13747,7 @@ func X__rem_pio2f(tls TLS, _x float32, _y uintptr /* *float64 */) (r int32) {
 	return _n
 }
 
-type t26uint32_t = uint32
+type t25uint32_t = uint32
 
 type t3double_t = float64
 
@@ -16750,7 +13807,7 @@ func X__signbitf(tls TLS, _x float32) (r int32) {
 	return int32(*(*uint32)(unsafe.Pointer(_y)) >> (uint(31) % 32))
 }
 
-type t27uint32_t = uint32
+type t26uint32_t = uint32
 
 // linking __signbitl.o
 
@@ -16916,7 +13973,7 @@ func X__tan(tls TLS, _x float64, _y float64, _odd int32) (r float64) {
 
 type t6double_t = float64
 
-type t28uint32_t = uint32
+type t27uint32_t = uint32
 
 type t16uint64_t = uint64
 
@@ -17024,7 +14081,7 @@ func Xacos(tls TLS, _x float64) (r float64) {
 	return float64(2) * float64(_df+_w)
 }
 
-type t29uint32_t = uint32
+type t28uint32_t = uint32
 
 type t17uint64_t = uint64
 
@@ -17130,7 +14187,7 @@ func Xacosf(tls TLS, _x float32) (r float32) {
 	return float32(2) * float32(_df+_w)
 }
 
-type t30uint32_t = uint32
+type t29uint32_t = uint32
 
 // xpio2_hi float32, escapes: false, acosf.c:19:1
 var x1pio2_hi = float32(1.5707963)
@@ -17223,7 +14280,7 @@ func Xacoshf(tls TLS, _x float32) (r float32) {
 	return Xlogf(tls, _x) + float32(0.6931472)
 }
 
-type t31uint32_t = uint32
+type t30uint32_t = uint32
 
 // linking acoshl.o
 
@@ -17301,7 +14358,7 @@ func Xasin(tls TLS, _x float64) (r float64) {
 	return _x
 }
 
-type t32uint32_t = uint32
+type t31uint32_t = uint32
 
 type t19uint64_t = uint64
 
@@ -17391,7 +14448,7 @@ func Xasinf(tls TLS, _x float32) (r float32) {
 	return _x
 }
 
-type t33uint32_t = uint32
+type t32uint32_t = uint32
 
 // xpio2 float64, escapes: false, asinf.c:18:1
 var xpio2 = float64(1.5707963267948966)
@@ -17524,7 +14581,7 @@ func Xasinhf(tls TLS, _x float32) (r float32) {
 	return _x
 }
 
-type t34uint32_t = uint32
+type t33uint32_t = uint32
 
 // linking asinhl.o
 
@@ -17624,7 +14681,7 @@ func Xatan(tls TLS, _x float64) (r float64) {
 
 type t10double_t = float64
 
-type t35uint32_t = uint32
+type t34uint32_t = uint32
 
 type t21uint64_t = uint64
 
@@ -17795,7 +14852,7 @@ _26:
 	return r
 }
 
-type t36uint32_t = uint32
+type t35uint32_t = uint32
 
 type t22uint64_t = uint64
 
@@ -17959,7 +15016,7 @@ _26:
 	return r
 }
 
-type t37uint32_t = uint32
+type t36uint32_t = uint32
 
 // x__FLOAT_BITS is defined at math.h:43:26
 func x3__FLOAT_BITS(tls TLS, ___f float32) (r uint32) {
@@ -18067,7 +15124,7 @@ func Xatanf(tls TLS, _x float32) (r float32) {
 
 type t2float_t = float32
 
-type t38uint32_t = uint32
+type t37uint32_t = uint32
 
 // x__FLOAT_BITS is defined at math.h:43:26
 func x4__FLOAT_BITS(tls TLS, ___f float32) (r uint32) {
@@ -18203,7 +15260,7 @@ func Xatanhf(tls TLS, _x float32) (r float32) {
 	return _y
 }
 
-type t39uint32_t = uint32
+type t38uint32_t = uint32
 
 type t3float_t = float32
 
@@ -18284,7 +15341,7 @@ type t24uint64_t = uint64
 
 type t12double_t = float64
 
-type t40uint32_t = uint32
+type t39uint32_t = uint32
 
 // xB2 Tuint32_t = uint32, escapes: false, cbrt.c:23:1
 var xB2 = uint32(696219795)
@@ -18360,7 +15417,7 @@ func Xcbrtf(tls TLS, _x float32) (r float32) {
 
 type t13double_t = float64
 
-type t41uint32_t = uint32
+type t40uint32_t = uint32
 
 // xB2 uint32, escapes: false, cbrtf.c:25:1
 var x1B2 = uint32(642849266)
@@ -18511,7 +15568,7 @@ func Xceilf(tls TLS, _x float32) (r float32) {
 	return *(*float32)(unsafe.Pointer(_u))
 }
 
-type t42uint32_t = uint32
+type t41uint32_t = uint32
 
 // linking ceill.o
 
@@ -18600,7 +15657,7 @@ func Xcopysignf(tls TLS, _x float32, _y float32) (r float32) {
 	return *(*float32)(unsafe.Pointer(_ux))
 }
 
-type t43uint32_t = uint32
+type t42uint32_t = uint32
 
 // linking copysignl.o
 
@@ -18668,7 +15725,7 @@ _7:
 	return r
 }
 
-type t44uint32_t = uint32
+type t43uint32_t = uint32
 
 type t27uint64_t = uint64
 
@@ -18761,7 +15818,7 @@ _7:
 	return r
 }
 
-type t45uint32_t = uint32
+type t44uint32_t = uint32
 
 // xc2pio2 float64, escapes: false, cosf.c:22:1
 var xc2pio2 = float64(3.141592653589793)
@@ -18831,7 +15888,7 @@ func Xcosh(tls TLS, _x float64) (r float64) {
 
 type t28uint64_t = uint64
 
-type t46uint32_t = uint32
+type t45uint32_t = uint32
 
 // linking coshf.o
 
@@ -18887,7 +15944,7 @@ func Xcoshf(tls TLS, _x float32) (r float32) {
 	return _t
 }
 
-type t47uint32_t = uint32
+type t46uint32_t = uint32
 
 // linking coshl.o
 
@@ -18991,7 +16048,7 @@ func Xerfc(tls TLS, _x float64) (r float64) {
 	return float64(0)
 }
 
-type t48uint32_t = uint32
+type t47uint32_t = uint32
 
 type t29uint64_t = uint64
 
@@ -19300,7 +16357,7 @@ func Xerfcf(tls TLS, _x float32) (r float32) {
 	return float32(0)
 }
 
-type t49uint32_t = uint32
+type t48uint32_t = uint32
 
 // xefx8 float32, escapes: false, erff.c:23:1
 var x1efx8 = float32(1.0270333)
@@ -19613,7 +16670,7 @@ func Xexp(tls TLS, _x float64) (r float64) {
 
 type t16double_t = float64
 
-type t50uint32_t = uint32
+type t49uint32_t = uint32
 
 type t30uint64_t = uint64
 
@@ -19723,7 +16780,7 @@ func Xexp10f(tls TLS, _x float32) (r float32) {
 // x1p10 [15]float32, escapes: true, exp10f.c:8:21
 var x686p10 = ds + 37576
 
-type t51uint32_t = uint32
+type t50uint32_t = uint32
 
 // linking exp10l.o
 
@@ -19810,7 +16867,7 @@ func Xexp2(tls TLS, _x float64) (r float64) {
 
 type t17double_t = float64
 
-type t52uint32_t = uint32
+type t51uint32_t = uint32
 
 type t32uint64_t = uint64
 
@@ -19913,7 +16970,7 @@ func Xexp2f(tls TLS, _x float32) (r float32) {
 
 type t18double_t = float64
 
-type t53uint32_t = uint32
+type t52uint32_t = uint32
 
 type t33uint64_t = uint64
 
@@ -20030,7 +17087,7 @@ func Xexpf(tls TLS, _x float32) (r float32) {
 
 type t5float_t = float32
 
-type t54uint32_t = uint32
+type t53uint32_t = uint32
 
 // xinvln2 float32, escapes: false, expf.c:22:1
 var x1invln2 = float32(1.442695)
@@ -20189,7 +17246,7 @@ type t19double_t = float64
 
 type t34uint64_t = uint64
 
-type t55uint32_t = uint32
+type t54uint32_t = uint32
 
 // x__DOUBLE_BITS is defined at math.h:49:36
 func x6__DOUBLE_BITS(tls TLS, ___f float64) (r uint64) {
@@ -20357,7 +17414,7 @@ func Xexpm1f(tls TLS, _x float32) (r float32) {
 
 type t6float_t = float32
 
-type t56uint32_t = uint32
+type t55uint32_t = uint32
 
 // xo_threshold float32, escapes: false, expm1f.c:19:1
 var x1o_threshold = float32(88.72168)
@@ -20432,7 +17489,7 @@ func Xfabsf(tls TLS, _x float32) (r float32) {
 	return *(*float32)(unsafe.Pointer(_u))
 }
 
-type t57uint32_t = uint32
+type t56uint32_t = uint32
 
 // linking fabsl.o
 
@@ -20666,7 +17723,7 @@ func Xfloorf(tls TLS, _x float32) (r float32) {
 	return *(*float32)(unsafe.Pointer(_u))
 }
 
-type t58uint32_t = uint32
+type t57uint32_t = uint32
 
 // linking floorl.o
 
@@ -20814,6 +17871,7 @@ func Xfma(tls TLS, _x float64, _y float64, _z float64) (r float64) {
 	return Xscalbn(tls, _r, _e)
 }
 
+// Snum is defined at fma.c:9:1
 type Snum = struct {
 	Fm    uint64
 	Fe    int32
@@ -20917,7 +17975,7 @@ func xa_clz_64(tls TLS, _x uint64) (r int32) {
 	return r
 }
 
-type t59uint32_t = uint32
+type t58uint32_t = uint32
 
 // linking fmaf.o
 
@@ -21333,7 +18391,7 @@ func Xfmodf(tls TLS, _x float32, _y float32) (r float32) {
 	return *(*float32)(unsafe.Pointer(_ux))
 }
 
-type t60uint32_t = uint32
+type t59uint32_t = uint32
 
 // x__FLOAT_BITS is defined at math.h:43:26
 func x9__FLOAT_BITS(tls TLS, ___f float32) (r uint32) {
@@ -21445,7 +18503,7 @@ func Xfrexpf(tls TLS, _x float32, _e uintptr /* *int32 */) (r float32) {
 	return *(*float32)(unsafe.Pointer(_y))
 }
 
-type t61uint32_t = uint32
+type t60uint32_t = uint32
 
 // linking frexpl.o
 
@@ -21653,7 +18711,7 @@ func Xhypotf(tls TLS, _x float32, _y float32) (r float32) {
 	return _z * Xsqrtf(tls, float32(float64(float64(_x)*float64(_x))+float64(float64(_y)*float64(_y))))
 }
 
-type t62uint32_t = uint32
+type t61uint32_t = uint32
 
 type t7float_t = float32
 
@@ -21802,7 +18860,7 @@ func Xilogbf(tls TLS, _x float32) (r int32) {
 	return _e - int32(0x7f)
 }
 
-type t63uint32_t = uint32
+type t62uint32_t = uint32
 
 // linking ilogbl.o
 
@@ -21882,7 +18940,7 @@ func Xy0(tls TLS, _x float64) (r float64) {
 	return xu00 + float64(xtpi*Xlog(tls, _x))
 }
 
-type t64uint32_t = uint32
+type t63uint32_t = uint32
 
 type t43uint64_t = uint64
 
@@ -22171,7 +19229,7 @@ func Xy0f(tls TLS, _x float32) (r float32) {
 	return x1u00 + float32(x1tpi*Xlogf(tls, _x))
 }
 
-type t65uint32_t = uint32
+type t64uint32_t = uint32
 
 // xcommon is defined at j0f.c:25:14
 func x1common(tls TLS, _ix uint32, _x float32, _y0 int32) (r float32) {
@@ -22460,7 +19518,7 @@ func Xy1(tls TLS, _x float64) (r float64) {
 	return float64(_x*float64(_u/_v)) + float64(x2tpi*float64(float64(Xj1(tls, _x)*Xlog(tls, _x))-float64(float64(1)/_x)))
 }
 
-type t66uint32_t = uint32
+type t65uint32_t = uint32
 
 type t44uint64_t = uint64
 
@@ -22728,7 +19786,7 @@ func Xy1f(tls TLS, _x float32) (r float32) {
 	return float32(_x*float32(_u/_v)) + float32(x3tpi*float32(float32(Xj1f(tls, _x)*Xlogf(tls, _x))-float32(float32(1)/_x)))
 }
 
-type t67uint32_t = uint32
+type t66uint32_t = uint32
 
 // xcommon is defined at j1f.c:25:14
 func x3common(tls TLS, _ix uint32, _x float32, _y1 int32, _sign int32) (r float32) {
@@ -23213,7 +20271,7 @@ _3:
 	return _b
 }
 
-type t68uint32_t = uint32
+type t67uint32_t = uint32
 
 type t45uint64_t = uint64
 
@@ -23409,7 +20467,7 @@ func Xynf(tls TLS, _n int32, _x float32) (r float32) {
 	return _b
 }
 
-type t69uint32_t = uint32
+type t68uint32_t = uint32
 
 // linking ldexp.o
 
@@ -23633,7 +20691,7 @@ type t46uint64_t = uint64
 
 type t25double_t = float64
 
-type t70uint32_t = uint32
+type t69uint32_t = uint32
 
 // xsin_pi is defined at lgamma_r.c:150:15
 func xsin_pi(tls TLS, _x float64) (r float64) {
@@ -24052,7 +21110,7 @@ _2:
 	return _r
 }
 
-type t71uint32_t = uint32
+type t70uint32_t = uint32
 
 // xsin_pi is defined at lgammaf_r.c:85:14
 func x1sin_pi(tls TLS, _x float32) (r float32) {
@@ -24400,7 +21458,7 @@ type t47uint64_t = uint64
 
 type t27double_t = float64
 
-type t72uint32_t = uint32
+type t71uint32_t = uint32
 
 // xLg2 float64, escapes: false, log.c:70:1
 var xLg2 = float64(0.3999999999940942)
@@ -24516,7 +21574,7 @@ type t48uint64_t = uint64
 
 type t28double_t = float64
 
-type t73uint32_t = uint32
+type t72uint32_t = uint32
 
 // xLg2 float64, escapes: false, log10.c:29:1
 var x1Lg2 = float64(0.3999999999940942)
@@ -24625,7 +21683,7 @@ func Xlog10f(tls TLS, _x float32) (r float32) {
 	return float32(float32(float32(float32(_dk*x1log10_2lo)+float32(float32(_lo+_hi)*x1ivln10lo))+float32(_lo*x1ivln10hi))+float32(_hi*x1ivln10hi)) + float32(_dk*x1log10_2hi)
 }
 
-type t74uint32_t = uint32
+type t73uint32_t = uint32
 
 type t10float_t = float32
 
@@ -24760,7 +21818,7 @@ type t49uint64_t = uint64
 
 type t29double_t = float64
 
-type t75uint32_t = uint32
+type t74uint32_t = uint32
 
 // xLg2 float64, escapes: false, log1p.c:62:1
 var x3Lg2 = float64(0.3999999999940942)
@@ -24885,7 +21943,7 @@ func Xlog1pf(tls TLS, _x float32) (r float32) {
 	return float32(float32(float32(float32(_s*float32(_hfsq+_R))+float32(float32(_dk*x4ln2_lo)+_c))-_hfsq)+_f) + float32(_dk*x4ln2_hi)
 }
 
-type t76uint32_t = uint32
+type t75uint32_t = uint32
 
 type t11float_t = float32
 
@@ -24999,7 +22057,7 @@ type t50uint64_t = uint64
 
 type t30double_t = float64
 
-type t77uint32_t = uint32
+type t76uint32_t = uint32
 
 // xLg2 float64, escapes: false, log2.c:27:1
 var x5Lg2 = float64(0.3999999999940942)
@@ -25100,7 +22158,7 @@ func Xlog2f(tls TLS, _x float32) (r float32) {
 	return float32(float32(float32(float32(_lo+_hi)*x1ivln2lo)+float32(_lo*x1ivln2hi))+float32(_hi*x1ivln2hi)) + float32(_k)
 }
 
-type t78uint32_t = uint32
+type t77uint32_t = uint32
 
 type t12float_t = float32
 
@@ -25259,7 +22317,7 @@ func Xlogf(tls TLS, _x float32) (r float32) {
 	return float32(float32(float32(float32(_s*float32(_hfsq+_R))+float32(_dk*x5ln2_lo))-_hfsq)+_f) + float32(_dk*x5ln2_hi)
 }
 
-type t79uint32_t = uint32
+type t78uint32_t = uint32
 
 type t13float_t = float32
 
@@ -25446,7 +22504,7 @@ func Xmodff(tls TLS, _x float32, _iptr uintptr /* *float32 */) (r float32) {
 	return _x - *(*float32)(unsafe.Pointer(_u))
 }
 
-type t80uint32_t = uint32
+type t79uint32_t = uint32
 
 // linking modfl.o
 
@@ -25696,7 +22754,7 @@ func Xnextafterf(tls TLS, _x float32, _y float32) (r float32) {
 	return *(*float32)(unsafe.Pointer(_ux))
 }
 
-type t81uint32_t = uint32
+type t80uint32_t = uint32
 
 // x__FLOAT_BITS is defined at math.h:43:26
 func x11__FLOAT_BITS(tls TLS, ___f float32) (r uint32) {
@@ -25799,7 +22857,7 @@ func Xnexttowardf(tls TLS, _x float32, _y float64) (r float32) {
 	return *(*float32)(unsafe.Pointer(_ux))
 }
 
-type t82uint32_t = uint32
+type t81uint32_t = uint32
 
 // x__FLOAT_BITS is defined at math.h:43:26
 func x12__FLOAT_BITS(tls TLS, ___f float32) (r uint32) {
@@ -26220,7 +23278,7 @@ func Xpow(tls TLS, _x float64, _y float64) (r float64) {
 
 type t10int32_t = int32
 
-type t83uint32_t = uint32
+type t82uint32_t = uint32
 
 type t53uint64_t = uint64
 
@@ -26596,7 +23654,7 @@ func Xpowf(tls TLS, _x float32, _y float32) (r float32) {
 
 type t11int32_t = int32
 
-type t84uint32_t = uint32
+type t83uint32_t = uint32
 
 // xhuge float32, escapes: false, powf.c:23:1
 var x5huge = float32(1e+30)
@@ -26854,7 +23912,7 @@ lend:
 
 type t54uint64_t = uint64
 
-type t85uint32_t = uint32
+type t84uint32_t = uint32
 
 // x__DOUBLE_BITS is defined at math.h:49:36
 func x16__DOUBLE_BITS(tls TLS, ___f float64) (r uint64) {
@@ -27004,7 +24062,7 @@ lend:
 	return _x
 }
 
-type t86uint32_t = uint32
+type t85uint32_t = uint32
 
 // x__FLOAT_BITS is defined at math.h:43:26
 func x13__FLOAT_BITS(tls TLS, ___f float32) (r uint32) {
@@ -27109,7 +24167,7 @@ func Xrintf(tls TLS, _x float32) (r float32) {
 	return _y
 }
 
-type t87uint32_t = uint32
+type t86uint32_t = uint32
 
 type t14float_t = float32
 
@@ -27244,7 +24302,7 @@ func Xroundf(tls TLS, _x float32) (r float32) {
 	return _y
 }
 
-type t88uint32_t = uint32
+type t87uint32_t = uint32
 
 type t15float_t = float32
 
@@ -27437,7 +24495,7 @@ func Xscalbnf(tls TLS, _x float32, _n int32) (r float32) {
 	return _x
 }
 
-type t89uint32_t = uint32
+type t88uint32_t = uint32
 
 type t16float_t = float32
 
@@ -27536,7 +24594,7 @@ _7:
 	return r
 }
 
-type t90uint32_t = uint32
+type t89uint32_t = uint32
 
 type t58uint64_t = uint64
 
@@ -27635,7 +24693,7 @@ _8:
 _3:
 }
 
-type t91uint32_t = uint32
+type t90uint32_t = uint32
 
 type t59uint64_t = uint64
 
@@ -27788,7 +24846,7 @@ _3:
 
 type t17float_t = float32
 
-type t92uint32_t = uint32
+type t91uint32_t = uint32
 
 // xs1pio2 float64, escapes: false, sincosf.c:22:1
 var xs1pio2 = float64(1.5707963267948966)
@@ -27918,7 +24976,7 @@ _7:
 	return r
 }
 
-type t93uint32_t = uint32
+type t92uint32_t = uint32
 
 // xs1pio2 float64, escapes: false, sinf.c:21:1
 var x1s1pio2 = float64(1.5707963267948966)
@@ -27980,7 +25038,7 @@ func Xsinh(tls TLS, _x float64) (r float64) {
 
 type t60uint64_t = uint64
 
-type t94uint32_t = uint32
+type t93uint32_t = uint32
 
 // linking sinhf.o
 
@@ -28028,7 +25086,7 @@ func Xsinhf(tls TLS, _x float32) (r float32) {
 	return _t
 }
 
-type t95uint32_t = uint32
+type t94uint32_t = uint32
 
 // linking sinhl.o
 
@@ -28172,7 +25230,7 @@ func Xsqrt(tls TLS, _x float64) (r float64) {
 
 type t12int32_t = int32
 
-type t96uint32_t = uint32
+type t95uint32_t = uint32
 
 type t61uint64_t = uint64
 
@@ -28260,7 +25318,7 @@ func Xsqrtf(tls TLS, _x float32) (r float32) {
 
 type t13int32_t = int32
 
-type t97uint32_t = uint32
+type t96uint32_t = uint32
 
 // xtiny float32, escapes: false, sqrtf.c:18:20
 var x3tiny = float32(1e-30)
@@ -28323,7 +25381,7 @@ func Xtan(tls TLS, _x float64) (r float64) {
 	return X__tan(tls, *(*float64)(unsafe.Pointer(_y)), *(*float64)(unsafe.Pointer(_y + 8)), int32(_n&uint32(1)))
 }
 
-type t98uint32_t = uint32
+type t97uint32_t = uint32
 
 type t62uint64_t = uint64
 
@@ -28414,7 +25472,7 @@ func Xtanf(tls TLS, _x float32) (r float32) {
 	return X__tandf(tls, *(*float64)(unsafe.Pointer(_y)), int32(_n&uint32(1)))
 }
 
-type t99uint32_t = uint32
+type t98uint32_t = uint32
 
 // xt1pio2 float64, escapes: false, tanf.c:21:1
 var xt1pio2 = float64(1.5707963267948966)
@@ -28493,7 +25551,7 @@ func Xtanh(tls TLS, _x float64) (r float64) {
 
 type t63uint64_t = uint64
 
-type t100uint32_t = uint32
+type t99uint32_t = uint32
 
 type t34double_t = float64
 
@@ -28560,7 +25618,7 @@ func Xtanhf(tls TLS, _x float32) (r float32) {
 	return _t
 }
 
-type t101uint32_t = uint32
+type t100uint32_t = uint32
 
 // linking tanhl.o
 
@@ -28670,7 +25728,7 @@ type t64uint64_t = uint64
 
 type t35double_t = float64
 
-type t102uint32_t = uint32
+type t101uint32_t = uint32
 
 // xfact [23]float64, escapes: true, tgamma.c:81:21
 var xfact = ds + 44312
@@ -28863,7 +25921,7 @@ func Xtruncf(tls TLS, _x float32) (r float32) {
 	return *(*float32)(unsafe.Pointer(_u))
 }
 
-type t103uint32_t = uint32
+type t102uint32_t = uint32
 
 // linking truncl.o
 
@@ -28910,7 +25968,7 @@ func Xl64a(tls TLS, _x0 int64) (r uintptr /* *int8 */) {
 	return x706s
 }
 
-type t104uint32_t = uint32
+type t103uint32_t = uint32
 
 // xdigits [65]int8, escapes: true, a64l.c:5:19
 var xdigits = ds + 44704
@@ -28938,7 +25996,7 @@ func Xbasename(tls TLS, _s uintptr /* *int8 */) (r uintptr /* *int8 */) {
 	return _s + uintptr(_i)
 }
 
-type t80size_t = uint64
+type t51size_t = uint64
 
 // linking dirname.o
 
@@ -28969,7 +26027,7 @@ func Xdirname(tls TLS, _s uintptr /* *int8 */) (r uintptr /* *int8 */) {
 	return _s
 }
 
-type t81size_t = uint64
+type t52size_t = uint64
 
 // linking ffs.o
 
@@ -29004,7 +26062,7 @@ func x1a_ctz_64(tls TLS, _x uint64) (r int32) {
 // x3debruijn64 [64]int8, escapes: true, atomic.h:274:20
 var x707debruijn64 = ds + 44776
 
-type t105uint32_t = uint32
+type t104uint32_t = uint32
 
 type t66uint64_t = uint64
 
@@ -29049,7 +26107,7 @@ func x2a_ctz_64(tls TLS, _x uint64) (r int32) {
 // x3debruijn64 [64]int8, escapes: true, atomic.h:274:20
 var x709debruijn64 = ds + 44872
 
-type t106uint32_t = uint32
+type t105uint32_t = uint32
 
 type t67uint64_t = uint64
 
@@ -29089,7 +26147,7 @@ func x3a_ctz_64(tls TLS, _x uint64) (r int32) {
 // x2debruijn64 [64]int8, escapes: true, atomic.h:274:20
 var x711debruijn64 = ds + 44968
 
-type t107uint32_t = uint32
+type t106uint32_t = uint32
 
 type t68uint64_t = uint64
 
@@ -29275,7 +26333,7 @@ func x_strcolcmp(tls TLS, _lstr uintptr /* *int8 */, _bstr uintptr /* *int8 */) 
 	return 0
 }
 
-type t82size_t = uint64
+type t53size_t = uint64
 
 // linking forkpty.o
 
@@ -29343,6 +26401,7 @@ lout:
 	return _pid
 }
 
+// Stermios is defined at termios.h:1:1
 type s1termios = struct {
 	Fc_iflag    uint32
 	Fc_oflag    uint32
@@ -29354,6 +26413,7 @@ type s1termios = struct {
 	F__c_ospeed uint32
 }
 
+// Swinsize is defined at ioctl.h:96:1
 type Swinsize = struct {
 	Fws_row    uint16
 	Fws_col    uint16
@@ -29361,17 +26421,15 @@ type Swinsize = struct {
 	Fws_ypixel uint16
 }
 
-type t10pid_t = int32
+type t7pid_t = int32
 
-type t16ssize_t = int64
+type t6ssize_t = int64
 
 type t1tcflag_t = uint32
 
 type t1cc_t = uint8
 
 type t1speed_t = uint32
-
-type t83size_t = uint64
 
 // linking get_current_dir_name.o
 
@@ -29391,6 +26449,7 @@ func Xget_current_dir_name(tls TLS) (r uintptr /* *int8 */) {
 	return Xgetcwd(tls, null, uint64(0))
 }
 
+// Sstat is defined at stat.h:4:1
 type s2stat = struct {
 	Fst_dev     uint64
 	Fst_ino     uint64
@@ -29415,24 +26474,23 @@ type t8ino_t = uint64
 
 type t2nlink_t = uint64
 
-type t7mode_t = uint32
+type t6mode_t = uint32
 
-type t6uid_t = uint32
+type t5uid_t = uint32
 
-type t6gid_t = uint32
+type t5gid_t = uint32
 
-type t27off_t = int64
+type t25off_t = int64
 
 type t2blksize_t = int64
 
 type t2blkcnt_t = int64
 
+// Stimespec is defined at alltypes.h:270:1
 type s8timespec = struct {
 	Ftv_sec  int64
 	Ftv_nsec int64
 }
-
-type t84size_t = uint64
 
 type t19time_t = int64
 
@@ -29455,7 +26513,7 @@ func Xgetauxval(tls TLS, _item uint64) (r uint64) {
 	return uint64(0)
 }
 
-type t85size_t = uint64
+type t54size_t = uint64
 
 // linking getdomainname.o
 
@@ -29473,8 +26531,7 @@ func Xgetdomainname(tls TLS, _name uintptr /* *int8 */, _len uint64) (r int32) {
 	return 0
 }
 
-type t86size_t = uint64
-
+// Sutsname is defined at utsname.h:10:1
 type Sutsname = struct {
 	Fsysname    [65]int8
 	Fnodename   [65]int8
@@ -29483,6 +26540,8 @@ type Sutsname = struct {
 	Fmachine    [65]int8
 	Fdomainname [65]int8
 }
+
+type t55size_t = uint64
 
 // linking getentropy.o
 
@@ -29518,9 +26577,7 @@ func Xgetentropy(tls TLS, _buffer uintptr /* *void */, _len uint64) (r int32) {
 	return _ret
 }
 
-type t87size_t = uint64
-
-type t17ssize_t = int64
+type t56size_t = uint64
 
 // linking gethostid.o
 
@@ -29567,7 +26624,7 @@ func postinc713(p *int32) int32 { r := *p; *p += 1; return r }
 func set714(p *int32, v int32) int32 { *p = v; return v }
 
 // Xgetopt is defined at getopt.c:27:5
-func Xgetopt(tls TLS, _argc int32, _argv uintptr /* uintptr */, _optstring uintptr /* *int8 */) (r int32) {
+func Xgetopt(tls TLS, _argc int32, _argv uintptr /* **int8 */, _optstring uintptr /* *int8 */) (r int32) {
 	esc := MustMalloc(20)
 	var (
 		_i       int32
@@ -29652,7 +26709,7 @@ func Xgetopt(tls TLS, _argc int32, _argv uintptr /* uintptr */, _optstring uintp
 	return *(*int32)(unsafe.Pointer(_c))
 }
 
-type t88size_t = uint64
+type t57size_t = uint64
 
 type t5wchar_t = int32
 
@@ -29670,6 +26727,7 @@ func Xgetopt_long_only(tls TLS, _argc int32, _argv uintptr /* **int8 */, _optstr
 	return x__getopt_long(tls, _argc, _argv, _optstring, _longopts, _idx, int32(1))
 }
 
+// Soption is defined at getopt.h:12:1
 type Soption = struct {
 	Fname    uintptr // *int8
 	Fhas_arg int32
@@ -29842,7 +26900,7 @@ func xpermute(tls TLS, _argv uintptr /* **int8 */, _dest int32, _src int32) {
 	*(*uintptr)(unsafe.Pointer(_av + 8*uintptr(_dest))) = _tmp
 }
 
-type t89size_t = uint64
+type t58size_t = uint64
 
 // linking getpriority.o
 
@@ -29856,8 +26914,6 @@ func Xgetpriority(tls TLS, _which int32, _who uint32) (r int32) {
 	}
 	return int32(20) - _ret
 }
-
-type Tid_t = uint32
 
 // x__syscall2 is defined at syscall_arch.h:22:22
 func x20__syscall2(tls TLS, _n int64, _a1 int64, _a2 int64) (r int64) {
@@ -29932,6 +26988,7 @@ func Xgetrlimit(tls TLS, _resource int32, _rlim uintptr /* *Srlimit */) (r int32
 	return 0
 }
 
+// Srlimit is defined at resource.h:22:1
 type s4rlimit = struct {
 	Frlim_cur uint64
 	Frlim_max uint64
@@ -29956,6 +27013,7 @@ func Xgetrusage(tls TLS, _who int32, _ru uintptr /* *Srusage */) (r int32) {
 	return int32(X__syscall_ret(tls, uint64(x22__syscall2(tls, int64(98), int64(_who), int64(_ru)))))
 }
 
+// Srusage is defined at resource.h:27:1
 type s2rusage = struct {
 	Fru_utime    s11timeval
 	Fru_stime    s11timeval
@@ -29981,6 +27039,7 @@ func x22__syscall2(tls TLS, _n int64, _a1 int64, _a2 int64) (r int64) {
 	return X__syscall(tls, _n, _a1, _a2, int64(0), int64(0), int64(0), int64(0))
 }
 
+// Stimeval is defined at alltypes.h:265:1
 type s11timeval = struct {
 	Ftv_sec  int64
 	Ftv_usec int64
@@ -30024,7 +27083,7 @@ func Xgetsubopt(tls TLS, _opt uintptr /* **int8 */, _keys uintptr /* **int8 */, 
 	return -1
 }
 
-type t90size_t = uint64
+type t59size_t = uint64
 
 // linking initgroups.o
 
@@ -30043,9 +27102,7 @@ func Xinitgroups(tls TLS, _user uintptr /* *int8 */, _gid uint32) (r int32) {
 	return Xsetgroups(tls, uint64(*(*int32)(unsafe.Pointer(_count))), _groups)
 }
 
-type t7gid_t = uint32
-
-type t91size_t = uint64
+type t6gid_t = uint32
 
 // linking ioctl.o
 
@@ -30118,8 +27175,7 @@ _1:
 	return -1
 }
 
-type t28off_t = int64
-
+// Sflock is defined at fcntl.h:24:1
 type Sflock = struct {
 	Fl_type   int16
 	Fl_whence int16
@@ -30128,7 +27184,9 @@ type Sflock = struct {
 	Fl_pid    int32
 }
 
-type t11pid_t = int32
+type t26off_t = int64
+
+type t8pid_t = int32
 
 // linking login_tty.o
 
@@ -30146,8 +27204,6 @@ func Xlogin_tty(tls TLS, _fd int32) (r int32) {
 	}
 	return 0
 }
-
-type t12pid_t = int32
 
 // linking mntent.o
 
@@ -30222,6 +27278,7 @@ func Xhasmntopt(tls TLS, _mnt uintptr /* *Smntent */, _opt uintptr /* *int8 */) 
 	return Xstrstr(tls, *(*uintptr)(unsafe.Pointer(_mnt + 24)), _opt)
 }
 
+// Smntent is defined at mntent.h:23:1
 type Smntent = struct {
 	Fmnt_fsname uintptr // *int8
 	Fmnt_dir    uintptr // *int8
@@ -30239,8 +27296,6 @@ var xinternal_bufsize = bss + 3896
 
 // x3mnt Smntent, escapes: true, mntent.c:62:23
 var x718mnt = bss + 3904
-
-type t18ssize_t = int64
 
 type s5_IO_FILE struct{ uintptr }
 
@@ -30271,7 +27326,7 @@ func Xnftw(tls TLS, _path uintptr /* *int8 */, _fn uintptr /* *func(TLS, uintptr
 	return _r
 }
 
-type t92size_t = uint64
+type t60size_t = uint64
 
 func set719(p *int32, v int32) int32 { *p = v; return v }
 
@@ -30395,6 +27450,7 @@ func xdo_nftw(tls TLS, _path uintptr /* *int8 */, _fn uintptr /* *func(TLS, uint
 	return 0
 }
 
+// Shistory is defined at nftw.c:11:1
 type Shistory = struct {
 	Fchain uintptr // *Shistory
 	Fdev   uint64
@@ -30403,6 +27459,7 @@ type Shistory = struct {
 	Fbase  int32
 }
 
+// Sstat is defined at stat.h:4:1
 type s3stat = struct {
 	Fst_dev     uint64
 	Fst_ino     uint64
@@ -30421,11 +27478,13 @@ type s3stat = struct {
 	F__unused   [3]int64
 }
 
+// SFTW is defined at ftw.h:24:1
 type SFTW = struct {
 	Fbase  int32
 	Flevel int32
 }
 
+// Sdirent is defined at dirent.h:24:1
 type s6dirent = struct {
 	Fd_ino    uint64
 	Fd_off    int64
@@ -30434,7 +27493,7 @@ type s6dirent = struct {
 	Fd_name   [256]int8
 }
 
-type t8mode_t = uint32
+type t7mode_t = uint32
 
 type t3dev_t = uint64
 
@@ -30442,16 +27501,17 @@ type t9ino_t = uint64
 
 type t3nlink_t = uint64
 
-type t7uid_t = uint32
+type t6uid_t = uint32
 
-type t8gid_t = uint32
+type t7gid_t = uint32
 
-type t29off_t = int64
+type t27off_t = int64
 
 type t3blksize_t = int64
 
 type t3blkcnt_t = int64
 
+// Stimespec is defined at alltypes.h:270:1
 type s9timespec = struct {
 	Ftv_sec  int64
 	Ftv_nsec int64
@@ -30517,6 +27577,7 @@ lfail:
 	return -1
 }
 
+// Stermios is defined at termios.h:1:1
 type s2termios = struct {
 	Fc_iflag    uint32
 	Fc_oflag    uint32
@@ -30528,6 +27589,7 @@ type s2termios = struct {
 	F__c_ospeed uint32
 }
 
+// Swinsize is defined at ioctl.h:96:1
 type s1winsize = struct {
 	Fws_row    uint16
 	Fws_col    uint16
@@ -30540,8 +27602,6 @@ type t2tcflag_t = uint32
 type t2cc_t = uint8
 
 type t2speed_t = uint32
-
-type t93size_t = uint64
 
 // linking ptsname.o
 
@@ -30559,8 +27619,6 @@ func Xptsname(tls TLS, _fd int32) (r uintptr /* *int8 */) {
 
 // x1buf [22]int8, escapes: true, ptsname.c:8:14
 var x723buf = bss + 3944
-
-type t94size_t = uint64
 
 // linking pty.o
 
@@ -30605,7 +27663,7 @@ func X__ptsname_r(tls TLS, _fd int32, _buf uintptr /* *int8 */, _len uint64) (r 
 	return 0
 }
 
-type t95size_t = uint64
+type t61size_t = uint64
 
 // x__syscall3 is defined at syscall_arch.h:31:22
 func x25__syscall3(tls TLS, _n int64, _a1 int64, _a2 int64, _a3 int64) (r int64) {
@@ -30667,8 +27725,9 @@ lerr:
 	return null
 }
 
-type t19ssize_t = int64
+type t7ssize_t = int64
 
+// Sstat is defined at stat.h:4:1
 type s4stat = struct {
 	Fst_dev     uint64
 	Fst_ino     uint64
@@ -30703,24 +27762,23 @@ func x20__syscall1(tls TLS, _n int64, _a1 int64) (r int64) {
 
 type t4nlink_t = uint64
 
-type t9mode_t = uint32
+type t8mode_t = uint32
 
-type t8uid_t = uint32
+type t7uid_t = uint32
 
-type t9gid_t = uint32
+type t8gid_t = uint32
 
-type t30off_t = int64
+type t28off_t = int64
 
 type t4blksize_t = int64
 
 type t4blkcnt_t = int64
 
+// Stimespec is defined at alltypes.h:270:1
 type s10timespec = struct {
 	Ftv_sec  int64
 	Ftv_nsec int64
 }
-
-type t96size_t = uint64
 
 type t22time_t = int64
 
@@ -30730,8 +27788,6 @@ type t22time_t = int64
 func Xsetdomainname(tls TLS, _name uintptr /* *int8 */, _len uint64) (r int32) {
 	return int32(X__syscall_ret(tls, uint64(x24__syscall2(tls, int64(171), int64(_name), int64(_len)))))
 }
-
-type t97size_t = uint64
 
 // x__syscall2 is defined at syscall_arch.h:22:22
 func x24__syscall2(tls TLS, _n int64, _a1 int64, _a2 int64) (r int64) {
@@ -30744,8 +27800,6 @@ func x24__syscall2(tls TLS, _n int64, _a1 int64, _a2 int64) (r int64) {
 func Xsetpriority(tls TLS, _which int32, _who uint32, _prio int32) (r int32) {
 	return int32(X__syscall_ret(tls, uint64(x26__syscall3(tls, int64(141), int64(_which), int64(_who), int64(_prio)))))
 }
-
-type t1id_t = uint32
 
 // x__syscall3 is defined at syscall_arch.h:31:22
 func x26__syscall3(tls TLS, _n int64, _a1 int64, _a2 int64, _a3 int64) (r int64) {
@@ -30812,6 +27866,7 @@ func Xsetrlimit(tls TLS, _resource int32, _rlim uintptr /* *Srlimit */) (r int32
 	return 0
 }
 
+// Srlimit is defined at resource.h:22:1
 type s5rlimit = struct {
 	Frlim_cur uint64
 	Frlim_max uint64
@@ -30829,6 +27884,7 @@ func x25__syscall2(tls TLS, _n int64, _a1 int64, _a2 int64) (r int64) {
 	return X__syscall(tls, _n, _a1, _a2, int64(0), int64(0), int64(0), int64(0))
 }
 
+// Sctx is defined at setrlimit.c:26:1
 type Sctx = struct {
 	Frlim uintptr // *Srlimit
 	Fres  int32
@@ -30870,7 +27926,7 @@ func Xsyscall(tls TLS, _n int64, ap ...interface{}) (r int64) {
 	return X__syscall_ret(tls, uint64(x5__syscall6(tls, _n, _a, _b, _c, _d, _e, _f)))
 }
 
-type t8syscall_arg_t = int64
+type t1syscall_arg_t = int64
 
 // x__syscall6 is defined at syscall_arch.h:61:22
 func x5__syscall6(tls TLS, _n int64, _a1 int64, _a2 int64, _a3 int64, _a4 int64, _a5 int64, _a6 int64) (r int64) {
@@ -30964,7 +28020,7 @@ var xlog_mask = int32(0xff)
 // xlog_fd int32, escapes: false, syslog.c:19:12
 var xlog_fd = int32(-1)
 
-type t98size_t = uint64
+type t62size_t = uint64
 
 // xlog_ident [32]int8, escapes: true, syslog.c:15:13
 var xlog_ident = bss + 3976
@@ -31044,6 +28100,7 @@ func x_vsyslog(tls TLS, _priority int32, _message uintptr /* *int8 */, _ap uintp
 // xlog_addr struct{Fsun_family int16;Fsun_path [9]int8;}, escapes: true, syslog.c:33:3
 var xlog_addr = ds + 45080
 
+// Stm is defined at time.h:38:1
 type Stm = struct {
 	Ftm_sec    int32
 	Ftm_min    int32
@@ -31060,16 +28117,12 @@ type Stm = struct {
 
 type t23time_t = int64
 
-type t20ssize_t = int64
+type t8ssize_t = int64
 
 // xis_lost_conn is defined at syslog.c:77:12
 func xis_lost_conn(tls TLS, _e int32) (r int32) {
 	return bool2int((((_e == int32(111)) || (_e == int32(104))) || (_e == int32(107))) || (_e == int32(32)))
 }
-
-type Tsocklen_t = uint32
-
-type t13pid_t = int32
 
 // linking uname.o
 
@@ -31078,6 +28131,7 @@ func Xuname(tls TLS, _uts uintptr /* *Sutsname */) (r int32) {
 	return int32(X__syscall_ret(tls, uint64(x21__syscall1(tls, int64(63), int64(_uts)))))
 }
 
+// Sutsname is defined at utsname.h:10:1
 type s1utsname = struct {
 	Fsysname      [65]int8
 	Fnodename     [65]int8
@@ -31123,7 +28177,7 @@ func Xwordfree(tls TLS, _we uintptr /* *Twordexp_t = struct{Fwe_wordc u...e_word
 	*(*uint64)(unsafe.Pointer(_we)) = uint64(0)
 }
 
-type t99size_t = uint64
+type t63size_t = uint64
 
 func set727(p *uintptr, v uintptr) uintptr { *p = v; return v }
 
@@ -31388,7 +28442,7 @@ lnospace:
 	return 1
 }
 
-type t14pid_t = int32
+type t9pid_t = int32
 
 // xreap is defined at wordexp.c:14:13
 func xreap(tls TLS, _pid int32) {
@@ -31414,7 +28468,7 @@ func xgetword(tls TLS, _f uintptr /* *TFILE = S_IO_FILE */) (r uintptr /* *int8 
 	return *(*uintptr)(unsafe.Pointer(_s))
 }
 
-type t21ssize_t = int64
+type t9ssize_t = int64
 
 type s6_IO_FILE struct{ uintptr }
 
@@ -31424,8 +28478,6 @@ type s6_IO_FILE struct{ uintptr }
 func X__madvise(tls TLS, _addr uintptr /* *void */, _len uint64, _advice int32) (r int32) {
 	return int32(X__syscall_ret(tls, uint64(x27__syscall3(tls, int64(28), int64(_addr), int64(_len), int64(_advice)))))
 }
-
-type t100size_t = uint64
 
 // x__syscall3 is defined at syscall_arch.h:31:22
 func x27__syscall3(tls TLS, _n int64, _a1 int64, _a2 int64, _a3 int64) (r int64) {
@@ -31439,8 +28491,6 @@ func Xmincore(tls TLS, _addr uintptr /* *void */, _len uint64, _vec uintptr /* *
 	return int32(X__syscall_ret(tls, uint64(x28__syscall3(tls, int64(27), int64(_addr), int64(_len), int64(_vec)))))
 }
 
-type t101size_t = uint64
-
 // x__syscall3 is defined at syscall_arch.h:31:22
 func x28__syscall3(tls TLS, _n int64, _a1 int64, _a2 int64, _a3 int64) (r int64) {
 	return X__syscall(tls, _n, _a1, _a2, _a3, int64(0), int64(0), int64(0))
@@ -31452,8 +28502,6 @@ func x28__syscall3(tls TLS, _n int64, _a1 int64, _a2 int64, _a3 int64) (r int64)
 func Xmlock(tls TLS, _addr uintptr /* *void */, _len uint64) (r int32) {
 	return int32(X__syscall_ret(tls, uint64(x26__syscall2(tls, int64(149), int64(_addr), int64(_len)))))
 }
-
-type t102size_t = uint64
 
 // x__syscall2 is defined at syscall_arch.h:22:22
 func x26__syscall2(tls TLS, _n int64, _a1 int64, _a2 int64) (r int64) {
@@ -31500,14 +28548,14 @@ func X__mmap(tls TLS, _start uintptr /* *void */, _len uint64, _prot int32, _fla
 func x7dummy(tls TLS) {
 }
 
-type t103size_t = uint64
-
-type t31off_t = int64
+type t64size_t = uint64
 
 // x__syscall6 is defined at syscall_arch.h:61:22
 func x6__syscall6(tls TLS, _n int64, _a1 int64, _a2 int64, _a3 int64, _a4 int64, _a5 int64, _a6 int64) (r int64) {
 	return X__syscall(tls, _n, _a1, _a2, _a3, _a4, _a5, _a6)
 }
+
+type t29off_t = int64
 
 // linking mprotect.o
 
@@ -31522,7 +28570,7 @@ func X__mprotect(tls TLS, _addr uintptr /* *void */, _len uint64, _prot int32) (
 	return int32(X__syscall_ret(tls, uint64(x29__syscall3(tls, int64(10), int64(_start), int64(_end-_start), int64(_prot)))))
 }
 
-type t104size_t = uint64
+type t65size_t = uint64
 
 // x__syscall3 is defined at syscall_arch.h:31:22
 func x29__syscall3(tls TLS, _n int64, _a1 int64, _a2 int64, _a3 int64) (r int64) {
@@ -31555,7 +28603,7 @@ func X__mremap(tls TLS, _old_addr uintptr /* *void */, _old_len uint64, _new_len
 func x8dummy(tls TLS) {
 }
 
-type t105size_t = uint64
+type t66size_t = uint64
 
 // x__syscall5 is defined at syscall_arch.h:50:22
 func x6__syscall5(tls TLS, _n int64, _a1 int64, _a2 int64, _a3 int64, _a4 int64, _a5 int64) (r int64) {
@@ -31569,18 +28617,12 @@ func Xmsync(tls TLS, _start uintptr /* *void */, _len uint64, _flags int32) (r i
 	return int32(X__syscall_ret(tls, uint64(X__syscall_cp(tls, int64(26), int64(_start), int64(_len), int64(_flags), int64(0), int64(0), int64(0)))))
 }
 
-type t106size_t = uint64
-
-type t9syscall_arg_t = int64
-
 // linking munlock.o
 
 // Xmunlock is defined at munlock.c:4:5
 func Xmunlock(tls TLS, _addr uintptr /* *void */, _len uint64) (r int32) {
 	return int32(X__syscall_ret(tls, uint64(x27__syscall2(tls, int64(150), int64(_addr), int64(_len)))))
 }
-
-type t107size_t = uint64
 
 // x__syscall2 is defined at syscall_arch.h:22:22
 func x27__syscall2(tls TLS, _n int64, _a1 int64, _a2 int64) (r int64) {
@@ -31611,8 +28653,6 @@ func X__munmap(tls TLS, _start uintptr /* *void */, _len uint64) (r int32) {
 func x9dummy(tls TLS) {
 }
 
-type t108size_t = uint64
-
 // x__syscall2 is defined at syscall_arch.h:22:22
 func x28__syscall2(tls TLS, _n int64, _a1 int64, _a2 int64) (r int64) {
 	return X__syscall(tls, _n, _a1, _a2, int64(0), int64(0), int64(0), int64(0))
@@ -31627,8 +28667,6 @@ func Xposix_madvise(tls TLS, _addr uintptr /* *void */, _len uint64, _advice int
 	}
 	return int32(-x30__syscall3(tls, int64(28), int64(_addr), int64(_len), int64(_advice)))
 }
-
-type t109size_t = uint64
 
 // x__syscall3 is defined at syscall_arch.h:31:22
 func x30__syscall3(tls TLS, _n int64, _a1 int64, _a2 int64, _a3 int64) (r int64) {
@@ -31688,18 +28726,12 @@ func Xshm_unlink(tls TLS, _name uintptr /* *int8 */) (r int32) {
 	return Xunlink(tls, _name)
 }
 
-type t10mode_t = uint32
-
-type t110size_t = uint64
-
 // linking mq_close.o
 
 // Xmq_close is defined at mq_close.c:4:5
 func Xmq_close(tls TLS, _mqd int32) (r int32) {
 	return int32(X__syscall_ret(tls, uint64(x23__syscall1(tls, int64(3), int64(_mqd)))))
 }
-
-type Tmqd_t = int32
 
 // x__syscall1 is defined at syscall_arch.h:14:22
 func x23__syscall1(tls TLS, _n int64, _a1 int64) (r int64) {
@@ -31713,8 +28745,7 @@ func Xmq_getattr(tls TLS, _mqd int32, _attr uintptr /* *Smq_attr */) (r int32) {
 	return Xmq_setattr(tls, _mqd, null, _attr)
 }
 
-type t1mqd_t = int32
-
+// Smq_attr is defined at mqueue.h:17:1
 type Smq_attr = struct {
 	Fmq_flags   int64
 	Fmq_maxmsg  int64
@@ -31722,6 +28753,8 @@ type Smq_attr = struct {
 	Fmq_curmsgs int64
 	F__unused   [4]int64
 }
+
+type Tmqd_t = int32
 
 // linking mq_notify.o
 
@@ -31788,8 +28821,7 @@ func Xmq_notify(tls TLS, _mqd int32, _sev uintptr /* *Ssigevent */) (r int32) {
 	return 0
 }
 
-type t2mqd_t = int32
-
+// Ssigevent is defined at signal.h:179:1
 type s3sigevent = struct {
 	Fsigev_value             u3sigval
 	Fsigev_signo             int32
@@ -31802,6 +28834,7 @@ type s3sigevent = struct {
 // x1zeros [32]int8, escapes: true, mq_notify.c:39:20
 var x731zeros = bss + 4008
 
+// Sargs is defined at mq_notify.c:9:1
 type Sargs = struct {
 	Fbarrier struct {
 		F__u struct {
@@ -31821,6 +28854,7 @@ func x29__syscall2(tls TLS, _n int64, _a1 int64, _a2 int64) (r int64) {
 	return X__syscall(tls, _n, _a1, _a2, int64(0), int64(0), int64(0), int64(0))
 }
 
+// Npthread_attr_t is defined at alltypes.h:66:9
 type t2pthread_attr_t = struct {
 	F__u struct {
 		F__i  [0][14]int32
@@ -31863,12 +28897,14 @@ func x24__syscall1(tls TLS, _n int64, _a1 int64) (r int64) {
 	return X__syscall(tls, _n, _a1, int64(0), int64(0), int64(0), int64(0), int64(0))
 }
 
+// Usigval is defined at signal.h:92:1
 type u3sigval = struct {
 	Fsival_int [0]int32
 	Fsival_ptr [0]uintptr // *void
 	F          int64
 }
 
+// Npthread_barrier_t is defined at alltypes.h:96:9
 type Tpthread_barrier_t = struct {
 	F__u struct {
 		F__i  [0][8]int32
@@ -31879,9 +28915,7 @@ type Tpthread_barrier_t = struct {
 	}
 }
 
-type t22ssize_t = int64
-
-type t111size_t = uint64
+type t10ssize_t = int64
 
 type s20__pthread struct{ uintptr }
 
@@ -31908,10 +28942,9 @@ func Xmq_open(tls TLS, _name uintptr /* *int8 */, _flags int32, ap ...interface{
 	return int32(X__syscall_ret(tls, uint64(x17__syscall4(tls, int64(240), int64(_name), int64(_flags), int64(_mode), int64(_attr)))))
 }
 
-type t3mqd_t = int32
+type t9mode_t = uint32
 
-type t11mode_t = uint32
-
+// Smq_attr is defined at mqueue.h:17:1
 type s1mq_attr = struct {
 	Fmq_flags   int64
 	Fmq_maxmsg  int64
@@ -31932,11 +28965,11 @@ func Xmq_receive(tls TLS, _mqd int32, _msg uintptr /* *int8 */, _len uint64, _pr
 	return Xmq_timedreceive(tls, _mqd, _msg, _len, _prio, null)
 }
 
-type t4mqd_t = int32
+type t11ssize_t = int64
 
-type t112size_t = uint64
+type t1mqd_t = int32
 
-type t23ssize_t = int64
+type t67size_t = uint64
 
 // linking mq_send.o
 
@@ -31945,9 +28978,9 @@ func Xmq_send(tls TLS, _mqd int32, _msg uintptr /* *int8 */, _len uint64, _prio 
 	return Xmq_timedsend(tls, _mqd, _msg, _len, _prio, null)
 }
 
-type t5mqd_t = int32
+type t2mqd_t = int32
 
-type t113size_t = uint64
+type t68size_t = uint64
 
 // linking mq_setattr.o
 
@@ -31956,8 +28989,7 @@ func Xmq_setattr(tls TLS, _mqd int32, _new uintptr /* *Smq_attr */, _old uintptr
 	return int32(X__syscall_ret(tls, uint64(x31__syscall3(tls, int64(245), int64(_mqd), int64(_new), int64(_old)))))
 }
 
-type t6mqd_t = int32
-
+// Smq_attr is defined at mqueue.h:17:1
 type s2mq_attr = struct {
 	Fmq_flags   int64
 	Fmq_maxmsg  int64
@@ -31978,20 +29010,13 @@ func Xmq_timedreceive(tls TLS, _mqd int32, _msg uintptr /* *int8 */, _len uint64
 	return X__syscall_ret(tls, uint64(X__syscall_cp(tls, int64(243), int64(_mqd), int64(_msg), int64(_len), int64(_prio), int64(_at), int64(0))))
 }
 
-type t7mqd_t = int32
-
-type t114size_t = uint64
-
-type t24ssize_t = int64
-
+// Stimespec is defined at alltypes.h:270:1
 type s11timespec = struct {
 	Ftv_sec  int64
 	Ftv_nsec int64
 }
 
 type t24time_t = int64
-
-type t10syscall_arg_t = int64
 
 // linking mq_timedsend.o
 
@@ -32000,18 +29025,13 @@ func Xmq_timedsend(tls TLS, _mqd int32, _msg uintptr /* *int8 */, _len uint64, _
 	return int32(X__syscall_ret(tls, uint64(X__syscall_cp(tls, int64(242), int64(_mqd), int64(_msg), int64(_len), int64(_prio), int64(_at), int64(0)))))
 }
 
-type t8mqd_t = int32
-
-type t115size_t = uint64
-
+// Stimespec is defined at alltypes.h:270:1
 type s12timespec = struct {
 	Ftv_sec  int64
 	Ftv_nsec int64
 }
 
 type t25time_t = int64
-
-type t11syscall_arg_t = int64
 
 // linking mq_unlink.o
 
@@ -32061,14 +29081,13 @@ func Xbtowc(tls TLS, _c int32) (r uint32) {
 	}()
 }
 
-type t15wint_t = uint32
-
 // x__pthread_self is defined at pthread_arch.h:1:30
 func x16__pthread_self(tls TLS) (r uintptr /* *S__pthread */) {
 	return uintptr(tls)
 	return r
 }
 
+// S__pthread is defined at pthread_impl.h:15:1
 type s21__pthread = struct {
 	Fself          uintptr // *S__pthread
 	Fdtv           uintptr // **void
@@ -32111,14 +29130,16 @@ type s21__pthread = struct {
 
 type t23uintptr_t = uint64
 
-type t116size_t = uint64
+type t69size_t = uint64
 
+// S__ptcb is defined at pthread.h:200:1
 type s18__ptcb = struct {
 	F__f    uintptr // *func(TLS, uintptr)
 	F__x    uintptr // *void
 	F__next uintptr // *S__ptcb
 }
 
+// S__locale_struct is defined at libc.h:10:1
 type s55__locale_struct = struct{ Fcat [6]uintptr }
 
 // linking c16rtomb.o
@@ -32179,14 +29200,12 @@ lilseq:
 	return uint64(18446744073709551615)
 }
 
-type Tchar16_t = uint16
-
-type t117size_t = uint64
-
 // x1internal_state uint32, escapes: true, c16rtomb.c:7:18
 var x733internal_state = bss + 4040
 
 type t6wchar_t = int32
+
+type t70size_t = uint64
 
 // linking c32rtomb.o
 
@@ -32195,18 +29214,14 @@ func Xc32rtomb(tls TLS, _s uintptr /* *int8 */, _c32 uint32, _ps uintptr /* *Tmb
 	return Xwcrtomb(tls, _s, int32(_c32), _ps)
 }
 
-type Tchar32_t = uint32
-
-type t118size_t = uint64
-
-type t7wchar_t = int32
+type t71size_t = uint64
 
 // linking internal.o
 
 // X__fsmu8 [51]uint32, escapes: true, internal.c:18:16
 var X__fsmu8 = ds + 45096
 
-type t108uint32_t = uint32
+type t107uint32_t = uint32
 
 // linking mblen.o
 
@@ -32215,7 +29230,7 @@ func Xmblen(tls TLS, _s uintptr /* *int8 */, _n uint64) (r int32) {
 	return Xmbtowc(tls, null, _s, _n)
 }
 
-type t119size_t = uint64
+type t72size_t = uint64
 
 // linking mbrlen.o
 
@@ -32229,10 +29244,10 @@ func Xmbrlen(tls TLS, _s uintptr /* *int8 */, _n uint64, _st uintptr /* *Tmbstat
 	}())
 }
 
-type t120size_t = uint64
-
 // x1internal uint32, escapes: true, mbrlen.c:5:18
 var x734internal = bss + 4048
+
+type t73size_t = uint64
 
 // linking mbrtoc16.o
 
@@ -32272,14 +29287,14 @@ func Xmbrtoc16(tls TLS, _pc16 uintptr /* *Tchar16_t = uint16 */, _s uintptr /* *
 	return _ret
 }
 
-type t121size_t = uint64
-
 // x1internal_state uint32, escapes: true, mbrtoc16.c:6:18
 var x735internal_state = bss + 4056
 
-type t1char16_t = uint16
+type t74size_t = uint64
 
-type t8wchar_t = int32
+type Tchar16_t = uint16
+
+type t7wchar_t = int32
 
 // linking mbrtoc32.o
 
@@ -32304,14 +29319,14 @@ func Xmbrtoc32(tls TLS, _pc32 uintptr /* *Tchar32_t = uint32 */, _s uintptr /* *
 	return _ret
 }
 
-type t122size_t = uint64
-
 // x1internal_state uint32, escapes: true, mbrtoc32.c:6:18
 var x736internal_state = bss + 4064
 
-type t1char32_t = uint32
+type t75size_t = uint64
 
-type t9wchar_t = int32
+type Tchar32_t = uint32
+
+type t8wchar_t = int32
 
 // linking mbrtowc.o
 
@@ -32429,12 +29444,10 @@ lilseq:
 	return uint64(18446744073709551615)
 }
 
-type t123size_t = uint64
-
 // x1internal_state uint32, escapes: true, mbrtowc.c:8:18
 var x739internal_state = bss + 4072
 
-type t10wchar_t = int32
+type t9wchar_t = int32
 
 // x__pthread_self is defined at pthread_arch.h:1:30
 func x17__pthread_self(tls TLS) (r uintptr /* *S__pthread */) {
@@ -32442,10 +29455,11 @@ func x17__pthread_self(tls TLS) (r uintptr /* *S__pthread */) {
 	return r
 }
 
-type t109uint32_t = uint32
+type t108uint32_t = uint32
 
 type t15int32_t = int32
 
+// S__pthread is defined at pthread_impl.h:15:1
 type s22__pthread = struct {
 	Fself          uintptr // *S__pthread
 	Fdtv           uintptr // **void
@@ -32488,12 +29502,16 @@ type s22__pthread = struct {
 
 type t24uintptr_t = uint64
 
+type t76size_t = uint64
+
+// S__ptcb is defined at pthread.h:200:1
 type s19__ptcb = struct {
 	F__f    uintptr // *func(TLS, uintptr)
 	F__x    uintptr // *void
 	F__next uintptr // *S__ptcb
 }
 
+// S__locale_struct is defined at libc.h:10:1
 type s56__locale_struct = struct{ Fcat [6]uintptr }
 
 // linking mbsinit.o
@@ -32578,9 +29596,9 @@ func Xmbsnrtowcs(tls TLS, _wcs uintptr /* *Twchar_t = int32 */, _src uintptr /* 
 	return _cnt
 }
 
-type t124size_t = uint64
+type t77size_t = uint64
 
-type t11wchar_t = int32
+type t10wchar_t = int32
 
 // linking mbsrtowcs.o
 
@@ -32759,7 +29777,7 @@ _5:
 	return uint64(18446744073709551615)
 }
 
-type t125size_t = uint64
+type t78size_t = uint64
 
 // x__pthread_self is defined at pthread_arch.h:1:30
 func x18__pthread_self(tls TLS) (r uintptr /* *S__pthread */) {
@@ -32767,14 +29785,15 @@ func x18__pthread_self(tls TLS) (r uintptr /* *S__pthread */) {
 	return r
 }
 
-type t12wchar_t = int32
+type t11wchar_t = int32
 
 type t25uintptr_t = uint64
 
-type t110uint32_t = uint32
+type t109uint32_t = uint32
 
 type t16int32_t = int32
 
+// S__pthread is defined at pthread_impl.h:15:1
 type s23__pthread = struct {
 	Fself          uintptr // *S__pthread
 	Fdtv           uintptr // **void
@@ -32815,12 +29834,14 @@ type s23__pthread = struct {
 	Fdtv_copy         uintptr // **void
 }
 
+// S__ptcb is defined at pthread.h:200:1
 type s20__ptcb = struct {
 	F__f    uintptr // *func(TLS, uintptr)
 	F__x    uintptr // *void
 	F__next uintptr // *S__ptcb
 }
 
+// S__locale_struct is defined at libc.h:10:1
 type s57__locale_struct = struct{ Fcat [6]uintptr }
 
 // linking mbstowcs.o
@@ -32834,7 +29855,7 @@ func Xmbstowcs(tls TLS, _ws uintptr /* *Twchar_t = int32 */, as uintptr, _wn uin
 	return Xmbsrtowcs(tls, _ws, _s, _wn, null)
 }
 
-type t126size_t = uint64
+type t79size_t = uint64
 
 // linking mbtowc.o
 
@@ -32933,9 +29954,7 @@ lilseq:
 	return -1
 }
 
-type t127size_t = uint64
-
-type t13wchar_t = int32
+type t12wchar_t = int32
 
 // x__pthread_self is defined at pthread_arch.h:1:30
 func x19__pthread_self(tls TLS) (r uintptr /* *S__pthread */) {
@@ -32943,10 +29962,13 @@ func x19__pthread_self(tls TLS) (r uintptr /* *S__pthread */) {
 	return r
 }
 
-type t111uint32_t = uint32
+type t110uint32_t = uint32
+
+type t80size_t = uint64
 
 type t17int32_t = int32
 
+// S__pthread is defined at pthread_impl.h:15:1
 type s24__pthread = struct {
 	Fself          uintptr // *S__pthread
 	Fdtv           uintptr // **void
@@ -32989,12 +30011,14 @@ type s24__pthread = struct {
 
 type t26uintptr_t = uint64
 
+// S__ptcb is defined at pthread.h:200:1
 type s21__ptcb = struct {
 	F__f    uintptr // *func(TLS, uintptr)
 	F__x    uintptr // *void
 	F__next uintptr // *S__ptcb
 }
 
+// S__locale_struct is defined at libc.h:10:1
 type s58__locale_struct = struct{ Fcat [6]uintptr }
 
 // linking wcrtomb.o
@@ -33041,16 +30065,15 @@ func Xwcrtomb(tls TLS, _s uintptr /* *int8 */, _wc int32, _st uintptr /* *Tmbsta
 	return uint64(18446744073709551615)
 }
 
-type t14wchar_t = int32
-
-type t128size_t = uint64
-
 // x__pthread_self is defined at pthread_arch.h:1:30
 func x20__pthread_self(tls TLS) (r uintptr /* *S__pthread */) {
 	return uintptr(tls)
 	return r
 }
 
+type t13wchar_t = int32
+
+// S__pthread is defined at pthread_impl.h:15:1
 type s25__pthread = struct {
 	Fself          uintptr // *S__pthread
 	Fdtv           uintptr // **void
@@ -33093,12 +30116,16 @@ type s25__pthread = struct {
 
 type t27uintptr_t = uint64
 
+type t81size_t = uint64
+
+// S__ptcb is defined at pthread.h:200:1
 type s22__ptcb = struct {
 	F__f    uintptr // *func(TLS, uintptr)
 	F__x    uintptr // *void
 	F__next uintptr // *S__ptcb
 }
 
+// S__locale_struct is defined at libc.h:10:1
 type s59__locale_struct = struct{ Fcat [6]uintptr }
 
 // linking wcsnrtombs.o
@@ -33172,9 +30199,9 @@ func Xwcsnrtombs(tls TLS, _dst uintptr /* *int8 */, _wcs uintptr /* **Twchar_t =
 	return _cnt
 }
 
-type t129size_t = uint64
+type t82size_t = uint64
 
-type t15wchar_t = int32
+type t14wchar_t = int32
 
 // linking wcsrtombs.o
 
@@ -33252,9 +30279,9 @@ func Xwcsrtombs(tls TLS, _s uintptr /* *int8 */, _ws uintptr /* **Twchar_t = int
 	return _N
 }
 
-type t130size_t = uint64
+type t83size_t = uint64
 
-type t16wchar_t = int32
+type t15wchar_t = int32
 
 // linking wcstombs.o
 
@@ -33263,8 +30290,6 @@ func Xwcstombs(tls TLS, _s uintptr /* *int8 */, _ws uintptr /* *Twchar_t = int32
 	panic(`TODO`)
 	return r
 }
-
-type t131size_t = uint64
 
 // linking wctob.o
 
@@ -33284,7 +30309,7 @@ func Xwctob(tls TLS, _c uint32) (r int32) {
 	return -1
 }
 
-type t16wint_t = uint32
+type t15wint_t = uint32
 
 // x__pthread_self is defined at pthread_arch.h:1:30
 func x21__pthread_self(tls TLS) (r uintptr /* *S__pthread */) {
@@ -33292,6 +30317,7 @@ func x21__pthread_self(tls TLS) (r uintptr /* *S__pthread */) {
 	return r
 }
 
+// S__pthread is defined at pthread_impl.h:15:1
 type s26__pthread = struct {
 	Fself          uintptr // *S__pthread
 	Fdtv           uintptr // **void
@@ -33334,14 +30360,16 @@ type s26__pthread = struct {
 
 type t28uintptr_t = uint64
 
-type t132size_t = uint64
+type t84size_t = uint64
 
+// S__ptcb is defined at pthread.h:200:1
 type s23__ptcb = struct {
 	F__f    uintptr // *func(TLS, uintptr)
 	F__x    uintptr // *void
 	F__next uintptr // *S__ptcb
 }
 
+// S__locale_struct is defined at libc.h:10:1
 type s60__locale_struct = struct{ Fcat [6]uintptr }
 
 // linking wctomb.o
@@ -33354,9 +30382,7 @@ func Xwctomb(tls TLS, _s uintptr /* *int8 */, _wc int32) (r int32) {
 	return int32(Xwcrtomb(tls, _s, _wc, null))
 }
 
-type t17wchar_t = int32
-
-type t133size_t = uint64
+type t16wchar_t = int32
 
 // linking accept.o
 
@@ -33365,14 +30391,13 @@ func Xaccept(tls TLS, _fd int32, _addr uintptr /* *Ssockaddr */, _len uintptr /*
 	return int32(X__syscall_ret(tls, uint64(X__syscall_cp(tls, int64(43), int64(_fd), int64(_addr), int64(_len), int64(0), int64(0), int64(0)))))
 }
 
+// Ssockaddr is defined at socket.h:310:1
 type Ssockaddr = struct {
 	Fsa_family uint16
 	Fsa_data   [14]int8
 }
 
 type Tsa_family_t = uint16
-
-type t12syscall_arg_t = int64
 
 // linking accept4.o
 
@@ -33400,6 +30425,7 @@ func Xaccept4(tls TLS, _fd int32, _addr uintptr /* *Ssockaddr */, _len uintptr /
 	return _ret
 }
 
+// Ssockaddr is defined at socket.h:310:1
 type s1sockaddr = struct {
 	Fsa_family uint16
 	Fsa_data   [14]int8
@@ -33412,8 +30438,6 @@ func x32__syscall3(tls TLS, _n int64, _a1 int64, _a2 int64, _a3 int64) (r int64)
 
 type t1sa_family_t = uint16
 
-type t13syscall_arg_t = int64
-
 // linking bind.o
 
 // Xbind is defined at bind.c:4:5
@@ -33421,8 +30445,7 @@ func Xbind(tls TLS, _fd int32, _addr uintptr /* *Ssockaddr */, _len uint32) (r i
 	return int32(X__syscall_ret(tls, uint64(x7__syscall6(tls, int64(49), int64(_fd), int64(_addr), int64(_len), int64(0), int64(0), int64(0)))))
 }
 
-type t1socklen_t = uint32
-
+// Ssockaddr is defined at socket.h:310:1
 type s2sockaddr = struct {
 	Fsa_family uint16
 	Fsa_data   [14]int8
@@ -33442,16 +30465,13 @@ func Xconnect(tls TLS, _fd int32, _addr uintptr /* *Ssockaddr */, _len uint32) (
 	return int32(X__syscall_ret(tls, uint64(X__syscall_cp(tls, int64(42), int64(_fd), int64(_addr), int64(_len), int64(0), int64(0), int64(0)))))
 }
 
-type t2socklen_t = uint32
-
+// Ssockaddr is defined at socket.h:310:1
 type s3sockaddr = struct {
 	Fsa_family uint16
 	Fsa_data   [14]int8
 }
 
 type t3sa_family_t = uint16
-
-type t14syscall_arg_t = int64
 
 // linking dn_comp.o
 
@@ -33536,7 +30556,7 @@ func X__dn_comp(tls TLS, _src uintptr /* *int8 */, _dst uintptr /* *uint8 */, _s
 	return _i
 }
 
-type t134size_t = uint64
+type t85size_t = uint64
 
 func preinc753(p *int32) int32 { *p += 1; return *p }
 
@@ -33859,6 +30879,7 @@ func Xether_hostton(tls TLS, _hostname uintptr /* *int8 */, _e uintptr /* *Sethe
 	return -1
 }
 
+// Sether_addr is defined at ethernet.h:12:1
 type Sether_addr = struct{ Fether_addr_octet [6]uint8 }
 
 type Tuint8_t = uint8
@@ -33876,6 +30897,7 @@ func Xfreeaddrinfo(tls TLS, _p uintptr /* *Saddrinfo */) {
 	Xfree(tls, _p)
 }
 
+// Saddrinfo is defined at netdb.h:16:1
 type Saddrinfo = struct {
 	Fai_flags     int32
 	Fai_family    int32
@@ -33887,8 +30909,9 @@ type Saddrinfo = struct {
 	Fai_next      uintptr // *Saddrinfo
 }
 
-type t3socklen_t = uint32
+type Tsocklen_t = uint32
 
+// Ssockaddr is defined at socket.h:310:1
 type s4sockaddr = struct {
 	Fsa_family uint16
 	Fsa_data   [14]int8
@@ -34105,6 +31128,7 @@ _9:
 	return 0
 }
 
+// Saddrinfo is defined at netdb.h:16:1
 type s1addrinfo = struct {
 	Fai_flags     int32
 	Fai_family    int32
@@ -34122,12 +31146,14 @@ var x764lo4 = bss + 4112
 // x2lo6 Ssockaddr_in6, escapes: true, getaddrinfo.c:61:36
 var x765lo6 = ds + 45544
 
+// Sservice is defined at lookup.h:14:1
 type Sservice = struct {
 	Fport     uint16
 	Fproto    uint8
 	Fsocktype uint8
 }
 
+// Saddress is defined at lookup.h:7:1
 type Saddress = struct {
 	Ffamily  int32
 	Fscopeid uint32
@@ -34135,6 +31161,7 @@ type Saddress = struct {
 	Fsortkey int32
 }
 
+// Ssockaddr_in is defined at in.h:16:1
 type Ssockaddr_in = struct {
 	Fsin_family uint16
 	Fsin_port   uint16
@@ -34142,6 +31169,7 @@ type Ssockaddr_in = struct {
 	Fsin_zero   [8]uint8
 }
 
+// Ssockaddr_in6 is defined at in.h:34:1
 type Ssockaddr_in6 = struct {
 	Fsin6_family   uint16
 	Fsin6_port     uint16
@@ -34150,7 +31178,7 @@ type Ssockaddr_in6 = struct {
 	Fsin6_scope_id uint32
 }
 
-type t4socklen_t = uint32
+type t1socklen_t = uint32
 
 type t5sa_family_t = uint16
 
@@ -34158,8 +31186,9 @@ type Tin_port_t = uint16
 
 type t1uint16_t = uint16
 
-type t112uint32_t = uint32
+type t111uint32_t = uint32
 
+// Ssockaddr is defined at socket.h:310:1
 type s5sockaddr = struct {
 	Fsa_family uint16
 	Fsa_data   [14]int8
@@ -34167,8 +31196,10 @@ type s5sockaddr = struct {
 
 type t1uint8_t = uint8
 
+// Sin_addr is defined at in.h:14:1
 type Sin_addr = struct{ Fs_addr uint32 }
 
+// Sin6_addr is defined at in.h:23:1
 type Sin6_addr = struct {
 	F__in6_union struct {
 		F__s6_addr   [0][16]uint8
@@ -34178,8 +31209,6 @@ type Sin6_addr = struct {
 		_            [12]byte
 	}
 }
-
-type t135size_t = uint64
 
 type Tin_addr_t = uint32
 
@@ -34212,8 +31241,7 @@ func Xgethostbyaddr(tls TLS, _a uintptr /* *void */, _l uint32, _af int32) (r ui
 	return x767h
 }
 
-type t5socklen_t = uint32
-
+// Shostent is defined at netdb.h:69:1
 type Shostent = struct {
 	Fh_name      uintptr // *int8
 	Fh_aliases   uintptr // **int8
@@ -34225,7 +31253,9 @@ type Shostent = struct {
 // x1h *Shostent, escapes: false, gethostbyaddr.c:9:24
 var x767h uintptr
 
-type t136size_t = uint64
+type t86size_t = uint64
+
+type t2socklen_t = uint32
 
 // linking gethostbyaddr_r.o
 
@@ -34235,10 +31265,7 @@ func Xgethostbyaddr_r(tls TLS, _a uintptr /* *void */, _l uint32, _af int32, _h 
 	return r
 }
 
-type t6socklen_t = uint32
-
-type t137size_t = uint64
-
+// Shostent is defined at netdb.h:69:1
 type s1hostent = struct {
 	Fh_name      uintptr // *int8
 	Fh_aliases   uintptr // **int8
@@ -34254,6 +31281,7 @@ func Xgethostbyname(tls TLS, _name uintptr /* *int8 */) (r uintptr /* *Shostent 
 	return Xgethostbyname2(tls, _name, int32(2))
 }
 
+// Shostent is defined at netdb.h:69:1
 type s2hostent = struct {
 	Fh_name      uintptr // *int8
 	Fh_aliases   uintptr // **int8
@@ -34291,6 +31319,7 @@ func Xgethostbyname2(tls TLS, _name uintptr /* *int8 */, _af int32) (r uintptr /
 	return x769h
 }
 
+// Shostent is defined at netdb.h:69:1
 type s3hostent = struct {
 	Fh_name      uintptr // *int8
 	Fh_aliases   uintptr // **int8
@@ -34302,7 +31331,7 @@ type s3hostent = struct {
 // x1h *Shostent, escapes: false, gethostbyname2.c:10:24
 var x769h uintptr
 
-type t138size_t = uint64
+type t87size_t = uint64
 
 // linking gethostbyname2_r.o
 
@@ -34397,8 +31426,7 @@ _1:
 	return 0
 }
 
-type t139size_t = uint64
-
+// Shostent is defined at netdb.h:69:1
 type s4hostent = struct {
 	Fh_name      uintptr // *int8
 	Fh_aliases   uintptr // **int8
@@ -34407,12 +31435,15 @@ type s4hostent = struct {
 	Fh_addr_list uintptr // **int8
 }
 
+// Saddress is defined at lookup.h:7:1
 type s1address = struct {
 	Ffamily  int32
 	Fscopeid uint32
 	Faddr    [16]uint8
 	Fsortkey int32
 }
+
+type t88size_t = uint64
 
 type t29uintptr_t = uint64
 
@@ -34425,8 +31456,7 @@ func Xgethostbyname_r(tls TLS, _name uintptr /* *int8 */, _h uintptr /* *Shosten
 	return Xgethostbyname2_r(tls, _name, int32(2), _h, _buf, _buflen, _res, _err)
 }
 
-type t140size_t = uint64
-
+// Shostent is defined at netdb.h:69:1
 type s5hostent = struct {
 	Fh_name      uintptr // *int8
 	Fh_aliases   uintptr // **int8
@@ -34434,6 +31464,8 @@ type s5hostent = struct {
 	Fh_length    int32
 	Fh_addr_list uintptr // **int8
 }
+
+type t89size_t = uint64
 
 // linking getifaddrs.o
 
@@ -34470,6 +31502,7 @@ func Xgetifaddrs(tls TLS, _ifap uintptr /* **Sifaddrs */) (r int32) {
 	return _r
 }
 
+// Sifaddrs is defined at ifaddrs.h:12:1
 type Sifaddrs = struct {
 	Fifa_next    uintptr // *Sifaddrs
 	Fifa_name    uintptr // *int8
@@ -34484,6 +31517,7 @@ type Sifaddrs = struct {
 	Fifa_data uintptr // *void
 }
 
+// Sifaddrs_ctx is defined at getifaddrs.c:41:1
 type Sifaddrs_ctx = struct {
 	Ffirst uintptr // *Sifaddrs_storage
 	Flast  uintptr // *Sifaddrs_storage
@@ -34656,11 +31690,13 @@ _2:
 	return 0
 }
 
+// Ssockaddr is defined at socket.h:310:1
 type s6sockaddr = struct {
 	Fsa_family uint16
 	Fsa_data   [14]int8
 }
 
+// Sifaddrs_storage is defined at getifaddrs.c:33:1
 type Sifaddrs_storage = struct {
 	Fifa       Sifaddrs
 	Fhash_next uintptr // *Sifaddrs_storage
@@ -34671,8 +31707,7 @@ type Sifaddrs_storage = struct {
 	Fname      [17]int8
 }
 
-type t141size_t = uint64
-
+// Snlmsghdr is defined at netlink.h:7:1
 type Snlmsghdr = struct {
 	Fnlmsg_len   uint32
 	Fnlmsg_type  uint16
@@ -34681,6 +31716,7 @@ type Snlmsghdr = struct {
 	Fnlmsg_pid   uint32
 }
 
+// Sifinfomsg is defined at netlink.h:45:1
 type Sifinfomsg = struct {
 	Fifi_family uint8
 	F__ifi_pad  uint8
@@ -34690,6 +31726,7 @@ type Sifinfomsg = struct {
 	Fifi_change uint32
 }
 
+// Sifaddrmsg is defined at netlink.h:63:1
 type Sifaddrmsg = struct {
 	Fifa_family    uint8
 	Fifa_prefixlen uint8
@@ -34698,6 +31735,7 @@ type Sifaddrmsg = struct {
 	Fifa_index     uint32
 }
 
+// Srtattr is defined at netlink.h:36:1
 type Srtattr = struct {
 	Frta_len  uint16
 	Frta_type uint16
@@ -34705,7 +31743,7 @@ type Srtattr = struct {
 
 type t2uint16_t = uint16
 
-type t113uint32_t = uint32
+type t112uint32_t = uint32
 
 // xcopy_lladdr is defined at getifaddrs.c:94:13
 func xcopy_lladdr(tls TLS, _r uintptr /* **Ssockaddr */, _sa uintptr /* *Usockany */, _addr uintptr /* *void */, _addrlen uint64, _ifindex int32, _hatype uint16) {
@@ -34760,6 +31798,7 @@ _1:
 
 type t3uint8_t = uint8
 
+// Usockany is defined at getifaddrs.c:26:1
 type Usockany = struct {
 	Fsa [0]s6sockaddr
 	Fll [0]Ssockaddr_ll_hack
@@ -34793,6 +31832,9 @@ func xgen_netmask(tls TLS, _r uintptr /* **Ssockaddr */, _af int32, _sa uintptr 
 
 type t6sa_family_t = uint16
 
+type t90size_t = uint64
+
+// Ssockaddr_ll_hack is defined at getifaddrs.c:18:1
 type Ssockaddr_ll_hack = struct {
 	Fsll_family   uint16
 	Fsll_protocol uint16
@@ -34803,6 +31845,7 @@ type Ssockaddr_ll_hack = struct {
 	Fsll_addr     [24]uint8
 }
 
+// Ssockaddr_in is defined at in.h:16:1
 type s1sockaddr_in = struct {
 	Fsin_family uint16
 	Fsin_port   uint16
@@ -34810,6 +31853,7 @@ type s1sockaddr_in = struct {
 	Fsin_zero   [8]uint8
 }
 
+// Ssockaddr_in6 is defined at in.h:34:1
 type s1sockaddr_in6 = struct {
 	Fsin6_family   uint16
 	Fsin6_port     uint16
@@ -34820,8 +31864,10 @@ type s1sockaddr_in6 = struct {
 
 type t1in_port_t = uint16
 
+// Sin_addr is defined at in.h:14:1
 type s1in_addr = struct{ Fs_addr uint32 }
 
+// Sin6_addr is defined at in.h:23:1
 type s1in6_addr = struct {
 	F__in6_union struct {
 		F__s6_addr   [0][16]uint8
@@ -34949,8 +31995,7 @@ _1:
 	return 0
 }
 
-type t7socklen_t = uint32
-
+// Ssockaddr is defined at socket.h:310:1
 type s7sockaddr = struct {
 	Fsa_family uint16
 	Fsa_data   [14]int8
@@ -34978,7 +32023,7 @@ func xmkptr6(tls TLS, _s uintptr /* *int8 */, _ip uintptr /* *uint8 */) {
 	Xstrcpy(tls, _s, ts+1876 /* "ip6.arpa" */)
 }
 
-type t114uint32_t = uint32
+type t113uint32_t = uint32
 
 func set777(p *uintptr, v uintptr) uintptr { *p = v; return v }
 
@@ -35059,7 +32104,7 @@ func xitoa(tls TLS, _p uintptr /* *int8 */, _x uint32) (r uintptr /* *int8 */) {
 	return _p
 }
 
-type t142size_t = uint64
+type t91size_t = uint64
 
 type t2in_port_t = uint16
 
@@ -35115,6 +32160,7 @@ func xreverse_services(tls TLS, _buf uintptr /* *int8 */, _port int32, _dgram in
 // x7xdigits [17]int8, escapes: true, getnameinfo.c:39:20
 var x776xdigits = ds + 45576
 
+// Saddress is defined at lookup.h:7:1
 type s2address = struct {
 	Ffamily  int32
 	Fscopeid uint32
@@ -35122,6 +32168,7 @@ type s2address = struct {
 	Fsortkey int32
 }
 
+// S_IO_FILE is defined at stdio_impl.h:22:1
 type s7_IO_FILE = struct {
 	Fflags        uint32
 	Frpos         uintptr // *uint8
@@ -35160,8 +32207,9 @@ type s7_IO_FILE = struct {
 
 type t4uint8_t = uint8
 
-type t32off_t = int64
+type t30off_t = int64
 
+// S__locale_struct is defined at libc.h:10:1
 type s61__locale_struct = struct{ Fcat [6]uintptr }
 
 // linking getpeername.o
@@ -35171,6 +32219,7 @@ func Xgetpeername(tls TLS, _fd int32, _addr uintptr /* *Ssockaddr */, _len uintp
 	return int32(X__syscall_ret(tls, uint64(x8__syscall6(tls, int64(52), int64(_fd), int64(_addr), int64(_len), int64(0), int64(0), int64(0)))))
 }
 
+// Ssockaddr is defined at socket.h:310:1
 type s8sockaddr = struct {
 	Fsa_family uint16
 	Fsa_data   [14]int8
@@ -35196,6 +32245,7 @@ func Xgetservbyname(tls TLS, _name uintptr /* *int8 */, _prots uintptr /* *int8 
 	return x778se
 }
 
+// Sservent is defined at netdb.h:78:1
 type Sservent = struct {
 	Fs_name    uintptr // *int8
 	Fs_aliases uintptr // **int8
@@ -35208,8 +32258,6 @@ var x778se = bss + 4128
 
 // x2buf [2]*int8, escapes: true, getservbyname.c:7:14
 var x779buf = bss + 4160
-
-type t143size_t = uint64
 
 // linking getservbyname_r.o
 
@@ -35277,8 +32325,7 @@ _1:
 	return 0
 }
 
-type t144size_t = uint64
-
+// Sservent is defined at netdb.h:78:1
 type s1servent = struct {
 	Fs_name    uintptr // *int8
 	Fs_aliases uintptr // **int8
@@ -35286,6 +32333,7 @@ type s1servent = struct {
 	Fs_proto   uintptr // *int8
 }
 
+// Sservice is defined at lookup.h:14:1
 type s1service = struct {
 	Fport     uint16
 	Fproto    uint8
@@ -35293,6 +32341,8 @@ type s1service = struct {
 }
 
 type t30uintptr_t = uint64
+
+type t92size_t = uint64
 
 type t4uint16_t = uint16
 
@@ -35309,6 +32359,7 @@ func Xgetservbyport(tls TLS, _port int32, _prots uintptr /* *int8 */) (r uintptr
 	return x780se
 }
 
+// Sservent is defined at netdb.h:78:1
 type s2servent = struct {
 	Fs_name    uintptr // *int8
 	Fs_aliases uintptr // **int8
@@ -35321,8 +32372,6 @@ var x780se = bss + 4176
 
 // x2buf [4]int64, escapes: true, getservbyport.c:7:14
 var x781buf = bss + 4208
-
-type t145size_t = uint64
 
 // linking getservbyport_r.o
 
@@ -35400,8 +32449,7 @@ _1:
 	return 0
 }
 
-type t146size_t = uint64
-
+// Sservent is defined at netdb.h:78:1
 type s3servent = struct {
 	Fs_name    uintptr // *int8
 	Fs_aliases uintptr // **int8
@@ -35409,6 +32457,7 @@ type s3servent = struct {
 	Fs_proto   uintptr // *int8
 }
 
+// Ssockaddr_in is defined at in.h:16:1
 type s2sockaddr_in = struct {
 	Fsin_family uint16
 	Fsin_port   uint16
@@ -35422,17 +32471,18 @@ type t3in_port_t = uint16
 
 type t5uint16_t = uint16
 
+type t93size_t = uint64
+
 type t31uintptr_t = uint64
 
+// Sin_addr is defined at in.h:14:1
 type s2in_addr = struct{ Fs_addr uint32 }
 
 type t5uint8_t = uint8
 
-type t8socklen_t = uint32
-
 type t2in_addr_t = uint32
 
-type t115uint32_t = uint32
+type t114uint32_t = uint32
 
 // linking getsockname.o
 
@@ -35441,6 +32491,7 @@ func Xgetsockname(tls TLS, _fd int32, _addr uintptr /* *Ssockaddr */, _len uintp
 	return int32(X__syscall_ret(tls, uint64(x9__syscall6(tls, int64(51), int64(_fd), int64(_addr), int64(_len), int64(0), int64(0), int64(0)))))
 }
 
+// Ssockaddr is defined at socket.h:310:1
 type s9sockaddr = struct {
 	Fsa_family uint16
 	Fsa_data   [14]int8
@@ -35529,7 +32580,7 @@ func Xhtonl(tls TLS, _n uint32) (r uint32) {
 	return _n
 }
 
-type t116uint32_t = uint32
+type t115uint32_t = uint32
 
 // x__bswap_32 is defined at byteswap.h:12:26
 func x1__bswap_32(tls TLS, ___x uint32) (r uint32) {
@@ -35550,12 +32601,12 @@ func Xhtons(tls TLS, _n uint16) (r uint16) {
 	return _n
 }
 
-type t6uint16_t = uint16
-
 // x__bswap_16 is defined at byteswap.h:7:26
 func x__bswap_16(tls TLS, ___x uint16) (r uint16) {
 	return uint16(int32(___x)<<(uint(8)%32) | int32(___x)>>(uint(8)%32))
 }
+
+type t6uint16_t = uint16
 
 // linking if_freenameindex.o
 
@@ -35564,6 +32615,7 @@ func Xif_freenameindex(tls TLS, _idx uintptr /* *Sif_nameindex */) {
 	Xfree(tls, _idx)
 }
 
+// Sif_nameindex is defined at if.h:12:1
 type Sif_nameindex = struct {
 	Fif_index uint32
 	Fif_name  uintptr // *int8
@@ -35597,6 +32649,7 @@ func Xif_indextoname(tls TLS, _index uint32, _name uintptr /* *int8 */) (r uintp
 	return Xstrncpy(tls, _name, _ifr, uint64(16))
 }
 
+// Sifreq is defined at if.h:76:1
 type Sifreq = struct {
 	Fifr_ifrn struct {
 		Fifrn_name [0][16]int8
@@ -35626,11 +32679,13 @@ func x26__syscall1(tls TLS, _n int64, _a1 int64) (r int64) {
 	return X__syscall(tls, _n, _a1, int64(0), int64(0), int64(0), int64(0), int64(0))
 }
 
+// Ssockaddr is defined at socket.h:310:1
 type s10sockaddr = struct {
 	Fsa_family uint16
 	Fsa_data   [14]int8
 }
 
+// Sifmap is defined at if.h:64:1
 type Sifmap = struct {
 	Fmem_start uint64
 	Fmem_end   uint64
@@ -35639,8 +32694,6 @@ type Sifmap = struct {
 	Fdma       uint8
 	Fport      uint8
 }
-
-type t147size_t = uint64
 
 type t11sa_family_t = uint16
 
@@ -35652,6 +32705,7 @@ func Xif_nameindex(tls TLS) (r uintptr /* *Sif_nameindex */) {
 	return r
 }
 
+// Sif_nameindex is defined at if.h:12:1
 type s1if_nameindex = struct {
 	Fif_index uint32
 	Fif_name  uintptr // *int8
@@ -35682,6 +32736,7 @@ func Xif_nametoindex(tls TLS, _name uintptr /* *int8 */) (r uint32) {
 	return uint32(*(*int32)(unsafe.Pointer(_ifr + 16)))
 }
 
+// Sifreq is defined at if.h:76:1
 type s1ifreq = struct {
 	Fifr_ifrn struct {
 		Fifrn_name [0][16]int8
@@ -35711,11 +32766,13 @@ func x27__syscall1(tls TLS, _n int64, _a1 int64) (r int64) {
 	return X__syscall(tls, _n, _a1, int64(0), int64(0), int64(0), int64(0), int64(0))
 }
 
+// Ssockaddr is defined at socket.h:310:1
 type s11sockaddr = struct {
 	Fsa_family uint16
 	Fsa_data   [14]int8
 }
 
+// Sifmap is defined at if.h:64:1
 type s1ifmap = struct {
 	Fmem_start uint64
 	Fmem_end   uint64
@@ -35725,8 +32782,6 @@ type s1ifmap = struct {
 	Fport      uint8
 }
 
-type t148size_t = uint64
-
 type t12sa_family_t = uint16
 
 // linking in6addr_any.o
@@ -35734,6 +32789,7 @@ type t12sa_family_t = uint16
 // Xin6addr_any Sin6_addr, escapes: true, in6addr_any.c:3:23
 var Xin6addr_any = bss + 4248
 
+// Sin6_addr is defined at in.h:23:1
 type s2in6_addr = struct {
 	F__in6_union struct {
 		F__s6_addr   [0][16]uint8
@@ -35748,13 +32804,14 @@ type t6uint8_t = uint8
 
 type t7uint16_t = uint16
 
-type t117uint32_t = uint32
+type t116uint32_t = uint32
 
 // linking in6addr_loopback.o
 
 // Xin6addr_loopback Sin6_addr, escapes: true, in6addr_loopback.c:3:23
 var Xin6addr_loopback = ds + 45688
 
+// Sin6_addr is defined at in.h:23:1
 type s3in6_addr = struct {
 	F__in6_union struct {
 		F__s6_addr   [0][16]uint8
@@ -35769,7 +32826,7 @@ type t7uint8_t = uint8
 
 type t8uint16_t = uint16
 
-type t118uint32_t = uint32
+type t117uint32_t = uint32
 
 // linking inet_addr.o
 
@@ -35784,11 +32841,12 @@ func Xinet_addr(tls TLS, _p uintptr /* *int8 */) (r uint32) {
 	return *(*uint32)(unsafe.Pointer(_a))
 }
 
+// Sin_addr is defined at in.h:14:1
+type s3in_addr = struct{ Fs_addr uint32 }
+
 type t3in_addr_t = uint32
 
-type t119uint32_t = uint32
-
-type s3in_addr = struct{ Fs_addr uint32 }
+type t118uint32_t = uint32
 
 // linking inet_aton.o
 
@@ -35857,11 +32915,12 @@ _1:
 	return 1
 }
 
+// Sin_addr is defined at in.h:14:1
 type s4in_addr = struct{ Fs_addr uint32 }
 
 type t4in_addr_t = uint32
 
-type t120uint32_t = uint32
+type t119uint32_t = uint32
 
 // linking inet_legacy.o
 
@@ -35922,10 +32981,11 @@ func Xinet_netof(tls TLS, ain struct{ Fs_addr uint32 }) (r uint32) {
 	return _h >> (uint(8) % 32)
 }
 
+type t120uint32_t = uint32
+
 type t5in_addr_t = uint32
 
-type t121uint32_t = uint32
-
+// Sin_addr is defined at in.h:14:1
 type s5in_addr = struct{ Fs_addr uint32 }
 
 // linking inet_ntoa.o
@@ -35944,16 +33004,15 @@ func Xinet_ntoa(tls TLS, ain struct{ Fs_addr uint32 }) (r uintptr /* *int8 */) {
 	return x787buf
 }
 
-type s6in_addr = struct{ Fs_addr uint32 }
-
 type t6in_addr_t = uint32
 
-type t122uint32_t = uint32
+type t121uint32_t = uint32
 
 // x1buf [16]int8, escapes: true, inet_ntoa.c:6:14
 var x787buf = bss + 4264
 
-type t149size_t = uint64
+// Sin_addr is defined at in.h:14:1
+type s6in_addr = struct{ Fs_addr uint32 }
 
 // linking inet_ntop.o
 
@@ -36022,9 +33081,7 @@ _1:
 	return null
 }
 
-type t9socklen_t = uint32
-
-type t150size_t = uint64
+type t94size_t = uint64
 
 // linking inet_pton.o
 
@@ -36141,8 +33198,6 @@ func xhexval(tls TLS, _c uint32) (r int32) {
 	return -1
 }
 
-type t151size_t = uint64
-
 // linking listen.o
 
 // Xlisten is defined at listen.c:4:5
@@ -36160,7 +33215,7 @@ func x11__syscall6(tls TLS, _n int64, _a1 int64, _a2 int64, _a3 int64, _a4 int64
 func preinc793(p *uintptr) uintptr { *p += 1; return *p }
 
 // X__lookup_ipliteral is defined at lookup_ipliteral.c:14:5
-func X__lookup_ipliteral(tls TLS, _buf uintptr /* [1]Saddress */, _name uintptr /* *int8 */, _family int32) (r int32) {
+func X__lookup_ipliteral(tls TLS, _buf uintptr /* *Saddress */, _name uintptr /* *int8 */, _family int32) (r int32) {
 	esc := MustMalloc(104)
 	var (
 		_a4      = esc      // *Sin_addr
@@ -36218,6 +33273,7 @@ func X__lookup_ipliteral(tls TLS, _buf uintptr /* [1]Saddress */, _name uintptr 
 	return 1
 }
 
+// Saddress is defined at lookup.h:7:1
 type s3address = struct {
 	Ffamily  int32
 	Fscopeid uint32
@@ -36225,8 +33281,10 @@ type s3address = struct {
 	Fsortkey int32
 }
 
+// Sin_addr is defined at in.h:14:1
 type s7in_addr = struct{ Fs_addr uint32 }
 
+// Sin6_addr is defined at in.h:23:1
 type s4in6_addr = struct {
 	F__in6_union struct {
 		F__s6_addr   [0][16]uint8
@@ -36241,11 +33299,9 @@ type t8uint8_t = uint8
 
 type t7in_addr_t = uint32
 
-type t123uint32_t = uint32
+type t122uint32_t = uint32
 
 type t10uint16_t = uint16
-
-type t152size_t = uint64
 
 // linking lookup_name.o
 
@@ -36256,7 +33312,7 @@ func set795(p *int32, v int32) int32 { *p = v; return v }
 func fp796(f func(TLS, uintptr, uintptr) int32) uintptr { return *(*uintptr)(unsafe.Pointer(&f)) }
 
 // X__lookup_name is defined at lookup_name.c:291:5
-func X__lookup_name(tls TLS, _buf uintptr /* [48]Saddress */, _canon uintptr /* [256]int8 */, _name uintptr /* *int8 */, _family int32, _flags int32) (r int32) {
+func X__lookup_name(tls TLS, _buf uintptr /* *Saddress */, _canon uintptr /* *int8 */, _name uintptr /* *int8 */, _family int32, _flags int32) (r int32) {
 	esc := MustMalloc(116)
 	var (
 		_cnt       int32
@@ -36411,6 +33467,7 @@ func X__lookup_name(tls TLS, _buf uintptr /* [48]Saddress */, _canon uintptr /* 
 	return _cnt
 }
 
+// Saddress is defined at lookup.h:7:1
 type s4address = struct {
 	Ffamily  int32
 	Fscopeid uint32
@@ -36418,8 +33475,9 @@ type s4address = struct {
 	Fsortkey int32
 }
 
-type t153size_t = uint64
+type t95size_t = uint64
 
+// Ssockaddr_in6 is defined at in.h:34:1
 type s2sockaddr_in6 = struct {
 	Fsin6_family   uint16
 	Fsin6_port     uint16
@@ -36428,6 +33486,7 @@ type s2sockaddr_in6 = struct {
 	Fsin6_scope_id uint32
 }
 
+// Ssockaddr_in is defined at in.h:16:1
 type s3sockaddr_in = struct {
 	Fsin_family uint16
 	Fsin_port   uint16
@@ -36435,8 +33494,9 @@ type s3sockaddr_in = struct {
 	Fsin_zero   [8]uint8
 }
 
-type t10socklen_t = uint32
+type t3socklen_t = uint32
 
+// Spolicy is defined at lookup_name.c:217:14
 type Spolicy = struct {
 	Faddr  [16]uint8
 	Flen   uint8
@@ -36446,7 +33506,7 @@ type Spolicy = struct {
 }
 
 // xname_from_null is defined at lookup_name.c:25:12
-func xname_from_null(tls TLS, _buf uintptr /* [2]Saddress */, _name uintptr /* *int8 */, _family int32, _flags int32) (r int32) {
+func xname_from_null(tls TLS, _buf uintptr /* *Saddress */, _name uintptr /* *int8 */, _family int32, _flags int32) (r int32) {
 	var (
 		_cnt      int32
 		_unnamed1 s4address
@@ -36490,7 +33550,7 @@ func xname_from_null(tls TLS, _buf uintptr /* [2]Saddress */, _name uintptr /* *
 }
 
 // xname_from_numeric is defined at lookup_name.c:43:12
-func xname_from_numeric(tls TLS, _buf uintptr /* [1]Saddress */, _name uintptr /* *int8 */, _family int32) (r int32) {
+func xname_from_numeric(tls TLS, _buf uintptr /* *Saddress */, _name uintptr /* *int8 */, _family int32) (r int32) {
 	return X__lookup_ipliteral(tls, _buf, _name, _family)
 }
 
@@ -36499,7 +33559,7 @@ func set797(p *uintptr, v uintptr) uintptr { *p = v; return v }
 func postinc798(p *uintptr) uintptr { r := *p; *p += 1; return r }
 
 // xname_from_hosts is defined at lookup_name.c:48:12
-func xname_from_hosts(tls TLS, _buf uintptr /* [48]Saddress */, _canon uintptr /* [256]int8 */, _name uintptr /* *int8 */, _family int32) (r int32) {
+func xname_from_hosts(tls TLS, _buf uintptr /* *Saddress */, _canon uintptr /* *int8 */, _name uintptr /* *int8 */, _family int32) (r int32) {
 	esc := MustMalloc(1784)
 	var (
 		_line   = esc // *[512]int8
@@ -36596,7 +33656,7 @@ _8:
 func set799(p *uint64, v uint64) uint64 { *p = v; return v }
 
 // xname_from_dns_search is defined at lookup_name.c:173:12
-func xname_from_dns_search(tls TLS, _buf uintptr /* [48]Saddress */, _canon uintptr /* [256]int8 */, _name uintptr /* *int8 */, _family int32) (r int32) {
+func xname_from_dns_search(tls TLS, _buf uintptr /* *Saddress */, _canon uintptr /* *int8 */, _name uintptr /* *int8 */, _family int32) (r int32) {
 	esc := MustMalloc(356)
 	var (
 		_search = esc       // *[256]int8
@@ -36653,7 +33713,7 @@ func xname_from_dns_search(tls TLS, _buf uintptr /* [48]Saddress */, _canon uint
 
 type t13sa_family_t = uint16
 
-type t124uint32_t = uint32
+type t123uint32_t = uint32
 
 type t4in_port_t = uint16
 
@@ -36719,6 +33779,7 @@ func xaddrcmp(tls TLS, __a uintptr /* *void */, __b uintptr /* *void */) (r int3
 
 type t9uint8_t = uint8
 
+// Sin6_addr is defined at in.h:23:1
 type s5in6_addr = struct {
 	F__in6_union struct {
 		F__s6_addr   [0][16]uint8
@@ -36729,8 +33790,10 @@ type s5in6_addr = struct {
 	}
 }
 
+// Sin_addr is defined at in.h:14:1
 type s8in_addr = struct{ Fs_addr uint32 }
 
+// S_IO_FILE is defined at stdio_impl.h:22:1
 type s8_IO_FILE = struct {
 	Fflags        uint32
 	Frpos         uintptr // *uint8
@@ -36779,6 +33842,7 @@ func xis_valid_hostname(tls TLS, _host uintptr /* *int8 */) (r int32) {
 	return bool2int(*(*uint8)(unsafe.Pointer(_s)) == 0)
 }
 
+// Sresolvconf is defined at lookup.h:21:1
 type Sresolvconf = struct {
 	Fns       [3]s4address
 	Fnns      uint32
@@ -36792,7 +33856,7 @@ func fp800(f func(TLS, uintptr, int32, uintptr, int32, uintptr) int32) uintptr {
 }
 
 // xname_from_dns is defined at lookup_name.c:137:12
-func xname_from_dns(tls TLS, _buf uintptr /* [48]Saddress */, _canon uintptr /* [256]int8 */, _name uintptr /* *int8 */, _family int32, _conf uintptr /* *Sresolvconf */) (r int32) {
+func xname_from_dns(tls TLS, _buf uintptr /* *Saddress */, _canon uintptr /* *int8 */, _name uintptr /* *int8 */, _family int32, _conf uintptr /* *Sresolvconf */) (r int32) {
 	esc := MustMalloc(1672)
 	var (
 		_qbuf  = esc        // *[2][280]uint8
@@ -36854,13 +33918,15 @@ var xdefpolicy = ds + 45704
 
 type t8in_addr_t = uint32
 
-type t33off_t = int64
+type t31off_t = int64
 
+// S__locale_struct is defined at libc.h:10:1
 type s62__locale_struct = struct{ Fcat [6]uintptr }
 
 // x13afrr [2]struct{Faf int32;Frr int32;}, escapes: true, lookup_name.c:145:42
 var x801afrr = ds + 45824
 
+// Sdpc_ctx is defined at lookup_name.c:95:1
 type Sdpc_ctx = struct {
 	Faddrs uintptr // *Saddress
 	Fcanon uintptr // *int8
@@ -36926,7 +33992,7 @@ func set803(p *uintptr, v uintptr) uintptr { *p = v; return v }
 func postinc804(p *uintptr) uintptr { r := *p; *p += 1; return r }
 
 // X__lookup_serv is defined at lookup_serv.c:11:5
-func X__lookup_serv(tls TLS, _buf uintptr /* [2]Sservice */, _name uintptr /* *int8 */, _proto int32, _socktype int32, _flags int32) (r int32) {
+func X__lookup_serv(tls TLS, _buf uintptr /* *Sservice */, _name uintptr /* *int8 */, _proto int32, _socktype int32, _flags int32) (r int32) {
 	esc := MustMalloc(1416)
 	var (
 		_line = esc // *[128]int8
@@ -37096,14 +34162,16 @@ _14:
 	return int32(-8)
 }
 
+// Sservice is defined at lookup.h:14:1
 type s2service = struct {
 	Fport     uint16
 	Fproto    uint8
 	Fsocktype uint8
 }
 
-type t154size_t = uint64
+type t96size_t = uint64
 
+// S_IO_FILE is defined at stdio_impl.h:22:1
 type s9_IO_FILE = struct {
 	Fflags        uint32
 	Frpos         uintptr // *uint8
@@ -37142,8 +34210,9 @@ type s9_IO_FILE = struct {
 
 type t12uint16_t = uint16
 
-type t34off_t = int64
+type t32off_t = int64
 
+// S__locale_struct is defined at libc.h:10:1
 type s63__locale_struct = struct{ Fcat [6]uintptr }
 
 // linking netlink.o
@@ -37216,6 +34285,7 @@ func x28__syscall1(tls TLS, _n int64, _a1 int64) (r int64) {
 	return X__syscall(tls, _n, _a1, int64(0), int64(0), int64(0), int64(0), int64(0))
 }
 
+// Snlmsghdr is defined at netlink.h:7:1
 type s1nlmsghdr = struct {
 	Fnlmsg_len   uint32
 	Fnlmsg_type  uint16
@@ -37226,15 +34296,12 @@ type s1nlmsghdr = struct {
 
 type t10uint8_t = uint8
 
+// Srtgenmsg is defined at netlink.h:41:1
 type Srtgenmsg = struct{ Frtgen_family uint8 }
 
-type t125uint32_t = uint32
+type t124uint32_t = uint32
 
 type t13uint16_t = uint16
-
-type t155size_t = uint64
-
-type t25ssize_t = int64
 
 // linking netname.o
 
@@ -37248,14 +34315,15 @@ func Xgetnetbyname(tls TLS, _name uintptr /* *int8 */) (r uintptr /* *Snetent */
 	return null
 }
 
-type t126uint32_t = uint32
-
+// Snetent is defined at netdb.h:62:1
 type Snetent = struct {
 	Fn_name     uintptr // *int8
 	Fn_aliases  uintptr // **int8
 	Fn_addrtype int32
 	Fn_net      uint32
 }
+
+type t125uint32_t = uint32
 
 // linking ns_parse.o
 
@@ -37512,6 +34580,7 @@ func Xns_name_uncompress(tls TLS, _msg uintptr /* *uint8 */, _eom uintptr /* *ui
 	return _r
 }
 
+// S_ns_flagdata is defined at nameser.h:49:1
 type S_ns_flagdata = struct {
 	Fmask  int32
 	Fshift int32
@@ -37519,8 +34588,10 @@ type S_ns_flagdata = struct {
 
 type t14uint16_t = uint16
 
+// Nns_sect is defined at nameser.h:30:2
 type Tns_sect = E__ns_sect
 
+// E__ns_sect is defined at nameser.h:30:2
 type E__ns_sect = int32
 
 // Values of E__ns_sect
@@ -37535,9 +34606,7 @@ const (
 	Cns_s_max = 4
 )
 
-type t127uint32_t = uint32
-
-type t156size_t = uint64
+type t126uint32_t = uint32
 
 // linking ntohl.o
 
@@ -37553,7 +34622,7 @@ func Xntohl(tls TLS, _n uint32) (r uint32) {
 	return _n
 }
 
-type t128uint32_t = uint32
+type t127uint32_t = uint32
 
 // x__bswap_32 is defined at byteswap.h:12:26
 func x2__bswap_32(tls TLS, ___x uint32) (r uint32) {
@@ -37574,12 +34643,12 @@ func Xntohs(tls TLS, _n uint16) (r uint16) {
 	return _n
 }
 
-type t15uint16_t = uint16
-
 // x__bswap_16 is defined at byteswap.h:7:26
 func x1__bswap_16(tls TLS, ___x uint16) (r uint16) {
 	return uint16(int32(___x)<<(uint(8)%32) | int32(___x)>>(uint(8)%32))
 }
+
+type t15uint16_t = uint16
 
 // linking proto.o
 
@@ -37624,6 +34693,7 @@ func Xgetprotobynumber(tls TLS, _num int32) (r uintptr /* *Sprotoent */) {
 // xidx int32, escapes: false, proto.c:6:12
 var xidx int32
 
+// Sprotoent is defined at netdb.h:85:1
 type Sprotoent = struct {
 	Fp_name    uintptr // *int8
 	Fp_aliases uintptr // **int8
@@ -37637,9 +34707,9 @@ func Xrecv(tls TLS, _fd int32, _buf uintptr /* *void */, _len uint64, _flags int
 	return Xrecvfrom(tls, _fd, _buf, _len, _flags, null, null)
 }
 
-type t157size_t = uint64
+type t12ssize_t = int64
 
-type t26ssize_t = int64
+type t97size_t = uint64
 
 // linking recvfrom.o
 
@@ -37648,18 +34718,13 @@ func Xrecvfrom(tls TLS, _fd int32, _buf uintptr /* *void */, _len uint64, _flags
 	return X__syscall_ret(tls, uint64(X__syscall_cp(tls, int64(45), int64(_fd), int64(_buf), int64(_len), int64(_flags), int64(_addr), int64(_alen))))
 }
 
-type t158size_t = uint64
-
-type t27ssize_t = int64
-
+// Ssockaddr is defined at socket.h:310:1
 type s12sockaddr = struct {
 	Fsa_family uint16
 	Fsa_data   [14]int8
 }
 
 type t14sa_family_t = uint16
-
-type t15syscall_arg_t = int64
 
 // linking recvmmsg.o
 
@@ -37680,13 +34745,15 @@ func Xrecvmmsg(tls TLS, _fd int32, _msgvec uintptr /* *Smmsghdr */, _vlen uint32
 	return int32(X__syscall_ret(tls, uint64(X__syscall_cp(tls, int64(299), int64(_fd), int64(_msgvec), int64(_vlen), int64(_flags), int64(_timeout), int64(0)))))
 }
 
+// Smmsghdr is defined at socket.h:29:1
 type Smmsghdr = struct {
 	Fmsg_hdr Smsghdr
 	Fmsg_len uint32
 }
 
-type t11socklen_t = uint32
+type t4socklen_t = uint32
 
+// Smsghdr is defined at socket.h:1:1
 type Smsghdr = struct {
 	Fmsg_name       uintptr // *void
 	Fmsg_namelen    uint32
@@ -37699,14 +34766,13 @@ type Smsghdr = struct {
 	Fmsg_flags      int32
 }
 
-type t16syscall_arg_t = int64
-
+// Siovec is defined at alltypes.h:380:1
 type s2iovec = struct {
 	Fiov_base uintptr // *void
 	Fiov_len  uint64
 }
 
-type t159size_t = uint64
+type t98size_t = uint64
 
 type s13timespec struct{ uintptr }
 
@@ -37736,8 +34802,7 @@ func Xrecvmsg(tls TLS, _fd int32, _msg uintptr /* *Smsghdr */, _flags int32) (r 
 	return _r
 }
 
-type t28ssize_t = int64
-
+// Smsghdr is defined at socket.h:1:1
 type s1msghdr = struct {
 	Fmsg_name       uintptr // *void
 	Fmsg_namelen    uint32
@@ -37750,16 +34815,17 @@ type s1msghdr = struct {
 	Fmsg_flags      int32
 }
 
-type t12socklen_t = uint32
+type t13ssize_t = int64
 
+type t5socklen_t = uint32
+
+// Siovec is defined at alltypes.h:380:1
 type s3iovec = struct {
 	Fiov_base uintptr // *void
 	Fiov_len  uint64
 }
 
-type t17syscall_arg_t = int64
-
-type t160size_t = uint64
+type t99size_t = uint64
 
 // linking res_init.o
 
@@ -37813,16 +34879,15 @@ func X__res_mkquery(tls TLS, _op int32, _dname uintptr /* *int8 */, _class int32
 	return _n
 }
 
+// Stimespec is defined at alltypes.h:270:1
 type s14timespec = struct {
 	Ftv_sec  int64
 	Ftv_nsec int64
 }
 
-type t161size_t = uint64
+type t100size_t = uint64
 
 type t26time_t = int64
-
-type t2clockid_t = int32
 
 // linking res_msend.o
 
@@ -38025,6 +35090,7 @@ func X__res_msend(tls TLS, _nqueries int32, _queries uintptr /* **uint8 */, _qle
 	return X__res_msend_rc(tls, _nqueries, _queries, _qlens, _answers, _alens, _asize, _conf)
 }
 
+// Sresolvconf is defined at lookup.h:21:1
 type s1resolvconf = struct {
 	Fns       [3]s5address
 	Fnns      uint32
@@ -38033,6 +35099,7 @@ type s1resolvconf = struct {
 	Ftimeout  uint32
 }
 
+// Ssockaddr_in is defined at in.h:16:1
 type s4sockaddr_in = struct {
 	Fsin_family uint16
 	Fsin_port   uint16
@@ -38040,6 +35107,7 @@ type s4sockaddr_in = struct {
 	Fsin_zero   [8]uint8
 }
 
+// Ssockaddr_in6 is defined at in.h:34:1
 type s3sockaddr_in6 = struct {
 	Fsin6_family   uint16
 	Fsin6_port     uint16
@@ -38048,14 +35116,16 @@ type s3sockaddr_in6 = struct {
 	Fsin6_scope_id uint32
 }
 
-type t13socklen_t = uint32
+type t6socklen_t = uint32
 
+// Spollfd is defined at poll.h:31:1
 type s2pollfd = struct {
 	Ffd      int32
 	Fevents  int16
 	Frevents int16
 }
 
+// Saddress is defined at lookup.h:7:1
 type s5address = struct {
 	Ffamily  int32
 	Fscopeid uint32
@@ -38063,6 +35133,7 @@ type s5address = struct {
 	Fsortkey int32
 }
 
+// S__ptcb is defined at pthread.h:200:1
 type s24__ptcb = struct {
 	F__f    uintptr // *func(TLS, uintptr)
 	F__x    uintptr // *void
@@ -38075,14 +35146,14 @@ type t16uint16_t = uint16
 
 type t15sa_family_t = uint16
 
-type t129uint32_t = uint32
+type t128uint32_t = uint32
 
 // xcleanup is defined at res_msend.c:17:13
 func x1cleanup(tls TLS, _p uintptr /* *void */) {
 	x29__syscall1(tls, int64(3), int64(_p))
 }
 
-type t1intptr_t = int64
+type Tintptr_t = int64
 
 // xmtime is defined at res_msend.c:22:22
 func xmtime(tls TLS) (r uint64) {
@@ -38093,10 +35164,12 @@ func xmtime(tls TLS) (r uint64) {
 	return uint64(*(*int64)(unsafe.Pointer(_ts)))*uint64(1000) + uint64(*(*int64)(unsafe.Pointer(_ts + 8))/int64(1000000))
 }
 
+// Sin_addr is defined at in.h:14:1
 type s9in_addr = struct{ Fs_addr uint32 }
 
 type t11uint8_t = uint8
 
+// Sin6_addr is defined at in.h:23:1
 type s6in6_addr = struct {
 	F__in6_union struct {
 		F__s6_addr   [0][16]uint8
@@ -38107,13 +35180,12 @@ type s6in6_addr = struct {
 	}
 }
 
-type t162size_t = uint64
-
 // x__syscall1 is defined at syscall_arch.h:14:22
 func x29__syscall1(tls TLS, _n int64, _a1 int64) (r int64) {
 	return X__syscall(tls, _n, _a1, int64(0), int64(0), int64(0), int64(0), int64(0))
 }
 
+// Stimespec is defined at alltypes.h:270:1
 type s15timespec = struct {
 	Ftv_sec  int64
 	Ftv_nsec int64
@@ -38121,13 +35193,7 @@ type s15timespec = struct {
 
 type t27time_t = int64
 
-type t29ssize_t = int64
-
-type t1nfds_t = uint64
-
 type t9in_addr_t = uint32
-
-type t3clockid_t = int32
 
 // linking res_query.o
 
@@ -38168,7 +35234,7 @@ func Xres_querydomain(tls TLS, _name uintptr /* *int8 */, _domain uintptr /* *in
 	return Xres_query(tls, _tmp, _class, _type, _dest, _len)
 }
 
-type t163size_t = uint64
+type t101size_t = uint64
 
 // linking res_send.o
 
@@ -38201,6 +35267,7 @@ func X__res_state(tls TLS) (r uintptr /* *S__res_state */) {
 	return x815res
 }
 
+// S__res_state is defined at resolv.h:26:9
 type S__res_state = struct {
 	Fretrans     int32
 	Fretry       int32
@@ -38240,6 +35307,7 @@ type S__res_state = struct {
 // x1res S__res_state, escapes: true, res_state.c:7:28
 var x815res = bss + 4280
 
+// Ssockaddr_in is defined at in.h:16:1
 type s5sockaddr_in = struct {
 	Fsin_family uint16
 	Fsin_port   uint16
@@ -38247,9 +35315,10 @@ type s5sockaddr_in = struct {
 	Fsin_zero   [8]uint8
 }
 
+// Sin_addr is defined at in.h:14:1
 type s10in_addr = struct{ Fs_addr uint32 }
 
-type t130uint32_t = uint32
+type t129uint32_t = uint32
 
 type t17uint16_t = uint16
 
@@ -38396,8 +35465,7 @@ lno_resolv_conf:
 	return 0
 }
 
-type t164size_t = uint64
-
+// Sresolvconf is defined at lookup.h:21:1
 type s2resolvconf = struct {
 	Fns       [3]s6address
 	Fnns      uint32
@@ -38406,6 +35474,7 @@ type s2resolvconf = struct {
 	Ftimeout  uint32
 }
 
+// S_IO_FILE is defined at stdio_impl.h:22:1
 type s10_IO_FILE = struct {
 	Fflags        uint32
 	Frpos         uintptr // *uint8
@@ -38442,6 +35511,9 @@ type s10_IO_FILE = struct {
 	Flocale       uintptr // *S__locale_struct
 }
 
+type t102size_t = uint64
+
+// Saddress is defined at lookup.h:7:1
 type s6address = struct {
 	Ffamily  int32
 	Fscopeid uint32
@@ -38449,8 +35521,9 @@ type s6address = struct {
 	Fsortkey int32
 }
 
-type t35off_t = int64
+type t33off_t = int64
 
+// S__locale_struct is defined at libc.h:10:1
 type s64__locale_struct = struct{ Fcat [6]uintptr }
 
 type t13uint8_t = uint8
@@ -38462,11 +35535,9 @@ func Xsend(tls TLS, _fd int32, _buf uintptr /* *void */, _len uint64, _flags int
 	return Xsendto(tls, _fd, _buf, _len, _flags, null, uint32(0))
 }
 
-type t165size_t = uint64
+type t14ssize_t = int64
 
-type t30ssize_t = int64
-
-type t14socklen_t = uint32
+type t103size_t = uint64
 
 // linking sendmmsg.o
 
@@ -38509,13 +35580,15 @@ lerror:
 	return int32(-1)
 }
 
+// Smmsghdr is defined at socket.h:29:1
 type s1mmsghdr = struct {
 	Fmsg_hdr s2msghdr
 	Fmsg_len uint32
 }
 
-type t31ssize_t = int64
+type t15ssize_t = int64
 
+// Smsghdr is defined at socket.h:1:1
 type s2msghdr = struct {
 	Fmsg_name       uintptr // *void
 	Fmsg_namelen    uint32
@@ -38528,14 +35601,15 @@ type s2msghdr = struct {
 	Fmsg_flags      int32
 }
 
-type t15socklen_t = uint32
+type t7socklen_t = uint32
 
+// Siovec is defined at alltypes.h:380:1
 type s4iovec = struct {
 	Fiov_base uintptr // *void
 	Fiov_len  uint64
 }
 
-type t166size_t = uint64
+type t104size_t = uint64
 
 // linking sendmsg.o
 
@@ -38579,8 +35653,7 @@ func Xsendmsg(tls TLS, _fd int32, _msg uintptr /* *Smsghdr */, _flags int32) (r 
 	return X__syscall_ret(tls, uint64(X__syscall_cp(tls, int64(46), int64(_fd), int64(_msg), int64(_flags), int64(0), int64(0), int64(0))))
 }
 
-type t32ssize_t = int64
-
+// Smsghdr is defined at socket.h:1:1
 type s3msghdr = struct {
 	Fmsg_name       uintptr // *void
 	Fmsg_namelen    uint32
@@ -38593,6 +35666,7 @@ type s3msghdr = struct {
 	Fmsg_flags      int32
 }
 
+// Scmsghdr is defined at socket.h:11:1
 type Scmsghdr = struct {
 	Fcmsg_len   uint32
 	F__pad1     int32
@@ -38600,16 +35674,15 @@ type Scmsghdr = struct {
 	Fcmsg_type  int32
 }
 
-type t16socklen_t = uint32
+type t8socklen_t = uint32
 
-type t167size_t = uint64
+type t105size_t = uint64
 
+// Siovec is defined at alltypes.h:380:1
 type s5iovec = struct {
 	Fiov_base uintptr // *void
 	Fiov_len  uint64
 }
-
-type t18syscall_arg_t = int64
 
 // linking sendto.o
 
@@ -38618,20 +35691,13 @@ func Xsendto(tls TLS, _fd int32, _buf uintptr /* *void */, _len uint64, _flags i
 	return X__syscall_ret(tls, uint64(X__syscall_cp(tls, int64(44), int64(_fd), int64(_buf), int64(_len), int64(_flags), int64(_addr), int64(_alen))))
 }
 
-type t168size_t = uint64
-
-type t17socklen_t = uint32
-
-type t33ssize_t = int64
-
+// Ssockaddr is defined at socket.h:310:1
 type s13sockaddr = struct {
 	Fsa_family uint16
 	Fsa_data   [14]int8
 }
 
 type t17sa_family_t = uint16
-
-type t19syscall_arg_t = int64
 
 // linking serv.o
 
@@ -38648,6 +35714,7 @@ func Xgetservent(tls TLS) (r uintptr /* *Sservent */) {
 	return null
 }
 
+// Sservent is defined at netdb.h:78:1
 type s4servent = struct {
 	Fs_name    uintptr // *int8
 	Fs_aliases uintptr // **int8
@@ -38661,8 +35728,6 @@ type s4servent = struct {
 func Xsetsockopt(tls TLS, _fd int32, _level int32, _optname int32, _optval uintptr /* *void */, _optlen uint32) (r int32) {
 	return int32(X__syscall_ret(tls, uint64(x12__syscall6(tls, int64(54), int64(_fd), int64(_level), int64(_optname), int64(_optval), int64(_optlen), int64(0)))))
 }
-
-type t18socklen_t = uint32
 
 // x__syscall6 is defined at syscall_arch.h:61:22
 func x12__syscall6(tls TLS, _n int64, _a1 int64, _a2 int64, _a3 int64, _a4 int64, _a5 int64, _a6 int64) (r int64) {
@@ -38729,7 +35794,7 @@ func x33__syscall3(tls TLS, _n int64, _a1 int64, _a2 int64, _a3 int64) (r int64)
 // linking socketpair.o
 
 // Xsocketpair is defined at socketpair.c:6:5
-func Xsocketpair(tls TLS, _domain int32, _type int32, _protocol int32, _fd uintptr /* [2]int32 */) (r int32) {
+func Xsocketpair(tls TLS, _domain int32, _type int32, _protocol int32, _fd uintptr /* *int32 */) (r int32) {
 	var _r int32
 
 	_r = int32(X__syscall_ret(tls, uint64(x15__syscall6(tls, int64(53), int64(_domain), int64(_type), int64(_protocol), int64(_fd), int64(0), int64(0)))))
@@ -38777,6 +35842,7 @@ func Xfgetgrent(tls TLS, _f uintptr /* *TFILE = S_IO_FILE */) (r uintptr /* *Sgr
 	return *(*uintptr)(unsafe.Pointer(_res))
 }
 
+// Sgroup is defined at grp.h:19:1
 type Sgroup = struct {
 	Fgr_name   uintptr // *int8
 	Fgr_passwd uintptr // *int8
@@ -38793,9 +35859,9 @@ var x819mem = bss + 4856
 // x3gr Sgroup, escapes: true, fgetgrent.c:7:22
 var x817gr = bss + 4864
 
-type t169size_t = uint64
+type t106size_t = uint64
 
-type t10gid_t = uint32
+type t9gid_t = uint32
 
 type s11_IO_FILE struct{ uintptr }
 
@@ -38814,6 +35880,7 @@ func Xfgetpwent(tls TLS, _f uintptr /* *TFILE = S_IO_FILE */) (r uintptr /* *Spa
 	return *(*uintptr)(unsafe.Pointer(_res))
 }
 
+// Spasswd is defined at pwd.h:20:1
 type s1passwd = struct {
 	Fpw_name   uintptr // *int8
 	Fpw_passwd uintptr // *int8
@@ -38830,11 +35897,11 @@ var x821line = bss + 4896
 // x2pw Spasswd, escapes: true, fgetpwent.c:7:23
 var x820pw = bss + 4904
 
-type t170size_t = uint64
+type t107size_t = uint64
 
-type t9uid_t = uint32
+type t8uid_t = uint32
 
-type t11gid_t = uint32
+type t10gid_t = uint32
 
 type s12_IO_FILE struct{ uintptr }
 
@@ -38859,6 +35926,7 @@ func Xfgetspent(tls TLS, _f uintptr /* *TFILE = S_IO_FILE */) (r uintptr /* *Ssp
 	return _res
 }
 
+// Sspwd is defined at shadow.h:15:1
 type Sspwd = struct {
 	Fsp_namp   uintptr // *int8
 	Fsp_pwdp   uintptr // *int8
@@ -38877,9 +35945,9 @@ var x822line = bss + 4952
 // x2sp Sspwd, escapes: true, fgetspent.c:7:21
 var x823sp = bss + 4960
 
-type t171size_t = uint64
+type t108size_t = uint64
 
-type t34ssize_t = int64
+type t16ssize_t = int64
 
 type s13_IO_FILE struct{ uintptr }
 
@@ -39145,8 +36213,7 @@ ldone:
 	return _rv
 }
 
-type t12gid_t = uint32
-
+// Sgroup is defined at grp.h:19:1
 type s1group = struct {
 	Fgr_name   uintptr // *int8
 	Fgr_passwd uintptr // *int8
@@ -39156,7 +36223,9 @@ type s1group = struct {
 
 type t18int32_t = int32
 
-type t172size_t = uint64
+type t109size_t = uint64
+
+type t11gid_t = uint32
 
 func preinc826(p *uintptr) uintptr { *p += 18446744073709551615; return *p }
 
@@ -39171,7 +36240,7 @@ func x1itoa(tls TLS, _p uintptr /* *int8 */, _x uint32) (r uintptr /* *int8 */) 
 	return _p
 }
 
-type t131uint32_t = uint32
+type t130uint32_t = uint32
 
 // x__bswap_32 is defined at byteswap.h:12:26
 func x3__bswap_32(tls TLS, ___x uint32) (r uint32) {
@@ -39192,8 +36261,7 @@ func Xgetgrgid_r(tls TLS, _gid uint32, _gr uintptr /* *Sgroup */, _buf uintptr /
 	return xgetgr_r(tls, null, _gid, _gr, _buf, _size, _res)
 }
 
-type t173size_t = uint64
-
+// Sgroup is defined at grp.h:19:1
 type s2group = struct {
 	Fgr_name   uintptr // *int8
 	Fgr_passwd uintptr // *int8
@@ -39246,7 +36314,9 @@ func xgetgr_r(tls TLS, _name uintptr /* *int8 */, _gid uint32, _gr uintptr /* *S
 	return _rv
 }
 
-type t13gid_t = uint32
+type t110size_t = uint64
+
+type t12gid_t = uint32
 
 type t32uintptr_t = uint64
 
@@ -39314,6 +36384,7 @@ func Xgetgrnam(tls TLS, _name uintptr /* *int8 */) (r uintptr /* *Sgroup */) {
 // xf *TFILE = S_IO_FILE, escapes: false, getgrent.c:3:13
 var x1f uintptr
 
+// Sgroup is defined at grp.h:19:1
 type s3group = struct {
 	Fgr_name   uintptr // *int8
 	Fgr_passwd uintptr // *int8
@@ -39321,7 +36392,7 @@ type s3group = struct {
 	Fgr_mem    uintptr // **int8
 }
 
-type t174size_t = uint64
+type t111size_t = uint64
 
 // xgr Sgroup, escapes: true, getgrent.c:5:21
 var xgr = bss + 5032
@@ -39332,7 +36403,7 @@ var x1line = bss + 5064
 // xmem **int8, escapes: true, getgrent.c:4:20
 var xmem = bss + 5072
 
-type t14gid_t = uint32
+type t13gid_t = uint32
 
 type s15_IO_FILE struct{ uintptr }
 
@@ -39444,6 +36515,7 @@ lend:
 	return _rv
 }
 
+// Sgroup is defined at grp.h:19:1
 type s4group = struct {
 	Fgr_name   uintptr // *int8
 	Fgr_passwd uintptr // *int8
@@ -39451,11 +36523,11 @@ type s4group = struct {
 	Fgr_mem    uintptr // **int8
 }
 
-type t35ssize_t = int64
+type t17ssize_t = int64
 
-type t175size_t = uint64
+type t112size_t = uint64
 
-type t15gid_t = uint32
+type t14gid_t = uint32
 
 // xatou is defined at getgrent_a.c:4:17
 func xatou(tls TLS, _s uintptr /* **int8 */) (r uint32) {
@@ -39610,10 +36682,9 @@ lcleanup:
 	return _ret
 }
 
-type t16gid_t = uint32
+type t18ssize_t = int64
 
-type t36ssize_t = int64
-
+// Sgroup is defined at grp.h:19:1
 type s5group = struct {
 	Fgr_name   uintptr // *int8
 	Fgr_passwd uintptr // *int8
@@ -39623,9 +36694,11 @@ type s5group = struct {
 
 type t19int32_t = int32
 
-type t176size_t = uint64
+type t113size_t = uint64
 
-type t132uint32_t = uint32
+type t15gid_t = uint32
+
+type t131uint32_t = uint32
 
 // x__bswap_32 is defined at byteswap.h:12:26
 func x4__bswap_32(tls TLS, ___x uint32) (r uint32) {
@@ -39804,8 +36877,7 @@ ldone:
 	return _rv
 }
 
-type t10uid_t = uint32
-
+// Spasswd is defined at pwd.h:20:1
 type s2passwd = struct {
 	Fpw_name   uintptr // *int8
 	Fpw_passwd uintptr // *int8
@@ -39818,7 +36890,9 @@ type s2passwd = struct {
 
 type t20int32_t = int32
 
-type t177size_t = uint64
+type t114size_t = uint64
+
+type t9uid_t = uint32
 
 func preinc836(p *uintptr) uintptr { *p += 18446744073709551615; return *p }
 
@@ -39833,9 +36907,9 @@ func x2itoa(tls TLS, _p uintptr /* *int8 */, _x uint32) (r uintptr /* *int8 */) 
 	return _p
 }
 
-type t17gid_t = uint32
+type t16gid_t = uint32
 
-type t133uint32_t = uint32
+type t132uint32_t = uint32
 
 type s18_IO_FILE struct{ uintptr }
 
@@ -39851,8 +36925,7 @@ func Xgetpwuid_r(tls TLS, _uid uint32, _pw uintptr /* *Spasswd */, _buf uintptr 
 	return xgetpw_r(tls, null, _uid, _pw, _buf, _size, _res)
 }
 
-type t178size_t = uint64
-
+// Spasswd is defined at pwd.h:20:1
 type s3passwd = struct {
 	Fpw_name   uintptr // *int8
 	Fpw_passwd uintptr // *int8
@@ -39898,9 +36971,11 @@ func xgetpw_r(tls TLS, _name uintptr /* *int8 */, _uid uint32, _pw uintptr /* *S
 	return _rv
 }
 
-type t11uid_t = uint32
+type t115size_t = uint64
 
-type t18gid_t = uint32
+type t10uid_t = uint32
+
+type t17gid_t = uint32
 
 // linking getpwent.o
 
@@ -39948,6 +37023,7 @@ func Xgetpwnam(tls TLS, _name uintptr /* *int8 */) (r uintptr /* *Spasswd */) {
 // xf *TFILE = S_IO_FILE, escapes: false, getpwent.c:3:13
 var x2f uintptr
 
+// Spasswd is defined at pwd.h:20:1
 type s4passwd = struct {
 	Fpw_name   uintptr // *int8
 	Fpw_passwd uintptr // *int8
@@ -39967,9 +37043,9 @@ var x2line = bss + 5128
 // xsize Tsize_t = uint64, escapes: true, getpwent.c:6:15
 var xsize = bss + 5136
 
-type t12uid_t = uint32
+type t11uid_t = uint32
 
-type t19gid_t = uint32
+type t18gid_t = uint32
 
 type s19_IO_FILE struct{ uintptr }
 
@@ -40048,6 +37124,7 @@ func X__getpwent_a(tls TLS, _f uintptr /* *TFILE = S_IO_FILE */, _pw uintptr /* 
 	return _rv
 }
 
+// Spasswd is defined at pwd.h:20:1
 type s5passwd = struct {
 	Fpw_name   uintptr // *int8
 	Fpw_passwd uintptr // *int8
@@ -40058,9 +37135,9 @@ type s5passwd = struct {
 	Fpw_shell  uintptr // *int8
 }
 
-type t37ssize_t = int64
+type t19ssize_t = int64
 
-type t13uid_t = uint32
+type t12uid_t = uint32
 
 // xatou is defined at getpwent_a.c:4:17
 func x1atou(tls TLS, _s uintptr /* **int8 */) (r uint32) {
@@ -40072,7 +37149,7 @@ func x1atou(tls TLS, _s uintptr /* **int8 */) (r uint32) {
 	return _x
 }
 
-type t20gid_t = uint32
+type t19gid_t = uint32
 
 type s20_IO_FILE struct{ uintptr }
 
@@ -40091,6 +37168,7 @@ func Xgetspent(tls TLS) (r uintptr /* *Sspwd */) {
 	return null
 }
 
+// Sspwd is defined at shadow.h:15:1
 type s1spwd = struct {
 	Fsp_namp   uintptr // *int8
 	Fsp_pwdp   uintptr // *int8
@@ -40126,6 +37204,7 @@ func Xgetspnam(tls TLS, _name uintptr /* *int8 */) (r uintptr /* *Sspwd */) {
 	return *(*uintptr)(unsafe.Pointer(_res))
 }
 
+// Sspwd is defined at shadow.h:15:1
 type s2spwd = struct {
 	Fsp_namp   uintptr // *int8
 	Fsp_pwdp   uintptr // *int8
@@ -40143,8 +37222,6 @@ var x841sp = bss + 5144
 
 // x2line *int8, escapes: false, getspnam.c:8:14
 var x840line uintptr
-
-type t179size_t = uint64
 
 // linking getspnam_r.o
 
@@ -40281,6 +37358,7 @@ func Xgetspnam_r(tls TLS, _name uintptr /* *int8 */, _sp uintptr /* *Sspwd */, _
 	return _rv
 }
 
+// Sspwd is defined at shadow.h:15:1
 type s3spwd = struct {
 	Fsp_namp   uintptr // *int8
 	Fsp_pwdp   uintptr // *int8
@@ -40306,8 +37384,9 @@ func xxatol(tls TLS, _s uintptr /* **int8 */) (r int64) {
 	return _x
 }
 
-type t180size_t = uint64
+type t116size_t = uint64
 
+// Sstat is defined at stat.h:4:1
 type s5stat = struct {
 	Fst_dev     uint64
 	Fst_ino     uint64
@@ -40326,13 +37405,14 @@ type s5stat = struct {
 	F__unused   [3]int64
 }
 
+// S__ptcb is defined at pthread.h:200:1
 type s25__ptcb = struct {
 	F__f    uintptr // *func(TLS, uintptr)
 	F__x    uintptr // *void
 	F__next uintptr // *S__ptcb
 }
 
-type t12mode_t = uint32
+type t10mode_t = uint32
 
 // xcleanup is defined at getspnam_r.c:56:13
 func x2cleanup(tls TLS, _p uintptr /* *void */) {
@@ -40345,16 +37425,17 @@ type t11ino_t = uint64
 
 type t5nlink_t = uint64
 
-type t14uid_t = uint32
+type t13uid_t = uint32
 
-type t21gid_t = uint32
+type t20gid_t = uint32
 
-type t36off_t = int64
+type t34off_t = int64
 
 type t5blksize_t = int64
 
 type t5blkcnt_t = int64
 
+// Stimespec is defined at alltypes.h:270:1
 type s16timespec = struct {
 	Ftv_sec  int64
 	Ftv_nsec int64
@@ -40383,10 +37464,6 @@ func X__nscd_query(tls TLS, _req int32, _key uintptr /* *int8 */, _buf uintptr /
 	panic(`TODO`)
 	return r
 }
-
-type t21int32_t = int32
-
-type t181size_t = uint64
 
 type s22_IO_FILE struct{ uintptr }
 
@@ -40445,6 +37522,7 @@ ldone:
 	return int32(0)
 }
 
+// Sgroup is defined at grp.h:19:1
 type s6group = struct {
 	Fgr_name   uintptr // *int8
 	Fgr_passwd uintptr // *int8
@@ -40452,9 +37530,9 @@ type s6group = struct {
 	Fgr_mem    uintptr // **int8
 }
 
-type t182size_t = uint64
+type t117size_t = uint64
 
-type t22gid_t = uint32
+type t21gid_t = uint32
 
 type s23_IO_FILE struct{ uintptr }
 
@@ -40468,6 +37546,7 @@ func Xputpwent(tls TLS, _pw uintptr /* *Spasswd */, _f uintptr /* *TFILE = S_IO_
 	return int32(0)
 }
 
+// Spasswd is defined at pwd.h:20:1
 type s6passwd = struct {
 	Fpw_name   uintptr // *int8
 	Fpw_passwd uintptr // *int8
@@ -40478,9 +37557,9 @@ type s6passwd = struct {
 	Fpw_shell  uintptr // *int8
 }
 
-type t15uid_t = uint32
+type t14uid_t = uint32
 
-type t23gid_t = uint32
+type t22gid_t = uint32
 
 type s24_IO_FILE struct{ uintptr }
 
@@ -40574,6 +37653,7 @@ func Xputspent(tls TLS, _sp uintptr /* *Sspwd */, _f uintptr /* *TFILE = S_IO_FI
 	return int32(0)
 }
 
+// Sspwd is defined at shadow.h:15:1
 type s4spwd = struct {
 	Fsp_namp   uintptr // *int8
 	Fsp_pwdp   uintptr // *int8
@@ -40615,7 +37695,7 @@ var X__seed48 = ds + 45968
 // linking drand48.o
 
 // Xerand48 is defined at drand48.c:7:8
-func Xerand48(tls TLS, _s uintptr /* [3]uint16 */) (r float64) {
+func Xerand48(tls TLS, _s uintptr /* *uint16 */) (r float64) {
 	esc := MustMalloc(8)
 	var _x = esc // *struct{Fu [0]uint64;Ff [0]float64;F int64}
 	defer Free(esc)
@@ -40641,16 +37721,14 @@ type t70uint64_t = uint64
 // linking lcong48.o
 
 // Xlcong48 is defined at lcong48.c:6:6
-func Xlcong48(tls TLS, _p uintptr /* [7]uint16 */) {
+func Xlcong48(tls TLS, _p uintptr /* *uint16 */) {
 	Xmemcpy(tls, X__seed48, _p, uint64(14))
 }
-
-type t183size_t = uint64
 
 // linking lrand48.o
 
 // Xnrand48 is defined at lrand48.c:7:6
-func Xnrand48(tls TLS, _s uintptr /* [3]uint16 */) (r int64) {
+func Xnrand48(tls TLS, _s uintptr /* *uint16 */) (r int64) {
 	return int64(X__rand48_step(tls, _s, X__seed48+2*uintptr(3)) >> (uint(17) % 64))
 }
 
@@ -40664,7 +37742,7 @@ type t71uint64_t = uint64
 // linking mrand48.o
 
 // Xjrand48 is defined at mrand48.c:7:6
-func Xjrand48(tls TLS, _s uintptr /* [3]uint16 */) (r int64) {
+func Xjrand48(tls TLS, _s uintptr /* *uint16 */) (r int64) {
 	return int64(int32(X__rand48_step(tls, _s, X__seed48+2*uintptr(3)) >> (uint(16) % 64)))
 }
 
@@ -40673,7 +37751,7 @@ func Xmrand48(tls TLS) (r int64) {
 	return Xjrand48(tls, X__seed48)
 }
 
-type t22int32_t = int32
+type t21int32_t = int32
 
 type t72uint64_t = uint64
 
@@ -40824,7 +37902,7 @@ func x__srandom(tls TLS, _seed uint32) {
 	}
 }
 
-type t184size_t = uint64
+type t118size_t = uint64
 
 // xsavestate is defined at random.c:35:13
 func xsavestate(tls TLS) (r uintptr /* *void */) {
@@ -40848,7 +37926,7 @@ func xloadstate(tls TLS, _state uintptr /* *Tuint32_t = uint32 */) {
 	xj = int32(*(*uint32)(unsafe.Pointer(xx - 4)) & uint32(0xff))
 }
 
-type t134uint32_t = uint32
+type t133uint32_t = uint32
 
 // xlcg31 is defined at random.c:27:17
 func xlcg31(tls TLS, _x uint32) (r uint32) {
@@ -40907,14 +37985,14 @@ func Xexeclp(tls TLS, _file uintptr /* *int8 */, _argv0 uintptr /* *int8 */, ap 
 // linking execv.o
 
 // Xexecv is defined at execv.c:5:5
-func Xexecv(tls TLS, _path uintptr /* *int8 */, _argv uintptr /* uintptr */) (r int32) {
-	return Xexecve(tls, _path, _argv, *(*uintptr)(unsafe.Pointer(X__environ)))
+func Xexecv(tls TLS, _path uintptr /* *int8 */, _argv uintptr /* **int8 */) (r int32) {
+	return Xexecve(tls, _path, _argv, *(*uintptr)(unsafe.Pointer(Xenviron)))
 }
 
 // linking execve.o
 
 // Xexecve is defined at execve.c:4:5
-func Xexecve(tls TLS, _path uintptr /* *int8 */, _argv uintptr /* uintptr */, _envp uintptr /* uintptr */) (r int32) {
+func Xexecve(tls TLS, _path uintptr /* *int8 */, _argv uintptr /* **int8 */, _envp uintptr /* **int8 */) (r int32) {
 	return int32(X__syscall_ret(tls, uint64(x35__syscall3(tls, int64(59), int64(_path), int64(_argv), int64(_envp)))))
 }
 
@@ -40926,20 +38004,20 @@ func x35__syscall3(tls TLS, _n int64, _a1 int64, _a2 int64, _a3 int64) (r int64)
 // linking execvp.o
 
 // X__execvpe is defined at execvp.c:10:5
-func X__execvpe(tls TLS, _file uintptr /* *int8 */, _argv uintptr /* uintptr */, _envp uintptr /* uintptr */) (r int32) {
+func X__execvpe(tls TLS, _file uintptr /* *int8 */, _argv uintptr /* **int8 */, _envp uintptr /* **int8 */) (r int32) {
 	panic(`TODO`)
 	return r
 }
 
 // Xexecvp is defined at execvp.c:58:5
-func Xexecvp(tls TLS, _file uintptr /* *int8 */, _argv uintptr /* uintptr */) (r int32) {
-	return X__execvpe(tls, _file, _argv, *(*uintptr)(unsafe.Pointer(X__environ)))
+func Xexecvp(tls TLS, _file uintptr /* *int8 */, _argv uintptr /* **int8 */) (r int32) {
+	return X__execvpe(tls, _file, _argv, *(*uintptr)(unsafe.Pointer(Xenviron)))
 }
 
 // linking fexecve.o
 
 // Xfexecve is defined at fexecve.c:6:5
-func Xfexecve(tls TLS, _fd int32, _argv uintptr /* uintptr */, _envp uintptr /* uintptr */) (r int32) {
+func Xfexecve(tls TLS, _fd int32, _argv uintptr /* **int8 */, _envp uintptr /* **int8 */) (r int32) {
 	esc := MustMalloc(27)
 	var _buf = esc // *[27]int8
 	defer Free(esc)
@@ -40981,8 +38059,9 @@ func Xfork(tls TLS) (r int32) {
 func x10dummy(tls TLS, _x int32) {
 }
 
-type t15pid_t = int32
+type t10pid_t = int32
 
+// S__pthread is defined at pthread_impl.h:15:1
 type s27__pthread = struct {
 	Fself          uintptr // *S__pthread
 	Fdtv           uintptr // **void
@@ -41036,20 +38115,22 @@ func x22__pthread_self(tls TLS) (r uintptr /* *S__pthread */) {
 
 type t33uintptr_t = uint64
 
-type t185size_t = uint64
+type t119size_t = uint64
 
+// S__ptcb is defined at pthread.h:200:1
 type s26__ptcb = struct {
 	F__f    uintptr // *func(TLS, uintptr)
 	F__x    uintptr // *void
 	F__next uintptr // *S__ptcb
 }
 
+// S__locale_struct is defined at libc.h:10:1
 type s65__locale_struct = struct{ Fcat [6]uintptr }
 
 // linking posix_spawn.o
 
 // X__posix_spawnx is defined at posix_spawn.c:152:5
-func X__posix_spawnx(tls TLS, _res uintptr /* *Tpid_t = int32 */, _path uintptr /* *int8 */, _exec uintptr /* *func(TLS, uintptr, uintptr, uintptr) int32 */, _fa uintptr /* *Tposix_spawn_file_actions_t = s...tions uintptr;F__pad [16]int32;} */, _attr uintptr /* *Tposix_spawnattr_t = struct{F__...;F__pol int32;F__pad [16]int32;} */, _argv uintptr /* uintptr */, _envp uintptr /* uintptr */) (r int32) {
+func X__posix_spawnx(tls TLS, _res uintptr /* *Tpid_t = int32 */, _path uintptr /* *int8 */, _exec uintptr /* *func(TLS, uintptr, uintptr, uintptr) int32 */, _fa uintptr /* *Tposix_spawn_file_actions_t = s...tions uintptr;F__pad [16]int32;} */, _attr uintptr /* *Tposix_spawnattr_t = struct{F__...;F__pol int32;F__pad [16]int32;} */, _argv uintptr /* **int8 */, _envp uintptr /* **int8 */) (r int32) {
 	panic(`TODO`)
 	return r
 }
@@ -41059,12 +38140,13 @@ func fp851(f func(TLS, uintptr, uintptr, uintptr) int32) uintptr {
 }
 
 // Xposix_spawn is defined at posix_spawn.c:198:5
-func Xposix_spawn(tls TLS, _res uintptr /* *Tpid_t = int32 */, _path uintptr /* *int8 */, _fa uintptr /* *Tposix_spawn_file_actions_t = s...tions uintptr;F__pad [16]int32;} */, _attr uintptr /* *Tposix_spawnattr_t = struct{F__...;F__pol int32;F__pad [16]int32;} */, _argv uintptr /* uintptr */, _envp uintptr /* uintptr */) (r int32) {
+func Xposix_spawn(tls TLS, _res uintptr /* *Tpid_t = int32 */, _path uintptr /* *int8 */, _fa uintptr /* *Tposix_spawn_file_actions_t = s...tions uintptr;F__pad [16]int32;} */, _attr uintptr /* *Tposix_spawnattr_t = struct{F__...;F__pol int32;F__pad [16]int32;} */, _argv uintptr /* **int8 */, _envp uintptr /* **int8 */) (r int32) {
 	return X__posix_spawnx(tls, _res, _path, fp851(Xexecve), _fa, _attr, _argv, _envp)
 }
 
-type t16pid_t = int32
+type t11pid_t = int32
 
+// Nsigset_t is defined at alltypes.h:374:9
 type Tsigset_t = struct{ F__bits [16]uint64 }
 
 // linking posix_spawn_file_actions_addclose.o
@@ -41075,7 +38157,7 @@ func set852(p *uintptr, v uintptr) uintptr { *p = v; return v }
 func Xposix_spawn_file_actions_addclose(tls TLS, _fa uintptr /* *Tposix_spawn_file_actions_t = s...tions uintptr;F__pad [16]int32;} */, _fd int32) (r int32) {
 	var _op uintptr // *Sfdop
 
-	_op = Xmalloc(tls, uint64(48))
+	_op = Xmalloc(tls, uint64(40))
 	if _op == 0 {
 		return 12
 	}
@@ -41089,6 +38171,7 @@ func Xposix_spawn_file_actions_addclose(tls TLS, _fa uintptr /* *Tposix_spawn_fi
 	return 0
 }
 
+// Sfdop is defined at fdop.h:5:1
 type Sfdop = struct {
 	Fnext  uintptr // *Sfdop
 	Fprev  uintptr // *Sfdop
@@ -41097,12 +38180,9 @@ type Sfdop = struct {
 	Fsrcfd int32
 	Foflag int32
 	Fmode  uint32
-	Fpath  uintptr
 }
 
-type t13mode_t = uint32
-
-type t186size_t = uint64
+type t11mode_t = uint32
 
 // linking posix_spawn_file_actions_adddup2.o
 
@@ -41112,7 +38192,7 @@ func set853(p *uintptr, v uintptr) uintptr { *p = v; return v }
 func Xposix_spawn_file_actions_adddup2(tls TLS, _fa uintptr /* *Tposix_spawn_file_actions_t = s...tions uintptr;F__pad [16]int32;} */, _srcfd int32, _fd int32) (r int32) {
 	var _op uintptr // *Sfdop
 
-	_op = Xmalloc(tls, uint64(48))
+	_op = Xmalloc(tls, uint64(40))
 	if _op == 0 {
 		return 12
 	}
@@ -41127,6 +38207,7 @@ func Xposix_spawn_file_actions_adddup2(tls TLS, _fa uintptr /* *Tposix_spawn_fil
 	return 0
 }
 
+// Sfdop is defined at fdop.h:5:1
 type s1fdop = struct {
 	Fnext  uintptr // *Sfdop
 	Fprev  uintptr // *Sfdop
@@ -41135,12 +38216,9 @@ type s1fdop = struct {
 	Fsrcfd int32
 	Foflag int32
 	Fmode  uint32
-	Fpath  uintptr
 }
 
-type t14mode_t = uint32
-
-type t187size_t = uint64
+type t12mode_t = uint32
 
 // linking posix_spawn_file_actions_addopen.o
 
@@ -41150,7 +38228,7 @@ func set854(p *uintptr, v uintptr) uintptr { *p = v; return v }
 func Xposix_spawn_file_actions_addopen(tls TLS, _fa uintptr /* *Tposix_spawn_file_actions_t = s...tions uintptr;F__pad [16]int32;} */, _fd int32, _path uintptr /* *int8 */, _flags int32, _mode uint32) (r int32) {
 	var _op uintptr // *Sfdop
 
-	_op = Xmalloc(tls, uint64(48)+Xstrlen(tls, _path)+uint64(1))
+	_op = Xmalloc(tls, uint64(40)+Xstrlen(tls, _path)+uint64(1))
 	if _op == 0 {
 		return 12
 	}
@@ -41167,8 +38245,7 @@ func Xposix_spawn_file_actions_addopen(tls TLS, _fa uintptr /* *Tposix_spawn_fil
 	return 0
 }
 
-type t15mode_t = uint32
-
+// Sfdop is defined at fdop.h:5:1
 type s2fdop = struct {
 	Fnext  uintptr // *Sfdop
 	Fprev  uintptr // *Sfdop
@@ -41177,10 +38254,9 @@ type s2fdop = struct {
 	Fsrcfd int32
 	Foflag int32
 	Fmode  uint32
-	Fpath  uintptr
 }
 
-type t188size_t = uint64
+type t13mode_t = uint32
 
 // linking posix_spawn_file_actions_destroy.o
 
@@ -41199,6 +38275,7 @@ func Xposix_spawn_file_actions_destroy(tls TLS, _fa uintptr /* *Tposix_spawn_fil
 	return 0
 }
 
+// Sfdop is defined at fdop.h:5:1
 type s3fdop = struct {
 	Fnext  uintptr // *Sfdop
 	Fprev  uintptr // *Sfdop
@@ -41207,10 +38284,9 @@ type s3fdop = struct {
 	Fsrcfd int32
 	Foflag int32
 	Fmode  uint32
-	Fpath  uintptr
 }
 
-type t16mode_t = uint32
+type t14mode_t = uint32
 
 // linking posix_spawn_file_actions_init.o
 
@@ -41227,8 +38303,9 @@ func Xposix_spawnattr_destroy(tls TLS, _attr uintptr /* *Tposix_spawnattr_t = st
 	return 0
 }
 
-type t17pid_t = int32
+type t12pid_t = int32
 
+// Nsigset_t is defined at alltypes.h:374:9
 type t1sigset_t = struct{ F__bits [16]uint64 }
 
 // linking posix_spawnattr_getflags.o
@@ -41239,8 +38316,9 @@ func Xposix_spawnattr_getflags(tls TLS, _attr uintptr /* *Tposix_spawnattr_t = s
 	return 0
 }
 
-type t18pid_t = int32
+type t13pid_t = int32
 
+// Nsigset_t is defined at alltypes.h:374:9
 type t2sigset_t = struct{ F__bits [16]uint64 }
 
 // linking posix_spawnattr_getpgroup.o
@@ -41251,8 +38329,9 @@ func Xposix_spawnattr_getpgroup(tls TLS, _attr uintptr /* *Tposix_spawnattr_t = 
 	return 0
 }
 
-type t19pid_t = int32
+type t14pid_t = int32
 
+// Nsigset_t is defined at alltypes.h:374:9
 type t3sigset_t = struct{ F__bits [16]uint64 }
 
 // linking posix_spawnattr_getsigdefault.o
@@ -41263,8 +38342,9 @@ func Xposix_spawnattr_getsigdefault(tls TLS, _attr uintptr /* *Tposix_spawnattr_
 	return 0
 }
 
-type t20pid_t = int32
+type t15pid_t = int32
 
+// Nsigset_t is defined at alltypes.h:374:9
 type t4sigset_t = struct{ F__bits [16]uint64 }
 
 // linking posix_spawnattr_getsigmask.o
@@ -41275,8 +38355,9 @@ func Xposix_spawnattr_getsigmask(tls TLS, _attr uintptr /* *Tposix_spawnattr_t =
 	return 0
 }
 
-type t21pid_t = int32
+type t16pid_t = int32
 
+// Nsigset_t is defined at alltypes.h:374:9
 type t5sigset_t = struct{ F__bits [16]uint64 }
 
 // linking posix_spawnattr_init.o
@@ -41313,10 +38394,12 @@ func Xposix_spawnattr_init(tls TLS, _attr uintptr /* *Tposix_spawnattr_t = struc
 	return 0
 }
 
-type t22pid_t = int32
+type t17pid_t = int32
 
+// Nsigset_t is defined at alltypes.h:374:9
 type t6sigset_t = struct{ F__bits [16]uint64 }
 
+// Nposix_spawnattr_t is defined at spawn.h:27:9
 type Tposix_spawnattr_t = struct {
 	F__flags int32
 	F__pgrp  int32
@@ -41349,10 +38432,12 @@ func Xposix_spawnattr_setschedpolicy(tls TLS, _attr uintptr /* *Tposix_spawnattr
 	return 38
 }
 
-type t23pid_t = int32
+type t18pid_t = int32
 
+// Nsigset_t is defined at alltypes.h:374:9
 type t7sigset_t = struct{ F__bits [16]uint64 }
 
+// Ssched_param is defined at sched.h:19:1
 type Ssched_param = struct {
 	Fsched_priority        int32
 	Fsched_ss_low_priority int32
@@ -41361,6 +38446,7 @@ type Ssched_param = struct {
 	Fsched_ss_max_repl     int32
 }
 
+// Stimespec is defined at alltypes.h:270:1
 type s17timespec = struct {
 	Ftv_sec  int64
 	Ftv_nsec int64
@@ -41382,8 +38468,9 @@ func Xposix_spawnattr_setflags(tls TLS, _attr uintptr /* *Tposix_spawnattr_t = s
 	return 0
 }
 
-type t24pid_t = int32
+type t19pid_t = int32
 
+// Nsigset_t is defined at alltypes.h:374:9
 type t8sigset_t = struct{ F__bits [16]uint64 }
 
 // linking posix_spawnattr_setpgroup.o
@@ -41394,8 +38481,9 @@ func Xposix_spawnattr_setpgroup(tls TLS, _attr uintptr /* *Tposix_spawnattr_t = 
 	return 0
 }
 
-type t25pid_t = int32
+type t20pid_t = int32
 
+// Nsigset_t is defined at alltypes.h:374:9
 type t9sigset_t = struct{ F__bits [16]uint64 }
 
 // linking posix_spawnattr_setsigdefault.o
@@ -41406,8 +38494,9 @@ func Xposix_spawnattr_setsigdefault(tls TLS, _attr uintptr /* *Tposix_spawnattr_
 	return 0
 }
 
-type t26pid_t = int32
+type t21pid_t = int32
 
+// Nsigset_t is defined at alltypes.h:374:9
 type t10sigset_t = struct{ F__bits [16]uint64 }
 
 // linking posix_spawnattr_setsigmask.o
@@ -41418,8 +38507,9 @@ func Xposix_spawnattr_setsigmask(tls TLS, _attr uintptr /* *Tposix_spawnattr_t =
 	return 0
 }
 
-type t27pid_t = int32
+type t22pid_t = int32
 
+// Nsigset_t is defined at alltypes.h:374:9
 type t11sigset_t = struct{ F__bits [16]uint64 }
 
 // linking posix_spawnp.o
@@ -41429,12 +38519,13 @@ func fp855(f func(TLS, uintptr, uintptr, uintptr) int32) uintptr {
 }
 
 // Xposix_spawnp is defined at posix_spawnp.c:11:5
-func Xposix_spawnp(tls TLS, _res uintptr /* *Tpid_t = int32 */, _file uintptr /* *int8 */, _fa uintptr /* *Tposix_spawn_file_actions_t = s...tions uintptr;F__pad [16]int32;} */, _attr uintptr /* *Tposix_spawnattr_t = struct{F__...;F__pol int32;F__pad [16]int32;} */, _argv uintptr /* uintptr */, _envp uintptr /* uintptr */) (r int32) {
+func Xposix_spawnp(tls TLS, _res uintptr /* *Tpid_t = int32 */, _file uintptr /* *int8 */, _fa uintptr /* *Tposix_spawn_file_actions_t = s...tions uintptr;F__pad [16]int32;} */, _attr uintptr /* *Tposix_spawnattr_t = struct{F__...;F__pol int32;F__pad [16]int32;} */, _argv uintptr /* **int8 */, _envp uintptr /* **int8 */) (r int32) {
 	return X__posix_spawnx(tls, _res, _file, fp855(X__execvpe), _fa, _attr, _argv, _envp)
 }
 
-type t28pid_t = int32
+type t23pid_t = int32
 
+// Nsigset_t is defined at alltypes.h:374:9
 type t12sigset_t = struct{ F__bits [16]uint64 }
 
 // linking system.o
@@ -41452,7 +38543,7 @@ func Xwait(tls TLS, _status uintptr /* *int32 */) (r int32) {
 	return Xwaitpid(tls, int32(-1), _status, int32(0))
 }
 
-type t29pid_t = int32
+type t24pid_t = int32
 
 // linking waitid.o
 
@@ -41461,14 +38552,11 @@ func Xwaitid(tls TLS, _type int32, _id uint32, _info uintptr /* *Tsiginfo_t = st
 	return int32(X__syscall_ret(tls, uint64(X__syscall_cp(tls, int64(247), int64(_type), int64(_id), int64(_info), int64(_options), int64(0), int64(0)))))
 }
 
-type Tidtype_t = int32
+type t25pid_t = int32
 
-type t2id_t = uint32
+type t15uid_t = uint32
 
-type t30pid_t = int32
-
-type t16uid_t = uint32
-
+// Usigval is defined at signal.h:92:1
 type u4sigval = struct {
 	Fsival_int [0]int32
 	Fsival_ptr [0]uintptr // *void
@@ -41477,18 +38565,12 @@ type u4sigval = struct {
 
 type Tclock_t = int64
 
-type t20syscall_arg_t = int64
-
 // linking waitpid.o
 
 // Xwaitpid is defined at waitpid.c:5:7
 func Xwaitpid(tls TLS, _pid int32, _status uintptr /* *int32 */, _options int32) (r int32) {
 	return int32(X__syscall_ret(tls, uint64(X__syscall_cp(tls, int64(61), int64(_pid), int64(_status), int64(_options), int64(0), int64(0), int64(0)))))
 }
-
-type t31pid_t = int32
-
-type t21syscall_arg_t = int64
 
 // linking vfork.o
 
@@ -41633,7 +38715,7 @@ lescaped:
 	return int32(*(*int8)(unsafe.Pointer(_pat)))
 }
 
-type t189size_t = uint64
+type t120size_t = uint64
 
 func set857(p *uintptr, v uintptr) uintptr { *p = v; return v }
 
@@ -41836,7 +38918,7 @@ _10:
 	return 0
 }
 
-type t18wchar_t = int32
+type t17wchar_t = int32
 
 // xstr_next is defined at fnmatch.c:29:12
 func xstr_next(tls TLS, _str uintptr /* *int8 */, _n uint64, _step uintptr /* *Tsize_t = uint64 */) (r int32) {
@@ -41960,6 +39042,7 @@ func x23__pthread_self(tls TLS) (r uintptr /* *S__pthread */) {
 
 type t1wctype_t = uint64
 
+// S__pthread is defined at pthread_impl.h:15:1
 type s28__pthread = struct {
 	Fself          uintptr // *S__pthread
 	Fdtv           uintptr // **void
@@ -42000,16 +39083,16 @@ type s28__pthread = struct {
 	Fdtv_copy         uintptr // **void
 }
 
-type t17wint_t = uint32
-
 type t34uintptr_t = uint64
 
+// S__ptcb is defined at pthread.h:200:1
 type s27__ptcb = struct {
 	F__f    uintptr // *func(TLS, uintptr)
 	F__x    uintptr // *void
 	F__next uintptr // *S__ptcb
 }
 
+// S__locale_struct is defined at libc.h:10:1
 type s66__locale_struct = struct{ Fcat [6]uintptr }
 
 // linking glob.o
@@ -42141,8 +39224,9 @@ func Xglobfree(tls TLS, _g uintptr /* *Tglob_t = struct{Fgl_pathc uint...my1 int
 	*(*uintptr)(unsafe.Pointer(_g + 8)) = null
 }
 
-type t190size_t = uint64
+type t121size_t = uint64
 
+// Smatch is defined at glob.c:12:1
 type s1match = struct {
 	Fnext uintptr // *Smatch
 	Fname [1]int8
@@ -42564,8 +39648,9 @@ func Xregfree(tls TLS, _preg uintptr /* *Tregex_t = struct{Fre_nsub uint..._nsub
 	Xfree(tls, _tnfa)
 }
 
-type t191size_t = uint64
+type t122size_t = uint64
 
+// Stre_stack_rec is defined at regcomp.c:292:1
 type Stre_stack_rec = struct {
 	Fsize      int32
 	Fmax_size  int32
@@ -42574,8 +39659,10 @@ type Stre_stack_rec = struct {
 	Fstack     uintptr // *Utre_stack_item
 }
 
+// Ntre_ast_type_t is defined at regcomp.c:65:3
 type Ttre_ast_type_t = int32
 
+// Ntre_pos_and_tags_t is defined at regcomp.c:47:9
 type Ttre_pos_and_tags_t = struct {
 	Fposition    int32
 	Fcode_min    int32
@@ -42591,6 +39678,7 @@ type Ttre_ctype_t = uint64
 
 type t2wctype_t = uint64
 
+// Stnfa_transition is defined at tre.h:93:1
 type Stnfa_transition = struct {
 	Fcode_min   uint32
 	Fcode_max   uint32
@@ -42606,6 +39694,7 @@ type Stnfa_transition = struct {
 	Fneg_classes uintptr // *Ttre_ctype_t = Twctype_t = uint64
 }
 
+// Stnfa is defined at tre.h:152:1
 type Stnfa = struct {
 	Ftransitions     uintptr // *Ttre_tnfa_transition_t = Stnfa_transition
 	Fnum_transitions uint32
@@ -42626,6 +39715,7 @@ type Stnfa = struct {
 	Fhave_approx     int32
 }
 
+// Stre_submatch_data is defined at tre.h:137:1
 type Stre_submatch_data = struct {
 	Fso_tag  int32
 	Feo_tag  int32
@@ -42634,15 +39724,19 @@ type Stre_submatch_data = struct {
 
 type Treg_errcode_t = int32
 
+// Ntre_list_t is defined at tre.h:176:9
 type Ttre_list_t = struct {
 	Fdata uintptr // *void
 	Fnext uintptr // *Stre_list
 }
 
+// Ntre_mem_t is defined at tre.h:188:3
 type Ttre_mem_t = uintptr // Ttre_mem_t = *struct{Fblocks *st...ailed int32;Fprovided *uintptr;}
 
+// Ntre_stack_t is defined at regcomp.c:228:9
 type Ttre_stack_t = Stre_stack_rec
 
+// Ntre_ast_node_t is defined at regcomp.c:86:9
 type Ttre_ast_node_t = struct {
 	Ftype           int32
 	Fobj            uintptr // *void
@@ -43992,6 +41086,7 @@ _1:
 	return _errcode
 }
 
+// Utre_stack_item is defined at regcomp.c:287:1
 type Utre_stack_item = struct {
 	Fvoidptr_value [0]uintptr // *void
 	Fint_value     [0]int32
@@ -44000,7 +41095,7 @@ type Utre_stack_item = struct {
 
 type Ttre_cint_t = uint32
 
-type t18wint_t = uint32
+type t16wint_t = uint32
 
 // xtre_stack_push_int is defined at regcomp.c:378:1
 func xtre_stack_push_int(tls TLS, _s uintptr /* *Ttre_stack_t = Stre_stack_rec */, _value int32) (r int32) {
@@ -44378,8 +41473,10 @@ func xtre_stack_pop_voidptr(tls TLS, _s uintptr /* *Ttre_stack_t = Stre_stack_re
 	return *(*uintptr)(unsafe.Pointer(*(*uintptr)(unsafe.Pointer(_s + 16)) + 8*uintptr(preinc869((*int32)(unsafe.Pointer(_s+12))))))
 }
 
+// Ntre_addtags_symbol_t is defined at regcomp.c:1164:3
 type Ttre_addtags_symbol_t = int32
 
+// Ntre_tag_direction_t is defined at tre.h:131:3
 type Ttre_tag_direction_t = int32
 
 // xtre_stack_num_objects is defined at regcomp.c:331:1
@@ -44464,6 +41561,7 @@ func xtre_add_tag_right(tls TLS, _mem uintptr /* Ttre_mem_t = *struct{Fblocks *s
 	return 0
 }
 
+// Ntre_expand_ast_symbol_t is defined at regcomp.c:1828:3
 type Ttre_expand_ast_symbol_t = int32
 
 // xtre_copy_ast is defined at regcomp.c:1687:1
@@ -44680,6 +41778,7 @@ func xtre_ast_new_node(tls TLS, _mem uintptr /* Ttre_mem_t = *struct{Fblocks *st
 	return _node
 }
 
+// Ntre_nfl_stack_symbol_t is defined at regcomp.c:2234:3
 type Ttre_nfl_stack_symbol_t = int32
 
 // xtre_set_one is defined at regcomp.c:2035:27
@@ -45238,7 +42337,7 @@ func x1hexval(tls TLS, _c uint32) (r int32) {
 	return -1
 }
 
-type t19wchar_t = int32
+type t18wchar_t = int32
 
 // xparse_dup_count is defined at regcomp.c:710:19
 func xparse_dup_count(tls TLS, _s uintptr /* *int8 */, _n uintptr /* *int32 */) (r uintptr /* *int8 */) {
@@ -45257,8 +42356,10 @@ func xparse_dup_count(tls TLS, _s uintptr /* *int8 */, _n uintptr /* *int32 */) 
 	return _s
 }
 
+// Ntre_copyast_symbol_t is defined at regcomp.c:1678:3
 type Ttre_copyast_symbol_t = int32
 
+// Sliterals is defined at regcomp.c:447:1
 type Sliterals = struct {
 	Fmem uintptr // Ttre_mem_t = *struct{Fblocks *st...ailed int32;Fprovided *uintptr;}
 	Fa   uintptr // **Ttre_literal_t = struct{Fcode_...ss uint64;Fneg_classes *uint64;}
@@ -45266,6 +42367,7 @@ type Sliterals = struct {
 	Fcap int32
 }
 
+// Sneg is defined at regcomp.c:505:1
 type Sneg = struct {
 	Fnegate int32
 	Flen    int32
@@ -45546,7 +42648,7 @@ func Xregerror(tls TLS, _e int32, _preg uintptr /* *Tregex_t = struct{Fre_nsub u
 	return uint64(int32(1) + Xsnprintf(tls, _buf, _size, ts+20 /* "%s" */, _s))
 }
 
-type t192size_t = uint64
+type t123size_t = uint64
 
 // xmessages [286]int8, escapes: true, regerror.c:12:19
 var xmessages = ds + 46112
@@ -45554,7 +42656,7 @@ var xmessages = ds + 46112
 // linking regexec.o
 
 // Xregexec is defined at regexec.c:996:1
-func Xregexec(tls TLS, _preg uintptr /* *Tregex_t = struct{Fre_nsub uint..._nsub2 uint64;F__padding2 int8;} */, _string uintptr /* *int8 */, _nmatch uint64, _pmatch uintptr /* uintptr */, _eflags int32) (r int32) {
+func Xregexec(tls TLS, _preg uintptr /* *Tregex_t = struct{Fre_nsub uint..._nsub2 uint64;F__padding2 int8;} */, _string uintptr /* *int8 */, _nmatch uint64, _pmatch uintptr /* *Tregmatch_t = struct{Frm_so int64;Frm_eo int64;} */, _eflags int32) (r int32) {
 	esc := MustMalloc(8)
 	var (
 		_tnfa   uintptr // *Ttre_tnfa_t = Stnfa
@@ -45588,8 +42690,11 @@ func Xregexec(tls TLS, _preg uintptr /* *Tregex_t = struct{Fre_nsub uint..._nsub
 	return _status
 }
 
-type t193size_t = uint64
+type t124size_t = uint64
 
+type Tregoff_t = int64
+
+// Stnfa is defined at tre.h:152:1
 type s1tnfa = struct {
 	Ftransitions     uintptr // *Ttre_tnfa_transition_t = Stnfa_transition
 	Fnum_transitions uint32
@@ -46372,7 +43477,7 @@ lerror_exit:
 }
 
 // xtre_fill_pmatch is defined at regexec.c:930:1
-func xtre_fill_pmatch(tls TLS, _nmatch uint64, _pmatch uintptr /* uintptr */, _cflags int32, _tnfa uintptr /* *Ttre_tnfa_t = Stnfa */, _tags uintptr /* *Tregoff_t = int64 */, _match_eo int64) {
+func xtre_fill_pmatch(tls TLS, _nmatch uint64, _pmatch uintptr /* *Tregmatch_t = struct{Frm_so int64;Frm_eo int64;} */, _cflags int32, _tnfa uintptr /* *Ttre_tnfa_t = Stnfa */, _tags uintptr /* *Tregoff_t = int64 */, _match_eo int64) {
 	var (
 		_submatch_data uintptr // *Ttre_submatch_data_t = Stre_submatch_data
 		_i             uint32
@@ -46420,8 +43525,7 @@ func xtre_fill_pmatch(tls TLS, _nmatch uint64, _pmatch uintptr /* uintptr */, _c
 	}
 }
 
-type Tregoff_t = int64
-
+// Stnfa_transition is defined at tre.h:93:1
 type s1tnfa_transition = struct {
 	Fcode_min   uint32
 	Fcode_max   uint32
@@ -46437,6 +43541,7 @@ type s1tnfa_transition = struct {
 	Fneg_classes uintptr // *Ttre_ctype_t = Twctype_t = uint64
 }
 
+// Stre_submatch_data is defined at tre.h:137:1
 type s1tre_submatch_data = struct {
 	Fso_tag  int32
 	Feo_tag  int32
@@ -46445,13 +43550,15 @@ type s1tre_submatch_data = struct {
 
 type Ttre_char_t = int32
 
-type t20wchar_t = int32
+type t19wchar_t = int32
 
+// Ntre_list_t is defined at tre.h:176:9
 type t1tre_list_t = struct {
 	Fdata uintptr // *void
 	Fnext uintptr // *Stre_list
 }
 
+// Ntre_backtrack_item_t is defined at regexec.c:492:9
 type Ttre_backtrack_item_t = struct {
 	Fpos      int64
 	Fstr_byte uintptr // *int8
@@ -46461,8 +43568,10 @@ type Ttre_backtrack_item_t = struct {
 	Ftags     uintptr // *Tregoff_t = int64
 }
 
+// Ntre_tnfa_transition_t is defined at tre.h:91:9
 type Ttre_tnfa_transition_t = s1tnfa_transition
 
+// Stre_backtrack_struct is defined at regexec.c:504:9
 type Stre_backtrack_struct = struct {
 	Fitem struct {
 		Fpos      int64
@@ -46502,7 +43611,7 @@ func xtre_tag_order(tls TLS, _num_tags int32, _tag_directions uintptr /* *Ttre_t
 
 type t1tre_cint_t = uint32
 
-type t19wint_t = uint32
+type t17wint_t = uint32
 
 type t1tre_ctype_t = uint64
 
@@ -46520,6 +43629,7 @@ func xtre_neg_char_classes_match(tls TLS, _classes uintptr /* *Ttre_ctype_t = Tw
 	return 0
 }
 
+// Ntre_tag_direction_t is defined at tre.h:131:3
 type t1tre_tag_direction_t = int32
 
 type s1tre_list struct{ uintptr }
@@ -46623,17 +43733,19 @@ func X__tre_mem_alloc_impl(tls TLS, _mem uintptr /* Ttre_mem_t = *struct{Fblocks
 	return _ptr
 }
 
+// Ntre_list_t is defined at tre.h:176:9
 type t2tre_list_t = struct {
 	Fdata uintptr // *void
 	Fnext uintptr // *Stre_list
 }
 
+// Stre_list is defined at tre.h:176:9
 type s2tre_list = struct {
 	Fdata uintptr // *void
 	Fnext uintptr // *Stre_list
 }
 
-type t194size_t = uint64
+type t125size_t = uint64
 
 // linking affinity.o
 
@@ -46657,15 +43769,12 @@ func Xpthread_getaffinity_np(tls TLS, _td uintptr /* Tpthread_t = *S__pthread */
 	return -xdo_getaffinity(tls, *(*int32)(unsafe.Pointer(_td + 56)), _size, _set)
 }
 
-type t32pid_t = int32
-
-type t195size_t = uint64
-
 // x__syscall3 is defined at syscall_arch.h:31:22
 func x36__syscall3(tls TLS, _n int64, _a1 int64, _a2 int64, _a3 int64) (r int64) {
 	return X__syscall(tls, _n, _a1, _a2, _a3, int64(0), int64(0), int64(0))
 }
 
+// S__pthread is defined at pthread_impl.h:15:1
 type s29__pthread = struct {
 	Fself          uintptr // *S__pthread
 	Fdtv           uintptr // **void
@@ -46720,14 +43829,20 @@ func xdo_getaffinity(tls TLS, _tid int32, _size uint64, _set uintptr /* *Tcpu_se
 	return 0
 }
 
+type t26pid_t = int32
+
+type t126size_t = uint64
+
 type t35uintptr_t = uint64
 
+// S__ptcb is defined at pthread.h:200:1
 type s28__ptcb = struct {
 	F__f    uintptr // *func(TLS, uintptr)
 	F__x    uintptr // *void
 	F__next uintptr // *S__ptcb
 }
 
+// S__locale_struct is defined at libc.h:10:1
 type s67__locale_struct = struct{ Fcat [6]uintptr }
 
 // linking sched_cpucount.o
@@ -46752,7 +43867,7 @@ func X__sched_cpucount(tls TLS, _size uint64, _set uintptr /* *Tcpu_set_t = stru
 	return int32(_cnt)
 }
 
-type t196size_t = uint64
+type t127size_t = uint64
 
 // linking sched_get_priority_max.o
 
@@ -46845,8 +43960,7 @@ func Xsched_getparam(tls TLS, _pid int32, _param uintptr /* *Ssched_param */) (r
 	return int32(X__syscall_ret(tls, uint64(18446744073709551578)))
 }
 
-type t33pid_t = int32
-
+// Ssched_param is defined at sched.h:19:1
 type s1sched_param = struct {
 	Fsched_priority        int32
 	Fsched_ss_low_priority int32
@@ -46855,6 +43969,7 @@ type s1sched_param = struct {
 	Fsched_ss_max_repl     int32
 }
 
+// Stimespec is defined at alltypes.h:270:1
 type s18timespec = struct {
 	Ftv_sec  int64
 	Ftv_nsec int64
@@ -46869,8 +43984,6 @@ func Xsched_getscheduler(tls TLS, _pid int32) (r int32) {
 	return int32(X__syscall_ret(tls, uint64(18446744073709551578)))
 }
 
-type t34pid_t = int32
-
 // linking sched_rr_get_interval.o
 
 // Xsched_rr_get_interval is defined at sched_rr_get_interval.c:4:5
@@ -46878,8 +43991,7 @@ func Xsched_rr_get_interval(tls TLS, _pid int32, _ts uintptr /* *Stimespec */) (
 	return int32(X__syscall_ret(tls, uint64(x30__syscall2(tls, int64(148), int64(_pid), int64(_ts)))))
 }
 
-type t35pid_t = int32
-
+// Stimespec is defined at alltypes.h:270:1
 type s19timespec = struct {
 	Ftv_sec  int64
 	Ftv_nsec int64
@@ -46899,8 +44011,7 @@ func Xsched_setparam(tls TLS, _pid int32, _param uintptr /* *Ssched_param */) (r
 	return int32(X__syscall_ret(tls, uint64(18446744073709551578)))
 }
 
-type t36pid_t = int32
-
+// Ssched_param is defined at sched.h:19:1
 type s2sched_param = struct {
 	Fsched_priority        int32
 	Fsched_ss_low_priority int32
@@ -46909,6 +44020,7 @@ type s2sched_param = struct {
 	Fsched_ss_max_repl     int32
 }
 
+// Stimespec is defined at alltypes.h:270:1
 type s20timespec = struct {
 	Ftv_sec  int64
 	Ftv_nsec int64
@@ -46923,8 +44035,7 @@ func Xsched_setscheduler(tls TLS, _pid int32, _sched int32, _param uintptr /* *S
 	return int32(X__syscall_ret(tls, uint64(18446744073709551578)))
 }
 
-type t37pid_t = int32
-
+// Ssched_param is defined at sched.h:19:1
 type s3sched_param = struct {
 	Fsched_priority        int32
 	Fsched_ss_low_priority int32
@@ -46933,6 +44044,7 @@ type s3sched_param = struct {
 	Fsched_ss_max_repl     int32
 }
 
+// Stimespec is defined at alltypes.h:270:1
 type s21timespec = struct {
 	Ftv_sec  int64
 	Ftv_nsec int64
@@ -47049,18 +44161,15 @@ func X__hsearch_r(tls TLS, aitem struct {
 	return 1
 }
 
-type t197size_t = uint64
+type t128size_t = uint64
 
 // xhtab Shsearch_data, escapes: true, hsearch.c:25:28
 var xhtab = bss + 5432
 
-type TENTRY = struct {
-	Fkey  uintptr // *int8
-	Fdata uintptr // *void
-}
-
+// NACTION is defined at search.h:13:16
 type TACTION = int32
 
+// Shsearch_data is defined at search.h:26:1
 type Shsearch_data = struct {
 	F__tab     uintptr // *S__tab
 	F__unused1 uint32
@@ -47122,6 +44231,12 @@ func xresize(tls TLS, _nel uint64, _htab uintptr /* *Shsearch_data */) (r int32)
 	return 1
 }
 
+// NENTRY is defined at search.h:16:9
+type TENTRY = struct {
+	Fkey  uintptr // *int8
+	Fdata uintptr // *void
+}
+
 func postinc878(p *uintptr) uintptr { r := *p; *p += 1; return r }
 
 // xkeyhash is defined at hsearch.c:31:15
@@ -47154,6 +44269,7 @@ func xlookup(tls TLS, _key uintptr /* *int8 */, _hash uint64, _htab uintptr /* *
 	return _e
 }
 
+// S__tab is defined at hsearch.c:19:1
 type S__tab = struct {
 	Fentries uintptr // *TENTRY = struct{Fkey *int8;Fdata uintptr;}
 	Fmask    uint64
@@ -47197,6 +44313,7 @@ func Xremque(tls TLS, _element uintptr /* *void */) {
 	}
 }
 
+// Snode is defined at insque.c:3:1
 type Snode = struct {
 	Fnext uintptr // *Snode
 	Fprev uintptr // *Snode
@@ -47215,8 +44332,6 @@ func Xlfind(tls TLS, _key uintptr /* *void */, _base uintptr /* *void */, _nelp 
 	panic(`TODO`)
 	return r
 }
-
-type t198size_t = uint64
 
 // linking tdestroy.o
 
@@ -47238,6 +44353,7 @@ func Xtdestroy(tls TLS, _root uintptr /* *void */, _freekey uintptr /* *func(TLS
 	Xfree(tls, _r)
 }
 
+// Snode is defined at tdestroy.c:5:1
 type s1node = struct {
 	Fkey   uintptr // *void
 	Fleft  uintptr // *Snode
@@ -47294,6 +44410,7 @@ func Xtwalk(tls TLS, _root uintptr /* *void */, _action uintptr /* *func(TLS, ui
 	xwalk(tls, _root, _action, int32(0))
 }
 
+// Snode is defined at tsearch_avl.c:10:1
 type s2node = struct {
 	Fkey    uintptr // *void
 	Fleft   uintptr // *Snode
@@ -47398,6 +44515,7 @@ func xinsert(tls TLS, _n uintptr /* *Snode */, _k uintptr /* *void */, _cmp uint
 	return _r
 }
 
+// NVISIT is defined at search.h:14:16
 type TVISIT = int32
 
 func fn883(p uintptr) func(TLS, uintptr, int32, int32) {
@@ -47501,8 +44619,6 @@ func xupdateheight(tls TLS, _n uintptr /* *Snode */) {
 	*(*int32)(unsafe.Pointer(_n + 24))++
 }
 
-type t199size_t = uint64
-
 // linking poll.o
 
 // Xpoll is defined at poll.c:7:5
@@ -47510,15 +44626,12 @@ func Xpoll(tls TLS, _fds uintptr /* *Spollfd */, _n uint64, _timeout int32) (r i
 	return int32(X__syscall_ret(tls, uint64(X__syscall_cp(tls, int64(7), int64(_fds), int64(_n), int64(_timeout), int64(0), int64(0), int64(0)))))
 }
 
-type t2nfds_t = uint64
-
+// Spollfd is defined at poll.h:31:1
 type s3pollfd = struct {
 	Ffd      int32
 	Fevents  int16
 	Frevents int16
 }
-
-type t22syscall_arg_t = int64
 
 // linking pselect.o
 
@@ -47545,12 +44658,13 @@ func Xpselect(tls TLS, _n int32, _rfds uintptr /* *Tfd_set = struct{Ffds_bits [1
 	}()), int64(_data)))))
 }
 
+// Stimespec is defined at alltypes.h:270:1
 type s22timespec = struct {
 	Ftv_sec  int64
 	Ftv_nsec int64
 }
 
-type t23syscall_arg_t = int64
+type t2syscall_arg_t = int64
 
 type t36uintptr_t = uint64
 
@@ -47563,6 +44677,7 @@ func Xselect(tls TLS, _n int32, _rfds uintptr /* *Tfd_set = struct{Ffds_bits [16
 	return int32(X__syscall_ret(tls, uint64(X__syscall_cp(tls, int64(23), int64(_n), int64(_rfds), int64(_wfds), int64(_efds), int64(_tv), int64(0)))))
 }
 
+// Stimeval is defined at alltypes.h:265:1
 type s12timeval = struct {
 	Ftv_sec  int64
 	Ftv_usec int64
@@ -47571,8 +44686,6 @@ type s12timeval = struct {
 type t35time_t = int64
 
 type t12suseconds_t = int64
-
-type t24syscall_arg_t = int64
 
 // linking longjmp.o
 
@@ -47613,6 +44726,7 @@ func Xgetitimer(tls TLS, _which int32, _old uintptr /* *Sitimerval */) (r int32)
 	return int32(X__syscall_ret(tls, uint64(x31__syscall2(tls, int64(36), int64(_which), int64(_old)))))
 }
 
+// Sitimerval is defined at time.h:17:1
 type Sitimerval = struct {
 	Fit_interval s13timeval
 	Fit_value    s13timeval
@@ -47623,6 +44737,7 @@ func x31__syscall2(tls TLS, _n int64, _a1 int64, _a2 int64) (r int64) {
 	return X__syscall(tls, _n, _a1, _a2, int64(0), int64(0), int64(0), int64(0))
 }
 
+// Stimeval is defined at alltypes.h:265:1
 type s13timeval = struct {
 	Ftv_sec  int64
 	Ftv_usec int64
@@ -47638,8 +44753,6 @@ type t13suseconds_t = int64
 func Xkill(tls TLS, _pid int32, _sig int32) (r int32) {
 	return int32(X__syscall_ret(tls, uint64(x32__syscall2(tls, int64(62), int64(_pid), int64(_sig)))))
 }
-
-type t38pid_t = int32
 
 // x__syscall2 is defined at syscall_arch.h:22:22
 func x32__syscall2(tls TLS, _n int64, _a1 int64, _a2 int64) (r int64) {
@@ -47657,7 +44770,7 @@ func Xkillpg(tls TLS, _pgid int32, _sig int32) (r int32) {
 	return Xkill(tls, -_pgid, _sig)
 }
 
-type t39pid_t = int32
+type t27pid_t = int32
 
 // linking psiginfo.o
 
@@ -47666,10 +44779,11 @@ func Xpsiginfo(tls TLS, _si uintptr /* *Tsiginfo_t = struct{Fsi_signo i...uint32
 	Xpsignal(tls, *(*int32)(unsafe.Pointer(_si)), _msg)
 }
 
-type t40pid_t = int32
+type t28pid_t = int32
 
-type t17uid_t = uint32
+type t16uid_t = uint32
 
+// Usigval is defined at signal.h:92:1
 type u5sigval = struct {
 	Fsival_int [0]int32
 	Fsival_ptr [0]uintptr // *void
@@ -47721,6 +44835,7 @@ func Xpsignal(tls TLS, _sig int32, _msg uintptr /* *int8 */) {
 	}
 }
 
+// S_IO_FILE is defined at stdio_impl.h:22:1
 type s26_IO_FILE = struct {
 	Fflags        uint32
 	Frpos         uintptr // *uint8
@@ -47757,10 +44872,11 @@ type s26_IO_FILE = struct {
 	Flocale       uintptr // *S__locale_struct
 }
 
-type t200size_t = uint64
+type t129size_t = uint64
 
-type t37off_t = int64
+type t35off_t = int64
 
+// S__locale_struct is defined at libc.h:10:1
 type s68__locale_struct = struct{ Fcat [6]uintptr }
 
 // linking raise.o
@@ -47790,6 +44906,7 @@ func x24__pthread_self(tls TLS) (r uintptr /* *S__pthread */) {
 	return r
 }
 
+// S__pthread is defined at pthread_impl.h:15:1
 type s30__pthread = struct {
 	Fself          uintptr // *S__pthread
 	Fdtv           uintptr // **void
@@ -47832,14 +44949,16 @@ type s30__pthread = struct {
 
 type t37uintptr_t = uint64
 
-type t201size_t = uint64
+type t130size_t = uint64
 
+// S__ptcb is defined at pthread.h:200:1
 type s29__ptcb = struct {
 	F__f    uintptr // *func(TLS, uintptr)
 	F__x    uintptr // *void
 	F__next uintptr // *S__ptcb
 }
 
+// S__locale_struct is defined at libc.h:10:1
 type s69__locale_struct = struct{ Fcat [6]uintptr }
 
 // linking restore.o
@@ -47859,6 +44978,7 @@ func Xsetitimer(tls TLS, _which int32, _new uintptr /* *Sitimerval */, _old uint
 	return int32(X__syscall_ret(tls, uint64(x38__syscall3(tls, int64(38), int64(_which), int64(_new), int64(_old)))))
 }
 
+// Sitimerval is defined at time.h:17:1
 type s1itimerval = struct {
 	Fit_interval s14timeval
 	Fit_value    s14timeval
@@ -47869,6 +44989,7 @@ func x38__syscall3(tls TLS, _n int64, _a1 int64, _a2 int64, _a3 int64) (r int64)
 	return X__syscall(tls, _n, _a1, _a2, _a3, int64(0), int64(0), int64(0))
 }
 
+// Stimeval is defined at alltypes.h:265:1
 type s14timeval = struct {
 	Ftv_sec  int64
 	Ftv_usec int64
@@ -47960,6 +45081,7 @@ func X__sigaction(tls TLS, _sig int32, _sa uintptr /* *Ssigaction */, _old uintp
 // xhandler_set [1]uint64, escapes: true, sigaction.c:15:22
 var xhandler_set = bss + 5456
 
+// Ssigaction is defined at signal.h:167:1
 type Ssigaction = struct {
 	F__sa_handler struct {
 		Fsa_handler   [0]uintptr
@@ -47971,6 +45093,7 @@ type Ssigaction = struct {
 	Fsa_restorer uintptr // *func(TLS)
 }
 
+// Sk_sigaction is defined at ksigaction.h:1:1
 type Sk_sigaction = struct {
 	Fhandler  uintptr // *func(TLS, int32)
 	Fflags    uint64
@@ -47997,8 +45120,7 @@ func x19__syscall4(tls TLS, _n int64, _a1 int64, _a2 int64, _a3 int64, _a4 int64
 	return X__syscall(tls, _n, _a1, _a2, _a3, _a4, int64(0), int64(0))
 }
 
-type t202size_t = uint64
-
+// Nsigset_t is defined at alltypes.h:374:9
 type t13sigset_t = struct{ F__bits [16]uint64 }
 
 // xa_or is defined at atomic_arch.h:51:20
@@ -48046,13 +45168,14 @@ func Xsigaltstack(tls TLS, _ss uintptr /* *Tstack_t = Ssigaltstack */, _old uint
 	return int32(X__syscall_ret(tls, uint64(x34__syscall2(tls, int64(131), int64(_ss), int64(_old)))))
 }
 
+// Ssigaltstack is defined at signal.h:91:1
 type Ssigaltstack = struct {
 	Fss_sp    uintptr // *void
 	Fss_flags int32
 	Fss_size  uint64
 }
 
-type t203size_t = uint64
+type t131size_t = uint64
 
 // x__syscall2 is defined at syscall_arch.h:22:22
 func x34__syscall2(tls TLS, _n int64, _a1 int64, _a2 int64) (r int64) {
@@ -48150,6 +45273,7 @@ func Xsigignore(tls TLS, _sig int32) (r int32) {
 	return Xsigaction(tls, _sig, _sa, null)
 }
 
+// Ssigaction is defined at signal.h:167:1
 type s1sigaction = struct {
 	F__sa_handler struct {
 		Fsa_handler   [0]uintptr
@@ -48161,6 +45285,7 @@ type s1sigaction = struct {
 	Fsa_restorer uintptr // *func(TLS)
 }
 
+// Nsigset_t is defined at alltypes.h:374:9
 type t14sigset_t = struct{ F__bits [16]uint64 }
 
 // linking siginterrupt.o
@@ -48185,6 +45310,7 @@ func Xsiginterrupt(tls TLS, _sig int32, _flag int32) (r int32) {
 	return Xsigaction(tls, _sig, _sa, null)
 }
 
+// Ssigaction is defined at signal.h:167:1
 type s2sigaction = struct {
 	F__sa_handler struct {
 		Fsa_handler   [0]uintptr
@@ -48196,6 +45322,7 @@ type s2sigaction = struct {
 	Fsa_restorer uintptr // *func(TLS)
 }
 
+// Nsigset_t is defined at alltypes.h:374:9
 type t15sigset_t = struct{ F__bits [16]uint64 }
 
 // linking sigisemptyset.o
@@ -48212,7 +45339,7 @@ func Xsigisemptyset(tls TLS, _set uintptr /* *Tsigset_t = struct{F__bits [16]uin
 	return 1
 }
 
-type t204size_t = uint64
+type t132size_t = uint64
 
 // linking sigismember.o
 
@@ -48230,22 +45357,11 @@ func Xsigismember(tls TLS, _set uintptr /* *Tsigset_t = struct{F__bits [16]uint6
 // linking siglongjmp.o
 
 // Xsiglongjmp is defined at siglongjmp.c:6:16
-func Xsiglongjmp(tls TLS, _buf uintptr /* [1]struct{F__jb [8]uint64;F__fl uint64;F__ss [16]uint64;} */, _ret int32) {
+func Xsiglongjmp(tls TLS, _buf uintptr /* *struct{F__jb [8]uint64;F__fl uint64;F__ss [16]uint64;} */, _ret int32) {
 	panic(`TODO`)
 }
 
-type Tsigjmp_buf = [1]struct {
-	F__jb [8]uint64
-	F__fl uint64
-	F__ss [16]uint64
-}
-
-type Tjmp_buf = [1]struct {
-	F__jb [8]uint64
-	F__fl uint64
-	F__ss [16]uint64
-}
-
+// N__jmp_buf is defined at setjmp.h:1:23
 type T__jmp_buf = [8]uint64
 
 // linking signal.o
@@ -48272,6 +45388,7 @@ func Xsignal(tls TLS, _sig int32, _func uintptr /* *func(TLS, int32) */) (r uint
 	return *(*uintptr)(unsafe.Pointer(_sa_old))
 }
 
+// Ssigaction is defined at signal.h:167:1
 type s3sigaction = struct {
 	F__sa_handler struct {
 		Fsa_handler   [0]uintptr // *func(TLS, int32)
@@ -48283,6 +45400,7 @@ type s3sigaction = struct {
 	Fsa_restorer uintptr // *func(TLS)
 }
 
+// Nsigset_t is defined at alltypes.h:374:9
 type t16sigset_t = struct{ F__bits [16]uint64 }
 
 // linking sigorset.o
@@ -48370,15 +45488,16 @@ func Xsigqueue(tls TLS, _pid int32, _sig int32, _value struct {
 	return _r
 }
 
-type t41pid_t = int32
+type t29pid_t = int32
 
+type t17uid_t = uint32
+
+// Usigval is defined at signal.h:92:1
 type u6sigval = struct {
 	Fsival_int [0]int32
 	Fsival_ptr [0]uintptr // *void
 	F          int64
 }
-
-type t18uid_t = uint32
 
 type t2clock_t = int64
 
@@ -48386,8 +45505,6 @@ type t2clock_t = int64
 func x39__syscall3(tls TLS, _n int64, _a1 int64, _a2 int64, _a3 int64) (r int64) {
 	return X__syscall(tls, _n, _a1, _a2, _a3, int64(0), int64(0), int64(0))
 }
-
-type t205size_t = uint64
 
 // linking sigrelse.o
 
@@ -48456,6 +45573,7 @@ func Xsigset(tls TLS, _sig int32, _handler uintptr /* *func(TLS, int32) */) (r u
 	return *(*uintptr)(unsafe.Pointer(_sa_old))
 }
 
+// Ssigaction is defined at signal.h:167:1
 type s4sigaction = struct {
 	F__sa_handler struct {
 		Fsa_handler   [0]uintptr
@@ -48467,6 +45585,7 @@ type s4sigaction = struct {
 	Fsa_restorer uintptr // *func(TLS)
 }
 
+// Nsigset_t is defined at alltypes.h:374:9
 type t17sigset_t = struct{ F__bits [16]uint64 }
 
 // linking sigsetjmp.o
@@ -48474,7 +45593,7 @@ type t17sigset_t = struct{ F__bits [16]uint64 }
 // linking sigsetjmp_tail.o
 
 // X__sigsetjmp_tail is defined at sigsetjmp_tail.c:6:5
-func X__sigsetjmp_tail(tls TLS, _jb uintptr /* [1]struct{F__jb [8]uint64;F__fl uint64;F__ss [16]uint64;} */, _ret int32) (r int32) {
+func X__sigsetjmp_tail(tls TLS, _jb uintptr /* *struct{F__jb [8]uint64;F__fl uint64;F__ss [16]uint64;} */, _ret int32) (r int32) {
 	var _p uintptr // *void
 
 	_p = _jb + 72
@@ -48492,18 +45611,7 @@ func X__sigsetjmp_tail(tls TLS, _jb uintptr /* [1]struct{F__jb [8]uint64;F__fl u
 	return _ret
 }
 
-type t1sigjmp_buf = [1]struct {
-	F__jb [8]uint64
-	F__fl uint64
-	F__ss [16]uint64
-}
-
-type t1jmp_buf = [1]struct {
-	F__jb [8]uint64
-	F__fl uint64
-	F__ss [16]uint64
-}
-
+// N__jmp_buf is defined at setjmp.h:1:23
 type t1__jmp_buf = [8]uint64
 
 // x__syscall4 is defined at syscall_arch.h:40:22
@@ -48518,8 +45626,6 @@ func Xsigsuspend(tls TLS, _mask uintptr /* *Tsigset_t = struct{F__bits [16]uint6
 	return int32(X__syscall_ret(tls, uint64(X__syscall_cp(tls, int64(130), int64(_mask), int64(8), int64(0), int64(0), int64(0), int64(0)))))
 }
 
-type t25syscall_arg_t = int64
-
 // linking sigtimedwait.o
 
 // Xsigtimedwait is defined at sigtimedwait.c:6:5
@@ -48532,10 +45638,11 @@ func Xsigtimedwait(tls TLS, _mask uintptr /* *Tsigset_t = struct{F__bits [16]uin
 	return _ret
 }
 
-type t42pid_t = int32
+type t30pid_t = int32
 
-type t19uid_t = uint32
+type t18uid_t = uint32
 
+// Usigval is defined at signal.h:92:1
 type u7sigval = struct {
 	Fsival_int [0]int32
 	Fsival_ptr [0]uintptr // *void
@@ -48544,14 +45651,13 @@ type u7sigval = struct {
 
 type t3clock_t = int64
 
+// Stimespec is defined at alltypes.h:270:1
 type s23timespec = struct {
 	Ftv_sec  int64
 	Ftv_nsec int64
 }
 
 type t38time_t = int64
-
-type t26syscall_arg_t = int64
 
 // linking sigwait.o
 
@@ -48567,10 +45673,11 @@ func Xsigwait(tls TLS, _mask uintptr /* *Tsigset_t = struct{F__bits [16]uint64;}
 	return 0
 }
 
-type t43pid_t = int32
+type t31pid_t = int32
 
-type t20uid_t = uint32
+type t19uid_t = uint32
 
+// Usigval is defined at signal.h:92:1
 type u8sigval = struct {
 	Fsival_int [0]int32
 	Fsival_ptr [0]uintptr // *void
@@ -48586,10 +45693,11 @@ func Xsigwaitinfo(tls TLS, _mask uintptr /* *Tsigset_t = struct{F__bits [16]uint
 	return Xsigtimedwait(tls, _mask, _si, null)
 }
 
-type t44pid_t = int32
+type t32pid_t = int32
 
-type t21uid_t = uint32
+type t20uid_t = uint32
 
+// Usigval is defined at signal.h:92:1
 type u9sigval = struct {
 	Fsival_int [0]int32
 	Fsival_ptr [0]uintptr // *void
@@ -48630,6 +45738,7 @@ func X__xmknodat(tls TLS, _ver int32, _fd int32, _path uintptr /* *int8 */, _mod
 	return Xmknodat(tls, _fd, _path, _mode, *(*uint64)(unsafe.Pointer(_dev)))
 }
 
+// Sstat is defined at stat.h:4:1
 type s6stat = struct {
 	Fst_dev     uint64
 	Fst_ino     uint64
@@ -48648,7 +45757,7 @@ type s6stat = struct {
 	F__unused   [3]int64
 }
 
-type t17mode_t = uint32
+type t15mode_t = uint32
 
 type t6dev_t = uint64
 
@@ -48656,16 +45765,17 @@ type t12ino_t = uint64
 
 type t6nlink_t = uint64
 
-type t22uid_t = uint32
+type t21uid_t = uint32
 
-type t24gid_t = uint32
+type t23gid_t = uint32
 
-type t38off_t = int64
+type t36off_t = int64
 
 type t6blksize_t = int64
 
 type t6blkcnt_t = int64
 
+// Stimespec is defined at alltypes.h:270:1
 type s24timespec = struct {
 	Ftv_sec  int64
 	Ftv_nsec int64
@@ -48679,8 +45789,6 @@ type t39time_t = int64
 func Xchmod(tls TLS, _path uintptr /* *int8 */, _mode uint32) (r int32) {
 	return int32(X__syscall_ret(tls, uint64(x36__syscall2(tls, int64(90), int64(_path), int64(_mode)))))
 }
-
-type t18mode_t = uint32
 
 // x__syscall2 is defined at syscall_arch.h:22:22
 func x36__syscall2(tls TLS, _n int64, _a1 int64, _a2 int64) (r int64) {
@@ -48704,8 +45812,6 @@ func Xfchmod(tls TLS, _fd int32, _mode uint32) (r int32) {
 	X__procfdname(tls, _buf, uint32(_fd))
 	return int32(X__syscall_ret(tls, uint64(x37__syscall2(tls, int64(90), int64(_buf), int64(_mode)))))
 }
-
-type t19mode_t = uint32
 
 // x__syscall2 is defined at syscall_arch.h:22:22
 func x37__syscall2(tls TLS, _n int64, _a1 int64, _a2 int64) (r int64) {
@@ -48757,8 +45863,7 @@ func Xfchmodat(tls TLS, _fd int32, _path uintptr /* *int8 */, _mode uint32, _fla
 	return int32(X__syscall_ret(tls, uint64(_ret)))
 }
 
-type t20mode_t = uint32
-
+// Sstat is defined at stat.h:4:1
 type s7stat = struct {
 	Fst_dev     uint64
 	Fst_ino     uint64
@@ -48782,6 +45887,8 @@ func x21__syscall4(tls TLS, _n int64, _a1 int64, _a2 int64, _a3 int64, _a4 int64
 	return X__syscall(tls, _n, _a1, _a2, _a3, _a4, int64(0), int64(0))
 }
 
+type t16mode_t = uint32
+
 // x__syscall3 is defined at syscall_arch.h:31:22
 func x40__syscall3(tls TLS, _n int64, _a1 int64, _a2 int64, _a3 int64) (r int64) {
 	return X__syscall(tls, _n, _a1, _a2, _a3, int64(0), int64(0), int64(0))
@@ -48798,16 +45905,17 @@ type t13ino_t = uint64
 
 type t7nlink_t = uint64
 
-type t23uid_t = uint32
+type t22uid_t = uint32
 
-type t25gid_t = uint32
+type t24gid_t = uint32
 
-type t39off_t = int64
+type t37off_t = int64
 
 type t7blksize_t = int64
 
 type t7blkcnt_t = int64
 
+// Stimespec is defined at alltypes.h:270:1
 type s25timespec = struct {
 	Ftv_sec  int64
 	Ftv_nsec int64
@@ -48833,6 +45941,7 @@ func Xfstat(tls TLS, _fd int32, _st uintptr /* *Sstat */) (r int32) {
 	return int32(X__syscall_ret(tls, uint64(x38__syscall2(tls, int64(4), int64(_buf), int64(_st)))))
 }
 
+// Sstat is defined at stat.h:4:1
 type s8stat = struct {
 	Fst_dev     uint64
 	Fst_ino     uint64
@@ -48862,18 +45971,19 @@ type t14ino_t = uint64
 
 type t8nlink_t = uint64
 
-type t21mode_t = uint32
+type t17mode_t = uint32
 
-type t24uid_t = uint32
+type t23uid_t = uint32
 
-type t26gid_t = uint32
+type t25gid_t = uint32
 
-type t40off_t = int64
+type t38off_t = int64
 
 type t8blksize_t = int64
 
 type t8blkcnt_t = int64
 
+// Stimespec is defined at alltypes.h:270:1
 type s26timespec = struct {
 	Ftv_sec  int64
 	Ftv_nsec int64
@@ -48888,6 +45998,7 @@ func Xfstatat(tls TLS, _fd int32, _path uintptr /* *int8 */, _buf uintptr /* *Ss
 	return int32(X__syscall_ret(tls, uint64(x22__syscall4(tls, int64(262), int64(_fd), int64(_path), int64(_buf), int64(_flag)))))
 }
 
+// Sstat is defined at stat.h:4:1
 type s9stat = struct {
 	Fst_dev     uint64
 	Fst_ino     uint64
@@ -48917,18 +46028,19 @@ type t15ino_t = uint64
 
 type t9nlink_t = uint64
 
-type t22mode_t = uint32
+type t18mode_t = uint32
 
-type t25uid_t = uint32
+type t24uid_t = uint32
 
-type t27gid_t = uint32
+type t26gid_t = uint32
 
-type t41off_t = int64
+type t39off_t = int64
 
 type t9blksize_t = int64
 
 type t9blkcnt_t = int64
 
+// Stimespec is defined at alltypes.h:270:1
 type s27timespec = struct {
 	Ftv_sec  int64
 	Ftv_nsec int64
@@ -48939,10 +46051,11 @@ type t42time_t = int64
 // linking futimens.o
 
 // Xfutimens is defined at futimens.c:3:5
-func Xfutimens(tls TLS, _fd int32, _times uintptr /* [2]Stimespec */) (r int32) {
+func Xfutimens(tls TLS, _fd int32, _times uintptr /* *Stimespec */) (r int32) {
 	return Xutimensat(tls, _fd, null, _times, int32(0))
 }
 
+// Stimespec is defined at alltypes.h:270:1
 type s28timespec = struct {
 	Ftv_sec  int64
 	Ftv_nsec int64
@@ -48953,7 +46066,7 @@ type t43time_t = int64
 // linking futimesat.o
 
 // X__futimesat is defined at futimesat.c:8:5
-func X__futimesat(tls TLS, _dirfd int32, _pathname uintptr /* *int8 */, _times uintptr /* [2]Stimeval */) (r int32) {
+func X__futimesat(tls TLS, _dirfd int32, _pathname uintptr /* *int8 */, _times uintptr /* *Stimeval */) (r int32) {
 	esc := MustMalloc(32)
 	var (
 		_ts = esc // *[2]Stimespec
@@ -48977,11 +46090,13 @@ func X__futimesat(tls TLS, _dirfd int32, _pathname uintptr /* *int8 */, _times u
 	}(), int32(0))
 }
 
+// Stimeval is defined at alltypes.h:265:1
 type s15timeval = struct {
 	Ftv_sec  int64
 	Ftv_usec int64
 }
 
+// Stimespec is defined at alltypes.h:270:1
 type s29timespec = struct {
 	Ftv_sec  int64
 	Ftv_nsec int64
@@ -48998,7 +46113,7 @@ func Xlchmod(tls TLS, _path uintptr /* *int8 */, _mode uint32) (r int32) {
 	return Xfchmodat(tls, int32(-100), _path, _mode, int32(0x100))
 }
 
-type t23mode_t = uint32
+type t19mode_t = uint32
 
 // linking lstat.o
 
@@ -49007,6 +46122,7 @@ func Xlstat(tls TLS, _path uintptr /* *int8 */, _buf uintptr /* *Sstat */) (r in
 	return int32(X__syscall_ret(tls, uint64(x39__syscall2(tls, int64(6), int64(_path), int64(_buf)))))
 }
 
+// Sstat is defined at stat.h:4:1
 type s10stat = struct {
 	Fst_dev     uint64
 	Fst_ino     uint64
@@ -49036,18 +46152,19 @@ type t16ino_t = uint64
 
 type t10nlink_t = uint64
 
-type t24mode_t = uint32
+type t20mode_t = uint32
 
-type t26uid_t = uint32
+type t25uid_t = uint32
 
-type t28gid_t = uint32
+type t27gid_t = uint32
 
-type t42off_t = int64
+type t40off_t = int64
 
 type t10blksize_t = int64
 
 type t10blkcnt_t = int64
 
+// Stimespec is defined at alltypes.h:270:1
 type s30timespec = struct {
 	Ftv_sec  int64
 	Ftv_nsec int64
@@ -49062,8 +46179,6 @@ func Xmkdir(tls TLS, _path uintptr /* *int8 */, _mode uint32) (r int32) {
 	return int32(X__syscall_ret(tls, uint64(x40__syscall2(tls, int64(83), int64(_path), int64(_mode)))))
 }
 
-type t25mode_t = uint32
-
 // x__syscall2 is defined at syscall_arch.h:22:22
 func x40__syscall2(tls TLS, _n int64, _a1 int64, _a2 int64) (r int64) {
 	return X__syscall(tls, _n, _a1, _a2, int64(0), int64(0), int64(0), int64(0))
@@ -49075,8 +46190,6 @@ func x40__syscall2(tls TLS, _n int64, _a1 int64, _a2 int64) (r int64) {
 func Xmkdirat(tls TLS, _fd int32, _path uintptr /* *int8 */, _mode uint32) (r int32) {
 	return int32(X__syscall_ret(tls, uint64(x41__syscall3(tls, int64(258), int64(_fd), int64(_path), int64(_mode)))))
 }
-
-type t26mode_t = uint32
 
 // x__syscall3 is defined at syscall_arch.h:31:22
 func x41__syscall3(tls TLS, _n int64, _a1 int64, _a2 int64, _a3 int64) (r int64) {
@@ -49090,9 +46203,7 @@ func Xmkfifo(tls TLS, _path uintptr /* *int8 */, _mode uint32) (r int32) {
 	return Xmknod(tls, _path, _mode|uint32(010000), uint64(0))
 }
 
-type t27mode_t = uint32
-
-type t11dev_t = uint64
+type t21mode_t = uint32
 
 // linking mkfifoat.o
 
@@ -49101,9 +46212,7 @@ func Xmkfifoat(tls TLS, _fd int32, _path uintptr /* *int8 */, _mode uint32) (r i
 	return Xmknodat(tls, _fd, _path, _mode|uint32(010000), uint64(0))
 }
 
-type t28mode_t = uint32
-
-type t12dev_t = uint64
+type t22mode_t = uint32
 
 // linking mknod.o
 
@@ -49111,10 +46220,6 @@ type t12dev_t = uint64
 func Xmknod(tls TLS, _path uintptr /* *int8 */, _mode uint32, _dev uint64) (r int32) {
 	return int32(X__syscall_ret(tls, uint64(x42__syscall3(tls, int64(133), int64(_path), int64(_mode), int64(_dev)))))
 }
-
-type t29mode_t = uint32
-
-type t13dev_t = uint64
 
 // x__syscall3 is defined at syscall_arch.h:31:22
 func x42__syscall3(tls TLS, _n int64, _a1 int64, _a2 int64, _a3 int64) (r int64) {
@@ -49128,10 +46233,6 @@ func Xmknodat(tls TLS, _fd int32, _path uintptr /* *int8 */, _mode uint32, _dev 
 	return int32(X__syscall_ret(tls, uint64(x23__syscall4(tls, int64(259), int64(_fd), int64(_path), int64(_mode), int64(_dev)))))
 }
 
-type t30mode_t = uint32
-
-type t14dev_t = uint64
-
 // x__syscall4 is defined at syscall_arch.h:40:22
 func x23__syscall4(tls TLS, _n int64, _a1 int64, _a2 int64, _a3 int64, _a4 int64) (r int64) {
 	return X__syscall(tls, _n, _a1, _a2, _a3, _a4, int64(0), int64(0))
@@ -49144,6 +46245,7 @@ func Xstat(tls TLS, _path uintptr /* *int8 */, _buf uintptr /* *Sstat */) (r int
 	return int32(X__syscall_ret(tls, uint64(x41__syscall2(tls, int64(4), int64(_path), int64(_buf)))))
 }
 
+// Sstat is defined at stat.h:4:1
 type s11stat = struct {
 	Fst_dev     uint64
 	Fst_ino     uint64
@@ -49167,24 +46269,25 @@ func x41__syscall2(tls TLS, _n int64, _a1 int64, _a2 int64) (r int64) {
 	return X__syscall(tls, _n, _a1, _a2, int64(0), int64(0), int64(0), int64(0))
 }
 
-type t15dev_t = uint64
+type t11dev_t = uint64
 
 type t17ino_t = uint64
 
 type t11nlink_t = uint64
 
-type t31mode_t = uint32
+type t23mode_t = uint32
 
-type t27uid_t = uint32
+type t26uid_t = uint32
 
-type t29gid_t = uint32
+type t28gid_t = uint32
 
-type t43off_t = int64
+type t41off_t = int64
 
 type t11blksize_t = int64
 
 type t11blkcnt_t = int64
 
+// Stimespec is defined at alltypes.h:270:1
 type s31timespec = struct {
 	Ftv_sec  int64
 	Ftv_nsec int64
@@ -49234,6 +46337,7 @@ func Xfstatvfs(tls TLS, _fd int32, _buf uintptr /* *Sstatvfs */) (r int32) {
 	return 0
 }
 
+// Sstatfs is defined at statfs.h:1:1
 type Sstatfs = struct {
 	Ff_type    uint64
 	Ff_bsize   uint64
@@ -49254,6 +46358,7 @@ func x42__syscall2(tls TLS, _n int64, _a1 int64, _a2 int64) (r int64) {
 	return X__syscall(tls, _n, _a1, _a2, int64(0), int64(0), int64(0), int64(0))
 }
 
+// Sstatvfs is defined at statvfs.h:16:1
 type Sstatvfs = struct {
 	Ff_bsize    uint64
 	Ff_frsize   uint64
@@ -49295,6 +46400,7 @@ type Tfsblkcnt_t = uint64
 
 type Tfsfilcnt_t = uint64
 
+// Nfsid_t is defined at statfs.h:12:9
 type Tfsid_t = struct{ F__val [2]int32 }
 
 // linking umask.o
@@ -49304,8 +46410,6 @@ func Xumask(tls TLS, _mode uint32) (r uint32) {
 	return uint32(X__syscall_ret(tls, uint64(x32__syscall1(tls, int64(95), int64(_mode)))))
 }
 
-type t32mode_t = uint32
-
 // x__syscall1 is defined at syscall_arch.h:14:22
 func x32__syscall1(tls TLS, _n int64, _a1 int64) (r int64) {
 	return X__syscall(tls, _n, _a1, int64(0), int64(0), int64(0), int64(0), int64(0))
@@ -49314,7 +46418,7 @@ func x32__syscall1(tls TLS, _n int64, _a1 int64) (r int64) {
 // linking utimensat.o
 
 // Xutimensat is defined at utimensat.c:7:5
-func Xutimensat(tls TLS, _fd int32, _path uintptr /* *int8 */, _times uintptr /* [2]Stimespec */, _flags int32) (r int32) {
+func Xutimensat(tls TLS, _fd int32, _path uintptr /* *int8 */, _times uintptr /* *Stimespec */, _flags int32) (r int32) {
 	esc := MustMalloc(32)
 	var (
 		_r   int32
@@ -49353,11 +46457,13 @@ func Xutimensat(tls TLS, _fd int32, _path uintptr /* *int8 */, _times uintptr /*
 	return int32(X__syscall_ret(tls, uint64(_r)))
 }
 
+// Stimespec is defined at alltypes.h:270:1
 type s32timespec = struct {
 	Ftv_sec  int64
 	Ftv_nsec int64
 }
 
+// Stimeval is defined at alltypes.h:265:1
 type s16timeval = struct {
 	Ftv_sec  int64
 	Ftv_usec int64
@@ -49393,6 +46499,7 @@ func X__fclose_ca(tls TLS, _f uintptr /* *TFILE = S_IO_FILE */) (r int32) {
 	return fn886(*(*uintptr)(unsafe.Pointer(_f + 24)))(tls, _f)
 }
 
+// S_IO_FILE is defined at stdio_impl.h:22:1
 type s27_IO_FILE = struct {
 	Fflags        uint32
 	Frpos         uintptr // *uint8
@@ -49429,10 +46536,11 @@ type s27_IO_FILE = struct {
 	Flocale       uintptr // *S__locale_struct
 }
 
-type t206size_t = uint64
+type t133size_t = uint64
 
-type t44off_t = int64
+type t42off_t = int64
 
+// S__locale_struct is defined at libc.h:10:1
 type s70__locale_struct = struct{ Fcat [6]uintptr }
 
 // linking __fdopen.o
@@ -49501,6 +46609,7 @@ func X__fdopen(tls TLS, _fd int32, _mode uintptr /* *int8 */) (r uintptr /* *TFI
 	return X__ofl_add(tls, _f)
 }
 
+// S_IO_FILE is defined at stdio_impl.h:22:1
 type s28_IO_FILE = struct {
 	Fflags        uint32
 	Frpos         uintptr // *uint8
@@ -49537,6 +46646,7 @@ type s28_IO_FILE = struct {
 	Flocale       uintptr // *S__locale_struct
 }
 
+// Swinsize is defined at ioctl.h:96:1
 type s2winsize = struct {
 	Fws_row    uint16
 	Fws_col    uint16
@@ -49554,10 +46664,11 @@ func x44__syscall2(tls TLS, _n int64, _a1 int64, _a2 int64) (r int64) {
 	return X__syscall(tls, _n, _a1, _a2, int64(0), int64(0), int64(0), int64(0))
 }
 
-type t207size_t = uint64
+type t134size_t = uint64
 
-type t45off_t = int64
+type t43off_t = int64
 
+// S__locale_struct is defined at libc.h:10:1
 type s71__locale_struct = struct{ Fcat [6]uintptr }
 
 // linking __fmodeflags.o
@@ -49619,8 +46730,7 @@ func X__fopen_rb_ca(tls TLS, _filename uintptr /* *int8 */, _f uintptr /* *TFILE
 	return _f
 }
 
-type t208size_t = uint64
-
+// S_IO_FILE is defined at stdio_impl.h:22:1
 type s29_IO_FILE = struct {
 	Fflags        uint32
 	Frpos         uintptr // *uint8
@@ -49667,8 +46777,11 @@ func x45__syscall3(tls TLS, _n int64, _a1 int64, _a2 int64, _a3 int64) (r int64)
 	return X__syscall(tls, _n, _a1, _a2, _a3, int64(0), int64(0), int64(0))
 }
 
-type t46off_t = int64
+type t135size_t = uint64
 
+type t44off_t = int64
+
+// S__locale_struct is defined at libc.h:10:1
 type s72__locale_struct = struct{ Fcat [6]uintptr }
 
 // linking __lockfile.o
@@ -49708,6 +46821,7 @@ func X__unlockfile(tls TLS, _f uintptr /* *TFILE = S_IO_FILE */) {
 	}
 }
 
+// S_IO_FILE is defined at stdio_impl.h:22:1
 type s30_IO_FILE = struct {
 	Fflags        uint32
 	Frpos         uintptr // *uint8
@@ -49785,12 +46899,14 @@ func x1__wake(tls TLS, _addr uintptr /* *void */, _cnt int32, _priv int32) {
 	}
 }
 
-type t209size_t = uint64
+type t136size_t = uint64
 
-type t47off_t = int64
+type t45off_t = int64
 
+// S__locale_struct is defined at libc.h:10:1
 type s73__locale_struct = struct{ Fcat [6]uintptr }
 
+// S__pthread is defined at pthread_impl.h:15:1
 type s31__pthread = struct {
 	Fself          uintptr // *S__pthread
 	Fdtv           uintptr // **void
@@ -49843,6 +46959,7 @@ func x46__syscall3(tls TLS, _n int64, _a1 int64, _a2 int64, _a3 int64) (r int64)
 
 type t39uintptr_t = uint64
 
+// S__ptcb is defined at pthread.h:200:1
 type s30__ptcb = struct {
 	F__f    uintptr // *func(TLS, uintptr)
 	F__x    uintptr // *void
@@ -49877,6 +46994,7 @@ func X__overflow(tls TLS, _f uintptr /* *TFILE = S_IO_FILE */, __c int32) (r int
 	return int32(*(*uint8)(unsafe.Pointer(_c)))
 }
 
+// S_IO_FILE is defined at stdio_impl.h:22:1
 type s31_IO_FILE = struct {
 	Fflags        uint32
 	Frpos         uintptr // *uint8
@@ -49913,10 +47031,11 @@ type s31_IO_FILE = struct {
 	Flocale       uintptr // *S__locale_struct
 }
 
-type t210size_t = uint64
+type t137size_t = uint64
 
-type t48off_t = int64
+type t46off_t = int64
 
+// S__locale_struct is defined at libc.h:10:1
 type s74__locale_struct = struct{ Fcat [6]uintptr }
 
 // linking __stdio_close.o
@@ -49931,6 +47050,7 @@ func x11dummy(tls TLS, _fd int32) (r int32) {
 	return _fd
 }
 
+// S_IO_FILE is defined at stdio_impl.h:22:1
 type s32_IO_FILE = struct {
 	Fflags        uint32
 	Frpos         uintptr // *uint8
@@ -49972,10 +47092,11 @@ func x33__syscall1(tls TLS, _n int64, _a1 int64) (r int64) {
 	return X__syscall(tls, _n, _a1, int64(0), int64(0), int64(0), int64(0), int64(0))
 }
 
-type t211size_t = uint64
+type t138size_t = uint64
 
-type t49off_t = int64
+type t47off_t = int64
 
+// S__locale_struct is defined at libc.h:10:1
 type s75__locale_struct = struct{ Fcat [6]uintptr }
 
 // linking __stdio_exit.o
@@ -49992,6 +47113,7 @@ func X__stdio_exit(tls TLS) {
 	xclose_file(tls, *(*uintptr)(unsafe.Pointer(X__stderr_used)))
 }
 
+// S_IO_FILE is defined at stdio_impl.h:22:1
 type s33_IO_FILE = struct {
 	Fflags        uint32
 	Frpos         uintptr // *uint8
@@ -50052,10 +47174,11 @@ func xclose_file(tls TLS, _f uintptr /* *TFILE = S_IO_FILE */) {
 	}
 }
 
-type t212size_t = uint64
+type t139size_t = uint64
 
-type t50off_t = int64
+type t48off_t = int64
 
+// S__locale_struct is defined at libc.h:10:1
 type s76__locale_struct = struct{ Fcat [6]uintptr }
 
 // linking __stdio_read.o
@@ -50109,8 +47232,7 @@ func X__stdio_read(tls TLS, _f uintptr /* *TFILE = S_IO_FILE */, _buf uintptr /*
 	return _len
 }
 
-type t213size_t = uint64
-
+// S_IO_FILE is defined at stdio_impl.h:22:1
 type s34_IO_FILE = struct {
 	Fflags        uint32
 	Frpos         uintptr // *uint8
@@ -50147,20 +47269,24 @@ type s34_IO_FILE = struct {
 	Flocale       uintptr // *S__locale_struct
 }
 
+// Siovec is defined at alltypes.h:380:1
 type s6iovec = struct {
 	Fiov_base uintptr // *void
 	Fiov_len  uint64
 }
 
-type t38ssize_t = int64
+type t20ssize_t = int64
+
+type t140size_t = uint64
 
 // x__syscall3 is defined at syscall_arch.h:31:22
 func x47__syscall3(tls TLS, _n int64, _a1 int64, _a2 int64, _a3 int64) (r int64) {
 	return X__syscall(tls, _n, _a1, _a2, _a3, int64(0), int64(0), int64(0))
 }
 
-type t51off_t = int64
+type t49off_t = int64
 
+// S__locale_struct is defined at libc.h:10:1
 type s77__locale_struct = struct{ Fcat [6]uintptr }
 
 // linking __stdio_seek.o
@@ -50173,8 +47299,7 @@ func X__stdio_seek(tls TLS, _f uintptr /* *TFILE = S_IO_FILE */, _off int64, _wh
 	return _ret
 }
 
-type t52off_t = int64
-
+// S_IO_FILE is defined at stdio_impl.h:22:1
 type s35_IO_FILE = struct {
 	Fflags        uint32
 	Frpos         uintptr // *uint8
@@ -50211,13 +47336,16 @@ type s35_IO_FILE = struct {
 	Flocale       uintptr // *S__locale_struct
 }
 
+type t50off_t = int64
+
 // x__syscall3 is defined at syscall_arch.h:31:22
 func x48__syscall3(tls TLS, _n int64, _a1 int64, _a2 int64, _a3 int64) (r int64) {
 	return X__syscall(tls, _n, _a1, _a2, _a3, int64(0), int64(0), int64(0))
 }
 
-type t214size_t = uint64
+type t141size_t = uint64
 
+// S__locale_struct is defined at libc.h:10:1
 type s78__locale_struct = struct{ Fcat [6]uintptr }
 
 // linking __stdio_write.o
@@ -50281,8 +47409,7 @@ func X__stdio_write(tls TLS, _f uintptr /* *TFILE = S_IO_FILE */, _buf uintptr /
 	return r
 }
 
-type t215size_t = uint64
-
+// S_IO_FILE is defined at stdio_impl.h:22:1
 type s36_IO_FILE = struct {
 	Fflags        uint32
 	Frpos         uintptr // *uint8
@@ -50319,20 +47446,24 @@ type s36_IO_FILE = struct {
 	Flocale       uintptr // *S__locale_struct
 }
 
+// Siovec is defined at alltypes.h:380:1
 type s7iovec = struct {
 	Fiov_base uintptr // *void
 	Fiov_len  uint64
 }
 
-type t39ssize_t = int64
+type t142size_t = uint64
+
+type t21ssize_t = int64
 
 // x__syscall3 is defined at syscall_arch.h:31:22
 func x49__syscall3(tls TLS, _n int64, _a1 int64, _a2 int64, _a3 int64) (r int64) {
 	return X__syscall(tls, _n, _a1, _a2, _a3, int64(0), int64(0), int64(0))
 }
 
-type t53off_t = int64
+type t51off_t = int64
 
+// S__locale_struct is defined at libc.h:10:1
 type s79__locale_struct = struct{ Fcat [6]uintptr }
 
 // linking __stdout_write.o
@@ -50353,8 +47484,7 @@ func X__stdout_write(tls TLS, _f uintptr /* *TFILE = S_IO_FILE */, _buf uintptr 
 	return X__stdio_write(tls, _f, _buf, _len)
 }
 
-type t216size_t = uint64
-
+// S_IO_FILE is defined at stdio_impl.h:22:1
 type s37_IO_FILE = struct {
 	Fflags        uint32
 	Frpos         uintptr // *uint8
@@ -50391,6 +47521,7 @@ type s37_IO_FILE = struct {
 	Flocale       uintptr // *S__locale_struct
 }
 
+// Swinsize is defined at ioctl.h:96:1
 type s3winsize = struct {
 	Fws_row    uint16
 	Fws_col    uint16
@@ -50398,13 +47529,16 @@ type s3winsize = struct {
 	Fws_ypixel uint16
 }
 
+type t143size_t = uint64
+
 // x__syscall3 is defined at syscall_arch.h:31:22
 func x50__syscall3(tls TLS, _n int64, _a1 int64, _a2 int64, _a3 int64) (r int64) {
 	return X__syscall(tls, _n, _a1, _a2, _a3, int64(0), int64(0), int64(0))
 }
 
-type t54off_t = int64
+type t52off_t = int64
 
+// S__locale_struct is defined at libc.h:10:1
 type s80__locale_struct = struct{ Fcat [6]uintptr }
 
 // linking __string_read.o
@@ -50432,8 +47566,7 @@ func X__string_read(tls TLS, _f uintptr /* *TFILE = S_IO_FILE */, _buf uintptr /
 	return _len
 }
 
-type t217size_t = uint64
-
+// S_IO_FILE is defined at stdio_impl.h:22:1
 type s38_IO_FILE = struct {
 	Fflags        uint32
 	Frpos         uintptr // *uint8
@@ -50470,8 +47603,11 @@ type s38_IO_FILE = struct {
 	Flocale       uintptr // *S__locale_struct
 }
 
-type t55off_t = int64
+type t144size_t = uint64
 
+type t53off_t = int64
+
+// S__locale_struct is defined at libc.h:10:1
 type s81__locale_struct = struct{ Fcat [6]uintptr }
 
 // linking __toread.o
@@ -50511,6 +47647,7 @@ func X__toread_needs_stdio_exit(tls TLS) {
 	X__stdio_exit_needed(tls)
 }
 
+// S_IO_FILE is defined at stdio_impl.h:22:1
 type s39_IO_FILE = struct {
 	Fflags        uint32
 	Frpos         uintptr // *uint8
@@ -50547,10 +47684,11 @@ type s39_IO_FILE = struct {
 	Flocale       uintptr // *S__locale_struct
 }
 
-type t218size_t = uint64
+type t145size_t = uint64
 
-type t56off_t = int64
+type t54off_t = int64
 
+// S__locale_struct is defined at libc.h:10:1
 type s82__locale_struct = struct{ Fcat [6]uintptr }
 
 // linking __towrite.o
@@ -50581,6 +47719,7 @@ func X__towrite_needs_stdio_exit(tls TLS) {
 	X__stdio_exit_needed(tls)
 }
 
+// S_IO_FILE is defined at stdio_impl.h:22:1
 type s40_IO_FILE = struct {
 	Fflags        uint32
 	Frpos         uintptr // *uint8
@@ -50617,10 +47756,11 @@ type s40_IO_FILE = struct {
 	Flocale       uintptr // *S__locale_struct
 }
 
-type t219size_t = uint64
+type t146size_t = uint64
 
-type t57off_t = int64
+type t55off_t = int64
 
+// S__locale_struct is defined at libc.h:10:1
 type s83__locale_struct = struct{ Fcat [6]uintptr }
 
 // linking __uflow.o
@@ -50640,6 +47780,7 @@ func X__uflow(tls TLS, _f uintptr /* *TFILE = S_IO_FILE */) (r int32) {
 	return -1
 }
 
+// S_IO_FILE is defined at stdio_impl.h:22:1
 type s41_IO_FILE = struct {
 	Fflags        uint32
 	Frpos         uintptr // *uint8
@@ -50676,10 +47817,11 @@ type s41_IO_FILE = struct {
 	Flocale       uintptr // *S__locale_struct
 }
 
-type t220size_t = uint64
+type t147size_t = uint64
 
-type t58off_t = int64
+type t56off_t = int64
 
+// S__locale_struct is defined at libc.h:10:1
 type s84__locale_struct = struct{ Fcat [6]uintptr }
 
 // linking asprintf.o
@@ -50717,6 +47859,7 @@ func Xclearerr(tls TLS, _f uintptr /* *TFILE = S_IO_FILE */) {
 	}
 }
 
+// S_IO_FILE is defined at stdio_impl.h:22:1
 type s42_IO_FILE = struct {
 	Fflags        uint32
 	Frpos         uintptr // *uint8
@@ -50753,10 +47896,11 @@ type s42_IO_FILE = struct {
 	Flocale       uintptr // *S__locale_struct
 }
 
-type t221size_t = uint64
+type t148size_t = uint64
 
-type t59off_t = int64
+type t57off_t = int64
 
+// S__locale_struct is defined at libc.h:10:1
 type s85__locale_struct = struct{ Fcat [6]uintptr }
 
 // linking dprintf.o
@@ -50832,6 +47976,7 @@ func X__fpurge(tls TLS, _f uintptr /* *TFILE = S_IO_FILE */) (r int32) {
 	return 0
 }
 
+// S_IO_FILE is defined at stdio_impl.h:22:1
 type s43_IO_FILE = struct {
 	Fflags        uint32
 	Frpos         uintptr // *uint8
@@ -50868,10 +48013,11 @@ type s43_IO_FILE = struct {
 	Flocale       uintptr // *S__locale_struct
 }
 
-type t222size_t = uint64
+type t149size_t = uint64
 
-type t60off_t = int64
+type t58off_t = int64
 
+// S__locale_struct is defined at libc.h:10:1
 type s86__locale_struct = struct{ Fcat [6]uintptr }
 
 // linking ext2.o
@@ -50906,8 +48052,7 @@ func X__fseterr(tls TLS, _f uintptr /* *TFILE = S_IO_FILE */) {
 	}
 }
 
-type t223size_t = uint64
-
+// S_IO_FILE is defined at stdio_impl.h:22:1
 type s44_IO_FILE = struct {
 	Fflags        uint32
 	Frpos         uintptr // *uint8
@@ -50944,8 +48089,11 @@ type s44_IO_FILE = struct {
 	Flocale       uintptr // *S__locale_struct
 }
 
-type t61off_t = int64
+type t150size_t = uint64
 
+type t59off_t = int64
+
+// S__locale_struct is defined at libc.h:10:1
 type s87__locale_struct = struct{ Fcat [6]uintptr }
 
 // linking fclose.o
@@ -50999,6 +48147,7 @@ func Xfclose(tls TLS, _f uintptr /* *TFILE = S_IO_FILE */) (r int32) {
 func x12dummy(tls TLS, _f uintptr /* *TFILE = S_IO_FILE */) {
 }
 
+// S_IO_FILE is defined at stdio_impl.h:22:1
 type s45_IO_FILE = struct {
 	Fflags        uint32
 	Frpos         uintptr // *uint8
@@ -51035,10 +48184,11 @@ type s45_IO_FILE = struct {
 	Flocale       uintptr // *S__locale_struct
 }
 
-type t224size_t = uint64
+type t151size_t = uint64
 
-type t62off_t = int64
+type t60off_t = int64
 
+// S__locale_struct is defined at libc.h:10:1
 type s88__locale_struct = struct{ Fcat [6]uintptr }
 
 // linking feof.o
@@ -51062,6 +48212,7 @@ func Xfeof(tls TLS, _f uintptr /* *TFILE = S_IO_FILE */) (r int32) {
 	return _ret
 }
 
+// S_IO_FILE is defined at stdio_impl.h:22:1
 type s46_IO_FILE = struct {
 	Fflags        uint32
 	Frpos         uintptr // *uint8
@@ -51098,10 +48249,11 @@ type s46_IO_FILE = struct {
 	Flocale       uintptr // *S__locale_struct
 }
 
-type t225size_t = uint64
+type t152size_t = uint64
 
-type t63off_t = int64
+type t61off_t = int64
 
+// S__locale_struct is defined at libc.h:10:1
 type s89__locale_struct = struct{ Fcat [6]uintptr }
 
 // linking ferror.o
@@ -51125,6 +48277,7 @@ func Xferror(tls TLS, _f uintptr /* *TFILE = S_IO_FILE */) (r int32) {
 	return _ret
 }
 
+// S_IO_FILE is defined at stdio_impl.h:22:1
 type s47_IO_FILE = struct {
 	Fflags        uint32
 	Frpos         uintptr // *uint8
@@ -51161,10 +48314,11 @@ type s47_IO_FILE = struct {
 	Flocale       uintptr // *S__locale_struct
 }
 
-type t226size_t = uint64
+type t153size_t = uint64
 
-type t64off_t = int64
+type t62off_t = int64
 
+// S__locale_struct is defined at libc.h:10:1
 type s90__locale_struct = struct{ Fcat [6]uintptr }
 
 // linking fflush.o
@@ -51236,6 +48390,7 @@ func Xfflush(tls TLS, _f uintptr /* *TFILE = S_IO_FILE */) (r int32) {
 	return 0
 }
 
+// S_IO_FILE is defined at stdio_impl.h:22:1
 type s48_IO_FILE = struct {
 	Fflags        uint32
 	Frpos         uintptr // *uint8
@@ -51272,10 +48427,11 @@ type s48_IO_FILE = struct {
 	Flocale       uintptr // *S__locale_struct
 }
 
-type t227size_t = uint64
+type t154size_t = uint64
 
-type t65off_t = int64
+type t63off_t = int64
 
+// S__locale_struct is defined at libc.h:10:1
 type s91__locale_struct = struct{ Fcat [6]uintptr }
 
 // linking fgetc.o
@@ -51303,6 +48459,7 @@ func Xfgetc(tls TLS, _f uintptr /* *TFILE = S_IO_FILE */) (r int32) {
 	return _c
 }
 
+// S_IO_FILE is defined at stdio_impl.h:22:1
 type s49_IO_FILE = struct {
 	Fflags        uint32
 	Frpos         uintptr // *uint8
@@ -51339,10 +48496,11 @@ type s49_IO_FILE = struct {
 	Flocale       uintptr // *S__locale_struct
 }
 
-type t228size_t = uint64
+type t155size_t = uint64
 
-type t66off_t = int64
+type t64off_t = int64
 
+// S__locale_struct is defined at libc.h:10:1
 type s92__locale_struct = struct{ Fcat [6]uintptr }
 
 // linking fgetln.o
@@ -51393,6 +48551,7 @@ func Xfgetln(tls TLS, _f uintptr /* *TFILE = S_IO_FILE */, _plen uintptr /* *Tsi
 	return _ret
 }
 
+// S_IO_FILE is defined at stdio_impl.h:22:1
 type s50_IO_FILE = struct {
 	Fflags        uint32
 	Frpos         uintptr // *uint8
@@ -51429,12 +48588,13 @@ type s50_IO_FILE = struct {
 	Flocale       uintptr // *S__locale_struct
 }
 
-type t40ssize_t = int64
+type t22ssize_t = int64
 
-type t229size_t = uint64
+type t156size_t = uint64
 
-type t67off_t = int64
+type t65off_t = int64
 
+// S__locale_struct is defined at libc.h:10:1
 type s93__locale_struct = struct{ Fcat [6]uintptr }
 
 // linking fgetpos.o
@@ -51451,6 +48611,7 @@ func Xfgetpos(tls TLS, _f uintptr /* *TFILE = S_IO_FILE */, _pos uintptr /* *Tfp
 	return 0
 }
 
+// S_IO_FILE is defined at stdio_impl.h:22:1
 type s51_IO_FILE = struct {
 	Fflags        uint32
 	Frpos         uintptr // *uint8
@@ -51487,10 +48648,11 @@ type s51_IO_FILE = struct {
 	Flocale       uintptr // *S__locale_struct
 }
 
-type t68off_t = int64
+type t66off_t = int64
 
-type t230size_t = uint64
+type t157size_t = uint64
 
+// S__locale_struct is defined at libc.h:10:1
 type s94__locale_struct = struct{ Fcat [6]uintptr }
 
 // linking fgets.o
@@ -51577,6 +48739,7 @@ func Xfgets(tls TLS, _s uintptr /* *int8 */, _n int32, _f uintptr /* *TFILE = S_
 	return _s
 }
 
+// S_IO_FILE is defined at stdio_impl.h:22:1
 type s52_IO_FILE = struct {
 	Fflags        uint32
 	Frpos         uintptr // *uint8
@@ -51613,10 +48776,11 @@ type s52_IO_FILE = struct {
 	Flocale       uintptr // *S__locale_struct
 }
 
-type t231size_t = uint64
+type t158size_t = uint64
 
-type t69off_t = int64
+type t67off_t = int64
 
+// S__locale_struct is defined at libc.h:10:1
 type s95__locale_struct = struct{ Fcat [6]uintptr }
 
 // linking fgetwc.o
@@ -51658,8 +48822,7 @@ func Xfgetwc(tls TLS, _f uintptr /* *TFILE = S_IO_FILE */) (r uint32) {
 	return _c
 }
 
-type t20wint_t = uint32
-
+// S_IO_FILE is defined at stdio_impl.h:22:1
 type s53_IO_FILE = struct {
 	Fflags        uint32
 	Frpos         uintptr // *uint8
@@ -51696,9 +48859,10 @@ type s53_IO_FILE = struct {
 	Flocale       uintptr // *S__locale_struct
 }
 
+// S__locale_struct is defined at libc.h:10:1
 type s96__locale_struct = struct{ Fcat [6]uintptr }
 
-type t21wchar_t = int32
+type t20wchar_t = int32
 
 // x__pthread_self is defined at pthread_arch.h:1:30
 func x26__pthread_self(tls TLS) (r uintptr /* *S__pthread */) {
@@ -51756,10 +48920,13 @@ func x__fgetwc_unlocked_internal(tls TLS, _f uintptr /* *TFILE = S_IO_FILE */) (
 	return uint32(*(*int32)(unsafe.Pointer(_wc)))
 }
 
-type t232size_t = uint64
+type t18wint_t = uint32
 
-type t70off_t = int64
+type t159size_t = uint64
 
+type t68off_t = int64
+
+// S__pthread is defined at pthread_impl.h:15:1
 type s32__pthread = struct {
 	Fself          uintptr // *S__pthread
 	Fdtv           uintptr // **void
@@ -51802,6 +48969,7 @@ type s32__pthread = struct {
 
 type t40uintptr_t = uint64
 
+// S__ptcb is defined at pthread.h:200:1
 type s31__ptcb = struct {
 	F__f    uintptr // *func(TLS, uintptr)
 	F__x    uintptr // *void
@@ -51855,6 +49023,7 @@ func Xfgetws(tls TLS, _s uintptr /* *Twchar_t = int32 */, _n int32, _f uintptr /
 	return _s
 }
 
+// S_IO_FILE is defined at stdio_impl.h:22:1
 type s54_IO_FILE = struct {
 	Fflags        uint32
 	Frpos         uintptr // *uint8
@@ -51891,14 +49060,15 @@ type s54_IO_FILE = struct {
 	Flocale       uintptr // *S__locale_struct
 }
 
-type t21wint_t = uint32
+type t19wint_t = uint32
 
-type t22wchar_t = int32
+type t21wchar_t = int32
 
-type t233size_t = uint64
+type t160size_t = uint64
 
-type t71off_t = int64
+type t69off_t = int64
 
+// S__locale_struct is defined at libc.h:10:1
 type s97__locale_struct = struct{ Fcat [6]uintptr }
 
 // linking fileno.o
@@ -51926,6 +49096,7 @@ func Xfileno(tls TLS, _f uintptr /* *TFILE = S_IO_FILE */) (r int32) {
 	return _fd
 }
 
+// S_IO_FILE is defined at stdio_impl.h:22:1
 type s55_IO_FILE = struct {
 	Fflags        uint32
 	Frpos         uintptr // *uint8
@@ -51962,10 +49133,11 @@ type s55_IO_FILE = struct {
 	Flocale       uintptr // *S__locale_struct
 }
 
-type t234size_t = uint64
+type t161size_t = uint64
 
-type t72off_t = int64
+type t70off_t = int64
 
+// S__locale_struct is defined at libc.h:10:1
 type s98__locale_struct = struct{ Fcat [6]uintptr }
 
 // linking flockfile.o
@@ -51979,6 +49151,7 @@ func Xflockfile(tls TLS, _f uintptr /* *TFILE = S_IO_FILE */) {
 	X__register_locked_file(tls, _f, x27__pthread_self(tls))
 }
 
+// S_IO_FILE is defined at stdio_impl.h:22:1
 type s56_IO_FILE = struct {
 	Fflags        uint32
 	Frpos         uintptr // *uint8
@@ -52021,12 +49194,14 @@ func x27__pthread_self(tls TLS) (r uintptr /* *S__pthread */) {
 	return r
 }
 
-type t235size_t = uint64
+type t162size_t = uint64
 
-type t73off_t = int64
+type t71off_t = int64
 
+// S__locale_struct is defined at libc.h:10:1
 type s99__locale_struct = struct{ Fcat [6]uintptr }
 
+// S__pthread is defined at pthread_impl.h:15:1
 type s33__pthread = struct {
 	Fself          uintptr // *S__pthread
 	Fdtv           uintptr // **void
@@ -52069,6 +49244,7 @@ type s33__pthread = struct {
 
 type t41uintptr_t = uint64
 
+// S__ptcb is defined at pthread.h:200:1
 type s32__ptcb = struct {
 	F__f    uintptr // *func(TLS, uintptr)
 	F__x    uintptr // *void
@@ -52102,7 +49278,7 @@ func Xfmemopen(tls TLS, _buf uintptr /* *void */, _size uint64, _mode uintptr /*
 		*(*int32)(unsafe.Pointer(X__errno_location(tls))) = int32(12)
 		return null
 	}
-	_f = Xmalloc(tls, uint64(1312)+func() uint64 {
+	_f = Xmalloc(tls, uint64(1304)+func() uint64 {
 		if _buf != 0 {
 			return uint64(0)
 		}
@@ -52149,8 +49325,7 @@ func Xfmemopen(tls TLS, _buf uintptr /* *void */, _size uint64, _mode uintptr /*
 	return X__ofl_add(tls, _f)
 }
 
-type t236size_t = uint64
-
+// S_IO_FILE is defined at stdio_impl.h:22:1
 type s57_IO_FILE = struct {
 	Fflags        uint32
 	Frpos         uintptr // *uint8
@@ -52187,12 +49362,14 @@ type s57_IO_FILE = struct {
 	Flocale       uintptr // *S__locale_struct
 }
 
+// Smem_FILE is defined at fmemopen.c:12:1
 type Smem_FILE = struct {
-	Ff    s57_IO_FILE
-	Fc    Scookie
-	Fbuf  [1032]uint8
-	Fbuf2 uintptr
+	Ff   s57_IO_FILE
+	Fc   Scookie
+	Fbuf [1032]uint8
 }
+
+type t163size_t = uint64
 
 // xmread is defined at fmemopen.c:33:15
 func xmread(tls TLS, _f uintptr /* *TFILE = S_IO_FILE */, _buf uintptr /* *uint8 */, _len uint64) (r uint64) {
@@ -52275,17 +49452,20 @@ func xmseek(tls TLS, _f uintptr /* *TFILE = S_IO_FILE */, _off int64, _whence in
 	return r
 }
 
-type t74off_t = int64
+type t72off_t = int64
 
 // xmclose is defined at fmemopen.c:75:12
 func xmclose(tls TLS, _m uintptr /* *TFILE = S_IO_FILE */) (r int32) {
 	return 0
 }
 
+// S__locale_struct is defined at libc.h:10:1
 type s100__locale_struct = struct{ Fcat [6]uintptr }
 
+// NFILE is defined at alltypes.h:356:9
 type TFILE = s57_IO_FILE
 
+// Scookie is defined at fmemopen.c:6:1
 type Scookie = struct {
 	Fpos  uint64
 	Flen  uint64
@@ -52323,6 +49503,7 @@ func Xfopen(tls TLS, _filename uintptr /* *int8 */, _mode uintptr /* *int8 */) (
 	return null
 }
 
+// S_IO_FILE is defined at stdio_impl.h:22:1
 type s58_IO_FILE = struct {
 	Fflags        uint32
 	Frpos         uintptr // *uint8
@@ -52369,10 +49550,11 @@ func x34__syscall1(tls TLS, _n int64, _a1 int64) (r int64) {
 	return X__syscall(tls, _n, _a1, int64(0), int64(0), int64(0), int64(0), int64(0))
 }
 
-type t237size_t = uint64
+type t164size_t = uint64
 
-type t75off_t = int64
+type t73off_t = int64
 
+// S__locale_struct is defined at libc.h:10:1
 type s101__locale_struct = struct{ Fcat [6]uintptr }
 
 // linking fopencookie.o
@@ -52430,17 +49612,11 @@ func Xfopencookie(tls TLS, _cookie uintptr /* *void */, _mode uintptr /* *int8 *
 	return X__ofl_add(tls, _f)
 }
 
-type Tcookie_io_functions_t = struct {
-	Fread  uintptr // *Tcookie_read_function_t = func(... uintptr, uintptr, uint64) int64
-	Fwrite uintptr // *Tcookie_write_function_t = func... uintptr, uintptr, uint64) int64
-	Fseek  uintptr // *Tcookie_seek_function_t = func(TLS, uintptr, uintptr, int32) int32
-	Fclose uintptr // *Tcookie_close_function_t = func(TLS, uintptr) int32
-}
+type t165size_t = uint64
 
-type t238size_t = uint64
+type t23ssize_t = int64
 
-type t41ssize_t = int64
-
+// S_IO_FILE is defined at stdio_impl.h:22:1
 type s59_IO_FILE = struct {
 	Fflags        uint32
 	Frpos         uintptr // *uint8
@@ -52477,10 +49653,19 @@ type s59_IO_FILE = struct {
 	Flocale       uintptr // *S__locale_struct
 }
 
+// Scookie_FILE is defined at fopencookie.c:14:1
 type Scookie_FILE = struct {
 	Ff   s59_IO_FILE
 	Ffc  Sfcookie
 	Fbuf [1032]uint8
+}
+
+// Ncookie_io_functions_t is defined at stdio.h:192:9
+type Tcookie_io_functions_t = struct {
+	Fread  uintptr // *Tcookie_read_function_t = func(... uintptr, uintptr, uint64) int64
+	Fwrite uintptr // *Tcookie_write_function_t = func... uintptr, uintptr, uint64) int64
+	Fseek  uintptr // *Tcookie_seek_function_t = func(TLS, uintptr, uintptr, int32) int32
+	Fclose uintptr // *Tcookie_close_function_t = func(TLS, uintptr) int32
 }
 
 func fn934(p uintptr) func(TLS, uintptr, uintptr, uint64) int64 {
@@ -52617,7 +49802,7 @@ func xcookieseek(tls TLS, _f uintptr /* *TFILE = S_IO_FILE */, aoff int64, _when
 	return *(*int64)(unsafe.Pointer(_off))
 }
 
-type t76off_t = int64
+type t74off_t = int64
 
 func fn938(p uintptr) func(TLS, uintptr) int32 {
 	return *(*func(TLS, uintptr) int32)(unsafe.Pointer(&p))
@@ -52634,10 +49819,13 @@ func xcookieclose(tls TLS, _f uintptr /* *TFILE = S_IO_FILE */) (r int32) {
 	return 0
 }
 
+// S__locale_struct is defined at libc.h:10:1
 type s102__locale_struct = struct{ Fcat [6]uintptr }
 
+// NFILE is defined at alltypes.h:356:9
 type t1FILE = s59_IO_FILE
 
+// Sfcookie is defined at fopencookie.c:9:1
 type Sfcookie = struct {
 	Fcookie  uintptr // *void
 	Fiofuncs struct {
@@ -52689,6 +49877,7 @@ func Xfputc(tls TLS, _c int32, _f uintptr /* *TFILE = S_IO_FILE */) (r int32) {
 	return _c
 }
 
+// S_IO_FILE is defined at stdio_impl.h:22:1
 type s61_IO_FILE = struct {
 	Fflags        uint32
 	Frpos         uintptr // *uint8
@@ -52725,10 +49914,11 @@ type s61_IO_FILE = struct {
 	Flocale       uintptr // *S__locale_struct
 }
 
-type t239size_t = uint64
+type t166size_t = uint64
 
-type t77off_t = int64
+type t75off_t = int64
 
+// S__locale_struct is defined at libc.h:10:1
 type s103__locale_struct = struct{ Fcat [6]uintptr }
 
 // linking fputs.o
@@ -52741,6 +49931,7 @@ func Xfputs(tls TLS, _s uintptr /* *int8 */, _f uintptr /* *TFILE = S_IO_FILE */
 	return bool2int(Xfwrite(tls, _s, uint64(1), _l, _f) == _l) - int32(1)
 }
 
+// S_IO_FILE is defined at stdio_impl.h:22:1
 type s62_IO_FILE = struct {
 	Fflags        uint32
 	Frpos         uintptr // *uint8
@@ -52777,10 +49968,11 @@ type s62_IO_FILE = struct {
 	Flocale       uintptr // *S__locale_struct
 }
 
-type t240size_t = uint64
+type t167size_t = uint64
 
-type t78off_t = int64
+type t76off_t = int64
 
+// S__locale_struct is defined at libc.h:10:1
 type s104__locale_struct = struct{ Fcat [6]uintptr }
 
 // linking fputwc.o
@@ -52851,10 +50043,7 @@ func Xfputwc(tls TLS, _c int32, _f uintptr /* *TFILE = S_IO_FILE */) (r uint32) 
 	return uint32(_c)
 }
 
-type t23wchar_t = int32
-
-type t22wint_t = uint32
-
+// S_IO_FILE is defined at stdio_impl.h:22:1
 type s63_IO_FILE = struct {
 	Fflags        uint32
 	Frpos         uintptr // *uint8
@@ -52891,6 +50080,7 @@ type s63_IO_FILE = struct {
 	Flocale       uintptr // *S__locale_struct
 }
 
+// S__locale_struct is defined at libc.h:10:1
 type s105__locale_struct = struct{ Fcat [6]uintptr }
 
 // x__pthread_self is defined at pthread_arch.h:1:30
@@ -52899,10 +50089,13 @@ func x28__pthread_self(tls TLS) (r uintptr /* *S__pthread */) {
 	return r
 }
 
-type t241size_t = uint64
+type t22wchar_t = int32
 
-type t79off_t = int64
+type t168size_t = uint64
 
+type t77off_t = int64
+
+// S__pthread is defined at pthread_impl.h:15:1
 type s34__pthread = struct {
 	Fself          uintptr // *S__pthread
 	Fdtv           uintptr // **void
@@ -52945,6 +50138,7 @@ type s34__pthread = struct {
 
 type t42uintptr_t = uint64
 
+// S__ptcb is defined at pthread.h:200:1
 type s33__ptcb = struct {
 	F__f    uintptr // *func(TLS, uintptr)
 	F__x    uintptr // *void
@@ -52995,6 +50189,7 @@ func Xfputws(tls TLS, aws uintptr, _f uintptr /* *TFILE = S_IO_FILE */) (r int32
 	return int32(_l)
 }
 
+// S_IO_FILE is defined at stdio_impl.h:22:1
 type s64_IO_FILE = struct {
 	Fflags        uint32
 	Frpos         uintptr // *uint8
@@ -53031,10 +50226,11 @@ type s64_IO_FILE = struct {
 	Flocale       uintptr // *S__locale_struct
 }
 
-type t24wchar_t = int32
+type t23wchar_t = int32
 
-type t242size_t = uint64
+type t169size_t = uint64
 
+// S__locale_struct is defined at libc.h:10:1
 type s106__locale_struct = struct{ Fcat [6]uintptr }
 
 // x__pthread_self is defined at pthread_arch.h:1:30
@@ -53043,8 +50239,9 @@ func x29__pthread_self(tls TLS) (r uintptr /* *S__pthread */) {
 	return r
 }
 
-type t80off_t = int64
+type t78off_t = int64
 
+// S__pthread is defined at pthread_impl.h:15:1
 type s35__pthread = struct {
 	Fself          uintptr // *S__pthread
 	Fdtv           uintptr // **void
@@ -53087,6 +50284,7 @@ type s35__pthread = struct {
 
 type t43uintptr_t = uint64
 
+// S__ptcb is defined at pthread.h:200:1
 type s34__ptcb = struct {
 	F__f    uintptr // *func(TLS, uintptr)
 	F__x    uintptr // *void
@@ -53154,8 +50352,7 @@ func Xfread(tls TLS, _destv uintptr /* *void */, _size uint64, _nmemb uint64, _f
 	return _nmemb
 }
 
-type t243size_t = uint64
-
+// S_IO_FILE is defined at stdio_impl.h:22:1
 type s65_IO_FILE = struct {
 	Fflags        uint32
 	Frpos         uintptr // *uint8
@@ -53192,8 +50389,11 @@ type s65_IO_FILE = struct {
 	Flocale       uintptr // *S__locale_struct
 }
 
-type t81off_t = int64
+type t170size_t = uint64
 
+type t79off_t = int64
+
+// S__locale_struct is defined at libc.h:10:1
 type s107__locale_struct = struct{ Fcat [6]uintptr }
 
 // linking freopen.o
@@ -53275,6 +50475,7 @@ lfail:
 	return null
 }
 
+// S_IO_FILE is defined at stdio_impl.h:22:1
 type s66_IO_FILE = struct {
 	Fflags        uint32
 	Frpos         uintptr // *uint8
@@ -53316,10 +50517,11 @@ func x52__syscall3(tls TLS, _n int64, _a1 int64, _a2 int64, _a3 int64) (r int64)
 	return X__syscall(tls, _n, _a1, _a2, _a3, int64(0), int64(0), int64(0))
 }
 
-type t244size_t = uint64
+type t171size_t = uint64
 
-type t82off_t = int64
+type t80off_t = int64
 
+// S__locale_struct is defined at libc.h:10:1
 type s108__locale_struct = struct{ Fcat [6]uintptr }
 
 // linking fscanf.o
@@ -53397,8 +50599,7 @@ func Xfseek(tls TLS, _f uintptr /* *TFILE = S_IO_FILE */, _off int64, _whence in
 	return X__fseeko(tls, _f, _off, _whence)
 }
 
-type t83off_t = int64
-
+// S_IO_FILE is defined at stdio_impl.h:22:1
 type s68_IO_FILE = struct {
 	Fflags        uint32
 	Frpos         uintptr // *uint8
@@ -53435,8 +50636,11 @@ type s68_IO_FILE = struct {
 	Flocale       uintptr // *S__locale_struct
 }
 
-type t245size_t = uint64
+type t81off_t = int64
 
+type t172size_t = uint64
+
+// S__locale_struct is defined at libc.h:10:1
 type s109__locale_struct = struct{ Fcat [6]uintptr }
 
 // linking fsetpos.o
@@ -53446,6 +50650,7 @@ func Xfsetpos(tls TLS, _f uintptr /* *TFILE = S_IO_FILE */, _pos uintptr /* *Tfp
 	return X__fseeko(tls, _f, *(*int64)(unsafe.Pointer(_pos)), int32(0))
 }
 
+// S_IO_FILE is defined at stdio_impl.h:22:1
 type s69_IO_FILE = struct {
 	Fflags        uint32
 	Frpos         uintptr // *uint8
@@ -53482,10 +50687,11 @@ type s69_IO_FILE = struct {
 	Flocale       uintptr // *S__locale_struct
 }
 
-type t246size_t = uint64
+type t173size_t = uint64
 
-type t84off_t = int64
+type t82off_t = int64
 
+// S__locale_struct is defined at libc.h:10:1
 type s110__locale_struct = struct{ Fcat [6]uintptr }
 
 // linking ftell.o
@@ -53541,8 +50747,7 @@ func Xftell(tls TLS, _f uintptr /* *TFILE = S_IO_FILE */) (r int64) {
 	return _pos
 }
 
-type t85off_t = int64
-
+// S_IO_FILE is defined at stdio_impl.h:22:1
 type s70_IO_FILE = struct {
 	Fflags        uint32
 	Frpos         uintptr // *uint8
@@ -53579,8 +50784,11 @@ type s70_IO_FILE = struct {
 	Flocale       uintptr // *S__locale_struct
 }
 
-type t247size_t = uint64
+type t83off_t = int64
 
+type t174size_t = uint64
+
+// S__locale_struct is defined at libc.h:10:1
 type s111__locale_struct = struct{ Fcat [6]uintptr }
 
 // linking ftrylockfile.o
@@ -53648,6 +50856,7 @@ func Xftrylockfile(tls TLS, _f uintptr /* *TFILE = S_IO_FILE */) (r int32) {
 	return 0
 }
 
+// S_IO_FILE is defined at stdio_impl.h:22:1
 type s71_IO_FILE = struct {
 	Fflags        uint32
 	Frpos         uintptr // *uint8
@@ -53695,6 +50904,7 @@ func x1a_store(tls TLS, _p uintptr /* *int32 */, _x int32) {
 	panic(`TODO`)
 }
 
+// S__pthread is defined at pthread_impl.h:15:1
 type s36__pthread = struct {
 	Fself          uintptr // *S__pthread
 	Fdtv           uintptr // **void
@@ -53741,14 +50951,16 @@ func x3a_cas(tls TLS, _p uintptr /* *int32 */, _t int32, _s int32) (r int32) {
 	return r
 }
 
-type t248size_t = uint64
+type t175size_t = uint64
 
-type t86off_t = int64
+type t84off_t = int64
 
+// S__locale_struct is defined at libc.h:10:1
 type s112__locale_struct = struct{ Fcat [6]uintptr }
 
 type t44uintptr_t = uint64
 
+// S__ptcb is defined at pthread.h:200:1
 type s35__ptcb = struct {
 	F__f    uintptr // *func(TLS, uintptr)
 	F__x    uintptr // *void
@@ -53768,6 +50980,7 @@ func Xfunlockfile(tls TLS, _f uintptr /* *TFILE = S_IO_FILE */) {
 	}
 }
 
+// S_IO_FILE is defined at stdio_impl.h:22:1
 type s72_IO_FILE = struct {
 	Fflags        uint32
 	Frpos         uintptr // *uint8
@@ -53804,10 +51017,11 @@ type s72_IO_FILE = struct {
 	Flocale       uintptr // *S__locale_struct
 }
 
-type t249size_t = uint64
+type t176size_t = uint64
 
-type t87off_t = int64
+type t85off_t = int64
 
+// S__locale_struct is defined at libc.h:10:1
 type s113__locale_struct = struct{ Fcat [6]uintptr }
 
 // linking fwide.o
@@ -53818,6 +51032,7 @@ func Xfwide(tls TLS, _f uintptr /* *TFILE = S_IO_FILE */, _mode int32) (r int32)
 	return r
 }
 
+// S_IO_FILE is defined at stdio_impl.h:22:1
 type s73_IO_FILE = struct {
 	Fflags        uint32
 	Frpos         uintptr // *uint8
@@ -53854,10 +51069,11 @@ type s73_IO_FILE = struct {
 	Flocale       uintptr // *S__locale_struct
 }
 
-type t250size_t = uint64
+type t177size_t = uint64
 
-type t88off_t = int64
+type t86off_t = int64
 
+// S__locale_struct is defined at libc.h:10:1
 type s114__locale_struct = struct{ Fcat [6]uintptr }
 
 // linking fwprintf.o
@@ -53939,8 +51155,7 @@ func Xfwrite(tls TLS, _src uintptr /* *void */, _size uint64, _nmemb uint64, _f 
 	return _k / _size
 }
 
-type t251size_t = uint64
-
+// S_IO_FILE is defined at stdio_impl.h:22:1
 type s75_IO_FILE = struct {
 	Fflags        uint32
 	Frpos         uintptr // *uint8
@@ -53977,8 +51192,11 @@ type s75_IO_FILE = struct {
 	Flocale       uintptr // *S__locale_struct
 }
 
-type t89off_t = int64
+type t178size_t = uint64
 
+type t87off_t = int64
+
+// S__locale_struct is defined at libc.h:10:1
 type s115__locale_struct = struct{ Fcat [6]uintptr }
 
 // linking fwscanf.o
@@ -54022,6 +51240,7 @@ func Xgetc(tls TLS, _f uintptr /* *TFILE = S_IO_FILE */) (r int32) {
 	return _c
 }
 
+// S_IO_FILE is defined at stdio_impl.h:22:1
 type s77_IO_FILE = struct {
 	Fflags        uint32
 	Frpos         uintptr // *uint8
@@ -54058,10 +51277,11 @@ type s77_IO_FILE = struct {
 	Flocale       uintptr // *S__locale_struct
 }
 
-type t252size_t = uint64
+type t179size_t = uint64
 
-type t90off_t = int64
+type t88off_t = int64
 
+// S__locale_struct is defined at libc.h:10:1
 type s116__locale_struct = struct{ Fcat [6]uintptr }
 
 // linking getc_unlocked.o
@@ -54078,6 +51298,7 @@ func Xgetc_unlocked(tls TLS, _f uintptr /* *TFILE = S_IO_FILE */) (r int32) {
 	}()
 }
 
+// S_IO_FILE is defined at stdio_impl.h:22:1
 type s78_IO_FILE = struct {
 	Fflags        uint32
 	Frpos         uintptr // *uint8
@@ -54114,10 +51335,11 @@ type s78_IO_FILE = struct {
 	Flocale       uintptr // *S__locale_struct
 }
 
-type t253size_t = uint64
+type t180size_t = uint64
 
-type t91off_t = int64
+type t89off_t = int64
 
+// S__locale_struct is defined at libc.h:10:1
 type s117__locale_struct = struct{ Fcat [6]uintptr }
 
 // linking getchar.o
@@ -54268,8 +51490,7 @@ loom:
 	return int64(-1)
 }
 
-type t42ssize_t = int64
-
+// S_IO_FILE is defined at stdio_impl.h:22:1
 type s79_IO_FILE = struct {
 	Fflags        uint32
 	Frpos         uintptr // *uint8
@@ -54306,10 +51527,11 @@ type s79_IO_FILE = struct {
 	Flocale       uintptr // *S__locale_struct
 }
 
-type t254size_t = uint64
+type t181size_t = uint64
 
-type t92off_t = int64
+type t90off_t = int64
 
+// S__locale_struct is defined at libc.h:10:1
 type s118__locale_struct = struct{ Fcat [6]uintptr }
 
 // linking getline.o
@@ -54319,7 +51541,7 @@ func Xgetline(tls TLS, _s uintptr /* **int8 */, _n uintptr /* *Tsize_t = uint64 
 	return Xgetdelim(tls, _s, _n, int32('\n'), _f)
 }
 
-type t43ssize_t = int64
+type t24ssize_t = int64
 
 type s80_IO_FILE struct{ uintptr }
 
@@ -54336,7 +51558,7 @@ func Xgets(tls TLS, _s uintptr /* *int8 */) (r uintptr /* *int8 */) {
 	return _ret
 }
 
-type t255size_t = uint64
+type t182size_t = uint64
 
 // linking getw.o
 
@@ -54351,8 +51573,6 @@ func Xgetw(tls TLS, _f uintptr /* *TFILE = S_IO_FILE */) (r int32) {
 	return int32(-1)
 }
 
-type t256size_t = uint64
-
 type s81_IO_FILE struct{ uintptr }
 
 // linking getwc.o
@@ -54362,8 +51582,7 @@ func Xgetwc(tls TLS, _f uintptr /* *TFILE = S_IO_FILE */) (r uint32) {
 	return Xfgetwc(tls, _f)
 }
 
-type t23wint_t = uint32
-
+// S_IO_FILE is defined at stdio_impl.h:22:1
 type s82_IO_FILE = struct {
 	Fflags        uint32
 	Frpos         uintptr // *uint8
@@ -54400,10 +51619,13 @@ type s82_IO_FILE = struct {
 	Flocale       uintptr // *S__locale_struct
 }
 
-type t257size_t = uint64
+type t20wint_t = uint32
 
-type t93off_t = int64
+type t183size_t = uint64
 
+type t91off_t = int64
+
+// S__locale_struct is defined at libc.h:10:1
 type s119__locale_struct = struct{ Fcat [6]uintptr }
 
 // linking getwchar.o
@@ -54413,7 +51635,7 @@ func Xgetwchar(tls TLS) (r uint32) {
 	return Xfgetwc(tls, *(*uintptr)(unsafe.Pointer(Xstdin)))
 }
 
-type t24wint_t = uint32
+type t21wint_t = uint32
 
 // linking ofl.o
 
@@ -54428,6 +51650,7 @@ func X__ofl_unlock(tls TLS) {
 	X__unlock(tls, xofl_lock)
 }
 
+// S_IO_FILE is defined at stdio_impl.h:22:1
 type s83_IO_FILE = struct {
 	Fflags        uint32
 	Frpos         uintptr // *uint8
@@ -54470,10 +51693,11 @@ var xofl_lock = bss + 5464
 // xofl_head *TFILE = S_IO_FILE, escapes: true, ofl.c:4:13
 var xofl_head = bss + 5472
 
-type t258size_t = uint64
+type t184size_t = uint64
 
-type t94off_t = int64
+type t92off_t = int64
 
+// S__locale_struct is defined at libc.h:10:1
 type s120__locale_struct = struct{ Fcat [6]uintptr }
 
 // linking ofl_add.o
@@ -54492,6 +51716,7 @@ func X__ofl_add(tls TLS, _f uintptr /* *TFILE = S_IO_FILE */) (r uintptr /* *TFI
 	return _f
 }
 
+// S_IO_FILE is defined at stdio_impl.h:22:1
 type s84_IO_FILE = struct {
 	Fflags        uint32
 	Frpos         uintptr // *uint8
@@ -54528,10 +51753,11 @@ type s84_IO_FILE = struct {
 	Flocale       uintptr // *S__locale_struct
 }
 
-type t259size_t = uint64
+type t185size_t = uint64
 
-type t95off_t = int64
+type t93off_t = int64
 
+// S__locale_struct is defined at libc.h:10:1
 type s121__locale_struct = struct{ Fcat [6]uintptr }
 
 // linking open_memstream.o
@@ -54584,6 +51810,7 @@ func Xopen_memstream(tls TLS, _bufp uintptr /* **int8 */, _sizep uintptr /* *Tsi
 	return X__ofl_add(tls, _f)
 }
 
+// S_IO_FILE is defined at stdio_impl.h:22:1
 type s85_IO_FILE = struct {
 	Fflags        uint32
 	Frpos         uintptr // *uint8
@@ -54620,13 +51847,14 @@ type s85_IO_FILE = struct {
 	Flocale       uintptr // *S__locale_struct
 }
 
+// Sms_FILE is defined at open_memstream.c:15:1
 type Sms_FILE = struct {
 	Ff   s85_IO_FILE
 	Fc   s1cookie
 	Fbuf [1024]uint8
 }
 
-type t260size_t = uint64
+type t186size_t = uint64
 
 // xms_write is defined at open_memstream.c:36:15
 func xms_write(tls TLS, _f uintptr /* *TFILE = S_IO_FILE */, _buf uintptr /* *uint8 */, _len uint64) (r uint64) {
@@ -54671,17 +51899,20 @@ func xms_seek(tls TLS, _f uintptr /* *TFILE = S_IO_FILE */, _off int64, _whence 
 	return r
 }
 
-type t96off_t = int64
+type t94off_t = int64
 
 // xms_close is defined at open_memstream.c:60:12
 func xms_close(tls TLS, _f uintptr /* *TFILE = S_IO_FILE */) (r int32) {
 	return 0
 }
 
+// S__locale_struct is defined at libc.h:10:1
 type s122__locale_struct = struct{ Fcat [6]uintptr }
 
+// NFILE is defined at alltypes.h:356:9
 type t2FILE = s85_IO_FILE
 
+// Scookie is defined at open_memstream.c:6:1
 type s1cookie = struct {
 	Fbufp  uintptr // **int8
 	Fsizep uintptr // *Tsize_t = uint64
@@ -54741,6 +51972,7 @@ func Xopen_wmemstream(tls TLS, _bufp uintptr /* **Twchar_t = int32 */, _sizep ui
 	return X__ofl_add(tls, _f)
 }
 
+// S_IO_FILE is defined at stdio_impl.h:22:1
 type s86_IO_FILE = struct {
 	Fflags        uint32
 	Frpos         uintptr // *uint8
@@ -54777,15 +52009,16 @@ type s86_IO_FILE = struct {
 	Flocale       uintptr // *S__locale_struct
 }
 
+// Swms_FILE is defined at open_wmemstream.c:17:1
 type Swms_FILE = struct {
 	Ff   s86_IO_FILE
 	Fc   s2cookie
 	Fbuf [1]uint8
 }
 
-type t261size_t = uint64
+type t187size_t = uint64
 
-type t25wchar_t = int32
+type t24wchar_t = int32
 
 // xwms_write is defined at open_wmemstream.c:39:15
 func xwms_write(tls TLS, _f uintptr /* *TFILE = S_IO_FILE */, abuf uintptr, _len uint64) (r uint64) {
@@ -54833,17 +52066,20 @@ func xwms_seek(tls TLS, _f uintptr /* *TFILE = S_IO_FILE */, _off int64, _whence
 	return r
 }
 
-type t97off_t = int64
+type t95off_t = int64
 
 // xwms_close is defined at open_wmemstream.c:62:12
 func xwms_close(tls TLS, _f uintptr /* *TFILE = S_IO_FILE */) (r int32) {
 	return 0
 }
 
+// S__locale_struct is defined at libc.h:10:1
 type s123__locale_struct = struct{ Fcat [6]uintptr }
 
+// NFILE is defined at alltypes.h:356:9
 type t3FILE = s86_IO_FILE
 
+// Scookie is defined at open_wmemstream.c:7:1
 type s2cookie = struct {
 	Fbufp  uintptr // **Twchar_t = int32
 	Fsizep uintptr // *Tsize_t = uint64
@@ -54857,6 +52093,7 @@ type s2cookie = struct {
 	}
 }
 
+// Nmbstate_t is defined at alltypes.h:362:9
 type Tmbstate_t = struct {
 	F__opaque1 uint32
 	F__opaque2 uint32
@@ -54885,6 +52122,7 @@ func Xpclose(tls TLS, _f uintptr /* *TFILE = S_IO_FILE */) (r int32) {
 	return *(*int32)(unsafe.Pointer(_status))
 }
 
+// S_IO_FILE is defined at stdio_impl.h:22:1
 type s87_IO_FILE = struct {
 	Fflags        uint32
 	Frpos         uintptr // *uint8
@@ -54921,17 +52159,18 @@ type s87_IO_FILE = struct {
 	Flocale       uintptr // *S__locale_struct
 }
 
-type t45pid_t = int32
+type t33pid_t = int32
 
 // x__syscall4 is defined at syscall_arch.h:40:22
 func x26__syscall4(tls TLS, _n int64, _a1 int64, _a2 int64, _a3 int64, _a4 int64) (r int64) {
 	return X__syscall(tls, _n, _a1, _a2, _a3, _a4, int64(0), int64(0))
 }
 
-type t262size_t = uint64
+type t188size_t = uint64
 
-type t98off_t = int64
+type t96off_t = int64
 
+// S__locale_struct is defined at libc.h:10:1
 type s124__locale_struct = struct{ Fcat [6]uintptr }
 
 // linking perror.o
@@ -54969,6 +52208,7 @@ func Xperror(tls TLS, _msg uintptr /* *int8 */) {
 	}
 }
 
+// S_IO_FILE is defined at stdio_impl.h:22:1
 type s88_IO_FILE = struct {
 	Fflags        uint32
 	Frpos         uintptr // *uint8
@@ -55005,10 +52245,11 @@ type s88_IO_FILE = struct {
 	Flocale       uintptr // *S__locale_struct
 }
 
-type t263size_t = uint64
+type t189size_t = uint64
 
-type t99off_t = int64
+type t97off_t = int64
 
+// S__locale_struct is defined at libc.h:10:1
 type s125__locale_struct = struct{ Fcat [6]uintptr }
 
 // linking popen.o
@@ -55079,7 +52320,7 @@ _1:
 					2: _cmd,
 				}
 				return _unnamed1
-			}(), *(*uintptr)(unsafe.Pointer(X__environ)))) == 0 {
+			}(), *(*uintptr)(unsafe.Pointer(Xenviron)))) == 0 {
 				Xposix_spawn_file_actions_destroy(tls, _fa)
 				*(*int32)(unsafe.Pointer(_f + 124)) = *(*int32)(unsafe.Pointer(_pid))
 				if Xstrchr(tls, _mode, int32('e')) == 0 {
@@ -55102,6 +52343,7 @@ lfail:
 	return null
 }
 
+// S_IO_FILE is defined at stdio_impl.h:22:1
 type s89_IO_FILE = struct {
 	Fflags        uint32
 	Frpos         uintptr // *uint8
@@ -55143,12 +52385,13 @@ func x35__syscall1(tls TLS, _n int64, _a1 int64) (r int64) {
 	return X__syscall(tls, _n, _a1, int64(0), int64(0), int64(0), int64(0), int64(0))
 }
 
-type t46pid_t = int32
+type t34pid_t = int32
 
-type t264size_t = uint64
+type t190size_t = uint64
 
-type t100off_t = int64
+type t98off_t = int64
 
+// S__locale_struct is defined at libc.h:10:1
 type s126__locale_struct = struct{ Fcat [6]uintptr }
 
 // linking printf.o
@@ -55190,6 +52433,7 @@ func Xputc(tls TLS, _c int32, _f uintptr /* *TFILE = S_IO_FILE */) (r int32) {
 	return _c
 }
 
+// S_IO_FILE is defined at stdio_impl.h:22:1
 type s90_IO_FILE = struct {
 	Fflags        uint32
 	Frpos         uintptr // *uint8
@@ -55226,10 +52470,11 @@ type s90_IO_FILE = struct {
 	Flocale       uintptr // *S__locale_struct
 }
 
-type t265size_t = uint64
+type t191size_t = uint64
 
-type t101off_t = int64
+type t99off_t = int64
 
+// S__locale_struct is defined at libc.h:10:1
 type s127__locale_struct = struct{ Fcat [6]uintptr }
 
 // linking putc_unlocked.o
@@ -55248,6 +52493,7 @@ func Xputc_unlocked(tls TLS, _c int32, _f uintptr /* *TFILE = S_IO_FILE */) (r i
 	}()
 }
 
+// S_IO_FILE is defined at stdio_impl.h:22:1
 type s91_IO_FILE = struct {
 	Fflags        uint32
 	Frpos         uintptr // *uint8
@@ -55284,10 +52530,11 @@ type s91_IO_FILE = struct {
 	Flocale       uintptr // *S__locale_struct
 }
 
-type t266size_t = uint64
+type t192size_t = uint64
 
-type t102off_t = int64
+type t100off_t = int64
 
+// S__locale_struct is defined at libc.h:10:1
 type s128__locale_struct = struct{ Fcat [6]uintptr }
 
 // linking putchar.o
@@ -55354,8 +52601,6 @@ func Xputw(tls TLS, ax int32, _f uintptr /* *TFILE = S_IO_FILE */) (r int32) {
 	return int32(Xfwrite(tls, _x, uint64(4), uint64(1), _f)) - int32(1)
 }
 
-type t267size_t = uint64
-
 type s92_IO_FILE struct{ uintptr }
 
 // linking putwc.o
@@ -55365,10 +52610,7 @@ func Xputwc(tls TLS, _c int32, _f uintptr /* *TFILE = S_IO_FILE */) (r uint32) {
 	return Xfputwc(tls, _c, _f)
 }
 
-type t26wchar_t = int32
-
-type t25wint_t = uint32
-
+// S_IO_FILE is defined at stdio_impl.h:22:1
 type s93_IO_FILE = struct {
 	Fflags        uint32
 	Frpos         uintptr // *uint8
@@ -55405,10 +52647,15 @@ type s93_IO_FILE = struct {
 	Flocale       uintptr // *S__locale_struct
 }
 
-type t268size_t = uint64
+type t22wint_t = uint32
 
-type t103off_t = int64
+type t25wchar_t = int32
 
+type t193size_t = uint64
+
+type t101off_t = int64
+
+// S__locale_struct is defined at libc.h:10:1
 type s129__locale_struct = struct{ Fcat [6]uintptr }
 
 // linking putwchar.o
@@ -55418,9 +52665,9 @@ func Xputwchar(tls TLS, _c int32) (r uint32) {
 	return Xfputwc(tls, _c, *(*uintptr)(unsafe.Pointer(Xstdout)))
 }
 
-type t27wchar_t = int32
+type t23wint_t = uint32
 
-type t26wint_t = uint32
+type t26wchar_t = int32
 
 // linking remove.o
 
@@ -55474,6 +52721,7 @@ func Xrewind(tls TLS, _f uintptr /* *TFILE = S_IO_FILE */) {
 	}
 }
 
+// S_IO_FILE is defined at stdio_impl.h:22:1
 type s94_IO_FILE = struct {
 	Fflags        uint32
 	Frpos         uintptr // *uint8
@@ -55510,10 +52758,11 @@ type s94_IO_FILE = struct {
 	Flocale       uintptr // *S__locale_struct
 }
 
-type t269size_t = uint64
+type t194size_t = uint64
 
-type t104off_t = int64
+type t102off_t = int64
 
+// S__locale_struct is defined at libc.h:10:1
 type s130__locale_struct = struct{ Fcat [6]uintptr }
 
 // linking scanf.o
@@ -55542,8 +52791,6 @@ func Xsetbuf(tls TLS, _f uintptr /* *TFILE = S_IO_FILE */, _buf uintptr /* *int8
 	}(), uint64(1024))
 }
 
-type t270size_t = uint64
-
 type s95_IO_FILE struct{ uintptr }
 
 // linking setbuffer.o
@@ -55558,7 +52805,7 @@ func Xsetbuffer(tls TLS, _f uintptr /* *TFILE = S_IO_FILE */, _buf uintptr /* *i
 	}(), _size)
 }
 
-type t271size_t = uint64
+type t195size_t = uint64
 
 type s96_IO_FILE struct{ uintptr }
 
@@ -55568,8 +52815,6 @@ type s96_IO_FILE struct{ uintptr }
 func Xsetlinebuf(tls TLS, _f uintptr /* *TFILE = S_IO_FILE */) {
 	Xsetvbuf(tls, _f, null, int32(1), uint64(0))
 }
-
-type t272size_t = uint64
 
 type s97_IO_FILE struct{ uintptr }
 
@@ -55596,8 +52841,7 @@ func Xsetvbuf(tls TLS, _f uintptr /* *TFILE = S_IO_FILE */, _buf uintptr /* *int
 	return 0
 }
 
-type t273size_t = uint64
-
+// S_IO_FILE is defined at stdio_impl.h:22:1
 type s98_IO_FILE = struct {
 	Fflags        uint32
 	Frpos         uintptr // *uint8
@@ -55634,8 +52878,11 @@ type s98_IO_FILE = struct {
 	Flocale       uintptr // *S__locale_struct
 }
 
-type t105off_t = int64
+type t196size_t = uint64
 
+type t103off_t = int64
+
+// S__locale_struct is defined at libc.h:10:1
 type s131__locale_struct = struct{ Fcat [6]uintptr }
 
 // linking snprintf.o
@@ -55652,7 +52899,7 @@ func Xsnprintf(tls TLS, _s uintptr /* *int8 */, _n uint64, _fmt uintptr /* *int8
 	return _ret
 }
 
-type t274size_t = uint64
+type t197size_t = uint64
 
 // linking sprintf.o
 
@@ -55694,6 +52941,7 @@ var X__stderr_used = bss + 5488 // pointer to FILE
 
 func init() { *(*uintptr)(unsafe.Pointer(X__stderr_used)) = x3f }
 
+// S_IO_FILE is defined at stdio_impl.h:22:1
 type s99_IO_FILE = struct {
 	Fflags        uint32
 	Frpos         uintptr // *uint8
@@ -55754,12 +53002,14 @@ func init() {
 	}
 }
 
-type t275size_t = uint64
+type t198size_t = uint64
 
-type t106off_t = int64
+type t104off_t = int64
 
+// S__locale_struct is defined at libc.h:10:1
 type s132__locale_struct = struct{ Fcat [6]uintptr }
 
+// NFILE is defined at alltypes.h:356:9
 type t4FILE = s99_IO_FILE
 
 // xbuf [8]uint8, escapes: true, stderr.c:3:22
@@ -55777,6 +53027,7 @@ var X__stdin_used = bss + 5744 // pointer to FILE
 
 func init() { *(*uintptr)(unsafe.Pointer(X__stdin_used)) = x4f }
 
+// S_IO_FILE is defined at stdio_impl.h:22:1
 type s100_IO_FILE = struct {
 	Fflags        uint32
 	Frpos         uintptr // *uint8
@@ -55836,12 +53087,14 @@ func init() {
 	}
 }
 
-type t276size_t = uint64
+type t199size_t = uint64
 
-type t107off_t = int64
+type t105off_t = int64
 
+// S__locale_struct is defined at libc.h:10:1
 type s133__locale_struct = struct{ Fcat [6]uintptr }
 
+// NFILE is defined at alltypes.h:356:9
 type t5FILE = s100_IO_FILE
 
 // xbuf [1032]uint8, escapes: true, stdin.c:3:22
@@ -55859,6 +53112,7 @@ var X__stdout_used = bss + 7024 // pointer to FILE
 
 func init() { *(*uintptr)(unsafe.Pointer(X__stdout_used)) = x5f }
 
+// S_IO_FILE is defined at stdio_impl.h:22:1
 type s101_IO_FILE = struct {
 	Fflags        uint32
 	Frpos         uintptr // *uint8
@@ -55920,12 +53174,14 @@ func init() {
 	}
 }
 
-type t277size_t = uint64
+type t200size_t = uint64
 
-type t108off_t = int64
+type t106off_t = int64
 
+// S__locale_struct is defined at libc.h:10:1
 type s134__locale_struct = struct{ Fcat [6]uintptr }
 
+// NFILE is defined at alltypes.h:356:9
 type t6FILE = s101_IO_FILE
 
 // xbuf [1032]uint8, escapes: true, stdout.c:3:22
@@ -55945,7 +53201,7 @@ func Xswprintf(tls TLS, _s uintptr /* *Twchar_t = int32 */, _n uint64, _fmt uint
 	return _ret
 }
 
-type t278size_t = uint64
+type t201size_t = uint64
 
 // linking swscanf.o
 
@@ -56004,8 +53260,9 @@ func Xtempnam(tls TLS, _dir uintptr /* *int8 */, _pfx uintptr /* *int8 */) (r ui
 	return null
 }
 
-type t279size_t = uint64
+type t202size_t = uint64
 
+// Sstat is defined at stat.h:4:1
 type s12stat = struct {
 	Fst_dev     uint64
 	Fst_ino     uint64
@@ -56029,24 +53286,25 @@ func x47__syscall2(tls TLS, _n int64, _a1 int64, _a2 int64) (r int64) {
 	return X__syscall(tls, _n, _a1, _a2, int64(0), int64(0), int64(0), int64(0))
 }
 
-type t16dev_t = uint64
+type t12dev_t = uint64
 
 type t18ino_t = uint64
 
 type t12nlink_t = uint64
 
-type t33mode_t = uint32
+type t24mode_t = uint32
 
-type t28uid_t = uint32
+type t27uid_t = uint32
 
-type t30gid_t = uint32
+type t29gid_t = uint32
 
-type t109off_t = int64
+type t107off_t = int64
 
 type t12blksize_t = int64
 
 type t12blkcnt_t = int64
 
+// Stimespec is defined at alltypes.h:270:1
 type s33timespec = struct {
 	Ftv_sec  int64
 	Ftv_nsec int64
@@ -56082,6 +53340,7 @@ func Xtmpfile(tls TLS) (r uintptr /* *TFILE = S_IO_FILE */) {
 	return null
 }
 
+// S_IO_FILE is defined at stdio_impl.h:22:1
 type s102_IO_FILE = struct {
 	Fflags        uint32
 	Frpos         uintptr // *uint8
@@ -56128,10 +53387,11 @@ func x37__syscall1(tls TLS, _n int64, _a1 int64) (r int64) {
 	return X__syscall(tls, _n, _a1, int64(0), int64(0), int64(0), int64(0), int64(0))
 }
 
-type t280size_t = uint64
+type t203size_t = uint64
 
-type t110off_t = int64
+type t108off_t = int64
 
+// S__locale_struct is defined at libc.h:10:1
 type s135__locale_struct = struct{ Fcat [6]uintptr }
 
 // linking tmpnam.o
@@ -56165,6 +53425,7 @@ func Xtmpnam(tls TLS, _buf uintptr /* *int8 */) (r uintptr /* *int8 */) {
 // x1internal [20]int8, escapes: true, tmpnam.c:14:14
 var x987internal = bss + 8296
 
+// Sstat is defined at stat.h:4:1
 type s13stat = struct {
 	Fst_dev     uint64
 	Fst_ino     uint64
@@ -56188,24 +53449,25 @@ func x48__syscall2(tls TLS, _n int64, _a1 int64, _a2 int64) (r int64) {
 	return X__syscall(tls, _n, _a1, _a2, int64(0), int64(0), int64(0), int64(0))
 }
 
-type t17dev_t = uint64
+type t13dev_t = uint64
 
 type t19ino_t = uint64
 
 type t13nlink_t = uint64
 
-type t34mode_t = uint32
+type t25mode_t = uint32
 
-type t29uid_t = uint32
+type t28uid_t = uint32
 
-type t31gid_t = uint32
+type t30gid_t = uint32
 
-type t111off_t = int64
+type t109off_t = int64
 
 type t13blksize_t = int64
 
 type t13blkcnt_t = int64
 
+// Stimespec is defined at alltypes.h:270:1
 type s34timespec = struct {
 	Ftv_sec  int64
 	Ftv_nsec int64
@@ -56250,6 +53512,7 @@ func Xungetc(tls TLS, _c int32, _f uintptr /* *TFILE = S_IO_FILE */) (r int32) {
 	return _c
 }
 
+// S_IO_FILE is defined at stdio_impl.h:22:1
 type s103_IO_FILE = struct {
 	Fflags        uint32
 	Frpos         uintptr // *uint8
@@ -56286,10 +53549,11 @@ type s103_IO_FILE = struct {
 	Flocale       uintptr // *S__locale_struct
 }
 
-type t281size_t = uint64
+type t204size_t = uint64
 
-type t112off_t = int64
+type t110off_t = int64
 
+// S__locale_struct is defined at libc.h:10:1
 type s136__locale_struct = struct{ Fcat [6]uintptr }
 
 // linking ungetwc.o
@@ -56347,8 +53611,7 @@ func Xungetwc(tls TLS, _c uint32, _f uintptr /* *TFILE = S_IO_FILE */) (r uint32
 	return _c
 }
 
-type t27wint_t = uint32
-
+// S_IO_FILE is defined at stdio_impl.h:22:1
 type s104_IO_FILE = struct {
 	Fflags        uint32
 	Frpos         uintptr // *uint8
@@ -56385,6 +53648,7 @@ type s104_IO_FILE = struct {
 	Flocale       uintptr // *S__locale_struct
 }
 
+// S__locale_struct is defined at libc.h:10:1
 type s137__locale_struct = struct{ Fcat [6]uintptr }
 
 // x__pthread_self is defined at pthread_arch.h:1:30
@@ -56393,10 +53657,13 @@ func x31__pthread_self(tls TLS) (r uintptr /* *S__pthread */) {
 	return r
 }
 
-type t282size_t = uint64
+type t24wint_t = uint32
 
-type t113off_t = int64
+type t205size_t = uint64
 
+type t111off_t = int64
+
+// S__pthread is defined at pthread_impl.h:15:1
 type s37__pthread = struct {
 	Fself          uintptr // *S__pthread
 	Fdtv           uintptr // **void
@@ -56437,10 +53704,9 @@ type s37__pthread = struct {
 	Fdtv_copy         uintptr // **void
 }
 
-type t28wchar_t = int32
-
 type t45uintptr_t = uint64
 
+// S__ptcb is defined at pthread.h:200:1
 type s36__ptcb = struct {
 	F__f    uintptr // *func(TLS, uintptr)
 	F__x    uintptr // *void
@@ -56466,8 +53732,6 @@ func Xvasprintf(tls TLS, _s uintptr /* **int8 */, _fmt uintptr /* *int8 */, _ap 
 	return Xvsnprintf(tls, *(*uintptr)(unsafe.Pointer(_s)), uint64(uint32(_l)+uint32(1)), _fmt, _ap)
 }
 
-type t283size_t = uint64
-
 // linking vdprintf.o
 
 func fp992(f func(TLS, uintptr, uintptr, uint64) uint64) uintptr {
@@ -56489,6 +53753,7 @@ func Xvdprintf(tls TLS, _fd int32, _fmt uintptr /* *int8 */, _ap uintptr) (r int
 	return Xvfprintf(tls, _f, _fmt, _ap)
 }
 
+// S_IO_FILE is defined at stdio_impl.h:22:1
 type s105_IO_FILE = struct {
 	Fflags        uint32
 	Frpos         uintptr // *uint8
@@ -56525,6 +53790,7 @@ type s105_IO_FILE = struct {
 	Flocale       uintptr // *S__locale_struct
 }
 
+// NFILE is defined at alltypes.h:356:9
 type t7FILE = s105_IO_FILE
 
 // xwrap_write is defined at vdprintf.c:3:15
@@ -56532,10 +53798,11 @@ func xwrap_write(tls TLS, _f uintptr /* *TFILE = S_IO_FILE */, _buf uintptr /* *
 	return X__stdio_write(tls, _f, _buf, _len)
 }
 
-type t284size_t = uint64
+type t206size_t = uint64
 
-type t114off_t = int64
+type t112off_t = int64
 
+// S__locale_struct is defined at libc.h:10:1
 type s138__locale_struct = struct{ Fcat [6]uintptr }
 
 // linking vfprintf.o
@@ -56614,6 +53881,7 @@ func Xvfprintf(tls TLS, _f uintptr /* *TFILE = S_IO_FILE */, _fmt uintptr /* *in
 	return _ret
 }
 
+// S_IO_FILE is defined at stdio_impl.h:22:1
 type s106_IO_FILE = struct {
 	Fflags        uint32
 	Frpos         uintptr // *uint8
@@ -56650,6 +53918,7 @@ type s106_IO_FILE = struct {
 	Flocale       uintptr // *S__locale_struct
 }
 
+// Uarg is defined at vfprintf.c:101:1
 type Uarg = struct {
 	Fi [0]uint64
 	Ff [0]float64
@@ -57196,15 +54465,16 @@ loverflow:
 	return -1
 }
 
-type t285size_t = uint64
+type t207size_t = uint64
 
-type t115off_t = int64
+type t113off_t = int64
 
+// S__locale_struct is defined at libc.h:10:1
 type s139__locale_struct = struct{ Fcat [6]uintptr }
 
 type Tuintmax_t = uint64
 
-type t29wchar_t = int32
+type t27wchar_t = int32
 
 // xout is defined at vfprintf.c:132:13
 func xout(tls TLS, _f uintptr /* *TFILE = S_IO_FILE */, _s uintptr /* *int8 */, _l uint64) {
@@ -57845,7 +55115,7 @@ func xfmt_fp(tls TLS, _f uintptr /* *TFILE = S_IO_FILE */, _y float64, _w int32,
 // xxdigits [16]int8, escapes: true, vfprintf.c:148:19
 var xxdigits = ds + 46880
 
-type t135uint32_t = uint32
+type t134uint32_t = uint32
 
 type t75uint64_t = uint64
 
@@ -58581,6 +55851,7 @@ _96:
 	return _matches
 }
 
+// S_IO_FILE is defined at stdio_impl.h:22:1
 type s107_IO_FILE = struct {
 	Fflags        uint32
 	Frpos         uintptr // *uint8
@@ -58617,10 +55888,11 @@ type s107_IO_FILE = struct {
 	Flocale       uintptr // *S__locale_struct
 }
 
-type t116off_t = int64
+type t114off_t = int64
 
-type t286size_t = uint64
+type t208size_t = uint64
 
+// Nmbstate_t is defined at alltypes.h:362:9
 type t1mbstate_t = struct {
 	F__opaque1 uint32
 	F__opaque2 uint32
@@ -58684,10 +55956,11 @@ _6:
 _1:
 }
 
-type t30wchar_t = int32
+type t28wchar_t = int32
 
 type t46uintptr_t = uint64
 
+// S__locale_struct is defined at libc.h:10:1
 type s140__locale_struct = struct{ Fcat [6]uintptr }
 
 // linking vfwprintf.o
@@ -58737,6 +56010,7 @@ func Xvfwprintf(tls TLS, _f uintptr /* *TFILE = S_IO_FILE */, _fmt uintptr /* *T
 	return _ret
 }
 
+// S_IO_FILE is defined at stdio_impl.h:22:1
 type s108_IO_FILE = struct {
 	Fflags        uint32
 	Frpos         uintptr // *uint8
@@ -58773,6 +56047,7 @@ type s108_IO_FILE = struct {
 	Flocale       uintptr // *S__locale_struct
 }
 
+// Uarg is defined at vfwprintf.c:92:1
 type u1arg = struct {
 	Fi [0]uint64
 	Ff [0]float64
@@ -59238,15 +56513,16 @@ loverflow:
 	return -1
 }
 
-type t287size_t = uint64
+type t209size_t = uint64
 
-type t117off_t = int64
+type t115off_t = int64
 
+// S__locale_struct is defined at libc.h:10:1
 type s141__locale_struct = struct{ Fcat [6]uintptr }
 
 type t1uintmax_t = uint64
 
-type t31wchar_t = int32
+type t29wchar_t = int32
 
 func postinc1013(p *uint64) uint64 { r := *p; *p += 18446744073709551615; return r }
 
@@ -59391,8 +56667,6 @@ _1:
 
 // xsizeprefix [24]int8, escapes: true, vfwprintf.c:137:19
 var xsizeprefix = ds + 47360
-
-type t28wint_t = uint32
 
 // linking vfwscanf.o
 
@@ -60030,6 +57304,7 @@ _86:
 	return _matches
 }
 
+// S_IO_FILE is defined at stdio_impl.h:22:1
 type s109_IO_FILE = struct {
 	Fflags        uint32
 	Frpos         uintptr // *uint8
@@ -60072,11 +57347,11 @@ var x1020size_pfx = ds + 47384
 // x2spaces [22]int32, escapes: true, vfwscanf.c:221:26
 var x1019spaces = ds + 47408
 
-type t118off_t = int64
+type t116off_t = int64
 
-type t288size_t = uint64
+type t210size_t = uint64
 
-type t32wchar_t = int32
+type t30wchar_t = int32
 
 // xarg_n is defined at vfwscanf.c:45:13
 func x1arg_n(tls TLS, _ap uintptr, _n uint32) (r uintptr /* *void */) {
@@ -60169,9 +57444,8 @@ func xin_set(tls TLS, _set uintptr /* *Twchar_t = int32 */, _c int32) (r int32) 
 	return 0
 }
 
+// S__locale_struct is defined at libc.h:10:1
 type s142__locale_struct = struct{ Fcat [6]uintptr }
-
-type t29wint_t = uint32
 
 // linking vprintf.o
 
@@ -60232,13 +57506,13 @@ func Xvsnprintf(tls TLS, _s uintptr /* *int8 */, _n uint64, _fmt uintptr /* *int
 	return Xvfprintf(tls, _f, _fmt, _ap)
 }
 
-type t289size_t = uint64
-
+// Scookie is defined at vsnprintf.c:7:1
 type s3cookie = struct {
 	Fs uintptr // *int8
 	Fn uint64
 }
 
+// S_IO_FILE is defined at stdio_impl.h:22:1
 type s110_IO_FILE = struct {
 	Fflags        uint32
 	Frpos         uintptr // *uint8
@@ -60275,6 +57549,9 @@ type s110_IO_FILE = struct {
 	Flocale       uintptr // *S__locale_struct
 }
 
+type t211size_t = uint64
+
+// NFILE is defined at alltypes.h:356:9
 type t8FILE = s110_IO_FILE
 
 func set1022(p *uintptr, v uintptr) uintptr { *p = v; return v }
@@ -60318,8 +57595,9 @@ func xsn_write(tls TLS, _f uintptr /* *TFILE = S_IO_FILE */, _s uintptr /* *uint
 	return _l
 }
 
-type t119off_t = int64
+type t117off_t = int64
 
+// S__locale_struct is defined at libc.h:10:1
 type s143__locale_struct = struct{ Fcat [6]uintptr }
 
 // linking vsprintf.o
@@ -60328,8 +57606,6 @@ type s143__locale_struct = struct{ Fcat [6]uintptr }
 func Xvsprintf(tls TLS, _s uintptr /* *int8 */, _fmt uintptr /* *int8 */, _ap uintptr) (r int32) {
 	return Xvsnprintf(tls, _s, uint64(0x7fffffff), _fmt, _ap)
 }
-
-type t290size_t = uint64
 
 // linking vsscanf.o
 
@@ -60351,6 +57627,7 @@ func Xvsscanf(tls TLS, _s uintptr /* *int8 */, _fmt uintptr /* *int8 */, _ap uin
 	return Xvfscanf(tls, _f, _fmt, _ap)
 }
 
+// S_IO_FILE is defined at stdio_impl.h:22:1
 type s111_IO_FILE = struct {
 	Fflags        uint32
 	Frpos         uintptr // *uint8
@@ -60387,6 +57664,7 @@ type s111_IO_FILE = struct {
 	Flocale       uintptr // *S__locale_struct
 }
 
+// NFILE is defined at alltypes.h:356:9
 type t9FILE = s111_IO_FILE
 
 // xdo_read is defined at vsscanf.c:4:15
@@ -60394,10 +57672,11 @@ func xdo_read(tls TLS, _f uintptr /* *TFILE = S_IO_FILE */, _buf uintptr /* *uin
 	return X__string_read(tls, _f, _buf, _len)
 }
 
-type t291size_t = uint64
+type t212size_t = uint64
 
-type t120off_t = int64
+type t118off_t = int64
 
+// S__locale_struct is defined at libc.h:10:1
 type s144__locale_struct = struct{ Fcat [6]uintptr }
 
 // linking vswprintf.o
@@ -60442,13 +57721,13 @@ func Xvswprintf(tls TLS, _s uintptr /* *Twchar_t = int32 */, _n uint64, _fmt uin
 	return _r
 }
 
-type t292size_t = uint64
-
+// Scookie is defined at vswprintf.c:7:1
 type s4cookie = struct {
 	Fws uintptr // *Twchar_t = int32
 	Fl  uint64
 }
 
+// S_IO_FILE is defined at stdio_impl.h:22:1
 type s112_IO_FILE = struct {
 	Fflags        uint32
 	Frpos         uintptr // *uint8
@@ -60485,6 +57764,9 @@ type s112_IO_FILE = struct {
 	Flocale       uintptr // *S__locale_struct
 }
 
+type t213size_t = uint64
+
+// NFILE is defined at alltypes.h:356:9
 type t10FILE = s112_IO_FILE
 
 func set1025(p *int32, v int32) int32 { *p = v; return v }
@@ -60524,11 +57806,12 @@ func xsw_write(tls TLS, _f uintptr /* *TFILE = S_IO_FILE */, _s uintptr /* *uint
 	return _l0
 }
 
-type t121off_t = int64
+type t119off_t = int64
 
+// S__locale_struct is defined at libc.h:10:1
 type s145__locale_struct = struct{ Fcat [6]uintptr }
 
-type t33wchar_t = int32
+type t31wchar_t = int32
 
 // linking vswscanf.o
 
@@ -60554,6 +57837,7 @@ func Xvswscanf(tls TLS, _s uintptr /* *Twchar_t = int32 */, _fmt uintptr /* *Twc
 	return Xvfwscanf(tls, _f, _fmt, _ap)
 }
 
+// S_IO_FILE is defined at stdio_impl.h:22:1
 type s113_IO_FILE = struct {
 	Fflags        uint32
 	Frpos         uintptr // *uint8
@@ -60590,9 +57874,10 @@ type s113_IO_FILE = struct {
 	Flocale       uintptr // *S__locale_struct
 }
 
+// NFILE is defined at alltypes.h:356:9
 type t11FILE = s113_IO_FILE
 
-type t293size_t = uint64
+type t214size_t = uint64
 
 func set1028(p *uintptr, v uintptr) uintptr { *p = v; return v }
 
@@ -60625,8 +57910,9 @@ func xwstring_read(tls TLS, _f uintptr /* *TFILE = S_IO_FILE */, _buf uintptr /*
 	return uint64(1)
 }
 
-type t122off_t = int64
+type t120off_t = int64
 
+// S__locale_struct is defined at libc.h:10:1
 type s146__locale_struct = struct{ Fcat [6]uintptr }
 
 // linking vwprintf.o
@@ -60826,7 +58112,7 @@ func Xbsearch(tls TLS, _key uintptr /* *void */, _base uintptr /* *void */, _nel
 	return null
 }
 
-type t294size_t = uint64
+type t215size_t = uint64
 
 // linking div.o
 
@@ -60849,6 +58135,7 @@ func Xdiv(tls TLS, _num int32, _den int32) (r struct {
 	}
 }
 
+// Ndiv_t is defined at stdlib.h:62:9
 type Tdiv_t = struct {
 	Fquot int32
 	Frem  int32
@@ -60919,8 +58206,6 @@ func Xfcvt(tls TLS, _x float64, _n int32, _dp uintptr /* *int32 */, _sign uintpt
 	return Xecvt(tls, _x, _n-_lz, _dp, _sign)
 }
 
-type t295size_t = uint64
-
 // linking gcvt.o
 
 // Xgcvt is defined at gcvt.c:5:6
@@ -60964,6 +58249,7 @@ func Ximaxdiv(tls TLS, _num int64, _den int64) (r struct {
 
 type t1intmax_t = int64
 
+// Nimaxdiv_t is defined at inttypes.h:14:9
 type Timaxdiv_t = struct {
 	Fquot int64
 	Frem  int64
@@ -61000,6 +58286,7 @@ func Xldiv(tls TLS, _num int64, _den int64) (r struct {
 	}
 }
 
+// Nldiv_t is defined at stdlib.h:63:9
 type Tldiv_t = struct {
 	Fquot int64
 	Frem  int64
@@ -61036,6 +58323,7 @@ func Xlldiv(tls TLS, _num int64, _den int64) (r struct {
 	}
 }
 
+// Nlldiv_t is defined at stdlib.h:64:9
 type Tlldiv_t = struct {
 	Fquot int64
 	Frem  int64
@@ -61123,7 +58411,7 @@ func Xqsort(tls TLS, _base uintptr /* *void */, _nel uint64, _width uint64, _cmp
 	}
 }
 
-type t296size_t = uint64
+type t216size_t = uint64
 
 func fn1038(p uintptr) func(TLS, uintptr, uintptr) int32 {
 	return *(*func(TLS, uintptr, uintptr) int32)(unsafe.Pointer(&p))
@@ -61132,7 +58420,7 @@ func fn1038(p uintptr) func(TLS, uintptr, uintptr) int32 {
 func postinc1039(p *int32) int32 { r := *p; *p += 1; return r }
 
 // xsift is defined at qsort.c:91:13
-func xsift(tls TLS, _head uintptr /* *uint8 */, _width uint64, _cmp uintptr /* Tcmpfun = *func(TLS, uintptr, uintptr) int32 */, _pshift int32, _lp uintptr /* uintptr */) {
+func xsift(tls TLS, _head uintptr /* *uint8 */, _width uint64, _cmp uintptr /* Tcmpfun = *func(TLS, uintptr, uintptr) int32 */, _pshift int32, _lp uintptr /* *Tsize_t = uint64 */) {
 	esc := MustMalloc(904)
 	var (
 		_rt uintptr // *uint8
@@ -61163,7 +58451,7 @@ func xsift(tls TLS, _head uintptr /* *uint8 */, _width uint64, _cmp uintptr /* T
 }
 
 // xshr is defined at qsort.c:79:20
-func xshr(tls TLS, _p uintptr /* [2]uint64 */, _n int32) {
+func xshr(tls TLS, _p uintptr /* *Tsize_t = uint64 */, _n int32) {
 	if uint64(_n) >= uint64(64) {
 		_n = int32(uint64(_n) - uint64(64))
 		*(*uint64)(unsafe.Pointer(_p)) = *(*uint64)(unsafe.Pointer(_p + 8))
@@ -61184,7 +58472,7 @@ func xshr(tls TLS, _p uintptr /* [2]uint64 */, _n int32) {
 }
 
 // xtrinkle is defined at qsort.c:118:13
-func xtrinkle(tls TLS, _head uintptr /* *uint8 */, _width uint64, _cmp uintptr /* Tcmpfun = *func(TLS, uintptr, uintptr) int32 */, _pp uintptr /* [2]uint64 */, _pshift int32, _trusty int32, _lp uintptr /* uintptr */) {
+func xtrinkle(tls TLS, _head uintptr /* *uint8 */, _width uint64, _cmp uintptr /* Tcmpfun = *func(TLS, uintptr, uintptr) int32 */, _pp uintptr /* *Tsize_t = uint64 */, _pshift int32, _trusty int32, _lp uintptr /* *Tsize_t = uint64 */) {
 	esc := MustMalloc(920)
 	var (
 		_stepson uintptr    // *uint8
@@ -61226,7 +58514,7 @@ func xtrinkle(tls TLS, _head uintptr /* *uint8 */, _width uint64, _cmp uintptr /
 }
 
 // xshl is defined at qsort.c:67:20
-func xshl(tls TLS, _p uintptr /* [2]uint64 */, _n int32) {
+func xshl(tls TLS, _p uintptr /* *Tsize_t = uint64 */, _n int32) {
 	if uint64(_n) >= uint64(64) {
 		_n = int32(uint64(_n) - uint64(64))
 		*(*uint64)(unsafe.Pointer(_p + 8)) = *(*uint64)(unsafe.Pointer(_p))
@@ -61249,7 +58537,7 @@ func xshl(tls TLS, _p uintptr /* [2]uint64 */, _n int32) {
 func set1040(p *int32, v int32) int32 { *p = v; return v }
 
 // xpntz is defined at qsort.c:36:19
-func xpntz(tls TLS, _p uintptr /* [2]uint64 */) (r int32) {
+func xpntz(tls TLS, _p uintptr /* *Tsize_t = uint64 */) (r int32) {
 	var _r int32
 
 	_r = x2a_ctz_l(tls, *(*uint64)(unsafe.Pointer(_p))-uint64(1))
@@ -61260,7 +58548,7 @@ func xpntz(tls TLS, _p uintptr /* [2]uint64 */) (r int32) {
 }
 
 // xcycle is defined at qsort.c:44:13
-func xcycle(tls TLS, _width uint64, _ar uintptr /* uintptr */, _n int32) {
+func xcycle(tls TLS, _width uint64, _ar uintptr /* **uint8 */, _n int32) {
 	esc := MustMalloc(256)
 	var (
 		_tmp = esc // *[256]uint8
@@ -61310,7 +58598,7 @@ func x4a_ctz_64(tls TLS, _x uint64) (r int32) {
 // x9debruijn64 [64]int8, escapes: true, atomic.h:274:20
 var x1041debruijn64 = ds + 47496
 
-type t136uint32_t = uint32
+type t135uint32_t = uint32
 
 type t76uint64_t = uint64
 
@@ -61367,6 +58655,7 @@ func xstrtox(tls TLS, _s uintptr /* *int8 */, _p uintptr /* **int8 */, _prec int
 	return _y
 }
 
+// S_IO_FILE is defined at stdio_impl.h:22:1
 type s114_IO_FILE = struct {
 	Fflags        uint32
 	Frpos         uintptr // *uint8
@@ -61403,12 +58692,14 @@ type s114_IO_FILE = struct {
 	Flocale       uintptr // *S__locale_struct
 }
 
-type t123off_t = int64
+type t121off_t = int64
 
+// NFILE is defined at alltypes.h:356:9
 type t12FILE = s114_IO_FILE
 
-type t297size_t = uint64
+type t217size_t = uint64
 
+// S__locale_struct is defined at libc.h:10:1
 type s147__locale_struct = struct{ Fcat [6]uintptr }
 
 // linking strtol.o
@@ -61471,10 +58762,7 @@ func x1strtox(tls TLS, _s uintptr /* *int8 */, _p uintptr /* **int8 */, _base in
 	return _y
 }
 
-type t2intmax_t = int64
-
-type t2uintmax_t = uint64
-
+// S_IO_FILE is defined at stdio_impl.h:22:1
 type s115_IO_FILE = struct {
 	Fflags        uint32
 	Frpos         uintptr // *uint8
@@ -61511,10 +58799,11 @@ type s115_IO_FILE = struct {
 	Flocale       uintptr // *S__locale_struct
 }
 
-type t298size_t = uint64
+type t218size_t = uint64
 
-type t124off_t = int64
+type t122off_t = int64
 
+// S__locale_struct is defined at libc.h:10:1
 type s148__locale_struct = struct{ Fcat [6]uintptr }
 
 // linking wcstod.o
@@ -61576,6 +58865,7 @@ func xwcstox(tls TLS, _s uintptr /* *Twchar_t = int32 */, _p uintptr /* **Twchar
 	return _y
 }
 
+// S_IO_FILE is defined at stdio_impl.h:22:1
 type s116_IO_FILE = struct {
 	Fflags        uint32
 	Frpos         uintptr // *uint8
@@ -61612,7 +58902,7 @@ type s116_IO_FILE = struct {
 	Flocale       uintptr // *S__locale_struct
 }
 
-type t299size_t = uint64
+type t219size_t = uint64
 
 func postinc1046(p *uintptr) uintptr { r := *p; *p += 1; return r }
 
@@ -61643,13 +58933,12 @@ func x1do_read(tls TLS, _f uintptr /* *TFILE = S_IO_FILE */, _buf uintptr /* *ui
 	return uint64(0)
 }
 
-type t34wchar_t = int32
+type t32wchar_t = int32
 
-type t125off_t = int64
+type t123off_t = int64
 
+// S__locale_struct is defined at libc.h:10:1
 type s149__locale_struct = struct{ Fcat [6]uintptr }
-
-type t30wint_t = uint32
 
 // linking wcstol.o
 
@@ -61725,10 +59014,7 @@ func x1wcstox(tls TLS, _s uintptr /* *Twchar_t = int32 */, _p uintptr /* **Twcha
 	return _y
 }
 
-type t3intmax_t = int64
-
-type t3uintmax_t = uint64
-
+// S_IO_FILE is defined at stdio_impl.h:22:1
 type s117_IO_FILE = struct {
 	Fflags        uint32
 	Frpos         uintptr // *uint8
@@ -61765,7 +59051,7 @@ type s117_IO_FILE = struct {
 	Flocale       uintptr // *S__locale_struct
 }
 
-type t300size_t = uint64
+type t220size_t = uint64
 
 func postinc1049(p *uintptr) uintptr { r := *p; *p += 1; return r }
 
@@ -61796,13 +59082,12 @@ func x2do_read(tls TLS, _f uintptr /* *TFILE = S_IO_FILE */, _buf uintptr /* *ui
 	return uint64(0)
 }
 
-type t35wchar_t = int32
+type t33wchar_t = int32
 
-type t126off_t = int64
+type t124off_t = int64
 
+// S__locale_struct is defined at libc.h:10:1
 type s150__locale_struct = struct{ Fcat [6]uintptr }
-
-type t31wint_t = uint32
 
 // linking bcmp.o
 
@@ -61811,7 +59096,7 @@ func Xbcmp(tls TLS, _s1 uintptr /* *void */, _s2 uintptr /* *void */, _n uint64)
 	return Xmemcmp(tls, _s1, _s2, _n)
 }
 
-type t301size_t = uint64
+type t221size_t = uint64
 
 // linking bcopy.o
 
@@ -61820,7 +59105,7 @@ func Xbcopy(tls TLS, _s1 uintptr /* *void */, _s2 uintptr /* *void */, _n uint64
 	Xmemmove(tls, _s2, _s1, _n)
 }
 
-type t302size_t = uint64
+type t222size_t = uint64
 
 // linking bzero.o
 
@@ -61829,7 +59114,7 @@ func Xbzero(tls TLS, _s uintptr /* *void */, _n uint64) {
 	Xmemset(tls, _s, int32(0), _n)
 }
 
-type t303size_t = uint64
+type t223size_t = uint64
 
 // linking explicit_bzero.o
 
@@ -61837,8 +59122,6 @@ type t303size_t = uint64
 func Xexplicit_bzero(tls TLS, _d uintptr /* *void */, _n uint64) {
 	panic(`TODO`)
 }
-
-type t304size_t = uint64
 
 // linking index.o
 
@@ -61899,7 +59182,7 @@ ltail:
 	return null
 }
 
-type t305size_t = uint64
+type t224size_t = uint64
 
 type t47uintptr_t = uint64
 
@@ -61933,7 +59216,7 @@ func Xmemchr(tls TLS, _src uintptr /* *void */, _c int32, _n uint64) (r uintptr 
 	return null
 }
 
-type t306size_t = uint64
+type t225size_t = uint64
 
 type t48uintptr_t = uint64
 
@@ -61957,8 +59240,6 @@ func Xmemcmp(tls TLS, _vl uintptr /* *void */, _vr uintptr /* *void */, _n uint6
 	return int32(0)
 }
 
-type t307size_t = uint64
-
 // linking memcpy.o
 
 func postinc1056(p *uintptr) uintptr { r := *p; *p += 1; return r }
@@ -61976,8 +59257,6 @@ func Xmemcpy(tls TLS, _dest uintptr /* *void */, _src uintptr /* *void */, _n ui
 	}
 	return _dest
 }
-
-type t308size_t = uint64
 
 // linking memmem.o
 
@@ -62015,7 +59294,7 @@ func Xmemmem(tls TLS, _h0 uintptr /* *void */, _k uint64, _n0 uintptr /* *void *
 	return xtwoway_memmem(tls, _h, _h+uintptr(_k), _n, _l)
 }
 
-type t309size_t = uint64
+type t226size_t = uint64
 
 func sub1057(p *uint64, v int32) (r uint64) { r = *p - uint64(v); *p = r; return r }
 
@@ -62223,7 +59502,7 @@ func xtwoway_memmem(tls TLS, _h uintptr /* *uint8 */, _z uintptr /* *uint8 */, _
 
 type t18uint16_t = uint16
 
-type t137uint32_t = uint32
+type t136uint32_t = uint32
 
 // linking memmove.o
 
@@ -62281,7 +59560,7 @@ func Xmemmove(tls TLS, _dest uintptr /* *void */, _src uintptr /* *void */, _n u
 	return _dest
 }
 
-type t310size_t = uint64
+type t227size_t = uint64
 
 type t49uintptr_t = uint64
 
@@ -62292,7 +59571,7 @@ func Xmempcpy(tls TLS, _dest uintptr /* *void */, _src uintptr /* *void */, _n u
 	return Xmemcpy(tls, _dest, _src, _n) + uintptr(_n)
 }
 
-type t311size_t = uint64
+type t228size_t = uint64
 
 // linking memrchr.o
 
@@ -62311,8 +59590,6 @@ func X__memrchr(tls TLS, _m uintptr /* *void */, _c int32, _n uint64) (r uintptr
 	}
 	return null
 }
-
-type t312size_t = uint64
 
 // linking memset.o
 
@@ -62355,7 +59632,7 @@ func Xmemset(tls TLS, _dest uintptr /* *void */, _c int32, _n uint64) (r uintptr
 	return _dest
 }
 
-type t313size_t = uint64
+type t229size_t = uint64
 
 type t50uintptr_t = uint64
 
@@ -62400,7 +59677,7 @@ func X__stpcpy(tls TLS, _d uintptr /* *int8 */, _s uintptr /* *int8 */) (r uintp
 
 type t51uintptr_t = uint64
 
-type t314size_t = uint64
+type t230size_t = uint64
 
 // linking stpncpy.o
 
@@ -62445,9 +59722,9 @@ ltail:
 	return _d
 }
 
-type t315size_t = uint64
-
 type t52uintptr_t = uint64
+
+type t231size_t = uint64
 
 // linking strcasecmp.o
 
@@ -62471,6 +59748,7 @@ func X__strcasecmp_l(tls TLS, _l uintptr /* *int8 */, _r uintptr /* *int8 */, _l
 	return Xstrcasecmp(tls, _l, _r)
 }
 
+// S__locale_struct is defined at libc.h:10:1
 type s151__locale_struct = struct{ Fcat [6]uintptr }
 
 // linking strcasestr.o
@@ -62488,7 +59766,7 @@ func Xstrcasestr(tls TLS, _h uintptr /* *int8 */, _n uintptr /* *int8 */) (r uin
 	return null
 }
 
-type t316size_t = uint64
+type t232size_t = uint64
 
 // linking strcat.o
 
@@ -62497,8 +59775,6 @@ func Xstrcat(tls TLS, _dest uintptr /* *int8 */, _src uintptr /* *int8 */) (r ui
 	Xstrcpy(tls, _dest+uintptr(Xstrlen(tls, _dest)), _src)
 	return _dest
 }
-
-type t317size_t = uint64
 
 // linking strchr.o
 
@@ -62538,7 +59814,7 @@ func X__strchrnul(tls TLS, _s uintptr /* *int8 */, _c int32) (r uintptr /* *int8
 	return _s
 }
 
-type t318size_t = uint64
+type t233size_t = uint64
 
 type t53uintptr_t = uint64
 
@@ -62585,7 +59861,7 @@ func Xstrcspn(tls TLS, _s uintptr /* *int8 */, _c uintptr /* *int8 */) (r uint64
 	return uint64(int64(_s - _a))
 }
 
-type t319size_t = uint64
+type t234size_t = uint64
 
 // linking strdup.o
 
@@ -62603,7 +59879,7 @@ func X__strdup(tls TLS, _s uintptr /* *int8 */) (r uintptr /* *int8 */) {
 	return Xmemcpy(tls, _d, _s, _l+uint64(1))
 }
 
-type t320size_t = uint64
+type t235size_t = uint64
 
 // linking strerror_r.o
 
@@ -62626,7 +59902,7 @@ func Xstrerror_r(tls TLS, _err int32, _buf uintptr /* *int8 */, _buflen uint64) 
 	return 0
 }
 
-type t321size_t = uint64
+type t236size_t = uint64
 
 // linking strlcat.o
 
@@ -62641,7 +59917,7 @@ func Xstrlcat(tls TLS, _d uintptr /* *int8 */, _s uintptr /* *int8 */, _n uint64
 	return _l + Xstrlcpy(tls, _d+uintptr(_l), _s, _n-_l)
 }
 
-type t322size_t = uint64
+type t237size_t = uint64
 
 // linking strlcpy.o
 
@@ -62689,9 +59965,9 @@ lfinish:
 	return uint64(int64(_d-_d0)) + Xstrlen(tls, _s)
 }
 
-type t323size_t = uint64
-
 type t54uintptr_t = uint64
+
+type t238size_t = uint64
 
 // linking strlen.o
 
@@ -62714,9 +59990,9 @@ func Xstrlen(tls TLS, _s uintptr /* *int8 */) (r uint64) {
 	return uint64(int64(_s - _a))
 }
 
-type t324size_t = uint64
-
 type t55uintptr_t = uint64
+
+type t239size_t = uint64
 
 // linking strncasecmp.o
 
@@ -62743,8 +60019,9 @@ func X__strncasecmp_l(tls TLS, _l uintptr /* *int8 */, _r uintptr /* *int8 */, _
 	return Xstrncasecmp(tls, _l, _r, _n)
 }
 
-type t325size_t = uint64
+type t240size_t = uint64
 
+// S__locale_struct is defined at libc.h:10:1
 type s152__locale_struct = struct{ Fcat [6]uintptr }
 
 // linking strncat.o
@@ -62764,8 +60041,6 @@ func Xstrncat(tls TLS, _d uintptr /* *int8 */, _s uintptr /* *int8 */, _n uint64
 	*(*int8)(unsafe.Pointer(postinc1081(&_d))) = int8(0)
 	return _a
 }
-
-type t326size_t = uint64
 
 // linking strncmp.o
 
@@ -62787,7 +60062,7 @@ func Xstrncmp(tls TLS, __l uintptr /* *int8 */, __r uintptr /* *int8 */, _n uint
 	return int32(*(*uint8)(unsafe.Pointer(_l))) - int32(*(*uint8)(unsafe.Pointer(_r)))
 }
 
-type t327size_t = uint64
+type t241size_t = uint64
 
 // linking strncpy.o
 
@@ -62797,7 +60072,7 @@ func Xstrncpy(tls TLS, _d uintptr /* *int8 */, _s uintptr /* *int8 */, _n uint64
 	return _d
 }
 
-type t328size_t = uint64
+type t242size_t = uint64
 
 // linking strndup.o
 
@@ -62817,7 +60092,7 @@ func Xstrndup(tls TLS, _s uintptr /* *int8 */, _n uint64) (r uintptr /* *int8 */
 	return _d
 }
 
-type t329size_t = uint64
+type t243size_t = uint64
 
 // linking strnlen.o
 
@@ -62832,7 +60107,7 @@ func Xstrnlen(tls TLS, _s uintptr /* *int8 */, _n uint64) (r uint64) {
 	return _n
 }
 
-type t330size_t = uint64
+type t244size_t = uint64
 
 // linking strpbrk.o
 
@@ -62845,8 +60120,6 @@ func Xstrpbrk(tls TLS, _s uintptr /* *int8 */, _b uintptr /* *int8 */) (r uintpt
 	return null
 }
 
-type t331size_t = uint64
-
 // linking strrchr.o
 
 // Xstrrchr is defined at strrchr.c:5:6
@@ -62854,7 +60127,7 @@ func Xstrrchr(tls TLS, _s uintptr /* *int8 */, _c int32) (r uintptr /* *int8 */)
 	return X__memrchr(tls, _s, _c, Xstrlen(tls, _s)+uint64(1))
 }
 
-type t332size_t = uint64
+type t245size_t = uint64
 
 // linking strsep.o
 
@@ -62879,8 +60152,6 @@ func Xstrsep(tls TLS, _str uintptr /* **int8 */, _sep uintptr /* *int8 */) (r ui
 	*(*uintptr)(unsafe.Pointer(_str)) = _end
 	return _s
 }
-
-type t333size_t = uint64
 
 // linking strsignal.o
 
@@ -62934,7 +60205,7 @@ func Xstrspn(tls TLS, _s uintptr /* *int8 */, _c uintptr /* *int8 */) (r uint64)
 	return uint64(int64(_s - _a))
 }
 
-type t334size_t = uint64
+type t246size_t = uint64
 
 // linking strstr.o
 
@@ -63166,9 +60437,9 @@ func xtwoway_strstr(tls TLS, _h uintptr /* *uint8 */, _n uintptr /* *uint8 */) (
 
 type t19uint16_t = uint16
 
-type t138uint32_t = uint32
+type t137uint32_t = uint32
 
-type t335size_t = uint64
+type t247size_t = uint64
 
 // linking strtok.o
 
@@ -63197,8 +60468,6 @@ func Xstrtok(tls TLS, _s uintptr /* *int8 */, _sep uintptr /* *int8 */) (r uintp
 // x1p *int8, escapes: false, strtok.c:5:14
 var x1091p uintptr
 
-type t336size_t = uint64
-
 // linking strtok_r.o
 
 func set1092(p *uintptr, v uintptr) uintptr { *p = v; return v }
@@ -63222,8 +60491,6 @@ func Xstrtok_r(tls TLS, _s uintptr /* *int8 */, _sep uintptr /* *int8 */, _p uin
 	}
 	return _s
 }
-
-type t337size_t = uint64
 
 // linking strverscmp.o
 
@@ -63270,7 +60537,7 @@ func Xstrverscmp(tls TLS, _l0 uintptr /* *int8 */, _r0 uintptr /* *int8 */) (r i
 	return int32(*(*uint8)(unsafe.Pointer(_l + uintptr(_i)))) - int32(*(*uint8)(unsafe.Pointer(_r + uintptr(_i))))
 }
 
-type t338size_t = uint64
+type t248size_t = uint64
 
 // linking swab.o
 
@@ -63290,7 +60557,7 @@ func Xswab(tls TLS, __src uintptr /* *void */, __dest uintptr /* *void */, _n in
 	}
 }
 
-type t44ssize_t = int64
+type t25ssize_t = int64
 
 // linking wcpcpy.o
 
@@ -63299,8 +60566,6 @@ func Xwcpcpy(tls TLS, _d uintptr /* *Twchar_t = int32 */, _s uintptr /* *Twchar_
 	return Xwcscpy(tls, _d, _s) + 4*uintptr(Xwcslen(tls, _s))
 }
 
-type t339size_t = uint64
-
 // linking wcpncpy.o
 
 // Xwcpncpy is defined at wcpncpy.c:3:9
@@ -63308,7 +60573,7 @@ func Xwcpncpy(tls TLS, _d uintptr /* *Twchar_t = int32 */, _s uintptr /* *Twchar
 	return Xwcsncpy(tls, _d, _s, _n) + 4*uintptr(Xwcsnlen(tls, _s, _n))
 }
 
-type t340size_t = uint64
+type t249size_t = uint64
 
 // linking wcscasecmp.o
 
@@ -63316,8 +60581,6 @@ type t340size_t = uint64
 func Xwcscasecmp(tls TLS, _l uintptr /* *Twchar_t = int32 */, _r uintptr /* *Twchar_t = int32 */) (r int32) {
 	return Xwcsncasecmp(tls, _l, _r, uint64(18446744073709551615))
 }
-
-type t341size_t = uint64
 
 // linking wcscasecmp_l.o
 
@@ -63336,8 +60599,6 @@ func Xwcscat(tls TLS, _dest uintptr /* *Twchar_t = int32 */, _src uintptr /* *Tw
 	return _dest
 }
 
-type t342size_t = uint64
-
 // linking wcschr.o
 
 // Xwcschr is defined at wcschr.c:3:9
@@ -63353,9 +60614,7 @@ func Xwcschr(tls TLS, _s uintptr /* *Twchar_t = int32 */, _c int32) (r uintptr /
 	return null
 }
 
-type t36wchar_t = int32
-
-type t343size_t = uint64
+type t34wchar_t = int32
 
 // linking wcscmp.o
 
@@ -63368,7 +60627,7 @@ func Xwcscmp(tls TLS, _l uintptr /* *Twchar_t = int32 */, _r uintptr /* *Twchar_
 	return *(*int32)(unsafe.Pointer(_l)) - *(*int32)(unsafe.Pointer(_r))
 }
 
-type t37wchar_t = int32
+type t35wchar_t = int32
 
 // linking wcscpy.o
 
@@ -63386,7 +60645,7 @@ func Xwcscpy(tls TLS, _d uintptr /* *Twchar_t = int32 */, _s uintptr /* *Twchar_
 	return _a
 }
 
-type t38wchar_t = int32
+type t36wchar_t = int32
 
 // linking wcscspn.o
 
@@ -63410,9 +60669,9 @@ func Xwcscspn(tls TLS, _s uintptr /* *Twchar_t = int32 */, _c uintptr /* *Twchar
 	return uint64(int64((_s - _a) / 4))
 }
 
-type t344size_t = uint64
+type t37wchar_t = int32
 
-type t39wchar_t = int32
+type t250size_t = uint64
 
 // linking wcsdup.o
 
@@ -63430,7 +60689,7 @@ func Xwcsdup(tls TLS, _s uintptr /* *Twchar_t = int32 */) (r uintptr /* *Twchar_
 	return Xwmemcpy(tls, _d, _s, _l+uint64(1))
 }
 
-type t345size_t = uint64
+type t251size_t = uint64
 
 // linking wcslen.o
 
@@ -63443,9 +60702,7 @@ func Xwcslen(tls TLS, _s uintptr /* *Twchar_t = int32 */) (r uint64) {
 	return uint64(int64((_s - _a) / 4))
 }
 
-type t346size_t = uint64
-
-type t40wchar_t = int32
+type t38wchar_t = int32
 
 // linking wcsncasecmp.o
 
@@ -63461,11 +60718,11 @@ func Xwcsncasecmp(tls TLS, _l uintptr /* *Twchar_t = int32 */, _r uintptr /* *Tw
 	return int32(Xtowlower(tls, uint32(*(*int32)(unsafe.Pointer(_l)))) - Xtowlower(tls, uint32(*(*int32)(unsafe.Pointer(_r)))))
 }
 
-type t347size_t = uint64
+type t39wchar_t = int32
 
-type t41wchar_t = int32
+type t25wint_t = uint32
 
-type t32wint_t = uint32
+type t252size_t = uint64
 
 // linking wcsncasecmp_l.o
 
@@ -63474,7 +60731,7 @@ func Xwcsncasecmp_l(tls TLS, _l uintptr /* *Twchar_t = int32 */, _r uintptr /* *
 	return Xwcsncasecmp(tls, _l, _r, _n)
 }
 
-type t348size_t = uint64
+type t253size_t = uint64
 
 type s154__locale_struct struct{ uintptr }
 
@@ -63496,9 +60753,7 @@ func Xwcsncat(tls TLS, _d uintptr /* *Twchar_t = int32 */, _s uintptr /* *Twchar
 	return _a
 }
 
-type t349size_t = uint64
-
-type t42wchar_t = int32
+type t40wchar_t = int32
 
 // linking wcsncmp.o
 
@@ -63514,9 +60769,7 @@ func Xwcsncmp(tls TLS, _l uintptr /* *Twchar_t = int32 */, _r uintptr /* *Twchar
 	return int32(0)
 }
 
-type t350size_t = uint64
-
-type t43wchar_t = int32
+type t41wchar_t = int32
 
 // linking wcsncpy.o
 
@@ -63535,9 +60788,9 @@ func Xwcsncpy(tls TLS, _d uintptr /* *Twchar_t = int32 */, _s uintptr /* *Twchar
 	return _a
 }
 
-type t351size_t = uint64
+type t42wchar_t = int32
 
-type t44wchar_t = int32
+type t254size_t = uint64
 
 // linking wcsnlen.o
 
@@ -63552,9 +60805,7 @@ func Xwcsnlen(tls TLS, _s uintptr /* *Twchar_t = int32 */, _n uint64) (r uint64)
 	return _n
 }
 
-type t352size_t = uint64
-
-type t45wchar_t = int32
+type t255size_t = uint64
 
 // linking wcspbrk.o
 
@@ -63567,9 +60818,7 @@ func Xwcspbrk(tls TLS, _s uintptr /* *Twchar_t = int32 */, _b uintptr /* *Twchar
 	return null
 }
 
-type t46wchar_t = int32
-
-type t353size_t = uint64
+type t43wchar_t = int32
 
 // linking wcsrchr.o
 
@@ -63585,9 +60834,7 @@ func Xwcsrchr(tls TLS, _s uintptr /* *Twchar_t = int32 */, _c int32) (r uintptr 
 	return null
 }
 
-type t47wchar_t = int32
-
-type t354size_t = uint64
+type t44wchar_t = int32
 
 // linking wcsspn.o
 
@@ -63600,9 +60847,7 @@ func Xwcsspn(tls TLS, _s uintptr /* *Twchar_t = int32 */, _c uintptr /* *Twchar_
 	return uint64(int64((_s - _a) / 4))
 }
 
-type t355size_t = uint64
-
-type t48wchar_t = int32
+type t45wchar_t = int32
 
 // linking wcsstr.o
 
@@ -63624,7 +60869,7 @@ func Xwcsstr(tls TLS, _h uintptr /* *Twchar_t = int32 */, _n uintptr /* *Twchar_
 	return xtwoway_wcsstr(tls, _h, _n)
 }
 
-type t49wchar_t = int32
+type t46wchar_t = int32
 
 func set1103(p *uint64, v uint64) uint64 { *p = v; return v }
 
@@ -63747,7 +60992,7 @@ func xtwoway_wcsstr(tls TLS, _h uintptr /* *Twchar_t = int32 */, _n uintptr /* *
 	return r
 }
 
-type t356size_t = uint64
+type t256size_t = uint64
 
 // linking wcstok.o
 
@@ -63773,9 +61018,7 @@ func Xwcstok(tls TLS, _s uintptr /* *Twchar_t = int32 */, _sep uintptr /* *Twcha
 	return _s
 }
 
-type t50wchar_t = int32
-
-type t357size_t = uint64
+type t47wchar_t = int32
 
 // linking wcswcs.o
 
@@ -63798,9 +61041,7 @@ func Xwmemchr(tls TLS, _s uintptr /* *Twchar_t = int32 */, _c int32, _n uint64) 
 	return null
 }
 
-type t51wchar_t = int32
-
-type t358size_t = uint64
+type t48wchar_t = int32
 
 // linking wmemcmp.o
 
@@ -63816,9 +61057,7 @@ func Xwmemcmp(tls TLS, _l uintptr /* *Twchar_t = int32 */, _r uintptr /* *Twchar
 	return int32(0)
 }
 
-type t359size_t = uint64
-
-type t52wchar_t = int32
+type t49wchar_t = int32
 
 // linking wmemcpy.o
 
@@ -63837,9 +61076,7 @@ func Xwmemcpy(tls TLS, _d uintptr /* *Twchar_t = int32 */, _s uintptr /* *Twchar
 	return _a
 }
 
-type t360size_t = uint64
-
-type t53wchar_t = int32
+type t50wchar_t = int32
 
 // linking wmemmove.o
 
@@ -63864,9 +61101,9 @@ func Xwmemmove(tls TLS, _d uintptr /* *Twchar_t = int32 */, _s uintptr /* *Twcha
 	return _d0
 }
 
-type t361size_t = uint64
+type t257size_t = uint64
 
-type t54wchar_t = int32
+type t51wchar_t = int32
 
 // linking wmemset.o
 
@@ -63885,9 +61122,7 @@ func Xwmemset(tls TLS, _d uintptr /* *Twchar_t = int32 */, _c int32, _n uint64) 
 	return _ret
 }
 
-type t55wchar_t = int32
-
-type t362size_t = uint64
+type t52wchar_t = int32
 
 // linking __randname.o
 
@@ -63910,6 +61145,7 @@ func X__randname(tls TLS, _template uintptr /* *int8 */) (r uintptr /* *int8 */)
 	return _template
 }
 
+// Stimespec is defined at alltypes.h:270:1
 type s35timespec = struct {
 	Ftv_sec  int64
 	Ftv_nsec int64
@@ -63918,8 +61154,6 @@ type s35timespec = struct {
 type t56uintptr_t = uint64
 
 type t50time_t = int64
-
-type t4clockid_t = int32
 
 // linking mkdtemp.o
 
@@ -63947,9 +61181,7 @@ func Xmkdtemp(tls TLS, _template uintptr /* *int8 */) (r uintptr /* *int8 */) {
 	return null
 }
 
-type t363size_t = uint64
-
-type t35mode_t = uint32
+type t258size_t = uint64
 
 // linking mkostemp.o
 
@@ -63988,7 +61220,7 @@ func X__mkostemps(tls TLS, _template uintptr /* *int8 */, _len int32, _flags int
 	return -1
 }
 
-type t364size_t = uint64
+type t259size_t = uint64
 
 // linking mkstemp.o
 
@@ -64038,8 +61270,9 @@ func Xmktemp(tls TLS, _template uintptr /* *int8 */) (r uintptr /* *int8 */) {
 	return _template
 }
 
-type t365size_t = uint64
+type t260size_t = uint64
 
+// Sstat is defined at stat.h:4:1
 type s14stat = struct {
 	Fst_dev     uint64
 	Fst_ino     uint64
@@ -64058,24 +61291,25 @@ type s14stat = struct {
 	F__unused   [3]int64
 }
 
-type t18dev_t = uint64
+type t14dev_t = uint64
 
 type t20ino_t = uint64
 
 type t14nlink_t = uint64
 
-type t36mode_t = uint32
+type t26mode_t = uint32
 
-type t30uid_t = uint32
+type t29uid_t = uint32
 
-type t32gid_t = uint32
+type t31gid_t = uint32
 
-type t127off_t = int64
+type t125off_t = int64
 
 type t14blksize_t = int64
 
 type t14blkcnt_t = int64
 
+// Stimespec is defined at alltypes.h:270:1
 type s36timespec = struct {
 	Ftv_sec  int64
 	Ftv_nsec int64
@@ -64095,8 +61329,7 @@ func Xcfgetispeed(tls TLS, _tio uintptr /* *Stermios */) (r uint32) {
 	return Xcfgetospeed(tls, _tio)
 }
 
-type t3speed_t = uint32
-
+// Stermios is defined at termios.h:1:1
 type s3termios = struct {
 	Fc_iflag    uint32
 	Fc_oflag    uint32
@@ -64109,6 +61342,8 @@ type s3termios = struct {
 }
 
 type t3tcflag_t = uint32
+
+type t3speed_t = uint32
 
 type t3cc_t = uint8
 
@@ -64140,6 +61375,7 @@ func Xcfmakeraw(tls TLS, _t uintptr /* *Stermios */) {
 	*(*uint8)(unsafe.Pointer((_t + 17) + 5)) = uint8(0)
 }
 
+// Stermios is defined at termios.h:1:1
 type s4termios = struct {
 	Fc_iflag    uint32
 	Fc_oflag    uint32
@@ -64184,8 +61420,7 @@ func Xcfsetispeed(tls TLS, _tio uintptr /* *Stermios */, _speed uint32) (r int32
 	return int32(0)
 }
 
-type t5speed_t = uint32
-
+// Stermios is defined at termios.h:1:1
 type s5termios = struct {
 	Fc_iflag    uint32
 	Fc_oflag    uint32
@@ -64197,6 +61432,8 @@ type s5termios = struct {
 	F__c_ospeed uint32
 }
 
+type t5speed_t = uint32
+
 type t5tcflag_t = uint32
 
 type t5cc_t = uint8
@@ -64207,8 +61444,6 @@ type t5cc_t = uint8
 func Xtcdrain(tls TLS, _fd int32) (r int32) {
 	return int32(X__syscall_ret(tls, uint64(X__syscall_cp(tls, int64(16), int64(_fd), int64(21513), int64(1), int64(0), int64(0), int64(0)))))
 }
-
-type t27syscall_arg_t = int64
 
 // linking tcflow.o
 
@@ -64234,6 +61469,7 @@ func Xtcgetattr(tls TLS, _fd int32, _tio uintptr /* *Stermios */) (r int32) {
 	return 0
 }
 
+// Stermios is defined at termios.h:1:1
 type s6termios = struct {
 	Fc_iflag    uint32
 	Fc_oflag    uint32
@@ -64264,8 +61500,6 @@ func Xtcgetsid(tls TLS, _fd int32) (r int32) {
 	return *(*int32)(unsafe.Pointer(_sid))
 }
 
-type t47pid_t = int32
-
 // linking tcsendbreak.o
 
 // Xtcsendbreak is defined at tcsendbreak.c:4:5
@@ -64284,6 +61518,7 @@ func Xtcsetattr(tls TLS, _fd int32, _act int32, _tio uintptr /* *Stermios */) (r
 	return Xioctl(tls, _fd, int32(0x5402)+_act, _tio)
 }
 
+// Stermios is defined at termios.h:1:1
 type s7termios = struct {
 	Fc_iflag    uint32
 	Fc_oflag    uint32
@@ -64427,12 +61662,12 @@ func X__syscall_cp(tls TLS, _nr int64, _u int64, _v int64, _w int64, _x int64, _
 	return X__syscall_cp_c(tls, _nr, _u, _v, _w, _x, _y, _z)
 }
 
-type t28syscall_arg_t = int64
-
 // xsccp is defined at __syscall_cp.c:7:13
 func xsccp(tls TLS, _nr int64, _u int64, _v int64, _w int64, _x int64, _y int64, _z int64) (r int64) {
 	return X__syscall(tls, _nr, _u, _v, _w, _x, _y, _z)
 }
+
+type t3syscall_arg_t = int64
 
 // linking __timedwait.o
 
@@ -64495,16 +61730,15 @@ func X__timedwait(tls TLS, _addr uintptr /* *int32 */, _val int32, _clk int32, _
 	return _r
 }
 
-type t5clockid_t = int32
-
+// Stimespec is defined at alltypes.h:270:1
 type s37timespec = struct {
 	Ftv_sec  int64
 	Ftv_nsec int64
 }
 
-type t52time_t = int64
+type Tclockid_t = int32
 
-type t29syscall_arg_t = int64
+type t52time_t = int64
 
 // linking __tls_get_addr.o
 
@@ -64520,8 +61754,6 @@ func X__tls_get_addr(tls TLS, _v uintptr /* *Tsize_t = uint64 */) (r uintptr /* 
 func X__unmapself(tls TLS, _base uintptr /* *void */, _size uint64) {
 	panic(`TODO`)
 }
-
-type t366size_t = uint64
 
 // linking __wait.o
 
@@ -64636,6 +61868,7 @@ func Xcnd_init(tls TLS, _c uintptr /* *Tcnd_t = struct{F__u struct{F__...6]uintp
 	return 0
 }
 
+// Ncnd_t is defined at alltypes.h:86:9
 type Tcnd_t = struct {
 	F__u struct {
 		F__i  [0][12]int32
@@ -64678,6 +61911,7 @@ _4:
 	return r
 }
 
+// Stimespec is defined at alltypes.h:270:1
 type s38timespec = struct {
 	Ftv_sec  int64
 	Ftv_nsec int64
@@ -64699,8 +61933,6 @@ var X__default_stacksize = ds + 48264
 
 // X__default_guardsize Tsize_t = uint64, escapes: true, default_attr.c:4:8
 var X__default_guardsize = ds + 48272
-
-type t367size_t = uint64
 
 // linking lock_ptc.o
 
@@ -64777,6 +62009,7 @@ _4:
 	return r
 }
 
+// Stimespec is defined at alltypes.h:270:1
 type s39timespec = struct {
 	Ftv_sec  int64
 	Ftv_nsec int64
@@ -64882,6 +62115,7 @@ func Xpthread_atfork(tls TLS, _prepare uintptr /* *func(TLS) */, _parent uintptr
 	return 0
 }
 
+// Satfork_funcs is defined at pthread_atfork.c:4:8
 type Satfork_funcs = struct {
 	Fprepare uintptr // *func(TLS)
 	Fparent  uintptr // *func(TLS)
@@ -64895,8 +62129,6 @@ var x1funcs uintptr
 
 // xlock [1]int32, escapes: true, pthread_atfork.c:11:21
 var x6lock = bss + 8392
-
-type t368size_t = uint64
 
 // linking pthread_attr_destroy.o
 
@@ -65007,8 +62239,9 @@ func Xpthread_rwlockattr_getpshared(tls TLS, _a uintptr /* *Tpthread_rwlockattr_
 	return 0
 }
 
-type t369size_t = uint64
+type t261size_t = uint64
 
+// Ssched_param is defined at sched.h:19:1
 type s4sched_param = struct {
 	Fsched_priority        int32
 	Fsched_ss_low_priority int32
@@ -65017,8 +62250,9 @@ type s4sched_param = struct {
 	Fsched_ss_max_repl     int32
 }
 
-type t6clockid_t = int32
+type t1clockid_t = int32
 
+// Stimespec is defined at alltypes.h:270:1
 type s40timespec = struct {
 	Ftv_sec  int64
 	Ftv_nsec int64
@@ -65062,6 +62296,7 @@ func Xpthread_attr_init(tls TLS, _a uintptr /* *Tpthread_attr_t = struct{F__u s.
 	return 0
 }
 
+// Npthread_attr_t is defined at alltypes.h:66:9
 type t3pthread_attr_t = struct {
 	F__u struct {
 		F__i  [0][14]int32
@@ -65072,7 +62307,7 @@ type t3pthread_attr_t = struct {
 	}
 }
 
-type t370size_t = uint64
+type t262size_t = uint64
 
 // linking pthread_attr_setdetachstate.o
 
@@ -65096,7 +62331,7 @@ func Xpthread_attr_setguardsize(tls TLS, _a uintptr /* *Tpthread_attr_t = struct
 	return 0
 }
 
-type t371size_t = uint64
+type t263size_t = uint64
 
 // linking pthread_attr_setinheritsched.o
 
@@ -65139,6 +62374,7 @@ func Xpthread_attr_setinheritsched(tls TLS, _a uintptr /* *Tpthread_attr_t = str
 	return 0
 }
 
+// Sstart_sched_args is defined at pthread_impl.h:62:1
 type Sstart_sched_args = struct {
 	Fstart_arg uintptr // *void
 	Fstart_fn  uintptr // *func(TLS, uintptr) uintptr
@@ -65147,6 +62383,7 @@ type Sstart_sched_args = struct {
 	Ffutex     int32
 }
 
+// S__pthread is defined at pthread_impl.h:15:1
 type s38__pthread = struct {
 	Fself          uintptr // *S__pthread
 	Fdtv           uintptr // **void
@@ -65216,18 +62453,21 @@ func x3__wake(tls TLS, _addr uintptr /* *void */, _cnt int32, _priv int32) {
 	}
 }
 
+// Nsigset_t is defined at alltypes.h:374:9
 type t18sigset_t = struct{ F__bits [16]uint64 }
 
 type t57uintptr_t = uint64
 
-type t372size_t = uint64
+type t264size_t = uint64
 
+// S__ptcb is defined at pthread.h:200:1
 type s37__ptcb = struct {
 	F__f    uintptr // *func(TLS, uintptr)
 	F__x    uintptr // *void
 	F__next uintptr // *S__ptcb
 }
 
+// S__locale_struct is defined at libc.h:10:1
 type s155__locale_struct = struct{ Fcat [6]uintptr }
 
 // linking pthread_attr_setschedparam.o
@@ -65238,6 +62478,7 @@ func Xpthread_attr_setschedparam(tls TLS, _a uintptr /* *Tpthread_attr_t = struc
 	return 0
 }
 
+// Ssched_param is defined at sched.h:19:1
 type s5sched_param = struct {
 	Fsched_priority        int32
 	Fsched_ss_low_priority int32
@@ -65246,6 +62487,7 @@ type s5sched_param = struct {
 	Fsched_ss_max_repl     int32
 }
 
+// Stimespec is defined at alltypes.h:270:1
 type s41timespec = struct {
 	Ftv_sec  int64
 	Ftv_nsec int64
@@ -65294,7 +62536,7 @@ func Xpthread_attr_setstack(tls TLS, _a uintptr /* *Tpthread_attr_t = struct{F__
 	return 0
 }
 
-type t373size_t = uint64
+type t265size_t = uint64
 
 // linking pthread_attr_setstacksize.o
 
@@ -65308,7 +62550,7 @@ func Xpthread_attr_setstacksize(tls TLS, _a uintptr /* *Tpthread_attr_t = struct
 	return 0
 }
 
-type t374size_t = uint64
+type t266size_t = uint64
 
 // linking pthread_barrier_destroy.o
 
@@ -65414,6 +62656,7 @@ func Xpthread_barrier_wait(tls TLS, _b uintptr /* *Tpthread_barrier_t = struct{F
 	return 0
 }
 
+// Sinstance is defined at pthread_barrier_wait.c:52:1
 type Sinstance = struct {
 	Fcount    int32
 	Flast     int32
@@ -65554,6 +62797,7 @@ func Xpthread_barrierattr_init(tls TLS, _a uintptr /* *Tpthread_barrierattr_t = 
 	return 0
 }
 
+// Npthread_barrierattr_t is defined at alltypes.h:345:9
 type Tpthread_barrierattr_t = struct{ F__attr uint32 }
 
 // linking pthread_barrierattr_setpshared.o
@@ -65632,6 +62876,7 @@ func Xpthread_cancel(tls TLS, _t uintptr /* Tpthread_t = *S__pthread */) (r int3
 	return Xpthread_kill(tls, _t, int32(33))
 }
 
+// S__pthread is defined at pthread_impl.h:15:1
 type s39__pthread = struct {
 	Fself          uintptr // *S__pthread
 	Fdtv           uintptr // **void
@@ -65678,7 +62923,7 @@ func x33__pthread_self(tls TLS) (r uintptr /* *S__pthread */) {
 	return r
 }
 
-type t30syscall_arg_t = int64
+type t4syscall_arg_t = int64
 
 // x__syscall6 is defined at syscall_arch.h:61:22
 func x16__syscall6(tls TLS, _n int64, _a1 int64, _a2 int64, _a3 int64, _a4 int64, _a5 int64, _a6 int64) (r int64) {
@@ -65700,14 +62945,16 @@ func x4a_store(tls TLS, _p uintptr /* *int32 */, _x int32) {
 
 type t58uintptr_t = uint64
 
-type t375size_t = uint64
+type t267size_t = uint64
 
+// S__ptcb is defined at pthread.h:200:1
 type s38__ptcb = struct {
 	F__f    uintptr // *func(TLS, uintptr)
 	F__x    uintptr // *void
 	F__next uintptr // *S__ptcb
 }
 
+// S__locale_struct is defined at libc.h:10:1
 type s156__locale_struct = struct{ Fcat [6]uintptr }
 
 // linking pthread_cleanup_push.o
@@ -65730,9 +62977,10 @@ func X_pthread_cleanup_pop(tls TLS, _cb uintptr /* *S__ptcb */, _run int32) {
 }
 
 // xdummy is defined at pthread_cleanup_push.c:3:13
-func x14dummy(tls TLS, _cb uintptr /* *S__ptcb */) {
+func x13dummy(tls TLS, _cb uintptr /* *S__ptcb */) {
 }
 
+// S__ptcb is defined at pthread.h:200:1
 type s39__ptcb = struct {
 	F__f    uintptr // *func(TLS, uintptr)
 	F__x    uintptr // *void
@@ -65864,6 +63112,7 @@ func Xpthread_cond_init(tls TLS, _c uintptr /* *Tpthread_cond_t = struct{F__u s.
 	return 0
 }
 
+// Npthread_cond_t is defined at alltypes.h:81:9
 type t1pthread_cond_t = struct {
 	F__u struct {
 		F__i  [0][12]int32
@@ -66083,11 +63332,13 @@ func X__private_cond_signal(tls TLS, _c uintptr /* *Tpthread_cond_t = struct{F__
 	return 0
 }
 
+// Stimespec is defined at alltypes.h:270:1
 type s42timespec = struct {
 	Ftv_sec  int64
 	Ftv_nsec int64
 }
 
+// Swaiter is defined at pthread_cond_timedwait.c:30:1
 type Swaiter = struct {
 	Fprev    uintptr // *Swaiter
 	Fnext    uintptr // *Swaiter
@@ -66166,6 +63417,7 @@ func x1a_dec(tls TLS, _p uintptr /* *int32 */) {
 
 type t57time_t = int64
 
+// S__pthread is defined at pthread_impl.h:15:1
 type s40__pthread = struct {
 	Fself          uintptr // *S__pthread
 	Fdtv           uintptr // **void
@@ -66212,8 +63464,6 @@ func x3a_swap(tls TLS, _p uintptr /* *int32 */, _v int32) (r int32) {
 	return r
 }
 
-type t7clockid_t = int32
-
 // x__syscall3 is defined at syscall_arch.h:31:22
 func x60__syscall3(tls TLS, _n int64, _a1 int64, _a2 int64, _a3 int64) (r int64) {
 	return X__syscall(tls, _n, _a1, _a2, _a3, int64(0), int64(0), int64(0))
@@ -66231,14 +63481,16 @@ func x7__syscall5(tls TLS, _n int64, _a1 int64, _a2 int64, _a3 int64, _a4 int64,
 
 type t59uintptr_t = uint64
 
-type t376size_t = uint64
+type t268size_t = uint64
 
+// S__ptcb is defined at pthread.h:200:1
 type s40__ptcb = struct {
 	F__f    uintptr // *func(TLS, uintptr)
 	F__x    uintptr // *void
 	F__next uintptr // *S__ptcb
 }
 
+// S__locale_struct is defined at libc.h:10:1
 type s157__locale_struct = struct{ Fcat [6]uintptr }
 
 // linking pthread_cond_wait.o
@@ -66265,6 +63517,7 @@ func Xpthread_condattr_init(tls TLS, _a uintptr /* *Tpthread_condattr_t = struct
 	return 0
 }
 
+// Npthread_condattr_t is defined at alltypes.h:340:9
 type Tpthread_condattr_t = struct{ F__attr uint32 }
 
 // linking pthread_condattr_setclock.o
@@ -66285,7 +63538,7 @@ func Xpthread_condattr_setclock(tls TLS, _a uintptr /* *Tpthread_condattr_t = st
 	return 0
 }
 
-type t8clockid_t = int32
+type t2clockid_t = int32
 
 // linking pthread_condattr_setpshared.o
 
@@ -66614,6 +63867,7 @@ func xdummy_1(tls TLS, _p uintptr /* *void */) (r uintptr /* *void */) {
 	return null
 }
 
+// S__pthread is defined at pthread_impl.h:15:1
 type s41__pthread = struct {
 	Fself          uintptr // *S__pthread
 	Fdtv           uintptr // **void
@@ -66666,7 +63920,7 @@ func x3a_fetch_add(tls TLS, _p uintptr /* *int32 */, _v int32) (r int32) {
 	return r
 }
 
-type t377size_t = uint64
+type t269size_t = uint64
 
 // xa_swap is defined at atomic_arch.h:22:19
 func x4a_swap(tls TLS, _p uintptr /* *int32 */, _v int32) (r int32) {
@@ -66703,12 +63957,14 @@ func x49__syscall2(tls TLS, _n int64, _a1 int64, _a2 int64) (r int64) {
 	return X__syscall(tls, _n, _a1, _a2, int64(0), int64(0), int64(0), int64(0))
 }
 
+// S__ptcb is defined at pthread.h:200:1
 type s41__ptcb = struct {
 	F__f    uintptr // *func(TLS, uintptr)
 	F__x    uintptr // *void
 	F__next uintptr // *S__ptcb
 }
 
+// Sstart_sched_args is defined at pthread_impl.h:62:1
 type s1start_sched_args = struct {
 	Fstart_arg uintptr // *void
 	Fstart_fn  uintptr // *func(TLS, uintptr) uintptr
@@ -66717,6 +63973,7 @@ type s1start_sched_args = struct {
 	Ffutex     int32
 }
 
+// S_IO_FILE is defined at stdio_impl.h:22:1
 type s118_IO_FILE = struct {
 	Fflags        uint32
 	Frpos         uintptr // *uint8
@@ -66765,6 +64022,7 @@ func x31__syscall4(tls TLS, _n int64, _a1 int64, _a2 int64, _a3 int64, _a4 int64
 	return X__syscall(tls, _n, _a1, _a2, _a3, _a4, int64(0), int64(0))
 }
 
+// Npthread_attr_t is defined at alltypes.h:66:9
 type t4pthread_attr_t = struct {
 	F__u struct {
 		F__i  [0][14]int32
@@ -66836,6 +64094,7 @@ func x2__futexwait(tls TLS, _addr uintptr /* *void */, _val int32, _priv int32) 
 	}
 }
 
+// S__locale_struct is defined at libc.h:10:1
 type s158__locale_struct = struct{ Fcat [6]uintptr }
 
 // x__syscall3 is defined at syscall_arch.h:31:22
@@ -66843,9 +64102,10 @@ func x61__syscall3(tls TLS, _n int64, _a1 int64, _a2 int64, _a3 int64) (r int64)
 	return X__syscall(tls, _n, _a1, _a2, _a3, int64(0), int64(0), int64(0))
 }
 
+// Nsigset_t is defined at alltypes.h:374:9
 type t19sigset_t = struct{ F__bits [16]uint64 }
 
-type t128off_t = int64
+type t126off_t = int64
 
 // linking pthread_detach.o
 
@@ -66857,6 +64117,7 @@ func x__pthread_detach(tls TLS, _t uintptr /* Tpthread_t = *S__pthread */) (r in
 	return 0
 }
 
+// S__pthread is defined at pthread_impl.h:15:1
 type s42__pthread = struct {
 	Fself          uintptr // *S__pthread
 	Fdtv           uintptr // **void
@@ -66905,14 +64166,16 @@ func x10a_cas(tls TLS, _p uintptr /* *int32 */, _t int32, _s int32) (r int32) {
 
 type t61uintptr_t = uint64
 
-type t378size_t = uint64
+type t270size_t = uint64
 
+// S__ptcb is defined at pthread.h:200:1
 type s42__ptcb = struct {
 	F__f    uintptr // *func(TLS, uintptr)
 	F__x    uintptr // *void
 	F__next uintptr // *S__ptcb
 }
 
+// S__locale_struct is defined at libc.h:10:1
 type s159__locale_struct = struct{ Fcat [6]uintptr }
 
 // linking pthread_equal.o
@@ -66977,6 +64240,7 @@ func Xpthread_getattr_np(tls TLS, _t uintptr /* Tpthread_t = *S__pthread */, _a 
 	return 0
 }
 
+// S__pthread is defined at pthread_impl.h:15:1
 type s44__pthread = struct {
 	Fself          uintptr // *S__pthread
 	Fdtv           uintptr // **void
@@ -67017,6 +64281,7 @@ type s44__pthread = struct {
 	Fdtv_copy         uintptr // **void
 }
 
+// Npthread_attr_t is defined at alltypes.h:66:9
 type t5pthread_attr_t = struct {
 	F__u struct {
 		F__i  [0][14]int32
@@ -67027,16 +64292,18 @@ type t5pthread_attr_t = struct {
 	}
 }
 
-type t379size_t = uint64
+type t271size_t = uint64
 
 type t62uintptr_t = uint64
 
+// S__ptcb is defined at pthread.h:200:1
 type s43__ptcb = struct {
 	F__f    uintptr // *func(TLS, uintptr)
 	F__x    uintptr // *void
 	F__next uintptr // *S__ptcb
 }
 
+// S__locale_struct is defined at libc.h:10:1
 type s160__locale_struct = struct{ Fcat [6]uintptr }
 
 // linking pthread_getconcurrency.o
@@ -67054,6 +64321,7 @@ func Xpthread_getcpuclockid(tls TLS, _t uintptr /* Tpthread_t = *S__pthread */, 
 	return 0
 }
 
+// S__pthread is defined at pthread_impl.h:15:1
 type s45__pthread = struct {
 	Fself          uintptr // *S__pthread
 	Fdtv           uintptr // **void
@@ -67094,18 +64362,20 @@ type s45__pthread = struct {
 	Fdtv_copy         uintptr // **void
 }
 
-type t9clockid_t = int32
+type t3clockid_t = int32
 
 type t63uintptr_t = uint64
 
-type t380size_t = uint64
+type t272size_t = uint64
 
+// S__ptcb is defined at pthread.h:200:1
 type s44__ptcb = struct {
 	F__f    uintptr // *func(TLS, uintptr)
 	F__x    uintptr // *void
 	F__next uintptr // *S__ptcb
 }
 
+// S__locale_struct is defined at libc.h:10:1
 type s161__locale_struct = struct{ Fcat [6]uintptr }
 
 // linking pthread_getschedparam.o
@@ -67127,6 +64397,7 @@ func Xpthread_getschedparam(tls TLS, _t uintptr /* Tpthread_t = *S__pthread */, 
 	return _r
 }
 
+// S__pthread is defined at pthread_impl.h:15:1
 type s46__pthread = struct {
 	Fself          uintptr // *S__pthread
 	Fdtv           uintptr // **void
@@ -67167,6 +64438,7 @@ type s46__pthread = struct {
 	Fdtv_copy         uintptr // **void
 }
 
+// Ssched_param is defined at sched.h:19:1
 type s6sched_param = struct {
 	Fsched_priority        int32
 	Fsched_ss_low_priority int32
@@ -67187,16 +64459,19 @@ func x40__syscall1(tls TLS, _n int64, _a1 int64) (r int64) {
 
 type t64uintptr_t = uint64
 
-type t381size_t = uint64
+type t273size_t = uint64
 
+// S__ptcb is defined at pthread.h:200:1
 type s45__ptcb = struct {
 	F__f    uintptr // *func(TLS, uintptr)
 	F__x    uintptr // *void
 	F__next uintptr // *S__ptcb
 }
 
+// S__locale_struct is defined at libc.h:10:1
 type s162__locale_struct = struct{ Fcat [6]uintptr }
 
+// Stimespec is defined at alltypes.h:270:1
 type s43timespec = struct {
 	Ftv_sec  int64
 	Ftv_nsec int64
@@ -67206,8 +64481,6 @@ type t58time_t = int64
 
 // linking pthread_getspecific.o
 
-type Tpthread_key_t = uint32
-
 // x__pthread_getspecific is defined at pthread_getspecific.c:4:13
 func x__pthread_getspecific(tls TLS, _k uint32) (r uintptr /* *void */) {
 	var _self uintptr // *S__pthread
@@ -67216,6 +64489,7 @@ func x__pthread_getspecific(tls TLS, _k uint32) (r uintptr /* *void */) {
 	return *(*uintptr)(unsafe.Pointer(*(*uintptr)(unsafe.Pointer(_self + 152)) + 8*uintptr(_k)))
 }
 
+// S__pthread is defined at pthread_impl.h:15:1
 type s47__pthread = struct {
 	Fself          uintptr // *S__pthread
 	Fdtv           uintptr // **void
@@ -67264,14 +64538,16 @@ func x36__pthread_self(tls TLS) (r uintptr /* *S__pthread */) {
 
 type t65uintptr_t = uint64
 
-type t382size_t = uint64
+type t274size_t = uint64
 
+// S__ptcb is defined at pthread.h:200:1
 type s46__ptcb = struct {
 	F__f    uintptr // *func(TLS, uintptr)
 	F__x    uintptr // *void
 	F__next uintptr // *S__ptcb
 }
 
+// S__locale_struct is defined at libc.h:10:1
 type s163__locale_struct = struct{ Fcat [6]uintptr }
 
 // linking pthread_join.o
@@ -67326,6 +64602,7 @@ func X__pthread_tryjoin_np(tls TLS, _t uintptr /* Tpthread_t = *S__pthread */, _
 	return X__pthread_join(tls, _t, _res)
 }
 
+// S__pthread is defined at pthread_impl.h:15:1
 type s48__pthread = struct {
 	Fself          uintptr // *S__pthread
 	Fdtv           uintptr // **void
@@ -67366,6 +64643,7 @@ type s48__pthread = struct {
 	Fdtv_copy         uintptr // **void
 }
 
+// Stimespec is defined at alltypes.h:270:1
 type s44timespec = struct {
 	Ftv_sec  int64
 	Ftv_nsec int64
@@ -67381,21 +64659,21 @@ func x1a_barrier(tls TLS) {
 	aBarier()
 }
 
-type t383size_t = uint64
+type t275size_t = uint64
 
 type t66uintptr_t = uint64
 
+// S__ptcb is defined at pthread.h:200:1
 type s47__ptcb = struct {
 	F__f    uintptr // *func(TLS, uintptr)
 	F__x    uintptr // *void
 	F__next uintptr // *S__ptcb
 }
 
+// S__locale_struct is defined at libc.h:10:1
 type s164__locale_struct = struct{ Fcat [6]uintptr }
 
 type t59time_t = int64
-
-type t10clockid_t = int32
 
 // linking pthread_key_create.o
 
@@ -67470,10 +64748,9 @@ func X__pthread_tsd_run_dtors(tls TLS) {
 	}
 }
 
-type t384size_t = uint64
+type Tpthread_key_t = uint32
 
-type t1pthread_key_t = uint32
-
+// S__pthread is defined at pthread_impl.h:15:1
 type s49__pthread = struct {
 	Fself          uintptr // *S__pthread
 	Fdtv           uintptr // **void
@@ -67535,12 +64812,16 @@ func x1a_cas_p(tls TLS, _p uintptr /* *void */, _t uintptr /* *void */, _s uintp
 // xkeys [128]*func(TLS, uintptr), escapes: true, pthread_key_create.c:6:13
 var xkeys = bss + 9432
 
+type t276size_t = uint64
+
+// S__ptcb is defined at pthread.h:200:1
 type s48__ptcb = struct {
 	F__f    uintptr // *func(TLS, uintptr)
 	F__x    uintptr // *void
 	F__next uintptr // *S__ptcb
 }
 
+// S__locale_struct is defined at libc.h:10:1
 type s165__locale_struct = struct{ Fcat [6]uintptr }
 
 // linking pthread_kill.o
@@ -67564,6 +64845,7 @@ func Xpthread_kill(tls TLS, _t uintptr /* Tpthread_t = *S__pthread */, _sig int3
 	return _r
 }
 
+// S__pthread is defined at pthread_impl.h:15:1
 type s50__pthread = struct {
 	Fself          uintptr // *S__pthread
 	Fdtv           uintptr // **void
@@ -67611,14 +64893,16 @@ func x51__syscall2(tls TLS, _n int64, _a1 int64, _a2 int64) (r int64) {
 
 type t68uintptr_t = uint64
 
-type t385size_t = uint64
+type t277size_t = uint64
 
+// S__ptcb is defined at pthread.h:200:1
 type s49__ptcb = struct {
 	F__f    uintptr // *func(TLS, uintptr)
 	F__x    uintptr // *void
 	F__next uintptr // *S__ptcb
 }
 
+// S__locale_struct is defined at libc.h:10:1
 type s166__locale_struct = struct{ Fcat [6]uintptr }
 
 // linking pthread_mutex_consistent.o
@@ -67644,6 +64928,7 @@ func x38__pthread_self(tls TLS) (r uintptr /* *S__pthread */) {
 	return r
 }
 
+// S__pthread is defined at pthread_impl.h:15:1
 type s51__pthread = struct {
 	Fself          uintptr // *S__pthread
 	Fdtv           uintptr // **void
@@ -67686,14 +64971,16 @@ type s51__pthread = struct {
 
 type t69uintptr_t = uint64
 
-type t386size_t = uint64
+type t278size_t = uint64
 
+// S__ptcb is defined at pthread.h:200:1
 type s50__ptcb = struct {
 	F__f    uintptr // *func(TLS, uintptr)
 	F__x    uintptr // *void
 	F__next uintptr // *S__ptcb
 }
 
+// S__locale_struct is defined at libc.h:10:1
 type s167__locale_struct = struct{ Fcat [6]uintptr }
 
 // linking pthread_mutex_destroy.o
@@ -67747,6 +65034,7 @@ func Xpthread_mutex_init(tls TLS, _m uintptr /* *Tpthread_mutex_t = struct{F__u 
 	return 0
 }
 
+// Npthread_mutex_t is defined at alltypes.h:71:9
 type t1pthread_mutex_t = struct {
 	F__u struct {
 		F__i  [0][10]int32
@@ -67825,6 +65113,7 @@ func X__pthread_mutex_timedlock(tls TLS, _m uintptr /* *Tpthread_mutex_t = struc
 	return _r
 }
 
+// Stimespec is defined at alltypes.h:270:1
 type s45timespec = struct {
 	Ftv_sec  int64
 	Ftv_nsec int64
@@ -67859,6 +65148,7 @@ func x3a_dec(tls TLS, _p uintptr /* *int32 */) {
 
 type t60time_t = int64
 
+// S__pthread is defined at pthread_impl.h:15:1
 type s52__pthread = struct {
 	Fself          uintptr // *S__pthread
 	Fdtv           uintptr // **void
@@ -67899,18 +65189,18 @@ type s52__pthread = struct {
 	Fdtv_copy         uintptr // **void
 }
 
-type t11clockid_t = int32
-
 type t70uintptr_t = uint64
 
-type t387size_t = uint64
+type t279size_t = uint64
 
+// S__ptcb is defined at pthread.h:200:1
 type s51__ptcb = struct {
 	F__f    uintptr // *func(TLS, uintptr)
 	F__x    uintptr // *void
 	F__next uintptr // *S__ptcb
 }
 
+// S__locale_struct is defined at libc.h:10:1
 type s168__locale_struct = struct{ Fcat [6]uintptr }
 
 // linking pthread_mutex_trylock.o
@@ -67981,6 +65271,7 @@ func X__pthread_mutex_trylock(tls TLS, _m uintptr /* *Tpthread_mutex_t = struct{
 	return X__pthread_mutex_trylock_owner(tls, _m)
 }
 
+// S__pthread is defined at pthread_impl.h:15:1
 type s53__pthread = struct {
 	Fself          uintptr // *S__pthread
 	Fdtv           uintptr // **void
@@ -68040,14 +65331,16 @@ func x13a_cas(tls TLS, _p uintptr /* *int32 */, _t int32, _s int32) (r int32) {
 
 type t71uintptr_t = uint64
 
-type t388size_t = uint64
+type t280size_t = uint64
 
+// S__ptcb is defined at pthread.h:200:1
 type s52__ptcb = struct {
 	F__f    uintptr // *func(TLS, uintptr)
 	F__x    uintptr // *void
 	F__next uintptr // *S__ptcb
 }
 
+// S__locale_struct is defined at libc.h:10:1
 type s169__locale_struct = struct{ Fcat [6]uintptr }
 
 // linking pthread_mutex_unlock.o
@@ -68101,6 +65394,7 @@ func X__pthread_mutex_unlock(tls TLS, _m uintptr /* *Tpthread_mutex_t = struct{F
 	return 0
 }
 
+// S__pthread is defined at pthread_impl.h:15:1
 type s54__pthread = struct {
 	Fself          uintptr // *S__pthread
 	Fdtv           uintptr // **void
@@ -68168,14 +65462,16 @@ func x10__wake(tls TLS, _addr uintptr /* *void */, _cnt int32, _priv int32) {
 
 type t72uintptr_t = uint64
 
-type t389size_t = uint64
+type t281size_t = uint64
 
+// S__ptcb is defined at pthread.h:200:1
 type s53__ptcb = struct {
 	F__f    uintptr // *func(TLS, uintptr)
 	F__x    uintptr // *void
 	F__next uintptr // *S__ptcb
 }
 
+// S__locale_struct is defined at libc.h:10:1
 type s170__locale_struct = struct{ Fcat [6]uintptr }
 
 // x__syscall3 is defined at syscall_arch.h:31:22
@@ -68200,6 +65496,7 @@ func Xpthread_mutexattr_init(tls TLS, _a uintptr /* *Tpthread_mutexattr_t = stru
 	return 0
 }
 
+// Npthread_mutexattr_t is defined at alltypes.h:335:9
 type Tpthread_mutexattr_t = struct{ F__attr uint32 }
 
 // linking pthread_mutexattr_setprotocol.o
@@ -68315,6 +65612,7 @@ func X__pthread_once(tls TLS, _control uintptr /* *Tpthread_once_t = int32 */, _
 	return X__pthread_once_full(tls, _control, _init)
 }
 
+// S__ptcb is defined at pthread.h:200:1
 type s54__ptcb = struct {
 	F__f    uintptr // *func(TLS, uintptr)
 	F__x    uintptr // *void
@@ -68409,6 +65707,7 @@ func Xpthread_rwlock_init(tls TLS, _rw uintptr /* *Tpthread_rwlock_t = struct{F_
 	return 0
 }
 
+// Npthread_rwlock_t is defined at alltypes.h:91:9
 type Tpthread_rwlock_t = struct {
 	F__u struct {
 		F__i  [0][14]int32
@@ -68463,6 +65762,7 @@ func Xpthread_rwlock_timedrdlock(tls TLS, _rw uintptr /* *Tpthread_rwlock_t = st
 	return _r
 }
 
+// Stimespec is defined at alltypes.h:270:1
 type s46timespec = struct {
 	Ftv_sec  int64
 	Ftv_nsec int64
@@ -68490,8 +65790,6 @@ func x4a_dec(tls TLS, _p uintptr /* *int32 */) {
 }
 
 type t61time_t = int64
-
-type t12clockid_t = int32
 
 // linking pthread_rwlock_timedwrlock.o
 
@@ -68530,6 +65828,7 @@ func Xpthread_rwlock_timedwrlock(tls TLS, _rw uintptr /* *Tpthread_rwlock_t = st
 	return _r
 }
 
+// Stimespec is defined at alltypes.h:270:1
 type s47timespec = struct {
 	Ftv_sec  int64
 	Ftv_nsec int64
@@ -68557,8 +65856,6 @@ func x5a_dec(tls TLS, _p uintptr /* *int32 */) {
 }
 
 type t62time_t = int64
-
-type t13clockid_t = int32
 
 // linking pthread_rwlock_tryrdlock.o
 
@@ -68679,6 +65976,7 @@ func Xpthread_rwlockattr_init(tls TLS, _a uintptr /* *Tpthread_rwlockattr_t = st
 	return 0
 }
 
+// Npthread_rwlockattr_t is defined at alltypes.h:350:9
 type Tpthread_rwlockattr_t = struct{ F__attr [2]uint32 }
 
 // linking pthread_rwlockattr_setpshared.o
@@ -68699,6 +65997,7 @@ func x__pthread_self_internal(tls TLS) (r uintptr /* Tpthread_t = *S__pthread */
 	return x42__pthread_self(tls)
 }
 
+// S__pthread is defined at pthread_impl.h:15:1
 type s55__pthread = struct {
 	Fself          uintptr // *S__pthread
 	Fdtv           uintptr // **void
@@ -68747,14 +66046,16 @@ func x42__pthread_self(tls TLS) (r uintptr /* *S__pthread */) {
 
 type t73uintptr_t = uint64
 
-type t390size_t = uint64
+type t282size_t = uint64
 
+// S__ptcb is defined at pthread.h:200:1
 type s55__ptcb = struct {
 	F__f    uintptr // *func(TLS, uintptr)
 	F__x    uintptr // *void
 	F__next uintptr // *S__ptcb
 }
 
+// S__locale_struct is defined at libc.h:10:1
 type s171__locale_struct = struct{ Fcat [6]uintptr }
 
 // linking pthread_setattr_default_np.o
@@ -68807,6 +66108,7 @@ func Xpthread_getattr_default_np(tls TLS, _attrp uintptr /* *Tpthread_attr_t = s
 	return r
 }
 
+// Npthread_attr_t is defined at alltypes.h:66:9
 type t6pthread_attr_t = struct {
 	F__u struct {
 		F__i  [0][14]int32
@@ -68817,7 +66119,7 @@ type t6pthread_attr_t = struct {
 	}
 }
 
-type t391size_t = uint64
+type t283size_t = uint64
 
 // linking pthread_setcancelstate.o
 
@@ -68836,6 +66138,7 @@ func X__pthread_setcancelstate(tls TLS, _new int32, _old uintptr /* *int32 */) (
 	return 0
 }
 
+// S__pthread is defined at pthread_impl.h:15:1
 type s56__pthread = struct {
 	Fself          uintptr // *S__pthread
 	Fdtv           uintptr // **void
@@ -68884,14 +66187,16 @@ func x43__pthread_self(tls TLS) (r uintptr /* *S__pthread */) {
 
 type t74uintptr_t = uint64
 
-type t392size_t = uint64
+type t284size_t = uint64
 
+// S__ptcb is defined at pthread.h:200:1
 type s56__ptcb = struct {
 	F__f    uintptr // *func(TLS, uintptr)
 	F__x    uintptr // *void
 	F__next uintptr // *S__ptcb
 }
 
+// S__locale_struct is defined at libc.h:10:1
 type s172__locale_struct = struct{ Fcat [6]uintptr }
 
 // linking pthread_setcanceltype.o
@@ -68914,6 +66219,7 @@ func Xpthread_setcanceltype(tls TLS, _new int32, _old uintptr /* *int32 */) (r i
 	return 0
 }
 
+// S__pthread is defined at pthread_impl.h:15:1
 type s57__pthread = struct {
 	Fself          uintptr // *S__pthread
 	Fdtv           uintptr // **void
@@ -68962,14 +66268,16 @@ func x44__pthread_self(tls TLS) (r uintptr /* *S__pthread */) {
 
 type t75uintptr_t = uint64
 
-type t393size_t = uint64
+type t285size_t = uint64
 
+// S__ptcb is defined at pthread.h:200:1
 type s57__ptcb = struct {
 	F__f    uintptr // *func(TLS, uintptr)
 	F__x    uintptr // *void
 	F__next uintptr // *S__ptcb
 }
 
+// S__locale_struct is defined at libc.h:10:1
 type s173__locale_struct = struct{ Fcat [6]uintptr }
 
 // linking pthread_setconcurrency.o
@@ -69024,6 +66332,7 @@ func Xpthread_setname_np(tls TLS, _thread uintptr /* Tpthread_t = *S__pthread */
 	return _status
 }
 
+// S__pthread is defined at pthread_impl.h:15:1
 type s58__pthread = struct {
 	Fself          uintptr // *S__pthread
 	Fdtv           uintptr // **void
@@ -69064,18 +66373,20 @@ type s58__pthread = struct {
 	Fdtv_copy         uintptr // **void
 }
 
-type t394size_t = uint64
+type t286size_t = uint64
 
-type t45ssize_t = int64
+type t26ssize_t = int64
 
 type t76uintptr_t = uint64
 
+// S__ptcb is defined at pthread.h:200:1
 type s58__ptcb = struct {
 	F__f    uintptr // *func(TLS, uintptr)
 	F__x    uintptr // *void
 	F__next uintptr // *S__ptcb
 }
 
+// S__locale_struct is defined at libc.h:10:1
 type s174__locale_struct = struct{ Fcat [6]uintptr }
 
 // linking pthread_setschedparam.o
@@ -69094,6 +66405,7 @@ func Xpthread_setschedparam(tls TLS, _t uintptr /* Tpthread_t = *S__pthread */, 
 	return _r
 }
 
+// S__pthread is defined at pthread_impl.h:15:1
 type s59__pthread = struct {
 	Fself          uintptr // *S__pthread
 	Fdtv           uintptr // **void
@@ -69134,6 +66446,7 @@ type s59__pthread = struct {
 	Fdtv_copy         uintptr // **void
 }
 
+// Ssched_param is defined at sched.h:19:1
 type s7sched_param = struct {
 	Fsched_priority        int32
 	Fsched_ss_low_priority int32
@@ -69149,16 +66462,19 @@ func x65__syscall3(tls TLS, _n int64, _a1 int64, _a2 int64, _a3 int64) (r int64)
 
 type t77uintptr_t = uint64
 
-type t395size_t = uint64
+type t287size_t = uint64
 
+// S__ptcb is defined at pthread.h:200:1
 type s59__ptcb = struct {
 	F__f    uintptr // *func(TLS, uintptr)
 	F__x    uintptr // *void
 	F__next uintptr // *S__ptcb
 }
 
+// S__locale_struct is defined at libc.h:10:1
 type s175__locale_struct = struct{ Fcat [6]uintptr }
 
+// Stimespec is defined at alltypes.h:270:1
 type s48timespec = struct {
 	Ftv_sec  int64
 	Ftv_nsec int64
@@ -69187,6 +66503,7 @@ func Xpthread_setschedprio(tls TLS, _t uintptr /* Tpthread_t = *S__pthread */, a
 	return _r
 }
 
+// S__pthread is defined at pthread_impl.h:15:1
 type s60__pthread = struct {
 	Fself          uintptr // *S__pthread
 	Fdtv           uintptr // **void
@@ -69234,14 +66551,16 @@ func x53__syscall2(tls TLS, _n int64, _a1 int64, _a2 int64) (r int64) {
 
 type t78uintptr_t = uint64
 
-type t396size_t = uint64
+type t288size_t = uint64
 
+// S__ptcb is defined at pthread.h:200:1
 type s60__ptcb = struct {
 	F__f    uintptr // *func(TLS, uintptr)
 	F__x    uintptr // *void
 	F__next uintptr // *S__ptcb
 }
 
+// S__locale_struct is defined at libc.h:10:1
 type s176__locale_struct = struct{ Fcat [6]uintptr }
 
 // linking pthread_setspecific.o
@@ -69264,8 +66583,7 @@ func Xpthread_setspecific(tls TLS, _k uint32, _x uintptr /* *void */) (r int32) 
 	return 0
 }
 
-type t2pthread_key_t = uint32
-
+// S__pthread is defined at pthread_impl.h:15:1
 type s61__pthread = struct {
 	Fself          uintptr // *S__pthread
 	Fdtv           uintptr // **void
@@ -69314,14 +66632,16 @@ func x45__pthread_self(tls TLS) (r uintptr /* *S__pthread */) {
 
 type t79uintptr_t = uint64
 
-type t397size_t = uint64
+type t289size_t = uint64
 
+// S__ptcb is defined at pthread.h:200:1
 type s61__ptcb = struct {
 	F__f    uintptr // *func(TLS, uintptr)
 	F__x    uintptr // *void
 	F__next uintptr // *S__ptcb
 }
 
+// S__locale_struct is defined at libc.h:10:1
 type s177__locale_struct = struct{ Fcat [6]uintptr }
 
 // linking pthread_sigmask.o
@@ -69434,7 +66754,7 @@ func X__pthread_testcancel(tls TLS) {
 }
 
 // xdummy is defined at pthread_testcancel.c:4:13
-func x16dummy(tls TLS) {
+func x14dummy(tls TLS) {
 }
 
 // linking sem_destroy.o
@@ -69680,13 +67000,15 @@ func Xsem_close(tls TLS, _sem uintptr /* *Tsem_t = struct{F__val [8]int32;} */) 
 	return 0
 }
 
-type t37mode_t = uint32
+type t27mode_t = uint32
 
+// Stimespec is defined at alltypes.h:270:1
 type s49timespec = struct {
 	Ftv_sec  int64
 	Ftv_nsec int64
 }
 
+// Sstat is defined at stat.h:4:1
 type s15stat = struct {
 	Fst_dev     uint64
 	Fst_ino     uint64
@@ -69715,27 +67037,22 @@ type t21ino_t = uint64
 
 type t64time_t = int64
 
-type t19dev_t = uint64
+type t15dev_t = uint64
 
 type t15nlink_t = uint64
 
-type t31uid_t = uint32
+type t30uid_t = uint32
 
-type t33gid_t = uint32
+type t32gid_t = uint32
 
-type t129off_t = int64
+type t127off_t = int64
 
 type t15blksize_t = int64
 
 type t15blkcnt_t = int64
 
+// Nsem_t is defined at semaphore.h:17:9
 type t1sem_t = struct{ F__val [8]int32 }
-
-type t398size_t = uint64
-
-type t14clockid_t = int32
-
-type t46ssize_t = int64
 
 // linking sem_post.o
 
@@ -69822,11 +67139,13 @@ func Xsem_timedwait(tls TLS, _sem uintptr /* *Tsem_t = struct{F__val [8]int32;} 
 	return 0
 }
 
+// Stimespec is defined at alltypes.h:270:1
 type s50timespec = struct {
 	Ftv_sec  int64
 	Ftv_nsec int64
 }
 
+// S__ptcb is defined at pthread.h:200:1
 type s62__ptcb = struct {
 	F__f    uintptr // *func(TLS, uintptr)
 	F__x    uintptr // *void
@@ -69860,8 +67179,6 @@ type t65time_t = int64
 func x6a_dec(tls TLS, _p uintptr /* *int32 */) {
 	panic(`TODO`)
 }
-
-type t15clockid_t = int32
 
 // linking sem_trywait.o
 
@@ -69936,6 +67253,7 @@ _4:
 	return r
 }
 
+// S__pthread is defined at pthread_impl.h:15:1
 type s62__pthread = struct {
 	Fself          uintptr // *S__pthread
 	Fdtv           uintptr // **void
@@ -69978,14 +67296,16 @@ type s62__pthread = struct {
 
 type t80uintptr_t = uint64
 
-type t399size_t = uint64
+type t290size_t = uint64
 
+// S__ptcb is defined at pthread.h:200:1
 type s63__ptcb = struct {
 	F__f    uintptr // *func(TLS, uintptr)
 	F__x    uintptr // *void
 	F__next uintptr // *S__ptcb
 }
 
+// S__locale_struct is defined at libc.h:10:1
 type s178__locale_struct = struct{ Fcat [6]uintptr }
 
 // linking thrd_exit.o
@@ -69995,7 +67315,7 @@ func Xthrd_exit(tls TLS, _result int32) {
 	X__pthread_exit(tls, uintptr(int64(_result)))
 }
 
-type t2intptr_t = int64
+type t1intptr_t = int64
 
 // linking thrd_join.o
 
@@ -70011,7 +67331,7 @@ func Xthrd_join(tls TLS, _t uintptr /* Tthrd_t = *S__pthread */, _res uintptr /*
 	return 0
 }
 
-type t3intptr_t = int64
+type t2intptr_t = int64
 
 type s63__pthread struct{ uintptr }
 
@@ -70039,6 +67359,7 @@ _4:
 	return r
 }
 
+// Stimespec is defined at alltypes.h:270:1
 type s51timespec = struct {
 	Ftv_sec  int64
 	Ftv_nsec int64
@@ -70104,8 +67425,7 @@ func Xtss_set(tls TLS, _k uint32, _x uintptr /* *void */) (r int32) {
 	return 0
 }
 
-type t1tss_t = uint32
-
+// S__pthread is defined at pthread_impl.h:15:1
 type s64__pthread = struct {
 	Fself          uintptr // *S__pthread
 	Fdtv           uintptr // **void
@@ -70154,14 +67474,16 @@ func x46__pthread_self(tls TLS) (r uintptr /* *S__pthread */) {
 
 type t81uintptr_t = uint64
 
-type t400size_t = uint64
+type t291size_t = uint64
 
+// S__ptcb is defined at pthread.h:200:1
 type s64__ptcb = struct {
 	F__f    uintptr // *func(TLS, uintptr)
 	F__x    uintptr // *void
 	F__next uintptr // *S__ptcb
 }
 
+// S__locale_struct is defined at libc.h:10:1
 type s179__locale_struct = struct{ Fcat [6]uintptr }
 
 // linking vmlock.o
@@ -70231,6 +67553,7 @@ func X__asctime(tls TLS, _tm uintptr /* *Stm */, _buf uintptr /* *int8 */) (r ui
 	return _buf
 }
 
+// Stm is defined at time.h:38:1
 type s1tm = struct {
 	Ftm_sec    int32
 	Ftm_min    int32
@@ -70249,10 +67572,6 @@ type s1tm = struct {
 func x5a_crash(tls TLS) {
 	panic(`a_crash`)
 }
-
-type t401size_t = uint64
-
-type t1nl_item = int32
 
 // linking __map_file.o
 
@@ -70281,6 +67600,7 @@ func X__map_file(tls TLS, _pathname uintptr /* *int8 */, _size uintptr /* *Tsize
 	return _map
 }
 
+// Sstat is defined at stat.h:4:1
 type s16stat = struct {
 	Fst_dev     uint64
 	Fst_ino     uint64
@@ -70304,31 +67624,32 @@ func x55__syscall2(tls TLS, _n int64, _a1 int64, _a2 int64) (r int64) {
 	return X__syscall(tls, _n, _a1, _a2, int64(0), int64(0), int64(0), int64(0))
 }
 
-type t130off_t = int64
+type t128off_t = int64
 
-type t402size_t = uint64
+type t292size_t = uint64
 
 // x__syscall1 is defined at syscall_arch.h:14:22
 func x41__syscall1(tls TLS, _n int64, _a1 int64) (r int64) {
 	return X__syscall(tls, _n, _a1, int64(0), int64(0), int64(0), int64(0), int64(0))
 }
 
-type t20dev_t = uint64
+type t16dev_t = uint64
 
 type t22ino_t = uint64
 
 type t16nlink_t = uint64
 
-type t38mode_t = uint32
+type t28mode_t = uint32
 
-type t32uid_t = uint32
+type t31uid_t = uint32
 
-type t34gid_t = uint32
+type t33gid_t = uint32
 
 type t16blksize_t = int64
 
 type t16blkcnt_t = int64
 
+// Stimespec is defined at alltypes.h:270:1
 type s52timespec = struct {
 	Ftv_sec  int64
 	Ftv_nsec int64
@@ -70433,6 +67754,7 @@ func X__secs_to_tm(tls TLS, _t int64, _tm uintptr /* *Stm */) (r int32) {
 	return 0
 }
 
+// Stm is defined at time.h:38:1
 type s2tm = struct {
 	Ftm_sec    int32
 	Ftm_min    int32
@@ -70483,6 +67805,7 @@ func X__tm_to_secs(tls TLS, _tm uintptr /* *Stm */) (r int64) {
 	return _t
 }
 
+// Stm is defined at time.h:38:1
 type s3tm = struct {
 	Ftm_sec    int32
 	Ftm_min    int32
@@ -70625,7 +67948,7 @@ func X__tm_to_tzname(tls TLS, _tm uintptr /* *Stm */) (r uintptr /* *int8 */) {
 	return _p
 }
 
-type t403size_t = uint64
+type t293size_t = uint64
 
 // xlock [1]int32, escapes: true, __tz.c:30:21
 var x9lock = bss + 10504
@@ -70891,7 +68214,7 @@ func xscan_trans(tls TLS, _t int64, _local int32, _alt uintptr /* *Tsize_t = uin
 // xtypes *uint8, escapes: false, __tz.c:23:49
 var xtypes uintptr
 
-type t23int32_t = int32
+type t22int32_t = int32
 
 // xzi_read32 is defined at __tz.c:100:17
 func xzi_read32(tls TLS, _z uintptr /* *uint8 */) (r uint32) {
@@ -70950,6 +68273,7 @@ var x2r1 = bss + 10536
 // xdst_off int32, escapes: false, __tz.c:20:12
 var xdst_off int32
 
+// Stm is defined at time.h:38:1
 type s4tm = struct {
 	Ftm_sec    int32
 	Ftm_min    int32
@@ -71004,7 +68328,7 @@ var xtrans uintptr
 // xindex *uint8, escapes: false, __tz.c:23:41
 var xindex uintptr
 
-type t139uint32_t = uint32
+type t138uint32_t = uint32
 
 // xgetname is defined at __tz.c:82:13
 func xgetname(tls TLS, _d uintptr /* *int8 */, _p uintptr /* **int8 */) {
@@ -71060,7 +68384,7 @@ func xgetoff(tls TLS, _p uintptr /* **int8 */) (r int32) {
 var xdst_name = bss + 10576
 
 // xgetrule is defined at __tz.c:60:13
-func xgetrule(tls TLS, _p uintptr /* **int8 */, _rule uintptr /* [5]int32 */) {
+func xgetrule(tls TLS, _p uintptr /* **int8 */, _rule uintptr /* *int32 */) {
 	var _r int32
 
 	_r = set1170((*int32)(unsafe.Pointer(_rule)), int32(**(**int8)(unsafe.Pointer(_p))))
@@ -71193,6 +68517,7 @@ func Xasctime(tls TLS, _tm uintptr /* *Stm */) (r uintptr /* *int8 */) {
 	return X__asctime(tls, _tm, x1173buf)
 }
 
+// Stm is defined at time.h:38:1
 type s5tm = struct {
 	Ftm_sec    int32
 	Ftm_min    int32
@@ -71217,6 +68542,7 @@ func Xasctime_r(tls TLS, _tm uintptr /* *Stm */, _buf uintptr /* *int8 */) (r ui
 	return X__asctime(tls, _tm, _buf)
 }
 
+// Stm is defined at time.h:38:1
 type s6tm = struct {
 	Ftm_sec    int32
 	Ftm_min    int32
@@ -71247,16 +68573,13 @@ func Xclock(tls TLS) (r int64) {
 	return *(*int64)(unsafe.Pointer(_ts))*int64(1000000) + *(*int64)(unsafe.Pointer(_ts + 8))/int64(1000)
 }
 
-type t6clock_t = int64
-
+// Stimespec is defined at alltypes.h:270:1
 type s53timespec = struct {
 	Ftv_sec  int64
 	Ftv_nsec int64
 }
 
 type t68time_t = int64
-
-type t16clockid_t = int32
 
 // linking clock_getcpuclockid.o
 
@@ -71278,14 +68601,15 @@ func Xclock_getcpuclockid(tls TLS, _pid int32, _clk uintptr /* *Tclockid_t = int
 	return 0
 }
 
-type t48pid_t = int32
-
+// Stimespec is defined at alltypes.h:270:1
 type s54timespec = struct {
 	Ftv_sec  int64
 	Ftv_nsec int64
 }
 
-type t17clockid_t = int32
+type t4clockid_t = int32
+
+type t35pid_t = int32
 
 // x__syscall2 is defined at syscall_arch.h:22:22
 func x56__syscall2(tls TLS, _n int64, _a1 int64, _a2 int64) (r int64) {
@@ -71301,8 +68625,7 @@ func Xclock_getres(tls TLS, _clk int32, _ts uintptr /* *Stimespec */) (r int32) 
 	return int32(X__syscall_ret(tls, uint64(x57__syscall2(tls, int64(229), int64(_clk), int64(_ts)))))
 }
 
-type t18clockid_t = int32
-
+// Stimespec is defined at alltypes.h:270:1
 type s55timespec = struct {
 	Ftv_sec  int64
 	Ftv_nsec int64
@@ -71333,8 +68656,7 @@ func X__clock_gettime(tls TLS, _clk int32, _ts uintptr /* *Stimespec */) (r int3
 	return int32(X__syscall_ret(tls, uint64(_r)))
 }
 
-type t19clockid_t = int32
-
+// Stimespec is defined at alltypes.h:270:1
 type s56timespec = struct {
 	Ftv_sec  int64
 	Ftv_nsec int64
@@ -71344,6 +68666,8 @@ type s56timespec = struct {
 func x58__syscall2(tls TLS, _n int64, _a1 int64, _a2 int64) (r int64) {
 	return X__syscall(tls, _n, _a1, _a2, int64(0), int64(0), int64(0), int64(0))
 }
+
+type t5clockid_t = int32
 
 type t71time_t = int64
 
@@ -71360,16 +68684,15 @@ func Xclock_nanosleep(tls TLS, _clk int32, _flags int32, _req uintptr /* *Stimes
 	return _r
 }
 
-type t20clockid_t = int32
-
+// Stimespec is defined at alltypes.h:270:1
 type s57timespec = struct {
 	Ftv_sec  int64
 	Ftv_nsec int64
 }
 
-type t72time_t = int64
+type t6clockid_t = int32
 
-type t31syscall_arg_t = int64
+type t72time_t = int64
 
 // linking clock_settime.o
 
@@ -71378,8 +68701,7 @@ func Xclock_settime(tls TLS, _clk int32, _ts uintptr /* *Stimespec */) (r int32)
 	return int32(X__syscall_ret(tls, uint64(x59__syscall2(tls, int64(227), int64(_clk), int64(_ts)))))
 }
 
-type t21clockid_t = int32
-
+// Stimespec is defined at alltypes.h:270:1
 type s58timespec = struct {
 	Ftv_sec  int64
 	Ftv_nsec int64
@@ -71405,6 +68727,7 @@ func Xctime(tls TLS, _t uintptr /* *Ttime_t = int64 */) (r uintptr /* *int8 */) 
 	return Xasctime(tls, _tm)
 }
 
+// Stm is defined at time.h:38:1
 type s7tm = struct {
 	Ftm_sec    int32
 	Ftm_min    int32
@@ -71436,6 +68759,7 @@ func Xctime_r(tls TLS, _t uintptr /* *Ttime_t = int64 */, _buf uintptr /* *int8 
 	return null
 }
 
+// Stm is defined at time.h:38:1
 type s8tm = struct {
 	Ftm_sec    int32
 	Ftm_min    int32
@@ -71475,6 +68799,7 @@ func Xftime(tls TLS, _tp uintptr /* *Stimeb */) (r int32) {
 	return 0
 }
 
+// Stimeb is defined at timeb.h:11:1
 type Stimeb = struct {
 	Ftime     int64
 	Fmillitm  uint16
@@ -71482,14 +68807,13 @@ type Stimeb = struct {
 	Fdstflag  int16
 }
 
+// Stimespec is defined at alltypes.h:270:1
 type s59timespec = struct {
 	Ftv_sec  int64
 	Ftv_nsec int64
 }
 
 type t75time_t = int64
-
-type t22clockid_t = int32
 
 // linking getdate.o
 
@@ -71564,6 +68888,7 @@ lout:
 	return _ret
 }
 
+// Stm is defined at time.h:38:1
 type s9tm = struct {
 	Ftm_sec    int32
 	Ftm_min    int32
@@ -71599,11 +68924,13 @@ func Xgettimeofday(tls TLS, _tv uintptr /* *Stimeval */, _tz uintptr /* *void */
 	return 0
 }
 
+// Stimeval is defined at alltypes.h:265:1
 type s17timeval = struct {
 	Ftv_sec  int64
 	Ftv_usec int64
 }
 
+// Stimespec is defined at alltypes.h:270:1
 type s60timespec = struct {
 	Ftv_sec  int64
 	Ftv_nsec int64
@@ -71613,8 +68940,6 @@ type t76time_t = int64
 
 type t17suseconds_t = int64
 
-type t23clockid_t = int32
-
 // linking gmtime.o
 
 // Xgmtime is defined at gmtime.c:6:11
@@ -71622,6 +68947,7 @@ func Xgmtime(tls TLS, _t uintptr /* *Ttime_t = int64 */) (r uintptr /* *Stm */) 
 	return X__gmtime_r(tls, _t, x1176tm)
 }
 
+// Stm is defined at time.h:38:1
 type s10tm = struct {
 	Ftm_sec    int32
 	Ftm_min    int32
@@ -71653,6 +68979,7 @@ func X__gmtime_r(tls TLS, _t uintptr /* *Ttime_t = int64 */, _tm uintptr /* *Stm
 	return _tm
 }
 
+// Stm is defined at time.h:38:1
 type s11tm = struct {
 	Ftm_sec    int32
 	Ftm_min    int32
@@ -71676,6 +69003,7 @@ func Xlocaltime(tls TLS, _t uintptr /* *Ttime_t = int64 */) (r uintptr /* *Stm *
 	return X__localtime_r(tls, _t, x1177tm)
 }
 
+// Stm is defined at time.h:38:1
 type s12tm = struct {
 	Ftm_sec    int32
 	Ftm_min    int32
@@ -71709,6 +69037,7 @@ func X__localtime_r(tls TLS, _t uintptr /* *Ttime_t = int64 */, _tm uintptr /* *
 	return _tm
 }
 
+// Stm is defined at time.h:38:1
 type s13tm = struct {
 	Ftm_sec    int32
 	Ftm_min    int32
@@ -71765,8 +69094,7 @@ lerror:
 	return int64(-1)
 }
 
-type t79time_t = int64
-
+// Stm is defined at time.h:38:1
 type s14tm = struct {
 	Ftm_sec    int32
 	Ftm_min    int32
@@ -71781,6 +69109,8 @@ type s14tm = struct {
 	Ftm_zone   uintptr // *int8
 }
 
+type t79time_t = int64
+
 // linking nanosleep.o
 
 // Xnanosleep is defined at nanosleep.c:5:5
@@ -71788,14 +69118,13 @@ func Xnanosleep(tls TLS, _req uintptr /* *Stimespec */, _rem uintptr /* *Stimesp
 	return int32(X__syscall_ret(tls, uint64(X__syscall_cp(tls, int64(35), int64(_req), int64(_rem), int64(0), int64(0), int64(0), int64(0)))))
 }
 
+// Stimespec is defined at alltypes.h:270:1
 type s61timespec = struct {
 	Ftv_sec  int64
 	Ftv_nsec int64
 }
 
 type t80time_t = int64
-
-type t32syscall_arg_t = int64
 
 // linking strftime.o
 
@@ -72259,6 +69588,7 @@ func Xstrftime(tls TLS, _s uintptr /* *int8 */, _n uint64, _f uintptr /* *int8 *
 	return X__strftime_l(tls, _s, _n, _f, _tm, *(*uintptr)(unsafe.Pointer(x47__pthread_self(tls) + 192)))
 }
 
+// Stm is defined at time.h:38:1
 type s15tm = struct {
 	Ftm_sec    int32
 	Ftm_min    int32
@@ -72273,9 +69603,10 @@ type s15tm = struct {
 	Ftm_zone   uintptr // *int8
 }
 
+// S__locale_struct is defined at libc.h:10:1
 type s180__locale_struct = struct{ Fcat [6]uintptr }
 
-type t2nl_item = int32
+type t1nl_item = int32
 
 // xweek_num is defined at strftime.c:22:12
 func xweek_num(tls TLS, _tm uintptr /* *Stm */) (r int32) {
@@ -72303,7 +69634,7 @@ func xweek_num(tls TLS, _tm uintptr /* *Stm */) (r int32) {
 	return _val
 }
 
-type t404size_t = uint64
+type t294size_t = uint64
 
 // x__pthread_self is defined at pthread_arch.h:1:30
 func x47__pthread_self(tls TLS) (r uintptr /* *S__pthread */) {
@@ -72320,6 +69651,7 @@ func xis_leap(tls TLS, _y int32) (r int32) {
 	return bool2int((_y%int32(4) == 0) && ((_y%int32(100) != 0) || (_y%int32(400) == 0)))
 }
 
+// S__pthread is defined at pthread_impl.h:15:1
 type s65__pthread = struct {
 	Fself          uintptr // *S__pthread
 	Fdtv           uintptr // **void
@@ -72362,6 +69694,7 @@ type s65__pthread = struct {
 
 type t83uintptr_t = uint64
 
+// S__ptcb is defined at pthread.h:200:1
 type s65__ptcb = struct {
 	F__f    uintptr // *func(TLS, uintptr)
 	F__x    uintptr // *void
@@ -72764,6 +70097,7 @@ _2:
 	return _s
 }
 
+// Stm is defined at time.h:38:1
 type s16tm = struct {
 	Ftm_sec    int32
 	Ftm_min    int32
@@ -72778,9 +70112,7 @@ type s16tm = struct {
 	Ftm_zone   uintptr // *int8
 }
 
-type t405size_t = uint64
-
-type t3nl_item = int32
+type t295size_t = uint64
 
 // linking time.o
 
@@ -72796,14 +70128,13 @@ func Xtime(tls TLS, _t uintptr /* *Ttime_t = int64 */) (r int64) {
 	return *(*int64)(unsafe.Pointer(_ts))
 }
 
-type t81time_t = int64
-
+// Stimespec is defined at alltypes.h:270:1
 type s62timespec = struct {
 	Ftv_sec  int64
 	Ftv_nsec int64
 }
 
-type t24clockid_t = int32
+type t81time_t = int64
 
 // linking timegm.o
 
@@ -72827,8 +70158,7 @@ func Xtimegm(tls TLS, _tm uintptr /* *Stm */) (r int64) {
 	return _t
 }
 
-type t82time_t = int64
-
+// Stm is defined at time.h:38:1
 type s17tm = struct {
 	Ftm_sec    int32
 	Ftm_min    int32
@@ -72953,8 +70283,7 @@ _1:
 func x1dummy_0(tls TLS) {
 }
 
-type t25clockid_t = int32
-
+// Ssigevent is defined at signal.h:179:1
 type s4sigevent = struct {
 	Fsigev_value             u10sigval
 	Fsigev_signo             int32
@@ -72967,6 +70296,7 @@ type s4sigevent = struct {
 // x2once Tpthread_once_t = int32, escapes: true, timer_create.c:84:24
 var x1186once = bss + 10824
 
+// S__pthread is defined at pthread_impl.h:15:1
 type s66__pthread = struct {
 	Fself          uintptr // *S__pthread
 	Fdtv           uintptr // **void
@@ -73007,6 +70337,7 @@ type s66__pthread = struct {
 	Fdtv_copy         uintptr // **void
 }
 
+// Sstart_args is defined at timer_create.c:12:1
 type Sstart_args = struct {
 	Fb struct {
 		F__u struct {
@@ -73020,6 +70351,7 @@ type Sstart_args = struct {
 	Fsev uintptr // *Ssigevent
 }
 
+// Sksigevent is defined at timer_create.c:5:1
 type Sksigevent = struct {
 	Fsigev_value  u10sigval
 	Fsigev_signo  int32
@@ -73027,6 +70359,7 @@ type Sksigevent = struct {
 	Fsigev_tid    int32
 }
 
+// Usigval is defined at signal.h:92:1
 type u10sigval = struct {
 	Fsival_int [0]int32
 	Fsival_ptr [0]uintptr // *void
@@ -73038,13 +70371,14 @@ func x68__syscall3(tls TLS, _n int64, _a1 int64, _a2 int64, _a3 int64) (r int64)
 	return X__syscall(tls, _n, _a1, _a2, _a3, int64(0), int64(0), int64(0))
 }
 
-type t4intptr_t = int64
+type t3intptr_t = int64
 
 // xinstall_handler is defined at timer_create.c:51:13
 func xinstall_handler(tls TLS) {
 	panic(`TODO`)
 }
 
+// Npthread_attr_t is defined at alltypes.h:66:9
 type t7pthread_attr_t = struct {
 	F__u struct {
 		F__i  [0][14]int32
@@ -73085,16 +70419,19 @@ func x2start(tls TLS, _arg uintptr /* *void */) (r uintptr /* *void */) {
 
 type t84uintptr_t = uint64
 
-type t406size_t = uint64
+type t296size_t = uint64
 
+// S__ptcb is defined at pthread.h:200:1
 type s66__ptcb = struct {
 	F__f    uintptr // *func(TLS, uintptr)
 	F__x    uintptr // *void
 	F__next uintptr // *S__ptcb
 }
 
+// S__locale_struct is defined at libc.h:10:1
 type s181__locale_struct = struct{ Fcat [6]uintptr }
 
+// Npthread_barrier_t is defined at alltypes.h:96:9
 type t1pthread_barrier_t = struct {
 	F__u struct {
 		F__i  [0][8]int32
@@ -73136,7 +70473,106 @@ func Xtimer_delete(tls TLS, _t uintptr /* Ttimer_t = *void */) (r int32) {
 	return int32(x43__syscall1(tls, int64(226), int64(_t)))
 }
 
+// S__pthread is defined at pthread_impl.h:15:1
 type s67__pthread = struct {
+	Fself          uintptr // *S__pthread
+	Fdtv           uintptr // **void
+	Funused1       uintptr // *void
+	Funused2       uintptr // *void
+	Fsysinfo       uint64
+	Fcanary        uint64
+	Fcanary2       uint64
+	Ftid           int32
+	Ferrno_val     int32
+	Fdetach_state  int32
+	Fcancel        int32
+	Fcanceldisable uint8
+	Fcancelasync   uint8
+	F74            uint8
+	Fmap_base      uintptr // *uint8
+	Fmap_size      uint64
+	Fstack         uintptr // *void
+	Fstack_size    uint64
+	Fguard_size    uint64
+	Fstart_arg     uintptr // *void
+	Fstart         uintptr // *func(TLS, uintptr) uintptr
+	Fresult        uintptr // *void
+	Fcancelbuf     uintptr // *S__ptcb
+	Ftsd           uintptr // **void
+	Frobust_list   struct {
+		Fhead    uintptr
+		Foff     int64
+		Fpending uintptr
+	}
+	Ftimer_id         int32
+	Flocale           uintptr // Tlocale_t = *S__locale_struct
+	Fkilllock         [1]int32
+	Fdlerror_buf      uintptr // *int8
+	Fstdio_locks      uintptr // *void
+	Fos_thread_locked int32
+	Fcanary_at_end    uint64
+	Fdtv_copy         uintptr // **void
+}
+
+type t4intptr_t = int64
+
+type t85uintptr_t = uint64
+
+// xa_store is defined at atomic_arch.h:96:20
+func x7a_store(tls TLS, _p uintptr /* *int32 */, _x int32) {
+	panic(`TODO`)
+}
+
+// x__wake is defined at pthread_impl.h:157:20
+func x15__wake(tls TLS, _addr uintptr /* *void */, _cnt int32, _priv int32) {
+	if _priv != 0 {
+		_priv = int32(128)
+	}
+	if _cnt < int32(0) {
+		_cnt = int32(0x7fffffff)
+	}
+	if !(x69__syscall3(tls, int64(202), int64(_addr), int64(int32(1)|_priv), int64(_cnt)) != int64(-38)) {
+		x69__syscall3(tls, int64(202), int64(_addr), int64(1), int64(_cnt))
+	}
+}
+
+// x__syscall1 is defined at syscall_arch.h:14:22
+func x43__syscall1(tls TLS, _n int64, _a1 int64) (r int64) {
+	return X__syscall(tls, _n, _a1, int64(0), int64(0), int64(0), int64(0), int64(0))
+}
+
+type t297size_t = uint64
+
+// S__ptcb is defined at pthread.h:200:1
+type s67__ptcb = struct {
+	F__f    uintptr // *func(TLS, uintptr)
+	F__x    uintptr // *void
+	F__next uintptr // *S__ptcb
+}
+
+// S__locale_struct is defined at libc.h:10:1
+type s182__locale_struct = struct{ Fcat [6]uintptr }
+
+// x__syscall3 is defined at syscall_arch.h:31:22
+func x69__syscall3(tls TLS, _n int64, _a1 int64, _a2 int64, _a3 int64) (r int64) {
+	return X__syscall(tls, _n, _a1, _a2, _a3, int64(0), int64(0), int64(0))
+}
+
+// linking timer_getoverrun.o
+
+// Xtimer_getoverrun is defined at timer_getoverrun.c:5:5
+func Xtimer_getoverrun(tls TLS, _t uintptr /* Ttimer_t = *void */) (r int32) {
+	var _td uintptr // Tpthread_t = *S__pthread
+
+	if int64(_t) < int64(0) {
+		_td = uintptr(uint64(_t) << (uint(1) % 64))
+		_t = uintptr(uint64(*(*int32)(unsafe.Pointer(_td + 184)) & int32(0x7fffffff)))
+	}
+	return int32(X__syscall_ret(tls, uint64(x44__syscall1(tls, int64(225), int64(_t)))))
+}
+
+// S__pthread is defined at pthread_impl.h:15:1
+type s68__pthread = struct {
 	Fself          uintptr // *S__pthread
 	Fdtv           uintptr // **void
 	Funused1       uintptr // *void
@@ -73178,60 +70614,46 @@ type s67__pthread = struct {
 
 type t5intptr_t = int64
 
-type t85uintptr_t = uint64
-
-// xa_store is defined at atomic_arch.h:96:20
-func x7a_store(tls TLS, _p uintptr /* *int32 */, _x int32) {
-	panic(`TODO`)
-}
-
-// x__wake is defined at pthread_impl.h:157:20
-func x15__wake(tls TLS, _addr uintptr /* *void */, _cnt int32, _priv int32) {
-	if _priv != 0 {
-		_priv = int32(128)
-	}
-	if _cnt < int32(0) {
-		_cnt = int32(0x7fffffff)
-	}
-	if !(x69__syscall3(tls, int64(202), int64(_addr), int64(int32(1)|_priv), int64(_cnt)) != int64(-38)) {
-		x69__syscall3(tls, int64(202), int64(_addr), int64(1), int64(_cnt))
-	}
-}
+type t86uintptr_t = uint64
 
 // x__syscall1 is defined at syscall_arch.h:14:22
-func x43__syscall1(tls TLS, _n int64, _a1 int64) (r int64) {
+func x44__syscall1(tls TLS, _n int64, _a1 int64) (r int64) {
 	return X__syscall(tls, _n, _a1, int64(0), int64(0), int64(0), int64(0), int64(0))
 }
 
-type t407size_t = uint64
+type t298size_t = uint64
 
-type s67__ptcb = struct {
+// S__ptcb is defined at pthread.h:200:1
+type s68__ptcb = struct {
 	F__f    uintptr // *func(TLS, uintptr)
 	F__x    uintptr // *void
 	F__next uintptr // *S__ptcb
 }
 
-type s182__locale_struct = struct{ Fcat [6]uintptr }
+// S__locale_struct is defined at libc.h:10:1
+type s183__locale_struct = struct{ Fcat [6]uintptr }
 
-// x__syscall3 is defined at syscall_arch.h:31:22
-func x69__syscall3(tls TLS, _n int64, _a1 int64, _a2 int64, _a3 int64) (r int64) {
-	return X__syscall(tls, _n, _a1, _a2, _a3, int64(0), int64(0), int64(0))
-}
+// linking timer_gettime.o
 
-// linking timer_getoverrun.o
-
-// Xtimer_getoverrun is defined at timer_getoverrun.c:5:5
-func Xtimer_getoverrun(tls TLS, _t uintptr /* Ttimer_t = *void */) (r int32) {
+// Xtimer_gettime is defined at timer_gettime.c:5:5
+func Xtimer_gettime(tls TLS, _t uintptr /* Ttimer_t = *void */, _val uintptr /* *Sitimerspec */) (r int32) {
 	var _td uintptr // Tpthread_t = *S__pthread
 
 	if int64(_t) < int64(0) {
 		_td = uintptr(uint64(_t) << (uint(1) % 64))
 		_t = uintptr(uint64(*(*int32)(unsafe.Pointer(_td + 184)) & int32(0x7fffffff)))
 	}
-	return int32(X__syscall_ret(tls, uint64(x44__syscall1(tls, int64(225), int64(_t)))))
+	return int32(X__syscall_ret(tls, uint64(x60__syscall2(tls, int64(224), int64(_t), int64(_val)))))
 }
 
-type s68__pthread = struct {
+// Sitimerspec is defined at time.h:80:1
+type s1itimerspec = struct {
+	Fit_interval s63timespec
+	Fit_value    s63timespec
+}
+
+// S__pthread is defined at pthread_impl.h:15:1
+type s69__pthread = struct {
 	Fself          uintptr // *S__pthread
 	Fdtv           uintptr // **void
 	Funused1       uintptr // *void
@@ -73273,42 +70695,54 @@ type s68__pthread = struct {
 
 type t6intptr_t = int64
 
-type t86uintptr_t = uint64
+type t87uintptr_t = uint64
 
-// x__syscall1 is defined at syscall_arch.h:14:22
-func x44__syscall1(tls TLS, _n int64, _a1 int64) (r int64) {
-	return X__syscall(tls, _n, _a1, int64(0), int64(0), int64(0), int64(0), int64(0))
+// x__syscall2 is defined at syscall_arch.h:22:22
+func x60__syscall2(tls TLS, _n int64, _a1 int64, _a2 int64) (r int64) {
+	return X__syscall(tls, _n, _a1, _a2, int64(0), int64(0), int64(0), int64(0))
 }
 
-type t408size_t = uint64
+// Stimespec is defined at alltypes.h:270:1
+type s63timespec = struct {
+	Ftv_sec  int64
+	Ftv_nsec int64
+}
 
-type s68__ptcb = struct {
+type t299size_t = uint64
+
+// S__ptcb is defined at pthread.h:200:1
+type s69__ptcb = struct {
 	F__f    uintptr // *func(TLS, uintptr)
 	F__x    uintptr // *void
 	F__next uintptr // *S__ptcb
 }
 
-type s183__locale_struct = struct{ Fcat [6]uintptr }
+// S__locale_struct is defined at libc.h:10:1
+type s184__locale_struct = struct{ Fcat [6]uintptr }
 
-// linking timer_gettime.o
+type t82time_t = int64
 
-// Xtimer_gettime is defined at timer_gettime.c:5:5
-func Xtimer_gettime(tls TLS, _t uintptr /* Ttimer_t = *void */, _val uintptr /* *Sitimerspec */) (r int32) {
+// linking timer_settime.o
+
+// Xtimer_settime is defined at timer_settime.c:5:5
+func Xtimer_settime(tls TLS, _t uintptr /* Ttimer_t = *void */, _flags int32, _val uintptr /* *Sitimerspec */, _old uintptr /* *Sitimerspec */) (r int32) {
 	var _td uintptr // Tpthread_t = *S__pthread
 
 	if int64(_t) < int64(0) {
 		_td = uintptr(uint64(_t) << (uint(1) % 64))
 		_t = uintptr(uint64(*(*int32)(unsafe.Pointer(_td + 184)) & int32(0x7fffffff)))
 	}
-	return int32(X__syscall_ret(tls, uint64(x60__syscall2(tls, int64(224), int64(_t), int64(_val)))))
+	return int32(X__syscall_ret(tls, uint64(x34__syscall4(tls, int64(223), int64(_t), int64(_flags), int64(_val), int64(_old)))))
 }
 
-type s1itimerspec = struct {
-	Fit_interval s63timespec
-	Fit_value    s63timespec
+// Sitimerspec is defined at time.h:80:1
+type s2itimerspec = struct {
+	Fit_interval s64timespec
+	Fit_value    s64timespec
 }
 
-type s69__pthread = struct {
+// S__pthread is defined at pthread_impl.h:15:1
+type s70__pthread = struct {
 	Fself          uintptr // *S__pthread
 	Fdtv           uintptr // **void
 	Funused1       uintptr // *void
@@ -73350,90 +70784,6 @@ type s69__pthread = struct {
 
 type t7intptr_t = int64
 
-type t87uintptr_t = uint64
-
-// x__syscall2 is defined at syscall_arch.h:22:22
-func x60__syscall2(tls TLS, _n int64, _a1 int64, _a2 int64) (r int64) {
-	return X__syscall(tls, _n, _a1, _a2, int64(0), int64(0), int64(0), int64(0))
-}
-
-type s63timespec = struct {
-	Ftv_sec  int64
-	Ftv_nsec int64
-}
-
-type t409size_t = uint64
-
-type s69__ptcb = struct {
-	F__f    uintptr // *func(TLS, uintptr)
-	F__x    uintptr // *void
-	F__next uintptr // *S__ptcb
-}
-
-type s184__locale_struct = struct{ Fcat [6]uintptr }
-
-type t83time_t = int64
-
-// linking timer_settime.o
-
-// Xtimer_settime is defined at timer_settime.c:5:5
-func Xtimer_settime(tls TLS, _t uintptr /* Ttimer_t = *void */, _flags int32, _val uintptr /* *Sitimerspec */, _old uintptr /* *Sitimerspec */) (r int32) {
-	var _td uintptr // Tpthread_t = *S__pthread
-
-	if int64(_t) < int64(0) {
-		_td = uintptr(uint64(_t) << (uint(1) % 64))
-		_t = uintptr(uint64(*(*int32)(unsafe.Pointer(_td + 184)) & int32(0x7fffffff)))
-	}
-	return int32(X__syscall_ret(tls, uint64(x34__syscall4(tls, int64(223), int64(_t), int64(_flags), int64(_val), int64(_old)))))
-}
-
-type s2itimerspec = struct {
-	Fit_interval s64timespec
-	Fit_value    s64timespec
-}
-
-type s70__pthread = struct {
-	Fself          uintptr // *S__pthread
-	Fdtv           uintptr // **void
-	Funused1       uintptr // *void
-	Funused2       uintptr // *void
-	Fsysinfo       uint64
-	Fcanary        uint64
-	Fcanary2       uint64
-	Ftid           int32
-	Ferrno_val     int32
-	Fdetach_state  int32
-	Fcancel        int32
-	Fcanceldisable uint8
-	Fcancelasync   uint8
-	F74            uint8
-	Fmap_base      uintptr // *uint8
-	Fmap_size      uint64
-	Fstack         uintptr // *void
-	Fstack_size    uint64
-	Fguard_size    uint64
-	Fstart_arg     uintptr // *void
-	Fstart         uintptr // *func(TLS, uintptr) uintptr
-	Fresult        uintptr // *void
-	Fcancelbuf     uintptr // *S__ptcb
-	Ftsd           uintptr // **void
-	Frobust_list   struct {
-		Fhead    uintptr
-		Foff     int64
-		Fpending uintptr
-	}
-	Ftimer_id         int32
-	Flocale           uintptr // Tlocale_t = *S__locale_struct
-	Fkilllock         [1]int32
-	Fdlerror_buf      uintptr // *int8
-	Fstdio_locks      uintptr // *void
-	Fos_thread_locked int32
-	Fcanary_at_end    uint64
-	Fdtv_copy         uintptr // **void
-}
-
-type t8intptr_t = int64
-
 type t88uintptr_t = uint64
 
 // x__syscall4 is defined at syscall_arch.h:40:22
@@ -73441,22 +70791,25 @@ func x34__syscall4(tls TLS, _n int64, _a1 int64, _a2 int64, _a3 int64, _a4 int64
 	return X__syscall(tls, _n, _a1, _a2, _a3, _a4, int64(0), int64(0))
 }
 
+// Stimespec is defined at alltypes.h:270:1
 type s64timespec = struct {
 	Ftv_sec  int64
 	Ftv_nsec int64
 }
 
-type t410size_t = uint64
+type t300size_t = uint64
 
+// S__ptcb is defined at pthread.h:200:1
 type s70__ptcb = struct {
 	F__f    uintptr // *func(TLS, uintptr)
 	F__x    uintptr // *void
 	F__next uintptr // *S__ptcb
 }
 
+// S__locale_struct is defined at libc.h:10:1
 type s185__locale_struct = struct{ Fcat [6]uintptr }
 
-type t84time_t = int64
+type t83time_t = int64
 
 // linking times.o
 
@@ -73465,8 +70818,7 @@ func Xtimes(tls TLS, _tms uintptr /* *Stms */) (r int64) {
 	return x45__syscall1(tls, int64(100), int64(_tms))
 }
 
-type t7clock_t = int64
-
+// Stms is defined at times.h:11:1
 type Stms = struct {
 	Ftms_utime  int64
 	Ftms_stime  int64
@@ -73478,6 +70830,8 @@ type Stms = struct {
 func x45__syscall1(tls TLS, _n int64, _a1 int64) (r int64) {
 	return X__syscall(tls, _n, _a1, int64(0), int64(0), int64(0), int64(0), int64(0))
 }
+
+type t6clock_t = int64
 
 // linking timespec_get.o
 
@@ -73495,14 +70849,13 @@ func Xtimespec_get(tls TLS, _ts uintptr /* *Stimespec */, _base int32) (r int32)
 	return _base
 }
 
+// Stimespec is defined at alltypes.h:270:1
 type s65timespec = struct {
 	Ftv_sec  int64
 	Ftv_nsec int64
 }
 
-type t85time_t = int64
-
-type t26clockid_t = int32
+type t84time_t = int64
 
 // linking utime.o
 
@@ -73525,17 +70878,19 @@ func Xutime(tls TLS, _path uintptr /* *int8 */, _times uintptr /* *Sutimbuf */) 
 	}(), int32(0))
 }
 
+// Sutimbuf is defined at utime.h:12:1
 type Sutimbuf = struct {
 	Factime  int64
 	Fmodtime int64
 }
 
+// Stimespec is defined at alltypes.h:270:1
 type s66timespec = struct {
 	Ftv_sec  int64
 	Ftv_nsec int64
 }
 
-type t86time_t = int64
+type t85time_t = int64
 
 // linking wcsftime.o
 
@@ -73636,8 +70991,7 @@ func Xwcsftime(tls TLS, _wcs uintptr /* *Twchar_t = int32 */, _n uint64, _f uint
 	return X__wcsftime_l(tls, _wcs, _n, _f, _tm, *(*uintptr)(unsafe.Pointer(x49__pthread_self(tls) + 192)))
 }
 
-type t411size_t = uint64
-
+// Stm is defined at time.h:38:1
 type s18tm = struct {
 	Ftm_sec    int32
 	Ftm_min    int32
@@ -73652,9 +71006,12 @@ type s18tm = struct {
 	Ftm_zone   uintptr // *int8
 }
 
+// S__locale_struct is defined at libc.h:10:1
 type s186__locale_struct = struct{ Fcat [6]uintptr }
 
-type t56wchar_t = int32
+type t301size_t = uint64
+
+type t53wchar_t = int32
 
 // x__pthread_self is defined at pthread_arch.h:1:30
 func x49__pthread_self(tls TLS) (r uintptr /* *S__pthread */) {
@@ -73662,6 +71019,7 @@ func x49__pthread_self(tls TLS) (r uintptr /* *S__pthread */) {
 	return r
 }
 
+// S__pthread is defined at pthread_impl.h:15:1
 type s71__pthread = struct {
 	Fself          uintptr // *S__pthread
 	Fdtv           uintptr // **void
@@ -73704,6 +71062,7 @@ type s71__pthread = struct {
 
 type t89uintptr_t = uint64
 
+// S__ptcb is defined at pthread.h:200:1
 type s71__ptcb = struct {
 	F__f    uintptr // *func(TLS, uintptr)
 	F__x    uintptr // *void
@@ -73768,10 +71127,6 @@ func Xchown(tls TLS, _path uintptr /* *int8 */, _uid uint32, _gid uint32) (r int
 	return int32(X__syscall_ret(tls, uint64(x70__syscall3(tls, int64(92), int64(_path), int64(_uid), int64(_gid)))))
 }
 
-type t33uid_t = uint32
-
-type t35gid_t = uint32
-
 // x__syscall3 is defined at syscall_arch.h:31:22
 func x70__syscall3(tls TLS, _n int64, _a1 int64, _a2 int64, _a3 int64) (r int64) {
 	return X__syscall(tls, _n, _a1, _a2, _a3, int64(0), int64(0), int64(0))
@@ -73792,11 +71147,9 @@ func Xclose(tls TLS, _fd int32) (r int32) {
 }
 
 // xdummy is defined at close.c:6:12
-func x18dummy(tls TLS, _fd int32) (r int32) {
+func x15dummy(tls TLS, _fd int32) (r int32) {
 	return _fd
 }
-
-type t33syscall_arg_t = int64
 
 // linking ctermid.o
 
@@ -73918,8 +71271,9 @@ func Xfaccessat(tls TLS, _fd int32, _filename uintptr /* *int8 */, _amode int32,
 	return int32(X__syscall_ret(tls, uint64(*(*int32)(unsafe.Pointer(_ret)))))
 }
 
-type t49pid_t = int32
+type t36pid_t = int32
 
+// Sctx is defined at faccessat.c:7:1
 type s1ctx = struct {
 	Ffd       int32
 	Ffilename uintptr // *int8
@@ -73927,9 +71281,9 @@ type s1ctx = struct {
 	Fp        int32
 }
 
-type t34uid_t = uint32
+type t32uid_t = uint32
 
-type t36gid_t = uint32
+type t34gid_t = uint32
 
 // x__syscall4 is defined at syscall_arch.h:40:22
 func x35__syscall4(tls TLS, _n int64, _a1 int64, _a2 int64, _a3 int64, _a4 int64) (r int64) {
@@ -74019,10 +71373,6 @@ func Xfchown(tls TLS, _fd int32, _uid uint32, _gid uint32) (r int32) {
 	return int32(X__syscall_ret(tls, uint64(x73__syscall3(tls, int64(92), int64(_buf), int64(_uid), int64(_gid)))))
 }
 
-type t35uid_t = uint32
-
-type t37gid_t = uint32
-
 // x__syscall3 is defined at syscall_arch.h:31:22
 func x73__syscall3(tls TLS, _n int64, _a1 int64, _a2 int64, _a3 int64) (r int64) {
 	return X__syscall(tls, _n, _a1, _a2, _a3, int64(0), int64(0), int64(0))
@@ -74040,10 +71390,6 @@ func Xfchownat(tls TLS, _fd int32, _path uintptr /* *int8 */, _uid uint32, _gid 
 	return int32(X__syscall_ret(tls, uint64(x8__syscall5(tls, int64(260), int64(_fd), int64(_path), int64(_uid), int64(_gid), int64(_flag)))))
 }
 
-type t36uid_t = uint32
-
-type t38gid_t = uint32
-
 // x__syscall5 is defined at syscall_arch.h:50:22
 func x8__syscall5(tls TLS, _n int64, _a1 int64, _a2 int64, _a3 int64, _a4 int64, _a5 int64) (r int64) {
 	return X__syscall(tls, _n, _a1, _a2, _a3, _a4, _a5, int64(0))
@@ -74056,16 +71402,12 @@ func Xfdatasync(tls TLS, _fd int32) (r int32) {
 	return int32(X__syscall_ret(tls, uint64(X__syscall_cp(tls, int64(75), int64(_fd), int64(0), int64(0), int64(0), int64(0), int64(0)))))
 }
 
-type t34syscall_arg_t = int64
-
 // linking fsync.o
 
 // Xfsync is defined at fsync.c:4:5
 func Xfsync(tls TLS, _fd int32) (r int32) {
 	return int32(X__syscall_ret(tls, uint64(X__syscall_cp(tls, int64(74), int64(_fd), int64(0), int64(0), int64(0), int64(0), int64(0)))))
 }
-
-type t35syscall_arg_t = int64
 
 // linking ftruncate.o
 
@@ -74074,19 +71416,19 @@ func Xftruncate(tls TLS, _fd int32, _length int64) (r int32) {
 	return int32(X__syscall_ret(tls, uint64(x67__syscall2(tls, int64(77), int64(_fd), _length))))
 }
 
-type t131off_t = int64
-
 // x__syscall2 is defined at syscall_arch.h:22:22
 func x67__syscall2(tls TLS, _n int64, _a1 int64, _a2 int64) (r int64) {
 	return X__syscall(tls, _n, _a1, _a2, int64(0), int64(0), int64(0), int64(0))
 }
+
+type t129off_t = int64
 
 // linking getcwd.o
 
 // Xgetcwd is defined at getcwd.c:7:6
 func Xgetcwd(tls TLS, _buf uintptr /* *int8 */, _size uint64) (r uintptr /* *int8 */) {
 	var (
-		_tmp uintptr // **int8
+		_tmp uintptr // *int8
 		_ret int64
 	)
 	/*TODO initDeclarator: tmp is VLA */
@@ -74111,7 +71453,7 @@ func Xgetcwd(tls TLS, _buf uintptr /* *int8 */, _size uint64) (r uintptr /* *int
 	return _buf
 }
 
-type t412size_t = uint64
+type t302size_t = uint64
 
 // x__syscall2 is defined at syscall_arch.h:22:22
 func x68__syscall2(tls TLS, _n int64, _a1 int64, _a2 int64) (r int64) {
@@ -74125,8 +71467,6 @@ func Xgetegid(tls TLS) (r uint32) {
 	return uint32(x7__syscall0(tls, int64(108)))
 }
 
-type t39gid_t = uint32
-
 // x__syscall0 is defined at syscall_arch.h:6:22
 func x7__syscall0(tls TLS, _n int64) (r int64) {
 	return X__syscall(tls, _n, int64(0), int64(0), int64(0), int64(0), int64(0), int64(0))
@@ -74138,8 +71478,6 @@ func x7__syscall0(tls TLS, _n int64) (r int64) {
 func Xgeteuid(tls TLS) (r uint32) {
 	return uint32(x8__syscall0(tls, int64(107)))
 }
-
-type t37uid_t = uint32
 
 // x__syscall0 is defined at syscall_arch.h:6:22
 func x8__syscall0(tls TLS, _n int64) (r int64) {
@@ -74153,8 +71491,6 @@ func Xgetgid(tls TLS) (r uint32) {
 	return uint32(x9__syscall0(tls, int64(104)))
 }
 
-type t40gid_t = uint32
-
 // x__syscall0 is defined at syscall_arch.h:6:22
 func x9__syscall0(tls TLS, _n int64) (r int64) {
 	return X__syscall(tls, _n, int64(0), int64(0), int64(0), int64(0), int64(0), int64(0))
@@ -74163,7 +71499,7 @@ func x9__syscall0(tls TLS, _n int64) (r int64) {
 // linking getgroups.o
 
 // Xgetgroups is defined at getgroups.c:4:5
-func Xgetgroups(tls TLS, _count int32, _list uintptr /* uintptr */) (r int32) {
+func Xgetgroups(tls TLS, _count int32, _list uintptr /* *Tgid_t = uint32 */) (r int32) {
 	return int32(X__syscall_ret(tls, uint64(x69__syscall2(tls, int64(115), int64(_count), int64(_list)))))
 }
 
@@ -74198,8 +71534,9 @@ func Xgethostname(tls TLS, _name uintptr /* *int8 */, _len uint64) (r int32) {
 	return 0
 }
 
-type t413size_t = uint64
+type t303size_t = uint64
 
+// Sutsname is defined at utsname.h:10:1
 type s2utsname = struct {
 	Fsysname      [65]int8
 	Fnodename     [65]int8
@@ -74233,7 +71570,7 @@ func Xgetlogin_r(tls TLS, _name uintptr /* *int8 */, _size uint64) (r int32) {
 	return 0
 }
 
-type t414size_t = uint64
+type t304size_t = uint64
 
 // linking getpgid.o
 
@@ -74241,8 +71578,6 @@ type t414size_t = uint64
 func Xgetpgid(tls TLS, _pid int32) (r int32) {
 	return int32(X__syscall_ret(tls, uint64(x51__syscall1(tls, int64(121), int64(_pid)))))
 }
-
-type t50pid_t = int32
 
 // x__syscall1 is defined at syscall_arch.h:14:22
 func x51__syscall1(tls TLS, _n int64, _a1 int64) (r int64) {
@@ -74256,8 +71591,6 @@ func Xgetpgrp(tls TLS) (r int32) {
 	return int32(x52__syscall1(tls, int64(121), int64(0)))
 }
 
-type t51pid_t = int32
-
 // x__syscall1 is defined at syscall_arch.h:14:22
 func x52__syscall1(tls TLS, _n int64, _a1 int64) (r int64) {
 	return X__syscall(tls, _n, _a1, int64(0), int64(0), int64(0), int64(0), int64(0))
@@ -74269,8 +71602,6 @@ func x52__syscall1(tls TLS, _n int64, _a1 int64) (r int64) {
 func Xgetpid(tls TLS) (r int32) {
 	return int32(x10__syscall0(tls, int64(39)))
 }
-
-type t52pid_t = int32
 
 // x__syscall0 is defined at syscall_arch.h:6:22
 func x10__syscall0(tls TLS, _n int64) (r int64) {
@@ -74284,8 +71615,6 @@ func Xgetppid(tls TLS) (r int32) {
 	return int32(x11__syscall0(tls, int64(110)))
 }
 
-type t53pid_t = int32
-
 // x__syscall0 is defined at syscall_arch.h:6:22
 func x11__syscall0(tls TLS, _n int64) (r int64) {
 	return X__syscall(tls, _n, int64(0), int64(0), int64(0), int64(0), int64(0), int64(0))
@@ -74298,8 +71627,6 @@ func Xgetsid(tls TLS, _pid int32) (r int32) {
 	return int32(X__syscall_ret(tls, uint64(x53__syscall1(tls, int64(124), int64(_pid)))))
 }
 
-type t54pid_t = int32
-
 // x__syscall1 is defined at syscall_arch.h:14:22
 func x53__syscall1(tls TLS, _n int64, _a1 int64) (r int64) {
 	return X__syscall(tls, _n, _a1, int64(0), int64(0), int64(0), int64(0), int64(0))
@@ -74311,8 +71638,6 @@ func x53__syscall1(tls TLS, _n int64, _a1 int64) (r int64) {
 func Xgetuid(tls TLS) (r uint32) {
 	return uint32(x12__syscall0(tls, int64(102)))
 }
-
-type t38uid_t = uint32
 
 // x__syscall0 is defined at syscall_arch.h:6:22
 func x12__syscall0(tls TLS, _n int64) (r int64) {
@@ -74329,6 +71654,7 @@ func Xisatty(tls TLS, _fd int32) (r int32) {
 	return bool2int(x74__syscall3(tls, int64(16), int64(_fd), int64(21523), int64(_wsz)) == 0)
 }
 
+// Swinsize is defined at ioctl.h:96:1
 type s4winsize = struct {
 	Fws_row    uint16
 	Fws_col    uint16
@@ -74347,10 +71673,6 @@ func x74__syscall3(tls TLS, _n int64, _a1 int64, _a2 int64, _a3 int64) (r int64)
 func Xlchown(tls TLS, _path uintptr /* *int8 */, _uid uint32, _gid uint32) (r int32) {
 	return int32(X__syscall_ret(tls, uint64(x75__syscall3(tls, int64(94), int64(_path), int64(_uid), int64(_gid)))))
 }
-
-type t39uid_t = uint32
-
-type t41gid_t = uint32
 
 // x__syscall3 is defined at syscall_arch.h:31:22
 func x75__syscall3(tls TLS, _n int64, _a1 int64, _a2 int64, _a3 int64) (r int64) {
@@ -74388,12 +71710,12 @@ func Xlseek(tls TLS, _fd int32, _offset int64, _whence int32) (r int64) {
 	return X__syscall_ret(tls, uint64(x76__syscall3(tls, int64(8), int64(_fd), _offset, int64(_whence))))
 }
 
-type t132off_t = int64
-
 // x__syscall3 is defined at syscall_arch.h:31:22
 func x76__syscall3(tls TLS, _n int64, _a1 int64, _a2 int64, _a3 int64) (r int64) {
 	return X__syscall(tls, _n, _a1, _a2, _a3, int64(0), int64(0), int64(0))
 }
+
+type t130off_t = int64
 
 // linking nice.o
 
@@ -74417,8 +71739,6 @@ func Xnice(tls TLS, _inc int32) (r int32) {
 	return _prio
 }
 
-type t3id_t = uint32
-
 // linking pause.o
 
 // Xpause is defined at pause.c:6:5
@@ -74426,12 +71746,10 @@ func Xpause(tls TLS) (r int32) {
 	return int32(X__syscall_ret(tls, uint64(X__syscall_cp(tls, int64(34), int64(0), int64(0), int64(0), int64(0), int64(0), int64(0)))))
 }
 
-type t36syscall_arg_t = int64
-
 // linking pipe.o
 
 // Xpipe is defined at pipe.c:4:5
-func Xpipe(tls TLS, _fd uintptr /* [2]int32 */) (r int32) {
+func Xpipe(tls TLS, _fd uintptr /* *int32 */) (r int32) {
 	return int32(X__syscall_ret(tls, uint64(x54__syscall1(tls, int64(22), int64(_fd)))))
 }
 
@@ -74443,7 +71761,7 @@ func x54__syscall1(tls TLS, _n int64, _a1 int64) (r int64) {
 // linking pipe2.o
 
 // Xpipe2 is defined at pipe2.c:6:5
-func Xpipe2(tls TLS, _fd uintptr /* [2]int32 */, _flag int32) (r int32) {
+func Xpipe2(tls TLS, _fd uintptr /* *int32 */, _flag int32) (r int32) {
 	var _ret int32
 
 	if _flag == 0 {
@@ -74492,13 +71810,7 @@ func Xpread(tls TLS, _fd int32, _buf uintptr /* *void */, _size uint64, _ofs int
 	return X__syscall_ret(tls, uint64(X__syscall_cp(tls, int64(17), int64(_fd), int64(_buf), int64(_size), _ofs, int64(0), int64(0))))
 }
 
-type t415size_t = uint64
-
-type t133off_t = int64
-
-type t47ssize_t = int64
-
-type t37syscall_arg_t = int64
+type t131off_t = int64
 
 // linking preadv.o
 
@@ -74507,18 +71819,15 @@ func Xpreadv(tls TLS, _fd int32, _iov uintptr /* *Siovec */, _count int32, _ofs 
 	return X__syscall_ret(tls, uint64(X__syscall_cp(tls, int64(295), int64(_fd), int64(_iov), int64(_count), _ofs, _ofs>>(uint(32)%64), int64(0))))
 }
 
-type t134off_t = int64
-
-type t48ssize_t = int64
-
+// Siovec is defined at alltypes.h:380:1
 type s8iovec = struct {
 	Fiov_base uintptr // *void
 	Fiov_len  uint64
 }
 
-type t416size_t = uint64
+type t132off_t = int64
 
-type t38syscall_arg_t = int64
+type t305size_t = uint64
 
 // linking pwrite.o
 
@@ -74527,13 +71836,7 @@ func Xpwrite(tls TLS, _fd int32, _buf uintptr /* *void */, _size uint64, _ofs in
 	return X__syscall_ret(tls, uint64(X__syscall_cp(tls, int64(18), int64(_fd), int64(_buf), int64(_size), _ofs, int64(0), int64(0))))
 }
 
-type t417size_t = uint64
-
-type t135off_t = int64
-
-type t49ssize_t = int64
-
-type t39syscall_arg_t = int64
+type t133off_t = int64
 
 // linking pwritev.o
 
@@ -74542,18 +71845,15 @@ func Xpwritev(tls TLS, _fd int32, _iov uintptr /* *Siovec */, _count int32, _ofs
 	return X__syscall_ret(tls, uint64(X__syscall_cp(tls, int64(296), int64(_fd), int64(_iov), int64(_count), _ofs, _ofs>>(uint(32)%64), int64(0))))
 }
 
-type t136off_t = int64
-
-type t50ssize_t = int64
-
+// Siovec is defined at alltypes.h:380:1
 type s9iovec = struct {
 	Fiov_base uintptr // *void
 	Fiov_len  uint64
 }
 
-type t418size_t = uint64
+type t134off_t = int64
 
-type t40syscall_arg_t = int64
+type t306size_t = uint64
 
 // linking read.o
 
@@ -74562,22 +71862,12 @@ func Xread(tls TLS, _fd int32, _buf uintptr /* *void */, _count uint64) (r int64
 	return X__syscall_ret(tls, uint64(X__syscall_cp(tls, int64(0), int64(_fd), int64(_buf), int64(_count), int64(0), int64(0), int64(0))))
 }
 
-type t419size_t = uint64
-
-type t51ssize_t = int64
-
-type t41syscall_arg_t = int64
-
 // linking readlink.o
 
 // Xreadlink is defined at readlink.c:5:9
 func Xreadlink(tls TLS, _path uintptr /* *int8 */, _buf uintptr /* *int8 */, _bufsize uint64) (r int64) {
 	return X__syscall_ret(tls, uint64(x78__syscall3(tls, int64(89), int64(_path), int64(_buf), int64(_bufsize))))
 }
-
-type t420size_t = uint64
-
-type t52ssize_t = int64
 
 // x__syscall3 is defined at syscall_arch.h:31:22
 func x78__syscall3(tls TLS, _n int64, _a1 int64, _a2 int64, _a3 int64) (r int64) {
@@ -74591,10 +71881,6 @@ func Xreadlinkat(tls TLS, _fd int32, _path uintptr /* *int8 */, _buf uintptr /* 
 	return X__syscall_ret(tls, uint64(x36__syscall4(tls, int64(267), int64(_fd), int64(_path), int64(_buf), int64(_bufsize))))
 }
 
-type t421size_t = uint64
-
-type t53ssize_t = int64
-
 // x__syscall4 is defined at syscall_arch.h:40:22
 func x36__syscall4(tls TLS, _n int64, _a1 int64, _a2 int64, _a3 int64, _a4 int64) (r int64) {
 	return X__syscall(tls, _n, _a1, _a2, _a3, _a4, int64(0), int64(0))
@@ -74607,16 +71893,13 @@ func Xreadv(tls TLS, _fd int32, _iov uintptr /* *Siovec */, _count int32) (r int
 	return X__syscall_ret(tls, uint64(X__syscall_cp(tls, int64(19), int64(_fd), int64(_iov), int64(_count), int64(0), int64(0), int64(0))))
 }
 
-type t54ssize_t = int64
-
+// Siovec is defined at alltypes.h:380:1
 type s10iovec = struct {
 	Fiov_base uintptr // *void
 	Fiov_len  uint64
 }
 
-type t422size_t = uint64
-
-type t42syscall_arg_t = int64
+type t307size_t = uint64
 
 // linking renameat.o
 
@@ -74649,16 +71932,12 @@ func Xsetegid(tls TLS, _egid uint32) (r int32) {
 	return X__setxid(tls, int32(119), int32(-1), int32(_egid), int32(-1))
 }
 
-type t42gid_t = uint32
-
 // linking seteuid.o
 
 // Xseteuid is defined at seteuid.c:5:5
 func Xseteuid(tls TLS, _euid uint32) (r int32) {
 	return X__setxid(tls, int32(117), int32(-1), int32(_euid), int32(-1))
 }
-
-type t40uid_t = uint32
 
 // linking setgid.o
 
@@ -74667,16 +71946,12 @@ func Xsetgid(tls TLS, _gid uint32) (r int32) {
 	return X__setxid(tls, int32(106), int32(_gid), int32(0), int32(0))
 }
 
-type t43gid_t = uint32
-
 // linking setpgid.o
 
 // Xsetpgid is defined at setpgid.c:4:5
 func Xsetpgid(tls TLS, _pid int32, _pgid int32) (r int32) {
 	return int32(X__syscall_ret(tls, uint64(x72__syscall2(tls, int64(109), int64(_pid), int64(_pgid)))))
 }
-
-type t55pid_t = int32
 
 // x__syscall2 is defined at syscall_arch.h:22:22
 func x72__syscall2(tls TLS, _n int64, _a1 int64, _a2 int64) (r int64) {
@@ -74690,16 +71965,12 @@ func Xsetpgrp(tls TLS) (r int32) {
 	return Xsetpgid(tls, int32(0), int32(0))
 }
 
-type t56pid_t = int32
-
 // linking setregid.o
 
 // Xsetregid is defined at setregid.c:5:5
 func Xsetregid(tls TLS, _rgid uint32, _egid uint32) (r int32) {
 	return X__setxid(tls, int32(114), int32(_rgid), int32(_egid), int32(0))
 }
-
-type t44gid_t = uint32
 
 // linking setresgid.o
 
@@ -74708,16 +71979,12 @@ func Xsetresgid(tls TLS, _rgid uint32, _egid uint32, _sgid uint32) (r int32) {
 	return X__setxid(tls, int32(119), int32(_rgid), int32(_egid), int32(_sgid))
 }
 
-type t45gid_t = uint32
-
 // linking setresuid.o
 
 // Xsetresuid is defined at setresuid.c:6:5
 func Xsetresuid(tls TLS, _ruid uint32, _euid uint32, _suid uint32) (r int32) {
 	return X__setxid(tls, int32(117), int32(_ruid), int32(_euid), int32(_suid))
 }
-
-type t41uid_t = uint32
 
 // linking setreuid.o
 
@@ -74726,16 +71993,12 @@ func Xsetreuid(tls TLS, _ruid uint32, _euid uint32) (r int32) {
 	return X__setxid(tls, int32(113), int32(_ruid), int32(_euid), int32(0))
 }
 
-type t42uid_t = uint32
-
 // linking setsid.o
 
 // Xsetsid is defined at setsid.c:4:7
 func Xsetsid(tls TLS) (r int32) {
 	return int32(X__syscall_ret(tls, uint64(x13__syscall0(tls, int64(112)))))
 }
-
-type t57pid_t = int32
 
 // x__syscall0 is defined at syscall_arch.h:6:22
 func x13__syscall0(tls TLS, _n int64) (r int64) {
@@ -74748,8 +72011,6 @@ func x13__syscall0(tls TLS, _n int64) (r int64) {
 func Xsetuid(tls TLS, _uid uint32) (r int32) {
 	return X__setxid(tls, int32(105), int32(_uid), int32(0), int32(0))
 }
-
-type t43uid_t = uint32
 
 // linking setxid.o
 
@@ -74777,6 +72038,7 @@ func X__setxid(tls TLS, _nr int32, _id int32, _eid int32, _sid int32) (r int32) 
 	return 0
 }
 
+// Sctx is defined at setxid.c:7:1
 type s2ctx = struct {
 	Fid  int32
 	Feid int32
@@ -74834,12 +72096,13 @@ func Xsleep(tls TLS, _seconds uint32) (r uint32) {
 	return uint32(0)
 }
 
+// Stimespec is defined at alltypes.h:270:1
 type s67timespec = struct {
 	Ftv_sec  int64
 	Ftv_nsec int64
 }
 
-type t87time_t = int64
+type t86time_t = int64
 
 // linking symlink.o
 
@@ -74890,8 +72153,6 @@ func Xtcgetpgrp(tls TLS, _fd int32) (r int32) {
 	return *(*int32)(unsafe.Pointer(_pgrp))
 }
 
-type t58pid_t = int32
-
 // linking tcsetpgrp.o
 
 // Xtcsetpgrp is defined at tcsetpgrp.c:5:5
@@ -74903,8 +72164,6 @@ func Xtcsetpgrp(tls TLS, _fd int32, _pgrp int32) (r int32) {
 	return Xioctl(tls, _fd, int32(0x5410), _pgrp_int)
 }
 
-type t59pid_t = int32
-
 // linking truncate.o
 
 // Xtruncate is defined at truncate.c:5:5
@@ -74912,12 +72171,12 @@ func Xtruncate(tls TLS, _path uintptr /* *int8 */, _length int64) (r int32) {
 	return int32(X__syscall_ret(tls, uint64(x75__syscall2(tls, int64(76), int64(_path), _length))))
 }
 
-type t137off_t = int64
-
 // x__syscall2 is defined at syscall_arch.h:22:22
 func x75__syscall2(tls TLS, _n int64, _a1 int64, _a2 int64) (r int64) {
 	return X__syscall(tls, _n, _a1, _a2, int64(0), int64(0), int64(0), int64(0))
 }
+
+type t135off_t = int64
 
 // linking ttyname.o
 
@@ -74936,8 +72195,6 @@ func Xttyname(tls TLS, _fd int32) (r uintptr /* *int8 */) {
 
 // x1buf [32]int8, escapes: true, ttyname.c:7:14
 var x1198buf = bss + 10832
-
-type t423size_t = uint64
 
 // linking ttyname_r.o
 
@@ -74971,8 +72228,7 @@ func Xttyname_r(tls TLS, _fd int32, _name uintptr /* *int8 */, _size uint64) (r 
 	return 0
 }
 
-type t424size_t = uint64
-
+// Sstat is defined at stat.h:4:1
 type s17stat = struct {
 	Fst_dev     uint64
 	Fst_ino     uint64
@@ -74991,32 +72247,35 @@ type s17stat = struct {
 	F__unused   [3]int64
 }
 
-type t55ssize_t = int64
+type t27ssize_t = int64
 
-type t21dev_t = uint64
+type t308size_t = uint64
+
+type t17dev_t = uint64
 
 type t23ino_t = uint64
 
 type t17nlink_t = uint64
 
-type t39mode_t = uint32
+type t29mode_t = uint32
 
-type t44uid_t = uint32
+type t33uid_t = uint32
 
-type t46gid_t = uint32
+type t35gid_t = uint32
 
-type t138off_t = int64
+type t136off_t = int64
 
 type t17blksize_t = int64
 
 type t17blkcnt_t = int64
 
+// Stimespec is defined at alltypes.h:270:1
 type s68timespec = struct {
 	Ftv_sec  int64
 	Ftv_nsec int64
 }
 
-type t88time_t = int64
+type t87time_t = int64
 
 // linking ualarm.o
 
@@ -75064,12 +72323,13 @@ func Xusleep(tls TLS, _useconds uint32) (r int32) {
 	return Xnanosleep(tls, _tv, _tv)
 }
 
+// Stimespec is defined at alltypes.h:270:1
 type s69timespec = struct {
 	Ftv_sec  int64
 	Ftv_nsec int64
 }
 
-type t89time_t = int64
+type t88time_t = int64
 
 // linking write.o
 
@@ -75078,12 +72338,6 @@ func Xwrite(tls TLS, _fd int32, _buf uintptr /* *void */, _count uint64) (r int6
 	return X__syscall_ret(tls, uint64(X__syscall_cp(tls, int64(1), int64(_fd), int64(_buf), int64(_count), int64(0), int64(0), int64(0))))
 }
 
-type t425size_t = uint64
-
-type t56ssize_t = int64
-
-type t43syscall_arg_t = int64
-
 // linking writev.o
 
 // Xwritev is defined at writev.c:5:9
@@ -75091,16 +72345,13 @@ func Xwritev(tls TLS, _fd int32, _iov uintptr /* *Siovec */, _count int32) (r in
 	return X__syscall_ret(tls, uint64(X__syscall_cp(tls, int64(20), int64(_fd), int64(_iov), int64(_count), int64(0), int64(0), int64(0))))
 }
 
-type t57ssize_t = int64
-
+// Siovec is defined at alltypes.h:380:1
 type s11iovec = struct {
 	Fiov_base uintptr // *void
 	Fiov_len  uint64
 }
 
-type t426size_t = uint64
-
-type t44syscall_arg_t = int64
+type t309size_t = uint64
 
 const (
 	DABDAY_1                                = 131072
@@ -81420,8 +78671,6 @@ var X_IO_putc = Xputc
 
 var X_IO_putc_unlocked = Xputc_unlocked
 
-var X___environ = X__environ
-
 var X__builtin_abort = Xabort
 
 var X__builtin_abs = Xabs
@@ -81526,8 +78775,6 @@ var X__xpg_strerror_r = Xstrerror_r
 
 var X__xstat64 = X__xstat
 
-var X_environ = X__environ
-
 var X_fini = x4dummy
 
 var X_init = xdummy
@@ -81560,8 +78807,6 @@ var Xcreat64 = Xcreat
 
 var Xcrypt_r = X__crypt_r
 
-var Xdaylight = X__daylight
-
 var Xdl_iterate_phdr = xstatic_dl_iterate_phdr
 
 var Xdladdr = xstub_dladdr
@@ -81589,8 +78834,6 @@ var Xendnetent = Xendhostent
 var Xendpwent = Xsetpwent
 
 var Xendutent = Xendutxent
-
-var Xenviron = X__environ
 
 var Xexecvpe = X__execvpe
 
@@ -81796,8 +79039,6 @@ var Xopen64 = Xopen
 
 var Xopenat64 = Xopenat
 
-var Xoptreset = X__optreset
-
 var Xposix_fadvise64 = Xposix_fadvise
 
 var Xposix_fallocate64 = Xposix_fallocate
@@ -81813,10 +79054,6 @@ var Xpread64 = Xpread
 var Xpreadv64 = Xpreadv
 
 var Xprlimit64 = Xprlimit
-
-var Xprogram_invocation_name = X__progname_full
-
-var Xprogram_invocation_short_name = X__progname
 
 var Xpthread_cond_timedwait = X__pthread_cond_timedwait
 
@@ -81892,8 +79129,6 @@ var Xsetutent = Xsetutxent
 
 var Xsigaction = X__sigaction
 
-var Xsigngam = X__signgam
-
 var Xstat64 = Xstat
 
 var Xstatfs = X__statfs
@@ -81936,8 +79171,6 @@ var Xthrd_detach = x__pthread_detach
 
 var Xthrd_equal = x__pthread_equal
 
-var Xtimezone = X__timezone
-
 var Xtmpfile64 = Xtmpfile
 
 var Xtolower_l = X__tolower_l
@@ -81953,8 +79186,6 @@ var Xtowupper_l = X__towupper_l
 var Xtruncate64 = Xtruncate
 
 var Xtss_get = x__pthread_getspecific
-
-var Xtzname = X__tzname
 
 var Xtzset = X__tzset
 

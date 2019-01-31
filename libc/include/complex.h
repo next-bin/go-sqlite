@@ -109,9 +109,15 @@ long double creall(long double complex);
 #define crealf(x) ((float)(x))
 #define creall(x) ((long double)(x))
 
+#ifndef __ccgo__
 #define cimag(x) __CIMAG(x, double)
 #define cimagf(x) __CIMAG(x, float)
 #define cimagl(x) __CIMAG(x, long double)
+#else
+#define cimag(x) __builtin_cimag(x)
+#define cimagf(x) __builtin_cimagf(x)
+#define cimagl(x) __builtin_cimagl(x)
+#endif
 #endif
 
 #if __STDC_VERSION__ >= 201112L
@@ -122,9 +128,15 @@ long double creall(long double complex);
 #else
 #define __CMPLX(x, y, t) (__builtin_complex((t)(x), (t)(y)))
 #endif
+#ifndef __ccgo__
 #define CMPLX(x, y) __CMPLX(x, y, double)
 #define CMPLXF(x, y) __CMPLX(x, y, float)
 #define CMPLXL(x, y) __CMPLX(x, y, long double)
+#else
+#define CMPLX(x, y) __builtin_complex((double)x, (double)y)
+#define CMPLXF(x, y) __builtin_complexf((float)x, (float)y)
+#define CMPLXL(x, y) __builtin_complexl((long double)x, (long double)y)
+#endif
 #endif
 
 #ifdef __cplusplus

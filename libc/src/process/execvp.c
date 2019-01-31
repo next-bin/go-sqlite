@@ -5,7 +5,7 @@
 #include <limits.h>
 #include "libc.h"
 
-extern char **__environ;
+extern char **environ;
 
 int __execvpe(const char *file, char *const argv[], char *const envp[])
 {
@@ -57,7 +57,7 @@ int __execvpe(const char *file, char *const argv[], char *const envp[])
 
 int execvp(const char *file, char *const argv[])
 {
-	return __execvpe(file, argv, __environ);
+	return __execvpe(file, argv, environ);
 }
 
 weak_alias(__execvpe, execvpe);

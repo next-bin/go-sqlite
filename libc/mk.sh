@@ -26,12 +26,12 @@ make clean
 #DBG ./configure CC=ccgo CFLAGS='-D__typeof=typeof -D__inline=inline --ccgo-define-values --ccgo-full-paths' \
 ./configure CC=ccgo CFLAGS='-D__typeof=typeof -D__inline=inline --ccgo-define-values' \
 	--target=$MUSLARCH --disable-shared |& tee log-configure
-make AR=ar RANLIB=ranlib |& tee log-make
+make $MAKEJ AR=ar RANLIB=ranlib |& tee log-make
 mv -v obj/include/bits/*.h arch/$MUSLARCH/bits/
 ccgo -ffreestanding -D_XOPEN_SOURCE=700 -I./arch/$MUSLARCH -I./arch/generic \
        	-Iobj/src/internal -I./src/internal -Iobj/include -I./include \
 	-D__typeof=typeof --ccgo-import runtime/debug,sync/atomic \
-	--ccgo-pkg-name crt -o ../$LIBC ccgo.c lib/libc.a |& tee -a log-ccgo
+	--ccgo-pkg-name crt -o ../$LIBC ccgo.c lib/libc.a
 make distclean
 go install -v modernc.org/ccgo/v2/ccgo
 go version

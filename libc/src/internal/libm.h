@@ -161,9 +161,15 @@ do {                                              \
 #define __CMPLX(x, y, t) \
 	((union { _Complex t __z; t __xy[2]; }){.__xy = {(x),(y)}}.__z)
 
+#ifndef __ccgo__
 #define CMPLX(x, y) __CMPLX(x, y, double)
 #define CMPLXF(x, y) __CMPLX(x, y, float)
 #define CMPLXL(x, y) __CMPLX(x, y, long double)
+#else
+#define CMPLX(x, y) __builtin_complex((double)x, (double)y)
+#define CMPLXF(x, y) __builtin_complexf((float)x, (float)y)
+#define CMPLXL(x, y) __builtin_complexl((long double)x, (long double)y)
+#endif
 
 /* fdlibm kernel functions */
 

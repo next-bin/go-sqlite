@@ -15,8 +15,8 @@ int unsetenv(const char *name)
 		errno = EINVAL;
 		return -1;
 	}
-	if (__environ) {
-		char **e = __environ, **eo = e;
+	if (environ) {
+		char **e = environ, **eo = e;
 		for (; *e; e++)
 			if (!strncmp(name, *e, l) && l[*e] == '=')
 				__env_rm_add(*e, 0);

@@ -6,7 +6,7 @@
 #include "stdio_impl.h"
 #include "syscall.h"
 
-extern char **__environ;
+extern char **environ;
 
 FILE *popen(const char *cmd, const char *mode)
 {
@@ -52,7 +52,7 @@ FILE *popen(const char *cmd, const char *mode)
 	if (!posix_spawn_file_actions_init(&fa)) {
 		if (!posix_spawn_file_actions_adddup2(&fa, p[1-op], 1-op)) {
 			if (!(e = posix_spawn(&pid, "/bin/sh", &fa, 0,
-			    (char *[]){ "sh", "-c", (char *)cmd, 0 }, __environ))) {
+			    (char *[]){ "sh", "-c", (char *)cmd, 0 }, environ))) {
 				posix_spawn_file_actions_destroy(&fa);
 				f->pipe_pid = pid;
 				if (!strchr(mode, 'e'))

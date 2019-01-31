@@ -145,8 +145,11 @@ func MainTLS() TLS { return mainTLS }
 // TLS represents a virtual C thread.
 type TLS uintptr
 
+var MustMallocCnt int64
+
 // MustMalloc is like Malloc but panics if the allocation cannot be made.
 func MustMalloc(size int) uintptr {
+	atomic.AddInt64(&MustMallocCnt, 1)
 	p, err := Malloc(size)
 	if err != nil {
 		panic(fmt.Errorf("out of memory: %v", err))
