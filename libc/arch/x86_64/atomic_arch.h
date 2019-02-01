@@ -31,11 +31,11 @@ static inline int a_swap(volatile int *p, int v)
 #define a_fetch_add a_fetch_add
 static inline int a_fetch_add(volatile int *p, int v)
 {
-	__GO__("panic(`TODO`)\n");
 // 	__asm__ __volatile__(
 // 		"lock ; xadd %0, %1"
 // 		: "=r"(v), "=m"(*p) : "0"(v) : "memory" );
 // 	return v;
+	__GO__("return a_fetch_add(_p, _v)\n");
 }
 
 #define a_and a_and
@@ -77,10 +77,10 @@ static inline void a_or_64(volatile uint64_t *p, uint64_t v)
 #define a_inc a_inc
 static inline void a_inc(volatile int *p)
 {
-	__GO__("panic(`TODO`)\n");
 // 	__asm__ __volatile__(
 // 		"lock ; incl %0"
 // 		: "=m"(*p) : "m"(*p) : "memory" );
+	__GO__("a_inc(_p)\n");
 }
 
 #define a_dec a_dec
@@ -95,10 +95,10 @@ static inline void a_dec(volatile int *p)
 #define a_store a_store
 static inline void a_store(volatile int *p, int x)
 {
-	__GO__("panic(`TODO`)\n");
 // 	__asm__ __volatile__(
 // 		"mov %1, %0 ; lock ; orl $0,(%%rsp)"
 // 		: "=m"(*p) : "r"(x) : "memory" );
+	__GO__("a_store(_p, _x)\n");
 }
 
 #define a_barrier a_barrier
@@ -111,8 +111,8 @@ static inline void a_barrier()
 #define a_spin a_spin
 static inline void a_spin()
 {
-	__GO__("panic(`TODO`)\n");
 // 	__asm__ __volatile__( "pause" : : : "memory" );
+	__GO__("aBarier()\n"); //TODO better
 }
 
 #define a_crash a_crash

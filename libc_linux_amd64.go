@@ -18,8 +18,8 @@ var _ unsafe.Pointer
 
 // linking ccgo.o
 
-// X__ccgo_main_tls Tpthread_t = *S__pthread, escapes: true, ccgo.c:8:11
-var X__ccgo_main_tls = bss + 0
+// X__ccgo_main_tls Tpthread_t = *S__pthread, escapes: false, ccgo.c:8:11
+var X__ccgo_main_tls uintptr
 
 // X__builtin_bswap64 is defined at ccgo.c:59:10
 func X__builtin_bswap64(tls TLS, _x uint64) (r uint64) {
@@ -83,8 +83,8 @@ type S__pthread struct{ uintptr }
 
 // linking aio.o
 
-// X__aio_fut int32, escapes: true, aio.c:71:14
-var X__aio_fut = bss + 8
+// X__aio_fut int32, escapes: false, aio.c:71:14
+var X__aio_fut int32
 
 // Xaio_read is defined at aio.c:301:5
 func Xaio_read(tls TLS, _cb uintptr /* *Saiocb */) (r int32) {
@@ -168,7 +168,7 @@ ldone:
 // X__aio_close is defined at aio.c:368:5
 func X__aio_close(tls TLS, _fd int32) (r int32) {
 	xa_barrier(tls)
-	if *(*int32)(unsafe.Pointer(xaio_fd_cnt)) != 0 {
+	if xaio_fd_cnt != 0 {
 		Xaio_cancel(tls, _fd, null)
 	}
 	return _fd
@@ -324,13 +324,13 @@ func x__aio_get_queue(tls TLS, _fd int32, _need int32) (r uintptr /* *Saio_queue
 	_c = uint8(_fd >> (uint(8) % 32))
 	_d = uint8(_fd)
 	_q = 0
-	Xpthread_rwlock_rdlock(tls, xmaplock)
+	Xpthread_rwlock_rdlock(tls, uintptr(unsafe.Pointer(&xmaplock)))
 	if !((((((xmap == 0) || (*(*uintptr)(unsafe.Pointer(xmap + 8*uintptr(_a))) == 0)) || (*(*uintptr)(unsafe.Pointer(*(*uintptr)(unsafe.Pointer(xmap + 8*uintptr(_a))) + 8*uintptr(_b))) == 0)) || (*(*uintptr)(unsafe.Pointer(*(*uintptr)(unsafe.Pointer(*(*uintptr)(unsafe.Pointer(xmap + 8*uintptr(_a))) + 8*uintptr(_b))) + 8*uintptr(_c))) == 0)) || (set553(&_q, *(*uintptr)(unsafe.Pointer(*(*uintptr)(unsafe.Pointer(*(*uintptr)(unsafe.Pointer(*(*uintptr)(unsafe.Pointer(xmap + 8*uintptr(_a))) + 8*uintptr(_b))) + 8*uintptr(_c))) + 8*uintptr(_d)))) == 0)) && (_need != 0)) {
 		goto _1
 	}
 
-	Xpthread_rwlock_unlock(tls, xmaplock)
-	Xpthread_rwlock_wrlock(tls, xmaplock)
+	Xpthread_rwlock_unlock(tls, uintptr(unsafe.Pointer(&xmaplock)))
+	Xpthread_rwlock_wrlock(tls, uintptr(unsafe.Pointer(&xmaplock)))
 	if xmap == 0 {
 		xmap = Xcalloc(tls, uint64(8), uint64(128))
 	}
@@ -377,7 +377,7 @@ _5:
 			*(*int32)(unsafe.Pointer(_q)) = _fd
 			Xpthread_mutex_init(tls, _q+24, null)
 			Xpthread_cond_init(tls, _q+64, null)
-			xa_inc(tls, xaio_fd_cnt)
+			xa_inc(tls, uintptr(unsafe.Pointer(&xaio_fd_cnt)))
 		}
 	}
 _1:
@@ -386,7 +386,7 @@ _1:
 	}
 	goto lout
 lout:
-	Xpthread_rwlock_unlock(tls, xmaplock)
+	Xpthread_rwlock_unlock(tls, uintptr(unsafe.Pointer(&xmaplock)))
 	return _q
 }
 
@@ -396,8 +396,8 @@ func xa_cas(tls TLS, _p uintptr /* *int32 */, _t int32, _s int32) (r int32) {
 	return r
 }
 
-// xaio_fd_cnt int32, escapes: true, aio.c:70:21
-var xaio_fd_cnt = bss + 16
+// xaio_fd_cnt int32, escapes: false, aio.c:70:21
+var xaio_fd_cnt int32
 
 type Tsize_t = uint64
 
@@ -611,15 +611,23 @@ type Tpthread_cond_t = struct {
 	}
 }
 
-// xmaplock Tpthread_rwlock_t = struct{F__u ...7]uintptr;F int64; _ [48]byte};}, escapes: true, aio.c:68:25
-var xmaplock = bss + 24
+// xmaplock Tpthread_rwlock_t = struct{F__u ...7]uintptr;F int64; _ [48]byte};}, escapes: false, aio.c:68:25
+var xmaplock struct {
+	F__u struct {
+		F__i  [0][14]int32
+		F__vi [0][14]int32
+		F__p  [0][7]uintptr
+		F     int64
+		_     [48]byte
+	}
+}
 
 // xmap *****Saio_queue, escapes: false, aio.c:69:25
 var xmap uintptr
 
 // xa_inc is defined at atomic_arch.h:78:20
 func xa_inc(tls TLS, _p uintptr /* *int32 */) {
-	panic(`TODO`)
+	a_inc(_p)
 }
 
 // Usigval is defined at signal.h:92:1
@@ -653,6 +661,17 @@ func x__pthread_self(tls TLS) (r uintptr /* *S__pthread */) {
 // xcleanup is defined at aio.c:137:13
 func xcleanup(tls TLS, _ctx uintptr /* *void */) {
 	panic(`TODO`)
+}
+
+// Npthread_rwlock_t is defined at alltypes.h:91:9
+type Tpthread_rwlock_t = struct {
+	F__u struct {
+		F__i  [0][14]int32
+		F__vi [0][14]int32
+		F__p  [0][7]uintptr
+		F     int64
+		_     [48]byte
+	}
 }
 
 // linking aio_suspend.o
@@ -732,7 +751,7 @@ _6:
 	goto _4
 
 _7:
-	_pfut = X__aio_fut
+	_pfut = uintptr(unsafe.Pointer(&X__aio_fut))
 	if _tid == 0 {
 		_tid = *(*int32)(unsafe.Pointer(x1__pthread_self(tls) + 56))
 	}
@@ -1039,6 +1058,7 @@ type s2sigevent = struct {
 type Slio_state = struct {
 	Fsev uintptr // *Ssigevent
 	Fcnt int32
+	_    [4]byte
 }
 
 // S__pthread is defined at pthread_impl.h:15:1
@@ -2528,11 +2548,11 @@ func Xfpathconf(tls TLS, _fd int32, _name int32) (r int64) {
 		*(*int32)(unsafe.Pointer(X__errno_location(tls))) = int32(22)
 		return int64(-1)
 	}
-	return int64(*(*int16)(unsafe.Pointer(x560values + 2*uintptr(_name))))
+	return int64(*(*int16)(unsafe.Pointer(uintptr(unsafe.Pointer(&x560values)) + 2*uintptr(_name))))
 }
 
-// x1values [21]int16, escapes: true, fpathconf.c:7:21
-var x560values = ds + 0
+// x1values [21]int16, escapes: false, fpathconf.c:7:21
+var x560values = *(*[21]int16)(unsafe.Pointer(ts + 24 /* "\b\x00\xff\x00\xff\x00\xff\x00\x00\x10\x00\x10\x01\x00\x01\x00..." */))
 
 // linking legacy.o
 
@@ -2581,13 +2601,13 @@ func Xsysconf(tls TLS, _name int32) (r int64) {
 		_si  = esc + 144 // *Ssysinfo
 	)
 	defer Free(esc)
-	if (uint64(_name) >= uint64(249)) || (*(*int16)(unsafe.Pointer(x563values + 2*uintptr(_name))) == 0) {
+	if (uint64(_name) >= uint64(249)) || (*(*int16)(unsafe.Pointer(uintptr(unsafe.Pointer(&x563values)) + 2*uintptr(_name))) == 0) {
 		*(*int32)(unsafe.Pointer(X__errno_location(tls))) = int32(22)
 		return int64(-1)
-	} else if int32(*(*int16)(unsafe.Pointer(x563values + 2*uintptr(_name)))) >= int32(-1) {
-		return int64(*(*int16)(unsafe.Pointer(x563values + 2*uintptr(_name))))
-	} else if int32(*(*int16)(unsafe.Pointer(x563values + 2*uintptr(_name)))) < int32(-256) {
-		Xgetrlimit(tls, int32(*(*int16)(unsafe.Pointer(x563values + 2*uintptr(_name))))&int32(16383), _lim)
+	} else if int32(*(*int16)(unsafe.Pointer(uintptr(unsafe.Pointer(&x563values)) + 2*uintptr(_name)))) >= int32(-1) {
+		return int64(*(*int16)(unsafe.Pointer(uintptr(unsafe.Pointer(&x563values)) + 2*uintptr(_name))))
+	} else if int32(*(*int16)(unsafe.Pointer(uintptr(unsafe.Pointer(&x563values)) + 2*uintptr(_name)))) < int32(-256) {
+		Xgetrlimit(tls, int32(*(*int16)(unsafe.Pointer(uintptr(unsafe.Pointer(&x563values)) + 2*uintptr(_name))))&int32(16383), _lim)
 		if *(*uint64)(unsafe.Pointer(_lim)) == uint64(18446744073709551615) {
 			return int64(-1)
 		}
@@ -2596,7 +2616,7 @@ func Xsysconf(tls TLS, _name int32) (r int64) {
 		}
 		return int64(*(*uint64)(unsafe.Pointer(_lim)))
 	}
-	switch int32(uint8(*(*int16)(unsafe.Pointer(x563values + 2*uintptr(_name))))) {
+	switch int32(uint8(*(*int16)(unsafe.Pointer(uintptr(unsafe.Pointer(&x563values)) + 2*uintptr(_name))))) {
 	case int32(1):
 		goto _2
 	case int32(2):
@@ -2636,7 +2656,7 @@ _7:
 	return int64(0x7fffffff)
 _8:
 _9:
-	Copy(_set, ts+24 /* "\x01\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00..." */, 128)
+	Copy(_set, ts+68 /* "\x01\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00..." */, 128)
 	x__syscall3(tls, int64(204), int64(0), int64(128), int64(_set))
 	for _i = set561(&_cnt, int32(0)); uint64(_i) < uint64(128); _i++ {
 		for ; *(*uint8)(unsafe.Pointer(_set + uintptr(_i))) != 0; func() int32 {
@@ -2669,11 +2689,11 @@ _11:
 _12:
 	return int64(0)
 _1:
-	return int64(*(*int16)(unsafe.Pointer(x563values + 2*uintptr(_name))))
+	return int64(*(*int16)(unsafe.Pointer(uintptr(unsafe.Pointer(&x563values)) + 2*uintptr(_name))))
 }
 
-// x1values [249]int16, escapes: true, sysconf.c:27:21
-var x563values = ds + 48
+// x1values [249]int16, escapes: false, sysconf.c:27:21
+var x563values = *(*[249]int16)(unsafe.Pointer(ts + 200 /* "\x02\xff\x06\x80d\x00 \x00\a\x80\xff\xff\x06\x00\x01\x00..." */))
 
 // Srlimit is defined at resource.h:22:1
 type Srlimit = struct {
@@ -2697,6 +2717,7 @@ type Ssysinfo = struct {
 	Ffreehigh   uint64
 	Fmem_unit   uint32
 	F__reserved [256]int8
+	_           [4]byte
 }
 
 type Trlim_t = uint64
@@ -2710,11 +2731,11 @@ func x__syscall3(tls TLS, _n int64, _a1 int64, _a2 int64, _a3 int64) (r int64) {
 
 // Xcrypt is defined at crypt.c:6:6
 func Xcrypt(tls TLS, _key uintptr /* *int8 */, _salt uintptr /* *int8 */) (r uintptr /* *int8 */) {
-	return X__crypt_r(tls, _key, _salt, x564buf)
+	return X__crypt_r(tls, _key, _salt, uintptr(unsafe.Pointer(&x564buf)))
 }
 
-// x1buf [128]int8, escapes: true, crypt.c:14:14
-var x564buf = bss + 80
+// x1buf [128]int8, escapes: false, crypt.c:14:14
+var x564buf [128]int8
 
 // linking crypt_blowfish.o
 
@@ -2735,8 +2756,8 @@ func X__crypt_blowfish(tls TLS, _key uintptr /* *int8 */, _setting uintptr /* *i
 		_yi           = esc + 336 // *TBF_key = [18]uint32
 	)
 	defer Free(esc)
-	_test_key = ts + 156     /* "8b \xd0\xc1\xd2\xcf\xcc\xd8" */
-	_test_setting = ts + 168 /* "$2a$00$abcdefghi..." */
+	_test_key = ts + 700     /* "8b \xd0\xc1\xd2\xcf\xcc\xd8" */
+	_test_setting = ts + 712 /* "$2a$00$abcdefghi..." */
 	_retval = xBF_crypt(tls, _key, _setting, _output, uint32(16))
 	Xmemcpy(tls, _buf, _test_setting, uint64(30))
 	if _retval != 0 {
@@ -2745,8 +2766,8 @@ func X__crypt_blowfish(tls TLS, _key uintptr /* *int8 */, _setting uintptr /* *i
 	Xmemset(tls, _buf+30, int32(0x55), uint64(63))
 	*(*int8)(unsafe.Pointer((_buf + 30) + 62)) = int8(0)
 	_p = xBF_crypt(tls, _test_key, _buf, _buf+30, uint32(1))
-	_ok = bool2int(((_p == (_buf + 30)) && (Xmemcmp(tls, _p, _buf, uint64(29)) == 0)) && (Xmemcmp(tls, _p+uintptr(29), x565test_hash+34*uintptr(int32(*(*int8)(unsafe.Pointer(_buf + 2)))&int32(1)), uint64(34)) == 0))
-	_k = ts + 200 /* "\xff4\xff\xff\xffE" */
+	_ok = bool2int(((_p == (_buf + 30)) && (Xmemcmp(tls, _p, _buf, uint64(29)) == 0)) && (Xmemcmp(tls, _p+uintptr(29), uintptr(unsafe.Pointer(&x565test_hash))+34*uintptr(int32(*(*int8)(unsafe.Pointer(_buf + 2)))&int32(1)), uint64(34)) == 0))
+	_k = ts + 744 /* "\xff4\xff\xff\xffE" */
 	xBF_set_key(tls, _k, _ae, _ai, uint8(2))
 	xBF_set_key(tls, _k, _ye, _yi, uint8(4))
 	{
@@ -2757,11 +2778,11 @@ func X__crypt_blowfish(tls TLS, _key uintptr /* *int8 */, _setting uintptr /* *i
 	if (_ok != 0) && (_retval != 0) {
 		return _retval
 	}
-	return ts + 208 /* "*" */
+	return ts + 752 /* "*" */
 }
 
-// x1test_hash [2][34]int8, escapes: true, crypt_blowfish.c:750:20
-var x565test_hash = ds + 552
+// x1test_hash [2][34]int8, escapes: false, crypt_blowfish.c:750:20
+var x565test_hash = *(*[2][34]int8)(unsafe.Pointer(ts + 756 /* "VUrPmXD6q/nVSSp7..." */))
 
 type TBF_word = uint32
 
@@ -2788,7 +2809,7 @@ func xBF_crypt(tls TLS, _key uintptr /* *int8 */, _setting uintptr /* *int8 */, 
 		_LR    = esc + 4272 // *[2]uint32
 	)
 	defer Free(esc)
-	if (((((((int32(*(*int8)(unsafe.Pointer(_setting))) != int32('$')) || (int32(*(*int8)(unsafe.Pointer(_setting + 1))) != int32('2'))) || (uint32(int32(*(*int8)(unsafe.Pointer(_setting + 2)))-int32('a')) > uint32(25))) || (*(*uint8)(unsafe.Pointer(x567flags_by_subtype + uintptr(int32(*(*int8)(unsafe.Pointer(_setting + 2)))-int32('a')))) == 0)) || (int32(*(*int8)(unsafe.Pointer(_setting + 3))) != int32('$'))) || (uint32(int32(*(*int8)(unsafe.Pointer(_setting + 4)))-int32('0')) > uint32(1))) || (uint32(int32(*(*int8)(unsafe.Pointer(_setting + 5)))-int32('0')) > uint32(9))) || (int32(*(*int8)(unsafe.Pointer(_setting + 6))) != int32('$')) {
+	if (((((((int32(*(*int8)(unsafe.Pointer(_setting))) != int32('$')) || (int32(*(*int8)(unsafe.Pointer(_setting + 1))) != int32('2'))) || (uint32(int32(*(*int8)(unsafe.Pointer(_setting + 2)))-int32('a')) > uint32(25))) || (*(*uint8)(unsafe.Pointer(uintptr(unsafe.Pointer(&x567flags_by_subtype)) + uintptr(int32(*(*int8)(unsafe.Pointer(_setting + 2)))-int32('a')))) == 0)) || (int32(*(*int8)(unsafe.Pointer(_setting + 3))) != int32('$'))) || (uint32(int32(*(*int8)(unsafe.Pointer(_setting + 4)))-int32('0')) > uint32(1))) || (uint32(int32(*(*int8)(unsafe.Pointer(_setting + 5)))-int32('0')) > uint32(9))) || (int32(*(*int8)(unsafe.Pointer(_setting + 6))) != int32('$')) {
 		return null
 	}
 	_count = uint32(1) << (uint((int32(*(*int8)(unsafe.Pointer(_setting + 4)))-int32('0'))*int32(10)+(int32(*(*int8)(unsafe.Pointer(_setting + 5)))-int32('0'))) % 32)
@@ -2796,8 +2817,8 @@ func xBF_crypt(tls TLS, _key uintptr /* *int8 */, _setting uintptr /* *int8 */, 
 		return null
 	}
 	xBF_swap(tls, _data+4240, int32(4))
-	xBF_set_key(tls, _key, _data+4168, _data, *(*uint8)(unsafe.Pointer(x567flags_by_subtype + uintptr(int32(*(*int8)(unsafe.Pointer(_setting + 2)))-int32('a')))))
-	Xmemcpy(tls, _data+72, xBF_init_state+72, uint64(4096))
+	xBF_set_key(tls, _key, _data+4168, _data, *(*uint8)(unsafe.Pointer(uintptr(unsafe.Pointer(&x567flags_by_subtype)) + uintptr(int32(*(*int8)(unsafe.Pointer(_setting + 2)))-int32('a')))))
+	Xmemcpy(tls, _data+72, uintptr(unsafe.Pointer(&xBF_init_state))+72, uint64(4096))
 	_L = uint32(0)
 	_R = uint32(0)
 	_ptr = _data
@@ -2863,8 +2884,8 @@ func xBF_crypt(tls TLS, _key uintptr /* *int8 */, _setting uintptr /* *int8 */, 
 		}
 	}
 	for _i = int32(0); _i < int32(6); func() { _i = _i + int32(2) }() {
-		_1L = *(*uint32)(unsafe.Pointer(xBF_magic_w + 4*uintptr(_i)))
-		*(*uint32)(unsafe.Pointer(_LR + 4)) = *(*uint32)(unsafe.Pointer(xBF_magic_w + 4*uintptr(_i+int32(1))))
+		_1L = *(*uint32)(unsafe.Pointer(uintptr(unsafe.Pointer(&xBF_magic_w)) + 4*uintptr(_i)))
+		*(*uint32)(unsafe.Pointer(_LR + 4)) = *(*uint32)(unsafe.Pointer(uintptr(unsafe.Pointer(&xBF_magic_w)) + 4*uintptr(_i+int32(1))))
 		_count = uint32(64)
 		for c := true; c; c = preinc566(&_count) != 0 {
 			_1L = xBF_encrypt(tls, _data, _1L, *(*uint32)(unsafe.Pointer(_LR + 4)), _LR, _LR)
@@ -2873,7 +2894,7 @@ func xBF_crypt(tls TLS, _key uintptr /* *int8 */, _setting uintptr /* *int8 */, 
 		*(*uint32)(unsafe.Pointer(_data + 4240 + 4*uintptr(_i+int32(1)))) = *(*uint32)(unsafe.Pointer(_LR + 4))
 	}
 	Xmemcpy(tls, _output, _setting, uint64(28))
-	*(*int8)(unsafe.Pointer(_output + 28)) = int8(*(*uint8)(unsafe.Pointer(xBF_itoa64 + uintptr(int32(*(*uint8)(unsafe.Pointer(xBF_atoi64 + uintptr(int32(*(*int8)(unsafe.Pointer(_setting + 28)))-int32(0x20)))))&int32(0x30)))))
+	*(*int8)(unsafe.Pointer(_output + 28)) = int8(*(*uint8)(unsafe.Pointer(uintptr(unsafe.Pointer(&xBF_itoa64)) + uintptr(int32(*(*uint8)(unsafe.Pointer(uintptr(unsafe.Pointer(&xBF_atoi64)) + uintptr(int32(*(*int8)(unsafe.Pointer(_setting + 28)))-int32(0x20)))))&int32(0x30)))))
 	xBF_swap(tls, _data+4240, int32(6))
 	xBF_encode(tls, _output+29, _data+4240, int32(23))
 	*(*int8)(unsafe.Pointer(_output + 60)) = int8('\x00')
@@ -2930,7 +2951,7 @@ func xBF_set_key(tls TLS, _key uintptr /* *int8 */, _expanded uintptr /* *TBF_wo
 		}
 		_diff = _diff | (*(*uint32)(unsafe.Pointer(_tmp)) ^ *(*uint32)(unsafe.Pointer(_tmp + 4)))
 		*(*uint32)(unsafe.Pointer(_expanded + 4*uintptr(_i))) = *(*uint32)(unsafe.Pointer(_tmp + 4*uintptr(_bug)))
-		*(*uint32)(unsafe.Pointer(_initial + 4*uintptr(_i))) = *(*uint32)(unsafe.Pointer(xBF_init_state + 4*uintptr(_i))) ^ *(*uint32)(unsafe.Pointer(_tmp + 4*uintptr(_bug)))
+		*(*uint32)(unsafe.Pointer(_initial + 4*uintptr(_i))) = *(*uint32)(unsafe.Pointer(uintptr(unsafe.Pointer(&xBF_init_state)) + 4*uintptr(_i))) ^ *(*uint32)(unsafe.Pointer(_tmp + 4*uintptr(_bug)))
 	}
 	_diff = _diff | _diff>>(uint(16)%32)
 	_diff = _diff & uint32(0xffff)
@@ -2943,8 +2964,8 @@ func xBF_set_key(tls TLS, _key uintptr /* *int8 */, _expanded uintptr /* *TBF_wo
 	}
 }
 
-// x4flags_by_subtype [26]uint8, escapes: true, crypt_blowfish.c:603:29
-var x567flags_by_subtype = ds + 624
+// x4flags_by_subtype [26]uint8, escapes: false, crypt_blowfish.c:603:29
+var x567flags_by_subtype = *(*[26]uint8)(unsafe.Pointer(ts + 828 /* "\x02\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00..." */))
 
 // NBF_ctx is defined at crypt_blowfish.c:61:9
 type TBF_ctx = struct {
@@ -2984,7 +3005,7 @@ func xBF_decode(tls TLS, _dst uintptr /* *TBF_word = Tuint32_t = uint32 */, _src
 		if sub570(&_tmp, 0x20) >= uint32(0x60) {
 			return -1
 		}
-		_tmp = uint32(*(*uint8)(unsafe.Pointer(xBF_atoi64 + uintptr(_tmp))))
+		_tmp = uint32(*(*uint8)(unsafe.Pointer(uintptr(unsafe.Pointer(&xBF_atoi64)) + uintptr(_tmp))))
 		if _tmp > uint32(63) {
 			return -1
 		}
@@ -2993,7 +3014,7 @@ func xBF_decode(tls TLS, _dst uintptr /* *TBF_word = Tuint32_t = uint32 */, _src
 		if sub570(&_tmp, 0x20) >= uint32(0x60) {
 			return -1
 		}
-		_tmp = uint32(*(*uint8)(unsafe.Pointer(xBF_atoi64 + uintptr(_tmp))))
+		_tmp = uint32(*(*uint8)(unsafe.Pointer(uintptr(unsafe.Pointer(&xBF_atoi64)) + uintptr(_tmp))))
 		if _tmp > uint32(63) {
 			return -1
 		}
@@ -3006,7 +3027,7 @@ func xBF_decode(tls TLS, _dst uintptr /* *TBF_word = Tuint32_t = uint32 */, _src
 		if sub570(&_tmp, 0x20) >= uint32(0x60) {
 			return -1
 		}
-		_tmp = uint32(*(*uint8)(unsafe.Pointer(xBF_atoi64 + uintptr(_tmp))))
+		_tmp = uint32(*(*uint8)(unsafe.Pointer(uintptr(unsafe.Pointer(&xBF_atoi64)) + uintptr(_tmp))))
 		if _tmp > uint32(63) {
 			return -1
 		}
@@ -3019,7 +3040,7 @@ func xBF_decode(tls TLS, _dst uintptr /* *TBF_word = Tuint32_t = uint32 */, _src
 		if sub570(&_tmp, 0x20) >= uint32(0x60) {
 			return -1
 		}
-		_tmp = uint32(*(*uint8)(unsafe.Pointer(xBF_atoi64 + uintptr(_tmp))))
+		_tmp = uint32(*(*uint8)(unsafe.Pointer(uintptr(unsafe.Pointer(&xBF_atoi64)) + uintptr(_tmp))))
 		if _tmp > uint32(63) {
 			return -1
 		}
@@ -3034,8 +3055,16 @@ func xBF_swap(tls TLS, _x uintptr /* *TBF_word = Tuint32_t = uint32 */, _count i
 	panic(`TODO`)
 }
 
-// xBF_init_state TBF_ctx = struct{Fs [0]struct{FP...42]uint32;F int32; _ [4164]byte}, escapes: true, crypt_blowfish.c:81:21
-var xBF_init_state = ds + 656
+// xBF_init_state TBF_ctx = struct{Fs [0]struct{FP...42]uint32;F int32; _ [4164]byte}, escapes: false, crypt_blowfish.c:81:21
+var xBF_init_state = *(*struct {
+	Fs [0]struct {
+		FP [18]uint32
+		FS [4][256]uint32
+	}
+	FPS [0][1042]uint32
+	F   int32
+	_   [4164]byte
+})(unsafe.Pointer(ts + 856 /* "\x88j?$\xd3\b\xa3\x85.\x8a\x19\x13Dsp\x03..." */))
 
 func postinc571(p *uintptr) uintptr { r := *p; *p += 4; return r }
 
@@ -3091,14 +3120,14 @@ func xBF_encrypt(tls TLS, _ctx uintptr /* *TBF_ctx = struct{Fs [0]struct{F...42]
 	return _L
 }
 
-// xBF_magic_w [6]uint32, escapes: true, crypt_blowfish.c:73:22
-var xBF_magic_w = ds + 4824
+// xBF_magic_w [6]uint32, escapes: false, crypt_blowfish.c:73:22
+var xBF_magic_w = *(*[6]uint32)(unsafe.Pointer(ts + 5028 /* "hprOBnaeloheSred..." */))
 
-// xBF_itoa64 [65]uint8, escapes: true, crypt_blowfish.c:353:28
-var xBF_itoa64 = ds + 4848
+// xBF_itoa64 [65]uint8, escapes: false, crypt_blowfish.c:353:28
+var xBF_itoa64 = *(*[65]uint8)(unsafe.Pointer(ts + 5056 /* "./ABCDEFGHIJKLMN..." */))
 
-// xBF_atoi64 [96]uint8, escapes: true, crypt_blowfish.c:356:28
-var xBF_atoi64 = ds + 4920
+// xBF_atoi64 [96]uint8, escapes: false, crypt_blowfish.c:356:28
+var xBF_atoi64 = *(*[96]uint8)(unsafe.Pointer(ts + 5124 /* "@@@@@@@@@@@@@@\x00\x01..." */))
 
 // xBF_encode is defined at crypt_blowfish.c:398:13
 func xBF_encode(tls TLS, _dst uintptr /* *int8 */, _src uintptr /* *TBF_word = Tuint32_t = uint32 */, _size int32) {
@@ -3114,24 +3143,24 @@ func xBF_encode(tls TLS, _dst uintptr /* *int8 */, _src uintptr /* *TBF_word = T
 	_dptr = _dst
 	for c := true; c; c = _sptr < _end {
 		_c1 = uint32(*(*uint8)(unsafe.Pointer(postinc569(&_sptr))))
-		*(*uint8)(unsafe.Pointer(postinc569(&_dptr))) = *(*uint8)(unsafe.Pointer(xBF_itoa64 + uintptr(_c1>>(uint(2)%32))))
+		*(*uint8)(unsafe.Pointer(postinc569(&_dptr))) = *(*uint8)(unsafe.Pointer(uintptr(unsafe.Pointer(&xBF_itoa64)) + uintptr(_c1>>(uint(2)%32))))
 		_c1 = _c1 & uint32(0x3) << (uint(4) % 32)
 		if _sptr >= _end {
-			*(*uint8)(unsafe.Pointer(postinc569(&_dptr))) = *(*uint8)(unsafe.Pointer(xBF_itoa64 + uintptr(_c1)))
+			*(*uint8)(unsafe.Pointer(postinc569(&_dptr))) = *(*uint8)(unsafe.Pointer(uintptr(unsafe.Pointer(&xBF_itoa64)) + uintptr(_c1)))
 			break
 		}
 		_c2 = uint32(*(*uint8)(unsafe.Pointer(postinc569(&_sptr))))
 		_c1 = _c1 | _c2>>(uint(4)%32)
-		*(*uint8)(unsafe.Pointer(postinc569(&_dptr))) = *(*uint8)(unsafe.Pointer(xBF_itoa64 + uintptr(_c1)))
+		*(*uint8)(unsafe.Pointer(postinc569(&_dptr))) = *(*uint8)(unsafe.Pointer(uintptr(unsafe.Pointer(&xBF_itoa64)) + uintptr(_c1)))
 		_c1 = _c2 & uint32(0xf) << (uint(2) % 32)
 		if _sptr >= _end {
-			*(*uint8)(unsafe.Pointer(postinc569(&_dptr))) = *(*uint8)(unsafe.Pointer(xBF_itoa64 + uintptr(_c1)))
+			*(*uint8)(unsafe.Pointer(postinc569(&_dptr))) = *(*uint8)(unsafe.Pointer(uintptr(unsafe.Pointer(&xBF_itoa64)) + uintptr(_c1)))
 			break
 		}
 		_c2 = uint32(*(*uint8)(unsafe.Pointer(postinc569(&_sptr))))
 		_c1 = _c1 | _c2>>(uint(6)%32)
-		*(*uint8)(unsafe.Pointer(postinc569(&_dptr))) = *(*uint8)(unsafe.Pointer(xBF_itoa64 + uintptr(_c1)))
-		*(*uint8)(unsafe.Pointer(postinc569(&_dptr))) = *(*uint8)(unsafe.Pointer(xBF_itoa64 + uintptr(_c2&uint32(0x3f))))
+		*(*uint8)(unsafe.Pointer(postinc569(&_dptr))) = *(*uint8)(unsafe.Pointer(uintptr(unsafe.Pointer(&xBF_itoa64)) + uintptr(_c1)))
+		*(*uint8)(unsafe.Pointer(postinc569(&_dptr))) = *(*uint8)(unsafe.Pointer(uintptr(unsafe.Pointer(&xBF_itoa64)) + uintptr(_c2&uint32(0x3f))))
 	}
 }
 
@@ -3163,24 +3192,24 @@ func X__des_setkey(tls TLS, _key uintptr /* *uint8 */, _ekey uintptr /* *Sexpand
 	_k0 = set572(&_k1, uint32(0))
 	for func() uint32 { _i = uint32(0); return set572(&_ibit, uint32(28)) }(); _i < uint32(4); func() uint32 { _i++; return sub573(&_ibit, 4) }() {
 		_j = _i << (uint(1) % 32)
-		_k0 = _k0 | (*(*uint32)(unsafe.Pointer((xkey_perm_maskl + 64*uintptr(_i)) + 4*uintptr(_rawkey0>>(uint(_ibit)%32)&uint32(0xf)))) | *(*uint32)(unsafe.Pointer((xkey_perm_maskl + 64*uintptr(_i+uint32(4))) + 4*uintptr(_rawkey1>>(uint(_ibit)%32)&uint32(0xf)))))
-		_k1 = _k1 | *(*uint32)(unsafe.Pointer((xkey_perm_maskr + 64*uintptr(_j)) + 4*uintptr(_rawkey0>>(uint(_ibit)%32)&uint32(0xf))))
+		_k0 = _k0 | (*(*uint32)(unsafe.Pointer((uintptr(unsafe.Pointer(&xkey_perm_maskl)) + 64*uintptr(_i)) + 4*uintptr(_rawkey0>>(uint(_ibit)%32)&uint32(0xf)))) | *(*uint32)(unsafe.Pointer((uintptr(unsafe.Pointer(&xkey_perm_maskl)) + 64*uintptr(_i+uint32(4))) + 4*uintptr(_rawkey1>>(uint(_ibit)%32)&uint32(0xf)))))
+		_k1 = _k1 | *(*uint32)(unsafe.Pointer((uintptr(unsafe.Pointer(&xkey_perm_maskr)) + 64*uintptr(_j)) + 4*uintptr(_rawkey0>>(uint(_ibit)%32)&uint32(0xf))))
 		_ibit = _ibit - uint32(4)
-		_k1 = _k1 | (*(*uint32)(unsafe.Pointer((xkey_perm_maskr + 64*uintptr(_j+uint32(1))) + 4*uintptr(_rawkey0>>(uint(_ibit)%32)&uint32(0xf)))) | *(*uint32)(unsafe.Pointer((xkey_perm_maskr + 64*uintptr(_i+uint32(8))) + 4*uintptr(_rawkey1>>(uint(_ibit)%32)&uint32(0xf)))))
+		_k1 = _k1 | (*(*uint32)(unsafe.Pointer((uintptr(unsafe.Pointer(&xkey_perm_maskr)) + 64*uintptr(_j+uint32(1))) + 4*uintptr(_rawkey0>>(uint(_ibit)%32)&uint32(0xf)))) | *(*uint32)(unsafe.Pointer((uintptr(unsafe.Pointer(&xkey_perm_maskr)) + 64*uintptr(_i+uint32(8))) + 4*uintptr(_rawkey1>>(uint(_ibit)%32)&uint32(0xf)))))
 	}
 	_shifts = uint32(0)
 	for _round = uint32(0); _round < uint32(16); _round++ {
-		_shifts = _shifts + uint32(*(*uint8)(unsafe.Pointer(xkey_shifts + uintptr(_round))))
+		_shifts = _shifts + uint32(*(*uint8)(unsafe.Pointer(uintptr(unsafe.Pointer(&xkey_shifts)) + uintptr(_round))))
 		_t0 = _k0<<(uint(_shifts)%32) | _k0>>(uint(uint32(28)-_shifts)%32)
 		_t1 = _k1<<(uint(_shifts)%32) | _k1>>(uint(uint32(28)-_shifts)%32)
 		_kl = set572(&_kr, uint32(0))
 		_ibit = uint32(25)
 		for _i = uint32(0); _i < uint32(4); _i++ {
-			_kl = _kl | *(*uint32)(unsafe.Pointer((xcomp_maskl0 + 32*uintptr(_i)) + 4*uintptr(_t0>>(uint(_ibit)%32)&uint32(7))))
-			_kr = _kr | *(*uint32)(unsafe.Pointer((xcomp_maskr0 + 32*uintptr(_i)) + 4*uintptr(_t1>>(uint(_ibit)%32)&uint32(7))))
+			_kl = _kl | *(*uint32)(unsafe.Pointer((uintptr(unsafe.Pointer(&xcomp_maskl0)) + 32*uintptr(_i)) + 4*uintptr(_t0>>(uint(_ibit)%32)&uint32(7))))
+			_kr = _kr | *(*uint32)(unsafe.Pointer((uintptr(unsafe.Pointer(&xcomp_maskr0)) + 32*uintptr(_i)) + 4*uintptr(_t1>>(uint(_ibit)%32)&uint32(7))))
 			_ibit = _ibit - uint32(4)
-			_kl = _kl | *(*uint32)(unsafe.Pointer((xcomp_maskl1 + 64*uintptr(_i)) + 4*uintptr(_t0>>(uint(_ibit)%32)&uint32(0xf))))
-			_kr = _kr | *(*uint32)(unsafe.Pointer((xcomp_maskr1 + 64*uintptr(_i)) + 4*uintptr(_t1>>(uint(_ibit)%32)&uint32(0xf))))
+			_kl = _kl | *(*uint32)(unsafe.Pointer((uintptr(unsafe.Pointer(&xcomp_maskl1)) + 64*uintptr(_i)) + 4*uintptr(_t0>>(uint(_ibit)%32)&uint32(0xf))))
+			_kr = _kr | *(*uint32)(unsafe.Pointer((uintptr(unsafe.Pointer(&xcomp_maskr1)) + 64*uintptr(_i)) + 4*uintptr(_t1>>(uint(_ibit)%32)&uint32(0xf))))
 			_ibit = _ibit - uint32(3)
 		}
 		*(*uint32)(unsafe.Pointer(_ekey + 4*uintptr(_round))) = _kl
@@ -3213,8 +3242,8 @@ func X__do_des(tls TLS, _l_in uint32, _r_in uint32, _l_out uintptr /* *Tuint32_t
 	_l = set572(&_r, uint32(0))
 	if (_l_in | _r_in) != 0 {
 		for func() uint32 { _i = uint32(0); return set572(&_ibit, uint32(28)) }(); _i < uint32(8); func() uint32 { _i++; return sub573(&_ibit, 4) }() {
-			_l = _l | (*(*uint32)(unsafe.Pointer((xip_maskl + 64*uintptr(_i)) + 4*uintptr(_l_in>>(uint(_ibit)%32)&uint32(0xf)))) | *(*uint32)(unsafe.Pointer((xip_maskl + 64*uintptr(_i+uint32(8))) + 4*uintptr(_r_in>>(uint(_ibit)%32)&uint32(0xf)))))
-			_r = _r | (*(*uint32)(unsafe.Pointer((xip_maskr + 64*uintptr(_i)) + 4*uintptr(_l_in>>(uint(_ibit)%32)&uint32(0xf)))) | *(*uint32)(unsafe.Pointer((xip_maskr + 64*uintptr(_i+uint32(8))) + 4*uintptr(_r_in>>(uint(_ibit)%32)&uint32(0xf)))))
+			_l = _l | (*(*uint32)(unsafe.Pointer((uintptr(unsafe.Pointer(&xip_maskl)) + 64*uintptr(_i)) + 4*uintptr(_l_in>>(uint(_ibit)%32)&uint32(0xf)))) | *(*uint32)(unsafe.Pointer((uintptr(unsafe.Pointer(&xip_maskl)) + 64*uintptr(_i+uint32(8))) + 4*uintptr(_r_in>>(uint(_ibit)%32)&uint32(0xf)))))
+			_r = _r | (*(*uint32)(unsafe.Pointer((uintptr(unsafe.Pointer(&xip_maskr)) + 64*uintptr(_i)) + 4*uintptr(_l_in>>(uint(_ibit)%32)&uint32(0xf)))) | *(*uint32)(unsafe.Pointer((uintptr(unsafe.Pointer(&xip_maskr)) + 64*uintptr(_i+uint32(8))) + 4*uintptr(_r_in>>(uint(_ibit)%32)&uint32(0xf)))))
 		}
 	}
 	for postinc574(&_count) != 0 {
@@ -3227,7 +3256,7 @@ func X__do_des(tls TLS, _l_in uint32, _r_in uint32, _l_out uintptr /* *Tuint32_t
 			_f = (_r48l ^ _r48r) & _saltbits
 			_r48l = _r48l ^ (_f ^ *(*uint32)(unsafe.Pointer(postinc575(&_kl))))
 			_r48r = _r48r ^ (_f ^ *(*uint32)(unsafe.Pointer(postinc575(&_kr))))
-			_f = *(*uint32)(unsafe.Pointer(xpsbox + 4*uintptr(_r48l>>(uint(18)%32)))) | *(*uint32)(unsafe.Pointer((xpsbox + 256) + 4*uintptr(_r48l>>(uint(12)%32)&uint32(0x3f)))) | *(*uint32)(unsafe.Pointer((xpsbox + 512) + 4*uintptr(_r48l>>(uint(6)%32)&uint32(0x3f)))) | *(*uint32)(unsafe.Pointer((xpsbox + 768) + 4*uintptr(_r48l&uint32(0x3f)))) | *(*uint32)(unsafe.Pointer((xpsbox + 1024) + 4*uintptr(_r48r>>(uint(18)%32)))) | *(*uint32)(unsafe.Pointer((xpsbox + 1280) + 4*uintptr(_r48r>>(uint(12)%32)&uint32(0x3f)))) | *(*uint32)(unsafe.Pointer((xpsbox + 1536) + 4*uintptr(_r48r>>(uint(6)%32)&uint32(0x3f)))) | *(*uint32)(unsafe.Pointer((xpsbox + 1792) + 4*uintptr(_r48r&uint32(0x3f))))
+			_f = *(*uint32)(unsafe.Pointer(uintptr(unsafe.Pointer(&xpsbox)) + 4*uintptr(_r48l>>(uint(18)%32)))) | *(*uint32)(unsafe.Pointer((uintptr(unsafe.Pointer(&xpsbox)) + 256) + 4*uintptr(_r48l>>(uint(12)%32)&uint32(0x3f)))) | *(*uint32)(unsafe.Pointer((uintptr(unsafe.Pointer(&xpsbox)) + 512) + 4*uintptr(_r48l>>(uint(6)%32)&uint32(0x3f)))) | *(*uint32)(unsafe.Pointer((uintptr(unsafe.Pointer(&xpsbox)) + 768) + 4*uintptr(_r48l&uint32(0x3f)))) | *(*uint32)(unsafe.Pointer((uintptr(unsafe.Pointer(&xpsbox)) + 1024) + 4*uintptr(_r48r>>(uint(18)%32)))) | *(*uint32)(unsafe.Pointer((uintptr(unsafe.Pointer(&xpsbox)) + 1280) + 4*uintptr(_r48r>>(uint(12)%32)&uint32(0x3f)))) | *(*uint32)(unsafe.Pointer((uintptr(unsafe.Pointer(&xpsbox)) + 1536) + 4*uintptr(_r48r>>(uint(6)%32)&uint32(0x3f)))) | *(*uint32)(unsafe.Pointer((uintptr(unsafe.Pointer(&xpsbox)) + 1792) + 4*uintptr(_r48r&uint32(0x3f))))
 			_f = _f ^ _l
 			_l = _r
 			_r = _f
@@ -3237,9 +3266,9 @@ func X__do_des(tls TLS, _l_in uint32, _r_in uint32, _l_out uintptr /* *Tuint32_t
 	}
 	_lo = set572(&_ro, uint32(0))
 	for func() uint32 { _1i = uint32(0); return set572(&_2ibit, uint32(28)) }(); _1i < uint32(4); func() uint32 { _1i++; return sub573(&_2ibit, 4) }() {
-		_ro = _ro | (*(*uint32)(unsafe.Pointer((xfp_maskr + 64*uintptr(_1i)) + 4*uintptr(_l>>(uint(_2ibit)%32)&uint32(0xf)))) | *(*uint32)(unsafe.Pointer((xfp_maskr + 64*uintptr(_1i+uint32(4))) + 4*uintptr(_r>>(uint(_2ibit)%32)&uint32(0xf)))))
+		_ro = _ro | (*(*uint32)(unsafe.Pointer((uintptr(unsafe.Pointer(&xfp_maskr)) + 64*uintptr(_1i)) + 4*uintptr(_l>>(uint(_2ibit)%32)&uint32(0xf)))) | *(*uint32)(unsafe.Pointer((uintptr(unsafe.Pointer(&xfp_maskr)) + 64*uintptr(_1i+uint32(4))) + 4*uintptr(_r>>(uint(_2ibit)%32)&uint32(0xf)))))
 		_2ibit = _2ibit - uint32(4)
-		_lo = _lo | (*(*uint32)(unsafe.Pointer((xfp_maskl + 64*uintptr(_1i)) + 4*uintptr(_l>>(uint(_2ibit)%32)&uint32(0xf)))) | *(*uint32)(unsafe.Pointer((xfp_maskl + 64*uintptr(_1i+uint32(4))) + 4*uintptr(_r>>(uint(_2ibit)%32)&uint32(0xf)))))
+		_lo = _lo | (*(*uint32)(unsafe.Pointer((uintptr(unsafe.Pointer(&xfp_maskl)) + 64*uintptr(_1i)) + 4*uintptr(_l>>(uint(_2ibit)%32)&uint32(0xf)))) | *(*uint32)(unsafe.Pointer((uintptr(unsafe.Pointer(&xfp_maskl)) + 64*uintptr(_1i+uint32(4))) + 4*uintptr(_r>>(uint(_2ibit)%32)&uint32(0xf)))))
 	}
 	*(*uint32)(unsafe.Pointer(_l_out)) = _lo
 	*(*uint32)(unsafe.Pointer(_r_out)) = _ro
@@ -3257,12 +3286,12 @@ func X__crypt_des(tls TLS, _key uintptr /* *int8 */, _setting uintptr /* *int8 *
 		_p            uintptr // *int8
 	)
 	defer Free(esc)
-	_test_key = ts + 212     /* "\x80\xff\x80\x01 \u007f\x81\x80\x80\r\n\xff\u007f \x81 ..." */
-	_test_setting = ts + 236 /* "_0.../9Zz" */
-	_test_hash = ts + 248    /* "_0.../9ZzX7iSJNd..." */
+	_test_key = ts + 5224     /* "\x80\xff\x80\x01 \u007f\x81\x80\x80\r\n\xff\u007f \x81 ..." */
+	_test_setting = ts + 5248 /* "_0.../9Zz" */
+	_test_hash = ts + 5260    /* "_0.../9ZzX7iSJNd..." */
 	if int32(*(*int8)(unsafe.Pointer(_setting))) != int32('_') {
-		_test_setting = ts + 272 /* "\x80x" */
-		_test_hash = ts + 276    /* "\x80x22/wK52ZKGA" */
+		_test_setting = ts + 5284 /* "\x80x" */
+		_test_hash = ts + 5288    /* "\x80x22/wK52ZKGA" */
 	}
 	_retval = x_crypt_extended_r_uut(tls, _key, _setting, _output)
 	_p = x_crypt_extended_r_uut(tls, _test_key, _test_setting, _test_buf)
@@ -3270,9 +3299,9 @@ func X__crypt_des(tls TLS, _key uintptr /* *int8 */, _setting uintptr /* *int8 *
 		return _retval
 	}
 	if int32(*(*int8)(unsafe.Pointer(_setting))) == int32('*') {
-		return ts + 292 /* "x" */
+		return ts + 5304 /* "x" */
 	}
-	return ts + 208 /* "*" */
+	return ts + 752 /* "*" */
 }
 
 // Sexpanded_key is defined at crypt_des.c:59:1
@@ -3283,41 +3312,41 @@ type Sexpanded_key = struct {
 
 type t12uint32_t = uint32
 
-// xkey_perm_maskl [8][16]uint32, escapes: true, crypt_des.c:460:23
-var xkey_perm_maskl = ds + 5016
+// xkey_perm_maskl [8][16]uint32, escapes: false, crypt_des.c:460:23
+var xkey_perm_maskl = *(*[8][16]uint32)(unsafe.Pointer(ts + 5308 /* "\x00\x00\x00\x00\x00\x00\x00\x00\x10\x00\x00\x00\x10\x00\x00\x00..." */))
 
-// xkey_perm_maskr [12][16]uint32, escapes: true, crypt_des.c:503:23
-var xkey_perm_maskr = ds + 5528
+// xkey_perm_maskr [12][16]uint32, escapes: false, crypt_des.c:503:23
+var xkey_perm_maskr = *(*[12][16]uint32)(unsafe.Pointer(ts + 5824 /* "\x00\x00\x00\x00\x01\x00\x00\x00\x00\x00\x00\x00\x01\x00\x00\x00..." */))
 
-// xkey_shifts [16]uint8, escapes: true, crypt_des.c:65:28
-var xkey_shifts = ds + 6296
+// xkey_shifts [16]uint8, escapes: false, crypt_des.c:65:28
+var xkey_shifts = *(*[16]uint8)(unsafe.Pointer(ts + 6596 /* "\x01\x01\x02\x02\x02\x02\x02\x02\x01\x02\x02\x02\x02\x02\x02\x01" */))
 
-// xcomp_maskl0 [4][8]uint32, escapes: true, crypt_des.c:566:23
-var xcomp_maskl0 = ds + 6312
+// xcomp_maskl0 [4][8]uint32, escapes: false, crypt_des.c:566:23
+var xcomp_maskl0 = *(*[4][8]uint32)(unsafe.Pointer(ts + 6616 /* "\x00\x00\x00\x00\x00\x00\x02\x00\x01\x00\x00\x00\x01\x00\x02\x00..." */))
 
-// xcomp_maskr0 [4][8]uint32, escapes: true, crypt_des.c:581:23
-var xcomp_maskr0 = ds + 6440
+// xcomp_maskr0 [4][8]uint32, escapes: false, crypt_des.c:581:23
+var xcomp_maskr0 = *(*[4][8]uint32)(unsafe.Pointer(ts + 6748 /* "\x00\x00\x00\x00\x00\x00 \x00\x00\x00\x02\x00\x00\x00\"\x00..." */))
 
-// xcomp_maskl1 [4][16]uint32, escapes: true, crypt_des.c:596:23
-var xcomp_maskl1 = ds + 6568
+// xcomp_maskl1 [4][16]uint32, escapes: false, crypt_des.c:596:23
+var xcomp_maskl1 = *(*[4][16]uint32)(unsafe.Pointer(ts + 6880 /* "\x00\x00\x00\x00\x10\x00\x00\x00\x00@\x00\x00\x10@\x00\x00..." */))
 
-// xcomp_maskr1 [4][16]uint32, escapes: true, crypt_des.c:619:23
-var xcomp_maskr1 = ds + 6824
+// xcomp_maskr1 [4][16]uint32, escapes: false, crypt_des.c:619:23
+var xcomp_maskr1 = *(*[4][16]uint32)(unsafe.Pointer(ts + 7140 /* "\x00\x00\x00\x00\x00\x00\x00\x00\x80\x00\x00\x00\x80\x00\x00\x00..." */))
 
-// xip_maskl [16][16]uint32, escapes: true, crypt_des.c:208:23
-var xip_maskl = ds + 7080
+// xip_maskl [16][16]uint32, escapes: false, crypt_des.c:208:23
+var xip_maskl = *(*[16][16]uint32)(unsafe.Pointer(ts + 7400 /* "\x00\x00\x00\x00\x00\x00\x01\x00\x00\x00\x00\x00\x00\x00\x01\x00..." */))
 
-// xip_maskr [16][16]uint32, escapes: true, crypt_des.c:291:23
-var xip_maskr = ds + 8104
+// xip_maskr [16][16]uint32, escapes: false, crypt_des.c:291:23
+var xip_maskr = *(*[16][16]uint32)(unsafe.Pointer(ts + 8428 /* "\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x01\x00\x00\x00\x01\x00..." */))
 
-// xpsbox [8][64]uint32, escapes: true, crypt_des.c:69:23
-var xpsbox = ds + 9128
+// xpsbox [8][64]uint32, escapes: false, crypt_des.c:69:23
+var xpsbox = *(*[8][64]uint32)(unsafe.Pointer(ts + 9456 /* "\x00\x82\x80\x00\x00\x00\x00\x00\x00\x80\x00\x00\x02\x82\x80\x00..." */))
 
-// xfp_maskr [8][16]uint32, escapes: true, crypt_des.c:417:23
-var xfp_maskr = ds + 11176
+// xfp_maskr [8][16]uint32, escapes: false, crypt_des.c:417:23
+var xfp_maskr = *(*[8][16]uint32)(unsafe.Pointer(ts + 11508 /* "\x00\x00\x00\x00\x00\x00\x00@\x00\x00@\x00\x00\x00@@..." */))
 
-// xfp_maskl [8][16]uint32, escapes: true, crypt_des.c:374:23
-var xfp_maskl = ds + 11688
+// xfp_maskl [8][16]uint32, escapes: false, crypt_des.c:374:23
+var xfp_maskl = *(*[8][16]uint32)(unsafe.Pointer(ts + 11508 /* "\x00\x00\x00\x00\x00\x00\x00@\x00\x00@\x00\x00\x00@@..." */))
 
 func postinc576(p *uintptr) uintptr { r := *p; *p += 1; return r }
 
@@ -3354,7 +3383,7 @@ func x_crypt_extended_r_uut(tls TLS, __key uintptr /* *int8 */, __setting uintpt
 	if int32(*(*uint8)(unsafe.Pointer(_setting))) == int32('_') {
 		for func() uint32 { _i = uint32(1); return set572(&_count, uint32(0)) }(); _i < uint32(5); _i++ {
 			_value = xascii_to_bin(tls, int32(*(*uint8)(unsafe.Pointer(_setting + uintptr(_i)))))
-			if int32(*(*uint8)(unsafe.Pointer(xascii64 + uintptr(_value)))) != int32(*(*uint8)(unsafe.Pointer(_setting + uintptr(_i)))) {
+			if int32(*(*uint8)(unsafe.Pointer(uintptr(unsafe.Pointer(&xascii64)) + uintptr(_value)))) != int32(*(*uint8)(unsafe.Pointer(_setting + uintptr(_i)))) {
 				return null
 			}
 			_count = _count | _value<<(uint((_i-uint32(1))*uint32(6))%32)
@@ -3364,7 +3393,7 @@ func x_crypt_extended_r_uut(tls TLS, __key uintptr /* *int8 */, __setting uintpt
 		}
 		for func() uint32 { _i = uint32(5); return set572(&_salt, uint32(0)) }(); _i < uint32(9); _i++ {
 			_1value = xascii_to_bin(tls, int32(*(*uint8)(unsafe.Pointer(_setting + uintptr(_i)))))
-			if int32(*(*uint8)(unsafe.Pointer(xascii64 + uintptr(_1value)))) != int32(*(*uint8)(unsafe.Pointer(_setting + uintptr(_i)))) {
+			if int32(*(*uint8)(unsafe.Pointer(uintptr(unsafe.Pointer(&xascii64)) + uintptr(_1value)))) != int32(*(*uint8)(unsafe.Pointer(_setting + uintptr(_i)))) {
 				return null
 			}
 			_salt = _salt | _1value<<(uint((_i-uint32(5))*uint32(6))%32)
@@ -3395,19 +3424,19 @@ func x_crypt_extended_r_uut(tls TLS, __key uintptr /* *int8 */, __setting uintpt
 	}
 	X__do_des(tls, uint32(0), uint32(0), _r0, _r1, _count, xsetup_salt(tls, _salt), _ekey)
 	_l = *(*uint32)(unsafe.Pointer(_r0)) >> (uint(8) % 32)
-	*(*uint8)(unsafe.Pointer(postinc576(&_p))) = *(*uint8)(unsafe.Pointer(xascii64 + uintptr(_l>>(uint(18)%32)&uint32(0x3f))))
-	*(*uint8)(unsafe.Pointer(postinc576(&_p))) = *(*uint8)(unsafe.Pointer(xascii64 + uintptr(_l>>(uint(12)%32)&uint32(0x3f))))
-	*(*uint8)(unsafe.Pointer(postinc576(&_p))) = *(*uint8)(unsafe.Pointer(xascii64 + uintptr(_l>>(uint(6)%32)&uint32(0x3f))))
-	*(*uint8)(unsafe.Pointer(postinc576(&_p))) = *(*uint8)(unsafe.Pointer(xascii64 + uintptr(_l&uint32(0x3f))))
+	*(*uint8)(unsafe.Pointer(postinc576(&_p))) = *(*uint8)(unsafe.Pointer(uintptr(unsafe.Pointer(&xascii64)) + uintptr(_l>>(uint(18)%32)&uint32(0x3f))))
+	*(*uint8)(unsafe.Pointer(postinc576(&_p))) = *(*uint8)(unsafe.Pointer(uintptr(unsafe.Pointer(&xascii64)) + uintptr(_l>>(uint(12)%32)&uint32(0x3f))))
+	*(*uint8)(unsafe.Pointer(postinc576(&_p))) = *(*uint8)(unsafe.Pointer(uintptr(unsafe.Pointer(&xascii64)) + uintptr(_l>>(uint(6)%32)&uint32(0x3f))))
+	*(*uint8)(unsafe.Pointer(postinc576(&_p))) = *(*uint8)(unsafe.Pointer(uintptr(unsafe.Pointer(&xascii64)) + uintptr(_l&uint32(0x3f))))
 	_l = *(*uint32)(unsafe.Pointer(_r0))<<(uint(16)%32) | *(*uint32)(unsafe.Pointer(_r1))>>(uint(16)%32)&uint32(0xffff)
-	*(*uint8)(unsafe.Pointer(postinc576(&_p))) = *(*uint8)(unsafe.Pointer(xascii64 + uintptr(_l>>(uint(18)%32)&uint32(0x3f))))
-	*(*uint8)(unsafe.Pointer(postinc576(&_p))) = *(*uint8)(unsafe.Pointer(xascii64 + uintptr(_l>>(uint(12)%32)&uint32(0x3f))))
-	*(*uint8)(unsafe.Pointer(postinc576(&_p))) = *(*uint8)(unsafe.Pointer(xascii64 + uintptr(_l>>(uint(6)%32)&uint32(0x3f))))
-	*(*uint8)(unsafe.Pointer(postinc576(&_p))) = *(*uint8)(unsafe.Pointer(xascii64 + uintptr(_l&uint32(0x3f))))
+	*(*uint8)(unsafe.Pointer(postinc576(&_p))) = *(*uint8)(unsafe.Pointer(uintptr(unsafe.Pointer(&xascii64)) + uintptr(_l>>(uint(18)%32)&uint32(0x3f))))
+	*(*uint8)(unsafe.Pointer(postinc576(&_p))) = *(*uint8)(unsafe.Pointer(uintptr(unsafe.Pointer(&xascii64)) + uintptr(_l>>(uint(12)%32)&uint32(0x3f))))
+	*(*uint8)(unsafe.Pointer(postinc576(&_p))) = *(*uint8)(unsafe.Pointer(uintptr(unsafe.Pointer(&xascii64)) + uintptr(_l>>(uint(6)%32)&uint32(0x3f))))
+	*(*uint8)(unsafe.Pointer(postinc576(&_p))) = *(*uint8)(unsafe.Pointer(uintptr(unsafe.Pointer(&xascii64)) + uintptr(_l&uint32(0x3f))))
 	_l = *(*uint32)(unsafe.Pointer(_r1)) << (uint(2) % 32)
-	*(*uint8)(unsafe.Pointer(postinc576(&_p))) = *(*uint8)(unsafe.Pointer(xascii64 + uintptr(_l>>(uint(12)%32)&uint32(0x3f))))
-	*(*uint8)(unsafe.Pointer(postinc576(&_p))) = *(*uint8)(unsafe.Pointer(xascii64 + uintptr(_l>>(uint(6)%32)&uint32(0x3f))))
-	*(*uint8)(unsafe.Pointer(postinc576(&_p))) = *(*uint8)(unsafe.Pointer(xascii64 + uintptr(_l&uint32(0x3f))))
+	*(*uint8)(unsafe.Pointer(postinc576(&_p))) = *(*uint8)(unsafe.Pointer(uintptr(unsafe.Pointer(&xascii64)) + uintptr(_l>>(uint(12)%32)&uint32(0x3f))))
+	*(*uint8)(unsafe.Pointer(postinc576(&_p))) = *(*uint8)(unsafe.Pointer(uintptr(unsafe.Pointer(&xascii64)) + uintptr(_l>>(uint(6)%32)&uint32(0x3f))))
+	*(*uint8)(unsafe.Pointer(postinc576(&_p))) = *(*uint8)(unsafe.Pointer(uintptr(unsafe.Pointer(&xascii64)) + uintptr(_l&uint32(0x3f))))
 	*(*uint8)(unsafe.Pointer(_p)) = uint8(0)
 	return _output
 }
@@ -3435,8 +3464,8 @@ func xascii_to_bin(tls TLS, _ch int32) (r uint32) {
 	return uint32(_retval)
 }
 
-// xascii64 [65]uint8, escapes: true, crypt_des.c:643:28
-var xascii64 = ds + 12200
+// xascii64 [65]uint8, escapes: false, crypt_des.c:643:28
+var xascii64 = *(*[65]uint8)(unsafe.Pointer(ts + 12024 /* "./0123456789ABCD..." */))
 
 // xdes_cipher is defined at crypt_des.c:849:13
 func xdes_cipher(tls TLS, _in uintptr /* *uint8 */, _out uintptr /* *uint8 */, _count uint32, _saltbits uint32, _ekey uintptr /* *Sexpanded_key */) {
@@ -3499,21 +3528,21 @@ func X__crypt_md5(tls TLS, _key uintptr /* *int8 */, _setting uintptr /* *int8 *
 	)
 	defer Free(esc)
 	_p = xmd5crypt(tls, _key, _setting, _output)
-	_q = xmd5crypt(tls, x577testkey, x578testsetting, _testbuf)
-	if ((_p == 0) || (_q != _testbuf)) || (Xmemcmp(tls, _testbuf, x579testhash, uint64(35)) != 0) {
-		return ts + 208 /* "*" */
+	_q = xmd5crypt(tls, uintptr(unsafe.Pointer(&x577testkey)), uintptr(unsafe.Pointer(&x578testsetting)), _testbuf)
+	if ((_p == 0) || (_q != _testbuf)) || (Xmemcmp(tls, _testbuf, uintptr(unsafe.Pointer(&x579testhash)), uint64(35)) != 0) {
+		return ts + 752 /* "*" */
 	}
 	return _p
 }
 
-// x1testkey [18]int8, escapes: true, crypt_md5.c:274:20
-var x577testkey = ds + 12272
+// x1testkey [18]int8, escapes: false, crypt_md5.c:274:20
+var x577testkey = *(*[18]int8)(unsafe.Pointer(ts + 12092 /* "Xy01@#\x01\x02\x80\u007f\xff\r\n\x81\t ..." */))
 
-// x2testsetting [13]int8, escapes: true, crypt_md5.c:275:20
-var x578testsetting = ds + 12296
+// x2testsetting [13]int8, escapes: false, crypt_md5.c:275:20
+var x578testsetting = *(*[13]int8)(unsafe.Pointer(ts + 12112 /* "$1$abcd0123$\x00" */))
 
-// x3testhash [35]int8, escapes: true, crypt_md5.c:276:20
-var x579testhash = ds + 12312
+// x3testhash [35]int8, escapes: false, crypt_md5.c:276:20
+var x579testhash = *(*[35]int8)(unsafe.Pointer(ts + 12128 /* "$1$abcd0123$9Qcg..." */))
 
 // xmd5crypt is defined at crypt_md5.c:197:13
 func xmd5crypt(tls TLS, _key uintptr /* *int8 */, _setting uintptr /* *int8 */, _output uintptr /* *int8 */) (r uintptr /* *int8 */) {
@@ -3563,21 +3592,21 @@ func X__crypt_sha256(tls TLS, _key uintptr /* *int8 */, _setting uintptr /* *int
 	)
 	defer Free(esc)
 	_p = xsha256crypt(tls, _key, _setting, _output)
-	_q = xsha256crypt(tls, x580testkey, x581testsetting, _testbuf)
-	if ((_p == 0) || (_q != _testbuf)) || (Xmemcmp(tls, _testbuf, x582testhash, uint64(73)) != 0) {
-		return ts + 208 /* "*" */
+	_q = xsha256crypt(tls, uintptr(unsafe.Pointer(&x580testkey)), uintptr(unsafe.Pointer(&x581testsetting)), _testbuf)
+	if ((_p == 0) || (_q != _testbuf)) || (Xmemcmp(tls, _testbuf, uintptr(unsafe.Pointer(&x582testhash)), uint64(73)) != 0) {
+		return ts + 752 /* "*" */
 	}
 	return _p
 }
 
-// x1testkey [18]int8, escapes: true, crypt_sha256.c:311:20
-var x580testkey = ds + 12352
+// x1testkey [18]int8, escapes: false, crypt_sha256.c:311:20
+var x580testkey = *(*[18]int8)(unsafe.Pointer(ts + 12092 /* "Xy01@#\x01\x02\x80\u007f\xff\r\n\x81\t ..." */))
 
-// x2testsetting [30]int8, escapes: true, crypt_sha256.c:312:20
-var x581testsetting = ds + 12376
+// x2testsetting [30]int8, escapes: false, crypt_sha256.c:312:20
+var x581testsetting = *(*[30]int8)(unsafe.Pointer(ts + 12164 /* "$5$rounds=1234$a..." */))
 
-// x3testhash [73]int8, escapes: true, crypt_sha256.c:313:20
-var x582testhash = ds + 12408
+// x3testhash [73]int8, escapes: false, crypt_sha256.c:313:20
+var x582testhash = *(*[73]int8)(unsafe.Pointer(ts + 12196 /* "$5$rounds=1234$a..." */))
 
 // xsha256crypt is defined at crypt_sha256.c:187:13
 func xsha256crypt(tls TLS, _key uintptr /* *int8 */, _setting uintptr /* *int8 */, _output uintptr /* *int8 */) (r uintptr /* *int8 */) {
@@ -3597,21 +3626,21 @@ func X__crypt_sha512(tls TLS, _key uintptr /* *int8 */, _setting uintptr /* *int
 	)
 	defer Free(esc)
 	_p = xsha512crypt(tls, _key, _setting, _output)
-	_q = xsha512crypt(tls, x583testkey, x584testsetting, _testbuf)
-	if ((_p == 0) || (_q != _testbuf)) || (Xmemcmp(tls, _testbuf, x585testhash, uint64(116)) != 0) {
-		return ts + 208 /* "*" */
+	_q = xsha512crypt(tls, uintptr(unsafe.Pointer(&x583testkey)), uintptr(unsafe.Pointer(&x584testsetting)), _testbuf)
+	if ((_p == 0) || (_q != _testbuf)) || (Xmemcmp(tls, _testbuf, uintptr(unsafe.Pointer(&x585testhash)), uint64(116)) != 0) {
+		return ts + 752 /* "*" */
 	}
 	return _p
 }
 
-// x1testkey [18]int8, escapes: true, crypt_sha512.c:360:20
-var x583testkey = ds + 12488
+// x1testkey [18]int8, escapes: false, crypt_sha512.c:360:20
+var x583testkey = *(*[18]int8)(unsafe.Pointer(ts + 12092 /* "Xy01@#\x01\x02\x80\u007f\xff\r\n\x81\t ..." */))
 
-// x2testsetting [30]int8, escapes: true, crypt_sha512.c:361:20
-var x584testsetting = ds + 12512
+// x2testsetting [30]int8, escapes: false, crypt_sha512.c:361:20
+var x584testsetting = *(*[30]int8)(unsafe.Pointer(ts + 12272 /* "$6$rounds=1234$a..." */))
 
-// x3testhash [116]int8, escapes: true, crypt_sha512.c:362:20
-var x585testhash = ds + 12544
+// x3testhash [116]int8, escapes: false, crypt_sha512.c:362:20
+var x585testhash = *(*[116]int8)(unsafe.Pointer(ts + 12304 /* "$6$rounds=1234$a..." */))
 
 // xsha512crypt is defined at crypt_sha512.c:208:13
 func xsha512crypt(tls TLS, _key uintptr /* *int8 */, _setting uintptr /* *int8 */, _output uintptr /* *int8 */) (r uintptr /* *int8 */) {
@@ -3641,7 +3670,7 @@ func Xsetkey(tls TLS, _key uintptr /* *int8 */) {
 			}
 		}
 	}
-	X__des_setkey(tls, _bkey, x__encrypt_key)
+	X__des_setkey(tls, _bkey, uintptr(unsafe.Pointer(&x__encrypt_key)))
 }
 
 // Xencrypt is defined at encrypt.c:31:6
@@ -3666,12 +3695,12 @@ func Xencrypt(tls TLS, _block uintptr /* *int8 */, _edflag int32) {
 			}
 		}
 	}
-	_key = x__encrypt_key
+	_key = uintptr(unsafe.Pointer(&x__encrypt_key))
 	if _edflag != 0 {
 		_key = _decrypt_key
 		for _i = int32(0); _i < int32(16); _i++ {
-			*(*uint32)(unsafe.Pointer(_decrypt_key + 4*uintptr(_i))) = *(*uint32)(unsafe.Pointer(x__encrypt_key + 4*uintptr(int32(15)-_i)))
-			*(*uint32)(unsafe.Pointer((_decrypt_key + 64) + 4*uintptr(_i))) = *(*uint32)(unsafe.Pointer((x__encrypt_key + 64) + 4*uintptr(int32(15)-_i)))
+			*(*uint32)(unsafe.Pointer(_decrypt_key + 4*uintptr(_i))) = *(*uint32)(unsafe.Pointer(uintptr(unsafe.Pointer(&x__encrypt_key)) + 4*uintptr(int32(15)-_i)))
+			*(*uint32)(unsafe.Pointer((_decrypt_key + 64) + 4*uintptr(_i))) = *(*uint32)(unsafe.Pointer((uintptr(unsafe.Pointer(&x__encrypt_key)) + 64) + 4*uintptr(int32(15)-_i)))
 		}
 	}
 	X__do_des(tls, *(*uint32)(unsafe.Pointer(_b)), *(*uint32)(unsafe.Pointer(_b + 4)), _b, _b+4*uintptr(1), uint32(1), uint32(0), _key)
@@ -3685,8 +3714,8 @@ func Xencrypt(tls TLS, _block uintptr /* *int8 */, _edflag int32) {
 
 type t13uint32_t = uint32
 
-// x__encrypt_key Sexpanded_key, escapes: true, encrypt.c:15:28
-var x__encrypt_key = bss + 208
+// x__encrypt_key Sexpanded_key, escapes: false, encrypt.c:15:28
+var x__encrypt_key s1expanded_key
 
 // Sexpanded_key is defined at encrypt.c:5:1
 type s1expanded_key = struct {
@@ -3698,16 +3727,16 @@ type s1expanded_key = struct {
 
 // X__ctype_b_loc is defined at __ctype_b_loc.c:38:22
 func X__ctype_b_loc(tls TLS) (r uintptr /* **uint16 */) {
-	return xptable
+	return uintptr(unsafe.Pointer(&xptable))
 }
 
-// xptable *uint16, escapes: true, __ctype_b_loc.c:36:29
-var xptable = bss + 336 // pointer to unsigned short
+// xptable *uint16, escapes: false, __ctype_b_loc.c:36:29
+var xptable uintptr
 
-func init() { *(*uintptr)(unsafe.Pointer(xptable)) = xtable + 2*uintptr(128) }
+func init() { xptable = uintptr(unsafe.Pointer(&xtable)) + 2*uintptr(128) }
 
-// xtable [384]uint16, escapes: true, __ctype_b_loc.c:9:29
-var xtable = ds + 12664
+// xtable [384]uint16, escapes: false, __ctype_b_loc.c:9:29
+var xtable = *(*[384]uint16)(unsafe.Pointer(ts + 12424 /* "\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00..." */))
 
 // linking __ctype_get_mb_cur_max.o
 
@@ -3786,16 +3815,16 @@ type s3__locale_struct = struct{ Fcat [6]uintptr }
 
 // X__ctype_tolower_loc is defined at __ctype_tolower_loc.c:27:15
 func X__ctype_tolower_loc(tls TLS) (r uintptr /* **Tint32_t = int32 */) {
-	return x1ptable
+	return uintptr(unsafe.Pointer(&x1ptable))
 }
 
-// xptable *Tint32_t = int32, escapes: true, __ctype_tolower_loc.c:25:22
-var x1ptable = bss + 344 // pointer to int32_t
+// xptable *Tint32_t = int32, escapes: false, __ctype_tolower_loc.c:25:22
+var x1ptable uintptr
 
-func init() { *(*uintptr)(unsafe.Pointer(x1ptable)) = x1table + 4*uintptr(128) }
+func init() { x1ptable = uintptr(unsafe.Pointer(&x1table)) + 4*uintptr(128) }
 
-// xtable [384]int32, escapes: true, __ctype_tolower_loc.c:3:22
-var x1table = ds + 13432
+// xtable [384]int32, escapes: false, __ctype_tolower_loc.c:3:22
+var x1table = *(*[384]int32)(unsafe.Pointer(ts + 13196 /* "\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00..." */))
 
 type t4int32_t = int32
 
@@ -3803,16 +3832,16 @@ type t4int32_t = int32
 
 // X__ctype_toupper_loc is defined at __ctype_toupper_loc.c:27:15
 func X__ctype_toupper_loc(tls TLS) (r uintptr /* **Tint32_t = int32 */) {
-	return x2ptable
+	return uintptr(unsafe.Pointer(&x2ptable))
 }
 
-// xptable *Tint32_t = int32, escapes: true, __ctype_toupper_loc.c:25:22
-var x2ptable = bss + 352 // pointer to int32_t
+// xptable *Tint32_t = int32, escapes: false, __ctype_toupper_loc.c:25:22
+var x2ptable uintptr
 
-func init() { *(*uintptr)(unsafe.Pointer(x2ptable)) = x2table + 4*uintptr(128) }
+func init() { x2ptable = uintptr(unsafe.Pointer(&x2table)) + 4*uintptr(128) }
 
-// xtable [384]int32, escapes: true, __ctype_toupper_loc.c:3:22
-var x2table = ds + 14968
+// xtable [384]int32, escapes: false, __ctype_toupper_loc.c:3:22
+var x2table = *(*[384]int32)(unsafe.Pointer(ts + 14736 /* "\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00..." */))
 
 type t5int32_t = int32
 
@@ -3966,7 +3995,7 @@ type s15__locale_struct = struct{ Fcat [6]uintptr }
 // Xiswalpha is defined at iswalpha.c:8:5
 func Xiswalpha(tls TLS, _wc uint32) (r int32) {
 	if _wc < uint32(0x20000) {
-		return int32(*(*uint8)(unsafe.Pointer(x3table + uintptr(uint32(int32(*(*uint8)(unsafe.Pointer(x3table + uintptr(_wc>>(uint(8)%32)))))*int32(32))+_wc&uint32(255)>>(uint(3)%32))))) >> (uint(_wc&uint32(7)) % 32) & int32(1)
+		return int32(*(*uint8)(unsafe.Pointer(uintptr(unsafe.Pointer(&x3table)) + uintptr(uint32(int32(*(*uint8)(unsafe.Pointer(uintptr(unsafe.Pointer(&x3table)) + uintptr(_wc>>(uint(8)%32)))))*int32(32))+_wc&uint32(255)>>(uint(3)%32))))) >> (uint(_wc&uint32(7)) % 32) & int32(1)
 	}
 	if _wc < uint32(0x2fffe) {
 		return 1
@@ -3981,8 +4010,8 @@ func X__iswalpha_l(tls TLS, _c uint32, _l uintptr /* Tlocale_t = *S__locale_stru
 
 type t1wint_t = uint32
 
-// xtable [3680]uint8, escapes: true, iswalpha.c:4:28
-var x3table = ds + 16504
+// xtable [3680]uint8, escapes: false, iswalpha.c:4:28
+var x3table = *(*[3680]uint8)(unsafe.Pointer(ts + 16276 /* "\x12\x11\x13\x14\x15\x16\x17\x18\x19\x1a\x1b\x1c\x1d\x1e\x1f ..." */))
 
 // S__locale_struct is defined at libc.h:10:1
 type s16__locale_struct = struct{ Fcat [6]uintptr }
@@ -4089,7 +4118,7 @@ func Xwctype(tls TLS, _s uintptr /* *int8 */) (r uint64) {
 		_i int32
 		_p uintptr // *int8
 	)
-	for func() uintptr { _i = int32(1); return set587(&_p, x588names) }(); *(*int8)(unsafe.Pointer(_p)) != 0; func() uintptr { _i++; return Preinc(&_p, uintptr(6)) }() {
+	for func() uintptr { _i = int32(1); return set587(&_p, uintptr(unsafe.Pointer(&x588names))) }(); *(*int8)(unsafe.Pointer(_p)) != 0; func() uintptr { _i++; return Preinc(&_p, uintptr(6)) }() {
 		if (int32(*(*int8)(unsafe.Pointer(_s))) == int32(*(*int8)(unsafe.Pointer(_p)))) && (Xstrcmp(tls, _s, _p) == 0) {
 			return uint64(_i)
 		}
@@ -4111,8 +4140,8 @@ type Twctype_t = uint64
 
 type t4wint_t = uint32
 
-// x1names [73]int8, escapes: true, iswctype.c:54:20
-var x588names = ds + 20184
+// x1names [73]int8, escapes: false, iswctype.c:54:20
+var x588names = *(*[73]int8)(unsafe.Pointer(ts + 19960 /* "alnum\x00alpha\x00blan..." */))
 
 // S__locale_struct is defined at libc.h:10:1
 type s19__locale_struct = struct{ Fcat [6]uintptr }
@@ -4199,7 +4228,7 @@ type s23__locale_struct = struct{ Fcat [6]uintptr }
 // Xiswpunct is defined at iswpunct.c:8:5
 func Xiswpunct(tls TLS, _wc uint32) (r int32) {
 	if _wc < uint32(0x20000) {
-		return int32(*(*uint8)(unsafe.Pointer(x4table + uintptr(uint32(int32(*(*uint8)(unsafe.Pointer(x4table + uintptr(_wc>>(uint(8)%32)))))*int32(32))+_wc&uint32(255)>>(uint(3)%32))))) >> (uint(_wc&uint32(7)) % 32) & int32(1)
+		return int32(*(*uint8)(unsafe.Pointer(uintptr(unsafe.Pointer(&x4table)) + uintptr(uint32(int32(*(*uint8)(unsafe.Pointer(uintptr(unsafe.Pointer(&x4table)) + uintptr(_wc>>(uint(8)%32)))))*int32(32))+_wc&uint32(255)>>(uint(3)%32))))) >> (uint(_wc&uint32(7)) % 32) & int32(1)
 	}
 	return 0
 }
@@ -4211,8 +4240,8 @@ func X__iswpunct_l(tls TLS, _c uint32, _l uintptr /* Tlocale_t = *S__locale_stru
 
 type t9wint_t = uint32
 
-// xtable [3648]uint8, escapes: true, iswpunct.c:4:28
-var x4table = ds + 20264
+// xtable [3648]uint8, escapes: false, iswpunct.c:4:28
+var x4table = *(*[3648]uint8)(unsafe.Pointer(ts + 20036 /* "\x12\x10\x13\x14\x15\x16\x17\x18\x19\x1a\x1b\x1c\x1d\x1e\x1f ..." */))
 
 // S__locale_struct is defined at libc.h:10:1
 type s24__locale_struct = struct{ Fcat [6]uintptr }
@@ -4221,7 +4250,7 @@ type s24__locale_struct = struct{ Fcat [6]uintptr }
 
 // Xiswspace is defined at iswspace.c:9:5
 func Xiswspace(tls TLS, _wc uint32) (r int32) {
-	return bool2int((_wc != 0) && (Xwcschr(tls, x589spaces, int32(_wc)) != 0))
+	return bool2int((_wc != 0) && (Xwcschr(tls, uintptr(unsafe.Pointer(&x589spaces)), int32(_wc)) != 0))
 }
 
 // X__iswspace_l is defined at iswspace.c:20:5
@@ -4229,8 +4258,8 @@ func X__iswspace_l(tls TLS, _c uint32, _l uintptr /* Tlocale_t = *S__locale_stru
 	return Xiswspace(tls, _c)
 }
 
-// x1spaces [22]int32, escapes: true, iswspace.c:11:23
-var x589spaces = ds + 23912
+// x1spaces [22]int32, escapes: false, iswspace.c:11:23
+var x589spaces = *(*[22]int32)(unsafe.Pointer(ts + 23688 /* " \x00\x00\x00\t\x00\x00\x00\n\x00\x00\x00\r\x00\x00\x00..." */))
 
 // S__locale_struct is defined at libc.h:10:1
 type s25__locale_struct = struct{ Fcat [6]uintptr }
@@ -4376,18 +4405,18 @@ func x__towcase(tls TLS, _wc int32, _lower int32) (r int32) {
 	if (_lower == 0) && (uint32(_wc)-uint32(0xab70) < uint32(0x50)) {
 		return _wc + int32(0x13a0) - int32(0xab70)
 	}
-	for _i = int32(0); *(*uint8)(unsafe.Pointer((xcasemaps + 4*uintptr(_i)) + 3)) != 0; _i++ {
-		_base = int32(*(*uint16)(unsafe.Pointer(xcasemaps + 4*uintptr(_i)))) + _lmask&int32(*(*int8)(unsafe.Pointer((xcasemaps + 4*uintptr(_i)) + 2)))
-		if uint32(_wc)-uint32(_base) < uint32(*(*uint8)(unsafe.Pointer((xcasemaps + 4*uintptr(_i)) + 3))) {
-			if int32(*(*int8)(unsafe.Pointer((xcasemaps + 4*uintptr(_i)) + 2))) == int32(1) {
-				return _wc + _lower - (_wc-int32(*(*uint16)(unsafe.Pointer(xcasemaps + 4*uintptr(_i)))))&int32(1)
+	for _i = int32(0); *(*uint8)(unsafe.Pointer((uintptr(unsafe.Pointer(&xcasemaps)) + 4*uintptr(_i)) + 3)) != 0; _i++ {
+		_base = int32(*(*uint16)(unsafe.Pointer(uintptr(unsafe.Pointer(&xcasemaps)) + 4*uintptr(_i)))) + _lmask&int32(*(*int8)(unsafe.Pointer((uintptr(unsafe.Pointer(&xcasemaps)) + 4*uintptr(_i)) + 2)))
+		if uint32(_wc)-uint32(_base) < uint32(*(*uint8)(unsafe.Pointer((uintptr(unsafe.Pointer(&xcasemaps)) + 4*uintptr(_i)) + 3))) {
+			if int32(*(*int8)(unsafe.Pointer((uintptr(unsafe.Pointer(&xcasemaps)) + 4*uintptr(_i)) + 2))) == int32(1) {
+				return _wc + _lower - (_wc-int32(*(*uint16)(unsafe.Pointer(uintptr(unsafe.Pointer(&xcasemaps)) + 4*uintptr(_i)))))&int32(1)
 			}
-			return _wc + _lmul*int32(*(*int8)(unsafe.Pointer((xcasemaps + 4*uintptr(_i)) + 2)))
+			return _wc + _lmul*int32(*(*int8)(unsafe.Pointer((uintptr(unsafe.Pointer(&xcasemaps)) + 4*uintptr(_i)) + 2)))
 		}
 	}
-	for _i = int32(0); *(*uint16)(unsafe.Pointer((xpairs + 4*uintptr(_i)) + 2*uintptr(int32(1)-_lower))) != 0; _i++ {
-		if int32(*(*uint16)(unsafe.Pointer((xpairs + 4*uintptr(_i)) + 2*uintptr(int32(1)-_lower)))) == _wc {
-			return int32(*(*uint16)(unsafe.Pointer((xpairs + 4*uintptr(_i)) + 2*uintptr(_lower))))
+	for _i = int32(0); *(*uint16)(unsafe.Pointer((uintptr(unsafe.Pointer(&xpairs)) + 4*uintptr(_i)) + 2*uintptr(int32(1)-_lower))) != 0; _i++ {
+		if int32(*(*uint16)(unsafe.Pointer((uintptr(unsafe.Pointer(&xpairs)) + 4*uintptr(_i)) + 2*uintptr(int32(1)-_lower)))) == _wc {
+			return int32(*(*uint16)(unsafe.Pointer((uintptr(unsafe.Pointer(&xpairs)) + 4*uintptr(_i)) + 2*uintptr(_lower))))
 		}
 	}
 	if uint32(_wc)-uint32(int32(0x10428)-int32(0x28)*_lower) < uint32(0x28) {
@@ -4413,11 +4442,15 @@ type s31__locale_struct = struct{ Fcat [6]uintptr }
 
 type t1wchar_t = int32
 
-// xcasemaps [65]struct{Fupper uint16;Flower int8;Flen uint8;}, escapes: true, towctrans.c:12:3
-var xcasemaps = ds + 24000
+// xcasemaps [65]struct{Fupper uint16;Flower int8;Flen uint8;}, escapes: false, towctrans.c:12:3
+var xcasemaps = *(*[65]struct {
+	Fupper uint16
+	Flower int8
+	Flen   uint8
+})(unsafe.Pointer(ts + 23780 /* "\xc0\x00 \x1f\x00\x01\x01/2\x01\x01\x059\x01\x01\x0f..." */))
 
-// xpairs [139][2]uint16, escapes: true, towctrans.c:95:29
-var xpairs = ds + 24264
+// xpairs [139][2]uint16, escapes: false, towctrans.c:95:29
+var xpairs = *(*[139][2]uint16)(unsafe.Pointer(ts + 24044 /* "I\x001\x01S\x00\u007f\x010\x01i\x00x\x01\xff\x00..." */))
 
 // linking wcswidth.o
 
@@ -4449,10 +4482,10 @@ type t2wchar_t = int32
 
 // Xwctrans is defined at wctrans.c:5:11
 func Xwctrans(tls TLS, _class uintptr /* *int8 */) (r uintptr /* Twctrans_t = *int32 */) {
-	if Xstrcmp(tls, _class, ts+296 /* "toupper" */) == 0 {
+	if Xstrcmp(tls, _class, ts+24604 /* "toupper" */) == 0 {
 		return uintptr(1)
 	}
-	if Xstrcmp(tls, _class, ts+304 /* "tolower" */) == 0 {
+	if Xstrcmp(tls, _class, ts+24612 /* "tolower" */) == 0 {
 		return uintptr(2)
 	}
 	return null
@@ -4500,10 +4533,10 @@ func Xwcwidth(tls TLS, _wc int32) (r int32) {
 		}()
 	}
 	if uint32(_wc)&uint32(0xfffeffff) < uint32(0xfffe) {
-		if (int32(*(*uint8)(unsafe.Pointer(x5table + uintptr(int32(*(*uint8)(unsafe.Pointer(x5table + uintptr(_wc>>(uint(8)%32)))))*int32(32)+_wc&int32(255)>>(uint(3)%32))))) >> (uint(_wc&int32(7)) % 32) & int32(1)) != 0 {
+		if (int32(*(*uint8)(unsafe.Pointer(uintptr(unsafe.Pointer(&x5table)) + uintptr(int32(*(*uint8)(unsafe.Pointer(uintptr(unsafe.Pointer(&x5table)) + uintptr(_wc>>(uint(8)%32)))))*int32(32)+_wc&int32(255)>>(uint(3)%32))))) >> (uint(_wc&int32(7)) % 32) & int32(1)) != 0 {
 			return 0
 		}
-		if (int32(*(*uint8)(unsafe.Pointer(xwtable + uintptr(int32(*(*uint8)(unsafe.Pointer(xwtable + uintptr(_wc>>(uint(8)%32)))))*int32(32)+_wc&int32(255)>>(uint(3)%32))))) >> (uint(_wc&int32(7)) % 32) & int32(1)) != 0 {
+		if (int32(*(*uint8)(unsafe.Pointer(uintptr(unsafe.Pointer(&xwtable)) + uintptr(int32(*(*uint8)(unsafe.Pointer(uintptr(unsafe.Pointer(&xwtable)) + uintptr(_wc>>(uint(8)%32)))))*int32(32)+_wc&int32(255)>>(uint(3)%32))))) >> (uint(_wc&int32(7)) % 32) & int32(1)) != 0 {
 			return 2
 		}
 		return 1
@@ -4522,11 +4555,11 @@ func Xwcwidth(tls TLS, _wc int32) (r int32) {
 
 type t3wchar_t = int32
 
-// xtable [2464]uint8, escapes: true, wcwidth.c:3:28
-var x5table = ds + 24824
+// xtable [2464]uint8, escapes: false, wcwidth.c:3:28
+var x5table = *(*[2464]uint8)(unsafe.Pointer(ts + 24620 /* "\x10\x10\x10\x12\x13\x14\x15\x16\x17\x18\x19\x1a\x1b\x1c\x1d\x1e..." */))
 
-// xwtable [1536]uint8, escapes: true, wcwidth.c:7:28
-var xwtable = ds + 27288
+// xwtable [1536]uint8, escapes: false, wcwidth.c:7:28
+var xwtable = *(*[1536]uint8)(unsafe.Pointer(ts + 27088 /* "\x10\x10\x10\x10\x10\x10\x10\x10\x10\x10\x10\x10\x10\x10\x10\x10..." */))
 
 // linking __getdents.o
 
@@ -4542,6 +4575,7 @@ type Sdirent = struct {
 	Fd_reclen uint16
 	Fd_type   uint8
 	Fd_name   [256]int8
+	_         [5]byte
 }
 
 // x__syscall3 is defined at syscall_arch.h:31:22
@@ -4567,6 +4601,7 @@ type s1dirent = struct {
 	Fd_reclen uint16
 	Fd_type   uint8
 	Fd_name   [256]int8
+	_         [5]byte
 }
 
 type t1ino_t = uint64
@@ -4782,6 +4817,7 @@ type s2dirent = struct {
 	Fd_reclen uint16
 	Fd_type   uint8
 	Fd_name   [256]int8
+	_         [5]byte
 }
 
 // x__syscall3 is defined at syscall_arch.h:31:22
@@ -4840,6 +4876,7 @@ type s3dirent = struct {
 	Fd_reclen uint16
 	Fd_type   uint8
 	Fd_name   [256]int8
+	_         [5]byte
 }
 
 type t10off_t = int64
@@ -4951,6 +4988,7 @@ type s4dirent = struct {
 	Fd_reclen uint16
 	Fd_type   uint8
 	Fd_name   [256]int8
+	_         [5]byte
 }
 
 type t5size_t = uint64
@@ -5018,6 +5056,7 @@ type s5dirent = struct {
 	Fd_reclen uint16
 	Fd_type   uint8
 	Fd_name   [256]int8
+	_         [5]byte
 }
 
 type t6ino_t = uint64
@@ -5026,8 +5065,8 @@ type t15off_t = int64
 
 // linking __environ.o
 
-// Xenviron **int8, escapes: true, __environ.c:3:6
-var Xenviron = bss + 360
+// Xenviron **int8, escapes: false, __environ.c:3:6
+var Xenviron uintptr
 
 // linking __init_tls.o
 
@@ -5036,10 +5075,10 @@ func X__init_tp(tls TLS, _p uintptr /* *void */) (r int32) {
 	var _td uintptr // Tpthread_t = *S__pthread
 
 	_td = _p
-	*(*uintptr)(unsafe.Pointer(X__ccgo_main_tls)) = _td
+	X__ccgo_main_tls = _td
 	*(*uintptr)(unsafe.Pointer(_td)) = _td
 	*(*int32)(unsafe.Pointer(_td + 64)) = int32(2)
-	*(*uintptr)(unsafe.Pointer(_td + 192)) = X__libc + 64
+	*(*uintptr)(unsafe.Pointer(_td + 192)) = uintptr(unsafe.Pointer(&X__libc)) + 64
 	*(*uintptr)(unsafe.Pointer(_td + 160)) = _td + 160
 	return 0
 }
@@ -5055,14 +5094,17 @@ func X__copy_tls(tls TLS, _mem uintptr /* *uint8 */) (r uintptr /* *void */) {
 		_dtv uintptr // **void
 	)
 	_dtv = _mem
-	_mem += uintptr(*(*uint64)(unsafe.Pointer(X__libc + 32)) - uint64(248))
-	_mem -= uintptr(uint64(_mem) & (*(*uint64)(unsafe.Pointer(X__libc + 40)) - uint64(1)))
+	_mem += uintptr(*(*uint64)(unsafe.Pointer(uintptr(unsafe.Pointer(&X__libc)) + 32)) - uint64(248))
+	_mem -= uintptr(uint64(_mem) & (*(*uint64)(unsafe.Pointer(uintptr(unsafe.Pointer(&X__libc)) + 40)) - uint64(1)))
 	_td = _mem
-	for func() uintptr { _i = uint64(1); return set603(&_p, *(*uintptr)(unsafe.Pointer(X__libc + 24))) }(); _p != 0; func() uintptr { _i++; return set603(&_p, *(*uintptr)(unsafe.Pointer(_p))) }() {
+	for func() uintptr {
+		_i = uint64(1)
+		return set603(&_p, *(*uintptr)(unsafe.Pointer(uintptr(unsafe.Pointer(&X__libc)) + 24)))
+	}(); _p != 0; func() uintptr { _i++; return set603(&_p, *(*uintptr)(unsafe.Pointer(_p))) }() {
 		*(*uintptr)(unsafe.Pointer(_dtv + 8*uintptr(_i))) = _mem - uintptr(*(*uint64)(unsafe.Pointer(_p + 40)))
 		Xmemcpy(tls, *(*uintptr)(unsafe.Pointer(_dtv + 8*uintptr(_i))), *(*uintptr)(unsafe.Pointer(_p + 8)), *(*uint64)(unsafe.Pointer(_p + 16)))
 	}
-	*(*uintptr)(unsafe.Pointer(_dtv)) = uintptr(*(*uint64)(unsafe.Pointer(X__libc + 48)))
+	*(*uintptr)(unsafe.Pointer(_dtv)) = uintptr(*(*uint64)(unsafe.Pointer(uintptr(unsafe.Pointer(&X__libc)) + 48)))
 	*(*uintptr)(unsafe.Pointer(_td + 8)) = set603((*uintptr)(unsafe.Pointer(_td+240)), _dtv)
 	return _td
 }
@@ -5152,27 +5194,27 @@ func xstatic_init_tls(tls TLS, _aux uintptr /* *Tsize_t = uint64 */) {
 		}
 	}
 	if _tls_phdr != 0 {
-		*(*uintptr)(unsafe.Pointer(xmain_tls + 8)) = uintptr(_base + *(*uint64)(unsafe.Pointer(_tls_phdr + 16)))
-		*(*uint64)(unsafe.Pointer(xmain_tls + 16)) = *(*uint64)(unsafe.Pointer(_tls_phdr + 32))
-		*(*uint64)(unsafe.Pointer(xmain_tls + 24)) = *(*uint64)(unsafe.Pointer(_tls_phdr + 40))
-		*(*uint64)(unsafe.Pointer(xmain_tls + 32)) = *(*uint64)(unsafe.Pointer(_tls_phdr + 48))
-		*(*uint64)(unsafe.Pointer(X__libc + 48)) = uint64(1)
-		*(*uintptr)(unsafe.Pointer(X__libc + 24)) = xmain_tls
+		*(*uintptr)(unsafe.Pointer(uintptr(unsafe.Pointer(&xmain_tls)) + 8)) = uintptr(_base + *(*uint64)(unsafe.Pointer(_tls_phdr + 16)))
+		*(*uint64)(unsafe.Pointer(uintptr(unsafe.Pointer(&xmain_tls)) + 16)) = *(*uint64)(unsafe.Pointer(_tls_phdr + 32))
+		*(*uint64)(unsafe.Pointer(uintptr(unsafe.Pointer(&xmain_tls)) + 24)) = *(*uint64)(unsafe.Pointer(_tls_phdr + 40))
+		*(*uint64)(unsafe.Pointer(uintptr(unsafe.Pointer(&xmain_tls)) + 32)) = *(*uint64)(unsafe.Pointer(_tls_phdr + 48))
+		*(*uint64)(unsafe.Pointer(uintptr(unsafe.Pointer(&X__libc)) + 48)) = uint64(1)
+		*(*uintptr)(unsafe.Pointer(uintptr(unsafe.Pointer(&X__libc)) + 24)) = uintptr(unsafe.Pointer(&xmain_tls))
 	}
 	{
-		p := (*uint64)(unsafe.Pointer(xmain_tls + 24))
-		*p = *p + (-*(*uint64)(unsafe.Pointer(xmain_tls + 24))-uint64(*(*uintptr)(unsafe.Pointer(xmain_tls + 8))))&(*(*uint64)(unsafe.Pointer(xmain_tls + 32))-uint64(1))
+		p := (*uint64)(unsafe.Pointer(uintptr(unsafe.Pointer(&xmain_tls)) + 24))
+		*p = *p + (-*(*uint64)(unsafe.Pointer(uintptr(unsafe.Pointer(&xmain_tls)) + 24))-uint64(*(*uintptr)(unsafe.Pointer(uintptr(unsafe.Pointer(&xmain_tls)) + 8))))&(*(*uint64)(unsafe.Pointer(uintptr(unsafe.Pointer(&xmain_tls)) + 32))-uint64(1))
 	}
-	*(*uint64)(unsafe.Pointer(xmain_tls + 40)) = *(*uint64)(unsafe.Pointer(xmain_tls + 24))
-	if *(*uint64)(unsafe.Pointer(xmain_tls + 32)) < uint64(8) {
-		*(*uint64)(unsafe.Pointer(xmain_tls + 32)) = uint64(8)
+	*(*uint64)(unsafe.Pointer(uintptr(unsafe.Pointer(&xmain_tls)) + 40)) = *(*uint64)(unsafe.Pointer(uintptr(unsafe.Pointer(&xmain_tls)) + 24))
+	if *(*uint64)(unsafe.Pointer(uintptr(unsafe.Pointer(&xmain_tls)) + 32)) < uint64(8) {
+		*(*uint64)(unsafe.Pointer(uintptr(unsafe.Pointer(&xmain_tls)) + 32)) = uint64(8)
 	}
-	*(*uint64)(unsafe.Pointer(X__libc + 40)) = *(*uint64)(unsafe.Pointer(xmain_tls + 32))
-	*(*uint64)(unsafe.Pointer(X__libc + 32)) = (uint64(264) + *(*uint64)(unsafe.Pointer(xmain_tls + 24)) + *(*uint64)(unsafe.Pointer(xmain_tls + 32)) + uint64(8) - uint64(1)) & uint64(18446744073709551608)
-	if *(*uint64)(unsafe.Pointer(X__libc + 32)) > uint64(384) {
-		_mem = uintptr(x1__syscall6(tls, int64(9), int64(0), int64(*(*uint64)(unsafe.Pointer(X__libc + 32))), int64(3), int64(34), int64(-1), int64(0)))
+	*(*uint64)(unsafe.Pointer(uintptr(unsafe.Pointer(&X__libc)) + 40)) = *(*uint64)(unsafe.Pointer(uintptr(unsafe.Pointer(&xmain_tls)) + 32))
+	*(*uint64)(unsafe.Pointer(uintptr(unsafe.Pointer(&X__libc)) + 32)) = (uint64(264) + *(*uint64)(unsafe.Pointer(uintptr(unsafe.Pointer(&xmain_tls)) + 24)) + *(*uint64)(unsafe.Pointer(uintptr(unsafe.Pointer(&xmain_tls)) + 32)) + uint64(8) - uint64(1)) & uint64(18446744073709551608)
+	if *(*uint64)(unsafe.Pointer(uintptr(unsafe.Pointer(&X__libc)) + 32)) > uint64(384) {
+		_mem = uintptr(x1__syscall6(tls, int64(9), int64(0), int64(*(*uint64)(unsafe.Pointer(uintptr(unsafe.Pointer(&X__libc)) + 32))), int64(3), int64(34), int64(-1), int64(0)))
 	} else {
-		_mem = xbuiltin_tls
+		_mem = uintptr(unsafe.Pointer(&xbuiltin_tls))
 	}
 	if X__init_tp(tls, X__copy_tls(tls, _mem)) < int32(0) {
 		xa_crash(tls)
@@ -5201,16 +5243,20 @@ type TElf64_Addr = uint64
 
 type TElf64_Xword = uint64
 
-// xmain_tls Stls_module, escapes: true, __init_tls.c:35:26
-var xmain_tls = bss + 368
+// xmain_tls Stls_module, escapes: false, __init_tls.c:35:26
+var xmain_tls Stls_module
 
 // x__syscall6 is defined at syscall_arch.h:61:22
 func x1__syscall6(tls TLS, _n int64, _a1 int64, _a2 int64, _a3 int64, _a4 int64, _a5 int64, _a6 int64) (r int64) {
 	return X__syscall(tls, _n, _a1, _a2, _a3, _a4, _a5, _a6)
 }
 
-// xbuiltin_tls [1]struct{Fc int8;Fpt S__pthread;Fspace [16]uintptr;}, escapes: true, __init_tls.c:32:3
-var xbuiltin_tls = bss + 416
+// xbuiltin_tls [1]struct{Fc int8;Fpt S__pthread;Fspace [16]uintptr;}, escapes: false, __init_tls.c:32:3
+var xbuiltin_tls [1]struct {
+	Fc     int8
+	Fpt    s5__pthread
+	Fspace [16]uintptr
+}
 
 // xa_crash is defined at atomic_arch.h:119:20
 func xa_crash(tls TLS) {
@@ -5219,8 +5265,8 @@ func xa_crash(tls TLS) {
 
 // linking __libc_start_main.o
 
-// X__ccgo_argv **int8, escapes: true, __libc_start_main.c:22:6
-var X__ccgo_argv = bss + 800
+// X__ccgo_argv **int8, escapes: false, __libc_start_main.c:22:6
+var X__ccgo_argv uintptr
 
 func set605(p *uintptr, v uintptr) uintptr { *p = v; return v }
 
@@ -5236,52 +5282,52 @@ func X__init_libc(tls TLS, _envp uintptr /* **int8 */, _pn uintptr /* *int8 */) 
 		_r    int32
 	)
 	defer Free(esc)
-	Copy(_aux, ts+312 /* "\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00..." */, 304)
-	*(*uintptr)(unsafe.Pointer(Xenviron)) = _envp
+	Copy(_aux, ts+28628 /* "\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00..." */, 304)
+	Xenviron = _envp
 	for _i = uint64(0); *(*uintptr)(unsafe.Pointer(_envp + 8*uintptr(_i))) != 0; _i++ {
 	}
-	*(*uintptr)(unsafe.Pointer(X__libc + 16)) = set605(&_auxv, (_envp+8*uintptr(_i))+8*uintptr(1))
+	*(*uintptr)(unsafe.Pointer(uintptr(unsafe.Pointer(&X__libc)) + 16)) = set605(&_auxv, (_envp+8*uintptr(_i))+8*uintptr(1))
 	for _i = uint64(0); *(*uint64)(unsafe.Pointer(_auxv + 8*uintptr(_i))) != 0; func() { _i = _i + uint64(2) }() {
 		if *(*uint64)(unsafe.Pointer(_auxv + 8*uintptr(_i))) < uint64(38) {
 			*(*uint64)(unsafe.Pointer(_aux + 8*uintptr(*(*uint64)(unsafe.Pointer(_auxv + 8*uintptr(_i)))))) = *(*uint64)(unsafe.Pointer(_auxv + 8*uintptr(_i+uint64(1))))
 		}
 	}
-	*(*uint64)(unsafe.Pointer(X__hwcap)) = *(*uint64)(unsafe.Pointer(_aux + 128))
-	*(*uint64)(unsafe.Pointer(X__sysinfo)) = *(*uint64)(unsafe.Pointer(_aux + 256))
-	*(*uint64)(unsafe.Pointer(X__libc + 56)) = *(*uint64)(unsafe.Pointer(_aux + 48))
+	X__hwcap = *(*uint64)(unsafe.Pointer(_aux + 128))
+	X__sysinfo = *(*uint64)(unsafe.Pointer(_aux + 256))
+	*(*uint64)(unsafe.Pointer(uintptr(unsafe.Pointer(&X__libc)) + 56)) = *(*uint64)(unsafe.Pointer(_aux + 48))
 	if _pn == 0 {
 		_pn = uintptr(*(*uint64)(unsafe.Pointer(_aux + 248)))
 	}
 	if _pn == 0 {
 		_pn = ts + 0 /* "" */
 	}
-	*(*uintptr)(unsafe.Pointer(X__progname)) = set605((*uintptr)(unsafe.Pointer(X__progname_full)), _pn)
+	X__progname = set605(&X__progname_full, _pn)
 	for _i = uint64(0); *(*int8)(unsafe.Pointer(_pn + uintptr(_i))) != 0; _i++ {
 		if int32(*(*int8)(unsafe.Pointer(_pn + uintptr(_i)))) == int32('/') {
-			*(*uintptr)(unsafe.Pointer(X__progname)) = (_pn + uintptr(_i)) + uintptr(1)
+			X__progname = (_pn + uintptr(_i)) + uintptr(1)
 		}
 	}
 	X__init_tls(tls, _aux)
-	_tls = *(*uintptr)(unsafe.Pointer(X__ccgo_main_tls))
+	_tls = X__ccgo_main_tls
 	tls = TLS(_tls)
 
 	X__init_ssp(tls, uintptr(*(*uint64)(unsafe.Pointer(_aux + 200))))
 	if ((*(*uint64)(unsafe.Pointer(_aux + 88)) == *(*uint64)(unsafe.Pointer(_aux + 96))) && (*(*uint64)(unsafe.Pointer(_aux + 104)) == *(*uint64)(unsafe.Pointer(_aux + 112)))) && (*(*uint64)(unsafe.Pointer(_aux + 184)) == 0) {
 		return
 	}
-	Copy(_pfd, ts+620 /* "\x00\x00\x00\x00\x00\x00\x00\x00\x01\x00\x00\x00\x00\x00\x00\x00..." */, 24)
+	Copy(_pfd, ts+28936 /* "\x00\x00\x00\x00\x00\x00\x00\x00\x01\x00\x00\x00\x00\x00\x00\x00..." */, 24)
 	_r = int32(x3__syscall3(tls, int64(7), int64(_pfd), int64(3), int64(0)))
 	if _r < int32(0) {
 		x1a_crash(tls)
 	}
 	for _i = uint64(0); _i < uint64(3); _i++ {
 		if (int32(*(*int16)(unsafe.Pointer((_pfd + 8*uintptr(_i)) + 6))) & int32(0x20)) != 0 {
-			if x__syscall2(tls, int64(2), int64(ts+648 /* "/dev/null" */), int64(2)) < int64(0) {
+			if x__syscall2(tls, int64(2), int64(ts+28964 /* "/dev/null" */), int64(2)) < int64(0) {
 				x1a_crash(tls)
 			}
 		}
 	}
-	*(*int32)(unsafe.Pointer(X__libc + 8)) = int32(1)
+	*(*int32)(unsafe.Pointer(uintptr(unsafe.Pointer(&X__libc)) + 8)) = int32(1)
 }
 
 func postinc606(p *uintptr) uintptr { r := *p; *p += 8; return r }
@@ -5299,9 +5345,9 @@ func X__libc_start_main(tls TLS, _main_ignored uintptr /* *func(TLS, int32, uint
 	)
 	_argc = X__ccgo_argc(tls)
 	_envc = X__ccgo_envc(tls)
-	*(*uintptr)(unsafe.Pointer(X__ccgo_argv)) = Xmalloc(tls, uint64(8)*uint64(_argc+int32(1)+_envc+int32(1)))
-	_envp = (*(*uintptr)(unsafe.Pointer(X__ccgo_argv)) + 8*uintptr(_argc)) + 8*uintptr(1)
-	_p = *(*uintptr)(unsafe.Pointer(X__ccgo_argv))
+	X__ccgo_argv = Xmalloc(tls, uint64(8)*uint64(_argc+int32(1)+_envc+int32(1)))
+	_envp = (X__ccgo_argv + 8*uintptr(_argc)) + 8*uintptr(1)
+	_p = X__ccgo_argv
 	for _i = int32(0); _i < _argc; _i++ {
 		*(*uintptr)(unsafe.Pointer(postinc606(&_p))) = X__ccgo_arg(tls, _i)
 	}
@@ -5310,8 +5356,8 @@ func X__libc_start_main(tls TLS, _main_ignored uintptr /* *func(TLS, int32, uint
 		*(*uintptr)(unsafe.Pointer(postinc606(&_p))) = X__ccgo_env(tls, _1i)
 	}
 	*(*uintptr)(unsafe.Pointer(_p)) = null
-	X__init_libc(tls, _envp, *(*uintptr)(unsafe.Pointer(*(*uintptr)(unsafe.Pointer(X__ccgo_argv)))))
-	_tls = *(*uintptr)(unsafe.Pointer(X__ccgo_main_tls))
+	X__init_libc(tls, _envp, *(*uintptr)(unsafe.Pointer(X__ccgo_argv)))
+	_tls = X__ccgo_main_tls
 	tls = TLS(_tls)
 
 	X__libc_start_init(tls)
@@ -5374,7 +5420,10 @@ func X__reset_tls(tls TLS) {
 	_self = x3__pthread_self(tls)
 	_n = uint64(*(*uintptr)(unsafe.Pointer(*(*uintptr)(unsafe.Pointer(_self + 8)))))
 	if _n != 0 {
-		for func() uint64 { _p = *(*uintptr)(unsafe.Pointer(X__libc + 24)); return set607(&_i, uint64(1)) }(); _i <= _n; func() uintptr { _i++; return set608(&_p, *(*uintptr)(unsafe.Pointer(_p))) }() {
+		for func() uint64 {
+			_p = *(*uintptr)(unsafe.Pointer(uintptr(unsafe.Pointer(&X__libc)) + 24))
+			return set607(&_i, uint64(1))
+		}(); _i <= _n; func() uintptr { _i++; return set608(&_p, *(*uintptr)(unsafe.Pointer(_p))) }() {
 			if *(*uintptr)(unsafe.Pointer(*(*uintptr)(unsafe.Pointer(_self + 8)) + 8*uintptr(_i))) == 0 {
 				continue
 			}
@@ -5457,17 +5506,17 @@ type s34__locale_struct = struct{ Fcat [6]uintptr }
 
 // linking __stack_chk_fail.o
 
-// X__stack_chk_guard Tuintptr_t = uint64, escapes: true, __stack_chk_fail.c:5:11
-var X__stack_chk_guard = bss + 808
+// X__stack_chk_guard Tuintptr_t = uint64, escapes: false, __stack_chk_fail.c:5:11
+var X__stack_chk_guard uint64
 
 // X__init_ssp is defined at __stack_chk_fail.c:7:6
 func X__init_ssp(tls TLS, _entropy uintptr /* *void */) {
 	if _entropy != 0 {
-		Xmemcpy(tls, X__stack_chk_guard, _entropy, uint64(8))
+		Xmemcpy(tls, uintptr(unsafe.Pointer(&X__stack_chk_guard)), _entropy, uint64(8))
 	} else {
-		*(*uint64)(unsafe.Pointer(X__stack_chk_guard)) = uint64(X__stack_chk_guard) * uint64(1103515245)
+		X__stack_chk_guard = uint64(uintptr(unsafe.Pointer(&X__stack_chk_guard))) * uint64(1103515245)
 	}
-	*(*uint64)(unsafe.Pointer(x4__pthread_self(tls) + 40)) = *(*uint64)(unsafe.Pointer(X__stack_chk_guard))
+	*(*uint64)(unsafe.Pointer(x4__pthread_self(tls) + 40)) = X__stack_chk_guard
 }
 
 // X__stack_chk_fail is defined at __stack_chk_fail.c:15:6
@@ -5549,8 +5598,8 @@ func postinc609(p *uintptr) uintptr { r := *p; *p += 8; return r }
 func Xclearenv(tls TLS) (r int32) {
 	var _e uintptr // **int8
 
-	_e = *(*uintptr)(unsafe.Pointer(Xenviron))
-	*(*uintptr)(unsafe.Pointer(Xenviron)) = null
+	_e = Xenviron
+	Xenviron = null
 	if _e != 0 {
 		for *(*uintptr)(unsafe.Pointer(_e)) != 0 {
 			X__env_rm_add(tls, *(*uintptr)(unsafe.Pointer(postinc609(&_e))), null)
@@ -5572,8 +5621,8 @@ func Xgetenv(tls TLS, _name uintptr /* *int8 */) (r uintptr /* *int8 */) {
 		_e uintptr // **int8
 	)
 	_l = uint64(int64(X__strchrnul(tls, _name, int32('=')) - _name))
-	if ((_l != 0) && (*(*int8)(unsafe.Pointer(_name + uintptr(_l))) == 0)) && (*(*uintptr)(unsafe.Pointer(Xenviron)) != 0) {
-		for _e = *(*uintptr)(unsafe.Pointer(Xenviron)); *(*uintptr)(unsafe.Pointer(_e)) != 0; _e += 8 {
+	if ((_l != 0) && (*(*int8)(unsafe.Pointer(_name + uintptr(_l))) == 0)) && (Xenviron != 0) {
+		for _e = Xenviron; *(*uintptr)(unsafe.Pointer(_e)) != 0; _e += 8 {
 			if (Xstrncmp(tls, _name, *(*uintptr)(unsafe.Pointer(_e)), _l) == 0) && (int32(*(*int8)(unsafe.Pointer(*(*uintptr)(unsafe.Pointer(_e)) + uintptr(_l)))) == int32('=')) {
 				return (*(*uintptr)(unsafe.Pointer(_e)) + uintptr(_l)) + uintptr(1)
 			}
@@ -5599,8 +5648,8 @@ func X__putenv(tls TLS, _s uintptr /* *int8 */, _l uint64, _r uintptr /* *int8 *
 		_newenv uintptr // **int8
 	)
 	_i = uint64(0)
-	if *(*uintptr)(unsafe.Pointer(Xenviron)) != 0 {
-		for _e = *(*uintptr)(unsafe.Pointer(Xenviron)); *(*uintptr)(unsafe.Pointer(_e)) != 0; func() uint64 { _e += 8; return postinc610(&_i) }() {
+	if Xenviron != 0 {
+		for _e = Xenviron; *(*uintptr)(unsafe.Pointer(_e)) != 0; func() uint64 { _e += 8; return postinc610(&_i) }() {
 			if Xstrncmp(tls, _s, *(*uintptr)(unsafe.Pointer(_e)), _l+uint64(1)) == 0 {
 				_tmp = *(*uintptr)(unsafe.Pointer(_e))
 				*(*uintptr)(unsafe.Pointer(_e)) = _s
@@ -5609,7 +5658,7 @@ func X__putenv(tls TLS, _s uintptr /* *int8 */, _l uint64, _r uintptr /* *int8 *
 			}
 		}
 	}
-	if !(*(*uintptr)(unsafe.Pointer(Xenviron)) == x612oldenv) {
+	if !(Xenviron == x612oldenv) {
 		goto _1
 	}
 
@@ -5633,13 +5682,13 @@ _1:
 
 _4:
 	if _i != 0 {
-		Xmemcpy(tls, _newenv, *(*uintptr)(unsafe.Pointer(Xenviron)), uint64(8)*_i)
+		Xmemcpy(tls, _newenv, Xenviron, uint64(8)*_i)
 	}
 	Xfree(tls, x612oldenv)
 _2:
 	*(*uintptr)(unsafe.Pointer(_newenv + 8*uintptr(_i))) = _s
 	*(*uintptr)(unsafe.Pointer(_newenv + 8*uintptr(_i+uint64(1)))) = null
-	*(*uintptr)(unsafe.Pointer(Xenviron)) = set611(&x612oldenv, _newenv)
+	Xenviron = set611(&x612oldenv, _newenv)
 	if _r != 0 {
 		X__env_rm_add(tls, null, _r)
 	}
@@ -5753,8 +5802,8 @@ func Xunsetenv(tls TLS, _name uintptr /* *int8 */) (r int32) {
 		*(*int32)(unsafe.Pointer(X__errno_location(tls))) = int32(22)
 		return -1
 	}
-	if *(*uintptr)(unsafe.Pointer(Xenviron)) != 0 {
-		_e = *(*uintptr)(unsafe.Pointer(Xenviron))
+	if Xenviron != 0 {
+		_e = Xenviron
 		_eo = _e
 		for ; *(*uintptr)(unsafe.Pointer(_e)) != 0; _e += 8 {
 			if (Xstrncmp(tls, _name, *(*uintptr)(unsafe.Pointer(_e)), _l) == 0) && (int32(*(*int8)(unsafe.Pointer(*(*uintptr)(unsafe.Pointer(_e)) + uintptr(_l)))) == int32('=')) {
@@ -5863,9 +5912,9 @@ func X__strerror_l(tls TLS, _e int32, _loc uintptr /* Tlocale_t = *S__locale_str
 			_e = int32(109)
 		}
 	}
-	for _i = int32(0); (*(*uint8)(unsafe.Pointer(xerrid + uintptr(_i))) != 0) && (int32(*(*uint8)(unsafe.Pointer(xerrid + uintptr(_i)))) != _e); _i++ {
+	for _i = int32(0); (*(*uint8)(unsafe.Pointer(uintptr(unsafe.Pointer(&xerrid)) + uintptr(_i))) != 0) && (int32(*(*uint8)(unsafe.Pointer(uintptr(unsafe.Pointer(&xerrid)) + uintptr(_i)))) != _e); _i++ {
 	}
-	for _s = xerrmsg; _i != 0; func() int32 { _s++; return postinc619(&_i) }() {
+	for _s = uintptr(unsafe.Pointer(&xerrmsg)); _i != 0; func() int32 { _s++; return postinc619(&_i) }() {
 		for ; *(*int8)(unsafe.Pointer(_s)) != 0; _s++ {
 		}
 	}
@@ -5880,11 +5929,11 @@ func Xstrerror(tls TLS, _e int32) (r uintptr /* *int8 */) {
 // S__locale_struct is defined at libc.h:10:1
 type s37__locale_struct = struct{ Fcat [6]uintptr }
 
-// xerrid [89]uint8, escapes: true, strerror.c:7:28
-var xerrid = ds + 28824
+// xerrid [89]uint8, escapes: false, strerror.c:7:28
+var xerrid = *(*[89]uint8)(unsafe.Pointer(ts + 28976 /* "T!\"\x19\r\x01\x02\x03\x11K\x1c\f\x10\x04\v\x1d..." */))
 
-// xerrmsg [1823]int8, escapes: true, strerror.c:13:19
-var xerrmsg = ds + 28920
+// xerrmsg [1823]int8, escapes: false, strerror.c:13:19
+var xerrmsg = *(*[1823]int8)(unsafe.Pointer(ts + 29068 /* "Illegal byte seq..." */))
 
 // x__pthread_self is defined at pthread_arch.h:1:30
 func x6__pthread_self(tls TLS) (r uintptr /* *S__pthread */) {
@@ -5961,8 +6010,8 @@ func x1__syscall1(tls TLS, _n int64, _a1 int64) (r int64) {
 
 // linking abort.o
 
-// X__abort_lock [1]int32, escapes: true, abort.c:10:14
-var X__abort_lock = bss + 816
+// X__abort_lock [1]int32, escapes: false, abort.c:10:14
+var X__abort_lock [1]int32
 
 // Xabort is defined at abort.c:12:16
 func Xabort(tls TLS) {
@@ -5974,7 +6023,7 @@ func Xabort(tls TLS) {
 
 // X__assert_fail is defined at assert.c:4:16
 func X__assert_fail(tls TLS, _expr uintptr /* *int8 */, _file uintptr /* *int8 */, _line int32, _func uintptr /* *int8 */) {
-	Xfprintf(tls, *(*uintptr)(unsafe.Pointer(Xstderr)), ts+660 /* "Assertion failed..." */, _expr, _file, _func, _line)
+	Xfprintf(tls, Xstderr, ts+30892 /* "Assertion failed..." */, _expr, _file, _func, _line)
 	Xfflush(tls, null)
 	Xabort(tls)
 }
@@ -5989,12 +6038,12 @@ func fn621(p uintptr) func(TLS) { return *(*func(TLS))(unsafe.Pointer(&p)) }
 func X__funcs_on_quick_exit(tls TLS) {
 	var _func uintptr // *func(TLS)
 
-	X__lock(tls, xlock)
+	X__lock(tls, uintptr(unsafe.Pointer(&xlock)))
 	for xcount > int32(0) {
-		_func = *(*uintptr)(unsafe.Pointer(xfuncs + 8*uintptr(preinc620(&xcount))))
-		X__unlock(tls, xlock)
+		_func = *(*uintptr)(unsafe.Pointer(uintptr(unsafe.Pointer(&xfuncs)) + 8*uintptr(preinc620(&xcount))))
+		X__unlock(tls, uintptr(unsafe.Pointer(&xlock)))
 		fn621(_func)(tls)
-		X__lock(tls, xlock)
+		X__lock(tls, uintptr(unsafe.Pointer(&xlock)))
 	}
 }
 
@@ -6005,24 +6054,24 @@ func Xat_quick_exit(tls TLS, _func uintptr /* *func(TLS) */) (r int32) {
 	var _r int32
 
 	_r = int32(0)
-	X__lock(tls, xlock)
+	X__lock(tls, uintptr(unsafe.Pointer(&xlock)))
 	if xcount == int32(32) {
 		_r = int32(-1)
 	} else {
-		*(*uintptr)(unsafe.Pointer(xfuncs + 8*uintptr(postinc622(&xcount)))) = _func
+		*(*uintptr)(unsafe.Pointer(uintptr(unsafe.Pointer(&xfuncs)) + 8*uintptr(postinc622(&xcount)))) = _func
 	}
-	X__unlock(tls, xlock)
+	X__unlock(tls, uintptr(unsafe.Pointer(&xlock)))
 	return _r
 }
 
-// xlock [1]int32, escapes: true, at_quick_exit.c:8:21
-var xlock = bss + 824
+// xlock [1]int32, escapes: false, at_quick_exit.c:8:21
+var xlock [1]int32
 
 // xcount int32, escapes: false, at_quick_exit.c:7:12
 var xcount int32
 
-// xfuncs [32]*func(TLS), escapes: true, at_quick_exit.c:6:13
-var xfuncs = bss + 832
+// xfuncs [32]*func(TLS), escapes: false, at_quick_exit.c:6:13
+var xfuncs [32]uintptr
 
 // linking atexit.o
 
@@ -6038,14 +6087,14 @@ func X__funcs_on_exit(tls TLS) {
 		_func uintptr // *func(TLS, uintptr)
 		_arg  uintptr // *void
 	)
-	X__lock(tls, x1lock)
+	X__lock(tls, uintptr(unsafe.Pointer(&x1lock)))
 	for ; xhead != 0; func() int32 { xhead = *(*uintptr)(unsafe.Pointer(xhead)); return set623(&xslot, int32(32)) }() {
 		for postinc624(&xslot) > int32(0) {
 			_func = *(*uintptr)(unsafe.Pointer((xhead + 8) + 8*uintptr(xslot)))
 			_arg = *(*uintptr)(unsafe.Pointer((xhead + 264) + 8*uintptr(xslot)))
-			X__unlock(tls, x1lock)
+			X__unlock(tls, uintptr(unsafe.Pointer(&x1lock)))
 			fn625(_func)(tls, _arg)
-			X__lock(tls, x1lock)
+			X__lock(tls, uintptr(unsafe.Pointer(&x1lock)))
 		}
 	}
 }
@@ -6058,14 +6107,14 @@ func X__cxa_finalize(tls TLS, _dso uintptr /* *void */) {
 func X__cxa_atexit(tls TLS, _func uintptr /* *func(TLS, uintptr) */, _arg uintptr /* *void */, _dso uintptr /* *void */) (r int32) {
 	var _new_fl uintptr // *Sfl
 
-	X__lock(tls, x1lock)
+	X__lock(tls, uintptr(unsafe.Pointer(&x1lock)))
 	if xhead == 0 {
-		xhead = xbuiltin
+		xhead = uintptr(unsafe.Pointer(&xbuiltin))
 	}
 	if xslot == int32(32) {
 		_new_fl = Xcalloc(tls, uint64(520), uint64(1))
 		if _new_fl == 0 {
-			X__unlock(tls, x1lock)
+			X__unlock(tls, uintptr(unsafe.Pointer(&x1lock)))
 			return -1
 		}
 		*(*uintptr)(unsafe.Pointer(_new_fl)) = xhead
@@ -6075,7 +6124,7 @@ func X__cxa_atexit(tls TLS, _func uintptr /* *func(TLS, uintptr) */, _arg uintpt
 	*(*uintptr)(unsafe.Pointer((xhead + 8) + 8*uintptr(xslot))) = _func
 	*(*uintptr)(unsafe.Pointer((xhead + 264) + 8*uintptr(xslot))) = _arg
 	xslot++
-	X__unlock(tls, x1lock)
+	X__unlock(tls, uintptr(unsafe.Pointer(&x1lock)))
 	return 0
 }
 
@@ -6086,8 +6135,8 @@ func Xatexit(tls TLS, _func uintptr /* *func(TLS) */) (r int32) {
 	return X__cxa_atexit(tls, fp626(xcall), uintptr(uint64(_func)), null)
 }
 
-// xlock [1]int32, escapes: true, atexit.c:16:21
-var x1lock = bss + 1088
+// xlock [1]int32, escapes: false, atexit.c:16:21
+var x1lock [1]int32
 
 // xhead *struct{Fnext *Sfl;Ff [32]*func(TLS, uintptr);Fa [32]uintptr;}, escapes: false, atexit.c:13:12
 var xhead uintptr
@@ -6102,8 +6151,12 @@ type Sfl = struct {
 	Fa    [32]uintptr
 }
 
-// xbuiltin struct{Fnext *Sfl;Ff [32]*func(TLS, uintptr);Fa [32]uintptr;}, escapes: true, atexit.c:13:3
-var xbuiltin = bss + 1096
+// xbuiltin struct{Fnext *Sfl;Ff [32]*func(TLS, uintptr);Fa [32]uintptr;}, escapes: false, atexit.c:13:3
+var xbuiltin struct {
+	Fnext uintptr // *Sfl
+	Ff    [32]uintptr
+	Fa    [32]uintptr
+}
 
 func fn627(p uintptr) func(TLS) { return *(*func(TLS))(unsafe.Pointer(&p)) }
 
@@ -6502,7 +6555,7 @@ _1:
 			_c = X__shgetc(tls, _f)
 		}
 	}
-	for _i = uint64(0); (_i < uint64(8)) && (_c|int32(32) == int32(*(*int8)(unsafe.Pointer(ts + 696 /* "infinity" */ + uintptr(_i))))); _i++ {
+	for _i = uint64(0); (_i < uint64(8)) && (_c|int32(32) == int32(*(*int8)(unsafe.Pointer(ts + 30928 /* "infinity" */ + uintptr(_i))))); _i++ {
 		if _i < uint64(7) {
 			if *(*uintptr)(unsafe.Pointer(_f + 8)) < *(*uintptr)(unsafe.Pointer(_f + 184)) {
 				_c = int32(*(*uint8)(unsafe.Pointer(postinc629((*uintptr)(unsafe.Pointer(_f + 8))))))
@@ -6527,7 +6580,7 @@ _1:
 		return float64(float32(_sign) * float32(math.Inf(1)))
 	}
 	if _i == 0 {
-		for _i = uint64(0); (_i < uint64(3)) && (_c|int32(32) == int32(*(*int8)(unsafe.Pointer(ts + 708 /* "nan" */ + uintptr(_i))))); _i++ {
+		for _i = uint64(0); (_i < uint64(3)) && (_c|int32(32) == int32(*(*int8)(unsafe.Pointer(ts + 30940 /* "nan" */ + uintptr(_i))))); _i++ {
 			if _i < uint64(2) {
 				if *(*uintptr)(unsafe.Pointer(_f + 8)) < *(*uintptr)(unsafe.Pointer(_f + 184)) {
 					_c = int32(*(*uint8)(unsafe.Pointer(postinc629((*uintptr)(unsafe.Pointer(_f + 8))))))
@@ -6993,11 +7046,11 @@ func xdecfloat(tls TLS, _f uintptr /* *TFILE = S_IO_FILE */, _c int32, _bits int
 			return float64(_sign) * float64(*(*uint32)(unsafe.Pointer(_x)))
 		}
 		if _rp < int32(9) {
-			return float64(float64(_sign)*float64(*(*uint32)(unsafe.Pointer(_x)))) / float64(*(*int32)(unsafe.Pointer(x635p10s + 4*uintptr(int32(8)-_rp))))
+			return float64(float64(_sign)*float64(*(*uint32)(unsafe.Pointer(_x)))) / float64(*(*int32)(unsafe.Pointer(uintptr(unsafe.Pointer(&x635p10s)) + 4*uintptr(int32(8)-_rp))))
 		}
 		_bitlim = _bits - int32(3)*(_rp-int32(9))
 		if (_bitlim > int32(30)) || (*(*uint32)(unsafe.Pointer(_x))>>(uint(_bitlim)%32) == uint32(0)) {
-			return float64(float64(_sign)*float64(*(*uint32)(unsafe.Pointer(_x)))) * float64(*(*int32)(unsafe.Pointer(x635p10s + 4*uintptr(_rp-int32(10)))))
+			return float64(float64(_sign)*float64(*(*uint32)(unsafe.Pointer(_x)))) * float64(*(*int32)(unsafe.Pointer(uintptr(unsafe.Pointer(&x635p10s)) + 4*uintptr(_rp-int32(10)))))
 		}
 	}
 	for ; *(*uint32)(unsafe.Pointer(_x + 4*uintptr(_z-int32(1)))) == 0; _z-- {
@@ -7009,7 +7062,7 @@ func xdecfloat(tls TLS, _f uintptr /* *TFILE = S_IO_FILE */, _c int32, _bits int
 			}
 			return _rp%int32(9) + int32(9)
 		}()
-		_p10 = *(*int32)(unsafe.Pointer(x635p10s + 4*uintptr(int32(8)-_rpm9)))
+		_p10 = *(*int32)(unsafe.Pointer(uintptr(unsafe.Pointer(&x635p10s)) + 4*uintptr(int32(8)-_rpm9)))
 		_carry = uint32(0)
 		for _k = _a; _k != _z; _k++ {
 			_tmp = *(*uint32)(unsafe.Pointer(_x + 4*uintptr(_k))) % uint32(_p10)
@@ -7025,7 +7078,7 @@ func xdecfloat(tls TLS, _f uintptr /* *TFILE = S_IO_FILE */, _c int32, _bits int
 		}
 		_rp = _rp + (int32(9) - _rpm9)
 	}
-	for (_rp < int32(18)) || ((_rp == int32(18)) && (*(*uint32)(unsafe.Pointer(_x + 4*uintptr(_a))) < *(*uint32)(unsafe.Pointer(x636th)))) {
+	for (_rp < int32(18)) || ((_rp == int32(18)) && (*(*uint32)(unsafe.Pointer(_x + 4*uintptr(_a))) < *(*uint32)(unsafe.Pointer(uintptr(unsafe.Pointer(&x636th)))))) {
 		_1carry = uint32(0)
 		_e2 = _e2 - int32(29)
 		for _k = (_z - int32(1)) & int32(127); ; _k = (_k - int32(1)) & int32(127) {
@@ -7062,11 +7115,11 @@ func xdecfloat(tls TLS, _f uintptr /* *TFILE = S_IO_FILE */, _c int32, _bits int
 		_sh = int32(1)
 		for _i = int32(0); _i < int32(2); _i++ {
 			_k = (_a + _i) & int32(127)
-			if (_k == _z) || (*(*uint32)(unsafe.Pointer(_x + 4*uintptr(_k))) < *(*uint32)(unsafe.Pointer(x636th + 4*uintptr(_i)))) {
+			if (_k == _z) || (*(*uint32)(unsafe.Pointer(_x + 4*uintptr(_k))) < *(*uint32)(unsafe.Pointer(uintptr(unsafe.Pointer(&x636th)) + 4*uintptr(_i)))) {
 				_i = int32(2)
 				break
 			}
-			if *(*uint32)(unsafe.Pointer(_x + 4*uintptr((_a+_i)&int32(127)))) > *(*uint32)(unsafe.Pointer(x636th + 4*uintptr(_i))) {
+			if *(*uint32)(unsafe.Pointer(_x + 4*uintptr((_a+_i)&int32(127)))) > *(*uint32)(unsafe.Pointer(uintptr(unsafe.Pointer(&x636th)) + 4*uintptr(_i))) {
 				break
 			}
 		}
@@ -7225,11 +7278,11 @@ func xscanexp(tls TLS, _f uintptr /* *TFILE = S_IO_FILE */, _pok int32) (r int64
 	return _y
 }
 
-// x4th [2]uint32, escapes: true, floatscan.c:69:24
-var x636th = ds + 30744
+// x4th [2]uint32, escapes: false, floatscan.c:69:24
+var x636th = *(*[2]uint32)(unsafe.Pointer(ts + 30944 /* "_p\x89\x00\xff\t/\x0f" */))
 
-// x5p10s [8]int32, escapes: true, floatscan.c:82:19
-var x635p10s = ds + 30752
+// x5p10s [8]int32, escapes: false, floatscan.c:82:19
+var x635p10s = *(*[8]int32)(unsafe.Pointer(ts + 30956 /* "\n\x00\x00\x00d\x00\x00\x00\xe8\x03\x00\x00\x10'\x00\x00..." */))
 
 type t7uint64_t = uint64
 
@@ -7249,7 +7302,7 @@ func X__intscan(tls TLS, _f uintptr /* *TFILE = S_IO_FILE */, _base uint32, _pok
 		_y   uint64
 		_bs  int32
 	)
-	_val = x6table + uintptr(1)
+	_val = uintptr(unsafe.Pointer(&x6table)) + uintptr(1)
 	_neg = int32(0)
 	if (_base > uint32(36)) || (_base == uint32(1)) {
 		*(*int32)(unsafe.Pointer(X__errno_location(tls))) = int32(22)
@@ -7343,7 +7396,7 @@ _3:
 
 _1:
 	if _base&(_base-uint32(1)) == 0 {
-		_bs = int32(*(*int8)(unsafe.Pointer(ts + 712 /* "\x00\x01\x02\x04\a\x03\x06\x05" */ + uintptr(uint32(0x17)*_base>>(uint(5)%32)&uint32(7)))))
+		_bs = int32(*(*int8)(unsafe.Pointer(ts + 30992 /* "\x00\x01\x02\x04\a\x03\x06\x05" */ + uintptr(uint32(0x17)*_base>>(uint(5)%32)&uint32(7)))))
 		for _x = uint32(0); (uint32(*(*uint8)(unsafe.Pointer(_val + uintptr(_c)))) < _base) && (_x <= uint32(134217727)); _c = func() int32 {
 			if *(*uintptr)(unsafe.Pointer(_f + 8)) < *(*uintptr)(unsafe.Pointer(_f + 184)) {
 				return int32(*(*uint8)(unsafe.Pointer(postinc638((*uintptr)(unsafe.Pointer(_f + 8))))))
@@ -7447,8 +7500,8 @@ type s1_IO_FILE = struct {
 	Flocale       uintptr // *S__locale_struct
 }
 
-// xtable [257]uint8, escapes: true, intscan.c:7:28
-var x6table = ds + 30784
+// xtable [257]uint8, escapes: false, intscan.c:7:28
+var x6table = *(*[257]uint8)(unsafe.Pointer(ts + 31004 /* "\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff..." */))
 
 type t17size_t = uint64
 
@@ -7459,20 +7512,20 @@ type s39__locale_struct = struct{ Fcat [6]uintptr }
 
 // linking libc.o
 
-// X__libc S__libc, escapes: true, libc.c:3:15
-var X__libc = bss + 1616
+// X__libc S__libc, escapes: false, libc.c:3:15
+var X__libc S__libc
 
-// X__hwcap Tsize_t = uint64, escapes: true, libc.c:5:8
-var X__hwcap = bss + 1728
+// X__hwcap Tsize_t = uint64, escapes: false, libc.c:5:8
+var X__hwcap uint64
 
-// X__sysinfo Tsize_t = uint64, escapes: true, libc.c:6:8
-var X__sysinfo = bss + 1736
+// X__sysinfo Tsize_t = uint64, escapes: false, libc.c:6:8
+var X__sysinfo uint64
 
-// X__progname *int8, escapes: true, libc.c:7:6
-var X__progname = bss + 1744
+// X__progname *int8, escapes: false, libc.c:7:6
+var X__progname uintptr
 
-// X__progname_full *int8, escapes: true, libc.c:7:21
-var X__progname_full = bss + 1752
+// X__progname_full *int8, escapes: false, libc.c:7:21
+var X__progname_full uintptr
 
 // S__libc is defined at libc.h:20:1
 type S__libc = struct {
@@ -7489,6 +7542,8 @@ type S__libc = struct {
 	Fglobal_locale   s40__locale_struct
 }
 
+type t18size_t = uint64
+
 // Stls_module is defined at libc.h:14:1
 type s2tls_module = struct {
 	Fnext   uintptr // *Stls_module
@@ -7498,8 +7553,6 @@ type s2tls_module = struct {
 	Falign  uint64
 	Foffset uint64
 }
-
-type t18size_t = uint64
 
 // S__locale_struct is defined at libc.h:10:1
 type s40__locale_struct = struct{ Fcat [6]uintptr }
@@ -7518,7 +7571,7 @@ func X__procfdname(tls TLS, _buf uintptr /* *int8 */, _fd uint32) {
 		_i uint32
 		_j uint32
 	)
-	for _i = uint32(0); set639((*int8)(unsafe.Pointer(_buf+uintptr(_i))), *(*int8)(unsafe.Pointer(ts + 724 /* "/proc/self/fd/" */ + uintptr(_i)))) != 0; _i++ {
+	for _i = uint32(0); set639((*int8)(unsafe.Pointer(_buf+uintptr(_i))), *(*int8)(unsafe.Pointer(ts + 31264 /* "/proc/self/fd/" */ + uintptr(_i)))) != 0; _i++ {
 	}
 	if _fd == 0 {
 		*(*int8)(unsafe.Pointer(_buf + uintptr(_i))) = int8('0')
@@ -7649,15 +7702,15 @@ func X__vdsosym(tls TLS, _vername uintptr /* *int8 */, _name uintptr /* *int8 */
 		_verdef  uintptr // *TVerdef = TElf64_Verdef = struc...Fvd_aux uint32;Fvd_next uint32;}
 		_p       uintptr // *void
 	)
-	for _i = uint64(0); *(*uint64)(unsafe.Pointer(*(*uintptr)(unsafe.Pointer(X__libc + 16)) + 8*uintptr(_i))) != uint64(33); func() { _i = _i + uint64(2) }() {
-		if *(*uint64)(unsafe.Pointer(*(*uintptr)(unsafe.Pointer(X__libc + 16)) + 8*uintptr(_i))) == 0 {
+	for _i = uint64(0); *(*uint64)(unsafe.Pointer(*(*uintptr)(unsafe.Pointer(uintptr(unsafe.Pointer(&X__libc)) + 16)) + 8*uintptr(_i))) != uint64(33); func() { _i = _i + uint64(2) }() {
+		if *(*uint64)(unsafe.Pointer(*(*uintptr)(unsafe.Pointer(uintptr(unsafe.Pointer(&X__libc)) + 16)) + 8*uintptr(_i))) == 0 {
 			return null
 		}
 	}
-	if *(*uint64)(unsafe.Pointer(*(*uintptr)(unsafe.Pointer(X__libc + 16)) + 8*uintptr(_i+uint64(1)))) == 0 {
+	if *(*uint64)(unsafe.Pointer(*(*uintptr)(unsafe.Pointer(uintptr(unsafe.Pointer(&X__libc)) + 16)) + 8*uintptr(_i+uint64(1)))) == 0 {
 		return null
 	}
-	_eh = uintptr(*(*uint64)(unsafe.Pointer(*(*uintptr)(unsafe.Pointer(X__libc + 16)) + 8*uintptr(_i+uint64(1)))))
+	_eh = uintptr(*(*uint64)(unsafe.Pointer(*(*uintptr)(unsafe.Pointer(uintptr(unsafe.Pointer(&X__libc)) + 16)) + 8*uintptr(_i+uint64(1)))))
 	_ph = _eh + uintptr(*(*uint64)(unsafe.Pointer(_eh + 32)))
 	_dynv = 0
 	_base = uint64(18446744073709551615)
@@ -7793,11 +7846,11 @@ func xcheckver(tls TLS, _def uintptr /* *TVerdef = TElf64_Verdef = struc...Fvd_a
 
 // X__libc_get_version is defined at version.c:6:12
 func X__libc_get_version(tls TLS) (r uintptr /* *int8 */) {
-	return xversion
+	return uintptr(unsafe.Pointer(&xversion))
 }
 
-// xversion [7]int8, escapes: true, version.c:3:19
-var xversion = ds + 31048
+// xversion [7]int8, escapes: false, version.c:3:19
+var xversion = *(*[7]int8)(unsafe.Pointer(ts + 31280 /* "1.1.20\x00" */))
 
 // linking ftok.o
 
@@ -8111,7 +8164,7 @@ func x11__syscall3(tls TLS, _n int64, _a1 int64, _a2 int64, _a3 int64) (r int64)
 
 // xstub_dlsym is defined at __dlsym.c:7:13
 func xstub_dlsym(tls TLS, _p uintptr /* *void */, _s uintptr /* *int8 */, _ra uintptr /* *void */) (r uintptr /* *void */) {
-	X__dl_seterr(tls, ts+740 /* "Symbol not found..." */, _s)
+	X__dl_seterr(tls, ts+31288 /* "Symbol not found..." */, _s)
 	return null
 }
 
@@ -8160,7 +8213,7 @@ func Xdlerror(tls TLS) (r uintptr /* *int8 */) {
 	setb644((*uint8)(unsafe.Pointer(_self+74)), 0)
 	_s = *(*uintptr)(unsafe.Pointer(_self + 208))
 	if _s == uintptr(18446744073709551615) {
-		return ts + 764 /* "Dynamic linker f..." */
+		return ts + 31312 /* "Dynamic linker f..." */
 	} else {
 		return _s
 	}
@@ -8262,7 +8315,7 @@ type t24size_t = uint64
 
 // xstub_invalid_handle is defined at dlerror.c:58:12
 func xstub_invalid_handle(tls TLS, _h uintptr /* *void */) (r int32) {
-	X__dl_seterr(tls, ts+824 /* "Invalid library ..." */, _h)
+	X__dl_seterr(tls, ts+31372 /* "Invalid library ..." */, _h)
 	return 1
 }
 
@@ -8286,7 +8339,7 @@ func Xdlinfo(tls TLS, _dso uintptr /* *void */, _req int32, _res uintptr /* *voi
 		return -1
 	}
 	if _req != int32(2) {
-		X__dl_seterr(tls, ts+852 /* "Unsupported requ..." */, _req)
+		X__dl_seterr(tls, ts+31400 /* "Unsupported requ..." */, _req)
 		return -1
 	}
 	*(*uintptr)(unsafe.Pointer(_res)) = _dso
@@ -8297,7 +8350,7 @@ func Xdlinfo(tls TLS, _dso uintptr /* *void */, _req int32, _res uintptr /* *voi
 
 // xstub_dlopen is defined at dlopen.c:7:13
 func xstub_dlopen(tls TLS, _file uintptr /* *int8 */, _mode int32) (r uintptr /* *void */) {
-	X__dl_seterr(tls, ts+876 /* "Dynamic loading ..." */)
+	X__dl_seterr(tls, ts+31424 /* "Dynamic loading ..." */)
 	return null
 }
 
@@ -8405,12 +8458,12 @@ func Xdaemon(tls TLS, _nochdir int32, _noclose int32) (r int32) {
 		_fd     int32
 		_failed int32
 	)
-	if (_nochdir == 0) && (Xchdir(tls, ts+908 /* "/" */) != 0) {
+	if (_nochdir == 0) && (Xchdir(tls, ts+31456 /* "/" */) != 0) {
 		return -1
 	}
 	if _noclose == 0 {
 		_failed = int32(0)
-		if set645(&_fd, Xopen(tls, ts+648 /* "/dev/null" */, int32(02))) < int32(0) {
+		if set645(&_fd, Xopen(tls, ts+28964 /* "/dev/null" */, int32(02))) < int32(0) {
 			return -1
 		}
 		if ((Xdup2(tls, _fd, int32(0)) < int32(0)) || (Xdup2(tls, _fd, int32(1)) < int32(0))) || (Xdup2(tls, _fd, int32(2)) < int32(0)) {
@@ -8467,21 +8520,21 @@ type t3pid_t = int32
 
 // Xvwarn is defined at err.c:8:6
 func Xvwarn(tls TLS, _fmt uintptr /* *int8 */, _ap uintptr) {
-	Xfprintf(tls, *(*uintptr)(unsafe.Pointer(Xstderr)), ts+912 /* "%s: " */, *(*uintptr)(unsafe.Pointer(X__progname)))
+	Xfprintf(tls, Xstderr, ts+31460 /* "%s: " */, X__progname)
 	if _fmt != 0 {
-		Xvfprintf(tls, *(*uintptr)(unsafe.Pointer(Xstderr)), _fmt, _ap)
-		Xfputs(tls, ts+920 /* ": " */, *(*uintptr)(unsafe.Pointer(Xstderr)))
+		Xvfprintf(tls, Xstderr, _fmt, _ap)
+		Xfputs(tls, ts+31468 /* ": " */, Xstderr)
 	}
 	Xperror(tls, null)
 }
 
 // Xvwarnx is defined at err.c:18:6
 func Xvwarnx(tls TLS, _fmt uintptr /* *int8 */, _ap uintptr) {
-	Xfprintf(tls, *(*uintptr)(unsafe.Pointer(Xstderr)), ts+912 /* "%s: " */, *(*uintptr)(unsafe.Pointer(X__progname)))
+	Xfprintf(tls, Xstderr, ts+31460 /* "%s: " */, X__progname)
 	if _fmt != 0 {
-		Xvfprintf(tls, *(*uintptr)(unsafe.Pointer(Xstderr)), _fmt, _ap)
+		Xvfprintf(tls, Xstderr, _fmt, _ap)
 	}
-	Xputc(tls, int32('\n'), *(*uintptr)(unsafe.Pointer(Xstderr)))
+	Xputc(tls, int32('\n'), Xstderr)
 }
 
 // Xverr is defined at err.c:25:16
@@ -8643,6 +8696,7 @@ type s1sysinfo = struct {
 	Ffreehigh   uint64
 	Fmem_unit   uint32
 	F__reserved [256]int8
+	_           [4]byte
 }
 
 // linking getpagesize.o
@@ -8666,7 +8720,7 @@ func Xgetpass(tls TLS, _prompt uintptr /* *int8 */) (r uintptr /* *int8 */) {
 		_l  int64
 	)
 	defer Free(esc)
-	if set646(&_fd, Xopen(tls, ts+924 /* "/dev/tty" */, int32(524546))) < int32(0) {
+	if set646(&_fd, Xopen(tls, ts+31472 /* "/dev/tty" */, int32(524546))) < int32(0) {
 		return null
 	}
 	Xtcgetattr(tls, _fd, _t)
@@ -8690,24 +8744,24 @@ func Xgetpass(tls TLS, _prompt uintptr /* *int8 */) (r uintptr /* *int8 */) {
 	Xtcsetattr(tls, _fd, int32(2), _t)
 	Xtcdrain(tls, _fd)
 	Xdprintf(tls, _fd, ts+20 /* "%s" */, _prompt)
-	_l = Xread(tls, _fd, x647password, uint64(128))
+	_l = Xread(tls, _fd, uintptr(unsafe.Pointer(&x647password)), uint64(128))
 	if _l >= int64(0) {
-		if ((_l > int64(0)) && (int32(*(*int8)(unsafe.Pointer(x647password + uintptr(_l-int64(1))))) == int32('\n'))) || (uint64(_l) == uint64(128)) {
+		if ((_l > int64(0)) && (int32(*(*int8)(unsafe.Pointer(uintptr(unsafe.Pointer(&x647password)) + uintptr(_l-int64(1))))) == int32('\n'))) || (uint64(_l) == uint64(128)) {
 			_l--
 		}
-		*(*int8)(unsafe.Pointer(x647password + uintptr(_l))) = int8(0)
+		*(*int8)(unsafe.Pointer(uintptr(unsafe.Pointer(&x647password)) + uintptr(_l))) = int8(0)
 	}
 	Xtcsetattr(tls, _fd, int32(2), _s)
-	Xdprintf(tls, _fd, ts+936 /* "\n" */)
+	Xdprintf(tls, _fd, ts+31484 /* "\n" */)
 	Xclose(tls, _fd)
 	if _l < int64(0) {
 		return null
 	}
-	return x647password
+	return uintptr(unsafe.Pointer(&x647password))
 }
 
-// x1password [128]int8, escapes: true, getpass.c:13:14
-var x647password = bss + 1760
+// x1password [128]int8, escapes: false, getpass.c:13:14
+var x647password [128]int8
 
 // Stermios is defined at termios.h:1:1
 type Stermios = struct {
@@ -8742,10 +8796,10 @@ func Xendusershell(tls TLS) {
 // Xsetusershell is defined at getusershell.c:17:6
 func Xsetusershell(tls TLS) {
 	if xf == 0 {
-		xf = Xfopen(tls, ts+940 /* "/etc/shells" */, ts+952 /* "rbe" */)
+		xf = Xfopen(tls, ts+31488 /* "/etc/shells" */, ts+31500 /* "rbe" */)
 	}
 	if xf == 0 {
-		xf = Xfmemopen(tls, xdefshells, uint64(17), ts+956 /* "rb" */)
+		xf = Xfmemopen(tls, uintptr(unsafe.Pointer(&xdefshells)), uint64(17), ts+31504 /* "rb" */)
 	}
 }
 
@@ -8759,29 +8813,31 @@ func Xgetusershell(tls TLS) (r uintptr /* *int8 */) {
 	if xf == 0 {
 		return null
 	}
-	_l = Xgetline(tls, xline, xlinesize, xf)
+	_l = Xgetline(tls, uintptr(unsafe.Pointer(&xline)), uintptr(unsafe.Pointer(&xlinesize)), xf)
 	if _l <= int64(0) {
 		return null
 	}
-	if int32(*(*int8)(unsafe.Pointer(*(*uintptr)(unsafe.Pointer(xline)) + uintptr(_l-int64(1))))) == int32('\n') {
-		*(*int8)(unsafe.Pointer(*(*uintptr)(unsafe.Pointer(xline)) + uintptr(_l-int64(1)))) = int8(0)
+	if int32(*(*int8)(unsafe.Pointer(xline + uintptr(_l-int64(1))))) == int32('\n') {
+		*(*int8)(unsafe.Pointer(xline + uintptr(_l-int64(1)))) = int8(0)
 	}
-	return *(*uintptr)(unsafe.Pointer(xline))
+	return xline
 }
 
 // xf *TFILE = S_IO_FILE, escapes: false, getusershell.c:9:13
 var xf uintptr
 
-// xdefshells [18]int8, escapes: true, getusershell.c:5:19
-var xdefshells = ds + 31056
+// xdefshells [18]int8, escapes: false, getusershell.c:5:19
+var xdefshells = *(*[18]int8)(unsafe.Pointer(ts + 31508 /* "/bin/sh\n/bin/csh..." */))
 
 type t4ssize_t = int64
 
-// xline *int8, escapes: true, getusershell.c:7:13
-var xline = bss + 1888
+// xline *int8, escapes: false, getusershell.c:7:13
+var xline uintptr
 
-// xlinesize Tsize_t = uint64, escapes: true, getusershell.c:8:15
-var xlinesize = bss + 1896
+// xlinesize Tsize_t = uint64, escapes: false, getusershell.c:8:15
+var xlinesize uint64
+
+type t25size_t = uint64
 
 type s3_IO_FILE struct{ uintptr }
 
@@ -8913,6 +8969,7 @@ type Sutmpx = struct {
 	Fut_tv      s2timeval
 	Fut_addr_v6 [4]uint32
 	F__unused   [20]int8
+	_           [4]byte
 }
 
 type t4pid_t = int32
@@ -8934,7 +8991,7 @@ func Xvalloc(tls TLS, _size uint64) (r uintptr /* *void */) {
 	return Xmemalign(tls, uint64(4096), _size)
 }
 
-type t25size_t = uint64
+type t26size_t = uint64
 
 // linking adjtime.o
 
@@ -8945,7 +9002,7 @@ func Xadjtime(tls TLS, _in uintptr /* *Stimeval */, _out uintptr /* *Stimeval */
 	esc := MustMalloc(208)
 	var _tx = esc // *Stimex
 	defer Free(esc)
-	Copy(_tx, ts+960 /* "\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00..." */, 208)
+	Copy(_tx, ts+31528 /* "\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00..." */, 208)
 	if _in != 0 {
 		if (*(*int64)(unsafe.Pointer(_in)) > int64(1000)) || (*(*int64)(unsafe.Pointer(_in + 8)) > int64(1000000000)) {
 			*(*int32)(unsafe.Pointer(X__errno_location(tls))) = int32(22)
@@ -9459,7 +9516,7 @@ func Xmlock2(tls TLS, _addr uintptr /* *void */, _len uint64, _flags uint32) (r 
 	return int32(X__syscall_ret(tls, uint64(x15__syscall3(tls, int64(325), int64(_addr), int64(_len), int64(_flags)))))
 }
 
-type t26size_t = uint64
+type t27size_t = uint64
 
 // x__syscall3 is defined at syscall_arch.h:31:22
 func x15__syscall3(tls TLS, _n int64, _a1 int64, _a2 int64, _a3 int64) (r int64) {
@@ -9664,7 +9721,7 @@ func x3__syscall6(tls TLS, _n int64, _a1 int64, _a2 int64, _a3 int64, _a4 int64,
 	return X__syscall(tls, _n, _a1, _a2, _a3, _a4, _a5, _a6)
 }
 
-type t27size_t = uint64
+type t28size_t = uint64
 
 // linking ptrace.o
 
@@ -10007,6 +10064,7 @@ type s2sysinfo = struct {
 	Ffreehigh   uint64
 	Fmem_unit   uint32
 	F__reserved [256]int8
+	_           [4]byte
 }
 
 // x__syscall1 is defined at syscall_arch.h:14:22
@@ -10126,7 +10184,7 @@ func x12__syscall4(tls TLS, _n int64, _a1 int64, _a2 int64, _a3 int64, _a4 int64
 	return X__syscall(tls, _n, _a1, _a2, _a3, _a4, int64(0), int64(0))
 }
 
-type t28size_t = uint64
+type t29size_t = uint64
 
 // linking wait3.o
 
@@ -10324,7 +10382,7 @@ func x8__pthread_self(tls TLS) (r uintptr /* *S__pthread */) {
 	return r
 }
 
-type t29size_t = uint64
+type t30size_t = uint64
 
 // S__pthread is defined at pthread_impl.h:15:1
 type s12__pthread = struct {
@@ -10443,13 +10501,13 @@ func xswapc(tls TLS, _x uint32, _c int32) (r uint32) {
 	return _x
 }
 
-type t30size_t = uint64
+type t31size_t = uint64
 
 // linking bind_textdomain_codeset.o
 
 // Xbind_textdomain_codeset is defined at bind_textdomain_codeset.c:6:6
 func Xbind_textdomain_codeset(tls TLS, _domainname uintptr /* *int8 */, _codeset uintptr /* *int8 */) (r uintptr /* *int8 */) {
-	if (_codeset != 0) && (Xstrcasecmp(tls, _codeset, ts+1172 /* "UTF-8" */) != 0) {
+	if (_codeset != 0) && (Xstrcasecmp(tls, _codeset, ts+31740 /* "UTF-8" */) != 0) {
 		*(*int32)(unsafe.Pointer(X__errno_location(tls))) = int32(22)
 	}
 	return null
@@ -10457,19 +10515,19 @@ func Xbind_textdomain_codeset(tls TLS, _domainname uintptr /* *int8 */, _codeset
 
 // linking c_locale.o
 
-// X__c_dot_utf8 S__locale_map, escapes: true, c_locale.c:6:27
-var X__c_dot_utf8 = bss + 1904 // struct __locale_map
+// X__c_dot_utf8 S__locale_map, escapes: false, c_locale.c:6:27
+var X__c_dot_utf8 s1__locale_map
 
 func init() {
-	*(*s1__locale_map)(unsafe.Pointer(X__c_dot_utf8)) = s1__locale_map{
-		Fmap:      xempty_mo,
+	X__c_dot_utf8 = s1__locale_map{
+		Fmap:      uintptr(unsafe.Pointer(&xempty_mo)),
 		Fmap_size: uint64(20),
-		Fname:     *(*[24]int8)(unsafe.Pointer(ts + 1180 /* "C.UTF-8\x00\x00\x00\x00\x00\x00\x00\x00\x00..." */)),
+		Fname:     *(*[24]int8)(unsafe.Pointer(ts + 31748 /* "C.UTF-8\x00\x00\x00\x00\x00\x00\x00\x00\x00..." */)),
 	}
 }
 
-// X__c_locale S__locale_struct, escapes: true, c_locale.c:12:30
-var X__c_locale = bss + 1952
+// X__c_locale S__locale_struct, escapes: false, c_locale.c:12:30
+var X__c_locale s44__locale_struct
 
 // S__locale_map is defined at locale_impl.h:11:1
 type s1__locale_map = struct {
@@ -10479,10 +10537,10 @@ type s1__locale_map = struct {
 	Fnext     uintptr // *S__locale_map
 }
 
-// xempty_mo [5]uint32, escapes: true, c_locale.c:4:23
-var xempty_mo = ds + 31080
+// xempty_mo [5]uint32, escapes: false, c_locale.c:4:23
+var xempty_mo = *(*[5]uint32)(unsafe.Pointer(ts + 31772 /* "\xde\x12\x04\x95\x00\x00\x00\x00\xff\xff\xff\xff\xff\xff\xff\xff..." */))
 
-type t31size_t = uint64
+type t32size_t = uint64
 
 // S__locale_struct is defined at libc.h:10:1
 type s44__locale_struct = struct{ Fcat [6]uintptr }
@@ -10542,7 +10600,7 @@ func Xdgettext(tls TLS, _domainname uintptr /* *int8 */, _msgid uintptr /* *int8
 
 // xdummy_gettextdomain is defined at dcngettext.c:109:13
 func xdummy_gettextdomain(tls TLS) (r uintptr /* *int8 */) {
-	return ts + 1204 /* "messages" */
+	return ts + 31796 /* "messages" */
 }
 
 // linking duplocale.o
@@ -10556,7 +10614,7 @@ func X__duplocale(tls TLS, _old uintptr /* Tlocale_t = *S__locale_struct */) (r 
 		return null
 	}
 	if _old == uintptr(18446744073709551615) {
-		_old = X__libc + 64
+		_old = uintptr(unsafe.Pointer(&X__libc)) + 64
 	}
 	*(*s45__locale_struct)(unsafe.Pointer(_new)) = *(*s45__locale_struct)(unsafe.Pointer(_old))
 	return _new
@@ -10589,12 +10647,12 @@ func Xiconv_open(tls TLS, _to uintptr /* *int8 */, _from uintptr /* *int8 */) (r
 		_scd uintptr // *Sstateful_cd
 		_cd  uintptr // Ticonv_t = *void
 	)
-	if ((set649(&_t, xfind_charmap(tls, _to)) == uint64(18446744073709551615)) || (set649(&_f, xfind_charmap(tls, _from)) == uint64(18446744073709551615))) || (int32(*(*uint8)(unsafe.Pointer(xcharmaps + uintptr(_t)))) >= int32(0330)) {
+	if ((set649(&_t, xfind_charmap(tls, _to)) == uint64(18446744073709551615)) || (set649(&_f, xfind_charmap(tls, _from)) == uint64(18446744073709551615))) || (int32(*(*uint8)(unsafe.Pointer(uintptr(unsafe.Pointer(&xcharmaps)) + uintptr(_t)))) >= int32(0330)) {
 		*(*int32)(unsafe.Pointer(X__errno_location(tls))) = int32(22)
 		return uintptr(18446744073709551615)
 	}
 	_cd = xcombine_to_from(tls, _t, _f)
-	switch int32(*(*uint8)(unsafe.Pointer(xcharmaps + uintptr(_f)))) {
+	switch int32(*(*uint8)(unsafe.Pointer(uintptr(unsafe.Pointer(&xcharmaps)) + uintptr(_f)))) {
 	case int32(0312):
 		goto _2
 	case int32(0313):
@@ -10627,12 +10685,13 @@ func Xiconv(tls TLS, _cd uintptr /* Ticonv_t = *void */, _in uintptr /* **int8 *
 	return r
 }
 
-type t32size_t = uint64
+type t33size_t = uint64
 
 // Sstateful_cd is defined at iconv.c:120:1
 type Sstateful_cd = struct {
 	Fbase_cd uintptr // Ticonv_t = *void
 	Fstate   uint32
+	_        [4]byte
 }
 
 // xfind_charmap is defined at iconv.c:102:15
@@ -10640,13 +10699,13 @@ func xfind_charmap(tls TLS, _name uintptr /* *void */) (r uint64) {
 	var _s uintptr // *uint8
 
 	if *(*int8)(unsafe.Pointer(_name)) == 0 {
-		_name = xcharmaps
+		_name = uintptr(unsafe.Pointer(&xcharmaps))
 	}
-	for _s = xcharmaps; *(*uint8)(unsafe.Pointer(_s)) != 0; {
+	for _s = uintptr(unsafe.Pointer(&xcharmaps)); *(*uint8)(unsafe.Pointer(_s)) != 0; {
 		if xfuzzycmp(tls, _name, _s) == 0 {
 			for ; *(*uint8)(unsafe.Pointer(_s)) != 0; func() { _s += uintptr(Xstrlen(tls, _s) + uint64(1)) }() {
 			}
-			return uint64(int64((_s + uintptr(1)) - xcharmaps))
+			return uint64(int64((_s + uintptr(1)) - uintptr(unsafe.Pointer(&xcharmaps))))
 		}
 		_s += uintptr(Xstrlen(tls, _s) + uint64(1))
 		if *(*uint8)(unsafe.Pointer(_s)) == 0 {
@@ -10660,8 +10719,8 @@ func xfind_charmap(tls TLS, _name uintptr /* *void */) (r uint64) {
 	return uint64(18446744073709551615)
 }
 
-// xcharmaps [4884]uint8, escapes: true, iconv.c:38:28
-var xcharmaps = ds + 31104
+// xcharmaps [4884]uint8, escapes: false, iconv.c:38:28
+var xcharmaps = *(*[4884]uint8)(unsafe.Pointer(ts + 31808 /* "utf8\x00char\x00\x00\xc8wcha..." */))
 
 // xcombine_to_from is defined at iconv.c:125:16
 func xcombine_to_from(tls TLS, _t uint64, _f uint64) (r uintptr /* Ticonv_t = *void */) {
@@ -10693,7 +10752,7 @@ func Xiconv_close(tls TLS, _cd uintptr /* Ticonv_t = *void */) (r int32) {
 	return 0
 }
 
-type t33size_t = uint64
+type t34size_t = uint64
 
 // linking langinfo.o
 
@@ -10710,15 +10769,15 @@ func X__nl_langinfo_l(tls TLS, _item int32, _loc uintptr /* Tlocale_t = *S__loca
 	_idx = _item & int32(65535)
 	if _item == int32(14) {
 		if *(*uintptr)(unsafe.Pointer(_loc)) != 0 {
-			return ts + 1172 /* "UTF-8" */
+			return ts + 31740 /* "UTF-8" */
 		}
-		return ts + 1216 /* "ASCII" */
+		return ts + 36696 /* "ASCII" */
 	}
 	if (_idx == int32(65535)) && (_cat < int32(6)) {
 		if *(*uintptr)(unsafe.Pointer(_loc + 8*uintptr(_cat))) != 0 {
 			return *(*uintptr)(unsafe.Pointer(_loc + 8*uintptr(_cat))) + 16
 		}
-		return ts + 1224 /* "C" */
+		return ts + 36704 /* "C" */
 	}
 	switch _cat {
 	case int32(1):
@@ -10736,14 +10795,14 @@ _2:
 	if _idx > int32(1) {
 		return ts + 0 /* "" */
 	}
-	_str = xc_numeric
+	_str = uintptr(unsafe.Pointer(&xc_numeric))
 	goto _1
 
 _3:
 	if _idx > int32(0x31) {
 		return ts + 0 /* "" */
 	}
-	_str = xc_time
+	_str = uintptr(unsafe.Pointer(&xc_time))
 	goto _1
 
 _4:
@@ -10757,7 +10816,7 @@ _5:
 	if _idx > int32(3) {
 		return ts + 0 /* "" */
 	}
-	_str = xc_messages
+	_str = uintptr(unsafe.Pointer(&xc_messages))
 	goto _1
 
 _6:
@@ -10783,14 +10842,14 @@ type s47__locale_struct = struct{ Fcat [6]uintptr }
 
 type Tnl_item = int32
 
-// xc_numeric [3]int8, escapes: true, langinfo.c:28:19
-var xc_numeric = ds + 35992
+// xc_numeric [3]int8, escapes: false, langinfo.c:28:19
+var xc_numeric = *(*[3]int8)(unsafe.Pointer(ts + 36708 /* ".\x00\x00" */))
 
-// xc_time [308]int8, escapes: true, langinfo.c:6:19
-var xc_time = ds + 36000
+// xc_time [308]int8, escapes: false, langinfo.c:6:19
+var xc_time = *(*[308]int8)(unsafe.Pointer(ts + 36712 /* "Sun\x00Mon\x00Tue\x00Wed\x00..." */))
 
-// xc_messages [19]int8, escapes: true, langinfo.c:27:19
-var xc_messages = ds + 36312
+// xc_messages [19]int8, escapes: false, langinfo.c:27:19
+var xc_messages = *(*[19]int8)(unsafe.Pointer(ts + 37024 /* "^[yY]\x00^[nN]\x00yes\x00..." */))
 
 // x__pthread_self is defined at pthread_arch.h:1:30
 func x9__pthread_self(tls TLS) (r uintptr /* *S__pthread */) {
@@ -10841,7 +10900,7 @@ type s13__pthread = struct {
 
 type t12uintptr_t = uint64
 
-type t34size_t = uint64
+type t35size_t = uint64
 
 // S__ptcb is defined at pthread.h:200:1
 type s11__ptcb = struct {
@@ -10887,19 +10946,19 @@ func X__get_locale(tls TLS, _cat int32, _val uintptr /* *int8 */) (r uintptr /* 
 	_new = 0
 	_path = 0
 	if *(*int8)(unsafe.Pointer(_val)) == 0 {
-		if !((((set652(&_val, Xgetenv(tls, ts+1228 /* "LC_ALL" */)) != 0) && (*(*int8)(unsafe.Pointer(_val)) != 0)) || ((set652(&_val, Xgetenv(tls, xenvvars+12*uintptr(_cat))) != 0) && (*(*int8)(unsafe.Pointer(_val)) != 0))) || ((set652(&_val, Xgetenv(tls, ts+1236 /* "LANG" */)) != 0) && (*(*int8)(unsafe.Pointer(_val)) != 0))) {
-			_val = ts + 1244 /* "C.UTF-8" */
+		if !((((set652(&_val, Xgetenv(tls, ts+37044 /* "LC_ALL" */)) != 0) && (*(*int8)(unsafe.Pointer(_val)) != 0)) || ((set652(&_val, Xgetenv(tls, uintptr(unsafe.Pointer(&xenvvars))+12*uintptr(_cat))) != 0) && (*(*int8)(unsafe.Pointer(_val)) != 0))) || ((set652(&_val, Xgetenv(tls, ts+37052 /* "LANG" */)) != 0) && (*(*int8)(unsafe.Pointer(_val)) != 0))) {
+			_val = ts + 37060 /* "C.UTF-8" */
 		}
 	}
 	for _n = uint64(0); ((_n < uint64(23)) && (*(*int8)(unsafe.Pointer(_val + uintptr(_n))) != 0)) && (int32(*(*int8)(unsafe.Pointer(_val + uintptr(_n)))) != int32('/')); _n++ {
 	}
 	if (int32(*(*int8)(unsafe.Pointer(_val))) == int32('.')) || (*(*int8)(unsafe.Pointer(_val + uintptr(_n))) != 0) {
-		_val = ts + 1244 /* "C.UTF-8" */
+		_val = ts + 37060 /* "C.UTF-8" */
 	}
-	_builtin = bool2int((((int32(*(*int8)(unsafe.Pointer(_val))) == int32('C')) && (*(*int8)(unsafe.Pointer(_val + 1)) == 0)) || (Xstrcmp(tls, _val, ts+1244 /* "C.UTF-8" */) == 0)) || (Xstrcmp(tls, _val, ts+1252 /* "POSIX" */) == 0))
+	_builtin = bool2int((((int32(*(*int8)(unsafe.Pointer(_val))) == int32('C')) && (*(*int8)(unsafe.Pointer(_val + 1)) == 0)) || (Xstrcmp(tls, _val, ts+37060 /* "C.UTF-8" */) == 0)) || (Xstrcmp(tls, _val, ts+37068 /* "POSIX" */) == 0))
 	if _builtin != 0 {
 		if (_cat == int32(0)) && (int32(*(*int8)(unsafe.Pointer(_val + 1))) == int32('.')) {
-			return X__c_dot_utf8
+			return uintptr(unsafe.Pointer(&X__c_dot_utf8))
 		}
 		return null
 	}
@@ -10908,15 +10967,15 @@ func X__get_locale(tls TLS, _cat int32, _val uintptr /* *int8 */) (r uintptr /* 
 			return _p
 		}
 	}
-	X__lock(tls, x654lock)
+	X__lock(tls, uintptr(unsafe.Pointer(&x654lock)))
 	for _p = x653loc_head; _p != 0; _p = *(*uintptr)(unsafe.Pointer(_p + 40)) {
 		if Xstrcmp(tls, _val, _p+16) == 0 {
-			X__unlock(tls, x654lock)
+			X__unlock(tls, uintptr(unsafe.Pointer(&x654lock)))
 			return _p
 		}
 	}
-	if *(*int32)(unsafe.Pointer(X__libc + 8)) == 0 {
-		_path = Xgetenv(tls, ts+1260 /* "MUSL_LOCPATH" */)
+	if *(*int32)(unsafe.Pointer(uintptr(unsafe.Pointer(&X__libc)) + 8)) == 0 {
+		_path = Xgetenv(tls, ts+37076 /* "MUSL_LOCPATH" */)
 	}
 	if _path != 0 {
 		for ; *(*int8)(unsafe.Pointer(_path)) != 0; _path = _z + uintptr(bool2int(!(*(*int8)(unsafe.Pointer(_z)) == 0))) {
@@ -10947,17 +11006,17 @@ func X__get_locale(tls TLS, _cat int32, _val uintptr /* *int8 */) (r uintptr /* 
 		}
 	}
 	if (_new == 0) && (set652(&_new, Xmalloc(tls, uint64(48))) != 0) {
-		*(*uintptr)(unsafe.Pointer(_new)) = *(*uintptr)(unsafe.Pointer(X__c_dot_utf8))
-		*(*uint64)(unsafe.Pointer(_new + 8)) = *(*uint64)(unsafe.Pointer(X__c_dot_utf8 + 8))
+		*(*uintptr)(unsafe.Pointer(_new)) = *(*uintptr)(unsafe.Pointer(uintptr(unsafe.Pointer(&X__c_dot_utf8))))
+		*(*uint64)(unsafe.Pointer(_new + 8)) = *(*uint64)(unsafe.Pointer(uintptr(unsafe.Pointer(&X__c_dot_utf8)) + 8))
 		Xmemcpy(tls, _new+16, _val, _n)
 		*(*int8)(unsafe.Pointer((_new + 16) + uintptr(_n))) = int8(0)
 		*(*uintptr)(unsafe.Pointer(_new + 40)) = x653loc_head
 		x653loc_head = _new
 	}
 	if (_new == 0) && (_cat == int32(0)) {
-		_new = X__c_dot_utf8
+		_new = uintptr(unsafe.Pointer(&X__c_dot_utf8))
 	}
-	X__unlock(tls, x654lock)
+	X__unlock(tls, uintptr(unsafe.Pointer(&x654lock)))
 	return _new
 }
 
@@ -10969,22 +11028,22 @@ type s2__locale_map = struct {
 	Fnext     uintptr // *S__locale_map
 }
 
-type t35size_t = uint64
+type t36size_t = uint64
 
-// x1lock [1]int32, escapes: true, locale_map.c:29:22
-var x654lock = bss + 2000
+// x1lock [1]int32, escapes: false, locale_map.c:29:22
+var x654lock [1]int32
 
 // x2loc_head *void, escapes: false, locale_map.c:30:14
 var x653loc_head uintptr
 
-// xenvvars [6][12]int8, escapes: true, locale_map.c:18:19
-var xenvvars = ds + 36336
+// xenvvars [6][12]int8, escapes: false, locale_map.c:18:19
+var xenvvars = *(*[6][12]int8)(unsafe.Pointer(ts + 37092 /* "LC_CTYPE\x00\x00\x00\x00LC_N..." */))
 
 // linking localeconv.o
 
 // Xlocaleconv is defined at localeconv.c:31:14
 func Xlocaleconv(tls TLS) (r uintptr /* *Slconv */) {
-	return xposix_lconv
+	return uintptr(unsafe.Pointer(&xposix_lconv))
 }
 
 // Slconv is defined at locale.h:24:1
@@ -11013,23 +11072,24 @@ type Slconv = struct {
 	Fint_n_sep_by_space int8
 	Fint_p_sign_posn    int8
 	Fint_n_sign_posn    int8
+	_                   [2]byte
 }
 
-// xposix_lconv Slconv, escapes: true, localeconv.c:4:27
-var xposix_lconv = bss + 2008 // struct lconv
+// xposix_lconv Slconv, escapes: false, localeconv.c:4:27
+var xposix_lconv Slconv
 
 func init() {
-	*(*Slconv)(unsafe.Pointer(xposix_lconv)) = Slconv{
-		Fdecimal_point:      ts + 1276, /* "." */
-		Fthousands_sep:      ts + 0,    /* "" */
-		Fgrouping:           ts + 0,    /* "" */
-		Fint_curr_symbol:    ts + 0,    /* "" */
-		Fcurrency_symbol:    ts + 0,    /* "" */
-		Fmon_decimal_point:  ts + 0,    /* "" */
-		Fmon_thousands_sep:  ts + 0,    /* "" */
-		Fmon_grouping:       ts + 0,    /* "" */
-		Fpositive_sign:      ts + 0,    /* "" */
-		Fnegative_sign:      ts + 0,    /* "" */
+	xposix_lconv = Slconv{
+		Fdecimal_point:      ts + 37168, /* "." */
+		Fthousands_sep:      ts + 0,     /* "" */
+		Fgrouping:           ts + 0,     /* "" */
+		Fint_curr_symbol:    ts + 0,     /* "" */
+		Fcurrency_symbol:    ts + 0,     /* "" */
+		Fmon_decimal_point:  ts + 0,     /* "" */
+		Fmon_thousands_sep:  ts + 0,     /* "" */
+		Fmon_grouping:       ts + 0,     /* "" */
+		Fpositive_sign:      ts + 0,     /* "" */
+		Fnegative_sign:      ts + 0,     /* "" */
 		Fint_frac_digits:    int8(-1),
 		Ffrac_digits:        int8(-1),
 		Fp_cs_precedes:      int8(-1),
@@ -11084,6 +11144,7 @@ type Sst = struct {
 	Fr  uint64
 	Fn  uint64
 	Fop int32
+	_   [4]byte
 }
 
 func preinc655(p *int32) int32 { *p += -1; return *p }
@@ -11127,11 +11188,11 @@ func xevalbinop(tls TLS, _st uintptr /* *Sst */, _s uintptr /* *int8 */, _minpre
 	_s = xparseop(tls, _st, _s)
 	for {
 		_op = *(*int32)(unsafe.Pointer(_st + 16))
-		if int32(*(*int8)(unsafe.Pointer(x656prec + uintptr(_op)))) <= _minprec {
+		if int32(*(*int8)(unsafe.Pointer(uintptr(unsafe.Pointer(&x656prec)) + uintptr(_op)))) <= _minprec {
 			return _s
 		}
 		_left = *(*uint64)(unsafe.Pointer(_st))
-		_s = xevalbinop(tls, _st, _s, int32(*(*int8)(unsafe.Pointer(x656prec + uintptr(_op)))), _d)
+		_s = xevalbinop(tls, _st, _s, int32(*(*int8)(unsafe.Pointer(uintptr(unsafe.Pointer(&x656prec)) + uintptr(_op)))), _d)
 		if xbinop(tls, _st, _op, _left) != 0 {
 			return ts + 0 /* "" */
 		}
@@ -11139,8 +11200,8 @@ func xevalbinop(tls TLS, _st uintptr /* *Sst */, _s uintptr /* *int8 */, _minpre
 	return r
 }
 
-// x3prec [14]int8, escapes: true, pleval.c:111:20
-var x656prec = ds + 36408
+// x3prec [14]int8, escapes: false, pleval.c:111:20
+var x656prec = *(*[14]int8)(unsafe.Pointer(ts + 37172 /* "\x01\x02\x03\x03\x04\x04\x04\x04\x05\x05\x06\x06\x06\x00" */))
 
 // xevalprim is defined at pleval.c:39:19
 func xevalprim(tls TLS, _st uintptr /* *Sst */, _s uintptr /* *int8 */, _d int32) (r uintptr /* *int8 */) {
@@ -11182,8 +11243,8 @@ func xparseop(tls TLS, _st uintptr /* *Sst */, _s uintptr /* *int8 */) (r uintpt
 	var _i int32
 
 	for _i = int32(0); _i < int32(11); _i++ {
-		if int32(*(*int8)(unsafe.Pointer(_s))) == int32(*(*int8)(unsafe.Pointer(x657opch + uintptr(_i)))) {
-			if (_i < int32(6)) && (int32(*(*int8)(unsafe.Pointer(_s + 1))) == int32(*(*int8)(unsafe.Pointer(x658opch2 + uintptr(_i))))) {
+		if int32(*(*int8)(unsafe.Pointer(_s))) == int32(*(*int8)(unsafe.Pointer(uintptr(unsafe.Pointer(&x657opch)) + uintptr(_i)))) {
+			if (_i < int32(6)) && (int32(*(*int8)(unsafe.Pointer(_s + 1))) == int32(*(*int8)(unsafe.Pointer(uintptr(unsafe.Pointer(&x658opch2)) + uintptr(_i))))) {
 				*(*int32)(unsafe.Pointer(_st + 16)) = _i
 				return _s + uintptr(2)
 			}
@@ -11293,11 +11354,11 @@ func xskipspace(tls TLS, _s uintptr /* *int8 */) (r uintptr /* *int8 */) {
 	return _s
 }
 
-// x9opch [11]int8, escapes: true, pleval.c:89:20
-var x657opch = ds + 36424
+// x9opch [11]int8, escapes: false, pleval.c:89:20
+var x657opch = *(*[11]int8)(unsafe.Pointer(ts + 37188 /* "|&=!><+-*%/" */))
 
-// x10opch2 [6]int8, escapes: true, pleval.c:90:20
-var x658opch2 = ds + 36440
+// x10opch2 [6]int8, escapes: false, pleval.c:90:20
+var x658opch2 = *(*[6]int8)(unsafe.Pointer(ts + 37200 /* "|&====" */))
 
 // linking setlocale.o
 
@@ -11322,13 +11383,13 @@ func Xsetlocale(tls TLS, _cat int32, _name uintptr /* *int8 */) (r uintptr /* *i
 	if uint32(_cat) > uint32(6) {
 		return null
 	}
-	X__lock(tls, x660lock)
+	X__lock(tls, uintptr(unsafe.Pointer(&x660lock)))
 	if ((_cat == int32(6)) || (_cat == int32(0))) && (_name != 0) {
 		setCurrentLocale(GoString(_name))
 	}
 	if _cat == int32(6) {
 		if _name != 0 {
-			*(*[24]int8)(unsafe.Pointer(_part)) = *(*[24]int8)(unsafe.Pointer(ts + 1180 /* "C.UTF-8\x00\x00\x00\x00\x00\x00\x00\x00\x00..." */))
+			*(*[24]int8)(unsafe.Pointer(_part)) = *(*[24]int8)(unsafe.Pointer(ts + 31748 /* "C.UTF-8\x00\x00\x00\x00\x00\x00\x00\x00\x00..." */))
 			_p = _name
 			for _i = int32(0); _i < int32(6); _i++ {
 				_z = X__strchrnul(tls, _p, int32(';'))
@@ -11342,17 +11403,17 @@ func Xsetlocale(tls TLS, _cat int32, _name uintptr /* *int8 */) (r uintptr /* *i
 				xsetlocale_one_unlocked(tls, _i, _part)
 			}
 		}
-		_s = xbuf
+		_s = uintptr(unsafe.Pointer(&xbuf))
 		_same = int32(0)
 		for _i = int32(0); _i < int32(6); _i++ {
-			_lm = *(*uintptr)(unsafe.Pointer(X__libc + 64 + 8*uintptr(_i)))
-			if _lm == *(*uintptr)(unsafe.Pointer(X__libc + 64)) {
+			_lm = *(*uintptr)(unsafe.Pointer(uintptr(unsafe.Pointer(&X__libc)) + 64 + 8*uintptr(_i)))
+			if _lm == *(*uintptr)(unsafe.Pointer(uintptr(unsafe.Pointer(&X__libc)) + 64)) {
 				_same++
 			}
 			if _lm != 0 {
 				_1part = _lm + 16
 			} else {
-				_1part = ts + 1224 /* "C" */
+				_1part = ts + 36704 /* "C" */
 			}
 			_l = Xstrlen(tls, _1part)
 			Xmemcpy(tls, _s, _1part, _l)
@@ -11360,19 +11421,19 @@ func Xsetlocale(tls TLS, _cat int32, _name uintptr /* *int8 */) (r uintptr /* *i
 			_s += uintptr(_l + uint64(1))
 		}
 		*(*int8)(unsafe.Pointer(preinc659(&_s))) = int8(0)
-		X__unlock(tls, x660lock)
+		X__unlock(tls, uintptr(unsafe.Pointer(&x660lock)))
 		if _same == int32(6) {
 			return _1part
 		}
-		return xbuf
+		return uintptr(unsafe.Pointer(&xbuf))
 	}
 	_ret = xsetlocale_one_unlocked(tls, _cat, _name)
-	X__unlock(tls, x660lock)
+	X__unlock(tls, uintptr(unsafe.Pointer(&x660lock)))
 	return _ret
 }
 
-// x1lock [1]int32, escapes: true, setlocale.c:24:22
-var x660lock = bss + 2104
+// x1lock [1]int32, escapes: false, setlocale.c:24:22
+var x660lock [1]int32
 
 // S__locale_map is defined at locale_impl.h:11:1
 type s3__locale_map = struct {
@@ -11382,7 +11443,7 @@ type s3__locale_map = struct {
 	Fnext     uintptr // *S__locale_map
 }
 
-type t36size_t = uint64
+type t37size_t = uint64
 
 func set661(p *uintptr, v uintptr) uintptr { *p = v; return v }
 
@@ -11391,18 +11452,18 @@ func xsetlocale_one_unlocked(tls TLS, _cat int32, _name uintptr /* *int8 */) (r 
 	var _lm uintptr // *S__locale_map
 
 	if _name != 0 {
-		*(*uintptr)(unsafe.Pointer(X__libc + 64 + 8*uintptr(_cat))) = set661(&_lm, X__get_locale(tls, _cat, _name))
+		*(*uintptr)(unsafe.Pointer(uintptr(unsafe.Pointer(&X__libc)) + 64 + 8*uintptr(_cat))) = set661(&_lm, X__get_locale(tls, _cat, _name))
 	} else {
-		_lm = *(*uintptr)(unsafe.Pointer(X__libc + 64 + 8*uintptr(_cat)))
+		_lm = *(*uintptr)(unsafe.Pointer(uintptr(unsafe.Pointer(&X__libc)) + 64 + 8*uintptr(_cat)))
 	}
 	if _lm != 0 {
 		return _lm + 16
 	}
-	return ts + 1224 /* "C" */
+	return ts + 36704 /* "C" */
 }
 
-// xbuf [144]int8, escapes: true, setlocale.c:8:13
-var xbuf = bss + 2112
+// xbuf [144]int8, escapes: false, setlocale.c:8:13
+var xbuf [144]int8
 
 // linking strcoll.o
 
@@ -11468,7 +11529,7 @@ type s14__pthread = struct {
 
 type t13uintptr_t = uint64
 
-type t37size_t = uint64
+type t38size_t = uint64
 
 // S__ptcb is defined at pthread.h:200:1
 type s12__ptcb = struct {
@@ -11633,7 +11694,7 @@ _8:
 		_w = _fw
 	}
 	_x = VAfloat64(_ap)
-	_l = uint64(Xsnprintf(tls, _s, _n, ts+1280 /* "%*.*f" */, _w, _rp, _x))
+	_l = uint64(Xsnprintf(tls, _s, _n, ts+37208 /* "%*.*f" */, _w, _rp, _x))
 	if _l >= _n {
 		*(*int32)(unsafe.Pointer(X__errno_location(tls))) = int32(7)
 		return int64(-1)
@@ -11647,7 +11708,7 @@ _3:
 	return int64(_s - _s0)
 }
 
-type t38size_t = uint64
+type t39size_t = uint64
 
 // x__pthread_self is defined at pthread_arch.h:1:30
 func x11__pthread_self(tls TLS) (r uintptr /* *S__pthread */) {
@@ -11726,7 +11787,7 @@ func Xstrxfrm(tls TLS, _dest uintptr /* *int8 */, _src uintptr /* *int8 */, _n u
 // S__locale_struct is defined at libc.h:10:1
 type s51__locale_struct = struct{ Fcat [6]uintptr }
 
-type t39size_t = uint64
+type t40size_t = uint64
 
 // x__pthread_self is defined at pthread_arch.h:1:30
 func x12__pthread_self(tls TLS) (r uintptr /* *S__pthread */) {
@@ -11791,7 +11852,7 @@ func X__gettextdomain(tls TLS) (r uintptr /* *int8 */) {
 	if xcurrent_domain != 0 {
 		return xcurrent_domain
 	}
-	return ts + 1204 /* "messages" */
+	return ts + 31796 /* "messages" */
 }
 
 // Xtextdomain is defined at textdomain.c:16:6
@@ -11829,7 +11890,7 @@ func Xngettext(tls TLS, _msgid1 uintptr /* *int8 */, _msgid2 uintptr /* *int8 */
 // xcurrent_domain *int8, escapes: false, textdomain.c:9:13
 var xcurrent_domain uintptr
 
-type t40size_t = uint64
+type t41size_t = uint64
 
 // linking uselocale.o
 
@@ -11842,7 +11903,7 @@ func X__uselocale(tls TLS, _new uintptr /* Tlocale_t = *S__locale_struct */) (r 
 	)
 	_self = x13__pthread_self(tls)
 	_old = *(*uintptr)(unsafe.Pointer(_self + 192))
-	_global = X__libc + 64
+	_global = uintptr(unsafe.Pointer(&X__libc)) + 64
 	if _new != 0 {
 		if _new == uintptr(18446744073709551615) {
 			*(*uintptr)(unsafe.Pointer(_self + 192)) = _global
@@ -11908,7 +11969,7 @@ func x13__pthread_self(tls TLS) (r uintptr /* *S__pthread */) {
 
 type t16uintptr_t = uint64
 
-type t41size_t = uint64
+type t42size_t = uint64
 
 // S__ptcb is defined at pthread.h:200:1
 type s15__ptcb = struct {
@@ -11981,7 +12042,7 @@ type s18__pthread = struct {
 
 type t17uintptr_t = uint64
 
-type t42size_t = uint64
+type t43size_t = uint64
 
 // S__ptcb is defined at pthread.h:200:1
 type s16__ptcb = struct {
@@ -12014,7 +12075,7 @@ func Xwcsxfrm(tls TLS, _dest uintptr /* *Twchar_t = int32 */, _src uintptr /* *T
 // S__locale_struct is defined at libc.h:10:1
 type s54__locale_struct = struct{ Fcat [6]uintptr }
 
-type t43size_t = uint64
+type t44size_t = uint64
 
 type t4wchar_t = int32
 
@@ -12081,7 +12142,7 @@ func Xaligned_alloc(tls TLS, _align uint64, _len uint64) (r uintptr /* *void */)
 	return X__memalign(tls, _align, _len)
 }
 
-type t44size_t = uint64
+type t45size_t = uint64
 
 // linking expand_heap.o
 
@@ -12126,7 +12187,7 @@ var x664brk uint64
 // x2mmap_step uint32, escapes: false, expand_heap.c:43:18
 var x665mmap_step uint32
 
-type t45size_t = uint64
+type t46size_t = uint64
 
 type t19uintptr_t = uint64
 
@@ -12145,7 +12206,7 @@ func xtraverses_stack_p(tls TLS, _old uint64, _new uint64) (r int32) {
 	)
 	defer Free(esc)
 	_len = uint64(8388608)
-	*(*uint64)(unsafe.Pointer(_b)) = uint64(*(*uintptr)(unsafe.Pointer(X__libc + 16)))
+	*(*uint64)(unsafe.Pointer(_b)) = uint64(*(*uintptr)(unsafe.Pointer(uintptr(unsafe.Pointer(&X__libc)) + 16)))
 	if *(*uint64)(unsafe.Pointer(_b)) > _len {
 		_a = *(*uint64)(unsafe.Pointer(_b)) - _len
 	} else {
@@ -12186,7 +12247,7 @@ func x__simple_malloc(tls TLS, _n uint64) (r uintptr /* *void */) {
 	for (_align < _n) && (_align < uint64(16)) {
 		_align = _align + _align
 	}
-	X__lock(tls, x666lock)
+	X__lock(tls, uintptr(unsafe.Pointer(&x666lock)))
 	_pad = -uint64(x667cur) & (_align - uint64(1))
 	if _n <= uint64(9223372036854775823) {
 		_n = _n + _pad
@@ -12195,7 +12256,7 @@ func x__simple_malloc(tls TLS, _n uint64) (r uintptr /* *void */) {
 		*(*uint64)(unsafe.Pointer(_m)) = _n
 		_new = X__expand_heap(tls, _m)
 		if _new == 0 {
-			X__unlock(tls, x666lock)
+			X__unlock(tls, uintptr(unsafe.Pointer(&x666lock)))
 			return null
 		}
 		if _new != x668end {
@@ -12207,7 +12268,7 @@ func x__simple_malloc(tls TLS, _n uint64) (r uintptr /* *void */) {
 	}
 	_p = x667cur + uintptr(_pad)
 	x667cur += uintptr(_n)
-	X__unlock(tls, x666lock)
+	X__unlock(tls, uintptr(unsafe.Pointer(&x666lock)))
 	return _p
 }
 
@@ -12226,10 +12287,10 @@ var x667cur uintptr
 // x4end *int8, escapes: false, lite_malloc.c:13:20
 var x668end uintptr
 
-// x5lock [1]int32, escapes: true, lite_malloc.c:14:22
-var x666lock = bss + 2256
+// x5lock [1]int32, escapes: false, lite_malloc.c:14:22
+var x666lock [1]int32
 
-type t46size_t = uint64
+type t47size_t = uint64
 
 type t20uintptr_t = uint64
 
@@ -12237,7 +12298,7 @@ type t20uintptr_t = uint64
 
 func set669(p *uint64, v uint64) uint64 { *p = v; return v }
 
-// X__bin_chunk is defined at malloc.c:442:6
+// X__bin_chunk is defined at malloc.c:444:6
 func X__bin_chunk(tls TLS, _self uintptr /* *Schunk */) {
 	var (
 		_next       uintptr // *Schunk
@@ -12261,11 +12322,11 @@ func X__bin_chunk(tls TLS, _self uintptr /* *Schunk */) {
 			*(*uint64)(unsafe.Pointer(_next)) = _final_size | uint64(1)
 			_i = xbin_index(tls, _final_size)
 			xlock_bin(tls, _i)
-			x2lock(tls, xmal+1544)
+			x2lock(tls, uintptr(unsafe.Pointer(&xmal))+1544)
 			if (*(*uint64)(unsafe.Pointer(_self)) & *(*uint64)(unsafe.Pointer(_next + 8)) & uint64(1)) != 0 {
 				break
 			}
-			xunlock(tls, xmal+1544)
+			xunlock(tls, uintptr(unsafe.Pointer(&xmal))+1544)
 			xunlock_bin(tls, _i)
 		}
 		if xalloc_rev(tls, _self) != 0 {
@@ -12285,14 +12346,14 @@ func X__bin_chunk(tls TLS, _self uintptr /* *Schunk */) {
 			_next = _next + uintptr(*(*uint64)(unsafe.Pointer(_next + 8))&uint64(18446744073709551614))
 		}
 	}
-	if *(*uint64)(unsafe.Pointer(xmal))&(uint64(1)<<(uint(_i)%64)) == 0 {
-		xa_or_64(tls, xmal, uint64(1)<<(uint(_i)%64))
+	if *(*uint64)(unsafe.Pointer(uintptr(unsafe.Pointer(&xmal))))&(uint64(1)<<(uint(_i)%64)) == 0 {
+		xa_or_64(tls, uintptr(unsafe.Pointer(&xmal)), uint64(1)<<(uint(_i)%64))
 	}
 	*(*uint64)(unsafe.Pointer(_self + 8)) = _final_size
 	*(*uint64)(unsafe.Pointer(_next)) = _final_size
-	xunlock(tls, xmal+1544)
-	*(*uintptr)(unsafe.Pointer(_self + 16)) = (((xmal + 8) + 24*uintptr(_i)) + 8) - uintptr(16)
-	*(*uintptr)(unsafe.Pointer(_self + 24)) = *(*uintptr)(unsafe.Pointer(((xmal + 8) + 24*uintptr(_i)) + 16))
+	xunlock(tls, uintptr(unsafe.Pointer(&xmal))+1544)
+	*(*uintptr)(unsafe.Pointer(_self + 16)) = (((uintptr(unsafe.Pointer(&xmal)) + 8) + 24*uintptr(_i)) + 8) - uintptr(16)
+	*(*uintptr)(unsafe.Pointer(_self + 24)) = *(*uintptr)(unsafe.Pointer(((uintptr(unsafe.Pointer(&xmal)) + 8) + 24*uintptr(_i)) + 16))
 	*(*uintptr)(unsafe.Pointer(*(*uintptr)(unsafe.Pointer(_self + 16)) + 24)) = _self
 	*(*uintptr)(unsafe.Pointer(*(*uintptr)(unsafe.Pointer(_self + 24)) + 16)) = _self
 	if _reclaim != 0 {
@@ -12303,10 +12364,10 @@ func X__bin_chunk(tls TLS, _self uintptr /* *Schunk */) {
 	xunlock_bin(tls, _i)
 }
 
-// X__malloc_replaced int32, escapes: true, malloc.c:23:5
-var X__malloc_replaced = bss + 2264
+// X__malloc_replaced int32, escapes: false, malloc.c:23:5
+var X__malloc_replaced int32
 
-// Xmalloc is defined at malloc.c:286:6
+// Xmalloc is defined at malloc.c:288:6
 func Xmalloc(tls TLS, an uint64) (r uintptr /* *void */) {
 	esc := MustMalloc(8)
 	var (
@@ -12337,7 +12398,7 @@ func Xmalloc(tls TLS, an uint64) (r uintptr /* *void */) {
 	}
 	_i = xbin_index_up(tls, *(*uint64)(unsafe.Pointer(_n)))
 	for {
-		_mask = *(*uint64)(unsafe.Pointer(xmal)) & -(uint64(1) << (uint(_i) % 64))
+		_mask = *(*uint64)(unsafe.Pointer(uintptr(unsafe.Pointer(&xmal)))) & -(uint64(1) << (uint(_i) % 64))
 		if _mask == 0 {
 			_c = xexpand_heap(tls, *(*uint64)(unsafe.Pointer(_n)))
 			if _c == 0 {
@@ -12352,8 +12413,8 @@ func Xmalloc(tls TLS, an uint64) (r uintptr /* *void */) {
 		}
 		_j = xfirst_set(tls, _mask)
 		xlock_bin(tls, _j)
-		_c = *(*uintptr)(unsafe.Pointer(((xmal + 8) + 24*uintptr(_j)) + 8))
-		if _c != ((((xmal + 8) + 24*uintptr(_j)) + 8) - uintptr(16)) {
+		_c = *(*uintptr)(unsafe.Pointer(((uintptr(unsafe.Pointer(&xmal)) + 8) + 24*uintptr(_j)) + 8))
+		if _c != ((((uintptr(unsafe.Pointer(&xmal)) + 8) + 24*uintptr(_j)) + 8) - uintptr(16)) {
 			if xpretrim(tls, _c, *(*uint64)(unsafe.Pointer(_n)), _i, _j) == 0 {
 				xunbin(tls, _c, _j)
 			}
@@ -12366,7 +12427,7 @@ func Xmalloc(tls TLS, an uint64) (r uintptr /* *void */) {
 	return _c + uintptr(16)
 }
 
-// Xcalloc is defined at malloc.c:353:6
+// Xcalloc is defined at malloc.c:355:6
 func Xcalloc(tls TLS, _m uint64, _n uint64) (r uintptr /* *void */) {
 	var _p uintptr // *void
 
@@ -12379,7 +12440,7 @@ func Xcalloc(tls TLS, _m uint64, _n uint64) (r uintptr /* *void */) {
 	if _p == 0 {
 		return _p
 	}
-	if *(*int32)(unsafe.Pointer(X__malloc_replaced)) == 0 {
+	if X__malloc_replaced == 0 {
 		if *(*uint64)(unsafe.Pointer((_p - uintptr(16)) + 8))&uint64(1) == 0 {
 			return _p
 		}
@@ -12392,7 +12453,7 @@ func Xcalloc(tls TLS, _m uint64, _n uint64) (r uintptr /* *void */) {
 
 func set670(p *uintptr, v uintptr) uintptr { *p = v; return v }
 
-// Xrealloc is defined at malloc.c:371:6
+// Xrealloc is defined at malloc.c:373:6
 func Xrealloc(tls TLS, _p uintptr /* *void */, an uint64) (r uintptr /* *void */) {
 	esc := MustMalloc(8)
 	var (
@@ -12483,7 +12544,7 @@ lcopy_free_ret:
 	return _new
 }
 
-// Xfree is defined at malloc.c:521:6
+// Xfree is defined at malloc.c:523:6
 func Xfree(tls TLS, _p uintptr /* *void */) {
 	var _self uintptr // *Schunk
 
@@ -12498,7 +12559,7 @@ func Xfree(tls TLS, _p uintptr /* *void */) {
 	}
 }
 
-// X__malloc_donate is defined at malloc.c:533:6
+// X__malloc_donate is defined at malloc.c:535:6
 func X__malloc_donate(tls TLS, _start uintptr /* *int8 */, _end uintptr /* *int8 */) {
 	var (
 		_align_start_up uint64
@@ -12528,7 +12589,7 @@ type Schunk = struct {
 	Fprev  uintptr // *Schunk
 }
 
-type t47size_t = uint64
+type t48size_t = uint64
 
 type t21uintptr_t = uint64
 
@@ -12537,42 +12598,44 @@ func x3a_crash(tls TLS) {
 	panic(`a_crash`)
 }
 
-// xbin_index is defined at malloc.c:87:12
+// xbin_index is defined at malloc.c:89:12
 func xbin_index(tls TLS, _x uint64) (r int32) {
 	_x = _x/uint64(32) - uint64(1)
 	if _x <= uint64(32) {
 		return int32(_x)
 	}
 	if _x < uint64(512) {
-		return int32(*(*uint8)(unsafe.Pointer(xbin_tab + uintptr(_x/uint64(8)-uint64(4)))))
+		return int32(*(*uint8)(unsafe.Pointer(uintptr(unsafe.Pointer(&xbin_tab)) + uintptr(_x/uint64(8)-uint64(4)))))
 	}
 	if _x > uint64(0x1c00) {
 		return 63
 	}
-	return int32(*(*uint8)(unsafe.Pointer(xbin_tab + uintptr(_x/uint64(128)-uint64(4))))) + int32(16)
+	return int32(*(*uint8)(unsafe.Pointer(uintptr(unsafe.Pointer(&xbin_tab)) + uintptr(_x/uint64(128)-uint64(4))))) + int32(16)
 }
 
-// xlock_bin is defined at malloc.c:41:20
+// xlock_bin is defined at malloc.c:43:20
 func xlock_bin(tls TLS, _i int32) {
-	x2lock(tls, (xmal+8)+24*uintptr(_i))
-	if *(*uintptr)(unsafe.Pointer(((xmal + 8) + 24*uintptr(_i)) + 8)) == 0 {
-		*(*uintptr)(unsafe.Pointer(((xmal + 8) + 24*uintptr(_i)) + 8)) = set670((*uintptr)(unsafe.Pointer(((xmal+8)+24*uintptr(_i))+16)), (((xmal+8)+24*uintptr(_i))+8)-uintptr(16))
+	x2lock(tls, (uintptr(unsafe.Pointer(&xmal))+8)+24*uintptr(_i))
+	if *(*uintptr)(unsafe.Pointer(((uintptr(unsafe.Pointer(&xmal)) + 8) + 24*uintptr(_i)) + 8)) == 0 {
+		*(*uintptr)(unsafe.Pointer(((uintptr(unsafe.Pointer(&xmal)) + 8) + 24*uintptr(_i)) + 8)) = set670((*uintptr)(unsafe.Pointer(((uintptr(unsafe.Pointer(&xmal))+8)+24*uintptr(_i))+16)), (((uintptr(unsafe.Pointer(&xmal))+8)+24*uintptr(_i))+8)-uintptr(16))
 	}
 }
 
 // xlock is defined at malloc.c:27:20
 func x2lock(tls TLS, _lk uintptr /* *int32 */) {
-	if *(*int32)(unsafe.Pointer(X__libc + 12)) != 0 {
-		for xa_swap(tls, _lk, int32(1)) != 0 {
-			X__wait(tls, _lk, _lk+4*uintptr(1), int32(1), int32(1))
-		}
+	for xa_swap(tls, _lk, int32(1)) != 0 {
+		X__wait(tls, _lk, _lk+4*uintptr(1), int32(1), int32(1))
 	}
 }
 
-// xmal struct{Fbinmap uint64;Fbins [64]Sbin;Ffree_lock [2]int32;}, escapes: true, malloc.c:21:3
-var xmal = bss + 2272
+// xmal struct{Fbinmap uint64;Fbins [64]Sbin;Ffree_lock [2]int32;}, escapes: false, malloc.c:21:3
+var xmal struct {
+	Fbinmap    uint64
+	Fbins      [64]Sbin
+	Ffree_lock [2]int32
+}
 
-// xunlock is defined at malloc.c:33:20
+// xunlock is defined at malloc.c:35:20
 func xunlock(tls TLS, _lk uintptr /* *int32 */) {
 	if *(*int32)(unsafe.Pointer(_lk)) != 0 {
 		xa_store(tls, _lk, int32(0))
@@ -12582,12 +12645,12 @@ func xunlock(tls TLS, _lk uintptr /* *int32 */) {
 	}
 }
 
-// xunlock_bin is defined at malloc.c:48:20
+// xunlock_bin is defined at malloc.c:50:20
 func xunlock_bin(tls TLS, _i int32) {
-	xunlock(tls, (xmal+8)+24*uintptr(_i))
+	xunlock(tls, (uintptr(unsafe.Pointer(&xmal))+8)+24*uintptr(_i))
 }
 
-// xalloc_rev is defined at malloc.c:217:12
+// xalloc_rev is defined at malloc.c:219:12
 func xalloc_rev(tls TLS, _c uintptr /* *Schunk */) (r int32) {
 	var (
 		_i int32
@@ -12606,7 +12669,7 @@ func xalloc_rev(tls TLS, _c uintptr /* *Schunk */) (r int32) {
 	return 0
 }
 
-// xalloc_fwd is defined at malloc.c:200:12
+// xalloc_fwd is defined at malloc.c:202:12
 func xalloc_fwd(tls TLS, _c uintptr /* *Schunk */) (r int32) {
 	var (
 		_i int32
@@ -12632,7 +12695,7 @@ func xa_or_64(tls TLS, _p uintptr /* *Tuint64_t = uint64 */, _v uint64) {
 	a_or_64(_p, _v)
 }
 
-// xadjust_size is defined at malloc.c:174:12
+// xadjust_size is defined at malloc.c:176:12
 func xadjust_size(tls TLS, _n uintptr /* *Tsize_t = uint64 */) (r int32) {
 	if *(*uint64)(unsafe.Pointer(_n))-uint64(1) > uint64(9223372036854771679) {
 		if *(*uint64)(unsafe.Pointer(_n)) != 0 {
@@ -12647,7 +12710,7 @@ func xadjust_size(tls TLS, _n uintptr /* *Tsize_t = uint64 */) (r int32) {
 	return 0
 }
 
-// xbin_index_up is defined at malloc.c:96:12
+// xbin_index_up is defined at malloc.c:98:12
 func xbin_index_up(tls TLS, _x uint64) (r int32) {
 	_x = _x/uint64(32) - uint64(1)
 	if _x <= uint64(32) {
@@ -12655,12 +12718,12 @@ func xbin_index_up(tls TLS, _x uint64) (r int32) {
 	}
 	_x--
 	if _x < uint64(512) {
-		return int32(*(*uint8)(unsafe.Pointer(xbin_tab + uintptr(_x/uint64(8)-uint64(4))))) + int32(1)
+		return int32(*(*uint8)(unsafe.Pointer(uintptr(unsafe.Pointer(&xbin_tab)) + uintptr(_x/uint64(8)-uint64(4))))) + int32(1)
 	}
-	return int32(*(*uint8)(unsafe.Pointer(xbin_tab + uintptr(_x/uint64(128)-uint64(4))))) + int32(17)
+	return int32(*(*uint8)(unsafe.Pointer(uintptr(unsafe.Pointer(&xbin_tab)) + uintptr(_x/uint64(128)-uint64(4))))) + int32(17)
 }
 
-// xexpand_heap is defined at malloc.c:128:21
+// xexpand_heap is defined at malloc.c:130:21
 func xexpand_heap(tls TLS, an uint64) (r uintptr /* *Schunk */) {
 	esc := MustMalloc(8)
 	var (
@@ -12671,10 +12734,10 @@ func xexpand_heap(tls TLS, an uint64) (r uintptr /* *Schunk */) {
 	defer Free(esc)
 	*(*uint64)(unsafe.Pointer(_n)) = an
 	*(*uint64)(unsafe.Pointer(_n)) = *(*uint64)(unsafe.Pointer(_n)) + uint64(32)
-	x2lock(tls, x671heap_lock)
+	x2lock(tls, uintptr(unsafe.Pointer(&x671heap_lock)))
 	_p = X__expand_heap(tls, _n)
 	if _p == 0 {
-		xunlock(tls, x671heap_lock)
+		xunlock(tls, uintptr(unsafe.Pointer(&x671heap_lock)))
 		return null
 	}
 	if _p != x672end {
@@ -12689,16 +12752,16 @@ func xexpand_heap(tls TLS, an uint64) (r uintptr /* *Schunk */) {
 	*(*uint64)(unsafe.Pointer(_w + 8)) = uint64(1)
 	_w = _p - uintptr(16)
 	*(*uint64)(unsafe.Pointer(_w + 8)) = *(*uint64)(unsafe.Pointer(_n)) | uint64(1)
-	xunlock(tls, x671heap_lock)
+	xunlock(tls, uintptr(unsafe.Pointer(&x671heap_lock)))
 	return _w
 }
 
-// xfirst_set is defined at malloc.c:53:12
+// xfirst_set is defined at malloc.c:55:12
 func xfirst_set(tls TLS, _x uint64) (r int32) {
 	return xa_ctz_64(tls, _x)
 }
 
-// xpretrim is defined at malloc.c:238:12
+// xpretrim is defined at malloc.c:240:12
 func xpretrim(tls TLS, _self uintptr /* *Schunk */, _n uint64, _i int32, _j int32) (r int32) {
 	var (
 		_n1    uint64
@@ -12735,10 +12798,10 @@ func xpretrim(tls TLS, _self uintptr /* *Schunk */, _n uint64, _i int32, _j int3
 	return 1
 }
 
-// xunbin is defined at malloc.c:190:13
+// xunbin is defined at malloc.c:192:13
 func xunbin(tls TLS, _c uintptr /* *Schunk */, _i int32) {
 	if *(*uintptr)(unsafe.Pointer(_c + 24)) == *(*uintptr)(unsafe.Pointer(_c + 16)) {
-		xa_and_64(tls, xmal, ^(uint64(1) << (uint(_i) % 64)))
+		xa_and_64(tls, uintptr(unsafe.Pointer(&xmal)), ^(uint64(1) << (uint(_i) % 64)))
 	}
 	*(*uintptr)(unsafe.Pointer(*(*uintptr)(unsafe.Pointer(_c + 24)) + 16)) = *(*uintptr)(unsafe.Pointer(_c + 16))
 	*(*uintptr)(unsafe.Pointer(*(*uintptr)(unsafe.Pointer(_c + 16)) + 24)) = *(*uintptr)(unsafe.Pointer(_c + 24))
@@ -12752,7 +12815,7 @@ func xunbin(tls TLS, _c uintptr /* *Schunk */, _i int32) {
 	}
 }
 
-// xtrim is defined at malloc.c:268:13
+// xtrim is defined at malloc.c:270:13
 func xtrim(tls TLS, _self uintptr /* *Schunk */, _n uint64) {
 	var (
 		_n1    uint64
@@ -12772,7 +12835,7 @@ func xtrim(tls TLS, _self uintptr /* *Schunk */, _n uint64) {
 	X__bin_chunk(tls, _split)
 }
 
-// xmal0_clear is defined at malloc.c:335:15
+// xmal0_clear is defined at malloc.c:337:15
 func xmal0_clear(tls TLS, _p uintptr /* *int8 */, _pagesz uint64, _n uint64) (r uint64) {
 	var (
 		_pp uintptr // *int8
@@ -12797,7 +12860,7 @@ func xmal0_clear(tls TLS, _p uintptr /* *int8 */, _pagesz uint64, _n uint64) (r 
 	return r
 }
 
-// xunmap_chunk is defined at malloc.c:511:13
+// xunmap_chunk is defined at malloc.c:513:13
 func xunmap_chunk(tls TLS, _self uintptr /* *Schunk */) {
 	var (
 		_extra uint64
@@ -12813,8 +12876,8 @@ func xunmap_chunk(tls TLS, _self uintptr /* *Schunk */) {
 	X__munmap(tls, _base, _len)
 }
 
-// xbin_tab [60]uint8, escapes: true, malloc.c:80:28
-var xbin_tab = ds + 36448
+// xbin_tab [60]uint8, escapes: false, malloc.c:82:28
+var xbin_tab = *(*[60]uint8)(unsafe.Pointer(ts + 37216 /* " !\"#$$%%&&''((((..." */))
 
 // xa_swap is defined at atomic_arch.h:22:19
 func xa_swap(tls TLS, _p uintptr /* *int32 */, _v int32) (r int32) {
@@ -12831,7 +12894,7 @@ type Sbin = struct {
 
 // xa_store is defined at atomic_arch.h:96:20
 func xa_store(tls TLS, _p uintptr /* *int32 */, _x int32) {
-	panic(`TODO`)
+	a_store(_p, _x)
 }
 
 // x__wake is defined at pthread_impl.h:157:20
@@ -12847,10 +12910,10 @@ func x__wake(tls TLS, _addr uintptr /* *void */, _cnt int32, _priv int32) {
 	}
 }
 
-// x24heap_lock [2]int32, escapes: true, malloc.c:130:13
-var x671heap_lock = bss + 3824
+// x24heap_lock [2]int32, escapes: false, malloc.c:132:13
+var x671heap_lock [2]int32
 
-// x25end *void, escapes: false, malloc.c:131:14
+// x25end *void, escapes: false, malloc.c:133:14
 var x672end uintptr
 
 // xa_ctz_64 is defined at atomic.h:272:19
@@ -12865,7 +12928,7 @@ func xa_ctz_64(tls TLS, _x uint64) (r int32) {
 		}
 		return xa_ctz_32(tls, _y)
 	}
-	return int32(*(*int8)(unsafe.Pointer(x673debruijn64 + uintptr(_x&-_x*uint64(0x22fdd63cc95386d)>>(uint(58)%64)))))
+	return int32(*(*int8)(unsafe.Pointer(uintptr(unsafe.Pointer(&x673debruijn64)) + uintptr(_x&-_x*uint64(0x22fdd63cc95386d)>>(uint(58)%64)))))
 }
 
 // xa_and_64 is defined at atomic_arch.h:60:20
@@ -12880,27 +12943,27 @@ func x21__syscall3(tls TLS, _n int64, _a1 int64, _a2 int64, _a3 int64) (r int64)
 	return X__syscall(tls, _n, _a1, _a2, _a3, int64(0), int64(0), int64(0))
 }
 
-// x29debruijn64 [64]int8, escapes: true, atomic.h:274:20
-var x673debruijn64 = ds + 36512
+// x29debruijn64 [64]int8, escapes: false, atomic.h:274:20
+var x673debruijn64 = *(*[64]int8)(unsafe.Pointer(ts + 37280 /* "\x00\x01\x025\x03\a6\x1b\x04&)\b\"70\x1c..." */))
 
 type t20uint32_t = uint32
 
 // xa_ctz_32 is defined at atomic.h:256:19
 func xa_ctz_32(tls TLS, _x uint32) (r int32) {
-	return int32(*(*int8)(unsafe.Pointer(x674debruijn32 + uintptr(_x&-_x*uint32(0x76be629)>>(uint(27)%32)))))
+	return int32(*(*int8)(unsafe.Pointer(uintptr(unsafe.Pointer(&x674debruijn32)) + uintptr(_x&-_x*uint32(0x76be629)>>(uint(27)%32)))))
 }
 
-// x31debruijn32 [32]int8, escapes: true, atomic.h:261:20
-var x674debruijn32 = ds + 36576
+// x31debruijn32 [32]int8, escapes: false, atomic.h:261:20
+var x674debruijn32 = *(*[32]int8)(unsafe.Pointer(ts + 37348 /* "\x00\x01\x17\x02\x1d\x18\x13\x03\x1e\x1b\x19\v\x14\b\x04\r..." */))
 
 // linking malloc_usable_size.o
 
 func fp675(f func(TLS, uintptr, uint64) uintptr) uintptr { return *(*uintptr)(unsafe.Pointer(&f)) }
 
-// X__realloc_dep *func(TLS, uintptr, uint64) uintptr, escapes: true, malloc_usable_size.c:3:6
-var X__realloc_dep = bss + 3832 // pointer to function (pointer to void, size_t) returning pointer to void
+// X__realloc_dep *func(TLS, uintptr, uint64) uintptr, escapes: false, malloc_usable_size.c:3:6
+var X__realloc_dep uintptr
 
-func init() { *(*uintptr)(unsafe.Pointer(X__realloc_dep)) = fp675(Xrealloc) }
+func init() { X__realloc_dep = fp675(Xrealloc) }
 
 // Xmalloc_usable_size is defined at malloc_usable_size.c:14:8
 func Xmalloc_usable_size(tls TLS, _p uintptr /* *void */) (r uint64) {
@@ -12910,7 +12973,7 @@ func Xmalloc_usable_size(tls TLS, _p uintptr /* *void */) (r uint64) {
 	return uint64(0)
 }
 
-type t48size_t = uint64
+type t49size_t = uint64
 
 // linking memalign.o
 
@@ -12933,7 +12996,7 @@ func X__memalign(tls TLS, _align uint64, _len uint64) (r uintptr /* *void */) {
 		*(*int32)(unsafe.Pointer(X__errno_location(tls))) = int32(22)
 		return null
 	}
-	if (_len > uint64(0xffffffffffffffff)-_align) || (*(*int32)(unsafe.Pointer(X__malloc_replaced)) != 0) {
+	if (_len > uint64(0xffffffffffffffff)-_align) || (X__malloc_replaced != 0) {
 		*(*int32)(unsafe.Pointer(X__errno_location(tls))) = int32(12)
 		return null
 	}
@@ -12969,7 +13032,7 @@ type s1chunk = struct {
 	Fprev  uintptr // *Schunk
 }
 
-type t49size_t = uint64
+type t50size_t = uint64
 
 type t22uintptr_t = uint64
 
@@ -12990,7 +13053,7 @@ func Xposix_memalign(tls TLS, _res uintptr /* **void */, _align uint64, _len uin
 	return 0
 }
 
-type t50size_t = uint64
+type t51size_t = uint64
 
 // linking __cos.o
 
@@ -13446,7 +13509,7 @@ func X__rem_pio2_large(tls TLS, _x uintptr /* *float64 */, _y uintptr /* *float6
 		_q     = esc + 400 // *[20]float64
 	)
 	defer Free(esc)
-	_jk = *(*int32)(unsafe.Pointer(xinit_jk + 4*uintptr(_prec)))
+	_jk = *(*int32)(unsafe.Pointer(uintptr(unsafe.Pointer(&xinit_jk)) + 4*uintptr(_prec)))
 	_jp = _jk
 	_jx = _nx - int32(1)
 	_jv = (_e0 - int32(3)) / int32(24)
@@ -13460,7 +13523,7 @@ func X__rem_pio2_large(tls TLS, _x uintptr /* *float64 */, _y uintptr /* *float6
 		if _j < int32(0) {
 			*(*float64)(unsafe.Pointer(_f + 8*uintptr(_i))) = float64(0)
 		} else {
-			*(*float64)(unsafe.Pointer(_f + 8*uintptr(_i))) = float64(*(*int32)(unsafe.Pointer(xipio2 + 4*uintptr(_j))))
+			*(*float64)(unsafe.Pointer(_f + 8*uintptr(_i))) = float64(*(*int32)(unsafe.Pointer(uintptr(unsafe.Pointer(&xipio2)) + 4*uintptr(_j))))
 		}
 	}
 	for _i = int32(0); _i <= _jk; _i++ {
@@ -13566,7 +13629,7 @@ _1:
 	for _k = int32(1); *(*int32)(unsafe.Pointer(_iq + 4*uintptr(_jk-_k))) == int32(0); _k++ {
 	}
 	for _i = _jz + int32(1); _i <= _jz+_k; _i++ {
-		*(*float64)(unsafe.Pointer(_f + 8*uintptr(_jx+_i))) = float64(*(*int32)(unsafe.Pointer(xipio2 + 4*uintptr(_jv+_i))))
+		*(*float64)(unsafe.Pointer(_f + 8*uintptr(_jx+_i))) = float64(*(*int32)(unsafe.Pointer(uintptr(unsafe.Pointer(&xipio2)) + 4*uintptr(_jv+_i))))
 		for func() float64 { _j = int32(0); return set681(&_fw, float64(0)) }(); _j <= _jx; _j++ {
 			_fw = _fw + float64(*(*float64)(unsafe.Pointer(_x + 8*uintptr(_j)))**(*float64)(unsafe.Pointer(_f + 8*uintptr(_jx+_i-_j))))
 		}
@@ -13603,7 +13666,7 @@ _6:
 	}
 	for _i = _jz; _i >= int32(0); _i-- {
 		for func() int32 { _fw = float64(0); return set683(&_k, int32(0)) }(); (_k <= _jp) && (_k <= _jz-_i); _k++ {
-			_fw = _fw + float64(*(*float64)(unsafe.Pointer(xPIo2 + 8*uintptr(_k)))**(*float64)(unsafe.Pointer(_q + 8*uintptr(_i+_k))))
+			_fw = _fw + float64(*(*float64)(unsafe.Pointer(uintptr(unsafe.Pointer(&xPIo2)) + 8*uintptr(_k)))**(*float64)(unsafe.Pointer(_q + 8*uintptr(_i+_k))))
 		}
 		*(*float64)(unsafe.Pointer(_fq + 8*uintptr(_jz-_i))) = _fw
 	}
@@ -13689,14 +13752,14 @@ _8:
 
 type t7int32_t = int32
 
-// xinit_jk [4]int32, escapes: true, __rem_pio2_large.c:127:18
-var xinit_jk = ds + 36608
+// xinit_jk [4]int32, escapes: false, __rem_pio2_large.c:127:18
+var xinit_jk = *(*[4]int32)(unsafe.Pointer(ts + 37384 /* "\x03\x00\x00\x00\x04\x00\x00\x00\x04\x00\x00\x00\x06\x00\x00\x00" */))
 
-// xipio2 [66]int32, escapes: true, __rem_pio2_large.c:141:22
-var xipio2 = ds + 36624
+// xipio2 [66]int32, escapes: false, __rem_pio2_large.c:141:22
+var xipio2 = *(*[66]int32)(unsafe.Pointer(ts + 37404 /* "\x83\xf9\xa2\x00DNn\x00\xfc)\x15\x00\xd1W'\x00..." */))
 
-// xPIo2 [8]float64, escapes: true, __rem_pio2_large.c:262:21
-var xPIo2 = ds + 36888
+// xPIo2 [8]float64, escapes: false, __rem_pio2_large.c:262:21
+var xPIo2 = *(*[8]float64)(unsafe.Pointer(ts + 37672 /* "\x00\x00\x00@\xfb!\xf9?\x00\x00\x00\x00-Dt>..." */))
 
 // linking __rem_pio2f.o
 
@@ -13929,10 +13992,10 @@ func X__tan(tls TLS, _x float64, _y float64, _odd int32) (r float64) {
 	}
 	_z = _x * _x
 	_w = _z * _z
-	_r = *(*float64)(unsafe.Pointer(x1T + 8)) + float64(_w*float64(*(*float64)(unsafe.Pointer(x1T + 24))+float64(_w*float64(*(*float64)(unsafe.Pointer(x1T + 40))+float64(_w*float64(*(*float64)(unsafe.Pointer(x1T + 56))+float64(_w*float64(*(*float64)(unsafe.Pointer(x1T + 72))+float64(_w**(*float64)(unsafe.Pointer(x1T + 88)))))))))))
-	_v = _z * float64(*(*float64)(unsafe.Pointer(x1T + 16))+float64(_w*float64(*(*float64)(unsafe.Pointer(x1T + 32))+float64(_w*float64(*(*float64)(unsafe.Pointer(x1T + 48))+float64(_w*float64(*(*float64)(unsafe.Pointer(x1T + 64))+float64(_w*float64(*(*float64)(unsafe.Pointer(x1T + 80))+float64(_w**(*float64)(unsafe.Pointer(x1T + 96))))))))))))
+	_r = *(*float64)(unsafe.Pointer(uintptr(unsafe.Pointer(&x1T)) + 8)) + float64(_w*float64(*(*float64)(unsafe.Pointer(uintptr(unsafe.Pointer(&x1T)) + 24))+float64(_w*float64(*(*float64)(unsafe.Pointer(uintptr(unsafe.Pointer(&x1T)) + 40))+float64(_w*float64(*(*float64)(unsafe.Pointer(uintptr(unsafe.Pointer(&x1T)) + 56))+float64(_w*float64(*(*float64)(unsafe.Pointer(uintptr(unsafe.Pointer(&x1T)) + 72))+float64(_w**(*float64)(unsafe.Pointer(uintptr(unsafe.Pointer(&x1T)) + 88)))))))))))
+	_v = _z * float64(*(*float64)(unsafe.Pointer(uintptr(unsafe.Pointer(&x1T)) + 16))+float64(_w*float64(*(*float64)(unsafe.Pointer(uintptr(unsafe.Pointer(&x1T)) + 32))+float64(_w*float64(*(*float64)(unsafe.Pointer(uintptr(unsafe.Pointer(&x1T)) + 48))+float64(_w*float64(*(*float64)(unsafe.Pointer(uintptr(unsafe.Pointer(&x1T)) + 64))+float64(_w*float64(*(*float64)(unsafe.Pointer(uintptr(unsafe.Pointer(&x1T)) + 80))+float64(_w**(*float64)(unsafe.Pointer(uintptr(unsafe.Pointer(&x1T)) + 96))))))))))))
 	_s = _z * _x
-	_r = float64(_y+float64(_z*float64(float64(_s*float64(_r+_v))+_y))) + float64(_s**(*float64)(unsafe.Pointer(x1T)))
+	_r = float64(_y+float64(_z*float64(float64(_s*float64(_r+_v))+_y))) + float64(_s**(*float64)(unsafe.Pointer(uintptr(unsafe.Pointer(&x1T)))))
 	_w = _x + _r
 	if _big != 0 {
 		_s = float64(int32(1) - int32(2)*_odd)
@@ -13983,8 +14046,8 @@ var xpio4 = float64(0.7853981633974483)
 // xpio4lo float64, escapes: false, __tan.c:64:1
 var xpio4lo = float64(3.061616997868383e-17)
 
-// xT [13]float64, escapes: true, __tan.c:48:21
-var x1T = ds + 36952
+// xT [13]float64, escapes: false, __tan.c:48:21
+var x1T = *(*[13]float64)(unsafe.Pointer(ts + 37740 /* "cUUUUU\xd5?z\xfe\x10\x11\x11\x11\xc1?..." */))
 
 // linking __tandf.o
 
@@ -13999,11 +14062,11 @@ func X__tandf(tls TLS, _x float64, _odd int32) (r float32) {
 		_u float64
 	)
 	_z = _x * _x
-	_r = *(*float64)(unsafe.Pointer(x2T + 32)) + float64(_z**(*float64)(unsafe.Pointer(x2T + 40)))
-	_t = *(*float64)(unsafe.Pointer(x2T + 16)) + float64(_z**(*float64)(unsafe.Pointer(x2T + 24)))
+	_r = *(*float64)(unsafe.Pointer(uintptr(unsafe.Pointer(&x2T)) + 32)) + float64(_z**(*float64)(unsafe.Pointer(uintptr(unsafe.Pointer(&x2T)) + 40)))
+	_t = *(*float64)(unsafe.Pointer(uintptr(unsafe.Pointer(&x2T)) + 16)) + float64(_z**(*float64)(unsafe.Pointer(uintptr(unsafe.Pointer(&x2T)) + 24)))
 	_w = _z * _z
 	_s = _z * _x
-	_u = *(*float64)(unsafe.Pointer(x2T)) + float64(_z**(*float64)(unsafe.Pointer(x2T + 8)))
+	_u = *(*float64)(unsafe.Pointer(uintptr(unsafe.Pointer(&x2T)))) + float64(_z**(*float64)(unsafe.Pointer(uintptr(unsafe.Pointer(&x2T)) + 8)))
 	_r = float64(_x+float64(_s*_u)) + float64(float64(_s*_w)*float64(_t+float64(_w*_r)))
 	if _odd != 0 {
 		return float32(float64(-1) / _r)
@@ -14013,8 +14076,8 @@ func X__tandf(tls TLS, _x float64, _odd int32) (r float32) {
 
 type t7double_t = float64
 
-// xT [6]float64, escapes: true, __tandf.c:19:21
-var x2T = ds + 37056
+// xT [6]float64, escapes: false, __tandf.c:19:21
+var x2T = *(*[6]float64)(unsafe.Pointer(ts + 37848 /* "\x9f\xc9\x184MU\xd5?r\x9f\x998\xfd\x12\xc1?..." */))
 
 // linking __tanl.o
 
@@ -14627,7 +14690,7 @@ func Xatan(tls TLS, _x float64) (r float64) {
 		if x3__DOUBLE_BITS(tls, _x)&uint64(9223372036854775807) > uint64(9218868437227405312) {
 			return _x
 		}
-		_z = *(*float64)(unsafe.Pointer(xatanhi + 24)) + float64(7.52316384526264e-37)
+		_z = *(*float64)(unsafe.Pointer(uintptr(unsafe.Pointer(&xatanhi)) + 24)) + float64(7.52316384526264e-37)
 		if _sign != 0 {
 			return -_z
 		}
@@ -14667,12 +14730,12 @@ func Xatan(tls TLS, _x float64) (r float64) {
 	}
 	_z = _x * _x
 	_w = _z * _z
-	_s1 = _z * float64(*(*float64)(unsafe.Pointer(xaT))+float64(_w*float64(*(*float64)(unsafe.Pointer(xaT + 16))+float64(_w*float64(*(*float64)(unsafe.Pointer(xaT + 32))+float64(_w*float64(*(*float64)(unsafe.Pointer(xaT + 48))+float64(_w*float64(*(*float64)(unsafe.Pointer(xaT + 64))+float64(_w**(*float64)(unsafe.Pointer(xaT + 80))))))))))))
-	_s2 = _w * float64(*(*float64)(unsafe.Pointer(xaT + 8))+float64(_w*float64(*(*float64)(unsafe.Pointer(xaT + 24))+float64(_w*float64(*(*float64)(unsafe.Pointer(xaT + 40))+float64(_w*float64(*(*float64)(unsafe.Pointer(xaT + 56))+float64(_w**(*float64)(unsafe.Pointer(xaT + 72))))))))))
+	_s1 = _z * float64(*(*float64)(unsafe.Pointer(uintptr(unsafe.Pointer(&xaT))))+float64(_w*float64(*(*float64)(unsafe.Pointer(uintptr(unsafe.Pointer(&xaT)) + 16))+float64(_w*float64(*(*float64)(unsafe.Pointer(uintptr(unsafe.Pointer(&xaT)) + 32))+float64(_w*float64(*(*float64)(unsafe.Pointer(uintptr(unsafe.Pointer(&xaT)) + 48))+float64(_w*float64(*(*float64)(unsafe.Pointer(uintptr(unsafe.Pointer(&xaT)) + 64))+float64(_w**(*float64)(unsafe.Pointer(uintptr(unsafe.Pointer(&xaT)) + 80))))))))))))
+	_s2 = _w * float64(*(*float64)(unsafe.Pointer(uintptr(unsafe.Pointer(&xaT)) + 8))+float64(_w*float64(*(*float64)(unsafe.Pointer(uintptr(unsafe.Pointer(&xaT)) + 24))+float64(_w*float64(*(*float64)(unsafe.Pointer(uintptr(unsafe.Pointer(&xaT)) + 40))+float64(_w*float64(*(*float64)(unsafe.Pointer(uintptr(unsafe.Pointer(&xaT)) + 56))+float64(_w**(*float64)(unsafe.Pointer(uintptr(unsafe.Pointer(&xaT)) + 72))))))))))
 	if _id < int32(0) {
 		return _x - float64(_x*float64(_s1+_s2))
 	}
-	_z = *(*float64)(unsafe.Pointer(xatanhi + 8*uintptr(_id))) - float64(float64(float64(_x*float64(_s1+_s2))-*(*float64)(unsafe.Pointer(xatanlo + 8*uintptr(_id))))-_x)
+	_z = *(*float64)(unsafe.Pointer(uintptr(unsafe.Pointer(&xatanhi)) + 8*uintptr(_id))) - float64(float64(float64(_x*float64(_s1+_s2))-*(*float64)(unsafe.Pointer(uintptr(unsafe.Pointer(&xatanlo)) + 8*uintptr(_id))))-_x)
 	if _sign != 0 {
 		return -_z
 	}
@@ -14694,14 +14757,14 @@ func x3__DOUBLE_BITS(tls TLS, ___f float64) (r uint64) {
 	return *(*uint64)(unsafe.Pointer(___u))
 }
 
-// xatanhi [4]float64, escapes: true, atan.c:35:21
-var xatanhi = ds + 37104
+// xatanhi [4]float64, escapes: false, atan.c:35:21
+var xatanhi = *(*[4]float64)(unsafe.Pointer(ts + 37900 /* "O\xbba\x05g\xac\xdd?\x18-DT\xfb!\xe9?..." */))
 
-// xaT [11]float64, escapes: true, atan.c:49:21
-var xaT = ds + 37136
+// xaT [11]float64, escapes: false, atan.c:49:21
+var xaT = *(*[11]float64)(unsafe.Pointer(ts + 37936 /* "\rUUUUU\xd5?\xc4똙\x99\x99ɿ..." */))
 
-// xatanlo [4]float64, escapes: true, atan.c:42:21
-var xatanlo = ds + 37224
+// xatanlo [4]float64, escapes: false, atan.c:42:21
+var xatanlo = *(*[4]float64)(unsafe.Pointer(ts + 38028 /* "\xe2e/\"\u007f+z<\a\\\x143&\xa6\x81<..." */))
 
 // linking atan2.o
 
@@ -15070,7 +15133,7 @@ func Xatanf(tls TLS, _x float32) (r float32) {
 		if x4__FLOAT_BITS(tls, _x)&uint32(0x7fffffff) > uint32(0x7f800000) {
 			return _x
 		}
-		_z = *(*float32)(unsafe.Pointer(x1atanhi + 12)) + float32(7.523164e-37)
+		_z = *(*float32)(unsafe.Pointer(uintptr(unsafe.Pointer(&x1atanhi)) + 12)) + float32(7.523164e-37)
 		if _sign != 0 {
 			return -_z
 		}
@@ -15110,12 +15173,12 @@ func Xatanf(tls TLS, _x float32) (r float32) {
 	}
 	_z = _x * _x
 	_w = _z * _z
-	_s1 = _z * float32(*(*float32)(unsafe.Pointer(x1aT))+float32(_w*float32(*(*float32)(unsafe.Pointer(x1aT + 8))+float32(_w**(*float32)(unsafe.Pointer(x1aT + 16))))))
-	_s2 = _w * float32(*(*float32)(unsafe.Pointer(x1aT + 4))+float32(_w**(*float32)(unsafe.Pointer(x1aT + 12))))
+	_s1 = _z * float32(*(*float32)(unsafe.Pointer(uintptr(unsafe.Pointer(&x1aT))))+float32(_w*float32(*(*float32)(unsafe.Pointer(uintptr(unsafe.Pointer(&x1aT)) + 8))+float32(_w**(*float32)(unsafe.Pointer(uintptr(unsafe.Pointer(&x1aT)) + 16))))))
+	_s2 = _w * float32(*(*float32)(unsafe.Pointer(uintptr(unsafe.Pointer(&x1aT)) + 4))+float32(_w**(*float32)(unsafe.Pointer(uintptr(unsafe.Pointer(&x1aT)) + 12))))
 	if _id < int32(0) {
 		return _x - float32(_x*float32(_s1+_s2))
 	}
-	_z = *(*float32)(unsafe.Pointer(x1atanhi + 4*uintptr(_id))) - float32(float32(float32(_x*float32(_s1+_s2))-*(*float32)(unsafe.Pointer(x1atanlo + 4*uintptr(_id))))-_x)
+	_z = *(*float32)(unsafe.Pointer(uintptr(unsafe.Pointer(&x1atanhi)) + 4*uintptr(_id))) - float32(float32(float32(_x*float32(_s1+_s2))-*(*float32)(unsafe.Pointer(uintptr(unsafe.Pointer(&x1atanlo)) + 4*uintptr(_id))))-_x)
 	if _sign != 0 {
 		return -_z
 	}
@@ -15135,14 +15198,14 @@ func x4__FLOAT_BITS(tls TLS, ___f float32) (r uint32) {
 	return *(*uint32)(unsafe.Pointer(___u))
 }
 
-// xatanhi [4]float32, escapes: true, atanf.c:19:20
-var x1atanhi = ds + 37256
+// xatanhi [4]float32, escapes: false, atanf.c:19:20
+var x1atanhi = *(*[4]float32)(unsafe.Pointer(ts + 38064 /* "8c\xed>\xda\x0fI?^\x98{?\xda\x0f\xc9?" */))
 
-// xaT [5]float32, escapes: true, atanf.c:33:20
-var x1aT = ds + 37272
+// xaT [5]float32, escapes: false, atanf.c:33:20
+var x1aT = *(*[5]float32)(unsafe.Pointer(ts + 38084 /* "\xa9\xaa\xaa>\x98\xcaL\xbe\r\xf5\x11>G\x12ڽ..." */))
 
-// xatanlo [4]float32, escapes: true, atanf.c:26:20
-var x1atanlo = ds + 37296
+// xatanlo [4]float32, escapes: false, atanf.c:26:20
+var x1atanlo = *(*[4]float32)(unsafe.Pointer(ts + 38108 /* "i7\xac1h!\"3\xb4\x0f\x143h!\xa23" */))
 
 // linking atanh.o
 
@@ -16638,7 +16701,7 @@ func Xexp(tls TLS, _x float64) (r float64) {
 	}
 	if _hx > uint32(0x3fd62e42) {
 		if _hx >= uint32(0x3ff0a2b2) {
-			_k = int32(float64(xinvln2*_x) + *(*float64)(unsafe.Pointer(xhalf + 8*uintptr(_sign))))
+			_k = int32(float64(xinvln2*_x) + *(*float64)(unsafe.Pointer(uintptr(unsafe.Pointer(&xhalf)) + 8*uintptr(_sign))))
 		} else {
 			_k = int32(1) - _sign - _sign
 		}
@@ -16686,8 +16749,8 @@ func x5__DOUBLE_BITS(tls TLS, ___f float64) (r uint64) {
 // xinvln2 float64, escapes: false, exp.c:74:1
 var xinvln2 = float64(1.4426950408889634)
 
-// xhalf [2]float64, escapes: true, exp.c:71:1
-var xhalf = ds + 37312
+// xhalf [2]float64, escapes: false, exp.c:71:1
+var xhalf = *(*[2]float64)(unsafe.Pointer(ts + 38128 /* "\x00\x00\x00\x00\x00\x00\xe0?\x00\x00\x00\x00\x00\x00\xe0\xbf" */))
 
 // xln2hi float64, escapes: false, exp.c:72:1
 var xln2hi = float64(0.6931471803691238)
@@ -16733,16 +16796,16 @@ func Xexp10(tls TLS, _x float64) (r float64) {
 	})(unsafe.Pointer(&struct{ f float64 }{*(*float64)(unsafe.Pointer(_n))}))
 	if *(*uint64)(unsafe.Pointer(_u))>>(uint(52)%64)&uint64(0x7ff) < uint64(1027) {
 		if _y == 0 {
-			return *(*float64)(unsafe.Pointer(x685p10 + 8*uintptr(int32(*(*float64)(unsafe.Pointer(_n)))+int32(15))))
+			return *(*float64)(unsafe.Pointer(uintptr(unsafe.Pointer(&x685p10)) + 8*uintptr(int32(*(*float64)(unsafe.Pointer(_n)))+int32(15))))
 		}
 		_y = Xexp2(tls, float64(3.321928094887362)*_y)
-		return _y * *(*float64)(unsafe.Pointer(x685p10 + 8*uintptr(int32(*(*float64)(unsafe.Pointer(_n)))+int32(15))))
+		return _y * *(*float64)(unsafe.Pointer(uintptr(unsafe.Pointer(&x685p10)) + 8*uintptr(int32(*(*float64)(unsafe.Pointer(_n)))+int32(15))))
 	}
 	return Xpow(tls, float64(10), _x)
 }
 
-// x1p10 [31]float64, escapes: true, exp10.c:8:22
-var x685p10 = ds + 37328
+// x1p10 [31]float64, escapes: false, exp10.c:8:22
+var x685p10 = *(*[31]float64)(unsafe.Pointer(ts + 38148 /* "\x16V瞯\x03\xd2<\x9b+\xa1\x86\x9b\x84\x06=..." */))
 
 type t31uint64_t = uint64
 
@@ -16769,16 +16832,16 @@ func Xexp10f(tls TLS, _x float32) (r float32) {
 	})(unsafe.Pointer(&struct{ f float32 }{*(*float32)(unsafe.Pointer(_n))}))
 	if *(*uint32)(unsafe.Pointer(_u))>>(uint(23)%32)&uint32(0xff) < uint32(130) {
 		if _y == 0 {
-			return *(*float32)(unsafe.Pointer(x686p10 + 4*uintptr(int32(*(*float32)(unsafe.Pointer(_n)))+int32(7))))
+			return *(*float32)(unsafe.Pointer(uintptr(unsafe.Pointer(&x686p10)) + 4*uintptr(int32(*(*float32)(unsafe.Pointer(_n)))+int32(7))))
 		}
 		_y = Xexp2f(tls, float32(3.321928)*_y)
-		return _y * *(*float32)(unsafe.Pointer(x686p10 + 4*uintptr(int32(*(*float32)(unsafe.Pointer(_n)))+int32(7))))
+		return _y * *(*float32)(unsafe.Pointer(uintptr(unsafe.Pointer(&x686p10)) + 4*uintptr(int32(*(*float32)(unsafe.Pointer(_n)))+int32(7))))
 	}
 	return float32(Xexp2(tls, float64(3.321928094887362)*float64(_x)))
 }
 
-// x1p10 [15]float32, escapes: true, exp10f.c:8:21
-var x686p10 = ds + 37576
+// x1p10 [15]float32, escapes: false, exp10f.c:8:21
+var x686p10 = *(*[15]float32)(unsafe.Pointer(ts + 38400 /* "\x95\xbf\xd63\xbd7\x865\xac\xc5'7\x17\xb7\xd18..." */))
 
 type t50uint32_t = uint32
 
@@ -16859,8 +16922,8 @@ func Xexp2(tls TLS, _x float64) (r float64) {
 		*p = *p - xredux
 	}
 	_z = _x - *(*float64)(unsafe.Pointer(_u))
-	_t = *(*float64)(unsafe.Pointer(xtbl + 8*uintptr(uint32(2)*_i0)))
-	_z = _z - *(*float64)(unsafe.Pointer(xtbl + 8*uintptr(uint32(2)*_i0+uint32(1))))
+	_t = *(*float64)(unsafe.Pointer(uintptr(unsafe.Pointer(&xtbl)) + 8*uintptr(uint32(2)*_i0)))
+	_z = _z - *(*float64)(unsafe.Pointer(uintptr(unsafe.Pointer(&xtbl)) + 8*uintptr(uint32(2)*_i0+uint32(1))))
 	_r = _t + float64(float64(_t*_z)*float64(x2P1+float64(_z*float64(x2P2+float64(_z*float64(x2P3+float64(_z*float64(x2P4+float64(_z*x1P5)))))))))
 	return Xscalbn(tls, _r, *(*int32)(unsafe.Pointer(_k)))
 }
@@ -16876,8 +16939,8 @@ type t9int32_t = int32
 // xredux float64, escapes: false, exp2.c:33:1
 var xredux = float64(2.6388279066624e+13)
 
-// xtbl [512]float64, escapes: true, exp2.c:40:21
-var xtbl = ds + 37640
+// xtbl [512]float64, escapes: false, exp2.c:40:21
+var xtbl = *(*[512]float64)(unsafe.Pointer(ts + 38464 /* "]=\u007ff\x9e\xa0\xe6?\x00\x00\x00\x00\x00\x889=..." */))
 
 // xP1 float64, escapes: false, exp2.c:34:1
 var x2P1 = float64(0.6931471805599453)
@@ -16962,7 +17025,7 @@ func Xexp2f(tls TLS, _x float32) (r float32) {
 		*p = *p - x1redux
 	}
 	_z = float64(_x - *(*float32)(unsafe.Pointer(_u)))
-	_r = *(*float64)(unsafe.Pointer(xexp2ft + 8*uintptr(_i0)))
+	_r = *(*float64)(unsafe.Pointer(uintptr(unsafe.Pointer(&xexp2ft)) + 8*uintptr(_i0)))
 	_t = _r * _z
 	_r = float64(_r+float64(_t*float64(float64(x3P1)+float64(_z*float64(x3P2))))) + float64(float64(_t*float64(_z*_z))*float64(float64(x3P3)+float64(_z*float64(x3P4))))
 	return float32(_r * *(*float64)(unsafe.Pointer(_uk)))
@@ -16977,8 +17040,8 @@ type t33uint64_t = uint64
 // xredux float32, escapes: false, exp2f.c:33:1
 var x1redux = float32(786432)
 
-// xexp2ft [16]float64, escapes: true, exp2f.c:39:21
-var xexp2ft = ds + 41736
+// xexp2ft [16]float64, escapes: false, exp2f.c:39:21
+var xexp2ft = *(*[16]float64)(unsafe.Pointer(ts + 42564 /* "\xcd;\u007ff\x9e\xa0\xe6?\x87\x01\xebs\x14\xa1\xe7?..." */))
 
 // xP1 float32, escapes: false, exp2f.c:34:1
 var x3P1 = float32(0.6931472)
@@ -17055,7 +17118,7 @@ func Xexpf(tls TLS, _x float32) (r float32) {
 	}
 	if _hx > uint32(0x3eb17218) {
 		if _hx > uint32(0x3f851592) {
-			_k = int32(float32(x1invln2*_x) + *(*float32)(unsafe.Pointer(x1half + 4*uintptr(_sign))))
+			_k = int32(float32(x1invln2*_x) + *(*float32)(unsafe.Pointer(uintptr(unsafe.Pointer(&x1half)) + 4*uintptr(_sign))))
 		} else {
 			_k = int32(1) - _sign - _sign
 		}
@@ -17092,8 +17155,8 @@ type t53uint32_t = uint32
 // xinvln2 float32, escapes: false, expf.c:22:1
 var x1invln2 = float32(1.442695)
 
-// xhalf [2]float32, escapes: true, expf.c:19:1
-var x1half = ds + 41864
+// xhalf [2]float32, escapes: false, expf.c:19:1
+var x1half = *(*[2]float32)(unsafe.Pointer(ts + 42696 /* "\x00\x00\x00?\x00\x00\x00\xbf" */))
 
 // xln2hi float32, escapes: false, expf.c:20:1
 var x1ln2hi = float32(0.69314575)
@@ -19054,17 +19117,17 @@ func xpzero(tls TLS, _x float64) (r float64) {
 	_ix = uint32(*(*uint64)(unsafe.Pointer(___u)) >> (uint(32) % 64))
 	_ix = _ix & uint32(0x7fffffff)
 	if _ix >= uint32(0x40200000) {
-		_p = xpR8
-		_q = xpS8
+		_p = uintptr(unsafe.Pointer(&xpR8))
+		_q = uintptr(unsafe.Pointer(&xpS8))
 	} else if _ix >= uint32(0x40122e8b) {
-		_p = xpR5
-		_q = x2pS5
+		_p = uintptr(unsafe.Pointer(&xpR5))
+		_q = uintptr(unsafe.Pointer(&x2pS5))
 	} else if _ix >= uint32(0x4006db6d) {
-		_p = xpR3
-		_q = x2pS3
+		_p = uintptr(unsafe.Pointer(&xpR3))
+		_q = uintptr(unsafe.Pointer(&x2pS3))
 	} else {
-		_p = xpR2
-		_q = x4pS2
+		_p = uintptr(unsafe.Pointer(&xpR2))
+		_q = uintptr(unsafe.Pointer(&x4pS2))
 	}
 	_z = float64(1) / float64(_x*_x)
 	_r = *(*float64)(unsafe.Pointer(_p)) + float64(_z*float64(*(*float64)(unsafe.Pointer(_p + 8))+float64(_z*float64(*(*float64)(unsafe.Pointer(_p + 16))+float64(_z*float64(*(*float64)(unsafe.Pointer(_p + 24))+float64(_z*float64(*(*float64)(unsafe.Pointer(_p + 32))+float64(_z**(*float64)(unsafe.Pointer(_p + 40)))))))))))
@@ -19089,17 +19152,17 @@ func xqzero(tls TLS, _x float64) (r float64) {
 	_ix = uint32(*(*uint64)(unsafe.Pointer(___u)) >> (uint(32) % 64))
 	_ix = _ix & uint32(0x7fffffff)
 	if _ix >= uint32(0x40200000) {
-		_p = xqR8
-		_q = xqS8
+		_p = uintptr(unsafe.Pointer(&xqR8))
+		_q = uintptr(unsafe.Pointer(&xqS8))
 	} else if _ix >= uint32(0x40122e8b) {
-		_p = xqR5
-		_q = xqS5
+		_p = uintptr(unsafe.Pointer(&xqR5))
+		_q = uintptr(unsafe.Pointer(&xqS5))
 	} else if _ix >= uint32(0x4006db6d) {
-		_p = xqR3
-		_q = x2qS3
+		_p = uintptr(unsafe.Pointer(&xqR3))
+		_q = uintptr(unsafe.Pointer(&x2qS3))
 	} else {
-		_p = xqR2
-		_q = x2qS2
+		_p = uintptr(unsafe.Pointer(&xqR2))
+		_q = uintptr(unsafe.Pointer(&x2qS2))
 	}
 	_z = float64(1) / float64(_x*_x)
 	_r = *(*float64)(unsafe.Pointer(_p)) + float64(_z*float64(*(*float64)(unsafe.Pointer(_p + 8))+float64(_z*float64(*(*float64)(unsafe.Pointer(_p + 16))+float64(_z*float64(*(*float64)(unsafe.Pointer(_p + 24))+float64(_z*float64(*(*float64)(unsafe.Pointer(_p + 32))+float64(_z**(*float64)(unsafe.Pointer(_p + 40)))))))))))
@@ -19112,53 +19175,53 @@ var xinvsqrtpi = float64(0.5641895835477563)
 
 type t23double_t = float64
 
-// xpR8 [6]float64, escapes: true, j0.c:199:21
-var xpR8 = ds + 41872
+// xpR8 [6]float64, escapes: false, j0.c:199:21
+var xpR8 = *(*[6]float64)(unsafe.Pointer(ts + 42708 /* "\x00\x00\x00\x00\x00\x00\x00\x002\xfd\xff\xff\xff\xff\xb1\xbf..." */))
 
-// xpS8 [5]float64, escapes: true, j0.c:207:21
-var xpS8 = ds + 41920
+// xpS8 [5]float64, escapes: false, j0.c:207:21
+var xpS8 = *(*[5]float64)(unsafe.Pointer(ts + 42760 /* "Qg\xa9\a3\"]@8iYP}\xf3\xad@..." */))
 
-// xpR5 [6]float64, escapes: true, j0.c:215:21
-var xpR5 = ds + 41960
+// xpR5 [6]float64, escapes: false, j0.c:215:21
+var xpR5 = *(*[6]float64)(unsafe.Pointer(ts + 42804 /* "̕\xe4G\xb1\x18\xa9\xbd\xc6\xfb\x9a\xe6\xff\xff\xb1\xbf..." */))
 
-// xpS5 [5]float64, escapes: true, j0.c:223:21
-var x2pS5 = ds + 42008
+// xpS5 [5]float64, escapes: false, j0.c:223:21
+var x2pS5 = *(*[5]float64)(unsafe.Pointer(ts + 42856 /* "\xdeŘ\f\x81`N@d(~\\\x02m\x90@..." */))
 
-// xpR3 [6]float64, escapes: true, j0.c:231:21
-var xpR3 = ds + 42048
+// xpR3 [6]float64, escapes: false, j0.c:231:21
+var xpR3 = *(*[6]float64)(unsafe.Pointer(ts + 42900 /* "\x86\xaa\xe1o\x03\xe1%\xbeK\xe2\xc0\xf7\xf6\xff\xb1\xbf..." */))
 
-// xpS3 [5]float64, escapes: true, j0.c:239:21
-var x2pS3 = ds + 42096
+// xpS3 [5]float64, escapes: false, j0.c:239:21
+var x2pS3 = *(*[5]float64)(unsafe.Pointer(ts + 42952 /* "\xd3}\a\x84\x92\xedA@\x0e|JF9\x98v@..." */))
 
-// xpR2 [6]float64, escapes: true, j0.c:247:21
-var xpR2 = ds + 42136
+// xpR2 [6]float64, escapes: false, j0.c:247:21
+var xpR2 = *(*[6]float64)(unsafe.Pointer(ts + 42996 /* "m\x02'\xe9\x16\xd3w\xbeB\x1e^Ib\xff\xb1\xbf..." */))
 
-// xpS2 [5]float64, escapes: true, j0.c:255:21
-var x4pS2 = ds + 42184
+// xpS2 [5]float64, escapes: false, j0.c:255:21
+var x4pS2 = *(*[5]float64)(unsafe.Pointer(ts + 43048 /* "YY\x8b\x90e86@\x8f\x87\xe8\x0e\x9e\x06a@..." */))
 
-// xqR8 [6]float64, escapes: true, j0.c:291:21
-var xqR8 = ds + 42224
+// xqR8 [6]float64, escapes: false, j0.c:291:21
+var xqR8 = *(*[6]float64)(unsafe.Pointer(ts + 43092 /* "\x00\x00\x00\x00\x00\x00\x00\x00,\xfe\xff\xff\xff\xbf\xb2?..." */))
 
-// xqS8 [6]float64, escapes: true, j0.c:299:21
-var xqS8 = ds + 42272
+// xqS8 [6]float64, escapes: false, j0.c:299:21
+var xqS8 = *(*[6]float64)(unsafe.Pointer(ts + 43144 /* "\xbc9[6\xd5xd@c\x05kNX\xa2\xbf@..." */))
 
-// xqR5 [6]float64, escapes: true, j0.c:308:21
-var xqR5 = ds + 42320
+// xqR5 [6]float64, escapes: false, j0.c:308:21
+var xqR5 = *(*[6]float64)(unsafe.Pointer(ts + 43196 /* "ٌ\xcc)\x8f=\xb4=L\xb0r\xd1\xff\xbf\xb2?..." */))
 
-// xqS5 [6]float64, escapes: true, j0.c:316:21
-var xqS5 = ds + 42368
+// xqS5 [6]float64, escapes: false, j0.c:316:21
+var xqS5 = *(*[6]float64)(unsafe.Pointer(ts + 43248 /* "C\x15^\xfb\xb3\xb1T@\xce\xc0!ڠ;\xa0@..." */))
 
-// xqR3 [6]float64, escapes: true, j0.c:325:21
-var xqR3 = ds + 42416
+// xqR3 [6]float64, escapes: false, j0.c:325:21
+var xqR3 = *(*[6]float64)(unsafe.Pointer(ts + 43300 /* "\x82\xcb\xdej\x03\xcd2>B\b\x8d\x0e\ueff2?..." */))
 
-// xqS3 [6]float64, escapes: true, j0.c:333:21
-var x2qS3 = ds + 42464
+// xqS3 [6]float64, escapes: false, j0.c:333:21
+var x2qS3 = *(*[6]float64)(unsafe.Pointer(ts + 43352 /* "\xa6C\xe3\xbf\"aH@\xb3NT\x86\x83-\x86@..." */))
 
-// xqR2 [6]float64, escapes: true, j0.c:342:21
-var xqR2 = ds + 42512
+// xqR2 [6]float64, escapes: false, j0.c:342:21
+var xqR2 = *(*[6]float64)(unsafe.Pointer(ts + 43404 /* "\xdbk\xf7T;1\x84>4>\x88>ž\xb2?..." */))
 
-// xqS2 [6]float64, escapes: true, j0.c:350:21
-var x2qS2 = ds + 42560
+// xqS2 [6]float64, escapes: false, j0.c:350:21
+var x2qS2 = *(*[6]float64)(unsafe.Pointer(ts + 43456 /* "\xedz\xc0\xf7\x96]>@@K\xd1\xe4\x91\xd5p@..." */))
 
 // linking j0f.o
 
@@ -19341,17 +19404,17 @@ func xpzerof(tls TLS, _x float32) (r float32) {
 	_ix = *(*uint32)(unsafe.Pointer(___u))
 	_ix = _ix & uint32(0x7fffffff)
 	if _ix >= uint32(0x41000000) {
-		_p = x1pR8
-		_q = x1pS8
+		_p = uintptr(unsafe.Pointer(&x1pR8))
+		_q = uintptr(unsafe.Pointer(&x1pS8))
 	} else if _ix >= uint32(0x409173eb) {
-		_p = x1pR5
-		_q = x3pS5
+		_p = uintptr(unsafe.Pointer(&x1pR5))
+		_q = uintptr(unsafe.Pointer(&x3pS5))
 	} else if _ix >= uint32(0x4036d917) {
-		_p = x1pR3
-		_q = x3pS3
+		_p = uintptr(unsafe.Pointer(&x1pR3))
+		_q = uintptr(unsafe.Pointer(&x3pS3))
 	} else {
-		_p = x1pR2
-		_q = x5pS2
+		_p = uintptr(unsafe.Pointer(&x1pR2))
+		_q = uintptr(unsafe.Pointer(&x5pS2))
 	}
 	_z = float32(1) / float32(_x*_x)
 	_r = *(*float32)(unsafe.Pointer(_p)) + float32(_z*float32(*(*float32)(unsafe.Pointer(_p + 4))+float32(_z*float32(*(*float32)(unsafe.Pointer(_p + 8))+float32(_z*float32(*(*float32)(unsafe.Pointer(_p + 12))+float32(_z*float32(*(*float32)(unsafe.Pointer(_p + 16))+float32(_z**(*float32)(unsafe.Pointer(_p + 20)))))))))))
@@ -19376,17 +19439,17 @@ func xqzerof(tls TLS, _x float32) (r float32) {
 	_ix = *(*uint32)(unsafe.Pointer(___u))
 	_ix = _ix & uint32(0x7fffffff)
 	if _ix >= uint32(0x41000000) {
-		_p = x1qR8
-		_q = x1qS8
+		_p = uintptr(unsafe.Pointer(&x1qR8))
+		_q = uintptr(unsafe.Pointer(&x1qS8))
 	} else if _ix >= uint32(0x409173eb) {
-		_p = x1qR5
-		_q = x1qS5
+		_p = uintptr(unsafe.Pointer(&x1qR5))
+		_q = uintptr(unsafe.Pointer(&x1qS5))
 	} else if _ix >= uint32(0x4036d917) {
-		_p = x1qR3
-		_q = x3qS3
+		_p = uintptr(unsafe.Pointer(&x1qR3))
+		_q = uintptr(unsafe.Pointer(&x3qS3))
 	} else {
-		_p = x1qR2
-		_q = x3qS2
+		_p = uintptr(unsafe.Pointer(&x1qR2))
+		_q = uintptr(unsafe.Pointer(&x3qS2))
 	}
 	_z = float32(1) / float32(_x*_x)
 	_r = *(*float32)(unsafe.Pointer(_p)) + float32(_z*float32(*(*float32)(unsafe.Pointer(_p + 4))+float32(_z*float32(*(*float32)(unsafe.Pointer(_p + 8))+float32(_z*float32(*(*float32)(unsafe.Pointer(_p + 12))+float32(_z*float32(*(*float32)(unsafe.Pointer(_p + 16))+float32(_z**(*float32)(unsafe.Pointer(_p + 20)))))))))))
@@ -19399,53 +19462,53 @@ var x1invsqrtpi = float32(0.5641896)
 
 type t8float_t = float32
 
-// xpR8 [6]float32, escapes: true, j0f.c:139:20
-var x1pR8 = ds + 42608
+// xpR8 [6]float32, escapes: false, j0f.c:139:20
+var x1pR8 = *(*[6]float32)(unsafe.Pointer(ts + 43508 /* "\x00\x00\x00\x00\x00\x00\x90\xbd\x86N\x01\xc1\x14\x88\x80\xc3..." */))
 
-// xpS8 [5]float32, escapes: true, j0f.c:147:20
-var x1pS8 = ds + 42632
+// xpS8 [5]float32, escapes: false, j0f.c:147:20
+var x1pS8 = *(*[5]float32)(unsafe.Pointer(ts + 43536 /* "\x98\x11\xe9B\xeb\x9boEە\x1eG|\b\xe4G..." */))
 
-// xpR5 [6]float32, escapes: true, j0f.c:154:20
-var x1pR5 = ds + 42656
+// xpR5 [6]float32, escapes: false, j0f.c:154:20
+var x1pR5 = *(*[6]float32)(unsafe.Pointer(ts + 43560 /* "\x8a\xc5H\xad\xff\xff\x8f\xbd\x88\x1b\x85\xc0{Y\x87\xc2..." */))
 
-// xpS5 [5]float32, escapes: true, j0f.c:162:20
-var x3pS5 = ds + 42680
+// xpS5 [5]float32, escapes: false, j0f.c:162:20
+var x3pS5 = *(*[5]float32)(unsafe.Pointer(ts + 43588 /* "\b\x04sB\x13h\x83D\xc4\u05faE\xc8e\x16F..." */))
 
-// xpR3 [6]float32, escapes: true, j0f.c:170:20
-var x1pR3 = ds + 42704
+// xpR3 [6]float32, escapes: false, j0f.c:170:20
+var x1pR3 = *(*[6]float32)(unsafe.Pointer(ts + 43612 /* "\x1b\b/\xb1\xb8\xff\x8f\xbd\x95-\x1a\xc0R\xba\xaf\xc1..." */))
 
-// xpS3 [5]float32, escapes: true, j0f.c:178:20
-var x3pS3 = ds + 42728
+// xpS3 [5]float32, escapes: false, j0f.c:178:20
+var x3pS3 = *(*[5]float32)(unsafe.Pointer(ts + 43640 /* "\x94l\x0fB\xca\xc1\xb4Cs3\x95D\xe6\xff\x8cD..." */))
 
-// xpR2 [6]float32, escapes: true, j0f.c:186:20
-var x1pR2 = ds + 42752
+// xpR2 [6]float32, escapes: false, j0f.c:186:20
+var x1pR2 = *(*[6]float32)(unsafe.Pointer(ts + 43664 /* "\xb7\x98\xbe\xb3\x12\xfb\x8f\xbḏ\xb9\xbf\x9fW\xf4\xc0..." */))
 
-// xpS2 [5]float32, escapes: true, j0f.c:194:20
-var x5pS2 = ds + 42776
+// xpS2 [5]float32, escapes: false, j0f.c:194:20
+var x5pS2 = *(*[5]float32)(unsafe.Pointer(ts + 43692 /* "-ñA\xf04\bC2<\x87C\x1a\xe0\x19C..." */))
 
-// xqR8 [6]float32, escapes: true, j0f.c:230:20
-var x1qR8 = ds + 42800
+// xqR8 [6]float32, escapes: false, j0f.c:230:20
+var x1qR8 = *(*[6]float32)(unsafe.Pointer(ts + 43716 /* "\x00\x00\x00\x00\x00\x00\x96=\x93J<A\x19k\vD..." */))
 
-// xqS8 [6]float32, escapes: true, j0f.c:238:20
-var x1qS8 = ds + 42824
+// xqS8 [6]float32, escapes: false, j0f.c:238:20
+var x1qS8 = *(*[6]float32)(unsafe.Pointer(ts + 43744 /* "\xaa\xc6#C\xc2\x12\xfdE\x932\vH\xd4\x1eDI..." */))
 
-// xqR5 [6]float32, escapes: true, j0f.c:247:20
-var x1qR5 = ds + 42848
+// xqR5 [6]float32, escapes: false, j0f.c:247:20
+var x1qR5 = *(*[6]float32)(unsafe.Pointer(ts + 43772 /* "y\xec\xa1-\xff\xff\x95=\x86\xbd\xba@\x90\x1c\aC..." */))
 
-// xqS5 [6]float32, escapes: true, j0f.c:255:20
-var x1qS5 = ds + 42872
+// xqS5 [6]float32, escapes: false, j0f.c:255:20
+var x1qS5 = *(*[6]float32)(unsafe.Pointer(ts + 43800 /* "\xa0\x8d\xa5B\a\xdd\x01E\x94>\x93F\x1d\xaf]G..." */))
 
-// xqR3 [6]float32, escapes: true, j0f.c:264:20
-var x1qR3 = ds + 42896
+// xqR3 [6]float32, escapes: false, j0f.c:264:20
+var x1qR3 = *(*[6]float32)(unsafe.Pointer(ts + 43828 /* "\x1bh\x961p\xff\x95=\xe3\aV@\xc5|*B..." */))
 
-// xqS3 [6]float32, escapes: true, j0f.c:272:20
-var x3qS3 = ds + 42920
+// xqS3 [6]float32, escapes: false, j0f.c:272:20
+var x3qS3 = *(*[6]float32)(unsafe.Pointer(ts + 43856 /* "\x16\tCB\x1cl1D_\x82gEg\xe3\xc9E..." */))
 
-// xqR2 [6]float32, escapes: true, j0f.c:281:20
-var x1qR2 = ds + 42944
+// xqR2 [6]float32, escapes: false, j0f.c:281:20
+var x1qR2 = *(*[6]float32)(unsafe.Pointer(ts + 43884 /* "ۉ!4*\xf6\x95=\xbf\xc4\xff?\xfd\xedgA..." */))
 
-// xqS2 [6]float32, escapes: true, j0f.c:289:20
-var x3qS2 = ds + 42968
+// xqS2 [6]float32, escapes: false, j0f.c:289:20
+var x3qS2 = *(*[6]float32)(unsafe.Pointer(ts + 43912 /* "\xb8\xec\xf2A\x8f\xac\x86C)2SD\xe5\xbb\\D..." */))
 
 // linking j1.o
 
@@ -19513,8 +19576,8 @@ func Xy1(tls TLS, _x float64) (r float64) {
 		return float64(-x2tpi) / _x
 	}
 	_z = _x * _x
-	_u = *(*float64)(unsafe.Pointer(xU0)) + float64(_z*float64(*(*float64)(unsafe.Pointer(xU0 + 8))+float64(_z*float64(*(*float64)(unsafe.Pointer(xU0 + 16))+float64(_z*float64(*(*float64)(unsafe.Pointer(xU0 + 24))+float64(_z**(*float64)(unsafe.Pointer(xU0 + 32)))))))))
-	_v = float64(1) + float64(_z*float64(*(*float64)(unsafe.Pointer(xV0))+float64(_z*float64(*(*float64)(unsafe.Pointer(xV0 + 8))+float64(_z*float64(*(*float64)(unsafe.Pointer(xV0 + 16))+float64(_z*float64(*(*float64)(unsafe.Pointer(xV0 + 24))+float64(_z**(*float64)(unsafe.Pointer(xV0 + 32)))))))))))
+	_u = *(*float64)(unsafe.Pointer(uintptr(unsafe.Pointer(&xU0)))) + float64(_z*float64(*(*float64)(unsafe.Pointer(uintptr(unsafe.Pointer(&xU0)) + 8))+float64(_z*float64(*(*float64)(unsafe.Pointer(uintptr(unsafe.Pointer(&xU0)) + 16))+float64(_z*float64(*(*float64)(unsafe.Pointer(uintptr(unsafe.Pointer(&xU0)) + 24))+float64(_z**(*float64)(unsafe.Pointer(uintptr(unsafe.Pointer(&xU0)) + 32)))))))))
+	_v = float64(1) + float64(_z*float64(*(*float64)(unsafe.Pointer(uintptr(unsafe.Pointer(&xV0))))+float64(_z*float64(*(*float64)(unsafe.Pointer(uintptr(unsafe.Pointer(&xV0)) + 8))+float64(_z*float64(*(*float64)(unsafe.Pointer(uintptr(unsafe.Pointer(&xV0)) + 16))+float64(_z*float64(*(*float64)(unsafe.Pointer(uintptr(unsafe.Pointer(&xV0)) + 24))+float64(_z**(*float64)(unsafe.Pointer(uintptr(unsafe.Pointer(&xV0)) + 32)))))))))))
 	return float64(_x*float64(_u/_v)) + float64(x2tpi*float64(float64(Xj1(tls, _x)*Xlog(tls, _x))-float64(float64(1)/_x)))
 }
 
@@ -19588,11 +19651,11 @@ var xs05 = float64(1.2354227442613791e-11)
 // xtpi float64, escapes: false, j1.c:63:1
 var x2tpi = float64(0.6366197723675814)
 
-// xU0 [5]float64, escapes: true, j1.c:137:21
-var xU0 = ds + 42992
+// xU0 [5]float64, escapes: false, j1.c:137:21
+var xU0 = *(*[5]float64)(unsafe.Pointer(ts + 43940 /* "\x8a\xbc<\x14f\x18ɿ\xd1,)v\xc7ө?..." */))
 
-// xV0 [5]float64, escapes: true, j1.c:144:21
-var xV0 = ds + 43032
+// xV0 [5]float64, escapes: false, j1.c:144:21
+var xV0 = *(*[5]float64)(unsafe.Pointer(ts + 43984 /* "\xf0\xa9M?\re\x94?dw%l\x89\x8c*?..." */))
 
 // xpone is defined at j1.c:250:15
 func xpone(tls TLS, _x float64) (r float64) {
@@ -19611,17 +19674,17 @@ func xpone(tls TLS, _x float64) (r float64) {
 	_ix = uint32(*(*uint64)(unsafe.Pointer(___u)) >> (uint(32) % 64))
 	_ix = _ix & uint32(0x7fffffff)
 	if _ix >= uint32(0x40200000) {
-		_p = xpr8
-		_q = xps8
+		_p = uintptr(unsafe.Pointer(&xpr8))
+		_q = uintptr(unsafe.Pointer(&xps8))
 	} else if _ix >= uint32(0x40122e8b) {
-		_p = xpr5
-		_q = xps5
+		_p = uintptr(unsafe.Pointer(&xpr5))
+		_q = uintptr(unsafe.Pointer(&xps5))
 	} else if _ix >= uint32(0x4006db6d) {
-		_p = xpr3
-		_q = xps3
+		_p = uintptr(unsafe.Pointer(&xpr3))
+		_q = uintptr(unsafe.Pointer(&xps3))
 	} else {
-		_p = xpr2
-		_q = xps2
+		_p = uintptr(unsafe.Pointer(&xpr2))
+		_q = uintptr(unsafe.Pointer(&xps2))
 	}
 	_z = float64(1) / float64(_x*_x)
 	_r = *(*float64)(unsafe.Pointer(_p)) + float64(_z*float64(*(*float64)(unsafe.Pointer(_p + 8))+float64(_z*float64(*(*float64)(unsafe.Pointer(_p + 16))+float64(_z*float64(*(*float64)(unsafe.Pointer(_p + 24))+float64(_z*float64(*(*float64)(unsafe.Pointer(_p + 32))+float64(_z**(*float64)(unsafe.Pointer(_p + 40)))))))))))
@@ -19646,17 +19709,17 @@ func xqone(tls TLS, _x float64) (r float64) {
 	_ix = uint32(*(*uint64)(unsafe.Pointer(___u)) >> (uint(32) % 64))
 	_ix = _ix & uint32(0x7fffffff)
 	if _ix >= uint32(0x40200000) {
-		_p = xqr8
-		_q = xqs8
+		_p = uintptr(unsafe.Pointer(&xqr8))
+		_q = uintptr(unsafe.Pointer(&xqs8))
 	} else if _ix >= uint32(0x40122e8b) {
-		_p = xqr5
-		_q = xqs5
+		_p = uintptr(unsafe.Pointer(&xqr5))
+		_q = uintptr(unsafe.Pointer(&xqs5))
 	} else if _ix >= uint32(0x4006db6d) {
-		_p = xqr3
-		_q = xqs3
+		_p = uintptr(unsafe.Pointer(&xqr3))
+		_q = uintptr(unsafe.Pointer(&xqs3))
 	} else {
-		_p = xqr2
-		_q = xqs2
+		_p = uintptr(unsafe.Pointer(&xqr2))
+		_q = uintptr(unsafe.Pointer(&xqs2))
 	}
 	_z = float64(1) / float64(_x*_x)
 	_r = *(*float64)(unsafe.Pointer(_p)) + float64(_z*float64(*(*float64)(unsafe.Pointer(_p + 8))+float64(_z*float64(*(*float64)(unsafe.Pointer(_p + 16))+float64(_z*float64(*(*float64)(unsafe.Pointer(_p + 24))+float64(_z*float64(*(*float64)(unsafe.Pointer(_p + 32))+float64(_z**(*float64)(unsafe.Pointer(_p + 40)))))))))))
@@ -19669,53 +19732,53 @@ var x2invsqrtpi = float64(0.5641895835477563)
 
 type t24double_t = float64
 
-// xpr8 [6]float64, escapes: true, j1.c:186:21
-var xpr8 = ds + 43072
+// xpr8 [6]float64, escapes: false, j1.c:186:21
+var xpr8 = *(*[6]float64)(unsafe.Pointer(ts + 44028 /* "\x00\x00\x00\x00\x00\x00\x00\x00\xce\xfc\xff\xff\xff\xff\xbd?..." */))
 
-// xps8 [5]float64, escapes: true, j1.c:194:21
-var xps8 = ds + 43120
+// xps8 [5]float64, escapes: false, j1.c:194:21
+var xps8 = *(*[5]float64)(unsafe.Pointer(ts + 44080 /* "\xacle\x8eE\x8d\\@O'M\x96܅\xac@..." */))
 
-// xpr5 [6]float64, escapes: true, j1.c:202:21
-var xpr5 = ds + 43160
+// xpr5 [6]float64, escapes: false, j1.c:202:21
+var xpr5 = *(*[6]float64)(unsafe.Pointer(ts + 44124 /* "}\xca\xe1\xdag\x06\xad=C\x00\xc1\xe2\xff\xff\xbd?..." */))
 
-// xps5 [5]float64, escapes: true, j1.c:210:21
-var xps5 = ds + 43208
+// xps5 [5]float64, escapes: false, j1.c:210:21
+var xps5 = *(*[5]float64)(unsafe.Pointer(ts + 44176 /* "=c\xaf\xa8\xea\xa3M@\x01g\x06\x1b6\xfb\x8e@..." */))
 
-// xpr3 [6]float64, escapes: true, j1.c:218:21
-var xpr3 = ds + 43248
+// xpr3 [6]float64, escapes: false, j1.c:218:21
+var xpr3 = *(*[6]float64)(unsafe.Pointer(ts + 44220 /* "ݞ\xad\xa7!\xfc)>{\xd1![\xf5\xff\xbd?..." */))
 
-// xps3 [5]float64, escapes: true, j1.c:226:21
-var xps3 = ds + 43296
+// xps3 [5]float64, escapes: false, j1.c:226:21
+var xps3 = *(*[5]float64)(unsafe.Pointer(ts + 44272 /* "\x9c\x064\xa1IeA@_\xa7\xf1\a3\fu@..." */))
 
-// xpr2 [6]float64, escapes: true, j1.c:234:21
-var xpr2 = ds + 43336
+// xpr2 [6]float64, escapes: false, j1.c:234:21
+var xpr2 = *(*[6]float64)(unsafe.Pointer(ts + 44316 /* "\xf4DU\xf6\xd4\xe9|>\x83\rv\xbeB\xff\xbd?..." */))
 
-// xps2 [5]float64, escapes: true, j1.c:242:21
-var xps2 = ds + 43384
+// xps2 [5]float64, escapes: false, j1.c:242:21
+var xps2 = *(*[5]float64)(unsafe.Pointer(ts + 44368 /* "\xdc\xecՊ\xbdo5@\xd5,\xf9\x14\x93R_@..." */))
 
-// xqr8 [6]float64, escapes: true, j1.c:278:21
-var xqr8 = ds + 43424
+// xqr8 [6]float64, escapes: false, j1.c:278:21
+var xqr8 = *(*[6]float64)(unsafe.Pointer(ts + 44412 /* "\x00\x00\x00\x00\x00\x00\x00\x00\xf3\xfd\xff\xff\xff?\xba\xbf..." */))
 
-// xqs8 [6]float64, escapes: true, j1.c:286:21
-var xqs8 = ds + 43472
+// xqs8 [6]float64, escapes: false, j1.c:286:21
+var xqs8 = *(*[6]float64)(unsafe.Pointer(ts + 44464 /* "\xe5\xcd[ަ,d@\x19\x84\xd8\xd0b\x91\xbe@..." */))
 
-// xqr5 [6]float64, escapes: true, j1.c:295:21
-var xqr5 = ds + 43520
+// xqr5 [6]float64, escapes: false, j1.c:295:21
+var xqr5 = *(*[6]float64)(unsafe.Pointer(ts + 44516 /* "\x98\xa0\xa1\x1aC\xfa\xb6\xbd\xef\u007fY\xcb\xff?\xba\xbf..." */))
 
-// xqs5 [6]float64, escapes: true, j1.c:303:21
-var xqs5 = ds + 43568
+// xqs5 [6]float64, escapes: false, j1.c:303:21
+var xqs5 = *(*[6]float64)(unsafe.Pointer(ts + 44568 /* "\xb2\x11Z\xff\xb2QT@9\xf8{\xe71\x1f\x9f@..." */))
 
-// xqr3 [6]float64, escapes: true, j1.c:312:21
-var xqr3 = ds + 43616
+// xqr3 [6]float64, escapes: false, j1.c:312:21
+var xqr3 = *(*[6]float64)(unsafe.Pointer(ts + 44620 /* "Oȏө\xcf5\xbeT\xed\xaeQ\xeb?\xba\xbf..." */))
 
-// xqs3 [6]float64, escapes: true, j1.c:320:21
-var xqs3 = ds + 43664
+// xqs3 [6]float64, escapes: false, j1.c:320:21
+var xqs3 = *(*[6]float64)(unsafe.Pointer(ts + 44672 /* "\xe4g\xd3\xcc#\xd5G@>\xee1\xc0\xeb\x0e\x85@..." */))
 
-// xqr2 [6]float64, escapes: true, j1.c:329:21
-var xqr2 = ds + 43712
+// xqr2 [6]float64, escapes: false, j1.c:329:21
+var xqr2 = *(*[6]float64)(unsafe.Pointer(ts + 44724 /* "\xd2&\xc6D&\xf1\x87\xbe\x10\xb0H\x91\x8e>\xba\xbf..." */))
 
-// xqs2 [6]float64, escapes: true, j1.c:337:21
-var xqs2 = ds + 43760
+// xqs2 [6]float64, escapes: false, j1.c:337:21
+var xqs2 = *(*[6]float64)(unsafe.Pointer(ts + 44776 /* "\xffd\xaex\x8a\x88=@\xba\x1c\x82\xdbh\x9fo@..." */))
 
 // linking j1f.o
 
@@ -19781,8 +19844,8 @@ func Xy1f(tls TLS, _x float32) (r float32) {
 		return float32(-x3tpi) / _x
 	}
 	_z = _x * _x
-	_u = *(*float32)(unsafe.Pointer(x1U0)) + float32(_z*float32(*(*float32)(unsafe.Pointer(x1U0 + 4))+float32(_z*float32(*(*float32)(unsafe.Pointer(x1U0 + 8))+float32(_z*float32(*(*float32)(unsafe.Pointer(x1U0 + 12))+float32(_z**(*float32)(unsafe.Pointer(x1U0 + 16)))))))))
-	_v = float32(1) + float32(_z*float32(*(*float32)(unsafe.Pointer(x1V0))+float32(_z*float32(*(*float32)(unsafe.Pointer(x1V0 + 4))+float32(_z*float32(*(*float32)(unsafe.Pointer(x1V0 + 8))+float32(_z*float32(*(*float32)(unsafe.Pointer(x1V0 + 12))+float32(_z**(*float32)(unsafe.Pointer(x1V0 + 16)))))))))))
+	_u = *(*float32)(unsafe.Pointer(uintptr(unsafe.Pointer(&x1U0)))) + float32(_z*float32(*(*float32)(unsafe.Pointer(uintptr(unsafe.Pointer(&x1U0)) + 4))+float32(_z*float32(*(*float32)(unsafe.Pointer(uintptr(unsafe.Pointer(&x1U0)) + 8))+float32(_z*float32(*(*float32)(unsafe.Pointer(uintptr(unsafe.Pointer(&x1U0)) + 12))+float32(_z**(*float32)(unsafe.Pointer(uintptr(unsafe.Pointer(&x1U0)) + 16)))))))))
+	_v = float32(1) + float32(_z*float32(*(*float32)(unsafe.Pointer(uintptr(unsafe.Pointer(&x1V0))))+float32(_z*float32(*(*float32)(unsafe.Pointer(uintptr(unsafe.Pointer(&x1V0)) + 4))+float32(_z*float32(*(*float32)(unsafe.Pointer(uintptr(unsafe.Pointer(&x1V0)) + 8))+float32(_z*float32(*(*float32)(unsafe.Pointer(uintptr(unsafe.Pointer(&x1V0)) + 12))+float32(_z**(*float32)(unsafe.Pointer(uintptr(unsafe.Pointer(&x1V0)) + 16)))))))))))
 	return float32(_x*float32(_u/_v)) + float32(x3tpi*float32(float32(Xj1f(tls, _x)*Xlogf(tls, _x))-float32(float32(1)/_x)))
 }
 
@@ -19854,11 +19917,11 @@ var x1s05 = float32(1.2354227e-11)
 // xtpi float32, escapes: false, j1f.c:23:1
 var x3tpi = float32(0.63661975)
 
-// xU0 [5]float32, escapes: true, j1f.c:87:20
-var x1U0 = ds + 43808
+// xU0 [5]float32, escapes: false, j1f.c:87:20
+var x1U0 = *(*[5]float32)(unsafe.Pointer(ts + 44828 /* "1\xc3H\xbe<\x9eN=*\xaf\xfa\xba\x1cX\xc57..." */))
 
-// xV0 [5]float32, escapes: true, j1f.c:94:20
-var x1V0 = ds + 43832
+// xV0 [5]float32, escapes: false, j1f.c:94:20
+var x1V0 = *(*[5]float32)(unsafe.Pointer(ts + 44852 /* "j(\xa3<KdT9\xd4\x02\xb65\xeb\xf8\xd51..." */))
 
 // xponef is defined at j1f.c:198:14
 func xponef(tls TLS, _x float32) (r float32) {
@@ -19877,17 +19940,17 @@ func xponef(tls TLS, _x float32) (r float32) {
 	_ix = *(*uint32)(unsafe.Pointer(___u))
 	_ix = _ix & uint32(0x7fffffff)
 	if _ix >= uint32(0x41000000) {
-		_p = x1pr8
-		_q = x1ps8
+		_p = uintptr(unsafe.Pointer(&x1pr8))
+		_q = uintptr(unsafe.Pointer(&x1ps8))
 	} else if _ix >= uint32(0x409173eb) {
-		_p = x1pr5
-		_q = x1ps5
+		_p = uintptr(unsafe.Pointer(&x1pr5))
+		_q = uintptr(unsafe.Pointer(&x1ps5))
 	} else if _ix >= uint32(0x4036d917) {
-		_p = x1pr3
-		_q = x1ps3
+		_p = uintptr(unsafe.Pointer(&x1pr3))
+		_q = uintptr(unsafe.Pointer(&x1ps3))
 	} else {
-		_p = x1pr2
-		_q = x1ps2
+		_p = uintptr(unsafe.Pointer(&x1pr2))
+		_q = uintptr(unsafe.Pointer(&x1ps2))
 	}
 	_z = float32(1) / float32(_x*_x)
 	_r = *(*float32)(unsafe.Pointer(_p)) + float32(_z*float32(*(*float32)(unsafe.Pointer(_p + 4))+float32(_z*float32(*(*float32)(unsafe.Pointer(_p + 8))+float32(_z*float32(*(*float32)(unsafe.Pointer(_p + 12))+float32(_z*float32(*(*float32)(unsafe.Pointer(_p + 16))+float32(_z**(*float32)(unsafe.Pointer(_p + 20)))))))))))
@@ -19912,17 +19975,17 @@ func xqonef(tls TLS, _x float32) (r float32) {
 	_ix = *(*uint32)(unsafe.Pointer(___u))
 	_ix = _ix & uint32(0x7fffffff)
 	if _ix >= uint32(0x41000000) {
-		_p = x1qr8
-		_q = x1qs8
+		_p = uintptr(unsafe.Pointer(&x1qr8))
+		_q = uintptr(unsafe.Pointer(&x1qs8))
 	} else if _ix >= uint32(0x409173eb) {
-		_p = x1qr5
-		_q = x1qs5
+		_p = uintptr(unsafe.Pointer(&x1qr5))
+		_q = uintptr(unsafe.Pointer(&x1qs5))
 	} else if _ix >= uint32(0x4036d917) {
-		_p = x1qr3
-		_q = x1qs3
+		_p = uintptr(unsafe.Pointer(&x1qr3))
+		_q = uintptr(unsafe.Pointer(&x1qs3))
 	} else {
-		_p = x1qr2
-		_q = x1qs2
+		_p = uintptr(unsafe.Pointer(&x1qr2))
+		_q = uintptr(unsafe.Pointer(&x1qs2))
 	}
 	_z = float32(1) / float32(_x*_x)
 	_r = *(*float32)(unsafe.Pointer(_p)) + float32(_z*float32(*(*float32)(unsafe.Pointer(_p + 4))+float32(_z*float32(*(*float32)(unsafe.Pointer(_p + 8))+float32(_z*float32(*(*float32)(unsafe.Pointer(_p + 12))+float32(_z*float32(*(*float32)(unsafe.Pointer(_p + 16))+float32(_z**(*float32)(unsafe.Pointer(_p + 20)))))))))))
@@ -19935,53 +19998,53 @@ var x3invsqrtpi = float32(0.5641896)
 
 type t9float_t = float32
 
-// xpr8 [6]float32, escapes: true, j1f.c:134:20
-var x1pr8 = ds + 43856
+// xpr8 [6]float32, escapes: false, j1f.c:134:20
+var x1pr8 = *(*[6]float32)(unsafe.Pointer(ts + 44876 /* "\x00\x00\x00\x00\x00\x00\xf0=\xea\xd4SA\xa3\x06\xceC..." */))
 
-// xps8 [5]float32, escapes: true, j1f.c:142:20
-var x1ps8 = ds + 43880
+// xps8 [5]float32, escapes: false, j1f.c:142:20
+var x1ps8 = *(*[5]float32)(unsafe.Pointer(ts + 44904 /* ",j\xe4B\xe5.dE5\\\x10Gf\xa1\xbeG..." */))
 
-// xpr5 [6]float32, escapes: true, j1f.c:150:20
-var x1pr5 = ds + 43904
+// xpr5 [6]float32, escapes: false, j1f.c:150:20
+var x1pr5 = *(*[6]float32)(unsafe.Pointer(ts + 44928 /* "?3h-\xff\xff\xef=#\xb0\xd9@ʝ\xd8B..." */))
 
-// xps5 [5]float32, escapes: true, j1f.c:158:20
-var x1ps5 = ds + 43928
+// xps5 [5]float32, escapes: false, j1f.c:158:20
+var x1ps5 = *(*[5]float32)(unsafe.Pointer(ts + 44956 /* "U\x1fmB\xb1\xd9wD#J\xa7E\x86%\xf5E..." */))
 
-// xpr3 [6]float32, escapes: true, j1f.c:166:20
-var x1pr3 = ds + 43952
+// xpr3 [6]float32, escapes: false, j1f.c:166:20
+var x1pr3 = *(*[6]float32)(unsafe.Pointer(ts + 44980 /* "\r\xe1O1\xab\xff\xef=\xe7\xb5{@Ez\fB..." */))
 
-// xps3 [5]float32, escapes: true, j1f.c:174:20
-var x1ps3 = ds + 43976
+// xps3 [5]float32, escapes: false, j1f.c:174:20
+var x1ps3 = *(*[5]float32)(unsafe.Pointer(ts + 45008 /* "M*\vB\x98a\xa8C\xe3ۂD\xed\xb3^D..." */))
 
-// xpr2 [6]float32, escapes: true, j1f.c:182:20
-var x1pr2 = ds + 44000
+// xpr2 [6]float32, escapes: false, j1f.c:182:20
+var x1pr2 = *(*[6]float32)(unsafe.Pointer(ts + 45032 /* "\xa8N\xe73\x16\xfa\xef=\xc0\x95\x17@\xbc\xe1CA..." */))
 
-// xps2 [5]float32, escapes: true, j1f.c:190:20
-var x1ps2 = ds + 44024
+// xps2 [5]float32, escapes: false, j1f.c:190:20
+var x1ps2 = *(*[5]float32)(unsafe.Pointer(ts + 45060 /* "\xec}\xabA\x99\x94\xfaB\xc7FhC\xd7[\xebB..." */))
 
-// xqr8 [6]float32, escapes: true, j1f.c:226:20
-var x1qr8 = ds + 44048
+// xqr8 [6]float32, escapes: false, j1f.c:226:20
+var x1qr8 = *(*[6]float32)(unsafe.Pointer(ts + 45084 /* "\x00\x00\x00\x00\x00\x00ҽ\x8d,\x82\xc1\x83\xe6=\xc4..." */))
 
-// xqs8 [6]float32, escapes: true, j1f.c:234:20
-var x1qs8 = ds + 44072
+// xqs8 [6]float32, escapes: false, j1f.c:234:20
+var x1qs8 = *(*[6]float32)(unsafe.Pointer(ts + 45112 /* "7e!C\x17\x8b\xf4Eּ\x02H\x9c\xb2/I..." */))
 
-// xqr5 [6]float32, escapes: true, j1f.c:243:20
-var x1qr5 = ds + 44096
+// xqr5 [6]float32, escapes: false, j1f.c:243:20
+var x1qr5 = *(*[6]float32)(unsafe.Pointer(ts + 45140 /* "\x19ҷ\xad\xfe\xffѽ6\xe7\x00\xc1k\xab7\xc3..." */))
 
-// xqs5 [6]float32, escapes: true, j1f.c:251:20
-var x1qs5 = ds + 44120
+// xqs5 [6]float32, escapes: false, j1f.c:251:20
+var x1qs5 = *(*[6]float32)(unsafe.Pointer(ts + 45168 /* "\x98\x8d\xa2B\x8f\xf9\xf8D\xf8x\x88Fm\xbbBG..." */))
 
-// xqr3 [6]float32, escapes: true, j1f.c:260:20
-var x1qr3 = ds + 44144
+// xqr3 [6]float32, escapes: false, j1f.c:260:20
+var x1qr3 = *(*[6]float32)(unsafe.Pointer(ts + 45196 /* "O}\xae\xb1[\xffѽ\x12\x86\x93\xc0\x8ecg\xc2..." */))
 
-// xqs3 [6]float32, escapes: true, j1f.c:268:20
-var x1qs3 = ds + 44168
+// xqs3 [6]float32, escapes: false, j1f.c:268:20
+var x1qs3 = *(*[6]float32)(unsafe.Pointer(ts + 45224 /* "\x1e\xa9>B^w(DrBSE\xd5]\xadE..." */))
 
-// xqr2 [6]float32, escapes: true, j1f.c:277:20
-var x1qr2 = ds + 44192
+// xqr2 [6]float32, escapes: false, j1f.c:277:20
+var x1qr2 = *(*[6]float32)(unsafe.Pointer(ts + 45252 /* "2\x89?\xb4u\xf4ѽ#$0\xc0\x16O\x9d\xc1..." */))
 
-// xqs2 [6]float32, escapes: true, j1f.c:285:20
-var x1qs2 = ds + 44216
+// xqs2 [6]float32, escapes: false, j1f.c:285:20
+var x1qs2 = *(*[6]float32)(unsafe.Pointer(ts + 45280 /* "TD\xecAG\xfb|C.`=D*\xd98D..." */))
 
 // linking jn.o
 
@@ -20494,7 +20557,7 @@ func Xldexpl(tls TLS, _x float64, _n int32) (r float64) {
 
 // Xlgamma is defined at lgamma.c:6:8
 func Xlgamma(tls TLS, _x float64) (r float64) {
-	return X__lgamma_r(tls, _x, X__signgam)
+	return X__lgamma_r(tls, _x, uintptr(unsafe.Pointer(&X__signgam)))
 }
 
 // linking lgamma_r.o
@@ -20917,7 +20980,7 @@ var xw6 = float64(-0.0016309293409657527)
 
 // Xlgammaf is defined at lgammaf.c:6:7
 func Xlgammaf(tls TLS, _x float32) (r float32) {
-	return X__lgammaf_r(tls, _x, X__signgam)
+	return X__lgammaf_r(tls, _x, uintptr(unsafe.Pointer(&X__signgam)))
 }
 
 // linking lgammaf_r.o
@@ -21345,7 +21408,7 @@ func X__lgammal_r(tls TLS, _x float64, _sg uintptr /* *int32 */) (r float64) {
 
 // Xlgammal is defined at lgammal.c:355:13
 func Xlgammal(tls TLS, _x float64) (r float64) {
-	return X__lgammal_r(tls, _x, X__signgam)
+	return X__lgammal_r(tls, _x, uintptr(unsafe.Pointer(&X__signgam)))
 }
 
 // linking llrint.o
@@ -23109,8 +23172,8 @@ func Xpow(tls TLS, _x float64, _y float64) (r float64) {
 			*p = *p | uint64(_ix)<<(uint(32)%64)
 		}
 		_ax = *(*float64)(unsafe.Pointer(_6__u))
-		_u = _ax - *(*float64)(unsafe.Pointer(xbp + 8*uintptr(_k)))
-		_v = float64(1) / float64(_ax+*(*float64)(unsafe.Pointer(xbp + 8*uintptr(_k))))
+		_u = _ax - *(*float64)(unsafe.Pointer(uintptr(unsafe.Pointer(&xbp)) + 8*uintptr(_k)))
+		_v = float64(1) / float64(_ax+*(*float64)(unsafe.Pointer(uintptr(unsafe.Pointer(&xbp)) + 8*uintptr(_k))))
 		_ss = _u * _v
 		_s_h = _ss
 		*(*float64)(unsafe.Pointer(_7__u)) = _s_h
@@ -23134,7 +23197,7 @@ func Xpow(tls TLS, _x float64, _y float64) (r float64) {
 			*p = *p | uint64(_ix>>(uint(1)%32)|int32(0x20000000)+int32(0x80000)+_k<<(uint(18)%32))<<(uint(32)%64)
 		}
 		_t_h = *(*float64)(unsafe.Pointer(_8__u))
-		_t_l = _ax - float64(_t_h-*(*float64)(unsafe.Pointer(xbp + 8*uintptr(_k))))
+		_t_l = _ax - float64(_t_h-*(*float64)(unsafe.Pointer(uintptr(unsafe.Pointer(&xbp)) + 8*uintptr(_k))))
 		_s_l = _v * float64(float64(_u-float64(_s_h*_t_h))-float64(_s_h*_t_l))
 		_s2 = _ss * _ss
 		_r = float64(_s2*_s2) * float64(xL1+float64(_s2*float64(xL2+float64(_s2*float64(xL3+float64(_s2*float64(xL4+float64(_s2*float64(xL5+float64(_s2*xL6))))))))))
@@ -23167,9 +23230,9 @@ func Xpow(tls TLS, _x float64, _y float64) (r float64) {
 		_p_h = *(*float64)(unsafe.Pointer(_10__u))
 		_p_l = _v - float64(_p_h-_u)
 		_z_h = xcp_h * _p_h
-		_z_l = float64(float64(xcp_l*_p_h)+float64(_p_l*xcp)) + *(*float64)(unsafe.Pointer(xdp_l + 8*uintptr(_k)))
+		_z_l = float64(float64(xcp_l*_p_h)+float64(_p_l*xcp)) + *(*float64)(unsafe.Pointer(uintptr(unsafe.Pointer(&xdp_l)) + 8*uintptr(_k)))
 		_t = float64(_n)
-		_t1 = float64(float64(_z_h+_z_l)+*(*float64)(unsafe.Pointer(xdp_h + 8*uintptr(_k)))) + _t
+		_t1 = float64(float64(_z_h+_z_l)+*(*float64)(unsafe.Pointer(uintptr(unsafe.Pointer(&xdp_h)) + 8*uintptr(_k)))) + _t
 		*(*float64)(unsafe.Pointer(_11__u)) = _t1
 		{
 			p := (*uint64)(unsafe.Pointer(_11__u))
@@ -23180,7 +23243,7 @@ func Xpow(tls TLS, _x float64, _y float64) (r float64) {
 			*p = *p | uint64(0)
 		}
 		_t1 = *(*float64)(unsafe.Pointer(_11__u))
-		_t2 = _z_l - float64(float64(float64(_t1-_t)-*(*float64)(unsafe.Pointer(xdp_h + 8*uintptr(_k))))-_z_h)
+		_t2 = _z_l - float64(float64(float64(_t1-_t)-*(*float64)(unsafe.Pointer(uintptr(unsafe.Pointer(&xdp_h)) + 8*uintptr(_k))))-_z_h)
 	}
 	_y1 = _y
 	*(*float64)(unsafe.Pointer(_12__u)) = _y1
@@ -23300,8 +23363,8 @@ var xivln2 = float64(1.4426950408889634)
 // xtwo53 float64, escapes: false, pow.c:66:1
 var xtwo53 = float64(9.007199254740992e+15)
 
-// xbp [2]float64, escapes: true, pow.c:63:1
-var xbp = ds + 44240
+// xbp [2]float64, escapes: false, pow.c:63:1
+var xbp = *(*[2]float64)(unsafe.Pointer(ts + 45308 /* "\x00\x00\x00\x00\x00\x00\xf0?\x00\x00\x00\x00\x00\x00\xf8?" */))
 
 // xL1 float64, escapes: false, pow.c:70:1
 var xL1 = float64(0.5999999999999946)
@@ -23330,11 +23393,11 @@ var xcp_l = float64(-7.028461650952758e-09)
 // xcp float64, escapes: false, pow.c:85:1
 var xcp = float64(0.9617966939259756)
 
-// xdp_l [2]float64, escapes: true, pow.c:65:1
-var xdp_l = ds + 44256
+// xdp_l [2]float64, escapes: false, pow.c:65:1
+var xdp_l = *(*[2]float64)(unsafe.Pointer(ts + 45328 /* "\x00\x00\x00\x00\x00\x00\x00\x00\x06\xd0\xcfC\xeb\xfdL>" */))
 
-// xdp_h [2]float64, escapes: true, pow.c:64:1
-var xdp_h = ds + 44272
+// xdp_h [2]float64, escapes: false, pow.c:64:1
+var xdp_h = *(*[2]float64)(unsafe.Pointer(ts + 45348 /* "\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00@\x03\xb8\xe2?" */))
 
 // xovt float64, escapes: false, pow.c:84:1
 var xovt = float64(8.008566259537294e-17)
@@ -23550,8 +23613,8 @@ func Xpowf(tls TLS, _x float32, _y float32) (r float32) {
 		}
 		*(*uint32)(unsafe.Pointer(_5__u)) = uint32(_ix)
 		_ax = *(*float32)(unsafe.Pointer(_5__u))
-		_u = _ax - *(*float32)(unsafe.Pointer(x1bp + 4*uintptr(_k)))
-		_v = float32(1) / float32(_ax+*(*float32)(unsafe.Pointer(x1bp + 4*uintptr(_k))))
+		_u = _ax - *(*float32)(unsafe.Pointer(uintptr(unsafe.Pointer(&x1bp)) + 4*uintptr(_k)))
+		_v = float32(1) / float32(_ax+*(*float32)(unsafe.Pointer(uintptr(unsafe.Pointer(&x1bp)) + 4*uintptr(_k))))
 		_s = _u * _v
 		_s_h = _s
 		*(*float32)(unsafe.Pointer(_6__u)) = _s_h
@@ -23561,7 +23624,7 @@ func Xpowf(tls TLS, _x float32, _y float32) (r float32) {
 		_is = int32(uint32(_ix>>(uint(1)%32))&uint32(0xfffff000) | uint32(0x20000000))
 		*(*uint32)(unsafe.Pointer(_8__u)) = uint32(_is + int32(0x400000) + _k<<(uint(21)%32))
 		_t_h = *(*float32)(unsafe.Pointer(_8__u))
-		_t_l = _ax - float32(_t_h-*(*float32)(unsafe.Pointer(x1bp + 4*uintptr(_k))))
+		_t_l = _ax - float32(_t_h-*(*float32)(unsafe.Pointer(uintptr(unsafe.Pointer(&x1bp)) + 4*uintptr(_k))))
 		_s_l = _v * float32(float32(_u-float32(_s_h*_t_h))-float32(_s_h*_t_l))
 		_s2 = _s * _s
 		_r = float32(_s2*_s2) * float32(x1L1+float32(_s2*float32(x1L2+float32(_s2*float32(x1L3+float32(_s2*float32(x1L4+float32(_s2*float32(x1L5+float32(_s2*x1L6))))))))))
@@ -23582,14 +23645,14 @@ func Xpowf(tls TLS, _x float32, _y float32) (r float32) {
 		_p_h = *(*float32)(unsafe.Pointer(_12__u))
 		_p_l = _v - float32(_p_h-_u)
 		_z_h = x1cp_h * _p_h
-		_z_l = float32(float32(x1cp_l*_p_h)+float32(_p_l*x1cp)) + *(*float32)(unsafe.Pointer(x1dp_l + 4*uintptr(_k)))
+		_z_l = float32(float32(x1cp_l*_p_h)+float32(_p_l*x1cp)) + *(*float32)(unsafe.Pointer(uintptr(unsafe.Pointer(&x1dp_l)) + 4*uintptr(_k)))
 		_t = float32(_n)
-		_t1 = float32(float32(_z_h+_z_l)+*(*float32)(unsafe.Pointer(x1dp_h + 4*uintptr(_k)))) + _t
+		_t1 = float32(float32(_z_h+_z_l)+*(*float32)(unsafe.Pointer(uintptr(unsafe.Pointer(&x1dp_h)) + 4*uintptr(_k)))) + _t
 		*(*float32)(unsafe.Pointer(_13__u)) = _t1
 		_is = int32(*(*uint32)(unsafe.Pointer(_13__u)))
 		*(*uint32)(unsafe.Pointer(_14__u)) = uint32(_is) & uint32(0xfffff000)
 		_t1 = *(*float32)(unsafe.Pointer(_14__u))
-		_t2 = _z_l - float32(float32(float32(_t1-_t)-*(*float32)(unsafe.Pointer(x1dp_h + 4*uintptr(_k))))-_z_h)
+		_t2 = _z_l - float32(float32(float32(_t1-_t)-*(*float32)(unsafe.Pointer(uintptr(unsafe.Pointer(&x1dp_h)) + 4*uintptr(_k))))-_z_h)
 	}
 	*(*float32)(unsafe.Pointer(_15__u)) = _y
 	_is = int32(*(*uint32)(unsafe.Pointer(_15__u)))
@@ -23674,8 +23737,8 @@ var x1ivln2 = float32(1.442695)
 // xtwo24 float32, escapes: false, powf.c:22:1
 var xtwo24 = float32(1.6777216e+07)
 
-// xbp [2]float32, escapes: true, powf.c:19:1
-var x1bp = ds + 44288
+// xbp [2]float32, escapes: false, powf.c:19:1
+var x1bp = *(*[2]float32)(unsafe.Pointer(ts + 45368 /* "\x00\x00\x80?\x00\x00\xc0?" */))
 
 // xL1 float32, escapes: false, powf.c:26:1
 var x1L1 = float32(0.6)
@@ -23704,11 +23767,11 @@ var x1cp_l = float32(-0.000117368574)
 // xcp float32, escapes: false, powf.c:41:1
 var x1cp = float32(0.9617967)
 
-// xdp_l [2]float32, escapes: true, powf.c:21:1
-var x1dp_l = ds + 44296
+// xdp_l [2]float32, escapes: false, powf.c:21:1
+var x1dp_l = *(*[2]float32)(unsafe.Pointer(ts + 45380 /* "\x00\x00\x00\x00\xdc\xcf\xd15" */))
 
-// xdp_h [2]float32, escapes: true, powf.c:20:1
-var x1dp_h = ds + 44304
+// xdp_h [2]float32, escapes: false, powf.c:20:1
+var x1dp_h = *(*[2]float32)(unsafe.Pointer(ts + 45392 /* "\x00\x00\x00\x00\x00\xc0\x15?" */))
 
 // xovt float32, escapes: false, powf.c:40:1
 var x1ovt = float32(4.2995666e-08)
@@ -24508,8 +24571,8 @@ func Xscalbnl(tls TLS, _x float64, _n int32) (r float64) {
 
 // linking signgam.o
 
-// X__signgam int32, escapes: true, signgam.c:4:5
-var X__signgam = bss + 3840
+// X__signgam int32, escapes: false, signgam.c:4:5
+var X__signgam int32
 
 // linking significand.o
 
@@ -25678,7 +25741,7 @@ func Xtgamma(tls TLS, _x float64) (r float64) {
 			return math.NaN()
 		}
 		if _x <= float64(23) {
-			return *(*float64)(unsafe.Pointer(xfact + 8*uintptr(int32(_x)-int32(1))))
+			return *(*float64)(unsafe.Pointer(uintptr(unsafe.Pointer(&xfact)) + 8*uintptr(int32(_x)-int32(1))))
 		}
 	}
 	if _ix >= uint32(0x40670000) {
@@ -25730,8 +25793,8 @@ type t35double_t = float64
 
 type t101uint32_t = uint32
 
-// xfact [23]float64, escapes: true, tgamma.c:81:21
-var xfact = ds + 44312
+// xfact [23]float64, escapes: false, tgamma.c:81:21
+var xfact = *(*[23]float64)(unsafe.Pointer(ts + 45404 /* "\x00\x00\x00\x00\x00\x00\xf0?\x00\x00\x00\x00\x00\x00\xf0?..." */))
 
 // xgmhalf float64, escapes: false, tgamma.c:60:21
 var xgmhalf = float64(5.52468004077673)
@@ -25747,13 +25810,13 @@ func xS(tls TLS, _x float64) (r float64) {
 	_den = float64(0)
 	if _x < float64(8) {
 		for _i = int32(12); _i >= int32(0); _i-- {
-			_num = float64(_num*_x) + *(*float64)(unsafe.Pointer(xSnum + 8*uintptr(_i)))
-			_den = float64(_den*_x) + *(*float64)(unsafe.Pointer(xSden + 8*uintptr(_i)))
+			_num = float64(_num*_x) + *(*float64)(unsafe.Pointer(uintptr(unsafe.Pointer(&xSnum)) + 8*uintptr(_i)))
+			_den = float64(_den*_x) + *(*float64)(unsafe.Pointer(uintptr(unsafe.Pointer(&xSden)) + 8*uintptr(_i)))
 		}
 	} else {
 		for _i = int32(0); _i <= int32(12); _i++ {
-			_num = float64(_num/_x) + *(*float64)(unsafe.Pointer(xSnum + 8*uintptr(_i)))
-			_den = float64(_den/_x) + *(*float64)(unsafe.Pointer(xSden + 8*uintptr(_i)))
+			_num = float64(_num/_x) + *(*float64)(unsafe.Pointer(uintptr(unsafe.Pointer(&xSnum)) + 8*uintptr(_i)))
+			_den = float64(_den/_x) + *(*float64)(unsafe.Pointer(uintptr(unsafe.Pointer(&xSden)) + 8*uintptr(_i)))
 		}
 	}
 	return _num / _den
@@ -25797,11 +25860,11 @@ _6:
 	return r
 }
 
-// xSnum [13]float64, escapes: true, tgamma.c:61:21
-var xSnum = ds + 44496
+// xSnum [13]float64, escapes: false, tgamma.c:61:21
+var xSnum = *(*[13]float64)(unsafe.Pointer(ts + 45592 /* "\x9e\xa4\xc1CQ\xea\x15BWL\xf5up\xfc#B..." */))
 
-// xSden [13]float64, escapes: true, tgamma.c:76:21
-var xSden = ds + 44600
+// xSden [13]float64, escapes: false, tgamma.c:76:21
+var xSden = *(*[13]float64)(unsafe.Pointer(ts + 45700 /* "\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\xa8\b\x83A..." */))
 
 // linking tgammaf.o
 
@@ -25943,11 +26006,11 @@ func Xa64l(tls TLS, _s uintptr /* *int8 */) (r int64) {
 	)
 	_x = uint32(0)
 	for _e = int32(0); (_e < int32(36)) && (*(*int8)(unsafe.Pointer(_s)) != 0); func() uintptr { _e = _e + int32(6); return postinc704(&_s) }() {
-		_d = Xstrchr(tls, xdigits, int32(*(*int8)(unsafe.Pointer(_s))))
+		_d = Xstrchr(tls, uintptr(unsafe.Pointer(&xdigits)), int32(*(*int8)(unsafe.Pointer(_s))))
 		if _d == 0 {
 			break
 		}
-		_x = _x | uint32(int64(_d-xdigits))<<(uint(_e)%32)
+		_x = _x | uint32(int64(_d-uintptr(unsafe.Pointer(&xdigits))))<<(uint(_e)%32)
 	}
 	return int64(int32(_x))
 }
@@ -25961,22 +26024,22 @@ func Xl64a(tls TLS, _x0 int64) (r uintptr /* *int8 */) {
 		_x uint32
 	)
 	_x = uint32(_x0)
-	for _p = x706s; _x != 0; func() uint32 { _p++; return rsh705(&_x, uint(6)%32) }() {
-		*(*int8)(unsafe.Pointer(_p)) = *(*int8)(unsafe.Pointer(xdigits + uintptr(_x&uint32(63))))
+	for _p = uintptr(unsafe.Pointer(&x706s)); _x != 0; func() uint32 { _p++; return rsh705(&_x, uint(6)%32) }() {
+		*(*int8)(unsafe.Pointer(_p)) = *(*int8)(unsafe.Pointer(uintptr(unsafe.Pointer(&xdigits)) + uintptr(_x&uint32(63))))
 	}
 	*(*int8)(unsafe.Pointer(_p)) = int8(0)
-	return x706s
+	return uintptr(unsafe.Pointer(&x706s))
 }
 
 type t103uint32_t = uint32
 
-// xdigits [65]int8, escapes: true, a64l.c:5:19
-var xdigits = ds + 44704
+// xdigits [65]int8, escapes: false, a64l.c:5:19
+var xdigits = *(*[65]int8)(unsafe.Pointer(ts + 12024 /* "./0123456789ABCD..." */))
 
 type t14int32_t = int32
 
-// x2s [7]int8, escapes: true, a64l.c:22:14
-var x706s = bss + 3848
+// x2s [7]int8, escapes: false, a64l.c:22:14
+var x706s [7]int8
 
 // linking basename.o
 
@@ -25985,7 +26048,7 @@ func Xbasename(tls TLS, _s uintptr /* *int8 */) (r uintptr /* *int8 */) {
 	var _i uint64
 
 	if (_s == 0) || (*(*int8)(unsafe.Pointer(_s)) == 0) {
-		return ts + 1276 /* "." */
+		return ts + 37168 /* "." */
 	}
 	_i = Xstrlen(tls, _s) - uint64(1)
 	for ; (_i != 0) && (int32(*(*int8)(unsafe.Pointer(_s + uintptr(_i)))) == int32('/')); _i-- {
@@ -25996,7 +26059,7 @@ func Xbasename(tls TLS, _s uintptr /* *int8 */) (r uintptr /* *int8 */) {
 	return _s + uintptr(_i)
 }
 
-type t51size_t = uint64
+type t52size_t = uint64
 
 // linking dirname.o
 
@@ -26005,29 +26068,29 @@ func Xdirname(tls TLS, _s uintptr /* *int8 */) (r uintptr /* *int8 */) {
 	var _i uint64
 
 	if (_s == 0) || (*(*int8)(unsafe.Pointer(_s)) == 0) {
-		return ts + 1276 /* "." */
+		return ts + 37168 /* "." */
 	}
 	_i = Xstrlen(tls, _s) - uint64(1)
 	for ; int32(*(*int8)(unsafe.Pointer(_s + uintptr(_i)))) == int32('/'); _i-- {
 		if _i == 0 {
-			return ts + 908 /* "/" */
+			return ts + 31456 /* "/" */
 		}
 	}
 	for ; int32(*(*int8)(unsafe.Pointer(_s + uintptr(_i)))) != int32('/'); _i-- {
 		if _i == 0 {
-			return ts + 1276 /* "." */
+			return ts + 37168 /* "." */
 		}
 	}
 	for ; int32(*(*int8)(unsafe.Pointer(_s + uintptr(_i)))) == int32('/'); _i-- {
 		if _i == 0 {
-			return ts + 908 /* "/" */
+			return ts + 31456 /* "/" */
 		}
 	}
 	*(*int8)(unsafe.Pointer(_s + uintptr(_i+uint64(1)))) = int8(0)
 	return _s
 }
 
-type t52size_t = uint64
+type t53size_t = uint64
 
 // linking ffs.o
 
@@ -26056,11 +26119,11 @@ func x1a_ctz_64(tls TLS, _x uint64) (r int32) {
 		}
 		return x1a_ctz_32(tls, _y)
 	}
-	return int32(*(*int8)(unsafe.Pointer(x707debruijn64 + uintptr(_x&-_x*uint64(0x22fdd63cc95386d)>>(uint(58)%64)))))
+	return int32(*(*int8)(unsafe.Pointer(uintptr(unsafe.Pointer(&x707debruijn64)) + uintptr(_x&-_x*uint64(0x22fdd63cc95386d)>>(uint(58)%64)))))
 }
 
-// x3debruijn64 [64]int8, escapes: true, atomic.h:274:20
-var x707debruijn64 = ds + 44776
+// x3debruijn64 [64]int8, escapes: false, atomic.h:274:20
+var x707debruijn64 = *(*[64]int8)(unsafe.Pointer(ts + 37280 /* "\x00\x01\x025\x03\a6\x1b\x04&)\b\"70\x1c..." */))
 
 type t104uint32_t = uint32
 
@@ -26068,11 +26131,11 @@ type t66uint64_t = uint64
 
 // xa_ctz_32 is defined at atomic.h:256:19
 func x1a_ctz_32(tls TLS, _x uint32) (r int32) {
-	return int32(*(*int8)(unsafe.Pointer(x708debruijn32 + uintptr(_x&-_x*uint32(0x76be629)>>(uint(27)%32)))))
+	return int32(*(*int8)(unsafe.Pointer(uintptr(unsafe.Pointer(&x708debruijn32)) + uintptr(_x&-_x*uint32(0x76be629)>>(uint(27)%32)))))
 }
 
-// x5debruijn32 [32]int8, escapes: true, atomic.h:261:20
-var x708debruijn32 = ds + 44840
+// x5debruijn32 [32]int8, escapes: false, atomic.h:261:20
+var x708debruijn32 = *(*[32]int8)(unsafe.Pointer(ts + 37348 /* "\x00\x01\x17\x02\x1d\x18\x13\x03\x1e\x1b\x19\v\x14\b\x04\r..." */))
 
 // linking ffsl.o
 
@@ -26101,11 +26164,11 @@ func x2a_ctz_64(tls TLS, _x uint64) (r int32) {
 		}
 		return x2a_ctz_32(tls, _y)
 	}
-	return int32(*(*int8)(unsafe.Pointer(x709debruijn64 + uintptr(_x&-_x*uint64(0x22fdd63cc95386d)>>(uint(58)%64)))))
+	return int32(*(*int8)(unsafe.Pointer(uintptr(unsafe.Pointer(&x709debruijn64)) + uintptr(_x&-_x*uint64(0x22fdd63cc95386d)>>(uint(58)%64)))))
 }
 
-// x3debruijn64 [64]int8, escapes: true, atomic.h:274:20
-var x709debruijn64 = ds + 44872
+// x3debruijn64 [64]int8, escapes: false, atomic.h:274:20
+var x709debruijn64 = *(*[64]int8)(unsafe.Pointer(ts + 37280 /* "\x00\x01\x025\x03\a6\x1b\x04&)\b\"70\x1c..." */))
 
 type t105uint32_t = uint32
 
@@ -26113,11 +26176,11 @@ type t67uint64_t = uint64
 
 // xa_ctz_32 is defined at atomic.h:256:19
 func x2a_ctz_32(tls TLS, _x uint32) (r int32) {
-	return int32(*(*int8)(unsafe.Pointer(x710debruijn32 + uintptr(_x&-_x*uint32(0x76be629)>>(uint(27)%32)))))
+	return int32(*(*int8)(unsafe.Pointer(uintptr(unsafe.Pointer(&x710debruijn32)) + uintptr(_x&-_x*uint32(0x76be629)>>(uint(27)%32)))))
 }
 
-// x5debruijn32 [32]int8, escapes: true, atomic.h:261:20
-var x710debruijn32 = ds + 44936
+// x5debruijn32 [32]int8, escapes: false, atomic.h:261:20
+var x710debruijn32 = *(*[32]int8)(unsafe.Pointer(ts + 37348 /* "\x00\x01\x17\x02\x1d\x18\x13\x03\x1e\x1b\x19\v\x14\b\x04\r..." */))
 
 // linking ffsll.o
 
@@ -26141,11 +26204,11 @@ func x3a_ctz_64(tls TLS, _x uint64) (r int32) {
 		}
 		return x3a_ctz_32(tls, _y)
 	}
-	return int32(*(*int8)(unsafe.Pointer(x711debruijn64 + uintptr(_x&-_x*uint64(0x22fdd63cc95386d)>>(uint(58)%64)))))
+	return int32(*(*int8)(unsafe.Pointer(uintptr(unsafe.Pointer(&x711debruijn64)) + uintptr(_x&-_x*uint64(0x22fdd63cc95386d)>>(uint(58)%64)))))
 }
 
-// x2debruijn64 [64]int8, escapes: true, atomic.h:274:20
-var x711debruijn64 = ds + 44968
+// x2debruijn64 [64]int8, escapes: false, atomic.h:274:20
+var x711debruijn64 = *(*[64]int8)(unsafe.Pointer(ts + 37280 /* "\x00\x01\x025\x03\a6\x1b\x04&)\b\"70\x1c..." */))
 
 type t106uint32_t = uint32
 
@@ -26153,11 +26216,11 @@ type t68uint64_t = uint64
 
 // xa_ctz_32 is defined at atomic.h:256:19
 func x3a_ctz_32(tls TLS, _x uint32) (r int32) {
-	return int32(*(*int8)(unsafe.Pointer(x712debruijn32 + uintptr(_x&-_x*uint32(0x76be629)>>(uint(27)%32)))))
+	return int32(*(*int8)(unsafe.Pointer(uintptr(unsafe.Pointer(&x712debruijn32)) + uintptr(_x&-_x*uint32(0x76be629)>>(uint(27)%32)))))
 }
 
-// x4debruijn32 [32]int8, escapes: true, atomic.h:261:20
-var x712debruijn32 = ds + 45032
+// x4debruijn32 [32]int8, escapes: false, atomic.h:261:20
+var x712debruijn32 = *(*[32]int8)(unsafe.Pointer(ts + 37348 /* "\x00\x01\x17\x02\x1d\x18\x13\x03\x1e\x1b\x19\v\x14\b\x04\r..." */))
 
 // linking fmtmsg.o
 
@@ -26178,37 +26241,37 @@ func Xfmtmsg(tls TLS, _classification int64, _label uintptr /* *int8 */, _severi
 	_ret = int32(0)
 	_verb = int32(0)
 	_errstring = 0
-	_cmsg = Xgetenv(tls, ts+1288 /* "MSGVERB" */)
+	_cmsg = Xgetenv(tls, ts+45808 /* "MSGVERB" */)
 	*(*[6]uintptr)(unsafe.Pointer(_msgs)) = [6]uintptr{
-		0: ts + 1296, /* "label" */
-		1: ts + 1304, /* "severity" */
-		2: ts + 1316, /* "text" */
-		3: ts + 1324, /* "action" */
-		4: ts + 1332, /* "tag" */
+		0: ts + 45816, /* "label" */
+		1: ts + 45824, /* "severity" */
+		2: ts + 45836, /* "text" */
+		3: ts + 45844, /* "action" */
+		4: ts + 45852, /* "tag" */
 	}
 	Xpthread_setcancelstate(tls, int32(1), _cs)
 	if _severity == int32(1) {
-		_errstring = ts + 1336 /* "HALT: " */
+		_errstring = ts + 45856 /* "HALT: " */
 	} else if _severity == int32(2) {
-		_errstring = ts + 1344 /* "ERROR: " */
+		_errstring = ts + 45864 /* "ERROR: " */
 	} else if _severity == int32(3) {
-		_errstring = ts + 1352 /* "WARNING: " */
+		_errstring = ts + 45872 /* "WARNING: " */
 	} else if _severity == int32(4) {
-		_errstring = ts + 1364 /* "INFO: " */
+		_errstring = ts + 45884 /* "INFO: " */
 	}
 	if (_classification & int64(512)) != 0 {
-		_consolefd = Xopen(tls, ts+1372 /* "/dev/console" */, int32(01))
+		_consolefd = Xopen(tls, ts+45892 /* "/dev/console" */, int32(01))
 		if _consolefd < int32(0) {
 			_ret = int32(4)
 		} else {
-			if Xdprintf(tls, _consolefd, ts+1388 /* "%s%s%s%s%s%s%s%s..." */, func() uintptr {
+			if Xdprintf(tls, _consolefd, ts+45908 /* "%s%s%s%s%s%s%s%s..." */, func() uintptr {
 				if _label != 0 {
 					return _label
 				}
 				return ts + 0 /* "" */
 			}(), func() uintptr {
 				if _label != 0 {
-					return ts + 920 /* ": " */
+					return ts + 31468 /* ": " */
 				}
 				return ts + 0 /* "" */
 			}(), func() uintptr {
@@ -26223,7 +26286,7 @@ func Xfmtmsg(tls TLS, _classification int64, _label uintptr /* *int8 */, _severi
 				return ts + 0 /* "" */
 			}(), func() uintptr {
 				if _action != 0 {
-					return ts + 1408 /* "\nTO FIX: " */
+					return ts + 45928 /* "\nTO FIX: " */
 				}
 				return ts + 0 /* "" */
 			}(), func() uintptr {
@@ -26233,7 +26296,7 @@ func Xfmtmsg(tls TLS, _classification int64, _label uintptr /* *int8 */, _severi
 				return ts + 0 /* "" */
 			}(), func() uintptr {
 				if _action != 0 {
-					return ts + 1420 /* " " */
+					return ts + 45940 /* " " */
 				}
 				return ts + 0 /* "" */
 			}(), func() uintptr {
@@ -26268,14 +26331,14 @@ func Xfmtmsg(tls TLS, _classification int64, _label uintptr /* *int8 */, _severi
 		if _verb == 0 {
 			_verb = int32(0xff)
 		}
-		if Xdprintf(tls, int32(2), ts+1388 /* "%s%s%s%s%s%s%s%s..." */, func() uintptr {
+		if Xdprintf(tls, int32(2), ts+45908 /* "%s%s%s%s%s%s%s%s..." */, func() uintptr {
 			if ((_verb & int32(1)) != 0) && (_label != 0) {
 				return _label
 			}
 			return ts + 0 /* "" */
 		}(), func() uintptr {
 			if ((_verb & int32(1)) != 0) && (_label != 0) {
-				return ts + 920 /* ": " */
+				return ts + 31468 /* ": " */
 			}
 			return ts + 0 /* "" */
 		}(), func() uintptr {
@@ -26290,7 +26353,7 @@ func Xfmtmsg(tls TLS, _classification int64, _label uintptr /* *int8 */, _severi
 			return ts + 0 /* "" */
 		}(), func() uintptr {
 			if ((_verb & int32(8)) != 0) && (_action != 0) {
-				return ts + 1408 /* "\nTO FIX: " */
+				return ts + 45928 /* "\nTO FIX: " */
 			}
 			return ts + 0 /* "" */
 		}(), func() uintptr {
@@ -26300,7 +26363,7 @@ func Xfmtmsg(tls TLS, _classification int64, _label uintptr /* *int8 */, _severi
 			return ts + 0 /* "" */
 		}(), func() uintptr {
 			if ((_verb & int32(8)) != 0) && (_action != 0) {
-				return ts + 1420 /* " " */
+				return ts + 45940 /* " " */
 			}
 			return ts + 0 /* "" */
 		}(), func() uintptr {
@@ -26333,7 +26396,7 @@ func x_strcolcmp(tls TLS, _lstr uintptr /* *int8 */, _bstr uintptr /* *int8 */) 
 	return 0
 }
 
-type t53size_t = uint64
+type t54size_t = uint64
 
 // linking forkpty.o
 
@@ -26442,8 +26505,8 @@ func Xget_current_dir_name(tls TLS) (r uintptr /* *int8 */) {
 		_res uintptr     // *int8
 	)
 	defer Free(esc)
-	_res = Xgetenv(tls, ts+1424 /* "PWD" */)
-	if (((((_res != 0) && (*(*int8)(unsafe.Pointer(_res)) != 0)) && (Xstat(tls, _res, _a) == 0)) && (Xstat(tls, ts+1276 /* "." */, _b) == 0)) && (*(*uint64)(unsafe.Pointer(_a)) == *(*uint64)(unsafe.Pointer(_b)))) && (*(*uint64)(unsafe.Pointer(_a + 8)) == *(*uint64)(unsafe.Pointer(_b + 8))) {
+	_res = Xgetenv(tls, ts+45944 /* "PWD" */)
+	if (((((_res != 0) && (*(*int8)(unsafe.Pointer(_res)) != 0)) && (Xstat(tls, _res, _a) == 0)) && (Xstat(tls, ts+37168 /* "." */, _b) == 0)) && (*(*uint64)(unsafe.Pointer(_a)) == *(*uint64)(unsafe.Pointer(_b)))) && (*(*uint64)(unsafe.Pointer(_a + 8)) == *(*uint64)(unsafe.Pointer(_b + 8))) {
 		return Xstrdup(tls, _res)
 	}
 	return Xgetcwd(tls, null, uint64(0))
@@ -26500,9 +26563,9 @@ type t19time_t = int64
 func Xgetauxval(tls TLS, _item uint64) (r uint64) {
 	var _auxv uintptr // *Tsize_t = uint64
 
-	_auxv = *(*uintptr)(unsafe.Pointer(X__libc + 16))
+	_auxv = *(*uintptr)(unsafe.Pointer(uintptr(unsafe.Pointer(&X__libc)) + 16))
 	if _item == uint64(23) {
-		return uint64(*(*int32)(unsafe.Pointer(X__libc + 8)))
+		return uint64(*(*int32)(unsafe.Pointer(uintptr(unsafe.Pointer(&X__libc)) + 8)))
 	}
 	for ; *(*uint64)(unsafe.Pointer(_auxv)) != 0; func() { _auxv += 8 * uintptr(2) }() {
 		if *(*uint64)(unsafe.Pointer(_auxv)) == _item {
@@ -26513,7 +26576,7 @@ func Xgetauxval(tls TLS, _item uint64) (r uint64) {
 	return uint64(0)
 }
 
-type t54size_t = uint64
+type t55size_t = uint64
 
 // linking getdomainname.o
 
@@ -26541,7 +26604,7 @@ type Sutsname = struct {
 	Fdomainname [65]int8
 }
 
-type t55size_t = uint64
+type t56size_t = uint64
 
 // linking getentropy.o
 
@@ -26577,7 +26640,7 @@ func Xgetentropy(tls TLS, _buffer uintptr /* *void */, _len uint64) (r int32) {
 	return _ret
 }
 
-type t56size_t = uint64
+type t57size_t = uint64
 
 // linking gethostid.o
 
@@ -26588,29 +26651,29 @@ func Xgethostid(tls TLS) (r int64) {
 
 // linking getopt.o
 
-// Xoptarg *int8, escapes: true, getopt.c:9:6
-var Xoptarg = bss + 3856
+// Xoptarg *int8, escapes: false, getopt.c:9:6
+var Xoptarg uintptr
 
-// Xoptind int32, escapes: true, getopt.c:10:5
-var Xoptind = ds + 45064
+// Xoptind int32, escapes: false, getopt.c:10:5
+var Xoptind = int32(1)
 
-// Xopterr int32, escapes: true, getopt.c:10:15
-var Xopterr = ds + 45072
+// Xopterr int32, escapes: false, getopt.c:10:15
+var Xopterr = int32(1)
 
-// Xoptopt int32, escapes: true, getopt.c:10:25
-var Xoptopt = bss + 3864
+// Xoptopt int32, escapes: false, getopt.c:10:25
+var Xoptopt int32
 
-// X__optpos int32, escapes: true, getopt.c:10:33
-var X__optpos = bss + 3872
+// X__optpos int32, escapes: false, getopt.c:10:33
+var X__optpos int32
 
-// X__optreset int32, escapes: true, getopt.c:10:43
-var X__optreset = bss + 3880
+// X__optreset int32, escapes: false, getopt.c:10:43
+var X__optreset int32
 
 // X__getopt_msg is defined at getopt.c:15:6
 func X__getopt_msg(tls TLS, _a uintptr /* *int8 */, _b uintptr /* *int8 */, _c uintptr /* *int8 */, _l uint64) {
 	var _f uintptr // *TFILE = S_IO_FILE
 
-	_f = *(*uintptr)(unsafe.Pointer(Xstderr))
+	_f = Xstderr
 	_b = X__lctrans_cur(tls, _b)
 	Xflockfile(tls, _f)
 	if ((Xfputs(tls, _a, _f) >= int32(0)) && (Xfwrite(tls, _b, Xstrlen(tls, _b), uint64(1), _f) != 0)) && (Xfwrite(tls, _c, uint64(1), _l, _f) == _l) {
@@ -26635,39 +26698,39 @@ func Xgetopt(tls TLS, _argc int32, _argv uintptr /* **int8 */, _optstring uintpt
 		_optchar uintptr // *int8
 	)
 	defer Free(esc)
-	if (*(*int32)(unsafe.Pointer(Xoptind)) == 0) || (*(*int32)(unsafe.Pointer(X__optreset)) != 0) {
-		*(*int32)(unsafe.Pointer(X__optreset)) = int32(0)
-		*(*int32)(unsafe.Pointer(X__optpos)) = int32(0)
-		*(*int32)(unsafe.Pointer(Xoptind)) = int32(1)
+	if (Xoptind == 0) || (X__optreset != 0) {
+		X__optreset = int32(0)
+		X__optpos = int32(0)
+		Xoptind = int32(1)
 	}
-	if (*(*int32)(unsafe.Pointer(Xoptind)) >= _argc) || (*(*uintptr)(unsafe.Pointer(_argv + 8*uintptr(*(*int32)(unsafe.Pointer(Xoptind))))) == 0) {
+	if (Xoptind >= _argc) || (*(*uintptr)(unsafe.Pointer(_argv + 8*uintptr(Xoptind))) == 0) {
 		return -1
 	}
-	if int32(*(*int8)(unsafe.Pointer(*(*uintptr)(unsafe.Pointer(_argv + 8*uintptr(*(*int32)(unsafe.Pointer(Xoptind)))))))) != int32('-') {
+	if int32(*(*int8)(unsafe.Pointer(*(*uintptr)(unsafe.Pointer(_argv + 8*uintptr(Xoptind)))))) != int32('-') {
 		if int32(*(*int8)(unsafe.Pointer(_optstring))) == int32('-') {
-			*(*uintptr)(unsafe.Pointer(Xoptarg)) = *(*uintptr)(unsafe.Pointer(_argv + 8*uintptr(postinc713((*int32)(unsafe.Pointer(Xoptind))))))
+			Xoptarg = *(*uintptr)(unsafe.Pointer(_argv + 8*uintptr(postinc713(&Xoptind))))
 			return 1
 		}
 		return -1
 	}
-	if *(*int8)(unsafe.Pointer(*(*uintptr)(unsafe.Pointer(_argv + 8*uintptr(*(*int32)(unsafe.Pointer(Xoptind))))) + 1)) == 0 {
+	if *(*int8)(unsafe.Pointer(*(*uintptr)(unsafe.Pointer(_argv + 8*uintptr(Xoptind))) + 1)) == 0 {
 		return -1
 	}
-	if (int32(*(*int8)(unsafe.Pointer(*(*uintptr)(unsafe.Pointer(_argv + 8*uintptr(*(*int32)(unsafe.Pointer(Xoptind))))) + 1))) == int32('-')) && (*(*int8)(unsafe.Pointer(*(*uintptr)(unsafe.Pointer(_argv + 8*uintptr(*(*int32)(unsafe.Pointer(Xoptind))))) + 2)) == 0) {
-		return func() int32 { *(*int32)(unsafe.Pointer(Xoptind))++; return int32(-1) }()
+	if (int32(*(*int8)(unsafe.Pointer(*(*uintptr)(unsafe.Pointer(_argv + 8*uintptr(Xoptind))) + 1))) == int32('-')) && (*(*int8)(unsafe.Pointer(*(*uintptr)(unsafe.Pointer(_argv + 8*uintptr(Xoptind))) + 2)) == 0) {
+		return func() int32 { Xoptind++; return int32(-1) }()
 	}
-	if *(*int32)(unsafe.Pointer(X__optpos)) == 0 {
-		*(*int32)(unsafe.Pointer(X__optpos))++
+	if X__optpos == 0 {
+		X__optpos++
 	}
-	if set714(&_k, Xmbtowc(tls, _c, *(*uintptr)(unsafe.Pointer(_argv + 8*uintptr(*(*int32)(unsafe.Pointer(Xoptind)))))+uintptr(*(*int32)(unsafe.Pointer(X__optpos))), uint64(4))) < int32(0) {
+	if set714(&_k, Xmbtowc(tls, _c, *(*uintptr)(unsafe.Pointer(_argv + 8*uintptr(Xoptind)))+uintptr(X__optpos), uint64(4))) < int32(0) {
 		_k = int32(1)
 		*(*int32)(unsafe.Pointer(_c)) = int32(0xfffd)
 	}
-	_optchar = *(*uintptr)(unsafe.Pointer(_argv + 8*uintptr(*(*int32)(unsafe.Pointer(Xoptind))))) + uintptr(*(*int32)(unsafe.Pointer(X__optpos)))
-	*(*int32)(unsafe.Pointer(X__optpos)) = *(*int32)(unsafe.Pointer(X__optpos)) + _k
-	if *(*int8)(unsafe.Pointer(*(*uintptr)(unsafe.Pointer(_argv + 8*uintptr(*(*int32)(unsafe.Pointer(Xoptind))))) + uintptr(*(*int32)(unsafe.Pointer(X__optpos))))) == 0 {
-		*(*int32)(unsafe.Pointer(Xoptind))++
-		*(*int32)(unsafe.Pointer(X__optpos)) = int32(0)
+	_optchar = *(*uintptr)(unsafe.Pointer(_argv + 8*uintptr(Xoptind))) + uintptr(X__optpos)
+	X__optpos = X__optpos + _k
+	if *(*int8)(unsafe.Pointer(*(*uintptr)(unsafe.Pointer(_argv + 8*uintptr(Xoptind))) + uintptr(X__optpos))) == 0 {
+		Xoptind++
+		X__optpos = int32(0)
 	}
 	if (int32(*(*int8)(unsafe.Pointer(_optstring))) == int32('-')) || (int32(*(*int8)(unsafe.Pointer(_optstring))) == int32('+')) {
 		_optstring++
@@ -26683,25 +26746,25 @@ func Xgetopt(tls TLS, _argc int32, _argv uintptr /* **int8 */, _optstring uintpt
 		}
 	}
 	if (*(*int32)(unsafe.Pointer(_d)) != *(*int32)(unsafe.Pointer(_c))) || (*(*int32)(unsafe.Pointer(_c)) == int32(':')) {
-		*(*int32)(unsafe.Pointer(Xoptopt)) = *(*int32)(unsafe.Pointer(_c))
-		if (int32(*(*int8)(unsafe.Pointer(_optstring))) != int32(':')) && (*(*int32)(unsafe.Pointer(Xopterr)) != 0) {
-			X__getopt_msg(tls, *(*uintptr)(unsafe.Pointer(_argv)), ts+1428 /* ": unrecognized o..." */, _optchar, uint64(_k))
+		Xoptopt = *(*int32)(unsafe.Pointer(_c))
+		if (int32(*(*int8)(unsafe.Pointer(_optstring))) != int32(':')) && (Xopterr != 0) {
+			X__getopt_msg(tls, *(*uintptr)(unsafe.Pointer(_argv)), ts+45948 /* ": unrecognized o..." */, _optchar, uint64(_k))
 		}
 		return '?'
 	}
 	if int32(*(*int8)(unsafe.Pointer(_optstring + uintptr(_i)))) == int32(':') {
-		*(*uintptr)(unsafe.Pointer(Xoptarg)) = null
-		if (int32(*(*int8)(unsafe.Pointer(_optstring + uintptr(_i+int32(1))))) != int32(':')) || (*(*int32)(unsafe.Pointer(X__optpos)) != 0) {
-			*(*uintptr)(unsafe.Pointer(Xoptarg)) = *(*uintptr)(unsafe.Pointer(_argv + 8*uintptr(postinc713((*int32)(unsafe.Pointer(Xoptind)))))) + uintptr(*(*int32)(unsafe.Pointer(X__optpos)))
-			*(*int32)(unsafe.Pointer(X__optpos)) = int32(0)
+		Xoptarg = null
+		if (int32(*(*int8)(unsafe.Pointer(_optstring + uintptr(_i+int32(1))))) != int32(':')) || (X__optpos != 0) {
+			Xoptarg = *(*uintptr)(unsafe.Pointer(_argv + 8*uintptr(postinc713(&Xoptind)))) + uintptr(X__optpos)
+			X__optpos = int32(0)
 		}
-		if *(*int32)(unsafe.Pointer(Xoptind)) > _argc {
-			*(*int32)(unsafe.Pointer(Xoptopt)) = *(*int32)(unsafe.Pointer(_c))
+		if Xoptind > _argc {
+			Xoptopt = *(*int32)(unsafe.Pointer(_c))
 			if int32(*(*int8)(unsafe.Pointer(_optstring))) == int32(':') {
 				return ':'
 			}
-			if *(*int32)(unsafe.Pointer(Xopterr)) != 0 {
-				X__getopt_msg(tls, *(*uintptr)(unsafe.Pointer(_argv)), ts+1452 /* ": option require..." */, _optchar, uint64(_k))
+			if Xopterr != 0 {
+				X__getopt_msg(tls, *(*uintptr)(unsafe.Pointer(_argv)), ts+45972 /* ": option require..." */, _optchar, uint64(_k))
 			}
 			return '?'
 		}
@@ -26709,7 +26772,7 @@ func Xgetopt(tls TLS, _argc int32, _argv uintptr /* **int8 */, _optstring uintpt
 	return *(*int32)(unsafe.Pointer(_c))
 }
 
-type t57size_t = uint64
+type t58size_t = uint64
 
 type t5wchar_t = int32
 
@@ -26733,6 +26796,7 @@ type Soption = struct {
 	Fhas_arg int32
 	Fflag    uintptr // *int32
 	Fval     int32
+	_        [4]byte
 }
 
 // x__getopt_long is defined at getopt_long.c:25:12
@@ -26745,17 +26809,17 @@ func x__getopt_long(tls TLS, _argc int32, _argv uintptr /* **int8 */, _optstring
 		_1i      int32
 		_cnt     int32
 	)
-	if (*(*int32)(unsafe.Pointer(Xoptind)) == 0) || (*(*int32)(unsafe.Pointer(X__optreset)) != 0) {
-		*(*int32)(unsafe.Pointer(X__optreset)) = int32(0)
-		*(*int32)(unsafe.Pointer(X__optpos)) = int32(0)
-		*(*int32)(unsafe.Pointer(Xoptind)) = int32(1)
+	if (Xoptind == 0) || (X__optreset != 0) {
+		X__optreset = int32(0)
+		X__optpos = int32(0)
+		Xoptind = int32(1)
 	}
-	if (*(*int32)(unsafe.Pointer(Xoptind)) >= _argc) || (*(*uintptr)(unsafe.Pointer(_argv + 8*uintptr(*(*int32)(unsafe.Pointer(Xoptind))))) == 0) {
+	if (Xoptind >= _argc) || (*(*uintptr)(unsafe.Pointer(_argv + 8*uintptr(Xoptind))) == 0) {
 		return -1
 	}
-	_skipped = *(*int32)(unsafe.Pointer(Xoptind))
+	_skipped = Xoptind
 	if (int32(*(*int8)(unsafe.Pointer(_optstring))) != int32('+')) && (int32(*(*int8)(unsafe.Pointer(_optstring))) != int32('-')) {
-		for _i = *(*int32)(unsafe.Pointer(Xoptind)); ; _i++ {
+		for _i = Xoptind; ; _i++ {
 			if (_i >= _argc) || (*(*uintptr)(unsafe.Pointer(_argv + 8*uintptr(_i))) == 0) {
 				return -1
 			}
@@ -26763,16 +26827,16 @@ func x__getopt_long(tls TLS, _argc int32, _argv uintptr /* **int8 */, _optstring
 				break
 			}
 		}
-		*(*int32)(unsafe.Pointer(Xoptind)) = _i
+		Xoptind = _i
 	}
-	_resumed = *(*int32)(unsafe.Pointer(Xoptind))
+	_resumed = Xoptind
 	_ret = x__getopt_long_core(tls, _argc, _argv, _optstring, _longopts, _idx, _longonly)
 	if _resumed > _skipped {
-		_cnt = *(*int32)(unsafe.Pointer(Xoptind)) - _resumed
+		_cnt = Xoptind - _resumed
 		for _1i = int32(0); _1i < _cnt; _1i++ {
-			xpermute(tls, _argv, _skipped, *(*int32)(unsafe.Pointer(Xoptind))-int32(1))
+			xpermute(tls, _argv, _skipped, Xoptind-int32(1))
 		}
-		*(*int32)(unsafe.Pointer(Xoptind)) = _skipped + _cnt
+		Xoptind = _skipped + _cnt
 	}
 	return _ret
 }
@@ -26795,10 +26859,10 @@ func x__getopt_long_core(tls TLS, _argc int32, _argv uintptr /* **int8 */, _opts
 		_l     int32
 		_j     int32
 	)
-	*(*uintptr)(unsafe.Pointer(Xoptarg)) = null
-	if ((_longopts != 0) && (int32(*(*int8)(unsafe.Pointer(*(*uintptr)(unsafe.Pointer(_argv + 8*uintptr(*(*int32)(unsafe.Pointer(Xoptind)))))))) == int32('-'))) && ((((_longonly != 0) && (*(*int8)(unsafe.Pointer(*(*uintptr)(unsafe.Pointer(_argv + 8*uintptr(*(*int32)(unsafe.Pointer(Xoptind))))) + 1)) != 0)) && (int32(*(*int8)(unsafe.Pointer(*(*uintptr)(unsafe.Pointer(_argv + 8*uintptr(*(*int32)(unsafe.Pointer(Xoptind))))) + 1))) != int32('-'))) || ((int32(*(*int8)(unsafe.Pointer(*(*uintptr)(unsafe.Pointer(_argv + 8*uintptr(*(*int32)(unsafe.Pointer(Xoptind))))) + 1))) == int32('-')) && (*(*int8)(unsafe.Pointer(*(*uintptr)(unsafe.Pointer(_argv + 8*uintptr(*(*int32)(unsafe.Pointer(Xoptind))))) + 2)) != 0))) {
+	Xoptarg = null
+	if ((_longopts != 0) && (int32(*(*int8)(unsafe.Pointer(*(*uintptr)(unsafe.Pointer(_argv + 8*uintptr(Xoptind)))))) == int32('-'))) && ((((_longonly != 0) && (*(*int8)(unsafe.Pointer(*(*uintptr)(unsafe.Pointer(_argv + 8*uintptr(Xoptind))) + 1)) != 0)) && (int32(*(*int8)(unsafe.Pointer(*(*uintptr)(unsafe.Pointer(_argv + 8*uintptr(Xoptind))) + 1))) != int32('-'))) || ((int32(*(*int8)(unsafe.Pointer(*(*uintptr)(unsafe.Pointer(_argv + 8*uintptr(Xoptind))) + 1))) == int32('-')) && (*(*int8)(unsafe.Pointer(*(*uintptr)(unsafe.Pointer(_argv + 8*uintptr(Xoptind))) + 2)) != 0))) {
 		_colon = bool2int(int32(*(*int8)(unsafe.Pointer(_optstring + uintptr(bool2int((int32(*(*int8)(unsafe.Pointer(_optstring))) == int32('+')) || (int32(*(*int8)(unsafe.Pointer(_optstring))) == int32('-'))))))) == int32(':'))
-		_start = *(*uintptr)(unsafe.Pointer(_argv + 8*uintptr(*(*int32)(unsafe.Pointer(Xoptind))))) + uintptr(1)
+		_start = *(*uintptr)(unsafe.Pointer(_argv + 8*uintptr(Xoptind))) + uintptr(1)
 		for _cnt = set715(&_i, int32(0)); *(*uintptr)(unsafe.Pointer(_longopts + 32*uintptr(_i))) != 0; _i++ {
 			_name = *(*uintptr)(unsafe.Pointer(_longopts + 32*uintptr(_i)))
 			_opt = _start
@@ -26834,30 +26898,30 @@ func x__getopt_long_core(tls TLS, _argc int32, _argv uintptr /* **int8 */, _opts
 		if _cnt == int32(1) {
 			_i = _match
 			_opt = _arg
-			*(*int32)(unsafe.Pointer(Xoptind))++
+			Xoptind++
 			if int32(*(*int8)(unsafe.Pointer(_opt))) == int32('=') {
 				if *(*int32)(unsafe.Pointer((_longopts + 32*uintptr(_i)) + 8)) == 0 {
-					*(*int32)(unsafe.Pointer(Xoptopt)) = *(*int32)(unsafe.Pointer((_longopts + 32*uintptr(_i)) + 24))
-					if (_colon != 0) || (*(*int32)(unsafe.Pointer(Xopterr)) == 0) {
+					Xoptopt = *(*int32)(unsafe.Pointer((_longopts + 32*uintptr(_i)) + 24))
+					if (_colon != 0) || (Xopterr == 0) {
 						return '?'
 					}
-					X__getopt_msg(tls, *(*uintptr)(unsafe.Pointer(_argv)), ts+1484 /* ": option does no..." */, *(*uintptr)(unsafe.Pointer(_longopts + 32*uintptr(_i))), Xstrlen(tls, *(*uintptr)(unsafe.Pointer(_longopts + 32*uintptr(_i)))))
+					X__getopt_msg(tls, *(*uintptr)(unsafe.Pointer(_argv)), ts+46004 /* ": option does no..." */, *(*uintptr)(unsafe.Pointer(_longopts + 32*uintptr(_i))), Xstrlen(tls, *(*uintptr)(unsafe.Pointer(_longopts + 32*uintptr(_i)))))
 					return '?'
 				}
-				*(*uintptr)(unsafe.Pointer(Xoptarg)) = _opt + uintptr(1)
+				Xoptarg = _opt + uintptr(1)
 			} else if *(*int32)(unsafe.Pointer((_longopts + 32*uintptr(_i)) + 8)) == int32(1) {
-				if set716((*uintptr)(unsafe.Pointer(Xoptarg)), *(*uintptr)(unsafe.Pointer(_argv + 8*uintptr(*(*int32)(unsafe.Pointer(Xoptind)))))) == 0 {
-					*(*int32)(unsafe.Pointer(Xoptopt)) = *(*int32)(unsafe.Pointer((_longopts + 32*uintptr(_i)) + 24))
+				if set716(&Xoptarg, *(*uintptr)(unsafe.Pointer(_argv + 8*uintptr(Xoptind)))) == 0 {
+					Xoptopt = *(*int32)(unsafe.Pointer((_longopts + 32*uintptr(_i)) + 24))
 					if _colon != 0 {
 						return ':'
 					}
-					if *(*int32)(unsafe.Pointer(Xopterr)) == 0 {
+					if Xopterr == 0 {
 						return '?'
 					}
-					X__getopt_msg(tls, *(*uintptr)(unsafe.Pointer(_argv)), ts+1452 /* ": option require..." */, *(*uintptr)(unsafe.Pointer(_longopts + 32*uintptr(_i))), Xstrlen(tls, *(*uintptr)(unsafe.Pointer(_longopts + 32*uintptr(_i)))))
+					X__getopt_msg(tls, *(*uintptr)(unsafe.Pointer(_argv)), ts+45972 /* ": option require..." */, *(*uintptr)(unsafe.Pointer(_longopts + 32*uintptr(_i))), Xstrlen(tls, *(*uintptr)(unsafe.Pointer(_longopts + 32*uintptr(_i)))))
 					return '?'
 				}
-				*(*int32)(unsafe.Pointer(Xoptind))++
+				Xoptind++
 			}
 			if _idx != 0 {
 				*(*int32)(unsafe.Pointer(_idx)) = _i
@@ -26868,17 +26932,17 @@ func x__getopt_long_core(tls TLS, _argc int32, _argv uintptr /* **int8 */, _opts
 			}
 			return *(*int32)(unsafe.Pointer((_longopts + 32*uintptr(_i)) + 24))
 		}
-		if int32(*(*int8)(unsafe.Pointer(*(*uintptr)(unsafe.Pointer(_argv + 8*uintptr(*(*int32)(unsafe.Pointer(Xoptind))))) + 1))) == int32('-') {
-			*(*int32)(unsafe.Pointer(Xoptopt)) = int32(0)
-			if (_colon == 0) && (*(*int32)(unsafe.Pointer(Xopterr)) != 0) {
+		if int32(*(*int8)(unsafe.Pointer(*(*uintptr)(unsafe.Pointer(_argv + 8*uintptr(Xoptind))) + 1))) == int32('-') {
+			Xoptopt = int32(0)
+			if (_colon == 0) && (Xopterr != 0) {
 				X__getopt_msg(tls, *(*uintptr)(unsafe.Pointer(_argv)), func() uintptr {
 					if _cnt != 0 {
-						return ts + 1524 /* ": option is ambi..." */
+						return ts + 46044 /* ": option is ambi..." */
 					}
-					return ts + 1428 /* ": unrecognized o..." */
-				}(), *(*uintptr)(unsafe.Pointer(_argv + 8*uintptr(*(*int32)(unsafe.Pointer(Xoptind)))))+uintptr(2), Xstrlen(tls, *(*uintptr)(unsafe.Pointer(_argv + 8*uintptr(*(*int32)(unsafe.Pointer(Xoptind)))))+uintptr(2)))
+					return ts + 45948 /* ": unrecognized o..." */
+				}(), *(*uintptr)(unsafe.Pointer(_argv + 8*uintptr(Xoptind)))+uintptr(2), Xstrlen(tls, *(*uintptr)(unsafe.Pointer(_argv + 8*uintptr(Xoptind)))+uintptr(2)))
 			}
-			*(*int32)(unsafe.Pointer(Xoptind))++
+			Xoptind++
 			return '?'
 		}
 	}
@@ -26900,7 +26964,7 @@ func xpermute(tls TLS, _argv uintptr /* **int8 */, _dest int32, _src int32) {
 	*(*uintptr)(unsafe.Pointer(_av + 8*uintptr(_dest))) = _tmp
 }
 
-type t58size_t = uint64
+type t59size_t = uint64
 
 // linking getpriority.o
 
@@ -27083,7 +27147,7 @@ func Xgetsubopt(tls TLS, _opt uintptr /* **int8 */, _keys uintptr /* **int8 */, 
 	return -1
 }
 
-type t59size_t = uint64
+type t60size_t = uint64
 
 // linking initgroups.o
 
@@ -27127,7 +27191,7 @@ func x24__syscall3(tls TLS, _n int64, _a1 int64, _a2 int64, _a3 int64) (r int64)
 
 // Xissetugid is defined at issetugid.c:4:5
 func Xissetugid(tls TLS) (r int32) {
-	return *(*int32)(unsafe.Pointer(X__libc + 8))
+	return *(*int32)(unsafe.Pointer(uintptr(unsafe.Pointer(&X__libc)) + 8))
 }
 
 // linking lockf.o
@@ -27182,6 +27246,7 @@ type Sflock = struct {
 	Fl_start  int64
 	Fl_len    int64
 	Fl_pid    int32
+	_         [4]byte
 }
 
 type t26off_t = int64
@@ -27229,13 +27294,13 @@ func Xgetmntent_r(tls TLS, _f uintptr /* *TFILE = S_IO_FILE */, _mnt uintptr /* 
 		_use_internal int32
 	)
 	defer Free(esc)
-	_use_internal = bool2int(_linebuf == xinternal_buf)
+	_use_internal = bool2int(_linebuf == uintptr(unsafe.Pointer(&xinternal_buf)))
 	*(*int32)(unsafe.Pointer(_mnt + 32)) = int32(0)
 	*(*int32)(unsafe.Pointer(_mnt + 36)) = int32(0)
 	for c := true; c; c = (_cnt < int32(2)) || (int32(*(*int8)(unsafe.Pointer(_linebuf + uintptr(*(*int32)(unsafe.Pointer(_n)))))) == int32('#')) {
 		if _use_internal != 0 {
-			Xgetline(tls, xinternal_buf, xinternal_bufsize, _f)
-			_linebuf = *(*uintptr)(unsafe.Pointer(xinternal_buf))
+			Xgetline(tls, uintptr(unsafe.Pointer(&xinternal_buf)), uintptr(unsafe.Pointer(&xinternal_bufsize)), _f)
+			_linebuf = xinternal_buf
 		} else {
 			Xfgets(tls, _linebuf, _buflen, _f)
 		}
@@ -27243,11 +27308,11 @@ func Xgetmntent_r(tls TLS, _f uintptr /* *TFILE = S_IO_FILE */, _mnt uintptr /* 
 			return null
 		}
 		if Xstrchr(tls, _linebuf, int32('\n')) == 0 {
-			Xfscanf(tls, _f, ts+1548 /* "%*[^\n]%*[\n]" */)
+			Xfscanf(tls, _f, ts+46068 /* "%*[^\n]%*[\n]" */)
 			*(*int32)(unsafe.Pointer(X__errno_location(tls))) = int32(34)
 			return null
 		}
-		_cnt = Xsscanf(tls, _linebuf, ts+1560 /* " %n%*s%n %n%*s%n..." */, _n, _n+4*uintptr(1), _n+4*uintptr(2), _n+4*uintptr(3), _n+4*uintptr(4), _n+4*uintptr(5), _n+4*uintptr(6), _n+4*uintptr(7), _mnt+32, _mnt+36)
+		_cnt = Xsscanf(tls, _linebuf, ts+46080 /* " %n%*s%n %n%*s%n..." */, _n, _n+4*uintptr(1), _n+4*uintptr(2), _n+4*uintptr(3), _n+4*uintptr(4), _n+4*uintptr(5), _n+4*uintptr(6), _n+4*uintptr(7), _mnt+32, _mnt+36)
 	}
 	*(*int8)(unsafe.Pointer(_linebuf + uintptr(*(*int32)(unsafe.Pointer(_n + 4))))) = int8(0)
 	*(*int8)(unsafe.Pointer(_linebuf + uintptr(*(*int32)(unsafe.Pointer(_n + 12))))) = int8(0)
@@ -27262,7 +27327,7 @@ func Xgetmntent_r(tls TLS, _f uintptr /* *TFILE = S_IO_FILE */, _mnt uintptr /* 
 
 // Xgetmntent is defined at mntent.c:60:15
 func Xgetmntent(tls TLS, _f uintptr /* *TFILE = S_IO_FILE */) (r uintptr /* *Smntent */) {
-	return Xgetmntent_r(tls, _f, x718mnt, xinternal_buf, int32(0))
+	return Xgetmntent_r(tls, _f, uintptr(unsafe.Pointer(&x718mnt)), uintptr(unsafe.Pointer(&xinternal_buf)), int32(0))
 }
 
 // Xaddmntent is defined at mntent.c:66:5
@@ -27270,7 +27335,7 @@ func Xaddmntent(tls TLS, _f uintptr /* *TFILE = S_IO_FILE */, _mnt uintptr /* *S
 	if Xfseek(tls, _f, int64(0), int32(2)) != 0 {
 		return 1
 	}
-	return bool2int(Xfprintf(tls, _f, ts+1600 /* "%s\t%s\t%s\t%s\t%d\t%..." */, *(*uintptr)(unsafe.Pointer(_mnt)), *(*uintptr)(unsafe.Pointer(_mnt + 8)), *(*uintptr)(unsafe.Pointer(_mnt + 16)), *(*uintptr)(unsafe.Pointer(_mnt + 24)), *(*int32)(unsafe.Pointer(_mnt + 32)), *(*int32)(unsafe.Pointer(_mnt + 36))) < int32(0))
+	return bool2int(Xfprintf(tls, _f, ts+46120 /* "%s\t%s\t%s\t%s\t%d\t%..." */, *(*uintptr)(unsafe.Pointer(_mnt)), *(*uintptr)(unsafe.Pointer(_mnt + 8)), *(*uintptr)(unsafe.Pointer(_mnt + 16)), *(*uintptr)(unsafe.Pointer(_mnt + 24)), *(*int32)(unsafe.Pointer(_mnt + 32)), *(*int32)(unsafe.Pointer(_mnt + 36))) < int32(0))
 }
 
 // Xhasmntopt is defined at mntent.c:74:6
@@ -27288,14 +27353,16 @@ type Smntent = struct {
 	Fmnt_passno int32
 }
 
-// xinternal_buf *int8, escapes: true, mntent.c:6:13
-var xinternal_buf = bss + 3888
+// xinternal_buf *int8, escapes: false, mntent.c:6:13
+var xinternal_buf uintptr
 
-// xinternal_bufsize Tsize_t = uint64, escapes: true, mntent.c:7:15
-var xinternal_bufsize = bss + 3896
+// xinternal_bufsize Tsize_t = uint64, escapes: false, mntent.c:7:15
+var xinternal_bufsize uint64
 
-// x3mnt Smntent, escapes: true, mntent.c:62:23
-var x718mnt = bss + 3904
+// x3mnt Smntent, escapes: false, mntent.c:62:23
+var x718mnt Smntent
+
+type t61size_t = uint64
 
 type s5_IO_FILE struct{ uintptr }
 
@@ -27326,7 +27393,7 @@ func Xnftw(tls TLS, _path uintptr /* *int8 */, _fn uintptr /* *func(TLS, uintptr
 	return _r
 }
 
-type t60size_t = uint64
+type t62size_t = uint64
 
 func set719(p *int32, v int32) int32 { *p = v; return v }
 
@@ -27491,6 +27558,7 @@ type s6dirent = struct {
 	Fd_reclen uint16
 	Fd_type   uint8
 	Fd_name   [256]int8
+	_         [5]byte
 }
 
 type t7mode_t = uint32
@@ -27537,7 +27605,7 @@ func Xopenpty(tls TLS, _pm uintptr /* *int32 */, _ps uintptr /* *int32 */, _name
 	)
 	defer Free(esc)
 	*(*int32)(unsafe.Pointer(_n)) = int32(0)
-	_m = Xopen(tls, ts+1620 /* "/dev/ptmx" */, int32(258))
+	_m = Xopen(tls, ts+46140 /* "/dev/ptmx" */, int32(258))
 	if _m < int32(0) {
 		return -1
 	}
@@ -27552,7 +27620,7 @@ _1:
 	if _name == 0 {
 		_name = _buf
 	}
-	Xsnprintf(tls, _name, uint64(20), ts+1632 /* "/dev/pts/%d" */, *(*int32)(unsafe.Pointer(_n)))
+	Xsnprintf(tls, _name, uint64(20), ts+46152 /* "/dev/pts/%d" */, *(*int32)(unsafe.Pointer(_n)))
 	if !(set722(&_s, Xopen(tls, _name, int32(258))) < int32(0)) {
 		goto _2
 	}
@@ -27609,22 +27677,22 @@ type t2speed_t = uint32
 func Xptsname(tls TLS, _fd int32) (r uintptr /* *int8 */) {
 	var _err int32
 
-	_err = X__ptsname_r(tls, _fd, x723buf, uint64(22))
+	_err = X__ptsname_r(tls, _fd, uintptr(unsafe.Pointer(&x723buf)), uint64(22))
 	if _err != 0 {
 		*(*int32)(unsafe.Pointer(X__errno_location(tls))) = _err
 		return null
 	}
-	return x723buf
+	return uintptr(unsafe.Pointer(&x723buf))
 }
 
-// x1buf [22]int8, escapes: true, ptsname.c:8:14
-var x723buf = bss + 3944
+// x1buf [22]int8, escapes: false, ptsname.c:8:14
+var x723buf [22]int8
 
 // linking pty.o
 
 // Xposix_openpt is defined at pty.c:9:5
 func Xposix_openpt(tls TLS, _flags int32) (r int32) {
-	return Xopen(tls, ts+1620 /* "/dev/ptmx" */, _flags)
+	return Xopen(tls, ts+46140 /* "/dev/ptmx" */, _flags)
 }
 
 // Xgrantpt is defined at pty.c:14:5
@@ -27657,13 +27725,13 @@ func X__ptsname_r(tls TLS, _fd int32, _buf uintptr /* *int8 */, _len uint64) (r 
 	if set724(&_err, int32(x25__syscall3(tls, int64(16), int64(_fd), int64(2147767344), int64(_pty)))) != 0 {
 		return -_err
 	}
-	if uint64(Xsnprintf(tls, _buf, _len, ts+1632 /* "/dev/pts/%d" */, *(*int32)(unsafe.Pointer(_pty)))) >= _len {
+	if uint64(Xsnprintf(tls, _buf, _len, ts+46152 /* "/dev/pts/%d" */, *(*int32)(unsafe.Pointer(_pty)))) >= _len {
 		return 34
 	}
 	return 0
 }
 
-type t61size_t = uint64
+type t63size_t = uint64
 
 // x__syscall3 is defined at syscall_arch.h:31:22
 func x25__syscall3(tls TLS, _n int64, _a1 int64, _a2 int64, _a3 int64) (r int64) {
@@ -27939,12 +28007,12 @@ func x5__syscall6(tls TLS, _n int64, _a1 int64, _a2 int64, _a3 int64, _a4 int64,
 func Xsetlogmask(tls TLS, _maskpri int32) (r int32) {
 	var _ret int32
 
-	X__lock(tls, x3lock)
+	X__lock(tls, uintptr(unsafe.Pointer(&x3lock)))
 	_ret = xlog_mask
 	if _maskpri != 0 {
 		xlog_mask = _maskpri
 	}
-	X__unlock(tls, x3lock)
+	X__unlock(tls, uintptr(unsafe.Pointer(&x3lock)))
 	return _ret
 }
 
@@ -27954,10 +28022,10 @@ func Xcloselog(tls TLS) {
 	var _cs = esc // *int32
 	defer Free(esc)
 	Xpthread_setcancelstate(tls, int32(1), _cs)
-	X__lock(tls, x3lock)
+	X__lock(tls, uintptr(unsafe.Pointer(&x3lock)))
 	Xclose(tls, xlog_fd)
 	xlog_fd = int32(-1)
-	X__unlock(tls, x3lock)
+	X__unlock(tls, uintptr(unsafe.Pointer(&x3lock)))
 	Xpthread_setcancelstate(tls, *(*int32)(unsafe.Pointer(_cs)), null)
 }
 
@@ -27970,20 +28038,20 @@ func Xopenlog(tls TLS, _ident uintptr /* *int8 */, _opt int32, _facility int32) 
 	)
 	defer Free(esc)
 	Xpthread_setcancelstate(tls, int32(1), _cs)
-	X__lock(tls, x3lock)
+	X__lock(tls, uintptr(unsafe.Pointer(&x3lock)))
 	if _ident != 0 {
 		_n = Xstrnlen(tls, _ident, uint64(31))
-		Xmemcpy(tls, xlog_ident, _ident, _n)
-		*(*int8)(unsafe.Pointer(xlog_ident + uintptr(_n))) = int8(0)
+		Xmemcpy(tls, uintptr(unsafe.Pointer(&xlog_ident)), _ident, _n)
+		*(*int8)(unsafe.Pointer(uintptr(unsafe.Pointer(&xlog_ident)) + uintptr(_n))) = int8(0)
 	} else {
-		*(*int8)(unsafe.Pointer(xlog_ident)) = int8(0)
+		*(*int8)(unsafe.Pointer(uintptr(unsafe.Pointer(&xlog_ident)))) = int8(0)
 	}
 	xlog_opt = _opt
 	xlog_facility = _facility
 	if (_opt&int32(0x8) != 0) && (xlog_fd < int32(0)) {
 		x__openlog(tls)
 	}
-	X__unlock(tls, x3lock)
+	X__unlock(tls, uintptr(unsafe.Pointer(&x3lock)))
 	Xpthread_setcancelstate(tls, *(*int32)(unsafe.Pointer(_cs)), null)
 }
 
@@ -27996,9 +28064,9 @@ func X__vsyslog(tls TLS, _priority int32, _message uintptr /* *int8 */, _ap uint
 		return
 	}
 	Xpthread_setcancelstate(tls, int32(1), _cs)
-	X__lock(tls, x3lock)
+	X__lock(tls, uintptr(unsafe.Pointer(&x3lock)))
 	x_vsyslog(tls, _priority, _message, _ap)
-	X__unlock(tls, x3lock)
+	X__unlock(tls, uintptr(unsafe.Pointer(&x3lock)))
 	Xpthread_setcancelstate(tls, *(*int32)(unsafe.Pointer(_cs)), null)
 }
 
@@ -28011,8 +28079,8 @@ func Xsyslog(tls TLS, _priority int32, _message uintptr /* *int8 */, ap ...inter
 	X__builtin_va_end(tls, _ap)
 }
 
-// xlock [1]int32, escapes: true, syslog.c:14:21
-var x3lock = bss + 3968
+// xlock [1]int32, escapes: false, syslog.c:14:21
+var x3lock [1]int32
 
 // xlog_mask int32, escapes: false, syslog.c:18:12
 var xlog_mask = int32(0xff)
@@ -28020,10 +28088,10 @@ var xlog_mask = int32(0xff)
 // xlog_fd int32, escapes: false, syslog.c:19:12
 var xlog_fd = int32(-1)
 
-type t62size_t = uint64
+type t64size_t = uint64
 
-// xlog_ident [32]int8, escapes: true, syslog.c:15:13
-var xlog_ident = bss + 3976
+// xlog_ident [32]int8, escapes: false, syslog.c:15:13
+var xlog_ident [32]int8
 
 // xlog_opt int32, escapes: false, syslog.c:16:12
 var xlog_opt int32
@@ -28035,7 +28103,7 @@ var xlog_facility = int32(8)
 func x__openlog(tls TLS) {
 	xlog_fd = Xsocket(tls, int32(1), int32(524290), int32(0))
 	if xlog_fd >= int32(0) {
-		Xconnect(tls, xlog_fd, xlog_addr, uint32(12))
+		Xconnect(tls, xlog_fd, uintptr(unsafe.Pointer(&xlog_addr)), uint32(12))
 	}
 }
 
@@ -28066,13 +28134,13 @@ func x_vsyslog(tls TLS, _priority int32, _message uintptr /* *int8 */, _ap uintp
 	}
 	*(*int64)(unsafe.Pointer(_now)) = Xtime(tls, null)
 	Xgmtime_r(tls, _now, _tm)
-	Xstrftime(tls, _timebuf, uint64(16), ts+1644 /* "%b %e %T" */, _tm)
+	Xstrftime(tls, _timebuf, uint64(16), ts+46164 /* "%b %e %T" */, _tm)
 	if xlog_opt&int32(0x1) != 0 {
 		_pid = Xgetpid(tls)
 	} else {
 		_pid = int32(0)
 	}
-	_l = Xsnprintf(tls, _buf, uint64(1024), ts+1656 /* "<%d>%s %n%s%s%.0..." */, _priority, _timebuf, _hlen, xlog_ident, ts+1680 /* "[" */ +uintptr(bool2int(_pid == 0)), _pid, ts+1684 /* "]" */ +uintptr(bool2int(_pid == 0)))
+	_l = Xsnprintf(tls, _buf, uint64(1024), ts+46176 /* "<%d>%s %n%s%s%.0..." */, _priority, _timebuf, _hlen, uintptr(unsafe.Pointer(&xlog_ident)), ts+46200 /* "[" */ +uintptr(bool2int(_pid == 0)), _pid, ts+46204 /* "]" */ +uintptr(bool2int(_pid == 0)))
 	*(*int32)(unsafe.Pointer(X__errno_location(tls))) = _errno_save
 	_l2 = Xvsnprintf(tls, _buf+uintptr(_l), uint64(1024)-uint64(_l), _message, _ap)
 	if _l2 >= int32(0) {
@@ -28084,21 +28152,25 @@ func x_vsyslog(tls TLS, _priority int32, _message uintptr /* *int8 */, _ap uintp
 		if int32(*(*int8)(unsafe.Pointer(_buf + uintptr(_l-int32(1))))) != int32('\n') {
 			*(*int8)(unsafe.Pointer(_buf + uintptr(postinc726(&_l)))) = int8('\n')
 		}
-		if ((Xsend(tls, xlog_fd, _buf, uint64(_l), int32(0)) < int64(0)) && (((xis_lost_conn(tls, *(*int32)(unsafe.Pointer(X__errno_location(tls)))) == 0) || (Xconnect(tls, xlog_fd, xlog_addr, uint32(12)) < int32(0))) || (Xsend(tls, xlog_fd, _buf, uint64(_l), int32(0)) < int64(0)))) && (xlog_opt&int32(0x2) != 0) {
-			_fd = Xopen(tls, ts+1372 /* "/dev/console" */, int32(524545))
+		if ((Xsend(tls, xlog_fd, _buf, uint64(_l), int32(0)) < int64(0)) && (((xis_lost_conn(tls, *(*int32)(unsafe.Pointer(X__errno_location(tls)))) == 0) || (Xconnect(tls, xlog_fd, uintptr(unsafe.Pointer(&xlog_addr)), uint32(12)) < int32(0))) || (Xsend(tls, xlog_fd, _buf, uint64(_l), int32(0)) < int64(0)))) && (xlog_opt&int32(0x2) != 0) {
+			_fd = Xopen(tls, ts+45892 /* "/dev/console" */, int32(524545))
 			if _fd >= int32(0) {
-				Xdprintf(tls, _fd, ts+1688 /* "%.*s" */, _l-*(*int32)(unsafe.Pointer(_hlen)), _buf+uintptr(*(*int32)(unsafe.Pointer(_hlen))))
+				Xdprintf(tls, _fd, ts+46208 /* "%.*s" */, _l-*(*int32)(unsafe.Pointer(_hlen)), _buf+uintptr(*(*int32)(unsafe.Pointer(_hlen))))
 				Xclose(tls, _fd)
 			}
 		}
 		if (xlog_opt & int32(0x20)) != 0 {
-			Xdprintf(tls, int32(2), ts+1688 /* "%.*s" */, _l-*(*int32)(unsafe.Pointer(_hlen)), _buf+uintptr(*(*int32)(unsafe.Pointer(_hlen))))
+			Xdprintf(tls, int32(2), ts+46208 /* "%.*s" */, _l-*(*int32)(unsafe.Pointer(_hlen)), _buf+uintptr(*(*int32)(unsafe.Pointer(_hlen))))
 		}
 	}
 }
 
-// xlog_addr struct{Fsun_family int16;Fsun_path [9]int8;}, escapes: true, syslog.c:33:3
-var xlog_addr = ds + 45080
+// xlog_addr struct{Fsun_family int16;Fsun_path [9]int8;_ [1]byte;}, escapes: false, syslog.c:33:3
+var xlog_addr = *(*struct {
+	Fsun_family int16
+	Fsun_path   [9]int8
+	_           [1]byte
+})(unsafe.Pointer(ts + 46216 /* "\x01\x00/dev/log\x00\x00" */))
 
 // Stm is defined at time.h:38:1
 type Stm = struct {
@@ -28177,7 +28249,7 @@ func Xwordfree(tls TLS, _we uintptr /* *Twordexp_t = struct{Fwe_wordc u...e_word
 	*(*uint64)(unsafe.Pointer(_we)) = uint64(0)
 }
 
-type t63size_t = uint64
+type t65size_t = uint64
 
 func set727(p *uintptr, v uintptr) uintptr { *p = v; return v }
 
@@ -28211,7 +28283,7 @@ func xdo_wordexp(tls TLS, _s uintptr /* *int8 */, _we uintptr /* *Twordexp_t = s
 		if _flags&int32(16) != 0 {
 			return ts + 0 /* "" */
 		}
-		return ts + 1696 /* "2>/dev/null" */
+		return ts + 46232 /* "2>/dev/null" */
 	}()
 	_err = int32(0)
 	_wc = uint64(0)
@@ -28373,11 +28445,11 @@ _25:
 		} else {
 			Xdup2(tls, *(*int32)(unsafe.Pointer(_p + 4)), int32(1))
 		}
-		Xexecl(tls, ts+1708 /* "/bin/sh" */, ts+1716 /* "sh" */, ts+1720 /* "-c" */, ts+1724 /* "eval \"printf %s\\..." */, ts+1716 /* "sh" */, _s, _redir, null)
+		Xexecl(tls, ts+46244 /* "/bin/sh" */, ts+46252 /* "sh" */, ts+46256 /* "-c" */, ts+46260 /* "eval \"printf %s\\..." */, ts+46252 /* "sh" */, _s, _redir, null)
 		X_exit(tls, int32(1))
 	}
 	Xclose(tls, *(*int32)(unsafe.Pointer(_p + 4)))
-	_f = Xfdopen(tls, *(*int32)(unsafe.Pointer(_p)), ts+1756 /* "r" */)
+	_f = Xfdopen(tls, *(*int32)(unsafe.Pointer(_p)), ts+46292 /* "r" */)
 	if !(_f == 0) {
 		goto _26
 	}
@@ -28548,7 +28620,7 @@ func X__mmap(tls TLS, _start uintptr /* *void */, _len uint64, _prot int32, _fla
 func x7dummy(tls TLS) {
 }
 
-type t64size_t = uint64
+type t66size_t = uint64
 
 // x__syscall6 is defined at syscall_arch.h:61:22
 func x6__syscall6(tls TLS, _n int64, _a1 int64, _a2 int64, _a3 int64, _a4 int64, _a5 int64, _a6 int64) (r int64) {
@@ -28570,7 +28642,7 @@ func X__mprotect(tls TLS, _addr uintptr /* *void */, _len uint64, _prot int32) (
 	return int32(X__syscall_ret(tls, uint64(x29__syscall3(tls, int64(10), int64(_start), int64(_end-_start), int64(_prot)))))
 }
 
-type t65size_t = uint64
+type t67size_t = uint64
 
 // x__syscall3 is defined at syscall_arch.h:31:22
 func x29__syscall3(tls TLS, _n int64, _a1 int64, _a2 int64, _a3 int64) (r int64) {
@@ -28603,7 +28675,7 @@ func X__mremap(tls TLS, _old_addr uintptr /* *void */, _old_len uint64, _new_len
 func x8dummy(tls TLS) {
 }
 
-type t66size_t = uint64
+type t68size_t = uint64
 
 // x__syscall5 is defined at syscall_arch.h:50:22
 func x6__syscall5(tls TLS, _n int64, _a1 int64, _a2 int64, _a3 int64, _a4 int64, _a5 int64) (r int64) {
@@ -28692,7 +28764,7 @@ func X__shm_mapname(tls TLS, _name uintptr /* *int8 */, _buf uintptr /* *int8 */
 		*(*int32)(unsafe.Pointer(X__errno_location(tls))) = int32(36)
 		return null
 	}
-	Xmemcpy(tls, _buf, ts+1760 /* "/dev/shm/" */, uint64(9))
+	Xmemcpy(tls, _buf, ts+46296 /* "/dev/shm/" */, uint64(9))
 	Xmemcpy(tls, _buf+uintptr(9), _name, uint64(int64(_p-_name)+int64(1)))
 	return _buf
 }
@@ -28812,7 +28884,7 @@ func Xmq_notify(tls TLS, _mqd int32, _sev uintptr /* *Ssigevent */) (r int32) {
 	Xpthread_barrier_destroy(tls, _args)
 	*(*int32)(unsafe.Pointer(_sev2 + 12)) = int32(2)
 	*(*int32)(unsafe.Pointer(_sev2 + 8)) = _s
-	*(*uintptr)(unsafe.Pointer(_sev2)) = x731zeros
+	*(*uintptr)(unsafe.Pointer(_sev2)) = uintptr(unsafe.Pointer(&x731zeros))
 	if X__syscall_ret(tls, uint64(x29__syscall2(tls, int64(244), int64(_mqd), int64(_sev2)))) < int64(0) {
 		Xpthread_cancel(tls, *(*uintptr)(unsafe.Pointer(_td)))
 		x24__syscall1(tls, int64(3), int64(_s))
@@ -28831,8 +28903,8 @@ type s3sigevent = struct {
 	F__pad                   [32]int8
 }
 
-// x1zeros [32]int8, escapes: true, mq_notify.c:39:20
-var x731zeros = bss + 4008
+// x1zeros [32]int8, escapes: false, mq_notify.c:39:20
+var x731zeros [32]int8
 
 // Sargs is defined at mq_notify.c:9:1
 type Sargs = struct {
@@ -28969,7 +29041,7 @@ type t11ssize_t = int64
 
 type t1mqd_t = int32
 
-type t67size_t = uint64
+type t69size_t = uint64
 
 // linking mq_send.o
 
@@ -28980,7 +29052,7 @@ func Xmq_send(tls TLS, _mqd int32, _msg uintptr /* *int8 */, _len uint64, _prio 
 
 type t2mqd_t = int32
 
-type t68size_t = uint64
+type t70size_t = uint64
 
 // linking mq_setattr.o
 
@@ -29130,7 +29202,7 @@ type s21__pthread = struct {
 
 type t23uintptr_t = uint64
 
-type t69size_t = uint64
+type t71size_t = uint64
 
 // S__ptcb is defined at pthread.h:200:1
 type s18__ptcb = struct {
@@ -29151,7 +29223,7 @@ func Xc16rtomb(tls TLS, _s uintptr /* *int8 */, _c16 uint16, _ps uintptr /* *Tmb
 		_wc int32
 	)
 	if _ps == 0 {
-		_ps = x733internal_state
+		_ps = uintptr(unsafe.Pointer(&x733internal_state))
 	}
 	_x = _ps
 	if !(_s == 0) {
@@ -29200,12 +29272,12 @@ lilseq:
 	return uint64(18446744073709551615)
 }
 
-// x1internal_state uint32, escapes: true, c16rtomb.c:7:18
-var x733internal_state = bss + 4040
+// x1internal_state uint32, escapes: false, c16rtomb.c:7:18
+var x733internal_state uint32
 
 type t6wchar_t = int32
 
-type t70size_t = uint64
+type t72size_t = uint64
 
 // linking c32rtomb.o
 
@@ -29214,12 +29286,12 @@ func Xc32rtomb(tls TLS, _s uintptr /* *int8 */, _c32 uint32, _ps uintptr /* *Tmb
 	return Xwcrtomb(tls, _s, int32(_c32), _ps)
 }
 
-type t71size_t = uint64
+type t73size_t = uint64
 
 // linking internal.o
 
-// X__fsmu8 [51]uint32, escapes: true, internal.c:18:16
-var X__fsmu8 = ds + 45096
+// X__fsmu8 [51]uint32, escapes: false, internal.c:18:16
+var X__fsmu8 = *(*[51]uint32)(unsafe.Pointer(ts + 46308 /* "\x02\x00\x00\xc0\x03\x00\x00\xc0\x04\x00\x00\xc0\x05\x00\x00\xc0..." */))
 
 type t107uint32_t = uint32
 
@@ -29230,7 +29302,7 @@ func Xmblen(tls TLS, _s uintptr /* *int8 */, _n uint64) (r int32) {
 	return Xmbtowc(tls, null, _s, _n)
 }
 
-type t72size_t = uint64
+type t74size_t = uint64
 
 // linking mbrlen.o
 
@@ -29240,14 +29312,14 @@ func Xmbrlen(tls TLS, _s uintptr /* *int8 */, _n uint64, _st uintptr /* *Tmbstat
 		if _st != 0 {
 			return _st
 		}
-		return x734internal
+		return uintptr(unsafe.Pointer(&x734internal))
 	}())
 }
 
-// x1internal uint32, escapes: true, mbrlen.c:5:18
-var x734internal = bss + 4048
+// x1internal uint32, escapes: false, mbrlen.c:5:18
+var x734internal uint32
 
-type t73size_t = uint64
+type t75size_t = uint64
 
 // linking mbrtoc16.o
 
@@ -29261,7 +29333,7 @@ func Xmbrtoc16(tls TLS, _pc16 uintptr /* *Tchar16_t = uint16 */, _s uintptr /* *
 	)
 	defer Free(esc)
 	if _ps == 0 {
-		_ps = x735internal_state
+		_ps = uintptr(unsafe.Pointer(&x735internal_state))
 	}
 	_pending = _ps
 	if _s == 0 {
@@ -29287,10 +29359,10 @@ func Xmbrtoc16(tls TLS, _pc16 uintptr /* *Tchar16_t = uint16 */, _s uintptr /* *
 	return _ret
 }
 
-// x1internal_state uint32, escapes: true, mbrtoc16.c:6:18
-var x735internal_state = bss + 4056
+// x1internal_state uint32, escapes: false, mbrtoc16.c:6:18
+var x735internal_state uint32
 
-type t74size_t = uint64
+type t76size_t = uint64
 
 type Tchar16_t = uint16
 
@@ -29307,7 +29379,7 @@ func Xmbrtoc32(tls TLS, _pc32 uintptr /* *Tchar32_t = uint32 */, _s uintptr /* *
 	)
 	defer Free(esc)
 	if _ps == 0 {
-		_ps = x736internal_state
+		_ps = uintptr(unsafe.Pointer(&x736internal_state))
 	}
 	if _s == 0 {
 		return Xmbrtoc32(tls, null, ts+0 /* "" */, uint64(1), _ps)
@@ -29319,10 +29391,10 @@ func Xmbrtoc32(tls TLS, _pc32 uintptr /* *Tchar32_t = uint32 */, _s uintptr /* *
 	return _ret
 }
 
-// x1internal_state uint32, escapes: true, mbrtoc32.c:6:18
-var x736internal_state = bss + 4064
+// x1internal_state uint32, escapes: false, mbrtoc32.c:6:18
+var x736internal_state uint32
 
-type t75size_t = uint64
+type t77size_t = uint64
 
 type Tchar32_t = uint32
 
@@ -29347,7 +29419,7 @@ func Xmbrtowc(tls TLS, _wc uintptr /* *Twchar_t = int32 */, _src uintptr /* *int
 	_s = _src
 	_N = uint32(_n)
 	if _st == 0 {
-		_st = x739internal_state
+		_st = uintptr(unsafe.Pointer(&x739internal_state))
 	}
 	_c = *(*uint32)(unsafe.Pointer(_st))
 	if !(_s == 0) {
@@ -29397,7 +29469,7 @@ _2:
 	goto lilseq
 
 _5:
-	_c = *(*uint32)(unsafe.Pointer(X__fsmu8 + 4*uintptr(uint32(*(*uint8)(unsafe.Pointer(postinc738(&_s))))-uint32(0xc2))))
+	_c = *(*uint32)(unsafe.Pointer(uintptr(unsafe.Pointer(&X__fsmu8)) + 4*uintptr(uint32(*(*uint8)(unsafe.Pointer(postinc738(&_s))))-uint32(0xc2))))
 	_n--
 _4:
 	if _n == 0 {
@@ -29444,8 +29516,8 @@ lilseq:
 	return uint64(18446744073709551615)
 }
 
-// x1internal_state uint32, escapes: true, mbrtowc.c:8:18
-var x739internal_state = bss + 4072
+// x1internal_state uint32, escapes: false, mbrtowc.c:8:18
+var x739internal_state uint32
 
 type t9wchar_t = int32
 
@@ -29502,7 +29574,7 @@ type s22__pthread = struct {
 
 type t24uintptr_t = uint64
 
-type t76size_t = uint64
+type t78size_t = uint64
 
 // S__ptcb is defined at pthread.h:200:1
 type s19__ptcb = struct {
@@ -29596,7 +29668,7 @@ func Xmbsnrtowcs(tls TLS, _wcs uintptr /* *Twchar_t = int32 */, _src uintptr /* 
 	return _cnt
 }
 
-type t77size_t = uint64
+type t79size_t = uint64
 
 type t10wchar_t = int32
 
@@ -29680,7 +29752,7 @@ _6:
 	if uint32(*(*uint8)(unsafe.Pointer(_s)))-uint32(0xc2) > uint32(50) {
 		goto _8
 	}
-	_c = *(*uint32)(unsafe.Pointer(X__fsmu8 + 4*uintptr(uint32(*(*uint8)(unsafe.Pointer(postinc742(&_s))))-uint32(0xc2))))
+	_c = *(*uint32)(unsafe.Pointer(uintptr(unsafe.Pointer(&X__fsmu8)) + 4*uintptr(uint32(*(*uint8)(unsafe.Pointer(postinc742(&_s))))-uint32(0xc2))))
 	goto lresume0
 lresume0:
 	if (int32(*(*uint8)(unsafe.Pointer(_s)))>>(uint(3)%32)-int32(0x10)|(int32(*(*uint8)(unsafe.Pointer(_s)))>>(uint(3)%32)+int32(_c)>>(uint(26)%32)))&int32(-8) != 0 {
@@ -29733,7 +29805,7 @@ _9:
 	if uint32(*(*uint8)(unsafe.Pointer(_s)))-uint32(0xc2) > uint32(50) {
 		goto _11
 	}
-	_c = *(*uint32)(unsafe.Pointer(X__fsmu8 + 4*uintptr(uint32(*(*uint8)(unsafe.Pointer(postinc742(&_s))))-uint32(0xc2))))
+	_c = *(*uint32)(unsafe.Pointer(uintptr(unsafe.Pointer(&X__fsmu8)) + 4*uintptr(uint32(*(*uint8)(unsafe.Pointer(postinc742(&_s))))-uint32(0xc2))))
 	goto lresume
 lresume:
 	if (int32(*(*uint8)(unsafe.Pointer(_s)))>>(uint(3)%32)-int32(0x10)|(int32(*(*uint8)(unsafe.Pointer(_s)))>>(uint(3)%32)+int32(_c)>>(uint(26)%32)))&int32(-8) != 0 {
@@ -29777,7 +29849,7 @@ _5:
 	return uint64(18446744073709551615)
 }
 
-type t78size_t = uint64
+type t80size_t = uint64
 
 // x__pthread_self is defined at pthread_arch.h:1:30
 func x18__pthread_self(tls TLS) (r uintptr /* *S__pthread */) {
@@ -29855,7 +29927,7 @@ func Xmbstowcs(tls TLS, _ws uintptr /* *Twchar_t = int32 */, as uintptr, _wn uin
 	return Xmbsrtowcs(tls, _ws, _s, _wn, null)
 }
 
-type t79size_t = uint64
+type t81size_t = uint64
 
 // linking mbtowc.o
 
@@ -29907,7 +29979,7 @@ _1:
 	goto lilseq
 
 _2:
-	_c = *(*uint32)(unsafe.Pointer(X__fsmu8 + 4*uintptr(uint32(*(*uint8)(unsafe.Pointer(postinc745(&_s))))-uint32(0xc2))))
+	_c = *(*uint32)(unsafe.Pointer(uintptr(unsafe.Pointer(&X__fsmu8)) + 4*uintptr(uint32(*(*uint8)(unsafe.Pointer(postinc745(&_s))))-uint32(0xc2))))
 	if !((_n < uint64(4)) && (_c<<(uint(uint64(6)*_n-uint64(6))%32)&uint32(2147483648) != 0)) {
 		goto _3
 	}
@@ -29964,7 +30036,7 @@ func x19__pthread_self(tls TLS) (r uintptr /* *S__pthread */) {
 
 type t110uint32_t = uint32
 
-type t80size_t = uint64
+type t82size_t = uint64
 
 type t17int32_t = int32
 
@@ -30116,7 +30188,7 @@ type s25__pthread = struct {
 
 type t27uintptr_t = uint64
 
-type t81size_t = uint64
+type t83size_t = uint64
 
 // S__ptcb is defined at pthread.h:200:1
 type s22__ptcb = struct {
@@ -30199,7 +30271,7 @@ func Xwcsnrtombs(tls TLS, _dst uintptr /* *int8 */, _wcs uintptr /* **Twchar_t =
 	return _cnt
 }
 
-type t82size_t = uint64
+type t84size_t = uint64
 
 type t14wchar_t = int32
 
@@ -30279,7 +30351,7 @@ func Xwcsrtombs(tls TLS, _s uintptr /* *int8 */, _ws uintptr /* **Twchar_t = int
 	return _N
 }
 
-type t83size_t = uint64
+type t85size_t = uint64
 
 type t15wchar_t = int32
 
@@ -30360,7 +30432,7 @@ type s26__pthread = struct {
 
 type t28uintptr_t = uint64
 
-type t84size_t = uint64
+type t86size_t = uint64
 
 // S__ptcb is defined at pthread.h:200:1
 type s23__ptcb = struct {
@@ -30556,7 +30628,7 @@ func X__dn_comp(tls TLS, _src uintptr /* *int8 */, _dst uintptr /* *uint8 */, _s
 	return _i
 }
 
-type t85size_t = uint64
+type t87size_t = uint64
 
 func preinc753(p *int32) int32 { *p += 1; return *p }
 
@@ -30838,7 +30910,7 @@ func Xether_aton_r(tls TLS, _x uintptr /* *int8 */, _p_a uintptr /* *Sether_addr
 
 // Xether_aton is defined at ether.c:25:19
 func Xether_aton(tls TLS, _x uintptr /* *int8 */) (r uintptr /* *Sether_addr */) {
-	return Xether_aton_r(tls, _x, x759a)
+	return Xether_aton_r(tls, _x, uintptr(unsafe.Pointer(&x759a)))
 }
 
 // Xether_ntoa_r is defined at ether.c:31:6
@@ -30851,9 +30923,9 @@ func Xether_ntoa_r(tls TLS, _p_a uintptr /* *Sether_addr */, _x uintptr /* *int8
 	for _ii = int32(0); _ii < int32(6); _ii++ {
 		_x += uintptr(Xsprintf(tls, _x, func() uintptr {
 			if _ii == int32(0) {
-				return ts + 1772 /* "%.2X" */
+				return ts + 46516 /* "%.2X" */
 			}
-			return ts + 1780 /* ":%.2X" */
+			return ts + 46524 /* ":%.2X" */
 		}(), int32(*(*uint8)(unsafe.Pointer(_p_a + uintptr(_ii))))))
 	}
 	return _y
@@ -30861,7 +30933,7 @@ func Xether_ntoa_r(tls TLS, _p_a uintptr /* *Sether_addr */, _x uintptr /* *int8
 
 // Xether_ntoa is defined at ether.c:40:6
 func Xether_ntoa(tls TLS, _p_a uintptr /* *Sether_addr */) (r uintptr /* *int8 */) {
-	return Xether_ntoa_r(tls, _p_a, x760x)
+	return Xether_ntoa_r(tls, _p_a, uintptr(unsafe.Pointer(&x760x)))
 }
 
 // Xether_line is defined at ether.c:45:5
@@ -30884,11 +30956,11 @@ type Sether_addr = struct{ Fether_addr_octet [6]uint8 }
 
 type Tuint8_t = uint8
 
-// x1a Sether_addr, escapes: true, ether.c:27:27
-var x759a = bss + 4080
+// x1a Sether_addr, escapes: false, ether.c:27:27
+var x759a Sether_addr
 
-// x2x [18]int8, escapes: true, ether.c:41:14
-var x760x = bss + 4088
+// x2x [18]int8, escapes: false, ether.c:41:14
+var x760x [18]int8
 
 // linking freeaddrinfo.o
 
@@ -30929,7 +31001,7 @@ func postinc762(p *uintptr) uintptr { r := *p; *p += 1; return r }
 func Xgai_strerror(tls TLS, _ecode int32) (r uintptr /* *int8 */) {
 	var _s uintptr // *int8
 
-	for func() int32 { _s = xmsgs; return postinc761(&_ecode) }(); (_ecode != 0) && (*(*int8)(unsafe.Pointer(_s)) != 0); func() uintptr { _ecode++; return postinc762(&_s) }() {
+	for func() int32 { _s = uintptr(unsafe.Pointer(&xmsgs)); return postinc761(&_ecode) }(); (_ecode != 0) && (*(*int8)(unsafe.Pointer(_s)) != 0); func() uintptr { _ecode++; return postinc762(&_s) }() {
 		for ; *(*int8)(unsafe.Pointer(_s)) != 0; _s++ {
 		}
 	}
@@ -30939,8 +31011,8 @@ func Xgai_strerror(tls TLS, _ecode int32) (r uintptr /* *int8 */) {
 	return X__lctrans_cur(tls, _s)
 }
 
-// xmsgs [239]int8, escapes: true, gai_strerror.c:4:19
-var xmsgs = ds + 45304
+// xmsgs [239]int8, escapes: false, gai_strerror.c:4:19
+var xmsgs = *(*[239]int8)(unsafe.Pointer(ts + 46532 /* "Invalid flags\x00Na..." */))
 
 // linking getaddrinfo.o
 
@@ -30965,7 +31037,7 @@ func Xgetaddrinfo(tls TLS, _host uintptr /* *int8 */, _serv uintptr /* *int8 */,
 		_flags     int32
 		_proto     int32
 		_socktype  int32
-		_out       uintptr // *struct{Fai Saddrinfo;Fsa struct...kaddr_in6;F int32; _ [24]byte};}
+		_out       uintptr // *struct{Fai Saddrinfo;Fsa struct...F int32; _ [24]byte};_ [4]byte;}
 		_mask      int32
 		_tf        = esc + 1616 // *[2]int32
 		_ta        = esc + 1632 // *[2]uintptr
@@ -31017,12 +31089,12 @@ _2:
 _1:
 	if (_flags & int32(0x20)) != 0 {
 		panic(`TODO`)
-		Copy(_tf, ts+1788 /* "\x02\x00\x00\x00\n\x00\x00\x00" */, 8)
+		Copy(_tf, ts+46772 /* "\x02\x00\x00\x00\n\x00\x00\x00" */, 8)
 		*(*[2]uintptr)(unsafe.Pointer(_ta)) = [2]uintptr{
-			0: x764lo4,
-			1: x765lo6,
+			0: uintptr(unsafe.Pointer(&x764lo4)),
+			1: uintptr(unsafe.Pointer(&x765lo6)),
 		}
-		Copy(_tl, ts+1800 /* "\x10\x00\x00\x00\x1c\x00\x00\x00" */, 8)
+		Copy(_tl, ts+46784 /* "\x10\x00\x00\x00\x1c\x00\x00\x00" */, 8)
 		for _i = int32(0); _i < int32(2); _i++ {
 			if _family == *(*int32)(unsafe.Pointer(_tf + 4*uintptr(int32(1)-_i))) {
 				continue
@@ -31140,11 +31212,11 @@ type s1addrinfo = struct {
 	Fai_next      uintptr // *Saddrinfo
 }
 
-// x1lo4 Ssockaddr_in, escapes: true, getaddrinfo.c:55:35
-var x764lo4 = bss + 4112
+// x1lo4 Ssockaddr_in, escapes: false, getaddrinfo.c:55:35
+var x764lo4 Ssockaddr_in
 
-// x2lo6 Ssockaddr_in6, escapes: true, getaddrinfo.c:61:36
-var x765lo6 = ds + 45544
+// x2lo6 Ssockaddr_in6, escapes: false, getaddrinfo.c:61:36
+var x765lo6 = *(*Ssockaddr_in6)(unsafe.Pointer(ts + 46796 /* "\n\x00\xff\xff\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00..." */))
 
 // Sservice is defined at lookup.h:14:1
 type Sservice = struct {
@@ -31253,7 +31325,7 @@ type Shostent = struct {
 // x1h *Shostent, escapes: false, gethostbyaddr.c:9:24
 var x767h uintptr
 
-type t86size_t = uint64
+type t88size_t = uint64
 
 type t2socklen_t = uint32
 
@@ -31331,7 +31403,7 @@ type s3hostent = struct {
 // x1h *Shostent, escapes: false, gethostbyname2.c:10:24
 var x769h uintptr
 
-type t87size_t = uint64
+type t89size_t = uint64
 
 // linking gethostbyname2_r.o
 
@@ -31443,7 +31515,7 @@ type s1address = struct {
 	Fsortkey int32
 }
 
-type t88size_t = uint64
+type t90size_t = uint64
 
 type t29uintptr_t = uint64
 
@@ -31465,7 +31537,7 @@ type s5hostent = struct {
 	Fh_addr_list uintptr // **int8
 }
 
-type t89size_t = uint64
+type t91size_t = uint64
 
 // linking getifaddrs.o
 
@@ -31705,6 +31777,7 @@ type Sifaddrs_storage = struct {
 	Fifu       Usockany
 	Findex     uint32
 	Fname      [17]int8
+	_          [7]byte
 }
 
 // Snlmsghdr is defined at netlink.h:7:1
@@ -31818,7 +31891,7 @@ func xgen_netmask(tls TLS, _r uintptr /* **Ssockaddr */, _af int32, _sa uintptr 
 		_i    int32
 	)
 	defer Free(esc)
-	Copy(_addr, ts+1812 /* "\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00" */, 16)
+	Copy(_addr, ts+46828 /* "\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00" */, 16)
 	if uint64(_prefixlen) > uint64(128) {
 		_prefixlen = int32(128)
 	}
@@ -31832,7 +31905,7 @@ func xgen_netmask(tls TLS, _r uintptr /* **Ssockaddr */, _af int32, _sa uintptr 
 
 type t6sa_family_t = uint16
 
-type t90size_t = uint64
+type t92size_t = uint64
 
 // Ssockaddr_ll_hack is defined at getifaddrs.c:18:1
 type Ssockaddr_ll_hack = struct {
@@ -31931,7 +32004,7 @@ _3:
 	if uint64(_sl) < uint64(28) {
 		return -6
 	}
-	if Xmemcmp(tls, _a, ts+1832 /* "\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\xff\xff" */, uint64(12)) != 0 {
+	if Xmemcmp(tls, _a, ts+46848 /* "\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\xff\xff" */, uint64(12)) != 0 {
 		xmkptr6(tls, _ptr, _a)
 	} else {
 		xmkptr4(tls, _ptr, _a+uintptr(12))
@@ -32005,7 +32078,7 @@ type t7sa_family_t = uint16
 
 // xmkptr4 is defined at getnameinfo.c:31:13
 func xmkptr4(tls TLS, _s uintptr /* *int8 */, _ip uintptr /* *uint8 */) {
-	Xsprintf(tls, _s, ts+1848 /* "%d.%d.%d.%d.in-a..." */, int32(*(*uint8)(unsafe.Pointer(_ip + 3))), int32(*(*uint8)(unsafe.Pointer(_ip + 2))), int32(*(*uint8)(unsafe.Pointer(_ip + 1))), int32(*(*uint8)(unsafe.Pointer(_ip))))
+	Xsprintf(tls, _s, ts+46864 /* "%d.%d.%d.%d.in-a..." */, int32(*(*uint8)(unsafe.Pointer(_ip + 3))), int32(*(*uint8)(unsafe.Pointer(_ip + 2))), int32(*(*uint8)(unsafe.Pointer(_ip + 1))), int32(*(*uint8)(unsafe.Pointer(_ip))))
 }
 
 func postinc775(p *uintptr) uintptr { r := *p; *p += 1; return r }
@@ -32015,12 +32088,12 @@ func xmkptr6(tls TLS, _s uintptr /* *int8 */, _ip uintptr /* *uint8 */) {
 	var _i int32
 
 	for _i = int32(15); _i >= int32(0); _i-- {
-		*(*int8)(unsafe.Pointer(postinc775(&_s))) = *(*int8)(unsafe.Pointer(x776xdigits + uintptr(int32(*(*uint8)(unsafe.Pointer(_ip + uintptr(_i))))&int32(15))))
+		*(*int8)(unsafe.Pointer(postinc775(&_s))) = *(*int8)(unsafe.Pointer(uintptr(unsafe.Pointer(&x776xdigits)) + uintptr(int32(*(*uint8)(unsafe.Pointer(_ip + uintptr(_i))))&int32(15))))
 		*(*int8)(unsafe.Pointer(postinc775(&_s))) = int8('.')
-		*(*int8)(unsafe.Pointer(postinc775(&_s))) = *(*int8)(unsafe.Pointer(x776xdigits + uintptr(int32(*(*uint8)(unsafe.Pointer(_ip + uintptr(_i))))>>(uint(4)%32))))
+		*(*int8)(unsafe.Pointer(postinc775(&_s))) = *(*int8)(unsafe.Pointer(uintptr(unsafe.Pointer(&x776xdigits)) + uintptr(int32(*(*uint8)(unsafe.Pointer(_ip + uintptr(_i))))>>(uint(4)%32))))
 		*(*int8)(unsafe.Pointer(postinc775(&_s))) = int8('.')
 	}
-	Xstrcpy(tls, _s, ts+1876 /* "ip6.arpa" */)
+	Xstrcpy(tls, _s, ts+46892 /* "ip6.arpa" */)
 }
 
 type t113uint32_t = uint32
@@ -32041,13 +32114,13 @@ func xreverse_hosts(tls TLS, _buf uintptr /* *int8 */, _a uintptr /* *uint8 */, 
 		_f     uintptr      // *TFILE = S_IO_FILE
 	)
 	defer Free(esc)
-	_f = X__fopen_rb_ca(tls, ts+1888 /* "/etc/hosts" */, __f, __buf, uint64(1032))
+	_f = X__fopen_rb_ca(tls, ts+46904 /* "/etc/hosts" */, __f, __buf, uint64(1032))
 	if _f == 0 {
 		return
 	}
 	if _family == int32(2) {
 		Xmemcpy(tls, _atmp+uintptr(12), _a, uint64(4))
-		Xmemcpy(tls, _atmp, ts+1832 /* "\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\xff\xff" */, uint64(12))
+		Xmemcpy(tls, _atmp, ts+46848 /* "\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\xff\xff" */, uint64(12))
 		_a = _atmp
 	}
 	for Xfgets(tls, _line, int32(512), _f) != 0 {
@@ -32063,7 +32136,7 @@ func xreverse_hosts(tls TLS, _buf uintptr /* *int8 */, _a uintptr /* *uint8 */, 
 		}
 		if *(*int32)(unsafe.Pointer(_iplit)) == int32(2) {
 			Xmemcpy(tls, (_iplit+8)+uintptr(12), _iplit+8, uint64(4))
-			Xmemcpy(tls, _iplit+8, ts+1832 /* "\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\xff\xff" */, uint64(12))
+			Xmemcpy(tls, _iplit+8, ts+46848 /* "\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\xff\xff" */, uint64(12))
 			*(*uint32)(unsafe.Pointer(_iplit + 4)) = uint32(0)
 		}
 		if (Xmemcmp(tls, _a, _iplit+8, uint64(16)) != 0) || (*(*uint32)(unsafe.Pointer(_iplit + 4)) != _scopeid) {
@@ -32104,7 +32177,7 @@ func xitoa(tls TLS, _p uintptr /* *int8 */, _x uint32) (r uintptr /* *int8 */) {
 	return _p
 }
 
-type t91size_t = uint64
+type t93size_t = uint64
 
 type t2in_port_t = uint16
 
@@ -32123,7 +32196,7 @@ func xreverse_services(tls TLS, _buf uintptr /* *int8 */, _port int32, _dgram in
 		_f      uintptr      // *TFILE = S_IO_FILE
 	)
 	defer Free(esc)
-	_f = X__fopen_rb_ca(tls, ts+1900 /* "/etc/services" */, __f, __buf, uint64(1032))
+	_f = X__fopen_rb_ca(tls, ts+46916 /* "/etc/services" */, __f, __buf, uint64(1032))
 	if _f == 0 {
 		return
 	}
@@ -32142,10 +32215,10 @@ func xreverse_services(tls TLS, _buf uintptr /* *int8 */, _port int32, _dgram in
 		if (_svport != uint64(_port)) || (*(*uintptr)(unsafe.Pointer(_z)) == _p) {
 			continue
 		}
-		if (_dgram != 0) && (Xstrncmp(tls, *(*uintptr)(unsafe.Pointer(_z)), ts+1916 /* "/udp" */, uint64(4)) != 0) {
+		if (_dgram != 0) && (Xstrncmp(tls, *(*uintptr)(unsafe.Pointer(_z)), ts+46932 /* "/udp" */, uint64(4)) != 0) {
 			continue
 		}
-		if (_dgram == 0) && (Xstrncmp(tls, *(*uintptr)(unsafe.Pointer(_z)), ts+1924 /* "/tcp" */, uint64(4)) != 0) {
+		if (_dgram == 0) && (Xstrncmp(tls, *(*uintptr)(unsafe.Pointer(_z)), ts+46940 /* "/tcp" */, uint64(4)) != 0) {
 			continue
 		}
 		if int64(_p-_line) > int64(32) {
@@ -32157,8 +32230,8 @@ func xreverse_services(tls TLS, _buf uintptr /* *int8 */, _port int32, _dgram in
 	X__fclose_ca(tls, _f)
 }
 
-// x7xdigits [17]int8, escapes: true, getnameinfo.c:39:20
-var x776xdigits = ds + 45576
+// x7xdigits [17]int8, escapes: false, getnameinfo.c:39:20
+var x776xdigits = *(*[17]int8)(unsafe.Pointer(ts + 46948 /* "0123456789abcdef..." */))
 
 // Saddress is defined at lookup.h:7:1
 type s2address = struct {
@@ -32239,10 +32312,10 @@ func Xgetservbyname(tls TLS, _name uintptr /* *int8 */, _prots uintptr /* *int8 
 	esc := MustMalloc(8)
 	var _res = esc // **Sservent
 	defer Free(esc)
-	if Xgetservbyname_r(tls, _name, _prots, x778se, x779buf, uint64(16), _res) != 0 {
+	if Xgetservbyname_r(tls, _name, _prots, uintptr(unsafe.Pointer(&x778se)), uintptr(unsafe.Pointer(&x779buf)), uint64(16), _res) != 0 {
 		return null
 	}
-	return x778se
+	return uintptr(unsafe.Pointer(&x778se))
 }
 
 // Sservent is defined at netdb.h:78:1
@@ -32253,11 +32326,11 @@ type Sservent = struct {
 	Fs_proto   uintptr // *int8
 }
 
-// x1se Sservent, escapes: true, getservbyname.c:6:24
-var x778se = bss + 4128
+// x1se Sservent, escapes: false, getservbyname.c:6:24
+var x778se Sservent
 
-// x2buf [2]*int8, escapes: true, getservbyname.c:7:14
-var x779buf = bss + 4160
+// x2buf [2]*int8, escapes: false, getservbyname.c:7:14
+var x779buf [2]uintptr
 
 // linking getservbyname_r.o
 
@@ -32285,9 +32358,9 @@ func Xgetservbyname_r(tls TLS, _name uintptr /* *int8 */, _prots uintptr /* *int
 	_buf += uintptr(_align)
 	if _prots == 0 {
 		_proto = int32(0)
-	} else if Xstrcmp(tls, _prots, ts+1932 /* "tcp" */) == 0 {
+	} else if Xstrcmp(tls, _prots, ts+46968 /* "tcp" */) == 0 {
 		_proto = int32(6)
-	} else if Xstrcmp(tls, _prots, ts+1936 /* "udp" */) == 0 {
+	} else if Xstrcmp(tls, _prots, ts+46972 /* "udp" */) == 0 {
 		_proto = int32(17)
 	} else {
 		return 22
@@ -32317,9 +32390,9 @@ _1:
 	*(*uintptr)(unsafe.Pointer(*(*uintptr)(unsafe.Pointer(_se + 8)) + 8)) = null
 	*(*int32)(unsafe.Pointer(_se + 16)) = int32(Xhtons(tls, *(*uint16)(unsafe.Pointer(_servs))))
 	if int32(*(*uint8)(unsafe.Pointer(_servs + 2))) == int32(6) {
-		*(*uintptr)(unsafe.Pointer(_se + 24)) = ts + 1932 /* "tcp" */
+		*(*uintptr)(unsafe.Pointer(_se + 24)) = ts + 46968 /* "tcp" */
 	} else {
-		*(*uintptr)(unsafe.Pointer(_se + 24)) = ts + 1936 /* "udp" */
+		*(*uintptr)(unsafe.Pointer(_se + 24)) = ts + 46972 /* "udp" */
 	}
 	*(*uintptr)(unsafe.Pointer(_res)) = _se
 	return 0
@@ -32342,7 +32415,7 @@ type s1service = struct {
 
 type t30uintptr_t = uint64
 
-type t92size_t = uint64
+type t94size_t = uint64
 
 type t4uint16_t = uint16
 
@@ -32353,10 +32426,10 @@ func Xgetservbyport(tls TLS, _port int32, _prots uintptr /* *int8 */) (r uintptr
 	esc := MustMalloc(8)
 	var _res = esc // **Sservent
 	defer Free(esc)
-	if Xgetservbyport_r(tls, _port, _prots, x780se, x781buf, uint64(32), _res) != 0 {
+	if Xgetservbyport_r(tls, _port, _prots, uintptr(unsafe.Pointer(&x780se)), uintptr(unsafe.Pointer(&x781buf)), uint64(32), _res) != 0 {
 		return null
 	}
-	return x780se
+	return uintptr(unsafe.Pointer(&x780se))
 }
 
 // Sservent is defined at netdb.h:78:1
@@ -32367,11 +32440,11 @@ type s2servent = struct {
 	Fs_proto   uintptr // *int8
 }
 
-// x1se Sservent, escapes: true, getservbyport.c:6:24
-var x780se = bss + 4176
+// x1se Sservent, escapes: false, getservbyport.c:6:24
+var x780se s2servent
 
-// x2buf [4]int64, escapes: true, getservbyport.c:7:14
-var x781buf = bss + 4208
+// x2buf [4]int64, escapes: false, getservbyport.c:7:14
+var x781buf [4]int64
 
 // linking getservbyport_r.o
 
@@ -32391,9 +32464,9 @@ func Xgetservbyport_r(tls TLS, _port int32, _prots uintptr /* *int8 */, _se uint
 		Fsin_port:   uint16(_port),
 	}
 	if _prots == 0 {
-		_r = Xgetservbyport_r(tls, _port, ts+1932 /* "tcp" */, _se, _buf, _buflen, _res)
+		_r = Xgetservbyport_r(tls, _port, ts+46968 /* "tcp" */, _se, _buf, _buflen, _res)
 		if _r != 0 {
-			_r = Xgetservbyport_r(tls, _port, ts+1936 /* "udp" */, _se, _buf, _buflen, _res)
+			_r = Xgetservbyport_r(tls, _port, ts+46972 /* "udp" */, _se, _buf, _buflen, _res)
 		}
 		return _r
 	}
@@ -32407,7 +32480,7 @@ func Xgetservbyport_r(tls TLS, _port int32, _prots uintptr /* *int8 */, _se uint
 	}
 	_buf += uintptr(uint64(8) - uint64(_i))
 	_buflen = _buflen - (uint64(8) - uint64(_i))
-	if (Xstrcmp(tls, _prots, ts+1932 /* "tcp" */) != 0) && (Xstrcmp(tls, _prots, ts+1936 /* "udp" */) != 0) {
+	if (Xstrcmp(tls, _prots, ts+46968 /* "tcp" */) != 0) && (Xstrcmp(tls, _prots, ts+46972 /* "udp" */) != 0) {
 		return 22
 	}
 	*(*int32)(unsafe.Pointer(_se + 16)) = _port
@@ -32418,7 +32491,7 @@ func Xgetservbyport_r(tls TLS, _port int32, _prots uintptr /* *int8 */, _se uint
 	*(*uintptr)(unsafe.Pointer(*(*uintptr)(unsafe.Pointer(_se + 8)) + 8)) = null
 	*(*uintptr)(unsafe.Pointer(*(*uintptr)(unsafe.Pointer(_se + 8)))) = set782((*uintptr)(unsafe.Pointer(_se)), _buf)
 	switch Xgetnameinfo(tls, _sin, uint32(16), null, uint32(0), _buf, uint32(_buflen), func() int32 {
-		if Xstrcmp(tls, _prots, ts+1936 /* "udp" */) != 0 {
+		if Xstrcmp(tls, _prots, ts+46972 /* "udp" */) != 0 {
 			return int32(0)
 		}
 		return int32(0x10)
@@ -32471,7 +32544,7 @@ type t3in_port_t = uint16
 
 type t5uint16_t = uint16
 
-type t93size_t = uint64
+type t95size_t = uint64
 
 type t31uintptr_t = uint64
 
@@ -32518,26 +32591,26 @@ func x10__syscall6(tls TLS, _n int64, _a1 int64, _a2 int64, _a3 int64, _a4 int64
 
 // linking h_errno.o
 
-// Xh_errno int32, escapes: true, h_errno.c:4:5
-var Xh_errno = bss + 4240
+// Xh_errno int32, escapes: false, h_errno.c:4:5
+var Xh_errno int32
 
 // X__h_errno_location is defined at h_errno.c:6:5
 func X__h_errno_location(tls TLS) (r uintptr /* *int32 */) {
-	return Xh_errno
+	return uintptr(unsafe.Pointer(&Xh_errno))
 }
 
 // linking herror.o
 
 // Xherror is defined at herror.c:5:6
 func Xherror(tls TLS, _msg uintptr /* *int8 */) {
-	Xfprintf(tls, *(*uintptr)(unsafe.Pointer(Xstderr)), ts+1940 /* "%s%s%s" */, func() uintptr {
+	Xfprintf(tls, Xstderr, ts+46976 /* "%s%s%s" */, func() uintptr {
 		if _msg != 0 {
 			return _msg
 		}
 		return ts + 0 /* "" */
 	}(), func() uintptr {
 		if _msg != 0 {
-			return ts + 920 /* ": " */
+			return ts + 31468 /* ": " */
 		}
 		return ts + 0 /* "" */
 	}(), Xhstrerror(tls, *(*int32)(unsafe.Pointer(X__h_errno_location(tls)))))
@@ -32553,7 +32626,7 @@ func postinc784(p *uintptr) uintptr { r := *p; *p += 1; return r }
 func Xhstrerror(tls TLS, _ecode int32) (r uintptr /* *int8 */) {
 	var _s uintptr // *int8
 
-	for func() int32 { _s = x1msgs; return postinc783(&_ecode) }(); (_ecode != 0) && (*(*int8)(unsafe.Pointer(_s)) != 0); func() uintptr { _ecode--; return postinc784(&_s) }() {
+	for func() int32 { _s = uintptr(unsafe.Pointer(&x1msgs)); return postinc783(&_ecode) }(); (_ecode != 0) && (*(*int8)(unsafe.Pointer(_s)) != 0); func() uintptr { _ecode--; return postinc784(&_s) }() {
 		for ; *(*int8)(unsafe.Pointer(_s)) != 0; _s++ {
 		}
 	}
@@ -32563,8 +32636,8 @@ func Xhstrerror(tls TLS, _ecode int32) (r uintptr /* *int8 */) {
 	return X__lctrans_cur(tls, _s)
 }
 
-// xmsgs [84]int8, escapes: true, hstrerror.c:5:19
-var x1msgs = ds + 45600
+// xmsgs [84]int8, escapes: false, hstrerror.c:5:19
+var x1msgs = *(*[84]int8)(unsafe.Pointer(ts + 46984 /* "Host not found\x00T..." */))
 
 // linking htonl.o
 
@@ -32573,7 +32646,7 @@ func Xhtonl(tls TLS, _n uint32) (r uint32) {
 	esc := MustMalloc(4)
 	var _u = esc // *struct{Fi [0]int32;Fc [0]int8;F int32}
 	defer Free(esc)
-	Copy(_u, ts+1948 /* "\x01\x00\x00\x00" */, 4)
+	Copy(_u, ts+47072 /* "\x01\x00\x00\x00" */, 4)
 	if *(*int8)(unsafe.Pointer(_u)) != 0 {
 		return x1__bswap_32(tls, _n)
 	}
@@ -32594,7 +32667,7 @@ func Xhtons(tls TLS, _n uint16) (r uint16) {
 	esc := MustMalloc(4)
 	var _u = esc // *struct{Fi [0]int32;Fc [0]int8;F int32}
 	defer Free(esc)
-	Copy(_u, ts+1948 /* "\x01\x00\x00\x00" */, 4)
+	Copy(_u, ts+47072 /* "\x01\x00\x00\x00" */, 4)
 	if *(*int8)(unsafe.Pointer(_u)) != 0 {
 		return x__bswap_16(tls, _n)
 	}
@@ -32693,6 +32766,7 @@ type Sifmap = struct {
 	Firq       uint8
 	Fdma       uint8
 	Fport      uint8
+	_          [3]byte
 }
 
 type t11sa_family_t = uint16
@@ -32780,14 +32854,15 @@ type s1ifmap = struct {
 	Firq       uint8
 	Fdma       uint8
 	Fport      uint8
+	_          [3]byte
 }
 
 type t12sa_family_t = uint16
 
 // linking in6addr_any.o
 
-// Xin6addr_any Sin6_addr, escapes: true, in6addr_any.c:3:23
-var Xin6addr_any = bss + 4248
+// Xin6addr_any Sin6_addr, escapes: false, in6addr_any.c:3:23
+var Xin6addr_any s2in6_addr
 
 // Sin6_addr is defined at in.h:23:1
 type s2in6_addr = struct {
@@ -32808,8 +32883,8 @@ type t116uint32_t = uint32
 
 // linking in6addr_loopback.o
 
-// Xin6addr_loopback Sin6_addr, escapes: true, in6addr_loopback.c:3:23
-var Xin6addr_loopback = ds + 45688
+// Xin6addr_loopback Sin6_addr, escapes: false, in6addr_loopback.c:3:23
+var Xin6addr_loopback = *(*s3in6_addr)(unsafe.Pointer(ts + 47080 /* "\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x01" */))
 
 // Sin6_addr is defined at in.h:23:1
 type s3in6_addr = struct {
@@ -32863,7 +32938,7 @@ func X__inet_aton(tls TLS, _s0 uintptr /* *int8 */, _dest uintptr /* *Sin_addr *
 	defer Free(esc)
 	_s = _s0
 	_d = _dest
-	Copy(_a, ts+1956 /* "\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00..." */, 32)
+	Copy(_a, ts+47100 /* "\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00..." */, 32)
 	for _i = int32(0); _i < int32(4); _i++ {
 		*(*uint64)(unsafe.Pointer(_a + 8*uintptr(_i))) = Xstrtoul(tls, _s, _z, int32(0))
 		if ((*(*uintptr)(unsafe.Pointer(_z)) == _s) || ((*(*int8)(unsafe.Pointer(*(*uintptr)(unsafe.Pointer(_z)))) != 0) && (int32(*(*int8)(unsafe.Pointer(*(*uintptr)(unsafe.Pointer(_z))))) != int32('.')))) || (Xisdigit(tls, int32(*(*int8)(unsafe.Pointer(_s)))) == 0) {
@@ -33000,16 +33075,16 @@ func Xinet_ntoa(tls TLS, ain struct{ Fs_addr uint32 }) (r uintptr /* *int8 */) {
 	defer Free(esc)
 	*(*s6in_addr)(unsafe.Pointer(_in)) = ain
 	_a = _in
-	Xsnprintf(tls, x787buf, uint64(16), ts+1992 /* "%d.%d.%d.%d" */, int32(*(*uint8)(unsafe.Pointer(_a))), int32(*(*uint8)(unsafe.Pointer(_a + 1))), int32(*(*uint8)(unsafe.Pointer(_a + 2))), int32(*(*uint8)(unsafe.Pointer(_a + 3))))
-	return x787buf
+	Xsnprintf(tls, uintptr(unsafe.Pointer(&x787buf)), uint64(16), ts+47136 /* "%d.%d.%d.%d" */, int32(*(*uint8)(unsafe.Pointer(_a))), int32(*(*uint8)(unsafe.Pointer(_a + 1))), int32(*(*uint8)(unsafe.Pointer(_a + 2))), int32(*(*uint8)(unsafe.Pointer(_a + 3))))
+	return uintptr(unsafe.Pointer(&x787buf))
 }
 
 type t6in_addr_t = uint32
 
 type t121uint32_t = uint32
 
-// x1buf [16]int8, escapes: true, inet_ntoa.c:6:14
-var x787buf = bss + 4264
+// x1buf [16]int8, escapes: false, inet_ntoa.c:6:14
+var x787buf [16]int8
 
 // Sin_addr is defined at in.h:14:1
 type s6in_addr = struct{ Fs_addr uint32 }
@@ -33042,22 +33117,22 @@ func Xinet_ntop(tls TLS, _af int32, _a0 uintptr /* *void */, _s uintptr /* *int8
 		goto _4
 	}
 _2:
-	if uint32(Xsnprintf(tls, _s, uint64(_l), ts+1992 /* "%d.%d.%d.%d" */, int32(*(*uint8)(unsafe.Pointer(_a))), int32(*(*uint8)(unsafe.Pointer(_a + 1))), int32(*(*uint8)(unsafe.Pointer(_a + 2))), int32(*(*uint8)(unsafe.Pointer(_a + 3))))) < _l {
+	if uint32(Xsnprintf(tls, _s, uint64(_l), ts+47136 /* "%d.%d.%d.%d" */, int32(*(*uint8)(unsafe.Pointer(_a))), int32(*(*uint8)(unsafe.Pointer(_a + 1))), int32(*(*uint8)(unsafe.Pointer(_a + 2))), int32(*(*uint8)(unsafe.Pointer(_a + 3))))) < _l {
 		return _s
 	}
 	goto _1
 
 _3:
-	if Xmemcmp(tls, _a, ts+1832 /* "\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\xff\xff" */, uint64(12)) != 0 {
-		Xsnprintf(tls, _buf, uint64(100), ts+2004 /* "%x:%x:%x:%x:%x:%..." */, int32(256)*int32(*(*uint8)(unsafe.Pointer(_a)))+int32(*(*uint8)(unsafe.Pointer(_a + 1))), int32(256)*int32(*(*uint8)(unsafe.Pointer(_a + 2)))+int32(*(*uint8)(unsafe.Pointer(_a + 3))), int32(256)*int32(*(*uint8)(unsafe.Pointer(_a + 4)))+int32(*(*uint8)(unsafe.Pointer(_a + 5))), int32(256)*int32(*(*uint8)(unsafe.Pointer(_a + 6)))+int32(*(*uint8)(unsafe.Pointer(_a + 7))), int32(256)*int32(*(*uint8)(unsafe.Pointer(_a + 8)))+int32(*(*uint8)(unsafe.Pointer(_a + 9))), int32(256)*int32(*(*uint8)(unsafe.Pointer(_a + 10)))+int32(*(*uint8)(unsafe.Pointer(_a + 11))), int32(256)*int32(*(*uint8)(unsafe.Pointer(_a + 12)))+int32(*(*uint8)(unsafe.Pointer(_a + 13))), int32(256)*int32(*(*uint8)(unsafe.Pointer(_a + 14)))+int32(*(*uint8)(unsafe.Pointer(_a + 15))))
+	if Xmemcmp(tls, _a, ts+46848 /* "\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\xff\xff" */, uint64(12)) != 0 {
+		Xsnprintf(tls, _buf, uint64(100), ts+47148 /* "%x:%x:%x:%x:%x:%..." */, int32(256)*int32(*(*uint8)(unsafe.Pointer(_a)))+int32(*(*uint8)(unsafe.Pointer(_a + 1))), int32(256)*int32(*(*uint8)(unsafe.Pointer(_a + 2)))+int32(*(*uint8)(unsafe.Pointer(_a + 3))), int32(256)*int32(*(*uint8)(unsafe.Pointer(_a + 4)))+int32(*(*uint8)(unsafe.Pointer(_a + 5))), int32(256)*int32(*(*uint8)(unsafe.Pointer(_a + 6)))+int32(*(*uint8)(unsafe.Pointer(_a + 7))), int32(256)*int32(*(*uint8)(unsafe.Pointer(_a + 8)))+int32(*(*uint8)(unsafe.Pointer(_a + 9))), int32(256)*int32(*(*uint8)(unsafe.Pointer(_a + 10)))+int32(*(*uint8)(unsafe.Pointer(_a + 11))), int32(256)*int32(*(*uint8)(unsafe.Pointer(_a + 12)))+int32(*(*uint8)(unsafe.Pointer(_a + 13))), int32(256)*int32(*(*uint8)(unsafe.Pointer(_a + 14)))+int32(*(*uint8)(unsafe.Pointer(_a + 15))))
 	} else {
-		Xsnprintf(tls, _buf, uint64(100), ts+2028 /* "%x:%x:%x:%x:%x:%..." */, int32(256)*int32(*(*uint8)(unsafe.Pointer(_a)))+int32(*(*uint8)(unsafe.Pointer(_a + 1))), int32(256)*int32(*(*uint8)(unsafe.Pointer(_a + 2)))+int32(*(*uint8)(unsafe.Pointer(_a + 3))), int32(256)*int32(*(*uint8)(unsafe.Pointer(_a + 4)))+int32(*(*uint8)(unsafe.Pointer(_a + 5))), int32(256)*int32(*(*uint8)(unsafe.Pointer(_a + 6)))+int32(*(*uint8)(unsafe.Pointer(_a + 7))), int32(256)*int32(*(*uint8)(unsafe.Pointer(_a + 8)))+int32(*(*uint8)(unsafe.Pointer(_a + 9))), int32(256)*int32(*(*uint8)(unsafe.Pointer(_a + 10)))+int32(*(*uint8)(unsafe.Pointer(_a + 11))), int32(*(*uint8)(unsafe.Pointer(_a + 12))), int32(*(*uint8)(unsafe.Pointer(_a + 13))), int32(*(*uint8)(unsafe.Pointer(_a + 14))), int32(*(*uint8)(unsafe.Pointer(_a + 15))))
+		Xsnprintf(tls, _buf, uint64(100), ts+47172 /* "%x:%x:%x:%x:%x:%..." */, int32(256)*int32(*(*uint8)(unsafe.Pointer(_a)))+int32(*(*uint8)(unsafe.Pointer(_a + 1))), int32(256)*int32(*(*uint8)(unsafe.Pointer(_a + 2)))+int32(*(*uint8)(unsafe.Pointer(_a + 3))), int32(256)*int32(*(*uint8)(unsafe.Pointer(_a + 4)))+int32(*(*uint8)(unsafe.Pointer(_a + 5))), int32(256)*int32(*(*uint8)(unsafe.Pointer(_a + 6)))+int32(*(*uint8)(unsafe.Pointer(_a + 7))), int32(256)*int32(*(*uint8)(unsafe.Pointer(_a + 8)))+int32(*(*uint8)(unsafe.Pointer(_a + 9))), int32(256)*int32(*(*uint8)(unsafe.Pointer(_a + 10)))+int32(*(*uint8)(unsafe.Pointer(_a + 11))), int32(*(*uint8)(unsafe.Pointer(_a + 12))), int32(*(*uint8)(unsafe.Pointer(_a + 13))), int32(*(*uint8)(unsafe.Pointer(_a + 14))), int32(*(*uint8)(unsafe.Pointer(_a + 15))))
 	}
 	for func() int32 { _i = set788(&_best, int32(0)); return set788(&_max, int32(2)) }(); *(*int8)(unsafe.Pointer(_buf + uintptr(_i))) != 0; _i++ {
 		if (_i != 0) && (int32(*(*int8)(unsafe.Pointer(_buf + uintptr(_i)))) != int32(':')) {
 			continue
 		}
-		_j = int32(Xstrspn(tls, _buf+uintptr(_i), ts+2060 /* ":0" */))
+		_j = int32(Xstrspn(tls, _buf+uintptr(_i), ts+47204 /* ":0" */))
 		if _j > _max {
 			_best = _i
 			_max = _j
@@ -33081,7 +33156,7 @@ _1:
 	return null
 }
 
-type t94size_t = uint64
+type t96size_t = uint64
 
 // linking inet_pton.o
 
@@ -33388,7 +33463,7 @@ func X__lookup_name(tls TLS, _buf uintptr /* *Saddress */, _canon uintptr /* *in
 				continue
 			}
 			Xmemcpy(tls, ((_buf+28*uintptr(_i))+8)+uintptr(12), (_buf+28*uintptr(_i))+8, uint64(4))
-			Xmemcpy(tls, (_buf+28*uintptr(_i))+8, ts+1832 /* "\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\xff\xff" */, uint64(12))
+			Xmemcpy(tls, (_buf+28*uintptr(_i))+8, ts+46848 /* "\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\xff\xff" */, uint64(12))
 			*(*int32)(unsafe.Pointer(_buf + 28*uintptr(_i))) = int32(10)
 		}
 	}
@@ -33407,14 +33482,14 @@ func X__lookup_name(tls TLS, _buf uintptr /* *Saddress */, _canon uintptr /* *in
 	for _i = int32(0); _i < _cnt; _i++ {
 		_1family = *(*int32)(unsafe.Pointer(_buf + 28*uintptr(_i)))
 		_key = int32(0)
-		Copy(_sa6, ts+2064 /* "\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00..." */, 28)
+		Copy(_sa6, ts+47208 /* "\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00..." */, 28)
 		*(*s2sockaddr_in6)(unsafe.Pointer(_da6)) = s2sockaddr_in6{
 			Fsin6_family:   uint16(10),
 			Fsin6_scope_id: *(*uint32)(unsafe.Pointer((_buf + 28*uintptr(_i)) + 4)),
 			Fsin6_port:     uint16(65535),
 		}
-		Copy(_sa4, ts+1812 /* "\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00" */, 16)
-		Copy(_da4, ts+2096 /* "\x02\x00\xff\xff\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00" */, 16)
+		Copy(_sa4, ts+46828 /* "\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00" */, 16)
+		Copy(_da4, ts+47240 /* "\x02\x00\xff\xff\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00" */, 16)
 		if _1family == int32(10) {
 			Xmemcpy(tls, _da6+8, (_buf+28*uintptr(_i))+8, uint64(16))
 			_da = _da6
@@ -33422,9 +33497,9 @@ func X__lookup_name(tls TLS, _buf uintptr /* *Saddress */, _canon uintptr /* *in
 			_sa = _sa6
 			*(*uint32)(unsafe.Pointer(_salen)) = uint32(28)
 		} else {
-			Xmemcpy(tls, _sa6+8, ts+1832 /* "\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\xff\xff" */, uint64(12))
+			Xmemcpy(tls, _sa6+8, ts+46848 /* "\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\xff\xff" */, uint64(12))
 			Xmemcpy(tls, (_da6+8)+uintptr(12), (_buf+28*uintptr(_i))+8, uint64(4))
-			Xmemcpy(tls, _da6+8, ts+1832 /* "\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\xff\xff" */, uint64(12))
+			Xmemcpy(tls, _da6+8, ts+46848 /* "\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\xff\xff" */, uint64(12))
 			Xmemcpy(tls, (_da6+8)+uintptr(12), (_buf+28*uintptr(_i))+8, uint64(4))
 			Xmemcpy(tls, _da4+4, (_buf+28*uintptr(_i))+8, uint64(4))
 			_da = _da4
@@ -33475,7 +33550,7 @@ type s4address = struct {
 	Fsortkey int32
 }
 
-type t95size_t = uint64
+type t97size_t = uint64
 
 // Ssockaddr_in6 is defined at in.h:34:1
 type s2sockaddr_in6 = struct {
@@ -33576,7 +33651,7 @@ func xname_from_hosts(tls TLS, _buf uintptr /* *Saddress */, _canon uintptr /* *
 	_l = Xstrlen(tls, _name)
 	_cnt = int32(0)
 	_badfam = int32(0)
-	_f = X__fopen_rb_ca(tls, ts+1888 /* "/etc/hosts" */, __f, __buf, uint64(1032))
+	_f = X__fopen_rb_ca(tls, ts+46904 /* "/etc/hosts" */, __f, __buf, uint64(1032))
 	if !(_f == 0) {
 		goto _1
 	}
@@ -33724,13 +33799,13 @@ func xpolicyof(tls TLS, _a uintptr /* *Sin6_addr */) (r uintptr /* *Spolicy */) 
 	var _i int32
 
 	for _i = int32(0); ; _i++ {
-		if Xmemcmp(tls, _a, xdefpolicy+20*uintptr(_i), uint64(*(*uint8)(unsafe.Pointer((xdefpolicy + 20*uintptr(_i)) + 16)))) != 0 {
+		if Xmemcmp(tls, _a, uintptr(unsafe.Pointer(&xdefpolicy))+20*uintptr(_i), uint64(*(*uint8)(unsafe.Pointer((uintptr(unsafe.Pointer(&xdefpolicy)) + 20*uintptr(_i)) + 16)))) != 0 {
 			continue
 		}
-		if int32(*(*uint8)(unsafe.Pointer(_a + uintptr(*(*uint8)(unsafe.Pointer((xdefpolicy + 20*uintptr(_i)) + 16))))))&int32(*(*uint8)(unsafe.Pointer((xdefpolicy + 20*uintptr(_i)) + 17))) != int32(*(*uint8)(unsafe.Pointer(xdefpolicy + 20*uintptr(_i) + uintptr(*(*uint8)(unsafe.Pointer((xdefpolicy + 20*uintptr(_i)) + 16)))))) {
+		if int32(*(*uint8)(unsafe.Pointer(_a + uintptr(*(*uint8)(unsafe.Pointer((uintptr(unsafe.Pointer(&xdefpolicy)) + 20*uintptr(_i)) + 16))))))&int32(*(*uint8)(unsafe.Pointer((uintptr(unsafe.Pointer(&xdefpolicy)) + 20*uintptr(_i)) + 17))) != int32(*(*uint8)(unsafe.Pointer(uintptr(unsafe.Pointer(&xdefpolicy)) + 20*uintptr(_i) + uintptr(*(*uint8)(unsafe.Pointer((uintptr(unsafe.Pointer(&xdefpolicy)) + 20*uintptr(_i)) + 16)))))) {
 			continue
 		}
-		return xdefpolicy + 20*uintptr(_i)
+		return uintptr(unsafe.Pointer(&xdefpolicy)) + 20*uintptr(_i)
 	}
 	return r
 }
@@ -33884,8 +33959,8 @@ func xname_from_dns(tls TLS, _buf uintptr /* *Saddress */, _canon uintptr /* *in
 		Fcanon: _canon,
 	}
 	for _i = int32(0); _i < int32(2); _i++ {
-		if _family != *(*int32)(unsafe.Pointer(x801afrr + 8*uintptr(_i))) {
-			*(*int32)(unsafe.Pointer(_qlens + 4*uintptr(_nq))) = X__res_mkquery(tls, int32(0), _name, int32(1), *(*int32)(unsafe.Pointer((x801afrr + 8*uintptr(_i)) + 4)), null, int32(0), null, _qbuf+280*uintptr(_nq), int32(280))
+		if _family != *(*int32)(unsafe.Pointer(uintptr(unsafe.Pointer(&x801afrr)) + 8*uintptr(_i))) {
+			*(*int32)(unsafe.Pointer(_qlens + 4*uintptr(_nq))) = X__res_mkquery(tls, int32(0), _name, int32(1), *(*int32)(unsafe.Pointer((uintptr(unsafe.Pointer(&x801afrr)) + 8*uintptr(_i)) + 4)), null, int32(0), null, _qbuf+280*uintptr(_nq), int32(280))
 			if *(*int32)(unsafe.Pointer(_qlens + 4*uintptr(_nq))) == int32(-1) {
 				return -2
 			}
@@ -33913,8 +33988,14 @@ func xname_from_dns(tls TLS, _buf uintptr /* *Saddress */, _canon uintptr /* *in
 	return -4
 }
 
-// xdefpolicy [6]struct{Faddr [16]uint8;Flen u...uint8;Fprec uint8;Flabel uint8;}, escapes: true, lookup_name.c:221:3
-var xdefpolicy = ds + 45704
+// xdefpolicy [6]struct{Faddr [16]uint8;Flen u...uint8;Fprec uint8;Flabel uint8;}, escapes: false, lookup_name.c:221:3
+var xdefpolicy = *(*[6]struct {
+	Faddr  [16]uint8
+	Flen   uint8
+	Fmask  uint8
+	Fprec  uint8
+	Flabel uint8
+})(unsafe.Pointer(ts + 47260 /* "\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x01..." */))
 
 type t8in_addr_t = uint32
 
@@ -33923,14 +34004,18 @@ type t31off_t = int64
 // S__locale_struct is defined at libc.h:10:1
 type s62__locale_struct = struct{ Fcat [6]uintptr }
 
-// x13afrr [2]struct{Faf int32;Frr int32;}, escapes: true, lookup_name.c:145:42
-var x801afrr = ds + 45824
+// x13afrr [2]struct{Faf int32;Frr int32;}, escapes: false, lookup_name.c:145:42
+var x801afrr = *(*[2]struct {
+	Faf int32
+	Frr int32
+})(unsafe.Pointer(ts + 47384 /* "\n\x00\x00\x00\x01\x00\x00\x00\x02\x00\x00\x00\x1c\x00\x00\x00" */))
 
 // Sdpc_ctx is defined at lookup_name.c:95:1
 type Sdpc_ctx = struct {
 	Faddrs uintptr // *Saddress
 	Fcanon uintptr // *int8
 	Fcnt   int32
+	_      [4]byte
 }
 
 // xdns_parse_callback is defined at lookup_name.c:110:12
@@ -34093,7 +34178,7 @@ _1:
 		return -2
 	}
 	_l = Xstrlen(tls, _name)
-	_f = X__fopen_rb_ca(tls, ts+1900 /* "/etc/services" */, __f, __buf, uint64(1032))
+	_f = X__fopen_rb_ca(tls, ts+46916 /* "/etc/services" */, __f, __buf, uint64(1032))
 	if !(_f == 0) {
 		goto _14
 	}
@@ -34138,7 +34223,7 @@ _14:
 		if (_port > uint64(65535)) || (*(*uintptr)(unsafe.Pointer(_z)) == _p) {
 			continue
 		}
-		if Xstrncmp(tls, *(*uintptr)(unsafe.Pointer(_z)), ts+1916 /* "/udp" */, uint64(4)) == 0 {
+		if Xstrncmp(tls, *(*uintptr)(unsafe.Pointer(_z)), ts+46932 /* "/udp" */, uint64(4)) == 0 {
 			if _proto == int32(6) {
 				continue
 			}
@@ -34146,7 +34231,7 @@ _14:
 			*(*uint8)(unsafe.Pointer((_buf + 4*uintptr(_cnt)) + 3)) = uint8(2)
 			*(*uint8)(unsafe.Pointer((_buf + 4*uintptr(postinc802(&_cnt))) + 2)) = uint8(17)
 		}
-		if Xstrncmp(tls, *(*uintptr)(unsafe.Pointer(_z)), ts+1924 /* "/tcp" */, uint64(4)) == 0 {
+		if Xstrncmp(tls, *(*uintptr)(unsafe.Pointer(_z)), ts+46940 /* "/tcp" */, uint64(4)) == 0 {
 			if _proto == int32(17) {
 				continue
 			}
@@ -34169,7 +34254,7 @@ type s2service = struct {
 	Fsocktype uint8
 }
 
-type t96size_t = uint64
+type t98size_t = uint64
 
 // S_IO_FILE is defined at stdio_impl.h:22:1
 type s9_IO_FILE = struct {
@@ -34327,8 +34412,8 @@ type t125uint32_t = uint32
 
 // linking ns_parse.o
 
-// X_ns_flagdata [16]S_ns_flagdata, escapes: true, ns_parse.c:7:27
-var X_ns_flagdata = ds + 45840
+// X_ns_flagdata [16]S_ns_flagdata, escapes: false, ns_parse.c:7:27
+var X_ns_flagdata = *(*[16]S_ns_flagdata)(unsafe.Pointer(ts + 47404 /* "\x00\x80\x00\x00\x0f\x00\x00\x00\x00x\x00\x00\v\x00\x00\x00..." */))
 
 // Xns_get16 is defined at ns_parse.c:26:10
 func Xns_get16(tls TLS, _cp uintptr /* *uint8 */) (r uint32) {
@@ -34615,7 +34700,7 @@ func Xntohl(tls TLS, _n uint32) (r uint32) {
 	esc := MustMalloc(4)
 	var _u = esc // *struct{Fi [0]int32;Fc [0]int8;F int32}
 	defer Free(esc)
-	Copy(_u, ts+1948 /* "\x01\x00\x00\x00" */, 4)
+	Copy(_u, ts+47072 /* "\x01\x00\x00\x00" */, 4)
 	if *(*int8)(unsafe.Pointer(_u)) != 0 {
 		return x2__bswap_32(tls, _n)
 	}
@@ -34636,7 +34721,7 @@ func Xntohs(tls TLS, _n uint16) (r uint16) {
 	esc := MustMalloc(4)
 	var _u = esc // *struct{Fi [0]int32;Fc [0]int8;F int32}
 	defer Free(esc)
-	Copy(_u, ts+1948 /* "\x01\x00\x00\x00" */, 4)
+	Copy(_u, ts+47072 /* "\x01\x00\x00\x00" */, 4)
 	if *(*int8)(unsafe.Pointer(_u)) != 0 {
 		return x1__bswap_16(tls, _n)
 	}
@@ -34698,6 +34783,7 @@ type Sprotoent = struct {
 	Fp_name    uintptr // *int8
 	Fp_aliases uintptr // **int8
 	Fp_proto   int32
+	_          [4]byte
 }
 
 // linking recv.o
@@ -34709,7 +34795,7 @@ func Xrecv(tls TLS, _fd int32, _buf uintptr /* *void */, _len uint64, _flags int
 
 type t12ssize_t = int64
 
-type t97size_t = uint64
+type t99size_t = uint64
 
 // linking recvfrom.o
 
@@ -34749,6 +34835,7 @@ func Xrecvmmsg(tls TLS, _fd int32, _msgvec uintptr /* *Smmsghdr */, _vlen uint32
 type Smmsghdr = struct {
 	Fmsg_hdr Smsghdr
 	Fmsg_len uint32
+	_        [4]byte
 }
 
 type t4socklen_t = uint32
@@ -34764,6 +34851,7 @@ type Smsghdr = struct {
 	Fmsg_controllen uint32
 	F__pad2         uint32
 	Fmsg_flags      int32
+	_               [4]byte
 }
 
 // Siovec is defined at alltypes.h:380:1
@@ -34772,7 +34860,7 @@ type s2iovec = struct {
 	Fiov_len  uint64
 }
 
-type t98size_t = uint64
+type t100size_t = uint64
 
 type s13timespec struct{ uintptr }
 
@@ -34813,6 +34901,7 @@ type s1msghdr = struct {
 	Fmsg_controllen uint32
 	F__pad2         uint32
 	Fmsg_flags      int32
+	_               [4]byte
 }
 
 type t13ssize_t = int64
@@ -34825,7 +34914,7 @@ type s3iovec = struct {
 	Fiov_len  uint64
 }
 
-type t99size_t = uint64
+type t101size_t = uint64
 
 // linking res_init.o
 
@@ -34885,7 +34974,7 @@ type s14timespec = struct {
 	Ftv_nsec int64
 }
 
-type t100size_t = uint64
+type t102size_t = uint64
 
 type t26time_t = int64
 
@@ -34928,8 +35017,8 @@ func X__res_msend_rc(tls TLS, _nqueries int32, _queries uintptr /* **uint8 */, _
 		_unnamed2       = esc + 208 // *[1]uint32
 	)
 	defer Free(esc)
-	Copy(_sa, ts+2064 /* "\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00..." */, 28)
-	Copy(_ns, ts+2116 /* "\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00..." */, 84)
+	Copy(_sa, ts+47208 /* "\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00..." */, 28)
+	Copy(_ns, ts+47536 /* "\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00..." */, 84)
 	_sl = uint32(16)
 	_nns = int32(0)
 	_family = int32(2)
@@ -34975,7 +35064,7 @@ func X__res_msend_rc(tls TLS, _nqueries int32, _queries uintptr /* **uint8 */, _
 				continue
 			}
 			Xmemcpy(tls, (_ns+28*uintptr(_i)+8)+uintptr(12), _ns+28*uintptr(_i)+4, uint64(4))
-			Xmemcpy(tls, _ns+28*uintptr(_i)+8, ts+1832 /* "\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\xff\xff" */, uint64(12))
+			Xmemcpy(tls, _ns+28*uintptr(_i)+8, ts+46848 /* "\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\xff\xff" */, uint64(12))
 			*(*uint16)(unsafe.Pointer(_ns + 28*uintptr(_i))) = uint16(10)
 			*(*uint32)(unsafe.Pointer(_ns + 28*uintptr(_i) + 4)) = uint32(0)
 			*(*uint32)(unsafe.Pointer(_ns + 28*uintptr(_i) + 24)) = uint32(0)
@@ -35234,7 +35323,7 @@ func Xres_querydomain(tls TLS, _name uintptr /* *int8 */, _domain uintptr /* *in
 	return Xres_query(tls, _tmp, _class, _type, _dest, _len)
 }
 
-type t101size_t = uint64
+type t103size_t = uint64
 
 // linking res_send.o
 
@@ -35264,7 +35353,7 @@ func X__res_send(tls TLS, amsg uintptr, amsglen int32, aanswer uintptr, aanslen 
 
 // X__res_state is defined at res_state.c:5:20
 func X__res_state(tls TLS) (r uintptr /* *S__res_state */) {
-	return x815res
+	return uintptr(unsafe.Pointer(&x815res))
 }
 
 // S__res_state is defined at resolv.h:26:9
@@ -35304,8 +35393,8 @@ type S__res_state = struct {
 	}
 }
 
-// x1res S__res_state, escapes: true, res_state.c:7:28
-var x815res = bss + 4280
+// x1res S__res_state, escapes: false, res_state.c:7:28
+var x815res S__res_state
 
 // Ssockaddr_in is defined at in.h:16:1
 type s5sockaddr_in = struct {
@@ -35357,7 +35446,7 @@ func X__get_resolv_conf(tls TLS, _conf uintptr /* *Sresolvconf */, _search uintp
 	if _search != 0 {
 		*(*int8)(unsafe.Pointer(_search)) = int8(0)
 	}
-	_f = X__fopen_rb_ca(tls, ts+2204 /* "/etc/resolv.conf" */, __f, __buf, uint64(256))
+	_f = X__fopen_rb_ca(tls, ts+47624 /* "/etc/resolv.conf" */, __f, __buf, uint64(256))
 	if !(_f == 0) {
 		goto _1
 	}
@@ -35387,8 +35476,8 @@ _1:
 			}
 			continue
 		}
-		if (Xstrncmp(tls, _line, ts+2224 /* "options" */, uint64(7)) == 0) && (Xisspace(tls, int32(*(*int8)(unsafe.Pointer(_line + 7)))) != 0) {
-			_p = Xstrstr(tls, _line, ts+2232 /* "ndots:" */)
+		if (Xstrncmp(tls, _line, ts+47644 /* "options" */, uint64(7)) == 0) && (Xisspace(tls, int32(*(*int8)(unsafe.Pointer(_line + 7)))) != 0) {
+			_p = Xstrstr(tls, _line, ts+47652 /* "ndots:" */)
 			if (_p != 0) && (Xisdigit(tls, int32(*(*int8)(unsafe.Pointer(_p + 6)))) != 0) {
 				_p += uintptr(6)
 				_x = Xstrtoul(tls, _p, _z, int32(10))
@@ -35400,7 +35489,7 @@ _1:
 					}
 				}
 			}
-			_p = Xstrstr(tls, _line, ts+2240 /* "attempts:" */)
+			_p = Xstrstr(tls, _line, ts+47660 /* "attempts:" */)
 			if (_p != 0) && (Xisdigit(tls, int32(*(*int8)(unsafe.Pointer(_p + 9)))) != 0) {
 				_p += uintptr(9)
 				_1x = Xstrtoul(tls, _p, _z, int32(10))
@@ -35412,7 +35501,7 @@ _1:
 					}
 				}
 			}
-			_p = Xstrstr(tls, _line, ts+2252 /* "timeout:" */)
+			_p = Xstrstr(tls, _line, ts+47672 /* "timeout:" */)
 			if (_p != 0) && ((Xisdigit(tls, int32(*(*int8)(unsafe.Pointer(_p + 8)))) != 0) || (int32(*(*int8)(unsafe.Pointer(_p + 8))) == int32('.'))) {
 				_p += uintptr(8)
 				_2x = Xstrtoul(tls, _p, _z, int32(10))
@@ -35426,7 +35515,7 @@ _1:
 			}
 			continue
 		}
-		if (Xstrncmp(tls, _line, ts+2264 /* "nameserver" */, uint64(10)) == 0) && (Xisspace(tls, int32(*(*int8)(unsafe.Pointer(_line + 10)))) != 0) {
+		if (Xstrncmp(tls, _line, ts+47684 /* "nameserver" */, uint64(10)) == 0) && (Xisspace(tls, int32(*(*int8)(unsafe.Pointer(_line + 10)))) != 0) {
 			if _nns >= int32(3) {
 				continue
 			}
@@ -35443,7 +35532,7 @@ _1:
 		if _search == 0 {
 			continue
 		}
-		if ((Xstrncmp(tls, _line, ts+2276 /* "domain" */, uint64(6)) != 0) && (Xstrncmp(tls, _line, ts+2284 /* "search" */, uint64(6)) != 0)) || (Xisspace(tls, int32(*(*int8)(unsafe.Pointer(_line + 6)))) == 0) {
+		if ((Xstrncmp(tls, _line, ts+47696 /* "domain" */, uint64(6)) != 0) && (Xstrncmp(tls, _line, ts+47704 /* "search" */, uint64(6)) != 0)) || (Xisspace(tls, int32(*(*int8)(unsafe.Pointer(_line + 6)))) == 0) {
 			continue
 		}
 		for _p = _line + uintptr(7); Xisspace(tls, int32(*(*int8)(unsafe.Pointer(_p)))) != 0; _p++ {
@@ -35458,7 +35547,7 @@ _1:
 	goto lno_resolv_conf
 lno_resolv_conf:
 	if _nns == 0 {
-		X__lookup_ipliteral(tls, _conf, ts+2292 /* "127.0.0.1" */, int32(0))
+		X__lookup_ipliteral(tls, _conf, ts+47712 /* "127.0.0.1" */, int32(0))
 		_nns = int32(1)
 	}
 	*(*uint32)(unsafe.Pointer(_conf + 84)) = uint32(_nns)
@@ -35511,7 +35600,7 @@ type s10_IO_FILE = struct {
 	Flocale       uintptr // *S__locale_struct
 }
 
-type t102size_t = uint64
+type t104size_t = uint64
 
 // Saddress is defined at lookup.h:7:1
 type s6address = struct {
@@ -35537,7 +35626,7 @@ func Xsend(tls TLS, _fd int32, _buf uintptr /* *void */, _len uint64, _flags int
 
 type t14ssize_t = int64
 
-type t103size_t = uint64
+type t105size_t = uint64
 
 // linking sendmmsg.o
 
@@ -35584,6 +35673,7 @@ lerror:
 type s1mmsghdr = struct {
 	Fmsg_hdr s2msghdr
 	Fmsg_len uint32
+	_        [4]byte
 }
 
 type t15ssize_t = int64
@@ -35599,6 +35689,7 @@ type s2msghdr = struct {
 	Fmsg_controllen uint32
 	F__pad2         uint32
 	Fmsg_flags      int32
+	_               [4]byte
 }
 
 type t7socklen_t = uint32
@@ -35609,7 +35700,7 @@ type s4iovec = struct {
 	Fiov_len  uint64
 }
 
-type t104size_t = uint64
+type t106size_t = uint64
 
 // linking sendmsg.o
 
@@ -35664,6 +35755,7 @@ type s3msghdr = struct {
 	Fmsg_controllen uint32
 	F__pad2         uint32
 	Fmsg_flags      int32
+	_               [4]byte
 }
 
 // Scmsghdr is defined at socket.h:11:1
@@ -35676,7 +35768,7 @@ type Scmsghdr = struct {
 
 type t8socklen_t = uint32
 
-type t105size_t = uint64
+type t107size_t = uint64
 
 // Siovec is defined at alltypes.h:380:1
 type s5iovec = struct {
@@ -35838,7 +35930,7 @@ func Xfgetgrent(tls TLS, _f uintptr /* *TFILE = S_IO_FILE */) (r uintptr /* *Sgr
 	defer Free(esc)
 	*(*uint64)(unsafe.Pointer(_size)) = uint64(0)
 	*(*uint64)(unsafe.Pointer(_nmem)) = uint64(0)
-	X__getgrent_a(tls, _f, x817gr, x818line, _size, x819mem, _nmem, _res)
+	X__getgrent_a(tls, _f, uintptr(unsafe.Pointer(&x817gr)), uintptr(unsafe.Pointer(&x818line)), _size, uintptr(unsafe.Pointer(&x819mem)), _nmem, _res)
 	return *(*uintptr)(unsafe.Pointer(_res))
 }
 
@@ -35850,16 +35942,16 @@ type Sgroup = struct {
 	Fgr_mem    uintptr // **int8
 }
 
-// x1line *int8, escapes: true, fgetgrent.c:6:14
-var x818line = bss + 4848
+// x1line *int8, escapes: false, fgetgrent.c:6:14
+var x818line uintptr
 
-// x2mem **int8, escapes: true, fgetgrent.c:6:21
-var x819mem = bss + 4856
+// x2mem **int8, escapes: false, fgetgrent.c:6:21
+var x819mem uintptr
 
-// x3gr Sgroup, escapes: true, fgetgrent.c:7:22
-var x817gr = bss + 4864
+// x3gr Sgroup, escapes: false, fgetgrent.c:7:22
+var x817gr Sgroup
 
-type t106size_t = uint64
+type t108size_t = uint64
 
 type t9gid_t = uint32
 
@@ -35876,7 +35968,7 @@ func Xfgetpwent(tls TLS, _f uintptr /* *TFILE = S_IO_FILE */) (r uintptr /* *Spa
 	)
 	defer Free(esc)
 	*(*uint64)(unsafe.Pointer(_size)) = uint64(0)
-	X__getpwent_a(tls, _f, x820pw, x821line, _size, _res)
+	X__getpwent_a(tls, _f, uintptr(unsafe.Pointer(&x820pw)), uintptr(unsafe.Pointer(&x821line)), _size, _res)
 	return *(*uintptr)(unsafe.Pointer(_res))
 }
 
@@ -35891,13 +35983,13 @@ type s1passwd = struct {
 	Fpw_shell  uintptr // *int8
 }
 
-// x1line *int8, escapes: true, fgetpwent.c:6:14
-var x821line = bss + 4896
+// x1line *int8, escapes: false, fgetpwent.c:6:14
+var x821line uintptr
 
-// x2pw Spasswd, escapes: true, fgetpwent.c:7:23
-var x820pw = bss + 4904
+// x2pw Spasswd, escapes: false, fgetpwent.c:7:23
+var x820pw s1passwd
 
-type t107size_t = uint64
+type t109size_t = uint64
 
 type t8uid_t = uint32
 
@@ -35919,8 +36011,8 @@ func Xfgetspent(tls TLS, _f uintptr /* *TFILE = S_IO_FILE */) (r uintptr /* *Ssp
 	*(*uint64)(unsafe.Pointer(_size)) = uint64(0)
 	_res = 0
 	Xpthread_setcancelstate(tls, int32(1), _cs)
-	if (Xgetline(tls, x822line, _size, _f) >= int64(0)) && (X__parsespent(tls, *(*uintptr)(unsafe.Pointer(x822line)), x823sp) >= int32(0)) {
-		_res = x823sp
+	if (Xgetline(tls, uintptr(unsafe.Pointer(&x822line)), _size, _f) >= int64(0)) && (X__parsespent(tls, x822line, uintptr(unsafe.Pointer(&x823sp))) >= int32(0)) {
+		_res = uintptr(unsafe.Pointer(&x823sp))
 	}
 	Xpthread_setcancelstate(tls, *(*int32)(unsafe.Pointer(_cs)), null)
 	return _res
@@ -35939,13 +36031,13 @@ type Sspwd = struct {
 	Fsp_flag   uint64
 }
 
-// x1line *int8, escapes: true, fgetspent.c:6:14
-var x822line = bss + 4952
+// x1line *int8, escapes: false, fgetspent.c:6:14
+var x822line uintptr
 
-// x2sp Sspwd, escapes: true, fgetspent.c:7:21
-var x823sp = bss + 4960
+// x2sp Sspwd, escapes: false, fgetspent.c:7:21
+var x823sp Sspwd
 
-type t108size_t = uint64
+type t110size_t = uint64
 
 type t16ssize_t = int64
 
@@ -35981,7 +36073,7 @@ func X__getgr_a(tls TLS, _name uintptr /* *int8 */, _gid uint32, _gr uintptr /* 
 	_rv = int32(0)
 	*(*uintptr)(unsafe.Pointer(_res)) = null
 	Xpthread_setcancelstate(tls, int32(1), _cs)
-	_f = Xfopen(tls, ts+2304 /* "/etc/group" */, ts+952 /* "rbe" */)
+	_f = Xfopen(tls, ts+47724 /* "/etc/group" */, ts+31500 /* "rbe" */)
 	if !(_f == 0) {
 		goto _1
 	}
@@ -36006,10 +36098,10 @@ _1:
 		}
 		return int32(3)
 	}()
-	Copy(_groupbuf, ts+2316 /* "\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00..." */, 24)
+	Copy(_groupbuf, ts+47736 /* "\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00..." */, 24)
 	_len = uint64(0)
 	_grlist_len = uint64(0)
-	Copy(_gidbuf, ts+2344 /* "\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00" */, 11)
+	Copy(_gidbuf, ts+47764 /* "\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00" */, 11)
 	*(*int32)(unsafe.Pointer(_swap)) = int32(0)
 	if _name == 0 {
 		goto _3
@@ -36223,7 +36315,7 @@ type s1group = struct {
 
 type t18int32_t = int32
 
-type t109size_t = uint64
+type t111size_t = uint64
 
 type t11gid_t = uint32
 
@@ -36314,7 +36406,7 @@ func xgetgr_r(tls TLS, _name uintptr /* *int8 */, _gid uint32, _gr uintptr /* *S
 	return _rv
 }
 
-type t110size_t = uint64
+type t112size_t = uint64
 
 type t12gid_t = uint32
 
@@ -36342,12 +36434,12 @@ func Xgetgrent(tls TLS) (r uintptr /* *Sgroup */) {
 	*(*uint64)(unsafe.Pointer(_size)) = uint64(0)
 	*(*uint64)(unsafe.Pointer(_nmem)) = uint64(0)
 	if x1f == 0 {
-		x1f = Xfopen(tls, ts+2304 /* "/etc/group" */, ts+952 /* "rbe" */)
+		x1f = Xfopen(tls, ts+47724 /* "/etc/group" */, ts+31500 /* "rbe" */)
 	}
 	if x1f == 0 {
 		return null
 	}
-	X__getgrent_a(tls, x1f, xgr, x1line, _size, xmem, _nmem, _res)
+	X__getgrent_a(tls, x1f, uintptr(unsafe.Pointer(&xgr)), uintptr(unsafe.Pointer(&x1line)), _size, uintptr(unsafe.Pointer(&xmem)), _nmem, _res)
 	return *(*uintptr)(unsafe.Pointer(_res))
 }
 
@@ -36362,7 +36454,7 @@ func Xgetgrgid(tls TLS, _gid uint32) (r uintptr /* *Sgroup */) {
 	defer Free(esc)
 	*(*uint64)(unsafe.Pointer(_size)) = uint64(0)
 	*(*uint64)(unsafe.Pointer(_nmem)) = uint64(0)
-	X__getgr_a(tls, null, _gid, xgr, x1line, _size, xmem, _nmem, _res)
+	X__getgr_a(tls, null, _gid, uintptr(unsafe.Pointer(&xgr)), uintptr(unsafe.Pointer(&x1line)), _size, uintptr(unsafe.Pointer(&xmem)), _nmem, _res)
 	return *(*uintptr)(unsafe.Pointer(_res))
 }
 
@@ -36377,7 +36469,7 @@ func Xgetgrnam(tls TLS, _name uintptr /* *int8 */) (r uintptr /* *Sgroup */) {
 	defer Free(esc)
 	*(*uint64)(unsafe.Pointer(_size)) = uint64(0)
 	*(*uint64)(unsafe.Pointer(_nmem)) = uint64(0)
-	X__getgr_a(tls, _name, uint32(0), xgr, x1line, _size, xmem, _nmem, _res)
+	X__getgr_a(tls, _name, uint32(0), uintptr(unsafe.Pointer(&xgr)), uintptr(unsafe.Pointer(&x1line)), _size, uintptr(unsafe.Pointer(&xmem)), _nmem, _res)
 	return *(*uintptr)(unsafe.Pointer(_res))
 }
 
@@ -36392,16 +36484,16 @@ type s3group = struct {
 	Fgr_mem    uintptr // **int8
 }
 
-type t111size_t = uint64
+type t113size_t = uint64
 
-// xgr Sgroup, escapes: true, getgrent.c:5:21
-var xgr = bss + 5032
+// xgr Sgroup, escapes: false, getgrent.c:5:21
+var xgr s3group
 
-// xline *int8, escapes: true, getgrent.c:4:13
-var x1line = bss + 5064
+// xline *int8, escapes: false, getgrent.c:4:13
+var x1line uintptr
 
-// xmem **int8, escapes: true, getgrent.c:4:20
-var xmem = bss + 5072
+// xmem **int8, escapes: false, getgrent.c:4:20
+var xmem uintptr
 
 type t13gid_t = uint32
 
@@ -36525,7 +36617,7 @@ type s4group = struct {
 
 type t17ssize_t = int64
 
-type t112size_t = uint64
+type t114size_t = uint64
 
 type t14gid_t = uint32
 
@@ -36618,7 +36710,7 @@ _4:
 	}
 _2:
 	Xfclose(tls, _f)
-	_f = Xfopen(tls, ts+2304 /* "/etc/group" */, ts+952 /* "rbe" */)
+	_f = Xfopen(tls, ts+47724 /* "/etc/group" */, ts+31500 /* "rbe" */)
 	if !(((_f == 0) && (*(*int32)(unsafe.Pointer(X__errno_location(tls))) != int32(2))) && (*(*int32)(unsafe.Pointer(X__errno_location(tls))) != int32(20))) {
 		goto _5
 	}
@@ -36694,7 +36786,7 @@ type s5group = struct {
 
 type t19int32_t = int32
 
-type t113size_t = uint64
+type t115size_t = uint64
 
 type t15gid_t = uint32
 
@@ -36730,7 +36822,7 @@ func X__getpw_a(tls TLS, _name uintptr /* *int8 */, _uid uint32, _pw uintptr /* 
 	_rv = int32(0)
 	*(*uintptr)(unsafe.Pointer(_res)) = null
 	Xpthread_setcancelstate(tls, int32(1), _cs)
-	_f = Xfopen(tls, ts+2356 /* "/etc/passwd" */, ts+952 /* "rbe" */)
+	_f = Xfopen(tls, ts+47776 /* "/etc/passwd" */, ts+31500 /* "rbe" */)
 	if !(_f == 0) {
 		goto _1
 	}
@@ -36755,9 +36847,9 @@ _1:
 		}
 		return int32(1)
 	}()
-	Copy(_passwdbuf, ts+2368 /* "\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00..." */, 36)
+	Copy(_passwdbuf, ts+47788 /* "\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00..." */, 36)
 	_len = uint64(0)
-	Copy(_uidbuf, ts+2344 /* "\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00" */, 11)
+	Copy(_uidbuf, ts+47764 /* "\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00" */, 11)
 	if _name == 0 {
 		goto _3
 	}
@@ -36890,7 +36982,7 @@ type s2passwd = struct {
 
 type t20int32_t = int32
 
-type t114size_t = uint64
+type t116size_t = uint64
 
 type t9uid_t = uint32
 
@@ -36971,7 +37063,7 @@ func xgetpw_r(tls TLS, _name uintptr /* *int8 */, _uid uint32, _pw uintptr /* *S
 	return _rv
 }
 
-type t115size_t = uint64
+type t117size_t = uint64
 
 type t10uid_t = uint32
 
@@ -36993,12 +37085,12 @@ func Xgetpwent(tls TLS) (r uintptr /* *Spasswd */) {
 	var _res = esc // **Spasswd
 	defer Free(esc)
 	if x2f == 0 {
-		x2f = Xfopen(tls, ts+2356 /* "/etc/passwd" */, ts+952 /* "rbe" */)
+		x2f = Xfopen(tls, ts+47776 /* "/etc/passwd" */, ts+31500 /* "rbe" */)
 	}
 	if x2f == 0 {
 		return null
 	}
-	X__getpwent_a(tls, x2f, xpw, x2line, xsize, _res)
+	X__getpwent_a(tls, x2f, uintptr(unsafe.Pointer(&xpw)), uintptr(unsafe.Pointer(&x2line)), uintptr(unsafe.Pointer(&xsize)), _res)
 	return *(*uintptr)(unsafe.Pointer(_res))
 }
 
@@ -37007,7 +37099,7 @@ func Xgetpwuid(tls TLS, _uid uint32) (r uintptr /* *Spasswd */) {
 	esc := MustMalloc(8)
 	var _res = esc // **Spasswd
 	defer Free(esc)
-	X__getpw_a(tls, null, _uid, xpw, x2line, xsize, _res)
+	X__getpw_a(tls, null, _uid, uintptr(unsafe.Pointer(&xpw)), uintptr(unsafe.Pointer(&x2line)), uintptr(unsafe.Pointer(&xsize)), _res)
 	return *(*uintptr)(unsafe.Pointer(_res))
 }
 
@@ -37016,7 +37108,7 @@ func Xgetpwnam(tls TLS, _name uintptr /* *int8 */) (r uintptr /* *Spasswd */) {
 	esc := MustMalloc(8)
 	var _res = esc // **Spasswd
 	defer Free(esc)
-	X__getpw_a(tls, _name, uint32(0), xpw, x2line, xsize, _res)
+	X__getpw_a(tls, _name, uint32(0), uintptr(unsafe.Pointer(&xpw)), uintptr(unsafe.Pointer(&x2line)), uintptr(unsafe.Pointer(&xsize)), _res)
 	return *(*uintptr)(unsafe.Pointer(_res))
 }
 
@@ -37034,18 +37126,20 @@ type s4passwd = struct {
 	Fpw_shell  uintptr // *int8
 }
 
-// xpw Spasswd, escapes: true, getpwent.c:5:22
-var xpw = bss + 5080
+// xpw Spasswd, escapes: false, getpwent.c:5:22
+var xpw s4passwd
 
-// xline *int8, escapes: true, getpwent.c:4:13
-var x2line = bss + 5128
+// xline *int8, escapes: false, getpwent.c:4:13
+var x2line uintptr
 
-// xsize Tsize_t = uint64, escapes: true, getpwent.c:6:15
-var xsize = bss + 5136
+// xsize Tsize_t = uint64, escapes: false, getpwent.c:6:15
+var xsize uint64
 
 type t11uid_t = uint32
 
 type t18gid_t = uint32
+
+type t118size_t = uint64
 
 type s19_IO_FILE struct{ uintptr }
 
@@ -37197,7 +37291,7 @@ func Xgetspnam(tls TLS, _name uintptr /* *int8 */) (r uintptr /* *Sspwd */) {
 	if x840line == 0 {
 		return null
 	}
-	_e = Xgetspnam_r(tls, _name, x841sp, x840line, uint64(256), _res)
+	_e = Xgetspnam_r(tls, _name, uintptr(unsafe.Pointer(&x841sp)), x840line, uint64(256), _res)
 	if _e != 0 {
 		*(*int32)(unsafe.Pointer(X__errno_location(tls))) = _e
 	}
@@ -37217,8 +37311,8 @@ type s2spwd = struct {
 	Fsp_flag   uint64
 }
 
-// x1sp Sspwd, escapes: true, getspnam.c:7:21
-var x841sp = bss + 5144
+// x1sp Sspwd, escapes: false, getspnam.c:7:21
+var x841sp s2spwd
 
 // x2line *int8, escapes: false, getspnam.c:8:14
 var x840line uintptr
@@ -37316,21 +37410,21 @@ func Xgetspnam_r(tls TLS, _name uintptr /* *int8 */, _sp uintptr /* *Sspwd */, _
 	if _size < _l+uint64(100) {
 		return set844((*int32)(unsafe.Pointer(X__errno_location(tls))), int32(34))
 	}
-	if uint64(Xsnprintf(tls, _path, uint64(275), ts+2408 /* "/etc/tcb/%s/shad..." */, _name)) >= uint64(275) {
+	if uint64(Xsnprintf(tls, _path, uint64(275), ts+47828 /* "/etc/tcb/%s/shad..." */, _name)) >= uint64(275) {
 		return set844((*int32)(unsafe.Pointer(X__errno_location(tls))), int32(22))
 	}
 	_fd = Xopen(tls, _path, int32(657408))
 	if _fd >= int32(0) {
-		Copy(_st, ts+2428 /* "\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00..." */, 144)
+		Copy(_st, ts+47848 /* "\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00..." */, 144)
 		*(*int32)(unsafe.Pointer(X__errno_location(tls))) = int32(22)
-		if ((Xfstat(tls, _fd, _st) != 0) || (!(*(*uint32)(unsafe.Pointer(_st + 24))&uint32(0170000) == uint32(0100000)))) || (set842(&_f, Xfdopen(tls, _fd, ts+956 /* "rb" */)) == 0) {
+		if ((Xfstat(tls, _fd, _st) != 0) || (!(*(*uint32)(unsafe.Pointer(_st + 24))&uint32(0170000) == uint32(0100000)))) || (set842(&_f, Xfdopen(tls, _fd, ts+31504 /* "rb" */)) == 0) {
 			Xpthread_setcancelstate(tls, int32(1), _cs)
 			Xclose(tls, _fd)
 			Xpthread_setcancelstate(tls, *(*int32)(unsafe.Pointer(_cs)), null)
 			return *(*int32)(unsafe.Pointer(X__errno_location(tls)))
 		}
 	} else {
-		_f = Xfopen(tls, ts+2576 /* "/etc/shadow" */, ts+952 /* "rbe" */)
+		_f = Xfopen(tls, ts+47996 /* "/etc/shadow" */, ts+31500 /* "rbe" */)
 		if _f == 0 {
 			return *(*int32)(unsafe.Pointer(X__errno_location(tls)))
 		}
@@ -37384,7 +37478,7 @@ func xxatol(tls TLS, _s uintptr /* **int8 */) (r int64) {
 	return _x
 }
 
-type t116size_t = uint64
+type t119size_t = uint64
 
 // Sstat is defined at stat.h:4:1
 type s5stat = struct {
@@ -37478,7 +37572,7 @@ func Xputgrent(tls TLS, _gr uintptr /* *Sgroup */, _f uintptr /* *TFILE = S_IO_F
 		_i uint64
 	)
 	Xflockfile(tls, _f)
-	if !(set847(&_r, Xfprintf(tls, _f, ts+2588 /* "%s:%s:%d:" */, *(*uintptr)(unsafe.Pointer(_gr)), *(*uintptr)(unsafe.Pointer(_gr + 8)), *(*uint32)(unsafe.Pointer(_gr + 16)))) < int32(0)) {
+	if !(set847(&_r, Xfprintf(tls, _f, ts+48008 /* "%s:%s:%d:" */, *(*uintptr)(unsafe.Pointer(_gr)), *(*uintptr)(unsafe.Pointer(_gr + 8)), *(*uint32)(unsafe.Pointer(_gr + 16)))) < int32(0)) {
 		goto _1
 	}
 
@@ -37495,9 +37589,9 @@ _3:
 		goto _5
 	}
 
-	if !(set847(&_r, Xfprintf(tls, _f, ts+2600 /* "%s%s" */, func() uintptr {
+	if !(set847(&_r, Xfprintf(tls, _f, ts+48020 /* "%s%s" */, func() uintptr {
 		if _i != 0 {
-			return ts + 2608 /* "," */
+			return ts + 48028 /* "," */
 		}
 		return ts + 0 /* "" */
 	}(), *(*uintptr)(unsafe.Pointer(*(*uintptr)(unsafe.Pointer(_gr + 24)) + 8*uintptr(_i))))) < int32(0)) {
@@ -37530,7 +37624,7 @@ type s6group = struct {
 	Fgr_mem    uintptr // **int8
 }
 
-type t117size_t = uint64
+type t120size_t = uint64
 
 type t21gid_t = uint32
 
@@ -37540,7 +37634,7 @@ type s23_IO_FILE struct{ uintptr }
 
 // Xputpwent is defined at putpwent.c:5:5
 func Xputpwent(tls TLS, _pw uintptr /* *Spasswd */, _f uintptr /* *TFILE = S_IO_FILE */) (r int32) {
-	if Xfprintf(tls, _f, ts+2612 /* "%s:%s:%d:%d:%s:%..." */, *(*uintptr)(unsafe.Pointer(_pw)), *(*uintptr)(unsafe.Pointer(_pw + 8)), *(*uint32)(unsafe.Pointer(_pw + 16)), *(*uint32)(unsafe.Pointer(_pw + 20)), *(*uintptr)(unsafe.Pointer(_pw + 24)), *(*uintptr)(unsafe.Pointer(_pw + 32)), *(*uintptr)(unsafe.Pointer(_pw + 40))) < int32(0) {
+	if Xfprintf(tls, _f, ts+48032 /* "%s:%s:%d:%d:%s:%..." */, *(*uintptr)(unsafe.Pointer(_pw)), *(*uintptr)(unsafe.Pointer(_pw + 8)), *(*uint32)(unsafe.Pointer(_pw + 16)), *(*uint32)(unsafe.Pointer(_pw + 20)), *(*uintptr)(unsafe.Pointer(_pw + 24)), *(*uintptr)(unsafe.Pointer(_pw + 32)), *(*uintptr)(unsafe.Pointer(_pw + 40))) < int32(0) {
 		return int32(-1)
 	}
 	return int32(0)
@@ -37567,7 +37661,7 @@ type s24_IO_FILE struct{ uintptr }
 
 // Xputspent is defined at putspent.c:7:5
 func Xputspent(tls TLS, _sp uintptr /* *Sspwd */, _f uintptr /* *TFILE = S_IO_FILE */) (r int32) {
-	if Xfprintf(tls, _f, ts+2636 /* "%s:%s:%.*ld:%.*l..." */, func() uintptr {
+	if Xfprintf(tls, _f, ts+48056 /* "%s:%s:%.*ld:%.*l..." */, func() uintptr {
 		if *(*uintptr)(unsafe.Pointer(_sp)) != 0 {
 			return *(*uintptr)(unsafe.Pointer(_sp))
 		}
@@ -37689,8 +37783,8 @@ type t69uint64_t = uint64
 
 // linking __seed48.o
 
-// X__seed48 [7]uint16, escapes: true, __seed48.c:1:16
-var X__seed48 = ds + 45968
+// X__seed48 [7]uint16, escapes: false, __seed48.c:1:16
+var X__seed48 = *(*[7]uint16)(unsafe.Pointer(ts + 48108 /* "\x00\x00\x00\x00\x00\x00m\xe6\xec\xde\x05\x00\v\x00" */))
 
 // linking drand48.o
 
@@ -37707,13 +37801,13 @@ func Xerand48(tls TLS, _s uintptr /* *uint16 */) (r float64) {
 		Fu [0]uint64
 		Ff [0]float64
 		F  int64
-	})(unsafe.Pointer(&struct{ f uint64 }{uint64(0x3ff0000000000000) | X__rand48_step(tls, _s, X__seed48+2*uintptr(3))<<(uint(4)%64)}))
+	})(unsafe.Pointer(&struct{ f uint64 }{uint64(0x3ff0000000000000) | X__rand48_step(tls, _s, uintptr(unsafe.Pointer(&X__seed48))+2*uintptr(3))<<(uint(4)%64)}))
 	return *(*float64)(unsafe.Pointer(_x)) - float64(1)
 }
 
 // Xdrand48 is defined at drand48.c:16:8
 func Xdrand48(tls TLS) (r float64) {
-	return Xerand48(tls, X__seed48)
+	return Xerand48(tls, uintptr(unsafe.Pointer(&X__seed48)))
 }
 
 type t70uint64_t = uint64
@@ -37722,19 +37816,19 @@ type t70uint64_t = uint64
 
 // Xlcong48 is defined at lcong48.c:6:6
 func Xlcong48(tls TLS, _p uintptr /* *uint16 */) {
-	Xmemcpy(tls, X__seed48, _p, uint64(14))
+	Xmemcpy(tls, uintptr(unsafe.Pointer(&X__seed48)), _p, uint64(14))
 }
 
 // linking lrand48.o
 
 // Xnrand48 is defined at lrand48.c:7:6
 func Xnrand48(tls TLS, _s uintptr /* *uint16 */) (r int64) {
-	return int64(X__rand48_step(tls, _s, X__seed48+2*uintptr(3)) >> (uint(17) % 64))
+	return int64(X__rand48_step(tls, _s, uintptr(unsafe.Pointer(&X__seed48))+2*uintptr(3)) >> (uint(17) % 64))
 }
 
 // Xlrand48 is defined at lrand48.c:12:6
 func Xlrand48(tls TLS) (r int64) {
-	return Xnrand48(tls, X__seed48)
+	return Xnrand48(tls, uintptr(unsafe.Pointer(&X__seed48)))
 }
 
 type t71uint64_t = uint64
@@ -37743,12 +37837,12 @@ type t71uint64_t = uint64
 
 // Xjrand48 is defined at mrand48.c:7:6
 func Xjrand48(tls TLS, _s uintptr /* *uint16 */) (r int64) {
-	return int64(int32(X__rand48_step(tls, _s, X__seed48+2*uintptr(3)) >> (uint(16) % 64)))
+	return int64(int32(X__rand48_step(tls, _s, uintptr(unsafe.Pointer(&X__seed48))+2*uintptr(3)) >> (uint(16) % 64)))
 }
 
 // Xmrand48 is defined at mrand48.c:12:6
 func Xmrand48(tls TLS) (r int64) {
-	return Xjrand48(tls, X__seed48)
+	return Xjrand48(tls, uintptr(unsafe.Pointer(&X__seed48)))
 }
 
 type t21int32_t = int32
@@ -37795,9 +37889,9 @@ func xtemper(tls TLS, _x uint32) (r uint32) {
 
 // Xsrandom is defined at random.c:65:6
 func Xsrandom(tls TLS, _seed uint32) {
-	X__lock(tls, x4lock)
+	X__lock(tls, uintptr(unsafe.Pointer(&x4lock)))
 	x__srandom(tls, _seed)
-	X__unlock(tls, x4lock)
+	X__unlock(tls, uintptr(unsafe.Pointer(&x4lock)))
 }
 
 // Xinitstate is defined at random.c:71:6
@@ -37807,7 +37901,7 @@ func Xinitstate(tls TLS, _seed uint32, _state uintptr /* *int8 */, _size uint64)
 	if _size < uint64(8) {
 		return null
 	}
-	X__lock(tls, x4lock)
+	X__lock(tls, uintptr(unsafe.Pointer(&x4lock)))
 	_old = xsavestate(tls)
 	if _size < uint64(32) {
 		xn = int32(0)
@@ -37823,7 +37917,7 @@ func Xinitstate(tls TLS, _seed uint32, _state uintptr /* *int8 */, _size uint64)
 	xx = _state + 4*uintptr(1)
 	x__srandom(tls, _seed)
 	xsavestate(tls)
-	X__unlock(tls, x4lock)
+	X__unlock(tls, uintptr(unsafe.Pointer(&x4lock)))
 	return _old
 }
 
@@ -37831,10 +37925,10 @@ func Xinitstate(tls TLS, _seed uint32, _state uintptr /* *int8 */, _size uint64)
 func Xsetstate(tls TLS, _state uintptr /* *int8 */) (r uintptr /* *int8 */) {
 	var _old uintptr // *void
 
-	X__lock(tls, x4lock)
+	X__lock(tls, uintptr(unsafe.Pointer(&x4lock)))
 	_old = xsavestate(tls)
 	xloadstate(tls, _state)
-	X__unlock(tls, x4lock)
+	X__unlock(tls, uintptr(unsafe.Pointer(&x4lock)))
 	return _old
 }
 
@@ -37846,7 +37940,7 @@ func preinc850(p *int32) int32 { *p += 1; return *p }
 func Xrandom(tls TLS) (r int64) {
 	var _k int64
 
-	X__lock(tls, x4lock)
+	X__lock(tls, uintptr(unsafe.Pointer(&x4lock)))
 	if !(xn == int32(0)) {
 		goto _1
 	}
@@ -37868,12 +37962,12 @@ _1:
 	}
 	goto lend
 lend:
-	X__unlock(tls, x4lock)
+	X__unlock(tls, uintptr(unsafe.Pointer(&x4lock)))
 	return _k
 }
 
-// xlock [1]int32, escapes: true, random.c:25:21
-var x4lock = bss + 5216
+// xlock [1]int32, escapes: false, random.c:25:21
+var x4lock [1]int32
 
 // x__srandom is defined at random.c:47:13
 func x__srandom(tls TLS, _seed uint32) {
@@ -37902,7 +37996,7 @@ func x__srandom(tls TLS, _seed uint32) {
 	}
 }
 
-type t118size_t = uint64
+type t121size_t = uint64
 
 // xsavestate is defined at random.c:35:13
 func xsavestate(tls TLS) (r uintptr /* *void */) {
@@ -37916,7 +38010,7 @@ var xn = int32(31)
 // xx *Tuint32_t = uint32, escapes: false, random.c:24:17
 var xx uintptr
 
-func init() { xx = xinit + 4*uintptr(1) }
+func init() { xx = uintptr(unsafe.Pointer(&xinit)) + 4*uintptr(1) }
 
 // xloadstate is defined at random.c:40:13
 func xloadstate(tls TLS, _state uintptr /* *Tuint32_t = uint32 */) {
@@ -37946,8 +38040,8 @@ func xlcg64(tls TLS, _x uint64) (r uint64) {
 	return uint64(6364136223846793005)*_x + uint64(1)
 }
 
-// xinit [32]uint32, escapes: true, random.c:11:17
-var xinit = ds + 45984
+// xinit [32]uint32, escapes: false, random.c:11:17
+var xinit = *(*[32]uint32)(unsafe.Pointer(ts + 48124 /* "\x00\x00\x00\x00-\xf4QXό\xb1\xc0F\xf6\xb5\xcb..." */))
 
 // linking seed48.o
 
@@ -37986,7 +38080,7 @@ func Xexeclp(tls TLS, _file uintptr /* *int8 */, _argv0 uintptr /* *int8 */, ap 
 
 // Xexecv is defined at execv.c:5:5
 func Xexecv(tls TLS, _path uintptr /* *int8 */, _argv uintptr /* **int8 */) (r int32) {
-	return Xexecve(tls, _path, _argv, *(*uintptr)(unsafe.Pointer(Xenviron)))
+	return Xexecve(tls, _path, _argv, Xenviron)
 }
 
 // linking execve.o
@@ -38011,7 +38105,7 @@ func X__execvpe(tls TLS, _file uintptr /* *int8 */, _argv uintptr /* **int8 */, 
 
 // Xexecvp is defined at execvp.c:58:5
 func Xexecvp(tls TLS, _file uintptr /* *int8 */, _argv uintptr /* **int8 */) (r int32) {
-	return X__execvpe(tls, _file, _argv, *(*uintptr)(unsafe.Pointer(Xenviron)))
+	return X__execvpe(tls, _file, _argv, Xenviron)
 }
 
 // linking fexecve.o
@@ -38048,7 +38142,7 @@ func Xfork(tls TLS) (r int32) {
 		*(*int32)(unsafe.Pointer(_self + 56)) = int32(x3__syscall0(tls, int64(186)))
 		*(*int64)(unsafe.Pointer((_self + 160) + 8)) = int64(0)
 		*(*uintptr)(unsafe.Pointer((_self + 160) + 16)) = null
-		*(*int32)(unsafe.Pointer(X__libc + 12)) = int32(0)
+		*(*int32)(unsafe.Pointer(uintptr(unsafe.Pointer(&X__libc)) + 12)) = int32(0)
 	}
 	X__restore_sigs(tls, _set)
 	X__fork_handler(tls, bool2int(_ret == 0))
@@ -38115,7 +38209,7 @@ func x22__pthread_self(tls TLS) (r uintptr /* *S__pthread */) {
 
 type t33uintptr_t = uint64
 
-type t119size_t = uint64
+type t122size_t = uint64
 
 // S__ptcb is defined at pthread.h:200:1
 type s26__ptcb = struct {
@@ -38236,7 +38330,7 @@ func Xposix_spawn_file_actions_addopen(tls TLS, _fa uintptr /* *Tposix_spawn_fil
 	*(*int32)(unsafe.Pointer(_op + 20)) = _fd
 	*(*int32)(unsafe.Pointer(_op + 28)) = _flags
 	*(*uint32)(unsafe.Pointer(_op + 32)) = _mode
-	Xstrcpy(tls, _op+40, _path)
+	Xstrcpy(tls, _op+36, _path)
 	if set854((*uintptr)(unsafe.Pointer(_op)), *(*uintptr)(unsafe.Pointer(_fa + 8))) != 0 {
 		*(*uintptr)(unsafe.Pointer(*(*uintptr)(unsafe.Pointer(_op)) + 8)) = _op
 	}
@@ -38444,6 +38538,7 @@ type Ssched_param = struct {
 	Fsched_ss_repl_period  s17timespec
 	Fsched_ss_init_budget  s17timespec
 	Fsched_ss_max_repl     int32
+	_                      [4]byte
 }
 
 // Stimespec is defined at alltypes.h:270:1
@@ -38715,7 +38810,7 @@ lescaped:
 	return int32(*(*int8)(unsafe.Pointer(_pat)))
 }
 
-type t120size_t = uint64
+type t123size_t = uint64
 
 func set857(p *uintptr, v uintptr) uintptr { *p = v; return v }
 
@@ -39133,7 +39228,7 @@ func Xglob(tls TLS, _pat uintptr /* *int8 */, _flags int32, _errfunc uintptr /* 
 	if int32(*(*int8)(unsafe.Pointer(_p))) == int32('/') {
 		for ; int32(*(*int8)(unsafe.Pointer(_p))) == int32('/'); _p++ {
 		}
-		_d = ts + 908 /* "/" */
+		_d = ts + 31456 /* "/" */
 	} else {
 		_d = ts + 0 /* "" */
 	}
@@ -39224,12 +39319,13 @@ func Xglobfree(tls TLS, _g uintptr /* *Tglob_t = struct{Fgl_pathc uint...my1 int
 	*(*uintptr)(unsafe.Pointer(_g + 8)) = null
 }
 
-type t121size_t = uint64
+type t124size_t = uint64
 
 // Smatch is defined at glob.c:12:1
 type s1match = struct {
 	Fnext uintptr // *Smatch
 	Fname [1]int8
+	_     [7]byte
 }
 
 // xignore_err is defined at glob.c:145:12
@@ -39267,7 +39363,7 @@ func xappend(tls TLS, _tail uintptr /* **Smatch */, _name uintptr /* *int8 */, _
 	*(*uintptr)(unsafe.Pointer(_new)) = null
 	Xstrcpy(tls, _new+8, _name)
 	if _mark != 0 {
-		Xstrcat(tls, _new+8, ts+908 /* "/" */)
+		Xstrcat(tls, _new+8, ts+31456 /* "/" */)
 	}
 	*(*uintptr)(unsafe.Pointer(_tail)) = _new
 	return 0
@@ -39283,14 +39379,14 @@ func xsort(tls TLS, _a uintptr /* *void */, _b uintptr /* *void */) (r int32) {
 func postinc863(p *int32) int32 { r := *p; *p += 1; return r }
 
 // Xregcomp is defined at regcomp.c:2691:1
-func Xregcomp(tls TLS, _preg uintptr /* *Tregex_t = struct{Fre_nsub uint..._nsub2 uint64;F__padding2 int8;} */, _regex uintptr /* *int8 */, _cflags int32) (r int32) {
+func Xregcomp(tls TLS, _preg uintptr /* *Tregex_t = struct{Fre_nsub uint...t64;F__padding2 int8;_ [7]byte;} */, _regex uintptr /* *int8 */, _cflags int32) (r int32) {
 	esc := MustMalloc(56)
 	var (
 		_stack          uintptr // *Ttre_stack_t = Stre_stack_rec
-		_tree           uintptr // *Ttre_ast_node_t = struct{Ftype ...asses *uint64;Fbackref int32;};}
-		_tmp_ast_l      uintptr // *Ttre_ast_node_t = struct{Ftype ...asses *uint64;Fbackref int32;};}
-		_tmp_ast_r      uintptr // *Ttre_ast_node_t = struct{Ftype ...asses *uint64;Fbackref int32;};}
-		_p              uintptr // *Ttre_pos_and_tags_t = struct{Fp...classes *uint64;Fbackref int32;}
+		_tree           uintptr // *Ttre_ast_node_t = struct{Ftype ...t64;Fbackref int32;_ [4]byte;};}
+		_tmp_ast_l      uintptr // *Ttre_ast_node_t = struct{Ftype ...t64;Fbackref int32;_ [4]byte;};}
+		_tmp_ast_r      uintptr // *Ttre_ast_node_t = struct{Ftype ...t64;Fbackref int32;_ [4]byte;};}
+		_p              uintptr // *Ttre_pos_and_tags_t = struct{Fp...int64;Fbackref int32;_ [4]byte;}
 		_counts         uintptr // *int32
 		_offs           uintptr // *int32
 		_i              int32
@@ -39597,7 +39693,7 @@ lerror_exit:
 }
 
 // Xregfree is defined at regcomp.c:2907:1
-func Xregfree(tls TLS, _preg uintptr /* *Tregex_t = struct{Fre_nsub uint..._nsub2 uint64;F__padding2 int8;} */) {
+func Xregfree(tls TLS, _preg uintptr /* *Tregex_t = struct{Fre_nsub uint...t64;F__padding2 int8;_ [7]byte;} */) {
 	var (
 		_tnfa  uintptr // *Ttre_tnfa_t = Stnfa
 		_i     uint32
@@ -39648,7 +39744,7 @@ func Xregfree(tls TLS, _preg uintptr /* *Tregex_t = struct{Fre_nsub uint..._nsub
 	Xfree(tls, _tnfa)
 }
 
-type t122size_t = uint64
+type t125size_t = uint64
 
 // Stre_stack_rec is defined at regcomp.c:292:1
 type Stre_stack_rec = struct {
@@ -39672,6 +39768,7 @@ type Ttre_pos_and_tags_t = struct {
 	Fclass       uint64
 	Fneg_classes uintptr // *Ttre_ctype_t = Twctype_t = uint64
 	Fbackref     int32
+	_            [4]byte
 }
 
 type Ttre_ctype_t = uint64
@@ -39713,6 +39810,7 @@ type Stnfa = struct {
 	Fcflags          int32
 	Fhave_backrefs   int32
 	Fhave_approx     int32
+	_                [4]byte
 }
 
 // Stre_submatch_data is defined at tre.h:137:1
@@ -39744,8 +39842,8 @@ type Ttre_ast_node_t = struct {
 	Fsubmatch_id    int32
 	Fnum_submatches int32
 	Fnum_tags       int32
-	Ffirstpos       uintptr // *Ttre_pos_and_tags_t = struct{Fp...classes *uint64;Fbackref int32;}
-	Flastpos        uintptr // *Ttre_pos_and_tags_t = struct{Fp...classes *uint64;Fbackref int32;}
+	Ffirstpos       uintptr // *Ttre_pos_and_tags_t = struct{Fp...int64;Fbackref int32;_ [4]byte;}
+	Flastpos        uintptr // *Ttre_pos_and_tags_t = struct{Fp...int64;Fbackref int32;_ [4]byte;}
 }
 
 // xtre_stack_new is defined at regcomp.c:301:20
@@ -39781,8 +39879,8 @@ func set865(p *uintptr, v uintptr) uintptr { *p = v; return v }
 func xtre_parse(tls TLS, _ctx uintptr /* *Ttre_parse_ctx_t = struct{Fmem ...ax_backref int32;Fcflags int32;} */) (r int32) {
 	esc := MustMalloc(20)
 	var (
-		_nbranch uintptr // *Ttre_ast_node_t = struct{Ftype ...asses *uint64;Fbackref int32;};}
-		_nunion  uintptr // *Ttre_ast_node_t = struct{Ftype ...asses *uint64;Fbackref int32;};}
+		_nbranch uintptr // *Ttre_ast_node_t = struct{Ftype ...t64;Fbackref int32;_ [4]byte;};}
+		_nunion  uintptr // *Ttre_ast_node_t = struct{Ftype ...t64;Fbackref int32;_ [4]byte;};}
 		_ere     int32
 		_s       uintptr // *int8
 		_subid   int32
@@ -39944,11 +40042,11 @@ _3:
 }
 
 // xtre_add_tags is defined at regcomp.c:1203:1
-func xtre_add_tags(tls TLS, _mem uintptr /* Ttre_mem_t = *struct{Fblocks *st...ailed int32;Fprovided *uintptr;} */, _stack uintptr /* *Ttre_stack_t = Stre_stack_rec */, _tree uintptr /* *Ttre_ast_node_t = struct{Ftype ...asses *uint64;Fbackref int32;};} */, _tnfa uintptr /* *Ttre_tnfa_t = Stnfa */) (r int32) {
+func xtre_add_tags(tls TLS, _mem uintptr /* Ttre_mem_t = *struct{Fblocks *st...ailed int32;Fprovided *uintptr;} */, _stack uintptr /* *Ttre_stack_t = Stre_stack_rec */, _tree uintptr /* *Ttre_ast_node_t = struct{Ftype ...t64;Fbackref int32;_ [4]byte;};} */, _tnfa uintptr /* *Ttre_tnfa_t = Stnfa */) (r int32) {
 	var (
 		_status       int32
 		_symbol       int32
-		_node         uintptr // *Ttre_ast_node_t = struct{Ftype ...asses *uint64;Fbackref int32;};}
+		_node         uintptr // *Ttre_ast_node_t = struct{Ftype ...t64;Fbackref int32;_ [4]byte;};}
 		_bottom       int32
 		_first_pass   int32
 		_regset       uintptr // *int32
@@ -39969,15 +40067,15 @@ func xtre_add_tags(tls TLS, _mem uintptr /* Ttre_mem_t = *struct{Fblocks *st...a
 		_p            uintptr // *int32
 		_lit          uintptr // *Ttre_literal_t = struct{Fcode_m...ss uint64;Fneg_classes *uint64;}
 		_4i           int32
-		_cat          uintptr // *Ttre_catenation_t = struct{Flef...ses *uint64;Fbackref int32;};};}
-		_left         uintptr // *Ttre_ast_node_t = struct{Ftype ...asses *uint64;Fbackref int32;};}
-		_right        uintptr // *Ttre_ast_node_t = struct{Ftype ...asses *uint64;Fbackref int32;};}
+		_cat          uintptr // *Ttre_catenation_t = struct{Flef...4;Fbackref int32;_ [4]byte;};};}
+		_left         uintptr // *Ttre_ast_node_t = struct{Ftype ...t64;Fbackref int32;_ [4]byte;};}
+		_right        uintptr // *Ttre_ast_node_t = struct{Ftype ...t64;Fbackref int32;_ [4]byte;};}
 		_reserved_tag int32
-		_iter         uintptr // *Ttre_iteration_t = struct{Farg ...min int32;Fmax int32;F16 uint8;}
+		_iter         uintptr // *Ttre_iteration_t = struct{Farg ...Fmax int32;F16 uint8;_ [7]byte;}
 		_5i           int32
-		_uni          uintptr // *Ttre_union_t = struct{Fleft *st...ses *uint64;Fbackref int32;};};}
-		_6left        uintptr // *Ttre_ast_node_t = struct{Ftype ...asses *uint64;Fbackref int32;};}
-		_7right       uintptr // *Ttre_ast_node_t = struct{Ftype ...asses *uint64;Fbackref int32;};}
+		_uni          uintptr // *Ttre_union_t = struct{Fleft *st...4;Fbackref int32;_ [4]byte;};};}
+		_6left        uintptr // *Ttre_ast_node_t = struct{Ftype ...t64;Fbackref int32;_ [4]byte;};}
+		_7right       uintptr // *Ttre_ast_node_t = struct{Ftype ...t64;Fbackref int32;_ [4]byte;};}
 		_left_tag     int32
 		_right_tag    int32
 		_8i           int32
@@ -39988,8 +40086,8 @@ func xtre_add_tags(tls TLS, _mem uintptr /* Ttre_mem_t = *struct{Fblocks *st...a
 		_added_tags   int32
 		_tag_left     int32
 		_tag_right    int32
-		_10left       uintptr // *Ttre_ast_node_t = struct{Ftype ...asses *uint64;Fbackref int32;};}
-		_11right      uintptr // *Ttre_ast_node_t = struct{Ftype ...asses *uint64;Fbackref int32;};}
+		_10left       uintptr // *Ttre_ast_node_t = struct{Ftype ...t64;Fbackref int32;_ [4]byte;};}
+		_11right      uintptr // *Ttre_ast_node_t = struct{Ftype ...t64;Fbackref int32;_ [4]byte;};}
 		_12i          int32
 	)
 	_status = int32(0)
@@ -40452,7 +40550,7 @@ _4:
 }
 
 // xtre_expand_ast is defined at regcomp.c:1835:1
-func xtre_expand_ast(tls TLS, _mem uintptr /* Ttre_mem_t = *struct{Fblocks *st...ailed int32;Fprovided *uintptr;} */, _stack uintptr /* *Ttre_stack_t = Stre_stack_rec */, _ast uintptr /* *Ttre_ast_node_t = struct{Ftype ...asses *uint64;Fbackref int32;};} */, _position uintptr /* *int32 */, _tag_directions uintptr /* *Ttre_tag_direction_t = int32 */) (r int32) {
+func xtre_expand_ast(tls TLS, _mem uintptr /* Ttre_mem_t = *struct{Fblocks *st...ailed int32;Fprovided *uintptr;} */, _stack uintptr /* *Ttre_stack_t = Stre_stack_rec */, _ast uintptr /* *Ttre_ast_node_t = struct{Ftype ...t64;Fbackref int32;_ [4]byte;};} */, _position uintptr /* *int32 */, _tag_directions uintptr /* *Ttre_tag_direction_t = int32 */) (r int32) {
 	esc := MustMalloc(72)
 	var (
 		_status        int32
@@ -40463,22 +40561,22 @@ func xtre_expand_ast(tls TLS, _mem uintptr /* Ttre_mem_t = *struct{Fblocks *st..
 		_iter_depth    int32
 		__status       int32
 		_1_status      int32
-		_node          uintptr // *Ttre_ast_node_t = struct{Ftype ...asses *uint64;Fbackref int32;};}
+		_node          uintptr // *Ttre_ast_node_t = struct{Ftype ...t64;Fbackref int32;_ [4]byte;};}
 		_symbol        int32
 		_lit           uintptr // *Ttre_literal_t = struct{Fcode_m...ss uint64;Fneg_classes *uint64;}
-		_uni           uintptr // *Ttre_union_t = struct{Fleft *st...ses *uint64;Fbackref int32;};};}
-		_cat           uintptr // *Ttre_catenation_t = struct{Flef...ses *uint64;Fbackref int32;};};}
-		_iter          uintptr // *Ttre_iteration_t = struct{Farg ...min int32;Fmax int32;F16 uint8;}
-		_2iter         uintptr // *Ttre_iteration_t = struct{Farg ...min int32;Fmax int32;F16 uint8;}
+		_uni           uintptr // *Ttre_union_t = struct{Fleft *st...4;Fbackref int32;_ [4]byte;};};}
+		_cat           uintptr // *Ttre_catenation_t = struct{Flef...4;Fbackref int32;_ [4]byte;};};}
+		_iter          uintptr // *Ttre_iteration_t = struct{Farg ...Fmax int32;F16 uint8;_ [7]byte;}
+		_2iter         uintptr // *Ttre_iteration_t = struct{Farg ...Fmax int32;F16 uint8;_ [7]byte;}
 		_pos_add_last  int32
-		_seq1          uintptr    // *Ttre_ast_node_t = struct{Ftype ...asses *uint64;Fbackref int32;};}
-		_seq2          = esc + 32 // **Ttre_ast_node_t = struct{Ftype ...asses *uint64;Fbackref int32;};}
+		_seq1          uintptr    // *Ttre_ast_node_t = struct{Ftype ...t64;Fbackref int32;_ [4]byte;};}
+		_seq2          = esc + 32 // **Ttre_ast_node_t = struct{Ftype ...t64;Fbackref int32;_ [4]byte;};}
 		_j             int32
 		_pos_add_save  int32
-		_copy          = esc + 48 // **Ttre_ast_node_t = struct{Ftype ...asses *uint64;Fbackref int32;};}
+		_copy          = esc + 48 // **Ttre_ast_node_t = struct{Ftype ...t64;Fbackref int32;_ [4]byte;};}
 		_flags         int32
-		_tmp           uintptr    // *Ttre_ast_node_t = struct{Ftype ...asses *uint64;Fbackref int32;};}
-		_3copy         = esc + 64 // **Ttre_ast_node_t = struct{Ftype ...asses *uint64;Fbackref int32;};}
+		_tmp           uintptr    // *Ttre_ast_node_t = struct{Ftype ...t64;Fbackref int32;_ [4]byte;};}
+		_3copy         = esc + 64 // **Ttre_ast_node_t = struct{Ftype ...t64;Fbackref int32;_ [4]byte;};}
 	)
 	defer Free(esc)
 	_status = int32(0)
@@ -40714,9 +40812,9 @@ _2:
 }
 
 // xtre_ast_new_literal is defined at regcomp.c:153:23
-func xtre_ast_new_literal(tls TLS, _mem uintptr /* Ttre_mem_t = *struct{Fblocks *st...ailed int32;Fprovided *uintptr;} */, _code_min int32, _code_max int32, _position int32) (r uintptr /* *Ttre_ast_node_t = struct{Ftype ...asses *uint64;Fbackref int32;};} */) {
+func xtre_ast_new_literal(tls TLS, _mem uintptr /* Ttre_mem_t = *struct{Fblocks *st...ailed int32;Fprovided *uintptr;} */, _code_min int32, _code_max int32, _position int32) (r uintptr /* *Ttre_ast_node_t = struct{Ftype ...t64;Fbackref int32;_ [4]byte;};} */) {
 	var (
-		_node uintptr // *Ttre_ast_node_t = struct{Ftype ...asses *uint64;Fbackref int32;};}
+		_node uintptr // *Ttre_ast_node_t = struct{Ftype ...t64;Fbackref int32;_ [4]byte;};}
 		_lit  uintptr // *Ttre_literal_t = struct{Fcode_m...ss uint64;Fneg_classes *uint64;}
 	)
 	_lit = X__tre_mem_alloc_impl(tls, _mem, int32(0), null, int32(1), uint64(40))
@@ -40731,10 +40829,10 @@ func xtre_ast_new_literal(tls TLS, _mem uintptr /* Ttre_mem_t = *struct{Fblocks 
 }
 
 // xtre_ast_new_catenation is defined at regcomp.c:205:23
-func xtre_ast_new_catenation(tls TLS, _mem uintptr /* Ttre_mem_t = *struct{Fblocks *st...ailed int32;Fprovided *uintptr;} */, _left uintptr /* *Ttre_ast_node_t = struct{Ftype ...asses *uint64;Fbackref int32;};} */, _right uintptr /* *Ttre_ast_node_t = struct{Ftype ...asses *uint64;Fbackref int32;};} */) (r uintptr /* *Ttre_ast_node_t = struct{Ftype ...asses *uint64;Fbackref int32;};} */) {
+func xtre_ast_new_catenation(tls TLS, _mem uintptr /* Ttre_mem_t = *struct{Fblocks *st...ailed int32;Fprovided *uintptr;} */, _left uintptr /* *Ttre_ast_node_t = struct{Ftype ...t64;Fbackref int32;_ [4]byte;};} */, _right uintptr /* *Ttre_ast_node_t = struct{Ftype ...t64;Fbackref int32;_ [4]byte;};} */) (r uintptr /* *Ttre_ast_node_t = struct{Ftype ...t64;Fbackref int32;_ [4]byte;};} */) {
 	var (
-		_node uintptr // *Ttre_ast_node_t = struct{Ftype ...asses *uint64;Fbackref int32;};}
-		_cat  uintptr // *Ttre_catenation_t = struct{Flef...ses *uint64;Fbackref int32;};};}
+		_node uintptr // *Ttre_ast_node_t = struct{Ftype ...t64;Fbackref int32;_ [4]byte;};}
+		_cat  uintptr // *Ttre_catenation_t = struct{Flef...4;Fbackref int32;_ [4]byte;};};}
 	)
 	if _left == 0 {
 		return _right
@@ -40751,14 +40849,14 @@ func xtre_ast_new_catenation(tls TLS, _mem uintptr /* Ttre_mem_t = *struct{Fbloc
 }
 
 // xtre_compute_nfl is defined at regcomp.c:2244:1
-func xtre_compute_nfl(tls TLS, _mem uintptr /* Ttre_mem_t = *struct{Fblocks *st...ailed int32;Fprovided *uintptr;} */, _stack uintptr /* *Ttre_stack_t = Stre_stack_rec */, _tree uintptr /* *Ttre_ast_node_t = struct{Ftype ...asses *uint64;Fbackref int32;};} */) (r int32) {
+func xtre_compute_nfl(tls TLS, _mem uintptr /* Ttre_mem_t = *struct{Fblocks *st...ailed int32;Fprovided *uintptr;} */, _stack uintptr /* *Ttre_stack_t = Stre_stack_rec */, _tree uintptr /* *Ttre_ast_node_t = struct{Ftype ...t64;Fbackref int32;_ [4]byte;};} */) (r int32) {
 	esc := MustMalloc(20)
 	var (
 		_bottom     int32
 		__status    int32
 		_1_status   int32
 		_symbol     int32
-		_node       uintptr // *Ttre_ast_node_t = struct{Ftype ...asses *uint64;Fbackref int32;};}
+		_node       uintptr // *Ttre_ast_node_t = struct{Ftype ...t64;Fbackref int32;_ [4]byte;};}
 		_lit        uintptr // *Ttre_literal_t = struct{Fcode_m...ss uint64;Fneg_classes *uint64;}
 		_2_status   int32
 		_3_status   int32
@@ -40776,13 +40874,13 @@ func xtre_compute_nfl(tls TLS, _mem uintptr /* Ttre_mem_t = *struct{Fblocks *st.
 		_15_status  int32
 		_16_status  int32
 		_17_status  int32
-		_uni        uintptr    // *Ttre_union_t = struct{Fleft *st...ses *uint64;Fbackref int32;};};}
-		_iter       uintptr    // *Ttre_iteration_t = struct{Farg ...min int32;Fmax int32;F16 uint8;}
+		_uni        uintptr    // *Ttre_union_t = struct{Fleft *st...4;Fbackref int32;_ [4]byte;};};}
+		_iter       uintptr    // *Ttre_iteration_t = struct{Farg ...Fmax int32;F16 uint8;_ [7]byte;}
 		_num_tags   = esc      // *int32
 		_tags       uintptr    // *int32
 		_assertions = esc + 16 // *int32
 		_status     int32
-		_cat        uintptr // *Ttre_catenation_t = struct{Flef...ses *uint64;Fbackref int32;};};}
+		_cat        uintptr // *Ttre_catenation_t = struct{Flef...4;Fbackref int32;_ [4]byte;};};}
 	)
 	defer Free(esc)
 	_bottom = xtre_stack_num_objects(tls, _stack)
@@ -41025,11 +41123,11 @@ _2:
 }
 
 // xtre_ast_to_tnfa is defined at regcomp.c:2624:1
-func xtre_ast_to_tnfa(tls TLS, _node uintptr /* *Ttre_ast_node_t = struct{Ftype ...asses *uint64;Fbackref int32;};} */, _transitions uintptr /* *Ttre_tnfa_transition_t = Stnfa_transition */, _counts uintptr /* *int32 */, _offs uintptr /* *int32 */) (r int32) {
+func xtre_ast_to_tnfa(tls TLS, _node uintptr /* *Ttre_ast_node_t = struct{Ftype ...t64;Fbackref int32;_ [4]byte;};} */, _transitions uintptr /* *Ttre_tnfa_transition_t = Stnfa_transition */, _counts uintptr /* *int32 */, _offs uintptr /* *int32 */) (r int32) {
 	var (
-		_uni     uintptr // *Ttre_union_t = struct{Fleft *st...ses *uint64;Fbackref int32;};};}
-		_cat     uintptr // *Ttre_catenation_t = struct{Flef...ses *uint64;Fbackref int32;};};}
-		_iter    uintptr // *Ttre_iteration_t = struct{Farg ...min int32;Fmax int32;F16 uint8;}
+		_uni     uintptr // *Ttre_union_t = struct{Fleft *st...4;Fbackref int32;_ [4]byte;};};}
+		_cat     uintptr // *Ttre_catenation_t = struct{Flef...4;Fbackref int32;_ [4]byte;};};}
+		_iter    uintptr // *Ttre_iteration_t = struct{Farg ...Fmax int32;F16 uint8;_ [7]byte;}
 		_errcode int32
 	)
 	_errcode = int32(0)
@@ -41124,17 +41222,17 @@ func xparse_atom(tls TLS, _ctx uintptr /* *Ttre_parse_ctx_t = struct{Fmem ...ax_
 		_len   int32
 		_ere   int32
 		_p     uintptr // *int8
-		_node  uintptr // *Ttre_ast_node_t = struct{Ftype ...asses *uint64;Fbackref int32;};}
+		_node  uintptr // *Ttre_ast_node_t = struct{Ftype ...t64;Fbackref int32;_ [4]byte;};}
 		_wc    = esc   // *Twchar_t = int32
 		_err   int32
 		_i     int32
 		_v     int32
 		_c     int32
 		_val   int32
-		_tmp1  uintptr // *Ttre_ast_node_t = struct{Ftype ...asses *uint64;Fbackref int32;};}
-		_tmp2  uintptr // *Ttre_ast_node_t = struct{Ftype ...asses *uint64;Fbackref int32;};}
-		_1tmp1 uintptr // *Ttre_ast_node_t = struct{Ftype ...asses *uint64;Fbackref int32;};}
-		_2tmp2 uintptr // *Ttre_ast_node_t = struct{Ftype ...asses *uint64;Fbackref int32;};}
+		_tmp1  uintptr // *Ttre_ast_node_t = struct{Ftype ...t64;Fbackref int32;_ [4]byte;};}
+		_tmp2  uintptr // *Ttre_ast_node_t = struct{Ftype ...t64;Fbackref int32;_ [4]byte;};}
+		_1tmp1 uintptr // *Ttre_ast_node_t = struct{Ftype ...t64;Fbackref int32;_ [4]byte;};}
+		_2tmp2 uintptr // *Ttre_ast_node_t = struct{Ftype ...t64;Fbackref int32;_ [4]byte;};}
 	)
 	defer Free(esc)
 	_ere = *(*int32)(unsafe.Pointer(_ctx + 52)) & int32(1)
@@ -41401,10 +41499,10 @@ func setb868(p *uint8, v int32) uint32 {
 }
 
 // xtre_ast_new_iter is defined at regcomp.c:169:23
-func xtre_ast_new_iter(tls TLS, _mem uintptr /* Ttre_mem_t = *struct{Fblocks *st...ailed int32;Fprovided *uintptr;} */, _arg uintptr /* *Ttre_ast_node_t = struct{Ftype ...asses *uint64;Fbackref int32;};} */, _min int32, _max int32, _minimal int32) (r uintptr /* *Ttre_ast_node_t = struct{Ftype ...asses *uint64;Fbackref int32;};} */) {
+func xtre_ast_new_iter(tls TLS, _mem uintptr /* Ttre_mem_t = *struct{Fblocks *st...ailed int32;Fprovided *uintptr;} */, _arg uintptr /* *Ttre_ast_node_t = struct{Ftype ...t64;Fbackref int32;_ [4]byte;};} */, _min int32, _max int32, _minimal int32) (r uintptr /* *Ttre_ast_node_t = struct{Ftype ...t64;Fbackref int32;_ [4]byte;};} */) {
 	var (
-		_node uintptr // *Ttre_ast_node_t = struct{Ftype ...asses *uint64;Fbackref int32;};}
-		_iter uintptr // *Ttre_iteration_t = struct{Farg ...min int32;Fmax int32;F16 uint8;}
+		_node uintptr // *Ttre_ast_node_t = struct{Ftype ...t64;Fbackref int32;_ [4]byte;};}
+		_iter uintptr // *Ttre_iteration_t = struct{Farg ...Fmax int32;F16 uint8;_ [7]byte;}
 	)
 	_iter = X__tre_mem_alloc_impl(tls, _mem, int32(0), null, int32(1), uint64(24))
 	_node = xtre_ast_new_node(tls, _mem, int32(2), _iter)
@@ -41420,10 +41518,10 @@ func xtre_ast_new_iter(tls TLS, _mem uintptr /* Ttre_mem_t = *struct{Fblocks *st
 }
 
 // xtre_ast_new_union is defined at regcomp.c:187:23
-func xtre_ast_new_union(tls TLS, _mem uintptr /* Ttre_mem_t = *struct{Fblocks *st...ailed int32;Fprovided *uintptr;} */, _left uintptr /* *Ttre_ast_node_t = struct{Ftype ...asses *uint64;Fbackref int32;};} */, _right uintptr /* *Ttre_ast_node_t = struct{Ftype ...asses *uint64;Fbackref int32;};} */) (r uintptr /* *Ttre_ast_node_t = struct{Ftype ...asses *uint64;Fbackref int32;};} */) {
+func xtre_ast_new_union(tls TLS, _mem uintptr /* Ttre_mem_t = *struct{Fblocks *st...ailed int32;Fprovided *uintptr;} */, _left uintptr /* *Ttre_ast_node_t = struct{Ftype ...t64;Fbackref int32;_ [4]byte;};} */, _right uintptr /* *Ttre_ast_node_t = struct{Ftype ...t64;Fbackref int32;_ [4]byte;};} */) (r uintptr /* *Ttre_ast_node_t = struct{Ftype ...t64;Fbackref int32;_ [4]byte;};} */) {
 	var (
-		_node uintptr // *Ttre_ast_node_t = struct{Ftype ...asses *uint64;Fbackref int32;};}
-		_un   uintptr // *Ttre_union_t = struct{Fleft *st...ses *uint64;Fbackref int32;};};}
+		_node uintptr // *Ttre_ast_node_t = struct{Ftype ...t64;Fbackref int32;_ [4]byte;};}
+		_un   uintptr // *Ttre_union_t = struct{Fleft *st...4;Fbackref int32;_ [4]byte;};};}
 	)
 	if _left == 0 {
 		return _right
@@ -41440,8 +41538,8 @@ func xtre_ast_new_union(tls TLS, _mem uintptr /* Ttre_mem_t = *struct{Fblocks *s
 }
 
 // xmarksub is defined at regcomp.c:757:22
-func xmarksub(tls TLS, _ctx uintptr /* *Ttre_parse_ctx_t = struct{Fmem ...ax_backref int32;Fcflags int32;} */, _node uintptr /* *Ttre_ast_node_t = struct{Ftype ...asses *uint64;Fbackref int32;};} */, _subid int32) (r int32) {
-	var _n uintptr // *Ttre_ast_node_t = struct{Ftype ...asses *uint64;Fbackref int32;};}
+func xmarksub(tls TLS, _ctx uintptr /* *Ttre_parse_ctx_t = struct{Fmem ...ax_backref int32;Fcflags int32;} */, _node uintptr /* *Ttre_ast_node_t = struct{Ftype ...t64;Fbackref int32;_ [4]byte;};} */, _subid int32) (r int32) {
+	var _n uintptr // *Ttre_ast_node_t = struct{Ftype ...t64;Fbackref int32;_ [4]byte;};}
 
 	if *(*int32)(unsafe.Pointer(_node + 20)) >= int32(0) {
 		_n = xtre_ast_new_literal(tls, *(*uintptr)(unsafe.Pointer(_ctx)), int32(-1), int32(-1), int32(-1))
@@ -41485,8 +41583,8 @@ func xtre_stack_num_objects(tls TLS, _s uintptr /* *Ttre_stack_t = Stre_stack_re
 }
 
 // xtre_add_tag_left is defined at regcomp.c:1105:1
-func xtre_add_tag_left(tls TLS, _mem uintptr /* Ttre_mem_t = *struct{Fblocks *st...ailed int32;Fprovided *uintptr;} */, _node uintptr /* *Ttre_ast_node_t = struct{Ftype ...asses *uint64;Fbackref int32;};} */, _tag_id int32) (r int32) {
-	var _c uintptr // *Ttre_catenation_t = struct{Flef...ses *uint64;Fbackref int32;};};}
+func xtre_add_tag_left(tls TLS, _mem uintptr /* Ttre_mem_t = *struct{Fblocks *st...ailed int32;Fprovided *uintptr;} */, _node uintptr /* *Ttre_ast_node_t = struct{Ftype ...t64;Fbackref int32;_ [4]byte;};} */, _tag_id int32) (r int32) {
+	var _c uintptr // *Ttre_catenation_t = struct{Flef...4;Fbackref int32;_ [4]byte;};};}
 
 	_c = X__tre_mem_alloc_impl(tls, _mem, int32(0), null, int32(0), uint64(16))
 	if _c == null {
@@ -41533,8 +41631,8 @@ func xtre_purge_regset(tls TLS, _regset uintptr /* *int32 */, _tnfa uintptr /* *
 }
 
 // xtre_add_tag_right is defined at regcomp.c:1136:1
-func xtre_add_tag_right(tls TLS, _mem uintptr /* Ttre_mem_t = *struct{Fblocks *st...ailed int32;Fprovided *uintptr;} */, _node uintptr /* *Ttre_ast_node_t = struct{Ftype ...asses *uint64;Fbackref int32;};} */, _tag_id int32) (r int32) {
-	var _c uintptr // *Ttre_catenation_t = struct{Flef...ses *uint64;Fbackref int32;};};}
+func xtre_add_tag_right(tls TLS, _mem uintptr /* Ttre_mem_t = *struct{Fblocks *st...ailed int32;Fprovided *uintptr;} */, _node uintptr /* *Ttre_ast_node_t = struct{Ftype ...t64;Fbackref int32;_ [4]byte;};} */, _tag_id int32) (r int32) {
+	var _c uintptr // *Ttre_catenation_t = struct{Flef...4;Fbackref int32;_ [4]byte;};};}
 
 	_c = X__tre_mem_alloc_impl(tls, _mem, int32(0), null, int32(0), uint64(16))
 	if _c == null {
@@ -41565,25 +41663,25 @@ func xtre_add_tag_right(tls TLS, _mem uintptr /* Ttre_mem_t = *struct{Fblocks *s
 type Ttre_expand_ast_symbol_t = int32
 
 // xtre_copy_ast is defined at regcomp.c:1687:1
-func xtre_copy_ast(tls TLS, _mem uintptr /* Ttre_mem_t = *struct{Fblocks *st...ailed int32;Fprovided *uintptr;} */, _stack uintptr /* *Ttre_stack_t = Stre_stack_rec */, _ast uintptr /* *Ttre_ast_node_t = struct{Ftype ...asses *uint64;Fbackref int32;};} */, _flags int32, _pos_add uintptr /* *int32 */, _tag_directions uintptr /* *Ttre_tag_direction_t = int32 */, _copy uintptr /* **Ttre_ast_node_t = struct{Ftype...asses *uint64;Fbackref int32;};} */, _max_pos uintptr /* *int32 */) (r int32) {
+func xtre_copy_ast(tls TLS, _mem uintptr /* Ttre_mem_t = *struct{Fblocks *st...ailed int32;Fprovided *uintptr;} */, _stack uintptr /* *Ttre_stack_t = Stre_stack_rec */, _ast uintptr /* *Ttre_ast_node_t = struct{Ftype ...t64;Fbackref int32;_ [4]byte;};} */, _flags int32, _pos_add uintptr /* *int32 */, _tag_directions uintptr /* *Ttre_tag_direction_t = int32 */, _copy uintptr /* **Ttre_ast_node_t = struct{Ftype...t64;Fbackref int32;_ [4]byte;};} */, _max_pos uintptr /* *int32 */) (r int32) {
 	var (
 		_status     int32
 		_bottom     int32
 		_num_copied int32
 		_first_tag  int32
-		_result     uintptr // **Ttre_ast_node_t = struct{Ftype...asses *uint64;Fbackref int32;};}
+		_result     uintptr // **Ttre_ast_node_t = struct{Ftype...t64;Fbackref int32;_ [4]byte;};}
 		_symbol     int32
-		_node       uintptr // *Ttre_ast_node_t = struct{Ftype ...asses *uint64;Fbackref int32;};}
+		_node       uintptr // *Ttre_ast_node_t = struct{Ftype ...t64;Fbackref int32;_ [4]byte;};}
 		_lit        uintptr // *Ttre_literal_t = struct{Fcode_m...ss uint64;Fneg_classes *uint64;}
 		_pos        int32
 		_min        int32
 		_max        int32
 		_p          uintptr // *Ttre_literal_t = struct{Fcode_m...ss uint64;Fneg_classes *uint64;}
-		_uni        uintptr // *Ttre_union_t = struct{Fleft *st...ses *uint64;Fbackref int32;};};}
-		_tmp        uintptr // *Ttre_union_t = struct{Fleft *st...ses *uint64;Fbackref int32;};};}
-		_cat        uintptr // *Ttre_catenation_t = struct{Flef...ses *uint64;Fbackref int32;};};}
-		_1tmp       uintptr // *Ttre_catenation_t = struct{Flef...ses *uint64;Fbackref int32;};};}
-		_iter       uintptr // *Ttre_iteration_t = struct{Farg ...min int32;Fmax int32;F16 uint8;}
+		_uni        uintptr // *Ttre_union_t = struct{Fleft *st...4;Fbackref int32;_ [4]byte;};};}
+		_tmp        uintptr // *Ttre_union_t = struct{Fleft *st...4;Fbackref int32;_ [4]byte;};};}
+		_cat        uintptr // *Ttre_catenation_t = struct{Flef...4;Fbackref int32;_ [4]byte;};};}
+		_1tmp       uintptr // *Ttre_catenation_t = struct{Flef...4;Fbackref int32;_ [4]byte;};};}
+		_iter       uintptr // *Ttre_iteration_t = struct{Farg ...Fmax int32;F16 uint8;_ [7]byte;}
 	)
 	_status = int32(0)
 	_bottom = xtre_stack_num_objects(tls, _stack)
@@ -41764,8 +41862,8 @@ _4:
 }
 
 // xtre_ast_new_node is defined at regcomp.c:140:23
-func xtre_ast_new_node(tls TLS, _mem uintptr /* Ttre_mem_t = *struct{Fblocks *st...ailed int32;Fprovided *uintptr;} */, _type int32, _obj uintptr /* *void */) (r uintptr /* *Ttre_ast_node_t = struct{Ftype ...asses *uint64;Fbackref int32;};} */) {
-	var _node uintptr // *Ttre_ast_node_t = struct{Ftype ...asses *uint64;Fbackref int32;};}
+func xtre_ast_new_node(tls TLS, _mem uintptr /* Ttre_mem_t = *struct{Fblocks *st...ailed int32;Fprovided *uintptr;} */, _type int32, _obj uintptr /* *void */) (r uintptr /* *Ttre_ast_node_t = struct{Ftype ...t64;Fbackref int32;_ [4]byte;};} */) {
+	var _node uintptr // *Ttre_ast_node_t = struct{Ftype ...t64;Fbackref int32;_ [4]byte;};}
 
 	_node = X__tre_mem_alloc_impl(tls, _mem, int32(0), null, int32(1), uint64(48))
 	if (_node == 0) || (_obj == 0) {
@@ -41782,8 +41880,8 @@ func xtre_ast_new_node(tls TLS, _mem uintptr /* Ttre_mem_t = *struct{Fblocks *st
 type Ttre_nfl_stack_symbol_t = int32
 
 // xtre_set_one is defined at regcomp.c:2035:27
-func xtre_set_one(tls TLS, _mem uintptr /* Ttre_mem_t = *struct{Fblocks *st...ailed int32;Fprovided *uintptr;} */, _position int32, _code_min int32, _code_max int32, _class uint64, _neg_classes uintptr /* *Ttre_ctype_t = Twctype_t = uint64 */, _backref int32) (r uintptr /* *Ttre_pos_and_tags_t = struct{Fp...classes *uint64;Fbackref int32;} */) {
-	var _new_set uintptr // *Ttre_pos_and_tags_t = struct{Fp...classes *uint64;Fbackref int32;}
+func xtre_set_one(tls TLS, _mem uintptr /* Ttre_mem_t = *struct{Fblocks *st...ailed int32;Fprovided *uintptr;} */, _position int32, _code_min int32, _code_max int32, _class uint64, _neg_classes uintptr /* *Ttre_ctype_t = Twctype_t = uint64 */, _backref int32) (r uintptr /* *Ttre_pos_and_tags_t = struct{Fp...int64;Fbackref int32;_ [4]byte;} */) {
+	var _new_set uintptr // *Ttre_pos_and_tags_t = struct{Fp...int64;Fbackref int32;_ [4]byte;}
 
 	_new_set = X__tre_mem_alloc_impl(tls, _mem, int32(0), null, int32(1), uint64(112))
 	if _new_set == null {
@@ -41802,8 +41900,8 @@ func xtre_set_one(tls TLS, _mem uintptr /* Ttre_mem_t = *struct{Fblocks *st...ai
 }
 
 // xtre_set_empty is defined at regcomp.c:2019:27
-func xtre_set_empty(tls TLS, _mem uintptr /* Ttre_mem_t = *struct{Fblocks *st...ailed int32;Fprovided *uintptr;} */) (r uintptr /* *Ttre_pos_and_tags_t = struct{Fp...classes *uint64;Fbackref int32;} */) {
-	var _new_set uintptr // *Ttre_pos_and_tags_t = struct{Fp...classes *uint64;Fbackref int32;}
+func xtre_set_empty(tls TLS, _mem uintptr /* Ttre_mem_t = *struct{Fblocks *st...ailed int32;Fprovided *uintptr;} */) (r uintptr /* *Ttre_pos_and_tags_t = struct{Fp...int64;Fbackref int32;_ [4]byte;} */) {
+	var _new_set uintptr // *Ttre_pos_and_tags_t = struct{Fp...int64;Fbackref int32;_ [4]byte;}
 
 	_new_set = X__tre_mem_alloc_impl(tls, _mem, int32(0), null, int32(1), uint64(56))
 	if _new_set == null {
@@ -41816,13 +41914,13 @@ func xtre_set_empty(tls TLS, _mem uintptr /* Ttre_mem_t = *struct{Fblocks *st...
 }
 
 // xtre_set_union is defined at regcomp.c:2058:27
-func xtre_set_union(tls TLS, _mem uintptr /* Ttre_mem_t = *struct{Fblocks *st...ailed int32;Fprovided *uintptr;} */, _set1 uintptr /* *Ttre_pos_and_tags_t = struct{Fp...classes *uint64;Fbackref int32;} */, _set2 uintptr /* *Ttre_pos_and_tags_t = struct{Fp...classes *uint64;Fbackref int32;} */, _tags uintptr /* *int32 */, _assertions int32) (r uintptr /* *Ttre_pos_and_tags_t = struct{Fp...classes *uint64;Fbackref int32;} */) {
+func xtre_set_union(tls TLS, _mem uintptr /* Ttre_mem_t = *struct{Fblocks *st...ailed int32;Fprovided *uintptr;} */, _set1 uintptr /* *Ttre_pos_and_tags_t = struct{Fp...int64;Fbackref int32;_ [4]byte;} */, _set2 uintptr /* *Ttre_pos_and_tags_t = struct{Fp...int64;Fbackref int32;_ [4]byte;} */, _tags uintptr /* *int32 */, _assertions int32) (r uintptr /* *Ttre_pos_and_tags_t = struct{Fp...int64;Fbackref int32;_ [4]byte;} */) {
 	var (
 		_s1       int32
 		_s2       int32
 		_i        int32
 		_j        int32
-		_new_set  uintptr // *Ttre_pos_and_tags_t = struct{Fp...classes *uint64;Fbackref int32;}
+		_new_set  uintptr // *Ttre_pos_and_tags_t = struct{Fp...int64;Fbackref int32;_ [4]byte;}
 		_new_tags uintptr // *int32
 		_num_tags int32
 	)
@@ -41892,12 +41990,12 @@ func xtre_set_union(tls TLS, _mem uintptr /* Ttre_mem_t = *struct{Fblocks *st...
 }
 
 // xtre_match_empty is defined at regcomp.c:2134:1
-func xtre_match_empty(tls TLS, _stack uintptr /* *Ttre_stack_t = Stre_stack_rec */, _node uintptr /* *Ttre_ast_node_t = struct{Ftype ...asses *uint64;Fbackref int32;};} */, _tags uintptr /* *int32 */, _assertions uintptr /* *int32 */, _num_tags_seen uintptr /* *int32 */) (r int32) {
+func xtre_match_empty(tls TLS, _stack uintptr /* *Ttre_stack_t = Stre_stack_rec */, _node uintptr /* *Ttre_ast_node_t = struct{Ftype ...t64;Fbackref int32;_ [4]byte;};} */, _tags uintptr /* *int32 */, _assertions uintptr /* *int32 */, _num_tags_seen uintptr /* *int32 */) (r int32) {
 	var (
 		_lit    uintptr // *Ttre_literal_t = struct{Fcode_m...ss uint64;Fneg_classes *uint64;}
-		_uni    uintptr // *Ttre_union_t = struct{Fleft *st...ses *uint64;Fbackref int32;};};}
-		_cat    uintptr // *Ttre_catenation_t = struct{Flef...ses *uint64;Fbackref int32;};};}
-		_iter   uintptr // *Ttre_iteration_t = struct{Farg ...min int32;Fmax int32;F16 uint8;}
+		_uni    uintptr // *Ttre_union_t = struct{Fleft *st...4;Fbackref int32;_ [4]byte;};};}
+		_cat    uintptr // *Ttre_catenation_t = struct{Flef...4;Fbackref int32;_ [4]byte;};};}
+		_iter   uintptr // *Ttre_iteration_t = struct{Farg ...Fmax int32;F16 uint8;_ [7]byte;}
 		_i      int32
 		_bottom int32
 		_status int32
@@ -42025,9 +42123,9 @@ _2:
 }
 
 // xtre_make_trans is defined at regcomp.c:2470:1
-func xtre_make_trans(tls TLS, _p1 uintptr /* *Ttre_pos_and_tags_t = struct{Fp...classes *uint64;Fbackref int32;} */, _p2 uintptr /* *Ttre_pos_and_tags_t = struct{Fp...classes *uint64;Fbackref int32;} */, _transitions uintptr /* *Ttre_tnfa_transition_t = Stnfa_transition */, _counts uintptr /* *int32 */, _offs uintptr /* *int32 */) (r int32) {
+func xtre_make_trans(tls TLS, _p1 uintptr /* *Ttre_pos_and_tags_t = struct{Fp...int64;Fbackref int32;_ [4]byte;} */, _p2 uintptr /* *Ttre_pos_and_tags_t = struct{Fp...int64;Fbackref int32;_ [4]byte;} */, _transitions uintptr /* *Ttre_tnfa_transition_t = Stnfa_transition */, _counts uintptr /* *int32 */, _offs uintptr /* *int32 */) (r int32) {
 	var (
-		_orig_p2     uintptr // *Ttre_pos_and_tags_t = struct{Fp...classes *uint64;Fbackref int32;}
+		_orig_p2     uintptr // *Ttre_pos_and_tags_t = struct{Fp...int64;Fbackref int32;_ [4]byte;}
 		_trans       uintptr // *Ttre_tnfa_transition_t = Stnfa_transition
 		_i           int32
 		_j           int32
@@ -42198,8 +42296,8 @@ func xparse_bracket(tls TLS, _ctx uintptr /* *Ttre_parse_ctx_t = struct{Fmem ...
 		_min    int32
 		_negmax int32
 		_negmin int32
-		_node   uintptr    // *Ttre_ast_node_t = struct{Ftype ...asses *uint64;Fbackref int32;};}
-		_n      uintptr    // *Ttre_ast_node_t = struct{Ftype ...asses *uint64;Fbackref int32;};}
+		_node   uintptr    // *Ttre_ast_node_t = struct{Ftype ...t64;Fbackref int32;_ [4]byte;};}
+		_n      uintptr    // *Ttre_ast_node_t = struct{Ftype ...t64;Fbackref int32;_ [4]byte;};}
 		_nc     uintptr    // *Ttre_ctype_t = Twctype_t = uint64
 		_lit    uintptr    // *Ttre_literal_t = struct{Fcode_m...ss uint64;Fneg_classes *uint64;}
 		_ls     = esc      // *Sliterals
@@ -42320,9 +42418,9 @@ lparse_bracket_done:
 func xtre_expand_macro(tls TLS, _s uintptr /* *int8 */) (r uintptr /* *int8 */) {
 	var _i int32
 
-	for _i = int32(0); (*(*int8)(unsafe.Pointer(xtre_macros + 16*uintptr(_i))) != 0) && (int32(*(*int8)(unsafe.Pointer(xtre_macros + 16*uintptr(_i)))) != int32(*(*int8)(unsafe.Pointer(_s)))); _i++ {
+	for _i = int32(0); (*(*int8)(unsafe.Pointer(uintptr(unsafe.Pointer(&xtre_macros)) + 16*uintptr(_i))) != 0) && (int32(*(*int8)(unsafe.Pointer(uintptr(unsafe.Pointer(&xtre_macros)) + 16*uintptr(_i)))) != int32(*(*int8)(unsafe.Pointer(_s)))); _i++ {
 	}
-	return *(*uintptr)(unsafe.Pointer((xtre_macros + 16*uintptr(_i)) + 8))
+	return *(*uintptr)(unsafe.Pointer((uintptr(unsafe.Pointer(&xtre_macros)) + 16*uintptr(_i)) + 8))
 }
 
 // xhexval is defined at regcomp.c:749:12
@@ -42495,14 +42593,14 @@ func xtre_compare_lit(tls TLS, _a uintptr /* *void */, _b uintptr /* *void */) (
 	return int32(*(*int64)(unsafe.Pointer(*(*uintptr)(unsafe.Pointer(_la)))) - *(*int64)(unsafe.Pointer(*(*uintptr)(unsafe.Pointer(_lb)))))
 }
 
-// xtre_macros [13]struct{Fc int8;Fexpansion *int8;}, escapes: true, regcomp.c:420:3
-var xtre_macros = bss + 5224 // array of 13 struct{c char; expansion pointer to char}
+// xtre_macros [13]struct{Fc int8;Fexpansion *int8;}, escapes: false, regcomp.c:420:3
+var xtre_macros [13]struct {
+	Fc         int8
+	Fexpansion uintptr // *int8
+}
 
 func init() {
-	*(*[13]struct {
-		Fc         int8
-		Fexpansion uintptr // *int8
-	})(unsafe.Pointer(xtre_macros)) = [13]struct {
+	xtre_macros = [13]struct {
 		Fc         int8
 		Fexpansion uintptr // *int8
 	}{
@@ -42511,84 +42609,84 @@ func init() {
 		// *int8
 		{
 			Fc:         int8('t'),
-			Fexpansion: ts + 2688, /* "\t" */
+			Fexpansion: ts + 48256, /* "\t" */
 		},
 		1:
 
 		// *int8
 		{
 			Fc:         int8('n'),
-			Fexpansion: ts + 936, /* "\n" */
+			Fexpansion: ts + 31484, /* "\n" */
 		},
 		2:
 
 		// *int8
 		{
 			Fc:         int8('r'),
-			Fexpansion: ts + 2692, /* "\r" */
+			Fexpansion: ts + 48260, /* "\r" */
 		},
 		3:
 
 		// *int8
 		{
 			Fc:         int8('f'),
-			Fexpansion: ts + 2696, /* "\f" */
+			Fexpansion: ts + 48264, /* "\f" */
 		},
 		4:
 
 		// *int8
 		{
 			Fc:         int8('a'),
-			Fexpansion: ts + 2700, /* "\a" */
+			Fexpansion: ts + 48268, /* "\a" */
 		},
 		5:
 
 		// *int8
 		{
 			Fc:         int8('e'),
-			Fexpansion: ts + 2704, /* "\x1b" */
+			Fexpansion: ts + 48272, /* "\x1b" */
 		},
 		6:
 
 		// *int8
 		{
 			Fc:         int8('w'),
-			Fexpansion: ts + 2708, /* "[[:alnum:]_]" */
+			Fexpansion: ts + 48276, /* "[[:alnum:]_]" */
 		},
 		7:
 
 		// *int8
 		{
 			Fc:         int8('W'),
-			Fexpansion: ts + 2724, /* "[^[:alnum:]_]" */
+			Fexpansion: ts + 48292, /* "[^[:alnum:]_]" */
 		},
 		8:
 
 		// *int8
 		{
 			Fc:         int8('s'),
-			Fexpansion: ts + 2740, /* "[[:space:]]" */
+			Fexpansion: ts + 48308, /* "[[:space:]]" */
 		},
 		9:
 
 		// *int8
 		{
 			Fc:         int8('S'),
-			Fexpansion: ts + 2752, /* "[^[:space:]]" */
+			Fexpansion: ts + 48320, /* "[^[:space:]]" */
 		},
 		10:
 
 		// *int8
 		{
 			Fc:         int8('d'),
-			Fexpansion: ts + 2768, /* "[[:digit:]]" */
+			Fexpansion: ts + 48336, /* "[[:digit:]]" */
 		},
 		11:
 
 		// *int8
 		{
 			Fc:         int8('D'),
-			Fexpansion: ts + 2780, /* "[^[:digit:]]" */
+			Fexpansion: ts + 48348, /* "[^[:digit:]]" */
 		},
 	}
 }
@@ -42636,10 +42734,10 @@ type Stre_list struct{ uintptr }
 // linking regerror.o
 
 // Xregerror is defined at regerror.c:30:8
-func Xregerror(tls TLS, _e int32, _preg uintptr /* *Tregex_t = struct{Fre_nsub uint..._nsub2 uint64;F__padding2 int8;} */, _buf uintptr /* *int8 */, _size uint64) (r uint64) {
+func Xregerror(tls TLS, _e int32, _preg uintptr /* *Tregex_t = struct{Fre_nsub uint...t64;F__padding2 int8;_ [7]byte;} */, _buf uintptr /* *int8 */, _size uint64) (r uint64) {
 	var _s uintptr // *int8
 
-	for _s = xmessages; (_e != 0) && (*(*int8)(unsafe.Pointer(_s)) != 0); func() uintptr { _e--; return Preinc(&_s, uintptr(Xstrlen(tls, _s)+uint64(1))) }() {
+	for _s = uintptr(unsafe.Pointer(&xmessages)); (_e != 0) && (*(*int8)(unsafe.Pointer(_s)) != 0); func() uintptr { _e--; return Preinc(&_s, uintptr(Xstrlen(tls, _s)+uint64(1))) }() {
 	}
 	if *(*int8)(unsafe.Pointer(_s)) == 0 {
 		_s++
@@ -42648,15 +42746,15 @@ func Xregerror(tls TLS, _e int32, _preg uintptr /* *Tregex_t = struct{Fre_nsub u
 	return uint64(int32(1) + Xsnprintf(tls, _buf, _size, ts+20 /* "%s" */, _s))
 }
 
-type t123size_t = uint64
+type t126size_t = uint64
 
-// xmessages [286]int8, escapes: true, regerror.c:12:19
-var xmessages = ds + 46112
+// xmessages [286]int8, escapes: false, regerror.c:12:19
+var xmessages = *(*[286]int8)(unsafe.Pointer(ts + 48364 /* "No error\x00No matc..." */))
 
 // linking regexec.o
 
 // Xregexec is defined at regexec.c:996:1
-func Xregexec(tls TLS, _preg uintptr /* *Tregex_t = struct{Fre_nsub uint..._nsub2 uint64;F__padding2 int8;} */, _string uintptr /* *int8 */, _nmatch uint64, _pmatch uintptr /* *Tregmatch_t = struct{Frm_so int64;Frm_eo int64;} */, _eflags int32) (r int32) {
+func Xregexec(tls TLS, _preg uintptr /* *Tregex_t = struct{Fre_nsub uint...t64;F__padding2 int8;_ [7]byte;} */, _string uintptr /* *int8 */, _nmatch uint64, _pmatch uintptr /* *Tregmatch_t = struct{Frm_so int64;Frm_eo int64;} */, _eflags int32) (r int32) {
 	esc := MustMalloc(8)
 	var (
 		_tnfa   uintptr // *Ttre_tnfa_t = Stnfa
@@ -42690,7 +42788,7 @@ func Xregexec(tls TLS, _preg uintptr /* *Tregex_t = struct{Fre_nsub uint..._nsub
 	return _status
 }
 
-type t124size_t = uint64
+type t127size_t = uint64
 
 type Tregoff_t = int64
 
@@ -42713,6 +42811,7 @@ type s1tnfa = struct {
 	Fcflags          int32
 	Fhave_backrefs   int32
 	Fhave_approx     int32
+	_                [4]byte
 }
 
 type t1reg_errcode_t = int32
@@ -43745,7 +43844,7 @@ type s2tre_list = struct {
 	Fnext uintptr // *Stre_list
 }
 
-type t125size_t = uint64
+type t128size_t = uint64
 
 // linking affinity.o
 
@@ -43831,7 +43930,7 @@ func xdo_getaffinity(tls TLS, _tid int32, _size uint64, _set uintptr /* *Tcpu_se
 
 type t26pid_t = int32
 
-type t126size_t = uint64
+type t129size_t = uint64
 
 type t35uintptr_t = uint64
 
@@ -43867,7 +43966,7 @@ func X__sched_cpucount(tls TLS, _size uint64, _set uintptr /* *Tcpu_set_t = stru
 	return int32(_cnt)
 }
 
-type t127size_t = uint64
+type t130size_t = uint64
 
 // linking sched_get_priority_max.o
 
@@ -43938,9 +44037,9 @@ func xgetcpu_init(tls TLS, _cpu uintptr /* *uint32 */, _node uintptr /* *uint32 
 		_p uintptr // *void
 		_f uintptr // Tgetcpu_f = *func(TLS, uintptr, uintptr, uintptr) int64
 	)
-	_p = X__vdsosym(tls, ts+2796 /* "LINUX_2.6" */, ts+2808 /* "__vdso_getcpu" */)
+	_p = X__vdsosym(tls, ts+48652 /* "LINUX_2.6" */, ts+48664 /* "__vdso_getcpu" */)
 	_f = _p
-	xa_cas_p(tls, xvdso_func, fp874(xgetcpu_init), _p)
+	xa_cas_p(tls, uintptr(unsafe.Pointer(&xvdso_func)), fp874(xgetcpu_init), _p)
 	if _f != 0 {
 		return fn873(_f)(tls, _cpu, _node, _unused)
 	}
@@ -43967,6 +44066,7 @@ type s1sched_param = struct {
 	Fsched_ss_repl_period  s18timespec
 	Fsched_ss_init_budget  s18timespec
 	Fsched_ss_max_repl     int32
+	_                      [4]byte
 }
 
 // Stimespec is defined at alltypes.h:270:1
@@ -44018,6 +44118,7 @@ type s2sched_param = struct {
 	Fsched_ss_repl_period  s20timespec
 	Fsched_ss_init_budget  s20timespec
 	Fsched_ss_max_repl     int32
+	_                      [4]byte
 }
 
 // Stimespec is defined at alltypes.h:270:1
@@ -44042,6 +44143,7 @@ type s3sched_param = struct {
 	Fsched_ss_repl_period  s21timespec
 	Fsched_ss_init_budget  s21timespec
 	Fsched_ss_max_repl     int32
+	_                      [4]byte
 }
 
 // Stimespec is defined at alltypes.h:270:1
@@ -44068,12 +44170,12 @@ func x4__syscall0(tls TLS, _n int64) (r int64) {
 
 // Xhcreate is defined at hsearch.c:73:5
 func Xhcreate(tls TLS, _nel uint64) (r int32) {
-	return X__hcreate_r(tls, _nel, xhtab)
+	return X__hcreate_r(tls, _nel, uintptr(unsafe.Pointer(&xhtab)))
 }
 
 // Xhdestroy is defined at hsearch.c:78:6
 func Xhdestroy(tls TLS) {
-	X__hdestroy_r(tls, xhtab)
+	X__hdestroy_r(tls, uintptr(unsafe.Pointer(&xhtab)))
 }
 
 // Xhsearch is defined at hsearch.c:96:7
@@ -44084,7 +44186,7 @@ func Xhsearch(tls TLS, _item struct {
 	esc := MustMalloc(8)
 	var _e = esc // **TENTRY = struct{Fkey *int8;Fdata uintptr;}
 	defer Free(esc)
-	X__hsearch_r(tls, _item, _action, _e, xhtab)
+	X__hsearch_r(tls, _item, _action, _e, uintptr(unsafe.Pointer(&xhtab)))
 	return *(*uintptr)(unsafe.Pointer(_e))
 }
 
@@ -44161,10 +44263,10 @@ func X__hsearch_r(tls TLS, aitem struct {
 	return 1
 }
 
-type t128size_t = uint64
+type t131size_t = uint64
 
-// xhtab Shsearch_data, escapes: true, hsearch.c:25:28
-var xhtab = bss + 5432
+// xhtab Shsearch_data, escapes: false, hsearch.c:25:28
+var xhtab Shsearch_data
 
 // NACTION is defined at search.h:13:16
 type TACTION = int32
@@ -44416,6 +44518,7 @@ type s2node = struct {
 	Fleft   uintptr // *Snode
 	Fright  uintptr // *Snode
 	Fheight int32
+	_       [4]byte
 }
 
 func fn881(p uintptr) func(TLS, uintptr, uintptr) int32 {
@@ -44695,12 +44798,12 @@ type t12suseconds_t = int64
 
 // X__block_all_sigs is defined at block.c:31:6
 func X__block_all_sigs(tls TLS, _set uintptr /* *void */) {
-	x18__syscall4(tls, int64(14), int64(0), int64(xall_mask), int64(_set), int64(8))
+	x18__syscall4(tls, int64(14), int64(0), int64(uintptr(unsafe.Pointer(&xall_mask))), int64(_set), int64(8))
 }
 
 // X__block_app_sigs is defined at block.c:36:6
 func X__block_app_sigs(tls TLS, _set uintptr /* *void */) {
-	x18__syscall4(tls, int64(14), int64(0), int64(xapp_mask), int64(_set), int64(8))
+	x18__syscall4(tls, int64(14), int64(0), int64(uintptr(unsafe.Pointer(&xapp_mask))), int64(_set), int64(8))
 }
 
 // X__restore_sigs is defined at block.c:41:6
@@ -44713,11 +44816,11 @@ func x18__syscall4(tls TLS, _n int64, _a1 int64, _a2 int64, _a3 int64, _a4 int64
 	return X__syscall(tls, _n, _a1, _a2, _a3, _a4, int64(0), int64(0))
 }
 
-// xall_mask [1]uint64, escapes: true, block.c:5:28
-var xall_mask = ds + 46400
+// xall_mask [1]uint64, escapes: false, block.c:5:28
+var xall_mask = *(*[1]uint64)(unsafe.Pointer(ts + 48680 /* "\xff\xff\xff\xff\xff\xff\xff\xff" */))
 
-// xapp_mask [1]uint64, escapes: true, block.c:15:28
-var xapp_mask = ds + 46408
+// xapp_mask [1]uint64, escapes: false, block.c:15:28
+var xapp_mask = *(*[1]uint64)(unsafe.Pointer(ts + 48692 /* "\xff\xff\xff\u007f\xfc\xff\xff\xff" */))
 
 // linking getitimer.o
 
@@ -44804,7 +44907,7 @@ func Xpsignal(tls TLS, _sig int32, _msg uintptr /* *int8 */) {
 		_old_mode      int32
 		_old_errno     int32
 	)
-	_f = *(*uintptr)(unsafe.Pointer(Xstderr))
+	_f = Xstderr
 	_s = Xstrsignal(tls, _sig)
 	___need_unlock = func() int32 {
 		if *(*int32)(unsafe.Pointer(_f + 140)) >= int32(0) {
@@ -44815,14 +44918,14 @@ func Xpsignal(tls TLS, _sig int32, _msg uintptr /* *int8 */) {
 	_old_locale = *(*uintptr)(unsafe.Pointer(_f + 224))
 	_old_mode = int32(*(*int8)(unsafe.Pointer(_f + 138)))
 	_old_errno = *(*int32)(unsafe.Pointer(X__errno_location(tls)))
-	if Xfprintf(tls, _f, ts+2824 /* "%s%s%s\n" */, func() uintptr {
+	if Xfprintf(tls, _f, ts+48704 /* "%s%s%s\n" */, func() uintptr {
 		if _msg != 0 {
 			return _msg
 		}
 		return ts + 0 /* "" */
 	}(), func() uintptr {
 		if _msg != 0 {
-			return ts + 920 /* ": " */
+			return ts + 31468 /* ": " */
 		}
 		return ts + 0 /* "" */
 	}(), _s) >= int32(0) {
@@ -44872,7 +44975,7 @@ type s26_IO_FILE = struct {
 	Flocale       uintptr // *S__locale_struct
 }
 
-type t129size_t = uint64
+type t132size_t = uint64
 
 type t35off_t = int64
 
@@ -44949,7 +45052,7 @@ type s30__pthread = struct {
 
 type t37uintptr_t = uint64
 
-type t130size_t = uint64
+type t133size_t = uint64
 
 // S__ptcb is defined at pthread.h:200:1
 type s29__ptcb = struct {
@@ -45001,12 +45104,12 @@ type t14suseconds_t = int64
 
 // linking sigaction.o
 
-// Xdummy_lock [1]int32, escapes: true, sigaction.c:9:14
-var Xdummy_lock = bss + 5448
+// Xdummy_lock [1]int32, escapes: false, sigaction.c:9:14
+var Xdummy_lock [1]int32
 
 // X__get_handler_set is defined at sigaction.c:17:6
 func X__get_handler_set(tls TLS, _set uintptr /* *Tsigset_t = struct{F__bits [16]uint64;} */) {
-	Xmemcpy(tls, _set, xhandler_set, uint64(8))
+	Xmemcpy(tls, _set, uintptr(unsafe.Pointer(&xhandler_set)), uint64(8))
 }
 
 func fp884(f func(TLS)) uintptr { return *(*uintptr)(unsafe.Pointer(&f)) }
@@ -45024,8 +45127,8 @@ func X__libc_sigaction(tls TLS, _sig int32, _sa uintptr /* *Ssigaction */, _old 
 	defer Free(esc)
 	if _sa != 0 {
 		if uint64(*(*uintptr)(unsafe.Pointer(_sa))) > uint64(1) {
-			xa_or_l(tls, xhandler_set+8*uintptr(uint64(_sig-int32(1))/uint64(64)), int64(uint64(1)<<(uint(uint64(_sig-int32(1))%uint64(64))%64)))
-			if (*(*int32)(unsafe.Pointer(X__libc + 4)) == 0) && (xunmask_done == 0) {
+			xa_or_l(tls, uintptr(unsafe.Pointer(&xhandler_set))+8*uintptr(uint64(_sig-int32(1))/uint64(64)), int64(uint64(1)<<(uint(uint64(_sig-int32(1))%uint64(64))%64)))
+			if (*(*int32)(unsafe.Pointer(uintptr(unsafe.Pointer(&X__libc)) + 4)) == 0) && (xunmask_done == 0) {
 				x19__syscall4(tls, int64(14), int64(1), int64(func() uintptr {
 					*(*[1]uint64)(unsafe.Pointer(_unnamed1)) = [1]uint64{0: uint64(12884901888)}
 					return _unnamed1
@@ -45035,7 +45138,7 @@ func X__libc_sigaction(tls TLS, _sig int32, _sa uintptr /* *Ssigaction */, _old 
 		}
 		if (*(*uintptr)(unsafe.Pointer(_sa)) != null) && (_sig == int32(6)) {
 			X__block_all_sigs(tls, _set)
-			X__lock(tls, X__abort_lock)
+			X__lock(tls, uintptr(unsafe.Pointer(&X__abort_lock)))
 		}
 		*(*uintptr)(unsafe.Pointer(_ksa)) = *(*uintptr)(unsafe.Pointer(_sa))
 		*(*uint64)(unsafe.Pointer(_ksa + 8)) = uint64(*(*int32)(unsafe.Pointer(_sa + 136)) | int32(0x4000000))
@@ -45058,7 +45161,7 @@ func X__libc_sigaction(tls TLS, _sig int32, _sa uintptr /* *Ssigaction */, _old 
 		return null
 	}()), int64(8)))
 	if ((_sig == int32(6)) && (_sa != 0)) && (*(*uintptr)(unsafe.Pointer(_sa)) != null) {
-		X__unlock(tls, X__abort_lock)
+		X__unlock(tls, uintptr(unsafe.Pointer(&X__abort_lock)))
 		X__restore_sigs(tls, _set)
 	}
 	if (_old != 0) && (_r == 0) {
@@ -45078,8 +45181,8 @@ func X__sigaction(tls TLS, _sig int32, _sa uintptr /* *Ssigaction */, _old uintp
 	return X__libc_sigaction(tls, _sig, _sa, _old)
 }
 
-// xhandler_set [1]uint64, escapes: true, sigaction.c:15:22
-var xhandler_set = bss + 5456
+// xhandler_set [1]uint64, escapes: false, sigaction.c:15:22
+var xhandler_set [1]uint64
 
 // Ssigaction is defined at signal.h:167:1
 type Ssigaction = struct {
@@ -45175,7 +45278,7 @@ type Ssigaltstack = struct {
 	Fss_size  uint64
 }
 
-type t131size_t = uint64
+type t134size_t = uint64
 
 // x__syscall2 is defined at syscall_arch.h:22:22
 func x34__syscall2(tls TLS, _n int64, _a1 int64, _a2 int64) (r int64) {
@@ -45339,7 +45442,7 @@ func Xsigisemptyset(tls TLS, _set uintptr /* *Tsigset_t = struct{F__bits [16]uin
 	return 1
 }
 
-type t132size_t = uint64
+type t135size_t = uint64
 
 // linking sigismember.o
 
@@ -46536,7 +46639,7 @@ type s27_IO_FILE = struct {
 	Flocale       uintptr // *S__locale_struct
 }
 
-type t133size_t = uint64
+type t136size_t = uint64
 
 type t42off_t = int64
 
@@ -46564,7 +46667,7 @@ func X__fdopen(tls TLS, _fd int32, _mode uintptr /* *int8 */) (r uintptr /* *TFI
 		_flags int32
 	)
 	defer Free(esc)
-	if Xstrchr(tls, ts+2832 /* "rwa" */, int32(*(*int8)(unsafe.Pointer(_mode)))) == 0 {
+	if Xstrchr(tls, ts+48712 /* "rwa" */, int32(*(*int8)(unsafe.Pointer(_mode)))) == 0 {
 		*(*int32)(unsafe.Pointer(X__errno_location(tls))) = int32(22)
 		return null
 	}
@@ -46603,7 +46706,7 @@ func X__fdopen(tls TLS, _fd int32, _mode uintptr /* *int8 */) (r uintptr /* *TFI
 	*(*uintptr)(unsafe.Pointer(_f + 72)) = fp888(X__stdio_write)
 	*(*uintptr)(unsafe.Pointer(_f + 80)) = fp889(X__stdio_seek)
 	*(*uintptr)(unsafe.Pointer(_f + 24)) = fp890(X__stdio_close)
-	if *(*int32)(unsafe.Pointer(X__libc + 4)) == 0 {
+	if *(*int32)(unsafe.Pointer(uintptr(unsafe.Pointer(&X__libc)) + 4)) == 0 {
 		*(*int32)(unsafe.Pointer(_f + 140)) = int32(-1)
 	}
 	return X__ofl_add(tls, _f)
@@ -46664,7 +46767,7 @@ func x44__syscall2(tls TLS, _n int64, _a1 int64, _a2 int64) (r int64) {
 	return X__syscall(tls, _n, _a1, _a2, int64(0), int64(0), int64(0), int64(0))
 }
 
-type t134size_t = uint64
+type t137size_t = uint64
 
 type t43off_t = int64
 
@@ -46777,7 +46880,7 @@ func x45__syscall3(tls TLS, _n int64, _a1 int64, _a2 int64, _a3 int64) (r int64)
 	return X__syscall(tls, _n, _a1, _a2, _a3, int64(0), int64(0), int64(0))
 }
 
-type t135size_t = uint64
+type t138size_t = uint64
 
 type t44off_t = int64
 
@@ -46899,7 +47002,7 @@ func x1__wake(tls TLS, _addr uintptr /* *void */, _cnt int32, _priv int32) {
 	}
 }
 
-type t136size_t = uint64
+type t139size_t = uint64
 
 type t45off_t = int64
 
@@ -47031,7 +47134,7 @@ type s31_IO_FILE = struct {
 	Flocale       uintptr // *S__locale_struct
 }
 
-type t137size_t = uint64
+type t140size_t = uint64
 
 type t46off_t = int64
 
@@ -47092,7 +47195,7 @@ func x33__syscall1(tls TLS, _n int64, _a1 int64) (r int64) {
 	return X__syscall(tls, _n, _a1, int64(0), int64(0), int64(0), int64(0), int64(0))
 }
 
-type t138size_t = uint64
+type t141size_t = uint64
 
 type t47off_t = int64
 
@@ -47108,9 +47211,9 @@ func X__stdio_exit(tls TLS) {
 	for _f = *(*uintptr)(unsafe.Pointer(X__ofl_lock(tls))); _f != 0; _f = *(*uintptr)(unsafe.Pointer(_f + 112)) {
 		xclose_file(tls, _f)
 	}
-	xclose_file(tls, *(*uintptr)(unsafe.Pointer(X__stdin_used)))
-	xclose_file(tls, *(*uintptr)(unsafe.Pointer(X__stdout_used)))
-	xclose_file(tls, *(*uintptr)(unsafe.Pointer(X__stderr_used)))
+	xclose_file(tls, X__stdin_used)
+	xclose_file(tls, X__stdout_used)
+	xclose_file(tls, X__stderr_used)
 }
 
 // S_IO_FILE is defined at stdio_impl.h:22:1
@@ -47174,7 +47277,7 @@ func xclose_file(tls TLS, _f uintptr /* *TFILE = S_IO_FILE */) {
 	}
 }
 
-type t139size_t = uint64
+type t142size_t = uint64
 
 type t48off_t = int64
 
@@ -47277,7 +47380,7 @@ type s6iovec = struct {
 
 type t20ssize_t = int64
 
-type t140size_t = uint64
+type t143size_t = uint64
 
 // x__syscall3 is defined at syscall_arch.h:31:22
 func x47__syscall3(tls TLS, _n int64, _a1 int64, _a2 int64, _a3 int64) (r int64) {
@@ -47343,7 +47446,7 @@ func x48__syscall3(tls TLS, _n int64, _a1 int64, _a2 int64, _a3 int64) (r int64)
 	return X__syscall(tls, _n, _a1, _a2, _a3, int64(0), int64(0), int64(0))
 }
 
-type t141size_t = uint64
+type t144size_t = uint64
 
 // S__locale_struct is defined at libc.h:10:1
 type s78__locale_struct = struct{ Fcat [6]uintptr }
@@ -47452,7 +47555,7 @@ type s7iovec = struct {
 	Fiov_len  uint64
 }
 
-type t142size_t = uint64
+type t145size_t = uint64
 
 type t21ssize_t = int64
 
@@ -47529,7 +47632,7 @@ type s3winsize = struct {
 	Fws_ypixel uint16
 }
 
-type t143size_t = uint64
+type t146size_t = uint64
 
 // x__syscall3 is defined at syscall_arch.h:31:22
 func x50__syscall3(tls TLS, _n int64, _a1 int64, _a2 int64, _a3 int64) (r int64) {
@@ -47603,7 +47706,7 @@ type s38_IO_FILE = struct {
 	Flocale       uintptr // *S__locale_struct
 }
 
-type t144size_t = uint64
+type t147size_t = uint64
 
 type t53off_t = int64
 
@@ -47684,7 +47787,7 @@ type s39_IO_FILE = struct {
 	Flocale       uintptr // *S__locale_struct
 }
 
-type t145size_t = uint64
+type t148size_t = uint64
 
 type t54off_t = int64
 
@@ -47756,7 +47859,7 @@ type s40_IO_FILE = struct {
 	Flocale       uintptr // *S__locale_struct
 }
 
-type t146size_t = uint64
+type t149size_t = uint64
 
 type t55off_t = int64
 
@@ -47817,7 +47920,7 @@ type s41_IO_FILE = struct {
 	Flocale       uintptr // *S__locale_struct
 }
 
-type t147size_t = uint64
+type t150size_t = uint64
 
 type t56off_t = int64
 
@@ -47896,7 +47999,7 @@ type s42_IO_FILE = struct {
 	Flocale       uintptr // *S__locale_struct
 }
 
-type t148size_t = uint64
+type t151size_t = uint64
 
 type t57off_t = int64
 
@@ -48013,7 +48116,7 @@ type s43_IO_FILE = struct {
 	Flocale       uintptr // *S__locale_struct
 }
 
-type t149size_t = uint64
+type t152size_t = uint64
 
 type t58off_t = int64
 
@@ -48089,7 +48192,7 @@ type s44_IO_FILE = struct {
 	Flocale       uintptr // *S__locale_struct
 }
 
-type t150size_t = uint64
+type t153size_t = uint64
 
 type t59off_t = int64
 
@@ -48184,7 +48287,7 @@ type s45_IO_FILE = struct {
 	Flocale       uintptr // *S__locale_struct
 }
 
-type t151size_t = uint64
+type t154size_t = uint64
 
 type t60off_t = int64
 
@@ -48249,7 +48352,7 @@ type s46_IO_FILE = struct {
 	Flocale       uintptr // *S__locale_struct
 }
 
-type t152size_t = uint64
+type t155size_t = uint64
 
 type t61off_t = int64
 
@@ -48314,7 +48417,7 @@ type s47_IO_FILE = struct {
 	Flocale       uintptr // *S__locale_struct
 }
 
-type t153size_t = uint64
+type t156size_t = uint64
 
 type t62off_t = int64
 
@@ -48342,8 +48445,8 @@ func Xfflush(tls TLS, _f uintptr /* *TFILE = S_IO_FILE */) (r int32) {
 	)
 	if _f == 0 {
 		_r = func() int32 {
-			if *(*uintptr)(unsafe.Pointer(X__stdout_used)) != 0 {
-				return Xfflush(tls, *(*uintptr)(unsafe.Pointer(X__stdout_used)))
+			if X__stdout_used != 0 {
+				return Xfflush(tls, X__stdout_used)
 			}
 			return int32(0)
 		}()
@@ -48427,7 +48530,7 @@ type s48_IO_FILE = struct {
 	Flocale       uintptr // *S__locale_struct
 }
 
-type t154size_t = uint64
+type t157size_t = uint64
 
 type t63off_t = int64
 
@@ -48496,7 +48599,7 @@ type s49_IO_FILE = struct {
 	Flocale       uintptr // *S__locale_struct
 }
 
-type t155size_t = uint64
+type t158size_t = uint64
 
 type t64off_t = int64
 
@@ -48590,7 +48693,7 @@ type s50_IO_FILE = struct {
 
 type t22ssize_t = int64
 
-type t156size_t = uint64
+type t159size_t = uint64
 
 type t65off_t = int64
 
@@ -48650,7 +48753,7 @@ type s51_IO_FILE = struct {
 
 type t66off_t = int64
 
-type t157size_t = uint64
+type t160size_t = uint64
 
 // S__locale_struct is defined at libc.h:10:1
 type s94__locale_struct = struct{ Fcat [6]uintptr }
@@ -48776,7 +48879,7 @@ type s52_IO_FILE = struct {
 	Flocale       uintptr // *S__locale_struct
 }
 
-type t158size_t = uint64
+type t161size_t = uint64
 
 type t67off_t = int64
 
@@ -48893,7 +48996,7 @@ func x__fgetwc_unlocked_internal(tls TLS, _f uintptr /* *TFILE = S_IO_FILE */) (
 			return uint32(*(*int32)(unsafe.Pointer(_wc)))
 		}
 	}
-	Copy(_st, ts+2836 /* "\x00\x00\x00\x00\x00\x00\x00\x00" */, 8)
+	Copy(_st, ts+48716 /* "\x00\x00\x00\x00\x00\x00\x00\x00" */, 8)
 	_first = int32(1)
 	for c := true; c; c = _l == uint64(18446744073709551614) {
 		*(*uint8)(unsafe.Pointer(_b)) = uint8(set922(&_c, func() int32 {
@@ -48922,7 +49025,7 @@ func x__fgetwc_unlocked_internal(tls TLS, _f uintptr /* *TFILE = S_IO_FILE */) (
 
 type t18wint_t = uint32
 
-type t159size_t = uint64
+type t162size_t = uint64
 
 type t68off_t = int64
 
@@ -49064,7 +49167,7 @@ type t19wint_t = uint32
 
 type t21wchar_t = int32
 
-type t160size_t = uint64
+type t163size_t = uint64
 
 type t69off_t = int64
 
@@ -49133,7 +49236,7 @@ type s55_IO_FILE = struct {
 	Flocale       uintptr // *S__locale_struct
 }
 
-type t161size_t = uint64
+type t164size_t = uint64
 
 type t70off_t = int64
 
@@ -49194,7 +49297,7 @@ func x27__pthread_self(tls TLS) (r uintptr /* *S__pthread */) {
 	return r
 }
 
-type t162size_t = uint64
+type t165size_t = uint64
 
 type t71off_t = int64
 
@@ -49270,7 +49373,7 @@ func Xfmemopen(tls TLS, _buf uintptr /* *void */, _size uint64, _mode uintptr /*
 		_plus int32
 	)
 	_plus = bool2int(!(Xstrchr(tls, _mode, int32('+')) == 0))
-	if (_size == 0) || (Xstrchr(tls, ts+2832 /* "rwa" */, int32(*(*int8)(unsafe.Pointer(_mode)))) == 0) {
+	if (_size == 0) || (Xstrchr(tls, ts+48712 /* "rwa" */, int32(*(*int8)(unsafe.Pointer(_mode)))) == 0) {
 		*(*int32)(unsafe.Pointer(X__errno_location(tls))) = int32(22)
 		return null
 	}
@@ -49319,7 +49422,7 @@ func Xfmemopen(tls TLS, _buf uintptr /* *void */, _size uint64, _mode uintptr /*
 	*(*uintptr)(unsafe.Pointer(_f + 72)) = fp927(xmwrite)
 	*(*uintptr)(unsafe.Pointer(_f + 80)) = fp928(xmseek)
 	*(*uintptr)(unsafe.Pointer(_f + 24)) = fp929(xmclose)
-	if *(*int32)(unsafe.Pointer(X__libc + 4)) == 0 {
+	if *(*int32)(unsafe.Pointer(uintptr(unsafe.Pointer(&X__libc)) + 4)) == 0 {
 		*(*int32)(unsafe.Pointer(_f + 140)) = int32(-1)
 	}
 	return X__ofl_add(tls, _f)
@@ -49369,7 +49472,7 @@ type Smem_FILE = struct {
 	Fbuf [1032]uint8
 }
 
-type t163size_t = uint64
+type t166size_t = uint64
 
 // xmread is defined at fmemopen.c:33:15
 func xmread(tls TLS, _f uintptr /* *TFILE = S_IO_FILE */, _buf uintptr /* *uint8 */, _len uint64) (r uint64) {
@@ -49472,6 +49575,7 @@ type Scookie = struct {
 	Fsize uint64
 	Fbuf  uintptr // *uint8
 	Fmode int32
+	_     [4]byte
 }
 
 // linking fopen.o
@@ -49483,7 +49587,7 @@ func Xfopen(tls TLS, _filename uintptr /* *int8 */, _mode uintptr /* *int8 */) (
 		_fd    int32
 		_flags int32
 	)
-	if Xstrchr(tls, ts+2832 /* "rwa" */, int32(*(*int8)(unsafe.Pointer(_mode)))) == 0 {
+	if Xstrchr(tls, ts+48712 /* "rwa" */, int32(*(*int8)(unsafe.Pointer(_mode)))) == 0 {
 		*(*int32)(unsafe.Pointer(X__errno_location(tls))) = int32(22)
 		return null
 	}
@@ -49550,7 +49654,7 @@ func x34__syscall1(tls TLS, _n int64, _a1 int64) (r int64) {
 	return X__syscall(tls, _n, _a1, int64(0), int64(0), int64(0), int64(0), int64(0))
 }
 
-type t164size_t = uint64
+type t167size_t = uint64
 
 type t73off_t = int64
 
@@ -49578,7 +49682,7 @@ func Xfopencookie(tls TLS, _cookie uintptr /* *void */, _mode uintptr /* *int8 *
 }) (r uintptr /* *TFILE = S_IO_FILE */) {
 	var _f uintptr // *Scookie_FILE
 
-	if Xstrchr(tls, ts+2832 /* "rwa" */, int32(*(*int8)(unsafe.Pointer(_mode)))) == 0 {
+	if Xstrchr(tls, ts+48712 /* "rwa" */, int32(*(*int8)(unsafe.Pointer(_mode)))) == 0 {
 		*(*int32)(unsafe.Pointer(X__errno_location(tls))) = int32(22)
 		return null
 	}
@@ -49612,7 +49716,7 @@ func Xfopencookie(tls TLS, _cookie uintptr /* *void */, _mode uintptr /* *int8 *
 	return X__ofl_add(tls, _f)
 }
 
-type t165size_t = uint64
+type t168size_t = uint64
 
 type t23ssize_t = int64
 
@@ -49914,7 +50018,7 @@ type s61_IO_FILE = struct {
 	Flocale       uintptr // *S__locale_struct
 }
 
-type t166size_t = uint64
+type t169size_t = uint64
 
 type t75off_t = int64
 
@@ -49968,7 +50072,7 @@ type s62_IO_FILE = struct {
 	Flocale       uintptr // *S__locale_struct
 }
 
-type t167size_t = uint64
+type t170size_t = uint64
 
 type t76off_t = int64
 
@@ -50091,7 +50195,7 @@ func x28__pthread_self(tls TLS) (r uintptr /* *S__pthread */) {
 
 type t22wchar_t = int32
 
-type t168size_t = uint64
+type t171size_t = uint64
 
 type t77off_t = int64
 
@@ -50228,7 +50332,7 @@ type s64_IO_FILE = struct {
 
 type t23wchar_t = int32
 
-type t169size_t = uint64
+type t172size_t = uint64
 
 // S__locale_struct is defined at libc.h:10:1
 type s106__locale_struct = struct{ Fcat [6]uintptr }
@@ -50389,7 +50493,7 @@ type s65_IO_FILE = struct {
 	Flocale       uintptr // *S__locale_struct
 }
 
-type t170size_t = uint64
+type t173size_t = uint64
 
 type t79off_t = int64
 
@@ -50517,7 +50621,7 @@ func x52__syscall3(tls TLS, _n int64, _a1 int64, _a2 int64, _a3 int64) (r int64)
 	return X__syscall(tls, _n, _a1, _a2, _a3, int64(0), int64(0), int64(0))
 }
 
-type t171size_t = uint64
+type t174size_t = uint64
 
 type t80off_t = int64
 
@@ -50638,7 +50742,7 @@ type s68_IO_FILE = struct {
 
 type t81off_t = int64
 
-type t172size_t = uint64
+type t175size_t = uint64
 
 // S__locale_struct is defined at libc.h:10:1
 type s109__locale_struct = struct{ Fcat [6]uintptr }
@@ -50687,7 +50791,7 @@ type s69_IO_FILE = struct {
 	Flocale       uintptr // *S__locale_struct
 }
 
-type t173size_t = uint64
+type t176size_t = uint64
 
 type t82off_t = int64
 
@@ -50786,7 +50890,7 @@ type s70_IO_FILE = struct {
 
 type t83off_t = int64
 
-type t174size_t = uint64
+type t177size_t = uint64
 
 // S__locale_struct is defined at libc.h:10:1
 type s111__locale_struct = struct{ Fcat [6]uintptr }
@@ -50901,7 +51005,7 @@ func x30__pthread_self(tls TLS) (r uintptr /* *S__pthread */) {
 
 // xa_store is defined at atomic_arch.h:96:20
 func x1a_store(tls TLS, _p uintptr /* *int32 */, _x int32) {
-	panic(`TODO`)
+	a_store(_p, _x)
 }
 
 // S__pthread is defined at pthread_impl.h:15:1
@@ -50951,7 +51055,7 @@ func x3a_cas(tls TLS, _p uintptr /* *int32 */, _t int32, _s int32) (r int32) {
 	return r
 }
 
-type t175size_t = uint64
+type t178size_t = uint64
 
 type t84off_t = int64
 
@@ -51017,7 +51121,7 @@ type s72_IO_FILE = struct {
 	Flocale       uintptr // *S__locale_struct
 }
 
-type t176size_t = uint64
+type t179size_t = uint64
 
 type t85off_t = int64
 
@@ -51069,7 +51173,7 @@ type s73_IO_FILE = struct {
 	Flocale       uintptr // *S__locale_struct
 }
 
-type t177size_t = uint64
+type t180size_t = uint64
 
 type t86off_t = int64
 
@@ -51192,7 +51296,7 @@ type s75_IO_FILE = struct {
 	Flocale       uintptr // *S__locale_struct
 }
 
-type t178size_t = uint64
+type t181size_t = uint64
 
 type t87off_t = int64
 
@@ -51277,7 +51381,7 @@ type s77_IO_FILE = struct {
 	Flocale       uintptr // *S__locale_struct
 }
 
-type t179size_t = uint64
+type t182size_t = uint64
 
 type t88off_t = int64
 
@@ -51335,7 +51439,7 @@ type s78_IO_FILE = struct {
 	Flocale       uintptr // *S__locale_struct
 }
 
-type t180size_t = uint64
+type t183size_t = uint64
 
 type t89off_t = int64
 
@@ -51346,7 +51450,7 @@ type s117__locale_struct = struct{ Fcat [6]uintptr }
 
 // Xgetchar is defined at getchar.c:3:5
 func Xgetchar(tls TLS) (r int32) {
-	return Xfgetc(tls, *(*uintptr)(unsafe.Pointer(Xstdin)))
+	return Xfgetc(tls, Xstdin)
 }
 
 // linking getchar_unlocked.o
@@ -51356,10 +51460,10 @@ func postinc953(p *uintptr) uintptr { r := *p; *p += 1; return r }
 // Xgetchar_unlocked is defined at getchar_unlocked.c:3:5
 func Xgetchar_unlocked(tls TLS) (r int32) {
 	return func() int32 {
-		if *(*uintptr)(unsafe.Pointer(*(*uintptr)(unsafe.Pointer(Xstdin)) + 8)) < *(*uintptr)(unsafe.Pointer(*(*uintptr)(unsafe.Pointer(Xstdin)) + 16)) {
-			return int32(*(*uint8)(unsafe.Pointer(postinc953((*uintptr)(unsafe.Pointer(*(*uintptr)(unsafe.Pointer(Xstdin)) + 8))))))
+		if *(*uintptr)(unsafe.Pointer(Xstdin + 8)) < *(*uintptr)(unsafe.Pointer(Xstdin + 16)) {
+			return int32(*(*uint8)(unsafe.Pointer(postinc953((*uintptr)(unsafe.Pointer(Xstdin + 8))))))
 		}
-		return X__uflow(tls, *(*uintptr)(unsafe.Pointer(Xstdin)))
+		return X__uflow(tls, Xstdin)
 	}()
 }
 
@@ -51527,7 +51631,7 @@ type s79_IO_FILE = struct {
 	Flocale       uintptr // *S__locale_struct
 }
 
-type t181size_t = uint64
+type t184size_t = uint64
 
 type t90off_t = int64
 
@@ -51551,14 +51655,14 @@ type s80_IO_FILE struct{ uintptr }
 func Xgets(tls TLS, _s uintptr /* *int8 */) (r uintptr /* *int8 */) {
 	var _ret uintptr // *int8
 
-	_ret = Xfgets(tls, _s, int32(0x7fffffff), *(*uintptr)(unsafe.Pointer(Xstdin)))
+	_ret = Xfgets(tls, _s, int32(0x7fffffff), Xstdin)
 	if (_ret != 0) && (int32(*(*int8)(unsafe.Pointer(_s + uintptr(Xstrlen(tls, _s)-uint64(1))))) == int32('\n')) {
 		*(*int8)(unsafe.Pointer(_s + uintptr(Xstrlen(tls, _s)-uint64(1)))) = int8(0)
 	}
 	return _ret
 }
 
-type t182size_t = uint64
+type t185size_t = uint64
 
 // linking getw.o
 
@@ -51621,7 +51725,7 @@ type s82_IO_FILE = struct {
 
 type t20wint_t = uint32
 
-type t183size_t = uint64
+type t186size_t = uint64
 
 type t91off_t = int64
 
@@ -51632,7 +51736,7 @@ type s119__locale_struct = struct{ Fcat [6]uintptr }
 
 // Xgetwchar is defined at getwchar.c:4:8
 func Xgetwchar(tls TLS) (r uint32) {
-	return Xfgetwc(tls, *(*uintptr)(unsafe.Pointer(Xstdin)))
+	return Xfgetwc(tls, Xstdin)
 }
 
 type t21wint_t = uint32
@@ -51641,13 +51745,13 @@ type t21wint_t = uint32
 
 // X__ofl_lock is defined at ofl.c:7:6
 func X__ofl_lock(tls TLS) (r uintptr /* **TFILE = S_IO_FILE */) {
-	X__lock(tls, xofl_lock)
-	return xofl_head
+	X__lock(tls, uintptr(unsafe.Pointer(&xofl_lock)))
+	return uintptr(unsafe.Pointer(&xofl_head))
 }
 
 // X__ofl_unlock is defined at ofl.c:13:6
 func X__ofl_unlock(tls TLS) {
-	X__unlock(tls, xofl_lock)
+	X__unlock(tls, uintptr(unsafe.Pointer(&xofl_lock)))
 }
 
 // S_IO_FILE is defined at stdio_impl.h:22:1
@@ -51687,13 +51791,13 @@ type s83_IO_FILE = struct {
 	Flocale       uintptr // *S__locale_struct
 }
 
-// xofl_lock [1]int32, escapes: true, ofl.c:5:21
-var xofl_lock = bss + 5464
+// xofl_lock [1]int32, escapes: false, ofl.c:5:21
+var xofl_lock [1]int32
 
-// xofl_head *TFILE = S_IO_FILE, escapes: true, ofl.c:4:13
-var xofl_head = bss + 5472
+// xofl_head *TFILE = S_IO_FILE, escapes: false, ofl.c:4:13
+var xofl_head uintptr
 
-type t184size_t = uint64
+type t187size_t = uint64
 
 type t92off_t = int64
 
@@ -51753,7 +51857,7 @@ type s84_IO_FILE = struct {
 	Flocale       uintptr // *S__locale_struct
 }
 
-type t185size_t = uint64
+type t188size_t = uint64
 
 type t93off_t = int64
 
@@ -51804,7 +51908,7 @@ func Xopen_memstream(tls TLS, _bufp uintptr /* **int8 */, _sizep uintptr /* *Tsi
 	*(*uintptr)(unsafe.Pointer(_f + 80)) = fp961(xms_seek)
 	*(*uintptr)(unsafe.Pointer(_f + 24)) = fp962(xms_close)
 	*(*int8)(unsafe.Pointer(_f + 138)) = int8(-1)
-	if *(*int32)(unsafe.Pointer(X__libc + 4)) == 0 {
+	if *(*int32)(unsafe.Pointer(uintptr(unsafe.Pointer(&X__libc)) + 4)) == 0 {
 		*(*int32)(unsafe.Pointer(_f + 140)) = int32(-1)
 	}
 	return X__ofl_add(tls, _f)
@@ -51854,7 +51958,7 @@ type Sms_FILE = struct {
 	Fbuf [1024]uint8
 }
 
-type t186size_t = uint64
+type t189size_t = uint64
 
 // xms_write is defined at open_memstream.c:36:15
 func xms_write(tls TLS, _f uintptr /* *TFILE = S_IO_FILE */, _buf uintptr /* *uint8 */, _len uint64) (r uint64) {
@@ -51965,7 +52069,7 @@ func Xopen_wmemstream(tls TLS, _bufp uintptr /* **Twchar_t = int32 */, _sizep ui
 	*(*uintptr)(unsafe.Pointer(_f + 72)) = fp965(xwms_write)
 	*(*uintptr)(unsafe.Pointer(_f + 80)) = fp966(xwms_seek)
 	*(*uintptr)(unsafe.Pointer(_f + 24)) = fp967(xwms_close)
-	if *(*int32)(unsafe.Pointer(X__libc + 4)) == 0 {
+	if *(*int32)(unsafe.Pointer(uintptr(unsafe.Pointer(&X__libc)) + 4)) == 0 {
 		*(*int32)(unsafe.Pointer(_f + 140)) = int32(-1)
 	}
 	Xfwide(tls, _f, int32(1))
@@ -52014,9 +52118,10 @@ type Swms_FILE = struct {
 	Ff   s86_IO_FILE
 	Fc   s2cookie
 	Fbuf [1]uint8
+	_    [7]byte
 }
 
-type t187size_t = uint64
+type t190size_t = uint64
 
 type t24wchar_t = int32
 
@@ -52166,7 +52271,7 @@ func x26__syscall4(tls TLS, _n int64, _a1 int64, _a2 int64, _a3 int64, _a4 int64
 	return X__syscall(tls, _n, _a1, _a2, _a3, _a4, int64(0), int64(0))
 }
 
-type t188size_t = uint64
+type t191size_t = uint64
 
 type t96off_t = int64
 
@@ -52184,7 +52289,7 @@ func Xperror(tls TLS, _msg uintptr /* *int8 */) {
 		_old_locale    uintptr // *void
 		_old_mode      int32
 	)
-	_f = *(*uintptr)(unsafe.Pointer(Xstderr))
+	_f = Xstderr
 	_errstr = Xstrerror(tls, *(*int32)(unsafe.Pointer(X__errno_location(tls))))
 	___need_unlock = func() int32 {
 		if *(*int32)(unsafe.Pointer(_f + 140)) >= int32(0) {
@@ -52245,7 +52350,7 @@ type s88_IO_FILE = struct {
 	Flocale       uintptr // *S__locale_struct
 }
 
-type t189size_t = uint64
+type t192size_t = uint64
 
 type t97off_t = int64
 
@@ -52313,14 +52418,14 @@ _1:
 	_e = int32(12)
 	if Xposix_spawn_file_actions_init(tls, _fa) == 0 {
 		if Xposix_spawn_file_actions_adddup2(tls, _fa, *(*int32)(unsafe.Pointer(_p + 4*uintptr(int32(1)-_op))), int32(1)-_op) == 0 {
-			if set969(&_e, Xposix_spawn(tls, _pid, ts+1708 /* "/bin/sh" */, _fa, null, func() uintptr {
+			if set969(&_e, Xposix_spawn(tls, _pid, ts+46244 /* "/bin/sh" */, _fa, null, func() uintptr {
 				*(*[4]uintptr)(unsafe.Pointer(_unnamed1)) = [4]uintptr{
-					0: ts + 1716, /* "sh" */
-					1: ts + 1720, /* "-c" */
+					0: ts + 46252, /* "sh" */
+					1: ts + 46256, /* "-c" */
 					2: _cmd,
 				}
 				return _unnamed1
-			}(), *(*uintptr)(unsafe.Pointer(Xenviron)))) == 0 {
+			}(), Xenviron)) == 0 {
 				Xposix_spawn_file_actions_destroy(tls, _fa)
 				*(*int32)(unsafe.Pointer(_f + 124)) = *(*int32)(unsafe.Pointer(_pid))
 				if Xstrchr(tls, _mode, int32('e')) == 0 {
@@ -52387,7 +52492,7 @@ func x35__syscall1(tls TLS, _n int64, _a1 int64) (r int64) {
 
 type t34pid_t = int32
 
-type t190size_t = uint64
+type t193size_t = uint64
 
 type t98off_t = int64
 
@@ -52403,7 +52508,7 @@ func Xprintf(tls TLS, _fmt uintptr /* *int8 */, ap ...interface{}) (r int32) {
 		_ap  uintptr // Tva_list = T__builtin_va_list = *void
 	)
 	_ap = X__builtin_va_start(tls, ap)
-	_ret = Xvfprintf(tls, *(*uintptr)(unsafe.Pointer(Xstdout)), _fmt, _ap)
+	_ret = Xvfprintf(tls, Xstdout, _fmt, _ap)
 	X__builtin_va_end(tls, _ap)
 	return _ret
 }
@@ -52470,7 +52575,7 @@ type s90_IO_FILE = struct {
 	Flocale       uintptr // *S__locale_struct
 }
 
-type t191size_t = uint64
+type t194size_t = uint64
 
 type t99off_t = int64
 
@@ -52530,7 +52635,7 @@ type s91_IO_FILE = struct {
 	Flocale       uintptr // *S__locale_struct
 }
 
-type t192size_t = uint64
+type t195size_t = uint64
 
 type t100off_t = int64
 
@@ -52541,7 +52646,7 @@ type s128__locale_struct = struct{ Fcat [6]uintptr }
 
 // Xputchar is defined at putchar.c:3:5
 func Xputchar(tls TLS, _c int32) (r int32) {
-	return Xfputc(tls, _c, *(*uintptr)(unsafe.Pointer(Xstdout)))
+	return Xfputc(tls, _c, Xstdout)
 }
 
 // linking putchar_unlocked.o
@@ -52553,10 +52658,10 @@ func postinc975(p *uintptr) uintptr { r := *p; *p += 1; return r }
 // Xputchar_unlocked is defined at putchar_unlocked.c:3:5
 func Xputchar_unlocked(tls TLS, _c int32) (r int32) {
 	return func() int32 {
-		if (int32(uint8(_c)) != int32(*(*int8)(unsafe.Pointer(*(*uintptr)(unsafe.Pointer(Xstdout)) + 139)))) && (*(*uintptr)(unsafe.Pointer(*(*uintptr)(unsafe.Pointer(Xstdout)) + 40)) < *(*uintptr)(unsafe.Pointer(*(*uintptr)(unsafe.Pointer(Xstdout)) + 32))) {
-			return int32(set974((*uint8)(unsafe.Pointer(postinc975((*uintptr)(unsafe.Pointer(*(*uintptr)(unsafe.Pointer(Xstdout))+40))))), uint8(_c)))
+		if (int32(uint8(_c)) != int32(*(*int8)(unsafe.Pointer(Xstdout + 139)))) && (*(*uintptr)(unsafe.Pointer(Xstdout + 40)) < *(*uintptr)(unsafe.Pointer(Xstdout + 32))) {
+			return int32(set974((*uint8)(unsafe.Pointer(postinc975((*uintptr)(unsafe.Pointer(Xstdout+40))))), uint8(_c)))
 		}
-		return X__overflow(tls, *(*uintptr)(unsafe.Pointer(Xstdout)), _c)
+		return X__overflow(tls, Xstdout, _c)
 	}()
 }
 
@@ -52573,19 +52678,19 @@ func Xputs(tls TLS, _s uintptr /* *int8 */) (r int32) {
 		___need_unlock int32
 	)
 	___need_unlock = func() int32 {
-		if *(*int32)(unsafe.Pointer(*(*uintptr)(unsafe.Pointer(Xstdout)) + 140)) >= int32(0) {
-			return X__lockfile(tls, *(*uintptr)(unsafe.Pointer(Xstdout)))
+		if *(*int32)(unsafe.Pointer(Xstdout + 140)) >= int32(0) {
+			return X__lockfile(tls, Xstdout)
 		}
 		return int32(0)
 	}()
-	_r = -bool2int((Xfputs(tls, _s, *(*uintptr)(unsafe.Pointer(Xstdout))) < int32(0)) || (func() int32 {
-		if (int32(10) != int32(*(*int8)(unsafe.Pointer(*(*uintptr)(unsafe.Pointer(Xstdout)) + 139)))) && (*(*uintptr)(unsafe.Pointer(*(*uintptr)(unsafe.Pointer(Xstdout)) + 40)) < *(*uintptr)(unsafe.Pointer(*(*uintptr)(unsafe.Pointer(Xstdout)) + 32))) {
-			return int32(set976((*uint8)(unsafe.Pointer(postinc977((*uintptr)(unsafe.Pointer(*(*uintptr)(unsafe.Pointer(Xstdout))+40))))), uint8('\n')))
+	_r = -bool2int((Xfputs(tls, _s, Xstdout) < int32(0)) || (func() int32 {
+		if (int32(10) != int32(*(*int8)(unsafe.Pointer(Xstdout + 139)))) && (*(*uintptr)(unsafe.Pointer(Xstdout + 40)) < *(*uintptr)(unsafe.Pointer(Xstdout + 32))) {
+			return int32(set976((*uint8)(unsafe.Pointer(postinc977((*uintptr)(unsafe.Pointer(Xstdout+40))))), uint8('\n')))
 		}
-		return X__overflow(tls, *(*uintptr)(unsafe.Pointer(Xstdout)), int32('\n'))
+		return X__overflow(tls, Xstdout, int32('\n'))
 	}() < int32(0)))
 	if ___need_unlock != 0 {
-		X__unlockfile(tls, *(*uintptr)(unsafe.Pointer(Xstdout)))
+		X__unlockfile(tls, Xstdout)
 	}
 	return _r
 }
@@ -52651,7 +52756,7 @@ type t22wint_t = uint32
 
 type t25wchar_t = int32
 
-type t193size_t = uint64
+type t196size_t = uint64
 
 type t101off_t = int64
 
@@ -52662,7 +52767,7 @@ type s129__locale_struct = struct{ Fcat [6]uintptr }
 
 // Xputwchar is defined at putwchar.c:4:8
 func Xputwchar(tls TLS, _c int32) (r uint32) {
-	return Xfputwc(tls, _c, *(*uintptr)(unsafe.Pointer(Xstdout)))
+	return Xfputwc(tls, _c, Xstdout)
 }
 
 type t23wint_t = uint32
@@ -52758,7 +52863,7 @@ type s94_IO_FILE = struct {
 	Flocale       uintptr // *S__locale_struct
 }
 
-type t194size_t = uint64
+type t197size_t = uint64
 
 type t102off_t = int64
 
@@ -52805,7 +52910,7 @@ func Xsetbuffer(tls TLS, _f uintptr /* *TFILE = S_IO_FILE */, _buf uintptr /* *i
 	}(), _size)
 }
 
-type t195size_t = uint64
+type t198size_t = uint64
 
 type s96_IO_FILE struct{ uintptr }
 
@@ -52878,7 +52983,7 @@ type s98_IO_FILE = struct {
 	Flocale       uintptr // *S__locale_struct
 }
 
-type t196size_t = uint64
+type t199size_t = uint64
 
 type t103off_t = int64
 
@@ -52899,7 +53004,7 @@ func Xsnprintf(tls TLS, _s uintptr /* *int8 */, _n uint64, _fmt uintptr /* *int8
 	return _ret
 }
 
-type t197size_t = uint64
+type t200size_t = uint64
 
 // linking sprintf.o
 
@@ -52931,15 +53036,15 @@ func Xsscanf(tls TLS, _s uintptr /* *int8 */, _fmt uintptr /* *int8 */, ap ...in
 
 // linking stderr.o
 
-// Xstderr *TFILE = S_IO_FILE, escapes: true, stderr.c:15:6
-var Xstderr = bss + 5480 // pointer to FILE
+// Xstderr *TFILE = S_IO_FILE, escapes: false, stderr.c:15:6
+var Xstderr uintptr
 
-func init() { *(*uintptr)(unsafe.Pointer(Xstderr)) = x3f }
+func init() { Xstderr = uintptr(unsafe.Pointer(&x3f)) }
 
-// X__stderr_used *TFILE = S_IO_FILE, escapes: true, stderr.c:16:6
-var X__stderr_used = bss + 5488 // pointer to FILE
+// X__stderr_used *TFILE = S_IO_FILE, escapes: false, stderr.c:16:6
+var X__stderr_used uintptr
 
-func init() { *(*uintptr)(unsafe.Pointer(X__stderr_used)) = x3f }
+func init() { X__stderr_used = uintptr(unsafe.Pointer(&x3f)) }
 
 // S_IO_FILE is defined at stdio_impl.h:22:1
 type s99_IO_FILE = struct {
@@ -52986,12 +53091,12 @@ func fp979(f func(TLS, uintptr, int64, int32) int64) uintptr { return *(*uintptr
 
 func fp980(f func(TLS, uintptr) int32) uintptr { return *(*uintptr)(unsafe.Pointer(&f)) }
 
-// xf TFILE = S_IO_FILE, escapes: true, stderr.c:4:13
-var x3f = bss + 5496 // FILE
+// xf TFILE = S_IO_FILE, escapes: false, stderr.c:4:13
+var x3f s99_IO_FILE
 
 func init() {
-	*(*s99_IO_FILE)(unsafe.Pointer(x3f)) = s99_IO_FILE{
-		Fbuf:   x1buf + uintptr(8),
+	x3f = s99_IO_FILE{
+		Fbuf:   uintptr(unsafe.Pointer(&x1buf)) + uintptr(8),
 		Ffd:    int32(2),
 		Fflags: uint32(5),
 		Flbf:   int8(-1),
@@ -53002,7 +53107,7 @@ func init() {
 	}
 }
 
-type t198size_t = uint64
+type t201size_t = uint64
 
 type t104off_t = int64
 
@@ -53012,20 +53117,20 @@ type s132__locale_struct = struct{ Fcat [6]uintptr }
 // NFILE is defined at alltypes.h:356:9
 type t4FILE = s99_IO_FILE
 
-// xbuf [8]uint8, escapes: true, stderr.c:3:22
-var x1buf = bss + 5728
+// xbuf [8]uint8, escapes: false, stderr.c:3:22
+var x1buf [8]uint8
 
 // linking stdin.o
 
-// Xstdin *TFILE = S_IO_FILE, escapes: true, stdin.c:14:6
-var Xstdin = bss + 5736 // pointer to FILE
+// Xstdin *TFILE = S_IO_FILE, escapes: false, stdin.c:14:6
+var Xstdin uintptr
 
-func init() { *(*uintptr)(unsafe.Pointer(Xstdin)) = x4f }
+func init() { Xstdin = uintptr(unsafe.Pointer(&x4f)) }
 
-// X__stdin_used *TFILE = S_IO_FILE, escapes: true, stdin.c:15:6
-var X__stdin_used = bss + 5744 // pointer to FILE
+// X__stdin_used *TFILE = S_IO_FILE, escapes: false, stdin.c:15:6
+var X__stdin_used uintptr
 
-func init() { *(*uintptr)(unsafe.Pointer(X__stdin_used)) = x4f }
+func init() { X__stdin_used = uintptr(unsafe.Pointer(&x4f)) }
 
 // S_IO_FILE is defined at stdio_impl.h:22:1
 type s100_IO_FILE = struct {
@@ -53072,12 +53177,12 @@ func fp982(f func(TLS, uintptr, int64, int32) int64) uintptr { return *(*uintptr
 
 func fp983(f func(TLS, uintptr) int32) uintptr { return *(*uintptr)(unsafe.Pointer(&f)) }
 
-// xf TFILE = S_IO_FILE, escapes: true, stdin.c:4:13
-var x4f = bss + 5752 // FILE
+// xf TFILE = S_IO_FILE, escapes: false, stdin.c:4:13
+var x4f s100_IO_FILE
 
 func init() {
-	*(*s100_IO_FILE)(unsafe.Pointer(x4f)) = s100_IO_FILE{
-		Fbuf:      x2buf + uintptr(8),
+	x4f = s100_IO_FILE{
+		Fbuf:      uintptr(unsafe.Pointer(&x2buf)) + uintptr(8),
 		Fbuf_size: uint64(1024),
 		Fflags:    uint32(9),
 		Fread:     fp981(X__stdio_read),
@@ -53087,7 +53192,7 @@ func init() {
 	}
 }
 
-type t199size_t = uint64
+type t202size_t = uint64
 
 type t105off_t = int64
 
@@ -53097,20 +53202,20 @@ type s133__locale_struct = struct{ Fcat [6]uintptr }
 // NFILE is defined at alltypes.h:356:9
 type t5FILE = s100_IO_FILE
 
-// xbuf [1032]uint8, escapes: true, stdin.c:3:22
-var x2buf = bss + 5984
+// xbuf [1032]uint8, escapes: false, stdin.c:3:22
+var x2buf [1032]uint8
 
 // linking stdout.o
 
-// Xstdout *TFILE = S_IO_FILE, escapes: true, stdout.c:15:6
-var Xstdout = bss + 7016 // pointer to FILE
+// Xstdout *TFILE = S_IO_FILE, escapes: false, stdout.c:15:6
+var Xstdout uintptr
 
-func init() { *(*uintptr)(unsafe.Pointer(Xstdout)) = x5f }
+func init() { Xstdout = uintptr(unsafe.Pointer(&x5f)) }
 
-// X__stdout_used *TFILE = S_IO_FILE, escapes: true, stdout.c:16:6
-var X__stdout_used = bss + 7024 // pointer to FILE
+// X__stdout_used *TFILE = S_IO_FILE, escapes: false, stdout.c:16:6
+var X__stdout_used uintptr
 
-func init() { *(*uintptr)(unsafe.Pointer(X__stdout_used)) = x5f }
+func init() { X__stdout_used = uintptr(unsafe.Pointer(&x5f)) }
 
 // S_IO_FILE is defined at stdio_impl.h:22:1
 type s101_IO_FILE = struct {
@@ -53157,12 +53262,12 @@ func fp985(f func(TLS, uintptr, int64, int32) int64) uintptr { return *(*uintptr
 
 func fp986(f func(TLS, uintptr) int32) uintptr { return *(*uintptr)(unsafe.Pointer(&f)) }
 
-// xf TFILE = S_IO_FILE, escapes: true, stdout.c:4:13
-var x5f = bss + 7032 // FILE
+// xf TFILE = S_IO_FILE, escapes: false, stdout.c:4:13
+var x5f s101_IO_FILE
 
 func init() {
-	*(*s101_IO_FILE)(unsafe.Pointer(x5f)) = s101_IO_FILE{
-		Fbuf:      x3buf + uintptr(8),
+	x5f = s101_IO_FILE{
+		Fbuf:      uintptr(unsafe.Pointer(&x3buf)) + uintptr(8),
 		Fbuf_size: uint64(1024),
 		Ffd:       int32(1),
 		Fflags:    uint32(5),
@@ -53174,7 +53279,7 @@ func init() {
 	}
 }
 
-type t200size_t = uint64
+type t203size_t = uint64
 
 type t106off_t = int64
 
@@ -53184,8 +53289,8 @@ type s134__locale_struct = struct{ Fcat [6]uintptr }
 // NFILE is defined at alltypes.h:356:9
 type t6FILE = s101_IO_FILE
 
-// xbuf [1032]uint8, escapes: true, stdout.c:3:22
-var x3buf = bss + 7264
+// xbuf [1032]uint8, escapes: false, stdout.c:3:22
+var x3buf [1032]uint8
 
 // linking swprintf.o
 
@@ -53201,7 +53306,7 @@ func Xswprintf(tls TLS, _s uintptr /* *Twchar_t = int32 */, _n uint64, _fmt uint
 	return _ret
 }
 
-type t201size_t = uint64
+type t204size_t = uint64
 
 // linking swscanf.o
 
@@ -53233,10 +53338,10 @@ func Xtempnam(tls TLS, _dir uintptr /* *int8 */, _pfx uintptr /* *int8 */) (r ui
 	)
 	defer Free(esc)
 	if _dir == 0 {
-		_dir = ts + 2848 /* "/tmp" */
+		_dir = ts + 48728 /* "/tmp" */
 	}
 	if _pfx == 0 {
-		_pfx = ts + 2856 /* "temp" */
+		_pfx = ts + 48736 /* "temp" */
 	}
 	_dl = Xstrlen(tls, _dir)
 	_pl = Xstrlen(tls, _pfx)
@@ -53260,7 +53365,7 @@ func Xtempnam(tls TLS, _dir uintptr /* *int8 */, _pfx uintptr /* *int8 */) (r ui
 	return null
 }
 
-type t202size_t = uint64
+type t205size_t = uint64
 
 // Sstat is defined at stat.h:4:1
 type s12stat = struct {
@@ -53324,13 +53429,13 @@ func Xtmpfile(tls TLS) (r uintptr /* *TFILE = S_IO_FILE */) {
 		_try int32
 	)
 	defer Free(esc)
-	*(*[20]int8)(unsafe.Pointer(_s)) = *(*[20]int8)(unsafe.Pointer(ts + 2864 /* "/tmp/tmpfile_XXX..." */))
+	*(*[20]int8)(unsafe.Pointer(_s)) = *(*[20]int8)(unsafe.Pointer(ts + 48744 /* "/tmp/tmpfile_XXX..." */))
 	for _try = int32(0); _try < int32(100); _try++ {
 		X__randname(tls, _s+uintptr(13))
 		_fd = int32(X__syscall_ret(tls, uint64(x53__syscall3(tls, int64(2), int64(_s), int64(194), int64(384)))))
 		if _fd >= int32(0) {
 			x37__syscall1(tls, int64(87), int64(_s))
-			_f = X__fdopen(tls, _fd, ts+2884 /* "w+" */)
+			_f = X__fdopen(tls, _fd, ts+48764 /* "w+" */)
 			if _f == 0 {
 				x37__syscall1(tls, int64(3), int64(_fd))
 			}
@@ -53387,7 +53492,7 @@ func x37__syscall1(tls TLS, _n int64, _a1 int64) (r int64) {
 	return X__syscall(tls, _n, _a1, int64(0), int64(0), int64(0), int64(0), int64(0))
 }
 
-type t203size_t = uint64
+type t206size_t = uint64
 
 type t108off_t = int64
 
@@ -53406,7 +53511,7 @@ func Xtmpnam(tls TLS, _buf uintptr /* *int8 */) (r uintptr /* *int8 */) {
 		_unnamed1 = esc + 32 // *Sstat
 	)
 	defer Free(esc)
-	*(*[19]int8)(unsafe.Pointer(_s)) = *(*[19]int8)(unsafe.Pointer(ts + 2888 /* "/tmp/tmpnam_XXXX..." */))
+	*(*[19]int8)(unsafe.Pointer(_s)) = *(*[19]int8)(unsafe.Pointer(ts + 48768 /* "/tmp/tmpnam_XXXX..." */))
 	for _try = int32(0); _try < int32(100); _try++ {
 		X__randname(tls, _s+uintptr(12))
 		_r = int32(x48__syscall2(tls, int64(6), int64(_s), int64(func() uintptr { *(*s13stat)(unsafe.Pointer(_unnamed1)) = s13stat{}; return _unnamed1 }())))
@@ -53415,15 +53520,15 @@ func Xtmpnam(tls TLS, _buf uintptr /* *int8 */) (r uintptr /* *int8 */) {
 				if _buf != 0 {
 					return _buf
 				}
-				return x987internal
+				return uintptr(unsafe.Pointer(&x987internal))
 			}(), _s)
 		}
 	}
 	return null
 }
 
-// x1internal [20]int8, escapes: true, tmpnam.c:14:14
-var x987internal = bss + 8296
+// x1internal [20]int8, escapes: false, tmpnam.c:14:14
+var x987internal [20]int8
 
 // Sstat is defined at stat.h:4:1
 type s13stat = struct {
@@ -53549,7 +53654,7 @@ type s103_IO_FILE = struct {
 	Flocale       uintptr // *S__locale_struct
 }
 
-type t204size_t = uint64
+type t207size_t = uint64
 
 type t110off_t = int64
 
@@ -53659,7 +53764,7 @@ func x31__pthread_self(tls TLS) (r uintptr /* *S__pthread */) {
 
 type t24wint_t = uint32
 
-type t205size_t = uint64
+type t208size_t = uint64
 
 type t111off_t = int64
 
@@ -53798,7 +53903,7 @@ func xwrap_write(tls TLS, _f uintptr /* *TFILE = S_IO_FILE */, _buf uintptr /* *
 	return X__stdio_write(tls, _f, _buf, _len)
 }
 
-type t206size_t = uint64
+type t209size_t = uint64
 
 type t112off_t = int64
 
@@ -53827,7 +53932,7 @@ func Xvfprintf(tls TLS, _f uintptr /* *TFILE = S_IO_FILE */, _fmt uintptr /* *in
 		___need_unlock int32
 	)
 	defer Free(esc)
-	Copy(_nl_type, ts+2908 /* "\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00..." */, 40)
+	Copy(_nl_type, ts+48788 /* "\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00..." */, 40)
 	_saved_buf = 0
 	*(*uintptr)(unsafe.Pointer(_ap2)) = X__builtin_va_copy(tls, _ap)
 	if xprintf_core(tls, null, _fmt, _ap2, _nl_arg, _nl_type) < int32(0) {
@@ -54107,7 +54212,7 @@ _19:
 
 _22:
 	_ps = _st
-	_st = uint32(*(*uint8)(unsafe.Pointer((xstates + 58*uintptr(_st)) + uintptr(int32(*(*int8)(unsafe.Pointer(postinc996((*uintptr)(unsafe.Pointer(_s))))))-int32('A')))))
+	_st = uint32(*(*uint8)(unsafe.Pointer((uintptr(unsafe.Pointer(&xstates)) + 58*uintptr(_st)) + uintptr(int32(*(*int8)(unsafe.Pointer(postinc996((*uintptr)(unsafe.Pointer(_s))))))-int32('A')))))
 	if _st-uint32(1) < uint32(8) {
 		goto _19
 	}
@@ -54146,7 +54251,7 @@ _25:
 		goto _2
 	}
 	_z = _buf + uintptr(40)
-	_prefix = ts + 2952 /* "-+   0X0x" */
+	_prefix = ts + 48832 /* "-+   0X0x" */
 	_pl = int32(0)
 	_t = int32(*(*int8)(unsafe.Pointer(*(*uintptr)(unsafe.Pointer(_s)) - 1)))
 	if (_ps != 0) && (_t&int32(15) == int32(3)) {
@@ -54326,7 +54431,7 @@ _38:
 	if *(*uintptr)(unsafe.Pointer(_arg)) != 0 {
 		_a = *(*uintptr)(unsafe.Pointer(_arg))
 	} else {
-		_a = ts + 2964 /* "(null)" */
+		_a = ts + 48844 /* "(null)" */
 	}
 _60:
 	_z = _a + uintptr(Xstrnlen(tls, _a, uint64(func() int32 {
@@ -54465,7 +54570,7 @@ loverflow:
 	return -1
 }
 
-type t207size_t = uint64
+type t210size_t = uint64
 
 type t113off_t = int64
 
@@ -54497,8 +54602,8 @@ func xgetint(tls TLS, _s uintptr /* **int8 */) (r int32) {
 	return _i
 }
 
-// xstates [8][58]uint8, escapes: true, vfprintf.c:48:28
-var xstates = ds + 46416
+// xstates [8][58]uint8, escapes: false, vfprintf.c:48:28
+var xstates = *(*[8][58]uint8)(unsafe.Pointer(ts + 48852 /* "\x19\x00\n\x00\x19\x19\x19\x00\x00\x00\x00\x05\x00\x00\x00\x00..." */))
 
 // xpop_arg is defined at vfprintf.c:108:13
 func xpop_arg(tls TLS, _arg uintptr /* *Uarg */, _type int32, _ap uintptr /* **void */) {
@@ -54620,7 +54725,7 @@ func preinc998(p *uintptr) uintptr { *p += 18446744073709551615; return *p }
 // xfmt_x is defined at vfprintf.c:152:13
 func xfmt_x(tls TLS, _x uint64, _s uintptr /* *int8 */, _lower int32) (r uintptr /* *int8 */) {
 	for ; _x != 0; func() { _x = _x >> uint32(4) }() {
-		*(*int8)(unsafe.Pointer(preinc998(&_s))) = int8(int32(*(*int8)(unsafe.Pointer(xxdigits + uintptr(_x&uint64(15))))) | _lower)
+		*(*int8)(unsafe.Pointer(preinc998(&_s))) = int8(int32(*(*int8)(unsafe.Pointer(uintptr(unsafe.Pointer(&xxdigits)) + uintptr(_x&uint64(15))))) | _lower)
 	}
 	return _s
 }
@@ -54719,7 +54824,7 @@ func xfmt_fp(tls TLS, _f uintptr /* *TFILE = S_IO_FILE */, _y float64, _w int32,
 	)
 	defer Free(esc)
 	*(*int32)(unsafe.Pointer(_e2)) = int32(0)
-	_prefix = ts + 2972 /* "-0X+0X 0X-0x+0x ..." */
+	_prefix = ts + 49320 /* "-0X+0X 0X-0x+0x ..." */
 	_ebuf = _ebuf0 + 12
 	_pl = int32(1)
 	if int32(x18__DOUBLE_BITS(tls, _y)>>(uint(63)%64)) != 0 {
@@ -54735,15 +54840,15 @@ func xfmt_fp(tls TLS, _f uintptr /* *TFILE = S_IO_FILE */, _y float64, _w int32,
 	if !(x18__DOUBLE_BITS(tls, _y)&uint64(9223372036854775807) < uint64(9218868437227405312)) {
 		_1s = func() uintptr {
 			if _t&int32(32) != 0 {
-				return ts + 2992 /* "inf" */
+				return ts + 49340 /* "inf" */
 			}
-			return ts + 2996 /* "INF" */
+			return ts + 49344 /* "INF" */
 		}()
 		if _y != _y {
 			if _t&int32(32) != 0 {
-				_1s = ts + 708 /* "nan" */
+				_1s = ts + 30940 /* "nan" */
 			} else {
-				_1s = ts + 3000 /* "NAN" */
+				_1s = ts + 49348 /* "NAN" */
 			}
 		}
 		xpad(tls, _f, int8(' '), _w, int32(3)+_pl, int32(uint32(_fl)&uint32(4294901759)))
@@ -54805,7 +54910,7 @@ func xfmt_fp(tls TLS, _f uintptr /* *TFILE = S_IO_FILE */, _y float64, _w int32,
 		_s = _buf
 		for c := true; c; c = _y != 0 {
 			_x = int32(_y)
-			*(*int8)(unsafe.Pointer(postinc996(&_s))) = int8(int32(*(*int8)(unsafe.Pointer(xxdigits + uintptr(_x)))) | _t&int32(32))
+			*(*int8)(unsafe.Pointer(postinc996(&_s))) = int8(int32(*(*int8)(unsafe.Pointer(uintptr(unsafe.Pointer(&xxdigits)) + uintptr(_x)))) | _t&int32(32))
 			_y = float64(16) * float64(_y-float64(_x))
 			if (int64(_s-_buf) == int64(1)) && (((_y != 0) || (_p > int32(0))) || (uint32(_fl)&uint32(8) != 0)) {
 				*(*int8)(unsafe.Pointer(postinc996(&_s))) = int8('.')
@@ -55058,7 +55163,7 @@ func xfmt_fp(tls TLS, _f uintptr /* *TFILE = S_IO_FILE */, _y float64, _w int32,
 			xout(tls, _f, _7s, uint64(int64((_buf+uintptr(9))-_7s)))
 		}
 		if (_p != 0) || (uint32(_fl)&uint32(8) != 0) {
-			xout(tls, _f, ts+1276 /* "." */, uint64(1))
+			xout(tls, _f, ts+37168 /* "." */, uint64(1))
 		}
 		for ; (_d < _z) && (_p > int32(0)); func() int32 { _d += 4; return sub1003(&_p, 9) }() {
 			_8s = xfmt_u(tls, uint64(*(*uint32)(unsafe.Pointer(_d))), _buf+uintptr(9))
@@ -55089,7 +55194,7 @@ func xfmt_fp(tls TLS, _f uintptr /* *TFILE = S_IO_FILE */, _y float64, _w int32,
 			} else {
 				xout(tls, _f, postinc996(&_9s), uint64(1))
 				if (_p > int32(0)) || (uint32(_fl)&uint32(8) != 0) {
-					xout(tls, _f, ts+1276 /* "." */, uint64(1))
+					xout(tls, _f, ts+37168 /* "." */, uint64(1))
 				}
 			}
 			xout(tls, _f, _9s, uint64(func() int64 {
@@ -55112,8 +55217,8 @@ func xfmt_fp(tls TLS, _f uintptr /* *TFILE = S_IO_FILE */, _y float64, _w int32,
 	}()
 }
 
-// xxdigits [16]int8, escapes: true, vfprintf.c:148:19
-var xxdigits = ds + 46880
+// xxdigits [16]int8, escapes: false, vfprintf.c:148:19
+var xxdigits = *(*[16]int8)(unsafe.Pointer(ts + 49352 /* "0123456789ABCDEF" */))
 
 type t134uint32_t = uint32
 
@@ -55890,7 +55995,7 @@ type s107_IO_FILE = struct {
 
 type t114off_t = int64
 
-type t208size_t = uint64
+type t211size_t = uint64
 
 // Nmbstate_t is defined at alltypes.h:362:9
 type t1mbstate_t = struct {
@@ -55977,7 +56082,7 @@ func Xvfwprintf(tls TLS, _f uintptr /* *TFILE = S_IO_FILE */, _fmt uintptr /* *T
 		___need_unlock int32
 	)
 	defer Free(esc)
-	Copy(_nl_type, ts+2368 /* "\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00..." */, 36)
+	Copy(_nl_type, ts+47788 /* "\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00..." */, 36)
 	*(*uintptr)(unsafe.Pointer(_ap2)) = X__builtin_va_copy(tls, _ap)
 	if xwprintf_core(tls, null, _fmt, _ap2, _nl_arg, _nl_type) < int32(0) {
 		X__builtin_va_end(tls, *(*uintptr)(unsafe.Pointer(_ap2)))
@@ -56235,7 +56340,7 @@ _19:
 
 _22:
 	_ps = _st
-	_st = uint32(*(*uint8)(unsafe.Pointer((x1states + 58*uintptr(_st)) + uintptr(*(*int32)(unsafe.Pointer(postinc1010((*uintptr)(unsafe.Pointer(_s)))))-int32('A')))))
+	_st = uint32(*(*uint8)(unsafe.Pointer((uintptr(unsafe.Pointer(&x1states)) + 58*uintptr(_st)) + uintptr(*(*int32)(unsafe.Pointer(postinc1010((*uintptr)(unsafe.Pointer(_s)))))-int32('A')))))
 	if _st-uint32(1) < uint32(8) {
 		goto _19
 	}
@@ -56348,11 +56453,11 @@ _29:
 		_w = int32(1)
 	}
 	if (_w > int32(1)) && (_fl&uint32(8192) == 0) {
-		Xfprintf(tls, _f, ts+3004 /* "%*s" */, _w-int32(1), ts+0 /* "" */)
+		Xfprintf(tls, _f, ts+49372 /* "%*s" */, _w-int32(1), ts+0 /* "" */)
 	}
 	Xfputwc(tls, int32(Xbtowc(tls, int32(*(*uint64)(unsafe.Pointer(_arg))))), _f)
 	if (_w > int32(1)) && (_fl&uint32(8192) != 0) {
-		Xfprintf(tls, _f, ts+3004 /* "%*s" */, _w-int32(1), ts+0 /* "" */)
+		Xfprintf(tls, _f, ts+49372 /* "%*s" */, _w-int32(1), ts+0 /* "" */)
 	}
 	_l = _w
 	goto _2
@@ -56382,11 +56487,11 @@ _42:
 		_w = _p
 	}
 	if _fl&uint32(8192) == 0 {
-		Xfprintf(tls, _f, ts+3004 /* "%*s" */, _w-_p, ts+0 /* "" */)
+		Xfprintf(tls, _f, ts+49372 /* "%*s" */, _w-_p, ts+0 /* "" */)
 	}
 	x1out(tls, _f, _a, uint64(_p))
 	if _fl&uint32(8192) != 0 {
-		Xfprintf(tls, _f, ts+3004 /* "%*s" */, _w-_p, ts+0 /* "" */)
+		Xfprintf(tls, _f, ts+49372 /* "%*s" */, _w-_p, ts+0 /* "" */)
 	}
 	_l = _w
 	goto _2
@@ -56395,7 +56500,7 @@ _32:
 	*(*uintptr)(unsafe.Pointer(_arg)) = Xstrerror(tls, *(*int32)(unsafe.Pointer(X__errno_location(tls))))
 _33:
 	if *(*uintptr)(unsafe.Pointer(_arg)) == 0 {
-		*(*uintptr)(unsafe.Pointer(_arg)) = ts + 2964 /* "(null)" */
+		*(*uintptr)(unsafe.Pointer(_arg)) = ts + 48844 /* "(null)" */
 	}
 	_bs = *(*uintptr)(unsafe.Pointer(_arg))
 	for _i = set1009(&_l, int32(0)); (_l < func() int32 {
@@ -56420,7 +56525,7 @@ _43:
 		_w = _p
 	}
 	if _fl&uint32(8192) == 0 {
-		Xfprintf(tls, _f, ts+3004 /* "%*s" */, _w-_p, ts+0 /* "" */)
+		Xfprintf(tls, _f, ts+49372 /* "%*s" */, _w-_p, ts+0 /* "" */)
 	}
 	_bs = *(*uintptr)(unsafe.Pointer(_arg))
 	for postinc1012(&_l) != 0 {
@@ -56429,7 +56534,7 @@ _43:
 		Xfputwc(tls, *(*int32)(unsafe.Pointer(_wc)), _f)
 	}
 	if _fl&uint32(8192) != 0 {
-		Xfprintf(tls, _f, ts+3004 /* "%*s" */, _w-_p, ts+0 /* "" */)
+		Xfprintf(tls, _f, ts+49372 /* "%*s" */, _w-_p, ts+0 /* "" */)
 	}
 	_l = _w
 	goto _2
@@ -56442,7 +56547,7 @@ _27:
 	goto loverflow
 
 _44:
-	Xsnprintf(tls, _charfmt, uint64(16), ts+3008 /* "%%%s%s%s%s%s*.*%..." */, ts+3028 /* "#" */ +uintptr(bool2int(_fl&uint32(8) == 0)), ts+3032 /* "+" */ +uintptr(bool2int(_fl&uint32(2048) == 0)), ts+3036 /* "-" */ +uintptr(bool2int(_fl&uint32(8192) == 0)), ts+1420 /* " " */ +uintptr(bool2int(_fl&uint32(1) == 0)), ts+3040 /* "0" */ +uintptr(bool2int(_fl&uint32(65536) == 0)), int32(*(*int8)(unsafe.Pointer(xsizeprefix + uintptr(_t|int32(32)-int32('a'))))), _t)
+	Xsnprintf(tls, _charfmt, uint64(16), ts+49376 /* "%%%s%s%s%s%s*.*%..." */, ts+49396 /* "#" */ +uintptr(bool2int(_fl&uint32(8) == 0)), ts+49400 /* "+" */ +uintptr(bool2int(_fl&uint32(2048) == 0)), ts+49404 /* "-" */ +uintptr(bool2int(_fl&uint32(8192) == 0)), ts+45940 /* " " */ +uintptr(bool2int(_fl&uint32(1) == 0)), ts+49408 /* "0" */ +uintptr(bool2int(_fl&uint32(65536) == 0)), int32(*(*int8)(unsafe.Pointer(uintptr(unsafe.Pointer(&xsizeprefix)) + uintptr(_t|int32(32)-int32('a'))))), _t)
 	switch _t | int32(32) {
 	case int32('a'):
 		goto _46
@@ -56513,7 +56618,7 @@ loverflow:
 	return -1
 }
 
-type t209size_t = uint64
+type t212size_t = uint64
 
 type t115off_t = int64
 
@@ -56547,8 +56652,8 @@ func x1getint(tls TLS, _s uintptr /* **Twchar_t = int32 */) (r int32) {
 	return _i
 }
 
-// xstates [8][58]uint8, escapes: true, vfwprintf.c:41:28
-var x1states = ds + 46896
+// xstates [8][58]uint8, escapes: false, vfwprintf.c:41:28
+var x1states = *(*[8][58]uint8)(unsafe.Pointer(ts + 49412 /* "\x19\x00\n\x00\x19\x19\x19\x00\x00\x00\x00\x05\x00\x00\x00\x00..." */))
 
 // xpop_arg is defined at vfwprintf.c:99:13
 func x1pop_arg(tls TLS, _arg uintptr /* *Uarg */, _type int32, _ap uintptr /* **void */) {
@@ -56665,8 +56770,8 @@ _19:
 _1:
 }
 
-// xsizeprefix [24]int8, escapes: true, vfwprintf.c:137:19
-var xsizeprefix = ds + 47360
+// xsizeprefix [24]int8, escapes: false, vfwprintf.c:137:19
+var xsizeprefix = *(*[24]int8)(unsafe.Pointer(ts + 49880 /* "L\x00\x00jLLL\x00j\x00\x00\x00\x00\x00jj..." */))
 
 // linking vfwscanf.o
 
@@ -57027,7 +57132,7 @@ _59:
 	}
 
 	_invert = int32(1)
-	_set = x1019spaces
+	_set = uintptr(unsafe.Pointer(&x1019spaces))
 	goto _62
 
 _61:
@@ -57240,7 +57345,7 @@ _57:
 	if _width < int32(1) {
 		_width = int32(0)
 	}
-	Xsnprintf(tls, _tmp, uint64(22), ts+3044 /* "%.*s%.0d%s%c%%ll..." */, int32(1)+bool2int(_dest == 0), ts+3064 /* "%*" */, _width, x1020size_pfx+3*uintptr(_size+int32(2)), _t)
+	Xsnprintf(tls, _tmp, uint64(22), ts+49908 /* "%.*s%.0d%s%c%%ll..." */, int32(1)+bool2int(_dest == 0), ts+49928 /* "%*" */, _width, uintptr(unsafe.Pointer(&x1020size_pfx))+3*uintptr(_size+int32(2)), _t)
 	*(*int64)(unsafe.Pointer(_cnt)) = int64(0)
 	if !(Xfscanf(tls, _f, _tmp, func() uintptr {
 		if _dest != 0 {
@@ -57341,15 +57446,15 @@ type s109_IO_FILE = struct {
 	Flocale       uintptr // *S__locale_struct
 }
 
-// x1size_pfx [6][3]int8, escapes: true, vfwscanf.c:100:20
-var x1020size_pfx = ds + 47384
+// x1size_pfx [6][3]int8, escapes: false, vfwscanf.c:100:20
+var x1020size_pfx = *(*[6][3]int8)(unsafe.Pointer(ts + 49932 /* "hh\x00h\x00\x00\x00\x00\x00l\x00\x00L\x00\x00l..." */))
 
-// x2spaces [22]int32, escapes: true, vfwscanf.c:221:26
-var x1019spaces = ds + 47408
+// x2spaces [22]int32, escapes: false, vfwscanf.c:221:26
+var x1019spaces = *(*[22]int32)(unsafe.Pointer(ts + 23688 /* " \x00\x00\x00\t\x00\x00\x00\n\x00\x00\x00\r\x00\x00\x00..." */))
 
 type t116off_t = int64
 
-type t210size_t = uint64
+type t213size_t = uint64
 
 type t30wchar_t = int32
 
@@ -57451,14 +57556,14 @@ type s142__locale_struct = struct{ Fcat [6]uintptr }
 
 // Xvprintf is defined at vprintf.c:3:5
 func Xvprintf(tls TLS, _fmt uintptr /* *int8 */, _ap uintptr) (r int32) {
-	return Xvfprintf(tls, *(*uintptr)(unsafe.Pointer(Xstdout)), _fmt, _ap)
+	return Xvfprintf(tls, Xstdout, _fmt, _ap)
 }
 
 // linking vscanf.o
 
 // Xvscanf is defined at vscanf.c:5:5
 func Xvscanf(tls TLS, _fmt uintptr /* *int8 */, _ap uintptr) (r int32) {
-	return Xvfscanf(tls, *(*uintptr)(unsafe.Pointer(Xstdin)), _fmt, _ap)
+	return Xvfscanf(tls, Xstdin, _fmt, _ap)
 }
 
 // linking vsnprintf.o
@@ -57549,7 +57654,7 @@ type s110_IO_FILE = struct {
 	Flocale       uintptr // *S__locale_struct
 }
 
-type t211size_t = uint64
+type t214size_t = uint64
 
 // NFILE is defined at alltypes.h:356:9
 type t8FILE = s110_IO_FILE
@@ -57672,7 +57777,7 @@ func xdo_read(tls TLS, _f uintptr /* *TFILE = S_IO_FILE */, _buf uintptr /* *uin
 	return X__string_read(tls, _f, _buf, _len)
 }
 
-type t212size_t = uint64
+type t215size_t = uint64
 
 type t118off_t = int64
 
@@ -57764,7 +57869,7 @@ type s112_IO_FILE = struct {
 	Flocale       uintptr // *S__locale_struct
 }
 
-type t213size_t = uint64
+type t216size_t = uint64
 
 // NFILE is defined at alltypes.h:356:9
 type t10FILE = s112_IO_FILE
@@ -57877,7 +57982,7 @@ type s113_IO_FILE = struct {
 // NFILE is defined at alltypes.h:356:9
 type t11FILE = s113_IO_FILE
 
-type t214size_t = uint64
+type t217size_t = uint64
 
 func set1028(p *uintptr, v uintptr) uintptr { *p = v; return v }
 
@@ -57919,14 +58024,14 @@ type s146__locale_struct = struct{ Fcat [6]uintptr }
 
 // Xvwprintf is defined at vwprintf.c:4:5
 func Xvwprintf(tls TLS, _fmt uintptr /* *Twchar_t = int32 */, _ap uintptr) (r int32) {
-	return Xvfwprintf(tls, *(*uintptr)(unsafe.Pointer(Xstdout)), _fmt, _ap)
+	return Xvfwprintf(tls, Xstdout, _fmt, _ap)
 }
 
 // linking vwscanf.o
 
 // Xvwscanf is defined at vwscanf.c:6:5
 func Xvwscanf(tls TLS, _fmt uintptr /* *Twchar_t = int32 */, _ap uintptr) (r int32) {
-	return Xvfwscanf(tls, *(*uintptr)(unsafe.Pointer(Xstdin)), _fmt, _ap)
+	return Xvfwscanf(tls, Xstdin, _fmt, _ap)
 }
 
 // linking wprintf.o
@@ -58112,7 +58217,7 @@ func Xbsearch(tls TLS, _key uintptr /* *void */, _base uintptr /* *void */, _nel
 	return null
 }
 
-type t215size_t = uint64
+type t218size_t = uint64
 
 // linking div.o
 
@@ -58159,20 +58264,20 @@ func Xecvt(tls TLS, _x float64, _n int32, _dp uintptr /* *int32 */, _sign uintpt
 	if uint32(_n)-uint32(1) > uint32(15) {
 		_n = int32(15)
 	}
-	Xsprintf(tls, _tmp, ts+3068 /* "%.*e" */, _n-int32(1), _x)
+	Xsprintf(tls, _tmp, ts+49952 /* "%.*e" */, _n-int32(1), _x)
 	_i = set1034((*int32)(unsafe.Pointer(_sign)), bool2int(int32(*(*int8)(unsafe.Pointer(_tmp))) == int32('-')))
 	for _j = int32(0); int32(*(*int8)(unsafe.Pointer(_tmp + uintptr(_i)))) != int32('e'); func() {
 		_j = _j + bool2int(int32(*(*int8)(unsafe.Pointer(_tmp + uintptr(postinc1035(&_i))))) != int32('.'))
 	}() {
-		*(*int8)(unsafe.Pointer(x1036buf + uintptr(_j))) = *(*int8)(unsafe.Pointer(_tmp + uintptr(_i)))
+		*(*int8)(unsafe.Pointer(uintptr(unsafe.Pointer(&x1036buf)) + uintptr(_j))) = *(*int8)(unsafe.Pointer(_tmp + uintptr(_i)))
 	}
-	*(*int8)(unsafe.Pointer(x1036buf + uintptr(_j))) = int8(0)
+	*(*int8)(unsafe.Pointer(uintptr(unsafe.Pointer(&x1036buf)) + uintptr(_j))) = int8(0)
 	*(*int32)(unsafe.Pointer(_dp)) = Xatoi(tls, (_tmp+uintptr(_i))+uintptr(1)) + int32(1)
-	return x1036buf
+	return uintptr(unsafe.Pointer(&x1036buf))
 }
 
-// x1buf [16]int8, escapes: true, ecvt.c:7:14
-var x1036buf = bss + 8320
+// x1buf [16]int8, escapes: false, ecvt.c:7:14
+var x1036buf [16]int8
 
 // linking fcvt.o
 
@@ -58188,12 +58293,12 @@ func Xfcvt(tls TLS, _x float64, _n int32, _dp uintptr /* *int32 */, _sign uintpt
 	if uint32(_n) > uint32(1400) {
 		_n = int32(1400)
 	}
-	Xsprintf(tls, _tmp, ts+3076 /* "%.*f" */, _n, _x)
+	Xsprintf(tls, _tmp, ts+49960 /* "%.*f" */, _n, _x)
 	_i = bool2int(int32(*(*int8)(unsafe.Pointer(_tmp))) == int32('-'))
 	if int32(*(*int8)(unsafe.Pointer(_tmp + uintptr(_i)))) == int32('0') {
-		_lz = int32(Xstrspn(tls, (_tmp+uintptr(_i))+uintptr(2), ts+3040 /* "0" */))
+		_lz = int32(Xstrspn(tls, (_tmp+uintptr(_i))+uintptr(2), ts+49408 /* "0" */))
 	} else {
-		_lz = -int32(Xstrcspn(tls, _tmp+uintptr(_i), ts+1276 /* "." */))
+		_lz = -int32(Xstrcspn(tls, _tmp+uintptr(_i), ts+37168 /* "." */))
 	}
 	if _n <= _lz {
 		*(*int32)(unsafe.Pointer(_sign)) = _i
@@ -58201,7 +58306,7 @@ func Xfcvt(tls TLS, _x float64, _n int32, _dp uintptr /* *int32 */, _sign uintpt
 		if uint32(_n) > uint32(14) {
 			_n = int32(14)
 		}
-		return (ts + 3084 /* "000000000000000" */ + uintptr(14)) - uintptr(_n)
+		return (ts + 49968 /* "000000000000000" */ + uintptr(14)) - uintptr(_n)
 	}
 	return Xecvt(tls, _x, _n-_lz, _dp, _sign)
 }
@@ -58210,7 +58315,7 @@ func Xfcvt(tls TLS, _x float64, _n int32, _dp uintptr /* *int32 */, _sign uintpt
 
 // Xgcvt is defined at gcvt.c:5:6
 func Xgcvt(tls TLS, _x float64, _n int32, _b uintptr /* *int8 */) (r uintptr /* *int8 */) {
-	Xsprintf(tls, _b, ts+3100 /* "%.*g" */, _n, _x)
+	Xsprintf(tls, _b, ts+49984 /* "%.*g" */, _n, _x)
 	return _b
 }
 
@@ -58348,7 +58453,7 @@ func Xqsort(tls TLS, _base uintptr /* *void */, _nel uint64, _width uint64, _cmp
 	)
 	defer Free(esc)
 	_size = _width * _nel
-	Copy(_p, ts+3108 /* "\x01\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00" */, 16)
+	Copy(_p, ts+49992 /* "\x01\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00" */, 16)
 	_pshift = int32(1)
 	if _size == 0 {
 		return
@@ -58411,7 +58516,7 @@ func Xqsort(tls TLS, _base uintptr /* *void */, _nel uint64, _width uint64, _cmp
 	}
 }
 
-type t216size_t = uint64
+type t219size_t = uint64
 
 func fn1038(p uintptr) func(TLS, uintptr, uintptr) int32 {
 	return *(*func(TLS, uintptr, uintptr) int32)(unsafe.Pointer(&p))
@@ -58592,11 +58697,11 @@ func x4a_ctz_64(tls TLS, _x uint64) (r int32) {
 		}
 		return x4a_ctz_32(tls, _y)
 	}
-	return int32(*(*int8)(unsafe.Pointer(x1041debruijn64 + uintptr(_x&-_x*uint64(0x22fdd63cc95386d)>>(uint(58)%64)))))
+	return int32(*(*int8)(unsafe.Pointer(uintptr(unsafe.Pointer(&x1041debruijn64)) + uintptr(_x&-_x*uint64(0x22fdd63cc95386d)>>(uint(58)%64)))))
 }
 
-// x9debruijn64 [64]int8, escapes: true, atomic.h:274:20
-var x1041debruijn64 = ds + 47496
+// x9debruijn64 [64]int8, escapes: false, atomic.h:274:20
+var x1041debruijn64 = *(*[64]int8)(unsafe.Pointer(ts + 37280 /* "\x00\x01\x025\x03\a6\x1b\x04&)\b\"70\x1c..." */))
 
 type t135uint32_t = uint32
 
@@ -58604,11 +58709,11 @@ type t76uint64_t = uint64
 
 // xa_ctz_32 is defined at atomic.h:256:19
 func x4a_ctz_32(tls TLS, _x uint32) (r int32) {
-	return int32(*(*int8)(unsafe.Pointer(x1042debruijn32 + uintptr(_x&-_x*uint32(0x76be629)>>(uint(27)%32)))))
+	return int32(*(*int8)(unsafe.Pointer(uintptr(unsafe.Pointer(&x1042debruijn32)) + uintptr(_x&-_x*uint32(0x76be629)>>(uint(27)%32)))))
 }
 
-// x11debruijn32 [32]int8, escapes: true, atomic.h:261:20
-var x1042debruijn32 = ds + 47560
+// x11debruijn32 [32]int8, escapes: false, atomic.h:261:20
+var x1042debruijn32 = *(*[32]int8)(unsafe.Pointer(ts + 37348 /* "\x00\x01\x17\x02\x1d\x18\x13\x03\x1e\x1b\x19\v\x14\b\x04\r..." */))
 
 // linking strtod.o
 
@@ -58697,7 +58802,7 @@ type t121off_t = int64
 // NFILE is defined at alltypes.h:356:9
 type t12FILE = s114_IO_FILE
 
-type t217size_t = uint64
+type t220size_t = uint64
 
 // S__locale_struct is defined at libc.h:10:1
 type s147__locale_struct = struct{ Fcat [6]uintptr }
@@ -58799,7 +58904,7 @@ type s115_IO_FILE = struct {
 	Flocale       uintptr // *S__locale_struct
 }
 
-type t218size_t = uint64
+type t221size_t = uint64
 
 type t122off_t = int64
 
@@ -58841,7 +58946,7 @@ func xwcstox(tls TLS, _s uintptr /* *Twchar_t = int32 */, _p uintptr /* **Twchar
 	)
 	defer Free(esc)
 	_t = _s
-	Copy(_f, ts+3128 /* "\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00..." */, 232)
+	Copy(_f, ts+50012 /* "\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00..." */, 232)
 	*(*uint32)(unsafe.Pointer(_f)) = uint32(0)
 	*(*uintptr)(unsafe.Pointer(_f + 8)) = set1044((*uintptr)(unsafe.Pointer(_f+16)), null)
 	*(*uintptr)(unsafe.Pointer(_f + 88)) = _buf + uintptr(4)
@@ -58902,7 +59007,7 @@ type s116_IO_FILE = struct {
 	Flocale       uintptr // *S__locale_struct
 }
 
-type t219size_t = uint64
+type t222size_t = uint64
 
 func postinc1046(p *uintptr) uintptr { r := *p; *p += 1; return r }
 
@@ -58914,7 +59019,7 @@ func x1do_read(tls TLS, _f uintptr /* *TFILE = S_IO_FILE */, _buf uintptr /* *ui
 	)
 	_wcs = *(*uintptr)(unsafe.Pointer(_f + 152))
 	if *(*int32)(unsafe.Pointer(_wcs)) == 0 {
-		_wcs = ts + 3364
+		_wcs = ts + 50248
 	}
 	for _i = uint64(0); (_i < *(*uint64)(unsafe.Pointer(_f + 96))) && (*(*int32)(unsafe.Pointer(_wcs + 4*uintptr(_i))) != 0); _i++ {
 		if *(*int32)(unsafe.Pointer(_wcs + 4*uintptr(_i))) < int32(128) {
@@ -58990,7 +59095,7 @@ func x1wcstox(tls TLS, _s uintptr /* *Twchar_t = int32 */, _p uintptr /* **Twcha
 	)
 	defer Free(esc)
 	_t = _s
-	Copy(_f, ts+3128 /* "\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00..." */, 232)
+	Copy(_f, ts+50012 /* "\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00..." */, 232)
 	*(*uint32)(unsafe.Pointer(_f)) = uint32(0)
 	*(*uintptr)(unsafe.Pointer(_f + 8)) = set1047((*uintptr)(unsafe.Pointer(_f+16)), null)
 	*(*uintptr)(unsafe.Pointer(_f + 88)) = _buf + uintptr(4)
@@ -59051,7 +59156,7 @@ type s117_IO_FILE = struct {
 	Flocale       uintptr // *S__locale_struct
 }
 
-type t220size_t = uint64
+type t223size_t = uint64
 
 func postinc1049(p *uintptr) uintptr { r := *p; *p += 1; return r }
 
@@ -59063,7 +59168,7 @@ func x2do_read(tls TLS, _f uintptr /* *TFILE = S_IO_FILE */, _buf uintptr /* *ui
 	)
 	_wcs = *(*uintptr)(unsafe.Pointer(_f + 152))
 	if *(*int32)(unsafe.Pointer(_wcs)) == 0 {
-		_wcs = ts + 3364
+		_wcs = ts + 50248
 	}
 	for _i = uint64(0); (_i < *(*uint64)(unsafe.Pointer(_f + 96))) && (*(*int32)(unsafe.Pointer(_wcs + 4*uintptr(_i))) != 0); _i++ {
 		if *(*int32)(unsafe.Pointer(_wcs + 4*uintptr(_i))) < int32(128) {
@@ -59096,7 +59201,7 @@ func Xbcmp(tls TLS, _s1 uintptr /* *void */, _s2 uintptr /* *void */, _n uint64)
 	return Xmemcmp(tls, _s1, _s2, _n)
 }
 
-type t221size_t = uint64
+type t224size_t = uint64
 
 // linking bcopy.o
 
@@ -59105,7 +59210,7 @@ func Xbcopy(tls TLS, _s1 uintptr /* *void */, _s2 uintptr /* *void */, _n uint64
 	Xmemmove(tls, _s2, _s1, _n)
 }
 
-type t222size_t = uint64
+type t225size_t = uint64
 
 // linking bzero.o
 
@@ -59114,7 +59219,7 @@ func Xbzero(tls TLS, _s uintptr /* *void */, _n uint64) {
 	Xmemset(tls, _s, int32(0), _n)
 }
 
-type t223size_t = uint64
+type t226size_t = uint64
 
 // linking explicit_bzero.o
 
@@ -59182,7 +59287,7 @@ ltail:
 	return null
 }
 
-type t224size_t = uint64
+type t227size_t = uint64
 
 type t47uintptr_t = uint64
 
@@ -59216,7 +59321,7 @@ func Xmemchr(tls TLS, _src uintptr /* *void */, _c int32, _n uint64) (r uintptr 
 	return null
 }
 
-type t225size_t = uint64
+type t228size_t = uint64
 
 type t48uintptr_t = uint64
 
@@ -59294,7 +59399,7 @@ func Xmemmem(tls TLS, _h0 uintptr /* *void */, _k uint64, _n0 uintptr /* *void *
 	return xtwoway_memmem(tls, _h, _h+uintptr(_k), _n, _l)
 }
 
-type t226size_t = uint64
+type t229size_t = uint64
 
 func sub1057(p *uint64, v int32) (r uint64) { r = *p - uint64(v); *p = r; return r }
 
@@ -59391,7 +59496,7 @@ func xtwoway_memmem(tls TLS, _h uintptr /* *uint8 */, _z uintptr /* *uint8 */, _
 		_shift   = esc + 32 // *[256]uint64
 	)
 	defer Free(esc)
-	Copy(_byteset, ts+1956 /* "\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00..." */, 32)
+	Copy(_byteset, ts+47100 /* "\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00..." */, 32)
 	for _i = uint64(0); _i < _l; _i++ {
 		{
 			p := (*uint64)(unsafe.Pointer(_byteset + 8*uintptr(uint64(*(*uint8)(unsafe.Pointer(_n + uintptr(_i))))/uint64(64))))
@@ -59560,7 +59665,7 @@ func Xmemmove(tls TLS, _dest uintptr /* *void */, _src uintptr /* *void */, _n u
 	return _dest
 }
 
-type t227size_t = uint64
+type t230size_t = uint64
 
 type t49uintptr_t = uint64
 
@@ -59571,7 +59676,7 @@ func Xmempcpy(tls TLS, _dest uintptr /* *void */, _src uintptr /* *void */, _n u
 	return Xmemcpy(tls, _dest, _src, _n) + uintptr(_n)
 }
 
-type t228size_t = uint64
+type t231size_t = uint64
 
 // linking memrchr.o
 
@@ -59632,7 +59737,7 @@ func Xmemset(tls TLS, _dest uintptr /* *void */, _c int32, _n uint64) (r uintptr
 	return _dest
 }
 
-type t229size_t = uint64
+type t232size_t = uint64
 
 type t50uintptr_t = uint64
 
@@ -59677,7 +59782,7 @@ func X__stpcpy(tls TLS, _d uintptr /* *int8 */, _s uintptr /* *int8 */) (r uintp
 
 type t51uintptr_t = uint64
 
-type t230size_t = uint64
+type t233size_t = uint64
 
 // linking stpncpy.o
 
@@ -59724,7 +59829,7 @@ ltail:
 
 type t52uintptr_t = uint64
 
-type t231size_t = uint64
+type t234size_t = uint64
 
 // linking strcasecmp.o
 
@@ -59766,7 +59871,7 @@ func Xstrcasestr(tls TLS, _h uintptr /* *int8 */, _n uintptr /* *int8 */) (r uin
 	return null
 }
 
-type t232size_t = uint64
+type t235size_t = uint64
 
 // linking strcat.o
 
@@ -59814,7 +59919,7 @@ func X__strchrnul(tls TLS, _s uintptr /* *int8 */, _c int32) (r uintptr /* *int8
 	return _s
 }
 
-type t233size_t = uint64
+type t236size_t = uint64
 
 type t53uintptr_t = uint64
 
@@ -59861,7 +59966,7 @@ func Xstrcspn(tls TLS, _s uintptr /* *int8 */, _c uintptr /* *int8 */) (r uint64
 	return uint64(int64(_s - _a))
 }
 
-type t234size_t = uint64
+type t237size_t = uint64
 
 // linking strdup.o
 
@@ -59879,7 +59984,7 @@ func X__strdup(tls TLS, _s uintptr /* *int8 */) (r uintptr /* *int8 */) {
 	return Xmemcpy(tls, _d, _s, _l+uint64(1))
 }
 
-type t235size_t = uint64
+type t238size_t = uint64
 
 // linking strerror_r.o
 
@@ -59902,7 +60007,7 @@ func Xstrerror_r(tls TLS, _err int32, _buf uintptr /* *int8 */, _buflen uint64) 
 	return 0
 }
 
-type t236size_t = uint64
+type t239size_t = uint64
 
 // linking strlcat.o
 
@@ -59917,7 +60022,7 @@ func Xstrlcat(tls TLS, _d uintptr /* *int8 */, _s uintptr /* *int8 */, _n uint64
 	return _l + Xstrlcpy(tls, _d+uintptr(_l), _s, _n-_l)
 }
 
-type t237size_t = uint64
+type t240size_t = uint64
 
 // linking strlcpy.o
 
@@ -59967,7 +60072,7 @@ lfinish:
 
 type t54uintptr_t = uint64
 
-type t238size_t = uint64
+type t241size_t = uint64
 
 // linking strlen.o
 
@@ -59992,7 +60097,7 @@ func Xstrlen(tls TLS, _s uintptr /* *int8 */) (r uint64) {
 
 type t55uintptr_t = uint64
 
-type t239size_t = uint64
+type t242size_t = uint64
 
 // linking strncasecmp.o
 
@@ -60019,7 +60124,7 @@ func X__strncasecmp_l(tls TLS, _l uintptr /* *int8 */, _r uintptr /* *int8 */, _
 	return Xstrncasecmp(tls, _l, _r, _n)
 }
 
-type t240size_t = uint64
+type t243size_t = uint64
 
 // S__locale_struct is defined at libc.h:10:1
 type s152__locale_struct = struct{ Fcat [6]uintptr }
@@ -60062,7 +60167,7 @@ func Xstrncmp(tls TLS, __l uintptr /* *int8 */, __r uintptr /* *int8 */, _n uint
 	return int32(*(*uint8)(unsafe.Pointer(_l))) - int32(*(*uint8)(unsafe.Pointer(_r)))
 }
 
-type t241size_t = uint64
+type t244size_t = uint64
 
 // linking strncpy.o
 
@@ -60072,7 +60177,7 @@ func Xstrncpy(tls TLS, _d uintptr /* *int8 */, _s uintptr /* *int8 */, _n uint64
 	return _d
 }
 
-type t242size_t = uint64
+type t245size_t = uint64
 
 // linking strndup.o
 
@@ -60092,7 +60197,7 @@ func Xstrndup(tls TLS, _s uintptr /* *int8 */, _n uint64) (r uintptr /* *int8 */
 	return _d
 }
 
-type t243size_t = uint64
+type t246size_t = uint64
 
 // linking strnlen.o
 
@@ -60107,7 +60212,7 @@ func Xstrnlen(tls TLS, _s uintptr /* *int8 */, _n uint64) (r uint64) {
 	return _n
 }
 
-type t244size_t = uint64
+type t247size_t = uint64
 
 // linking strpbrk.o
 
@@ -60127,7 +60232,7 @@ func Xstrrchr(tls TLS, _s uintptr /* *int8 */, _c int32) (r uintptr /* *int8 */)
 	return X__memrchr(tls, _s, _c, Xstrlen(tls, _s)+uint64(1))
 }
 
-type t245size_t = uint64
+type t248size_t = uint64
 
 // linking strsep.o
 
@@ -60161,7 +60266,7 @@ func postinc1084(p *int32) int32 { r := *p; *p += -1; return r }
 func Xstrsignal(tls TLS, _signum int32) (r uintptr /* *int8 */) {
 	var _s uintptr // *int8
 
-	_s = xstrings
+	_s = uintptr(unsafe.Pointer(&xstrings))
 	_signum = _signum
 	if uint32(_signum)-uint32(1) >= uint32(64) {
 		_signum = int32(0)
@@ -60173,8 +60278,8 @@ func Xstrsignal(tls TLS, _signum int32) (r uintptr /* *int8 */) {
 	return X__lctrans_cur(tls, _s)
 }
 
-// xstrings [671]int8, escapes: true, strsignal.c:56:19
-var xstrings = ds + 47592
+// xstrings [671]int8, escapes: false, strsignal.c:56:19
+var xstrings = *(*[671]int8)(unsafe.Pointer(ts + 50256 /* "Unknown signal\x00H..." */))
 
 // linking strspn.o
 
@@ -60189,7 +60294,7 @@ func Xstrspn(tls TLS, _s uintptr /* *int8 */, _c uintptr /* *int8 */) (r uint64)
 	)
 	defer Free(esc)
 	_a = _s
-	Copy(_byteset, ts+1956 /* "\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00..." */, 32)
+	Copy(_byteset, ts+47100 /* "\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00..." */, 32)
 	if *(*int8)(unsafe.Pointer(_c)) == 0 {
 		return uint64(0)
 	}
@@ -60205,7 +60310,7 @@ func Xstrspn(tls TLS, _s uintptr /* *int8 */, _c uintptr /* *int8 */) (r uint64)
 	return uint64(int64(_s - _a))
 }
 
-type t246size_t = uint64
+type t249size_t = uint64
 
 // linking strstr.o
 
@@ -60313,7 +60418,7 @@ func xtwoway_strstr(tls TLS, _h uintptr /* *uint8 */, _n uintptr /* *uint8 */) (
 		_z2      uintptr // *uint8
 	)
 	defer Free(esc)
-	Copy(_byteset, ts+1956 /* "\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00..." */, 32)
+	Copy(_byteset, ts+47100 /* "\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00..." */, 32)
 	for _l = uint64(0); (*(*uint8)(unsafe.Pointer(_n + uintptr(_l))) != 0) && (*(*uint8)(unsafe.Pointer(_h + uintptr(_l))) != 0); _l++ {
 		{
 			p := (*uint64)(unsafe.Pointer(_byteset + 8*uintptr(uint64(*(*uint8)(unsafe.Pointer(_n + uintptr(_l))))/uint64(64))))
@@ -60439,7 +60544,7 @@ type t19uint16_t = uint16
 
 type t137uint32_t = uint32
 
-type t247size_t = uint64
+type t250size_t = uint64
 
 // linking strtok.o
 
@@ -60537,7 +60642,7 @@ func Xstrverscmp(tls TLS, _l0 uintptr /* *int8 */, _r0 uintptr /* *int8 */) (r i
 	return int32(*(*uint8)(unsafe.Pointer(_l + uintptr(_i)))) - int32(*(*uint8)(unsafe.Pointer(_r + uintptr(_i))))
 }
 
-type t248size_t = uint64
+type t251size_t = uint64
 
 // linking swab.o
 
@@ -60573,7 +60678,7 @@ func Xwcpncpy(tls TLS, _d uintptr /* *Twchar_t = int32 */, _s uintptr /* *Twchar
 	return Xwcsncpy(tls, _d, _s, _n) + 4*uintptr(Xwcsnlen(tls, _s, _n))
 }
 
-type t249size_t = uint64
+type t252size_t = uint64
 
 // linking wcscasecmp.o
 
@@ -60671,7 +60776,7 @@ func Xwcscspn(tls TLS, _s uintptr /* *Twchar_t = int32 */, _c uintptr /* *Twchar
 
 type t37wchar_t = int32
 
-type t250size_t = uint64
+type t253size_t = uint64
 
 // linking wcsdup.o
 
@@ -60689,7 +60794,7 @@ func Xwcsdup(tls TLS, _s uintptr /* *Twchar_t = int32 */) (r uintptr /* *Twchar_
 	return Xwmemcpy(tls, _d, _s, _l+uint64(1))
 }
 
-type t251size_t = uint64
+type t254size_t = uint64
 
 // linking wcslen.o
 
@@ -60722,7 +60827,7 @@ type t39wchar_t = int32
 
 type t25wint_t = uint32
 
-type t252size_t = uint64
+type t255size_t = uint64
 
 // linking wcsncasecmp_l.o
 
@@ -60731,7 +60836,7 @@ func Xwcsncasecmp_l(tls TLS, _l uintptr /* *Twchar_t = int32 */, _r uintptr /* *
 	return Xwcsncasecmp(tls, _l, _r, _n)
 }
 
-type t253size_t = uint64
+type t256size_t = uint64
 
 type s154__locale_struct struct{ uintptr }
 
@@ -60790,7 +60895,7 @@ func Xwcsncpy(tls TLS, _d uintptr /* *Twchar_t = int32 */, _s uintptr /* *Twchar
 
 type t42wchar_t = int32
 
-type t254size_t = uint64
+type t257size_t = uint64
 
 // linking wcsnlen.o
 
@@ -60805,7 +60910,7 @@ func Xwcsnlen(tls TLS, _s uintptr /* *Twchar_t = int32 */, _n uint64) (r uint64)
 	return _n
 }
 
-type t255size_t = uint64
+type t258size_t = uint64
 
 // linking wcspbrk.o
 
@@ -60992,7 +61097,7 @@ func xtwoway_wcsstr(tls TLS, _h uintptr /* *Twchar_t = int32 */, _n uintptr /* *
 	return r
 }
 
-type t256size_t = uint64
+type t259size_t = uint64
 
 // linking wcstok.o
 
@@ -61101,7 +61206,7 @@ func Xwmemmove(tls TLS, _d uintptr /* *Twchar_t = int32 */, _s uintptr /* *Twcha
 	return _d0
 }
 
-type t257size_t = uint64
+type t260size_t = uint64
 
 type t51wchar_t = int32
 
@@ -61167,7 +61272,7 @@ func Xmkdtemp(tls TLS, _template uintptr /* *int8 */) (r uintptr /* *int8 */) {
 	)
 	_l = Xstrlen(tls, _template)
 	_retries = int32(100)
-	if (_l < uint64(6)) || (Xmemcmp(tls, (_template+uintptr(_l))-uintptr(6), ts+3372 /* "XXXXXX" */, uint64(6)) != 0) {
+	if (_l < uint64(6)) || (Xmemcmp(tls, (_template+uintptr(_l))-uintptr(6), ts+50928 /* "XXXXXX" */, uint64(6)) != 0) {
 		*(*int32)(unsafe.Pointer(X__errno_location(tls))) = int32(22)
 		return null
 	}
@@ -61177,11 +61282,11 @@ func Xmkdtemp(tls TLS, _template uintptr /* *int8 */) (r uintptr /* *int8 */) {
 			return _template
 		}
 	}
-	Xmemcpy(tls, (_template+uintptr(_l))-uintptr(6), ts+3372 /* "XXXXXX" */, uint64(6))
+	Xmemcpy(tls, (_template+uintptr(_l))-uintptr(6), ts+50928 /* "XXXXXX" */, uint64(6))
 	return null
 }
 
-type t258size_t = uint64
+type t261size_t = uint64
 
 // linking mkostemp.o
 
@@ -61204,7 +61309,7 @@ func X__mkostemps(tls TLS, _template uintptr /* *int8 */, _len int32, _flags int
 		_retries int32
 	)
 	_l = Xstrlen(tls, _template)
-	if ((_l < uint64(6)) || (uint64(_len) > _l-uint64(6))) || (Xmemcmp(tls, ((_template+uintptr(_l))-uintptr(_len))-uintptr(6), ts+3372 /* "XXXXXX" */, uint64(6)) != 0) {
+	if ((_l < uint64(6)) || (uint64(_len) > _l-uint64(6))) || (Xmemcmp(tls, ((_template+uintptr(_l))-uintptr(_len))-uintptr(6), ts+50928 /* "XXXXXX" */, uint64(6)) != 0) {
 		*(*int32)(unsafe.Pointer(X__errno_location(tls))) = int32(22)
 		return -1
 	}
@@ -61216,11 +61321,11 @@ func X__mkostemps(tls TLS, _template uintptr /* *int8 */, _len int32, _flags int
 			return _fd
 		}
 	}
-	Xmemcpy(tls, ((_template+uintptr(_l))-uintptr(_len))-uintptr(6), ts+3372 /* "XXXXXX" */, uint64(6))
+	Xmemcpy(tls, ((_template+uintptr(_l))-uintptr(_len))-uintptr(6), ts+50928 /* "XXXXXX" */, uint64(6))
 	return -1
 }
 
-type t259size_t = uint64
+type t262size_t = uint64
 
 // linking mkstemp.o
 
@@ -61251,7 +61356,7 @@ func Xmktemp(tls TLS, _template uintptr /* *int8 */) (r uintptr /* *int8 */) {
 	defer Free(esc)
 	_l = Xstrlen(tls, _template)
 	_retries = int32(100)
-	if (_l < uint64(6)) || (Xmemcmp(tls, (_template+uintptr(_l))-uintptr(6), ts+3372 /* "XXXXXX" */, uint64(6)) != 0) {
+	if (_l < uint64(6)) || (Xmemcmp(tls, (_template+uintptr(_l))-uintptr(6), ts+50928 /* "XXXXXX" */, uint64(6)) != 0) {
 		*(*int32)(unsafe.Pointer(X__errno_location(tls))) = int32(22)
 		*(*int8)(unsafe.Pointer(_template)) = int8(0)
 		return _template
@@ -61270,7 +61375,7 @@ func Xmktemp(tls TLS, _template uintptr /* *int8 */) (r uintptr /* *int8 */) {
 	return _template
 }
 
-type t260size_t = uint64
+type t263size_t = uint64
 
 // Sstat is defined at stat.h:4:1
 type s14stat = struct {
@@ -61558,9 +61663,6 @@ func X__lock(tls TLS, _l uintptr /* *int32 */) {
 		_val     int32
 		_1val    int32
 	)
-	if *(*int32)(unsafe.Pointer(X__libc + 12)) == 0 {
-		return
-	}
 	_current = x4a_cas(tls, _l, int32(0), int32(-2147483647))
 	if _current == 0 {
 		return
@@ -61589,7 +61691,7 @@ func X__lock(tls TLS, _l uintptr /* *int32 */) {
 	}
 }
 
-// X__unlock is defined at __lock.c:52:6
+// X__unlock is defined at __lock.c:54:6
 func X__unlock(tls TLS, _l uintptr /* *int32 */) {
 	if *(*int32)(unsafe.Pointer(_l)) < int32(0) {
 		if xa_fetch_add(tls, _l, int32(2147483647)) != int32(-2147483647) {
@@ -61606,7 +61708,7 @@ func x4a_cas(tls TLS, _p uintptr /* *int32 */, _t int32, _s int32) (r int32) {
 
 // xa_fetch_add is defined at atomic_arch.h:32:19
 func xa_fetch_add(tls TLS, _p uintptr /* *int32 */, _v int32) (r int32) {
-	panic(`TODO`)
+	return a_fetch_add(_p, _v)
 	return r
 }
 
@@ -61789,12 +61891,12 @@ func X__wait(tls TLS, _addr uintptr /* *int32 */, _waiters uintptr /* *int32 */,
 
 // xa_spin is defined at atomic_arch.h:112:20
 func xa_spin(tls TLS) {
-	panic(`TODO`)
+	aBarier()
 }
 
 // xa_inc is defined at atomic_arch.h:78:20
 func x1a_inc(tls TLS, _p uintptr /* *int32 */) {
-	panic(`TODO`)
+	a_inc(_p)
 }
 
 // x__syscall4 is defined at syscall_arch.h:40:22
@@ -61928,31 +62030,52 @@ func Xcnd_wait(tls TLS, _c uintptr /* *Tcnd_t = struct{F__u struct{F__...6]uintp
 
 // linking default_attr.o
 
-// X__default_stacksize Tsize_t = uint64, escapes: true, default_attr.c:3:8
-var X__default_stacksize = ds + 48264
+// X__default_stacksize Tsize_t = uint64, escapes: false, default_attr.c:3:8
+var X__default_stacksize = uint64(81920)
 
-// X__default_guardsize Tsize_t = uint64, escapes: true, default_attr.c:4:8
-var X__default_guardsize = ds + 48272
+// X__default_guardsize Tsize_t = uint64, escapes: false, default_attr.c:4:8
+var X__default_guardsize = uint64(4096)
+
+type t264size_t = uint64
 
 // linking lock_ptc.o
 
 // X__inhibit_ptc is defined at lock_ptc.c:5:6
 func X__inhibit_ptc(tls TLS) {
-	Xpthread_rwlock_wrlock(tls, x5lock)
+	Xpthread_rwlock_wrlock(tls, uintptr(unsafe.Pointer(&x5lock)))
 }
 
 // X__acquire_ptc is defined at lock_ptc.c:10:6
 func X__acquire_ptc(tls TLS) {
-	Xpthread_rwlock_rdlock(tls, x5lock)
+	Xpthread_rwlock_rdlock(tls, uintptr(unsafe.Pointer(&x5lock)))
 }
 
 // X__release_ptc is defined at lock_ptc.c:15:6
 func X__release_ptc(tls TLS) {
-	Xpthread_rwlock_unlock(tls, x5lock)
+	Xpthread_rwlock_unlock(tls, uintptr(unsafe.Pointer(&x5lock)))
 }
 
-// xlock Tpthread_rwlock_t = struct{F__u ...7]uintptr;F int64; _ [48]byte};}, escapes: true, lock_ptc.c:3:25
-var x5lock = bss + 8336
+// xlock Tpthread_rwlock_t = struct{F__u ...7]uintptr;F int64; _ [48]byte};}, escapes: false, lock_ptc.c:3:25
+var x5lock struct {
+	F__u struct {
+		F__i  [0][14]int32
+		F__vi [0][14]int32
+		F__p  [0][7]uintptr
+		F     int64
+		_     [48]byte
+	}
+}
+
+// Npthread_rwlock_t is defined at alltypes.h:91:9
+type t1pthread_rwlock_t = struct {
+	F__u struct {
+		F__i  [0][14]int32
+		F__vi [0][14]int32
+		F__p  [0][7]uintptr
+		F     int64
+		_     [48]byte
+	}
+}
 
 // linking mtx_destroy.o
 
@@ -62073,7 +62196,7 @@ func X__fork_handler(tls TLS, _who int32) {
 		return
 	}
 	if _who < int32(0) {
-		X__lock(tls, x6lock)
+		X__lock(tls, uintptr(unsafe.Pointer(&x6lock)))
 		for _p = x1funcs; _p != 0; _p = *(*uintptr)(unsafe.Pointer(_p + 32)) {
 			if *(*uintptr)(unsafe.Pointer(_p)) != 0 {
 				fn1122(*(*uintptr)(unsafe.Pointer(_p)))(tls)
@@ -62089,7 +62212,7 @@ func X__fork_handler(tls TLS, _who int32) {
 			}
 			x1funcs = _p
 		}
-		X__unlock(tls, x6lock)
+		X__unlock(tls, uintptr(unsafe.Pointer(&x6lock)))
 	}
 }
 
@@ -62101,7 +62224,7 @@ func Xpthread_atfork(tls TLS, _prepare uintptr /* *func(TLS) */, _parent uintptr
 	if _new == 0 {
 		return -1
 	}
-	X__lock(tls, x6lock)
+	X__lock(tls, uintptr(unsafe.Pointer(&x6lock)))
 	*(*uintptr)(unsafe.Pointer(_new + 32)) = x1funcs
 	*(*uintptr)(unsafe.Pointer(_new + 24)) = null
 	*(*uintptr)(unsafe.Pointer(_new)) = _prepare
@@ -62111,7 +62234,7 @@ func Xpthread_atfork(tls TLS, _prepare uintptr /* *func(TLS) */, _parent uintptr
 		*(*uintptr)(unsafe.Pointer(x1funcs + 24)) = _new
 	}
 	x1funcs = _new
-	X__unlock(tls, x6lock)
+	X__unlock(tls, uintptr(unsafe.Pointer(&x6lock)))
 	return 0
 }
 
@@ -62127,8 +62250,8 @@ type Satfork_funcs = struct {
 // xfuncs *struct{Fprepare *func(TLS);Fpar...ork_funcs;Fnext *Satfork_funcs;}, escapes: false, pthread_atfork.c:9:3
 var x1funcs uintptr
 
-// xlock [1]int32, escapes: true, pthread_atfork.c:11:21
-var x6lock = bss + 8392
+// xlock [1]int32, escapes: false, pthread_atfork.c:11:21
+var x6lock [1]int32
 
 // linking pthread_attr_destroy.o
 
@@ -62239,7 +62362,7 @@ func Xpthread_rwlockattr_getpshared(tls TLS, _a uintptr /* *Tpthread_rwlockattr_
 	return 0
 }
 
-type t261size_t = uint64
+type t265size_t = uint64
 
 // Ssched_param is defined at sched.h:19:1
 type s4sched_param = struct {
@@ -62248,6 +62371,7 @@ type s4sched_param = struct {
 	Fsched_ss_repl_period  s40timespec
 	Fsched_ss_init_budget  s40timespec
 	Fsched_ss_max_repl     int32
+	_                      [4]byte
 }
 
 type t1clockid_t = int32
@@ -62291,8 +62415,8 @@ func Xpthread_attr_init(tls TLS, _a uintptr /* *Tpthread_attr_t = struct{F__u s.
 			_     [48]byte
 		}
 	}{}
-	*(*uint64)(unsafe.Pointer(_a)) = *(*uint64)(unsafe.Pointer(X__default_stacksize))
-	*(*uint64)(unsafe.Pointer(_a + 8)) = *(*uint64)(unsafe.Pointer(X__default_guardsize))
+	*(*uint64)(unsafe.Pointer(_a)) = X__default_stacksize
+	*(*uint64)(unsafe.Pointer(_a + 8)) = X__default_guardsize
 	return 0
 }
 
@@ -62306,8 +62430,6 @@ type t3pthread_attr_t = struct {
 		_     [48]byte
 	}
 }
-
-type t262size_t = uint64
 
 // linking pthread_attr_setdetachstate.o
 
@@ -62331,7 +62453,7 @@ func Xpthread_attr_setguardsize(tls TLS, _a uintptr /* *Tpthread_attr_t = struct
 	return 0
 }
 
-type t263size_t = uint64
+type t266size_t = uint64
 
 // linking pthread_attr_setinheritsched.o
 
@@ -62381,6 +62503,7 @@ type Sstart_sched_args = struct {
 	Fmask      struct{ F__bits [16]uint64 }
 	Fattr      uintptr // *Tpthread_attr_t = struct{F__u s...[7]uint64;F int64; _ [48]byte};}
 	Ffutex     int32
+	_          [4]byte
 }
 
 // S__pthread is defined at pthread_impl.h:15:1
@@ -62437,7 +62560,7 @@ func x55__syscall3(tls TLS, _n int64, _a1 int64, _a2 int64, _a3 int64) (r int64)
 
 // xa_store is defined at atomic_arch.h:96:20
 func x2a_store(tls TLS, _p uintptr /* *int32 */, _x int32) {
-	panic(`TODO`)
+	a_store(_p, _x)
 }
 
 // x__wake is defined at pthread_impl.h:157:20
@@ -62458,7 +62581,7 @@ type t18sigset_t = struct{ F__bits [16]uint64 }
 
 type t57uintptr_t = uint64
 
-type t264size_t = uint64
+type t267size_t = uint64
 
 // S__ptcb is defined at pthread.h:200:1
 type s37__ptcb = struct {
@@ -62485,6 +62608,7 @@ type s5sched_param = struct {
 	Fsched_ss_repl_period  s41timespec
 	Fsched_ss_init_budget  s41timespec
 	Fsched_ss_max_repl     int32
+	_                      [4]byte
 }
 
 // Stimespec is defined at alltypes.h:270:1
@@ -62536,7 +62660,7 @@ func Xpthread_attr_setstack(tls TLS, _a uintptr /* *Tpthread_attr_t = struct{F__
 	return 0
 }
 
-type t265size_t = uint64
+type t268size_t = uint64
 
 // linking pthread_attr_setstacksize.o
 
@@ -62550,7 +62674,7 @@ func Xpthread_attr_setstacksize(tls TLS, _a uintptr /* *Tpthread_attr_t = struct
 	return 0
 }
 
-type t266size_t = uint64
+type t269size_t = uint64
 
 // linking pthread_barrier_destroy.o
 
@@ -62615,7 +62739,7 @@ func Xpthread_barrier_wait(tls TLS, _b uintptr /* *Tpthread_barrier_t = struct{F
 	}
 	_inst = *(*uintptr)(unsafe.Pointer(_b + 24))
 	if _inst == 0 {
-		Copy(_new_inst, ts+1812 /* "\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00" */, 16)
+		Copy(_new_inst, ts+46828 /* "\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00" */, 16)
 		_spins = int32(200)
 		*(*uintptr)(unsafe.Pointer(_b + 24)) = set1125(&_inst, _new_inst)
 		x3a_store(tls, _b, int32(0))
@@ -62732,7 +62856,7 @@ func x2a_swap(tls TLS, _p uintptr /* *int32 */, _v int32) (r int32) {
 
 // xa_store is defined at atomic_arch.h:96:20
 func x3a_store(tls TLS, _p uintptr /* *int32 */, _x int32) {
-	panic(`TODO`)
+	a_store(_p, _x)
 }
 
 // x__wake is defined at pthread_impl.h:157:20
@@ -62750,12 +62874,12 @@ func x4__wake(tls TLS, _addr uintptr /* *void */, _cnt int32, _priv int32) {
 
 // xa_spin is defined at atomic_arch.h:112:20
 func x1a_spin(tls TLS) {
-	panic(`TODO`)
+	aBarier()
 }
 
 // xa_inc is defined at atomic_arch.h:78:20
 func x2a_inc(tls TLS, _p uintptr /* *int32 */) {
-	panic(`TODO`)
+	a_inc(_p)
 }
 
 // x__syscall4 is defined at syscall_arch.h:40:22
@@ -62765,7 +62889,7 @@ func x30__syscall4(tls TLS, _n int64, _a1 int64, _a2 int64, _a3 int64, _a4 int64
 
 // xa_fetch_add is defined at atomic_arch.h:32:19
 func x1a_fetch_add(tls TLS, _p uintptr /* *int32 */, _v int32) (r int32) {
-	panic(`TODO`)
+	return a_fetch_add(_p, _v)
 	return r
 }
 
@@ -62940,12 +63064,12 @@ func xinit_cancellation(tls TLS) {
 
 // xa_store is defined at atomic_arch.h:96:20
 func x4a_store(tls TLS, _p uintptr /* *int32 */, _x int32) {
-	panic(`TODO`)
+	a_store(_p, _x)
 }
 
 type t58uintptr_t = uint64
 
-type t267size_t = uint64
+type t270size_t = uint64
 
 // S__ptcb is defined at pthread.h:200:1
 type s38__ptcb = struct {
@@ -63004,7 +63128,7 @@ func Xpthread_cond_broadcast(tls TLS, _c uintptr /* *Tpthread_cond_t = struct{F_
 
 // xa_inc is defined at atomic_arch.h:78:20
 func x3a_inc(tls TLS, _p uintptr /* *int32 */) {
-	panic(`TODO`)
+	a_inc(_p)
 }
 
 // x__wake is defined at pthread_impl.h:157:20
@@ -63051,7 +63175,7 @@ func x2a_or(tls TLS, _p uintptr /* *int32 */, _v int32) {
 
 // xa_inc is defined at atomic_arch.h:78:20
 func x4a_inc(tls TLS, _p uintptr /* *int32 */) {
-	panic(`TODO`)
+	a_inc(_p)
 }
 
 // x__wake is defined at pthread_impl.h:157:20
@@ -63140,7 +63264,7 @@ func Xpthread_cond_signal(tls TLS, _c uintptr /* *Tpthread_cond_t = struct{F__u 
 
 // xa_inc is defined at atomic_arch.h:78:20
 func x5a_inc(tls TLS, _p uintptr /* *int32 */) {
-	panic(`TODO`)
+	a_inc(_p)
 }
 
 // x__wake is defined at pthread_impl.h:157:20
@@ -63180,7 +63304,7 @@ func X__pthread_cond_timedwait(tls TLS, _c uintptr /* *Tpthread_cond_t = struct{
 		_fut      uintptr // *int32
 	)
 	defer Free(esc)
-	Copy(_node, ts+1956 /* "\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00..." */, 32)
+	Copy(_node, ts+47100 /* "\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00..." */, 32)
 	_clock = *(*int32)(unsafe.Pointer(_c + 16))
 	_shared = int32(0)
 	if (*(*int32)(unsafe.Pointer(_m))&int32(15) != 0) && (*(*int32)(unsafe.Pointer(_m + 4))&int32(0x7fffffff) != *(*int32)(unsafe.Pointer(x34__pthread_self(tls) + 56))) {
@@ -63355,7 +63479,7 @@ func x34__pthread_self(tls TLS) (r uintptr /* *S__pthread */) {
 
 // xa_inc is defined at atomic_arch.h:78:20
 func x6a_inc(tls TLS, _p uintptr /* *int32 */) {
-	panic(`TODO`)
+	a_inc(_p)
 }
 
 // xlock is defined at pthread_cond_timedwait.c:38:20
@@ -63377,7 +63501,7 @@ func x1unlock(tls TLS, _l uintptr /* *int32 */) {
 
 // xa_fetch_add is defined at atomic_arch.h:32:19
 func x2a_fetch_add(tls TLS, _p uintptr /* *int32 */, _v int32) (r int32) {
-	panic(`TODO`)
+	return a_fetch_add(_p, _v)
 	return r
 }
 
@@ -63471,7 +63595,7 @@ func x60__syscall3(tls TLS, _n int64, _a1 int64, _a2 int64, _a3 int64) (r int64)
 
 // xa_store is defined at atomic_arch.h:96:20
 func x5a_store(tls TLS, _p uintptr /* *int32 */, _x int32) {
-	panic(`TODO`)
+	a_store(_p, _x)
 }
 
 // x__syscall5 is defined at syscall_arch.h:50:22
@@ -63481,7 +63605,7 @@ func x7__syscall5(tls TLS, _n int64, _a1 int64, _a2 int64, _a3 int64, _a4 int64,
 
 type t59uintptr_t = uint64
 
-type t268size_t = uint64
+type t271size_t = uint64
 
 // S__ptcb is defined at pthread.h:200:1
 type s40__ptcb = struct {
@@ -63593,8 +63717,8 @@ func X__pthread_exit(tls TLS, _result uintptr /* *void */) {
 	X__pthread_tsd_run_dtors(tls)
 	X__lock(tls, _self+200)
 	X__block_all_sigs(tls, _set)
-	if x3a_fetch_add(tls, X__libc+12, int32(-1)) == int32(0) {
-		*(*int32)(unsafe.Pointer(X__libc + 12)) = int32(0)
+	if x3a_fetch_add(tls, uintptr(unsafe.Pointer(&X__libc))+12, int32(-1)) == int32(0) {
+		*(*int32)(unsafe.Pointer(uintptr(unsafe.Pointer(&X__libc)) + 12)) = int32(0)
 		X__unlock(tls, _self+200)
 		X__restore_sigs(tls, _set)
 		Xexit(tls, int32(0))
@@ -63647,8 +63771,8 @@ func X__do_cleanup_pop(tls TLS, _cb uintptr /* *S__ptcb */) {
 	*(*uintptr)(unsafe.Pointer(x35__pthread_self(tls) + 144)) = *(*uintptr)(unsafe.Pointer(_cb + 16))
 }
 
-// X__block_new_threads int32, escapes: true, pthread_create.c:167:14
-var X__block_new_threads = bss + 8400
+// X__block_new_threads int32, escapes: false, pthread_create.c:167:14
+var X__block_new_threads int32
 
 func fp1137(f func(TLS, uintptr) uintptr) uintptr { return *(*uintptr)(unsafe.Pointer(&f)) }
 
@@ -63689,25 +63813,25 @@ func X__pthread_create(tls TLS, _res uintptr /* **S__pthread */, _attrp uintptr 
 	_tsd = 0
 	_flags = uint32(8195840)
 	_do_sched = int32(0)
-	Copy(_attr, ts+3380 /* "\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00..." */, 56)
-	if *(*int32)(unsafe.Pointer(X__libc)) == 0 {
+	Copy(_attr, ts+50936 /* "\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00..." */, 56)
+	if *(*int32)(unsafe.Pointer(uintptr(unsafe.Pointer(&X__libc)))) == 0 {
 		return 38
 	}
 	_self = x35__pthread_self(tls)
-	if *(*int32)(unsafe.Pointer(X__libc + 4)) == 0 {
+	if *(*int32)(unsafe.Pointer(uintptr(unsafe.Pointer(&X__libc)) + 4)) == 0 {
 		for _f = *(*uintptr)(unsafe.Pointer(X__ofl_lock(tls))); _f != 0; _f = *(*uintptr)(unsafe.Pointer(_f + 112)) {
 			xinit_file_lock(tls, _f)
 		}
 		X__ofl_unlock(tls)
-		xinit_file_lock(tls, *(*uintptr)(unsafe.Pointer(X__stdin_used)))
-		xinit_file_lock(tls, *(*uintptr)(unsafe.Pointer(X__stdout_used)))
-		xinit_file_lock(tls, *(*uintptr)(unsafe.Pointer(X__stderr_used)))
+		xinit_file_lock(tls, X__stdin_used)
+		xinit_file_lock(tls, X__stdout_used)
+		xinit_file_lock(tls, X__stderr_used)
 		x31__syscall4(tls, int64(14), int64(1), int64(func() uintptr {
 			*(*[1]uint64)(unsafe.Pointer(_unnamed1)) = [1]uint64{0: uint64(12884901888)}
 			return _unnamed1
 		}()), int64(0), int64(8))
-		*(*uintptr)(unsafe.Pointer(_self + 152)) = X__pthread_tsd_main
-		*(*int32)(unsafe.Pointer(X__libc + 4)) = int32(1)
+		*(*uintptr)(unsafe.Pointer(_self + 152)) = uintptr(unsafe.Pointer(&X__pthread_tsd_main))
+		*(*int32)(unsafe.Pointer(uintptr(unsafe.Pointer(&X__libc)) + 4)) = int32(1)
 	}
 	if (_attrp != 0) && (_c11 == 0) {
 		*(*struct {
@@ -63730,20 +63854,20 @@ func X__pthread_create(tls TLS, _res uintptr /* **S__pthread */, _attrp uintptr 
 	}
 	X__acquire_ptc(tls)
 	if (_attrp == 0) || (_c11 != 0) {
-		*(*uint64)(unsafe.Pointer(_attr)) = *(*uint64)(unsafe.Pointer(X__default_stacksize))
-		*(*uint64)(unsafe.Pointer(_attr + 8)) = *(*uint64)(unsafe.Pointer(X__default_guardsize))
+		*(*uint64)(unsafe.Pointer(_attr)) = X__default_stacksize
+		*(*uint64)(unsafe.Pointer(_attr + 8)) = X__default_guardsize
 	}
-	if *(*int32)(unsafe.Pointer(X__block_new_threads)) != 0 {
-		X__wait(tls, X__block_new_threads, null, int32(1), int32(1))
+	if X__block_new_threads != 0 {
+		X__wait(tls, uintptr(unsafe.Pointer(&X__block_new_threads)), null, int32(1), int32(1))
 	}
 	if *(*uint64)(unsafe.Pointer(_attr + 16)) != 0 {
-		_need = *(*uint64)(unsafe.Pointer(X__libc + 32)) + *(*uint64)(unsafe.Pointer(X__pthread_tsd_size))
+		_need = *(*uint64)(unsafe.Pointer(uintptr(unsafe.Pointer(&X__libc)) + 32)) + X__pthread_tsd_size
 		_size = *(*uint64)(unsafe.Pointer(_attr))
 		_stack = uintptr(*(*uint64)(unsafe.Pointer(_attr + 16)) & uint64(18446744073709551600))
 		_stack_limit = uintptr(*(*uint64)(unsafe.Pointer(_attr + 16)) - _size)
 		if (_need < _size/uint64(8)) && (_need < uint64(2048)) {
-			_tsd = _stack - uintptr(*(*uint64)(unsafe.Pointer(X__pthread_tsd_size)))
-			_stack = _tsd - uintptr(*(*uint64)(unsafe.Pointer(X__libc + 32)))
+			_tsd = _stack - uintptr(X__pthread_tsd_size)
+			_stack = _tsd - uintptr(*(*uint64)(unsafe.Pointer(uintptr(unsafe.Pointer(&X__libc)) + 32)))
 			Xmemset(tls, _stack, int32(0), _need)
 		} else {
 			_size = (_need + uint64(4096) - uint64(1)) & uint64(18446744073709547520)
@@ -63751,7 +63875,7 @@ func X__pthread_create(tls TLS, _res uintptr /* **S__pthread */, _attrp uintptr 
 		_guard = uint64(0)
 	} else {
 		_guard = (*(*uint64)(unsafe.Pointer(_attr + 8)) + uint64(4096) - uint64(1)) & uint64(18446744073709547520)
-		_size = _guard + (*(*uint64)(unsafe.Pointer(_attr))+*(*uint64)(unsafe.Pointer(X__libc + 32))+*(*uint64)(unsafe.Pointer(X__pthread_tsd_size))+uint64(4096)-uint64(1))&uint64(18446744073709547520)
+		_size = _guard + (*(*uint64)(unsafe.Pointer(_attr))+*(*uint64)(unsafe.Pointer(uintptr(unsafe.Pointer(&X__libc)) + 32))+X__pthread_tsd_size+uint64(4096)-uint64(1))&uint64(18446744073709547520)
 	}
 	if !(_tsd == 0) {
 		goto _1
@@ -63789,13 +63913,13 @@ _2:
 
 _6:
 _3:
-	_tsd = (_map + uintptr(_size)) - uintptr(*(*uint64)(unsafe.Pointer(X__pthread_tsd_size)))
+	_tsd = (_map + uintptr(_size)) - uintptr(X__pthread_tsd_size)
 	if _stack == 0 {
-		_stack = _tsd - uintptr(*(*uint64)(unsafe.Pointer(X__libc + 32)))
+		_stack = _tsd - uintptr(*(*uint64)(unsafe.Pointer(uintptr(unsafe.Pointer(&X__libc)) + 32)))
 		_stack_limit = _map + uintptr(_guard)
 	}
 _1:
-	_new = X__copy_tls(tls, _tsd-uintptr(*(*uint64)(unsafe.Pointer(X__libc + 32))))
+	_new = X__copy_tls(tls, _tsd-uintptr(*(*uint64)(unsafe.Pointer(uintptr(unsafe.Pointer(&X__libc)) + 32))))
 	*(*uintptr)(unsafe.Pointer(_new + 80)) = _map
 	*(*uint64)(unsafe.Pointer(_new + 88)) = _size
 	*(*uintptr)(unsafe.Pointer(_new + 96)) = _stack
@@ -63805,7 +63929,7 @@ _1:
 	*(*uintptr)(unsafe.Pointer(_new + 120)) = _arg
 	*(*uintptr)(unsafe.Pointer(_new)) = _new
 	*(*uintptr)(unsafe.Pointer(_new + 152)) = _tsd
-	*(*uintptr)(unsafe.Pointer(_new + 192)) = X__libc + 64
+	*(*uintptr)(unsafe.Pointer(_new + 192)) = uintptr(unsafe.Pointer(&X__libc)) + 64
 	if *(*int32)(unsafe.Pointer(_attr + 24)) != 0 {
 		*(*int32)(unsafe.Pointer(_new + 64)) = int32(3)
 		_flags = _flags - uint32(0x200000)
@@ -63825,7 +63949,7 @@ _1:
 	*(*uintptr)(unsafe.Pointer(_new + 160)) = _new + 160
 	setb1138((*uint8)(unsafe.Pointer(_new+74)), *(*int32)(unsafe.Pointer(_self + 68)))
 	*(*uint64)(unsafe.Pointer(_new + 40)) = *(*uint64)(unsafe.Pointer(_self + 40))
-	x7a_inc(tls, X__libc+12)
+	x7a_inc(tls, uintptr(unsafe.Pointer(&X__libc))+12)
 	_ret = X__clone(tls, func() uintptr {
 		if _c11 != 0 {
 			return fp1139(xstart_c11)
@@ -63837,7 +63961,7 @@ _1:
 		X__restore_sigs(tls, _ssa+16)
 	}
 	if _ret < int32(0) {
-		x2a_dec(tls, X__libc+12)
+		x2a_dec(tls, uintptr(unsafe.Pointer(&X__libc))+12)
 		if _map != 0 {
 			X__munmap(tls, _map, _size)
 		}
@@ -63916,11 +64040,11 @@ func x35__pthread_self(tls TLS) (r uintptr /* *S__pthread */) {
 
 // xa_fetch_add is defined at atomic_arch.h:32:19
 func x3a_fetch_add(tls TLS, _p uintptr /* *int32 */, _v int32) (r int32) {
-	panic(`TODO`)
+	return a_fetch_add(_p, _v)
 	return r
 }
 
-type t269size_t = uint64
+type t272size_t = uint64
 
 // xa_swap is defined at atomic_arch.h:22:19
 func x4a_swap(tls TLS, _p uintptr /* *int32 */, _v int32) (r int32) {
@@ -63971,6 +64095,7 @@ type s1start_sched_args = struct {
 	Fmask      struct{ F__bits [16]uint64 }
 	Fattr      uintptr // *Tpthread_attr_t = struct{F__u s...[7]uint64;F int64; _ [48]byte};}
 	Ffutex     int32
+	_          [4]byte
 }
 
 // S_IO_FILE is defined at stdio_impl.h:22:1
@@ -64037,7 +64162,7 @@ type t60uintptr_t = uint64
 
 // xa_inc is defined at atomic_arch.h:78:20
 func x7a_inc(tls TLS, _p uintptr /* *int32 */) {
-	panic(`TODO`)
+	a_inc(_p)
 }
 
 func fn1140(p uintptr) func(TLS, uintptr) int32 {
@@ -64166,7 +64291,7 @@ func x10a_cas(tls TLS, _p uintptr /* *int32 */, _t int32, _s int32) (r int32) {
 
 type t61uintptr_t = uint64
 
-type t270size_t = uint64
+type t273size_t = uint64
 
 // S__ptcb is defined at pthread.h:200:1
 type s42__ptcb = struct {
@@ -64228,7 +64353,7 @@ func Xpthread_getattr_np(tls TLS, _t uintptr /* Tpthread_t = *S__pthread */, _a 
 		*(*uint64)(unsafe.Pointer(_a + 16)) = uint64(*(*uintptr)(unsafe.Pointer(_t + 96)))
 		*(*uint64)(unsafe.Pointer(_a)) = *(*uint64)(unsafe.Pointer(_t + 104))
 	} else {
-		_p = *(*uintptr)(unsafe.Pointer(X__libc + 16))
+		_p = *(*uintptr)(unsafe.Pointer(uintptr(unsafe.Pointer(&X__libc)) + 16))
 		_l = uint64(4096)
 		_p += uintptr(-uint64(_p) & uint64(4095))
 		*(*uint64)(unsafe.Pointer(_a + 16)) = uint64(_p)
@@ -64292,7 +64417,7 @@ type t5pthread_attr_t = struct {
 	}
 }
 
-type t271size_t = uint64
+type t274size_t = uint64
 
 type t62uintptr_t = uint64
 
@@ -64366,7 +64491,7 @@ type t3clockid_t = int32
 
 type t63uintptr_t = uint64
 
-type t272size_t = uint64
+type t275size_t = uint64
 
 // S__ptcb is defined at pthread.h:200:1
 type s44__ptcb = struct {
@@ -64445,6 +64570,7 @@ type s6sched_param = struct {
 	Fsched_ss_repl_period  s43timespec
 	Fsched_ss_init_budget  s43timespec
 	Fsched_ss_max_repl     int32
+	_                      [4]byte
 }
 
 // x__syscall2 is defined at syscall_arch.h:22:22
@@ -64459,7 +64585,7 @@ func x40__syscall1(tls TLS, _n int64, _a1 int64) (r int64) {
 
 type t64uintptr_t = uint64
 
-type t273size_t = uint64
+type t276size_t = uint64
 
 // S__ptcb is defined at pthread.h:200:1
 type s45__ptcb = struct {
@@ -64538,7 +64664,7 @@ func x36__pthread_self(tls TLS) (r uintptr /* *S__pthread */) {
 
 type t65uintptr_t = uint64
 
-type t274size_t = uint64
+type t277size_t = uint64
 
 // S__ptcb is defined at pthread.h:200:1
 type s46__ptcb = struct {
@@ -64659,7 +64785,7 @@ func x1a_barrier(tls TLS) {
 	aBarier()
 }
 
-type t275size_t = uint64
+type t278size_t = uint64
 
 type t66uintptr_t = uint64
 
@@ -64677,11 +64803,11 @@ type t59time_t = int64
 
 // linking pthread_key_create.o
 
-// X__pthread_tsd_size Tsize_t = uint64, escapes: true, pthread_key_create.c:3:17
-var X__pthread_tsd_size = ds + 48280
+// X__pthread_tsd_size Tsize_t = uint64, escapes: false, pthread_key_create.c:3:17
+var X__pthread_tsd_size = uint64(1024)
 
-// X__pthread_tsd_main [128]uintptr, escapes: true, pthread_key_create.c:4:6
-var X__pthread_tsd_main = bss + 8408
+// X__pthread_tsd_main [128]uintptr, escapes: false, pthread_key_create.c:4:6
+var X__pthread_tsd_main [128]uintptr
 
 func fp1143(f func(TLS, uintptr)) uintptr { return *(*uintptr)(unsafe.Pointer(&f)) }
 
@@ -64702,13 +64828,13 @@ func X__pthread_key_create(tls TLS, ak uintptr, _dtor uintptr /* *func(TLS, uint
 	_j = _i
 	_self = x37__pthread_self(tls)
 	if *(*uintptr)(unsafe.Pointer(_self + 152)) == 0 {
-		*(*uintptr)(unsafe.Pointer(_self + 152)) = X__pthread_tsd_main
+		*(*uintptr)(unsafe.Pointer(_self + 152)) = uintptr(unsafe.Pointer(&X__pthread_tsd_main))
 	}
 	if _dtor == 0 {
 		_dtor = fp1143(xnodtor)
 	}
 	for c := true; c; c = set1144(&_j, (_j+uint32(1))%uint32(128)) != _i {
-		if x1a_cas_p(tls, xkeys+8*uintptr(_j), null, _dtor) == 0 {
+		if x1a_cas_p(tls, uintptr(unsafe.Pointer(&xkeys))+8*uintptr(_j), null, _dtor) == 0 {
 			*(*uint32)(unsafe.Pointer(*(*uintptr)(unsafe.Pointer(_k)))) = _j
 			return 0
 		}
@@ -64718,7 +64844,7 @@ func X__pthread_key_create(tls TLS, ak uintptr, _dtor uintptr /* *func(TLS, uint
 
 // X__pthread_key_delete is defined at pthread_key_create.c:32:5
 func X__pthread_key_delete(tls TLS, _k uint32) (r int32) {
-	*(*uintptr)(unsafe.Pointer(xkeys + 8*uintptr(_k))) = null
+	*(*uintptr)(unsafe.Pointer(uintptr(unsafe.Pointer(&xkeys)) + 8*uintptr(_k))) = null
 	return 0
 }
 
@@ -64738,15 +64864,17 @@ func X__pthread_tsd_run_dtors(tls TLS) {
 	for _j = int32(0); (_not_finished != 0) && (_j < int32(4)); _j++ {
 		_not_finished = int32(0)
 		for _i = int32(0); _i < int32(128); _i++ {
-			if (*(*uintptr)(unsafe.Pointer(*(*uintptr)(unsafe.Pointer(_self + 152)) + 8*uintptr(_i))) != 0) && (*(*uintptr)(unsafe.Pointer(xkeys + 8*uintptr(_i))) != 0) {
+			if (*(*uintptr)(unsafe.Pointer(*(*uintptr)(unsafe.Pointer(_self + 152)) + 8*uintptr(_i))) != 0) && (*(*uintptr)(unsafe.Pointer(uintptr(unsafe.Pointer(&xkeys)) + 8*uintptr(_i))) != 0) {
 				_tmp = *(*uintptr)(unsafe.Pointer(*(*uintptr)(unsafe.Pointer(_self + 152)) + 8*uintptr(_i)))
 				*(*uintptr)(unsafe.Pointer(*(*uintptr)(unsafe.Pointer(_self + 152)) + 8*uintptr(_i))) = null
-				fn1145(*(*uintptr)(unsafe.Pointer(xkeys + 8*uintptr(_i))))(tls, _tmp)
+				fn1145(*(*uintptr)(unsafe.Pointer(uintptr(unsafe.Pointer(&xkeys)) + 8*uintptr(_i))))(tls, _tmp)
 				_not_finished = int32(1)
 			}
 		}
 	}
 }
+
+type t279size_t = uint64
 
 type Tpthread_key_t = uint32
 
@@ -64809,10 +64937,8 @@ func x1a_cas_p(tls TLS, _p uintptr /* *void */, _t uintptr /* *void */, _s uintp
 	return r
 }
 
-// xkeys [128]*func(TLS, uintptr), escapes: true, pthread_key_create.c:6:13
-var xkeys = bss + 9432
-
-type t276size_t = uint64
+// xkeys [128]*func(TLS, uintptr), escapes: false, pthread_key_create.c:6:13
+var xkeys [128]uintptr
 
 // S__ptcb is defined at pthread.h:200:1
 type s48__ptcb = struct {
@@ -64893,7 +65019,7 @@ func x51__syscall2(tls TLS, _n int64, _a1 int64, _a2 int64) (r int64) {
 
 type t68uintptr_t = uint64
 
-type t277size_t = uint64
+type t280size_t = uint64
 
 // S__ptcb is defined at pthread.h:200:1
 type s49__ptcb = struct {
@@ -64971,7 +65097,7 @@ type s51__pthread = struct {
 
 type t69uintptr_t = uint64
 
-type t278size_t = uint64
+type t281size_t = uint64
 
 // S__ptcb is defined at pthread.h:200:1
 type s50__ptcb = struct {
@@ -65127,7 +65253,7 @@ func x12a_cas(tls TLS, _p uintptr /* *int32 */, _t int32, _s int32) (r int32) {
 
 // xa_spin is defined at atomic_arch.h:112:20
 func x2a_spin(tls TLS) {
-	panic(`TODO`)
+	aBarier()
 }
 
 // x__pthread_self is defined at pthread_arch.h:1:30
@@ -65138,7 +65264,7 @@ func x39__pthread_self(tls TLS) (r uintptr /* *S__pthread */) {
 
 // xa_inc is defined at atomic_arch.h:78:20
 func x8a_inc(tls TLS, _p uintptr /* *int32 */) {
-	panic(`TODO`)
+	a_inc(_p)
 }
 
 // xa_dec is defined at atomic_arch.h:87:20
@@ -65191,7 +65317,7 @@ type s52__pthread = struct {
 
 type t70uintptr_t = uint64
 
-type t279size_t = uint64
+type t282size_t = uint64
 
 // S__ptcb is defined at pthread.h:200:1
 type s51__ptcb = struct {
@@ -65331,7 +65457,7 @@ func x13a_cas(tls TLS, _p uintptr /* *int32 */, _t int32, _s int32) (r int32) {
 
 type t71uintptr_t = uint64
 
-type t280size_t = uint64
+type t283size_t = uint64
 
 // S__ptcb is defined at pthread.h:200:1
 type s52__ptcb = struct {
@@ -65462,7 +65588,7 @@ func x10__wake(tls TLS, _addr uintptr /* *void */, _cnt int32, _priv int32) {
 
 type t72uintptr_t = uint64
 
-type t281size_t = uint64
+type t284size_t = uint64
 
 // S__ptcb is defined at pthread.h:200:1
 type s53__ptcb = struct {
@@ -65708,7 +65834,7 @@ func Xpthread_rwlock_init(tls TLS, _rw uintptr /* *Tpthread_rwlock_t = struct{F_
 }
 
 // Npthread_rwlock_t is defined at alltypes.h:91:9
-type Tpthread_rwlock_t = struct {
+type t2pthread_rwlock_t = struct {
 	F__u struct {
 		F__i  [0][14]int32
 		F__vi [0][14]int32
@@ -65770,12 +65896,12 @@ type s46timespec = struct {
 
 // xa_spin is defined at atomic_arch.h:112:20
 func x3a_spin(tls TLS) {
-	panic(`TODO`)
+	aBarier()
 }
 
 // xa_inc is defined at atomic_arch.h:78:20
 func x9a_inc(tls TLS, _p uintptr /* *int32 */) {
-	panic(`TODO`)
+	a_inc(_p)
 }
 
 // xa_cas is defined at atomic_arch.h:2:19
@@ -65836,12 +65962,12 @@ type s47timespec = struct {
 
 // xa_spin is defined at atomic_arch.h:112:20
 func x4a_spin(tls TLS) {
-	panic(`TODO`)
+	aBarier()
 }
 
 // xa_inc is defined at atomic_arch.h:78:20
 func x10a_inc(tls TLS, _p uintptr /* *int32 */) {
-	panic(`TODO`)
+	a_inc(_p)
 }
 
 // xa_cas is defined at atomic_arch.h:2:19
@@ -66046,7 +66172,7 @@ func x42__pthread_self(tls TLS) (r uintptr /* *S__pthread */) {
 
 type t73uintptr_t = uint64
 
-type t282size_t = uint64
+type t285size_t = uint64
 
 // S__ptcb is defined at pthread.h:200:1
 type s55__ptcb = struct {
@@ -66085,18 +66211,18 @@ func Xpthread_setattr_default_np(tls TLS, _attrp uintptr /* *Tpthread_attr_t = s
 			_     [48]byte
 		}
 	})(unsafe.Pointer(_attrp))
-	Copy(_zero, ts+3380 /* "\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00..." */, 56)
+	Copy(_zero, ts+50936 /* "\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00..." */, 56)
 	*(*uint64)(unsafe.Pointer(_tmp)) = uint64(0)
 	*(*uint64)(unsafe.Pointer(_tmp + 8)) = uint64(0)
 	if Xmemcmp(tls, _tmp, _zero, uint64(56)) != 0 {
 		return 22
 	}
 	X__inhibit_ptc(tls)
-	if *(*uint64)(unsafe.Pointer(_attrp)) >= *(*uint64)(unsafe.Pointer(X__default_stacksize)) {
-		*(*uint64)(unsafe.Pointer(X__default_stacksize)) = *(*uint64)(unsafe.Pointer(_attrp))
+	if *(*uint64)(unsafe.Pointer(_attrp)) >= X__default_stacksize {
+		X__default_stacksize = *(*uint64)(unsafe.Pointer(_attrp))
 	}
-	if *(*uint64)(unsafe.Pointer(_attrp + 8)) >= *(*uint64)(unsafe.Pointer(X__default_guardsize)) {
-		*(*uint64)(unsafe.Pointer(X__default_guardsize)) = *(*uint64)(unsafe.Pointer(_attrp + 8))
+	if *(*uint64)(unsafe.Pointer(_attrp + 8)) >= X__default_guardsize {
+		X__default_guardsize = *(*uint64)(unsafe.Pointer(_attrp + 8))
 	}
 	X__release_ptc(tls)
 	return 0
@@ -66119,7 +66245,7 @@ type t6pthread_attr_t = struct {
 	}
 }
 
-type t283size_t = uint64
+type t286size_t = uint64
 
 // linking pthread_setcancelstate.o
 
@@ -66187,7 +66313,7 @@ func x43__pthread_self(tls TLS) (r uintptr /* *S__pthread */) {
 
 type t74uintptr_t = uint64
 
-type t284size_t = uint64
+type t287size_t = uint64
 
 // S__ptcb is defined at pthread.h:200:1
 type s56__ptcb = struct {
@@ -66268,7 +66394,7 @@ func x44__pthread_self(tls TLS) (r uintptr /* *S__pthread */) {
 
 type t75uintptr_t = uint64
 
-type t285size_t = uint64
+type t288size_t = uint64
 
 // S__ptcb is defined at pthread.h:200:1
 type s57__ptcb = struct {
@@ -66320,7 +66446,7 @@ func Xpthread_setname_np(tls TLS, _thread uintptr /* Tpthread_t = *S__pthread */
 		}
 		return int32(0)
 	}
-	Xsnprintf(tls, _f, uint64(34), ts+3440 /* "/proc/self/task/..." */, *(*int32)(unsafe.Pointer(_thread + 56)))
+	Xsnprintf(tls, _f, uint64(34), ts+50996 /* "/proc/self/task/..." */, *(*int32)(unsafe.Pointer(_thread + 56)))
 	Xpthread_setcancelstate(tls, int32(1), _cs)
 	if (set1155(&_fd, Xopen(tls, _f, int32(01))) < int32(0)) || (Xwrite(tls, _fd, _name, _len) < int64(0)) {
 		_status = *(*int32)(unsafe.Pointer(X__errno_location(tls)))
@@ -66373,7 +66499,7 @@ type s58__pthread = struct {
 	Fdtv_copy         uintptr // **void
 }
 
-type t286size_t = uint64
+type t289size_t = uint64
 
 type t26ssize_t = int64
 
@@ -66453,6 +66579,7 @@ type s7sched_param = struct {
 	Fsched_ss_repl_period  s48timespec
 	Fsched_ss_init_budget  s48timespec
 	Fsched_ss_max_repl     int32
+	_                      [4]byte
 }
 
 // x__syscall3 is defined at syscall_arch.h:31:22
@@ -66462,7 +66589,7 @@ func x65__syscall3(tls TLS, _n int64, _a1 int64, _a2 int64, _a3 int64) (r int64)
 
 type t77uintptr_t = uint64
 
-type t287size_t = uint64
+type t290size_t = uint64
 
 // S__ptcb is defined at pthread.h:200:1
 type s59__ptcb = struct {
@@ -66551,7 +66678,7 @@ func x53__syscall2(tls TLS, _n int64, _a1 int64, _a2 int64) (r int64) {
 
 type t78uintptr_t = uint64
 
-type t288size_t = uint64
+type t291size_t = uint64
 
 // S__ptcb is defined at pthread.h:200:1
 type s60__ptcb = struct {
@@ -66632,7 +66759,7 @@ func x45__pthread_self(tls TLS) (r uintptr /* *S__pthread */) {
 
 type t79uintptr_t = uint64
 
-type t289size_t = uint64
+type t292size_t = uint64
 
 // S__ptcb is defined at pthread.h:200:1
 type s61__ptcb = struct {
@@ -66717,7 +66844,7 @@ func x20a_cas(tls TLS, _p uintptr /* *int32 */, _t int32, _s int32) (r int32) {
 
 // xa_spin is defined at atomic_arch.h:112:20
 func x5a_spin(tls TLS) {
-	panic(`TODO`)
+	aBarier()
 }
 
 // linking pthread_spin_trylock.o
@@ -66743,7 +66870,7 @@ func Xpthread_spin_unlock(tls TLS, _s uintptr /* *Tpthread_spinlock_t = int32 */
 
 // xa_store is defined at atomic_arch.h:96:20
 func x6a_store(tls TLS, _p uintptr /* *int32 */, _x int32) {
-	panic(`TODO`)
+	a_store(_p, _x)
 }
 
 // linking pthread_testcancel.o
@@ -66829,9 +66956,9 @@ func Xsem_open(tls TLS, _name uintptr /* *int8 */, _flags int32, ap ...interface
 	if set1158(&_name, X__shm_mapname(tls, _name, _buf)) == 0 {
 		return null
 	}
-	X__lock(tls, x8lock)
+	X__lock(tls, uintptr(unsafe.Pointer(&x8lock)))
 	if (xsemtab == 0) && (set1158(&xsemtab, Xcalloc(tls, uint64(24), uint64(256))) == 0) {
-		X__unlock(tls, x8lock)
+		X__unlock(tls, uintptr(unsafe.Pointer(&x8lock)))
 		return null
 	}
 	_slot = int32(-1)
@@ -66843,11 +66970,11 @@ func Xsem_open(tls TLS, _name uintptr /* *int8 */, _flags int32, ap ...interface
 	}
 	if (_cnt == int32(0x7fffffff)) || (_slot < int32(0)) {
 		*(*int32)(unsafe.Pointer(X__errno_location(tls))) = int32(24)
-		X__unlock(tls, x8lock)
+		X__unlock(tls, uintptr(unsafe.Pointer(&x8lock)))
 		return null
 	}
 	*(*uintptr)(unsafe.Pointer((xsemtab + 24*uintptr(_slot)) + 8)) = uintptr(18446744073709551615)
-	X__unlock(tls, x8lock)
+	X__unlock(tls, uintptr(unsafe.Pointer(&x8lock)))
 	_flags = _flags & int32(192)
 	Xpthread_setcancelstate(tls, int32(1), _cs)
 	if !((_flags == int32(192)) && (Xaccess(tls, _name, int32(0)) == int32(0))) {
@@ -66915,7 +67042,7 @@ _11:
 	Xsem_init(tls, _newsem, int32(1), _value)
 _10:
 	Xclock_gettime(tls, int32(0), _ts)
-	Xsnprintf(tls, _tmp, uint64(64), ts+3464 /* "/dev/shm/tmp-%d" */, int32(*(*int64)(unsafe.Pointer(_ts + 8))))
+	Xsnprintf(tls, _tmp, uint64(64), ts+51020 /* "/dev/shm/tmp-%d" */, int32(*(*int64)(unsafe.Pointer(_ts + 8))))
 	_fd = Xopen(tls, _tmp, int32(657602), _mode)
 	if !(_fd < int32(0)) {
 		goto _12
@@ -66958,7 +67085,7 @@ _3:
 	goto _2
 
 _4:
-	X__lock(tls, x8lock)
+	X__lock(tls, uintptr(unsafe.Pointer(&x8lock)))
 	for _i = int32(0); (_i < int32(256)) && (*(*uint64)(unsafe.Pointer(xsemtab + 24*uintptr(_i))) != *(*uint64)(unsafe.Pointer(_st + 8))); _i++ {
 	}
 	if _i < int32(256) {
@@ -66970,15 +67097,15 @@ _4:
 	*(*int32)(unsafe.Pointer((xsemtab + 24*uintptr(_slot)) + 16))++
 	*(*uintptr)(unsafe.Pointer((xsemtab + 24*uintptr(_slot)) + 8)) = _map
 	*(*uint64)(unsafe.Pointer(xsemtab + 24*uintptr(_slot))) = *(*uint64)(unsafe.Pointer(_st + 8))
-	X__unlock(tls, x8lock)
+	X__unlock(tls, uintptr(unsafe.Pointer(&x8lock)))
 	Xpthread_setcancelstate(tls, *(*int32)(unsafe.Pointer(_cs)), null)
 	return _map
 	goto lfail
 lfail:
 	Xpthread_setcancelstate(tls, *(*int32)(unsafe.Pointer(_cs)), null)
-	X__lock(tls, x8lock)
+	X__lock(tls, uintptr(unsafe.Pointer(&x8lock)))
 	*(*uintptr)(unsafe.Pointer((xsemtab + 24*uintptr(_slot)) + 8)) = null
-	X__unlock(tls, x8lock)
+	X__unlock(tls, uintptr(unsafe.Pointer(&x8lock)))
 	return null
 }
 
@@ -66988,14 +67115,14 @@ func preinc1160(p *int32) int32 { *p += -1; return *p }
 func Xsem_close(tls TLS, _sem uintptr /* *Tsem_t = struct{F__val [8]int32;} */) (r int32) {
 	var _i int32
 
-	X__lock(tls, x8lock)
+	X__lock(tls, uintptr(unsafe.Pointer(&x8lock)))
 	for _i = int32(0); (_i < int32(256)) && (*(*uintptr)(unsafe.Pointer((xsemtab + 24*uintptr(_i)) + 8)) != _sem); _i++ {
 	}
 	if preinc1160((*int32)(unsafe.Pointer((xsemtab+24*uintptr(_i))+16))) == 0 {
 		*(*uintptr)(unsafe.Pointer((xsemtab + 24*uintptr(_i)) + 8)) = null
 		*(*uint64)(unsafe.Pointer(xsemtab + 24*uintptr(_i))) = uint64(0)
 	}
-	X__unlock(tls, x8lock)
+	X__unlock(tls, uintptr(unsafe.Pointer(&x8lock)))
 	Xmunmap(tls, _sem, uint64(32))
 	return 0
 }
@@ -67027,10 +67154,10 @@ type s15stat = struct {
 	F__unused   [3]int64
 }
 
-// xlock [1]int32, escapes: true, sem_open.c:23:21
-var x8lock = bss + 10456
+// xlock [1]int32, escapes: false, sem_open.c:23:21
+var x8lock [1]int32
 
-// xsemtab *struct{Fino uint64;Fsem *struct{F__val [8]int32;};Frefcnt int32;}, escapes: false, sem_open.c:22:3
+// xsemtab *struct{Fino uint64;Fsem *struct...nt32;};Frefcnt int32;_ [4]byte;}, escapes: false, sem_open.c:22:3
 var xsemtab uintptr
 
 type t21ino_t = uint64
@@ -67154,12 +67281,12 @@ type s62__ptcb = struct {
 
 // xa_spin is defined at atomic_arch.h:112:20
 func x6a_spin(tls TLS) {
-	panic(`TODO`)
+	aBarier()
 }
 
 // xa_inc is defined at atomic_arch.h:78:20
 func x11a_inc(tls TLS, _p uintptr /* *int32 */) {
-	panic(`TODO`)
+	a_inc(_p)
 }
 
 // xa_cas is defined at atomic_arch.h:2:19
@@ -67296,7 +67423,7 @@ type s62__pthread = struct {
 
 type t80uintptr_t = uint64
 
-type t290size_t = uint64
+type t293size_t = uint64
 
 // S__ptcb is defined at pthread.h:200:1
 type s63__ptcb = struct {
@@ -67474,7 +67601,7 @@ func x46__pthread_self(tls TLS) (r uintptr /* *S__pthread */) {
 
 type t81uintptr_t = uint64
 
-type t291size_t = uint64
+type t294size_t = uint64
 
 // S__ptcb is defined at pthread.h:200:1
 type s64__ptcb = struct {
@@ -67494,34 +67621,34 @@ func set1165(p *int32, v int32) int32 { *p = v; return v }
 func X__vm_wait(tls TLS) {
 	var _tmp int32
 
-	for set1165(&_tmp, *(*int32)(unsafe.Pointer(xvmlock))) != 0 {
-		X__wait(tls, xvmlock, xvmlock+4*uintptr(1), _tmp, int32(1))
+	for set1165(&_tmp, *(*int32)(unsafe.Pointer(uintptr(unsafe.Pointer(&xvmlock))))) != 0 {
+		X__wait(tls, uintptr(unsafe.Pointer(&xvmlock)), uintptr(unsafe.Pointer(&xvmlock))+4*uintptr(1), _tmp, int32(1))
 	}
 }
 
 // X__vm_lock is defined at vmlock.c:12:6
 func X__vm_lock(tls TLS) {
-	x12a_inc(tls, xvmlock)
+	x12a_inc(tls, uintptr(unsafe.Pointer(&xvmlock)))
 }
 
 // X__vm_unlock is defined at vmlock.c:17:6
 func X__vm_unlock(tls TLS) {
-	if (x4a_fetch_add(tls, xvmlock, int32(-1)) == int32(1)) && (*(*int32)(unsafe.Pointer(xvmlock + 4)) != 0) {
-		x14__wake(tls, xvmlock, int32(-1), int32(1))
+	if (x4a_fetch_add(tls, uintptr(unsafe.Pointer(&xvmlock)), int32(-1)) == int32(1)) && (*(*int32)(unsafe.Pointer(uintptr(unsafe.Pointer(&xvmlock)) + 4)) != 0) {
+		x14__wake(tls, uintptr(unsafe.Pointer(&xvmlock)), int32(-1), int32(1))
 	}
 }
 
-// xvmlock [2]int32, escapes: true, vmlock.c:3:21
-var xvmlock = bss + 10464
+// xvmlock [2]int32, escapes: false, vmlock.c:3:21
+var xvmlock [2]int32
 
 // xa_inc is defined at atomic_arch.h:78:20
 func x12a_inc(tls TLS, _p uintptr /* *int32 */) {
-	panic(`TODO`)
+	a_inc(_p)
 }
 
 // xa_fetch_add is defined at atomic_arch.h:32:19
 func x4a_fetch_add(tls TLS, _p uintptr /* *int32 */, _v int32) (r int32) {
-	panic(`TODO`)
+	return a_fetch_add(_p, _v)
 	return r
 }
 
@@ -67547,7 +67674,7 @@ func x67__syscall3(tls TLS, _n int64, _a1 int64, _a2 int64, _a3 int64) (r int64)
 
 // X__asctime is defined at __asctime.c:9:6
 func X__asctime(tls TLS, _tm uintptr /* *Stm */, _buf uintptr /* *int8 */) (r uintptr /* *int8 */) {
-	if Xsnprintf(tls, _buf, uint64(26), ts+3480 /* "%.3s %.3s%3d %.2..." */, X__nl_langinfo_l(tls, int32(0x20000)+*(*int32)(unsafe.Pointer(_tm + 24)), X__c_locale), X__nl_langinfo_l(tls, int32(0x2000e)+*(*int32)(unsafe.Pointer(_tm + 16)), X__c_locale), *(*int32)(unsafe.Pointer(_tm + 12)), *(*int32)(unsafe.Pointer(_tm + 8)), *(*int32)(unsafe.Pointer(_tm + 4)), *(*int32)(unsafe.Pointer(_tm)), int32(1900)+*(*int32)(unsafe.Pointer(_tm + 20))) >= int32(26) {
+	if Xsnprintf(tls, _buf, uint64(26), ts+51036 /* "%.3s %.3s%3d %.2..." */, X__nl_langinfo_l(tls, int32(0x20000)+*(*int32)(unsafe.Pointer(_tm + 24)), uintptr(unsafe.Pointer(&X__c_locale))), X__nl_langinfo_l(tls, int32(0x2000e)+*(*int32)(unsafe.Pointer(_tm + 16)), uintptr(unsafe.Pointer(&X__c_locale))), *(*int32)(unsafe.Pointer(_tm + 12)), *(*int32)(unsafe.Pointer(_tm + 8)), *(*int32)(unsafe.Pointer(_tm + 4)), *(*int32)(unsafe.Pointer(_tm)), int32(1900)+*(*int32)(unsafe.Pointer(_tm + 20))) >= int32(26) {
 		x5a_crash(tls)
 	}
 	return _buf
@@ -67626,7 +67753,7 @@ func x55__syscall2(tls TLS, _n int64, _a1 int64, _a2 int64) (r int64) {
 
 type t128off_t = int64
 
-type t292size_t = uint64
+type t295size_t = uint64
 
 // x__syscall1 is defined at syscall_arch.h:14:22
 func x41__syscall1(tls TLS, _n int64, _a1 int64) (r int64) {
@@ -67663,15 +67790,15 @@ type t67time_t = int64
 func X__month_to_secs(tls TLS, _month int32, _is_leap int32) (r int32) {
 	var _t int32
 
-	_t = *(*int32)(unsafe.Pointer(x1166secs_through_month + 4*uintptr(_month)))
+	_t = *(*int32)(unsafe.Pointer(uintptr(unsafe.Pointer(&x1166secs_through_month)) + 4*uintptr(_month)))
 	if (_is_leap != 0) && (_month >= int32(2)) {
 		_t = _t + int32(86400)
 	}
 	return _t
 }
 
-// x1secs_through_month [12]int32, escapes: true, __month_to_secs.c:3:19
-var x1166secs_through_month = ds + 48288
+// x1secs_through_month [12]int32, escapes: false, __month_to_secs.c:3:19
+var x1166secs_through_month = *(*[12]int32)(unsafe.Pointer(ts + 51068 /* "\x00\x00\x00\x00\x80\xde(\x00\x80\xc8M\x00\x00\xa7v\x00..." */))
 
 // linking __secs_to_tm.o
 
@@ -67733,8 +67860,8 @@ func X__secs_to_tm(tls TLS, _t int64, _tm uintptr /* *Stm */) (r int32) {
 		_yday = _yday - (int32(365) + _leap)
 	}
 	_years = int64(_remyears+int32(4)*_q_cycles+int32(100)*_c_cycles) + int64(400)*int64(_qc_cycles)
-	for _months = int32(0); int32(*(*int8)(unsafe.Pointer(x1167days_in_month + uintptr(_months)))) <= _remdays; _months++ {
-		_remdays = _remdays - int32(*(*int8)(unsafe.Pointer(x1167days_in_month + uintptr(_months))))
+	for _months = int32(0); int32(*(*int8)(unsafe.Pointer(uintptr(unsafe.Pointer(&x1167days_in_month)) + uintptr(_months)))) <= _remdays; _months++ {
+		_remdays = _remdays - int32(*(*int8)(unsafe.Pointer(uintptr(unsafe.Pointer(&x1167days_in_month)) + uintptr(_months))))
 	}
 	if _months >= int32(10) {
 		_months = _months - int32(12)
@@ -67769,8 +67896,8 @@ type s2tm = struct {
 	Ftm_zone   uintptr // *int8
 }
 
-// x1days_in_month [12]int8, escapes: true, __secs_to_tm.c:18:20
-var x1167days_in_month = ds + 48336
+// x1days_in_month [12]int8, escapes: false, __secs_to_tm.c:18:20
+var x1167days_in_month = *(*[12]int8)(unsafe.Pointer(ts + 51120 /* "\x1f\x1e\x1f\x1e\x1f\x1f\x1e\x1f\x1e\x1f\x1f\x1d" */))
 
 // linking __tm_to_secs.o
 
@@ -67822,17 +67949,17 @@ type s3tm = struct {
 
 // linking __tz.o
 
-// X__timezone int64, escapes: true, __tz.c:8:7
-var X__timezone = bss + 10472
+// X__timezone int64, escapes: false, __tz.c:8:7
+var X__timezone int64
 
-// X__daylight int32, escapes: true, __tz.c:9:7
-var X__daylight = bss + 10480
+// X__daylight int32, escapes: false, __tz.c:9:7
+var X__daylight int32
 
-// X__tzname [2]*int8, escapes: true, __tz.c:10:6
-var X__tzname = bss + 10488
+// X__tzname [2]*int8, escapes: false, __tz.c:10:6
+var X__tzname [2]uintptr
 
-// X__utc [4]int8, escapes: true, __tz.c:18:12
-var X__utc = ds + 48352
+// X__utc [4]int8, escapes: false, __tz.c:18:12
+var X__utc = *(*[4]int8)(unsafe.Pointer(ts + 51136 /* "UTC\x00" */))
 
 // X__secs_to_zone is defined at __tz.c:347:6
 func X__secs_to_zone(tls TLS, _t int64, _local int32, _isdst uintptr /* *int32 */, _offset uintptr /* *int64 */, _oppoff uintptr /* *int64 */, _zonename uintptr /* **int8 */) {
@@ -67845,7 +67972,7 @@ func X__secs_to_zone(tls TLS, _t int64, _local int32, _isdst uintptr /* *int32 *
 		_t1  int64
 	)
 	defer Free(esc)
-	X__lock(tls, x9lock)
+	X__lock(tls, uintptr(unsafe.Pointer(&x9lock)))
 	xdo_tzset(tls)
 	if xzi != 0 {
 		_i = xscan_trans(tls, _t, _local, _alt)
@@ -67856,11 +67983,11 @@ func X__secs_to_zone(tls TLS, _t int64, _local int32, _isdst uintptr /* *int32 *
 			if _oppoff != 0 {
 				*(*int64)(unsafe.Pointer(_oppoff)) = int64(int32(xzi_read32(tls, xtypes+uintptr(uint64(6)**(*uint64)(unsafe.Pointer(_alt))))))
 			}
-			X__unlock(tls, x9lock)
+			X__unlock(tls, uintptr(unsafe.Pointer(&x9lock)))
 			return
 		}
 	}
-	if !(*(*int32)(unsafe.Pointer(X__daylight)) == 0) {
+	if !(X__daylight == 0) {
 		goto _1
 	}
 
@@ -67874,10 +68001,10 @@ _1:
 	for X__year_to_secs(tls, _y+int64(1), null) < _t {
 		_y++
 	}
-	_t0 = xrule_to_secs(tls, xr0, int32(_y))
-	_t1 = xrule_to_secs(tls, x2r1, int32(_y))
+	_t0 = xrule_to_secs(tls, uintptr(unsafe.Pointer(&xr0)), int32(_y))
+	_t1 = xrule_to_secs(tls, uintptr(unsafe.Pointer(&x2r1)), int32(_y))
 	if _local == 0 {
-		_t0 = _t0 + *(*int64)(unsafe.Pointer(X__timezone))
+		_t0 = _t0 + X__timezone
 		_t1 = _t1 + int64(xdst_off)
 	}
 	if !(_t0 < _t1) {
@@ -67909,29 +68036,29 @@ _3:
 	goto lstd
 lstd:
 	*(*int32)(unsafe.Pointer(_isdst)) = int32(0)
-	*(*int64)(unsafe.Pointer(_offset)) = -*(*int64)(unsafe.Pointer(X__timezone))
+	*(*int64)(unsafe.Pointer(_offset)) = -X__timezone
 	if _oppoff != 0 {
 		*(*int64)(unsafe.Pointer(_oppoff)) = int64(-xdst_off)
 	}
-	*(*uintptr)(unsafe.Pointer(_zonename)) = *(*uintptr)(unsafe.Pointer(X__tzname))
-	X__unlock(tls, x9lock)
+	*(*uintptr)(unsafe.Pointer(_zonename)) = *(*uintptr)(unsafe.Pointer(uintptr(unsafe.Pointer(&X__tzname))))
+	X__unlock(tls, uintptr(unsafe.Pointer(&x9lock)))
 	return
 	goto ldst
 ldst:
 	*(*int32)(unsafe.Pointer(_isdst)) = int32(1)
 	*(*int64)(unsafe.Pointer(_offset)) = int64(-xdst_off)
 	if _oppoff != 0 {
-		*(*int64)(unsafe.Pointer(_oppoff)) = -*(*int64)(unsafe.Pointer(X__timezone))
+		*(*int64)(unsafe.Pointer(_oppoff)) = -X__timezone
 	}
-	*(*uintptr)(unsafe.Pointer(_zonename)) = *(*uintptr)(unsafe.Pointer(X__tzname + 8))
-	X__unlock(tls, x9lock)
+	*(*uintptr)(unsafe.Pointer(_zonename)) = *(*uintptr)(unsafe.Pointer(uintptr(unsafe.Pointer(&X__tzname)) + 8))
+	X__unlock(tls, uintptr(unsafe.Pointer(&x9lock)))
 }
 
 // X__tzset is defined at __tz.c:402:6
 func X__tzset(tls TLS) {
-	X__lock(tls, x9lock)
+	X__lock(tls, uintptr(unsafe.Pointer(&x9lock)))
 	xdo_tzset(tls)
-	X__unlock(tls, x9lock)
+	X__unlock(tls, uintptr(unsafe.Pointer(&x9lock)))
 }
 
 // X__tm_to_tzname is defined at __tz.c:411:12
@@ -67939,19 +68066,19 @@ func X__tm_to_tzname(tls TLS, _tm uintptr /* *Stm */) (r uintptr /* *int8 */) {
 	var _p uintptr // *void
 
 	_p = *(*uintptr)(unsafe.Pointer(_tm + 48))
-	X__lock(tls, x9lock)
+	X__lock(tls, uintptr(unsafe.Pointer(&x9lock)))
 	xdo_tzset(tls)
-	if (((_p != X__utc) && (_p != *(*uintptr)(unsafe.Pointer(X__tzname)))) && (_p != *(*uintptr)(unsafe.Pointer(X__tzname + 8)))) && ((xzi == 0) || (uint64(_p)-uint64(xabbrevs) >= uint64(int64(xabbrevs_end-xabbrevs)))) {
+	if (((_p != uintptr(unsafe.Pointer(&X__utc))) && (_p != *(*uintptr)(unsafe.Pointer(uintptr(unsafe.Pointer(&X__tzname)))))) && (_p != *(*uintptr)(unsafe.Pointer(uintptr(unsafe.Pointer(&X__tzname)) + 8)))) && ((xzi == 0) || (uint64(_p)-uint64(xabbrevs) >= uint64(int64(xabbrevs_end-xabbrevs)))) {
 		_p = ts + 0 /* "" */
 	}
-	X__unlock(tls, x9lock)
+	X__unlock(tls, uintptr(unsafe.Pointer(&x9lock)))
 	return _p
 }
 
-type t293size_t = uint64
+type t296size_t = uint64
 
-// xlock [1]int32, escapes: true, __tz.c:30:21
-var x9lock = bss + 10504
+// xlock [1]int32, escapes: false, __tz.c:30:21
+var x9lock [1]int32
 
 func set1168(p *uintptr, v uintptr) uintptr { *p = v; return v }
 
@@ -67979,22 +68106,22 @@ func xdo_tzset(tls TLS) {
 	defer Free(esc)
 	_pathname = _buf + uintptr(24)
 	_map = 0
-	*(*uintptr)(unsafe.Pointer(_s)) = Xgetenv(tls, ts+3512 /* "TZ" */)
+	*(*uintptr)(unsafe.Pointer(_s)) = Xgetenv(tls, ts+51144 /* "TZ" */)
 	if *(*uintptr)(unsafe.Pointer(_s)) == 0 {
-		*(*uintptr)(unsafe.Pointer(_s)) = ts + 3516 /* "/etc/localtime" */
+		*(*uintptr)(unsafe.Pointer(_s)) = ts + 51148 /* "/etc/localtime" */
 	}
 	if *(*int8)(unsafe.Pointer(*(*uintptr)(unsafe.Pointer(_s)))) == 0 {
-		*(*uintptr)(unsafe.Pointer(_s)) = X__utc
+		*(*uintptr)(unsafe.Pointer(_s)) = uintptr(unsafe.Pointer(&X__utc))
 	}
 	if (xold_tz != 0) && (Xstrcmp(tls, *(*uintptr)(unsafe.Pointer(_s)), xold_tz) == 0) {
 		return
 	}
 	if xzi != 0 {
-		X__munmap(tls, xzi, *(*uint64)(unsafe.Pointer(xmap_size)))
+		X__munmap(tls, xzi, xmap_size)
 	}
 	_i = Xstrlen(tls, *(*uintptr)(unsafe.Pointer(_s)))
 	if _i > uint64(4097) {
-		*(*uintptr)(unsafe.Pointer(_s)) = X__utc
+		*(*uintptr)(unsafe.Pointer(_s)) = uintptr(unsafe.Pointer(&X__utc))
 		_i = uint64(3)
 	}
 	if _i >= xold_tz_size {
@@ -68015,29 +68142,29 @@ func xdo_tzset(tls TLS) {
 			*(*uintptr)(unsafe.Pointer(_s))++
 		}
 		if (int32(*(*int8)(unsafe.Pointer(*(*uintptr)(unsafe.Pointer(_s))))) == int32('/')) || (int32(*(*int8)(unsafe.Pointer(*(*uintptr)(unsafe.Pointer(_s))))) == int32('.')) {
-			if (*(*int32)(unsafe.Pointer(X__libc + 8)) == 0) || (Xstrcmp(tls, *(*uintptr)(unsafe.Pointer(_s)), ts+3516 /* "/etc/localtime" */) == 0) {
-				_map = X__map_file(tls, *(*uintptr)(unsafe.Pointer(_s)), xmap_size)
+			if (*(*int32)(unsafe.Pointer(uintptr(unsafe.Pointer(&X__libc)) + 8)) == 0) || (Xstrcmp(tls, *(*uintptr)(unsafe.Pointer(_s)), ts+51148 /* "/etc/localtime" */) == 0) {
+				_map = X__map_file(tls, *(*uintptr)(unsafe.Pointer(_s)), uintptr(unsafe.Pointer(&xmap_size)))
 			}
 		} else {
 			_l = Xstrlen(tls, *(*uintptr)(unsafe.Pointer(_s)))
 			if (_l <= uint64(255)) && (Xstrchr(tls, *(*uintptr)(unsafe.Pointer(_s)), int32('.')) == 0) {
 				Xmemcpy(tls, _pathname, *(*uintptr)(unsafe.Pointer(_s)), _l+uint64(1))
 				*(*int8)(unsafe.Pointer(_pathname + uintptr(_l))) = int8(0)
-				for _try = x1171search; (_map == 0) && (*(*int8)(unsafe.Pointer(_try)) != 0); func() { _try += uintptr(_l + uint64(1)) }() {
+				for _try = uintptr(unsafe.Pointer(&x1171search)); (_map == 0) && (*(*int8)(unsafe.Pointer(_try)) != 0); func() { _try += uintptr(_l + uint64(1)) }() {
 					_l = Xstrlen(tls, _try)
 					Xmemcpy(tls, _pathname-uintptr(_l), _try, _l)
-					_map = X__map_file(tls, _pathname-uintptr(_l), xmap_size)
+					_map = X__map_file(tls, _pathname-uintptr(_l), uintptr(unsafe.Pointer(&xmap_size)))
 				}
 			}
 		}
 		if _map == 0 {
-			*(*uintptr)(unsafe.Pointer(_s)) = X__utc
+			*(*uintptr)(unsafe.Pointer(_s)) = uintptr(unsafe.Pointer(&X__utc))
 		}
 	}
-	if (_map != 0) && ((*(*uint64)(unsafe.Pointer(xmap_size)) < uint64(44)) || (Xmemcmp(tls, _map, ts+3532 /* "TZif" */, uint64(4)) != 0)) {
-		X__munmap(tls, _map, *(*uint64)(unsafe.Pointer(xmap_size)))
+	if (_map != 0) && ((xmap_size < uint64(44)) || (Xmemcmp(tls, _map, ts+51164 /* "TZif" */, uint64(4)) != 0)) {
+		X__munmap(tls, _map, xmap_size)
 		_map = null
-		*(*uintptr)(unsafe.Pointer(_s)) = X__utc
+		*(*uintptr)(unsafe.Pointer(_s)) = uintptr(unsafe.Pointer(&X__utc))
 	}
 	xzi = _map
 	if _map != 0 {
@@ -68063,66 +68190,66 @@ func xdo_tzset(tls TLS) {
 		xtypes = xindex + uintptr(xzi_read32(tls, xtrans-uintptr(12)))
 		xabbrevs = xtypes + uintptr(uint32(6)*xzi_read32(tls, xtrans-uintptr(8)))
 		xabbrevs_end = xabbrevs + uintptr(xzi_read32(tls, xtrans-uintptr(4)))
-		if int32(*(*uint8)(unsafe.Pointer(xzi + uintptr(*(*uint64)(unsafe.Pointer(xmap_size))-uint64(1))))) == int32('\n') {
-			for *(*uintptr)(unsafe.Pointer(_s)) = (xzi + uintptr(*(*uint64)(unsafe.Pointer(xmap_size)))) - uintptr(2); int32(*(*int8)(unsafe.Pointer(*(*uintptr)(unsafe.Pointer(_s))))) != int32('\n'); *(*uintptr)(unsafe.Pointer(_s))-- {
+		if int32(*(*uint8)(unsafe.Pointer(xzi + uintptr(xmap_size-uint64(1))))) == int32('\n') {
+			for *(*uintptr)(unsafe.Pointer(_s)) = (xzi + uintptr(xmap_size)) - uintptr(2); int32(*(*int8)(unsafe.Pointer(*(*uintptr)(unsafe.Pointer(_s))))) != int32('\n'); *(*uintptr)(unsafe.Pointer(_s))-- {
 			}
 			*(*uintptr)(unsafe.Pointer(_s))++
 		} else {
-			*(*uintptr)(unsafe.Pointer(X__tzname)) = set1168((*uintptr)(unsafe.Pointer(X__tzname+8)), null)
-			*(*int32)(unsafe.Pointer(X__daylight)) = int32(set1169((*int64)(unsafe.Pointer(X__timezone)), int64(set1170(&xdst_off, int32(0)))))
+			*(*uintptr)(unsafe.Pointer(uintptr(unsafe.Pointer(&X__tzname)))) = set1168((*uintptr)(unsafe.Pointer(uintptr(unsafe.Pointer(&X__tzname))+8)), null)
+			X__daylight = int32(set1169(&X__timezone, int64(set1170(&xdst_off, int32(0)))))
 			for _i = uint64(0); _i < uint64(5); _i++ {
-				*(*int32)(unsafe.Pointer(xr0 + 4*uintptr(_i))) = set1170((*int32)(unsafe.Pointer(x2r1+4*uintptr(_i))), int32(0))
+				*(*int32)(unsafe.Pointer(uintptr(unsafe.Pointer(&xr0)) + 4*uintptr(_i))) = set1170((*int32)(unsafe.Pointer(uintptr(unsafe.Pointer(&x2r1))+4*uintptr(_i))), int32(0))
 			}
 			for _1p = xtypes; _1p < xabbrevs; func() { _1p += uintptr(6) }() {
-				if (*(*uint8)(unsafe.Pointer(_1p + 4)) == 0) && (*(*uintptr)(unsafe.Pointer(X__tzname)) == 0) {
-					*(*uintptr)(unsafe.Pointer(X__tzname)) = xabbrevs + uintptr(*(*uint8)(unsafe.Pointer(_1p + 5)))
-					*(*int64)(unsafe.Pointer(X__timezone)) = int64(-xzi_read32(tls, _1p))
+				if (*(*uint8)(unsafe.Pointer(_1p + 4)) == 0) && (*(*uintptr)(unsafe.Pointer(uintptr(unsafe.Pointer(&X__tzname)))) == 0) {
+					*(*uintptr)(unsafe.Pointer(uintptr(unsafe.Pointer(&X__tzname)))) = xabbrevs + uintptr(*(*uint8)(unsafe.Pointer(_1p + 5)))
+					X__timezone = int64(-xzi_read32(tls, _1p))
 				}
-				if (*(*uint8)(unsafe.Pointer(_1p + 4)) != 0) && (*(*uintptr)(unsafe.Pointer(X__tzname + 8)) == 0) {
-					*(*uintptr)(unsafe.Pointer(X__tzname + 8)) = xabbrevs + uintptr(*(*uint8)(unsafe.Pointer(_1p + 5)))
+				if (*(*uint8)(unsafe.Pointer(_1p + 4)) != 0) && (*(*uintptr)(unsafe.Pointer(uintptr(unsafe.Pointer(&X__tzname)) + 8)) == 0) {
+					*(*uintptr)(unsafe.Pointer(uintptr(unsafe.Pointer(&X__tzname)) + 8)) = xabbrevs + uintptr(*(*uint8)(unsafe.Pointer(_1p + 5)))
 					xdst_off = int32(-xzi_read32(tls, _1p))
-					*(*int32)(unsafe.Pointer(X__daylight)) = int32(1)
+					X__daylight = int32(1)
 				}
 			}
-			if *(*uintptr)(unsafe.Pointer(X__tzname)) == 0 {
-				*(*uintptr)(unsafe.Pointer(X__tzname)) = *(*uintptr)(unsafe.Pointer(X__tzname + 8))
+			if *(*uintptr)(unsafe.Pointer(uintptr(unsafe.Pointer(&X__tzname)))) == 0 {
+				*(*uintptr)(unsafe.Pointer(uintptr(unsafe.Pointer(&X__tzname)))) = *(*uintptr)(unsafe.Pointer(uintptr(unsafe.Pointer(&X__tzname)) + 8))
 			}
-			if *(*uintptr)(unsafe.Pointer(X__tzname)) == 0 {
-				*(*uintptr)(unsafe.Pointer(X__tzname)) = X__utc
+			if *(*uintptr)(unsafe.Pointer(uintptr(unsafe.Pointer(&X__tzname)))) == 0 {
+				*(*uintptr)(unsafe.Pointer(uintptr(unsafe.Pointer(&X__tzname)))) = uintptr(unsafe.Pointer(&X__utc))
 			}
-			if *(*int32)(unsafe.Pointer(X__daylight)) == 0 {
-				*(*uintptr)(unsafe.Pointer(X__tzname + 8)) = *(*uintptr)(unsafe.Pointer(X__tzname))
-				xdst_off = int32(*(*int64)(unsafe.Pointer(X__timezone)))
+			if X__daylight == 0 {
+				*(*uintptr)(unsafe.Pointer(uintptr(unsafe.Pointer(&X__tzname)) + 8)) = *(*uintptr)(unsafe.Pointer(uintptr(unsafe.Pointer(&X__tzname))))
+				xdst_off = int32(X__timezone)
 			}
 			return
 		}
 	}
 	if *(*uintptr)(unsafe.Pointer(_s)) == 0 {
-		*(*uintptr)(unsafe.Pointer(_s)) = X__utc
+		*(*uintptr)(unsafe.Pointer(_s)) = uintptr(unsafe.Pointer(&X__utc))
 	}
-	xgetname(tls, xstd_name, _s)
-	*(*uintptr)(unsafe.Pointer(X__tzname)) = xstd_name
-	*(*int64)(unsafe.Pointer(X__timezone)) = int64(xgetoff(tls, _s))
-	xgetname(tls, xdst_name, _s)
-	*(*uintptr)(unsafe.Pointer(X__tzname + 8)) = xdst_name
-	if *(*int8)(unsafe.Pointer(xdst_name)) != 0 {
-		*(*int32)(unsafe.Pointer(X__daylight)) = int32(1)
+	xgetname(tls, uintptr(unsafe.Pointer(&xstd_name)), _s)
+	*(*uintptr)(unsafe.Pointer(uintptr(unsafe.Pointer(&X__tzname)))) = uintptr(unsafe.Pointer(&xstd_name))
+	X__timezone = int64(xgetoff(tls, _s))
+	xgetname(tls, uintptr(unsafe.Pointer(&xdst_name)), _s)
+	*(*uintptr)(unsafe.Pointer(uintptr(unsafe.Pointer(&X__tzname)) + 8)) = uintptr(unsafe.Pointer(&xdst_name))
+	if *(*int8)(unsafe.Pointer(uintptr(unsafe.Pointer(&xdst_name)))) != 0 {
+		X__daylight = int32(1)
 		if ((int32(*(*int8)(unsafe.Pointer(*(*uintptr)(unsafe.Pointer(_s))))) == int32('+')) || (int32(*(*int8)(unsafe.Pointer(*(*uintptr)(unsafe.Pointer(_s))))) == int32('-'))) || (uint32(int32(*(*int8)(unsafe.Pointer(*(*uintptr)(unsafe.Pointer(_s)))))-int32('0')) < uint32(10)) {
 			xdst_off = xgetoff(tls, _s)
 		} else {
-			xdst_off = int32(*(*int64)(unsafe.Pointer(X__timezone)) - int64(3600))
+			xdst_off = int32(X__timezone - int64(3600))
 		}
 	} else {
-		*(*int32)(unsafe.Pointer(X__daylight)) = int32(0)
-		xdst_off = int32(*(*int64)(unsafe.Pointer(X__timezone)))
+		X__daylight = int32(0)
+		xdst_off = int32(X__timezone)
 	}
 	if int32(*(*int8)(unsafe.Pointer(*(*uintptr)(unsafe.Pointer(_s))))) == int32(',') {
 		*(*uintptr)(unsafe.Pointer(_s))++
-		xgetrule(tls, _s, xr0)
+		xgetrule(tls, _s, uintptr(unsafe.Pointer(&xr0)))
 	}
 	if int32(*(*int8)(unsafe.Pointer(*(*uintptr)(unsafe.Pointer(_s))))) == int32(',') {
 		*(*uintptr)(unsafe.Pointer(_s))++
-		xgetrule(tls, _s, x2r1)
+		xgetrule(tls, _s, uintptr(unsafe.Pointer(&x2r1)))
 	}
 }
 
@@ -68264,11 +68391,11 @@ func xrule_to_secs(tls TLS, _rule uintptr /* *int32 */, _year int32) (r int64) {
 	return _t
 }
 
-// xr0 [5]int32, escapes: true, __tz.c:21:12
-var xr0 = bss + 10512
+// xr0 [5]int32, escapes: false, __tz.c:21:12
+var xr0 [5]int32
 
-// xr1 [5]int32, escapes: true, __tz.c:21:19
-var x2r1 = bss + 10536
+// xr1 [5]int32, escapes: false, __tz.c:21:19
+var x2r1 [5]int32
 
 // xdst_off int32, escapes: false, __tz.c:20:12
 var xdst_off int32
@@ -68293,16 +68420,16 @@ type t82uintptr_t = uint64
 // xabbrevs_end *uint8, escapes: false, __tz.c:23:67
 var xabbrevs_end uintptr
 
-// x13search [54]int8, escapes: true, __tz.c:124:20
-var x1171search = ds + 48360
+// x13search [54]int8, escapes: false, __tz.c:124:20
+var x1171search = *(*[54]int8)(unsafe.Pointer(ts + 51172 /* "/usr/share/zonei..." */))
 
 // xold_tz *int8, escapes: false, __tz.c:27:13
 var xold_tz uintptr
 
-func init() { xold_tz = xold_tz_buf }
+func init() { xold_tz = uintptr(unsafe.Pointer(&xold_tz_buf)) }
 
-// xmap_size Tsize_t = uint64, escapes: true, __tz.c:24:15
-var xmap_size = bss + 10560
+// xmap_size Tsize_t = uint64, escapes: false, __tz.c:24:15
+var xmap_size uint64
 
 // xold_tz_size Tsize_t = uint64, escapes: false, __tz.c:28:15
 var xold_tz_size = uint64(32)
@@ -68349,8 +68476,8 @@ func xgetname(tls TLS, _d uintptr /* *int8 */, _p uintptr /* **int8 */) {
 	*(*int8)(unsafe.Pointer(_d + uintptr(_i))) = int8(0)
 }
 
-// xstd_name [7]int8, escapes: true, __tz.c:16:13
-var xstd_name = bss + 10568
+// xstd_name [7]int8, escapes: false, __tz.c:16:13
+var xstd_name [7]int8
 
 // xgetoff is defined at __tz.c:39:12
 func xgetoff(tls TLS, _p uintptr /* **int8 */) (r int32) {
@@ -68380,8 +68507,8 @@ func xgetoff(tls TLS, _p uintptr /* **int8 */) (r int32) {
 	return _off
 }
 
-// xdst_name [7]int8, escapes: true, __tz.c:17:13
-var xdst_name = bss + 10576
+// xdst_name [7]int8, escapes: false, __tz.c:17:13
+var xdst_name [7]int8
 
 // xgetrule is defined at __tz.c:60:13
 func xgetrule(tls TLS, _p uintptr /* **int8 */, _rule uintptr /* *int32 */) {
@@ -68425,8 +68552,8 @@ func xdays_in_month(tls TLS, _m int32, _is_leap int32) (r int32) {
 	return r
 }
 
-// xold_tz_buf [32]int8, escapes: true, __tz.c:26:13
-var xold_tz_buf = bss + 10584
+// xold_tz_buf [32]int8, escapes: false, __tz.c:26:13
+var xold_tz_buf [32]int8
 
 // xgetint is defined at __tz.c:32:12
 func x2getint(tls TLS, _p uintptr /* **int8 */) (r int32) {
@@ -68514,7 +68641,7 @@ func X__year_to_secs(tls TLS, _year int64, _is_leap uintptr /* *int32 */) (r int
 
 // Xasctime is defined at asctime.c:5:6
 func Xasctime(tls TLS, _tm uintptr /* *Stm */) (r uintptr /* *int8 */) {
-	return X__asctime(tls, _tm, x1173buf)
+	return X__asctime(tls, _tm, uintptr(unsafe.Pointer(&x1173buf)))
 }
 
 // Stm is defined at time.h:38:1
@@ -68532,8 +68659,8 @@ type s5tm = struct {
 	Ftm_zone   uintptr // *int8
 }
 
-// x1buf [26]int8, escapes: true, asctime.c:7:14
-var x1173buf = bss + 10616
+// x1buf [26]int8, escapes: false, asctime.c:7:14
+var x1173buf [26]int8
 
 // linking asctime_r.o
 
@@ -68805,6 +68932,7 @@ type Stimeb = struct {
 	Fmillitm  uint16
 	Ftimezone int16
 	Fdstflag  int16
+	_         [2]byte
 }
 
 // Stimespec is defined at alltypes.h:270:1
@@ -68817,8 +68945,8 @@ type t75time_t = int64
 
 // linking getdate.o
 
-// Xgetdate_err int32, escapes: true, getdate.c:7:5
-var Xgetdate_err = bss + 10648
+// Xgetdate_err int32, escapes: false, getdate.c:7:5
+var Xgetdate_err int32
 
 // Xgetdate is defined at getdate.c:9:11
 func Xgetdate(tls TLS, _s uintptr /* *int8 */) (r uintptr /* *Stm */) {
@@ -68833,26 +68961,26 @@ func Xgetdate(tls TLS, _s uintptr /* *int8 */) (r uintptr /* *Stm */) {
 	)
 	defer Free(esc)
 	_ret = 0
-	_datemsk = Xgetenv(tls, ts+3540 /* "DATEMSK" */)
+	_datemsk = Xgetenv(tls, ts+51228 /* "DATEMSK" */)
 	_f = 0
 	Xpthread_setcancelstate(tls, int32(0), _cs)
 	if !(_datemsk == 0) {
 		goto _1
 	}
 
-	*(*int32)(unsafe.Pointer(Xgetdate_err)) = int32(1)
+	Xgetdate_err = int32(1)
 	goto lout
 
 _1:
-	_f = Xfopen(tls, _datemsk, ts+952 /* "rbe" */)
+	_f = Xfopen(tls, _datemsk, ts+31500 /* "rbe" */)
 	if !(_f == 0) {
 		goto _2
 	}
 
 	if *(*int32)(unsafe.Pointer(X__errno_location(tls))) == int32(12) {
-		*(*int32)(unsafe.Pointer(Xgetdate_err)) = int32(6)
+		Xgetdate_err = int32(6)
 	} else {
-		*(*int32)(unsafe.Pointer(Xgetdate_err)) = int32(2)
+		Xgetdate_err = int32(2)
 	}
 	goto lout
 
@@ -68862,12 +68990,12 @@ _3:
 		goto _4
 	}
 
-	_p = Xstrptime(tls, _s, _fmt, x1175tmbuf)
+	_p = Xstrptime(tls, _s, _fmt, uintptr(unsafe.Pointer(&x1175tmbuf)))
 	if !((_p != 0) && (*(*int8)(unsafe.Pointer(_p)) == 0)) {
 		goto _5
 	}
 
-	_ret = x1175tmbuf
+	_ret = uintptr(unsafe.Pointer(&x1175tmbuf))
 	goto lout
 
 _5:
@@ -68875,9 +69003,9 @@ _5:
 
 _4:
 	if Xferror(tls, _f) != 0 {
-		*(*int32)(unsafe.Pointer(Xgetdate_err)) = int32(5)
+		Xgetdate_err = int32(5)
 	} else {
-		*(*int32)(unsafe.Pointer(Xgetdate_err)) = int32(7)
+		Xgetdate_err = int32(7)
 	}
 	goto lout
 lout:
@@ -68903,8 +69031,8 @@ type s9tm = struct {
 	Ftm_zone   uintptr // *int8
 }
 
-// x1tmbuf Stm, escapes: true, getdate.c:11:19
-var x1175tmbuf = bss + 10656
+// x1tmbuf Stm, escapes: false, getdate.c:11:19
+var x1175tmbuf s9tm
 
 type s119_IO_FILE struct{ uintptr }
 
@@ -68944,7 +69072,7 @@ type t17suseconds_t = int64
 
 // Xgmtime is defined at gmtime.c:6:11
 func Xgmtime(tls TLS, _t uintptr /* *Ttime_t = int64 */) (r uintptr /* *Stm */) {
-	return X__gmtime_r(tls, _t, x1176tm)
+	return X__gmtime_r(tls, _t, uintptr(unsafe.Pointer(&x1176tm)))
 }
 
 // Stm is defined at time.h:38:1
@@ -68962,8 +69090,8 @@ type s10tm = struct {
 	Ftm_zone   uintptr // *int8
 }
 
-// x1tm Stm, escapes: true, gmtime.c:8:19
-var x1176tm = bss + 10712
+// x1tm Stm, escapes: false, gmtime.c:8:19
+var x1176tm s10tm
 
 // linking gmtime_r.o
 
@@ -68975,7 +69103,7 @@ func X__gmtime_r(tls TLS, _t uintptr /* *Ttime_t = int64 */, _tm uintptr /* *Stm
 	}
 	*(*int32)(unsafe.Pointer(_tm + 32)) = int32(0)
 	*(*int64)(unsafe.Pointer(_tm + 40)) = int64(0)
-	*(*uintptr)(unsafe.Pointer(_tm + 48)) = X__utc
+	*(*uintptr)(unsafe.Pointer(_tm + 48)) = uintptr(unsafe.Pointer(&X__utc))
 	return _tm
 }
 
@@ -69000,7 +69128,7 @@ type t77time_t = int64
 
 // Xlocaltime is defined at localtime.c:5:11
 func Xlocaltime(tls TLS, _t uintptr /* *Ttime_t = int64 */) (r uintptr /* *Stm */) {
-	return X__localtime_r(tls, _t, x1177tm)
+	return X__localtime_r(tls, _t, uintptr(unsafe.Pointer(&x1177tm)))
 }
 
 // Stm is defined at time.h:38:1
@@ -69018,8 +69146,8 @@ type s12tm = struct {
 	Ftm_zone   uintptr // *int8
 }
 
-// x1tm Stm, escapes: true, localtime.c:7:19
-var x1177tm = bss + 10768
+// x1tm Stm, escapes: false, localtime.c:7:19
+var x1177tm s12tm
 
 // linking localtime_r.o
 
@@ -69137,7 +69265,7 @@ func X__strftime_fmt_1(tls TLS, _s uintptr /* *[100]int8 */, _l uintptr /* *Tsiz
 		_width   int32
 		_def_pad int32
 	)
-	_fmt = ts + 3036 /* "-" */
+	_fmt = ts + 49404 /* "-" */
 	_width = int32(2)
 	_def_pad = int32('0')
 	switch _f {
@@ -69280,11 +69408,11 @@ _10:
 	goto lnumber
 
 _11:
-	_fmt = ts + 3548 /* "%m/%d/%y" */
+	_fmt = ts + 51236 /* "%m/%d/%y" */
 	goto lrecu_strftime
 
 _12:
-	_fmt = ts + 3560 /* "%Y-%m-%d" */
+	_fmt = ts + 51248 /* "%Y-%m-%d" */
 	goto lrecu_strftime
 
 _13:
@@ -69330,7 +69458,7 @@ _19:
 
 _20:
 	*(*uint64)(unsafe.Pointer(_l)) = uint64(1)
-	return ts + 936 /* "\n" */
+	return ts + 31484 /* "\n" */
 _21:
 	if *(*int32)(unsafe.Pointer(_tm + 8)) >= int32(12) {
 		_item = int32(0x20027)
@@ -69344,7 +69472,7 @@ _22:
 	goto lnl_strftime
 
 _23:
-	_fmt = ts + 3572 /* "%H:%M" */
+	_fmt = ts + 51260 /* "%H:%M" */
 	goto lrecu_strftime
 
 _24:
@@ -69358,9 +69486,9 @@ _25:
 
 _26:
 	*(*uint64)(unsafe.Pointer(_l)) = uint64(1)
-	return ts + 2688 /* "\t" */
+	return ts + 48256 /* "\t" */
 _27:
-	_fmt = ts + 3580 /* "%H:%M:%S" */
+	_fmt = ts + 51268 /* "%H:%M:%S" */
 	goto lrecu_strftime
 
 _28:
@@ -69407,7 +69535,7 @@ _35:
 _36:
 	_val = int64(*(*int32)(unsafe.Pointer(_tm + 20))) + int64(1900)
 	if _val >= int64(10000) {
-		*(*uint64)(unsafe.Pointer(_l)) = uint64(Xsnprintf(tls, _s, uint64(100), ts+3592 /* "+%lld" */, _val))
+		*(*uint64)(unsafe.Pointer(_l)) = uint64(Xsnprintf(tls, _s, uint64(100), ts+51280 /* "+%lld" */, _val))
 		return _s
 	}
 	_width = int32(4)
@@ -69418,7 +69546,7 @@ _37:
 		*(*uint64)(unsafe.Pointer(_l)) = uint64(0)
 		return ts + 0 /* "" */
 	}
-	*(*uint64)(unsafe.Pointer(_l)) = uint64(Xsnprintf(tls, _s, uint64(100), ts+3600 /* "%+.4ld" */, *(*int64)(unsafe.Pointer(_tm + 40))/int64(3600)*int64(100)+*(*int64)(unsafe.Pointer(_tm + 40))%int64(3600)/int64(60)))
+	*(*uint64)(unsafe.Pointer(_l)) = uint64(Xsnprintf(tls, _s, uint64(100), ts+51288 /* "%+.4ld" */, *(*int64)(unsafe.Pointer(_tm + 40))/int64(3600)*int64(100)+*(*int64)(unsafe.Pointer(_tm + 40))%int64(3600)/int64(60)))
 	return _s
 _38:
 	if *(*int32)(unsafe.Pointer(_tm + 32)) < int32(0) {
@@ -69430,7 +69558,7 @@ _38:
 
 _39:
 	*(*uint64)(unsafe.Pointer(_l)) = uint64(1)
-	return ts + 3608 /* "%" */
+	return ts + 51296 /* "%" */
 _40:
 	return null
 	goto lnumber
@@ -69451,16 +69579,16 @@ lnumber:
 		goto _49
 	}
 _46:
-	*(*uint64)(unsafe.Pointer(_l)) = uint64(Xsnprintf(tls, _s, uint64(100), ts+3612 /* "%lld" */, _val))
+	*(*uint64)(unsafe.Pointer(_l)) = uint64(Xsnprintf(tls, _s, uint64(100), ts+51300 /* "%lld" */, _val))
 	goto _45
 
 _47:
-	*(*uint64)(unsafe.Pointer(_l)) = uint64(Xsnprintf(tls, _s, uint64(100), ts+3620 /* "%*lld" */, _width, _val))
+	*(*uint64)(unsafe.Pointer(_l)) = uint64(Xsnprintf(tls, _s, uint64(100), ts+51308 /* "%*lld" */, _width, _val))
 	goto _45
 
 _48:
 _49:
-	*(*uint64)(unsafe.Pointer(_l)) = uint64(Xsnprintf(tls, _s, uint64(100), ts+3628 /* "%0*lld" */, _width, _val))
+	*(*uint64)(unsafe.Pointer(_l)) = uint64(Xsnprintf(tls, _s, uint64(100), ts+51316 /* "%0*lld" */, _width, _val))
 	goto _45
 
 _45:
@@ -69634,7 +69762,7 @@ func xweek_num(tls TLS, _tm uintptr /* *Stm */) (r int32) {
 	return _val
 }
 
-type t294size_t = uint64
+type t297size_t = uint64
 
 // x__pthread_self is defined at pthread_arch.h:1:30
 func x47__pthread_self(tls TLS) (r uintptr /* *S__pthread */) {
@@ -69860,7 +69988,7 @@ _12:
 	goto lnumeric_range
 
 _13:
-	_s = Xstrptime(tls, _s, ts+3548 /* "%m/%d/%y" */, _tm)
+	_s = Xstrptime(tls, _s, ts+51236 /* "%m/%d/%y" */, _tm)
 	if _s == 0 {
 		return null
 	}
@@ -69938,7 +70066,7 @@ _22:
 	goto _3
 
 _23:
-	_s = Xstrptime(tls, _s, ts+3572 /* "%H:%M" */, _tm)
+	_s = Xstrptime(tls, _s, ts+51260 /* "%H:%M" */, _tm)
 	if _s == 0 {
 		return null
 	}
@@ -69951,7 +70079,7 @@ _24:
 	goto lnumeric_range
 
 _25:
-	_s = Xstrptime(tls, _s, ts+3580 /* "%H:%M:%S" */, _tm)
+	_s = Xstrptime(tls, _s, ts+51268 /* "%H:%M:%S" */, _tm)
 	if _s == 0 {
 		return null
 	}
@@ -70112,7 +70240,7 @@ type s16tm = struct {
 	Ftm_zone   uintptr // *int8
 }
 
-type t295size_t = uint64
+type t298size_t = uint64
 
 // linking time.o
 
@@ -70154,7 +70282,7 @@ func Xtimegm(tls TLS, _tm uintptr /* *Stm */) (r int64) {
 	*(*s17tm)(unsafe.Pointer(_tm)) = *(*s17tm)(unsafe.Pointer(_new))
 	*(*int32)(unsafe.Pointer(_tm + 32)) = int32(0)
 	*(*int64)(unsafe.Pointer(_tm + 40)) = int64(0)
-	*(*uintptr)(unsafe.Pointer(_tm + 48)) = X__utc
+	*(*uintptr)(unsafe.Pointer(_tm + 48)) = uintptr(unsafe.Pointer(&X__utc))
 	return _t
 }
 
@@ -70225,7 +70353,7 @@ _3:
 	goto _1
 
 _4:
-	Xpthread_once(tls, x1186once, fp1184(xinstall_handler))
+	Xpthread_once(tls, uintptr(unsafe.Pointer(&x1186once)), fp1184(xinstall_handler))
 	if *(*uintptr)(unsafe.Pointer(_evp + 24)) != 0 {
 		*(*struct {
 			F__u struct {
@@ -70293,8 +70421,8 @@ type s4sigevent = struct {
 	F__pad                   [32]int8
 }
 
-// x2once Tpthread_once_t = int32, escapes: true, timer_create.c:84:24
-var x1186once = bss + 10824
+// x2once Tpthread_once_t = int32, escapes: false, timer_create.c:84:24
+var x1186once int32
 
 // S__pthread is defined at pthread_impl.h:15:1
 type s66__pthread = struct {
@@ -70357,6 +70485,7 @@ type Sksigevent = struct {
 	Fsigev_signo  int32
 	Fsigev_notify int32
 	Fsigev_tid    int32
+	_             [4]byte
 }
 
 // Usigval is defined at signal.h:92:1
@@ -70419,7 +70548,9 @@ func x2start(tls TLS, _arg uintptr /* *void */) (r uintptr /* *void */) {
 
 type t84uintptr_t = uint64
 
-type t296size_t = uint64
+type t1pthread_once_t = int32
+
+type t299size_t = uint64
 
 // S__ptcb is defined at pthread.h:200:1
 type s66__ptcb = struct {
@@ -70520,7 +70651,7 @@ type t85uintptr_t = uint64
 
 // xa_store is defined at atomic_arch.h:96:20
 func x7a_store(tls TLS, _p uintptr /* *int32 */, _x int32) {
-	panic(`TODO`)
+	a_store(_p, _x)
 }
 
 // x__wake is defined at pthread_impl.h:157:20
@@ -70541,7 +70672,7 @@ func x43__syscall1(tls TLS, _n int64, _a1 int64) (r int64) {
 	return X__syscall(tls, _n, _a1, int64(0), int64(0), int64(0), int64(0), int64(0))
 }
 
-type t297size_t = uint64
+type t300size_t = uint64
 
 // S__ptcb is defined at pthread.h:200:1
 type s67__ptcb = struct {
@@ -70621,7 +70752,7 @@ func x44__syscall1(tls TLS, _n int64, _a1 int64) (r int64) {
 	return X__syscall(tls, _n, _a1, int64(0), int64(0), int64(0), int64(0), int64(0))
 }
 
-type t298size_t = uint64
+type t301size_t = uint64
 
 // S__ptcb is defined at pthread.h:200:1
 type s68__ptcb = struct {
@@ -70708,7 +70839,7 @@ type s63timespec = struct {
 	Ftv_nsec int64
 }
 
-type t299size_t = uint64
+type t302size_t = uint64
 
 // S__ptcb is defined at pthread.h:200:1
 type s69__ptcb = struct {
@@ -70797,7 +70928,7 @@ type s64timespec = struct {
 	Ftv_nsec int64
 }
 
-type t300size_t = uint64
+type t303size_t = uint64
 
 // S__ptcb is defined at pthread.h:200:1
 type s70__ptcb = struct {
@@ -71009,7 +71140,7 @@ type s18tm = struct {
 // S__locale_struct is defined at libc.h:10:1
 type s186__locale_struct = struct{ Fcat [6]uintptr }
 
-type t301size_t = uint64
+type t304size_t = uint64
 
 type t53wchar_t = int32
 
@@ -71156,9 +71287,9 @@ func x15dummy(tls TLS, _fd int32) (r int32) {
 // Xctermid is defined at ctermid.c:4:6
 func Xctermid(tls TLS, _s uintptr /* *int8 */) (r uintptr /* *int8 */) {
 	if _s != 0 {
-		return Xstrcpy(tls, _s, ts+924 /* "/dev/tty" */)
+		return Xstrcpy(tls, _s, ts+31472 /* "/dev/tty" */)
 	}
-	return ts + 924 /* "/dev/tty" */
+	return ts + 31472 /* "/dev/tty" */
 }
 
 // linking dup.o
@@ -71453,7 +71584,7 @@ func Xgetcwd(tls TLS, _buf uintptr /* *int8 */, _size uint64) (r uintptr /* *int
 	return _buf
 }
 
-type t302size_t = uint64
+type t305size_t = uint64
 
 // x__syscall2 is defined at syscall_arch.h:22:22
 func x68__syscall2(tls TLS, _n int64, _a1 int64, _a2 int64) (r int64) {
@@ -71534,7 +71665,7 @@ func Xgethostname(tls TLS, _name uintptr /* *int8 */, _len uint64) (r int32) {
 	return 0
 }
 
-type t303size_t = uint64
+type t306size_t = uint64
 
 // Sutsname is defined at utsname.h:10:1
 type s2utsname = struct {
@@ -71550,7 +71681,7 @@ type s2utsname = struct {
 
 // Xgetlogin is defined at getlogin.c:4:6
 func Xgetlogin(tls TLS) (r uintptr /* *int8 */) {
-	return Xgetenv(tls, ts+3636 /* "LOGNAME" */)
+	return Xgetenv(tls, ts+51324 /* "LOGNAME" */)
 }
 
 // linking getlogin_r.o
@@ -71570,7 +71701,7 @@ func Xgetlogin_r(tls TLS, _name uintptr /* *int8 */, _size uint64) (r int32) {
 	return 0
 }
 
-type t304size_t = uint64
+type t307size_t = uint64
 
 // linking getpgid.o
 
@@ -71827,7 +71958,7 @@ type s8iovec = struct {
 
 type t132off_t = int64
 
-type t305size_t = uint64
+type t308size_t = uint64
 
 // linking pwrite.o
 
@@ -71853,7 +71984,7 @@ type s9iovec = struct {
 
 type t134off_t = int64
 
-type t306size_t = uint64
+type t309size_t = uint64
 
 // linking read.o
 
@@ -71899,7 +72030,7 @@ type s10iovec = struct {
 	Fiov_len  uint64
 }
 
-type t307size_t = uint64
+type t310size_t = uint64
 
 // linking renameat.o
 
@@ -72186,15 +72317,15 @@ func set1197(p *int32, v int32) int32 { *p = v; return v }
 func Xttyname(tls TLS, _fd int32) (r uintptr /* *int8 */) {
 	var _result int32
 
-	if set1197(&_result, Xttyname_r(tls, _fd, x1198buf, uint64(32))) != 0 {
+	if set1197(&_result, Xttyname_r(tls, _fd, uintptr(unsafe.Pointer(&x1198buf)), uint64(32))) != 0 {
 		*(*int32)(unsafe.Pointer(X__errno_location(tls))) = _result
 		return null
 	}
-	return x1198buf
+	return uintptr(unsafe.Pointer(&x1198buf))
 }
 
-// x1buf [32]int8, escapes: true, ttyname.c:7:14
-var x1198buf = bss + 10832
+// x1buf [32]int8, escapes: false, ttyname.c:7:14
+var x1198buf [32]int8
 
 // linking ttyname_r.o
 
@@ -72249,7 +72380,7 @@ type s17stat = struct {
 
 type t27ssize_t = int64
 
-type t308size_t = uint64
+type t311size_t = uint64
 
 type t17dev_t = uint64
 
@@ -72351,7 +72482,7 @@ type s11iovec = struct {
 	Fiov_len  uint64
 }
 
-type t309size_t = uint64
+type t312size_t = uint64
 
 const (
 	DABDAY_1                                = 131072
@@ -79218,12 +79349,4 @@ func bool2int(b bool) int32 {
 	return 0
 }
 
-var bss = BSS(&bssInit[0])
-
-var bssInit [10864]byte
-
-var ds = DS(dsInit)
-
-var dsInit = []byte{0x08, 0x00, 0xff, 0x00, 0xff, 0x00, 0xff, 0x00, 0x00, 0x10, 0x00, 0x10, 0x01, 0x00, 0x01, 0x00, 0x00, 0x00, 0x01, 0x00, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0x40, 0x00, 0x00, 0x10, 0x00, 0x10, 0x00, 0x10, 0x00, 0x10, 0x00, 0x10, 0xff, 0xff, 0x01, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x02, 0xff, 0x06, 0x80, 0x64, 0x00, 0x20, 0x00, 0x07, 0x80, 0xff, 0xff, 0x06, 0x00, 0x01, 0x00, 0x01, 0x00, 0x01, 0xff, 0xff, 0xff, 0x01, 0xff, 0x01, 0xff, 0xff, 0xff, 0xff, 0xff, 0x01, 0xff, 0x01, 0xff, 0x01, 0xff, 0x01, 0xff, 0x01, 0xff, 0x01, 0xff, 0x01, 0xff, 0x01, 0xff, 0xff, 0xff, 0xff, 0xff, 0x0a, 0xff, 0x0b, 0xff, 0xff, 0xff, 0x03, 0xff, 0x01, 0xff, 0x04, 0xff, 0x1e, 0x00, 0x00, 0x01, 0x05, 0xff, 0xff, 0xff, 0xff, 0xff, 0x63, 0x00, 0x00, 0x08, 0x63, 0x00, 0xe8, 0x03, 0x02, 0x00, 0x00, 0x00, 0xff, 0xff, 0xff, 0xff, 0xff, 0x00, 0x00, 0x00, 0x01, 0xff, 0x01, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x04, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x01, 0xff, 0x01, 0xff, 0xff, 0xff, 0xff, 0xff, 0x00, 0x01, 0x20, 0x00, 0x04, 0x00, 0x80, 0x00, 0x00, 0x08, 0xff, 0xff, 0x01, 0xff, 0x01, 0xff, 0x01, 0xff, 0xff, 0xff, 0xff, 0xff, 0x01, 0xff, 0x06, 0xff, 0x07, 0xff, 0x08, 0xff, 0x09, 0xff, 0xff, 0xff, 0xff, 0xff, 0xbc, 0x02, 0xbc, 0x02, 0x01, 0x00, 0xff, 0xff, 0x01, 0x00, 0x01, 0x00, 0xff, 0xff, 0x00, 0x00, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x14, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0xff, 0xff, 0xff, 0xff, 0x01, 0x00, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0x01, 0xff, 0x01, 0xff, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x01, 0xff, 0x01, 0xff, 0x01, 0xff, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x01, 0xff, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x01, 0xff, 0x01, 0xff, 0x01, 0x00, 0x00, 0x00, 0x01, 0x00, 0x00, 0x00, 0x01, 0xff, 0xff, 0xff, 0xff, 0xff, 0x00, 0x00, 0x00, 0x00, 0x01, 0xff, 0xff, 0xff, 0x00, 0x00, 0x00, 0x00, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0x28, 0x00, 0x0a, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0x01, 0x00, 0xff, 0xff, 0xff, 0x00, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x01, 0xff, 0x01, 0xff, 0xff, 0xff, 0xff, 0xff, 0x01, 0x00, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0x0a, 0xff, 0xff, 0xff, 0xff, 0xff, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x56, 0x55, 0x72, 0x50, 0x6d, 0x58, 0x44, 0x36, 0x71, 0x2f, 0x6e, 0x56, 0x53, 0x53, 0x70, 0x37, 0x70, 0x4e, 0x44, 0x68, 0x43, 0x52, 0x39, 0x30, 0x37, 0x31, 0x49, 0x66, 0x49, 0x52, 0x65, 0x00, 0x55, 0x00, 0x69, 0x31, 0x44, 0x37, 0x30, 0x39, 0x76, 0x66, 0x61, 0x6d, 0x75, 0x6c, 0x69, 0x6d, 0x6c, 0x47, 0x63, 0x71, 0x30, 0x71, 0x71, 0x33, 0x55, 0x76, 0x75, 0x55, 0x61, 0x73, 0x76, 0x45, 0x61, 0x00, 0x55, 0x00, 0x00, 0x00, 0x00, 0x00, 0x02, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x01, 0x04, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x88, 0x6a, 0x3f, 0x24, 0xd3, 0x08, 0xa3, 0x85, 0x2e, 0x8a, 0x19, 0x13, 0x44, 0x73, 0x70, 0x03, 0x22, 0x38, 0x09, 0xa4, 0xd0, 0x31, 0x9f, 0x29, 0x98, 0xfa, 0x2e, 0x08, 0x89, 0x6c, 0x4e, 0xec, 0xe6, 0x21, 0x28, 0x45, 0x77, 0x13, 0xd0, 0x38, 0xcf, 0x66, 0x54, 0xbe, 0x6c, 0x0c, 0xe9, 0x34, 0xb7, 0x29, 0xac, 0xc0, 0xdd, 0x50, 0x7c, 0xc9, 0xb5, 0xd5, 0x84, 0x3f, 0x17, 0x09, 0x47, 0xb5, 0xd9, 0xd5, 0x16, 0x92, 0x1b, 0xfb, 0x79, 0x89, 0xa6, 0x0b, 0x31, 0xd1, 0xac, 0xb5, 0xdf, 0x98, 0xdb, 0x72, 0xfd, 0x2f, 0xb7, 0xdf, 0x1a, 0xd0, 0xed, 0xaf, 0xe1, 0xb8, 0x96, 0x7e, 0x26, 0x6a, 0x45, 0x90, 0x7c, 0xba, 0x99, 0x7f, 0x2c, 0xf1, 0x47, 0x99, 0xa1, 0x24, 0xf7, 0x6c, 0x91, 0xb3, 0xe2, 0xf2, 0x01, 0x08, 0x16, 0xfc, 0x8e, 0x85, 0xd8, 0x20, 0x69, 0x63, 0x69, 0x4e, 0x57, 0x71, 0xa3, 0xfe, 0x58, 0xa4, 0x7e, 0x3d, 0x93, 0xf4, 0x8f, 0x74, 0x95, 0x0d, 0x58, 0xb6, 0x8e, 0x72, 0x58, 0xcd, 0x8b, 0x71, 0xee, 0x4a, 0x15, 0x82, 0x1d, 0xa4, 0x54, 0x7b, 0xb5, 0x59, 0x5a, 0xc2, 0x39, 0xd5, 0x30, 0x9c, 0x13, 0x60, 0xf2, 0x2a, 0x23, 0xb0, 0xd1, 0xc5, 0xf0, 0x85, 0x60, 0x28, 0x18, 0x79, 0x41, 0xca, 0xef, 0x38, 0xdb, 0xb8, 0xb0, 0xdc, 0x79, 0x8e, 0x0e, 0x18, 0x3a, 0x60, 0x8b, 0x0e, 0x9e, 0x6c, 0x3e, 0x8a, 0x1e, 0xb0, 0xc1, 0x77, 0x15, 0xd7, 0x27, 0x4b, 0x31, 0xbd, 0xda, 0x2f, 0xaf, 0x78, 0x60, 0x5c, 0x60, 0x55, 0xf3, 0x25, 0x55, 0xe6, 0x94, 0xab, 0x55, 0xaa, 0x62, 0x98, 0x48, 0x57, 0x40, 0x14, 0xe8, 0x63, 0x6a, 0x39, 0xca, 0x55, 0xb6, 0x10, 0xab, 0x2a, 0x34, 0x5c, 0xcc, 0xb4, 0xce, 0xe8, 0x41, 0x11, 0xaf, 0x86, 0x54, 0xa1, 0x93, 0xe9, 0x72, 0x7c, 0x11, 0x14, 0xee, 0xb3, 0x2a, 0xbc, 0x6f, 0x63, 0x5d, 0xc5, 0xa9, 0x2b, 0xf6, 0x31, 0x18, 0x74, 0x16, 0x3e, 0x5c, 0xce, 0x1e, 0x93, 0x87, 0x9b, 0x33, 0xba, 0xd6, 0xaf, 0x5c, 0xcf, 0x24, 0x6c, 0x81, 0x53, 0x32, 0x7a, 0x77, 0x86, 0x95, 0x28, 0x98, 0x48, 0x8f, 0x3b, 0xaf, 0xb9, 0x4b, 0x6b, 0x1b, 0xe8, 0xbf, 0xc4, 0x93, 0x21, 0x28, 0x66, 0xcc, 0x09, 0xd8, 0x61, 0x91, 0xa9, 0x21, 0xfb, 0x60, 0xac, 0x7c, 0x48, 0x32, 0x80, 0xec, 0x5d, 0x5d, 0x5d, 0x84, 0xef, 0xb1, 0x75, 0x85, 0xe9, 0x02, 0x23, 0x26, 0xdc, 0x88, 0x1b, 0x65, 0xeb, 0x81, 0x3e, 0x89, 0x23, 0xc5, 0xac, 0x96, 0xd3, 0xf3, 0x6f, 0x6d, 0x0f, 0x39, 0x42, 0xf4, 0x83, 0x82, 0x44, 0x0b, 0x2e, 0x04, 0x20, 0x84, 0xa4, 0x4a, 0xf0, 0xc8, 0x69, 0x5e, 0x9b, 0x1f, 0x9e, 0x42, 0x68, 0xc6, 0x21, 0x9a, 0x6c, 0xe9, 0xf6, 0x61, 0x9c, 0x0c, 0x67, 0xf0, 0x88, 0xd3, 0xab, 0xd2, 0xa0, 0x51, 0x6a, 0x68, 0x2f, 0x54, 0xd8, 0x28, 0xa7, 0x0f, 0x96, 0xa3, 0x33, 0x51, 0xab, 0x6c, 0x0b, 0xef, 0x6e, 0xe4, 0x3b, 0x7a, 0x13, 0x50, 0xf0, 0x3b, 0xba, 0x98, 0x2a, 0xfb, 0x7e, 0x1d, 0x65, 0xf1, 0xa1, 0x76, 0x01, 0xaf, 0x39, 0x3e, 0x59, 0xca, 0x66, 0x88, 0x0e, 0x43, 0x82, 0x19, 0x86, 0xee, 0x8c, 0xb4, 0x9f, 0x6f, 0x45, 0xc3, 0xa5, 0x84, 0x7d, 0xbe, 0x5e, 0x8b, 0x3b, 0xd8, 0x75, 0x6f, 0xe0, 0x73, 0x20, 0xc1, 0x85, 0x9f, 0x44, 0x1a, 0x40, 0xa6, 0x6a, 0xc1, 0x56, 0x62, 0xaa, 0xd3, 0x4e, 0x06, 0x77, 0x3f, 0x36, 0x72, 0xdf, 0xfe, 0x1b, 0x3d, 0x02, 0x9b, 0x42, 0x24, 0xd7, 0xd0, 0x37, 0x48, 0x12, 0x0a, 0xd0, 0xd3, 0xea, 0x0f, 0xdb, 0x9b, 0xc0, 0xf1, 0x49, 0xc9, 0x72, 0x53, 0x07, 0x7b, 0x1b, 0x99, 0x80, 0xd8, 0x79, 0xd4, 0x25, 0xf7, 0xde, 0xe8, 0xf6, 0x1a, 0x50, 0xfe, 0xe3, 0x3b, 0x4c, 0x79, 0xb6, 0xbd, 0xe0, 0x6c, 0x97, 0xba, 0x06, 0xc0, 0x04, 0xb6, 0x4f, 0xa9, 0xc1, 0xc4, 0x60, 0x9f, 0x40, 0xc2, 0x9e, 0x5c, 0x5e, 0x63, 0x24, 0x6a, 0x19, 0xaf, 0x6f, 0xfb, 0x68, 0xb5, 0x53, 0x6c, 0x3e, 0xeb, 0xb2, 0x39, 0x13, 0x6f, 0xec, 0x52, 0x3b, 0x1f, 0x51, 0xfc, 0x6d, 0x2c, 0x95, 0x30, 0x9b, 0x44, 0x45, 0x81, 0xcc, 0x09, 0xbd, 0x5e, 0xaf, 0x04, 0xd0, 0xe3, 0xbe, 0xfd, 0x4a, 0x33, 0xde, 0x07, 0x28, 0x0f, 0x66, 0xb3, 0x4b, 0x2e, 0x19, 0x57, 0xa8, 0xcb, 0xc0, 0x0f, 0x74, 0xc8, 0x45, 0x39, 0x5f, 0x0b, 0xd2, 0xdb, 0xfb, 0xd3, 0xb9, 0xbd, 0xc0, 0x79, 0x55, 0x0a, 0x32, 0x60, 0x1a, 0xc6, 0x00, 0xa1, 0xd6, 0x79, 0x72, 0x2c, 0x40, 0xfe, 0x25, 0x9f, 0x67, 0xcc, 0xa3, 0x1f, 0xfb, 0xf8, 0xe9, 0xa5, 0x8e, 0xf8, 0x22, 0x32, 0xdb, 0xdf, 0x16, 0x75, 0x3c, 0x15, 0x6b, 0x61, 0xfd, 0xc8, 0x1e, 0x50, 0x2f, 0xab, 0x52, 0x05, 0xad, 0xfa, 0xb5, 0x3d, 0x32, 0x60, 0x87, 0x23, 0xfd, 0x48, 0x7b, 0x31, 0x53, 0x82, 0xdf, 0x00, 0x3e, 0xbb, 0x57, 0x5c, 0x9e, 0xa0, 0x8c, 0x6f, 0xca, 0x2e, 0x56, 0x87, 0x1a, 0xdb, 0x69, 0x17, 0xdf, 0xf6, 0xa8, 0x42, 0xd5, 0xc3, 0xff, 0x7e, 0x28, 0xc6, 0x32, 0x67, 0xac, 0x73, 0x55, 0x4f, 0x8c, 0xb0, 0x27, 0x5b, 0x69, 0xc8, 0x58, 0xca, 0xbb, 0x5d, 0xa3, 0xff, 0xe1, 0xa0, 0x11, 0xf0, 0xb8, 0x98, 0x3d, 0xfa, 0x10, 0xb8, 0x83, 0x21, 0xfd, 0x6c, 0xb5, 0xfc, 0x4a, 0x5b, 0xd3, 0xd1, 0x2d, 0x79, 0xe4, 0x53, 0x9a, 0x65, 0x45, 0xf8, 0xb6, 0xbc, 0x49, 0x8e, 0xd2, 0x90, 0x97, 0xfb, 0x4b, 0xda, 0xf2, 0xdd, 0xe1, 0x33, 0x7e, 0xcb, 0xa4, 0x41, 0x13, 0xfb, 0x62, 0xe8, 0xc6, 0xe4, 0xce, 0xda, 0xca, 0x20, 0xef, 0x01, 0x4c, 0x77, 0x36, 0xfe, 0x9e, 0x7e, 0xd0, 0xb4, 0x1f, 0xf1, 0x2b, 0x4d, 0xda, 0xdb, 0x95, 0x98, 0x91, 0x90, 0xae, 0x71, 0x8e, 0xad, 0xea, 0xa0, 0xd5, 0x93, 0x6b, 0xd0, 0xd1, 0x8e, 0xd0, 0xe0, 0x25, 0xc7, 0xaf, 0x2f, 0x5b, 0x3c, 0x8e, 0xb7, 0x94, 0x75, 0x8e, 0xfb, 0xe2, 0xf6, 0x8f, 0x64, 0x2b, 0x12, 0xf2, 0x12, 0xb8, 0x88, 0x88, 0x1c, 0xf0, 0x0d, 0x90, 0xa0, 0x5e, 0xad, 0x4f, 0x1c, 0xc3, 0x8f, 0x68, 0x91, 0xf1, 0xcf, 0xd1, 0xad, 0xc1, 0xa8, 0xb3, 0x18, 0x22, 0x2f, 0x2f, 0x77, 0x17, 0x0e, 0xbe, 0xfe, 0x2d, 0x75, 0xea, 0xa1, 0x1f, 0x02, 0x8b, 0x0f, 0xcc, 0xa0, 0xe5, 0xe8, 0x74, 0x6f, 0xb5, 0xd6, 0xf3, 0xac, 0x18, 0x99, 0xe2, 0x89, 0xce, 0xe0, 0x4f, 0xa8, 0xb4, 0xb7, 0xe0, 0x13, 0xfd, 0x81, 0x3b, 0xc4, 0x7c, 0xd9, 0xa8, 0xad, 0xd2, 0x66, 0xa2, 0x5f, 0x16, 0x05, 0x77, 0x95, 0x80, 0x14, 0x73, 0xcc, 0x93, 0x77, 0x14, 0x1a, 0x21, 0x65, 0x20, 0xad, 0xe6, 0x86, 0xfa, 0xb5, 0x77, 0xf5, 0x42, 0x54, 0xc7, 0xcf, 0x35, 0x9d, 0xfb, 0x0c, 0xaf, 0xcd, 0xeb, 0xa0, 0x89, 0x3e, 0x7b, 0xd3, 0x1b, 0x41, 0xd6, 0x49, 0x7e, 0x1e, 0xae, 0x2d, 0x0e, 0x25, 0x00, 0x5e, 0xb3, 0x71, 0x20, 0xbb, 0x00, 0x68, 0x22, 0xaf, 0xe0, 0xb8, 0x57, 0x9b, 0x36, 0x64, 0x24, 0x1e, 0xb9, 0x09, 0xf0, 0x1d, 0x91, 0x63, 0x55, 0xaa, 0xa6, 0xdf, 0x59, 0x89, 0x43, 0xc1, 0x78, 0x7f, 0x53, 0x5a, 0xd9, 0xa2, 0x5b, 0x7d, 0x20, 0xc5, 0xb9, 0xe5, 0x02, 0x76, 0x03, 0x26, 0x83, 0xa9, 0xcf, 0x95, 0x62, 0x68, 0x19, 0xc8, 0x11, 0x41, 0x4a, 0x73, 0x4e, 0xca, 0x2d, 0x47, 0xb3, 0x4a, 0xa9, 0x14, 0x7b, 0x52, 0x00, 0x51, 0x1b, 0x15, 0x29, 0x53, 0x9a, 0x3f, 0x57, 0x0f, 0xd6, 0xe4, 0xc6, 0x9b, 0xbc, 0x76, 0xa4, 0x60, 0x2b, 0x00, 0x74, 0xe6, 0x81, 0xb5, 0x6f, 0xba, 0x08, 0x1f, 0xe9, 0x1b, 0x57, 0x6b, 0xec, 0x96, 0xf2, 0x15, 0xd9, 0x0d, 0x2a, 0x21, 0x65, 0x63, 0xb6, 0xb6, 0xf9, 0xb9, 0xe7, 0x2e, 0x05, 0x34, 0xff, 0x64, 0x56, 0x85, 0xc5, 0x5d, 0x2d, 0xb0, 0x53, 0xa1, 0x8f, 0x9f, 0xa9, 0x99, 0x47, 0xba, 0x08, 0x6a, 0x07, 0x85, 0x6e, 0xe9, 0x70, 0x7a, 0x4b, 0x44, 0x29, 0xb3, 0xb5, 0x2e, 0x09, 0x75, 0xdb, 0x23, 0x26, 0x19, 0xc4, 0xb0, 0xa6, 0x6e, 0xad, 0x7d, 0xdf, 0xa7, 0x49, 0xb8, 0x60, 0xee, 0x9c, 0x66, 0xb2, 0xed, 0x8f, 0x71, 0x8c, 0xaa, 0xec, 0xff, 0x17, 0x9a, 0x69, 0x6c, 0x52, 0x64, 0x56, 0xe1, 0x9e, 0xb1, 0xc2, 0xa5, 0x02, 0x36, 0x19, 0x29, 0x4c, 0x09, 0x75, 0x40, 0x13, 0x59, 0xa0, 0x3e, 0x3a, 0x18, 0xe4, 0x9a, 0x98, 0x54, 0x3f, 0x65, 0x9d, 0x42, 0x5b, 0xd6, 0xe4, 0x8f, 0x6b, 0xd6, 0x3f, 0xf7, 0x99, 0x07, 0x9c, 0xd2, 0xa1, 0xf5, 0x30, 0xe8, 0xef, 0xe6, 0x38, 0x2d, 0x4d, 0xc1, 0x5d, 0x25, 0xf0, 0x86, 0x20, 0xdd, 0x4c, 0x26, 0xeb, 0x70, 0x84, 0xc6, 0xe9, 0x82, 0x63, 0x5e, 0xcc, 0x1e, 0x02, 0x3f, 0x6b, 0x68, 0x09, 0xc9, 0xef, 0xba, 0x3e, 0x14, 0x18, 0x97, 0x3c, 0xa1, 0x70, 0x6a, 0x6b, 0x84, 0x35, 0x7f, 0x68, 0x86, 0xe2, 0xa0, 0x52, 0x05, 0x53, 0x9c, 0xb7, 0x37, 0x07, 0x50, 0xaa, 0x1c, 0x84, 0x07, 0x3e, 0x5c, 0xae, 0xde, 0x7f, 0xec, 0x44, 0x7d, 0x8e, 0xb8, 0xf2, 0x16, 0x57, 0x37, 0xda, 0x3a, 0xb0, 0x0d, 0x0c, 0x50, 0xf0, 0x04, 0x1f, 0x1c, 0xf0, 0xff, 0xb3, 0x00, 0x02, 0x1a, 0xf5, 0x0c, 0xae, 0xb2, 0x74, 0xb5, 0x3c, 0x58, 0x7a, 0x83, 0x25, 0xbd, 0x21, 0x09, 0xdc, 0xf9, 0x13, 0x91, 0xd1, 0xf6, 0x2f, 0xa9, 0x7c, 0x73, 0x47, 0x32, 0x94, 0x01, 0x47, 0xf5, 0x22, 0x81, 0xe5, 0xe5, 0x3a, 0xdc, 0xda, 0xc2, 0x37, 0x34, 0x76, 0xb5, 0xc8, 0xa7, 0xdd, 0xf3, 0x9a, 0x46, 0x61, 0x44, 0xa9, 0x0e, 0x03, 0xd0, 0x0f, 0x3e, 0xc7, 0xc8, 0xec, 0x41, 0x1e, 0x75, 0xa4, 0x99, 0xcd, 0x38, 0xe2, 0x2f, 0x0e, 0xea, 0x3b, 0xa1, 0xbb, 0x80, 0x32, 0x31, 0xb3, 0x3e, 0x18, 0x38, 0x8b, 0x54, 0x4e, 0x08, 0xb9, 0x6d, 0x4f, 0x03, 0x0d, 0x42, 0x6f, 0xbf, 0x04, 0x0a, 0xf6, 0x90, 0x12, 0xb8, 0x2c, 0x79, 0x7c, 0x97, 0x24, 0x72, 0xb0, 0x79, 0x56, 0xaf, 0x89, 0xaf, 0xbc, 0x1f, 0x77, 0x9a, 0xde, 0x10, 0x08, 0x93, 0xd9, 0x12, 0xae, 0x8b, 0xb3, 0x2e, 0x3f, 0xcf, 0xdc, 0x1f, 0x72, 0x12, 0x55, 0x24, 0x71, 0x6b, 0x2e, 0xe6, 0xdd, 0x1a, 0x50, 0x87, 0xcd, 0x84, 0x9f, 0x18, 0x47, 0x58, 0x7a, 0x17, 0xda, 0x08, 0x74, 0xbc, 0x9a, 0x9f, 0xbc, 0x8c, 0x7d, 0x4b, 0xe9, 0x3a, 0xec, 0x7a, 0xec, 0xfa, 0x1d, 0x85, 0xdb, 0x66, 0x43, 0x09, 0x63, 0xd2, 0xc3, 0x64, 0xc4, 0x47, 0x18, 0x1c, 0xef, 0x08, 0xd9, 0x15, 0x32, 0x37, 0x3b, 0x43, 0xdd, 0x16, 0xba, 0xc2, 0x24, 0x43, 0x4d, 0xa1, 0x12, 0x51, 0xc4, 0x65, 0x2a, 0x02, 0x00, 0x94, 0x50, 0xdd, 0xe4, 0x3a, 0x13, 0x9e, 0xf8, 0xdf, 0x71, 0x55, 0x4e, 0x31, 0x10, 0xd6, 0x77, 0xac, 0x81, 0x9b, 0x19, 0x11, 0x5f, 0xf1, 0x56, 0x35, 0x04, 0x6b, 0xc7, 0xa3, 0xd7, 0x3b, 0x18, 0x11, 0x3c, 0x09, 0xa5, 0x24, 0x59, 0xed, 0xe6, 0x8f, 0xf2, 0xfa, 0xfb, 0xf1, 0x97, 0x2c, 0xbf, 0xba, 0x9e, 0x6e, 0x3c, 0x15, 0x1e, 0x70, 0x45, 0xe3, 0x86, 0xb1, 0x6f, 0xe9, 0xea, 0x0a, 0x5e, 0x0e, 0x86, 0xb3, 0x2a, 0x3e, 0x5a, 0x1c, 0xe7, 0x1f, 0x77, 0xfa, 0x06, 0x3d, 0x4e, 0xb9, 0xdc, 0x65, 0x29, 0x0f, 0x1d, 0xe7, 0x99, 0xd6, 0x89, 0x3e, 0x80, 0x25, 0xc8, 0x66, 0x52, 0x78, 0xc9, 0x4c, 0x2e, 0x6a, 0xb3, 0x10, 0x9c, 0xba, 0x0e, 0x15, 0xc6, 0x78, 0xea, 0xe2, 0x94, 0x53, 0x3c, 0xfc, 0xa5, 0xf4, 0x2d, 0x0a, 0x1e, 0xa7, 0x4e, 0xf7, 0xf2, 0x3d, 0x2b, 0x1d, 0x36, 0x0f, 0x26, 0x39, 0x19, 0x60, 0x79, 0xc2, 0x19, 0x08, 0xa7, 0x23, 0x52, 0xb6, 0x12, 0x13, 0xf7, 0x6e, 0xfe, 0xad, 0xeb, 0x66, 0x1f, 0xc3, 0xea, 0x95, 0x45, 0xbc, 0xe3, 0x83, 0xc8, 0x7b, 0xa6, 0xd1, 0x37, 0x7f, 0xb1, 0x28, 0xff, 0x8c, 0x01, 0xef, 0xdd, 0x32, 0xc3, 0xa5, 0x5a, 0x6c, 0xbe, 0x85, 0x21, 0x58, 0x65, 0x02, 0x98, 0xab, 0x68, 0x0f, 0xa5, 0xce, 0xee, 0x3b, 0x95, 0x2f, 0xdb, 0xad, 0x7d, 0xef, 0x2a, 0x84, 0x2f, 0x6e, 0x5b, 0x28, 0xb6, 0x21, 0x15, 0x70, 0x61, 0x07, 0x29, 0x75, 0x47, 0xdd, 0xec, 0x10, 0x15, 0x9f, 0x61, 0x30, 0xa8, 0xcc, 0x13, 0x96, 0xbd, 0x61, 0xeb, 0x1e, 0xfe, 0x34, 0x03, 0xcf, 0x63, 0x03, 0xaa, 0x90, 0x5c, 0x73, 0xb5, 0x39, 0xa2, 0x70, 0x4c, 0x0b, 0x9e, 0x9e, 0xd5, 0x14, 0xde, 0xaa, 0xcb, 0xbc, 0x86, 0xcc, 0xee, 0xa7, 0x2c, 0x62, 0x60, 0xab, 0x5c, 0xab, 0x9c, 0x6e, 0x84, 0xf3, 0xb2, 0xaf, 0x1e, 0x8b, 0x64, 0xca, 0xf0, 0xbd, 0x19, 0xb9, 0x69, 0x23, 0xa0, 0x50, 0xbb, 0x5a, 0x65, 0x32, 0x5a, 0x68, 0x40, 0xb3, 0xb4, 0x2a, 0x3c, 0xd5, 0xe9, 0x9e, 0x31, 0xf7, 0xb8, 0x21, 0xc0, 0x19, 0x0b, 0x54, 0x9b, 0x99, 0xa0, 0x5f, 0x87, 0x7e, 0x99, 0xf7, 0x95, 0xa8, 0x7d, 0x3d, 0x62, 0x9a, 0x88, 0x37, 0xf8, 0x77, 0x2d, 0xe3, 0x97, 0x5f, 0x93, 0xed, 0x11, 0x81, 0x12, 0x68, 0x16, 0x29, 0x88, 0x35, 0x0e, 0xd6, 0x1f, 0xe6, 0xc7, 0xa1, 0xdf, 0xde, 0x96, 0x99, 0xba, 0x58, 0x78, 0xa5, 0x84, 0xf5, 0x57, 0x63, 0x72, 0x22, 0x1b, 0xff, 0xc3, 0x83, 0x9b, 0x96, 0x46, 0xc2, 0x1a, 0xeb, 0x0a, 0xb3, 0xcd, 0x54, 0x30, 0x2e, 0x53, 0xe4, 0x48, 0xd9, 0x8f, 0x28, 0x31, 0xbc, 0x6d, 0xef, 0xf2, 0xeb, 0x58, 0xea, 0xff, 0xc6, 0x34, 0x61, 0xed, 0x28, 0xfe, 0x73, 0x3c, 0x7c, 0xee, 0xd9, 0x14, 0x4a, 0x5d, 0xe3, 0xb7, 0x64, 0xe8, 0x14, 0x5d, 0x10, 0x42, 0xe0, 0x13, 0x3e, 0x20, 0xb6, 0xe2, 0xee, 0x45, 0xea, 0xab, 0xaa, 0xa3, 0x15, 0x4f, 0x6c, 0xdb, 0xd0, 0x4f, 0xcb, 0xfa, 0x42, 0xf4, 0x42, 0xc7, 0xb5, 0xbb, 0x6a, 0xef, 0x1d, 0x3b, 0x4f, 0x65, 0x05, 0x21, 0xcd, 0x41, 0x9e, 0x79, 0x1e, 0xd8, 0xc7, 0x4d, 0x85, 0x86, 0x6a, 0x47, 0x4b, 0xe4, 0x50, 0x62, 0x81, 0x3d, 0xf2, 0xa1, 0x62, 0xcf, 0x46, 0x26, 0x8d, 0x5b, 0xa0, 0x83, 0x88, 0xfc, 0xa3, 0xb6, 0xc7, 0xc1, 0xc3, 0x24, 0x15, 0x7f, 0x92, 0x74, 0xcb, 0x69, 0x0b, 0x8a, 0x84, 0x47, 0x85, 0xb2, 0x92, 0x56, 0x00, 0xbf, 0x5b, 0x09, 0x9d, 0x48, 0x19, 0xad, 0x74, 0xb1, 0x62, 0x14, 0x00, 0x0e, 0x82, 0x23, 0x2a, 0x8d, 0x42, 0x58, 0xea, 0xf5, 0x55, 0x0c, 0x3e, 0xf4, 0xad, 0x1d, 0x61, 0x70, 0x3f, 0x23, 0x92, 0xf0, 0x72, 0x33, 0x41, 0x7e, 0x93, 0x8d, 0xf1, 0xec, 0x5f, 0xd6, 0xdb, 0x3b, 0x22, 0x6c, 0x59, 0x37, 0xde, 0x7c, 0x60, 0x74, 0xee, 0xcb, 0xa7, 0xf2, 0x85, 0x40, 0x6e, 0x32, 0x77, 0xce, 0x84, 0x80, 0x07, 0xa6, 0x9e, 0x50, 0xf8, 0x19, 0x55, 0xd8, 0xef, 0xe8, 0x35, 0x97, 0xd9, 0x61, 0xaa, 0xa7, 0x69, 0xa9, 0xc2, 0x06, 0x0c, 0xc5, 0xfc, 0xab, 0x04, 0x5a, 0xdc, 0xca, 0x0b, 0x80, 0x2e, 0x7a, 0x44, 0x9e, 0x84, 0x34, 0x45, 0xc3, 0x05, 0x67, 0xd5, 0xfd, 0xc9, 0x9e, 0x1e, 0x0e, 0xd3, 0xdb, 0x73, 0xdb, 0xcd, 0x88, 0x55, 0x10, 0x79, 0xda, 0x5f, 0x67, 0x40, 0x43, 0x67, 0xe3, 0x65, 0x34, 0xc4, 0xc5, 0xd8, 0x38, 0x3e, 0x71, 0x9e, 0xf8, 0x28, 0x3d, 0x20, 0xff, 0x6d, 0xf1, 0xe7, 0x21, 0x3e, 0x15, 0x4a, 0x3d, 0xb0, 0x8f, 0x2b, 0x9f, 0xe3, 0xe6, 0xf7, 0xad, 0x83, 0xdb, 0x68, 0x5a, 0x3d, 0xe9, 0xf7, 0x40, 0x81, 0x94, 0x1c, 0x26, 0x4c, 0xf6, 0x34, 0x29, 0x69, 0x94, 0xf7, 0x20, 0x15, 0x41, 0xf7, 0xd4, 0x02, 0x76, 0x2e, 0x6b, 0xf4, 0xbc, 0x68, 0x00, 0xa2, 0xd4, 0x71, 0x24, 0x08, 0xd4, 0x6a, 0xf4, 0x20, 0x33, 0xb7, 0xd4, 0xb7, 0x43, 0xaf, 0x61, 0x00, 0x50, 0x2e, 0xf6, 0x39, 0x1e, 0x46, 0x45, 0x24, 0x97, 0x74, 0x4f, 0x21, 0x14, 0x40, 0x88, 0x8b, 0xbf, 0x1d, 0xfc, 0x95, 0x4d, 0xaf, 0x91, 0xb5, 0x96, 0xd3, 0xdd, 0xf4, 0x70, 0x45, 0x2f, 0xa0, 0x66, 0xec, 0x09, 0xbc, 0xbf, 0x85, 0x97, 0xbd, 0x03, 0xd0, 0x6d, 0xac, 0x7f, 0x04, 0x85, 0xcb, 0x31, 0xb3, 0x27, 0xeb, 0x96, 0x41, 0x39, 0xfd, 0x55, 0xe6, 0x47, 0x25, 0xda, 0x9a, 0x0a, 0xca, 0xab, 0x25, 0x78, 0x50, 0x28, 0xf4, 0x29, 0x04, 0x53, 0xda, 0x86, 0x2c, 0x0a, 0xfb, 0x6d, 0xb6, 0xe9, 0x62, 0x14, 0xdc, 0x68, 0x00, 0x69, 0x48, 0xd7, 0xa4, 0xc0, 0x0e, 0x68, 0xee, 0x8d, 0xa1, 0x27, 0xa2, 0xfe, 0x3f, 0x4f, 0x8c, 0xad, 0x87, 0xe8, 0x06, 0xe0, 0x8c, 0xb5, 0xb6, 0xd6, 0xf4, 0x7a, 0x7c, 0x1e, 0xce, 0xaa, 0xec, 0x5f, 0x37, 0xd3, 0x99, 0xa3, 0x78, 0xce, 0x42, 0x2a, 0x6b, 0x40, 0x35, 0x9e, 0xfe, 0x20, 0xb9, 0x85, 0xf3, 0xd9, 0xab, 0xd7, 0x39, 0xee, 0x8b, 0x4e, 0x12, 0x3b, 0xf7, 0xfa, 0xc9, 0x1d, 0x56, 0x18, 0x6d, 0x4b, 0x31, 0x66, 0xa3, 0x26, 0xb2, 0x97, 0xe3, 0xea, 0x74, 0xfa, 0x6e, 0x3a, 0x32, 0x43, 0x5b, 0xdd, 0xf7, 0xe7, 0x41, 0x68, 0xfb, 0x20, 0x78, 0xca, 0x4e, 0xf5, 0x0a, 0xfb, 0x97, 0xb3, 0xfe, 0xd8, 0xac, 0x56, 0x40, 0x45, 0x27, 0x95, 0x48, 0xba, 0x3a, 0x3a, 0x53, 0x55, 0x87, 0x8d, 0x83, 0x20, 0xb7, 0xa9, 0x6b, 0xfe, 0x4b, 0x95, 0x96, 0xd0, 0xbc, 0x67, 0xa8, 0x55, 0x58, 0x9a, 0x15, 0xa1, 0x63, 0x29, 0xa9, 0xcc, 0x33, 0xdb, 0xe1, 0x99, 0x56, 0x4a, 0x2a, 0xa6, 0xf9, 0x25, 0x31, 0x3f, 0x1c, 0x7e, 0xf4, 0x5e, 0x7c, 0x31, 0x29, 0x90, 0x02, 0xe8, 0xf8, 0xfd, 0x70, 0x2f, 0x27, 0x04, 0x5c, 0x15, 0xbb, 0x80, 0xe3, 0x2c, 0x28, 0x05, 0x48, 0x15, 0xc1, 0x95, 0x22, 0x6d, 0xc6, 0xe4, 0x3f, 0x13, 0xc1, 0x48, 0xdc, 0x86, 0x0f, 0xc7, 0xee, 0xc9, 0xf9, 0x07, 0x0f, 0x1f, 0x04, 0x41, 0xa4, 0x79, 0x47, 0x40, 0x17, 0x6e, 0x88, 0x5d, 0xeb, 0x51, 0x5f, 0x32, 0xd1, 0xc0, 0x9b, 0xd5, 0x8f, 0xc1, 0xbc, 0xf2, 0x64, 0x35, 0x11, 0x41, 0x34, 0x78, 0x7b, 0x25, 0x60, 0x9c, 0x2a, 0x60, 0xa3, 0xe8, 0xf8, 0xdf, 0x1b, 0x6c, 0x63, 0x1f, 0xc2, 0xb4, 0x12, 0x0e, 0x9e, 0x32, 0xe1, 0x02, 0xd1, 0x4f, 0x66, 0xaf, 0x15, 0x81, 0xd1, 0xca, 0xe0, 0x95, 0x23, 0x6b, 0xe1, 0x92, 0x3e, 0x33, 0x62, 0x0b, 0x24, 0x3b, 0x22, 0xb9, 0xbe, 0xee, 0x0e, 0xa2, 0xb2, 0x85, 0x99, 0x0d, 0xba, 0xe6, 0x8c, 0x0c, 0x72, 0xde, 0x28, 0xf7, 0xa2, 0x2d, 0x45, 0x78, 0x12, 0xd0, 0xfd, 0x94, 0xb7, 0x95, 0x62, 0x08, 0x7d, 0x64, 0xf0, 0xf5, 0xcc, 0xe7, 0x6f, 0xa3, 0x49, 0x54, 0xfa, 0x48, 0x7d, 0x87, 0x27, 0xfd, 0x9d, 0xc3, 0x1e, 0x8d, 0x3e, 0xf3, 0x41, 0x63, 0x47, 0x0a, 0x74, 0xff, 0x2e, 0x99, 0xab, 0x6e, 0x6f, 0x3a, 0x37, 0xfd, 0xf8, 0xf4, 0x60, 0xdc, 0x12, 0xa8, 0xf8, 0xdd, 0xeb, 0xa1, 0x4c, 0xe1, 0x1b, 0x99, 0x0d, 0x6b, 0x6e, 0xdb, 0x10, 0x55, 0x7b, 0xc6, 0x37, 0x2c, 0x67, 0x6d, 0x3b, 0xd4, 0x65, 0x27, 0x04, 0xe8, 0xd0, 0xdc, 0xc7, 0x0d, 0x29, 0xf1, 0xa3, 0xff, 0x00, 0xcc, 0x92, 0x0f, 0x39, 0xb5, 0x0b, 0xed, 0x0f, 0x69, 0xfb, 0x9f, 0x7b, 0x66, 0x9c, 0x7d, 0xdb, 0xce, 0x0b, 0xcf, 0x91, 0xa0, 0xa3, 0x5e, 0x15, 0xd9, 0x88, 0x2f, 0x13, 0xbb, 0x24, 0xad, 0x5b, 0x51, 0xbf, 0x79, 0x94, 0x7b, 0xeb, 0xd6, 0x3b, 0x76, 0xb3, 0x2e, 0x39, 0x37, 0x79, 0x59, 0x11, 0xcc, 0x97, 0xe2, 0x26, 0x80, 0x2d, 0x31, 0x2e, 0xf4, 0xa7, 0xad, 0x42, 0x68, 0x3b, 0x2b, 0x6a, 0xc6, 0xcc, 0x4c, 0x75, 0x12, 0x1c, 0xf1, 0x2e, 0x78, 0x37, 0x42, 0x12, 0x6a, 0xe7, 0x51, 0x92, 0xb7, 0xe6, 0xbb, 0xa1, 0x06, 0x50, 0x63, 0xfb, 0x4b, 0x18, 0x10, 0x6b, 0x1a, 0xfa, 0xed, 0xca, 0x11, 0xd8, 0xbd, 0x25, 0x3d, 0xc9, 0xc3, 0xe1, 0xe2, 0x59, 0x16, 0x42, 0x44, 0x86, 0x13, 0x12, 0x0a, 0x6e, 0xec, 0x0c, 0xd9, 0x2a, 0xea, 0xab, 0xd5, 0x4e, 0x67, 0xaf, 0x64, 0x5f, 0xa8, 0x86, 0xda, 0x88, 0xe9, 0xbf, 0xbe, 0xfe, 0xc3, 0xe4, 0x64, 0x57, 0x80, 0xbc, 0x9d, 0x86, 0xc0, 0xf7, 0xf0, 0xf8, 0x7b, 0x78, 0x60, 0x4d, 0x60, 0x03, 0x60, 0x46, 0x83, 0xfd, 0xd1, 0xb0, 0x1f, 0x38, 0xf6, 0x04, 0xae, 0x45, 0x77, 0xcc, 0xfc, 0x36, 0xd7, 0x33, 0x6b, 0x42, 0x83, 0x71, 0xab, 0x1e, 0xf0, 0x87, 0x41, 0x80, 0xb0, 0x5f, 0x5e, 0x00, 0x3c, 0xbe, 0x57, 0xa0, 0x77, 0x24, 0xae, 0xe8, 0xbd, 0x99, 0x42, 0x46, 0x55, 0x61, 0x2e, 0x58, 0xbf, 0x8f, 0xf4, 0x58, 0x4e, 0xa2, 0xfd, 0xdd, 0xf2, 0x38, 0xef, 0x74, 0xf4, 0xc2, 0xbd, 0x89, 0x87, 0xc3, 0xf9, 0x66, 0x53, 0x74, 0x8e, 0xb3, 0xc8, 0x55, 0xf2, 0x75, 0xb4, 0xb9, 0xd9, 0xfc, 0x46, 0x61, 0x26, 0xeb, 0x7a, 0x84, 0xdf, 0x1d, 0x8b, 0x79, 0x0e, 0x6a, 0x84, 0xe2, 0x95, 0x5f, 0x91, 0x8e, 0x59, 0x6e, 0x46, 0x70, 0x57, 0xb4, 0x20, 0x91, 0x55, 0xd5, 0x8c, 0x4c, 0xde, 0x02, 0xc9, 0xe1, 0xac, 0x0b, 0xb9, 0xd0, 0x05, 0x82, 0xbb, 0x48, 0x62, 0xa8, 0x11, 0x9e, 0xa9, 0x74, 0x75, 0xb6, 0x19, 0x7f, 0xb7, 0x09, 0xdc, 0xa9, 0xe0, 0xa1, 0x09, 0x2d, 0x66, 0x33, 0x46, 0x32, 0xc4, 0x02, 0x1f, 0x5a, 0xe8, 0x8c, 0xbe, 0xf0, 0x09, 0x25, 0xa0, 0x99, 0x4a, 0x10, 0xfe, 0x6e, 0x1d, 0x1d, 0x3d, 0xb9, 0x1a, 0xdf, 0xa4, 0xa5, 0x0b, 0x0f, 0xf2, 0x86, 0xa1, 0x69, 0xf1, 0x68, 0x28, 0x83, 0xda, 0xb7, 0xdc, 0xfe, 0x06, 0x39, 0x57, 0x9b, 0xce, 0xe2, 0xa1, 0x52, 0x7f, 0xcd, 0x4f, 0x01, 0x5e, 0x11, 0x50, 0xfa, 0x83, 0x06, 0xa7, 0xc4, 0xb5, 0x02, 0xa0, 0x27, 0xd0, 0xe6, 0x0d, 0x27, 0x8c, 0xf8, 0x9a, 0x41, 0x86, 0x3f, 0x77, 0x06, 0x4c, 0x60, 0xc3, 0xb5, 0x06, 0xa8, 0x61, 0x28, 0x7a, 0x17, 0xf0, 0xe0, 0x86, 0xf5, 0xc0, 0xaa, 0x58, 0x60, 0x00, 0x62, 0x7d, 0xdc, 0x30, 0xd7, 0x9e, 0xe6, 0x11, 0x63, 0xea, 0x38, 0x23, 0x94, 0xdd, 0xc2, 0x53, 0x34, 0x16, 0xc2, 0xc2, 0x56, 0xee, 0xcb, 0xbb, 0xde, 0xb6, 0xbc, 0x90, 0xa1, 0x7d, 0xfc, 0xeb, 0x76, 0x1d, 0x59, 0xce, 0x09, 0xe4, 0x05, 0x6f, 0x88, 0x01, 0x7c, 0x4b, 0x3d, 0x0a, 0x72, 0x39, 0x24, 0x7c, 0x92, 0x7c, 0x5f, 0x72, 0xe3, 0x86, 0xb9, 0x9d, 0x4d, 0x72, 0xb4, 0x5b, 0xc1, 0x1a, 0xfc, 0xb8, 0x9e, 0xd3, 0x78, 0x55, 0x54, 0xed, 0xb5, 0xa5, 0xfc, 0x08, 0xd3, 0x7c, 0x3d, 0xd8, 0xc4, 0x0f, 0xad, 0x4d, 0x5e, 0xef, 0x50, 0x1e, 0xf8, 0xe6, 0x61, 0xb1, 0xd9, 0x14, 0x85, 0xa2, 0x3c, 0x13, 0x51, 0x6c, 0xe7, 0xc7, 0xd5, 0x6f, 0xc4, 0x4e, 0xe1, 0x56, 0xce, 0xbf, 0x2a, 0x36, 0x37, 0xc8, 0xc6, 0xdd, 0x34, 0x32, 0x9a, 0xd7, 0x12, 0x82, 0x63, 0x92, 0x8e, 0xfa, 0x0e, 0x67, 0xe0, 0x00, 0x60, 0x40, 0x37, 0xce, 0x39, 0x3a, 0xcf, 0xf5, 0xfa, 0xd3, 0x37, 0x77, 0xc2, 0xab, 0x1b, 0x2d, 0xc5, 0x5a, 0x9e, 0x67, 0xb0, 0x5c, 0x42, 0x37, 0xa3, 0x4f, 0x40, 0x27, 0x82, 0xd3, 0xbe, 0x9b, 0xbc, 0x99, 0x9d, 0x8e, 0x11, 0xd5, 0x15, 0x73, 0x0f, 0xbf, 0x7e, 0x1c, 0x2d, 0xd6, 0x7b, 0xc4, 0x00, 0xc7, 0x6b, 0x1b, 0x8c, 0xb7, 0x45, 0x90, 0xa1, 0x21, 0xbe, 0xb1, 0x6e, 0xb2, 0xb4, 0x6e, 0x36, 0x6a, 0x2f, 0xab, 0x48, 0x57, 0x79, 0x6e, 0x94, 0xbc, 0xd2, 0x76, 0xa3, 0xc6, 0xc8, 0xc2, 0x49, 0x65, 0xee, 0xf8, 0x0f, 0x53, 0x7d, 0xde, 0x8d, 0x46, 0x1d, 0x0a, 0x73, 0xd5, 0xc6, 0x4d, 0xd0, 0x4c, 0xdb, 0xbb, 0x39, 0x29, 0x50, 0x46, 0xba, 0xa9, 0xe8, 0x26, 0x95, 0xac, 0x04, 0xe3, 0x5e, 0xbe, 0xf0, 0xd5, 0xfa, 0xa1, 0x9a, 0x51, 0x2d, 0x6a, 0xe2, 0x8c, 0xef, 0x63, 0x22, 0xee, 0x86, 0x9a, 0xb8, 0xc2, 0x89, 0xc0, 0xf6, 0x2e, 0x24, 0x43, 0xaa, 0x03, 0x1e, 0xa5, 0xa4, 0xd0, 0xf2, 0x9c, 0xba, 0x61, 0xc0, 0x83, 0x4d, 0x6a, 0xe9, 0x9b, 0x50, 0x15, 0xe5, 0x8f, 0xd6, 0x5b, 0x64, 0xba, 0xf9, 0xa2, 0x26, 0x28, 0xe1, 0x3a, 0x3a, 0xa7, 0x86, 0x95, 0xa9, 0x4b, 0xe9, 0x62, 0x55, 0xef, 0xd3, 0xef, 0x2f, 0xc7, 0xda, 0xf7, 0x52, 0xf7, 0x69, 0x6f, 0x04, 0x3f, 0x59, 0x0a, 0xfa, 0x77, 0x15, 0xa9, 0xe4, 0x80, 0x01, 0x86, 0xb0, 0x87, 0xad, 0xe6, 0x09, 0x9b, 0x93, 0xe5, 0x3e, 0x3b, 0x5a, 0xfd, 0x90, 0xe9, 0x97, 0xd7, 0x34, 0x9e, 0xd9, 0xb7, 0xf0, 0x2c, 0x51, 0x8b, 0x2b, 0x02, 0x3a, 0xac, 0xd5, 0x96, 0x7d, 0xa6, 0x7d, 0x01, 0xd6, 0x3e, 0xcf, 0xd1, 0x28, 0x2d, 0x7d, 0x7c, 0xcf, 0x25, 0x9f, 0x1f, 0x9b, 0xb8, 0xf2, 0xad, 0x72, 0xb4, 0xd6, 0x5a, 0x4c, 0xf5, 0x88, 0x5a, 0x71, 0xac, 0x29, 0xe0, 0xe6, 0xa5, 0x19, 0xe0, 0xfd, 0xac, 0xb0, 0x47, 0x9b, 0xfa, 0x93, 0xed, 0x8d, 0xc4, 0xd3, 0xe8, 0xcc, 0x57, 0x3b, 0x28, 0x29, 0x66, 0xd5, 0xf8, 0x28, 0x2e, 0x13, 0x79, 0x91, 0x01, 0x5f, 0x78, 0x55, 0x60, 0x75, 0xed, 0x44, 0x0e, 0x96, 0xf7, 0x8c, 0x5e, 0xd3, 0xe3, 0xd4, 0x6d, 0x05, 0x15, 0xba, 0x6d, 0xf4, 0x88, 0x25, 0x61, 0xa1, 0x03, 0xbd, 0xf0, 0x64, 0x05, 0x15, 0x9e, 0xeb, 0xc3, 0xa2, 0x57, 0x90, 0x3c, 0xec, 0x1a, 0x27, 0x97, 0x2a, 0x07, 0x3a, 0xa9, 0x9b, 0x6d, 0x3f, 0x1b, 0xf5, 0x21, 0x63, 0x1e, 0xfb, 0x66, 0x9c, 0xf5, 0x19, 0xf3, 0xdc, 0x26, 0x28, 0xd9, 0x33, 0x75, 0xf5, 0xfd, 0x55, 0xb1, 0x82, 0x34, 0x56, 0x03, 0xbb, 0x3c, 0xba, 0x8a, 0x11, 0x77, 0x51, 0x28, 0xf8, 0xd9, 0x0a, 0xc2, 0x67, 0x51, 0xcc, 0xab, 0x5f, 0x92, 0xad, 0xcc, 0x51, 0x17, 0xe8, 0x4d, 0x8e, 0xdc, 0x30, 0x38, 0x62, 0x58, 0x9d, 0x37, 0x91, 0xf9, 0x20, 0x93, 0xc2, 0x90, 0x7a, 0xea, 0xce, 0x7b, 0x3e, 0xfb, 0x64, 0xce, 0x21, 0x51, 0x32, 0xbe, 0x4f, 0x77, 0x7e, 0xe3, 0xb6, 0xa8, 0x46, 0x3d, 0x29, 0xc3, 0x69, 0x53, 0xde, 0x48, 0x80, 0xe6, 0x13, 0x64, 0x10, 0x08, 0xae, 0xa2, 0x24, 0xb2, 0x6d, 0xdd, 0xfd, 0x2d, 0x85, 0x69, 0x66, 0x21, 0x07, 0x09, 0x0a, 0x46, 0x9a, 0xb3, 0xdd, 0xc0, 0x45, 0x64, 0xcf, 0xde, 0x6c, 0x58, 0xae, 0xc8, 0x20, 0x1c, 0xdd, 0xf7, 0xbe, 0x5b, 0x40, 0x8d, 0x58, 0x1b, 0x7f, 0x01, 0xd2, 0xcc, 0xbb, 0xe3, 0xb4, 0x6b, 0x7e, 0x6a, 0xa2, 0xdd, 0x45, 0xff, 0x59, 0x3a, 0x44, 0x0a, 0x35, 0x3e, 0xd5, 0xcd, 0xb4, 0xbc, 0xa8, 0xce, 0xea, 0x72, 0xbb, 0x84, 0x64, 0xfa, 0xae, 0x12, 0x66, 0x8d, 0x47, 0x6f, 0x3c, 0xbf, 0x63, 0xe4, 0x9b, 0xd2, 0x9e, 0x5d, 0x2f, 0x54, 0x1b, 0x77, 0xc2, 0xae, 0x70, 0x63, 0x4e, 0xf6, 0x8d, 0x0d, 0x0e, 0x74, 0x57, 0x13, 0x5b, 0xe7, 0x71, 0x16, 0x72, 0xf8, 0x5d, 0x7d, 0x53, 0xaf, 0x08, 0xcb, 0x40, 0x40, 0xcc, 0xe2, 0xb4, 0x4e, 0x6a, 0x46, 0xd2, 0x34, 0x84, 0xaf, 0x15, 0x01, 0x28, 0x04, 0xb0, 0xe1, 0x1d, 0x3a, 0x98, 0x95, 0xb4, 0x9f, 0xb8, 0x06, 0x48, 0xa0, 0x6e, 0xce, 0x82, 0x3b, 0x3f, 0x6f, 0x82, 0xab, 0x20, 0x35, 0x4b, 0x1d, 0x1a, 0x01, 0xf8, 0x27, 0x72, 0x27, 0xb1, 0x60, 0x15, 0x61, 0xdc, 0x3f, 0x93, 0xe7, 0x2b, 0x79, 0x3a, 0xbb, 0xbd, 0x25, 0x45, 0x34, 0xe1, 0x39, 0x88, 0xa0, 0x4b, 0x79, 0xce, 0x51, 0xb7, 0xc9, 0x32, 0x2f, 0xc9, 0xba, 0x1f, 0xa0, 0x7e, 0xc8, 0x1c, 0xe0, 0xf6, 0xd1, 0xc7, 0xbc, 0xc3, 0x11, 0x01, 0xcf, 0xc7, 0xaa, 0xe8, 0xa1, 0x49, 0x87, 0x90, 0x1a, 0x9a, 0xbd, 0x4f, 0xd4, 0xcb, 0xde, 0xda, 0xd0, 0x38, 0xda, 0x0a, 0xd5, 0x2a, 0xc3, 0x39, 0x03, 0x67, 0x36, 0x91, 0xc6, 0x7c, 0x31, 0xf9, 0x8d, 0x4f, 0x2b, 0xb1, 0xe0, 0xb7, 0x59, 0x9e, 0xf7, 0x3a, 0xbb, 0xf5, 0x43, 0xff, 0x19, 0xd5, 0xf2, 0x9c, 0x45, 0xd9, 0x27, 0x2c, 0x22, 0x97, 0xbf, 0x2a, 0xfc, 0xe6, 0x15, 0x71, 0xfc, 0x91, 0x0f, 0x25, 0x15, 0x94, 0x9b, 0x61, 0x93, 0xe5, 0xfa, 0xeb, 0x9c, 0xb6, 0xce, 0x59, 0x64, 0xa8, 0xc2, 0xd1, 0xa8, 0xba, 0x12, 0x5e, 0x07, 0xc1, 0xb6, 0x0c, 0x6a, 0x05, 0xe3, 0x65, 0x50, 0xd2, 0x10, 0x42, 0xa4, 0x03, 0xcb, 0x0e, 0x6e, 0xec, 0xe0, 0x3b, 0xdb, 0x98, 0x16, 0xbe, 0xa0, 0x98, 0x4c, 0x64, 0xe9, 0x78, 0x32, 0x32, 0x95, 0x1f, 0x9f, 0xdf, 0x92, 0xd3, 0xe0, 0x2b, 0x34, 0xa0, 0xd3, 0x1e, 0xf2, 0x71, 0x89, 0x41, 0x74, 0x0a, 0x1b, 0x8c, 0x34, 0xa3, 0x4b, 0x20, 0x71, 0xbe, 0xc5, 0xd8, 0x32, 0x76, 0xc3, 0x8d, 0x9f, 0x35, 0xdf, 0x2e, 0x2f, 0x99, 0x9b, 0x47, 0x6f, 0x0b, 0xe6, 0x1d, 0xf1, 0xe3, 0x0f, 0x54, 0xda, 0x4c, 0xe5, 0x91, 0xd8, 0xda, 0x1e, 0xcf, 0x79, 0x62, 0xce, 0x6f, 0x7e, 0x3e, 0xcd, 0x66, 0xb1, 0x18, 0x16, 0x05, 0x1d, 0x2c, 0xfd, 0xc5, 0xd2, 0x8f, 0x84, 0x99, 0x22, 0xfb, 0xf6, 0x57, 0xf3, 0x23, 0xf5, 0x23, 0x76, 0x32, 0xa6, 0x31, 0x35, 0xa8, 0x93, 0x02, 0xcd, 0xcc, 0x56, 0x62, 0x81, 0xf0, 0xac, 0xb5, 0xeb, 0x75, 0x5a, 0x97, 0x36, 0x16, 0x6e, 0xcc, 0x73, 0xd2, 0x88, 0x92, 0x62, 0x96, 0xde, 0xd0, 0x49, 0xb9, 0x81, 0x1b, 0x90, 0x50, 0x4c, 0x14, 0x56, 0xc6, 0x71, 0xbd, 0xc7, 0xc6, 0xe6, 0x0a, 0x14, 0x7a, 0x32, 0x06, 0xd0, 0xe1, 0x45, 0x9a, 0x7b, 0xf2, 0xc3, 0xfd, 0x53, 0xaa, 0xc9, 0x00, 0x0f, 0xa8, 0x62, 0xe2, 0xbf, 0x25, 0xbb, 0xf6, 0xd2, 0xbd, 0x35, 0x05, 0x69, 0x12, 0x71, 0x22, 0x02, 0x04, 0xb2, 0x7c, 0xcf, 0xcb, 0xb6, 0x2b, 0x9c, 0x76, 0xcd, 0xc0, 0x3e, 0x11, 0x53, 0xd3, 0xe3, 0x40, 0x16, 0x60, 0xbd, 0xab, 0x38, 0xf0, 0xad, 0x47, 0x25, 0x9c, 0x20, 0x38, 0xba, 0x76, 0xce, 0x46, 0xf7, 0xc5, 0xa1, 0xaf, 0x77, 0x60, 0x60, 0x75, 0x20, 0x4e, 0xfe, 0xcb, 0x85, 0xd8, 0x8d, 0xe8, 0x8a, 0xb0, 0xf9, 0xaa, 0x7a, 0x7e, 0xaa, 0xf9, 0x4c, 0x5c, 0xc2, 0x48, 0x19, 0x8c, 0x8a, 0xfb, 0x02, 0xe4, 0x6a, 0xc3, 0x01, 0xf9, 0xe1, 0xeb, 0xd6, 0x69, 0xf8, 0xd4, 0x90, 0xa0, 0xde, 0x5c, 0xa6, 0x2d, 0x25, 0x09, 0x3f, 0x9f, 0xe6, 0x08, 0xc2, 0x32, 0x61, 0x4e, 0xb7, 0x5b, 0xe2, 0x77, 0xce, 0xe3, 0xdf, 0x8f, 0x57, 0xe6, 0x72, 0xc3, 0x3a, 0x68, 0x70, 0x72, 0x4f, 0x42, 0x6e, 0x61, 0x65, 0x6c, 0x6f, 0x68, 0x65, 0x53, 0x72, 0x65, 0x64, 0x44, 0x79, 0x72, 0x63, 0x74, 0x62, 0x75, 0x6f, 0x2e, 0x2f, 0x41, 0x42, 0x43, 0x44, 0x45, 0x46, 0x47, 0x48, 0x49, 0x4a, 0x4b, 0x4c, 0x4d, 0x4e, 0x4f, 0x50, 0x51, 0x52, 0x53, 0x54, 0x55, 0x56, 0x57, 0x58, 0x59, 0x5a, 0x61, 0x62, 0x63, 0x64, 0x65, 0x66, 0x67, 0x68, 0x69, 0x6a, 0x6b, 0x6c, 0x6d, 0x6e, 0x6f, 0x70, 0x71, 0x72, 0x73, 0x74, 0x75, 0x76, 0x77, 0x78, 0x79, 0x7a, 0x30, 0x31, 0x32, 0x33, 0x34, 0x35, 0x36, 0x37, 0x38, 0x39, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x40, 0x40, 0x40, 0x40, 0x40, 0x40, 0x40, 0x40, 0x40, 0x40, 0x40, 0x40, 0x40, 0x40, 0x00, 0x01, 0x36, 0x37, 0x38, 0x39, 0x3a, 0x3b, 0x3c, 0x3d, 0x3e, 0x3f, 0x40, 0x40, 0x40, 0x40, 0x40, 0x40, 0x40, 0x02, 0x03, 0x04, 0x05, 0x06, 0x07, 0x08, 0x09, 0x0a, 0x0b, 0x0c, 0x0d, 0x0e, 0x0f, 0x10, 0x11, 0x12, 0x13, 0x14, 0x15, 0x16, 0x17, 0x18, 0x19, 0x1a, 0x1b, 0x40, 0x40, 0x40, 0x40, 0x40, 0x40, 0x1c, 0x1d, 0x1e, 0x1f, 0x20, 0x21, 0x22, 0x23, 0x24, 0x25, 0x26, 0x27, 0x28, 0x29, 0x2a, 0x2b, 0x2c, 0x2d, 0x2e, 0x2f, 0x30, 0x31, 0x32, 0x33, 0x34, 0x35, 0x40, 0x40, 0x40, 0x40, 0x40, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x10, 0x00, 0x00, 0x00, 0x10, 0x00, 0x00, 0x00, 0x00, 0x10, 0x00, 0x00, 0x00, 0x10, 0x00, 0x00, 0x10, 0x10, 0x00, 0x00, 0x10, 0x10, 0x00, 0x00, 0x00, 0x00, 0x10, 0x00, 0x00, 0x00, 0x10, 0x00, 0x10, 0x00, 0x10, 0x00, 0x10, 0x00, 0x10, 0x00, 0x00, 0x10, 0x10, 0x00, 0x00, 0x10, 0x10, 0x00, 0x10, 0x10, 0x10, 0x00, 0x10, 0x10, 0x10, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x20, 0x00, 0x00, 0x00, 0x20, 0x00, 0x00, 0x00, 0x00, 0x20, 0x00, 0x00, 0x00, 0x20, 0x00, 0x00, 0x20, 0x20, 0x00, 0x00, 0x20, 0x20, 0x00, 0x00, 0x00, 0x00, 0x20, 0x00, 0x00, 0x00, 0x20, 0x00, 0x20, 0x00, 0x20, 0x00, 0x20, 0x00, 0x20, 0x00, 0x00, 0x20, 0x20, 0x00, 0x00, 0x20, 0x20, 0x00, 0x20, 0x20, 0x20, 0x00, 0x20, 0x20, 0x20, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x40, 0x00, 0x00, 0x00, 0x40, 0x00, 0x00, 0x00, 0x00, 0x40, 0x00, 0x00, 0x00, 0x40, 0x00, 0x00, 0x40, 0x40, 0x00, 0x00, 0x40, 0x40, 0x00, 0x00, 0x00, 0x00, 0x40, 0x00, 0x00, 0x00, 0x40, 0x00, 0x40, 0x00, 0x40, 0x00, 0x40, 0x00, 0x40, 0x00, 0x00, 0x40, 0x40, 0x00, 0x00, 0x40, 0x40, 0x00, 0x40, 0x40, 0x40, 0x00, 0x40, 0x40, 0x40, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x80, 0x00, 0x00, 0x00, 0x80, 0x00, 0x00, 0x00, 0x00, 0x80, 0x00, 0x00, 0x00, 0x80, 0x00, 0x00, 0x80, 0x80, 0x00, 0x00, 0x80, 0x80, 0x00, 0x00, 0x00, 0x00, 0x80, 0x00, 0x00, 0x00, 0x80, 0x00, 0x80, 0x00, 0x80, 0x00, 0x80, 0x00, 0x80, 0x00, 0x00, 0x80, 0x80, 0x00, 0x00, 0x80, 0x80, 0x00, 0x80, 0x80, 0x80, 0x00, 0x80, 0x80, 0x80, 0x00, 0x00, 0x00, 0x00, 0x00, 0x01, 0x00, 0x00, 0x00, 0x00, 0x01, 0x00, 0x00, 0x01, 0x01, 0x00, 0x00, 0x00, 0x00, 0x01, 0x00, 0x01, 0x00, 0x01, 0x00, 0x00, 0x01, 0x01, 0x00, 0x01, 0x01, 0x01, 0x00, 0x00, 0x00, 0x00, 0x01, 0x01, 0x00, 0x00, 0x01, 0x00, 0x01, 0x00, 0x01, 0x01, 0x01, 0x00, 0x01, 0x00, 0x00, 0x01, 0x01, 0x01, 0x00, 0x01, 0x01, 0x00, 0x01, 0x01, 0x01, 0x01, 0x01, 0x01, 0x01, 0x00, 0x00, 0x00, 0x00, 0x02, 0x00, 0x00, 0x00, 0x00, 0x02, 0x00, 0x00, 0x02, 0x02, 0x00, 0x00, 0x00, 0x00, 0x02, 0x00, 0x02, 0x00, 0x02, 0x00, 0x00, 0x02, 0x02, 0x00, 0x02, 0x02, 0x02, 0x00, 0x00, 0x00, 0x00, 0x02, 0x02, 0x00, 0x00, 0x02, 0x00, 0x02, 0x00, 0x02, 0x02, 0x02, 0x00, 0x02, 0x00, 0x00, 0x02, 0x02, 0x02, 0x00, 0x02, 0x02, 0x00, 0x02, 0x02, 0x02, 0x02, 0x02, 0x02, 0x02, 0x00, 0x00, 0x00, 0x00, 0x04, 0x00, 0x00, 0x00, 0x00, 0x04, 0x00, 0x00, 0x04, 0x04, 0x00, 0x00, 0x00, 0x00, 0x04, 0x00, 0x04, 0x00, 0x04, 0x00, 0x00, 0x04, 0x04, 0x00, 0x04, 0x04, 0x04, 0x00, 0x00, 0x00, 0x00, 0x04, 0x04, 0x00, 0x00, 0x04, 0x00, 0x04, 0x00, 0x04, 0x04, 0x04, 0x00, 0x04, 0x00, 0x00, 0x04, 0x04, 0x04, 0x00, 0x04, 0x04, 0x00, 0x04, 0x04, 0x04, 0x04, 0x04, 0x04, 0x04, 0x00, 0x00, 0x00, 0x00, 0x08, 0x00, 0x00, 0x00, 0x00, 0x08, 0x00, 0x00, 0x08, 0x08, 0x00, 0x00, 0x00, 0x00, 0x08, 0x00, 0x08, 0x00, 0x08, 0x00, 0x00, 0x08, 0x08, 0x00, 0x08, 0x08, 0x08, 0x00, 0x00, 0x00, 0x00, 0x08, 0x08, 0x00, 0x00, 0x08, 0x00, 0x08, 0x00, 0x08, 0x08, 0x08, 0x00, 0x08, 0x00, 0x00, 0x08, 0x08, 0x08, 0x00, 0x08, 0x08, 0x00, 0x08, 0x08, 0x08, 0x08, 0x08, 0x08, 0x08, 0x00, 0x00, 0x00, 0x00, 0x01, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x01, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x01, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x01, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x01, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x01, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x01, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x01, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x10, 0x00, 0x00, 0x00, 0x10, 0x00, 0x00, 0x10, 0x00, 0x00, 0x00, 0x10, 0x00, 0x00, 0x00, 0x10, 0x10, 0x00, 0x00, 0x10, 0x10, 0x00, 0x10, 0x00, 0x00, 0x00, 0x10, 0x00, 0x00, 0x00, 0x10, 0x00, 0x10, 0x00, 0x10, 0x00, 0x10, 0x00, 0x10, 0x10, 0x00, 0x00, 0x10, 0x10, 0x00, 0x00, 0x10, 0x10, 0x10, 0x00, 0x10, 0x10, 0x10, 0x00, 0x00, 0x00, 0x00, 0x00, 0x02, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x02, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x02, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x02, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x02, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x02, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x02, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x02, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x20, 0x00, 0x00, 0x00, 0x20, 0x00, 0x00, 0x20, 0x00, 0x00, 0x00, 0x20, 0x00, 0x00, 0x00, 0x20, 0x20, 0x00, 0x00, 0x20, 0x20, 0x00, 0x20, 0x00, 0x00, 0x00, 0x20, 0x00, 0x00, 0x00, 0x20, 0x00, 0x20, 0x00, 0x20, 0x00, 0x20, 0x00, 0x20, 0x20, 0x00, 0x00, 0x20, 0x20, 0x00, 0x00, 0x20, 0x20, 0x20, 0x00, 0x20, 0x20, 0x20, 0x00, 0x00, 0x00, 0x00, 0x00, 0x04, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x04, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x04, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x04, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x04, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x04, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x04, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x04, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x40, 0x00, 0x00, 0x00, 0x40, 0x00, 0x00, 0x40, 0x00, 0x00, 0x00, 0x40, 0x00, 0x00, 0x00, 0x40, 0x40, 0x00, 0x00, 0x40, 0x40, 0x00, 0x40, 0x00, 0x00, 0x00, 0x40, 0x00, 0x00, 0x00, 0x40, 0x00, 0x40, 0x00, 0x40, 0x00, 0x40, 0x00, 0x40, 0x40, 0x00, 0x00, 0x40, 0x40, 0x00, 0x00, 0x40, 0x40, 0x40, 0x00, 0x40, 0x40, 0x40, 0x00, 0x00, 0x00, 0x00, 0x00, 0x08, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x08, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x08, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x08, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x08, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x08, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x08, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x08, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x80, 0x00, 0x00, 0x00, 0x80, 0x00, 0x00, 0x80, 0x00, 0x00, 0x00, 0x80, 0x00, 0x00, 0x00, 0x80, 0x80, 0x00, 0x00, 0x80, 0x80, 0x00, 0x80, 0x00, 0x00, 0x00, 0x80, 0x00, 0x00, 0x00, 0x80, 0x00, 0x80, 0x00, 0x80, 0x00, 0x80, 0x00, 0x80, 0x80, 0x00, 0x00, 0x80, 0x80, 0x00, 0x00, 0x80, 0x80, 0x80, 0x00, 0x80, 0x80, 0x80, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x01, 0x00, 0x00, 0x00, 0x01, 0x00, 0x00, 0x01, 0x00, 0x00, 0x00, 0x01, 0x00, 0x00, 0x00, 0x01, 0x01, 0x00, 0x00, 0x01, 0x01, 0x00, 0x01, 0x00, 0x00, 0x00, 0x01, 0x00, 0x00, 0x00, 0x01, 0x00, 0x01, 0x00, 0x01, 0x00, 0x01, 0x00, 0x01, 0x01, 0x00, 0x00, 0x01, 0x01, 0x00, 0x00, 0x01, 0x01, 0x01, 0x00, 0x01, 0x01, 0x01, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x02, 0x00, 0x00, 0x00, 0x02, 0x00, 0x00, 0x02, 0x00, 0x00, 0x00, 0x02, 0x00, 0x00, 0x00, 0x02, 0x02, 0x00, 0x00, 0x02, 0x02, 0x00, 0x02, 0x00, 0x00, 0x00, 0x02, 0x00, 0x00, 0x00, 0x02, 0x00, 0x02, 0x00, 0x02, 0x00, 0x02, 0x00, 0x02, 0x02, 0x00, 0x00, 0x02, 0x02, 0x00, 0x00, 0x02, 0x02, 0x02, 0x00, 0x02, 0x02, 0x02, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x04, 0x00, 0x00, 0x00, 0x04, 0x00, 0x00, 0x04, 0x00, 0x00, 0x00, 0x04, 0x00, 0x00, 0x00, 0x04, 0x04, 0x00, 0x00, 0x04, 0x04, 0x00, 0x04, 0x00, 0x00, 0x00, 0x04, 0x00, 0x00, 0x00, 0x04, 0x00, 0x04, 0x00, 0x04, 0x00, 0x04, 0x00, 0x04, 0x04, 0x00, 0x00, 0x04, 0x04, 0x00, 0x00, 0x04, 0x04, 0x04, 0x00, 0x04, 0x04, 0x04, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x08, 0x00, 0x00, 0x00, 0x08, 0x00, 0x00, 0x08, 0x00, 0x00, 0x00, 0x08, 0x00, 0x00, 0x00, 0x08, 0x08, 0x00, 0x00, 0x08, 0x08, 0x00, 0x08, 0x00, 0x00, 0x00, 0x08, 0x00, 0x00, 0x00, 0x08, 0x00, 0x08, 0x00, 0x08, 0x00, 0x08, 0x00, 0x08, 0x08, 0x00, 0x00, 0x08, 0x08, 0x00, 0x00, 0x08, 0x08, 0x08, 0x00, 0x08, 0x08, 0x08, 0x01, 0x01, 0x02, 0x02, 0x02, 0x02, 0x02, 0x02, 0x01, 0x02, 0x02, 0x02, 0x02, 0x02, 0x02, 0x01, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x02, 0x00, 0x01, 0x00, 0x00, 0x00, 0x01, 0x00, 0x02, 0x00, 0x00, 0x00, 0x08, 0x00, 0x00, 0x00, 0x0a, 0x00, 0x01, 0x00, 0x08, 0x00, 0x01, 0x00, 0x0a, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x10, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x10, 0x00, 0x00, 0x40, 0x00, 0x00, 0x00, 0x40, 0x10, 0x00, 0x00, 0x40, 0x00, 0x00, 0x00, 0x40, 0x10, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x40, 0x00, 0x20, 0x00, 0x00, 0x00, 0x20, 0x00, 0x40, 0x00, 0x00, 0x80, 0x00, 0x00, 0x00, 0x80, 0x40, 0x00, 0x20, 0x80, 0x00, 0x00, 0x20, 0x80, 0x40, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x10, 0x00, 0x00, 0x08, 0x00, 0x00, 0x00, 0x08, 0x10, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x10, 0x00, 0x00, 0x08, 0x00, 0x00, 0x00, 0x08, 0x10, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x20, 0x00, 0x00, 0x00, 0x02, 0x00, 0x00, 0x00, 0x22, 0x00, 0x02, 0x00, 0x00, 0x00, 0x02, 0x00, 0x20, 0x00, 0x02, 0x00, 0x02, 0x00, 0x02, 0x00, 0x22, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x10, 0x00, 0x00, 0x00, 0x10, 0x00, 0x04, 0x00, 0x00, 0x00, 0x04, 0x00, 0x00, 0x00, 0x04, 0x00, 0x10, 0x00, 0x04, 0x00, 0x10, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x40, 0x00, 0x00, 0x00, 0x08, 0x00, 0x00, 0x00, 0x48, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x40, 0x00, 0x00, 0x00, 0x08, 0x00, 0x00, 0x00, 0x48, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x40, 0x00, 0x00, 0x80, 0x00, 0x00, 0x00, 0x80, 0x40, 0x00, 0x08, 0x00, 0x00, 0x00, 0x08, 0x00, 0x40, 0x00, 0x08, 0x80, 0x00, 0x00, 0x08, 0x80, 0x40, 0x00, 0x00, 0x00, 0x00, 0x00, 0x10, 0x00, 0x00, 0x00, 0x00, 0x40, 0x00, 0x00, 0x10, 0x40, 0x00, 0x00, 0x00, 0x00, 0x04, 0x00, 0x10, 0x00, 0x04, 0x00, 0x00, 0x40, 0x04, 0x00, 0x10, 0x40, 0x04, 0x00, 0x00, 0x01, 0x00, 0x00, 0x10, 0x01, 0x00, 0x00, 0x00, 0x41, 0x00, 0x00, 0x10, 0x41, 0x00, 0x00, 0x00, 0x01, 0x04, 0x00, 0x10, 0x01, 0x04, 0x00, 0x00, 0x41, 0x04, 0x00, 0x10, 0x41, 0x04, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x80, 0x00, 0x02, 0x00, 0x00, 0x00, 0x02, 0x00, 0x80, 0x00, 0x00, 0x02, 0x00, 0x00, 0x00, 0x02, 0x80, 0x00, 0x02, 0x02, 0x00, 0x00, 0x02, 0x02, 0x80, 0x00, 0x00, 0x00, 0x20, 0x00, 0x00, 0x00, 0xa0, 0x00, 0x02, 0x00, 0x20, 0x00, 0x02, 0x00, 0xa0, 0x00, 0x00, 0x02, 0x20, 0x00, 0x00, 0x02, 0xa0, 0x00, 0x02, 0x02, 0x20, 0x00, 0x02, 0x02, 0xa0, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x20, 0x00, 0x00, 0x04, 0x00, 0x00, 0x00, 0x04, 0x20, 0x00, 0x00, 0x00, 0x04, 0x00, 0x00, 0x00, 0x24, 0x00, 0x00, 0x04, 0x04, 0x00, 0x00, 0x04, 0x24, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x20, 0x00, 0x00, 0x04, 0x00, 0x00, 0x00, 0x04, 0x20, 0x00, 0x00, 0x00, 0x04, 0x00, 0x00, 0x00, 0x24, 0x00, 0x00, 0x04, 0x04, 0x00, 0x00, 0x04, 0x24, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x01, 0x00, 0x08, 0x00, 0x00, 0x00, 0x08, 0x00, 0x01, 0x00, 0x80, 0x00, 0x00, 0x00, 0x80, 0x00, 0x01, 0x00, 0x88, 0x00, 0x00, 0x00, 0x88, 0x00, 0x01, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x01, 0x00, 0x08, 0x00, 0x00, 0x00, 0x08, 0x00, 0x01, 0x00, 0x80, 0x00, 0x00, 0x00, 0x80, 0x00, 0x01, 0x00, 0x88, 0x00, 0x00, 0x00, 0x88, 0x00, 0x01, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x80, 0x00, 0x00, 0x00, 0x80, 0x00, 0x00, 0x00, 0x00, 0x20, 0x00, 0x00, 0x00, 0x20, 0x00, 0x00, 0x80, 0x20, 0x00, 0x00, 0x80, 0x20, 0x00, 0x00, 0x01, 0x00, 0x00, 0x00, 0x01, 0x00, 0x00, 0x00, 0x81, 0x00, 0x00, 0x00, 0x81, 0x00, 0x00, 0x00, 0x01, 0x20, 0x00, 0x00, 0x01, 0x20, 0x00, 0x00, 0x81, 0x20, 0x00, 0x00, 0x81, 0x20, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x10, 0x00, 0x00, 0x00, 0x00, 0x00, 0x80, 0x00, 0x10, 0x00, 0x80, 0x00, 0x00, 0x00, 0x01, 0x00, 0x10, 0x00, 0x01, 0x00, 0x00, 0x00, 0x81, 0x00, 0x10, 0x00, 0x81, 0x00, 0x00, 0x02, 0x00, 0x00, 0x10, 0x02, 0x00, 0x00, 0x00, 0x02, 0x80, 0x00, 0x10, 0x02, 0x80, 0x00, 0x00, 0x02, 0x01, 0x00, 0x10, 0x02, 0x01, 0x00, 0x00, 0x02, 0x81, 0x00, 0x10, 0x02, 0x81, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x04, 0x00, 0x00, 0x00, 0x10, 0x00, 0x00, 0x00, 0x14, 0x00, 0x00, 0x00, 0x00, 0x08, 0x00, 0x00, 0x04, 0x08, 0x00, 0x00, 0x10, 0x08, 0x00, 0x00, 0x14, 0x08, 0x00, 0x20, 0x00, 0x00, 0x00, 0x20, 0x04, 0x00, 0x00, 0x20, 0x10, 0x00, 0x00, 0x20, 0x14, 0x00, 0x00, 0x20, 0x00, 0x08, 0x00, 0x20, 0x04, 0x08, 0x00, 0x20, 0x10, 0x08, 0x00, 0x20, 0x14, 0x08, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x01, 0x00, 0x00, 0x00, 0x00, 0x04, 0x00, 0x00, 0x01, 0x04, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x01, 0x00, 0x00, 0x00, 0x00, 0x04, 0x00, 0x00, 0x01, 0x04, 0x00, 0x40, 0x00, 0x00, 0x00, 0x40, 0x01, 0x00, 0x00, 0x40, 0x00, 0x04, 0x00, 0x40, 0x01, 0x04, 0x00, 0x40, 0x00, 0x00, 0x00, 0x40, 0x01, 0x00, 0x00, 0x40, 0x00, 0x04, 0x00, 0x40, 0x01, 0x04, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x01, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x01, 0x00, 0x00, 0x00, 0x00, 0x01, 0x00, 0x00, 0x01, 0x01, 0x00, 0x00, 0x00, 0x01, 0x00, 0x00, 0x01, 0x01, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x01, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x01, 0x00, 0x00, 0x00, 0x00, 0x01, 0x00, 0x00, 0x01, 0x01, 0x00, 0x00, 0x00, 0x01, 0x00, 0x00, 0x01, 0x01, 0x00, 0x00, 0x00, 0x00, 0x01, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x01, 0x00, 0x00, 0x00, 0x00, 0x01, 0x00, 0x00, 0x01, 0x01, 0x00, 0x00, 0x00, 0x01, 0x00, 0x00, 0x01, 0x01, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x01, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x01, 0x00, 0x00, 0x00, 0x00, 0x01, 0x00, 0x00, 0x01, 0x01, 0x00, 0x00, 0x00, 0x01, 0x00, 0x00, 0x01, 0x01, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x02, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x02, 0x00, 0x00, 0x00, 0x00, 0x02, 0x00, 0x00, 0x02, 0x02, 0x00, 0x00, 0x00, 0x02, 0x00, 0x00, 0x02, 0x02, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x02, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x02, 0x00, 0x00, 0x00, 0x00, 0x02, 0x00, 0x00, 0x02, 0x02, 0x00, 0x00, 0x00, 0x02, 0x00, 0x00, 0x02, 0x02, 0x00, 0x00, 0x00, 0x00, 0x02, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x02, 0x00, 0x00, 0x00, 0x00, 0x02, 0x00, 0x00, 0x02, 0x02, 0x00, 0x00, 0x00, 0x02, 0x00, 0x00, 0x02, 0x02, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x02, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x02, 0x00, 0x00, 0x00, 0x00, 0x02, 0x00, 0x00, 0x02, 0x02, 0x00, 0x00, 0x00, 0x02, 0x00, 0x00, 0x02, 0x02, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x04, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x04, 0x00, 0x00, 0x00, 0x00, 0x04, 0x00, 0x00, 0x04, 0x04, 0x00, 0x00, 0x00, 0x04, 0x00, 0x00, 0x04, 0x04, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x04, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x04, 0x00, 0x00, 0x00, 0x00, 0x04, 0x00, 0x00, 0x04, 0x04, 0x00, 0x00, 0x00, 0x04, 0x00, 0x00, 0x04, 0x04, 0x00, 0x00, 0x00, 0x00, 0x04, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x04, 0x00, 0x00, 0x00, 0x00, 0x04, 0x00, 0x00, 0x04, 0x04, 0x00, 0x00, 0x00, 0x04, 0x00, 0x00, 0x04, 0x04, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x04, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x04, 0x00, 0x00, 0x00, 0x00, 0x04, 0x00, 0x00, 0x04, 0x04, 0x00, 0x00, 0x00, 0x04, 0x00, 0x00, 0x04, 0x04, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x08, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x08, 0x00, 0x00, 0x00, 0x00, 0x08, 0x00, 0x00, 0x08, 0x08, 0x00, 0x00, 0x00, 0x08, 0x00, 0x00, 0x08, 0x08, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x08, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x08, 0x00, 0x00, 0x00, 0x00, 0x08, 0x00, 0x00, 0x08, 0x08, 0x00, 0x00, 0x00, 0x08, 0x00, 0x00, 0x08, 0x08, 0x00, 0x00, 0x00, 0x00, 0x08, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x08, 0x00, 0x00, 0x00, 0x00, 0x08, 0x00, 0x00, 0x08, 0x08, 0x00, 0x00, 0x00, 0x08, 0x00, 0x00, 0x08, 0x08, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x08, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x08, 0x00, 0x00, 0x00, 0x00, 0x08, 0x00, 0x00, 0x08, 0x08, 0x00, 0x00, 0x00, 0x08, 0x00, 0x00, 0x08, 0x08, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x10, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x10, 0x00, 0x00, 0x00, 0x00, 0x10, 0x00, 0x00, 0x10, 0x10, 0x00, 0x00, 0x00, 0x10, 0x00, 0x00, 0x10, 0x10, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x10, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x10, 0x00, 0x00, 0x00, 0x00, 0x10, 0x00, 0x00, 0x10, 0x10, 0x00, 0x00, 0x00, 0x10, 0x00, 0x00, 0x10, 0x10, 0x00, 0x00, 0x00, 0x00, 0x10, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x10, 0x00, 0x00, 0x00, 0x00, 0x10, 0x00, 0x00, 0x10, 0x10, 0x00, 0x00, 0x00, 0x10, 0x00, 0x00, 0x10, 0x10, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x10, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x10, 0x00, 0x00, 0x00, 0x00, 0x10, 0x00, 0x00, 0x10, 0x10, 0x00, 0x00, 0x00, 0x10, 0x00, 0x00, 0x10, 0x10, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x20, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x20, 0x00, 0x00, 0x00, 0x00, 0x20, 0x00, 0x00, 0x20, 0x20, 0x00, 0x00, 0x00, 0x20, 0x00, 0x00, 0x20, 0x20, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x20, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x20, 0x00, 0x00, 0x00, 0x00, 0x20, 0x00, 0x00, 0x20, 0x20, 0x00, 0x00, 0x00, 0x20, 0x00, 0x00, 0x20, 0x20, 0x00, 0x00, 0x00, 0x00, 0x20, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x20, 0x00, 0x00, 0x00, 0x00, 0x20, 0x00, 0x00, 0x20, 0x20, 0x00, 0x00, 0x00, 0x20, 0x00, 0x00, 0x20, 0x20, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x20, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x20, 0x00, 0x00, 0x00, 0x00, 0x20, 0x00, 0x00, 0x20, 0x20, 0x00, 0x00, 0x00, 0x20, 0x00, 0x00, 0x20, 0x20, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x40, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x40, 0x00, 0x00, 0x00, 0x00, 0x40, 0x00, 0x00, 0x40, 0x40, 0x00, 0x00, 0x00, 0x40, 0x00, 0x00, 0x40, 0x40, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x40, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x40, 0x00, 0x00, 0x00, 0x00, 0x40, 0x00, 0x00, 0x40, 0x40, 0x00, 0x00, 0x00, 0x40, 0x00, 0x00, 0x40, 0x40, 0x00, 0x00, 0x00, 0x00, 0x40, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x40, 0x00, 0x00, 0x00, 0x00, 0x40, 0x00, 0x00, 0x40, 0x40, 0x00, 0x00, 0x00, 0x40, 0x00, 0x00, 0x40, 0x40, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x40, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x40, 0x00, 0x00, 0x00, 0x00, 0x40, 0x00, 0x00, 0x40, 0x40, 0x00, 0x00, 0x00, 0x40, 0x00, 0x00, 0x40, 0x40, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x80, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x80, 0x00, 0x00, 0x00, 0x00, 0x80, 0x00, 0x00, 0x80, 0x80, 0x00, 0x00, 0x00, 0x80, 0x00, 0x00, 0x80, 0x80, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x80, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x80, 0x00, 0x00, 0x00, 0x00, 0x80, 0x00, 0x00, 0x80, 0x80, 0x00, 0x00, 0x00, 0x80, 0x00, 0x00, 0x80, 0x80, 0x00, 0x00, 0x00, 0x00, 0x80, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x80, 0x00, 0x00, 0x00, 0x00, 0x80, 0x00, 0x00, 0x80, 0x80, 0x00, 0x00, 0x00, 0x80, 0x00, 0x00, 0x80, 0x80, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x80, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x80, 0x00, 0x00, 0x00, 0x00, 0x80, 0x00, 0x00, 0x80, 0x80, 0x00, 0x00, 0x00, 0x80, 0x00, 0x00, 0x80, 0x80, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x01, 0x00, 0x00, 0x00, 0x01, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x01, 0x00, 0x00, 0x00, 0x01, 0x00, 0x00, 0x00, 0x00, 0x01, 0x00, 0x00, 0x00, 0x01, 0x00, 0x00, 0x01, 0x01, 0x00, 0x00, 0x01, 0x01, 0x00, 0x00, 0x00, 0x01, 0x00, 0x00, 0x00, 0x01, 0x00, 0x00, 0x01, 0x01, 0x00, 0x00, 0x01, 0x01, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x01, 0x00, 0x00, 0x00, 0x01, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x01, 0x00, 0x00, 0x00, 0x01, 0x00, 0x00, 0x00, 0x00, 0x01, 0x00, 0x00, 0x00, 0x01, 0x00, 0x00, 0x01, 0x01, 0x00, 0x00, 0x01, 0x01, 0x00, 0x00, 0x00, 0x01, 0x00, 0x00, 0x00, 0x01, 0x00, 0x00, 0x01, 0x01, 0x00, 0x00, 0x01, 0x01, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x02, 0x00, 0x00, 0x00, 0x02, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x02, 0x00, 0x00, 0x00, 0x02, 0x00, 0x00, 0x00, 0x00, 0x02, 0x00, 0x00, 0x00, 0x02, 0x00, 0x00, 0x02, 0x02, 0x00, 0x00, 0x02, 0x02, 0x00, 0x00, 0x00, 0x02, 0x00, 0x00, 0x00, 0x02, 0x00, 0x00, 0x02, 0x02, 0x00, 0x00, 0x02, 0x02, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x02, 0x00, 0x00, 0x00, 0x02, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x02, 0x00, 0x00, 0x00, 0x02, 0x00, 0x00, 0x00, 0x00, 0x02, 0x00, 0x00, 0x00, 0x02, 0x00, 0x00, 0x02, 0x02, 0x00, 0x00, 0x02, 0x02, 0x00, 0x00, 0x00, 0x02, 0x00, 0x00, 0x00, 0x02, 0x00, 0x00, 0x02, 0x02, 0x00, 0x00, 0x02, 0x02, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x04, 0x00, 0x00, 0x00, 0x04, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x04, 0x00, 0x00, 0x00, 0x04, 0x00, 0x00, 0x00, 0x00, 0x04, 0x00, 0x00, 0x00, 0x04, 0x00, 0x00, 0x04, 0x04, 0x00, 0x00, 0x04, 0x04, 0x00, 0x00, 0x00, 0x04, 0x00, 0x00, 0x00, 0x04, 0x00, 0x00, 0x04, 0x04, 0x00, 0x00, 0x04, 0x04, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x04, 0x00, 0x00, 0x00, 0x04, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x04, 0x00, 0x00, 0x00, 0x04, 0x00, 0x00, 0x00, 0x00, 0x04, 0x00, 0x00, 0x00, 0x04, 0x00, 0x00, 0x04, 0x04, 0x00, 0x00, 0x04, 0x04, 0x00, 0x00, 0x00, 0x04, 0x00, 0x00, 0x00, 0x04, 0x00, 0x00, 0x04, 0x04, 0x00, 0x00, 0x04, 0x04, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x08, 0x00, 0x00, 0x00, 0x08, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x08, 0x00, 0x00, 0x00, 0x08, 0x00, 0x00, 0x00, 0x00, 0x08, 0x00, 0x00, 0x00, 0x08, 0x00, 0x00, 0x08, 0x08, 0x00, 0x00, 0x08, 0x08, 0x00, 0x00, 0x00, 0x08, 0x00, 0x00, 0x00, 0x08, 0x00, 0x00, 0x08, 0x08, 0x00, 0x00, 0x08, 0x08, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x08, 0x00, 0x00, 0x00, 0x08, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x08, 0x00, 0x00, 0x00, 0x08, 0x00, 0x00, 0x00, 0x00, 0x08, 0x00, 0x00, 0x00, 0x08, 0x00, 0x00, 0x08, 0x08, 0x00, 0x00, 0x08, 0x08, 0x00, 0x00, 0x00, 0x08, 0x00, 0x00, 0x00, 0x08, 0x00, 0x00, 0x08, 0x08, 0x00, 0x00, 0x08, 0x08, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x10, 0x00, 0x00, 0x00, 0x10, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x10, 0x00, 0x00, 0x00, 0x10, 0x00, 0x00, 0x00, 0x00, 0x10, 0x00, 0x00, 0x00, 0x10, 0x00, 0x00, 0x10, 0x10, 0x00, 0x00, 0x10, 0x10, 0x00, 0x00, 0x00, 0x10, 0x00, 0x00, 0x00, 0x10, 0x00, 0x00, 0x10, 0x10, 0x00, 0x00, 0x10, 0x10, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x10, 0x00, 0x00, 0x00, 0x10, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x10, 0x00, 0x00, 0x00, 0x10, 0x00, 0x00, 0x00, 0x00, 0x10, 0x00, 0x00, 0x00, 0x10, 0x00, 0x00, 0x10, 0x10, 0x00, 0x00, 0x10, 0x10, 0x00, 0x00, 0x00, 0x10, 0x00, 0x00, 0x00, 0x10, 0x00, 0x00, 0x10, 0x10, 0x00, 0x00, 0x10, 0x10, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x20, 0x00, 0x00, 0x00, 0x20, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x20, 0x00, 0x00, 0x00, 0x20, 0x00, 0x00, 0x00, 0x00, 0x20, 0x00, 0x00, 0x00, 0x20, 0x00, 0x00, 0x20, 0x20, 0x00, 0x00, 0x20, 0x20, 0x00, 0x00, 0x00, 0x20, 0x00, 0x00, 0x00, 0x20, 0x00, 0x00, 0x20, 0x20, 0x00, 0x00, 0x20, 0x20, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x20, 0x00, 0x00, 0x00, 0x20, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x20, 0x00, 0x00, 0x00, 0x20, 0x00, 0x00, 0x00, 0x00, 0x20, 0x00, 0x00, 0x00, 0x20, 0x00, 0x00, 0x20, 0x20, 0x00, 0x00, 0x20, 0x20, 0x00, 0x00, 0x00, 0x20, 0x00, 0x00, 0x00, 0x20, 0x00, 0x00, 0x20, 0x20, 0x00, 0x00, 0x20, 0x20, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x40, 0x00, 0x00, 0x00, 0x40, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x40, 0x00, 0x00, 0x00, 0x40, 0x00, 0x00, 0x00, 0x00, 0x40, 0x00, 0x00, 0x00, 0x40, 0x00, 0x00, 0x40, 0x40, 0x00, 0x00, 0x40, 0x40, 0x00, 0x00, 0x00, 0x40, 0x00, 0x00, 0x00, 0x40, 0x00, 0x00, 0x40, 0x40, 0x00, 0x00, 0x40, 0x40, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x40, 0x00, 0x00, 0x00, 0x40, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x40, 0x00, 0x00, 0x00, 0x40, 0x00, 0x00, 0x00, 0x00, 0x40, 0x00, 0x00, 0x00, 0x40, 0x00, 0x00, 0x40, 0x40, 0x00, 0x00, 0x40, 0x40, 0x00, 0x00, 0x00, 0x40, 0x00, 0x00, 0x00, 0x40, 0x00, 0x00, 0x40, 0x40, 0x00, 0x00, 0x40, 0x40, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x80, 0x00, 0x00, 0x00, 0x80, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x80, 0x00, 0x00, 0x00, 0x80, 0x00, 0x00, 0x00, 0x00, 0x80, 0x00, 0x00, 0x00, 0x80, 0x00, 0x00, 0x80, 0x80, 0x00, 0x00, 0x80, 0x80, 0x00, 0x00, 0x00, 0x80, 0x00, 0x00, 0x00, 0x80, 0x00, 0x00, 0x80, 0x80, 0x00, 0x00, 0x80, 0x80, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x80, 0x00, 0x00, 0x00, 0x80, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x80, 0x00, 0x00, 0x00, 0x80, 0x00, 0x00, 0x00, 0x00, 0x80, 0x00, 0x00, 0x00, 0x80, 0x00, 0x00, 0x80, 0x80, 0x00, 0x00, 0x80, 0x80, 0x00, 0x00, 0x00, 0x80, 0x00, 0x00, 0x00, 0x80, 0x00, 0x00, 0x80, 0x80, 0x00, 0x00, 0x80, 0x80, 0x00, 0x00, 0x00, 0x82, 0x80, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x80, 0x00, 0x00, 0x02, 0x82, 0x80, 0x00, 0x02, 0x80, 0x80, 0x00, 0x02, 0x82, 0x00, 0x00, 0x02, 0x00, 0x00, 0x00, 0x00, 0x80, 0x00, 0x00, 0x00, 0x02, 0x00, 0x00, 0x00, 0x82, 0x80, 0x00, 0x02, 0x82, 0x80, 0x00, 0x00, 0x02, 0x00, 0x00, 0x02, 0x02, 0x80, 0x00, 0x02, 0x80, 0x80, 0x00, 0x00, 0x00, 0x80, 0x00, 0x02, 0x00, 0x00, 0x00, 0x02, 0x02, 0x00, 0x00, 0x00, 0x02, 0x80, 0x00, 0x00, 0x02, 0x80, 0x00, 0x00, 0x82, 0x00, 0x00, 0x00, 0x82, 0x00, 0x00, 0x00, 0x80, 0x80, 0x00, 0x00, 0x80, 0x80, 0x00, 0x02, 0x02, 0x80, 0x00, 0x02, 0x80, 0x00, 0x00, 0x02, 0x00, 0x80, 0x00, 0x02, 0x00, 0x80, 0x00, 0x02, 0x80, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x02, 0x02, 0x00, 0x00, 0x02, 0x82, 0x00, 0x00, 0x00, 0x00, 0x80, 0x00, 0x00, 0x80, 0x00, 0x00, 0x02, 0x82, 0x80, 0x00, 0x02, 0x00, 0x00, 0x00, 0x00, 0x80, 0x80, 0x00, 0x00, 0x82, 0x80, 0x00, 0x00, 0x00, 0x80, 0x00, 0x00, 0x00, 0x80, 0x00, 0x00, 0x02, 0x00, 0x00, 0x02, 0x80, 0x80, 0x00, 0x00, 0x80, 0x00, 0x00, 0x00, 0x82, 0x00, 0x00, 0x02, 0x00, 0x80, 0x00, 0x00, 0x02, 0x00, 0x00, 0x02, 0x00, 0x00, 0x00, 0x02, 0x02, 0x80, 0x00, 0x02, 0x82, 0x00, 0x00, 0x02, 0x82, 0x80, 0x00, 0x02, 0x80, 0x00, 0x00, 0x00, 0x80, 0x80, 0x00, 0x02, 0x02, 0x80, 0x00, 0x02, 0x00, 0x80, 0x00, 0x02, 0x02, 0x00, 0x00, 0x02, 0x82, 0x00, 0x00, 0x00, 0x82, 0x80, 0x00, 0x02, 0x02, 0x00, 0x00, 0x00, 0x02, 0x80, 0x00, 0x00, 0x02, 0x80, 0x00, 0x00, 0x00, 0x00, 0x00, 0x02, 0x80, 0x00, 0x00, 0x00, 0x82, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x02, 0x80, 0x80, 0x00, 0x10, 0x40, 0x08, 0x40, 0x00, 0x40, 0x00, 0x40, 0x00, 0x40, 0x00, 0x00, 0x10, 0x40, 0x08, 0x00, 0x00, 0x00, 0x08, 0x00, 0x10, 0x00, 0x00, 0x00, 0x10, 0x00, 0x08, 0x40, 0x10, 0x40, 0x00, 0x40, 0x10, 0x00, 0x00, 0x40, 0x10, 0x40, 0x08, 0x40, 0x00, 0x40, 0x08, 0x40, 0x00, 0x00, 0x00, 0x40, 0x00, 0x40, 0x00, 0x40, 0x00, 0x00, 0x08, 0x00, 0x10, 0x00, 0x00, 0x00, 0x10, 0x00, 0x08, 0x40, 0x00, 0x40, 0x08, 0x00, 0x10, 0x00, 0x08, 0x00, 0x10, 0x40, 0x00, 0x40, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x40, 0x00, 0x40, 0x00, 0x00, 0x10, 0x40, 0x08, 0x00, 0x00, 0x00, 0x08, 0x40, 0x10, 0x00, 0x08, 0x00, 0x10, 0x00, 0x00, 0x40, 0x00, 0x00, 0x00, 0x00, 0x00, 0x40, 0x08, 0x00, 0x10, 0x40, 0x00, 0x00, 0x00, 0x40, 0x08, 0x40, 0x00, 0x00, 0x08, 0x40, 0x10, 0x40, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x10, 0x40, 0x08, 0x00, 0x10, 0x00, 0x08, 0x40, 0x00, 0x00, 0x08, 0x00, 0x10, 0x40, 0x00, 0x40, 0x00, 0x00, 0x08, 0x40, 0x00, 0x40, 0x08, 0x40, 0x00, 0x40, 0x00, 0x00, 0x00, 0x00, 0x08, 0x40, 0x00, 0x40, 0x00, 0x40, 0x10, 0x00, 0x00, 0x00, 0x10, 0x40, 0x08, 0x40, 0x10, 0x40, 0x08, 0x00, 0x10, 0x00, 0x00, 0x00, 0x00, 0x40, 0x00, 0x00, 0x00, 0x00, 0x00, 0x40, 0x10, 0x40, 0x00, 0x00, 0x00, 0x40, 0x08, 0x40, 0x00, 0x00, 0x08, 0x00, 0x10, 0x00, 0x00, 0x40, 0x10, 0x00, 0x08, 0x00, 0x10, 0x40, 0x00, 0x40, 0x10, 0x00, 0x00, 0x40, 0x10, 0x00, 0x08, 0x00, 0x00, 0x40, 0x08, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x40, 0x00, 0x40, 0x10, 0x40, 0x00, 0x00, 0x00, 0x00, 0x00, 0x40, 0x10, 0x00, 0x08, 0x40, 0x10, 0x40, 0x08, 0x40, 0x00, 0x40, 0x08, 0x00, 0x04, 0x01, 0x00, 0x00, 0x00, 0x01, 0x01, 0x04, 0x00, 0x00, 0x00, 0x00, 0x04, 0x00, 0x01, 0x04, 0x00, 0x01, 0x00, 0x04, 0x00, 0x00, 0x00, 0x00, 0x04, 0x01, 0x01, 0x00, 0x00, 0x01, 0x00, 0x04, 0x04, 0x00, 0x01, 0x00, 0x04, 0x00, 0x00, 0x04, 0x04, 0x00, 0x00, 0x04, 0x00, 0x00, 0x01, 0x00, 0x04, 0x01, 0x01, 0x04, 0x04, 0x00, 0x01, 0x00, 0x00, 0x00, 0x01, 0x04, 0x04, 0x01, 0x00, 0x00, 0x00, 0x00, 0x00, 0x04, 0x04, 0x00, 0x00, 0x00, 0x00, 0x01, 0x01, 0x04, 0x00, 0x01, 0x00, 0x00, 0x00, 0x01, 0x01, 0x00, 0x00, 0x00, 0x01, 0x04, 0x04, 0x00, 0x01, 0x04, 0x04, 0x01, 0x01, 0x00, 0x04, 0x01, 0x00, 0x04, 0x00, 0x01, 0x01, 0x00, 0x00, 0x00, 0x01, 0x00, 0x04, 0x01, 0x00, 0x04, 0x04, 0x00, 0x00, 0x00, 0x04, 0x01, 0x01, 0x04, 0x00, 0x01, 0x00, 0x00, 0x00, 0x00, 0x00, 0x04, 0x00, 0x01, 0x01, 0x04, 0x00, 0x00, 0x00, 0x04, 0x04, 0x00, 0x01, 0x00, 0x04, 0x01, 0x00, 0x00, 0x00, 0x00, 0x01, 0x00, 0x00, 0x01, 0x01, 0x04, 0x00, 0x01, 0x00, 0x04, 0x00, 0x00, 0x00, 0x00, 0x00, 0x01, 0x00, 0x00, 0x04, 0x00, 0x01, 0x00, 0x04, 0x01, 0x01, 0x04, 0x00, 0x01, 0x00, 0x04, 0x04, 0x00, 0x00, 0x04, 0x00, 0x01, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x04, 0x00, 0x01, 0x04, 0x04, 0x01, 0x00, 0x04, 0x00, 0x00, 0x01, 0x00, 0x00, 0x00, 0x00, 0x04, 0x04, 0x01, 0x01, 0x04, 0x04, 0x00, 0x00, 0x00, 0x04, 0x01, 0x01, 0x00, 0x00, 0x01, 0x01, 0x00, 0x04, 0x00, 0x00, 0x04, 0x00, 0x00, 0x01, 0x04, 0x04, 0x01, 0x00, 0x04, 0x04, 0x01, 0x00, 0x00, 0x00, 0x00, 0x01, 0x04, 0x04, 0x01, 0x01, 0x00, 0x04, 0x00, 0x00, 0x00, 0x04, 0x00, 0x01, 0x04, 0x00, 0x01, 0x01, 0x00, 0x00, 0x10, 0x40, 0x80, 0x40, 0x10, 0x00, 0x80, 0x40, 0x10, 0x00, 0x80, 0x40, 0x00, 0x00, 0x00, 0x40, 0x10, 0x40, 0x00, 0x40, 0x00, 0x40, 0x80, 0x00, 0x00, 0x40, 0x80, 0x00, 0x10, 0x00, 0x80, 0x00, 0x00, 0x00, 0x00, 0x00, 0x10, 0x40, 0x00, 0x00, 0x10, 0x40, 0x00, 0x40, 0x10, 0x40, 0x80, 0x40, 0x00, 0x00, 0x80, 0x00, 0x00, 0x00, 0x00, 0x40, 0x00, 0x40, 0x00, 0x00, 0x00, 0x40, 0x80, 0x00, 0x00, 0x00, 0x80, 0x00, 0x10, 0x00, 0x00, 0x00, 0x00, 0x40, 0x00, 0x00, 0x10, 0x40, 0x80, 0x40, 0x00, 0x00, 0x00, 0x00, 0x00, 0x40, 0x00, 0x00, 0x10, 0x00, 0x80, 0x40, 0x10, 0x00, 0x00, 0x40, 0x00, 0x40, 0x80, 0x00, 0x00, 0x00, 0x80, 0x40, 0x10, 0x00, 0x00, 0x40, 0x00, 0x40, 0x00, 0x00, 0x10, 0x00, 0x00, 0x40, 0x10, 0x40, 0x00, 0x40, 0x10, 0x40, 0x80, 0x40, 0x00, 0x00, 0x80, 0x40, 0x00, 0x40, 0x00, 0x00, 0x00, 0x40, 0x80, 0x00, 0x10, 0x40, 0x00, 0x40, 0x10, 0x40, 0x80, 0x40, 0x00, 0x00, 0x80, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x10, 0x40, 0x00, 0x40, 0x10, 0x00, 0x00, 0x40, 0x00, 0x40, 0x00, 0x40, 0x00, 0x40, 0x80, 0x00, 0x00, 0x00, 0x80, 0x00, 0x10, 0x40, 0x80, 0x40, 0x10, 0x00, 0x80, 0x40, 0x10, 0x00, 0x80, 0x40, 0x00, 0x00, 0x00, 0x40, 0x10, 0x40, 0x80, 0x40, 0x00, 0x00, 0x80, 0x00, 0x00, 0x00, 0x80, 0x00, 0x10, 0x00, 0x00, 0x00, 0x00, 0x40, 0x80, 0x00, 0x10, 0x00, 0x80, 0x40, 0x10, 0x40, 0x00, 0x40, 0x00, 0x40, 0x80, 0x00, 0x10, 0x00, 0x80, 0x40, 0x10, 0x00, 0x00, 0x00, 0x00, 0x40, 0x00, 0x00, 0x10, 0x40, 0x80, 0x40, 0x00, 0x00, 0x00, 0x00, 0x00, 0x40, 0x00, 0x00, 0x10, 0x00, 0x00, 0x40, 0x10, 0x40, 0x00, 0x80, 0x00, 0x00, 0x00, 0x80, 0x00, 0x04, 0x01, 0x00, 0x00, 0x04, 0x01, 0x80, 0x00, 0x00, 0x21, 0x00, 0x00, 0x04, 0x00, 0x80, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x20, 0x00, 0x00, 0x04, 0x01, 0x80, 0x00, 0x04, 0x20, 0x00, 0x00, 0x04, 0x00, 0x80, 0x00, 0x00, 0x01, 0x80, 0x00, 0x04, 0x20, 0x80, 0x00, 0x00, 0x21, 0x00, 0x00, 0x04, 0x21, 0x80, 0x00, 0x04, 0x00, 0x00, 0x00, 0x00, 0x20, 0x00, 0x00, 0x00, 0x01, 0x00, 0x00, 0x04, 0x20, 0x00, 0x00, 0x04, 0x20, 0x00, 0x00, 0x00, 0x00, 0x80, 0x00, 0x00, 0x20, 0x80, 0x00, 0x04, 0x21, 0x80, 0x00, 0x04, 0x21, 0x80, 0x00, 0x00, 0x01, 0x00, 0x00, 0x04, 0x21, 0x80, 0x00, 0x00, 0x20, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x21, 0x80, 0x00, 0x04, 0x01, 0x00, 0x00, 0x00, 0x01, 0x00, 0x00, 0x00, 0x21, 0x80, 0x00, 0x04, 0x00, 0x00, 0x00, 0x04, 0x00, 0x80, 0x00, 0x00, 0x21, 0x80, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x01, 0x00, 0x00, 0x00, 0x20, 0x00, 0x00, 0x04, 0x01, 0x80, 0x00, 0x00, 0x21, 0x80, 0x00, 0x04, 0x20, 0x80, 0x00, 0x00, 0x01, 0x00, 0x00, 0x00, 0x20, 0x00, 0x00, 0x04, 0x21, 0x80, 0x00, 0x04, 0x01, 0x80, 0x00, 0x04, 0x20, 0x80, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x01, 0x00, 0x00, 0x04, 0x21, 0x80, 0x00, 0x04, 0x21, 0x80, 0x00, 0x04, 0x00, 0x00, 0x00, 0x00, 0x21, 0x80, 0x00, 0x04, 0x21, 0x00, 0x00, 0x04, 0x01, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x04, 0x20, 0x00, 0x00, 0x00, 0x21, 0x80, 0x00, 0x04, 0x00, 0x80, 0x00, 0x00, 0x01, 0x80, 0x00, 0x00, 0x20, 0x00, 0x00, 0x04, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x04, 0x20, 0x80, 0x00, 0x04, 0x01, 0x80, 0x00, 0x00, 0x20, 0x08, 0x00, 0x00, 0x10, 0x00, 0x00, 0x20, 0x10, 0x00, 0x20, 0x00, 0x00, 0x08, 0x20, 0x20, 0x10, 0x00, 0x00, 0x20, 0x10, 0x08, 0x00, 0x00, 0x00, 0x08, 0x20, 0x20, 0x10, 0x00, 0x00, 0x20, 0x00, 0x00, 0x20, 0x00, 0x10, 0x08, 0x20, 0x20, 0x00, 0x00, 0x00, 0x20, 0x00, 0x08, 0x00, 0x00, 0x10, 0x08, 0x00, 0x20, 0x00, 0x00, 0x20, 0x00, 0x10, 0x00, 0x00, 0x00, 0x10, 0x08, 0x20, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x08, 0x00, 0x20, 0x00, 0x08, 0x20, 0x00, 0x10, 0x00, 0x20, 0x00, 0x00, 0x00, 0x20, 0x20, 0x00, 0x08, 0x20, 0x00, 0x10, 0x08, 0x00, 0x00, 0x00, 0x08, 0x00, 0x20, 0x10, 0x08, 0x00, 0x20, 0x10, 0x00, 0x00, 0x00, 0x00, 0x08, 0x20, 0x20, 0x00, 0x00, 0x20, 0x20, 0x10, 0x08, 0x20, 0x00, 0x00, 0x00, 0x20, 0x20, 0x00, 0x00, 0x20, 0x20, 0x10, 0x00, 0x00, 0x00, 0x10, 0x00, 0x20, 0x00, 0x10, 0x08, 0x00, 0x00, 0x00, 0x08, 0x00, 0x20, 0x10, 0x00, 0x20, 0x20, 0x00, 0x08, 0x20, 0x20, 0x10, 0x00, 0x00, 0x20, 0x00, 0x08, 0x20, 0x00, 0x00, 0x08, 0x00, 0x00, 0x10, 0x00, 0x00, 0x20, 0x00, 0x00, 0x20, 0x00, 0x10, 0x00, 0x00, 0x00, 0x10, 0x08, 0x20, 0x00, 0x00, 0x08, 0x00, 0x00, 0x10, 0x08, 0x20, 0x20, 0x10, 0x00, 0x20, 0x20, 0x00, 0x00, 0x00, 0x20, 0x10, 0x08, 0x20, 0x20, 0x00, 0x00, 0x20, 0x20, 0x10, 0x00, 0x00, 0x00, 0x00, 0x08, 0x00, 0x20, 0x10, 0x08, 0x00, 0x00, 0x00, 0x00, 0x20, 0x00, 0x00, 0x00, 0x00, 0x20, 0x10, 0x08, 0x20, 0x20, 0x00, 0x00, 0x20, 0x00, 0x00, 0x08, 0x00, 0x20, 0x00, 0x08, 0x20, 0x00, 0x10, 0x00, 0x00, 0x00, 0x00, 0x00, 0x20, 0x20, 0x10, 0x00, 0x00, 0x00, 0x10, 0x08, 0x00, 0x20, 0x00, 0x08, 0x20, 0x00, 0x10, 0x00, 0x00, 0x10, 0x00, 0x01, 0x00, 0x10, 0x02, 0x01, 0x04, 0x00, 0x02, 0x00, 0x00, 0x00, 0x00, 0x00, 0x04, 0x00, 0x00, 0x01, 0x04, 0x00, 0x02, 0x01, 0x04, 0x10, 0x00, 0x00, 0x04, 0x10, 0x02, 0x01, 0x04, 0x10, 0x02, 0x00, 0x00, 0x10, 0x00, 0x00, 0x00, 0x00, 0x00, 0x01, 0x00, 0x00, 0x02, 0x01, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x02, 0x01, 0x00, 0x10, 0x02, 0x01, 0x04, 0x00, 0x00, 0x00, 0x04, 0x00, 0x02, 0x01, 0x04, 0x10, 0x00, 0x01, 0x00, 0x10, 0x00, 0x00, 0x04, 0x00, 0x02, 0x01, 0x00, 0x00, 0x02, 0x00, 0x00, 0x10, 0x02, 0x00, 0x04, 0x10, 0x02, 0x01, 0x00, 0x10, 0x00, 0x00, 0x00, 0x10, 0x02, 0x00, 0x04, 0x00, 0x00, 0x01, 0x04, 0x00, 0x00, 0x01, 0x04, 0x10, 0x02, 0x00, 0x04, 0x10, 0x00, 0x01, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x02, 0x00, 0x04, 0x10, 0x00, 0x00, 0x00, 0x00, 0x02, 0x00, 0x04, 0x10, 0x00, 0x00, 0x00, 0x10, 0x00, 0x01, 0x04, 0x00, 0x02, 0x01, 0x04, 0x00, 0x02, 0x01, 0x00, 0x10, 0x02, 0x01, 0x00, 0x10, 0x02, 0x01, 0x00, 0x00, 0x00, 0x01, 0x00, 0x10, 0x00, 0x00, 0x00, 0x00, 0x02, 0x00, 0x04, 0x00, 0x02, 0x00, 0x00, 0x10, 0x00, 0x00, 0x04, 0x10, 0x02, 0x01, 0x04, 0x00, 0x00, 0x01, 0x04, 0x10, 0x00, 0x00, 0x04, 0x10, 0x02, 0x01, 0x04, 0x00, 0x00, 0x01, 0x00, 0x00, 0x02, 0x01, 0x04, 0x10, 0x02, 0x00, 0x00, 0x10, 0x02, 0x00, 0x04, 0x10, 0x00, 0x00, 0x00, 0x00, 0x00, 0x01, 0x00, 0x00, 0x00, 0x01, 0x04, 0x10, 0x02, 0x00, 0x00, 0x00, 0x00, 0x01, 0x04, 0x10, 0x00, 0x00, 0x00, 0x10, 0x02, 0x00, 0x04, 0x00, 0x00, 0x01, 0x00, 0x00, 0x02, 0x00, 0x04, 0x00, 0x02, 0x00, 0x04, 0x00, 0x00, 0x01, 0x00, 0x10, 0x00, 0x20, 0x08, 0x00, 0x08, 0x00, 0x08, 0x00, 0x00, 0x00, 0x00, 0x02, 0x00, 0x20, 0x08, 0x02, 0x08, 0x00, 0x00, 0x00, 0x08, 0x20, 0x08, 0x00, 0x08, 0x20, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x08, 0x20, 0x00, 0x02, 0x00, 0x00, 0x00, 0x02, 0x08, 0x20, 0x08, 0x02, 0x08, 0x00, 0x08, 0x02, 0x00, 0x00, 0x08, 0x02, 0x08, 0x20, 0x08, 0x02, 0x00, 0x00, 0x08, 0x00, 0x00, 0x20, 0x00, 0x00, 0x00, 0x00, 0x00, 0x02, 0x08, 0x20, 0x00, 0x00, 0x08, 0x00, 0x08, 0x00, 0x08, 0x20, 0x08, 0x00, 0x00, 0x00, 0x08, 0x02, 0x00, 0x20, 0x00, 0x02, 0x00, 0x20, 0x00, 0x02, 0x08, 0x00, 0x08, 0x02, 0x08, 0x20, 0x08, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x20, 0x00, 0x02, 0x08, 0x20, 0x00, 0x00, 0x08, 0x00, 0x08, 0x00, 0x08, 0x20, 0x08, 0x02, 0x00, 0x00, 0x00, 0x02, 0x00, 0x20, 0x08, 0x02, 0x00, 0x00, 0x00, 0x02, 0x00, 0x00, 0x08, 0x02, 0x08, 0x00, 0x08, 0x00, 0x00, 0x20, 0x00, 0x00, 0x00, 0x20, 0x00, 0x02, 0x08, 0x00, 0x08, 0x00, 0x00, 0x20, 0x08, 0x02, 0x00, 0x00, 0x08, 0x00, 0x08, 0x20, 0x00, 0x00, 0x00, 0x20, 0x00, 0x00, 0x08, 0x00, 0x00, 0x02, 0x08, 0x20, 0x00, 0x02, 0x08, 0x00, 0x00, 0x00, 0x08, 0x00, 0x00, 0x02, 0x00, 0x20, 0x08, 0x00, 0x08, 0x00, 0x00, 0x00, 0x00, 0x20, 0x08, 0x02, 0x08, 0x20, 0x00, 0x02, 0x00, 0x20, 0x00, 0x00, 0x08, 0x00, 0x00, 0x02, 0x08, 0x00, 0x08, 0x00, 0x08, 0x20, 0x08, 0x00, 0x08, 0x00, 0x00, 0x00, 0x00, 0x20, 0x08, 0x02, 0x08, 0x00, 0x08, 0x02, 0x00, 0x00, 0x08, 0x02, 0x00, 0x20, 0x08, 0x00, 0x00, 0x20, 0x08, 0x00, 0x00, 0x20, 0x00, 0x02, 0x00, 0x00, 0x00, 0x00, 0x08, 0x00, 0x08, 0x02, 0x08, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x40, 0x00, 0x00, 0x40, 0x00, 0x00, 0x00, 0x40, 0x40, 0x00, 0x40, 0x00, 0x00, 0x00, 0x40, 0x00, 0x40, 0x00, 0x40, 0x40, 0x00, 0x00, 0x40, 0x40, 0x40, 0x40, 0x00, 0x00, 0x00, 0x40, 0x00, 0x00, 0x40, 0x40, 0x00, 0x40, 0x00, 0x40, 0x00, 0x40, 0x40, 0x40, 0x40, 0x00, 0x00, 0x40, 0x40, 0x00, 0x40, 0x40, 0x40, 0x40, 0x00, 0x40, 0x40, 0x40, 0x40, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x10, 0x00, 0x00, 0x10, 0x00, 0x00, 0x00, 0x10, 0x10, 0x00, 0x10, 0x00, 0x00, 0x00, 0x10, 0x00, 0x10, 0x00, 0x10, 0x10, 0x00, 0x00, 0x10, 0x10, 0x10, 0x10, 0x00, 0x00, 0x00, 0x10, 0x00, 0x00, 0x10, 0x10, 0x00, 0x10, 0x00, 0x10, 0x00, 0x10, 0x10, 0x10, 0x10, 0x00, 0x00, 0x10, 0x10, 0x00, 0x10, 0x10, 0x10, 0x10, 0x00, 0x10, 0x10, 0x10, 0x10, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x04, 0x00, 0x00, 0x04, 0x00, 0x00, 0x00, 0x04, 0x04, 0x00, 0x04, 0x00, 0x00, 0x00, 0x04, 0x00, 0x04, 0x00, 0x04, 0x04, 0x00, 0x00, 0x04, 0x04, 0x04, 0x04, 0x00, 0x00, 0x00, 0x04, 0x00, 0x00, 0x04, 0x04, 0x00, 0x04, 0x00, 0x04, 0x00, 0x04, 0x04, 0x04, 0x04, 0x00, 0x00, 0x04, 0x04, 0x00, 0x04, 0x04, 0x04, 0x04, 0x00, 0x04, 0x04, 0x04, 0x04, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x01, 0x00, 0x00, 0x01, 0x00, 0x00, 0x00, 0x01, 0x01, 0x00, 0x01, 0x00, 0x00, 0x00, 0x01, 0x00, 0x01, 0x00, 0x01, 0x01, 0x00, 0x00, 0x01, 0x01, 0x01, 0x01, 0x00, 0x00, 0x00, 0x01, 0x00, 0x00, 0x01, 0x01, 0x00, 0x01, 0x00, 0x01, 0x00, 0x01, 0x01, 0x01, 0x01, 0x00, 0x00, 0x01, 0x01, 0x00, 0x01, 0x01, 0x01, 0x01, 0x00, 0x01, 0x01, 0x01, 0x01, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x80, 0x00, 0x00, 0x80, 0x00, 0x00, 0x00, 0x80, 0x80, 0x00, 0x80, 0x00, 0x00, 0x00, 0x80, 0x00, 0x80, 0x00, 0x80, 0x80, 0x00, 0x00, 0x80, 0x80, 0x80, 0x80, 0x00, 0x00, 0x00, 0x80, 0x00, 0x00, 0x80, 0x80, 0x00, 0x80, 0x00, 0x80, 0x00, 0x80, 0x80, 0x80, 0x80, 0x00, 0x00, 0x80, 0x80, 0x00, 0x80, 0x80, 0x80, 0x80, 0x00, 0x80, 0x80, 0x80, 0x80, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x20, 0x00, 0x00, 0x20, 0x00, 0x00, 0x00, 0x20, 0x20, 0x00, 0x20, 0x00, 0x00, 0x00, 0x20, 0x00, 0x20, 0x00, 0x20, 0x20, 0x00, 0x00, 0x20, 0x20, 0x20, 0x20, 0x00, 0x00, 0x00, 0x20, 0x00, 0x00, 0x20, 0x20, 0x00, 0x20, 0x00, 0x20, 0x00, 0x20, 0x20, 0x20, 0x20, 0x00, 0x00, 0x20, 0x20, 0x00, 0x20, 0x20, 0x20, 0x20, 0x00, 0x20, 0x20, 0x20, 0x20, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x08, 0x00, 0x00, 0x08, 0x00, 0x00, 0x00, 0x08, 0x08, 0x00, 0x08, 0x00, 0x00, 0x00, 0x08, 0x00, 0x08, 0x00, 0x08, 0x08, 0x00, 0x00, 0x08, 0x08, 0x08, 0x08, 0x00, 0x00, 0x00, 0x08, 0x00, 0x00, 0x08, 0x08, 0x00, 0x08, 0x00, 0x08, 0x00, 0x08, 0x08, 0x08, 0x08, 0x00, 0x00, 0x08, 0x08, 0x00, 0x08, 0x08, 0x08, 0x08, 0x00, 0x08, 0x08, 0x08, 0x08, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x02, 0x00, 0x00, 0x02, 0x00, 0x00, 0x00, 0x02, 0x02, 0x00, 0x02, 0x00, 0x00, 0x00, 0x02, 0x00, 0x02, 0x00, 0x02, 0x02, 0x00, 0x00, 0x02, 0x02, 0x02, 0x02, 0x00, 0x00, 0x00, 0x02, 0x00, 0x00, 0x02, 0x02, 0x00, 0x02, 0x00, 0x02, 0x00, 0x02, 0x02, 0x02, 0x02, 0x00, 0x00, 0x02, 0x02, 0x00, 0x02, 0x02, 0x02, 0x02, 0x00, 0x02, 0x02, 0x02, 0x02, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x40, 0x00, 0x00, 0x40, 0x00, 0x00, 0x00, 0x40, 0x40, 0x00, 0x40, 0x00, 0x00, 0x00, 0x40, 0x00, 0x40, 0x00, 0x40, 0x40, 0x00, 0x00, 0x40, 0x40, 0x40, 0x40, 0x00, 0x00, 0x00, 0x40, 0x00, 0x00, 0x40, 0x40, 0x00, 0x40, 0x00, 0x40, 0x00, 0x40, 0x40, 0x40, 0x40, 0x00, 0x00, 0x40, 0x40, 0x00, 0x40, 0x40, 0x40, 0x40, 0x00, 0x40, 0x40, 0x40, 0x40, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x10, 0x00, 0x00, 0x10, 0x00, 0x00, 0x00, 0x10, 0x10, 0x00, 0x10, 0x00, 0x00, 0x00, 0x10, 0x00, 0x10, 0x00, 0x10, 0x10, 0x00, 0x00, 0x10, 0x10, 0x10, 0x10, 0x00, 0x00, 0x00, 0x10, 0x00, 0x00, 0x10, 0x10, 0x00, 0x10, 0x00, 0x10, 0x00, 0x10, 0x10, 0x10, 0x10, 0x00, 0x00, 0x10, 0x10, 0x00, 0x10, 0x10, 0x10, 0x10, 0x00, 0x10, 0x10, 0x10, 0x10, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x04, 0x00, 0x00, 0x04, 0x00, 0x00, 0x00, 0x04, 0x04, 0x00, 0x04, 0x00, 0x00, 0x00, 0x04, 0x00, 0x04, 0x00, 0x04, 0x04, 0x00, 0x00, 0x04, 0x04, 0x04, 0x04, 0x00, 0x00, 0x00, 0x04, 0x00, 0x00, 0x04, 0x04, 0x00, 0x04, 0x00, 0x04, 0x00, 0x04, 0x04, 0x04, 0x04, 0x00, 0x00, 0x04, 0x04, 0x00, 0x04, 0x04, 0x04, 0x04, 0x00, 0x04, 0x04, 0x04, 0x04, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x01, 0x00, 0x00, 0x01, 0x00, 0x00, 0x00, 0x01, 0x01, 0x00, 0x01, 0x00, 0x00, 0x00, 0x01, 0x00, 0x01, 0x00, 0x01, 0x01, 0x00, 0x00, 0x01, 0x01, 0x01, 0x01, 0x00, 0x00, 0x00, 0x01, 0x00, 0x00, 0x01, 0x01, 0x00, 0x01, 0x00, 0x01, 0x00, 0x01, 0x01, 0x01, 0x01, 0x00, 0x00, 0x01, 0x01, 0x00, 0x01, 0x01, 0x01, 0x01, 0x00, 0x01, 0x01, 0x01, 0x01, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x80, 0x00, 0x00, 0x80, 0x00, 0x00, 0x00, 0x80, 0x80, 0x00, 0x80, 0x00, 0x00, 0x00, 0x80, 0x00, 0x80, 0x00, 0x80, 0x80, 0x00, 0x00, 0x80, 0x80, 0x80, 0x80, 0x00, 0x00, 0x00, 0x80, 0x00, 0x00, 0x80, 0x80, 0x00, 0x80, 0x00, 0x80, 0x00, 0x80, 0x80, 0x80, 0x80, 0x00, 0x00, 0x80, 0x80, 0x00, 0x80, 0x80, 0x80, 0x80, 0x00, 0x80, 0x80, 0x80, 0x80, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x20, 0x00, 0x00, 0x20, 0x00, 0x00, 0x00, 0x20, 0x20, 0x00, 0x20, 0x00, 0x00, 0x00, 0x20, 0x00, 0x20, 0x00, 0x20, 0x20, 0x00, 0x00, 0x20, 0x20, 0x20, 0x20, 0x00, 0x00, 0x00, 0x20, 0x00, 0x00, 0x20, 0x20, 0x00, 0x20, 0x00, 0x20, 0x00, 0x20, 0x20, 0x20, 0x20, 0x00, 0x00, 0x20, 0x20, 0x00, 0x20, 0x20, 0x20, 0x20, 0x00, 0x20, 0x20, 0x20, 0x20, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x08, 0x00, 0x00, 0x08, 0x00, 0x00, 0x00, 0x08, 0x08, 0x00, 0x08, 0x00, 0x00, 0x00, 0x08, 0x00, 0x08, 0x00, 0x08, 0x08, 0x00, 0x00, 0x08, 0x08, 0x08, 0x08, 0x00, 0x00, 0x00, 0x08, 0x00, 0x00, 0x08, 0x08, 0x00, 0x08, 0x00, 0x08, 0x00, 0x08, 0x08, 0x08, 0x08, 0x00, 0x00, 0x08, 0x08, 0x00, 0x08, 0x08, 0x08, 0x08, 0x00, 0x08, 0x08, 0x08, 0x08, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x02, 0x00, 0x00, 0x02, 0x00, 0x00, 0x00, 0x02, 0x02, 0x00, 0x02, 0x00, 0x00, 0x00, 0x02, 0x00, 0x02, 0x00, 0x02, 0x02, 0x00, 0x00, 0x02, 0x02, 0x02, 0x02, 0x00, 0x00, 0x00, 0x02, 0x00, 0x00, 0x02, 0x02, 0x00, 0x02, 0x00, 0x02, 0x00, 0x02, 0x02, 0x02, 0x02, 0x00, 0x00, 0x02, 0x02, 0x00, 0x02, 0x02, 0x02, 0x02, 0x00, 0x02, 0x02, 0x02, 0x02, 0x2e, 0x2f, 0x30, 0x31, 0x32, 0x33, 0x34, 0x35, 0x36, 0x37, 0x38, 0x39, 0x41, 0x42, 0x43, 0x44, 0x45, 0x46, 0x47, 0x48, 0x49, 0x4a, 0x4b, 0x4c, 0x4d, 0x4e, 0x4f, 0x50, 0x51, 0x52, 0x53, 0x54, 0x55, 0x56, 0x57, 0x58, 0x59, 0x5a, 0x61, 0x62, 0x63, 0x64, 0x65, 0x66, 0x67, 0x68, 0x69, 0x6a, 0x6b, 0x6c, 0x6d, 0x6e, 0x6f, 0x70, 0x71, 0x72, 0x73, 0x74, 0x75, 0x76, 0x77, 0x78, 0x79, 0x7a, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x58, 0x79, 0x30, 0x31, 0x40, 0x23, 0x01, 0x02, 0x80, 0x7f, 0xff, 0x0d, 0x0a, 0x81, 0x09, 0x20, 0x21, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x24, 0x31, 0x24, 0x61, 0x62, 0x63, 0x64, 0x30, 0x31, 0x32, 0x33, 0x24, 0x00, 0x00, 0x00, 0x00, 0x24, 0x31, 0x24, 0x61, 0x62, 0x63, 0x64, 0x30, 0x31, 0x32, 0x33, 0x24, 0x39, 0x51, 0x63, 0x67, 0x38, 0x44, 0x79, 0x76, 0x69, 0x65, 0x6b, 0x56, 0x33, 0x74, 0x44, 0x47, 0x4d, 0x5a, 0x79, 0x6e, 0x4a, 0x31, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x58, 0x79, 0x30, 0x31, 0x40, 0x23, 0x01, 0x02, 0x80, 0x7f, 0xff, 0x0d, 0x0a, 0x81, 0x09, 0x20, 0x21, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x24, 0x35, 0x24, 0x72, 0x6f, 0x75, 0x6e, 0x64, 0x73, 0x3d, 0x31, 0x32, 0x33, 0x34, 0x24, 0x61, 0x62, 0x63, 0x30, 0x31, 0x32, 0x33, 0x34, 0x35, 0x36, 0x37, 0x38, 0x39, 0x24, 0x00, 0x00, 0x00, 0x24, 0x35, 0x24, 0x72, 0x6f, 0x75, 0x6e, 0x64, 0x73, 0x3d, 0x31, 0x32, 0x33, 0x34, 0x24, 0x61, 0x62, 0x63, 0x30, 0x31, 0x32, 0x33, 0x34, 0x35, 0x36, 0x37, 0x38, 0x39, 0x24, 0x33, 0x56, 0x66, 0x44, 0x6a, 0x50, 0x74, 0x30, 0x35, 0x56, 0x48, 0x46, 0x6e, 0x34, 0x37, 0x43, 0x2f, 0x6f, 0x6a, 0x46, 0x5a, 0x36, 0x4b, 0x52, 0x50, 0x59, 0x72, 0x4f, 0x6a, 0x6a, 0x31, 0x6c, 0x4c, 0x62, 0x48, 0x2e, 0x64, 0x6b, 0x46, 0x33, 0x62, 0x5a, 0x36, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x58, 0x79, 0x30, 0x31, 0x40, 0x23, 0x01, 0x02, 0x80, 0x7f, 0xff, 0x0d, 0x0a, 0x81, 0x09, 0x20, 0x21, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x24, 0x36, 0x24, 0x72, 0x6f, 0x75, 0x6e, 0x64, 0x73, 0x3d, 0x31, 0x32, 0x33, 0x34, 0x24, 0x61, 0x62, 0x63, 0x30, 0x31, 0x32, 0x33, 0x34, 0x35, 0x36, 0x37, 0x38, 0x39, 0x24, 0x00, 0x00, 0x00, 0x24, 0x36, 0x24, 0x72, 0x6f, 0x75, 0x6e, 0x64, 0x73, 0x3d, 0x31, 0x32, 0x33, 0x34, 0x24, 0x61, 0x62, 0x63, 0x30, 0x31, 0x32, 0x33, 0x34, 0x35, 0x36, 0x37, 0x38, 0x39, 0x24, 0x42, 0x43, 0x70, 0x74, 0x38, 0x7a, 0x4c, 0x72, 0x63, 0x2f, 0x52, 0x63, 0x79, 0x75, 0x58, 0x6d, 0x43, 0x44, 0x4f, 0x45, 0x31, 0x41, 0x4c, 0x71, 0x4d, 0x58, 0x42, 0x32, 0x4d, 0x48, 0x36, 0x6e, 0x31, 0x67, 0x38, 0x39, 0x31, 0x48, 0x68, 0x46, 0x6a, 0x38, 0x2e, 0x77, 0x37, 0x4c, 0x78, 0x47, 0x76, 0x2e, 0x46, 0x54, 0x6b, 0x71, 0x71, 0x36, 0x56, 0x78, 0x63, 0x2f, 0x6b, 0x6d, 0x33, 0x59, 0x30, 0x6a, 0x45, 0x30, 0x6a, 0x32, 0x34, 0x6a, 0x59, 0x35, 0x50, 0x49, 0x76, 0x2f, 0x6f, 0x4f, 0x75, 0x36, 0x72, 0x65, 0x67, 0x31, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x02, 0x00, 0x02, 0x00, 0x02, 0x00, 0x02, 0x00, 0x02, 0x00, 0x02, 0x00, 0x02, 0x00, 0x02, 0x00, 0x02, 0x00, 0x03, 0x20, 0x02, 0x20, 0x02, 0x20, 0x02, 0x20, 0x02, 0x20, 0x02, 0x00, 0x02, 0x00, 0x02, 0x00, 0x02, 0x00, 0x02, 0x00, 0x02, 0x00, 0x02, 0x00, 0x02, 0x00, 0x02, 0x00, 0x02, 0x00, 0x02, 0x00, 0x02, 0x00, 0x02, 0x00, 0x02, 0x00, 0x02, 0x00, 0x02, 0x00, 0x02, 0x00, 0x02, 0x00, 0x01, 0x60, 0x04, 0xc0, 0x04, 0xc0, 0x04, 0xc0, 0x04, 0xc0, 0x04, 0xc0, 0x04, 0xc0, 0x04, 0xc0, 0x04, 0xc0, 0x04, 0xc0, 0x04, 0xc0, 0x04, 0xc0, 0x04, 0xc0, 0x04, 0xc0, 0x04, 0xc0, 0x04, 0xc0, 0x08, 0xd8, 0x08, 0xd8, 0x08, 0xd8, 0x08, 0xd8, 0x08, 0xd8, 0x08, 0xd8, 0x08, 0xd8, 0x08, 0xd8, 0x08, 0xd8, 0x08, 0xd8, 0x04, 0xc0, 0x04, 0xc0, 0x04, 0xc0, 0x04, 0xc0, 0x04, 0xc0, 0x04, 0xc0, 0x04, 0xc0, 0x08, 0xd5, 0x08, 0xd5, 0x08, 0xd5, 0x08, 0xd5, 0x08, 0xd5, 0x08, 0xd5, 0x08, 0xc5, 0x08, 0xc5, 0x08, 0xc5, 0x08, 0xc5, 0x08, 0xc5, 0x08, 0xc5, 0x08, 0xc5, 0x08, 0xc5, 0x08, 0xc5, 0x08, 0xc5, 0x08, 0xc5, 0x08, 0xc5, 0x08, 0xc5, 0x08, 0xc5, 0x08, 0xc5, 0x08, 0xc5, 0x08, 0xc5, 0x08, 0xc5, 0x08, 0xc5, 0x08, 0xc5, 0x04, 0xc0, 0x04, 0xc0, 0x04, 0xc0, 0x04, 0xc0, 0x04, 0xc0, 0x04, 0xc0, 0x08, 0xd6, 0x08, 0xd6, 0x08, 0xd6, 0x08, 0xd6, 0x08, 0xd6, 0x08, 0xd6, 0x08, 0xc6, 0x08, 0xc6, 0x08, 0xc6, 0x08, 0xc6, 0x08, 0xc6, 0x08, 0xc6, 0x08, 0xc6, 0x08, 0xc6, 0x08, 0xc6, 0x08, 0xc6, 0x08, 0xc6, 0x08, 0xc6, 0x08, 0xc6, 0x08, 0xc6, 0x08, 0xc6, 0x08, 0xc6, 0x08, 0xc6, 0x08, 0xc6, 0x08, 0xc6, 0x08, 0xc6, 0x04, 0xc0, 0x04, 0xc0, 0x04, 0xc0, 0x04, 0xc0, 0x02, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x01, 0x00, 0x00, 0x00, 0x02, 0x00, 0x00, 0x00, 0x03, 0x00, 0x00, 0x00, 0x04, 0x00, 0x00, 0x00, 0x05, 0x00, 0x00, 0x00, 0x06, 0x00, 0x00, 0x00, 0x07, 0x00, 0x00, 0x00, 0x08, 0x00, 0x00, 0x00, 0x09, 0x00, 0x00, 0x00, 0x0a, 0x00, 0x00, 0x00, 0x0b, 0x00, 0x00, 0x00, 0x0c, 0x00, 0x00, 0x00, 0x0d, 0x00, 0x00, 0x00, 0x0e, 0x00, 0x00, 0x00, 0x0f, 0x00, 0x00, 0x00, 0x10, 0x00, 0x00, 0x00, 0x11, 0x00, 0x00, 0x00, 0x12, 0x00, 0x00, 0x00, 0x13, 0x00, 0x00, 0x00, 0x14, 0x00, 0x00, 0x00, 0x15, 0x00, 0x00, 0x00, 0x16, 0x00, 0x00, 0x00, 0x17, 0x00, 0x00, 0x00, 0x18, 0x00, 0x00, 0x00, 0x19, 0x00, 0x00, 0x00, 0x1a, 0x00, 0x00, 0x00, 0x1b, 0x00, 0x00, 0x00, 0x1c, 0x00, 0x00, 0x00, 0x1d, 0x00, 0x00, 0x00, 0x1e, 0x00, 0x00, 0x00, 0x1f, 0x00, 0x00, 0x00, 0x20, 0x00, 0x00, 0x00, 0x21, 0x00, 0x00, 0x00, 0x22, 0x00, 0x00, 0x00, 0x23, 0x00, 0x00, 0x00, 0x24, 0x00, 0x00, 0x00, 0x25, 0x00, 0x00, 0x00, 0x26, 0x00, 0x00, 0x00, 0x27, 0x00, 0x00, 0x00, 0x28, 0x00, 0x00, 0x00, 0x29, 0x00, 0x00, 0x00, 0x2a, 0x00, 0x00, 0x00, 0x2b, 0x00, 0x00, 0x00, 0x2c, 0x00, 0x00, 0x00, 0x2d, 0x00, 0x00, 0x00, 0x2e, 0x00, 0x00, 0x00, 0x2f, 0x00, 0x00, 0x00, 0x30, 0x00, 0x00, 0x00, 0x31, 0x00, 0x00, 0x00, 0x32, 0x00, 0x00, 0x00, 0x33, 0x00, 0x00, 0x00, 0x34, 0x00, 0x00, 0x00, 0x35, 0x00, 0x00, 0x00, 0x36, 0x00, 0x00, 0x00, 0x37, 0x00, 0x00, 0x00, 0x38, 0x00, 0x00, 0x00, 0x39, 0x00, 0x00, 0x00, 0x3a, 0x00, 0x00, 0x00, 0x3b, 0x00, 0x00, 0x00, 0x3c, 0x00, 0x00, 0x00, 0x3d, 0x00, 0x00, 0x00, 0x3e, 0x00, 0x00, 0x00, 0x3f, 0x00, 0x00, 0x00, 0x40, 0x00, 0x00, 0x00, 0x61, 0x00, 0x00, 0x00, 0x62, 0x00, 0x00, 0x00, 0x63, 0x00, 0x00, 0x00, 0x64, 0x00, 0x00, 0x00, 0x65, 0x00, 0x00, 0x00, 0x66, 0x00, 0x00, 0x00, 0x67, 0x00, 0x00, 0x00, 0x68, 0x00, 0x00, 0x00, 0x69, 0x00, 0x00, 0x00, 0x6a, 0x00, 0x00, 0x00, 0x6b, 0x00, 0x00, 0x00, 0x6c, 0x00, 0x00, 0x00, 0x6d, 0x00, 0x00, 0x00, 0x6e, 0x00, 0x00, 0x00, 0x6f, 0x00, 0x00, 0x00, 0x70, 0x00, 0x00, 0x00, 0x71, 0x00, 0x00, 0x00, 0x72, 0x00, 0x00, 0x00, 0x73, 0x00, 0x00, 0x00, 0x74, 0x00, 0x00, 0x00, 0x75, 0x00, 0x00, 0x00, 0x76, 0x00, 0x00, 0x00, 0x77, 0x00, 0x00, 0x00, 0x78, 0x00, 0x00, 0x00, 0x79, 0x00, 0x00, 0x00, 0x7a, 0x00, 0x00, 0x00, 0x5b, 0x00, 0x00, 0x00, 0x5c, 0x00, 0x00, 0x00, 0x5d, 0x00, 0x00, 0x00, 0x5e, 0x00, 0x00, 0x00, 0x5f, 0x00, 0x00, 0x00, 0x60, 0x00, 0x00, 0x00, 0x61, 0x00, 0x00, 0x00, 0x62, 0x00, 0x00, 0x00, 0x63, 0x00, 0x00, 0x00, 0x64, 0x00, 0x00, 0x00, 0x65, 0x00, 0x00, 0x00, 0x66, 0x00, 0x00, 0x00, 0x67, 0x00, 0x00, 0x00, 0x68, 0x00, 0x00, 0x00, 0x69, 0x00, 0x00, 0x00, 0x6a, 0x00, 0x00, 0x00, 0x6b, 0x00, 0x00, 0x00, 0x6c, 0x00, 0x00, 0x00, 0x6d, 0x00, 0x00, 0x00, 0x6e, 0x00, 0x00, 0x00, 0x6f, 0x00, 0x00, 0x00, 0x70, 0x00, 0x00, 0x00, 0x71, 0x00, 0x00, 0x00, 0x72, 0x00, 0x00, 0x00, 0x73, 0x00, 0x00, 0x00, 0x74, 0x00, 0x00, 0x00, 0x75, 0x00, 0x00, 0x00, 0x76, 0x00, 0x00, 0x00, 0x77, 0x00, 0x00, 0x00, 0x78, 0x00, 0x00, 0x00, 0x79, 0x00, 0x00, 0x00, 0x7a, 0x00, 0x00, 0x00, 0x7b, 0x00, 0x00, 0x00, 0x7c, 0x00, 0x00, 0x00, 0x7d, 0x00, 0x00, 0x00, 0x7e, 0x00, 0x00, 0x00, 0x7f, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x01, 0x00, 0x00, 0x00, 0x02, 0x00, 0x00, 0x00, 0x03, 0x00, 0x00, 0x00, 0x04, 0x00, 0x00, 0x00, 0x05, 0x00, 0x00, 0x00, 0x06, 0x00, 0x00, 0x00, 0x07, 0x00, 0x00, 0x00, 0x08, 0x00, 0x00, 0x00, 0x09, 0x00, 0x00, 0x00, 0x0a, 0x00, 0x00, 0x00, 0x0b, 0x00, 0x00, 0x00, 0x0c, 0x00, 0x00, 0x00, 0x0d, 0x00, 0x00, 0x00, 0x0e, 0x00, 0x00, 0x00, 0x0f, 0x00, 0x00, 0x00, 0x10, 0x00, 0x00, 0x00, 0x11, 0x00, 0x00, 0x00, 0x12, 0x00, 0x00, 0x00, 0x13, 0x00, 0x00, 0x00, 0x14, 0x00, 0x00, 0x00, 0x15, 0x00, 0x00, 0x00, 0x16, 0x00, 0x00, 0x00, 0x17, 0x00, 0x00, 0x00, 0x18, 0x00, 0x00, 0x00, 0x19, 0x00, 0x00, 0x00, 0x1a, 0x00, 0x00, 0x00, 0x1b, 0x00, 0x00, 0x00, 0x1c, 0x00, 0x00, 0x00, 0x1d, 0x00, 0x00, 0x00, 0x1e, 0x00, 0x00, 0x00, 0x1f, 0x00, 0x00, 0x00, 0x20, 0x00, 0x00, 0x00, 0x21, 0x00, 0x00, 0x00, 0x22, 0x00, 0x00, 0x00, 0x23, 0x00, 0x00, 0x00, 0x24, 0x00, 0x00, 0x00, 0x25, 0x00, 0x00, 0x00, 0x26, 0x00, 0x00, 0x00, 0x27, 0x00, 0x00, 0x00, 0x28, 0x00, 0x00, 0x00, 0x29, 0x00, 0x00, 0x00, 0x2a, 0x00, 0x00, 0x00, 0x2b, 0x00, 0x00, 0x00, 0x2c, 0x00, 0x00, 0x00, 0x2d, 0x00, 0x00, 0x00, 0x2e, 0x00, 0x00, 0x00, 0x2f, 0x00, 0x00, 0x00, 0x30, 0x00, 0x00, 0x00, 0x31, 0x00, 0x00, 0x00, 0x32, 0x00, 0x00, 0x00, 0x33, 0x00, 0x00, 0x00, 0x34, 0x00, 0x00, 0x00, 0x35, 0x00, 0x00, 0x00, 0x36, 0x00, 0x00, 0x00, 0x37, 0x00, 0x00, 0x00, 0x38, 0x00, 0x00, 0x00, 0x39, 0x00, 0x00, 0x00, 0x3a, 0x00, 0x00, 0x00, 0x3b, 0x00, 0x00, 0x00, 0x3c, 0x00, 0x00, 0x00, 0x3d, 0x00, 0x00, 0x00, 0x3e, 0x00, 0x00, 0x00, 0x3f, 0x00, 0x00, 0x00, 0x40, 0x00, 0x00, 0x00, 0x41, 0x00, 0x00, 0x00, 0x42, 0x00, 0x00, 0x00, 0x43, 0x00, 0x00, 0x00, 0x44, 0x00, 0x00, 0x00, 0x45, 0x00, 0x00, 0x00, 0x46, 0x00, 0x00, 0x00, 0x47, 0x00, 0x00, 0x00, 0x48, 0x00, 0x00, 0x00, 0x49, 0x00, 0x00, 0x00, 0x4a, 0x00, 0x00, 0x00, 0x4b, 0x00, 0x00, 0x00, 0x4c, 0x00, 0x00, 0x00, 0x4d, 0x00, 0x00, 0x00, 0x4e, 0x00, 0x00, 0x00, 0x4f, 0x00, 0x00, 0x00, 0x50, 0x00, 0x00, 0x00, 0x51, 0x00, 0x00, 0x00, 0x52, 0x00, 0x00, 0x00, 0x53, 0x00, 0x00, 0x00, 0x54, 0x00, 0x00, 0x00, 0x55, 0x00, 0x00, 0x00, 0x56, 0x00, 0x00, 0x00, 0x57, 0x00, 0x00, 0x00, 0x58, 0x00, 0x00, 0x00, 0x59, 0x00, 0x00, 0x00, 0x5a, 0x00, 0x00, 0x00, 0x5b, 0x00, 0x00, 0x00, 0x5c, 0x00, 0x00, 0x00, 0x5d, 0x00, 0x00, 0x00, 0x5e, 0x00, 0x00, 0x00, 0x5f, 0x00, 0x00, 0x00, 0x60, 0x00, 0x00, 0x00, 0x41, 0x00, 0x00, 0x00, 0x42, 0x00, 0x00, 0x00, 0x43, 0x00, 0x00, 0x00, 0x44, 0x00, 0x00, 0x00, 0x45, 0x00, 0x00, 0x00, 0x46, 0x00, 0x00, 0x00, 0x47, 0x00, 0x00, 0x00, 0x48, 0x00, 0x00, 0x00, 0x49, 0x00, 0x00, 0x00, 0x4a, 0x00, 0x00, 0x00, 0x4b, 0x00, 0x00, 0x00, 0x4c, 0x00, 0x00, 0x00, 0x4d, 0x00, 0x00, 0x00, 0x4e, 0x00, 0x00, 0x00, 0x4f, 0x00, 0x00, 0x00, 0x50, 0x00, 0x00, 0x00, 0x51, 0x00, 0x00, 0x00, 0x52, 0x00, 0x00, 0x00, 0x53, 0x00, 0x00, 0x00, 0x54, 0x00, 0x00, 0x00, 0x55, 0x00, 0x00, 0x00, 0x56, 0x00, 0x00, 0x00, 0x57, 0x00, 0x00, 0x00, 0x58, 0x00, 0x00, 0x00, 0x59, 0x00, 0x00, 0x00, 0x5a, 0x00, 0x00, 0x00, 0x7b, 0x00, 0x00, 0x00, 0x7c, 0x00, 0x00, 0x00, 0x7d, 0x00, 0x00, 0x00, 0x7e, 0x00, 0x00, 0x00, 0x7f, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x12, 0x11, 0x13, 0x14, 0x15, 0x16, 0x17, 0x18, 0x19, 0x1a, 0x1b, 0x1c, 0x1d, 0x1e, 0x1f, 0x20, 0x21, 0x11, 0x22, 0x23, 0x24, 0x11, 0x25, 0x26, 0x27, 0x28, 0x29, 0x2a, 0x2b, 0x2c, 0x11, 0x2d, 0x2e, 0x2f, 0x10, 0x10, 0x30, 0x10, 0x10, 0x10, 0x10, 0x10, 0x10, 0x10, 0x31, 0x32, 0x33, 0x10, 0x34, 0x35, 0x10, 0x10, 0x11, 0x11, 0x11, 0x11, 0x11, 0x11, 0x11, 0x11, 0x11, 0x11, 0x11, 0x11, 0x11, 0x11, 0x11, 0x11, 0x11, 0x11, 0x11, 0x11, 0x11, 0x11, 0x11, 0x11, 0x11, 0x36, 0x11, 0x11, 0x11, 0x11, 0x11, 0x11, 0x11, 0x11, 0x11, 0x11, 0x11, 0x11, 0x11, 0x11, 0x11, 0x11, 0x11, 0x11, 0x11, 0x11, 0x11, 0x11, 0x11, 0x11, 0x11, 0x11, 0x11, 0x11, 0x11, 0x11, 0x11, 0x11, 0x11, 0x11, 0x11, 0x11, 0x11, 0x11, 0x11, 0x11, 0x11, 0x11, 0x11, 0x11, 0x11, 0x11, 0x11, 0x11, 0x11, 0x11, 0x11, 0x11, 0x11, 0x11, 0x11, 0x11, 0x11, 0x11, 0x11, 0x11, 0x11, 0x11, 0x11, 0x11, 0x11, 0x11, 0x11, 0x11, 0x11, 0x11, 0x11, 0x11, 0x11, 0x11, 0x11, 0x11, 0x11, 0x11, 0x11, 0x11, 0x11, 0x37, 0x11, 0x11, 0x11, 0x11, 0x38, 0x11, 0x39, 0x3a, 0x3b, 0x3c, 0x3d, 0x3e, 0x11, 0x11, 0x11, 0x11, 0x11, 0x11, 0x11, 0x11, 0x11, 0x11, 0x11, 0x11, 0x11, 0x11, 0x11, 0x11, 0x11, 0x11, 0x11, 0x11, 0x11, 0x11, 0x11, 0x11, 0x11, 0x11, 0x11, 0x11, 0x11, 0x11, 0x11, 0x11, 0x11, 0x11, 0x11, 0x11, 0x11, 0x11, 0x11, 0x11, 0x11, 0x11, 0x11, 0x3f, 0x10, 0x10, 0x10, 0x10, 0x10, 0x10, 0x10, 0x10, 0x10, 0x10, 0x10, 0x10, 0x10, 0x10, 0x10, 0x10, 0x10, 0x10, 0x10, 0x10, 0x10, 0x10, 0x10, 0x10, 0x10, 0x10, 0x10, 0x10, 0x10, 0x10, 0x10, 0x10, 0x10, 0x11, 0x40, 0x41, 0x11, 0x42, 0x43, 0x44, 0x45, 0x46, 0x47, 0x48, 0x49, 0x4a, 0x11, 0x4b, 0x4c, 0x4d, 0x4e, 0x4f, 0x50, 0x10, 0x10, 0x10, 0x51, 0x52, 0x53, 0x54, 0x55, 0x56, 0x57, 0x58, 0x59, 0x10, 0x5a, 0x10, 0x5b, 0x5c, 0x10, 0x10, 0x11, 0x11, 0x11, 0x5d, 0x5e, 0x5f, 0x10, 0x10, 0x10, 0x10, 0x10, 0x10, 0x10, 0x10, 0x10, 0x10, 0x11, 0x11, 0x11, 0x11, 0x60, 0x10, 0x10, 0x10, 0x10, 0x10, 0x10, 0x10, 0x10, 0x10, 0x10, 0x10, 0x10, 0x10, 0x10, 0x10, 0x11, 0x11, 0x61, 0x10, 0x10, 0x10, 0x10, 0x10, 0x10, 0x10, 0x10, 0x10, 0x10, 0x10, 0x10, 0x10, 0x10, 0x10, 0x10, 0x10, 0x10, 0x10, 0x10, 0x10, 0x10, 0x10, 0x10, 0x10, 0x10, 0x10, 0x10, 0x10, 0x10, 0x10, 0x10, 0x10, 0x11, 0x11, 0x62, 0x63, 0x10, 0x10, 0x10, 0x64, 0x11, 0x11, 0x11, 0x11, 0x11, 0x11, 0x11, 0x11, 0x11, 0x11, 0x11, 0x11, 0x11, 0x11, 0x11, 0x11, 0x11, 0x11, 0x11, 0x11, 0x11, 0x11, 0x11, 0x65, 0x11, 0x11, 0x66, 0x10, 0x10, 0x10, 0x10, 0x10, 0x10, 0x10, 0x10, 0x10, 0x10, 0x10, 0x10, 0x10, 0x10, 0x10, 0x10, 0x10, 0x10, 0x10, 0x10, 0x10, 0x10, 0x10, 0x10, 0x10, 0x10, 0x10, 0x10, 0x10, 0x10, 0x10, 0x10, 0x10, 0x10, 0x10, 0x10, 0x10, 0x11, 0x67, 0x68, 0x10, 0x10, 0x10, 0x10, 0x10, 0x10, 0x10, 0x10, 0x10, 0x69, 0x10, 0x10, 0x10, 0x10, 0x10, 0x10, 0x10, 0x10, 0x10, 0x10, 0x10, 0x10, 0x10, 0x10, 0x10, 0x10, 0x10, 0x10, 0x10, 0x10, 0x10, 0x10, 0x10, 0x6a, 0x6b, 0x6c, 0x6d, 0x10, 0x10, 0x10, 0x10, 0x10, 0x10, 0x10, 0x10, 0x6e, 0x10, 0x10, 0x10, 0x10, 0x10, 0x10, 0x10, 0x6f, 0x70, 0x10, 0x10, 0x10, 0x10, 0x71, 0x10, 0x10, 0x72, 0x10, 0x10, 0x10, 0x10, 0x10, 0x10, 0x10, 0x10, 0x10, 0x10, 0x10, 0x10, 0x10, 0x10, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0xfe, 0xff, 0xff, 0x07, 0xfe, 0xff, 0xff, 0x07, 0x00, 0x00, 0x00, 0x00, 0x00, 0x04, 0x20, 0x04, 0xff, 0xff, 0x7f, 0xff, 0xff, 0xff, 0x7f, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xc3, 0xff, 0x03, 0x00, 0x1f, 0x50, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x20, 0x00, 0x00, 0x00, 0x00, 0x00, 0xdf, 0xbc, 0x40, 0xd7, 0xff, 0xff, 0xfb, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xbf, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0x03, 0xfc, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xfe, 0xff, 0xff, 0xff, 0x7f, 0x02, 0xfe, 0xff, 0xff, 0xff, 0xff, 0x00, 0x00, 0x00, 0x00, 0x00, 0xff, 0xbf, 0xb6, 0x00, 0xff, 0xff, 0xff, 0x07, 0x07, 0x00, 0x00, 0x00, 0xff, 0x07, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xfe, 0xff, 0xc3, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xef, 0x1f, 0xfe, 0xe1, 0xff, 0x9f, 0x00, 0x00, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0x00, 0xe0, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0x03, 0x00, 0xff, 0xff, 0xff, 0xff, 0xff, 0x07, 0x30, 0x04, 0xff, 0xff, 0xff, 0xfc, 0xff, 0x1f, 0x00, 0x00, 0xff, 0xff, 0xff, 0x01, 0xff, 0x07, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0xff, 0xff, 0xdf, 0x3f, 0x00, 0x00, 0xf0, 0xff, 0xf8, 0x03, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xef, 0xff, 0xdf, 0xe1, 0xff, 0xcf, 0xff, 0xfe, 0xff, 0xef, 0x9f, 0xf9, 0xff, 0xff, 0xfd, 0xc5, 0xe3, 0x9f, 0x59, 0x80, 0xb0, 0xcf, 0xff, 0x03, 0x10, 0xee, 0x87, 0xf9, 0xff, 0xff, 0xfd, 0x6d, 0xc3, 0x87, 0x19, 0x02, 0x5e, 0xc0, 0xff, 0x3f, 0x00, 0xee, 0xbf, 0xfb, 0xff, 0xff, 0xfd, 0xed, 0xe3, 0xbf, 0x1b, 0x01, 0x00, 0xcf, 0xff, 0x00, 0x1e, 0xee, 0x9f, 0xf9, 0xff, 0xff, 0xfd, 0xed, 0xe3, 0x9f, 0x19, 0xc0, 0xb0, 0xcf, 0xff, 0x02, 0x00, 0xec, 0xc7, 0x3d, 0xd6, 0x18, 0xc7, 0xff, 0xc3, 0xc7, 0x1d, 0x81, 0x00, 0xc0, 0xff, 0x00, 0x00, 0xef, 0xdf, 0xfd, 0xff, 0xff, 0xfd, 0xff, 0xe3, 0xdf, 0x1d, 0x60, 0x07, 0xcf, 0xff, 0x00, 0x00, 0xef, 0xdf, 0xfd, 0xff, 0xff, 0xfd, 0xef, 0xe3, 0xdf, 0x1d, 0x60, 0x40, 0xcf, 0xff, 0x06, 0x00, 0xef, 0xdf, 0xfd, 0xff, 0xff, 0xff, 0xff, 0xe7, 0xdf, 0x5d, 0xf0, 0x80, 0xcf, 0xff, 0x00, 0xfc, 0xec, 0xff, 0x7f, 0xfc, 0xff, 0xff, 0xfb, 0x2f, 0x7f, 0x80, 0x5f, 0xff, 0xc0, 0xff, 0x0c, 0x00, 0xfe, 0xff, 0xff, 0xff, 0xff, 0x7f, 0xff, 0x07, 0x3f, 0x20, 0xff, 0x03, 0x00, 0x00, 0x00, 0x00, 0x96, 0x25, 0xf0, 0xfe, 0xae, 0xec, 0xff, 0x3b, 0x5f, 0x20, 0xff, 0xf3, 0x00, 0x00, 0x00, 0x00, 0x01, 0x00, 0x00, 0x00, 0xff, 0x03, 0x00, 0x00, 0xff, 0xfe, 0xff, 0xff, 0xff, 0x1f, 0xfe, 0xff, 0x03, 0xff, 0xff, 0xfe, 0xff, 0xff, 0xff, 0x1f, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0x7f, 0xf9, 0xff, 0x03, 0xff, 0xff, 0xe7, 0xc1, 0xff, 0xff, 0x7f, 0x40, 0xff, 0x33, 0xff, 0xff, 0xff, 0xff, 0xbf, 0x20, 0xff, 0xff, 0xff, 0xff, 0xff, 0xf7, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0x3d, 0x7f, 0x3d, 0xff, 0xff, 0xff, 0xff, 0xff, 0x3d, 0xff, 0xff, 0xff, 0xff, 0x3d, 0x7f, 0x3d, 0xff, 0x7f, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0x3d, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0x87, 0x00, 0x00, 0x00, 0x00, 0xff, 0xff, 0x00, 0x00, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0x3f, 0x3f, 0xfe, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0x9f, 0xff, 0xff, 0xfe, 0xff, 0xff, 0x07, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xc7, 0xff, 0x01, 0xff, 0xdf, 0x0f, 0x00, 0xff, 0xff, 0x0f, 0x00, 0xff, 0xff, 0x0f, 0x00, 0xff, 0xdf, 0x0d, 0x00, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xcf, 0xff, 0xff, 0x01, 0x80, 0x10, 0xff, 0x03, 0x00, 0x00, 0x00, 0x00, 0xff, 0x03, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0x00, 0xff, 0xff, 0xff, 0xff, 0xff, 0x07, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0x3f, 0x00, 0xff, 0xff, 0xff, 0x7f, 0xff, 0x0f, 0xff, 0x01, 0xc0, 0xff, 0xff, 0xff, 0xff, 0x3f, 0x1f, 0x00, 0xff, 0xff, 0xff, 0xff, 0xff, 0x0f, 0xff, 0xff, 0xff, 0x03, 0xff, 0x03, 0x00, 0x00, 0x00, 0x00, 0xff, 0xff, 0xff, 0x0f, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0x7f, 0xfe, 0xff, 0x1f, 0x00, 0xff, 0x03, 0xff, 0x03, 0x80, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xef, 0xff, 0xef, 0x0f, 0xff, 0x03, 0x00, 0x00, 0x00, 0x00, 0xff, 0xff, 0xff, 0xff, 0xff, 0xf3, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xbf, 0xff, 0x03, 0x00, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0x3f, 0x00, 0xff, 0xe3, 0xff, 0xff, 0xff, 0xff, 0xff, 0x3f, 0xff, 0x01, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0xde, 0x6f, 0x00, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0x00, 0x00, 0x00, 0x00, 0x80, 0xff, 0x1f, 0x00, 0xff, 0xff, 0x3f, 0x3f, 0xff, 0xff, 0xff, 0xff, 0x3f, 0x3f, 0xff, 0xaa, 0xff, 0xff, 0xff, 0x3f, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xdf, 0x5f, 0xdc, 0x1f, 0xcf, 0x0f, 0xff, 0x1f, 0xdc, 0x1f, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x02, 0x80, 0x00, 0x00, 0xff, 0x1f, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x84, 0xfc, 0x2f, 0x3e, 0x50, 0xbd, 0xff, 0xf3, 0xe0, 0x43, 0x00, 0x00, 0xff, 0xff, 0xff, 0xff, 0xff, 0x01, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0xc0, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0x03, 0x00, 0x00, 0xff, 0xff, 0xff, 0xff, 0xff, 0x7f, 0xff, 0xff, 0xff, 0xff, 0xff, 0x7f, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0x1f, 0x78, 0x0c, 0x00, 0xff, 0xff, 0xff, 0xff, 0xbf, 0x20, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0x80, 0x00, 0x00, 0xff, 0xff, 0x7f, 0x00, 0x7f, 0x7f, 0x7f, 0x7f, 0x7f, 0x7f, 0x7f, 0x7f, 0xff, 0xff, 0xff, 0xff, 0x00, 0x00, 0x00, 0x00, 0x00, 0x80, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0xe0, 0x00, 0x00, 0x00, 0xfe, 0x03, 0x3e, 0x1f, 0xfe, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0x7f, 0xe0, 0xfe, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xf7, 0xe0, 0xff, 0xff, 0xff, 0xff, 0x7f, 0xfe, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0x7f, 0x00, 0x00, 0xff, 0xff, 0xff, 0x07, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0x3f, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0x07, 0x00, 0x00, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0x1f, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0xff, 0xff, 0xff, 0xff, 0xff, 0x3f, 0xff, 0x1f, 0xff, 0xff, 0xff, 0x0f, 0x00, 0x00, 0xff, 0xff, 0xff, 0xff, 0xff, 0x7f, 0xf0, 0x8f, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0x00, 0x00, 0x00, 0x00, 0x80, 0xff, 0xfc, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xf9, 0xff, 0xff, 0xff, 0x7f, 0xff, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x80, 0xff, 0xbb, 0xf7, 0xff, 0xff, 0xff, 0x00, 0x00, 0x00, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0x0f, 0x00, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0x2f, 0x00, 0xff, 0x03, 0x00, 0x00, 0xfc, 0x28, 0xff, 0xff, 0xff, 0xff, 0xff, 0x07, 0xff, 0xff, 0xff, 0xff, 0x07, 0x00, 0xff, 0xff, 0xff, 0x1f, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xf7, 0xff, 0x00, 0x80, 0xff, 0x03, 0xdf, 0xff, 0xff, 0x7f, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0x7f, 0x00, 0xff, 0x3f, 0xff, 0x03, 0xff, 0xff, 0x7f, 0xc4, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0x7f, 0x05, 0x00, 0x00, 0x38, 0xff, 0xff, 0x3c, 0x00, 0x7e, 0x7e, 0x7e, 0x00, 0x7f, 0x7f, 0xff, 0xff, 0xff, 0xff, 0xff, 0xf7, 0x3f, 0x00, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0x07, 0xff, 0x03, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0x0f, 0x00, 0xff, 0xff, 0x7f, 0xf8, 0xff, 0xff, 0xff, 0xff, 0xff, 0x0f, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0x3f, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0x03, 0x00, 0x00, 0x00, 0x00, 0x7f, 0x00, 0xf8, 0xe0, 0xff, 0xfd, 0x7f, 0x5f, 0xdb, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0x03, 0x00, 0x00, 0x00, 0xf8, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0x3f, 0x00, 0x00, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xfc, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0x00, 0x00, 0x00, 0x00, 0x00, 0xff, 0x0f, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0xdf, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0x1f, 0x00, 0x00, 0xff, 0x03, 0xfe, 0xff, 0xff, 0x07, 0xfe, 0xff, 0xff, 0x07, 0xc0, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0x7f, 0xfc, 0xfc, 0xfc, 0x1c, 0x00, 0x00, 0x00, 0x00, 0xff, 0xef, 0xff, 0xff, 0x7f, 0xff, 0xff, 0xb7, 0xff, 0x3f, 0xff, 0x3f, 0x00, 0x00, 0x00, 0x00, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0x07, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0x1f, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0xff, 0xff, 0xff, 0x1f, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0x01, 0x00, 0x00, 0x00, 0x00, 0x00, 0xff, 0xff, 0xff, 0xff, 0x00, 0xe0, 0xff, 0xff, 0xff, 0x07, 0xff, 0xff, 0xff, 0xff, 0xff, 0x07, 0xff, 0xff, 0xff, 0x3f, 0xff, 0xff, 0xff, 0xff, 0x0f, 0xff, 0x3e, 0x00, 0x00, 0x00, 0x00, 0x00, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0x3f, 0xff, 0x03, 0xff, 0xff, 0xff, 0xff, 0x0f, 0xff, 0xff, 0xff, 0xff, 0x0f, 0xff, 0xff, 0xff, 0xff, 0xff, 0x00, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0x0f, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0x7f, 0x00, 0xff, 0xff, 0x3f, 0x00, 0xff, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x3f, 0xfd, 0xff, 0xff, 0xff, 0xff, 0xbf, 0x91, 0xff, 0xff, 0x3f, 0x00, 0xff, 0xff, 0x7f, 0x00, 0xff, 0xff, 0xff, 0x7f, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0xff, 0xff, 0x37, 0x00, 0xff, 0xff, 0x3f, 0x00, 0xff, 0xff, 0xff, 0x03, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xc0, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x6f, 0xf0, 0xef, 0xfe, 0xff, 0xff, 0x0f, 0x00, 0x00, 0x00, 0x00, 0x00, 0xff, 0xff, 0xff, 0x1f, 0xff, 0xff, 0xff, 0x1f, 0x00, 0x00, 0x00, 0x00, 0xff, 0xfe, 0xff, 0xff, 0x1f, 0x00, 0x00, 0x00, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0x3f, 0x00, 0xff, 0xff, 0x3f, 0x00, 0xff, 0xff, 0x07, 0x00, 0xff, 0xff, 0x03, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0x01, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0x07, 0x00, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0x07, 0x00, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0x3f, 0x00, 0x00, 0x00, 0xc0, 0xff, 0x00, 0x00, 0xfc, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0x01, 0x00, 0x00, 0xff, 0xff, 0xff, 0x01, 0xff, 0x03, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xc7, 0xff, 0x00, 0x00, 0xff, 0xff, 0xff, 0xff, 0x47, 0x00, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0x1e, 0x00, 0xff, 0x17, 0x00, 0x00, 0x00, 0x00, 0xff, 0xff, 0xfb, 0xff, 0xff, 0xff, 0x9f, 0x40, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x7f, 0xbd, 0xff, 0xbf, 0xff, 0x01, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0x01, 0xff, 0x03, 0xef, 0x9f, 0xf9, 0xff, 0xff, 0xfd, 0xed, 0xe3, 0x9f, 0x19, 0x81, 0xe0, 0x0f, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xbb, 0x07, 0xff, 0x03, 0x00, 0x00, 0x00, 0x00, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xb3, 0x00, 0xff, 0x03, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0x3f, 0x7f, 0x00, 0x00, 0x00, 0x3f, 0x00, 0x00, 0x00, 0x00, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0x7f, 0x11, 0x00, 0xff, 0x03, 0x00, 0x00, 0x00, 0x00, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0x3f, 0x00, 0xff, 0x03, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0xff, 0xff, 0xff, 0xe3, 0xff, 0x07, 0xff, 0x03, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0x03, 0x00, 0x80, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xe7, 0x7f, 0x00, 0x00, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xcf, 0xff, 0xff, 0x00, 0x00, 0x00, 0x00, 0x00, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0x01, 0xff, 0xfd, 0xff, 0xff, 0xff, 0xff, 0x7f, 0x7f, 0x01, 0x00, 0xff, 0x03, 0x00, 0x00, 0xfc, 0xff, 0xff, 0xff, 0xfc, 0xff, 0xff, 0xfe, 0x7f, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x7f, 0xfb, 0xff, 0xff, 0xff, 0xff, 0x7f, 0xb4, 0xcb, 0x00, 0xff, 0x03, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0x03, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0x7f, 0x00, 0x00, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0x0f, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0xff, 0xff, 0xff, 0xff, 0xff, 0x7f, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0x7f, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0x01, 0xff, 0xff, 0xff, 0x7f, 0xff, 0x03, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0xff, 0xff, 0xff, 0x3f, 0x00, 0x00, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0x7f, 0x00, 0x0f, 0x00, 0xff, 0x03, 0xf8, 0xff, 0xff, 0xe0, 0xff, 0xff, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0x1f, 0x00, 0xff, 0xff, 0xff, 0xff, 0xff, 0x7f, 0x00, 0x00, 0xf8, 0xff, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x03, 0x00, 0x00, 0x00, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0x1f, 0x00, 0x00, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0x07, 0x00, 0xff, 0xff, 0xff, 0x7f, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0x0f, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0x07, 0xff, 0x1f, 0xff, 0x01, 0xff, 0x43, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xdf, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xdf, 0x64, 0xde, 0xff, 0xeb, 0xef, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xbf, 0xe7, 0xdf, 0xdf, 0xff, 0xff, 0xff, 0x7b, 0x5f, 0xfc, 0xfd, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0x3f, 0xff, 0xff, 0xff, 0xfd, 0xff, 0xff, 0xf7, 0xff, 0xff, 0xff, 0xf7, 0xff, 0xff, 0xdf, 0xff, 0xff, 0xff, 0xdf, 0xff, 0xff, 0x7f, 0xff, 0xff, 0xff, 0x7f, 0xff, 0xff, 0xff, 0xfd, 0xff, 0xff, 0xff, 0xfd, 0xff, 0xff, 0xf7, 0xcf, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0x7f, 0xff, 0xff, 0xf9, 0xdb, 0x07, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0x1f, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0x8f, 0x00, 0xff, 0x03, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0xef, 0xff, 0xff, 0xff, 0x96, 0xfe, 0xf7, 0x0a, 0x84, 0xea, 0x96, 0xaa, 0x96, 0xf7, 0xf7, 0x5e, 0xff, 0xfb, 0xff, 0x0f, 0xee, 0xfb, 0xff, 0x0f, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0xff, 0xff, 0xff, 0x03, 0xff, 0xff, 0xff, 0x03, 0xff, 0xff, 0xff, 0x03, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x61, 0x6c, 0x6e, 0x75, 0x6d, 0x00, 0x61, 0x6c, 0x70, 0x68, 0x61, 0x00, 0x62, 0x6c, 0x61, 0x6e, 0x6b, 0x00, 0x63, 0x6e, 0x74, 0x72, 0x6c, 0x00, 0x64, 0x69, 0x67, 0x69, 0x74, 0x00, 0x67, 0x72, 0x61, 0x70, 0x68, 0x00, 0x6c, 0x6f, 0x77, 0x65, 0x72, 0x00, 0x70, 0x72, 0x69, 0x6e, 0x74, 0x00, 0x70, 0x75, 0x6e, 0x63, 0x74, 0x00, 0x73, 0x70, 0x61, 0x63, 0x65, 0x00, 0x75, 0x70, 0x70, 0x65, 0x72, 0x00, 0x78, 0x64, 0x69, 0x67, 0x69, 0x74, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x12, 0x10, 0x13, 0x14, 0x15, 0x16, 0x17, 0x18, 0x19, 0x1a, 0x1b, 0x1c, 0x1d, 0x1e, 0x1f, 0x20, 0x21, 0x10, 0x10, 0x22, 0x23, 0x10, 0x24, 0x25, 0x26, 0x27, 0x28, 0x29, 0x2a, 0x2b, 0x10, 0x2c, 0x2d, 0x2e, 0x11, 0x11, 0x2f, 0x11, 0x11, 0x11, 0x11, 0x11, 0x11, 0x30, 0x31, 0x32, 0x33, 0x34, 0x35, 0x36, 0x37, 0x11, 0x10, 0x10, 0x10, 0x10, 0x10, 0x10, 0x10, 0x10, 0x10, 0x10, 0x10, 0x10, 0x10, 0x10, 0x10, 0x10, 0x10, 0x10, 0x10, 0x10, 0x10, 0x10, 0x10, 0x10, 0x10, 0x38, 0x10, 0x10, 0x10, 0x10, 0x10, 0x10, 0x10, 0x10, 0x10, 0x10, 0x10, 0x10, 0x10, 0x10, 0x10, 0x10, 0x10, 0x10, 0x10, 0x10, 0x10, 0x10, 0x10, 0x10, 0x10, 0x10, 0x10, 0x10, 0x10, 0x10, 0x10, 0x10, 0x10, 0x10, 0x10, 0x10, 0x10, 0x10, 0x10, 0x10, 0x10, 0x10, 0x10, 0x10, 0x10, 0x10, 0x10, 0x10, 0x10, 0x10, 0x10, 0x10, 0x10, 0x10, 0x10, 0x10, 0x10, 0x10, 0x10, 0x10, 0x10, 0x10, 0x10, 0x10, 0x10, 0x10, 0x10, 0x10, 0x10, 0x10, 0x10, 0x10, 0x10, 0x10, 0x10, 0x10, 0x10, 0x10, 0x10, 0x10, 0x10, 0x10, 0x10, 0x10, 0x10, 0x10, 0x39, 0x10, 0x3a, 0x3b, 0x3c, 0x3d, 0x3e, 0x3f, 0x10, 0x10, 0x10, 0x10, 0x10, 0x10, 0x10, 0x10, 0x10, 0x10, 0x10, 0x10, 0x10, 0x10, 0x10, 0x10, 0x10, 0x10, 0x10, 0x10, 0x10, 0x10, 0x10, 0x10, 0x10, 0x10, 0x10, 0x10, 0x10, 0x10, 0x10, 0x10, 0x10, 0x10, 0x10, 0x10, 0x10, 0x10, 0x10, 0x10, 0x10, 0x10, 0x10, 0x10, 0x10, 0x10, 0x10, 0x10, 0x10, 0x10, 0x10, 0x10, 0x40, 0x10, 0x10, 0x10, 0x10, 0x10, 0x10, 0x10, 0x10, 0x10, 0x10, 0x10, 0x10, 0x10, 0x10, 0x10, 0x10, 0x10, 0x10, 0x10, 0x10, 0x10, 0x10, 0x10, 0x41, 0x10, 0x10, 0x42, 0x10, 0x43, 0x44, 0x45, 0x10, 0x46, 0x47, 0x48, 0x10, 0x49, 0x10, 0x10, 0x4a, 0x4b, 0x4c, 0x4d, 0x4e, 0x10, 0x4f, 0x10, 0x50, 0x51, 0x52, 0x53, 0x54, 0x55, 0x56, 0x57, 0x58, 0x10, 0x59, 0x10, 0x5a, 0x5b, 0x10, 0x10, 0x10, 0x10, 0x10, 0x10, 0x5c, 0x10, 0x10, 0x10, 0x10, 0x10, 0x10, 0x10, 0x10, 0x10, 0x10, 0x10, 0x10, 0x10, 0x10, 0x10, 0x10, 0x10, 0x10, 0x10, 0x10, 0x10, 0x10, 0x10, 0x10, 0x10, 0x10, 0x10, 0x10, 0x10, 0x10, 0x10, 0x10, 0x10, 0x10, 0x10, 0x10, 0x10, 0x10, 0x10, 0x10, 0x10, 0x10, 0x10, 0x10, 0x10, 0x10, 0x10, 0x10, 0x10, 0x10, 0x10, 0x10, 0x10, 0x10, 0x10, 0x10, 0x10, 0x10, 0x10, 0x10, 0x10, 0x10, 0x10, 0x10, 0x10, 0x10, 0x10, 0x10, 0x10, 0x5d, 0x5e, 0x10, 0x10, 0x10, 0x5f, 0x10, 0x10, 0x10, 0x10, 0x10, 0x10, 0x10, 0x10, 0x10, 0x10, 0x10, 0x10, 0x10, 0x10, 0x10, 0x10, 0x10, 0x10, 0x10, 0x10, 0x10, 0x10, 0x10, 0x10, 0x10, 0x10, 0x10, 0x10, 0x10, 0x10, 0x10, 0x10, 0x10, 0x10, 0x10, 0x10, 0x10, 0x10, 0x10, 0x10, 0x10, 0x10, 0x10, 0x10, 0x10, 0x10, 0x10, 0x10, 0x10, 0x10, 0x10, 0x10, 0x10, 0x10, 0x10, 0x10, 0x10, 0x10, 0x10, 0x10, 0x10, 0x10, 0x10, 0x10, 0x10, 0x10, 0x10, 0x10, 0x10, 0x10, 0x10, 0x10, 0x10, 0x10, 0x10, 0x10, 0x60, 0x10, 0x10, 0x10, 0x10, 0x10, 0x10, 0x10, 0x10, 0x10, 0x10, 0x10, 0x10, 0x10, 0x10, 0x10, 0x10, 0x10, 0x10, 0x10, 0x61, 0x62, 0x63, 0x64, 0x10, 0x10, 0x65, 0x66, 0x11, 0x11, 0x67, 0x10, 0x10, 0x10, 0x10, 0x10, 0x10, 0x10, 0x10, 0x10, 0x10, 0x10, 0x10, 0x10, 0x68, 0x69, 0x10, 0x10, 0x10, 0x10, 0x6a, 0x10, 0x6b, 0x6c, 0x6d, 0x11, 0x11, 0x11, 0x6e, 0x6f, 0x70, 0x71, 0x10, 0x10, 0x10, 0x10, 0x10, 0x10, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0x00, 0x00, 0x00, 0x00, 0xfe, 0xff, 0x00, 0xfc, 0x01, 0x00, 0x00, 0xf8, 0x01, 0x00, 0x00, 0x78, 0x00, 0x00, 0x00, 0x00, 0xff, 0xfb, 0xdf, 0xfb, 0x00, 0x00, 0x80, 0x00, 0x00, 0x00, 0x80, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x3c, 0x00, 0xfc, 0xff, 0xe0, 0xaf, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xdf, 0xff, 0xff, 0xff, 0xff, 0xff, 0x20, 0x40, 0xb0, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x40, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0xfc, 0x03, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0xfc, 0x00, 0x00, 0x00, 0x00, 0x00, 0xe6, 0xfe, 0xff, 0xff, 0xff, 0x00, 0x40, 0x49, 0x00, 0x00, 0x00, 0x00, 0x00, 0x18, 0x00, 0xff, 0xff, 0x00, 0xd8, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x01, 0x00, 0x3c, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x10, 0xe0, 0x01, 0x1e, 0x00, 0x60, 0xff, 0xbf, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0xff, 0x07, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0xf8, 0xcf, 0x03, 0x00, 0x00, 0x00, 0x03, 0x00, 0x20, 0xff, 0x7f, 0x00, 0x00, 0x00, 0x4e, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x07, 0xfc, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x10, 0x00, 0x20, 0x1e, 0x00, 0x30, 0x00, 0x01, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x10, 0x00, 0x20, 0x00, 0x00, 0x00, 0x00, 0xfc, 0x2f, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x10, 0x00, 0x20, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x10, 0x00, 0x20, 0x00, 0x00, 0x00, 0x00, 0x03, 0xe0, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x10, 0x00, 0x20, 0x00, 0x00, 0x00, 0x00, 0xfd, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x20, 0x00, 0x00, 0x00, 0x00, 0xff, 0x07, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x20, 0x00, 0x00, 0x00, 0x00, 0x00, 0xff, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x10, 0x00, 0x20, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x18, 0x00, 0xa0, 0x00, 0x7f, 0x00, 0x00, 0xff, 0x03, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x04, 0x00, 0x00, 0x00, 0x00, 0x10, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x80, 0x00, 0x80, 0xc0, 0xdf, 0x00, 0x0c, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x1f, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0xfe, 0xff, 0xff, 0xff, 0x00, 0xfc, 0xff, 0xff, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0xfc, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0xc0, 0xff, 0xdf, 0xff, 0x07, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x80, 0x06, 0x00, 0xfc, 0x00, 0x00, 0x18, 0x3e, 0x00, 0x00, 0x80, 0xbf, 0x00, 0xcc, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x08, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x60, 0xff, 0xff, 0xff, 0x1f, 0x00, 0x00, 0xff, 0x03, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x01, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x60, 0x00, 0x00, 0x01, 0x00, 0x00, 0x18, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x38, 0x00, 0x00, 0x00, 0x00, 0x10, 0x00, 0x00, 0x00, 0x70, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x30, 0x00, 0x00, 0xfe, 0x7f, 0x2f, 0x00, 0x00, 0xff, 0x03, 0xff, 0x7f, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x0e, 0x31, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0xc4, 0xff, 0xff, 0xff, 0xff, 0x00, 0x00, 0x00, 0xc0, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x01, 0x00, 0xe0, 0x9f, 0x00, 0x00, 0x00, 0x00, 0x7f, 0x3f, 0xff, 0x7f, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x10, 0x00, 0x10, 0x00, 0x00, 0xfc, 0xff, 0xff, 0xff, 0x1f, 0x00, 0x00, 0x00, 0x00, 0x00, 0x0c, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x40, 0x00, 0x0c, 0xf0, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0xc0, 0xf8, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0xc0, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0xff, 0x00, 0xff, 0xff, 0xff, 0x21, 0x90, 0x03, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0xff, 0xff, 0xff, 0xff, 0x7f, 0x00, 0xe0, 0xfb, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0xa0, 0x03, 0xe0, 0x00, 0xe0, 0x00, 0xe0, 0x00, 0x60, 0x80, 0xf8, 0xff, 0xff, 0xff, 0xfc, 0xff, 0xff, 0xff, 0xff, 0xff, 0x7f, 0xdf, 0xff, 0xf1, 0x7f, 0xff, 0x7f, 0x00, 0x00, 0xff, 0xff, 0xff, 0xff, 0x00, 0x00, 0xff, 0xff, 0xff, 0xff, 0x01, 0x00, 0x7b, 0x03, 0xd0, 0xc1, 0xaf, 0x42, 0x00, 0x0c, 0x1f, 0xbc, 0xff, 0xff, 0x00, 0x00, 0x00, 0x00, 0x00, 0x0e, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0x7f, 0x00, 0x00, 0x00, 0xff, 0x07, 0x00, 0x00, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0x3f, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0xfc, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xcf, 0xff, 0xff, 0xff, 0x3f, 0xff, 0xff, 0xff, 0xff, 0xe3, 0xff, 0xfd, 0x07, 0x00, 0x00, 0xf0, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0xe0, 0x87, 0x03, 0xfe, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x01, 0x80, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0xff, 0xff, 0xff, 0xff, 0xff, 0x7f, 0xff, 0xff, 0xff, 0x03, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0xff, 0xff, 0xff, 0xfb, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0x0f, 0x00, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0x3f, 0x00, 0x00, 0x00, 0xff, 0x0f, 0x1e, 0xff, 0xff, 0xff, 0x01, 0xfc, 0xc1, 0xe0, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x1e, 0x01, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x08, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0xff, 0xff, 0x00, 0x00, 0x00, 0x00, 0xff, 0xff, 0xff, 0xff, 0x0f, 0x00, 0x00, 0x00, 0xff, 0xff, 0xff, 0x7f, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0x7f, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0x7f, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0xc0, 0x00, 0xe0, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x80, 0x0f, 0x70, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0xff, 0x00, 0xff, 0xff, 0x7f, 0x00, 0x03, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x06, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x44, 0x08, 0x00, 0x00, 0x00, 0x0f, 0xff, 0x03, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0xf0, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x10, 0xc0, 0x00, 0x00, 0xff, 0xff, 0x03, 0x17, 0x00, 0x00, 0x00, 0x00, 0x00, 0xf8, 0x00, 0x00, 0x00, 0x00, 0x08, 0x80, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x08, 0x00, 0xff, 0x3f, 0x00, 0xc0, 0x20, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0xf0, 0x00, 0x00, 0x80, 0x3b, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x80, 0x02, 0x00, 0x00, 0xc0, 0x00, 0x00, 0x43, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x08, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x38, 0x00, 0x00, 0x01, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x80, 0x00, 0x00, 0x00, 0x00, 0x00, 0x02, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0xfc, 0xff, 0x03, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0xc0, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x30, 0xff, 0xff, 0xff, 0x03, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xf7, 0xff, 0x7f, 0x0f, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x80, 0xfe, 0xff, 0x00, 0xfc, 0x01, 0x00, 0x00, 0xf8, 0x01, 0x00, 0x00, 0xf8, 0x3f, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x7f, 0x7f, 0x00, 0x30, 0x87, 0xff, 0xff, 0xff, 0xff, 0xff, 0x8f, 0xff, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0xe0, 0xff, 0xff, 0x7f, 0xff, 0x0f, 0x01, 0x00, 0x00, 0x00, 0x00, 0x00, 0xff, 0xff, 0xff, 0xff, 0xff, 0x3f, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0xff, 0xff, 0xff, 0x0f, 0x00, 0x00, 0x00, 0x00, 0x0f, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x80, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x01, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x80, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x80, 0xff, 0x00, 0x00, 0x80, 0xff, 0x00, 0x00, 0x00, 0x00, 0x80, 0xff, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0xf8, 0x00, 0x00, 0xc0, 0x8f, 0x00, 0x00, 0x00, 0x80, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x30, 0xff, 0xff, 0xfc, 0xff, 0xff, 0xff, 0xff, 0xff, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x87, 0xff, 0x00, 0xff, 0x01, 0x00, 0x00, 0x00, 0xe0, 0x00, 0x00, 0x00, 0xe0, 0x00, 0x00, 0x00, 0x00, 0x00, 0x01, 0x00, 0x00, 0x60, 0xf8, 0x7f, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0xfe, 0x00, 0x00, 0x00, 0xff, 0x00, 0x00, 0x00, 0xff, 0x00, 0x00, 0x00, 0x1e, 0x00, 0xfe, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0xfc, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0xff, 0xff, 0xff, 0x7f, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0xc0, 0x3f, 0xfc, 0xff, 0x3f, 0x00, 0x00, 0x80, 0x03, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0xfe, 0x03, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x18, 0x00, 0x0f, 0x00, 0x00, 0x00, 0x00, 0x00, 0x38, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0xe1, 0x3f, 0x00, 0xe8, 0xfe, 0xff, 0x1f, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x60, 0x3f, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x02, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x06, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x10, 0x00, 0x20, 0x00, 0x00, 0xc0, 0x1f, 0x1f, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x44, 0xf8, 0x00, 0x28, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x4c, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x80, 0xff, 0xff, 0xff, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x80, 0x0e, 0x00, 0x00, 0x00, 0xff, 0x1f, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0xc0, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x08, 0x00, 0xfc, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0xfc, 0x07, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x18, 0x80, 0xff, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0xdf, 0x07, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x80, 0x3e, 0x00, 0x00, 0xfc, 0xff, 0x1f, 0x03, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x34, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x1f, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0xc0, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x3f, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x80, 0xff, 0x30, 0x00, 0x00, 0xf8, 0x03, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x80, 0x07, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0xb0, 0x0f, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0x3f, 0x00, 0xff, 0xff, 0xff, 0xff, 0x7f, 0xfe, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0x01, 0x00, 0x00, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0x3f, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0x7f, 0x00, 0xff, 0xff, 0x03, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x02, 0x00, 0x00, 0x08, 0x00, 0x00, 0x00, 0x08, 0x00, 0x00, 0x20, 0x00, 0x00, 0x00, 0x20, 0x00, 0x00, 0x80, 0x00, 0x00, 0x00, 0x80, 0x00, 0x00, 0x00, 0x02, 0x00, 0x00, 0x00, 0x02, 0x00, 0x00, 0x08, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0x0f, 0x00, 0xf8, 0xfe, 0xff, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x80, 0xff, 0x7f, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x70, 0x07, 0x00, 0xc0, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x03, 0x00, 0xff, 0xff, 0xff, 0xff, 0xff, 0x0f, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0x0f, 0x00, 0xff, 0x7f, 0xfe, 0xff, 0xfe, 0xff, 0xfe, 0xff, 0xff, 0xff, 0x3f, 0x00, 0xff, 0x1f, 0xff, 0xff, 0xff, 0x7f, 0x00, 0x00, 0x00, 0xfc, 0x00, 0x00, 0x00, 0x0c, 0x00, 0x00, 0x00, 0xfc, 0xff, 0xff, 0xff, 0x1f, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0xc0, 0xff, 0xff, 0xff, 0x07, 0x00, 0xff, 0xff, 0xff, 0xff, 0xff, 0x0f, 0xff, 0x01, 0x03, 0x00, 0x3f, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0x1f, 0x00, 0xff, 0x1f, 0xff, 0x01, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0x0f, 0x00, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0x1f, 0x00, 0x00, 0x00, 0x00, 0x00, 0xff, 0x0f, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0x00, 0xff, 0x03, 0xff, 0xff, 0xff, 0xff, 0xff, 0x00, 0xff, 0xff, 0xff, 0x3f, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0xff, 0x0f, 0xff, 0xff, 0xff, 0xff, 0xff, 0x7f, 0xff, 0x1f, 0xff, 0xff, 0xff, 0x0f, 0x00, 0x00, 0xff, 0xff, 0xff, 0x00, 0x00, 0x00, 0x00, 0x00, 0x01, 0x00, 0xff, 0xff, 0x7f, 0x00, 0x00, 0x00, 0x20, 0x00, 0x00, 0x00, 0x09, 0x00, 0x00, 0x00, 0x0a, 0x00, 0x00, 0x00, 0x0d, 0x00, 0x00, 0x00, 0x0b, 0x00, 0x00, 0x00, 0x0c, 0x00, 0x00, 0x00, 0x85, 0x00, 0x00, 0x00, 0x00, 0x20, 0x00, 0x00, 0x01, 0x20, 0x00, 0x00, 0x02, 0x20, 0x00, 0x00, 0x03, 0x20, 0x00, 0x00, 0x04, 0x20, 0x00, 0x00, 0x05, 0x20, 0x00, 0x00, 0x06, 0x20, 0x00, 0x00, 0x08, 0x20, 0x00, 0x00, 0x09, 0x20, 0x00, 0x00, 0x0a, 0x20, 0x00, 0x00, 0x28, 0x20, 0x00, 0x00, 0x29, 0x20, 0x00, 0x00, 0x5f, 0x20, 0x00, 0x00, 0x00, 0x30, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0xc0, 0x00, 0x20, 0x1f, 0x00, 0x01, 0x01, 0x2f, 0x32, 0x01, 0x01, 0x05, 0x39, 0x01, 0x01, 0x0f, 0x4a, 0x01, 0x01, 0x2d, 0x79, 0x01, 0x01, 0x05, 0x70, 0x03, 0x01, 0x03, 0x91, 0x03, 0x20, 0x11, 0xa3, 0x03, 0x20, 0x09, 0x00, 0x04, 0x50, 0x10, 0x10, 0x04, 0x20, 0x20, 0x60, 0x04, 0x01, 0x21, 0x8a, 0x04, 0x01, 0x35, 0xc1, 0x04, 0x01, 0x0d, 0xd0, 0x04, 0x01, 0x3f, 0x14, 0x05, 0x01, 0x1b, 0x31, 0x05, 0x30, 0x26, 0xa0, 0x01, 0x01, 0x05, 0xb3, 0x01, 0x01, 0x03, 0xcd, 0x01, 0x01, 0x0f, 0xde, 0x01, 0x01, 0x11, 0xf8, 0x01, 0x01, 0x27, 0x22, 0x02, 0x01, 0x11, 0xd8, 0x03, 0x01, 0x17, 0x00, 0x1e, 0x01, 0x95, 0xa0, 0x1e, 0x01, 0x5f, 0x08, 0x1f, 0xf8, 0x08, 0x18, 0x1f, 0xf8, 0x06, 0x28, 0x1f, 0xf8, 0x08, 0x38, 0x1f, 0xf8, 0x08, 0x48, 0x1f, 0xf8, 0x06, 0x68, 0x1f, 0xf8, 0x08, 0x88, 0x1f, 0xf8, 0x08, 0x98, 0x1f, 0xf8, 0x08, 0xa8, 0x1f, 0xf8, 0x08, 0xb8, 0x1f, 0xf8, 0x02, 0xba, 0x1f, 0xb6, 0x02, 0xc8, 0x1f, 0xaa, 0x04, 0xd8, 0x1f, 0xf8, 0x02, 0xda, 0x1f, 0x9c, 0x02, 0xe8, 0x1f, 0xf8, 0x02, 0xea, 0x1f, 0x90, 0x02, 0xf8, 0x1f, 0x80, 0x02, 0xfa, 0x1f, 0x82, 0x02, 0xf0, 0x13, 0x08, 0x06, 0x98, 0xa6, 0x01, 0x03, 0x96, 0xa7, 0x01, 0x09, 0x46, 0x02, 0x01, 0x09, 0x10, 0x05, 0x01, 0x03, 0x60, 0x21, 0x10, 0x10, 0x00, 0x2c, 0x30, 0x2f, 0x67, 0x2c, 0x01, 0x05, 0x80, 0x2c, 0x01, 0x63, 0xeb, 0x2c, 0x01, 0x03, 0x40, 0xa6, 0x01, 0x2d, 0x80, 0xa6, 0x01, 0x17, 0x22, 0xa7, 0x01, 0x0d, 0x32, 0xa7, 0x01, 0x3d, 0x79, 0xa7, 0x01, 0x03, 0x7e, 0xa7, 0x01, 0x09, 0x90, 0xa7, 0x01, 0x03, 0xa0, 0xa7, 0x01, 0x09, 0xb4, 0xa7, 0x01, 0x03, 0x21, 0xff, 0x20, 0x1a, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x49, 0x00, 0x31, 0x01, 0x53, 0x00, 0x7f, 0x01, 0x30, 0x01, 0x69, 0x00, 0x78, 0x01, 0xff, 0x00, 0x81, 0x01, 0x53, 0x02, 0x82, 0x01, 0x83, 0x01, 0x84, 0x01, 0x85, 0x01, 0x86, 0x01, 0x54, 0x02, 0x87, 0x01, 0x88, 0x01, 0x89, 0x01, 0x56, 0x02, 0x8a, 0x01, 0x57, 0x02, 0x8b, 0x01, 0x8c, 0x01, 0x8e, 0x01, 0xdd, 0x01, 0x8f, 0x01, 0x59, 0x02, 0x90, 0x01, 0x5b, 0x02, 0x91, 0x01, 0x92, 0x01, 0x93, 0x01, 0x60, 0x02, 0x94, 0x01, 0x63, 0x02, 0x96, 0x01, 0x69, 0x02, 0x97, 0x01, 0x68, 0x02, 0x98, 0x01, 0x99, 0x01, 0x9c, 0x01, 0x6f, 0x02, 0x9d, 0x01, 0x72, 0x02, 0x9f, 0x01, 0x75, 0x02, 0xa6, 0x01, 0x80, 0x02, 0xa7, 0x01, 0xa8, 0x01, 0xa9, 0x01, 0x83, 0x02, 0xac, 0x01, 0xad, 0x01, 0xae, 0x01, 0x88, 0x02, 0xaf, 0x01, 0xb0, 0x01, 0xb1, 0x01, 0x8a, 0x02, 0xb2, 0x01, 0x8b, 0x02, 0xb7, 0x01, 0x92, 0x02, 0xb8, 0x01, 0xb9, 0x01, 0xbc, 0x01, 0xbd, 0x01, 0xc4, 0x01, 0xc6, 0x01, 0xc4, 0x01, 0xc5, 0x01, 0xc5, 0x01, 0xc6, 0x01, 0xc7, 0x01, 0xc9, 0x01, 0xc7, 0x01, 0xc8, 0x01, 0xc8, 0x01, 0xc9, 0x01, 0xca, 0x01, 0xcc, 0x01, 0xca, 0x01, 0xcb, 0x01, 0xcb, 0x01, 0xcc, 0x01, 0xf1, 0x01, 0xf3, 0x01, 0xf1, 0x01, 0xf2, 0x01, 0xf2, 0x01, 0xf3, 0x01, 0xf4, 0x01, 0xf5, 0x01, 0xf6, 0x01, 0x95, 0x01, 0xf7, 0x01, 0xbf, 0x01, 0x20, 0x02, 0x9e, 0x01, 0x86, 0x03, 0xac, 0x03, 0x88, 0x03, 0xad, 0x03, 0x89, 0x03, 0xae, 0x03, 0x8a, 0x03, 0xaf, 0x03, 0x8c, 0x03, 0xcc, 0x03, 0x8e, 0x03, 0xcd, 0x03, 0x8f, 0x03, 0xce, 0x03, 0x99, 0x03, 0x45, 0x03, 0x99, 0x03, 0xbe, 0x1f, 0xa3, 0x03, 0xc2, 0x03, 0xf7, 0x03, 0xf8, 0x03, 0xfa, 0x03, 0xfb, 0x03, 0x60, 0x1e, 0x9b, 0x1e, 0x9e, 0x1e, 0xdf, 0x00, 0x59, 0x1f, 0x51, 0x1f, 0x5b, 0x1f, 0x53, 0x1f, 0x5d, 0x1f, 0x55, 0x1f, 0x5f, 0x1f, 0x57, 0x1f, 0xbc, 0x1f, 0xb3, 0x1f, 0xcc, 0x1f, 0xc3, 0x1f, 0xec, 0x1f, 0xe5, 0x1f, 0xfc, 0x1f, 0xf3, 0x1f, 0x3a, 0x02, 0x65, 0x2c, 0x3b, 0x02, 0x3c, 0x02, 0x3d, 0x02, 0x9a, 0x01, 0x3e, 0x02, 0x66, 0x2c, 0x41, 0x02, 0x42, 0x02, 0x43, 0x02, 0x80, 0x01, 0x44, 0x02, 0x89, 0x02, 0x45, 0x02, 0x8c, 0x02, 0xf4, 0x03, 0xb8, 0x03, 0xf9, 0x03, 0xf2, 0x03, 0xfd, 0x03, 0x7b, 0x03, 0xfe, 0x03, 0x7c, 0x03, 0xff, 0x03, 0x7d, 0x03, 0xc0, 0x04, 0xcf, 0x04, 0x26, 0x21, 0xc9, 0x03, 0x2a, 0x21, 0x6b, 0x00, 0x2b, 0x21, 0xe5, 0x00, 0x32, 0x21, 0x4e, 0x21, 0x83, 0x21, 0x84, 0x21, 0x60, 0x2c, 0x61, 0x2c, 0x62, 0x2c, 0x6b, 0x02, 0x63, 0x2c, 0x7d, 0x1d, 0x64, 0x2c, 0x7d, 0x02, 0x6d, 0x2c, 0x51, 0x02, 0x6e, 0x2c, 0x71, 0x02, 0x6f, 0x2c, 0x50, 0x02, 0x70, 0x2c, 0x52, 0x02, 0x72, 0x2c, 0x73, 0x2c, 0x75, 0x2c, 0x76, 0x2c, 0x7e, 0x2c, 0x3f, 0x02, 0x7f, 0x2c, 0x40, 0x02, 0xf2, 0x2c, 0xf3, 0x2c, 0x7d, 0xa7, 0x79, 0x1d, 0x8b, 0xa7, 0x8c, 0xa7, 0x8d, 0xa7, 0x65, 0x02, 0xaa, 0xa7, 0x66, 0x02, 0xc7, 0x10, 0x27, 0x2d, 0xcd, 0x10, 0x2d, 0x2d, 0x76, 0x03, 0x77, 0x03, 0x9c, 0x03, 0xb5, 0x00, 0x92, 0x03, 0xd0, 0x03, 0x98, 0x03, 0xd1, 0x03, 0xa6, 0x03, 0xd5, 0x03, 0xa0, 0x03, 0xd6, 0x03, 0x9a, 0x03, 0xf0, 0x03, 0xa1, 0x03, 0xf1, 0x03, 0x95, 0x03, 0xf5, 0x03, 0xcf, 0x03, 0xd7, 0x03, 0xab, 0xa7, 0x5c, 0x02, 0xac, 0xa7, 0x61, 0x02, 0xad, 0xa7, 0x6c, 0x02, 0xae, 0xa7, 0x6a, 0x02, 0xb0, 0xa7, 0x9e, 0x02, 0xb1, 0xa7, 0x87, 0x02, 0xb2, 0xa7, 0x9d, 0x02, 0xb3, 0xa7, 0x53, 0xab, 0x12, 0x04, 0x80, 0x1c, 0x14, 0x04, 0x81, 0x1c, 0x1e, 0x04, 0x82, 0x1c, 0x21, 0x04, 0x83, 0x1c, 0x22, 0x04, 0x84, 0x1c, 0x22, 0x04, 0x85, 0x1c, 0x2a, 0x04, 0x86, 0x1c, 0x62, 0x04, 0x87, 0x1c, 0x4a, 0xa6, 0x88, 0x1c, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x10, 0x10, 0x10, 0x12, 0x13, 0x14, 0x15, 0x16, 0x17, 0x18, 0x19, 0x1a, 0x1b, 0x1c, 0x1d, 0x1e, 0x1f, 0x10, 0x10, 0x20, 0x10, 0x10, 0x10, 0x21, 0x22, 0x23, 0x24, 0x25, 0x26, 0x27, 0x10, 0x10, 0x28, 0x10, 0x10, 0x10, 0x10, 0x10, 0x10, 0x10, 0x10, 0x10, 0x10, 0x10, 0x29, 0x2a, 0x10, 0x10, 0x2b, 0x10, 0x10, 0x10, 0x10, 0x10, 0x10, 0x10, 0x10, 0x10, 0x10, 0x10, 0x10, 0x10, 0x10, 0x10, 0x10, 0x10, 0x10, 0x10, 0x10, 0x10, 0x10, 0x10, 0x10, 0x10, 0x10, 0x10, 0x10, 0x10, 0x10, 0x10, 0x10, 0x10, 0x10, 0x10, 0x10, 0x10, 0x10, 0x10, 0x10, 0x10, 0x10, 0x10, 0x10, 0x10, 0x10, 0x10, 0x10, 0x10, 0x10, 0x10, 0x10, 0x10, 0x10, 0x10, 0x10, 0x10, 0x10, 0x10, 0x10, 0x10, 0x10, 0x10, 0x10, 0x10, 0x10, 0x10, 0x10, 0x10, 0x10, 0x10, 0x10, 0x10, 0x10, 0x10, 0x10, 0x10, 0x10, 0x10, 0x10, 0x10, 0x10, 0x10, 0x10, 0x10, 0x10, 0x10, 0x10, 0x10, 0x10, 0x10, 0x10, 0x10, 0x10, 0x10, 0x10, 0x10, 0x10, 0x10, 0x10, 0x10, 0x10, 0x10, 0x10, 0x10, 0x10, 0x10, 0x10, 0x10, 0x10, 0x10, 0x10, 0x10, 0x10, 0x10, 0x10, 0x10, 0x2c, 0x10, 0x2d, 0x2e, 0x2f, 0x30, 0x10, 0x10, 0x10, 0x10, 0x10, 0x10, 0x10, 0x10, 0x10, 0x10, 0x10, 0x10, 0x10, 0x10, 0x10, 0x10, 0x10, 0x10, 0x10, 0x10, 0x10, 0x10, 0x10, 0x10, 0x10, 0x10, 0x10, 0x10, 0x10, 0x10, 0x10, 0x10, 0x10, 0x10, 0x10, 0x10, 0x10, 0x10, 0x10, 0x10, 0x10, 0x10, 0x10, 0x10, 0x10, 0x10, 0x10, 0x10, 0x10, 0x10, 0x10, 0x10, 0x10, 0x10, 0x10, 0x10, 0x10, 0x10, 0x10, 0x10, 0x10, 0x10, 0x10, 0x10, 0x10, 0x10, 0x10, 0x10, 0x10, 0x10, 0x10, 0x10, 0x10, 0x10, 0x10, 0x10, 0x10, 0x10, 0x10, 0x31, 0x10, 0x10, 0x32, 0x33, 0x10, 0x34, 0x35, 0x36, 0x10, 0x10, 0x10, 0x10, 0x10, 0x10, 0x37, 0x10, 0x10, 0x10, 0x10, 0x10, 0x38, 0x39, 0x3a, 0x3b, 0x3c, 0x3d, 0x3e, 0x3f, 0x10, 0x10, 0x40, 0x10, 0x41, 0x42, 0x10, 0x10, 0x10, 0x10, 0x10, 0x10, 0x10, 0x10, 0x10, 0x10, 0x10, 0x10, 0x10, 0x10, 0x10, 0x10, 0x10, 0x10, 0x10, 0x10, 0x10, 0x10, 0x10, 0x10, 0x10, 0x10, 0x10, 0x10, 0x10, 0x10, 0x10, 0x10, 0x10, 0x10, 0x10, 0x10, 0x10, 0x10, 0x10, 0x10, 0x10, 0x10, 0x10, 0x10, 0x10, 0x10, 0x10, 0x10, 0x10, 0x10, 0x10, 0x10, 0x10, 0x10, 0x10, 0x10, 0x10, 0x10, 0x10, 0x10, 0x10, 0x10, 0x10, 0x10, 0x10, 0x10, 0x10, 0x10, 0x10, 0x10, 0x10, 0x10, 0x10, 0x10, 0x10, 0x10, 0x43, 0x44, 0x10, 0x10, 0x10, 0x45, 0x10, 0x10, 0x10, 0x10, 0x10, 0x10, 0x10, 0x10, 0x10, 0x10, 0x10, 0x10, 0x10, 0x10, 0x10, 0x10, 0x10, 0x10, 0x10, 0x10, 0x10, 0x10, 0x10, 0x10, 0x10, 0x10, 0x10, 0x10, 0x10, 0x10, 0x10, 0x10, 0x10, 0x10, 0x10, 0x10, 0x10, 0x10, 0x10, 0x10, 0x10, 0x10, 0x10, 0x10, 0x10, 0x10, 0x10, 0x10, 0x10, 0x10, 0x10, 0x10, 0x10, 0x10, 0x10, 0x10, 0x10, 0x10, 0x10, 0x10, 0x10, 0x10, 0x10, 0x10, 0x10, 0x10, 0x10, 0x10, 0x10, 0x10, 0x10, 0x10, 0x10, 0x10, 0x10, 0x10, 0x46, 0x10, 0x10, 0x10, 0x10, 0x10, 0x10, 0x10, 0x10, 0x10, 0x10, 0x10, 0x10, 0x10, 0x10, 0x10, 0x10, 0x10, 0x10, 0x10, 0x10, 0x47, 0x48, 0x10, 0x10, 0x10, 0x10, 0x10, 0x10, 0x10, 0x49, 0x10, 0x10, 0x10, 0x10, 0x10, 0x4a, 0x10, 0x10, 0x10, 0x10, 0x10, 0x10, 0x10, 0x4b, 0x4c, 0x10, 0x10, 0x10, 0x10, 0x10, 0x10, 0x10, 0x10, 0x10, 0x10, 0x10, 0x10, 0x10, 0x10, 0x10, 0x10, 0x10, 0x10, 0x10, 0x10, 0x10, 0x10, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0xf8, 0x03, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0xfe, 0xff, 0xff, 0xff, 0xff, 0xbf, 0xb6, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x3f, 0x00, 0xff, 0x17, 0x00, 0x00, 0x00, 0x00, 0x00, 0xf8, 0xff, 0xff, 0x00, 0x00, 0x01, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0xc0, 0xbf, 0x9f, 0x3d, 0x00, 0x00, 0x00, 0x80, 0x02, 0x00, 0x00, 0x00, 0xff, 0xff, 0xff, 0x07, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0xc0, 0xff, 0x01, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0xf8, 0x0f, 0x00, 0x00, 0x00, 0xc0, 0xfb, 0xef, 0x3e, 0x00, 0x00, 0x00, 0x00, 0x00, 0x0e, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0xf0, 0xff, 0xff, 0xff, 0xff, 0xff, 0x07, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x14, 0xfe, 0x21, 0xfe, 0x00, 0x0c, 0x00, 0x00, 0x00, 0x02, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x10, 0x1e, 0x20, 0x00, 0x00, 0x0c, 0x00, 0x00, 0x00, 0x06, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x10, 0x86, 0x39, 0x02, 0x00, 0x00, 0x00, 0x23, 0x00, 0x06, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x10, 0xbe, 0x21, 0x00, 0x00, 0x0c, 0x00, 0x00, 0xfc, 0x02, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x90, 0x1e, 0x20, 0x40, 0x00, 0x0c, 0x00, 0x00, 0x00, 0x04, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x01, 0x20, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x01, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0xc0, 0xc1, 0x3d, 0x60, 0x00, 0x0c, 0x00, 0x00, 0x00, 0x02, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x90, 0x40, 0x30, 0x00, 0x00, 0x0c, 0x00, 0x00, 0x00, 0x03, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x18, 0x1e, 0x20, 0x00, 0x00, 0x0c, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x04, 0x5c, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0xf2, 0x07, 0x80, 0x7f, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0xf2, 0x1b, 0x00, 0x3f, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x03, 0x00, 0x00, 0xa0, 0x02, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0xfe, 0x7f, 0xdf, 0xe0, 0xff, 0xfe, 0xff, 0xff, 0xff, 0x1f, 0x40, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0xe0, 0xfd, 0x66, 0x00, 0x00, 0x00, 0xc3, 0x01, 0x00, 0x1e, 0x00, 0x64, 0x20, 0x00, 0x20, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0xe0, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x1c, 0x00, 0x00, 0x00, 0x1c, 0x00, 0x00, 0x00, 0x0c, 0x00, 0x00, 0x00, 0x0c, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0xb0, 0x3f, 0x40, 0xfe, 0x0f, 0x20, 0x00, 0x00, 0x00, 0x00, 0x00, 0x78, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x60, 0x00, 0x00, 0x00, 0x00, 0x02, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x87, 0x01, 0x04, 0x0e, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x80, 0x09, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x40, 0x7f, 0xe5, 0x1f, 0xf8, 0x9f, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0xff, 0x7f, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x0f, 0x00, 0x00, 0x00, 0x00, 0x00, 0xd0, 0x17, 0x04, 0x00, 0x00, 0x00, 0x00, 0xf8, 0x0f, 0x00, 0x03, 0x00, 0x00, 0x00, 0x3c, 0x3b, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x40, 0xa3, 0x03, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0xf0, 0xcf, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0xf7, 0xff, 0xfd, 0x21, 0x10, 0x03, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xfb, 0x00, 0xf8, 0x00, 0x00, 0x00, 0x7c, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0xdf, 0xff, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0xff, 0xff, 0xff, 0xff, 0x01, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x80, 0x03, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x80, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0xff, 0xff, 0xff, 0xff, 0x00, 0x00, 0x00, 0x00, 0x00, 0x3c, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x06, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x80, 0xf7, 0x3f, 0x00, 0x00, 0x00, 0xc0, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x03, 0x00, 0x44, 0x08, 0x00, 0x00, 0x60, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x30, 0x00, 0x00, 0x00, 0xff, 0xff, 0x03, 0x00, 0x00, 0x00, 0x00, 0x00, 0xc0, 0x3f, 0x00, 0x00, 0x80, 0xff, 0x03, 0x00, 0x00, 0x00, 0x00, 0x00, 0x07, 0x00, 0x00, 0x00, 0x00, 0x00, 0xc8, 0x13, 0x00, 0x00, 0x00, 0x00, 0x20, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x7e, 0x66, 0x00, 0x08, 0x10, 0x00, 0x00, 0x00, 0x00, 0x00, 0x10, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x9d, 0xc1, 0x02, 0x00, 0x00, 0x00, 0x00, 0x30, 0x40, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x20, 0x21, 0x00, 0x00, 0x00, 0x00, 0x00, 0x40, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0xff, 0xff, 0x00, 0x00, 0xff, 0xff, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x80, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x0e, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x20, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x01, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0xc0, 0x07, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x6e, 0xf0, 0x00, 0x00, 0x00, 0x00, 0x00, 0x87, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x60, 0x00, 0x00, 0x00, 0x02, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0xff, 0x7f, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x80, 0x03, 0x00, 0x00, 0x00, 0x00, 0x00, 0x78, 0x26, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x07, 0x00, 0x00, 0x00, 0x80, 0xef, 0x1f, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x08, 0x00, 0x03, 0x00, 0x00, 0x00, 0x00, 0x00, 0xc0, 0x7f, 0x00, 0x1c, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x80, 0xd3, 0x40, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x80, 0xf8, 0x07, 0x00, 0x00, 0x03, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x10, 0x01, 0x00, 0x00, 0x00, 0xc0, 0x1f, 0x1f, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0xff, 0x5c, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0xf8, 0x85, 0x0d, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x3c, 0xb0, 0x01, 0x00, 0x00, 0x30, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0xf8, 0xa7, 0x01, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x28, 0xbf, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0xe0, 0xbc, 0x0f, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x7e, 0x06, 0x00, 0x00, 0x00, 0x00, 0xf8, 0x79, 0x80, 0x00, 0x7e, 0x0e, 0x00, 0x00, 0x00, 0x00, 0x00, 0xfc, 0x7f, 0x03, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x7f, 0xbf, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0xfc, 0xff, 0xff, 0xfc, 0x6d, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x7e, 0xb4, 0xbf, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x1f, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x7f, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x80, 0x07, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x60, 0x0f, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x80, 0x03, 0xf8, 0xff, 0xe7, 0x0f, 0x00, 0x00, 0x00, 0x3c, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x1c, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0x7f, 0xf8, 0xff, 0xff, 0xff, 0xff, 0xff, 0x1f, 0x20, 0x00, 0x10, 0x00, 0x00, 0xf8, 0xfe, 0xff, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x7f, 0xff, 0xff, 0xf9, 0xdb, 0x07, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x7f, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0xf0, 0x07, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x10, 0x10, 0x10, 0x10, 0x10, 0x10, 0x10, 0x10, 0x10, 0x10, 0x10, 0x10, 0x10, 0x10, 0x10, 0x10, 0x10, 0x12, 0x10, 0x10, 0x10, 0x10, 0x10, 0x10, 0x10, 0x10, 0x10, 0x10, 0x10, 0x10, 0x10, 0x10, 0x10, 0x10, 0x10, 0x13, 0x10, 0x14, 0x15, 0x16, 0x10, 0x10, 0x10, 0x17, 0x10, 0x10, 0x18, 0x19, 0x1a, 0x1b, 0x1c, 0x11, 0x11, 0x11, 0x11, 0x11, 0x11, 0x11, 0x11, 0x11, 0x11, 0x11, 0x11, 0x11, 0x11, 0x11, 0x11, 0x11, 0x11, 0x11, 0x11, 0x11, 0x11, 0x11, 0x11, 0x11, 0x11, 0x1d, 0x11, 0x11, 0x11, 0x11, 0x11, 0x11, 0x11, 0x11, 0x11, 0x11, 0x11, 0x11, 0x11, 0x11, 0x11, 0x11, 0x11, 0x11, 0x11, 0x11, 0x11, 0x11, 0x11, 0x11, 0x11, 0x11, 0x11, 0x11, 0x11, 0x11, 0x11, 0x11, 0x11, 0x11, 0x11, 0x11, 0x11, 0x11, 0x11, 0x11, 0x11, 0x11, 0x11, 0x11, 0x11, 0x11, 0x11, 0x11, 0x11, 0x11, 0x11, 0x11, 0x11, 0x11, 0x11, 0x11, 0x11, 0x11, 0x11, 0x11, 0x11, 0x11, 0x11, 0x11, 0x11, 0x11, 0x11, 0x11, 0x11, 0x11, 0x11, 0x11, 0x11, 0x11, 0x11, 0x11, 0x11, 0x11, 0x11, 0x11, 0x11, 0x11, 0x11, 0x11, 0x11, 0x11, 0x1e, 0x10, 0x10, 0x10, 0x10, 0x1f, 0x10, 0x10, 0x11, 0x11, 0x11, 0x11, 0x11, 0x11, 0x11, 0x11, 0x11, 0x11, 0x11, 0x11, 0x11, 0x11, 0x11, 0x11, 0x11, 0x11, 0x11, 0x11, 0x11, 0x11, 0x11, 0x11, 0x11, 0x11, 0x11, 0x11, 0x11, 0x11, 0x11, 0x11, 0x11, 0x11, 0x11, 0x11, 0x11, 0x11, 0x11, 0x11, 0x11, 0x11, 0x11, 0x20, 0x10, 0x10, 0x10, 0x10, 0x10, 0x10, 0x10, 0x10, 0x10, 0x10, 0x10, 0x10, 0x10, 0x10, 0x10, 0x10, 0x10, 0x10, 0x10, 0x10, 0x10, 0x10, 0x10, 0x10, 0x10, 0x10, 0x10, 0x10, 0x10, 0x10, 0x10, 0x10, 0x10, 0x11, 0x11, 0x10, 0x10, 0x10, 0x21, 0x22, 0x10, 0x10, 0x10, 0x10, 0x10, 0x10, 0x10, 0x10, 0x10, 0x10, 0x10, 0x10, 0x10, 0x10, 0x10, 0x10, 0x10, 0x10, 0x10, 0x10, 0x10, 0x10, 0x10, 0x10, 0x10, 0x10, 0x10, 0x10, 0x10, 0x10, 0x10, 0x10, 0x10, 0x10, 0x10, 0x10, 0x10, 0x10, 0x10, 0x10, 0x10, 0x10, 0x10, 0x10, 0x10, 0x10, 0x10, 0x10, 0x10, 0x10, 0x10, 0x10, 0x10, 0x10, 0x10, 0x10, 0x10, 0x10, 0x10, 0x10, 0x10, 0x10, 0x10, 0x10, 0x10, 0x10, 0x10, 0x10, 0x10, 0x10, 0x10, 0x10, 0x10, 0x10, 0x10, 0x10, 0x10, 0x10, 0x10, 0x10, 0x10, 0x10, 0x10, 0x10, 0x10, 0x10, 0x10, 0x10, 0x10, 0x10, 0x10, 0x10, 0x10, 0x10, 0x10, 0x10, 0x10, 0x10, 0x10, 0x10, 0x10, 0x10, 0x10, 0x10, 0x10, 0x10, 0x10, 0x10, 0x10, 0x10, 0x10, 0x23, 0x11, 0x11, 0x11, 0x11, 0x11, 0x11, 0x11, 0x11, 0x11, 0x11, 0x11, 0x11, 0x11, 0x11, 0x11, 0x11, 0x11, 0x11, 0x11, 0x11, 0x11, 0x11, 0x11, 0x24, 0x11, 0x11, 0x25, 0x10, 0x10, 0x10, 0x10, 0x10, 0x10, 0x10, 0x10, 0x10, 0x10, 0x10, 0x10, 0x10, 0x10, 0x10, 0x10, 0x10, 0x10, 0x10, 0x10, 0x10, 0x10, 0x10, 0x10, 0x10, 0x10, 0x10, 0x10, 0x10, 0x10, 0x10, 0x10, 0x10, 0x10, 0x10, 0x10, 0x10, 0x11, 0x26, 0x27, 0x10, 0x10, 0x10, 0x10, 0x10, 0x10, 0x10, 0x10, 0x10, 0x10, 0x10, 0x10, 0x10, 0x10, 0x10, 0x10, 0x10, 0x10, 0x10, 0x10, 0x10, 0x10, 0x10, 0x10, 0x10, 0x10, 0x10, 0x10, 0x10, 0x10, 0x10, 0x10, 0x10, 0x10, 0x10, 0x10, 0x10, 0x10, 0x10, 0x10, 0x10, 0x10, 0x10, 0x10, 0x10, 0x10, 0x10, 0x10, 0x10, 0x10, 0x10, 0x10, 0x10, 0x10, 0x10, 0x10, 0x10, 0x10, 0x10, 0x10, 0x10, 0x28, 0x29, 0x2a, 0x2b, 0x2c, 0x2d, 0x2e, 0x10, 0x10, 0x2f, 0x10, 0x10, 0x10, 0x10, 0x10, 0x10, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x0c, 0x00, 0x06, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x1e, 0x09, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x60, 0x00, 0x00, 0x30, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0xff, 0x0f, 0x00, 0x00, 0x00, 0x00, 0x80, 0x00, 0x00, 0x08, 0x00, 0x02, 0x0c, 0x00, 0x60, 0x30, 0x40, 0x10, 0x00, 0x00, 0x04, 0x2c, 0x24, 0x20, 0x0c, 0x00, 0x00, 0x00, 0x01, 0x00, 0x00, 0x00, 0x50, 0xb8, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0xe0, 0x00, 0x00, 0x00, 0x01, 0x80, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x18, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x21, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0xff, 0xff, 0xff, 0xfb, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0x0f, 0x00, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0x3f, 0x00, 0x00, 0x00, 0xff, 0x0f, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0x7f, 0xfe, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0x7f, 0xfe, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xe0, 0xff, 0xff, 0xff, 0xff, 0x7f, 0xfe, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0x7f, 0xff, 0xff, 0xff, 0xff, 0xff, 0x07, 0xff, 0xff, 0xff, 0xff, 0x0f, 0x00, 0xff, 0xff, 0xff, 0xff, 0xff, 0x7f, 0xff, 0xff, 0xff, 0xff, 0xff, 0x00, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0x7f, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0x1f, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0x7f, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0xff, 0xff, 0xff, 0x1f, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0x0f, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0xff, 0x03, 0x00, 0x00, 0xff, 0xff, 0xff, 0xff, 0xf7, 0xff, 0x7f, 0x0f, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0xfe, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0x01, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x7f, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x03, 0x00, 0x00, 0x00, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0x1f, 0x00, 0x00, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0x07, 0x00, 0xff, 0xff, 0xff, 0x7f, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0x0f, 0x10, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x80, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x40, 0xfe, 0x07, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x07, 0x00, 0xff, 0xff, 0xff, 0xff, 0xff, 0x0f, 0xff, 0x01, 0x03, 0x00, 0x3f, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0xff, 0xff, 0xff, 0xff, 0x01, 0xe0, 0xbf, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xdf, 0xff, 0xff, 0x0f, 0x00, 0xff, 0xff, 0xff, 0xff, 0xff, 0x87, 0x0f, 0x00, 0xff, 0xff, 0x11, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0x7f, 0xfd, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0x9f, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0x3f, 0x00, 0x78, 0xff, 0xff, 0xff, 0x00, 0x00, 0x04, 0x00, 0x00, 0x60, 0x00, 0x10, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0xf8, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0x3f, 0x10, 0x07, 0x00, 0x00, 0x18, 0xf0, 0x01, 0x00, 0x00, 0xff, 0xff, 0xff, 0xff, 0xff, 0x7f, 0xff, 0x1f, 0xff, 0xff, 0xff, 0x0f, 0x00, 0x00, 0xff, 0xff, 0xff, 0x00, 0x00, 0x00, 0x00, 0x00, 0x01, 0x00, 0xff, 0xff, 0x7f, 0x00, 0x00, 0x00, 0x54, 0x21, 0x22, 0x19, 0x0d, 0x01, 0x02, 0x03, 0x11, 0x4b, 0x1c, 0x0c, 0x10, 0x04, 0x0b, 0x1d, 0x12, 0x1e, 0x27, 0x68, 0x6e, 0x6f, 0x70, 0x71, 0x62, 0x20, 0x05, 0x06, 0x0f, 0x13, 0x14, 0x15, 0x1a, 0x08, 0x16, 0x07, 0x28, 0x24, 0x17, 0x18, 0x09, 0x0a, 0x0e, 0x1b, 0x1f, 0x25, 0x23, 0x83, 0x82, 0x7d, 0x26, 0x2a, 0x2b, 0x3c, 0x3d, 0x3e, 0x3f, 0x43, 0x47, 0x4a, 0x4d, 0x58, 0x59, 0x5a, 0x5b, 0x5c, 0x5d, 0x5e, 0x5f, 0x60, 0x61, 0x63, 0x64, 0x65, 0x66, 0x67, 0x69, 0x6a, 0x6b, 0x6c, 0x72, 0x73, 0x74, 0x79, 0x7a, 0x7b, 0x7c, 0x48, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x49, 0x6c, 0x6c, 0x65, 0x67, 0x61, 0x6c, 0x20, 0x62, 0x79, 0x74, 0x65, 0x20, 0x73, 0x65, 0x71, 0x75, 0x65, 0x6e, 0x63, 0x65, 0x00, 0x44, 0x6f, 0x6d, 0x61, 0x69, 0x6e, 0x20, 0x65, 0x72, 0x72, 0x6f, 0x72, 0x00, 0x52, 0x65, 0x73, 0x75, 0x6c, 0x74, 0x20, 0x6e, 0x6f, 0x74, 0x20, 0x72, 0x65, 0x70, 0x72, 0x65, 0x73, 0x65, 0x6e, 0x74, 0x61, 0x62, 0x6c, 0x65, 0x00, 0x4e, 0x6f, 0x74, 0x20, 0x61, 0x20, 0x74, 0x74, 0x79, 0x00, 0x50, 0x65, 0x72, 0x6d, 0x69, 0x73, 0x73, 0x69, 0x6f, 0x6e, 0x20, 0x64, 0x65, 0x6e, 0x69, 0x65, 0x64, 0x00, 0x4f, 0x70, 0x65, 0x72, 0x61, 0x74, 0x69, 0x6f, 0x6e, 0x20, 0x6e, 0x6f, 0x74, 0x20, 0x70, 0x65, 0x72, 0x6d, 0x69, 0x74, 0x74, 0x65, 0x64, 0x00, 0x4e, 0x6f, 0x20, 0x73, 0x75, 0x63, 0x68, 0x20, 0x66, 0x69, 0x6c, 0x65, 0x20, 0x6f, 0x72, 0x20, 0x64, 0x69, 0x72, 0x65, 0x63, 0x74, 0x6f, 0x72, 0x79, 0x00, 0x4e, 0x6f, 0x20, 0x73, 0x75, 0x63, 0x68, 0x20, 0x70, 0x72, 0x6f, 0x63, 0x65, 0x73, 0x73, 0x00, 0x46, 0x69, 0x6c, 0x65, 0x20, 0x65, 0x78, 0x69, 0x73, 0x74, 0x73, 0x00, 0x56, 0x61, 0x6c, 0x75, 0x65, 0x20, 0x74, 0x6f, 0x6f, 0x20, 0x6c, 0x61, 0x72, 0x67, 0x65, 0x20, 0x66, 0x6f, 0x72, 0x20, 0x64, 0x61, 0x74, 0x61, 0x20, 0x74, 0x79, 0x70, 0x65, 0x00, 0x4e, 0x6f, 0x20, 0x73, 0x70, 0x61, 0x63, 0x65, 0x20, 0x6c, 0x65, 0x66, 0x74, 0x20, 0x6f, 0x6e, 0x20, 0x64, 0x65, 0x76, 0x69, 0x63, 0x65, 0x00, 0x4f, 0x75, 0x74, 0x20, 0x6f, 0x66, 0x20, 0x6d, 0x65, 0x6d, 0x6f, 0x72, 0x79, 0x00, 0x52, 0x65, 0x73, 0x6f, 0x75, 0x72, 0x63, 0x65, 0x20, 0x62, 0x75, 0x73, 0x79, 0x00, 0x49, 0x6e, 0x74, 0x65, 0x72, 0x72, 0x75, 0x70, 0x74, 0x65, 0x64, 0x20, 0x73, 0x79, 0x73, 0x74, 0x65, 0x6d, 0x20, 0x63, 0x61, 0x6c, 0x6c, 0x00, 0x52, 0x65, 0x73, 0x6f, 0x75, 0x72, 0x63, 0x65, 0x20, 0x74, 0x65, 0x6d, 0x70, 0x6f, 0x72, 0x61, 0x72, 0x69, 0x6c, 0x79, 0x20, 0x75, 0x6e, 0x61, 0x76, 0x61, 0x69, 0x6c, 0x61, 0x62, 0x6c, 0x65, 0x00, 0x49, 0x6e, 0x76, 0x61, 0x6c, 0x69, 0x64, 0x20, 0x73, 0x65, 0x65, 0x6b, 0x00, 0x43, 0x72, 0x6f, 0x73, 0x73, 0x2d, 0x64, 0x65, 0x76, 0x69, 0x63, 0x65, 0x20, 0x6c, 0x69, 0x6e, 0x6b, 0x00, 0x52, 0x65, 0x61, 0x64, 0x2d, 0x6f, 0x6e, 0x6c, 0x79, 0x20, 0x66, 0x69, 0x6c, 0x65, 0x20, 0x73, 0x79, 0x73, 0x74, 0x65, 0x6d, 0x00, 0x44, 0x69, 0x72, 0x65, 0x63, 0x74, 0x6f, 0x72, 0x79, 0x20, 0x6e, 0x6f, 0x74, 0x20, 0x65, 0x6d, 0x70, 0x74, 0x79, 0x00, 0x43, 0x6f, 0x6e, 0x6e, 0x65, 0x63, 0x74, 0x69, 0x6f, 0x6e, 0x20, 0x72, 0x65, 0x73, 0x65, 0x74, 0x20, 0x62, 0x79, 0x20, 0x70, 0x65, 0x65, 0x72, 0x00, 0x4f, 0x70, 0x65, 0x72, 0x61, 0x74, 0x69, 0x6f, 0x6e, 0x20, 0x74, 0x69, 0x6d, 0x65, 0x64, 0x20, 0x6f, 0x75, 0x74, 0x00, 0x43, 0x6f, 0x6e, 0x6e, 0x65, 0x63, 0x74, 0x69, 0x6f, 0x6e, 0x20, 0x72, 0x65, 0x66, 0x75, 0x73, 0x65, 0x64, 0x00, 0x48, 0x6f, 0x73, 0x74, 0x20, 0x69, 0x73, 0x20, 0x64, 0x6f, 0x77, 0x6e, 0x00, 0x48, 0x6f, 0x73, 0x74, 0x20, 0x69, 0x73, 0x20, 0x75, 0x6e, 0x72, 0x65, 0x61, 0x63, 0x68, 0x61, 0x62, 0x6c, 0x65, 0x00, 0x41, 0x64, 0x64, 0x72, 0x65, 0x73, 0x73, 0x20, 0x69, 0x6e, 0x20, 0x75, 0x73, 0x65, 0x00, 0x42, 0x72, 0x6f, 0x6b, 0x65, 0x6e, 0x20, 0x70, 0x69, 0x70, 0x65, 0x00, 0x49, 0x2f, 0x4f, 0x20, 0x65, 0x72, 0x72, 0x6f, 0x72, 0x00, 0x4e, 0x6f, 0x20, 0x73, 0x75, 0x63, 0x68, 0x20, 0x64, 0x65, 0x76, 0x69, 0x63, 0x65, 0x20, 0x6f, 0x72, 0x20, 0x61, 0x64, 0x64, 0x72, 0x65, 0x73, 0x73, 0x00, 0x42, 0x6c, 0x6f, 0x63, 0x6b, 0x20, 0x64, 0x65, 0x76, 0x69, 0x63, 0x65, 0x20, 0x72, 0x65, 0x71, 0x75, 0x69, 0x72, 0x65, 0x64, 0x00, 0x4e, 0x6f, 0x20, 0x73, 0x75, 0x63, 0x68, 0x20, 0x64, 0x65, 0x76, 0x69, 0x63, 0x65, 0x00, 0x4e, 0x6f, 0x74, 0x20, 0x61, 0x20, 0x64, 0x69, 0x72, 0x65, 0x63, 0x74, 0x6f, 0x72, 0x79, 0x00, 0x49, 0x73, 0x20, 0x61, 0x20, 0x64, 0x69, 0x72, 0x65, 0x63, 0x74, 0x6f, 0x72, 0x79, 0x00, 0x54, 0x65, 0x78, 0x74, 0x20, 0x66, 0x69, 0x6c, 0x65, 0x20, 0x62, 0x75, 0x73, 0x79, 0x00, 0x45, 0x78, 0x65, 0x63, 0x20, 0x66, 0x6f, 0x72, 0x6d, 0x61, 0x74, 0x20, 0x65, 0x72, 0x72, 0x6f, 0x72, 0x00, 0x49, 0x6e, 0x76, 0x61, 0x6c, 0x69, 0x64, 0x20, 0x61, 0x72, 0x67, 0x75, 0x6d, 0x65, 0x6e, 0x74, 0x00, 0x41, 0x72, 0x67, 0x75, 0x6d, 0x65, 0x6e, 0x74, 0x20, 0x6c, 0x69, 0x73, 0x74, 0x20, 0x74, 0x6f, 0x6f, 0x20, 0x6c, 0x6f, 0x6e, 0x67, 0x00, 0x53, 0x79, 0x6d, 0x62, 0x6f, 0x6c, 0x69, 0x63, 0x20, 0x6c, 0x69, 0x6e, 0x6b, 0x20, 0x6c, 0x6f, 0x6f, 0x70, 0x00, 0x46, 0x69, 0x6c, 0x65, 0x6e, 0x61, 0x6d, 0x65, 0x20, 0x74, 0x6f, 0x6f, 0x20, 0x6c, 0x6f, 0x6e, 0x67, 0x00, 0x54, 0x6f, 0x6f, 0x20, 0x6d, 0x61, 0x6e, 0x79, 0x20, 0x6f, 0x70, 0x65, 0x6e, 0x20, 0x66, 0x69, 0x6c, 0x65, 0x73, 0x20, 0x69, 0x6e, 0x20, 0x73, 0x79, 0x73, 0x74, 0x65, 0x6d, 0x00, 0x4e, 0x6f, 0x20, 0x66, 0x69, 0x6c, 0x65, 0x20, 0x64, 0x65, 0x73, 0x63, 0x72, 0x69, 0x70, 0x74, 0x6f, 0x72, 0x73, 0x20, 0x61, 0x76, 0x61, 0x69, 0x6c, 0x61, 0x62, 0x6c, 0x65, 0x00, 0x42, 0x61, 0x64, 0x20, 0x66, 0x69, 0x6c, 0x65, 0x20, 0x64, 0x65, 0x73, 0x63, 0x72, 0x69, 0x70, 0x74, 0x6f, 0x72, 0x00, 0x4e, 0x6f, 0x20, 0x63, 0x68, 0x69, 0x6c, 0x64, 0x20, 0x70, 0x72, 0x6f, 0x63, 0x65, 0x73, 0x73, 0x00, 0x42, 0x61, 0x64, 0x20, 0x61, 0x64, 0x64, 0x72, 0x65, 0x73, 0x73, 0x00, 0x46, 0x69, 0x6c, 0x65, 0x20, 0x74, 0x6f, 0x6f, 0x20, 0x6c, 0x61, 0x72, 0x67, 0x65, 0x00, 0x54, 0x6f, 0x6f, 0x20, 0x6d, 0x61, 0x6e, 0x79, 0x20, 0x6c, 0x69, 0x6e, 0x6b, 0x73, 0x00, 0x4e, 0x6f, 0x20, 0x6c, 0x6f, 0x63, 0x6b, 0x73, 0x20, 0x61, 0x76, 0x61, 0x69, 0x6c, 0x61, 0x62, 0x6c, 0x65, 0x00, 0x52, 0x65, 0x73, 0x6f, 0x75, 0x72, 0x63, 0x65, 0x20, 0x64, 0x65, 0x61, 0x64, 0x6c, 0x6f, 0x63, 0x6b, 0x20, 0x77, 0x6f, 0x75, 0x6c, 0x64, 0x20, 0x6f, 0x63, 0x63, 0x75, 0x72, 0x00, 0x53, 0x74, 0x61, 0x74, 0x65, 0x20, 0x6e, 0x6f, 0x74, 0x20, 0x72, 0x65, 0x63, 0x6f, 0x76, 0x65, 0x72, 0x61, 0x62, 0x6c, 0x65, 0x00, 0x50, 0x72, 0x65, 0x76, 0x69, 0x6f, 0x75, 0x73, 0x20, 0x6f, 0x77, 0x6e, 0x65, 0x72, 0x20, 0x64, 0x69, 0x65, 0x64, 0x00, 0x4f, 0x70, 0x65, 0x72, 0x61, 0x74, 0x69, 0x6f, 0x6e, 0x20, 0x63, 0x61, 0x6e, 0x63, 0x65, 0x6c, 0x65, 0x64, 0x00, 0x46, 0x75, 0x6e, 0x63, 0x74, 0x69, 0x6f, 0x6e, 0x20, 0x6e, 0x6f, 0x74, 0x20, 0x69, 0x6d, 0x70, 0x6c, 0x65, 0x6d, 0x65, 0x6e, 0x74, 0x65, 0x64, 0x00, 0x4e, 0x6f, 0x20, 0x6d, 0x65, 0x73, 0x73, 0x61, 0x67, 0x65, 0x20, 0x6f, 0x66, 0x20, 0x64, 0x65, 0x73, 0x69, 0x72, 0x65, 0x64, 0x20, 0x74, 0x79, 0x70, 0x65, 0x00, 0x49, 0x64, 0x65, 0x6e, 0x74, 0x69, 0x66, 0x69, 0x65, 0x72, 0x20, 0x72, 0x65, 0x6d, 0x6f, 0x76, 0x65, 0x64, 0x00, 0x44, 0x65, 0x76, 0x69, 0x63, 0x65, 0x20, 0x6e, 0x6f, 0x74, 0x20, 0x61, 0x20, 0x73, 0x74, 0x72, 0x65, 0x61, 0x6d, 0x00, 0x4e, 0x6f, 0x20, 0x64, 0x61, 0x74, 0x61, 0x20, 0x61, 0x76, 0x61, 0x69, 0x6c, 0x61, 0x62, 0x6c, 0x65, 0x00, 0x44, 0x65, 0x76, 0x69, 0x63, 0x65, 0x20, 0x74, 0x69, 0x6d, 0x65, 0x6f, 0x75, 0x74, 0x00, 0x4f, 0x75, 0x74, 0x20, 0x6f, 0x66, 0x20, 0x73, 0x74, 0x72, 0x65, 0x61, 0x6d, 0x73, 0x20, 0x72, 0x65, 0x73, 0x6f, 0x75, 0x72, 0x63, 0x65, 0x73, 0x00, 0x4c, 0x69, 0x6e, 0x6b, 0x20, 0x68, 0x61, 0x73, 0x20, 0x62, 0x65, 0x65, 0x6e, 0x20, 0x73, 0x65, 0x76, 0x65, 0x72, 0x65, 0x64, 0x00, 0x50, 0x72, 0x6f, 0x74, 0x6f, 0x63, 0x6f, 0x6c, 0x20, 0x65, 0x72, 0x72, 0x6f, 0x72, 0x00, 0x42, 0x61, 0x64, 0x20, 0x6d, 0x65, 0x73, 0x73, 0x61, 0x67, 0x65, 0x00, 0x46, 0x69, 0x6c, 0x65, 0x20, 0x64, 0x65, 0x73, 0x63, 0x72, 0x69, 0x70, 0x74, 0x6f, 0x72, 0x20, 0x69, 0x6e, 0x20, 0x62, 0x61, 0x64, 0x20, 0x73, 0x74, 0x61, 0x74, 0x65, 0x00, 0x4e, 0x6f, 0x74, 0x20, 0x61, 0x20, 0x73, 0x6f, 0x63, 0x6b, 0x65, 0x74, 0x00, 0x44, 0x65, 0x73, 0x74, 0x69, 0x6e, 0x61, 0x74, 0x69, 0x6f, 0x6e, 0x20, 0x61, 0x64, 0x64, 0x72, 0x65, 0x73, 0x73, 0x20, 0x72, 0x65, 0x71, 0x75, 0x69, 0x72, 0x65, 0x64, 0x00, 0x4d, 0x65, 0x73, 0x73, 0x61, 0x67, 0x65, 0x20, 0x74, 0x6f, 0x6f, 0x20, 0x6c, 0x61, 0x72, 0x67, 0x65, 0x00, 0x50, 0x72, 0x6f, 0x74, 0x6f, 0x63, 0x6f, 0x6c, 0x20, 0x77, 0x72, 0x6f, 0x6e, 0x67, 0x20, 0x74, 0x79, 0x70, 0x65, 0x20, 0x66, 0x6f, 0x72, 0x20, 0x73, 0x6f, 0x63, 0x6b, 0x65, 0x74, 0x00, 0x50, 0x72, 0x6f, 0x74, 0x6f, 0x63, 0x6f, 0x6c, 0x20, 0x6e, 0x6f, 0x74, 0x20, 0x61, 0x76, 0x61, 0x69, 0x6c, 0x61, 0x62, 0x6c, 0x65, 0x00, 0x50, 0x72, 0x6f, 0x74, 0x6f, 0x63, 0x6f, 0x6c, 0x20, 0x6e, 0x6f, 0x74, 0x20, 0x73, 0x75, 0x70, 0x70, 0x6f, 0x72, 0x74, 0x65, 0x64, 0x00, 0x53, 0x6f, 0x63, 0x6b, 0x65, 0x74, 0x20, 0x74, 0x79, 0x70, 0x65, 0x20, 0x6e, 0x6f, 0x74, 0x20, 0x73, 0x75, 0x70, 0x70, 0x6f, 0x72, 0x74, 0x65, 0x64, 0x00, 0x4e, 0x6f, 0x74, 0x20, 0x73, 0x75, 0x70, 0x70, 0x6f, 0x72, 0x74, 0x65, 0x64, 0x00, 0x50, 0x72, 0x6f, 0x74, 0x6f, 0x63, 0x6f, 0x6c, 0x20, 0x66, 0x61, 0x6d, 0x69, 0x6c, 0x79, 0x20, 0x6e, 0x6f, 0x74, 0x20, 0x73, 0x75, 0x70, 0x70, 0x6f, 0x72, 0x74, 0x65, 0x64, 0x00, 0x41, 0x64, 0x64, 0x72, 0x65, 0x73, 0x73, 0x20, 0x66, 0x61, 0x6d, 0x69, 0x6c, 0x79, 0x20, 0x6e, 0x6f, 0x74, 0x20, 0x73, 0x75, 0x70, 0x70, 0x6f, 0x72, 0x74, 0x65, 0x64, 0x20, 0x62, 0x79, 0x20, 0x70, 0x72, 0x6f, 0x74, 0x6f, 0x63, 0x6f, 0x6c, 0x00, 0x41, 0x64, 0x64, 0x72, 0x65, 0x73, 0x73, 0x20, 0x6e, 0x6f, 0x74, 0x20, 0x61, 0x76, 0x61, 0x69, 0x6c, 0x61, 0x62, 0x6c, 0x65, 0x00, 0x4e, 0x65, 0x74, 0x77, 0x6f, 0x72, 0x6b, 0x20, 0x69, 0x73, 0x20, 0x64, 0x6f, 0x77, 0x6e, 0x00, 0x4e, 0x65, 0x74, 0x77, 0x6f, 0x72, 0x6b, 0x20, 0x75, 0x6e, 0x72, 0x65, 0x61, 0x63, 0x68, 0x61, 0x62, 0x6c, 0x65, 0x00, 0x43, 0x6f, 0x6e, 0x6e, 0x65, 0x63, 0x74, 0x69, 0x6f, 0x6e, 0x20, 0x72, 0x65, 0x73, 0x65, 0x74, 0x20, 0x62, 0x79, 0x20, 0x6e, 0x65, 0x74, 0x77, 0x6f, 0x72, 0x6b, 0x00, 0x43, 0x6f, 0x6e, 0x6e, 0x65, 0x63, 0x74, 0x69, 0x6f, 0x6e, 0x20, 0x61, 0x62, 0x6f, 0x72, 0x74, 0x65, 0x64, 0x00, 0x4e, 0x6f, 0x20, 0x62, 0x75, 0x66, 0x66, 0x65, 0x72, 0x20, 0x73, 0x70, 0x61, 0x63, 0x65, 0x20, 0x61, 0x76, 0x61, 0x69, 0x6c, 0x61, 0x62, 0x6c, 0x65, 0x00, 0x53, 0x6f, 0x63, 0x6b, 0x65, 0x74, 0x20, 0x69, 0x73, 0x20, 0x63, 0x6f, 0x6e, 0x6e, 0x65, 0x63, 0x74, 0x65, 0x64, 0x00, 0x53, 0x6f, 0x63, 0x6b, 0x65, 0x74, 0x20, 0x6e, 0x6f, 0x74, 0x20, 0x63, 0x6f, 0x6e, 0x6e, 0x65, 0x63, 0x74, 0x65, 0x64, 0x00, 0x43, 0x61, 0x6e, 0x6e, 0x6f, 0x74, 0x20, 0x73, 0x65, 0x6e, 0x64, 0x20, 0x61, 0x66, 0x74, 0x65, 0x72, 0x20, 0x73, 0x6f, 0x63, 0x6b, 0x65, 0x74, 0x20, 0x73, 0x68, 0x75, 0x74, 0x64, 0x6f, 0x77, 0x6e, 0x00, 0x4f, 0x70, 0x65, 0x72, 0x61, 0x74, 0x69, 0x6f, 0x6e, 0x20, 0x61, 0x6c, 0x72, 0x65, 0x61, 0x64, 0x79, 0x20, 0x69, 0x6e, 0x20, 0x70, 0x72, 0x6f, 0x67, 0x72, 0x65, 0x73, 0x73, 0x00, 0x4f, 0x70, 0x65, 0x72, 0x61, 0x74, 0x69, 0x6f, 0x6e, 0x20, 0x69, 0x6e, 0x20, 0x70, 0x72, 0x6f, 0x67, 0x72, 0x65, 0x73, 0x73, 0x00, 0x53, 0x74, 0x61, 0x6c, 0x65, 0x20, 0x66, 0x69, 0x6c, 0x65, 0x20, 0x68, 0x61, 0x6e, 0x64, 0x6c, 0x65, 0x00, 0x52, 0x65, 0x6d, 0x6f, 0x74, 0x65, 0x20, 0x49, 0x2f, 0x4f, 0x20, 0x65, 0x72, 0x72, 0x6f, 0x72, 0x00, 0x51, 0x75, 0x6f, 0x74, 0x61, 0x20, 0x65, 0x78, 0x63, 0x65, 0x65, 0x64, 0x65, 0x64, 0x00, 0x4e, 0x6f, 0x20, 0x6d, 0x65, 0x64, 0x69, 0x75, 0x6d, 0x20, 0x66, 0x6f, 0x75, 0x6e, 0x64, 0x00, 0x57, 0x72, 0x6f, 0x6e, 0x67, 0x20, 0x6d, 0x65, 0x64, 0x69, 0x75, 0x6d, 0x20, 0x74, 0x79, 0x70, 0x65, 0x00, 0x4d, 0x75, 0x6c, 0x74, 0x69, 0x68, 0x6f, 0x70, 0x20, 0x61, 0x74, 0x74, 0x65, 0x6d, 0x70, 0x74, 0x65, 0x64, 0x00, 0x4e, 0x6f, 0x20, 0x65, 0x72, 0x72, 0x6f, 0x72, 0x20, 0x69, 0x6e, 0x66, 0x6f, 0x72, 0x6d, 0x61, 0x74, 0x69, 0x6f, 0x6e, 0x00, 0x00, 0x00, 0x5f, 0x70, 0x89, 0x00, 0xff, 0x09, 0x2f, 0x0f, 0x0a, 0x00, 0x00, 0x00, 0x64, 0x00, 0x00, 0x00, 0xe8, 0x03, 0x00, 0x00, 0x10, 0x27, 0x00, 0x00, 0xa0, 0x86, 0x01, 0x00, 0x40, 0x42, 0x0f, 0x00, 0x80, 0x96, 0x98, 0x00, 0x00, 0xe1, 0xf5, 0x05, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0x00, 0x01, 0x02, 0x03, 0x04, 0x05, 0x06, 0x07, 0x08, 0x09, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0x0a, 0x0b, 0x0c, 0x0d, 0x0e, 0x0f, 0x10, 0x11, 0x12, 0x13, 0x14, 0x15, 0x16, 0x17, 0x18, 0x19, 0x1a, 0x1b, 0x1c, 0x1d, 0x1e, 0x1f, 0x20, 0x21, 0x22, 0x23, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0x0a, 0x0b, 0x0c, 0x0d, 0x0e, 0x0f, 0x10, 0x11, 0x12, 0x13, 0x14, 0x15, 0x16, 0x17, 0x18, 0x19, 0x1a, 0x1b, 0x1c, 0x1d, 0x1e, 0x1f, 0x20, 0x21, 0x22, 0x23, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x31, 0x2e, 0x31, 0x2e, 0x32, 0x30, 0x00, 0x00, 0x2f, 0x62, 0x69, 0x6e, 0x2f, 0x73, 0x68, 0x0a, 0x2f, 0x62, 0x69, 0x6e, 0x2f, 0x63, 0x73, 0x68, 0x0a, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0xde, 0x12, 0x04, 0x95, 0x00, 0x00, 0x00, 0x00, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0x00, 0x00, 0x00, 0x00, 0x75, 0x74, 0x66, 0x38, 0x00, 0x63, 0x68, 0x61, 0x72, 0x00, 0x00, 0xc8, 0x77, 0x63, 0x68, 0x61, 0x72, 0x74, 0x00, 0x00, 0xc6, 0x75, 0x63, 0x73, 0x32, 0x62, 0x65, 0x00, 0x00, 0xc4, 0x75, 0x63, 0x73, 0x32, 0x6c, 0x65, 0x00, 0x00, 0xc5, 0x75, 0x74, 0x66, 0x31, 0x36, 0x62, 0x65, 0x00, 0x00, 0xc2, 0x75, 0x74, 0x66, 0x31, 0x36, 0x6c, 0x65, 0x00, 0x00, 0xc1, 0x75, 0x63, 0x73, 0x34, 0x62, 0x65, 0x00, 0x75, 0x74, 0x66, 0x33, 0x32, 0x62, 0x65, 0x00, 0x00, 0xc0, 0x75, 0x63, 0x73, 0x34, 0x6c, 0x65, 0x00, 0x75, 0x74, 0x66, 0x33, 0x32, 0x6c, 0x65, 0x00, 0x00, 0xc3, 0x61, 0x73, 0x63, 0x69, 0x69, 0x00, 0x75, 0x73, 0x61, 0x73, 0x63, 0x69, 0x69, 0x00, 0x69, 0x73, 0x6f, 0x36, 0x34, 0x36, 0x00, 0x69, 0x73, 0x6f, 0x36, 0x34, 0x36, 0x75, 0x73, 0x00, 0x00, 0xc7, 0x75, 0x74, 0x66, 0x31, 0x36, 0x00, 0x00, 0xca, 0x75, 0x63, 0x73, 0x34, 0x00, 0x75, 0x74, 0x66, 0x33, 0x32, 0x00, 0x00, 0xcb, 0x75, 0x63, 0x73, 0x32, 0x00, 0x00, 0xcc, 0x65, 0x75, 0x63, 0x6a, 0x70, 0x00, 0x00, 0xd0, 0x73, 0x68, 0x69, 0x66, 0x74, 0x6a, 0x69, 0x73, 0x00, 0x73, 0x6a, 0x69, 0x73, 0x00, 0x00, 0xd1, 0x69, 0x73, 0x6f, 0x32, 0x30, 0x32, 0x32, 0x6a, 0x70, 0x00, 0x00, 0xd2, 0x67, 0x62, 0x31, 0x38, 0x30, 0x33, 0x30, 0x00, 0x00, 0xd8, 0x67, 0x62, 0x6b, 0x00, 0x00, 0xd9, 0x67, 0x62, 0x32, 0x33, 0x31, 0x32, 0x00, 0x00, 0xda, 0x62, 0x69, 0x67, 0x35, 0x00, 0x62, 0x69, 0x67, 0x66, 0x69, 0x76, 0x65, 0x00, 0x63, 0x70, 0x39, 0x35, 0x30, 0x00, 0x62, 0x69, 0x67, 0x35, 0x68, 0x6b, 0x73, 0x63, 0x73, 0x00, 0x00, 0xe0, 0x65, 0x75, 0x63, 0x6b, 0x72, 0x00, 0x6b, 0x73, 0x63, 0x35, 0x36, 0x30, 0x31, 0x00, 0x6b, 0x73, 0x78, 0x31, 0x30, 0x30, 0x31, 0x00, 0x63, 0x70, 0x39, 0x34, 0x39, 0x00, 0x00, 0xe8, 0x69, 0x73, 0x6f, 0x38, 0x38, 0x35, 0x39, 0x31, 0x00, 0x6c, 0x61, 0x74, 0x69, 0x6e, 0x31, 0x00, 0x00, 0x40, 0x69, 0x73, 0x6f, 0x38, 0x38, 0x35, 0x39, 0x32, 0x00, 0x00, 0x28, 0xa0, 0x10, 0xf4, 0x57, 0x4e, 0xa4, 0xdc, 0xf4, 0xd4, 0x29, 0xa8, 0x54, 0x35, 0x55, 0x56, 0x6e, 0xb5, 0x22, 0x17, 0x5c, 0xb0, 0x14, 0x14, 0x98, 0x4e, 0xb4, 0xe0, 0x04, 0x95, 0x5f, 0xb8, 0x58, 0x45, 0x95, 0x56, 0x6f, 0x0d, 0x36, 0x57, 0x5c, 0x49, 0x05, 0x23, 0x8c, 0x40, 0xc4, 0xcc, 0x64, 0xd0, 0x31, 0x0c, 0x25, 0x63, 0xd1, 0x32, 0x18, 0x35, 0xe3, 0x8c, 0x43, 0x10, 0xed, 0xf4, 0xd3, 0x34, 0xd4, 0x14, 0x65, 0xcd, 0x35, 0x4d, 0x8d, 0xa5, 0x4d, 0x59, 0xdc, 0x74, 0x73, 0xd5, 0x37, 0x4a, 0x85, 0x23, 0xce, 0x40, 0xe4, 0xd0, 0x74, 0xd0, 0x39, 0x0d, 0xa5, 0x73, 0xd1, 0x3a, 0x19, 0xb5, 0xe3, 0xce, 0x43, 0x11, 0xf1, 0x04, 0xd4, 0x3c, 0xf4, 0x18, 0x65, 0xcf, 0x3d, 0x4e, 0x91, 0xa5, 0x8f, 0x59, 0xfc, 0xf4, 0x83, 0x15, 0x60, 0x69, 0x73, 0x6f, 0x38, 0x38, 0x35, 0x39, 0x33, 0x00, 0x00, 0x28, 0xa0, 0x90, 0xf4, 0xd7, 0x28, 0xa4, 0x00, 0x20, 0xd2, 0x29, 0xa8, 0xb0, 0x34, 0x15, 0x47, 0x2e, 0xb5, 0x02, 0x00, 0x5c, 0xb0, 0x94, 0x24, 0xcb, 0x2c, 0xb4, 0xd4, 0x32, 0xd2, 0x2d, 0xb8, 0xb4, 0x44, 0x55, 0x47, 0x2f, 0xf5, 0x02, 0x40, 0x5c, 0xc0, 0x04, 0x23, 0x0c, 0x00, 0xc4, 0x28, 0x84, 0xd0, 0x31, 0xc8, 0x24, 0xa3, 0xcc, 0x32, 0xcc, 0x34, 0xe3, 0xcc, 0x33, 0x00, 0x44, 0x23, 0xcd, 0x34, 0xd4, 0x78, 0x64, 0xcd, 0x35, 0x1a, 0x65, 0xa3, 0xcd, 0x36, 0xdc, 0x84, 0x15, 0xd5, 0x37, 0xe0, 0x84, 0x23, 0x0e, 0x00, 0xe4, 0x2c, 0x94, 0xd0, 0x39, 0xe8, 0xa4, 0xa3, 0xce, 0x3a, 0xec, 0xb4, 0xe3, 0xce, 0x3b, 0x00, 0xc4, 0x23, 0xcf, 0x3c, 0xf4, 0x7c, 0x64, 0xcf, 0x3d, 0x1b, 0xe5, 0xa3, 0xcf, 0x3e, 0xfc, 0x88, 0x25, 0x15, 0x60, 0x69, 0x73, 0x6f, 0x38, 0x38, 0x35, 0x39, 0x34, 0x00, 0x00, 0x28, 0xa0, 0x10, 0x24, 0xd3, 0x52, 0xa4, 0x98, 0x54, 0xd3, 0x29, 0xa8, 0x54, 0x25, 0x11, 0x48, 0x5b, 0xb5, 0x22, 0xd7, 0x2b, 0xb0, 0x14, 0x14, 0x18, 0x53, 0xb4, 0x9c, 0x64, 0x93, 0x5f, 0xb8, 0x58, 0x35, 0x51, 0x48, 0x5c, 0x05, 0x35, 0x97, 0x50, 0x00, 0x05, 0x23, 0xcc, 0x30, 0xc4, 0x14, 0x63, 0x8c, 0x4a, 0x0c, 0x25, 0x63, 0xd1, 0x32, 0x14, 0x35, 0xe3, 0x0c, 0x4a, 0x10, 0xf5, 0x34, 0x14, 0x4c, 0xd4, 0x54, 0x63, 0xcd, 0x35, 0xd8, 0x9c, 0xa5, 0xcd, 0x36, 0xdc, 0x74, 0xf5, 0xd5, 0x37, 0x01, 0x85, 0x23, 0xce, 0x38, 0xe4, 0x94, 0x63, 0xce, 0x4a, 0x0d, 0xa5, 0x73, 0xd1, 0x3a, 0x15, 0xb5, 0xe3, 0x4e, 0x4a, 0x11, 0xf9, 0x44, 0x54, 0x4c, 0xf4, 0xd4, 0x63, 0xcf, 0x3d, 0xf8, 0xa0, 0xa5, 0xcf, 0x3e, 0xfc, 0x78, 0x05, 0x16, 0x60, 0x69, 0x73, 0x6f, 0x38, 0x38, 0x35, 0x39, 0x35, 0x00, 0x00, 0x28, 0xa0, 0x44, 0x27, 0xdd, 0x74, 0xd4, 0x55, 0x67, 0xdd, 0x75, 0xd8, 0x65, 0xa7, 0xdd, 0x76, 0xdc, 0xb5, 0xd2, 0x9d, 0x77, 0xdf, 0x81, 0x17, 0x9e, 0x78, 0xe3, 0x91, 0x57, 0x9e, 0x79, 0xe7, 0xa1, 0x97, 0x9e, 0x7a, 0xeb, 0xb1, 0xd7, 0x9e, 0x7b, 0xef, 0xc1, 0x17, 0x9f, 0x7c, 0xf3, 0xd1, 0x57, 0x9f, 0x7d, 0xf7, 0xe1, 0x97, 0x9f, 0x7e, 0xfb, 0xf1, 0xd7, 0x9f, 0x7f, 0xff, 0x01, 0x18, 0xa0, 0x80, 0x03, 0x12, 0x58, 0xa0, 0x81, 0x07, 0x22, 0x98, 0xa0, 0x82, 0x0b, 0x32, 0xd8, 0xa0, 0x83, 0x0f, 0x42, 0x18, 0xa1, 0x84, 0x13, 0x52, 0x58, 0xa1, 0x85, 0x17, 0x62, 0x98, 0xa1, 0x86, 0x1b, 0x72, 0xd8, 0xa1, 0x87, 0x26, 0x7f, 0x08, 0x62, 0x88, 0x22, 0x8e, 0x48, 0x62, 0x89, 0x26, 0x9e, 0x88, 0x62, 0x8a, 0x2a, 0x9e, 0xb2, 0x22, 0x8b, 0x69, 0x73, 0x6f, 0x38, 0x38, 0x35, 0x39, 0x36, 0x00, 0x00, 0x28, 0xa0, 0x00, 0x00, 0x00, 0x00, 0xa4, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x62, 0xb6, 0x02, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0xc0, 0x98, 0x00, 0x00, 0x00, 0x00, 0x99, 0x00, 0x94, 0x69, 0xe6, 0x99, 0x68, 0xa6, 0xa9, 0xe6, 0x9a, 0x6c, 0xb6, 0xe9, 0xe6, 0x9b, 0x70, 0xc6, 0x29, 0xe7, 0x9c, 0x74, 0xd6, 0x69, 0xe7, 0x9d, 0x78, 0xe6, 0xa9, 0xe7, 0x9e, 0x7c, 0xf6, 0xe9, 0x27, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x7f, 0x02, 0x1a, 0xa8, 0xa0, 0x83, 0x12, 0x5a, 0xa8, 0xa1, 0x87, 0x22, 0x9a, 0xa8, 0xa2, 0x8b, 0x32, 0xda, 0xa8, 0xa3, 0x8f, 0x42, 0x1a, 0x29, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x69, 0x73, 0x6f, 0x38, 0x38, 0x35, 0x39, 0x37, 0x00, 0x00, 0x28, 0xa0, 0x4c, 0x4c, 0xf1, 0x28, 0x24, 0x97, 0x6c, 0xca, 0x29, 0xa8, 0xa4, 0x92, 0xd8, 0x2a, 0xac, 0xb4, 0x02, 0x40, 0xc4, 0xb0, 0xc4, 0x22, 0xcb, 0x2c, 0x8a, 0x2d, 0xc6, 0xd8, 0x2d, 0x8d, 0x39, 0xf6, 0xd8, 0x2e, 0x90, 0xf5, 0x12, 0x99, 0x64, 0x93, 0x51, 0x56, 0x99, 0x65, 0x97, 0x61, 0x96, 0x99, 0x66, 0x9b, 0x71, 0xd6, 0x99, 0x67, 0x9f, 0x81, 0x16, 0x9a, 0x68, 0xa3, 0x91, 0x06, 0x40, 0x69, 0xa6, 0x9d, 0x86, 0x5a, 0x6a, 0xaa, 0xad, 0xc6, 0x5a, 0x6b, 0xae, 0xbd, 0x06, 0x5b, 0x6c, 0xb2, 0xcd, 0x46, 0x5b, 0x6d, 0xb6, 0xdd, 0x86, 0x5b, 0x6e, 0xba, 0xed, 0xc6, 0x5b, 0x6f, 0xbe, 0xfd, 0x06, 0x5c, 0x70, 0xc2, 0x0d, 0x47, 0x5c, 0x71, 0xc6, 0x1d, 0x87, 0x5c, 0x72, 0xca, 0x2d, 0xc7, 0x5c, 0x73, 0xce, 0x3d, 0x07, 0x1d, 0x00, 0x69, 0x73, 0x6f, 0x38, 0x38, 0x35, 0x39, 0x38, 0x00, 0x00, 0x28, 0xa0, 0x00, 0x20, 0xca, 0x28, 0xa4, 0x94, 0x62, 0xca, 0x29, 0xa8, 0xa4, 0x72, 0xcd, 0x2a, 0xac, 0xb4, 0xe2, 0xca, 0x2b, 0xb0, 0xc4, 0x22, 0xcb, 0x2c, 0xb4, 0xd4, 0x62, 0xcb, 0x2d, 0xb8, 0xe4, 0x72, 0xcf, 0x2e, 0xbc, 0xf4, 0xe2, 0x0b, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x80, 0xc4, 0x42, 0x0e, 0x49, 0x64, 0x91, 0x46, 0x1e, 0x89, 0x64, 0x92, 0x4a, 0x2e, 0xc9, 0x64, 0x93, 0x4e, 0x3e, 0x09, 0x65, 0x94, 0x52, 0x4e, 0x49, 0x65, 0x95, 0x56, 0x5e, 0x89, 0x65, 0x96, 0x5a, 0x6e, 0xc9, 0x25, 0x00, 0x00, 0x34, 0xec, 0x30, 0x00, 0x69, 0x73, 0x6f, 0x38, 0x38, 0x35, 0x39, 0x39, 0x00, 0x00, 0x34, 0x1c, 0x45, 0x23, 0xcd, 0x34, 0xd4, 0x54, 0x63, 0xcd, 0x35, 0xd8, 0x64, 0xa3, 0xcd, 0x36, 0xdc, 0xb0, 0x34, 0xd5, 0x37, 0xe0, 0x84, 0x23, 0xce, 0x38, 0xe4, 0x94, 0x63, 0xce, 0x39, 0xe8, 0xa4, 0xa3, 0xce, 0x3a, 0xec, 0xb4, 0xe3, 0xce, 0x3b, 0x1d, 0xc5, 0x23, 0xcf, 0x3c, 0xf4, 0xd4, 0x63, 0xcf, 0x3d, 0xf8, 0xe4, 0xa3, 0xcf, 0x3e, 0xfc, 0xb4, 0x44, 0xd5, 0x3f, 0x69, 0x73, 0x6f, 0x38, 0x38, 0x35, 0x39, 0x31, 0x30, 0x00, 0x00, 0x28, 0xa0, 0x10, 0x24, 0x11, 0x48, 0x28, 0x99, 0x04, 0xd3, 0x29, 0x35, 0x41, 0x54, 0xd5, 0x56, 0x72, 0xb5, 0xf2, 0x55, 0x50, 0xb0, 0x14, 0x34, 0x51, 0x48, 0x29, 0x9d, 0x14, 0xd3, 0x2d, 0x36, 0x45, 0x64, 0x15, 0x57, 0x73, 0x45, 0x0c, 0x96, 0x50, 0x00, 0x05, 0x23, 0xcc, 0x30, 0xc4, 0x14, 0x63, 0x8c, 0x4a, 0x0c, 0x25, 0x63, 0xd1, 0x32, 0x14, 0x35, 0xe3, 0xcc, 0x33, 0xd0, 0xf4, 0x34, 0xd4, 0x34, 0xd4, 0x54, 0x63, 0x4d, 0x57, 0xd8, 0x9c, 0xa5, 0xcd, 0x36, 0xdc, 0x74, 0xe3, 0xcd, 0x37, 0x01, 0x85, 0x23, 0xce, 0x38, 0xe4, 0x94, 0x63, 0xce, 0x4a, 0x0d, 0xa5, 0x73, 0xd1, 0x3a, 0x15, 0xb5, 0xe3, 0xce, 0x3b, 0xf0, 0xf8, 0x44, 0xd4, 0x3c, 0xf4, 0xd4, 0x63, 0x8f, 0x57, 0xf8, 0xa0, 0xa5, 0xcf, 0x3e, 0xfc, 0xf4, 0xe3, 0x8f, 0x4c, 0x69, 0x73, 0x6f, 0x38, 0x38, 0x35, 0x39, 0x31, 0x31, 0x00, 0x74, 0x69, 0x73, 0x36, 0x32, 0x30, 0x00, 0x00, 0x28, 0xa0, 0x78, 0xfa, 0x29, 0xa8, 0xa1, 0x8a, 0x3a, 0x2a, 0xa9, 0xa5, 0x9a, 0x7a, 0x2a, 0xaa, 0xa9, 0xaa, 0xba, 0x2a, 0xab, 0xad, 0xba, 0xfa, 0x2a, 0xac, 0xb1, 0xca, 0x3a, 0x2b, 0xad, 0xb5, 0xda, 0x7a, 0x2b, 0xae, 0xb9, 0xea, 0xba, 0x2b, 0xaf, 0xbd, 0xfa, 0xfa, 0x2b, 0xb0, 0xc1, 0x0a, 0x3b, 0x2c, 0xb1, 0xc5, 0x1a, 0x7b, 0x2c, 0xb2, 0xc9, 0x2a, 0xbb, 0x2c, 0xb3, 0xcd, 0x3a, 0xfb, 0x2c, 0xb4, 0xd1, 0x4a, 0x3b, 0x2d, 0xb5, 0xd5, 0x5a, 0x7b, 0x2d, 0x00, 0x00, 0x00, 0x00, 0x00, 0xb6, 0xd9, 0x6a, 0xbb, 0x2d, 0xb7, 0xdd, 0x7a, 0xfb, 0x2d, 0xb8, 0xe1, 0x8a, 0x3b, 0x2e, 0xb9, 0xe5, 0x9a, 0x7b, 0x2e, 0xba, 0xe9, 0xaa, 0xbb, 0x2e, 0xbb, 0xed, 0xba, 0xfb, 0x2e, 0xbc, 0xf1, 0xca, 0x3b, 0x2f, 0xbd, 0x00, 0x00, 0x00, 0x00, 0x00, 0x69, 0x73, 0x6f, 0x38, 0x38, 0x35, 0x39, 0x31, 0x33, 0x00, 0x00, 0x28, 0xa0, 0x5c, 0x2c, 0xca, 0x28, 0xa4, 0x60, 0x6c, 0xca, 0x29, 0xd8, 0xa4, 0xb2, 0xd4, 0x2a, 0xac, 0xb4, 0xe2, 0x8a, 0x31, 0xb0, 0xc4, 0x22, 0xcb, 0x2c, 0x16, 0xd7, 0x62, 0xcb, 0x2d, 0xf8, 0xe4, 0xc2, 0xd4, 0x2e, 0xbc, 0xf4, 0xe2, 0x8b, 0x39, 0x04, 0xa9, 0x04, 0x90, 0x41, 0xc4, 0x14, 0x63, 0x91, 0x44, 0x0c, 0x25, 0xe3, 0x16, 0x45, 0x20, 0xc1, 0x84, 0x52, 0x4d, 0x55, 0xed, 0xd4, 0xd3, 0x34, 0x43, 0x55, 0x63, 0xcd, 0x35, 0x67, 0xe5, 0xf4, 0xd4, 0x57, 0xdc, 0xc0, 0x25, 0xd7, 0x37, 0x05, 0xad, 0x14, 0xd0, 0x41, 0xe4, 0x94, 0x73, 0xd1, 0x44, 0x0d, 0xa5, 0xf3, 0x56, 0x45, 0x21, 0xc5, 0x94, 0x92, 0x4d, 0x56, 0xf1, 0xe4, 0xd3, 0x3c, 0x44, 0xd5, 0x63, 0xcf, 0x3d, 0x68, 0xe9, 0x04, 0x15, 0x58, 0xfc, 0xc4, 0x35, 0x17, 0xc5, 0x69, 0x73, 0x6f, 0x38, 0x38, 0x35, 0x39, 0x31, 0x34, 0x00, 0x00, 0x28, 0xa0, 0xd4, 0x6b, 0xef, 0x28, 0x0a, 0x2d, 0x74, 0xef, 0x29, 0x03, 0xa7, 0x52, 0x30, 0xbe, 0x09, 0xb7, 0xe2, 0x4a, 0x5b, 0xf9, 0xea, 0xeb, 0xd1, 0x47, 0xfb, 0xf2, 0x6b, 0x4b, 0xbf, 0x04, 0xfb, 0x6b, 0xf0, 0xbf, 0x0a, 0x1f, 0x8c, 0x30, 0xc0, 0xc0, 0x04, 0x23, 0xcc, 0x30, 0xc4, 0x14, 0x63, 0xcc, 0x31, 0xc8, 0x24, 0xa3, 0xcc, 0x32, 0xcc, 0x34, 0xe3, 0xcc, 0x33, 0x69, 0x45, 0x23, 0xcd, 0x34, 0xd4, 0x54, 0x63, 0x4d, 0xc0, 0xd8, 0x64, 0xa3, 0xcd, 0x36, 0xdc, 0x74, 0xb3, 0xd6, 0x37, 0xe0, 0x84, 0x23, 0xce, 0x38, 0xe4, 0x94, 0x63, 0xce, 0x39, 0xe8, 0xa4, 0xa3, 0xce, 0x3a, 0xec, 0xb4, 0xe3, 0xce, 0x3b, 0x6a, 0xc5, 0x23, 0xcf, 0x3c, 0xf4, 0xd4, 0x63, 0x8f, 0xc0, 0xf8, 0xe4, 0xa3, 0xcf, 0x3e, 0xfc, 0xf4, 0xc3, 0xd6, 0x3f, 0x69, 0x73, 0x6f, 0x38, 0x38, 0x35, 0x39, 0x31, 0x35, 0x00, 0x6c, 0x61, 0x74, 0x69, 0x6e, 0x39, 0x00, 0x00, 0x29, 0x24, 0x97, 0x52, 0xd5, 0x29, 0x56, 0xa5, 0xa2, 0xca, 0x2a, 0xac, 0xb4, 0xe2, 0xca, 0x2b, 0xb0, 0xc4, 0x22, 0xcb, 0x2c, 0x72, 0xd5, 0x62, 0xcb, 0x2d, 0x73, 0xe5, 0xa2, 0xcb, 0x2e, 0x47, 0x21, 0xd5, 0xd6, 0x2f, 0xc0, 0x04, 0x23, 0xcc, 0x30, 0xc4, 0x14, 0x63, 0xcc, 0x31, 0xc8, 0x24, 0xa3, 0xcc, 0x32, 0xcc, 0x34, 0xe3, 0xcc, 0x33, 0xd0, 0x44, 0x23, 0xcd, 0x34, 0xd4, 0x54, 0x63, 0xcd, 0x35, 0xd8, 0x64, 0xa3, 0xcd, 0x36, 0xdc, 0x74, 0xe3, 0xcd, 0x37, 0xe0, 0x84, 0x23, 0xce, 0x38, 0xe4, 0x94, 0x63, 0xce, 0x39, 0xe8, 0xa4, 0xa3, 0xce, 0x3a, 0xec, 0xb4, 0xe3, 0xce, 0x3b, 0xf0, 0xc4, 0x23, 0xcf, 0x3c, 0xf4, 0xd4, 0x63, 0xcf, 0x3d, 0xf8, 0xe4, 0xa3, 0xcf, 0x3e, 0xfc, 0xf4, 0xe3, 0xcf, 0x3f, 0x69, 0x73, 0x6f, 0x38, 0x38, 0x35, 0x39, 0x31, 0x36, 0x00, 0x00, 0x28, 0xa0, 0x10, 0x54, 0x50, 0x4e, 0x24, 0x63, 0x5c, 0xd5, 0x29, 0x56, 0xa5, 0x92, 0xd7, 0x2a, 0x6e, 0xb5, 0xf2, 0x16, 0x5c, 0xb0, 0xc4, 0xc2, 0x90, 0x4e, 0x72, 0x5d, 0x6c, 0xcb, 0x2d, 0x73, 0x35, 0xa4, 0xd7, 0x2e, 0x47, 0x21, 0xd5, 0x56, 0x5c, 0xc0, 0x04, 0x23, 0x8c, 0x40, 0xc4, 0x18, 0x64, 0xcc, 0x31, 0xc8, 0x24, 0xa3, 0xcc, 0x32, 0xcc, 0x34, 0xe3, 0xcc, 0x33, 0x10, 0xed, 0x24, 0xcd, 0x34, 0xd4, 0x14, 0x65, 0xcd, 0x53, 0x65, 0x65, 0xa3, 0xcd, 0x36, 0xdc, 0x58, 0xb4, 0xd7, 0x37, 0xe0, 0x84, 0x23, 0xce, 0x40, 0xe4, 0x1c, 0x64, 0xce, 0x39, 0xe8, 0xa4, 0xa3, 0xce, 0x3a, 0xec, 0xb4, 0xe3, 0xce, 0x3b, 0x11, 0xf1, 0x24, 0xcf, 0x3c, 0xf4, 0x18, 0x65, 0x0f, 0x54, 0x66, 0xe5, 0xa3, 0xcf, 0x3e, 0xfc, 0x5c, 0xc4, 0xd7, 0x3f, 0x63, 0x70, 0x31, 0x32, 0x35, 0x30, 0x00, 0x77, 0x69, 0x6e, 0x64, 0x6f, 0x77, 0x73, 0x31, 0x32, 0x35, 0x30, 0x00, 0x00, 0x20, 0x24, 0x03, 0x50, 0x31, 0x00, 0x18, 0x73, 0x9c, 0xb1, 0xc6, 0x00, 0x74, 0x5c, 0x95, 0xc7, 0x4f, 0x65, 0x25, 0x97, 0x5b, 0x00, 0x4c, 0x4c, 0xb1, 0xc5, 0x17, 0x6f, 0xfc, 0x30, 0xc4, 0x00, 0x9c, 0x6c, 0xd5, 0xc7, 0x50, 0x69, 0x35, 0xd7, 0x5b, 0xa0, 0xf8, 0xf5, 0x57, 0x4e, 0xa4, 0x10, 0x64, 0xca, 0x29, 0xa8, 0xa4, 0x32, 0xd5, 0x2a, 0xac, 0xb4, 0xe2, 0x0a, 0x5c, 0xb0, 0xc4, 0x12, 0x98, 0x4e, 0xb4, 0xd4, 0x62, 0xcb, 0x2d, 0xb8, 0x14, 0x44, 0xd5, 0x2e, 0x37, 0x0d, 0x86, 0x53, 0x5c, 0x49, 0x05, 0x23, 0x8c, 0x40, 0xc4, 0xcc, 0x64, 0xd0, 0x31, 0x0c, 0x25, 0x63, 0xd1, 0x32, 0x18, 0x35, 0xe3, 0x8c, 0x43, 0x10, 0xed, 0xf4, 0xd3, 0x34, 0xd4, 0x14, 0x65, 0xcd, 0x35, 0x4d, 0x8d, 0xa5, 0x4d, 0x59, 0xdc, 0x74, 0x73, 0xd5, 0x37, 0x4a, 0x85, 0x23, 0xce, 0x40, 0xe4, 0xd0, 0x74, 0xd0, 0x39, 0x0d, 0xa5, 0x73, 0xd1, 0x3a, 0x19, 0xb5, 0xe3, 0xce, 0x43, 0x11, 0xf1, 0x04, 0xd4, 0x3c, 0xf4, 0x18, 0x65, 0xcf, 0x3d, 0x4e, 0x91, 0xa5, 0x8f, 0x59, 0xfc, 0xf4, 0x83, 0x15, 0x60, 0x63, 0x70, 0x31, 0x32, 0x35, 0x31, 0x00, 0x77, 0x69, 0x6e, 0x64, 0x6f, 0x77, 0x73, 0x31, 0x32, 0x35, 0x31, 0x00, 0x00, 0x20, 0xd2, 0x4d, 0x57, 0x71, 0x88, 0x18, 0x73, 0x9c, 0xb1, 0xc6, 0x24, 0x77, 0x9c, 0x9d, 0xc7, 0xda, 0x71, 0xb7, 0x9d, 0x77, 0x20, 0x4e, 0x4c, 0xb1, 0xc5, 0x17, 0x6f, 0xfc, 0x30, 0xc4, 0x00, 0x9c, 0x7c, 0xe2, 0xc7, 0x28, 0xaa, 0x98, 0x22, 0x8b, 0xa0, 0x74, 0xb7, 0x22, 0x76, 0xa4, 0xb4, 0x68, 0xca, 0x29, 0xd1, 0xa5, 0x42, 0xdd, 0x2a, 0xac, 0xb4, 0xe2, 0xca, 0x75, 0xb0, 0xc4, 0x62, 0x1d, 0x89, 0x2e, 0xd6, 0x62, 0xcb, 0x2d, 0x1f, 0x9a, 0x2c, 0xe2, 0x2e, 0x26, 0x56, 0x37, 0x62, 0x89, 0xdf, 0x81, 0x17, 0x9e, 0x78, 0xe3, 0x91, 0x57, 0x9e, 0x79, 0xe7, 0xa1, 0x97, 0x9e, 0x7a, 0xeb, 0xb1, 0xd7, 0x9e, 0x7b, 0xef, 0xc1, 0x17, 0x9f, 0x7c, 0xf3, 0xd1, 0x57, 0x9f, 0x7d, 0xf7, 0xe1, 0x97, 0x9f, 0x7e, 0xfb, 0xf1, 0xd7, 0x9f, 0x7f, 0xff, 0x01, 0x18, 0xa0, 0x80, 0x03, 0x12, 0x58, 0xa0, 0x81, 0x07, 0x22, 0x98, 0xa0, 0x82, 0x0b, 0x32, 0xd8, 0xa0, 0x83, 0x0f, 0x42, 0x18, 0xa1, 0x84, 0x13, 0x52, 0x58, 0xa1, 0x85, 0x17, 0x62, 0x98, 0xa1, 0x86, 0x1b, 0x72, 0xd8, 0xa1, 0x87, 0x63, 0x70, 0x31, 0x32, 0x35, 0x32, 0x00, 0x77, 0x69, 0x6e, 0x64, 0x6f, 0x77, 0x73, 0x31, 0x32, 0x35, 0x32, 0x00, 0x00, 0x20, 0x24, 0x03, 0x50, 0x31, 0x5d, 0x18, 0x73, 0x9c, 0xb1, 0xc6, 0x7d, 0x75, 0x5c, 0x95, 0xc7, 0x47, 0x01, 0x20, 0x17, 0x00, 0x00, 0x4c, 0x4c, 0xb1, 0xc5, 0x17, 0x6f, 0xfc, 0x30, 0xc4, 0x82, 0x9d, 0x6c, 0xd5, 0xc7, 0x48, 0x01, 0x30, 0x57, 0x5b, 0xa0, 0x84, 0x22, 0xca, 0x28, 0xa4, 0x94, 0x62, 0xca, 0x29, 0xa8, 0xa4, 0xa2, 0xca, 0x2a, 0xac, 0xb4, 0xe2, 0xca, 0x2b, 0xb0, 0xc4, 0x22, 0xcb, 0x2c, 0xb4, 0xd4, 0x62, 0xcb, 0x2d, 0xb8, 0xe4, 0xa2, 0xcb, 0x2e, 0xbc, 0xf4, 0xe2, 0xcb, 0x2f, 0xc0, 0x04, 0x23, 0xcc, 0x30, 0xc4, 0x14, 0x63, 0xcc, 0x31, 0xc8, 0x24, 0xa3, 0xcc, 0x32, 0xcc, 0x34, 0xe3, 0xcc, 0x33, 0xd0, 0x44, 0x23, 0xcd, 0x34, 0xd4, 0x54, 0x63, 0xcd, 0x35, 0xd8, 0x64, 0xa3, 0xcd, 0x36, 0xdc, 0x74, 0xe3, 0xcd, 0x37, 0xe0, 0x84, 0x23, 0xce, 0x38, 0xe4, 0x94, 0x63, 0xce, 0x39, 0xe8, 0xa4, 0xa3, 0xce, 0x3a, 0xec, 0xb4, 0xe3, 0xce, 0x3b, 0xf0, 0xc4, 0x23, 0xcf, 0x3c, 0xf4, 0xd4, 0x63, 0xcf, 0x3d, 0xf8, 0xe4, 0xa3, 0xcf, 0x3e, 0xfc, 0xf4, 0xe3, 0xcf, 0x3f, 0x63, 0x70, 0x31, 0x32, 0x35, 0x33, 0x00, 0x77, 0x69, 0x6e, 0x64, 0x6f, 0x77, 0x73, 0x31, 0x32, 0x35, 0x33, 0x00, 0x00, 0x20, 0x24, 0x03, 0x50, 0x31, 0x5d, 0x18, 0x73, 0x9c, 0xb1, 0xc6, 0x00, 0x74, 0x0c, 0x80, 0xc7, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x4c, 0x4c, 0xb1, 0xc5, 0x17, 0x6f, 0xfc, 0x30, 0xc4, 0x00, 0x9c, 0x0c, 0xc0, 0xc7, 0x00, 0x00, 0x00, 0x00, 0x00, 0xa0, 0x2c, 0xc6, 0xd8, 0x28, 0xa4, 0x94, 0x62, 0xca, 0x29, 0xa8, 0xa4, 0x02, 0xc0, 0x2a, 0xac, 0xb4, 0xe2, 0x4a, 0xc4, 0xb0, 0xc4, 0x22, 0xcb, 0x2c, 0x8a, 0xd5, 0x62, 0xcb, 0x2d, 0x8d, 0x39, 0xf6, 0xd8, 0x2e, 0x90, 0xf5, 0x12, 0x99, 0x64, 0x93, 0x51, 0x56, 0x99, 0x65, 0x97, 0x61, 0x96, 0x99, 0x66, 0x9b, 0x71, 0xd6, 0x99, 0x67, 0x9f, 0x81, 0x16, 0x9a, 0x68, 0xa3, 0x91, 0x06, 0x40, 0x69, 0xa6, 0x9d, 0x86, 0x5a, 0x6a, 0xaa, 0xad, 0xc6, 0x5a, 0x6b, 0xae, 0xbd, 0x06, 0x5b, 0x6c, 0xb2, 0xcd, 0x46, 0x5b, 0x6d, 0xb6, 0xdd, 0x86, 0x5b, 0x6e, 0xba, 0xed, 0xc6, 0x5b, 0x6f, 0xbe, 0xfd, 0x06, 0x5c, 0x70, 0xc2, 0x0d, 0x47, 0x5c, 0x71, 0xc6, 0x1d, 0x87, 0x5c, 0x72, 0xca, 0x2d, 0xc7, 0x5c, 0x73, 0xce, 0x3d, 0x07, 0x1d, 0x00, 0x63, 0x70, 0x31, 0x32, 0x35, 0x34, 0x00, 0x77, 0x69, 0x6e, 0x64, 0x6f, 0x77, 0x73, 0x31, 0x32, 0x35, 0x34, 0x00, 0x00, 0x20, 0x24, 0x03, 0x50, 0x31, 0x5d, 0x18, 0x73, 0x9c, 0xb1, 0xc6, 0x7d, 0x75, 0x5c, 0x95, 0xc7, 0x47, 0x01, 0x00, 0x00, 0x00, 0x00, 0x4c, 0x4c, 0xb1, 0xc5, 0x17, 0x6f, 0xfc, 0x30, 0xc4, 0x82, 0x9d, 0x6c, 0xd5, 0xc7, 0x48, 0x01, 0x00, 0x40, 0x5b, 0xa0, 0x84, 0x22, 0xca, 0x28, 0xa4, 0x94, 0x62, 0xca, 0x29, 0xa8, 0xa4, 0xa2, 0xca, 0x2a, 0xac, 0xb4, 0xe2, 0xca, 0x2b, 0xb0, 0xc4, 0x22, 0xcb, 0x2c, 0xb4, 0xd4, 0x62, 0xcb, 0x2d, 0xb8, 0xe4, 0xa2, 0xcb, 0x2e, 0xbc, 0xf4, 0xe2, 0xcb, 0x2f, 0xc0, 0x04, 0x23, 0xcc, 0x30, 0xc4, 0x14, 0x63, 0xcc, 0x31, 0xc8, 0x24, 0xa3, 0xcc, 0x32, 0xcc, 0x34, 0xe3, 0xcc, 0x33, 0x1c, 0x45, 0x23, 0xcd, 0x34, 0xd4, 0x54, 0x63, 0xcd, 0x35, 0xd8, 0x64, 0xa3, 0xcd, 0x36, 0xdc, 0xb0, 0x34, 0xd5, 0x37, 0xe0, 0x84, 0x23, 0xce, 0x38, 0xe4, 0x94, 0x63, 0xce, 0x39, 0xe8, 0xa4, 0xa3, 0xce, 0x3a, 0xec, 0xb4, 0xe3, 0xce, 0x3b, 0x1d, 0xc5, 0x23, 0xcf, 0x3c, 0xf4, 0xd4, 0x63, 0xcf, 0x3d, 0xf8, 0xe4, 0xa3, 0xcf, 0x3e, 0xfc, 0xb4, 0x44, 0xd5, 0x3f, 0x63, 0x70, 0x31, 0x32, 0x35, 0x35, 0x00, 0x77, 0x69, 0x6e, 0x64, 0x6f, 0x77, 0x73, 0x31, 0x32, 0x35, 0x35, 0x00, 0x00, 0x20, 0x24, 0x03, 0x50, 0x31, 0x5d, 0x18, 0x73, 0x9c, 0xb1, 0xc6, 0x7d, 0x75, 0x0c, 0x80, 0xc7, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x4c, 0x4c, 0xb1, 0xc5, 0x17, 0x6f, 0xfc, 0x30, 0xc4, 0x82, 0x9d, 0x0c, 0xc0, 0xc7, 0x00, 0x00, 0x00, 0x00, 0x00, 0xa0, 0x84, 0x22, 0xca, 0x28, 0x22, 0x97, 0x62, 0xca, 0x29, 0xa8, 0xa4, 0x72, 0xcd, 0x2a, 0xac, 0xb4, 0xe2, 0xca, 0x2b, 0xb0, 0xc4, 0x22, 0xcb, 0x2c, 0xb4, 0xd4, 0x62, 0xcb, 0x2d, 0xb8, 0xe4, 0x72, 0xcf, 0x2e, 0xbc, 0xf4, 0xe2, 0xcb, 0x2f, 0x2f, 0xc2, 0x18, 0xa3, 0x8c, 0x33, 0xd2, 0x58, 0xa3, 0x8d, 0x37, 0xe2, 0x08, 0x40, 0x8e, 0x3a, 0xee, 0xc8, 0x63, 0x8f, 0x3e, 0xfe, 0x08, 0x64, 0x90, 0x5d, 0x7a, 0xf9, 0x25, 0x98, 0x61, 0x02, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x42, 0x0e, 0x49, 0x64, 0x91, 0x46, 0x1e, 0x89, 0x64, 0x92, 0x4a, 0x2e, 0xc9, 0x64, 0x93, 0x4e, 0x3e, 0x09, 0x65, 0x94, 0x52, 0x4e, 0x49, 0x65, 0x95, 0x56, 0x5e, 0x89, 0x65, 0x96, 0x5a, 0x6e, 0xc9, 0x25, 0x00, 0x00, 0x34, 0xec, 0x30, 0x00, 0x63, 0x70, 0x31, 0x32, 0x35, 0x36, 0x00, 0x77, 0x69, 0x6e, 0x64, 0x6f, 0x77, 0x73, 0x31, 0x32, 0x35, 0x36, 0x00, 0x00, 0x20, 0x24, 0x4f, 0x5a, 0x31, 0x5d, 0x18, 0x73, 0x9c, 0xb1, 0xc6, 0x7d, 0x75, 0x2c, 0xa9, 0xc7, 0x47, 0x51, 0x7a, 0x69, 0xa5, 0x99, 0x4e, 0x4c, 0xb1, 0xc5, 0x17, 0x6f, 0xfc, 0x30, 0xc4, 0x98, 0x9e, 0x6c, 0xe9, 0xc7, 0x48, 0x2d, 0xcc, 0xb0, 0xa6, 0xa0, 0x88, 0x29, 0xca, 0x28, 0xa4, 0x94, 0x62, 0xca, 0x29, 0xa8, 0xa4, 0xb2, 0xe9, 0x2a, 0xac, 0xb4, 0xe2, 0xca, 0x2b, 0xb0, 0xc4, 0x22, 0xcb, 0x2c, 0xb4, 0xd4, 0x62, 0xcb, 0x2d, 0xb8, 0xe4, 0x32, 0xe6, 0x2e, 0xbc, 0xf4, 0xe2, 0x0b, 0x99, 0x9c, 0x96, 0x69, 0xe6, 0x99, 0x68, 0xa6, 0xa9, 0xe6, 0x9a, 0x6c, 0xb6, 0xe9, 0xe6, 0x9b, 0x70, 0xc6, 0x29, 0xe7, 0x9c, 0x74, 0xd6, 0x69, 0xe7, 0x9d, 0x78, 0xe6, 0xa9, 0xe7, 0x35, 0x7b, 0xf2, 0xd9, 0xa7, 0x9f, 0x7f, 0x02, 0x1a, 0xa8, 0xa0, 0xe0, 0x0c, 0x2a, 0x0e, 0xa1, 0x85, 0x1a, 0x7a, 0xe8, 0x39, 0xe8, 0xa4, 0xa3, 0xce, 0x3a, 0x88, 0x26, 0xea, 0xce, 0x3b, 0x8a, 0x2e, 0xca, 0x68, 0xa3, 0xf4, 0x38, 0xfa, 0xe8, 0x3d, 0x90, 0xe6, 0x13, 0xe9, 0x3e, 0xfc, 0x34, 0xec, 0x70, 0xa7, 0x63, 0x70, 0x31, 0x32, 0x35, 0x37, 0x00, 0x77, 0x69, 0x6e, 0x64, 0x6f, 0x77, 0x73, 0x31, 0x32, 0x35, 0x37, 0x00, 0x00, 0x20, 0x24, 0x03, 0x50, 0x31, 0x00, 0x18, 0x73, 0x9c, 0xb1, 0xc6, 0x00, 0x74, 0x0c, 0x80, 0xc7, 0x00, 0xa0, 0xe2, 0x17, 0x2e, 0x00, 0x4c, 0x4c, 0xb1, 0xc5, 0x17, 0x6f, 0xfc, 0x30, 0xc4, 0x00, 0x9c, 0x0c, 0xc0, 0xc7, 0x00, 0xbc, 0x12, 0x18, 0x00, 0xa0, 0x00, 0x20, 0xca, 0x28, 0xa4, 0x00, 0x60, 0xca, 0x29, 0xd8, 0xa4, 0xb2, 0xd4, 0x2a, 0xac, 0xb4, 0xe2, 0x8a, 0x31, 0xb0, 0xc4, 0x22, 0xcb, 0x2c, 0xb4, 0xd4, 0x62, 0xcb, 0x2d, 0xf8, 0xe4, 0xc2, 0xd4, 0x2e, 0xbc, 0xf4, 0xe2, 0x8b, 0x39, 0x04, 0xa9, 0x04, 0x90, 0x41, 0xc4, 0x14, 0x63, 0x91, 0x44, 0x0c, 0x25, 0xe3, 0x16, 0x45, 0x20, 0xc1, 0x84, 0x52, 0x4d, 0x55, 0xed, 0xd4, 0xd3, 0x34, 0x43, 0x55, 0x63, 0xcd, 0x35, 0x67, 0xe5, 0xf4, 0xd4, 0x57, 0xdc, 0xc0, 0x25, 0xd7, 0x37, 0x05, 0xad, 0x14, 0xd0, 0x41, 0xe4, 0x94, 0x73, 0xd1, 0x44, 0x0d, 0xa5, 0xf3, 0x56, 0x45, 0x21, 0xc5, 0x94, 0x92, 0x4d, 0x56, 0xf1, 0xe4, 0xd3, 0x3c, 0x44, 0xd5, 0x63, 0xcf, 0x3d, 0x68, 0xe9, 0x04, 0x15, 0x58, 0xfc, 0xc4, 0x35, 0x17, 0x60, 0x63, 0x70, 0x31, 0x32, 0x35, 0x38, 0x00, 0x77, 0x69, 0x6e, 0x64, 0x6f, 0x77, 0x73, 0x31, 0x32, 0x35, 0x38, 0x00, 0x00, 0x20, 0x24, 0x03, 0x50, 0x31, 0x5d, 0x18, 0x73, 0x9c, 0xb1, 0xc6, 0x7d, 0x75, 0x0c, 0x80, 0xc7, 0x47, 0x01, 0x00, 0x00, 0x00, 0x00, 0x4c, 0x4c, 0xb1, 0xc5, 0x17, 0x6f, 0xfc, 0x30, 0xc4, 0x82, 0x9d, 0x0c, 0xc0, 0xc7, 0x48, 0x01, 0x00, 0x40, 0x5b, 0xa0, 0x84, 0x22, 0xca, 0x28, 0xa4, 0x94, 0x62, 0xca, 0x29, 0xa8, 0xa4, 0xa2, 0xca, 0x2a, 0xac, 0xb4, 0xe2, 0xca, 0x2b, 0xb0, 0xc4, 0x22, 0xcb, 0x2c, 0xb4, 0xd4, 0x62, 0xcb, 0x2d, 0xb8, 0xe4, 0xa2, 0xcb, 0x2e, 0xbc, 0xf4, 0xe2, 0xcb, 0x2f, 0xc0, 0x04, 0x23, 0x8c, 0x40, 0xc4, 0x14, 0x63, 0xcc, 0x31, 0xc8, 0x24, 0xa3, 0xcc, 0x32, 0x84, 0x35, 0xe3, 0xcc, 0x33, 0x10, 0x45, 0x73, 0xd8, 0x34, 0xd4, 0xd4, 0x65, 0xcd, 0x35, 0xd8, 0x64, 0xa3, 0xcd, 0x36, 0xdc, 0xdc, 0x65, 0xd8, 0x37, 0xe0, 0x84, 0x23, 0xce, 0x40, 0xe4, 0x94, 0x63, 0xce, 0x39, 0xe8, 0xa4, 0xa3, 0xce, 0x3a, 0x85, 0xb5, 0xe3, 0xce, 0x3b, 0x11, 0xc5, 0x83, 0xd8, 0x3c, 0xf4, 0xd8, 0x65, 0xcf, 0x3d, 0xf8, 0xe4, 0xa3, 0xcf, 0x3e, 0xfc, 0xe0, 0x35, 0xf2, 0x3f, 0x6b, 0x6f, 0x69, 0x38, 0x72, 0x00, 0x00, 0x20, 0x33, 0xd3, 0x5c, 0xb3, 0xcd, 0x37, 0xe3, 0x9c, 0xb3, 0xce, 0x3b, 0xf3, 0xdc, 0xf3, 0xd6, 0x5c, 0x77, 0xed, 0xf5, 0xd7, 0x60, 0x87, 0x2d, 0x76, 0xcc, 0x63, 0xa3, 0x9c, 0x32, 0xcb, 0x2e, 0xbf, 0x0c, 0x8a, 0xcc, 0xb0, 0xc8, 0x72, 0xcb, 0x3d, 0x3e, 0xff, 0x0c, 0xf4, 0x87, 0x41, 0x0b, 0x3d, 0x34, 0xd1, 0x45, 0x1b, 0x7d, 0x34, 0xd2, 0x49, 0x2b, 0xbd, 0x34, 0xd3, 0x4d, 0x3b, 0xfd, 0x74, 0x74, 0x50, 0x47, 0x2d, 0xf5, 0xd4, 0x54, 0x57, 0x6d, 0xf5, 0xd5, 0x58, 0x67, 0xad, 0x75, 0x2a, 0x1d, 0xfe, 0x07, 0x60, 0x85, 0x03, 0x12, 0x38, 0xa1, 0x80, 0x14, 0x1e, 0x88, 0x60, 0x82, 0x0a, 0x2e, 0xc8, 0x60, 0x83, 0x0e, 0x7a, 0xf8, 0x20, 0x84, 0x11, 0x4a, 0x58, 0x60, 0x80, 0x1b, 0x6a, 0x68, 0xe0, 0x85, 0x1c, 0x62, 0x68, 0x61, 0x86, 0xfd, 0x7d, 0x07, 0x5e, 0x7d, 0xe3, 0x91, 0x37, 0x9f, 0x78, 0xf4, 0x9d, 0x87, 0x5e, 0x7a, 0xea, 0xad, 0xc7, 0x5e, 0x7b, 0xee, 0xf9, 0xf7, 0x1e, 0x7c, 0xf1, 0xc9, 0x57, 0x5e, 0x78, 0xfb, 0xe9, 0x67, 0xde, 0x7d, 0xfc, 0xe1, 0x67, 0x5f, 0x7e, 0x6b, 0x6f, 0x69, 0x38, 0x75, 0x00, 0x00, 0x20, 0x33, 0xd3, 0x5c, 0xb3, 0xcd, 0x37, 0xe3, 0x9c, 0xb3, 0xce, 0x3b, 0xf3, 0xdc, 0xf3, 0xd6, 0x5c, 0x77, 0xed, 0xf5, 0xd7, 0x60, 0x87, 0x2d, 0x76, 0xcc, 0x63, 0xa3, 0x9c, 0x32, 0xcb, 0x2e, 0xbf, 0x0c, 0x8a, 0xcc, 0xb0, 0xc8, 0x72, 0xcb, 0x3d, 0x3e, 0xff, 0x0c, 0xf4, 0x87, 0x22, 0x0a, 0x4d, 0x62, 0x89, 0x45, 0x1b, 0x7d, 0x34, 0xd2, 0x49, 0xbb, 0xb8, 0x34, 0xd3, 0x4d, 0x3b, 0xfd, 0x74, 0x74, 0xd4, 0x45, 0x6d, 0xdd, 0x75, 0x54, 0x57, 0x6d, 0xf5, 0xd5, 0x58, 0xb7, 0xa8, 0x75, 0x2a, 0x1d, 0xfe, 0x07, 0x60, 0x85, 0x03, 0x12, 0x38, 0xa1, 0x80, 0x14, 0x1e, 0x88, 0x60, 0x82, 0x0a, 0x2e, 0xc8, 0x60, 0x83, 0x0e, 0x7a, 0xf8, 0x20, 0x84, 0x11, 0x4a, 0x58, 0x60, 0x80, 0x1b, 0x6a, 0x68, 0xe0, 0x85, 0x1c, 0x62, 0x68, 0x61, 0x86, 0xfd, 0x7d, 0x07, 0x5e, 0x7d, 0xe3, 0x91, 0x37, 0x9f, 0x78, 0xf4, 0x9d, 0x87, 0x5e, 0x7a, 0xea, 0xad, 0xc7, 0x5e, 0x7b, 0xee, 0xf9, 0xf7, 0x1e, 0x7c, 0xf1, 0xc9, 0x57, 0x5e, 0x78, 0xfb, 0xe9, 0x67, 0xde, 0x7d, 0xfc, 0xe1, 0x67, 0x5f, 0x7e, 0x63, 0x70, 0x34, 0x33, 0x37, 0x00, 0x00, 0x20, 0xc7, 0xf0, 0x93, 0x8e, 0x38, 0xe4, 0x80, 0x53, 0xce, 0x39, 0xea, 0xac, 0x83, 0xce, 0x3b, 0xee, 0xb0, 0x43, 0x4c, 0x31, 0xc9, 0x98, 0x63, 0x0c, 0x3d, 0xf6, 0xc8, 0xb3, 0x4f, 0x3e, 0xff, 0x58, 0xc3, 0x8d, 0x28, 0xa3, 0x94, 0x12, 0x32, 0x5d, 0xe1, 0xb4, 0x33, 0x8f, 0x3e, 0xf1, 0x44, 0xa3, 0x8a, 0x2e, 0xbf, 0xc0, 0xcc, 0x4a, 0x2f, 0xbc, 0x84, 0xb2, 0xca, 0x2e, 0x60, 0x87, 0x2d, 0x36, 0xcd, 0x3a, 0x3f, 0x0d, 0x35, 0xd1, 0x43, 0x47, 0xfd, 0x73, 0xd1, 0x4b, 0x2b, 0x9d, 0xb4, 0xcd, 0x37, 0xf3, 0xbc, 0x73, 0xce, 0x33, 0xf7, 0xcc, 0x74, 0xd3, 0x48, 0x0b, 0x7d, 0x35, 0xd5, 0x4e, 0xfb, 0xac, 0x75, 0xd5, 0x56, 0x4b, 0x3d, 0xf5, 0xd1, 0x46, 0x03, 0x1d, 0x74, 0xd6, 0x58, 0xe3, 0x5c, 0x73, 0xd7, 0x5c, 0x7b, 0xfd, 0xf5, 0xd6, 0xb3, 0x7d, 0x63, 0x99, 0x70, 0xa5, 0x15, 0x57, 0x8b, 0x71, 0xa8, 0x6d, 0xb6, 0x9a, 0x6d, 0x2a, 0x23, 0x77, 0xdb, 0xca, 0x2d, 0xc7, 0xf2, 0xb2, 0xcb, 0x31, 0xcb, 0x7c, 0x0f, 0xcb, 0xb0, 0xa0, 0x7c, 0x4b, 0xca, 0x20, 0xcb, 0x32, 0x36, 0x28, 0x63, 0x70, 0x38, 0x35, 0x30, 0x00, 0x00, 0x20, 0xc7, 0xf0, 0x93, 0x8e, 0x38, 0xe4, 0x80, 0x53, 0xce, 0x39, 0xea, 0xac, 0x83, 0xce, 0x3b, 0xee, 0xb0, 0x43, 0x4c, 0x31, 0xc9, 0x98, 0x63, 0x0c, 0x3d, 0xf6, 0xc8, 0xb3, 0x4f, 0x3e, 0xff, 0x58, 0xc3, 0x0d, 0x3e, 0xa3, 0x60, 0x73, 0x0d, 0x5d, 0xe1, 0xb4, 0x33, 0x8f, 0x3e, 0xf1, 0x44, 0xa3, 0x8a, 0x2e, 0xbf, 0xb8, 0xc2, 0x4a, 0x2f, 0xbc, 0x84, 0xb2, 0xca, 0x2e, 0x60, 0x87, 0x2d, 0x36, 0xcd, 0x3a, 0x07, 0x23, 0x0c, 0x30, 0xa9, 0x44, 0xfd, 0x73, 0xd1, 0x4b, 0x8b, 0x52, 0x8a, 0xcd, 0x37, 0xf3, 0xbc, 0x73, 0xce, 0x33, 0xf7, 0x3c, 0xce, 0x30, 0x48, 0x0b, 0x7d, 0x35, 0xd5, 0x4e, 0xfb, 0xac, 0x35, 0x29, 0xf0, 0x40, 0xa3, 0xcc, 0x32, 0xc8, 0xb4, 0xd4, 0x8c, 0x33, 0xcf, 0xe0, 0x5c, 0x73, 0xd7, 0x5c, 0x9b, 0xc2, 0xcc, 0xd6, 0xd3, 0x7c, 0x43, 0x8d, 0x34, 0xf5, 0x54, 0x53, 0x8b, 0x3f, 0xde, 0x68, 0xb3, 0x4d, 0x36, 0xfd, 0x74, 0xf3, 0x0a, 0x2d, 0xad, 0xc4, 0x22, 0xb1, 0x2f, 0xb6, 0x9c, 0x72, 0x0f, 0x2e, 0xb0, 0xa0, 0x72, 0x4b, 0x2e, 0xb3, 0xc8, 0x32, 0x36, 0x28, 0x63, 0x70, 0x38, 0x36, 0x36, 0x00, 0x00, 0x20, 0xdf, 0x81, 0x17, 0x9e, 0x78, 0xe3, 0x91, 0x57, 0x9e, 0x79, 0xe7, 0xa1, 0x97, 0x9e, 0x7a, 0xeb, 0xb1, 0xd7, 0x9e, 0x7b, 0xef, 0xc1, 0x17, 0x9f, 0x7c, 0xf3, 0xd1, 0x57, 0x9f, 0x7d, 0xf7, 0xe1, 0x97, 0x9f, 0x7e, 0xfb, 0xf1, 0xd7, 0x9f, 0x7f, 0xff, 0x01, 0x18, 0xa0, 0x80, 0x03, 0x12, 0x58, 0xa0, 0x81, 0x07, 0x22, 0x98, 0xa0, 0x82, 0x0b, 0x32, 0xd8, 0xa0, 0x83, 0x60, 0x87, 0x2d, 0x36, 0xcd, 0x3a, 0x3f, 0x0d, 0x35, 0xd1, 0x43, 0x47, 0xfd, 0x73, 0xd1, 0x4b, 0x2b, 0x9d, 0xb4, 0xcd, 0x37, 0xf3, 0xbc, 0x73, 0xce, 0x33, 0xf7, 0xcc, 0x74, 0xd3, 0x48, 0x0b, 0x7d, 0x35, 0xd5, 0x4e, 0xfb, 0xac, 0x75, 0xd5, 0x56, 0x4b, 0x3d, 0xf5, 0xd1, 0x46, 0x03, 0x1d, 0x74, 0xd6, 0x58, 0xe3, 0x5c, 0x73, 0xd7, 0x5c, 0x7b, 0xfd, 0xf5, 0xd6, 0x0f, 0x42, 0x18, 0xa1, 0x84, 0x13, 0x52, 0x58, 0xa1, 0x85, 0x17, 0x62, 0x98, 0xa1, 0x86, 0x1b, 0x72, 0xd8, 0xa1, 0x87, 0xd1, 0x7d, 0x48, 0x9d, 0x88, 0xd7, 0x95, 0xd8, 0xdd, 0x8a, 0xb0, 0xa0, 0x7c, 0x4b, 0xca, 0x26, 0x93, 0x32, 0x36, 0x28, 0x69, 0x62, 0x6d, 0x31, 0x30, 0x34, 0x37, 0x00, 0x63, 0x70, 0x31, 0x30, 0x34, 0x37, 0x00, 0x00, 0x01, 0x9c, 0x24, 0x60, 0xc8, 0x1f, 0x97, 0x34, 0xe2, 0xc8, 0x02, 0x0c, 0x34, 0xe0, 0xc0, 0x03, 0x10, 0x44, 0x20, 0xc1, 0x04, 0x9d, 0x14, 0x82, 0xc0, 0x21, 0x18, 0x64, 0x20, 0xc9, 0x23, 0x1c, 0x74, 0xe0, 0xc1, 0x07, 0x80, 0x04, 0x22, 0xc8, 0x20, 0x84, 0x28, 0x70, 0xc1, 0x06, 0x88, 0x24, 0xa2, 0xc8, 0x22, 0x8c, 0x14, 0x60, 0xc0, 0x01, 0x90, 0x44, 0x62, 0xc1, 0x24, 0x94, 0x54, 0x62, 0x09, 0x01, 0x98, 0x64, 0xa2, 0xc9, 0x26, 0x14, 0x54, 0xe0, 0x89, 0x06, 0x20, 0x80, 0x22, 0x0e, 0x39, 0xe0, 0x84, 0x33, 0x4e, 0x39, 0xe7, 0xc4, 0x23, 0x8a, 0x0b, 0x3c, 0xa0, 0xb0, 0x02, 0x1f, 0x26, 0xa4, 0xa3, 0xce, 0x3a, 0xe8, 0xb4, 0xe3, 0xce, 0x3b, 0xec, 0x7c, 0x13, 0x02, 0x09, 0x2a, 0xa4, 0xb0, 0x83, 0x17, 0x2d, 0xbc, 0x20, 0x0c, 0x31, 0xc0, 0x04, 0x33, 0x4c, 0x31, 0xc7, 0x44, 0x63, 0x0a, 0x0b, 0x25, 0x7c, 0xe1, 0xc3, 0x0f, 0xf8, 0x24, 0xa3, 0xcc, 0x32, 0xc8, 0x34, 0xe3, 0xcc, 0x33, 0xcc, 0x80, 0xa1, 0xc3, 0x08, 0x40, 0x9c, 0xd0, 0x83, 0x08, 0xd8, 0x84, 0x21, 0xc6, 0x18, 0x64, 0x94, 0x61, 0xc6, 0x19, 0x68, 0xa4, 0xb1, 0xca, 0x2e, 0xf0, 0xf4, 0xe3, 0x4f, 0x2c, 0xb0, 0xa8, 0xb1, 0x06, 0x1b, 0x6d, 0xb8, 0xf1, 0x06, 0x1c, 0x71, 0xc8, 0xa1, 0x8a, 0x2e, 0xe6, 0xe0, 0x62, 0x0c, 0x29, 0xb5, 0xf8, 0x31, 0x07, 0x1d, 0x75, 0xd8, 0x71, 0x07, 0x1e, 0x79, 0xe8, 0x11, 0xca, 0x2f, 0xd0, 0x6c, 0xe1, 0x8d, 0x2b, 0xac, 0x8c, 0x52, 0xca, 0x2d, 0xa9, 0x9c, 0x62, 0x0b, 0x2f, 0xbd, 0xf8, 0xd2, 0x0d, 0x2a, 0xaf, 0x74, 0x41, 0xcb, 0x35, 0x7b, 0x04, 0x21, 0xc4, 0x10, 0x44, 0x14, 0x61, 0xc4, 0x11, 0x48, 0x24, 0xd1, 0x0a, 0x3d, 0xf6, 0xc8, 0x33, 0x4f, 0x3d, 0x7d, 0x28, 0xb1, 0x04, 0x13, 0x4d, 0x38, 0xf1, 0x04, 0x14, 0x51, 0x48, 0x91, 0xcb, 0x3e, 0xfc, 0xe4, 0xa3, 0xcf, 0x3f, 0x5c, 0xdc, 0x33, 0x05, 0x15, 0x55, 0x58, 0x71, 0x05, 0x16, 0x59, 0x68, 0x21, 0x0b, 0x35, 0xd6, 0x48, 0x33, 0x4d, 0x35, 0x30, 0xc4, 0x20, 0xc3, 0x0c, 0x34, 0xd4, 0x60, 0xc3, 0x0d, 0x38, 0xe4, 0x30, 0xcb, 0x36, 0xdc, 0x64, 0xa3, 0xcd, 0x27, 0x00, 0x00, 0x00, 0x00, 0x00, 0x2e, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x53, 0x75, 0x6e, 0x00, 0x4d, 0x6f, 0x6e, 0x00, 0x54, 0x75, 0x65, 0x00, 0x57, 0x65, 0x64, 0x00, 0x54, 0x68, 0x75, 0x00, 0x46, 0x72, 0x69, 0x00, 0x53, 0x61, 0x74, 0x00, 0x53, 0x75, 0x6e, 0x64, 0x61, 0x79, 0x00, 0x4d, 0x6f, 0x6e, 0x64, 0x61, 0x79, 0x00, 0x54, 0x75, 0x65, 0x73, 0x64, 0x61, 0x79, 0x00, 0x57, 0x65, 0x64, 0x6e, 0x65, 0x73, 0x64, 0x61, 0x79, 0x00, 0x54, 0x68, 0x75, 0x72, 0x73, 0x64, 0x61, 0x79, 0x00, 0x46, 0x72, 0x69, 0x64, 0x61, 0x79, 0x00, 0x53, 0x61, 0x74, 0x75, 0x72, 0x64, 0x61, 0x79, 0x00, 0x4a, 0x61, 0x6e, 0x00, 0x46, 0x65, 0x62, 0x00, 0x4d, 0x61, 0x72, 0x00, 0x41, 0x70, 0x72, 0x00, 0x4d, 0x61, 0x79, 0x00, 0x4a, 0x75, 0x6e, 0x00, 0x4a, 0x75, 0x6c, 0x00, 0x41, 0x75, 0x67, 0x00, 0x53, 0x65, 0x70, 0x00, 0x4f, 0x63, 0x74, 0x00, 0x4e, 0x6f, 0x76, 0x00, 0x44, 0x65, 0x63, 0x00, 0x4a, 0x61, 0x6e, 0x75, 0x61, 0x72, 0x79, 0x00, 0x46, 0x65, 0x62, 0x72, 0x75, 0x61, 0x72, 0x79, 0x00, 0x4d, 0x61, 0x72, 0x63, 0x68, 0x00, 0x41, 0x70, 0x72, 0x69, 0x6c, 0x00, 0x4d, 0x61, 0x79, 0x00, 0x4a, 0x75, 0x6e, 0x65, 0x00, 0x4a, 0x75, 0x6c, 0x79, 0x00, 0x41, 0x75, 0x67, 0x75, 0x73, 0x74, 0x00, 0x53, 0x65, 0x70, 0x74, 0x65, 0x6d, 0x62, 0x65, 0x72, 0x00, 0x4f, 0x63, 0x74, 0x6f, 0x62, 0x65, 0x72, 0x00, 0x4e, 0x6f, 0x76, 0x65, 0x6d, 0x62, 0x65, 0x72, 0x00, 0x44, 0x65, 0x63, 0x65, 0x6d, 0x62, 0x65, 0x72, 0x00, 0x41, 0x4d, 0x00, 0x50, 0x4d, 0x00, 0x25, 0x61, 0x20, 0x25, 0x62, 0x20, 0x25, 0x65, 0x20, 0x25, 0x54, 0x20, 0x25, 0x59, 0x00, 0x25, 0x6d, 0x2f, 0x25, 0x64, 0x2f, 0x25, 0x79, 0x00, 0x25, 0x48, 0x3a, 0x25, 0x4d, 0x3a, 0x25, 0x53, 0x00, 0x25, 0x49, 0x3a, 0x25, 0x4d, 0x3a, 0x25, 0x53, 0x20, 0x25, 0x70, 0x00, 0x00, 0x00, 0x25, 0x6d, 0x2f, 0x25, 0x64, 0x2f, 0x25, 0x79, 0x77, 0x38, 0x39, 0x00, 0x25, 0x61, 0x20, 0x25, 0x62, 0x20, 0x25, 0x65, 0x20, 0x25, 0x54, 0x20, 0x25, 0x59, 0x00, 0x25, 0x48, 0x3a, 0x25, 0x4d, 0x3a, 0x25, 0x53, 0x00, 0x00, 0x00, 0x00, 0x00, 0x5e, 0x5b, 0x79, 0x59, 0x5d, 0x00, 0x5e, 0x5b, 0x6e, 0x4e, 0x5d, 0x00, 0x79, 0x65, 0x73, 0x00, 0x6e, 0x6f, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x4c, 0x43, 0x5f, 0x43, 0x54, 0x59, 0x50, 0x45, 0x00, 0x00, 0x00, 0x00, 0x4c, 0x43, 0x5f, 0x4e, 0x55, 0x4d, 0x45, 0x52, 0x49, 0x43, 0x00, 0x00, 0x4c, 0x43, 0x5f, 0x54, 0x49, 0x4d, 0x45, 0x00, 0x00, 0x00, 0x00, 0x00, 0x4c, 0x43, 0x5f, 0x43, 0x4f, 0x4c, 0x4c, 0x41, 0x54, 0x45, 0x00, 0x00, 0x4c, 0x43, 0x5f, 0x4d, 0x4f, 0x4e, 0x45, 0x54, 0x41, 0x52, 0x59, 0x00, 0x4c, 0x43, 0x5f, 0x4d, 0x45, 0x53, 0x53, 0x41, 0x47, 0x45, 0x53, 0x00, 0x01, 0x02, 0x03, 0x03, 0x04, 0x04, 0x04, 0x04, 0x05, 0x05, 0x06, 0x06, 0x06, 0x00, 0x00, 0x00, 0x7c, 0x26, 0x3d, 0x21, 0x3e, 0x3c, 0x2b, 0x2d, 0x2a, 0x25, 0x2f, 0x00, 0x00, 0x00, 0x00, 0x00, 0x7c, 0x26, 0x3d, 0x3d, 0x3d, 0x3d, 0x00, 0x00, 0x20, 0x21, 0x22, 0x23, 0x24, 0x24, 0x25, 0x25, 0x26, 0x26, 0x27, 0x27, 0x28, 0x28, 0x28, 0x28, 0x29, 0x29, 0x29, 0x29, 0x2a, 0x2a, 0x2a, 0x2a, 0x2b, 0x2b, 0x2b, 0x2b, 0x2c, 0x2c, 0x2c, 0x2c, 0x2c, 0x2c, 0x2c, 0x2c, 0x2d, 0x2d, 0x2d, 0x2d, 0x2d, 0x2d, 0x2d, 0x2d, 0x2e, 0x2e, 0x2e, 0x2e, 0x2e, 0x2e, 0x2e, 0x2e, 0x2f, 0x2f, 0x2f, 0x2f, 0x2f, 0x2f, 0x2f, 0x2f, 0x00, 0x00, 0x00, 0x00, 0x00, 0x01, 0x02, 0x35, 0x03, 0x07, 0x36, 0x1b, 0x04, 0x26, 0x29, 0x08, 0x22, 0x37, 0x30, 0x1c, 0x3e, 0x05, 0x27, 0x2e, 0x2c, 0x2a, 0x16, 0x09, 0x18, 0x23, 0x3b, 0x38, 0x31, 0x12, 0x1d, 0x0b, 0x3f, 0x34, 0x06, 0x1a, 0x25, 0x28, 0x21, 0x2f, 0x3d, 0x2d, 0x2b, 0x15, 0x17, 0x3a, 0x11, 0x0a, 0x33, 0x19, 0x24, 0x20, 0x3c, 0x14, 0x39, 0x10, 0x32, 0x1f, 0x13, 0x0f, 0x1e, 0x0e, 0x0d, 0x0c, 0x00, 0x01, 0x17, 0x02, 0x1d, 0x18, 0x13, 0x03, 0x1e, 0x1b, 0x19, 0x0b, 0x14, 0x08, 0x04, 0x0d, 0x1f, 0x16, 0x1c, 0x12, 0x1a, 0x0a, 0x07, 0x0c, 0x15, 0x11, 0x09, 0x06, 0x10, 0x05, 0x0f, 0x0e, 0x03, 0x00, 0x00, 0x00, 0x04, 0x00, 0x00, 0x00, 0x04, 0x00, 0x00, 0x00, 0x06, 0x00, 0x00, 0x00, 0x83, 0xf9, 0xa2, 0x00, 0x44, 0x4e, 0x6e, 0x00, 0xfc, 0x29, 0x15, 0x00, 0xd1, 0x57, 0x27, 0x00, 0xdd, 0x34, 0xf5, 0x00, 0x62, 0xdb, 0xc0, 0x00, 0x3c, 0x99, 0x95, 0x00, 0x41, 0x90, 0x43, 0x00, 0x63, 0x51, 0xfe, 0x00, 0xbb, 0xde, 0xab, 0x00, 0xb7, 0x61, 0xc5, 0x00, 0x3a, 0x6e, 0x24, 0x00, 0xd2, 0x4d, 0x42, 0x00, 0x49, 0x06, 0xe0, 0x00, 0x09, 0xea, 0x2e, 0x00, 0x1c, 0x92, 0xd1, 0x00, 0xeb, 0x1d, 0xfe, 0x00, 0x29, 0xb1, 0x1c, 0x00, 0xe8, 0x3e, 0xa7, 0x00, 0xf5, 0x35, 0x82, 0x00, 0x44, 0xbb, 0x2e, 0x00, 0x9c, 0xe9, 0x84, 0x00, 0xb4, 0x26, 0x70, 0x00, 0x41, 0x7e, 0x5f, 0x00, 0xd6, 0x91, 0x39, 0x00, 0x53, 0x83, 0x39, 0x00, 0x9c, 0xf4, 0x39, 0x00, 0x8b, 0x5f, 0x84, 0x00, 0x28, 0xf9, 0xbd, 0x00, 0xf8, 0x1f, 0x3b, 0x00, 0xde, 0xff, 0x97, 0x00, 0x0f, 0x98, 0x05, 0x00, 0x11, 0x2f, 0xef, 0x00, 0x0a, 0x5a, 0x8b, 0x00, 0x6d, 0x1f, 0x6d, 0x00, 0xcf, 0x7e, 0x36, 0x00, 0x09, 0xcb, 0x27, 0x00, 0x46, 0x4f, 0xb7, 0x00, 0x9e, 0x66, 0x3f, 0x00, 0x2d, 0xea, 0x5f, 0x00, 0xba, 0x27, 0x75, 0x00, 0xe5, 0xeb, 0xc7, 0x00, 0x3d, 0x7b, 0xf1, 0x00, 0xf7, 0x39, 0x07, 0x00, 0x92, 0x52, 0x8a, 0x00, 0xfb, 0x6b, 0xea, 0x00, 0x1f, 0xb1, 0x5f, 0x00, 0x08, 0x5d, 0x8d, 0x00, 0x30, 0x03, 0x56, 0x00, 0x7b, 0xfc, 0x46, 0x00, 0xf0, 0xab, 0x6b, 0x00, 0x20, 0xbc, 0xcf, 0x00, 0x36, 0xf4, 0x9a, 0x00, 0xe3, 0xa9, 0x1d, 0x00, 0x5e, 0x61, 0x91, 0x00, 0x08, 0x1b, 0xe6, 0x00, 0x85, 0x99, 0x65, 0x00, 0xa0, 0x14, 0x5f, 0x00, 0x8d, 0x40, 0x68, 0x00, 0x80, 0xd8, 0xff, 0x00, 0x27, 0x73, 0x4d, 0x00, 0x06, 0x06, 0x31, 0x00, 0xca, 0x56, 0x15, 0x00, 0xc9, 0xa8, 0x73, 0x00, 0x7b, 0xe2, 0x60, 0x00, 0x6b, 0x8c, 0xc0, 0x00, 0x00, 0x00, 0x00, 0x40, 0xfb, 0x21, 0xf9, 0x3f, 0x00, 0x00, 0x00, 0x00, 0x2d, 0x44, 0x74, 0x3e, 0x00, 0x00, 0x00, 0x80, 0x98, 0x46, 0xf8, 0x3c, 0x00, 0x00, 0x00, 0x60, 0x51, 0xcc, 0x78, 0x3b, 0x00, 0x00, 0x00, 0x80, 0x83, 0x1b, 0xf0, 0x39, 0x00, 0x00, 0x00, 0x40, 0x20, 0x25, 0x7a, 0x38, 0x00, 0x00, 0x00, 0x80, 0x22, 0x82, 0xe3, 0x36, 0x00, 0x00, 0x00, 0x00, 0x1d, 0xf3, 0x69, 0x35, 0x63, 0x55, 0x55, 0x55, 0x55, 0x55, 0xd5, 0x3f, 0x7a, 0xfe, 0x10, 0x11, 0x11, 0x11, 0xc1, 0x3f, 0xfe, 0x41, 0xb3, 0x1b, 0xba, 0xa1, 0xab, 0x3f, 0x37, 0xd6, 0x06, 0x84, 0xf4, 0x64, 0x96, 0x3f, 0x93, 0x84, 0x6e, 0xe9, 0xe3, 0x26, 0x82, 0x3f, 0x28, 0x03, 0x56, 0xc9, 0x22, 0x6d, 0x6d, 0x3f, 0x15, 0x83, 0xe0, 0xfe, 0xc8, 0xdb, 0x57, 0x3f, 0x01, 0x65, 0xf2, 0xf2, 0xd8, 0x44, 0x43, 0x3f, 0x68, 0x10, 0x8d, 0x1a, 0xf7, 0x26, 0x30, 0x3f, 0xa6, 0x92, 0x37, 0xa0, 0x88, 0x7e, 0x14, 0x3f, 0xe9, 0xa7, 0xf0, 0x32, 0x0f, 0xb8, 0x12, 0x3f, 0x73, 0x53, 0x60, 0xdb, 0xcb, 0x75, 0xf3, 0xbe, 0xd4, 0x7a, 0xbf, 0x74, 0x70, 0x2a, 0xfb, 0x3e, 0x9f, 0xc9, 0x18, 0x34, 0x4d, 0x55, 0xd5, 0x3f, 0x72, 0x9f, 0x99, 0x38, 0xfd, 0x12, 0xc1, 0x3f, 0xfe, 0x5a, 0x86, 0x1d, 0xc9, 0x54, 0xab, 0x3f, 0xce, 0x33, 0x8c, 0x90, 0xf3, 0x1d, 0x99, 0x3f, 0x4e, 0xf4, 0xec, 0xfc, 0xad, 0x5d, 0x68, 0x3f, 0xcd, 0x1b, 0x97, 0xbf, 0xb9, 0x62, 0x83, 0x3f, 0x4f, 0xbb, 0x61, 0x05, 0x67, 0xac, 0xdd, 0x3f, 0x18, 0x2d, 0x44, 0x54, 0xfb, 0x21, 0xe9, 0x3f, 0x9b, 0xf6, 0x81, 0xd2, 0x0b, 0x73, 0xef, 0x3f, 0x18, 0x2d, 0x44, 0x54, 0xfb, 0x21, 0xf9, 0x3f, 0x0d, 0x55, 0x55, 0x55, 0x55, 0x55, 0xd5, 0x3f, 0xc4, 0xeb, 0x98, 0x99, 0x99, 0x99, 0xc9, 0xbf, 0xff, 0x83, 0x00, 0x92, 0x24, 0x49, 0xc2, 0x3f, 0x71, 0x16, 0x23, 0xfe, 0xc6, 0x71, 0xbc, 0xbf, 0x6e, 0x20, 0x4c, 0xc5, 0xcd, 0x45, 0xb7, 0x3f, 0x6d, 0x9a, 0x74, 0xaf, 0xf2, 0xb0, 0xb3, 0xbf, 0x51, 0x3d, 0xd0, 0xa0, 0x66, 0x0d, 0xb1, 0x3f, 0x9a, 0xfd, 0xde, 0x52, 0x2d, 0xde, 0xad, 0xbf, 0xeb, 0x0d, 0x76, 0x24, 0x4b, 0x7b, 0xa9, 0x3f, 0x2f, 0x6c, 0x6a, 0x2c, 0x44, 0xb4, 0xa2, 0xbf, 0x11, 0xda, 0x22, 0xe3, 0x3a, 0xad, 0x90, 0x3f, 0xe2, 0x65, 0x2f, 0x22, 0x7f, 0x2b, 0x7a, 0x3c, 0x07, 0x5c, 0x14, 0x33, 0x26, 0xa6, 0x81, 0x3c, 0xbd, 0xcb, 0xf0, 0x7a, 0x88, 0x07, 0x70, 0x3c, 0x07, 0x5c, 0x14, 0x33, 0x26, 0xa6, 0x91, 0x3c, 0x38, 0x63, 0xed, 0x3e, 0xda, 0x0f, 0x49, 0x3f, 0x5e, 0x98, 0x7b, 0x3f, 0xda, 0x0f, 0xc9, 0x3f, 0xa9, 0xaa, 0xaa, 0x3e, 0x98, 0xca, 0x4c, 0xbe, 0x0d, 0xf5, 0x11, 0x3e, 0x47, 0x12, 0xda, 0xbd, 0x25, 0xac, 0x7c, 0x3d, 0x00, 0x00, 0x00, 0x00, 0x69, 0x37, 0xac, 0x31, 0x68, 0x21, 0x22, 0x33, 0xb4, 0x0f, 0x14, 0x33, 0x68, 0x21, 0xa2, 0x33, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0xe0, 0x3f, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0xe0, 0xbf, 0x16, 0x56, 0xe7, 0x9e, 0xaf, 0x03, 0xd2, 0x3c, 0x9b, 0x2b, 0xa1, 0x86, 0x9b, 0x84, 0x06, 0x3d, 0x82, 0x76, 0x49, 0x68, 0xc2, 0x25, 0x3c, 0x3d, 0x11, 0xea, 0x2d, 0x81, 0x99, 0x97, 0x71, 0x3d, 0x95, 0x64, 0x79, 0xe1, 0x7f, 0xfd, 0xa5, 0x3d, 0xbb, 0xbd, 0xd7, 0xd9, 0xdf, 0x7c, 0xdb, 0x3d, 0x95, 0xd6, 0x26, 0xe8, 0x0b, 0x2e, 0x11, 0x3e, 0x3a, 0x8c, 0x30, 0xe2, 0x8e, 0x79, 0x45, 0x3e, 0x48, 0xaf, 0xbc, 0x9a, 0xf2, 0xd7, 0x7a, 0x3e, 0x8d, 0xed, 0xb5, 0xa0, 0xf7, 0xc6, 0xb0, 0x3e, 0xf1, 0x68, 0xe3, 0x88, 0xb5, 0xf8, 0xe4, 0x3e, 0x2d, 0x43, 0x1c, 0xeb, 0xe2, 0x36, 0x1a, 0x3f, 0xfc, 0xa9, 0xf1, 0xd2, 0x4d, 0x62, 0x50, 0x3f, 0x7b, 0x14, 0xae, 0x47, 0xe1, 0x7a, 0x84, 0x3f, 0x9a, 0x99, 0x99, 0x99, 0x99, 0x99, 0xb9, 0x3f, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0xf0, 0x3f, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x24, 0x40, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x59, 0x40, 0x00, 0x00, 0x00, 0x00, 0x00, 0x40, 0x8f, 0x40, 0x00, 0x00, 0x00, 0x00, 0x00, 0x88, 0xc3, 0x40, 0x00, 0x00, 0x00, 0x00, 0x00, 0x6a, 0xf8, 0x40, 0x00, 0x00, 0x00, 0x00, 0x80, 0x84, 0x2e, 0x41, 0x00, 0x00, 0x00, 0x00, 0xd0, 0x12, 0x63, 0x41, 0x00, 0x00, 0x00, 0x00, 0x84, 0xd7, 0x97, 0x41, 0x00, 0x00, 0x00, 0x00, 0x65, 0xcd, 0xcd, 0x41, 0x00, 0x00, 0x00, 0x20, 0x5f, 0xa0, 0x02, 0x42, 0x00, 0x00, 0x00, 0xe8, 0x76, 0x48, 0x37, 0x42, 0x00, 0x00, 0x00, 0xa2, 0x94, 0x1a, 0x6d, 0x42, 0x00, 0x00, 0x40, 0xe5, 0x9c, 0x30, 0xa2, 0x42, 0x00, 0x00, 0x90, 0x1e, 0xc4, 0xbc, 0xd6, 0x42, 0x00, 0x00, 0x34, 0x26, 0xf5, 0x6b, 0x0c, 0x43, 0x95, 0xbf, 0xd6, 0x33, 0xbd, 0x37, 0x86, 0x35, 0xac, 0xc5, 0x27, 0x37, 0x17, 0xb7, 0xd1, 0x38, 0x6f, 0x12, 0x83, 0x3a, 0x0a, 0xd7, 0x23, 0x3c, 0xcd, 0xcc, 0xcc, 0x3d, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x20, 0x41, 0x00, 0x00, 0xc8, 0x42, 0x00, 0x00, 0x7a, 0x44, 0x00, 0x40, 0x1c, 0x46, 0x00, 0x50, 0xc3, 0x47, 0x00, 0x24, 0x74, 0x49, 0x80, 0x96, 0x18, 0x4b, 0x00, 0x00, 0x00, 0x00, 0x5d, 0x3d, 0x7f, 0x66, 0x9e, 0xa0, 0xe6, 0x3f, 0x00, 0x00, 0x00, 0x00, 0x00, 0x88, 0x39, 0x3d, 0x44, 0x17, 0x75, 0xfa, 0x52, 0xb0, 0xe6, 0x3f, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0xd8, 0x3c, 0xfe, 0xd9, 0x0b, 0x75, 0x12, 0xc0, 0xe6, 0x3f, 0x00, 0x00, 0x00, 0x00, 0x00, 0x78, 0x28, 0xbd, 0xbf, 0x76, 0xd4, 0xdd, 0xdc, 0xcf, 0xe6, 0x3f, 0x00, 0x00, 0x00, 0x00, 0x00, 0xc0, 0x1e, 0x3d, 0x29, 0x1a, 0x65, 0x3c, 0xb2, 0xdf, 0xe6, 0x3f, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0xd8, 0xbc, 0xe3, 0x3a, 0x59, 0x98, 0x92, 0xef, 0xe6, 0x3f, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0xbc, 0xbc, 0x86, 0x93, 0x51, 0xf9, 0x7d, 0xff, 0xe6, 0x3f, 0x00, 0x00, 0x00, 0x00, 0x00, 0xd8, 0x2f, 0xbd, 0xa3, 0x2d, 0xf4, 0x66, 0x74, 0x0f, 0xe7, 0x3f, 0x00, 0x00, 0x00, 0x00, 0x00, 0x88, 0x2c, 0xbd, 0xc3, 0x5f, 0xec, 0xe8, 0x75, 0x1f, 0xe7, 0x3f, 0x00, 0x00, 0x00, 0x00, 0x00, 0xc0, 0x13, 0x3d, 0x05, 0xcf, 0xea, 0x86, 0x82, 0x2f, 0xe7, 0x3f, 0x00, 0x00, 0x00, 0x00, 0x00, 0x30, 0x38, 0xbd, 0x52, 0x81, 0xa5, 0x48, 0x9a, 0x3f, 0xe7, 0x3f, 0x00, 0x00, 0x00, 0x00, 0x00, 0xc0, 0x00, 0xbd, 0xfc, 0xcc, 0xd7, 0x35, 0xbd, 0x4f, 0xe7, 0x3f, 0x00, 0x00, 0x00, 0x00, 0x00, 0x88, 0x2f, 0x3d, 0xf1, 0x67, 0x42, 0x56, 0xeb, 0x5f, 0xe7, 0x3f, 0x00, 0x00, 0x00, 0x00, 0x00, 0xe0, 0x03, 0x3d, 0x48, 0x6d, 0xab, 0xb1, 0x24, 0x70, 0xe7, 0x3f, 0x00, 0x00, 0x00, 0x00, 0x00, 0xd0, 0x27, 0xbd, 0x38, 0x5d, 0xde, 0x4f, 0x69, 0x80, 0xe7, 0x3f, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0xdd, 0xbc, 0x00, 0x1d, 0xac, 0x38, 0xb9, 0x90, 0xe7, 0x3f, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0xe3, 0x3c, 0x78, 0x01, 0xeb, 0x73, 0x14, 0xa1, 0xe7, 0x3f, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0xed, 0xbc, 0x60, 0xd0, 0x76, 0x09, 0x7b, 0xb1, 0xe7, 0x3f, 0x00, 0x00, 0x00, 0x00, 0x00, 0x40, 0x20, 0x3d, 0x33, 0xc1, 0x30, 0x01, 0xed, 0xc1, 0xe7, 0x3f, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0xa0, 0x3c, 0x36, 0x86, 0xff, 0x62, 0x6a, 0xd2, 0xe7, 0x3f, 0x00, 0x00, 0x00, 0x00, 0x00, 0x90, 0x26, 0xbd, 0x3b, 0x4e, 0xcf, 0x36, 0xf3, 0xe2, 0xe7, 0x3f, 0x00, 0x00, 0x00, 0x00, 0x00, 0xe0, 0x02, 0xbd, 0xe8, 0xc3, 0x91, 0x84, 0x87, 0xf3, 0xe7, 0x3f, 0x00, 0x00, 0x00, 0x00, 0x00, 0x58, 0x24, 0xbd, 0x4e, 0x1b, 0x3e, 0x54, 0x27, 0x04, 0xe8, 0x3f, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x33, 0x3d, 0x1a, 0x07, 0xd1, 0xad, 0xd2, 0x14, 0xe8, 0x3f, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x0f, 0x3d, 0x7e, 0xcd, 0x4c, 0x99, 0x89, 0x25, 0xe8, 0x3f, 0x00, 0x00, 0x00, 0x00, 0x00, 0xc0, 0x21, 0xbd, 0xd0, 0x42, 0xb9, 0x1e, 0x4c, 0x36, 0xe8, 0x3f, 0x00, 0x00, 0x00, 0x00, 0x00, 0xd0, 0x29, 0x3d, 0xb5, 0xca, 0x23, 0x46, 0x1a, 0x47, 0xe8, 0x3f, 0x00, 0x00, 0x00, 0x00, 0x00, 0x10, 0x47, 0x3d, 0xbc, 0x5b, 0x9f, 0x17, 0xf4, 0x57, 0xe8, 0x3f, 0x00, 0x00, 0x00, 0x00, 0x00, 0x60, 0x22, 0x3d, 0xaf, 0x91, 0x44, 0x9b, 0xd9, 0x68, 0xe8, 0x3f, 0x00, 0x00, 0x00, 0x00, 0x00, 0xc4, 0x32, 0xbd, 0x95, 0xa3, 0x31, 0xd9, 0xca, 0x79, 0xe8, 0x3f, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x23, 0xbd, 0xb8, 0x65, 0x8a, 0xd9, 0xc7, 0x8a, 0xe8, 0x3f, 0x00, 0x00, 0x00, 0x00, 0x00, 0x80, 0x2a, 0xbd, 0x00, 0x58, 0x78, 0xa4, 0xd0, 0x9b, 0xe8, 0x3f, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0xed, 0xbc, 0x23, 0xa2, 0x2a, 0x42, 0xe5, 0xac, 0xe8, 0x3f, 0x00, 0x00, 0x00, 0x00, 0x00, 0x28, 0x33, 0x3d, 0xfa, 0x19, 0xd6, 0xba, 0x05, 0xbe, 0xe8, 0x3f, 0x00, 0x00, 0x00, 0x00, 0x00, 0xb4, 0x42, 0x3d, 0x83, 0x43, 0xb5, 0x16, 0x32, 0xcf, 0xe8, 0x3f, 0x00, 0x00, 0x00, 0x00, 0x00, 0xd0, 0x2e, 0xbd, 0x4c, 0x66, 0x08, 0x5e, 0x6a, 0xe0, 0xe8, 0x3f, 0x00, 0x00, 0x00, 0x00, 0x00, 0x50, 0x20, 0xbd, 0x07, 0x78, 0x15, 0x99, 0xae, 0xf1, 0xe8, 0x3f, 0x00, 0x00, 0x00, 0x00, 0x00, 0x28, 0x28, 0x3d, 0x0e, 0x2c, 0x28, 0xd0, 0xfe, 0x02, 0xe9, 0x3f, 0x00, 0x00, 0x00, 0x00, 0x00, 0xb0, 0x1c, 0xbd, 0x96, 0xff, 0x91, 0x0b, 0x5b, 0x14, 0xe9, 0x3f, 0x00, 0x00, 0x00, 0x00, 0x00, 0xe0, 0x05, 0xbd, 0xf9, 0x2f, 0xaa, 0x53, 0xc3, 0x25, 0xe9, 0x3f, 0x00, 0x00, 0x00, 0x00, 0x00, 0x40, 0xf5, 0x3c, 0x4a, 0xc6, 0xcd, 0xb0, 0x37, 0x37, 0xe9, 0x3f, 0x00, 0x00, 0x00, 0x00, 0x00, 0x20, 0x17, 0x3d, 0xae, 0x98, 0x5f, 0x2b, 0xb8, 0x48, 0xe9, 0x3f, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x09, 0xbd, 0xcb, 0x52, 0xc8, 0xcb, 0x44, 0x5a, 0xe9, 0x3f, 0x00, 0x00, 0x00, 0x00, 0x00, 0x68, 0x25, 0x3d, 0x21, 0x6f, 0x76, 0x9a, 0xdd, 0x6b, 0xe9, 0x3f, 0x00, 0x00, 0x00, 0x00, 0x00, 0xd0, 0x36, 0xbd, 0x2a, 0x4e, 0xde, 0x9f, 0x82, 0x7d, 0xe9, 0x3f, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x01, 0xbd, 0xa3, 0x23, 0x7a, 0xe4, 0x33, 0x8f, 0xe9, 0x3f, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x2d, 0x3d, 0x04, 0x06, 0xca, 0x70, 0xf1, 0xa0, 0xe9, 0x3f, 0x00, 0x00, 0x00, 0x00, 0x00, 0xa4, 0x38, 0xbd, 0x89, 0xff, 0x53, 0x4d, 0xbb, 0xb2, 0xe9, 0x3f, 0x00, 0x00, 0x00, 0x00, 0x00, 0x5c, 0x35, 0x3d, 0x5b, 0xf1, 0xa3, 0x82, 0x91, 0xc4, 0xe9, 0x3f, 0x00, 0x00, 0x00, 0x00, 0x00, 0xb8, 0x26, 0x3d, 0xc5, 0xb8, 0x4b, 0x19, 0x74, 0xd6, 0xe9, 0x3f, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0xec, 0xbc, 0x8e, 0x23, 0xe3, 0x19, 0x63, 0xe8, 0xe9, 0x3f, 0x00, 0x00, 0x00, 0x00, 0x00, 0xd0, 0x17, 0x3d, 0x02, 0xf3, 0x07, 0x8d, 0x5e, 0xfa, 0xe9, 0x3f, 0x00, 0x00, 0x00, 0x00, 0x00, 0x40, 0x16, 0x3d, 0x4d, 0xe5, 0x5d, 0x7b, 0x66, 0x0c, 0xea, 0x3f, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0xf5, 0xbc, 0xf6, 0xb8, 0x8e, 0xed, 0x7a, 0x1e, 0xea, 0x3f, 0x00, 0x00, 0x00, 0x00, 0x00, 0xe0, 0x09, 0x3d, 0x27, 0x2e, 0x4a, 0xec, 0x9b, 0x30, 0xea, 0x3f, 0x00, 0x00, 0x00, 0x00, 0x00, 0xd8, 0x2a, 0x3d, 0x5d, 0x0a, 0x46, 0x80, 0xc9, 0x42, 0xea, 0x3f, 0x00, 0x00, 0x00, 0x00, 0x00, 0xf0, 0x1a, 0xbd, 0x9b, 0x25, 0x3e, 0xb2, 0x03, 0x55, 0xea, 0x3f, 0x00, 0x00, 0x00, 0x00, 0x00, 0x60, 0x0b, 0x3d, 0x13, 0x62, 0xf4, 0x8a, 0x4a, 0x67, 0xea, 0x3f, 0x00, 0x00, 0x00, 0x00, 0x00, 0x88, 0x38, 0x3d, 0xa7, 0xb3, 0x30, 0x13, 0x9e, 0x79, 0xea, 0x3f, 0x00, 0x00, 0x00, 0x00, 0x00, 0x20, 0x11, 0x3d, 0x8d, 0x2e, 0xc1, 0x53, 0xfe, 0x8b, 0xea, 0x3f, 0x00, 0x00, 0x00, 0x00, 0x00, 0xc0, 0x06, 0x3d, 0xd2, 0xfc, 0x79, 0x55, 0x6b, 0x9e, 0xea, 0x3f, 0x00, 0x00, 0x00, 0x00, 0x00, 0xb8, 0x29, 0xbd, 0xb8, 0x6f, 0x35, 0x21, 0xe5, 0xb0, 0xea, 0x3f, 0x00, 0x00, 0x00, 0x00, 0x00, 0x70, 0x2b, 0x3d, 0x81, 0xf3, 0xd3, 0xbf, 0x6b, 0xc3, 0xea, 0x3f, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0xd9, 0x3c, 0x80, 0x27, 0x3c, 0x3a, 0xff, 0xd5, 0xea, 0x3f, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0xe4, 0x3c, 0xa3, 0xd2, 0x5a, 0x99, 0x9f, 0xe8, 0xea, 0x3f, 0x00, 0x00, 0x00, 0x00, 0x00, 0x90, 0x2c, 0xbd, 0x67, 0xf3, 0x22, 0xe6, 0x4c, 0xfb, 0xea, 0x3f, 0x00, 0x00, 0x00, 0x00, 0x00, 0x50, 0x16, 0x3d, 0x90, 0xb7, 0x8d, 0x29, 0x07, 0x0e, 0xeb, 0x3f, 0x00, 0x00, 0x00, 0x00, 0x00, 0xd4, 0x2f, 0x3d, 0xa9, 0x89, 0x9a, 0x6c, 0xce, 0x20, 0xeb, 0x3f, 0x00, 0x00, 0x00, 0x00, 0x00, 0x70, 0x12, 0x3d, 0x4b, 0x1a, 0x4f, 0xb8, 0xa2, 0x33, 0xeb, 0x3f, 0x00, 0x00, 0x00, 0x00, 0x00, 0x47, 0x4d, 0x3d, 0xe7, 0x47, 0xb7, 0x15, 0x84, 0x46, 0xeb, 0x3f, 0x00, 0x00, 0x00, 0x00, 0x00, 0x38, 0x38, 0xbd, 0x3a, 0x59, 0xe5, 0x8d, 0x72, 0x59, 0xeb, 0x3f, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x98, 0x3c, 0x6a, 0xc5, 0xf1, 0x29, 0x6e, 0x6c, 0xeb, 0x3f, 0x00, 0x00, 0x00, 0x00, 0x00, 0xd0, 0x0a, 0x3d, 0x50, 0x5e, 0xfb, 0xf2, 0x76, 0x7f, 0xeb, 0x3f, 0x00, 0x00, 0x00, 0x00, 0x00, 0x80, 0xde, 0x3c, 0xb2, 0x49, 0x27, 0xf2, 0x8c, 0x92, 0xeb, 0x3f, 0x00, 0x00, 0x00, 0x00, 0x00, 0xc0, 0x04, 0xbd, 0x03, 0x06, 0xa1, 0x30, 0xb0, 0xa5, 0xeb, 0x3f, 0x00, 0x00, 0x00, 0x00, 0x00, 0x70, 0x0d, 0xbd, 0x66, 0x6f, 0x9a, 0xb7, 0xe0, 0xb8, 0xeb, 0x3f, 0x00, 0x00, 0x00, 0x00, 0x00, 0x90, 0x0d, 0x3d, 0xff, 0xc1, 0x4b, 0x90, 0x1e, 0xcc, 0xeb, 0x3f, 0x00, 0x00, 0x00, 0x00, 0x00, 0xa0, 0x02, 0x3d, 0x6f, 0xa1, 0xf3, 0xc3, 0x69, 0xdf, 0xeb, 0x3f, 0x00, 0x00, 0x00, 0x00, 0x00, 0x78, 0x1f, 0xbd, 0xb8, 0x1d, 0xd7, 0x5b, 0xc2, 0xf2, 0xeb, 0x3f, 0x00, 0x00, 0x00, 0x00, 0x00, 0xa0, 0x10, 0xbd, 0xe9, 0xb2, 0x41, 0x61, 0x28, 0x06, 0xec, 0x3f, 0x00, 0x00, 0x00, 0x00, 0x00, 0x40, 0x11, 0xbd, 0xe0, 0x52, 0x85, 0xdd, 0x9b, 0x19, 0xec, 0x3f, 0x00, 0x00, 0x00, 0x00, 0x00, 0xe0, 0x0b, 0x3d, 0xee, 0x64, 0xfa, 0xd9, 0x1c, 0x2d, 0xec, 0x3f, 0x00, 0x00, 0x00, 0x00, 0x00, 0x40, 0x09, 0xbd, 0x2f, 0xd0, 0xff, 0x5f, 0xab, 0x40, 0xec, 0x3f, 0x00, 0x00, 0x00, 0x00, 0x00, 0xd0, 0x0e, 0xbd, 0x15, 0xfd, 0xfa, 0x78, 0x47, 0x54, 0xec, 0x3f, 0x00, 0x00, 0x00, 0x00, 0x00, 0x66, 0x39, 0x3d, 0xcb, 0xd0, 0x57, 0x2e, 0xf1, 0x67, 0xec, 0x3f, 0x00, 0x00, 0x00, 0x00, 0x00, 0x10, 0x1a, 0xbd, 0xb6, 0xc1, 0x88, 0x89, 0xa8, 0x7b, 0xec, 0x3f, 0x00, 0x00, 0x00, 0x00, 0x80, 0x45, 0x58, 0xbd, 0x33, 0xe7, 0x06, 0x94, 0x6d, 0x8f, 0xec, 0x3f, 0x00, 0x00, 0x00, 0x00, 0x00, 0x48, 0x1a, 0xbd, 0xdf, 0xc4, 0x51, 0x57, 0x40, 0xa3, 0xec, 0x3f, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0xcb, 0x3c, 0x94, 0x90, 0xef, 0xdc, 0x20, 0xb7, 0xec, 0x3f, 0x00, 0x00, 0x00, 0x00, 0x00, 0x40, 0x01, 0x3d, 0x89, 0x16, 0x6d, 0x2e, 0x0f, 0xcb, 0xec, 0x3f, 0x00, 0x00, 0x00, 0x00, 0x00, 0x20, 0xf0, 0x3c, 0x12, 0xc4, 0x5d, 0x55, 0x0b, 0xdf, 0xec, 0x3f, 0x00, 0x00, 0x00, 0x00, 0x00, 0x60, 0xf3, 0x3c, 0x3b, 0xab, 0x5b, 0x5b, 0x15, 0xf3, 0xec, 0x3f, 0x00, 0x00, 0x00, 0x00, 0x00, 0x90, 0x06, 0xbd, 0xbc, 0x89, 0x07, 0x4a, 0x2d, 0x07, 0xed, 0x3f, 0x00, 0x00, 0x00, 0x00, 0x00, 0xa0, 0x09, 0x3d, 0xfa, 0xc8, 0x08, 0x2b, 0x53, 0x1b, 0xed, 0x3f, 0x00, 0x00, 0x00, 0x00, 0x00, 0xe0, 0x15, 0xbd, 0x85, 0x8a, 0x0d, 0x08, 0x87, 0x2f, 0xed, 0x3f, 0x00, 0x00, 0x00, 0x00, 0x00, 0x28, 0x1d, 0x3d, 0x03, 0xa2, 0xca, 0xea, 0xc8, 0x43, 0xed, 0x3f, 0x00, 0x00, 0x00, 0x00, 0x00, 0xa0, 0x01, 0x3d, 0x91, 0xa4, 0xfb, 0xdc, 0x18, 0x58, 0xed, 0x3f, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0xdf, 0x3c, 0xa1, 0xe6, 0x62, 0xe8, 0x76, 0x6c, 0xed, 0x3f, 0x00, 0x00, 0x00, 0x00, 0x00, 0xa0, 0x03, 0xbd, 0x4e, 0x83, 0xc9, 0x16, 0xe3, 0x80, 0xed, 0x3f, 0x00, 0x00, 0x00, 0x00, 0x00, 0xd8, 0x0c, 0xbd, 0x90, 0x60, 0xff, 0x71, 0x5d, 0x95, 0xed, 0x3f, 0x00, 0x00, 0x00, 0x00, 0x00, 0xc0, 0xf4, 0x3c, 0xae, 0x32, 0xdb, 0x03, 0xe6, 0xa9, 0xed, 0x3f, 0x00, 0x00, 0x00, 0x00, 0x00, 0x90, 0xff, 0x3c, 0x25, 0x83, 0x3a, 0xd6, 0x7c, 0xbe, 0xed, 0x3f, 0x00, 0x00, 0x00, 0x00, 0x00, 0x80, 0xe9, 0x3c, 0x45, 0xb4, 0x01, 0xf3, 0x21, 0xd3, 0xed, 0x3f, 0x00, 0x00, 0x00, 0x00, 0x00, 0x20, 0xf5, 0xbc, 0xbf, 0x05, 0x1c, 0x64, 0xd5, 0xe7, 0xed, 0x3f, 0x00, 0x00, 0x00, 0x00, 0x00, 0x70, 0x1d, 0xbd, 0xec, 0x9a, 0x7b, 0x33, 0x97, 0xfc, 0xed, 0x3f, 0x00, 0x00, 0x00, 0x00, 0x00, 0x14, 0x16, 0xbd, 0x5e, 0x7d, 0x19, 0x6b, 0x67, 0x11, 0xee, 0x3f, 0x00, 0x00, 0x00, 0x00, 0x00, 0x48, 0x0b, 0x3d, 0xe7, 0xa3, 0xf5, 0x14, 0x46, 0x26, 0xee, 0x3f, 0x00, 0x00, 0x00, 0x00, 0x00, 0xce, 0x40, 0x3d, 0x5c, 0xee, 0x16, 0x3b, 0x33, 0x3b, 0xee, 0x3f, 0x00, 0x00, 0x00, 0x00, 0x00, 0x68, 0x0c, 0x3d, 0xb4, 0x3f, 0x8b, 0xe7, 0x2e, 0x50, 0xee, 0x3f, 0x00, 0x00, 0x00, 0x00, 0x00, 0x30, 0x09, 0xbd, 0x68, 0x6d, 0x67, 0x24, 0x39, 0x65, 0xee, 0x3f, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0xe5, 0xbc, 0x44, 0x4c, 0xc7, 0xfb, 0x51, 0x7a, 0xee, 0x3f, 0x00, 0x00, 0x00, 0x00, 0x00, 0xf8, 0x07, 0xbd, 0x26, 0xb7, 0xcd, 0x77, 0x79, 0x8f, 0xee, 0x3f, 0x00, 0x00, 0x00, 0x00, 0x00, 0x70, 0xf3, 0xbc, 0xe8, 0x90, 0xa4, 0xa2, 0xaf, 0xa4, 0xee, 0x3f, 0x00, 0x00, 0x00, 0x00, 0x00, 0xd0, 0xe5, 0x3c, 0xe4, 0xca, 0x7c, 0x86, 0xf4, 0xb9, 0xee, 0x3f, 0x00, 0x00, 0x00, 0x00, 0x00, 0x1a, 0x16, 0x3d, 0x0d, 0x68, 0x8e, 0x2d, 0x48, 0xcf, 0xee, 0x3f, 0x00, 0x00, 0x00, 0x00, 0x00, 0x50, 0xf5, 0x3c, 0x14, 0x85, 0x18, 0xa2, 0xaa, 0xe4, 0xee, 0x3f, 0x00, 0x00, 0x00, 0x00, 0x00, 0x40, 0xc6, 0x3c, 0x13, 0x5a, 0x61, 0xee, 0x1b, 0xfa, 0xee, 0x3f, 0x00, 0x00, 0x00, 0x00, 0x00, 0x80, 0xee, 0xbc, 0x06, 0x41, 0xb6, 0x1c, 0x9c, 0x0f, 0xef, 0x3f, 0x00, 0x00, 0x00, 0x00, 0x00, 0x88, 0xfa, 0xbc, 0x63, 0xb9, 0x6b, 0x37, 0x2b, 0x25, 0xef, 0x3f, 0x00, 0x00, 0x00, 0x00, 0x00, 0x90, 0x2c, 0xbd, 0x75, 0x72, 0xdd, 0x48, 0xc9, 0x3a, 0xef, 0x3f, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0xaa, 0x3c, 0x24, 0x45, 0x6e, 0x5b, 0x76, 0x50, 0xef, 0x3f, 0x00, 0x00, 0x00, 0x00, 0x00, 0xf0, 0xf4, 0xbc, 0xfd, 0x44, 0x88, 0x79, 0x32, 0x66, 0xef, 0x3f, 0x00, 0x00, 0x00, 0x00, 0x00, 0x80, 0xca, 0x3c, 0x38, 0xbe, 0x9c, 0xad, 0xfd, 0x7b, 0xef, 0x3f, 0x00, 0x00, 0x00, 0x00, 0x00, 0xbc, 0xfa, 0x3c, 0x82, 0x3c, 0x24, 0x02, 0xd8, 0x91, 0xef, 0x3f, 0x00, 0x00, 0x00, 0x00, 0x00, 0x60, 0xd4, 0xbc, 0x8e, 0x90, 0x9e, 0x81, 0xc1, 0xa7, 0xef, 0x3f, 0x00, 0x00, 0x00, 0x00, 0x00, 0x0c, 0x0b, 0xbd, 0x11, 0xd5, 0x92, 0x36, 0xba, 0xbd, 0xef, 0x3f, 0x00, 0x00, 0x00, 0x00, 0x00, 0xe0, 0xc0, 0xbc, 0x94, 0x71, 0x8f, 0x2b, 0xc2, 0xd3, 0xef, 0x3f, 0x00, 0x00, 0x00, 0x00, 0x80, 0xde, 0x10, 0xbd, 0xee, 0x23, 0x2a, 0x6b, 0xd9, 0xe9, 0xef, 0x3f, 0x00, 0x00, 0x00, 0x00, 0x00, 0x43, 0xee, 0x3c, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0xf0, 0x3f, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0xbe, 0xbc, 0x5a, 0xfa, 0x1a, 0x0b, 0xf0, 0x3f, 0x00, 0x00, 0x00, 0x00, 0x00, 0x40, 0xb3, 0xbc, 0x03, 0x33, 0xfb, 0xa9, 0x3d, 0x16, 0xf0, 0x3f, 0x00, 0x00, 0x00, 0x00, 0x00, 0x17, 0x12, 0xbd, 0x82, 0x02, 0x3b, 0x14, 0x68, 0x21, 0xf0, 0x3f, 0x00, 0x00, 0x00, 0x00, 0x00, 0x40, 0xba, 0x3c, 0x6c, 0x80, 0x77, 0x3e, 0x9a, 0x2c, 0xf0, 0x3f, 0x00, 0x00, 0x00, 0x00, 0x00, 0x98, 0xef, 0x3c, 0xca, 0xbb, 0x11, 0x2e, 0xd4, 0x37, 0xf0, 0x3f, 0x00, 0x00, 0x00, 0x00, 0x00, 0x40, 0xc7, 0xbc, 0x89, 0x7f, 0x6e, 0xe8, 0x15, 0x43, 0xf0, 0x3f, 0x00, 0x00, 0x00, 0x00, 0x00, 0x30, 0xd8, 0x3c, 0x67, 0x54, 0xf6, 0x72, 0x5f, 0x4e, 0xf0, 0x3f, 0x00, 0x00, 0x00, 0x00, 0x00, 0x3f, 0x1a, 0xbd, 0x5a, 0x85, 0x15, 0xd3, 0xb0, 0x59, 0xf0, 0x3f, 0x00, 0x00, 0x00, 0x00, 0x00, 0x84, 0x02, 0xbd, 0x95, 0x1f, 0x3c, 0x0e, 0x0a, 0x65, 0xf0, 0x3f, 0x00, 0x00, 0x00, 0x00, 0x00, 0x60, 0xf1, 0x3c, 0x1a, 0xf7, 0xdd, 0x29, 0x6b, 0x70, 0xf0, 0x3f, 0x00, 0x00, 0x00, 0x00, 0x00, 0x24, 0x15, 0x3d, 0x2d, 0xa8, 0x72, 0x2b, 0xd4, 0x7b, 0xf0, 0x3f, 0x00, 0x00, 0x00, 0x00, 0x00, 0xa0, 0xe9, 0xbc, 0xd0, 0x9b, 0x75, 0x18, 0x45, 0x87, 0xf0, 0x3f, 0x00, 0x00, 0x00, 0x00, 0x00, 0x40, 0xe6, 0x3c, 0xc8, 0x07, 0x66, 0xf6, 0xbd, 0x92, 0xf0, 0x3f, 0x00, 0x00, 0x00, 0x00, 0x00, 0x78, 0x00, 0xbd, 0x83, 0xf3, 0xc6, 0xca, 0x3e, 0x9e, 0xf0, 0x3f, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x98, 0xbc, 0x30, 0x39, 0x1f, 0x9b, 0xc7, 0xa9, 0xf0, 0x3f, 0x00, 0x00, 0x00, 0x00, 0x00, 0xa0, 0xff, 0x3c, 0xfc, 0x88, 0xf9, 0x6c, 0x58, 0xb5, 0xf0, 0x3f, 0x00, 0x00, 0x00, 0x00, 0x00, 0xc8, 0xfa, 0xbc, 0x8a, 0x6c, 0xe4, 0x45, 0xf1, 0xc0, 0xf0, 0x3f, 0x00, 0x00, 0x00, 0x00, 0x00, 0xc0, 0xd9, 0x3c, 0x16, 0x48, 0x72, 0x2b, 0x92, 0xcc, 0xf0, 0x3f, 0x00, 0x00, 0x00, 0x00, 0x00, 0x20, 0x05, 0x3d, 0xd8, 0x5d, 0x39, 0x23, 0x3b, 0xd8, 0xf0, 0x3f, 0x00, 0x00, 0x00, 0x00, 0x00, 0xd0, 0xfa, 0xbc, 0xf3, 0xd1, 0xd3, 0x32, 0xec, 0xe3, 0xf0, 0x3f, 0x00, 0x00, 0x00, 0x00, 0x00, 0xac, 0x1b, 0x3d, 0xa6, 0xa9, 0xdf, 0x5f, 0xa5, 0xef, 0xf0, 0x3f, 0x00, 0x00, 0x00, 0x00, 0x00, 0xe8, 0x04, 0xbd, 0xf0, 0xd2, 0xfe, 0xaf, 0x66, 0xfb, 0xf0, 0x3f, 0x00, 0x00, 0x00, 0x00, 0x00, 0x30, 0x0d, 0xbd, 0x4b, 0x23, 0xd7, 0x28, 0x30, 0x07, 0xf1, 0x3f, 0x00, 0x00, 0x00, 0x00, 0x00, 0x50, 0xf1, 0x3c, 0x5b, 0x5b, 0x12, 0xd0, 0x01, 0x13, 0xf1, 0x3f, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0xec, 0x3c, 0xf9, 0x2a, 0x5e, 0xab, 0xdb, 0x1e, 0xf1, 0x3f, 0x00, 0x00, 0x00, 0x00, 0x00, 0xbc, 0x16, 0x3d, 0xd5, 0x31, 0x6c, 0xc0, 0xbd, 0x2a, 0xf1, 0x3f, 0x00, 0x00, 0x00, 0x00, 0x00, 0x40, 0xe8, 0x3c, 0x7d, 0x04, 0xf2, 0x14, 0xa8, 0x36, 0xf1, 0x3f, 0x00, 0x00, 0x00, 0x00, 0x00, 0xd0, 0x0e, 0xbd, 0xe9, 0x2d, 0xa9, 0xae, 0x9a, 0x42, 0xf1, 0x3f, 0x00, 0x00, 0x00, 0x00, 0x00, 0xe0, 0xe8, 0x3c, 0x38, 0x31, 0x4f, 0x93, 0x95, 0x4e, 0xf1, 0x3f, 0x00, 0x00, 0x00, 0x00, 0x00, 0x40, 0xeb, 0x3c, 0x71, 0x8e, 0xa5, 0xc8, 0x98, 0x5a, 0xf1, 0x3f, 0x00, 0x00, 0x00, 0x00, 0x00, 0x30, 0x05, 0x3d, 0xdf, 0xc3, 0x71, 0x54, 0xa4, 0x66, 0xf1, 0x3f, 0x00, 0x00, 0x00, 0x00, 0x00, 0x38, 0x03, 0x3d, 0x11, 0x52, 0x7d, 0x3c, 0xb8, 0x72, 0xf1, 0x3f, 0x00, 0x00, 0x00, 0x00, 0x00, 0xd4, 0x28, 0x3d, 0x9f, 0xbb, 0x95, 0x86, 0xd4, 0x7e, 0xf1, 0x3f, 0x00, 0x00, 0x00, 0x00, 0x00, 0xd0, 0x05, 0xbd, 0x93, 0x8d, 0x8c, 0x38, 0xf9, 0x8a, 0xf1, 0x3f, 0x00, 0x00, 0x00, 0x00, 0x00, 0x88, 0x1c, 0xbd, 0x66, 0x5d, 0x37, 0x58, 0x26, 0x97, 0xf1, 0x3f, 0x00, 0x00, 0x00, 0x00, 0x00, 0xf0, 0x11, 0x3d, 0xa7, 0xcb, 0x6f, 0xeb, 0x5b, 0xa3, 0xf1, 0x3f, 0x00, 0x00, 0x00, 0x00, 0x00, 0x48, 0x10, 0x3d, 0xe3, 0x87, 0x13, 0xf8, 0x99, 0xaf, 0xf1, 0x3f, 0x00, 0x00, 0x00, 0x00, 0x00, 0x39, 0x47, 0xbd, 0x54, 0x5d, 0x04, 0x84, 0xe0, 0xbb, 0xf1, 0x3f, 0x00, 0x00, 0x00, 0x00, 0x00, 0xe4, 0x24, 0x3d, 0x43, 0x1c, 0x28, 0x95, 0x2f, 0xc8, 0xf1, 0x3f, 0x00, 0x00, 0x00, 0x00, 0x00, 0x20, 0x0a, 0xbd, 0xb2, 0xb9, 0x68, 0x31, 0x87, 0xd4, 0xf1, 0x3f, 0x00, 0x00, 0x00, 0x00, 0x00, 0x80, 0xe3, 0x3c, 0x31, 0x40, 0xb4, 0x5e, 0xe7, 0xe0, 0xf1, 0x3f, 0x00, 0x00, 0x00, 0x00, 0x00, 0xc0, 0xea, 0x3c, 0x38, 0xd9, 0xfc, 0x22, 0x50, 0xed, 0xf1, 0x3f, 0x00, 0x00, 0x00, 0x00, 0x00, 0x90, 0x01, 0x3d, 0xf7, 0xcd, 0x38, 0x84, 0xc1, 0xf9, 0xf1, 0x3f, 0x00, 0x00, 0x00, 0x00, 0x00, 0x78, 0x1b, 0xbd, 0x8f, 0x8d, 0x62, 0x88, 0x3b, 0x06, 0xf2, 0x3f, 0x00, 0x00, 0x00, 0x00, 0x00, 0x94, 0x2d, 0x3d, 0x1e, 0xa8, 0x78, 0x35, 0xbe, 0x12, 0xf2, 0x3f, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0xd8, 0x3c, 0x41, 0xdd, 0x7d, 0x91, 0x49, 0x1f, 0xf2, 0x3f, 0x00, 0x00, 0x00, 0x00, 0x00, 0x34, 0x2b, 0x3d, 0x23, 0x13, 0x79, 0xa2, 0xdd, 0x2b, 0xf2, 0x3f, 0x00, 0x00, 0x00, 0x00, 0x00, 0xf8, 0x19, 0x3d, 0xe7, 0x61, 0x75, 0x6e, 0x7a, 0x38, 0xf2, 0x3f, 0x00, 0x00, 0x00, 0x00, 0x00, 0xc8, 0x19, 0xbd, 0x27, 0x14, 0x82, 0xfb, 0x1f, 0x45, 0xf2, 0x3f, 0x00, 0x00, 0x00, 0x00, 0x00, 0x30, 0x02, 0x3d, 0x02, 0xa6, 0xb2, 0x4f, 0xce, 0x51, 0xf2, 0x3f, 0x00, 0x00, 0x00, 0x00, 0x00, 0x48, 0x13, 0xbd, 0xb0, 0xce, 0x1e, 0x71, 0x85, 0x5e, 0xf2, 0x3f, 0x00, 0x00, 0x00, 0x00, 0x00, 0x70, 0x12, 0x3d, 0x16, 0x7d, 0xe2, 0x65, 0x45, 0x6b, 0xf2, 0x3f, 0x00, 0x00, 0x00, 0x00, 0x00, 0xd0, 0x11, 0x3d, 0x0f, 0xe0, 0x1d, 0x34, 0x0e, 0x78, 0xf2, 0x3f, 0x00, 0x00, 0x00, 0x00, 0x00, 0xee, 0x31, 0x3d, 0x3e, 0x63, 0xf5, 0xe1, 0xdf, 0x84, 0xf2, 0x3f, 0x00, 0x00, 0x00, 0x00, 0x00, 0xc0, 0x14, 0xbd, 0x30, 0xbb, 0x91, 0x75, 0xba, 0x91, 0xf2, 0x3f, 0x00, 0x00, 0x00, 0x00, 0x00, 0xd8, 0x13, 0xbd, 0x09, 0xdf, 0x1f, 0xf5, 0x9d, 0x9e, 0xf2, 0x3f, 0x00, 0x00, 0x00, 0x00, 0x00, 0xb0, 0x08, 0x3d, 0x9b, 0x0e, 0xd1, 0x66, 0x8a, 0xab, 0xf2, 0x3f, 0x00, 0x00, 0x00, 0x00, 0x00, 0x7c, 0x22, 0xbd, 0x3a, 0xda, 0xda, 0xd0, 0x7f, 0xb8, 0xf2, 0x3f, 0x00, 0x00, 0x00, 0x00, 0x00, 0x34, 0x2a, 0x3d, 0xf9, 0x1a, 0x77, 0x39, 0x7e, 0xc5, 0xf2, 0x3f, 0x00, 0x00, 0x00, 0x00, 0x00, 0x80, 0x10, 0xbd, 0xd9, 0x02, 0xe4, 0xa6, 0x85, 0xd2, 0xf2, 0x3f, 0x00, 0x00, 0x00, 0x00, 0x00, 0xd0, 0x0e, 0xbd, 0x79, 0x15, 0x64, 0x1f, 0x96, 0xdf, 0xf2, 0x3f, 0x00, 0x00, 0x00, 0x00, 0x00, 0x20, 0xf4, 0xbc, 0xcf, 0x2e, 0x3e, 0xa9, 0xaf, 0xec, 0xf2, 0x3f, 0x00, 0x00, 0x00, 0x00, 0x00, 0x98, 0x24, 0xbd, 0x22, 0x88, 0xbd, 0x4a, 0xd2, 0xf9, 0xf2, 0x3f, 0x00, 0x00, 0x00, 0x00, 0x00, 0x30, 0x16, 0xbd, 0x25, 0xb6, 0x31, 0x0a, 0xfe, 0x06, 0xf3, 0x3f, 0x00, 0x00, 0x00, 0x00, 0x00, 0x36, 0x32, 0xbd, 0x0b, 0xa5, 0xee, 0xed, 0x32, 0x14, 0xf3, 0x3f, 0x00, 0x00, 0x00, 0x00, 0x80, 0xdf, 0x70, 0xbd, 0xb8, 0xd7, 0x4c, 0xfc, 0x70, 0x21, 0xf3, 0x3f, 0x00, 0x00, 0x00, 0x00, 0x00, 0x48, 0x22, 0xbd, 0xa2, 0xe9, 0xa8, 0x3b, 0xb8, 0x2e, 0xf3, 0x3f, 0x00, 0x00, 0x00, 0x00, 0x00, 0x98, 0x25, 0xbd, 0x66, 0x17, 0x64, 0xb2, 0x08, 0x3c, 0xf3, 0x3f, 0x00, 0x00, 0x00, 0x00, 0x00, 0xd0, 0x1e, 0x3d, 0x27, 0xfa, 0xe3, 0x66, 0x62, 0x49, 0xf3, 0x3f, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0xdc, 0xbc, 0x0f, 0x9f, 0x92, 0x5f, 0xc5, 0x56, 0xf3, 0x3f, 0x00, 0x00, 0x00, 0x00, 0x00, 0xd8, 0x30, 0xbd, 0xb9, 0x88, 0xde, 0xa2, 0x31, 0x64, 0xf3, 0x3f, 0x00, 0x00, 0x00, 0x00, 0x00, 0xc8, 0x22, 0x3d, 0x39, 0xaa, 0x3a, 0x37, 0xa7, 0x71, 0xf3, 0x3f, 0x00, 0x00, 0x00, 0x00, 0x00, 0x60, 0x20, 0x3d, 0xfe, 0x74, 0x1e, 0x23, 0x26, 0x7f, 0xf3, 0x3f, 0x00, 0x00, 0x00, 0x00, 0x00, 0x60, 0x16, 0xbd, 0x38, 0xd8, 0x05, 0x6d, 0xae, 0x8c, 0xf3, 0x3f, 0x00, 0x00, 0x00, 0x00, 0x00, 0xe0, 0x0a, 0xbd, 0xc3, 0x3e, 0x71, 0x1b, 0x40, 0x9a, 0xf3, 0x3f, 0x00, 0x00, 0x00, 0x00, 0x00, 0x72, 0x44, 0xbd, 0x20, 0xa0, 0xe5, 0x34, 0xdb, 0xa7, 0xf3, 0x3f, 0x00, 0x00, 0x00, 0x00, 0x00, 0x20, 0x08, 0x3d, 0x95, 0x6e, 0xec, 0xbf, 0x7f, 0xb5, 0xf3, 0x3f, 0x00, 0x00, 0x00, 0x00, 0x00, 0x80, 0x3e, 0x3d, 0xf2, 0xa8, 0x13, 0xc3, 0x2d, 0xc3, 0xf3, 0x3f, 0x00, 0x00, 0x00, 0x00, 0x00, 0x80, 0xef, 0x3c, 0x22, 0xe1, 0xed, 0x44, 0xe5, 0xd0, 0xf3, 0x3f, 0x00, 0x00, 0x00, 0x00, 0x00, 0xa0, 0x17, 0xbd, 0xbb, 0x34, 0x12, 0x4c, 0xa6, 0xde, 0xf3, 0x3f, 0x00, 0x00, 0x00, 0x00, 0x00, 0x30, 0x26, 0x3d, 0xcc, 0x4e, 0x1c, 0xdf, 0x70, 0xec, 0xf3, 0x3f, 0x00, 0x00, 0x00, 0x00, 0x00, 0xa6, 0x48, 0xbd, 0x8c, 0x7e, 0xac, 0x04, 0x45, 0xfa, 0xf3, 0x3f, 0x00, 0x00, 0x00, 0x00, 0x00, 0xdc, 0x3c, 0xbd, 0xbb, 0xa0, 0x67, 0xc3, 0x22, 0x08, 0xf4, 0x3f, 0x00, 0x00, 0x00, 0x00, 0x00, 0xb8, 0x25, 0x3d, 0x95, 0x2e, 0xf7, 0x21, 0x0a, 0x16, 0xf4, 0x3f, 0x00, 0x00, 0x00, 0x00, 0x00, 0xc0, 0x1e, 0x3d, 0x46, 0x46, 0x09, 0x27, 0xfb, 0x23, 0xf4, 0x3f, 0x00, 0x00, 0x00, 0x00, 0x00, 0x60, 0x13, 0xbd, 0x20, 0xa9, 0x50, 0xd9, 0xf5, 0x31, 0xf4, 0x3f, 0x00, 0x00, 0x00, 0x00, 0x00, 0x98, 0x23, 0x3d, 0xeb, 0xb9, 0x84, 0x3f, 0xfa, 0x3f, 0xf4, 0x3f, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0xfa, 0x3c, 0x19, 0x89, 0x61, 0x60, 0x08, 0x4e, 0xf4, 0x3f, 0x00, 0x00, 0x00, 0x00, 0x00, 0xc0, 0xf6, 0xbc, 0x01, 0xd2, 0xa7, 0x42, 0x20, 0x5c, 0xf4, 0x3f, 0x00, 0x00, 0x00, 0x00, 0x00, 0xc0, 0x0b, 0xbd, 0x16, 0x00, 0x1d, 0xed, 0x41, 0x6a, 0xf4, 0x3f, 0x00, 0x00, 0x00, 0x00, 0x00, 0x80, 0x12, 0xbd, 0x26, 0x33, 0x8b, 0x66, 0x6d, 0x78, 0xf4, 0x3f, 0x00, 0x00, 0x00, 0x00, 0x00, 0xe0, 0x30, 0x3d, 0x00, 0x3c, 0xc1, 0xb5, 0xa2, 0x86, 0xf4, 0x3f, 0x00, 0x00, 0x00, 0x00, 0x00, 0x40, 0x2d, 0xbd, 0x04, 0xaf, 0x92, 0xe1, 0xe1, 0x94, 0xf4, 0x3f, 0x00, 0x00, 0x00, 0x00, 0x00, 0x20, 0x0c, 0x3d, 0x72, 0xd3, 0xd7, 0xf0, 0x2a, 0xa3, 0xf4, 0x3f, 0x00, 0x00, 0x00, 0x00, 0x00, 0x50, 0x1e, 0xbd, 0x01, 0xb8, 0x6d, 0xea, 0x7d, 0xb1, 0xf4, 0x3f, 0x00, 0x00, 0x00, 0x00, 0x00, 0x80, 0x07, 0x3d, 0xe1, 0x29, 0x36, 0xd5, 0xda, 0xbf, 0xf4, 0x3f, 0x00, 0x00, 0x00, 0x00, 0x00, 0x80, 0x13, 0xbd, 0x32, 0xc1, 0x17, 0xb8, 0x41, 0xce, 0xf4, 0x3f, 0x00, 0x00, 0x00, 0x00, 0x00, 0x80, 0x00, 0x3d, 0xdb, 0xdd, 0xfd, 0x99, 0xb2, 0xdc, 0xf4, 0x3f, 0x00, 0x00, 0x00, 0x00, 0x00, 0x70, 0x2c, 0x3d, 0x96, 0xab, 0xd8, 0x81, 0x2d, 0xeb, 0xf4, 0x3f, 0x00, 0x00, 0x00, 0x00, 0x00, 0xe0, 0x1c, 0xbd, 0x02, 0x2d, 0x9d, 0x76, 0xb2, 0xf9, 0xf4, 0x3f, 0x00, 0x00, 0x00, 0x00, 0x00, 0x20, 0x19, 0x3d, 0xc1, 0x31, 0x45, 0x7f, 0x41, 0x08, 0xf5, 0x3f, 0x00, 0x00, 0x00, 0x00, 0x00, 0xc0, 0x08, 0xbd, 0x2a, 0x66, 0xcf, 0xa2, 0xda, 0x16, 0xf5, 0x3f, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0xfa, 0xbc, 0xea, 0x51, 0x3f, 0xe8, 0x7d, 0x25, 0xf5, 0x3f, 0x00, 0x00, 0x00, 0x00, 0x00, 0x08, 0x4a, 0x3d, 0xda, 0x4e, 0x9d, 0x56, 0x2b, 0x34, 0xf5, 0x3f, 0x00, 0x00, 0x00, 0x00, 0x00, 0xd8, 0x26, 0xbd, 0x1a, 0xac, 0xf6, 0xf4, 0xe2, 0x42, 0xf5, 0x3f, 0x00, 0x00, 0x00, 0x00, 0x00, 0x44, 0x32, 0xbd, 0xdb, 0x94, 0x5d, 0xca, 0xa4, 0x51, 0xf5, 0x3f, 0x00, 0x00, 0x00, 0x00, 0x00, 0x3c, 0x48, 0x3d, 0x6b, 0x11, 0xe9, 0xdd, 0x70, 0x60, 0xf5, 0x3f, 0x00, 0x00, 0x00, 0x00, 0x00, 0xb0, 0x24, 0x3d, 0xde, 0x29, 0xb5, 0x36, 0x47, 0x6f, 0xf5, 0x3f, 0x00, 0x00, 0x00, 0x00, 0x00, 0x5a, 0x41, 0x3d, 0x0e, 0xc4, 0xe2, 0xdb, 0x27, 0x7e, 0xf5, 0x3f, 0x00, 0x00, 0x00, 0x00, 0x00, 0xe0, 0x29, 0xbd, 0x6f, 0xc7, 0x97, 0xd4, 0x12, 0x8d, 0xf5, 0x3f, 0x00, 0x00, 0x00, 0x00, 0x00, 0x08, 0x23, 0xbd, 0x4c, 0x0b, 0xff, 0x27, 0x08, 0x9c, 0xf5, 0x3f, 0x00, 0x00, 0x00, 0x00, 0x00, 0xec, 0x4d, 0x3d, 0x27, 0x54, 0x48, 0xdd, 0x07, 0xab, 0xf5, 0x3f, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0xc4, 0xbc, 0xf4, 0x7a, 0xa8, 0xfb, 0x11, 0xba, 0xf5, 0x3f, 0x00, 0x00, 0x00, 0x00, 0x00, 0x08, 0x30, 0x3d, 0x0b, 0x46, 0x59, 0x8a, 0x26, 0xc9, 0xf5, 0x3f, 0x00, 0x00, 0x00, 0x00, 0x00, 0xc8, 0x26, 0xbd, 0x3f, 0x8e, 0x99, 0x90, 0x45, 0xd8, 0xf5, 0x3f, 0x00, 0x00, 0x00, 0x00, 0x00, 0x9a, 0x46, 0x3d, 0xe1, 0x20, 0xad, 0x15, 0x6f, 0xe7, 0xf5, 0x3f, 0x00, 0x00, 0x00, 0x00, 0x00, 0x40, 0x1b, 0xbd, 0xca, 0xeb, 0xdc, 0x20, 0xa3, 0xf6, 0xf5, 0x3f, 0x00, 0x00, 0x00, 0x00, 0x00, 0x70, 0x17, 0x3d, 0xb8, 0xdc, 0x76, 0xb9, 0xe1, 0x05, 0xf6, 0x3f, 0x00, 0x00, 0x00, 0x00, 0x00, 0xf8, 0x26, 0x3d, 0x15, 0xf7, 0xcd, 0xe6, 0x2a, 0x15, 0xf6, 0x3f, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x01, 0x3d, 0x31, 0x55, 0x3a, 0xb0, 0x7e, 0x24, 0xf6, 0x3f, 0x00, 0x00, 0x00, 0x00, 0x00, 0xd0, 0x15, 0xbd, 0xb5, 0x29, 0x19, 0x1d, 0xdd, 0x33, 0xf6, 0x3f, 0x00, 0x00, 0x00, 0x00, 0x00, 0xd0, 0x12, 0xbd, 0x13, 0xc3, 0xcc, 0x34, 0x46, 0x43, 0xf6, 0x3f, 0x00, 0x00, 0x00, 0x00, 0x00, 0x80, 0xea, 0xbc, 0xfa, 0x8e, 0xbc, 0xfe, 0xb9, 0x52, 0xf6, 0x3f, 0x00, 0x00, 0x00, 0x00, 0x00, 0x60, 0x28, 0xbd, 0x97, 0x33, 0x55, 0x82, 0x38, 0x62, 0xf6, 0x3f, 0x00, 0x00, 0x00, 0x00, 0x00, 0xfe, 0x71, 0x3d, 0x8e, 0x32, 0x08, 0xc7, 0xc1, 0x71, 0xf6, 0x3f, 0x00, 0x00, 0x00, 0x00, 0x00, 0x20, 0x37, 0xbd, 0x7e, 0xa9, 0x4c, 0xd4, 0x55, 0x81, 0xf6, 0x3f, 0x00, 0x00, 0x00, 0x00, 0x00, 0x80, 0xe6, 0x3c, 0x71, 0x94, 0x9e, 0xb1, 0xf4, 0x90, 0xf6, 0x3f, 0x00, 0x00, 0x00, 0x00, 0x00, 0x78, 0x29, 0xbd, 0xcd, 0x3b, 0x7f, 0x66, 0x9e, 0xa0, 0xe6, 0x3f, 0x87, 0x01, 0xeb, 0x73, 0x14, 0xa1, 0xe7, 0x3f, 0xdb, 0xa0, 0x2a, 0x42, 0xe5, 0xac, 0xe8, 0x3f, 0x90, 0xf0, 0xa3, 0x82, 0x91, 0xc4, 0xe9, 0x3f, 0xad, 0xd3, 0x5a, 0x99, 0x9f, 0xe8, 0xea, 0x3f, 0x9c, 0x52, 0x85, 0xdd, 0x9b, 0x19, 0xec, 0x3f, 0x87, 0xa4, 0xfb, 0xdc, 0x18, 0x58, 0xed, 0x3f, 0xda, 0x90, 0xa4, 0xa2, 0xaf, 0xa4, 0xee, 0x3f, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0xf0, 0x3f, 0x0f, 0x89, 0xf9, 0x6c, 0x58, 0xb5, 0xf0, 0x3f, 0x7b, 0x51, 0x7d, 0x3c, 0xb8, 0x72, 0xf1, 0x3f, 0x38, 0x62, 0x75, 0x6e, 0x7a, 0x38, 0xf2, 0x3f, 0x15, 0xb7, 0x31, 0x0a, 0xfe, 0x06, 0xf3, 0x3f, 0x22, 0x34, 0x12, 0x4c, 0xa6, 0xde, 0xf3, 0x3f, 0x27, 0x2a, 0x36, 0xd5, 0xda, 0xbf, 0xf4, 0x3f, 0x29, 0x54, 0x48, 0xdd, 0x07, 0xab, 0xf5, 0x3f, 0x00, 0x00, 0x00, 0x3f, 0x00, 0x00, 0x00, 0xbf, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x32, 0xfd, 0xff, 0xff, 0xff, 0xff, 0xb1, 0xbf, 0x79, 0xa7, 0x4f, 0xb4, 0xd0, 0x29, 0x20, 0xc0, 0x63, 0xe8, 0x19, 0x7b, 0x02, 0x11, 0x70, 0xc0, 0xfc, 0xca, 0x4d, 0xcd, 0x6e, 0x6a, 0xa3, 0xc0, 0x3d, 0x64, 0xcc, 0x36, 0x0b, 0x85, 0xb4, 0xc0, 0x51, 0x67, 0xa9, 0x07, 0x33, 0x22, 0x5d, 0x40, 0x38, 0x69, 0x59, 0x50, 0x7d, 0xf3, 0xad, 0x40, 0x5f, 0xb0, 0xb6, 0x6e, 0xbb, 0xd2, 0xe3, 0x40, 0xbd, 0xa9, 0x9f, 0x8f, 0x0f, 0x81, 0xfc, 0x40, 0xdc, 0x49, 0x2c, 0x4f, 0x77, 0x41, 0xe7, 0x40, 0xcc, 0x95, 0xe4, 0x47, 0xb1, 0x18, 0xa9, 0xbd, 0xc6, 0xfb, 0x9a, 0xe6, 0xff, 0xff, 0xb1, 0xbf, 0xbf, 0x6b, 0x0c, 0xf9, 0x70, 0xa3, 0x10, 0xc0, 0x83, 0x17, 0x7d, 0x5a, 0x2f, 0xeb, 0x50, 0xc0, 0x63, 0xcc, 0x42, 0x67, 0xb3, 0xb3, 0x74, 0xc0, 0xd7, 0x8b, 0xa3, 0x28, 0xef, 0xa6, 0x75, 0xc0, 0xde, 0xc5, 0x98, 0x0c, 0x81, 0x60, 0x4e, 0x40, 0x64, 0x28, 0x7e, 0x5c, 0x02, 0x6d, 0x90, 0x40, 0x60, 0x1d, 0xbe, 0x8f, 0xf8, 0x5a, 0xb7, 0x40, 0x38, 0xfa, 0x76, 0xfa, 0xb8, 0xcc, 0xc2, 0x40, 0x64, 0xe8, 0x0b, 0xc7, 0x1d, 0xcc, 0xa2, 0x40, 0x86, 0xaa, 0xe1, 0x6f, 0x03, 0xe1, 0x25, 0xbe, 0x4b, 0xe2, 0xc0, 0xf7, 0xf6, 0xff, 0xb1, 0xbf, 0x74, 0x80, 0xa4, 0xae, 0xb2, 0x45, 0x03, 0xc0, 0x14, 0x4e, 0xb9, 0x4c, 0x4a, 0xf7, 0x35, 0xc0, 0x45, 0x1a, 0x0a, 0x42, 0x22, 0x0a, 0x4d, 0xc0, 0x0f, 0xd8, 0x92, 0xa8, 0xac, 0x72, 0x3f, 0xc0, 0xd3, 0x7d, 0x07, 0x84, 0x92, 0xed, 0x41, 0x40, 0x0e, 0x7c, 0x4a, 0x46, 0x39, 0x98, 0x76, 0x40, 0xd6, 0x61, 0x10, 0x6d, 0x6e, 0xa6, 0x92, 0x40, 0x7e, 0x9b, 0xc3, 0xb8, 0xfc, 0x9f, 0x91, 0x40, 0x81, 0x90, 0x37, 0xfc, 0x96, 0xb2, 0x65, 0x40, 0x6d, 0x02, 0x27, 0xe9, 0x16, 0xd3, 0x77, 0xbe, 0x42, 0x1e, 0x5e, 0x49, 0x62, 0xff, 0xb1, 0xbf, 0x43, 0xa8, 0x24, 0x8a, 0x39, 0x36, 0xf7, 0xbf, 0xf3, 0xa7, 0xaf, 0xed, 0xf3, 0x8a, 0x1e, 0xc0, 0x03, 0x63, 0x24, 0xc5, 0xe6, 0x62, 0x26, 0xc0, 0x0f, 0xe7, 0x8f, 0xaf, 0x81, 0xde, 0x09, 0xc0, 0x59, 0x59, 0x8b, 0x90, 0x65, 0x38, 0x36, 0x40, 0x8f, 0x87, 0xe8, 0x0e, 0x9e, 0x06, 0x61, 0x40, 0x9b, 0x07, 0xea, 0x42, 0x86, 0xe7, 0x70, 0x40, 0xff, 0xfa, 0xb6, 0x3a, 0x03, 0x3c, 0x63, 0x40, 0x09, 0x18, 0x39, 0x44, 0xb3, 0x50, 0x2d, 0x40, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x2c, 0xfe, 0xff, 0xff, 0xff, 0xbf, 0xb2, 0x3f, 0xd6, 0x34, 0xb3, 0x5b, 0x52, 0x89, 0x27, 0x40, 0x25, 0x18, 0x30, 0x15, 0x63, 0x6d, 0x81, 0x40, 0x6d, 0xf4, 0x18, 0x3e, 0x99, 0x4d, 0xc1, 0x40, 0x66, 0x15, 0x90, 0x0e, 0xd4, 0x12, 0xe2, 0x40, 0xbc, 0x39, 0x5b, 0x36, 0xd5, 0x78, 0x64, 0x40, 0x63, 0x05, 0x6b, 0x4e, 0x58, 0xa2, 0xbf, 0x40, 0x3f, 0x8c, 0xd3, 0x54, 0x52, 0x66, 0x01, 0x41, 0x43, 0x2b, 0xa5, 0x83, 0xda, 0x83, 0x28, 0x41, 0x3d, 0x0b, 0xde, 0x28, 0x6b, 0xa6, 0x29, 0x41, 0xc5, 0x30, 0x95, 0x2c, 0x6d, 0xfd, 0x14, 0xc1, 0xd9, 0x8c, 0xcc, 0x29, 0x8f, 0x3d, 0xb4, 0x3d, 0x4c, 0xb0, 0x72, 0xd1, 0xff, 0xbf, 0xb2, 0x3f, 0xd3, 0x3d, 0x95, 0xb9, 0xb0, 0x57, 0x17, 0x40, 0xe9, 0x88, 0x87, 0x0a, 0x92, 0xe3, 0x60, 0x40, 0x81, 0xc4, 0xc8, 0x9d, 0xf9, 0x0c, 0x90, 0x40, 0xa6, 0xe3, 0xc6, 0x53, 0xe9, 0x17, 0x9f, 0x40, 0x43, 0x15, 0x5e, 0xfb, 0xb3, 0xb1, 0x54, 0x40, 0xce, 0xc0, 0x21, 0xda, 0xa0, 0x3b, 0xa0, 0x40, 0x6d, 0x1e, 0x59, 0x7b, 0xd2, 0x67, 0xd2, 0x40, 0x72, 0x23, 0xe0, 0x97, 0xe3, 0xb5, 0xeb, 0x40, 0xa0, 0x54, 0x7a, 0x1f, 0x18, 0x91, 0xe1, 0x40, 0x09, 0xc6, 0xdb, 0xbe, 0x57, 0xea, 0xb4, 0xc0, 0x82, 0xcb, 0xde, 0x6a, 0x03, 0xcd, 0x32, 0x3e, 0x42, 0x08, 0x8d, 0x0e, 0xee, 0xbf, 0xb2, 0x3f, 0xf5, 0x9c, 0x14, 0x61, 0xfc, 0xc0, 0x0a, 0x40, 0xdd, 0xae, 0x2d, 0x96, 0x98, 0x4f, 0x45, 0x40, 0x1f, 0xfd, 0x5e, 0xe2, 0xdb, 0x59, 0x65, 0x40, 0xe0, 0x21, 0xfa, 0x81, 0x7c, 0xd7, 0x64, 0x40, 0xa6, 0x43, 0xe3, 0xbf, 0x22, 0x61, 0x48, 0x40, 0xb3, 0x4e, 0x54, 0x86, 0x83, 0x2d, 0x86, 0x40, 0x63, 0xfc, 0x4d, 0xe4, 0x4b, 0xf0, 0xac, 0x40, 0x28, 0x6a, 0xc7, 0xd7, 0x6c, 0x3c, 0xb9, 0x40, 0xc0, 0xb1, 0x4f, 0xd9, 0xaa, 0xa8, 0xa3, 0x40, 0x0f, 0xf4, 0x1c, 0x20, 0xeb, 0xa7, 0x62, 0xc0, 0xdb, 0x6b, 0xf7, 0x54, 0x3b, 0x31, 0x84, 0x3e, 0x34, 0x3e, 0x88, 0x3e, 0xc5, 0xbe, 0xb2, 0x3f, 0x9c, 0x77, 0x27, 0xe7, 0x97, 0xf8, 0xff, 0x3f, 0xe5, 0x6f, 0xf9, 0xaa, 0xbf, 0xfd, 0x2c, 0x40, 0x4a, 0xdc, 0xfb, 0x29, 0x8e, 0xaa, 0x3f, 0x40, 0xb4, 0x4b, 0x81, 0x71, 0xb1, 0x40, 0x30, 0x40, 0xed, 0x7a, 0xc0, 0xf7, 0x96, 0x5d, 0x3e, 0x40, 0x40, 0x4b, 0xd1, 0xe4, 0x91, 0xd5, 0x70, 0x40, 0x22, 0xbf, 0xb3, 0x22, 0x45, 0x66, 0x8a, 0x40, 0x14, 0xc2, 0x5c, 0x9c, 0x7c, 0x97, 0x8b, 0x40, 0x65, 0x13, 0x00, 0x0e, 0x53, 0x95, 0x6a, 0x40, 0x31, 0x29, 0xb3, 0xf8, 0x6a, 0x3e, 0x15, 0xc0, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x90, 0xbd, 0x86, 0x4e, 0x01, 0xc1, 0x14, 0x88, 0x80, 0xc3, 0x76, 0x53, 0x1b, 0xc5, 0x5a, 0x28, 0xa4, 0xc5, 0x98, 0x11, 0xe9, 0x42, 0xeb, 0x9b, 0x6f, 0x45, 0xdb, 0x95, 0x1e, 0x47, 0x7c, 0x08, 0xe4, 0x47, 0xba, 0x0b, 0x3a, 0x47, 0x00, 0x00, 0x00, 0x00, 0x8a, 0xc5, 0x48, 0xad, 0xff, 0xff, 0x8f, 0xbd, 0x88, 0x1b, 0x85, 0xc0, 0x7b, 0x59, 0x87, 0xc2, 0x9b, 0x9d, 0xa5, 0xc3, 0x79, 0x37, 0xad, 0xc3, 0x08, 0x04, 0x73, 0x42, 0x13, 0x68, 0x83, 0x44, 0xc4, 0xd7, 0xba, 0x45, 0xc8, 0x65, 0x16, 0x46, 0xee, 0x60, 0x16, 0x45, 0x00, 0x00, 0x00, 0x00, 0x1b, 0x08, 0x2f, 0xb1, 0xb8, 0xff, 0x8f, 0xbd, 0x95, 0x2d, 0x1a, 0xc0, 0x52, 0xba, 0xaf, 0xc1, 0x12, 0x51, 0x68, 0xc2, 0x65, 0x95, 0xfb, 0xc1, 0x94, 0x6c, 0x0f, 0x42, 0xca, 0xc1, 0xb4, 0x43, 0x73, 0x33, 0x95, 0x44, 0xe6, 0xff, 0x8c, 0x44, 0xb8, 0x94, 0x2d, 0x43, 0x00, 0x00, 0x00, 0x00, 0xb7, 0x98, 0xbe, 0xb3, 0x12, 0xfb, 0x8f, 0xbd, 0xcc, 0xb1, 0xb9, 0xbf, 0x9f, 0x57, 0xf4, 0xc0, 0x36, 0x17, 0x33, 0xc1, 0x0d, 0xf4, 0x4e, 0xc0, 0x2d, 0xc3, 0xb1, 0x41, 0xf0, 0x34, 0x08, 0x43, 0x32, 0x3c, 0x87, 0x43, 0x1a, 0xe0, 0x19, 0x43, 0x9a, 0x85, 0x6a, 0x41, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x96, 0x3d, 0x93, 0x4a, 0x3c, 0x41, 0x19, 0x6b, 0x0b, 0x44, 0xca, 0x6c, 0x0a, 0x46, 0xa0, 0x96, 0x10, 0x47, 0xaa, 0xc6, 0x23, 0x43, 0xc2, 0x12, 0xfd, 0x45, 0x93, 0x32, 0x0b, 0x48, 0xd4, 0x1e, 0x44, 0x49, 0x59, 0x33, 0x4d, 0x49, 0x69, 0xeb, 0xa7, 0xc8, 0x79, 0xec, 0xa1, 0x2d, 0xff, 0xff, 0x95, 0x3d, 0x86, 0xbd, 0xba, 0x40, 0x90, 0x1c, 0x07, 0x43, 0xcd, 0x67, 0x80, 0x44, 0x4b, 0xbf, 0xf8, 0x44, 0xa0, 0x8d, 0xa5, 0x42, 0x07, 0xdd, 0x01, 0x45, 0x94, 0x3e, 0x93, 0x46, 0x1d, 0xaf, 0x5d, 0x47, 0xc1, 0x88, 0x0c, 0x47, 0xbe, 0x52, 0xa7, 0xc5, 0x1b, 0x68, 0x96, 0x31, 0x70, 0xff, 0x95, 0x3d, 0xe3, 0x07, 0x56, 0x40, 0xc5, 0x7c, 0x2a, 0x42, 0xdf, 0xce, 0x2a, 0x43, 0xe4, 0xbb, 0x26, 0x43, 0x16, 0x09, 0x43, 0x42, 0x1c, 0x6c, 0x31, 0x44, 0x5f, 0x82, 0x67, 0x45, 0x67, 0xe3, 0xc9, 0x45, 0x57, 0x45, 0x1d, 0x45, 0x59, 0x3f, 0x15, 0xc3, 0xdb, 0x89, 0x21, 0x34, 0x2a, 0xf6, 0x95, 0x3d, 0xbf, 0xc4, 0xff, 0x3f, 0xfd, 0xed, 0x67, 0x41, 0x71, 0x54, 0xfd, 0x41, 0x8c, 0x05, 0x82, 0x41, 0xb8, 0xec, 0xf2, 0x41, 0x8f, 0xac, 0x86, 0x43, 0x29, 0x32, 0x53, 0x44, 0xe5, 0xbb, 0x5c, 0x44, 0x98, 0xaa, 0x54, 0x43, 0x58, 0xf3, 0xa9, 0xc0, 0x8a, 0xbc, 0x3c, 0x14, 0x66, 0x18, 0xc9, 0xbf, 0xd1, 0x2c, 0x29, 0x76, 0xc7, 0xd3, 0xa9, 0x3f, 0x0f, 0xf5, 0x44, 0x48, 0xe5, 0x55, 0x5f, 0xbf, 0x8e, 0xb8, 0xa6, 0x8f, 0x03, 0xab, 0xf8, 0x3e, 0xb8, 0x05, 0x91, 0x56, 0x00, 0xac, 0x78, 0xbe, 0xf0, 0xa9, 0x4d, 0x3f, 0x0d, 0x65, 0x94, 0x3f, 0x64, 0x77, 0x25, 0x6c, 0x89, 0x8c, 0x2a, 0x3f, 0xa6, 0x8c, 0x4e, 0x89, 0x5a, 0xc0, 0xb6, 0x3e, 0x86, 0x9a, 0xa6, 0x5b, 0x1d, 0xbf, 0x3a, 0x3e, 0x2a, 0x77, 0xca, 0xda, 0x39, 0x50, 0xb2, 0x3d, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0xce, 0xfc, 0xff, 0xff, 0xff, 0xff, 0xbd, 0x3f, 0xce, 0x7f, 0x7f, 0x35, 0x9d, 0x7a, 0x2a, 0x40, 0x90, 0xa5, 0x2e, 0x65, 0xd4, 0xc0, 0x79, 0x40, 0xcc, 0x32, 0xa5, 0xa3, 0x7d, 0x45, 0xae, 0x40, 0xdd, 0x82, 0x27, 0xc3, 0x7a, 0xea, 0xbe, 0x40, 0xac, 0x6c, 0x65, 0x8e, 0x45, 0x8d, 0x5c, 0x40, 0x4f, 0x27, 0x4d, 0x96, 0xdc, 0x85, 0xac, 0x40, 0x7f, 0xbb, 0xc5, 0x97, 0x86, 0x0b, 0xe2, 0x40, 0xbb, 0x17, 0x8f, 0xb2, 0x2c, 0xd4, 0xf7, 0x40, 0x2d, 0x0b, 0x7a, 0x69, 0x11, 0x15, 0xde, 0x40, 0x7d, 0xca, 0xe1, 0xda, 0x67, 0x06, 0xad, 0x3d, 0x43, 0x00, 0xc1, 0xe2, 0xff, 0xff, 0xbd, 0x3f, 0xe3, 0x15, 0x63, 0x6e, 0x04, 0x36, 0x1b, 0x40, 0xed, 0x02, 0x26, 0x45, 0xb9, 0x13, 0x5b, 0x40, 0x49, 0xd6, 0x52, 0xd0, 0x16, 0x2d, 0x80, 0x40, 0xb7, 0x0c, 0x7e, 0xbb, 0xb8, 0x85, 0x80, 0x40, 0x3d, 0x63, 0xaf, 0xa8, 0xea, 0xa3, 0x4d, 0x40, 0x01, 0x67, 0x06, 0x1b, 0x36, 0xfb, 0x8e, 0x40, 0xfb, 0xb6, 0x06, 0x57, 0x44, 0xe9, 0xb4, 0x40, 0x15, 0xbb, 0xa5, 0xb8, 0xb0, 0xa4, 0xbe, 0x40, 0x51, 0x5e, 0x6f, 0x03, 0x30, 0x80, 0x97, 0x40, 0xdd, 0x9e, 0xad, 0xa7, 0x21, 0xfc, 0x29, 0x3e, 0x7b, 0xd1, 0x21, 0x5b, 0xf5, 0xff, 0xbd, 0x3f, 0x8a, 0xad, 0x5e, 0xe8, 0xbc, 0x76, 0x0f, 0x40, 0x29, 0xd1, 0xa6, 0x9d, 0x48, 0x8f, 0x41, 0x40, 0x37, 0x18, 0x2c, 0x4d, 0x85, 0xc3, 0x56, 0x40, 0xe5, 0x3e, 0xa8, 0x8e, 0x8f, 0x47, 0x48, 0x40, 0x9c, 0x06, 0x34, 0xa1, 0x49, 0x65, 0x41, 0x40, 0x5f, 0xa7, 0xf1, 0x07, 0x33, 0x0c, 0x75, 0x40, 0x23, 0xd5, 0x37, 0x50, 0x7c, 0x5b, 0x90, 0x40, 0xe9, 0x31, 0x2e, 0xa3, 0x7d, 0xd6, 0x8b, 0x40, 0x53, 0xed, 0x2e, 0x7c, 0x6d, 0xf2, 0x59, 0x40, 0xf4, 0x44, 0x55, 0xf6, 0xd4, 0xe9, 0x7c, 0x3e, 0x83, 0x0d, 0x76, 0xbe, 0x42, 0xff, 0xbd, 0x3f, 0xc0, 0xae, 0x8f, 0xf9, 0xb7, 0xf2, 0x02, 0x40, 0x64, 0xa9, 0x71, 0x7f, 0x37, 0x7c, 0x28, 0x40, 0xe2, 0x8e, 0x7f, 0x17, 0xa8, 0xb1, 0x31, 0x40, 0xfe, 0xc1, 0x74, 0xa5, 0x49, 0x4b, 0x14, 0x40, 0xdc, 0xec, 0xd5, 0x8a, 0xbd, 0x6f, 0x35, 0x40, 0xd5, 0x2c, 0xf9, 0x14, 0x93, 0x52, 0x5f, 0x40, 0xd9, 0xdb, 0xa2, 0xd5, 0xd8, 0x08, 0x6d, 0x40, 0xa9, 0x84, 0x18, 0xda, 0x7a, 0x6b, 0x5d, 0x40, 0x92, 0x51, 0x4e, 0xf4, 0xb1, 0xba, 0x20, 0x40, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0xf3, 0xfd, 0xff, 0xff, 0xff, 0x3f, 0xba, 0xbf, 0xf7, 0x79, 0x67, 0xa2, 0x91, 0x45, 0x30, 0xc0, 0x76, 0xb5, 0xe4, 0x53, 0xd0, 0xbc, 0x87, 0xc0, 0x15, 0x74, 0xf8, 0x40, 0xe7, 0x24, 0xc7, 0xc0, 0x6a, 0x9c, 0xd0, 0x65, 0xd0, 0xa6, 0xe7, 0xc0, 0xe5, 0xcd, 0x5b, 0xde, 0xa6, 0x2c, 0x64, 0x40, 0x19, 0x84, 0xd8, 0xd0, 0x62, 0x91, 0xbe, 0x40, 0x98, 0x5e, 0xb7, 0xb0, 0x9a, 0x57, 0x00, 0x41, 0x19, 0x9c, 0x86, 0x72, 0x53, 0xf6, 0x25, 0x41, 0x5c, 0xad, 0x19, 0x77, 0xd2, 0x57, 0x24, 0x41, 0x18, 0xaa, 0xa5, 0x0e, 0x69, 0xf9, 0x11, 0xc1, 0x98, 0xa0, 0xa1, 0x1a, 0x43, 0xfa, 0xb6, 0xbd, 0xef, 0x7f, 0x59, 0xcb, 0xff, 0x3f, 0xba, 0xbf, 0x4b, 0xad, 0x03, 0xca, 0xe6, 0x1c, 0x20, 0xc0, 0xb0, 0xb9, 0xa7, 0x6c, 0x6d, 0xf5, 0x66, 0xc0, 0x4f, 0x73, 0x31, 0x69, 0xc6, 0x74, 0x95, 0xc0, 0x9d, 0xa7, 0xfd, 0x88, 0xe3, 0x68, 0xa4, 0xc0, 0xb2, 0x11, 0x5a, 0xff, 0xb2, 0x51, 0x54, 0x40, 0x39, 0xf8, 0x7b, 0xe7, 0x31, 0x1f, 0x9f, 0x40, 0x29, 0xce, 0x64, 0x0d, 0x1f, 0x0f, 0xd1, 0x40, 0x97, 0xd1, 0xba, 0xaa, 0x6d, 0x57, 0xe8, 0x40, 0x4b, 0x36, 0x7c, 0xcf, 0x04, 0x4b, 0xdb, 0x40, 0x04, 0xa0, 0xff, 0xfc, 0x2e, 0x6f, 0xb2, 0xc0, 0x4f, 0xc8, 0x8f, 0xd3, 0xa9, 0xcf, 0x35, 0xbe, 0x54, 0xed, 0xae, 0x51, 0xeb, 0x3f, 0xba, 0xbf, 0xff, 0xd9, 0x02, 0x33, 0xc2, 0x70, 0x12, 0xc0, 0xda, 0x16, 0x5d, 0xc2, 0x71, 0xec, 0x4c, 0xc0, 0x5f, 0xd5, 0x18, 0x47, 0xd3, 0x87, 0x6c, 0xc0, 0xf6, 0x1b, 0x5c, 0x5f, 0xb9, 0x66, 0x6b, 0xc0, 0xe4, 0x67, 0xd3, 0xcc, 0x23, 0xd5, 0x47, 0x40, 0x3e, 0xee, 0x31, 0xc0, 0xeb, 0x0e, 0x85, 0x40, 0x9a, 0x7c, 0x8e, 0x44, 0x4e, 0x68, 0xaa, 0x40, 0xa6, 0x54, 0x1d, 0xa6, 0xba, 0xab, 0xb5, 0x40, 0x4b, 0xdf, 0xd4, 0x0d, 0x7a, 0xbc, 0x9d, 0x40, 0x1f, 0x31, 0x0a, 0x29, 0x70, 0xe6, 0x60, 0xc0, 0xd2, 0x26, 0xc6, 0x44, 0x26, 0xf1, 0x87, 0xbe, 0x10, 0xb0, 0x48, 0x91, 0x8e, 0x3e, 0xba, 0xbf, 0xda, 0x4e, 0xbb, 0x69, 0x84, 0x04, 0x06, 0xc0, 0x7f, 0x90, 0x68, 0xc1, 0xe2, 0xa9, 0x33, 0xc0, 0xaa, 0x4a, 0x10, 0xde, 0xa3, 0x29, 0x45, 0xc0, 0x52, 0x6e, 0xcf, 0x39, 0x36, 0x5f, 0x35, 0xc0, 0xff, 0x64, 0xae, 0x78, 0x8a, 0x88, 0x3d, 0x40, 0xba, 0x1c, 0x82, 0xdb, 0x68, 0x9f, 0x6f, 0x40, 0xf7, 0xa0, 0x49, 0xce, 0x05, 0xac, 0x87, 0x40, 0x29, 0xc0, 0xd4, 0x48, 0x25, 0x1b, 0x87, 0x40, 0xd4, 0xd8, 0x3e, 0x3c, 0x5e, 0x7e, 0x63, 0x40, 0x6b, 0xe8, 0x1b, 0xe7, 0x86, 0xd6, 0x13, 0xc0, 0x31, 0xc3, 0x48, 0xbe, 0x3c, 0x9e, 0x4e, 0x3d, 0x2a, 0xaf, 0xfa, 0xba, 0x1c, 0x58, 0xc5, 0x37, 0x03, 0x60, 0xc5, 0xb3, 0x00, 0x00, 0x00, 0x00, 0x6a, 0x28, 0xa3, 0x3c, 0x4b, 0x64, 0x54, 0x39, 0xd4, 0x02, 0xb6, 0x35, 0xeb, 0xf8, 0xd5, 0x31, 0xcf, 0x81, 0x92, 0x2d, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0xf0, 0x3d, 0xea, 0xd4, 0x53, 0x41, 0xa3, 0x06, 0xce, 0x43, 0xed, 0x2b, 0x72, 0x45, 0xd6, 0x53, 0xf7, 0x45, 0x2c, 0x6a, 0xe4, 0x42, 0xe5, 0x2e, 0x64, 0x45, 0x35, 0x5c, 0x10, 0x47, 0x66, 0xa1, 0xbe, 0x47, 0x8b, 0xa8, 0xf0, 0x46, 0x00, 0x00, 0x00, 0x00, 0x3f, 0x33, 0x68, 0x2d, 0xff, 0xff, 0xef, 0x3d, 0x23, 0xb0, 0xd9, 0x40, 0xca, 0x9d, 0xd8, 0x42, 0xb7, 0x68, 0x01, 0x44, 0xc6, 0x2d, 0x04, 0x44, 0x55, 0x1f, 0x6d, 0x42, 0xb1, 0xd9, 0x77, 0x44, 0x23, 0x4a, 0xa7, 0x45, 0x86, 0x25, 0xf5, 0x45, 0x80, 0x01, 0xbc, 0x44, 0x00, 0x00, 0x00, 0x00, 0x0d, 0xe1, 0x4f, 0x31, 0xab, 0xff, 0xef, 0x3d, 0xe7, 0xb5, 0x7b, 0x40, 0x45, 0x7a, 0x0c, 0x42, 0x2a, 0x1c, 0xb6, 0x42, 0x7c, 0x3c, 0x42, 0x42, 0x4d, 0x2a, 0x0b, 0x42, 0x98, 0x61, 0xa8, 0x43, 0xe3, 0xdb, 0x82, 0x44, 0xed, 0xb3, 0x5e, 0x44, 0x6c, 0x93, 0xcf, 0x42, 0x00, 0x00, 0x00, 0x00, 0xa8, 0x4e, 0xe7, 0x33, 0x16, 0xfa, 0xef, 0x3d, 0xc0, 0x95, 0x17, 0x40, 0xbc, 0xe1, 0x43, 0x41, 0x41, 0x8d, 0x8d, 0x41, 0x4d, 0x5a, 0xa2, 0x40, 0xec, 0x7d, 0xab, 0x41, 0x99, 0x94, 0xfa, 0x42, 0xc7, 0x46, 0x68, 0x43, 0xd7, 0x5b, 0xeb, 0x42, 0x90, 0xd5, 0x05, 0x41, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0xd2, 0xbd, 0x8d, 0x2c, 0x82, 0xc1, 0x83, 0xe6, 0x3d, 0xc4, 0x3a, 0x27, 0x39, 0xc6, 0x83, 0x36, 0x3d, 0xc7, 0x37, 0x65, 0x21, 0x43, 0x17, 0x8b, 0xf4, 0x45, 0xd6, 0xbc, 0x02, 0x48, 0x9c, 0xb2, 0x2f, 0x49, 0x94, 0xbe, 0x22, 0x49, 0x48, 0xcb, 0x8f, 0xc8, 0x19, 0xd2, 0xb7, 0xad, 0xfe, 0xff, 0xd1, 0xbd, 0x36, 0xe7, 0x00, 0xc1, 0x6b, 0xab, 0x37, 0xc3, 0x33, 0xa6, 0xab, 0xc4, 0x1c, 0x47, 0x23, 0xc5, 0x98, 0x8d, 0xa2, 0x42, 0x8f, 0xf9, 0xf8, 0x44, 0xf8, 0x78, 0x88, 0x46, 0x6d, 0xbb, 0x42, 0x47, 0x26, 0x58, 0xda, 0x46, 0x78, 0x79, 0x93, 0xc5, 0x4f, 0x7d, 0xae, 0xb1, 0x5b, 0xff, 0xd1, 0xbd, 0x12, 0x86, 0x93, 0xc0, 0x8e, 0x63, 0x67, 0xc2, 0x9a, 0x3e, 0x64, 0xc3, 0xcb, 0x35, 0x5b, 0xc3, 0x1e, 0xa9, 0x3e, 0x42, 0x5e, 0x77, 0x28, 0x44, 0x72, 0x42, 0x53, 0x45, 0xd5, 0x5d, 0xad, 0x45, 0xd0, 0xe3, 0xed, 0x44, 0x81, 0x33, 0x07, 0xc3, 0x32, 0x89, 0x3f, 0xb4, 0x75, 0xf4, 0xd1, 0xbd, 0x23, 0x24, 0x30, 0xc0, 0x16, 0x4f, 0x9d, 0xc1, 0x1f, 0x4d, 0x29, 0xc2, 0xb2, 0xf9, 0xaa, 0xc1, 0x54, 0x44, 0xec, 0x41, 0x47, 0xfb, 0x7c, 0x43, 0x2e, 0x60, 0x3d, 0x44, 0x2a, 0xd9, 0x38, 0x44, 0xf2, 0xf2, 0x1b, 0x43, 0x37, 0xb4, 0x9e, 0xc0, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0xf0, 0x3f, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0xf8, 0x3f, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x06, 0xd0, 0xcf, 0x43, 0xeb, 0xfd, 0x4c, 0x3e, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x40, 0x03, 0xb8, 0xe2, 0x3f, 0x00, 0x00, 0x80, 0x3f, 0x00, 0x00, 0xc0, 0x3f, 0x00, 0x00, 0x00, 0x00, 0xdc, 0xcf, 0xd1, 0x35, 0x00, 0x00, 0x00, 0x00, 0x00, 0xc0, 0x15, 0x3f, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0xf0, 0x3f, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0xf0, 0x3f, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x40, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x18, 0x40, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x38, 0x40, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x5e, 0x40, 0x00, 0x00, 0x00, 0x00, 0x00, 0x80, 0x86, 0x40, 0x00, 0x00, 0x00, 0x00, 0x00, 0xb0, 0xb3, 0x40, 0x00, 0x00, 0x00, 0x00, 0x00, 0xb0, 0xe3, 0x40, 0x00, 0x00, 0x00, 0x00, 0x00, 0x26, 0x16, 0x41, 0x00, 0x00, 0x00, 0x00, 0x80, 0xaf, 0x4b, 0x41, 0x00, 0x00, 0x00, 0x00, 0xa8, 0x08, 0x83, 0x41, 0x00, 0x00, 0x00, 0x00, 0xfc, 0x8c, 0xbc, 0x41, 0x00, 0x00, 0x00, 0xc0, 0x8c, 0x32, 0xf7, 0x41, 0x00, 0x00, 0x00, 0x28, 0x3b, 0x4c, 0x34, 0x42, 0x00, 0x00, 0x80, 0x75, 0x77, 0x07, 0x73, 0x42, 0x00, 0x00, 0x80, 0x75, 0x77, 0x07, 0xb3, 0x42, 0x00, 0x00, 0xd8, 0xec, 0xee, 0x37, 0xf4, 0x42, 0x00, 0x00, 0x73, 0xca, 0xec, 0xbe, 0x36, 0x43, 0x00, 0x90, 0x68, 0x30, 0xb9, 0x02, 0x7b, 0x43, 0x00, 0x5a, 0x41, 0xbe, 0xb3, 0xe1, 0xc0, 0x43, 0x20, 0xc6, 0xb5, 0xe9, 0x3b, 0x28, 0x06, 0x44, 0x6c, 0xf0, 0x59, 0x61, 0x52, 0x77, 0x4e, 0x44, 0x9e, 0xa4, 0xc1, 0x43, 0x51, 0xea, 0x15, 0x42, 0x57, 0x4c, 0xf5, 0x75, 0x70, 0xfc, 0x23, 0x42, 0x1a, 0xb6, 0x8a, 0x81, 0x32, 0xa1, 0x20, 0x42, 0x1a, 0x26, 0xe8, 0x22, 0xb5, 0xb0, 0x10, 0x42, 0xe8, 0xa1, 0xa5, 0xb3, 0xc1, 0x7f, 0xf6, 0x41, 0x3f, 0xf3, 0xd3, 0xf5, 0x18, 0x74, 0xd5, 0x41, 0x2a, 0x5f, 0xb9, 0x7b, 0x0c, 0xab, 0xad, 0x41, 0x98, 0xcc, 0x5d, 0xf9, 0x76, 0xf8, 0x7d, 0x41, 0x4c, 0xf4, 0x80, 0x50, 0xe9, 0xf1, 0x45, 0x41, 0xeb, 0x87, 0x87, 0x1f, 0x42, 0xb6, 0x06, 0x41, 0x04, 0xd8, 0x58, 0x08, 0xac, 0x87, 0xbf, 0x40, 0x52, 0x3b, 0xbc, 0x7b, 0x60, 0x5a, 0x6a, 0x40, 0x05, 0x27, 0xf6, 0x1f, 0x93, 0x0d, 0x04, 0x40, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0xa8, 0x08, 0x83, 0x41, 0x00, 0x00, 0x00, 0x80, 0x69, 0xbd, 0x9c, 0x41, 0x00, 0x00, 0x00, 0xb0, 0xa6, 0xfd, 0xa1, 0x41, 0x00, 0x00, 0x00, 0x70, 0x71, 0x18, 0x99, 0x41, 0x00, 0x00, 0x00, 0x90, 0xb6, 0xee, 0x85, 0x41, 0x00, 0x00, 0x00, 0xe0, 0x71, 0x71, 0x69, 0x41, 0x00, 0x00, 0x00, 0x00, 0x7b, 0x1f, 0x44, 0x41, 0x00, 0x00, 0x00, 0x00, 0xbc, 0xd0, 0x15, 0x41, 0x00, 0x00, 0x00, 0x00, 0x80, 0xe7, 0xdf, 0x40, 0x00, 0x00, 0x00, 0x00, 0x00, 0x14, 0x9e, 0x40, 0x00, 0x00, 0x00, 0x00, 0x00, 0x80, 0x50, 0x40, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0xf0, 0x3f, 0x2e, 0x2f, 0x30, 0x31, 0x32, 0x33, 0x34, 0x35, 0x36, 0x37, 0x38, 0x39, 0x41, 0x42, 0x43, 0x44, 0x45, 0x46, 0x47, 0x48, 0x49, 0x4a, 0x4b, 0x4c, 0x4d, 0x4e, 0x4f, 0x50, 0x51, 0x52, 0x53, 0x54, 0x55, 0x56, 0x57, 0x58, 0x59, 0x5a, 0x61, 0x62, 0x63, 0x64, 0x65, 0x66, 0x67, 0x68, 0x69, 0x6a, 0x6b, 0x6c, 0x6d, 0x6e, 0x6f, 0x70, 0x71, 0x72, 0x73, 0x74, 0x75, 0x76, 0x77, 0x78, 0x79, 0x7a, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x01, 0x02, 0x35, 0x03, 0x07, 0x36, 0x1b, 0x04, 0x26, 0x29, 0x08, 0x22, 0x37, 0x30, 0x1c, 0x3e, 0x05, 0x27, 0x2e, 0x2c, 0x2a, 0x16, 0x09, 0x18, 0x23, 0x3b, 0x38, 0x31, 0x12, 0x1d, 0x0b, 0x3f, 0x34, 0x06, 0x1a, 0x25, 0x28, 0x21, 0x2f, 0x3d, 0x2d, 0x2b, 0x15, 0x17, 0x3a, 0x11, 0x0a, 0x33, 0x19, 0x24, 0x20, 0x3c, 0x14, 0x39, 0x10, 0x32, 0x1f, 0x13, 0x0f, 0x1e, 0x0e, 0x0d, 0x0c, 0x00, 0x01, 0x17, 0x02, 0x1d, 0x18, 0x13, 0x03, 0x1e, 0x1b, 0x19, 0x0b, 0x14, 0x08, 0x04, 0x0d, 0x1f, 0x16, 0x1c, 0x12, 0x1a, 0x0a, 0x07, 0x0c, 0x15, 0x11, 0x09, 0x06, 0x10, 0x05, 0x0f, 0x0e, 0x00, 0x01, 0x02, 0x35, 0x03, 0x07, 0x36, 0x1b, 0x04, 0x26, 0x29, 0x08, 0x22, 0x37, 0x30, 0x1c, 0x3e, 0x05, 0x27, 0x2e, 0x2c, 0x2a, 0x16, 0x09, 0x18, 0x23, 0x3b, 0x38, 0x31, 0x12, 0x1d, 0x0b, 0x3f, 0x34, 0x06, 0x1a, 0x25, 0x28, 0x21, 0x2f, 0x3d, 0x2d, 0x2b, 0x15, 0x17, 0x3a, 0x11, 0x0a, 0x33, 0x19, 0x24, 0x20, 0x3c, 0x14, 0x39, 0x10, 0x32, 0x1f, 0x13, 0x0f, 0x1e, 0x0e, 0x0d, 0x0c, 0x00, 0x01, 0x17, 0x02, 0x1d, 0x18, 0x13, 0x03, 0x1e, 0x1b, 0x19, 0x0b, 0x14, 0x08, 0x04, 0x0d, 0x1f, 0x16, 0x1c, 0x12, 0x1a, 0x0a, 0x07, 0x0c, 0x15, 0x11, 0x09, 0x06, 0x10, 0x05, 0x0f, 0x0e, 0x00, 0x01, 0x02, 0x35, 0x03, 0x07, 0x36, 0x1b, 0x04, 0x26, 0x29, 0x08, 0x22, 0x37, 0x30, 0x1c, 0x3e, 0x05, 0x27, 0x2e, 0x2c, 0x2a, 0x16, 0x09, 0x18, 0x23, 0x3b, 0x38, 0x31, 0x12, 0x1d, 0x0b, 0x3f, 0x34, 0x06, 0x1a, 0x25, 0x28, 0x21, 0x2f, 0x3d, 0x2d, 0x2b, 0x15, 0x17, 0x3a, 0x11, 0x0a, 0x33, 0x19, 0x24, 0x20, 0x3c, 0x14, 0x39, 0x10, 0x32, 0x1f, 0x13, 0x0f, 0x1e, 0x0e, 0x0d, 0x0c, 0x00, 0x01, 0x17, 0x02, 0x1d, 0x18, 0x13, 0x03, 0x1e, 0x1b, 0x19, 0x0b, 0x14, 0x08, 0x04, 0x0d, 0x1f, 0x16, 0x1c, 0x12, 0x1a, 0x0a, 0x07, 0x0c, 0x15, 0x11, 0x09, 0x06, 0x10, 0x05, 0x0f, 0x0e, 0x01, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x01, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x01, 0x00, 0x2f, 0x64, 0x65, 0x76, 0x2f, 0x6c, 0x6f, 0x67, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x02, 0x00, 0x00, 0xc0, 0x03, 0x00, 0x00, 0xc0, 0x04, 0x00, 0x00, 0xc0, 0x05, 0x00, 0x00, 0xc0, 0x06, 0x00, 0x00, 0xc0, 0x07, 0x00, 0x00, 0xc0, 0x08, 0x00, 0x00, 0xc0, 0x09, 0x00, 0x00, 0xc0, 0x0a, 0x00, 0x00, 0xc0, 0x0b, 0x00, 0x00, 0xc0, 0x0c, 0x00, 0x00, 0xc0, 0x0d, 0x00, 0x00, 0xc0, 0x0e, 0x00, 0x00, 0xc0, 0x0f, 0x00, 0x00, 0xc0, 0x10, 0x00, 0x00, 0xc0, 0x11, 0x00, 0x00, 0xc0, 0x12, 0x00, 0x00, 0xc0, 0x13, 0x00, 0x00, 0xc0, 0x14, 0x00, 0x00, 0xc0, 0x15, 0x00, 0x00, 0xc0, 0x16, 0x00, 0x00, 0xc0, 0x17, 0x00, 0x00, 0xc0, 0x18, 0x00, 0x00, 0xc0, 0x19, 0x00, 0x00, 0xc0, 0x1a, 0x00, 0x00, 0xc0, 0x1b, 0x00, 0x00, 0xc0, 0x1c, 0x00, 0x00, 0xc0, 0x1d, 0x00, 0x00, 0xc0, 0x1e, 0x00, 0x00, 0xc0, 0x1f, 0x00, 0x00, 0xc0, 0x00, 0x00, 0x00, 0xb3, 0x01, 0x00, 0x00, 0xc3, 0x02, 0x00, 0x00, 0xc3, 0x03, 0x00, 0x00, 0xc3, 0x04, 0x00, 0x00, 0xc3, 0x05, 0x00, 0x00, 0xc3, 0x06, 0x00, 0x00, 0xc3, 0x07, 0x00, 0x00, 0xc3, 0x08, 0x00, 0x00, 0xc3, 0x09, 0x00, 0x00, 0xc3, 0x0a, 0x00, 0x00, 0xc3, 0x0b, 0x00, 0x00, 0xc3, 0x0c, 0x00, 0x00, 0xc3, 0x0d, 0x00, 0x00, 0xd3, 0x0e, 0x00, 0x00, 0xc3, 0x0f, 0x00, 0x00, 0xc3, 0x00, 0x00, 0x0c, 0xbb, 0x01, 0x00, 0x0c, 0xc3, 0x02, 0x00, 0x0c, 0xc3, 0x03, 0x00, 0x0c, 0xc3, 0x04, 0x00, 0x0c, 0xdb, 0x00, 0x00, 0x00, 0x00, 0x49, 0x6e, 0x76, 0x61, 0x6c, 0x69, 0x64, 0x20, 0x66, 0x6c, 0x61, 0x67, 0x73, 0x00, 0x4e, 0x61, 0x6d, 0x65, 0x20, 0x64, 0x6f, 0x65, 0x73, 0x20, 0x6e, 0x6f, 0x74, 0x20, 0x72, 0x65, 0x73, 0x6f, 0x6c, 0x76, 0x65, 0x00, 0x54, 0x72, 0x79, 0x20, 0x61, 0x67, 0x61, 0x69, 0x6e, 0x00, 0x4e, 0x6f, 0x6e, 0x2d, 0x72, 0x65, 0x63, 0x6f, 0x76, 0x65, 0x72, 0x61, 0x62, 0x6c, 0x65, 0x20, 0x65, 0x72, 0x72, 0x6f, 0x72, 0x00, 0x55, 0x6e, 0x6b, 0x6e, 0x6f, 0x77, 0x6e, 0x20, 0x65, 0x72, 0x72, 0x6f, 0x72, 0x00, 0x55, 0x6e, 0x72, 0x65, 0x63, 0x6f, 0x67, 0x6e, 0x69, 0x7a, 0x65, 0x64, 0x20, 0x61, 0x64, 0x64, 0x72, 0x65, 0x73, 0x73, 0x20, 0x66, 0x61, 0x6d, 0x69, 0x6c, 0x79, 0x20, 0x6f, 0x72, 0x20, 0x69, 0x6e, 0x76, 0x61, 0x6c, 0x69, 0x64, 0x20, 0x6c, 0x65, 0x6e, 0x67, 0x74, 0x68, 0x00, 0x55, 0x6e, 0x72, 0x65, 0x63, 0x6f, 0x67, 0x6e, 0x69, 0x7a, 0x65, 0x64, 0x20, 0x73, 0x6f, 0x63, 0x6b, 0x65, 0x74, 0x20, 0x74, 0x79, 0x70, 0x65, 0x00, 0x55, 0x6e, 0x72, 0x65, 0x63, 0x6f, 0x67, 0x6e, 0x69, 0x7a, 0x65, 0x64, 0x20, 0x73, 0x65, 0x72, 0x76, 0x69, 0x63, 0x65, 0x00, 0x55, 0x6e, 0x6b, 0x6e, 0x6f, 0x77, 0x6e, 0x20, 0x65, 0x72, 0x72, 0x6f, 0x72, 0x00, 0x4f, 0x75, 0x74, 0x20, 0x6f, 0x66, 0x20, 0x6d, 0x65, 0x6d, 0x6f, 0x72, 0x79, 0x00, 0x53, 0x79, 0x73, 0x74, 0x65, 0x6d, 0x20, 0x65, 0x72, 0x72, 0x6f, 0x72, 0x00, 0x4f, 0x76, 0x65, 0x72, 0x66, 0x6c, 0x6f, 0x77, 0x00, 0x00, 0x55, 0x6e, 0x6b, 0x6e, 0x6f, 0x77, 0x6e, 0x20, 0x65, 0x72, 0x72, 0x6f, 0x72, 0x00, 0x00, 0x0a, 0x00, 0xff, 0xff, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x01, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x30, 0x31, 0x32, 0x33, 0x34, 0x35, 0x36, 0x37, 0x38, 0x39, 0x61, 0x62, 0x63, 0x64, 0x65, 0x66, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x48, 0x6f, 0x73, 0x74, 0x20, 0x6e, 0x6f, 0x74, 0x20, 0x66, 0x6f, 0x75, 0x6e, 0x64, 0x00, 0x54, 0x72, 0x79, 0x20, 0x61, 0x67, 0x61, 0x69, 0x6e, 0x00, 0x4e, 0x6f, 0x6e, 0x2d, 0x72, 0x65, 0x63, 0x6f, 0x76, 0x65, 0x72, 0x61, 0x62, 0x6c, 0x65, 0x20, 0x65, 0x72, 0x72, 0x6f, 0x72, 0x00, 0x41, 0x64, 0x64, 0x72, 0x65, 0x73, 0x73, 0x20, 0x6e, 0x6f, 0x74, 0x20, 0x61, 0x76, 0x61, 0x69, 0x6c, 0x61, 0x62, 0x6c, 0x65, 0x00, 0x00, 0x55, 0x6e, 0x6b, 0x6e, 0x6f, 0x77, 0x6e, 0x20, 0x65, 0x72, 0x72, 0x6f, 0x72, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x01, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x01, 0x0f, 0xff, 0x32, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0xff, 0xff, 0x00, 0x00, 0x00, 0x00, 0x0b, 0xff, 0x23, 0x04, 0x20, 0x02, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x01, 0xff, 0x1e, 0x02, 0x20, 0x01, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x03, 0xff, 0x05, 0x05, 0xfc, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0xfe, 0x03, 0x0d, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x28, 0x01, 0x0a, 0x00, 0x00, 0x00, 0x01, 0x00, 0x00, 0x00, 0x02, 0x00, 0x00, 0x00, 0x1c, 0x00, 0x00, 0x00, 0x00, 0x80, 0x00, 0x00, 0x0f, 0x00, 0x00, 0x00, 0x00, 0x78, 0x00, 0x00, 0x0b, 0x00, 0x00, 0x00, 0x00, 0x04, 0x00, 0x00, 0x0a, 0x00, 0x00, 0x00, 0x00, 0x02, 0x00, 0x00, 0x09, 0x00, 0x00, 0x00, 0x00, 0x01, 0x00, 0x00, 0x08, 0x00, 0x00, 0x00, 0x80, 0x00, 0x00, 0x00, 0x07, 0x00, 0x00, 0x00, 0x40, 0x00, 0x00, 0x00, 0x06, 0x00, 0x00, 0x00, 0x20, 0x00, 0x00, 0x00, 0x05, 0x00, 0x00, 0x00, 0x10, 0x00, 0x00, 0x00, 0x04, 0x00, 0x00, 0x00, 0x0f, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x6d, 0xe6, 0xec, 0xde, 0x05, 0x00, 0x0b, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x2d, 0xf4, 0x51, 0x58, 0xcf, 0x8c, 0xb1, 0xc0, 0x46, 0xf6, 0xb5, 0xcb, 0x29, 0x31, 0x03, 0xc7, 0x04, 0x5b, 0x70, 0x30, 0xb4, 0x5d, 0xfd, 0x20, 0x78, 0x7f, 0x8b, 0x9a, 0xd8, 0x59, 0x29, 0x50, 0x68, 0x48, 0x89, 0xab, 0xa7, 0x56, 0x03, 0x6c, 0xff, 0xb7, 0xcd, 0x88, 0x3f, 0xd4, 0x77, 0xb4, 0x2b, 0xa5, 0xa3, 0x70, 0xf1, 0xba, 0xe4, 0xa8, 0xfc, 0x41, 0x83, 0xfd, 0xd9, 0x6f, 0xe1, 0x8a, 0x7a, 0x2f, 0x2d, 0x74, 0x96, 0x07, 0x1f, 0x0d, 0x09, 0x5e, 0x03, 0x76, 0x2c, 0x70, 0xf7, 0x40, 0xa5, 0x2c, 0xa7, 0x6f, 0x57, 0x41, 0xa8, 0xaa, 0x74, 0xdf, 0xa0, 0x58, 0x64, 0x03, 0x4a, 0xc7, 0xc4, 0x3c, 0x53, 0xae, 0xaf, 0x5f, 0x18, 0x04, 0x15, 0xb1, 0xe3, 0x6d, 0x28, 0x86, 0xab, 0x0c, 0xa4, 0xbf, 0x43, 0xf0, 0xe9, 0x50, 0x81, 0x39, 0x57, 0x16, 0x52, 0x37, 0x4e, 0x6f, 0x20, 0x65, 0x72, 0x72, 0x6f, 0x72, 0x00, 0x4e, 0x6f, 0x20, 0x6d, 0x61, 0x74, 0x63, 0x68, 0x00, 0x49, 0x6e, 0x76, 0x61, 0x6c, 0x69, 0x64, 0x20, 0x72, 0x65, 0x67, 0x65, 0x78, 0x70, 0x00, 0x55, 0x6e, 0x6b, 0x6e, 0x6f, 0x77, 0x6e, 0x20, 0x63, 0x6f, 0x6c, 0x6c, 0x61, 0x74, 0x69, 0x6e, 0x67, 0x20, 0x65, 0x6c, 0x65, 0x6d, 0x65, 0x6e, 0x74, 0x00, 0x55, 0x6e, 0x6b, 0x6e, 0x6f, 0x77, 0x6e, 0x20, 0x63, 0x68, 0x61, 0x72, 0x61, 0x63, 0x74, 0x65, 0x72, 0x20, 0x63, 0x6c, 0x61, 0x73, 0x73, 0x20, 0x6e, 0x61, 0x6d, 0x65, 0x00, 0x54, 0x72, 0x61, 0x69, 0x6c, 0x69, 0x6e, 0x67, 0x20, 0x62, 0x61, 0x63, 0x6b, 0x73, 0x6c, 0x61, 0x73, 0x68, 0x00, 0x49, 0x6e, 0x76, 0x61, 0x6c, 0x69, 0x64, 0x20, 0x62, 0x61, 0x63, 0x6b, 0x20, 0x72, 0x65, 0x66, 0x65, 0x72, 0x65, 0x6e, 0x63, 0x65, 0x00, 0x4d, 0x69, 0x73, 0x73, 0x69, 0x6e, 0x67, 0x20, 0x27, 0x5d, 0x27, 0x00, 0x4d, 0x69, 0x73, 0x73, 0x69, 0x6e, 0x67, 0x20, 0x27, 0x29, 0x27, 0x00, 0x4d, 0x69, 0x73, 0x73, 0x69, 0x6e, 0x67, 0x20, 0x27, 0x7d, 0x27, 0x00, 0x49, 0x6e, 0x76, 0x61, 0x6c, 0x69, 0x64, 0x20, 0x63, 0x6f, 0x6e, 0x74, 0x65, 0x6e, 0x74, 0x73, 0x20, 0x6f, 0x66, 0x20, 0x7b, 0x7d, 0x00, 0x49, 0x6e, 0x76, 0x61, 0x6c, 0x69, 0x64, 0x20, 0x63, 0x68, 0x61, 0x72, 0x61, 0x63, 0x74, 0x65, 0x72, 0x20, 0x72, 0x61, 0x6e, 0x67, 0x65, 0x00, 0x4f, 0x75, 0x74, 0x20, 0x6f, 0x66, 0x20, 0x6d, 0x65, 0x6d, 0x6f, 0x72, 0x79, 0x00, 0x52, 0x65, 0x70, 0x65, 0x74, 0x69, 0x74, 0x69, 0x6f, 0x6e, 0x20, 0x6e, 0x6f, 0x74, 0x20, 0x70, 0x72, 0x65, 0x63, 0x65, 0x64, 0x65, 0x64, 0x20, 0x62, 0x79, 0x20, 0x76, 0x61, 0x6c, 0x69, 0x64, 0x20, 0x65, 0x78, 0x70, 0x72, 0x65, 0x73, 0x73, 0x69, 0x6f, 0x6e, 0x00, 0x00, 0x55, 0x6e, 0x6b, 0x6e, 0x6f, 0x77, 0x6e, 0x20, 0x65, 0x72, 0x72, 0x6f, 0x72, 0x00, 0x00, 0x00, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0x7f, 0xfc, 0xff, 0xff, 0xff, 0x19, 0x00, 0x0a, 0x00, 0x19, 0x19, 0x19, 0x00, 0x00, 0x00, 0x00, 0x05, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x09, 0x00, 0x00, 0x00, 0x00, 0x0b, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x19, 0x00, 0x11, 0x0a, 0x19, 0x19, 0x19, 0x03, 0x0a, 0x07, 0x00, 0x01, 0x1b, 0x09, 0x0b, 0x18, 0x00, 0x00, 0x09, 0x06, 0x0b, 0x00, 0x00, 0x0b, 0x00, 0x06, 0x19, 0x00, 0x00, 0x00, 0x19, 0x19, 0x19, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x0e, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x19, 0x00, 0x0a, 0x0d, 0x19, 0x19, 0x19, 0x00, 0x0d, 0x00, 0x00, 0x02, 0x00, 0x09, 0x0e, 0x00, 0x00, 0x00, 0x09, 0x00, 0x0e, 0x00, 0x00, 0x0e, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x0c, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x13, 0x00, 0x00, 0x00, 0x00, 0x13, 0x00, 0x00, 0x00, 0x00, 0x09, 0x0c, 0x00, 0x00, 0x00, 0x00, 0x00, 0x0c, 0x00, 0x00, 0x0c, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x10, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x0f, 0x00, 0x00, 0x00, 0x04, 0x0f, 0x00, 0x00, 0x00, 0x00, 0x09, 0x10, 0x00, 0x00, 0x00, 0x00, 0x00, 0x10, 0x00, 0x00, 0x10, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x12, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x11, 0x00, 0x00, 0x00, 0x00, 0x11, 0x00, 0x00, 0x00, 0x00, 0x09, 0x12, 0x00, 0x00, 0x00, 0x00, 0x00, 0x12, 0x00, 0x00, 0x12, 0x00, 0x00, 0x1a, 0x00, 0x00, 0x00, 0x1a, 0x1a, 0x1a, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x1a, 0x00, 0x00, 0x00, 0x1a, 0x1a, 0x1a, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x09, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x14, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x17, 0x00, 0x00, 0x00, 0x00, 0x17, 0x00, 0x00, 0x00, 0x00, 0x09, 0x14, 0x00, 0x00, 0x00, 0x00, 0x00, 0x14, 0x00, 0x00, 0x14, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x16, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x15, 0x00, 0x00, 0x00, 0x00, 0x15, 0x00, 0x00, 0x00, 0x00, 0x09, 0x16, 0x00, 0x00, 0x00, 0x00, 0x00, 0x16, 0x00, 0x00, 0x16, 0x00, 0x00, 0x30, 0x31, 0x32, 0x33, 0x34, 0x35, 0x36, 0x37, 0x38, 0x39, 0x41, 0x42, 0x43, 0x44, 0x45, 0x46, 0x19, 0x00, 0x0a, 0x00, 0x19, 0x19, 0x19, 0x00, 0x00, 0x00, 0x00, 0x05, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x09, 0x00, 0x00, 0x00, 0x00, 0x0b, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x19, 0x00, 0x11, 0x0a, 0x19, 0x19, 0x19, 0x03, 0x0a, 0x07, 0x00, 0x01, 0x1b, 0x09, 0x0b, 0x18, 0x00, 0x00, 0x09, 0x06, 0x0b, 0x00, 0x00, 0x0b, 0x00, 0x06, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x0e, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x0a, 0x0d, 0x00, 0x00, 0x00, 0x00, 0x0d, 0x00, 0x00, 0x02, 0x00, 0x09, 0x0e, 0x00, 0x00, 0x00, 0x09, 0x00, 0x0e, 0x00, 0x00, 0x0e, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x0c, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x13, 0x00, 0x00, 0x00, 0x00, 0x13, 0x00, 0x00, 0x00, 0x00, 0x09, 0x0c, 0x00, 0x00, 0x00, 0x00, 0x00, 0x0c, 0x00, 0x00, 0x0c, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x10, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x0f, 0x00, 0x00, 0x00, 0x04, 0x0f, 0x00, 0x00, 0x00, 0x00, 0x09, 0x10, 0x00, 0x00, 0x00, 0x00, 0x00, 0x10, 0x00, 0x00, 0x10, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x12, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x11, 0x00, 0x00, 0x00, 0x00, 0x11, 0x00, 0x00, 0x00, 0x00, 0x09, 0x12, 0x00, 0x00, 0x00, 0x00, 0x00, 0x12, 0x00, 0x00, 0x12, 0x00, 0x00, 0x1a, 0x00, 0x00, 0x00, 0x1a, 0x1a, 0x1a, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x1a, 0x00, 0x00, 0x00, 0x1a, 0x1a, 0x1a, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x09, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x14, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x17, 0x00, 0x00, 0x00, 0x00, 0x17, 0x00, 0x00, 0x00, 0x00, 0x09, 0x14, 0x00, 0x00, 0x00, 0x00, 0x00, 0x14, 0x00, 0x00, 0x14, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x16, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x15, 0x00, 0x00, 0x00, 0x00, 0x15, 0x00, 0x00, 0x00, 0x00, 0x09, 0x16, 0x00, 0x00, 0x00, 0x00, 0x00, 0x16, 0x00, 0x00, 0x16, 0x00, 0x00, 0x4c, 0x00, 0x00, 0x6a, 0x4c, 0x4c, 0x4c, 0x00, 0x6a, 0x00, 0x00, 0x00, 0x00, 0x00, 0x6a, 0x6a, 0x00, 0x00, 0x00, 0x00, 0x6a, 0x00, 0x00, 0x6a, 0x68, 0x68, 0x00, 0x68, 0x00, 0x00, 0x00, 0x00, 0x00, 0x6c, 0x00, 0x00, 0x4c, 0x00, 0x00, 0x6c, 0x6c, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x20, 0x00, 0x00, 0x00, 0x09, 0x00, 0x00, 0x00, 0x0a, 0x00, 0x00, 0x00, 0x0d, 0x00, 0x00, 0x00, 0x0b, 0x00, 0x00, 0x00, 0x0c, 0x00, 0x00, 0x00, 0x85, 0x00, 0x00, 0x00, 0x00, 0x20, 0x00, 0x00, 0x01, 0x20, 0x00, 0x00, 0x02, 0x20, 0x00, 0x00, 0x03, 0x20, 0x00, 0x00, 0x04, 0x20, 0x00, 0x00, 0x05, 0x20, 0x00, 0x00, 0x06, 0x20, 0x00, 0x00, 0x08, 0x20, 0x00, 0x00, 0x09, 0x20, 0x00, 0x00, 0x0a, 0x20, 0x00, 0x00, 0x28, 0x20, 0x00, 0x00, 0x29, 0x20, 0x00, 0x00, 0x5f, 0x20, 0x00, 0x00, 0x00, 0x30, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x01, 0x02, 0x35, 0x03, 0x07, 0x36, 0x1b, 0x04, 0x26, 0x29, 0x08, 0x22, 0x37, 0x30, 0x1c, 0x3e, 0x05, 0x27, 0x2e, 0x2c, 0x2a, 0x16, 0x09, 0x18, 0x23, 0x3b, 0x38, 0x31, 0x12, 0x1d, 0x0b, 0x3f, 0x34, 0x06, 0x1a, 0x25, 0x28, 0x21, 0x2f, 0x3d, 0x2d, 0x2b, 0x15, 0x17, 0x3a, 0x11, 0x0a, 0x33, 0x19, 0x24, 0x20, 0x3c, 0x14, 0x39, 0x10, 0x32, 0x1f, 0x13, 0x0f, 0x1e, 0x0e, 0x0d, 0x0c, 0x00, 0x01, 0x17, 0x02, 0x1d, 0x18, 0x13, 0x03, 0x1e, 0x1b, 0x19, 0x0b, 0x14, 0x08, 0x04, 0x0d, 0x1f, 0x16, 0x1c, 0x12, 0x1a, 0x0a, 0x07, 0x0c, 0x15, 0x11, 0x09, 0x06, 0x10, 0x05, 0x0f, 0x0e, 0x55, 0x6e, 0x6b, 0x6e, 0x6f, 0x77, 0x6e, 0x20, 0x73, 0x69, 0x67, 0x6e, 0x61, 0x6c, 0x00, 0x48, 0x61, 0x6e, 0x67, 0x75, 0x70, 0x00, 0x49, 0x6e, 0x74, 0x65, 0x72, 0x72, 0x75, 0x70, 0x74, 0x00, 0x51, 0x75, 0x69, 0x74, 0x00, 0x49, 0x6c, 0x6c, 0x65, 0x67, 0x61, 0x6c, 0x20, 0x69, 0x6e, 0x73, 0x74, 0x72, 0x75, 0x63, 0x74, 0x69, 0x6f, 0x6e, 0x00, 0x54, 0x72, 0x61, 0x63, 0x65, 0x2f, 0x62, 0x72, 0x65, 0x61, 0x6b, 0x70, 0x6f, 0x69, 0x6e, 0x74, 0x20, 0x74, 0x72, 0x61, 0x70, 0x00, 0x41, 0x62, 0x6f, 0x72, 0x74, 0x65, 0x64, 0x00, 0x42, 0x75, 0x73, 0x20, 0x65, 0x72, 0x72, 0x6f, 0x72, 0x00, 0x41, 0x72, 0x69, 0x74, 0x68, 0x6d, 0x65, 0x74, 0x69, 0x63, 0x20, 0x65, 0x78, 0x63, 0x65, 0x70, 0x74, 0x69, 0x6f, 0x6e, 0x00, 0x4b, 0x69, 0x6c, 0x6c, 0x65, 0x64, 0x00, 0x55, 0x73, 0x65, 0x72, 0x20, 0x64, 0x65, 0x66, 0x69, 0x6e, 0x65, 0x64, 0x20, 0x73, 0x69, 0x67, 0x6e, 0x61, 0x6c, 0x20, 0x31, 0x00, 0x53, 0x65, 0x67, 0x6d, 0x65, 0x6e, 0x74, 0x61, 0x74, 0x69, 0x6f, 0x6e, 0x20, 0x66, 0x61, 0x75, 0x6c, 0x74, 0x00, 0x55, 0x73, 0x65, 0x72, 0x20, 0x64, 0x65, 0x66, 0x69, 0x6e, 0x65, 0x64, 0x20, 0x73, 0x69, 0x67, 0x6e, 0x61, 0x6c, 0x20, 0x32, 0x00, 0x42, 0x72, 0x6f, 0x6b, 0x65, 0x6e, 0x20, 0x70, 0x69, 0x70, 0x65, 0x00, 0x41, 0x6c, 0x61, 0x72, 0x6d, 0x20, 0x63, 0x6c, 0x6f, 0x63, 0x6b, 0x00, 0x54, 0x65, 0x72, 0x6d, 0x69, 0x6e, 0x61, 0x74, 0x65, 0x64, 0x00, 0x53, 0x74, 0x61, 0x63, 0x6b, 0x20, 0x66, 0x61, 0x75, 0x6c, 0x74, 0x00, 0x43, 0x68, 0x69, 0x6c, 0x64, 0x20, 0x70, 0x72, 0x6f, 0x63, 0x65, 0x73, 0x73, 0x20, 0x73, 0x74, 0x61, 0x74, 0x75, 0x73, 0x00, 0x43, 0x6f, 0x6e, 0x74, 0x69, 0x6e, 0x75, 0x65, 0x64, 0x00, 0x53, 0x74, 0x6f, 0x70, 0x70, 0x65, 0x64, 0x20, 0x28, 0x73, 0x69, 0x67, 0x6e, 0x61, 0x6c, 0x29, 0x00, 0x53, 0x74, 0x6f, 0x70, 0x70, 0x65, 0x64, 0x00, 0x53, 0x74, 0x6f, 0x70, 0x70, 0x65, 0x64, 0x20, 0x28, 0x74, 0x74, 0x79, 0x20, 0x69, 0x6e, 0x70, 0x75, 0x74, 0x29, 0x00, 0x53, 0x74, 0x6f, 0x70, 0x70, 0x65, 0x64, 0x20, 0x28, 0x74, 0x74, 0x79, 0x20, 0x6f, 0x75, 0x74, 0x70, 0x75, 0x74, 0x29, 0x00, 0x55, 0x72, 0x67, 0x65, 0x6e, 0x74, 0x20, 0x49, 0x2f, 0x4f, 0x20, 0x63, 0x6f, 0x6e, 0x64, 0x69, 0x74, 0x69, 0x6f, 0x6e, 0x00, 0x43, 0x50, 0x55, 0x20, 0x74, 0x69, 0x6d, 0x65, 0x20, 0x6c, 0x69, 0x6d, 0x69, 0x74, 0x20, 0x65, 0x78, 0x63, 0x65, 0x65, 0x64, 0x65, 0x64, 0x00, 0x46, 0x69, 0x6c, 0x65, 0x20, 0x73, 0x69, 0x7a, 0x65, 0x20, 0x6c, 0x69, 0x6d, 0x69, 0x74, 0x20, 0x65, 0x78, 0x63, 0x65, 0x65, 0x64, 0x65, 0x64, 0x00, 0x56, 0x69, 0x72, 0x74, 0x75, 0x61, 0x6c, 0x20, 0x74, 0x69, 0x6d, 0x65, 0x72, 0x20, 0x65, 0x78, 0x70, 0x69, 0x72, 0x65, 0x64, 0x00, 0x50, 0x72, 0x6f, 0x66, 0x69, 0x6c, 0x69, 0x6e, 0x67, 0x20, 0x74, 0x69, 0x6d, 0x65, 0x72, 0x20, 0x65, 0x78, 0x70, 0x69, 0x72, 0x65, 0x64, 0x00, 0x57, 0x69, 0x6e, 0x64, 0x6f, 0x77, 0x20, 0x63, 0x68, 0x61, 0x6e, 0x67, 0x65, 0x64, 0x00, 0x49, 0x2f, 0x4f, 0x20, 0x70, 0x6f, 0x73, 0x73, 0x69, 0x62, 0x6c, 0x65, 0x00, 0x50, 0x6f, 0x77, 0x65, 0x72, 0x20, 0x66, 0x61, 0x69, 0x6c, 0x75, 0x72, 0x65, 0x00, 0x42, 0x61, 0x64, 0x20, 0x73, 0x79, 0x73, 0x74, 0x65, 0x6d, 0x20, 0x63, 0x61, 0x6c, 0x6c, 0x00, 0x52, 0x54, 0x33, 0x32, 0x00, 0x52, 0x54, 0x33, 0x33, 0x00, 0x52, 0x54, 0x33, 0x34, 0x00, 0x52, 0x54, 0x33, 0x35, 0x00, 0x52, 0x54, 0x33, 0x36, 0x00, 0x52, 0x54, 0x33, 0x37, 0x00, 0x52, 0x54, 0x33, 0x38, 0x00, 0x52, 0x54, 0x33, 0x39, 0x00, 0x52, 0x54, 0x34, 0x30, 0x00, 0x52, 0x54, 0x34, 0x31, 0x00, 0x52, 0x54, 0x34, 0x32, 0x00, 0x52, 0x54, 0x34, 0x33, 0x00, 0x52, 0x54, 0x34, 0x34, 0x00, 0x52, 0x54, 0x34, 0x35, 0x00, 0x52, 0x54, 0x34, 0x36, 0x00, 0x52, 0x54, 0x34, 0x37, 0x00, 0x52, 0x54, 0x34, 0x38, 0x00, 0x52, 0x54, 0x34, 0x39, 0x00, 0x52, 0x54, 0x35, 0x30, 0x00, 0x52, 0x54, 0x35, 0x31, 0x00, 0x52, 0x54, 0x35, 0x32, 0x00, 0x52, 0x54, 0x35, 0x33, 0x00, 0x52, 0x54, 0x35, 0x34, 0x00, 0x52, 0x54, 0x35, 0x35, 0x00, 0x52, 0x54, 0x35, 0x36, 0x00, 0x52, 0x54, 0x35, 0x37, 0x00, 0x52, 0x54, 0x35, 0x38, 0x00, 0x52, 0x54, 0x35, 0x39, 0x00, 0x52, 0x54, 0x36, 0x30, 0x00, 0x52, 0x54, 0x36, 0x31, 0x00, 0x52, 0x54, 0x36, 0x32, 0x00, 0x52, 0x54, 0x36, 0x33, 0x00, 0x52, 0x54, 0x36, 0x34, 0x00, 0x00, 0x00, 0x40, 0x01, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x10, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x04, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x80, 0xde, 0x28, 0x00, 0x80, 0xc8, 0x4d, 0x00, 0x00, 0xa7, 0x76, 0x00, 0x00, 0x34, 0x9e, 0x00, 0x80, 0x12, 0xc7, 0x00, 0x80, 0x9f, 0xee, 0x00, 0x00, 0x7e, 0x17, 0x01, 0x80, 0x5c, 0x40, 0x01, 0x80, 0xe9, 0x67, 0x01, 0x00, 0xc8, 0x90, 0x01, 0x00, 0x55, 0xb8, 0x01, 0x1f, 0x1e, 0x1f, 0x1e, 0x1f, 0x1f, 0x1e, 0x1f, 0x1e, 0x1f, 0x1f, 0x1d, 0x00, 0x00, 0x00, 0x00, 0x55, 0x54, 0x43, 0x00, 0x00, 0x00, 0x00, 0x00, 0x2f, 0x75, 0x73, 0x72, 0x2f, 0x73, 0x68, 0x61, 0x72, 0x65, 0x2f, 0x7a, 0x6f, 0x6e, 0x65, 0x69, 0x6e, 0x66, 0x6f, 0x2f, 0x00, 0x2f, 0x73, 0x68, 0x61, 0x72, 0x65, 0x2f, 0x7a, 0x6f, 0x6e, 0x65, 0x69, 0x6e, 0x66, 0x6f, 0x2f, 0x00, 0x2f, 0x65, 0x74, 0x63, 0x2f, 0x7a, 0x6f, 0x6e, 0x65, 0x69, 0x6e, 0x66, 0x6f, 0x2f, 0x00, 0x00}
-
-var ts = TS("\x00\x00\x00\x00/bin:/usr/bin\x00\x00\x00%s\x00\x00\x01\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x008b \xd0\xc1\xd2\xcf\xcc\xd8\x00\x00\x00$2a$00$abcdefghijklmnopqrstuu\x00\x00\x00\xff4\xff\xff\xffE\x00\x00*\x00\x00\x00\x80\xff\x80\x01 \u007f\x81\x80\x80\r\n\xff\u007f \x81 test\x00\x00\x00\x00_0.../9Zz\x00\x00\x00_0.../9ZzX7iSJNd21sU\x00\x00\x00\x00\x80x\x00\x00\x80x22/wK52ZKGA\x00\x00\x00x\x00\x00\x00toupper\x00tolower\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x01\x00\x00\x00\x00\x00\x00\x00\x02\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00/dev/null\x00\x00\x00Assertion failed: %s (%s: %s: %d)\n\x00\x00infinity\x00\x00\x00\x00nan\x00\x00\x01\x02\x04\a\x03\x06\x05\x00\x00\x00\x00/proc/self/fd/\x00\x00Symbol not found: %s\x00\x00\x00\x00Dynamic linker failed to allocate memory for error message\x00\x00Invalid library handle %p\x00\x00\x00Unsupported request %d\x00\x00Dynamic loading not supported\x00\x00\x00/\x00\x00\x00%s: \x00\x00\x00\x00: \x00\x00/dev/tty\x00\x00\x00\x00\n\x00\x00\x00/etc/shells\x00rbe\x00rb\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00UTF-8\x00\x00\x00C.UTF-8\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00messages\x00\x00\x00\x00ASCII\x00\x00\x00C\x00\x00\x00LC_ALL\x00\x00LANG\x00\x00\x00\x00C.UTF-8\x00POSIX\x00\x00\x00MUSL_LOCPATH\x00\x00\x00\x00.\x00\x00\x00%*.*f\x00\x00\x00MSGVERB\x00label\x00\x00\x00severity\x00\x00\x00\x00text\x00\x00\x00\x00action\x00\x00tag\x00HALT: \x00\x00ERROR: \x00WARNING: \x00\x00\x00INFO: \x00\x00/dev/console\x00\x00\x00\x00%s%s%s%s%s%s%s%s\n\x00\x00\x00\nTO FIX: \x00\x00\x00 \x00\x00\x00PWD\x00: unrecognized option: \x00: option requires an argument: \x00: option does not take an argument: \x00\x00\x00\x00: option is ambiguous: \x00%*[^\n]%*[\n]\x00 %n%*s%n %n%*s%n %n%*s%n %n%*s%n %d %d\x00\x00%s\t%s\t%s\t%s\t%d\t%d\n\x00\x00/dev/ptmx\x00\x00\x00/dev/pts/%d\x00%b %e %T\x00\x00\x00\x00<%d>%s %n%s%s%.0d%s: \x00\x00\x00[\x00\x00\x00]\x00\x00\x00%.*s\x00\x00\x00\x002>/dev/null\x00/bin/sh\x00sh\x00\x00-c\x00\x00eval \"printf %s\\\\\\\\0 x $1 $2\"\x00\x00\x00r\x00\x00\x00/dev/shm/\x00\x00\x00%.2X\x00\x00\x00\x00:%.2X\x00\x00\x00\x02\x00\x00\x00\n\x00\x00\x00\x00\x00\x00\x00\x10\x00\x00\x00\x1c\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\xff\xff\x00\x00\x00\x00%d.%d.%d.%d.in-addr.arpa\x00\x00\x00\x00ip6.arpa\x00\x00\x00\x00/etc/hosts\x00\x00/etc/services\x00\x00\x00/udp\x00\x00\x00\x00/tcp\x00\x00\x00\x00tcp\x00udp\x00%s%s%s\x00\x00\x01\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00%d.%d.%d.%d\x00%x:%x:%x:%x:%x:%x:%x:%x\x00%x:%x:%x:%x:%x:%x:%d.%d.%d.%d\x00\x00\x00:0\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x02\x00\xff\xff\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00/etc/resolv.conf\x00\x00\x00\x00options\x00ndots:\x00\x00attempts:\x00\x00\x00timeout:\x00\x00\x00\x00nameserver\x00\x00domain\x00\x00search\x00\x00127.0.0.1\x00\x00\x00/etc/group\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00/etc/passwd\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00/etc/tcb/%s/shadow\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00/etc/shadow\x00%s:%s:%d:\x00\x00\x00%s%s\x00\x00\x00\x00,\x00\x00\x00%s:%s:%d:%d:%s:%s:%s\n\x00\x00\x00%s:%s:%.*ld:%.*ld:%.*ld:%.*ld:%.*ld:%.*ld:%.*lu\n\x00\x00\x00\x00\t\x00\x00\x00\r\x00\x00\x00\f\x00\x00\x00\a\x00\x00\x00\x1b\x00\x00\x00[[:alnum:]_]\x00\x00\x00\x00[^[:alnum:]_]\x00\x00\x00[[:space:]]\x00[^[:space:]]\x00\x00\x00\x00[[:digit:]]\x00[^[:digit:]]\x00\x00\x00\x00LINUX_2.6\x00\x00\x00__vdso_getcpu\x00\x00\x00%s%s%s\n\x00rwa\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00/tmp\x00\x00\x00\x00temp\x00\x00\x00\x00/tmp/tmpfile_XXXXXX\x00w+\x00\x00/tmp/tmpnam_XXXXXX\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00-+   0X0x\x00\x00\x00(null)\x00\x00-0X+0X 0X-0x+0x 0x\x00\x00inf\x00INF\x00NAN\x00%*s\x00%%%s%s%s%s%s*.*%c%c\x00#\x00\x00\x00+\x00\x00\x00-\x00\x00\x000\x00\x00\x00%.*s%.0d%s%c%%lln\x00\x00\x00%*\x00\x00%.*e\x00\x00\x00\x00%.*f\x00\x00\x00\x00000000000000000\x00%.*g\x00\x00\x00\x00\x01\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00@\x00\x00\x00\x00\x00\x00\x00XXXXXX\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00/proc/self/task/%d/comm\x00/dev/shm/tmp-%d\x00%.3s %.3s%3d %.2d:%.2d:%.2d %d\n\x00TZ\x00\x00/etc/localtime\x00\x00TZif\x00\x00\x00\x00DATEMSK\x00%m/%d/%y\x00\x00\x00\x00%Y-%m-%d\x00\x00\x00\x00%H:%M\x00\x00\x00%H:%M:%S\x00\x00\x00\x00+%lld\x00\x00\x00%+.4ld\x00\x00%\x00\x00\x00%lld\x00\x00\x00\x00%*lld\x00\x00\x00%0*lld\x00\x00LOGNAME\x00")
+var ts = TS("\x00\x00\x00\x00/bin:/usr/bin\x00\x00\x00%s\x00\x00\b\x00\xff\x00\xff\x00\xff\x00\x00\x10\x00\x10\x01\x00\x01\x00\x00\x00\x01\x00\xff\xff\xff\xff\xff\xff@\x00\x00\x10\x00\x10\x00\x10\x00\x10\x00\x10\xff\xff\x01\x00\x00\x00\x01\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x02\xff\x06\x80d\x00 \x00\a\x80\xff\xff\x06\x00\x01\x00\x01\x00\x01\xff\xff\xff\x01\xff\x01\xff\xff\xff\xff\xff\x01\xff\x01\xff\x01\xff\x01\xff\x01\xff\x01\xff\x01\xff\x01\xff\xff\xff\xff\xff\n\xff\v\xff\xff\xff\x03\xff\x01\xff\x04\xff\x1e\x00\x00\x01\x05\xff\xff\xff\xff\xffc\x00\x00\bc\x00\xe8\x03\x02\x00\x00\x00\xff\xff\xff\xff\xff\x00\x00\x00\x01\xff\x01\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x04\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x01\xff\x01\xff\xff\xff\xff\xff\x00\x01 \x00\x04\x00\x80\x00\x00\b\xff\xff\x01\xff\x01\xff\x01\xff\xff\xff\xff\xff\x01\xff\x06\xff\a\xff\b\xff\t\xff\xff\xff\xff\xff\xbc\x02\xbc\x02\x01\x00\xff\xff\x01\x00\x01\x00\xff\xff\x00\x00\xff\xff\xff\xff\xff\xff\xff\xff\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x14\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\xff\xff\xff\xff\x01\x00\xff\xff\xff\xff\xff\xff\xff\xff\x01\xff\x01\xff\x00\x00\x00\x00\x00\x00\x01\xff\x01\xff\x01\xff\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x01\xff\x00\x00\x00\x00\x00\x00\x01\xff\x01\xff\x01\x00\x00\x00\x01\x00\x00\x00\x01\xff\xff\xff\xff\xff\x00\x00\x00\x00\x01\xff\xff\xff\x00\x00\x00\x00\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff(\x00\n\xff\xff\xff\xff\xff\xff\xff\x01\x00\xff\xff\xff\x00\xff\xff\xff\xff\xff\xff\xff\xff\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x01\xff\x01\xff\xff\xff\xff\xff\x01\x00\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\n\xff\xff\xff\xff\xff\x00\x008b \xd0\xc1\xd2\xcf\xcc\xd8\x00\x00\x00$2a$00$abcdefghijklmnopqrstuu\x00\x00\x00\xff4\xff\xff\xffE\x00\x00*\x00\x00\x00VUrPmXD6q/nVSSp7pNDhCR9071IfIRe\x00U\x00i1D709vfamulimlGcq0qq3UvuUasvEa\x00U\x00\x00\x00\x00\x00\x02\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x01\x04\x00\x00\x00\x88j?$\xd3\b\xa3\x85.\x8a\x19\x13Dsp\x03\"8\t\xa4\xd01\x9f)\x98\xfa.\b\x89lN\xec\xe6!(Ew\x13\xd08\xcffT\xbel\f\xe94\xb7)\xac\xc0\xddP|ɵՄ?\x17\tG\xb5\xd9\xd5\x16\x92\x1b\xfby\x89\xa6\v1Ѭ\xb5ߘ\xdbr\xfd/\xb7\xdf\x1a\xd0\xed\xafḖ~&jE\x90|\xba\x99\u007f,\xf1G\x99\xa1$\xf7l\x91\xb3\xe2\xf2\x01\b\x16\xfc\x8e\x85\xd8 iciNWq\xa3\xfeX\xa4~=\x93\xf4\x8ft\x95\rX\xb6\x8erX͋q\xeeJ\x15\x82\x1d\xa4T{\xb5YZ\xc29\xd50\x9c\x13`\xf2*#\xb0\xd1\xc5\xf0\x85`(\x18yA\xca\xef8۸\xb0\xdcy\x8e\x0e\x18:`\x8b\x0e\x9el>\x8a\x1e\xb0\xc1w\x15\xd7'K1\xbd\xda/\xafx`\\`U\xf3%U攫U\xaab\x98HW@\x14\xe8cj9\xcaU\xb6\x10\xab*4\\̴\xce\xe8A\x11\xaf\x86T\xa1\x93\xe9r|\x11\x14\xee\xb3*\xbcoc]ũ+\xf61\x18t\x16>\\\xce\x1e\x93\x87\x9b3\xba֯\\\xcf$l\x81S2zw\x86\x95(\x98H\x8f;\xaf\xb9Kk\x1b\xe8\xbfē!(f\xcc\t\xd8a\x91\xa9!\xfb`\xac|H2\x80\xec]]]\x84\xef\xb1u\x85\xe9\x02#&܈\x1be\xeb\x81>\x89#Ŭ\x96\xd3\xf3om\x0f9B\xf4\x83\x82D\v.\x04 \x84\xa4J\xf0\xc8i^\x9b\x1f\x9eBh\xc6!\x9al\xe9\xf6a\x9c\fg\xf0\x88ӫҠQjh/T\xd8(\xa7\x0f\x96\xa33Q\xabl\v\xefn\xe4;z\x13P\xf0;\xba\x98*\xfb~\x1de\xf1\xa1v\x01\xaf9>Y\xcaf\x88\x0eC\x82\x19\x86\ue334\x9foEå\x84}\xbe^\x8b;\xd8uo\xe0s \xc1\x85\x9fD\x1a@\xa6j\xc1Vb\xaa\xd3N\x06w?6r\xdf\xfe\x1b=\x02\x9bB$\xd7\xd07H\x12\n\xd0\xd3\xea\x0fۛ\xc0\xf1I\xc9rS\a{\x1b\x99\x80\xd8y\xd4%\xf7\xde\xe8\xf6\x1aP\xfe\xe3;Ly\xb6\xbd\xe0l\x97\xba\x06\xc0\x04\xb6O\xa9\xc1\xc4`\x9f@\u009e\\^c$j\x19\xafo\xfbh\xb5Sl>\xeb\xb29\x13o\xecR;\x1fQ\xfcm,\x950\x9bDE\x81\xcc\t\xbd^\xaf\x04\xd0\xe3\xbe\xfdJ3\xde\a(\x0ff\xb3K.\x19W\xa8\xcb\xc0\x0ft\xc8E9_\v\xd2\xdb\xfbӹ\xbd\xc0yU\n2`\x1a\xc6\x00\xa1\xd6yr,@\xfe%\x9fg̣\x1f\xfb\xf8饎\xf8\"2\xdb\xdf\x16u<\x15ka\xfd\xc8\x1eP/\xabR\x05\xad\xfa\xb5=2`\x87#\xfdH{1S\x82\xdf\x00>\xbbW\\\x9e\xa0\x8co\xca.V\x87\x1a\xdbi\x17\xdf\xf6\xa8B\xd5\xc3\xff~(\xc62g\xacsUO\x8c\xb0'[i\xc8Xʻ]\xa3\xff\xe1\xa0\x11\xf0\xb8\x98=\xfa\x10\xb8\x83!\xfdl\xb5\xfcJ[\xd3\xd1-y\xe4S\x9aeE\xf8\xb6\xbcI\x8eҐ\x97\xfbK\xda\xf2\xdd\xe13~ˤA\x13\xfbb\xe8\xc6\xe4\xce\xda\xca \xef\x01Lw6\xfe\x9e~д\x1f\xf1+M\xdaە\x98\x91\x90\xaeq\x8e\xad\xea\xa0Փk\xd0ю\xd0\xe0%ǯ/[<\x8e\xb7\x94u\x8e\xfb\xe2\xf6\x8fd+\x12\xf2\x12\xb8\x88\x88\x1c\xf0\r\x90\xa0^\xadO\x1cÏh\x91\xf1\xcfѭ\xc1\xa8\xb3\x18\"//w\x17\x0e\xbe\xfe-u\xea\xa1\x1f\x02\x8b\x0f̠\xe5\xe8to\xb5\xd6\xf3\xac\x18\x99\xe2\x89\xce\xe0O\xa8\xb4\xb7\xe0\x13\xfd\x81;\xc4|٨\xad\xd2f\xa2_\x16\x05w\x95\x80\x14s̓w\x14\x1a!e \xad\xe6\x86\xfa\xb5w\xf5BT\xc7\xcf5\x9d\xfb\f\xaf\xcd렉>{\xd3\x1bA\xd6I~\x1e\xae-\x0e%\x00^\xb3q \xbb\x00h\"\xaf\xe0\xb8W\x9b6d$\x1e\xb9\t\xf0\x1d\x91cU\xaa\xa6\xdfY\x89C\xc1x\u007fSZ٢[} Ź\xe5\x02v\x03&\x83\xa9ϕbh\x19\xc8\x11AJsN\xca-G\xb3J\xa9\x14{R\x00Q\x1b\x15)S\x9a?W\x0f\xd6\xe4ƛ\xbcv\xa4`+\x00t恵o\xba\b\x1f\xe9\x1bWk\xec\x96\xf2\x15\xd9\r*!ec\xb6\xb6\xf9\xb9\xe7.\x054\xffdV\x85\xc5]-\xb0S\xa1\x8f\x9f\xa9\x99G\xba\bj\a\x85n\xe9pzKD)\xb3\xb5.\tu\xdb#&\x19İ\xa6n\xad}ߧI\xb8`\xee\x9cf\xb2\xed\x8fq\x8c\xaa\xec\xff\x17\x9ailRdVឱ¥\x026\x19)L\tu@\x13Y\xa0>:\x18䚘T?e\x9dB[\xd6\xe4\x8fk\xd6?\xf7\x99\a\x9cҡ\xf50\xe8\xef\xe68-M\xc1]%\xf0\x86 \xddL&\xebp\x84\xc6\xe9\x82c^\xcc\x1e\x02?kh\t\xc9\xef\xba>\x14\x18\x97<\xa1pjk\x845\u007fh\x86\xe2\xa0R\x05S\x9c\xb77\aP\xaa\x1c\x84\a>\\\xae\xde\u007f\xecD}\x8e\xb8\xf2\x16W7\xda:\xb0\r\fP\xf0\x04\x1f\x1c\xf0\xff\xb3\x00\x02\x1a\xf5\f\xae\xb2t\xb5<Xz\x83%\xbd!\t\xdc\xf9\x13\x91\xd1\xf6/\xa9|sG2\x94\x01G\xf5\"\x81\xe5\xe5:\xdc\xda\xc274v\xb5ȧ\xdd\xf3\x9aFaD\xa9\x0e\x03\xd0\x0f>\xc7\xc8\xecA\x1eu\xa4\x99\xcd8\xe2/\x0e\xea;\xa1\xbb\x8021\xb3>\x188\x8bTN\b\xb9mO\x03\rBo\xbf\x04\n\xf6\x90\x12\xb8,y|\x97$r\xb0yV\xaf\x89\xaf\xbc\x1fw\x9a\xde\x10\b\x93\xd9\x12\xae\x8b\xb3.?\xcf\xdc\x1fr\x12U$qk.\xe6\xdd\x1aP\x87̈́\x9f\x18GXz\x17\xda\bt\xbc\x9a\x9f\xbc\x8c}K\xe9:\xecz\xec\xfa\x1d\x85\xdbfC\tc\xd2\xc3d\xc4G\x18\x1c\xef\b\xd9\x1527;C\xdd\x16\xba\xc2$CM\xa1\x12Q\xc4e*\x02\x00\x94P\xdd\xe4:\x13\x9e\xf8\xdfqUN1\x10\xd6w\xac\x81\x9b\x19\x11_\xf1V5\x04kǣ\xd7;\x18\x11<\t\xa5$Y\xed\xe6\x8f\xf2\xfa\xfb\xf1\x97,\xbf\xba\x9en<\x15\x1epEㆱo\xe9\xea\n^\x0e\x86\xb3*>Z\x1c\xe7\x1fw\xfa\x06=N\xb9\xdce)\x0f\x1d\xe7\x99։>\x80%\xc8fRx\xc9L.j\xb3\x10\x9c\xba\x0e\x15\xc6x\xea\xe2\x94S<\xfc\xa5\xf4-\n\x1e\xa7N\xf7\xf2=+\x1d6\x0f&9\x19`y\xc2\x19\b\xa7#R\xb6\x12\x13\xf7n\xfe\xad\xebf\x1f\xc3\xea\x95E\xbc\xe3\x83\xc8{\xa6\xd17\u007f\xb1(\xff\x8c\x01\xef\xdd2åZl\xbe\x85!Xe\x02\x98\xabh\x0f\xa5\xce\xee;\x95/ۭ}\xef*\x84/n[(\xb6!\x15pa\a)uG\xdd\xec\x10\x15\x9fa0\xa8\xcc\x13\x96\xbda\xeb\x1e\xfe4\x03\xcfc\x03\xaa\x90\\s\xb59\xa2pL\v\x9e\x9e\xd5\x14ު˼\x86\xcc\xee\xa7,b`\xab\\\xab\x9cn\x84\xf3\xb2\xaf\x1e\x8bd\xca\xf0\xbd\x19\xb9i#\xa0P\xbbZe2Zh@\xb3\xb4*<\xd5\xe9\x9e1\xf7\xb8!\xc0\x19\vT\x9b\x99\xa0_\x87~\x99\xf7\x95\xa8}=b\x9a\x887\xf8w-\xe3\x97_\x93\xed\x11\x81\x12h\x16)\x885\x0e\xd6\x1f\xe6ǡ\xdfޖ\x99\xbaXx\xa5\x84\xf5Wcr\"\x1b\xffÃ\x9b\x96F\xc2\x1a\xeb\n\xb3\xcdT0.S\xe4Hُ(1\xbcm\xef\xf2\xebX\xea\xff\xc64a\xed(\xfes<|\xee\xd9\x14J]\xe3\xb7d\xe8\x14]\x10B\xe0\x13> \xb6\xe2\xeeEꫪ\xa3\x15Ol\xdb\xd0O\xcb\xfaB\xf4Bǵ\xbbj\xef\x1d;Oe\x05!\xcdA\x9ey\x1e\xd8\xc7M\x85\x86jGK\xe4Pb\x81=\xf2\xa1b\xcfF&\x8d[\xa0\x83\x88\xfc\xa3\xb6\xc7\xc1\xc3$\x15\u007f\x92t\xcbi\v\x8a\x84G\x85\xb2\x92V\x00\xbf[\t\x9dH\x19\xadt\xb1b\x14\x00\x0e\x82#*\x8dBX\xea\xf5U\f>\xf4\xad\x1dap?#\x92\xf0r3A~\x93\x8d\xf1\xec_\xd6\xdb;\"lY7\xde|`t\xee˧\xf2\x85@n2w΄\x80\a\xa6\x9eP\xf8\x19U\xd8\xef\xe85\x97\xd9a\xaa\xa7i\xa9\xc2\x06\f\xc5\xfc\xab\x04Z\xdc\xca\v\x80.zD\x9e\x844E\xc3\x05g\xd5\xfdɞ\x1e\x0e\xd3\xdbs\xdb͈U\x10y\xda_g@Cg\xe3e4\xc4\xc5\xd88>q\x9e\xf8(= \xffm\xf1\xe7!>\x15J=\xb0\x8f+\x9f\xe3\xe6\xf7\xad\x83\xdbhZ=\xe9\xf7@\x81\x94\x1c&L\xf64)i\x94\xf7 \x15A\xf7\xd4\x02v.k\xf4\xbch\x00\xa2\xd4q$\b\xd4j\xf4 3\xb7ԷC\xafa\x00P.\xf69\x1eFE$\x97tO!\x14@\x88\x8b\xbf\x1d\xfc\x95M\xaf\x91\xb5\x96\xd3\xdd\xf4pE/\xa0f\xec\t\xbc\xbf\x85\x97\xbd\x03\xd0m\xac\u007f\x04\x85\xcb1\xb3'\xeb\x96A9\xfdU\xe6G%ښ\nʫ%xP(\xf4)\x04Sچ,\n\xfbm\xb6\xe9b\x14\xdch\x00iHפ\xc0\x0eh\ue361'\xa2\xfe?O\x8c\xad\x87\xe8\x06\xe0\x8c\xb5\xb6\xd6\xf4z|\x1eΪ\xec_7ә\xa3x\xceB*k@5\x9e\xfe \xb9\x85\xf3٫\xd79\xee\x8bN\x12;\xf7\xfa\xc9\x1dV\x18mK1f\xa3&\xb2\x97\xe3\xeat\xfan:2C[\xdd\xf7\xe7Ah\xfb x\xcaN\xf5\n\xfb\x97\xb3\xfeجV@E'\x95H\xba::SU\x87\x8d\x83 \xb7\xa9k\xfeK\x95\x96мg\xa8UX\x9a\x15\xa1c)\xa9\xcc3\xdb\xe1\x99VJ*\xa6\xf9%1?\x1c~\xf4^|1)\x90\x02\xe8\xf8\xfdp/'\x04\\\x15\xbb\x80\xe3,(\x05H\x15\xc1\x95\"m\xc6\xe4?\x13\xc1H܆\x0f\xc7\xee\xc9\xf9\a\x0f\x1f\x04A\xa4yG@\x17n\x88]\xebQ_2\xd1\xc0\x9bՏ\xc1\xbc\xf2d5\x11A4x{%`\x9c*`\xa3\xe8\xf8\xdf\x1blc\x1f´\x12\x0e\x9e2\xe1\x02\xd1Of\xaf\x15\x81\xd1\xca\xe0\x95#k\xe1\x92>3b\v$;\"\xb9\xbe\xee\x0e\xa2\xb2\x85\x99\r\xba\xe6\x8c\fr\xde(\xf7\xa2-Ex\x12\xd0\xfd\x94\xb7\x95b\b}d\xf0\xf5\xcc\xe7o\xa3IT\xfaH}\x87'\xfd\x9d\xc3\x1e\x8d>\xf3AcG\nt\xff.\x99\xabno:7\xfd\xf8\xf4`\xdc\x12\xa8\xf8\xdd\xeb\xa1L\xe1\x1b\x99\rkn\xdb\x10U{\xc67,gm;\xd4e'\x04\xe8\xd0\xdc\xc7\r)\xf1\xa3\xff\x00̒\x0f9\xb5\v\xed\x0fi\xfb\x9f{f\x9c}\xdb\xce\vϑ\xa0\xa3^\x15و/\x13\xbb$\xad[Q\xbfy\x94{\xeb\xd6;v\xb3.97yY\x11̗\xe2&\x80-1.\xf4\xa7\xadBh;+j\xc6\xccLu\x12\x1c\xf1.x7B\x12j\xe7Q\x92\xb7满\x06Pc\xfbK\x18\x10k\x1a\xfa\xed\xca\x11ؽ%=\xc9\xc3\xe1\xe2Y\x16BD\x86\x13\x12\nn\xec\f\xd9*\xea\xab\xd5Ng\xafd_\xa8\x86ڈ\u9ffe\xfe\xc3\xe4dW\x80\xbc\x9d\x86\xc0\xf7\xf0\xf8{x`M`\x03`F\x83\xfdѰ\x1f8\xf6\x04\xaeEw\xcc\xfc6\xd73kB\x83q\xab\x1e\xf0\x87A\x80\xb0_^\x00<\xbeW\xa0w$\xae轙BFUa.X\xbf\x8f\xf4XN\xa2\xfd\xdd\xf28\xeft\xf4½\x89\x87\xc3\xf9fSt\x8e\xb3\xc8U\xf2u\xb4\xb9\xd9\xfcFa&\xebz\x84\xdf\x1d\x8by\x0ej\x84\xe2\x95_\x91\x8eYnFpW\xb4 \x91UՌL\xde\x02\xc9\xe1\xac\v\xb9\xd0\x05\x82\xbbHb\xa8\x11\x9e\xa9tu\xb6\x19\u007f\xb7\tܩ\xe0\xa1\t-f3F2\xc4\x02\x1fZ茾\xf0\t%\xa0\x99J\x10\xfen\x1d\x1d=\xb9\x1aߤ\xa5\v\x0f\xf2\x86\xa1i\xf1h(\x83ڷ\xdc\xfe\x069W\x9b\xce\xe2\xa1R\u007f\xcdO\x01^\x11P\xfa\x83\x06\xa7ĵ\x02\xa0'\xd0\xe6\r'\x8c\xf8\x9aA\x86?w\x06L`õ\x06\xa8a(z\x17\xf0\xe0\x86\xf5\xc0\xaaX`\x00b}\xdc0מ\xe6\x11c\xea8#\x94\xdd\xc2S4\x16\xc2\xc2V\xee˻\u07b6\xbc\x90\xa1}\xfc\xebv\x1dY\xce\t\xe4\x05o\x88\x01|K=\nr9$|\x92|_rㆹ\x9dMr\xb4[\xc1\x1a\xfc\xb8\x9e\xd3xUT\xed\xb5\xa5\xfc\b\xd3|=\xd8\xc4\x0f\xadM^\xefP\x1e\xf8\xe6a\xb1\xd9\x14\x85\xa2<\x13Ql\xe7\xc7\xd5o\xc4N\xe1Vο*67\xc8\xc6\xdd42\x9a\xd7\x12\x82c\x92\x8e\xfa\x0eg\xe0\x00`@7\xce9:\xcf\xf5\xfa\xd37w«\x1b-\xc5Z\x9eg\xb0\\B7\xa3O@'\x82Ӿ\x9b\xbc\x99\x9d\x8e\x11\xd5\x15s\x0f\xbf~\x1c-\xd6{\xc4\x00\xc7k\x1b\x8c\xb7E\x90\xa1!\xbe\xb1n\xb2\xb4n6j/\xabHWyn\x94\xbc\xd2v\xa3\xc6\xc8\xc2Ie\xee\xf8\x0fS}ލF\x1d\ns\xd5\xc6M\xd0Lۻ9)PF\xba\xa9\xe8&\x95\xac\x04\xe3^\xbe\xf0\xd5\xfa\xa1\x9aQ-j\xe2\x8c\xefc\"\ue19a\xb8\u0089\xc0\xf6.$C\xaa\x03\x1e\xa5\xa4\xd0\xf2\x9c\xbaa\xc0\x83Mj\xe9\x9bP\x15\xe5\x8f\xd6[d\xba\xf9\xa2&(\xe1::\xa7\x86\x95\xa9K\xe9bU\xef\xd3\xef/\xc7\xda\xf7R\xf7io\x04?Y\n\xfaw\x15\xa9\xe4\x80\x01\x86\xb0\x87\xad\xe6\t\x9b\x93\xe5>;Z\xfd\x90\xe9\x97\xd74\x9eٷ\xf0,Q\x8b+\x02:\xacՖ}\xa6}\x01\xd6>\xcf\xd1(-}|\xcf%\x9f\x1f\x9b\xb8\xf2\xadr\xb4\xd6ZL\xf5\x88Zq\xac)\xe0\xe6\xa5\x19\xe0\xfd\xac\xb0G\x9b\xfa\x93\xed\x8d\xc4\xd3\xe8\xccW;()f\xd5\xf8(.\x13y\x91\x01_xU`u\xedD\x0e\x96\xf7\x8c^\xd3\xe3\xd4m\x05\x15\xbam\xf4\x88%a\xa1\x03\xbd\xf0d\x05\x15\x9e\xebâW\x90<\xec\x1a'\x97*\a:\xa9\x9bm?\x1b\xf5!c\x1e\xfbf\x9c\xf5\x19\xf3\xdc&(\xd93u\xf5\xfdU\xb1\x824V\x03\xbb<\xba\x8a\x11wQ(\xf8\xd9\n\xc2gQ̫_\x92\xad\xccQ\x17\xe8M\x8e\xdc08bX\x9d7\x91\xf9 \x93\u0090z\xea\xce{>\xfbd\xce!Q2\xbeOw~㶨F=)\xc3iS\xdeH\x80\xe6\x13d\x10\b\xae\xa2$\xb2m\xdd\xfd-\x85if!\a\t\nF\x9a\xb3\xdd\xc0Ed\xcf\xdelX\xae\xc8 \x1c\xdd\xf7\xbe[@\x8dX\x1b\u007f\x01\xd2̻\xe3\xb4k~j\xa2\xddE\xffY:D\n5>\xd5ʹ\xbc\xa8\xce\xear\xbb\x84d\xfa\xae\x12f\x8dGo<\xbfc\xe4\x9bҞ]/T\x1bw®pcN\xf6\x8d\r\x0etW\x13[\xe7q\x16r\xf8]}S\xaf\b\xcb@@\xcc\xe2\xb4NjF\xd24\x84\xaf\x15\x01(\x04\xb0\xe1\x1d:\x98\x95\xb4\x9f\xb8\x06H\xa0n\u0382;?o\x82\xab 5K\x1d\x1a\x01\xf8'r'\xb1`\x15a\xdc?\x93\xe7+y:\xbb\xbd%E4\xe19\x88\xa0Ky\xceQ\xb7\xc92/ɺ\x1f\xa0~\xc8\x1c\xe0\xf6\xd1Ǽ\xc3\x11\x01\xcfǪ\xe8\xa1I\x87\x90\x1a\x9a\xbdO\xd4\xcb\xde\xda\xd08\xda\n\xd5*\xc39\x03g6\x91\xc6|1\xf9\x8dO+\xb1\xe0\xb7Y\x9e\xf7:\xbb\xf5C\xff\x19\xd5\xf2\x9cE\xd9',\"\x97\xbf*\xfc\xe6\x15q\xfc\x91\x0f%\x15\x94\x9ba\x93\xe5\xfa뜶\xceYd\xa8\xc2Ѩ\xba\x12^\a\xc1\xb6\fj\x05\xe3eP\xd2\x10B\xa4\x03\xcb\x0en\xec\xe0;ۘ\x16\xbe\xa0\x98Ld\xe9x22\x95\x1f\x9fߒ\xd3\xe0+4\xa0\xd3\x1e\xf2q\x89At\n\x1b\x8c4\xa3K q\xbe\xc5\xd82vÍ\x9f5\xdf./\x99\x9bGo\v\xe6\x1d\xf1\xe3\x0fT\xdaL\xe5\x91\xd8\xda\x1e\xcfyb\xceo~>\xcdf\xb1\x18\x16\x05\x1d,\xfd\xc5ҏ\x84\x99\"\xfb\xf6W\xf3#\xf5#v2\xa615\xa8\x93\x02\xcd\xccVb\x81\xf0\xac\xb5\xebuZ\x976\x16n\xccs҈\x92b\x96\xde\xd0I\xb9\x81\x1b\x90PL\x14V\xc6q\xbd\xc7\xc6\xe6\n\x14z2\x06\xd0\xe1E\x9a{\xf2\xc3\xfdS\xaa\xc9\x00\x0f\xa8b\xe2\xbf%\xbb\xf6ҽ5\x05i\x12q\"\x02\x04\xb2|\xcf˶+\x9cv\xcd\xc0>\x11S\xd3\xe3@\x16`\xbd\xab8\xf0\xadG%\x9c 8\xbav\xceF\xf7š\xafw``u N\xfe˅؍芰\xf9\xaaz~\xaa\xf9L\\\xc2H\x19\x8c\x8a\xfb\x02\xe4j\xc3\x01\xf9\xe1\xeb\xd6i\xf8Ԑ\xa0\xde\\\xa6-%\t?\x9f\xe6\b\xc22aN\xb7[\xe2w\xce\xe3ߏW\xe6r\xc3:\x00\x00\x00\x00hprOBnaeloheSredDyrctbuo\x00\x00\x00\x00./ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789\x00\x00\x00\x00@@@@@@@@@@@@@@\x00\x016789:;<=>?@@@@@@@\x02\x03\x04\x05\x06\a\b\t\n\v\f\r\x0e\x0f\x10\x11\x12\x13\x14\x15\x16\x17\x18\x19\x1a\x1b@@@@@@\x1c\x1d\x1e\x1f !\"#$%&'()*+,-./012345@@@@@\x00\x00\x00\x00\x80\xff\x80\x01 \u007f\x81\x80\x80\r\n\xff\u007f \x81 test\x00\x00\x00\x00_0.../9Zz\x00\x00\x00_0.../9ZzX7iSJNd21sU\x00\x00\x00\x00\x80x\x00\x00\x80x22/wK52ZKGA\x00\x00\x00x\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x10\x00\x00\x00\x10\x00\x00\x00\x00\x10\x00\x00\x00\x10\x00\x00\x10\x10\x00\x00\x10\x10\x00\x00\x00\x00\x10\x00\x00\x00\x10\x00\x10\x00\x10\x00\x10\x00\x10\x00\x00\x10\x10\x00\x00\x10\x10\x00\x10\x10\x10\x00\x10\x10\x10\x00\x00\x00\x00\x00\x00\x00\x00\x00 \x00\x00\x00 \x00\x00\x00\x00 \x00\x00\x00 \x00\x00  \x00\x00  \x00\x00\x00\x00 \x00\x00\x00 \x00 \x00 \x00 \x00 \x00\x00  \x00\x00  \x00   \x00   \x00\x00\x00\x00\x00\x00\x00\x00\x00@\x00\x00\x00@\x00\x00\x00\x00@\x00\x00\x00@\x00\x00@@\x00\x00@@\x00\x00\x00\x00@\x00\x00\x00@\x00@\x00@\x00@\x00@\x00\x00@@\x00\x00@@\x00@@@\x00@@@\x00\x00\x00\x00\x00\x00\x00\x00\x00\x80\x00\x00\x00\x80\x00\x00\x00\x00\x80\x00\x00\x00\x80\x00\x00\x80\x80\x00\x00\x80\x80\x00\x00\x00\x00\x80\x00\x00\x00\x80\x00\x80\x00\x80\x00\x80\x00\x80\x00\x00\x80\x80\x00\x00\x80\x80\x00\x80\x80\x80\x00\x80\x80\x80\x00\x00\x00\x00\x00\x01\x00\x00\x00\x00\x01\x00\x00\x01\x01\x00\x00\x00\x00\x01\x00\x01\x00\x01\x00\x00\x01\x01\x00\x01\x01\x01\x00\x00\x00\x00\x01\x01\x00\x00\x01\x00\x01\x00\x01\x01\x01\x00\x01\x00\x00\x01\x01\x01\x00\x01\x01\x00\x01\x01\x01\x01\x01\x01\x01\x00\x00\x00\x00\x02\x00\x00\x00\x00\x02\x00\x00\x02\x02\x00\x00\x00\x00\x02\x00\x02\x00\x02\x00\x00\x02\x02\x00\x02\x02\x02\x00\x00\x00\x00\x02\x02\x00\x00\x02\x00\x02\x00\x02\x02\x02\x00\x02\x00\x00\x02\x02\x02\x00\x02\x02\x00\x02\x02\x02\x02\x02\x02\x02\x00\x00\x00\x00\x04\x00\x00\x00\x00\x04\x00\x00\x04\x04\x00\x00\x00\x00\x04\x00\x04\x00\x04\x00\x00\x04\x04\x00\x04\x04\x04\x00\x00\x00\x00\x04\x04\x00\x00\x04\x00\x04\x00\x04\x04\x04\x00\x04\x00\x00\x04\x04\x04\x00\x04\x04\x00\x04\x04\x04\x04\x04\x04\x04\x00\x00\x00\x00\b\x00\x00\x00\x00\b\x00\x00\b\b\x00\x00\x00\x00\b\x00\b\x00\b\x00\x00\b\b\x00\b\b\b\x00\x00\x00\x00\b\b\x00\x00\b\x00\b\x00\b\b\b\x00\b\x00\x00\b\b\b\x00\b\b\x00\b\b\b\b\b\b\b\x00\x00\x00\x00\x00\x00\x00\x00\x01\x00\x00\x00\x00\x00\x00\x00\x01\x00\x00\x00\x00\x00\x00\x00\x01\x00\x00\x00\x00\x00\x00\x00\x01\x00\x00\x00\x00\x00\x00\x00\x01\x00\x00\x00\x00\x00\x00\x00\x01\x00\x00\x00\x00\x00\x00\x00\x01\x00\x00\x00\x00\x00\x00\x00\x01\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x10\x00\x00\x00\x10\x00\x00\x10\x00\x00\x00\x10\x00\x00\x00\x10\x10\x00\x00\x10\x10\x00\x10\x00\x00\x00\x10\x00\x00\x00\x10\x00\x10\x00\x10\x00\x10\x00\x10\x10\x00\x00\x10\x10\x00\x00\x10\x10\x10\x00\x10\x10\x10\x00\x00\x00\x00\x00\x02\x00\x00\x00\x00\x00\x00\x00\x02\x00\x00\x00\x00\x00\x00\x00\x02\x00\x00\x00\x00\x00\x00\x00\x02\x00\x00\x00\x00\x00\x00\x00\x02\x00\x00\x00\x00\x00\x00\x00\x02\x00\x00\x00\x00\x00\x00\x00\x02\x00\x00\x00\x00\x00\x00\x00\x02\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00 \x00\x00\x00 \x00\x00 \x00\x00\x00 \x00\x00\x00  \x00\x00  \x00 \x00\x00\x00 \x00\x00\x00 \x00 \x00 \x00 \x00  \x00\x00  \x00\x00   \x00   \x00\x00\x00\x00\x00\x04\x00\x00\x00\x00\x00\x00\x00\x04\x00\x00\x00\x00\x00\x00\x00\x04\x00\x00\x00\x00\x00\x00\x00\x04\x00\x00\x00\x00\x00\x00\x00\x04\x00\x00\x00\x00\x00\x00\x00\x04\x00\x00\x00\x00\x00\x00\x00\x04\x00\x00\x00\x00\x00\x00\x00\x04\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00@\x00\x00\x00@\x00\x00@\x00\x00\x00@\x00\x00\x00@@\x00\x00@@\x00@\x00\x00\x00@\x00\x00\x00@\x00@\x00@\x00@\x00@@\x00\x00@@\x00\x00@@@\x00@@@\x00\x00\x00\x00\x00\b\x00\x00\x00\x00\x00\x00\x00\b\x00\x00\x00\x00\x00\x00\x00\b\x00\x00\x00\x00\x00\x00\x00\b\x00\x00\x00\x00\x00\x00\x00\b\x00\x00\x00\x00\x00\x00\x00\b\x00\x00\x00\x00\x00\x00\x00\b\x00\x00\x00\x00\x00\x00\x00\b\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x80\x00\x00\x00\x80\x00\x00\x80\x00\x00\x00\x80\x00\x00\x00\x80\x80\x00\x00\x80\x80\x00\x80\x00\x00\x00\x80\x00\x00\x00\x80\x00\x80\x00\x80\x00\x80\x00\x80\x80\x00\x00\x80\x80\x00\x00\x80\x80\x80\x00\x80\x80\x80\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x01\x00\x00\x00\x01\x00\x00\x01\x00\x00\x00\x01\x00\x00\x00\x01\x01\x00\x00\x01\x01\x00\x01\x00\x00\x00\x01\x00\x00\x00\x01\x00\x01\x00\x01\x00\x01\x00\x01\x01\x00\x00\x01\x01\x00\x00\x01\x01\x01\x00\x01\x01\x01\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x02\x00\x00\x00\x02\x00\x00\x02\x00\x00\x00\x02\x00\x00\x00\x02\x02\x00\x00\x02\x02\x00\x02\x00\x00\x00\x02\x00\x00\x00\x02\x00\x02\x00\x02\x00\x02\x00\x02\x02\x00\x00\x02\x02\x00\x00\x02\x02\x02\x00\x02\x02\x02\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x04\x00\x00\x00\x04\x00\x00\x04\x00\x00\x00\x04\x00\x00\x00\x04\x04\x00\x00\x04\x04\x00\x04\x00\x00\x00\x04\x00\x00\x00\x04\x00\x04\x00\x04\x00\x04\x00\x04\x04\x00\x00\x04\x04\x00\x00\x04\x04\x04\x00\x04\x04\x04\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\b\x00\x00\x00\b\x00\x00\b\x00\x00\x00\b\x00\x00\x00\b\b\x00\x00\b\b\x00\b\x00\x00\x00\b\x00\x00\x00\b\x00\b\x00\b\x00\b\x00\b\b\x00\x00\b\b\x00\x00\b\b\b\x00\b\b\b\x00\x00\x00\x00\x01\x01\x02\x02\x02\x02\x02\x02\x01\x02\x02\x02\x02\x02\x02\x01\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x02\x00\x01\x00\x00\x00\x01\x00\x02\x00\x00\x00\b\x00\x00\x00\n\x00\x01\x00\b\x00\x01\x00\n\x00\x00\x00\x00\x00\x00\x10\x00\x00\x00\x00\x00\x00\x00\x10\x00\x00@\x00\x00\x00@\x10\x00\x00@\x00\x00\x00@\x10\x00\x00\x00\x00\x00\x00\x00\x00@\x00 \x00\x00\x00 \x00@\x00\x00\x80\x00\x00\x00\x80@\x00 \x80\x00\x00 \x80@\x00\x00\x00\x00\x00\x00\x00\x10\x00\x00\b\x00\x00\x00\b\x10\x00\x00\x00\x00\x00\x00\x00\x10\x00\x00\b\x00\x00\x00\b\x10\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00 \x00\x00\x00\x02\x00\x00\x00\"\x00\x02\x00\x00\x00\x02\x00 \x00\x02\x00\x02\x00\x02\x00\"\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x10\x00\x00\x00\x10\x00\x04\x00\x00\x00\x04\x00\x00\x00\x04\x00\x10\x00\x04\x00\x10\x00\x00\x00\x00\x00\x00@\x00\x00\x00\b\x00\x00\x00H\x00\x00\x00\x00\x00\x00\x00@\x00\x00\x00\b\x00\x00\x00H\x00\x00\x00\x00\x00\x00\x00\x00@\x00\x00\x80\x00\x00\x00\x80@\x00\b\x00\x00\x00\b\x00@\x00\b\x80\x00\x00\b\x80@\x00\x00\x00\x00\x00\x00\x00\x00\x00\x10\x00\x00\x00\x00@\x00\x00\x10@\x00\x00\x00\x00\x04\x00\x10\x00\x04\x00\x00@\x04\x00\x10@\x04\x00\x00\x01\x00\x00\x10\x01\x00\x00\x00A\x00\x00\x10A\x00\x00\x00\x01\x04\x00\x10\x01\x04\x00\x00A\x04\x00\x10A\x04\x00\x00\x00\x00\x00\x00\x00\x80\x00\x02\x00\x00\x00\x02\x00\x80\x00\x00\x02\x00\x00\x00\x02\x80\x00\x02\x02\x00\x00\x02\x02\x80\x00\x00\x00 \x00\x00\x00\xa0\x00\x02\x00 \x00\x02\x00\xa0\x00\x00\x02 \x00\x00\x02\xa0\x00\x02\x02 \x00\x02\x02\xa0\x00\x00\x00\x00\x00\x00 \x00\x00\x04\x00\x00\x00\x04 \x00\x00\x00\x04\x00\x00\x00$\x00\x00\x04\x04\x00\x00\x04$\x00\x00\x00\x00\x00\x00\x00 \x00\x00\x04\x00\x00\x00\x04 \x00\x00\x00\x04\x00\x00\x00$\x00\x00\x04\x04\x00\x00\x04$\x00\x00\x00\x00\x00\x00\x00\x00\x01\x00\b\x00\x00\x00\b\x00\x01\x00\x80\x00\x00\x00\x80\x00\x01\x00\x88\x00\x00\x00\x88\x00\x01\x00\x00\x00\x00\x00\x00\x00\x01\x00\b\x00\x00\x00\b\x00\x01\x00\x80\x00\x00\x00\x80\x00\x01\x00\x88\x00\x00\x00\x88\x00\x01\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x80\x00\x00\x00\x80\x00\x00\x00\x00 \x00\x00\x00 \x00\x00\x80 \x00\x00\x80 \x00\x00\x01\x00\x00\x00\x01\x00\x00\x00\x81\x00\x00\x00\x81\x00\x00\x00\x01 \x00\x00\x01 \x00\x00\x81 \x00\x00\x81 \x00\x00\x00\x00\x00\x00\x10\x00\x00\x00\x00\x00\x80\x00\x10\x00\x80\x00\x00\x00\x01\x00\x10\x00\x01\x00\x00\x00\x81\x00\x10\x00\x81\x00\x00\x02\x00\x00\x10\x02\x00\x00\x00\x02\x80\x00\x10\x02\x80\x00\x00\x02\x01\x00\x10\x02\x01\x00\x00\x02\x81\x00\x10\x02\x81\x00\x00\x00\x00\x00\x00\x04\x00\x00\x00\x10\x00\x00\x00\x14\x00\x00\x00\x00\b\x00\x00\x04\b\x00\x00\x10\b\x00\x00\x14\b\x00 \x00\x00\x00 \x04\x00\x00 \x10\x00\x00 \x14\x00\x00 \x00\b\x00 \x04\b\x00 \x10\b\x00 \x14\b\x00\x00\x00\x00\x00\x00\x01\x00\x00\x00\x00\x04\x00\x00\x01\x04\x00\x00\x00\x00\x00\x00\x01\x00\x00\x00\x00\x04\x00\x00\x01\x04\x00@\x00\x00\x00@\x01\x00\x00@\x00\x04\x00@\x01\x04\x00@\x00\x00\x00@\x01\x00\x00@\x00\x04\x00@\x01\x04\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x01\x00\x00\x00\x00\x00\x00\x00\x01\x00\x00\x00\x00\x01\x00\x00\x01\x01\x00\x00\x00\x01\x00\x00\x01\x01\x00\x00\x00\x00\x00\x00\x01\x00\x00\x00\x00\x00\x00\x00\x01\x00\x00\x00\x00\x01\x00\x00\x01\x01\x00\x00\x00\x01\x00\x00\x01\x01\x00\x00\x00\x00\x01\x00\x00\x00\x00\x00\x00\x00\x01\x00\x00\x00\x00\x01\x00\x00\x01\x01\x00\x00\x00\x01\x00\x00\x01\x01\x00\x00\x00\x00\x00\x00\x01\x00\x00\x00\x00\x00\x00\x00\x01\x00\x00\x00\x00\x01\x00\x00\x01\x01\x00\x00\x00\x01\x00\x00\x01\x01\x00\x00\x00\x00\x00\x00\x00\x00\x02\x00\x00\x00\x00\x00\x00\x00\x02\x00\x00\x00\x00\x02\x00\x00\x02\x02\x00\x00\x00\x02\x00\x00\x02\x02\x00\x00\x00\x00\x00\x00\x02\x00\x00\x00\x00\x00\x00\x00\x02\x00\x00\x00\x00\x02\x00\x00\x02\x02\x00\x00\x00\x02\x00\x00\x02\x02\x00\x00\x00\x00\x02\x00\x00\x00\x00\x00\x00\x00\x02\x00\x00\x00\x00\x02\x00\x00\x02\x02\x00\x00\x00\x02\x00\x00\x02\x02\x00\x00\x00\x00\x00\x00\x02\x00\x00\x00\x00\x00\x00\x00\x02\x00\x00\x00\x00\x02\x00\x00\x02\x02\x00\x00\x00\x02\x00\x00\x02\x02\x00\x00\x00\x00\x00\x00\x00\x00\x04\x00\x00\x00\x00\x00\x00\x00\x04\x00\x00\x00\x00\x04\x00\x00\x04\x04\x00\x00\x00\x04\x00\x00\x04\x04\x00\x00\x00\x00\x00\x00\x04\x00\x00\x00\x00\x00\x00\x00\x04\x00\x00\x00\x00\x04\x00\x00\x04\x04\x00\x00\x00\x04\x00\x00\x04\x04\x00\x00\x00\x00\x04\x00\x00\x00\x00\x00\x00\x00\x04\x00\x00\x00\x00\x04\x00\x00\x04\x04\x00\x00\x00\x04\x00\x00\x04\x04\x00\x00\x00\x00\x00\x00\x04\x00\x00\x00\x00\x00\x00\x00\x04\x00\x00\x00\x00\x04\x00\x00\x04\x04\x00\x00\x00\x04\x00\x00\x04\x04\x00\x00\x00\x00\x00\x00\x00\x00\b\x00\x00\x00\x00\x00\x00\x00\b\x00\x00\x00\x00\b\x00\x00\b\b\x00\x00\x00\b\x00\x00\b\b\x00\x00\x00\x00\x00\x00\b\x00\x00\x00\x00\x00\x00\x00\b\x00\x00\x00\x00\b\x00\x00\b\b\x00\x00\x00\b\x00\x00\b\b\x00\x00\x00\x00\b\x00\x00\x00\x00\x00\x00\x00\b\x00\x00\x00\x00\b\x00\x00\b\b\x00\x00\x00\b\x00\x00\b\b\x00\x00\x00\x00\x00\x00\b\x00\x00\x00\x00\x00\x00\x00\b\x00\x00\x00\x00\b\x00\x00\b\b\x00\x00\x00\b\x00\x00\b\b\x00\x00\x00\x00\x00\x00\x00\x00\x10\x00\x00\x00\x00\x00\x00\x00\x10\x00\x00\x00\x00\x10\x00\x00\x10\x10\x00\x00\x00\x10\x00\x00\x10\x10\x00\x00\x00\x00\x00\x00\x10\x00\x00\x00\x00\x00\x00\x00\x10\x00\x00\x00\x00\x10\x00\x00\x10\x10\x00\x00\x00\x10\x00\x00\x10\x10\x00\x00\x00\x00\x10\x00\x00\x00\x00\x00\x00\x00\x10\x00\x00\x00\x00\x10\x00\x00\x10\x10\x00\x00\x00\x10\x00\x00\x10\x10\x00\x00\x00\x00\x00\x00\x10\x00\x00\x00\x00\x00\x00\x00\x10\x00\x00\x00\x00\x10\x00\x00\x10\x10\x00\x00\x00\x10\x00\x00\x10\x10\x00\x00\x00\x00\x00\x00\x00\x00 \x00\x00\x00\x00\x00\x00\x00 \x00\x00\x00\x00 \x00\x00  \x00\x00\x00 \x00\x00  \x00\x00\x00\x00\x00\x00 \x00\x00\x00\x00\x00\x00\x00 \x00\x00\x00\x00 \x00\x00  \x00\x00\x00 \x00\x00  \x00\x00\x00\x00 \x00\x00\x00\x00\x00\x00\x00 \x00\x00\x00\x00 \x00\x00  \x00\x00\x00 \x00\x00  \x00\x00\x00\x00\x00\x00 \x00\x00\x00\x00\x00\x00\x00 \x00\x00\x00\x00 \x00\x00  \x00\x00\x00 \x00\x00  \x00\x00\x00\x00\x00\x00\x00\x00@\x00\x00\x00\x00\x00\x00\x00@\x00\x00\x00\x00@\x00\x00@@\x00\x00\x00@\x00\x00@@\x00\x00\x00\x00\x00\x00@\x00\x00\x00\x00\x00\x00\x00@\x00\x00\x00\x00@\x00\x00@@\x00\x00\x00@\x00\x00@@\x00\x00\x00\x00@\x00\x00\x00\x00\x00\x00\x00@\x00\x00\x00\x00@\x00\x00@@\x00\x00\x00@\x00\x00@@\x00\x00\x00\x00\x00\x00@\x00\x00\x00\x00\x00\x00\x00@\x00\x00\x00\x00@\x00\x00@@\x00\x00\x00@\x00\x00@@\x00\x00\x00\x00\x00\x00\x00\x00\x80\x00\x00\x00\x00\x00\x00\x00\x80\x00\x00\x00\x00\x80\x00\x00\x80\x80\x00\x00\x00\x80\x00\x00\x80\x80\x00\x00\x00\x00\x00\x00\x80\x00\x00\x00\x00\x00\x00\x00\x80\x00\x00\x00\x00\x80\x00\x00\x80\x80\x00\x00\x00\x80\x00\x00\x80\x80\x00\x00\x00\x00\x80\x00\x00\x00\x00\x00\x00\x00\x80\x00\x00\x00\x00\x80\x00\x00\x80\x80\x00\x00\x00\x80\x00\x00\x80\x80\x00\x00\x00\x00\x00\x00\x80\x00\x00\x00\x00\x00\x00\x00\x80\x00\x00\x00\x00\x80\x00\x00\x80\x80\x00\x00\x00\x80\x00\x00\x80\x80\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x01\x00\x00\x00\x01\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x01\x00\x00\x00\x01\x00\x00\x00\x00\x01\x00\x00\x00\x01\x00\x00\x01\x01\x00\x00\x01\x01\x00\x00\x00\x01\x00\x00\x00\x01\x00\x00\x01\x01\x00\x00\x01\x01\x00\x00\x00\x00\x00\x00\x00\x00\x01\x00\x00\x00\x01\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x01\x00\x00\x00\x01\x00\x00\x00\x00\x01\x00\x00\x00\x01\x00\x00\x01\x01\x00\x00\x01\x01\x00\x00\x00\x01\x00\x00\x00\x01\x00\x00\x01\x01\x00\x00\x01\x01\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x02\x00\x00\x00\x02\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x02\x00\x00\x00\x02\x00\x00\x00\x00\x02\x00\x00\x00\x02\x00\x00\x02\x02\x00\x00\x02\x02\x00\x00\x00\x02\x00\x00\x00\x02\x00\x00\x02\x02\x00\x00\x02\x02\x00\x00\x00\x00\x00\x00\x00\x00\x02\x00\x00\x00\x02\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x02\x00\x00\x00\x02\x00\x00\x00\x00\x02\x00\x00\x00\x02\x00\x00\x02\x02\x00\x00\x02\x02\x00\x00\x00\x02\x00\x00\x00\x02\x00\x00\x02\x02\x00\x00\x02\x02\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x04\x00\x00\x00\x04\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x04\x00\x00\x00\x04\x00\x00\x00\x00\x04\x00\x00\x00\x04\x00\x00\x04\x04\x00\x00\x04\x04\x00\x00\x00\x04\x00\x00\x00\x04\x00\x00\x04\x04\x00\x00\x04\x04\x00\x00\x00\x00\x00\x00\x00\x00\x04\x00\x00\x00\x04\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x04\x00\x00\x00\x04\x00\x00\x00\x00\x04\x00\x00\x00\x04\x00\x00\x04\x04\x00\x00\x04\x04\x00\x00\x00\x04\x00\x00\x00\x04\x00\x00\x04\x04\x00\x00\x04\x04\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\b\x00\x00\x00\b\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\b\x00\x00\x00\b\x00\x00\x00\x00\b\x00\x00\x00\b\x00\x00\b\b\x00\x00\b\b\x00\x00\x00\b\x00\x00\x00\b\x00\x00\b\b\x00\x00\b\b\x00\x00\x00\x00\x00\x00\x00\x00\b\x00\x00\x00\b\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\b\x00\x00\x00\b\x00\x00\x00\x00\b\x00\x00\x00\b\x00\x00\b\b\x00\x00\b\b\x00\x00\x00\b\x00\x00\x00\b\x00\x00\b\b\x00\x00\b\b\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x10\x00\x00\x00\x10\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x10\x00\x00\x00\x10\x00\x00\x00\x00\x10\x00\x00\x00\x10\x00\x00\x10\x10\x00\x00\x10\x10\x00\x00\x00\x10\x00\x00\x00\x10\x00\x00\x10\x10\x00\x00\x10\x10\x00\x00\x00\x00\x00\x00\x00\x00\x10\x00\x00\x00\x10\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x10\x00\x00\x00\x10\x00\x00\x00\x00\x10\x00\x00\x00\x10\x00\x00\x10\x10\x00\x00\x10\x10\x00\x00\x00\x10\x00\x00\x00\x10\x00\x00\x10\x10\x00\x00\x10\x10\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00 \x00\x00\x00 \x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00 \x00\x00\x00 \x00\x00\x00\x00 \x00\x00\x00 \x00\x00  \x00\x00  \x00\x00\x00 \x00\x00\x00 \x00\x00  \x00\x00  \x00\x00\x00\x00\x00\x00\x00\x00 \x00\x00\x00 \x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00 \x00\x00\x00 \x00\x00\x00\x00 \x00\x00\x00 \x00\x00  \x00\x00  \x00\x00\x00 \x00\x00\x00 \x00\x00  \x00\x00  \x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00@\x00\x00\x00@\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00@\x00\x00\x00@\x00\x00\x00\x00@\x00\x00\x00@\x00\x00@@\x00\x00@@\x00\x00\x00@\x00\x00\x00@\x00\x00@@\x00\x00@@\x00\x00\x00\x00\x00\x00\x00\x00@\x00\x00\x00@\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00@\x00\x00\x00@\x00\x00\x00\x00@\x00\x00\x00@\x00\x00@@\x00\x00@@\x00\x00\x00@\x00\x00\x00@\x00\x00@@\x00\x00@@\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x80\x00\x00\x00\x80\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x80\x00\x00\x00\x80\x00\x00\x00\x00\x80\x00\x00\x00\x80\x00\x00\x80\x80\x00\x00\x80\x80\x00\x00\x00\x80\x00\x00\x00\x80\x00\x00\x80\x80\x00\x00\x80\x80\x00\x00\x00\x00\x00\x00\x00\x00\x80\x00\x00\x00\x80\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x80\x00\x00\x00\x80\x00\x00\x00\x00\x80\x00\x00\x00\x80\x00\x00\x80\x80\x00\x00\x80\x80\x00\x00\x00\x80\x00\x00\x00\x80\x00\x00\x80\x80\x00\x00\x80\x80\x00\x00\x00\x00\x00\x00\x00\x82\x80\x00\x00\x00\x00\x00\x00\x80\x00\x00\x02\x82\x80\x00\x02\x80\x80\x00\x02\x82\x00\x00\x02\x00\x00\x00\x00\x80\x00\x00\x00\x02\x00\x00\x00\x82\x80\x00\x02\x82\x80\x00\x00\x02\x00\x00\x02\x02\x80\x00\x02\x80\x80\x00\x00\x00\x80\x00\x02\x00\x00\x00\x02\x02\x00\x00\x00\x02\x80\x00\x00\x02\x80\x00\x00\x82\x00\x00\x00\x82\x00\x00\x00\x80\x80\x00\x00\x80\x80\x00\x02\x02\x80\x00\x02\x80\x00\x00\x02\x00\x80\x00\x02\x00\x80\x00\x02\x80\x00\x00\x00\x00\x00\x00\x02\x02\x00\x00\x02\x82\x00\x00\x00\x00\x80\x00\x00\x80\x00\x00\x02\x82\x80\x00\x02\x00\x00\x00\x00\x80\x80\x00\x00\x82\x80\x00\x00\x00\x80\x00\x00\x00\x80\x00\x00\x02\x00\x00\x02\x80\x80\x00\x00\x80\x00\x00\x00\x82\x00\x00\x02\x00\x80\x00\x00\x02\x00\x00\x02\x00\x00\x00\x02\x02\x80\x00\x02\x82\x00\x00\x02\x82\x80\x00\x02\x80\x00\x00\x00\x80\x80\x00\x02\x02\x80\x00\x02\x00\x80\x00\x02\x02\x00\x00\x02\x82\x00\x00\x00\x82\x80\x00\x02\x02\x00\x00\x00\x02\x80\x00\x00\x02\x80\x00\x00\x00\x00\x00\x02\x80\x00\x00\x00\x82\x00\x00\x00\x00\x00\x00\x02\x80\x80\x00\x10@\b@\x00@\x00@\x00@\x00\x00\x10@\b\x00\x00\x00\b\x00\x10\x00\x00\x00\x10\x00\b@\x10@\x00@\x10\x00\x00@\x10@\b@\x00@\b@\x00\x00\x00@\x00@\x00@\x00\x00\b\x00\x10\x00\x00\x00\x10\x00\b@\x00@\b\x00\x10\x00\b\x00\x10@\x00@\x00\x00\x00\x00\x00\x00\x00@\x00@\x00\x00\x10@\b\x00\x00\x00\b@\x10\x00\b\x00\x10\x00\x00@\x00\x00\x00\x00\x00@\b\x00\x10@\x00\x00\x00@\b@\x00\x00\b@\x10@\x00\x00\x00\x00\x00\x00\x10@\b\x00\x10\x00\b@\x00\x00\b\x00\x10@\x00@\x00\x00\b@\x00@\b@\x00@\x00\x00\x00\x00\b@\x00@\x00@\x10\x00\x00\x00\x10@\b@\x10@\b\x00\x10\x00\x00\x00\x00@\x00\x00\x00\x00\x00@\x10@\x00\x00\x00@\b@\x00\x00\b\x00\x10\x00\x00@\x10\x00\b\x00\x10@\x00@\x10\x00\x00@\x10\x00\b\x00\x00@\b\x00\x00\x00\x00\x00\x00@\x00@\x10@\x00\x00\x00\x00\x00@\x10\x00\b@\x10@\b@\x00@\b\x00\x04\x01\x00\x00\x00\x01\x01\x04\x00\x00\x00\x00\x04\x00\x01\x04\x00\x01\x00\x04\x00\x00\x00\x00\x04\x01\x01\x00\x00\x01\x00\x04\x04\x00\x01\x00\x04\x00\x00\x04\x04\x00\x00\x04\x00\x00\x01\x00\x04\x01\x01\x04\x04\x00\x01\x00\x00\x00\x01\x04\x04\x01\x00\x00\x00\x00\x00\x04\x04\x00\x00\x00\x00\x01\x01\x04\x00\x01\x00\x00\x00\x01\x01\x00\x00\x00\x01\x04\x04\x00\x01\x04\x04\x01\x01\x00\x04\x01\x00\x04\x00\x01\x01\x00\x00\x00\x01\x00\x04\x01\x00\x04\x04\x00\x00\x00\x04\x01\x01\x04\x00\x01\x00\x00\x00\x00\x00\x04\x00\x01\x01\x04\x00\x00\x00\x04\x04\x00\x01\x00\x04\x01\x00\x00\x00\x00\x01\x00\x00\x01\x01\x04\x00\x01\x00\x04\x00\x00\x00\x00\x00\x01\x00\x00\x04\x00\x01\x00\x04\x01\x01\x04\x00\x01\x00\x04\x04\x00\x00\x04\x00\x01\x00\x00\x00\x00\x00\x00\x04\x00\x01\x04\x04\x01\x00\x04\x00\x00\x01\x00\x00\x00\x00\x04\x04\x01\x01\x04\x04\x00\x00\x00\x04\x01\x01\x00\x00\x01\x01\x00\x04\x00\x00\x04\x00\x00\x01\x04\x04\x01\x00\x04\x04\x01\x00\x00\x00\x00\x01\x04\x04\x01\x01\x00\x04\x00\x00\x00\x04\x00\x01\x04\x00\x01\x01\x00\x00\x10@\x80@\x10\x00\x80@\x10\x00\x80@\x00\x00\x00@\x10@\x00@\x00@\x80\x00\x00@\x80\x00\x10\x00\x80\x00\x00\x00\x00\x00\x10@\x00\x00\x10@\x00@\x10@\x80@\x00\x00\x80\x00\x00\x00\x00@\x00@\x00\x00\x00@\x80\x00\x00\x00\x80\x00\x10\x00\x00\x00\x00@\x00\x00\x10@\x80@\x00\x00\x00\x00\x00@\x00\x00\x10\x00\x80@\x10\x00\x00@\x00@\x80\x00\x00\x00\x80@\x10\x00\x00@\x00@\x00\x00\x10\x00\x00@\x10@\x00@\x10@\x80@\x00\x00\x80@\x00@\x00\x00\x00@\x80\x00\x10@\x00@\x10@\x80@\x00\x00\x80\x00\x00\x00\x00\x00\x00\x00\x00\x00\x10@\x00@\x10\x00\x00@\x00@\x00@\x00@\x80\x00\x00\x00\x80\x00\x10@\x80@\x10\x00\x80@\x10\x00\x80@\x00\x00\x00@\x10@\x80@\x00\x00\x80\x00\x00\x00\x80\x00\x10\x00\x00\x00\x00@\x80\x00\x10\x00\x80@\x10@\x00@\x00@\x80\x00\x10\x00\x80@\x10\x00\x00\x00\x00@\x00\x00\x10@\x80@\x00\x00\x00\x00\x00@\x00\x00\x10\x00\x00@\x10@\x00\x80\x00\x00\x00\x80\x00\x04\x01\x00\x00\x04\x01\x80\x00\x00!\x00\x00\x04\x00\x80\x00\x00\x00\x00\x00\x00 \x00\x00\x04\x01\x80\x00\x04 \x00\x00\x04\x00\x80\x00\x00\x01\x80\x00\x04 \x80\x00\x00!\x00\x00\x04!\x80\x00\x04\x00\x00\x00\x00 \x00\x00\x00\x01\x00\x00\x04 \x00\x00\x04 \x00\x00\x00\x00\x80\x00\x00 \x80\x00\x04!\x80\x00\x04!\x80\x00\x00\x01\x00\x00\x04!\x80\x00\x00 \x00\x00\x00\x00\x00\x00\x00!\x80\x00\x04\x01\x00\x00\x00\x01\x00\x00\x00!\x80\x00\x04\x00\x00\x00\x04\x00\x80\x00\x00!\x80\x00\x00\x00\x00\x00\x00\x01\x00\x00\x00 \x00\x00\x04\x01\x80\x00\x00!\x80\x00\x04 \x80\x00\x00\x01\x00\x00\x00 \x00\x00\x04!\x80\x00\x04\x01\x80\x00\x04 \x80\x00\x00\x00\x00\x00\x00\x01\x00\x00\x04!\x80\x00\x04!\x80\x00\x04\x00\x00\x00\x00!\x80\x00\x04!\x00\x00\x04\x01\x00\x00\x00\x00\x00\x00\x04 \x00\x00\x00!\x80\x00\x04\x00\x80\x00\x00\x01\x80\x00\x00 \x00\x00\x04\x00\x00\x00\x00\x00\x00\x00\x04 \x80\x00\x04\x01\x80\x00\x00 \b\x00\x00\x10\x00\x00 \x10\x00 \x00\x00\b  \x10\x00\x00 \x10\b\x00\x00\x00\b  \x10\x00\x00 \x00\x00 \x00\x10\b  \x00\x00\x00 \x00\b\x00\x00\x10\b\x00 \x00\x00 \x00\x10\x00\x00\x00\x10\b \x00\x00\x00\x00\x00\x00\b\x00 \x00\b \x00\x10\x00 \x00\x00\x00  \x00\b \x00\x10\b\x00\x00\x00\b\x00 \x10\b\x00 \x10\x00\x00\x00\x00\b  \x00\x00  \x10\b \x00\x00\x00  \x00\x00  \x10\x00\x00\x00\x10\x00 \x00\x10\b\x00\x00\x00\b\x00 \x10\x00  \x00\b  \x10\x00\x00 \x00\b \x00\x00\b\x00\x00\x10\x00\x00 \x00\x00 \x00\x10\x00\x00\x00\x10\b \x00\x00\b\x00\x00\x10\b  \x10\x00  \x00\x00\x00 \x10\b  \x00\x00  \x10\x00\x00\x00\x00\b\x00 \x10\b\x00\x00\x00\x00 \x00\x00\x00\x00 \x10\b  \x00\x00 \x00\x00\b\x00 \x00\b \x00\x10\x00\x00\x00\x00\x00  \x10\x00\x00\x00\x10\b\x00 \x00\b \x00\x10\x00\x00\x10\x00\x01\x00\x10\x02\x01\x04\x00\x02\x00\x00\x00\x00\x00\x04\x00\x00\x01\x04\x00\x02\x01\x04\x10\x00\x00\x04\x10\x02\x01\x04\x10\x02\x00\x00\x10\x00\x00\x00\x00\x00\x01\x00\x00\x02\x01\x00\x00\x00\x00\x00\x00\x02\x01\x00\x10\x02\x01\x04\x00\x00\x00\x04\x00\x02\x01\x04\x10\x00\x01\x00\x10\x00\x00\x04\x00\x02\x01\x00\x00\x02\x00\x00\x10\x02\x00\x04\x10\x02\x01\x00\x10\x00\x00\x00\x10\x02\x00\x04\x00\x00\x01\x04\x00\x00\x01\x04\x10\x02\x00\x04\x10\x00\x01\x00\x00\x00\x00\x00\x00\x02\x00\x04\x10\x00\x00\x00\x00\x02\x00\x04\x10\x00\x00\x00\x10\x00\x01\x04\x00\x02\x01\x04\x00\x02\x01\x00\x10\x02\x01\x00\x10\x02\x01\x00\x00\x00\x01\x00\x10\x00\x00\x00\x00\x02\x00\x04\x00\x02\x00\x00\x10\x00\x00\x04\x10\x02\x01\x04\x00\x00\x01\x04\x10\x00\x00\x04\x10\x02\x01\x04\x00\x00\x01\x00\x00\x02\x01\x04\x10\x02\x00\x00\x10\x02\x00\x04\x10\x00\x00\x00\x00\x00\x01\x00\x00\x00\x01\x04\x10\x02\x00\x00\x00\x00\x01\x04\x10\x00\x00\x00\x10\x02\x00\x04\x00\x00\x01\x00\x00\x02\x00\x04\x00\x02\x00\x04\x00\x00\x01\x00\x10\x00 \b\x00\b\x00\b\x00\x00\x00\x00\x02\x00 \b\x02\b\x00\x00\x00\b \b\x00\b \x00\x00\x00\x00\x00\x00\b \x00\x02\x00\x00\x00\x02\b \b\x02\b\x00\b\x02\x00\x00\b\x02\b \b\x02\x00\x00\b\x00\x00 \x00\x00\x00\x00\x00\x02\b \x00\x00\b\x00\b\x00\b \b\x00\x00\x00\b\x02\x00 \x00\x02\x00 \x00\x02\b\x00\b\x02\b \b\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00 \x00\x02\b \x00\x00\b\x00\b\x00\b \b\x02\x00\x00\x00\x02\x00 \b\x02\x00\x00\x00\x02\x00\x00\b\x02\b\x00\b\x00\x00 \x00\x00\x00 \x00\x02\b\x00\b\x00\x00 \b\x02\x00\x00\b\x00\b \x00\x00\x00 \x00\x00\b\x00\x00\x02\b \x00\x02\b\x00\x00\x00\b\x00\x00\x02\x00 \b\x00\b\x00\x00\x00\x00 \b\x02\b \x00\x02\x00 \x00\x00\b\x00\x00\x02\b\x00\b\x00\b \b\x00\b\x00\x00\x00\x00 \b\x02\b\x00\b\x02\x00\x00\b\x02\x00 \b\x00\x00 \b\x00\x00 \x00\x02\x00\x00\x00\x00\b\x00\b\x02\b\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00@\x00\x00@\x00\x00\x00@@\x00@\x00\x00\x00@\x00@\x00@@\x00\x00@@@@\x00\x00\x00@\x00\x00@@\x00@\x00@\x00@@@@\x00\x00@@\x00@@@@\x00@@@@\x00\x00\x00\x00\x00\x00\x00\x10\x00\x00\x10\x00\x00\x00\x10\x10\x00\x10\x00\x00\x00\x10\x00\x10\x00\x10\x10\x00\x00\x10\x10\x10\x10\x00\x00\x00\x10\x00\x00\x10\x10\x00\x10\x00\x10\x00\x10\x10\x10\x10\x00\x00\x10\x10\x00\x10\x10\x10\x10\x00\x10\x10\x10\x10\x00\x00\x00\x00\x00\x00\x00\x04\x00\x00\x04\x00\x00\x00\x04\x04\x00\x04\x00\x00\x00\x04\x00\x04\x00\x04\x04\x00\x00\x04\x04\x04\x04\x00\x00\x00\x04\x00\x00\x04\x04\x00\x04\x00\x04\x00\x04\x04\x04\x04\x00\x00\x04\x04\x00\x04\x04\x04\x04\x00\x04\x04\x04\x04\x00\x00\x00\x00\x00\x00\x00\x01\x00\x00\x01\x00\x00\x00\x01\x01\x00\x01\x00\x00\x00\x01\x00\x01\x00\x01\x01\x00\x00\x01\x01\x01\x01\x00\x00\x00\x01\x00\x00\x01\x01\x00\x01\x00\x01\x00\x01\x01\x01\x01\x00\x00\x01\x01\x00\x01\x01\x01\x01\x00\x01\x01\x01\x01\x00\x00\x00\x00\x00\x00\x00\x80\x00\x00\x80\x00\x00\x00\x80\x80\x00\x80\x00\x00\x00\x80\x00\x80\x00\x80\x80\x00\x00\x80\x80\x80\x80\x00\x00\x00\x80\x00\x00\x80\x80\x00\x80\x00\x80\x00\x80\x80\x80\x80\x00\x00\x80\x80\x00\x80\x80\x80\x80\x00\x80\x80\x80\x80\x00\x00\x00\x00\x00\x00\x00 \x00\x00 \x00\x00\x00  \x00 \x00\x00\x00 \x00 \x00  \x00\x00    \x00\x00\x00 \x00\x00  \x00 \x00 \x00    \x00\x00  \x00    \x00    \x00\x00\x00\x00\x00\x00\x00\b\x00\x00\b\x00\x00\x00\b\b\x00\b\x00\x00\x00\b\x00\b\x00\b\b\x00\x00\b\b\b\b\x00\x00\x00\b\x00\x00\b\b\x00\b\x00\b\x00\b\b\b\b\x00\x00\b\b\x00\b\b\b\b\x00\b\b\b\b\x00\x00\x00\x00\x00\x00\x00\x02\x00\x00\x02\x00\x00\x00\x02\x02\x00\x02\x00\x00\x00\x02\x00\x02\x00\x02\x02\x00\x00\x02\x02\x02\x02\x00\x00\x00\x02\x00\x00\x02\x02\x00\x02\x00\x02\x00\x02\x02\x02\x02\x00\x00\x02\x02\x00\x02\x02\x02\x02\x00\x02\x02\x02\x02\x00\x00\x00\x00./0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz\x00\x00\x00\x00Xy01@#\x01\x02\x80\u007f\xff\r\n\x81\t !\x00\x00\x00$1$abcd0123$\x00\x00\x00\x00$1$abcd0123$9Qcg8DyviekV3tDGMZynJ1\x00\x00$5$rounds=1234$abc0123456789$\x00\x00\x00$5$rounds=1234$abc0123456789$3VfDjPt05VHFn47C/ojFZ6KRPYrOjj1lLbH.dkF3bZ6\x00\x00\x00\x00$6$rounds=1234$abc0123456789$\x00\x00\x00$6$rounds=1234$abc0123456789$BCpt8zLrc/RcyuXmCDOE1ALqMXB2MH6n1g891HhFj8.w7LxGv.FTkqq6Vxc/km3Y0jE0j24jY5PIv/oOu6reg1\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x02\x00\x02\x00\x02\x00\x02\x00\x02\x00\x02\x00\x02\x00\x02\x00\x02\x00\x03 \x02 \x02 \x02 \x02 \x02\x00\x02\x00\x02\x00\x02\x00\x02\x00\x02\x00\x02\x00\x02\x00\x02\x00\x02\x00\x02\x00\x02\x00\x02\x00\x02\x00\x02\x00\x02\x00\x02\x00\x02\x00\x01`\x04\xc0\x04\xc0\x04\xc0\x04\xc0\x04\xc0\x04\xc0\x04\xc0\x04\xc0\x04\xc0\x04\xc0\x04\xc0\x04\xc0\x04\xc0\x04\xc0\x04\xc0\b\xd8\b\xd8\b\xd8\b\xd8\b\xd8\b\xd8\b\xd8\b\xd8\b\xd8\b\xd8\x04\xc0\x04\xc0\x04\xc0\x04\xc0\x04\xc0\x04\xc0\x04\xc0\b\xd5\b\xd5\b\xd5\b\xd5\b\xd5\b\xd5\b\xc5\b\xc5\b\xc5\b\xc5\b\xc5\b\xc5\b\xc5\b\xc5\b\xc5\b\xc5\b\xc5\b\xc5\b\xc5\b\xc5\b\xc5\b\xc5\b\xc5\b\xc5\b\xc5\b\xc5\x04\xc0\x04\xc0\x04\xc0\x04\xc0\x04\xc0\x04\xc0\b\xd6\b\xd6\b\xd6\b\xd6\b\xd6\b\xd6\b\xc6\b\xc6\b\xc6\b\xc6\b\xc6\b\xc6\b\xc6\b\xc6\b\xc6\b\xc6\b\xc6\b\xc6\b\xc6\b\xc6\b\xc6\b\xc6\b\xc6\b\xc6\b\xc6\b\xc6\x04\xc0\x04\xc0\x04\xc0\x04\xc0\x02\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x01\x00\x00\x00\x02\x00\x00\x00\x03\x00\x00\x00\x04\x00\x00\x00\x05\x00\x00\x00\x06\x00\x00\x00\a\x00\x00\x00\b\x00\x00\x00\t\x00\x00\x00\n\x00\x00\x00\v\x00\x00\x00\f\x00\x00\x00\r\x00\x00\x00\x0e\x00\x00\x00\x0f\x00\x00\x00\x10\x00\x00\x00\x11\x00\x00\x00\x12\x00\x00\x00\x13\x00\x00\x00\x14\x00\x00\x00\x15\x00\x00\x00\x16\x00\x00\x00\x17\x00\x00\x00\x18\x00\x00\x00\x19\x00\x00\x00\x1a\x00\x00\x00\x1b\x00\x00\x00\x1c\x00\x00\x00\x1d\x00\x00\x00\x1e\x00\x00\x00\x1f\x00\x00\x00 \x00\x00\x00!\x00\x00\x00\"\x00\x00\x00#\x00\x00\x00$\x00\x00\x00%\x00\x00\x00&\x00\x00\x00'\x00\x00\x00(\x00\x00\x00)\x00\x00\x00*\x00\x00\x00+\x00\x00\x00,\x00\x00\x00-\x00\x00\x00.\x00\x00\x00/\x00\x00\x000\x00\x00\x001\x00\x00\x002\x00\x00\x003\x00\x00\x004\x00\x00\x005\x00\x00\x006\x00\x00\x007\x00\x00\x008\x00\x00\x009\x00\x00\x00:\x00\x00\x00;\x00\x00\x00<\x00\x00\x00=\x00\x00\x00>\x00\x00\x00?\x00\x00\x00@\x00\x00\x00a\x00\x00\x00b\x00\x00\x00c\x00\x00\x00d\x00\x00\x00e\x00\x00\x00f\x00\x00\x00g\x00\x00\x00h\x00\x00\x00i\x00\x00\x00j\x00\x00\x00k\x00\x00\x00l\x00\x00\x00m\x00\x00\x00n\x00\x00\x00o\x00\x00\x00p\x00\x00\x00q\x00\x00\x00r\x00\x00\x00s\x00\x00\x00t\x00\x00\x00u\x00\x00\x00v\x00\x00\x00w\x00\x00\x00x\x00\x00\x00y\x00\x00\x00z\x00\x00\x00[\x00\x00\x00\\\x00\x00\x00]\x00\x00\x00^\x00\x00\x00_\x00\x00\x00`\x00\x00\x00a\x00\x00\x00b\x00\x00\x00c\x00\x00\x00d\x00\x00\x00e\x00\x00\x00f\x00\x00\x00g\x00\x00\x00h\x00\x00\x00i\x00\x00\x00j\x00\x00\x00k\x00\x00\x00l\x00\x00\x00m\x00\x00\x00n\x00\x00\x00o\x00\x00\x00p\x00\x00\x00q\x00\x00\x00r\x00\x00\x00s\x00\x00\x00t\x00\x00\x00u\x00\x00\x00v\x00\x00\x00w\x00\x00\x00x\x00\x00\x00y\x00\x00\x00z\x00\x00\x00{\x00\x00\x00|\x00\x00\x00}\x00\x00\x00~\x00\x00\x00\u007f\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x01\x00\x00\x00\x02\x00\x00\x00\x03\x00\x00\x00\x04\x00\x00\x00\x05\x00\x00\x00\x06\x00\x00\x00\a\x00\x00\x00\b\x00\x00\x00\t\x00\x00\x00\n\x00\x00\x00\v\x00\x00\x00\f\x00\x00\x00\r\x00\x00\x00\x0e\x00\x00\x00\x0f\x00\x00\x00\x10\x00\x00\x00\x11\x00\x00\x00\x12\x00\x00\x00\x13\x00\x00\x00\x14\x00\x00\x00\x15\x00\x00\x00\x16\x00\x00\x00\x17\x00\x00\x00\x18\x00\x00\x00\x19\x00\x00\x00\x1a\x00\x00\x00\x1b\x00\x00\x00\x1c\x00\x00\x00\x1d\x00\x00\x00\x1e\x00\x00\x00\x1f\x00\x00\x00 \x00\x00\x00!\x00\x00\x00\"\x00\x00\x00#\x00\x00\x00$\x00\x00\x00%\x00\x00\x00&\x00\x00\x00'\x00\x00\x00(\x00\x00\x00)\x00\x00\x00*\x00\x00\x00+\x00\x00\x00,\x00\x00\x00-\x00\x00\x00.\x00\x00\x00/\x00\x00\x000\x00\x00\x001\x00\x00\x002\x00\x00\x003\x00\x00\x004\x00\x00\x005\x00\x00\x006\x00\x00\x007\x00\x00\x008\x00\x00\x009\x00\x00\x00:\x00\x00\x00;\x00\x00\x00<\x00\x00\x00=\x00\x00\x00>\x00\x00\x00?\x00\x00\x00@\x00\x00\x00A\x00\x00\x00B\x00\x00\x00C\x00\x00\x00D\x00\x00\x00E\x00\x00\x00F\x00\x00\x00G\x00\x00\x00H\x00\x00\x00I\x00\x00\x00J\x00\x00\x00K\x00\x00\x00L\x00\x00\x00M\x00\x00\x00N\x00\x00\x00O\x00\x00\x00P\x00\x00\x00Q\x00\x00\x00R\x00\x00\x00S\x00\x00\x00T\x00\x00\x00U\x00\x00\x00V\x00\x00\x00W\x00\x00\x00X\x00\x00\x00Y\x00\x00\x00Z\x00\x00\x00[\x00\x00\x00\\\x00\x00\x00]\x00\x00\x00^\x00\x00\x00_\x00\x00\x00`\x00\x00\x00A\x00\x00\x00B\x00\x00\x00C\x00\x00\x00D\x00\x00\x00E\x00\x00\x00F\x00\x00\x00G\x00\x00\x00H\x00\x00\x00I\x00\x00\x00J\x00\x00\x00K\x00\x00\x00L\x00\x00\x00M\x00\x00\x00N\x00\x00\x00O\x00\x00\x00P\x00\x00\x00Q\x00\x00\x00R\x00\x00\x00S\x00\x00\x00T\x00\x00\x00U\x00\x00\x00V\x00\x00\x00W\x00\x00\x00X\x00\x00\x00Y\x00\x00\x00Z\x00\x00\x00{\x00\x00\x00|\x00\x00\x00}\x00\x00\x00~\x00\x00\x00\u007f\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x12\x11\x13\x14\x15\x16\x17\x18\x19\x1a\x1b\x1c\x1d\x1e\x1f !\x11\"#$\x11%&'()*+,\x11-./\x10\x100\x10\x10\x10\x10\x10\x10\x10123\x1045\x10\x10\x11\x11\x11\x11\x11\x11\x11\x11\x11\x11\x11\x11\x11\x11\x11\x11\x11\x11\x11\x11\x11\x11\x11\x11\x116\x11\x11\x11\x11\x11\x11\x11\x11\x11\x11\x11\x11\x11\x11\x11\x11\x11\x11\x11\x11\x11\x11\x11\x11\x11\x11\x11\x11\x11\x11\x11\x11\x11\x11\x11\x11\x11\x11\x11\x11\x11\x11\x11\x11\x11\x11\x11\x11\x11\x11\x11\x11\x11\x11\x11\x11\x11\x11\x11\x11\x11\x11\x11\x11\x11\x11\x11\x11\x11\x11\x11\x11\x11\x11\x11\x11\x11\x11\x11\x11\x117\x11\x11\x11\x118\x119:;<=>\x11\x11\x11\x11\x11\x11\x11\x11\x11\x11\x11\x11\x11\x11\x11\x11\x11\x11\x11\x11\x11\x11\x11\x11\x11\x11\x11\x11\x11\x11\x11\x11\x11\x11\x11\x11\x11\x11\x11\x11\x11\x11\x11?\x10\x10\x10\x10\x10\x10\x10\x10\x10\x10\x10\x10\x10\x10\x10\x10\x10\x10\x10\x10\x10\x10\x10\x10\x10\x10\x10\x10\x10\x10\x10\x10\x10\x11@A\x11BCDEFGHIJ\x11KLMNOP\x10\x10\x10QRSTUVWXY\x10Z\x10[\\\x10\x10\x11\x11\x11]^_\x10\x10\x10\x10\x10\x10\x10\x10\x10\x10\x11\x11\x11\x11`\x10\x10\x10\x10\x10\x10\x10\x10\x10\x10\x10\x10\x10\x10\x10\x11\x11a\x10\x10\x10\x10\x10\x10\x10\x10\x10\x10\x10\x10\x10\x10\x10\x10\x10\x10\x10\x10\x10\x10\x10\x10\x10\x10\x10\x10\x10\x10\x10\x10\x10\x11\x11bc\x10\x10\x10d\x11\x11\x11\x11\x11\x11\x11\x11\x11\x11\x11\x11\x11\x11\x11\x11\x11\x11\x11\x11\x11\x11\x11e\x11\x11f\x10\x10\x10\x10\x10\x10\x10\x10\x10\x10\x10\x10\x10\x10\x10\x10\x10\x10\x10\x10\x10\x10\x10\x10\x10\x10\x10\x10\x10\x10\x10\x10\x10\x10\x10\x10\x10\x11gh\x10\x10\x10\x10\x10\x10\x10\x10\x10i\x10\x10\x10\x10\x10\x10\x10\x10\x10\x10\x10\x10\x10\x10\x10\x10\x10\x10\x10\x10\x10\x10\x10jklm\x10\x10\x10\x10\x10\x10\x10\x10n\x10\x10\x10\x10\x10\x10\x10op\x10\x10\x10\x10q\x10\x10r\x10\x10\x10\x10\x10\x10\x10\x10\x10\x10\x10\x10\x10\x10\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\x00\x00\x00\x00\x00\x00\x00\x00\xfe\xff\xff\a\xfe\xff\xff\a\x00\x00\x00\x00\x00\x04 \x04\xff\xff\u007f\xff\xff\xff\u007f\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xc3\xff\x03\x00\x1fP\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00 \x00\x00\x00\x00\x00\u07fc@\xd7\xff\xff\xfb\xff\xff\xff\xff\xff\xff\xff\xff\xff\xbf\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\x03\xfc\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xfe\xff\xff\xff\u007f\x02\xfe\xff\xff\xff\xff\x00\x00\x00\x00\x00\xff\xbf\xb6\x00\xff\xff\xff\a\a\x00\x00\x00\xff\a\xff\xff\xff\xff\xff\xff\xff\xfe\xff\xc3\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xef\x1f\xfe\xe1\xff\x9f\x00\x00\xff\xff\xff\xff\xff\xff\x00\xe0\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\x03\x00\xff\xff\xff\xff\xff\a0\x04\xff\xff\xff\xfc\xff\x1f\x00\x00\xff\xff\xff\x01\xff\a\x00\x00\x00\x00\x00\x00\xff\xff\xdf?\x00\x00\xf0\xff\xf8\x03\xff\xff\xff\xff\xff\xff\xff\xff\xff\xef\xff\xdf\xe1\xff\xcf\xff\xfe\xff\xef\x9f\xf9\xff\xff\xfd\xc5\xe3\x9fY\x80\xb0\xcf\xff\x03\x10\xee\x87\xf9\xff\xff\xfdmÇ\x19\x02^\xc0\xff?\x00\xee\xbf\xfb\xff\xff\xfd\xed\xe3\xbf\x1b\x01\x00\xcf\xff\x00\x1e\xee\x9f\xf9\xff\xff\xfd\xed\xe3\x9f\x19\xc0\xb0\xcf\xff\x02\x00\xec\xc7=\xd6\x18\xc7\xff\xc3\xc7\x1d\x81\x00\xc0\xff\x00\x00\xef\xdf\xfd\xff\xff\xfd\xff\xe3\xdf\x1d`\a\xcf\xff\x00\x00\xef\xdf\xfd\xff\xff\xfd\xef\xe3\xdf\x1d`@\xcf\xff\x06\x00\xef\xdf\xfd\xff\xff\xff\xff\xe7\xdf]\xf0\x80\xcf\xff\x00\xfc\xec\xff\u007f\xfc\xff\xff\xfb/\u007f\x80_\xff\xc0\xff\f\x00\xfe\xff\xff\xff\xff\u007f\xff\a? \xff\x03\x00\x00\x00\x00\x96%\xf0\xfe\xae\xec\xff;_ \xff\xf3\x00\x00\x00\x00\x01\x00\x00\x00\xff\x03\x00\x00\xff\xfe\xff\xff\xff\x1f\xfe\xff\x03\xff\xff\xfe\xff\xff\xff\x1f\x00\x00\x00\x00\x00\x00\x00\x00\xff\xff\xff\xff\xff\xff\u007f\xf9\xff\x03\xff\xff\xe7\xc1\xff\xff\u007f@\xff3\xff\xff\xff\xff\xbf \xff\xff\xff\xff\xff\xf7\xff\xff\xff\xff\xff\xff\xff\xff\xff=\u007f=\xff\xff\xff\xff\xff=\xff\xff\xff\xff=\u007f=\xff\u007f\xff\xff\xff\xff\xff\xff\xff=\xff\xff\xff\xff\xff\xff\xff\xff\x87\x00\x00\x00\x00\xff\xff\x00\x00\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff??\xfe\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\x9f\xff\xff\xfe\xff\xff\a\xff\xff\xff\xff\xff\xff\xff\xff\xff\xc7\xff\x01\xff\xdf\x0f\x00\xff\xff\x0f\x00\xff\xff\x0f\x00\xff\xdf\r\x00\xff\xff\xff\xff\xff\xff\xcf\xff\xff\x01\x80\x10\xff\x03\x00\x00\x00\x00\xff\x03\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\x00\xff\xff\xff\xff\xff\a\xff\xff\xff\xff\xff\xff\xff\xff?\x00\xff\xff\xff\u007f\xff\x0f\xff\x01\xc0\xff\xff\xff\xff?\x1f\x00\xff\xff\xff\xff\xff\x0f\xff\xff\xff\x03\xff\x03\x00\x00\x00\x00\xff\xff\xff\x0f\xff\xff\xff\xff\xff\xff\xff\u007f\xfe\xff\x1f\x00\xff\x03\xff\x03\x80\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\xff\xff\xff\xff\xff\xff\xef\xff\xef\x0f\xff\x03\x00\x00\x00\x00\xff\xff\xff\xff\xff\xf3\xff\xff\xff\xff\xff\xff\xbf\xff\x03\x00\xff\xff\xff\xff\xff\xff?\x00\xff\xe3\xff\xff\xff\xff\xff?\xff\x01\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\xdeo\x00\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\x00\x00\x00\x00\x80\xff\x1f\x00\xff\xff??\xff\xff\xff\xff??\xff\xaa\xff\xff\xff?\xff\xff\xff\xff\xff\xff\xdf_\xdc\x1f\xcf\x0f\xff\x1f\xdc\x1f\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x02\x80\x00\x00\xff\x1f\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x84\xfc/>P\xbd\xff\xf3\xe0C\x00\x00\xff\xff\xff\xff\xff\x01\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\xc0\xff\xff\xff\xff\xff\xff\x03\x00\x00\xff\xff\xff\xff\xff\u007f\xff\xff\xff\xff\xff\u007f\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\x1fx\f\x00\xff\xff\xff\xff\xbf \xff\xff\xff\xff\xff\xff\xff\x80\x00\x00\xff\xff\u007f\x00\u007f\u007f\u007f\u007f\u007f\u007f\u007f\u007f\xff\xff\xff\xff\x00\x00\x00\x00\x00\x80\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\xe0\x00\x00\x00\xfe\x03>\x1f\xfe\xff\xff\xff\xff\xff\xff\xff\xff\xff\u007f\xe0\xfe\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xf7\xe0\xff\xff\xff\xff\u007f\xfe\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\u007f\x00\x00\xff\xff\xff\a\x00\x00\x00\x00\x00\x00\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff?\x00\x00\x00\x00\x00\x00\x00\x00\x00\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\a\x00\x00\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\x1f\x00\x00\x00\x00\x00\x00\x00\x00\xff\xff\xff\xff\xff?\xff\x1f\xff\xff\xff\x0f\x00\x00\xff\xff\xff\xff\xff\u007f\xf0\x8f\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\x00\x00\x00\x00\x80\xff\xfc\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xf9\xff\xff\xff\u007f\xff\x00\x00\x00\x00\x00\x00\x00\x80\xff\xbb\xf7\xff\xff\xff\x00\x00\x00\xff\xff\xff\xff\xff\xff\x0f\x00\xff\xff\xff\xff\xff\xff\xff\xff/\x00\xff\x03\x00\x00\xfc(\xff\xff\xff\xff\xff\a\xff\xff\xff\xff\a\x00\xff\xff\xff\x1f\xff\xff\xff\xff\xff\xff\xf7\xff\x00\x80\xff\x03\xdf\xff\xff\u007f\xff\xff\xff\xff\xff\xff\u007f\x00\xff?\xff\x03\xff\xff\u007f\xc4\xff\xff\xff\xff\xff\xff\xff\u007f\x05\x00\x008\xff\xff<\x00~~~\x00\u007f\u007f\xff\xff\xff\xff\xff\xf7?\x00\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\a\xff\x03\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\x0f\x00\xff\xff\u007f\xf8\xff\xff\xff\xff\xff\x0f\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff?\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\x03\x00\x00\x00\x00\u007f\x00\xf8\xe0\xff\xfd\u007f_\xdb\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\x03\x00\x00\x00\xf8\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff?\x00\x00\xff\xff\xff\xff\xff\xff\xff\xff\xfc\xff\xff\xff\xff\xff\xff\x00\x00\x00\x00\x00\xff\x0f\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\xdf\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\x1f\x00\x00\xff\x03\xfe\xff\xff\a\xfe\xff\xff\a\xc0\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\u007f\xfc\xfc\xfc\x1c\x00\x00\x00\x00\xff\xef\xff\xff\u007f\xff\xff\xb7\xff?\xff?\x00\x00\x00\x00\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\a\x00\x00\x00\x00\x00\x00\x00\x00\xff\xff\xff\xff\xff\xff\x1f\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\xff\xff\xff\x1f\xff\xff\xff\xff\xff\xff\x01\x00\x00\x00\x00\x00\xff\xff\xff\xff\x00\xe0\xff\xff\xff\a\xff\xff\xff\xff\xff\a\xff\xff\xff?\xff\xff\xff\xff\x0f\xff>\x00\x00\x00\x00\x00\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff?\xff\x03\xff\xff\xff\xff\x0f\xff\xff\xff\xff\x0f\xff\xff\xff\xff\xff\x00\xff\xff\xff\xff\xff\xff\x0f\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\xff\xff\xff\xff\xff\xff\u007f\x00\xff\xff?\x00\xff\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00?\xfd\xff\xff\xff\xff\xbf\x91\xff\xff?\x00\xff\xff\u007f\x00\xff\xff\xff\u007f\x00\x00\x00\x00\x00\x00\x00\x00\xff\xff7\x00\xff\xff?\x00\xff\xff\xff\x03\x00\x00\x00\x00\x00\x00\x00\x00\xff\xff\xff\xff\xff\xff\xff\xc0\x00\x00\x00\x00\x00\x00\x00\x00o\xf0\xef\xfe\xff\xff\x0f\x00\x00\x00\x00\x00\xff\xff\xff\x1f\xff\xff\xff\x1f\x00\x00\x00\x00\xff\xfe\xff\xff\x1f\x00\x00\x00\xff\xff\xff\xff\xff\xff?\x00\xff\xff?\x00\xff\xff\a\x00\xff\xff\x03\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\xff\xff\xff\xff\xff\xff\xff\xff\xff\x01\x00\x00\x00\x00\x00\x00\xff\xff\xff\xff\xff\xff\a\x00\xff\xff\xff\xff\xff\xff\a\x00\xff\xff\xff\xff\xff\xff\xff\xff?\x00\x00\x00\xc0\xff\x00\x00\xfc\xff\xff\xff\xff\xff\xff\x01\x00\x00\xff\xff\xff\x01\xff\x03\xff\xff\xff\xff\xff\xff\xc7\xff\x00\x00\xff\xff\xff\xffG\x00\xff\xff\xff\xff\xff\xff\xff\xff\x1e\x00\xff\x17\x00\x00\x00\x00\xff\xff\xfb\xff\xff\xff\x9f@\x00\x00\x00\x00\x00\x00\x00\x00\u007f\xbd\xff\xbf\xff\x01\xff\xff\xff\xff\xff\xff\xff\x01\xff\x03\xef\x9f\xf9\xff\xff\xfd\xed\xe3\x9f\x19\x81\xe0\x0f\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\xff\xff\xff\xff\xff\xff\xff\xff\xbb\a\xff\x03\x00\x00\x00\x00\xff\xff\xff\xff\xff\xff\xff\xff\xb3\x00\xff\x03\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\xff\xff\xff\xff\xff\xff?\u007f\x00\x00\x00?\x00\x00\x00\x00\xff\xff\xff\xff\xff\xff\xff\u007f\x11\x00\xff\x03\x00\x00\x00\x00\xff\xff\xff\xff\xff\xff?\x00\xff\x03\x00\x00\x00\x00\x00\x00\xff\xff\xff\xe3\xff\a\xff\x03\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\xff\xff\xff\xff\xff\xff\xff\xff\xff\x03\x00\x80\xff\xff\xff\xff\xff\xff\xe7\u007f\x00\x00\xff\xff\xff\xff\xff\xff\xcf\xff\xff\x00\x00\x00\x00\x00\xff\xff\xff\xff\xff\xff\xff\x01\xff\xfd\xff\xff\xff\xff\u007f\u007f\x01\x00\xff\x03\x00\x00\xfc\xff\xff\xff\xfc\xff\xff\xfe\u007f\x00\x00\x00\x00\x00\x00\x00\x00\x00\u007f\xfb\xff\xff\xff\xff\u007f\xb4\xcb\x00\xff\x03\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\x03\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\u007f\x00\x00\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\x0f\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\xff\xff\xff\xff\xff\u007f\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\xff\xff\xff\xff\xff\xff\xff\xff\u007f\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\xff\xff\xff\xff\xff\xff\xff\x01\xff\xff\xff\u007f\xff\x03\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\xff\xff\xff?\x00\x00\xff\xff\xff\xff\xff\xff\u007f\x00\x0f\x00\xff\x03\xf8\xff\xff\xe0\xff\xff\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\xff\xff\xff\xff\xff\xff\xff\xff\x1f\x00\xff\xff\xff\xff\xff\u007f\x00\x00\xf8\xff\x00\x00\x00\x00\x00\x00\x00\x00\x03\x00\x00\x00\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\x1f\x00\x00\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\a\x00\xff\xff\xff\u007f\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\x0f\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\a\xff\x1f\xff\x01\xffC\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xdf\xff\xff\xff\xff\xff\xff\xff\xff\xdfd\xde\xff\xeb\xef\xff\xff\xff\xff\xff\xff\xff\xbf\xe7\xdf\xdf\xff\xff\xff{_\xfc\xfd\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff?\xff\xff\xff\xfd\xff\xff\xf7\xff\xff\xff\xf7\xff\xff\xdf\xff\xff\xff\xdf\xff\xff\u007f\xff\xff\xff\u007f\xff\xff\xff\xfd\xff\xff\xff\xfd\xff\xff\xf7\xcf\xff\xff\xff\xff\xff\xff\u007f\xff\xff\xf9\xdb\a\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\x1f\x00\x00\x00\x00\x00\x00\x00\xff\xff\xff\xff\xff\xff\xff\xff\x8f\x00\xff\x03\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\xef\xff\xff\xff\x96\xfe\xf7\n\x84ꖪ\x96\xf7\xf7^\xff\xfb\xff\x0f\xee\xfb\xff\x0f\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\xff\xff\xff\x03\xff\xff\xff\x03\xff\xff\xff\x03\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00alnum\x00alpha\x00blank\x00cntrl\x00digit\x00graph\x00lower\x00print\x00punct\x00space\x00upper\x00xdigit\x00\x00\x00\x00\x12\x10\x13\x14\x15\x16\x17\x18\x19\x1a\x1b\x1c\x1d\x1e\x1f !\x10\x10\"#\x10$%&'()*+\x10,-.\x11\x11/\x11\x11\x11\x11\x11\x1101234567\x11\x10\x10\x10\x10\x10\x10\x10\x10\x10\x10\x10\x10\x10\x10\x10\x10\x10\x10\x10\x10\x10\x10\x10\x10\x108\x10\x10\x10\x10\x10\x10\x10\x10\x10\x10\x10\x10\x10\x10\x10\x10\x10\x10\x10\x10\x10\x10\x10\x10\x10\x10\x10\x10\x10\x10\x10\x10\x10\x10\x10\x10\x10\x10\x10\x10\x10\x10\x10\x10\x10\x10\x10\x10\x10\x10\x10\x10\x10\x10\x10\x10\x10\x10\x10\x10\x10\x10\x10\x10\x10\x10\x10\x10\x10\x10\x10\x10\x10\x10\x10\x10\x10\x10\x10\x10\x10\x10\x10\x10\x10\x109\x10:;<=>?\x10\x10\x10\x10\x10\x10\x10\x10\x10\x10\x10\x10\x10\x10\x10\x10\x10\x10\x10\x10\x10\x10\x10\x10\x10\x10\x10\x10\x10\x10\x10\x10\x10\x10\x10\x10\x10\x10\x10\x10\x10\x10\x10\x10\x10\x10\x10\x10\x10\x10\x10\x10@\x10\x10\x10\x10\x10\x10\x10\x10\x10\x10\x10\x10\x10\x10\x10\x10\x10\x10\x10\x10\x10\x10\x10A\x10\x10B\x10CDE\x10FGH\x10I\x10\x10JKLMN\x10O\x10PQRSTUVWX\x10Y\x10Z[\x10\x10\x10\x10\x10\x10\\\x10\x10\x10\x10\x10\x10\x10\x10\x10\x10\x10\x10\x10\x10\x10\x10\x10\x10\x10\x10\x10\x10\x10\x10\x10\x10\x10\x10\x10\x10\x10\x10\x10\x10\x10\x10\x10\x10\x10\x10\x10\x10\x10\x10\x10\x10\x10\x10\x10\x10\x10\x10\x10\x10\x10\x10\x10\x10\x10\x10\x10\x10\x10\x10\x10\x10\x10\x10\x10]^\x10\x10\x10_\x10\x10\x10\x10\x10\x10\x10\x10\x10\x10\x10\x10\x10\x10\x10\x10\x10\x10\x10\x10\x10\x10\x10\x10\x10\x10\x10\x10\x10\x10\x10\x10\x10\x10\x10\x10\x10\x10\x10\x10\x10\x10\x10\x10\x10\x10\x10\x10\x10\x10\x10\x10\x10\x10\x10\x10\x10\x10\x10\x10\x10\x10\x10\x10\x10\x10\x10\x10\x10\x10\x10\x10\x10\x10\x10\x10`\x10\x10\x10\x10\x10\x10\x10\x10\x10\x10\x10\x10\x10\x10\x10\x10\x10\x10\x10abcd\x10\x10ef\x11\x11g\x10\x10\x10\x10\x10\x10\x10\x10\x10\x10\x10\x10\x10hi\x10\x10\x10\x10j\x10klm\x11\x11\x11nopq\x10\x10\x10\x10\x10\x10\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\x00\x00\x00\x00\xfe\xff\x00\xfc\x01\x00\x00\xf8\x01\x00\x00x\x00\x00\x00\x00\xff\xfb\xdf\xfb\x00\x00\x80\x00\x00\x00\x80\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00<\x00\xfc\xff\xe0\xaf\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xdf\xff\xff\xff\xff\xff @\xb0\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00@\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\xfc\x03\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\xfc\x00\x00\x00\x00\x00\xe6\xfe\xff\xff\xff\x00@I\x00\x00\x00\x00\x00\x18\x00\xff\xff\x00\xd8\x00\x00\x00\x00\x00\x00\x00\x01\x00<\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x10\xe0\x01\x1e\x00`\xff\xbf\x00\x00\x00\x00\x00\x00\xff\a\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\xf8\xcf\x03\x00\x00\x00\x03\x00 \xff\u007f\x00\x00\x00N\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\a\xfc\x00\x00\x00\x00\x00\x00\x00\x00\x00\x10\x00 \x1e\x000\x00\x01\x00\x00\x00\x00\x00\x00\x00\x00\x10\x00 \x00\x00\x00\x00\xfc/\x00\x00\x00\x00\x00\x00\x00\x10\x00 \x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x10\x00 \x00\x00\x00\x00\x03\xe0\x00\x00\x00\x00\x00\x00\x00\x10\x00 \x00\x00\x00\x00\xfd\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00 \x00\x00\x00\x00\xff\a\x00\x00\x00\x00\x00\x00\x00\x00\x00 \x00\x00\x00\x00\x00\xff\x00\x00\x00\x00\x00\x00\x00\x10\x00 \x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x18\x00\xa0\x00\u007f\x00\x00\xff\x03\x00\x00\x00\x00\x00\x00\x00\x00\x00\x04\x00\x00\x00\x00\x10\x00\x00\x00\x00\x00\x00\x80\x00\x80\xc0\xdf\x00\f\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x1f\x00\x00\x00\x00\x00\x00\xfe\xff\xff\xff\x00\xfc\xff\xff\x00\x00\x00\x00\x00\x00\x00\x00\xfc\x00\x00\x00\x00\x00\x00\xc0\xff\xdf\xff\a\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x80\x06\x00\xfc\x00\x00\x18>\x00\x00\x80\xbf\x00\xcc\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\b\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00`\xff\xff\xff\x1f\x00\x00\xff\x03\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x01\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00`\x00\x00\x01\x00\x00\x18\x00\x00\x00\x00\x00\x00\x00\x00\x008\x00\x00\x00\x00\x10\x00\x00\x00p\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x000\x00\x00\xfe\u007f/\x00\x00\xff\x03\xff\u007f\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x0e1\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\xc4\xff\xff\xff\xff\x00\x00\x00\xc0\x00\x00\x00\x00\x00\x00\x00\x00\x01\x00\xe0\x9f\x00\x00\x00\x00\u007f?\xff\u007f\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x10\x00\x10\x00\x00\xfc\xff\xff\xff\x1f\x00\x00\x00\x00\x00\f\x00\x00\x00\x00\x00\x00@\x00\f\xf0\x00\x00\x00\x00\x00\x00\xc0\xf8\x00\x00\x00\x00\x00\x00\x00\xc0\x00\x00\x00\x00\x00\x00\x00\x00\xff\x00\xff\xff\xff!\x90\x03\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\xff\xff\xff\xff\u007f\x00\xe0\xfb\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\xa0\x03\xe0\x00\xe0\x00\xe0\x00`\x80\xf8\xff\xff\xff\xfc\xff\xff\xff\xff\xff\u007f\xdf\xff\xf1\u007f\xff\u007f\x00\x00\xff\xff\xff\xff\x00\x00\xff\xff\xff\xff\x01\x00{\x03\xd0\xc1\xafB\x00\f\x1f\xbc\xff\xff\x00\x00\x00\x00\x00\x0e\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\u007f\x00\x00\x00\xff\a\x00\x00\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff?\x00\x00\x00\x00\x00\x00\xfc\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xcf\xff\xff\xff?\xff\xff\xff\xff\xe3\xff\xfd\a\x00\x00\xf0\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\xe0\x87\x03\xfe\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x01\x80\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\xff\xff\xff\xff\xff\u007f\xff\xff\xff\x03\x00\x00\x00\x00\x00\x00\xff\xff\xff\xfb\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\x0f\x00\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff?\x00\x00\x00\xff\x0f\x1e\xff\xff\xff\x01\xfc\xc1\xe0\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x1e\x01\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\b\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\xff\xff\x00\x00\x00\x00\xff\xff\xff\xff\x0f\x00\x00\x00\xff\xff\xff\u007f\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\u007f\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\xff\xff\xff\xff\xff\xff\xff\xff\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\xff\xff\xff\xff\xff\xff\u007f\x00\x00\x00\x00\x00\x00\xc0\x00\xe0\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x80\x0fp\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\xff\x00\xff\xff\u007f\x00\x03\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x06\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00D\b\x00\x00\x00\x0f\xff\x03\x00\x00\x00\x00\x00\x00\xf0\x00\x00\x00\x00\x00\x00\x00\x00\x00\x10\xc0\x00\x00\xff\xff\x03\x17\x00\x00\x00\x00\x00\xf8\x00\x00\x00\x00\b\x80\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\b\x00\xff?\x00\xc0 \x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\xf0\x00\x00\x80;\x00\x00\x00\x00\x00\x00\x00\x80\x02\x00\x00\xc0\x00\x00C\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\b\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x008\x00\x00\x01\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x80\x00\x00\x00\x00\x00\x02\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\xfc\xff\x03\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\xc0\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x000\xff\xff\xff\x03\xff\xff\xff\xff\xff\xff\xf7\xff\u007f\x0f\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x80\xfe\xff\x00\xfc\x01\x00\x00\xf8\x01\x00\x00\xf8?\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\u007f\u007f\x000\x87\xff\xff\xff\xff\xff\x8f\xff\x00\x00\x00\x00\x00\x00\xe0\xff\xff\u007f\xff\x0f\x01\x00\x00\x00\x00\x00\xff\xff\xff\xff\xff?\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\xff\xff\xff\x0f\x00\x00\x00\x00\x0f\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x80\x00\x00\x00\x00\x00\x00\x01\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x80\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x80\xff\x00\x00\x80\xff\x00\x00\x00\x00\x80\xff\x00\x00\x00\x00\x00\x00\x00\x00\x00\xf8\x00\x00\xc0\x8f\x00\x00\x00\x80\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x000\xff\xff\xfc\xff\xff\xff\xff\xff\x00\x00\x00\x00\x00\x00\x00\x87\xff\x00\xff\x01\x00\x00\x00\xe0\x00\x00\x00\xe0\x00\x00\x00\x00\x00\x01\x00\x00`\xf8\u007f\x00\x00\x00\x00\x00\x00\x00\x00\xfe\x00\x00\x00\xff\x00\x00\x00\xff\x00\x00\x00\x1e\x00\xfe\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\xfc\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\xff\xff\xff\u007f\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\xc0?\xfc\xff?\x00\x00\x80\x03\x00\x00\x00\x00\x00\x00\xfe\x03\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x18\x00\x0f\x00\x00\x00\x00\x008\x00\x00\x00\x00\x00\x00\x00\x00\x00\xe1?\x00\xe8\xfe\xff\x1f\x00\x00\x00\x00\x00\x00\x00`?\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x02\x00\x00\x00\x00\x00\x00\x00\x06\x00\x00\x00\x00\x00\x00\x00\x00\x00\x10\x00 \x00\x00\xc0\x1f\x1f\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00D\xf8\x00(\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00L\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x80\xff\xff\xff\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x80\x0e\x00\x00\x00\xff\x1f\x00\x00\x00\x00\x00\x00\x00\x00\xc0\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\b\x00\xfc\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\xfc\a\x00\x00\x00\x00\x00\x00\x00\x18\x80\xff\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\xdf\a\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x80>\x00\x00\xfc\xff\x1f\x03\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x004\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x1f\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\xc0\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00?\x00\x00\x00\x00\x00\x00\x00\x80\xff0\x00\x00\xf8\x03\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x80\a\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\xb0\x0f\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff?\x00\xff\xff\xff\xff\u007f\xfe\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\x01\x00\x00\xff\xff\xff\xff\xff\xff\xff\xff?\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\u007f\x00\xff\xff\x03\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x02\x00\x00\b\x00\x00\x00\b\x00\x00 \x00\x00\x00 \x00\x00\x80\x00\x00\x00\x80\x00\x00\x00\x02\x00\x00\x00\x02\x00\x00\b\x00\x00\x00\x00\x00\x00\x00\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\x0f\x00\xf8\xfe\xff\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x80\xff\u007f\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00p\a\x00\xc0\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x03\x00\xff\xff\xff\xff\xff\x0f\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\x0f\x00\xff\u007f\xfe\xff\xfe\xff\xfe\xff\xff\xff?\x00\xff\x1f\xff\xff\xff\u007f\x00\x00\x00\xfc\x00\x00\x00\f\x00\x00\x00\xfc\xff\xff\xff\x1f\x00\x00\x00\x00\x00\x00\xc0\xff\xff\xff\a\x00\xff\xff\xff\xff\xff\x0f\xff\x01\x03\x00?\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\x1f\x00\xff\x1f\xff\x01\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\x0f\x00\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\x1f\x00\x00\x00\x00\x00\xff\x0f\xff\xff\xff\xff\xff\xff\xff\x00\xff\x03\xff\xff\xff\xff\xff\x00\xff\xff\xff?\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\xff\x0f\xff\xff\xff\xff\xff\u007f\xff\x1f\xff\xff\xff\x0f\x00\x00\xff\xff\xff\x00\x00\x00\x00\x00\x01\x00\xff\xff\u007f\x00\x00\x00\x00\x00\x00\x00 \x00\x00\x00\t\x00\x00\x00\n\x00\x00\x00\r\x00\x00\x00\v\x00\x00\x00\f\x00\x00\x00\x85\x00\x00\x00\x00 \x00\x00\x01 \x00\x00\x02 \x00\x00\x03 \x00\x00\x04 \x00\x00\x05 \x00\x00\x06 \x00\x00\b \x00\x00\t \x00\x00\n \x00\x00( \x00\x00) \x00\x00_ \x00\x00\x000\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\xc0\x00 \x1f\x00\x01\x01/2\x01\x01\x059\x01\x01\x0fJ\x01\x01-y\x01\x01\x05p\x03\x01\x03\x91\x03 \x11\xa3\x03 \t\x00\x04P\x10\x10\x04  `\x04\x01!\x8a\x04\x015\xc1\x04\x01\r\xd0\x04\x01?\x14\x05\x01\x1b1\x050&\xa0\x01\x01\x05\xb3\x01\x01\x03\xcd\x01\x01\x0f\xde\x01\x01\x11\xf8\x01\x01'\"\x02\x01\x11\xd8\x03\x01\x17\x00\x1e\x01\x95\xa0\x1e\x01_\b\x1f\xf8\b\x18\x1f\xf8\x06(\x1f\xf8\b8\x1f\xf8\bH\x1f\xf8\x06h\x1f\xf8\b\x88\x1f\xf8\b\x98\x1f\xf8\b\xa8\x1f\xf8\b\xb8\x1f\xf8\x02\xba\x1f\xb6\x02\xc8\x1f\xaa\x04\xd8\x1f\xf8\x02\xda\x1f\x9c\x02\xe8\x1f\xf8\x02\xea\x1f\x90\x02\xf8\x1f\x80\x02\xfa\x1f\x82\x02\xf0\x13\b\x06\x98\xa6\x01\x03\x96\xa7\x01\tF\x02\x01\t\x10\x05\x01\x03`!\x10\x10\x00,0/g,\x01\x05\x80,\x01c\xeb,\x01\x03@\xa6\x01-\x80\xa6\x01\x17\"\xa7\x01\r2\xa7\x01=y\xa7\x01\x03~\xa7\x01\t\x90\xa7\x01\x03\xa0\xa7\x01\t\xb4\xa7\x01\x03!\xff \x1a\x00\x00\x00\x00\x00\x00\x00\x00I\x001\x01S\x00\u007f\x010\x01i\x00x\x01\xff\x00\x81\x01S\x02\x82\x01\x83\x01\x84\x01\x85\x01\x86\x01T\x02\x87\x01\x88\x01\x89\x01V\x02\x8a\x01W\x02\x8b\x01\x8c\x01\x8e\x01\xdd\x01\x8f\x01Y\x02\x90\x01[\x02\x91\x01\x92\x01\x93\x01`\x02\x94\x01c\x02\x96\x01i\x02\x97\x01h\x02\x98\x01\x99\x01\x9c\x01o\x02\x9d\x01r\x02\x9f\x01u\x02\xa6\x01\x80\x02\xa7\x01\xa8\x01\xa9\x01\x83\x02\xac\x01\xad\x01\xae\x01\x88\x02\xaf\x01\xb0\x01\xb1\x01\x8a\x02\xb2\x01\x8b\x02\xb7\x01\x92\x02\xb8\x01\xb9\x01\xbc\x01\xbd\x01\xc4\x01\xc6\x01\xc4\x01\xc5\x01\xc5\x01\xc6\x01\xc7\x01\xc9\x01\xc7\x01\xc8\x01\xc8\x01\xc9\x01\xca\x01\xcc\x01\xca\x01\xcb\x01\xcb\x01\xcc\x01\xf1\x01\xf3\x01\xf1\x01\xf2\x01\xf2\x01\xf3\x01\xf4\x01\xf5\x01\xf6\x01\x95\x01\xf7\x01\xbf\x01 \x02\x9e\x01\x86\x03\xac\x03\x88\x03\xad\x03\x89\x03\xae\x03\x8a\x03\xaf\x03\x8c\x03\xcc\x03\x8e\x03\xcd\x03\x8f\x03\xce\x03\x99\x03E\x03\x99\x03\xbe\x1f\xa3\x03\xc2\x03\xf7\x03\xf8\x03\xfa\x03\xfb\x03`\x1e\x9b\x1e\x9e\x1e\xdf\x00Y\x1fQ\x1f[\x1fS\x1f]\x1fU\x1f_\x1fW\x1f\xbc\x1f\xb3\x1f\xcc\x1f\xc3\x1f\xec\x1f\xe5\x1f\xfc\x1f\xf3\x1f:\x02e,;\x02<\x02=\x02\x9a\x01>\x02f,A\x02B\x02C\x02\x80\x01D\x02\x89\x02E\x02\x8c\x02\xf4\x03\xb8\x03\xf9\x03\xf2\x03\xfd\x03{\x03\xfe\x03|\x03\xff\x03}\x03\xc0\x04\xcf\x04&!\xc9\x03*!k\x00+!\xe5\x002!N!\x83!\x84!`,a,b,k\x02c,}\x1dd,}\x02m,Q\x02n,q\x02o,P\x02p,R\x02r,s,u,v,~,?\x02\u007f,@\x02\xf2,\xf3,}\xa7y\x1d\x8b\xa7\x8c\xa7\x8d\xa7e\x02\xaa\xa7f\x02\xc7\x10'-\xcd\x10--v\x03w\x03\x9c\x03\xb5\x00\x92\x03\xd0\x03\x98\x03\xd1\x03\xa6\x03\xd5\x03\xa0\x03\xd6\x03\x9a\x03\xf0\x03\xa1\x03\xf1\x03\x95\x03\xf5\x03\xcf\x03\xd7\x03\xab\xa7\\\x02\xac\xa7a\x02\xad\xa7l\x02\xae\xa7j\x02\xb0\xa7\x9e\x02\xb1\xa7\x87\x02\xb2\xa7\x9d\x02\xb3\xa7S\xab\x12\x04\x80\x1c\x14\x04\x81\x1c\x1e\x04\x82\x1c!\x04\x83\x1c\"\x04\x84\x1c\"\x04\x85\x1c*\x04\x86\x1cb\x04\x87\x1cJ\xa6\x88\x1c\x00\x00\x00\x00\x00\x00\x00\x00toupper\x00tolower\x00\x10\x10\x10\x12\x13\x14\x15\x16\x17\x18\x19\x1a\x1b\x1c\x1d\x1e\x1f\x10\x10 \x10\x10\x10!\"#$%&'\x10\x10(\x10\x10\x10\x10\x10\x10\x10\x10\x10\x10\x10)*\x10\x10+\x10\x10\x10\x10\x10\x10\x10\x10\x10\x10\x10\x10\x10\x10\x10\x10\x10\x10\x10\x10\x10\x10\x10\x10\x10\x10\x10\x10\x10\x10\x10\x10\x10\x10\x10\x10\x10\x10\x10\x10\x10\x10\x10\x10\x10\x10\x10\x10\x10\x10\x10\x10\x10\x10\x10\x10\x10\x10\x10\x10\x10\x10\x10\x10\x10\x10\x10\x10\x10\x10\x10\x10\x10\x10\x10\x10\x10\x10\x10\x10\x10\x10\x10\x10\x10\x10\x10\x10\x10\x10\x10\x10\x10\x10\x10\x10\x10\x10\x10\x10\x10\x10\x10\x10\x10\x10\x10\x10\x10\x10\x10\x10\x10\x10\x10\x10\x10,\x10-./0\x10\x10\x10\x10\x10\x10\x10\x10\x10\x10\x10\x10\x10\x10\x10\x10\x10\x10\x10\x10\x10\x10\x10\x10\x10\x10\x10\x10\x10\x10\x10\x10\x10\x10\x10\x10\x10\x10\x10\x10\x10\x10\x10\x10\x10\x10\x10\x10\x10\x10\x10\x10\x10\x10\x10\x10\x10\x10\x10\x10\x10\x10\x10\x10\x10\x10\x10\x10\x10\x10\x10\x10\x10\x10\x10\x10\x10\x10\x101\x10\x1023\x10456\x10\x10\x10\x10\x10\x107\x10\x10\x10\x10\x1089:;<=>?\x10\x10@\x10AB\x10\x10\x10\x10\x10\x10\x10\x10\x10\x10\x10\x10\x10\x10\x10\x10\x10\x10\x10\x10\x10\x10\x10\x10\x10\x10\x10\x10\x10\x10\x10\x10\x10\x10\x10\x10\x10\x10\x10\x10\x10\x10\x10\x10\x10\x10\x10\x10\x10\x10\x10\x10\x10\x10\x10\x10\x10\x10\x10\x10\x10\x10\x10\x10\x10\x10\x10\x10\x10\x10\x10\x10\x10\x10\x10\x10CD\x10\x10\x10E\x10\x10\x10\x10\x10\x10\x10\x10\x10\x10\x10\x10\x10\x10\x10\x10\x10\x10\x10\x10\x10\x10\x10\x10\x10\x10\x10\x10\x10\x10\x10\x10\x10\x10\x10\x10\x10\x10\x10\x10\x10\x10\x10\x10\x10\x10\x10\x10\x10\x10\x10\x10\x10\x10\x10\x10\x10\x10\x10\x10\x10\x10\x10\x10\x10\x10\x10\x10\x10\x10\x10\x10\x10\x10\x10\x10F\x10\x10\x10\x10\x10\x10\x10\x10\x10\x10\x10\x10\x10\x10\x10\x10\x10\x10\x10\x10GH\x10\x10\x10\x10\x10\x10\x10I\x10\x10\x10\x10\x10J\x10\x10\x10\x10\x10\x10\x10KL\x10\x10\x10\x10\x10\x10\x10\x10\x10\x10\x10\x10\x10\x10\x10\x10\x10\x10\x10\x10\x10\x10\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\xf8\x03\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\xfe\xff\xff\xff\xff\xbf\xb6\x00\x00\x00\x00\x00\x00\x00?\x00\xff\x17\x00\x00\x00\x00\x00\xf8\xff\xff\x00\x00\x01\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\xc0\xbf\x9f=\x00\x00\x00\x80\x02\x00\x00\x00\xff\xff\xff\a\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\xc0\xff\x01\x00\x00\x00\x00\x00\x00\xf8\x0f\x00\x00\x00\xc0\xfb\xef>\x00\x00\x00\x00\x00\x0e\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\xf0\xff\xff\xff\xff\xff\a\x00\x00\x00\x00\x00\x00\x14\xfe!\xfe\x00\f\x00\x00\x00\x02\x00\x00\x00\x00\x00\x00\x10\x1e \x00\x00\f\x00\x00\x00\x06\x00\x00\x00\x00\x00\x00\x10\x869\x02\x00\x00\x00#\x00\x06\x00\x00\x00\x00\x00\x00\x10\xbe!\x00\x00\f\x00\x00\xfc\x02\x00\x00\x00\x00\x00\x00\x90\x1e @\x00\f\x00\x00\x00\x04\x00\x00\x00\x00\x00\x00\x00\x01 \x00\x00\x00\x00\x00\x00\x01\x00\x00\x00\x00\x00\x00\xc0\xc1=`\x00\f\x00\x00\x00\x02\x00\x00\x00\x00\x00\x00\x90@0\x00\x00\f\x00\x00\x00\x03\x00\x00\x00\x00\x00\x00\x18\x1e \x00\x00\f\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x04\\\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\xf2\a\x80\u007f\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\xf2\x1b\x00?\x00\x00\x00\x00\x00\x00\x00\x00\x00\x03\x00\x00\xa0\x02\x00\x00\x00\x00\x00\x00\xfe\u007f\xdf\xe0\xff\xfe\xff\xff\xff\x1f@\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\xe0\xfdf\x00\x00\x00\xc3\x01\x00\x1e\x00d \x00 \x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\xe0\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x1c\x00\x00\x00\x1c\x00\x00\x00\f\x00\x00\x00\f\x00\x00\x00\x00\x00\x00\x00\xb0?@\xfe\x0f \x00\x00\x00\x00\x00x\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00`\x00\x00\x00\x00\x02\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x87\x01\x04\x0e\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x80\t\x00\x00\x00\x00\x00\x00@\u007f\xe5\x1f\xf8\x9f\x00\x00\x00\x00\x00\x00\xff\u007f\x00\x00\x00\x00\x00\x00\x00\x00\x0f\x00\x00\x00\x00\x00\xd0\x17\x04\x00\x00\x00\x00\xf8\x0f\x00\x03\x00\x00\x00<;\x00\x00\x00\x00\x00\x00@\xa3\x03\x00\x00\x00\x00\x00\x00\xf0\xcf\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\xf7\xff\xfd!\x10\x03\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\xff\xff\xff\xff\xff\xff\xff\xfb\x00\xf8\x00\x00\x00|\x00\x00\x00\x00\x00\x00\xdf\xff\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\xff\xff\xff\xff\x01\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x80\x03\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x80\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\xff\xff\xff\xff\x00\x00\x00\x00\x00<\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x06\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x80\xf7?\x00\x00\x00\xc0\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x03\x00D\b\x00\x00`\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x000\x00\x00\x00\xff\xff\x03\x00\x00\x00\x00\x00\xc0?\x00\x00\x80\xff\x03\x00\x00\x00\x00\x00\a\x00\x00\x00\x00\x00\xc8\x13\x00\x00\x00\x00 \x00\x00\x00\x00\x00\x00\x00\x00~f\x00\b\x10\x00\x00\x00\x00\x00\x10\x00\x00\x00\x00\x00\x00\x9d\xc1\x02\x00\x00\x00\x000@\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00 !\x00\x00\x00\x00\x00@\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\xff\xff\x00\x00\xff\xff\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x80\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x0e\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00 \x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x01\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\xc0\a\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00n\xf0\x00\x00\x00\x00\x00\x87\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00`\x00\x00\x00\x02\x00\x00\x00\x00\x00\x00\xff\u007f\x00\x00\x00\x00\x00\x00\x80\x03\x00\x00\x00\x00\x00x&\x00\x00\x00\x00\x00\x00\x00\x00\a\x00\x00\x00\x80\xef\x1f\x00\x00\x00\x00\x00\x00\x00\b\x00\x03\x00\x00\x00\x00\x00\xc0\u007f\x00\x1c\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x80\xd3@\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x80\xf8\a\x00\x00\x03\x00\x00\x00\x00\x00\x00\x10\x01\x00\x00\x00\xc0\x1f\x1f\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\xff\\\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\xf8\x85\r\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00<\xb0\x01\x00\x000\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\xf8\xa7\x01\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00(\xbf\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\xe0\xbc\x0f\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00~\x06\x00\x00\x00\x00\xf8y\x80\x00~\x0e\x00\x00\x00\x00\x00\xfc\u007f\x03\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\u007f\xbf\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\xfc\xff\xff\xfcm\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00~\xb4\xbf\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x1f\x00\x00\x00\x00\x00\x00\x00\u007f\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x80\a\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00`\x0f\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x80\x03\xf8\xff\xe7\x0f\x00\x00\x00<\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x1c\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\xff\xff\xff\xff\xff\xff\u007f\xf8\xff\xff\xff\xff\xff\x1f \x00\x10\x00\x00\xf8\xfe\xff\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\u007f\xff\xff\xf9\xdb\a\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\u007f\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\xf0\a\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x10\x10\x10\x10\x10\x10\x10\x10\x10\x10\x10\x10\x10\x10\x10\x10\x10\x12\x10\x10\x10\x10\x10\x10\x10\x10\x10\x10\x10\x10\x10\x10\x10\x10\x10\x13\x10\x14\x15\x16\x10\x10\x10\x17\x10\x10\x18\x19\x1a\x1b\x1c\x11\x11\x11\x11\x11\x11\x11\x11\x11\x11\x11\x11\x11\x11\x11\x11\x11\x11\x11\x11\x11\x11\x11\x11\x11\x11\x1d\x11\x11\x11\x11\x11\x11\x11\x11\x11\x11\x11\x11\x11\x11\x11\x11\x11\x11\x11\x11\x11\x11\x11\x11\x11\x11\x11\x11\x11\x11\x11\x11\x11\x11\x11\x11\x11\x11\x11\x11\x11\x11\x11\x11\x11\x11\x11\x11\x11\x11\x11\x11\x11\x11\x11\x11\x11\x11\x11\x11\x11\x11\x11\x11\x11\x11\x11\x11\x11\x11\x11\x11\x11\x11\x11\x11\x11\x11\x11\x11\x11\x11\x11\x11\x11\x11\x1e\x10\x10\x10\x10\x1f\x10\x10\x11\x11\x11\x11\x11\x11\x11\x11\x11\x11\x11\x11\x11\x11\x11\x11\x11\x11\x11\x11\x11\x11\x11\x11\x11\x11\x11\x11\x11\x11\x11\x11\x11\x11\x11\x11\x11\x11\x11\x11\x11\x11\x11 \x10\x10\x10\x10\x10\x10\x10\x10\x10\x10\x10\x10\x10\x10\x10\x10\x10\x10\x10\x10\x10\x10\x10\x10\x10\x10\x10\x10\x10\x10\x10\x10\x10\x11\x11\x10\x10\x10!\"\x10\x10\x10\x10\x10\x10\x10\x10\x10\x10\x10\x10\x10\x10\x10\x10\x10\x10\x10\x10\x10\x10\x10\x10\x10\x10\x10\x10\x10\x10\x10\x10\x10\x10\x10\x10\x10\x10\x10\x10\x10\x10\x10\x10\x10\x10\x10\x10\x10\x10\x10\x10\x10\x10\x10\x10\x10\x10\x10\x10\x10\x10\x10\x10\x10\x10\x10\x10\x10\x10\x10\x10\x10\x10\x10\x10\x10\x10\x10\x10\x10\x10\x10\x10\x10\x10\x10\x10\x10\x10\x10\x10\x10\x10\x10\x10\x10\x10\x10\x10\x10\x10\x10\x10\x10\x10\x10\x10\x10\x10\x10#\x11\x11\x11\x11\x11\x11\x11\x11\x11\x11\x11\x11\x11\x11\x11\x11\x11\x11\x11\x11\x11\x11\x11$\x11\x11%\x10\x10\x10\x10\x10\x10\x10\x10\x10\x10\x10\x10\x10\x10\x10\x10\x10\x10\x10\x10\x10\x10\x10\x10\x10\x10\x10\x10\x10\x10\x10\x10\x10\x10\x10\x10\x10\x11&'\x10\x10\x10\x10\x10\x10\x10\x10\x10\x10\x10\x10\x10\x10\x10\x10\x10\x10\x10\x10\x10\x10\x10\x10\x10\x10\x10\x10\x10\x10\x10\x10\x10\x10\x10\x10\x10\x10\x10\x10\x10\x10\x10\x10\x10\x10\x10\x10\x10\x10\x10\x10\x10\x10\x10\x10\x10\x10\x10\x10\x10()*+,-.\x10\x10/\x10\x10\x10\x10\x10\x10\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\f\x00\x06\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x1e\t\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00`\x00\x000\x00\x00\x00\x00\x00\x00\xff\x0f\x00\x00\x00\x00\x80\x00\x00\b\x00\x02\f\x00`0@\x10\x00\x00\x04,$ \f\x00\x00\x00\x01\x00\x00\x00P\xb8\x00\x00\x00\x00\x00\x00\x00\xe0\x00\x00\x00\x01\x80\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x18\x00\x00\x00\x00\x00\x00!\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\xff\xff\xff\xfb\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\x0f\x00\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff?\x00\x00\x00\xff\x0f\xff\xff\xff\xff\xff\xff\xff\u007f\xfe\xff\xff\xff\xff\xff\xff\xff\xff\xff\u007f\xfe\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xe0\xff\xff\xff\xff\u007f\xfe\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\u007f\xff\xff\xff\xff\xff\a\xff\xff\xff\xff\x0f\x00\xff\xff\xff\xff\xff\u007f\xff\xff\xff\xff\xff\x00\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\u007f\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\x00\x00\x00\x00\x00\x00\x00\x00\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\x1f\xff\xff\xff\xff\xff\xff\u007f\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\xff\xff\xff\x1f\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\x0f\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\xff\x03\x00\x00\xff\xff\xff\xff\xf7\xff\u007f\x0f\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\xfe\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\x01\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\u007f\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x03\x00\x00\x00\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\x1f\x00\x00\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\a\x00\xff\xff\xff\u007f\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\x0f\x10\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x80\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00@\xfe\a\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\a\x00\xff\xff\xff\xff\xff\x0f\xff\x01\x03\x00?\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\xff\xff\xff\xff\x01\xe0\xbf\xff\xff\xff\xff\xff\xff\xff\xff\xdf\xff\xff\x0f\x00\xff\xff\xff\xff\xff\x87\x0f\x00\xff\xff\x11\xff\xff\xff\xff\xff\xff\xff\xff\u007f\xfd\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\x9f\xff\xff\xff\xff\xff\xff\xff?\x00x\xff\xff\xff\x00\x00\x04\x00\x00`\x00\x10\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\xf8\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\x00\x00\x00\x00\x00\x00\xff\xff\xff\xff\xff\xff\xff\xff?\x10\a\x00\x00\x18\xf0\x01\x00\x00\xff\xff\xff\xff\xff\u007f\xff\x1f\xff\xff\xff\x0f\x00\x00\xff\xff\xff\x00\x00\x00\x00\x00\x01\x00\xff\xff\u007f\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x01\x00\x00\x00\x00\x00\x00\x00\x02\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00/dev/null\x00\x00\x00T!\"\x19\r\x01\x02\x03\x11K\x1c\f\x10\x04\v\x1d\x12\x1e'hnopqb \x05\x06\x0f\x13\x14\x15\x1a\b\x16\a($\x17\x18\t\n\x0e\x1b\x1f%#\x83\x82}&*+<=>?CGJMXYZ[\\]^_`acdefgijklrstyz{|H\x00\x00\x00\x00Illegal byte sequence\x00Domain error\x00Result not representable\x00Not a tty\x00Permission denied\x00Operation not permitted\x00No such file or directory\x00No such process\x00File exists\x00Value too large for data type\x00No space left on device\x00Out of memory\x00Resource busy\x00Interrupted system call\x00Resource temporarily unavailable\x00Invalid seek\x00Cross-device link\x00Read-only file system\x00Directory not empty\x00Connection reset by peer\x00Operation timed out\x00Connection refused\x00Host is down\x00Host is unreachable\x00Address in use\x00Broken pipe\x00I/O error\x00No such device or address\x00Block device required\x00No such device\x00Not a directory\x00Is a directory\x00Text file busy\x00Exec format error\x00Invalid argument\x00Argument list too long\x00Symbolic link loop\x00Filename too long\x00Too many open files in system\x00No file descriptors available\x00Bad file descriptor\x00No child process\x00Bad address\x00File too large\x00Too many links\x00No locks available\x00Resource deadlock would occur\x00State not recoverable\x00Previous owner died\x00Operation canceled\x00Function not implemented\x00No message of desired type\x00Identifier removed\x00Device not a stream\x00No data available\x00Device timeout\x00Out of streams resources\x00Link has been severed\x00Protocol error\x00Bad message\x00File descriptor in bad state\x00Not a socket\x00Destination address required\x00Message too large\x00Protocol wrong type for socket\x00Protocol not available\x00Protocol not supported\x00Socket type not supported\x00Not supported\x00Protocol family not supported\x00Address family not supported by protocol\x00Address not available\x00Network is down\x00Network unreachable\x00Connection reset by network\x00Connection aborted\x00No buffer space available\x00Socket is connected\x00Socket not connected\x00Cannot send after socket shutdown\x00Operation already in progress\x00Operation in progress\x00Stale file handle\x00Remote I/O error\x00Quota exceeded\x00No medium found\x00Wrong medium type\x00Multihop attempted\x00No error information\x00\x00\x00Assertion failed: %s (%s: %s: %d)\n\x00\x00infinity\x00\x00\x00\x00nan\x00_p\x89\x00\xff\t/\x0f\x00\x00\x00\x00\n\x00\x00\x00d\x00\x00\x00\xe8\x03\x00\x00\x10'\x00\x00\xa0\x86\x01\x00@B\x0f\x00\x80\x96\x98\x00\x00\xe1\xf5\x05\x00\x00\x00\x00\x00\x01\x02\x04\a\x03\x06\x05\x00\x00\x00\x00\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\x00\x01\x02\x03\x04\x05\x06\a\b\t\xff\xff\xff\xff\xff\xff\xff\n\v\f\r\x0e\x0f\x10\x11\x12\x13\x14\x15\x16\x17\x18\x19\x1a\x1b\x1c\x1d\x1e\x1f !\"#\xff\xff\xff\xff\xff\xff\n\v\f\r\x0e\x0f\x10\x11\x12\x13\x14\x15\x16\x17\x18\x19\x1a\x1b\x1c\x1d\x1e\x1f !\"#\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\x00\x00\x00/proc/self/fd/\x00\x001.1.20\x00\x00Symbol not found: %s\x00\x00\x00\x00Dynamic linker failed to allocate memory for error message\x00\x00Invalid library handle %p\x00\x00\x00Unsupported request %d\x00\x00Dynamic loading not supported\x00\x00\x00/\x00\x00\x00%s: \x00\x00\x00\x00: \x00\x00/dev/tty\x00\x00\x00\x00\n\x00\x00\x00/etc/shells\x00rbe\x00rb\x00\x00/bin/sh\n/bin/csh\n\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00UTF-8\x00\x00\x00C.UTF-8\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\xde\x12\x04\x95\x00\x00\x00\x00\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\x00\x00\x00\x00messages\x00\x00\x00\x00utf8\x00char\x00\x00\xc8wchart\x00\x00\xc6ucs2be\x00\x00\xc4ucs2le\x00\x00\xc5utf16be\x00\x00\xc2utf16le\x00\x00\xc1ucs4be\x00utf32be\x00\x00\xc0ucs4le\x00utf32le\x00\x00\xc3ascii\x00usascii\x00iso646\x00iso646us\x00\x00\xc7utf16\x00\x00\xcaucs4\x00utf32\x00\x00\xcbucs2\x00\x00\xcceucjp\x00\x00\xd0shiftjis\x00sjis\x00\x00\xd1iso2022jp\x00\x00\xd2gb18030\x00\x00\xd8gbk\x00\x00\xd9gb2312\x00\x00\xdabig5\x00bigfive\x00cp950\x00big5hkscs\x00\x00\xe0euckr\x00ksc5601\x00ksx1001\x00cp949\x00\x00\xe8iso88591\x00latin1\x00\x00@iso88592\x00\x00(\xa0\x10\xf4WN\xa4\xdc\xf4\xd4)\xa8T5UVn\xb5\"\x17\\\xb0\x14\x14\x98N\xb4\xe0\x04\x95_\xb8XE\x95Vo\r6W\\I\x05#\x8c@\xc4\xccd\xd01\f%c\xd12\x185\xe3\x8cC\x10\xed\xf4\xd34\xd4\x14e\xcd5M\x8d\xa5MY\xdcts\xd57J\x85#\xce@\xe4\xd0t\xd09\r\xa5s\xd1:\x19\xb5\xe3\xceC\x11\xf1\x04\xd4<\xf4\x18e\xcf=N\x91\xa5\x8fY\xfc\xf4\x83\x15`iso88593\x00\x00(\xa0\x90\xf4\xd7(\xa4\x00 \xd2)\xa8\xb04\x15G.\xb5\x02\x00\\\xb0\x94$\xcb,\xb4\xd42\xd2-\xb8\xb4DUG/\xf5\x02@\\\xc0\x04#\f\x00\xc4(\x84\xd01\xc8$\xa3\xcc2\xcc4\xe3\xcc3\x00D#\xcd4\xd4xd\xcd5\x1ae\xa3\xcd6܄\x15\xd57\xe0\x84#\x0e\x00\xe4,\x94\xd09褣\xce:\xec\xb4\xe3\xce;\x00\xc4#\xcf<\xf4|d\xcf=\x1b\xe5\xa3\xcf>\xfc\x88%\x15`iso88594\x00\x00(\xa0\x10$\xd3R\xa4\x98T\xd3)\xa8T%\x11H[\xb5\"\xd7+\xb0\x14\x14\x18S\xb4\x9cd\x93_\xb8X5QH\\\x055\x97P\x00\x05#\xcc0\xc4\x14c\x8cJ\f%c\xd12\x145\xe3\fJ\x10\xf54\x14L\xd4Tc\xcd5\u061c\xa5\xcd6\xdct\xf5\xd57\x01\x85#\xce8\xe4\x94c\xceJ\r\xa5s\xd1:\x15\xb5\xe3NJ\x11\xf9DTL\xf4\xd4c\xcf=\xf8\xa0\xa5\xcf>\xfcx\x05\x16`iso88595\x00\x00(\xa0D'\xddt\xd4Ug\xddu\xd8e\xa7\xddvܵҝw߁\x17\x9ex\xe3\x91W\x9ey硗\x9ez\xeb\xb1מ{\xef\xc1\x17\x9f|\xf3\xd1W\x9f}\xf7ᗟ~\xfb\xf1ן\u007f\xff\x01\x18\xa0\x80\x03\x12X\xa0\x81\a\"\x98\xa0\x82\v2ؠ\x83\x0fB\x18\xa1\x84\x13RX\xa1\x85\x17b\x98\xa1\x86\x1brء\x87&\u007f\bb\x88\"\x8eHb\x89&\x9e\x88b\x8a*\x9e\xb2\"\x8biso88596\x00\x00(\xa0\x00\x00\x00\x00\xa4\x00\x00\x00\x00\x00\x00\x00\x00\x00b\xb6\x02\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\xc0\x98\x00\x00\x00\x00\x99\x00\x94i\xe6\x99h\xa6\xa9\xe6\x9al\xb6\xe9\xe6\x9bp\xc6)\xe7\x9ct\xd6i\xe7\x9dx\xe6\xa9\xe7\x9e|\xf6\xe9'\x00\x00\x00\x00\x00\x00\u007f\x02\x1a\xa8\xa0\x83\x12Z\xa8\xa1\x87\"\x9a\xa8\xa2\x8b2ڨ\xa3\x8fB\x1a)\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00iso88597\x00\x00(\xa0LL\xf1($\x97l\xca)\xa8\xa4\x92\xd8*\xac\xb4\x02@İ\xc4\"\xcb,\x8a-\xc6\xd8-\x8d9\xf6\xd8.\x90\xf5\x12\x99d\x93QV\x99e\x97a\x96\x99f\x9bq֙g\x9f\x81\x16\x9ah\xa3\x91\x06@i\xa6\x9d\x86Zj\xaa\xad\xc6Zk\xae\xbd\x06[l\xb2\xcdF[m\xb6݆[n\xba\xed\xc6[o\xbe\xfd\x06\\p\xc2\rG\\q\xc6\x1d\x87\\r\xca-\xc7\\s\xce=\a\x1d\x00iso88598\x00\x00(\xa0\x00 \xca(\xa4\x94b\xca)\xa8\xa4r\xcd*\xac\xb4\xe2\xca+\xb0\xc4\"\xcb,\xb4\xd4b\xcb-\xb8\xe4r\xcf.\xbc\xf4\xe2\v\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x80\xc4B\x0eId\x91F\x1e\x89d\x92J.\xc9d\x93N>\te\x94RNIe\x95V^\x89e\x96Zn\xc9%\x00\x004\xec0\x00iso88599\x00\x004\x1cE#\xcd4\xd4Tc\xcd5\xd8d\xa3\xcd6ܰ4\xd57\xe0\x84#\xce8\xe4\x94c\xce9褣\xce:\xec\xb4\xe3\xce;\x1d\xc5#\xcf<\xf4\xd4c\xcf=\xf8\xe4\xa3\xcf>\xfc\xb4D\xd5?iso885910\x00\x00(\xa0\x10$\x11H(\x99\x04\xd3)5AT\xd5Vr\xb5\xf2UP\xb0\x144QH)\x9d\x14\xd3-6Ed\x15WsE\f\x96P\x00\x05#\xcc0\xc4\x14c\x8cJ\f%c\xd12\x145\xe3\xcc3\xd0\xf44\xd44\xd4TcMW\u061c\xa5\xcd6\xdct\xe3\xcd7\x01\x85#\xce8\xe4\x94c\xceJ\r\xa5s\xd1:\x15\xb5\xe3\xce;\xf0\xf8D\xd4<\xf4\xd4c\x8fW\xf8\xa0\xa5\xcf>\xfc\xf4\xe3\x8fLiso885911\x00tis620\x00\x00(\xa0x\xfa)\xa8\xa1\x8a:*\xa9\xa5\x9az*\xaa\xa9\xaa\xba*\xab\xad\xba\xfa*\xac\xb1\xca:+\xad\xb5\xdaz+\xae\xb9\xea\xba+\xaf\xbd\xfa\xfa+\xb0\xc1\n;,\xb1\xc5\x1a{,\xb2\xc9*\xbb,\xb3\xcd:\xfb,\xb4\xd1J;-\xb5\xd5Z{-\x00\x00\x00\x00\x00\xb6\xd9j\xbb-\xb7\xddz\xfb-\xb8\xe1\x8a;.\xb9\xe5\x9a{.\xba骻.\xbb\xed\xba\xfb.\xbc\xf1\xca;/\xbd\x00\x00\x00\x00\x00iso885913\x00\x00(\xa0\\,\xca(\xa4`l\xca)ؤ\xb2\xd4*\xac\xb4\xe2\x8a1\xb0\xc4\"\xcb,\x16\xd7b\xcb-\xf8\xe4\xc2\xd4.\xbc\xf4\xe2\x8b9\x04\xa9\x04\x90A\xc4\x14c\x91D\f%\xe3\x16E \xc1\x84RMU\xed\xd4\xd34CUc\xcd5g\xe5\xf4\xd4W\xdc\xc0%\xd77\x05\xad\x14\xd0A\xe4\x94s\xd1D\r\xa5\xf3VE!Ŕ\x92MV\xf1\xe4\xd3<D\xd5c\xcf=h\xe9\x04\x15X\xfc\xc45\x17\xc5iso885914\x00\x00(\xa0\xd4k\xef(\n-t\xef)\x03\xa7R0\xbe\t\xb7\xe2J[\xf9\xea\xeb\xd1G\xfb\xf2kK\xbf\x04\xfbk\xf0\xbf\n\x1f\x8c0\xc0\xc0\x04#\xcc0\xc4\x14c\xcc1\xc8$\xa3\xcc2\xcc4\xe3\xcc3iE#\xcd4\xd4TcM\xc0\xd8d\xa3\xcd6\xdct\xb3\xd67\xe0\x84#\xce8\xe4\x94c\xce9褣\xce:\xec\xb4\xe3\xce;j\xc5#\xcf<\xf4\xd4c\x8f\xc0\xf8\xe4\xa3\xcf>\xfc\xf4\xc3\xd6?iso885915\x00latin9\x00\x00)$\x97R\xd5)V\xa5\xa2\xca*\xac\xb4\xe2\xca+\xb0\xc4\"\xcb,r\xd5b\xcb-s\xe5\xa2\xcb.G!\xd5\xd6/\xc0\x04#\xcc0\xc4\x14c\xcc1\xc8$\xa3\xcc2\xcc4\xe3\xcc3\xd0D#\xcd4\xd4Tc\xcd5\xd8d\xa3\xcd6\xdct\xe3\xcd7\xe0\x84#\xce8\xe4\x94c\xce9褣\xce:\xec\xb4\xe3\xce;\xf0\xc4#\xcf<\xf4\xd4c\xcf=\xf8\xe4\xa3\xcf>\xfc\xf4\xe3\xcf?iso885916\x00\x00(\xa0\x10TPN$c\\\xd5)V\xa5\x92\xd7*n\xb5\xf2\x16\\\xb0\xc4\u0090Nr]l\xcb-s5\xa4\xd7.G!\xd5V\\\xc0\x04#\x8c@\xc4\x18d\xcc1\xc8$\xa3\xcc2\xcc4\xe3\xcc3\x10\xed$\xcd4\xd4\x14e\xcdSee\xa3\xcd6\xdcX\xb4\xd77\xe0\x84#\xce@\xe4\x1cd\xce9褣\xce:\xec\xb4\xe3\xce;\x11\xf1$\xcf<\xf4\x18e\x0fTf\xe5\xa3\xcf>\xfc\\\xc4\xd7?cp1250\x00windows1250\x00\x00 $\x03P1\x00\x18s\x9c\xb1\xc6\x00t\\\x95\xc7Oe%\x97[\x00LL\xb1\xc5\x17o\xfc0\xc4\x00\x9cl\xd5\xc7Pi5\xd7[\xa0\xf8\xf5WN\xa4\x10d\xca)\xa8\xa42\xd5*\xac\xb4\xe2\n\\\xb0\xc4\x12\x98N\xb4\xd4b\xcb-\xb8\x14D\xd5.7\r\x86S\\I\x05#\x8c@\xc4\xccd\xd01\f%c\xd12\x185\xe3\x8cC\x10\xed\xf4\xd34\xd4\x14e\xcd5M\x8d\xa5MY\xdcts\xd57J\x85#\xce@\xe4\xd0t\xd09\r\xa5s\xd1:\x19\xb5\xe3\xceC\x11\xf1\x04\xd4<\xf4\x18e\xcf=N\x91\xa5\x8fY\xfc\xf4\x83\x15`cp1251\x00windows1251\x00\x00 \xd2MWq\x88\x18s\x9c\xb1\xc6$w\x9c\x9d\xc7\xdaq\xb7\x9dw NL\xb1\xc5\x17o\xfc0\xc4\x00\x9c|\xe2\xc7(\xaa\x98\"\x8b\xa0t\xb7\"v\xa4\xb4h\xca)ѥB\xdd*\xac\xb4\xe2\xcau\xb0\xc4b\x1d\x89.\xd6b\xcb-\x1f\x9a,\xe2.&V7b\x89߁\x17\x9ex\xe3\x91W\x9ey硗\x9ez\xeb\xb1מ{\xef\xc1\x17\x9f|\xf3\xd1W\x9f}\xf7ᗟ~\xfb\xf1ן\u007f\xff\x01\x18\xa0\x80\x03\x12X\xa0\x81\a\"\x98\xa0\x82\v2ؠ\x83\x0fB\x18\xa1\x84\x13RX\xa1\x85\x17b\x98\xa1\x86\x1brء\x87cp1252\x00windows1252\x00\x00 $\x03P1]\x18s\x9c\xb1\xc6}u\\\x95\xc7G\x01 \x17\x00\x00LL\xb1\xc5\x17o\xfc0Ă\x9dl\xd5\xc7H\x010W[\xa0\x84\"\xca(\xa4\x94b\xca)\xa8\xa4\xa2\xca*\xac\xb4\xe2\xca+\xb0\xc4\"\xcb,\xb4\xd4b\xcb-\xb8\xe4\xa2\xcb.\xbc\xf4\xe2\xcb/\xc0\x04#\xcc0\xc4\x14c\xcc1\xc8$\xa3\xcc2\xcc4\xe3\xcc3\xd0D#\xcd4\xd4Tc\xcd5\xd8d\xa3\xcd6\xdct\xe3\xcd7\xe0\x84#\xce8\xe4\x94c\xce9褣\xce:\xec\xb4\xe3\xce;\xf0\xc4#\xcf<\xf4\xd4c\xcf=\xf8\xe4\xa3\xcf>\xfc\xf4\xe3\xcf?cp1253\x00windows1253\x00\x00 $\x03P1]\x18s\x9c\xb1\xc6\x00t\f\x80\xc7\x00\x00\x00\x00\x00\x00LL\xb1\xc5\x17o\xfc0\xc4\x00\x9c\f\xc0\xc7\x00\x00\x00\x00\x00\xa0,\xc6\xd8(\xa4\x94b\xca)\xa8\xa4\x02\xc0*\xac\xb4\xe2Jİ\xc4\"\xcb,\x8a\xd5b\xcb-\x8d9\xf6\xd8.\x90\xf5\x12\x99d\x93QV\x99e\x97a\x96\x99f\x9bq֙g\x9f\x81\x16\x9ah\xa3\x91\x06@i\xa6\x9d\x86Zj\xaa\xad\xc6Zk\xae\xbd\x06[l\xb2\xcdF[m\xb6݆[n\xba\xed\xc6[o\xbe\xfd\x06\\p\xc2\rG\\q\xc6\x1d\x87\\r\xca-\xc7\\s\xce=\a\x1d\x00cp1254\x00windows1254\x00\x00 $\x03P1]\x18s\x9c\xb1\xc6}u\\\x95\xc7G\x01\x00\x00\x00\x00LL\xb1\xc5\x17o\xfc0Ă\x9dl\xd5\xc7H\x01\x00@[\xa0\x84\"\xca(\xa4\x94b\xca)\xa8\xa4\xa2\xca*\xac\xb4\xe2\xca+\xb0\xc4\"\xcb,\xb4\xd4b\xcb-\xb8\xe4\xa2\xcb.\xbc\xf4\xe2\xcb/\xc0\x04#\xcc0\xc4\x14c\xcc1\xc8$\xa3\xcc2\xcc4\xe3\xcc3\x1cE#\xcd4\xd4Tc\xcd5\xd8d\xa3\xcd6ܰ4\xd57\xe0\x84#\xce8\xe4\x94c\xce9褣\xce:\xec\xb4\xe3\xce;\x1d\xc5#\xcf<\xf4\xd4c\xcf=\xf8\xe4\xa3\xcf>\xfc\xb4D\xd5?cp1255\x00windows1255\x00\x00 $\x03P1]\x18s\x9c\xb1\xc6}u\f\x80\xc7\x00\x00\x00\x00\x00\x00LL\xb1\xc5\x17o\xfc0Ă\x9d\f\xc0\xc7\x00\x00\x00\x00\x00\xa0\x84\"\xca(\"\x97b\xca)\xa8\xa4r\xcd*\xac\xb4\xe2\xca+\xb0\xc4\"\xcb,\xb4\xd4b\xcb-\xb8\xe4r\xcf.\xbc\xf4\xe2\xcb//\xc2\x18\xa3\x8c3\xd2X\xa3\x8d7\xe2\b@\x8e:\xee\xc8c\x8f>\xfe\bd\x90]z\xf9%\x98a\x02\x00\x00\x00\x00\x00\x00\x00\x00B\x0eId\x91F\x1e\x89d\x92J.\xc9d\x93N>\te\x94RNIe\x95V^\x89e\x96Zn\xc9%\x00\x004\xec0\x00cp1256\x00windows1256\x00\x00 $OZ1]\x18s\x9c\xb1\xc6}u,\xa9\xc7GQzi\xa5\x99NL\xb1\xc5\x17o\xfc0Ę\x9el\xe9\xc7H-̰\xa6\xa0\x88)\xca(\xa4\x94b\xca)\xa8\xa4\xb2\xe9*\xac\xb4\xe2\xca+\xb0\xc4\"\xcb,\xb4\xd4b\xcb-\xb8\xe42\xe6.\xbc\xf4\xe2\v\x99\x9c\x96i\xe6\x99h\xa6\xa9\xe6\x9al\xb6\xe9\xe6\x9bp\xc6)\xe7\x9ct\xd6i\xe7\x9dx\xe6\xa9\xe75{\xf2٧\x9f\u007f\x02\x1a\xa8\xa0\xe0\f*\x0e\xa1\x85\x1az\xe89褣\xce:\x88&\xea\xce;\x8a.\xcah\xa3\xf48\xfa\xe8=\x90\xe6\x13\xe9>\xfc4\xecp\xa7cp1257\x00windows1257\x00\x00 $\x03P1\x00\x18s\x9c\xb1\xc6\x00t\f\x80\xc7\x00\xa0\xe2\x17.\x00LL\xb1\xc5\x17o\xfc0\xc4\x00\x9c\f\xc0\xc7\x00\xbc\x12\x18\x00\xa0\x00 \xca(\xa4\x00`\xca)ؤ\xb2\xd4*\xac\xb4\xe2\x8a1\xb0\xc4\"\xcb,\xb4\xd4b\xcb-\xf8\xe4\xc2\xd4.\xbc\xf4\xe2\x8b9\x04\xa9\x04\x90A\xc4\x14c\x91D\f%\xe3\x16E \xc1\x84RMU\xed\xd4\xd34CUc\xcd5g\xe5\xf4\xd4W\xdc\xc0%\xd77\x05\xad\x14\xd0A\xe4\x94s\xd1D\r\xa5\xf3VE!Ŕ\x92MV\xf1\xe4\xd3<D\xd5c\xcf=h\xe9\x04\x15X\xfc\xc45\x17`cp1258\x00windows1258\x00\x00 $\x03P1]\x18s\x9c\xb1\xc6}u\f\x80\xc7G\x01\x00\x00\x00\x00LL\xb1\xc5\x17o\xfc0Ă\x9d\f\xc0\xc7H\x01\x00@[\xa0\x84\"\xca(\xa4\x94b\xca)\xa8\xa4\xa2\xca*\xac\xb4\xe2\xca+\xb0\xc4\"\xcb,\xb4\xd4b\xcb-\xb8\xe4\xa2\xcb.\xbc\xf4\xe2\xcb/\xc0\x04#\x8c@\xc4\x14c\xcc1\xc8$\xa3\xcc2\x845\xe3\xcc3\x10Es\xd84\xd4\xd4e\xcd5\xd8d\xa3\xcd6\xdc\xdce\xd87\xe0\x84#\xce@\xe4\x94c\xce9褣\xce:\x85\xb5\xe3\xce;\x11Ń\xd8<\xf4\xd8e\xcf=\xf8\xe4\xa3\xcf>\xfc\xe05\xf2?koi8r\x00\x00 3\xd3\\\xb3\xcd7㜳\xce;\xf3\xdc\xf3\xd6\\w\xed\xf5\xd7`\x87-v\xccc\xa3\x9c2\xcb.\xbf\f\x8a̰\xc8r\xcb=>\xff\f\xf4\x87A\v=4\xd1E\x1b}4\xd2I+\xbd4\xd3M;\xfdttPG-\xf5\xd4TWm\xf5\xd5Xg\xadu*\x1d\xfe\a`\x85\x03\x128\xa1\x80\x14\x1e\x88`\x82\n.\xc8`\x83\x0ez\xf8 \x84\x11JX`\x80\x1bjh\xe0\x85\x1cbha\x86\xfd}\a^}\xe3\x917\x9fx\xf4\x9d\x87^z\xea\xad\xc7^{\xee\xf9\xf7\x1e|\xf1\xc9W^x\xfb\xe9g\xde}\xfc\xe1g_~koi8u\x00\x00 3\xd3\\\xb3\xcd7㜳\xce;\xf3\xdc\xf3\xd6\\w\xed\xf5\xd7`\x87-v\xccc\xa3\x9c2\xcb.\xbf\f\x8a̰\xc8r\xcb=>\xff\f\xf4\x87\"\nMb\x89E\x1b}4\xd2I\xbb\xb84\xd3M;\xfdtt\xd4Em\xdduTWm\xf5\xd5X\xb7\xa8u*\x1d\xfe\a`\x85\x03\x128\xa1\x80\x14\x1e\x88`\x82\n.\xc8`\x83\x0ez\xf8 \x84\x11JX`\x80\x1bjh\xe0\x85\x1cbha\x86\xfd}\a^}\xe3\x917\x9fx\xf4\x9d\x87^z\xea\xad\xc7^{\xee\xf9\xf7\x1e|\xf1\xc9W^x\xfb\xe9g\xde}\xfc\xe1g_~cp437\x00\x00 \xc7\xf0\x93\x8e8\xe4\x80S\xce9ꬃ\xce;\xee\xb0CL1ɘc\f=\xf6ȳO>\xffXÍ(\xa3\x94\x122]\xe1\xb43\x8f>\xf1D\xa3\x8a.\xbf\xc0\xccJ/\xbc\x84\xb2\xca.`\x87-6\xcd:?\r5\xd1CG\xfds\xd1K+\x9d\xb4\xcd7\xf3\xbcs\xce3\xf7\xcct\xd3H\v}5\xd5N\xfb\xacu\xd5VK=\xf5\xd1F\x03\x1dt\xd6X\xe3\\s\xd7\\{\xfd\xf5ֳ}c\x99p\xa5\x15W\x8bq\xa8m\xb6\x9am*#w\xdb\xca-\xc7\xf2\xb2\xcb1\xcb|\x0f˰\xa0|K\xca \xcb26(cp850\x00\x00 \xc7\xf0\x93\x8e8\xe4\x80S\xce9ꬃ\xce;\xee\xb0CL1ɘc\f=\xf6ȳO>\xffX\xc3\r>\xa3`s\r]\xe1\xb43\x8f>\xf1D\xa3\x8a.\xbf\xb8\xc2J/\xbc\x84\xb2\xca.`\x87-6\xcd:\a#\f0\xa9D\xfds\xd1K\x8bR\x8a\xcd7\xf3\xbcs\xce3\xf7<\xce0H\v}5\xd5N\xfb\xac5)\xf0@\xa3\xcc2ȴԌ3\xcf\xe0\\s\xd7\\\x9b\xc2\xcc\xd6\xd3|C\x8d4\xf5TS\x8b?\xdeh\xb3M6\xfdt\xf3\n-\xad\xc4\"\xb1/\xb6\x9cr\x0f.\xb0\xa0rK.\xb3\xc826(cp866\x00\x00 ߁\x17\x9ex\xe3\x91W\x9ey硗\x9ez\xeb\xb1מ{\xef\xc1\x17\x9f|\xf3\xd1W\x9f}\xf7ᗟ~\xfb\xf1ן\u007f\xff\x01\x18\xa0\x80\x03\x12X\xa0\x81\a\"\x98\xa0\x82\v2ؠ\x83`\x87-6\xcd:?\r5\xd1CG\xfds\xd1K+\x9d\xb4\xcd7\xf3\xbcs\xce3\xf7\xcct\xd3H\v}5\xd5N\xfb\xacu\xd5VK=\xf5\xd1F\x03\x1dt\xd6X\xe3\\s\xd7\\{\xfd\xf5\xd6\x0fB\x18\xa1\x84\x13RX\xa1\x85\x17b\x98\xa1\x86\x1brء\x87\xd1}H\x9d\x88ו\xd8݊\xb0\xa0|K\xca&\x9326(ibm1047\x00cp1047\x00\x00\x01\x9c$`\xc8\x1f\x974\xe2\xc8\x02\f4\xe0\xc0\x03\x10D \xc1\x04\x9d\x14\x82\xc0!\x18d \xc9#\x1ct\xe0\xc1\a\x80\x04\"\xc8 \x84(p\xc1\x06\x88$\xa2\xc8\"\x8c\x14`\xc0\x01\x90Db\xc1$\x94Tb\t\x01\x98d\xa2\xc9&\x14T\xe0\x89\x06 \x80\"\x0e9\xe0\x843N9\xe7\xc4#\x8a\v<\xa0\xb0\x02\x1f&\xa4\xa3\xce:\xe8\xb4\xe3\xce;\xec|\x13\x02\t*\xa4\xb0\x83\x17-\xbc \f1\xc0\x043L1\xc7Dc\n\v%|\xe1\xc3\x0f\xf8$\xa3\xcc2\xc84\xe3\xcc3̀\xa1\xc3\b@\x9cЃ\b\u0604!\xc6\x18d\x94a\xc6\x19h\xa4\xb1\xca.\xf0\xf4\xe3O,\xb0\xa8\xb1\x06\x1bm\xb8\xf1\x06\x1cqȡ\x8a.\xe6\xe0b\f)\xb5\xf81\a\x1du\xd8q\a\x1ey\xe8\x11\xca/\xd0l\xe1\x8d+\xac\x8cR\xca-\xa9\x9cb\v/\xbd\xf8\xd2\r*\xaftA\xcb5{\x04!\xc4\x10D\x14a\xc4\x11H$\xd1\n=\xf6\xc83O=}(\xb1\x04\x13M8\xf1\x04\x14QH\x91\xcb>\xfc\xe4\xa3\xcf?\\\xdc3\x05\x15UXq\x05\x16Yh!\v5\xd6H3M50\xc4 \xc3\f4\xd4`\xc3\r8\xe40\xcb6\xdcd\xa3\xcd'\x00\x00\x00\x00\x00ASCII\x00\x00\x00C\x00\x00\x00.\x00\x00\x00Sun\x00Mon\x00Tue\x00Wed\x00Thu\x00Fri\x00Sat\x00Sunday\x00Monday\x00Tuesday\x00Wednesday\x00Thursday\x00Friday\x00Saturday\x00Jan\x00Feb\x00Mar\x00Apr\x00May\x00Jun\x00Jul\x00Aug\x00Sep\x00Oct\x00Nov\x00Dec\x00January\x00February\x00March\x00April\x00May\x00June\x00July\x00August\x00September\x00October\x00November\x00December\x00AM\x00PM\x00%a %b %e %T %Y\x00%m/%d/%y\x00%H:%M:%S\x00%I:%M:%S %p\x00\x00\x00%m/%d/%yw89\x00%a %b %e %T %Y\x00%H:%M:%S\x00\x00\x00\x00\x00^[yY]\x00^[nN]\x00yes\x00no\x00\x00LC_ALL\x00\x00LANG\x00\x00\x00\x00C.UTF-8\x00POSIX\x00\x00\x00MUSL_LOCPATH\x00\x00\x00\x00LC_CTYPE\x00\x00\x00\x00LC_NUMERIC\x00\x00LC_TIME\x00\x00\x00\x00\x00LC_COLLATE\x00\x00LC_MONETARY\x00LC_MESSAGES\x00\x00\x00\x00\x00.\x00\x00\x00\x01\x02\x03\x03\x04\x04\x04\x04\x05\x05\x06\x06\x06\x00\x00\x00|&=!><+-*%/\x00|&====\x00\x00%*.*f\x00\x00\x00 !\"#$$%%&&''(((())))****++++,,,,,,,,--------........////////\x00\x00\x00\x00\x00\x01\x025\x03\a6\x1b\x04&)\b\"70\x1c>\x05'.,*\x16\t\x18#;81\x12\x1d\v?4\x06\x1a%(!/=-+\x15\x17:\x11\n3\x19$ <\x149\x102\x1f\x13\x0f\x1e\x0e\r\f\x00\x00\x00\x00\x00\x01\x17\x02\x1d\x18\x13\x03\x1e\x1b\x19\v\x14\b\x04\r\x1f\x16\x1c\x12\x1a\n\a\f\x15\x11\t\x06\x10\x05\x0f\x0e\x00\x00\x00\x00\x03\x00\x00\x00\x04\x00\x00\x00\x04\x00\x00\x00\x06\x00\x00\x00\x00\x00\x00\x00\x83\xf9\xa2\x00DNn\x00\xfc)\x15\x00\xd1W'\x00\xdd4\xf5\x00b\xdb\xc0\x00<\x99\x95\x00A\x90C\x00cQ\xfe\x00\xbbޫ\x00\xb7a\xc5\x00:n$\x00\xd2MB\x00I\x06\xe0\x00\t\xea.\x00\x1c\x92\xd1\x00\xeb\x1d\xfe\x00)\xb1\x1c\x00\xe8>\xa7\x00\xf55\x82\x00D\xbb.\x00\x9c\xe9\x84\x00\xb4&p\x00A~_\x00֑9\x00S\x839\x00\x9c\xf49\x00\x8b_\x84\x00(\xf9\xbd\x00\xf8\x1f;\x00\xde\xff\x97\x00\x0f\x98\x05\x00\x11/\xef\x00\nZ\x8b\x00m\x1fm\x00\xcf~6\x00\t\xcb'\x00FO\xb7\x00\x9ef?\x00-\xea_\x00\xba'u\x00\xe5\xeb\xc7\x00={\xf1\x00\xf79\a\x00\x92R\x8a\x00\xfbk\xea\x00\x1f\xb1_\x00\b]\x8d\x000\x03V\x00{\xfcF\x00\xf0\xabk\x00 \xbc\xcf\x006\xf4\x9a\x00\xe3\xa9\x1d\x00^a\x91\x00\b\x1b\xe6\x00\x85\x99e\x00\xa0\x14_\x00\x8d@h\x00\x80\xd8\xff\x00'sM\x00\x06\x061\x00\xcaV\x15\x00ɨs\x00{\xe2`\x00k\x8c\xc0\x00\x00\x00\x00\x00\x00\x00\x00@\xfb!\xf9?\x00\x00\x00\x00-Dt>\x00\x00\x00\x80\x98F\xf8<\x00\x00\x00`Q\xccx;\x00\x00\x00\x80\x83\x1b\xf09\x00\x00\x00@ %z8\x00\x00\x00\x80\"\x82\xe36\x00\x00\x00\x00\x1d\xf3i5\x00\x00\x00\x00cUUUUU\xd5?z\xfe\x10\x11\x11\x11\xc1?\xfeA\xb3\x1b\xba\xa1\xab?7\xd6\x06\x84\xf4d\x96?\x93\x84n\xe9\xe3&\x82?(\x03V\xc9\"mm?\x15\x83\xe0\xfe\xc8\xdbW?\x01e\xf2\xf2\xd8DC?h\x10\x8d\x1a\xf7&0?\xa6\x927\xa0\x88~\x14?\xe9\xa7\xf02\x0f\xb8\x12?sS`\xdb\xcbu\xf3\xbe\xd4z\xbftp*\xfb>\x00\x00\x00\x00\x9f\xc9\x184MU\xd5?r\x9f\x998\xfd\x12\xc1?\xfeZ\x86\x1d\xc9T\xab?\xce3\x8c\x90\xf3\x1d\x99?N\xf4\xec\xfc\xad]h?\xcd\x1b\x97\xbf\xb9b\x83?\x00\x00\x00\x00O\xbba\x05g\xac\xdd?\x18-DT\xfb!\xe9?\x9b\xf6\x81\xd2\vs\xef?\x18-DT\xfb!\xf9?\x00\x00\x00\x00\rUUUUU\xd5?\xc4똙\x99\x99ɿ\xff\x83\x00\x92$I\xc2?q\x16#\xfe\xc6q\xbc\xbfn L\xc5\xcdE\xb7?m\x9at\xaf\U000b0cffQ=Рf\r\xb1?\x9a\xfd\xdeR-ޭ\xbf\xeb\rv$K{\xa9?/lj,D\xb4\xa2\xbf\x11\xda\"\xe3:\xad\x90?\x00\x00\x00\x00\xe2e/\"\u007f+z<\a\\\x143&\xa6\x81<\xbd\xcb\xf0z\x88\ap<\a\\\x143&\xa6\x91<\x00\x00\x00\x008c\xed>\xda\x0fI?^\x98{?\xda\x0f\xc9?\x00\x00\x00\x00\xa9\xaa\xaa>\x98\xcaL\xbe\r\xf5\x11>G\x12ڽ%\xac|=\x00\x00\x00\x00i7\xac1h!\"3\xb4\x0f\x143h!\xa23\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\xe0?\x00\x00\x00\x00\x00\x00\xe0\xbf\x00\x00\x00\x00\x16V瞯\x03\xd2<\x9b+\xa1\x86\x9b\x84\x06=\x82vIh\xc2%<=\x11\xea-\x81\x99\x97q=\x95dy\xe1\u007f\xfd\xa5=\xbb\xbd\xd7\xd9\xdf|\xdb=\x95\xd6&\xe8\v.\x11>:\x8c0\xe2\x8eyE>H\xaf\xbc\x9a\xf2\xd7z>\x8d\xed\xb5\xa0\xf7ư>\xf1h㈵\xf8\xe4>-C\x1c\xeb\xe26\x1a?\xfc\xa9\xf1\xd2MbP?{\x14\xaeG\xe1z\x84?\x9a\x99\x99\x99\x99\x99\xb9?\x00\x00\x00\x00\x00\x00\xf0?\x00\x00\x00\x00\x00\x00$@\x00\x00\x00\x00\x00\x00Y@\x00\x00\x00\x00\x00@\x8f@\x00\x00\x00\x00\x00\x88\xc3@\x00\x00\x00\x00\x00j\xf8@\x00\x00\x00\x00\x80\x84.A\x00\x00\x00\x00\xd0\x12cA\x00\x00\x00\x00\x84חA\x00\x00\x00\x00e\xcd\xcdA\x00\x00\x00 _\xa0\x02B\x00\x00\x00\xe8vH7B\x00\x00\x00\xa2\x94\x1amB\x00\x00@\xe5\x9c0\xa2B\x00\x00\x90\x1eļ\xd6B\x00\x004&\xf5k\fC\x00\x00\x00\x00\x95\xbf\xd63\xbd7\x865\xac\xc5'7\x17\xb7\xd18o\x12\x83:\n\xd7#<\xcd\xcc\xcc=\x00\x00\x00\x00\x00\x00 A\x00\x00\xc8B\x00\x00zD\x00@\x1cF\x00P\xc3G\x00$tI\x80\x96\x18K\x00\x00\x00\x00]=\u007ff\x9e\xa0\xe6?\x00\x00\x00\x00\x00\x889=D\x17u\xfaR\xb0\xe6?\x00\x00\x00\x00\x00\x00\xd8<\xfe\xd9\vu\x12\xc0\xe6?\x00\x00\x00\x00\x00x(\xbd\xbfv\xd4\xdd\xdc\xcf\xe6?\x00\x00\x00\x00\x00\xc0\x1e=)\x1ae<\xb2\xdf\xe6?\x00\x00\x00\x00\x00\x00ؼ\xe3:Y\x98\x92\xef\xe6?\x00\x00\x00\x00\x00\x00\xbc\xbc\x86\x93Q\xf9}\xff\xe6?\x00\x00\x00\x00\x00\xd8/\xbd\xa3-\xf4ft\x0f\xe7?\x00\x00\x00\x00\x00\x88,\xbd\xc3_\xec\xe8u\x1f\xe7?\x00\x00\x00\x00\x00\xc0\x13=\x05\xcfꆂ/\xe7?\x00\x00\x00\x00\x0008\xbdR\x81\xa5H\x9a?\xe7?\x00\x00\x00\x00\x00\xc0\x00\xbd\xfc\xcc\xd75\xbdO\xe7?\x00\x00\x00\x00\x00\x88/=\xf1gBV\xeb_\xe7?\x00\x00\x00\x00\x00\xe0\x03=Hm\xab\xb1$p\xe7?\x00\x00\x00\x00\x00\xd0'\xbd8]\xdeOi\x80\xe7?\x00\x00\x00\x00\x00\x00ݼ\x00\x1d\xac8\xb9\x90\xe7?\x00\x00\x00\x00\x00\x00\xe3<x\x01\xebs\x14\xa1\xe7?\x00\x00\x00\x00\x00\x00\xed\xbc`\xd0v\t{\xb1\xe7?\x00\x00\x00\x00\x00@ =3\xc10\x01\xed\xc1\xe7?\x00\x00\x00\x00\x00\x00\xa0<6\x86\xffbj\xd2\xe7?\x00\x00\x00\x00\x00\x90&\xbd;N\xcf6\xf3\xe2\xe7?\x00\x00\x00\x00\x00\xe0\x02\xbd\xe8Ñ\x84\x87\xf3\xe7?\x00\x00\x00\x00\x00X$\xbdN\x1b>T'\x04\xe8?\x00\x00\x00\x00\x00\x003=\x1a\aѭ\xd2\x14\xe8?\x00\x00\x00\x00\x00\x00\x0f=~\xcdL\x99\x89%\xe8?\x00\x00\x00\x00\x00\xc0!\xbd\xd0B\xb9\x1eL6\xe8?\x00\x00\x00\x00\x00\xd0)=\xb5\xca#F\x1aG\xe8?\x00\x00\x00\x00\x00\x10G=\xbc[\x9f\x17\xf4W\xe8?\x00\x00\x00\x00\x00`\"=\xaf\x91D\x9b\xd9h\xe8?\x00\x00\x00\x00\x00\xc42\xbd\x95\xa31\xd9\xcay\xe8?\x00\x00\x00\x00\x00\x00#\xbd\xb8e\x8a\xd9Ǌ\xe8?\x00\x00\x00\x00\x00\x80*\xbd\x00Xx\xa4Л\xe8?\x00\x00\x00\x00\x00\x00\xed\xbc#\xa2*B\xe5\xac\xe8?\x00\x00\x00\x00\x00(3=\xfa\x19ֺ\x05\xbe\xe8?\x00\x00\x00\x00\x00\xb4B=\x83C\xb5\x162\xcf\xe8?\x00\x00\x00\x00\x00\xd0.\xbdLf\b^j\xe0\xe8?\x00\x00\x00\x00\x00P \xbd\ax\x15\x99\xae\xf1\xe8?\x00\x00\x00\x00\x00((=\x0e,(\xd0\xfe\x02\xe9?\x00\x00\x00\x00\x00\xb0\x1c\xbd\x96\xff\x91\v[\x14\xe9?\x00\x00\x00\x00\x00\xe0\x05\xbd\xf9/\xaaS\xc3%\xe9?\x00\x00\x00\x00\x00@\xf5<J\xc6Ͱ77\xe9?\x00\x00\x00\x00\x00 \x17=\xae\x98_+\xb8H\xe9?\x00\x00\x00\x00\x00\x00\t\xbd\xcbR\xc8\xcbDZ\xe9?\x00\x00\x00\x00\x00h%=!ov\x9a\xddk\xe9?\x00\x00\x00\x00\x00\xd06\xbd*Nޟ\x82}\xe9?\x00\x00\x00\x00\x00\x00\x01\xbd\xa3#z\xe43\x8f\xe9?\x00\x00\x00\x00\x00\x00-=\x04\x06\xcap\xf1\xa0\xe9?\x00\x00\x00\x00\x00\xa48\xbd\x89\xffSM\xbb\xb2\xe9?\x00\x00\x00\x00\x00\\5=[\U00063091\xc4\xe9?\x00\x00\x00\x00\x00\xb8&=ŸK\x19t\xd6\xe9?\x00\x00\x00\x00\x00\x00켎#\xe3\x19c\xe8\xe9?\x00\x00\x00\x00\x00\xd0\x17=\x02\xf3\a\x8d^\xfa\xe9?\x00\x00\x00\x00\x00@\x16=M\xe5]{f\f\xea?\x00\x00\x00\x00\x00\x00\xf5\xbc\xf6\xb8\x8e\xedz\x1e\xea?\x00\x00\x00\x00\x00\xe0\t='.J\xec\x9b0\xea?\x00\x00\x00\x00\x00\xd8*=]\nF\x80\xc9B\xea?\x00\x00\x00\x00\x00\xf0\x1a\xbd\x9b%>\xb2\x03U\xea?\x00\x00\x00\x00\x00`\v=\x13b\xf4\x8aJg\xea?\x00\x00\x00\x00\x00\x888=\xa7\xb30\x13\x9ey\xea?\x00\x00\x00\x00\x00 \x11=\x8d.\xc1S\xfe\x8b\xea?\x00\x00\x00\x00\x00\xc0\x06=\xd2\xfcyUk\x9e\xea?\x00\x00\x00\x00\x00\xb8)\xbd\xb8o5!\xe5\xb0\xea?\x00\x00\x00\x00\x00p+=\x81\xf3ӿk\xc3\xea?\x00\x00\x00\x00\x00\x00\xd9<\x80'<:\xff\xd5\xea?\x00\x00\x00\x00\x00\x00\xe4<\xa3\xd2Z\x99\x9f\xe8\xea?\x00\x00\x00\x00\x00\x90,\xbdg\xf3\"\xe6L\xfb\xea?\x00\x00\x00\x00\x00P\x16=\x90\xb7\x8d)\a\x0e\xeb?\x00\x00\x00\x00\x00\xd4/=\xa9\x89\x9al\xce \xeb?\x00\x00\x00\x00\x00p\x12=K\x1aO\xb8\xa23\xeb?\x00\x00\x00\x00\x00GM=\xe7G\xb7\x15\x84F\xeb?\x00\x00\x00\x00\x0088\xbd:Y\xe5\x8drY\xeb?\x00\x00\x00\x00\x00\x00\x98<j\xc5\xf1)nl\xeb?\x00\x00\x00\x00\x00\xd0\n=P^\xfb\xf2v\u007f\xeb?\x00\x00\x00\x00\x00\x80\xde<\xb2I'\xf2\x8c\x92\xeb?\x00\x00\x00\x00\x00\xc0\x04\xbd\x03\x06\xa10\xb0\xa5\xeb?\x00\x00\x00\x00\x00p\r\xbdfo\x9a\xb7\xe0\xb8\xeb?\x00\x00\x00\x00\x00\x90\r=\xff\xc1K\x90\x1e\xcc\xeb?\x00\x00\x00\x00\x00\xa0\x02=o\xa1\xf3\xc3i\xdf\xeb?\x00\x00\x00\x00\x00x\x1f\xbd\xb8\x1d\xd7[\xc2\xf2\xeb?\x00\x00\x00\x00\x00\xa0\x10\xbd\xe9\xb2Aa(\x06\xec?\x00\x00\x00\x00\x00@\x11\xbd\xe0R\x85ݛ\x19\xec?\x00\x00\x00\x00\x00\xe0\v=\xeed\xfa\xd9\x1c-\xec?\x00\x00\x00\x00\x00@\t\xbd/\xd0\xff_\xab@\xec?\x00\x00\x00\x00\x00\xd0\x0e\xbd\x15\xfd\xfaxGT\xec?\x00\x00\x00\x00\x00f9=\xcb\xd0W.\xf1g\xec?\x00\x00\x00\x00\x00\x10\x1a\xbd\xb6\xc1\x88\x89\xa8{\xec?\x00\x00\x00\x00\x80EX\xbd3\xe7\x06\x94m\x8f\xec?\x00\x00\x00\x00\x00H\x1a\xbd\xdf\xc4QW@\xa3\xec?\x00\x00\x00\x00\x00\x00\xcb<\x94\x90\xef\xdc \xb7\xec?\x00\x00\x00\x00\x00@\x01=\x89\x16m.\x0f\xcb\xec?\x00\x00\x00\x00\x00 \xf0<\x12\xc4]U\v\xdf\xec?\x00\x00\x00\x00\x00`\xf3<;\xab[[\x15\xf3\xec?\x00\x00\x00\x00\x00\x90\x06\xbd\xbc\x89\aJ-\a\xed?\x00\x00\x00\x00\x00\xa0\t=\xfa\xc8\b+S\x1b\xed?\x00\x00\x00\x00\x00\xe0\x15\xbd\x85\x8a\r\b\x87/\xed?\x00\x00\x00\x00\x00(\x1d=\x03\xa2\xca\xea\xc8C\xed?\x00\x00\x00\x00\x00\xa0\x01=\x91\xa4\xfb\xdc\x18X\xed?\x00\x00\x00\x00\x00\x00\xdf<\xa1\xe6b\xe8vl\xed?\x00\x00\x00\x00\x00\xa0\x03\xbdN\x83\xc9\x16\xe3\x80\xed?\x00\x00\x00\x00\x00\xd8\f\xbd\x90`\xffq]\x95\xed?\x00\x00\x00\x00\x00\xc0\xf4<\xae2\xdb\x03\xe6\xa9\xed?\x00\x00\x00\x00\x00\x90\xff<%\x83:\xd6|\xbe\xed?\x00\x00\x00\x00\x00\x80\xe9<E\xb4\x01\xf3!\xd3\xed?\x00\x00\x00\x00\x00 \xf5\xbc\xbf\x05\x1cd\xd5\xe7\xed?\x00\x00\x00\x00\x00p\x1d\xbd\xec\x9a{3\x97\xfc\xed?\x00\x00\x00\x00\x00\x14\x16\xbd^}\x19kg\x11\xee?\x00\x00\x00\x00\x00H\v=\xe7\xa3\xf5\x14F&\xee?\x00\x00\x00\x00\x00\xce@=\\\xee\x16;3;\xee?\x00\x00\x00\x00\x00h\f=\xb4?\x8b\xe7.P\xee?\x00\x00\x00\x00\x000\t\xbdhmg$9e\xee?\x00\x00\x00\x00\x00\x00\xe5\xbcDL\xc7\xfbQz\xee?\x00\x00\x00\x00\x00\xf8\a\xbd&\xb7\xcdwy\x8f\xee?\x00\x00\x00\x00\x00p\xf3\xbc萤\xa2\xaf\xa4\xee?\x00\x00\x00\x00\x00\xd0\xe5<\xe4\xca|\x86\xf4\xb9\xee?\x00\x00\x00\x00\x00\x1a\x16=\rh\x8e-H\xcf\xee?\x00\x00\x00\x00\x00P\xf5<\x14\x85\x18\xa2\xaa\xe4\xee?\x00\x00\x00\x00\x00@\xc6<\x13Za\xee\x1b\xfa\xee?\x00\x00\x00\x00\x00\x80\xee\xbc\x06A\xb6\x1c\x9c\x0f\xef?\x00\x00\x00\x00\x00\x88\xfa\xbcc\xb9k7+%\xef?\x00\x00\x00\x00\x00\x90,\xbdur\xddH\xc9:\xef?\x00\x00\x00\x00\x00\x00\xaa<$En[vP\xef?\x00\x00\x00\x00\x00\xf0\xf4\xbc\xfdD\x88y2f\xef?\x00\x00\x00\x00\x00\x80\xca<8\xbe\x9c\xad\xfd{\xef?\x00\x00\x00\x00\x00\xbc\xfa<\x82<$\x02ؑ\xef?\x00\x00\x00\x00\x00`Լ\x8e\x90\x9e\x81\xc1\xa7\xef?\x00\x00\x00\x00\x00\f\v\xbd\x11Ւ6\xba\xbd\xef?\x00\x00\x00\x00\x00\xe0\xc0\xbc\x94q\x8f+\xc2\xd3\xef?\x00\x00\x00\x00\x80\xde\x10\xbd\xee#*k\xd9\xe9\xef?\x00\x00\x00\x00\x00C\xee<\x00\x00\x00\x00\x00\x00\xf0?\x00\x00\x00\x00\x00\x00\x00\x00\xbe\xbcZ\xfa\x1a\v\xf0?\x00\x00\x00\x00\x00@\xb3\xbc\x033\xfb\xa9=\x16\xf0?\x00\x00\x00\x00\x00\x17\x12\xbd\x82\x02;\x14h!\xf0?\x00\x00\x00\x00\x00@\xba<l\x80w>\x9a,\xf0?\x00\x00\x00\x00\x00\x98\xef<ʻ\x11.\xd47\xf0?\x00\x00\x00\x00\x00@Ǽ\x89\u007fn\xe8\x15C\xf0?\x00\x00\x00\x00\x000\xd8<gT\xf6r_N\xf0?\x00\x00\x00\x00\x00?\x1a\xbdZ\x85\x15ӰY\xf0?\x00\x00\x00\x00\x00\x84\x02\xbd\x95\x1f<\x0e\ne\xf0?\x00\x00\x00\x00\x00`\xf1<\x1a\xf7\xdd)kp\xf0?\x00\x00\x00\x00\x00$\x15=-\xa8r+\xd4{\xf0?\x00\x00\x00\x00\x00\xa0\xe9\xbcЛu\x18E\x87\xf0?\x00\x00\x00\x00\x00@\xe6<\xc8\af\xf6\xbd\x92\xf0?\x00\x00\x00\x00\x00x\x00\xbd\x83\xf3\xc6\xca>\x9e\xf0?\x00\x00\x00\x00\x00\x00\x98\xbc09\x1f\x9bǩ\xf0?\x00\x00\x00\x00\x00\xa0\xff<\xfc\x88\xf9lX\xb5\xf0?\x00\x00\x00\x00\x00\xc8\xfa\xbc\x8al\xe4E\xf1\xc0\xf0?\x00\x00\x00\x00\x00\xc0\xd9<\x16Hr+\x92\xcc\xf0?\x00\x00\x00\x00\x00 \x05=\xd8]9#;\xd8\xf0?\x00\x00\x00\x00\x00\xd0\xfa\xbc\xf3\xd1\xd32\xec\xe3\xf0?\x00\x00\x00\x00\x00\xac\x1b=\xa6\xa9\xdf_\xa5\xef\xf0?\x00\x00\x00\x00\x00\xe8\x04\xbd\xf0\xd2\xfe\xaff\xfb\xf0?\x00\x00\x00\x00\x000\r\xbdK#\xd7(0\a\xf1?\x00\x00\x00\x00\x00P\xf1<[[\x12\xd0\x01\x13\xf1?\x00\x00\x00\x00\x00\x00\xec<\xf9*^\xab\xdb\x1e\xf1?\x00\x00\x00\x00\x00\xbc\x16=\xd51l\xc0\xbd*\xf1?\x00\x00\x00\x00\x00@\xe8<}\x04\xf2\x14\xa86\xf1?\x00\x00\x00\x00\x00\xd0\x0e\xbd\xe9-\xa9\xae\x9aB\xf1?\x00\x00\x00\x00\x00\xe0\xe8<81O\x93\x95N\xf1?\x00\x00\x00\x00\x00@\xeb<q\x8e\xa5ȘZ\xf1?\x00\x00\x00\x00\x000\x05=\xdf\xc3qT\xa4f\xf1?\x00\x00\x00\x00\x008\x03=\x11R}<\xb8r\xf1?\x00\x00\x00\x00\x00\xd4(=\x9f\xbb\x95\x86\xd4~\xf1?\x00\x00\x00\x00\x00\xd0\x05\xbd\x93\x8d\x8c8\xf9\x8a\xf1?\x00\x00\x00\x00\x00\x88\x1c\xbdf]7X&\x97\xf1?\x00\x00\x00\x00\x00\xf0\x11=\xa7\xcbo\xeb[\xa3\xf1?\x00\x00\x00\x00\x00H\x10=\xe3\x87\x13\xf8\x99\xaf\xf1?\x00\x00\x00\x00\x009G\xbdT]\x04\x84\xe0\xbb\xf1?\x00\x00\x00\x00\x00\xe4$=C\x1c(\x95/\xc8\xf1?\x00\x00\x00\x00\x00 \n\xbd\xb2\xb9h1\x87\xd4\xf1?\x00\x00\x00\x00\x00\x80\xe3<1@\xb4^\xe7\xe0\xf1?\x00\x00\x00\x00\x00\xc0\xea<8\xd9\xfc\"P\xed\xf1?\x00\x00\x00\x00\x00\x90\x01=\xf7\xcd8\x84\xc1\xf9\xf1?\x00\x00\x00\x00\x00x\x1b\xbd\x8f\x8db\x88;\x06\xf2?\x00\x00\x00\x00\x00\x94-=\x1e\xa8x5\xbe\x12\xf2?\x00\x00\x00\x00\x00\x00\xd8<A\xdd}\x91I\x1f\xf2?\x00\x00\x00\x00\x004+=#\x13y\xa2\xdd+\xf2?\x00\x00\x00\x00\x00\xf8\x19=\xe7aunz8\xf2?\x00\x00\x00\x00\x00\xc8\x19\xbd'\x14\x82\xfb\x1fE\xf2?\x00\x00\x00\x00\x000\x02=\x02\xa6\xb2O\xceQ\xf2?\x00\x00\x00\x00\x00H\x13\xbd\xb0\xce\x1eq\x85^\xf2?\x00\x00\x00\x00\x00p\x12=\x16}\xe2eEk\xf2?\x00\x00\x00\x00\x00\xd0\x11=\x0f\xe0\x1d4\x0ex\xf2?\x00\x00\x00\x00\x00\xee1=>c\xf5\xe1߄\xf2?\x00\x00\x00\x00\x00\xc0\x14\xbd0\xbb\x91u\xba\x91\xf2?\x00\x00\x00\x00\x00\xd8\x13\xbd\t\xdf\x1f\xf5\x9d\x9e\xf2?\x00\x00\x00\x00\x00\xb0\b=\x9b\x0e\xd1f\x8a\xab\xf2?\x00\x00\x00\x00\x00|\"\xbd:\xda\xda\xd0\u007f\xb8\xf2?\x00\x00\x00\x00\x004*=\xf9\x1aw9~\xc5\xf2?\x00\x00\x00\x00\x00\x80\x10\xbd\xd9\x02䦅\xd2\xf2?\x00\x00\x00\x00\x00\xd0\x0e\xbdy\x15d\x1f\x96\xdf\xf2?\x00\x00\x00\x00\x00 \xf4\xbc\xcf.>\xa9\xaf\xec\xf2?\x00\x00\x00\x00\x00\x98$\xbd\"\x88\xbdJ\xd2\xf9\xf2?\x00\x00\x00\x00\x000\x16\xbd%\xb61\n\xfe\x06\xf3?\x00\x00\x00\x00\x0062\xbd\v\xa5\xee\xed2\x14\xf3?\x00\x00\x00\x00\x80\xdfp\xbd\xb8\xd7L\xfcp!\xf3?\x00\x00\x00\x00\x00H\"\xbd\xa2\xe9\xa8;\xb8.\xf3?\x00\x00\x00\x00\x00\x98%\xbdf\x17d\xb2\b<\xf3?\x00\x00\x00\x00\x00\xd0\x1e='\xfa\xe3fbI\xf3?\x00\x00\x00\x00\x00\x00ܼ\x0f\x9f\x92_\xc5V\xf3?\x00\x00\x00\x00\x00\xd80\xbd\xb9\x88ޢ1d\xf3?\x00\x00\x00\x00\x00\xc8\"=9\xaa:7\xa7q\xf3?\x00\x00\x00\x00\x00` =\xfet\x1e#&\u007f\xf3?\x00\x00\x00\x00\x00`\x16\xbd8\xd8\x05m\xae\x8c\xf3?\x00\x00\x00\x00\x00\xe0\n\xbd\xc3>q\x1b@\x9a\xf3?\x00\x00\x00\x00\x00rD\xbd \xa0\xe54ۧ\xf3?\x00\x00\x00\x00\x00 \b=\x95n\xec\xbf\u007f\xb5\xf3?\x00\x00\x00\x00\x00\x80>=\xf2\xa8\x13\xc3-\xc3\xf3?\x00\x00\x00\x00\x00\x80\xef<\"\xe1\xedD\xe5\xd0\xf3?\x00\x00\x00\x00\x00\xa0\x17\xbd\xbb4\x12L\xa6\xde\xf3?\x00\x00\x00\x00\x000&=\xccN\x1c\xdfp\xec\xf3?\x00\x00\x00\x00\x00\xa6H\xbd\x8c~\xac\x04E\xfa\xf3?\x00\x00\x00\x00\x00\xdc<\xbd\xbb\xa0g\xc3\"\b\xf4?\x00\x00\x00\x00\x00\xb8%=\x95.\xf7!\n\x16\xf4?\x00\x00\x00\x00\x00\xc0\x1e=FF\t'\xfb#\xf4?\x00\x00\x00\x00\x00`\x13\xbd \xa9P\xd9\xf51\xf4?\x00\x00\x00\x00\x00\x98#=비?\xfa?\xf4?\x00\x00\x00\x00\x00\x00\xfa<\x19\x89a`\bN\xf4?\x00\x00\x00\x00\x00\xc0\xf6\xbc\x01ҧB \\\xf4?\x00\x00\x00\x00\x00\xc0\v\xbd\x16\x00\x1d\xedAj\xf4?\x00\x00\x00\x00\x00\x80\x12\xbd&3\x8bfmx\xf4?\x00\x00\x00\x00\x00\xe00=\x00<\xc1\xb5\xa2\x86\xf4?\x00\x00\x00\x00\x00@-\xbd\x04\xaf\x92\xe1\xe1\x94\xf4?\x00\x00\x00\x00\x00 \f=r\xd3\xd7\xf0*\xa3\xf4?\x00\x00\x00\x00\x00P\x1e\xbd\x01\xb8m\xea}\xb1\xf4?\x00\x00\x00\x00\x00\x80\a=\xe1)6\xd5ڿ\xf4?\x00\x00\x00\x00\x00\x80\x13\xbd2\xc1\x17\xb8A\xce\xf4?\x00\x00\x00\x00\x00\x80\x00=\xdb\xdd\xfd\x99\xb2\xdc\xf4?\x00\x00\x00\x00\x00p,=\x96\xab\u0601-\xeb\xf4?\x00\x00\x00\x00\x00\xe0\x1c\xbd\x02-\x9dv\xb2\xf9\xf4?\x00\x00\x00\x00\x00 \x19=\xc11E\u007fA\b\xf5?\x00\x00\x00\x00\x00\xc0\b\xbd*fϢ\xda\x16\xf5?\x00\x00\x00\x00\x00\x00\xfa\xbc\xeaQ?\xe8}%\xf5?\x00\x00\x00\x00\x00\bJ=\xdaN\x9dV+4\xf5?\x00\x00\x00\x00\x00\xd8&\xbd\x1a\xac\xf6\xf4\xe2B\xf5?\x00\x00\x00\x00\x00D2\xbd۔]ʤQ\xf5?\x00\x00\x00\x00\x00<H=k\x11\xe9\xddp`\xf5?\x00\x00\x00\x00\x00\xb0$=\xde)\xb56Go\xf5?\x00\x00\x00\x00\x00ZA=\x0e\xc4\xe2\xdb'~\xf5?\x00\x00\x00\x00\x00\xe0)\xbdoǗ\xd4\x12\x8d\xf5?\x00\x00\x00\x00\x00\b#\xbdL\v\xff'\b\x9c\xf5?\x00\x00\x00\x00\x00\xecM='TH\xdd\a\xab\xf5?\x00\x00\x00\x00\x00\x00ļ\xf4z\xa8\xfb\x11\xba\xf5?\x00\x00\x00\x00\x00\b0=\vFY\x8a&\xc9\xf5?\x00\x00\x00\x00\x00\xc8&\xbd?\x8e\x99\x90E\xd8\xf5?\x00\x00\x00\x00\x00\x9aF=\xe1 \xad\x15o\xe7\xf5?\x00\x00\x00\x00\x00@\x1b\xbd\xca\xeb\xdc \xa3\xf6\xf5?\x00\x00\x00\x00\x00p\x17=\xb8\xdcv\xb9\xe1\x05\xf6?\x00\x00\x00\x00\x00\xf8&=\x15\xf7\xcd\xe6*\x15\xf6?\x00\x00\x00\x00\x00\x00\x01=1U:\xb0~$\xf6?\x00\x00\x00\x00\x00\xd0\x15\xbd\xb5)\x19\x1d\xdd3\xf6?\x00\x00\x00\x00\x00\xd0\x12\xbd\x13\xc3\xcc4FC\xf6?\x00\x00\x00\x00\x00\x80\xea\xbc\xfa\x8e\xbc\xfe\xb9R\xf6?\x00\x00\x00\x00\x00`(\xbd\x973U\x828b\xf6?\x00\x00\x00\x00\x00\xfeq=\x8e2\b\xc7\xc1q\xf6?\x00\x00\x00\x00\x00 7\xbd~\xa9L\xd4U\x81\xf6?\x00\x00\x00\x00\x00\x80\xe6<q\x94\x9e\xb1\xf4\x90\xf6?\x00\x00\x00\x00\x00x)\xbd\x00\x00\x00\x00\xcd;\u007ff\x9e\xa0\xe6?\x87\x01\xebs\x14\xa1\xe7?۠*B\xe5\xac\xe8?\x90𣂑\xc4\xe9?\xad\xd3Z\x99\x9f\xe8\xea?\x9cR\x85ݛ\x19\xec?\x87\xa4\xfb\xdc\x18X\xed?ڐ\xa4\xa2\xaf\xa4\xee?\x00\x00\x00\x00\x00\x00\xf0?\x0f\x89\xf9lX\xb5\xf0?{Q}<\xb8r\xf1?8bunz8\xf2?\x15\xb71\n\xfe\x06\xf3?\"4\x12L\xa6\xde\xf3?'*6\xd5ڿ\xf4?)TH\xdd\a\xab\xf5?\x00\x00\x00\x00\x00\x00\x00?\x00\x00\x00\xbf\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x002\xfd\xff\xff\xff\xff\xb1\xbfy\xa7O\xb4\xd0) \xc0c\xe8\x19{\x02\x11p\xc0\xfc\xcaM\xcdnj\xa3\xc0=d\xcc6\v\x85\xb4\xc0\x00\x00\x00\x00Qg\xa9\a3\"]@8iYP}\xf3\xad@_\xb0\xb6n\xbb\xd2\xe3@\xbd\xa9\x9f\x8f\x0f\x81\xfc@\xdcI,OwA\xe7@\x00\x00\x00\x00̕\xe4G\xb1\x18\xa9\xbd\xc6\xfb\x9a\xe6\xff\xff\xb1\xbf\xbfk\f\xf9p\xa3\x10\xc0\x83\x17}Z/\xebP\xc0c\xccBg\xb3\xb3t\xc0\u05cb\xa3(\xef\xa6u\xc0\x00\x00\x00\x00\xdeŘ\f\x81`N@d(~\\\x02m\x90@`\x1d\xbe\x8f\xf8Z\xb7@8\xfav\xfa\xb8\xcc\xc2@d\xe8\v\xc7\x1d̢@\x00\x00\x00\x00\x86\xaa\xe1o\x03\xe1%\xbeK\xe2\xc0\xf7\xf6\xff\xb1\xbft\x80\xa4\xae\xb2E\x03\xc0\x14N\xb9LJ\xf75\xc0E\x1a\nB\"\nM\xc0\x0fؒ\xa8\xacr?\xc0\x00\x00\x00\x00\xd3}\a\x84\x92\xedA@\x0e|JF9\x98v@\xd6a\x10mn\xa6\x92@~\x9bø\xfc\x9f\x91@\x81\x907\xfc\x96\xb2e@\x00\x00\x00\x00m\x02'\xe9\x16\xd3w\xbeB\x1e^Ib\xff\xb1\xbfC\xa8$\x8a96\xf7\xbf\xf3\xa7\xaf\xed\xf3\x8a\x1e\xc0\x03c$\xc5\xe6b&\xc0\x0f珯\x81\xde\t\xc0\x00\x00\x00\x00YY\x8b\x90e86@\x8f\x87\xe8\x0e\x9e\x06a@\x9b\a\xeaB\x86\xe7p@\xff\xfa\xb6:\x03<c@\t\x189D\xb3P-@\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00,\xfe\xff\xff\xff\xbf\xb2?\xd64\xb3[R\x89'@%\x180\x15cm\x81@m\xf4\x18>\x99M\xc1@f\x15\x90\x0e\xd4\x12\xe2@\x00\x00\x00\x00\xbc9[6\xd5xd@c\x05kNX\xa2\xbf@?\x8c\xd3TRf\x01AC+\xa5\x83ڃ(A=\v\xde(k\xa6)A\xc50\x95,m\xfd\x14\xc1\x00\x00\x00\x00ٌ\xcc)\x8f=\xb4=L\xb0r\xd1\xff\xbf\xb2?\xd3=\x95\xb9\xb0W\x17@鈇\n\x92\xe3`@\x81\xc4ȝ\xf9\f\x90@\xa6\xe3\xc6S\xe9\x17\x9f@\x00\x00\x00\x00C\x15^\xfb\xb3\xb1T@\xce\xc0!ڠ;\xa0@m\x1eY{\xd2g\xd2@r#\xe0\x97\xe3\xb5\xeb@\xa0Tz\x1f\x18\x91\xe1@\t\xc6۾W\xea\xb4\xc0\x00\x00\x00\x00\x82\xcb\xdej\x03\xcd2>B\b\x8d\x0e\ueff2?\xf5\x9c\x14a\xfc\xc0\n@ݮ-\x96\x98OE@\x1f\xfd^\xe2\xdbYe@\xe0!\xfa\x81|\xd7d@\x00\x00\x00\x00\xa6C\xe3\xbf\"aH@\xb3NT\x86\x83-\x86@c\xfcM\xe4K\xf0\xac@(j\xc7\xd7l<\xb9@\xc0\xb1O٪\xa8\xa3@\x0f\xf4\x1c \xeb\xa7b\xc0\x00\x00\x00\x00\xdbk\xf7T;1\x84>4>\x88>ž\xb2?\x9cw'\xe7\x97\xf8\xff?\xe5o\xf9\xaa\xbf\xfd,@J\xdc\xfb)\x8e\xaa?@\xb4K\x81q\xb1@0@\x00\x00\x00\x00\xedz\xc0\xf7\x96]>@@K\xd1\xe4\x91\xd5p@\"\xbf\xb3\"Ef\x8a@\x14\xc2\\\x9c|\x97\x8b@e\x13\x00\x0eS\x95j@1)\xb3\xf8j>\x15\xc0\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x90\xbd\x86N\x01\xc1\x14\x88\x80\xc3vS\x1b\xc5Z(\xa4\xc5\x00\x00\x00\x00\x98\x11\xe9B\xeb\x9boEە\x1eG|\b\xe4G\xba\v:G\x00\x00\x00\x00\x8a\xc5H\xad\xff\xff\x8f\xbd\x88\x1b\x85\xc0{Y\x87\u009b\x9d\xa5\xc3y7\xad\xc3\x00\x00\x00\x00\b\x04sB\x13h\x83D\xc4\u05faE\xc8e\x16F\xee`\x16E\x00\x00\x00\x00\x1b\b/\xb1\xb8\xff\x8f\xbd\x95-\x1a\xc0R\xba\xaf\xc1\x12Qh\xc2e\x95\xfb\xc1\x00\x00\x00\x00\x94l\x0fB\xca\xc1\xb4Cs3\x95D\xe6\xff\x8cD\xb8\x94-C\x00\x00\x00\x00\xb7\x98\xbe\xb3\x12\xfb\x8f\xbḏ\xb9\xbf\x9fW\xf4\xc06\x173\xc1\r\xf4N\xc0\x00\x00\x00\x00-ñA\xf04\bC2<\x87C\x1a\xe0\x19C\x9a\x85jA\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x96=\x93J<A\x19k\vD\xcal\nF\xa0\x96\x10G\x00\x00\x00\x00\xaa\xc6#C\xc2\x12\xfdE\x932\vH\xd4\x1eDIY3MIi\xeb\xa7\xc8\x00\x00\x00\x00y\xec\xa1-\xff\xff\x95=\x86\xbd\xba@\x90\x1c\aC\xcdg\x80DK\xbf\xf8D\x00\x00\x00\x00\xa0\x8d\xa5B\a\xdd\x01E\x94>\x93F\x1d\xaf]G\xc1\x88\fG\xbeR\xa7\xc5\x00\x00\x00\x00\x1bh\x961p\xff\x95=\xe3\aV@\xc5|*B\xdf\xce*C\xe4\xbb&C\x00\x00\x00\x00\x16\tCB\x1cl1D_\x82gEg\xe3\xc9EWE\x1dEY?\x15\xc3\x00\x00\x00\x00ۉ!4*\xf6\x95=\xbf\xc4\xff?\xfd\xedgAqT\xfdA\x8c\x05\x82A\x00\x00\x00\x00\xb8\xec\xf2A\x8f\xac\x86C)2SD\xe5\xbb\\D\x98\xaaTCX\xf3\xa9\xc0\x00\x00\x00\x00\x8a\xbc<\x14f\x18ɿ\xd1,)v\xc7ө?\x0f\xf5DH\xe5U_\xbf\x8e\xb8\xa6\x8f\x03\xab\xf8>\xb8\x05\x91V\x00\xacx\xbe\x00\x00\x00\x00\xf0\xa9M?\re\x94?dw%l\x89\x8c*?\xa6\x8cN\x89Z\xc0\xb6>\x86\x9a\xa6[\x1d\xbf:>*w\xca\xda9P\xb2=\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\xce\xfc\xff\xff\xff\xff\xbd?\xce\u007f\u007f5\x9dz*@\x90\xa5.e\xd4\xc0y@\xcc2\xa5\xa3}E\xae@݂'\xc3z\xea\xbe@\x00\x00\x00\x00\xacle\x8eE\x8d\\@O'M\x96܅\xac@\u007f\xbbŗ\x86\v\xe2@\xbb\x17\x8f\xb2,\xd4\xf7@-\vzi\x11\x15\xde@\x00\x00\x00\x00}\xca\xe1\xdag\x06\xad=C\x00\xc1\xe2\xff\xff\xbd?\xe3\x15cn\x046\x1b@\xed\x02&E\xb9\x13[@I\xd6R\xd0\x16-\x80@\xb7\f~\xbb\xb8\x85\x80@\x00\x00\x00\x00=c\xaf\xa8\xea\xa3M@\x01g\x06\x1b6\xfb\x8e@\xfb\xb6\x06WD\xe9\xb4@\x15\xbb\xa5\xb8\xb0\xa4\xbe@Q^o\x030\x80\x97@\x00\x00\x00\x00ݞ\xad\xa7!\xfc)>{\xd1![\xf5\xff\xbd?\x8a\xad^\xe8\xbcv\x0f@)Ѧ\x9dH\x8fA@7\x18,M\x85\xc3V@\xe5>\xa8\x8e\x8fGH@\x00\x00\x00\x00\x9c\x064\xa1IeA@_\xa7\xf1\a3\fu@#\xd57P|[\x90@\xe91.\xa3}\u058b@S\xed.|m\xf2Y@\x00\x00\x00\x00\xf4DU\xf6\xd4\xe9|>\x83\rv\xbeB\xff\xbd?\xc0\xae\x8f\xf9\xb7\xf2\x02@d\xa9q\u007f7|(@\xe2\x8e\u007f\x17\xa8\xb11@\xfe\xc1t\xa5IK\x14@\x00\x00\x00\x00\xdc\xecՊ\xbdo5@\xd5,\xf9\x14\x93R_@\xd9ۢ\xd5\xd8\bm@\xa9\x84\x18\xdazk]@\x92QN\xf4\xb1\xba @\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\xf3\xfd\xff\xff\xff?\xba\xbf\xf7yg\xa2\x91E0\xc0v\xb5\xe4Sм\x87\xc0\x15t\xf8@\xe7$\xc7\xc0j\x9c\xd0eЦ\xe7\xc0\x00\x00\x00\x00\xe5\xcd[ަ,d@\x19\x84\xd8\xd0b\x91\xbe@\x98^\xb7\xb0\x9aW\x00A\x19\x9c\x86rS\xf6%A\\\xad\x19w\xd2W$A\x18\xaa\xa5\x0ei\xf9\x11\xc1\x00\x00\x00\x00\x98\xa0\xa1\x1aC\xfa\xb6\xbd\xef\u007fY\xcb\xff?\xba\xbfK\xad\x03\xca\xe6\x1c \xc0\xb0\xb9\xa7lm\xf5f\xc0Os1i\xc6t\x95\xc0\x9d\xa7\xfd\x88\xe3h\xa4\xc0\x00\x00\x00\x00\xb2\x11Z\xff\xb2QT@9\xf8{\xe71\x1f\x9f@)\xced\r\x1f\x0f\xd1@\x97Ѻ\xaamW\xe8@K6|\xcf\x04K\xdb@\x04\xa0\xff\xfc.o\xb2\xc0\x00\x00\x00\x00Oȏө\xcf5\xbeT\xed\xaeQ\xeb?\xba\xbf\xff\xd9\x023\xc2p\x12\xc0\xda\x16]\xc2q\xecL\xc0_\xd5\x18GӇl\xc0\xf6\x1b\\_\xb9fk\xc0\x00\x00\x00\x00\xe4g\xd3\xcc#\xd5G@>\xee1\xc0\xeb\x0e\x85@\x9a|\x8eDNh\xaa@\xa6T\x1d\xa6\xba\xab\xb5@K\xdf\xd4\rz\xbc\x9d@\x1f1\n)p\xe6`\xc0\x00\x00\x00\x00\xd2&\xc6D&\xf1\x87\xbe\x10\xb0H\x91\x8e>\xba\xbf\xdaN\xbbi\x84\x04\x06\xc0\u007f\x90h\xc1\xe2\xa93\xc0\xaaJ\x10ޣ)E\xc0Rn\xcf96_5\xc0\x00\x00\x00\x00\xffd\xaex\x8a\x88=@\xba\x1c\x82\xdbh\x9fo@\xf7\xa0I\xce\x05\xac\x87@)\xc0\xd4H%\x1b\x87@\xd4\xd8><^~c@k\xe8\x1b\xe7\x86\xd6\x13\xc0\x00\x00\x00\x001\xc3H\xbe<\x9eN=*\xaf\xfa\xba\x1cX\xc57\x03`ų\x00\x00\x00\x00j(\xa3<KdT9\xd4\x02\xb65\xeb\xf8\xd51ρ\x92-\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\xf0=\xea\xd4SA\xa3\x06\xceC\xed+rE\xd6S\xf7E\x00\x00\x00\x00,j\xe4B\xe5.dE5\\\x10Gf\xa1\xbeG\x8b\xa8\xf0F\x00\x00\x00\x00?3h-\xff\xff\xef=#\xb0\xd9@ʝ\xd8B\xb7h\x01D\xc6-\x04D\x00\x00\x00\x00U\x1fmB\xb1\xd9wD#J\xa7E\x86%\xf5E\x80\x01\xbcD\x00\x00\x00\x00\r\xe1O1\xab\xff\xef=\xe7\xb5{@Ez\fB*\x1c\xb6B|<BB\x00\x00\x00\x00M*\vB\x98a\xa8C\xe3ۂD\xed\xb3^Dl\x93\xcfB\x00\x00\x00\x00\xa8N\xe73\x16\xfa\xef=\xc0\x95\x17@\xbc\xe1CAA\x8d\x8dAMZ\xa2@\x00\x00\x00\x00\xec}\xabA\x99\x94\xfaB\xc7FhC\xd7[\xebB\x90\xd5\x05A\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00ҽ\x8d,\x82\xc1\x83\xe6=\xc4:'9ƃ6=\xc7\x00\x00\x00\x007e!C\x17\x8b\xf4Eּ\x02H\x9c\xb2/I\x94\xbe\"IHˏ\xc8\x00\x00\x00\x00\x19ҷ\xad\xfe\xffѽ6\xe7\x00\xc1k\xab7\xc33\xa6\xab\xc4\x1cG#\xc5\x00\x00\x00\x00\x98\x8d\xa2B\x8f\xf9\xf8D\xf8x\x88Fm\xbbBG&X\xdaFxy\x93\xc5\x00\x00\x00\x00O}\xae\xb1[\xffѽ\x12\x86\x93\xc0\x8ecg\u009a>d\xc3\xcb5[\xc3\x00\x00\x00\x00\x1e\xa9>B^w(DrBSE\xd5]\xadE\xd0\xe3\xedD\x813\a\xc3\x00\x00\x00\x002\x89?\xb4u\xf4ѽ#$0\xc0\x16O\x9d\xc1\x1fM)²\xf9\xaa\xc1\x00\x00\x00\x00TD\xecAG\xfb|C.`=D*\xd98D\xf2\xf2\x1bC7\xb4\x9e\xc0\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\xf0?\x00\x00\x00\x00\x00\x00\xf8?\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x06\xd0\xcfC\xeb\xfdL>\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00@\x03\xb8\xe2?\x00\x00\x00\x00\x00\x00\x80?\x00\x00\xc0?\x00\x00\x00\x00\x00\x00\x00\x00\xdc\xcf\xd15\x00\x00\x00\x00\x00\x00\x00\x00\x00\xc0\x15?\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\xf0?\x00\x00\x00\x00\x00\x00\xf0?\x00\x00\x00\x00\x00\x00\x00@\x00\x00\x00\x00\x00\x00\x18@\x00\x00\x00\x00\x00\x008@\x00\x00\x00\x00\x00\x00^@\x00\x00\x00\x00\x00\x80\x86@\x00\x00\x00\x00\x00\xb0\xb3@\x00\x00\x00\x00\x00\xb0\xe3@\x00\x00\x00\x00\x00&\x16A\x00\x00\x00\x00\x80\xafKA\x00\x00\x00\x00\xa8\b\x83A\x00\x00\x00\x00\xfc\x8c\xbcA\x00\x00\x00\xc0\x8c2\xf7A\x00\x00\x00(;L4B\x00\x00\x80uw\asB\x00\x00\x80uw\a\xb3B\x00\x00\xd8\xec\xee7\xf4B\x00\x00s\xca\xec\xbe6C\x00\x90h0\xb9\x02{C\x00ZA\xbe\xb3\xe1\xc0C Ƶ\xe9;(\x06Dl\xf0YaRwND\x00\x00\x00\x00\x9e\xa4\xc1CQ\xea\x15BWL\xf5up\xfc#B\x1a\xb6\x8a\x812\xa1 B\x1a&\xe8\"\xb5\xb0\x10B补\xb3\xc1\u007f\xf6A?\xf3\xd3\xf5\x18t\xd5A*_\xb9{\f\xab\xadA\x98\xcc]\xf9v\xf8}AL\xf4\x80P\xe9\xf1EA뇇\x1fB\xb6\x06A\x04\xd8X\b\xac\x87\xbf@R;\xbc{`Zj@\x05'\xf6\x1f\x93\r\x04@\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\xa8\b\x83A\x00\x00\x00\x80i\xbd\x9cA\x00\x00\x00\xb0\xa6\xfd\xa1A\x00\x00\x00pq\x18\x99A\x00\x00\x00\x90\xb6\xee\x85A\x00\x00\x00\xe0qqiA\x00\x00\x00\x00{\x1fDA\x00\x00\x00\x00\xbc\xd0\x15A\x00\x00\x00\x00\x80\xe7\xdf@\x00\x00\x00\x00\x00\x14\x9e@\x00\x00\x00\x00\x00\x80P@\x00\x00\x00\x00\x00\x00\xf0?\x00\x00\x00\x00MSGVERB\x00label\x00\x00\x00severity\x00\x00\x00\x00text\x00\x00\x00\x00action\x00\x00tag\x00HALT: \x00\x00ERROR: \x00WARNING: \x00\x00\x00INFO: \x00\x00/dev/console\x00\x00\x00\x00%s%s%s%s%s%s%s%s\n\x00\x00\x00\nTO FIX: \x00\x00\x00 \x00\x00\x00PWD\x00: unrecognized option: \x00: option requires an argument: \x00: option does not take an argument: \x00\x00\x00\x00: option is ambiguous: \x00%*[^\n]%*[\n]\x00 %n%*s%n %n%*s%n %n%*s%n %n%*s%n %d %d\x00\x00%s\t%s\t%s\t%s\t%d\t%d\n\x00\x00/dev/ptmx\x00\x00\x00/dev/pts/%d\x00%b %e %T\x00\x00\x00\x00<%d>%s %n%s%s%.0d%s: \x00\x00\x00[\x00\x00\x00]\x00\x00\x00%.*s\x00\x00\x00\x00\x01\x00/dev/log\x00\x00\x00\x00\x00\x002>/dev/null\x00/bin/sh\x00sh\x00\x00-c\x00\x00eval \"printf %s\\\\\\\\0 x $1 $2\"\x00\x00\x00r\x00\x00\x00/dev/shm/\x00\x00\x00\x02\x00\x00\xc0\x03\x00\x00\xc0\x04\x00\x00\xc0\x05\x00\x00\xc0\x06\x00\x00\xc0\a\x00\x00\xc0\b\x00\x00\xc0\t\x00\x00\xc0\n\x00\x00\xc0\v\x00\x00\xc0\f\x00\x00\xc0\r\x00\x00\xc0\x0e\x00\x00\xc0\x0f\x00\x00\xc0\x10\x00\x00\xc0\x11\x00\x00\xc0\x12\x00\x00\xc0\x13\x00\x00\xc0\x14\x00\x00\xc0\x15\x00\x00\xc0\x16\x00\x00\xc0\x17\x00\x00\xc0\x18\x00\x00\xc0\x19\x00\x00\xc0\x1a\x00\x00\xc0\x1b\x00\x00\xc0\x1c\x00\x00\xc0\x1d\x00\x00\xc0\x1e\x00\x00\xc0\x1f\x00\x00\xc0\x00\x00\x00\xb3\x01\x00\x00\xc3\x02\x00\x00\xc3\x03\x00\x00\xc3\x04\x00\x00\xc3\x05\x00\x00\xc3\x06\x00\x00\xc3\a\x00\x00\xc3\b\x00\x00\xc3\t\x00\x00\xc3\n\x00\x00\xc3\v\x00\x00\xc3\f\x00\x00\xc3\r\x00\x00\xd3\x0e\x00\x00\xc3\x0f\x00\x00\xc3\x00\x00\f\xbb\x01\x00\f\xc3\x02\x00\f\xc3\x03\x00\f\xc3\x04\x00\f\xdb\x00\x00\x00\x00%.2X\x00\x00\x00\x00:%.2X\x00\x00\x00Invalid flags\x00Name does not resolve\x00Try again\x00Non-recoverable error\x00Unknown error\x00Unrecognized address family or invalid length\x00Unrecognized socket type\x00Unrecognized service\x00Unknown error\x00Out of memory\x00System error\x00Overflow\x00\x00Unknown error\x00\x00\x02\x00\x00\x00\n\x00\x00\x00\x00\x00\x00\x00\x10\x00\x00\x00\x1c\x00\x00\x00\x00\x00\x00\x00\n\x00\xff\xff\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x01\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\xff\xff\x00\x00\x00\x00%d.%d.%d.%d.in-addr.arpa\x00\x00\x00\x00ip6.arpa\x00\x00\x00\x00/etc/hosts\x00\x00/etc/services\x00\x00\x00/udp\x00\x00\x00\x00/tcp\x00\x00\x00\x000123456789abcdef\x00\x00\x00\x00tcp\x00udp\x00%s%s%s\x00\x00Host not found\x00Try again\x00Non-recoverable error\x00Address not available\x00\x00Unknown error\x00\x00\x00\x00\x00\x01\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x01\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00%d.%d.%d.%d\x00%x:%x:%x:%x:%x:%x:%x:%x\x00%x:%x:%x:%x:%x:%x:%d.%d.%d.%d\x00\x00\x00:0\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x02\x00\xff\xff\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x01\x0f\xff2\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\xff\xff\x00\x00\x00\x00\v\xff#\x04 \x02\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x01\xff\x1e\x02 \x01\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x03\xff\x05\x05\xfc\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\xfe\x03\r\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00(\x01\x00\x00\x00\x00\n\x00\x00\x00\x01\x00\x00\x00\x02\x00\x00\x00\x1c\x00\x00\x00\x00\x00\x00\x00\x00\x80\x00\x00\x0f\x00\x00\x00\x00x\x00\x00\v\x00\x00\x00\x00\x04\x00\x00\n\x00\x00\x00\x00\x02\x00\x00\t\x00\x00\x00\x00\x01\x00\x00\b\x00\x00\x00\x80\x00\x00\x00\a\x00\x00\x00@\x00\x00\x00\x06\x00\x00\x00 \x00\x00\x00\x05\x00\x00\x00\x10\x00\x00\x00\x04\x00\x00\x00\x0f\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00/etc/resolv.conf\x00\x00\x00\x00options\x00ndots:\x00\x00attempts:\x00\x00\x00timeout:\x00\x00\x00\x00nameserver\x00\x00domain\x00\x00search\x00\x00127.0.0.1\x00\x00\x00/etc/group\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00/etc/passwd\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00/etc/tcb/%s/shadow\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00/etc/shadow\x00%s:%s:%d:\x00\x00\x00%s%s\x00\x00\x00\x00,\x00\x00\x00%s:%s:%d:%d:%s:%s:%s\n\x00\x00\x00%s:%s:%.*ld:%.*ld:%.*ld:%.*ld:%.*ld:%.*ld:%.*lu\n\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00m\xe6\xec\xde\x05\x00\v\x00\x00\x00\x00\x00\x00\x00-\xf4QXό\xb1\xc0F\xf6\xb5\xcb)1\x03\xc7\x04[p0\xb4]\xfd x\u007f\x8b\x9a\xd8Y)PhH\x89\xab\xa7V\x03l\xff\xb7͈?\xd4w\xb4+\xa5\xa3p\xf1\xba\xe4\xa8\xfcA\x83\xfd\xd9o\xe1\x8az/-t\x96\a\x1f\r\t^\x03v,p\xf7@\xa5,\xa7oWA\xa8\xaatߠXd\x03J\xc7\xc4<S\xae\xaf_\x18\x04\x15\xb1\xe3m(\x86\xab\f\xa4\xbfC\xf0\xe9P\x819W\x16R7\x00\x00\x00\x00\t\x00\x00\x00\r\x00\x00\x00\f\x00\x00\x00\a\x00\x00\x00\x1b\x00\x00\x00[[:alnum:]_]\x00\x00\x00\x00[^[:alnum:]_]\x00\x00\x00[[:space:]]\x00[^[:space:]]\x00\x00\x00\x00[[:digit:]]\x00[^[:digit:]]\x00\x00\x00\x00No error\x00No match\x00Invalid regexp\x00Unknown collating element\x00Unknown character class name\x00Trailing backslash\x00Invalid back reference\x00Missing ']'\x00Missing ')'\x00Missing '}'\x00Invalid contents of {}\x00Invalid character range\x00Out of memory\x00Repetition not preceded by valid expression\x00\x00Unknown error\x00\x00\x00LINUX_2.6\x00\x00\x00__vdso_getcpu\x00\x00\x00\xff\xff\xff\xff\xff\xff\xff\xff\x00\x00\x00\x00\xff\xff\xff\u007f\xfc\xff\xff\xff\x00\x00\x00\x00%s%s%s\n\x00rwa\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00/tmp\x00\x00\x00\x00temp\x00\x00\x00\x00/tmp/tmpfile_XXXXXX\x00w+\x00\x00/tmp/tmpnam_XXXXXX\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00-+   0X0x\x00\x00\x00(null)\x00\x00\x19\x00\n\x00\x19\x19\x19\x00\x00\x00\x00\x05\x00\x00\x00\x00\x00\x00\t\x00\x00\x00\x00\v\x00\x00\x00\x00\x00\x00\x00\x00\x19\x00\x11\n\x19\x19\x19\x03\n\a\x00\x01\x1b\t\v\x18\x00\x00\t\x06\v\x00\x00\v\x00\x06\x19\x00\x00\x00\x19\x19\x19\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x0e\x00\x00\x00\x00\x00\x00\x00\x00\x19\x00\n\r\x19\x19\x19\x00\r\x00\x00\x02\x00\t\x0e\x00\x00\x00\t\x00\x0e\x00\x00\x0e\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\f\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x13\x00\x00\x00\x00\x13\x00\x00\x00\x00\t\f\x00\x00\x00\x00\x00\f\x00\x00\f\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x10\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x0f\x00\x00\x00\x04\x0f\x00\x00\x00\x00\t\x10\x00\x00\x00\x00\x00\x10\x00\x00\x10\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x12\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x11\x00\x00\x00\x00\x11\x00\x00\x00\x00\t\x12\x00\x00\x00\x00\x00\x12\x00\x00\x12\x00\x00\x1a\x00\x00\x00\x1a\x1a\x1a\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x1a\x00\x00\x00\x1a\x1a\x1a\x00\x00\x00\x00\x00\x00\t\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x14\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x17\x00\x00\x00\x00\x17\x00\x00\x00\x00\t\x14\x00\x00\x00\x00\x00\x14\x00\x00\x14\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x16\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x15\x00\x00\x00\x00\x15\x00\x00\x00\x00\t\x16\x00\x00\x00\x00\x00\x16\x00\x00\x16\x00\x00\x00\x00\x00\x00-0X+0X 0X-0x+0x 0x\x00\x00inf\x00INF\x00NAN\x000123456789ABCDEF\x00\x00\x00\x00%*s\x00%%%s%s%s%s%s*.*%c%c\x00#\x00\x00\x00+\x00\x00\x00-\x00\x00\x000\x00\x00\x00\x19\x00\n\x00\x19\x19\x19\x00\x00\x00\x00\x05\x00\x00\x00\x00\x00\x00\t\x00\x00\x00\x00\v\x00\x00\x00\x00\x00\x00\x00\x00\x19\x00\x11\n\x19\x19\x19\x03\n\a\x00\x01\x1b\t\v\x18\x00\x00\t\x06\v\x00\x00\v\x00\x06\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x0e\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\n\r\x00\x00\x00\x00\r\x00\x00\x02\x00\t\x0e\x00\x00\x00\t\x00\x0e\x00\x00\x0e\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\f\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x13\x00\x00\x00\x00\x13\x00\x00\x00\x00\t\f\x00\x00\x00\x00\x00\f\x00\x00\f\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x10\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x0f\x00\x00\x00\x04\x0f\x00\x00\x00\x00\t\x10\x00\x00\x00\x00\x00\x10\x00\x00\x10\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x12\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x11\x00\x00\x00\x00\x11\x00\x00\x00\x00\t\x12\x00\x00\x00\x00\x00\x12\x00\x00\x12\x00\x00\x1a\x00\x00\x00\x1a\x1a\x1a\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x1a\x00\x00\x00\x1a\x1a\x1a\x00\x00\x00\x00\x00\x00\t\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x14\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x17\x00\x00\x00\x00\x17\x00\x00\x00\x00\t\x14\x00\x00\x00\x00\x00\x14\x00\x00\x14\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x16\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x15\x00\x00\x00\x00\x15\x00\x00\x00\x00\t\x16\x00\x00\x00\x00\x00\x16\x00\x00\x16\x00\x00\x00\x00\x00\x00L\x00\x00jLLL\x00j\x00\x00\x00\x00\x00jj\x00\x00\x00\x00j\x00\x00j\x00\x00\x00\x00%.*s%.0d%s%c%%lln\x00\x00\x00%*\x00\x00hh\x00h\x00\x00\x00\x00\x00l\x00\x00L\x00\x00ll\x00\x00\x00%.*e\x00\x00\x00\x00%.*f\x00\x00\x00\x00000000000000000\x00%.*g\x00\x00\x00\x00\x01\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00@\x00\x00\x00\x00\x00\x00\x00Unknown signal\x00Hangup\x00Interrupt\x00Quit\x00Illegal instruction\x00Trace/breakpoint trap\x00Aborted\x00Bus error\x00Arithmetic exception\x00Killed\x00User defined signal 1\x00Segmentation fault\x00User defined signal 2\x00Broken pipe\x00Alarm clock\x00Terminated\x00Stack fault\x00Child process status\x00Continued\x00Stopped (signal)\x00Stopped\x00Stopped (tty input)\x00Stopped (tty output)\x00Urgent I/O condition\x00CPU time limit exceeded\x00File size limit exceeded\x00Virtual timer expired\x00Profiling timer expired\x00Window changed\x00I/O possible\x00Power failure\x00Bad system call\x00RT32\x00RT33\x00RT34\x00RT35\x00RT36\x00RT37\x00RT38\x00RT39\x00RT40\x00RT41\x00RT42\x00RT43\x00RT44\x00RT45\x00RT46\x00RT47\x00RT48\x00RT49\x00RT50\x00RT51\x00RT52\x00RT53\x00RT54\x00RT55\x00RT56\x00RT57\x00RT58\x00RT59\x00RT60\x00RT61\x00RT62\x00RT63\x00RT64\x00\x00XXXXXX\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00/proc/self/task/%d/comm\x00/dev/shm/tmp-%d\x00%.3s %.3s%3d %.2d:%.2d:%.2d %d\n\x00\x00\x00\x00\x00\x80\xde(\x00\x80\xc8M\x00\x00\xa7v\x00\x004\x9e\x00\x80\x12\xc7\x00\x80\x9f\xee\x00\x00~\x17\x01\x80\\@\x01\x80\xe9g\x01\x00Ȑ\x01\x00U\xb8\x01\x00\x00\x00\x00\x1f\x1e\x1f\x1e\x1f\x1f\x1e\x1f\x1e\x1f\x1f\x1d\x00\x00\x00\x00UTC\x00\x00\x00\x00\x00TZ\x00\x00/etc/localtime\x00\x00TZif\x00\x00\x00\x00/usr/share/zoneinfo/\x00/share/zoneinfo/\x00/etc/zoneinfo/\x00\x00\x00\x00DATEMSK\x00%m/%d/%y\x00\x00\x00\x00%Y-%m-%d\x00\x00\x00\x00%H:%M\x00\x00\x00%H:%M:%S\x00\x00\x00\x00+%lld\x00\x00\x00%+.4ld\x00\x00%\x00\x00\x00%lld\x00\x00\x00\x00%*lld\x00\x00\x00%0*lld\x00\x00LOGNAME\x00")

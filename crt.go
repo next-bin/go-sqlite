@@ -85,7 +85,7 @@ func init() {
 		MustMalloc(1 << uint(log))
 	}
 	X__libc_start_main(0, 0, 0, 0)
-	mainTLS = TLS(*(*uintptr)(unsafe.Pointer(X__ccgo_main_tls)))
+	mainTLS = TLS(X__ccgo_main_tls)
 	if (*s1__pthread)(unsafe.Pointer(mainTLS)).Fself != uintptr(mainTLS) { // sanity check
 		panic("internal error")
 	}
@@ -137,7 +137,7 @@ func Main(main func(TLS, int32, uintptr) int32) {
 		Log("==== start: %v", os.Args)
 	}
 	tls := MainTLS()
-	Xexit(tls, main(tls, int32(len(os.Args)), *(*uintptr)(unsafe.Pointer(X__ccgo_argv))))
+	Xexit(tls, main(tls, int32(len(os.Args)), X__ccgo_argv))
 }
 
 func MainTLS() TLS { return mainTLS }
@@ -362,6 +362,11 @@ func a_dec(p uintptr) {
 //static inline int a_fetch_add(volatile int *p, int v)
 func a_fetch_add(p uintptr, v int32) int32 {
 	return atomic.AddInt32((*int32)(unsafe.Pointer(p)), v) - v
+}
+
+// static inline void a_store(volatile int *p, int x)
+func a_store(p uintptr, v int32) {
+	atomic.StoreInt32((*int32)(unsafe.Pointer(p)), v)
 }
 
 // Realloc reallocates memory.

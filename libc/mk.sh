@@ -23,7 +23,6 @@ go install $CRTBOOTSTRAP -v modernc.org/ccgo/v2/ccgo
 rm -f log-ccgo
 make distclean
 make clean
-#DBG ./configure CC=ccgo CFLAGS='-D__typeof=typeof -D__inline=inline --ccgo-define-values --ccgo-full-paths' \
 ./configure CC=ccgo CFLAGS='-D__typeof=typeof -D__inline=inline --ccgo-define-values' \
 	--target=$MUSLARCH --disable-shared |& tee log-configure
 make $MAKEJ AR=ar RANLIB=ranlib |& tee log-make

@@ -1287,7 +1287,11 @@ void __libc_exit_fini()
 static void do_init_fini(struct dso *p)
 {
 	size_t dyn[DYN_CNT];
+#ifndef __ccgo__
 	int need_locking = libc.threads_minus_1;
+#else
+#define need_locking 1
+#endif
 	/* Allow recursive calls that arise when a library calls
 	 * dlopen from one of its constructors, but block any
 	 * other threads until all ctors have finished. */
