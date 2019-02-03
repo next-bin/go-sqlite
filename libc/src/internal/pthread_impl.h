@@ -50,6 +50,7 @@ struct pthread {
 	char *dlerror_buf;
 	void *stdio_locks;
 #ifdef __ccgo__
+	void *stack_page;
 	int os_thread_locked;
 #endif
 

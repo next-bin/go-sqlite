@@ -52,6 +52,7 @@ import (
 	"unsafe"
 
 	"modernc.org/internal/buffer" //TODO-
+	"modernc.org/mathutil"
 	"modernc.org/memory"
 	"modernc.org/strutil"
 )
@@ -75,6 +76,8 @@ var (
 
 	// Nz64 holds the float64 value -0.0. R/O
 	Nz64 float64
+
+	tls0 Thread
 )
 
 func init() {
@@ -84,9 +87,15 @@ func init() {
 	for log := 0; log <= 16; log++ { // Preallocate some mmap pages.
 		MustMalloc(1 << uint(log))
 	}
-	X__libc_start_main(0, 0, 0, 0)
+	X__libc_start_main(TLS(unsafe.Pointer(&tls0)), 0, 0, 0)
+
+	defer func() {
+		Free(tls0.Fstack_page)
+		tls0.Fstack_page = 0
+	}()
+
 	mainTLS = TLS(X__ccgo_main_tls)
-	if (*s1__pthread)(unsafe.Pointer(mainTLS)).Fself != uintptr(mainTLS) { // sanity check
+	if (*Thread)(unsafe.Pointer(mainTLS)).Fself != uintptr(mainTLS) { // sanity check
 		panic("internal error")
 	}
 
@@ -145,11 +154,76 @@ func MainTLS() TLS { return mainTLS }
 // TLS represents a virtual C thread.
 type TLS uintptr
 
-var MustMallocCnt int64
+func (tls TLS) Release() { //TODO
+	if tls == 0 {
+		return
+	}
+
+	t := (*Thread)(unsafe.Pointer(tls))
+	for t.Fstack_page != 0 {
+		h := (*stackPageHeader)(unsafe.Pointer(t.Fstack_page))
+		prev := h.prev
+		Free(t.Fstack_page)
+		t.Fstack_page = uintptr(unsafe.Pointer(prev))
+	}
+	Free(uintptr(tls))
+	return
+}
+
+type stackPageHeader struct {
+	prev  uintptr
+	avail int32
+	used  int32
+}
+
+func init() {
+	if unsafe.Sizeof(stackPageHeader{}) > StackAlign {
+		panic("internal error")
+	}
+}
+
+func MallocStack(tls TLS, size int) (r uintptr) {
+	t := (*Thread)(unsafe.Pointer(tls))
+	h := (*stackPageHeader)(unsafe.Pointer(t.Fstack_page))
+	if h != nil && int(h.avail) >= size {
+		r = uintptr(unsafe.Pointer(h)) + uintptr(h.used)
+		h.avail -= int32(size)
+		h.used += int32(size)
+		return r
+	}
+
+	rq := mathutil.Max(stackPage, size)
+	rq += StackAlign - 1
+	rq &^= StackAlign - 1
+
+	t.Fstack_page = MustMalloc(rq)
+	h0 := h
+	h = (*stackPageHeader)(unsafe.Pointer(t.Fstack_page))
+	h.prev = uintptr(unsafe.Pointer(h0))
+	h.avail = int32(rq - StackAlign)
+	h.used = StackAlign
+
+	r = uintptr(unsafe.Pointer(h)) + uintptr(h.used)
+	h.avail -= int32(size)
+	h.used += int32(size)
+	return r
+}
+
+func FreeStack(tls TLS, size int) {
+	t := (*Thread)(unsafe.Pointer(tls))
+	h := (*stackPageHeader)(unsafe.Pointer(t.Fstack_page))
+	h.avail += int32(size)
+	h.used -= int32(size)
+	if h.used > StackAlign || h.prev == 0 {
+		return
+	}
+
+	t.Fstack_page = h.prev
+	Free(uintptr(unsafe.Pointer(h)))
+}
 
 // MustMalloc is like Malloc but panics if the allocation cannot be made.
 func MustMalloc(size int) uintptr {
-	atomic.AddInt64(&MustMallocCnt, 1)
 	p, err := Malloc(size)
 	if err != nil {
 		panic(fmt.Errorf("out of memory: %v", err))

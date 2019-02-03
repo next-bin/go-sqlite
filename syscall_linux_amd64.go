@@ -351,7 +351,7 @@ var (
 func __syscall(tls TLS, n long, a1, a2, a3, a4, a5, a6 uintptr) (long, int32) {
 	var locked bool
 	if tls != 0 {
-		locked = (*s1__pthread)(unsafe.Pointer(tls)).Fos_thread_locked != 0
+		locked = (*Thread)(unsafe.Pointer(tls)).Fos_thread_locked != 0
 	}
 
 	switch n {
@@ -418,7 +418,7 @@ func __syscall(tls TLS, n long, a1, a2, a3, a4, a5, a6 uintptr) (long, int32) {
 
 		if !locked && tls != 0 {
 			runtime.LockOSThread()
-			(*s1__pthread)(unsafe.Pointer(tls)).Fos_thread_locked = 1
+			(*Thread)(unsafe.Pointer(tls)).Fos_thread_locked = 1
 			locked = true
 		}
 	default:
