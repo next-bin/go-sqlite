@@ -86,10 +86,10 @@ static inline void a_inc(volatile int *p)
 #define a_dec a_dec
 static inline void a_dec(volatile int *p)
 {
-	__GO__("panic(`TODO`)\n");
 // 	__asm__ __volatile__(
 // 		"lock ; decl %0"
 // 		: "=m"(*p) : "m"(*p) : "memory" );
+	__GO__("a_dec(_p)\n");
 }
 
 #define a_store a_store

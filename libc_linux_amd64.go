@@ -61941,7 +61941,7 @@ func x29__syscall4(tls TLS, _n int64, _a1 int64, _a2 int64, _a3 int64, _a4 int64
 
 // xa_dec is defined at atomic_arch.h:87:20
 func xa_dec(tls TLS, _p uintptr /* *int32 */) {
-	panic(`TODO`)
+	a_dec(_p)
 }
 
 // linking call_once.o
@@ -63573,7 +63573,7 @@ func xunlock_requeue(tls TLS, _l uintptr /* *int32 */, _r uintptr /* *int32 */, 
 
 // xa_dec is defined at atomic_arch.h:87:20
 func x1a_dec(tls TLS, _p uintptr /* *int32 */) {
-	panic(`TODO`)
+	a_dec(_p)
 }
 
 type t57time_t = int64
@@ -64245,7 +64245,7 @@ func x1start(tls TLS, _p uintptr /* *void */) (r int32) {
 
 // xa_dec is defined at atomic_arch.h:87:20
 func x2a_dec(tls TLS, _p uintptr /* *int32 */) {
-	panic(`TODO`)
+	a_dec(_p)
 }
 
 // x__futexwait is defined at pthread_impl.h:165:20
@@ -65317,7 +65317,7 @@ func x8a_inc(tls TLS, _p uintptr /* *int32 */) {
 
 // xa_dec is defined at atomic_arch.h:87:20
 func x3a_dec(tls TLS, _p uintptr /* *int32 */) {
-	panic(`TODO`)
+	a_dec(_p)
 }
 
 type t60time_t = int64
@@ -65963,7 +65963,7 @@ func x15a_cas(tls TLS, _p uintptr /* *int32 */, _t int32, _s int32) (r int32) {
 
 // xa_dec is defined at atomic_arch.h:87:20
 func x4a_dec(tls TLS, _p uintptr /* *int32 */) {
-	panic(`TODO`)
+	a_dec(_p)
 }
 
 type t61time_t = int64
@@ -66029,7 +66029,7 @@ func x16a_cas(tls TLS, _p uintptr /* *int32 */, _t int32, _s int32) (r int32) {
 
 // xa_dec is defined at atomic_arch.h:87:20
 func x5a_dec(tls TLS, _p uintptr /* *int32 */) {
-	panic(`TODO`)
+	a_dec(_p)
 }
 
 type t62time_t = int64
@@ -67362,7 +67362,7 @@ type t65time_t = int64
 
 // xa_dec is defined at atomic_arch.h:87:20
 func x6a_dec(tls TLS, _p uintptr /* *int32 */) {
-	panic(`TODO`)
+	a_dec(_p)
 }
 
 // linking sem_trywait.o

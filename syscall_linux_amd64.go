@@ -410,6 +410,7 @@ func __syscall(tls TLS, n long, a1, a2, a3, a4, a5, a6 uintptr) (long, int32) {
 
 	case
 		DSYS_clock_gettime,
+		DSYS_futex,
 		DSYS_nanosleep,
 		DSYS_pread,
 		DSYS_pwrite,
