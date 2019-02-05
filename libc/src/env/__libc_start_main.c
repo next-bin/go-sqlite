@@ -75,12 +75,16 @@ void __init_libc(char **envp, char *pn)
 	for (i=0; pn[i]; i++) if (pn[i]=='/') __progname = pn+i+1;
 
 	__init_tls(aux);
-	pthread_t tls = __ccgo_main_tls;
+	pthread_t tls0, tls = __ccgo_main_tls;
+	__GO__("_tls0 := tls\n");
 	__GO__("tls = TLS(_tls)\n");
 	__init_ssp((void *)aux[AT_RANDOM]);
 
 	if (aux[AT_UID]==aux[AT_EUID] && aux[AT_GID]==aux[AT_EGID]
-		&& !aux[AT_SECURE]) return;
+		&& !aux[AT_SECURE]) {
+		__GO__("tls = _tls0\n");
+		return;
+	}
 
 	struct pollfd pfd[3] = { {.fd=0}, {.fd=1}, {.fd=2} };
 	int r =
@@ -94,6 +98,7 @@ void __init_libc(char **envp, char *pn)
 		if (__sys_open("/dev/null", O_RDWR)<0)
 			a_crash();
 	libc.secure = 1;
+	__GO__("tls = _tls0\n");
 }
 
 static void libc_start_init(void)

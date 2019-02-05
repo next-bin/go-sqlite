@@ -11,6 +11,12 @@ import (
 	"unsafe"
 )
 
+const (
+	_ = iota
+	syscallOK
+	syscallLockOSThread
+)
+
 var (
 	syscalls = map[int]string{
 		DSYS__sysctl:                "_sysctl",
@@ -346,6 +352,66 @@ var (
 		DSYS_write:                  "write",
 		DSYS_writev:                 "writev",
 	}
+
+	syscallKind = [...]byte{
+		DSYS_access:      syscallOK,
+		DSYS_bind:        syscallOK,
+		DSYS_brk:         syscallOK,
+		DSYS_chdir:       syscallOK,
+		DSYS_chmod:       syscallOK,
+		DSYS_close:       syscallOK,
+		DSYS_connect:     syscallOK,
+		DSYS_exit_group:  syscallOK,
+		DSYS_fchmod:      syscallOK,
+		DSYS_fcntl:       syscallOK,
+		DSYS_fstat:       syscallOK,
+		DSYS_fsync:       syscallOK,
+		DSYS_ftruncate:   syscallOK,
+		DSYS_getcwd:      syscallOK,
+		DSYS_getdents:    syscallOK,
+		DSYS_geteuid:     syscallOK,
+		DSYS_getpid:      syscallOK,
+		DSYS_getsockname: syscallOK,
+		DSYS_getsockopt:  syscallOK,
+		DSYS_getuid:      syscallOK,
+		DSYS_ioctl:       syscallOK,
+		DSYS_listen:      syscallOK,
+		DSYS_lseek:       syscallOK,
+		DSYS_lstat:       syscallOK,
+		DSYS_madvise:     syscallOK,
+		DSYS_mkdir:       syscallOK,
+		DSYS_mmap:        syscallOK,
+		DSYS_mprotect:    syscallOK,
+		DSYS_mremap:      syscallOK,
+		DSYS_munmap:      syscallOK,
+		DSYS_open:        syscallOK,
+		DSYS_pipe:        syscallOK,
+		DSYS_read:        syscallOK,
+		DSYS_readlink:    syscallOK,
+		DSYS_readv:       syscallOK,
+		DSYS_rename:      syscallOK,
+		DSYS_rmdir:       syscallOK,
+		DSYS_select:      syscallOK,
+		DSYS_setsockopt:  syscallOK,
+		DSYS_socket:      syscallOK,
+		DSYS_stat:        syscallOK,
+		DSYS_symlink:     syscallOK,
+		DSYS_umask:       syscallOK,
+		DSYS_uname:       syscallOK,
+		DSYS_unlink:      syscallOK,
+		DSYS_utimensat:   syscallOK,
+		DSYS_wait4:       syscallOK,
+		DSYS_write:       syscallOK,
+		DSYS_writev:      syscallOK,
+
+		DSYS_clock_gettime:  syscallLockOSThread,
+		DSYS_futex:          syscallLockOSThread,
+		DSYS_nanosleep:      syscallLockOSThread,
+		DSYS_pread:          syscallLockOSThread,
+		DSYS_pwrite:         syscallLockOSThread,
+		DSYS_rt_sigaction:   syscallLockOSThread, //TODO
+		DSYS_rt_sigprocmask: syscallLockOSThread,
+	}
 )
 
 func __syscall(tls TLS, n long, a1, a2, a3, a4, a5, a6 uintptr) (long, int32) {
@@ -354,69 +420,12 @@ func __syscall(tls TLS, n long, a1, a2, a3, a4, a5, a6 uintptr) (long, int32) {
 		locked = (*Thread)(unsafe.Pointer(tls)).Fos_thread_locked != 0
 	}
 
-	switch n {
-	case
-		DSYS_access,
-		DSYS_bind,
-		DSYS_brk,
-		DSYS_chdir,
-		DSYS_chmod,
-		DSYS_close,
-		DSYS_connect,
-		DSYS_exit_group,
-		DSYS_fchmod,
-		DSYS_fcntl,
-		DSYS_fstat,
-		DSYS_fsync,
-		DSYS_ftruncate,
-		DSYS_getcwd,
-		DSYS_getdents,
-		DSYS_geteuid,
-		DSYS_getpid,
-		DSYS_getsockname,
-		DSYS_getsockopt,
-		DSYS_getuid,
-		DSYS_ioctl,
-		DSYS_listen,
-		DSYS_lseek,
-		DSYS_lstat,
-		DSYS_madvise,
-		DSYS_mkdir,
-		DSYS_mmap,
-		DSYS_mprotect,
-		DSYS_mremap,
-		DSYS_munmap,
-		DSYS_open,
-		DSYS_pipe,
-		DSYS_read,
-		DSYS_readlink,
-		DSYS_readv,
-		DSYS_rename,
-		DSYS_rmdir,
-		DSYS_select,
-		DSYS_setsockopt,
-		DSYS_socket,
-		DSYS_stat,
-		DSYS_symlink,
-		DSYS_umask,
-		DSYS_uname,
-		DSYS_unlink,
-		DSYS_utimensat,
-		DSYS_wait4,
-		DSYS_write,
-		DSYS_writev:
+	switch syscallKind[n] {
+	case syscallOK:
 
 		// ok
 
-	case
-		DSYS_clock_gettime,
-		DSYS_futex,
-		DSYS_nanosleep,
-		DSYS_pread,
-		DSYS_pwrite,
-		DSYS_rt_sigaction, //TODO
-		DSYS_rt_sigprocmask:
-
+	case syscallLockOSThread:
 		if !locked && tls != 0 {
 			runtime.LockOSThread()
 			(*Thread)(unsafe.Pointer(tls)).Fos_thread_locked = 1
