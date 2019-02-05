@@ -386,6 +386,7 @@ var (
 		DSYS_munmap:      syscallOK,
 		DSYS_open:        syscallOK,
 		DSYS_pipe:        syscallOK,
+		DSYS_prlimit64:   syscallOK,
 		DSYS_read:        syscallOK,
 		DSYS_readlink:    syscallOK,
 		DSYS_readv:       syscallOK,
@@ -411,6 +412,8 @@ var (
 		DSYS_pwrite:         syscallLockOSThread,
 		DSYS_rt_sigaction:   syscallLockOSThread, //TODO
 		DSYS_rt_sigprocmask: syscallLockOSThread,
+
+		350: 0,
 	}
 )
 

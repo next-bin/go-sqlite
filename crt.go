@@ -52,7 +52,6 @@ import (
 	"unsafe"
 
 	"modernc.org/internal/buffer" //TODO-
-	"modernc.org/mathutil"
 	"modernc.org/memory"
 	"modernc.org/strutil"
 )
@@ -192,7 +191,10 @@ func MallocStack(tls TLS, size int) (r uintptr) {
 		return r
 	}
 
-	rq := mathutil.Max(stackPage, size)
+	rq := size
+	if size < stackPage {
+		rq = stackPage
+	}
 	rq += StackAlign - 1
 	rq &^= StackAlign - 1
 
