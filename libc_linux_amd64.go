@@ -15090,7 +15090,7 @@ func Xasinh(tls TLS, _x float64) (r float64) {
 	} else if _e >= uint32(997) {
 		_x = Xlog1p(tls, _x+_x*_x/(Xsqrt(tls, _x*_x+float64(1))+float64(1)))
 	} else {
-		atomic.StoreUint64((*uint64)(unsafe.Pointer(_1__x)), math.Float64bits(_x+float64(1.329227995784916e+36)))
+		*(*float64)(unsafe.Pointer(_1__x)) = _x + float64(1.329227995784916e+36)
 	}
 	if _s != 0 {
 		r = -_x
@@ -15139,7 +15139,7 @@ func Xasinhf(tls TLS, _x float32) (r float32) {
 	} else if _i >= uint32(964689920) {
 		_x = Xlog1pf(tls, _x+_x*_x/(Xsqrtf(tls, _x*_x+float32(1))+float32(1)))
 	} else {
-		atomic.StoreUint32((*uint32)(unsafe.Pointer(___x)), math.Float32bits(_x+float32(1.329228e+36)))
+		*(*float32)(unsafe.Pointer(___x)) = _x + float32(1.329228e+36)
 	}
 	if _s != 0 {
 		r = -_x
@@ -15210,7 +15210,7 @@ func Xatan(tls TLS, _x float64) (r float64) {
 	if _ix < uint32(0x3fdc0000) {
 		if _ix < uint32(0x3e400000) {
 			if _ix < uint32(0x100000) {
-				atomic.StoreUint32((*uint32)(unsafe.Pointer(___x)), math.Float32bits(float32(_x)))
+				*(*float32)(unsafe.Pointer(___x)) = float32(_x)
 			}
 			r = _x
 			FreeStack(tls, 64)
@@ -15749,7 +15749,7 @@ func Xatanf(tls TLS, _x float32) (r float32) {
 	if _ix < uint32(0x3ee00000) {
 		if _ix < uint32(0x39800000) {
 			if _ix < uint32(0x800000) {
-				atomic.StoreUint32((*uint32)(unsafe.Pointer(___x)), math.Float32bits(_x*_x))
+				*(*float32)(unsafe.Pointer(___x)) = _x * _x
 			}
 			r = _x
 			FreeStack(tls, 64)
@@ -15853,7 +15853,7 @@ func Xatanh(tls TLS, _x float64) (r float64) {
 	if _e < uint32(1022) {
 		if _e < uint32(991) {
 			if _e == uint32(0) {
-				atomic.StoreUint32((*uint32)(unsafe.Pointer(___x)), math.Float32bits(float32(_y)))
+				*(*float32)(unsafe.Pointer(___x)) = float32(_y)
 			}
 		} else {
 			_y = float64(0.5) * Xlog1p(tls, float64(2)*_y+float64(2)*_y*_y/(float64(1)-_y))
@@ -15908,7 +15908,7 @@ func Xatanhf(tls TLS, _x float32) (r float32) {
 	if *(*uint32)(unsafe.Pointer(_u)) < uint32(1056964608) {
 		if *(*uint32)(unsafe.Pointer(_u)) < uint32(796917760) {
 			if *(*uint32)(unsafe.Pointer(_u)) < uint32(8388608) {
-				atomic.StoreUint32((*uint32)(unsafe.Pointer(___x)), math.Float32bits(_y*_y))
+				*(*float32)(unsafe.Pointer(___x)) = _y * _y
 			}
 		} else {
 			_y = float32(0.5) * Xlog1pf(tls, float32(2)*_y+float32(2)*_y*_y/(float32(1)-_y))
@@ -16144,7 +16144,7 @@ func Xceil(tls TLS, _x float64) (r float64) {
 		_y = _x + x2toint - x2toint - _x
 	}
 	if _e <= int32(1022) {
-		atomic.StoreUint64((*uint64)(unsafe.Pointer(_1__x)), math.Float64bits(_y))
+		*(*float64)(unsafe.Pointer(_1__x)) = _y
 		if (*(*uint64)(unsafe.Pointer(_u)) >> (uint(63) % 64)) != 0 {
 			r = Nz64
 			FreeStack(tls, 64)
@@ -16213,7 +16213,7 @@ func Xceilf(tls TLS, _x float32) (r float32) {
 			FreeStack(tls, 112)
 			return r
 		}
-		atomic.StoreUint32((*uint32)(unsafe.Pointer(___x)), math.Float32bits(_x+float32(1.329228e+36)))
+		*(*float32)(unsafe.Pointer(___x)) = _x + float32(1.329228e+36)
 		if *(*uint32)(unsafe.Pointer(_u))>>(uint(31)%32) == uint32(0) {
 			{
 				p := (*uint32)(unsafe.Pointer(_u))
@@ -16225,7 +16225,7 @@ func Xceilf(tls TLS, _x float32) (r float32) {
 			*p = *p & ^_m
 		}
 	} else {
-		atomic.StoreUint32((*uint32)(unsafe.Pointer(_3__x)), math.Float32bits(_x+float32(1.329228e+36)))
+		*(*float32)(unsafe.Pointer(_3__x)) = _x + float32(1.329228e+36)
 		if (*(*uint32)(unsafe.Pointer(_u)) >> (uint(31) % 32)) != 0 {
 			*(*float32)(unsafe.Pointer(_u)) = Nz32
 		} else if (*(*uint32)(unsafe.Pointer(_u)) << (uint(1) % 32)) != 0 {
@@ -16358,7 +16358,7 @@ func Xcos(tls TLS, _x float64) (r float64) {
 	_ix = _ix & uint32(0x7fffffff)
 	if _ix <= uint32(0x3fe921fb) {
 		if _ix < uint32(0x3e46a09e) {
-			atomic.StoreUint64((*uint64)(unsafe.Pointer(_1__x)), math.Float64bits(_x+float64(1.329227995784916e+36)))
+			*(*float64)(unsafe.Pointer(_1__x)) = _x + float64(1.329227995784916e+36)
 			r = 1
 			FreeStack(tls, 80)
 			return r
@@ -16430,7 +16430,7 @@ func Xcosf(tls TLS, _x float32) (r float32) {
 	_ix = _ix & uint32(0x7fffffff)
 	if _ix <= uint32(0x3f490fda) {
 		if _ix < uint32(0x39800000) {
-			atomic.StoreUint32((*uint32)(unsafe.Pointer(___x)), math.Float32bits(_x+float32(1.329228e+36)))
+			*(*float32)(unsafe.Pointer(___x)) = _x + float32(1.329228e+36)
 			r = 1
 			FreeStack(tls, 80)
 			return r
@@ -16561,7 +16561,7 @@ func Xcosh(tls TLS, _x float64) (r float64) {
 	_w = uint32(*(*uint64)(unsafe.Pointer(_u)) >> (uint(32) % 64))
 	if _w < uint32(0x3fe62e42) {
 		if _w < uint32(1045430272) {
-			atomic.StoreUint64((*uint64)(unsafe.Pointer(_1__x)), math.Float64bits(_x+float64(1.329227995784916e+36)))
+			*(*float64)(unsafe.Pointer(_1__x)) = _x + float64(1.329227995784916e+36)
 			r = float64(1)
 			FreeStack(tls, 64)
 			return r
@@ -16619,7 +16619,7 @@ func Xcoshf(tls TLS, _x float32) (r float32) {
 	_w = *(*uint32)(unsafe.Pointer(_u))
 	if _w < uint32(0x3f317217) {
 		if _w < uint32(964689920) {
-			atomic.StoreUint32((*uint32)(unsafe.Pointer(___x)), math.Float32bits(_x+float32(1.329228e+36)))
+			*(*float32)(unsafe.Pointer(___x)) = _x + float32(1.329228e+36)
 			r = float32(1)
 			FreeStack(tls, 64)
 			return r
@@ -17376,7 +17376,7 @@ func Xexp(tls TLS, _x float64) (r float64) {
 			return r
 		}
 		if _x < float64(-708.3964185322641) {
-			atomic.StoreUint32((*uint32)(unsafe.Pointer(___x)), math.Float32bits(float32(float64(-1.401298464324817e-45)/_x)))
+			*(*float32)(unsafe.Pointer(___x)) = float32(float64(-1.401298464324817e-45) / _x)
 			if _x < float64(-745.1332191019411) {
 				r = float64(0)
 				FreeStack(tls, 112)
@@ -17398,7 +17398,7 @@ func Xexp(tls TLS, _x float64) (r float64) {
 		_hi = _x
 		_lo = float64(0)
 	} else {
-		atomic.StoreUint64((*uint64)(unsafe.Pointer(_4__x)), math.Float64bits(float64(8.98846567431158e+307)+_x))
+		*(*float64)(unsafe.Pointer(_4__x)) = float64(8.98846567431158e+307) + _x
 		r = float64(1) + _x
 		FreeStack(tls, 112)
 		return r
@@ -17592,7 +17592,7 @@ func Xexp2(tls TLS, _x float64) (r float64) {
 		}
 		if (*(*uint64)(unsafe.Pointer(_u)) >> (uint(63) % 64)) != 0 {
 			if (_x <= float64(-1075)) || (_x-float64(4.503599627370496e+15)+float64(4.503599627370496e+15) != _x) {
-				atomic.StoreUint32((*uint32)(unsafe.Pointer(___x)), math.Float32bits(float32(float64(-1.401298464324817e-45)/_x)))
+				*(*float32)(unsafe.Pointer(___x)) = float32(float64(-1.401298464324817e-45) / _x)
 			}
 			if _x <= float64(-1075) {
 				r = float64(0)
@@ -17700,7 +17700,7 @@ func Xexp2f(tls TLS, _x float32) (r float32) {
 		}
 		if *(*uint32)(unsafe.Pointer(_u)) >= uint32(0x80000000) {
 			if (*(*uint32)(unsafe.Pointer(_u)) >= uint32(0xc3160000)) || (*(*uint32)(unsafe.Pointer(_u))&uint32(0xffff) != 0) {
-				atomic.StoreUint32((*uint32)(unsafe.Pointer(___x)), math.Float32bits(float32(-1e-45)/_x))
+				*(*float32)(unsafe.Pointer(___x)) = float32(-1e-45) / _x
 			}
 			if *(*uint32)(unsafe.Pointer(_u)) >= uint32(0xc3160000) {
 				r = float32(0)
@@ -17806,7 +17806,7 @@ func Xexpf(tls TLS, _x float32) (r float32) {
 			return r
 		}
 		if _sign != 0 {
-			atomic.StoreUint32((*uint32)(unsafe.Pointer(___x)), math.Float32bits(float32(-1e-45)/_x))
+			*(*float32)(unsafe.Pointer(___x)) = float32(-1e-45) / _x
 			if _hx >= uint32(0x42cff1b5) {
 				r = float32(0)
 				FreeStack(tls, 112)
@@ -17828,7 +17828,7 @@ func Xexpf(tls TLS, _x float32) (r float32) {
 		_hi = _x
 		_lo = float32(0)
 	} else {
-		atomic.StoreUint32((*uint32)(unsafe.Pointer(_3__x)), math.Float32bits(float32(1.7014118e+38)+_x))
+		*(*float32)(unsafe.Pointer(_3__x)) = float32(1.7014118e+38) + _x
 		r = float32(1) + _x
 		FreeStack(tls, 112)
 		return r
@@ -17956,7 +17956,7 @@ func Xexpm1(tls TLS, _x float64) (r float64) {
 		_c = _hi - _x - _lo
 	} else if _hx < uint32(0x3c900000) {
 		if _hx < uint32(0x100000) {
-			atomic.StoreUint32((*uint32)(unsafe.Pointer(___x)), math.Float32bits(float32(_x)))
+			*(*float32)(unsafe.Pointer(___x)) = float32(_x)
 		}
 		r = _x
 		FreeStack(tls, 64)
@@ -18140,7 +18140,7 @@ func Xexpm1f(tls TLS, _x float32) (r float32) {
 		_c = _hi - _x - _lo
 	} else if _hx < uint32(0x33000000) {
 		if _hx < uint32(0x800000) {
-			atomic.StoreUint32((*uint32)(unsafe.Pointer(___x)), math.Float32bits(_x*_x))
+			*(*float32)(unsafe.Pointer(___x)) = _x * _x
 		}
 		r = _x
 		FreeStack(tls, 64)
@@ -18422,7 +18422,7 @@ func Xfloor(tls TLS, _x float64) (r float64) {
 		_y = _x + x3toint - x3toint - _x
 	}
 	if _e <= int32(1022) {
-		atomic.StoreUint64((*uint64)(unsafe.Pointer(_1__x)), math.Float64bits(_y))
+		*(*float64)(unsafe.Pointer(_1__x)) = _y
 		if (*(*uint64)(unsafe.Pointer(_u)) >> (uint(63) % 64)) != 0 {
 			r = float64(-1)
 			FreeStack(tls, 64)
@@ -18491,7 +18491,7 @@ func Xfloorf(tls TLS, _x float32) (r float32) {
 			FreeStack(tls, 112)
 			return r
 		}
-		atomic.StoreUint32((*uint32)(unsafe.Pointer(___x)), math.Float32bits(_x+float32(1.329228e+36)))
+		*(*float32)(unsafe.Pointer(___x)) = _x + float32(1.329228e+36)
 		if (*(*uint32)(unsafe.Pointer(_u)) >> (uint(31) % 32)) != 0 {
 			{
 				p := (*uint32)(unsafe.Pointer(_u))
@@ -18503,7 +18503,7 @@ func Xfloorf(tls TLS, _x float32) (r float32) {
 			*p = *p & ^_m
 		}
 	} else {
-		atomic.StoreUint32((*uint32)(unsafe.Pointer(_3__x)), math.Float32bits(_x+float32(1.329228e+36)))
+		*(*float32)(unsafe.Pointer(_3__x)) = _x + float32(1.329228e+36)
 		if *(*uint32)(unsafe.Pointer(_u))>>(uint(31)%32) == uint32(0) {
 			*(*uint32)(unsafe.Pointer(_u)) = uint32(0)
 		} else if (*(*uint32)(unsafe.Pointer(_u)) << (uint(1) % 32)) != 0 {
@@ -19621,7 +19621,7 @@ func Xilogb(tls TLS, _x float64) (r int32) {
 	if _e == 0 {
 		_i = _i << uint32(12)
 		if _i == uint64(0) {
-			atomic.StoreUint32((*uint32)(unsafe.Pointer(___x)), math.Float32bits(float32(math.NaN())))
+			*(*float32)(unsafe.Pointer(___x)) = float32(math.NaN())
 			r = -2147483648
 			FreeStack(tls, 112)
 			return r
@@ -19633,7 +19633,7 @@ func Xilogb(tls TLS, _x float64) (r int32) {
 		return r
 	}
 	if _e == int32(0x7ff) {
-		atomic.StoreUint32((*uint32)(unsafe.Pointer(_3__x)), math.Float32bits(float32(math.NaN())))
+		*(*float32)(unsafe.Pointer(_3__x)) = float32(math.NaN())
 		if (_i << (uint(12) % 64)) != 0 {
 			r = int32(-2147483648)
 			FreeStack(tls, 112)
@@ -19686,7 +19686,7 @@ func Xilogbf(tls TLS, _x float32) (r int32) {
 	if _e == 0 {
 		_i = _i << uint32(9)
 		if _i == uint32(0) {
-			atomic.StoreUint32((*uint32)(unsafe.Pointer(___x)), math.Float32bits(float32(math.NaN())))
+			*(*float32)(unsafe.Pointer(___x)) = float32(math.NaN())
 			r = -2147483648
 			FreeStack(tls, 112)
 			return r
@@ -19698,7 +19698,7 @@ func Xilogbf(tls TLS, _x float32) (r int32) {
 		return r
 	}
 	if _e == int32(0xff) {
-		atomic.StoreUint32((*uint32)(unsafe.Pointer(_3__x)), math.Float32bits(float32(math.NaN())))
+		*(*float32)(unsafe.Pointer(_3__x)) = float32(math.NaN())
 		if (_i << (uint(9) % 32)) != 0 {
 			r = int32(-2147483648)
 			FreeStack(tls, 112)
@@ -22786,7 +22786,7 @@ func Xlog1p(tls TLS, _x float64) (r float64) {
 		}
 		if _hx<<(uint(1)%32) < uint32(2034237440) {
 			if _hx&uint32(0x7ff00000) == uint32(0) {
-				atomic.StoreUint32((*uint32)(unsafe.Pointer(___x)), math.Float32bits(float32(_x)))
+				*(*float32)(unsafe.Pointer(___x)) = float32(_x)
 			}
 			r = _x
 			FreeStack(tls, 64)
@@ -22917,7 +22917,7 @@ func Xlog1pf(tls TLS, _x float32) (r float32) {
 		}
 		if _ix<<(uint(1)%32) < uint32(1728053248) {
 			if _ix&uint32(0x7f800000) == uint32(0) {
-				atomic.StoreUint32((*uint32)(unsafe.Pointer(___x)), math.Float32bits(_x*_x))
+				*(*float32)(unsafe.Pointer(___x)) = _x * _x
 			}
 			r = _x
 			FreeStack(tls, 64)
@@ -23717,10 +23717,10 @@ func Xnextafter(tls TLS, _x float64, _y float64) (r float64) {
 	}
 	_e = int32(*(*uint64)(unsafe.Pointer(_ux)) >> (uint(52) % 64) & uint64(0x7ff))
 	if _e == int32(0x7ff) {
-		atomic.StoreUint64((*uint64)(unsafe.Pointer(_1__x)), math.Float64bits(_x+_x))
+		*(*float64)(unsafe.Pointer(_1__x)) = _x + _x
 	}
 	if _e == int32(0) {
-		atomic.StoreUint64((*uint64)(unsafe.Pointer(_4__x)), math.Float64bits(_x*_x+*(*float64)(unsafe.Pointer(_ux))**(*float64)(unsafe.Pointer(_ux))))
+		*(*float64)(unsafe.Pointer(_4__x)) = _x*_x + *(*float64)(unsafe.Pointer(_ux))**(*float64)(unsafe.Pointer(_ux))
 	}
 	r = *(*float64)(unsafe.Pointer(_ux))
 	FreeStack(tls, 128)
@@ -23806,10 +23806,10 @@ func Xnextafterf(tls TLS, _x float32, _y float32) (r float32) {
 	}
 	_e = *(*uint32)(unsafe.Pointer(_ux)) & uint32(0x7f800000)
 	if _e == uint32(0x7f800000) {
-		atomic.StoreUint32((*uint32)(unsafe.Pointer(___x)), math.Float32bits(_x+_x))
+		*(*float32)(unsafe.Pointer(___x)) = _x + _x
 	}
 	if _e == uint32(0) {
-		atomic.StoreUint32((*uint32)(unsafe.Pointer(_3__x)), math.Float32bits(_x*_x+*(*float32)(unsafe.Pointer(_ux))**(*float32)(unsafe.Pointer(_ux))))
+		*(*float32)(unsafe.Pointer(_3__x)) = _x*_x + *(*float32)(unsafe.Pointer(_ux))**(*float32)(unsafe.Pointer(_ux))
 	}
 	r = *(*float32)(unsafe.Pointer(_ux))
 	FreeStack(tls, 128)
@@ -23902,10 +23902,10 @@ func Xnexttowardf(tls TLS, _x float32, _y float64) (r float32) {
 	}
 	_e = *(*uint32)(unsafe.Pointer(_ux)) & uint32(0x7f800000)
 	if _e == uint32(0x7f800000) {
-		atomic.StoreUint32((*uint32)(unsafe.Pointer(___x)), math.Float32bits(_x+_x))
+		*(*float32)(unsafe.Pointer(___x)) = _x + _x
 	}
 	if _e == uint32(0) {
-		atomic.StoreUint32((*uint32)(unsafe.Pointer(_3__x)), math.Float32bits(_x*_x+*(*float32)(unsafe.Pointer(_ux))**(*float32)(unsafe.Pointer(_ux))))
+		*(*float32)(unsafe.Pointer(_3__x)) = _x*_x + *(*float32)(unsafe.Pointer(_ux))**(*float32)(unsafe.Pointer(_ux))
 	}
 	r = *(*float32)(unsafe.Pointer(_ux))
 	FreeStack(tls, 112)
@@ -25412,7 +25412,7 @@ func Xround(tls TLS, _x float64) (r float64) {
 		_x = -_x
 	}
 	if _e < int32(1022) {
-		atomic.StoreUint64((*uint64)(unsafe.Pointer(_1__x)), math.Float64bits(_x+x6toint))
+		*(*float64)(unsafe.Pointer(_1__x)) = _x + x6toint
 		r = float64(0) * *(*float64)(unsafe.Pointer(_u))
 		FreeStack(tls, 64)
 		return r
@@ -25474,7 +25474,7 @@ func Xroundf(tls TLS, _x float32) (r float32) {
 		_x = -_x
 	}
 	if _e < int32(126) {
-		atomic.StoreUint32((*uint32)(unsafe.Pointer(___x)), math.Float32bits(_x+x7toint))
+		*(*float32)(unsafe.Pointer(___x)) = _x + x7toint
 		r = float32(0) * *(*float32)(unsafe.Pointer(_u))
 		FreeStack(tls, 64)
 		return r
@@ -25746,9 +25746,9 @@ func Xsin(tls TLS, _x float64) (r float64) {
 	if _ix <= uint32(0x3fe921fb) {
 		if _ix < uint32(0x3e500000) {
 			if _ix < uint32(0x100000) {
-				atomic.StoreUint64((*uint64)(unsafe.Pointer(_1__x)), math.Float64bits(_x/float64(1.329227995784916e+36)))
+				*(*float64)(unsafe.Pointer(_1__x)) = _x / float64(1.329227995784916e+36)
 			} else {
-				atomic.StoreUint64((*uint64)(unsafe.Pointer(_1__x)), math.Float64bits(_x+float64(1.329227995784916e+36)))
+				*(*float64)(unsafe.Pointer(_1__x)) = _x + float64(1.329227995784916e+36)
 			}
 			r = _x
 			FreeStack(tls, 80)
@@ -25824,9 +25824,9 @@ func Xsincos(tls TLS, _x float64, _sin uintptr /* *float64 */, _cos uintptr /* *
 	if _ix <= uint32(0x3fe921fb) {
 		if _ix < uint32(0x3e46a09e) {
 			if _ix < uint32(0x100000) {
-				atomic.StoreUint64((*uint64)(unsafe.Pointer(_1__x)), math.Float64bits(_x/float64(1.329227995784916e+36)))
+				*(*float64)(unsafe.Pointer(_1__x)) = _x / float64(1.329227995784916e+36)
 			} else {
-				atomic.StoreUint64((*uint64)(unsafe.Pointer(_1__x)), math.Float64bits(_x+float64(1.329227995784916e+36)))
+				*(*float64)(unsafe.Pointer(_1__x)) = _x + float64(1.329227995784916e+36)
 			}
 			*(*float64)(unsafe.Pointer(_sin)) = _x
 			*(*float64)(unsafe.Pointer(_cos)) = float64(1)
@@ -25915,9 +25915,9 @@ func Xsincosf(tls TLS, _x float32, _sin uintptr /* *float32 */, _cos uintptr /* 
 	if _ix <= uint32(0x3f490fda) {
 		if _ix < uint32(0x39800000) {
 			if _ix < uint32(0x100000) {
-				atomic.StoreUint32((*uint32)(unsafe.Pointer(___x)), math.Float32bits(_x/float32(1.329228e+36)))
+				*(*float32)(unsafe.Pointer(___x)) = _x / float32(1.329228e+36)
 			} else {
-				atomic.StoreUint32((*uint32)(unsafe.Pointer(___x)), math.Float32bits(_x+float32(1.329228e+36)))
+				*(*float32)(unsafe.Pointer(___x)) = _x + float32(1.329228e+36)
 			}
 			*(*float32)(unsafe.Pointer(_sin)) = _x
 			*(*float32)(unsafe.Pointer(_cos)) = float32(1)
@@ -26083,9 +26083,9 @@ func Xsinf(tls TLS, _x float32) (r float32) {
 	if _ix <= uint32(0x3f490fda) {
 		if _ix < uint32(0x39800000) {
 			if _ix < uint32(0x800000) {
-				atomic.StoreUint32((*uint32)(unsafe.Pointer(___x)), math.Float32bits(_x/float32(1.329228e+36)))
+				*(*float32)(unsafe.Pointer(___x)) = _x / float32(1.329228e+36)
 			} else {
-				atomic.StoreUint32((*uint32)(unsafe.Pointer(___x)), math.Float32bits(_x+float32(1.329228e+36)))
+				*(*float32)(unsafe.Pointer(___x)) = _x + float32(1.329228e+36)
 			}
 			r = _x
 			FreeStack(tls, 80)
@@ -26577,9 +26577,9 @@ func Xtan(tls TLS, _x float64) (r float64) {
 	if _ix <= uint32(0x3fe921fb) {
 		if _ix < uint32(0x3e400000) {
 			if _ix < uint32(0x100000) {
-				atomic.StoreUint64((*uint64)(unsafe.Pointer(_1__x)), math.Float64bits(_x/float64(1.329227995784916e+36)))
+				*(*float64)(unsafe.Pointer(_1__x)) = _x / float64(1.329227995784916e+36)
 			} else {
-				atomic.StoreUint64((*uint64)(unsafe.Pointer(_1__x)), math.Float64bits(_x+float64(1.329227995784916e+36)))
+				*(*float64)(unsafe.Pointer(_1__x)) = _x + float64(1.329227995784916e+36)
 			}
 			r = _x
 			FreeStack(tls, 80)
@@ -26628,9 +26628,9 @@ func Xtanf(tls TLS, _x float32) (r float32) {
 	if _ix <= uint32(0x3f490fda) {
 		if _ix < uint32(0x39800000) {
 			if _ix < uint32(0x800000) {
-				atomic.StoreUint32((*uint32)(unsafe.Pointer(___x)), math.Float32bits(_x/float32(1.329228e+36)))
+				*(*float32)(unsafe.Pointer(___x)) = _x / float32(1.329228e+36)
 			} else {
-				atomic.StoreUint32((*uint32)(unsafe.Pointer(___x)), math.Float32bits(_x+float32(1.329228e+36)))
+				*(*float32)(unsafe.Pointer(___x)) = _x + float32(1.329228e+36)
 			}
 			r = _x
 			FreeStack(tls, 80)
@@ -26753,7 +26753,7 @@ func Xtanh(tls TLS, _x float64) (r float64) {
 		_t = Xexpm1(tls, float64(-2)*_x)
 		_t = -_t / (_t + float64(2))
 	} else {
-		atomic.StoreUint32((*uint32)(unsafe.Pointer(___x)), math.Float32bits(float32(_x)))
+		*(*float32)(unsafe.Pointer(___x)) = float32(_x)
 		_t = _x
 	}
 	if _sign != 0 {
@@ -26818,7 +26818,7 @@ func Xtanhf(tls TLS, _x float32) (r float32) {
 		_t = Xexpm1f(tls, float32(-2)*_x)
 		_t = -_t / (_t + float32(2))
 	} else {
-		atomic.StoreUint32((*uint32)(unsafe.Pointer(___x)), math.Float32bits(_x*_x))
+		*(*float32)(unsafe.Pointer(___x)) = _x * _x
 		_t = _x
 	}
 	if _sign != 0 {
@@ -26902,7 +26902,7 @@ func Xtgamma(tls TLS, _x float64) (r float64) {
 	}
 	if _ix >= uint32(0x40670000) {
 		if _sign != 0 {
-			atomic.StoreUint32((*uint32)(unsafe.Pointer(___x)), math.Float32bits(float32(float64(1.1754943508222875e-38)/_x)))
+			*(*float32)(unsafe.Pointer(___x)) = float32(float64(1.1754943508222875e-38) / _x)
 			if Xfloor(tls, _x)*float64(0.5) == Xfloor(tls, _x*float64(0.5)) {
 				r = float64(0)
 				FreeStack(tls, 64)
@@ -27078,7 +27078,7 @@ func Xtrunc(tls TLS, _x float64) (r float64) {
 		return r
 	}
 
-	atomic.StoreUint64((*uint64)(unsafe.Pointer(_1__x)), math.Float64bits(_x+float64(1.329227995784916e+36)))
+	*(*float64)(unsafe.Pointer(_1__x)) = _x + float64(1.329227995784916e+36)
 	{
 		p := (*uint64)(unsafe.Pointer(_u))
 		*p = *p & ^_m
@@ -27130,7 +27130,7 @@ func Xtruncf(tls TLS, _x float32) (r float32) {
 		return r
 	}
 
-	atomic.StoreUint32((*uint32)(unsafe.Pointer(___x)), math.Float32bits(_x+float32(1.329228e+36)))
+	*(*float32)(unsafe.Pointer(___x)) = _x + float32(1.329228e+36)
 	{
 		p := (*uint32)(unsafe.Pointer(_u))
 		*p = *p & ^_m
@@ -65687,7 +65687,7 @@ func X__private_cond_signal(tls TLS, _c uintptr /* *Tpthread_cond_t = struct{F__
 	x7lock(tls, _c+32)
 	for _p = *(*uintptr)(unsafe.Pointer(_c + 40)); (_n != 0) && (_p != 0); _p = *(*uintptr)(unsafe.Pointer(_p)) {
 		if x8a_cas(tls, _p+16, int32(0), int32(1)) != int32(0) {
-			atomic.AddInt32((*int32)(unsafe.Pointer(_ref)), 1)
+			*(*int32)(unsafe.Pointer(_ref))++
 			*(*uintptr)(unsafe.Pointer(_p + 24)) = _ref
 		} else {
 			_n--
