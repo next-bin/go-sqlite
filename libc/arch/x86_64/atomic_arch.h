@@ -25,7 +25,7 @@ static inline int a_swap(volatile int *p, int v)
 // 		"xchg %0, %1"
 // 		: "=r"(v), "=m"(*p) : "0"(v) : "memory" );
 // 	return v;
-	__GO__("return atomic.SwapInt32((*int32)(unsafe.Pointer(_p)), _v)\n");
+	__GO__("a_swap(_p, _v)\n");
 }
 
 #define a_fetch_add a_fetch_add
@@ -105,14 +105,12 @@ static inline void a_store(volatile int *p, int x)
 static inline void a_barrier()
 {
 // 	__asm__ __volatile__( "" : : : "memory" );
-	__GO__("aBarier()\n");
 }
 
 #define a_spin a_spin
 static inline void a_spin()
 {
 // 	__asm__ __volatile__( "pause" : : : "memory" );
-	__GO__("aBarier()\n"); //TODO better
 }
 
 #define a_crash a_crash
@@ -122,14 +120,13 @@ static inline void a_crash()
 	__GO__("panic(`a_crash`)\n");
 }
 
-#ifndef __ccgo__
 #define a_ctz_64 a_ctz_64
 static inline int a_ctz_64(uint64_t x)
 {
-	__asm__( "bsf %1,%0" : "=r"(x) : "r"(x) );
-	return x;
+// 	__asm__( "bsf %1,%0" : "=r"(x) : "r"(x) );
+// 	return x;
+	__GO__("return a_ctz_64(_x)\n");
 }
-#endif
 
 #define a_clz_64 a_clz_64
 static inline int a_clz_64(uint64_t x)
