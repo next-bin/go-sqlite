@@ -10,26 +10,31 @@ type opt struct {
 	handler func(opt, arg string) error
 	name    string
 
-	arg bool // Enable argument, e.g. -I foo or -I=foo
+	arg bool // Enable argument, e.g. `-I foo` or `-I=foo`
 }
 
-type Parser struct {
+// A Set represents a set of defined options.
+type Set struct {
 	cfg map[string]*opt
 	imm []*opt
 }
 
-func NewParser() *Parser { return &Parser{cfg: map[string]*opt{}} }
+// NewSet returns a new, empty option set.
+func NewSet() *Set { return &Set{cfg: map[string]*opt{}} }
 
-// Opt defines a simple option, e.g. -f.
-func (p *Parser) Opt(name string, handler func(opt string) error) {
+// Opt defines a simple option, e.g. `-f`. When the option is found during
+// Parse, the handler is called with the value of the option, e.g. "-f".
+func (p *Set) Opt(name string, handler func(opt string) error) {
 	p.cfg[name] = &opt{
 		handler: func(opt, arg string) error { return handler(opt) },
 	}
 }
 
-// OptArg defines a simple option with an argumen, e.g. -Ifoo, -I=foo, -I foo.
-// The imm argument enables the first form above.
-func (p *Parser) OptArg(name string, imm bool, handler func(opt, arg string) error) {
+// Arg defines a simple option with an argument, e.g. `-I foo` or `-I=foo`.
+// Setting imm argument enables additionally `-Ifoo`. When the option is found
+// during Parse, the handler is called with the values of the option and the
+// argument, e.g. "-I" and "foo" for all of the variants.
+func (p *Set) Arg(name string, imm bool, handler func(opt, arg string) error) {
 	switch {
 	case imm:
 		p.imm = append(p.imm, &opt{
@@ -45,7 +50,24 @@ func (p *Parser) OptArg(name string, imm bool, handler func(opt, arg string) err
 	}
 }
 
-func (p *Parser) Parse(opts []string, argHandler func(string) error) error {
+// Parse parses opts. Must be called after all options are defined. The handler
+// is called for all items in opts that were not defined before using Opt or
+// Arg.
+//
+// If any handler returns a non-nil error, Parse will stop.  If the error is of
+// type Skip, the error returned by Parse contain all the unprocessed items of
+// opts.
+//
+// The opts slice must not be modified by any handler while Parser is
+// executing.
+func (p *Set) Parse(opts []string, handler func(string) error) (err error) {
+	defer func() {
+		switch err.(type) {
+		case Skip:
+			err = Skip(opts)
+		}
+	}()
+
 	for len(opts) != 0 {
 		opt := opts[0]
 		opts = opts[1:]
@@ -62,13 +84,13 @@ func (p *Parser) Parse(opts []string, argHandler func(string) error) error {
 							return fmt.Errorf("missing argument of %s", opt)
 						}
 
-						if err := cfg.handler(opt, opts[0]); err != nil {
+						if err = cfg.handler(opt, opts[0]); err != nil {
 							return err
 						}
 
 						opts = opts[1:]
 					default:
-						if err := cfg.handler(opt[:len(cfg.name)+1], name[len(cfg.name):]); err != nil {
+						if err = cfg.handler(opt[:len(cfg.name)+1], name[len(cfg.name):]); err != nil {
 							return err
 						}
 					}
@@ -83,7 +105,7 @@ func (p *Parser) Parse(opts []string, argHandler func(string) error) error {
 			}
 			switch cfg := p.cfg[name]; {
 			case cfg == nil:
-				if err := argHandler(opt); err != nil {
+				if err = handler(opt); err != nil {
 					return err
 				}
 			default:
@@ -91,7 +113,7 @@ func (p *Parser) Parse(opts []string, argHandler func(string) error) error {
 				case cfg.arg:
 					switch {
 					case arg != "":
-						if err := cfg.handler(opt, arg); err != nil {
+						if err = cfg.handler(opt, arg); err != nil {
 							return err
 						}
 					default:
@@ -99,7 +121,7 @@ func (p *Parser) Parse(opts []string, argHandler func(string) error) error {
 							return fmt.Errorf("missing argument of %s", opt)
 						}
 
-						if err := cfg.handler(opt, opts[0]); err != nil {
+						if err = cfg.handler(opt, opts[0]); err != nil {
 							return err
 						}
 
@@ -114,10 +136,15 @@ func (p *Parser) Parse(opts []string, argHandler func(string) error) error {
 				break
 			}
 
-			if err := argHandler(opt); err != nil {
+			if err = handler(opt); err != nil {
 				return err
 			}
 		}
 	}
 	return nil
 }
+
+// Skip is an error that contains all unprocessed items passed to Parse.
+type Skip []string
+
+func (s Skip) Error() string { return fmt.Sprint(s) }
