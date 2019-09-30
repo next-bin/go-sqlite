@@ -55,8 +55,8 @@ func (p *Set) Arg(name string, imm bool, handler func(opt, arg string) error) {
 // Arg.
 //
 // If any handler returns a non-nil error, Parse will stop.  If the error is of
-// type Skip, the error returned by Parse contain all the unprocessed items of
-// opts.
+// type Skip, the error returned by Parse will contain all the unprocessed
+// items of opts.
 //
 // The opts slice must not be modified by any handler while Parser is
 // executing.
