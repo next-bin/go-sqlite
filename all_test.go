@@ -39,6 +39,10 @@ func caller(s string, va ...interface{}) {
 
 func use(...interface{}) {}
 
+func init() {
+	use(caller, dbg) //TODOOK
+}
+
 func TestBigIntSlice(t *testing.T) {
 	const N = 1e4
 	s := make(BigIntSlice, N)
@@ -404,4 +408,65 @@ func ExampleDedupe() {
 	// Output:
 	// [1 2 3 4]
 	// [bar baz foo qux]
+}
+
+type topologicalSortNode struct {
+	name  string
+	edges []TopologicalSortNode
+}
+
+func (n *topologicalSortNode) Edges() []TopologicalSortNode { return n.edges }
+func (n *topologicalSortNode) String() string               { return n.name }
+
+func TestTopologicalSort(t *testing.T) {
+	nodes := []*topologicalSortNode{
+		{name: "A"},
+		{name: "B"},
+		{name: "C"},
+		{name: "D"},
+		{name: "E"},
+	}
+	nodes[0].edges = []TopologicalSortNode{nodes[1]} // A -> B
+	nodes[1].edges = []TopologicalSortNode{nodes[2]} // B -> C
+	nodes[2].edges = []TopologicalSortNode{nodes[3]} // C -> D
+	nodes[3].edges = []TopologicalSortNode{nodes[4]} // D -> E
+
+	perm := make(sort.IntSlice, len(nodes))
+	for i := range perm {
+		perm[i] = i
+	}
+	mathutil.PermutationFirst(perm)
+	for {
+		var graph []TopologicalSortNode
+		for _, v := range perm {
+			graph = append(graph, nodes[v])
+		}
+		ts := TopologicalSort(graph)
+		if ts == nil {
+			t.Fatal("should not happen")
+		}
+
+		if g, e := len(ts), len(nodes); g != e {
+			t.Fatal(perm, g, e)
+		}
+
+		for i, n := range ts {
+			if g, e := n.(*topologicalSortNode).name, nodes[len(nodes)-i-1].name; g != e {
+				t.Fatalf("perm %v, sort %q", perm, dumpGraph(ts))
+			}
+		}
+
+		t.Logf("perm %v, sort %q", perm, dumpGraph(ts))
+		if !mathutil.PermutationNext(perm) {
+			return
+		}
+	}
+}
+
+func dumpGraph(graph []TopologicalSortNode) string {
+	var a []string
+	for _, v := range graph {
+		a = append(a, v.(*topologicalSortNode).name)
+	}
+	return strings.Join(a, ", ")
 }
