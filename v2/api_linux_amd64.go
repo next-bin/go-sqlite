@@ -12,6 +12,7 @@ var API = map[string]struct{}{
 	"asin":             {},
 	"atan":             {},
 	"atoi":             {},
+	"backtrace":        {},
 	"calloc":           {},
 	"ceil":             {},
 	"chdir":            {},

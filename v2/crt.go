@@ -23,17 +23,17 @@ import (
 )
 
 const (
+	stackHeaderSize  = unsafe.Sizeof(stackHeader{})
 	stackSegmentSize = 1024 //TODO benchmark tune
 	uintptrSize      = unsafe.Sizeof(uintptr(0))
 )
 
 var (
-	allocMu      sync.Mutex
-	allocator    memory.Allocator
-	stackHdrSize = roundup(unsafe.Sizeof(stackSegment{}), 16)
-	stderr       uintptr
-	stdin        uintptr
-	stdout       uintptr
+	allocMu   sync.Mutex
+	allocator memory.Allocator
+	stderr    = int32(2)
+	stdin     = int32(1)
+	stdout    = int32(0)
 )
 
 var Xstderr = &stderr
@@ -144,56 +144,63 @@ func roundup(n, to uintptr) uintptr {
 	return n
 }
 
-type stackSegment struct {
-	free uintptr
+type stackHeader struct {
+	free int
 	page uintptr
 	prev uintptr
 	sp   uintptr
 }
 
+func init() {
+	if n := unsafe.Sizeof(stackHeader{}); n != 16 && n != 32 {
+		panic("internal error")
+	}
+}
+
 type TLS struct {
 	errnop uintptr
-	stack  stackSegment
+	stack  stackHeader
 }
 
 func NewTLS() *TLS {
 	return &TLS{errnop: mustCalloc(4)}
 }
 
-func (t *TLS) Alloc(n int) uintptr {
-	if t.stack.free >= uintptr(n) {
-		r := t.stack.sp
-		t.stack.free -= uintptr(n)
+func (t *TLS) Alloc(n int) (r uintptr) {
+	if t.stack.free >= n {
+		r = t.stack.sp
+		t.stack.free -= n
 		t.stack.sp += uintptr(n)
-		// if dmesgs {
-		// 	dmesg(
-		// 		"TLS.Alloc(%#x): existing page, prev %#x, page %#x, sp %#x, free %#x, stackHdrSize %#x: %#x",
-		// 		n, t.stack.prev, t.stack.page, t.stack.sp, t.stack.free, stackHdrSize, r,
-		// 	)
-		// }
 		return r
 	}
 
 	if t.stack.page != 0 {
-		*(*stackSegment)(unsafe.Pointer(t.stack.page)) = t.stack
+		*(*stackHeader)(unsafe.Pointer(t.stack.page)) = t.stack
 	}
-	rq := stackHdrSize + uintptr(n)
+	rq := n + int(stackHeaderSize)
 	if rq < stackSegmentSize {
 		rq = stackSegmentSize
 	}
+	t.stack.free = rq - int(stackHeaderSize)
 	t.stack.prev = t.stack.page
-	t.stack.page = mustMalloc(int(rq))
-	t.stack.free = rq - stackHdrSize - uintptr(n)
-	t.stack.sp = t.stack.page + stackHdrSize
-	r := t.stack.sp
+	t.stack.page = mustMalloc(rq)
+	t.stack.sp = t.stack.page + stackHeaderSize
+	r = t.stack.sp
+	t.stack.free -= n
 	t.stack.sp += uintptr(n)
-	// if dmesgs {
-	// 	dmesg(
-	// 		"TLS.Alloc(%#x): new page, rq %#x, prev %#x, page %#x, sp %#x, free %#x, stackHdrSize %#x: %#x",
-	// 		n, rq, t.stack.prev, t.stack.page, t.stack.sp, t.stack.free, stackHdrSize, r,
-	// 	)
-	// }
 	return r
+}
+
+func (t *TLS) Free(n int) {
+	if t.stack.sp != t.stack.page+stackHeaderSize {
+		t.stack.free += n
+		t.stack.sp -= uintptr(n)
+		return
+	}
+
+	t.stack = *(*stackHeader)(unsafe.Pointer(t.stack.prev))
+	t.stack.free += n
+	t.stack.sp -= uintptr(n)
 }
 
 //TODO use it
@@ -233,22 +240,6 @@ func (t *TLS) DynAlloc(a *[]uintptr, n uintptr) uintptr {
 		dmesg("DynAlloc(%#x, %#x): %#x", a, n, p)
 	}
 	return p
-}
-
-func (t *TLS) Free(n int) {
-	t.stack.sp -= uintptr(n)
-	if t.stack.sp < t.stack.page+stackHdrSize {
-		prev := t.stack.prev
-		free(t.stack.page)
-		t.stack = *(*stackSegment)(unsafe.Pointer(prev))
-	}
-	t.stack.free += uintptr(n)
-	// if dmesgs {
-	// 	dmesg(
-	// 		"TLS.Free(%#x): prev %#x, page %#x, sp %#x, free %#x, stackHdrSize %#x",
-	// 		n, t.stack.prev, t.stack.page, t.stack.sp, t.stack.free, stackHdrSize,
-	// 	)
-	// }
 }
 
 func (t *TLS) FreeList(a []uintptr) {
@@ -829,12 +820,22 @@ func Xgetrusage(t *TLS, who int32, usage Intptr) int32 {
 // int fprintf(FILE *stream, const char *format, ...);
 func Xfprintf(t *TLS, stream, format Intptr, args uintptr) int32 {
 	if dmesgs {
-		dmesg("fprintf(%#x [%p, %p, %p], %q, %#x)", stream, Xstdout, Xstdin, Xstderr, goString(format), args)
+		dmesg("fprintf(%#x(%d), %q, %#x)", stream, *(*int32)(unsafe.Pointer(uintptr(stream))), goString(format), args)
 	}
-	switch {
-	case stream == Intptr(uintptr(unsafe.Pointer(Xstdout))):
+	fd := *(*int32)(unsafe.Pointer(uintptr(stream)))
+	switch fd {
+	case 0:
 		b := printf(format, args)
 		n, err := os.Stdout.Write(b)
+		if err != nil {
+			t.setErrno(err)
+			return -1
+		}
+
+		return int32(n)
+	case 2:
+		b := printf(format, args)
+		n, err := os.Stderr.Write(b)
 		if err != nil {
 			t.setErrno(err)
 			return -1
@@ -852,7 +853,45 @@ func Xfgets(t *TLS, s Intptr, size int32, stream Intptr) Intptr {
 
 // int fflush(FILE *stream);
 func Xfflush(t *TLS, stream Intptr) int32 {
-	panic("CRT")
+	if dmesgs {
+		switch stream {
+		case 0:
+			dmesg("fflush(0)")
+		default:
+			dmesg("fflush(%#x(%d))", stream, *(*int32)(unsafe.Pointer(uintptr(stream))))
+		}
+	}
+	var err error
+	switch stream {
+	case 0:
+		if err = os.Stdout.Sync(); err != nil {
+			break
+		}
+
+		err = os.Stderr.Sync()
+	default:
+		switch *(*int32)(unsafe.Pointer(uintptr(stream))) {
+		case 0:
+			err = os.Stdout.Sync()
+		case 2:
+			err = os.Stderr.Sync()
+		}
+	}
+	if dmesgs {
+		dmesg("fflush(): %v", err)
+	}
+	if err != nil {
+		t.setErrno(err)
+		if dmesgs {
+			dmesg("fflush(): -1")
+		}
+		return -1
+	}
+
+	if dmesgs {
+		dmesg("fflush(): 0")
+	}
+	return 0
 }
 
 // FILE *fopen64(const char *pathname, const char *mode);
@@ -885,14 +924,19 @@ func Xfopen64(t *TLS, pathname, mode Intptr) Intptr {
 			return 0
 		}
 
-		panic("CRT")
+		p := mustMalloc(4)
+		*(*int32)(unsafe.Pointer(p)) = int32(fd)
+		if dmesgs {
+			dmesg("fopen64(): %#x", p)
+		}
+		return Intptr(p)
 	default:
 		panic(m)
 	}
 }
 
 // int fseek(FILE *stream, long offset, int whence);
-func Xfseek(t *TLS, fseek Intptr, offset long, whence int32) Intptr {
+func Xfseek(t *TLS, fseek Intptr, offset long, whence int32) int32 {
 	panic("CRT")
 }
 
@@ -908,12 +952,57 @@ func Xrewind(t *TLS, stream Intptr) {
 
 // int fclose(FILE *stream);
 func Xfclose(t *TLS, stream Intptr) int32 {
-	panic("CRT")
+	if dmesgs {
+		dmesg("fclose(%#x(%d))", stream, *(*int32)(unsafe.Pointer(uintptr(stream))))
+	}
+	err := unix.Close(int(*(*int32)(unsafe.Pointer(uintptr(stream)))))
+	if dmesgs {
+		dmesg("fclose(): %v", err)
+	}
+	if err != nil {
+		t.setErrno(err)
+		if dmesgs {
+			dmesg("fclose(): -1")
+		}
+		return -1
+	}
+
+	if dmesgs {
+		dmesg("fclose(): 0")
+	}
+	return 0
 }
 
 // size_t fread(void *ptr, size_t size, size_t nmemb, FILE *stream);
-func Xfread(t *TLS, ptr, size, nmemeb, stream Intptr) Intptr {
-	panic("CRT")
+func Xfread(t *TLS, ptr, size, nmemb, stream Intptr) Intptr {
+	if dmesgs {
+		dmesg("fread(%#x, %#x, %#x, %#x(%d))", ptr, size, nmemb, stream, *(*int32)(unsafe.Pointer(uintptr(stream))))
+	}
+	fd := *(*int32)(unsafe.Pointer(uintptr(stream)))
+	switch fd {
+	case 0:
+		panic("CRT")
+	case 1:
+		panic("CRT")
+	case 2:
+		panic("CRT")
+	}
+	n, err := unix.Read(int(fd), (*rawmem)(unsafe.Pointer(uintptr(ptr)))[:size*nmemb])
+	if dmesgs {
+		dmesg("fread(): %#x, %v", n, err)
+	}
+	if err != nil {
+		t.setErrno(err)
+		if dmesgs {
+			dmesg("fread(): 0")
+		}
+		return 0
+	}
+
+	if dmesgs {
+		dmesg("fread(): %#x", Intptr(n)/size)
+	}
+	return Intptr(n) / size
 }
 
 // int stat(const char *pathname, struct stat *statbuf);
@@ -1222,7 +1311,7 @@ func Xgetpwuid(t *TLS, uid int32) Intptr {
 // int setvbuf(FILE *stream, char *buf, int mode, size_t size);
 func Xsetvbuf(t *TLS, stream, buf Intptr, mode int32, size Intptr) int32 {
 	if dmesgs {
-		dmesg("setvbuf(%#x [%p, %p, %p], %#x, %#x, %#x)", stream, Xstdout, Xstdin, Xstderr, buf, mode, size)
+		dmesg("setvbuf(%#x(%d), %#x, %#x, %#x)", stream, *(*int32)(unsafe.Pointer(uintptr(stream))), buf, mode, size)
 	}
 	return 0
 }
@@ -1547,4 +1636,9 @@ func Xmmap64(t *TLS, addr, length Intptr, prot, flags, fd int32, offset int64) I
 // int munmap(void *addr, size_t length);
 func Xmunmap(t *TLS, addr, length Intptr) int32 {
 	panic("CRT")
+}
+
+// int backtrace(void **buffer, int size);
+func Xbacktrace(t *TLS, buf Intptr, size int32) int32 {
+	return 0
 }
