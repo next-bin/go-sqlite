@@ -24,11 +24,14 @@ import (
 
 const (
 	stackHeaderSize  = unsafe.Sizeof(stackHeader{})
-	stackSegmentSize = 1024 //TODO benchmark tune
+	stackSegmentSize = 1 << 10 //TODO benchmark tune
 	uintptrSize      = unsafe.Sizeof(uintptr(0))
 )
 
 var (
+	_ = ""[:stackHeaderSize%16]
+	_ = ""[:stackSegmentSize%16]
+
 	allocMu   sync.Mutex
 	allocator memory.Allocator
 	stderr    = int32(2)
@@ -149,12 +152,6 @@ type stackHeader struct {
 	page uintptr
 	prev uintptr
 	sp   uintptr
-}
-
-func init() {
-	if n := unsafe.Sizeof(stackHeader{}); n != 16 && n != 32 {
-		panic("internal error")
-	}
 }
 
 type TLS struct {
@@ -293,7 +290,7 @@ func printf(s Intptr, args uintptr) (r []byte) {
 		more:
 			c := *(*byte)(unsafe.Pointer(uintptr(s)))
 			s++
-			if c >= '0' && c <= '9' {
+			if c >= '0' && c <= '9' || c == '.' {
 				spec = append(spec, c)
 				goto more
 			}
@@ -316,8 +313,8 @@ func printf(s Intptr, args uintptr) (r []byte) {
 				args, n = uint32Arg(args)
 				b = append(b, fmt.Sprintf("%"+spec+"X", n)...)
 			case 'l':
-				switch *(*byte)(unsafe.Pointer(uintptr(s))) {
-				case 'd':
+				switch c := *(*byte)(unsafe.Pointer(uintptr(s))); c {
+				case 'd', 'i':
 					s++
 					var n Intptr
 					args, n = ptrArg(args)
@@ -334,12 +331,20 @@ func printf(s Intptr, args uintptr) (r []byte) {
 						panic("internal error")
 					}
 				default:
-					panic("internal error")
+					panic(fmt.Errorf("internal error %q", string(c)))
 				}
 			case 'f':
 				var f float64
 				args, f = float64Arg(args)
 				b = append(b, fmt.Sprintf("%"+spec+"f", f)...)
+			case 'e':
+				var f float64
+				args, f = float64Arg(args)
+				b = append(b, fmt.Sprintf("%"+spec+"e", f)...)
+			case 'E':
+				var f float64
+				args, f = float64Arg(args)
+				b = append(b, fmt.Sprintf("%"+spec+"E", f)...)
 			case 'g':
 				var f float64
 				args, f = float64Arg(args)
@@ -516,6 +521,14 @@ func Xvprintf(t *TLS, s, ap Intptr) int32 {
 	return Xprintf(t, s, *(*uintptr)(unsafe.Pointer(uintptr(ap))))
 }
 
+// int vfprintf(FILE *stream, const char *format, va_list ap);
+func Xvfprintf(t *TLS, stream, format, ap Intptr) int32 {
+	if dmesgs {
+		dmesg("vfprintf(%#x(%d)%q, %q, %#x)", stream, *(*int32)(unsafe.Pointer(uintptr(stream))), goString(format), ap)
+	}
+	return Xfprintf(t, stream, format, *(*uintptr)(unsafe.Pointer(uintptr(ap))))
+}
+
 // int memcmp(const void *s1, const void *s2, size_t n);
 func Xmemcmp(t *TLS, s1, s2, n Intptr) int32 {
 	if dmesgs {
@@ -556,8 +569,14 @@ func Xabort(t *TLS) {
 // double sin(double x);
 func Xsin(t *TLS, x float64) float64 { return math.Sin(x) }
 
+// float sinf(float x);
+func Xsinf(t *TLS, x float32) float32 { return float32(math.Sin(float64(x))) }
+
 // double cos(double x);
 func Xcos(t *TLS, x float64) float64 { return math.Cos(x) }
+
+// float cosf(float x);
+func Xcosf(t *TLS, x float32) float32 { return float32(math.Cos(float64(x))) }
 
 // double tan(double x);
 func Xtan(t *TLS, x float64) float64 { return math.Tan(x) }
@@ -585,6 +604,9 @@ func Xexp(t *TLS, x float64) float64 { return math.Exp(x) }
 
 // double fabs(double x);
 func Xfabs(t *TLS, x float64) float64 { return math.Abs(x) }
+
+// float fabs(float x);
+func Xfabsf(t *TLS, x float32) float32 { return float32(math.Abs(float64(x))) }
 
 // double log(double x);
 func Xlog(t *TLS, x float64) float64 { return math.Log(x) }
@@ -848,6 +870,50 @@ func Xfprintf(t *TLS, stream, format Intptr, args uintptr) int32 {
 
 // char *fgets(char *s, int size, FILE *stream);
 func Xfgets(t *TLS, s Intptr, size int32, stream Intptr) Intptr {
+	if dmesgs {
+		dmesg("fgets(%#x, %#x, %#x(%d))", s, size, stream, *(*int32)(unsafe.Pointer(uintptr(stream))))
+	}
+	fd := int(*(*int32)(unsafe.Pointer(uintptr(stream))))
+	var b []byte
+	buf := [1]byte{}
+	for ; size > 0; size-- {
+		n, err := unix.Read(fd, buf[:])
+		if n != 0 {
+			b = append(b, buf[0])
+			if buf[0] == '\n' {
+				b = append(b, 0)
+				copy((*rawmem)(unsafe.Pointer(uintptr(s)))[:len(b)], b)
+				return s
+			}
+
+			continue
+		}
+
+		switch {
+		case n == 0 && err == nil && len(b) == 0:
+			if dmesgs {
+				dmesg("fgets(): 0")
+			}
+			return 0
+		default:
+			if dmesgs {
+				dmesg("%v %T(%v), %v", n, err, err, len(b))
+			}
+			panic("CRT")
+		}
+
+		// if err == nil {
+		// 	panic("internal error")
+		// }
+
+		// if len(b) != 0 {
+		// 		b = append(b, 0)
+		// 		copy((*rawmem)(unsafe.Pointer(uintptr(s))[:len(b)]), b)
+		// 		return s
+		// }
+
+		// t.setErrno(err)
+	}
 	panic("CRT")
 }
 
@@ -894,6 +960,9 @@ func Xfflush(t *TLS, stream Intptr) int32 {
 	return 0
 }
 
+// FILE *fopen(const char *pathname, const char *mode);
+func Xfopen(t *TLS, pathname, mode Intptr) Intptr { return Xfopen64(t, pathname, mode) }
+
 // FILE *fopen64(const char *pathname, const char *mode);
 func Xfopen64(t *TLS, pathname, mode Intptr) Intptr {
 	p := goString(pathname)
@@ -927,7 +996,7 @@ func Xfopen64(t *TLS, pathname, mode Intptr) Intptr {
 		p := mustMalloc(4)
 		*(*int32)(unsafe.Pointer(p)) = int32(fd)
 		if dmesgs {
-			dmesg("fopen64(): %#x", p)
+			dmesg("fopen64(): %#x(%d)", p, fd)
 		}
 		return Intptr(p)
 	default:
@@ -1641,4 +1710,102 @@ func Xmunmap(t *TLS, addr, length Intptr) int32 {
 // int backtrace(void **buffer, int size);
 func Xbacktrace(t *TLS, buf Intptr, size int32) int32 {
 	return 0
+}
+
+// double fmod(double x, double y);
+func Xfmod(t *TLS, x, y float64) float64 { return math.Mod(x, y) }
+
+// double atan2(double y, double x);
+func Xatan2(t *TLS, x, y float64) float64 { return math.Atan2(x, y) }
+
+// long atol(const char *nptr);
+func Xatol(t *TLS, nptr Intptr) (r long) {
+	var c byte
+	k := long(1)
+out:
+	for {
+		c = *(*byte)(unsafe.Pointer(uintptr(nptr)))
+		nptr++
+		switch c {
+		case ' ', '\t', '\n', '\r', '\v', '\f':
+			// nop
+		case '+':
+			break out
+		case '-':
+			k = -1
+			break out
+		default:
+			break out
+		}
+	}
+	for {
+		c = *(*byte)(unsafe.Pointer(uintptr(nptr)))
+		nptr++
+		switch {
+		case c >= '0' && c <= '9':
+			r = 10*r + long(c) - '0'
+		default:
+			return k * r
+		}
+	}
+}
+
+// int fputs(const char *s, FILE *stream);
+func Xfputs(t *TLS, s, stream Intptr) int32 {
+	gs := goString(s)
+	if dmesgs {
+		dmesg("fputs(%q, %#x(%d))", gs, stream, *(*int32)(unsafe.Pointer(uintptr(stream))))
+	}
+	// fd := *(*int32)(unsafe.Pointer(uintptr(stream)))
+	panic("CRT")
+}
+
+// void perror(const char *s);
+func Xperror(t *TLS, s Intptr) {
+	gs := goString(s)
+	if dmesgs {
+		dmesg("perror(%q)", gs)
+	}
+	switch gs {
+	case "":
+		fmt.Fprintf(os.Stderr, "errno(%d)\n", *(*int32)(unsafe.Pointer(t.errnop)))
+	default:
+		fmt.Fprintf(os.Stderr, "%s: errno(%d)\n", gs, *(*int32)(unsafe.Pointer(t.errnop)))
+	}
+}
+
+// int toupper(int c);
+func Xtoupper(t *TLS, c int32) int32 {
+	if c >= 'a' && c <= 'z' {
+		return c - ('a' - 'Z')
+	}
+
+	return c
+}
+
+// int _IO_putc(int c, _IO_FILE *fp);
+func X_IO_putc(t *TLS, c int32, fp Intptr) int32 {
+	if dmesgs {
+		dmesg("fputs(%#x, %#x(%d))", c, fp, *(*int32)(unsafe.Pointer(uintptr(fp))))
+	}
+	fd := *(*int32)(unsafe.Pointer(uintptr(fp)))
+	switch fd {
+	case 0:
+		_, err := os.Stdout.Write([]byte{byte(c)})
+		if err != nil {
+			t.setErrno(err)
+			return -1
+		}
+
+		return int32(byte(c))
+	}
+	panic("CRT")
+}
+
+var nextRand uint64
+
+// int rand(void);
+func Xrand(t *TLS) int32 {
+	nextRand *= 1103515245 + 12345
+	return int32(uint32(nextRand / (math.MaxUint32 + 1) % math.MaxInt32))
 }
