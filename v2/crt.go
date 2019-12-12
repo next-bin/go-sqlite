@@ -12,6 +12,7 @@ import (
 	"math"
 	"os"
 	"os/user"
+	"sort"
 	"strconv"
 	"sync"
 	"syscall"
@@ -336,18 +337,36 @@ func printf(s Intptr, args uintptr) (r []byte) {
 			case 'f':
 				var f float64
 				args, f = float64Arg(args)
+				switch {
+				case spec == "":
+					spec = ".6"
+				}
 				b = append(b, fmt.Sprintf("%"+spec+"f", f)...)
 			case 'e':
 				var f float64
 				args, f = float64Arg(args)
+				switch {
+				case spec == "":
+					spec = ".6"
+				}
 				b = append(b, fmt.Sprintf("%"+spec+"e", f)...)
 			case 'E':
 				var f float64
 				args, f = float64Arg(args)
+				switch {
+				case spec == "":
+					spec = ".6"
+				}
 				b = append(b, fmt.Sprintf("%"+spec+"E", f)...)
 			case 'g':
 				var f float64
 				args, f = float64Arg(args)
+				switch {
+				case spec == "":
+					spec = ".6"
+				case spec == "0":
+					spec = ".1"
+				}
 				b = append(b, fmt.Sprintf("%"+spec+"g", f)...)
 			case 's':
 				var ps Intptr
@@ -1777,7 +1796,7 @@ func Xperror(t *TLS, s Intptr) {
 // int toupper(int c);
 func Xtoupper(t *TLS, c int32) int32 {
 	if c >= 'a' && c <= 'z' {
-		return c - ('a' - 'Z')
+		return c - ('a' - 'A')
 	}
 
 	return c
@@ -1802,10 +1821,52 @@ func X_IO_putc(t *TLS, c int32, fp Intptr) int32 {
 	panic("CRT")
 }
 
-var nextRand uint64
+var nextRand = uint64(1)
 
 // int rand(void);
 func Xrand(t *TLS) int32 {
-	nextRand *= 1103515245 + 12345
+	nextRand = nextRand*1103515245 + 12345
 	return int32(uint32(nextRand / (math.MaxUint32 + 1) % math.MaxInt32))
+}
+
+type sorter struct {
+	len  int
+	base Intptr
+	sz   Intptr
+	f    func(*TLS, Intptr, Intptr) int32
+	t    *TLS
+}
+
+func (s *sorter) Len() int { return s.len }
+
+func (s *sorter) Less(i, j int) bool {
+	return s.f(s.t, s.base+Intptr(i)*s.sz, s.base+Intptr(j)*s.sz) < 0
+}
+
+func (s *sorter) Swap(i, j int) {
+	p := uintptr(s.base + Intptr(i)*s.sz)
+	q := uintptr(s.base + Intptr(j)*s.sz)
+	for i := 0; i < int(s.sz); i++ {
+		*(*byte)(unsafe.Pointer(p)), *(*byte)(unsafe.Pointer(q)) = *(*byte)(unsafe.Pointer(q)), *(*byte)(unsafe.Pointer(p))
+		p++
+		q++
+	}
+}
+
+// func (s *sorter) Swap()
+
+// void qsort(void *base, size_t nmemb, size_t size, int (*compar)(const void *, const void *));
+func Xqsort(t *TLS, base, nmemb, size, compar Intptr) {
+	if dmesgs {
+		dmesg("qsort(%#x, %d, size %d, %#x", base, nmemb, size, compar)
+	}
+	sort.Sort(&sorter{
+		len:  int(nmemb),
+		base: base,
+		sz:   size,
+		f: (*struct {
+			f func(*TLS, Intptr, Intptr) int32
+		})(unsafe.Pointer(&struct{ Intptr }{compar})).f,
+		t: t,
+	})
 }

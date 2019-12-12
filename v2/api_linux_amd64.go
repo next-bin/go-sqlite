@@ -86,6 +86,7 @@ var API = map[string]struct{}{
 	"printf":           {},
 	"putchar":          {},
 	"puts":             {},
+	"qsort":            {},
 	"raise":            {},
 	"rand":             {},
 	"read":             {},
