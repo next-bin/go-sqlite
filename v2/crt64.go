@@ -11,3 +11,9 @@ type (
 	long   = int64
 	rawmem [1<<50 - 1]byte
 )
+
+type bits []int
+
+func newBits(n int) (r bits)  { return make(bits, (n+63)>>6) }
+func (b bits) has(n int) bool { return b != nil && b[n>>6]&(1<<uint(n&63)) != 0 }
+func (b bits) set(n int)      { b[n>>6] |= 1 << uint(n&63) }
