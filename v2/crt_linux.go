@@ -12,6 +12,8 @@ import (
 	"unsafe"
 
 	"golang.org/x/sys/unix"
+	"modernc.org/crt/v2/libc/stdio"
+	"modernc.org/crt/v2/libc/unistd"
 )
 
 // char *fgets(char *s, int size, FILE *stream);
@@ -78,7 +80,7 @@ func Xfclose(t *TLS, stream Intptr) int32 {
 			dmesg("fclose(): %v", err)
 			dmesg("fclose(): -1")
 		}
-		return -1
+		return stdio.DEOF
 	}
 
 	// if dmesgs {
@@ -270,17 +272,13 @@ func Xfsync(t *TLS, fd int32) int32 {
 	return 0
 }
 
-const (
-	_SC_PAGESIZE = 30
-)
-
 // long sysconf(int name);
 func Xsysconf(t *TLS, name int32) long {
 	// if dmesgs {
 	// 	dmesg("sysconf(%d)", name)
 	// }
 	switch name {
-	case _SC_PAGESIZE:
+	case unistd.E_SC_PAGESIZE:
 		return long(unix.Getpagesize())
 	}
 	panic("CRT")
@@ -465,7 +463,7 @@ func Xmmap64(t *TLS, addr, length Intptr, prot, flags, fd int32, offset int64) I
 		if dmesgs {
 			dmesg("mmap64(): %v", err)
 		}
-		return -1
+		return -1 // (void*)-1
 	}
 
 	// if dmesgs {

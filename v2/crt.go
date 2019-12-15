@@ -4,6 +4,9 @@
 
 //go:generate gofmt -l -s -w .
 //go:generate go run generate.go
+//go:generate gofmt -l -s -w .
+
+//TODO s/-1/libc.stdfoo.DEOF/ where appropriate
 
 package crt // import "modernc.org/crt/v2"
 
@@ -17,12 +20,13 @@ import (
 	"unsafe"
 
 	"github.com/mattn/go-isatty"
+	"modernc.org/crt/v2/libc/stdio"
 	"modernc.org/memory"
 )
 
 const (
 	stackHeaderSize  = unsafe.Sizeof(stackHeader{})
-	stackSegmentSize = 1 << 10 //TODO benchmark tune
+	stackSegmentSize = 1 << 10
 	uintptrSize      = unsafe.Sizeof(uintptr(0))
 )
 
@@ -451,7 +455,7 @@ func Xputchar(t *TLS, c int32) int32 {
 		if dmesgs {
 			dmesg("putchar(%#x): %v", c, err)
 		}
-		return -1
+		return stdio.DEOF
 	}
 
 	return int32(byte(c))
@@ -496,7 +500,7 @@ func Xputs(t *TLS, s Intptr) int32 {
 		return 1
 	}
 
-	return -1
+	return stdio.DEOF
 }
 
 // void *calloc(size_t nmemb, size_t size);
@@ -922,7 +926,7 @@ func Xfflush(t *TLS, stream Intptr) int32 {
 			dmesg("fflush(): %v", err)
 			dmesg("fflush(): -1")
 		}
-		return -1
+		return stdio.DEOF
 	}
 
 	// if dmesgs {
@@ -1102,6 +1106,7 @@ func Xfgetc(t *TLS, stream Intptr) int32 {
 
 // int access(const char *pathname, int mode);
 func Xaccess(t *TLS, pathname Intptr, mode int32) int32 {
+	//TODO handle properly F_OK
 	r, _, err := syscall.Syscall(syscall.SYS_ACCESS, uintptr(pathname), uintptr(mode), 0)
 	if err != 0 {
 		t.setErrno(err)
@@ -1417,7 +1422,7 @@ func X_IO_putc(t *TLS, c int32, fp Intptr) int32 {
 		_, err := os.Stdout.Write([]byte{byte(c)})
 		if err != nil {
 			t.setErrno(err)
-			return -1
+			return stdio.DEOF
 		}
 
 		return int32(byte(c))

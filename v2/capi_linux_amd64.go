@@ -2,10 +2,9 @@
 
 package crt // import "modernc.org/crt/v2"
 
-var API = map[string]struct{}{
+var CAPI = map[string]struct{}{
 	"_IO_putc":         {},
 	"__assert_fail":    {},
-	"__ctype_b_loc":    {},
 	"__errno_location": {},
 	"abort":            {},
 	"access":           {},

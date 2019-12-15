@@ -8,6 +8,7 @@ import (
 	"fmt"
 	"io/ioutil"
 	"os"
+	"os/exec"
 	"path/filepath"
 	"runtime"
 	"sort"
@@ -15,11 +16,18 @@ import (
 )
 
 func main() {
-	g, err := filepath.Glob("*.go")
+	g := []string{"crt.go"}
+	x, err := filepath.Glob(fmt.Sprintf("*_%s.go", runtime.GOOS))
 	if err != nil {
 		fail(err)
 	}
 
+	g = append(g, x...)
+	if x, err = filepath.Glob(fmt.Sprintf("*_%s_%s.go", runtime.GOOS, runtime.GOARCH)); err != nil {
+		fail(err)
+	}
+
+	g = append(g, x...)
 	m := map[string]struct{}{}
 	for _, v := range g {
 		f, err := os.Open(v)
@@ -61,16 +69,69 @@ func main() {
 
 package crt // import "modernc.org/crt/v2"
 
-var API = map[string]struct{}{`)
+var CAPI = map[string]struct{}{`)
 
 	for _, v := range a {
 		fmt.Fprintf(b, "\n\t%q: {},", v)
 	}
 	b.WriteString("\n}")
-	if err := ioutil.WriteFile(fmt.Sprintf("api_%s_%s.go", runtime.GOOS, runtime.GOARCH), b.Bytes(), 0660); err != nil {
+	if err := ioutil.WriteFile(fmt.Sprintf("capi_%s_%s.go", runtime.GOOS, runtime.GOARCH), b.Bytes(), 0660); err != nil {
 		fail(err)
 	}
 
+	if err := libc(); err != nil {
+		fail(err)
+	}
+}
+
+func libc() error {
+	dir, err := ioutil.TempDir("", "go-generate-")
+	if err != nil {
+		return err
+	}
+
+	defer os.RemoveAll(dir)
+
+	fi, err := os.Stat("libc")
+	if err != nil || !fi.IsDir() {
+		return nil
+	}
+
+	return filepath.Walk("libc", func(path string, info os.FileInfo, err error) error {
+		if err != nil {
+			return err
+		}
+
+		if !info.IsDir() || path == "libc" {
+			return nil
+		}
+
+		inc := path[len("libc/"):]
+		src := fmt.Sprintf(`#include <%s.h>
+static char _;
+`, inc)
+		fn := filepath.Join(dir, "x.c")
+		if err := ioutil.WriteFile(fn, []byte(src), 0660); err != nil {
+			return err
+		}
+
+		dest := filepath.Join(path, fmt.Sprintf("%s_%s_%s.go", filepath.Base(path), runtime.GOOS, runtime.GOARCH))
+		base := filepath.Base(inc)
+		if out, err := exec.Command(
+			"gocc", fn,
+			"-o", dest,
+			"-qbec-defines",
+			"-qbec-enumconsts",
+			"-qbec-pkgname", base,
+			"-qbec-import", "<none>",
+		).CombinedOutput(); err != nil {
+			// Errors may be normal due to different os/platforms,
+			// just print it for human inspection.
+			fmt.Fprintf(os.Stderr, "%s\nnote: %s\n", out, err)
+		}
+
+		return nil
+	})
 }
 
 func fail(err error) {
