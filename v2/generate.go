@@ -16,7 +16,7 @@ import (
 )
 
 func main() {
-	g := []string{"crt.go"}
+	g := []string{"crt.go", "ctype.go"}
 	x, err := filepath.Glob(fmt.Sprintf("*_%s.go", runtime.GOOS))
 	if err != nil {
 		fail(err)
