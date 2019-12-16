@@ -12,9 +12,12 @@ import (
 	"unsafe"
 
 	"golang.org/x/sys/unix"
+	"modernc.org/crt/v2/libc/pwd"
 	"modernc.org/crt/v2/libc/stdio"
 	"modernc.org/crt/v2/libc/unistd"
 )
+
+const eof = stdio.DEOF
 
 // char *fgets(char *s, int size, FILE *stream);
 func Xfgets(t *TLS, s Intptr, size int32, stream Intptr) Intptr {
@@ -186,6 +189,8 @@ func Xunlink(t *TLS, pathname Intptr) int32 {
 	return 0
 }
 
+var staticPasswd pwd.Spasswd
+
 // struct passwd *getpwuid(uid_t uid);
 func Xgetpwuid(t *TLS, uid int32) Intptr {
 	// if dmesgs {
@@ -203,14 +208,14 @@ func Xgetpwuid(t *TLS, uid int32) Intptr {
 		return 0
 	}
 
-	staticPasswd = passwd{
-		pw_name:   cString(u.Username), //TODO static alloc strings in this case
-		pw_passwd: cString("x"),
-		pw_uid:    uid,
-		pw_gid:    int32(gid),
-		pw_gecos:  cString(u.Name),
-		pw_dir:    cString(u.HomeDir),
-		pw_shell:  cString(os.Getenv("SHELL")),
+	staticPasswd = pwd.Spasswd{
+		Fpw_name:   cString(u.Username), //TODO static alloc strings in this case
+		Fpw_passwd: cString("x"),
+		Fpw_uid:    uid,
+		Fpw_gid:    int32(gid),
+		Fpw_gecos:  cString(u.Name),
+		Fpw_dir:    cString(u.HomeDir),
+		Fpw_shell:  cString(os.Getenv("SHELL")),
 	}
 	// if dmesgs {
 	// 	dmesg("getpwuid(): %p {name: %q, passwd: %q, uid: %d, gid: %d, gecos: %q, dir: %q, shell: %q}", &staticPasswd,

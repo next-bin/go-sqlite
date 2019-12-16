@@ -122,14 +122,14 @@ static char _;
 			"-o", dest,
 			"-qbec-defines",
 			"-qbec-enumconsts",
-			"-qbec-pkgname", base,
 			"-qbec-import", "<none>",
+			"-qbec-pkgname", base,
+			"-qbec-structs",
 		).CombinedOutput(); err != nil {
 			// Errors may be normal due to different os/platforms,
 			// just print it for human inspection.
 			fmt.Fprintf(os.Stderr, "%s\nnote: %s\n", out, err)
 		}
-
 		return nil
 	})
 }

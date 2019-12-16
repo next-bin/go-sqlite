@@ -6,8 +6,6 @@
 //go:generate go run generate.go
 //go:generate gofmt -l -s -w .
 
-//TODO s/-1/libc.stdfoo.DEOF/ where appropriate
-
 package crt // import "modernc.org/crt/v2"
 
 import (
@@ -20,7 +18,6 @@ import (
 	"unsafe"
 
 	"github.com/mattn/go-isatty"
-	"modernc.org/crt/v2/libc/stdio"
 	"modernc.org/memory"
 )
 
@@ -54,7 +51,8 @@ func Start(main func(*TLS, int32, Intptr) int32) {
 		*(*uintptr)(unsafe.Pointer(p)) = s
 		p += uintptrSize
 	}
-	os.Exit(int(main(NewTLS(), int32(len(os.Args)), Intptr(argv))))
+	t := NewTLS()
+	Xexit(t, main(t, int32(len(os.Args)), Intptr(argv)))
 }
 
 func Bool32(b bool) int32 {
@@ -455,7 +453,7 @@ func Xputchar(t *TLS, c int32) int32 {
 		if dmesgs {
 			dmesg("putchar(%#x): %v", c, err)
 		}
-		return stdio.DEOF
+		return eof
 	}
 
 	return int32(byte(c))
@@ -500,7 +498,7 @@ func Xputs(t *TLS, s Intptr) int32 {
 		return 1
 	}
 
-	return stdio.DEOF
+	return eof
 }
 
 // void *calloc(size_t nmemb, size_t size);
@@ -926,7 +924,7 @@ func Xfflush(t *TLS, stream Intptr) int32 {
 			dmesg("fflush(): %v", err)
 			dmesg("fflush(): -1")
 		}
-		return stdio.DEOF
+		return eof
 	}
 
 	// if dmesgs {
@@ -1163,18 +1161,6 @@ func Xisatty(t *TLS, fd int32) int32 {
 	// }
 	return Bool32(isatty.IsTerminal(uintptr(fd)))
 }
-
-type passwd struct {
-	pw_name   uintptr
-	pw_passwd uintptr
-	pw_uid    int32
-	pw_gid    int32
-	pw_gecos  uintptr
-	pw_dir    uintptr
-	pw_shell  uintptr
-}
-
-var staticPasswd passwd
 
 func cString(s string) uintptr {
 	n := len(s)
@@ -1422,7 +1408,7 @@ func X_IO_putc(t *TLS, c int32, fp Intptr) int32 {
 		_, err := os.Stdout.Write([]byte{byte(c)})
 		if err != nil {
 			t.setErrno(err)
-			return stdio.DEOF
+			return eof
 		}
 
 		return int32(byte(c))
