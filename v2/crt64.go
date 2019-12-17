@@ -9,7 +9,7 @@ package crt // import "modernc.org/crt/v2"
 type (
 	Intptr = int64
 	long   = int64
-	rawmem [1<<50 - 1]byte
+	RawMem [1<<50 - 1]byte
 )
 
 type bits []int

@@ -248,7 +248,11 @@ func (t *TLS) FreeList(a []uintptr) {
 	}
 }
 
-func goString(s Intptr) string {
+func GoString(s Intptr) string {
+	if s == 0 {
+		return ""
+	}
+
 	var buf []byte
 	for {
 		b := *(*byte)(unsafe.Pointer(uintptr(s)))
@@ -264,7 +268,7 @@ func goString(s Intptr) string {
 // int printf(const char *format, ...);
 func Xprintf(t *TLS, s Intptr, args uintptr) int32 {
 	// if dmesgs {
-	// 	dmesg("Xprintf(%q, %#x)", goString(s), args)
+	// 	dmesg("Xprintf(%q, %#x)", GoString(s), args)
 	// }
 	b := printf(s, args)
 	os.Stdout.Write(b)
@@ -436,7 +440,7 @@ func Xmemset(t *TLS, s Intptr, c int32, n Intptr) Intptr {
 	// if dmesgs {
 	// 	dmesg("memset(%#x, %#x, %#x)", s, c, n)
 	// }
-	b := (*rawmem)(unsafe.Pointer(uintptr(s)))[:n]
+	b := (*RawMem)(unsafe.Pointer(uintptr(s)))[:n]
 	for i := range b {
 		b[i] = byte(c)
 	}
@@ -476,7 +480,7 @@ func Xmemcpy(t *TLS, dest, src, n Intptr) (r Intptr) {
 // int puts(const char *s);
 func Xputs(t *TLS, s Intptr) int32 {
 	// if dmesgs {
-	// 	dmesg("puts(%q)", goString(s))
+	// 	dmesg("puts(%q)", GoString(s))
 	// }
 	var err error
 	for {
@@ -540,7 +544,7 @@ func VaFloat64(app Intptr) float64 {
 // int vprintf(const char *format, va_list ap);
 func Xvprintf(t *TLS, s, ap Intptr) int32 {
 	// if dmesgs {
-	// 	dmesg("vprintf(%q, %#x)", goString(s), ap)
+	// 	dmesg("vprintf(%q, %#x)", GoString(s), ap)
 	// }
 	return Xprintf(t, s, *(*uintptr)(unsafe.Pointer(uintptr(ap))))
 }
@@ -548,7 +552,7 @@ func Xvprintf(t *TLS, s, ap Intptr) int32 {
 // int vfprintf(FILE *stream, const char *format, va_list ap);
 func Xvfprintf(t *TLS, stream, format, ap Intptr) int32 {
 	// if dmesgs {
-	// 	dmesg("vfprintf(%#x(%d)%q, %q, %#x)", stream, *(*int32)(unsafe.Pointer(uintptr(stream))), goString(format), ap)
+	// 	dmesg("vfprintf(%#x(%d)%q, %q, %#x)", stream, *(*int32)(unsafe.Pointer(uintptr(stream))), GoString(format), ap)
 	// }
 	return Xfprintf(t, stream, format, *(*uintptr)(unsafe.Pointer(uintptr(ap))))
 }
@@ -656,7 +660,7 @@ func Xfloor(t *TLS, x float64) float64 { return math.Floor(x) }
 // char *strcpy(char *dest, const char *src)
 func Xstrcpy(t *TLS, dest, src Intptr) Intptr {
 	// if dmesgs {
-	// 	dmesg("strcpy(%#x, %q)", dest, goString(src))
+	// 	dmesg("strcpy(%#x, %q)", dest, GoString(src))
 	// }
 	r := dest
 	for ; ; dest++ {
@@ -672,7 +676,7 @@ func Xstrcpy(t *TLS, dest, src Intptr) Intptr {
 // char *strncpy(char *dest, const char *src, size_t n)
 func Xstrncpy(t *TLS, dest, src, n Intptr) Intptr {
 	// if dmesgs {
-	// 	dmesg("strncpy(%#x, %q, %#x)", dest, goString(src), n)
+	// 	dmesg("strncpy(%#x, %q, %#x)", dest, GoString(src), n)
 	// }
 	ret := dest
 	for c := *(*int8)(unsafe.Pointer(uintptr(src))); c != 0 && n > 0; n-- {
@@ -691,7 +695,7 @@ func Xstrncpy(t *TLS, dest, src, n Intptr) Intptr {
 // int strcmp(const char *s1, const char *s2)
 func Xstrcmp(t *TLS, s1, s2 Intptr) int32 {
 	// if dmesgs {
-	// 	dmesg("strcmp(%q, %q)", goString(s1), goString(s2))
+	// 	dmesg("strcmp(%q, %q)", GoString(s1), GoString(s2))
 	// }
 	for {
 		ch1 := *(*byte)(unsafe.Pointer(uintptr(s1)))
@@ -710,7 +714,7 @@ func Xstrcmp(t *TLS, s1, s2 Intptr) int32 {
 // size_t strlen(const char *s)
 func Xstrlen(t *TLS, s Intptr) Intptr {
 	// if dmesgs {
-	// 	dmesg("strlen(%q)", goString(s))
+	// 	dmesg("strlen(%q)", GoString(s))
 	// }
 	var n Intptr
 	for ; *(*int8)(unsafe.Pointer(uintptr(s))) != 0; s++ {
@@ -725,7 +729,7 @@ func Xstrlen(t *TLS, s Intptr) Intptr {
 // char *strcat(char *dest, const char *src)
 func Xstrcat(t *TLS, dest, src Intptr) Intptr {
 	// if dmesgs {
-	// 	dmesg("strcat(%q, %q)", goString(dest), goString(src))
+	// 	dmesg("strcat(%q, %q)", GoString(dest), GoString(src))
 	// }
 	ret := dest
 	for *(*int8)(unsafe.Pointer(uintptr(dest))) != 0 {
@@ -745,7 +749,7 @@ func Xstrcat(t *TLS, dest, src Intptr) Intptr {
 // int strncmp(const char *s1, const char *s2, size_t n)
 func Xstrncmp(t *TLS, s1, s2, n Intptr) int32 {
 	// if dmesgs {
-	// 	dmesg("strncmp(%q, %q, %d)", goString(s1), goString(s2), n)
+	// 	dmesg("strncmp(%q, %q, %d)", GoString(s1), GoString(s2), n)
 	// }
 	var ch1, ch2 byte
 	for n != 0 {
@@ -774,7 +778,7 @@ func Xstrncmp(t *TLS, s1, s2, n Intptr) int32 {
 // char *strchr(const char *s, int c)
 func Xstrchr(t *TLS, s Intptr, c int32) Intptr {
 	// if dmesgs {
-	// 	dmesg("strchr(%q, %#x)", goString(s), c)
+	// 	dmesg("strchr(%q, %#x)", GoString(s), c)
 	// }
 	for {
 		ch2 := *(*byte)(unsafe.Pointer(uintptr(s)))
@@ -799,7 +803,7 @@ func Xstrchr(t *TLS, s Intptr, c int32) Intptr {
 // char *strrchr(const char *s, int c)
 func Xstrrchr(t *TLS, s Intptr, c int32) Intptr {
 	// if dmesgs {
-	// 	dmesg("strrchr(%q, %#x)", goString(s), c)
+	// 	dmesg("strrchr(%q, %#x)", GoString(s), c)
 	// }
 	var ret Intptr
 	for {
@@ -821,10 +825,10 @@ func Xstrrchr(t *TLS, s Intptr, c int32) Intptr {
 // int sprintf(char *str, const char *format, ...);
 func Xsprintf(t *TLS, str, format Intptr, args uintptr) int32 {
 	// if dmesgs {
-	// 	dmesg("sprintf(%#x, %q, %#x)", str, goString(format), args)
+	// 	dmesg("sprintf(%#x, %q, %#x)", str, GoString(format), args)
 	// }
 	b := printf(format, args)
-	for _, v := range b { //TODO rawmem
+	for _, v := range b { //TODO RawMem
 		*(*byte)(unsafe.Pointer(uintptr(str))) = v
 		str++
 	}
@@ -852,9 +856,9 @@ func Xexit(t *TLS, status int32) {
 // void __assert_fail(const char * assertion, const char * file, unsigned int line, const char * function);
 func X__assert_fail(t *TLS, assertion, file Intptr, line int32, function Intptr) {
 	if dmesgs {
-		dmesg("__assert_fail(%q, %q, %v, %q)", goString(assertion), goString(file), line, goString(function))
+		dmesg("__assert_fail(%q, %q, %v, %q)", GoString(assertion), GoString(file), line, GoString(function))
 	}
-	fmt.Fprintf(os.Stderr, "assertion failure: %s:%d.%s: %s\n", goString(file), line, goString(function), goString(assertion))
+	fmt.Fprintf(os.Stderr, "assertion failure: %s:%d.%s: %s\n", GoString(file), line, GoString(function), GoString(assertion))
 	os.Exit(1)
 }
 
@@ -866,7 +870,7 @@ func Xgetrusage(t *TLS, who int32, usage Intptr) int32 {
 // int fprintf(FILE *stream, const char *format, ...);
 func Xfprintf(t *TLS, stream, format Intptr, args uintptr) int32 {
 	// if dmesgs {
-	// 	dmesg("fprintf(%#x(%d), %q, %#x)", stream, *(*int32)(unsafe.Pointer(uintptr(stream))), goString(format), args)
+	// 	dmesg("fprintf(%#x(%d), %q, %#x)", stream, *(*int32)(unsafe.Pointer(uintptr(stream))), GoString(format), args)
 	// }
 	fd := *(*int32)(unsafe.Pointer(uintptr(stream)))
 	switch fd {
@@ -938,8 +942,8 @@ func Xfopen(t *TLS, pathname, mode Intptr) Intptr { return Xfopen64(t, pathname,
 
 // FILE *fopen64(const char *pathname, const char *mode);
 func Xfopen64(t *TLS, pathname, mode Intptr) Intptr {
-	p := goString(pathname)
-	m := goString(mode)
+	p := GoString(pathname)
+	m := GoString(mode)
 	// if dmesgs {
 	// 	dmesg("fopen64(%q, %q)", p, m)
 	// }
@@ -1030,7 +1034,7 @@ func Xmemmove(t *TLS, dest, src, n Intptr) Intptr {
 	// if dmesgs {
 	// 	dmesg("memmove(%#x, %#x, %#x)", dest, src, n)
 	// }
-	copy((*rawmem)(unsafe.Pointer(uintptr(dest)))[:n], (*rawmem)(unsafe.Pointer(uintptr(src)))[:n])
+	copy((*RawMem)(unsafe.Pointer(uintptr(dest)))[:n], (*RawMem)(unsafe.Pointer(uintptr(src)))[:n])
 	return dest
 }
 
@@ -1062,9 +1066,9 @@ func Xreadlink(t *TLS, path, buf, bufsize Intptr) Intptr {
 // char *getenv(const char *name);
 func Xgetenv(t *TLS, name Intptr) Intptr {
 	// if dmesgs {
-	// 	dmesg("getenv(%q)", goString(name))
+	// 	dmesg("getenv(%q)", GoString(name))
 	// }
-	if os.Getenv(goString(name)) == "" {
+	if os.Getenv(GoString(name)) == "" {
 		// if dmesgs {
 		// 	dmesg("getenv(): %q", "")
 		// }
@@ -1165,8 +1169,8 @@ func Xisatty(t *TLS, fd int32) int32 {
 func cString(s string) uintptr {
 	n := len(s)
 	p := mustMalloc(n + 1)
-	copy((*rawmem)(unsafe.Pointer(p))[:n], s)
-	(*rawmem)(unsafe.Pointer(p))[n] = 0
+	copy((*RawMem)(unsafe.Pointer(p))[:n], s)
+	(*RawMem)(unsafe.Pointer(p))[n] = 0
 	return p
 }
 
@@ -1213,9 +1217,9 @@ func Xopen64(t *TLS, pathname Intptr, flags int32, args uintptr) int32 {
 	}
 
 	// if dmesgs {
-	// 	dmesg("open64(%q, %#x, %#o)", goString(pathname), flags, perm)
+	// 	dmesg("open64(%q, %#x, %#o)", GoString(pathname), flags, perm)
 	// }
-	fd, err := syscall.Open(goString(pathname), int(flags), perm)
+	fd, err := syscall.Open(GoString(pathname), int(flags), perm)
 	// if dmesgs {
 	// 	dmesg("open64(): fd %d, %v", fd, err)
 	// }
@@ -1291,7 +1295,7 @@ func Xgetcwd(t *TLS, buf, size Intptr) Intptr {
 	// if dmesgs {
 	// 	dmesg("getcwd(%#x, %#x)", buf, size)
 	// }
-	_, err := syscall.Getcwd((*rawmem)(unsafe.Pointer(uintptr(buf)))[:size])
+	_, err := syscall.Getcwd((*RawMem)(unsafe.Pointer(uintptr(buf)))[:size])
 	if err != nil {
 		if dmesgs {
 			dmesg("getcwd(): 0, %v", err)
@@ -1301,7 +1305,7 @@ func Xgetcwd(t *TLS, buf, size Intptr) Intptr {
 	}
 
 	// if dmesgs {
-	// 	dmesg("getcwd(): %#x (%q)", buf, goString(buf))
+	// 	dmesg("getcwd(): %#x (%q)", buf, GoString(buf))
 	// }
 	return buf
 }
@@ -1366,7 +1370,7 @@ out:
 
 // int fputs(const char *s, FILE *stream);
 func Xfputs(t *TLS, s, stream Intptr) int32 {
-	// gs := goString(s)
+	// gs := GoString(s)
 	// if dmesgs {
 	// 	dmesg("fputs(%q, %#x(%d))", gs, stream, *(*int32)(unsafe.Pointer(uintptr(stream))))
 	// }
@@ -1376,7 +1380,7 @@ func Xfputs(t *TLS, s, stream Intptr) int32 {
 
 // void perror(const char *s);
 func Xperror(t *TLS, s Intptr) {
-	gs := goString(s)
+	gs := GoString(s)
 	// if dmesgs {
 	// 	dmesg("perror(%q)", gs)
 	// }
@@ -1462,4 +1466,16 @@ func Xqsort(t *TLS, base, nmemb, size, compar Intptr) {
 		})(unsafe.Pointer(&struct{ Intptr }{compar})).f,
 		t: t,
 	})
+}
+
+func CString(s string) (Intptr, error) {
+	n := len(s)
+	p := malloc(n + 1)
+	if p == 0 {
+		return 0, fmt.Errorf("CString: cannot allocate %d bytes", n+1)
+	}
+
+	copy((*RawMem)(unsafe.Pointer(p))[:n], s)
+	*(*byte)(unsafe.Pointer(uintptr(p) + uintptr(n))) = 0
+	return Intptr(p), nil
 }

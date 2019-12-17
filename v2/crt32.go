@@ -8,8 +8,8 @@ package crt // import "modernc.org/crt/v2"
 
 type (
 	Intptr = int32
+	RawMem [1<<31 - 1]byte
 	long   = int32
-	rawmem [1<<31 - 1]byte
 )
 
 type bits []int

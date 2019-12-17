@@ -33,7 +33,7 @@ func Xfgets(t *TLS, s Intptr, size int32, stream Intptr) Intptr {
 			b = append(b, buf[0])
 			if buf[0] == '\n' {
 				b = append(b, 0)
-				copy((*rawmem)(unsafe.Pointer(uintptr(s)))[:len(b)], b)
+				copy((*RawMem)(unsafe.Pointer(uintptr(s)))[:len(b)], b)
 				return s
 			}
 
@@ -59,7 +59,7 @@ func Xfgets(t *TLS, s Intptr, size int32, stream Intptr) Intptr {
 
 		// if len(b) != 0 {
 		// 		b = append(b, 0)
-		// 		copy((*rawmem)(unsafe.Pointer(uintptr(s))[:len(b)]), b)
+		// 		copy((*RawMem)(unsafe.Pointer(uintptr(s))[:len(b)]), b)
 		// 		return s
 		// }
 
@@ -106,7 +106,7 @@ func Xfread(t *TLS, ptr, size, nmemb, stream Intptr) Intptr {
 	case 2:
 		panic("CRT")
 	}
-	n, err := unix.Read(int(fd), (*rawmem)(unsafe.Pointer(uintptr(ptr)))[:size*nmemb])
+	n, err := unix.Read(int(fd), (*RawMem)(unsafe.Pointer(uintptr(ptr)))[:size*nmemb])
 	// if dmesgs {
 	// 	dmesg("fread(): %#x, %v", n, err)
 	// }
@@ -127,9 +127,9 @@ func Xfread(t *TLS, ptr, size, nmemb, stream Intptr) Intptr {
 // int stat(const char *pathname, struct stat *statbuf);
 func Xstat64(t *TLS, pathname, stat Intptr) int32 {
 	// if dmesgs {
-	// 	dmesg("stat64(%q, %#x)", goString(pathname), stat)
+	// 	dmesg("stat64(%q, %#x)", GoString(pathname), stat)
 	// }
-	err := unix.Stat(goString(pathname), (*unix.Stat_t)(unsafe.Pointer(uintptr(stat))))
+	err := unix.Stat(GoString(pathname), (*unix.Stat_t)(unsafe.Pointer(uintptr(stat))))
 	// if dmesgs {
 	// 	dmesg("stat64(): %v", err)
 	// }
@@ -150,9 +150,9 @@ func Xstat64(t *TLS, pathname, stat Intptr) int32 {
 // int lstat(const char *pathname, struct stat *statbuf);
 func Xlstat64(t *TLS, pathname, stat Intptr) int32 {
 	// if dmesgs {
-	// 	dmesg("lstat64(%q, %#x)", goString(pathname), stat)
+	// 	dmesg("lstat64(%q, %#x)", GoString(pathname), stat)
 	// }
-	if err := unix.Lstat(goString(pathname), (*unix.Stat_t)(unsafe.Pointer(uintptr(stat)))); err != nil {
+	if err := unix.Lstat(GoString(pathname), (*unix.Stat_t)(unsafe.Pointer(uintptr(stat)))); err != nil {
 		// if dmesgs {
 		// 	dmesg("lstat64(): %v", err)
 		// }
@@ -172,9 +172,9 @@ func Xlstat64(t *TLS, pathname, stat Intptr) int32 {
 // int unlink(const char *pathname);
 func Xunlink(t *TLS, pathname Intptr) int32 {
 	// if dmesgs {
-	// 	dmesg("unlink(%q)", goString(pathname))
+	// 	dmesg("unlink(%q)", GoString(pathname))
 	// }
-	err := unix.Unlink(goString(pathname))
+	err := unix.Unlink(GoString(pathname))
 	// if dmesgs {
 	// 	dmesg("unlink(): %v", err)
 	// }
@@ -219,13 +219,13 @@ func Xgetpwuid(t *TLS, uid int32) Intptr {
 	}
 	// if dmesgs {
 	// 	dmesg("getpwuid(): %p {name: %q, passwd: %q, uid: %d, gid: %d, gecos: %q, dir: %q, shell: %q}", &staticPasswd,
-	// 		goString(Intptr(staticPasswd.pw_name)),
-	// 		goString(Intptr(staticPasswd.pw_passwd)),
+	// 		GoString(Intptr(staticPasswd.pw_name)),
+	// 		GoString(Intptr(staticPasswd.pw_passwd)),
 	// 		staticPasswd.pw_uid,
 	// 		staticPasswd.pw_gid,
-	// 		goString(Intptr(staticPasswd.pw_gecos)),
-	// 		goString(Intptr(staticPasswd.pw_dir)),
-	// 		goString(Intptr(staticPasswd.pw_shell)),
+	// 		GoString(Intptr(staticPasswd.pw_gecos)),
+	// 		GoString(Intptr(staticPasswd.pw_dir)),
+	// 		GoString(Intptr(staticPasswd.pw_shell)),
 	// 	)
 	// }
 	return Intptr(uintptr(unsafe.Pointer(&staticPasswd)))
@@ -407,7 +407,7 @@ func Xread(t *TLS, fd int32, buf, count Intptr) Intptr {
 	// if dmesgs {
 	// 	dmesg("read(%d, %#x, %#x)", fd, buf, count)
 	// }
-	n, err := unix.Read(int(fd), (*rawmem)(unsafe.Pointer(uintptr(buf)))[:count])
+	n, err := unix.Read(int(fd), (*RawMem)(unsafe.Pointer(uintptr(buf)))[:count])
 	// if dmesgs {
 	// 	dmesg("read(): %#x, %v", n, err)
 	// }
@@ -430,7 +430,7 @@ func Xwrite(t *TLS, fd int32, buf, count Intptr) Intptr {
 	// if dmesgs {
 	// 	dmesg("write(%d, %#x, %#x)", fd, buf, count)
 	// }
-	n, err := unix.Write(int(fd), (*rawmem)(unsafe.Pointer(uintptr(buf)))[:count])
+	n, err := unix.Write(int(fd), (*RawMem)(unsafe.Pointer(uintptr(buf)))[:count])
 	// if dmesgs {
 	// 	dmesg("write(): %v, %v", n, err)
 	// }
