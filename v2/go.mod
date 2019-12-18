@@ -1,4 +1,4 @@
-module v2.0.0
+module modernc.org/crt/v2
 
 go 1.13
 
