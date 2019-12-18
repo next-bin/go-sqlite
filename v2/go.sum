@@ -1,0 +1,12 @@
+github.com/mattn/go-isatty v0.0.11 h1:FxPOTFNqGkuDUGi3H/qkUbQO4ZiBa2brKq5r0l8TGeM=
+github.com/mattn/go-isatty v0.0.11/go.mod h1:PhnuNfih5lzO57/f3n+odYbM4JtupLOxQOAqxQCu2WE=
+github.com/remyoudompheng/bigfft v0.0.0-20190728182440-6a916e37a237 h1:HQagqIiBmr8YXawX/le3+O26N+vPPC1PtjaF3mwnook=
+github.com/remyoudompheng/bigfft v0.0.0-20190728182440-6a916e37a237/go.mod h1:qqbHyh8v60DhA7CoWK5oRCqLrMHRGoxYCSS9EjAz6Eo=
+golang.org/x/sys v0.0.0-20191026070338-33540a1f6037/go.mod h1:h1NjWce9XRLGQEsW7wpKNCjG9DtNlClVuFLEZdDNbEs=
+golang.org/x/sys v0.0.0-20191218084908-4a24b4065292 h1:Y8q0zsdcgAd+JU8VUA8p8Qv2YhuY9zevDG2ORt5qBUI=
+golang.org/x/sys v0.0.0-20191218084908-4a24b4065292/go.mod h1:h1NjWce9XRLGQEsW7wpKNCjG9DtNlClVuFLEZdDNbEs=
+modernc.org/crt v1.0.0 h1:avY0RResvfWYzwlZTAO31E5B1mUr0JF6n6gaLJHeO+I=
+modernc.org/mathutil v1.0.0 h1:93vKjrJopTPrtTNpZ8XIovER7iCIH1QU7wNbOQXC60I=
+modernc.org/mathutil v1.0.0/go.mod h1:wU0vUrJsVWBZ4P6e7xtFJEhFSNsfRLJ8H458uRjg03k=
+modernc.org/memory v1.0.0 h1:Tm1p6vBp/U/SGR9/EeFhMvGzaVpUWeePopZhhIpW2YE=
+modernc.org/memory v1.0.0/go.mod h1:TXr4iJDvK3g0hW+sV+Kohu7BoeHfqw7QEFZWkBExdZc=
