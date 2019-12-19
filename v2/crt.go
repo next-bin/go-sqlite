@@ -14,6 +14,7 @@ import (
 	"os"
 	"sort"
 	"sync"
+	"sync/atomic"
 	"syscall"
 	"unsafe"
 
@@ -155,12 +156,16 @@ type stackHeader struct {
 }
 
 type TLS struct {
+	ID     int32
 	errnop uintptr
 	stack  stackHeader
 }
 
+var tid int32
+
 func NewTLS() *TLS {
-	return &TLS{errnop: mustCalloc(4)}
+	id := atomic.AddInt32(&tid, 1)
+	return &TLS{errnop: mustCalloc(4), ID: id}
 }
 
 func (t *TLS) Alloc(n int) (r uintptr) {
@@ -318,6 +323,10 @@ func printf(s Intptr, args uintptr) (r []byte) {
 				var n uint32
 				args, n = uint32Arg(args)
 				b = append(b, fmt.Sprintf("%"+spec+"d", n)...)
+			case 'x':
+				var n uint32
+				args, n = uint32Arg(args)
+				b = append(b, fmt.Sprintf("%"+spec+"x", n)...)
 			case 'X':
 				var n uint32
 				args, n = uint32Arg(args)
