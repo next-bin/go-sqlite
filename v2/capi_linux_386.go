@@ -130,6 +130,7 @@ var CAPI = map[string]struct{}{
 	"tolower":          {},
 	"toupper":          {},
 	"unlink":           {},
+	"usleep":           {},
 	"utimes":           {},
 	"vfprintf":         {},
 	"vprintf":          {},

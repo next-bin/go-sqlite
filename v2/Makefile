@@ -11,7 +11,6 @@ all:
 	date
 	go version 2>&1 | tee log
 	go generate
-	./unconvert.sh
 	gofmt -l -s -w *.go
 	go install -v ./...
 	go test -i
