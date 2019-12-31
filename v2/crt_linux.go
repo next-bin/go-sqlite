@@ -389,6 +389,11 @@ func Xftruncate64(t *TLS, fd int32, length int64) int32 {
 
 // int fcntl(int fd, int cmd, ... /* arg */ );
 func Xfcntl(t *TLS, fd, cmd int32, args uintptr) int32 {
+	return Xfcntl64(t, fd, cmd, args)
+}
+
+// int fcntl64(int fd, int cmd, ... /* arg */ );
+func Xfcntl64(t *TLS, fd, cmd int32, args uintptr) int32 {
 	var arg int
 	if args != 0 {
 		arg = *(*int)(unsafe.Pointer(args))

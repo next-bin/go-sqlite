@@ -37,6 +37,7 @@ var CAPI = map[string]struct{}{
 	"fchown":           {},
 	"fclose":           {},
 	"fcntl":            {},
+	"fcntl64":          {},
 	"fflush":           {},
 	"fgetc":            {},
 	"fgets":            {},
