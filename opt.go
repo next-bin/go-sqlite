@@ -128,7 +128,9 @@ func (p *Set) Parse(opts []string, handler func(string) error) (err error) {
 						opts = opts[1:]
 					}
 				default:
-					cfg.handler(opt, "")
+					if err = cfg.handler(opt, ""); err != nil {
+						return err
+					}
 				}
 			}
 		default:
@@ -147,4 +149,4 @@ func (p *Set) Parse(opts []string, handler func(string) error) (err error) {
 // Skip is an error that contains all unprocessed items passed to Parse.
 type Skip []string
 
-func (s Skip) Error() string { return fmt.Sprint(s) }
+func (s Skip) Error() string { return fmt.Sprint([]string(s)) }
