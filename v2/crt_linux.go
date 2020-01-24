@@ -600,3 +600,13 @@ func Xsystem(t *TLS, command Intptr) int32 {
 	}
 	return 0
 }
+
+// int fileno(FILE *stream);
+func Xfileno(t *TLS, stream Intptr) int32 {
+	panic("CRT")
+}
+
+// void backtrace_symbols_fd(void *const *buffer, int size, int fd);
+func Xbacktrace_symbols_fd(t *TLS, buffer Intptr, size, fd int32) int32 {
+	panic("CRT")
+}
