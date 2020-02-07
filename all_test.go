@@ -21,10 +21,6 @@ var (
 	reFlag  = flag.String("re", "re", "regexp for some of the dev tests")
 )
 
-func init() {
-	flag.Parse()
-}
-
 func TestScan(t *testing.T) {
 	lexer, err := CompileLexer(
 		nil,
