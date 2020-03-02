@@ -184,6 +184,15 @@ func NewTLS() *TLS {
 	return &TLS{errnop: mustCalloc(4), ID: id}
 }
 
+func (t *TLS) Close() {
+	Xfree(t, Intptr(t.errnop))
+}
+
+func CloseTLS(t *TLS) {
+	t.Close()
+	*t = TLS{}
+}
+
 //TODO- var (
 //TODO- 	balance     int
 //TODO- 	rqBalanace  int
@@ -254,9 +263,6 @@ func (t *TLS) Free(n int) {
 
 	t.stack = stackHeader{}
 }
-
-//TODO use it
-func (t *TLS) close() { panic("CRT") }
 
 func (t *TLS) setErrno(err interface{}) {
 	// if dmesgs {
