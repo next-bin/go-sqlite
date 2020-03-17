@@ -1240,9 +1240,35 @@ func Xstrdup(t *TLS, s Intptr) Intptr {
 	panic("CRT")
 }
 
+type tm struct {
+	sec   int32 // Seconds [0,60].
+	min   int32 // Minutes [0,59].
+	hour  int32 // Hour [0,23].
+	mday  int32 // Day of month [1,31].
+	mon   int32 // Month of year [0,11].
+	year  int32 // Years since 1900.
+	wday  int32 // Day of week [0,6] (Sunday =0).
+	yday  int32 // Day of year [0,365].
+	isdst int32 // Daylight Savings flag.
+}
+
+var localtime = mustCalloc(int(unsafe.Sizeof(tm{})))
+
 // struct tm *localtime(const time_t *timep);
-func Xlocaltime(t *TLS, timep Intptr) Intptr {
-	panic("CRT")
+func Xlocaltime(_ *TLS, timep Intptr) Intptr {
+	ut := *(*syscall.Time_t)(unsafe.Pointer(uintptr(timep)))
+	t := time.Unix(int64(ut), 0)
+	(*tm)(unsafe.Pointer(localtime)).sec = int32(t.Second())
+	(*tm)(unsafe.Pointer(localtime)).min = int32(t.Minute())
+	(*tm)(unsafe.Pointer(localtime)).hour = int32(t.Hour())
+	(*tm)(unsafe.Pointer(localtime)).mday = int32(t.Day())
+	(*tm)(unsafe.Pointer(localtime)).mon = int32(t.Month())
+	(*tm)(unsafe.Pointer(localtime)).year = int32(t.Year())
+	(*tm)(unsafe.Pointer(localtime)).wday = int32(t.Weekday())
+	(*tm)(unsafe.Pointer(localtime)).yday = int32(t.YearDay())
+	(*tm)(unsafe.Pointer(localtime)).isdst = -1 //TODO
+	return Intptr(localtime)
+
 }
 
 // int open(const char *pathname, int flags, ...);
