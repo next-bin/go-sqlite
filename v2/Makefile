@@ -58,7 +58,7 @@ edit:
 	&
 
 editor:
-	go generate
+	# go generate
 	gofmt -l -s -w *.go
 	go test -i
 	go test -short 2>&1 | tee log

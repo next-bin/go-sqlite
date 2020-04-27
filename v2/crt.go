@@ -25,9 +25,10 @@ import (
 )
 
 const (
-	stackHeaderSize  = unsafe.Sizeof(stackHeader{})
-	stackSegmentSize = 1 << 10
-	uintptrSize      = unsafe.Sizeof(uintptr(0))
+	stackHeaderSize       = unsafe.Sizeof(stackHeader{})
+	allocatorPageOverhead = 4 * unsafe.Sizeof(int(0))
+	stackSegmentSize      = 1<<12 - allocatorPageOverhead
+	uintptrSize           = unsafe.Sizeof(uintptr(0))
 )
 
 var (
@@ -41,6 +42,16 @@ var (
 	stdin  = int32(1)
 	stdout = int32(0)
 )
+
+//TODO- var ( //TODO-
+//TODO- 	Locks            int64
+//TODO- 	Unlocks          int64
+//TODO- 	SumMalloc        int64
+//TODO- 	StackAllocs      int64
+//TODO- 	StackFrees       int64
+//TODO- 	StackAllocAllocs int64
+//TODO- 	StackFreeFrees   int64
+//TODO- )
 
 // Keep these outside of the var block otherwise go generate will miss them.
 var Xstderr = &stderr
@@ -75,8 +86,11 @@ func Bool64(b bool) int64 {
 }
 
 func malloc(n int) uintptr {
+	//TODO- atomic.AddInt64(&SumMalloc, int64(n))
+	//TODO- atomic.AddInt64(&Locks, 1)
 	allocMu.Lock()
 	p, err := allocator.UintptrMalloc(n)
+	//TODO- atomic.AddInt64(&Unlocks, 1)
 	allocMu.Unlock()
 	// if dmesgs {
 	// 	dmesg("malloc(%d): (%#x, %v)", n, p, err)
@@ -100,8 +114,10 @@ func mustMalloc(n int) uintptr {
 }
 
 func realloc(p uintptr, n int) uintptr {
+	//TODO- atomic.AddInt64(&Locks, 1)
 	allocMu.Lock()
 	q, err := allocator.UintptrRealloc(p, n)
+	//TODO- atomic.AddInt64(&Unlocks, 1)
 	allocMu.Unlock()
 	// if dmesgs {
 	// 	dmesg("realloc(%#x, %d): (%#x, %v)", p, n, q, err)
@@ -117,8 +133,10 @@ func realloc(p uintptr, n int) uintptr {
 }
 
 func calloc(n int) uintptr {
+	//TODO- atomic.AddInt64(&Locks, 1)
 	allocMu.Lock()
 	p, err := allocator.UintptrCalloc(n)
+	//TODO- atomic.AddInt64(&Unlocks, 1)
 	allocMu.Unlock()
 	// if dmesgs {
 	// 	dmesg("calloc(%d): (%#x, %v)", n, p, err)
@@ -145,8 +163,10 @@ func free(p uintptr) {
 	// if dmesgs {
 	// 	dmesg("free(%#x)", p)
 	// }
+	//TODO- atomic.AddInt64(&Locks, 1)
 	allocMu.Lock()
 	err := allocator.UintptrFree(p)
+	//TODO- atomic.AddInt64(&Unlocks, 1)
 	allocMu.Unlock()
 	if err != nil {
 		if dmesgs {
@@ -208,6 +228,7 @@ func CloseTLS(t *TLS) {
 //TODO- }
 
 func (t *TLS) Alloc(n int) (r uintptr) {
+	//TODO- atomic.AddInt64(&StackAllocs, 1)
 	//TODO- defer func() {
 	//TODO- 	t.dump("alloc", n, r)
 	//TODO- }()
@@ -224,11 +245,12 @@ func (t *TLS) Alloc(n int) (r uintptr) {
 		*(*stackHeader)(unsafe.Pointer(t.stack.page)) = t.stack
 	}
 	rq := n + int(stackHeaderSize)
-	if rq < stackSegmentSize {
-		rq = stackSegmentSize
+	if rq < int(stackSegmentSize) {
+		rq = int(stackSegmentSize)
 	}
 	t.stack.free = rq - int(stackHeaderSize)
 	t.stack.prev = t.stack.page
+	//TODO- atomic.AddInt64(&StackAllocAllocs, 1)
 	t.stack.page = mustMalloc(rq)
 	//TODO- fmt.Printf("---- malloc(%d):  %#016x\n", rq, t.stack.page)
 	//TODO- prefix += "· "
@@ -242,6 +264,7 @@ func (t *TLS) Alloc(n int) (r uintptr) {
 }
 
 func (t *TLS) Free(n int) {
+	//TODO- atomic.AddInt64(&StackFrees, 1)
 	//TODO hysteresis
 	//TODO- defer t.dump(" free", n, 0)
 	//TODO- balance--
@@ -255,6 +278,7 @@ func (t *TLS) Free(n int) {
 	//TODO- prefix = prefix[:len(prefix)-len("· ")]
 	//TODO- fmt.Printf("---- free(%#x)\n", t.stack.page)
 	//TODO- pageBalance--
+	//TODO- atomic.AddInt64(&StackFreeFrees, 1)
 	free(t.stack.page)
 	if t.stack.prev != 0 {
 		t.stack = *(*stackHeader)(unsafe.Pointer(t.stack.prev))
@@ -1115,7 +1139,7 @@ func Xgetenv(t *TLS, name Intptr) Intptr {
 		// }
 		return 0
 	}
-	panic("CRT")
+	panic(fmt.Sprintf("CRT: %q", GoString(name)))
 }
 
 // char *strstr(const char *haystack, const char *needle);
