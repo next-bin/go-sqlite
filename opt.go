@@ -101,7 +101,7 @@ func (p *Set) Parse(opts []string, handler func(string) error) (err error) {
 			if n := strings.IndexByte(opt, '='); n > 0 {
 				arg = opt[n+1:]
 				name = opt[1:n]
-				opt = opt[n+1:]
+				opt = opt[:n]
 			}
 			switch cfg := p.cfg[name]; {
 			case cfg == nil:
