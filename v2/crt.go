@@ -424,7 +424,7 @@ func printf(s Intptr, args uintptr) (r []byte) {
 				case 'l':
 					s++
 					switch *(*byte)(unsafe.Pointer(uintptr(s))) {
-					case 'd':
+					case 'd', 'i':
 						var n int64
 						s++
 						args, n = int64Arg(args)
@@ -479,6 +479,10 @@ func printf(s Intptr, args uintptr) (r []byte) {
 					spec = ".1"
 				}
 				b = append(b, fmt.Sprintf("%"+spec+"g", f)...)
+			case 'p':
+				var p Intptr
+				args, p = ptrArg(args)
+				b = append(b, fmt.Sprintf("0x%"+spec+"x", p)...)
 			case 's':
 				var ps Intptr
 				args, ps = ptrArg(args)
@@ -623,6 +627,34 @@ func Xcalloc(t *TLS, n, size Intptr) Intptr {
 	// 	dmesg("calloc(%#x, %#x): %#x", n, size, r)
 	// }
 	return Intptr(r)
+}
+
+// VaList fills a varargs list at p with args and returns uintptr(p).  The list
+// must have been allocated by caller and it must not be in Go managed
+// memory, ie. it must be pinned. Caller is responsible for freeing the list.
+//
+// Individual arguments must be one of int32, int64, float64 or Intptr. Other
+// types will panic.
+//
+// Note: The C translated to Go varargs ABI alignment for all types is 8 at all
+// architectures.
+func VaList(p Intptr, args ...interface{}) (r uintptr) {
+	r = uintptr(p)
+	q := r
+	for _, v := range args {
+		switch x := v.(type) {
+		case int32:
+			*(*int64)(unsafe.Pointer(q)) = int64(x)
+		case int64:
+			*(*int64)(unsafe.Pointer(q)) = x
+		case float64:
+			*(*float64)(unsafe.Pointer(q)) = x
+		default:
+			panic(fmt.Errorf("invalid VaList argument type: %T", x))
+		}
+		q += 8
+	}
+	return r
 }
 
 func VaInt32(app Intptr) int32 {

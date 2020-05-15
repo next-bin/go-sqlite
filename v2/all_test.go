@@ -13,6 +13,7 @@ import (
 	"runtime/debug"
 	"strings"
 	"testing"
+	"unsafe"
 )
 
 func caller(s string, va ...interface{}) {
@@ -57,6 +58,29 @@ func init() {
 
 // ============================================================================
 
-func Test(t *testing.T) {
-	t.Logf("TODO")
+func TestVaList(t *testing.T) {
+	tls := NewTLS()
+	p := Xmalloc(tls, Intptr(6*unsafe.Sizeof(uintptr(0))))
+
+	defer Xfree(tls, p)
+
+	cs := Xmalloc(tls, 100)
+
+	defer Xfree(tls, cs)
+
+	fmt, err := CString("%i %li %lli %f %s %p\n")
+	if err != nil {
+		t.Fatal(err)
+	}
+
+	defer Xfree(tls, fmt)
+
+	i := int32(42)
+	r := Xsprintf(tls, cs, fmt, VaList(p, i, i+1, int64(i+2), 3.1415926, fmt, Intptr(0x12345678)))
+	if g, e := GoString(cs), "42 43 44 3.141593 %i %li %lli %f %s %p\n 0x12345678\n"; g != e {
+		t.Errorf("got %q, expected %q", g, e)
+	}
+	if g, e := r, int32(51); g != e {
+		t.Errorf("got %v, expected %v", g, e)
+	}
 }
