@@ -13,7 +13,6 @@ import (
 	"runtime/debug"
 	"strings"
 	"testing"
-	"unsafe"
 )
 
 func caller(s string, va ...interface{}) {
@@ -60,7 +59,7 @@ func init() {
 
 func TestVaList(t *testing.T) {
 	tls := NewTLS()
-	p := Xmalloc(tls, Intptr(6*unsafe.Sizeof(uintptr(0))))
+	p := Xmalloc(tls, Intptr(6*8))
 
 	defer Xfree(tls, p)
 
