@@ -6,7 +6,7 @@
 //go:generate go run generate.go
 //go:generate gofmt -l -s -w .
 
-package crt // import "modernc.org/crt/v2"
+package crt // import "modernc.org/crt/v3"
 
 import (
 	"fmt"

@@ -27,7 +27,7 @@
 // TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE
 // SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 
-package crt // import "modernc.org/crt/v2"
+package crt // import "modernc.org/crt/v3"
 
 import (
 	"unsafe"

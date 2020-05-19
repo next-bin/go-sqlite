@@ -4,7 +4,7 @@
 
 // +build crt.dmesg
 
-package crt // import "modernc.org/crt/v2"
+package crt // import "modernc.org/crt/v3"
 
 import (
 	"fmt"
