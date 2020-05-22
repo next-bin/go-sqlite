@@ -20,7 +20,7 @@ import (
 	"unsafe"
 
 	"github.com/mattn/go-isatty"
-	"modernc.org/crt/v2/libc/stdio"
+	"modernc.org/crt/v3/libc/stdio"
 	"modernc.org/memory"
 )
 
@@ -1625,3 +1625,5 @@ func Xusleep(t *TLS, usec int32) int32 {
 	time.Sleep(time.Duration(usec) * time.Microsecond)
 	return 0
 }
+
+func AssignInt32(p *int32, v int32) int32 { *p = v; return v }

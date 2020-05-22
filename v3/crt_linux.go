@@ -14,10 +14,10 @@ import (
 	"unsafe"
 
 	"golang.org/x/sys/unix"
-	"modernc.org/crt/v2/libc/pwd"
-	"modernc.org/crt/v2/libc/stdio"
-	"modernc.org/crt/v2/libc/sys/mman"
-	"modernc.org/crt/v2/libc/unistd"
+	"modernc.org/crt/v3/libc/pwd"
+	"modernc.org/crt/v3/libc/stdio"
+	"modernc.org/crt/v3/libc/sys/mman"
+	"modernc.org/crt/v3/libc/unistd"
 )
 
 const eof = stdio.DEOF

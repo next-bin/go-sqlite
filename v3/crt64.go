@@ -9,7 +9,7 @@ package crt // import "modernc.org/crt/v3"
 import (
 	"strings"
 
-	"modernc.org/crt/v2/libc/sys/mman"
+	"modernc.org/crt/v3/libc/sys/mman"
 )
 
 type (
