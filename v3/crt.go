@@ -549,12 +549,12 @@ func int32Arg(ap uintptr) (uintptr, int32) {
 }
 
 // void *memset(void *s, int c, size_t n)
-func Xmemset(t *TLS, s Intptr, c int32, n Intptr) Intptr {
+func Xmemset(t *TLS, s uintptr, c int32, n Size_t) uintptr {
 	// if dmesgs {
 	// 	dmesg("memset(%#x, %#x, %#x)", s, c, n)
 	// }
 	if n != 0 {
-		b := (*RawMem)(unsafe.Pointer(uintptr(s)))[:n]
+		b := (*RawMem)(unsafe.Pointer(s))[:n]
 		for i := range b {
 			b[i] = byte(c)
 		}
@@ -579,13 +579,13 @@ func Xputchar(t *TLS, c int32) int32 {
 }
 
 // void *memcpy(void *dest, const void *src, size_t n);
-func Xmemcpy(t *TLS, dest, src, n Intptr) (r Intptr) {
+func Xmemcpy(t *TLS, dest, src uintptr, n Size_t) (r uintptr) {
 	// if dmesgs {
 	// 	dmesg("memcpy(%#x, %#x, %#x)", dest, src, n)
 	// }
 	r = dest
 	for ; n != 0; n-- {
-		*(*byte)(unsafe.Pointer(uintptr(dest))) = *(*byte)(unsafe.Pointer(uintptr(src)))
+		*(*byte)(unsafe.Pointer(dest)) = *(*byte)(unsafe.Pointer(src))
 		src++
 		dest++
 	}
@@ -710,14 +710,14 @@ func Xvfprintf(t *TLS, stream, format, ap uintptr) int32 {
 }
 
 // int memcmp(const void *s1, const void *s2, size_t n);
-func Xmemcmp(t *TLS, s1, s2, n Intptr) int32 {
+func Xmemcmp(t *TLS, s1, s2 uintptr, n Size_t) int32 {
 	// if dmesgs {
 	// 	dmesg("memcmpy(%#x, %#x, %#x)", s1, s2, n)
 	// }
 	for ; n != 0; n-- {
-		c1 := *(*byte)(unsafe.Pointer(uintptr(s1)))
+		c1 := *(*byte)(unsafe.Pointer(s1))
 		s1++
-		c2 := *(*byte)(unsafe.Pointer(uintptr(s2)))
+		c2 := *(*byte)(unsafe.Pointer(s2))
 		s2++
 		if c1 < c2 {
 			return -1
@@ -801,15 +801,15 @@ func Xceil(t *TLS, x float64) float64 { return math.Ceil(x) }
 func Xfloor(t *TLS, x float64) float64 { return math.Floor(x) }
 
 // char *strcpy(char *dest, const char *src)
-func Xstrcpy(t *TLS, dest, src Intptr) Intptr {
+func Xstrcpy(t *TLS, dest, src uintptr) uintptr {
 	// if dmesgs {
 	// 	dmesg("strcpy(%#x, %q)", dest, GoString(src))
 	// }
 	r := dest
 	for ; ; dest++ {
-		c := *(*int8)(unsafe.Pointer(uintptr(src)))
+		c := *(*int8)(unsafe.Pointer(src))
 		src++
-		*(*int8)(unsafe.Pointer(uintptr(dest))) = c
+		*(*int8)(unsafe.Pointer(dest)) = c
 		if c == 0 {
 			return r
 		}
@@ -817,33 +817,33 @@ func Xstrcpy(t *TLS, dest, src Intptr) Intptr {
 }
 
 // char *strncpy(char *dest, const char *src, size_t n)
-func Xstrncpy(t *TLS, dest, src, n Intptr) Intptr {
+func Xstrncpy(t *TLS, dest, src uintptr, n Size_t) uintptr {
 	// if dmesgs {
 	// 	dmesg("strncpy(%#x, %q, %#x)", dest, GoString(src), n)
 	// }
 	ret := dest
-	for c := *(*int8)(unsafe.Pointer(uintptr(src))); c != 0 && n > 0; n-- {
-		*(*int8)(unsafe.Pointer(uintptr(dest))) = c
+	for c := *(*int8)(unsafe.Pointer(src)); c != 0 && n > 0; n-- {
+		*(*int8)(unsafe.Pointer(dest)) = c
 		dest++
 		src++
-		c = *(*int8)(unsafe.Pointer(uintptr(src)))
+		c = *(*int8)(unsafe.Pointer(src))
 	}
 	for ; uintptr(n) > 0; n-- {
-		*(*int8)(unsafe.Pointer(uintptr(dest))) = 0
+		*(*int8)(unsafe.Pointer(dest)) = 0
 		dest++
 	}
 	return ret
 }
 
 // int strcmp(const char *s1, const char *s2)
-func Xstrcmp(t *TLS, s1, s2 Intptr) int32 {
+func Xstrcmp(t *TLS, s1, s2 uintptr) int32 {
 	// if dmesgs {
 	// 	dmesg("strcmp(%q, %q)", GoString(s1), GoString(s2))
 	// }
 	for {
-		ch1 := *(*byte)(unsafe.Pointer(uintptr(s1)))
+		ch1 := *(*byte)(unsafe.Pointer(s1))
 		s1++
-		ch2 := *(*byte)(unsafe.Pointer(uintptr(s2)))
+		ch2 := *(*byte)(unsafe.Pointer(s2))
 		s2++
 		if ch1 != ch2 || ch1 == 0 || ch2 == 0 {
 			return int32(ch1) - int32(ch2)
@@ -852,30 +852,30 @@ func Xstrcmp(t *TLS, s1, s2 Intptr) int32 {
 }
 
 // size_t strlen(const char *s)
-func Xstrlen(t *TLS, s Intptr) Intptr {
+func Xstrlen(t *TLS, s uintptr) Intptr {
 	// if dmesgs {
 	// 	dmesg("strlen(%q)", GoString(s))
 	// }
 	var n Intptr
-	for ; *(*int8)(unsafe.Pointer(uintptr(s))) != 0; s++ {
+	for ; *(*int8)(unsafe.Pointer(s)) != 0; s++ {
 		n++
 	}
 	return n
 }
 
 // char *strcat(char *dest, const char *src)
-func Xstrcat(t *TLS, dest, src Intptr) Intptr {
+func Xstrcat(t *TLS, dest, src uintptr) uintptr {
 	// if dmesgs {
 	// 	dmesg("strcat(%q, %q)", GoString(dest), GoString(src))
 	// }
 	ret := dest
-	for *(*int8)(unsafe.Pointer(uintptr(dest))) != 0 {
+	for *(*int8)(unsafe.Pointer(dest)) != 0 {
 		dest++
 	}
 	for {
-		c := *(*int8)(unsafe.Pointer(uintptr(src)))
+		c := *(*int8)(unsafe.Pointer(src))
 		src++
-		*(*int8)(unsafe.Pointer(uintptr(dest))) = c
+		*(*int8)(unsafe.Pointer(dest)) = c
 		dest++
 		if c == 0 {
 			return ret
@@ -884,15 +884,15 @@ func Xstrcat(t *TLS, dest, src Intptr) Intptr {
 }
 
 // int strncmp(const char *s1, const char *s2, size_t n)
-func Xstrncmp(t *TLS, s1, s2, n Intptr) int32 {
+func Xstrncmp(t *TLS, s1, s2 uintptr, n Size_t) int32 {
 	// if dmesgs {
 	// 	dmesg("strncmp(%q, %q, %d)", GoString(s1), GoString(s2), n)
 	// }
 	var ch1, ch2 byte
 	for n != 0 {
-		ch1 = *(*byte)(unsafe.Pointer(uintptr(s1)))
+		ch1 = *(*byte)(unsafe.Pointer(s1))
 		s1++
-		ch2 = *(*byte)(unsafe.Pointer(uintptr(s2)))
+		ch2 = *(*byte)(unsafe.Pointer(s2))
 		s2++
 		n--
 		if ch1 != ch2 || ch1 == 0 || ch2 == 0 {
@@ -907,12 +907,12 @@ func Xstrncmp(t *TLS, s1, s2, n Intptr) int32 {
 }
 
 // char *strchr(const char *s, int c)
-func Xstrchr(t *TLS, s Intptr, c int32) Intptr {
+func Xstrchr(t *TLS, s uintptr, c int32) uintptr {
 	// if dmesgs {
 	// 	dmesg("strchr(%q, %#x)", GoString(s), c)
 	// }
 	for {
-		ch2 := *(*byte)(unsafe.Pointer(uintptr(s)))
+		ch2 := *(*byte)(unsafe.Pointer(s))
 		if ch2 == byte(c) {
 			return s
 		}
@@ -926,13 +926,13 @@ func Xstrchr(t *TLS, s Intptr, c int32) Intptr {
 }
 
 // char *strrchr(const char *s, int c)
-func Xstrrchr(t *TLS, s Intptr, c int32) Intptr {
+func Xstrrchr(t *TLS, s uintptr, c int32) uintptr {
 	// if dmesgs {
 	// 	dmesg("strrchr(%q, %#x)", GoString(s), c)
 	// }
-	var ret Intptr
+	var ret uintptr
 	for {
-		ch2 := *(*byte)(unsafe.Pointer(uintptr(s)))
+		ch2 := *(*byte)(unsafe.Pointer(s))
 		if ch2 == 0 {
 			return ret
 		}

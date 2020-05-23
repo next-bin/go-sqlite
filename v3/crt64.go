@@ -14,6 +14,7 @@ import (
 
 type (
 	Intptr = int64
+	Size_t = uint64
 	long   = int64
 	RawMem [1<<50 - 1]byte
 )
