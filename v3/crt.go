@@ -1626,4 +1626,34 @@ func Xusleep(t *TLS, usec int32) int32 {
 	return 0
 }
 
-func AssignInt32(p *int32, v int32) int32 { *p = v; return v }
+func AssignFloat32(p *float32, v float32) float32 { *p = v; return v }
+func AssignFloat64(p *float64, v float64) float64 { *p = v; return v }
+func AssignInt16(p *int16, v int16) int16         { *p = v; return v }
+func AssignInt32(p *int32, v int32) int32         { *p = v; return v }
+func AssignInt64(p *int64, v int64) int64         { *p = v; return v }
+func AssignInt8(p *int8, v int8) int8             { *p = v; return v }
+func AssignUint16(p *uint16, v uint16) uint16     { *p = v; return v }
+func AssignUint32(p *uint32, v uint32) uint32     { *p = v; return v }
+func AssignUint64(p *uint64, v uint64) uint64     { *p = v; return v }
+func AssignUint8(p *uint8, v uint8) uint8         { *p = v; return v }
+func AssignUintptr(p *uintptr, v uintptr) uintptr { *p = v; return v }
+
+func PreIncInt16(p *int16, d int16) int16         { *p += d; return *p }
+func PreIncInt32(p *int32, d int32) int32         { *p += d; return *p }
+func PreIncInt64(p *int64, d int64) int64         { *p += d; return *p }
+func PreIncInt8(p *int8, d int8) int8             { *p += d; return *p }
+func PreIncUint16(p *uint16, d uint16) uint16     { *p += d; return *p }
+func PreIncUint32(p *uint32, d uint32) uint32     { *p += d; return *p }
+func PreIncUint64(p *uint64, d uint64) uint64     { *p += d; return *p }
+func PreIncUint8(p *uint8, d uint8) uint8         { *p += d; return *p }
+func PreIncUintptr(p *uintptr, d uintptr) uintptr { *p += d; return *p }
+
+func PostIncInt16(p *int16, d int16) int16         { r := *p; *p += d; return r }
+func PostIncInt32(p *int32, d int32) int32         { r := *p; *p += d; return r }
+func PostIncInt64(p *int64, d int64) int64         { r := *p; *p += d; return r }
+func PostIncInt8(p *int8, d int8) int8             { r := *p; *p += d; return r }
+func PostIncUint16(p *uint16, d uint16) uint16     { r := *p; *p += d; return r }
+func PostIncUint32(p *uint32, d uint32) uint32     { r := *p; *p += d; return r }
+func PostIncUint64(p *uint64, d uint64) uint64     { r := *p; *p += d; return r }
+func PostIncUint8(p *uint8, d uint8) uint8         { r := *p; *p += d; return r }
+func PostIncUintptr(p *uintptr, d uintptr) uintptr { r := *p; *p += d; return r }
