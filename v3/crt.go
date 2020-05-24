@@ -1016,7 +1016,7 @@ func Xfprintf(t *TLS, stream, format, args uintptr) int32 {
 }
 
 // int fflush(FILE *stream);
-func Xfflush(t *TLS, stream Intptr) int32 {
+func Xfflush(t *TLS, stream uintptr) int32 {
 	// if dmesgs {
 	// 	switch stream {
 	// 	case 0:
@@ -1095,7 +1095,7 @@ func Xfopen64(t *TLS, pathname, mode uintptr) Intptr {
 }
 
 // void rewind(FILE *stream);
-func Xrewind(t *TLS, stream Intptr) {
+func Xrewind(t *TLS, stream uintptr) {
 	// if dmesgs {
 	// 	dmesg("rewind(%#x(%d))", stream, *(*int32)(unsafe.Pointer(uintptr(stream))))
 	// }
@@ -1121,7 +1121,7 @@ func Xchmod(t *TLS, pathname Intptr, mode int32) int32 {
 }
 
 // size_t fwrite(const void *ptr, size_t size, size_t nmemb, FILE *stream);
-func Xfwrite(t *TLS, ptr, size, nmemb, stream Intptr) Intptr {
+func Xfwrite(t *TLS, ptr, size, nmemb, stream uintptr) Intptr {
 	panic("CRT")
 }
 
@@ -1131,7 +1131,7 @@ func Xtime(t *TLS, tloc Intptr) Intptr {
 }
 
 // int fputc(int c, FILE *stream);
-func Xfputc(t *TLS, c int32, stream Intptr) int32 {
+func Xfputc(t *TLS, c int32, stream uintptr) int32 {
 	panic("CRT")
 }
 
@@ -1203,7 +1203,7 @@ func Xgetpid(t *TLS) int32 {
 }
 
 // int fgetc(FILE *stream);
-func Xfgetc(t *TLS, stream Intptr) int32 {
+func Xfgetc(t *TLS, stream uintptr) int32 {
 	panic("CRT")
 }
 
@@ -1226,7 +1226,7 @@ func Xaccess(t *TLS, pathname Intptr, mode int32) int32 {
 }
 
 // int pclose(FILE *stream);
-func Xpclose(t *TLS, stream Intptr) int32 {
+func Xpclose(t *TLS, stream uintptr) int32 {
 	panic("CRT")
 }
 
@@ -1503,7 +1503,7 @@ out:
 }
 
 // int fputs(const char *s, FILE *stream);
-func Xfputs(t *TLS, s, stream Intptr) int32 {
+func Xfputs(t *TLS, s, stream uintptr) int32 {
 	// gs := GoString(s)
 	// if dmesgs {
 	// 	dmesg("fputs(%q, %#x(%d))", gs, stream, *(*int32)(unsafe.Pointer(uintptr(stream))))
@@ -1657,3 +1657,8 @@ func PostIncUint32(p *uint32, d uint32) uint32     { r := *p; *p += d; return r 
 func PostIncUint64(p *uint64, d uint64) uint64     { r := *p; *p += d; return r }
 func PostIncUint8(p *uint8, d uint8) uint8         { r := *p; *p += d; return r }
 func PostIncUintptr(p *uintptr, d uintptr) uintptr { r := *p; *p += d; return r }
+
+func Uint16(n int16) uint16 { return uint16(n) }
+func Uint32(n int32) uint32 { return uint32(n) }
+func Uint64(n int64) uint64 { return uint64(n) }
+func Uint8(n int8) uint8    { return uint8(n) }

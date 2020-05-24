@@ -23,7 +23,7 @@ import (
 const eof = stdio.DEOF
 
 // char *fgets(char *s, int size, FILE *stream);
-func Xfgets(t *TLS, s Intptr, size int32, stream Intptr) Intptr {
+func Xfgets(t *TLS, s Intptr, size int32, stream uintptr) Intptr {
 	// if dmesgs {
 	// 	dmesg("fgets(%#x, %#x, %#x(%d))", s, size, stream, *(*int32)(unsafe.Pointer(uintptr(stream))))
 	// }
@@ -72,7 +72,7 @@ func Xfgets(t *TLS, s Intptr, size int32, stream Intptr) Intptr {
 }
 
 // int fclose(FILE *stream);
-func Xfclose(t *TLS, stream Intptr) int32 {
+func Xfclose(t *TLS, stream uintptr) int32 {
 	// if dmesgs {
 	// 	dmesg("fclose(%#x(%d))", stream, *(*int32)(unsafe.Pointer(uintptr(stream))))
 	// }
@@ -96,7 +96,7 @@ func Xfclose(t *TLS, stream Intptr) int32 {
 }
 
 // size_t fread(void *ptr, size_t size, size_t nmemb, FILE *stream);
-func Xfread(t *TLS, ptr, size, nmemb, stream Intptr) Intptr {
+func Xfread(t *TLS, ptr, size, nmemb, stream uintptr) Size_t {
 	// if dmesgs {
 	// 	dmesg("fread(%#x, %#x, %#x, %#x(%d))", ptr, size, nmemb, stream, *(*int32)(unsafe.Pointer(uintptr(stream))))
 	// }
@@ -124,7 +124,7 @@ func Xfread(t *TLS, ptr, size, nmemb, stream Intptr) Intptr {
 	// if dmesgs {
 	// 	dmesg("fread(): %#x", Intptr(n)/size)
 	// }
-	return Intptr(n) / size
+	return Size_t(n) / Size_t(size)
 }
 
 // int stat(const char *pathname, struct stat *statbuf);
@@ -535,7 +535,7 @@ func Xmunmap(t *TLS, addr, length Intptr) int32 {
 }
 
 // int fseek(FILE *stream, long offset, int whence);
-func Xfseek(t *TLS, stream Intptr, offset long, whence int32) int32 {
+func Xfseek(t *TLS, stream uintptr, offset long, whence int32) int32 {
 	// if dmesgs {
 	// 	dmesg("fseek(%#x(%d), %#x, %d)", stream, *(*int32)(unsafe.Pointer(uintptr(stream))), offset, whence)
 	// }
@@ -553,7 +553,7 @@ func Xfseek(t *TLS, stream Intptr, offset long, whence int32) int32 {
 }
 
 // long ftell(FILE *stream);
-func Xftell(t *TLS, stream Intptr) long {
+func Xftell(t *TLS, stream uintptr) long {
 	// if dmesgs {
 	// 	dmesg("ftell(%#x(%d))", stream, *(*int32)(unsafe.Pointer(uintptr(stream))))
 	// }
@@ -602,7 +602,7 @@ func Xsystem(t *TLS, command uintptr) int32 {
 }
 
 // int fileno(FILE *stream);
-func Xfileno(t *TLS, stream Intptr) int32 {
+func Xfileno(t *TLS, stream uintptr) int32 {
 	panic("CRT")
 }
 
