@@ -360,6 +360,8 @@ func Xprintf(t *TLS, s, args uintptr) int32 {
 	return int32(len(b))
 }
 
+func X__builtin_printf(t *TLS, s, args uintptr) int32 { return Xprintf(t, s, args) }
+
 // int printf(const char *format, ...);
 func printf(s, args uintptr) (r []byte) {
 	// if dmesgs {
@@ -562,6 +564,8 @@ func Xmemset(t *TLS, s uintptr, c int32, n Size_t) uintptr {
 	return s
 }
 
+func X__builtin_memset(t *TLS, s uintptr, c int32, n Size_t) uintptr { return Xmemset(t, s, c, n) }
+
 // int putchar(int c);
 func Xputchar(t *TLS, c int32) int32 {
 	// if dmesgs {
@@ -590,6 +594,10 @@ func Xmemcpy(t *TLS, dest, src uintptr, n Size_t) (r uintptr) {
 		dest++
 	}
 	return r
+}
+
+func X__builtin_memcpy(t *TLS, dest, src uintptr, n Size_t) (r uintptr) {
+	return Xmemcpy(t, dest, src, n)
 }
 
 // int puts(const char *s);
@@ -737,6 +745,8 @@ func Xabort(t *TLS) {
 	Xexit(t, 1)
 }
 
+func X__builtin_abort(t *TLS) { Xabort(t) }
+
 // double sin(double x);
 func Xsin(t *TLS, x float64) float64 { return math.Sin(x) }
 
@@ -774,7 +784,8 @@ func Xtanh(t *TLS, x float64) float64 { return math.Tanh(x) }
 func Xexp(t *TLS, x float64) float64 { return math.Exp(x) }
 
 // double fabs(double x);
-func Xfabs(t *TLS, x float64) float64 { return math.Abs(x) }
+func Xfabs(t *TLS, x float64) float64           { return math.Abs(x) }
+func X__builtin_fabs(t *TLS, x float64) float64 { return Xfabs(t, x) }
 
 // float fabs(float x);
 func Xfabsf(t *TLS, x float32) float32 { return float32(math.Abs(float64(x))) }
@@ -850,6 +861,8 @@ func Xstrcmp(t *TLS, s1, s2 uintptr) int32 {
 		}
 	}
 }
+
+func X__builtin_strcmp(t *TLS, s1, s2 uintptr) int32 { return Xstrcmp(t, s1, s2) }
 
 // size_t strlen(const char *s)
 func Xstrlen(t *TLS, s uintptr) Intptr {
@@ -971,6 +984,8 @@ func Xexit(t *TLS, status int32) {
 	}
 	os.Exit(int(status))
 }
+
+func X__builtin_exit(t *TLS, status int32) { Xexit(t, status) }
 
 // void __assert_fail(const char * assertion, const char * file, unsigned int line, const char * function);
 func X__assert_fail(t *TLS, assertion, file uintptr, line int32, function uintptr) {
@@ -1625,6 +1640,17 @@ func Xusleep(t *TLS, usec int32) int32 {
 	time.Sleep(time.Duration(usec) * time.Microsecond)
 	return 0
 }
+
+// int abs(int j);
+func Xabs(t *TLS, j int32) int32 {
+	if j >= 0 {
+		return j
+	}
+
+	return -j
+}
+
+func X__builtin_abs(t *TLS, j int32) int32 { return Xabs(t, j) }
 
 func AssignFloat32(p *float32, v float32) float32 { *p = v; return v }
 func AssignFloat64(p *float64, v float64) float64 { *p = v; return v }
