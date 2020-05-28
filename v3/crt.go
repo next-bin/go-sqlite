@@ -865,11 +865,11 @@ func Xstrcmp(t *TLS, s1, s2 uintptr) int32 {
 func X__builtin_strcmp(t *TLS, s1, s2 uintptr) int32 { return Xstrcmp(t, s1, s2) }
 
 // size_t strlen(const char *s)
-func Xstrlen(t *TLS, s uintptr) Intptr {
+func Xstrlen(t *TLS, s uintptr) Size_t {
 	// if dmesgs {
 	// 	dmesg("strlen(%q)", GoString(s))
 	// }
-	var n Intptr
+	var n Size_t
 	for ; *(*int8)(unsafe.Pointer(s)) != 0; s++ {
 		n++
 	}
@@ -1136,7 +1136,7 @@ func Xchmod(t *TLS, pathname Intptr, mode int32) int32 {
 }
 
 // size_t fwrite(const void *ptr, size_t size, size_t nmemb, FILE *stream);
-func Xfwrite(t *TLS, ptr, size, nmemb, stream uintptr) Intptr {
+func Xfwrite(t *TLS, ptr, size, nmemb, stream uintptr) Size_t {
 	panic("CRT")
 }
 
@@ -1664,6 +1664,8 @@ func AssignUint64(p *uint64, v uint64) uint64     { *p = v; return v }
 func AssignUint8(p *uint8, v uint8) uint8         { *p = v; return v }
 func AssignUintptr(p *uintptr, v uintptr) uintptr { *p = v; return v }
 
+func PreIncFloat32(p *float32, d float32) float32 { *p += d; return *p }
+func PreIncFloat64(p *float64, d float64) float64 { *p += d; return *p }
 func PreIncInt16(p *int16, d int16) int16         { *p += d; return *p }
 func PreIncInt32(p *int32, d int32) int32         { *p += d; return *p }
 func PreIncInt64(p *int64, d int64) int64         { *p += d; return *p }
@@ -1674,6 +1676,8 @@ func PreIncUint64(p *uint64, d uint64) uint64     { *p += d; return *p }
 func PreIncUint8(p *uint8, d uint8) uint8         { *p += d; return *p }
 func PreIncUintptr(p *uintptr, d uintptr) uintptr { *p += d; return *p }
 
+func PostIncFloat32(p *float32, d float32) float32 { r := *p; *p -= d; return r }
+func PostIncFloat64(p *float64, d float64) float64 { r := *p; *p -= d; return r }
 func PostIncInt16(p *int16, d int16) int16         { r := *p; *p += d; return r }
 func PostIncInt32(p *int32, d int32) int32         { r := *p; *p += d; return r }
 func PostIncInt64(p *int64, d int64) int64         { r := *p; *p += d; return r }
@@ -1684,7 +1688,34 @@ func PostIncUint64(p *uint64, d uint64) uint64     { r := *p; *p += d; return r 
 func PostIncUint8(p *uint8, d uint8) uint8         { r := *p; *p += d; return r }
 func PostIncUintptr(p *uintptr, d uintptr) uintptr { r := *p; *p += d; return r }
 
-func Uint16(n int16) uint16 { return uint16(n) }
-func Uint32(n int32) uint32 { return uint32(n) }
-func Uint64(n int64) uint64 { return uint64(n) }
-func Uint8(n int8) uint8    { return uint8(n) }
+func PostDecFloat32(p *float32, d float32) float32 { r := *p; *p -= d; return r }
+func PostDecFloat64(p *float64, d float64) float64 { r := *p; *p -= d; return r }
+func PostDecInt16(p *int16, d int16) int16         { r := *p; *p -= d; return r }
+func PostDecInt32(p *int32, d int32) int32         { r := *p; *p -= d; return r }
+func PostDecInt64(p *int64, d int64) int64         { r := *p; *p -= d; return r }
+func PostDecInt8(p *int8, d int8) int8             { r := *p; *p -= d; return r }
+func PostDecUint16(p *uint16, d uint16) uint16     { r := *p; *p -= d; return r }
+func PostDecUint32(p *uint32, d uint32) uint32     { r := *p; *p -= d; return r }
+func PostDecUint64(p *uint64, d uint64) uint64     { r := *p; *p -= d; return r }
+func PostDecUint8(p *uint8, d uint8) uint8         { r := *p; *p -= d; return r }
+func PostDecUintptr(p *uintptr, d uintptr) uintptr { r := *p; *p -= d; return r }
+
+func Uint16FromInt16(n int16) uint16 { return uint16(n) }
+func Uint32FromInt32(n int32) uint32 { return uint32(n) }
+func Uint64FromInt64(n int64) uint64 { return uint64(n) }
+func Uint8FromInt8(n int8) uint8     { return uint8(n) }
+
+func Uint16(n uint16) uint16 { return n }
+func Uint32(n uint32) uint32 { return n }
+func Uint64(n uint64) uint64 { return n }
+func Uint8(n uint8) uint8    { return n }
+
+func NegUint16(n uint16) uint16 { return -n }
+func NegUint32(n uint32) uint32 { return -n }
+func NegUint64(n uint64) uint64 { return -n }
+func NegUint8(n uint8) uint8    { return -n }
+
+func CplUint16(n uint16) uint16 { return ^n }
+func CplUint32(n uint32) uint32 { return ^n }
+func CplUint64(n uint64) uint64 { return ^n }
+func CplUint8(n uint8) uint8    { return ^n }
