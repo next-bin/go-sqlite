@@ -1676,8 +1676,8 @@ func PreIncUint64(p *uint64, d uint64) uint64     { *p += d; return *p }
 func PreIncUint8(p *uint8, d uint8) uint8         { *p += d; return *p }
 func PreIncUintptr(p *uintptr, d uintptr) uintptr { *p += d; return *p }
 
-func PostIncFloat32(p *float32, d float32) float32 { r := *p; *p -= d; return r }
-func PostIncFloat64(p *float64, d float64) float64 { r := *p; *p -= d; return r }
+func PostIncFloat32(p *float32, d float32) float32 { r := *p; *p += d; return r }
+func PostIncFloat64(p *float64, d float64) float64 { r := *p; *p += d; return r }
 func PostIncInt16(p *int16, d int16) int16         { r := *p; *p += d; return r }
 func PostIncInt32(p *int32, d int32) int32         { r := *p; *p += d; return r }
 func PostIncInt64(p *int64, d int64) int64         { r := *p; *p += d; return r }
