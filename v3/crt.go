@@ -1754,3 +1754,43 @@ func CplUint16(n uint16) uint16 { return ^n }
 func CplUint32(n uint32) uint32 { return ^n }
 func CplUint64(n uint64) uint64 { return ^n }
 func CplUint8(n uint8) uint8    { return ^n }
+
+func Int8FromInt8(n int8) int8   { return int8(n) }
+func Int8FromInt16(n int16) int8 { return int8(n) }
+func Int8FromInt32(n int32) int8 { return int8(n) }
+func Int8FromInt64(n int64) int8 { return int8(n) }
+
+func Int8FromUint8(n uint8) int8   { return int8(n) }
+func Int8FromUint16(n uint16) int8 { return int8(n) }
+func Int8FromUint32(n uint32) int8 { return int8(n) }
+func Int8FromUint64(n uint64) int8 { return int8(n) }
+
+func Int16FromInt8(n int8) int16   { return int16(n) }
+func Int16FromInt16(n int16) int16 { return int16(n) }
+func Int16FromInt32(n int32) int16 { return int16(n) }
+func Int16FromInt64(n int64) int16 { return int16(n) }
+
+func Int16FromUint8(n uint8) int16   { return int16(n) }
+func Int16FromUint16(n uint16) int16 { return int16(n) }
+func Int16FromUint32(n uint32) int16 { return int16(n) }
+func Int16FromUint64(n uint64) int16 { return int16(n) }
+
+func Int32FromInt8(n int8) int32   { return int32(n) }
+func Int32FromInt16(n int16) int32 { return int32(n) }
+func Int32FromInt32(n int32) int32 { return int32(n) }
+func Int32FromInt64(n int64) int32 { return int32(n) }
+
+func Int32FromUint8(n uint8) int32   { return int32(n) }
+func Int32FromUint16(n uint16) int32 { return int32(n) }
+func Int32FromUint32(n uint32) int32 { return int32(n) }
+func Int32FromUint64(n uint64) int32 { return int32(n) }
+
+func Int64FromInt8(n int8) int64   { return int64(n) }
+func Int64FromInt16(n int16) int64 { return int64(n) }
+func Int64FromInt32(n int32) int64 { return int64(n) }
+func Int64FromInt64(n int64) int64 { return int64(n) }
+
+func Int64FromUint8(n uint8) int64   { return int64(n) }
+func Int64FromUint16(n uint16) int64 { return int64(n) }
+func Int64FromUint32(n uint32) int64 { return int64(n) }
+func Int64FromUint64(n uint64) int64 { return int64(n) }
