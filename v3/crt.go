@@ -1701,9 +1701,44 @@ func PostDecUint8(p *uint8, d uint8) uint8         { r := *p; *p -= d; return r 
 func PostDecUintptr(p *uintptr, d uintptr) uintptr { r := *p; *p -= d; return r }
 
 func Uint16FromInt16(n int16) uint16 { return uint16(n) }
+func Uint16FromInt32(n int32) uint16 { return uint16(n) }
+func Uint16FromInt64(n int64) uint16 { return uint16(n) }
+func Uint16FromInt8(n int8) uint16   { return uint16(n) }
+
+func Uint16FromUnt16(n uint16) uint16 { return uint16(n) }
+func Uint16FromUnt32(n uint32) uint16 { return uint16(n) }
+func Uint16FromUnt64(n uint64) uint16 { return uint16(n) }
+func Uint16FromUnt8(n uint8) uint16   { return uint16(n) }
+
+func Uint32FromInt16(n int16) uint32 { return uint32(n) }
 func Uint32FromInt32(n int32) uint32 { return uint32(n) }
+func Uint32FromInt64(n int64) uint32 { return uint32(n) }
+func Uint32FromInt8(n int8) uint32   { return uint32(n) }
+
+func Uint32FromUint16(n uint16) uint32 { return uint32(n) }
+func Uint32FromUint32(n uint32) uint32 { return uint32(n) }
+func Uint32FromUint64(n uint64) uint32 { return uint32(n) }
+func Uint32FromUint8(n uint8) uint32   { return uint32(n) }
+
+func Uint64FromInt16(n int16) uint64 { return uint64(n) }
+func Uint64FromInt32(n int32) uint64 { return uint64(n) }
 func Uint64FromInt64(n int64) uint64 { return uint64(n) }
-func Uint8FromInt8(n int8) uint8     { return uint8(n) }
+func Uint64FromInt8(n int8) uint64   { return uint64(n) }
+
+func Uint64FromUint16(n uint16) uint64 { return uint64(n) }
+func Uint64FromUint32(n uint32) uint64 { return uint64(n) }
+func Uint64FromUint64(n uint64) uint64 { return uint64(n) }
+func Uint64FromUint8(n uint8) uint64   { return uint64(n) }
+
+func Uint8FromInt16(n int16) uint8 { return uint8(n) }
+func Uint8FromInt32(n int32) uint8 { return uint8(n) }
+func Uint8FromInt64(n int64) uint8 { return uint8(n) }
+func Uint8FromInt8(n int8) uint8   { return uint8(n) }
+
+func Uint8FromUint16(n uint16) uint8 { return uint8(n) }
+func Uint8FromUint32(n uint32) uint8 { return uint8(n) }
+func Uint8FromUint64(n uint64) uint8 { return uint8(n) }
+func Uint8FromUint8(n uint8) uint8   { return uint8(n) }
 
 func Uint16(n uint16) uint16 { return n }
 func Uint32(n uint32) uint32 { return n }
