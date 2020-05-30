@@ -54,9 +54,9 @@ var (
 //TODO- )
 
 // Keep these outside of the var block otherwise go generate will miss them.
-var Xstderr = &stderr
-var Xstdin = &stdin
-var Xstdout = &stdout
+var Xstderr = uintptr(unsafe.Pointer(&stderr))
+var Xstdin = uintptr(unsafe.Pointer(&stdin))
+var Xstdout = uintptr(unsafe.Pointer(&stdout))
 
 func Start(main func(*TLS, int32, uintptr) int32) {
 	argv := mustCalloc((len(os.Args) + 1) * int(uintptrSize))
@@ -629,12 +629,12 @@ func Xputs(t *TLS, s Intptr) int32 {
 }
 
 // void *calloc(size_t nmemb, size_t size);
-func Xcalloc(t *TLS, n, size Intptr) Intptr {
+func Xcalloc(t *TLS, n, size Size_t) uintptr {
 	r := calloc(int(uint(n) * uint(size)))
 	// if dmesgs {
 	// 	dmesg("calloc(%#x, %#x): %#x", n, size, r)
 	// }
-	return Intptr(r)
+	return r
 }
 
 // VaList fills a varargs list at p with args and returns uintptr(p).  The list
@@ -712,7 +712,7 @@ func Xvprintf(t *TLS, s, ap uintptr) int32 {
 // int vfprintf(FILE *stream, const char *format, va_list ap);
 func Xvfprintf(t *TLS, stream, format, ap uintptr) int32 {
 	// if dmesgs {
-	// 	dmesg("vfprintf(%#x(%d)%q, %q, %#x)", stream, *(*int32)(unsafe.Pointer(uintptr(stream))), GoString(format), ap)
+	// 	dmesg("vfprintf(%#x(%d)%q, %q, %#x)", stream, *(*int32)(unsafe.Pointer(stream)), GoString(format), ap)
 	// }
 	return Xfprintf(t, stream, format, *(*uintptr)(unsafe.Pointer(uintptr(ap))))
 }
@@ -969,10 +969,12 @@ func Xsprintf(t *TLS, str, format, args uintptr) (r int32) {
 }
 
 // void *malloc(size_t size);
-func Xmalloc(t *TLS, size uintptr) uintptr { return malloc(int(size)) }
+func Xmalloc(t *TLS, size Size_t) uintptr { return malloc(int(size)) }
 
 // void *realloc(void *ptr, size_t size);
-func Xrealloc(t *TLS, ptr, size Intptr) Intptr { return Intptr(realloc(uintptr(ptr), int(size))) }
+func Xrealloc(t *TLS, ptr uintptr, size Size_t) uintptr {
+	return realloc(uintptr(ptr), int(size))
+}
 
 // void free(void *ptr);
 func Xfree(t *TLS, ptr uintptr) { free(ptr) }
@@ -1004,9 +1006,9 @@ func Xgetrusage(t *TLS, who int32, usage Intptr) int32 {
 // int fprintf(FILE *stream, const char *format, ...);
 func Xfprintf(t *TLS, stream, format, args uintptr) int32 {
 	// if dmesgs {
-	// 	dmesg("fprintf(%#x(%d), %q, %#x)", stream, *(*int32)(unsafe.Pointer(uintptr(stream))), GoString(format), args)
+	// 	dmesg("fprintf(%#x(%d), %q, %#x)", stream, *(*int32)(unsafe.Pointer(stream)), GoString(format), args)
 	// }
-	fd := *(*int32)(unsafe.Pointer(uintptr(stream)))
+	fd := *(*int32)(unsafe.Pointer(stream))
 	switch fd {
 	case 0:
 		b := printf(format, args)
@@ -1037,7 +1039,7 @@ func Xfflush(t *TLS, stream uintptr) int32 {
 	// 	case 0:
 	// 		dmesg("fflush(0)")
 	// 	default:
-	// 		dmesg("fflush(%#x(%d))", stream, *(*int32)(unsafe.Pointer(uintptr(stream))))
+	// 		dmesg("fflush(%#x(%d))", stream, *(*int32)(unsafe.Pointer(stream)))
 	// 	}
 	// }
 	var err error
@@ -1049,7 +1051,7 @@ func Xfflush(t *TLS, stream uintptr) int32 {
 
 		err = os.Stderr.Sync()
 	default:
-		switch *(*int32)(unsafe.Pointer(uintptr(stream))) {
+		switch *(*int32)(unsafe.Pointer(stream)) {
 		case 0:
 			os.Stdout.Sync()
 		case 2:
@@ -1112,7 +1114,7 @@ func Xfopen64(t *TLS, pathname, mode uintptr) Intptr {
 // void rewind(FILE *stream);
 func Xrewind(t *TLS, stream uintptr) {
 	// if dmesgs {
-	// 	dmesg("rewind(%#x(%d))", stream, *(*int32)(unsafe.Pointer(uintptr(stream))))
+	// 	dmesg("rewind(%#x(%d))", stream, *(*int32)(unsafe.Pointer(stream)))
 	// }
 	Xfseek(t, stream, 0, stdio.DSEEK_SET)
 }
@@ -1136,7 +1138,7 @@ func Xchmod(t *TLS, pathname Intptr, mode int32) int32 {
 }
 
 // size_t fwrite(const void *ptr, size_t size, size_t nmemb, FILE *stream);
-func Xfwrite(t *TLS, ptr, size, nmemb, stream uintptr) Size_t {
+func Xfwrite(t *TLS, ptr uintptr, size, nmemb Size_t, stream uintptr) Size_t {
 	panic("CRT")
 }
 
@@ -1151,7 +1153,7 @@ func Xfputc(t *TLS, c int32, stream uintptr) int32 {
 }
 
 // void *memmove(void *dest, const void *src, size_t n);
-func Xmemmove(t *TLS, dest, src, n Intptr) Intptr {
+func Xmemmove(t *TLS, dest, src uintptr, n Size_t) uintptr {
 	// if dmesgs {
 	// 	dmesg("memmove(%#x, %#x, %#x)", dest, src, n)
 	// }
@@ -1180,7 +1182,7 @@ func Xreaddir64(t *TLS, dir Intptr) Intptr {
 }
 
 // ssize_t readlink(const char *restrict path, char *restrict buf, size_t bufsize);
-func Xreadlink(t *TLS, path, buf, bufsize Intptr) Intptr {
+func Xreadlink(t *TLS, path, buf uintptr, bufsize Size_t) Intptr {
 	panic("CRT")
 }
 
@@ -1204,7 +1206,7 @@ func Xstrstr(t *TLS, haystack, needle Intptr) Intptr {
 }
 
 // int atoi(const char *nptr);
-func Xatoi(t *TLS, nptr Intptr) int32 {
+func Xatoi(t *TLS, nptr uintptr) int32 {
 	return int32(Xatol(t, nptr))
 }
 
@@ -1291,9 +1293,9 @@ func cString(s string) uintptr {
 }
 
 // int setvbuf(FILE *stream, char *buf, int mode, size_t size);
-func Xsetvbuf(t *TLS, stream, buf Intptr, mode int32, size Intptr) int32 {
+func Xsetvbuf(t *TLS, stream, buf Intptr, mode int32, size Size_t) int32 {
 	// if dmesgs {
-	// 	dmesg("setvbuf(%#x(%d), %#x, %#x, %#x)", stream, *(*int32)(unsafe.Pointer(uintptr(stream))), buf, mode, size)
+	// 	dmesg("setvbuf(%#x(%d), %#x, %#x, %#x)", stream, *(*int32)(unsafe.Pointer(stream)), buf, mode, size)
 	// }
 	return 0
 }
@@ -1416,7 +1418,7 @@ func Xsleep(t *TLS, seconds int32) int32 {
 }
 
 // size_t strcspn(const char *s, const char *reject);
-func Xstrcspn(t *TLS, s, reject Intptr) (r Intptr) {
+func Xstrcspn(t *TLS, s, reject Intptr) (r Size_t) {
 	bits := newBits(256)
 	for {
 		c := *(*byte)(unsafe.Pointer(uintptr(reject)))
@@ -1439,7 +1441,7 @@ func Xstrcspn(t *TLS, s, reject Intptr) (r Intptr) {
 }
 
 // char *getcwd(char *buf, size_t size);
-func Xgetcwd(t *TLS, buf, size Intptr) Intptr {
+func Xgetcwd(t *TLS, buf uintptr, size Size_t) uintptr {
 	// if dmesgs {
 	// 	dmesg("getcwd(%#x, %#x)", buf, size)
 	// }
@@ -1485,12 +1487,12 @@ func Xfmod(t *TLS, x, y float64) float64 { return math.Mod(x, y) }
 func Xatan2(t *TLS, x, y float64) float64 { return math.Atan2(x, y) }
 
 // long atol(const char *nptr);
-func Xatol(t *TLS, nptr Intptr) (r long) {
+func Xatol(t *TLS, nptr uintptr) (r long) {
 	var c byte
 	k := long(1)
 out:
 	for {
-		c = *(*byte)(unsafe.Pointer(uintptr(nptr)))
+		c = *(*byte)(unsafe.Pointer(nptr))
 		switch c {
 		case ' ', '\t', '\n', '\r', '\v', '\f':
 			nptr++
@@ -1506,7 +1508,7 @@ out:
 		}
 	}
 	for {
-		c = *(*byte)(unsafe.Pointer(uintptr(nptr)))
+		c = *(*byte)(unsafe.Pointer(nptr))
 		nptr++
 		switch {
 		case c >= '0' && c <= '9':
@@ -1521,9 +1523,9 @@ out:
 func Xfputs(t *TLS, s, stream uintptr) int32 {
 	// gs := GoString(s)
 	// if dmesgs {
-	// 	dmesg("fputs(%q, %#x(%d))", gs, stream, *(*int32)(unsafe.Pointer(uintptr(stream))))
+	// 	dmesg("fputs(%q, %#x(%d))", gs, stream, *(*int32)(unsafe.Pointer(stream)))
 	// }
-	// fd := *(*int32)(unsafe.Pointer(uintptr(stream)))
+	// fd := *(*int32)(unsafe.Pointer(stream))
 	panic("CRT")
 }
 
@@ -1582,21 +1584,21 @@ func Xrand(t *TLS) int32 {
 
 type sorter struct {
 	len  int
-	base Intptr
-	sz   Intptr
-	f    func(*TLS, Intptr, Intptr) int32
+	base uintptr
+	sz   uintptr
+	f    func(*TLS, uintptr, uintptr) int32
 	t    *TLS
 }
 
 func (s *sorter) Len() int { return s.len }
 
 func (s *sorter) Less(i, j int) bool {
-	return s.f(s.t, s.base+Intptr(i)*s.sz, s.base+Intptr(j)*s.sz) < 0
+	return s.f(s.t, s.base+uintptr(i)*s.sz, s.base+uintptr(j)*s.sz) < 0
 }
 
 func (s *sorter) Swap(i, j int) {
-	p := uintptr(s.base + Intptr(i)*s.sz)
-	q := uintptr(s.base + Intptr(j)*s.sz)
+	p := uintptr(s.base + uintptr(i)*s.sz)
+	q := uintptr(s.base + uintptr(j)*s.sz)
 	for i := 0; i < int(s.sz); i++ {
 		*(*byte)(unsafe.Pointer(p)), *(*byte)(unsafe.Pointer(q)) = *(*byte)(unsafe.Pointer(q)), *(*byte)(unsafe.Pointer(p))
 		p++
@@ -1605,17 +1607,17 @@ func (s *sorter) Swap(i, j int) {
 }
 
 // void qsort(void *base, size_t nmemb, size_t size, int (*compar)(const void *, const void *));
-func Xqsort(t *TLS, base, nmemb, size, compar Intptr) {
+func Xqsort(t *TLS, base uintptr, nmemb, size Size_t, compar uintptr) {
 	// if dmesgs {
 	// 	dmesg("qsort(%#x, %d, size %d, %#x", base, nmemb, size, compar)
 	// }
 	sort.Sort(&sorter{
 		len:  int(nmemb),
 		base: base,
-		sz:   size,
+		sz:   uintptr(size),
 		f: (*struct {
-			f func(*TLS, Intptr, Intptr) int32
-		})(unsafe.Pointer(&struct{ Intptr }{compar})).f,
+			f func(*TLS, uintptr, uintptr) int32
+		})(unsafe.Pointer(&struct{ uintptr }{compar})).f,
 		t: t,
 	})
 }
@@ -1663,6 +1665,18 @@ func AssignUint32(p *uint32, v uint32) uint32     { *p = v; return v }
 func AssignUint64(p *uint64, v uint64) uint64     { *p = v; return v }
 func AssignUint8(p *uint8, v uint8) uint8         { *p = v; return v }
 func AssignUintptr(p *uintptr, v uintptr) uintptr { *p = v; return v }
+
+func AssignPtrFloat32(p uintptr, v float32) float32 { *(*float32)(unsafe.Pointer(p)) = v; return v }
+func AssignPtrFloat64(p uintptr, v float64) float64 { *(*float64)(unsafe.Pointer(p)) = v; return v }
+func AssignPtrInt16(p uintptr, v int16) int16       { *(*int16)(unsafe.Pointer(p)) = v; return v }
+func AssignPtrInt32(p uintptr, v int32) int32       { *(*int32)(unsafe.Pointer(p)) = v; return v }
+func AssignPtrInt64(p uintptr, v int64) int64       { *(*int64)(unsafe.Pointer(p)) = v; return v }
+func AssignPtrInt8(p uintptr, v int8) int8          { *(*int8)(unsafe.Pointer(p)) = v; return v }
+func AssignPtrUint16(p uintptr, v uint16) uint16    { *(*uint16)(unsafe.Pointer(p)) = v; return v }
+func AssignPtrUint32(p uintptr, v uint32) uint32    { *(*uint32)(unsafe.Pointer(p)) = v; return v }
+func AssignPtrUint64(p uintptr, v uint64) uint64    { *(*uint64)(unsafe.Pointer(p)) = v; return v }
+func AssignPtrUint8(p uintptr, v uint8) uint8       { *(*uint8)(unsafe.Pointer(p)) = v; return v }
+func AssignPtrUintptr(p uintptr, v uintptr) uintptr { *(*uintptr)(unsafe.Pointer(p)) = v; return v }
 
 func PreIncFloat32(p *float32, d float32) float32 { *p += d; return *p }
 func PreIncFloat64(p *float64, d float64) float64 { *p += d; return *p }
@@ -1740,6 +1754,11 @@ func Uint8FromUint32(n uint32) uint8 { return uint8(n) }
 func Uint8FromUint64(n uint64) uint8 { return uint8(n) }
 func Uint8FromUint8(n uint8) uint8   { return uint8(n) }
 
+func Int16(n int16) int16 { return n }
+func Int32(n int32) int32 { return n }
+func Int64(n int64) int64 { return n }
+func Int8(n int8) int8    { return n }
+
 func Uint16(n uint16) uint16 { return n }
 func Uint32(n uint32) uint32 { return n }
 func Uint64(n uint64) uint64 { return n }
@@ -1794,3 +1813,8 @@ func Int64FromUint8(n uint8) int64   { return int64(n) }
 func Int64FromUint16(n uint16) int64 { return int64(n) }
 func Int64FromUint32(n uint32) int64 { return int64(n) }
 func Int64FromUint64(n uint64) int64 { return int64(n) }
+
+func UintptrFromInt16(n int16) uintptr { return uintptr(n) }
+func UintptrFromInt32(n int32) uintptr { return uintptr(n) }
+func UintptrFromInt64(n int64) uintptr { return uintptr(n) }
+func UintptrFromInt8(n int8) uintptr   { return uintptr(n) }
