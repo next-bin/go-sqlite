@@ -228,6 +228,9 @@ func CloseTLS(t *TLS) {
 //TODO- }
 
 func (t *TLS) Alloc(n int) (r uintptr) {
+	n += 15
+	n &^= 15
+
 	//TODO- atomic.AddInt64(&StackAllocs, 1)
 	//TODO- defer func() {
 	//TODO- 	t.dump("alloc", n, r)
@@ -251,6 +254,8 @@ func (t *TLS) Alloc(n int) (r uintptr) {
 	t.stack.free = rq - int(stackHeaderSize)
 	t.stack.prev = t.stack.page
 	//TODO- atomic.AddInt64(&StackAllocAllocs, 1)
+	rq += 15
+	rq &^= 15
 	t.stack.page = mustMalloc(rq)
 	//TODO- fmt.Printf("---- malloc(%d):  %#016x\n", rq, t.stack.page)
 	//TODO- prefix += "· "
@@ -674,30 +679,66 @@ func VaList(p uintptr, args ...interface{}) (r uintptr) {
 	return r
 }
 
-func VaInt32(app Intptr) int32 {
-	ap := *(*uintptr)(unsafe.Pointer(uintptr(app)))
+func VaInt32(app *uintptr) int32 {
+	ap := *(*uintptr)(unsafe.Pointer(app))
 	ap = roundup(ap, 8)
 	v := *(*int32)(unsafe.Pointer(ap))
 	ap += 8
-	*(*uintptr)(unsafe.Pointer(uintptr(app))) = ap
+	*(*uintptr)(unsafe.Pointer(app)) = ap
 	return v
 }
 
-func VaInt64(app Intptr) int64 {
-	ap := *(*uintptr)(unsafe.Pointer(uintptr(app)))
+func VaUint32(app *uintptr) uint32 {
+	ap := *(*uintptr)(unsafe.Pointer(app))
+	ap = roundup(ap, 8)
+	v := *(*uint32)(unsafe.Pointer(ap))
+	ap += 8
+	*(*uintptr)(unsafe.Pointer(app)) = ap
+	return v
+}
+
+func VaInt64(app *uintptr) int64 {
+	ap := *(*uintptr)(unsafe.Pointer(app))
 	ap = roundup(ap, 8)
 	v := *(*int64)(unsafe.Pointer(ap))
 	ap += 8
-	*(*uintptr)(unsafe.Pointer(uintptr(app))) = ap
+	*(*uintptr)(unsafe.Pointer(app)) = ap
 	return v
 }
 
-func VaFloat64(app Intptr) float64 {
-	ap := *(*uintptr)(unsafe.Pointer(uintptr(app)))
+func VaUint64(app *uintptr) uint64 {
+	ap := *(*uintptr)(unsafe.Pointer(app))
+	ap = roundup(ap, 8)
+	v := *(*uint64)(unsafe.Pointer(ap))
+	ap += 8
+	*(*uintptr)(unsafe.Pointer(app)) = ap
+	return v
+}
+
+func VaFloat32(app *uintptr) float32 {
+	ap := *(*uintptr)(unsafe.Pointer(app))
 	ap = roundup(ap, 8)
 	v := *(*float64)(unsafe.Pointer(ap))
 	ap += 8
-	*(*uintptr)(unsafe.Pointer(uintptr(app))) = ap
+	*(*uintptr)(unsafe.Pointer(app)) = ap
+	return float32(v)
+}
+
+func VaFloat64(app *uintptr) float64 {
+	ap := *(*uintptr)(unsafe.Pointer(app))
+	ap = roundup(ap, 8)
+	v := *(*float64)(unsafe.Pointer(ap))
+	ap += 8
+	*(*uintptr)(unsafe.Pointer(app)) = ap
+	return v
+}
+
+func VaUintptr(app *uintptr) uintptr {
+	ap := *(*uintptr)(unsafe.Pointer(app))
+	ap = roundup(ap, 8)
+	v := *(*uintptr)(unsafe.Pointer(ap))
+	ap += 8
+	*(*uintptr)(unsafe.Pointer(app)) = ap
 	return v
 }
 
@@ -1690,6 +1731,18 @@ func PreIncUint64(p *uint64, d uint64) uint64     { *p += d; return *p }
 func PreIncUint8(p *uint8, d uint8) uint8         { *p += d; return *p }
 func PreIncUintptr(p *uintptr, d uintptr) uintptr { *p += d; return *p }
 
+func PreDecFloat32(p *float32, d float32) float32 { *p -= d; return *p }
+func PreDecFloat64(p *float64, d float64) float64 { *p -= d; return *p }
+func PreDecInt16(p *int16, d int16) int16         { *p -= d; return *p }
+func PreDecInt32(p *int32, d int32) int32         { *p -= d; return *p }
+func PreDecInt64(p *int64, d int64) int64         { *p -= d; return *p }
+func PreDecInt8(p *int8, d int8) int8             { *p -= d; return *p }
+func PreDecUint16(p *uint16, d uint16) uint16     { *p -= d; return *p }
+func PreDecUint32(p *uint32, d uint32) uint32     { *p -= d; return *p }
+func PreDecUint64(p *uint64, d uint64) uint64     { *p -= d; return *p }
+func PreDecUint8(p *uint8, d uint8) uint8         { *p -= d; return *p }
+func PreDecUintptr(p *uintptr, d uintptr) uintptr { *p -= d; return *p }
+
 func PostIncFloat32(p *float32, d float32) float32 { r := *p; *p += d; return r }
 func PostIncFloat64(p *float64, d float64) float64 { r := *p; *p += d; return r }
 func PostIncInt16(p *int16, d int16) int16         { r := *p; *p += d; return r }
@@ -1818,3 +1871,59 @@ func UintptrFromInt16(n int16) uintptr { return uintptr(n) }
 func UintptrFromInt32(n int32) uintptr { return uintptr(n) }
 func UintptrFromInt64(n int64) uintptr { return uintptr(n) }
 func UintptrFromInt8(n int8) uintptr   { return uintptr(n) }
+
+func BoolInt8(b bool) int8 {
+	if b {
+		return 1
+	}
+	return 0
+}
+
+func BoolInt16(b bool) int16 {
+	if b {
+		return 1
+	}
+	return 0
+}
+
+func BoolInt32(b bool) int32 {
+	if b {
+		return 1
+	}
+	return 0
+}
+
+func BoolInt64(b bool) int64 {
+	if b {
+		return 1
+	}
+	return 0
+}
+
+func BoolUint8(b bool) uint8 {
+	if b {
+		return 1
+	}
+	return 0
+}
+
+func BoolUint16(b bool) uint16 {
+	if b {
+		return 1
+	}
+	return 0
+}
+
+func BoolUint32(b bool) uint32 {
+	if b {
+		return 1
+	}
+	return 0
+}
+
+func BoolUint64(b bool) uint64 {
+	if b {
+		return 1
+	}
+	return 0
+}
