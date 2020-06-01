@@ -1594,11 +1594,11 @@ func Xtoupper(t *TLS, c int32) int32 {
 }
 
 // int _IO_putc(int c, _IO_FILE *fp);
-func X_IO_putc(t *TLS, c int32, fp Intptr) int32 {
+func X_IO_putc(t *TLS, c int32, fp uintptr) int32 {
 	// if dmesgs {
 	// 	dmesg("fputs(%#x, %#x(%d))", c, fp, *(*int32)(unsafe.Pointer(uintptr(fp))))
 	// }
-	fd := *(*int32)(unsafe.Pointer(uintptr(fp)))
+	fd := *(*int32)(unsafe.Pointer(fp))
 	switch fd {
 	case 0:
 		_, err := os.Stdout.Write([]byte{byte(c)})
@@ -1926,4 +1926,224 @@ func BoolUint64(b bool) uint64 {
 		return 1
 	}
 	return 0
+}
+
+func SetBitFieldPtr8Int8(p uintptr, v int8, off int, mask byte) int8 {
+	*(*byte)(unsafe.Pointer(p)) = *(*byte)(unsafe.Pointer(p))&^byte(mask) | byte(v<<off)&mask
+	return v
+}
+
+func SetBitFieldPtr8Uint8(p uintptr, v byte, off int, mask byte) byte {
+	*(*byte)(unsafe.Pointer(p)) = *(*byte)(unsafe.Pointer(p))&^byte(mask) | byte(v<<off)&mask
+	return v
+}
+
+func SetBitFieldPtr8Int16(p uintptr, v int16, off int, mask byte) int16 {
+	*(*byte)(unsafe.Pointer(p)) = *(*byte)(unsafe.Pointer(p))&^byte(mask) | byte(v<<off)&mask
+	return v
+}
+
+func SetBitFieldPtr8Uint16(p uintptr, v uint16, off int, mask byte) uint16 {
+	*(*byte)(unsafe.Pointer(p)) = *(*byte)(unsafe.Pointer(p))&^byte(mask) | byte(v<<off)&mask
+	return v
+}
+
+func SetBitFieldPtr8Int32(p uintptr, v int32, off int, mask byte) int32 {
+	*(*byte)(unsafe.Pointer(p)) = *(*byte)(unsafe.Pointer(p))&^byte(mask) | byte(v<<off)&mask
+	return v
+}
+
+func SetBitFieldPtr8Uint32(p uintptr, v uint32, off int, mask byte) uint32 {
+	*(*byte)(unsafe.Pointer(p)) = *(*byte)(unsafe.Pointer(p))&^byte(mask) | byte(v<<off)&mask
+	return v
+}
+
+func SetBitFieldPtr8Int64(p uintptr, v int64, off int, mask byte) int64 {
+	*(*byte)(unsafe.Pointer(p)) = *(*byte)(unsafe.Pointer(p))&^byte(mask) | byte(v<<off)&mask
+	return v
+}
+
+func SetBitFieldPtr8Uint64(p uintptr, v uint64, off int, mask byte) uint64 {
+	*(*byte)(unsafe.Pointer(p)) = *(*byte)(unsafe.Pointer(p))&^byte(mask) | byte(v<<off)&mask
+	return v
+}
+
+func SetBitFieldPtr16Int8(p uintptr, v int8, off int, mask uint16) int8 {
+	*(*uint16)(unsafe.Pointer(p)) = *(*uint16)(unsafe.Pointer(p))&^uint16(mask) | uint16(v<<off)&mask
+	return v
+}
+
+func SetBitFieldPtr16Uint8(p uintptr, v byte, off int, mask uint16) byte {
+	*(*uint16)(unsafe.Pointer(p)) = *(*uint16)(unsafe.Pointer(p))&^uint16(mask) | uint16(v<<off)&mask
+	return v
+}
+
+func SetBitFieldPtr16Int16(p uintptr, v int16, off int, mask uint16) int16 {
+	*(*uint16)(unsafe.Pointer(p)) = *(*uint16)(unsafe.Pointer(p))&^uint16(mask) | uint16(v<<off)&mask
+	return v
+}
+
+func SetBitFieldPtr16Uint16(p uintptr, v uint16, off int, mask uint16) uint16 {
+	*(*uint16)(unsafe.Pointer(p)) = *(*uint16)(unsafe.Pointer(p))&^uint16(mask) | uint16(v<<off)&mask
+	return v
+}
+
+func SetBitFieldPtr16Int32(p uintptr, v int32, off int, mask uint16) int32 {
+	*(*uint16)(unsafe.Pointer(p)) = *(*uint16)(unsafe.Pointer(p))&^uint16(mask) | uint16(v<<off)&mask
+	return v
+}
+
+func SetBitFieldPtr16Uint32(p uintptr, v uint32, off int, mask uint16) uint32 {
+	*(*uint16)(unsafe.Pointer(p)) = *(*uint16)(unsafe.Pointer(p))&^uint16(mask) | uint16(v<<off)&mask
+	return v
+}
+
+func SetBitFieldPtr16Int64(p uintptr, v int64, off int, mask uint16) int64 {
+	*(*uint16)(unsafe.Pointer(p)) = *(*uint16)(unsafe.Pointer(p))&^uint16(mask) | uint16(v<<off)&mask
+	return v
+}
+
+func SetBitFieldPtr16Uint64(p uintptr, v uint64, off int, mask uint16) uint64 {
+	*(*uint16)(unsafe.Pointer(p)) = *(*uint16)(unsafe.Pointer(p))&^uint16(mask) | uint16(v<<off)&mask
+	return v
+}
+
+func SetBitFieldPtr32Int8(p uintptr, v int8, off int, mask uint32) int8 {
+	*(*uint32)(unsafe.Pointer(p)) = *(*uint32)(unsafe.Pointer(p))&^uint32(mask) | uint32(v<<off)&mask
+	return v
+}
+
+func SetBitFieldPtr32Uint8(p uintptr, v byte, off int, mask uint32) byte {
+	*(*uint32)(unsafe.Pointer(p)) = *(*uint32)(unsafe.Pointer(p))&^uint32(mask) | uint32(v<<off)&mask
+	return v
+}
+
+func SetBitFieldPtr32Int16(p uintptr, v int16, off int, mask uint32) int16 {
+	*(*uint32)(unsafe.Pointer(p)) = *(*uint32)(unsafe.Pointer(p))&^uint32(mask) | uint32(v<<off)&mask
+	return v
+}
+
+func SetBitFieldPtr32Uint16(p uintptr, v uint16, off int, mask uint32) uint16 {
+	*(*uint32)(unsafe.Pointer(p)) = *(*uint32)(unsafe.Pointer(p))&^uint32(mask) | uint32(v<<off)&mask
+	return v
+}
+
+func SetBitFieldPtr32Int32(p uintptr, v int32, off int, mask uint32) int32 {
+	*(*uint32)(unsafe.Pointer(p)) = *(*uint32)(unsafe.Pointer(p))&^uint32(mask) | uint32(v<<off)&mask
+	return v
+}
+
+func SetBitFieldPtr32Uint32(p uintptr, v uint32, off int, mask uint32) uint32 {
+	*(*uint32)(unsafe.Pointer(p)) = *(*uint32)(unsafe.Pointer(p))&^uint32(mask) | uint32(v<<off)&mask
+	return v
+}
+
+func SetBitFieldPtr32Int64(p uintptr, v int64, off int, mask uint32) int64 {
+	*(*uint32)(unsafe.Pointer(p)) = *(*uint32)(unsafe.Pointer(p))&^uint32(mask) | uint32(v<<off)&mask
+	return v
+}
+
+func SetBitFieldPtr32Uint64(p uintptr, v uint64, off int, mask uint32) uint64 {
+	*(*uint32)(unsafe.Pointer(p)) = *(*uint32)(unsafe.Pointer(p))&^uint32(mask) | uint32(v<<off)&mask
+	return v
+}
+
+func SetBitFieldPtr64Int8(p uintptr, v int8, off int, mask uint64) int8 {
+	*(*uint64)(unsafe.Pointer(p)) = *(*uint64)(unsafe.Pointer(p))&^uint64(mask) | uint64(v<<off)&mask
+	return v
+}
+
+func SetBitFieldPtr64Uint8(p uintptr, v byte, off int, mask uint64) byte {
+	*(*uint64)(unsafe.Pointer(p)) = *(*uint64)(unsafe.Pointer(p))&^uint64(mask) | uint64(v<<off)&mask
+	return v
+}
+
+func SetBitFieldPtr64Int16(p uintptr, v int16, off int, mask uint64) int16 {
+	*(*uint64)(unsafe.Pointer(p)) = *(*uint64)(unsafe.Pointer(p))&^uint64(mask) | uint64(v<<off)&mask
+	return v
+}
+
+func SetBitFieldPtr64Uint16(p uintptr, v uint16, off int, mask uint64) uint16 {
+	*(*uint64)(unsafe.Pointer(p)) = *(*uint64)(unsafe.Pointer(p))&^uint64(mask) | uint64(v<<off)&mask
+	return v
+}
+
+func SetBitFieldPtr64Int32(p uintptr, v int32, off int, mask uint64) int32 {
+	*(*uint64)(unsafe.Pointer(p)) = *(*uint64)(unsafe.Pointer(p))&^uint64(mask) | uint64(v<<off)&mask
+	return v
+}
+
+func SetBitFieldPtr64Uint32(p uintptr, v uint32, off int, mask uint64) uint32 {
+	*(*uint64)(unsafe.Pointer(p)) = *(*uint64)(unsafe.Pointer(p))&^uint64(mask) | uint64(v<<off)&mask
+	return v
+}
+
+func SetBitFieldPtr64Int64(p uintptr, v int64, off int, mask uint64) int64 {
+	*(*uint64)(unsafe.Pointer(p)) = *(*uint64)(unsafe.Pointer(p))&^uint64(mask) | uint64(v<<off)&mask
+	return v
+}
+
+func SetBitFieldPtr64Uint64(p uintptr, v uint64, off int, mask uint64) uint64 {
+	*(*uint64)(unsafe.Pointer(p)) = *(*uint64)(unsafe.Pointer(p))&^uint64(mask) | uint64(v<<off)&mask
+	return v
+}
+
+func PostDecBitFieldPtr8Int32(p uintptr, d int32, off int, mask byte) (r int32) {
+	x0 := *(*byte)(unsafe.Pointer(p))
+	s := 32 - off - 1
+	r = int32(x0) & int32(mask) << s >> s
+	*(*byte)(unsafe.Pointer(p)) = x0&^byte(mask) | byte(r-d)<<off&mask
+	return r
+}
+
+func PostDecBitFieldPtr8Uint32(p uintptr, d uint32, off int, mask byte) (r uint32) {
+	x0 := *(*byte)(unsafe.Pointer(p))
+	r = uint32(x0) & uint32(mask) >> off
+	*(*byte)(unsafe.Pointer(p)) = x0&^mask | byte(r-d)<<off&mask
+	return r
+}
+
+func PostDecBitFieldPtr32Int32(p uintptr, d int32, off int, mask uint32) (r int32) {
+	x0 := *(*uint32)(unsafe.Pointer(p))
+	s := 32 - off - 1
+	r = int32(x0) & int32(mask) << s >> s
+	*(*uint32)(unsafe.Pointer(p)) = x0&^uint32(mask) | uint32(r-d)<<off&mask
+	return r
+}
+
+func PostDecBitFieldPtr32Uint32(p uintptr, d uint32, off int, mask uint32) (r uint32) {
+	x0 := *(*uint32)(unsafe.Pointer(p))
+	r = uint32(x0) & uint32(mask) >> off
+	*(*uint32)(unsafe.Pointer(p)) = x0&^uint32(mask) | uint32(r-d)<<off&mask
+	return r
+}
+
+func PostDecBitFieldPtr64Int64(p uintptr, d int64, off int, mask uint64) (r int64) {
+	x0 := *(*uint64)(unsafe.Pointer(p))
+	s := 64 - off - 1
+	r = int64(x0) & int64(mask) << s >> s
+	*(*uint64)(unsafe.Pointer(p)) = x0&^uint64(mask) | uint64(r-d)<<off&mask
+	return r
+}
+
+func PostDecBitFieldPtr64Uint64(p uintptr, d uint64, off int, mask uint64) (r uint64) {
+	x0 := *(*uint64)(unsafe.Pointer(p))
+	r = uint64(x0) & uint64(mask) >> off
+	*(*uint64)(unsafe.Pointer(p)) = x0&^uint64(mask) | uint64(r-d)<<off&mask
+	return r
+}
+
+func PostIncBitFieldPtr32Int32(p uintptr, d int32, off int, mask uint32) (r int32) {
+	x0 := *(*uint32)(unsafe.Pointer(p))
+	s := 32 - off - 1
+	r = int32(x0) & int32(mask) << s >> s
+	*(*uint32)(unsafe.Pointer(p)) = x0&^uint32(mask) | uint32(r+d)<<off&mask
+	return r
+}
+
+func PostIncBitFieldPtr32Uint32(p uintptr, d uint32, off int, mask uint32) (r uint32) {
+	x0 := *(*uint32)(unsafe.Pointer(p))
+	r = x0 & mask >> off
+	*(*uint32)(unsafe.Pointer(p)) = x0&^uint32(mask) | r + d<<off&mask
+	return r
 }
