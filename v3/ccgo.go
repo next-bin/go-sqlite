@@ -84,6 +84,8 @@ func Int8FromUint8(n uint8) int8           { return int8(n) }
 func Int8FromUint16(n uint16) int8         { return int8(n) }
 func Int8FromUint32(n uint32) int8         { return int8(n) }
 func Int8FromUint64(n uint64) int8         { return int8(n) }
+func Int8FromFloat32(n float32) int8       { return int8(n) }
+func Int8FromFloat64(n float64) int8       { return int8(n) }
 func Int8FromUintptr(n uintptr) int8       { return int8(n) }
 func Int16FromInt8(n int8) int16           { return int16(n) }
 func Int16FromInt16(n int16) int16         { return int16(n) }
@@ -93,6 +95,8 @@ func Int16FromUint8(n uint8) int16         { return int16(n) }
 func Int16FromUint16(n uint16) int16       { return int16(n) }
 func Int16FromUint32(n uint32) int16       { return int16(n) }
 func Int16FromUint64(n uint64) int16       { return int16(n) }
+func Int16FromFloat32(n float32) int16     { return int16(n) }
+func Int16FromFloat64(n float64) int16     { return int16(n) }
 func Int16FromUintptr(n uintptr) int16     { return int16(n) }
 func Int32FromInt8(n int8) int32           { return int32(n) }
 func Int32FromInt16(n int16) int32         { return int32(n) }
@@ -102,6 +106,8 @@ func Int32FromUint8(n uint8) int32         { return int32(n) }
 func Int32FromUint16(n uint16) int32       { return int32(n) }
 func Int32FromUint32(n uint32) int32       { return int32(n) }
 func Int32FromUint64(n uint64) int32       { return int32(n) }
+func Int32FromFloat32(n float32) int32     { return int32(n) }
+func Int32FromFloat64(n float64) int32     { return int32(n) }
 func Int32FromUintptr(n uintptr) int32     { return int32(n) }
 func Int64FromInt8(n int8) int64           { return int64(n) }
 func Int64FromInt16(n int16) int64         { return int64(n) }
@@ -111,6 +117,8 @@ func Int64FromUint8(n uint8) int64         { return int64(n) }
 func Int64FromUint16(n uint16) int64       { return int64(n) }
 func Int64FromUint32(n uint32) int64       { return int64(n) }
 func Int64FromUint64(n uint64) int64       { return int64(n) }
+func Int64FromFloat32(n float32) int64     { return int64(n) }
+func Int64FromFloat64(n float64) int64     { return int64(n) }
 func Int64FromUintptr(n uintptr) int64     { return int64(n) }
 func Uint8FromInt8(n int8) uint8           { return uint8(n) }
 func Uint8FromInt16(n int16) uint8         { return uint8(n) }
@@ -120,6 +128,8 @@ func Uint8FromUint8(n uint8) uint8         { return uint8(n) }
 func Uint8FromUint16(n uint16) uint8       { return uint8(n) }
 func Uint8FromUint32(n uint32) uint8       { return uint8(n) }
 func Uint8FromUint64(n uint64) uint8       { return uint8(n) }
+func Uint8FromFloat32(n float32) uint8     { return uint8(n) }
+func Uint8FromFloat64(n float64) uint8     { return uint8(n) }
 func Uint8FromUintptr(n uintptr) uint8     { return uint8(n) }
 func Uint16FromInt8(n int8) uint16         { return uint16(n) }
 func Uint16FromInt16(n int16) uint16       { return uint16(n) }
@@ -129,6 +139,8 @@ func Uint16FromUint8(n uint8) uint16       { return uint16(n) }
 func Uint16FromUint16(n uint16) uint16     { return uint16(n) }
 func Uint16FromUint32(n uint32) uint16     { return uint16(n) }
 func Uint16FromUint64(n uint64) uint16     { return uint16(n) }
+func Uint16FromFloat32(n float32) uint16   { return uint16(n) }
+func Uint16FromFloat64(n float64) uint16   { return uint16(n) }
 func Uint16FromUintptr(n uintptr) uint16   { return uint16(n) }
 func Uint32FromInt8(n int8) uint32         { return uint32(n) }
 func Uint32FromInt16(n int16) uint32       { return uint32(n) }
@@ -138,6 +150,8 @@ func Uint32FromUint8(n uint8) uint32       { return uint32(n) }
 func Uint32FromUint16(n uint16) uint32     { return uint32(n) }
 func Uint32FromUint32(n uint32) uint32     { return uint32(n) }
 func Uint32FromUint64(n uint64) uint32     { return uint32(n) }
+func Uint32FromFloat32(n float32) uint32   { return uint32(n) }
+func Uint32FromFloat64(n float64) uint32   { return uint32(n) }
 func Uint32FromUintptr(n uintptr) uint32   { return uint32(n) }
 func Uint64FromInt8(n int8) uint64         { return uint64(n) }
 func Uint64FromInt16(n int16) uint64       { return uint64(n) }
@@ -147,7 +161,31 @@ func Uint64FromUint8(n uint8) uint64       { return uint64(n) }
 func Uint64FromUint16(n uint16) uint64     { return uint64(n) }
 func Uint64FromUint32(n uint32) uint64     { return uint64(n) }
 func Uint64FromUint64(n uint64) uint64     { return uint64(n) }
+func Uint64FromFloat32(n float32) uint64   { return uint64(n) }
+func Uint64FromFloat64(n float64) uint64   { return uint64(n) }
 func Uint64FromUintptr(n uintptr) uint64   { return uint64(n) }
+func Float32FromInt8(n int8) float32       { return float32(n) }
+func Float32FromInt16(n int16) float32     { return float32(n) }
+func Float32FromInt32(n int32) float32     { return float32(n) }
+func Float32FromInt64(n int64) float32     { return float32(n) }
+func Float32FromUint8(n uint8) float32     { return float32(n) }
+func Float32FromUint16(n uint16) float32   { return float32(n) }
+func Float32FromUint32(n uint32) float32   { return float32(n) }
+func Float32FromUint64(n uint64) float32   { return float32(n) }
+func Float32FromFloat32(n float32) float32 { return float32(n) }
+func Float32FromFloat64(n float64) float32 { return float32(n) }
+func Float32FromUintptr(n uintptr) float32 { return float32(n) }
+func Float64FromInt8(n int8) float64       { return float64(n) }
+func Float64FromInt16(n int16) float64     { return float64(n) }
+func Float64FromInt32(n int32) float64     { return float64(n) }
+func Float64FromInt64(n int64) float64     { return float64(n) }
+func Float64FromUint8(n uint8) float64     { return float64(n) }
+func Float64FromUint16(n uint16) float64   { return float64(n) }
+func Float64FromUint32(n uint32) float64   { return float64(n) }
+func Float64FromUint64(n uint64) float64   { return float64(n) }
+func Float64FromFloat32(n float32) float64 { return float64(n) }
+func Float64FromFloat64(n float64) float64 { return float64(n) }
+func Float64FromUintptr(n uintptr) float64 { return float64(n) }
 func UintptrFromInt8(n int8) uintptr       { return uintptr(n) }
 func UintptrFromInt16(n int16) uintptr     { return uintptr(n) }
 func UintptrFromInt32(n int32) uintptr     { return uintptr(n) }
@@ -156,6 +194,8 @@ func UintptrFromUint8(n uint8) uintptr     { return uintptr(n) }
 func UintptrFromUint16(n uint16) uintptr   { return uintptr(n) }
 func UintptrFromUint32(n uint32) uintptr   { return uintptr(n) }
 func UintptrFromUint64(n uint64) uintptr   { return uintptr(n) }
+func UintptrFromFloat32(n float32) uintptr { return uintptr(n) }
+func UintptrFromFloat64(n float64) uintptr { return uintptr(n) }
 func UintptrFromUintptr(n uintptr) uintptr { return uintptr(n) }
 
 func Int8(n int8) int8          { return n }
