@@ -12,6 +12,7 @@ import (
 	"fmt"
 	"math"
 	"os"
+	"runtime/debug"
 	"sort"
 	"sync"
 	"sync/atomic"
@@ -486,6 +487,22 @@ func printf(s, args uintptr) (r []byte) {
 					spec = ".1"
 				}
 				b = append(b, fmt.Sprintf("%"+spec+"g", f)...)
+			case 'h':
+				switch c := *(*byte)(unsafe.Pointer(uintptr(s))); c {
+				case 'h':
+					s++
+					switch *(*byte)(unsafe.Pointer(uintptr(s))) {
+					case 'd', 'i':
+						var n int32
+						s++
+						args, n = int32Arg(args)
+						b = append(b, fmt.Sprintf("%"+spec+"d", int8(n))...)
+					default:
+						panic("internal error")
+					}
+				default:
+					panic(fmt.Errorf("internal error %q", string(c)))
+				}
 			case 'p':
 				var p Intptr
 				args, p = ptrArg(args)
@@ -778,6 +795,8 @@ func Xmemcmp(t *TLS, s1, s2 uintptr, n Size_t) int32 {
 	return 0
 }
 
+func X__builtin_memcmp(t *TLS, s1, s2 uintptr, n Size_t) int32 { return Xmemcmp(t, s1, s2, n) }
+
 // void abort(void);
 func Xabort(t *TLS) {
 	if dmesgs {
@@ -868,6 +887,8 @@ func Xstrcpy(t *TLS, dest, src uintptr) uintptr {
 	}
 }
 
+func X__builtin_strcpy(t *TLS, dest, src uintptr) uintptr { return Xstrcpy(t, dest, src) }
+
 // char *strncpy(char *dest, const char *src, size_t n)
 func Xstrncpy(t *TLS, dest, src uintptr, n Size_t) uintptr {
 	// if dmesgs {
@@ -916,6 +937,8 @@ func Xstrlen(t *TLS, s uintptr) Size_t {
 	}
 	return n
 }
+
+func X__builtin_strlen(t *TLS, s uintptr) Size_t { return Xstrlen(t, s) }
 
 // char *strcat(char *dest, const char *src)
 func Xstrcat(t *TLS, dest, src uintptr) uintptr {
@@ -979,6 +1002,8 @@ func Xstrchr(t *TLS, s uintptr, c int32) uintptr {
 	}
 }
 
+func X__builtin_strchr(t *TLS, s uintptr, c int32) uintptr { return Xstrchr(t, s, c) }
+
 // char *strrchr(const char *s, int c)
 func Xstrrchr(t *TLS, s uintptr, c int32) uintptr {
 	// if dmesgs {
@@ -1005,20 +1030,46 @@ func Xsprintf(t *TLS, str, format, args uintptr) (r int32) {
 	// }
 	b := printf(format, args)
 	b = append(b, 0)
-	copy((*RawMem)(unsafe.Pointer(uintptr(str)))[:len(b)], b)
+	copy((*RawMem)(unsafe.Pointer(str))[:len(b)], b)
 	return int32(len(b) - 1)
+}
+
+func X__builtin_sprintf(t *TLS, str, format, args uintptr) (r int32) {
+	return Xsprintf(t, str, format, args)
+}
+
+// int snprintf(char *str, size_t size, const char *format, ...);
+func Xsnprintf(t *TLS, str uintptr, size Size_t, format, args uintptr) (r int32) {
+	// if dmesgs {
+	// 	dmesg("snprintf(%#x, %q, %#x)", str, GoString(format), args)
+	// }
+	b := printf(format, args)
+	if len(b)+1 > int(size) {
+		b = b[:size-1]
+	}
+	b = append(b, 0)
+	copy((*RawMem)(unsafe.Pointer(str))[:len(b)], b)
+	return int32(len(b) - 1)
+}
+
+func X__builtin_snprintf(t *TLS, str uintptr, size Size_t, format, args uintptr) (r int32) {
+	return Xsnprintf(t, str, size, format, args)
 }
 
 // void *malloc(size_t size);
 func Xmalloc(t *TLS, size Size_t) uintptr { return malloc(int(size)) }
 
+func X__builtin_malloc(t *TLS, size Size_t) uintptr { return Xmalloc(t, size) }
+
 // void *realloc(void *ptr, size_t size);
 func Xrealloc(t *TLS, ptr uintptr, size Size_t) uintptr {
-	return realloc(uintptr(ptr), int(size))
+	return realloc(ptr, int(size))
 }
 
 // void free(void *ptr);
 func Xfree(t *TLS, ptr uintptr) { free(ptr) }
+
+func X__builtin_free(t *TLS, ptr uintptr) { Xfree(t, ptr) }
 
 // void exit(int status);
 func Xexit(t *TLS, status int32) {
@@ -1694,3 +1745,46 @@ func Xabs(t *TLS, j int32) int32 {
 }
 
 func X__builtin_abs(t *TLS, j int32) int32 { return Xabs(t, j) }
+
+// long __builtin_expect (long exp, long c)
+func X__builtin_expect(t *TLS, exp, c long) long { return exp }
+
+// void __builtin_trap (void)
+func X__builtin_trap(t *TLS) {
+	fmt.Fprintf(os.Stderr, "%s\ntrap\n", debug.Stack())
+	os.Stderr.Sync()
+	os.Exit(1)
+}
+
+// void __builtin_unreachable (void)
+func X__builtin_unreachable(t *TLS) {
+	fmt.Fprintf(os.Stderr, "%s\nunrechable\n", debug.Stack())
+	os.Stderr.Sync()
+	os.Exit(1)
+}
+
+// double __builtin_inf (void)
+func X__builtin_inf(t *TLS) float64 { return math.Inf(0) }
+
+// float __builtin_inf (void)
+func X__builtin_inff(t *TLS) float32 { return float32(math.Inf(0)) }
+
+// void __builtin_prefetch (const void *addr, ...)
+func X__builtin_prefetch(t *TLS, addr, args uintptr) {}
+
+// double __builtin_copysign ( double x, double y );
+func X__builtin_copysign(t *TLS, x, y float64) float64 {
+	fmt.Println(x, y) //TODO-
+	return math.Copysign(x, y)
+}
+
+// float __builtin_copysignf ( float x, float y );
+func X__builtin_copysignf(t *TLS, x, y float32) float32 {
+	return float32(math.Copysign(float64(x), float64(y)))
+}
+
+// double __builtin_huge_val (void);
+func X__builtin_huge_val(t *TLS) float64 { return math.Inf(0) }
+
+// float __builtin_huge_valf (void);
+func X__builtin_huge_valg(t *TLS) float32 { return float32(math.Inf(0)) }
