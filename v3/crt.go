@@ -14,6 +14,7 @@ import (
 	"os"
 	"runtime/debug"
 	"sort"
+	"strings"
 	"sync"
 	"sync/atomic"
 	"syscall"
@@ -391,7 +392,7 @@ func printf(s, args uintptr) (r []byte) {
 			c := *(*byte)(unsafe.Pointer(uintptr(s)))
 			s++
 			switch {
-			case c >= '0' && c <= '9' || c == '.':
+			case c >= '0' && c <= '9' || c == '.' || c == '#':
 				spec = append(spec, c)
 				goto more
 			case c == '*':
@@ -491,12 +492,25 @@ func printf(s, args uintptr) (r []byte) {
 				switch c := *(*byte)(unsafe.Pointer(uintptr(s))); c {
 				case 'h':
 					s++
-					switch *(*byte)(unsafe.Pointer(uintptr(s))) {
+					switch c3 := *(*byte)(unsafe.Pointer(uintptr(s))); c3 {
 					case 'd', 'i':
 						var n int32
 						s++
 						args, n = int32Arg(args)
 						b = append(b, fmt.Sprintf("%"+spec+"d", int8(n))...)
+					case 'o':
+						var n int32
+						s++
+						args, n = int32Arg(args)
+						b = append(b, fmt.Sprintf("%"+spec+"o", int8(n))...)
+					case 'x', 'X':
+						var n int32
+						s++
+						args, n = int32Arg(args)
+						if int8(n) == 0 && strings.Contains(spec, "#") {
+							spec = strings.ReplaceAll(spec, "#", "")
+						}
+						b = append(b, fmt.Sprintf("%"+spec+string(rune(c3)), int8(n))...)
 					default:
 						panic("internal error")
 					}
