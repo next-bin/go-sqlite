@@ -1096,7 +1096,7 @@ func Xexit(t *TLS, status int32) {
 func X__builtin_exit(t *TLS, status int32) { Xexit(t, status) }
 
 // void __assert_fail(const char * assertion, const char * file, unsigned int line, const char * function);
-func X__assert_fail(t *TLS, assertion, file uintptr, line int32, function uintptr) {
+func X__assert_fail(t *TLS, assertion, file uintptr, line uint32, function uintptr) {
 	if dmesgs {
 		dmesg("__assert_fail(%q, %q, %v, %q)", GoString(assertion), GoString(file), line, GoString(function))
 	}
@@ -1412,7 +1412,7 @@ func Xraise(t *TLS, sig int32) int32 {
 }
 
 // sighandler_t signal(int signum, sighandler_t handler);
-func Xsignal(t *TLS, signum int32, handler Intptr) Intptr {
+func Xsignal(t *TLS, signum int32, handler uintptr) Intptr {
 	// if dmesgs {
 	// 	dmesg("signal(%d, %#x)", signum, handler)
 	// }
