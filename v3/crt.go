@@ -1680,6 +1680,8 @@ func X_IO_putc(t *TLS, c int32, fp uintptr) int32 {
 	panic("CRT")
 }
 
+func Xputc(t *TLS, c int32, fp uintptr) int32 { return X_IO_putc(t, c, fp) }
+
 var nextRand = uint64(1)
 
 // int rand(void);

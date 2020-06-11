@@ -112,6 +112,7 @@ var CAPI = map[string]struct{}{
 	"popen":                 {},
 	"pow":                   {},
 	"printf":                {},
+	"putc":                  {},
 	"putchar":               {},
 	"puts":                  {},
 	"qsort":                 {},
