@@ -14,7 +14,7 @@ var CAPI = map[string]struct{}{
 	"__builtin_fabs":        {},
 	"__builtin_free":        {},
 	"__builtin_huge_val":    {},
-	"__builtin_huge_valf":   {},
+	"__builtin_huge_valg":   {},
 	"__builtin_inf":         {},
 	"__builtin_inff":        {},
 	"__builtin_malloc":      {},

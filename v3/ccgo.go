@@ -28,6 +28,494 @@ func AssignPtrFloat32(p uintptr, v float32) float32 { *(*float32)(unsafe.Pointer
 func AssignPtrFloat64(p uintptr, v float64) float64 { *(*float64)(unsafe.Pointer(p)) = v; return v }
 func AssignPtrUintptr(p uintptr, v uintptr) uintptr { *(*uintptr)(unsafe.Pointer(p)) = v; return v }
 
+func AssignMulInt8(p *int8, v int8) int8             { *p *= v; return *p }
+func AssignMulInt16(p *int16, v int16) int16         { *p *= v; return *p }
+func AssignMulInt32(p *int32, v int32) int32         { *p *= v; return *p }
+func AssignMulInt64(p *int64, v int64) int64         { *p *= v; return *p }
+func AssignMulUint8(p *uint8, v uint8) uint8         { *p *= v; return *p }
+func AssignMulUint16(p *uint16, v uint16) uint16     { *p *= v; return *p }
+func AssignMulUint32(p *uint32, v uint32) uint32     { *p *= v; return *p }
+func AssignMulUint64(p *uint64, v uint64) uint64     { *p *= v; return *p }
+func AssignMulFloat32(p *float32, v float32) float32 { *p *= v; return *p }
+func AssignMulFloat64(p *float64, v float64) float64 { *p *= v; return *p }
+func AssignMulUintptr(p *uintptr, v uintptr) uintptr { *p *= v; return *p }
+
+func AssignDivInt8(p *int8, v int8) int8             { *p /= v; return *p }
+func AssignDivInt16(p *int16, v int16) int16         { *p /= v; return *p }
+func AssignDivInt32(p *int32, v int32) int32         { *p /= v; return *p }
+func AssignDivInt64(p *int64, v int64) int64         { *p /= v; return *p }
+func AssignDivUint8(p *uint8, v uint8) uint8         { *p /= v; return *p }
+func AssignDivUint16(p *uint16, v uint16) uint16     { *p /= v; return *p }
+func AssignDivUint32(p *uint32, v uint32) uint32     { *p /= v; return *p }
+func AssignDivUint64(p *uint64, v uint64) uint64     { *p /= v; return *p }
+func AssignDivFloat32(p *float32, v float32) float32 { *p /= v; return *p }
+func AssignDivFloat64(p *float64, v float64) float64 { *p /= v; return *p }
+func AssignDivUintptr(p *uintptr, v uintptr) uintptr { *p /= v; return *p }
+
+func AssignRemInt8(p *int8, v int8) int8             { *p %= v; return *p }
+func AssignRemInt16(p *int16, v int16) int16         { *p %= v; return *p }
+func AssignRemInt32(p *int32, v int32) int32         { *p %= v; return *p }
+func AssignRemInt64(p *int64, v int64) int64         { *p %= v; return *p }
+func AssignRemUint8(p *uint8, v uint8) uint8         { *p %= v; return *p }
+func AssignRemUint16(p *uint16, v uint16) uint16     { *p %= v; return *p }
+func AssignRemUint32(p *uint32, v uint32) uint32     { *p %= v; return *p }
+func AssignRemUint64(p *uint64, v uint64) uint64     { *p %= v; return *p }
+func AssignRemUintptr(p *uintptr, v uintptr) uintptr { *p %= v; return *p }
+
+func AssignAddInt8(p *int8, v int8) int8             { *p += v; return *p }
+func AssignAddInt16(p *int16, v int16) int16         { *p += v; return *p }
+func AssignAddInt32(p *int32, v int32) int32         { *p += v; return *p }
+func AssignAddInt64(p *int64, v int64) int64         { *p += v; return *p }
+func AssignAddUint8(p *uint8, v uint8) uint8         { *p += v; return *p }
+func AssignAddUint16(p *uint16, v uint16) uint16     { *p += v; return *p }
+func AssignAddUint32(p *uint32, v uint32) uint32     { *p += v; return *p }
+func AssignAddUint64(p *uint64, v uint64) uint64     { *p += v; return *p }
+func AssignAddFloat32(p *float32, v float32) float32 { *p += v; return *p }
+func AssignAddFloat64(p *float64, v float64) float64 { *p += v; return *p }
+func AssignAddUintptr(p *uintptr, v uintptr) uintptr { *p += v; return *p }
+
+func AssignSubInt8(p *int8, v int8) int8             { *p -= v; return *p }
+func AssignSubInt16(p *int16, v int16) int16         { *p -= v; return *p }
+func AssignSubInt32(p *int32, v int32) int32         { *p -= v; return *p }
+func AssignSubInt64(p *int64, v int64) int64         { *p -= v; return *p }
+func AssignSubUint8(p *uint8, v uint8) uint8         { *p -= v; return *p }
+func AssignSubUint16(p *uint16, v uint16) uint16     { *p -= v; return *p }
+func AssignSubUint32(p *uint32, v uint32) uint32     { *p -= v; return *p }
+func AssignSubUint64(p *uint64, v uint64) uint64     { *p -= v; return *p }
+func AssignSubFloat32(p *float32, v float32) float32 { *p -= v; return *p }
+func AssignSubFloat64(p *float64, v float64) float64 { *p -= v; return *p }
+func AssignSubUintptr(p *uintptr, v uintptr) uintptr { *p -= v; return *p }
+
+func AssignAndInt8(p *int8, v int8) int8             { *p &= v; return *p }
+func AssignAndInt16(p *int16, v int16) int16         { *p &= v; return *p }
+func AssignAndInt32(p *int32, v int32) int32         { *p &= v; return *p }
+func AssignAndInt64(p *int64, v int64) int64         { *p &= v; return *p }
+func AssignAndUint8(p *uint8, v uint8) uint8         { *p &= v; return *p }
+func AssignAndUint16(p *uint16, v uint16) uint16     { *p &= v; return *p }
+func AssignAndUint32(p *uint32, v uint32) uint32     { *p &= v; return *p }
+func AssignAndUint64(p *uint64, v uint64) uint64     { *p &= v; return *p }
+func AssignAndUintptr(p *uintptr, v uintptr) uintptr { *p &= v; return *p }
+
+func AssignXorInt8(p *int8, v int8) int8             { *p ^= v; return *p }
+func AssignXorInt16(p *int16, v int16) int16         { *p ^= v; return *p }
+func AssignXorInt32(p *int32, v int32) int32         { *p ^= v; return *p }
+func AssignXorInt64(p *int64, v int64) int64         { *p ^= v; return *p }
+func AssignXorUint8(p *uint8, v uint8) uint8         { *p ^= v; return *p }
+func AssignXorUint16(p *uint16, v uint16) uint16     { *p ^= v; return *p }
+func AssignXorUint32(p *uint32, v uint32) uint32     { *p ^= v; return *p }
+func AssignXorUint64(p *uint64, v uint64) uint64     { *p ^= v; return *p }
+func AssignXorUintptr(p *uintptr, v uintptr) uintptr { *p ^= v; return *p }
+
+func AssignOrInt8(p *int8, v int8) int8             { *p |= v; return *p }
+func AssignOrInt16(p *int16, v int16) int16         { *p |= v; return *p }
+func AssignOrInt32(p *int32, v int32) int32         { *p |= v; return *p }
+func AssignOrInt64(p *int64, v int64) int64         { *p |= v; return *p }
+func AssignOrUint8(p *uint8, v uint8) uint8         { *p |= v; return *p }
+func AssignOrUint16(p *uint16, v uint16) uint16     { *p |= v; return *p }
+func AssignOrUint32(p *uint32, v uint32) uint32     { *p |= v; return *p }
+func AssignOrUint64(p *uint64, v uint64) uint64     { *p |= v; return *p }
+func AssignOrUintptr(p *uintptr, v uintptr) uintptr { *p |= v; return *p }
+
+func AssignMulPtrInt8(p uintptr, v int8) int8 {
+	*(*int8)(unsafe.Pointer(p)) *= v
+	return *(*int8)(unsafe.Pointer(p))
+}
+
+func AssignMulPtrInt16(p uintptr, v int16) int16 {
+	*(*int16)(unsafe.Pointer(p)) *= v
+	return *(*int16)(unsafe.Pointer(p))
+}
+
+func AssignMulPtrInt32(p uintptr, v int32) int32 {
+	*(*int32)(unsafe.Pointer(p)) *= v
+	return *(*int32)(unsafe.Pointer(p))
+}
+
+func AssignMulPtrInt64(p uintptr, v int64) int64 {
+	*(*int64)(unsafe.Pointer(p)) *= v
+	return *(*int64)(unsafe.Pointer(p))
+}
+
+func AssignMulPtrUint8(p uintptr, v uint8) uint8 {
+	*(*uint8)(unsafe.Pointer(p)) *= v
+	return *(*uint8)(unsafe.Pointer(p))
+}
+
+func AssignMulPtrUint16(p uintptr, v uint16) uint16 {
+	*(*uint16)(unsafe.Pointer(p)) *= v
+	return *(*uint16)(unsafe.Pointer(p))
+}
+
+func AssignMulPtrUint32(p uintptr, v uint32) uint32 {
+	*(*uint32)(unsafe.Pointer(p)) *= v
+	return *(*uint32)(unsafe.Pointer(p))
+}
+
+func AssignMulPtrUint64(p uintptr, v uint64) uint64 {
+	*(*uint64)(unsafe.Pointer(p)) *= v
+	return *(*uint64)(unsafe.Pointer(p))
+}
+
+func AssignMulPtrFloat32(p uintptr, v float32) float32 {
+	*(*float32)(unsafe.Pointer(p)) *= v
+	return *(*float32)(unsafe.Pointer(p))
+}
+
+func AssignMulPtrFloat64(p uintptr, v float64) float64 {
+	*(*float64)(unsafe.Pointer(p)) *= v
+	return *(*float64)(unsafe.Pointer(p))
+}
+
+func AssignMulPtrUintptr(p uintptr, v uintptr) uintptr {
+	*(*uintptr)(unsafe.Pointer(p)) *= v
+	return *(*uintptr)(unsafe.Pointer(p))
+}
+
+func AssignDivPtrInt8(p uintptr, v int8) int8 {
+	*(*int8)(unsafe.Pointer(p)) /= v
+	return *(*int8)(unsafe.Pointer(p))
+}
+
+func AssignDivPtrInt16(p uintptr, v int16) int16 {
+	*(*int16)(unsafe.Pointer(p)) /= v
+	return *(*int16)(unsafe.Pointer(p))
+}
+
+func AssignDivPtrInt32(p uintptr, v int32) int32 {
+	*(*int32)(unsafe.Pointer(p)) /= v
+	return *(*int32)(unsafe.Pointer(p))
+}
+
+func AssignDivPtrInt64(p uintptr, v int64) int64 {
+	*(*int64)(unsafe.Pointer(p)) /= v
+	return *(*int64)(unsafe.Pointer(p))
+}
+
+func AssignDivPtrUint8(p uintptr, v uint8) uint8 {
+	*(*uint8)(unsafe.Pointer(p)) /= v
+	return *(*uint8)(unsafe.Pointer(p))
+}
+
+func AssignDivPtrUint16(p uintptr, v uint16) uint16 {
+	*(*uint16)(unsafe.Pointer(p)) /= v
+	return *(*uint16)(unsafe.Pointer(p))
+}
+
+func AssignDivPtrUint32(p uintptr, v uint32) uint32 {
+	*(*uint32)(unsafe.Pointer(p)) /= v
+	return *(*uint32)(unsafe.Pointer(p))
+}
+
+func AssignDivPtrUint64(p uintptr, v uint64) uint64 {
+	*(*uint64)(unsafe.Pointer(p)) /= v
+	return *(*uint64)(unsafe.Pointer(p))
+}
+
+func AssignDivPtrFloat32(p uintptr, v float32) float32 {
+	*(*float32)(unsafe.Pointer(p)) /= v
+	return *(*float32)(unsafe.Pointer(p))
+}
+
+func AssignDivPtrFloat64(p uintptr, v float64) float64 {
+	*(*float64)(unsafe.Pointer(p)) /= v
+	return *(*float64)(unsafe.Pointer(p))
+}
+
+func AssignDivPtrUintptr(p uintptr, v uintptr) uintptr {
+	*(*uintptr)(unsafe.Pointer(p)) /= v
+	return *(*uintptr)(unsafe.Pointer(p))
+}
+
+func AssignRemPtrInt8(p uintptr, v int8) int8 {
+	*(*int8)(unsafe.Pointer(p)) %= v
+	return *(*int8)(unsafe.Pointer(p))
+}
+
+func AssignRemPtrInt16(p uintptr, v int16) int16 {
+	*(*int16)(unsafe.Pointer(p)) %= v
+	return *(*int16)(unsafe.Pointer(p))
+}
+
+func AssignRemPtrInt32(p uintptr, v int32) int32 {
+	*(*int32)(unsafe.Pointer(p)) %= v
+	return *(*int32)(unsafe.Pointer(p))
+}
+
+func AssignRemPtrInt64(p uintptr, v int64) int64 {
+	*(*int64)(unsafe.Pointer(p)) %= v
+	return *(*int64)(unsafe.Pointer(p))
+}
+
+func AssignRemPtrUint8(p uintptr, v uint8) uint8 {
+	*(*uint8)(unsafe.Pointer(p)) %= v
+	return *(*uint8)(unsafe.Pointer(p))
+}
+
+func AssignRemPtrUint16(p uintptr, v uint16) uint16 {
+	*(*uint16)(unsafe.Pointer(p)) %= v
+	return *(*uint16)(unsafe.Pointer(p))
+}
+
+func AssignRemPtrUint32(p uintptr, v uint32) uint32 {
+	*(*uint32)(unsafe.Pointer(p)) %= v
+	return *(*uint32)(unsafe.Pointer(p))
+}
+
+func AssignRemPtrUint64(p uintptr, v uint64) uint64 {
+	*(*uint64)(unsafe.Pointer(p)) %= v
+	return *(*uint64)(unsafe.Pointer(p))
+}
+
+func AssignRemPtrUintptr(p uintptr, v uintptr) uintptr {
+	*(*uintptr)(unsafe.Pointer(p)) %= v
+	return *(*uintptr)(unsafe.Pointer(p))
+}
+
+func AssignAddPtrInt8(p uintptr, v int8) int8 {
+	*(*int8)(unsafe.Pointer(p)) += v
+	return *(*int8)(unsafe.Pointer(p))
+}
+
+func AssignAddPtrInt16(p uintptr, v int16) int16 {
+	*(*int16)(unsafe.Pointer(p)) += v
+	return *(*int16)(unsafe.Pointer(p))
+}
+
+func AssignAddPtrInt32(p uintptr, v int32) int32 {
+	*(*int32)(unsafe.Pointer(p)) += v
+	return *(*int32)(unsafe.Pointer(p))
+}
+
+func AssignAddPtrInt64(p uintptr, v int64) int64 {
+	*(*int64)(unsafe.Pointer(p)) += v
+	return *(*int64)(unsafe.Pointer(p))
+}
+
+func AssignAddPtrUint8(p uintptr, v uint8) uint8 {
+	*(*uint8)(unsafe.Pointer(p)) += v
+	return *(*uint8)(unsafe.Pointer(p))
+}
+
+func AssignAddPtrUint16(p uintptr, v uint16) uint16 {
+	*(*uint16)(unsafe.Pointer(p)) += v
+	return *(*uint16)(unsafe.Pointer(p))
+}
+
+func AssignAddPtrUint32(p uintptr, v uint32) uint32 {
+	*(*uint32)(unsafe.Pointer(p)) += v
+	return *(*uint32)(unsafe.Pointer(p))
+}
+
+func AssignAddPtrUint64(p uintptr, v uint64) uint64 {
+	*(*uint64)(unsafe.Pointer(p)) += v
+	return *(*uint64)(unsafe.Pointer(p))
+}
+
+func AssignAddPtrFloat32(p uintptr, v float32) float32 {
+	*(*float32)(unsafe.Pointer(p)) += v
+	return *(*float32)(unsafe.Pointer(p))
+}
+
+func AssignAddPtrFloat64(p uintptr, v float64) float64 {
+	*(*float64)(unsafe.Pointer(p)) += v
+	return *(*float64)(unsafe.Pointer(p))
+}
+
+func AssignAddPtrUintptr(p uintptr, v uintptr) uintptr {
+	*(*uintptr)(unsafe.Pointer(p)) += v
+	return *(*uintptr)(unsafe.Pointer(p))
+}
+
+func AssignSubPtrInt8(p uintptr, v int8) int8 {
+	*(*int8)(unsafe.Pointer(p)) -= v
+	return *(*int8)(unsafe.Pointer(p))
+}
+
+func AssignSubPtrInt16(p uintptr, v int16) int16 {
+	*(*int16)(unsafe.Pointer(p)) -= v
+	return *(*int16)(unsafe.Pointer(p))
+}
+
+func AssignSubPtrInt32(p uintptr, v int32) int32 {
+	*(*int32)(unsafe.Pointer(p)) -= v
+	return *(*int32)(unsafe.Pointer(p))
+}
+
+func AssignSubPtrInt64(p uintptr, v int64) int64 {
+	*(*int64)(unsafe.Pointer(p)) -= v
+	return *(*int64)(unsafe.Pointer(p))
+}
+
+func AssignSubPtrUint8(p uintptr, v uint8) uint8 {
+	*(*uint8)(unsafe.Pointer(p)) -= v
+	return *(*uint8)(unsafe.Pointer(p))
+}
+
+func AssignSubPtrUint16(p uintptr, v uint16) uint16 {
+	*(*uint16)(unsafe.Pointer(p)) -= v
+	return *(*uint16)(unsafe.Pointer(p))
+}
+
+func AssignSubPtrUint32(p uintptr, v uint32) uint32 {
+	*(*uint32)(unsafe.Pointer(p)) -= v
+	return *(*uint32)(unsafe.Pointer(p))
+}
+
+func AssignSubPtrUint64(p uintptr, v uint64) uint64 {
+	*(*uint64)(unsafe.Pointer(p)) -= v
+	return *(*uint64)(unsafe.Pointer(p))
+}
+
+func AssignSubPtrFloat32(p uintptr, v float32) float32 {
+	*(*float32)(unsafe.Pointer(p)) -= v
+	return *(*float32)(unsafe.Pointer(p))
+}
+
+func AssignSubPtrFloat64(p uintptr, v float64) float64 {
+	*(*float64)(unsafe.Pointer(p)) -= v
+	return *(*float64)(unsafe.Pointer(p))
+}
+
+func AssignSubPtrUintptr(p uintptr, v uintptr) uintptr {
+	*(*uintptr)(unsafe.Pointer(p)) -= v
+	return *(*uintptr)(unsafe.Pointer(p))
+}
+
+func AssignAndPtrInt8(p uintptr, v int8) int8 {
+	*(*int8)(unsafe.Pointer(p)) &= v
+	return *(*int8)(unsafe.Pointer(p))
+}
+
+func AssignAndPtrInt16(p uintptr, v int16) int16 {
+	*(*int16)(unsafe.Pointer(p)) &= v
+	return *(*int16)(unsafe.Pointer(p))
+}
+
+func AssignAndPtrInt32(p uintptr, v int32) int32 {
+	*(*int32)(unsafe.Pointer(p)) &= v
+	return *(*int32)(unsafe.Pointer(p))
+}
+
+func AssignAndPtrInt64(p uintptr, v int64) int64 {
+	*(*int64)(unsafe.Pointer(p)) &= v
+	return *(*int64)(unsafe.Pointer(p))
+}
+
+func AssignAndPtrUint8(p uintptr, v uint8) uint8 {
+	*(*uint8)(unsafe.Pointer(p)) &= v
+	return *(*uint8)(unsafe.Pointer(p))
+}
+
+func AssignAndPtrUint16(p uintptr, v uint16) uint16 {
+	*(*uint16)(unsafe.Pointer(p)) &= v
+	return *(*uint16)(unsafe.Pointer(p))
+}
+
+func AssignAndPtrUint32(p uintptr, v uint32) uint32 {
+	*(*uint32)(unsafe.Pointer(p)) &= v
+	return *(*uint32)(unsafe.Pointer(p))
+}
+
+func AssignAndPtrUint64(p uintptr, v uint64) uint64 {
+	*(*uint64)(unsafe.Pointer(p)) &= v
+	return *(*uint64)(unsafe.Pointer(p))
+}
+
+func AssignAndPtrUintptr(p uintptr, v uintptr) uintptr {
+	*(*uintptr)(unsafe.Pointer(p)) &= v
+	return *(*uintptr)(unsafe.Pointer(p))
+}
+
+func AssignXorPtrInt8(p uintptr, v int8) int8 {
+	*(*int8)(unsafe.Pointer(p)) ^= v
+	return *(*int8)(unsafe.Pointer(p))
+}
+
+func AssignXorPtrInt16(p uintptr, v int16) int16 {
+	*(*int16)(unsafe.Pointer(p)) ^= v
+	return *(*int16)(unsafe.Pointer(p))
+}
+
+func AssignXorPtrInt32(p uintptr, v int32) int32 {
+	*(*int32)(unsafe.Pointer(p)) ^= v
+	return *(*int32)(unsafe.Pointer(p))
+}
+
+func AssignXorPtrInt64(p uintptr, v int64) int64 {
+	*(*int64)(unsafe.Pointer(p)) ^= v
+	return *(*int64)(unsafe.Pointer(p))
+}
+
+func AssignXorPtrUint8(p uintptr, v uint8) uint8 {
+	*(*uint8)(unsafe.Pointer(p)) ^= v
+	return *(*uint8)(unsafe.Pointer(p))
+}
+
+func AssignXorPtrUint16(p uintptr, v uint16) uint16 {
+	*(*uint16)(unsafe.Pointer(p)) ^= v
+	return *(*uint16)(unsafe.Pointer(p))
+}
+
+func AssignXorPtrUint32(p uintptr, v uint32) uint32 {
+	*(*uint32)(unsafe.Pointer(p)) ^= v
+	return *(*uint32)(unsafe.Pointer(p))
+}
+
+func AssignXorPtrUint64(p uintptr, v uint64) uint64 {
+	*(*uint64)(unsafe.Pointer(p)) ^= v
+	return *(*uint64)(unsafe.Pointer(p))
+}
+
+func AssignXorPtrUintptr(p uintptr, v uintptr) uintptr {
+	*(*uintptr)(unsafe.Pointer(p)) ^= v
+	return *(*uintptr)(unsafe.Pointer(p))
+}
+
+func AssignOrPtrInt8(p uintptr, v int8) int8 {
+	*(*int8)(unsafe.Pointer(p)) |= v
+	return *(*int8)(unsafe.Pointer(p))
+}
+
+func AssignOrPtrInt16(p uintptr, v int16) int16 {
+	*(*int16)(unsafe.Pointer(p)) |= v
+	return *(*int16)(unsafe.Pointer(p))
+}
+
+func AssignOrPtrInt32(p uintptr, v int32) int32 {
+	*(*int32)(unsafe.Pointer(p)) |= v
+	return *(*int32)(unsafe.Pointer(p))
+}
+
+func AssignOrPtrInt64(p uintptr, v int64) int64 {
+	*(*int64)(unsafe.Pointer(p)) |= v
+	return *(*int64)(unsafe.Pointer(p))
+}
+
+func AssignOrPtrUint8(p uintptr, v uint8) uint8 {
+	*(*uint8)(unsafe.Pointer(p)) |= v
+	return *(*uint8)(unsafe.Pointer(p))
+}
+
+func AssignOrPtrUint16(p uintptr, v uint16) uint16 {
+	*(*uint16)(unsafe.Pointer(p)) |= v
+	return *(*uint16)(unsafe.Pointer(p))
+}
+
+func AssignOrPtrUint32(p uintptr, v uint32) uint32 {
+	*(*uint32)(unsafe.Pointer(p)) |= v
+	return *(*uint32)(unsafe.Pointer(p))
+}
+
+func AssignOrPtrUint64(p uintptr, v uint64) uint64 {
+	*(*uint64)(unsafe.Pointer(p)) |= v
+	return *(*uint64)(unsafe.Pointer(p))
+}
+
+func AssignOrPtrUintptr(p uintptr, v uintptr) uintptr {
+	*(*uintptr)(unsafe.Pointer(p)) |= v
+	return *(*uintptr)(unsafe.Pointer(p))
+}
+
 func PreIncInt8(p *int8, d int8) int8             { *p += d; return *p }
 func PreIncInt16(p *int16, d int16) int16         { *p += d; return *p }
 func PreIncInt32(p *int32, d int32) int32         { *p += d; return *p }

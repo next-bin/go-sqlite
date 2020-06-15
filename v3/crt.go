@@ -438,6 +438,11 @@ func printf(s, args uintptr) (r []byte) {
 						s++
 						args, n = int64Arg(args)
 						b = append(b, fmt.Sprintf("%"+spec+"d", n)...)
+					case 'u':
+						var n int64
+						s++
+						args, n = int64Arg(args)
+						b = append(b, fmt.Sprintf("%"+spec+"d", uint64(n))...)
 					default:
 						panic("internal error")
 					}
@@ -1177,10 +1182,10 @@ func Xfflush(t *TLS, stream uintptr) int32 {
 }
 
 // FILE *fopen(const char *pathname, const char *mode);
-func Xfopen(t *TLS, pathname, mode uintptr) Intptr { return Xfopen64(t, pathname, mode) }
+func Xfopen(t *TLS, pathname, mode uintptr) uintptr { return Xfopen64(t, pathname, mode) }
 
 // FILE *fopen64(const char *pathname, const char *mode);
-func Xfopen64(t *TLS, pathname, mode uintptr) Intptr {
+func Xfopen64(t *TLS, pathname, mode uintptr) uintptr {
 	s := GoString(pathname)
 	m := GoString(mode)
 	// if dmesgs {
@@ -1211,7 +1216,7 @@ func Xfopen64(t *TLS, pathname, mode uintptr) Intptr {
 		// if dmesgs {
 		// 	dmesg("fopen64(%q, %q): %v", s, m, fd)
 		// }
-		return Intptr(p)
+		return p
 	default:
 		panic(m)
 	}

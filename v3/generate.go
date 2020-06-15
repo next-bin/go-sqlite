@@ -183,6 +183,86 @@ import "unsafe"
 
 	fmt.Fprintln(b)
 	for _, v := range scalar {
+		fmt.Fprintf(b, "func AssignMul%s(p *%s, v %[2]s) %[2]s { *p *= v; return *p }\n", capitalize(v), v)
+	}
+
+	fmt.Fprintln(b)
+	for _, v := range scalar {
+		fmt.Fprintf(b, "func AssignDiv%s(p *%s, v %[2]s) %[2]s { *p /= v; return *p }\n", capitalize(v), v)
+	}
+
+	fmt.Fprintln(b)
+	for _, v := range intptr {
+		fmt.Fprintf(b, "func AssignRem%s(p *%s, v %[2]s) %[2]s { *p %%= v; return *p }\n", capitalize(v), v)
+	}
+
+	fmt.Fprintln(b)
+	for _, v := range scalar {
+		fmt.Fprintf(b, "func AssignAdd%s(p *%s, v %[2]s) %[2]s { *p += v; return *p }\n", capitalize(v), v)
+	}
+
+	fmt.Fprintln(b)
+	for _, v := range scalar {
+		fmt.Fprintf(b, "func AssignSub%s(p *%s, v %[2]s) %[2]s { *p -= v; return *p }\n", capitalize(v), v)
+	}
+
+	fmt.Fprintln(b)
+	for _, v := range intptr {
+		fmt.Fprintf(b, "func AssignAnd%s(p *%s, v %[2]s) %[2]s { *p &= v; return *p }\n", capitalize(v), v)
+	}
+
+	fmt.Fprintln(b)
+	for _, v := range intptr {
+		fmt.Fprintf(b, "func AssignXor%s(p *%s, v %[2]s) %[2]s { *p ^= v; return *p }\n", capitalize(v), v)
+	}
+
+	fmt.Fprintln(b)
+	for _, v := range intptr {
+		fmt.Fprintf(b, "func AssignOr%s(p *%s, v %[2]s) %[2]s { *p |= v; return *p }\n", capitalize(v), v)
+	}
+
+	fmt.Fprintln(b)
+	for _, v := range scalar {
+		fmt.Fprintf(b, "func AssignMulPtr%s(p uintptr, v %s) %[2]s { *(*%[2]s)(unsafe.Pointer(p)) *= v; return *(*%[2]s)(unsafe.Pointer(p)) }\n\n", capitalize(v), v)
+	}
+
+	fmt.Fprintln(b)
+	for _, v := range scalar {
+		fmt.Fprintf(b, "func AssignDivPtr%s(p uintptr, v %s) %[2]s { *(*%[2]s)(unsafe.Pointer(p)) /= v; return *(*%[2]s)(unsafe.Pointer(p)) }\n\n", capitalize(v), v)
+	}
+
+	fmt.Fprintln(b)
+	for _, v := range intptr {
+		fmt.Fprintf(b, "func AssignRemPtr%s(p uintptr, v %s) %[2]s { *(*%[2]s)(unsafe.Pointer(p)) %%= v; return *(*%[2]s)(unsafe.Pointer(p)) }\n\n", capitalize(v), v)
+	}
+
+	fmt.Fprintln(b)
+	for _, v := range scalar {
+		fmt.Fprintf(b, "func AssignAddPtr%s(p uintptr, v %s) %[2]s { *(*%[2]s)(unsafe.Pointer(p)) += v; return *(*%[2]s)(unsafe.Pointer(p)) }\n\n", capitalize(v), v)
+	}
+
+	fmt.Fprintln(b)
+	for _, v := range scalar {
+		fmt.Fprintf(b, "func AssignSubPtr%s(p uintptr, v %s) %[2]s { *(*%[2]s)(unsafe.Pointer(p)) -= v; return *(*%[2]s)(unsafe.Pointer(p)) }\n\n", capitalize(v), v)
+	}
+
+	fmt.Fprintln(b)
+	for _, v := range intptr {
+		fmt.Fprintf(b, "func AssignAndPtr%s(p uintptr, v %s) %[2]s { *(*%[2]s)(unsafe.Pointer(p)) &= v; return *(*%[2]s)(unsafe.Pointer(p)) }\n\n", capitalize(v), v)
+	}
+
+	fmt.Fprintln(b)
+	for _, v := range intptr {
+		fmt.Fprintf(b, "func AssignXorPtr%s(p uintptr, v %s) %[2]s { *(*%[2]s)(unsafe.Pointer(p)) ^= v; return *(*%[2]s)(unsafe.Pointer(p)) }\n\n", capitalize(v), v)
+	}
+
+	fmt.Fprintln(b)
+	for _, v := range intptr {
+		fmt.Fprintf(b, "func AssignOrPtr%s(p uintptr, v %s) %[2]s { *(*%[2]s)(unsafe.Pointer(p)) |= v; return *(*%[2]s)(unsafe.Pointer(p)) }\n\n", capitalize(v), v)
+	}
+
+	fmt.Fprintln(b)
+	for _, v := range scalar {
 		fmt.Fprintf(b, "func PreInc%s(p *%s, d %[2]s) %[2]s { *p += d; return *p }\n", capitalize(v), v)
 	}
 

@@ -23,7 +23,7 @@ import (
 const eof = stdio.DEOF
 
 // char *fgets(char *s, int size, FILE *stream);
-func Xfgets(t *TLS, s Intptr, size int32, stream uintptr) Intptr {
+func Xfgets(t *TLS, s uintptr, size int32, stream uintptr) uintptr {
 	// if dmesgs {
 	// 	dmesg("fgets(%#x, %#x, %#x(%d))", s, size, stream, *(*int32)(unsafe.Pointer(uintptr(stream))))
 	// }
@@ -36,7 +36,7 @@ func Xfgets(t *TLS, s Intptr, size int32, stream uintptr) Intptr {
 			b = append(b, buf[0])
 			if buf[0] == '\n' {
 				b = append(b, 0)
-				copy((*RawMem)(unsafe.Pointer(uintptr(s)))[:len(b)], b)
+				copy((*RawMem)(unsafe.Pointer(s))[:len(b)], b)
 				return s
 			}
 
@@ -62,7 +62,7 @@ func Xfgets(t *TLS, s Intptr, size int32, stream uintptr) Intptr {
 
 		// if len(b) != 0 {
 		// 		b = append(b, 0)
-		// 		copy((*RawMem)(unsafe.Pointer(uintptr(s))[:len(b)]), b)
+		// 		copy((*RawMem)(unsafe.Pointer(s)[:len(b)]), b)
 		// 		return s
 		// }
 
@@ -76,7 +76,7 @@ func Xfclose(t *TLS, stream uintptr) int32 {
 	// if dmesgs {
 	// 	dmesg("fclose(%#x(%d))", stream, *(*int32)(unsafe.Pointer(uintptr(stream))))
 	// }
-	err := unix.Close(int(*(*int32)(unsafe.Pointer(uintptr(stream)))))
+	err := unix.Close(int(*(*int32)(unsafe.Pointer(stream))))
 	// if dmesgs {
 	// 	dmesg("fclose(): %v", err)
 	// }
@@ -100,7 +100,7 @@ func Xfread(t *TLS, ptr, size, nmemb, stream uintptr) Size_t {
 	// if dmesgs {
 	// 	dmesg("fread(%#x, %#x, %#x, %#x(%d))", ptr, size, nmemb, stream, *(*int32)(unsafe.Pointer(uintptr(stream))))
 	// }
-	fd := *(*int32)(unsafe.Pointer(uintptr(stream)))
+	fd := *(*int32)(unsafe.Pointer(stream))
 	switch fd {
 	case 0:
 		panic("CRT")
@@ -109,7 +109,7 @@ func Xfread(t *TLS, ptr, size, nmemb, stream uintptr) Size_t {
 	case 2:
 		panic("CRT")
 	}
-	n, err := unix.Read(int(fd), (*RawMem)(unsafe.Pointer(uintptr(ptr)))[:size*nmemb])
+	n, err := unix.Read(int(fd), (*RawMem)(unsafe.Pointer(ptr))[:size*nmemb])
 	// if dmesgs {
 	// 	dmesg("fread(): %#x, %v", n, err)
 	// }
