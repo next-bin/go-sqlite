@@ -262,6 +262,26 @@ import "unsafe"
 	}
 
 	fmt.Fprintln(b)
+	for _, v := range intptr {
+		fmt.Fprintf(b, "func AssignShlPtr%s(p uintptr, v int) %s { *(*%[2]s)(unsafe.Pointer(p)) <<= v; return *(*%[2]s)(unsafe.Pointer(p)) }\n\n", capitalize(v), v)
+	}
+
+	fmt.Fprintln(b)
+	for _, v := range intptr {
+		fmt.Fprintf(b, "func AssignShrPtr%s(p uintptr, v int) %s { *(*%[2]s)(unsafe.Pointer(p)) >>= v; return *(*%[2]s)(unsafe.Pointer(p)) }\n\n", capitalize(v), v)
+	}
+
+	fmt.Fprintln(b)
+	for _, v := range intptr {
+		fmt.Fprintf(b, "func AssignShl%s(p *%s, v int) %[2]s { *p <<= v; return *p }\n\n", capitalize(v), v)
+	}
+
+	fmt.Fprintln(b)
+	for _, v := range intptr {
+		fmt.Fprintf(b, "func AssignShr%s(p *%s, v int) %[2]s { *p >>= v; return *p }\n\n", capitalize(v), v)
+	}
+
+	fmt.Fprintln(b)
 	for _, v := range scalar {
 		fmt.Fprintf(b, "func PreInc%s(p *%s, d %[2]s) %[2]s { *p += d; return *p }\n", capitalize(v), v)
 	}
