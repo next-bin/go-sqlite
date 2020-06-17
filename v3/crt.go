@@ -9,6 +9,7 @@
 package crt // import "modernc.org/crt/v3"
 
 import (
+	"bufio"
 	"fmt"
 	"math"
 	"os"
@@ -43,6 +44,8 @@ var (
 	stderr = int32(2)
 	stdin  = int32(1)
 	stdout = int32(0)
+
+	outBuf = bufio.NewWriter(os.Stdout)
 )
 
 //TODO- var ( //TODO-
@@ -363,7 +366,10 @@ func Xprintf(t *TLS, s, args uintptr) int32 {
 	// 	dmesg("Xprintf(%q, %#x)", GoString(s), args)
 	// }
 	b := printf(s, args)
-	os.Stdout.Write(b)
+	outBuf.Write(b)
+	if len(b) != 0 && b[len(b)-1] == '\n' {
+		outBuf.Flush()
+	}
 	return int32(len(b))
 }
 
@@ -612,7 +618,10 @@ func Xputchar(t *TLS, c int32) int32 {
 	// if dmesgs {
 	// 	dmesg("putchar(%#x)", c)
 	// }
-	_, err := os.Stdout.Write([]byte{byte(c)})
+	err := outBuf.WriteByte(byte(c))
+	if byte(c) == '\n' {
+		outBuf.Flush()
+	}
 	if err != nil {
 		if dmesgs {
 			dmesg("putchar(%#x): %v", c, err)
@@ -642,20 +651,21 @@ func X__builtin_memcpy(t *TLS, dest, src uintptr, n Size_t) (r uintptr) {
 }
 
 // int puts(const char *s);
-func Xputs(t *TLS, s Intptr) int32 {
+func Xputs(t *TLS, s uintptr) int32 {
 	// if dmesgs {
 	// 	dmesg("puts(%q)", GoString(s))
 	// }
 	var err error
 	for {
-		c := *(*byte)(unsafe.Pointer(uintptr(s)))
+		c := *(*byte)(unsafe.Pointer(s))
 		s++
 		if c == 0 {
-			_, err = os.Stdout.Write([]byte{'\n'})
+			err = outBuf.WriteByte('\n')
+			outBuf.Flush()
 			break
 		}
 
-		if _, err = os.Stdout.Write([]byte{c}); err != nil {
+		if err = outBuf.WriteByte(c); err != nil {
 			break
 		}
 	}
@@ -1095,6 +1105,7 @@ func Xexit(t *TLS, status int32) {
 	if dmesgs {
 		dmesg("exit(%v)", status)
 	}
+	outBuf.Flush()
 	os.Exit(int(status))
 }
 
@@ -1123,7 +1134,7 @@ func Xfprintf(t *TLS, stream, format, args uintptr) int32 {
 	switch fd {
 	case 0:
 		b := printf(format, args)
-		n, err := os.Stdout.Write(b)
+		n, err := outBuf.Write(b)
 		if err != nil {
 			t.setErrno(err)
 			return -1
@@ -1156,7 +1167,7 @@ func Xfflush(t *TLS, stream uintptr) int32 {
 	var err error
 	switch stream {
 	case 0:
-		if err = os.Stdout.Sync(); err != nil {
+		if err = outBuf.Flush(); err != nil {
 			break
 		}
 
@@ -1164,9 +1175,9 @@ func Xfflush(t *TLS, stream uintptr) int32 {
 	default:
 		switch *(*int32)(unsafe.Pointer(stream)) {
 		case 0:
-			os.Stdout.Sync()
+			err = outBuf.Flush()
 		case 2:
-			os.Stderr.Sync()
+			err = os.Stderr.Sync()
 		}
 	}
 	if err != nil {
@@ -1671,7 +1682,7 @@ func X_IO_putc(t *TLS, c int32, fp uintptr) int32 {
 	fd := *(*int32)(unsafe.Pointer(fp))
 	switch fd {
 	case 0:
-		_, err := os.Stdout.Write([]byte{byte(c)})
+		err := outBuf.WriteByte(byte(c))
 		if err != nil {
 			t.setErrno(err)
 			if dmesgs {
