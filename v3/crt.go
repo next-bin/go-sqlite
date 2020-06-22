@@ -1121,7 +1121,7 @@ func X__assert_fail(t *TLS, assertion, file uintptr, line uint32, function uintp
 }
 
 // int getrusage(int who, struct rusage *usage);
-func Xgetrusage(t *TLS, who int32, usage Intptr) int32 {
+func Xgetrusage(t *TLS, who int32, usage uintptr) int32 {
 	panic("CRT")
 }
 
@@ -1242,20 +1242,20 @@ func Xrewind(t *TLS, stream uintptr) {
 }
 
 // int mkdir(const char *path, mode_t mode);
-func Xmkdir(t *TLS, path Intptr, mode int32) int32 {
+func Xmkdir(t *TLS, path uintptr, mode uint32) int32 {
 	panic("CRT")
 }
 
 // int symlink(const char *target, const char *linkpath);
-func Xsymlink(t *TLS, target, linkpath Intptr) int32 {
+func Xsymlink(t *TLS, target, linkpath uintptr) int32 {
 	panic("CRT")
 }
 
 // int * __errno_location(void);
-func X__errno_location(t *TLS) Intptr { return Intptr(t.errnop) }
+func X__errno_location(t *TLS) uintptr { return t.errnop }
 
 // int chmod(const char *pathname, mode_t mode)
-func Xchmod(t *TLS, pathname Intptr, mode int32) int32 {
+func Xchmod(t *TLS, pathname uintptr, mode uint32) int32 {
 	panic("CRT")
 }
 
@@ -1265,7 +1265,7 @@ func Xfwrite(t *TLS, ptr uintptr, size, nmemb Size_t, stream uintptr) Size_t {
 }
 
 // time_t time(time_t *tloc);
-func Xtime(t *TLS, tloc Intptr) Intptr {
+func Xtime(t *TLS, tloc uintptr) Intptr {
 	panic("CRT")
 }
 
@@ -1284,27 +1284,27 @@ func Xmemmove(t *TLS, dest, src uintptr, n Size_t) uintptr {
 }
 
 // int utimes(const char *filename, const struct timeval times[2]);
-func Xutimes(t *TLS, filename, times Intptr) int32 {
+func Xutimes(t *TLS, filename, times uintptr) int32 {
 	panic("CRT")
 }
 
 // int closedir(DIR *dirp);
-func Xclosedir(t *TLS, dir Intptr) int32 {
+func Xclosedir(t *TLS, dir uintptr) int32 {
 	panic("CRT")
 }
 
 // DIR *opendir(const char *name);
-func Xopendir(t *TLS, dir Intptr) Intptr {
+func Xopendir(t *TLS, dir uintptr) uintptr {
 	panic("CRT")
 }
 
 // struct dirent *readdir(DIR *dirp);
-func Xreaddir64(t *TLS, dir Intptr) Intptr {
+func Xreaddir64(t *TLS, dir uintptr) uintptr {
 	panic("CRT")
 }
 
 // ssize_t readlink(const char *restrict path, char *restrict buf, size_t bufsize);
-func Xreadlink(t *TLS, path, buf uintptr, bufsize Size_t) Intptr {
+func Xreadlink(t *TLS, path, buf uintptr, bufsize Size_t) Ssize_t {
 	panic("CRT")
 }
 
@@ -1323,7 +1323,7 @@ func Xgetenv(t *TLS, name uintptr) uintptr {
 }
 
 // char *strstr(const char *haystack, const char *needle);
-func Xstrstr(t *TLS, haystack, needle Intptr) Intptr {
+func Xstrstr(t *TLS, haystack, needle uintptr) uintptr {
 	panic("CRT")
 }
 
@@ -1347,9 +1347,9 @@ func Xfgetc(t *TLS, stream uintptr) int32 {
 }
 
 // int access(const char *pathname, int mode);
-func Xaccess(t *TLS, pathname Intptr, mode int32) int32 {
+func Xaccess(t *TLS, pathname uintptr, mode int32) int32 {
 	//TODO handle properly F_OK
-	r, _, err := syscall.Syscall(syscall.SYS_ACCESS, uintptr(pathname), uintptr(mode), 0)
+	r, _, err := syscall.Syscall(syscall.SYS_ACCESS, pathname, uintptr(mode), 0)
 	if err != 0 {
 		t.setErrno(err)
 		if dmesgs {
@@ -1370,17 +1370,17 @@ func Xpclose(t *TLS, stream uintptr) int32 {
 }
 
 // int chdir(const char *path);
-func Xchdir(t *TLS, path Intptr) int32 {
+func Xchdir(t *TLS, path uintptr) int32 {
 	panic("CRT")
 }
 
 // FILE *popen(const char *command, const char *type);
-func Xpopen(t *TLS, command, typ Intptr) Intptr {
+func Xpopen(t *TLS, command, typ uintptr) uintptr {
 	panic("CRT")
 }
 
 // long int strtol(const char *nptr, char **endptr, int base);
-func Xstrtol(t *TLS, nptr, endptr Intptr, base int32) long {
+func Xstrtol(t *TLS, nptr, endptr uintptr, base int32) long {
 	panic("CRT")
 }
 
@@ -1390,12 +1390,12 @@ func Xtolower(t *TLS, c int32) int32 {
 }
 
 // uid_t getuid(void);
-func Xgetuid(t *TLS) int32 {
+func Xgetuid(t *TLS) uint32 {
 	r := os.Getuid()
 	// if dmesgs {
 	// 	dmesg("geuid(): %v", r)
 	// }
-	return int32(r)
+	return uint32(r)
 }
 
 // int isatty(int fd);
@@ -1415,7 +1415,7 @@ func cString(s string) uintptr {
 }
 
 // int setvbuf(FILE *stream, char *buf, int mode, size_t size);
-func Xsetvbuf(t *TLS, stream, buf Intptr, mode int32, size Size_t) int32 {
+func Xsetvbuf(t *TLS, stream, buf uintptr, mode int32, size Size_t) int32 {
 	// if dmesgs {
 	// 	dmesg("setvbuf(%#x(%d), %#x, %#x, %#x)", stream, *(*int32)(unsafe.Pointer(stream)), buf, mode, size)
 	// }
@@ -1440,7 +1440,7 @@ func Xsignal(t *TLS, signum int32, handler uintptr) Intptr {
 }
 
 // char *strdup(const char *s);
-func Xstrdup(t *TLS, s Intptr) Intptr {
+func Xstrdup(t *TLS, s uintptr) uintptr {
 	panic("CRT")
 }
 
@@ -1459,8 +1459,8 @@ type tm struct {
 var localtime = mustCalloc(int(unsafe.Sizeof(tm{})))
 
 // struct tm *localtime(const time_t *timep);
-func Xlocaltime(_ *TLS, timep Intptr) Intptr {
-	ut := *(*syscall.Time_t)(unsafe.Pointer(uintptr(timep)))
+func Xlocaltime(_ *TLS, timep uintptr) uintptr {
+	ut := *(*syscall.Time_t)(unsafe.Pointer(timep))
 	t := time.Unix(int64(ut), 0)
 	(*tm)(unsafe.Pointer(localtime)).sec = int32(t.Second())
 	(*tm)(unsafe.Pointer(localtime)).min = int32(t.Minute())
@@ -1471,7 +1471,7 @@ func Xlocaltime(_ *TLS, timep Intptr) Intptr {
 	(*tm)(unsafe.Pointer(localtime)).wday = int32(t.Weekday())
 	(*tm)(unsafe.Pointer(localtime)).yday = int32(t.YearDay())
 	(*tm)(unsafe.Pointer(localtime)).isdst = -1 //TODO
-	return Intptr(localtime)
+	return localtime
 
 }
 
@@ -1511,27 +1511,27 @@ func Xstrerror(t *TLS, errnum int32) uintptr {
 }
 
 // void *dlopen(const char *filename, int flags);
-func Xdlopen(t *TLS, filename Intptr, flags int32) Intptr {
+func Xdlopen(t *TLS, filename uintptr, flags int32) uintptr {
 	panic("CRT")
 }
 
 // char *dlerror(void);
-func Xdlerror(t *TLS) Intptr {
+func Xdlerror(t *TLS) uintptr {
 	panic("CRT")
 }
 
 // void *dlsym(void *handle, const char *symbol);
-func Xdlsym(t *TLS, handle, symbol Intptr) Intptr {
+func Xdlsym(t *TLS, handle, symbol uintptr) uintptr {
 	panic("CRT")
 }
 
 // int dlclose(void *handle);
-func Xdlclose(t *TLS, handle Intptr) int32 {
+func Xdlclose(t *TLS, handle uintptr) int32 {
 	panic("CRT")
 }
 
 // unsigned int sleep(unsigned int seconds);
-func Xsleep(t *TLS, seconds int32) int32 {
+func Xsleep(t *TLS, seconds uint32) uint32 {
 	// if dmesgs {
 	// 	dmesg("sleep(%d)", seconds)
 	// }
@@ -1540,10 +1540,10 @@ func Xsleep(t *TLS, seconds int32) int32 {
 }
 
 // size_t strcspn(const char *s, const char *reject);
-func Xstrcspn(t *TLS, s, reject Intptr) (r Size_t) {
+func Xstrcspn(t *TLS, s, reject uintptr) (r Size_t) {
 	bits := newBits(256)
 	for {
-		c := *(*byte)(unsafe.Pointer(uintptr(reject)))
+		c := *(*byte)(unsafe.Pointer(reject))
 		if c == 0 {
 			break
 		}
@@ -1552,7 +1552,7 @@ func Xstrcspn(t *TLS, s, reject Intptr) (r Size_t) {
 		bits.set(int(c))
 	}
 	for {
-		c := *(*byte)(unsafe.Pointer(uintptr(s)))
+		c := *(*byte)(unsafe.Pointer(s))
 		if bits.has(int(c)) {
 			return r
 		}
@@ -1583,17 +1583,17 @@ func Xgetcwd(t *TLS, buf uintptr, size Size_t) uintptr {
 }
 
 // int fchmod(int fd, mode_t mode);
-func Xfchmod(t *TLS, fd, mode int32) int32 {
+func Xfchmod(t *TLS, fd int32, mode uint32) int32 {
 	panic("CRT")
 }
 
 // int rmdir(const char *pathname);
-func Xrmdir(t *TLS, pathname Intptr) int32 {
+func Xrmdir(t *TLS, pathname uintptr) int32 {
 	panic("CRT")
 }
 
 // int fchown(int fd, uid_t owner, gid_t group);
-func Xfchown(t *TLS, fd, owner, grout int32) int32 {
+func Xfchown(t *TLS, fd int32, owner, grout uint32) int32 {
 	panic("CRT")
 }
 

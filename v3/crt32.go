@@ -13,10 +13,11 @@ import (
 )
 
 type (
-	Intptr = int32
-	Size_t = uint32
-	RawMem [1<<31 - 1]byte
-	long   = int32
+	Intptr  = int32
+	Size_t  = uint32
+	Ssize_t = int32
+	RawMem  [1<<31 - 1]byte
+	long    = int32
 )
 
 type bits []int

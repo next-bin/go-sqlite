@@ -96,7 +96,7 @@ func Xfclose(t *TLS, stream uintptr) int32 {
 }
 
 // size_t fread(void *ptr, size_t size, size_t nmemb, FILE *stream);
-func Xfread(t *TLS, ptr, size, nmemb, stream uintptr) Size_t {
+func Xfread(t *TLS, ptr uintptr, size, nmemb Size_t, stream uintptr) Size_t {
 	// if dmesgs {
 	// 	dmesg("fread(%#x, %#x, %#x, %#x(%d))", ptr, size, nmemb, stream, *(*int32)(unsafe.Pointer(uintptr(stream))))
 	// }
@@ -197,7 +197,7 @@ func Xunlink(t *TLS, pathname uintptr) int32 {
 var staticPasswd pwd.Spasswd
 
 // struct passwd *getpwuid(uid_t uid);
-func Xgetpwuid(t *TLS, uid int32) Intptr {
+func Xgetpwuid(t *TLS, uid uint32) uintptr {
 	// if dmesgs {
 	// 	dmesg("getpwuid(%d)", uid)
 	// }
@@ -239,7 +239,7 @@ func Xgetpwuid(t *TLS, uid int32) Intptr {
 	// 		GoString(Intptr(staticPasswd.pw_shell)),
 	// 	)
 	// }
-	return Intptr(uintptr(unsafe.Pointer(&staticPasswd)))
+	return uintptr(unsafe.Pointer(&staticPasswd))
 }
 
 // off64_t lseek64(int fd, off64_t offset, int whence);
@@ -302,14 +302,14 @@ func Xsysconf(t *TLS, name int32) long {
 }
 
 // int gettimeofday(struct timeval *tv, struct timezone *tz);
-func Xgettimeofday(t *TLS, tv, tz Intptr) int32 {
+func Xgettimeofday(t *TLS, tv, tz uintptr) int32 {
 	// if dmesgs {
 	// 	dmesg("gettimeofday(%#x, %#x)", tv, tz)
 	// }
 	if tz != 0 {
 		panic("CRT")
 	}
-	err := unix.Gettimeofday((*unix.Timeval)(unsafe.Pointer(uintptr(tv))))
+	err := unix.Gettimeofday((*unix.Timeval)(unsafe.Pointer(tv)))
 	// if dmesgs {
 	// 	dmesg("gettimeofday(): %v", err)
 	// }
@@ -348,11 +348,11 @@ func Xclose(t *TLS, fd int32) int32 {
 }
 
 // int fstat(int fd, struct stat *statbuf);
-func Xfstat64(t *TLS, fd int32, statbuf Intptr) int32 {
+func Xfstat64(t *TLS, fd int32, statbuf uintptr) int32 {
 	// if dmesgs {
 	// 	dmesg("fstat64(%d, %#x)", fd, statbuf)
 	// }
-	err := unix.Fstat(int(fd), (*unix.Stat_t)(unsafe.Pointer(uintptr(statbuf))))
+	err := unix.Fstat(int(fd), (*unix.Stat_t)(unsafe.Pointer(statbuf)))
 	// if dmesgs {
 	// 	dmesg("fstat64(): %v", err)
 	// }
@@ -420,11 +420,11 @@ func Xfcntl64(t *TLS, fd, cmd int32, args uintptr) int32 {
 }
 
 // ssize_t read(int fd, void *buf, size_t count);
-func Xread(t *TLS, fd int32, buf, count Intptr) Intptr {
+func Xread(t *TLS, fd int32, buf uintptr, count Size_t) Ssize_t {
 	// if dmesgs {
 	// 	dmesg("read(%d, %#x, %#x)", fd, buf, count)
 	// }
-	n, err := unix.Read(int(fd), (*RawMem)(unsafe.Pointer(uintptr(buf)))[:count])
+	n, err := unix.Read(int(fd), (*RawMem)(unsafe.Pointer(buf))[:count])
 	// if dmesgs {
 	// 	dmesg("read(): %#x, %v", n, err)
 	// }
@@ -439,11 +439,11 @@ func Xread(t *TLS, fd int32, buf, count Intptr) Intptr {
 	// if dmesgs {
 	// 	dmesg("read(): %#x", n)
 	// }
-	return Intptr(n)
+	return Ssize_t(n)
 }
 
 // ssize_t write(int fd, const void *buf, size_t count);
-func Xwrite(t *TLS, fd int32, buf, count Intptr) Intptr {
+func Xwrite(t *TLS, fd int32, buf uintptr, count Size_t) Ssize_t {
 	// if dmesgs {
 	// 	dmesg("write(%d, %#x, %#x)", fd, buf, count)
 	// }
@@ -466,12 +466,12 @@ func Xwrite(t *TLS, fd int32, buf, count Intptr) Intptr {
 }
 
 // uid_t geteuid(void);
-func Xgeteuid(t *TLS) int32 {
+func Xgeteuid(t *TLS) uint32 {
 	r := unix.Geteuid()
 	// if dmesgs {
 	// 	dmesg("geteuid(): %d", r)
 	// }
-	return int32(r)
+	return uint32(r)
 }
 
 func mmanProt(n int32) string {
@@ -498,7 +498,7 @@ func mmanProt(n int32) string {
 }
 
 // void *mmap(void *addr, size_t length, int prot, int flags, int fd, off_t offset);
-func Xmmap64(t *TLS, addr, length Intptr, prot, flags, fd int32, offset int64) Intptr {
+func Xmmap64(t *TLS, addr uintptr, length Size_t, prot, flags, fd int32, offset Ssize_t) uintptr {
 	// if dmesgs {
 	// 	dmesg("mmap64(%#x, %#x, %s, %s, %d, %#x)", addr, length, mmanProt(prot), mmanFlags(flags), fd, offset)
 	// }
@@ -508,17 +508,17 @@ func Xmmap64(t *TLS, addr, length Intptr, prot, flags, fd int32, offset int64) I
 		if dmesgs {
 			dmesg("mmap64(): %v", err)
 		}
-		return -1 // (void*)-1
+		return UintptrFromInt32(-1) // (void*)-1
 	}
 
 	// if dmesgs {
 	//	dmesg("mmap64(): %#x", data)
 	// }
-	return Intptr(data)
+	return data
 }
 
 // int munmap(void *addr, size_t length);
-func Xmunmap(t *TLS, addr, length Intptr) int32 {
+func Xmunmap(t *TLS, addr uintptr, length Size_t) int32 {
 	// if dmesgs {
 	// 	dmesg("munmap(%#x, %d)", addr, length)
 	// }

@@ -653,7 +653,7 @@ var Config = map[string]string{
 type Spasswd = struct {
 	Fpw_name   uintptr
 	Fpw_passwd uintptr
-	Fpw_uid    int32
+	Fpw_uid    uint32
 	Fpw_gid    int32
 	Fpw_gecos  uintptr
 	Fpw_dir    uintptr

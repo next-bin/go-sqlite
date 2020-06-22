@@ -62,8 +62,8 @@ var __ctype_b_table = [...]uint16{
 
 var ptable = uintptr(unsafe.Pointer(&__ctype_b_table[128]))
 
-func X__ctype_b_loc(t *TLS) Intptr {
-	r := Intptr(uintptr(unsafe.Pointer(&ptable)))
+func X__ctype_b_loc(t *TLS) uintptr {
+	r := uintptr(unsafe.Pointer(&ptable))
 	// if dmesgs {
 	// 	dmesg("__ctype_b_loc(): %#x", r)
 	// }
