@@ -274,6 +274,8 @@ func (t *TLS) Alloc(n int) (r uintptr) {
 }
 
 func (t *TLS) Free(n int) {
+	n += 15
+	n &^= 15
 	//TODO- atomic.AddInt64(&StackFrees, 1)
 	//TODO hysteresis
 	//TODO- defer t.dump(" free", n, 0)
@@ -698,6 +700,10 @@ func Xcalloc(t *TLS, n, size Size_t) uintptr {
 // Note: The C translated to Go varargs ABI alignment for all types is 8 at all
 // architectures.
 func VaList(p uintptr, args ...interface{}) (r uintptr) {
+	if p&7 != 0 {
+		panic("internal error")
+	}
+
 	r = p
 	for _, v := range args {
 		switch x := v.(type) {
