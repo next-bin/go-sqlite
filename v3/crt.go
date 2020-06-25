@@ -1276,9 +1276,7 @@ func Xtime(t *TLS, tloc uintptr) Intptr {
 }
 
 // int fputc(int c, FILE *stream);
-func Xfputc(t *TLS, c int32, stream uintptr) int32 {
-	panic("CRT")
-}
+func Xfputc(t *TLS, c int32, stream uintptr) int32 { return X_IO_putc(t, c, stream) }
 
 // void *memmove(void *dest, const void *src, size_t n);
 func Xmemmove(t *TLS, dest, src uintptr, n Size_t) uintptr {
@@ -1392,7 +1390,11 @@ func Xstrtol(t *TLS, nptr, endptr uintptr, base int32) long {
 
 // int tolower(int c);
 func Xtolower(t *TLS, c int32) int32 {
-	panic("CRT")
+	if c >= 'A' && c <= 'Z' {
+		return c - 'A' + 'a'
+	}
+
+	return c
 }
 
 // uid_t getuid(void);
@@ -1604,7 +1606,7 @@ func Xfchown(t *TLS, fd int32, owner, grout uint32) int32 {
 }
 
 // int backtrace(void **buffer, int size);
-func Xbacktrace(t *TLS, buf Intptr, size int32) int32 {
+func Xbacktrace(t *TLS, buf uintptr, size int32) int32 {
 	return 0
 }
 

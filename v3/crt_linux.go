@@ -607,6 +607,6 @@ func Xfileno(t *TLS, stream uintptr) int32 {
 }
 
 // void backtrace_symbols_fd(void *const *buffer, int size, int fd);
-func Xbacktrace_symbols_fd(t *TLS, buffer Intptr, size, fd int32) int32 {
+func Xbacktrace_symbols_fd(t *TLS, buffer uintptr, size, fd int32) int32 {
 	panic("CRT")
 }
