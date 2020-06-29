@@ -1561,7 +1561,7 @@ func Xstrcspn(t *TLS, s, reject uintptr) (r Size_t) {
 	}
 	for {
 		c := *(*byte)(unsafe.Pointer(s))
-		if bits.has(int(c)) {
+		if c == 0 || bits.has(int(c)) {
 			return r
 		}
 
@@ -1767,7 +1767,7 @@ func CString(s string) (uintptr, error) {
 }
 
 // int usleep(useconds_t usec);
-func Xusleep(t *TLS, usec int32) int32 {
+func Xusleep(t *TLS, usec uint32) int32 {
 	// if dmesgs {
 	// 	dmesg("usleep(%d)", usec)
 	// }
