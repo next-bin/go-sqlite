@@ -400,7 +400,7 @@ func printf(s, args uintptr) (r []byte) {
 			c := *(*byte)(unsafe.Pointer(uintptr(s)))
 			s++
 			switch {
-			case c >= '0' && c <= '9' || c == '.' || c == '#':
+			case c >= '0' && c <= '9' || c == '.' || c == '#' || c == '-':
 				spec = append(spec, c)
 				goto more
 			case c == '*':
