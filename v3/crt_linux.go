@@ -610,3 +610,13 @@ func Xfileno(t *TLS, stream uintptr) int32 {
 func Xbacktrace_symbols_fd(t *TLS, buffer uintptr, size, fd int32) int32 {
 	panic("CRT")
 }
+
+// int getrlimit(int resource, struct rlimit *rlim);
+func Xgetrlimit(t *TLS, resource int32, rlim uintptr) int32 {
+	panic("CRT")
+}
+
+// int setrlimit(int resource, const struct rlimit *rlim);
+func Xsetrlimit(t *TLS, resource int32, rlim uintptr) int32 {
+	panic("CRT")
+}
