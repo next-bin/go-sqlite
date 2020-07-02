@@ -1828,3 +1828,15 @@ func X__builtin_huge_val(t *TLS) float64 { return math.Inf(0) }
 
 // float __builtin_huge_valf (void);
 func X__builtin_huge_valg(t *TLS) float32 { return float32(math.Inf(0)) }
+
+// int sscanf(const char *str, const char *format, ...);
+func Xsscanf(t *TLS, str, format, va uintptr) int32 {
+	panic("CRT")
+}
+
+func X__isoc99_sscanf(t *TLS, str, format, va uintptr) int32 { return Xsscanf(t, str, format, va) }
+
+// double atof(const char *nptr);
+func Xatof(t *TLS, nptr uintptr) float64 {
+	panic("CRT")
+}
