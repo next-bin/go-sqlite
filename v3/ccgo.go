@@ -820,6 +820,8 @@ func Uint8(n uint8) uint8       { return n }
 func Uint16(n uint16) uint16    { return n }
 func Uint32(n uint32) uint32    { return n }
 func Uint64(n uint64) uint64    { return n }
+func Float32(n float32) float32 { return n }
+func Float64(n float64) float64 { return n }
 func Uintptr(n uintptr) uintptr { return n }
 
 func NegInt8(n int8) int8          { return -n }

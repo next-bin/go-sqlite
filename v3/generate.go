@@ -309,7 +309,7 @@ import "unsafe"
 	}
 
 	fmt.Fprintln(b)
-	for _, v := range intptr {
+	for _, v := range scalar {
 		fmt.Fprintf(b, "func %s(n %s) %[2]s { return n }\n", capitalize(v), v)
 	}
 
