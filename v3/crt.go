@@ -1123,7 +1123,8 @@ func X__assert_fail(t *TLS, assertion, file uintptr, line uint32, function uintp
 		dmesg("__assert_fail(%q, %q, %v, %q)", GoString(assertion), GoString(file), line, GoString(function))
 	}
 	fmt.Fprintf(os.Stderr, "assertion failure: %s:%d.%s: %s\n", GoString(file), line, GoString(function), GoString(assertion))
-	os.Exit(1)
+	os.Stderr.Sync()
+	Xexit(t, 1)
 }
 
 // int getrusage(int who, struct rusage *usage);
@@ -1793,14 +1794,14 @@ func X__builtin_expect(t *TLS, exp, c long) long { return exp }
 func X__builtin_trap(t *TLS) {
 	fmt.Fprintf(os.Stderr, "%s\ntrap\n", debug.Stack())
 	os.Stderr.Sync()
-	os.Exit(1)
+	Xexit(t, 1)
 }
 
 // void __builtin_unreachable (void)
 func X__builtin_unreachable(t *TLS) {
 	fmt.Fprintf(os.Stderr, "%s\nunrechable\n", debug.Stack())
 	os.Stderr.Sync()
-	os.Exit(1)
+	Xexit(t, 1)
 }
 
 // double __builtin_inf (void)
