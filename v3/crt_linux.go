@@ -128,6 +128,9 @@ func Xfread(t *TLS, ptr uintptr, size, nmemb Size_t, stream uintptr) Size_t {
 }
 
 // int stat(const char *pathname, struct stat *statbuf);
+func Xstat(t *TLS, pathname, stat uintptr) int32 { return Xstat64(t, pathname, stat) }
+
+// int stat(const char *pathname, struct stat *statbuf);
 func Xstat64(t *TLS, pathname, stat uintptr) int32 {
 	s := GoString(pathname)
 	// if dmesgs {

@@ -59,9 +59,11 @@ var (
 //TODO- )
 
 // Keep these outside of the var block otherwise go generate will miss them.
+var Xenviron uintptr
 var Xstderr = uintptr(unsafe.Pointer(&stderr))
 var Xstdin = uintptr(unsafe.Pointer(&stdin))
 var Xstdout = uintptr(unsafe.Pointer(&stdout))
+var Xin6addr_any uintptr //TODO
 
 func Start(main func(*TLS, int32, uintptr) int32) {
 	argv := mustCalloc((len(os.Args) + 1) * int(uintptrSize))
@@ -72,8 +74,20 @@ func Start(main func(*TLS, int32, uintptr) int32) {
 		*(*uintptr)(unsafe.Pointer(p)) = s
 		p += uintptrSize
 	}
+	SetEnviron(os.Environ())
 	t := NewTLS()
 	Xexit(t, main(t, int32(len(os.Args)), argv))
+}
+
+func SetEnviron(env []string) {
+	p := mustCalloc((len(env) + 1) * int(uintptrSize))
+	for _, v := range env {
+		s := mustCalloc(len(v) + 1)
+		copy((*(*[1 << 20]byte)(unsafe.Pointer(s)))[:], v)
+		*(*uintptr)(unsafe.Pointer(p)) = s
+		p += uintptrSize
+	}
+	Xenviron = p
 }
 
 func Bool32(b bool) int32 {
@@ -1199,6 +1213,11 @@ func Xfflush(t *TLS, stream uintptr) int32 {
 	return 0
 }
 
+// FILE *fdopen(int fd, const char *mode);
+func Xfdopen(t *TLS, fd int32, mode uintptr) uintptr {
+	panic("CRT")
+}
+
 // FILE *fopen(const char *pathname, const char *mode);
 func Xfopen(t *TLS, pathname, mode uintptr) uintptr { return Xfopen64(t, pathname, mode) }
 
@@ -1304,6 +1323,9 @@ func Xopendir(t *TLS, dir uintptr) uintptr {
 }
 
 // struct dirent *readdir(DIR *dirp);
+func Xreaddir(t *TLS, dir uintptr) uintptr { return Xreaddir64(t, dir) }
+
+// struct dirent *readdir(DIR *dirp);
 func Xreaddir64(t *TLS, dir uintptr) uintptr {
 	panic("CRT")
 }
@@ -1386,6 +1408,11 @@ func Xpopen(t *TLS, command, typ uintptr) uintptr {
 
 // long int strtol(const char *nptr, char **endptr, int base);
 func Xstrtol(t *TLS, nptr, endptr uintptr, base int32) long {
+	panic("CRT")
+}
+
+// unsigned long int strtoul(const char *nptr, char **endptr, int base);
+func Xstrtoul(t *TLS, nptr, endptr uintptr, base int32) long {
 	panic("CRT")
 }
 
@@ -1482,6 +1509,16 @@ func Xlocaltime(_ *TLS, timep uintptr) uintptr {
 	(*tm)(unsafe.Pointer(localtime)).isdst = -1 //TODO
 	return localtime
 
+}
+
+// struct tm *localtime_r(const time_t *timep, struct tm *result);
+func Xlocaltime_r(_ *TLS, timep, tm uintptr) uintptr {
+	panic("CRT")
+}
+
+// int open(const char *pathname, int flags, ...);
+func Xopen(t *TLS, pathname uintptr, flags int32, args uintptr) int32 {
+	return Xopen64(t, pathname, flags, args)
 }
 
 // int open(const char *pathname, int flags, ...);
@@ -1839,5 +1876,270 @@ func X__isoc99_sscanf(t *TLS, str, format, va uintptr) int32 { return Xsscanf(t,
 
 // double atof(const char *nptr);
 func Xatof(t *TLS, nptr uintptr) float64 {
+	panic("CRT")
+}
+
+// int __isnanf(float arg);
+func X__isnanf(t *TLS, arg float32) int32 {
+	return Bool32(math.IsNaN(float64(arg)))
+}
+
+// int __isnan(double arg);
+func X__isnan(t *TLS, arg float64) int32 {
+	return Bool32(math.IsNaN(arg))
+}
+
+// int __isnan(long double arg);
+func X__isnanl(t *TLS, arg float64) int32 {
+	return Bool32(math.IsNaN(arg))
+}
+
+// double modf(double x, double *iptr);
+func Xmodf(t *TLS, x float64, iptr uintptr) float64 {
+	panic("CRT")
+}
+
+// time_t mktime(struct tm *tm);
+func Xmktime(t *TLS, tm uintptr) Intptr {
+	panic("CRT")
+}
+
+// void tzset (void);
+func Xtzset(t *TLS) {
+	panic("CRT")
+}
+
+// char *strpbrk(const char *s, const char *accept);
+func Xstrpbrk(t *TLS, s, accept uintptr) uintptr {
+	panic("CRT")
+}
+
+// void *memchr(const void *s, int c, size_t n);
+func Xmemchr(t *TLS, s uintptr, c int32, n Size_t) uintptr {
+	panic("CRT")
+}
+
+// struct servent *getservbyname(const char *name, const char *proto);
+func Xgetservbyname(t *TLS, name, proto uintptr) uintptr {
+	panic("CRT")
+}
+
+// uint16_t ntohs(uint16_t netshort);
+func Xntohs(t *TLS, netshort uint16) uint16 {
+	panic("CRT")
+}
+
+// int getsockopt(int sockfd, int level, int optname, void *optval, socklen_t *optlen);
+func Xgetsockopt(t *TLS, sockfd, level, optname int32, optval, optlen uintptr) int32 {
+	panic("CRT")
+}
+
+// int setsockopt(int sockfd, int level, int optname, const void *optval, socklen_t optlen);
+func Xsetsockopt(t *TLS, sockfd, level, optname int32, optval, optlen uintptr) int32 {
+	panic("CRT")
+}
+
+// int getaddrinfo(const char *node, const char *service, const struct addrinfo *hints, struct addrinfo **res);
+func Xgetaddrinfo(t *TLS, node, service, hints, addrinfo uintptr) int32 {
+	panic("CRT")
+}
+
+// const char *gai_strerror(int errcode);
+func Xgai_strerror(t *TLS, errcode int32) uintptr {
+	panic("CRT")
+}
+
+// double frexp(double x, int *exp);
+func Xfrexp(t *TLS, x float64, expr uintptr) float64 {
+	panic("CRT")
+}
+
+// double ldexp(double x, int exp);
+func Xldexp(t *TLS, x float64, expr uintptr) float64 {
+	panic("CRT")
+}
+
+// off_t lseek(int fd, off_t offset, int whence);
+func Xlseek(t *TLS, fd int32, offset Intptr, whence int32) Intptr {
+	panic("CRT")
+}
+
+// int tcgetattr(int fd, struct termios *termios_p);
+func Xtcgetattr(t *TLS, fd int32, termios_p uintptr) int32 {
+	panic("CRT")
+}
+
+// int tcsetattr(int fd, int optional_actions, const struct termios *termios_p);
+func Xtcsetattr(t *TLS, fd, optional_actions int32, termios_p uintptr) int32 {
+	panic("CRT")
+}
+
+// int ioctl(int fd, unsigned long request, ...);
+func Xioctl(t *TLS, fd int32, request ulong, va uintptr) int32 {
+	panic("CRT")
+}
+
+// speed_t cfgetospeed(const struct termios *termios_p);
+func Xcfgetospeed(t *TLS, termios_p uintptr) int32 {
+	panic("CRT")
+}
+
+// int cfsetospeed(struct termios *termios_p, speed_t speed);
+func Xcfsetospeed(t *TLS, termios_p uintptr, speed int32) int32 {
+	panic("CRT")
+}
+
+// int getsockname(int sockfd, struct sockaddr *addr, socklen_t *addrlen);
+func Xgetsockname(t *TLS, sockfd int32, addr, addrlen uintptr) int32 {
+	panic("CRT")
+}
+
+// int cfsetispeed(struct termios *termios_p, speed_t speed);
+func Xcfsetispeed(t *TLS, termios_p uintptr, speed int32) int32 {
+	panic("CRT")
+}
+
+// int select(int nfds, fd_set *readfds, fd_set *writefds, fd_set *exceptfds, struct timeval *timeout);
+func Xselect(t *TLS, nfds int32, readfds, writefds, exceptfds, timeout uintptr) int32 {
+	panic("CRT")
+}
+
+// int ftruncate(int fd, off_t length);
+func Xftruncate(t *TLS, fd int32, length Intptr) int32 {
+	panic("CRT")
+}
+
+// int rename(const char *oldpath, const char *newpath);
+func Xrename(t *TLS, oldpath, newpath uintptr) int32 {
+	panic("CRT")
+}
+
+// char *realpath(const char *path, char *resolved_path);
+func Xrealpath(t *TLS, path, resolved_path uintptr) uintptr {
+	panic("CRT")
+}
+
+// int lstat(const char *pathname, struct stat *statbuf);
+func Xlstat(t *TLS, pathname, statbuf uintptr) int32 {
+	panic("CRT")
+}
+
+// int mknod(const char *pathname, mode_t mode, dev_t dev);
+func Xmknod(t *TLS, pathname uintptr, mode, dev uint32) int32 {
+	panic("CRT")
+}
+
+// int mkfifo(const char *pathname, mode_t mode);
+func Xmkfifo(t *TLS, pathname uintptr, mode uint32) int32 {
+	panic("CRT")
+}
+
+// mode_t umask(mode_t mask);
+func Xumask(t *TLS, mask uint32) uint32 {
+	panic("CRT")
+}
+
+// FTS *fts_open(char * const *path_argv, int options, int (*compar)(const FTSENT **, const FTSENT **));
+func Xfts_open(t *TLS, path_argv uintptr, options int32, compar uintptr) uintptr {
+	panic("CRT")
+}
+
+// FTSENT *fts_read(FTS *ftsp);
+func Xfts_read(t *TLS, ftsp uintptr) uintptr {
+	panic("CRT")
+}
+
+// int fts_close(FTS *ftsp);
+func Xfts_close(t *TLS, ftsp uintptr) int32 {
+	panic("CRT")
+}
+
+// int utime(const char *filename, const struct utimbuf *times);
+func Xutime(t *TLS, file, times *uintptr) int32 {
+	panic("CRT")
+}
+
+// int chown(const char *pathname, uid_t owner, gid_t group);
+func Xchown(t *TLS, pathname uintptr, owner, group int32) int32 {
+	panic("CRT")
+}
+
+// int mkstemps(char *template, int suffixlen);
+func Xmkstemps(t *TLS, template uintptr, suffixlen int32) int32 {
+	panic("CRT")
+}
+
+// int mkstemp(char *template);
+func Xmkstemp(t *TLS, template uintptr) int32 {
+	panic("CRT")
+}
+
+// int link(const char *oldpath, const char *newpath);
+func Xlink(t *TLS, oldpath, newpath uintptr) int32 {
+	panic("CRT")
+}
+
+// int pipe(int pipefd[2]);
+func Xpipe(t *TLS, pipefd uintptr) int32 {
+	panic("CRT")
+}
+
+// pid_t fork(void);
+func Xfork(t *TLS) uint32 {
+	panic("CRT")
+}
+
+// int dup2(int oldfd, int newfd);
+func Xdup2(t *TLS, oldfd, newfd int32) int32 {
+	panic("CRT")
+}
+
+// void _exit(int status);
+func X_exit(t *TLS, status int32) {
+	panic("CRT")
+}
+
+// int execvp(const char *file, char *const argv[]);
+func Xexecvp(t *TLS, file, argv uintptr) int32 {
+	panic("CRT")
+}
+
+// pid_t waitpid(pid_t pid, int *wstatus, int options);
+func Xwaitpid(t *TLS, pid uint32, wstatus uintptr, optname int32) uint32 {
+	panic("CRT")
+}
+
+// int uname(struct utsname *buf);
+func Xuname(t *TLS, buf uintptr) int32 {
+	panic("CRT")
+}
+
+// ssize_t recv(int sockfd, void *buf, size_t len, int flags);
+func Xrecv(t *TLS, sockfd int32, buf uintptr, len Size_t, flags int32) Ssize_t {
+	panic("CRT")
+}
+
+// ssize_t send(int sockfd, const void *buf, size_t len, int flags);
+func Xsend(t *TLS, sockfd int32, buf uintptr, len Size_t, flags int32) Ssize_t {
+	panic("CRT")
+}
+
+// void freeaddrinfo(struct addrinfo *res);
+func Xfreeaddrinfo(t *TLS, res uintptr) {
+	panic("CRT")
+}
+
+// int shutdown(int sockfd, int how);
+func Xshutdown(t *TLS, sockfd, how int32) int32 {
+	panic("CRT")
+}
+
+// uint32_t htonl(uint32_t hostlong);
+func Xhtonl(t *TLS, hostlong uint32) uint32 {
+	panic("CRT")
+}
+
+// int getnameinfo(const struct sockaddr *addr, socklen_t addrlen, char *host, socklen_t hostlen, char *serv, socklen_t servlen, int flags);
+func Xgetnameinfo(t *TLS, addr uintptr, addrlen uint32, host uintptr, hostlen uint32, serv uintptr, servlen uint32, flags int32) int32 {
 	panic("CRT")
 }

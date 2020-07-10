@@ -17,6 +17,7 @@ type (
 	Size_t  = uint64
 	Ssize_t = int64
 	long    = int64
+	ulong   = int64
 	RawMem  [1<<50 - 1]byte
 )
 

@@ -18,6 +18,7 @@ type (
 	Ssize_t = int32
 	RawMem  [1<<31 - 1]byte
 	long    = int32
+	ulong   = int32
 )
 
 type bits []int
