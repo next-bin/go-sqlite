@@ -1412,7 +1412,7 @@ func Xstrtol(t *TLS, nptr, endptr uintptr, base int32) long {
 }
 
 // unsigned long int strtoul(const char *nptr, char **endptr, int base);
-func Xstrtoul(t *TLS, nptr, endptr uintptr, base int32) long {
+func Xstrtoul(t *TLS, nptr, endptr uintptr, base int32) ulong {
 	panic("CRT")
 }
 
@@ -1639,7 +1639,7 @@ func Xrmdir(t *TLS, pathname uintptr) int32 {
 }
 
 // int fchown(int fd, uid_t owner, gid_t group);
-func Xfchown(t *TLS, fd int32, owner, grout uint32) int32 {
+func Xfchown(t *TLS, fd int32, owner, group uint32) int32 {
 	panic("CRT")
 }
 
@@ -1935,7 +1935,7 @@ func Xgetsockopt(t *TLS, sockfd, level, optname int32, optval, optlen uintptr) i
 }
 
 // int setsockopt(int sockfd, int level, int optname, const void *optval, socklen_t optlen);
-func Xsetsockopt(t *TLS, sockfd, level, optname int32, optval, optlen uintptr) int32 {
+func Xsetsockopt(t *TLS, sockfd, level, optname int32, optval uintptr, optlen uint32) int32 {
 	panic("CRT")
 }
 
@@ -1955,7 +1955,7 @@ func Xfrexp(t *TLS, x float64, expr uintptr) float64 {
 }
 
 // double ldexp(double x, int exp);
-func Xldexp(t *TLS, x float64, expr uintptr) float64 {
+func Xldexp(t *TLS, x float64, expr int32) float64 {
 	panic("CRT")
 }
 
@@ -1980,12 +1980,12 @@ func Xioctl(t *TLS, fd int32, request ulong, va uintptr) int32 {
 }
 
 // speed_t cfgetospeed(const struct termios *termios_p);
-func Xcfgetospeed(t *TLS, termios_p uintptr) int32 {
+func Xcfgetospeed(t *TLS, termios_p uintptr) uint32 {
 	panic("CRT")
 }
 
 // int cfsetospeed(struct termios *termios_p, speed_t speed);
-func Xcfsetospeed(t *TLS, termios_p uintptr, speed int32) int32 {
+func Xcfsetospeed(t *TLS, termios_p uintptr, speed uint32) int32 {
 	panic("CRT")
 }
 
@@ -1995,7 +1995,7 @@ func Xgetsockname(t *TLS, sockfd int32, addr, addrlen uintptr) int32 {
 }
 
 // int cfsetispeed(struct termios *termios_p, speed_t speed);
-func Xcfsetispeed(t *TLS, termios_p uintptr, speed int32) int32 {
+func Xcfsetispeed(t *TLS, termios_p uintptr, speed uint32) int32 {
 	panic("CRT")
 }
 
@@ -2025,7 +2025,7 @@ func Xlstat(t *TLS, pathname, statbuf uintptr) int32 {
 }
 
 // int mknod(const char *pathname, mode_t mode, dev_t dev);
-func Xmknod(t *TLS, pathname uintptr, mode, dev uint32) int32 {
+func Xmknod(t *TLS, pathname uintptr, mode uint32, dev uint64) int32 {
 	panic("CRT")
 }
 
@@ -2055,12 +2055,12 @@ func Xfts_close(t *TLS, ftsp uintptr) int32 {
 }
 
 // int utime(const char *filename, const struct utimbuf *times);
-func Xutime(t *TLS, file, times *uintptr) int32 {
+func Xutime(t *TLS, file, times uintptr) int32 {
 	panic("CRT")
 }
 
 // int chown(const char *pathname, uid_t owner, gid_t group);
-func Xchown(t *TLS, pathname uintptr, owner, group int32) int32 {
+func Xchown(t *TLS, pathname uintptr, owner, group uint32) int32 {
 	panic("CRT")
 }
 
@@ -2085,7 +2085,7 @@ func Xpipe(t *TLS, pipefd uintptr) int32 {
 }
 
 // pid_t fork(void);
-func Xfork(t *TLS) uint32 {
+func Xfork(t *TLS) int32 {
 	panic("CRT")
 }
 
@@ -2105,7 +2105,7 @@ func Xexecvp(t *TLS, file, argv uintptr) int32 {
 }
 
 // pid_t waitpid(pid_t pid, int *wstatus, int options);
-func Xwaitpid(t *TLS, pid uint32, wstatus uintptr, optname int32) uint32 {
+func Xwaitpid(t *TLS, pid int32, wstatus uintptr, optname int32) int32 {
 	panic("CRT")
 }
 
@@ -2141,5 +2141,95 @@ func Xhtonl(t *TLS, hostlong uint32) uint32 {
 
 // int getnameinfo(const struct sockaddr *addr, socklen_t addrlen, char *host, socklen_t hostlen, char *serv, socklen_t servlen, int flags);
 func Xgetnameinfo(t *TLS, addr uintptr, addrlen uint32, host uintptr, hostlen uint32, serv uintptr, servlen uint32, flags int32) int32 {
+	panic("CRT")
+}
+
+// int getpeername(int sockfd, struct sockaddr *addr, socklen_t *addrlen);
+func Xgetpeername(t *TLS, sockfd int32, addr uintptr, addrlen uintptr) int32 {
+	panic("CRT")
+}
+
+// int socket(int domain, int type, int protocol);
+func Xsocket(t *TLS, domain, type1, protocol int32) int32 {
+	panic("CRT")
+}
+
+// int bind(int sockfd, const struct sockaddr *addr, socklen_t addrlen);
+func Xbind(t *TLS, sockfd int32, addr uintptr, addrlen uint32) int32 {
+	panic("CRT")
+}
+
+// int connect(int sockfd, const struct sockaddr *addr, socklen_t addrlen);
+func Xconnect(t *TLS, sockfd int32, addr uintptr, addrlen uint32) int32 {
+	panic("CRT")
+}
+
+// uint16_t htons(uint16_t hostshort);
+func Xhtons(t *TLS, hostshort uint16) uint16 {
+	panic("CRT")
+}
+
+// char *setlocale(int category, const char *locale);
+func Xsetlocale(t *TLS, category int32, locale uintptr) uintptr {
+	panic("CRT")
+}
+
+// int listen(int sockfd, int backlog);
+func Xlisten(t *TLS, sockfd, backlog int32) int32 {
+	panic("CRT")
+}
+
+// int accept(int sockfd, struct sockaddr *addr, socklen_t *addrlen);
+func Xaccept(t *TLS, sockfd int32, addr uintptr, addrlen uintptr) int32 {
+	panic("CRT")
+}
+
+// struct tm *gmtime_r(const time_t *timep, struct tm *result);
+func Xgmtime_r(t *TLS, timep, result uintptr) uintptr {
+	panic("CRT")
+}
+
+// struct passwd *getpwnam(const char *name);
+func Xgetpwnam(t *TLS, name uintptr) uintptr {
+	panic("CRT")
+}
+
+// struct group *getgrnam(const char *name);
+func Xgetgrnam(t *TLS, name uintptr) uintptr {
+	panic("CRT")
+}
+
+// int strcasecmp(const char *s1, const char *s2);
+func Xstrcasecmp(t *TLS, s1, s2 uintptr) int32 {
+	panic("CRT")
+}
+
+// char *nl_langinfo(nl_item item);
+func Xnl_langinfo(t *TLS, item int32) uintptr {
+	panic("CRT")
+}
+
+// char *inet_ntoa(struct in_addr in);
+func Xinet_ntoa(t *TLS, in struct{ Fs_addr uint32 }) uintptr {
+	panic("CRT")
+}
+
+// double hypot(double x, double y);
+func Xhypot(t *TLS, x, y float64) float64 {
+	panic("CRT")
+}
+
+// struct group *getgrgid(gid_t gid);
+func Xgetgrgid(t *TLS, gid uint32) uintptr {
+	panic("CRT")
+}
+
+// struct hostent *gethostbyname(const char *name);
+func Xgethostbyname(t *TLS, name uintptr) uintptr {
+	panic("CRT")
+}
+
+// struct hostent *gethostbyaddr(const void *addr, socklen_t len, int type);
+func Xgethostbyaddr(t *TLS, addr uintptr, len uint32, type1 int32) uintptr {
 	panic("CRT")
 }
