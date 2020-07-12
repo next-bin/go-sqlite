@@ -6,11 +6,13 @@ package crt // import "modernc.org/crt/v3"
 
 import (
 	"fmt"
+	"io/ioutil"
 	"os"
 	"os/exec"
 	"os/user"
 	"strconv"
 	"strings"
+	"syscall"
 	"unsafe"
 
 	"golang.org/x/sys/unix"
@@ -53,7 +55,7 @@ func Xfgets(t *TLS, s uintptr, size int32, stream uintptr) uintptr {
 			// if dmesgs {
 			// 	dmesg("%v %T(%v), %v", n, err, err, len(b))
 			// }
-			panic("CRT")
+			panic(todo(""))
 		}
 
 		// if err == nil {
@@ -68,7 +70,7 @@ func Xfgets(t *TLS, s uintptr, size int32, stream uintptr) uintptr {
 
 		// t.setErrno(err)
 	}
-	panic("CRT")
+	panic(todo(""))
 }
 
 // int fclose(FILE *stream);
@@ -103,11 +105,11 @@ func Xfread(t *TLS, ptr uintptr, size, nmemb Size_t, stream uintptr) Size_t {
 	fd := *(*int32)(unsafe.Pointer(stream))
 	switch fd {
 	case 0:
-		panic("CRT")
+		panic(todo(""))
 	case 1:
-		panic("CRT")
+		panic(todo(""))
 	case 2:
-		panic("CRT")
+		panic(todo(""))
 	}
 	n, err := unix.Read(int(fd), (*RawMem)(unsafe.Pointer(ptr))[:size*nmemb])
 	// if dmesgs {
@@ -245,6 +247,11 @@ func Xgetpwuid(t *TLS, uid uint32) uintptr {
 	return uintptr(unsafe.Pointer(&staticPasswd))
 }
 
+// off_t lseek(int fd, off_t offset, int whence);
+func Xlseek(t *TLS, fd int32, offset Intptr, whence int32) Intptr {
+	return Intptr(Xlseek64(t, fd, int64(offset), whence))
+}
+
 // off64_t lseek64(int fd, off64_t offset, int whence);
 func Xlseek64(t *TLS, fd int32, offset int64, whence int32) int64 {
 	// if dmesgs {
@@ -257,7 +264,7 @@ func Xlseek64(t *TLS, fd int32, offset int64, whence int32) int64 {
 	if err != nil {
 		t.setErrno(err)
 		if dmesgs {
-			dmesg("lseek64(): %v", err)
+			dmesg("lseek64(%v, %v): %v", fd, offset, err)
 		}
 		return -1
 	}
@@ -301,7 +308,7 @@ func Xsysconf(t *TLS, name int32) long {
 		return long(unix.Getpagesize())
 	}
 
-	panic("CRT")
+	panic(todo(""))
 }
 
 // int gettimeofday(struct timeval *tv, struct timezone *tz);
@@ -310,7 +317,7 @@ func Xgettimeofday(t *TLS, tv, tz uintptr) int32 {
 	// 	dmesg("gettimeofday(%#x, %#x)", tv, tz)
 	// }
 	if tz != 0 {
-		panic("CRT")
+		panic(todo(""))
 	}
 	err := unix.Gettimeofday((*unix.Timeval)(unsafe.Pointer(tv)))
 	// if dmesgs {
@@ -580,7 +587,7 @@ func Xsystem(t *TLS, command uintptr) int32 {
 	// 	dmesg("system(%q)", s)
 	// }
 	if command == 0 {
-		panic("CRT")
+		panic(todo(""))
 	}
 
 	cmd := exec.Command("sh", "-c", s)
@@ -606,20 +613,120 @@ func Xsystem(t *TLS, command uintptr) int32 {
 
 // int fileno(FILE *stream);
 func Xfileno(t *TLS, stream uintptr) int32 {
-	panic("CRT")
+	panic(todo(""))
 }
 
 // void backtrace_symbols_fd(void *const *buffer, int size, int fd);
 func Xbacktrace_symbols_fd(t *TLS, buffer uintptr, size, fd int32) int32 {
-	panic("CRT")
+	panic(todo(""))
 }
 
 // int getrlimit(int resource, struct rlimit *rlim);
 func Xgetrlimit(t *TLS, resource int32, rlim uintptr) int32 {
-	panic("CRT")
+	if err := unix.Getrlimit(int(resource), (*unix.Rlimit)(unsafe.Pointer(rlim))); err != nil {
+		t.setErrno(err)
+		return -1
+	}
+
+	return 0
 }
 
 // int setrlimit(int resource, const struct rlimit *rlim);
 func Xsetrlimit(t *TLS, resource int32, rlim uintptr) int32 {
-	panic("CRT")
+	if err := unix.Setrlimit(int(resource), (*unix.Rlimit)(unsafe.Pointer(rlim))); err != nil {
+		t.setErrno(err)
+		return -1
+	}
+
+	return 0
+}
+
+// int uname(struct utsname *buf);
+func Xuname(t *TLS, buf uintptr) int32 {
+	if err := unix.Uname((*unix.Utsname)(unsafe.Pointer(buf))); err != nil {
+		t.setErrno(err)
+		return -1
+	}
+
+	return 0
+}
+
+// mode_t umask(mode_t mask);
+func Xumask(t *TLS, mask uint32) uint32 {
+	return uint32(unix.Umask(int(mask)))
+}
+
+// int mkdir(const char *path, mode_t mode);
+func Xmkdir(t *TLS, path uintptr, mode uint32) int32 {
+	if err := unix.Mkdir(GoString(path), mode); err != nil {
+		t.setErrno(err)
+		return -1
+	}
+
+	return 0
+}
+
+// int chdir(const char *path);
+func Xchdir(t *TLS, path uintptr) int32 {
+	if err := unix.Chdir(GoString(path)); err != nil {
+		t.setErrno(err)
+		return -1
+	}
+
+	return 0
+}
+
+// int lstat(const char *pathname, struct stat *statbuf);
+func Xlstat(t *TLS, pathname, statbuf uintptr) int32 {
+	if err := unix.Lstat(GoString(pathname), (*unix.Stat_t)(unsafe.Pointer(statbuf))); err != nil {
+		t.setErrno(err)
+		return -1
+	}
+
+	return 0
+}
+
+type dirStream struct {
+	x   int
+	fis []os.FileInfo
+}
+
+// DIR *opendir(const char *name);
+func Xopendir(t *TLS, name uintptr) uintptr {
+	fis, err := ioutil.ReadDir(GoString(name))
+	if err != nil {
+		t.setErrno(err)
+		return 0
+	}
+
+	return addObject(&dirStream{fis: fis})
+}
+
+// struct dirent *readdir(DIR *dirp);
+func Xreaddir(t *TLS, dir uintptr) uintptr { return Xreaddir64(t, dir) }
+
+var readdirDirent unix.Dirent
+
+// struct dirent *readdir(DIR *dirp);
+func Xreaddir64(t *TLS, dir uintptr) uintptr {
+	s := getObject(dir).(*dirStream)
+	if s.x >= len(s.fis) {
+		return 0
+	}
+
+	fi := s.fis[s.x]
+	s.x++
+	readdirDirent = unix.Dirent{}
+	nm := fi.Name()
+	for i := 0; i < len(nm) && i < len(readdirDirent.Name); i++ {
+		readdirDirent.Name[i] = int8(nm[i])
+	}
+	readdirDirent.Ino = fi.Sys().(*syscall.Stat_t).Ino
+	return uintptr(unsafe.Pointer(&readdirDirent))
+}
+
+// int closedir(DIR *dirp);
+func Xclosedir(t *TLS, dir uintptr) int32 {
+	removeObject(dir)
+	return 0
 }
