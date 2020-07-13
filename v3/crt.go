@@ -73,6 +73,19 @@ var Xstdin = uintptr(unsafe.Pointer(&stdin))
 var Xstdout = uintptr(unsafe.Pointer(&stdout))
 var Xin6addr_any uintptr //TODO
 
+func origin(skip int) string {
+	pc, fn, fl, _ := runtime.Caller(skip)
+	f := runtime.FuncForPC(pc)
+	var fns string
+	if f != nil {
+		fns = f.Name()
+		if x := strings.LastIndex(fns, "."); x > 0 {
+			fns = fns[x+1:]
+		}
+	}
+	return fmt.Sprintf("%s:%d:%s", fn, fl, fns)
+}
+
 func todo(s string, args ...interface{}) string { //TODO-
 	switch {
 	case s == "":
@@ -2083,11 +2096,6 @@ func Xcfsetospeed(t *TLS, termios_p uintptr, speed uint32) int32 {
 	panic(todo(""))
 }
 
-// int getsockname(int sockfd, struct sockaddr *addr, socklen_t *addrlen);
-func Xgetsockname(t *TLS, sockfd int32, addr, addrlen uintptr) int32 {
-	panic(todo(""))
-}
-
 // int cfsetispeed(struct termios *termios_p, speed_t speed);
 func Xcfsetispeed(t *TLS, termios_p uintptr, speed uint32) int32 {
 	panic(todo(""))
@@ -2299,7 +2307,21 @@ func Xgetgrnam(t *TLS, name uintptr) uintptr {
 
 // int strcasecmp(const char *s1, const char *s2);
 func Xstrcasecmp(t *TLS, s1, s2 uintptr) int32 {
-	panic(todo(""))
+	for {
+		ch1 := *(*byte)(unsafe.Pointer(s1))
+		if ch1 >= 'a' && ch1 <= 'z' {
+			ch1 = ch1 - ('a' - 'A')
+		}
+		s1++
+		ch2 := *(*byte)(unsafe.Pointer(s2))
+		if ch2 >= 'a' && ch2 <= 'z' {
+			ch2 = ch2 - ('a' - 'A')
+		}
+		s2++
+		if ch1 != ch2 || ch1 == 0 || ch2 == 0 {
+			return int32(ch1) - int32(ch2)
+		}
+	}
 }
 
 // char *nl_langinfo(nl_item item);

@@ -730,3 +730,27 @@ func Xclosedir(t *TLS, dir uintptr) int32 {
 	removeObject(dir)
 	return 0
 }
+
+// int sigaction(int signum, const struct sigaction *act, struct sigaction *oldact);
+func Xsigaction(t *TLS, signum int32, act, oldact uintptr) int32 {
+	panic(todo(""))
+}
+
+// unsigned int alarm(unsigned int seconds);
+func Xalarm(t *TLS, seconds uint32) uint32 {
+	panic(todo(""))
+}
+
+// int getsockname(int sockfd, struct sockaddr *addr, socklen_t *addrlen);
+func Xgetsockname(t *TLS, sockfd int32, addr, addrlen uintptr) int32 {
+	sa, err := unix.Getsockname(int(sockfd))
+	if err != nil {
+		t.setErrno(err)
+		return -1
+	}
+
+	switch x := sa.(type) {
+	default:
+		panic(todo("%T(%#[1]v)", x))
+	}
+}
