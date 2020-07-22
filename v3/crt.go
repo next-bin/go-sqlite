@@ -569,6 +569,11 @@ func printf(s, args uintptr) (r []byte) {
 					var n long
 					args, n = longArg(args)
 					b = append(b, fmt.Sprintf("%"+spec+"x", n)...)
+				case 'X':
+					s++
+					var n long
+					args, n = longArg(args)
+					b = append(b, fmt.Sprintf("%"+spec+"X", n)...)
 				default:
 					panic(fmt.Errorf("internal error %q", string(c)))
 				}

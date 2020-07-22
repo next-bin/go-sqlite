@@ -351,9 +351,9 @@ func SetBitFieldPtr%s%s(p uintptr, v %s, off int, mask uint%[1]s) {
 	for _, sz := range []int{8, 16, 32, 64} {
 		for _, v := range []int{8, 16, 32, 64} {
 			fmt.Fprintf(b, `
-func AssignBitFieldPtr%dInt%d(p uintptr, v int%[2]d, off int, mask uint%[1]d) int%[2]d {
+func AssignBitFieldPtr%dInt%d(p uintptr, v int%[2]d, w, off int, mask uint%[1]d) int%[2]d {
 	*(*uint%[1]d)(unsafe.Pointer(p)) = *(*uint%[1]d)(unsafe.Pointer(p))&^uint%[1]d(mask) | uint%[1]d(v<<off)&mask
-	s := %[2]d - off - 1
+	s := %[2]d - w
 	return v << s >> s
 }
 
@@ -365,7 +365,7 @@ func AssignBitFieldPtr%dInt%d(p uintptr, v int%[2]d, off int, mask uint%[1]d) in
 	for _, sz := range []int{8, 16, 32, 64} {
 		for _, v := range []int{8, 16, 32, 64} {
 			fmt.Fprintf(b, `
-func AssignBitFieldPtr%dUint%d(p uintptr, v uint%[2]d, off int, mask uint%[1]d) uint%[2]d {
+func AssignBitFieldPtr%dUint%d(p uintptr, v uint%[2]d, w, off int, mask uint%[1]d) uint%[2]d {
 	*(*uint%[1]d)(unsafe.Pointer(p)) = *(*uint%[1]d)(unsafe.Pointer(p))&^uint%[1]d(mask) | uint%[1]d(v<<off)&mask
 	return v & uint%[2]d(mask >> off)
 }
@@ -378,9 +378,9 @@ func AssignBitFieldPtr%dUint%d(p uintptr, v uint%[2]d, off int, mask uint%[1]d) 
 	for _, sz := range []int{8, 16, 32, 64} {
 		for _, v := range []int{8, 16, 32, 64} {
 			fmt.Fprintf(b, `
-func PostDecBitFieldPtr%dInt%d(p uintptr, d int%[2]d, off int, mask uint%[1]d) (r int%[2]d) {
+func PostDecBitFieldPtr%dInt%d(p uintptr, d int%[2]d, w, off int, mask uint%[1]d) (r int%[2]d) {
 	x0 := *(*uint%[1]d)(unsafe.Pointer(p))
-	s := %[2]d - off - 1
+	s := %[2]d - w
 	r = int%[2]d(x0) & int%[2]d(mask) << s >> s
 	*(*uint%[1]d)(unsafe.Pointer(p)) = x0&^uint%[1]d(mask) | uint%[1]d(r-d)<<off&mask
 	return r
@@ -394,7 +394,7 @@ func PostDecBitFieldPtr%dInt%d(p uintptr, d int%[2]d, off int, mask uint%[1]d) (
 	for _, sz := range []int{8, 16, 32, 64} {
 		for _, v := range []int{8, 16, 32, 64} {
 			fmt.Fprintf(b, `
-func PostDecBitFieldPtr%dUint%d(p uintptr, d uint%[2]d, off int, mask uint%[1]d) (r uint%[2]d) {
+func PostDecBitFieldPtr%dUint%d(p uintptr, d uint%[2]d, w, off int, mask uint%[1]d) (r uint%[2]d) {
 	x0 := *(*uint%[1]d)(unsafe.Pointer(p))
 	r = uint%[2]d(x0) & uint%[2]d(mask) >> off
 	*(*uint%[1]d)(unsafe.Pointer(p)) = x0&^uint%[1]d(mask) | uint%[1]d(r-d)<<off&mask
@@ -409,9 +409,9 @@ func PostDecBitFieldPtr%dUint%d(p uintptr, d uint%[2]d, off int, mask uint%[1]d)
 	for _, sz := range []int{8, 16, 32, 64} {
 		for _, v := range []int{8, 16, 32, 64} {
 			fmt.Fprintf(b, `
-func PostIncBitFieldPtr%dInt%d(p uintptr, d int%[2]d, off int, mask uint%[1]d) (r int%[2]d) {
+func PostIncBitFieldPtr%dInt%d(p uintptr, d int%[2]d, w, off int, mask uint%[1]d) (r int%[2]d) {
 	x0 := *(*uint%[1]d)(unsafe.Pointer(p))
-	s := %[2]d - off - 1
+	s := %[2]d - w
 	r = int%[2]d(x0) & int%[2]d(mask) << s >> s
 	*(*uint%[1]d)(unsafe.Pointer(p)) = x0&^uint%[1]d(mask) | uint%[1]d(r+d)<<off&mask
 	return r
@@ -425,7 +425,7 @@ func PostIncBitFieldPtr%dInt%d(p uintptr, d int%[2]d, off int, mask uint%[1]d) (
 	for _, sz := range []int{8, 16, 32, 64} {
 		for _, v := range []int{8, 16, 32, 64} {
 			fmt.Fprintf(b, `
-func PostIncBitFieldPtr%dUint%d(p uintptr, d uint%[2]d, off int, mask uint%[1]d) (r uint%[2]d) {
+func PostIncBitFieldPtr%dUint%d(p uintptr, d uint%[2]d, w, off int, mask uint%[1]d) (r uint%[2]d) {
 	x0 := *(*uint%[1]d)(unsafe.Pointer(p))
 	r = uint%[2]d(x0) & uint%[2]d(mask) >> off
 	*(*uint%[1]d)(unsafe.Pointer(p)) = x0&^uint%[1]d(mask) | uint%[1]d(r+d)<<off&mask
