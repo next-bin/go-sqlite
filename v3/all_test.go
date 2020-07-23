@@ -79,7 +79,8 @@ func TestVaList(t *testing.T) {
 	if g, e := GoString(cs), "42 43 44 3.141593 %i %li %lli %f %s %p\n 0x12345678\n"; g != e {
 		t.Errorf("got %q, expected %q", g, e)
 	}
-	if g, e := r, int32(51); g != e {
+	s := GoString(cs)
+	if g, e := r, int32(len(s)); g != e {
 		t.Errorf("got %v, expected %v", g, e)
 	}
 }

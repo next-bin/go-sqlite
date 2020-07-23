@@ -10,15 +10,13 @@ import (
 	"fmt"
 	"os"
 	"path/filepath"
-	"runtime"
 	"strings"
-	"time"
 )
 
 const dmesgs = true
 
 var (
-	pid  = fmt.Sprintf("[pid %v %v] ", os.Getpid(), os.Args[0])
+	pid  = fmt.Sprintf("[%v %v] ", os.Getpid(), filepath.Base(os.Args[0]))
 	logf *os.File
 )
 
@@ -33,9 +31,7 @@ func dmesg(s string, args ...interface{}) {
 	if s == "" {
 		s = strings.Repeat("%v ", len(args))
 	}
-	pc, fn, fl, _ := runtime.Caller(1)
-	f := runtime.FuncForPC(pc)
-	s = fmt.Sprintf(pid+"%s:%d:%s: %v: "+s, append([]interface{}{filepath.Base(fn), fl, f.Name(), time.Now().Format("15:04:05.000")}, args...)...)
+	s = fmt.Sprintf(pid+s, args...)
 	switch {
 	case len(s) != 0 && s[len(s)-1] == '\n':
 		fmt.Fprint(logf, s)
