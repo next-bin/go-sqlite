@@ -1604,7 +1604,13 @@ func Xstrstr(t *TLS, haystack, needle uintptr) uintptr {
 
 // int atoi(const char *nptr);
 func Xatoi(t *TLS, nptr uintptr) int32 {
-	return int32(Xatol(t, nptr))
+	_, neg, _, n := strToUint64(t, nptr, 10)
+	switch {
+	case neg:
+		return int32(-n)
+	default:
+		return int32(n)
+	}
 }
 
 // pid_t getpid(void);
@@ -1650,13 +1656,91 @@ func Xpopen(t *TLS, command, typ uintptr) uintptr {
 }
 
 // long int strtol(const char *nptr, char **endptr, int base);
-func Xstrtol(t *TLS, nptr, endptr uintptr, base int32) long {
-	panic(todo(""))
+func Xstrtol(t *TLS, nptr, endptr uintptr, base int32) (r long) {
+	seenDigits, neg, next, n := strToUint64(t, nptr, base)
+	if !seenDigits {
+		panic(todo(""))
+	}
+
+	switch {
+	case neg:
+		if n > -minLong {
+			panic(todo(""))
+		}
+
+		r = long(-n)
+	default:
+		if n > maxLong {
+			panic(todo(""))
+		}
+
+		r = long(n)
+	}
+	if endptr != 0 {
+		*(*uintptr)(unsafe.Pointer(endptr)) = next
+	}
+	return r
 }
 
 // unsigned long int strtoul(const char *nptr, char **endptr, int base);
-func Xstrtoul(t *TLS, nptr, endptr uintptr, base int32) ulong {
-	panic(todo(""))
+func Xstrtoul(t *TLS, nptr, endptr uintptr, base int32) (r ulong) {
+	seenDigits, neg, next, n := strToUint64(t, nptr, base)
+	if !seenDigits {
+		panic(todo(""))
+	}
+
+	switch {
+	case neg:
+		panic(todo(""))
+	default:
+		if n > maxUlong {
+			panic(todo(""))
+		}
+	}
+	if endptr != 0 {
+		*(*uintptr)(unsafe.Pointer(endptr)) = next
+	}
+	return ulong(n)
+}
+
+func strToUint64(t *TLS, s uintptr, base int32) (seenDigits, neg bool, next uintptr, n uint64) {
+	var c byte
+out:
+	for {
+		c = *(*byte)(unsafe.Pointer(s))
+		switch c {
+		case ' ', '\t', '\n', '\r', '\v', '\f':
+			s++
+		case '+':
+			s++
+			break out
+		case '-':
+			s++
+			break out
+		default:
+			break out
+		}
+	}
+	switch base {
+	case 10:
+		for {
+			c = *(*byte)(unsafe.Pointer(s))
+			switch {
+			case c >= '0' && c <= '9':
+				s++
+				seenDigits = true
+				n0 := n
+				n = 10*n + uint64(c) - '0'
+				if n < n0 { // overflow
+					panic(todo(""))
+				}
+			default:
+				return seenDigits, neg, s, n
+			}
+		}
+	default:
+		panic(todo("", base))
+	}
 }
 
 // int tolower(int c);
@@ -1902,34 +1986,12 @@ func Xatan2(t *TLS, x, y float64) float64 {
 
 // long atol(const char *nptr);
 func Xatol(t *TLS, nptr uintptr) (r long) {
-	var c byte
-	k := long(1)
-out:
-	for {
-		c = *(*byte)(unsafe.Pointer(nptr))
-		switch c {
-		case ' ', '\t', '\n', '\r', '\v', '\f':
-			nptr++
-		case '+':
-			nptr++
-			break out
-		case '-':
-			nptr++
-			k = -1
-			break out
-		default:
-			break out
-		}
-	}
-	for {
-		c = *(*byte)(unsafe.Pointer(nptr))
-		nptr++
-		switch {
-		case c >= '0' && c <= '9':
-			r = 10*r + long(c) - '0'
-		default:
-			return k * r
-		}
+	_, neg, _, n := strToUint64(t, nptr, 10)
+	switch {
+	case neg:
+		return long(-n)
+	default:
+		return long(n)
 	}
 }
 

@@ -7,9 +7,18 @@
 package crt // import "modernc.org/crt/v3"
 
 import (
+	"math"
 	"strings"
 
 	"modernc.org/crt/v3/libc/sys/mman"
+)
+
+const (
+	maxInt   = math.MaxInt32
+	maxLong  = math.MaxInt64
+	maxUlong = math.MaxUint64
+	minInt   = math.MinInt32
+	minLong  = math.MinInt64
 )
 
 type (

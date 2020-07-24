@@ -12,6 +12,14 @@ import (
 	"modernc.org/crt/v3/libc/sys/mman"
 )
 
+const (
+	maxInt   = math.MaxInt32
+	maxLong  = math.MaxInt32
+	maxUlong = math.MaxUint32
+	minInt   = math.MinInt32
+	minLong  = math.MinInt32
+)
+
 type (
 	Intptr  = int32
 	RawMem  [1<<31 - 1]byte
