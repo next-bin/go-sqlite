@@ -771,3 +771,16 @@ func Xgetsockname(t *TLS, sockfd int32, addr, addrlen uintptr) int32 {
 		panic(todo("%T(%#[1]v)", x))
 	}
 }
+
+// int pipe(int pipefd[2]);
+func Xpipe(t *TLS, pipefd uintptr) int32 {
+	a := make([]int, 2)
+	if err := unix.Pipe(a); err != nil {
+		t.setErrno(err)
+		return -1
+	}
+
+	*(*int32)(unsafe.Pointer(pipefd)) = int32(a[0])
+	*(*int32)(unsafe.Pointer(pipefd + unsafe.Sizeof(uintptr(0)))) = int32(a[1])
+	return 0
+}

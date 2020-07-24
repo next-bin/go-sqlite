@@ -1822,22 +1822,22 @@ type tm struct {
 	isdst int32 // Daylight Savings flag.
 }
 
-var localtime = mustCalloc(int(unsafe.Sizeof(tm{})))
+var localtime tm
 
 // struct tm *localtime(const time_t *timep);
 func Xlocaltime(_ *TLS, timep uintptr) uintptr {
 	ut := *(*syscall.Time_t)(unsafe.Pointer(timep))
 	t := time.Unix(int64(ut), 0)
-	(*tm)(unsafe.Pointer(localtime)).sec = int32(t.Second())
-	(*tm)(unsafe.Pointer(localtime)).min = int32(t.Minute())
-	(*tm)(unsafe.Pointer(localtime)).hour = int32(t.Hour())
-	(*tm)(unsafe.Pointer(localtime)).mday = int32(t.Day())
-	(*tm)(unsafe.Pointer(localtime)).mon = int32(t.Month())
-	(*tm)(unsafe.Pointer(localtime)).year = int32(t.Year())
-	(*tm)(unsafe.Pointer(localtime)).wday = int32(t.Weekday())
-	(*tm)(unsafe.Pointer(localtime)).yday = int32(t.YearDay())
-	(*tm)(unsafe.Pointer(localtime)).isdst = -1 //TODO
-	return localtime
+	localtime.sec = int32(t.Second())
+	localtime.min = int32(t.Minute())
+	localtime.hour = int32(t.Hour())
+	localtime.mday = int32(t.Day())
+	localtime.mon = int32(t.Month())
+	localtime.year = int32(t.Year())
+	localtime.wday = int32(t.Weekday())
+	localtime.yday = int32(t.YearDay())
+	localtime.isdst = -1 //TODO
+	return uintptr(unsafe.Pointer(&localtime))
 
 }
 
@@ -2449,16 +2449,23 @@ func Xmkstemps(t *TLS, template uintptr, suffixlen int32) int32 {
 
 // int mkstemp(char *template);
 func Xmkstemp(t *TLS, template uintptr) int32 {
-	panic(todo(""))
+	const suff = "XXXXXX"
+	s := GoString(template)
+	if !strings.HasSuffix(s, suff) {
+		panic(todo(""))
+	}
+
+	s = s[:len(s)-len(suff)]
+	f, err := tempFile(s)
+	if err != nil {
+		panic(todo(""))
+	}
+
+	return int32(f.Fd())
 }
 
 // int link(const char *oldpath, const char *newpath);
 func Xlink(t *TLS, oldpath, newpath uintptr) int32 {
-	panic(todo(""))
-}
-
-// int pipe(int pipefd[2]);
-func Xpipe(t *TLS, pipefd uintptr) int32 {
 	panic(todo(""))
 }
 
