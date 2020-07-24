@@ -329,11 +329,31 @@ func Xgettimeofday(t *TLS, tv, tz uintptr) int32 {
 
 // int close(int fd);
 func Xclose(t *TLS, fd int32) int32 {
+	filesMu.Lock()
+
+	defer filesMu.Unlock()
+
+	if f := files[uintptr(fd)]; f != nil {
+		delete(files, uintptr(fd))
+		if err := f.Close(); err != nil {
+			t.setErrno(err)
+			if dmesgs {
+				dmesg("%v: close(%d): %v", origin(2), fd, err)
+			}
+			return -1
+		}
+
+		if dmesgs {
+			dmesg("%v: close(%d): 0", origin(2), fd)
+		}
+		return 0
+	}
+
 	err := unix.Close(int(fd))
 	if err != nil {
 		t.setErrno(err)
 		if dmesgs {
-			dmesg("%v: close(%d): -1", origin(2), fd)
+			dmesg("%v: close(%d): %v", origin(2), fd, err)
 		}
 		return -1
 	}
@@ -825,6 +845,16 @@ func Xselect(t *TLS, nfds int32, readfds, writefds, exceptfds, timeout uintptr) 
 // int ftruncate(int fd, off_t length);
 func Xftruncate(t *TLS, fd int32, length Intptr) int32 {
 	if err := unix.Ftruncate(int(fd), int64(length)); err != nil {
+		t.setErrno(err)
+		return -1
+	}
+
+	return 0
+}
+
+// int access(const char *pathname, int mode);
+func Xaccess(t *TLS, pathname uintptr, mode int32) int32 {
+	if err := unix.Access(GoString(pathname), uint32(mode)); err != nil {
 		t.setErrno(err)
 		return -1
 	}

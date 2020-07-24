@@ -49,8 +49,10 @@ var (
 	stdin  = int32(1)
 	stdout = int32(0)
 
-	objects  = map[uintptr]interface{}{}
+	files    = map[uintptr]*os.File{}
+	filesMu  sync.Mutex
 	objectMu sync.Mutex
+	objects  = map[uintptr]interface{}{}
 
 	fToken uintptr
 
@@ -109,6 +111,35 @@ func todo(s string, args ...interface{}) string { //TODO-
 	return r
 }
 
+func addFile(f *os.File) (fd uintptr) {
+	fd = f.Fd()
+	filesMu.Lock()
+	files[fd] = f
+	filesMu.Unlock()
+	return fd
+}
+
+func getFile(fd uintptr) *os.File {
+	filesMu.Lock()
+	f := files[fd]
+	if f == nil {
+		panic(todo("", fd))
+	}
+
+	filesMu.Unlock()
+	return f
+}
+
+func removeFile(fd uintptr) {
+	filesMu.Lock()
+	if _, ok := files[fd]; !ok {
+		panic(todo(""))
+	}
+
+	delete(files, fd)
+	filesMu.Unlock()
+}
+
 func addObject(o interface{}) uintptr {
 	t := token()
 	objectMu.Lock()
@@ -145,8 +176,7 @@ func trc(s string, args ...interface{}) string { //TODO-
 	default:
 		s = fmt.Sprintf(s, args...)
 	}
-	_, fn, fl, _ := runtime.Caller(1)
-	r := fmt.Sprintf("\n%s:%d: TRC %s", fn, fl, s)
+	r := fmt.Sprintf("\n%s: TRC %s", origin(2), s)
 	fmt.Fprintf(os.Stdout, "%s\n", r)
 	os.Stdout.Sync()
 	return r
@@ -1628,24 +1658,6 @@ func Xfgetc(t *TLS, stream uintptr) int32 {
 	panic(todo(""))
 }
 
-// int access(const char *pathname, int mode);
-func Xaccess(t *TLS, pathname uintptr, mode int32) int32 {
-	//TODO handle properly F_OK
-	r, _, err := syscall.Syscall(syscall.SYS_ACCESS, pathname, uintptr(mode), 0)
-	if err != 0 {
-		t.setErrno(err)
-		if dmesgs {
-			dmesg("%v: access(%v, %#x): %v, %v", origin(2), GoString(pathname), mode, -1, err)
-		}
-		return -1
-	}
-
-	if dmesgs {
-		dmesg("%v: access(%v, %#x): %v", origin(2), GoString(pathname), mode, r)
-	}
-	return int32(r)
-}
-
 // int pclose(FILE *stream);
 func Xpclose(t *TLS, stream uintptr) int32 {
 	panic(todo(""))
@@ -1846,28 +1858,89 @@ type tm struct {
 	isdst int32 // Daylight Savings flag.
 }
 
+// https://stackoverflow.com/a/53052382
+//
+// isTimeDST returns true if time t occurs within daylight saving time
+// for its time zone.
+func isTimeDST(t time.Time) bool {
+	// If the most recent (within the last year) clock change
+	// was forward then assume the change was from std to dst.
+	hh, mm, _ := t.UTC().Clock()
+	tClock := hh*60 + mm
+	for m := -1; m > -12; m-- {
+		// assume dst lasts for least one month
+		hh, mm, _ := t.AddDate(0, m, 0).UTC().Clock()
+		clock := hh*60 + mm
+		if clock != tClock {
+			if clock > tClock {
+				// std to dst
+				return true
+			}
+			// dst to std
+			return false
+		}
+	}
+	// assume no dst
+	return false
+}
+
 var localtime tm
 
 // struct tm *localtime(const time_t *timep);
 func Xlocaltime(_ *TLS, timep uintptr) uintptr {
 	ut := *(*syscall.Time_t)(unsafe.Pointer(timep))
-	t := time.Unix(int64(ut), 0)
+	t := time.Unix(int64(ut), 0).In(time.Local)
+	var isdst int32
+	if isTimeDST(t) {
+		isdst = 1
+	}
 	localtime.sec = int32(t.Second())
 	localtime.min = int32(t.Minute())
 	localtime.hour = int32(t.Hour())
 	localtime.mday = int32(t.Day())
-	localtime.mon = int32(t.Month())
-	localtime.year = int32(t.Year())
+	localtime.mon = int32(t.Month() - 1)
+	localtime.year = int32(t.Year() - 1900)
 	localtime.wday = int32(t.Weekday())
 	localtime.yday = int32(t.YearDay())
-	localtime.isdst = -1 //TODO
+	localtime.isdst = isdst
 	return uintptr(unsafe.Pointer(&localtime))
-
 }
 
 // struct tm *localtime_r(const time_t *timep, struct tm *result);
-func Xlocaltime_r(_ *TLS, timep, tm uintptr) uintptr {
-	panic(todo(""))
+func Xlocaltime_r(_ *TLS, timep, r uintptr) uintptr {
+	ut := *(*syscall.Time_t)(unsafe.Pointer(timep))
+	t := time.Unix(int64(ut), 0).In(time.Local)
+	var isdst int32
+	if isTimeDST(t) {
+		isdst = 1
+	}
+	(*tm)(unsafe.Pointer(r)).sec = int32(t.Second())
+	(*tm)(unsafe.Pointer(r)).min = int32(t.Minute())
+	(*tm)(unsafe.Pointer(r)).hour = int32(t.Hour())
+	(*tm)(unsafe.Pointer(r)).mday = int32(t.Day())
+	(*tm)(unsafe.Pointer(r)).mon = int32(t.Month() - 1)
+	(*tm)(unsafe.Pointer(r)).year = int32(t.Year() - 1900)
+	(*tm)(unsafe.Pointer(r)).wday = int32(t.Weekday())
+	(*tm)(unsafe.Pointer(r)).yday = int32(t.YearDay())
+	(*tm)(unsafe.Pointer(r)).isdst = isdst
+	return r
+}
+
+// time_t mktime(struct tm *tm);
+func Xmktime(t *TLS, ptm uintptr) Intptr {
+	tt := time.Date(
+		int((*tm)(unsafe.Pointer(ptm)).year+1900),
+		time.Month((*tm)(unsafe.Pointer(ptm)).mon+1),
+		int((*tm)(unsafe.Pointer(ptm)).mday),
+		int((*tm)(unsafe.Pointer(ptm)).hour),
+		int((*tm)(unsafe.Pointer(ptm)).min),
+		int((*tm)(unsafe.Pointer(ptm)).sec),
+		0,
+		time.Local,
+	)
+	(*tm)(unsafe.Pointer(ptm)).wday = int32(tt.Weekday())
+	(*tm)(unsafe.Pointer(ptm)).yday = int32(tt.YearDay() - 1)
+	return tt.Unix()
 }
 
 // int open(const char *pathname, int flags, ...);
@@ -2284,14 +2357,9 @@ func Xmodf(t *TLS, x float64, iptr uintptr) float64 {
 	panic(todo(""))
 }
 
-// time_t mktime(struct tm *tm);
-func Xmktime(t *TLS, tm uintptr) Intptr {
-	panic(todo(""))
-}
-
 // void tzset (void);
 func Xtzset(t *TLS) {
-	panic(todo(""))
+	//TODO
 }
 
 // char *strpbrk(const char *s, const char *accept);
@@ -2513,7 +2581,7 @@ func Xmkstemp(t *TLS, template uintptr) int32 {
 		panic(todo(""))
 	}
 
-	return int32(f.Fd())
+	return int32(addFile(f))
 }
 
 // int link(const char *oldpath, const char *newpath);
