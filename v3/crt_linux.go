@@ -784,3 +784,50 @@ func Xpipe(t *TLS, pipefd uintptr) int32 {
 	*(*int32)(unsafe.Pointer(pipefd + unsafe.Sizeof(uintptr(0)))) = int32(a[1])
 	return 0
 }
+
+// int chmod(const char *pathname, mode_t mode)
+func Xchmod(t *TLS, pathname uintptr, mode uint32) int32 {
+	if err := unix.Chmod(GoString(pathname), mode); err != nil {
+		t.setErrno(err)
+		return -1
+	}
+
+	return 0
+}
+
+// int rmdir(const char *pathname);
+func Xrmdir(t *TLS, pathname uintptr) int32 {
+	if err := unix.Rmdir(GoString(pathname)); err != nil {
+		t.setErrno(err)
+		return -1
+	}
+
+	return 0
+}
+
+// int select(int nfds, fd_set *readfds, fd_set *writefds, fd_set *exceptfds, struct timeval *timeout);
+func Xselect(t *TLS, nfds int32, readfds, writefds, exceptfds, timeout uintptr) int32 {
+	n, err := unix.Select(
+		int(nfds),
+		(*unix.FdSet)(unsafe.Pointer(readfds)),
+		(*unix.FdSet)(unsafe.Pointer(writefds)),
+		(*unix.FdSet)(unsafe.Pointer(exceptfds)),
+		(*unix.Timeval)(unsafe.Pointer(timeout)),
+	)
+	if err != nil {
+		t.setErrno(err)
+		return -1
+	}
+
+	return int32(n)
+}
+
+// int ftruncate(int fd, off_t length);
+func Xftruncate(t *TLS, fd int32, length Intptr) int32 {
+	if err := unix.Ftruncate(int(fd), int64(length)); err != nil {
+		t.setErrno(err)
+		return -1
+	}
+
+	return 0
+}

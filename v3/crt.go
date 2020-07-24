@@ -11,6 +11,7 @@ package crt // import "modernc.org/crt/v3"
 import (
 	"bufio"
 	"fmt"
+	"io"
 	"math"
 	"os"
 	"path/filepath"
@@ -408,6 +409,11 @@ again:
 			dmesg("%v: errno <- %v", origin(2), x)
 		}
 		*(*int32)(unsafe.Pointer(t.errnop)) = int32(x)
+	case int32:
+		if dmesgs {
+			dmesg("%v: errno <- %v", origin(2), x)
+		}
+		*(*int32)(unsafe.Pointer(t.errnop)) = x
 	case *os.PathError:
 		err = x.Err
 		goto again
@@ -417,7 +423,7 @@ again:
 		}
 		*(*int32)(unsafe.Pointer(t.errnop)) = int32(x)
 	default:
-		panic("TODO")
+		panic(todo("%T", x))
 	}
 }
 
@@ -1510,11 +1516,6 @@ func X__errno_location(t *TLS) uintptr {
 	return t.errnop
 }
 
-// int chmod(const char *pathname, mode_t mode)
-func Xchmod(t *TLS, pathname uintptr, mode uint32) int32 {
-	panic(todo(""))
-}
-
 // size_t fwrite(const void *ptr, size_t size, size_t nmemb, FILE *stream);
 func Xfwrite(t *TLS, ptr uintptr, size, nmemb Size_t, stream uintptr) Size_t {
 	panic(todo(""))
@@ -1604,7 +1605,7 @@ func Xstrstr(t *TLS, haystack, needle uintptr) uintptr {
 
 // int atoi(const char *nptr);
 func Xatoi(t *TLS, nptr uintptr) int32 {
-	_, neg, _, n := strToUint64(t, nptr, 10)
+	_, neg, _, n, _ := strToUint64(t, nptr, 10)
 	switch {
 	case neg:
 		return int32(-n)
@@ -1657,7 +1658,7 @@ func Xpopen(t *TLS, command, typ uintptr) uintptr {
 
 // long int strtol(const char *nptr, char **endptr, int base);
 func Xstrtol(t *TLS, nptr, endptr uintptr, base int32) (r long) {
-	seenDigits, neg, next, n := strToUint64(t, nptr, base)
+	seenDigits, neg, next, n, err := strToUint64(t, nptr, base)
 	if !seenDigits {
 		panic(todo(""))
 	}
@@ -1679,12 +1680,15 @@ func Xstrtol(t *TLS, nptr, endptr uintptr, base int32) (r long) {
 	if endptr != 0 {
 		*(*uintptr)(unsafe.Pointer(endptr)) = next
 	}
+	if err != 0 {
+		t.setErrno(err)
+	}
 	return r
 }
 
 // unsigned long int strtoul(const char *nptr, char **endptr, int base);
 func Xstrtoul(t *TLS, nptr, endptr uintptr, base int32) (r ulong) {
-	seenDigits, neg, next, n := strToUint64(t, nptr, base)
+	seenDigits, neg, next, n, err := strToUint64(t, nptr, base)
 	if !seenDigits {
 		panic(todo(""))
 	}
@@ -1700,10 +1704,13 @@ func Xstrtoul(t *TLS, nptr, endptr uintptr, base int32) (r ulong) {
 	if endptr != 0 {
 		*(*uintptr)(unsafe.Pointer(endptr)) = next
 	}
+	if err != 0 {
+		t.setErrno(err)
+	}
 	return ulong(n)
 }
 
-func strToUint64(t *TLS, s uintptr, base int32) (seenDigits, neg bool, next uintptr, n uint64) {
+func strToUint64(t *TLS, s uintptr, base int32) (seenDigits, neg bool, next uintptr, n uint64, err int32) {
 	var c byte
 out:
 	for {
@@ -1721,25 +1728,42 @@ out:
 			break out
 		}
 	}
-	switch base {
-	case 10:
-		for {
-			c = *(*byte)(unsafe.Pointer(s))
+	for {
+		c = *(*byte)(unsafe.Pointer(s))
+		var digit uint64
+		switch base {
+		case 10:
 			switch {
 			case c >= '0' && c <= '9':
-				s++
 				seenDigits = true
-				n0 := n
-				n = 10*n + uint64(c) - '0'
-				if n < n0 { // overflow
-					panic(todo(""))
-				}
+				digit = uint64(c) - '0'
 			default:
-				return seenDigits, neg, s, n
+				return seenDigits, neg, s, n, 0
 			}
+		case 16:
+			if c >= 'A' && c <= 'Z' {
+				c = c + ('a' - 'A')
+			}
+			switch {
+			case c >= '0' && c <= '9':
+				seenDigits = true
+				digit = uint64(c) - '0'
+			case c >= 'a' && c <= 'f':
+				seenDigits = true
+				digit = uint64(c) - 'a' - 10
+			default:
+				return seenDigits, neg, s, n, 0
+			}
+		default:
+			panic(todo("", base))
 		}
-	default:
-		panic(todo("", base))
+		n0 := n
+		n = uint64(base)*n + digit
+		if n < n0 { // overflow
+			return seenDigits, neg, s, n0, errno.DERANGE
+		}
+
+		s++
 	}
 }
 
@@ -1959,11 +1983,6 @@ func Xfchmod(t *TLS, fd int32, mode uint32) int32 {
 	panic(todo(""))
 }
 
-// int rmdir(const char *pathname);
-func Xrmdir(t *TLS, pathname uintptr) int32 {
-	panic(todo(""))
-}
-
 // int fchown(int fd, uid_t owner, gid_t group);
 func Xfchown(t *TLS, fd int32, owner, group uint32) int32 {
 	panic(todo(""))
@@ -1986,7 +2005,7 @@ func Xatan2(t *TLS, x, y float64) float64 {
 
 // long atol(const char *nptr);
 func Xatol(t *TLS, nptr uintptr) (r long) {
-	_, neg, _, n := strToUint64(t, nptr, 10)
+	_, neg, _, n, _ := strToUint64(t, nptr, 10)
 	switch {
 	case neg:
 		return long(-n)
@@ -2192,7 +2211,48 @@ func X__builtin_huge_valg(t *TLS) float32 {
 
 // int sscanf(const char *str, const char *format, ...);
 func Xsscanf(t *TLS, str, format, va uintptr) int32 {
-	panic(todo(""))
+	return scanf(strings.NewReader(GoString(str)), GoString(format), va)
+}
+
+func scanf(r io.Reader, format string, va uintptr) (nvalues int32) {
+	for format != "" {
+		c := format[0]
+		format = format[1:]
+		switch c {
+		case '%':
+			if format == "" {
+				panic(todo(""))
+			}
+
+			c = format[0]
+			format = format[1:]
+			switch c {
+			case 'p':
+				var b [2]byte
+				if n, _ := r.Read(b[:]); n != 2 {
+					panic(todo(""))
+				}
+
+				if s := string(b[:]); s != "0x" && s != "0X" {
+					panic(todo(""))
+				}
+
+				var p uintptr
+				if _, err := fmt.Fscanf(r, "%x", &p); err != nil {
+					panic(todo("", err))
+				}
+
+				pp := VaUintptr(&va)
+				*(*uintptr)(unsafe.Pointer(pp)) = p
+				nvalues++
+			default:
+				panic(todo("%q", string(c)))
+			}
+		default:
+			panic(todo("%q", string(c)))
+		}
+	}
+	return nvalues
 }
 
 func X__isoc99_sscanf(t *TLS, str, format, va uintptr) int32 {
@@ -2310,7 +2370,9 @@ func Xsetsockopt(t *TLS, sockfd, level, optname int32, optval uintptr, optlen ui
 
 // int getaddrinfo(const char *node, const char *service, const struct addrinfo *hints, struct addrinfo **res);
 func Xgetaddrinfo(t *TLS, node, service, hints, addrinfo uintptr) int32 {
-	panic(todo(""))
+	// #define EAI_SYSTEM     -11
+	t.setErrno(errno.DENOSYS)
+	return -11
 }
 
 // const char *gai_strerror(int errcode);
@@ -2329,8 +2391,8 @@ func Xfrexp(t *TLS, x float64, exp uintptr) float64 {
 }
 
 // double ldexp(double x, int exp);
-func Xldexp(t *TLS, x float64, expr int32) float64 {
-	panic(todo(""))
+func Xldexp(t *TLS, x float64, exp int32) float64 {
+	return math.Ldexp(x, int(exp))
 }
 
 // int tcgetattr(int fd, struct termios *termios_p);
@@ -2360,16 +2422,6 @@ func Xcfsetospeed(t *TLS, termios_p uintptr, speed uint32) int32 {
 
 // int cfsetispeed(struct termios *termios_p, speed_t speed);
 func Xcfsetispeed(t *TLS, termios_p uintptr, speed uint32) int32 {
-	panic(todo(""))
-}
-
-// int select(int nfds, fd_set *readfds, fd_set *writefds, fd_set *exceptfds, struct timeval *timeout);
-func Xselect(t *TLS, nfds int32, readfds, writefds, exceptfds, timeout uintptr) int32 {
-	panic(todo(""))
-}
-
-// int ftruncate(int fd, off_t length);
-func Xftruncate(t *TLS, fd int32, length Intptr) int32 {
 	panic(todo(""))
 }
 
@@ -2471,7 +2523,8 @@ func Xlink(t *TLS, oldpath, newpath uintptr) int32 {
 
 // pid_t fork(void);
 func Xfork(t *TLS) int32 {
-	panic(todo(""))
+	t.setErrno(errno.DENOSYS)
+	return -1
 }
 
 // int dup2(int oldfd, int newfd);
