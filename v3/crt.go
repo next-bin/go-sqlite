@@ -11,13 +11,13 @@ package crt // import "modernc.org/crt/v3"
 import (
 	"bufio"
 	"fmt"
-	"io"
 	"math"
 	"os"
 	"path/filepath"
 	"runtime"
 	"runtime/debug"
 	"sort"
+	"strconv"
 	"strings"
 	"sync"
 	"sync/atomic"
@@ -452,6 +452,9 @@ again:
 			dmesg("%v: errno <- %v", origin(2), int32(x))
 		}
 		*(*int32)(unsafe.Pointer(t.errnop)) = int32(x)
+	case *os.SyscallError:
+		err = x.Err
+		goto again
 	default:
 		panic(todo("%T", x))
 	}
@@ -527,6 +530,7 @@ func printf(s, args uintptr) (r []byte) {
 	// if dmesgs {
 	// 	dmesg("printf(%q)", GoString(s0))
 	// }
+	s0 := s
 	var b []byte
 	for {
 		c := *(*byte)(unsafe.Pointer(uintptr(s)))
@@ -545,7 +549,8 @@ func printf(s, args uintptr) (r []byte) {
 			c := *(*byte)(unsafe.Pointer(uintptr(s)))
 			s++
 			switch {
-			case c >= '0' && c <= '9' || c == '.' || c == '#' || c == '-':
+			case c >= '0' && c <= '9' || c == '.' || c == '#' || c == '-' ||
+				c == '+':
 				spec = append(spec, c)
 				goto more
 			case c == '*':
@@ -651,6 +656,16 @@ func printf(s, args uintptr) (r []byte) {
 					spec = ".1"
 				}
 				b = append(b, fmt.Sprintf("%"+spec+"g", f)...)
+			case 'G':
+				var f float64
+				args, f = float64Arg(args)
+				switch {
+				case spec == "":
+					spec = ".6"
+				case spec == "0":
+					spec = ".1"
+				}
+				b = append(b, fmt.Sprintf("%"+spec+"G", f)...)
 			case 'h':
 				switch c := *(*byte)(unsafe.Pointer(uintptr(s))); c {
 				case 'h':
@@ -699,7 +714,7 @@ func printf(s, args uintptr) (r []byte) {
 				}
 				b = append(b, fmt.Sprintf("%"+spec+"s", b2)...)
 			default:
-				panic(fmt.Sprintf("%q", string(c)))
+				panic(fmt.Sprintf("%q %q", GoString(s0), string(c)))
 			}
 		default:
 			b = append(b, c)
@@ -1506,10 +1521,11 @@ func Xfopen64(t *TLS, pathname, mode uintptr) uintptr {
 		panic(todo(""))
 	}
 
+	var fd int
+	var err error
 	switch m {
 	case "r", "rb":
-		fd, err := syscall.Open(s, os.O_RDONLY, 0660)
-		if err != nil {
+		if fd, err = syscall.Open(s, os.O_RDONLY, 0660); err != nil {
 			t.setErrno(err)
 			if dmesgs {
 				dmesg("fopen64(): %d, %v", 0, err)
@@ -1517,15 +1533,31 @@ func Xfopen64(t *TLS, pathname, mode uintptr) uintptr {
 			return 0
 		}
 
-		p := mustMalloc(4)
-		*(*int32)(unsafe.Pointer(p)) = int32(fd)
-		// if dmesgs {
-		// 	dmesg("fopen64(%q, %q): %v", s, m, fd)
-		// }
-		return p
+	case "r+b", "w+b":
+		if fd, err = syscall.Open(s, os.O_RDWR, 0660); err != nil {
+			t.setErrno(err)
+			if dmesgs {
+				dmesg("fopen64(): %d, %v", 0, err)
+			}
+			return 0
+		}
+	case "wb":
+		if fd, err = syscall.Open(s, os.O_WRONLY|os.O_CREATE, 0660); err != nil {
+			t.setErrno(err)
+			if dmesgs {
+				dmesg("fopen64(): %d, %v", 0, err)
+			}
+			return 0
+		}
 	default:
 		panic(m)
 	}
+	p := mustMalloc(4)
+	*(*int32)(unsafe.Pointer(p)) = int32(fd)
+	// if dmesgs {
+	// 	dmesg("fopen64(%q, %q): %v", s, m, fd)
+	// }
+	return p
 }
 
 // void rewind(FILE *stream);
@@ -1536,19 +1568,9 @@ func Xrewind(t *TLS, stream uintptr) {
 	Xfseek(t, stream, 0, stdio.DSEEK_SET)
 }
 
-// int symlink(const char *target, const char *linkpath);
-func Xsymlink(t *TLS, target, linkpath uintptr) int32 {
-	panic(todo(""))
-}
-
 // int * __errno_location(void);
 func X__errno_location(t *TLS) uintptr {
 	return t.errnop
-}
-
-// size_t fwrite(const void *ptr, size_t size, size_t nmemb, FILE *stream);
-func Xfwrite(t *TLS, ptr uintptr, size, nmemb Size_t, stream uintptr) Size_t {
-	panic(todo(""))
 }
 
 // time_t time(time_t *tloc);
@@ -1568,16 +1590,6 @@ func Xmemmove(t *TLS, dest, src uintptr, n Size_t) uintptr {
 	}
 	copy((*RawMem)(unsafe.Pointer(uintptr(dest)))[:n], (*RawMem)(unsafe.Pointer(uintptr(src)))[:n])
 	return dest
-}
-
-// int utimes(const char *filename, const struct timeval times[2]);
-func Xutimes(t *TLS, filename, times uintptr) int32 {
-	panic(todo(""))
-}
-
-// ssize_t readlink(const char *restrict path, char *restrict buf, size_t bufsize);
-func Xreadlink(t *TLS, path, buf uintptr, bufsize Size_t) Ssize_t {
-	panic(todo(""))
 }
 
 // char *getenv(const char *name);
@@ -1672,7 +1684,10 @@ func Xpopen(t *TLS, command, typ uintptr) uintptr {
 func Xstrtol(t *TLS, nptr, endptr uintptr, base int32) (r long) {
 	seenDigits, neg, next, n, err := strToUint64(t, nptr, base)
 	if !seenDigits {
-		panic(todo(""))
+		// If there were no digits at all, strtoul() stores the original value of nptr
+		// in *endptr  (and returns 0).
+		*(*uintptr)(unsafe.Pointer(endptr)) = nptr
+		return 0
 	}
 
 	switch {
@@ -1702,7 +1717,10 @@ func Xstrtol(t *TLS, nptr, endptr uintptr, base int32) (r long) {
 func Xstrtoul(t *TLS, nptr, endptr uintptr, base int32) (r ulong) {
 	seenDigits, neg, next, n, err := strToUint64(t, nptr, base)
 	if !seenDigits {
-		panic(todo(""))
+		// If there were no digits at all, strtoul() stores the original value of nptr
+		// in *endptr  (and returns 0).
+		*(*uintptr)(unsafe.Pointer(endptr)) = nptr
+		return 0
 	}
 
 	switch {
@@ -1872,12 +1890,7 @@ func isTimeDST(t time.Time) bool {
 		hh, mm, _ := t.AddDate(0, m, 0).UTC().Clock()
 		clock := hh*60 + mm
 		if clock != tClock {
-			if clock > tClock {
-				// std to dst
-				return true
-			}
-			// dst to std
-			return false
+			return clock > tClock
 		}
 	}
 	// assume no dst
@@ -2049,11 +2062,6 @@ func Xgetcwd(t *TLS, buf uintptr, size Size_t) uintptr {
 		dmesg("%v: getcwd(%#x, %#x): %q", origin(2), buf, size, GoString(buf))
 	}
 	return buf
-}
-
-// int fchmod(int fd, mode_t mode);
-func Xfchmod(t *TLS, fd int32, mode uint32) int32 {
-	panic(todo(""))
 }
 
 // int fchown(int fd, uid_t owner, gid_t group);
@@ -2287,7 +2295,13 @@ func Xsscanf(t *TLS, str, format, va uintptr) int32 {
 	return scanf(strings.NewReader(GoString(str)), GoString(format), va)
 }
 
-func scanf(r io.Reader, format string, va uintptr) (nvalues int32) {
+func scanf(r *strings.Reader, format string, va uintptr) (nvalues int32) {
+	if format == "" {
+		panic(todo(""))
+	}
+
+	format0 := format
+out:
 	for format != "" {
 		c := format[0]
 		format = format[1:]
@@ -2319,10 +2333,42 @@ func scanf(r io.Reader, format string, va uintptr) (nvalues int32) {
 				*(*uintptr)(unsafe.Pointer(pp)) = p
 				nvalues++
 			default:
-				panic(todo("%q", string(c)))
+				panic(todo("%q %q", format0, string(c)))
+			}
+		case ' ', '\t', '\n', '\v', '\f', '\r':
+			for len(format) != 0 {
+				switch format[0] {
+				case ' ', '\t', '\n', '\v', '\f', '\r':
+					format = format[1:]
+				}
+			}
+		skipSpace:
+			for {
+				var b [1]byte
+				if n, _ := r.Read(b[:]); n != 1 {
+					panic(todo("%q %q", format0, string(c)))
+				}
+
+				switch b[0] {
+				case ' ', '\t', '\n', '\v', '\f', '\r':
+					// ok
+				default:
+					if err := r.UnreadByte(); err != nil {
+						panic(todo(""))
+					}
+
+					break skipSpace
+				}
 			}
 		default:
-			panic(todo("%q", string(c)))
+			var b [1]byte
+			if n, _ := r.Read(b[:]); n != 1 {
+				panic(todo("%q %q", format0, string(c)))
+			}
+
+			if b[0] != c {
+				break out
+			}
 		}
 	}
 	return nvalues
@@ -2334,7 +2380,86 @@ func X__isoc99_sscanf(t *TLS, str, format, va uintptr) int32 {
 
 // double atof(const char *nptr);
 func Xatof(t *TLS, nptr uintptr) float64 {
-	panic(todo(""))
+	n, _ := strToFloatt64(t, nptr, 64)
+	return n
+}
+
+func strToFloatt64(t *TLS, s uintptr, bits int) (n float64, errno int32) {
+	var c byte
+out:
+	for {
+		c = *(*byte)(unsafe.Pointer(s))
+		switch c {
+		case ' ', '\t', '\n', '\r', '\v', '\f':
+			s++
+		case '+':
+			s++
+			break out
+		case '-':
+			s++
+			break out
+		default:
+			break out
+		}
+	}
+	var b []byte
+	for {
+		c = *(*byte)(unsafe.Pointer(s))
+		switch {
+		case c >= '0' && c <= '9':
+			b = append(b, c)
+		case c == '.':
+			b = append(b, c)
+			s++
+			for {
+				c = *(*byte)(unsafe.Pointer(s))
+				switch {
+				case c >= '0' && c <= '9':
+					b = append(b, c)
+				case c == 'e' || c == 'E':
+					b = append(b, c)
+					s++
+					for {
+						c = *(*byte)(unsafe.Pointer(s))
+						switch {
+						case c == '+' || c == '-':
+							b = append(b, c)
+							s++
+							for {
+								c = *(*byte)(unsafe.Pointer(s))
+								switch {
+								case c >= '0' && c <= '9':
+									b = append(b, c)
+								default:
+									var err error
+									n, err = strconv.ParseFloat(string(b), bits)
+									if err != nil {
+										panic(todo(""))
+									}
+
+									return n, 0
+								}
+
+								s++
+							}
+						default:
+							panic(todo("%q %q", b, string(c)))
+						}
+
+						s++
+					}
+				default:
+					panic(todo("%q %q", b, string(c)))
+				}
+
+				s++
+			}
+		default:
+			panic(todo("%q %q", b, string(c)))
+		}
+
+		s++
+	}
 }
 
 // int __isnanf(float arg);
@@ -2354,7 +2479,9 @@ func X__isnanl(t *TLS, arg float64) int32 {
 
 // double modf(double x, double *iptr);
 func Xmodf(t *TLS, x float64, iptr uintptr) float64 {
-	panic(todo(""))
+	i, f := math.Modf(x)
+	*(*int32)(unsafe.Pointer(iptr)) = int32(i)
+	return f
 }
 
 // void tzset (void);
@@ -2493,11 +2620,6 @@ func Xcfsetispeed(t *TLS, termios_p uintptr, speed uint32) int32 {
 	panic(todo(""))
 }
 
-// int rename(const char *oldpath, const char *newpath);
-func Xrename(t *TLS, oldpath, newpath uintptr) int32 {
-	panic(todo(""))
-}
-
 // char *realpath(const char *path, char *resolved_path);
 func Xrealpath(t *TLS, path, resolved_path uintptr) uintptr {
 	s, err := filepath.EvalSymlinks(GoString(path))
@@ -2552,11 +2674,6 @@ func Xfts_close(t *TLS, ftsp uintptr) int32 {
 	panic(todo(""))
 }
 
-// int utime(const char *filename, const struct utimbuf *times);
-func Xutime(t *TLS, file, times uintptr) int32 {
-	panic(todo(""))
-}
-
 // int chown(const char *pathname, uid_t owner, gid_t group);
 func Xchown(t *TLS, pathname uintptr, owner, group uint32) int32 {
 	panic(todo(""))
@@ -2578,7 +2695,8 @@ func Xmkstemp(t *TLS, template uintptr) int32 {
 	s = s[:len(s)-len(suff)]
 	f, err := tempFile(s)
 	if err != nil {
-		panic(todo(""))
+		t.setErrno(err)
+		return -1
 	}
 
 	return int32(addFile(f))
@@ -2741,7 +2859,7 @@ func Xinet_ntoa(t *TLS, in struct{ Fs_addr uint32 }) uintptr {
 
 // double hypot(double x, double y);
 func Xhypot(t *TLS, x, y float64) float64 {
-	panic(todo(""))
+	return math.Hypot(x, y)
 }
 
 // struct group *getgrgid(gid_t gid);

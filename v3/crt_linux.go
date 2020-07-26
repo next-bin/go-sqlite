@@ -78,7 +78,9 @@ func Xfclose(t *TLS, stream uintptr) int32 {
 	// if dmesgs {
 	// 	dmesg("fclose(%#x(%d))", stream, *(*int32)(unsafe.Pointer(uintptr(stream))))
 	// }
-	err := unix.Close(int(*(*int32)(unsafe.Pointer(stream))))
+	fd := *(*int32)(unsafe.Pointer(stream))
+	free(stream)
+	err := unix.Close(int(fd))
 	// if dmesgs {
 	// 	dmesg("fclose(): %v", err)
 	// }
@@ -111,7 +113,7 @@ func Xfread(t *TLS, ptr uintptr, size, nmemb Size_t, stream uintptr) Size_t {
 	case 2:
 		panic(todo(""))
 	}
-	n, err := unix.Read(int(fd), (*RawMem)(unsafe.Pointer(ptr))[:size*nmemb])
+	_, err := unix.Read(int(fd), (*RawMem)(unsafe.Pointer(ptr))[:size*nmemb])
 	// if dmesgs {
 	// 	dmesg("fread(): %#x, %v", n, err)
 	// }
@@ -126,7 +128,30 @@ func Xfread(t *TLS, ptr uintptr, size, nmemb Size_t, stream uintptr) Size_t {
 	// if dmesgs {
 	// 	dmesg("fread(): %#x", Intptr(n)/size)
 	// }
-	return Size_t(n) / Size_t(size)
+	return nmemb
+}
+
+// size_t fwrite(const void *ptr, size_t size, size_t nmemb, FILE *stream);
+func Xfwrite(t *TLS, ptr uintptr, size, nmemb Size_t, stream uintptr) Size_t {
+	fd := *(*int32)(unsafe.Pointer(stream))
+	switch fd {
+	case 0:
+		panic(todo(""))
+	case 1:
+		panic(todo(""))
+	case 2:
+		panic(todo(""))
+	}
+	_, err := unix.Write(int(fd), (*RawMem)(unsafe.Pointer(ptr))[:size*nmemb])
+	if err != nil {
+		t.setErrno(err)
+		if dmesgs {
+			dmesg("fread(): %v", err)
+		}
+		return 0
+	}
+
+	return nmemb
 }
 
 // int stat(const char *pathname, struct stat *statbuf);
@@ -855,6 +880,75 @@ func Xftruncate(t *TLS, fd int32, length Intptr) int32 {
 // int access(const char *pathname, int mode);
 func Xaccess(t *TLS, pathname uintptr, mode int32) int32 {
 	if err := unix.Access(GoString(pathname), uint32(mode)); err != nil {
+		t.setErrno(err)
+		return -1
+	}
+
+	return 0
+}
+
+// int utime(const char *filename, const struct utimbuf *times);
+func Xutime(t *TLS, file, times uintptr) int32 {
+	if err := unix.Utime(GoString(file), (*unix.Utimbuf)(unsafe.Pointer(times))); err != nil {
+		t.setErrno(err)
+		return -1
+	}
+
+	return 0
+}
+
+// ssize_t readlink(const char *restrict path, char *restrict buf, size_t bufsize);
+func Xreadlink(t *TLS, path, buf uintptr, bufsize Size_t) Ssize_t {
+	b := make([]byte, 1000) //TODO need PATH_MAX
+	n, err := unix.Readlink(GoString(path), b)
+	if err != nil {
+		t.setErrno(err)
+		return -1
+	}
+
+	return Ssize_t(n)
+}
+
+// int symlink(const char *target, const char *linkpath);
+func Xsymlink(t *TLS, target, linkpath uintptr) int32 {
+	if err := unix.Symlink(GoString(target), GoString(linkpath)); err != nil {
+		t.setErrno(err)
+		return -1
+	}
+
+	return 0
+}
+
+// int rename(const char *oldpath, const char *newpath);
+func Xrename(t *TLS, oldpath, newpath uintptr) int32 {
+	if err := unix.Rename(GoString(oldpath), GoString(newpath)); err != nil {
+		t.setErrno(err)
+		return -1
+	}
+
+	return 0
+}
+
+// int fchmod(int fd, mode_t mode);
+func Xfchmod(t *TLS, fd int32, mode uint32) int32 {
+	if _, _, errno := syscall.Syscall(syscall.SYS_CHMOD, uintptr(fd), uintptr(mode), 0); errno != 0 {
+		t.setErrno(errno)
+		return -1
+	}
+
+	return 0
+}
+
+// int utimes(const char *filename, const struct timeval times[2]);
+func Xutimes(t *TLS, filename, times uintptr) int32 {
+	var tv []unix.Timeval
+	if times != 0 {
+		tv = []unix.Timeval{
+			*(*unix.Timeval)(unsafe.Pointer(times)),
+			*(*unix.Timeval)(unsafe.Pointer(times + unsafe.Sizeof(unix.Timeval{}))),
+		}
+	}
+	if err := unix.Utimes(GoString(filename), tv); err != nil {
 		t.setErrno(err)
 		return -1
 	}
