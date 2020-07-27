@@ -826,7 +826,7 @@ func Xpipe(t *TLS, pipefd uintptr) int32 {
 	}
 
 	*(*int32)(unsafe.Pointer(pipefd)) = int32(a[0])
-	*(*int32)(unsafe.Pointer(pipefd + unsafe.Sizeof(uintptr(0)))) = int32(a[1])
+	*(*int32)(unsafe.Pointer(pipefd + unsafe.Sizeof(int32(0)))) = int32(a[1])
 	return 0
 }
 
