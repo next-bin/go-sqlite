@@ -199,11 +199,11 @@ func Start(main func(*TLS, int32, uintptr) int32) {
 }
 
 func SetEnviron(env []string) {
-	// if dmesgs {
-	// 	for _, v := range env {
-	// 		dmesg("%v: SetEnviron %s", origin(2), v)
-	// 	}
-	// }
+	if dmesgs {
+		for _, v := range env {
+			dmesg("%v: SetEnviron %s", origin(2), v)
+		}
+	}
 	Xenviron = mustCalloc((len(env) + 1) * int(uintptrSize))
 	p := Xenviron
 	for _, v := range env {
@@ -212,9 +212,9 @@ func SetEnviron(env []string) {
 		*(*uintptr)(unsafe.Pointer(p)) = s
 		p += uintptrSize
 	}
-	// if dmesgs {
-	// 	dmesg("%v: environ variable set to %#x", origin(2), Xenviron)
-	// }
+	if dmesgs {
+		dmesg("%v: environ variable set to %#x", origin(2), Xenviron)
+	}
 }
 
 func Bool32(b bool) int32 {
@@ -1597,12 +1597,31 @@ func Xgetenv(t *TLS, name uintptr) uintptr {
 	}
 
 	nm := GoString(name)
+	if dmesgs {
+		dmesg("%v: getenv(%q), environ is %#x", origin(2), nm, Xenviron)
+	}
+	r := getenv(nm)
+	if r == 0 {
+		if dmesgs {
+			dmesg("%v: getenv(%q): 0", origin(2), nm)
+		}
+		return 0
+	}
+
+	if dmesgs {
+		dmesg("%v: getenv(%q): %#x(%q)", origin(2), nm, r, GoString(r))
+	}
+	return r
+}
+
+func getenv(nm string) uintptr {
+	if Xenviron == 0 {
+		panic(todo(""))
+	}
+
 	for p := Xenviron; ; p += uintptrSize {
 		q := *(*uintptr)(unsafe.Pointer(p))
 		if q == 0 {
-			if dmesgs {
-				dmesg("%v: getenv(%q): 0", origin(2), GoString(name))
-			}
 			return 0
 		}
 
@@ -1613,11 +1632,7 @@ func Xgetenv(t *TLS, name uintptr) uintptr {
 		}
 
 		if a[0] == nm {
-			r := q + uintptr(len(nm)) + 1
-			if dmesgs {
-				dmesg("%v: getenv(%q): %#x(%q)", origin(2), GoString(name), r, GoString(r))
-			}
-			return r
+			return q + uintptr(len(nm)) + 1
 		}
 	}
 }
@@ -1898,10 +1913,6 @@ var localtime tm
 func Xlocaltime(_ *TLS, timep uintptr) uintptr {
 	ut := *(*syscall.Time_t)(unsafe.Pointer(timep))
 	t := time.Unix(int64(ut), 0).In(time.Local)
-	var isdst int32
-	if isTimeDST(t) {
-		isdst = 1
-	}
 	localtime.sec = int32(t.Second())
 	localtime.min = int32(t.Minute())
 	localtime.hour = int32(t.Hour())
@@ -1910,7 +1921,10 @@ func Xlocaltime(_ *TLS, timep uintptr) uintptr {
 	localtime.year = int32(t.Year() - 1900)
 	localtime.wday = int32(t.Weekday())
 	localtime.yday = int32(t.YearDay())
-	localtime.isdst = isdst
+	localtime.isdst = Bool32(isTimeDST(t))
+	if dmesgs {
+		dmesg("%v: localtime(%v): %+v", origin(2), ut, localtime)
+	}
 	return uintptr(unsafe.Pointer(&localtime))
 }
 
@@ -1918,10 +1932,6 @@ func Xlocaltime(_ *TLS, timep uintptr) uintptr {
 func Xlocaltime_r(_ *TLS, timep, r uintptr) uintptr {
 	ut := *(*syscall.Time_t)(unsafe.Pointer(timep))
 	t := time.Unix(int64(ut), 0).In(time.Local)
-	var isdst int32
-	if isTimeDST(t) {
-		isdst = 1
-	}
 	(*tm)(unsafe.Pointer(r)).sec = int32(t.Second())
 	(*tm)(unsafe.Pointer(r)).min = int32(t.Minute())
 	(*tm)(unsafe.Pointer(r)).hour = int32(t.Hour())
@@ -1930,12 +1940,25 @@ func Xlocaltime_r(_ *TLS, timep, r uintptr) uintptr {
 	(*tm)(unsafe.Pointer(r)).year = int32(t.Year() - 1900)
 	(*tm)(unsafe.Pointer(r)).wday = int32(t.Weekday())
 	(*tm)(unsafe.Pointer(r)).yday = int32(t.YearDay())
-	(*tm)(unsafe.Pointer(r)).isdst = isdst
+	(*tm)(unsafe.Pointer(r)).isdst = Bool32(isTimeDST(t))
+	if dmesgs {
+		dmesg("%v: localtime_r(%d): %+v", origin(2), ut, (*tm)(unsafe.Pointer(r)))
+	}
 	return r
 }
 
 // time_t mktime(struct tm *tm);
 func Xmktime(t *TLS, ptm uintptr) Intptr {
+	loc := time.Local
+	if r := getenv("TZ"); r != 0 {
+		zone, off, dst := parseZone(GoString(r))
+		if dst {
+			panic(todo(""))
+		}
+
+		loc = time.FixedZone(zone, off)
+	}
+
 	tt := time.Date(
 		int((*tm)(unsafe.Pointer(ptm)).year+1900),
 		time.Month((*tm)(unsafe.Pointer(ptm)).mon+1),
@@ -1944,10 +1967,13 @@ func Xmktime(t *TLS, ptm uintptr) Intptr {
 		int((*tm)(unsafe.Pointer(ptm)).min),
 		int((*tm)(unsafe.Pointer(ptm)).sec),
 		0,
-		time.Local,
+		loc,
 	)
 	(*tm)(unsafe.Pointer(ptm)).wday = int32(tt.Weekday())
 	(*tm)(unsafe.Pointer(ptm)).yday = int32(tt.YearDay() - 1)
+	if dmesgs {
+		dmesg("%v: mktime(%+v): %+v", origin(2), (*tm)(unsafe.Pointer(ptm)), (*tm)(unsafe.Pointer(ptm)))
+	}
 	return tt.Unix()
 }
 

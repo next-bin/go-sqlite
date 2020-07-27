@@ -332,12 +332,23 @@ func Xsysconf(t *TLS, name int32) long {
 	panic(todo(""))
 }
 
+//	struct timezone {
+//		int tz_minuteswest;     /* minutes west of Greenwich */
+//		int tz_dsttime;         /* type of DST correction */
+//	};
+type timezone struct {
+	tz_minuteswest int32
+	tz_dsttime     int32
+}
+
 // int gettimeofday(struct timeval *tv, struct timezone *tz);
 func Xgettimeofday(t *TLS, tv, tz uintptr) int32 {
 	if tz != 0 {
 		panic(todo(""))
 	}
-	err := unix.Gettimeofday((*unix.Timeval)(unsafe.Pointer(tv)))
+
+	var tvs unix.Timeval
+	err := unix.Gettimeofday(&tvs)
 	if err != nil {
 		t.setErrno(err)
 		if dmesgs {
@@ -347,9 +358,29 @@ func Xgettimeofday(t *TLS, tv, tz uintptr) int32 {
 	}
 
 	if dmesgs {
-		dmesg("%v: gettimeofday(%#x, %#x): 0", origin(2), tv, tz)
+		dmesg("%v: gettimeofday(%+v, %#x): 0", origin(2), tvs, tz)
 	}
+	*(*unix.Timeval)(unsafe.Pointer(tv)) = tvs
 	return 0
+}
+
+func parseZone(s string) (name string, off int, dst bool) {
+	name = s
+	for len(s) != 0 {
+		switch c := s[0]; {
+		case c >= 'A' && c <= 'Z':
+			s = s[1:]
+		default:
+			name = name[:len(name)-len(s)]
+			n, err := strconv.ParseInt(s, 10, 8)
+			if err != nil {
+				panic(todo(""))
+			}
+
+			return name, int(n), false
+		}
+	}
+	return name, off, dst
 }
 
 // int close(int fd);
