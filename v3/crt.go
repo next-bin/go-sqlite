@@ -2506,7 +2506,7 @@ func X__isnanl(t *TLS, arg float64) int32 {
 // double modf(double x, double *iptr);
 func Xmodf(t *TLS, x float64, iptr uintptr) float64 {
 	i, f := math.Modf(x)
-	*(*int32)(unsafe.Pointer(iptr)) = int32(i)
+	*(*float64)(unsafe.Pointer(iptr)) = i
 	return f
 }
 
