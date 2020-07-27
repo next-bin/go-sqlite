@@ -1911,8 +1911,13 @@ var localtime tm
 
 // struct tm *localtime(const time_t *timep);
 func Xlocaltime(_ *TLS, timep uintptr) uintptr {
+	loc := time.Local
+	if r := getenv("TZ"); r != 0 {
+		zone, off := parseZone(GoString(r))
+		loc = time.FixedZone(zone, -off)
+	}
 	ut := *(*syscall.Time_t)(unsafe.Pointer(timep))
-	t := time.Unix(int64(ut), 0).In(time.Local)
+	t := time.Unix(int64(ut), 0).In(loc)
 	localtime.sec = int32(t.Second())
 	localtime.min = int32(t.Minute())
 	localtime.hour = int32(t.Hour())
@@ -1930,8 +1935,13 @@ func Xlocaltime(_ *TLS, timep uintptr) uintptr {
 
 // struct tm *localtime_r(const time_t *timep, struct tm *result);
 func Xlocaltime_r(_ *TLS, timep, r uintptr) uintptr {
+	loc := time.Local
+	if r := getenv("TZ"); r != 0 {
+		zone, off := parseZone(GoString(r))
+		loc = time.FixedZone(zone, -off)
+	}
 	ut := *(*syscall.Time_t)(unsafe.Pointer(timep))
-	t := time.Unix(int64(ut), 0).In(time.Local)
+	t := time.Unix(int64(ut), 0).In(loc)
 	(*tm)(unsafe.Pointer(r)).sec = int32(t.Second())
 	(*tm)(unsafe.Pointer(r)).min = int32(t.Minute())
 	(*tm)(unsafe.Pointer(r)).hour = int32(t.Hour())
@@ -1951,14 +1961,9 @@ func Xlocaltime_r(_ *TLS, timep, r uintptr) uintptr {
 func Xmktime(t *TLS, ptm uintptr) Intptr {
 	loc := time.Local
 	if r := getenv("TZ"); r != 0 {
-		zone, off, dst := parseZone(GoString(r))
-		if dst {
-			panic(todo(""))
-		}
-
+		zone, off := parseZone(GoString(r))
 		loc = time.FixedZone(zone, off)
 	}
-
 	tt := time.Date(
 		int((*tm)(unsafe.Pointer(ptm)).year+1900),
 		time.Month((*tm)(unsafe.Pointer(ptm)).mon+1),

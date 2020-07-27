@@ -364,23 +364,108 @@ func Xgettimeofday(t *TLS, tv, tz uintptr) int32 {
 	return 0
 }
 
-func parseZone(s string) (name string, off int, dst bool) {
-	name = s
+func parseZone(s string) (name string, off int) {
+	s, name, off, _ = parseZoneOffset(s, false)
+	return name, off
+}
+
+func parseZoneOffset(s string, offOpt bool) (string, string, int, bool) {
+	name := s
 	for len(s) != 0 {
 		switch c := s[0]; {
 		case c >= 'A' && c <= 'Z':
 			s = s[1:]
 		default:
 			name = name[:len(name)-len(s)]
-			n, err := strconv.ParseInt(s, 10, 8)
-			if err != nil {
+			if len(name) < 3 {
 				panic(todo(""))
 			}
 
-			return name, int(n), false
+			if offOpt {
+				if len(s) == 0 {
+					return "", name, 0, false
+				}
+
+				if c := s[0]; (c < '0' || c > '9') && c != '+' && c != '-' {
+					return s, name, 0, false
+				}
+			}
+
+			s, off := parseOffset(s)
+			return s, name, off, true
 		}
 	}
-	return name, off, dst
+	panic(todo(""))
+}
+
+//  [+|-]hh[:mm[:ss]]
+func parseOffset(s string) (string, int) {
+	if len(s) == 0 {
+		panic(todo(""))
+	}
+
+	k := 1
+	switch s[0] {
+	case '+':
+		// nop
+		s = s[1:]
+	case '-':
+		k = -1
+		s = s[1:]
+	}
+	s, hh, ok := parseUint(s)
+	if !ok {
+		panic(todo(""))
+	}
+
+	n := hh * 3600
+	if len(s) == 0 || s[0] != ':' {
+		return s, k * n
+	}
+
+	s = s[1:] // ':'
+	if len(s) == 0 {
+		panic(todo(""))
+	}
+
+	s, mm, ok := parseUint(s)
+	if !ok {
+		panic(todo(""))
+	}
+
+	n += mm * 60
+	if len(s) == 0 || s[0] != ':' {
+		return s, k * n
+	}
+
+	s = s[1:] // ':'
+	if len(s) == 0 {
+		panic(todo(""))
+	}
+
+	s, ss, ok := parseUint(s)
+	return s, k * (n + ss)
+}
+
+func parseUint(s string) (string, int, bool) {
+	var ok bool
+	var r int
+	for len(s) != 0 {
+		switch c := s[0]; {
+		case c >= '0' && c <= '9':
+			ok = true
+			r0 := r
+			r = 10*r + int(c) - '0'
+			if r < r0 {
+				panic(todo(""))
+			}
+
+			s = s[1:]
+		default:
+			return s, r, ok
+		}
+	}
+	return s, r, ok
 }
 
 // int close(int fd);
