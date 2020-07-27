@@ -199,11 +199,11 @@ func Start(main func(*TLS, int32, uintptr) int32) {
 }
 
 func SetEnviron(env []string) {
-	if dmesgs {
-		for _, v := range env {
-			dmesg("%v: SetEnviron %s", origin(2), v)
-		}
-	}
+	// if dmesgs {
+	// 	for _, v := range env {
+	// 		dmesg("%v: SetEnviron %s", origin(2), v)
+	// 	}
+	// }
 	Xenviron = mustCalloc((len(env) + 1) * int(uintptrSize))
 	p := Xenviron
 	for _, v := range env {
@@ -212,9 +212,9 @@ func SetEnviron(env []string) {
 		*(*uintptr)(unsafe.Pointer(p)) = s
 		p += uintptrSize
 	}
-	if dmesgs {
-		dmesg("%v: environ variable set to %#x", origin(2), Xenviron)
-	}
+	// if dmesgs {
+	// 	dmesg("%v: environ variable set to %#x", origin(2), Xenviron)
+	// }
 }
 
 func Bool32(b bool) int32 {
@@ -239,9 +239,9 @@ func malloc(n int) uintptr {
 	//TODO- atomic.AddInt64(&Unlocks, 1)
 	allocMu.Unlock()
 	if err != nil {
-		if dmesgs {
-			dmesg("malloc(): ", err)
-		}
+		// if dmesgs {
+		// 	dmesg("malloc(): ", err)
+		// }
 		p = 0
 	}
 	return p
@@ -262,9 +262,9 @@ func realloc(p uintptr, n int) uintptr {
 	//TODO- atomic.AddInt64(&Unlocks, 1)
 	allocMu.Unlock()
 	if err != nil {
-		if dmesgs {
-			dmesg("realloc(): ", err)
-		}
+		// if dmesgs {
+		// 	dmesg("realloc(): ", err)
+		// }
 		return 0
 	}
 
@@ -278,9 +278,9 @@ func calloc(n int) uintptr {
 	//TODO- atomic.AddInt64(&Unlocks, 1)
 	allocMu.Unlock()
 	if err != nil {
-		if dmesgs {
-			dmesg("calloc(): ", err)
-		}
+		// if dmesgs {
+		// 	dmesg("calloc(): ", err)
+		// }
 		return 0
 	}
 
@@ -302,9 +302,9 @@ func free(p uintptr) {
 	//TODO- atomic.AddInt64(&Unlocks, 1)
 	allocMu.Unlock()
 	if err != nil {
-		if dmesgs {
-			dmesg("free(): ", err)
-		}
+		// if dmesgs {
+		// 	dmesg("free(): ", err)
+		// }
 		panic(err.Error())
 	}
 }
@@ -766,9 +766,9 @@ func int32Arg(ap uintptr) (uintptr, int32) {
 
 // void *memset(void *s, int c, size_t n)
 func Xmemset(t *TLS, s uintptr, c int32, n Size_t) uintptr {
-	if dmesgs {
-		dmesg("%v: memset(%#x, %#x, %#x)", origin(2), s, c, n)
-	}
+	// if dmesgs {
+	// 	dmesg("%v: memset(%#x, %#x, %#x)", origin(2), s, c, n)
+	// }
 	if n != 0 {
 		b := (*RawMem)(unsafe.Pointer(s))[:n]
 		for i := range b {
@@ -792,9 +792,9 @@ func Xputchar(t *TLS, c int32) int32 {
 		outBuf.Flush()
 	}
 	if err != nil {
-		if dmesgs {
-			dmesg("putchar(%#x): %v", c, err)
-		}
+		// if dmesgs {
+		// 	dmesg("putchar(%#x): %v", c, err)
+		// }
 		return eof
 	}
 
@@ -804,21 +804,21 @@ func Xputchar(t *TLS, c int32) int32 {
 // void *memcpy(void *dest, const void *src, size_t n);
 func Xmemcpy(t *TLS, dest, src uintptr, n Size_t) (r uintptr) {
 	r = dest
-	n0 := n
-	dest0 := dest
-	src0 := src
-	var s string
-	if dmesgs {
-		s = goStringN(src, int(n))
-	}
+	// n0 := n
+	// dest0 := dest
+	// src0 := src
+	// var s string
+	// if dmesgs {
+	// 	s = goStringN(src, int(n))
+	// }
 	for ; n != 0; n-- {
 		*(*byte)(unsafe.Pointer(dest)) = *(*byte)(unsafe.Pointer(src))
 		src++
 		dest++
 	}
-	if dmesgs {
-		dmesg("%v: memcpy(%#x, %#x(%q), %#x): %#x", origin(2), dest0, src0, s, n0, r)
-	}
+	// if dmesgs {
+	// 	dmesg("%v: memcpy(%#x, %#x(%q), %#x): %#x", origin(2), dest0, src0, s, n0, r)
+	// }
 	return r
 }
 
@@ -858,9 +858,9 @@ func Xputs(t *TLS, s uintptr) int32 {
 // void *calloc(size_t nmemb, size_t size);
 func Xcalloc(t *TLS, n, size Size_t) uintptr {
 	r := calloc(int(uint(n) * uint(size)))
-	if dmesgs {
-		dmesg("%v: calloc(%#x, %#x): %#x", origin(2), n, size, r)
-	}
+	// if dmesgs {
+	// 	dmesg("%v: calloc(%#x, %#x): %#x", origin(2), n, size, r)
+	// }
 	return r
 }
 
@@ -986,33 +986,33 @@ func Xvfprintf(t *TLS, stream, format, ap uintptr) int32 {
 
 // int memcmp(const void *s1, const void *s2, size_t n);
 func Xmemcmp(t *TLS, s1, s2 uintptr, n Size_t) int32 {
-	var b1, b2 []byte
-	n0 := n
+	// var b1, b2 []byte
+	// n0 := n
 	for ; n != 0; n-- {
 		c1 := *(*byte)(unsafe.Pointer(s1))
 		s1++
 		c2 := *(*byte)(unsafe.Pointer(s2))
 		s2++
-		if dmesgs {
-			b1 = append(b1, c1)
-			b2 = append(b2, c2)
-		}
+		// if dmesgs {
+		// 	b1 = append(b1, c1)
+		// 	b2 = append(b2, c2)
+		// }
 		if c1 < c2 {
-			if dmesgs {
-				dmesg("%v: memcmp(%q, %q, %v): -1", origin(2), b1, b2, n0)
-			}
+			// if dmesgs {
+			// 	dmesg("%v: memcmp(%q, %q, %v): -1", origin(2), b1, b2, n0)
+			// }
 			return -1
 		}
 		if c1 > c2 {
-			if dmesgs {
-				dmesg("%v: memcmp(%q, %q, %v): 1", origin(2), b1, b2, n0)
-			}
+			// if dmesgs {
+			// 	dmesg("%v: memcmp(%q, %q, %v): 1", origin(2), b1, b2, n0)
+			// }
 			return 1
 		}
 	}
-	if dmesgs {
-		dmesg("%v: memcmp(%q, %q, %v): 0", origin(2), b1, b2, n0)
-	}
+	// if dmesgs {
+	// 	dmesg("%v: memcmp(%q, %q, %v): 0", origin(2), b1, b2, n0)
+	// }
 	return 0
 }
 
@@ -1107,9 +1107,9 @@ func Xfabsf(t *TLS, x float32) float32 {
 
 // double log(double x);
 func Xlog(t *TLS, x float64) float64 {
-	if dmesgs {
-		dmesg("%v: log(%v)", origin(2), x)
-	}
+	// if dmesgs {
+	// 	dmesg("%v: log(%v)", origin(2), x)
+	// }
 	return math.Log(x)
 }
 
@@ -1140,24 +1140,24 @@ func Xceil(t *TLS, x float64) float64 {
 
 // double floor(double x);
 func Xfloor(t *TLS, x float64) float64 {
-	if dmesgs {
-		dmesg("%v: floor(%v)", origin(2), x)
-	}
+	// if dmesgs {
+	// 	dmesg("%v: floor(%v)", origin(2), x)
+	// }
 	return math.Floor(x)
 }
 
 // char *strcpy(char *dest, const char *src)
 func Xstrcpy(t *TLS, dest, src uintptr) uintptr {
 	r := dest
-	src0 := src
+	// src0 := src
 	for ; ; dest++ {
 		c := *(*int8)(unsafe.Pointer(src))
 		src++
 		*(*int8)(unsafe.Pointer(dest)) = c
 		if c == 0 {
-			if dmesgs {
-				dmesg("%v: strcpy(%#x, %q): %#x(%q)", origin(2), r, GoString(src0), r, GoString(r))
-			}
+			// if dmesgs {
+			// 	dmesg("%v: strcpy(%#x, %q): %#x(%q)", origin(2), r, GoString(src0), r, GoString(r))
+			// }
 			return r
 		}
 	}
@@ -1188,8 +1188,8 @@ func Xstrncpy(t *TLS, dest, src uintptr, n Size_t) uintptr {
 
 // int strcmp(const char *s1, const char *s2)
 func Xstrcmp(t *TLS, s1, s2 uintptr) int32 {
-	s10 := s1
-	s20 := s2
+	// s10 := s1
+	// s20 := s2
 	for {
 		ch1 := *(*byte)(unsafe.Pointer(s1))
 		s1++
@@ -1197,9 +1197,9 @@ func Xstrcmp(t *TLS, s1, s2 uintptr) int32 {
 		s2++
 		if ch1 != ch2 || ch1 == 0 || ch2 == 0 {
 			r := int32(ch1) - int32(ch2)
-			if dmesgs {
-				dmesg("%v: strcmp(%q, %q): %v", origin(2), GoString(s10), GoString(s20), r)
-			}
+			// if dmesgs {
+			// 	dmesg("%v: strcmp(%q, %q): %v", origin(2), GoString(s10), GoString(s20), r)
+			// }
 			return r
 		}
 	}
@@ -1211,14 +1211,14 @@ func X__builtin_strcmp(t *TLS, s1, s2 uintptr) int32 {
 
 // size_t strlen(const char *s)
 func Xstrlen(t *TLS, s uintptr) Size_t {
-	s0 := s
+	// s0 := s
 	var n Size_t
 	for ; *(*int8)(unsafe.Pointer(s)) != 0; s++ {
 		n++
 	}
-	if dmesgs {
-		dmesg("%v: strlen(%q): %v", origin(2), GoString(s0), n)
-	}
+	// if dmesgs {
+	// 	dmesg("%v: strlen(%q): %v", origin(2), GoString(s0), n)
+	// }
 	return n
 }
 
@@ -1229,10 +1229,10 @@ func X__builtin_strlen(t *TLS, s uintptr) Size_t {
 // char *strcat(char *dest, const char *src)
 func Xstrcat(t *TLS, dest, src uintptr) uintptr {
 	ret := dest
-	var s string
-	if dmesgs {
-		s = GoString(src)
-	}
+	// var s string
+	// if dmesgs {
+	// 	s = GoString(src)
+	// }
 	for *(*int8)(unsafe.Pointer(dest)) != 0 {
 		dest++
 	}
@@ -1242,9 +1242,9 @@ func Xstrcat(t *TLS, dest, src uintptr) uintptr {
 		*(*int8)(unsafe.Pointer(dest)) = c
 		dest++
 		if c == 0 {
-			if dmesgs {
-				dmesg("%v: strcat(%#x, %q): %q", origin(2), ret, s, GoString(ret))
-			}
+			// if dmesgs {
+			// 	dmesg("%v: strcat(%#x, %q): %q", origin(2), ret, s, GoString(ret))
+			// }
 			return ret
 		}
 	}
@@ -1252,9 +1252,9 @@ func Xstrcat(t *TLS, dest, src uintptr) uintptr {
 
 // int strncmp(const char *s1, const char *s2, size_t n)
 func Xstrncmp(t *TLS, s1, s2 uintptr, n Size_t) int32 {
-	s10 := s1
-	s20 := s2
-	n0 := n
+	// s10 := s1
+	// s20 := s2
+	// n0 := n
 	var ch1, ch2 byte
 	for ; n != 0; n-- {
 		ch1 = *(*byte)(unsafe.Pointer(s1))
@@ -1263,41 +1263,41 @@ func Xstrncmp(t *TLS, s1, s2 uintptr, n Size_t) int32 {
 		s2++
 		if ch1 != ch2 {
 			r := int32(ch1) - int32(ch2)
-			if dmesgs {
-				dmesg("%v: strncmp(%q, %q, %d): %v", origin(2), GoString(s10), GoString(s20), n0, r)
-			}
+			// if dmesgs {
+			// 	dmesg("%v: strncmp(%q, %q, %d): %v", origin(2), GoString(s10), GoString(s20), n0, r)
+			// }
 			return r
 		}
 
 		if ch1 == 0 {
-			if dmesgs {
-				dmesg("%v: strncmp(%q, %q, %d): 0", origin(2), GoString(s10), GoString(s20), n0)
-			}
+			// if dmesgs {
+			// 	dmesg("%v: strncmp(%q, %q, %d): 0", origin(2), GoString(s10), GoString(s20), n0)
+			// }
 			return 0
 		}
 	}
-	if dmesgs {
-		dmesg("%v: strncmp(%q, %q, %d): 0", origin(2), GoString(s10), GoString(s20), n0)
-	}
+	// if dmesgs {
+	// 	dmesg("%v: strncmp(%q, %q, %d): 0", origin(2), GoString(s10), GoString(s20), n0)
+	// }
 	return 0
 }
 
 // char *strchr(const char *s, int c)
 func Xstrchr(t *TLS, s uintptr, c int32) uintptr {
-	s0 := s
+	// s0 := s
 	for {
 		ch2 := *(*byte)(unsafe.Pointer(s))
 		if ch2 == byte(c) {
-			if dmesgs {
-				dmesg("%v: strchr(%#x(%q), %#x): %#x", origin(2), s0, GoString(s0), c, s)
-			}
+			// if dmesgs {
+			// 	dmesg("%v: strchr(%#x(%q), %#x): %#x", origin(2), s0, GoString(s0), c, s)
+			// }
 			return s
 		}
 
 		if ch2 == 0 {
-			if dmesgs {
-				dmesg("%v: strchr(%#x(%q), %#x): %#x", origin(2), s0, GoString(s0), c, 0)
-			}
+			// if dmesgs {
+			// 	dmesg("%v: strchr(%#x(%q), %#x): %#x", origin(2), s0, GoString(s0), c, 0)
+			// }
 			return 0
 		}
 
@@ -1312,13 +1312,13 @@ func X__builtin_strchr(t *TLS, s uintptr, c int32) uintptr {
 // char *strrchr(const char *s, int c)
 func Xstrrchr(t *TLS, s uintptr, c int32) uintptr {
 	var ret uintptr
-	s0 := s
+	// s0 := s
 	for {
 		ch2 := *(*byte)(unsafe.Pointer(s))
 		if ch2 == 0 {
-			if dmesgs {
-				dmesg("%v: strrchr(%#x(%q), %#x): %#x", origin(2), s0, GoString(s0), c, ret)
-			}
+			// if dmesgs {
+			// 	dmesg("%v: strrchr(%#x(%q), %#x): %#x", origin(2), s0, GoString(s0), c, ret)
+			// }
 			return ret
 		}
 
@@ -1335,11 +1335,9 @@ func Xsprintf(t *TLS, str, format, args uintptr) (r int32) {
 	copy((*RawMem)(unsafe.Pointer(str))[:len(b)], b)
 	*(*byte)(unsafe.Pointer(str + uintptr(len(b)))) = 0
 	r = int32(len(b))
-	if dmesgs {
-		if dmesgs {
-			dmesg("%v: sprintf(%#x, %q, %#x): %q, %v", origin(2), str, GoString(format), args, goStringN(str, len(b)), r)
-		}
-	}
+	// if dmesgs {
+	// 	dmesg("%v: sprintf(%#x, %q, %#x): %q, %v", origin(2), str, GoString(format), args, goStringN(str, len(b)), r)
+	// }
 	return r
 }
 
@@ -1369,9 +1367,9 @@ func X__builtin_snprintf(t *TLS, str uintptr, size Size_t, format, args uintptr)
 // void *malloc(size_t size);
 func Xmalloc(t *TLS, size Size_t) (r uintptr) {
 	r = malloc(int(size))
-	if dmesgs {
-		dmesg("%v: malloc(%d): %#x", origin(2), size, r)
-	}
+	// if dmesgs {
+	// 	dmesg("%v: malloc(%d): %#x", origin(2), size, r)
+	// }
 	return r
 }
 
@@ -1386,9 +1384,9 @@ func Xrealloc(t *TLS, ptr uintptr, size Size_t) uintptr {
 
 // void free(void *ptr);
 func Xfree(t *TLS, ptr uintptr) {
-	if dmesgs {
-		dmesg("%v: free(%#x)", origin(2), ptr)
-	}
+	// if dmesgs {
+	// 	dmesg("%v: free(%#x)", origin(2), ptr)
+	// }
 	free(ptr)
 }
 
@@ -1585,9 +1583,9 @@ func Xfputc(t *TLS, c int32, stream uintptr) int32 {
 
 // void *memmove(void *dest, const void *src, size_t n);
 func Xmemmove(t *TLS, dest, src uintptr, n Size_t) uintptr {
-	if dmesgs {
-		dmesg("%v: memmove(%#x, %#x(%q), %#x)", origin(2), dest, src, goStringN(src, int(n)), n)
-	}
+	// if dmesgs {
+	// 	dmesg("%v: memmove(%#x, %#x(%q), %#x)", origin(2), dest, src, goStringN(src, int(n)), n)
+	// }
 	copy((*RawMem)(unsafe.Pointer(uintptr(dest)))[:n], (*RawMem)(unsafe.Pointer(uintptr(src)))[:n])
 	return dest
 }
@@ -1598,15 +1596,12 @@ func Xgetenv(t *TLS, name uintptr) uintptr {
 		panic(todo(""))
 	}
 
-	if dmesgs {
-		dmesg("%v: getenv(%q)", origin(2), GoString(name))
-	}
 	nm := GoString(name)
 	for p := Xenviron; ; p += uintptrSize {
 		q := *(*uintptr)(unsafe.Pointer(p))
 		if q == 0 {
 			if dmesgs {
-				dmesg("%v: getenv(): 0", origin(2))
+				dmesg("%v: getenv(%q): 0", origin(2), GoString(name))
 			}
 			return 0
 		}
@@ -1620,7 +1615,7 @@ func Xgetenv(t *TLS, name uintptr) uintptr {
 		if a[0] == nm {
 			r := q + uintptr(len(nm)) + 1
 			if dmesgs {
-				dmesg("%v: getenv(): %#x from %q at %#x", origin(2), r, s, q)
+				dmesg("%v: getenv(%q): %#x(%q)", origin(2), GoString(name), r, GoString(r))
 			}
 			return r
 		}
@@ -1633,15 +1628,15 @@ func Xstrstr(t *TLS, haystack, needle uintptr) uintptr {
 	nd := GoString(needle)
 	if i := strings.Index(hs, nd); i >= 0 {
 		r := haystack + uintptr(i)
-		if dmesgs {
-			dmesg("%v: strstr(%#x(%q), %#x(%q)): %#x", origin(2), haystack, hs, needle, nd, r)
-		}
+		// if dmesgs {
+		// 	dmesg("%v: strstr(%#x(%q), %#x(%q)): %#x", origin(2), haystack, hs, needle, nd, r)
+		// }
 		return r
 	}
 
-	if dmesgs {
-		dmesg("%v: strstr(%#x(%q), %#x(%q)): %#x", origin(2), haystack, hs, needle, nd, 0)
-	}
+	// if dmesgs {
+	// 	dmesg("%v: strstr(%#x(%q), %#x(%q)): %#x", origin(2), haystack, hs, needle, nd, 0)
+	// }
 	return 0
 }
 
@@ -1959,9 +1954,9 @@ func Xmktime(t *TLS, ptm uintptr) Intptr {
 // int open(const char *pathname, int flags, ...);
 func Xopen(t *TLS, pathname uintptr, flags int32, args uintptr) int32 {
 	r := Xopen64(t, pathname, flags, args)
-	if dmesgs {
-		dmesg("%v: open(%q, %#x, %#x): %v", origin(2), GoString(pathname), flags, args, r)
-	}
+	// if dmesgs {
+	// 	dmesg("%v: open(%q, %#x, %#x): %v", origin(2), GoString(pathname), flags, args, r)
+	// }
 	return r
 }
 
@@ -1976,9 +1971,9 @@ func Xopen64(t *TLS, pathname uintptr, flags int32, args uintptr) int32 {
 	fd, err := syscall.Open(s, int(flags), perm)
 	if err != nil {
 		t.setErrno(err)
-		if dmesgs {
-			dmesg("%v: open64(%q, %#x, %#o): -1", origin(2), s, flags, perm)
-		}
+		// if dmesgs {
+		// 	dmesg("%v: open64(%q, %#x, %#o): -1", origin(2), s, flags, perm)
+		// }
 		return -1
 	}
 
@@ -2188,9 +2183,9 @@ func (s *sorter) Swap(i, j int) {
 
 // void qsort(void *base, size_t nmemb, size_t size, int (*compar)(const void *, const void *));
 func Xqsort(t *TLS, base uintptr, nmemb, size Size_t, compar uintptr) {
-	if dmesgs {
-		dmesg("%v: qsort(%#x, %d, size %d, %#x)", origin(2), base, nmemb, size, compar)
-	}
+	// if dmesgs {
+	// 	dmesg("%v: qsort(%#x, %d, size %d, %#x)", origin(2), base, nmemb, size, compar)
+	// }
 	sort.Sort(&sorter{
 		len:  int(nmemb),
 		base: base,
@@ -2492,8 +2487,8 @@ func Xtzset(t *TLS) {
 // char *strpbrk(const char *s, const char *accept);
 func Xstrpbrk(t *TLS, s, accept uintptr) uintptr {
 	bits := newBits(256)
-	s0 := s
-	accept0 := accept
+	// s0 := s
+	// accept0 := accept
 	for {
 		b := *(*byte)(unsafe.Pointer(accept))
 		if b == 0 {
@@ -2506,16 +2501,16 @@ func Xstrpbrk(t *TLS, s, accept uintptr) uintptr {
 	for {
 		b := *(*byte)(unsafe.Pointer(s))
 		if b == 0 {
-			if dmesgs {
-				dmesg("%v: strpbrk(%#x(%q), %#x(%q)): 0", origin(2), s0, GoString(s0), accept0, GoString(accept0))
-			}
+			// if dmesgs {
+			// 	dmesg("%v: strpbrk(%#x(%q), %#x(%q)): 0", origin(2), s0, GoString(s0), accept0, GoString(accept0))
+			// }
 			return 0
 		}
 
 		if bits.has(int(b)) {
-			if dmesgs {
-				dmesg("%v: strpbrk(%#x(%q), %#x(%q)): %#x", origin(2), s0, GoString(s0), accept0, GoString(accept0), s)
-			}
+			// if dmesgs {
+			// 	dmesg("%v: strpbrk(%#x(%q), %#x(%q)): %#x", origin(2), s0, GoString(s0), accept0, GoString(accept0), s)
+			// }
 			return s
 		}
 
@@ -2525,21 +2520,21 @@ func Xstrpbrk(t *TLS, s, accept uintptr) uintptr {
 
 // void *memchr(const void *s, int c, size_t n);
 func Xmemchr(t *TLS, s uintptr, c int32, n Size_t) uintptr {
-	s0 := s
-	n0 := n
+	// s0 := s
+	// n0 := n
 	for ; n != 0; n-- {
 		if *(*byte)(unsafe.Pointer(s)) == byte(c) {
-			if dmesgs {
-				dmesg("%v: memchr(%#x(%q), '%c', %v): %#x", origin(2), s0, goStringN(s0, int(n0)), c, n0, s)
-			}
+			// if dmesgs {
+			// 	dmesg("%v: memchr(%#x(%q), '%c', %v): %#x", origin(2), s0, goStringN(s0, int(n0)), c, n0, s)
+			// }
 			return s
 		}
 
 		s++
 	}
-	if dmesgs {
-		dmesg("%v: memchr(%#x(%q), '%c', %v): 0", origin(2), s0, goStringN(s0, int(n0)), c, n0)
-	}
+	// if dmesgs {
+	// 	dmesg("%v: memchr(%#x(%q), '%c', %v): 0", origin(2), s0, goStringN(s0, int(n0)), c, n0)
+	// }
 	return 0
 }
 
@@ -2577,9 +2572,9 @@ func Xgai_strerror(t *TLS, errcode int32) uintptr {
 
 // double frexp(double x, int *exp);
 func Xfrexp(t *TLS, x float64, exp uintptr) float64 {
-	if dmesgs {
-		dmesg("%v: frexp(%v, %#x)", origin(2), x, exp)
-	}
+	// if dmesgs {
+	// 	dmesg("%v: frexp(%v, %#x)", origin(2), x, exp)
+	// }
 	f, e := math.Frexp(x)
 	*(*int32)(unsafe.Pointer(exp)) = int32(e)
 	return f
@@ -2627,7 +2622,7 @@ func Xrealpath(t *TLS, path, resolved_path uintptr) uintptr {
 		if os.IsNotExist(err) {
 			t.setErrno(errno.DENOENT)
 			if dmesgs {
-				dmesg("%v: realpath(%q, %#x): 0", origin(2), GoString(path), resolved_path)
+				dmesg("%v: realpath(%q, %#x): %v", origin(2), GoString(path), resolved_path, err)
 			}
 			return 0
 		}
@@ -2643,9 +2638,9 @@ func Xrealpath(t *TLS, path, resolved_path uintptr) uintptr {
 
 	copy((*RawMem)(unsafe.Pointer(resolved_path))[:len(s)], s)
 	(*RawMem)(unsafe.Pointer(resolved_path))[len(s)] = 0
-	if dmesgs {
-		dmesg("%v: realpath(%q, %#x): %q@%#x", origin(2), GoString(path), resolved_path, GoString(resolved_path), resolved_path)
-	}
+	// if dmesgs {
+	// 	dmesg("%v: realpath(%q, %#x): %q@%#x", origin(2), GoString(path), resolved_path, GoString(resolved_path), resolved_path)
+	// }
 	return resolved_path
 }
 
@@ -2824,8 +2819,8 @@ func Xgetgrnam(t *TLS, name uintptr) uintptr {
 
 // int strcasecmp(const char *s1, const char *s2);
 func Xstrcasecmp(t *TLS, s1, s2 uintptr) int32 {
-	s10 := s1
-	s20 := s2
+	// s10 := s1
+	// s20 := s2
 	for {
 		ch1 := *(*byte)(unsafe.Pointer(s1))
 		if ch1 >= 'a' && ch1 <= 'z' {
@@ -2839,9 +2834,9 @@ func Xstrcasecmp(t *TLS, s1, s2 uintptr) int32 {
 		s2++
 		if ch1 != ch2 || ch1 == 0 || ch2 == 0 {
 			r := int32(ch1) - int32(ch2)
-			if dmesgs {
-				dmesg("%v: strcasecmp(%q, %q): %v", origin(2), GoString(s10), GoString(s20), r)
-			}
+			// if dmesgs {
+			// 	dmesg("%v: strcasecmp(%q, %q): %v", origin(2), GoString(s10), GoString(s20), r)
+			// }
 			return r
 		}
 	}

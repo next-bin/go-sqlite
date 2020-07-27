@@ -157,9 +157,9 @@ func Xfwrite(t *TLS, ptr uintptr, size, nmemb Size_t, stream uintptr) Size_t {
 // int stat(const char *pathname, struct stat *statbuf);
 func Xstat(t *TLS, pathname, stat uintptr) int32 {
 	r := Xstat64(t, pathname, stat)
-	if dmesgs {
-		dmesg("%v: stat(%q, %#x): %v", origin(2), GoString(pathname), stat, r)
-	}
+	// if dmesgs {
+	// 	dmesg("%v: stat(%q, %#x): %v", origin(2), GoString(pathname), stat, r)
+	// }
 	return r
 }
 
@@ -175,9 +175,9 @@ func Xstat64(t *TLS, pathname, stat uintptr) int32 {
 		return -1
 	}
 
-	if dmesgs {
-		dmesg("%v: stat(%q, %#x): %v", origin(2), s, stat, 0)
-	}
+	// if dmesgs {
+	// 	dmesg("%v: stat(%q, %#x): %v", origin(2), s, stat, 0)
+	// }
 	return 0
 }
 
@@ -273,9 +273,9 @@ func Xgetpwuid(t *TLS, uid uint32) uintptr {
 // off_t lseek(int fd, off_t offset, int whence);
 func Xlseek(t *TLS, fd int32, offset Intptr, whence int32) Intptr {
 	r := Intptr(Xlseek64(t, fd, int64(offset), whence))
-	if dmesgs {
-		dmesg("%v: lseek(%d, %#x, %d): %#x", origin(2), fd, offset, whence, r)
-	}
+	// if dmesgs {
+	// 	dmesg("%v: lseek(%d, %#x, %d): %#x", origin(2), fd, offset, whence, r)
+	// }
 	return r
 }
 
@@ -290,9 +290,9 @@ func Xlseek64(t *TLS, fd int32, offset int64, whence int32) int64 {
 		return -1
 	}
 
-	if dmesgs {
-		dmesg("%v: lseek64(%v, %v, %v): %v", origin(2), fd, offset, whence, off)
-	}
+	// if dmesgs {
+	// 	dmesg("%v: lseek64(%v, %v, %v): %v", origin(2), fd, offset, whence, off)
+	// }
 	return off
 }
 
@@ -432,9 +432,9 @@ func Xftruncate64(t *TLS, fd int32, length int64) int32 {
 // int fcntl(int fd, int cmd, ... /* arg */ );
 func Xfcntl(t *TLS, fd, cmd int32, args uintptr) int32 {
 	r := Xfcntl64(t, fd, cmd, args)
-	if dmesgs {
-		dmesg("%v: fcntl(%d, %d, %#x): %v", origin(2), fd, cmd, args, r)
-	}
+	// if dmesgs {
+	// 	dmesg("%v: fcntl(%d, %d, %#x): %v", origin(2), fd, cmd, args, r)
+	// }
 	return r
 }
 
@@ -447,15 +447,15 @@ func Xfcntl64(t *TLS, fd, cmd int32, args uintptr) int32 {
 	r, err := unix.FcntlInt(uintptr(fd), int(cmd), arg)
 	if err != nil {
 		t.setErrno(err)
-		if dmesgs {
-			dmesg("%v: fcntl(%v, %v, %v): %v", origin(2), fd, cmd, arg, err)
-		}
+		// if dmesgs {
+		// 	dmesg("%v: fcntl(%v, %v, %v): %v", origin(2), fd, cmd, arg, err)
+		// }
 		return -1
 	}
 
-	if dmesgs {
-		dmesg("%v: fcntl(%v, %v, %v): %v", origin(2), fd, cmd, arg, r)
-	}
+	// if dmesgs {
+	// 	dmesg("%v: fcntl(%v, %v, %v): %v", origin(2), fd, cmd, arg, r)
+	// }
 	return int32(r)
 }
 
@@ -661,17 +661,17 @@ func Xsetrlimit(t *TLS, resource int32, rlim uintptr) int32 {
 
 // int uname(struct utsname *buf);
 func Xuname(t *TLS, buf uintptr) int32 {
-	if dmesgs {
-		dmesg("%v: uname(%#x)", origin(2), buf)
-	}
+	// if dmesgs {
+	// 	dmesg("%v: uname(%#x)", origin(2), buf)
+	// }
 	if err := unix.Uname((*unix.Utsname)(unsafe.Pointer(buf))); err != nil {
 		t.setErrno(err)
 		return -1
 	}
 
-	if dmesgs {
-		dmesg("%v: uname(): %#v", origin(2), (*unix.Utsname)(unsafe.Pointer(buf)))
-	}
+	// if dmesgs {
+	// 	dmesg("%v: uname(): %#v", origin(2), (*unix.Utsname)(unsafe.Pointer(buf)))
+	// }
 	return 0
 }
 
@@ -739,18 +739,18 @@ func Xopendir(t *TLS, name uintptr) uintptr {
 	}
 
 	r := addObject(&dirStream{fis: fis})
-	if dmesgs {
-		dmesg("%v: opendir(%q): %#x", origin(2), GoString(name), r)
-	}
+	// if dmesgs {
+	// 	dmesg("%v: opendir(%q): %#x", origin(2), GoString(name), r)
+	// }
 	return r
 }
 
 // struct dirent *readdir(DIR *dirp);
 func Xreaddir(t *TLS, dir uintptr) uintptr {
 	r := Xreaddir64(t, dir)
-	if dmesgs {
-		dmesg("%v: readdir(%#x): %#x", origin(2), dir, r)
-	}
+	// if dmesgs {
+	// 	dmesg("%v: readdir(%#x): %#x", origin(2), dir, r)
+	// }
 	return r
 }
 
@@ -760,9 +760,9 @@ var readdirDirent unix.Dirent
 func Xreaddir64(t *TLS, dir uintptr) uintptr {
 	s := getObject(dir).(*dirStream)
 	if s.x >= len(s.fis) {
-		if dmesgs {
-			dmesg("%v: readdir64(%#x): 0", origin(2), dir)
-		}
+		// if dmesgs {
+		// 	dmesg("%v: readdir64(%#x): 0", origin(2), dir)
+		// }
 		return 0
 	}
 
@@ -775,18 +775,18 @@ func Xreaddir64(t *TLS, dir uintptr) uintptr {
 	}
 	readdirDirent.Ino = fi.Sys().(*syscall.Stat_t).Ino
 	r := uintptr(unsafe.Pointer(&readdirDirent))
-	if dmesgs {
-		dmesg("%v: readdir(%#x): %#x", origin(2), dir, r)
-	}
+	// if dmesgs {
+	// 	dmesg("%v: readdir(%#x): %#x", origin(2), dir, r)
+	// }
 	return r
 }
 
 // int closedir(DIR *dirp);
 func Xclosedir(t *TLS, dir uintptr) int32 {
 	removeObject(dir)
-	if dmesgs {
-		dmesg("%v: closedir(%#x): 0", origin(2), dir)
-	}
+	// if dmesgs {
+	// 	dmesg("%v: closedir(%#x): 0", origin(2), dir)
+	// }
 	return 0
 }
 
@@ -881,6 +881,9 @@ func Xftruncate(t *TLS, fd int32, length Intptr) int32 {
 func Xaccess(t *TLS, pathname uintptr, mode int32) int32 {
 	if err := unix.Access(GoString(pathname), uint32(mode)); err != nil {
 		t.setErrno(err)
+		if dmesgs {
+			dmesg("%v: access(%q, %#x): %v", origin(2), GoString(pathname), mode, err)
+		}
 		return -1
 	}
 
