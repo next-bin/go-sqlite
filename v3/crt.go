@@ -1798,7 +1798,7 @@ out:
 				digit = uint64(c) - '0'
 			case c >= 'a' && c <= 'f':
 				seenDigits = true
-				digit = uint64(c) - 'a' - 10
+				digit = uint64(c) - 'a' + 10
 			default:
 				return seenDigits, neg, s, n, 0
 			}
