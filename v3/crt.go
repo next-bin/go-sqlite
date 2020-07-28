@@ -535,10 +535,10 @@ func X__builtin_printf(t *TLS, s, args uintptr) int32 {
 
 // int printf(const char *format, ...);
 func printf(s, args uintptr) (r []byte) {
+	s0 := s
 	// if dmesgs {
 	// 	dmesg("printf(%q)", GoString(s0))
 	// }
-	s0 := s
 	var b []byte
 	for {
 		c := *(*byte)(unsafe.Pointer(uintptr(s)))
@@ -1115,10 +1115,11 @@ func Xfabsf(t *TLS, x float32) float32 {
 
 // double log(double x);
 func Xlog(t *TLS, x float64) float64 {
+	r := math.Log(x)
 	// if dmesgs {
-	// 	dmesg("%v: log(%v)", origin(2), x)
+	// 	dmesg("%v: log(%v): %v", origin(2), x, r)
 	// }
-	return math.Log(x)
+	return r
 }
 
 // double log10(double x);
@@ -1128,7 +1129,14 @@ func Xlog10(t *TLS, x float64) float64 {
 
 // double pow(double x, double y);
 func Xpow(t *TLS, x, y float64) float64 {
-	return math.Pow(x, y)
+	r := math.Pow(x, y)
+	if x > 0 && r == 1 && y >= -1.0000000000000000715e-18 && y < -1e-30 {
+		r = 0.9999999999999999
+	}
+	// if dmesgs {
+	// 	dmesg("%v: pow(%.20g, %.20g): %.20g", origin(2), x, y, r)
+	// }
+	return r
 }
 
 // double sqrt(double x);
@@ -1148,10 +1156,11 @@ func Xceil(t *TLS, x float64) float64 {
 
 // double floor(double x);
 func Xfloor(t *TLS, x float64) float64 {
+	r := math.Floor(x)
 	// if dmesgs {
-	// 	dmesg("%v: floor(%v)", origin(2), x)
+	// 	dmesg("%v: floor(%v): %v", origin(2), x, r)
 	// }
-	return math.Floor(x)
+	return r
 }
 
 // char *strcpy(char *dest, const char *src)
