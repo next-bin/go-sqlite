@@ -7,6 +7,8 @@ package crt // import "modernc.org/crt/v3"
 import (
 	"fmt"
 	"sort"
+
+	"unsafe"
 )
 
 const (
@@ -14,9 +16,15 @@ const (
 )
 
 type watchUintptr struct {
-	p *uintptr
+	p uintptr
 	s string
 	v uintptr
+}
+
+type watchInt struct {
+	p uintptr
+	s string
+	v int32
 }
 
 var watches = map[interface{}]interface{}{}
@@ -33,8 +41,14 @@ func Watch(x ...interface{}) {
 	for _, w := range watches {
 		dmesg("%s", origin(watchDepth))
 		switch x := w.(type) {
+		case *watchInt:
+			v := *(*int32)(unsafe.Pointer(x.p))
+			if v != x.v {
+				a = append(a, fmt.Sprintf("%v: %s is now %#x, was %#x", origin(watchDepth), x.s, v, x.v))
+				x.v = v
+			}
 		case *watchUintptr:
-			v := *x.p
+			v := *(*uintptr)(unsafe.Pointer(x.p))
 			if v != x.v {
 				a = append(a, fmt.Sprintf("%v: %s is now %#x, was %#x", origin(watchDepth), x.s, v, x.v))
 				x.v = v
@@ -53,7 +67,7 @@ func Watch(x ...interface{}) {
 	}
 }
 
-func WatchUintptr(p *uintptr, s string) {
+func WatchUintptr(p uintptr, s string) {
 	if !dmesgs {
 		return
 	}
@@ -63,8 +77,24 @@ func WatchUintptr(p *uintptr, s string) {
 		return
 	}
 
-	v := *p
+	v := *(*uintptr)(unsafe.Pointer(p))
 	w := &watchUintptr{p, s, v}
+	watches[p] = w
+	dmesg("%v: %s is initially %#x\n", origin(watchDepth), w.s, w.v)
+}
+
+func WatchInt(p uintptr, s string) {
+	if !dmesgs {
+		return
+	}
+
+	if s == "" {
+		delete(watches, p)
+		return
+	}
+
+	v := *(*int32)(unsafe.Pointer(p))
+	w := &watchInt{p, s, v}
 	watches[p] = w
 	dmesg("%v: %s is initially %#x\n", origin(watchDepth), w.s, w.v)
 }

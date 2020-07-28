@@ -5,6 +5,7 @@
 package crt // import "modernc.org/crt/v3"
 
 import (
+	"encoding/hex"
 	"fmt"
 	"io/ioutil"
 	"os"
@@ -86,10 +87,10 @@ func Xfclose(t *TLS, stream uintptr) int32 {
 	// }
 	if err != nil {
 		t.setErrno(err)
-		if dmesgs {
-			dmesg("fclose(): %v", err)
-			dmesg("fclose(): -1")
-		}
+		// if dmesgs {
+		// 	dmesg("fclose(): %v", err)
+		// 	dmesg("fclose(): -1")
+		// }
 		return stdio.DEOF
 	}
 
@@ -119,9 +120,9 @@ func Xfread(t *TLS, ptr uintptr, size, nmemb Size_t, stream uintptr) Size_t {
 	// }
 	if err != nil {
 		t.setErrno(err)
-		if dmesgs {
-			dmesg("fread(): %v", err)
-		}
+		// if dmesgs {
+		// 	dmesg("fread(): %v", err)
+		// }
 		return 0
 	}
 
@@ -145,9 +146,9 @@ func Xfwrite(t *TLS, ptr uintptr, size, nmemb Size_t, stream uintptr) Size_t {
 	_, err := unix.Write(int(fd), (*RawMem)(unsafe.Pointer(ptr))[:size*nmemb])
 	if err != nil {
 		t.setErrno(err)
-		if dmesgs {
-			dmesg("fread(): %v", err)
-		}
+		// if dmesgs {
+		// 	dmesg("fread(): %v", err)
+		// }
 		return 0
 	}
 
@@ -169,9 +170,9 @@ func Xstat64(t *TLS, pathname, stat uintptr) int32 {
 	err := unix.Stat(s, (*unix.Stat_t)(unsafe.Pointer(stat)))
 	if err != nil {
 		t.setErrno(err)
-		if dmesgs {
-			dmesg("%v: stat(%q, %#x): %v", origin(2), s, stat, err)
-		}
+		// if dmesgs {
+		// 	dmesg("%v: stat(%q, %#x): %v", origin(2), s, stat, err)
+		// }
 		return -1
 	}
 
@@ -192,9 +193,9 @@ func Xlstat64(t *TLS, pathname, stat uintptr) int32 {
 		// 	dmesg("lstat64(): %v", err)
 		// }
 		t.setErrno(err)
-		if dmesgs {
-			dmesg("lstat64(%q): %v", s, err)
-		}
+		// if dmesgs {
+		// 	dmesg("lstat64(%q): %v", s, err)
+		// }
 		return -1
 	}
 
@@ -215,9 +216,9 @@ func Xunlink(t *TLS, pathname uintptr) int32 {
 	// }
 	if err != nil {
 		t.setErrno(err)
-		if dmesgs {
-			dmesg("unlink(): %v", err)
-		}
+		// if dmesgs {
+		// 	dmesg("unlink(): %v", err)
+		// }
 		return -1
 	}
 
@@ -231,18 +232,18 @@ func Xgetpwuid(t *TLS, uid uint32) uintptr {
 	u, err := user.LookupId(fmt.Sprint(uid))
 	if err != nil {
 		t.setErrno(err)
-		if dmesgs {
-			dmesg("%v: getpwuid(): %v", origin(2), err)
-		}
+		// if dmesgs {
+		// 	dmesg("%v: getpwuid(): %v", origin(2), err)
+		// }
 		return 0
 	}
 
 	gid, err := strconv.ParseUint(u.Gid, 10, 32)
 	if err != nil {
 		t.setErrno(err) //TODO Exxx
-		if dmesgs {
-			dmesg("%v: getpwuid(): %v", origin(2), err)
-		}
+		// if dmesgs {
+		// 	dmesg("%v: getpwuid(): %v", origin(2), err)
+		// }
 		return 0
 	}
 
@@ -255,18 +256,18 @@ func Xgetpwuid(t *TLS, uid uint32) uintptr {
 		Fpw_dir:    cString(u.HomeDir),
 		Fpw_shell:  cString(os.Getenv("SHELL")),
 	}
-	if dmesgs {
-		dmesg("%v: getpwuid(%d): %p {name: %q, passwd: %q, uid: %d, gid: %d, gecos: %q, dir: %q, shell: %q}",
-			origin(2), uid, &staticPasswd,
-			GoString(staticPasswd.Fpw_name),
-			GoString(staticPasswd.Fpw_passwd),
-			staticPasswd.Fpw_uid,
-			staticPasswd.Fpw_gid,
-			GoString(staticPasswd.Fpw_gecos),
-			GoString(staticPasswd.Fpw_dir),
-			GoString(staticPasswd.Fpw_shell),
-		)
-	}
+	// if dmesgs {
+	// 	dmesg("%v: getpwuid(%d): %p {name: %q, passwd: %q, uid: %d, gid: %d, gecos: %q, dir: %q, shell: %q}",
+	// 		origin(2), uid, &staticPasswd,
+	// 		GoString(staticPasswd.Fpw_name),
+	// 		GoString(staticPasswd.Fpw_passwd),
+	// 		staticPasswd.Fpw_uid,
+	// 		staticPasswd.Fpw_gid,
+	// 		GoString(staticPasswd.Fpw_gecos),
+	// 		GoString(staticPasswd.Fpw_dir),
+	// 		GoString(staticPasswd.Fpw_shell),
+	// 	)
+	// }
 	return uintptr(unsafe.Pointer(&staticPasswd))
 }
 
@@ -283,9 +284,9 @@ func Xlseek(t *TLS, fd int32, offset Intptr, whence int32) Intptr {
 func Xlseek64(t *TLS, fd int32, offset int64, whence int32) int64 {
 	off, err := unix.Seek(int(fd), offset, int(whence))
 	if err != nil {
-		if dmesgs {
-			dmesg("%v: lseek64(%v, %v, %v): %v", origin(2), fd, offset, whence, err)
-		}
+		// if dmesgs {
+		// 	dmesg("%v: lseek64(%v, %v, %v): %v", origin(2), fd, offset, whence, err)
+		// }
 		t.setErrno(err)
 		return -1
 	}
@@ -307,9 +308,9 @@ func Xfsync(t *TLS, fd int32) int32 {
 	// }
 	if err != nil {
 		t.setErrno(err)
-		if dmesgs {
-			dmesg("fsync(): %v", err)
-		}
+		// if dmesgs {
+		// 	dmesg("fsync(): %v", err)
+		// }
 		return -1
 	}
 
@@ -351,15 +352,15 @@ func Xgettimeofday(t *TLS, tv, tz uintptr) int32 {
 	err := unix.Gettimeofday(&tvs)
 	if err != nil {
 		t.setErrno(err)
-		if dmesgs {
-			dmesg("%v: gettimeofday(%#x, %#x): %v", origin(2), tv, tz, err)
-		}
+		// if dmesgs {
+		// 	dmesg("%v: gettimeofday(%#x, %#x): %v", origin(2), tv, tz, err)
+		// }
 		return -1
 	}
 
-	if dmesgs {
-		dmesg("%v: gettimeofday(%+v, %#x): 0", origin(2), tvs, tz)
-	}
+	// if dmesgs {
+	// 	dmesg("%v: gettimeofday(%+v, %#x): 0", origin(2), tvs, tz)
+	// }
 	*(*unix.Timeval)(unsafe.Pointer(tv)) = tvs
 	return 0
 }
@@ -478,30 +479,30 @@ func Xclose(t *TLS, fd int32) int32 {
 		delete(files, uintptr(fd))
 		if err := f.Close(); err != nil {
 			t.setErrno(err)
-			if dmesgs {
-				dmesg("%v: close(%d): %v", origin(2), fd, err)
-			}
+			// if dmesgs {
+			// 	dmesg("%v: close(%d): %v", origin(2), fd, err)
+			// }
 			return -1
 		}
 
-		if dmesgs {
-			dmesg("%v: close(%d): 0", origin(2), fd)
-		}
+		// if dmesgs {
+		// 	dmesg("%v: close(%d): 0", origin(2), fd)
+		// }
 		return 0
 	}
 
 	err := unix.Close(int(fd))
 	if err != nil {
 		t.setErrno(err)
-		if dmesgs {
-			dmesg("%v: close(%d): %v", origin(2), fd, err)
-		}
+		// if dmesgs {
+		// 	dmesg("%v: close(%d): %v", origin(2), fd, err)
+		// }
 		return -1
 	}
 
-	if dmesgs {
-		dmesg("%v: close(%d): 0", origin(2), fd)
-	}
+	// if dmesgs {
+	// 	dmesg("%v: close(%d): 0", origin(2), fd)
+	// }
 	return 0
 }
 
@@ -516,9 +517,9 @@ func Xfstat64(t *TLS, fd int32, statbuf uintptr) int32 {
 	// }
 	if err != nil {
 		t.setErrno(err)
-		if dmesgs {
-			dmesg("fstat64(): %v", err)
-		}
+		// if dmesgs {
+		// 	dmesg("fstat64(): %v", err)
+		// }
 		return -1
 	}
 
@@ -536,9 +537,9 @@ func Xftruncate64(t *TLS, fd int32, length int64) int32 {
 	err := unix.Ftruncate(int(fd), length)
 	if err != nil {
 		t.setErrno(err)
-		if dmesgs {
-			dmesg("ftruncate64(): %v", err)
-		}
+		// if dmesgs {
+		// 	dmesg("ftruncate64(): %v", err)
+		// }
 		return -1
 	}
 
@@ -580,15 +581,15 @@ func Xread(t *TLS, fd int32, buf uintptr, count Size_t) Ssize_t {
 	n, err := unix.Read(int(fd), (*RawMem)(unsafe.Pointer(buf))[:count])
 	if err != nil {
 		t.setErrno(err)
-		if dmesgs {
-			dmesg("%v: read(%d, %#x, %#x): -1", origin(2), fd, buf, count)
-		}
+		// if dmesgs {
+		// 	dmesg("%v: read(%d, %#x, %#x): -1", origin(2), fd, buf, count)
+		// }
 		return -1
 	}
 
-	if dmesgs {
-		dmesg("%v: read(%d, %#x, %#x): %v", origin(2), fd, buf, count, n)
-	}
+	// if dmesgs {
+	// 	dmesg("%v: read(%d, %#x, %#x): %v", origin(2), fd, buf, count, n)
+	// }
 	return Ssize_t(n)
 }
 
@@ -597,14 +598,14 @@ func Xwrite(t *TLS, fd int32, buf uintptr, count Size_t) Ssize_t {
 	n, err := unix.Write(int(fd), (*RawMem)(unsafe.Pointer(uintptr(buf)))[:count])
 	if err != nil {
 		t.setErrno(err)
-		if dmesgs {
-			dmesg("%v: write(%d, %#x(%q), %#x): %v", origin(2), fd, buf, goStringN(buf, int(count)), count, err)
-		}
+		// if dmesgs {
+		// 	dmesg("%v: write(%d, %#x, %#x): %v", origin(2), fd, buf, count, err)
+		// }
 		return -1
 	}
 
 	if dmesgs {
-		dmesg("%v: write(%d, %#x(%q), %#x): %v", origin(2), fd, buf, goStringN(buf, int(count)), count, n)
+		dmesg("%v: write(%d, %#x, %#x): %v\n%s", origin(2), fd, buf, count, n, hex.Dump(GoBytes(buf, int(count))))
 	}
 	return Intptr(n)
 }
@@ -649,9 +650,9 @@ func Xmmap64(t *TLS, addr uintptr, length Size_t, prot, flags, fd int32, offset 
 	data, _, err := unix.Syscall6(unix.SYS_MMAP, uintptr(addr), uintptr(length), uintptr(prot), uintptr(flags), uintptr(fd), uintptr(offset))
 	if err != 0 {
 		t.setErrno(err)
-		if dmesgs {
-			dmesg("mmap64(): %v", err)
-		}
+		// if dmesgs {
+		// 	dmesg("mmap64(): %v", err)
+		// }
 		return UintptrFromInt32(-1) // (void*)-1
 	}
 
@@ -669,9 +670,9 @@ func Xmunmap(t *TLS, addr uintptr, length Size_t) int32 {
 	_, _, err := unix.Syscall(unix.SYS_MUNMAP, uintptr(addr), uintptr(length), 0)
 	if err != 0 {
 		t.setErrno(err)
-		if dmesgs {
-			dmesg("munmap(): %v", err)
-		}
+		// if dmesgs {
+		// 	dmesg("munmap(): %v", err)
+		// }
 		return -1
 	}
 
@@ -687,9 +688,9 @@ func Xfseek(t *TLS, stream uintptr, offset long, whence int32) int32 {
 	_, err := unix.Seek(int(fd), int64(offset), int(whence))
 	if err != nil {
 		t.setErrno(err)
-		if dmesgs {
-			dmesg("fseek(): %v", err)
-		}
+		// if dmesgs {
+		// 	dmesg("fseek(): %v", err)
+		// }
 		return -1
 	}
 
@@ -705,9 +706,9 @@ func Xftell(t *TLS, stream uintptr) long {
 	r, err := unix.Seek(int(fd), 0, stdio.DSEEK_CUR)
 	if err != nil {
 		t.setErrno(err)
-		if dmesgs {
-			dmesg("ftell(): %v", err)
-		}
+		// if dmesgs {
+		// 	dmesg("ftell(): %v", err)
+		// }
 		return -1
 	}
 
@@ -728,20 +729,20 @@ func Xsystem(t *TLS, command uintptr) int32 {
 	cmd.Stdout = os.Stdout
 	cmd.Stderr = os.Stderr
 	err := cmd.Run()
-	if dmesgs {
-		dmesg("system(%q): %v", s, err)
-	}
+	// if dmesgs {
+	// 	dmesg("system(%q): %v", s, err)
+	// }
 	if err != nil {
 		ps := err.(*exec.ExitError)
-		if dmesgs {
-			dmesg("system(%q): %v", s, ps.ExitCode)
-		}
+		// if dmesgs {
+		// 	dmesg("system(%q): %v", s, ps.ExitCode)
+		// }
 		return int32(ps.ExitCode())
 	}
 
-	if dmesgs {
-		dmesg("system(%q): 0", s)
-	}
+	// if dmesgs {
+	// 	dmesg("system(%q): 0", s)
+	// }
 	return 0
 }
 
@@ -810,15 +811,15 @@ func Xmkdir(t *TLS, path uintptr, mode uint32) int32 {
 func Xchdir(t *TLS, path uintptr) int32 {
 	if err := unix.Chdir(GoString(path)); err != nil {
 		t.setErrno(err)
-		if dmesgs {
-			dmesg("%v: chdir(%q): %v", origin(2), GoString(path), err)
-		}
+		// if dmesgs {
+		// 	dmesg("%v: chdir(%q): %v", origin(2), GoString(path), err)
+		// }
 		return -1
 	}
 
-	if dmesgs {
-		dmesg("%v: chdir(%q): 0", origin(2), GoString(path))
-	}
+	// if dmesgs {
+	// 	dmesg("%v: chdir(%q): 0", origin(2), GoString(path))
+	// }
 	return 0
 }
 
@@ -826,15 +827,15 @@ func Xchdir(t *TLS, path uintptr) int32 {
 func Xlstat(t *TLS, pathname, statbuf uintptr) int32 {
 	if err := unix.Lstat(GoString(pathname), (*unix.Stat_t)(unsafe.Pointer(statbuf))); err != nil {
 		t.setErrno(err)
-		if dmesgs {
-			dmesg("%v: lstat(%q, %#x): %v", origin(2), GoString(pathname), statbuf, err)
-		}
+		// if dmesgs {
+		// 	dmesg("%v: lstat(%q, %#x): %v", origin(2), GoString(pathname), statbuf, err)
+		// }
 		return -1
 	}
 
-	if dmesgs {
-		dmesg("%v: lstat(%q, %#x): 0", origin(2), GoString(pathname), statbuf)
-	}
+	// if dmesgs {
+	// 	dmesg("%v: lstat(%q, %#x): 0", origin(2), GoString(pathname), statbuf)
+	// }
 	return 0
 }
 
@@ -848,9 +849,9 @@ func Xopendir(t *TLS, name uintptr) uintptr {
 	fis, err := ioutil.ReadDir(GoString(name))
 	if err != nil {
 		t.setErrno(err)
-		if dmesgs {
-			dmesg("%v: opendir(%q): %v", origin(2), GoString(name), err)
-		}
+		// if dmesgs {
+		// 	dmesg("%v: opendir(%q): %v", origin(2), GoString(name), err)
+		// }
 		return 0
 	}
 
@@ -921,9 +922,9 @@ func Xgetsockname(t *TLS, sockfd int32, addr, addrlen uintptr) int32 {
 	sa, err := unix.Getsockname(int(sockfd))
 	if err != nil {
 		t.setErrno(err)
-		if dmesgs {
-			dmesg("%v: getsockname(%v, %#x, %#x): %v", origin(2), sockfd, addr, addrlen, err)
-		}
+		// if dmesgs {
+		// 	dmesg("%v: getsockname(%v, %#x, %#x): %v", origin(2), sockfd, addr, addrlen, err)
+		// }
 		return -1
 	}
 
@@ -997,9 +998,9 @@ func Xftruncate(t *TLS, fd int32, length Intptr) int32 {
 func Xaccess(t *TLS, pathname uintptr, mode int32) int32 {
 	if err := unix.Access(GoString(pathname), uint32(mode)); err != nil {
 		t.setErrno(err)
-		if dmesgs {
-			dmesg("%v: access(%q, %#x): %v", origin(2), GoString(pathname), mode, err)
-		}
+		// if dmesgs {
+		// 	dmesg("%v: access(%q, %#x): %v", origin(2), GoString(pathname), mode, err)
+		// }
 		return -1
 	}
 

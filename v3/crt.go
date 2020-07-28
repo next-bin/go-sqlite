@@ -500,6 +500,14 @@ func GoString(s uintptr) string {
 	}
 }
 
+func GoBytes(s uintptr, n int) []byte {
+	if s == 0 || n == 0 {
+		return nil
+	}
+
+	return (*RawMem)(unsafe.Pointer(s))[:n]
+}
+
 func goStringN(s uintptr, n int) string {
 	if s == 0 || n == 0 {
 		return ""
@@ -846,9 +854,9 @@ func Xputs(t *TLS, s uintptr) int32 {
 		}
 	}
 	if err != nil {
-		if dmesgs {
-			dmesg("puts(): %v", err)
-		}
+		// if dmesgs {
+		// 	dmesg("puts(): %v", err)
+		// }
 		return 1
 	}
 
@@ -1391,9 +1399,9 @@ func Xfree(t *TLS, ptr uintptr) {
 }
 
 func X__builtin_free(t *TLS, ptr uintptr) {
-	if dmesgs {
-		dmesg("%v: free(%#x)", origin(2), ptr)
-	}
+	// if dmesgs {
+	// 	dmesg("%v: free(%#x)", origin(2), ptr)
+	// }
 	free(ptr)
 }
 
@@ -1483,10 +1491,10 @@ func Xfflush(t *TLS, stream uintptr) int32 {
 	}
 	if err != nil {
 		t.setErrno(err)
-		if dmesgs {
-			dmesg("fflush(): %v", err)
-			dmesg("fflush(): -1")
-		}
+		// if dmesgs {
+		// 	dmesg("fflush(): %v", err)
+		// 	dmesg("fflush(): -1")
+		// }
 		return eof
 	}
 
@@ -1525,26 +1533,26 @@ func Xfopen64(t *TLS, pathname, mode uintptr) uintptr {
 	case "r", "rb":
 		if fd, err = syscall.Open(s, os.O_RDONLY, 0660); err != nil {
 			t.setErrno(err)
-			if dmesgs {
-				dmesg("fopen64(): %d, %v", 0, err)
-			}
+			// if dmesgs {
+			// 	dmesg("fopen64(): %d, %v", 0, err)
+			// }
 			return 0
 		}
 
 	case "r+b", "w+b":
 		if fd, err = syscall.Open(s, os.O_RDWR, 0660); err != nil {
 			t.setErrno(err)
-			if dmesgs {
-				dmesg("fopen64(): %d, %v", 0, err)
-			}
+			// if dmesgs {
+			// 	dmesg("fopen64(): %d, %v", 0, err)
+			// }
 			return 0
 		}
 	case "wb":
 		if fd, err = syscall.Open(s, os.O_WRONLY|os.O_CREATE, 0660); err != nil {
 			t.setErrno(err)
-			if dmesgs {
-				dmesg("fopen64(): %d, %v", 0, err)
-			}
+			// if dmesgs {
+			// 	dmesg("fopen64(): %d, %v", 0, err)
+			// }
 			return 0
 		}
 	default:
@@ -1597,20 +1605,20 @@ func Xgetenv(t *TLS, name uintptr) uintptr {
 	}
 
 	nm := GoString(name)
-	if dmesgs {
-		dmesg("%v: getenv(%q), environ is %#x", origin(2), nm, Xenviron)
-	}
+	// if dmesgs {
+	// 	dmesg("%v: getenv(%q), environ is %#x", origin(2), nm, Xenviron)
+	// }
 	r := getenv(nm)
 	if r == 0 {
-		if dmesgs {
-			dmesg("%v: getenv(%q): 0", origin(2), nm)
-		}
+		// if dmesgs {
+		// 	dmesg("%v: getenv(%q): 0", origin(2), nm)
+		// }
 		return 0
 	}
 
-	if dmesgs {
-		dmesg("%v: getenv(%q): %#x(%q)", origin(2), nm, r, GoString(r))
-	}
+	// if dmesgs {
+	// 	dmesg("%v: getenv(%q): %#x(%q)", origin(2), nm, r, GoString(r))
+	// }
 	return r
 }
 
@@ -1781,7 +1789,7 @@ out:
 				return seenDigits, neg, s, n, 0
 			}
 		case 16:
-			if c >= 'A' && c <= 'Z' {
+			if c >= 'A' && c <= 'F' {
 				c = c + ('a' - 'A')
 			}
 			switch {
@@ -1819,18 +1827,18 @@ func Xtolower(t *TLS, c int32) int32 {
 // uid_t getuid(void);
 func Xgetuid(t *TLS) uint32 {
 	r := os.Getuid()
-	if dmesgs {
-		dmesg("%v: geuid(): %v", origin(2), r)
-	}
+	// if dmesgs {
+	// 	dmesg("%v: geuid(): %v", origin(2), r)
+	// }
 	return uint32(r)
 }
 
 // int isatty(int fd);
 func Xisatty(t *TLS, fd int32) int32 {
 	r := Bool32(isatty.IsTerminal(uintptr(fd)))
-	if dmesgs {
-		dmesg("%v: isatty(%v): %v", origin(2), fd, r)
-	}
+	// if dmesgs {
+	// 	dmesg("%v: isatty(%v): %v", origin(2), fd, r)
+	// }
 	return r
 }
 
@@ -1857,9 +1865,9 @@ func Xraise(t *TLS, sig int32) int32 {
 
 // sighandler_t signal(int signum, sighandler_t handler);
 func Xsignal(t *TLS, signum int32, handler uintptr) Intptr {
-	if dmesgs {
-		dmesg("%v: signal(%d, %#x)", origin(2), signum, handler)
-	}
+	// if dmesgs {
+	// 	dmesg("%v: signal(%d, %#x)", origin(2), signum, handler)
+	// }
 	switch signum {
 	case 2: // SIGINT
 		return 0 //TODO
@@ -1927,9 +1935,9 @@ func Xlocaltime(_ *TLS, timep uintptr) uintptr {
 	localtime.wday = int32(t.Weekday())
 	localtime.yday = int32(t.YearDay())
 	localtime.isdst = Bool32(isTimeDST(t))
-	if dmesgs {
-		dmesg("%v: localtime(%v): %+v", origin(2), ut, localtime)
-	}
+	// if dmesgs {
+	// 	dmesg("%v: localtime(%v): %+v", origin(2), ut, localtime)
+	// }
 	return uintptr(unsafe.Pointer(&localtime))
 }
 
@@ -1951,9 +1959,9 @@ func Xlocaltime_r(_ *TLS, timep, r uintptr) uintptr {
 	(*tm)(unsafe.Pointer(r)).wday = int32(t.Weekday())
 	(*tm)(unsafe.Pointer(r)).yday = int32(t.YearDay())
 	(*tm)(unsafe.Pointer(r)).isdst = Bool32(isTimeDST(t))
-	if dmesgs {
-		dmesg("%v: localtime_r(%d): %+v", origin(2), ut, (*tm)(unsafe.Pointer(r)))
-	}
+	// if dmesgs {
+	// 	dmesg("%v: localtime_r(%d): %+v", origin(2), ut, (*tm)(unsafe.Pointer(r)))
+	// }
 	return r
 }
 
@@ -1976,9 +1984,9 @@ func Xmktime(t *TLS, ptm uintptr) Intptr {
 	)
 	(*tm)(unsafe.Pointer(ptm)).wday = int32(tt.Weekday())
 	(*tm)(unsafe.Pointer(ptm)).yday = int32(tt.YearDay() - 1)
-	if dmesgs {
-		dmesg("%v: mktime(%+v): %+v", origin(2), (*tm)(unsafe.Pointer(ptm)), (*tm)(unsafe.Pointer(ptm)))
-	}
+	// if dmesgs {
+	// 	dmesg("%v: mktime(%+v): %+v", origin(2), (*tm)(unsafe.Pointer(ptm)), (*tm)(unsafe.Pointer(ptm)))
+	// }
 	return tt.Unix()
 }
 
@@ -2078,15 +2086,15 @@ func Xgetcwd(t *TLS, buf uintptr, size Size_t) uintptr {
 	_, err := syscall.Getcwd((*RawMem)(unsafe.Pointer(uintptr(buf)))[:size])
 	if err != nil {
 		t.setErrno(err)
-		if dmesgs {
-			dmesg("%v: getcwd(%#x, %#x): %v", origin(2), buf, size, err)
-		}
+		// if dmesgs {
+		// 	dmesg("%v: getcwd(%#x, %#x): %v", origin(2), buf, size, err)
+		// }
 		return 0
 	}
 
-	if dmesgs {
-		dmesg("%v: getcwd(%#x, %#x): %q", origin(2), buf, size, GoString(buf))
-	}
+	// if dmesgs {
+	// 	dmesg("%v: getcwd(%#x, %#x): %q", origin(2), buf, size, GoString(buf))
+	// }
 	return buf
 }
 
@@ -2165,9 +2173,9 @@ func X_IO_putc(t *TLS, c int32, fp uintptr) int32 {
 		err := outBuf.WriteByte(byte(c))
 		if err != nil {
 			t.setErrno(err)
-			if dmesgs {
-				dmesg("fputc(): %v", err)
-			}
+			// if dmesgs {
+			// 	dmesg("fputc(): %v", err)
+			// }
 			return eof
 		}
 
@@ -2297,7 +2305,6 @@ func X__builtin_prefetch(t *TLS, addr, args uintptr) {
 
 // double __builtin_copysign ( double x, double y );
 func X__builtin_copysign(t *TLS, x, y float64) float64 {
-	fmt.Println(x, y) //TODO-
 	return math.Copysign(x, y)
 }
 
@@ -2652,9 +2659,9 @@ func Xrealpath(t *TLS, path, resolved_path uintptr) uintptr {
 	if err != nil {
 		if os.IsNotExist(err) {
 			t.setErrno(errno.DENOENT)
-			if dmesgs {
-				dmesg("%v: realpath(%q, %#x): %v", origin(2), GoString(path), resolved_path, err)
-			}
+			// if dmesgs {
+			// 	dmesg("%v: realpath(%q, %#x): %v", origin(2), GoString(path), resolved_path, err)
+			// }
 			return 0
 		}
 
@@ -2816,9 +2823,9 @@ func Xhtons(t *TLS, hostshort uint16) uint16 {
 
 // char *setlocale(int category, const char *locale);
 func Xsetlocale(t *TLS, category int32, locale uintptr) uintptr {
-	if dmesgs {
-		dmesg("%v: setlocale(%d, %q)", origin(2), category, GoString(locale))
-	}
+	// if dmesgs {
+	// 	dmesg("%v: setlocale(%d, %q)", origin(2), category, GoString(locale))
+	// }
 	//TODO
 	return 0
 }
