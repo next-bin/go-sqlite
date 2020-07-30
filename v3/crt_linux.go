@@ -185,22 +185,16 @@ func Xstat64(t *TLS, pathname, stat uintptr) int32 {
 // int lstat(const char *pathname, struct stat *statbuf);
 func Xlstat64(t *TLS, pathname, stat uintptr) int32 {
 	s := GoString(pathname)
-	// if dmesgs {
-	// 	dmesg("lstat64(%q, %#x)", s, stat)
-	// }
 	if err := unix.Lstat(s, (*unix.Stat_t)(unsafe.Pointer(stat))); err != nil {
-		// if dmesgs {
-		// 	dmesg("lstat64(): %v", err)
-		// }
 		t.setErrno(err)
 		// if dmesgs {
-		// 	dmesg("lstat64(%q): %v", s, err)
+		// 	dmesg("%v: lstat64(%q, %#x): %v", origin(2), s, stat, err)
 		// }
 		return -1
 	}
 
 	// if dmesgs {
-	// 	dmesg("lstat64(): 0")
+	// 	dmesg("%v: lstat64(%q, %#x): %v", origin(2), s, stat, 0)
 	// }
 	return 0
 }
@@ -1004,6 +998,9 @@ func Xaccess(t *TLS, pathname uintptr, mode int32) int32 {
 		return -1
 	}
 
+	// if dmesgs {
+	// 	dmesg("%v: access(%q, %#x): 0", origin(2), GoString(pathname), mode)
+	// }
 	return 0
 }
 
@@ -1019,13 +1016,14 @@ func Xutime(t *TLS, file, times uintptr) int32 {
 
 // ssize_t readlink(const char *restrict path, char *restrict buf, size_t bufsize);
 func Xreadlink(t *TLS, path, buf uintptr, bufsize Size_t) Ssize_t {
-	b := make([]byte, 1000) //TODO need PATH_MAX
+	b := make([]byte, bufsize)
 	n, err := unix.Readlink(GoString(path), b)
 	if err != nil {
 		t.setErrno(err)
 		return -1
 	}
 
+	copy((*RawMem)(unsafe.Pointer(buf))[:n], b[:n])
 	return Ssize_t(n)
 }
 
@@ -1033,9 +1031,15 @@ func Xreadlink(t *TLS, path, buf uintptr, bufsize Size_t) Ssize_t {
 func Xsymlink(t *TLS, target, linkpath uintptr) int32 {
 	if err := unix.Symlink(GoString(target), GoString(linkpath)); err != nil {
 		t.setErrno(err)
+		// if dmesgs {
+		// 	dmesg("%v: symlink(%q, %q): %v", origin(2), GoString(target), GoString(linkpath), err)
+		// }
 		return -1
 	}
 
+	// if dmesgs {
+	// 	dmesg("%v: symlink(%q, %q): 0", origin(2), GoString(target), GoString(linkpath))
+	// }
 	return 0
 }
 

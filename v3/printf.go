@@ -26,16 +26,23 @@ const (
 	modT
 )
 
-func printf(s, args uintptr) []byte {
+// Format of the format string
+//
+// The format string is a character string, beginning and ending in its initial
+// shift state, if any.  The format string is composed of zero or more
+// directives: ordinary  characters  (not  %), which  are  copied unchanged to
+// the output stream; and conversion specifications, each of which results in
+// fetching zero or more subsequent arguments.
+func printf(format, args uintptr) []byte {
 	buf := bytes.NewBuffer(nil)
 	for {
-		switch c := *(*byte)(unsafe.Pointer(s)); c {
+		switch c := *(*byte)(unsafe.Pointer(format)); c {
 		case '%':
-			s, args = printfDirective(buf, s, args)
+			format = printfConversion(buf, format, &args)
 		case 0:
 			return buf.Bytes()
 		default:
-			s++
+			format++
 			buf.WriteByte(c)
 		}
 	}
@@ -45,8 +52,8 @@ func printf(s, args uintptr) []byte {
 // with a conversion specifier.  In between there may be (in this order) zero
 // or more flags, an optional minimum field width, an optional  precision  and
 // an optional length modifier.
-func printfDirective(buf *bytes.Buffer, s, args uintptr) (uintptr, uintptr) {
-	s++ // '%'
+func printfConversion(buf *bytes.Buffer, format uintptr, args *uintptr) uintptr {
+	format++ // '%'
 	spec := "%"
 
 	// Flags characters
@@ -54,7 +61,7 @@ func printfDirective(buf *bytes.Buffer, s, args uintptr) (uintptr, uintptr) {
 	// The character % is followed by zero or more of the following flags:
 flags:
 	for {
-		switch c := *(*byte)(unsafe.Pointer(s)); c {
+		switch c := *(*byte)(unsafe.Pointer(format)); c {
 		case '#':
 			// The value should be converted to an "alternate form".  For o conversions,
 			// the first character of the output string is made zero (by prefixing a 0 if
@@ -65,7 +72,7 @@ flags:
 			// results of those conversions only if a digit follows).  For g and G
 			// conversions, trailing  zeros are not removed from the result as they would
 			// otherwise be.  For other conversions, the result is undefined.
-			s++
+			format++
 			spec += "#"
 		case '0':
 			// The  value  should  be zero padded.  For d, i, o, u, x, X, a, A, e, E, f, F,
@@ -74,36 +81,36 @@ flags:
 			// ignored.  If a precision is given with a numeric conversion (d, i, o, u, x,
 			// and X), the 0 flag is ignored.  For other conversions, the  behav‐ ior is
 			// undefined.
-			s++
+			format++
 			spec += "0"
 		case '-':
 			// The  converted value is to be left adjusted on the field boundary.  (The
 			// default is right justification.)  The converted value is padded on the right
 			// with blanks, rather than on the left with blanks or zeros.  A - overrides a
 			// 0 if both are given.
-			s++
+			format++
 			spec += "-"
 		case ' ':
 			// A blank should be left before a positive number (or empty string) produced
 			// by a signed conversion.
-			s++
+			format++
 			spec += " "
 		case '+':
 			// A sign (+ or -) should always be placed before a number produced by a signed
 			// conversion.  By default, a sign is used only for negative numbers.  A +
 			// overrides a space  if  both  are used.
-			s++
+			format++
 			spec += "+"
 		default:
 			break flags
 		}
 	}
-	s, width, hasWidth := parseFieldWidth(s)
+	format, width, hasWidth := parseFieldWidth(format)
 	if hasWidth {
 		spec += strconv.Itoa(width)
 	}
-	s, args, prec, hasPrecision := parsePrecision(s, args)
-	s, mod := parseLengthModifier(s)
+	format, prec, hasPrecision := parsePrecision(format, args)
+	format, mod := parseLengthModifier(format)
 
 	var str string
 
@@ -111,22 +118,22 @@ flags:
 	//
 	// A character that specifies the type of conversion to be applied.  The
 	// conversion specifiers and their meanings are:
-	switch c := *(*byte)(unsafe.Pointer(s)); c {
+	switch c := *(*byte)(unsafe.Pointer(format)); c {
 	case 'd', 'i':
 		// The  int argument is converted to signed decimal notation.  The precision,
 		// if any, gives the minimum number of digits that must appear; if the
 		// converted value requires fewer digits, it is padded on the left with zeros.
 		// The default precision is 1.  When 0 is printed with an explicit precision 0,
 		// the output is empty.
-		s++
+		format++
 		var arg int64
 		switch mod {
 		case modNone, modL, modLL:
-			arg = VaInt64(&args)
+			arg = VaInt64(args)
 		case modH:
-			arg = int64(int16(VaInt32(&args)))
+			arg = int64(int16(VaInt32(args)))
 		case modHH:
-			arg = int64(int8(VaInt32(&args)))
+			arg = int64(int8(VaInt32(args)))
 		default:
 			panic(todo("", mod))
 		}
@@ -147,15 +154,15 @@ flags:
 		// the converted value requires fewer digits, it is padded on the left with
 		// zeros.  The default precision is 1.  When 0 is printed with an explicit
 		// precision 0, the output is empty.
-		s++
+		format++
 		var arg uint64
 		switch mod {
 		case modNone, modL, modLL:
-			arg = VaUint64(&args)
+			arg = VaUint64(args)
 		case modH:
-			arg = uint64(uint16(VaInt32(&args)))
+			arg = uint64(uint16(VaInt32(args)))
 		case modHH:
-			arg = uint64(uint8(VaInt32(&args)))
+			arg = uint64(uint8(VaInt32(args)))
 		default:
 			panic(todo("", mod))
 		}
@@ -176,15 +183,15 @@ flags:
 		// the converted value requires fewer digits, it is padded on the left with
 		// zeros.  The default precision is 1.  When 0 is printed with an explicit
 		// precision 0, the output is empty.
-		s++
+		format++
 		var arg uint64
 		switch mod {
 		case modNone, modL, modLL:
-			arg = VaUint64(&args)
+			arg = VaUint64(args)
 		case modH:
-			arg = uint64(uint16(VaInt32(&args)))
+			arg = uint64(uint16(VaInt32(args)))
 		case modHH:
-			arg = uint64(uint8(VaInt32(&args)))
+			arg = uint64(uint8(VaInt32(args)))
 		default:
 			panic(todo("", mod))
 		}
@@ -208,15 +215,15 @@ flags:
 		// digits that must appear; if the converted value requires fewer digits, it is
 		// padded on the left with zeros.  The default precision is 1.  When 0 is
 		// printed with an explicit precision 0, the output is empty.
-		s++
+		format++
 		var arg uint64
 		switch mod {
 		case modNone, modL, modLL:
-			arg = VaUint64(&args)
+			arg = VaUint64(args)
 		case modH:
-			arg = uint64(uint16(VaInt32(&args)))
+			arg = uint64(uint16(VaInt32(args)))
 		case modHH:
-			arg = uint64(uint8(VaInt32(&args)))
+			arg = uint64(uint8(VaInt32(args)))
 		default:
 			panic(todo("", mod))
 		}
@@ -244,8 +251,8 @@ flags:
 		// An E conversion uses the letter E (rather than e) to intro‐ duce the
 		// exponent.  The exponent always contains at least two digits; if the value is
 		// zero, the exponent is 00.
-		s++
-		arg := VaFloat64(&args)
+		format++
+		arg := VaFloat64(args)
 		if !hasPrecision {
 			prec = 6
 		}
@@ -258,8 +265,8 @@ flags:
 		// is missing, it is taken as 6; if the precision is explicitly zero, no
 		// decimal-point character appears.  If a decimal point appears, at least one
 		// digit appears before it.
-		s++
-		arg := VaFloat64(&args)
+		format++
+		arg := VaFloat64(args)
 		if !hasPrecision {
 			prec = 6
 		}
@@ -275,8 +282,8 @@ flags:
 		// less than -4 or greater than or equal to the precision.  Trailing zeros are
 		// removed from the fractional part of the result; a decimal point appears only
 		// if it is followed by at least one digit.
-		s++
-		arg := VaFloat64(&args)
+		format++
+		arg := VaFloat64(args)
 		if !hasPrecision {
 			prec = 6
 		}
@@ -308,8 +315,8 @@ flags:
 		// positions.   The  array  must contain a terminating null wide character,
 		// unless a precision is given and it is so small that the number of bytes
 		// written exceeds it before the end of the array is reached.
-		s++
-		arg := VaUintptr(&args)
+		format++
+		arg := VaUintptr(args)
 		switch mod {
 		case modNone:
 			var f string
@@ -326,8 +333,8 @@ flags:
 	case 'p':
 		// The void * pointer argument is printed in hexadecimal (as if by %#x or
 		// %#lx).
-		s++
-		arg := VaUintptr(&args)
+		format++
+		arg := VaUintptr(args)
 		buf.WriteString("0x")
 		buf.WriteString(strconv.FormatInt(int64(arg), 16))
 	case 'c':
@@ -336,10 +343,10 @@ flags:
 		// the wint_t (wide character) ar‐ gument is converted to a multibyte sequence
 		// by a call to the wcrtomb(3) function, with a conversion state starting in
 		// the initial state, and the resulting multibyte string is  writ‐ ten.
-		s++
+		format++
 		switch mod {
 		case modNone:
-			arg := VaInt32(&args)
+			arg := VaInt32(args)
 			buf.WriteByte(byte(arg))
 		default:
 			panic(todo(""))
@@ -349,7 +356,7 @@ flags:
 	}
 
 	buf.WriteString(str)
-	return s, args
+	return format
 }
 
 // Field width
@@ -365,19 +372,19 @@ flags:
 // nonexistent or small field width cause truncation of a field; if the result
 // of a conversion is wider than the field width, the field is expanded to
 // contain the conversion result.
-func parseFieldWidth(s uintptr) (_ uintptr, n int, ok bool) {
+func parseFieldWidth(format uintptr) (_ uintptr, n int, ok bool) {
 	first := true
 	for {
 		var digit int
-		switch c := *(*byte)(unsafe.Pointer(s)); {
+		switch c := *(*byte)(unsafe.Pointer(format)); {
 		case first && c == '0':
 			fallthrough
 		default:
-			return s, n, ok
+			return format, n, ok
 		case first && c == '*':
 			panic(todo(""))
 		case c >= '0' && c <= '9':
-			s++
+			format++
 			ok = true
 			first = false
 			digit = int(c) - '0'
@@ -403,20 +410,20 @@ func parseFieldWidth(s uintptr) (_ uintptr, n int, ok bool) {
 // appear after the radix character for a, A, e, E, f, and F conversions, the
 // maximum number of significant digits for g and G conversions, or the maximum
 // number of characters to be printed from a string for s and S conversions.
-func parsePrecision(s, args uintptr) (_, _ uintptr, n int, ok bool) {
+func parsePrecision(format uintptr, args *uintptr) (_ uintptr, n int, ok bool) {
 	for {
-		switch c := *(*byte)(unsafe.Pointer(s)); c {
+		switch c := *(*byte)(unsafe.Pointer(format)); c {
 		case '.':
-			s++
+			format++
 			first := true
 			for {
-				switch c := *(*byte)(unsafe.Pointer(s)); {
+				switch c := *(*byte)(unsafe.Pointer(format)); {
 				case first && c == '*':
-					s++
-					n = int(VaInt32(&args))
-					return s, args, n, true
+					format++
+					n = int(VaInt32(args))
+					return format, n, true
 				case c >= '0' && c <= '9':
-					s++
+					format++
 					first = false
 					n0 := n
 					n = 10*n + (int(c) - '0')
@@ -424,11 +431,11 @@ func parsePrecision(s, args uintptr) (_, _ uintptr, n int, ok bool) {
 						panic(todo(""))
 					}
 				default:
-					return s, args, n, true
+					return format, n, true
 				}
 			}
 		default:
-			return s, args, 0, false
+			return format, 0, false
 		}
 	}
 }
@@ -476,26 +483,26 @@ func parsePrecision(s, args uintptr) (_, _ uintptr, n int, ok bool) {
 // or a following n conversion corresponds to a pointer to a ptrdiff_t
 // argument.
 
-func parseLengthModifier(s uintptr) (_ uintptr, n int) {
-	switch c := *(*byte)(unsafe.Pointer(s)); c {
+func parseLengthModifier(format uintptr) (_ uintptr, n int) {
+	switch c := *(*byte)(unsafe.Pointer(format)); c {
 	case 'h':
-		s++
+		format++
 		n = modH
-		switch c := *(*byte)(unsafe.Pointer(s)); c {
+		switch c := *(*byte)(unsafe.Pointer(format)); c {
 		case 'h':
-			s++
+			format++
 			n = modHH
 		}
-		return s, n
+		return format, n
 	case 'l':
-		s++
+		format++
 		n = modL
-		switch c := *(*byte)(unsafe.Pointer(s)); c {
+		switch c := *(*byte)(unsafe.Pointer(format)); c {
 		case 'l':
-			s++
+			format++
 			n = modLL
 		}
-		return s, n
+		return format, n
 	case 'q':
 		panic(todo(""))
 	case 'L':
@@ -509,6 +516,6 @@ func parseLengthModifier(s uintptr) (_ uintptr, n int) {
 	case 't':
 		panic(todo(""))
 	default:
-		return s, 0
+		return format, 0
 	}
 }

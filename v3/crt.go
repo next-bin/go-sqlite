@@ -1583,6 +1583,7 @@ out:
 			break out
 		case '-':
 			s++
+			neg = true
 			break out
 		default:
 			break out
@@ -2137,86 +2138,7 @@ func X__builtin_huge_valg(t *TLS) float32 {
 
 // int sscanf(const char *str, const char *format, ...);
 func Xsscanf(t *TLS, str, format, va uintptr) int32 {
-	return scanf(strings.NewReader(GoString(str)), GoString(format), va)
-}
-
-func scanf(r *strings.Reader, format string, va uintptr) (nvalues int32) {
-	if format == "" {
-		panic(todo(""))
-	}
-
-	format0 := format
-out:
-	for format != "" {
-		c := format[0]
-		format = format[1:]
-		switch c {
-		case '%':
-			if format == "" {
-				panic(todo(""))
-			}
-
-			c = format[0]
-			format = format[1:]
-			switch c {
-			case 'p':
-				var b [2]byte
-				if n, _ := r.Read(b[:]); n != 2 {
-					panic(todo(""))
-				}
-
-				if s := string(b[:]); s != "0x" && s != "0X" {
-					panic(todo(""))
-				}
-
-				var p uintptr
-				if _, err := fmt.Fscanf(r, "%x", &p); err != nil {
-					panic(todo("", err))
-				}
-
-				pp := VaUintptr(&va)
-				*(*uintptr)(unsafe.Pointer(pp)) = p
-				nvalues++
-			default:
-				panic(todo("%q %q", format0, string(c)))
-			}
-		case ' ', '\t', '\n', '\v', '\f', '\r':
-			for len(format) != 0 {
-				switch format[0] {
-				case ' ', '\t', '\n', '\v', '\f', '\r':
-					format = format[1:]
-				}
-			}
-		skipSpace:
-			for {
-				var b [1]byte
-				if n, _ := r.Read(b[:]); n != 1 {
-					panic(todo("%q %q", format0, string(c)))
-				}
-
-				switch b[0] {
-				case ' ', '\t', '\n', '\v', '\f', '\r':
-					// ok
-				default:
-					if err := r.UnreadByte(); err != nil {
-						panic(todo(""))
-					}
-
-					break skipSpace
-				}
-			}
-		default:
-			var b [1]byte
-			if n, _ := r.Read(b[:]); n != 1 {
-				panic(todo("%q %q", format0, string(c)))
-			}
-
-			if b[0] != c {
-				break out
-			}
-		}
-	}
-	return nvalues
+	return scanf(strings.NewReader(GoString(str)), format, va)
 }
 
 func X__isoc99_sscanf(t *TLS, str, format, va uintptr) int32 {
