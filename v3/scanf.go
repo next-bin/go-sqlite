@@ -16,18 +16,53 @@ import (
 // were unavailable, or matching failure, meaning that the input was
 // inappropriate.
 func scanf(r *strings.Reader, format, args uintptr) (nvalues int32) {
+	var ok bool
+out:
 	for {
 		switch c := *(*byte)(unsafe.Pointer(format)); c {
 		case '%':
 			var n int
 			format, n = scanfConversion(r, format, &args)
 			nvalues += int32(n)
+			ok = true
 		case 0:
-			return nvalues
+			break out
+		case ' ', '\t', '\n', '\r', '\v', '\f':
+			format = skipWhiteSpace(format)
+			ok = true
+			for {
+				c, err := r.ReadByte()
+				if err != nil {
+					break out
+				}
+
+				switch c {
+				case ' ', '\t', '\n', '\r', '\v', '\f':
+					// nop
+				default:
+					r.UnreadByte()
+					break out
+				}
+			}
 		default:
-			panic(todo("%#U %v", c, nvalues))
+			c2, err := r.ReadByte()
+			if err != nil {
+				break out
+			}
+
+			if c2 != c {
+				r.UnreadByte()
+				break out
+			}
+
+			ok = true
 		}
 	}
+	if ok {
+		return nvalues
+	}
+
+	return eof
 }
 
 func scanfConversion(r *strings.Reader, format uintptr, args *uintptr) (_ uintptr, nvalues int) {

@@ -1326,7 +1326,7 @@ func Xfopen(t *TLS, pathname, mode uintptr) uintptr {
 // FILE *fopen64(const char *pathname, const char *mode);
 func Xfopen64(t *TLS, pathname, mode uintptr) uintptr {
 	s := GoString(pathname)
-	m := GoString(mode)
+	m := strings.ReplaceAll(GoString(mode), "b", "")
 	// if dmesgs {
 	// 	dmesg("fopen64(%q, %q)", s, m)
 	// }
@@ -1342,8 +1342,8 @@ func Xfopen64(t *TLS, pathname, mode uintptr) uintptr {
 	var fd int
 	var err error
 	switch m {
-	case "r", "rb":
-		if fd, err = syscall.Open(s, os.O_RDONLY, 0660); err != nil {
+	case "r":
+		if fd, err = syscall.Open(s, os.O_RDONLY, 0666); err != nil {
 			t.setErrno(err)
 			// if dmesgs {
 			// 	dmesg("fopen64(): %d, %v", 0, err)
@@ -1351,16 +1351,40 @@ func Xfopen64(t *TLS, pathname, mode uintptr) uintptr {
 			return 0
 		}
 
-	case "r+b", "w+b":
-		if fd, err = syscall.Open(s, os.O_RDWR, 0660); err != nil {
+	case "r+":
+		if fd, err = syscall.Open(s, os.O_RDWR, 0666); err != nil {
 			t.setErrno(err)
 			// if dmesgs {
 			// 	dmesg("fopen64(): %d, %v", 0, err)
 			// }
 			return 0
 		}
-	case "wb":
-		if fd, err = syscall.Open(s, os.O_WRONLY|os.O_CREATE, 0660); err != nil {
+	case "w":
+		if fd, err = syscall.Open(s, os.O_WRONLY|os.O_CREATE|os.O_TRUNC, 0666); err != nil {
+			t.setErrno(err)
+			// if dmesgs {
+			// 	dmesg("fopen64(): %d, %v", 0, err)
+			// }
+			return 0
+		}
+	case "w+":
+		if fd, err = syscall.Open(s, os.O_RDWR|os.O_CREATE|os.O_TRUNC, 0666); err != nil {
+			t.setErrno(err)
+			// if dmesgs {
+			// 	dmesg("fopen64(): %d, %v", 0, err)
+			// }
+			return 0
+		}
+	case "a":
+		if fd, err = syscall.Open(s, os.O_WRONLY|os.O_CREATE|os.O_APPEND, 0666); err != nil {
+			t.setErrno(err)
+			// if dmesgs {
+			// 	dmesg("fopen64(): %d, %v", 0, err)
+			// }
+			return 0
+		}
+	case "a+":
+		if fd, err = syscall.Open(s, os.O_RDWR|os.O_CREATE|os.O_APPEND, 0666); err != nil {
 			t.setErrno(err)
 			// if dmesgs {
 			// 	dmesg("fopen64(): %d, %v", 0, err)
