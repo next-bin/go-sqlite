@@ -81,12 +81,12 @@ var CAPI = map[string]struct{}{`)
 
 	ccgoHelpers()
 
-	//TODO if err := libc(); err != nil {
-	//TODO 	fail(err)
-	//TODO }
+	// if err := libcHeaders(); err != nil {
+	// 	fail(err)
+	// }
 }
 
-func libc() error {
+func libcHeaders() error {
 	dir, err := ioutil.TempDir("", "go-generate-")
 	if err != nil {
 		return err
@@ -119,14 +119,15 @@ static char _;
 
 		dest := filepath.Join(path, fmt.Sprintf("%s_%s_%s.go", filepath.Base(path), runtime.GOOS, runtime.GOARCH))
 		base := filepath.Base(inc)
+		panic(todo(""))
 		if out, err := exec.Command(
-			"gocc", fn,
+			"ccgo", fn,
 			"-o", dest,
-			"-qbec-defines",
-			"-qbec-enumconsts",
-			"-qbec-import", "<none>",
-			"-qbec-pkgname", base,
-			"-qbec-structs",
+			//TODO "-qbec-defines",
+			//TODO "-qbec-enumconsts",
+			//TODO "-qbec-import", "<none>",
+			"-ccgo-pkgname", base,
+			//TODO "-qbec-structs",
 		).CombinedOutput(); err != nil {
 			// Errors may be normal due to different os/platforms,
 			// just print it for human inspection.

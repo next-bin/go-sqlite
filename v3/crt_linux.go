@@ -8,9 +8,11 @@ import (
 	"encoding/hex"
 	"fmt"
 	"io/ioutil"
+	"net"
 	"os"
 	"os/exec"
 	"os/user"
+	"path/filepath"
 	"strconv"
 	"strings"
 	"syscall"
@@ -1077,5 +1079,262 @@ func Xutimes(t *TLS, filename, times uintptr) int32 {
 		return -1
 	}
 
+	return 0
+}
+
+// Description of data base entry for a single host.
+type hostent = struct {
+	h_name      uintptr
+	h_aliases   uintptr
+	h_addrtype  int32
+	h_length    int32
+	h_addr_list uintptr // **in_addr
+}
+
+type in_addr [4]byte
+
+//	struct hostent {
+//	               char  *h_name;            /* official name of host */
+//	               char **h_aliases;         /* alias list */
+//	               int    h_addrtype;        /* host address type */
+//	               int    h_length;          /* length of address */
+//	               char **h_addr_list;       /* list of addresses */
+//	           }
+//
+//	/* Internet address. */
+//	           struct in_addr {
+//	               uint32_t       s_addr;     /* address in network byte order */
+//	           };
+//
+// struct hostent *gethostbyname(const char *name);
+func Xgethostbyname(t *TLS, name uintptr) uintptr {
+	nm := GoString(name)
+	if ip := net.ParseIP(nm); ip != nil {
+		panic(todo("%q %q", nm, ip))
+	}
+
+	if strings.HasSuffix(nm, ".") {
+		panic(todo("%q", nm))
+	}
+
+	if alias := os.Getenv("HOSTALIASES"); alias != "" {
+		panic(todo("%q %q", nm, alias))
+	}
+
+	addrs, err := net.LookupHost(nm)
+	if err != nil {
+		panic(todo(""))
+	}
+
+	if len(addrs) > staticHostentAddrListLen {
+		addrs = addrs[:staticHostentAddrListLen]
+	}
+	for i, ip := range addrs {
+		staticHostentAddrs[i] = ip4ToinAddr(ip)
+		staticHostentAddrList[i] = uintptr(unsafe.Pointer(&staticHostentAddrs[i]))
+	}
+	staticHostentAddrList[len(addrs)] = 0
+	staticHostent.h_length = int32(len(addrs))
+	staticHostent.h_addrtype = unix.AF_INET
+	staticHostent.h_aliases = 0
+	for i := range nm {
+		staticHostentName[i] = nm[i]
+	}
+	staticHostentName[len(nm)] = 0
+	return uintptr(unsafe.Pointer(&staticHostent))
+}
+
+const staticHostentAddrListLen = 10
+
+var (
+	staticHostent         hostent
+	staticHostentAddrList [staticHostentAddrListLen + 1]uintptr
+	staticHostentAddrs    [staticHostentAddrListLen]in_addr
+	staticHostentName     [64]byte
+)
+
+func ip4ToinAddr(ip string) (r in_addr) {
+	a := strings.Split(ip, ".")
+	if len(a) != 4 {
+		panic(todo(""))
+	}
+
+	for i, v := range a {
+		n, err := strconv.Atoi(v)
+		if err != nil {
+			panic(todo(""))
+		}
+
+		if n < 0 || n > 255 {
+			panic(todo(""))
+		}
+
+		r[i] = byte(n)
+	}
+	return r
+}
+
+type cfts = struct {
+	fts_cur     uintptr
+	fts_child   uintptr
+	fts_array   uintptr
+	fts_dev     dev_t
+	fts_path    uintptr
+	fts_rfd     int32
+	fts_pathlen int32
+	fts_nitems  int32
+	fts_compar  uintptr
+	fts_options int32
+	_           [4]byte
+} /* fts.h:81:3 */
+
+//	#define	FTS_COMFOLLOW	0x0001		/* follow command line symlinks */
+//	#define	FTS_LOGICAL	0x0002		/* logical walk */
+//	#define	FTS_NOCHDIR	0x0004		/* don't change directories */
+//	#define	FTS_NOSTAT	0x0008		/* don't get stat info */
+//	#define	FTS_PHYSICAL	0x0010		/* physical walk */
+//	#define	FTS_SEEDOT	0x0020		/* return dot and dot-dot */
+//	#define	FTS_XDEV	0x0040		/* don't cross devices */
+//	#define FTS_WHITEOUT	0x0080		/* return whiteout information */
+//	#define	FTS_OPTIONMASK	0x00ff		/* valid user option mask */
+
+//	#define	FTS_D		 1		/* preorder directory */
+//	#define	FTS_DC		 2		/* directory that causes cycles */
+//	#define	FTS_DEFAULT	 3		/* none of the above */
+//	#define	FTS_DNR		 4		/* unreadable directory */
+//	#define	FTS_DOT		 5		/* dot or dot-dot */
+//	#define	FTS_DP		 6		/* postorder directory */
+//	#define	FTS_ERR		 7		/* error; errno is set */
+//	#define	FTS_F		 8		/* regular file */
+//	#define	FTS_INIT	 9		/* initialized only */
+//	#define	FTS_NS		10		/* stat(2) failed */
+//	#define	FTS_NSOK	11		/* no stat(2) requested */
+//	#define	FTS_SL		12		/* symbolic link */
+//	#define	FTS_SLNONE	13		/* symbolic link without target */
+//	#define FTS_W		14		/* whiteout object */
+
+const (
+	fts_d       = 1  /* preorder directory */
+	fts_dc      = 2  /* directory that causes cycles */
+	fts_default = 3  /* none of the above */
+	fts_dnr     = 4  /* unreadable directory */
+	fts_dot     = 5  /* dot or dot-dot */
+	fts_dp      = 6  /* postorder directory */
+	fts_err     = 7  /* error; errno is set */
+	fts_f       = 8  /* regular file */
+	fts_init    = 9  /* initialized only */
+	fts_ns      = 10 /* stat(2) failed */
+	fts_nsok    = 11 /* no stat(2) requested */
+	fts_sl      = 12 /* symbolic link */
+	fts_slnone  = 13 /* symbolic link without target */
+	fts_w       = 14 /* whiteout object */
+)
+
+const (
+	fts_comfollow  = 0x0001 /* follow command line symlinks */
+	fts_logical    = 0x0002 /* logical walk */
+	fts_nochdir    = 0x0004 /* don't change directories */
+	fts_nostat     = 0x0008 /* don't get stat info */
+	fts_physical   = 0x0010 /* physical walk */
+	fts_seedot     = 0x0020 /* return dot and dot-dot */
+	fts_xdev       = 0x0040 /* don't cross devices */
+	fts_whiteout   = 0x0080 /* return whiteout information */
+	fts_optionmask = 0x00ff /* valid user option mask */
+)
+
+type fts struct {
+	s []uintptr
+	x int
+}
+
+func (f *fts) close() {
+	for _, p := range f.s {
+		(*ftsent)(unsafe.Pointer(p)).close()
+		Xfree(nil, p)
+	}
+	*f = fts{}
+}
+
+// FTS *fts_open(char * const *path_argv, int options, int (*compar)(const FTSENT **, const FTSENT **));
+func Xfts_open(t *TLS, path_argv uintptr, options int32, compar uintptr) uintptr {
+	f := &fts{}
+
+	var walk func(string)
+	walk = func(path string) {
+		var fi os.FileInfo
+		var err error
+		switch {
+		case options&fts_logical != 0:
+			panic(todo(""))
+		case options&fts_physical != 0:
+			fi, err = os.Lstat(path)
+		default:
+			panic(todo(""))
+		}
+
+		if err != nil {
+			panic(todo(""))
+		}
+
+		var statp *unix.Stat_t
+		if options&fts_nostat == 0 {
+			panic(todo(""))
+		}
+
+		switch {
+		case fi.IsDir():
+			f.s = append(f.s, newCFtsent(fts_d, path, statp))
+			g, err := os.Open(path)
+			if err != nil {
+				panic(todo(""))
+			}
+
+			names, err := g.Readdirnames(-1)
+			g.Close()
+			if err != nil {
+				panic(todo(""))
+			}
+
+			for _, name := range names {
+				walk(filepath.Join(path, name))
+			}
+			f.s = append(f.s, newCFtsent(fts_dp, path, statp))
+		default:
+			f.s = append(f.s, newCFtsent(fts_f, path, statp))
+		}
+	}
+
+	for {
+		p := *(*uintptr)(unsafe.Pointer(path_argv))
+		if p == 0 {
+			if compar != 0 {
+				panic(todo(""))
+			}
+
+			return addObject(f)
+		}
+
+		walk(GoString(p))
+		path_argv += unsafe.Sizeof(uintptr(0))
+	}
+}
+
+// FTSENT *fts_read(FTS *ftsp);
+func Xfts_read(t *TLS, ftsp uintptr) uintptr {
+	f := getObject(ftsp).(*fts)
+	if f.x == len(f.s) {
+		t.setErrno(0)
+		return 0
+	}
+
+	r := f.s[f.x]
+	f.x++
+	return r
+}
+
+// int fts_close(FTS *ftsp);
+func Xfts_close(t *TLS, ftsp uintptr) int32 {
+	getObject(ftsp).(*fts).close()
+	removeObject(ftsp)
 	return 0
 }

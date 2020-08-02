@@ -6,6 +6,15 @@
 //go:generate go run generate.go
 //go:generate gofmt -l -s -w .
 
+//TODO
+//
+// All c struct definitions must be generated from headers and that's not the
+// case at the moment. Definitions copied from man pages etc. are (now) known
+// to be not usable. For example, the order of fields seems not to be part of
+// the POSIX specification as discovered for FTSENT.
+//
+// Blocked on ccgo/v3 not able yet to emit definitions separately.
+
 package crt // import "modernc.org/crt/v3"
 
 import (
@@ -2085,6 +2094,15 @@ func CString(s string) (uintptr, error) {
 	return p, nil
 }
 
+func mustCString(s string) uintptr {
+	p, err := CString(s)
+	if err != nil {
+		panic(todo(""))
+	}
+
+	return p
+}
+
 // int usleep(useconds_t usec);
 func Xusleep(t *TLS, usec uint32) int32 {
 	// if dmesgs {
@@ -2450,21 +2468,6 @@ func Xmkfifo(t *TLS, pathname uintptr, mode uint32) int32 {
 	panic(todo(""))
 }
 
-// FTS *fts_open(char * const *path_argv, int options, int (*compar)(const FTSENT **, const FTSENT **));
-func Xfts_open(t *TLS, path_argv uintptr, options int32, compar uintptr) uintptr {
-	panic(todo(""))
-}
-
-// FTSENT *fts_read(FTS *ftsp);
-func Xfts_read(t *TLS, ftsp uintptr) uintptr {
-	panic(todo(""))
-}
-
-// int fts_close(FTS *ftsp);
-func Xfts_close(t *TLS, ftsp uintptr) int32 {
-	panic(todo(""))
-}
-
 // int chown(const char *pathname, uid_t owner, gid_t group);
 func Xchown(t *TLS, pathname uintptr, owner, group uint32) int32 {
 	panic(todo(""))
@@ -2655,11 +2658,6 @@ func Xhypot(t *TLS, x, y float64) float64 {
 
 // struct group *getgrgid(gid_t gid);
 func Xgetgrgid(t *TLS, gid uint32) uintptr {
-	panic(todo(""))
-}
-
-// struct hostent *gethostbyname(const char *name);
-func Xgethostbyname(t *TLS, name uintptr) uintptr {
 	panic(todo(""))
 }
 
