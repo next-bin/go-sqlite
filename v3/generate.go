@@ -13,9 +13,16 @@ import (
 	"runtime"
 	"sort"
 	"strings"
+
+	"modernc.org/cc/v3"
 )
 
 func main() {
+	_, _, hostSysIncludes, err := cc.HostConfig("")
+	if err != nil {
+		fail(err)
+	}
+
 	g := []string{"crt.go", "ctype.go"}
 	x, err := filepath.Glob(fmt.Sprintf("*_%s.go", runtime.GOOS))
 	if err != nil {
@@ -81,12 +88,12 @@ var CAPI = map[string]struct{}{`)
 
 	ccgoHelpers()
 
-	// if err := libcHeaders(); err != nil {
-	// 	fail(err)
-	// }
+	if err := libcHeaders(hostSysIncludes); err != nil {
+		fail(err)
+	}
 }
 
-func libcHeaders() error {
+func libcHeaders(paths []string) error {
 	dir, err := ioutil.TempDir("", "go-generate-")
 	if err != nil {
 		return err
@@ -109,6 +116,18 @@ func libcHeaders() error {
 		}
 
 		inc := path[len("libc/"):]
+		ok := false
+		for _, v := range paths {
+			full := filepath.Join(v, inc+".h")
+			if fi, err := os.Stat(full); err == nil && !fi.IsDir() {
+				ok = true
+				break
+			}
+		}
+		if !ok {
+			return nil
+		}
+
 		src := fmt.Sprintf(`#include <%s.h>
 static char _;
 `, inc)
@@ -119,21 +138,23 @@ static char _;
 
 		dest := filepath.Join(path, fmt.Sprintf("%s_%s_%s.go", filepath.Base(path), runtime.GOOS, runtime.GOARCH))
 		base := filepath.Base(inc)
-		panic(todo(""))
-		if out, err := exec.Command(
+		out, err := exec.Command(
 			"ccgo", fn,
-			"-o", dest,
-			//TODO "-qbec-defines",
-			//TODO "-qbec-enumconsts",
-			//TODO "-qbec-import", "<none>",
+			"-ccgo-crt-import-path", "",
+			"-ccgo-export-defines", "",
+			"-ccgo-export-enums", "",
+			"-ccgo-export-externs", "X",
+			"-ccgo-export-fields", "F",
+			"-ccgo-export-structs", "",
+			"-ccgo-export-typedefs", "",
 			"-ccgo-pkgname", base,
-			//TODO "-qbec-structs",
-		).CombinedOutput(); err != nil {
-			// Errors may be normal due to different os/platforms,
-			// just print it for human inspection.
-			fmt.Fprintf(os.Stderr, "%s: %s\nnote: %s\n", path, out, err)
+			"-o", dest,
+		).CombinedOutput()
+		sout := strings.TrimSpace(string(out) + "\n")
+		if err != nil {
+			fmt.Fprintf(os.Stderr, "%s: %s%s\n", path, sout, err)
 		} else {
-			fmt.Fprintf(os.Stderr, "%s: %s\n", path, out)
+			fmt.Fprintf(os.Stdout, "%s\n%s", path, sout)
 		}
 		return nil
 	})

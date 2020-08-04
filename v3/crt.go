@@ -4,7 +4,7 @@
 
 //go.generate echo package crt > ccgo.go
 //go:generate go run generate.go
-//go:generate gofmt -l -s -w .
+//go:generate go fmt ./...
 
 //TODO
 //
@@ -37,6 +37,7 @@ import (
 	"github.com/mattn/go-isatty"
 	"modernc.org/crt/v3/libc/errno"
 	"modernc.org/crt/v3/libc/stdio"
+	timeh "modernc.org/crt/v3/libc/time"
 	"modernc.org/memory"
 )
 
@@ -1416,7 +1417,7 @@ func Xrewind(t *TLS, stream uintptr) {
 	// if dmesgs {
 	// 	dmesg("rewind(%#x(%d))", stream, *(*int32)(unsafe.Pointer(stream)))
 	// }
-	Xfseek(t, stream, 0, stdio.DSEEK_SET)
+	Xfseek(t, stream, 0, stdio.SEEK_SET)
 }
 
 // int * __errno_location(void);
@@ -1654,7 +1655,7 @@ out:
 		n0 := n
 		n = uint64(base)*n + digit
 		if n < n0 { // overflow
-			return seenDigits, neg, s, n0, errno.DERANGE
+			return seenDigits, neg, s, n0, errno.ERANGE
 		}
 
 		s++
@@ -1728,18 +1729,6 @@ func Xstrdup(t *TLS, s uintptr) uintptr {
 	panic(todo(""))
 }
 
-type tm struct {
-	sec   int32 // Seconds [0,60].
-	min   int32 // Minutes [0,59].
-	hour  int32 // Hour [0,23].
-	mday  int32 // Day of month [1,31].
-	mon   int32 // Month of year [0,11].
-	year  int32 // Years since 1900.
-	wday  int32 // Day of week [0,6] (Sunday =0).
-	yday  int32 // Day of year [0,365].
-	isdst int32 // Daylight Savings flag.
-}
-
 // https://stackoverflow.com/a/53052382
 //
 // isTimeDST returns true if time t occurs within daylight saving time
@@ -1761,7 +1750,7 @@ func isTimeDST(t time.Time) bool {
 	return false
 }
 
-var localtime tm
+var localtime timeh.Tm
 
 // struct tm *localtime(const time_t *timep);
 func Xlocaltime(_ *TLS, timep uintptr) uintptr {
@@ -1772,15 +1761,15 @@ func Xlocaltime(_ *TLS, timep uintptr) uintptr {
 	}
 	ut := *(*syscall.Time_t)(unsafe.Pointer(timep))
 	t := time.Unix(int64(ut), 0).In(loc)
-	localtime.sec = int32(t.Second())
-	localtime.min = int32(t.Minute())
-	localtime.hour = int32(t.Hour())
-	localtime.mday = int32(t.Day())
-	localtime.mon = int32(t.Month() - 1)
-	localtime.year = int32(t.Year() - 1900)
-	localtime.wday = int32(t.Weekday())
-	localtime.yday = int32(t.YearDay())
-	localtime.isdst = Bool32(isTimeDST(t))
+	localtime.Ftm_sec = int32(t.Second())
+	localtime.Ftm_min = int32(t.Minute())
+	localtime.Ftm_hour = int32(t.Hour())
+	localtime.Ftm_mday = int32(t.Day())
+	localtime.Ftm_mon = int32(t.Month() - 1)
+	localtime.Ftm_year = int32(t.Year() - 1900)
+	localtime.Ftm_wday = int32(t.Weekday())
+	localtime.Ftm_yday = int32(t.YearDay())
+	localtime.Ftm_isdst = Bool32(isTimeDST(t))
 	// if dmesgs {
 	// 	dmesg("%v: localtime(%v): %+v", origin(2), ut, localtime)
 	// }
@@ -1796,15 +1785,15 @@ func Xlocaltime_r(_ *TLS, timep, r uintptr) uintptr {
 	}
 	ut := *(*syscall.Time_t)(unsafe.Pointer(timep))
 	t := time.Unix(int64(ut), 0).In(loc)
-	(*tm)(unsafe.Pointer(r)).sec = int32(t.Second())
-	(*tm)(unsafe.Pointer(r)).min = int32(t.Minute())
-	(*tm)(unsafe.Pointer(r)).hour = int32(t.Hour())
-	(*tm)(unsafe.Pointer(r)).mday = int32(t.Day())
-	(*tm)(unsafe.Pointer(r)).mon = int32(t.Month() - 1)
-	(*tm)(unsafe.Pointer(r)).year = int32(t.Year() - 1900)
-	(*tm)(unsafe.Pointer(r)).wday = int32(t.Weekday())
-	(*tm)(unsafe.Pointer(r)).yday = int32(t.YearDay())
-	(*tm)(unsafe.Pointer(r)).isdst = Bool32(isTimeDST(t))
+	(*timeh.Tm)(unsafe.Pointer(r)).Ftm_sec = int32(t.Second())
+	(*timeh.Tm)(unsafe.Pointer(r)).Ftm_min = int32(t.Minute())
+	(*timeh.Tm)(unsafe.Pointer(r)).Ftm_hour = int32(t.Hour())
+	(*timeh.Tm)(unsafe.Pointer(r)).Ftm_mday = int32(t.Day())
+	(*timeh.Tm)(unsafe.Pointer(r)).Ftm_mon = int32(t.Month() - 1)
+	(*timeh.Tm)(unsafe.Pointer(r)).Ftm_year = int32(t.Year() - 1900)
+	(*timeh.Tm)(unsafe.Pointer(r)).Ftm_wday = int32(t.Weekday())
+	(*timeh.Tm)(unsafe.Pointer(r)).Ftm_yday = int32(t.YearDay())
+	(*timeh.Tm)(unsafe.Pointer(r)).Ftm_isdst = Bool32(isTimeDST(t))
 	// if dmesgs {
 	// 	dmesg("%v: localtime_r(%d): %+v", origin(2), ut, (*tm)(unsafe.Pointer(r)))
 	// }
@@ -1819,19 +1808,19 @@ func Xmktime(t *TLS, ptm uintptr) Intptr {
 		loc = time.FixedZone(zone, off)
 	}
 	tt := time.Date(
-		int((*tm)(unsafe.Pointer(ptm)).year+1900),
-		time.Month((*tm)(unsafe.Pointer(ptm)).mon+1),
-		int((*tm)(unsafe.Pointer(ptm)).mday),
-		int((*tm)(unsafe.Pointer(ptm)).hour),
-		int((*tm)(unsafe.Pointer(ptm)).min),
-		int((*tm)(unsafe.Pointer(ptm)).sec),
+		int((*timeh.Tm)(unsafe.Pointer(ptm)).Ftm_year+1900),
+		time.Month((*timeh.Tm)(unsafe.Pointer(ptm)).Ftm_mon+1),
+		int((*timeh.Tm)(unsafe.Pointer(ptm)).Ftm_mday),
+		int((*timeh.Tm)(unsafe.Pointer(ptm)).Ftm_hour),
+		int((*timeh.Tm)(unsafe.Pointer(ptm)).Ftm_min),
+		int((*timeh.Tm)(unsafe.Pointer(ptm)).Ftm_sec),
 		0,
 		loc,
 	)
-	(*tm)(unsafe.Pointer(ptm)).wday = int32(tt.Weekday())
-	(*tm)(unsafe.Pointer(ptm)).yday = int32(tt.YearDay() - 1)
+	(*timeh.Tm)(unsafe.Pointer(ptm)).Ftm_wday = int32(tt.Weekday())
+	(*timeh.Tm)(unsafe.Pointer(ptm)).Ftm_yday = int32(tt.YearDay() - 1)
 	// if dmesgs {
-	// 	dmesg("%v: mktime(%+v): %+v", origin(2), (*tm)(unsafe.Pointer(ptm)), (*tm)(unsafe.Pointer(ptm)))
+	// 	dmesg("%v: mktime(%+v): %+v", origin(2), (*timeh.Tm)(unsafe.Pointer(ptm)), (*timeh.Tm)(unsafe.Pointer(ptm)))
 	// }
 	return tt.Unix()
 }
@@ -2375,7 +2364,7 @@ func Xsetsockopt(t *TLS, sockfd, level, optname int32, optval uintptr, optlen ui
 // int getaddrinfo(const char *node, const char *service, const struct addrinfo *hints, struct addrinfo **res);
 func Xgetaddrinfo(t *TLS, node, service, hints, addrinfo uintptr) int32 {
 	// #define EAI_SYSTEM     -11
-	t.setErrno(errno.DENOSYS)
+	t.setErrno(errno.ENOSYS)
 	return -11
 }
 
@@ -2434,7 +2423,7 @@ func Xrealpath(t *TLS, path, resolved_path uintptr) uintptr {
 	s, err := filepath.EvalSymlinks(GoString(path))
 	if err != nil {
 		if os.IsNotExist(err) {
-			t.setErrno(errno.DENOENT)
+			t.setErrno(errno.ENOENT)
 			// if dmesgs {
 			// 	dmesg("%v: realpath(%q, %#x): %v", origin(2), GoString(path), resolved_path, err)
 			// }
@@ -2503,7 +2492,7 @@ func Xlink(t *TLS, oldpath, newpath uintptr) int32 {
 
 // pid_t fork(void);
 func Xfork(t *TLS) int32 {
-	t.setErrno(errno.DENOSYS)
+	t.setErrno(errno.ENOSYS)
 	return -1
 }
 

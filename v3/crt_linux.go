@@ -19,13 +19,15 @@ import (
 	"unsafe"
 
 	"golang.org/x/sys/unix"
+	ftsh "modernc.org/crt/v3/libc/fts"
+	"modernc.org/crt/v3/libc/netdb"
 	"modernc.org/crt/v3/libc/pwd"
 	"modernc.org/crt/v3/libc/stdio"
 	"modernc.org/crt/v3/libc/sys/mman"
 	"modernc.org/crt/v3/libc/unistd"
 )
 
-const eof = stdio.DEOF
+const eof = stdio.EOF
 
 // char *fgets(char *s, int size, FILE *stream);
 func Xfgets(t *TLS, s uintptr, size int32, stream uintptr) uintptr {
@@ -93,7 +95,7 @@ func Xfclose(t *TLS, stream uintptr) int32 {
 		// 	dmesg("fclose(): %v", err)
 		// 	dmesg("fclose(): -1")
 		// }
-		return stdio.DEOF
+		return eof
 	}
 
 	// if dmesgs {
@@ -221,7 +223,7 @@ func Xunlink(t *TLS, pathname uintptr) int32 {
 	return 0
 }
 
-var staticPasswd pwd.Spasswd
+var staticPasswd pwd.Passwd
 
 // struct passwd *getpwuid(uid_t uid);
 func Xgetpwuid(t *TLS, uid uint32) uintptr {
@@ -243,11 +245,11 @@ func Xgetpwuid(t *TLS, uid uint32) uintptr {
 		return 0
 	}
 
-	staticPasswd = pwd.Spasswd{
+	staticPasswd = pwd.Passwd{
 		Fpw_name:   cString(u.Username), //TODO static alloc strings in this case
 		Fpw_passwd: cString("x"),
 		Fpw_uid:    uid,
-		Fpw_gid:    int32(gid),
+		Fpw_gid:    uint32(gid),
 		Fpw_gecos:  cString(u.Name),
 		Fpw_dir:    cString(u.HomeDir),
 		Fpw_shell:  cString(os.Getenv("SHELL")),
@@ -322,20 +324,11 @@ func Xsysconf(t *TLS, name int32) long {
 	// 	dmesg("sysconf(%d)", name)
 	// }
 	switch name {
-	case unistd.E_SC_PAGESIZE:
+	case unistd.X_SC_PAGESIZE:
 		return long(unix.Getpagesize())
 	}
 
 	panic(todo(""))
-}
-
-//	struct timezone {
-//		int tz_minuteswest;     /* minutes west of Greenwich */
-//		int tz_dsttime;         /* type of DST correction */
-//	};
-type timezone struct {
-	tz_minuteswest int32
-	tz_dsttime     int32
 }
 
 // int gettimeofday(struct timeval *tv, struct timezone *tz);
@@ -617,22 +610,22 @@ func Xgeteuid(t *TLS) uint32 {
 
 func mmanProt(n int32) string {
 	var a []string
-	if n&mman.DPROT_EXEC != 0 {
+	if n&mman.PROT_EXEC != 0 {
 		a = append(a, "PROT_EXEC")
 	}
-	if n&mman.DPROT_GROWSDOWN != 0 {
+	if n&mman.PROT_GROWSDOWN != 0 {
 		a = append(a, "PROT_GROWSDOWN")
 	}
-	if n&mman.DPROT_GROWSUP != 0 {
+	if n&mman.PROT_GROWSUP != 0 {
 		a = append(a, "PROT_GROWSUP")
 	}
-	if n&mman.DPROT_NONE != 0 {
+	if n&mman.PROT_NONE != 0 {
 		a = append(a, "PROT_NONE")
 	}
-	if n&mman.DPROT_READ != 0 {
+	if n&mman.PROT_READ != 0 {
 		a = append(a, "PROT_READ")
 	}
-	if n&mman.DPROT_WRITE != 0 {
+	if n&mman.PROT_WRITE != 0 {
 		a = append(a, "PROT_WRITE")
 	}
 	return strings.Join(a, "|")
@@ -699,7 +692,7 @@ func Xftell(t *TLS, stream uintptr) long {
 	// 	dmesg("ftell(%#x(%d))", stream, *(*int32)(unsafe.Pointer(uintptr(stream))))
 	// }
 	fd := *(*int32)(unsafe.Pointer(uintptr(stream)))
-	r, err := unix.Seek(int(fd), 0, stdio.DSEEK_CUR)
+	r, err := unix.Seek(int(fd), 0, stdio.SEEK_CUR)
 	if err != nil {
 		t.setErrno(err)
 		// if dmesgs {
@@ -1082,30 +1075,8 @@ func Xutimes(t *TLS, filename, times uintptr) int32 {
 	return 0
 }
 
-// Description of data base entry for a single host.
-type hostent = struct {
-	h_name      uintptr
-	h_aliases   uintptr
-	h_addrtype  int32
-	h_length    int32
-	h_addr_list uintptr // **in_addr
-}
+type in_addr [4]byte //TODO netb.In_addr_t
 
-type in_addr [4]byte
-
-//	struct hostent {
-//	               char  *h_name;            /* official name of host */
-//	               char **h_aliases;         /* alias list */
-//	               int    h_addrtype;        /* host address type */
-//	               int    h_length;          /* length of address */
-//	               char **h_addr_list;       /* list of addresses */
-//	           }
-//
-//	/* Internet address. */
-//	           struct in_addr {
-//	               uint32_t       s_addr;     /* address in network byte order */
-//	           };
-//
 // struct hostent *gethostbyname(const char *name);
 func Xgethostbyname(t *TLS, name uintptr) uintptr {
 	nm := GoString(name)
@@ -1134,9 +1105,9 @@ func Xgethostbyname(t *TLS, name uintptr) uintptr {
 		staticHostentAddrList[i] = uintptr(unsafe.Pointer(&staticHostentAddrs[i]))
 	}
 	staticHostentAddrList[len(addrs)] = 0
-	staticHostent.h_length = int32(len(addrs))
-	staticHostent.h_addrtype = unix.AF_INET
-	staticHostent.h_aliases = 0
+	staticHostent.Fh_length = int32(len(addrs))
+	staticHostent.Fh_addrtype = unix.AF_INET
+	staticHostent.Fh_aliases = 0
 	for i := range nm {
 		staticHostentName[i] = nm[i]
 	}
@@ -1147,7 +1118,7 @@ func Xgethostbyname(t *TLS, name uintptr) uintptr {
 const staticHostentAddrListLen = 10
 
 var (
-	staticHostent         hostent
+	staticHostent         netdb.Hostent
 	staticHostentAddrList [staticHostentAddrListLen + 1]uintptr
 	staticHostentAddrs    [staticHostentAddrListLen]in_addr
 	staticHostentName     [64]byte
@@ -1174,74 +1145,6 @@ func ip4ToinAddr(ip string) (r in_addr) {
 	return r
 }
 
-type cfts = struct {
-	fts_cur     uintptr
-	fts_child   uintptr
-	fts_array   uintptr
-	fts_dev     dev_t
-	fts_path    uintptr
-	fts_rfd     int32
-	fts_pathlen int32
-	fts_nitems  int32
-	fts_compar  uintptr
-	fts_options int32
-	_           [4]byte
-} /* fts.h:81:3 */
-
-//	#define	FTS_COMFOLLOW	0x0001		/* follow command line symlinks */
-//	#define	FTS_LOGICAL	0x0002		/* logical walk */
-//	#define	FTS_NOCHDIR	0x0004		/* don't change directories */
-//	#define	FTS_NOSTAT	0x0008		/* don't get stat info */
-//	#define	FTS_PHYSICAL	0x0010		/* physical walk */
-//	#define	FTS_SEEDOT	0x0020		/* return dot and dot-dot */
-//	#define	FTS_XDEV	0x0040		/* don't cross devices */
-//	#define FTS_WHITEOUT	0x0080		/* return whiteout information */
-//	#define	FTS_OPTIONMASK	0x00ff		/* valid user option mask */
-
-//	#define	FTS_D		 1		/* preorder directory */
-//	#define	FTS_DC		 2		/* directory that causes cycles */
-//	#define	FTS_DEFAULT	 3		/* none of the above */
-//	#define	FTS_DNR		 4		/* unreadable directory */
-//	#define	FTS_DOT		 5		/* dot or dot-dot */
-//	#define	FTS_DP		 6		/* postorder directory */
-//	#define	FTS_ERR		 7		/* error; errno is set */
-//	#define	FTS_F		 8		/* regular file */
-//	#define	FTS_INIT	 9		/* initialized only */
-//	#define	FTS_NS		10		/* stat(2) failed */
-//	#define	FTS_NSOK	11		/* no stat(2) requested */
-//	#define	FTS_SL		12		/* symbolic link */
-//	#define	FTS_SLNONE	13		/* symbolic link without target */
-//	#define FTS_W		14		/* whiteout object */
-
-const (
-	fts_d       = 1  /* preorder directory */
-	fts_dc      = 2  /* directory that causes cycles */
-	fts_default = 3  /* none of the above */
-	fts_dnr     = 4  /* unreadable directory */
-	fts_dot     = 5  /* dot or dot-dot */
-	fts_dp      = 6  /* postorder directory */
-	fts_err     = 7  /* error; errno is set */
-	fts_f       = 8  /* regular file */
-	fts_init    = 9  /* initialized only */
-	fts_ns      = 10 /* stat(2) failed */
-	fts_nsok    = 11 /* no stat(2) requested */
-	fts_sl      = 12 /* symbolic link */
-	fts_slnone  = 13 /* symbolic link without target */
-	fts_w       = 14 /* whiteout object */
-)
-
-const (
-	fts_comfollow  = 0x0001 /* follow command line symlinks */
-	fts_logical    = 0x0002 /* logical walk */
-	fts_nochdir    = 0x0004 /* don't change directories */
-	fts_nostat     = 0x0008 /* don't get stat info */
-	fts_physical   = 0x0010 /* physical walk */
-	fts_seedot     = 0x0020 /* return dot and dot-dot */
-	fts_xdev       = 0x0040 /* don't cross devices */
-	fts_whiteout   = 0x0080 /* return whiteout information */
-	fts_optionmask = 0x00ff /* valid user option mask */
-)
-
 type fts struct {
 	s []uintptr
 	x int
@@ -1249,7 +1152,7 @@ type fts struct {
 
 func (f *fts) close() {
 	for _, p := range f.s {
-		(*ftsent)(unsafe.Pointer(p)).close()
+		ftsentClose(p)
 		Xfree(nil, p)
 	}
 	*f = fts{}
@@ -1264,9 +1167,9 @@ func Xfts_open(t *TLS, path_argv uintptr, options int32, compar uintptr) uintptr
 		var fi os.FileInfo
 		var err error
 		switch {
-		case options&fts_logical != 0:
+		case options&ftsh.FTS_LOGICAL != 0:
 			panic(todo(""))
-		case options&fts_physical != 0:
+		case options&ftsh.FTS_PHYSICAL != 0:
 			fi, err = os.Lstat(path)
 		default:
 			panic(todo(""))
@@ -1277,13 +1180,13 @@ func Xfts_open(t *TLS, path_argv uintptr, options int32, compar uintptr) uintptr
 		}
 
 		var statp *unix.Stat_t
-		if options&fts_nostat == 0 {
+		if options&ftsh.FTS_NOSTAT == 0 {
 			panic(todo(""))
 		}
 
 		switch {
 		case fi.IsDir():
-			f.s = append(f.s, newCFtsent(fts_d, path, statp))
+			f.s = append(f.s, newCFtsent(ftsh.FTS_D, path, statp))
 			g, err := os.Open(path)
 			if err != nil {
 				panic(todo(""))
@@ -1298,9 +1201,9 @@ func Xfts_open(t *TLS, path_argv uintptr, options int32, compar uintptr) uintptr
 			for _, name := range names {
 				walk(filepath.Join(path, name))
 			}
-			f.s = append(f.s, newCFtsent(fts_dp, path, statp))
+			f.s = append(f.s, newCFtsent(ftsh.FTS_DP, path, statp))
 		default:
-			f.s = append(f.s, newCFtsent(fts_f, path, statp))
+			f.s = append(f.s, newCFtsent(ftsh.FTS_F, path, statp))
 		}
 	}
 

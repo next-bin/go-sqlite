@@ -39,67 +39,67 @@ func (b bits) set(n int)      { b[n>>6] |= 1 << uint(n&63) }
 
 func mmanFlags(n int32) string {
 	var a []string
-	if n&mman.DMAP_32BIT != 0 {
+	if n&mman.MAP_32BIT != 0 {
 		a = append(a, "MAP_32BIT")
 	}
-	if n&mman.DMAP_ANON != 0 {
+	if n&mman.MAP_ANON != 0 {
 		a = append(a, "MAP_ANON")
 	}
-	if n&mman.DMAP_ANONYMOUS != 0 {
+	if n&mman.MAP_ANONYMOUS != 0 {
 		a = append(a, "MAP_ANONYMOUS")
 	}
-	if n&mman.DMAP_DENYWRITE != 0 {
+	if n&mman.MAP_DENYWRITE != 0 {
 		a = append(a, "MAP_DENYWRITE")
 	}
-	if n&mman.DMAP_EXECUTABLE != 0 {
+	if n&mman.MAP_EXECUTABLE != 0 {
 		a = append(a, "MAP_EXECUTABLE")
 	}
-	if n&mman.DMAP_FILE != 0 {
+	if n&mman.MAP_FILE != 0 {
 		a = append(a, "MAP_FILE")
 	}
-	if n&mman.DMAP_FIXED != 0 {
+	if n&mman.MAP_FIXED != 0 {
 		a = append(a, "MAP_FIXED")
 	}
-	if n&mman.DMAP_GROWSDOWN != 0 {
+	if n&mman.MAP_GROWSDOWN != 0 {
 		a = append(a, "MAP_GROWSDOWN")
 	}
-	if n&mman.DMAP_HUGETLB != 0 {
+	if n&mman.MAP_HUGETLB != 0 {
 		a = append(a, "MAP_HUGETLB")
 	}
-	if n&mman.DMAP_HUGE_MASK != 0 {
+	if n&mman.MAP_HUGE_MASK != 0 {
 		a = append(a, "MAP_HUGE_MASK")
 	}
-	if n&mman.DMAP_HUGE_SHIFT != 0 {
+	if n&mman.MAP_HUGE_SHIFT != 0 {
 		a = append(a, "MAP_HUGE_SHIFT")
 	}
-	if n&mman.DMAP_LOCKED != 0 {
+	if n&mman.MAP_LOCKED != 0 {
 		a = append(a, "MAP_LOCKED")
 	}
-	if n&mman.DMAP_NONBLOCK != 0 {
+	if n&mman.MAP_NONBLOCK != 0 {
 		a = append(a, "MAP_NONBLOCK")
 	}
-	if n&mman.DMAP_NORESERVE != 0 {
+	if n&mman.MAP_NORESERVE != 0 {
 		a = append(a, "MAP_NORESERVE")
 	}
-	if n&mman.DMAP_POPULATE != 0 {
+	if n&mman.MAP_POPULATE != 0 {
 		a = append(a, "MAP_POPULATE")
 	}
-	if n&mman.DMAP_PRIVATE != 0 {
+	if n&mman.MAP_PRIVATE != 0 {
 		a = append(a, "MAP_PRIVATE")
 	}
-	if n&mman.DMAP_SHARED != 0 {
+	if n&mman.MAP_SHARED != 0 {
 		a = append(a, "MAP_SHARED")
 	}
-	if n&mman.DMAP_SHARED_VALIDATE != 0 {
+	if n&mman.MAP_SHARED_VALIDATE != 0 {
 		a = append(a, "MAP_SHARED_VALIDATE")
 	}
-	if n&mman.DMAP_STACK != 0 {
+	if n&mman.MAP_STACK != 0 {
 		a = append(a, "MAP_STACK")
 	}
-	if n&mman.DMAP_SYNC != 0 {
+	if n&mman.MAP_SYNC != 0 {
 		a = append(a, "MAP_SYNC")
 	}
-	if n&mman.DMAP_TYPE != 0 {
+	if n&mman.MAP_TYPE != 0 {
 		a = append(a, "MAP_TYPE")
 	}
 	return strings.Join(a, "|")
