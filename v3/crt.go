@@ -1447,7 +1447,8 @@ func Xmemmove(t *TLS, dest, src uintptr, n Size_t) uintptr {
 // char *getenv(const char *name);
 func Xgetenv(t *TLS, name uintptr) uintptr {
 	if Xenviron == 0 {
-		panic(todo(""))
+		//TODO synchronization
+		SetEnviron(os.Environ())
 	}
 
 	nm := GoString(name)
