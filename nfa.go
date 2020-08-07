@@ -313,21 +313,21 @@ func (e *RangesEdge) String() (s string) {
 	for _, r := range e.Ranges.R16 {
 		switch {
 		default:
-			s += fmt.Sprintf("%q-%q(%d), ", string(r.Lo), string(r.Hi), r.Stride)
+			s += fmt.Sprintf("%q-%q(%d), ", string(rune(r.Lo)), string(rune(r.Hi)), r.Stride)
 		case r.Lo == r.Hi:
-			s += fmt.Sprintf("%q, ", string(r.Lo))
+			s += fmt.Sprintf("%q, ", string(rune(r.Lo)))
 		case r.Stride == 1:
-			s += fmt.Sprintf("%q...%q, ", string(r.Lo), string(r.Hi))
+			s += fmt.Sprintf("%q...%q, ", string(rune(r.Lo)), string(rune(r.Hi)))
 		}
 	}
 	for _, r := range e.Ranges.R32 {
 		switch {
 		default:
-			s += fmt.Sprintf("%q-%q(%d), ", string(r.Lo), string(r.Hi), r.Stride)
+			s += fmt.Sprintf("%q-%q(%d), ", string(rune(r.Lo)), string(rune(r.Hi)), r.Stride)
 		case r.Lo == r.Hi:
-			s += fmt.Sprintf("%q, ", string(r.Lo))
+			s += fmt.Sprintf("%q, ", string(rune(r.Lo)))
 		case r.Stride == 1:
-			s += fmt.Sprintf("%q...%q, ", string(r.Lo), string(r.Hi))
+			s += fmt.Sprintf("%q...%q, ", string(rune(r.Lo)), string(rune(r.Hi)))
 		}
 	}
 	return s + e.EpsilonEdge.String()
