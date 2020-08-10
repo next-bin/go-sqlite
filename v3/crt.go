@@ -55,6 +55,8 @@ var (
 	allocMu   sync.Mutex
 	allocator memory.Allocator
 
+	atExit []func()
+
 	stderr = int32(2)
 	stdin  = int32(1)
 	stdout = int32(0)
@@ -1231,6 +1233,9 @@ func X__builtin_free(t *TLS, ptr uintptr) {
 func Xexit(t *TLS, status int32) {
 	if dmesgs {
 		dmesg("exit(%v)", status)
+	}
+	for _, v := range atExit {
+		v()
 	}
 	outBuf.Flush()
 	os.Exit(int(status))
@@ -2458,11 +2463,6 @@ func Xmkfifo(t *TLS, pathname uintptr, mode uint32) int32 {
 	panic(todo(""))
 }
 
-// int chown(const char *pathname, uid_t owner, gid_t group);
-func Xchown(t *TLS, pathname uintptr, owner, group uint32) int32 {
-	panic(todo(""))
-}
-
 // int mkstemps(char *template, int suffixlen);
 func Xmkstemps(t *TLS, template uintptr, suffixlen int32) int32 {
 	panic(todo(""))
@@ -2596,16 +2596,6 @@ func Xgmtime_r(t *TLS, timep, result uintptr) uintptr {
 	panic(todo(""))
 }
 
-// struct passwd *getpwnam(const char *name);
-func Xgetpwnam(t *TLS, name uintptr) uintptr {
-	panic(todo(""))
-}
-
-// struct group *getgrnam(const char *name);
-func Xgetgrnam(t *TLS, name uintptr) uintptr {
-	panic(todo(""))
-}
-
 // int strcasecmp(const char *s1, const char *s2);
 func Xstrcasecmp(t *TLS, s1, s2 uintptr) int32 {
 	// s10 := s1
@@ -2644,11 +2634,6 @@ func Xinet_ntoa(t *TLS, in struct{ Fs_addr uint32 }) uintptr {
 // double hypot(double x, double y);
 func Xhypot(t *TLS, x, y float64) float64 {
 	return math.Hypot(x, y)
-}
-
-// struct group *getgrgid(gid_t gid);
-func Xgetgrgid(t *TLS, gid uint32) uintptr {
-	panic(todo(""))
 }
 
 // struct hostent *gethostbyaddr(const void *addr, socklen_t len, int type);
