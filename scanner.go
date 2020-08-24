@@ -16,7 +16,7 @@ func (t *tokenizer) Lex(lval *yySymType) (c int) {
 	if ok {
 		lval.str = string(t.scanner.Token())
 	} else {
-		lval.str = string(c)
+		lval.str = string(rune(c))
 	}
 	return
 }
