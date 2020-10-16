@@ -45,9 +45,9 @@ func (f *FileSystem) Open(name string) (fi http.File, err error) {
 				k = k[len(name):]
 				dir = append(dir, strings.Split(k, "/")[0])
 			}
-			sort.Strings(dir)
-			return &file{FileSystem: f, name: name, dir: dir, mode: os.ModeDir}, nil
 		}
+		sort.Strings(dir)
+		return &file{FileSystem: f, name: name, dir: dir, mode: os.ModeDir}, nil
 	}
 
 	s, ok := f.files[name]
