@@ -1,5 +1,7 @@
 module modernc.org/ccir
 
+go 1.15
+
 require (
 	github.com/edsrzf/mmap-go v0.0.0-20170320065105-0bce6a688712 // indirect
 	github.com/remyoudompheng/bigfft v0.0.0-20170806203942-52369c62f446 // indirect
