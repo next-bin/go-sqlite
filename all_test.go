@@ -2343,7 +2343,7 @@ func TestQScaleUint32(t *testing.T) {
 		x.SetFrac64(int64(a), int64(b))
 		y.SetFrac64(int64(c), int64(d))
 		if g := x.Cmp(&y); g < 0 {
-			t.Fatal(a, b, c, d, g, "expexted 1 or 0")
+			t.Fatal(a, b, c, d, g, "expected 1 or 0")
 		}
 
 		if a != 0 {
@@ -5706,6 +5706,330 @@ func TestCheckSubInt64(t *testing.T) {
 
 		if g, e := test.a-test.b, c; g != e {
 			t.Error(i, a, b, c)
+		}
+	}
+}
+
+func TestAddOverflowInt8(t *testing.T) {
+	const (
+		L = math.MinInt8
+		H = math.MaxInt8
+		M = math.MaxUint8
+	)
+	for a := L; a <= H; a++ {
+		for b := L; b <= H; b++ {
+			r := a + b
+			ovf0 := false
+			if r < L || r > H {
+				ovf0 = true
+			}
+			r2, ovf1 := AddOverflowInt8(int8(a), int8(b))
+			if g, e := int8(r), r2; g != e {
+				t.Fatalf("%v + %v = %v, expected %v", a, b, g, e)
+			}
+
+			if g, e := ovf1, ovf0; g != e {
+				t.Fatalf("%v + %v = (%v, %v), expected (%v, %v)", a, b, r2, g, r2, e)
+			}
+		}
+	}
+}
+
+func TestAddOverflowInt16(t *testing.T) {
+	const (
+		N = 5e7
+		L = math.MinInt16
+		H = math.MaxInt16
+		M = math.MaxUint16
+	)
+	for i := 0; i < N; i++ {
+		a := int(int16(rand.Int63()))
+		b := int(int16(rand.Int63()))
+		r := a + b
+		ovf0 := false
+		if r < L || r > H {
+			ovf0 = true
+		}
+		r2, ovf1 := AddOverflowInt16(int16(a), int16(b))
+		if g, e := int16(r), r2; g != e {
+			t.Fatalf("%v + %v = %v, expected %v", a, b, g, e)
+		}
+
+		if g, e := ovf1, ovf0; g != e {
+			t.Fatalf("%v + %v = (%v, %v), expected (%v, %v)", a, b, r2, g, r2, e)
+		}
+	}
+}
+
+func TestAddOverflowInt32(t *testing.T) {
+	const (
+		N = 5e7
+		L = math.MinInt32
+		H = math.MaxInt32
+		M = math.MaxUint32
+	)
+	for i := 0; i < N; i++ {
+		a := int64(int32(rand.Int63()))
+		b := int64(int32(rand.Int63()))
+		r := a + b
+		ovf0 := false
+		if r < L || r > H {
+			ovf0 = true
+		}
+		r2, ovf1 := AddOverflowInt32(int32(a), int32(b))
+		if g, e := int32(r), r2; g != e {
+			t.Fatalf("%v + %v = %v, expected %v", a, b, g, e)
+		}
+
+		if g, e := ovf1, ovf0; g != e {
+			t.Fatalf("%v + %v = (%v, %v), expected (%v, %v)", a, b, r2, g, r2, e)
+		}
+	}
+}
+
+func TestAddOverflowInt64(t *testing.T) {
+	const N = 2e6
+	L := big.NewInt(math.MinInt64)
+	H := big.NewInt(math.MaxInt64)
+	M := big.NewInt(0).SetUint64(math.MaxUint64)
+	M.Add(M, big.NewInt(1))
+	rng := rand.New(rand.NewSource(1))
+	for i := 0; i < N; i++ {
+		var aa, bb, rr big.Int
+		aa.Rand(rng, M)
+		aa.SetInt64(aa.Int64())
+		bb.Rand(rng, M)
+		bb.SetInt64(bb.Int64())
+		rr.Add(&aa, &bb)
+		ovf0 := false
+		if rr.Cmp(L) < 0 || rr.Cmp(H) > 0 {
+			ovf0 = true
+		}
+		a := aa.Int64()
+		b := bb.Int64()
+		r2, ovf1 := AddOverflowInt64(a, b)
+		if g, e := rr.Int64(), r2; g != e {
+			t.Fatalf("%v + %v = %v, expected %v", a, b, g, e)
+		}
+
+		if g, e := ovf1, ovf0; g != e {
+			t.Fatalf("%v + %v = (%v, %v), expected (%v, %v)", a, b, r2, g, r2, e)
+		}
+	}
+}
+
+func TestSubOverflowInt8(t *testing.T) {
+	const (
+		L = math.MinInt8
+		H = math.MaxInt8
+		M = math.MaxUint8
+	)
+	for a := L; a <= H; a++ {
+		for b := L; b <= H; b++ {
+			r := a - b
+			ovf0 := false
+			if r < L || r > H {
+				ovf0 = true
+			}
+			r2, ovf1 := SubOverflowInt8(int8(a), int8(b))
+			if g, e := int8(r), r2; g != e {
+				t.Fatalf("%v - %v = %v, expected %v", a, b, g, e)
+			}
+
+			if g, e := ovf1, ovf0; g != e {
+				t.Fatalf("%v - %v = (%v, %v), expected (%v, %v)", a, b, r2, g, r2, e)
+			}
+		}
+	}
+}
+
+func TestSubOverflowInt16(t *testing.T) {
+	const (
+		N = 5e7
+		L = math.MinInt16
+		H = math.MaxInt16
+		M = math.MaxUint16
+	)
+	for i := 0; i < N; i++ {
+		a := int(int16(rand.Int63()))
+		b := int(int16(rand.Int63()))
+		r := a - b
+		ovf0 := false
+		if r < L || r > H {
+			ovf0 = true
+		}
+		r2, ovf1 := SubOverflowInt16(int16(a), int16(b))
+		if g, e := int16(r), r2; g != e {
+			t.Fatalf("%v - %v = %v, expected %v", a, b, g, e)
+		}
+
+		if g, e := ovf1, ovf0; g != e {
+			t.Fatalf("%v - %v = (%v, %v), expected (%v, %v)", a, b, r2, g, r2, e)
+		}
+	}
+}
+
+func TestSubOverflowInt32(t *testing.T) {
+	const (
+		N = 5e7
+		L = math.MinInt32
+		H = math.MaxInt32
+		M = math.MaxUint32
+	)
+	for i := 0; i < N; i++ {
+		a := int64(int32(rand.Int63()))
+		b := int64(int32(rand.Int63()))
+		r := a - b
+		ovf0 := false
+		if r < L || r > H {
+			ovf0 = true
+		}
+		r2, ovf1 := SubOverflowInt32(int32(a), int32(b))
+		if g, e := int32(r), r2; g != e {
+			t.Fatalf("%v - %v = %v, expected %v", a, b, g, e)
+		}
+
+		if g, e := ovf1, ovf0; g != e {
+			t.Fatalf("%v - %v = (%v, %v), expected (%v, %v)", a, b, r2, g, r2, e)
+		}
+	}
+}
+
+func TestSubOverflowInt64(t *testing.T) {
+	const N = 2e6
+	L := big.NewInt(math.MinInt64)
+	H := big.NewInt(math.MaxInt64)
+	M := big.NewInt(0).SetUint64(math.MaxUint64)
+	M.Add(M, big.NewInt(1))
+	rng := rand.New(rand.NewSource(1))
+	for i := 0; i < N; i++ {
+		var aa, bb, rr big.Int
+		aa.Rand(rng, M)
+		aa.SetInt64(aa.Int64())
+		bb.Rand(rng, M)
+		bb.SetInt64(bb.Int64())
+		rr.Sub(&aa, &bb)
+		ovf0 := false
+		if rr.Cmp(L) < 0 || rr.Cmp(H) > 0 {
+			ovf0 = true
+		}
+		a := aa.Int64()
+		b := bb.Int64()
+		r2, ovf1 := SubOverflowInt64(a, b)
+		if g, e := rr.Int64(), r2; g != e {
+			t.Fatalf("%v - %v = %v, expected %v", a, b, g, e)
+		}
+
+		if g, e := ovf1, ovf0; g != e {
+			t.Fatalf("%v - %v = (%v, %v), expected (%v, %v)", a, b, r2, g, r2, e)
+		}
+	}
+}
+
+func TestMulOverflowInt8(t *testing.T) {
+	const (
+		L = math.MinInt8
+		H = math.MaxInt8
+		M = math.MaxUint8
+	)
+	for a := L; a <= H; a++ {
+		for b := L; b <= H; b++ {
+			r := a * b
+			ovf0 := false
+			if r < L || r > H {
+				ovf0 = true
+			}
+			r2, ovf1 := MulOverflowInt8(int8(a), int8(b))
+			if g, e := int8(r), r2; g != e {
+				t.Fatalf("%v * %v = %v, expected %v", a, b, g, e)
+			}
+
+			if g, e := ovf1, ovf0; g != e {
+				t.Fatalf("%v * %v = (%v, %v), expected (%v, %v)", a, b, r2, g, r2, e)
+			}
+		}
+	}
+}
+
+func TestMulOverflowInt16(t *testing.T) {
+	const (
+		N = 5e7
+		L = math.MinInt16
+		H = math.MaxInt16
+		M = math.MaxUint16
+	)
+	for i := 0; i < N; i++ {
+		a := int(int16(rand.Int63()))
+		b := int(int16(rand.Int63()))
+		r := a * b
+		ovf0 := false
+		if r < L || r > H {
+			ovf0 = true
+		}
+		r2, ovf1 := MulOverflowInt16(int16(a), int16(b))
+		if g, e := int16(r), r2; g != e {
+			t.Fatalf("%v * %v = %v, expected %v", a, b, g, e)
+		}
+
+		if g, e := ovf1, ovf0; g != e {
+			t.Fatalf("%v * %v = (%v, %v), expected (%v, %v)", a, b, r2, g, r2, e)
+		}
+	}
+}
+
+func TestMulOverflowInt32(t *testing.T) {
+	const (
+		N = 5e7
+		L = math.MinInt32
+		H = math.MaxInt32
+		M = math.MaxUint32
+	)
+	for i := 0; i < N; i++ {
+		a := int64(int32(rand.Int63()))
+		b := int64(int32(rand.Int63()))
+		r := a * b
+		ovf0 := false
+		if r < L || r > H {
+			ovf0 = true
+		}
+		r2, ovf1 := MulOverflowInt32(int32(a), int32(b))
+		if g, e := int32(r), r2; g != e {
+			t.Fatalf("%v * %v = %v, expected %v", a, b, g, e)
+		}
+
+		if g, e := ovf1, ovf0; g != e {
+			t.Fatalf("%v * %v = (%v, %v), expected (%v, %v)", a, b, r2, g, r2, e)
+		}
+	}
+}
+
+func TestMulOverflowInt64(t *testing.T) {
+	const N = 2e6
+	L := big.NewInt(math.MinInt64)
+	H := big.NewInt(math.MaxInt64)
+	M := big.NewInt(0).SetUint64(math.MaxUint64)
+	M.Add(M, big.NewInt(1))
+	rng := rand.New(rand.NewSource(1))
+	for i := 0; i < N; i++ {
+		var aa, bb, rr big.Int
+		aa.Rand(rng, M)
+		aa.SetInt64(aa.Int64())
+		bb.Rand(rng, M)
+		bb.SetInt64(bb.Int64())
+		rr.Mul(&aa, &bb)
+		ovf0 := false
+		if rr.Cmp(L) < 0 || rr.Cmp(H) > 0 {
+			ovf0 = true
+		}
+		a := aa.Int64()
+		b := bb.Int64()
+		r2, ovf1 := MulOverflowInt64(a, b)
+		if g, e := rr.Int64(), r2; g != e {
+			t.Fatalf("%v * %v = %v, expected %v", a, b, g, e)
+		}
+
+		if g, e := ovf1, ovf0; g != e {
+			t.Fatalf("%v * %v = (%v, %v), expected (%v, %v)", a, b, r2, g, r2, e)
 		}
 	}
 }
