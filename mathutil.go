@@ -7,6 +7,8 @@
 //
 // Release history and compatibility issues
 //
+// 2020-12-19 Added {Add,Sub,Mul}OverflowInt{8,16,32,64}
+//
 // 2018-10-21 Added BinaryLog
 //
 // 2018-04-25: New functions for determining Max/Min of nullable values. Ex:
