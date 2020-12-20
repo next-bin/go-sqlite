@@ -7,6 +7,8 @@
 //
 // Release history and compatibility issues
 //
+// 2020-12-20 v1.2.1 fixes MulOverflowInt64.
+//
 // 2020-12-19 Added {Add,Sub,Mul}OverflowInt{8,16,32,64}
 //
 // 2018-10-21 Added BinaryLog
@@ -1557,7 +1559,7 @@ func MulOverflowInt8(a, b int8) (r int8, ovf bool) {
 		return 0, false
 	}
 
-	z := int16(a)*int16(b)
+	z := int16(a) * int16(b)
 	return int8(z), z < math.MinInt8 || z > math.MaxInt8
 }
 
@@ -1568,7 +1570,7 @@ func MulOverflowInt16(a, b int16) (r int16, ovf bool) {
 		return 0, false
 	}
 
-	z := int32(a)*int32(b)
+	z := int32(a) * int32(b)
 	return int16(z), z < math.MinInt16 || z > math.MaxInt16
 }
 
@@ -1579,17 +1581,24 @@ func MulOverflowInt32(a, b int32) (r int32, ovf bool) {
 		return 0, false
 	}
 
-	z := int64(a)*int64(b)
+	z := int64(a) * int64(b)
 	return int32(z), z < math.MinInt32 || z > math.MaxInt32
 }
 
 // MulOverflowInt64 returns a * b and an indication whether the product
 // overflowed the int64 range.
 func MulOverflowInt64(a, b int64) (r int64, ovf bool) {
-	if a == 0 || b == 0 {
-		return 0, false
+	// https://groups.google.com/g/golang-nuts/c/h5oSN5t3Au4/m/KaNQREhZh0QJ
+	const mostPositive = 1<<63 - 1
+	const mostNegative = -(mostPositive + 1)
+	r = a * b
+	if a == 0 || b == 0 || a == 1 || b == 1 {
+		return r, false
 	}
 
-	h, l := MulUint128_64(uint64(a), uint64(b))
-	return int64(l), h != 0 && h != ^uint64(0)
+	if a == mostNegative || b == mostNegative {
+		return r, true
+	}
+
+	return r, r/b != a
 }

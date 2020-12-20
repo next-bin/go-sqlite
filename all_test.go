@@ -6004,6 +6004,15 @@ func TestMulOverflowInt32(t *testing.T) {
 }
 
 func TestMulOverflowInt64(t *testing.T) {
+	a := int64(2)
+	b := int64(-1)
+	r, ovf := MulOverflowInt64(a, b)
+	if g, e := r, int64(-2); g != e {
+		t.Error(g, e)
+	}
+	if g, e := ovf, false; g != e {
+		t.Error(g, e)
+	}
 	const N = 2e6
 	L := big.NewInt(math.MinInt64)
 	H := big.NewInt(math.MaxInt64)
