@@ -40,10 +40,27 @@ func NewFileSystem(files map[string]string, modTime time.Time) *FileSystem {
 func (f *FileSystem) Open(name string) (fi http.File, err error) {
 	if strings.HasSuffix(name, "/") {
 		dir := make([]string, 0) // Must be non-nil.
+		m := map[string]struct{}{}
 		for k := range f.files {
 			if strings.HasPrefix(k, name) {
 				k = k[len(name):]
-				dir = append(dir, strings.Split(k, "/")[0])
+				parts := strings.Split(k, "/")
+				name := parts[0]
+				if name == "" {
+					continue
+				}
+
+				switch {
+				case len(parts) == 1: // file
+					dir = append(dir, name)
+				default: // dir
+					if _, ok := m[name]; ok {
+						break
+					}
+
+					m[name] = struct{}{}
+					dir = append(dir, name+"/")
+				}
 			}
 		}
 		sort.Strings(dir)
