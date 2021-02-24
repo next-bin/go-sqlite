@@ -64,7 +64,7 @@ func (f *FileSystem) Open(name string) (fi http.File, err error) {
 			}
 		}
 		sort.Strings(dir)
-		fmt.Printf("%q -> %v %v\n", name, len(dir), dir) //TODO-
+		// fmt.Printf("%q -> %v %v\n", name, len(dir), dir) //TODO-
 		return &file{FileSystem: f, name: name, dir: dir, mode: os.ModeDir}, nil
 	}
 
