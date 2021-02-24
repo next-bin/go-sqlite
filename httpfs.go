@@ -64,6 +64,7 @@ func (f *FileSystem) Open(name string) (fi http.File, err error) {
 			}
 		}
 		sort.Strings(dir)
+		fmt.Printf("%q -> %v %v\n", name, len(dir), dir) //TODO-
 		return &file{FileSystem: f, name: name, dir: dir, mode: os.ModeDir}, nil
 	}
 
@@ -105,17 +106,14 @@ func (f *file) Read(b []byte) (n int, err error) {
 
 func (f *file) Readdir(count int) (r []os.FileInfo, err error) {
 	for _, fn := range f.dir {
-		name := path.Join(f.name, fn)
-		s, ok := f.files[name]
-		if !ok {
-			continue
-		}
-
-		r = append(r, &file{name: name, s: s})
 		count--
 		if count == 0 {
 			break
 		}
+
+		name := path.Join(f.name, fn)
+		s := f.files[name]
+		r = append(r, &file{name: name, s: s})
 	}
 	return r, err
 }
