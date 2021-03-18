@@ -87,10 +87,8 @@ func (s itemSet1) dump(y *y) string {
 }
 
 func test0(t *testing.T, root string, filter func(pth string) bool, opts *Options, xerrors bool) {
-	const (
-		cc    = "testdata/ok/cc.y"
-		mysql = "testdata/ok/mysql.y"
-	)
+	cc := filepath.FromSlash("testdata/ok/cc.y")
+	mysql := filepath.FromSlash("testdata/ok/mysql.y")
 	var re *regexp.Regexp
 	if s := *oRE; s != "" {
 		var err error
