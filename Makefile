@@ -13,7 +13,6 @@ all:
 	@go version 2>&1 | tee log
 	@gofmt -l -s -w *.go
 	@go install -v ./...
-	@go test -i
 	@go test 2>&1 -timeout 1h | tee -a log
 	@go vet 2>&1 | grep -v $(ngrep) || true
 	@golint 2>&1 | grep -v $(ngrep) || true
