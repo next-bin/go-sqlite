@@ -69,4 +69,4 @@
 // After this the local development can continue, ie. go build etc. should work
 // normally and use the locally checked out repository instead of the module in
 // the module cache.
-package main // import modernc.org/gomod
+package main // import "modernc.org/gomod"
