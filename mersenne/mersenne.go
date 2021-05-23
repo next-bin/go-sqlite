@@ -306,55 +306,7 @@ func Sqr(n uint32) *big.Int {
 		return big.NewInt(0)
 	}
 
-	bitSize := 2 * int(n)
-	wordSize := bitSize/mathutil.IntBits + 1
-	bits := make([]big.Word, 0, wordSize)
-	var d, c, w big.Word
-	m := big.Word(1)
-	for i := uint32(0); i < n; i++ {
-		d++
-		c += d
-		if c&1 != 0 {
-			w |= m
-		}
-		m <<= 1
-		c >>= 1
-		if m == 0 {
-			bits = append(bits, w)
-			w = 0
-			m = 1
-		}
-	}
-	for i := uint32(1); i < n; i++ {
-		d--
-		c += d
-		if c&1 != 0 {
-			w |= m
-		}
-		m <<= 1
-		c >>= 1
-		if m == 0 {
-			bits = append(bits, w)
-			w = 0
-			m = 1
-		}
-	}
-	for c != 0 {
-		if c&1 != 0 {
-			w |= m
-		}
-		m <<= 1
-		c >>= 1
-		if m == 0 {
-			bits = append(bits, w)
-			w = 0
-			m = 1
-		}
-	}
-	if w != 0 {
-		bits = append(bits, w)
-	}
-	var r big.Int
-	r.SetBits(bits)
-	return &r
+	r := New(n - 1)
+	r.Lsh(r, uint(n+1))
+	return r.Add(r, _1)
 }
