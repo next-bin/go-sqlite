@@ -24,8 +24,8 @@ import (
 	"math"
 	"math/big"
 
-	"modernc.org/mathutil"
 	"github.com/remyoudompheng/bigfft"
+	"modernc.org/mathutil"
 )
 
 var (
@@ -34,7 +34,7 @@ var (
 	_2 = big.NewInt(2)
 )
 
-// Knowns list the exponent of currently (March 2012) known Mersenne primes
+// Knowns list the exponent of currently (May 2021) known Mersenne primes
 // exponents in order.  See also: http://oeis.org/A000043 for a partial list.
 var Knowns = []uint32{
 	2,  // #1
@@ -91,10 +91,12 @@ var Knowns = []uint32{
 	57885161, // #48
 	74207281, // #49
 	77232917, // #50
+
+	82589933, // #51
 }
 
 // Known maps the exponent of known Mersenne primes its ordinal number/rank.
-// Ranks > 45 are currently provisional.
+// Ranks > 47 are currently provisional.
 var Known map[uint32]int
 
 func init() {
@@ -295,4 +297,64 @@ func ProbablyPrime(n, a uint32) bool {
 	nMinus1.Sub(nMinus1, _1)
 	x := ModPow(a, n-1, n)
 	return x.Cmp(_1) == 0 || x.Cmp(nMinus1) == 0
+}
+
+// Sqr returns the square of Mn.
+func Sqr(n uint32) *big.Int {
+	if n == 0 {
+		// (2^(0)-1)^2 = 0
+		return big.NewInt(0)
+	}
+
+	bitSize := 2 * int(n)
+	wordSize := bitSize/mathutil.IntBits + 1
+	bits := make([]big.Word, 0, wordSize)
+	var d, c, w big.Word
+	m := big.Word(1)
+	for i := uint32(0); i < n; i++ {
+		d++
+		c += d
+		if c&1 != 0 {
+			w |= m
+		}
+		m <<= 1
+		c >>= 1
+		if m == 0 {
+			bits = append(bits, w)
+			w = 0
+			m = 1
+		}
+	}
+	for i := uint32(1); i < n; i++ {
+		d--
+		c += d
+		if c&1 != 0 {
+			w |= m
+		}
+		m <<= 1
+		c >>= 1
+		if m == 0 {
+			bits = append(bits, w)
+			w = 0
+			m = 1
+		}
+	}
+	for c != 0 {
+		if c&1 != 0 {
+			w |= m
+		}
+		m <<= 1
+		c >>= 1
+		if m == 0 {
+			bits = append(bits, w)
+			w = 0
+			m = 1
+		}
+	}
+	if w != 0 {
+		bits = append(bits, w)
+	}
+	var r big.Int
+	r.SetBits(bits)
+	return &r
 }

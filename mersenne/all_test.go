@@ -5,6 +5,7 @@
 package mersenne // import "modernc.org/mathutil/mersenne"
 
 import (
+	"fmt"
 	"math"
 	"math/big"
 	"math/rand"
@@ -939,5 +940,41 @@ func TestModPow2(t *testing.T) {
 	rg, _ := mathutil.NewFC32(2, 1<<10, true)
 	for i := 0; i < N; i++ {
 		f(uint32(rg.Next()), uint32(rg.Next()))
+	}
+}
+
+func TestSqr(t *testing.T) {
+	const N = 25000
+	for i := 0; i <= N; i++ {
+		g := Sqr(uint32(i))
+		e := New(uint32(i))
+		e.Mul(e, e)
+		if g.Cmp(e) != 0 {
+			t.Errorf("Sqr of M%d incorrect\ngot %s %#x\nexp %s %#x", i, g, g.Bits(), e, e.Bits())
+		}
+	}
+}
+
+var bigResult *big.Int
+
+func BenchmarkSqr(b *testing.B) {
+	for i := 0; i <= 28; i++ {
+		n := uint32(1) << i
+		b.Run(fmt.Sprintf("M%d-mersenne-sqr", n), func(b *testing.B) {
+			b.ReportAllocs()
+			for i := 0; i < b.N; i++ {
+				bigResult = Sqr(n)
+			}
+		})
+		b.Run(fmt.Sprintf("M%d-math-big-sqr", n), func(b *testing.B) {
+			a := New(n)
+			b.ReportAllocs()
+			b.ResetTimer()
+			for i := 0; i < b.N; i++ {
+				b := big.NewInt(0).Set(a)
+				b.Mul(b, b)
+				bigResult = b
+			}
+		})
 	}
 }
