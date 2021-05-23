@@ -301,6 +301,7 @@ func ProbablyPrime(n, a uint32) bool {
 
 // Sqr returns the square of Mn.
 func Sqr(n uint32) *big.Int {
+	// O(n) = O(log(Mn))
 	if n == 0 {
 		// (2^(0)-1)^2 = 0
 		return big.NewInt(0)
@@ -309,4 +310,101 @@ func Sqr(n uint32) *big.Int {
 	r := New(n - 1)
 	r.Lsh(r, uint(n+1))
 	return r.Add(r, _1)
+}
+
+// Mul returns Mm*Mn.
+func Mul(a, b uint32) *big.Int {
+	// O(a + b) = O(log(Ma) + log(Mb))
+	if a == 0 || b == 0 {
+		return big.NewInt(0)
+	}
+
+	if a == b {
+		return Sqr(a)
+	}
+
+	if a < b {
+		a, b = b, a
+	}
+
+	// a != b and a > b.
+	bitSize := int(a + b)
+	wordSize := bitSize/mathutil.IntBits + 1
+	bits := make([]big.Word, 0, wordSize)
+	var d, c, w big.Word
+	m := big.Word(1)
+
+	// The multiplication goes in 3 parts A, B, C, right to left.
+	// Example for a = 7, b = 3.
+	//
+	//               C    B  A
+	//   *******    **/****/*
+	// b ******* -> */****/**
+	//   *******    /****/***
+	//      a
+
+	// Part A: The diagonal (d) goes from 1 to b.
+	for i := uint32(0); i < b; i++ {
+		d++
+		c += d
+		if c&1 != 0 {
+			w |= m
+		}
+		m <<= 1
+		c >>= 1
+		if m == 0 {
+			bits = append(bits, w)
+			w = 0
+			m = 1
+		}
+	}
+	//  Part B: d = b.
+	for i := b; i < a; i++ {
+		c += d
+		if c&1 != 0 {
+			w |= m
+		}
+		m <<= 1
+		c >>= 1
+		if m == 0 {
+			bits = append(bits, w)
+			w = 0
+			m = 1
+		}
+	}
+	// Part C: d goes from d-1 downto 1.
+	for i := uint32(1); i < b; i++ {
+		d--
+		c += d
+		if c&1 != 0 {
+			w |= m
+		}
+		m <<= 1
+		c >>= 1
+		if m == 0 {
+			bits = append(bits, w)
+			w = 0
+			m = 1
+		}
+	}
+	// Cleanup 1: Handle anything left in c.
+	for c != 0 {
+		if c&1 != 0 {
+			w |= m
+		}
+		m <<= 1
+		c >>= 1
+		if m == 0 {
+			bits = append(bits, w)
+			w = 0
+			m = 1
+		}
+	}
+	// Cleanup 2: Handle anything left in w.
+	if w != 0 {
+		bits = append(bits, w)
+	}
+	var r big.Int
+	r.SetBits(bits)
+	return &r
 }

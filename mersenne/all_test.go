@@ -953,3 +953,26 @@ func TestSqr(t *testing.T) {
 		}
 	}
 }
+
+func TestMul(t *testing.T) {
+	const N = 641
+	for a := uint32(0); a <= N; a++ {
+		for b := uint32(0); b <= N; b++ {
+			g := Mul(a, b)
+			u := New(a)
+			v := New(b)
+			e := big.NewInt(0).Mul(u, v)
+			t.Logf("%b * %b = %b, %d * %d = %d", u, v, e, u, v, e)
+			if g.Cmp(e) != 0 {
+				t.Fatalf("Mul(%d, %d) incorrect\ngot %s %#x\nexp %s %#x", a, b, g, g.Bits(), e, e.Bits())
+			}
+
+			g = Mul(b, a)
+			if g.Cmp(e) != 0 {
+				t.Fatalf("Mul(%d, %d) incorrect\ngot %s %#x\nexp %s %#x", b, a, g, g.Bits(), e, e.Bits())
+			}
+
+			t.Logf("M%d * M%d (%v * %v) ok", a, b, New(a), New(b))
+		}
+	}
+}
