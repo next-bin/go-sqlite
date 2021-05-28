@@ -9,8 +9,6 @@
 
 package lex // import "modernc.org/lex"
 
-import __yyfmt__ "fmt"
-
 //line parser.y:10
 import (
 	"fmt"
@@ -99,11 +97,11 @@ var yyExca = [...]int{
 	-2, 0,
 }
 
-const yyNprod = 49
+// const yyNprod = 49
 const yyPrivate = 57344
 
-var yyTokenNames []string
-var yyStates []string
+// var yyTokenNames []string
+// var yyStates []string
 
 const yyLast = 70
 
@@ -236,7 +234,7 @@ func yyTokname(c int) string {
 			return yyToknames[c-1]
 		}
 	}
-	return __yyfmt__.Sprintf("tok-%v", c)
+	return fmt.Sprintf("tok-%v", c)
 }
 
 func yyStatname(s int) string {
@@ -245,7 +243,7 @@ func yyStatname(s int) string {
 			return yyStatenames[s]
 		}
 	}
-	return __yyfmt__.Sprintf("state-%v", s)
+	return fmt.Sprintf("state-%v", s)
 }
 
 func yyErrorMessage(state, lookAhead int) string {
@@ -342,7 +340,7 @@ out:
 		token = yyTok2[1] /* unknown char */
 	}
 	if yyDebug >= 3 {
-		__yyfmt__.Printf("lex %s(%d)\n", yyTokname(token), uint(char))
+		fmt.Printf("lex %s(%d)\n", yyTokname(token), uint(char))
 	}
 	return char, token
 }
@@ -381,7 +379,7 @@ ret1:
 yystack:
 	/* put a state and value onto the stack */
 	if yyDebug >= 4 {
-		__yyfmt__.Printf("char %v in %v\n", yyTokname(yytoken), yyStatname(yystate))
+		fmt.Printf("char %v in %v\n", yyTokname(yytoken), yyStatname(yystate))
 	}
 
 	yyp++
@@ -451,8 +449,8 @@ yydefault:
 			yylex.Error(yyErrorMessage(yystate, yytoken))
 			Nerrs++
 			if yyDebug >= 1 {
-				__yyfmt__.Printf("%s", yyStatname(yystate))
-				__yyfmt__.Printf(" saw %s\n", yyTokname(yytoken))
+				fmt.Printf("%s", yyStatname(yystate))
+				fmt.Printf(" saw %s\n", yyTokname(yytoken))
 			}
 			fallthrough
 
@@ -471,7 +469,7 @@ yydefault:
 
 				/* the current p has no shift on "error", pop stack */
 				if yyDebug >= 2 {
-					__yyfmt__.Printf("error recovery pops state %d\n", yyS[yyp].yys)
+					fmt.Printf("error recovery pops state %d\n", yyS[yyp].yys)
 				}
 				yyp--
 			}
@@ -480,7 +478,7 @@ yydefault:
 
 		case 3: /* no shift yet; clobber input char */
 			if yyDebug >= 2 {
-				__yyfmt__.Printf("error recovery discards %s\n", yyTokname(yytoken))
+				fmt.Printf("error recovery discards %s\n", yyTokname(yytoken))
 			}
 			if yytoken == yyEofCode {
 				goto ret1
@@ -493,7 +491,7 @@ yydefault:
 
 	/* reduction by production yyn */
 	if yyDebug >= 2 {
-		__yyfmt__.Printf("reduce %v in:\n\t%v\n", yyn, yyStatname(yystate))
+		fmt.Printf("reduce %v in:\n\t%v\n", yyn, yyStatname(yystate))
 	}
 
 	yynt := yyn
@@ -527,7 +525,6 @@ yydefault:
 	switch yynt {
 
 	case 2:
-		yyDollar = yyS[yypt-2 : yypt+1]
 		//line parser.y:81
 		{
 			sc(yylex).Begin(_USER)
@@ -536,16 +533,14 @@ yydefault:
 		yyDollar = yyS[yypt-4 : yypt+1]
 		//line parser.y:85
 		{
-			usrCode = yyDollar[4].str
+			yylex.(*tokenizer).vars.usrCode = yyDollar[4].str
 		}
 	case 6:
-		yyDollar = yyS[yypt-0 : yypt+1]
 		//line parser.y:95
 		{
 			sc(yylex).PushState(_DEF_NAME)
 		}
 	case 7:
-		yyDollar = yyS[yypt-3 : yypt+1]
 		//line parser.y:100
 		{
 			sc(yylex).PopState()
@@ -557,7 +552,6 @@ yydefault:
 			yyVAL.str = yyDollar[3].str
 		}
 	case 10:
-		yyDollar = yyS[yypt-1 : yypt+1]
 		//line parser.y:111
 		{
 			defNamePos0 = sc(yylex).TokenStart()
@@ -567,28 +561,27 @@ yydefault:
 		yyDollar = yyS[yypt-4 : yypt+1]
 		//line parser.y:117
 		{
-			if _, ok := defs[yyDollar[1].str]; ok {
-				logErr(fmt.Sprintf("%s:%q redefined", defNamePos0, yyDollar[1].str))
+			if _, ok := yylex.(*tokenizer).vars.defs[yyDollar[1].str]; ok {
+				logErr(yylex.(*tokenizer).vars, fmt.Sprintf("%s:%q redefined", defNamePos0, yyDollar[1].str))
 			}
 
-			defs[yyDollar[1].str] = yyDollar[4].str
-			defPos[yyDollar[1].str] = sc(yylex).TokenStart()
+			yylex.(*tokenizer).vars.defs[yyDollar[1].str] = yyDollar[4].str
+			yylex.(*tokenizer).vars.defPos[yyDollar[1].str] = sc(yylex).TokenStart()
 			sc(yylex).PopState()
 		}
 	case 13:
 		yyDollar = yyS[yypt-1 : yypt+1]
 		//line parser.y:128
 		{
-			defCode = append(defCode, yyDollar[1].str+"\n")
+			yylex.(*tokenizer).vars.defCode = append(yylex.(*tokenizer).vars.defCode, yyDollar[1].str+"\n")
 		}
 	case 14:
 		yyDollar = yyS[yypt-1 : yypt+1]
 		//line parser.y:132
 		{
-			defCode = append(defCode, yyDollar[1].str+"\n")
+			yylex.(*tokenizer).vars.defCode = append(yylex.(*tokenizer).vars.defCode, yyDollar[1].str+"\n")
 		}
 	case 15:
-		yyDollar = yyS[yypt-1 : yypt+1]
 		//line parser.y:136
 		{
 			sc(yylex).PushState(_VERBATIM)
@@ -597,11 +590,10 @@ yydefault:
 		yyDollar = yyS[yypt-4 : yypt+1]
 		//line parser.y:141
 		{
-			defCode = append(defCode, yyDollar[3].str+"\n")
+			yylex.(*tokenizer).vars.defCode = append(yylex.(*tokenizer).vars.defCode, yyDollar[3].str+"\n")
 			sc(yylex).PopState()
 		}
 	case 17:
-		yyDollar = yyS[yypt-1 : yypt+1]
 		//line parser.y:146
 		{
 			sc(yylex).PushState(_DEF_STARTS)
@@ -610,11 +602,10 @@ yydefault:
 		yyDollar = yyS[yypt-3 : yypt+1]
 		//line parser.y:150
 		{
-			sStarts = append(sStarts, yyDollar[3].strs...)
+			yylex.(*tokenizer).vars.sStarts = append(yylex.(*tokenizer).vars.sStarts, yyDollar[3].strs...)
 			sc(yylex).PopState()
 		}
 	case 19:
-		yyDollar = yyS[yypt-1 : yypt+1]
 		//line parser.y:155
 		{
 			sc(yylex).PushState(_DEF_STARTS)
@@ -623,9 +614,9 @@ yydefault:
 		yyDollar = yyS[yypt-3 : yypt+1]
 		//line parser.y:159
 		{
-			xStarts = append(xStarts, yyDollar[3].strs...)
+			yylex.(*tokenizer).vars.xStarts = append(yylex.(*tokenizer).vars.xStarts, yyDollar[3].strs...)
 			for _, start := range yyDollar[3].strs {
-				isXStart[start] = true
+				yylex.(*tokenizer).vars.isXStart[start] = true
 			}
 			sc(yylex).PopState()
 		}
@@ -633,31 +624,31 @@ yydefault:
 		yyDollar = yyS[yypt-2 : yypt+1]
 		//line parser.y:168
 		{
-			_yyt = yyDollar[2].str
+			yylex.(*tokenizer).vars._yyt = yyDollar[2].str
 		}
 	case 22:
 		yyDollar = yyS[yypt-2 : yypt+1]
 		//line parser.y:173
 		{
-			_yyb = yyDollar[2].str
+			yylex.(*tokenizer).vars._yyb = yyDollar[2].str
 		}
 	case 23:
 		yyDollar = yyS[yypt-2 : yypt+1]
 		//line parser.y:178
 		{
-			_yyc = yyDollar[2].str
+			yylex.(*tokenizer).vars._yyc = yyDollar[2].str
 		}
 	case 24:
 		yyDollar = yyS[yypt-2 : yypt+1]
 		//line parser.y:183
 		{
-			_yyn = yyDollar[2].str
+			yylex.(*tokenizer).vars._yyn = yyDollar[2].str
 		}
 	case 25:
 		yyDollar = yyS[yypt-2 : yypt+1]
 		//line parser.y:188
 		{
-			_yym = yyDollar[2].str
+			yylex.(*tokenizer).vars._yym = yyDollar[2].str
 		}
 	case 26:
 		yyDollar = yyS[yypt-1 : yypt+1]
@@ -665,30 +656,28 @@ yydefault:
 		{
 			switch s := strings.TrimSpace(yyDollar[1].str[len("%option"):]); s {
 			case "case-insensitive":
-				caseless = true
+				yylex.(*tokenizer).vars.caseless = true
 			default:
-				logErr(fmt.Sprintf("%s: unknown %%option %q", sc(yylex).TokenStart(), s))
+				logErr(yylex.(*tokenizer).vars, fmt.Sprintf("%s: unknown %%option %q", sc(yylex).TokenStart(), s))
 			}
 		}
 	case 29:
-		yyDollar = yyS[yypt-3 : yypt+1]
 		//line parser.y:210
 		{
-			for s := range unrefStarts {
-				logErr(fmt.Sprintf("%s:start condition %q declared and not used", sc(yylex).TokenStart(), s))
+			for s := range yylex.(*tokenizer).vars.unrefStarts {
+				logErr(yylex.(*tokenizer).vars, fmt.Sprintf("%s:start condition %q declared and not used", sc(yylex).TokenStart(), s))
 			}
-			if len(rules) == 1 {
-				logErr(fmt.Sprintf("%s:no rules defined", sc(yylex).TokenStart()))
+			if len(yylex.(*tokenizer).vars.rules) == 1 {
+				logErr(yylex.(*tokenizer).vars, fmt.Sprintf("%s:no rules defined", sc(yylex).TokenStart()))
 			}
 		}
 	case 31:
 		yyDollar = yyS[yypt-1 : yypt+1]
 		//line parser.y:223
 		{
-			moreAction(yyDollar[1].str)
+			moreAction(yylex.(*tokenizer).vars, yyDollar[1].str)
 		}
 	case 32:
-		yyDollar = yyS[yypt-1 : yypt+1]
 		//line parser.y:227
 		{
 			sc(yylex).PushState(_VERBATIM)
@@ -697,26 +686,24 @@ yydefault:
 		yyDollar = yyS[yypt-4 : yypt+1]
 		//line parser.y:232
 		{
-			moreAction(yyDollar[3].str)
+			moreAction(yylex.(*tokenizer).vars, yyDollar[3].str)
 			sc(yylex).PopState()
 		}
 	case 34:
 		yyDollar = yyS[yypt-1 : yypt+1]
 		//line parser.y:237
 		{
-			rulePos = append(rulePos, sc(yylex).TokenStart())
-			pat, re, action, bol, eol := parsePattern(sc(yylex).TokenStart(), yyDollar[1].str, map[string]bool{})
-			unreachableRules[len(rules)] = true
-			rules = append(rules, rule{nil, pat, re, action, nil, nil, bol, eol})
+			yylex.(*tokenizer).vars.rulePos = append(yylex.(*tokenizer).vars.rulePos, sc(yylex).TokenStart())
+			pat, re, action, bol, eol := parsePattern(yylex.(*tokenizer).vars, sc(yylex).TokenStart(), yyDollar[1].str, map[string]bool{})
+			yylex.(*tokenizer).vars.unreachableRules[len(yylex.(*tokenizer).vars.rules)] = true
+			yylex.(*tokenizer).vars.rules = append(yylex.(*tokenizer).vars.rules, rule{nil, pat, re, action, nil, nil, bol, eol})
 		}
 	case 35:
-		yyDollar = yyS[yypt-1 : yypt+1]
 		//line parser.y:244
 		{
 			sc(yylex).PushState(_STARTS)
 		}
 	case 36:
-		yyDollar = yyS[yypt-4 : yypt+1]
 		//line parser.y:249
 		{
 			sc(yylex).PopState()
@@ -725,13 +712,12 @@ yydefault:
 		yyDollar = yyS[yypt-6 : yypt+1]
 		//line parser.y:253
 		{
-			rulePos = append(rulePos, sc(yylex).TokenStart())
-			pat, re, action, bol, eol := parsePattern(sc(yylex).TokenStart(), yyDollar[6].str, map[string]bool{})
-			unreachableRules[len(rules)] = true
-			rules = append(rules, rule{yyDollar[3].strs, pat, re, action, nil, nil, bol, eol})
+			yylex.(*tokenizer).vars.rulePos = append(yylex.(*tokenizer).vars.rulePos, sc(yylex).TokenStart())
+			pat, re, action, bol, eol := parsePattern(yylex.(*tokenizer).vars, sc(yylex).TokenStart(), yyDollar[6].str, map[string]bool{})
+			yylex.(*tokenizer).vars.unreachableRules[len(yylex.(*tokenizer).vars.rules)] = true
+			yylex.(*tokenizer).vars.rules = append(yylex.(*tokenizer).vars.rules, rule{yyDollar[3].strs, pat, re, action, nil, nil, bol, eol})
 		}
 	case 38:
-		yyDollar = yyS[yypt-0 : yypt+1]
 		//line parser.y:262
 		{
 			sc(yylex).PushState(_RULES)
@@ -740,8 +726,8 @@ yydefault:
 		yyDollar = yyS[yypt-2 : yypt+1]
 		//line parser.y:270
 		{
-			if !addStartSet(yyDollar[2].str) {
-				logErr(fmt.Sprintf("%s:start condition %q redeclared", sc(yylex).TokenStart(), yyDollar[2].str))
+			if !addStartSet(yylex.(*tokenizer).vars, yyDollar[2].str) {
+				logErr(yylex.(*tokenizer).vars, fmt.Sprintf("%s:start condition %q redeclared", sc(yylex).TokenStart(), yyDollar[2].str))
 			}
 			yyVAL.strs = append(yyVAL.strs, yyDollar[2].str)
 		}
@@ -749,8 +735,8 @@ yydefault:
 		yyDollar = yyS[yypt-3 : yypt+1]
 		//line parser.y:277
 		{
-			if !addStartSet(yyDollar[3].str) {
-				logErr(fmt.Sprintf("%s:start condition %q redeclared", sc(yylex).TokenStart(), yyDollar[3].str))
+			if !addStartSet(yylex.(*tokenizer).vars, yyDollar[3].str) {
+				logErr(yylex.(*tokenizer).vars, fmt.Sprintf("%s:start condition %q redeclared", sc(yylex).TokenStart(), yyDollar[3].str))
 			}
 			yyVAL.strs = append(yyVAL.strs, yyDollar[3].str)
 		}
@@ -758,30 +744,28 @@ yydefault:
 		yyDollar = yyS[yypt-1 : yypt+1]
 		//line parser.y:287
 		{
-			if _, ok := defStarts[yyDollar[1].str]; !ok {
-				logErr(fmt.Sprintf("%s:start condition %q undefined", sc(yylex).TokenStart(), yyDollar[1].str))
+			if _, ok := yylex.(*tokenizer).vars.defStarts[yyDollar[1].str]; !ok {
+				logErr(yylex.(*tokenizer).vars, fmt.Sprintf("%s:start condition %q undefined", sc(yylex).TokenStart(), yyDollar[1].str))
 			}
-			delete(unrefStarts, yyDollar[1].str)
+			delete(yylex.(*tokenizer).vars.unrefStarts, yyDollar[1].str)
 			yyVAL.strs = append(yyVAL.strs, yyDollar[1].str)
 		}
 	case 43:
 		yyDollar = yyS[yypt-3 : yypt+1]
 		//line parser.y:295
 		{
-			if _, ok := defStarts[yyDollar[3].str]; !ok {
-				logErr(fmt.Sprintf("%s:start condition %q undefined", sc(yylex).TokenStart(), yyDollar[3].str))
+			if _, ok := yylex.(*tokenizer).vars.defStarts[yyDollar[3].str]; !ok {
+				logErr(yylex.(*tokenizer).vars, fmt.Sprintf("%s:start condition %q undefined", sc(yylex).TokenStart(), yyDollar[3].str))
 			}
-			delete(unrefStarts, yyDollar[3].str)
+			delete(yylex.(*tokenizer).vars.unrefStarts, yyDollar[3].str)
 			yyVAL.strs = append(yyVAL.strs, yyDollar[3].str)
 		}
 	case 44:
-		yyDollar = yyS[yypt-1 : yypt+1]
 		//line parser.y:303
 		{
 			yyVAL.strs = append(yyVAL.strs, "*")
 		}
 	case 45:
-		yyDollar = yyS[yypt-0 : yypt+1]
 		//line parser.y:309
 		{
 			yyVAL.str = ""
@@ -793,7 +777,6 @@ yydefault:
 			yyVAL.str += yyDollar[2].str
 		}
 	case 47:
-		yyDollar = yyS[yypt-0 : yypt+1]
 		//line parser.y:319
 		{
 			yyVAL.str = ""

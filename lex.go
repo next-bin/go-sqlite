@@ -7,6 +7,8 @@
 //
 // Changelog
 //
+// 2021-05-28: Removed global state, NewL can now be called multiple times.
+//
 // 2014-11-18: Add option for marking an accepting state. Required to support
 // POSIX longest match.
 //
@@ -95,35 +97,59 @@ type rule struct {
 	bol, eol            bool
 }
 
-var (
-	defs             = map[string]string{}
-	defPos           = map[string]token.Position{}
-	defCode          []string
-	defRE            = map[string]string{}
-	errors_          []string
-	rules            = []rule{{}}
-	rulePos          = []token.Position{{}}
-	unreachableRules = map[int]bool{}
-	usrCode          string
-	sStarts          = []string{"INITIAL"}
-	xStarts          []string
-	isXStart         = map[string]bool{}
-	iStarts          = map[string]int{"INITIAL": 0}
-	defStarts        = map[string]bool{"INITIAL": true}
-	unrefStarts      = map[string]bool{}
+type vars struct {
+	_yyb             string
+	_yyc             string
+	_yym             string
+	_yyn             string
+	_yyt             string
 	allDfa           *dfa
-	_yyt             = "yyt"
-	_yyb             = "yyb"
-	_yyc             = "yyc"
-	_yyn             = "yyn"
-	_yym             = "yym"
-	nodfaopt         bool
+	allNfa           nfa
 	bits32           bool // enables unicode rune processing, standard is byte
 	caseless         bool
-)
+	defCode          []string
+	defPos           map[string]token.Position
+	defRE            map[string]string
+	defStarts        map[string]bool
+	defs             map[string]string
+	errors           []string
+	iStarts          map[string]int
+	isXStart         map[string]bool
+	nodfaopt         bool
+	partialDFAs      []*dfa
+	rulePos          []token.Position
+	rules            []rule
+	sStarts          []string
+	unreachableRules map[int]bool
+	unrefStarts      map[string]bool
+	usrCode          string
+	xStarts          []string
+}
 
-func logErr(s string) {
-	errors_ = append(errors_, s)
+func newVars() *vars {
+	return &vars{
+		_yyb:             "yyb",
+		_yyc:             "yyc",
+		_yym:             "yym",
+		_yyn:             "yyn",
+		_yyt:             "yyt",
+		defPos:           map[string]token.Position{},
+		defRE:            map[string]string{},
+		defStarts:        map[string]bool{"INITIAL": true},
+		defs:             map[string]string{},
+		iStarts:          map[string]int{"INITIAL": 0},
+		isXStart:         map[string]bool{},
+		partialDFAs:      []*dfa{nil},
+		rulePos:          []token.Position{{}},
+		rules:            []rule{{}},
+		sStarts:          []string{"INITIAL"},
+		unreachableRules: map[int]bool{},
+		unrefStarts:      map[string]bool{},
+	}
+}
+
+func logErr(vars *vars, s string) {
+	vars.errors = append(vars.errors, s)
 }
 
 // Rule represents data for a pattern/action
@@ -131,7 +157,7 @@ type Rule struct {
 	Conds   []string // Start conditions of the rule
 	Pattern string   // Original rule's pattern
 	BOL     bool     // Pattern starts with beginning of line assertion (^)
-	EOL     bool     // Pattern ends wih end of line ($) assertion
+	EOL     bool     // Pattern ends with end of line ($) assertion
 	RE      string   // Pattern translated to a regular expression
 	Action  string   // Rule's associated action source code
 }
@@ -148,11 +174,11 @@ type L struct {
 	// Start conditions numeric identificators with their respective DFA
 	// start state
 	StartConditionsStates map[int]*lexer.NfaState
-	// Beginnig of line start conditions numeric identificators with their
+	// Beginning of line start conditions numeric identificators with their
 	// respective DFA start state
 	StartConditionsBolStates map[int]*lexer.NfaState
 	// Rule[0] is a pseudo rule. It's action contains the source code for
-	// rendering from the rules section before firts rule
+	// rendering from the rules section before first rule
 	Rules []Rule
 	// The generated FSM
 	Dfa lexer.Nfa
@@ -272,17 +298,17 @@ func (l *L) String() string {
 
 var hook bool
 
-// NewL parses a .l source fname from src, returns L or an error if any.
-// Currently it is not reentrant and not invokable more than once in an application
-// (which is assumed tolerable for a "lex" tool).
-// The unoptdfa argument allows to disable optimization of the produced DFA.
-// The mode32 parameter is not yet supported and must be false.
+// NewL parses a .l source fname from src, returns L or an error if any.  The
+// unoptdfa argument allows to disable optimization of the produced DFA.  The
+// mode32 parameter is not yet supported and must be false.
 func NewL(fname string, src io.RuneReader, unoptdfa, mode32 bool) (l *L, err error) {
 	if mode32 {
 		return nil, errors.New("lex.NewL: mode32 unsupported yet")
 	}
 
-	nodfaopt, bits32 = unoptdfa, mode32
+	vars := newVars()
+
+	vars.nodfaopt, vars.bits32 = unoptdfa, mode32
 	l = &L{}
 
 	if !hook {
@@ -311,33 +337,33 @@ loop:
 	src = bytes.NewBufferString(strings.Replace(string(in), "\r\n", "\n", -1))
 
 	scanner := lxr.Scanner(fname, src)
-	if y := yyParse(newTokenizer(scanner)); y != 0 || len(errors_) != 0 {
-		return nil, errors.New(strings.Join(errors_, "\n"))
+	if y := yyParse(newTokenizer(vars, scanner)); y != 0 || len(vars.errors) != 0 {
+		return nil, errors.New(strings.Join(vars.errors, "\n"))
 	}
 
-	computePartialDFAs()
-	if len(errors_) != 0 {
-		return nil, errors.New(strings.Join(errors_, "\n"))
+	computePartialDFAs(vars)
+	if len(vars.errors) != 0 {
+		return nil, errors.New(strings.Join(vars.errors, "\n"))
 	}
 
-	computeAllNfa()
-	allDfa = allNfa.powerSet()
-	for _, irule := range allDfa.acceptRule {
-		delete(unreachableRules, irule)
+	computeAllNfa(vars)
+	vars.allDfa = vars.allNfa.powerSet(vars)
+	for _, irule := range vars.allDfa.acceptRule {
+		delete(vars.unreachableRules, irule)
 	}
-	for irule := range unreachableRules {
-		logErr(fmt.Sprintf("%s - pattern `%s` unreachable", rulePos[irule], rules[irule].pattern))
+	for irule := range vars.unreachableRules {
+		logErr(vars, fmt.Sprintf("%s - pattern `%s` unreachable", vars.rulePos[irule], vars.rules[irule].pattern))
 	}
-	if len(errors_) != 0 {
-		return nil, errors.New(strings.Join(errors_, "\n"))
+	if len(vars.errors) != 0 {
+		return nil, errors.New(strings.Join(vars.errors, "\n"))
 	}
 
-	l.DefCode = defCode
-	l.UserCode = usrCode
-	l.StartConditions = iStarts
+	l.DefCode = vars.defCode
+	l.UserCode = vars.usrCode
+	l.StartConditions = vars.iStarts
 	l.StartConditionsStates = make(map[int]*lexer.NfaState)
 	l.StartConditionsBolStates = make(map[int]*lexer.NfaState)
-	for _, edge0 := range allDfa.nfa.in.Consuming {
+	for _, edge0 := range vars.allDfa.nfa.in.Consuming {
 		switch edge := edge0.(type) {
 		default:
 			panic(errors.New("internal error"))
@@ -366,18 +392,18 @@ loop:
 		}
 
 	}
-	for _, rule := range rules {
+	for _, rule := range vars.rules {
 		l.Rules = append(l.Rules, Rule{Conds: rule.conds, Pattern: rule.pattern, RE: rule.re, Action: rule.action, BOL: rule.bol, EOL: rule.eol})
 	}
-	l.Dfa = allDfa.nfa.nfa[1:]
+	l.Dfa = vars.allDfa.nfa.nfa[1:]
 	l.Accepts = map[*lexer.NfaState]int{}
-	for id, state := range allDfa.accept {
-		l.Accepts[state] = allDfa.acceptRule[id]
+	for id, state := range vars.allDfa.accept {
+		l.Accepts[state] = vars.allDfa.acceptRule[id]
 	}
-	l.YYT = _yyt
-	l.YYB = _yyb
-	l.YYC = _yyc
-	l.YYN = _yyn
-	l.YYM = _yym
+	l.YYT = vars._yyt
+	l.YYB = vars._yyb
+	l.YYC = vars._yyc
+	l.YYN = vars._yyn
+	l.YYM = vars._yym
 	return
 }

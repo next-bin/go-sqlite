@@ -7,48 +7,21 @@ package lex // import "modernc.org/lex"
 import (
 	"bytes"
 	"flag"
-	"fmt"
-	"path"
-	"runtime"
+	"os"
 	"strings"
 	"testing"
 )
 
 var trace *bool
 
-func init() {
-	hook = true
-	trace = flag.Bool("trace", false, "allow test runtime error stack traces")
-}
-
-func caller(s string, va ...interface{}) {
-	_, fn, fl, _ := runtime.Caller(2)
-	fmt.Printf("caller: %s:%d: ", path.Base(fn), fl)
-	fmt.Printf(s, va...)
-	fmt.Println()
-	_, fn, fl, _ = runtime.Caller(1)
-	fmt.Printf("\tcallee: %s:%d: ", path.Base(fn), fl)
-	fmt.Println()
-}
-
-func dbg(s string, va ...interface{}) {
-	if s == "" {
-		s = strings.Repeat("%v ", len(va))
-	}
-	_, fn, fl, _ := runtime.Caller(1)
-	fmt.Printf("dbg %s:%d: ", path.Base(fn), fl)
-	fmt.Printf(s, va...)
-	fmt.Println()
-}
-
-func TODO(...interface{}) string {
-	_, fn, fl, _ := runtime.Caller(1)
-	return fmt.Sprintf("TODO: %s:%d:\n", path.Base(fn), fl)
-}
-
-func use(...interface{}) {}
-
 // ============================================================================
+
+func TestMain(m *testing.M) {
+	hook = true
+	trace = flag.Bool("tracestack", false, "allow test runtime error stack traces")
+	flag.Parse()
+	os.Exit(m.Run())
+}
 
 func TestLineSeparators(t *testing.T) {
 	const text = `

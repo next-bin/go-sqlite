@@ -11,14 +11,10 @@ import (
 	"unicode"
 )
 
-var (
-	partialDFAs = []*dfa{nil}
-	allNfa      nfa
-)
-
 type nfa struct {
 	nfa     lexer.Nfa
 	in, out *lexer.NfaState
+	vars    *vars
 }
 
 func (n *nfa) String() string {
@@ -68,12 +64,13 @@ func (n *nfa) reverse() *nfa { // in place
 	return n
 }
 
-func (n *nfa) powerSet() (d *dfa) {
+func (n *nfa) powerSet(vars *vars) (d *dfa) {
+	n.vars = vars
 	d = &dfa{}
 	m := map[string]*lexer.NfaState{}
 
 	s := func(c map[int]*stateSet, i int) (p *stateSet) {
-		if !bits32 && !(i >= 0 && i <= 255) {
+		if !n.vars.bits32 && !(i >= 0 && i <= 255) {
 			panic(fmt.Errorf("unsupported value %d > 255", i))
 		}
 
@@ -113,7 +110,7 @@ func (n *nfa) powerSet() (d *dfa) {
 					case *lexer.RuneEdge:
 						s(closures, int(x.Rune)).closure(x.Target(), p)
 					case *lexer.RangesEdge:
-						if !bits32 {
+						if !n.vars.bits32 {
 							var m [256]bool
 							for _, r := range x.Ranges.R16 {
 								for c := r.Lo; c <= r.Hi; c += r.Stride {
@@ -197,7 +194,8 @@ func (n *nfa) powerSet() (d *dfa) {
 	return
 }
 
-func (d *dfa) toNfa() *nfa {
+func (d *dfa) toNfa(vars *vars) *nfa {
+	d.nfa.vars = vars
 	s := d.nfa.nfa.NewState()
 	d.nfa.out = s
 	for _, st := range d.accept {
@@ -206,55 +204,55 @@ func (d *dfa) toNfa() *nfa {
 	return &d.nfa
 }
 
-func computePartialDFAs() {
+func computePartialDFAs(vars *vars) {
 	var err error
-	for irule, rule := range rules {
+	for irule, rule := range vars.rules {
 		if irule == 0 {
 			continue
 		}
 
-		nfa := nfa{}
+		nfa := nfa{vars: vars}
 		nfa.in, nfa.out, err = nfa.nfa.ParseRE("", rule.re)
 		if err != nil {
-			logErr(fmt.Sprintf("%s - %s", rulePos[irule], err.Error()))
+			logErr(vars, fmt.Sprintf("%s - %s", vars.rulePos[irule], err.Error()))
 			return // <- this was missing!
 		}
 
-		if nodfaopt {
-			partialDFAs = append(partialDFAs, nfa.powerSet())
+		if vars.nodfaopt {
+			vars.partialDFAs = append(vars.partialDFAs, nfa.powerSet(vars))
 		} else {
-			partialDFAs = append(partialDFAs, nfa.reverse().powerSet().toNfa().reverse().powerSet())
+			vars.partialDFAs = append(vars.partialDFAs, nfa.reverse().powerSet(vars).toNfa(vars).reverse().powerSet(vars))
 		}
 	}
 }
 
-func computeAllNfa() {
-	in, out := allNfa.nfa.NewState(), allNfa.nfa.NewState()
+func computeAllNfa(vars *vars) {
+	in, out := vars.allNfa.nfa.NewState(), vars.allNfa.nfa.NewState()
 	seenBol := false
-	for irule, dfa := range partialDFAs {
+	for irule, dfa := range vars.partialDFAs {
 		if irule == 0 {
 			continue
 		}
 
-		if rules[irule].bol {
+		if vars.rules[irule].bol {
 			seenBol = true
 			continue
 		}
 
-		ruleIn := allNfa.nfa.NewState()
-		rules[irule].in = ruleIn
+		ruleIn := vars.allNfa.nfa.NewState()
+		vars.rules[irule].in = ruleIn
 		// an irule priority e-edge from ruleIn to the partial dfa.in
 		ruleIn.AddNonConsuming(&lexer.EpsilonEdge{irule, dfa.in})
 		for _, state := range dfa.nfa.nfa {
-			allNfa.nfa.AddState(state)
+			vars.allNfa.nfa.AddState(state)
 		}
 		for _, state := range dfa.accept {
 			state.AddNonConsuming(&lexer.EpsilonEdge{0, out})
 		}
-		conds := rules[irule].conds
+		conds := vars.rules[irule].conds
 		if len(conds) == 0 { // rule is active in all non exclusive start conditions
-			for _, sc := range sStarts {
-				in.AddConsuming(lexer.NewRuneEdge(ruleIn, rune(iStarts[sc])))
+			for _, sc := range vars.sStarts {
+				in.AddConsuming(lexer.NewRuneEdge(ruleIn, rune(vars.iStarts[sc])))
 			}
 			continue
 		}
@@ -262,37 +260,37 @@ func computeAllNfa() {
 		// len(conds) != 0
 		for _, sc := range conds {
 			if sc != "*" { // rule is active in all its explicitly declared start conditions
-				in.AddConsuming(lexer.NewRuneEdge(ruleIn, rune(iStarts[sc])))
+				in.AddConsuming(lexer.NewRuneEdge(ruleIn, rune(vars.iStarts[sc])))
 				continue
 			}
 
 			// sc == "*", rule is always active
-			for sc := range defStarts {
-				in.AddConsuming(lexer.NewRuneEdge(ruleIn, rune(iStarts[sc])))
+			for sc := range vars.defStarts {
+				in.AddConsuming(lexer.NewRuneEdge(ruleIn, rune(vars.iStarts[sc])))
 			}
 		}
 	}
 
 	if seenBol {
-		for irule, dfa := range partialDFAs {
+		for irule, dfa := range vars.partialDFAs {
 			if irule == 0 {
 				continue
 			}
 
-			ruleIn := allNfa.nfa.NewState()
-			rules[irule].bolIn = ruleIn
+			ruleIn := vars.allNfa.nfa.NewState()
+			vars.rules[irule].bolIn = ruleIn
 			// an irule priority e-edge from ruleIn to the partial dfa.in
 			ruleIn.AddNonConsuming(&lexer.EpsilonEdge{irule, dfa.in})
 			for _, state := range dfa.nfa.nfa {
-				allNfa.nfa.AddState(state)
+				vars.allNfa.nfa.AddState(state)
 			}
 			for _, state := range dfa.accept {
 				state.AddNonConsuming(&lexer.EpsilonEdge{0, out})
 			}
-			conds := rules[irule].conds
+			conds := vars.rules[irule].conds
 			if len(conds) == 0 { // rule is active in all non exclusive start conditions
-				for _, sc := range sStarts {
-					in.AddConsuming(lexer.NewRuneEdge(ruleIn, rune(iStarts[sc]+128)))
+				for _, sc := range vars.sStarts {
+					in.AddConsuming(lexer.NewRuneEdge(ruleIn, rune(vars.iStarts[sc]+128)))
 				}
 				continue
 			}
@@ -300,16 +298,16 @@ func computeAllNfa() {
 			// len(conds) != 0
 			for _, sc := range conds {
 				if sc != "*" { // rule is active in all its explicitly declared start conditions
-					in.AddConsuming(lexer.NewRuneEdge(ruleIn, rune(iStarts[sc]+128)))
+					in.AddConsuming(lexer.NewRuneEdge(ruleIn, rune(vars.iStarts[sc]+128)))
 					continue
 				}
 
 				// sc == "*", rule is always active
-				for sc := range defStarts {
-					in.AddConsuming(lexer.NewRuneEdge(ruleIn, rune(iStarts[sc]+128)))
+				for sc := range vars.defStarts {
+					in.AddConsuming(lexer.NewRuneEdge(ruleIn, rune(vars.iStarts[sc]+128)))
 				}
 			}
 		}
 	}
-	allNfa.in, allNfa.out = in, out
+	vars.allNfa.in, vars.allNfa.out = in, out
 }

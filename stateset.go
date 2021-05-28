@@ -40,10 +40,6 @@ func newStateSet(n int) *stateSet {
 	return &stateSet{0, make([]dense, n), make([]uint, n)}
 }
 
-func (s *stateSet) clear() {
-	s.count = 0
-}
-
 func (s *stateSet) has(state *lexer.NfaState, priority *int) bool {
 	id := state.Index
 	i := s.sparse[id]
