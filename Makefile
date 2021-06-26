@@ -53,7 +53,7 @@ edit:
 	@touch log
 	@if [ -f "Session.vim" ]; then gvim -S & else gvim -p Makefile *.go & fi
 
-editor:
+editor: generate
 	gofmt -l -s -w *.go
 	nilness .
 	GO111MODULE=off go install -v 2>&1 | tee log-install
