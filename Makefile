@@ -12,7 +12,7 @@ all:
 	@LC_ALL=C date
 	@go version 2>&1 | tee log
 	@gofmt -l -s -w *.go
-	@go install -v ./...
+	@go install -v
 	@go test 2>&1 -timeout 1h | tee -a log
 	@go vet 2>&1 | grep -v $(ngrep) || true
 	@golint 2>&1 | grep -v $(ngrep) || true
@@ -26,7 +26,7 @@ all:
 generate:
 	go generate 2>&1 | tee log-generate
 	gofmt -l -s -w *.go 2>&1 | tee -a log-generate
-	go build -v ./... 2>&1 | tee -a log-generate
+	go build -v 2>&1 | tee -a log-generate
 
 devbench:
 	date 2>&1 | tee log-devbench
