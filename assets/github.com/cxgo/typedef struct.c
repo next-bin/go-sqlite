@@ -1,3 +1,6 @@
+typedef struct bar {
+	int d;
+} BAR;
 
 typedef struct { int a; } foo;
 typedef struct foo2 { int b; } foo2;
