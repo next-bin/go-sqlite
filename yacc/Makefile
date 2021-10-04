@@ -24,7 +24,8 @@ cpu:
 	go tool pprof --lines cpu.test cpu.out
 
 edit:
-	gvim -p Makefile *.l *.yy *.y *.output *.go
+	@touch log
+	@if [ -f "Session.vim" ]; then gvim -S & else gvim -p Makefile *.go & fi
 
 editor: scanner.go goscanner.go parser.go
 	gofmt -l -s -w *.go
