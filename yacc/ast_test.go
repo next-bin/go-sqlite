@@ -436,7 +436,6 @@ func ExampleTail() {
 	fmt.Println(exampleAST(40, "%% a: %%"))
 	// Output:
 	// &parser.Tail{
-	// · Value: "\xef\xbf",
 	// · Token: example.y:1:7: MARK "%%", Comments: [],
 	// }
 }
