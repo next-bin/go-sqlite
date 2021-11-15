@@ -138,8 +138,8 @@ func (l *lexer) Lex(lval *yySymType) int {
 			l.Rule0()
 			for l.Next() != lex.RuneEOF {
 			}
-			v := l.TokenBytes(nil)
-			l.value = string(v[:len(v)-1])
+			v := l.TokenBytes(l.tokenBytesUntilEOF)
+			l.value = string(v)
 		}
 	case UNION:
 		l.state = 0
@@ -433,6 +433,15 @@ func (l *lexer) tokenBuilder(buf *bytes.Buffer) {
 		for _, c := range in {
 			buf.WriteRune(c.Rune)
 		}
+	}
+}
+
+func (l *lexer) tokenBytesUntilEOF(buf *bytes.Buffer) {
+	for _, c := range l.Token() {
+		if c.Rune == lex.RuneEOF {
+			break
+		}
+		buf.WriteRune(c.Rune)
 	}
 }
 

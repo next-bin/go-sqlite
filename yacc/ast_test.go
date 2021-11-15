@@ -445,3 +445,12 @@ func ExampleTail_case1() {
 	// Output:
 	// true
 }
+
+func ExampleTail_case2() {
+	fmt.Println(exampleAST(40, "%% a: %%tail moretail"))
+	// Output:
+	// &parser.Tail{
+	// · Value: "tail moretail",
+	// · Token: example.y:1:7: MARK "%%", Comments: [],
+	// }
+}
