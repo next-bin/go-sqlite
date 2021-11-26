@@ -17,9 +17,7 @@ all:
 	@go vet 2>&1 | grep -v $(ngrep) || true
 	@golint 2>&1 | grep -v $(ngrep) || true
 	@make todo
-	@misspell *.go
 	@staticcheck | grep -v 'scanner\.go' || true
-	@maligned || true
 	@grep -n --color=always 'FAIL\|PASS' log 
 	LC_ALL=C date 2>&1 | tee -a log
 
@@ -56,7 +54,7 @@ edit:
 editor: generate
 	gofmt -l -s -w *.go
 	nilness .
-	GO111MODULE=off go install -v 2>&1 | tee log-install
+	go install -v 2>&1 | tee log-install
 
 later:
 	@grep -n $(grep) LATER * || true
