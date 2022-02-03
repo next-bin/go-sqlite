@@ -31,7 +31,7 @@ static inline void kernel(__m256d u, __m256d s[4], __m256d r[4])
 	// f[i] is each outfix of size 1 for r[i], scaled by u
 	// p[i] is the product of r[i]
 	for (int i = 0; i < 4; i++) {
-		f[i] = _mm256_permute_pd(r[i], 0 b0101);
+		f[i] = _mm256_permute_pd(r[i], 0b0101);
 		p[i] = _mm256_mul_pd(r[i], f[i]);
 		__m256d t = _mm256_permute2f128_pd(p[i], p[i], 0x01);
 		f[i] = _mm256_mul_pd(t, f[i]);
@@ -42,9 +42,9 @@ static inline void kernel(__m256d u, __m256d s[4], __m256d r[4])
 	__m256d w, x, y, z;
 
 	// collect p[i] into z, and get reciprocal
-	x = _mm256_blend_pd(p[0], p[1], 0 b1010);
-	y = _mm256_blend_pd(p[2], p[3], 0 b1010);
-	z = _mm256_blend_pd(x, y, 0 b1100);
+	x = _mm256_blend_pd(p[0], p[1], 0b1010);
+	y = _mm256_blend_pd(p[2], p[3], 0b1010);
+	z = _mm256_blend_pd(x, y, 0b1100);
 	__m128 q = _mm256_cvtpd_ps(z);
 	// approximate reciprocal
 	q = _mm_rcp_ps(q);
@@ -63,10 +63,10 @@ static inline void kernel(__m256d u, __m256d s[4], __m256d r[4])
 	y = _mm256_unpackhi_pd(z, z);
 	w = _mm256_permute2f128_pd(x, x, 1);
 	z = _mm256_permute2f128_pd(y, y, 1);
-	p[0] = _mm256_blend_pd(x, w, 0 b1100);
-	p[1] = _mm256_blend_pd(y, z, 0 b1100);
-	p[2] = _mm256_blend_pd(x, w, 0 b0011);
-	p[3] = _mm256_blend_pd(y, z, 0 b0011);
+	p[0] = _mm256_blend_pd(x, w, 0b1100);
+	p[1] = _mm256_blend_pd(y, z, 0b1100);
+	p[2] = _mm256_blend_pd(x, w, 0b0011);
+	p[3] = _mm256_blend_pd(y, z, 0b0011);
 
 	// increment each row-sum by the product u / A[i, j..j+3]
 	for (int i = 0; i < 4; i++) {
@@ -102,7 +102,7 @@ static void eval_A_times_u(int n, double *u, double *Au)
 		__m256d t0 = _mm256_hadd_pd(s[0], s[1]);
 		__m256d t1 = _mm256_hadd_pd(s[2], s[3]);
 		__m256d x = _mm256_permute2f128_pd(t0, t1, 0x21);
-		__m256d y = _mm256_blend_pd(t0, t1, 0 b1100);
+		__m256d y = _mm256_blend_pd(t0, t1, 0b1100);
 		__m256d z = _mm256_add_pd(x, y);
 
 		_mm256_store_pd(Au + i, z);
@@ -138,7 +138,7 @@ static void eval_At_times_u(int n, double *u, double *Au)
 		__m256d t0 = _mm256_hadd_pd(s[0], s[1]);
 		__m256d t1 = _mm256_hadd_pd(s[2], s[3]);
 		__m256d x = _mm256_permute2f128_pd(t0, t1, 0x21);
-		__m256d y = _mm256_blend_pd(t0, t1, 0 b1100);
+		__m256d y = _mm256_blend_pd(t0, t1, 0b1100);
 		__m256d z = _mm256_add_pd(x, y);
 
 		_mm256_store_pd(Au + i, z);
