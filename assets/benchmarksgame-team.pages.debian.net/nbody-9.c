@@ -49,7 +49,7 @@ static inline void kernel(__m256d * r, double *w, __m256d * p)
 		__m256d t0 = _mm256_hadd_pd(x0, x1);
 		__m256d t1 = _mm256_hadd_pd(x2, x3);
 		__m256d y0 = _mm256_permute2f128_pd(t0, t1, 0x21);
-		__m256d y1 = _mm256_blend_pd(t0, t1, 0 b1100);
+		__m256d y1 = _mm256_blend_pd(t0, t1, 0b1100);
 
 		__m256d z = _mm256_add_pd(y0, y1);
 		z = _mm256_rsqrt_pd(z);
@@ -75,7 +75,7 @@ static double energy(double *m, __m256d * p, __m256d * v)
 		__m256d t0 = _mm256_hadd_pd(r[k], r[k + 1]);
 		__m256d t1 = _mm256_hadd_pd(r[k + 2], r[k + 3]);
 		__m256d y0 = _mm256_permute2f128_pd(t0, t1, 0x21);
-		__m256d y1 = _mm256_blend_pd(t0, t1, 0 b1100);
+		__m256d y1 = _mm256_blend_pd(t0, t1, 0b1100);
 
 		__m256d z = _mm256_add_pd(y0, y1);
 		_mm256_store_pd(w + k, z);
