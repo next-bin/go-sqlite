@@ -10,10 +10,8 @@ all:
 	@gofmt -l -s -w *.go
 	@go install -v
 	@go test 2>&1 -timeout 1h | tee -a log
-	@go vet 2>&1 | grep -v $(ngrep) || true
-	@golint 2>&1 | grep -v $(ngrep) || true
-	@make todo
-	@staticcheck || true
+	@go vet 2>&1 || true
+	@golint 2>&1 || true
 	@grep -n --color=always 'FAIL\|PASS' log 
 	LC_ALL=C date 2>&1 | tee -a log
 
@@ -27,6 +25,7 @@ edit:
 
 editor:
 	gofmt -l -s -w *.go
+	go test 2>&1 | tee log
 	go install -v 2>&1 | tee log-install
 
 nuke: clean

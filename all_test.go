@@ -62,5 +62,7 @@ func TestMain(m *testing.M) {
 }
 
 func Test(t *testing.T) {
-	t.Log("TODO") //TODO
+	if _, err := FS.Open("assets/sqlite-amalgamation-3380100/shell.c"); err != nil {
+		t.Fatal(err)
+	}
 }
