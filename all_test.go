@@ -11,6 +11,7 @@ import (
 	"path"
 	"runtime"
 	"runtime/debug"
+	"sort"
 	"strings"
 	"testing"
 )
@@ -64,5 +65,23 @@ func TestMain(m *testing.M) {
 func Test(t *testing.T) {
 	if _, err := FS.Open("assets/sqlite-amalgamation-3380100/shell.c"); err != nil {
 		t.Fatal(err)
+	}
+
+	s, err := FS.ReadDir("assets/CompCert-3.6/test")
+	if err != nil {
+		t.Fatal(err)
+	}
+
+	if g, e := len(s), 2; g != e {
+		t.Fatal(g, e)
+	}
+
+	var a []string
+	for _, v := range s {
+		a = append(a, fmt.Sprintf("%v %v", v.Name(), v.IsDir()))
+	}
+	sort.Strings(a)
+	if g, e := fmt.Sprint(a), "[c true endian.h false]"; g != e {
+		t.Fatalf("got %q\nexp %q", g, e)
 	}
 }
