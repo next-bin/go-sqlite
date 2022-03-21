@@ -2,7 +2,7 @@
 // Use of the source code is governed by a BSD-style
 // license that can be found in the LICENSE file.
 
-package ccorpus2 // import "modernc.org/ccorpus"
+package ccorpus2 // import "modernc.org/ccorpus2"
 
 import (
 	"flag"
