@@ -70,6 +70,7 @@ func (p *Set) Parse(opts []string, handler func(string) error) (err error) {
 
 	for len(opts) != 0 {
 		opt := opts[0]
+		opt0 := opt
 		opts = opts[1:]
 		var arg string
 	out:
@@ -105,7 +106,7 @@ func (p *Set) Parse(opts []string, handler func(string) error) (err error) {
 			}
 			switch cfg := p.cfg[name]; {
 			case cfg == nil:
-				if err = handler(opt); err != nil {
+				if err = handler(opt0); err != nil {
 					return err
 				}
 			default:
