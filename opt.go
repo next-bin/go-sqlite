@@ -91,7 +91,9 @@ func (p *Set) Parse(opts []string, handler func(string) error) (err error) {
 
 						opts = opts[1:]
 					default:
-						if err = cfg.handler(opt[:len(cfg.name)+1], name[len(cfg.name):]); err != nil {
+						opt = opt[:len(cfg.name)+1]
+						val := strings.TrimPrefix(name[len(cfg.name):], "=")
+						if err = cfg.handler(opt, val); err != nil {
 							return err
 						}
 					}

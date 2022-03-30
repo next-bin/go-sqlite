@@ -58,5 +58,20 @@ func init() {
 // ============================================================================
 
 func Test(t *testing.T) {
-	t.Log("TODO")
+	set := NewSet()
+	set.Arg("std", true, func(opt, val string) error {
+		if strings.HasPrefix(val, "=") {
+			t.Errorf("%q %q", opt, val)
+		}
+		return nil
+	})
+	if err := set.Parse([]string{
+		"-std=c99",
+		"-std c99",
+	}, func(opt string) error {
+		t.Errorf("%q", opt)
+		return nil
+	}); err != nil {
+		t.Error(err)
+	}
 }
