@@ -1,6 +1,8 @@
 module modernc.org/ebnfutil
 
+go 1.18
+
 require (
-	golang.org/x/exp v0.0.0-20181106170214-d68db9428509
-	modernc.org/strutil v1.0.0
+	modernc.org/ebnf v1.1.0
+	modernc.org/strutil v1.1.2
 )

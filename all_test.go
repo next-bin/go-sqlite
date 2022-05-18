@@ -15,7 +15,7 @@ import (
 	"strings"
 	"testing"
 
-	"golang.org/x/exp/ebnf"
+	"modernc.org/ebnf"
 	"modernc.org/strutil"
 )
 

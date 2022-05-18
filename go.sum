@@ -1,4 +1,6 @@
-golang.org/x/exp v0.0.0-20181106170214-d68db9428509 h1:k21GX33vzpH/syMF7TgrLxe8ILtvwbyuHtEO3ebR82E=
-golang.org/x/exp v0.0.0-20181106170214-d68db9428509/go.mod h1:CJ0aWSM057203Lf6IL+f9T1iT9GByDxfZKAQTCR3kQA=
-modernc.org/strutil v1.0.0 h1:XVFtQwFVwc02Wk+0L/Z/zDDXO81r5Lhe6iMKmGX3KhE=
-modernc.org/strutil v1.0.0/go.mod h1:lstksw84oURvj9y3tn8lGvRxyRC1S2+g5uuIzNfIOBs=
+github.com/remyoudompheng/bigfft v0.0.0-20200410134404-eec4a21b6bb0 h1:OdAsTTz6OkFY5QxjkYwrChwuRruF69c169dPK26NUlk=
+modernc.org/ebnf v1.1.0 h1:ilLq2kO1xGezeg75RyKffLsCLdamQHEmjv0CVq1QEQU=
+modernc.org/ebnf v1.1.0/go.mod h1:CNIo7vuji3SyjIP/VhEumIKlAguC1g64mcdk/+VJW/w=
+modernc.org/mathutil v1.4.1 h1:ij3fYGe8zBF4Vu+g0oT7mB06r8sqGWKuJu1yXeR4by8=
+modernc.org/strutil v1.1.2 h1:iFBDH6j1Z0bN/Q9udJnnFoFpENA4252qe/7/5woE5MI=
+modernc.org/strutil v1.1.2/go.mod h1:OYajnUAcI/MX+XD/Wx7v1bbdvcQSvxgtb0gC+u3d3eg=

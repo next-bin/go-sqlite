@@ -2,8 +2,7 @@
 // Use of this source code is governed by a BSD-style
 // license that can be found in the LICENSE file.
 
-// Package ebnfutil (WIP:TODO) provides some utilities for messing with EBNF
-// grammars.
+// Package ebnfutil provides some utilities for messing with EBNF grammars.
 //
 // Positions attached to particular ebnf package types instances are ignored in
 // most, if not all places. Positions make sense after Parse, but usually no
@@ -18,7 +17,7 @@ import (
 	"sort"
 	"strings"
 
-	"golang.org/x/exp/ebnf"
+	"modernc.org/ebnf"
 	"modernc.org/strutil"
 )
 
