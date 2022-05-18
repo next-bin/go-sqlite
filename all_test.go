@@ -19,6 +19,8 @@ var goodGrammars = []string{
 
 	`Program = "a" … "z" .`,
 
+	"Program = `a` … `z` .",
+
 	`Program = Song .
 	 Song = { Note } .
 	 Note = Do | (Re | Mi | Fa | So | La) | Ti .
