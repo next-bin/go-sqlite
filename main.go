@@ -179,11 +179,18 @@ func (u *updater) run() error {
 	for _, r := range u.repos {
 	next:
 		for _, gomod := range r.gomods {
+			for _, v := range gomod.file.Require {
+				if m := u.moduleIndex[v.Mod.Path]; m != nil && m.isOutdated && !*oAll {
+					continue next
+				}
+			}
+
 			var updates []string
 			for _, update := range gomod.updates {
 				if m := u.moduleIndex[update.module]; m != nil && m.isOutdated && !*oAll {
 					continue next
 				}
+
 				updates = append(updates, fmt.Sprintf("%s@%s", update.module, update.tag))
 			}
 			if len(updates) != 0 {
