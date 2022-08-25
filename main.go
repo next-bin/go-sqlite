@@ -7,14 +7,18 @@
 // 'gomod' does not use the 'go' command and it does not use the module cache.
 // It only uses the locally cloned repositories and the 'git' command.
 //
-// Legacy
+// Example of usage
 //
-// It used to be a tool that predated go work files. To get the old behavior of
-// this command
+// Install and run the update subcommand:
 //
-//	$ go install modernc.org/gomod@v1.0.0
-//
-// But it is recommended to use the better 'go work' command.
+//	~ $ go install modernc.org/gomod@latest
+//	~ $ ( cd $(go env GOPATH)/src && gomod update | grep 'in modernc\.org' )
+//	in modernc.org/fileutil go get -d modernc.org/mathutil@v1.5.0
+//	in modernc.org/hash go get -d modernc.org/mathutil@v1.5.0
+//	in modernc.org/memory go get -d modernc.org/mathutil@v1.5.0
+//	in modernc.org/sortutil go get -d modernc.org/mathutil@v1.5.0
+//	in modernc.org/strutil go get -d modernc.org/mathutil@v1.5.0
+//	~ $
 //
 // Subcommand update
 //
@@ -24,7 +28,7 @@
 //
 // Options
 //
-//	-all	suggest updating to tags of modules that themselves need updating
+//	-all	suggest also updating to tags of modules that themselves need updating
 //	-v	verbose output
 //
 // Caveats
@@ -32,6 +36,15 @@
 // - At the moment only the 'require' clause of go.mod files is considered.
 //
 // - 'vendor' directories are ignored.
+//
+// Legacy
+//
+// This used to be a tool that predated go work files. To get the old behavior of
+// this command
+//
+//	$ go install modernc.org/gomod@v1.0.0
+//
+// But it is recommended to use the better 'go work' command.
 package main // import "modernc.org/gomod"
 
 import (
@@ -50,7 +63,7 @@ import (
 )
 
 var (
-	oAll     = flag.Bool("all", false, "suggest updating to tags of modules that themselves need updating")
+	oAll     = flag.Bool("all", false, "suggest also updating to tags of modules that themselves need updating")
 	oDbg     = flag.Bool("dbg", false, "debug output")
 	oVerbose = flag.Bool("v", false, "verbose output")
 )
