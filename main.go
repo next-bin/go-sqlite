@@ -28,8 +28,9 @@
 //
 // Options
 //
-//	-all	suggest also updating to tags of modules that themselves need updating
-//	-v	verbose output
+//	-all    suggest also updating to tags of modules that themselves need updating
+//	-head	list repositores not tagged at HEAD
+//	-v      verbose output
 //
 // Caveats
 //
@@ -65,6 +66,7 @@ import (
 var (
 	oAll     = flag.Bool("all", false, "suggest also updating to tags of modules that themselves need updating")
 	oDbg     = flag.Bool("dbg", false, "debug output")
+	oHead    = flag.Bool("head", false, "list repositories not tagged at HEAD")
 	oVerbose = flag.Bool("v", false, "verbose output")
 )
 
@@ -312,9 +314,10 @@ func (u *updater) addMod(pth string) error {
 			m.tag = ""
 		}
 	default:
-		u.moduleIndex[mpath] = &module{tag: ver}
+		isOutdated := r.tag == ""
+		u.moduleIndex[mpath] = &module{tag: ver, isOutdated: isOutdated}
 		if *oDbg {
-			fmt.Fprintf(os.Stderr, "%q: registering %q at %q\n", pth, mpath, ver)
+			fmt.Fprintf(os.Stderr, "%q: registering %q at %q, outdated %v\n", pth, mpath, ver, isOutdated)
 		}
 	}
 	return nil
@@ -380,12 +383,8 @@ func newRepo(pth string) (r *repo, err error) {
 			break
 		}
 	}
-	if r.tag == "" {
-		if *oDbg {
-			fmt.Fprintf(os.Stderr, "%q: invalidating, HEAD not tagged\n", r.pth)
-		}
-		return nil, nil
+	if *oHead && r.tag == "" {
+		fmt.Printf("HEAD not tagged: %s\n", pth)
 	}
-
 	return r, nil
 }
