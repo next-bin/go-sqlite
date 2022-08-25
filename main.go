@@ -139,7 +139,7 @@ func (u *updater) run() error {
 
 	for _, r := range u.repos {
 		if *oVerbose {
-			fmt.Fprintf(os.Stderr, "chcecking repository %s\n", r.pth)
+			fmt.Fprintf(os.Stderr, "chcecking repository %s at %q %s\n", r.pth, r.tag, r.commit)
 		}
 		for _, gomod := range r.gomods {
 			var gomodTag string
@@ -251,6 +251,10 @@ func (u *updater) findRepos(root string) error {
 
 func (u *updater) addRepo(r *repo) {
 	u.nowWalking = r
+	if r == nil {
+		return
+	}
+
 	u.repos = append(u.repos, r)
 	u.repoIndex[r.pth] = r
 }
@@ -283,11 +287,11 @@ func (u *updater) addMod(pth string) error {
 	var tags []string
 	switch maj {
 	case "":
-		if tags = r.tagx["v1"]; len(tags) == 0 {
-			tags = r.tagx["v0"]
+		if tags = r.tagIndex["v1"]; len(tags) == 0 {
+			tags = r.tagIndex["v0"]
 		}
 	default:
-		tags = r.tagx[maj]
+		tags = r.tagIndex[maj]
 	}
 	ver := ""
 	if n := len(tags); n != 0 {
@@ -329,10 +333,12 @@ type gomod struct {
 }
 
 type repo struct {
-	gomods []*gomod // go.mod files in this repo
-	pth    string
-	tags   []string
-	tagx   map[string][]string // semver.Major(tag): tags
+	commit   string
+	gomods   []*gomod // go.mod files in this repo
+	pth      string
+	tag      string
+	tagIndex map[string][]string // semver.Major(tag): tags
+	tags     []string
 }
 
 func newRepo(pth string) (r *repo, err error) {
@@ -342,7 +348,7 @@ func newRepo(pth string) (r *repo, err error) {
 		return nil, fmt.Errorf("executing 'git tag' in '%s': output: `%s`\nFAIL: %v", pth, out, err)
 	}
 
-	r = &repo{pth: pth, tagx: map[string][]string{}}
+	r = &repo{pth: pth, tagIndex: map[string][]string{}}
 	for _, v := range strings.Split(string(out), "\n") {
 		v = strings.TrimSpace(v)
 		if semver.IsValid(v) /* && semver.Major(v) != "v0" */ {
@@ -352,7 +358,34 @@ func newRepo(pth string) (r *repo, err error) {
 	semver.Sort(r.tags)
 	for _, v := range r.tags {
 		major := semver.Major(v)
-		r.tagx[major] = append(r.tagx[major], v)
+		r.tagIndex[major] = append(r.tagIndex[major], v)
 	}
+
+	cmd = exec.Command("git", "-C", pth, "rev-list", "-n", "1", "HEAD")
+	if out, err = cmd.CombinedOutput(); err != nil {
+		return nil, fmt.Errorf("executing 'git rev-list' in '%s': output: `%s`\nFAIL: %v", pth, out, err)
+	}
+
+	r.commit = strings.TrimSpace(string(out))
+
+	for _, tags := range r.tagIndex {
+		tag := tags[len(tags)-1]
+		cmd = exec.Command("git", "-C", pth, "rev-list", "-n", "1", tag)
+		if out, err = cmd.CombinedOutput(); err != nil {
+			return nil, fmt.Errorf("executing 'git rev-list' in '%s': output: `%s`\nFAIL: %v", pth, out, err)
+		}
+
+		if strings.TrimSpace(string(out)) == r.commit {
+			r.tag = tag
+			break
+		}
+	}
+	if r.tag == "" {
+		if *oDbg {
+			fmt.Fprintf(os.Stderr, "%q: invalidating, HEAD not tagged\n", r.pth)
+		}
+		return nil, nil
+	}
+
 	return r, nil
 }
