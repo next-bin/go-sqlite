@@ -241,6 +241,11 @@ func (u *updater) findRepos(root string) error {
 		default:
 			switch file {
 			case "go.mod":
+				dir, _ := filepath.Split(path)
+				if fi, err := os.Stat(filepath.Join(dir, ".gomodignore")); err == nil && !fi.IsDir() {
+					return nil
+				}
+
 				if err := u.addMod(path); err != nil {
 					return err
 				}
