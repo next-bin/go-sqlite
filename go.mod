@@ -3,7 +3,7 @@ module modernc.org/xc
 go 1.18
 
 require (
-	modernc.org/golex v1.0.2
+	modernc.org/golex v1.0.3
 	modernc.org/mathutil v1.5.0
 	modernc.org/strutil v1.1.3
 )
