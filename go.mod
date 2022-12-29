@@ -4,7 +4,7 @@ go 1.15
 
 require (
 	modernc.org/mathutil v1.5.0
-	modernc.org/parser v1.0.5
+	modernc.org/parser v1.0.6
 	modernc.org/sortutil v1.1.1
 	modernc.org/strutil v1.1.3
 )
