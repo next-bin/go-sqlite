@@ -1,6 +1,6 @@
 github.com/remyoudompheng/bigfft v0.0.0-20230129092748-24d4a6f8daec h1:W09IVJc94icq4NjY3clb7Lk8O1qJ8BdBEF8z0ibU0rE=
-modernc.org/golex v1.0.5 h1:M+4kIjbDMvKN4pAuh5gJBOfG7Emi9WXGpg2Eay1dlGI=
-modernc.org/golex v1.0.5/go.mod h1:pTY7KKjdvZbv2ROjfp6FFX5BXMM9QWZEnmCsl60aCfI=
+modernc.org/golex v1.1.0 h1:dmSaksHMd+y6NkBsRsCShNPRaSNCNH+abrVm5/gZic8=
+modernc.org/golex v1.1.0/go.mod h1:2pVlfqApurXhR1m0N+WDYu6Twnc4QuvO4+U8HnwoiRA=
 modernc.org/mathutil v1.6.0 h1:fRe9+AmYlaej+64JsEEhoWuAYBkOtQiMEU7n/XgfYi4=
 modernc.org/scanner v1.1.0 h1:oyyez/m1+IE/sIngiR4Ud1WHRYOv9FsFnylkXLPTMGY=
 modernc.org/scanner v1.1.0/go.mod h1:pDSh3vhQZeHFCjpcSzhDsvDIDOku2b/DdagPGXkK35o=
