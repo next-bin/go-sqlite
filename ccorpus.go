@@ -9,8 +9,6 @@ import (
 	"embed"
 )
 
-const none = 42
-
 //go:embed assets
 // FS exposes the corpus.
 var FS embed.FS
