@@ -368,12 +368,12 @@ func gz_compress(tls *libc.TLS, in uintptr, out uintptr) {
 		if len1 == 0 {
 			break
 		}
-		if z.Xgzwrite(tls, out, bp, uint32(len1)) != len1 {
-			error1(tls, z.Xgzerror(tls, out, bp+16384))
+		if libz.Xgzwrite(tls, out, bp, uint32(len1)) != len1 {
+			error1(tls, libz.Xgzerror(tls, out, bp+16384))
 		}
 	}
 	libc.Xfclose(tls, in)
-	if z.Xgzclose(tls, out) != Z_OK {
+	if libz.Xgzclose(tls, out) != Z_OK {
 		error1(tls, ts+14)
 	}
 }
@@ -390,9 +390,9 @@ func gz_uncompress(tls *libc.TLS, in uintptr, out uintptr) {
 	var _ /* buf at bp+0 */ [16384]int8
 	var _ /* err at bp+16384 */ int32
 	for {
-		len1 = z.Xgzread(tls, in, bp, uint32(16384))
+		len1 = libz.Xgzread(tls, in, bp, uint32(16384))
 		if len1 < 0 {
-			error1(tls, z.Xgzerror(tls, in, bp+16384))
+			error1(tls, libz.Xgzerror(tls, in, bp+16384))
 		}
 		if len1 == 0 {
 			break
@@ -404,7 +404,7 @@ func gz_uncompress(tls *libc.TLS, in uintptr, out uintptr) {
 	if libc.Xfclose(tls, out) != 0 {
 		error1(tls, ts+43)
 	}
-	if z.Xgzclose(tls, in) != Z_OK {
+	if libz.Xgzclose(tls, in) != Z_OK {
 		error1(tls, ts+14)
 	}
 }
@@ -430,7 +430,7 @@ func file_compress(tls *libc.TLS, file uintptr, mode uintptr) {
 		libc.Xperror(tls, file)
 		libc.Xexit(tls, int32(1))
 	}
-	out = z.Xgzopen(tls, bp, mode)
+	out = libz.Xgzopen(tls, bp, mode)
 	if out == libc.UintptrFromInt32(0) {
 		libc.Xfprintf(tls, libc.Xstderr, ts+92, libc.VaList(bp+1032, prog, bp))
 		libc.Xexit(tls, int32(1))
@@ -465,7 +465,7 @@ func file_uncompress(tls *libc.TLS, file uintptr) {
 		infile = bp
 		libc.X__builtin_snprintf(tls, bp+uintptr(len1), uint64(1024)-len1, ts+113, libc.VaList(bp+1032, ts+57))
 	}
-	in = z.Xgzopen(tls, infile, ts+89)
+	in = libz.Xgzopen(tls, infile, ts+89)
 	if in == libc.UintptrFromInt32(0) {
 		libc.Xfprintf(tls, libc.Xstderr, ts+92, libc.VaList(bp+1032, prog, infile))
 		libc.Xexit(tls, int32(1))
@@ -538,13 +538,13 @@ func main1(tls *libc.TLS, argc int32, argv uintptr) (r int32) {
 	}
 	if argc == 0 {
 		if uncompr != 0 {
-			file = z.Xgzdopen(tls, libc.Xfileno(tls, libc.Xstdin), ts+89)
+			file = libz.Xgzdopen(tls, libc.Xfileno(tls, libc.Xstdin), ts+89)
 			if file == libc.UintptrFromInt32(0) {
 				error1(tls, ts+151)
 			}
 			gz_uncompress(tls, file, libc.Xstdout)
 		} else {
-			file = z.Xgzdopen(tls, libc.Xfileno(tls, libc.Xstdout), bp)
+			file = libz.Xgzdopen(tls, libc.Xfileno(tls, libc.Xstdout), bp)
 			if file == libc.UintptrFromInt32(0) {
 				error1(tls, ts+171)
 			}
@@ -564,7 +564,7 @@ func main1(tls *libc.TLS, argc int32, argv uintptr) (r int32) {
 			}
 			if uncompr != 0 {
 				if copyout != 0 {
-					file = z.Xgzopen(tls, *(*uintptr)(unsafe.Pointer(argv)), ts+89)
+					file = libz.Xgzopen(tls, *(*uintptr)(unsafe.Pointer(argv)), ts+89)
 					if file == libc.UintptrFromInt32(0) {
 						libc.Xfprintf(tls, libc.Xstderr, ts+92, libc.VaList(bp+32, prog, *(*uintptr)(unsafe.Pointer(argv))))
 					} else {
@@ -579,7 +579,7 @@ func main1(tls *libc.TLS, argc int32, argv uintptr) (r int32) {
 					if in == libc.UintptrFromInt32(0) {
 						libc.Xperror(tls, *(*uintptr)(unsafe.Pointer(argv)))
 					} else {
-						file = z.Xgzdopen(tls, libc.Xfileno(tls, libc.Xstdout), bp)
+						file = libz.Xgzdopen(tls, libc.Xfileno(tls, libc.Xstdout), bp)
 						if file == libc.UintptrFromInt32(0) {
 							error1(tls, ts+171)
 						}

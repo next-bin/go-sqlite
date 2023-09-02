@@ -97,7 +97,7 @@ func main() {
 			)
 		}
 		args = append(args,
-			"--package-name=z",
+			"--package-name=libz",
 			"--prefix-enumerator=_",
 			"--prefix-external=x_",
 			"--prefix-field=F",

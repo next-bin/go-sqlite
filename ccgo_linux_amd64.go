@@ -1,9 +1,9 @@
-// Code generated for linux/amd64 by 'gcc --package-name=z --prefix-enumerator=_ --prefix-external=x_ --prefix-field=F --prefix-macro=m_ --prefix-static-internal=_ --prefix-static-none=_ --prefix-tagged-enum=_ --prefix-tagged-struct=T --prefix-tagged-union=T --prefix-typename=T --prefix-undefined=_ -exec-cc gcc -extended-errors -shared -mlong-double-64 -D_LARGEFILE64_SOURCE=1 -DHAVE_HIDDEN -o libz.so.1.3.go adler32.o.go crc32.o.go deflate.o.go infback.o.go inffast.o.go inflate.o.go inftrees.o.go trees.o.go zutil.o.go compress.o.go uncompr.o.go gzclose.o.go gzlib.o.go gzread.o.go gzwrite.o.go', DO NOT EDIT.
+// Code generated for linux/amd64 by 'gcc --package-name=libz --prefix-enumerator=_ --prefix-external=x_ --prefix-field=F --prefix-macro=m_ --prefix-static-internal=_ --prefix-static-none=_ --prefix-tagged-enum=_ --prefix-tagged-struct=T --prefix-tagged-union=T --prefix-typename=T --prefix-undefined=_ -exec-cc gcc -extended-errors -shared -mlong-double-64 -D_LARGEFILE64_SOURCE=1 -DHAVE_HIDDEN -o libz.so.1.3.go adler32.o.go crc32.o.go deflate.o.go infback.o.go inffast.o.go inflate.o.go inftrees.o.go trees.o.go zutil.o.go compress.o.go uncompr.o.go gzclose.o.go gzlib.o.go gzread.o.go gzwrite.o.go', DO NOT EDIT.
 
 //go:build linux && amd64
 // +build linux,amd64
 
-package z
+package libz
 
 import (
 	"reflect"

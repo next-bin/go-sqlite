@@ -4,7 +4,7 @@
 
 // Package libz is a ccgo/v4 version of libz.so, the zlib general purpose data
 // compression library.
-package z // import "modernc.org/libz"
+package libz // import "modernc.org/libz"
 
 import (
 	"modernc.org/libc/v2"
