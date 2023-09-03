@@ -347,15 +347,15 @@ var prog uintptr
 //	 * Display error message and exit
 //	 */
 func error1(tls *libc.TLS, msg uintptr) {
-	bp := tls.Alloc(24) /* tlsAllocs 0 maxVaListSize 16 */
-	defer tls.Free(24)
+	bp := tls.Alloc(32) /* tlsAllocs 0 maxVaListSize 16 */
+	defer tls.Free(32)
 	libc.Xfprintf(tls, libc.Xstderr, ts, libc.VaList(bp+8, prog, msg))
 	libc.Xexit(tls, int32(1))
 }
 
 func gz_compress(tls *libc.TLS, in uintptr, out uintptr) {
-	bp := tls.Alloc(16392) /* tlsAllocs 16392 maxVaListSize 0 */
-	defer tls.Free(16392)
+	bp := tls.Alloc(16400) /* tlsAllocs 16392 maxVaListSize 0 */
+	defer tls.Free(16400)
 	var len1 int32
 	var _ /* buf at bp+0 */ [16384]int8
 	var _ /* err at bp+16384 */ int32
@@ -384,8 +384,8 @@ func gz_compress(tls *libc.TLS, in uintptr, out uintptr) {
 //	 * Uncompress input to output then close both files.
 //	 */
 func gz_uncompress(tls *libc.TLS, in uintptr, out uintptr) {
-	bp := tls.Alloc(16392) /* tlsAllocs 16392 maxVaListSize 0 */
-	defer tls.Free(16392)
+	bp := tls.Alloc(16400) /* tlsAllocs 16392 maxVaListSize 0 */
+	defer tls.Free(16400)
 	var len1 int32
 	var _ /* buf at bp+0 */ [16384]int8
 	var _ /* err at bp+16384 */ int32
@@ -416,8 +416,8 @@ func gz_uncompress(tls *libc.TLS, in uintptr, out uintptr) {
 //	 * original.
 //	 */
 func file_compress(tls *libc.TLS, file uintptr, mode uintptr) {
-	bp := tls.Alloc(1048) /* tlsAllocs 1024 maxVaListSize 16 */
-	defer tls.Free(1048)
+	bp := tls.Alloc(1056) /* tlsAllocs 1024 maxVaListSize 16 */
+	defer tls.Free(1056)
 	var in, out uintptr
 	var _ /* outfile at bp+0 */ [1024]int8
 	if libc.Xstrlen(tls, file)+libc.Xstrlen(tls, ts+57) >= uint64(1024) {
@@ -445,8 +445,8 @@ func file_compress(tls *libc.TLS, file uintptr, mode uintptr) {
 //	 * Uncompress the given file and remove the original.
 //	 */
 func file_uncompress(tls *libc.TLS, file uintptr) {
-	bp := tls.Alloc(1048) /* tlsAllocs 1024 maxVaListSize 16 */
-	defer tls.Free(1048)
+	bp := tls.Alloc(1056) /* tlsAllocs 1024 maxVaListSize 16 */
+	defer tls.Free(1056)
 	var in, infile, out, outfile uintptr
 	var len1 uint64
 	var _ /* buf at bp+0 */ [1024]int8

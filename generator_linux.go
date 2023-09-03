@@ -147,11 +147,16 @@ func main() {
 
 		return nil
 	})
-	util.MustCopyFile(false, fmt.Sprintf("ccgo_%s_%s.go", goos, goarch), filepath.Join(libRoot, result), nil)
+
 	util.MustCopyFile(false, filepath.Join("include", goos, goarch, "zconf.h"), filepath.Join(libRoot, "zconf.h"), nil)
 	util.MustCopyFile(false, filepath.Join("include", goos, goarch, "zlib.h"), filepath.Join(libRoot, "zlib.h"), nil)
 
-	fn := fmt.Sprintf("example_%s_%s.go", goos, goarch)
+	fn := fmt.Sprintf("ccgo_%s_%s.go", goos, goarch)
+	util.MustCopyFile(false, fn, filepath.Join(libRoot, result), nil)
+	util.MustShell(true, "sed", "-i", `s/\<T__\([a-zA-Z0-9][a-zA-Z0-9_]\+\)/t__\1/g`, fn)
+	util.MustShell(true, "sed", "-i", `s/\<x_\([a-zA-Z0-9][a-zA-Z0-9_]\+\)/X\1/g`, fn)
+
+	fn = fmt.Sprintf("example_%s_%s.go", goos, goarch)
 	util.MustShell(true, "cp", filepath.Join(libRoot, "example.o.go"), fn)
 
 	defer os.Remove(fn)

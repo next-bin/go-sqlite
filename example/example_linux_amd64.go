@@ -380,8 +380,8 @@ func init() {
 //	 * Test compress() and uncompress()
 //	 */
 func test_compress(tls *libc.TLS, compr uintptr, _comprLen uint64, uncompr uintptr, _uncomprLen uint64) {
-	bp := tls.Alloc(40) /* tlsAllocs 16 maxVaListSize 16 */
-	defer tls.Free(40)
+	bp := tls.Alloc(48) /* tlsAllocs 16 maxVaListSize 16 */
+	defer tls.Free(48)
 	*(*uint64)(unsafe.Pointer(bp)) = _comprLen
 	*(*uint64)(unsafe.Pointer(bp + 8)) = _uncomprLen
 	var err int32
@@ -494,8 +494,8 @@ func test_gzio(tls *libc.TLS, fname uintptr, uncompr uintptr, uncomprLen uint64)
 //	 * Test deflate() with small buffers
 //	 */
 func test_deflate(tls *libc.TLS, compr uintptr, comprLen uint64) {
-	bp := tls.Alloc(136) /* tlsAllocs 112 maxVaListSize 16 */
-	defer tls.Free(136)
+	bp := tls.Alloc(144) /* tlsAllocs 112 maxVaListSize 16 */
+	defer tls.Free(144)
 	var err int32
 	var len1 uint64
 	var v1 uint32
@@ -547,8 +547,8 @@ func test_deflate(tls *libc.TLS, compr uintptr, comprLen uint64) {
 //	 * Test inflate() with small buffers
 //	 */
 func test_inflate(tls *libc.TLS, compr uintptr, comprLen uint64, uncompr uintptr, uncomprLen uint64) {
-	bp := tls.Alloc(136) /* tlsAllocs 112 maxVaListSize 16 */
-	defer tls.Free(136)
+	bp := tls.Alloc(144) /* tlsAllocs 112 maxVaListSize 16 */
+	defer tls.Free(144)
 	var err int32
 	var v1 uint32
 	var _ /* d_stream at bp+0 */ z_stream
@@ -597,8 +597,8 @@ func test_inflate(tls *libc.TLS, compr uintptr, comprLen uint64, uncompr uintptr
 //	 * Test deflate() with large buffers and dynamic change of compression level
 //	 */
 func test_large_deflate(tls *libc.TLS, compr uintptr, comprLen uint64, uncompr uintptr, uncomprLen uint64) {
-	bp := tls.Alloc(136) /* tlsAllocs 112 maxVaListSize 16 */
-	defer tls.Free(136)
+	bp := tls.Alloc(144) /* tlsAllocs 112 maxVaListSize 16 */
+	defer tls.Free(144)
 	var err int32
 	var _ /* c_stream at bp+0 */ z_stream
 	/* compression stream */
@@ -662,8 +662,8 @@ func test_large_deflate(tls *libc.TLS, compr uintptr, comprLen uint64, uncompr u
 //	 * Test inflate() with large buffers
 //	 */
 func test_large_inflate(tls *libc.TLS, compr uintptr, comprLen uint64, uncompr uintptr, uncomprLen uint64) {
-	bp := tls.Alloc(136) /* tlsAllocs 112 maxVaListSize 16 */
-	defer tls.Free(136)
+	bp := tls.Alloc(144) /* tlsAllocs 112 maxVaListSize 16 */
+	defer tls.Free(144)
 	var err int32
 	var _ /* d_stream at bp+0 */ z_stream
 	/* decompression stream */
@@ -709,8 +709,8 @@ func test_large_inflate(tls *libc.TLS, compr uintptr, comprLen uint64, uncompr u
 //	 * Test deflate() with full flush
 //	 */
 func test_flush(tls *libc.TLS, compr uintptr, comprLen uintptr) {
-	bp := tls.Alloc(136) /* tlsAllocs 112 maxVaListSize 16 */
-	defer tls.Free(136)
+	bp := tls.Alloc(144) /* tlsAllocs 112 maxVaListSize 16 */
+	defer tls.Free(144)
 	var err int32
 	var len1 uint32
 	var _ /* c_stream at bp+0 */ z_stream
@@ -756,8 +756,8 @@ func test_flush(tls *libc.TLS, compr uintptr, comprLen uintptr) {
 //	 * Test inflateSync()
 //	 */
 func test_sync(tls *libc.TLS, compr uintptr, comprLen uint64, uncompr uintptr, uncomprLen uint64) {
-	bp := tls.Alloc(136) /* tlsAllocs 112 maxVaListSize 16 */
-	defer tls.Free(136)
+	bp := tls.Alloc(144) /* tlsAllocs 112 maxVaListSize 16 */
+	defer tls.Free(144)
 	var err int32
 	var _ /* d_stream at bp+0 */ z_stream
 	/* decompression stream */
@@ -804,8 +804,8 @@ func test_sync(tls *libc.TLS, compr uintptr, comprLen uint64, uncompr uintptr, u
 //	 * Test deflate() with preset dictionary
 //	 */
 func test_dict_deflate(tls *libc.TLS, compr uintptr, comprLen uint64) {
-	bp := tls.Alloc(136) /* tlsAllocs 112 maxVaListSize 16 */
-	defer tls.Free(136)
+	bp := tls.Alloc(144) /* tlsAllocs 112 maxVaListSize 16 */
+	defer tls.Free(144)
 	var err int32
 	var _ /* c_stream at bp+0 */ z_stream
 	/* compression stream */
@@ -845,8 +845,8 @@ func test_dict_deflate(tls *libc.TLS, compr uintptr, comprLen uint64) {
 //	 * Test inflate() with a preset dictionary
 //	 */
 func test_dict_inflate(tls *libc.TLS, compr uintptr, comprLen uint64, uncompr uintptr, uncomprLen uint64) {
-	bp := tls.Alloc(136) /* tlsAllocs 112 maxVaListSize 16 */
-	defer tls.Free(136)
+	bp := tls.Alloc(144) /* tlsAllocs 112 maxVaListSize 16 */
+	defer tls.Free(144)
 	var err int32
 	var _ /* d_stream at bp+0 */ z_stream
 	/* decompression stream */
@@ -894,8 +894,8 @@ func test_dict_inflate(tls *libc.TLS, compr uintptr, comprLen uint64, uncompr ui
 }
 
 func main1(tls *libc.TLS, argc int32, argv uintptr) (r int32) {
-	bp := tls.Alloc(40) /* tlsAllocs 8 maxVaListSize 24 */
-	defer tls.Free(40)
+	bp := tls.Alloc(48) /* tlsAllocs 8 maxVaListSize 24 */
+	defer tls.Free(48)
 	var compr, uncompr, v1 uintptr
 	var uncomprLen uint64
 	var _ /* comprLen at bp+0 */ uint64
