@@ -38,7 +38,7 @@ generate:
 	go build -v ./...  | tee -a log-generate
 	go test -v -count=1 ./... 2>&1 | tee -a log-generate
 	git status
-	grep TODO log-generate || true
+	grep 'TRC\|TODO\|ERRORF\|FAIL' log-generate || true
 
 dev:
 	echo -n > /tmp/ccgo.log
@@ -52,8 +52,8 @@ dev:
 	go build -v ./...  | tee -a log-generate
 	go test -v -count=1 ./... 2>&1 | tee -a log-generate
 	git status
-	grep 'TODO\|FAIL' /tmp/ccgo.log || true
-	grep 'TODO\|FAIL' log-generate || true
+	grep 'TRC\|TODO\|ERRORF\|FAIL' /tmp/ccgo.log || true
+	grep 'TRC\|TODO\|ERRORF\|FAIL' log-generate || true
 	grep $(shell date '+%B') log-generate
 
 work:

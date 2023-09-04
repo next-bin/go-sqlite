@@ -81,7 +81,7 @@ func main() {
 	util.MustCopyDir(true, libRoot, filepath.Join("overlay", "all"), nil)
 	util.MustCopyDir(true, libRoot, filepath.Join("overlay", goarch), nil)
 	util.MustCopyFile(true, "LICENSE-TCL", filepath.Join(libRoot, "license.terms"), nil)
-	result := filepath.FromSlash("libtcl8.6.so.go")
+	result := "libtcl.a.go"
 	util.MustInDir(true, makeRoot, func() (err error) {
 		cflags := []string{
 			"-DTCL_MEM_DEBUG", //TODO-
@@ -92,12 +92,12 @@ func main() {
 		if s := cc.LongDouble64Flag(goos, goarch); s != "" {
 			cflags = append(cflags, s)
 		}
-		util.MustShell(true, "sh", "-c", "go mod init example.com/tcl ; go get modernc.org/libc/v2@master modernc.org/libz@master")
+		util.MustShell(true, "sh", "-c", "go mod init example.com/tcl ; go get modernc.org/libc/v2@master modernc.org/libz@master modernc.org/libz@master modernc.org/libtcl@master")
 		if dev {
 			util.MustShell(true, "sh", "-c", "go work init ; go work use $GOPATH/src/modernc.org/libc/v2 $GOPATH/src/modernc.org/libz")
 		}
 		//TODO 64 bits?
-		util.MustShell(true, "sh", "-c", fmt.Sprintf("CC=%s CFLAGS='%s' ./configure --enable-threads=no", cCompiler, strings.Join(cflags, " ")))
+		util.MustShell(true, "sh", "-c", fmt.Sprintf("CC=%s CFLAGS='%s' ./configure --enable-threads=no --enable-shared=no", cCompiler, strings.Join(cflags, " ")))
 		args := []string{os.Args[0]}
 		if dev {
 			args = append(
@@ -126,8 +126,12 @@ func main() {
 			// "-ignore-unsupported-alignment",    //TODO- only if possible
 			// "-ignore-unsupported-atomic-sizes", //TODO- it is possible
 		)
-		return ccgo.NewTask(goos, goarch, append(args, "-exec", "make", "libtcl8.6.so"), os.Stdout, os.Stderr, nil).Main()
-		//TODO return ccgo.NewTask(goos, goarch, append(args, "-exec", "make", "libtcl8.6.so", "tcltest"), os.Stdout, os.Stderr, nil).Main()
+		if err := ccgo.NewTask(goos, goarch, append(args, "-exec", "make", "libtcl8.6.a", "tcltest"), os.Stdout, os.Stderr, nil).Main(); err != nil {
+			return err
+		}
+
+		os.Setenv(ccgo.CCEnvVar, "")
+		return ccgo.NewTask(goos, goarch, append(args, "-o", result, "libtcl8.6.a", "-lz"), os.Stdout, os.Stderr, nil).Main()
 	})
 
 	util.MustCopyFile(false, filepath.Join("include", goos, goarch, "tcl.h"), filepath.Join(libRoot, "generic", "tcl.h"), nil)
