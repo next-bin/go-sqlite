@@ -76,7 +76,7 @@ func main() {
 	util.MustUntar(true, tempDir, f, nil)
 	libRoot := filepath.Join(tempDir, extractedArchivePath)
 	util.MustCopyFile(true, "LICENSE-ZLIB", filepath.Join(libRoot, "LICENSE"), nil)
-	result := filepath.FromSlash("libz.so.1.3.go")
+	result := "libz.a.go"
 	util.MustInDir(true, libRoot, func() (err error) {
 		var cflags string
 		if s := cc.LongDouble64Flag(goos, goarch); s != "" {
@@ -97,7 +97,7 @@ func main() {
 			)
 		}
 		args = append(args,
-			"--package-name=libz",
+			// "--package-name=libz",
 			"--prefix-enumerator=_",
 			"--prefix-external=x_",
 			"--prefix-field=F",
@@ -115,36 +115,24 @@ func main() {
 			// "-ignore-unsupported-alignment",    //TODO- only if possible
 			// "-ignore-unsupported-atomic-sizes", //TODO- it is possible
 		)
-		if err := ccgo.NewTask(goos, goarch, append(args, "-exec", "make", "libz.so.1.3"), os.Stdout, os.Stderr, nil).Main(); err != nil {
+		if err := ccgo.NewTask(goos, goarch, append(args, "-exec", "make", "libz.a"), os.Stdout, os.Stderr, nil).Main(); err != nil {
 			fail(1, "%v", err)
 		}
 
 		os.Setenv(ccgo.CCEnvVar, "")
-		if err := ccgo.NewTask(
-			goos, goarch,
-			[]string{
-				"ccgo",
-				"-I", libRoot,
-				"-c",
-				filepath.Join("test", "example.c")},
-			os.Stdout, os.Stderr, nil,
-		).Main(); err != nil {
+		if err := ccgo.NewTask(goos, goarch, append(args, "--package-name=libz", "-o", result, "libz.a"), os.Stdout, os.Stderr, nil).Main(); err != nil {
 			fail(1, "%v", err)
 		}
 
-		if err := ccgo.NewTask(
-			goos, goarch,
-			[]string{
-				"ccgo",
-				"-D_FILE_OFFSET_BITS=64",
-				"-I", libRoot,
-				"-c",
-				filepath.Join("test", "minigzip.c")},
-			os.Stdout, os.Stderr, nil,
-		).Main(); err != nil {
+		os.Setenv(ccgo.CCEnvVar, "")
+		if err := ccgo.NewTask(goos, goarch, append(args, "--package-name=main", "-exec", "make", "example64"), os.Stdout, os.Stderr, nil).Main(); err != nil {
 			fail(1, "%v", err)
 		}
 
+		os.Setenv(ccgo.CCEnvVar, "")
+		if err := ccgo.NewTask(goos, goarch, append(args, "--package-name=main", "-exec", "make", "minigzip64"), os.Stdout, os.Stderr, nil).Main(); err != nil {
+			fail(1, "%v", err)
+		}
 		return nil
 	})
 
@@ -156,43 +144,9 @@ func main() {
 	util.MustShell(true, "sed", "-i", `s/\<T__\([a-zA-Z0-9][a-zA-Z0-9_]\+\)/t__\1/g`, fn)
 	util.MustShell(true, "sed", "-i", `s/\<x_\([a-zA-Z0-9][a-zA-Z0-9_]\+\)/X\1/g`, fn)
 
-	fn = fmt.Sprintf("example_%s_%s.go", goos, goarch)
-	util.MustShell(true, "cp", filepath.Join(libRoot, "example.o.go"), fn)
+	fn = filepath.Join("example", fmt.Sprintf("example_%s_%s.go", goos, goarch))
+	util.MustShell(true, "cp", filepath.Join(libRoot, "example64.go"), fn)
 
-	defer os.Remove(fn)
-
-	if err := ccgo.NewTask(
-		goos, goarch,
-		[]string{
-			cCompiler,
-
-			"-o", filepath.Join("example", fmt.Sprintf("example_%s_%s.go", goos, goarch)),
-			"--package-name=main",
-			fn,
-			"-lz",
-		},
-		os.Stdout, os.Stderr, nil,
-	).Main(); err != nil {
-		fail(1, "%v", err)
-	}
-
-	fn = fmt.Sprintf("minigzip_%s_%s.c.go", goos, goarch)
-	util.MustShell(true, "cp", filepath.Join(libRoot, "minigzip.o.go"), fn)
-
-	defer os.Remove(fn)
-
-	if err := ccgo.NewTask(
-		goos, goarch,
-		[]string{
-			cCompiler,
-
-			"-o", filepath.Join("minigzip", fmt.Sprintf("minigzip_%s_%s.go", goos, goarch)),
-			"--package-name=main",
-			fn,
-			"-lz",
-		},
-		os.Stdout, os.Stderr, nil,
-	).Main(); err != nil {
-		fail(1, "%v", err)
-	}
+	fn = filepath.Join("minigzip", fmt.Sprintf("minigzip_%s_%s.go", goos, goarch))
+	util.MustShell(true, "cp", filepath.Join(libRoot, "minigzip64.go"), fn)
 }
