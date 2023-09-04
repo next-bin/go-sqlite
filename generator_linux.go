@@ -115,25 +115,12 @@ func main() {
 			// "-ignore-unsupported-alignment",    //TODO- only if possible
 			// "-ignore-unsupported-atomic-sizes", //TODO- it is possible
 		)
-		if err := ccgo.NewTask(goos, goarch, append(args, "-exec", "make", "libz.a"), os.Stdout, os.Stderr, nil).Main(); err != nil {
+		if err := ccgo.NewTask(goos, goarch, append(args, "--package-name=main", "-exec", "make", "libz.a", "example64", "minigzip64"), os.Stdout, os.Stderr, nil).Main(); err != nil {
 			fail(1, "%v", err)
 		}
 
 		os.Setenv(ccgo.CCEnvVar, "")
-		if err := ccgo.NewTask(goos, goarch, append(args, "--package-name=libz", "-o", result, "libz.a"), os.Stdout, os.Stderr, nil).Main(); err != nil {
-			fail(1, "%v", err)
-		}
-
-		os.Setenv(ccgo.CCEnvVar, "")
-		if err := ccgo.NewTask(goos, goarch, append(args, "--package-name=main", "-exec", "make", "example64"), os.Stdout, os.Stderr, nil).Main(); err != nil {
-			fail(1, "%v", err)
-		}
-
-		os.Setenv(ccgo.CCEnvVar, "")
-		if err := ccgo.NewTask(goos, goarch, append(args, "--package-name=main", "-exec", "make", "minigzip64"), os.Stdout, os.Stderr, nil).Main(); err != nil {
-			fail(1, "%v", err)
-		}
-		return nil
+		return ccgo.NewTask(goos, goarch, append(args, "--package-name=libz", "-o", result, "libz.a"), os.Stdout, os.Stderr, nil).Main()
 	})
 
 	util.MustCopyFile(false, filepath.Join("include", goos, goarch, "zconf.h"), filepath.Join(libRoot, "zconf.h"), nil)
