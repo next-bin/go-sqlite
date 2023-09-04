@@ -56,7 +56,7 @@ func main() {
 		util.MustShell(true, "sh", "-c", fmt.Sprintf("rm -rf %s", filepath.Join(tempDir, extractedArchivePath)))
 	default:
 		var err error
-		if tempDir, err = os.MkdirTemp("", "tcl-v2-generate"); err != nil {
+		if tempDir, err = os.MkdirTemp("", "libtcl-generate"); err != nil {
 			fail(1, "creating temp dir: %v\n", err)
 		}
 
@@ -127,6 +127,7 @@ func main() {
 			// "-ignore-unsupported-atomic-sizes", //TODO- it is possible
 		)
 		return ccgo.NewTask(goos, goarch, append(args, "-exec", "make", "libtcl8.6.so"), os.Stdout, os.Stderr, nil).Main()
+		//TODO return ccgo.NewTask(goos, goarch, append(args, "-exec", "make", "libtcl8.6.so", "tcltest"), os.Stdout, os.Stderr, nil).Main()
 	})
 
 	util.MustCopyFile(false, filepath.Join("include", goos, goarch, "tcl.h"), filepath.Join(libRoot, "generic", "tcl.h"), nil)
