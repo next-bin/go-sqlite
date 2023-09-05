@@ -1,4 +1,4 @@
-module modernc.org/libtcl
+module modernc.org/libtcl8.6
 
 go 1.21.0
 

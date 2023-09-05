@@ -97,7 +97,7 @@ func main() {
 			util.MustShell(true, "sh", "-c", "go work init ; go work use $GOPATH/src/modernc.org/libc/v2 $GOPATH/src/modernc.org/libz")
 		}
 		//TODO 64 bits?
-		util.MustShell(true, "sh", "-c", fmt.Sprintf("CC=%s CFLAGS='%s' ./configure --enable-threads=no --enable-shared=no", cCompiler, strings.Join(cflags, " ")))
+		util.MustShell(true, "sh", "-c", fmt.Sprintf("CC=%s CFLAGS='%s' ./configure --disable-threads --disable-shared", cCompiler, strings.Join(cflags, " ")))
 		args := []string{os.Args[0]}
 		if dev {
 			args = append(
@@ -108,7 +108,7 @@ func main() {
 			)
 		}
 		args = append(args,
-			"--package-name=libtcl",
+			"--package-name=libtcl8_6",
 			"--prefix-enumerator=_",
 			"--prefix-external=x_",
 			"--prefix-field=F",
@@ -126,7 +126,7 @@ func main() {
 			// "-ignore-unsupported-alignment",    //TODO- only if possible
 			// "-ignore-unsupported-atomic-sizes", //TODO- it is possible
 		)
-		if err := ccgo.NewTask(goos, goarch, append(args, "-exec", "make", "libtcl8.6.a", "tcltest"), os.Stdout, os.Stderr, nil).Main(); err != nil {
+		if err := ccgo.NewTask(goos, goarch, append(args, "-exec", "make", "libtcl8.6.a"), os.Stdout, os.Stderr, nil).Main(); err != nil {
 			return err
 		}
 

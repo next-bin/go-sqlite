@@ -1,3 +1,3 @@
-# libtcl
+# libtcl8.6
 
-Package libtcl is a ccgo/v4 version of libtcl.so, the Tool Command Language (Tcl).
+Package libtcl8.6 is a ccgo/v4 version the Tool Command Language (Tcl).
