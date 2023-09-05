@@ -22,7 +22,7 @@ func TestMain(m *testing.M) {
 func Test(t *testing.T) {
 	defer os.Remove("foo.gz")
 
-	out, err := exec.Command("go", "run", filepath.Join("example", fmt.Sprintf("example_%s_%s.go", runtime.GOOS, runtime.GOARCH))).CombinedOutput()
+	out, err := exec.Command("go", "run", filepath.Join("internal", "example", fmt.Sprintf("ccgo_%s_%s.go", runtime.GOOS, runtime.GOARCH))).CombinedOutput()
 	t.Logf("\n%s", out)
 	if err != nil {
 		t.Error(err)
@@ -38,8 +38,8 @@ func Test2(t *testing.T) {
 
 	goos := runtime.GOOS
 	goarch := runtime.GOARCH
-	mg := filepath.Join(wd, "minigzip", fmt.Sprintf("minigzip_%s_%s.go", goos, goarch))
-	ex := filepath.Join(wd, "example", fmt.Sprintf("example_%s_%s.go", goos, goarch))
+	mg := filepath.Join(wd, "internal", "minigzip", fmt.Sprintf("ccgo_%s_%s.go", goos, goarch))
+	ex := filepath.Join(wd, "internal", "example", fmt.Sprintf("ccgo_%s_%s.go", goos, goarch))
 	mgBin := "minigzip"
 	exBin := "example"
 	if goos == "windows" {
