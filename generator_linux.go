@@ -92,12 +92,11 @@ func main() {
 		if s := cc.LongDouble64Flag(goos, goarch); s != "" {
 			cflags = append(cflags, s)
 		}
-		util.MustShell(true, "sh", "-c", "go mod init example.com/tcl ; go get modernc.org/libc/v2@master modernc.org/libz@master modernc.org/libz@master modernc.org/libtcl@master")
+		util.MustShell(true, "sh", "-c", "go mod init example.com/tcl ; go get modernc.org/libc/v2@master modernc.org/libz@master")
 		if dev {
 			util.MustShell(true, "sh", "-c", "go work init ; go work use $GOPATH/src/modernc.org/libc/v2 $GOPATH/src/modernc.org/libz")
 		}
-		//TODO 64 bits?
-		util.MustShell(true, "sh", "-c", fmt.Sprintf("CC=%s CFLAGS='%s' ./configure --disable-threads --disable-shared", cCompiler, strings.Join(cflags, " ")))
+		util.MustShell(true, "sh", "-c", fmt.Sprintf("CC=%s CFLAGS='%s' ./configure --disable-threads --disable-shared --disable-load", cCompiler, strings.Join(cflags, " ")))
 		args := []string{os.Args[0]}
 		if dev {
 			args = append(
@@ -108,7 +107,6 @@ func main() {
 			)
 		}
 		args = append(args,
-			"--package-name=libtcl8_6",
 			"--prefix-enumerator=_",
 			"--prefix-external=x_",
 			"--prefix-field=F",
@@ -131,7 +129,12 @@ func main() {
 		}
 
 		os.Setenv(ccgo.CCEnvVar, "")
-		return ccgo.NewTask(goos, goarch, append(args, "-o", result, "libtcl8.6.a", "-lz"), os.Stdout, os.Stderr, nil).Main()
+		if err := ccgo.NewTask(goos, goarch, append(args, "-exec", "make", "tcltest"), os.Stdout, os.Stderr, nil).Main(); err != nil {
+			return err
+		}
+
+		os.Setenv(ccgo.CCEnvVar, "")
+		return ccgo.NewTask(goos, goarch, append(args, "-o", result, "--package-name", "libtcl8_6", "libtcl8.6.a", "-lz"), os.Stdout, os.Stderr, nil).Main()
 	})
 
 	util.MustCopyFile(false, filepath.Join("include", goos, goarch, "tcl.h"), filepath.Join(libRoot, "generic", "tcl.h"), nil)
@@ -142,4 +145,5 @@ func main() {
 	util.MustCopyFile(false, fn, filepath.Join(makeRoot, result), nil)
 	util.MustShell(true, "sed", "-i", `s/\<T__\([a-zA-Z0-9][a-zA-Z0-9_]\+\)/t__\1/g`, fn)
 	util.MustShell(true, "sed", "-i", `s/\<x_\([a-zA-Z0-9][a-zA-Z0-9_]\+\)/X\1/g`, fn)
+	util.MustCopyFile(false, filepath.Join("internal", "tcltest", fn), filepath.Join(makeRoot, "tcltest.go"), nil)
 }

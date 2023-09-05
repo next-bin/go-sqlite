@@ -27,10 +27,9 @@ editor:
 	go build -o /dev/null generator*.go
 
 generate:
-	echo -n > /tmp/ccgo.log
 	echo -n > log-generate
 	echo -n > log-generate-errors
-	go run generator*.go 2> log-generate-errors | tee log-generate
+	GO_GENERATE_DIR=/tmp/libtcl8.6 go run generator*.go 2> log-generate-errors | tee log-generate
 	cat log-generate-errors
 	go build -v ./...
 	# go install github.com/mdempsky/unconvert@latest
@@ -39,6 +38,7 @@ generate:
 	go test -v -count=1 ./... 2>&1 | tee -a log-generate
 	git status
 	grep 'TRC\|TODO\|ERRORF\|FAIL' log-generate || true
+	grep 'TRC\|TODO\|ERRORF\|FAIL' log-generate-errors || true
 
 dev:
 	echo -n > /tmp/ccgo.log
@@ -52,8 +52,9 @@ dev:
 	go build -v ./...  | tee -a log-generate
 	go test -v -count=1 ./... 2>&1 | tee -a log-generate
 	git status
-	grep 'TRC\|TODO\|ERRORF\|FAIL' /tmp/ccgo.log || true
 	grep 'TRC\|TODO\|ERRORF\|FAIL' log-generate || true
+	grep 'TRC\|TODO\|ERRORF\|FAIL' log-generate-errors || true
+	grep 'TRC\|TODO\|ERRORF\|FAIL' /tmp/ccgo.log || true
 	grep $(shell date '+%B') log-generate
 
 work:
