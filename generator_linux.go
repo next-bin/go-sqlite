@@ -77,9 +77,11 @@ func main() {
 	fmt.Fprintf(os.Stderr, "libRoot %s\n", libRoot)
 	fmt.Fprintf(os.Stderr, "makeRoot %s\n", makeRoot)
 
+	os.RemoveAll("library")
+	os.Remove(filepath.Join("internal/tests"))
 	util.MustUntar(true, tempDir, f, nil)
 	util.MustCopyDir(true, libRoot, filepath.Join("overlay", "all"), nil)
-	util.MustCopyDir(true, libRoot, filepath.Join("overlay", goarch), nil)
+	util.MustCopyDir(true, libRoot, filepath.Join("overlay", goos, goarch), nil)
 	util.MustCopyFile(true, "LICENSE-TCL", filepath.Join(libRoot, "license.terms"), nil)
 	result := "libtcl.a.go"
 	util.MustInDir(true, makeRoot, func() (err error) {
@@ -103,7 +105,7 @@ func main() {
 				args,
 				"-absolute-paths",
 				"-positions",
-				// "-verify-types",
+				"-verify-types",
 			)
 		}
 		args = append(args,
@@ -120,9 +122,6 @@ func main() {
 			"--prefix-undefined=_",
 			"-exec-cc", cCompiler,
 			"-extended-errors",
-			// "-ignore-asm-errors",               //TODO- it is possible
-			// "-ignore-unsupported-alignment",    //TODO- only if possible
-			// "-ignore-unsupported-atomic-sizes", //TODO- it is possible
 		)
 		if err := ccgo.NewTask(goos, goarch, append(args, "-exec", "make", "libtcl8.6.a"), os.Stdout, os.Stderr, nil).Main(); err != nil {
 			return err
@@ -140,6 +139,8 @@ func main() {
 	util.MustCopyFile(false, filepath.Join("include", goos, goarch, "tcl.h"), filepath.Join(libRoot, "generic", "tcl.h"), nil)
 	util.MustCopyFile(false, filepath.Join("include", goos, goarch, "tclDecls.h"), filepath.Join(libRoot, "generic", "tclDecls.h"), nil)
 	util.MustCopyFile(false, filepath.Join("include", goos, goarch, "tclPlatDecls.h"), filepath.Join(libRoot, "generic", "tclPlatDecls.h"), nil)
+	util.MustCopyDir(true, "library", filepath.Join(libRoot, "library"), nil)
+	util.MustCopyDir(true, "internal/tests", filepath.Join(libRoot, "tests"), nil)
 
 	fn := fmt.Sprintf("ccgo_%s_%s.go", goos, goarch)
 	util.MustCopyFile(false, fn, filepath.Join(makeRoot, result), nil)

@@ -23,7 +23,7 @@ edit:
 editor:
 	gofmt -l -s -w . 2>&1 | tee log-editor
 	go test -c -o /dev/null 2>&1 | tee -a log-editor
-	go install -v  ./... 2>&1 | tee -a log-editor
+	go build -v  -o /dev/null ./... 2>&1 | tee -a log-editor
 	go build -o /dev/null generator*.go
 
 generate:
@@ -35,7 +35,6 @@ generate:
 	# go install github.com/mdempsky/unconvert@latest
 	./unconvert.sh
 	go build -v ./...  | tee -a log-generate
-	go test -v -count=1 ./... 2>&1 | tee -a log-generate
 	git status
 	grep 'TRC\|TODO\|ERRORF\|FAIL' log-generate || true
 	grep 'TRC\|TODO\|ERRORF\|FAIL' log-generate-errors || true
@@ -50,7 +49,6 @@ dev:
 	./unconvert.sh
 	date 2>&1 | tee -a log-generate
 	go build -v ./...  | tee -a log-generate
-	go test -v -count=1 ./... 2>&1 | tee -a log-generate
 	git status
 	grep 'TRC\|TODO\|ERRORF\|FAIL' log-generate || true
 	grep 'TRC\|TODO\|ERRORF\|FAIL' log-generate-errors || true
