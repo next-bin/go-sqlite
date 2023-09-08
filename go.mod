@@ -4,7 +4,7 @@ go 1.21.0
 
 require (
 	modernc.org/ccgo/v3 v3.16.15
-	modernc.org/libc/v2 v2.0.0-20230907145516-9bec6ea70f4f
+	modernc.org/libc/v2 v2.0.0-20230908204726-5fe9ea753f84
 )
 
 require (
