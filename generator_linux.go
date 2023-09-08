@@ -1,4 +1,4 @@
-// Copyright 2023 The Tcl Authors. All rights reserved.
+// Copyright 2023 The libtcl-go Authors. All rights reserved.
 // Use of the source code is governed by a BSD-style
 // license that can be found in the LICENSE file.
 
@@ -122,6 +122,7 @@ func main() {
 			"--prefix-undefined=_",
 			"-exec-cc", cCompiler,
 			"-extended-errors",
+			"-hide", "TclpCreateProcess",
 		)
 		if err := ccgo.NewTask(goos, goarch, append(args, "-exec", "make", "libtcl8.6.a"), os.Stdout, os.Stderr, nil).Main(); err != nil {
 			return err
@@ -133,7 +134,7 @@ func main() {
 		}
 
 		os.Setenv(ccgo.CCEnvVar, "")
-		return ccgo.NewTask(goos, goarch, append(args, "-o", result, "--package-name", "libtcl8_6", "libtcl8.6.a", "-lz"), os.Stdout, os.Stderr, nil).Main()
+		return ccgo.NewTask(goos, goarch, append(args, "-o", result, "--package-name", "libtcl8_6", "-ignore-link-errors", "libtcl8.6.a", "-lz"), os.Stdout, os.Stderr, nil).Main()
 	})
 
 	util.MustCopyFile(false, filepath.Join("include", goos, goarch, "tcl.h"), filepath.Join(libRoot, "generic", "tcl.h"), nil)
