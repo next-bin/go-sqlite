@@ -2,9 +2,11 @@ module modernc.org/libtcl8.6
 
 go 1.21.0
 
+toolchain go1.21.1
+
 require (
-	modernc.org/libc/v2 v2.0.0-20230908204726-5fe9ea753f84
-	modernc.org/libz v0.0.0-20230908204859-f560e55dee48
+	modernc.org/libc/v2 v2.0.0-20230909153636-7d89a0e1d366
+	modernc.org/libz v0.0.0-20230909153830-1b3471baf940
 )
 
 require (
@@ -20,7 +22,7 @@ require (
 	modernc.org/cc/v3 v3.41.0 // indirect
 	modernc.org/cc/v4 v4.13.5 // indirect
 	modernc.org/ccgo/v3 v3.16.15 // indirect
-	modernc.org/ccgo/v4 v4.0.0-20230907145325-3a718de89576 // indirect
+	modernc.org/ccgo/v4 v4.0.0-20230909153428-d304221a1bb7 // indirect
 	modernc.org/gc/v2 v2.3.0 // indirect
 	modernc.org/libc v1.24.1 // indirect
 	modernc.org/mathutil v1.6.0 // indirect

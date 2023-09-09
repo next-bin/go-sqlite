@@ -21,7 +21,6 @@ import (
 
 const (
 	archivePath = "tcl8.6.13.tar.gz"
-	cCompiler   = "gcc"
 )
 
 var (
@@ -35,7 +34,7 @@ func fail(rc int, msg string, args ...any) {
 }
 
 func main() {
-	if os.Getenv(ccgo.CCEnvVar) != "" {
+	if ccgo.IsExecEnv() {
 		if err := ccgo.NewTask(goos, goarch, os.Args, os.Stdout, os.Stderr, nil).Main(); err != nil {
 			fmt.Fprintln(os.Stderr, err)
 		}
@@ -86,10 +85,10 @@ func main() {
 	result := "libtcl.a.go"
 	util.MustInDir(true, makeRoot, func() (err error) {
 		cflags := []string{
-			"-DTCL_MEM_DEBUG", //TODO-
+			// "-DTCL_MEM_DEBUG", //TODO-
 			"-UHAVE_CPUID",
 			"-UHAVE_FTS",
-			"-UNDEBUG", //TODO-
+			// "-UNDEBUG", //TODO-
 		}
 		if s := cc.LongDouble64Flag(goos, goarch); s != "" {
 			cflags = append(cflags, s)
@@ -98,14 +97,14 @@ func main() {
 		if dev {
 			util.MustShell(true, "sh", "-c", "go work init ; go work use $GOPATH/src/modernc.org/libc/v2 $GOPATH/src/modernc.org/libz")
 		}
-		util.MustShell(true, "sh", "-c", fmt.Sprintf("CC=%s CFLAGS='%s' ./configure --disable-threads --disable-shared --disable-load", cCompiler, strings.Join(cflags, " ")))
+		util.MustShell(true, "sh", "-c", fmt.Sprintf("CFLAGS='%s' ./configure --disable-threads --disable-shared --disable-load", strings.Join(cflags, " ")))
 		args := []string{os.Args[0]}
 		if dev {
 			args = append(
 				args,
 				"-absolute-paths",
 				"-positions",
-				"-verify-types",
+				// "-verify-types",
 			)
 		}
 		args = append(args,
@@ -120,20 +119,17 @@ func main() {
 			"--prefix-tagged-union=T",
 			"--prefix-typename=T",
 			"--prefix-undefined=_",
-			"-exec-cc", cCompiler,
 			"-extended-errors",
 			"-hide", "TclpCreateProcess",
 		)
-		if err := ccgo.NewTask(goos, goarch, append(args, "-exec", "make", "libtcl8.6.a"), os.Stdout, os.Stderr, nil).Main(); err != nil {
+		if err := ccgo.NewTask(goos, goarch, append(args, "-exec", "make", "libtcl8.6.a"), os.Stdout, os.Stderr, nil).Exec(); err != nil {
 			return err
 		}
 
-		os.Setenv(ccgo.CCEnvVar, "")
-		if err := ccgo.NewTask(goos, goarch, append(args, "-exec", "make", "tcltest"), os.Stdout, os.Stderr, nil).Main(); err != nil {
+		if err := ccgo.NewTask(goos, goarch, append(args, "-exec", "make", "tcltest"), os.Stdout, os.Stderr, nil).Exec(); err != nil {
 			return err
 		}
 
-		os.Setenv(ccgo.CCEnvVar, "")
 		return ccgo.NewTask(goos, goarch, append(args, "-o", result, "--package-name", "libtcl8_6", "-ignore-link-errors", "libtcl8.6.a", "-lz"), os.Stdout, os.Stderr, nil).Main()
 	})
 

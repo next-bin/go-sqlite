@@ -7,8 +7,8 @@ package main
 import (
 	"fmt"
 	"os/exec"
-	"unsafe"
 	"syscall"
+	"unsafe"
 
 	"modernc.org/libc/v2"
 )
