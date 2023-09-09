@@ -21,7 +21,6 @@ import (
 
 const (
 	archivePath = "zlib-1.3.tar.gz"
-	cCompiler   = "gcc"
 )
 
 var (
@@ -35,7 +34,7 @@ func fail(rc int, msg string, args ...any) {
 }
 
 func main() {
-	if os.Getenv(ccgo.CCEnvVar) != "" {
+	if ccgo.IsExecEnv() {
 		if err := ccgo.NewTask(goos, goarch, os.Args, os.Stdout, os.Stderr, nil).Main(); err != nil {
 			fmt.Fprintln(os.Stderr, err)
 		}
@@ -86,7 +85,7 @@ func main() {
 		if dev {
 			util.MustShell(true, "sh", "-c", "go work init ; go work use $GOPATH/src/modernc.org/libc/v2")
 		}
-		util.MustShell(true, "sh", "-c", fmt.Sprintf("CC=%s %s ./configure", cCompiler, cflags))
+		util.MustShell(true, "sh", "-c", fmt.Sprintf("%s ./configure", cflags))
 		args := []string{os.Args[0]}
 		if dev {
 			args = append(
@@ -97,7 +96,6 @@ func main() {
 			)
 		}
 		args = append(args,
-			// "--package-name=libz",
 			"--prefix-enumerator=_",
 			"--prefix-external=x_",
 			"--prefix-field=F",
@@ -109,17 +107,12 @@ func main() {
 			"--prefix-tagged-union=T",
 			"--prefix-typename=T",
 			"--prefix-undefined=_",
-			"-exec-cc", cCompiler,
 			"-extended-errors",
-			// "-ignore-asm-errors",               //TODO- it is possible
-			// "-ignore-unsupported-alignment",    //TODO- only if possible
-			// "-ignore-unsupported-atomic-sizes", //TODO- it is possible
 		)
-		if err := ccgo.NewTask(goos, goarch, append(args, "--package-name=main", "-exec", "make", "libz.a", "example64", "minigzip64"), os.Stdout, os.Stderr, nil).Main(); err != nil {
+		if err := ccgo.NewTask(goos, goarch, append(args, "--package-name=main", "-exec", "make", "libz.a", "example64", "minigzip64"), os.Stdout, os.Stderr, nil).Exec(); err != nil {
 			fail(1, "%v", err)
 		}
 
-		os.Setenv(ccgo.CCEnvVar, "")
 		return ccgo.NewTask(goos, goarch, append(args, "--package-name=libz", "-o", result, "libz.a"), os.Stdout, os.Stderr, nil).Main()
 	})
 
