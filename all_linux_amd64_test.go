@@ -5,6 +5,7 @@
 package libtcl8_6 // import "modernc.org/libtcl8_6"
 
 import (
+	"flag"
 	"io"
 	"os"
 	"os/exec"
@@ -14,6 +15,62 @@ import (
 	"time"
 
 	"modernc.org/libc/v2"
+)
+
+var (
+	notFiles = []string{
+		// Memory corruption?
+		"tcltest.test",
+	}
+	skipFiles = []string{
+		// crash in libc.Xstrcmp
+		"chan-io-71.*",
+		"chan-io-72.*",
+		"io-53.*",
+		"io-71.*",
+		"io-72.*",
+		"iocmd-21.*",
+		"iocmd-22.*",
+		"iocmd-23.*",
+		"iocmd-24.*",
+		"iocmd-28.*",
+		"iocmd-29.*",
+		"iocmd-32.*",
+		"iortrans-3.*",
+		"iortrans-4.*",
+		"iortrans-5.*",
+		"iortrans-8.*",
+		"iortrans-11.*",
+
+		// fails
+		"next-tailcall-constructor-1",
+		"next-tailcall-destructor-1",
+		"next-tailcall-filter-1",
+		"next-tailcall-forward-1",
+		"next-tailcall-mixin-1",
+		"next-tailcall-objmixin-1",
+		"next-tailcall-simple-1",
+		"next-tailcall-simple-2",
+		"next-tailcall-simple-3",
+		"next-tailcall-simple-4",
+		"next-tailcall-superclass-1",
+		"next-tailcall-superclass-2",
+		"tailcall-12.1",
+		"tailcall-12.2",
+		"unixInit-3.1",
+		"unixInit-3.2",
+	}
+
+	// https://www.tcl.tk/man/tcl8.6/TclCmd/tcltest.html
+	oDebug      = flag.String("debug", "0", "0, 1, 2 or 3")
+	oFile       = flag.String("file", "", "pattern list")
+	oMatch      = flag.String("match", "", "pattern list")
+	oNotFile    = flag.String("notfile", strings.Join(notFiles, " "), "pattern list")
+	oSingleProc = flag.String("singleproc", "0", "0 or 1")
+	oSkip       = flag.String("skip", strings.Join(skipFiles, " "), "pattern list")
+	oTmpdir     = flag.String("tmpdir", "", "directory")
+	oVerbose    = flag.String("verbose", "el", "any combination of letters b, p, s, t, e, l, m, u")
+	oXtags      = flag.String("xtags", "", "")
 )
 
 func TestMain(m *testing.M) {
@@ -70,101 +127,37 @@ func Test2(t *testing.T) {
 
 	dir := t.TempDir()
 	bin := filepath.Join(dir, "tcltest")
-	out, err := exec.Command("go", "build", "-o", bin, "./"+filepath.Join("internal", "tcltest")).CombinedOutput()
+	out, err := exec.Command("go", "build", "-o", bin, "-tags="+*oXtags, "./"+filepath.Join("internal", "tcltest")).CombinedOutput()
 	if err != nil {
 		t.Fatalf("%s\nFAIL: %s", out, err)
 	}
 
 	var stdout, stderr strings.Builder
-	notFiles := []string{
-		// hangs
-		"http11.test",
-		"socket.test",
-
-		// Memory corruption?
-		"tcltest.test",
-	}
-	skipTests := []string{
-		// hangs
-		`apply-4.5`,
-		`http-3.*`,
-		`http-4.*`,
-		`http-6.*`,
-		`httpold-3.*`,
-		`httpold-4.*`,
-		`httpold-6.*`,
-		`namespace-42.*`,
-		`namespace-46.*`,
-		`namespace-48.*`,
-		`namespace-53.*`,
-		`nre-4.2`,
-		`tailcall-0.5.*`,
-		`unixInit-1.2`,
-		`zlib-8.3`,
-		`zlib-9.3`,
-
-		// panic in libc.Xstrcmp
-		"chan-io-71.*",
-		"chan-io-72.*",
-		"io-53.*",
-		"io-71.*",
-		"io-72.*",
-		"iocmd-21.*",
-		"iocmd-22.*",
-		"iocmd-23.*",
-		"iocmd-24.*",
-		"iocmd-28.*",
-		"iocmd-29.*",
-		"iocmd-32.*",
-		"iortrans-3.*",
-		"iortrans-4.*",
-		"iortrans-5.*",
-		"iortrans-8.*",
-		"iortrans-11.*",
-
-		// fails
-		"filesystem-1.10",
-		"filesystem-1.11",
-		"filesystem-1.2",
-		"filesystem-1.28",
-		"filesystem-1.29.1",
-		"filesystem-1.3",
-		"filesystem-1.4",
-		"filesystem-1.7",
-		"filesystem-1.9",
-		"iortrans-3.1",
-		"next-tailcall-constructor-1",
-		"next-tailcall-destructor-1",
-		"next-tailcall-filter-1",
-		"next-tailcall-forward-1",
-		"next-tailcall-mixin-1",
-		"next-tailcall-objmixin-1",
-		"next-tailcall-simple-1",
-		"next-tailcall-simple-2",
-		"next-tailcall-simple-3",
-		"next-tailcall-simple-4",
-		"next-tailcall-superclass-1",
-		"next-tailcall-superclass-2",
-		"tailcall-12.1",
-		"tailcall-12.2",
-		"tch",
-		"unixInit-3.1",
-		"unixInit-3.2",
-	}
-	args := []string{ // https://www.tcl.tk/man/tcl8.6/TclCmd/tcltest.html
+	args := []string{
 		filepath.Join(wd, "internal", "tests", "all.tcl"),
-		// "-debug", "3",
+		"-debug", *oDebug,
 		"-errfile", "errfile",
-		// "-file", "http.test",
-		// "-singleproc", "1",
-		// "-verbose", "bpstelmu",
+		"-singleproc", *oSingleProc,
 	}
-	if len(skipTests) != 0 {
-		args = append(args, "-skip", strings.Join(skipTests, " "))
+	if s := *oVerbose; s != "" {
+		args = append(args, "-verbose", s)
 	}
-	if len(notFiles) != 0 {
-		args = append(args, "-notfile", strings.Join(notFiles, " "))
+	if s := *oFile; s != "" {
+		args = append(args, "-file", s)
 	}
+	if s := *oMatch; s != "" {
+		args = append(args, "-match", s)
+	}
+	if s := *oNotFile; s != "" {
+		args = append(args, "-notfile", s)
+	}
+	if s := *oSkip; s != "" {
+		args = append(args, "-skip", s)
+	}
+	if s := *oTmpdir; s != "" {
+		args = append(args, "-tmpdir", s)
+	}
+	t.Logf("%q %q", bin, args)
 	cmd := exec.Command(bin, args...)
 	cmd.Dir = dir
 	cmd.Stdout = io.MultiWriter(os.Stdout, &stdout)
@@ -180,7 +173,7 @@ out:
 	for i, v := range all {
 		switch {
 		case
-			strings.HasPrefix(v, "=====") && strings.Contains(v, "FAILED"),
+			strings.HasPrefix(v, "====") && strings.Contains(v, "FAILED"),
 			strings.Contains(v, "panic:"):
 			t.Error(v)
 		case strings.HasPrefix(v, "all.tcl:"):

@@ -21,6 +21,8 @@ modernc.org/cc/v3 v3.41.0 h1:QoR1Sn3YWlmA1T4vLaKZfawdVtSiGx8H+cEojbC7v1Q=
 modernc.org/cc/v3 v3.41.0/go.mod h1:Ni4zjJYJ04CDOhG7dn640WGfwBzfE0ecX8TyMB0Fv0Y=
 modernc.org/cc/v4 v4.13.5 h1:x7z+0nIwnBmSYPhEKatb/FYO84ou11/a/LUGz/KAxBk=
 modernc.org/cc/v4 v4.13.5/go.mod h1:IuZuuyktDzNOStVJJN2bRWEpDI1nwsbeTIDnJArdYF0=
+modernc.org/cc/v4 v4.14.0 h1:cXjoc/ZD6lcNvPx38B2w9mWpjn7i9zidJ+GoxCThgD4=
+modernc.org/cc/v4 v4.14.0/go.mod h1:1v9P0fJq3aPgNV5Rw2HJQr5PszpP31yhpORcF4WkeTw=
 modernc.org/ccgo/v3 v3.16.15 h1:KbDR3ZAVU+wiLyMESPtbtE/Add4elztFyfsWoNTgxS0=
 modernc.org/ccgo/v3 v3.16.15/go.mod h1:yT7B+/E2m43tmMOT51GMoM98/MtHIcQQSleGnddkUNI=
 modernc.org/ccgo/v4 v4.0.0-20230905180348-5cccf64dc289 h1:Be/G6+KITmIK8GJuuDfSsjcIzdTIb6hnW80O4hkHpwQ=
@@ -29,6 +31,8 @@ modernc.org/ccgo/v4 v4.0.0-20230907145325-3a718de89576 h1:LdKMYwThHIlRba9IHT2bjJ
 modernc.org/ccgo/v4 v4.0.0-20230907145325-3a718de89576/go.mod h1:b5CvpRtOCFAEZO3gX0KqpQ2BZI8eiX13DO8CkK1YFAE=
 modernc.org/ccgo/v4 v4.0.0-20230909153428-d304221a1bb7 h1:PSBU1GB2eXqWDjejhv4Zd1oGnAOjyCxlHXivh8XaWqg=
 modernc.org/ccgo/v4 v4.0.0-20230909153428-d304221a1bb7/go.mod h1:A3m3d98B06xXRL2Jjwz1GFgCKo2OBiGd46dAbrif7iU=
+modernc.org/ccgo/v4 v4.0.0-20230910201309-8fb17e219a71 h1:KUeHXNdejwR4AFlfTUdA4pRZ+biHp/l02KACOml6vAE=
+modernc.org/ccgo/v4 v4.0.0-20230910201309-8fb17e219a71/go.mod h1:SeEmAnMTjIZYX96/SQEgjkGJnNNMwWQVh90tbXZUE/k=
 modernc.org/gc/v2 v2.3.0 h1:DubPTNRbXOG5xXPyULfM0XNJH/HCWdl+cLM3fJf0MXg=
 modernc.org/gc/v2 v2.3.0/go.mod h1:wzN5dK1AzVGoH6XOzc3YZ+ey/jPgYHLuVckd62P0GYU=
 modernc.org/libc v1.24.1 h1:uvJSeCKL/AgzBo2yYIPPTy82v21KgGnizcGYfBHaNuM=
@@ -43,6 +47,8 @@ modernc.org/libc/v2 v2.0.0-20230908204726-5fe9ea753f84 h1:8cTczgdvEdrvoJ89vbugeu
 modernc.org/libc/v2 v2.0.0-20230908204726-5fe9ea753f84/go.mod h1:g1Zo465RieESmBVnTWpguOFLAoA3D5maPmqHebTX9AU=
 modernc.org/libc/v2 v2.0.0-20230909153636-7d89a0e1d366 h1:9ngNla62WEo6XzhV4HGGkXVHeNuOZte8YmcinMH7wgM=
 modernc.org/libc/v2 v2.0.0-20230909153636-7d89a0e1d366/go.mod h1:TNWNldOHZpyjr7nv/N8VazdQCntXGPeZwbX96DGVyIg=
+modernc.org/libc/v2 v2.0.0-20230910201505-9b67a44acaac h1:55g7C3O9HMNZ8aSRjiSf/rYBJtupW/q+aVPWTzXWzoc=
+modernc.org/libc/v2 v2.0.0-20230910201505-9b67a44acaac/go.mod h1:AXx918cSEMOPC8LzZV0n+c+PIPK5fs8rLKWcpkKLgcw=
 modernc.org/libz v0.0.0-20230904213426-bb1c763ca702 h1:GJ9VKbeQUirg0PiWS0eU4GHsidOUAQWafaVE7/gPDpI=
 modernc.org/libz v0.0.0-20230904213426-bb1c763ca702/go.mod h1:dSX5VpUWEICjkqsUgeYbsd6cOJxPLVq/MKhGWZ6nMjo=
 modernc.org/libz v0.0.0-20230905181401-64ebc7d0f8ab h1:q4f1TzQguMJtWNzZZhPLFlfhQBitVf5AnIjdUwT/CQY=
@@ -53,6 +59,8 @@ modernc.org/libz v0.0.0-20230908204859-f560e55dee48 h1:4a33KS770+vAUtbGfslujS515
 modernc.org/libz v0.0.0-20230908204859-f560e55dee48/go.mod h1:6bWAACxmPG71GSM06SwakYTv0rOetZy6ugaJUUBJBFE=
 modernc.org/libz v0.0.0-20230909153830-1b3471baf940 h1:8RbU0r4WR3ya9PvmceKunHJ7Jod3iqz+Is/XsS9P24A=
 modernc.org/libz v0.0.0-20230909153830-1b3471baf940/go.mod h1:fP5QFmdnmmUD78RE69CQ9GQuUQHBnhoJCXR+L8M//RU=
+modernc.org/libz v0.0.0-20230910201901-b10dad223d68 h1:PLEjBJLDoWMKwTE/y/Em0icaQc46cMwDdGPvOC6+BJM=
+modernc.org/libz v0.0.0-20230910201901-b10dad223d68/go.mod h1:oqQFHGI6b64+t9sUdEKWRYypSXqBfdyv38vrZ94LdlY=
 modernc.org/mathutil v1.6.0 h1:fRe9+AmYlaej+64JsEEhoWuAYBkOtQiMEU7n/XgfYi4=
 modernc.org/mathutil v1.6.0/go.mod h1:Ui5Q9q1TR2gFm0AQRqQUaBWFLAhQpCwNcuhBOSedWPo=
 modernc.org/memory v1.7.1 h1:9J+2/GKTlV503mk3yv8QJ6oEpRCUrRy0ad8TXEPoV8M=
