@@ -94,7 +94,7 @@ func main() {
 		if dev {
 			util.MustShell(true, "sh", "-c", "go work init ; go work use $GOPATH/src/modernc.org/libc/v2 $GOPATH/src/modernc.org/libz $GOPATH/src/modernc.org/libtcl8.6")
 		}
-		util.MustShell(true, "sh", "-c", fmt.Sprintf("CFLAGS='%s' ./configure --disable-shared --enable-static --disable-threadsafe --disable-amalgamation --disable-load-extension --enable-all --enable-update-limit", strings.Join(cflags, " ")))
+		util.MustShell(true, "sh", "-c", fmt.Sprintf("CFLAGS='%s' ./configure --disable-threadsafe --disable-amalgamation --disable-load-extension", strings.Join(cflags, " ")))
 		util.MustShell(true, "make", "sqlite3.c")
 		args := []string{os.Args[0]}
 		if dev {
@@ -102,7 +102,6 @@ func main() {
 				args,
 				"-absolute-paths",
 				"-positions",
-				// "-verify-types",
 			)
 		}
 		args = append(args,
@@ -118,21 +117,18 @@ func main() {
 			"--prefix-typename=T",
 			"--prefix-undefined=_",
 			"-DSQLITE_THREADSAFE=0",
+			"-Dpread64=pread",
+			"-Dpwrite64=pwrite",
 			"-extended-errors",
 		)
 		if err := ccgo.NewTask(goos, goarch, append(args, "--package-name", "libsqlite3", "sqlite3.c"), os.Stdout, os.Stderr, nil).Main(); err != nil {
 			return err
 		}
 
-		// if err := ccgo.NewTask(goos, goarch, append(args, "-exec", "make", "libtcl8.6.a"), os.Stdout, os.Stderr, nil).Exec(); err != nil {
-		// 	return err
-		// }
+		if err := ccgo.NewTask(goos, goarch, append(args, "-exec", "make", "testfixture"), os.Stdout, os.Stderr, nil).Exec(); err != nil {
+			return err
+		}
 
-		// if err := ccgo.NewTask(goos, goarch, append(args, "-exec", "make", "tcltest"), os.Stdout, os.Stderr, nil).Exec(); err != nil {
-		// 	return err
-		// }
-
-		// return ccgo.NewTask(goos, goarch, append(args, "-o", result, "--package-name", "libtcl8_6", "-ignore-link-errors", "libtcl8.6.a", "-lz"), os.Stdout, os.Stderr, nil).Main()
 		return nil
 	})
 
