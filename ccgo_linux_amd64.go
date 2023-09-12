@@ -492,6 +492,9 @@ func Xadler32(tls *libc.TLS, adler uint64, buf uintptr, len1 uint32) (r uint64) 
 	return Xadler32_z(tls, adler, buf, uint64(len1))
 }
 
+// C documentation
+//
+//	/* ========================================================================= */
 func _adler32_combine_(tls *libc.TLS, adler1 uint64, adler2 uint64, len2 int64) (r uint64) {
 	var rem uint32
 	var sum1, sum2 uint64
@@ -576,6 +579,16 @@ const m_W = 8
 
 type Tz_word_t = uint64
 
+/* If available, use the ARM processor CRC32 instruction. */
+
+// C documentation
+//
+//	/*
+//	  Swap the bytes in a z_word_t to convert between little and big endian. Any
+//	  self-respecting compiler will optimize this to a single machine byte-swap
+//	  instruction, if one is available. This assumes that word_t is either 32 bits
+//	  or 64 bits.
+//	 */
 func _byte_swap(tls *libc.TLS, word uint64) (r uint64) {
 	return word&uint64(0xff00000000000000)>>int32(56) | word&uint64(0xff000000000000)>>int32(40) | word&uint64(0xff0000000000)>>int32(24) | word&uint64(0xff00000000)>>int32(8) | word&uint64(0xff000000)<<int32(8) | word&uint64(0xff0000)<<int32(24) | word&uint64(0xff00)<<int32(40) | word&uint64(0xff)<<int32(56)
 }
@@ -5263,6 +5276,14 @@ var _x2n_table = [32]uint32{
 	31: uint32(0xc4e22c3c),
 }
 
+/* CRC polynomial. */
+
+// C documentation
+//
+//	/*
+//	  Return a(x) multiplied by b(x) modulo p(x), where p(x) is the CRC polynomial,
+//	  reflected. For speed, this requires that a not be zero.
+//	 */
 func _multmodp(tls *libc.TLS, a uint32, b uint32) (r uint32) {
 	var m, p, v1 uint32
 	m = libc.Uint32FromInt32(1) << libc.Int32FromInt32(31)
@@ -5285,6 +5306,12 @@ func _multmodp(tls *libc.TLS, a uint32, b uint32) (r uint32) {
 	return p
 }
 
+// C documentation
+//
+//	/*
+//	  Return x^(n * 2^k) modulo p(x). Requires that x2n_table[] has been
+//	  initialized.
+//	 */
 func _x2nmodp(tls *libc.TLS, n int64, k uint32) (r uint32) {
 	var p uint32
 	p = libc.Uint32FromInt32(1) << libc.Int32FromInt32(31) /* x^0 == 1 */
@@ -5308,6 +5335,23 @@ func Xget_crc_table(tls *libc.TLS) (r uintptr) {
 	return uintptr(unsafe.Pointer(&_crc_table))
 }
 
+/* =========================================================================
+ * Use ARM machine instructions if available. This will compute the CRC about
+ * ten times faster than the braided calculation. This code does not check for
+ * the presence of the CRC instruction at run time. __ARM_FEATURE_CRC32 will
+ * only be defined if the compilation specifies an ARM processor architecture
+ * that has the instructions. For example, compiling with -march=armv8.1-a or
+ * -march=armv8-a+crc, or -march=native if the compile machine has the crc32
+ * instructions.
+ */
+
+// C documentation
+//
+//	/*
+//	  Return the CRC of the W bytes in the word_t data, taking the
+//	  least-significant byte of the word as the first byte of data, without any pre
+//	  or post conditioning. This is used to combine the CRCs of each braid.
+//	 */
 func _crc_word(tls *libc.TLS, data uint64) (r uint32) {
 	var k int32
 	for k = 0; k < int32(m_W); k++ {
@@ -5868,8 +5912,45 @@ func init() {
 	*(*uintptr)(unsafe.Add(p, 120)) = __ccgo_fp(_deflate_slow)
 	*(*uintptr)(unsafe.Add(p, 136)) = __ccgo_fp(_deflate_slow)
 	*(*uintptr)(unsafe.Add(p, 152)) = __ccgo_fp(_deflate_slow)
-}
+} /* max compression */
 
+/* Note: the deflate() code requires max_lazy >= MIN_MATCH and max_chain >= 4
+ * For deflate_fast() (levels <= 3) good is ignored and lazy has a different
+ * meaning.
+ */
+
+/* rank Z_BLOCK between Z_NO_FLUSH and Z_PARTIAL_FLUSH */
+
+/* ===========================================================================
+ * Update a hash value with the given input byte
+ * IN  assertion: all calls to UPDATE_HASH are made with consecutive input
+ *    characters, so that a running hash key can be computed from the previous
+ *    key instead of complete recalculation each time.
+ */
+
+/* ===========================================================================
+ * Insert string str in the dictionary and set match_head to the previous head
+ * of the hash chain (the most recent string with same hash key). Return
+ * the previous length of the hash chain.
+ * If this file is compiled with -DFASTEST, the compression level is forced
+ * to 1, and no hash chains are maintained.
+ * IN  assertion: all calls to INSERT_STRING are made with consecutive input
+ *    characters and the first MIN_MATCH bytes of str are valid (except for
+ *    the last MIN_MATCH-1 bytes of the input file).
+ */
+
+/* ===========================================================================
+ * Initialize the hash table (avoiding 64K overflow for 16 bit systems).
+ * prev[] will be initialized on the fly.
+ */
+
+// C documentation
+//
+//	/* ===========================================================================
+//	 * Slide the hash table when sliding the window down (could be avoided with 32
+//	 * bit values at the expense of memory usage). We slide even when level == 0 to
+//	 * keep the hash table consistent if we switch back to level > 0 later.
+//	 */
 func _slide_hash(tls *libc.TLS, s uintptr) {
 	var m, n, wsize, v1, v3, v4, v6 uint32
 	var p, v2, v5 uintptr
@@ -5919,6 +6000,15 @@ func _slide_hash(tls *libc.TLS, s uintptr) {
 	}
 }
 
+// C documentation
+//
+//	/* ===========================================================================
+//	 * Read a new buffer from the current input stream, update the adler32
+//	 * and total number of bytes read.  All deflate() input goes through
+//	 * this function so some applications may wish to modify it to avoid
+//	 * allocating a large strm->next_in buffer and copying from it.
+//	 * (See also flush_pending()).
+//	 */
 func _read_buf(tls *libc.TLS, strm uintptr, buf uintptr, size uint32) (r uint32) {
 	var len1 uint32
 	len1 = (*Tz_stream)(unsafe.Pointer(strm)).Favail_in
@@ -5940,6 +6030,18 @@ func _read_buf(tls *libc.TLS, strm uintptr, buf uintptr, size uint32) (r uint32)
 	return len1
 }
 
+// C documentation
+//
+//	/* ===========================================================================
+//	 * Fill the window when the lookahead becomes insufficient.
+//	 * Updates strstart and lookahead.
+//	 *
+//	 * IN assertion: lookahead < MIN_LOOKAHEAD
+//	 * OUT assertions: strstart <= window_size-MIN_LOOKAHEAD
+//	 *    At least one byte has been read, or avail_in == 0; reads are
+//	 *    performed for at least two bytes (required for the zip translate_eol
+//	 *    option -- not supported here).
+//	 */
 func _fill_window(tls *libc.TLS, s uintptr) {
 	var curr, init1 uint64
 	var more, n, str, wsize uint32
@@ -6171,6 +6273,11 @@ func XdeflateInit2_(tls *libc.TLS, strm uintptr, level int32, method int32, wind
 
 var _my_version = [4]int8{'1', '.', '3'}
 
+// C documentation
+//
+//	/* =========================================================================
+//	 * Check for a valid deflate stream state. Return 0 if ok, 1 if not.
+//	 */
 func _deflateStateCheck(tls *libc.TLS, strm uintptr) (r int32) {
 	var s uintptr
 	if strm == uintptr(m_Z_NULL) || (*Tz_stream)(unsafe.Pointer(strm)).Fzalloc == libc.UintptrFromInt32(0) || (*Tz_stream)(unsafe.Pointer(strm)).Fzfree == libc.UintptrFromInt32(0) {
@@ -6316,6 +6423,11 @@ func XdeflateResetKeep(tls *libc.TLS, strm uintptr) (r int32) {
 	return m_Z_OK
 }
 
+// C documentation
+//
+//	/* ===========================================================================
+//	 * Initialize the "longest match" routines for a new zlib stream
+//	 */
 func _lm_init(tls *libc.TLS, s uintptr) {
 	var v1 uint32
 	(*Tdeflate_state)(unsafe.Pointer(s)).Fwindow_size = libc.Uint64FromInt64(2) * uint64((*Tdeflate_state)(unsafe.Pointer(s)).Fw_size)
@@ -6579,6 +6691,13 @@ func XdeflateBound(tls *libc.TLS, strm uintptr, sourceLen uint64) (r uint64) {
 	return sourceLen + sourceLen>>libc.Int32FromInt32(12) + sourceLen>>libc.Int32FromInt32(14) + sourceLen>>libc.Int32FromInt32(25) + uint64(13) - uint64(6) + wraplen
 }
 
+// C documentation
+//
+//	/* =========================================================================
+//	 * Put a short in the pending buffer. The 16-bit value is put in MSB order.
+//	 * IN assertion: the stream state is correct and there is enough room in
+//	 * pending_buf.
+//	 */
 func _putShortMSB(tls *libc.TLS, s uintptr, b uint32) {
 	var v1, v3 uint64
 	var v2, v4 uintptr
@@ -6592,6 +6711,14 @@ func _putShortMSB(tls *libc.TLS, s uintptr, b uint32) {
 	*(*uint8)(unsafe.Pointer((*Tdeflate_state)(unsafe.Pointer(s)).Fpending_buf + uintptr(v3))) = uint8(b & libc.Uint32FromInt32(0xff))
 }
 
+// C documentation
+//
+//	/* =========================================================================
+//	 * Flush as much pending output as possible. All deflate() output, except for
+//	 * some deflate_stored() output, goes through this function so some
+//	 * applications may wish to modify it to avoid allocating a large
+//	 * strm->next_out buffer and copying into it. (See also read_buf()).
+//	 */
 func _flush_pending(tls *libc.TLS, strm uintptr) {
 	var len1 uint32
 	var s uintptr
@@ -7173,6 +7300,17 @@ func XdeflateCopy(tls *libc.TLS, dest uintptr, source uintptr) (r int32) {
 	return m_Z_OK
 }
 
+// C documentation
+//
+//	/* ===========================================================================
+//	 * Set match_start to the longest match starting at the given string and
+//	 * return its length. Matches shorter or equal to prev_length are discarded,
+//	 * in which case the result is equal to prev_length and match_start is
+//	 * garbage.
+//	 * IN assertions: cur_match is the head of the hash chain for the current
+//	 *   string (strstart) and its distance is <= MAX_DIST, and prev_length >= 1
+//	 * OUT assertion: the match length is not greater than s->lookahead.
+//	 */
 func _longest_match(tls *libc.TLS, s uintptr, cur_match uint32) (r uint32) {
 	var best_len, len1, nice_match int32
 	var chain_length, limit, wmask, v1, v2, v3 uint32
@@ -7328,6 +7466,34 @@ func _longest_match(tls *libc.TLS, s uintptr, cur_match uint32) (r uint32) {
 	return (*Tdeflate_state)(unsafe.Pointer(s)).Flookahead
 }
 
+/* ===========================================================================
+ * Flush the current block, with given end-of-file flag.
+ * IN assertion: strstart is set to the end of the current match.
+ */
+
+/* Same but force premature exit if necessary. */
+
+/* Maximum stored block length in deflate format (not including header). */
+
+/* Minimum of a and b. */
+
+// C documentation
+//
+//	/* ===========================================================================
+//	 * Copy without compression as much as possible from the input stream, return
+//	 * the current block state.
+//	 *
+//	 * In case deflateParams() is used to later switch to a non-zero compression
+//	 * level, s->matches (otherwise unused when storing) keeps track of the number
+//	 * of hash table slides to perform. If s->matches is 1, then one hash table
+//	 * slide will be done when switching. If s->matches is 2, the maximum value
+//	 * allowed here, then the hash table will be cleared, since two or more slides
+//	 * is the same as a clear.
+//	 *
+//	 * deflate_stored() is written to minimize the number of times an input byte is
+//	 * copied. It is most efficient with large input and output buffers, which
+//	 * maximizes the opportunities to have a single copy from next_in to next_out.
+//	 */
 func _deflate_stored(tls *libc.TLS, s uintptr, flush int32) (r int32) {
 	var have, last, left, len1, min_block, used, v3, v4, v6, v7 uint32
 	var v1, v5 uint64
@@ -7541,6 +7707,15 @@ func _deflate_stored(tls *libc.TLS, s uintptr, flush int32) (r int32) {
 	return v9
 }
 
+// C documentation
+//
+//	/* ===========================================================================
+//	 * Compress as much as possible from the input stream, return the current
+//	 * block state.
+//	 * This function does not perform lazy evaluation of matches and inserts
+//	 * new strings in the dictionary only for unmatched strings or for short
+//	 * matches. It is used only for the fast compression options.
+//	 */
 func _deflate_fast(tls *libc.TLS, s uintptr, flush int32) (r int32) {
 	var bflush, v8 int32
 	var cc, len1 uint8
@@ -7715,6 +7890,13 @@ func _deflate_fast(tls *libc.TLS, s uintptr, flush int32) (r int32) {
 	return int32(_block_done)
 }
 
+// C documentation
+//
+//	/* ===========================================================================
+//	 * Same as above, but achieves better compression. We use a lazy
+//	 * evaluation for matches: a match is finally adopted only if there is
+//	 * no better match at the next window position.
+//	 */
 func _deflate_slow(tls *libc.TLS, s uintptr, flush int32) (r int32) {
 	var bflush, v8 int32
 	var cc, cc1, len1 uint8
@@ -7943,6 +8125,13 @@ func _deflate_slow(tls *libc.TLS, s uintptr, flush int32) (r int32) {
 	return int32(_block_done)
 }
 
+// C documentation
+//
+//	/* ===========================================================================
+//	 * For Z_RLE, simply look for runs of bytes, generate matches only of distance
+//	 * one.  Do not maintain a hash table.  (It will be regenerated if this run of
+//	 * deflate switches away from Z_RLE.)
+//	 */
 func _deflate_rle(tls *libc.TLS, s uintptr, flush int32) (r int32) {
 	var bflush, v27 int32
 	var cc, len1 uint8
@@ -8120,6 +8309,12 @@ func _deflate_rle(tls *libc.TLS, s uintptr, flush int32) (r int32) {
 	return int32(_block_done)
 }
 
+// C documentation
+//
+//	/* ===========================================================================
+//	 * For Z_HUFFMAN_ONLY, do not look for matches.  Do not maintain a hash table.
+//	 * (It will be regenerated if this run of deflate switches away from Huffman.)
+//	 */
 func _deflate_huff(tls *libc.TLS, s uintptr, flush int32) (r int32) {
 	var bflush int32
 	var cc uint8
@@ -8330,6 +8525,18 @@ func XinflateBackInit_(tls *libc.TLS, strm uintptr, windowBits int32, window uin
 	return m_Z_OK
 }
 
+// C documentation
+//
+//	/*
+//	   Return state with length and distance decoding tables and index sizes set to
+//	   fixed code decoding.  Normally this returns fixed tables from inffixed.h.
+//	   If BUILDFIXED is defined, then instead this routine builds the tables the
+//	   first time it's called, and returns those tables the first time and
+//	   thereafter.  This reduces the size of the code by about 2K bytes, in
+//	   exchange for a little execution time.  However, BUILDFIXED should not be
+//	   used for threaded applications, since the rewriting of the tables and virgin
+//	   may not be thread-safe.
+//	 */
 func _fixedtables(tls *libc.TLS, state uintptr) {
 	(*Tinflate_state)(unsafe.Pointer(state)).Flencode = uintptr(unsafe.Pointer(&_lenfix))
 	(*Tinflate_state)(unsafe.Pointer(state)).Flenbits = uint32(9)
@@ -12333,6 +12540,18 @@ func XinflatePrime(tls *libc.TLS, strm uintptr, bits int32, value int32) (r int3
 	return m_Z_OK
 }
 
+// C documentation
+//
+//	/*
+//	   Return state with length and distance decoding tables and index sizes set to
+//	   fixed code decoding.  Normally this returns fixed tables from inffixed.h.
+//	   If BUILDFIXED is defined, then instead this routine builds the tables the
+//	   first time it's called, and returns those tables the first time and
+//	   thereafter.  This reduces the size of the code by about 2K bytes, in
+//	   exchange for a little execution time.  However, BUILDFIXED should not be
+//	   used for threaded applications, since the rewriting of the tables and virgin
+//	   may not be thread-safe.
+//	 */
 func _fixedtables1(tls *libc.TLS, state uintptr) {
 	(*Tinflate_state)(unsafe.Pointer(state)).Flencode = uintptr(unsafe.Pointer(&_lenfix1))
 	(*Tinflate_state)(unsafe.Pointer(state)).Flenbits = uint32(9)
@@ -15066,6 +15285,22 @@ var _distfix1 = [32]Tcode{
 	},
 }
 
+// C documentation
+//
+//	/*
+//	   Update the window with the last wsize (normally 32K) bytes written before
+//	   returning.  If window does not exist yet, create it.  This is only called
+//	   when a window is already in use, or when output has been written during this
+//	   inflate call, but the end of the deflate stream has not been reached yet.
+//	   It is also called to create a window for dictionary data when a dictionary
+//	   is loaded.
+//
+//	   Providing output buffers larger than 32K to inflate() should provide a speed
+//	   advantage, since only the last 32K of output is copied to the sliding window
+//	   upon return from inflate(), and since all distances after the first 32K of
+//	   output will fall in the output data, making match copies simpler and faster.
+//	   The advantage may be dependent on the size of the processor's data caches.
+//	 */
 func _updatewindow(tls *libc.TLS, strm uintptr, end uintptr, copy1 uint32) (r int32) {
 	var dist uint32
 	var state uintptr
@@ -15112,6 +15347,113 @@ func _updatewindow(tls *libc.TLS, strm uintptr, end uintptr, copy1 uint32) (r in
 	return 0
 }
 
+/* Macros for inflate(): */
+
+/* check function to use adler32() for zlib or crc32() for gzip */
+
+/* check macros for header crc */
+
+/* Load registers with state in inflate() for speed */
+
+/* Restore state from registers in inflate() */
+
+/* Clear the input bit accumulator */
+
+/* Get a byte of input into the bit accumulator, or return from inflate()
+   if there is no input available. */
+
+/* Assure that there are at least n bits in the bit accumulator.  If there is
+   not enough available input to do that, then return from inflate(). */
+
+/* Return the low n bits of the bit accumulator (n < 16) */
+
+/* Remove n bits from the bit accumulator */
+
+/* Remove zero to seven bits as needed to go to a byte boundary */
+
+// C documentation
+//
+//	/*
+//	   inflate() uses a state machine to process as much input data and generate as
+//	   much output data as possible before returning.  The state machine is
+//	   structured roughly as follows:
+//
+//	    for (;;) switch (state) {
+//	    ...
+//	    case STATEn:
+//	        if (not enough input data or output space to make progress)
+//	            return;
+//	        ... make progress ...
+//	        state = STATEm;
+//	        break;
+//	    ...
+//	    }
+//
+//	   so when inflate() is called again, the same case is attempted again, and
+//	   if the appropriate resources are provided, the machine proceeds to the
+//	   next state.  The NEEDBITS() macro is usually the way the state evaluates
+//	   whether it can proceed or should return.  NEEDBITS() does the return if
+//	   the requested bits are not available.  The typical use of the BITS macros
+//	   is:
+//
+//	        NEEDBITS(n);
+//	        ... do something with BITS(n) ...
+//	        DROPBITS(n);
+//
+//	   where NEEDBITS(n) either returns from inflate() if there isn't enough
+//	   input left to load n bits into the accumulator, or it continues.  BITS(n)
+//	   gives the low n bits in the accumulator.  When done, DROPBITS(n) drops
+//	   the low n bits off the accumulator.  INITBITS() clears the accumulator
+//	   and sets the number of available bits to zero.  BYTEBITS() discards just
+//	   enough bits to put the accumulator on a byte boundary.  After BYTEBITS()
+//	   and a NEEDBITS(8), then BITS(8) would return the next byte in the stream.
+//
+//	   NEEDBITS(n) uses PULLBYTE() to get an available byte of input, or to return
+//	   if there is no input available.  The decoding of variable length codes uses
+//	   PULLBYTE() directly in order to pull just enough bytes to decode the next
+//	   code, and no more.
+//
+//	   Some states loop until they get enough input, making sure that enough
+//	   state information is maintained to continue the loop where it left off
+//	   if NEEDBITS() returns in the loop.  For example, want, need, and keep
+//	   would all have to actually be part of the saved state in case NEEDBITS()
+//	   returns:
+//
+//	    case STATEw:
+//	        while (want < need) {
+//	            NEEDBITS(n);
+//	            keep[want++] = BITS(n);
+//	            DROPBITS(n);
+//	        }
+//	        state = STATEx;
+//	    case STATEx:
+//
+//	   As shown above, if the next state is also the next case, then the break
+//	   is omitted.
+//
+//	   A state may also return if there is not enough output space available to
+//	   complete that state.  Those states are copying stored data, writing a
+//	   literal byte, and copying a matching string.
+//
+//	   When returning, a "goto inf_leave" is used to update the total counters,
+//	   update the check value, and determine whether any progress has been made
+//	   during that inflate() call in order to return the proper return code.
+//	   Progress is defined as a change in either strm->avail_in or strm->avail_out.
+//	   When there is a window, goto inf_leave will update the window with the last
+//	   output written.  If a goto inf_leave occurs in the middle of decompression
+//	   and there is no window currently, goto inf_leave will create one and copy
+//	   output to the window for the next call of inflate().
+//
+//	   In this implementation, the flush parameter of inflate() only affects the
+//	   return code (per zlib.h).  inflate() always writes as much as possible to
+//	   strm->next_out, given the space available and the provided input--the effect
+//	   documented in zlib.h of Z_SYNC_FLUSH.  Furthermore, inflate() always defers
+//	   the allocation of and copying into a sliding window until necessary, which
+//	   provides the effect documented in zlib.h for Z_FINISH when the entire input
+//	   stream available.  So the only thing the flush parameter actually does is:
+//	   when flush is set to Z_FINISH, inflate() cannot return Z_OK.  Instead it
+//	   will return Z_BUF_ERROR if it has not reached the end of the stream.
+//	 */
 func Xinflate(tls *libc.TLS, strm uintptr, flush int32) (r int32) {
 	bp := tls.Alloc(16) /* tlsAllocs 8 maxVaListSize 0 */
 	defer tls.Free(16)
@@ -16320,6 +16662,19 @@ func XinflateGetHeader(tls *libc.TLS, strm uintptr, head uintptr) (r int32) {
 	return m_Z_OK
 }
 
+// C documentation
+//
+//	/*
+//	   Search buf[0..len-1] for the pattern: 0, 0, 0xff, 0xff.  Return when found
+//	   or when out of input.  When called, *have is the number of pattern bytes
+//	   found in order so far, in 0..3.  On return *have is updated to the new
+//	   state.  If on return *have equals four, then the pattern was found and the
+//	   return value is how many bytes were read including the last byte of the
+//	   pattern.  If *have is less than four, then the pattern has not been found
+//	   yet and the return value is len.  In the latter case, syncsearch() can be
+//	   called again with more data and the *have state.  *have is initialized to
+//	   zero for the first call.
+//	 */
 func _syncsearch(tls *libc.TLS, have uintptr, buf uintptr, len1 uint32) (r uint32) {
 	var got, next uint32
 	var v1 int32
@@ -20368,6 +20723,18 @@ var _static_bl_desc = Tstatic_tree_desc{
 	Fmax_length:  int32(m_MAX_BL_BITS),
 }
 
+/* ===========================================================================
+ * Output a short LSB first on the stream.
+ * IN assertion: there is enough room in pendingBuf.
+ */
+
+// C documentation
+//
+//	/* ===========================================================================
+//	 * Reverse the first len bits of a code, using straightforward code (a faster
+//	 * method would use a table)
+//	 * IN assertion: 1 <= len <= 15
+//	 */
 func _bi_reverse(tls *libc.TLS, code uint32, len1 int32) (r uint32) {
 	var res uint32
 	var v1 int32
@@ -20387,6 +20754,11 @@ func _bi_reverse(tls *libc.TLS, code uint32, len1 int32) (r uint32) {
 	return res >> int32(1)
 }
 
+// C documentation
+//
+//	/* ===========================================================================
+//	 * Flush the bit buffer, keeping at most 7 bits in it.
+//	 */
 func _bi_flush(tls *libc.TLS, s uintptr) {
 	var v1, v3, v5 uint64
 	var v2, v4, v6, p7 uintptr
@@ -20412,6 +20784,11 @@ func _bi_flush(tls *libc.TLS, s uintptr) {
 	}
 }
 
+// C documentation
+//
+//	/* ===========================================================================
+//	 * Flush the bit buffer and align the output on a byte boundary
+//	 */
 func _bi_windup(tls *libc.TLS, s uintptr) {
 	var v1, v3, v5 uint64
 	var v2, v4, v6 uintptr
@@ -20434,6 +20811,16 @@ func _bi_windup(tls *libc.TLS, s uintptr) {
 	(*Tdeflate_state)(unsafe.Pointer(s)).Fbi_valid = 0
 }
 
+// C documentation
+//
+//	/* ===========================================================================
+//	 * Generate the codes for a given tree and bit counts (which need not be
+//	 * optimal).
+//	 * IN assertion: the array bl_count contains the bit length statistics for
+//	 * the given tree and the field len is set for all tree elements.
+//	 * OUT assertion: the field code is set for all tree elements of non
+//	 *     zero code length.
+//	 */
 func _gen_codes(tls *libc.TLS, tree uintptr, max_code int32, bl_count uintptr) {
 	bp := tls.Alloc(32) /* tlsAllocs 32 maxVaListSize 0 */
 	defer tls.Free(32)
@@ -20469,9 +20856,32 @@ func _gen_codes(tls *libc.TLS, tree uintptr, max_code int32, bl_count uintptr) {
 	}
 }
 
+/* Send a code of the given tree. c and tree must not have side effects */
+
+/* ===========================================================================
+ * Send a value on a given number of bits.
+ * IN assertion: length <= 16 and value fits in length bits.
+ */
+
+/* the arguments must not have side effects */
+
+// C documentation
+//
+//	/* ===========================================================================
+//	 * Initialize the various 'constant' tables.
+//	 */
 func _tr_static_init(tls *libc.TLS) {
 }
 
+/* ===========================================================================
+ * Generate the file trees.h describing the static trees.
+ */
+
+// C documentation
+//
+//	/* ===========================================================================
+//	 * Initialize a new block.
+//	 */
 func _init_block(tls *libc.TLS, s uintptr) {
 	var n int32
 	var v1 uint64
@@ -20515,6 +20925,26 @@ func x__tr_init(tls *libc.TLS, s uintptr) {
 	_init_block(tls, s)
 }
 
+/* Index within the heap array of least frequent node in the Huffman tree */
+
+/* ===========================================================================
+ * Remove the smallest element from the heap and recreate the heap with
+ * one less element. Updates heap and heap_len.
+ */
+
+/* ===========================================================================
+ * Compares to subtrees, using the tree depth as tie breaker when
+ * the subtrees have equal frequency. This minimizes the worst case length.
+ */
+
+// C documentation
+//
+//	/* ===========================================================================
+//	 * Restore the heap property by moving down the tree starting at node k,
+//	 * exchanging a node with the smallest of its two sons if necessary, stopping
+//	 * when the heap property is re-established (each father smaller than its
+//	 * two sons).
+//	 */
 func _pqdownheap(tls *libc.TLS, s uintptr, tree uintptr, k int32) {
 	var j, v int32
 	v = *(*int32)(unsafe.Pointer(s + 3008 + uintptr(k)*4))
@@ -20537,6 +20967,18 @@ func _pqdownheap(tls *libc.TLS, s uintptr, tree uintptr, k int32) {
 	*(*int32)(unsafe.Pointer(s + 3008 + uintptr(k)*4)) = v
 }
 
+// C documentation
+//
+//	/* ===========================================================================
+//	 * Compute the optimal bit lengths for a tree and update the total bit length
+//	 * for the current block.
+//	 * IN assertion: the fields freq and dad are set, heap[heap_max] and
+//	 *    above are the tree nodes sorted by increasing frequency.
+//	 * OUT assertions: the field len is set to the optimal bit length, the
+//	 *     array bl_count contains the frequencies for each bit length.
+//	 *     The length opt_len is updated; static_len is also updated if stree is
+//	 *     not null.
+//	 */
 func _gen_bitlen(tls *libc.TLS, s uintptr, desc uintptr) {
 	var base, bits, h, m, max_code, max_length, n, overflow, xbits, v2 int32
 	var extra, stree, tree, p1 uintptr
@@ -20625,6 +21067,16 @@ func _gen_bitlen(tls *libc.TLS, s uintptr, desc uintptr) {
 	}
 }
 
+// C documentation
+//
+//	/* ===========================================================================
+//	 * Construct one Huffman tree and assigns the code bit strings and lengths.
+//	 * Update the total bit length for the current block.
+//	 * IN assertion: the field freq is set for all tree elements.
+//	 * OUT assertions: the fields len and code are set to the optimal bit length
+//	 *     and corresponding code. The length opt_len is updated; static_len is
+//	 *     also updated if stree is not null. The field max_code is set.
+//	 */
 func _build_tree(tls *libc.TLS, s uintptr, desc uintptr) {
 	var elems, m, max_code, n, node, v1, v11, v13, v15, v17, v18, v3, v4, v5, v6, v7, v9 int32
 	var stree, tree, v10, v12, v14, v19, v2, v8 uintptr
@@ -20741,6 +21193,12 @@ func _build_tree(tls *libc.TLS, s uintptr, desc uintptr) {
 	_gen_codes(tls, tree, max_code, s+2976)
 }
 
+// C documentation
+//
+//	/* ===========================================================================
+//	 * Scan a literal or distance tree to determine the frequencies of the codes
+//	 * in the bit length tree.
+//	 */
 func _scan_tree(tls *libc.TLS, s uintptr, tree uintptr, max_code int32) {
 	var count, curlen, max_count, min_count, n, nextlen, prevlen, v1 int32
 	var p2 uintptr
@@ -20799,6 +21257,12 @@ func _scan_tree(tls *libc.TLS, s uintptr, tree uintptr, max_code int32) {
 	}
 }
 
+// C documentation
+//
+//	/* ===========================================================================
+//	 * Send a literal or distance tree in compressed form, using the codes in
+//	 * bl_tree.
+//	 */
 func _send_tree(tls *libc.TLS, s uintptr, tree uintptr, max_code int32) {
 	var count, curlen, len1, len11, len2, len3, len4, len5, len6, len7, max_count, min_count, n, nextlen, prevlen, val, val1, val2, val3, val4, val5, val6, val7, v1, v2 int32
 	var v10, v12, v16, v18, v22, v24, v28, v30, v34, v36, v4, v40, v42, v46, v48, v6 uint64
@@ -21022,6 +21486,12 @@ func _send_tree(tls *libc.TLS, s uintptr, tree uintptr, max_code int32) {
 	}
 }
 
+// C documentation
+//
+//	/* ===========================================================================
+//	 * Construct the Huffman tree for the bit lengths and return the index in
+//	 * bl_order of the last bit length code to send.
+//	 */
 func _build_bl_tree(tls *libc.TLS, s uintptr) (r int32) {
 	var max_blindex int32
 	/* index of last bit length code of non zero freq */
@@ -21047,6 +21517,13 @@ func _build_bl_tree(tls *libc.TLS, s uintptr) (r int32) {
 	return max_blindex
 }
 
+// C documentation
+//
+//	/* ===========================================================================
+//	 * Send the header for a block using dynamic Huffman trees: the counts, the
+//	 * lengths of the bit length codes, the literal tree and the distance tree.
+//	 * IN assertion: lcodes >= 257, dcodes >= 1, blcodes >= 4.
+//	 */
 func _send_all_trees(tls *libc.TLS, s uintptr, lcodes int32, dcodes int32, blcodes int32) {
 	var len1, len11, len2, len3, rank, val, val1, val2, val3 int32
 	var v10, v14, v16, v2, v20, v22, v4, v8 uint64
@@ -21252,6 +21729,11 @@ func x__tr_align(tls *libc.TLS, s uintptr) {
 	_bi_flush(tls, s)
 }
 
+// C documentation
+//
+//	/* ===========================================================================
+//	 * Send the block data compressed using the given Huffman trees
+//	 */
 func _compress_block(tls *libc.TLS, s uintptr, ltree uintptr, dtree uintptr) {
 	var code, dist, sx, v1, v2, v3 uint32
 	var extra, lc, len1, len11, len2, len3, len4, len5, val, val1, val2, val3, val4, val5, v22 int32
@@ -21418,6 +21900,21 @@ func _compress_block(tls *libc.TLS, s uintptr, ltree uintptr, dtree uintptr) {
 	}
 }
 
+// C documentation
+//
+//	/* ===========================================================================
+//	 * Check if the data type is TEXT or BINARY, using the following algorithm:
+//	 * - TEXT if the two conditions below are satisfied:
+//	 *    a) There are no non-portable control characters belonging to the
+//	 *       "block list" (0..6, 14..25, 28..31).
+//	 *    b) There is at least one printable character belonging to the
+//	 *       "allow list" (9 {TAB}, 10 {LF}, 13 {CR}, 32..255).
+//	 * - BINARY otherwise.
+//	 * - The following partially-portable control characters form a
+//	 *   "gray list" that is ignored in this detection algorithm:
+//	 *   (7 {BEL}, 8 {BS}, 11 {VT}, 12 {FF}, 26 {SUB}, 27 {ESC}).
+//	 * IN assertion: the fields Freq of dyn_ltree are set.
+//	 */
 func _detect_data_type(tls *libc.TLS, s uintptr) (r int32) {
 	var block_mask uint64
 	var n int32
@@ -21968,6 +22465,13 @@ const m_SEEK_CUR = 1
 const m_SEEK_END = 2
 const m_SEEK_SET = 0
 
+/* GT_OFF(x), where x is an unsigned value, is true if x > maximum z_off64_t
+   value -- needed when comparing unsigned to z_off64_t, which is signed
+   (possible z_off64_t types off_t, off64_t, and long are all signed) */
+
+// C documentation
+//
+//	/* Reset gzip file state */
 func _gz_reset(tls *libc.TLS, state uintptr) {
 	(*Tgz_state)(unsafe.Pointer(state)).Fx.Fhave = uint32(0)           /* no output data available */
 	if (*Tgz_state)(unsafe.Pointer(state)).Fmode == int32(m_GZ_READ) { /* for reading ... */
@@ -21983,6 +22487,9 @@ func _gz_reset(tls *libc.TLS, state uintptr) {
 	(*Tgz_state)(unsafe.Pointer(state)).Fstrm.Favail_in = uint32(0) /* no input data yet */
 }
 
+// C documentation
+//
+//	/* Open a gzip file either by name or file descriptor. */
 func _gz_open(tls *libc.TLS, path uintptr, fd int32, mode uintptr) (r uintptr) {
 	bp := tls.Alloc(16) /* tlsAllocs 0 maxVaListSize 8 */
 	defer tls.Free(16)
@@ -22202,6 +22709,9 @@ func Xgzrewind(tls *libc.TLS, file uintptr) (r int32) {
 	return 0
 }
 
+// C documentation
+//
+//	/* -- see zlib.h -- */
 func Xgzseek64(tls *libc.TLS, file uintptr, offset int64, whence int32) (r int64) {
 	var n, v1 uint32
 	var ret int64
@@ -22278,6 +22788,9 @@ func Xgzseek64(tls *libc.TLS, file uintptr, offset int64, whence int32) (r int64
 	return (*Tgz_state)(unsafe.Pointer(state)).Fx.Fpos + offset
 }
 
+// C documentation
+//
+//	/* -- see zlib.h -- */
 func Xgzseek(tls *libc.TLS, file uintptr, offset int64, whence int32) (r int64) {
 	var ret, v1 int64
 	ret = Xgzseek64(tls, file, offset, whence)
@@ -22289,6 +22802,9 @@ func Xgzseek(tls *libc.TLS, file uintptr, offset int64, whence int32) (r int64) 
 	return v1
 }
 
+// C documentation
+//
+//	/* -- see zlib.h -- */
 func Xgztell64(tls *libc.TLS, file uintptr) (r int64) {
 	var state uintptr
 	var v1 int64
@@ -22309,6 +22825,9 @@ func Xgztell64(tls *libc.TLS, file uintptr) (r int64) {
 	return (*Tgz_state)(unsafe.Pointer(state)).Fx.Fpos + v1
 }
 
+// C documentation
+//
+//	/* -- see zlib.h -- */
 func Xgztell(tls *libc.TLS, file uintptr) (r int64) {
 	var ret, v1 int64
 	ret = Xgztell64(tls, file)
@@ -22320,6 +22839,9 @@ func Xgztell(tls *libc.TLS, file uintptr) (r int64) {
 	return v1
 }
 
+// C documentation
+//
+//	/* -- see zlib.h -- */
 func Xgzoffset64(tls *libc.TLS, file uintptr) (r int64) {
 	var offset int64
 	var state uintptr
@@ -22342,6 +22864,9 @@ func Xgzoffset64(tls *libc.TLS, file uintptr) (r int64) {
 	return offset
 }
 
+// C documentation
+//
+//	/* -- see zlib.h -- */
 func Xgzoffset(tls *libc.TLS, file uintptr) (r int64) {
 	var ret, v1 int64
 	ret = Xgzoffset64(tls, file)
@@ -22471,6 +22996,16 @@ func Xgz_error(tls *libc.TLS, state uintptr, err int32, msg uintptr) {
 
 const m_GZIP = 2
 
+/* GT_OFF(x), where x is an unsigned value, is true if x > maximum z_off64_t
+   value -- needed when comparing unsigned to z_off64_t, which is signed
+   (possible z_off64_t types off_t, off64_t, and long are all signed) */
+
+// C documentation
+//
+//	/* Use read() to load a buffer -- return -1 on error, otherwise 0.  Read from
+//	   state->fd, and update state->eof, state->err, and state->msg as appropriate.
+//	   This function needs to loop on read(), since read() is not guaranteed to
+//	   read the number of bytes requested, depending on the type of descriptor. */
 func _gz_load(tls *libc.TLS, state uintptr, buf uintptr, len1 uint32, have uintptr) (r int32) {
 	var get, max uint32
 	var ret int32
@@ -22497,6 +23032,15 @@ func _gz_load(tls *libc.TLS, state uintptr, buf uintptr, len1 uint32, have uintp
 	return 0
 }
 
+// C documentation
+//
+//	/* Load up input buffer and set eof flag if last data loaded -- return -1 on
+//	   error, 0 otherwise.  Note that the eof flag is set when the end of the input
+//	   file is reached, even though there may be unused data in the buffer.  Once
+//	   that data has been used, no more attempts will be made to read the file.
+//	   If strm->avail_in != 0, then the current data is moved to the beginning of
+//	   the input buffer, and then the remainder of the buffer is loaded with the
+//	   available data from the input file. */
 func _gz_avail(tls *libc.TLS, state uintptr) (r int32) {
 	bp := tls.Alloc(16) /* tlsAllocs 8 maxVaListSize 0 */
 	defer tls.Free(16)
@@ -22536,6 +23080,17 @@ func _gz_avail(tls *libc.TLS, state uintptr) (r int32) {
 	return 0
 }
 
+// C documentation
+//
+//	/* Look for gzip header, set up for inflate or copy.  state->x.have must be 0.
+//	   If this is the first time in, allocate required memory.  state->how will be
+//	   left unchanged if there is no more input data available, will be set to COPY
+//	   if there is no gzip header and direct copying will be performed, or it will
+//	   be set to GZIP for decompression.  If direct copying, then leftover input
+//	   data from the input buffer will be copied to the output buffer.  In that
+//	   case, all further file reads will be directly to either the output buffer or
+//	   a user buffer.  If decompressing, the inflate state will be initialized.
+//	   gz_look() will return 0 on success or -1 on failure. */
 func _gz_look(tls *libc.TLS, state uintptr) (r int32) {
 	var strm uintptr
 	strm = state + 128
@@ -22607,6 +23162,13 @@ func _gz_look(tls *libc.TLS, state uintptr) (r int32) {
 	return 0
 }
 
+// C documentation
+//
+//	/* Decompress from input to the provided next_out and avail_out in the state.
+//	   On return, state->x.have and state->x.next point to the just decompressed
+//	   data.  If the gzip stream completes, state->how is reset to LOOK to look for
+//	   the next gzip stream or raw data, once state->x.have is depleted.  Returns 0
+//	   on success, -1 on failure. */
 func _gz_decomp(tls *libc.TLS, state uintptr) (r int32) {
 	var had uint32
 	var ret int32
@@ -22655,6 +23217,14 @@ func _gz_decomp(tls *libc.TLS, state uintptr) (r int32) {
 	return 0
 }
 
+// C documentation
+//
+//	/* Fetch data and put it in the output buffer.  Assumes state->x.have is 0.
+//	   Data is either copied from the input file or decompressed from the input
+//	   file depending on state->how.  If state->how is LOOK, then a gzip header is
+//	   looked for to determine whether to copy or decompress.  Returns -1 on error,
+//	   otherwise 0.  gz_fetch() will leave state->how as COPY or GZIP unless the
+//	   end of the input file has been reached and all data has been processed.  */
 func _gz_fetch(tls *libc.TLS, state uintptr) (r int32) {
 	var strm uintptr
 	strm = state + 128
@@ -22684,6 +23254,9 @@ func _gz_fetch(tls *libc.TLS, state uintptr) (r int32) {
 	return 0
 }
 
+// C documentation
+//
+//	/* Skip len uncompressed bytes of output.  Return -1 on error, 0 on success. */
 func _gz_skip(tls *libc.TLS, state uintptr, len1 int64) (r int32) {
 	var n, v1 uint32
 	/* skip over len bytes or reach end-of-file, whichever comes first */
@@ -22714,6 +23287,12 @@ func _gz_skip(tls *libc.TLS, state uintptr, len1 int64) (r int32) {
 	return 0
 }
 
+// C documentation
+//
+//	/* Read len bytes into buf from file, or less than len up to the end of the
+//	   input.  Return the number of bytes read.  If zero is returned, either the
+//	   end of file was reached, or there was an error.  state->err must be
+//	   consulted in that case to determine which. */
 func _gz_read(tls *libc.TLS, state uintptr, buf uintptr, len1 uint64) (r uint64) {
 	bp := tls.Alloc(16) /* tlsAllocs 8 maxVaListSize 0 */
 	defer tls.Free(16)
@@ -23073,6 +23652,15 @@ func Xgzclose_r(tls *libc.TLS, file uintptr) (r int32) {
 	return v2
 }
 
+/* GT_OFF(x), where x is an unsigned value, is true if x > maximum z_off64_t
+   value -- needed when comparing unsigned to z_off64_t, which is signed
+   (possible z_off64_t types off_t, off64_t, and long are all signed) */
+
+// C documentation
+//
+//	/* Initialize state for writing a gzip file.  Mark initialization by setting
+//	   state->size to non-zero.  Return -1 on a memory allocation failure, or 0 on
+//	   success. */
 func _gz_init(tls *libc.TLS, state uintptr) (r int32) {
 	var ret int32
 	var strm uintptr
@@ -23116,6 +23704,14 @@ func _gz_init(tls *libc.TLS, state uintptr) (r int32) {
 	return 0
 }
 
+// C documentation
+//
+//	/* Compress whatever is at avail_in and next_in and write to the output file.
+//	   Return -1 if there is an error writing to the output file or if gz_init()
+//	   fails to allocate memory, otherwise 0.  flush is assumed to be a valid
+//	   deflate() flush value.  If flush is Z_FINISH, then the deflate() state is
+//	   reset to start a new gzip stream.  If gz->direct is true, then simply write
+//	   to the output file without compressing, and ignore flush. */
 func _gz_comp(tls *libc.TLS, state uintptr, flush int32) (r int32) {
 	var have, max, put, v1, v2 uint32
 	var ret, writ int32
@@ -23197,6 +23793,10 @@ func _gz_comp(tls *libc.TLS, state uintptr, flush int32) (r int32) {
 	return 0
 }
 
+// C documentation
+//
+//	/* Compress len zeros to output.  Return -1 on a write error or memory
+//	   allocation failure by gz_comp(), or 0 on success. */
 func _gz_zero(tls *libc.TLS, state uintptr, len1 int64) (r int32) {
 	var first int32
 	var n, v1 uint32
@@ -23230,6 +23830,10 @@ func _gz_zero(tls *libc.TLS, state uintptr, len1 int64) (r int32) {
 	return 0
 }
 
+// C documentation
+//
+//	/* Write len bytes from buf to file.  Return the number of bytes written.  If
+//	   the returned value is less than len, then there was an error. */
 func _gz_write(tls *libc.TLS, state uintptr, buf uintptr, len1 uint64) (r uint64) {
 	var copy1, have, n uint32
 	var put uint64
