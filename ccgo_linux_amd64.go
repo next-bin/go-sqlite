@@ -571,11 +571,13 @@ const m_W = 8
   that bytes are eight bits.
 */
 
-/*
-  Define W and the associated z_word_t type. If W is not defined, then a
-  braided calculation is not used, and the associated tables and code are not
-  compiled.
-*/
+// C documentation
+//
+//	/*
+//	  Define W and the associated z_word_t type. If W is not defined, then a
+//	  braided calculation is not used, and the associated tables and code are not
+//	  compiled.
+//	 */
 
 type Tz_word_t = uint64
 
@@ -5811,11 +5813,13 @@ type Tcompress_func = uintptr
 
 /* Matches of length 3 are discarded if their distance exceeds TOO_FAR */
 
-/* Values for max_lazy_match, good_match and max_chain_length, depending on
- * the desired pack level (0..9). The values given below have been tuned to
- * exclude worst case performance for pathological files. Better values may be
- * found for specific files.
- */
+// C documentation
+//
+//	/* Values for max_lazy_match, good_match and max_chain_length, depending on
+//	 * the desired pack level (0..9). The values given below have been tuned to
+//	 * exclude worst case performance for pathological files. Better values may be
+//	 * found for specific files.
+//	 */
 
 type Tconfig = struct {
 	Fgood_length uint16
@@ -15371,89 +15375,88 @@ func _updatewindow(tls *libc.TLS, strm uintptr, end uintptr, copy1 uint32) (r in
 
 /* Remove zero to seven bits as needed to go to a byte boundary */
 
-// C documentation
-//
-//	/*
-//	   inflate() uses a state machine to process as much input data and generate as
-//	   much output data as possible before returning.  The state machine is
-//	   structured roughly as follows:
-//
-//	    for (;;) switch (state) {
-//	    ...
-//	    case STATEn:
-//	        if (not enough input data or output space to make progress)
-//	            return;
-//	        ... make progress ...
-//	        state = STATEm;
-//	        break;
-//	    ...
-//	    }
-//
-//	   so when inflate() is called again, the same case is attempted again, and
-//	   if the appropriate resources are provided, the machine proceeds to the
-//	   next state.  The NEEDBITS() macro is usually the way the state evaluates
-//	   whether it can proceed or should return.  NEEDBITS() does the return if
-//	   the requested bits are not available.  The typical use of the BITS macros
-//	   is:
-//
-//	        NEEDBITS(n);
-//	        ... do something with BITS(n) ...
-//	        DROPBITS(n);
-//
-//	   where NEEDBITS(n) either returns from inflate() if there isn't enough
-//	   input left to load n bits into the accumulator, or it continues.  BITS(n)
-//	   gives the low n bits in the accumulator.  When done, DROPBITS(n) drops
-//	   the low n bits off the accumulator.  INITBITS() clears the accumulator
-//	   and sets the number of available bits to zero.  BYTEBITS() discards just
-//	   enough bits to put the accumulator on a byte boundary.  After BYTEBITS()
-//	   and a NEEDBITS(8), then BITS(8) would return the next byte in the stream.
-//
-//	   NEEDBITS(n) uses PULLBYTE() to get an available byte of input, or to return
-//	   if there is no input available.  The decoding of variable length codes uses
-//	   PULLBYTE() directly in order to pull just enough bytes to decode the next
-//	   code, and no more.
-//
-//	   Some states loop until they get enough input, making sure that enough
-//	   state information is maintained to continue the loop where it left off
-//	   if NEEDBITS() returns in the loop.  For example, want, need, and keep
-//	   would all have to actually be part of the saved state in case NEEDBITS()
-//	   returns:
-//
-//	    case STATEw:
-//	        while (want < need) {
-//	            NEEDBITS(n);
-//	            keep[want++] = BITS(n);
-//	            DROPBITS(n);
-//	        }
-//	        state = STATEx;
-//	    case STATEx:
-//
-//	   As shown above, if the next state is also the next case, then the break
-//	   is omitted.
-//
-//	   A state may also return if there is not enough output space available to
-//	   complete that state.  Those states are copying stored data, writing a
-//	   literal byte, and copying a matching string.
-//
-//	   When returning, a "goto inf_leave" is used to update the total counters,
-//	   update the check value, and determine whether any progress has been made
-//	   during that inflate() call in order to return the proper return code.
-//	   Progress is defined as a change in either strm->avail_in or strm->avail_out.
-//	   When there is a window, goto inf_leave will update the window with the last
-//	   output written.  If a goto inf_leave occurs in the middle of decompression
-//	   and there is no window currently, goto inf_leave will create one and copy
-//	   output to the window for the next call of inflate().
-//
-//	   In this implementation, the flush parameter of inflate() only affects the
-//	   return code (per zlib.h).  inflate() always writes as much as possible to
-//	   strm->next_out, given the space available and the provided input--the effect
-//	   documented in zlib.h of Z_SYNC_FLUSH.  Furthermore, inflate() always defers
-//	   the allocation of and copying into a sliding window until necessary, which
-//	   provides the effect documented in zlib.h for Z_FINISH when the entire input
-//	   stream available.  So the only thing the flush parameter actually does is:
-//	   when flush is set to Z_FINISH, inflate() cannot return Z_OK.  Instead it
-//	   will return Z_BUF_ERROR if it has not reached the end of the stream.
-//	 */
+/*
+   inflate() uses a state machine to process as much input data and generate as
+   much output data as possible before returning.  The state machine is
+   structured roughly as follows:
+
+    for (;;) switch (state) {
+    ...
+    case STATEn:
+        if (not enough input data or output space to make progress)
+            return;
+        ... make progress ...
+        state = STATEm;
+        break;
+    ...
+    }
+
+   so when inflate() is called again, the same case is attempted again, and
+   if the appropriate resources are provided, the machine proceeds to the
+   next state.  The NEEDBITS() macro is usually the way the state evaluates
+   whether it can proceed or should return.  NEEDBITS() does the return if
+   the requested bits are not available.  The typical use of the BITS macros
+   is:
+
+        NEEDBITS(n);
+        ... do something with BITS(n) ...
+        DROPBITS(n);
+
+   where NEEDBITS(n) either returns from inflate() if there isn't enough
+   input left to load n bits into the accumulator, or it continues.  BITS(n)
+   gives the low n bits in the accumulator.  When done, DROPBITS(n) drops
+   the low n bits off the accumulator.  INITBITS() clears the accumulator
+   and sets the number of available bits to zero.  BYTEBITS() discards just
+   enough bits to put the accumulator on a byte boundary.  After BYTEBITS()
+   and a NEEDBITS(8), then BITS(8) would return the next byte in the stream.
+
+   NEEDBITS(n) uses PULLBYTE() to get an available byte of input, or to return
+   if there is no input available.  The decoding of variable length codes uses
+   PULLBYTE() directly in order to pull just enough bytes to decode the next
+   code, and no more.
+
+   Some states loop until they get enough input, making sure that enough
+   state information is maintained to continue the loop where it left off
+   if NEEDBITS() returns in the loop.  For example, want, need, and keep
+   would all have to actually be part of the saved state in case NEEDBITS()
+   returns:
+
+    case STATEw:
+        while (want < need) {
+            NEEDBITS(n);
+            keep[want++] = BITS(n);
+            DROPBITS(n);
+        }
+        state = STATEx;
+    case STATEx:
+
+   As shown above, if the next state is also the next case, then the break
+   is omitted.
+
+   A state may also return if there is not enough output space available to
+   complete that state.  Those states are copying stored data, writing a
+   literal byte, and copying a matching string.
+
+   When returning, a "goto inf_leave" is used to update the total counters,
+   update the check value, and determine whether any progress has been made
+   during that inflate() call in order to return the proper return code.
+   Progress is defined as a change in either strm->avail_in or strm->avail_out.
+   When there is a window, goto inf_leave will update the window with the last
+   output written.  If a goto inf_leave occurs in the middle of decompression
+   and there is no window currently, goto inf_leave will create one and copy
+   output to the window for the next call of inflate().
+
+   In this implementation, the flush parameter of inflate() only affects the
+   return code (per zlib.h).  inflate() always writes as much as possible to
+   strm->next_out, given the space available and the provided input--the effect
+   documented in zlib.h of Z_SYNC_FLUSH.  Furthermore, inflate() always defers
+   the allocation of and copying into a sliding window until necessary, which
+   provides the effect documented in zlib.h for Z_FINISH when the entire input
+   stream available.  So the only thing the flush parameter actually does is:
+   when flush is set to Z_FINISH, inflate() cannot return Z_OK.  Instead it
+   will return Z_BUF_ERROR if it has not reached the end of the stream.
+*/
+
 func Xinflate(tls *libc.TLS, strm uintptr, flush int32) (r int32) {
 	bp := tls.Alloc(16) /* tlsAllocs 8 maxVaListSize 0 */
 	defer tls.Free(16)
@@ -17342,7 +17345,6 @@ type Tstatic_tree_desc_s = Tstatic_tree_desc
 /* repeat a zero length 3-10 times  (3 bits of repeat count) */
 
 /* repeat a zero length 11-138 times  (7 bits of repeat count) */
-
 var _extra_lbits = [29]int32{
 	0:  int32(0),
 	1:  int32(0),
@@ -17374,7 +17376,6 @@ var _extra_lbits = [29]int32{
 	27: int32(5),
 	28: int32(0),
 }
-
 var _extra_dbits = [30]int32{
 	0:  int32(0),
 	1:  int32(0),
@@ -17407,7 +17408,6 @@ var _extra_dbits = [30]int32{
 	28: int32(13),
 	29: int32(13),
 }
-
 var _extra_blbits = [19]int32{
 	0:  int32(0),
 	1:  int32(0),
@@ -17429,7 +17429,6 @@ var _extra_blbits = [19]int32{
 	17: int32(3),
 	18: int32(7),
 }
-
 var _bl_order = [19]uint8{
 	0:  uint8(16),
 	1:  uint8(17),
@@ -20698,7 +20697,6 @@ var _base_dist = [30]int32{
 	28: int32(16384),
 	29: int32(24576),
 }
-
 var _static_l_desc = Tstatic_tree_desc{
 	Fstatic_tree: uintptr(unsafe.Pointer(&_static_ltree)),
 	Fextra_bits:  uintptr(unsafe.Pointer(&_extra_lbits)),
@@ -20706,7 +20704,6 @@ var _static_l_desc = Tstatic_tree_desc{
 	Felems:       libc.Int32FromInt32(m_LITERALS) + libc.Int32FromInt32(1) + libc.Int32FromInt32(m_LENGTH_CODES),
 	Fmax_length:  int32(m_MAX_BITS),
 }
-
 var _static_d_desc = Tstatic_tree_desc{
 	Fstatic_tree: uintptr(unsafe.Pointer(&_static_dtree)),
 	Fextra_bits:  uintptr(unsafe.Pointer(&_extra_dbits)),
@@ -20714,7 +20711,6 @@ var _static_d_desc = Tstatic_tree_desc{
 	Felems:       int32(m_D_CODES),
 	Fmax_length:  int32(m_MAX_BITS),
 }
-
 var _static_bl_desc = Tstatic_tree_desc{
 	Fstatic_tree: libc.UintptrFromInt32(0),
 	Fextra_bits:  uintptr(unsafe.Pointer(&_extra_blbits)),
@@ -24992,10 +24988,12 @@ var Xdeflate_copyright = [66]int8{' ', 'd', 'e', 'f', 'l', 'a', 't', 'e', ' ', '
 
 var Xinflate_copyright = [45]int8{' ', 'i', 'n', 'f', 'l', 'a', 't', 'e', ' ', '1', '.', '3', ' ', 'C', 'o', 'p', 'y', 'r', 'i', 'g', 'h', 't', ' ', '1', '9', '9', '5', '-', '2', '0', '2', '3', ' ', 'M', 'a', 'r', 'k', ' ', 'A', 'd', 'l', 'e', 'r', ' '}
 
-/* GT_OFF(x), where x is an unsigned value, is true if x > maximum z_off64_t
-   value -- needed when comparing unsigned to z_off64_t, which is signed
-   (possible z_off64_t types off_t, off64_t, and long are all signed) */
+/*
+GT_OFF(x), where x is an unsigned value, is true if x > maximum z_off64_t
 
+	value -- needed when comparing unsigned to z_off64_t, which is signed
+	(possible z_off64_t types off_t, off64_t, and long are all signed)
+*/
 var Xz_errmsg = [10]uintptr{
 	0: ts + 465,
 	1: ts + 481,

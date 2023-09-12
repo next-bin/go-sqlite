@@ -4,6 +4,8 @@
 
 .PHONY:	all clean dev edit editor generate work
 
+DIR=/tmp/libz
+
 all: editor
 	golint 2>&1
 	staticcheck 2>&1
@@ -27,9 +29,11 @@ editor:
 	go build -o /dev/null generator*.go
 
 generate:
+	mkdir -p $(DIR) || true
+	rm -rf $(DIR)/*
 	echo -n > log-generate
 	echo -n > log-generate-errors
-	GO_GENERATE_DIR=/tmp/libz go run generator*.go 2> log-generate-errors | tee log-generate
+	GO_GENERATE_DIR=$(DIR) go run generator*.go 2> log-generate-errors | tee log-generate
 	cat log-generate-errors
 	go build -v ./...
 	# go install github.com/mdempsky/unconvert@latest
@@ -41,10 +45,12 @@ generate:
 	grep 'TRC\|TODO\|ERRORF\|FAIL' log-generate-errors || true
 
 dev:
+	mkdir -p $(DIR) || true
+	rm -rf $(DIR)/*
 	echo -n > /tmp/ccgo.log
 	echo -n > log-generate
 	echo -n > log-generate-errors
-	GO_GENERATE_DEV=1 go run -tags=ccgo.dmesg,ccgo.assert generator*.go 2>&1 | tee log-generate
+	GO_GENERATE_DIR=$(DIR) GO_GENERATE_DEV=1 go run -tags=ccgo.dmesg,ccgo.assert generator*.go 2>&1 | tee log-generate
 	./unconvert.sh
 	go build -v ./...  | tee -a log-generate
 	go test -v -count=1 ./... 2>&1 | tee -a log-generate
