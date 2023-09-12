@@ -82,9 +82,6 @@ func main() {
 	util.MustInDir(true, makeRoot, func() (err error) {
 		var cflags []string
 		// cflags := []string{
-		// 	// "-DTCL_MEM_DEBUG", //TODO-
-		// 	"-UHAVE_CPUID",
-		// 	"-UHAVE_FTS",
 		// 	// "-UNDEBUG", //TODO-
 		// }
 		if s := cc.LongDouble64Flag(goos, goarch); s != "" {
@@ -94,8 +91,7 @@ func main() {
 		if dev {
 			util.MustShell(true, "sh", "-c", "go work init ; go work use $GOPATH/src/modernc.org/libc/v2 $GOPATH/src/modernc.org/libz $GOPATH/src/modernc.org/libtcl8.6")
 		}
-		util.MustShell(true, "sh", "-c", fmt.Sprintf("CFLAGS='%s' ./configure --disable-threadsafe --disable-amalgamation --disable-load-extension", strings.Join(cflags, " ")))
-		util.MustShell(true, "make", "sqlite3.c")
+		util.MustShell(true, "sh", "-c", fmt.Sprintf("CFLAGS='%s' ./configure --disable-shared --disable-threadsafe --disable-amalgamation --disable-load-extension", strings.Join(cflags, " ")))
 		args := []string{os.Args[0]}
 		if dev {
 			args = append(
@@ -116,14 +112,32 @@ func main() {
 			"--prefix-tagged-union=T",
 			"--prefix-typename=T",
 			"--prefix-undefined=_",
-			"-DSQLITE_THREADSAFE=0",
 			"-Dpread64=pread",
 			"-Dpwrite64=pwrite",
 			"-extended-errors",
 		)
-		if err := ccgo.NewTask(goos, goarch, append(args, "--package-name", "libsqlite3", "sqlite3.c"), os.Stdout, os.Stderr, nil).Main(); err != nil {
+		if err := ccgo.NewTask(goos, goarch, append(args, "-exec", "make", "sqlite3.c"), os.Stdout, os.Stderr, nil).Exec(); err != nil {
 			return err
 		}
+
+		if err := ccgo.NewTask(
+			goos, goarch,
+			append(args,
+				"-DNDEBUG",
+				"-DSQLITE_ENABLE_MATH_FUNCTIONS",
+				"-DSQLITE_HAVE_ZLIB=1",
+				"-DSQLITE_OMIT_LOAD_EXTENSION=1",
+				"-DSQLITE_TEMP_STORE=1",
+				"-DSQLITE_THREADSAFE=0",
+				"-D_HAVE_SQLITE_CONFIG_H",
+				"--package-name", "libsqlite3",
+				"sqlite3.c",
+			), os.Stdout, os.Stderr, nil).Main(); err != nil {
+			return err
+		}
+
+		util.MustShell(true, "sed", "-i", `s/\<T__\([a-zA-Z0-9][a-zA-Z0-9_]\+\)/t__\1/g`, result)
+		util.MustShell(true, "sed", "-i", `s/\<x_\([a-zA-Z0-9][a-zA-Z0-9_]\+\)/X\1/g`, result)
 
 		if err := ccgo.NewTask(goos, goarch, append(args, "-exec", "make", "testfixture"), os.Stdout, os.Stderr, nil).Exec(); err != nil {
 			return err
@@ -134,6 +148,4 @@ func main() {
 
 	fn := fmt.Sprintf("ccgo_%s_%s.go", goos, goarch)
 	util.MustCopyFile(false, fn, filepath.Join(makeRoot, result), nil)
-	util.MustShell(true, "sed", "-i", `s/\<T__\([a-zA-Z0-9][a-zA-Z0-9_]\+\)/t__\1/g`, fn)
-	util.MustShell(true, "sed", "-i", `s/\<x_\([a-zA-Z0-9][a-zA-Z0-9_]\+\)/X\1/g`, fn)
 }
