@@ -4,6 +4,8 @@
 
 .PHONY:	all clean dev edit editor generate work
 
+DIR=/tmp/libtcl8.6
+
 all: editor
 	golint 2>&1
 	staticcheck 2>&1
@@ -27,9 +29,11 @@ editor:
 	go build -o /dev/null generator*.go
 
 generate:
+	mkdir -p $(DIR) || true
+	rm -rf $(DIR)/*
 	echo -n > log-generate
 	echo -n > log-generate-errors
-	GO_GENERATE_DIR=/tmp/libtcl8.6 go run generator*.go 2> log-generate-errors | tee log-generate
+	GO_GENERATE_DIR=$(DIR) go run generator*.go 2> log-generate-errors | tee log-generate
 	cat log-generate-errors
 	go build -v ./...
 	# go install github.com/mdempsky/unconvert@latest
@@ -44,7 +48,7 @@ dev:
 	echo -n > log-generate
 	echo -n > log-generate-errors
 	date 2>&1 | tee -a log-generate
-	GO_GENERATE_DEV=1 go run -tags=ccgo.dmesg,ccgo.assert generator*.go 2>&1 | tee -a log-generate
+	GO_GENERATE_DIR=$(DIR) GO_GENERATE_DEV=1 go run -tags=ccgo.dmesg,ccgo.assert generator*.go 2>&1 | tee -a log-generate
 	date 2>&1 | tee -a log-generate
 	./unconvert.sh
 	date 2>&1 | tee -a log-generate

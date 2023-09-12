@@ -76,7 +76,7 @@ func main() {
 	fmt.Fprintf(os.Stderr, "libRoot %s\n", libRoot)
 	fmt.Fprintf(os.Stderr, "makeRoot %s\n", makeRoot)
 
-	os.RemoveAll("library")
+	os.RemoveAll(filepath.Join("library", "assets")
 	os.Remove(filepath.Join("internal/tests"))
 	util.MustUntar(true, tempDir, f, nil)
 	util.MustCopyDir(true, libRoot, filepath.Join("overlay", "all"), nil)
@@ -136,7 +136,8 @@ func main() {
 	util.MustCopyFile(false, filepath.Join("include", goos, goarch, "tcl.h"), filepath.Join(libRoot, "generic", "tcl.h"), nil)
 	util.MustCopyFile(false, filepath.Join("include", goos, goarch, "tclDecls.h"), filepath.Join(libRoot, "generic", "tclDecls.h"), nil)
 	util.MustCopyFile(false, filepath.Join("include", goos, goarch, "tclPlatDecls.h"), filepath.Join(libRoot, "generic", "tclPlatDecls.h"), nil)
-	util.MustCopyDir(true, "library", filepath.Join(libRoot, "library"), nil)
+	util.MustCopyFile(false, filepath.Join("library", "assets", "tclConfig.sh"), filepath.Join(makeRoot, "tclConfig.sh"), nil)
+	util.MustCopyDir(true, filepath.Join("library", "assets"), filepath.Join(libRoot, "library"), nil)
 	util.MustCopyDir(true, "internal/tests", filepath.Join(libRoot, "tests"), nil)
 
 	fn := fmt.Sprintf("ccgo_%s_%s.go", goos, goarch)

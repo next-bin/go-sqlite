@@ -123,7 +123,7 @@ func Test2(t *testing.T) {
 		os.Setenv(lib, sav)
 	}()
 
-	os.Setenv(lib, filepath.Join(wd, "library"))
+	os.Setenv(lib, filepath.Join(wd, "library", "assets"))
 
 	dir := t.TempDir()
 	bin := filepath.Join(dir, "tcltest")
