@@ -2,9 +2,11 @@
 # Use of the source code is governed by a BSD-style
 # license that can be found in the LICENSE file.
 
-.PHONY:	all clean dev edit editor generate work
+.PHONY:	all clean dev download edit editor generate work
 
 DIR=/tmp/libsqlite3
+ZIP = sqlite-src-3430100.zip
+URL = https://www.sqlite.org/2023/$(ZIP)
 
 all: editor
 	golint 2>&1
@@ -28,7 +30,10 @@ editor:
 	go build -v  -o /dev/null ./... 2>&1 | tee -a log-editor
 	go build -o /dev/null generator*.go
 
-generate:
+download:
+	@if [ ! -f $(ZIP) ]; then wget $(URL) ; fi
+
+generate: download
 	mkdir -p $(DIR) || true
 	rm -rf $(DIR)/*
 	echo -n > log-generate
@@ -43,7 +48,7 @@ generate:
 	grep 'TRC\|TODO\|ERRORF\|FAIL' log-generate || true
 	grep 'TRC\|TODO\|ERRORF\|FAIL' log-generate-errors || true
 
-dev:
+dev: download
 	mkdir -p $(DIR) || true
 	rm -rf $(DIR)/*
 	echo -n > /tmp/ccgo.log

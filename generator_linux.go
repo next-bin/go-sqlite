@@ -20,7 +20,7 @@ import (
 )
 
 const (
-	archivePath = "sqlite-src-3430100.tar.gz"
+	archivePath = "sqlite-src-3430100.zip"
 )
 
 var (
@@ -46,8 +46,10 @@ func main() {
 		fail(1, "cannot open tar file: %v\n", err)
 	}
 
+	f.Close()
+
 	_, extractedArchivePath := filepath.Split(archivePath)
-	extractedArchivePath = extractedArchivePath[:len(extractedArchivePath)-len(".tar.gz")]
+	extractedArchivePath = extractedArchivePath[:len(extractedArchivePath)-len(".zip")]
 	tempDir := os.Getenv("GO_GENERATE_DIR")
 	dev := os.Getenv("GO_GENERATE_DEV") != ""
 	switch {
@@ -76,18 +78,18 @@ func main() {
 	fmt.Fprintf(os.Stderr, "libRoot %s\n", libRoot)
 	fmt.Fprintf(os.Stderr, "makeRoot %s\n", makeRoot)
 
-	util.MustUntar(true, tempDir, f, nil)
+	util.MustShell(true, "unzip", archivePath, "-d", tempDir)
 	util.MustCopyFile(true, "LICENSE-SQLITE.md", filepath.Join(libRoot, "LICENSE.md"), nil)
 	result := "sqlite3.go"
 	util.MustInDir(true, makeRoot, func() (err error) {
-		var cflags []string
-		// cflags := []string{
-		// 	// "-UNDEBUG", //TODO-
-		// }
+		cflags := []string{
+			"-DLONGDOUBLE_TYPE=double",
+			// "-UNDEBUG", //TODO-
+		}
 		if s := cc.LongDouble64Flag(goos, goarch); s != "" {
 			cflags = append(cflags, s)
 		}
-		util.MustShell(true, "sh", "-c", "go mod init example.com/tcl ; go get modernc.org/libc/v2@master modernc.org/libz@master modernc.org/libtcl8.6@master")
+		util.MustShell(true, "sh", "-c", "go mod init example.com/libsqlite3 ; go get modernc.org/libc/v2@master modernc.org/libz@master modernc.org/libtcl8.6@master")
 		if dev {
 			util.MustShell(true, "sh", "-c", "go work init ; go work use $GOPATH/src/modernc.org/libc/v2 $GOPATH/src/modernc.org/libz $GOPATH/src/modernc.org/libtcl8.6")
 		}
@@ -97,6 +99,7 @@ func main() {
 			args = append(
 				args,
 				"-absolute-paths",
+				"-keep-object-files",
 				"-positions",
 			)
 		}
@@ -139,13 +142,13 @@ func main() {
 		util.MustShell(true, "sed", "-i", `s/\<T__\([a-zA-Z0-9][a-zA-Z0-9_]\+\)/t__\1/g`, result)
 		util.MustShell(true, "sed", "-i", `s/\<x_\([a-zA-Z0-9][a-zA-Z0-9_]\+\)/X\1/g`, result)
 
-		if err := ccgo.NewTask(goos, goarch, append(args, "-exec", "make", "testfixture"), os.Stdout, os.Stderr, nil).Exec(); err != nil {
-			return err
-		}
-
-		return nil
+		return ccgo.NewTask(goos, goarch, append(args, "-exec", "make", "testfixture"), os.Stdout, os.Stderr, nil).Exec()
 	})
 
 	fn := fmt.Sprintf("ccgo_%s_%s.go", goos, goarch)
 	util.MustCopyFile(false, fn, filepath.Join(makeRoot, result), nil)
+	util.MustMkdirs(true, "internal/testfixture", "internal/test")
+	util.MustCopyFile(false, filepath.Join("internal", "testfixture", fn), filepath.Join(makeRoot, "testfixture.go"), nil)
+	os.RemoveAll(filepath.Join("internal", "test"))
+	util.MustCopyDir(true, filepath.Join("internal", "test"), filepath.Join(makeRoot, "test"), nil)
 }
