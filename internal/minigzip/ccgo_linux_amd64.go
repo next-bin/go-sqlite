@@ -6212,7 +6212,9 @@ func init() {
 	*(*uintptr)(unsafe.Add(p, 120)) = __ccgo_fp(_deflate_slow)
 	*(*uintptr)(unsafe.Add(p, 136)) = __ccgo_fp(_deflate_slow)
 	*(*uintptr)(unsafe.Add(p, 152)) = __ccgo_fp(_deflate_slow)
-} /* max compression */
+}
+
+/* max compression */
 
 /* Note: the deflate() code requires max_lazy >= MIN_MATCH and max_chain >= 4
  * For deflate_fast() (levels <= 3) good is ignored and lazy has a different
