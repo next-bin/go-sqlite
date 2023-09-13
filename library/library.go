@@ -3,7 +3,7 @@
 // license that can be found in the LICENSE file.
 
 // Package library provides the standard Tcl library assets
-package libtcl8_6 // import "modernc.org/libtcl8_6/library"
+package library // import "modernc.org/libtcl8_6/library"
 
 import (
 	"embed"
