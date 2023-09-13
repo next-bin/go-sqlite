@@ -2,9 +2,11 @@
 # Use of this source code is governed by a BSD-style
 # license that can be found in the LICENSE file.
 
-.PHONY:	all clean dev edit editor generate work
+.PHONY:	all clean dev dwonload edit editor generate work
 
 DIR=/tmp/libtcl8.6
+TAR = tcl8.6.13-src.tar.gz
+URL = http://prdownloads.sourceforge.net/tcl/$(TAR)
 
 all: editor
 	golint 2>&1
@@ -18,6 +20,9 @@ clean:
 	rm -f log-* cpu.test mem.test *.out go.work*
 	go clean
 
+download:
+	@if [ ! -f $(TAR) ]; then wget $(URL) ; fi
+
 edit:
 	@touch log
 	@if [ -f "Session.vim" ]; then novim -S & else novim -p Makefile *.go & fi
@@ -28,7 +33,7 @@ editor:
 	go build -v  -o /dev/null ./... 2>&1 | tee -a log-editor
 	go build -o /dev/null generator*.go
 
-generate:
+generate: download
 	mkdir -p $(DIR) || true
 	rm -rf $(DIR)/*
 	echo -n > log-generate
@@ -43,7 +48,7 @@ generate:
 	grep 'TRC\|TODO\|ERRORF\|FAIL' log-generate || true
 	grep 'TRC\|TODO\|ERRORF\|FAIL' log-generate-errors || true
 
-dev:
+dev: download
 	echo -n > /tmp/ccgo.log
 	echo -n > log-generate
 	echo -n > log-generate-errors

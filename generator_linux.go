@@ -20,7 +20,7 @@ import (
 )
 
 const (
-	archivePath = "tcl8.6.13.tar.gz"
+	archivePath = "tcl8.6.13-src.tar.gz"
 )
 
 var (
@@ -47,7 +47,7 @@ func main() {
 	}
 
 	_, extractedArchivePath := filepath.Split(archivePath)
-	extractedArchivePath = extractedArchivePath[:len(extractedArchivePath)-len(".tar.gz")]
+	extractedArchivePath = extractedArchivePath[:len(extractedArchivePath)-len("-src.tar.gz")]
 	tempDir := os.Getenv("GO_GENERATE_DIR")
 	dev := os.Getenv("GO_GENERATE_DEV") != ""
 	switch {
@@ -76,7 +76,7 @@ func main() {
 	fmt.Fprintf(os.Stderr, "libRoot %s\n", libRoot)
 	fmt.Fprintf(os.Stderr, "makeRoot %s\n", makeRoot)
 
-	os.RemoveAll(filepath.Join("library", "assets")
+	os.RemoveAll(filepath.Join("library", "assets"))
 	os.Remove(filepath.Join("internal/tests"))
 	util.MustUntar(true, tempDir, f, nil)
 	util.MustCopyDir(true, libRoot, filepath.Join("overlay", "all"), nil)
@@ -93,7 +93,7 @@ func main() {
 		if s := cc.LongDouble64Flag(goos, goarch); s != "" {
 			cflags = append(cflags, s)
 		}
-		util.MustShell(true, "sh", "-c", "go mod init example.com/tcl ; go get modernc.org/libc/v2@master modernc.org/libz@master")
+		util.MustShell(true, "sh", "-c", "go mod init example.com/libtcl8.6 ; go get modernc.org/libc/v2@master modernc.org/libz@master")
 		if dev {
 			util.MustShell(true, "sh", "-c", "go work init ; go work use $GOPATH/src/modernc.org/libc/v2 $GOPATH/src/modernc.org/libz")
 		}
