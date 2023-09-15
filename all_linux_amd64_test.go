@@ -5,6 +5,7 @@
 package libsqlite3 // import "modernc.org/libsqlite3"
 
 import (
+	"flag"
 	"fmt"
 	"os"
 	"path/filepath"
@@ -14,6 +15,11 @@ import (
 	cp "github.com/otiai10/copy"
 	util "modernc.org/ccgo/v3/lib"
 	"modernc.org/libtcl8.6/library"
+)
+
+var (
+	oXTags = flag.String("xtags", "", "passed to go build of testfixture")
+	oXWork = flag.String("xwork", "", "TestExec will use a go.work file for packages in the CSV list")
 )
 
 func TestMain(m *testing.M) {
