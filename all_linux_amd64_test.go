@@ -70,7 +70,7 @@ var (
 	oSkip       = flag.String("skip", strings.Join(skipFiles, " "), "pattern list")
 	oTmpdir     = flag.String("tmpdir", "", "directory")
 	oVerbose    = flag.String("verbose", "el", "any combination of letters b, p, s, t, e, l, m, u")
-	oXtags      = flag.String("xtags", "", "")
+	oXTags      = flag.String("xtags", "", "passed to go build of tcltest")
 )
 
 func TestMain(m *testing.M) {
@@ -127,11 +127,10 @@ func Test2(t *testing.T) {
 
 	dir := t.TempDir()
 	bin := filepath.Join(dir, "tcltest")
-	out, err := exec.Command("go", "build", "-o", bin, "-tags="+*oXtags, "./"+filepath.Join("internal", "tcltest")).CombinedOutput()
+	out, err := exec.Command("go", "build", "-o", bin, "-tags="+*oXTags, "./"+filepath.Join("internal", "tcltest")).CombinedOutput()
 	if err != nil {
 		t.Fatalf("%s\nFAIL: %s", out, err)
 	}
-
 	var stdout, stderr strings.Builder
 	args := []string{
 		filepath.Join(wd, "internal", "tests", "all.tcl"),

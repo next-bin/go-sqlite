@@ -2,7 +2,7 @@
 # Use of this source code is governed by a BSD-style
 # license that can be found in the LICENSE file.
 
-.PHONY:	all clean dev dwonload edit editor generate work
+.PHONY:	all clean dev dwonload edit editor generate test work
 
 DIR=/tmp/libtcl8.6
 TAR = tcl8.6.13-src.tar.gz
@@ -63,6 +63,12 @@ dev: download
 	grep 'TRC\|TODO\|ERRORF\|FAIL' log-generate-errors || true
 	grep 'TRC\|TODO\|ERRORF\|FAIL' /tmp/ccgo.log || true
 	grep $(shell date '+%B') log-generate
+
+test:
+	go test -v -timeout 24h 2>&1 | tee log-test
+
+test-xwork:
+	go test -v -timeout 24h 2>&1 | tee log-test
 
 work:
 	rm -f go.work*
