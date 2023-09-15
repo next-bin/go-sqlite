@@ -875,7 +875,6 @@ const m_W = 8
 //	  braided calculation is not used, and the associated tables and code are not
 //	  compiled.
 //	 */
-
 type Tz_word_t = uint64
 
 /* If available, use the ARM processor CRC32 instruction. */
@@ -5703,7 +5702,6 @@ func x_crc32_z(tls *libc.TLS, crc uint64, buf uintptr, len1 uint64) (r uint64) {
 		   check and the unused branch. */
 		*(*uint32)(unsafe.Pointer(bp)) = uint32(1)
 		if *(*uint8)(unsafe.Pointer(bp)) != 0 {
-			/* Little endian. */
 			/* Initialize the CRC for each braid. */
 			crc0 = uint32(crc)
 			crc1 = uint32(0)
@@ -5753,7 +5751,6 @@ func x_crc32_z(tls *libc.TLS, crc uint64, buf uintptr, len1 uint64) (r uint64) {
 			crc = uint64(_crc_word(tls, uint64(crc4)^*(*uint64)(unsafe.Pointer(words + 4*8))^crc))
 			words += uintptr(m_N) * 8
 		} else {
-			/* Big endian. */
 			/* Initialize the CRC for each braid. */
 			crc01 = _byte_swap(tls, crc)
 			crc11 = uint64(0)
@@ -6099,7 +6096,28 @@ _finish_done = 3
 
 type Tcompress_func = uintptr
 
-/* Compression function. Returns the block state after the call. */
+/* ===========================================================================
+ * Local data
+ */
+
+/* Tail of hash chains */
+
+/* Matches of length 3 are discarded if their distance exceeds TOO_FAR */
+
+// C documentation
+//
+//	/* Values for max_lazy_match, good_match and max_chain_length, depending on
+//	 * the desired pack level (0..9). The values given below have been tuned to
+//	 * exclude worst case performance for pathological files. Better values may be
+//	 * found for specific files.
+//	 */
+type Tconfig = struct {
+	Fgood_length uint16
+	Fmax_lazy    uint16
+	Fnice_length uint16
+	Fmax_chain   uint16
+	Ffunc1       uintptr
+}
 
 /* ===========================================================================
  * Local data
@@ -6116,15 +6134,6 @@ type Tcompress_func = uintptr
 //	 * exclude worst case performance for pathological files. Better values may be
 //	 * found for specific files.
 //	 */
-
-type Tconfig = struct {
-	Fgood_length uint16
-	Fmax_lazy    uint16
-	Fnice_length uint16
-	Fmax_chain   uint16
-	Ffunc1       uintptr
-}
-
 type Tconfig_s = Tconfig
 
 var _configuration_table = [10]Tconfig{
@@ -6346,8 +6355,7 @@ func _read_buf(tls *libc.TLS, strm uintptr, buf uintptr, size uint32) (r uint32)
 //	 */
 func _fill_window(tls *libc.TLS, s uintptr) {
 	var curr, init1 uint64
-	var more, n, str, wsize uint32
-	/* Amount of free space at the end of the window. */
+	var more, n, str, wsize uint32 /* Amount of free space at the end of the window. */
 	wsize = (*Tdeflate_state)(unsafe.Pointer(s)).Fw_size
 	for cond := true; cond; cond = (*Tdeflate_state)(unsafe.Pointer(s)).Flookahead < uint32(libc.Int32FromInt32(m_MAX_MATCH)+libc.Int32FromInt32(m_MIN_MATCH)+libc.Int32FromInt32(1)) && (*Tz_stream)(unsafe.Pointer((*Tdeflate_state)(unsafe.Pointer(s)).Fstrm)).Favail_in != uint32(0) {
 		more = uint32((*Tdeflate_state)(unsafe.Pointer(s)).Fwindow_size - uint64((*Tdeflate_state)(unsafe.Pointer(s)).Flookahead) - uint64((*Tdeflate_state)(unsafe.Pointer(s)).Fstrstart))
@@ -6942,7 +6950,7 @@ func x_deflateBound(tls *libc.TLS, strm uintptr, sourceLen uint64) (r uint64) {
 		wraplen = uint64(int32(6) + v2)
 	case int32(2):
 		wraplen = uint64(18)
-		if (*Tdeflate_state)(unsafe.Pointer(s)).Fgzhead != uintptr(m_Z_NULL) { /* user-supplied gzip header */
+		if (*Tdeflate_state)(unsafe.Pointer(s)).Fgzhead != uintptr(m_Z_NULL) {
 			if (*Tgz_header)(unsafe.Pointer((*Tdeflate_state)(unsafe.Pointer(s)).Fgzhead)).Fextra != uintptr(m_Z_NULL) {
 				wraplen += uint64(uint32(2) + (*Tgz_header)(unsafe.Pointer((*Tdeflate_state)(unsafe.Pointer(s)).Fgzhead)).Fextra_len)
 			}
@@ -7057,7 +7065,6 @@ func x_deflate(tls *libc.TLS, strm uintptr, flush int32) (r int32) {
 	var copy1, header, left, level_flags uint32
 	var s, v11, v13, v15, v17, v19, v21, v25, v27, v34, v36, v38, v40, v42, v46, v48, v5, v50, v52, v54, v56, v58, v60, v62, v67, v69, v7, v71, v73, v75, v77, v79, v81, v9 uintptr
 	var v3 bool
-	/* value of flush param for previous deflate call */
 	if _deflateStateCheck(tls, strm) != 0 || flush > int32(m_Z_BLOCK) || flush < 0 {
 		return -int32(2)
 	}
@@ -7323,7 +7330,7 @@ func x_deflate(tls *libc.TLS, strm uintptr, flush int32) (r int32) {
 	}
 	if (*Tdeflate_state)(unsafe.Pointer(s)).Fstatus == int32(m_NAME_STATE) {
 		if (*Tgz_header)(unsafe.Pointer((*Tdeflate_state)(unsafe.Pointer(s)).Fgzhead)).Fname != uintptr(m_Z_NULL) {
-			beg1 = (*Tdeflate_state)(unsafe.Pointer(s)).Fpending /* start of bytes to update crc */
+			beg1 = (*Tdeflate_state)(unsafe.Pointer(s)).Fpending
 			for cond := true; cond; cond = val != 0 {
 				if (*Tdeflate_state)(unsafe.Pointer(s)).Fpending == (*Tdeflate_state)(unsafe.Pointer(s)).Fpending_buf_size {
 					if (*Tgz_header)(unsafe.Pointer((*Tdeflate_state)(unsafe.Pointer(s)).Fgzhead)).Fhcrc != 0 && (*Tdeflate_state)(unsafe.Pointer(s)).Fpending > beg1 {
@@ -7354,7 +7361,7 @@ func x_deflate(tls *libc.TLS, strm uintptr, flush int32) (r int32) {
 	}
 	if (*Tdeflate_state)(unsafe.Pointer(s)).Fstatus == int32(m_COMMENT_STATE) {
 		if (*Tgz_header)(unsafe.Pointer((*Tdeflate_state)(unsafe.Pointer(s)).Fgzhead)).Fcomment != uintptr(m_Z_NULL) {
-			beg2 = (*Tdeflate_state)(unsafe.Pointer(s)).Fpending /* start of bytes to update crc */
+			beg2 = (*Tdeflate_state)(unsafe.Pointer(s)).Fpending
 			for cond := true; cond; cond = val1 != 0 {
 				if (*Tdeflate_state)(unsafe.Pointer(s)).Fpending == (*Tdeflate_state)(unsafe.Pointer(s)).Fpending_buf_size {
 					if (*Tgz_header)(unsafe.Pointer((*Tdeflate_state)(unsafe.Pointer(s)).Fgzhead)).Fhcrc != 0 && (*Tdeflate_state)(unsafe.Pointer(s)).Fpending > beg2 {
@@ -7620,16 +7627,14 @@ func _longest_match(tls *libc.TLS, s uintptr, cur_match uint32) (r uint32) {
 	var scan_end, scan_end1 uint8
 	var v11, v14, v17, v20, v23, v26, v29, v4, v6 bool
 	chain_length = (*Tdeflate_state)(unsafe.Pointer(s)).Fmax_chain_length                                         /* max hash chain length */
-	scan = (*Tdeflate_state)(unsafe.Pointer(s)).Fwindow + uintptr((*Tdeflate_state)(unsafe.Pointer(s)).Fstrstart) /* current string */
-	/* matched string */
-	/* length of current match */
-	best_len = int32((*Tdeflate_state)(unsafe.Pointer(s)).Fprev_length) /* best match length so far */
-	nice_match = (*Tdeflate_state)(unsafe.Pointer(s)).Fnice_match       /* stop if match long enough */
+	scan = (*Tdeflate_state)(unsafe.Pointer(s)).Fwindow + uintptr((*Tdeflate_state)(unsafe.Pointer(s)).Fstrstart) /* length of current match */
+	best_len = int32((*Tdeflate_state)(unsafe.Pointer(s)).Fprev_length)                                           /* best match length so far */
+	nice_match = (*Tdeflate_state)(unsafe.Pointer(s)).Fnice_match
 	if (*Tdeflate_state)(unsafe.Pointer(s)).Fstrstart > (*Tdeflate_state)(unsafe.Pointer(s)).Fw_size-uint32(libc.Int32FromInt32(m_MAX_MATCH)+libc.Int32FromInt32(m_MIN_MATCH)+libc.Int32FromInt32(1)) {
 		v1 = (*Tdeflate_state)(unsafe.Pointer(s)).Fstrstart - ((*Tdeflate_state)(unsafe.Pointer(s)).Fw_size - uint32(libc.Int32FromInt32(m_MAX_MATCH)+libc.Int32FromInt32(m_MIN_MATCH)+libc.Int32FromInt32(1)))
 	} else {
 		v1 = uint32(m_NIL)
-	}
+	} /* stop if match long enough */
 	limit = v1
 	/* Stop when cur_match becomes <= limit. To simplify the code,
 	 * we prevent matches with the string of window index 0.
@@ -7800,20 +7805,16 @@ func _deflate_stored(tls *libc.TLS, s uintptr, flush int32) (r int32) {
 	var have, last, left, len1, min_block, used, v3, v4, v6, v7 uint32
 	var v1, v5 uint64
 	var v2, v8, v9 int32
-	/* Smallest worthy block size when not flushing or finishing. By default
-	 * this is 32K. This can be as small as 507 bytes for memLevel == 1. For
-	 * large input and output buffers, the stored block size will be larger.
-	 */
 	if (*Tdeflate_state)(unsafe.Pointer(s)).Fpending_buf_size-uint64(5) > uint64((*Tdeflate_state)(unsafe.Pointer(s)).Fw_size) {
 		v1 = uint64((*Tdeflate_state)(unsafe.Pointer(s)).Fw_size)
 	} else {
 		v1 = (*Tdeflate_state)(unsafe.Pointer(s)).Fpending_buf_size - uint64(5)
 	}
-	min_block = uint32(v1)
-	/* Copy as many min_block or larger stored blocks directly to next_out as
-	 * possible. If flushing, copy the remaining available input to next_out as
-	 * stored blocks, if there is enough space.
+	/* Smallest worthy block size when not flushing or finishing. By default
+	 * this is 32K. This can be as small as 507 bytes for memLevel == 1. For
+	 * large input and output buffers, the stored block size will be larger.
 	 */
+	min_block = uint32(v1)
 	last = uint32(0)
 	used = (*Tz_stream)(unsafe.Pointer((*Tdeflate_state)(unsafe.Pointer(s)).Fstrm)).Favail_in
 	for cond := true; cond; cond = last == uint32(0) {
@@ -8023,9 +8024,7 @@ func _deflate_fast(tls *libc.TLS, s uintptr, flush int32) (r int32) {
 	var cc, len1 uint8
 	var dist, v1, v11 uint16
 	var hash_head, v12, v14, v16, v19, v2, v4, v6, v9 uint32
-	var v10, v13, v15, v17, v18, v20, v21, v3, v5, v7 uintptr
-	/* head of the hash chain */
-	/* set if current block must be flushed */
+	var v10, v13, v15, v17, v18, v20, v21, v3, v5, v7 uintptr /* set if current block must be flushed */
 	for {
 		/* Make sure that we always have enough lookahead, except
 		 * at the end of the input file. We need MAX_MATCH bytes
@@ -8204,9 +8203,7 @@ func _deflate_slow(tls *libc.TLS, s uintptr, flush int32) (r int32) {
 	var cc, cc1, len1 uint8
 	var dist, v1, v13 uint16
 	var hash_head, max_insert, v11, v15, v17, v19, v2, v22, v24, v26, v28, v4, v6, v9 uint32
-	var v10, v12, v14, v16, v18, v20, v21, v23, v25, v27, v29, v3, v30, v5, v7 uintptr
-	/* head of hash chain */
-	/* set if current block must be flushed */
+	var v10, v12, v14, v16, v18, v20, v21, v23, v25, v27, v29, v3, v30, v5, v7 uintptr /* set if current block must be flushed */
 	/* Process the input block. */
 	for {
 		/* Make sure that we always have enough lookahead, except
@@ -8440,10 +8437,7 @@ func _deflate_rle(tls *libc.TLS, s uintptr, flush int32) (r int32) {
 	var dist uint16
 	var prev, v21, v23, v25, v28, v30, v32 uint32
 	var scan, strend, v1, v11, v13, v15, v17, v19, v2, v22, v24, v26, v29, v31, v33, v34, v35, v36, v4, v6, v7, v9 uintptr
-	var v10, v12, v14, v16, v18, v20, v3, v5, v8 bool
-	/* set if current block must be flushed */
-	/* byte at distance one to match */
-	/* scan goes up to strend for length of run */
+	var v10, v12, v14, v16, v18, v20, v3, v5, v8 bool /* scan goes up to strend for length of run */
 	for {
 		/* Make sure that we always have enough lookahead, except
 		 * at the end of the input file. We need MAX_MATCH bytes
@@ -8621,8 +8615,7 @@ func _deflate_huff(tls *libc.TLS, s uintptr, flush int32) (r int32) {
 	var bflush int32
 	var cc uint8
 	var v1, v3, v5 uint32
-	var v2, v4, v6, v7, v8, v9 uintptr
-	/* set if current block must be flushed */
+	var v2, v4, v6, v7, v8, v9 uintptr /* set if current block must be flushed */
 	for {
 		/* Make sure that we have a literal to write. */
 		if (*Tdeflate_state)(unsafe.Pointer(s)).Flookahead == uint32(0) {
@@ -11637,7 +11630,7 @@ func x_inflateBack(tls *libc.TLS, strm uintptr, in uintptr, in_desc uintptr, out
 	var here, last Tcode
 	var hold uint64
 	var ret int32
-	var _ /* next at bp+0 */ uintptr
+	var _ /* next at bp+0 */ uintptr /* return code */
 	/* Check that the strm exists and that the state was initialized */
 	if strm == uintptr(m_Z_NULL) || (*Tz_stream)(unsafe.Pointer(strm)).Fstate == uintptr(m_Z_NULL) {
 		return -int32(2)
@@ -12280,17 +12273,6 @@ inf_leave:
 	return ret
 }
 
-/* next input */
-/* next output */
-/* available input and output */
-/* bit buffer */
-/* bits in bit buffer */
-/* number of stored or match bytes to copy */
-/* where to copy match bytes from */
-/* current decoding table entry */
-/* parent table entry */
-/* length to copy for repeats, bits to drop */
-/* return code */
 var _order = [19]uint16{
 	0:  uint16(16),
 	1:  uint16(17),
@@ -12363,28 +12345,7 @@ func x_inflate_fast(tls *libc.TLS, strm uintptr, start uint32) {
 	var beg, dcode, end, from, here, in, last, lcode, out, state, window, v1, v10, v11, v13, v14, v16, v17, v19, v2, v20, v21, v22, v23, v24, v25, v26, v27, v28, v29, v3, v30, v31, v32, v33, v34, v35, v36, v37, v38, v39, v4, v40, v5, v6, v7, v8 uintptr
 	var bits, dist, dmask, len1, lmask, op, whave, wnext, wsize, v12, v15, v18, v9 uint32
 	var hold uint64
-	var v41, v42 int64
-	/* local strm->next_in */
-	/* have enough input while in < last */
-	/* local strm->next_out */
-	/* inflate()'s initial strm->next_out */
-	/* while out < end, enough space available */
-	/* window size or zero if not using window */
-	/* valid bytes in the window */
-	/* window write index */
-	/* allocated sliding window, if wsize != 0 */
-	/* local strm->hold */
-	/* local strm->bits */
-	/* local strm->lencode */
-	/* local strm->distcode */
-	/* mask for first level of length codes */
-	/* mask for first level of distance codes */
-	/* retrieved table entry */
-	/* code bits, operation, extra bits, or */
-	/*  window position, window bytes to copy */
-	/* match length, unused bytes */
-	/* match distance */
-	/* where to copy match from */
+	var v41, v42 int64 /* where to copy match from */
 	/* copy state to local variables */
 	state = (*Tz_stream)(unsafe.Pointer(strm)).Fstate
 	in = (*Tz_stream)(unsafe.Pointer(strm)).Fnext_in
@@ -15764,7 +15725,7 @@ func x_inflate(tls *libc.TLS, strm uintptr, flush int32) (r int32) {
 	var hold, v36, v54, v56, v57, v88, v89, v90, v93, v94 uint64
 	var ret, v37, v95, v96, v97 int32
 	var v45, v91 bool
-	var _ /* hbuf at bp+0 */ [4]uint8
+	var _ /* hbuf at bp+0 */ [4]uint8 /* buffer for gzip header crc calculation */
 	if _inflateStateCheck(tls, strm) != 0 || (*Tz_stream)(unsafe.Pointer(strm)).Fnext_out == uintptr(m_Z_NULL) || (*Tz_stream)(unsafe.Pointer(strm)).Fnext_in == uintptr(m_Z_NULL) && (*Tz_stream)(unsafe.Pointer(strm)).Favail_in != uint32(0) {
 		return -int32(2)
 	}
@@ -16849,19 +16810,6 @@ inf_leave:
 	return ret
 }
 
-/* next input */
-/* next output */
-/* available input and output */
-/* bit buffer */
-/* bits in bit buffer */
-/* save starting available input and output */
-/* number of stored or match bytes to copy */
-/* where to copy match bytes from */
-/* current decoding table entry */
-/* parent table entry */
-/* length to copy for repeats, bits to drop */
-/* return code */
-/* buffer for gzip header crc calculation */
 var _order1 = [19]uint16{
 	0:  uint16(16),
 	1:  uint16(17),
@@ -17010,10 +16958,6 @@ func x_inflateSync(tls *libc.TLS, strm uintptr) (r int32) {
 	var len1, v1 uint32
 	var state uintptr
 	var _ /* buf at bp+0 */ [4]uint8
-	/* number of bytes to look at or looked at */
-	/* temporary to save header status */
-	/* temporary to save total_in and total_out */
-	/* to restore bit buffer to byte string */
 	/* check parameters */
 	if _inflateStateCheck(tls, strm) != 0 {
 		return -int32(2)
@@ -17207,7 +17151,7 @@ func x_inflate_table(tls *libc.TLS, type1 int32, lens uintptr, codes uint32, tab
 	var left int32
 	var v5, v8 uint16
 	var _ /* count at bp+0 */ [16]uint16
-	var _ /* offs at bp+32 */ [16]uint16
+	var _ /* offs at bp+32 */ [16]uint16 /* offsets in table for each length */
 	/*
 	   Process a set of code lengths to create a canonical Huffman code.  The
 	   code lengths are lens[0..codes-1].  Each length corresponds to the
@@ -17449,26 +17393,6 @@ func x_inflate_table(tls *libc.TLS, type1 int32, lens uintptr, codes uint32, tab
 	return 0
 }
 
-/* a code's length in bits */
-/* index of code symbols */
-/* minimum and maximum code lengths */
-/* number of index bits for root table */
-/* number of index bits for current table */
-/* code bits to drop for sub-table */
-/* number of prefix codes available */
-/* code entries in table used */
-/* Huffman code */
-/* for incrementing code, index */
-/* index for replicating entries */
-/* low bits for current root entry */
-/* mask for low root bits */
-/* table entry for duplication */
-/* next available space in table */
-/* base value table to use */
-/* extra bits table to use */
-/* use base and extra for symbol >= match */
-/* number of codes of each length */
-/* offsets in table for each length */
 var _lbase = [31]uint16{
 	0:  uint16(3),
 	1:  uint16(4),
@@ -17674,6 +17598,7 @@ var _extra_lbits = [29]int32{
 	27: int32(5),
 	28: int32(0),
 }
+
 var _extra_dbits = [30]int32{
 	0:  int32(0),
 	1:  int32(0),
@@ -17706,6 +17631,7 @@ var _extra_dbits = [30]int32{
 	28: int32(13),
 	29: int32(13),
 }
+
 var _extra_blbits = [19]int32{
 	0:  int32(0),
 	1:  int32(0),
@@ -17727,6 +17653,7 @@ var _extra_blbits = [19]int32{
 	17: int32(3),
 	18: int32(7),
 }
+
 var _bl_order = [19]uint8{
 	0:  uint8(16),
 	1:  uint8(17),
@@ -20995,6 +20922,7 @@ var _base_dist = [30]int32{
 	28: int32(16384),
 	29: int32(24576),
 }
+
 var _static_l_desc = Tstatic_tree_desc{
 	Fstatic_tree: uintptr(unsafe.Pointer(&_static_ltree)),
 	Fextra_bits:  uintptr(unsafe.Pointer(&_extra_lbits)),
@@ -21002,6 +20930,7 @@ var _static_l_desc = Tstatic_tree_desc{
 	Felems:       libc.Int32FromInt32(m_LITERALS) + libc.Int32FromInt32(1) + libc.Int32FromInt32(m_LENGTH_CODES),
 	Fmax_length:  int32(m_MAX_BITS),
 }
+
 var _static_d_desc = Tstatic_tree_desc{
 	Fstatic_tree: uintptr(unsafe.Pointer(&_static_dtree)),
 	Fextra_bits:  uintptr(unsafe.Pointer(&_extra_dbits)),
@@ -21009,6 +20938,7 @@ var _static_d_desc = Tstatic_tree_desc{
 	Felems:       int32(m_D_CODES),
 	Fmax_length:  int32(m_MAX_BITS),
 }
+
 var _static_bl_desc = Tstatic_tree_desc{
 	Fstatic_tree: libc.UintptrFromInt32(0),
 	Fextra_bits:  uintptr(unsafe.Pointer(&_extra_blbits)),
@@ -21122,11 +21052,8 @@ func _gen_codes(tls *libc.TLS, tree uintptr, max_code int32, bl_count uintptr) {
 	var code uint32
 	var v1 uint16
 	var v2 uintptr
-	var _ /* next_code at bp+0 */ [16]uint16
-	/* next code value for each bit length */
-	code = uint32(0) /* running code value */
-	/* bit index */
-	/* code index */
+	var _ /* next_code at bp+0 */ [16]uint16 /* next code value for each bit length */
+	code = uint32(0)                         /* code index */
 	/* The distribution counts are first used to generate the code values
 	 * without bit reversal.
 	 */
@@ -21179,8 +21106,7 @@ func _tr_static_init(tls *libc.TLS) {
 func _init_block(tls *libc.TLS, s uintptr) {
 	var n int32
 	var v1 uint64
-	var v2 uint32
-	/* iterates over tree elements */
+	var v2 uint32 /* iterates over tree elements */
 	/* Initialize the trees. */
 	for n = 0; n < libc.Int32FromInt32(m_LITERALS)+libc.Int32FromInt32(1)+libc.Int32FromInt32(m_LENGTH_CODES); n++ {
 		*(*uint16)(unsafe.Pointer(s + 212 + uintptr(n)*4)) = uint16(0)
@@ -21282,13 +21208,8 @@ func _gen_bitlen(tls *libc.TLS, s uintptr, desc uintptr) {
 	stree = (*Tstatic_tree_desc)(unsafe.Pointer((*Ttree_desc)(unsafe.Pointer(desc)).Fstat_desc)).Fstatic_tree
 	extra = (*Tstatic_tree_desc)(unsafe.Pointer((*Ttree_desc)(unsafe.Pointer(desc)).Fstat_desc)).Fextra_bits
 	base = (*Tstatic_tree_desc)(unsafe.Pointer((*Ttree_desc)(unsafe.Pointer(desc)).Fstat_desc)).Fextra_base
-	max_length = (*Tstatic_tree_desc)(unsafe.Pointer((*Ttree_desc)(unsafe.Pointer(desc)).Fstat_desc)).Fmax_length
-	/* heap index */
-	/* iterate over the tree elements */
-	/* bit length */
-	/* extra bits */
-	/* frequency */
-	overflow = 0 /* number of elements with bit length too large */
+	max_length = (*Tstatic_tree_desc)(unsafe.Pointer((*Ttree_desc)(unsafe.Pointer(desc)).Fstat_desc)).Fmax_length /* frequency */
+	overflow = 0                                                                                                  /* number of elements with bit length too large */
 	for bits = 0; bits <= int32(m_MAX_BITS); bits++ {
 		*(*uint16)(unsafe.Pointer(s + 2976 + uintptr(bits)*2)) = uint16(0)
 	}
@@ -21377,10 +21298,8 @@ func _build_tree(tls *libc.TLS, s uintptr, desc uintptr) {
 	var v16 uint16
 	tree = (*Ttree_desc)(unsafe.Pointer(desc)).Fdyn_tree
 	stree = (*Tstatic_tree_desc)(unsafe.Pointer((*Ttree_desc)(unsafe.Pointer(desc)).Fstat_desc)).Fstatic_tree
-	elems = (*Tstatic_tree_desc)(unsafe.Pointer((*Ttree_desc)(unsafe.Pointer(desc)).Fstat_desc)).Felems
-	/* iterate over heap elements */
-	max_code = -int32(1) /* largest code with non zero frequency */
-	/* new node being created */
+	elems = (*Tstatic_tree_desc)(unsafe.Pointer((*Ttree_desc)(unsafe.Pointer(desc)).Fstat_desc)).Felems /* iterate over heap elements */
+	max_code = -int32(1)                                                                                /* new node being created */
 	/* Construct the initial heap, with least frequent element in
 	 * heap[SMALLEST]. The sons of heap[n] are heap[2*n] and heap[2*n + 1].
 	 * heap[0] is not used.
@@ -21495,10 +21414,8 @@ func _build_tree(tls *libc.TLS, s uintptr, desc uintptr) {
 //	 */
 func _scan_tree(tls *libc.TLS, s uintptr, tree uintptr, max_code int32) {
 	var count, curlen, max_count, min_count, n, nextlen, prevlen, v1 int32
-	var p2 uintptr
-	/* iterates over all tree elements */
-	prevlen = -int32(1) /* last emitted length */
-	/* length of current code */
+	var p2 uintptr                                        /* iterates over all tree elements */
+	prevlen = -int32(1)                                   /* length of current code */
 	nextlen = int32(*(*uint16)(unsafe.Pointer(tree + 2))) /* length of next code */
 	count = 0                                             /* repeat count of the current code */
 	max_count = int32(7)                                  /* max repeat count */
@@ -21560,14 +21477,12 @@ func _scan_tree(tls *libc.TLS, s uintptr, tree uintptr, max_code int32) {
 func _send_tree(tls *libc.TLS, s uintptr, tree uintptr, max_code int32) {
 	var count, curlen, len1, len11, len2, len3, len4, len5, len6, len7, max_count, min_count, n, nextlen, prevlen, val, val1, val2, val3, val4, val5, val6, val7, v1, v2 int32
 	var v10, v12, v16, v18, v22, v24, v28, v30, v34, v36, v4, v40, v42, v46, v48, v6 uint64
-	var v11, v13, v17, v19, v23, v25, v29, v31, v35, v37, v41, v43, v47, v49, v5, v7, p14, p15, p20, p21, p26, p27, p3, p32, p33, p38, p39, p44, p45, p50, p8, p9 uintptr
-	/* iterates over all tree elements */
-	prevlen = -int32(1) /* last emitted length */
-	/* length of current code */
-	nextlen = int32(*(*uint16)(unsafe.Pointer(tree + 2))) /* length of next code */
-	count = 0                                             /* repeat count of the current code */
-	max_count = int32(7)                                  /* max repeat count */
-	min_count = int32(4)                                  /* min repeat count */
+	var v11, v13, v17, v19, v23, v25, v29, v31, v35, v37, v41, v43, v47, v49, v5, v7, p14, p15, p20, p21, p26, p27, p3, p32, p33, p38, p39, p44, p45, p50, p8, p9 uintptr /* iterates over all tree elements */
+	prevlen = -int32(1)                                                                                                                                                   /* length of current code */
+	nextlen = int32(*(*uint16)(unsafe.Pointer(tree + 2)))                                                                                                                 /* length of next code */
+	count = 0                                                                                                                                                             /* repeat count of the current code */
+	max_count = int32(7)                                                                                                                                                  /* max repeat count */
+	min_count = int32(4)                                                                                                                                                  /* min repeat count */
 	/* tree[max_code + 1].Len = -1; */ /* guard already set */
 	if nextlen == 0 {
 		max_count = int32(138)
@@ -21787,8 +21702,7 @@ func _send_tree(tls *libc.TLS, s uintptr, tree uintptr, max_code int32) {
 //	 * bl_order of the last bit length code to send.
 //	 */
 func _build_bl_tree(tls *libc.TLS, s uintptr) (r int32) {
-	var max_blindex int32
-	/* index of last bit length code of non zero freq */
+	var max_blindex int32 /* index of last bit length code of non zero freq */
 	/* Determine the bit length frequencies for literal and distance trees */
 	_scan_tree(tls, s, s+212, (*Tdeflate_state)(unsafe.Pointer(s)).Fl_desc.Fmax_code)
 	_scan_tree(tls, s, s+2504, (*Tdeflate_state)(unsafe.Pointer(s)).Fd_desc.Fmax_code)
@@ -21821,8 +21735,7 @@ func _build_bl_tree(tls *libc.TLS, s uintptr) (r int32) {
 func _send_all_trees(tls *libc.TLS, s uintptr, lcodes int32, dcodes int32, blcodes int32) {
 	var len1, len11, len2, len3, rank, val, val1, val2, val3 int32
 	var v10, v14, v16, v2, v20, v22, v4, v8 uint64
-	var v11, v15, v17, v21, v23, v3, v5, v9, p1, p12, p13, p18, p19, p24, p6, p7 uintptr
-	/* index in bl_order */
+	var v11, v15, v17, v21, v23, v3, v5, v9, p1, p12, p13, p18, p19, p24, p6, p7 uintptr /* index in bl_order */
 	len1 = int32(5)
 	if (*Tdeflate_state)(unsafe.Pointer(s)).Fbi_valid > libc.Int32FromInt32(m_Buf_size)-len1 {
 		val = lcodes - int32(257)
@@ -22032,12 +21945,8 @@ func _compress_block(tls *libc.TLS, s uintptr, ltree uintptr, dtree uintptr) {
 	var code, dist, sx, v1, v2, v3 uint32
 	var extra, lc, len1, len11, len2, len3, len4, len5, val, val1, val2, val3, val4, val5, v22 int32
 	var v11, v13, v17, v19, v24, v26, v30, v32, v36, v38, v5, v7 uint64
-	var v12, v14, v18, v20, v25, v27, v31, v33, v37, v39, v6, v8, p10, p15, p16, p21, p23, p28, p29, p34, p35, p4, p40, p9 uintptr
-	/* distance of matched string */
-	/* match length or unmatched char (if dist == 0) */
-	sx = uint32(0) /* running index in sym_buf */
-	/* the code to send */
-	/* number of extra bits to send */
+	var v12, v14, v18, v20, v25, v27, v31, v33, v37, v39, v6, v8, p10, p15, p16, p21, p23, p28, p29, p34, p35, p4, p40, p9 uintptr /* match length or unmatched char (if dist == 0) */
+	sx = uint32(0)                                                                                                                 /* number of extra bits to send */
 	if (*Tdeflate_state)(unsafe.Pointer(s)).Fsym_next != uint32(0) {
 		for cond := true; cond; cond = sx < (*Tdeflate_state)(unsafe.Pointer(s)).Fsym_next {
 			v1 = sx
@@ -22251,9 +22160,8 @@ func _detect_data_type(tls *libc.TLS, s uintptr) (r int32) {
 func x__tr_flush_block(tls *libc.TLS, s uintptr, buf uintptr, stored_len uint64, last int32) {
 	var len1, len11, max_blindex, val, val1 int32
 	var opt_lenb, static_lenb, v1, v11, v3, v5, v9 uint64
-	var v10, v12, v4, v6, p13, p2, p7, p8 uintptr
-	/* opt_len and static_len in bytes */
-	max_blindex = 0 /* index of last bit length code of non zero freq */
+	var v10, v12, v4, v6, p13, p2, p7, p8 uintptr /* opt_len and static_len in bytes */
+	max_blindex = 0                               /* index of last bit length code of non zero freq */
 	/* Build the Huffman trees unless a stored block is forced */
 	if (*Tdeflate_state)(unsafe.Pointer(s)).Flevel > 0 {
 		/* Check if the file is binary or text */
@@ -22621,8 +22529,7 @@ func x_uncompress2(tls *libc.TLS, dest uintptr, destLen uintptr, source uintptr,
 	var max, v1, v2 uint32
 	var _ /* buf at bp+112 */ [1]uint8
 	var _ /* stream at bp+0 */ Tz_stream
-	max = uint32(-libc.Int32FromInt32(1))
-	/* for detection of incomplete stream when *destLen == 0 */
+	max = uint32(-libc.Int32FromInt32(1)) /* for detection of incomplete stream when *destLen == 0 */
 	len1 = *(*uint64)(unsafe.Pointer(sourceLen))
 	if *(*uint64)(unsafe.Pointer(destLen)) != 0 {
 		left = *(*uint64)(unsafe.Pointer(destLen))
@@ -22918,7 +22825,6 @@ func x_gzdopen(tls *libc.TLS, fd int32, mode uintptr) (r uintptr) {
 	defer tls.Free(16)
 	var gz, path, v1 uintptr
 	var v2 bool
-	/* identifier for error messages */
 	if v2 = fd == -int32(1); !v2 {
 		v1 = libc.Xmalloc(tls, libc.Uint64FromInt32(7)+libc.Uint64FromInt32(3)*libc.Uint64FromInt64(4))
 		path = v1

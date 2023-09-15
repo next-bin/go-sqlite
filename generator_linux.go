@@ -77,15 +77,15 @@ func main() {
 	util.MustCopyFile(true, "LICENSE-ZLIB", filepath.Join(libRoot, "LICENSE"), nil)
 	result := "libz.a.go"
 	util.MustInDir(true, libRoot, func() (err error) {
-		var cflags string
+		var cflags []string
 		if s := cc.LongDouble64Flag(goos, goarch); s != "" {
-			cflags = fmt.Sprintf("CFLAGS=%s", s)
+			cflags = append(cflags, s)
 		}
 		util.MustShell(true, "sh", "-c", "go mod init example.com/libz ; go get modernc.org/libc/v2@master")
 		if dev {
 			util.MustShell(true, "sh", "-c", "go work init ; go work use $GOPATH/src/modernc.org/libc/v2")
 		}
-		util.MustShell(true, "sh", "-c", fmt.Sprintf("%s ./configure", cflags))
+		util.MustShell(true, "sh", "-c", fmt.Sprintf("CFLAGS='%s' ./configure", strings.Join(cflags, " ")))
 		args := []string{os.Args[0]}
 		if dev {
 			args = append(
