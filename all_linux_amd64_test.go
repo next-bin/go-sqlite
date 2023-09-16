@@ -19,7 +19,6 @@ import (
 
 var (
 	oXTags = flag.String("xtags", "", "passed to go build of testfixture")
-	oXWork = flag.String("xwork", "", "TestExec will use a go.work file for packages in the CSV list")
 )
 
 func TestMain(m *testing.M) {
@@ -40,7 +39,7 @@ func TestTclTest(t *testing.T) {
 	os.Setenv("TCL_LIBRARY", tclLibrary)
 	os.Setenv("PATH", fmt.Sprintf("%s%c%s", tmpDir, os.PathListSeparator, os.Getenv("PATH")))
 	bin := filepath.Join(tmpDir, "testfixture")
-	if out, err := util.Shell("go", "build", "-o", bin, filepath.Join("internal", "testfixture", fmt.Sprintf("ccgo_%s_%s.go", runtime.GOOS, runtime.GOARCH))); err != nil {
+	if out, err := util.Shell("go", "build", "-o", bin, "-tags="+*oXTags, filepath.Join("internal", "testfixture", fmt.Sprintf("ccgo_%s_%s.go", runtime.GOOS, runtime.GOARCH))); err != nil {
 		t.Fatalf("%s\nFAIL: %v", out, err)
 	}
 
@@ -51,7 +50,7 @@ func TestTclTest(t *testing.T) {
 	}
 
 	util.InDir(tmpDir, func() error {
-		if out, err := util.Shell("testfixture", abs, "-q"); err != nil {
+		if out, err := util.Shell("testfixture", abs, "permutations.test", "full", "-q"); err != nil {
 			t.Fatalf("%s\nFAIL: %v", out, err)
 		}
 

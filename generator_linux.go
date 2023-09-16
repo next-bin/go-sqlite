@@ -84,12 +84,14 @@ func main() {
 	util.MustInDir(true, makeRoot, func() (err error) {
 		cflags := []string{
 			"-DLONGDOUBLE_TYPE=double",
-			// "-UNDEBUG", //TODO-
+			"-DSQLITE_DEBUG",     //TODO-
+			"-DSQLITE_MEM_DEBUG", //TODO-
+			"-UNDEBUG",           //TODO-
 		}
 		if s := cc.LongDouble64Flag(goos, goarch); s != "" {
 			cflags = append(cflags, s)
 		}
-		util.MustShell(true, "sh", "-c", "go mod init example.com/libsqlite3 ; go get modernc.org/libc/v2@master modernc.org/libz@master modernc.org/libtcl8.6@master")
+		util.MustShell(true, "sh", "-c", "go mod init example.com/libsqlite3 ; go get modernc.org/libc/v2@latest modernc.org/libz@latest modernc.org/libtcl8.6@latest")
 		if dev {
 			util.MustShell(true, "sh", "-c", "go work init ; go work use $GOPATH/src/modernc.org/libc/v2 $GOPATH/src/modernc.org/libz $GOPATH/src/modernc.org/libtcl8.6")
 		}

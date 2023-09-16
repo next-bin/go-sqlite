@@ -2,7 +2,7 @@
 # Use of the source code is governed by a BSD-style
 # license that can be found in the LICENSE file.
 
-.PHONY:	all clean dev download edit editor generate work
+.PHONY:	all clean dev download edit editor generate test work
 
 DIR=/tmp/libsqlite3
 ZIP = sqlite-src-3430100.zip
@@ -65,6 +65,9 @@ dev: download
 	grep 'TRC\|TODO\|ERRORF\|FAIL' log-generate-errors || true
 	grep 'TRC\|TODO\|ERRORF\|FAIL' /tmp/ccgo.log || true
 	grep $(shell date '+%B') log-generate
+
+test:
+	go test -v -timeout 24h 2>&1 | tee log-test
 
 work:
 	rm -f go.work*
