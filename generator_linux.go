@@ -77,7 +77,9 @@ func main() {
 	util.MustCopyFile(true, "LICENSE-ZLIB", filepath.Join(libRoot, "LICENSE"), nil)
 	result := "libz.a.go"
 	util.MustInDir(true, libRoot, func() (err error) {
-		var cflags []string
+		cflags := []string{
+			"-UNDEBUG", //TODO-
+		}
 		if s := cc.LongDouble64Flag(goos, goarch); s != "" {
 			cflags = append(cflags, s)
 		}
@@ -92,7 +94,6 @@ func main() {
 				args,
 				"-absolute-paths",
 				"-positions",
-				// "-verify-types",
 			)
 		}
 		args = append(args,
