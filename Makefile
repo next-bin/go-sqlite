@@ -67,9 +67,6 @@ dev: download
 test:
 	go test -v -timeout 24h 2>&1 | tee log-test
 
-test-xwork:
-	go test -v -timeout 24h 2>&1 | tee log-test
-
 work:
 	rm -f go.work*
 	go work init

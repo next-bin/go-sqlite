@@ -18,45 +18,17 @@ import (
 )
 
 var (
-	notFiles = []string{
-		// Memory corruption?
-		"tcltest.test",
-	}
-	skipFiles = []string{
-		// crash in libc.Xstrcmp
-		"chan-io-71.*",
-		"chan-io-72.*",
-		"io-53.*",
-		"io-71.*",
-		"io-72.*",
-		"iocmd-21.*",
-		"iocmd-22.*",
-		"iocmd-23.*",
-		"iocmd-24.*",
-		"iocmd-28.*",
-		"iocmd-29.*",
-		"iocmd-32.*",
-		"iortrans-3.*",
-		"iortrans-4.*",
-		"iortrans-5.*",
-		"iortrans-8.*",
-		"iortrans-11.*",
+	notFiles = []string{}
+	skip     = []string{
+		// crashes
+		"coroutine-7.6",
+
+		// hangs
+		"http11-1.13",
 
 		// fails
-		"next-tailcall-constructor-1",
-		"next-tailcall-destructor-1",
-		"next-tailcall-filter-1",
-		"next-tailcall-forward-1",
-		"next-tailcall-mixin-1",
-		"next-tailcall-objmixin-1",
-		"next-tailcall-simple-1",
-		"next-tailcall-simple-2",
-		"next-tailcall-simple-3",
-		"next-tailcall-simple-4",
-		"next-tailcall-superclass-1",
-		"next-tailcall-superclass-2",
-		"tailcall-12.1",
-		"tailcall-12.2",
+		"coroutine-7.4",
+		"iortrans-3.1",
 		"unixInit-3.1",
 		"unixInit-3.2",
 	}
@@ -67,7 +39,7 @@ var (
 	oMatch      = flag.String("match", "", "pattern list")
 	oNotFile    = flag.String("notfile", strings.Join(notFiles, " "), "pattern list")
 	oSingleProc = flag.String("singleproc", "0", "0 or 1")
-	oSkip       = flag.String("skip", strings.Join(skipFiles, " "), "pattern list")
+	oSkip       = flag.String("skip", strings.Join(skip, " "), "pattern list")
 	oTmpdir     = flag.String("tmpdir", "", "directory")
 	oVerbose    = flag.String("verbose", "el", "any combination of letters b, p, s, t, e, l, m, u")
 	oXTags      = flag.String("xtags", "", "passed to go build of tcltest")

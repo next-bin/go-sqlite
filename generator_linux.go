@@ -85,15 +85,15 @@ func main() {
 	result := "libtcl.a.go"
 	util.MustInDir(true, makeRoot, func() (err error) {
 		cflags := []string{
-			// "-DTCL_MEM_DEBUG", //TODO-
+			"-DTCL_MEM_DEBUG", //TODO-
 			"-UHAVE_CPUID",
 			"-UHAVE_FTS",
-			// "-UNDEBUG", //TODO-
+			"-UNDEBUG", //TODO-
 		}
 		if s := cc.LongDouble64Flag(goos, goarch); s != "" {
 			cflags = append(cflags, s)
 		}
-		util.MustShell(true, "sh", "-c", "go mod init example.com/libtcl8.6 ; go get modernc.org/libc/v2@master modernc.org/libz@master")
+		util.MustShell(true, "sh", "-c", "go mod init example.com/libtcl8.6 ; go get modernc.org/libc/v2@latest modernc.org/libz@latest")
 		if dev {
 			util.MustShell(true, "sh", "-c", "go work init ; go work use $GOPATH/src/modernc.org/libc/v2 $GOPATH/src/modernc.org/libz")
 		}
@@ -104,7 +104,6 @@ func main() {
 				args,
 				"-absolute-paths",
 				"-positions",
-				// "-verify-types",
 			)
 		}
 		args = append(args,

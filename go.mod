@@ -3,8 +3,8 @@ module modernc.org/libtcl8.6
 go 1.20
 
 require (
-	modernc.org/libc/v2 v2.1.0
-	modernc.org/libz v0.0.2
+	modernc.org/libc/v2 v2.1.1
+	modernc.org/libz v0.0.3
 )
 
 require (
@@ -20,7 +20,7 @@ require (
 	modernc.org/cc/v3 v3.41.0 // indirect
 	modernc.org/cc/v4 v4.14.2 // indirect
 	modernc.org/ccgo/v3 v3.16.15 // indirect
-	modernc.org/ccgo/v4 v4.0.1 // indirect
+	modernc.org/ccgo/v4 v4.0.2 // indirect
 	modernc.org/gc/v2 v2.3.0 // indirect
 	modernc.org/libc v1.24.1 // indirect
 	modernc.org/mathutil v1.6.0 // indirect
