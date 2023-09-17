@@ -10,6 +10,7 @@ import (
 	"os"
 	"path/filepath"
 	"runtime"
+	"strings"
 	"testing"
 
 	cp "github.com/otiai10/copy"
@@ -18,7 +19,13 @@ import (
 )
 
 var (
-	oXTags = flag.String("xtags", "", "passed to go build of testfixture")
+	oMaxError = flag.Uint("maxerror", 0, "stop after <uint> errors")
+	oMatch    = flag.String("match", "", "pattern match for tests")
+	oStart    = flag.String("start", "", "-start=[$permutation:]$testfile")
+	oSuite    = flag.String("suite", "full", "suite [test-file] to run")
+	oVerbose  = flag.String("verbose", "0", `"0", "1" or "file"`)
+	oQuiet    = flag.Bool("q", true, "reduce output")
+	oXTags    = flag.String("xtags", "", "passed as -tags to go build of testfixture")
 )
 
 func TestMain(m *testing.M) {
@@ -43,15 +50,36 @@ func TestTclTest(t *testing.T) {
 		t.Fatalf("%s\nFAIL: %v", out, err)
 	}
 
-	tests := filepath.Join("internal", "test", "all.test")
-	abs, err := filepath.Abs(tests)
+	tests, err := filepath.Abs(filepath.Join("internal", "test"))
 	if err != nil {
 		t.Fatal(err)
 	}
 
+	var args []string
+	switch s := *oSuite; s {
+	case "":
+		args = []string{filepath.Join(tests, "all.test")}
+		trc("%q", args)
+	default:
+		a := strings.Split(s, " ")
+		args = append([]string{filepath.Join(tests, "permutations.test")}, a...)
+		trc("%q", args)
+	}
+	if *oStart != "" {
+		args = append(args, fmt.Sprintf("-start=%s", *oStart))
+	}
+	if *oMatch != "" {
+		args = append(args, fmt.Sprintf("-match=%s", *oMatch))
+	}
+	if *oVerbose != "" {
+		args = append(args, fmt.Sprintf("-verbose=%s", *oVerbose))
+	}
+	if *oQuiet {
+		args = append(args, "-q")
+	}
 	util.InDir(tmpDir, func() error {
-		if out, err := util.Shell("testfixture", abs, "permutations.test", "full", "-q"); err != nil {
-			t.Fatalf("%s\nFAIL: %v", out, err)
+		if _, err := util.Shell("testfixture", args...); err != nil {
+			t.Fatalf("FAIL: %v", err)
 		}
 
 		return nil

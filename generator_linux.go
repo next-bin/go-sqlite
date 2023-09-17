@@ -84,9 +84,9 @@ func main() {
 	util.MustInDir(true, makeRoot, func() (err error) {
 		cflags := []string{
 			"-DLONGDOUBLE_TYPE=double",
-			"-DSQLITE_DEBUG",     //TODO-
-			"-DSQLITE_MEM_DEBUG", //TODO-
-			"-UNDEBUG",           //TODO-
+			// "-DSQLITE_DEBUG",     //TODO-
+			// "-DSQLITE_MEM_DEBUG", //TODO-
+			// "-UNDEBUG",           //TODO-
 		}
 		if s := cc.LongDouble64Flag(goos, goarch); s != "" {
 			cflags = append(cflags, s)

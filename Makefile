@@ -4,7 +4,7 @@
 
 .PHONY:	all clean dev download edit editor generate test work
 
-DIR=/tmp/libsqlite3
+DIR = /tmp/libsqlite3
 ZIP = sqlite-src-3430100.zip
 URL = https://www.sqlite.org/2023/$(ZIP)
 
