@@ -85,10 +85,10 @@ func main() {
 	result := "libtcl.a.go"
 	util.MustInDir(true, makeRoot, func() (err error) {
 		cflags := []string{
-			"-DTCL_MEM_DEBUG", //TODO-
+			// "-DTCL_MEM_DEBUG", //TODO-
 			"-UHAVE_CPUID",
 			"-UHAVE_FTS",
-			"-UNDEBUG", //TODO-
+			// "-UNDEBUG", //TODO-
 		}
 		if s := cc.LongDouble64Flag(goos, goarch); s != "" {
 			cflags = append(cflags, s)

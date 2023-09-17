@@ -21,13 +21,10 @@ var (
 	notFiles = []string{}
 	skip     = []string{
 		// crashes
+		"coroutine-7.4",
 		"coroutine-7.6",
 
-		// hangs
-		"http11-1.13",
-
 		// fails
-		"coroutine-7.4",
 		"iortrans-3.1",
 		"unixInit-3.1",
 		"unixInit-3.2",

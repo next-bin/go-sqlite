@@ -57,7 +57,7 @@ TCL_SHLIB_CFLAGS=''
 TCL_CFLAGS_WARNING='-Wall -Wpointer-arith'
 
 # Extra flags to pass to cc:
-TCL_EXTRA_CFLAGS='-DTCL_MEM_DEBUG -UHAVE_CPUID -UHAVE_FTS -UNDEBUG -mlong-double-64 -pipe '
+TCL_EXTRA_CFLAGS='-UHAVE_CPUID -UHAVE_FTS -mlong-double-64 -pipe '
 
 # Base command to use for combining object files into a shared library:
 TCL_SHLIB_LD=''
