@@ -14183,6 +14183,20 @@ var _longdouble_size = int32(8)
 
 var _query_plan = ts + 9412
 
+type TIdList_item = struct {
+	FzName uintptr
+	Fu4    struct {
+		FpExpr       [0]uintptr
+		Fidx         int32
+		F__ccgo_pad2 [4]byte
+	}
+}
+
+type TsColMap = struct {
+	FiFrom int32
+	FzCol  uintptr
+}
+
 type Tsqlite3InitInfo = struct {
 	FnewTnum       uint32
 	FiDb           uint8
@@ -14190,11 +14204,6 @@ type Tsqlite3InitInfo = struct {
 	F__ccgo_align3 [2]byte
 	F__ccgo8       uint8
 	FazInit        uintptr
-}
-
-type TsColMap = struct {
-	FiFrom int32
-	FzCol  uintptr
 }
 
 type TExprList_item = struct {
@@ -14215,15 +14224,6 @@ type TExprList_item = struct {
 		}
 	}
 	F__ccgo_pad4 [4]byte
-}
-
-type TIdList_item = struct {
-	FzName uintptr
-	Fu4    struct {
-		FpExpr       [0]uintptr
-		Fidx         int32
-		F__ccgo_pad2 [4]byte
-	}
 }
 
 type TMemValue = struct {
