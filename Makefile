@@ -2,7 +2,7 @@
 # Use of this source code is governed by a BSD-style
 # license that can be found in the LICENSE file.
 
-.PHONY:	all clean dev download edit editor generate work
+.PHONY:	all clean dev download edit editor generate work test
 
 DIR=/tmp/libz
 TAR = zlib-1.3.tar.gz
@@ -64,6 +64,10 @@ dev: download
 	grep 'TRC\|TODO\|ERRORF\|FAIL' log-generate || true
 	grep 'TRC\|TODO\|ERRORF\|FAIL' log-generate-errors || true
 	grep 'TRC\|TODO\|ERRORF\|FAIL' /tmp/ccgo.log || true
+
+test:
+	go test -v -timeout 24h -count=1 2>&1 | tee log-test
+	grep -a 'TRC\|TODO\|ERRORF\|FAIL' log-test || true 2>&1 | tee -a log-test
 
 work:
 	rm -f go.work*
