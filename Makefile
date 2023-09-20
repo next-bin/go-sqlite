@@ -65,7 +65,8 @@ dev: download
 	grep $(shell date '+%B') log-generate
 
 test:
-	go test -v -timeout 24h 2>&1 | tee log-test
+	go test -v -timeout 24h -count=1 2>&1 | tee log-test
+	grep -a 'TRC\|TODO\|ERRORF\|FAIL' log-test || true 2>&1 | tee -a log-test
 
 work:
 	rm -f go.work*
