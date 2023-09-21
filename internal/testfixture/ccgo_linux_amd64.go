@@ -14183,20 +14183,6 @@ var _longdouble_size = int32(8)
 
 var _query_plan = ts + 9412
 
-type TIdList_item = struct {
-	FzName uintptr
-	Fu4    struct {
-		FpExpr       [0]uintptr
-		Fidx         int32
-		F__ccgo_pad2 [4]byte
-	}
-}
-
-type TsColMap = struct {
-	FiFrom int32
-	FzCol  uintptr
-}
-
 type Tsqlite3InitInfo = struct {
 	FnewTnum       uint32
 	FiDb           uint8
@@ -14224,6 +14210,20 @@ type TExprList_item = struct {
 		}
 	}
 	F__ccgo_pad4 [4]byte
+}
+
+type TsColMap = struct {
+	FiFrom int32
+	FzCol  uintptr
+}
+
+type TIdList_item = struct {
+	FzName uintptr
+	Fu4    struct {
+		FpExpr       [0]uintptr
+		Fidx         int32
+		F__ccgo_pad2 [4]byte
+	}
 }
 
 type TMemValue = struct {
@@ -110097,19 +110097,19 @@ func x_sqlite3TouchRegister(tls *libc.TLS, pParse uintptr, iReg int32) {
 	}
 }
 
+type TAggInfo_func = struct {
+	FpFExpr    uintptr
+	FpFunc     uintptr
+	FiDistinct int32
+	FiDistAddr int32
+}
+
 type TAggInfo_col = struct {
 	FpTab          uintptr
 	FpCExpr        uintptr
 	FiTable        int32
 	FiColumn       int16
 	FiSorterColumn int16
-}
-
-type TAggInfo_func = struct {
-	FpFExpr    uintptr
-	FpFunc     uintptr
-	FiDistinct int32
-	FiDistAddr int32
 }
 
 const m_FP_NAN = 0

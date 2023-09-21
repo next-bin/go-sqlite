@@ -43,7 +43,7 @@ func main() {
 
 	f, err := os.Open(archivePath)
 	if err != nil {
-		fail(1, "cannot open tar file: %v\n", err)
+		fail(1, "cannot open zip file: %v\n", err)
 	}
 
 	f.Close()
