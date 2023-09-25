@@ -4,7 +4,7 @@
 
 .PHONY:	all clean dev dwonload edit editor generate test work
 
-DIR=/tmp/libtcl8.6
+DIR = /tmp/libtcl8.6
 TAR = tcl8.6.13-src.tar.gz
 URL = http://prdownloads.sourceforge.net/tcl/$(TAR)
 
@@ -42,7 +42,6 @@ generate: download
 	cat log-generate-errors
 	go build -v ./...
 	# go install github.com/mdempsky/unconvert@latest
-	./unconvert.sh
 	go build -v ./...  | tee -a log-generate
 	git status
 	grep 'TRC\|TODO\|ERRORF\|FAIL' log-generate || true
@@ -55,7 +54,6 @@ dev: download
 	date 2>&1 | tee -a log-generate
 	GO_GENERATE_DIR=$(DIR) GO_GENERATE_DEV=1 go run -tags=ccgo.dmesg,ccgo.assert generator*.go 2>&1 | tee -a log-generate
 	date 2>&1 | tee -a log-generate
-	./unconvert.sh
 	date 2>&1 | tee -a log-generate
 	go build -v ./...  | tee -a log-generate
 	git status

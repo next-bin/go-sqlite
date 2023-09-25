@@ -144,4 +144,7 @@ func main() {
 	util.MustShell(true, "sed", "-i", `s/\<T__\([a-zA-Z0-9][a-zA-Z0-9_]\+\)/t__\1/g`, fn)
 	util.MustShell(true, "sed", "-i", `s/\<x_\([a-zA-Z0-9][a-zA-Z0-9_]\+\)/X\1/g`, fn)
 	util.MustCopyFile(false, filepath.Join("internal", "tcltest", fn), filepath.Join(makeRoot, "tcltest.go"), nil)
+	util.Shell("sh", "-c", "./unconvert.sh")
+	util.MustShell(true, "go", "test", "-run", "@")
+	util.Shell("git", "status")
 }
