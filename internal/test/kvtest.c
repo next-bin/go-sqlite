@@ -161,7 +161,7 @@ static const char zHelp[] =
 #endif
 
 /*
-** Show the help text and quit.
+** Show thqe help text and quit.
 */
 static void showHelp(void){
   fprintf(stdout, "%s", zHelp);

@@ -20,7 +20,7 @@ import (
 )
 
 const (
-	archivePath = "sqlite-src-3430100.zip"
+	archivePath = "sqlite-src-3410200.zip"
 )
 
 var (
