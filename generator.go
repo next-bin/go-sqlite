@@ -34,6 +34,10 @@ func fail(rc int, msg string, args ...any) {
 }
 
 func main() {
+	if goos != "linux" {
+		return
+	}
+
 	if ccgo.IsExecEnv() {
 		if err := ccgo.NewTask(goos, goarch, os.Args, os.Stdout, os.Stderr, nil).Main(); err != nil {
 			fmt.Fprintln(os.Stderr, err)
@@ -83,7 +87,30 @@ func main() {
 	result := "sqlite3.go"
 	util.MustInDir(true, makeRoot, func() (err error) {
 		cflags := []string{
+			"-DHAVE_USLEEP",
 			"-DLONGDOUBLE_TYPE=double",
+			"-DSQLITE_CKSUMVFS_STATIC",
+			"-DSQLITE_DEFAULT_MEMSTATUS=1",
+			"-DSQLITE_ENABLE_BYTECODE_VTAB",
+			"-DSQLITE_ENABLE_COLUMN_METADATA",
+			"-DSQLITE_ENABLE_DBPAGE_VTAB",
+			"-DSQLITE_ENABLE_DBSTAT_VTAB",
+			"-DSQLITE_ENABLE_DESERIALIZE",
+			"-DSQLITE_ENABLE_EXPLAIN_COMMENTS",
+			"-DSQLITE_ENABLE_FTS5",
+			"-DSQLITE_ENABLE_GEOPOLY",
+			"-DSQLITE_ENABLE_MATH_FUNCTIONS",
+			"-DSQLITE_ENABLE_MEMORY_MANAGEMENT",
+			"-DSQLITE_ENABLE_OFFSET_SQL_FUNC",
+			"-DSQLITE_ENABLE_PREUPDATE_HOOK",
+			"-DSQLITE_ENABLE_RTREE",
+			"-DSQLITE_ENABLE_SESSION",
+			"-DSQLITE_ENABLE_STAT4",
+			"-DSQLITE_ENABLE_STMTVTAB",
+			"-DSQLITE_ENABLE_UNLOCK_NOTIFY",
+			"-DSQLITE_LIKE_DOESNT_MATCH_BLOBS",
+			"-DSQLITE_SOUNDEX",
+			"-DSQLITE_TEMP_STORE=1",
 			// "-DSQLITE_DEBUG",     //TODO-
 			// "-DSQLITE_MEM_DEBUG", //TODO-
 			// "-UNDEBUG",           //TODO-
@@ -153,4 +180,7 @@ func main() {
 	util.MustCopyFile(false, filepath.Join("internal", "testfixture", fn), filepath.Join(makeRoot, "testfixture.go"), nil)
 	os.RemoveAll(filepath.Join("internal", "test"))
 	util.MustCopyDir(true, filepath.Join("internal", "test"), filepath.Join(makeRoot, "test"), nil)
+	util.Shell("sh", "-c", "./unconvert.sh")
+	util.MustShell(true, "go", "test", "-run", "@")
+	util.Shell("git", "status")
 }
