@@ -34,6 +34,10 @@ func fail(rc int, msg string, args ...any) {
 }
 
 func main() {
+	if goos != "linux" {
+		return
+	}
+
 	if ccgo.IsExecEnv() {
 		if err := ccgo.NewTask(goos, goarch, os.Args, os.Stdout, os.Stderr, nil).Main(); err != nil {
 			fmt.Fprintln(os.Stderr, err)
