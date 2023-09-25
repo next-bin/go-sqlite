@@ -70,6 +70,9 @@ type block struct {
 
 func test1u(t *testing.T, max int) {
 	var alloc Allocator
+
+	defer alloc.Close()
+
 	rem := quota
 	var a []block
 	srng, err := mathutil.NewFC32(0, math.MaxInt32, true)
@@ -141,6 +144,9 @@ func Test1UBig(t *testing.T)   { test1u(t, bigMax) }
 
 func test2u(t *testing.T, max int) {
 	var alloc Allocator
+
+	defer alloc.Close()
+
 	rem := quota
 	var a []block
 	srng, err := mathutil.NewFC32(0, math.MaxInt32, true)
@@ -204,6 +210,9 @@ func Test2UBig(t *testing.T)   { test2u(t, bigMax) }
 
 func test3u(t *testing.T, max int) {
 	var alloc Allocator
+
+	defer alloc.Close()
+
 	rem := quota
 	m := map[block][]byte{}
 	srng, err := mathutil.NewFC32(1, max, true)
@@ -283,6 +292,9 @@ func Test3UBig(t *testing.T)   { test3u(t, bigMax) }
 
 func TestUFree(t *testing.T) {
 	var alloc Allocator
+
+	defer alloc.Close()
+
 	p, err := alloc.UintptrMalloc(1)
 	if err != nil {
 		t.Fatal(err)
@@ -299,6 +311,9 @@ func TestUFree(t *testing.T) {
 
 func TestUMalloc(t *testing.T) {
 	var alloc Allocator
+
+	defer alloc.Close()
+
 	p, err := alloc.UintptrMalloc(maxSlotSize)
 	if err != nil {
 		t.Fatal(err)
@@ -320,6 +335,9 @@ func TestUMalloc(t *testing.T) {
 
 func test1(t *testing.T, max int) {
 	var alloc Allocator
+
+	defer alloc.Close()
+
 	rem := quota
 	var a [][]byte
 	srng, err := mathutil.NewFC32(0, math.MaxInt32, true)
@@ -390,6 +408,9 @@ func Test1Big(t *testing.T)   { test1(t, bigMax) }
 
 func test2(t *testing.T, max int) {
 	var alloc Allocator
+
+	defer alloc.Close()
+
 	rem := quota
 	var a [][]byte
 	srng, err := mathutil.NewFC32(0, math.MaxInt32, true)
@@ -452,6 +473,9 @@ func Test2Big(t *testing.T)   { test2(t, bigMax) }
 
 func test3(t *testing.T, max int) {
 	var alloc Allocator
+
+	defer alloc.Close()
+
 	rem := quota
 	m := map[*[]byte][]byte{}
 	srng, err := mathutil.NewFC32(1, max, true)
@@ -527,6 +551,9 @@ func Test3Big(t *testing.T)   { test3(t, bigMax) }
 
 func TestFree(t *testing.T) {
 	var alloc Allocator
+
+	defer alloc.Close()
+
 	b, err := alloc.Malloc(1)
 	if err != nil {
 		t.Fatal(err)
@@ -543,6 +570,9 @@ func TestFree(t *testing.T) {
 
 func TestMalloc(t *testing.T) {
 	var alloc Allocator
+
+	defer alloc.Close()
+
 	b, err := alloc.Malloc(maxSlotSize)
 	if err != nil {
 		t.Fatal(err)
@@ -564,6 +594,9 @@ func TestMalloc(t *testing.T) {
 
 func benchmarkFree(b *testing.B, size int) {
 	var alloc Allocator
+
+	defer alloc.Close()
+
 	a := make([][]byte, b.N)
 	for i := range a {
 		p, err := alloc.Malloc(size)
@@ -589,6 +622,9 @@ func BenchmarkFree64(b *testing.B) { benchmarkFree(b, 1<<6) }
 
 func benchmarkCalloc(b *testing.B, size int) {
 	var alloc Allocator
+
+	defer alloc.Close()
+
 	a := make([][]byte, b.N)
 	b.ResetTimer()
 	for i := range a {
@@ -628,6 +664,9 @@ func BenchmarkGoCalloc64(b *testing.B) { benchmarkGoCalloc(b, 1<<6) }
 
 func benchmarkMalloc(b *testing.B, size int) {
 	var alloc Allocator
+
+	defer alloc.Close()
+
 	a := make([][]byte, b.N)
 	b.ResetTimer()
 	for i := range a {
@@ -653,6 +692,9 @@ func BenchmarkMalloc64(b *testing.B) { benchmarkMalloc(b, 1<<6) }
 
 func benchmarkUintptrFree(b *testing.B, size int) {
 	var alloc Allocator
+
+	defer alloc.Close()
+
 	a := make([]uintptr, b.N)
 	for i := range a {
 		p, err := alloc.UintptrMalloc(size)
@@ -678,6 +720,9 @@ func BenchmarkUintptrFree64(b *testing.B) { benchmarkUintptrFree(b, 1<<6) }
 
 func benchmarkUintptrCalloc(b *testing.B, size int) {
 	var alloc Allocator
+
+	defer alloc.Close()
+
 	a := make([]uintptr, b.N)
 	b.ResetTimer()
 	for i := range a {
@@ -703,6 +748,9 @@ func BenchmarkUintptrCalloc64(b *testing.B) { benchmarkUintptrCalloc(b, 1<<6) }
 
 func benchmarkUintptrMalloc(b *testing.B, size int) {
 	var alloc Allocator
+
+	defer alloc.Close()
+
 	a := make([]uintptr, b.N)
 	b.ResetTimer()
 	for i := range a {
