@@ -4,7 +4,7 @@
 
 .PHONY:	all clean dev download edit editor generate work test
 
-DIR=/tmp/libz
+DIR = /tmp/libz
 TAR = zlib-1.3.tar.gz
 URL = https://www.zlib.net/$(TAR)
 
@@ -43,7 +43,6 @@ generate: download
 	cat log-generate-errors
 	go build -v ./...
 	# go install github.com/mdempsky/unconvert@latest
-	./unconvert.sh
 	go build -v ./...  | tee -a log-generate
 	go test -v -count=1 ./... 2>&1 | tee -a log-generate
 	git status
@@ -57,7 +56,6 @@ dev: download
 	echo -n > log-generate
 	echo -n > log-generate-errors
 	GO_GENERATE_DIR=$(DIR) GO_GENERATE_DEV=1 go run -tags=ccgo.dmesg,ccgo.assert generator*.go 2>&1 | tee log-generate
-	./unconvert.sh
 	go build -v ./...  | tee -a log-generate
 	go test -v -count=1 ./... 2>&1 | tee -a log-generate
 	git status
