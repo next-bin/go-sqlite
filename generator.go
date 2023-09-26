@@ -8,7 +8,9 @@
 package main
 
 import (
+	"bufio"
 	"fmt"
+	"io"
 	"os"
 	"path/filepath"
 	"runtime"
@@ -83,9 +85,9 @@ func main() {
 	os.RemoveAll(filepath.Join("library", "assets"))
 	os.Remove(filepath.Join("internal/tests"))
 	util.MustUntar(true, tempDir, f, nil)
-	util.MustCopyDir(true, libRoot, filepath.Join("overlay", "all"), nil)
-	util.MustCopyDir(true, libRoot, filepath.Join("overlay", goos, goarch), nil)
-	util.MustCopyFile(true, "LICENSE-TCL", filepath.Join(libRoot, "license.terms"), nil)
+	mustCopyDir(libRoot, filepath.Join("overlay", "all"), nil, true)
+	mustCopyDir(libRoot, filepath.Join("overlay", goos, goarch), nil, true)
+	mustCopyFile("LICENSE-TCL", filepath.Join(libRoot, "license.terms"), nil)
 	result := "libtcl.a.go"
 	util.MustInDir(true, makeRoot, func() (err error) {
 		cflags := []string{
@@ -136,19 +138,192 @@ func main() {
 		return ccgo.NewTask(goos, goarch, append(args, "-o", result, "--package-name", "libtcl8_6", "-ignore-link-errors", "libtcl8.6.a", "-lz"), os.Stdout, os.Stderr, nil).Main()
 	})
 
-	util.MustCopyFile(false, filepath.Join("include", goos, goarch, "tcl.h"), filepath.Join(libRoot, "generic", "tcl.h"), nil)
-	util.MustCopyFile(false, filepath.Join("include", goos, goarch, "tclDecls.h"), filepath.Join(libRoot, "generic", "tclDecls.h"), nil)
-	util.MustCopyFile(false, filepath.Join("include", goos, goarch, "tclPlatDecls.h"), filepath.Join(libRoot, "generic", "tclPlatDecls.h"), nil)
-	util.MustCopyFile(false, filepath.Join("library", "assets", "tclConfig.sh"), filepath.Join(makeRoot, "tclConfig.sh"), nil)
-	util.MustCopyDir(true, filepath.Join("library", "assets"), filepath.Join(libRoot, "library"), nil)
-	util.MustCopyDir(true, "internal/tests", filepath.Join(libRoot, "tests"), nil)
+	mustCopyFile(filepath.Join("include", goos, goarch, "tcl.h"), filepath.Join(libRoot, "generic", "tcl.h"), nil)
+	mustCopyFile(filepath.Join("include", goos, goarch, "tclDecls.h"), filepath.Join(libRoot, "generic", "tclDecls.h"), nil)
+	mustCopyFile(filepath.Join("include", goos, goarch, "tclPlatDecls.h"), filepath.Join(libRoot, "generic", "tclPlatDecls.h"), nil)
+	mustCopyFile(filepath.Join("library", "assets", "tclConfig.sh"), filepath.Join(makeRoot, "tclConfig.sh"), nil)
+	mustCopyDir(filepath.Join("library", "assets"), filepath.Join(libRoot, "library"), nil, false)
+	mustCopyDir("internal/tests", filepath.Join(libRoot, "tests"), nil, false)
 
 	fn := fmt.Sprintf("ccgo_%s_%s.go", goos, goarch)
-	util.MustCopyFile(false, fn, filepath.Join(makeRoot, result), nil)
+	mustCopyFile(fn, filepath.Join(makeRoot, result), nil)
 	util.MustShell(true, "sed", "-i", `s/\<T__\([a-zA-Z0-9][a-zA-Z0-9_]\+\)/t__\1/g`, fn)
 	util.MustShell(true, "sed", "-i", `s/\<x_\([a-zA-Z0-9][a-zA-Z0-9_]\+\)/X\1/g`, fn)
-	util.MustCopyFile(false, filepath.Join("internal", "tcltest", fn), filepath.Join(makeRoot, "tcltest.go"), nil)
+	mustCopyFile(filepath.Join("internal", "tcltest", fn), filepath.Join(makeRoot, "tcltest.go"), nil)
 	util.Shell("sh", "-c", "./unconvert.sh")
 	util.MustShell(true, "go", "test", "-run", "@")
 	util.Shell("git", "status")
+}
+
+func mustCopyDir(dst, src string, canOverwrite func(fn string, fi os.FileInfo) bool, srcNotExistsOk bool) (files int, bytes int64) {
+	file, bytes, err := copyDir(dst, src, canOverwrite, srcNotExistsOk)
+	if err != nil {
+		fail(1, "%s\n", err)
+	}
+
+	return file, bytes
+}
+
+func copyDir(dst, src string, canOverwrite func(fn string, fi os.FileInfo) bool, srcNotExistsOk bool) (files int, bytes int64, rerr error) {
+	dst = filepath.FromSlash(dst)
+	src = filepath.FromSlash(src)
+	si, err := os.Stat(src)
+	if err != nil {
+		if os.IsNotExist(err) && srcNotExistsOk {
+			err = nil
+		}
+		return 0, 0, err
+	}
+
+	if !si.IsDir() {
+		return 0, 0, fmt.Errorf("cannot copy a file: %s", src)
+	}
+
+	return files, bytes, filepath.Walk(src, func(path string, info os.FileInfo, err error) error {
+		if err != nil {
+			return err
+		}
+
+		if info.Mode()&os.ModeSymlink != 0 {
+			target, err := filepath.EvalSymlinks(path)
+			if err != nil {
+				return fmt.Errorf("cannot evaluate symlink %s: %v", path, err)
+			}
+
+			if info, err = os.Stat(target); err != nil {
+				return fmt.Errorf("cannot stat %s: %v", target, err)
+			}
+
+			if info.IsDir() {
+				rel, err := filepath.Rel(src, path)
+				if err != nil {
+					return err
+				}
+
+				dst2 := filepath.Join(dst, rel)
+				if err := os.MkdirAll(dst2, 0770); err != nil {
+					return err
+				}
+
+				f, b, err := copyDir(dst2, target, canOverwrite, srcNotExistsOk)
+				files += f
+				bytes += b
+				return err
+			}
+
+			path = target
+		}
+
+		rel, err := filepath.Rel(src, path)
+		if err != nil {
+			return err
+		}
+
+		if info.IsDir() {
+			return os.MkdirAll(filepath.Join(dst, rel), 0770)
+		}
+
+		n, err := copyFile(filepath.Join(dst, rel), path, canOverwrite)
+		if err != nil {
+			return err
+		}
+
+		files++
+		bytes += n
+		return nil
+	})
+}
+
+func mustCopyFile(dst, src string, canOverwrite func(fn string, fi os.FileInfo) bool) int64 {
+	n, err := copyFile(dst, src, canOverwrite)
+	if err != nil {
+		fail(1, "%s\n", err)
+	}
+
+	return n
+}
+
+func copyFile(dst, src string, canOverwrite func(fn string, fi os.FileInfo) bool) (n int64, rerr error) {
+	src = filepath.FromSlash(src)
+	si, err := os.Stat(src)
+	if err != nil {
+		return 0, err
+	}
+
+	if si.IsDir() {
+		return 0, fmt.Errorf("cannot copy a directory: %s", src)
+	}
+
+	dst = filepath.FromSlash(dst)
+	if si.Size() == 0 {
+		return 0, os.Remove(dst)
+	}
+
+	dstDir := filepath.Dir(dst)
+	di, err := os.Stat(dstDir)
+	switch {
+	case err != nil:
+		if !os.IsNotExist(err) {
+			return 0, err
+		}
+
+		if err := os.MkdirAll(dstDir, 0770); err != nil {
+			return 0, err
+		}
+	case err == nil:
+		if !di.IsDir() {
+			return 0, fmt.Errorf("cannot create directory, file exists: %s", dst)
+		}
+	}
+
+	di, err = os.Stat(dst)
+	switch {
+	case err != nil && !os.IsNotExist(err):
+		return 0, err
+	case err == nil:
+		if di.IsDir() {
+			return 0, fmt.Errorf("cannot overwite a directory: %s", dst)
+		}
+
+		if canOverwrite != nil && !canOverwrite(dst, di) {
+			return 0, fmt.Errorf("cannot overwite: %s", dst)
+		}
+	}
+
+	s, err := os.Open(src)
+	if err != nil {
+		return 0, err
+	}
+
+	defer s.Close()
+	r := bufio.NewReader(s)
+
+	d, err := os.Create(dst)
+
+	defer func() {
+		if err := d.Close(); err != nil && rerr == nil {
+			rerr = err
+			return
+		}
+
+		if err := os.Chmod(dst, si.Mode()); err != nil && rerr == nil {
+			rerr = err
+			return
+		}
+
+		if err := os.Chtimes(dst, si.ModTime(), si.ModTime()); err != nil && rerr == nil {
+			rerr = err
+			return
+		}
+	}()
+
+	w := bufio.NewWriter(d)
+
+	defer func() {
+		if err := w.Flush(); err != nil && rerr == nil {
+			rerr = err
+		}
+	}()
+
+	return io.Copy(w, r)
 }
