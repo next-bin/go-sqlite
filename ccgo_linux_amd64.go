@@ -210163,32 +210163,9 @@ func Xsqlite3_sourceid(tls *libc.TLS) (r uintptr) {
 	return ts + 37532
 }
 
-type T_ht = struct {
-	Fcount uint32
-	Fchain uintptr
-}
-
-type TAggInfo_col = struct {
-	FpTab          uintptr
-	FpCExpr        uintptr
-	FiTable        int32
-	FiColumn       Ti16
-	FiSorterColumn Ti16
-}
-
-type Tsqlite3_index_orderby = struct {
-	FiColumn     int32
-	Fdesc        uint8
-	F__ccgo_pad2 [3]byte
-}
-
-type TIdList_item = struct {
-	FzName uintptr
-	Fu4    struct {
-		FpExpr       [0]uintptr
-		Fidx         int32
-		F__ccgo_pad2 [4]byte
-	}
+type TsColMap = struct {
+	FiFrom int32
+	FzCol  uintptr
 }
 
 type TAggInfo_func = struct {
@@ -210198,11 +210175,12 @@ type TAggInfo_func = struct {
 	FiDistAddr int32
 }
 
-type Tsqlite3_index_constraint = struct {
-	FiColumn     int32
-	Fop          uint8
-	Fusable      uint8
-	FiTermOffset int32
+type TWalSegment = struct {
+	FiNext  int32
+	FaIndex uintptr
+	FaPgno  uintptr
+	FnEntry int32
+	FiZero  int32
 }
 
 type Tsqlite3InitInfo = struct {
@@ -210214,17 +210192,45 @@ type Tsqlite3InitInfo = struct {
 	FazInit        uintptr
 }
 
-type TsColMap = struct {
-	FiFrom int32
-	FzCol  uintptr
+type Tsqlite3_index_orderby = struct {
+	FiColumn     int32
+	Fdesc        uint8
+	F__ccgo_pad2 [3]byte
 }
 
-type TWalSegment = struct {
-	FiNext  int32
-	FaIndex uintptr
-	FaPgno  uintptr
-	FnEntry int32
-	FiZero  int32
+type T_ht = struct {
+	Fcount uint32
+	Fchain uintptr
+}
+
+type Tsqlite3_index_constraint = struct {
+	FiColumn     int32
+	Fop          uint8
+	Fusable      uint8
+	FiTermOffset int32
+}
+
+type Tsqlite3_index_constraint_usage = struct {
+	FargvIndex   int32
+	Fomit        uint8
+	F__ccgo_pad2 [3]byte
+}
+
+type TAggInfo_col = struct {
+	FpTab          uintptr
+	FpCExpr        uintptr
+	FiTable        int32
+	FiColumn       Ti16
+	FiSorterColumn Ti16
+}
+
+type TIdList_item = struct {
+	FzName uintptr
+	Fu4    struct {
+		FpExpr       [0]uintptr
+		Fidx         int32
+		F__ccgo_pad2 [4]byte
+	}
 }
 
 type TInLoop = struct {
@@ -210234,12 +210240,6 @@ type TInLoop = struct {
 	FnPrefix     int32
 	FeEndLoopOp  Tu8
 	F__ccgo_pad5 [3]byte
-}
-
-type Tsqlite3_index_constraint_usage = struct {
-	FargvIndex   int32
-	Fomit        uint8
-	F__ccgo_pad2 [3]byte
 }
 
 type TMemValue = struct {
