@@ -5,7 +5,7 @@ go 1.20
 require (
 	github.com/otiai10/copy v1.12.0
 	modernc.org/ccgo/v3 v3.16.15
-	modernc.org/libc/v2 v2.1.6
+	modernc.org/libc/v2 v2.1.9
 	modernc.org/libtcl8.6 v0.0.8
 	modernc.org/libz v0.0.7
 )
@@ -26,7 +26,7 @@ require (
 	modernc.org/gc/v2 v2.3.0 // indirect
 	modernc.org/libc v1.24.1 // indirect
 	modernc.org/mathutil v1.6.0 // indirect
-	modernc.org/memory v1.7.1 // indirect
+	modernc.org/memory v1.7.2 // indirect
 	modernc.org/opt v0.1.3 // indirect
 	modernc.org/sortutil v1.2.0 // indirect
 	modernc.org/strutil v1.2.0 // indirect
