@@ -14037,6 +14037,15 @@ var _longdouble_size = int32(8)
 
 var _query_plan = ts + 9498
 
+type Tsqlite3InitInfo = struct {
+	FnewTnum       TPgno
+	FiDb           Tu8
+	Fbusy          Tu8
+	F__ccgo_align3 [2]byte
+	F__ccgo8       uint8
+	FazInit        uintptr
+}
+
 type TExprList_item = struct {
 	FpExpr  uintptr
 	FzEName uintptr
@@ -14060,15 +14069,6 @@ type TExprList_item = struct {
 type TsColMap = struct {
 	FiFrom int32
 	FzCol  uintptr
-}
-
-type Tsqlite3InitInfo = struct {
-	FnewTnum       TPgno
-	FiDb           Tu8
-	Fbusy          Tu8
-	F__ccgo_align3 [2]byte
-	F__ccgo8       uint8
-	FazInit        uintptr
 }
 
 type TIdList_item = struct {
@@ -280456,19 +280456,19 @@ type T_ht = struct {
 	Fchain uintptr
 }
 
-type TAggInfo_func = struct {
-	FpFExpr    uintptr
-	FpFunc     uintptr
-	FiDistinct int32
-	FiDistAddr int32
-}
-
 type TWalSegment = struct {
 	FiNext  int32
 	FaIndex uintptr
 	FaPgno  uintptr
 	FnEntry int32
 	FiZero  int32
+}
+
+type TAggInfo_func = struct {
+	FpFExpr    uintptr
+	FpFunc     uintptr
+	FiDistinct int32
+	FiDistAddr int32
 }
 
 func __ccgo_fp(f interface{}) uintptr {

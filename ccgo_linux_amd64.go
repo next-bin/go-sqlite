@@ -210168,11 +210168,9 @@ type TsColMap = struct {
 	FzCol  uintptr
 }
 
-type TAggInfo_func = struct {
-	FpFExpr    uintptr
-	FpFunc     uintptr
-	FiDistinct int32
-	FiDistAddr int32
+type T_ht = struct {
+	Fcount uint32
+	Fchain uintptr
 }
 
 type TWalSegment = struct {
@@ -210192,22 +210190,18 @@ type Tsqlite3InitInfo = struct {
 	FazInit        uintptr
 }
 
-type Tsqlite3_index_orderby = struct {
-	FiColumn     int32
-	Fdesc        uint8
-	F__ccgo_pad2 [3]byte
-}
-
-type T_ht = struct {
-	Fcount uint32
-	Fchain uintptr
-}
-
 type Tsqlite3_index_constraint = struct {
 	FiColumn     int32
 	Fop          uint8
 	Fusable      uint8
 	FiTermOffset int32
+}
+
+type TAggInfo_func = struct {
+	FpFExpr    uintptr
+	FpFunc     uintptr
+	FiDistinct int32
+	FiDistAddr int32
 }
 
 type Tsqlite3_index_constraint_usage = struct {
@@ -210240,6 +210234,12 @@ type TInLoop = struct {
 	FnPrefix     int32
 	FeEndLoopOp  Tu8
 	F__ccgo_pad5 [3]byte
+}
+
+type Tsqlite3_index_orderby = struct {
+	FiColumn     int32
+	Fdesc        uint8
+	F__ccgo_pad2 [3]byte
 }
 
 type TMemValue = struct {
