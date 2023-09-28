@@ -29,6 +29,7 @@ const (
 var (
 	goos   = runtime.GOOS
 	goarch = runtime.GOARCH
+	j      = fmt.Sprint(runtime.GOMAXPROCS(-1))
 )
 
 func fail(rc int, msg string, args ...any) {
@@ -265,7 +266,7 @@ func main() {
 			"--prefix-undefined=_",
 			"-extended-errors",
 
-			"-exec", "make", "testfixture",
+			"-exec", "make", "-j", j, "testfixture",
 		)
 		return ccgo.NewTask(goos, goarch, config, os.Stdout, os.Stderr, nil).Exec()
 	})

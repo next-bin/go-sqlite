@@ -39,7 +39,6 @@ package libsqlite3 // import "modernc.org/libsqlite3"
 //	dbstatus-4.2.3
 //	dbstatus-4.2.4
 
-
 import (
 	"flag"
 	"fmt"
