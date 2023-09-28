@@ -28,7 +28,7 @@ const (
 var (
 	goos   = runtime.GOOS
 	goarch = runtime.GOARCH
-	j      = fmt.Sprint(runtime.GOMAXPROCS)
+	j      = fmt.Sprint(runtime.GOMAXPROCS(-1))
 )
 
 func fail(rc int, msg string, args ...any) {
