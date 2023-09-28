@@ -100,7 +100,7 @@ TCL_LIB_FLAG='-ltcl8.6'
 
 # String to pass to linker to pick up the Tcl library from its
 # build directory.
-TCL_BUILD_LIB_SPEC='-L/tmp/autogen/tcl8.6.13/unix -ltcl8.6'
+TCL_BUILD_LIB_SPEC='-L/tmp/libtcl8.6/tcl8.6.13/unix -ltcl8.6'
 
 # String to pass to linker to pick up the Tcl library from its
 # installed directory.
@@ -135,7 +135,7 @@ TCL_UNSHARED_LIB_SUFFIX='${VERSION}.a'
 # different place than the directory containing the source files, this
 # points to the location of the sources, not the location where Tcl was
 # compiled.
-TCL_SRC_DIR='/tmp/autogen/tcl8.6.13'
+TCL_SRC_DIR='/tmp/libtcl8.6/tcl8.6.13'
 
 # List of standard directories in which to look for packages during
 # "package require" commands.  Contains the "prefix" directory plus also
@@ -153,14 +153,14 @@ TCL_STUB_LIB_FLAG='-ltclstub8.6'
 
 # String to pass to linker to pick up the Tcl stub library from its
 # build directory.
-TCL_BUILD_STUB_LIB_SPEC='-L/tmp/autogen/tcl8.6.13/unix -ltclstub8.6'
+TCL_BUILD_STUB_LIB_SPEC='-L/tmp/libtcl8.6/tcl8.6.13/unix -ltclstub8.6'
 
 # String to pass to linker to pick up the Tcl stub library from its
 # installed directory.
 TCL_STUB_LIB_SPEC='-L/usr/local/lib -ltclstub8.6'
 
 # Path to the Tcl stub library in the build directory.
-TCL_BUILD_STUB_LIB_PATH='/tmp/autogen/tcl8.6.13/unix/libtclstub8.6.a'
+TCL_BUILD_STUB_LIB_PATH='/tmp/libtcl8.6/tcl8.6.13/unix/libtclstub8.6.a'
 
 # Path to the Tcl stub library in the install directory.
 TCL_STUB_LIB_PATH='/usr/local/lib/libtclstub8.6.a'
