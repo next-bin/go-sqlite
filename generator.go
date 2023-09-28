@@ -128,11 +128,11 @@ func main() {
 			"-extended-errors",
 			"-hide", "TclpCreateProcess",
 		)
-		if err := ccgo.NewTask(goos, goarch, append(args, "-j", j, "-exec", "make", "libtcl8.6.a"), os.Stdout, os.Stderr, nil).Exec(); err != nil {
+		if err := ccgo.NewTask(goos, goarch, append(args, "-exec", "make", "-j", j, "libtcl8.6.a"), os.Stdout, os.Stderr, nil).Exec(); err != nil {
 			return err
 		}
 
-		if err := ccgo.NewTask(goos, goarch, append(args, "-j", j, "-exec", "make", "tcltest"), os.Stdout, os.Stderr, nil).Exec(); err != nil {
+		if err := ccgo.NewTask(goos, goarch, append(args, "-exec", "make", "-j", j, "tcltest"), os.Stdout, os.Stderr, nil).Exec(); err != nil {
 			return err
 		}
 
