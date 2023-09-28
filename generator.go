@@ -28,6 +28,7 @@ const (
 var (
 	goos   = runtime.GOOS
 	goarch = runtime.GOARCH
+	j      = fmt.Sprint(runtime.GOMAXPROCS(-1))
 )
 
 func fail(rc int, msg string, args ...any) {
@@ -116,7 +117,7 @@ func main() {
 			"--prefix-undefined=_",
 			"-extended-errors",
 		)
-		if err := ccgo.NewTask(goos, goarch, append(args, "--package-name=main", "-exec", "make", "libz.a", "example64", "minigzip64"), os.Stdout, os.Stderr, nil).Exec(); err != nil {
+		if err := ccgo.NewTask(goos, goarch, append(args, "--package-name=main", "-exec", "make", "-j", j,  "libz.a", "example64", "minigzip64"), os.Stdout, os.Stderr, nil).Exec(); err != nil {
 			fail(1, "%v", err)
 		}
 
