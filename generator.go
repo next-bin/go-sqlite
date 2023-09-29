@@ -28,6 +28,7 @@ const (
 var (
 	goos   = runtime.GOOS
 	goarch = runtime.GOARCH
+	j      = fmt.Sprint(runtime.GOMAXPROCS(-1))
 )
 
 func fail(rc int, msg string, args ...any) {
@@ -127,11 +128,11 @@ func main() {
 			"-extended-errors",
 			"-hide", "TclpCreateProcess",
 		)
-		if err := ccgo.NewTask(goos, goarch, append(args, "-exec", "make", "libtcl8.6.a"), os.Stdout, os.Stderr, nil).Exec(); err != nil {
+		if err := ccgo.NewTask(goos, goarch, append(args, "-exec", "make", "-j", j, "libtcl8.6.a"), os.Stdout, os.Stderr, nil).Exec(); err != nil {
 			return err
 		}
 
-		if err := ccgo.NewTask(goos, goarch, append(args, "-exec", "make", "tcltest"), os.Stdout, os.Stderr, nil).Exec(); err != nil {
+		if err := ccgo.NewTask(goos, goarch, append(args, "-exec", "make", "-j", j, "tcltest"), os.Stdout, os.Stderr, nil).Exec(); err != nil {
 			return err
 		}
 

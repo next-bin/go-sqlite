@@ -3514,7 +3514,7 @@ func _moresubs(tls *libc.TLS, v uintptr, wanted int32) {
 	var p uintptr
 	var v1 int32
 	_, _, _ = n, p, v1
-	n = uint64(uint64(wanted))*uint64(3)/uint64(2) + uint64(1)
+	n = uint64(wanted)*uint64(3)/uint64(2) + uint64(1)
 	if (*Tvars)(unsafe.Pointer(v)).Fsubs == v+88 {
 		p = XTclpAlloc(tls, uint32(n*libc.Uint64FromInt64(8)))
 		if p != libc.UintptrFromInt32(0) {
@@ -4099,7 +4099,7 @@ _19: /* value flags as capturing or non */
 	if cap1 != 0 {
 		(*Tvars)(unsafe.Pointer(v)).Fnsubexp++
 		subno = (*Tvars)(unsafe.Pointer(v)).Fnsubexp
-		if uint64(uint64(subno)) >= (*Tvars)(unsafe.Pointer(v)).Fnsubs {
+		if uint64(subno) >= (*Tvars)(unsafe.Pointer(v)).Fnsubs {
 			_moresubs(tls, v, subno)
 		}
 	} else {
@@ -4302,7 +4302,7 @@ _21:
 		if atom != libc.UintptrFromInt32(0) {
 			_freesubre(tls, v, atom)
 		}
-		(*Tsubre)(unsafe.Pointer(top)).Fflags = int8(int8(f))
+		(*Tsubre)(unsafe.Pointer(top)).Fflags = int8(f)
 		return
 	}
 	/*
@@ -4409,8 +4409,8 @@ _21:
 		 * Just stuff everything into atom.
 		 */
 		_repeat(tls, v, (*Tsubre)(unsafe.Pointer(atom)).Fbegin, (*Tsubre)(unsafe.Pointer(atom)).Fend, m, n)
-		(*Tsubre)(unsafe.Pointer(atom)).Fmin = int16(int16(m))
-		(*Tsubre)(unsafe.Pointer(atom)).Fmax = int16(int16(n))
+		(*Tsubre)(unsafe.Pointer(atom)).Fmin = int16(m)
+		(*Tsubre)(unsafe.Pointer(atom)).Fmax = int16(n)
 		p41 = atom + 1
 		if qprefer&int32(m_NOPROP) != 0 {
 			v42 = qprefer & int32(m_NOPROP)
@@ -4485,8 +4485,8 @@ _21:
 				if (*Tvars)(unsafe.Pointer(v)).Ferr != 0 {
 					return
 				}
-				(*Tsubre)(unsafe.Pointer(t)).Fmin = int16(int16(m))
-				(*Tsubre)(unsafe.Pointer(t)).Fmax = int16(int16(n))
+				(*Tsubre)(unsafe.Pointer(t)).Fmin = int16(m)
+				(*Tsubre)(unsafe.Pointer(t)).Fmax = int16(n)
 				(*Tsubre)(unsafe.Pointer(t)).Fleft = atom
 				*(*uintptr)(unsafe.Pointer(atomp)) = t
 				/* rest of branch is to be strung from iteration's end state */
@@ -4990,7 +4990,7 @@ func _dovec(tls *libc.TLS, v uintptr, cv uintptr, lp uintptr, rp uintptr) {
 			break
 		}
 		ch = *(*Tchr)(unsafe.Pointer(p))
-		_newarc(tls, (*Tvars)(unsafe.Pointer(v)).Fnfa, int32('p'), int32(_subcolor(tls, (*Tvars)(unsafe.Pointer(v)).Fcm, int32(int32(ch)))), lp, rp)
+		_newarc(tls, (*Tvars)(unsafe.Pointer(v)).Fnfa, int32('p'), int32(_subcolor(tls, (*Tvars)(unsafe.Pointer(v)).Fcm, int32(ch))), lp, rp)
 		goto _1
 	_1:
 		p += 2
@@ -5004,8 +5004,8 @@ func _dovec(tls *libc.TLS, v uintptr, cv uintptr, lp uintptr, rp uintptr) {
 		}
 		from = *(*Tchr)(unsafe.Pointer(p))
 		to = *(*Tchr)(unsafe.Pointer(p + libc.UintptrFromInt32(1)*2))
-		if int32(int32(from)) <= int32(int32(to)) {
-			_subrange(tls, v, int32(int32(from)), int32(int32(to)), lp, rp)
+		if int32(from) <= int32(to) {
+			_subrange(tls, v, int32(from), int32(to), lp, rp)
 		}
 		goto _2
 	_2:
@@ -5080,8 +5080,8 @@ func _subre(tls *libc.TLS, v uintptr, op int32, flags int32, begin uintptr, end 
 		(*Tsubre)(unsafe.Pointer(ret)).Fchain = (*Tvars)(unsafe.Pointer(v)).Ftreechain
 		(*Tvars)(unsafe.Pointer(v)).Ftreechain = ret
 	}
-	(*Tsubre)(unsafe.Pointer(ret)).Fop = int8(int8(op))
-	(*Tsubre)(unsafe.Pointer(ret)).Fflags = int8(int8(flags))
+	(*Tsubre)(unsafe.Pointer(ret)).Fop = int8(op)
+	(*Tsubre)(unsafe.Pointer(ret)).Fflags = int8(flags)
 	(*Tsubre)(unsafe.Pointer(ret)).Fid = 0 /* will be assigned later */
 	(*Tsubre)(unsafe.Pointer(ret)).Fsubno = 0
 	v2 = libc.Int16FromInt32(1)
@@ -5950,7 +5950,7 @@ func _next(tls *libc.TLS, v uintptr) (r int32) {
 	 */
 	switch (*Tvars)(unsafe.Pointer(v)).Flexcon {
 	case int32(m_L_BRE):
-		return _brenext(tls, v, int32(int32(c)))
+		return _brenext(tls, v, int32(c))
 	case int32(m_L_ERE):
 	case int32(m_L_Q):
 		(*Tvars)(unsafe.Pointer(v)).Fnexttype = int32('p')
@@ -5959,7 +5959,7 @@ func _next(tls *libc.TLS, v uintptr) (r int32) {
 	case int32(m_L_BBND):
 		fallthrough
 	case int32(m_L_EBND):
-		switch int32(int32(c)) {
+		switch int32(c) {
 		case int32(uint8(libc.Int32FromUint8('0'))):
 			fallthrough
 		case int32(uint8(libc.Int32FromUint8('1'))):
@@ -6037,7 +6037,7 @@ func _next(tls *libc.TLS, v uintptr) (r int32) {
 			break
 		}
 	case int32(m_L_BRACK):
-		switch int32(int32(c)) {
+		switch int32(c) {
 		case int32(uint8(libc.Int32FromUint8(']'))):
 			if (*Tvars)(unsafe.Pointer(v)).Flasttype == int32('[') {
 				(*Tvars)(unsafe.Pointer(v)).Fnexttype = int32('p')
@@ -6168,7 +6168,7 @@ func _next(tls *libc.TLS, v uintptr) (r int32) {
 			break
 		}
 	case int32(m_L_CEL):
-		if int32(int32(c)) == int32(uint8(libc.Int32FromUint8('.'))) && (!((*Tvars)(unsafe.Pointer(v)).Fnow >= (*Tvars)(unsafe.Pointer(v)).Fstop) && int32(*(*Tchr)(unsafe.Pointer((*Tvars)(unsafe.Pointer(v)).Fnow))) == int32(uint8(libc.Int32FromUint8(']')))) {
+		if int32(c) == int32(uint8(libc.Int32FromUint8('.'))) && (!((*Tvars)(unsafe.Pointer(v)).Fnow >= (*Tvars)(unsafe.Pointer(v)).Fstop) && int32(*(*Tchr)(unsafe.Pointer((*Tvars)(unsafe.Pointer(v)).Fnow))) == int32(uint8(libc.Int32FromUint8(']')))) {
 			(*Tvars)(unsafe.Pointer(v)).Fnow += 2
 			(*Tvars)(unsafe.Pointer(v)).Flexcon = int32(m_L_BRACK)
 			(*Tvars)(unsafe.Pointer(v)).Fnexttype = int32('X')
@@ -6180,7 +6180,7 @@ func _next(tls *libc.TLS, v uintptr) (r int32) {
 			return libc.Int32FromInt32(1)
 		}
 	case int32(m_L_ECL):
-		if int32(int32(c)) == int32(uint8(libc.Int32FromUint8('='))) && (!((*Tvars)(unsafe.Pointer(v)).Fnow >= (*Tvars)(unsafe.Pointer(v)).Fstop) && int32(*(*Tchr)(unsafe.Pointer((*Tvars)(unsafe.Pointer(v)).Fnow))) == int32(uint8(libc.Int32FromUint8(']')))) {
+		if int32(c) == int32(uint8(libc.Int32FromUint8('='))) && (!((*Tvars)(unsafe.Pointer(v)).Fnow >= (*Tvars)(unsafe.Pointer(v)).Fstop) && int32(*(*Tchr)(unsafe.Pointer((*Tvars)(unsafe.Pointer(v)).Fnow))) == int32(uint8(libc.Int32FromUint8(']')))) {
 			(*Tvars)(unsafe.Pointer(v)).Fnow += 2
 			(*Tvars)(unsafe.Pointer(v)).Flexcon = int32(m_L_BRACK)
 			(*Tvars)(unsafe.Pointer(v)).Fnexttype = int32('X')
@@ -6192,7 +6192,7 @@ func _next(tls *libc.TLS, v uintptr) (r int32) {
 			return libc.Int32FromInt32(1)
 		}
 	case int32(m_L_CCL):
-		if int32(int32(c)) == int32(uint8(libc.Int32FromUint8(':'))) && (!((*Tvars)(unsafe.Pointer(v)).Fnow >= (*Tvars)(unsafe.Pointer(v)).Fstop) && int32(*(*Tchr)(unsafe.Pointer((*Tvars)(unsafe.Pointer(v)).Fnow))) == int32(uint8(libc.Int32FromUint8(']')))) {
+		if int32(c) == int32(uint8(libc.Int32FromUint8(':'))) && (!((*Tvars)(unsafe.Pointer(v)).Fnow >= (*Tvars)(unsafe.Pointer(v)).Fstop) && int32(*(*Tchr)(unsafe.Pointer((*Tvars)(unsafe.Pointer(v)).Fnow))) == int32(uint8(libc.Int32FromUint8(']')))) {
 			(*Tvars)(unsafe.Pointer(v)).Fnow += 2
 			(*Tvars)(unsafe.Pointer(v)).Flexcon = int32(m_L_BRACK)
 			(*Tvars)(unsafe.Pointer(v)).Fnexttype = int32('X')
@@ -6212,7 +6212,7 @@ func _next(tls *libc.TLS, v uintptr) (r int32) {
 	/*
 	 * Deal with EREs and AREs, except for backslashes.
 	 */
-	switch int32(int32(c)) {
+	switch int32(c) {
 	case int32(uint8(libc.Int32FromUint8('|'))):
 		(*Tvars)(unsafe.Pointer(v)).Fnexttype = int32('|')
 		return libc.Int32FromInt32(1)
@@ -6348,7 +6348,7 @@ func _next(tls *libc.TLS, v uintptr) (r int32) {
 			c = *(*Tchr)(unsafe.Pointer((*Tvars)(unsafe.Pointer(v)).Fnow + libc.UintptrFromInt32(2)*2))
 			*(*uintptr)(unsafe.Pointer(v + 8)) += uintptr(6) * 2
 			*(*int64)(unsafe.Pointer((*Tvars)(unsafe.Pointer(v)).Fre + 16)) |= int64(libc.Int32FromInt32(m_REG_UNONPOSIX))
-			if int32(int32(c)) == int32(uint8(libc.Int32FromUint8('<'))) {
+			if int32(c) == int32(uint8(libc.Int32FromUint8('<'))) {
 				v27 = int32('<')
 			} else {
 				v27 = int32('>')
@@ -6469,13 +6469,13 @@ func _lexescape(tls *libc.TLS, v uintptr) (r int32) {
 	v1 = *(*uintptr)(unsafe.Pointer(v2))
 	*(*uintptr)(unsafe.Pointer(v2)) += 2
 	c = *(*Tchr)(unsafe.Pointer(v1))
-	if !(XTcl_UniCharIsAlnum(tls, int32(int32(c))) != 0) {
+	if !(XTcl_UniCharIsAlnum(tls, int32(c)) != 0) {
 		(*Tvars)(unsafe.Pointer(v)).Fnexttype = int32('p')
 		(*Tvars)(unsafe.Pointer(v)).Fnextvalue = c
 		return libc.Int32FromInt32(1)
 	}
 	*(*int64)(unsafe.Pointer((*Tvars)(unsafe.Pointer(v)).Fre + 16)) |= int64(libc.Int32FromInt32(m_REG_UNONPOSIX))
-	switch int32(int32(c)) {
+	switch int32(c) {
 	case int32(uint8(libc.Int32FromUint8('a'))):
 		(*Tvars)(unsafe.Pointer(v)).Fnexttype = int32('p')
 		(*Tvars)(unsafe.Pointer(v)).Fnextvalue = _chrnamed(tls, v, uintptr(unsafe.Pointer(&_alert)), uintptr(unsafe.Pointer(&_alert))+uintptr(libc.Uint64FromInt64(10)/libc.Uint64FromInt64(2))*2, int32(uint8(libc.Int32FromUint8('\007'))))
@@ -6590,7 +6590,7 @@ func _lexescape(tls *libc.TLS, v uintptr) (r int32) {
 			i = int32(0xFFFD)
 		}
 		(*Tvars)(unsafe.Pointer(v)).Fnexttype = int32('p')
-		(*Tvars)(unsafe.Pointer(v)).Fnextvalue = uint16(uint32(uint32(i)))
+		(*Tvars)(unsafe.Pointer(v)).Fnextvalue = uint16(uint32(i))
 		return libc.Int32FromInt32(1)
 	case int32(uint8(libc.Int32FromUint8('v'))):
 		(*Tvars)(unsafe.Pointer(v)).Fnexttype = int32('p')
@@ -6669,7 +6669,7 @@ func _lexescape(tls *libc.TLS, v uintptr) (r int32) {
 		/*
 		 * Ugly heuristic (first test is "exactly 1 digit?")
 		 */
-		if (int64((*Tvars)(unsafe.Pointer(v)).Fnow)-int64(int64(save)))/2 == 0 || int32(int32(c)) > 0 && int32(int32(c)) <= (*Tvars)(unsafe.Pointer(v)).Fnsubexp {
+		if (int64((*Tvars)(unsafe.Pointer(v)).Fnow)-int64(save))/2 == 0 || int32(c) > 0 && int32(c) <= (*Tvars)(unsafe.Pointer(v)).Fnsubexp {
 			*(*int64)(unsafe.Pointer((*Tvars)(unsafe.Pointer(v)).Fre + 16)) |= int64(libc.Int32FromInt32(m_REG_UBACKREF))
 			(*Tvars)(unsafe.Pointer(v)).Fnexttype = int32('b')
 			(*Tvars)(unsafe.Pointer(v)).Fnextvalue = c
@@ -6695,7 +6695,7 @@ func _lexescape(tls *libc.TLS, v uintptr) (r int32) {
 			(*Tvars)(unsafe.Pointer(v)).Ferr = v10
 			return libc.Int32FromInt32(0)
 		}
-		if int32(int32(c)) > int32(0xFF) {
+		if int32(c) > int32(0xFF) {
 			/* out of range, so we handled one digit too much */
 			(*Tvars)(unsafe.Pointer(v)).Fnow -= 2
 			c = Tchr(int32(c) >> libc.Int32FromInt32(3))
@@ -6743,7 +6743,7 @@ func _lexdigits(tls *libc.TLS, v uintptr, base int32, minlen int32, maxlen int32
 	var ub Tuchr
 	var v2, v3 uintptr
 	_, _, _, _, _, _, _, _ = c, d, len1, n, ub, v2, v3, v4
-	ub = uint32(uint32(base))
+	ub = uint32(base)
 	n = 0
 	len1 = 0
 	for {
@@ -6758,7 +6758,7 @@ func _lexdigits(tls *libc.TLS, v uintptr, base int32, minlen int32, maxlen int32
 		v2 = *(*uintptr)(unsafe.Pointer(v3))
 		*(*uintptr)(unsafe.Pointer(v3)) += 2
 		c = *(*Tchr)(unsafe.Pointer(v2))
-		switch int32(int32(c)) {
+		switch int32(c) {
 		case int32(uint8(libc.Int32FromUint8('0'))):
 			fallthrough
 		case int32(uint8(libc.Int32FromUint8('1'))):
@@ -6815,7 +6815,7 @@ func _lexdigits(tls *libc.TLS, v uintptr, base int32, minlen int32, maxlen int32
 		if d < 0 {
 			break /* NOTE BREAK OUT */
 		}
-		n = int32(uint32(uint32(n))*ub + uint32(uint32(d)))
+		n = int32(uint32(n)*ub + uint32(d))
 		goto _1
 	_1:
 		len1++
@@ -6845,8 +6845,8 @@ func _brenext(tls *libc.TLS, v uintptr, pc Tpchr) (r int32) {
 	var v1, v2 int32
 	var v3, v4 uintptr
 	_, _, _, _, _ = c, v1, v2, v3, v4
-	c = uint16(uint16(pc))
-	switch int32(int32(c)) {
+	c = uint16(pc)
+	switch int32(c) {
 	case int32(uint8(libc.Int32FromUint8('*'))):
 		if (*Tvars)(unsafe.Pointer(v)).Flasttype == int32('n') || (*Tvars)(unsafe.Pointer(v)).Flasttype == int32('(') || (*Tvars)(unsafe.Pointer(v)).Flasttype == int32('^') {
 			(*Tvars)(unsafe.Pointer(v)).Fnexttype = int32('p')
@@ -6861,7 +6861,7 @@ func _brenext(tls *libc.TLS, v uintptr, pc Tpchr) (r int32) {
 			c = *(*Tchr)(unsafe.Pointer((*Tvars)(unsafe.Pointer(v)).Fnow + libc.UintptrFromInt32(2)*2))
 			*(*uintptr)(unsafe.Pointer(v + 8)) += uintptr(6) * 2
 			*(*int64)(unsafe.Pointer((*Tvars)(unsafe.Pointer(v)).Fre + 16)) |= int64(libc.Int32FromInt32(m_REG_UNONPOSIX))
-			if int32(int32(c)) == int32(uint8(libc.Int32FromUint8('<'))) {
+			if int32(c) == int32(uint8(libc.Int32FromUint8('<'))) {
 				v1 = int32('<')
 			} else {
 				v1 = int32('>')
@@ -6932,7 +6932,7 @@ func _brenext(tls *libc.TLS, v uintptr, pc Tpchr) (r int32) {
 	v3 = *(*uintptr)(unsafe.Pointer(v4))
 	*(*uintptr)(unsafe.Pointer(v4)) += 2
 	c = *(*Tchr)(unsafe.Pointer(v3))
-	switch int32(int32(c)) {
+	switch int32(c) {
 	case int32(uint8(libc.Int32FromUint8('{'))):
 		(*Tvars)(unsafe.Pointer(v)).Flexcon = int32(m_L_BBND)
 		*(*int64)(unsafe.Pointer((*Tvars)(unsafe.Pointer(v)).Fre + 16)) |= int64(libc.Int32FromInt32(m_REG_UBOUNDS))
@@ -6976,7 +6976,7 @@ func _brenext(tls *libc.TLS, v uintptr, pc Tpchr) (r int32) {
 		(*Tvars)(unsafe.Pointer(v)).Fnextvalue = uint16(int32(c) - libc.Int32FromUint8('0'))
 		return libc.Int32FromInt32(1)
 	default:
-		if XTcl_UniCharIsAlnum(tls, int32(int32(c))) != 0 {
+		if XTcl_UniCharIsAlnum(tls, int32(c)) != 0 {
 			*(*int64)(unsafe.Pointer((*Tvars)(unsafe.Pointer(v)).Fre + 16)) |= int64(libc.Int32FromInt32(m_REG_UBSALNUM))
 			*(*int64)(unsafe.Pointer((*Tvars)(unsafe.Pointer(v)).Fre + 16)) |= int64(libc.Int32FromInt32(m_REG_UUNSPEC))
 		}
@@ -7050,11 +7050,11 @@ func _chrnamed(tls *libc.TLS, v uintptr, startp uintptr, endp uintptr, lastresor
 	e = (*Tvars)(unsafe.Pointer(v)).Ferr
 	(*Tvars)(unsafe.Pointer(v)).Ferr = errsave
 	if e != 0 {
-		return uint16(uint16(lastresort))
+		return uint16(lastresort)
 	}
 	cv = _range(tls, v, c, c, 0)
 	if (*Tcvec)(unsafe.Pointer(cv)).Fnchrs == 0 {
-		return uint16(uint16(lastresort))
+		return uint16(lastresort)
 	}
 	return *(*Tchr)(unsafe.Pointer((*Tcvec)(unsafe.Pointer(cv)).Fchrs))
 }
@@ -7246,7 +7246,7 @@ func _setcolor(tls *libc.TLS, cm uintptr, c Tpchr, co Tpcolor) (r Tcolor) {
 	var uc Tuchr
 	var v4 uint64
 	_, _, _, _, _, _, _, _, _, _, _, _, _, _, _ = b, bottom, cb, fillt, lastt, level, newt, prev, shift, t, uc, v2, v3, v4, v5
-	uc = uint32(uint32(c))
+	uc = uint32(c)
 	if (*Tvars)(unsafe.Pointer((*Tcolormap)(unsafe.Pointer(cm)).Fv)).Ferr != 0 || co == -int32(1) {
 		return int16(-libc.Int32FromInt32(1))
 	}
@@ -7305,7 +7305,7 @@ func _setcolor(tls *libc.TLS, cm uintptr, c Tpchr, co Tpcolor) (r Tcolor) {
 	}
 	b = int32(uc & uint32(libc.Int32FromInt32(1)<<libc.Int32FromInt32(m_BYTBITS)-libc.Int32FromInt32(1)))
 	prev = *(*Tcolor)(unsafe.Pointer(t + uintptr(b)*2))
-	*(*Tcolor)(unsafe.Pointer(t + uintptr(b)*2)) = int16(int16(co))
+	*(*Tcolor)(unsafe.Pointer(t + uintptr(b)*2)) = int16(co)
 	return prev
 }
 
@@ -7391,7 +7391,7 @@ func _newcolor(tls *libc.TLS, cm uintptr) (r Tcolor) {
 	(*Tcolordesc)(unsafe.Pointer(cd)).Farcs = libc.UintptrFromInt32(0)
 	(*Tcolordesc)(unsafe.Pointer(cd)).Fflags = 0
 	(*Tcolordesc)(unsafe.Pointer(cd)).Fblock = libc.UintptrFromInt32(0)
-	return int16((int64(int64(cd)) - int64((*Tcolormap)(unsafe.Pointer(cm)).Fcd)) / 32)
+	return int16((int64(cd) - int64((*Tcolormap)(unsafe.Pointer(cm)).Fcd)) / 32)
 }
 
 // C documentation
@@ -7413,7 +7413,7 @@ func _freecolor(tls *libc.TLS, cm uintptr, co Tpcolor) {
 		XTclpFree(tls, (*Tcolordesc)(unsafe.Pointer(cd)).Fblock)
 		(*Tcolordesc)(unsafe.Pointer(cd)).Fblock = libc.UintptrFromInt32(0) /* just paranoia */
 	}
-	if uint64(uint64(co)) == (*Tcolormap)(unsafe.Pointer(cm)).Fmax {
+	if uint64(co) == (*Tcolormap)(unsafe.Pointer(cm)).Fmax {
 		for (*Tcolormap)(unsafe.Pointer(cm)).Fmax > uint64(m_WHITE) && (*Tcolordesc)(unsafe.Pointer((*Tcolormap)(unsafe.Pointer(cm)).Fcd+uintptr((*Tcolormap)(unsafe.Pointer(cm)).Fmax)*32)).Fflags&int32(m_FREECOL) != 0 {
 			(*Tcolormap)(unsafe.Pointer(cm)).Fmax--
 		}
@@ -7423,8 +7423,8 @@ func _freecolor(tls *libc.TLS, cm uintptr, co Tpcolor) {
 		if int32((*Tcolormap)(unsafe.Pointer(cm)).Ffree) > 0 {
 			pco = (*Tcolormap)(unsafe.Pointer(cm)).Ffree
 			nco = (*(*Tcolordesc)(unsafe.Pointer((*Tcolormap)(unsafe.Pointer(cm)).Fcd + uintptr(pco)*32))).Fsub
-			for int32(int32(nco)) > 0 {
-				if uint64(uint64(nco)) > (*Tcolormap)(unsafe.Pointer(cm)).Fmax {
+			for int32(nco) > 0 {
+				if uint64(nco) > (*Tcolormap)(unsafe.Pointer(cm)).Fmax {
 					/*
 					 * Take this one out of freelist.
 					 */
@@ -7438,7 +7438,7 @@ func _freecolor(tls *libc.TLS, cm uintptr, co Tpcolor) {
 		}
 	} else {
 		(*Tcolordesc)(unsafe.Pointer(cd)).Fsub = (*Tcolormap)(unsafe.Pointer(cm)).Ffree
-		(*Tcolormap)(unsafe.Pointer(cm)).Ffree = int16((int64(int64(cd)) - int64((*Tcolormap)(unsafe.Pointer(cm)).Fcd)) / 32)
+		(*Tcolormap)(unsafe.Pointer(cm)).Ffree = int16((int64(cd) - int64((*Tcolormap)(unsafe.Pointer(cm)).Fcd)) / 32)
 	}
 }
 
@@ -7470,16 +7470,16 @@ func _subcolor(tls *libc.TLS, cm uintptr, c Tpchr) (r Tcolor) {
 	var co, sco Tcolor
 	_, _ = co, sco /* new subcolor */
 	co = *(*Tcolor)(unsafe.Pointer(*(*uintptr)(unsafe.Pointer(cm + 368 + uintptr(c>>libc.Int32FromInt32(m_BYTBITS)&(libc.Int32FromInt32(1)<<libc.Int32FromInt32(m_BYTBITS)-libc.Int32FromInt32(1)))*8)) + uintptr(c&(libc.Int32FromInt32(1)<<libc.Int32FromInt32(m_BYTBITS)-libc.Int32FromInt32(1)))*2))
-	sco = _newsub(tls, cm, int32(int32(co)))
+	sco = _newsub(tls, cm, int32(co))
 	if (*Tvars)(unsafe.Pointer((*Tcolormap)(unsafe.Pointer(cm)).Fv)).Ferr != 0 {
 		return int16(-libc.Int32FromInt32(1))
 	}
-	if int32(int32(co)) == int32(int32(sco)) { /* already in an open subcolor */
+	if int32(co) == int32(sco) { /* already in an open subcolor */
 		return co /* rest is redundant */
 	}
 	(*(*Tcolordesc)(unsafe.Pointer((*Tcolormap)(unsafe.Pointer(cm)).Fcd + uintptr(co)*32))).Fnchrs--
 	(*(*Tcolordesc)(unsafe.Pointer((*Tcolormap)(unsafe.Pointer(cm)).Fcd + uintptr(sco)*32))).Fnchrs++
-	_setcolor(tls, cm, c, int32(int32(sco)))
+	_setcolor(tls, cm, c, int32(sco))
 	return sco
 }
 
@@ -7493,12 +7493,12 @@ func _newsub(tls *libc.TLS, cm uintptr, co Tpcolor) (r Tcolor) {
 	var sco Tcolor
 	_ = sco /* new subcolor */
 	sco = (*(*Tcolordesc)(unsafe.Pointer((*Tcolormap)(unsafe.Pointer(cm)).Fcd + uintptr(co)*32))).Fsub
-	if int32(int32(sco)) == -int32(1) { /* color has no open subcolor */
+	if int32(sco) == -int32(1) { /* color has no open subcolor */
 		if (*(*Tcolordesc)(unsafe.Pointer((*Tcolormap)(unsafe.Pointer(cm)).Fcd + uintptr(co)*32))).Fnchrs == uint32(1) { /* optimization */
-			return int16(int16(co))
+			return int16(co)
 		}
 		sco = _newcolor(tls, cm) /* must create subcolor */
-		if int32(int32(sco)) == -int32(1) {
+		if int32(sco) == -int32(1) {
 			return int16(-libc.Int32FromInt32(1))
 		}
 		(*(*Tcolordesc)(unsafe.Pointer((*Tcolormap)(unsafe.Pointer(cm)).Fcd + uintptr(co)*32))).Fsub = sco
@@ -7521,7 +7521,7 @@ func _subrange(tls *libc.TLS, v uintptr, from Tpchr, to Tpchr, lp uintptr, rp ui
 	/*
 	 * First, align "from" on a tree-block boundary
 	 */
-	uf = uint32(uint32(from))
+	uf = uint32(from)
 	i = int32((uf+uint32(libc.Int32FromInt32(1)<<libc.Int32FromInt32(m_BYTBITS))-libc.Uint32FromInt32(1))&uint32(^(libc.Int32FromInt32(1)<<libc.Int32FromInt32(m_BYTBITS)-libc.Int32FromInt32(1))) - uf)
 	for {
 		if !(from <= to && i > 0) {
@@ -7574,7 +7574,7 @@ func _subblock(tls *libc.TLS, v uintptr, start Tpchr, lp uintptr, rp uintptr) {
 	var co, sco Tcolor
 	var uc Tuchr
 	_, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _ = b, cb, cm, co, fillt, i, lastt, level, ndone, previ, sco, shift, t, uc, v2, v3, v5
-	uc = uint32(uint32(start))
+	uc = uint32(start)
 	cm = (*Tvars)(unsafe.Pointer(v)).Fcm
 	/*
 	 * Find its color block, making new pointer blocks as needed.
@@ -7620,7 +7620,7 @@ func _subblock(tls *libc.TLS, v uintptr, start Tpchr, lp uintptr, rp uintptr) {
 		/*
 		 * Either way, we want a subcolor solid block.
 		 */
-		sco = _newsub(tls, cm, int32(int32(co)))
+		sco = _newsub(tls, cm, int32(co))
 		t = (*(*Tcolordesc)(unsafe.Pointer((*Tcolormap)(unsafe.Pointer(cm)).Fcd + uintptr(sco)*32))).Fblock
 		if t == libc.UintptrFromInt32(0) { /* must set it up */
 			t = XTclpAlloc(tls, uint32(libc.Uint64FromInt64(512)))
@@ -7650,7 +7650,7 @@ func _subblock(tls *libc.TLS, v uintptr, start Tpchr, lp uintptr, rp uintptr) {
 		 * Find loop must have run at least once.
 		 */
 		*(*uintptr)(unsafe.Pointer(lastt + uintptr(b)*8)) = t
-		_newarc(tls, (*Tvars)(unsafe.Pointer(v)).Fnfa, int32('p'), int32(int32(sco)), lp, rp)
+		_newarc(tls, (*Tvars)(unsafe.Pointer(v)).Fnfa, int32('p'), int32(sco), lp, rp)
 		(*(*Tcolordesc)(unsafe.Pointer((*Tcolormap)(unsafe.Pointer(cm)).Fcd + uintptr(co)*32))).Fnchrs -= uint32(libc.Int32FromInt32(1) << libc.Int32FromInt32(m_BYTBITS))
 		(*(*Tcolordesc)(unsafe.Pointer((*Tcolormap)(unsafe.Pointer(cm)).Fcd + uintptr(sco)*32))).Fnchrs += uint32(libc.Int32FromInt32(1) << libc.Int32FromInt32(m_BYTBITS))
 		return
@@ -7661,17 +7661,17 @@ func _subblock(tls *libc.TLS, v uintptr, start Tpchr, lp uintptr, rp uintptr) {
 	i = 0
 	for i < libc.Int32FromInt32(1)<<libc.Int32FromInt32(m_BYTBITS) {
 		co = *(*Tcolor)(unsafe.Pointer(t + uintptr(i)*2))
-		sco = _newsub(tls, cm, int32(int32(co)))
-		_newarc(tls, (*Tvars)(unsafe.Pointer(v)).Fnfa, int32('p'), int32(int32(sco)), lp, rp)
+		sco = _newsub(tls, cm, int32(co))
+		_newarc(tls, (*Tvars)(unsafe.Pointer(v)).Fnfa, int32('p'), int32(sco), lp, rp)
 		previ = i
-		for cond := true; cond; cond = i < libc.Int32FromInt32(1)<<libc.Int32FromInt32(m_BYTBITS) && int32(*(*Tcolor)(unsafe.Pointer(t + uintptr(i)*2))) == int32(int32(co)) {
+		for cond := true; cond; cond = i < libc.Int32FromInt32(1)<<libc.Int32FromInt32(m_BYTBITS) && int32(*(*Tcolor)(unsafe.Pointer(t + uintptr(i)*2))) == int32(co) {
 			v5 = i
 			i++
 			*(*Tcolor)(unsafe.Pointer(t + uintptr(v5)*2)) = sco
 		}
 		ndone = i - previ
-		(*(*Tcolordesc)(unsafe.Pointer((*Tcolormap)(unsafe.Pointer(cm)).Fcd + uintptr(co)*32))).Fnchrs -= uint32(uint32(ndone))
-		(*(*Tcolordesc)(unsafe.Pointer((*Tcolormap)(unsafe.Pointer(cm)).Fcd + uintptr(sco)*32))).Fnchrs += uint32(uint32(ndone))
+		(*(*Tcolordesc)(unsafe.Pointer((*Tcolormap)(unsafe.Pointer(cm)).Fcd + uintptr(co)*32))).Fnchrs -= uint32(ndone)
+		(*(*Tcolordesc)(unsafe.Pointer((*Tcolormap)(unsafe.Pointer(cm)).Fcd + uintptr(sco)*32))).Fnchrs += uint32(ndone)
 	}
 }
 
@@ -7693,12 +7693,12 @@ func _okcolors(tls *libc.TLS, nfa uintptr, cm uintptr) {
 			break
 		}
 		sco = (*Tcolordesc)(unsafe.Pointer(cd)).Fsub
-		if (*Tcolordesc)(unsafe.Pointer(cd)).Fflags&int32(m_FREECOL) != 0 || int32(int32(sco)) == -int32(1) {
+		if (*Tcolordesc)(unsafe.Pointer(cd)).Fflags&int32(m_FREECOL) != 0 || int32(sco) == -int32(1) {
 			/*
 			 * Has no subcolor, no further action.
 			 */
 		} else {
-			if int32(int32(sco)) == int32(int32(co)) {
+			if int32(sco) == int32(co) {
 				/*
 				 * Is subcolor, let parent deal with it.
 				 */
@@ -7720,7 +7720,7 @@ func _okcolors(tls *libc.TLS, nfa uintptr, cm uintptr) {
 						(*Tarc)(unsafe.Pointer(a)).Fco = sco
 						_colorchain(tls, cm, a)
 					}
-					_freecolor(tls, cm, int32(int32(co)))
+					_freecolor(tls, cm, int32(co))
 				} else {
 					/*
 					 * Parent's arcs must gain parallel subcolor arcs.
@@ -7733,7 +7733,7 @@ func _okcolors(tls *libc.TLS, nfa uintptr, cm uintptr) {
 						if !(a != libc.UintptrFromInt32(0)) {
 							break
 						}
-						_newarc(tls, nfa, (*Tarc)(unsafe.Pointer(a)).Ftype1, int32(int32(sco)), (*Tarc)(unsafe.Pointer(a)).Ffrom, (*Tarc)(unsafe.Pointer(a)).Fto)
+						_newarc(tls, nfa, (*Tarc)(unsafe.Pointer(a)).Ftype1, int32(sco), (*Tarc)(unsafe.Pointer(a)).Ffrom, (*Tarc)(unsafe.Pointer(a)).Fto)
 						goto _3
 					_3:
 						a = (*Tarc)(unsafe.Pointer(a)).Fcolorchain
@@ -7807,8 +7807,8 @@ func _rainbow(tls *libc.TLS, nfa uintptr, cm uintptr, type1 int32, but Tpcolor, 
 		if !(cd < end && !((*Tvars)(unsafe.Pointer((*Tcolormap)(unsafe.Pointer(cm)).Fv)).Ferr != libc.Int32FromInt32(0))) {
 			break
 		}
-		if !((*Tcolordesc)(unsafe.Pointer(cd)).Fflags&libc.Int32FromInt32(m_FREECOL) != 0) && int32((*Tcolordesc)(unsafe.Pointer(cd)).Fsub) != int32(int32(co)) && int32(int32(co)) != but && !((*Tcolordesc)(unsafe.Pointer(cd)).Fflags&libc.Int32FromInt32(m_PSEUDO) != 0) {
-			_newarc(tls, nfa, type1, int32(int32(co)), from, to)
+		if !((*Tcolordesc)(unsafe.Pointer(cd)).Fflags&libc.Int32FromInt32(m_FREECOL) != 0) && int32((*Tcolordesc)(unsafe.Pointer(cd)).Fsub) != int32(co) && int32(co) != but && !((*Tcolordesc)(unsafe.Pointer(cd)).Fflags&libc.Int32FromInt32(m_PSEUDO) != 0) {
+			_newarc(tls, nfa, type1, int32(co), from, to)
 		}
 		goto _1
 	_1:
@@ -7837,8 +7837,8 @@ func _colorcomplement(tls *libc.TLS, nfa uintptr, cm uintptr, type1 int32, of ui
 			break
 		}
 		if !((*Tcolordesc)(unsafe.Pointer(cd)).Fflags&libc.Int32FromInt32(m_FREECOL) != 0) && !((*Tcolordesc)(unsafe.Pointer(cd)).Fflags&libc.Int32FromInt32(m_PSEUDO) != 0) {
-			if _findarc(tls, of, int32('p'), int32(int32(co))) == libc.UintptrFromInt32(0) {
-				_newarc(tls, nfa, type1, int32(int32(co)), from, to)
+			if _findarc(tls, of, int32('p'), int32(co)) == libc.UintptrFromInt32(0) {
+				_newarc(tls, nfa, type1, int32(co), from, to)
 			}
 		}
 		goto _1
@@ -8056,7 +8056,7 @@ func _newfstate(tls *libc.TLS, nfa uintptr, flag int32) (r uintptr) {
 	_ = s
 	s = _newstate(tls, nfa)
 	if s != libc.UintptrFromInt32(0) {
-		(*Tstate)(unsafe.Pointer(s)).Fflag = int8(int8(flag))
+		(*Tstate)(unsafe.Pointer(s)).Fflag = int8(flag)
 	}
 	return s
 }
@@ -8204,7 +8204,7 @@ func _createarc(tls *libc.TLS, nfa uintptr, t int32, co Tpcolor, from uintptr, t
 		return
 	}
 	(*Tarc)(unsafe.Pointer(a)).Ftype1 = t
-	(*Tarc)(unsafe.Pointer(a)).Fco = int16(int16(co))
+	(*Tarc)(unsafe.Pointer(a)).Fco = int16(co)
 	(*Tarc)(unsafe.Pointer(a)).Fto = to
 	(*Tarc)(unsafe.Pointer(a)).Ffrom = from
 	/*
@@ -8463,7 +8463,7 @@ func _sortins(tls *libc.TLS, nfa uintptr, s uintptr) {
 		return /* nothing to do */
 	}
 	/* make an array of arc pointers ... */
-	sortarray = XTclpAlloc(tls, uint32(uint64(uint64(n))*libc.Uint64FromInt64(8)))
+	sortarray = XTclpAlloc(tls, uint32(uint64(n)*libc.Uint64FromInt64(8)))
 	if sortarray == libc.UintptrFromInt32(0) {
 		(*Tvars)(unsafe.Pointer((*Tnfa)(unsafe.Pointer(nfa)).Fv)).Fnexttype = int32('e')
 		if (*Tvars)(unsafe.Pointer((*Tnfa)(unsafe.Pointer(nfa)).Fv)).Ferr != 0 {
@@ -8488,7 +8488,7 @@ func _sortins(tls *libc.TLS, nfa uintptr, s uintptr) {
 		a = (*Tarc)(unsafe.Pointer(a)).Finchain
 	}
 	/* ... sort the array */
-	libc.Xqsort(tls, sortarray, uint64(uint64(n)), uint64(8), __ccgo_fp(_sortins_cmp))
+	libc.Xqsort(tls, sortarray, uint64(n), uint64(8), __ccgo_fp(_sortins_cmp))
 	/* ... and rebuild arc list in order */
 	/* it seems worth special-casing first and last items to simplify loop */
 	a = *(*uintptr)(unsafe.Pointer(sortarray))
@@ -8554,7 +8554,7 @@ func _sortouts(tls *libc.TLS, nfa uintptr, s uintptr) {
 		return /* nothing to do */
 	}
 	/* make an array of arc pointers ... */
-	sortarray = XTclpAlloc(tls, uint32(uint64(uint64(n))*libc.Uint64FromInt64(8)))
+	sortarray = XTclpAlloc(tls, uint32(uint64(n)*libc.Uint64FromInt64(8)))
 	if sortarray == libc.UintptrFromInt32(0) {
 		(*Tvars)(unsafe.Pointer((*Tnfa)(unsafe.Pointer(nfa)).Fv)).Fnexttype = int32('e')
 		if (*Tvars)(unsafe.Pointer((*Tnfa)(unsafe.Pointer(nfa)).Fv)).Ferr != 0 {
@@ -8579,7 +8579,7 @@ func _sortouts(tls *libc.TLS, nfa uintptr, s uintptr) {
 		a = (*Tarc)(unsafe.Pointer(a)).Foutchain
 	}
 	/* ... sort the array */
-	libc.Xqsort(tls, sortarray, uint64(uint64(n)), uint64(8), __ccgo_fp(_sortouts_cmp))
+	libc.Xqsort(tls, sortarray, uint64(n), uint64(8), __ccgo_fp(_sortouts_cmp))
 	/* ... and rebuild arc list in order */
 	/* it seems worth special-casing first and last items to simplify loop */
 	a = *(*uintptr)(unsafe.Pointer(sortarray))
@@ -8848,7 +8848,7 @@ func _mergeins(tls *libc.TLS, nfa uintptr, s uintptr, arcarray uintptr, arccount
 	if (*Tvars)(unsafe.Pointer((*Tnfa)(unsafe.Pointer(nfa)).Fv)).Ferr != 0 {
 		return /* might have failed to sort */
 	}
-	libc.Xqsort(tls, arcarray, uint64(uint64(arccount)), uint64(8), __ccgo_fp(_sortins_cmp))
+	libc.Xqsort(tls, arcarray, uint64(arccount), uint64(8), __ccgo_fp(_sortins_cmp))
 	/*
 	 * arcarray very likely includes dups, so we must eliminate them.  (This
 	 * could be folded into the next loop, but it's not worth the trouble.)
@@ -9948,7 +9948,7 @@ func _fixempties(tls *libc.TLS, nfa uintptr, f uintptr) {
 	 * overestimate of the space needed, but the NFA is unlikely to be large
 	 * enough at this point to make it worth being smarter.
 	 */
-	arcarray = XTclpAlloc(tls, uint32(uint64(uint64(totalinarcs))*libc.Uint64FromInt64(8)))
+	arcarray = XTclpAlloc(tls, uint32(uint64(totalinarcs)*libc.Uint64FromInt64(8)))
 	if arcarray == libc.UintptrFromInt32(0) {
 		(*Tvars)(unsafe.Pointer((*Tnfa)(unsafe.Pointer(nfa)).Fv)).Fnexttype = int32('e')
 		if (*Tvars)(unsafe.Pointer((*Tnfa)(unsafe.Pointer(nfa)).Fv)).Ferr != 0 {
@@ -10543,7 +10543,7 @@ func _clonesuccessorstates(tls *libc.TLS, nfa uintptr, ssource uintptr, sclone u
 	/* If this state hasn't already got a donemap, create one */
 	donemap = curdonemap
 	if donemap == libc.UintptrFromInt32(0) {
-		donemap = XTclpAlloc(tls, uint32(uint64(uint64(nstates))*libc.Uint64FromInt64(1)))
+		donemap = XTclpAlloc(tls, uint32(uint64(nstates)*libc.Uint64FromInt64(1)))
 		if donemap == libc.UintptrFromInt32(0) {
 			(*Tvars)(unsafe.Pointer((*Tnfa)(unsafe.Pointer(nfa)).Fv)).Fnexttype = int32('e')
 			if (*Tvars)(unsafe.Pointer((*Tnfa)(unsafe.Pointer(nfa)).Fv)).Ferr != 0 {
@@ -10561,10 +10561,10 @@ func _clonesuccessorstates(tls *libc.TLS, nfa uintptr, ssource uintptr, sclone u
 			 * visited at outer levels, or already merged into predecessor
 			 * states, as ones we shouldn't traverse back to.
 			 */
-			libc.Xmemcpy(tls, donemap, outerdonemap, uint64(uint64(nstates))*uint64(1))
+			libc.Xmemcpy(tls, donemap, outerdonemap, uint64(nstates)*uint64(1))
 		} else {
 			/* At outermost level, only spredecessor is off-limits */
-			libc.Xmemset(tls, donemap, 0, uint64(uint64(nstates))*uint64(1))
+			libc.Xmemset(tls, donemap, 0, uint64(nstates)*uint64(1))
 			*(*int8)(unsafe.Pointer(donemap + uintptr((*Tstate)(unsafe.Pointer(spredecessor)).Fno))) = int8(1)
 		}
 	}
@@ -10907,7 +10907,7 @@ func _compact(tls *libc.TLS, nfa uintptr, cnfa uintptr) {
 		(*Tvars)(unsafe.Pointer((*Tnfa)(unsafe.Pointer(nfa)).Fv)).Ferr = v2
 		return
 	}
-	(*Tcnfa)(unsafe.Pointer(cnfa)).Fnstates = int32(int32(nstates))
+	(*Tcnfa)(unsafe.Pointer(cnfa)).Fnstates = int32(nstates)
 	(*Tcnfa)(unsafe.Pointer(cnfa)).Fpre = (*Tstate)(unsafe.Pointer((*Tnfa)(unsafe.Pointer(nfa)).Fpre)).Fno
 	(*Tcnfa)(unsafe.Pointer(cnfa)).Fpost = (*Tstate)(unsafe.Pointer((*Tnfa)(unsafe.Pointer(nfa)).Fpost)).Fno
 	*(*Tcolor)(unsafe.Pointer(cnfa + 20)) = *(*Tcolor)(unsafe.Pointer(nfa + 72))
@@ -10954,7 +10954,7 @@ func _compact(tls *libc.TLS, nfa uintptr, cnfa uintptr) {
 		_4:
 			a = (*Tarc)(unsafe.Pointer(a)).Foutchain
 		}
-		_carcsort(tls, first, uint64((int64(int64(ca))-int64(int64(first)))/8))
+		_carcsort(tls, first, uint64((int64(ca)-int64(first))/8))
 		(*Tcarc)(unsafe.Pointer(ca)).Fco = int16(-libc.Int32FromInt32(1))
 		(*Tcarc)(unsafe.Pointer(ca)).Fto = 0
 		ca += 8
@@ -11100,7 +11100,7 @@ func _newcvec(tls *libc.TLS, nchrs int32, nranges int32) (r uintptr) {
 	var cv uintptr
 	var n, nc Tsize_t
 	_, _, _ = cv, n, nc
-	nc = uint64(uint64(nchrs)) + uint64(uint64(nranges))*uint64(2)
+	nc = uint64(nchrs) + uint64(nranges)*uint64(2)
 	n = uint64(32) + nc*uint64(2)
 	cv = XTclpAlloc(tls, uint32(n))
 	if cv == libc.UintptrFromInt32(0) {
@@ -11141,7 +11141,7 @@ func _addchr(tls *libc.TLS, cv uintptr, c Tpchr) {
 	v2 = cv
 	v1 = *(*int32)(unsafe.Pointer(v2))
 	*(*int32)(unsafe.Pointer(v2))++
-	*(*Tchr)(unsafe.Pointer((*Tcvec)(unsafe.Pointer(cv)).Fchrs + uintptr(v1)*2)) = uint16(uint16(c))
+	*(*Tchr)(unsafe.Pointer((*Tcvec)(unsafe.Pointer(cv)).Fchrs + uintptr(v1)*2)) = uint16(c)
 }
 
 // C documentation
@@ -11152,8 +11152,8 @@ func _addchr(tls *libc.TLS, cv uintptr, c Tpchr) {
 //	 */
 func _addrange(tls *libc.TLS, cv uintptr, from Tpchr, to Tpchr) {
 	/* last character of range */
-	*(*Tchr)(unsafe.Pointer((*Tcvec)(unsafe.Pointer(cv)).Franges + uintptr((*Tcvec)(unsafe.Pointer(cv)).Fnranges*int32(2))*2)) = uint16(uint16(from))
-	*(*Tchr)(unsafe.Pointer((*Tcvec)(unsafe.Pointer(cv)).Franges + uintptr((*Tcvec)(unsafe.Pointer(cv)).Fnranges*int32(2)+int32(1))*2)) = uint16(uint16(to))
+	*(*Tchr)(unsafe.Pointer((*Tcvec)(unsafe.Pointer(cv)).Franges + uintptr((*Tcvec)(unsafe.Pointer(cv)).Fnranges*int32(2))*2)) = uint16(from)
+	*(*Tchr)(unsafe.Pointer((*Tcvec)(unsafe.Pointer(cv)).Franges + uintptr((*Tcvec)(unsafe.Pointer(cv)).Fnranges*int32(2)+int32(1))*2)) = uint16(to)
 	(*Tcvec)(unsafe.Pointer(cv)).Fnranges++
 }
 
@@ -16257,7 +16257,7 @@ func _element(tls *libc.TLS, v uintptr, startp uintptr, endp uintptr) (r Tcelt) 
 	/*
 	 * Generic: one-chr names stand for themselves.
 	 */
-	len1 = uint64((int64(int64(endp)) - int64(int64(startp))) / 2)
+	len1 = uint64((int64(endp) - int64(startp)) / 2)
 	if len1 == uint64(1) {
 		return int32(*(*Tchr)(unsafe.Pointer(startp)))
 	}
@@ -16266,7 +16266,7 @@ func _element(tls *libc.TLS, v uintptr, startp uintptr, endp uintptr) (r Tcelt) 
 	 * Search table.
 	 */
 	XTcl_DStringInit(tls, bp)
-	np = XTcl_UniCharToUtfDString(tls, startp, int32(int32(len1)), bp)
+	np = XTcl_UniCharToUtfDString(tls, startp, int32(len1), bp)
 	cn = uintptr(unsafe.Pointer(&_cnames))
 	for {
 		if !((*Tcname)(unsafe.Pointer(cn)).Fname != libc.UintptrFromInt32(0)) {
@@ -16342,9 +16342,9 @@ func _range(tls *libc.TLS, v uintptr, a Tcelt, b Tcelt, cases int32) (r uintptr)
 			break
 		}
 		_addchr(tls, cv, c)
-		lc = int32(XTcl_UniCharToLower(tls, int32(uint16(uint16(c)))))
-		uc = int32(XTcl_UniCharToUpper(tls, int32(uint16(uint16(c)))))
-		tc = int32(XTcl_UniCharToTitle(tls, int32(uint16(uint16(c)))))
+		lc = int32(XTcl_UniCharToLower(tls, int32(uint16(c))))
+		uc = int32(XTcl_UniCharToUpper(tls, int32(uint16(c))))
+		tc = int32(XTcl_UniCharToTitle(tls, int32(uint16(c))))
 		if c != lc {
 			_addchr(tls, cv, lc)
 		}
@@ -16406,7 +16406,7 @@ func _eclass(tls *libc.TLS, v uintptr, c Tcelt, cases int32) (r uintptr) {
 		return _allcases(tls, v, c)
 	}
 	cv = _getcvec(tls, v, int32(1), 0)
-	_addchr(tls, cv, int32(uint16(uint16(c))))
+	_addchr(tls, cv, int32(uint16(c)))
 	return cv
 }
 
@@ -16429,9 +16429,9 @@ func _cclass(tls *libc.TLS, v uintptr, startp uintptr, endp uintptr, cases int32
 	/*
 	 * Extract the class name
 	 */
-	len1 = uint64((int64(int64(endp)) - int64(int64(startp))) / 2)
+	len1 = uint64((int64(endp) - int64(startp)) / 2)
 	XTcl_DStringInit(tls, bp)
-	np = XTcl_UniCharToUtfDString(tls, startp, int32(int32(len1)), bp)
+	np = XTcl_UniCharToUtfDString(tls, startp, int32(len1), bp)
 	/*
 	 * Map the name to the corresponding enumerated value.
 	 */
@@ -16471,13 +16471,13 @@ func _cclass(tls *libc.TLS, v uintptr, startp uintptr, endp uintptr, cases int32
 	/*
 	 * Now compute the character class contents.
 	 */
-	switch int32(index) {
+	switch index {
 	case 0:
 		cv = _getcvec(tls, v, int32(libc.Uint64FromInt64(324)/libc.Uint64FromInt64(2)), int32(libc.Uint64FromInt64(148)/libc.Uint64FromInt64(4)+libc.Uint64FromInt64(1032)/libc.Uint64FromInt64(4)))
 		if cv != 0 {
 			i = 0
 			for {
-				if !(uint64(uint64(i)) < libc.Uint64FromInt64(324)/libc.Uint64FromInt64(2)) {
+				if !(uint64(i) < libc.Uint64FromInt64(324)/libc.Uint64FromInt64(2)) {
 					break
 				}
 				_addchr(tls, cv, int32(_alphaCharTable[i]))
@@ -16487,7 +16487,7 @@ func _cclass(tls *libc.TLS, v uintptr, startp uintptr, endp uintptr, cases int32
 			}
 			i = 0
 			for {
-				if !(uint64(uint64(i)) < libc.Uint64FromInt64(1032)/libc.Uint64FromInt64(4)) {
+				if !(uint64(i) < libc.Uint64FromInt64(1032)/libc.Uint64FromInt64(4)) {
 					break
 				}
 				_addrange(tls, cv, int32(_alphaRangeTable[i].Fstart), int32(_alphaRangeTable[i].Fend))
@@ -16497,7 +16497,7 @@ func _cclass(tls *libc.TLS, v uintptr, startp uintptr, endp uintptr, cases int32
 			}
 			i = 0
 			for {
-				if !(uint64(uint64(i)) < libc.Uint64FromInt64(148)/libc.Uint64FromInt64(4)) {
+				if !(uint64(i) < libc.Uint64FromInt64(148)/libc.Uint64FromInt64(4)) {
 					break
 				}
 				_addrange(tls, cv, int32(_digitRangeTable[i].Fstart), int32(_digitRangeTable[i].Fend))
@@ -16511,7 +16511,7 @@ func _cclass(tls *libc.TLS, v uintptr, startp uintptr, endp uintptr, cases int32
 		if cv != 0 {
 			i = 0
 			for {
-				if !(uint64(uint64(i)) < libc.Uint64FromInt64(1032)/libc.Uint64FromInt64(4)) {
+				if !(uint64(i) < libc.Uint64FromInt64(1032)/libc.Uint64FromInt64(4)) {
 					break
 				}
 				_addrange(tls, cv, int32(_alphaRangeTable[i].Fstart), int32(_alphaRangeTable[i].Fend))
@@ -16521,7 +16521,7 @@ func _cclass(tls *libc.TLS, v uintptr, startp uintptr, endp uintptr, cases int32
 			}
 			i = 0
 			for {
-				if !(uint64(uint64(i)) < libc.Uint64FromInt64(324)/libc.Uint64FromInt64(2)) {
+				if !(uint64(i) < libc.Uint64FromInt64(324)/libc.Uint64FromInt64(2)) {
 					break
 				}
 				_addchr(tls, cv, int32(_alphaCharTable[i]))
@@ -16544,7 +16544,7 @@ func _cclass(tls *libc.TLS, v uintptr, startp uintptr, endp uintptr, cases int32
 		if cv != 0 {
 			i = 0
 			for {
-				if !(uint64(uint64(i)) < libc.Uint64FromInt64(36)/libc.Uint64FromInt64(4)) {
+				if !(uint64(i) < libc.Uint64FromInt64(36)/libc.Uint64FromInt64(4)) {
 					break
 				}
 				_addrange(tls, cv, int32(_controlRangeTable[i].Fstart), int32(_controlRangeTable[i].Fend))
@@ -16554,7 +16554,7 @@ func _cclass(tls *libc.TLS, v uintptr, startp uintptr, endp uintptr, cases int32
 			}
 			i = 0
 			for {
-				if !(uint64(uint64(i)) < libc.Uint64FromInt64(18)/libc.Uint64FromInt64(2)) {
+				if !(uint64(i) < libc.Uint64FromInt64(18)/libc.Uint64FromInt64(2)) {
 					break
 				}
 				_addchr(tls, cv, int32(_controlCharTable[i]))
@@ -16568,7 +16568,7 @@ func _cclass(tls *libc.TLS, v uintptr, startp uintptr, endp uintptr, cases int32
 		if cv != 0 {
 			i = 0
 			for {
-				if !(uint64(uint64(i)) < libc.Uint64FromInt64(148)/libc.Uint64FromInt64(4)) {
+				if !(uint64(i) < libc.Uint64FromInt64(148)/libc.Uint64FromInt64(4)) {
 					break
 				}
 				_addrange(tls, cv, int32(_digitRangeTable[i].Fstart), int32(_digitRangeTable[i].Fend))
@@ -16582,7 +16582,7 @@ func _cclass(tls *libc.TLS, v uintptr, startp uintptr, endp uintptr, cases int32
 		if cv != 0 {
 			i = 0
 			for {
-				if !(uint64(uint64(i)) < libc.Uint64FromInt64(220)/libc.Uint64FromInt64(4)) {
+				if !(uint64(i) < libc.Uint64FromInt64(220)/libc.Uint64FromInt64(4)) {
 					break
 				}
 				_addrange(tls, cv, int32(_punctRangeTable[i].Fstart), int32(_punctRangeTable[i].Fend))
@@ -16592,7 +16592,7 @@ func _cclass(tls *libc.TLS, v uintptr, startp uintptr, endp uintptr, cases int32
 			}
 			i = 0
 			for {
-				if !(uint64(uint64(i)) < libc.Uint64FromInt64(220)/libc.Uint64FromInt64(2)) {
+				if !(uint64(i) < libc.Uint64FromInt64(220)/libc.Uint64FromInt64(2)) {
 					break
 				}
 				_addchr(tls, cv, int32(_punctCharTable[i]))
@@ -16621,7 +16621,7 @@ func _cclass(tls *libc.TLS, v uintptr, startp uintptr, endp uintptr, cases int32
 		if cv != 0 {
 			i = 0
 			for {
-				if !(uint64(uint64(i)) < libc.Uint64FromInt64(8)/libc.Uint64FromInt64(4)) {
+				if !(uint64(i) < libc.Uint64FromInt64(8)/libc.Uint64FromInt64(4)) {
 					break
 				}
 				_addrange(tls, cv, int32(_spaceRangeTable[i].Fstart), int32(_spaceRangeTable[i].Fend))
@@ -16631,7 +16631,7 @@ func _cclass(tls *libc.TLS, v uintptr, startp uintptr, endp uintptr, cases int32
 			}
 			i = 0
 			for {
-				if !(uint64(uint64(i)) < libc.Uint64FromInt64(24)/libc.Uint64FromInt64(2)) {
+				if !(uint64(i) < libc.Uint64FromInt64(24)/libc.Uint64FromInt64(2)) {
 					break
 				}
 				_addchr(tls, cv, int32(_spaceCharTable[i]))
@@ -16645,7 +16645,7 @@ func _cclass(tls *libc.TLS, v uintptr, startp uintptr, endp uintptr, cases int32
 		if cv != 0 {
 			i = 0
 			for {
-				if !(uint64(uint64(i)) < libc.Uint64FromInt64(208)/libc.Uint64FromInt64(4)) {
+				if !(uint64(i) < libc.Uint64FromInt64(208)/libc.Uint64FromInt64(4)) {
 					break
 				}
 				_addrange(tls, cv, int32(_lowerRangeTable[i].Fstart), int32(_lowerRangeTable[i].Fend))
@@ -16655,7 +16655,7 @@ func _cclass(tls *libc.TLS, v uintptr, startp uintptr, endp uintptr, cases int32
 			}
 			i = 0
 			for {
-				if !(uint64(uint64(i)) < libc.Uint64FromInt64(1170)/libc.Uint64FromInt64(2)) {
+				if !(uint64(i) < libc.Uint64FromInt64(1170)/libc.Uint64FromInt64(2)) {
 					break
 				}
 				_addchr(tls, cv, int32(_lowerCharTable[i]))
@@ -16669,7 +16669,7 @@ func _cclass(tls *libc.TLS, v uintptr, startp uintptr, endp uintptr, cases int32
 		if cv != 0 {
 			i = 0
 			for {
-				if !(uint64(uint64(i)) < libc.Uint64FromInt64(172)/libc.Uint64FromInt64(4)) {
+				if !(uint64(i) < libc.Uint64FromInt64(172)/libc.Uint64FromInt64(4)) {
 					break
 				}
 				_addrange(tls, cv, int32(_upperRangeTable[i].Fstart), int32(_upperRangeTable[i].Fend))
@@ -16679,7 +16679,7 @@ func _cclass(tls *libc.TLS, v uintptr, startp uintptr, endp uintptr, cases int32
 			}
 			i = 0
 			for {
-				if !(uint64(uint64(i)) < libc.Uint64FromInt64(1156)/libc.Uint64FromInt64(2)) {
+				if !(uint64(i) < libc.Uint64FromInt64(1156)/libc.Uint64FromInt64(2)) {
 					break
 				}
 				_addchr(tls, cv, int32(_upperCharTable[i]))
@@ -16693,7 +16693,7 @@ func _cclass(tls *libc.TLS, v uintptr, startp uintptr, endp uintptr, cases int32
 		if cv != 0 {
 			i = int32(1)
 			for {
-				if !(uint64(uint64(i)) < libc.Uint64FromInt64(8)/libc.Uint64FromInt64(4)) {
+				if !(uint64(i) < libc.Uint64FromInt64(8)/libc.Uint64FromInt64(4)) {
 					break
 				}
 				_addrange(tls, cv, int32(_spaceRangeTable[i].Fstart), int32(_spaceRangeTable[i].Fend))
@@ -16703,7 +16703,7 @@ func _cclass(tls *libc.TLS, v uintptr, startp uintptr, endp uintptr, cases int32
 			}
 			i = 0
 			for {
-				if !(uint64(uint64(i)) < libc.Uint64FromInt64(24)/libc.Uint64FromInt64(2)) {
+				if !(uint64(i) < libc.Uint64FromInt64(24)/libc.Uint64FromInt64(2)) {
 					break
 				}
 				_addchr(tls, cv, int32(_spaceCharTable[i]))
@@ -16713,7 +16713,7 @@ func _cclass(tls *libc.TLS, v uintptr, startp uintptr, endp uintptr, cases int32
 			}
 			i = 0
 			for {
-				if !(uint64(uint64(i)) < libc.Uint64FromInt64(1144)/libc.Uint64FromInt64(4)) {
+				if !(uint64(i) < libc.Uint64FromInt64(1144)/libc.Uint64FromInt64(4)) {
 					break
 				}
 				_addrange(tls, cv, int32(_graphRangeTable[i].Fstart), int32(_graphRangeTable[i].Fend))
@@ -16723,7 +16723,7 @@ func _cclass(tls *libc.TLS, v uintptr, startp uintptr, endp uintptr, cases int32
 			}
 			i = 0
 			for {
-				if !(uint64(uint64(i)) < libc.Uint64FromInt64(174)/libc.Uint64FromInt64(2)) {
+				if !(uint64(i) < libc.Uint64FromInt64(174)/libc.Uint64FromInt64(2)) {
 					break
 				}
 				_addchr(tls, cv, int32(_graphCharTable[i]))
@@ -16737,7 +16737,7 @@ func _cclass(tls *libc.TLS, v uintptr, startp uintptr, endp uintptr, cases int32
 		if cv != 0 {
 			i = 0
 			for {
-				if !(uint64(uint64(i)) < libc.Uint64FromInt64(1144)/libc.Uint64FromInt64(4)) {
+				if !(uint64(i) < libc.Uint64FromInt64(1144)/libc.Uint64FromInt64(4)) {
 					break
 				}
 				_addrange(tls, cv, int32(_graphRangeTable[i].Fstart), int32(_graphRangeTable[i].Fend))
@@ -16747,7 +16747,7 @@ func _cclass(tls *libc.TLS, v uintptr, startp uintptr, endp uintptr, cases int32
 			}
 			i = 0
 			for {
-				if !(uint64(uint64(i)) < libc.Uint64FromInt64(174)/libc.Uint64FromInt64(2)) {
+				if !(uint64(i) < libc.Uint64FromInt64(174)/libc.Uint64FromInt64(2)) {
 					break
 				}
 				_addchr(tls, cv, int32(_graphCharTable[i]))
@@ -16804,19 +16804,19 @@ func _allcases(tls *libc.TLS, v uintptr, pc Tpchr) (r uintptr) {
 	var c, lc, tc, uc Tchr
 	var cv uintptr
 	_, _, _, _, _ = c, cv, lc, tc, uc
-	c = uint16(uint16(pc))
+	c = uint16(pc)
 	lc = XTcl_UniCharToLower(tls, int32(c))
 	uc = XTcl_UniCharToUpper(tls, int32(c))
 	tc = XTcl_UniCharToTitle(tls, int32(c))
-	if int32(int32(tc)) != int32(int32(uc)) {
+	if int32(tc) != int32(uc) {
 		cv = _getcvec(tls, v, int32(3), 0)
-		_addchr(tls, cv, int32(int32(tc)))
+		_addchr(tls, cv, int32(tc))
 	} else {
 		cv = _getcvec(tls, v, int32(2), 0)
 	}
-	_addchr(tls, cv, int32(int32(lc)))
-	if int32(int32(lc)) != int32(int32(uc)) {
-		_addchr(tls, cv, int32(int32(uc)))
+	_addchr(tls, cv, int32(lc))
+	if int32(lc) != int32(uc) {
+		_addchr(tls, cv, int32(uc))
 	}
 	return cv
 }
@@ -17396,7 +17396,7 @@ func _zaptreesubs(tls *libc.TLS, v uintptr, t uintptr) {
 	_ = n
 	if int32((*Tsubre)(unsafe.Pointer(t)).Fop) == int32('(') {
 		n = (*Tsubre)(unsafe.Pointer(t)).Fsubno
-		if uint64(uint64(n)) < (*Tvars1)(unsafe.Pointer(v)).Fnmatch {
+		if uint64(n) < (*Tvars1)(unsafe.Pointer(v)).Fnmatch {
 			(*(*Tregmatch_t)(unsafe.Pointer((*Tvars1)(unsafe.Pointer(v)).Fpmatch + uintptr(n)*16))).Frm_so = int64(-int32(1))
 			(*(*Tregmatch_t)(unsafe.Pointer((*Tvars1)(unsafe.Pointer(v)).Fpmatch + uintptr(n)*16))).Frm_eo = int64(-int32(1))
 		}
@@ -17419,7 +17419,7 @@ func _subset(tls *libc.TLS, v uintptr, sub uintptr, begin uintptr, end uintptr) 
 	var n int32
 	_ = n
 	n = (*Tsubre)(unsafe.Pointer(sub)).Fsubno
-	if uint64(uint64(n)) >= (*Tvars1)(unsafe.Pointer(v)).Fnmatch {
+	if uint64(n) >= (*Tvars1)(unsafe.Pointer(v)).Fnmatch {
 		return
 	}
 	(*(*Tregmatch_t)(unsafe.Pointer((*Tvars1)(unsafe.Pointer(v)).Fpmatch + uintptr(n)*16))).Frm_so = (int64(begin) - int64((*Tvars1)(unsafe.Pointer(v)).Fstart)) / 2
@@ -17669,12 +17669,12 @@ func _cbrdissect(tls *libc.TLS, v uintptr, t uintptr, begin uintptr, end uintptr
 	 * check target length to see if it could possibly be an allowed number of
 	 * repetitions of brstring
 	 */
-	tlen = uint64((int64(int64(end)) - int64(int64(begin))) / 2)
+	tlen = uint64((int64(end) - int64(begin)) / 2)
 	if tlen%brlen != uint64(0) {
 		return int32(m_REG_NOMATCH)
 	}
 	numreps = tlen / brlen
-	if numreps < uint64(uint64(min)) || numreps > uint64(uint64(max)) && max != libc.Int32FromInt32(m__POSIX2_RE_DUP_MAX)+libc.Int32FromInt32(1) {
+	if numreps < uint64(min) || numreps > uint64(max) && max != libc.Int32FromInt32(m__POSIX2_RE_DUP_MAX)+libc.Int32FromInt32(1) {
 		return int32(m_REG_NOMATCH)
 	}
 	/* okay, compare the actual string contents */
@@ -17754,12 +17754,12 @@ func _citerdissect(tls *libc.TLS, v uintptr, t uintptr, begin uintptr, end uintp
 	 * For convenience, endpts[0] contains the "begin" pointer and we store
 	 * sub-match endpoints in endpts[1..max_matches].
 	 */
-	max_matches = uint64((int64(int64(end)) - int64(int64(begin))) / 2)
+	max_matches = uint64((int64(end) - int64(begin)) / 2)
 	if max_matches > uint64((*Tsubre)(unsafe.Pointer(t)).Fmax) && int32((*Tsubre)(unsafe.Pointer(t)).Fmax) != libc.Int32FromInt32(m__POSIX2_RE_DUP_MAX)+libc.Int32FromInt32(1) {
 		max_matches = uint64((*Tsubre)(unsafe.Pointer(t)).Fmax)
 	}
-	if max_matches < uint64(uint64(min_matches)) {
-		max_matches = uint64(uint64(min_matches))
+	if max_matches < uint64(min_matches) {
+		max_matches = uint64(min_matches)
 	}
 	endpts = XTclpAlloc(tls, uint32((max_matches+libc.Uint64FromInt32(1))*libc.Uint64FromInt64(8)))
 	if endpts == libc.UintptrFromInt32(0) {
@@ -17799,13 +17799,13 @@ func _citerdissect(tls *libc.TLS, v uintptr, t uintptr, begin uintptr, end uintp
 		}
 		if *(*uintptr)(unsafe.Pointer(endpts + uintptr(k)*8)) != end {
 			/* haven't reached end yet, try another iteration if allowed */
-			if uint64(uint64(k)) >= max_matches {
+			if uint64(k) >= max_matches {
 				/* must try to shorten some previous match */
 				k--
 				goto backtrack
 			}
 			/* reject zero-length match unless necessary to achieve min */
-			if *(*uintptr)(unsafe.Pointer(endpts + uintptr(k)*8)) == *(*uintptr)(unsafe.Pointer(endpts + uintptr(k-int32(1))*8)) && (k >= min_matches || int64(min_matches-k) < (int64(int64(end))-int64(*(*uintptr)(unsafe.Pointer(endpts + uintptr(k)*8))))/2) {
+			if *(*uintptr)(unsafe.Pointer(endpts + uintptr(k)*8)) == *(*uintptr)(unsafe.Pointer(endpts + uintptr(k-int32(1))*8)) && (k >= min_matches || int64(min_matches-k) < (int64(end)-int64(*(*uintptr)(unsafe.Pointer(endpts + uintptr(k)*8))))/2) {
 				goto backtrack
 			}
 			k++
@@ -17857,7 +17857,7 @@ func _citerdissect(tls *libc.TLS, v uintptr, t uintptr, begin uintptr, end uintp
 			prev_end = *(*uintptr)(unsafe.Pointer(endpts + uintptr(k-int32(1))*8))
 			if *(*uintptr)(unsafe.Pointer(endpts + uintptr(k)*8)) > prev_end {
 				limit = *(*uintptr)(unsafe.Pointer(endpts + uintptr(k)*8)) - uintptr(1)*2
-				if limit > prev_end || k < min_matches && int64(min_matches-k) >= (int64(int64(end))-int64(int64(prev_end)))/2 {
+				if limit > prev_end || k < min_matches && int64(min_matches-k) >= (int64(end)-int64(prev_end))/2 {
 					/* break out of backtrack loop, continue the outer one */
 					break
 				}
@@ -17904,12 +17904,12 @@ func _creviterdissect(tls *libc.TLS, v uintptr, t uintptr, begin uintptr, end ui
 	 * For convenience, endpts[0] contains the "begin" pointer and we store
 	 * sub-match endpoints in endpts[1..max_matches].
 	 */
-	max_matches = uint64((int64(int64(end)) - int64(int64(begin))) / 2)
+	max_matches = uint64((int64(end) - int64(begin)) / 2)
 	if max_matches > uint64((*Tsubre)(unsafe.Pointer(t)).Fmax) && int32((*Tsubre)(unsafe.Pointer(t)).Fmax) != libc.Int32FromInt32(m__POSIX2_RE_DUP_MAX)+libc.Int32FromInt32(1) {
 		max_matches = uint64((*Tsubre)(unsafe.Pointer(t)).Fmax)
 	}
-	if max_matches < uint64(uint64(min_matches)) {
-		max_matches = uint64(uint64(min_matches))
+	if max_matches < uint64(min_matches) {
+		max_matches = uint64(min_matches)
 	}
 	endpts = XTclpAlloc(tls, uint32((max_matches+libc.Uint64FromInt32(1))*libc.Uint64FromInt64(8)))
 	if endpts == libc.UintptrFromInt32(0) {
@@ -17937,11 +17937,11 @@ func _creviterdissect(tls *libc.TLS, v uintptr, t uintptr, begin uintptr, end ui
 	/* iterate until satisfaction or failure */
 	for k > 0 {
 		/* disallow zero-length match unless necessary to achieve min */
-		if limit == *(*uintptr)(unsafe.Pointer(endpts + uintptr(k-int32(1))*8)) && limit != end && (k >= min_matches || int64(min_matches-k) < (int64(int64(end))-int64(int64(limit)))/2) {
+		if limit == *(*uintptr)(unsafe.Pointer(endpts + uintptr(k-int32(1))*8)) && limit != end && (k >= min_matches || int64(min_matches-k) < (int64(end)-int64(limit))/2) {
 			limit += 2
 		}
 		/* if this is the last allowed sub-match, it must reach to the end */
-		if uint64(uint64(k)) >= max_matches {
+		if uint64(k) >= max_matches {
 			limit = end
 		}
 		/* try to find an endpoint for the k'th sub-match */
@@ -17957,7 +17957,7 @@ func _creviterdissect(tls *libc.TLS, v uintptr, t uintptr, begin uintptr, end ui
 		}
 		if *(*uintptr)(unsafe.Pointer(endpts + uintptr(k)*8)) != end {
 			/* haven't reached end yet, try another iteration if allowed */
-			if uint64(uint64(k)) >= max_matches {
+			if uint64(k) >= max_matches {
 				/* must try to lengthen some previous match */
 				k--
 				goto backtrack
@@ -18093,7 +18093,7 @@ func _longest(tls *libc.TLS, v uintptr, d uintptr, start uintptr, stop uintptr, 
 	} else {
 		co = *(*Tcolor)(unsafe.Pointer(*(*uintptr)(unsafe.Pointer(cm + 368 + uintptr(int32(*(*Tchr)(unsafe.Pointer(cp - libc.UintptrFromInt32(1)*2)))>>libc.Int32FromInt32(m_BYTBITS)&(libc.Int32FromInt32(1)<<libc.Int32FromInt32(m_BYTBITS)-libc.Int32FromInt32(1)))*8)) + uintptr(int32(*(*Tchr)(unsafe.Pointer(cp - libc.UintptrFromInt32(1)*2)))&(libc.Int32FromInt32(1)<<libc.Int32FromInt32(m_BYTBITS)-libc.Int32FromInt32(1)))*2))
 	}
-	css = _miss(tls, v, d, css, int32(int32(co)), cp, start)
+	css = _miss(tls, v, d, css, int32(co), cp, start)
 	if css == libc.UintptrFromInt32(0) {
 		return libc.UintptrFromInt32(0)
 	}
@@ -18106,7 +18106,7 @@ func _longest(tls *libc.TLS, v uintptr, d uintptr, start uintptr, stop uintptr, 
 			co = *(*Tcolor)(unsafe.Pointer(*(*uintptr)(unsafe.Pointer(cm + 368 + uintptr(int32(*(*Tchr)(unsafe.Pointer(cp)))>>libc.Int32FromInt32(m_BYTBITS)&(libc.Int32FromInt32(1)<<libc.Int32FromInt32(m_BYTBITS)-libc.Int32FromInt32(1)))*8)) + uintptr(int32(*(*Tchr)(unsafe.Pointer(cp)))&(libc.Int32FromInt32(1)<<libc.Int32FromInt32(m_BYTBITS)-libc.Int32FromInt32(1)))*2))
 			ss = *(*uintptr)(unsafe.Pointer((*Tsset)(unsafe.Pointer(css)).Fouts + uintptr(co)*8))
 			if ss == libc.UintptrFromInt32(0) {
-				ss = _miss(tls, v, d, css, int32(int32(co)), cp+uintptr(1)*2, start)
+				ss = _miss(tls, v, d, css, int32(co), cp+uintptr(1)*2, start)
 				if ss == libc.UintptrFromInt32(0) {
 					break /* NOTE BREAK OUT */
 				}
@@ -18120,7 +18120,7 @@ func _longest(tls *libc.TLS, v uintptr, d uintptr, start uintptr, stop uintptr, 
 			co = *(*Tcolor)(unsafe.Pointer(*(*uintptr)(unsafe.Pointer(cm + 368 + uintptr(int32(*(*Tchr)(unsafe.Pointer(cp)))>>libc.Int32FromInt32(m_BYTBITS)&(libc.Int32FromInt32(1)<<libc.Int32FromInt32(m_BYTBITS)-libc.Int32FromInt32(1)))*8)) + uintptr(int32(*(*Tchr)(unsafe.Pointer(cp)))&(libc.Int32FromInt32(1)<<libc.Int32FromInt32(m_BYTBITS)-libc.Int32FromInt32(1)))*2))
 			ss = *(*uintptr)(unsafe.Pointer((*Tsset)(unsafe.Pointer(css)).Fouts + uintptr(co)*8))
 			if ss == libc.UintptrFromInt32(0) {
-				ss = _miss(tls, v, d, css, int32(int32(co)), cp+uintptr(1)*2, start)
+				ss = _miss(tls, v, d, css, int32(co), cp+uintptr(1)*2, start)
 				if ss == libc.UintptrFromInt32(0) {
 					break /* NOTE BREAK OUT */
 				}
@@ -18143,7 +18143,7 @@ func _longest(tls *libc.TLS, v uintptr, d uintptr, start uintptr, stop uintptr, 
 			v3 = int32(1)
 		}
 		co = *(*Tcolor)(unsafe.Pointer((*Tdfa)(unsafe.Pointer(d)).Fcnfa + 24 + uintptr(v3)*2))
-		ss = _miss(tls, v, d, css, int32(int32(co)), cp, start)
+		ss = _miss(tls, v, d, css, int32(co), cp, start)
 		/*
 		 * Special case: match ended at eol?
 		 */
@@ -18226,7 +18226,7 @@ func _shortest(tls *libc.TLS, v uintptr, d uintptr, start uintptr, min uintptr, 
 	} else {
 		co = *(*Tcolor)(unsafe.Pointer(*(*uintptr)(unsafe.Pointer(cm + 368 + uintptr(int32(*(*Tchr)(unsafe.Pointer(cp - libc.UintptrFromInt32(1)*2)))>>libc.Int32FromInt32(m_BYTBITS)&(libc.Int32FromInt32(1)<<libc.Int32FromInt32(m_BYTBITS)-libc.Int32FromInt32(1)))*8)) + uintptr(int32(*(*Tchr)(unsafe.Pointer(cp - libc.UintptrFromInt32(1)*2)))&(libc.Int32FromInt32(1)<<libc.Int32FromInt32(m_BYTBITS)-libc.Int32FromInt32(1)))*2))
 	}
-	css = _miss(tls, v, d, css, int32(int32(co)), cp, start)
+	css = _miss(tls, v, d, css, int32(co), cp, start)
 	if css == libc.UintptrFromInt32(0) {
 		return libc.UintptrFromInt32(0)
 	}
@@ -18240,7 +18240,7 @@ func _shortest(tls *libc.TLS, v uintptr, d uintptr, start uintptr, min uintptr, 
 			co = *(*Tcolor)(unsafe.Pointer(*(*uintptr)(unsafe.Pointer(cm + 368 + uintptr(int32(*(*Tchr)(unsafe.Pointer(cp)))>>libc.Int32FromInt32(m_BYTBITS)&(libc.Int32FromInt32(1)<<libc.Int32FromInt32(m_BYTBITS)-libc.Int32FromInt32(1)))*8)) + uintptr(int32(*(*Tchr)(unsafe.Pointer(cp)))&(libc.Int32FromInt32(1)<<libc.Int32FromInt32(m_BYTBITS)-libc.Int32FromInt32(1)))*2))
 			ss = *(*uintptr)(unsafe.Pointer((*Tsset)(unsafe.Pointer(css)).Fouts + uintptr(co)*8))
 			if ss == libc.UintptrFromInt32(0) {
-				ss = _miss(tls, v, d, css, int32(int32(co)), cp+uintptr(1)*2, start)
+				ss = _miss(tls, v, d, css, int32(co), cp+uintptr(1)*2, start)
 				if ss == libc.UintptrFromInt32(0) {
 					break /* NOTE BREAK OUT */
 				}
@@ -18257,7 +18257,7 @@ func _shortest(tls *libc.TLS, v uintptr, d uintptr, start uintptr, min uintptr, 
 			co = *(*Tcolor)(unsafe.Pointer(*(*uintptr)(unsafe.Pointer(cm + 368 + uintptr(int32(*(*Tchr)(unsafe.Pointer(cp)))>>libc.Int32FromInt32(m_BYTBITS)&(libc.Int32FromInt32(1)<<libc.Int32FromInt32(m_BYTBITS)-libc.Int32FromInt32(1)))*8)) + uintptr(int32(*(*Tchr)(unsafe.Pointer(cp)))&(libc.Int32FromInt32(1)<<libc.Int32FromInt32(m_BYTBITS)-libc.Int32FromInt32(1)))*2))
 			ss = *(*uintptr)(unsafe.Pointer((*Tsset)(unsafe.Pointer(css)).Fouts + uintptr(co)*8))
 			if ss == libc.UintptrFromInt32(0) {
-				ss = _miss(tls, v, d, css, int32(int32(co)), cp+uintptr(1)*2, start)
+				ss = _miss(tls, v, d, css, int32(co), cp+uintptr(1)*2, start)
 				if ss == libc.UintptrFromInt32(0) {
 					break /* NOTE BREAK OUT */
 				}
@@ -18286,7 +18286,7 @@ func _shortest(tls *libc.TLS, v uintptr, d uintptr, start uintptr, min uintptr, 
 				v4 = int32(1)
 			}
 			co = *(*Tcolor)(unsafe.Pointer((*Tdfa)(unsafe.Pointer(d)).Fcnfa + 24 + uintptr(v4)*2))
-			ss = _miss(tls, v, d, css, int32(int32(co)), cp, start)
+			ss = _miss(tls, v, d, css, int32(co), cp, start)
 			/*
 			 * Match might have ended at eol.
 			 */
@@ -18387,8 +18387,8 @@ func _newDFA(tls *libc.TLS, v uintptr, cnfa uintptr, cm uintptr, sml uintptr) (r
 			return libc.UintptrFromInt32(0)
 		}
 		(*Tdfa)(unsafe.Pointer(d)).Fssets = XTclpAlloc(tls, uint32(nss*libc.Uint64FromInt64(56)))
-		(*Tdfa)(unsafe.Pointer(d)).Fstatesarea = XTclpAlloc(tls, uint32((nss+libc.Uint64FromInt32(m_WORK))*uint64(uint64(wordsper))*libc.Uint64FromInt64(4)))
-		(*Tdfa)(unsafe.Pointer(d)).Fwork = (*Tdfa)(unsafe.Pointer(d)).Fstatesarea + uintptr(nss*uint64(uint64(wordsper)))*4
+		(*Tdfa)(unsafe.Pointer(d)).Fstatesarea = XTclpAlloc(tls, uint32((nss+libc.Uint64FromInt32(m_WORK))*uint64(wordsper)*libc.Uint64FromInt64(4)))
+		(*Tdfa)(unsafe.Pointer(d)).Fwork = (*Tdfa)(unsafe.Pointer(d)).Fstatesarea + uintptr(nss*uint64(wordsper))*4
 		(*Tdfa)(unsafe.Pointer(d)).Foutsarea = XTclpAlloc(tls, uint32(nss*uint64((*Tcnfa)(unsafe.Pointer(cnfa)).Fncolors)*libc.Uint64FromInt64(8)))
 		(*Tdfa)(unsafe.Pointer(d)).Fincarea = XTclpAlloc(tls, uint32(nss*uint64((*Tcnfa)(unsafe.Pointer(cnfa)).Fncolors)*libc.Uint64FromInt64(16)))
 		(*Tdfa)(unsafe.Pointer(d)).Fcptsmalloced = int32(1)
@@ -18702,7 +18702,7 @@ func _miss(tls *libc.TLS, v uintptr, d uintptr, css uintptr, co Tpcolor, cp uint
 		*(*uintptr)(unsafe.Pointer((*Tsset)(unsafe.Pointer(css)).Fouts + uintptr(co)*8)) = p
 		*(*Tarcp)(unsafe.Pointer((*Tsset)(unsafe.Pointer(css)).Finchain + uintptr(co)*16)) = (*Tsset)(unsafe.Pointer(p)).Fins
 		(*Tsset)(unsafe.Pointer(p)).Fins.Fss = css
-		(*Tsset)(unsafe.Pointer(p)).Fins.Fco = int16(int16(co))
+		(*Tsset)(unsafe.Pointer(p)).Fins.Fco = int16(co)
 	}
 	return p
 }
@@ -18865,7 +18865,7 @@ func _pickNextSS(tls *libc.TLS, v uintptr, d uintptr, cp uintptr, start uintptr)
 	/*
 	 * Look for oldest, or old enough anyway.
 	 */
-	if (int64(int64(cp))-int64(int64(start)))/2 > int64((*Tdfa)(unsafe.Pointer(d)).Fnssets*int32(2)/int32(3)) { /* oldest 33% are expendable */
+	if (int64(cp)-int64(start))/2 > int64((*Tdfa)(unsafe.Pointer(d)).Fnssets*int32(2)/int32(3)) { /* oldest 33% are expendable */
 		ancient = cp - uintptr((*Tdfa)(unsafe.Pointer(d)).Fnssets*int32(2)/int32(3))*2
 	} else {
 		ancient = start
@@ -19139,7 +19139,7 @@ _2: /* Convert number to name */
 	if (*Trerr)(unsafe.Pointer(r)).Fcode >= 0 {
 		msg = (*Trerr)(unsafe.Pointer(r)).Fname
 	} else { /* Unknown; tell him the number */
-		libc.Xsprintf(tls, bp, ts+1949, libc.VaList(bp+96, uint32(uint32(icode))))
+		libc.Xsprintf(tls, bp, ts+1949, libc.VaList(bp+96, uint32(icode)))
 		msg = bp
 	}
 	goto _4
@@ -19202,7 +19202,7 @@ _4:
 
 func XTclpAlloc(tls *libc.TLS, numBytes uint32) (r uintptr) {
 	/* Number of bytes to allocate. */
-	return libc.Xmalloc(tls, uint64(uint64(numBytes)))
+	return libc.Xmalloc(tls, uint64(numBytes))
 }
 
 /*
@@ -19245,7 +19245,7 @@ func XTclpFree(tls *libc.TLS, oldPtr uintptr) {
 
 func XTclpRealloc(tls *libc.TLS, oldPtr uintptr, numBytes uint32) (r uintptr) {
 	/* New size of memory. */
-	return libc.Xrealloc(tls, oldPtr, uint64(uint64(numBytes)))
+	return libc.Xrealloc(tls, oldPtr, uint64(numBytes))
 }
 
 const m_CALL_CHAIN_STATIC_SIZE = 4
@@ -21989,10 +21989,10 @@ func _TclAssembleCode(tls *libc.TLS, envPtr uintptr, codePtr uintptr, codeLen in
 		 * Advance to the next line of code.
 		 */
 		nextPtr = (*TTcl_Parse)(unsafe.Pointer(parsePtr)).FcommandStart + uintptr((*TTcl_Parse)(unsafe.Pointer(parsePtr)).FcommandSize)
-		bytesLeft = int32(int64(bytesLeft) - (int64(int64(nextPtr)) - int64(int64(instPtr))))
+		bytesLeft = int32(int64(bytesLeft) - (int64(nextPtr) - int64(instPtr)))
 		instPtr = nextPtr
 		XTclAdvanceLines(tls, assemEnvPtr+104, (*TTcl_Parse)(unsafe.Pointer(parsePtr)).FcommandStart, instPtr)
-		XTclAdvanceContinuations(tls, assemEnvPtr+104, assemEnvPtr+112, int32(int64(int64(instPtr))-int64((*TCompileEnv)(unsafe.Pointer(envPtr)).Fsource)))
+		XTclAdvanceContinuations(tls, assemEnvPtr+104, assemEnvPtr+112, int32(int64(instPtr)-int64((*TCompileEnv)(unsafe.Pointer(envPtr)).Fsource)))
 		XTcl_FreeParse(tls, parsePtr)
 	}
 	/*
@@ -22380,7 +22380,7 @@ func _AssembleOneLine(tls *libc.TLS, assemEnvPtr uintptr) (r int32) {
 			goto cleanup
 		}
 		(*TBasicBlock)(unsafe.Pointer((*TAssemblyEnv)(unsafe.Pointer(assemEnvPtr)).Fcurr_bb)).FjumpOffset = int32(int64((*TCompileEnv)(unsafe.Pointer(envPtr)).FcodeNext) - int64((*TCompileEnv)(unsafe.Pointer(envPtr)).FcodeStart))
-		if int32(instType) == int32(_ASSEM_JUMP) {
+		if instType == int32(_ASSEM_JUMP) {
 			flags = int32(_BB_JUMP1)
 			_BBEmitInstInt1(tls, assemEnvPtr, *(*int32)(unsafe.Pointer(bp + 16)), 0, 0)
 		} else {
@@ -22766,8 +22766,8 @@ func _MoveExceptionRangesToBasicBlock(tls *libc.TLS, assemEnvPtr uintptr, savedE
 	 */
 	(*TBasicBlock)(unsafe.Pointer(curr_bb)).FforeignExceptionBase = savedExceptArrayNext
 	(*TBasicBlock)(unsafe.Pointer(curr_bb)).FforeignExceptionCount = exceptionCount
-	(*TBasicBlock)(unsafe.Pointer(curr_bb)).FforeignExceptions = XTcl_Alloc(tls, uint32(uint64(uint64(exceptionCount))*libc.Uint64FromInt64(28)))
-	libc.Xmemcpy(tls, (*TBasicBlock)(unsafe.Pointer(curr_bb)).FforeignExceptions, (*TCompileEnv)(unsafe.Pointer(envPtr)).FexceptArrayPtr+uintptr(savedExceptArrayNext)*28, uint64(uint64(exceptionCount))*uint64(28))
+	(*TBasicBlock)(unsafe.Pointer(curr_bb)).FforeignExceptions = XTcl_Alloc(tls, uint32(uint64(exceptionCount)*libc.Uint64FromInt64(28)))
+	libc.Xmemcpy(tls, (*TBasicBlock)(unsafe.Pointer(curr_bb)).FforeignExceptions, (*TCompileEnv)(unsafe.Pointer(envPtr)).FexceptArrayPtr+uintptr(savedExceptArrayNext)*28, uint64(exceptionCount)*uint64(28))
 	i = 0
 	for {
 		if !(i < exceptionCount) {
@@ -24018,10 +24018,10 @@ func _BytecodeMightThrow(tls *libc.TLS, opcode uint8) (r int32) {
 	for max >= min {
 		mid = (min + max) / int32(2)
 		c = _NonThrowingByteCodes[mid]
-		if int32(int32(opcode)) < int32(int32(c)) {
+		if int32(opcode) < int32(c) {
 			max = mid - int32(1)
 		} else {
-			if int32(int32(opcode)) > int32(int32(c)) {
+			if int32(opcode) > int32(c) {
 				min = mid + int32(1)
 			} else {
 				/*
@@ -24393,7 +24393,7 @@ func _ProcessCatchesInBasicBlock(tls *libc.TLS, assemEnvPtr uintptr, bbPtr uintp
 			return int32(m_TCL_ERROR)
 		}
 	}
-	if int32(state) > (*TBasicBlock)(unsafe.Pointer(bbPtr)).FcatchState {
+	if state > (*TBasicBlock)(unsafe.Pointer(bbPtr)).FcatchState {
 		(*TBasicBlock)(unsafe.Pointer(bbPtr)).FcatchState = state
 		changed = int32(1)
 	}
@@ -24565,8 +24565,8 @@ func _BuildExceptionRanges(tls *libc.TLS, assemEnvPtr uintptr) (r int32) {
 	/*
 	 * Allocate memory for a stack of active catches.
 	 */
-	catches = XTcl_Alloc(tls, uint32(uint64(uint64(maxCatchDepth))*libc.Uint64FromInt64(8)))
-	catchIndices = XTcl_Alloc(tls, uint32(uint64(uint64(maxCatchDepth))*libc.Uint64FromInt64(4)))
+	catches = XTcl_Alloc(tls, uint32(uint64(maxCatchDepth)*libc.Uint64FromInt64(8)))
+	catchIndices = XTcl_Alloc(tls, uint32(uint64(maxCatchDepth)*libc.Uint64FromInt64(4)))
 	i = 0
 	for {
 		if !(i < maxCatchDepth) {
@@ -24658,7 +24658,7 @@ func _UnstackExpiredCatches(tls *libc.TLS, envPtr uintptr, bbPtr uintptr, catchD
 	for catchDepth > 0 {
 		catchDepth--
 		if *(*uintptr)(unsafe.Pointer(catches + uintptr(catchDepth)*8)) != libc.UintptrFromInt32(0) {
-			if *(*uintptr)(unsafe.Pointer(catches + uintptr(catchDepth)*8)) != block || int32(catchState) >= int32(_BBCS_CAUGHT) {
+			if *(*uintptr)(unsafe.Pointer(catches + uintptr(catchDepth)*8)) != block || catchState >= int32(_BBCS_CAUGHT) {
 				range1 = (*TCompileEnv)(unsafe.Pointer(envPtr)).FexceptArrayPtr + uintptr(*(*int32)(unsafe.Pointer(catchIndices + uintptr(catchDepth)*4)))*28
 				(*TExceptionRange)(unsafe.Pointer(range1)).FnumCodeBytes = (*TBasicBlock)(unsafe.Pointer(bbPtr)).FstartOffset - (*TExceptionRange)(unsafe.Pointer(range1)).FcodeOffset
 				*(*uintptr)(unsafe.Pointer(catches + uintptr(catchDepth)*8)) = libc.UintptrFromInt32(0)
@@ -24697,7 +24697,7 @@ func _LookForFreshCatches(tls *libc.TLS, bbPtr uintptr, catches uintptr) {
 	catchDepth = (*TBasicBlock)(unsafe.Pointer(bbPtr)).FcatchDepth
 	for catchDepth > 0 {
 		catchDepth--
-		if *(*uintptr)(unsafe.Pointer(catches + uintptr(catchDepth)*8)) != block && int32(catchState) < int32(_BBCS_CAUGHT) {
+		if *(*uintptr)(unsafe.Pointer(catches + uintptr(catchDepth)*8)) != block && catchState < int32(_BBCS_CAUGHT) {
 			*(*uintptr)(unsafe.Pointer(catches + uintptr(catchDepth)*8)) = block
 		}
 		catchState = (*TBasicBlock)(unsafe.Pointer(block)).FcatchState
@@ -24815,7 +24815,7 @@ func _RestoreEmbeddedExceptionRanges(tls *libc.TLS, assemEnvPtr uintptr) {
 			i = (*TBasicBlock)(unsafe.Pointer(bbPtr)).FstartOffset
 			for i < (*TBasicBlock1)(unsafe.Pointer((*TBasicBlock)(unsafe.Pointer(bbPtr)).Fsuccessor1)).FstartOffset {
 				opcode = *(*uint8)(unsafe.Pointer((*TCompileEnv)(unsafe.Pointer(envPtr)).FcodeStart + uintptr(i)))
-				if int32(int32(opcode)) == int32(m_INST_BEGIN_CATCH4) {
+				if int32(opcode) == int32(m_INST_BEGIN_CATCH4) {
 					catchIndex = int32(uint32(int32(*(*uint8)(unsafe.Pointer((*TCompileEnv)(unsafe.Pointer(envPtr)).FcodeStart + uintptr(i) + libc.UintptrFromInt32(1))))<<libc.Int32FromInt32(24) | int32(*(*uint8)(unsafe.Pointer((*TCompileEnv)(unsafe.Pointer(envPtr)).FcodeStart + uintptr(i) + libc.UintptrFromInt32(1) + libc.UintptrFromInt32(1))))<<libc.Int32FromInt32(16) | int32(*(*uint8)(unsafe.Pointer((*TCompileEnv)(unsafe.Pointer(envPtr)).FcodeStart + uintptr(i) + libc.UintptrFromInt32(1) + libc.UintptrFromInt32(2))))<<libc.Int32FromInt32(8) | int32(*(*uint8)(unsafe.Pointer((*TCompileEnv)(unsafe.Pointer(envPtr)).FcodeStart + uintptr(i) + libc.UintptrFromInt32(1) + libc.UintptrFromInt32(3))))))
 					if catchIndex >= (*TBasicBlock)(unsafe.Pointer(bbPtr)).FforeignExceptionBase && catchIndex < (*TBasicBlock)(unsafe.Pointer(bbPtr)).FforeignExceptionBase+(*TBasicBlock)(unsafe.Pointer(bbPtr)).FforeignExceptionCount {
 						catchIndex -= (*TBasicBlock)(unsafe.Pointer(bbPtr)).FforeignExceptionBase
@@ -26816,21 +26816,20 @@ func XTclFinalizeEvaluation(tls *libc.TLS) {
 func XTcl_CreateInterp(tls *libc.TLS) (r uintptr) {
 	bp := tls.Alloc(64)
 	defer tls.Free(64)
-	var builtinFuncPtr, cancelInfo, cmdInfoPtr, cmdPtr, framePtr, hPtr, iPtr, interp, nsPtr, occdPtr, opcmdInfoPtr, v4 uintptr
+	var builtinFuncPtr, cancelInfo, cmdInfoPtr, cmdPtr, framePtr, hPtr, iPtr, interp, nsPtr, occdPtr, opcmdInfoPtr, version, v4 uintptr
 	var _ /* isNew at bp+0 */ int32
 	var _ /* mathFuncName at bp+6 */ [32]int8
 	var _ /* order at bp+4 */ struct {
 		Fs [0]int16
 		Fc [2]int8
 	}
-	_, _, _, _, _, _, _, _, _, _, _, _ = builtinFuncPtr, cancelInfo, cmdInfoPtr, cmdPtr, framePtr, hPtr, iPtr, interp, nsPtr, occdPtr, opcmdInfoPtr, v4
-	XTclInitSubsystems(tls)
+	_, _, _, _, _, _, _, _, _, _, _, _, _ = builtinFuncPtr, cancelInfo, cmdInfoPtr, cmdPtr, framePtr, hPtr, iPtr, interp, nsPtr, occdPtr, opcmdInfoPtr, version, v4
+	version = XTclInitSubsystems(tls)
 	/*
 	 * Panic if someone updated the CallFrame structure without also updating
 	 * the Tcl_CallFrame structure (or vice versa).
 	 */
 	if uint64(104) < uint64(104) {
-		/*NOTREACHED*/
 		XTcl_Panic(tls, ts+5704, 0)
 	}
 	if _cancelTableInitialized == 0 {
@@ -26849,7 +26848,18 @@ func XTcl_CreateInterp(tls *libc.TLS) (r uintptr) {
 	(*TInterp)(unsafe.Pointer(iPtr)).Fresult = iPtr + 472
 	(*TInterp)(unsafe.Pointer(iPtr)).FfreeProc = libc.UintptrFromInt32(0)
 	(*TInterp)(unsafe.Pointer(iPtr)).FerrorLine = 0
-	(*TInterp)(unsafe.Pointer(iPtr)).FobjResultPtr = XTcl_NewObj(tls)
+	if XtclFreeObjList == libc.UintptrFromInt32(0) {
+		XTclAllocateFreeObjects(tls)
+	}
+	(*TInterp)(unsafe.Pointer(iPtr)).FobjResultPtr = XtclFreeObjList
+	XtclFreeObjList = (*(*struct {
+		Fptr1 uintptr
+		Fptr2 uintptr
+	})(unsafe.Pointer(XtclFreeObjList + 32))).Fptr1
+	(*TTcl_Obj)(unsafe.Pointer((*TInterp)(unsafe.Pointer(iPtr)).FobjResultPtr)).FrefCount = 0
+	(*TTcl_Obj)(unsafe.Pointer((*TInterp)(unsafe.Pointer(iPtr)).FobjResultPtr)).Fbytes = XtclEmptyStringRep
+	(*TTcl_Obj)(unsafe.Pointer((*TInterp)(unsafe.Pointer(iPtr)).FobjResultPtr)).Flength = 0
+	(*TTcl_Obj)(unsafe.Pointer((*TInterp)(unsafe.Pointer(iPtr)).FobjResultPtr)).FtypePtr = libc.UintptrFromInt32(0)
 	(*TTcl_Obj)(unsafe.Pointer((*TInterp)(unsafe.Pointer(iPtr)).FobjResultPtr)).FrefCount++
 	(*TInterp)(unsafe.Pointer(iPtr)).Fhandle = XTclHandleCreate(tls, iPtr)
 	(*TInterp)(unsafe.Pointer(iPtr)).FglobalNsPtr = libc.UintptrFromInt32(0)
@@ -27012,7 +27022,18 @@ func XTcl_CreateInterp(tls *libc.TLS) (r uintptr) {
 	(*TInterp)(unsafe.Pointer(iPtr)).FactiveInterpTracePtr = libc.UintptrFromInt32(0)
 	(*TInterp)(unsafe.Pointer(iPtr)).FassocData = libc.UintptrFromInt32(0)
 	(*TInterp)(unsafe.Pointer(iPtr)).FexecEnvPtr = libc.UintptrFromInt32(0) /* Set after namespaces initialized. */
-	(*TInterp)(unsafe.Pointer(iPtr)).FemptyObjPtr = XTcl_NewObj(tls)
+	if XtclFreeObjList == libc.UintptrFromInt32(0) {
+		XTclAllocateFreeObjects(tls)
+	}
+	(*TInterp)(unsafe.Pointer(iPtr)).FemptyObjPtr = XtclFreeObjList
+	XtclFreeObjList = (*(*struct {
+		Fptr1 uintptr
+		Fptr2 uintptr
+	})(unsafe.Pointer(XtclFreeObjList + 32))).Fptr1
+	(*TTcl_Obj)(unsafe.Pointer((*TInterp)(unsafe.Pointer(iPtr)).FemptyObjPtr)).FrefCount = 0
+	(*TTcl_Obj)(unsafe.Pointer((*TInterp)(unsafe.Pointer(iPtr)).FemptyObjPtr)).Fbytes = XtclEmptyStringRep
+	(*TTcl_Obj)(unsafe.Pointer((*TInterp)(unsafe.Pointer(iPtr)).FemptyObjPtr)).Flength = 0
+	(*TTcl_Obj)(unsafe.Pointer((*TInterp)(unsafe.Pointer(iPtr)).FemptyObjPtr)).FtypePtr = libc.UintptrFromInt32(0)
 	/* Another empty object. */
 	(*TTcl_Obj)(unsafe.Pointer((*TInterp)(unsafe.Pointer(iPtr)).FemptyObjPtr)).FrefCount++
 	*(*int8)(unsafe.Pointer(iPtr + 472)) = 0
@@ -27058,7 +27079,18 @@ func XTcl_CreateInterp(tls *libc.TLS) (r uintptr) {
 	/*
 	 * TIP #285, Script cancellation support.
 	 */
-	(*TInterp)(unsafe.Pointer(iPtr)).FasyncCancelMsg = XTcl_NewObj(tls)
+	if XtclFreeObjList == libc.UintptrFromInt32(0) {
+		XTclAllocateFreeObjects(tls)
+	}
+	(*TInterp)(unsafe.Pointer(iPtr)).FasyncCancelMsg = XtclFreeObjList
+	XtclFreeObjList = (*(*struct {
+		Fptr1 uintptr
+		Fptr2 uintptr
+	})(unsafe.Pointer(XtclFreeObjList + 32))).Fptr1
+	(*TTcl_Obj)(unsafe.Pointer((*TInterp)(unsafe.Pointer(iPtr)).FasyncCancelMsg)).FrefCount = 0
+	(*TTcl_Obj)(unsafe.Pointer((*TInterp)(unsafe.Pointer(iPtr)).FasyncCancelMsg)).Fbytes = XtclEmptyStringRep
+	(*TTcl_Obj)(unsafe.Pointer((*TInterp)(unsafe.Pointer(iPtr)).FasyncCancelMsg)).Flength = 0
+	(*TTcl_Obj)(unsafe.Pointer((*TInterp)(unsafe.Pointer(iPtr)).FasyncCancelMsg)).FtypePtr = libc.UintptrFromInt32(0)
 	cancelInfo = XTcl_Alloc(tls, uint32(libc.Uint64FromInt64(48)))
 	(*TCancelInfo)(unsafe.Pointer(cancelInfo)).Finterp = interp
 	(*TInterp)(unsafe.Pointer(iPtr)).FasyncCancel = XTcl_AsyncCreate(tls, __ccgo_fp(_CancelEvalProc), cancelInfo)
@@ -27273,7 +27305,7 @@ func XTcl_CreateInterp(tls *libc.TLS) (r uintptr) {
 	 * Register Tcl's version number.
 	 * TIP #268: Full patchlevel instead of just major.minor
 	 */
-	XTcl_PkgProvideEx(tls, interp, ts+6393, ts+6466, uintptr(unsafe.Pointer(&XtclStubs)))
+	XTcl_PkgProvideEx(tls, interp, ts+6393, version, uintptr(unsafe.Pointer(&XtclStubs)))
 	if XTclTommath_Init(tls, interp) != m_TCL_OK {
 		XTcl_Panic(tls, ts+6503, libc.VaList(bp+48, XTcl_GetString(tls, XTcl_GetObjResult(tls, interp))))
 	}
@@ -27367,7 +27399,7 @@ func XTcl_CallWhenDeleted(tls *libc.TLS, interp uintptr, proc uintptr, clientDat
 	var _ /* isNew at bp+0 */ int32
 	_, _, _, _ = assocDataCounterPtr, dPtr, hPtr, iPtr
 	iPtr = interp
-	assocDataCounterPtr = XTcl_GetThreadData(tls, uintptr(unsafe.Pointer(&_assocDataCounterKey)), libc.Int32FromInt64(4))
+	assocDataCounterPtr = XTcl_GetThreadData(tls, uintptr(unsafe.Pointer(&_assocDataCounterKey)), int32(4))
 	dPtr = XTcl_Alloc(tls, uint32(libc.Uint64FromInt64(16)))
 	libc.Xsprintf(tls, bp+4, ts+6506, libc.VaList(bp+72, *(*int32)(unsafe.Pointer(assocDataCounterPtr))))
 	*(*int32)(unsafe.Pointer(assocDataCounterPtr))++
@@ -28542,9 +28574,11 @@ func XTcl_CreateObjCommand(tls *libc.TLS, interp uintptr, cmdName uintptr, proc 
 	return XTclCreateObjCommandInNs(tls, interp, *(*uintptr)(unsafe.Pointer(bp + 8)), *(*uintptr)(unsafe.Pointer(bp)), proc, clientData, deleteProc)
 }
 
-func XTclCreateObjCommandInNs(tls *libc.TLS, interp uintptr, cmdName uintptr, namespace uintptr, proc uintptr, clientData TClientData, deleteProc uintptr) (r TTcl_Command) {
+func XTclCreateObjCommandInNs(tls *libc.TLS, interp uintptr, cmdName uintptr, namesp uintptr, proc uintptr, clientData TClientData, deleteProc uintptr) (r TTcl_Command) {
 	bp := tls.Alloc(16)
 	defer tls.Free(16)
+	/* If not NULL, gives a function to call when
+	 * this command is deleted. */
 	var cmdPtr, dataPtr, hPtr, nsPtr, oldRefPtr, refCmdPtr, v2 uintptr
 	var deleted, v1 int32
 	var _ /* isNew at bp+0 */ int32
@@ -28552,12 +28586,12 @@ func XTclCreateObjCommandInNs(tls *libc.TLS, interp uintptr, cmdName uintptr, na
 	deleted = 0
 	*(*int32)(unsafe.Pointer(bp)) = 0
 	oldRefPtr = libc.UintptrFromInt32(0)
-	nsPtr = namespace
+	nsPtr = namesp
 	/*
-	 * If the command name we seek to create already exists, we need to
-	 * delete that first.  That can be tricky in the presence of traces.
-	 * Loop until we no longer find an existing command in the way, or
-	 * until we've deleted one command and that didn't finish the job.
+	 * If the command name we seek to create already exists, we need to delete
+	 * that first. That can be tricky in the presence of traces. Loop until we
+	 * no longer find an existing command in the way, or until we've deleted
+	 * one command and that didn't finish the job.
 	 */
 	for int32(1) != 0 {
 		hPtr = (*(*func(*libc.TLS, uintptr, uintptr, uintptr) uintptr)(unsafe.Pointer(&struct{ uintptr }{(*TTcl_HashTable)(unsafe.Pointer(nsPtr + 160)).FcreateProc})))(tls, nsPtr+160, cmdName, bp)
@@ -28615,9 +28649,9 @@ func XTclCreateObjCommandInNs(tls *libc.TLS, interp uintptr, cmdName uintptr, na
 	}
 	if !(*(*int32)(unsafe.Pointer(bp)) != 0) {
 		/*
-		 * If the deletion callback recreated the command, just throw away
-		 * the new command (if we try to delete it again, we could get
-		 * stuck in an infinite loop).
+		 * If the deletion callback recreated the command, just throw away the
+		 * new command (if we try to delete it again, we could get stuck in an
+		 * infinite loop).
 		 */
 		XTclpFree(tls, (*TTcl_HashEntry)(unsafe.Pointer(hPtr)).FclientData)
 	}
@@ -28712,7 +28746,7 @@ func XTclInvokeStringCommand(tls *libc.TLS, clientData TClientData, interp uintp
 	var i, result int32
 	_, _, _, _ = argv, cmdPtr, i, result
 	cmdPtr = clientData
-	argv = XTclStackAlloc(tls, interp, int32(uint64(uint32(objc+libc.Int32FromInt32(1)))*uint64(8)))
+	argv = XTclStackAlloc(tls, interp, int32(uint64(objc+libc.Int32FromInt32(1))*uint64(8)))
 	i = 0
 	for {
 		if !(i < objc) {
@@ -28744,7 +28778,7 @@ func XTclInvokeStringCommand(tls *libc.TLS, clientData TClientData, interp uintp
  *	in the Command structure.
  *
  * Results:
- *	A standard Tcl string result value.
+ *	A standard Tcl result value.
  *
  * Side effects:
  *	Besides those side effects of the called Tcl_ObjCmdProc,
@@ -28759,7 +28793,7 @@ func XTclInvokeObjectCommand(tls *libc.TLS, clientData TClientData, interp uintp
 	var i, length, result, v3 int32
 	_, _, _, _, _, _, _, _, _ = _objPtr, cmdPtr, i, length, objPtr, objv, result, v3, v4
 	cmdPtr = clientData
-	objv = XTclStackAlloc(tls, interp, int32(uint32(uint64(uint64(argc))*libc.Uint64FromInt64(8))))
+	objv = XTclStackAlloc(tls, interp, int32(uint64(argc)*libc.Uint64FromInt64(8)))
 	i = 0
 	for {
 		if !(i < argc) {
@@ -28892,7 +28926,18 @@ func XTclRenameCommand(tls *libc.TLS, interp uintptr, oldName uintptr, newName u
 		return m_TCL_OK
 	}
 	cmdNsPtr = (*TCommand)(unsafe.Pointer(cmdPtr)).FnsPtr
-	oldFullName = XTcl_NewObj(tls)
+	if XtclFreeObjList == libc.UintptrFromInt32(0) {
+		XTclAllocateFreeObjects(tls)
+	}
+	oldFullName = XtclFreeObjList
+	XtclFreeObjList = (*(*struct {
+		Fptr1 uintptr
+		Fptr2 uintptr
+	})(unsafe.Pointer(XtclFreeObjList + 32))).Fptr1
+	(*TTcl_Obj)(unsafe.Pointer(oldFullName)).FrefCount = 0
+	(*TTcl_Obj)(unsafe.Pointer(oldFullName)).Fbytes = XtclEmptyStringRep
+	(*TTcl_Obj)(unsafe.Pointer(oldFullName)).Flength = 0
+	(*TTcl_Obj)(unsafe.Pointer(oldFullName)).FtypePtr = libc.UintptrFromInt32(0)
 	(*TTcl_Obj)(unsafe.Pointer(oldFullName)).FrefCount++
 	XTcl_GetCommandFullName(tls, interp, cmd, oldFullName)
 	/*
@@ -29390,7 +29435,7 @@ func XTcl_DeleteCommandFromToken(tls *libc.TLS, interp uintptr, cmd TTcl_Command
 		(*TCommand)(unsafe.Pointer(cmdPtr)).FtracePtr = libc.UintptrFromInt32(0)
 	}
 	/*
-	 * The list of command exported from the namespace might have changed.
+	 * The list of commands exported from the namespace might have changed.
 	 * However, we do not need to recompute this just yet; next time we need
 	 * the info will be soon enough.
 	 */
@@ -29412,11 +29457,11 @@ func XTcl_DeleteCommandFromToken(tls *libc.TLS, interp uintptr, cmd TTcl_Command
 	if (*TCommand)(unsafe.Pointer(cmdPtr)).FcompileProc != libc.UintptrFromInt32(0) {
 		(*TInterp)(unsafe.Pointer(iPtr)).FcompileEpoch++
 	}
-	/*
-	 * Delete any imports of this routine elsewhere before calling deleteProc
-	 * to that traces on the imports don't reference deallocated storage.
-	 */
 	if !((*TCommand)(unsafe.Pointer(cmdPtr)).Fflags&libc.Int32FromInt32(m_CMD_REDEF_IN_PROGRESS) != 0) {
+		/*
+		 * Delete any imports of this routine before deleting this routine itself.
+		 * See issue 688fcc7082fa.
+		 */
 		refPtr = (*TCommand)(unsafe.Pointer(cmdPtr)).FimportRefPtr
 		for {
 			if !(refPtr != libc.UintptrFromInt32(0)) {
@@ -29456,6 +29501,11 @@ func XTcl_DeleteCommandFromToken(tls *libc.TLS, interp uintptr, cmd TTcl_Command
 	if (*TCommand)(unsafe.Pointer(cmdPtr)).FhPtr != libc.UintptrFromInt32(0) {
 		XTcl_DeleteHashEntry(tls, (*TCommand)(unsafe.Pointer(cmdPtr)).FhPtr)
 		(*TCommand)(unsafe.Pointer(cmdPtr)).FhPtr = libc.UintptrFromInt32(0)
+		/*
+		 * Bump the command epoch counter. This will invalidate all cached
+		 * references that point to this command.
+		 */
+		(*TCommand)(unsafe.Pointer(cmdPtr)).FcmdEpoch++
 	}
 	/*
 	 * A number of tests for particular kinds of commands are done by checking
@@ -29712,8 +29762,13 @@ func _CancelEvalProc(tls *libc.TLS, clientData TClientData, interp uintptr, code
 func XTclCleanupCommand(tls *libc.TLS, cmdPtr uintptr) {
 	/* Points to the Command structure to
 	 * be freed. */
-	(*TCommand)(unsafe.Pointer(cmdPtr)).FrefCount--
-	if (*TCommand)(unsafe.Pointer(cmdPtr)).FrefCount <= 0 {
+	var v1 int32
+	var v2 uintptr
+	_, _ = v1, v2
+	v2 = cmdPtr + 16
+	v1 = *(*int32)(unsafe.Pointer(v2))
+	*(*int32)(unsafe.Pointer(v2))--
+	if v1 <= int32(1) {
 		XTclpFree(tls, cmdPtr)
 	}
 }
@@ -29750,8 +29805,10 @@ func XTcl_CreateMathFunc(tls *libc.TLS, interp uintptr, name uintptr, numArgs in
 	data = XTcl_Alloc(tls, uint32(libc.Uint64FromInt64(32)))
 	(*TOldMathFuncData)(unsafe.Pointer(data)).Fproc = proc
 	(*TOldMathFuncData)(unsafe.Pointer(data)).FnumArgs = numArgs
-	(*TOldMathFuncData)(unsafe.Pointer(data)).FargTypes = XTcl_Alloc(tls, uint32(uint64(uint64(numArgs))*libc.Uint64FromInt64(4)))
-	libc.Xmemcpy(tls, (*TOldMathFuncData)(unsafe.Pointer(data)).FargTypes, argTypes, uint64(uint64(numArgs))*uint64(4))
+	(*TOldMathFuncData)(unsafe.Pointer(data)).FargTypes = XTcl_Alloc(tls, uint32(uint64(numArgs)*libc.Uint64FromInt64(4)))
+	if numArgs > 0 && argTypes != libc.UintptrFromInt32(0) {
+		libc.Xmemcpy(tls, (*TOldMathFuncData)(unsafe.Pointer(data)).FargTypes, argTypes, uint64(numArgs)*uint64(4))
+	}
 	(*TOldMathFuncData)(unsafe.Pointer(data)).FclientData = clientData
 	XTcl_DStringInit(tls, bp)
 	XTcl_DStringAppend(tls, bp, ts+6254, int32(libc.Uint64FromInt64(18)-libc.Uint64FromInt32(1)))
@@ -30070,7 +30127,18 @@ func XTcl_ListMathFuncs(tls *libc.TLS, interp uintptr, pattern uintptr) (r uintp
 	if m_TCL_OK == XTcl_EvalObjEx(tls, interp, script, 0) {
 		result = XTcl_DuplicateObj(tls, XTcl_GetObjResult(tls, interp))
 	} else {
-		result = XTcl_NewObj(tls)
+		if XtclFreeObjList == libc.UintptrFromInt32(0) {
+			XTclAllocateFreeObjects(tls)
+		}
+		result = XtclFreeObjList
+		XtclFreeObjList = (*(*struct {
+			Fptr1 uintptr
+			Fptr2 uintptr
+		})(unsafe.Pointer(XtclFreeObjList + 32))).Fptr1
+		(*TTcl_Obj)(unsafe.Pointer(result)).FrefCount = 0
+		(*TTcl_Obj)(unsafe.Pointer(result)).Fbytes = XtclEmptyStringRep
+		(*TTcl_Obj)(unsafe.Pointer(result)).Flength = 0
+		(*TTcl_Obj)(unsafe.Pointer(result)).FtypePtr = libc.UintptrFromInt32(0)
 	}
 	_objPtr1 = script
 	v4 = _objPtr1
@@ -30909,11 +30977,11 @@ func _TEOV_Error(tls *libc.TLS, data uintptr, interp uintptr, result int32) (r i
 func _TEOV_NotFound(tls *libc.TLS, interp uintptr, objc int32, objv uintptr, lookupNsPtr uintptr) (r int32) {
 	bp := tls.Alloc(64)
 	defer tls.Free(64)
-	var _callbackPtr, _objPtr, _objPtr1, cmdPtr, currNsPtr, iPtr, newObjv, savedNsPtr, varFramePtr, v2, v3, v6 uintptr
-	var i, newObjc, v5 int32
+	var _callbackPtr, _objPtr, _objPtr1, cmdPtr, currNsPtr, iPtr, newObjv, savedNsPtr, varFramePtr, v3, v4, v7 uintptr
+	var i, newObjc, v6 int32
 	var _ /* handlerObjc at bp+0 */ int32
 	var _ /* handlerObjv at bp+8 */ uintptr
-	_, _, _, _, _, _, _, _, _, _, _, _, _, _, _ = _callbackPtr, _objPtr, _objPtr1, cmdPtr, currNsPtr, i, iPtr, newObjc, newObjv, savedNsPtr, varFramePtr, v2, v3, v5, v6
+	_, _, _, _, _, _, _, _, _, _, _, _, _, _, _ = _callbackPtr, _objPtr, _objPtr1, cmdPtr, currNsPtr, i, iPtr, newObjc, newObjv, savedNsPtr, varFramePtr, v3, v4, v6, v7
 	iPtr = interp
 	varFramePtr = (*TInterp)(unsafe.Pointer(iPtr)).FvarFramePtr
 	currNsPtr = libc.UintptrFromInt32(0) /* Used to check for and invoke any registered
@@ -30958,9 +31026,21 @@ func _TEOV_NotFound(tls *libc.TLS, interp uintptr, objc int32, objv uintptr, loo
 	 * to hold both the handler prefix and all words of the command invokation
 	 * itself.
 	 */
-	XTcl_ListObjGetElements(tls, libc.UintptrFromInt32(0), (*TNamespace)(unsafe.Pointer(currNsPtr)).FunknownHandlerPtr, bp, bp+8)
+	if (*TTcl_Obj)(unsafe.Pointer((*TNamespace)(unsafe.Pointer(currNsPtr)).FunknownHandlerPtr)).FtypePtr == uintptr(unsafe.Pointer(&XtclListType)) {
+		*(*uintptr)(unsafe.Pointer(bp + 8)) = (*(*struct {
+			Fptr1 uintptr
+			Fptr2 uintptr
+		})(unsafe.Pointer((*TNamespace)(unsafe.Pointer(currNsPtr)).FunknownHandlerPtr + 32))).Fptr1 + 16
+		*(*int32)(unsafe.Pointer(bp)) = (*TList)(unsafe.Pointer((*(*struct {
+			Fptr1 uintptr
+			Fptr2 uintptr
+		})(unsafe.Pointer((*TNamespace)(unsafe.Pointer(currNsPtr)).FunknownHandlerPtr + 32))).Fptr1)).FelemCount
+		_ = libc.Int32FromInt32(m_TCL_OK)
+	} else {
+		XTcl_ListObjGetElements(tls, libc.UintptrFromInt32(0), (*TNamespace)(unsafe.Pointer(currNsPtr)).FunknownHandlerPtr, bp, bp+8)
+	}
 	newObjc = objc + *(*int32)(unsafe.Pointer(bp))
-	newObjv = XTclStackAlloc(tls, interp, libc.Int32FromInt64(8)*newObjc)
+	newObjv = XTclStackAlloc(tls, interp, int32(uint64(8)*uint64(newObjc)))
 	/*
 	 * Copy command prefix from unknown handler and add on the real command's
 	 * full argument list. Note that we only use memcpy() once because we have
@@ -30973,11 +31053,11 @@ func _TEOV_NotFound(tls *libc.TLS, interp uintptr, objc int32, objv uintptr, loo
 		}
 		*(*uintptr)(unsafe.Pointer(newObjv + uintptr(i)*8)) = *(*uintptr)(unsafe.Pointer(*(*uintptr)(unsafe.Pointer(bp + 8)) + uintptr(i)*8))
 		(*TTcl_Obj)(unsafe.Pointer(*(*uintptr)(unsafe.Pointer(newObjv + uintptr(i)*8)))).FrefCount++
-		goto _1
-	_1:
+		goto _2
+	_2:
 		i++
 	}
-	libc.Xmemcpy(tls, newObjv+uintptr(*(*int32)(unsafe.Pointer(bp)))*8, objv, uint64(8)*uint64(uint64(objc)))
+	libc.Xmemcpy(tls, newObjv+uintptr(*(*int32)(unsafe.Pointer(bp)))*8, objv, uint64(8)*uint64(objc))
 	/*
 	 * Look up and invoke the handler (by recursive call to this function). If
 	 * there is no handler at all, instead of doing the recursive call we just
@@ -30990,17 +31070,17 @@ func _TEOV_NotFound(tls *libc.TLS, interp uintptr, objc int32, objv uintptr, loo
 	cmdPtr = _TEOV_LookupCmdFromObj(tls, interp, *(*uintptr)(unsafe.Pointer(newObjv)), lookupNsPtr)
 	if cmdPtr == libc.UintptrFromInt32(0) {
 		if (*TTcl_Obj)(unsafe.Pointer(*(*uintptr)(unsafe.Pointer(objv)))).Fbytes != 0 {
-			v2 = (*TTcl_Obj)(unsafe.Pointer(*(*uintptr)(unsafe.Pointer(objv)))).Fbytes
-		} else {
-			v2 = XTcl_GetString(tls, *(*uintptr)(unsafe.Pointer(objv)))
-		}
-		XTcl_SetObjResult(tls, interp, XTcl_ObjPrintf(tls, ts+7728, libc.VaList(bp+24, v2)))
-		if (*TTcl_Obj)(unsafe.Pointer(*(*uintptr)(unsafe.Pointer(objv)))).Fbytes != 0 {
 			v3 = (*TTcl_Obj)(unsafe.Pointer(*(*uintptr)(unsafe.Pointer(objv)))).Fbytes
 		} else {
 			v3 = XTcl_GetString(tls, *(*uintptr)(unsafe.Pointer(objv)))
 		}
-		XTcl_SetErrorCode(tls, interp, libc.VaList(bp+24, ts+3490, ts+7056, ts+7214, v3, libc.UintptrFromInt32(0)))
+		XTcl_SetObjResult(tls, interp, XTcl_ObjPrintf(tls, ts+7728, libc.VaList(bp+24, v3)))
+		if (*TTcl_Obj)(unsafe.Pointer(*(*uintptr)(unsafe.Pointer(objv)))).Fbytes != 0 {
+			v4 = (*TTcl_Obj)(unsafe.Pointer(*(*uintptr)(unsafe.Pointer(objv)))).Fbytes
+		} else {
+			v4 = XTcl_GetString(tls, *(*uintptr)(unsafe.Pointer(objv)))
+		}
+		XTcl_SetErrorCode(tls, interp, libc.VaList(bp+24, ts+3490, ts+7056, ts+7214, v4, libc.UintptrFromInt32(0)))
 		/*
 		 * Release any resources we locked and allocated during the handler
 		 * call.
@@ -31011,14 +31091,14 @@ func _TEOV_NotFound(tls *libc.TLS, interp uintptr, objc int32, objv uintptr, loo
 				break
 			}
 			_objPtr = *(*uintptr)(unsafe.Pointer(newObjv + uintptr(i)*8))
-			v6 = _objPtr
-			v5 = *(*int32)(unsafe.Pointer(v6))
-			*(*int32)(unsafe.Pointer(v6))--
-			if v5 <= int32(1) {
+			v7 = _objPtr
+			v6 = *(*int32)(unsafe.Pointer(v7))
+			*(*int32)(unsafe.Pointer(v7))--
+			if v6 <= int32(1) {
 				XTclFreeObj(tls, _objPtr)
 			}
-			goto _4
-		_4:
+			goto _5
+		_5:
 			i++
 		}
 		XTclStackFree(tls, interp, newObjv)
@@ -31346,8 +31426,8 @@ func XTclEvalEx(tls *libc.TLS, interp uintptr, script uintptr, numBytes int32, f
 	 * Tcl_EvalEx() and TclEvalObjEx() for places
 	 * generating arguments for which this is
 	 * true. */
-	var _objPtr, _objPtr1, _objPtr2, _objPtr3, _objPtr4, _objPtr5, copy1, eeFramePtr, expand, expandStack, iPtr, lcopy, lineSpace, lines, linesStack, next, norm, objv, objvSpace, p, parsePtr, savedVarFramePtr, stackObjArray, temp, tokenPtr, wordStart, v1, v10, v11, v16, v19, v2, v22, v25, v27, v8 uintptr
-	var allowExceptions, bytesLeft, code, commandLength, expandRequested, gotParse, objIdx, wordIdx, v12, v13, v14, v15, v17, v18, v21, v24, v26, v3, v5, v6, v7, v9 int32
+	var _objPtr, _objPtr1, _objPtr2, _objPtr3, _objPtr4, _objPtr5, copy1, eeFramePtr, expand, expandStack, iPtr, lcopy, lineSpace, lines, linesStack, next, norm, objv, objvSpace, p, parsePtr, savedVarFramePtr, stackObjArray, temp, tokenPtr, wordStart, v1, v10, v11, v17, v2, v20, v23, v26, v28, v8 uintptr
+	var allowExceptions, bytesLeft, code, commandLength, expandRequested, gotParse, objIdx, wordIdx, v12, v14, v15, v16, v18, v19, v22, v25, v27, v3, v5, v6, v7, v9 int32
 	var i, minObjs, numWords, objectsNeeded, objectsUsed uint32
 	var _ /* clNext at bp+8 */ uintptr
 	var _ /* elements at bp+40 */ uintptr
@@ -31355,7 +31435,7 @@ func XTclEvalEx(tls *libc.TLS, interp uintptr, script uintptr, numBytes int32, f
 	var _ /* numElements at bp+36 */ int32
 	var _ /* wordCLNext at bp+24 */ uintptr
 	var _ /* wordLine at bp+16 */ int32
-	_, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _ = _objPtr, _objPtr1, _objPtr2, _objPtr3, _objPtr4, _objPtr5, allowExceptions, bytesLeft, code, commandLength, copy1, eeFramePtr, expand, expandRequested, expandStack, gotParse, i, iPtr, lcopy, lineSpace, lines, linesStack, minObjs, next, norm, numWords, objIdx, objectsNeeded, objectsUsed, objv, objvSpace, p, parsePtr, savedVarFramePtr, stackObjArray, temp, tokenPtr, wordIdx, wordStart, v1, v10, v11, v12, v13, v14, v15, v16, v17, v18, v19, v2, v21, v22, v24, v25, v26, v27, v3, v5, v6, v7, v8, v9
+	_, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _ = _objPtr, _objPtr1, _objPtr2, _objPtr3, _objPtr4, _objPtr5, allowExceptions, bytesLeft, code, commandLength, copy1, eeFramePtr, expand, expandRequested, expandStack, gotParse, i, iPtr, lcopy, lineSpace, lines, linesStack, minObjs, next, norm, numWords, objIdx, objectsNeeded, objectsUsed, objv, objvSpace, p, parsePtr, savedVarFramePtr, stackObjArray, temp, tokenPtr, wordIdx, wordStart, v1, v10, v11, v12, v14, v15, v16, v17, v18, v19, v2, v20, v22, v23, v25, v26, v27, v28, v3, v5, v6, v7, v8, v9
 	iPtr = interp
 	minObjs = uint32(20)
 	code = m_TCL_OK /* Saves old copy of iPtr->varFramePtr in case
@@ -31369,9 +31449,9 @@ func XTclEvalEx(tls *libc.TLS, interp uintptr, script uintptr, numBytes int32, f
 	 * properly if an error occurs. */
 	parsePtr = XTclStackAlloc(tls, interp, int32(576))
 	eeFramePtr = XTclStackAlloc(tls, interp, int32(88))
-	stackObjArray = XTclStackAlloc(tls, interp, int32(uint64(uint64(minObjs))*uint64(8)))
-	expandStack = XTclStackAlloc(tls, interp, int32(uint64(uint64(minObjs))*uint64(4)))
-	linesStack = XTclStackAlloc(tls, interp, int32(uint64(uint64(minObjs))*uint64(4)))
+	stackObjArray = XTclStackAlloc(tls, interp, int32(uint64(minObjs)*uint64(8)))
+	expandStack = XTclStackAlloc(tls, interp, int32(uint64(minObjs)*uint64(4)))
+	linesStack = XTclStackAlloc(tls, interp, int32(uint64(minObjs)*uint64(4)))
 	/* TIP #280 Structures for tracking of command
 	 * locations. */
 	*(*uintptr)(unsafe.Pointer(bp + 8)) = libc.UintptrFromInt32(0) /* Pointer for the tracking of invisible
@@ -31493,7 +31573,7 @@ func XTclEvalEx(tls *libc.TLS, interp uintptr, script uintptr, numBytes int32, f
 		 * block, and do not forget invisible continuation lines.
 		 */
 		XTclAdvanceLines(tls, bp, p, (*TTcl_Parse)(unsafe.Pointer(parsePtr)).FcommandStart)
-		XTclAdvanceContinuations(tls, bp, bp+8, int32(int64((*TTcl_Parse)(unsafe.Pointer(parsePtr)).FcommandStart)-int64(int64(outerScript))))
+		XTclAdvanceContinuations(tls, bp, bp+8, int32(int64((*TTcl_Parse)(unsafe.Pointer(parsePtr)).FcommandStart)-int64(outerScript)))
 		gotParse = int32(1)
 		if (*TTcl_Parse)(unsafe.Pointer(parsePtr)).FnumWords > 0 {
 			/*
@@ -31511,9 +31591,9 @@ func XTclEvalEx(tls *libc.TLS, interp uintptr, script uintptr, numBytes int32, f
 			 * Generate an array of objects for the words of the command.
 			 */
 			if numWords > minObjs {
-				expand = XTcl_Alloc(tls, uint32(uint64(uint64(numWords))*libc.Uint64FromInt64(4)))
-				objvSpace = XTcl_Alloc(tls, uint32(uint64(uint64(numWords))*libc.Uint64FromInt64(8)))
-				lineSpace = XTcl_Alloc(tls, uint32(uint64(uint64(numWords))*libc.Uint64FromInt64(4)))
+				expand = XTcl_Alloc(tls, uint32(uint64(numWords)*libc.Uint64FromInt64(4)))
+				objvSpace = XTcl_Alloc(tls, uint32(uint64(numWords)*libc.Uint64FromInt64(8)))
+				lineSpace = XTcl_Alloc(tls, uint32(uint64(numWords)*libc.Uint64FromInt64(4)))
 			}
 			expandRequested = 0
 			objv = objvSpace
@@ -31533,7 +31613,7 @@ func XTclEvalEx(tls *libc.TLS, interp uintptr, script uintptr, numBytes int32, f
 				 * vs. eval).
 				 */
 				XTclAdvanceLines(tls, bp+16, wordStart, (*TTcl_Token)(unsafe.Pointer(tokenPtr)).Fstart)
-				XTclAdvanceContinuations(tls, bp+16, bp+24, int32(int64((*TTcl_Token)(unsafe.Pointer(tokenPtr)).Fstart)-int64(int64(outerScript))))
+				XTclAdvanceContinuations(tls, bp+16, bp+24, int32(int64((*TTcl_Token)(unsafe.Pointer(tokenPtr)).Fstart)-int64(outerScript)))
 				wordStart = (*TTcl_Token)(unsafe.Pointer(tokenPtr)).Fstart
 				if XTclWordKnownAtCompileTime(tls, tokenPtr, libc.UintptrFromInt32(0)) != 0 {
 					v5 = *(*int32)(unsafe.Pointer(bp + 16))
@@ -31589,7 +31669,7 @@ func XTclEvalEx(tls *libc.TLS, interp uintptr, script uintptr, numBytes int32, f
 					objectsNeeded++
 				}
 				if *(*uintptr)(unsafe.Pointer(bp + 24)) != 0 {
-					XTclContinuationsEnterDerived(tls, *(*uintptr)(unsafe.Pointer(objv + uintptr(objectsUsed)*8)), int32(int64(int64(wordStart))-int64(int64(outerScript))), *(*uintptr)(unsafe.Pointer(bp + 24)))
+					XTclContinuationsEnterDerived(tls, *(*uintptr)(unsafe.Pointer(objv + uintptr(objectsUsed)*8)), int32(int64(wordStart)-int64(outerScript)), *(*uintptr)(unsafe.Pointer(bp + 24)))
 				}
 				goto _4
 			_4:
@@ -31606,13 +31686,13 @@ func XTclEvalEx(tls *libc.TLS, interp uintptr, script uintptr, numBytes int32, f
 				 */
 				copy1 = objvSpace
 				lcopy = lineSpace
-				wordIdx = int32(int32(numWords))
+				wordIdx = int32(numWords)
 				objIdx = int32(objectsNeeded - uint32(1))
 				if numWords > minObjs || objectsNeeded > minObjs {
-					v10 = XTcl_Alloc(tls, uint32(uint64(uint64(objectsNeeded))*libc.Uint64FromInt64(8)))
+					v10 = XTcl_Alloc(tls, uint32(uint64(objectsNeeded)*libc.Uint64FromInt64(8)))
 					objvSpace = v10
 					objv = v10
-					v11 = XTcl_Alloc(tls, uint32(uint64(uint64(objectsNeeded))*libc.Uint64FromInt64(4)))
+					v11 = XTcl_Alloc(tls, uint32(uint64(objectsNeeded)*libc.Uint64FromInt64(4)))
 					lineSpace = v11
 					lines = v11
 				}
@@ -31625,32 +31705,44 @@ func XTclEvalEx(tls *libc.TLS, interp uintptr, script uintptr, numBytes int32, f
 					}
 					if *(*int32)(unsafe.Pointer(expand + uintptr(wordIdx)*4)) != 0 {
 						temp = *(*uintptr)(unsafe.Pointer(copy1 + uintptr(wordIdx)*8))
-						XTcl_ListObjGetElements(tls, libc.UintptrFromInt32(0), temp, bp+36, bp+40)
+						if (*TTcl_Obj)(unsafe.Pointer(temp)).FtypePtr == uintptr(unsafe.Pointer(&XtclListType)) {
+							*(*uintptr)(unsafe.Pointer(bp + 40)) = (*(*struct {
+								Fptr1 uintptr
+								Fptr2 uintptr
+							})(unsafe.Pointer(temp + 32))).Fptr1 + 16
+							*(*int32)(unsafe.Pointer(bp + 36)) = (*TList)(unsafe.Pointer((*(*struct {
+								Fptr1 uintptr
+								Fptr2 uintptr
+							})(unsafe.Pointer(temp + 32))).Fptr1)).FelemCount
+							_ = libc.Int32FromInt32(m_TCL_OK)
+						} else {
+							XTcl_ListObjGetElements(tls, libc.UintptrFromInt32(0), temp, bp+36, bp+40)
+						}
 						objectsUsed += uint32(*(*int32)(unsafe.Pointer(bp + 36)))
 						for {
-							v13 = *(*int32)(unsafe.Pointer(bp + 36))
+							v14 = *(*int32)(unsafe.Pointer(bp + 36))
 							*(*int32)(unsafe.Pointer(bp + 36))--
-							if !(v13 != 0) {
+							if !(v14 != 0) {
 								break
 							}
 							*(*int32)(unsafe.Pointer(lines + uintptr(objIdx)*4)) = -int32(1)
-							v14 = objIdx
+							v15 = objIdx
 							objIdx--
-							*(*uintptr)(unsafe.Pointer(objv + uintptr(v14)*8)) = *(*uintptr)(unsafe.Pointer(*(*uintptr)(unsafe.Pointer(bp + 40)) + uintptr(*(*int32)(unsafe.Pointer(bp + 36)))*8))
+							*(*uintptr)(unsafe.Pointer(objv + uintptr(v15)*8)) = *(*uintptr)(unsafe.Pointer(*(*uintptr)(unsafe.Pointer(bp + 40)) + uintptr(*(*int32)(unsafe.Pointer(bp + 36)))*8))
 							(*TTcl_Obj)(unsafe.Pointer(*(*uintptr)(unsafe.Pointer(*(*uintptr)(unsafe.Pointer(bp + 40)) + uintptr(*(*int32)(unsafe.Pointer(bp + 36)))*8)))).FrefCount++
 						}
 						_objPtr1 = temp
-						v16 = _objPtr1
-						v15 = *(*int32)(unsafe.Pointer(v16))
-						*(*int32)(unsafe.Pointer(v16))--
-						if v15 <= int32(1) {
+						v17 = _objPtr1
+						v16 = *(*int32)(unsafe.Pointer(v17))
+						*(*int32)(unsafe.Pointer(v17))--
+						if v16 <= int32(1) {
 							XTclFreeObj(tls, _objPtr1)
 						}
 					} else {
 						*(*int32)(unsafe.Pointer(lines + uintptr(objIdx)*4)) = *(*int32)(unsafe.Pointer(lcopy + uintptr(wordIdx)*4))
-						v17 = objIdx
+						v18 = objIdx
 						objIdx--
-						*(*uintptr)(unsafe.Pointer(objv + uintptr(v17)*8)) = *(*uintptr)(unsafe.Pointer(copy1 + uintptr(wordIdx)*8))
+						*(*uintptr)(unsafe.Pointer(objv + uintptr(v18)*8)) = *(*uintptr)(unsafe.Pointer(copy1 + uintptr(wordIdx)*8))
 						objectsUsed++
 					}
 				}
@@ -31676,19 +31768,19 @@ func XTclEvalEx(tls *libc.TLS, interp uintptr, script uintptr, numBytes int32, f
 			if (*TTcl_Parse)(unsafe.Pointer(parsePtr)).Fterm == (*TTcl_Parse)(unsafe.Pointer(parsePtr)).FcommandStart+uintptr((*TTcl_Parse)(unsafe.Pointer(parsePtr)).FcommandSize)-uintptr(1) {
 				(*TCmdFrame)(unsafe.Pointer(eeFramePtr)).Flen1--
 			}
-			(*TCmdFrame)(unsafe.Pointer(eeFramePtr)).Fnline = int32(int32(objectsUsed))
+			(*TCmdFrame)(unsafe.Pointer(eeFramePtr)).Fnline = int32(objectsUsed)
 			(*TCmdFrame)(unsafe.Pointer(eeFramePtr)).Fline = lines
-			XTclArgumentEnter(tls, interp, objv, int32(int32(objectsUsed)), eeFramePtr)
-			code = XTcl_EvalObjv(tls, interp, int32(int32(objectsUsed)), objv, libc.Int32FromInt32(m_TCL_EVAL_NOERR)|libc.Int32FromInt32(m_TCL_EVAL_SOURCE_IN_FRAME))
-			XTclArgumentRelease(tls, interp, objv, int32(int32(objectsUsed)))
+			XTclArgumentEnter(tls, interp, objv, int32(objectsUsed), eeFramePtr)
+			code = XTcl_EvalObjv(tls, interp, int32(objectsUsed), objv, libc.Int32FromInt32(m_TCL_EVAL_NOERR)|libc.Int32FromInt32(m_TCL_EVAL_SOURCE_IN_FRAME))
+			XTclArgumentRelease(tls, interp, objv, int32(objectsUsed))
 			(*TCmdFrame)(unsafe.Pointer(eeFramePtr)).Fline = libc.UintptrFromInt32(0)
 			(*TCmdFrame)(unsafe.Pointer(eeFramePtr)).Fnline = 0
 			if (*TCmdFrame)(unsafe.Pointer(eeFramePtr)).FcmdObj != 0 {
 				_objPtr2 = (*TCmdFrame)(unsafe.Pointer(eeFramePtr)).FcmdObj
-				v19 = _objPtr2
-				v18 = *(*int32)(unsafe.Pointer(v19))
-				*(*int32)(unsafe.Pointer(v19))--
-				if v18 <= int32(1) {
+				v20 = _objPtr2
+				v19 = *(*int32)(unsafe.Pointer(v20))
+				*(*int32)(unsafe.Pointer(v20))--
+				if v19 <= int32(1) {
 					XTclFreeObj(tls, _objPtr2)
 				}
 				(*TCmdFrame)(unsafe.Pointer(eeFramePtr)).FcmdObj = libc.UintptrFromInt32(0)
@@ -31702,14 +31794,14 @@ func XTclEvalEx(tls *libc.TLS, interp uintptr, script uintptr, numBytes int32, f
 					break
 				}
 				_objPtr3 = *(*uintptr)(unsafe.Pointer(objv + uintptr(i)*8))
-				v22 = _objPtr3
-				v21 = *(*int32)(unsafe.Pointer(v22))
-				*(*int32)(unsafe.Pointer(v22))--
-				if v21 <= int32(1) {
+				v23 = _objPtr3
+				v22 = *(*int32)(unsafe.Pointer(v23))
+				*(*int32)(unsafe.Pointer(v23))--
+				if v22 <= int32(1) {
 					XTclFreeObj(tls, _objPtr3)
 				}
-				goto _20
-			_20:
+				goto _21
+			_21:
 				i++
 			}
 			objectsUsed = uint32(0)
@@ -31735,7 +31827,7 @@ func XTclEvalEx(tls *libc.TLS, interp uintptr, script uintptr, numBytes int32, f
 		 * executed command.
 		 */
 		next = (*TTcl_Parse)(unsafe.Pointer(parsePtr)).FcommandStart + uintptr((*TTcl_Parse)(unsafe.Pointer(parsePtr)).FcommandSize)
-		bytesLeft = int32(int64(bytesLeft) - (int64(int64(next)) - int64(int64(p))))
+		bytesLeft = int32(int64(bytesLeft) - (int64(next) - int64(p)))
 		p = next
 		XTclAdvanceLines(tls, bp, (*TTcl_Parse)(unsafe.Pointer(parsePtr)).FcommandStart, p)
 		XTcl_FreeParse(tls, parsePtr)
@@ -31781,14 +31873,14 @@ posterror:
 			break
 		}
 		_objPtr4 = *(*uintptr)(unsafe.Pointer(objv + uintptr(i)*8))
-		v25 = _objPtr4
-		v24 = *(*int32)(unsafe.Pointer(v25))
-		*(*int32)(unsafe.Pointer(v25))--
-		if v24 <= int32(1) {
+		v26 = _objPtr4
+		v25 = *(*int32)(unsafe.Pointer(v26))
+		*(*int32)(unsafe.Pointer(v26))--
+		if v25 <= int32(1) {
 			XTclFreeObj(tls, _objPtr4)
 		}
-		goto _23
-	_23:
+		goto _24
+	_24:
 		i++
 	}
 	if gotParse != 0 {
@@ -31809,10 +31901,10 @@ cleanup_return:
 	(*TInterp)(unsafe.Pointer(iPtr)).FcmdFramePtr = (*TCmdFrame)(unsafe.Pointer((*TInterp)(unsafe.Pointer(iPtr)).FcmdFramePtr)).FnextPtr
 	if (*TCmdFrame)(unsafe.Pointer(eeFramePtr)).Ftype1 == int32(m_TCL_LOCATION_SOURCE) {
 		_objPtr5 = (*TCmdFrame)(unsafe.Pointer(eeFramePtr)).Fdata.Feval.Fpath
-		v27 = _objPtr5
-		v26 = *(*int32)(unsafe.Pointer(v27))
-		*(*int32)(unsafe.Pointer(v27))--
-		if v26 <= int32(1) {
+		v28 = _objPtr5
+		v27 = *(*int32)(unsafe.Pointer(v28))
+		*(*int32)(unsafe.Pointer(v28))--
+		if v27 <= int32(1) {
 			XTclFreeObj(tls, _objPtr5)
 		}
 	}
@@ -31934,7 +32026,7 @@ func XTclArgumentEnter(tls *libc.TLS, interp uintptr, objv uintptr, objc int32, 
 	defer tls.Free(16)
 	var cfwPtr, hPtr, iPtr uintptr
 	var i int32
-	var _ /* new at bp+0 */ int32
+	var _ /* isNew at bp+0 */ int32
 	_, _, _, _ = cfwPtr, hPtr, i, iPtr
 	iPtr = interp
 	i = int32(1)
@@ -31998,9 +32090,9 @@ func XTclArgumentEnter(tls *libc.TLS, interp uintptr, objv uintptr, objc int32, 
  */
 
 func XTclArgumentRelease(tls *libc.TLS, interp uintptr, objv uintptr, objc int32) {
-	var cfwPtr, hPtr, iPtr uintptr
-	var i int32
-	_, _, _, _ = cfwPtr, hPtr, i, iPtr
+	var cfwPtr, hPtr, iPtr, v3 uintptr
+	var i, v2 int32
+	_, _, _, _, _, _ = cfwPtr, hPtr, i, iPtr, v2, v3
 	iPtr = interp
 	i = int32(1)
 	for {
@@ -32012,8 +32104,10 @@ func XTclArgumentRelease(tls *libc.TLS, interp uintptr, objv uintptr, objc int32
 			goto _1
 		}
 		cfwPtr = (*TTcl_HashEntry)(unsafe.Pointer(hPtr)).FclientData
-		(*TCFWord)(unsafe.Pointer(cfwPtr)).FrefCount--
-		if (*TCFWord)(unsafe.Pointer(cfwPtr)).FrefCount > 0 {
+		v3 = cfwPtr + 12
+		v2 = *(*int32)(unsafe.Pointer(v3))
+		*(*int32)(unsafe.Pointer(v3))--
+		if v2 > int32(1) {
 			goto _1
 		}
 		XTclpFree(tls, cfwPtr)
@@ -32049,7 +32143,7 @@ func XTclArgumentBCEnter(tls *libc.TLS, interp uintptr, objv uintptr, objc int32
 	defer tls.Free(16)
 	var cfwPtr, ePtr, eclPtr, hPtr, hePtr, iPtr, lastPtr uintptr
 	var word int32
-	var _ /* isnew at bp+0 */ int32
+	var _ /* isNew at bp+0 */ int32
 	_, _, _, _, _, _, _, _ = cfwPtr, ePtr, eclPtr, hPtr, hePtr, iPtr, lastPtr, word
 	lastPtr = libc.UintptrFromInt32(0)
 	iPtr = interp
@@ -32383,7 +32477,7 @@ func XTclNREvalObjEx(tls *libc.TLS, interp uintptr, objPtr uintptr, flags int32,
 		/*
 		 * Shimmer protection! Always pass an unshared obj. The caller could
 		 * incr the refCount of objPtr AFTER calling us! To be completely safe
-		 * we always make a copy. The callback takes care od the refCounts for
+		 * we always make a copy. The callback takes care of the refCounts for
 		 * both listPtr and objPtr.
 		 *
 		 * TODO: Create a test to demo this need, or eliminate it.
@@ -33315,7 +33409,6 @@ func XTcl_VarEvalVA(tls *libc.TLS, interp uintptr, argList Tva_list) (r int32) {
 //	 *
 //	 *----------------------------------------------------------------------
 //	 */
-//	/* ARGSUSED */
 func XTcl_VarEval(tls *libc.TLS, interp uintptr, va uintptr) (r int32) {
 	var argList Tva_list
 	var result int32
@@ -33958,9 +34051,9 @@ func _ExprWideFunc(tls *libc.TLS, clientData TClientData, interp uintptr, objc i
 func _ExprRandFunc(tls *libc.TLS, clientData TClientData, interp uintptr, objc int32, objv uintptr) (r int32) {
 	/* Actual parameter vector. */
 	var dResult float64
-	var iPtr, oResult, p1 uintptr
+	var iPtr, oResult uintptr
 	var tmp int64
-	_, _, _, _, _ = dResult, iPtr, oResult, tmp, p1
+	_, _, _, _ = dResult, iPtr, oResult, tmp
 	iPtr = interp
 	if objc != int32(1) {
 		_MathFuncWrongNumArgs(tls, interp, int32(1), objc, objv)
@@ -33972,12 +34065,11 @@ func _ExprRandFunc(tls *libc.TLS, clientData TClientData, interp uintptr, objc i
 		 * To ensure different seeds in different threads (bug #416643),
 		 * take into consideration the thread this interp is running in.
 		 */
-		(*TInterp)(unsafe.Pointer(iPtr)).FrandSeed = int64(XTclpGetClicks(tls) + uint64(int32(int64(XTcl_GetCurrentThread(tls)))<<libc.Int32FromInt32(12)))
+		(*TInterp)(unsafe.Pointer(iPtr)).FrandSeed = int64(XTclpGetClicks(tls) + uint64(uint32(uint64(XTcl_GetCurrentThread(tls)))*uint32(4093)))
 		/*
 		 * Make sure 1 <= randSeed <= (2^31) - 2. See below.
 		 */
-		p1 = iPtr + 432
-		*(*int64)(unsafe.Pointer(p1)) = int64(uint64(*(*int64)(unsafe.Pointer(p1))) & libc.Uint64FromInt32(0x7FFFFFFF))
+		*(*int64)(unsafe.Pointer(iPtr + 432)) &= int64(0x7FFFFFFF)
 		if (*TInterp)(unsafe.Pointer(iPtr)).FrandSeed == 0 || (*TInterp)(unsafe.Pointer(iPtr)).FrandSeed == int64(0x7FFFFFFF) {
 			*(*int64)(unsafe.Pointer(iPtr + 432)) ^= int64(123459876)
 		}
@@ -34065,7 +34157,7 @@ func _ExprRoundFunc(tls *libc.TLS, clientData TClientData, interp uintptr, objc 
 				max--
 			}
 		}
-		if *(*float64)(unsafe.Pointer(bp + 24)) >= float64(float64(max)) || *(*float64)(unsafe.Pointer(bp + 24)) <= float64(float64(min)) {
+		if *(*float64)(unsafe.Pointer(bp + 24)) >= float64(max) || *(*float64)(unsafe.Pointer(bp + 24)) <= float64(min) {
 			if XTcl_InitBignumFromDouble(tls, interp, *(*float64)(unsafe.Pointer(bp + 24)), bp+32) != m_TCL_OK {
 				/* Infinity */
 				return int32(m_TCL_ERROR)
@@ -34512,15 +34604,27 @@ func XTclNRTailcallObjCmd(tls *libc.TLS, clientData TClientData, interp uintptr,
 func XTclNRTailcallEval(tls *libc.TLS, data uintptr, interp uintptr, result int32) (r int32) {
 	bp := tls.Alloc(32)
 	defer tls.Free(32)
-	var _callbackPtr, _objPtr, _objPtr1, iPtr, listPtr, nsObjPtr, v2 uintptr
-	var v1 int32
+	var _callbackPtr, _objPtr, _objPtr1, iPtr, listPtr, nsObjPtr, v3 uintptr
+	var v2 int32
 	var _ /* nsPtr at bp+0 */ uintptr
 	var _ /* objc at bp+8 */ int32
 	var _ /* objv at bp+16 */ uintptr
-	_, _, _, _, _, _, _, _ = _callbackPtr, _objPtr, _objPtr1, iPtr, listPtr, nsObjPtr, v1, v2
+	_, _, _, _, _, _, _, _ = _callbackPtr, _objPtr, _objPtr1, iPtr, listPtr, nsObjPtr, v2, v3
 	iPtr = interp
 	listPtr = *(*TClientData)(unsafe.Pointer(data))
-	XTcl_ListObjGetElements(tls, interp, listPtr, bp+8, bp+16)
+	if (*TTcl_Obj)(unsafe.Pointer(listPtr)).FtypePtr == uintptr(unsafe.Pointer(&XtclListType)) {
+		*(*uintptr)(unsafe.Pointer(bp + 16)) = (*(*struct {
+			Fptr1 uintptr
+			Fptr2 uintptr
+		})(unsafe.Pointer(listPtr + 32))).Fptr1 + 16
+		*(*int32)(unsafe.Pointer(bp + 8)) = (*TList)(unsafe.Pointer((*(*struct {
+			Fptr1 uintptr
+			Fptr2 uintptr
+		})(unsafe.Pointer(listPtr + 32))).Fptr1)).FelemCount
+		_ = libc.Int32FromInt32(m_TCL_OK)
+	} else {
+		XTcl_ListObjGetElements(tls, interp, listPtr, bp+8, bp+16)
+	}
 	nsObjPtr = *(*uintptr)(unsafe.Pointer(*(*uintptr)(unsafe.Pointer(bp + 16))))
 	if result == m_TCL_OK {
 		result = XTclGetNamespaceFromObj(tls, interp, nsObjPtr, bp)
@@ -34531,10 +34635,10 @@ func XTclNRTailcallEval(tls *libc.TLS, data uintptr, interp uintptr, result int3
 		 * a now-gone namespace: cleanup and return.
 		 */
 		_objPtr = listPtr
-		v2 = _objPtr
-		v1 = *(*int32)(unsafe.Pointer(v2))
-		*(*int32)(unsafe.Pointer(v2))--
-		if v1 <= int32(1) {
+		v3 = _objPtr
+		v2 = *(*int32)(unsafe.Pointer(v3))
+		*(*int32)(unsafe.Pointer(v3))--
+		if v2 <= int32(1) {
 			XTclFreeObj(tls, _objPtr)
 		}
 		return result
@@ -34843,12 +34947,13 @@ func _NRCoroutineExitCallback(tls *libc.TLS, data uintptr, interp uintptr, resul
 func XTclNRCoroutineActivateCallback(tls *libc.TLS, data uintptr, interp uintptr, result int32) (r int32) {
 	bp := tls.Alloc(48)
 	defer tls.Free(48)
-	var _callbackPtr, _objPtr, corPtr uintptr
-	var numLevels, type1, unused int32
-	_, _, _, _, _, _ = _callbackPtr, _objPtr, corPtr, numLevels, type1, unused
+	var _callbackPtr, _objPtr, corPtr, stackLevel uintptr
+	var numLevels, type1 int32
+	var _ /* unused at bp+0 */ int32
+	_, _, _, _, _, _ = _callbackPtr, _objPtr, corPtr, numLevels, stackLevel, type1
 	corPtr = *(*TClientData)(unsafe.Pointer(data))
 	type1 = int32(int64(*(*TClientData)(unsafe.Pointer(data + 1*8))))
-	//ccgo: int *stackLevel = &unused;
+	stackLevel = bp
 	if !((*TCoroutineData)(unsafe.Pointer(corPtr)).FstackLevel != 0) {
 		/*
 		 * -- Coroutine is suspended --
@@ -34875,8 +34980,7 @@ func XTclNRCoroutineActivateCallback(tls *libc.TLS, data uintptr, interp uintptr
 		 * Record the stackLevel at which the resume is happening, then swap
 		 * the interp's environment to make it suitable to run this coroutine.
 		 */
-		//ccgo: corPtr->stackLevel = stackLevel;
-		(*TCoroutineData)(unsafe.Pointer(corPtr)).FstackLevel = corPtr
+		(*TCoroutineData)(unsafe.Pointer(corPtr)).FstackLevel = stackLevel
 		numLevels = (*TCoroutineData)(unsafe.Pointer(corPtr)).FauxNumLevels
 		(*TCoroutineData)(unsafe.Pointer(corPtr)).FauxNumLevels = (*TInterp)(unsafe.Pointer(interp)).FnumLevels
 		(*TCoroutineData)(unsafe.Pointer(corPtr)).Fcaller.FframePtr = (*TInterp)(unsafe.Pointer(interp)).FframePtr
@@ -34894,10 +34998,9 @@ func XTclNRCoroutineActivateCallback(tls *libc.TLS, data uintptr, interp uintptr
 		/*
 		 * Coroutine is active: yield
 		 */
-		//ccgo: if (corPtr->stackLevel != stackLevel) {
-		if (*TCoroutineData)(unsafe.Pointer(corPtr)).FstackLevel != corPtr {
+		if (*TCoroutineData)(unsafe.Pointer(corPtr)).FstackLevel != stackLevel {
 			XTcl_SetObjResult(tls, interp, XTcl_NewStringObj(tls, ts+8648, -int32(1)))
-			XTcl_SetErrorCode(tls, interp, libc.VaList(bp+8, ts+3490, ts+8509, ts+8675, libc.UintptrFromInt32(0)))
+			XTcl_SetErrorCode(tls, interp, libc.VaList(bp+16, ts+3490, ts+8509, ts+8675, libc.UintptrFromInt32(0)))
 			return int32(m_TCL_ERROR)
 		}
 		if type1 == int32(int64(libc.UintptrFromInt32(0))) {
@@ -35792,10 +35895,10 @@ func XTcl_SetByteArrayObj(tls *libc.TLS, objPtr uintptr, bytes uintptr, length i
 		length = 0
 	}
 	byteArrayPtr = XTcl_Alloc(tls, uint32(int32(uint64(libc.UintptrFromInt32(0)+8)))+uint32(length))
-	(*TByteArray)(unsafe.Pointer(byteArrayPtr)).Fused = uint32(uint32(length))
-	(*TByteArray)(unsafe.Pointer(byteArrayPtr)).Fallocated = uint32(uint32(length))
+	(*TByteArray)(unsafe.Pointer(byteArrayPtr)).Fused = uint32(length)
+	(*TByteArray)(unsafe.Pointer(byteArrayPtr)).Fallocated = uint32(length)
 	if bytes != libc.UintptrFromInt32(0) && length > 0 {
-		libc.Xmemcpy(tls, byteArrayPtr+8, bytes, uint64(uint64(length)))
+		libc.Xmemcpy(tls, byteArrayPtr+8, bytes, uint64(length))
 	}
 	(*TTcl_Obj)(unsafe.Pointer(objPtr)).FtypePtr = uintptr(unsafe.Pointer(&XtclByteArrayType))
 	(*(*struct {
@@ -35880,9 +35983,9 @@ func XTcl_SetByteArrayLength(tls *libc.TLS, objPtr uintptr, length int32) (r uin
 		Fptr1 uintptr
 		Fptr2 uintptr
 	})(unsafe.Pointer(objPtr + 32))).Fptr1
-	if uint32(uint32(length)) > (*TByteArray)(unsafe.Pointer(byteArrayPtr)).Fallocated {
+	if uint32(length) > (*TByteArray)(unsafe.Pointer(byteArrayPtr)).Fallocated {
 		byteArrayPtr = XTcl_Realloc(tls, byteArrayPtr, uint32(int32(uint64(libc.UintptrFromInt32(0)+8)))+uint32(length))
-		(*TByteArray)(unsafe.Pointer(byteArrayPtr)).Fallocated = uint32(uint32(length))
+		(*TByteArray)(unsafe.Pointer(byteArrayPtr)).Fallocated = uint32(length)
 		(*(*struct {
 			Fptr1 uintptr
 			Fptr2 uintptr
@@ -35895,7 +35998,7 @@ func XTcl_SetByteArrayLength(tls *libc.TLS, objPtr uintptr, length int32) (r uin
 		}
 		(*TTcl_Obj)(unsafe.Pointer(_isobjPtr)).Fbytes = libc.UintptrFromInt32(0)
 	}
-	(*TByteArray)(unsafe.Pointer(byteArrayPtr)).Fused = uint32(uint32(length))
+	(*TByteArray)(unsafe.Pointer(byteArrayPtr)).Fused = uint32(length)
 	return byteArrayPtr + 8
 }
 
@@ -35952,7 +36055,7 @@ func _SetByteArrayFromAny(tls *libc.TLS, interp uintptr, objPtr uintptr) (r int3
 			goto _2
 		_2:
 		}
-		(*TByteArray)(unsafe.Pointer(byteArrayPtr)).Fused = uint32(int64(int64(dst)) - t__predefined_ptrdiff_t(byteArrayPtr+8))
+		(*TByteArray)(unsafe.Pointer(byteArrayPtr)).Fused = uint32(int64(dst) - t__predefined_ptrdiff_t(byteArrayPtr+8))
 		(*TByteArray)(unsafe.Pointer(byteArrayPtr)).Fallocated = uint32(*(*int32)(unsafe.Pointer(bp)))
 		if (*TTcl_Obj)(unsafe.Pointer(objPtr)).FtypePtr != libc.UintptrFromInt32(0) {
 			if (*TTcl_ObjType)(unsafe.Pointer((*TTcl_Obj)(unsafe.Pointer(objPtr)).FtypePtr)).FfreeIntRepProc != libc.UintptrFromInt32(0) {
@@ -36025,7 +36128,7 @@ func _DupByteArrayInternalRep(tls *libc.TLS, srcPtr uintptr, copyPtr uintptr) {
 	copyArrayPtr = XTcl_Alloc(tls, uint32(int32(uint64(libc.UintptrFromInt32(0)+8)))+length)
 	(*TByteArray)(unsafe.Pointer(copyArrayPtr)).Fused = length
 	(*TByteArray)(unsafe.Pointer(copyArrayPtr)).Fallocated = length
-	libc.Xmemcpy(tls, copyArrayPtr+8, srcArrayPtr+8, uint64(uint64(length)))
+	libc.Xmemcpy(tls, copyArrayPtr+8, srcArrayPtr+8, uint64(length))
 	(*(*struct {
 		Fptr1 uintptr
 		Fptr2 uintptr
@@ -36089,9 +36192,9 @@ func _UpdateStringOfByteArray(tls *libc.TLS, objPtr uintptr) {
 	}
 	dst = XTcl_Alloc(tls, size+libc.Uint32FromUint32(1))
 	(*TTcl_Obj)(unsafe.Pointer(objPtr)).Fbytes = dst
-	(*TTcl_Obj)(unsafe.Pointer(objPtr)).Flength = int32(int32(size))
+	(*TTcl_Obj)(unsafe.Pointer(objPtr)).Flength = int32(size)
 	if size == length {
-		libc.Xmemcpy(tls, dst, src, uint64(uint64(size)))
+		libc.Xmemcpy(tls, dst, src, uint64(size))
 		*(*int8)(unsafe.Pointer(dst + uintptr(size))) = int8('\000')
 	} else {
 		i = uint32(0)
@@ -36153,10 +36256,10 @@ func XTclAppendBytesToByteArray(tls *libc.TLS, objPtr uintptr, bytes uintptr, le
 		Fptr1 uintptr
 		Fptr2 uintptr
 	})(unsafe.Pointer(objPtr + 32))).Fptr1
-	if uint32(uint32(len1)) > uint32(m_INT_MAX)-(*TByteArray)(unsafe.Pointer(byteArrayPtr)).Fused {
+	if uint32(len1) > uint32(m_INT_MAX)-(*TByteArray)(unsafe.Pointer(byteArrayPtr)).Fused {
 		XTcl_Panic(tls, ts+9291, libc.VaList(bp+8, int32(m_INT_MAX)))
 	}
-	needed = (*TByteArray)(unsafe.Pointer(byteArrayPtr)).Fused + uint32(uint32(len1))
+	needed = (*TByteArray)(unsafe.Pointer(byteArrayPtr)).Fused + uint32(len1)
 	/*
 	 * If we need to, resize the allocated space in the byte array.
 	 */
@@ -36181,7 +36284,7 @@ func XTclAppendBytesToByteArray(tls *libc.TLS, objPtr uintptr, bytes uintptr, le
 				v1 = extra
 			}
 			growth = int32(v1)
-			attempt = needed + uint32(uint32(growth))
+			attempt = needed + uint32(growth)
 			ptr = XTclpRealloc(tls, byteArrayPtr, uint32(int32(uint64(libc.UintptrFromInt32(0)+8)))+attempt)
 		}
 		if ptr == libc.UintptrFromInt32(0) {
@@ -36199,9 +36302,9 @@ func XTclAppendBytesToByteArray(tls *libc.TLS, objPtr uintptr, bytes uintptr, le
 		})(unsafe.Pointer(objPtr + 32))).Fptr1 = byteArrayPtr
 	}
 	if bytes != 0 {
-		libc.Xmemcpy(tls, byteArrayPtr+8+uintptr((*TByteArray)(unsafe.Pointer(byteArrayPtr)).Fused), bytes, uint64(uint64(len1)))
+		libc.Xmemcpy(tls, byteArrayPtr+8+uintptr((*TByteArray)(unsafe.Pointer(byteArrayPtr)).Fused), bytes, uint64(len1))
 	}
-	*(*uint32)(unsafe.Pointer(byteArrayPtr)) += uint32(uint32(len1))
+	*(*uint32)(unsafe.Pointer(byteArrayPtr)) += uint32(len1)
 	_isobjPtr = objPtr
 	if (*TTcl_Obj)(unsafe.Pointer(_isobjPtr)).Fbytes != libc.UintptrFromInt32(0) {
 		if (*TTcl_Obj)(unsafe.Pointer(_isobjPtr)).Fbytes != XtclEmptyStringRep {
@@ -36572,7 +36675,7 @@ func _BinaryFormatCmd(tls *libc.TLS, dummy TClientData, interp uintptr, objc int
 				libc.Xmemcpy(tls, *(*uintptr)(unsafe.Pointer(bp + 24)), bytes, uint64(*(*int32)(unsafe.Pointer(bp + 4))))
 			} else {
 				libc.Xmemcpy(tls, *(*uintptr)(unsafe.Pointer(bp + 24)), bytes, uint64(*(*int32)(unsafe.Pointer(bp + 32))))
-				libc.Xmemset(tls, *(*uintptr)(unsafe.Pointer(bp + 24))+uintptr(*(*int32)(unsafe.Pointer(bp + 32))), int32(int32(pad)), uint64(*(*int32)(unsafe.Pointer(bp + 4))-*(*int32)(unsafe.Pointer(bp + 32))))
+				libc.Xmemset(tls, *(*uintptr)(unsafe.Pointer(bp + 24))+uintptr(*(*int32)(unsafe.Pointer(bp + 32))), int32(pad), uint64(*(*int32)(unsafe.Pointer(bp + 4))-*(*int32)(unsafe.Pointer(bp + 32))))
 			}
 			*(*uintptr)(unsafe.Pointer(bp + 24)) += uintptr(*(*int32)(unsafe.Pointer(bp + 4)))
 		case int32('b'):
@@ -36732,7 +36835,7 @@ func _BinaryFormatCmd(tls *libc.TLS, dummy TClientData, interp uintptr, objc int
 					if offset%int32(2) != 0 {
 						v48 = *(*uintptr)(unsafe.Pointer(bp + 24))
 						*(*uintptr)(unsafe.Pointer(bp + 24))++
-						*(*uint8)(unsafe.Pointer(v48)) = uint8(int8(int8(value)))
+						*(*uint8)(unsafe.Pointer(v48)) = uint8(int8(value))
 						value = 0
 					}
 					goto _45
@@ -36881,7 +36984,7 @@ func _BinaryFormatCmd(tls *libc.TLS, dummy TClientData, interp uintptr, objc int
 			if *(*int32)(unsafe.Pointer(bp + 4)) == -int32(2) {
 				*(*int32)(unsafe.Pointer(bp + 4)) = int32(1)
 			}
-			if *(*int32)(unsafe.Pointer(bp + 4)) == -int32(1) || int64(*(*int32)(unsafe.Pointer(bp + 4))) > int64(*(*uintptr)(unsafe.Pointer(bp + 24)))-int64(int64(buffer)) {
+			if *(*int32)(unsafe.Pointer(bp + 4)) == -int32(1) || int64(*(*int32)(unsafe.Pointer(bp + 4))) > int64(*(*uintptr)(unsafe.Pointer(bp + 24)))-int64(buffer) {
 				*(*uintptr)(unsafe.Pointer(bp + 24)) = buffer
 			} else {
 				*(*uintptr)(unsafe.Pointer(bp + 24)) -= uintptr(*(*int32)(unsafe.Pointer(bp + 4)))
@@ -37454,7 +37557,7 @@ func _GetFormatSpec(tls *libc.TLS, formatPtr uintptr, cmdPtr uintptr, countPtr u
 			if *(*int32)(unsafe.Pointer(libc.X__errno_location(tls))) != 0 || count > libc.Uint64FromInt32(m_INT_MAX) {
 				*(*int32)(unsafe.Pointer(countPtr)) = int32(m_INT_MAX)
 			} else {
-				*(*int32)(unsafe.Pointer(countPtr)) = int32(int32(count))
+				*(*int32)(unsafe.Pointer(countPtr)) = int32(count)
 			}
 		} else {
 			*(*int32)(unsafe.Pointer(countPtr)) = -int32(2)
@@ -37571,7 +37674,7 @@ func _CopyNumber(tls *libc.TLS, from uintptr, to uintptr, length uint32, type1 i
 	_, _, _, _, _, _ = fromPtr, fromPtr1, fromPtr2, toPtr, toPtr1, toPtr2
 	switch _NeedReversing(tls, type1) {
 	case 0:
-		libc.Xmemcpy(tls, to, from, uint64(uint64(length)))
+		libc.Xmemcpy(tls, to, from, uint64(length))
 	case int32(1):
 		fromPtr = from
 		toPtr = to
@@ -38015,7 +38118,7 @@ _5:
 	 * 32bit signed and unsigned in the hash (short and char are ok).
 	 */
 	if flags&int32(m_BINARY_UNSIGNED) != 0 {
-		return XTcl_NewWideIntObj(tls, int64(uint64(uint64(value))))
+		return XTcl_NewWideIntObj(tls, int64(uint64(value)))
 	}
 	if value&int64(libc.Uint32FromInt32(1)<<libc.Int32FromInt32(31)) != 0 && value > 0 {
 		value -= int64(libc.Uint32FromInt32(1) << libc.Int32FromInt32(31))
@@ -38066,7 +38169,7 @@ _8:
 		bigObj = XTcl_NewBignumObj(tls, bp+24)
 		return bigObj
 	}
-	return XTcl_NewWideIntObj(tls, int64(int64(uwvalue)))
+	return XTcl_NewWideIntObj(tls, int64(uwvalue))
 	/*
 	 * Do not cache double values; they are already too large to use as
 	 * keys and the values stored are utterly incompatible with the
@@ -38319,8 +38422,8 @@ func _BinaryDecodeHex(tls *libc.TLS, clientData TClientData, interp uintptr, obj
 			v7 = data
 			data++
 			c = *(*uint8)(unsafe.Pointer(v7))
-			if !(libc.Xisxdigit(tls, int32(int32(c))) != 0) {
-				if strict != 0 || !(XTclIsSpaceProc(tls, int32(int32(c))) != 0) {
+			if !(libc.Xisxdigit(tls, int32(c)) != 0) {
+				if strict != 0 || !(XTclIsSpaceProc(tls, int32(c)) != 0) {
 					goto badChar
 				}
 				i--
@@ -38328,13 +38431,13 @@ func _BinaryDecodeHex(tls *libc.TLS, clientData TClientData, interp uintptr, obj
 			}
 			value <<= int32(4)
 			c = uint8(int32(c) - libc.Int32FromUint8('0'))
-			if int32(int32(c)) > int32(9) {
+			if int32(c) > int32(9) {
 				c = uint8(int32(c) + (libc.Int32FromUint8('0') - libc.Int32FromUint8('A') + libc.Int32FromInt32(10)))
 			}
-			if int32(int32(c)) > int32(16) {
+			if int32(c) > int32(16) {
 				c = uint8(int32(c) + (libc.Int32FromUint8('A') - libc.Int32FromUint8('a')))
 			}
-			value |= int32(int32(c)) & int32(0xF)
+			value |= int32(c) & int32(0xF)
 			goto _6
 		_6:
 			i++
@@ -38350,12 +38453,12 @@ func _BinaryDecodeHex(tls *libc.TLS, clientData TClientData, interp uintptr, obj
 	if cut > size {
 		cut = size
 	}
-	XTcl_SetByteArrayLength(tls, resultObj, int32(int64(int64(cursor))-int64(int64(begin))-int64(int64(cut))))
+	XTcl_SetByteArrayLength(tls, resultObj, int32(int64(cursor)-int64(begin)-int64(cut)))
 	XTcl_SetObjResult(tls, interp, resultObj)
 	return m_TCL_OK
 badChar:
 	if pure != 0 {
-		*(*TTcl_UniChar)(unsafe.Pointer(bp + 8)) = uint16(uint16(c))
+		*(*TTcl_UniChar)(unsafe.Pointer(bp + 8)) = uint16(c)
 	} else {
 		if int32(uint8(*(*int8)(unsafe.Pointer(data - libc.UintptrFromInt32(1))))) < int32(0x80) {
 			*(*TTcl_UniChar)(unsafe.Pointer(bp + 8)) = uint16(uint8(*(*int8)(unsafe.Pointer(data - libc.UintptrFromInt32(1)))))
@@ -38382,7 +38485,7 @@ badChar:
 			XTclFreeObj(tls, resultObj)
 		}
 	}
-	XTcl_SetObjResult(tls, interp, XTcl_ObjPrintf(tls, ts+9820, libc.VaList(bp+24, int32(*(*TTcl_UniChar)(unsafe.Pointer(bp + 8))), int32(int64(int64(data))-int64(int64(datastart))-libc.Int64FromInt32(1)))))
+	XTcl_SetObjResult(tls, interp, XTcl_ObjPrintf(tls, ts+9820, libc.VaList(bp+24, int32(*(*TTcl_UniChar)(unsafe.Pointer(bp + 8))), int32(int64(data)-int64(datastart)-libc.Int64FromInt32(1)))))
 	XTcl_SetErrorCode(tls, interp, libc.VaList(bp+24, ts+3490, ts+9866, ts+9873, ts+9880, libc.UintptrFromInt32(0)))
 	return int32(m_TCL_ERROR)
 }
@@ -38822,7 +38925,7 @@ func _BinaryEncodeUu(tls *libc.TLS, clientData TClientData, interp uintptr, objc
 	/*
 	 * Fix the length of the output bytearray.
 	 */
-	XTcl_SetByteArrayLength(tls, resultObj, int32(int64(int64(cursor))-int64(int64(start))))
+	XTcl_SetByteArrayLength(tls, resultObj, int32(int64(cursor)-int64(start)))
 	XTcl_SetObjResult(tls, interp, resultObj)
 	return m_TCL_OK
 }
@@ -38930,14 +39033,14 @@ func _BinaryDecodeUu(tls *libc.TLS, clientData TClientData, interp uintptr, objc
 			v6 = data
 			data++
 			c = *(*uint8)(unsafe.Pointer(v6))
-			if int32(int32(c)) < int32(32) || int32(int32(c)) > int32(96) {
-				if strict != 0 || !(XTclIsSpaceProc(tls, int32(int32(c))) != 0) {
+			if int32(c) < int32(32) || int32(c) > int32(96) {
+				if strict != 0 || !(XTclIsSpaceProc(tls, int32(c)) != 0) {
 					goto badUu
 				}
 				i--
 				continue
 			}
-			lineLen = (int32(int32(c)) - int32(32)) & int32(0x3F)
+			lineLen = (int32(c) - int32(32)) & int32(0x3F)
 		}
 		/*
 		 * Now we read a four-character grouping.
@@ -38953,12 +39056,12 @@ func _BinaryDecodeUu(tls *libc.TLS, clientData TClientData, interp uintptr, objc
 				v8 = *(*uint8)(unsafe.Pointer(v9))
 				c = v8
 				d[i] = int8(v8)
-				if int32(int32(c)) < int32(32) || int32(int32(c)) > int32(96) {
+				if int32(c) < int32(32) || int32(c) > int32(96) {
 					if strict != 0 {
-						if !(XTclIsSpaceProc(tls, int32(int32(c))) != 0) {
+						if !(XTclIsSpaceProc(tls, int32(c)) != 0) {
 							goto badUu
 						} else {
-							if int32(int32(c)) == int32('\n') {
+							if int32(c) == int32('\n') {
 								goto shortUu
 							}
 						}
@@ -39004,14 +39107,14 @@ func _BinaryDecodeUu(tls *libc.TLS, clientData TClientData, interp uintptr, objc
 				v15 = data
 				data++
 				c = *(*uint8)(unsafe.Pointer(v15))
-				if int32(int32(c)) == int32('\n') {
+				if int32(c) == int32('\n') {
 					break
 				} else {
-					if int32(int32(c)) >= int32(32) && int32(int32(c)) <= int32(96) {
+					if int32(c) >= int32(32) && int32(c) <= int32(96) {
 						data--
 						break
 					} else {
-						if strict != 0 || !(XTclIsSpaceProc(tls, int32(int32(c))) != 0) {
+						if strict != 0 || !(XTclIsSpaceProc(tls, int32(c)) != 0) {
 							goto badUu
 						}
 					}
@@ -39025,7 +39128,7 @@ func _BinaryDecodeUu(tls *libc.TLS, clientData TClientData, interp uintptr, objc
 	if lineLen > 0 && strict != 0 {
 		goto shortUu
 	}
-	XTcl_SetByteArrayLength(tls, resultObj, int32(int64(int64(cursor))-int64(int64(begin))))
+	XTcl_SetByteArrayLength(tls, resultObj, int32(int64(cursor)-int64(begin)))
 	XTcl_SetObjResult(tls, interp, resultObj)
 	return m_TCL_OK
 shortUu:
@@ -39052,7 +39155,7 @@ shortUu:
 	return int32(m_TCL_ERROR)
 badUu:
 	if pure != 0 {
-		*(*TTcl_UniChar)(unsafe.Pointer(bp + 8)) = uint16(uint16(c))
+		*(*TTcl_UniChar)(unsafe.Pointer(bp + 8)) = uint16(c)
 	} else {
 		if int32(uint8(*(*int8)(unsafe.Pointer(data - libc.UintptrFromInt32(1))))) < int32(0x80) {
 			*(*TTcl_UniChar)(unsafe.Pointer(bp + 8)) = uint16(uint8(*(*int8)(unsafe.Pointer(data - libc.UintptrFromInt32(1)))))
@@ -39061,7 +39164,7 @@ badUu:
 			XTcl_UtfToUniChar(tls, data-libc.UintptrFromInt32(1), bp+8)
 		}
 	}
-	XTcl_SetObjResult(tls, interp, XTcl_ObjPrintf(tls, ts+10070, libc.VaList(bp+24, int32(*(*TTcl_UniChar)(unsafe.Pointer(bp + 8))), int32(int64(int64(data))-int64(int64(datastart))-libc.Int64FromInt32(1)))))
+	XTcl_SetObjResult(tls, interp, XTcl_ObjPrintf(tls, ts+10070, libc.VaList(bp+24, int32(*(*TTcl_UniChar)(unsafe.Pointer(bp + 8))), int32(int64(data)-int64(datastart)-libc.Int64FromInt32(1)))))
 	XTcl_SetErrorCode(tls, interp, libc.VaList(bp+24, ts+3490, ts+9866, ts+9873, ts+9880, libc.UintptrFromInt32(0)))
 	v20 = resultObj
 	v19 = *(*int32)(unsafe.Pointer(v20))
@@ -39222,7 +39325,7 @@ func _BinaryDecode64(tls *libc.TLS, clientData TClientData, interp uintptr, objc
 			 * input whitespace characters.
 			 */
 			if cut != 0 {
-				if int32(int32(c)) == int32('=') && i > int32(1) {
+				if int32(c) == int32('=') && i > int32(1) {
 					value <<= uint64(6)
 					cut++
 				} else {
@@ -39233,22 +39336,22 @@ func _BinaryDecode64(tls *libc.TLS, clientData TClientData, interp uintptr, objc
 					}
 				}
 			} else {
-				if int32(int32(c)) >= int32('A') && int32(int32(c)) <= int32('Z') {
-					value = value<<int32(6) | uint64((int32(int32(c))-libc.Int32FromUint8('A'))&libc.Int32FromInt32(0x3F))
+				if int32(c) >= int32('A') && int32(c) <= int32('Z') {
+					value = value<<int32(6) | uint64((int32(c)-libc.Int32FromUint8('A'))&libc.Int32FromInt32(0x3F))
 				} else {
-					if int32(int32(c)) >= int32('a') && int32(int32(c)) <= int32('z') {
-						value = value<<int32(6) | uint64((int32(int32(c))-libc.Int32FromUint8('a')+libc.Int32FromInt32(26))&libc.Int32FromInt32(0x3F))
+					if int32(c) >= int32('a') && int32(c) <= int32('z') {
+						value = value<<int32(6) | uint64((int32(c)-libc.Int32FromUint8('a')+libc.Int32FromInt32(26))&libc.Int32FromInt32(0x3F))
 					} else {
-						if int32(int32(c)) >= int32('0') && int32(int32(c)) <= int32('9') {
-							value = value<<int32(6) | uint64((int32(int32(c))-libc.Int32FromUint8('0')+libc.Int32FromInt32(52))&libc.Int32FromInt32(0x3F))
+						if int32(c) >= int32('0') && int32(c) <= int32('9') {
+							value = value<<int32(6) | uint64((int32(c)-libc.Int32FromUint8('0')+libc.Int32FromInt32(52))&libc.Int32FromInt32(0x3F))
 						} else {
-							if int32(int32(c)) == int32('+') {
+							if int32(c) == int32('+') {
 								value = value<<int32(6) | uint64(0x3E)
 							} else {
-								if int32(int32(c)) == int32('/') {
+								if int32(c) == int32('/') {
 									value = value<<int32(6) | uint64(0x3F)
 								} else {
-									if int32(int32(c)) == int32('=') && (!(strict != 0) || i > int32(1)) {
+									if int32(c) == int32('=') && (!(strict != 0) || i > int32(1)) {
 										/*
 										 * "=" and "a=" is rather bad64 error case in strict mode.
 										 */
@@ -39293,12 +39396,12 @@ func _BinaryDecode64(tls *libc.TLS, clientData TClientData, interp uintptr, objc
 			}
 		}
 	}
-	XTcl_SetByteArrayLength(tls, resultObj, int32(int64(int64(cursor))-int64(int64(begin))-int64(int64(cut))))
+	XTcl_SetByteArrayLength(tls, resultObj, int32(int64(cursor)-int64(begin)-int64(cut)))
 	XTcl_SetObjResult(tls, interp, resultObj)
 	return m_TCL_OK
 bad64:
 	if pure != 0 {
-		*(*TTcl_UniChar)(unsafe.Pointer(bp + 8)) = uint16(uint16(c))
+		*(*TTcl_UniChar)(unsafe.Pointer(bp + 8)) = uint16(c)
 	} else {
 		/* The decoder is byte-oriented. If we saw a byte that's not a
 		 * valid member of the base64 alphabet, it could be the lead byte
@@ -39311,7 +39414,7 @@ bad64:
 			XTcl_UtfToUniChar(tls, data-libc.UintptrFromInt32(1), bp+8)
 		}
 	}
-	XTcl_SetObjResult(tls, interp, XTcl_ObjPrintf(tls, ts+10117, libc.VaList(bp+24, int32(*(*TTcl_UniChar)(unsafe.Pointer(bp + 8))), int32(int64(int64(data))-int64(int64(datastart))-libc.Int64FromInt32(1)))))
+	XTcl_SetObjResult(tls, interp, XTcl_ObjPrintf(tls, ts+10117, libc.VaList(bp+24, int32(*(*TTcl_UniChar)(unsafe.Pointer(bp + 8))), int32(int64(data)-int64(datastart)-libc.Int64FromInt32(1)))))
 	XTcl_SetErrorCode(tls, interp, libc.VaList(bp+24, ts+3490, ts+9866, ts+9873, ts+9880, libc.UintptrFromInt32(0)))
 	v13 = resultObj
 	v12 = *(*int32)(unsafe.Pointer(v13))
@@ -45387,7 +45490,7 @@ func _StoreStatData(tls *libc.TLS, interp uintptr, varName uintptr, statPtr uint
 	}
 	(*TTcl_Obj)(unsafe.Pointer(field)).FtypePtr = libc.UintptrFromInt32(0)
 	(*TTcl_Obj)(unsafe.Pointer(field)).FrefCount++
-	value = XTcl_NewIntObj(tls, int32(int32(mode)))
+	value = XTcl_NewIntObj(tls, int32(mode))
 	if XTcl_ObjSetVar2(tls, interp, varName, field, value, int32(m_TCL_LEAVE_ERR_MSG)) == libc.UintptrFromInt32(0) {
 		v46 = field
 		v45 = *(*int32)(unsafe.Pointer(v46))
@@ -45447,7 +45550,7 @@ func _StoreStatData(tls *libc.TLS, interp uintptr, varName uintptr, statPtr uint
 	}
 	(*TTcl_Obj)(unsafe.Pointer(field)).FtypePtr = libc.UintptrFromInt32(0)
 	(*TTcl_Obj)(unsafe.Pointer(field)).FrefCount++
-	value = XTcl_NewStringObj(tls, _GetTypeFromMode(tls, int32(int32(mode))), -int32(1))
+	value = XTcl_NewStringObj(tls, _GetTypeFromMode(tls, int32(mode)), -int32(1))
 	if XTcl_ObjSetVar2(tls, interp, varName, field, value, int32(m_TCL_LEAVE_ERR_MSG)) == libc.UintptrFromInt32(0) {
 		v50 = field
 		v49 = *(*int32)(unsafe.Pointer(v50))
@@ -50236,7 +50339,7 @@ func XTcl_LsearchObjCmd(tls *libc.TLS, clientData TClientData, interp uintptr, o
 		XTcl_SetErrorCode(tls, interp, libc.VaList(bp+144, ts+3490, ts+7306, ts+14803, ts+14811, libc.UintptrFromInt32(0)))
 		return int32(m_TCL_ERROR)
 	}
-	if int32(mode) == 2 {
+	if mode == 2 {
 		/*
 		 * We can shimmer regexp/list if listv[i] == pattern, so get the
 		 * regexp rep before the list rep. First time round, omit the interp
@@ -50348,8 +50451,8 @@ func XTcl_LsearchObjCmd(tls *libc.TLS, clientData TClientData, interp uintptr, o
 	}
 	patObj = *(*uintptr)(unsafe.Pointer(objv + uintptr(objc-int32(1))*8))
 	patternBytes = libc.UintptrFromInt32(0)
-	if int32(mode) == 0 || int32(mode) == 3 {
-		switch int32(dataType) {
+	if mode == 0 || mode == 3 {
+		switch dataType {
 		case 0:
 			fallthrough
 		case 1:
@@ -50427,7 +50530,7 @@ func XTcl_LsearchObjCmd(tls *libc.TLS, clientData TClientData, interp uintptr, o
 	 */
 	*(*int32)(unsafe.Pointer(bp)) = -int32(1)
 	match = 0
-	if int32(mode) == 3 && !(allMatches != 0) && !(negatedMatch != 0) {
+	if mode == 3 && !(allMatches != 0) && !(negatedMatch != 0) {
 		/*
 		 * If the data is sorted, we can do a more intelligent search. Note
 		 * that there is no point in being smart when -all was specified; in
@@ -50447,7 +50550,7 @@ func XTcl_LsearchObjCmd(tls *libc.TLS, clientData TClientData, interp uintptr, o
 			} else {
 				itemPtr = *(*uintptr)(unsafe.Pointer(*(*uintptr)(unsafe.Pointer(bp + 112)) + uintptr(i)*8))
 			}
-			switch int32(dataType) {
+			switch dataType {
 			case 0:
 				if (*TTcl_Obj)(unsafe.Pointer(itemPtr)).Fbytes != 0 {
 					v29 = (*TTcl_Obj)(unsafe.Pointer(itemPtr)).Fbytes
@@ -50579,7 +50682,7 @@ func XTcl_LsearchObjCmd(tls *libc.TLS, clientData TClientData, interp uintptr, o
 			case 3:
 				fallthrough
 			case 0:
-				switch int32(dataType) {
+				switch dataType {
 				case 0:
 					if (*TTcl_Obj)(unsafe.Pointer(itemPtr)).Fbytes != 0 {
 						*(*int32)(unsafe.Pointer(bp + 12)) = (*TTcl_Obj)(unsafe.Pointer(itemPtr)).Flength
@@ -52365,8 +52468,8 @@ _7:
 					start = -int32(1)
 					end = -int32(1)
 				}
-				(*(*[2]uintptr)(unsafe.Pointer(bp + 48)))[0] = XTcl_NewLongObj(tls, int64(int64(start)))
-				(*(*[2]uintptr)(unsafe.Pointer(bp + 48)))[int32(1)] = XTcl_NewLongObj(tls, int64(int64(end)))
+				(*(*[2]uintptr)(unsafe.Pointer(bp + 48)))[0] = XTcl_NewLongObj(tls, int64(start))
+				(*(*[2]uintptr)(unsafe.Pointer(bp + 48)))[int32(1)] = XTcl_NewLongObj(tls, int64(end))
 				newPtr = XTcl_NewListObj(tls, int32(2), bp+48)
 			} else {
 				if i <= (*(*TTcl_RegExpInfo)(unsafe.Pointer(bp + 8))).Fnsubs && (*(*TTcl_RegExpIndices)(unsafe.Pointer((*(*TTcl_RegExpInfo)(unsafe.Pointer(bp + 8))).Fmatches + uintptr(i)*16))).Fend > 0 {
@@ -52675,13 +52778,13 @@ _7:
 				if !(wstring < wend) {
 					break
 				}
-				if (int32(*(*TTcl_UniChar)(unsafe.Pointer(wstring))) == int32(*(*TTcl_UniChar)(unsafe.Pointer(wsrc))) || nocase != 0 && int32(XTcl_UniCharToLower(tls, int32(*(*TTcl_UniChar)(unsafe.Pointer(wstring))))) == int32(int32(wsrclc))) && (*(*int32)(unsafe.Pointer(bp + 56)) == int32(1) || (*(*func(*libc.TLS, uintptr, uintptr, uint64) int32)(unsafe.Pointer(&struct{ uintptr }{strCmpFn})))(tls, wstring, wsrc, uint64(*(*int32)(unsafe.Pointer(bp + 56)))) == 0) {
+				if (int32(*(*TTcl_UniChar)(unsafe.Pointer(wstring))) == int32(*(*TTcl_UniChar)(unsafe.Pointer(wsrc))) || nocase != 0 && int32(XTcl_UniCharToLower(tls, int32(*(*TTcl_UniChar)(unsafe.Pointer(wstring))))) == int32(wsrclc)) && (*(*int32)(unsafe.Pointer(bp + 56)) == int32(1) || (*(*func(*libc.TLS, uintptr, uintptr, uint64) int32)(unsafe.Pointer(&struct{ uintptr }{strCmpFn})))(tls, wstring, wsrc, uint64(*(*int32)(unsafe.Pointer(bp + 56)))) == 0) {
 					if numMatches == 0 {
 						resultPtr = XTcl_NewUnicodeObj(tls, wstring, 0)
 						(*TTcl_Obj)(unsafe.Pointer(resultPtr)).FrefCount++
 					}
 					if p != wstring {
-						XTcl_AppendUnicodeToObj(tls, resultPtr, p, int32((int64(int64(wstring))-int64(int64(p)))/2))
+						XTcl_AppendUnicodeToObj(tls, resultPtr, p, int32((int64(wstring)-int64(p))/2))
 						p = wstring + uintptr(*(*int32)(unsafe.Pointer(bp + 56)))*2
 					} else {
 						p += uintptr(*(*int32)(unsafe.Pointer(bp + 56))) * 2
@@ -52695,7 +52798,7 @@ _7:
 				wstring += 2
 			}
 			if numMatches != 0 {
-				*(*int32)(unsafe.Pointer(bp)) = int32((int64(wfirstChar+uintptr(*(*int32)(unsafe.Pointer(bp)))*2) - int64(int64(p))) / 2)
+				*(*int32)(unsafe.Pointer(bp)) = int32((int64(wfirstChar+uintptr(*(*int32)(unsafe.Pointer(bp)))*2) - int64(p)) / 2)
 				wstring = p
 			}
 		}
@@ -52791,17 +52894,17 @@ _7:
 			if !(wsrc != wend) {
 				break
 			}
-			if int32(int32(ch)) == int32('&') {
+			if int32(ch) == int32('&') {
 				idx = 0
 			} else {
-				if int32(int32(ch)) == int32('\\') {
+				if int32(ch) == int32('\\') {
 					ch = *(*TTcl_UniChar)(unsafe.Pointer(wsrc + 1*2))
-					if int32(int32(ch)) >= int32('0') && int32(int32(ch)) <= int32('9') {
-						idx = int32(int32(ch)) - int32('0')
+					if int32(ch) >= int32('0') && int32(ch) <= int32('9') {
+						idx = int32(ch) - int32('0')
 					} else {
-						if int32(int32(ch)) == int32('\\') || int32(int32(ch)) == int32('&') {
+						if int32(ch) == int32('\\') || int32(ch) == int32('&') {
 							*(*TTcl_UniChar)(unsafe.Pointer(wsrc)) = ch
-							XTcl_AppendUnicodeToObj(tls, resultPtr, wfirstChar, int32((int64(int64(wsrc))-int64(int64(wfirstChar)))/2+int64(1)))
+							XTcl_AppendUnicodeToObj(tls, resultPtr, wfirstChar, int32((int64(wsrc)-int64(wfirstChar))/2+int64(1)))
 							*(*TTcl_UniChar)(unsafe.Pointer(wsrc)) = uint16('\\')
 							wfirstChar = wsrc + uintptr(2)*2
 							wsrc += 2
@@ -52815,7 +52918,7 @@ _7:
 				}
 			}
 			if wfirstChar != wsrc {
-				XTcl_AppendUnicodeToObj(tls, resultPtr, wfirstChar, int32((int64(int64(wsrc))-int64(int64(wfirstChar)))/2))
+				XTcl_AppendUnicodeToObj(tls, resultPtr, wfirstChar, int32((int64(wsrc)-int64(wfirstChar))/2))
 			}
 			if idx <= (*(*TTcl_RegExpInfo)(unsafe.Pointer(bp + 16))).Fnsubs {
 				subStart = int32((*(*TTcl_RegExpIndices)(unsafe.Pointer((*(*TTcl_RegExpInfo)(unsafe.Pointer(bp + 16))).Fmatches + uintptr(idx)*16))).Fstart)
@@ -52834,7 +52937,7 @@ _7:
 			ch = *(*TTcl_UniChar)(unsafe.Pointer(wsrc))
 		}
 		if wfirstChar != wsrc {
-			XTcl_AppendUnicodeToObj(tls, resultPtr, wfirstChar, int32((int64(int64(wsrc))-int64(int64(wfirstChar)))/2))
+			XTcl_AppendUnicodeToObj(tls, resultPtr, wfirstChar, int32((int64(wsrc)-int64(wfirstChar))/2))
 		}
 		if end == 0 {
 			/*
@@ -53212,7 +53315,7 @@ func XTcl_SplitObjCmd(tls *libc.TLS, dummy TClientData, interp uintptr, objc int
 					if !(v5 && v4 != libc.UintptrFromInt32(0)) {
 						break
 					}
-					objPtr = XTcl_NewStringObj(tls, stringPtr, int32(int64(int64(p))-int64(int64(stringPtr))))
+					objPtr = XTcl_NewStringObj(tls, stringPtr, int32(int64(p)-int64(stringPtr)))
 					XTcl_ListObjAppendElement(tls, libc.UintptrFromInt32(0), listPtr, objPtr)
 					stringPtr = p + uintptr(1)
 				}
@@ -53225,14 +53328,14 @@ func XTcl_SplitObjCmd(tls *libc.TLS, dummy TClientData, interp uintptr, objc int
 					Fptr2 uintptr
 				})(unsafe.Pointer(XtclFreeObjList + 32))).Fptr1
 				(*TTcl_Obj)(unsafe.Pointer(objPtr)).FrefCount = 0
-				if int64(int64(end))-int64(int64(stringPtr)) == 0 {
+				if int64(end)-int64(stringPtr) == 0 {
 					(*TTcl_Obj)(unsafe.Pointer(objPtr)).Fbytes = XtclEmptyStringRep
 					(*TTcl_Obj)(unsafe.Pointer(objPtr)).Flength = 0
 				} else {
-					(*TTcl_Obj)(unsafe.Pointer(objPtr)).Fbytes = XTcl_Alloc(tls, uint32(int64(int64(end))-int64(int64(stringPtr)))+libc.Uint32FromUint32(1))
-					libc.Xmemcpy(tls, (*TTcl_Obj)(unsafe.Pointer(objPtr)).Fbytes, stringPtr, uint64(int64(int64(end))-int64(int64(stringPtr))))
-					*(*int8)(unsafe.Pointer((*TTcl_Obj)(unsafe.Pointer(objPtr)).Fbytes + uintptr(int64(int64(end))-int64(int64(stringPtr))))) = int8('\000')
-					(*TTcl_Obj)(unsafe.Pointer(objPtr)).Flength = int32(int64(int64(end)) - int64(int64(stringPtr)))
+					(*TTcl_Obj)(unsafe.Pointer(objPtr)).Fbytes = XTcl_Alloc(tls, uint32(int64(end)-int64(stringPtr))+libc.Uint32FromUint32(1))
+					libc.Xmemcpy(tls, (*TTcl_Obj)(unsafe.Pointer(objPtr)).Fbytes, stringPtr, uint64(int64(end)-int64(stringPtr)))
+					*(*int8)(unsafe.Pointer((*TTcl_Obj)(unsafe.Pointer(objPtr)).Fbytes + uintptr(int64(end)-int64(stringPtr)))) = int8('\000')
+					(*TTcl_Obj)(unsafe.Pointer(objPtr)).Flength = int32(int64(end) - int64(stringPtr))
 				}
 				(*TTcl_Obj)(unsafe.Pointer(objPtr)).FtypePtr = libc.UintptrFromInt32(0)
 				XTcl_ListObjAppendElement(tls, libc.UintptrFromInt32(0), listPtr, objPtr)
@@ -53277,14 +53380,14 @@ func XTcl_SplitObjCmd(tls *libc.TLS, dummy TClientData, interp uintptr, objc int
 								Fptr2 uintptr
 							})(unsafe.Pointer(XtclFreeObjList + 32))).Fptr1
 							(*TTcl_Obj)(unsafe.Pointer(objPtr)).FrefCount = 0
-							if int64(int64(stringPtr))-int64(int64(element)) == 0 {
+							if int64(stringPtr)-int64(element) == 0 {
 								(*TTcl_Obj)(unsafe.Pointer(objPtr)).Fbytes = XtclEmptyStringRep
 								(*TTcl_Obj)(unsafe.Pointer(objPtr)).Flength = 0
 							} else {
-								(*TTcl_Obj)(unsafe.Pointer(objPtr)).Fbytes = XTcl_Alloc(tls, uint32(int64(int64(stringPtr))-int64(int64(element)))+libc.Uint32FromUint32(1))
-								libc.Xmemcpy(tls, (*TTcl_Obj)(unsafe.Pointer(objPtr)).Fbytes, element, uint64(int64(int64(stringPtr))-int64(int64(element))))
-								*(*int8)(unsafe.Pointer((*TTcl_Obj)(unsafe.Pointer(objPtr)).Fbytes + uintptr(int64(int64(stringPtr))-int64(int64(element))))) = int8('\000')
-								(*TTcl_Obj)(unsafe.Pointer(objPtr)).Flength = int32(int64(int64(stringPtr)) - int64(int64(element)))
+								(*TTcl_Obj)(unsafe.Pointer(objPtr)).Fbytes = XTcl_Alloc(tls, uint32(int64(stringPtr)-int64(element))+libc.Uint32FromUint32(1))
+								libc.Xmemcpy(tls, (*TTcl_Obj)(unsafe.Pointer(objPtr)).Fbytes, element, uint64(int64(stringPtr)-int64(element)))
+								*(*int8)(unsafe.Pointer((*TTcl_Obj)(unsafe.Pointer(objPtr)).Fbytes + uintptr(int64(stringPtr)-int64(element)))) = int8('\000')
+								(*TTcl_Obj)(unsafe.Pointer(objPtr)).Flength = int32(int64(stringPtr) - int64(element))
 							}
 							(*TTcl_Obj)(unsafe.Pointer(objPtr)).FtypePtr = libc.UintptrFromInt32(0)
 							XTcl_ListObjAppendElement(tls, libc.UintptrFromInt32(0), listPtr, objPtr)
@@ -53308,14 +53411,14 @@ func XTcl_SplitObjCmd(tls *libc.TLS, dummy TClientData, interp uintptr, objc int
 					Fptr2 uintptr
 				})(unsafe.Pointer(XtclFreeObjList + 32))).Fptr1
 				(*TTcl_Obj)(unsafe.Pointer(objPtr)).FrefCount = 0
-				if int64(int64(stringPtr))-int64(int64(element)) == 0 {
+				if int64(stringPtr)-int64(element) == 0 {
 					(*TTcl_Obj)(unsafe.Pointer(objPtr)).Fbytes = XtclEmptyStringRep
 					(*TTcl_Obj)(unsafe.Pointer(objPtr)).Flength = 0
 				} else {
-					(*TTcl_Obj)(unsafe.Pointer(objPtr)).Fbytes = XTcl_Alloc(tls, uint32(int64(int64(stringPtr))-int64(int64(element)))+libc.Uint32FromUint32(1))
-					libc.Xmemcpy(tls, (*TTcl_Obj)(unsafe.Pointer(objPtr)).Fbytes, element, uint64(int64(int64(stringPtr))-int64(int64(element))))
-					*(*int8)(unsafe.Pointer((*TTcl_Obj)(unsafe.Pointer(objPtr)).Fbytes + uintptr(int64(int64(stringPtr))-int64(int64(element))))) = int8('\000')
-					(*TTcl_Obj)(unsafe.Pointer(objPtr)).Flength = int32(int64(int64(stringPtr)) - int64(int64(element)))
+					(*TTcl_Obj)(unsafe.Pointer(objPtr)).Fbytes = XTcl_Alloc(tls, uint32(int64(stringPtr)-int64(element))+libc.Uint32FromUint32(1))
+					libc.Xmemcpy(tls, (*TTcl_Obj)(unsafe.Pointer(objPtr)).Fbytes, element, uint64(int64(stringPtr)-int64(element)))
+					*(*int8)(unsafe.Pointer((*TTcl_Obj)(unsafe.Pointer(objPtr)).Fbytes + uintptr(int64(stringPtr)-int64(element)))) = int8('\000')
+					(*TTcl_Obj)(unsafe.Pointer(objPtr)).Flength = int32(int64(stringPtr) - int64(element))
 				}
 				(*TTcl_Obj)(unsafe.Pointer(objPtr)).FtypePtr = libc.UintptrFromInt32(0)
 				XTcl_ListObjAppendElement(tls, libc.UintptrFromInt32(0), listPtr, objPtr)
@@ -53415,7 +53518,7 @@ func _StringFirstCmd(tls *libc.TLS, dummy TClientData, interp uintptr, objc int3
 			 * Scan forward to find the first character.
 			 */
 			if int32(*(*TTcl_UniChar)(unsafe.Pointer(p))) == int32(*(*TTcl_UniChar)(unsafe.Pointer(needleStr))) && XTcl_UniCharNcmp(tls, needleStr, p, uint64(*(*int32)(unsafe.Pointer(bp + 4)))) == 0 {
-				match = int32((int64(int64(p)) - int64(int64(haystackStr))) / 2)
+				match = int32((int64(p) - int64(haystackStr)) / 2)
 				break
 			}
 			goto _2
@@ -53518,7 +53621,7 @@ func _StringLastCmd(tls *libc.TLS, dummy TClientData, interp uintptr, objc int32
 			 * Scan backwards to find the first character.
 			 */
 			if int32(*(*TTcl_UniChar)(unsafe.Pointer(p))) == int32(*(*TTcl_UniChar)(unsafe.Pointer(needleStr))) && !(libc.Xmemcmp(tls, needleStr, p, uint64(2)*uint64(*(*int32)(unsafe.Pointer(bp + 4)))) != 0) {
-				match = int32((int64(int64(p)) - int64(int64(haystackStr))) / 2)
+				match = int32((int64(p) - int64(haystackStr)) / 2)
 				break
 			}
 			goto _2
@@ -53780,7 +53883,7 @@ _11:
 		result = 0
 		failat = 0
 	} else {
-		failat = int32(int64(*(*uintptr)(unsafe.Pointer(bp))) - int64(int64(string1)))
+		failat = int32(int64(*(*uintptr)(unsafe.Pointer(bp))) - int64(string1))
 		if *(*uintptr)(unsafe.Pointer(bp)) < end {
 			result = 0
 			if (*TTcl_Obj)(unsafe.Pointer(objPtr)).FtypePtr != libc.UintptrFromInt32(0) {
@@ -53838,7 +53941,7 @@ _14:
 			 * *objPtr in an inconsistent state.
 			 */
 			result = 0
-			failat = int32(int64(*(*uintptr)(unsafe.Pointer(bp))) - int64(int64(string1)))
+			failat = int32(int64(*(*uintptr)(unsafe.Pointer(bp))) - int64(string1))
 			if (*TTcl_Obj)(unsafe.Pointer(objPtr)).FtypePtr != libc.UintptrFromInt32(0) {
 				if (*TTcl_ObjType)(unsafe.Pointer((*TTcl_Obj)(unsafe.Pointer(objPtr)).FtypePtr)).FfreeIntRepProc != libc.UintptrFromInt32(0) {
 					(*(*func(*libc.TLS, uintptr))(unsafe.Pointer(&struct{ uintptr }{(*TTcl_ObjType)(unsafe.Pointer((*TTcl_Obj)(unsafe.Pointer(objPtr)).FtypePtr)).FfreeIntRepProc})))(tls, objPtr)
@@ -53903,7 +54006,7 @@ failedIntParse:
 			 * Clear out the internal rep, since keeping it would leave
 			 * *objPtr in an inconsistent state.
 			 */
-			failat = int32(int64(*(*uintptr)(unsafe.Pointer(bp))) - int64(int64(string1)))
+			failat = int32(int64(*(*uintptr)(unsafe.Pointer(bp))) - int64(string1))
 			if (*TTcl_Obj)(unsafe.Pointer(objPtr)).FtypePtr != libc.UintptrFromInt32(0) {
 				if (*TTcl_ObjType)(unsafe.Pointer((*TTcl_Obj)(unsafe.Pointer(objPtr)).FtypePtr)).FfreeIntRepProc != libc.UintptrFromInt32(0) {
 					(*(*func(*libc.TLS, uintptr))(unsafe.Pointer(&struct{ uintptr }{(*TTcl_ObjType)(unsafe.Pointer((*TTcl_Obj)(unsafe.Pointer(objPtr)).FtypePtr)).FfreeIntRepProc})))(tls, objPtr)
@@ -53981,14 +54084,14 @@ _16:
 					Fptr2 uintptr
 				})(unsafe.Pointer(XtclFreeObjList + 32))).Fptr1
 				(*TTcl_Obj)(unsafe.Pointer(tmpStr)).FrefCount = 0
-				if int64(int64(p))-int64(int64(string1)) == 0 {
+				if int64(p)-int64(string1) == 0 {
 					(*TTcl_Obj)(unsafe.Pointer(tmpStr)).Fbytes = XtclEmptyStringRep
 					(*TTcl_Obj)(unsafe.Pointer(tmpStr)).Flength = 0
 				} else {
-					(*TTcl_Obj)(unsafe.Pointer(tmpStr)).Fbytes = XTcl_Alloc(tls, uint32(int64(int64(p))-int64(int64(string1)))+libc.Uint32FromUint32(1))
-					libc.Xmemcpy(tls, (*TTcl_Obj)(unsafe.Pointer(tmpStr)).Fbytes, string1, uint64(int64(int64(p))-int64(int64(string1))))
-					*(*int8)(unsafe.Pointer((*TTcl_Obj)(unsafe.Pointer(tmpStr)).Fbytes + uintptr(int64(int64(p))-int64(int64(string1))))) = int8('\000')
-					(*TTcl_Obj)(unsafe.Pointer(tmpStr)).Flength = int32(int64(int64(p)) - int64(int64(string1)))
+					(*TTcl_Obj)(unsafe.Pointer(tmpStr)).Fbytes = XTcl_Alloc(tls, uint32(int64(p)-int64(string1))+libc.Uint32FromUint32(1))
+					libc.Xmemcpy(tls, (*TTcl_Obj)(unsafe.Pointer(tmpStr)).Fbytes, string1, uint64(int64(p)-int64(string1)))
+					*(*int8)(unsafe.Pointer((*TTcl_Obj)(unsafe.Pointer(tmpStr)).Fbytes + uintptr(int64(p)-int64(string1)))) = int8('\000')
+					(*TTcl_Obj)(unsafe.Pointer(tmpStr)).Flength = int32(int64(p) - int64(string1))
 				}
 				(*TTcl_Obj)(unsafe.Pointer(tmpStr)).FtypePtr = libc.UintptrFromInt32(0)
 				failat = XTcl_GetCharLength(tls, tmpStr)
@@ -54015,7 +54118,7 @@ _16:
 			goto _33
 		_33:
 			p = *(*uintptr)(unsafe.Pointer(bp + 48))
-			lenRemain = int32(int64(int64(end)) - int64(*(*uintptr)(unsafe.Pointer(bp + 48))))
+			lenRemain = int32(int64(end) - int64(*(*uintptr)(unsafe.Pointer(bp + 48))))
 		}
 	}
 	result = 0
@@ -54296,9 +54399,9 @@ func _StringMapCmd(tls *libc.TLS, dummy TClientData, interp uintptr, objc int32,
 				if !(ustring1 < end) {
 					break
 				}
-				if (int32(*(*TTcl_UniChar)(unsafe.Pointer(ustring1))) == int32(*(*TTcl_UniChar)(unsafe.Pointer(ustring2))) || nocase != 0 && int32(XTcl_UniCharToLower(tls, int32(*(*TTcl_UniChar)(unsafe.Pointer(ustring1))))) == int32(int32(u2lc))) && (*(*int32)(unsafe.Pointer(bp + 4)) == int32(1) || (*(*func(*libc.TLS, uintptr, uintptr, uint64) int32)(unsafe.Pointer(&struct{ uintptr }{strCmpFn})))(tls, ustring1, ustring2, uint64(*(*int32)(unsafe.Pointer(bp + 4)))) == 0) {
+				if (int32(*(*TTcl_UniChar)(unsafe.Pointer(ustring1))) == int32(*(*TTcl_UniChar)(unsafe.Pointer(ustring2))) || nocase != 0 && int32(XTcl_UniCharToLower(tls, int32(*(*TTcl_UniChar)(unsafe.Pointer(ustring1))))) == int32(u2lc)) && (*(*int32)(unsafe.Pointer(bp + 4)) == int32(1) || (*(*func(*libc.TLS, uintptr, uintptr, uint64) int32)(unsafe.Pointer(&struct{ uintptr }{strCmpFn})))(tls, ustring1, ustring2, uint64(*(*int32)(unsafe.Pointer(bp + 4)))) == 0) {
 					if p != ustring1 {
-						XTcl_AppendUnicodeToObj(tls, resultPtr, p, int32((int64(int64(ustring1))-int64(int64(p)))/2))
+						XTcl_AppendUnicodeToObj(tls, resultPtr, p, int32((int64(ustring1)-int64(p))/2))
 						p = ustring1 + uintptr(*(*int32)(unsafe.Pointer(bp + 4)))*2
 					} else {
 						p += uintptr(*(*int32)(unsafe.Pointer(bp + 4))) * 2
@@ -54352,12 +54455,12 @@ func _StringMapCmd(tls *libc.TLS, dummy TClientData, interp uintptr, objc int32,
 				 */
 				ustring2 = *(*uintptr)(unsafe.Pointer(mapStrings + uintptr(index)*8))
 				*(*int32)(unsafe.Pointer(bp + 4)) = *(*int32)(unsafe.Pointer(mapLens + uintptr(index)*4))
-				if *(*int32)(unsafe.Pointer(bp + 4)) > 0 && (int32(*(*TTcl_UniChar)(unsafe.Pointer(ustring1))) == int32(*(*TTcl_UniChar)(unsafe.Pointer(ustring2))) || nocase != 0 && int32(XTcl_UniCharToLower(tls, int32(*(*TTcl_UniChar)(unsafe.Pointer(ustring1))))) == int32(*(*TTcl_UniChar)(unsafe.Pointer(u2lc1 + uintptr(index/int32(2))*2)))) && (int64(int64(end))-int64(int64(ustring1)))/2 >= int64(*(*int32)(unsafe.Pointer(bp + 4))) && (*(*int32)(unsafe.Pointer(bp + 4)) == int32(1) || !((*(*func(*libc.TLS, uintptr, uintptr, uint64) int32)(unsafe.Pointer(&struct{ uintptr }{strCmpFn})))(tls, ustring2, ustring1, uint64(*(*int32)(unsafe.Pointer(bp + 4)))) != 0)) {
+				if *(*int32)(unsafe.Pointer(bp + 4)) > 0 && (int32(*(*TTcl_UniChar)(unsafe.Pointer(ustring1))) == int32(*(*TTcl_UniChar)(unsafe.Pointer(ustring2))) || nocase != 0 && int32(XTcl_UniCharToLower(tls, int32(*(*TTcl_UniChar)(unsafe.Pointer(ustring1))))) == int32(*(*TTcl_UniChar)(unsafe.Pointer(u2lc1 + uintptr(index/int32(2))*2)))) && (int64(end)-int64(ustring1))/2 >= int64(*(*int32)(unsafe.Pointer(bp + 4))) && (*(*int32)(unsafe.Pointer(bp + 4)) == int32(1) || !((*(*func(*libc.TLS, uintptr, uintptr, uint64) int32)(unsafe.Pointer(&struct{ uintptr }{strCmpFn})))(tls, ustring2, ustring1, uint64(*(*int32)(unsafe.Pointer(bp + 4)))) != 0)) {
 					if p != ustring1 {
 						/*
 						 * Put the skipped chars onto the result first.
 						 */
-						XTcl_AppendUnicodeToObj(tls, resultPtr, p, int32((int64(int64(ustring1))-int64(int64(p)))/2))
+						XTcl_AppendUnicodeToObj(tls, resultPtr, p, int32((int64(ustring1)-int64(p))/2))
 						p = ustring1 + uintptr(*(*int32)(unsafe.Pointer(bp + 4)))*2
 					} else {
 						p += uintptr(*(*int32)(unsafe.Pointer(bp + 4))) * 2
@@ -54390,7 +54493,7 @@ func _StringMapCmd(tls *libc.TLS, dummy TClientData, interp uintptr, objc int32,
 		/*
 		 * Put the rest of the unmapped chars onto result.
 		 */
-		XTcl_AppendUnicodeToObj(tls, resultPtr, p, int32((int64(int64(ustring1))-int64(int64(p)))/2))
+		XTcl_AppendUnicodeToObj(tls, resultPtr, p, int32((int64(ustring1)-int64(p))/2))
 	}
 	XTcl_SetObjResult(tls, interp, resultPtr)
 done:
@@ -55275,7 +55378,7 @@ func XTclStringCmp(tls *libc.TLS, value1Ptr uintptr, value2Ptr uintptr, checkEq 
 		 * The comparison function should compare up to the minimum byte
 		 * length only.
 		 */
-		match = (*(*func(*libc.TLS, uintptr, uintptr, Tsize_t) int32)(unsafe.Pointer(&struct{ uintptr }{memCmpFn})))(tls, s1, s2, uint64(uint64(length)))
+		match = (*(*func(*libc.TLS, uintptr, uintptr, Tsize_t) int32)(unsafe.Pointer(&struct{ uintptr }{memCmpFn})))(tls, s1, s2, uint64(length))
 	}
 	if match == 0 && reqlength > length {
 		match = *(*int32)(unsafe.Pointer(bp)) - *(*int32)(unsafe.Pointer(bp + 4))
@@ -55561,15 +55664,15 @@ func _StringLowerCmd(tls *libc.TLS, dummy TClientData, interp uintptr, objc int3
 		string1 = v6
 		start = XTcl_UtfAtIndex(tls, string1, *(*int32)(unsafe.Pointer(bp + 4)))
 		end = XTcl_UtfAtIndex(tls, start, *(*int32)(unsafe.Pointer(bp + 8))-*(*int32)(unsafe.Pointer(bp + 4))+int32(1))
-		resultPtr1 = XTcl_NewStringObj(tls, string1, int32(int64(int64(end))-int64(int64(string1))))
+		resultPtr1 = XTcl_NewStringObj(tls, string1, int32(int64(end)-int64(string1)))
 		if (*TTcl_Obj)(unsafe.Pointer(resultPtr1)).Fbytes != 0 {
 			v7 = (*TTcl_Obj)(unsafe.Pointer(resultPtr1)).Fbytes
 		} else {
 			v7 = XTcl_GetString(tls, resultPtr1)
 		}
-		string2 = v7 + uintptr(int64(int64(start))-int64(int64(string1)))
+		string2 = v7 + uintptr(int64(start)-int64(string1))
 		length2 = XTcl_UtfToLower(tls, string2)
-		XTcl_SetObjLength(tls, resultPtr1, int32(int64(int64(length2))+(int64(int64(start))-int64(int64(string1)))))
+		XTcl_SetObjLength(tls, resultPtr1, int32(int64(length2)+(int64(start)-int64(string1))))
 		XTcl_AppendToObj(tls, resultPtr1, end, -int32(1))
 		XTcl_SetObjResult(tls, interp, resultPtr1)
 	}
@@ -55667,15 +55770,15 @@ func _StringUpperCmd(tls *libc.TLS, dummy TClientData, interp uintptr, objc int3
 		string1 = v6
 		start = XTcl_UtfAtIndex(tls, string1, *(*int32)(unsafe.Pointer(bp + 4)))
 		end = XTcl_UtfAtIndex(tls, start, *(*int32)(unsafe.Pointer(bp + 8))-*(*int32)(unsafe.Pointer(bp + 4))+int32(1))
-		resultPtr1 = XTcl_NewStringObj(tls, string1, int32(int64(int64(end))-int64(int64(string1))))
+		resultPtr1 = XTcl_NewStringObj(tls, string1, int32(int64(end)-int64(string1)))
 		if (*TTcl_Obj)(unsafe.Pointer(resultPtr1)).Fbytes != 0 {
 			v7 = (*TTcl_Obj)(unsafe.Pointer(resultPtr1)).Fbytes
 		} else {
 			v7 = XTcl_GetString(tls, resultPtr1)
 		}
-		string2 = v7 + uintptr(int64(int64(start))-int64(int64(string1)))
+		string2 = v7 + uintptr(int64(start)-int64(string1))
 		length2 = XTcl_UtfToUpper(tls, string2)
-		XTcl_SetObjLength(tls, resultPtr1, int32(int64(int64(length2))+(int64(int64(start))-int64(int64(string1)))))
+		XTcl_SetObjLength(tls, resultPtr1, int32(int64(length2)+(int64(start)-int64(string1))))
 		XTcl_AppendToObj(tls, resultPtr1, end, -int32(1))
 		XTcl_SetObjResult(tls, interp, resultPtr1)
 	}
@@ -55773,15 +55876,15 @@ func _StringTitleCmd(tls *libc.TLS, dummy TClientData, interp uintptr, objc int3
 		string1 = v6
 		start = XTcl_UtfAtIndex(tls, string1, *(*int32)(unsafe.Pointer(bp + 4)))
 		end = XTcl_UtfAtIndex(tls, start, *(*int32)(unsafe.Pointer(bp + 8))-*(*int32)(unsafe.Pointer(bp + 4))+int32(1))
-		resultPtr1 = XTcl_NewStringObj(tls, string1, int32(int64(int64(end))-int64(int64(string1))))
+		resultPtr1 = XTcl_NewStringObj(tls, string1, int32(int64(end)-int64(string1)))
 		if (*TTcl_Obj)(unsafe.Pointer(resultPtr1)).Fbytes != 0 {
 			v7 = (*TTcl_Obj)(unsafe.Pointer(resultPtr1)).Fbytes
 		} else {
 			v7 = XTcl_GetString(tls, resultPtr1)
 		}
-		string2 = v7 + uintptr(int64(int64(start))-int64(int64(string1)))
+		string2 = v7 + uintptr(int64(start)-int64(string1))
 		length2 = XTcl_UtfToTitle(tls, string2)
-		XTcl_SetObjLength(tls, resultPtr1, int32(int64(int64(length2))+(int64(int64(start))-int64(int64(string1)))))
+		XTcl_SetObjLength(tls, resultPtr1, int32(int64(length2)+(int64(start)-int64(string1))))
 		XTcl_AppendToObj(tls, resultPtr1, end, -int32(1))
 		XTcl_SetObjResult(tls, interp, resultPtr1)
 	}
@@ -57095,7 +57198,7 @@ func XTcl_TimeObjCmd(tls *libc.TLS, dummy TClientData, interp uintptr, objc int3
 		if *(*int32)(unsafe.Pointer(bp + 32)) <= 0 {
 			v3 = 0
 		} else {
-			v3 = int64(int64(totalMicroSec))
+			v3 = int64(totalMicroSec)
 		}
 		(*(*[4]uintptr)(unsafe.Pointer(bp)))[0] = XTcl_NewWideIntObj(tls, v3)
 	} else {
@@ -57521,22 +57624,22 @@ _3:
 				 */
 				if threshold > maxIterTm*uint64(2) {
 					factor = uint16(int32(factor) * libc.Int32FromInt32(2))
-					if int32(int32(factor)) > int32(50) {
+					if int32(factor) > int32(50) {
 						factor = uint16(50)
 					}
 				} else {
-					if int32(int32(factor)) < int32(50) {
+					if int32(factor) < int32(50) {
 						factor++
 					}
 				}
 			} else {
-				if int32(int32(factor)) > int32(4) {
+				if int32(factor) > int32(4) {
 					/*
 					 * Iterations seem to be shorter.
 					 */
 					if threshold < maxIterTm/uint64(2) {
 						factor = uint16(int32(factor) / libc.Int32FromInt32(2))
-						if int32(int32(factor)) < int32(4) {
+						if int32(factor) < int32(4) {
 							factor = uint16(4)
 						}
 					} else {
@@ -57550,7 +57653,7 @@ _3:
 			 * execution time if iterations are not consistent, e.g. was
 			 * continuously on time).
 			 */
-			threshold = uint64(stop-middle)/maxIterTm/uint64(uint64(factor)) + uint64(1)
+			threshold = uint64(stop-middle)/maxIterTm/uint64(factor) + uint64(1)
 			if threshold > uint64(100000) { /* fix for too large threshold */
 				threshold = uint64(100000)
 			}
@@ -57586,7 +57689,7 @@ _3:
 			/*
 			 * Estimate the time of overhead (microsecs).
 			 */
-			curOverhead = uint64(*(*float64)(unsafe.Pointer(bp)) * float64(float64(count)))
+			curOverhead = uint64(*(*float64)(unsafe.Pointer(bp)) * float64(count))
 			if usec > curOverhead {
 				usec -= curOverhead
 			} else {
@@ -57597,8 +57700,8 @@ _3:
 		/*
 		 * Calibration: obtaining new measurement overhead.
 		 */
-		if _measureOverhead > float64(float64(usec))/float64(float64(count)) {
-			_measureOverhead = float64(float64(usec)) / float64(float64(count))
+		if _measureOverhead > float64(usec)/float64(count) {
+			_measureOverhead = float64(usec) / float64(count)
 		}
 		*(*uintptr)(unsafe.Pointer(objs)) = XTcl_NewDoubleObj(tls, _measureOverhead)
 		if XtclFreeObjList == libc.UintptrFromInt32(0) {
@@ -57624,7 +57727,7 @@ _3:
 	}
 	val = usec / count /* microsecs per iteration */
 	if val >= uint64(1000000) {
-		*(*uintptr)(unsafe.Pointer(objs)) = XTcl_NewWideIntObj(tls, int64(int64(val)))
+		*(*uintptr)(unsafe.Pointer(objs)) = XTcl_NewWideIntObj(tls, int64(val))
 	} else {
 		if val < uint64(10) {
 			digits = int32(6)
@@ -57643,9 +57746,9 @@ _3:
 				}
 			}
 		}
-		*(*uintptr)(unsafe.Pointer(objs)) = XTcl_ObjPrintf(tls, ts+17484, libc.VaList(bp+168, digits, float64(float64(usec))/float64(float64(count))))
+		*(*uintptr)(unsafe.Pointer(objs)) = XTcl_ObjPrintf(tls, ts+17484, libc.VaList(bp+168, digits, float64(usec)/float64(count)))
 	}
-	*(*uintptr)(unsafe.Pointer(objs + 2*8)) = XTcl_NewWideIntObj(tls, int64(int64(count))) /* iterations */
+	*(*uintptr)(unsafe.Pointer(objs + 2*8)) = XTcl_NewWideIntObj(tls, int64(count)) /* iterations */
 	/*
 	 * Calculate speed as rate (count) per sec
 	 */
@@ -57664,9 +57767,9 @@ _3:
 					digits = int32(1)
 				}
 			}
-			*(*uintptr)(unsafe.Pointer(objs + 4*8)) = XTcl_ObjPrintf(tls, ts+17484, libc.VaList(bp+168, digits, float64(count*libc.Uint64FromInt32(1000000))/float64(float64(usec))))
+			*(*uintptr)(unsafe.Pointer(objs + 4*8)) = XTcl_ObjPrintf(tls, ts+17484, libc.VaList(bp+168, digits, float64(count*libc.Uint64FromInt32(1000000))/float64(usec)))
 		} else {
-			*(*uintptr)(unsafe.Pointer(objs + 4*8)) = XTcl_NewWideIntObj(tls, int64(int64(val)))
+			*(*uintptr)(unsafe.Pointer(objs + 4*8)) = XTcl_NewWideIntObj(tls, int64(val))
 		}
 	} else {
 		*(*uintptr)(unsafe.Pointer(objs + 4*8)) = XTcl_NewWideIntObj(tls, int64(count/usec*uint64(1000000)))
@@ -57677,7 +57780,7 @@ retRes:
 	 */
 	if !(calibrate != 0) {
 		if usec >= uint64(1) {
-			*(*uintptr)(unsafe.Pointer(objs + 6*8)) = XTcl_ObjPrintf(tls, ts+17489, libc.VaList(bp+168, float64(float64(usec))/libc.Float64FromInt32(1000)))
+			*(*uintptr)(unsafe.Pointer(objs + 6*8)) = XTcl_ObjPrintf(tls, ts+17489, libc.VaList(bp+168, float64(usec)/libc.Float64FromInt32(1000)))
 		} else {
 			*(*uintptr)(unsafe.Pointer(objs + 6*8)) = XTcl_NewWideIntObj(tls, 0)
 		}
@@ -58780,12 +58883,12 @@ func XTclListLines(tls *libc.TLS, listObj uintptr, _line int32, n int32, lines u
 		XTclFindElement(tls, libc.UintptrFromInt32(0), listStr, length, bp+8, bp+16, libc.UintptrFromInt32(0), libc.UintptrFromInt32(0))
 		XTclAdvanceLines(tls, bp, listStr, *(*uintptr)(unsafe.Pointer(bp + 8)))
 		/* Leading whitespace */
-		XTclAdvanceContinuations(tls, bp, bp+24, int32(int64(*(*uintptr)(unsafe.Pointer(bp + 8)))-int64(int64(listHead))))
+		XTclAdvanceContinuations(tls, bp, bp+24, int32(int64(*(*uintptr)(unsafe.Pointer(bp + 8)))-int64(listHead)))
 		if elems != 0 && *(*uintptr)(unsafe.Pointer(bp + 24)) != 0 {
-			XTclContinuationsEnterDerived(tls, *(*uintptr)(unsafe.Pointer(elems + uintptr(i)*8)), int32(int64(*(*uintptr)(unsafe.Pointer(bp + 8)))-int64(int64(listHead))), *(*uintptr)(unsafe.Pointer(bp + 24)))
+			XTclContinuationsEnterDerived(tls, *(*uintptr)(unsafe.Pointer(elems + uintptr(i)*8)), int32(int64(*(*uintptr)(unsafe.Pointer(bp + 8)))-int64(listHead)), *(*uintptr)(unsafe.Pointer(bp + 24)))
 		}
 		*(*int32)(unsafe.Pointer(lines + uintptr(i)*4)) = *(*int32)(unsafe.Pointer(bp))
-		length = int32(int64(length) - (int64(*(*uintptr)(unsafe.Pointer(bp + 16))) - int64(int64(listStr))))
+		length = int32(int64(length) - (int64(*(*uintptr)(unsafe.Pointer(bp + 16))) - int64(listStr)))
 		XTclAdvanceLines(tls, bp, *(*uintptr)(unsafe.Pointer(bp + 8)), *(*uintptr)(unsafe.Pointer(bp + 16)))
 		/* Element */
 		listStr = *(*uintptr)(unsafe.Pointer(bp + 16))
@@ -60716,7 +60819,7 @@ func XTclCompileArraySetCmd(tls *libc.TLS, interp uintptr, parsePtr uintptr, cmd
 			}
 		}
 		*(*int32)(unsafe.Pointer(envPtr + 48)) += -int32(1)
-		fwd = int32(int64((*TCompileEnv)(unsafe.Pointer(envPtr)).FcodeNext) - int64((*TCompileEnv)(unsafe.Pointer(envPtr)).FcodeStart) - int64(int64(offsetFwd)))
+		fwd = int32(int64((*TCompileEnv)(unsafe.Pointer(envPtr)).FcodeNext) - int64((*TCompileEnv)(unsafe.Pointer(envPtr)).FcodeStart) - int64(offsetFwd))
 		*(*uint8)(unsafe.Pointer((*TCompileEnv)(unsafe.Pointer(envPtr)).FcodeStart + uintptr(offsetFwd) + libc.UintptrFromInt32(1))) = uint8(uint32(fwd))
 	}
 	if (*TCompileEnv)(unsafe.Pointer(envPtr)).FcodeNext+uintptr(5) > (*TCompileEnv)(unsafe.Pointer(envPtr)).FcodeEnd {
@@ -60981,7 +61084,7 @@ func XTclCompileArraySetCmd(tls *libc.TLS, interp uintptr, parsePtr uintptr, cmd
 		}
 		*(*int32)(unsafe.Pointer(envPtr + 48)) += _delta39
 	}
-	(*TForeachInfo)(unsafe.Pointer(infoPtr)).FloopCtTemp = int32(int64(int64(offsetBack)) - (int64((*TCompileEnv)(unsafe.Pointer(envPtr)).FcodeNext) - int64((*TCompileEnv)(unsafe.Pointer(envPtr)).FcodeStart))) /*misuse */
+	(*TForeachInfo)(unsafe.Pointer(infoPtr)).FloopCtTemp = int32(int64(offsetBack) - (int64((*TCompileEnv)(unsafe.Pointer(envPtr)).FcodeNext) - int64((*TCompileEnv)(unsafe.Pointer(envPtr)).FcodeStart))) /*misuse */
 	if (*TCompileEnv)(unsafe.Pointer(envPtr)).FcodeNext == (*TCompileEnv)(unsafe.Pointer(envPtr)).FcodeEnd {
 		XTclExpandCodeArray(tls, envPtr)
 	}
@@ -66751,7 +66854,7 @@ func _CompileDictEachCmd(tls *libc.TLS, interp uintptr, parsePtr uintptr, cmdPtr
 		}
 		*(*int32)(unsafe.Pointer(envPtr + 48)) += _delta22
 	}
-	jumpDisplacement = int32(int64(int64(bodyTargetOffset)) - (int64((*TCompileEnv)(unsafe.Pointer(envPtr)).FcodeNext) - int64((*TCompileEnv)(unsafe.Pointer(envPtr)).FcodeStart)))
+	jumpDisplacement = int32(int64(bodyTargetOffset) - (int64((*TCompileEnv)(unsafe.Pointer(envPtr)).FcodeNext) - int64((*TCompileEnv)(unsafe.Pointer(envPtr)).FcodeStart)))
 	if (*TCompileEnv)(unsafe.Pointer(envPtr)).FcodeNext+uintptr(5) > (*TCompileEnv)(unsafe.Pointer(envPtr)).FcodeEnd {
 		XTclExpandCodeArray(tls, envPtr)
 	}
@@ -67013,13 +67116,13 @@ func _CompileDictEachCmd(tls *libc.TLS, interp uintptr, parsePtr uintptr, cmdPtr
 	 * need to pop the bogus key/value pair (pushed to keep stack calculations
 	 * easy!) Note that we skip the END_CATCH. [Bug 1382528]
 	 */
-	jumpDisplacement = int32(int64((*TCompileEnv)(unsafe.Pointer(envPtr)).FcodeNext) - int64((*TCompileEnv)(unsafe.Pointer(envPtr)).FcodeStart) - int64(int64(emptyTargetOffset)))
+	jumpDisplacement = int32(int64((*TCompileEnv)(unsafe.Pointer(envPtr)).FcodeNext) - int64((*TCompileEnv)(unsafe.Pointer(envPtr)).FcodeStart) - int64(emptyTargetOffset))
 	*(*uint8)(unsafe.Pointer((*TCompileEnv)(unsafe.Pointer(envPtr)).FcodeStart + uintptr(emptyTargetOffset))) = uint8(libc.Int32FromInt32(m_INST_JUMP_TRUE4))
 	*(*uint8)(unsafe.Pointer((*TCompileEnv)(unsafe.Pointer(envPtr)).FcodeStart + uintptr(emptyTargetOffset) + libc.UintptrFromInt32(1))) = uint8(uint32(jumpDisplacement) >> libc.Int32FromInt32(24))
 	*(*uint8)(unsafe.Pointer((*TCompileEnv)(unsafe.Pointer(envPtr)).FcodeStart + uintptr(emptyTargetOffset) + libc.UintptrFromInt32(1) + libc.UintptrFromInt32(1))) = uint8(uint32(jumpDisplacement) >> libc.Int32FromInt32(16))
 	*(*uint8)(unsafe.Pointer((*TCompileEnv)(unsafe.Pointer(envPtr)).FcodeStart + uintptr(emptyTargetOffset) + libc.UintptrFromInt32(1) + libc.UintptrFromInt32(2))) = uint8(uint32(jumpDisplacement) >> libc.Int32FromInt32(8))
 	*(*uint8)(unsafe.Pointer((*TCompileEnv)(unsafe.Pointer(envPtr)).FcodeStart + uintptr(emptyTargetOffset) + libc.UintptrFromInt32(1) + libc.UintptrFromInt32(3))) = uint8(uint32(jumpDisplacement))
-	jumpDisplacement = int32(int64((*TCompileEnv)(unsafe.Pointer(envPtr)).FcodeNext) - int64((*TCompileEnv)(unsafe.Pointer(envPtr)).FcodeStart) - int64(int64(endTargetOffset)))
+	jumpDisplacement = int32(int64((*TCompileEnv)(unsafe.Pointer(envPtr)).FcodeNext) - int64((*TCompileEnv)(unsafe.Pointer(envPtr)).FcodeStart) - int64(endTargetOffset))
 	*(*uint8)(unsafe.Pointer((*TCompileEnv)(unsafe.Pointer(envPtr)).FcodeStart + uintptr(endTargetOffset))) = uint8(libc.Int32FromInt32(m_INST_JUMP1))
 	*(*uint8)(unsafe.Pointer((*TCompileEnv)(unsafe.Pointer(envPtr)).FcodeStart + uintptr(endTargetOffset) + libc.UintptrFromInt32(1))) = uint8(uint32(jumpDisplacement))
 	if (*TCompileEnv)(unsafe.Pointer(envPtr)).FcodeNext == (*TCompileEnv)(unsafe.Pointer(envPtr)).FcodeEnd {
@@ -67364,9 +67467,9 @@ func XTclCompileDictUpdateCmd(tls *libc.TLS, interp uintptr, parsePtr uintptr, c
 	 * represented as auxData; it holds an ordered list of variable indices
 	 * that are to be used.
 	 */
-	duiPtr = XTcl_Alloc(tls, uint32(uint64(int32(uint64(libc.UintptrFromInt32(0)+4)))+libc.Uint64FromInt64(4)*uint64(uint64(numVars))))
+	duiPtr = XTcl_Alloc(tls, uint32(uint64(int32(uint64(libc.UintptrFromInt32(0)+4)))+libc.Uint64FromInt64(4)*uint64(numVars)))
 	(*TDictUpdateInfo)(unsafe.Pointer(duiPtr)).Flength = numVars
-	keyTokenPtrs = XTclStackAlloc(tls, interp, int32(uint64(8)*uint64(uint64(numVars))))
+	keyTokenPtrs = XTclStackAlloc(tls, interp, int32(uint64(8)*uint64(numVars)))
 	tokenPtr = dictVarTokenPtr + uintptr((*TTcl_Token)(unsafe.Pointer(dictVarTokenPtr)).FnumComponents+libc.Int32FromInt32(1))*24
 	i = 0
 	for {
@@ -71242,7 +71345,7 @@ func _DupDictUpdateInfo(tls *libc.TLS, clientData TClientData) (r TClientData) {
 	dui1Ptr = clientData
 	len1 = uint32(uint64(int32(uint64(libc.UintptrFromInt32(0)+4))) + uint64(4)*uint64((*TDictUpdateInfo)(unsafe.Pointer(dui1Ptr)).Flength))
 	dui2Ptr = XTcl_Alloc(tls, len1)
-	libc.Xmemcpy(tls, dui2Ptr, dui1Ptr, uint64(uint64(len1)))
+	libc.Xmemcpy(tls, dui2Ptr, dui1Ptr, uint64(len1))
 	return dui2Ptr
 }
 
@@ -72132,7 +72235,7 @@ func XTclCompileForCmd(tls *libc.TLS, interp uintptr, parsePtr uintptr, cmdPtr u
 	(*TCompileEnv)(unsafe.Pointer(envPtr)).Fline = *(*int32)(unsafe.Pointer((*(*TECL)(unsafe.Pointer((*TExtCmdLoc)(unsafe.Pointer(mapPtr)).Floc + uintptr(eclIndex)*24))).Fline + 2*4))
 	(*TCompileEnv)(unsafe.Pointer(envPtr)).FclNext = *(*uintptr)(unsafe.Pointer((*(*TECL)(unsafe.Pointer((*TExtCmdLoc)(unsafe.Pointer(mapPtr)).Floc + uintptr(eclIndex)*24))).Fnext + 2*8))
 	XTclCompileExprWords(tls, interp, testTokenPtr, int32(1), envPtr)
-	jumpDist = int32(int64((*TCompileEnv)(unsafe.Pointer(envPtr)).FcodeNext) - int64((*TCompileEnv)(unsafe.Pointer(envPtr)).FcodeStart) - int64(int64(bodyCodeOffset)))
+	jumpDist = int32(int64((*TCompileEnv)(unsafe.Pointer(envPtr)).FcodeNext) - int64((*TCompileEnv)(unsafe.Pointer(envPtr)).FcodeStart) - int64(bodyCodeOffset))
 	if jumpDist > int32(127) {
 		if (*TCompileEnv)(unsafe.Pointer(envPtr)).FcodeNext+uintptr(5) > (*TCompileEnv)(unsafe.Pointer(envPtr)).FcodeEnd {
 			XTclExpandCodeArray(tls, envPtr)
@@ -72402,7 +72505,7 @@ func _CompileEachloopCmd(tls *libc.TLS, interp uintptr, parsePtr uintptr, cmdPtr
 	 * pointing to the ForeachInfo structure.
 	 */
 	numLists = (numWords - int32(2)) / int32(2)
-	infoPtr = XTcl_Alloc(tls, uint32(uint64(int32(uint64(libc.UintptrFromInt32(0)+16)))+uint64(uint64(numLists))*libc.Uint64FromInt64(8)))
+	infoPtr = XTcl_Alloc(tls, uint32(uint64(int32(uint64(libc.UintptrFromInt32(0)+16)))+uint64(numLists)*libc.Uint64FromInt64(8)))
 	(*TForeachInfo)(unsafe.Pointer(infoPtr)).FnumLists = 0 /* Count this up as we go */
 	/*
 	 * Parse each var list into sequence of var names.  Don't
@@ -72896,7 +72999,7 @@ func _DupForeachInfo(tls *libc.TLS, clientData TClientData) (r TClientData) {
 	_, _, _, _, _, _, _, _ = dupListPtr, dupPtr, i, j, numLists, numVars, srcListPtr, srcPtr
 	srcPtr = clientData
 	numLists = (*TForeachInfo)(unsafe.Pointer(srcPtr)).FnumLists
-	dupPtr = XTcl_Alloc(tls, uint32(uint64(int32(uint64(libc.UintptrFromInt32(0)+16)))+uint64(uint64(numLists))*libc.Uint64FromInt64(8)))
+	dupPtr = XTcl_Alloc(tls, uint32(uint64(int32(uint64(libc.UintptrFromInt32(0)+16)))+uint64(numLists)*libc.Uint64FromInt64(8)))
 	(*TForeachInfo)(unsafe.Pointer(dupPtr)).FnumLists = numLists
 	(*TForeachInfo)(unsafe.Pointer(dupPtr)).FfirstValueTemp = (*TForeachInfo)(unsafe.Pointer(srcPtr)).FfirstValueTemp
 	(*TForeachInfo)(unsafe.Pointer(dupPtr)).FloopCtTemp = (*TForeachInfo)(unsafe.Pointer(srcPtr)).FloopCtTemp
@@ -72907,7 +73010,7 @@ func _DupForeachInfo(tls *libc.TLS, clientData TClientData) (r TClientData) {
 		}
 		srcListPtr = *(*uintptr)(unsafe.Pointer(srcPtr + 16 + uintptr(i)*8))
 		numVars = (*TForeachVarList)(unsafe.Pointer(srcListPtr)).FnumVars
-		dupListPtr = XTcl_Alloc(tls, uint32(uint64(int32(uint64(libc.UintptrFromInt32(0)+4)))+uint64(uint64(numVars))*libc.Uint64FromInt64(4)))
+		dupListPtr = XTcl_Alloc(tls, uint32(uint64(int32(uint64(libc.UintptrFromInt32(0)+4)))+uint64(numVars)*libc.Uint64FromInt64(4)))
 		(*TForeachVarList)(unsafe.Pointer(dupListPtr)).FnumVars = numVars
 		j = 0
 		for {
@@ -73528,7 +73631,7 @@ checkForStringConcatCase:
 			break
 		}
 		if int32(*(*int8)(unsafe.Pointer(bytes))) == int32('%') {
-			XTcl_AppendToObj(tls, tmpObj, start, int32(int64(int64(bytes))-int64(int64(start))))
+			XTcl_AppendToObj(tls, tmpObj, start, int32(int64(bytes)-int64(start)))
 			bytes++
 			v35 = bytes
 			if int32(*(*int8)(unsafe.Pointer(v35))) == int32('%') {
@@ -73721,7 +73824,7 @@ checkForStringConcatCase:
 	/*
 	 * Handle the case of a trailing literal.
 	 */
-	XTcl_AppendToObj(tls, tmpObj, start, int32(int64(int64(bytes))-int64(int64(start))))
+	XTcl_AppendToObj(tls, tmpObj, start, int32(int64(bytes)-int64(start)))
 	bytes = XTcl_GetStringFromObj(tls, tmpObj, bp)
 	if *(*int32)(unsafe.Pointer(bp)) > 0 {
 		_objIndexCopy3 = XTclRegisterLiteral(tls, envPtr, bytes, *(*int32)(unsafe.Pointer(bp)), 0)
@@ -73972,8 +74075,8 @@ func XTclPushVarName(tls *libc.TLS, interp uintptr, varTokenPtr uintptr, envPtr 
 					}
 					if int32(*(*int8)(unsafe.Pointer(p))) == int32('(') {
 						elName = p + uintptr(1)
-						elNameLen = int32(int64(int64(last)) - int64(int64(elName)))
-						nameLen = int32(int64(int64(p)) - int64(int64(name)))
+						elNameLen = int32(int64(last) - int64(elName))
+						nameLen = int32(int64(p) - int64(name))
 						break
 					}
 					goto _3
@@ -74032,17 +74135,17 @@ func XTclPushVarName(tls *libc.TLS, interp uintptr, varTokenPtr uintptr, envPtr 
 					removedParen = n
 				}
 				name = (*(*TTcl_Token)(unsafe.Pointer(varTokenPtr + 1*24))).Fstart
-				nameLen = int32(int64(int64(p)) - int64((*(*TTcl_Token)(unsafe.Pointer(varTokenPtr + 1*24))).Fstart))
+				nameLen = int32(int64(p) - int64((*(*TTcl_Token)(unsafe.Pointer(varTokenPtr + 1*24))).Fstart))
 				elName = p + uintptr(1)
-				remainingLen = int32(int64((*(*TTcl_Token)(unsafe.Pointer(varTokenPtr + 2*24))).Fstart) - int64(int64(p)) - int64(1))
-				elNameLen = int32(int64((*(*TTcl_Token)(unsafe.Pointer(varTokenPtr + uintptr(n)*24))).Fstart) - int64(int64(p)) + int64((*(*TTcl_Token)(unsafe.Pointer(varTokenPtr + uintptr(n)*24))).Fsize) - int64(1))
+				remainingLen = int32(int64((*(*TTcl_Token)(unsafe.Pointer(varTokenPtr + 2*24))).Fstart) - int64(p) - int64(1))
+				elNameLen = int32(int64((*(*TTcl_Token)(unsafe.Pointer(varTokenPtr + uintptr(n)*24))).Fstart) - int64(p) + int64((*(*TTcl_Token)(unsafe.Pointer(varTokenPtr + uintptr(n)*24))).Fsize) - int64(1))
 				if !(flags&libc.Int32FromInt32(m_TCL_NO_ELEMENT) != 0) {
 					if remainingLen != 0 {
 						/*
 						 * Make a first token with the extra characters in the first
 						 * token.
 						 */
-						elemTokenPtr = XTclStackAlloc(tls, interp, int32(uint64(uint64(n))*uint64(24)))
+						elemTokenPtr = XTclStackAlloc(tls, interp, int32(uint64(n)*uint64(24)))
 						allocedTokens = int32(1)
 						(*TTcl_Token)(unsafe.Pointer(elemTokenPtr)).Ftype1 = int32(m_TCL_TOKEN_TEXT)
 						(*TTcl_Token)(unsafe.Pointer(elemTokenPtr)).Fstart = elName
@@ -74985,12 +75088,12 @@ func XTclCompileIfCmd(tls *libc.TLS, interp uintptr, parsePtr uintptr, cmdPtr ui
 			 */
 			ifFalsePc = (*TCompileEnv)(unsafe.Pointer(envPtr)).FcodeStart + uintptr((*(*TJumpFixup)(unsafe.Pointer((*(*TJumpFixupArray)(unsafe.Pointer(bp))).Ffixup + uintptr(jumpIndex)*16))).FcodeOffset)
 			opCode = *(*uint8)(unsafe.Pointer(ifFalsePc))
-			if int32(int32(opCode)) == int32(m_INST_JUMP_FALSE1) {
+			if int32(opCode) == int32(m_INST_JUMP_FALSE1) {
 				jumpFalseDist = int32(*(*int8)(unsafe.Pointer(ifFalsePc + libc.UintptrFromInt32(1))))
 				jumpFalseDist += int32(3)
 				*(*uint8)(unsafe.Pointer(ifFalsePc + libc.UintptrFromInt32(1))) = uint8(uint32(jumpFalseDist))
 			} else {
-				if int32(int32(opCode)) == int32(m_INST_JUMP_FALSE4) {
+				if int32(opCode) == int32(m_INST_JUMP_FALSE4) {
 					jumpFalseDist = int32(uint32(*(*uint8)(unsafe.Pointer(ifFalsePc + libc.UintptrFromInt32(1))))<<libc.Int32FromInt32(24) | uint32(int32(*(*uint8)(unsafe.Pointer(ifFalsePc + libc.UintptrFromInt32(1) + libc.UintptrFromInt32(1))))<<libc.Int32FromInt32(16)) | uint32(int32(*(*uint8)(unsafe.Pointer(ifFalsePc + libc.UintptrFromInt32(1) + libc.UintptrFromInt32(2))))<<libc.Int32FromInt32(8)) | uint32(*(*uint8)(unsafe.Pointer(ifFalsePc + libc.UintptrFromInt32(1) + libc.UintptrFromInt32(3)))))
 					jumpFalseDist += int32(3)
 					*(*uint8)(unsafe.Pointer(ifFalsePc + libc.UintptrFromInt32(1))) = uint8(uint32(jumpFalseDist) >> libc.Int32FromInt32(24))
@@ -74998,7 +75101,7 @@ func XTclCompileIfCmd(tls *libc.TLS, interp uintptr, parsePtr uintptr, cmdPtr ui
 					*(*uint8)(unsafe.Pointer(ifFalsePc + libc.UintptrFromInt32(1) + libc.UintptrFromInt32(2))) = uint8(uint32(jumpFalseDist) >> libc.Int32FromInt32(8))
 					*(*uint8)(unsafe.Pointer(ifFalsePc + libc.UintptrFromInt32(1) + libc.UintptrFromInt32(3))) = uint8(uint32(jumpFalseDist))
 				} else {
-					XTcl_Panic(tls, ts+18441, libc.VaList(bp+384, int32(int32(opCode))))
+					XTcl_Panic(tls, ts+18441, libc.VaList(bp+384, int32(opCode)))
 				}
 			}
 		}
@@ -82030,7 +82133,7 @@ func XTclCompileNamespaceQualifiersCmd(tls *libc.TLS, interp uintptr, parsePtr u
 		}
 		*(*int32)(unsafe.Pointer(envPtr + 48)) += _delta16
 	}
-	off = int32(int64(int64(off)) - (int64((*TCompileEnv)(unsafe.Pointer(envPtr)).FcodeNext) - int64((*TCompileEnv)(unsafe.Pointer(envPtr)).FcodeStart)))
+	off = int32(int64(off) - (int64((*TCompileEnv)(unsafe.Pointer(envPtr)).FcodeNext) - int64((*TCompileEnv)(unsafe.Pointer(envPtr)).FcodeStart)))
 	if (*TCompileEnv)(unsafe.Pointer(envPtr)).FcodeNext+uintptr(2) > (*TCompileEnv)(unsafe.Pointer(envPtr)).FcodeEnd {
 		XTclExpandCodeArray(tls, envPtr)
 	}
@@ -83115,7 +83218,7 @@ func XTclCompileRegexpCmd(tls *libc.TLS, interp uintptr, parsePtr uintptr, cmdPt
 			i++
 			break
 		} else {
-			if len1 > int32(1) && libc.Xstrncmp(tls, str, ts+14487, uint64(uint64(len1))) == 0 {
+			if len1 > int32(1) && libc.Xstrncmp(tls, str, ts+14487, uint64(len1)) == 0 {
 				nocase = int32(1)
 			} else {
 				/*
@@ -84205,7 +84308,7 @@ func XTclCompileReturnCmd(tls *libc.TLS, interp uintptr, parsePtr uintptr, cmdPt
 	/*
 	 * Allocate some working space.
 	 */
-	objv = XTclStackAlloc(tls, interp, int32(uint64(uint64(numOptionWords))*uint64(8)))
+	objv = XTclStackAlloc(tls, interp, int32(uint64(numOptionWords)*uint64(8)))
 	/*
 	 * Scan through the return options. If any are unknown at compile time,
 	 * there is no value in bytecompiling. Save the option values known in an
@@ -86054,7 +86157,7 @@ func _IndexTailVarIfKnown(tls *libc.TLS, interp uintptr, varTokenPtr uintptr, en
 			}
 			return -int32(1)
 		}
-		*(*int32)(unsafe.Pointer(bp)) = int32(int64(*(*int32)(unsafe.Pointer(bp))) - (int64(int64(p)) - int64(int64(tailName))))
+		*(*int32)(unsafe.Pointer(bp)) = int32(int64(*(*int32)(unsafe.Pointer(bp))) - (int64(p) - int64(tailName)))
 		tailName = p
 	}
 	localIndex = XTclFindCompiledLocal(tls, tailName, *(*int32)(unsafe.Pointer(bp)), int32(1), envPtr)
@@ -91160,7 +91263,7 @@ func XTclCompileStringMatchCmd(tls *libc.TLS, interp uintptr, parsePtr uintptr, 
 		}
 		str = (*(*TTcl_Token)(unsafe.Pointer(tokenPtr + 1*24))).Fstart
 		length = (*(*TTcl_Token)(unsafe.Pointer(tokenPtr + 1*24))).Fsize
-		if length <= int32(1) || libc.Xstrncmp(tls, str, ts+14487, uint64(uint64(length))) != 0 {
+		if length <= int32(1) || libc.Xstrncmp(tls, str, ts+14487, uint64(length)) != 0 {
 			/*
 			 * Fail at run time, not in compilation.
 			 */
@@ -94990,7 +95093,7 @@ func XTclCompileSubstCmd(tls *libc.TLS, interp uintptr, parsePtr uintptr, cmdPtr
 	if numArgs == 0 {
 		return int32(m_TCL_ERROR)
 	}
-	objv = XTclStackAlloc(tls, interp, int32(uint64(uint64(numOpts))*uint64(8)))
+	objv = XTclStackAlloc(tls, interp, int32(uint64(numOpts)*uint64(8)))
 	objc = 0
 	for {
 		if !(objc < numOpts) {
@@ -95768,7 +95871,7 @@ func XTclSubstCompile(tls *libc.TLS, interp uintptr, bytes uintptr, numBytes int
 			}
 			*(*int32)(unsafe.Pointer(envPtr + 48)) += _delta19
 		}
-		breakJump = int32(int64((*TCompileEnv)(unsafe.Pointer(envPtr)).FcodeNext) - int64((*TCompileEnv)(unsafe.Pointer(envPtr)).FcodeStart) - int64(int64(breakOffset)))
+		breakJump = int32(int64((*TCompileEnv)(unsafe.Pointer(envPtr)).FcodeNext) - int64((*TCompileEnv)(unsafe.Pointer(envPtr)).FcodeStart) - int64(breakOffset))
 		if breakJump > int32(127) {
 			if (*TCompileEnv)(unsafe.Pointer(envPtr)).FcodeNext+uintptr(5) > (*TCompileEnv)(unsafe.Pointer(envPtr)).FcodeEnd {
 				XTclExpandCodeArray(tls, envPtr)
@@ -96080,10 +96183,10 @@ func XTclSubstCompile(tls *libc.TLS, interp uintptr, bytes uintptr, numBytes int
 	/* Final target of the multi-jump from all BREAKs */
 	if breakOffset > 0 {
 		*(*uint8)(unsafe.Pointer((*TCompileEnv)(unsafe.Pointer(envPtr)).FcodeStart + uintptr(breakOffset))) = uint8(libc.Int32FromInt32(m_INST_JUMP4))
-		*(*uint8)(unsafe.Pointer((*TCompileEnv)(unsafe.Pointer(envPtr)).FcodeStart + uintptr(breakOffset) + libc.UintptrFromInt32(1))) = uint8(uint32(int64((*TCompileEnv)(unsafe.Pointer(envPtr)).FcodeNext)-int64((*TCompileEnv)(unsafe.Pointer(envPtr)).FcodeStart)-int64(int64(breakOffset))) >> libc.Int32FromInt32(24))
-		*(*uint8)(unsafe.Pointer((*TCompileEnv)(unsafe.Pointer(envPtr)).FcodeStart + uintptr(breakOffset) + libc.UintptrFromInt32(1) + libc.UintptrFromInt32(1))) = uint8(uint32(int64((*TCompileEnv)(unsafe.Pointer(envPtr)).FcodeNext)-int64((*TCompileEnv)(unsafe.Pointer(envPtr)).FcodeStart)-int64(int64(breakOffset))) >> libc.Int32FromInt32(16))
-		*(*uint8)(unsafe.Pointer((*TCompileEnv)(unsafe.Pointer(envPtr)).FcodeStart + uintptr(breakOffset) + libc.UintptrFromInt32(1) + libc.UintptrFromInt32(2))) = uint8(uint32(int64((*TCompileEnv)(unsafe.Pointer(envPtr)).FcodeNext)-int64((*TCompileEnv)(unsafe.Pointer(envPtr)).FcodeStart)-int64(int64(breakOffset))) >> libc.Int32FromInt32(8))
-		*(*uint8)(unsafe.Pointer((*TCompileEnv)(unsafe.Pointer(envPtr)).FcodeStart + uintptr(breakOffset) + libc.UintptrFromInt32(1) + libc.UintptrFromInt32(3))) = uint8(uint32(int64((*TCompileEnv)(unsafe.Pointer(envPtr)).FcodeNext) - int64((*TCompileEnv)(unsafe.Pointer(envPtr)).FcodeStart) - int64(int64(breakOffset))))
+		*(*uint8)(unsafe.Pointer((*TCompileEnv)(unsafe.Pointer(envPtr)).FcodeStart + uintptr(breakOffset) + libc.UintptrFromInt32(1))) = uint8(uint32(int64((*TCompileEnv)(unsafe.Pointer(envPtr)).FcodeNext)-int64((*TCompileEnv)(unsafe.Pointer(envPtr)).FcodeStart)-int64(breakOffset)) >> libc.Int32FromInt32(24))
+		*(*uint8)(unsafe.Pointer((*TCompileEnv)(unsafe.Pointer(envPtr)).FcodeStart + uintptr(breakOffset) + libc.UintptrFromInt32(1) + libc.UintptrFromInt32(1))) = uint8(uint32(int64((*TCompileEnv)(unsafe.Pointer(envPtr)).FcodeNext)-int64((*TCompileEnv)(unsafe.Pointer(envPtr)).FcodeStart)-int64(breakOffset)) >> libc.Int32FromInt32(16))
+		*(*uint8)(unsafe.Pointer((*TCompileEnv)(unsafe.Pointer(envPtr)).FcodeStart + uintptr(breakOffset) + libc.UintptrFromInt32(1) + libc.UintptrFromInt32(2))) = uint8(uint32(int64((*TCompileEnv)(unsafe.Pointer(envPtr)).FcodeNext)-int64((*TCompileEnv)(unsafe.Pointer(envPtr)).FcodeStart)-int64(breakOffset)) >> libc.Int32FromInt32(8))
+		*(*uint8)(unsafe.Pointer((*TCompileEnv)(unsafe.Pointer(envPtr)).FcodeStart + uintptr(breakOffset) + libc.UintptrFromInt32(1) + libc.UintptrFromInt32(3))) = uint8(uint32(int64((*TCompileEnv)(unsafe.Pointer(envPtr)).FcodeNext) - int64((*TCompileEnv)(unsafe.Pointer(envPtr)).FcodeStart) - int64(breakOffset)))
 	}
 }
 
@@ -96176,7 +96279,7 @@ func XTclCompileSwitchCmd(tls *libc.TLS, interp uintptr, parsePtr uintptr, cmdPt
 		if (*TTcl_Token)(unsafe.Pointer(tokenPtr)).Ftype1 != int32(m_TCL_TOKEN_SIMPLE_WORD) || size < uint32(2) {
 			return int32(m_TCL_ERROR)
 		}
-		if size <= uint32(6) && !(libc.Xmemcmp(tls, chrs, ts+14438, uint64(uint64(size))) != 0) {
+		if size <= uint32(6) && !(libc.Xmemcmp(tls, chrs, ts+14438, uint64(size)) != 0) {
 			if foundMode != 0 {
 				return int32(m_TCL_ERROR)
 			}
@@ -96185,7 +96288,7 @@ func XTclCompileSwitchCmd(tls *libc.TLS, interp uintptr, parsePtr uintptr, cmdPt
 			valueIndex++
 			goto _1
 		} else {
-			if size <= uint32(5) && !(libc.Xmemcmp(tls, chrs, ts+14445, uint64(uint64(size))) != 0) {
+			if size <= uint32(5) && !(libc.Xmemcmp(tls, chrs, ts+14445, uint64(size)) != 0) {
 				if foundMode != 0 {
 					return int32(m_TCL_ERROR)
 				}
@@ -96194,7 +96297,7 @@ func XTclCompileSwitchCmd(tls *libc.TLS, interp uintptr, parsePtr uintptr, cmdPt
 				valueIndex++
 				goto _1
 			} else {
-				if size <= uint32(7) && !(libc.Xmemcmp(tls, chrs, ts+14506, uint64(uint64(size))) != 0) {
+				if size <= uint32(7) && !(libc.Xmemcmp(tls, chrs, ts+14506, uint64(size)) != 0) {
 					if foundMode != 0 {
 						return int32(m_TCL_ERROR)
 					}
@@ -96203,7 +96306,7 @@ func XTclCompileSwitchCmd(tls *libc.TLS, interp uintptr, parsePtr uintptr, cmdPt
 					valueIndex++
 					goto _1
 				} else {
-					if size <= uint32(7) && !(libc.Xmemcmp(tls, chrs, ts+14487, uint64(uint64(size))) != 0) {
+					if size <= uint32(7) && !(libc.Xmemcmp(tls, chrs, ts+14487, uint64(size)) != 0) {
 						noCase = int32(1)
 						valueIndex++
 						goto _1
@@ -96233,7 +96336,7 @@ func XTclCompileSwitchCmd(tls *libc.TLS, interp uintptr, parsePtr uintptr, cmdPt
 	}
 	tokenPtr = tokenPtr + uintptr((*TTcl_Token)(unsafe.Pointer(tokenPtr)).FnumComponents+libc.Int32FromInt32(1))*24
 	numWords--
-	if noCase != 0 && int32(mode) == 0 {
+	if noCase != 0 && mode == 0 {
 		/*
 		 * Can't compile this case; no opcode for case-insensitive equality!
 		 */
@@ -96272,10 +96375,10 @@ finishedOptionParse:
 	if maxLen < int32(2) {
 		return int32(m_TCL_ERROR)
 	}
-	bodyTokenArray = XTcl_Alloc(tls, uint32(libc.Uint64FromInt64(24)*uint64(uint64(maxLen))))
-	bodyToken = XTcl_Alloc(tls, uint32(libc.Uint64FromInt64(8)*uint64(uint64(maxLen))))
-	bodyLines = XTcl_Alloc(tls, uint32(libc.Uint64FromInt64(4)*uint64(uint64(maxLen))))
-	bodyContLines = XTcl_Alloc(tls, uint32(libc.Uint64FromInt64(8)*uint64(uint64(maxLen))))
+	bodyTokenArray = XTcl_Alloc(tls, uint32(libc.Uint64FromInt64(24)*uint64(maxLen)))
+	bodyToken = XTcl_Alloc(tls, uint32(libc.Uint64FromInt64(8)*uint64(maxLen)))
+	bodyLines = XTcl_Alloc(tls, uint32(libc.Uint64FromInt64(4)*uint64(maxLen)))
+	bodyContLines = XTcl_Alloc(tls, uint32(libc.Uint64FromInt64(8)*uint64(maxLen)))
 	*(*int32)(unsafe.Pointer(bp + 16)) = *(*int32)(unsafe.Pointer((*(*TECL)(unsafe.Pointer((*TExtCmdLoc)(unsafe.Pointer(mapPtr)).Floc + uintptr(eclIndex)*24))).Fline + uintptr(valueIndex+int32(1))*4))
 	numWords = 0
 	for numBytes > 0 {
@@ -96297,7 +96400,7 @@ finishedOptionParse:
 		*(*uintptr)(unsafe.Pointer(bodyContLines + uintptr(numWords)*8)) = *(*uintptr)(unsafe.Pointer(bp))
 		XTclAdvanceLines(tls, bp+16, (*(*TTcl_Token)(unsafe.Pointer(bodyTokenArray + uintptr(numWords)*24))).Fstart, *(*uintptr)(unsafe.Pointer(bp + 8)))
 		XTclAdvanceContinuations(tls, bp+16, bp, int32(int64(*(*uintptr)(unsafe.Pointer(bp + 8)))-int64((*TCompileEnv)(unsafe.Pointer(envPtr)).Fsource)))
-		numBytes = int32(int64(numBytes) - (int64(*(*uintptr)(unsafe.Pointer(bp + 8))) - int64(int64(prevBytes))))
+		numBytes = int32(int64(numBytes) - (int64(*(*uintptr)(unsafe.Pointer(bp + 8))) - int64(prevBytes)))
 		numWords++
 	}
 	if !(numWords%int32(2) != 0) {
@@ -96325,9 +96428,9 @@ _2:
 		/*
 		 * Multi-word definition of patterns & actions.
 		 */
-		bodyToken = XTcl_Alloc(tls, uint32(libc.Uint64FromInt64(8)*uint64(uint64(numWords))))
-		bodyLines = XTcl_Alloc(tls, uint32(libc.Uint64FromInt64(4)*uint64(uint64(numWords))))
-		bodyContLines = XTcl_Alloc(tls, uint32(libc.Uint64FromInt64(8)*uint64(uint64(numWords))))
+		bodyToken = XTcl_Alloc(tls, uint32(libc.Uint64FromInt64(8)*uint64(numWords)))
+		bodyLines = XTcl_Alloc(tls, uint32(libc.Uint64FromInt64(4)*uint64(numWords)))
+		bodyContLines = XTcl_Alloc(tls, uint32(libc.Uint64FromInt64(8)*uint64(numWords)))
 		bodyTokenArray = libc.UintptrFromInt32(0)
 		i = 0
 		for {
@@ -96444,10 +96547,10 @@ _3:
 		(*TCompileEnv)(unsafe.Pointer(envPtr)).FclNext = *(*uintptr)(unsafe.Pointer((*(*TECL)(unsafe.Pointer((*TExtCmdLoc)(unsafe.Pointer(mapPtr)).Floc + uintptr(eclIndex)*24))).Fnext + uintptr(valueIndex)*8))
 		XTclCompileTokens(tls, interp, valueTokenPtr+uintptr(1)*24, (*TTcl_Token)(unsafe.Pointer(valueTokenPtr)).FnumComponents, envPtr)
 	}
-	if int32(mode) == 0 {
+	if mode == 0 {
 		_IssueSwitchJumpTable(tls, interp, envPtr, valueIndex, numWords, bodyToken, bodyLines, bodyContLines)
 	} else {
-		_IssueSwitchChainedTests(tls, interp, envPtr, int32(mode), noCase, valueIndex, numWords, bodyToken, bodyLines, bodyContLines)
+		_IssueSwitchChainedTests(tls, interp, envPtr, mode, noCase, valueIndex, numWords, bodyToken, bodyLines, bodyContLines)
 	}
 	result = m_TCL_OK
 	/*
@@ -96492,9 +96595,9 @@ func _IssueSwitchChainedTests(tls *libc.TLS, interp uintptr, envPtr uintptr, mod
 	 */
 	contFixIndex = -int32(1)
 	contFixCount = 0
-	fixupArray = XTclStackAlloc(tls, interp, int32(uint64(16)*uint64(uint64(numBodyTokens))))
-	fixupTargetArray = XTclStackAlloc(tls, interp, int32(uint64(4)*uint64(uint64(numBodyTokens))))
-	libc.Xmemset(tls, fixupTargetArray, 0, uint64(uint64(numBodyTokens))*uint64(4))
+	fixupArray = XTclStackAlloc(tls, interp, int32(uint64(16)*uint64(numBodyTokens)))
+	fixupTargetArray = XTclStackAlloc(tls, interp, int32(uint64(4)*uint64(numBodyTokens)))
+	libc.Xmemset(tls, fixupTargetArray, 0, uint64(numBodyTokens)*uint64(4))
 	fixupCount = 0
 	foundDefault = 0
 	i = 0
@@ -97319,7 +97422,7 @@ func _IssueSwitchJumpTable(tls *libc.TLS, interp uintptr, envPtr uintptr, valueI
 				 * First time we've encountered this match clause, so it must
 				 * point to here.
 				 */
-				(*TTcl_HashEntry)(unsafe.Pointer(hPtr)).FclientData = uintptr(int64((*TCompileEnv)(unsafe.Pointer(envPtr)).FcodeNext) - int64((*TCompileEnv)(unsafe.Pointer(envPtr)).FcodeStart) - int64(int64(jumpLocation)))
+				(*TTcl_HashEntry)(unsafe.Pointer(hPtr)).FclientData = uintptr(int64((*TCompileEnv)(unsafe.Pointer(envPtr)).FcodeNext) - int64((*TCompileEnv)(unsafe.Pointer(envPtr)).FcodeStart) - int64(jumpLocation))
 			}
 			XTcl_DStringFree(tls, bp+8)
 		} else {
@@ -97329,10 +97432,10 @@ func _IssueSwitchJumpTable(tls *libc.TLS, interp uintptr, envPtr uintptr, valueI
 			 */
 			foundDefault = int32(1)
 			*(*int32)(unsafe.Pointer(bp)) = int32(1)
-			*(*uint8)(unsafe.Pointer((*TCompileEnv)(unsafe.Pointer(envPtr)).FcodeStart + uintptr(jumpToDefault) + libc.UintptrFromInt32(1))) = uint8(uint32(int64((*TCompileEnv)(unsafe.Pointer(envPtr)).FcodeNext)-int64((*TCompileEnv)(unsafe.Pointer(envPtr)).FcodeStart)-int64(int64(jumpToDefault))) >> libc.Int32FromInt32(24))
-			*(*uint8)(unsafe.Pointer((*TCompileEnv)(unsafe.Pointer(envPtr)).FcodeStart + uintptr(jumpToDefault) + libc.UintptrFromInt32(1) + libc.UintptrFromInt32(1))) = uint8(uint32(int64((*TCompileEnv)(unsafe.Pointer(envPtr)).FcodeNext)-int64((*TCompileEnv)(unsafe.Pointer(envPtr)).FcodeStart)-int64(int64(jumpToDefault))) >> libc.Int32FromInt32(16))
-			*(*uint8)(unsafe.Pointer((*TCompileEnv)(unsafe.Pointer(envPtr)).FcodeStart + uintptr(jumpToDefault) + libc.UintptrFromInt32(1) + libc.UintptrFromInt32(2))) = uint8(uint32(int64((*TCompileEnv)(unsafe.Pointer(envPtr)).FcodeNext)-int64((*TCompileEnv)(unsafe.Pointer(envPtr)).FcodeStart)-int64(int64(jumpToDefault))) >> libc.Int32FromInt32(8))
-			*(*uint8)(unsafe.Pointer((*TCompileEnv)(unsafe.Pointer(envPtr)).FcodeStart + uintptr(jumpToDefault) + libc.UintptrFromInt32(1) + libc.UintptrFromInt32(3))) = uint8(uint32(int64((*TCompileEnv)(unsafe.Pointer(envPtr)).FcodeNext) - int64((*TCompileEnv)(unsafe.Pointer(envPtr)).FcodeStart) - int64(int64(jumpToDefault))))
+			*(*uint8)(unsafe.Pointer((*TCompileEnv)(unsafe.Pointer(envPtr)).FcodeStart + uintptr(jumpToDefault) + libc.UintptrFromInt32(1))) = uint8(uint32(int64((*TCompileEnv)(unsafe.Pointer(envPtr)).FcodeNext)-int64((*TCompileEnv)(unsafe.Pointer(envPtr)).FcodeStart)-int64(jumpToDefault)) >> libc.Int32FromInt32(24))
+			*(*uint8)(unsafe.Pointer((*TCompileEnv)(unsafe.Pointer(envPtr)).FcodeStart + uintptr(jumpToDefault) + libc.UintptrFromInt32(1) + libc.UintptrFromInt32(1))) = uint8(uint32(int64((*TCompileEnv)(unsafe.Pointer(envPtr)).FcodeNext)-int64((*TCompileEnv)(unsafe.Pointer(envPtr)).FcodeStart)-int64(jumpToDefault)) >> libc.Int32FromInt32(16))
+			*(*uint8)(unsafe.Pointer((*TCompileEnv)(unsafe.Pointer(envPtr)).FcodeStart + uintptr(jumpToDefault) + libc.UintptrFromInt32(1) + libc.UintptrFromInt32(2))) = uint8(uint32(int64((*TCompileEnv)(unsafe.Pointer(envPtr)).FcodeNext)-int64((*TCompileEnv)(unsafe.Pointer(envPtr)).FcodeStart)-int64(jumpToDefault)) >> libc.Int32FromInt32(8))
+			*(*uint8)(unsafe.Pointer((*TCompileEnv)(unsafe.Pointer(envPtr)).FcodeStart + uintptr(jumpToDefault) + libc.UintptrFromInt32(1) + libc.UintptrFromInt32(3))) = uint8(uint32(int64((*TCompileEnv)(unsafe.Pointer(envPtr)).FcodeNext) - int64((*TCompileEnv)(unsafe.Pointer(envPtr)).FcodeStart) - int64(jumpToDefault)))
 		}
 		/*
 		 * Now, for each arm we must deal with the body of the clause.
@@ -97430,10 +97533,10 @@ func _IssueSwitchJumpTable(tls *libc.TLS, interp uintptr, envPtr uintptr, valueI
 	 * now.
 	 */
 	if !(foundDefault != 0) {
-		*(*uint8)(unsafe.Pointer((*TCompileEnv)(unsafe.Pointer(envPtr)).FcodeStart + uintptr(jumpToDefault) + libc.UintptrFromInt32(1))) = uint8(uint32(int64((*TCompileEnv)(unsafe.Pointer(envPtr)).FcodeNext)-int64((*TCompileEnv)(unsafe.Pointer(envPtr)).FcodeStart)-int64(int64(jumpToDefault))) >> libc.Int32FromInt32(24))
-		*(*uint8)(unsafe.Pointer((*TCompileEnv)(unsafe.Pointer(envPtr)).FcodeStart + uintptr(jumpToDefault) + libc.UintptrFromInt32(1) + libc.UintptrFromInt32(1))) = uint8(uint32(int64((*TCompileEnv)(unsafe.Pointer(envPtr)).FcodeNext)-int64((*TCompileEnv)(unsafe.Pointer(envPtr)).FcodeStart)-int64(int64(jumpToDefault))) >> libc.Int32FromInt32(16))
-		*(*uint8)(unsafe.Pointer((*TCompileEnv)(unsafe.Pointer(envPtr)).FcodeStart + uintptr(jumpToDefault) + libc.UintptrFromInt32(1) + libc.UintptrFromInt32(2))) = uint8(uint32(int64((*TCompileEnv)(unsafe.Pointer(envPtr)).FcodeNext)-int64((*TCompileEnv)(unsafe.Pointer(envPtr)).FcodeStart)-int64(int64(jumpToDefault))) >> libc.Int32FromInt32(8))
-		*(*uint8)(unsafe.Pointer((*TCompileEnv)(unsafe.Pointer(envPtr)).FcodeStart + uintptr(jumpToDefault) + libc.UintptrFromInt32(1) + libc.UintptrFromInt32(3))) = uint8(uint32(int64((*TCompileEnv)(unsafe.Pointer(envPtr)).FcodeNext) - int64((*TCompileEnv)(unsafe.Pointer(envPtr)).FcodeStart) - int64(int64(jumpToDefault))))
+		*(*uint8)(unsafe.Pointer((*TCompileEnv)(unsafe.Pointer(envPtr)).FcodeStart + uintptr(jumpToDefault) + libc.UintptrFromInt32(1))) = uint8(uint32(int64((*TCompileEnv)(unsafe.Pointer(envPtr)).FcodeNext)-int64((*TCompileEnv)(unsafe.Pointer(envPtr)).FcodeStart)-int64(jumpToDefault)) >> libc.Int32FromInt32(24))
+		*(*uint8)(unsafe.Pointer((*TCompileEnv)(unsafe.Pointer(envPtr)).FcodeStart + uintptr(jumpToDefault) + libc.UintptrFromInt32(1) + libc.UintptrFromInt32(1))) = uint8(uint32(int64((*TCompileEnv)(unsafe.Pointer(envPtr)).FcodeNext)-int64((*TCompileEnv)(unsafe.Pointer(envPtr)).FcodeStart)-int64(jumpToDefault)) >> libc.Int32FromInt32(16))
+		*(*uint8)(unsafe.Pointer((*TCompileEnv)(unsafe.Pointer(envPtr)).FcodeStart + uintptr(jumpToDefault) + libc.UintptrFromInt32(1) + libc.UintptrFromInt32(2))) = uint8(uint32(int64((*TCompileEnv)(unsafe.Pointer(envPtr)).FcodeNext)-int64((*TCompileEnv)(unsafe.Pointer(envPtr)).FcodeStart)-int64(jumpToDefault)) >> libc.Int32FromInt32(8))
+		*(*uint8)(unsafe.Pointer((*TCompileEnv)(unsafe.Pointer(envPtr)).FcodeStart + uintptr(jumpToDefault) + libc.UintptrFromInt32(1) + libc.UintptrFromInt32(3))) = uint8(uint32(int64((*TCompileEnv)(unsafe.Pointer(envPtr)).FcodeNext) - int64((*TCompileEnv)(unsafe.Pointer(envPtr)).FcodeStart) - int64(jumpToDefault)))
 		_objIndexCopy = XTclRegisterLiteral(tls, envPtr, ts+1943, int32(libc.Uint64FromInt64(1)-libc.Uint64FromInt32(1)), 0)
 		if _objIndexCopy <= int32(255) {
 			if (*TCompileEnv)(unsafe.Pointer(envPtr)).FcodeNext+uintptr(2) > (*TCompileEnv)(unsafe.Pointer(envPtr)).FcodeEnd {
@@ -97609,7 +97712,7 @@ func _PrintJumptableInfo(tls *libc.TLS, clientData TClientData, appendObj uintpt
 				XTcl_AppendToObj(tls, appendObj, ts+18999, -int32(1))
 			}
 		}
-		XTcl_AppendPrintfToObj(tls, appendObj, ts+19003, libc.VaList(bp+32, keyPtr, pcOffset+uint32(uint32(offset))))
+		XTcl_AppendPrintfToObj(tls, appendObj, ts+19003, libc.VaList(bp+32, keyPtr, pcOffset+uint32(offset)))
 		goto _1
 	_1:
 		hPtr = XTcl_NextHashEntry(tls, bp)
@@ -98850,12 +98953,12 @@ func XTclCompileTryCmd(tls *libc.TLS, interp uintptr, parsePtr uintptr, cmdPtr u
 	numHandlers = numWords >> int32(2)
 	numWords -= numHandlers * int32(4)
 	if numHandlers > 0 {
-		handlerTokens = XTclStackAlloc(tls, interp, int32(uint64(8)*uint64(uint64(numHandlers))))
-		matchClauses = XTclStackAlloc(tls, interp, int32(uint64(8)*uint64(uint64(numHandlers))))
-		libc.Xmemset(tls, matchClauses, 0, uint64(8)*uint64(uint64(numHandlers)))
-		matchCodes = XTclStackAlloc(tls, interp, int32(uint64(4)*uint64(uint64(numHandlers))))
-		resultVarIndices = XTclStackAlloc(tls, interp, int32(uint64(4)*uint64(uint64(numHandlers))))
-		optionVarIndices = XTclStackAlloc(tls, interp, int32(uint64(4)*uint64(uint64(numHandlers))))
+		handlerTokens = XTclStackAlloc(tls, interp, int32(uint64(8)*uint64(numHandlers)))
+		matchClauses = XTclStackAlloc(tls, interp, int32(uint64(8)*uint64(numHandlers)))
+		libc.Xmemset(tls, matchClauses, 0, uint64(8)*uint64(numHandlers))
+		matchCodes = XTclStackAlloc(tls, interp, int32(uint64(4)*uint64(numHandlers)))
+		resultVarIndices = XTclStackAlloc(tls, interp, int32(uint64(4)*uint64(numHandlers)))
+		optionVarIndices = XTclStackAlloc(tls, interp, int32(uint64(4)*uint64(numHandlers)))
 		i = 0
 		for {
 			if !(i < numHandlers) {
@@ -99829,9 +99932,9 @@ func _IssueTryClausesInstructions(tls *libc.TLS, interp uintptr, envPtr uintptr,
 	 *
 	 * Slight overallocation, but reduces size of this function.
 	 */
-	addrsToFix = XTclStackAlloc(tls, interp, int32(uint64(4)*uint64(uint64(numHandlers))))
-	forwardsToFix = XTclStackAlloc(tls, interp, int32(uint64(4)*uint64(uint64(numHandlers))))
-	noError = XTclStackAlloc(tls, interp, int32(uint64(4)*uint64(uint64(numHandlers))))
+	addrsToFix = XTclStackAlloc(tls, interp, int32(uint64(4)*uint64(numHandlers)))
+	forwardsToFix = XTclStackAlloc(tls, interp, int32(uint64(4)*uint64(numHandlers)))
+	noError = XTclStackAlloc(tls, interp, int32(uint64(4)*uint64(numHandlers)))
 	i = 0
 	for {
 		if !(i < numHandlers) {
@@ -102574,8 +102677,8 @@ func _IssueTryClausesFinallyInstructions(tls *libc.TLS, interp uintptr, envPtr u
 	 *
 	 * Slight overallocation, but reduces size of this function.
 	 */
-	addrsToFix = XTclStackAlloc(tls, interp, int32(uint64(4)*uint64(uint64(numHandlers))))
-	forwardsToFix = XTclStackAlloc(tls, interp, int32(uint64(4)*uint64(uint64(numHandlers))))
+	addrsToFix = XTclStackAlloc(tls, interp, int32(uint64(4)*uint64(numHandlers)))
+	forwardsToFix = XTclStackAlloc(tls, interp, int32(uint64(4)*uint64(numHandlers)))
 	i = 0
 	for {
 		if !(i < numHandlers) {
@@ -107142,7 +107245,7 @@ func XTclCompileWhileCmd(tls *libc.TLS, interp uintptr, parsePtr uintptr, cmdPtr
 	 */
 	if loopMayEnd != 0 {
 		testCodeOffset = int32(int64((*TCompileEnv)(unsafe.Pointer(envPtr)).FcodeNext) - int64((*TCompileEnv)(unsafe.Pointer(envPtr)).FcodeStart))
-		jumpDist = int32(uint32(uint32(testCodeOffset)) - (*(*TJumpFixup)(unsafe.Pointer(bp))).FcodeOffset)
+		jumpDist = int32(uint32(testCodeOffset) - (*(*TJumpFixup)(unsafe.Pointer(bp))).FcodeOffset)
 		if XTclFixupForwardJump(tls, envPtr, bp, jumpDist, int32(127)) != 0 {
 			bodyCodeOffset += int32(3)
 			testCodeOffset += int32(3)
@@ -107150,7 +107253,7 @@ func XTclCompileWhileCmd(tls *libc.TLS, interp uintptr, parsePtr uintptr, cmdPtr
 		(*TCompileEnv)(unsafe.Pointer(envPtr)).Fline = *(*int32)(unsafe.Pointer((*(*TECL)(unsafe.Pointer((*TExtCmdLoc)(unsafe.Pointer(mapPtr)).Floc + uintptr(eclIndex)*24))).Fline + 1*4))
 		(*TCompileEnv)(unsafe.Pointer(envPtr)).FclNext = *(*uintptr)(unsafe.Pointer((*(*TECL)(unsafe.Pointer((*TExtCmdLoc)(unsafe.Pointer(mapPtr)).Floc + uintptr(eclIndex)*24))).Fnext + 1*8))
 		XTclCompileExprWords(tls, interp, testTokenPtr, int32(1), envPtr)
-		jumpDist = int32(int64((*TCompileEnv)(unsafe.Pointer(envPtr)).FcodeNext) - int64((*TCompileEnv)(unsafe.Pointer(envPtr)).FcodeStart) - int64(int64(bodyCodeOffset)))
+		jumpDist = int32(int64((*TCompileEnv)(unsafe.Pointer(envPtr)).FcodeNext) - int64((*TCompileEnv)(unsafe.Pointer(envPtr)).FcodeStart) - int64(bodyCodeOffset))
 		if jumpDist > int32(127) {
 			if (*TCompileEnv)(unsafe.Pointer(envPtr)).FcodeNext+uintptr(5) > (*TCompileEnv)(unsafe.Pointer(envPtr)).FcodeEnd {
 				XTclExpandCodeArray(tls, envPtr)
@@ -107219,7 +107322,7 @@ func XTclCompileWhileCmd(tls *libc.TLS, interp uintptr, parsePtr uintptr, cmdPtr
 			}
 		}
 	} else {
-		jumpDist = int32(int64((*TCompileEnv)(unsafe.Pointer(envPtr)).FcodeNext) - int64((*TCompileEnv)(unsafe.Pointer(envPtr)).FcodeStart) - int64(int64(bodyCodeOffset)))
+		jumpDist = int32(int64((*TCompileEnv)(unsafe.Pointer(envPtr)).FcodeNext) - int64((*TCompileEnv)(unsafe.Pointer(envPtr)).FcodeStart) - int64(bodyCodeOffset))
 		if jumpDist > int32(127) {
 			if (*TCompileEnv)(unsafe.Pointer(envPtr)).FcodeNext+uintptr(5) > (*TCompileEnv)(unsafe.Pointer(envPtr)).FcodeEnd {
 				XTclExpandCodeArray(tls, envPtr)
@@ -110978,7 +111081,7 @@ func _ParseExpr(tls *libc.TLS, interp uintptr, start uintptr, numBytes int32, op
 	 * error message readable, we impose this
 	 * limit on the substring size we extract. */
 	XTclParseInit(tls, interp, start, numBytes, parsePtr)
-	nodes = XTclpAlloc(tls, uint32(uint64(uint64(nodesAvailable))*libc.Uint64FromInt64(16)))
+	nodes = XTclpAlloc(tls, uint32(uint64(nodesAvailable)*libc.Uint64FromInt64(16)))
 	if nodes == libc.UintptrFromInt32(0) {
 		if XtclFreeObjList == libc.UintptrFromInt32(0) {
 			XTclAllocateFreeObjects(tls)
@@ -111009,7 +111112,7 @@ func _ParseExpr(tls *libc.TLS, interp uintptr, start uintptr, numBytes int32, op
 	(*TOpNode)(unsafe.Pointer(nodes)).Fprecedence = _prec[libc.Int32FromInt32(m_UNARY)|libc.Int32FromInt32(4)]
 	(*TOpNode)(unsafe.Pointer(nodes)).Fmark = uint8(_MARK_RIGHT)
 	(*TOpNode)(unsafe.Pointer(nodes)).Fconstant = uint8(1)
-	v1 = int32(int32(nodesUsed))
+	v1 = int32(nodesUsed)
 	lastParsed = v1
 	incomplete = v1
 	nodesUsed++
@@ -111030,8 +111133,8 @@ func _ParseExpr(tls *libc.TLS, interp uintptr, start uintptr, numBytes int32, op
 			size = nodesUsed * uint32(2)
 			newPtr = libc.UintptrFromInt32(0)
 			for {
-				if uint64(uint64(size)) <= libc.Uint64FromUint32(0xffffffff)/libc.Uint64FromInt64(16) {
-					newPtr = XTclpRealloc(tls, nodes, uint32(uint64(uint64(size))*libc.Uint64FromInt64(16)))
+				if uint64(size) <= libc.Uint64FromUint32(0xffffffff)/libc.Uint64FromInt64(16) {
+					newPtr = XTclpRealloc(tls, nodes, uint32(uint64(size)*libc.Uint64FromInt64(16)))
 				}
 				goto _3
 			_3:
@@ -111263,13 +111366,13 @@ func _ParseExpr(tls *libc.TLS, interp uintptr, start uintptr, numBytes int32, op
 				if allocated > int32(libc.Uint64FromUint32(0xffffffff)/libc.Uint64FromInt64(24)) {
 					allocated = int32(libc.Uint64FromUint32(0xffffffff) / libc.Uint64FromInt64(24))
 				}
-				newPtr1 = XTclpRealloc(tls, oldPtr, uint32(uint64(uint64(allocated))*libc.Uint64FromInt64(24)))
+				newPtr1 = XTclpRealloc(tls, oldPtr, uint32(uint64(allocated)*libc.Uint64FromInt64(24)))
 				if newPtr1 == libc.UintptrFromInt32(0) {
 					allocated = int32(uint64(_needed+int32(2)) + libc.Uint64FromInt32(m_TCL_MIN_GROWTH)/libc.Uint64FromInt64(24))
 					if allocated > int32(libc.Uint64FromUint32(0xffffffff)/libc.Uint64FromInt64(24)) {
 						allocated = int32(libc.Uint64FromUint32(0xffffffff) / libc.Uint64FromInt64(24))
 					}
-					newPtr1 = XTcl_Realloc(tls, oldPtr, uint32(uint64(uint64(allocated))*libc.Uint64FromInt64(24)))
+					newPtr1 = XTcl_Realloc(tls, oldPtr, uint32(uint64(allocated)*libc.Uint64FromInt64(24)))
 				}
 				(*TTcl_Parse)(unsafe.Pointer(parsePtr)).FtokensAvailable = allocated
 				if oldPtr == libc.UintptrFromInt32(0) {
@@ -111285,10 +111388,10 @@ func _ParseExpr(tls *libc.TLS, interp uintptr, start uintptr, numBytes int32, op
 			switch int32(*(*uint8)(unsafe.Pointer(bp))) {
 			case libc.Int32FromInt32(m_LEAF) | libc.Int32FromInt32(6):
 				code = XTcl_ParseQuotedString(tls, libc.UintptrFromInt32(0), start, numBytes, parsePtr, int32(1), bp+32)
-				scanned = int32(int64(*(*uintptr)(unsafe.Pointer(bp + 32))) - int64(int64(start)))
+				scanned = int32(int64(*(*uintptr)(unsafe.Pointer(bp + 32))) - int64(start))
 			case libc.Int32FromInt32(m_LEAF) | libc.Int32FromInt32(4):
 				code = XTcl_ParseBraces(tls, libc.UintptrFromInt32(0), start, numBytes, parsePtr, int32(1), bp+32)
-				scanned = int32(int64(*(*uintptr)(unsafe.Pointer(bp + 32))) - int64(int64(start)))
+				scanned = int32(int64(*(*uintptr)(unsafe.Pointer(bp + 32))) - int64(start))
 			case libc.Int32FromInt32(m_LEAF) | libc.Int32FromInt32(5):
 				code = XTcl_ParseVarName(tls, libc.UintptrFromInt32(0), start, numBytes, parsePtr, int32(1))
 				/*
@@ -111329,7 +111432,7 @@ func _ParseExpr(tls *libc.TLS, interp uintptr, start uintptr, numBytes int32, op
 				*(*uintptr)(unsafe.Pointer(bp + 32)) = start + uintptr(numBytes)
 				start++
 				for int32(1) != 0 {
-					code = XTcl_ParseCommand(tls, interp, start, int32(int64(*(*uintptr)(unsafe.Pointer(bp + 32)))-int64(int64(start))), int32(1), nestedPtr)
+					code = XTcl_ParseCommand(tls, interp, start, int32(int64(*(*uintptr)(unsafe.Pointer(bp + 32)))-int64(start)), int32(1), nestedPtr)
 					if code != m_TCL_OK {
 						(*TTcl_Parse)(unsafe.Pointer(parsePtr)).Fterm = (*TTcl_Parse)(unsafe.Pointer(nestedPtr)).Fterm
 						(*TTcl_Parse)(unsafe.Pointer(parsePtr)).FerrorType = (*TTcl_Parse)(unsafe.Pointer(nestedPtr)).FerrorType
@@ -111372,7 +111475,7 @@ func _ParseExpr(tls *libc.TLS, interp uintptr, start uintptr, numBytes int32, op
 				XTclStackFree(tls, interp, nestedPtr)
 				*(*uintptr)(unsafe.Pointer(bp + 32)) = start
 				start = (*TTcl_Token)(unsafe.Pointer(tokenPtr)).Fstart
-				scanned = int32(int64(*(*uintptr)(unsafe.Pointer(bp + 32))) - int64(int64(start)))
+				scanned = int32(int64(*(*uintptr)(unsafe.Pointer(bp + 32))) - int64(start))
 				(*TTcl_Token)(unsafe.Pointer(tokenPtr)).Fsize = scanned
 				(*TTcl_Parse)(unsafe.Pointer(parsePtr)).FnumTokens++
 				break
@@ -111486,7 +111589,7 @@ func _ParseExpr(tls *libc.TLS, interp uintptr, start uintptr, numBytes int32, op
 			 * lexeme we parsed.
 			 */
 			*(*int32)(unsafe.Pointer(nodePtr + 8)) = incomplete
-			v21 = int32(int32(nodesUsed))
+			v21 = int32(nodesUsed)
 			lastParsed = v21
 			incomplete = v21
 			nodesUsed++
@@ -111520,7 +111623,7 @@ func _ParseExpr(tls *libc.TLS, interp uintptr, start uintptr, numBytes int32, op
 					errCode = ts + 19520
 					goto error
 				}
-				if int32((*(*TOpNode)(unsafe.Pointer(nodePtr + uintptr(-libc.Int32FromInt32(1))*16))).Fprecedence) > int32(int32(precedence)) {
+				if int32((*(*TOpNode)(unsafe.Pointer(nodePtr + uintptr(-libc.Int32FromInt32(1))*16))).Fprecedence) > int32(precedence) {
 					if int32((*(*TOpNode)(unsafe.Pointer(nodePtr + uintptr(-libc.Int32FromInt32(1))*16))).Flexeme) == libc.Int32FromInt32(m_UNARY)|libc.Int32FromInt32(5) {
 						if XtclFreeObjList == libc.UintptrFromInt32(0) {
 							XTclAllocateFreeObjects(tls)
@@ -111644,10 +111747,10 @@ func _ParseExpr(tls *libc.TLS, interp uintptr, start uintptr, numBytes int32, op
 			 */
 			for int32(1) != 0 {
 				incompletePtr = nodes + uintptr(incomplete)*16
-				if int32((*TOpNode)(unsafe.Pointer(incompletePtr)).Fprecedence) < int32(int32(precedence)) {
+				if int32((*TOpNode)(unsafe.Pointer(incompletePtr)).Fprecedence) < int32(precedence) {
 					break
 				}
-				if int32((*TOpNode)(unsafe.Pointer(incompletePtr)).Fprecedence) == int32(int32(precedence)) {
+				if int32((*TOpNode)(unsafe.Pointer(incompletePtr)).Fprecedence) == int32(precedence) {
 					/*
 					 * Right association rules for exponentiation.
 					 */
@@ -111865,7 +111968,7 @@ func _ParseExpr(tls *libc.TLS, interp uintptr, start uintptr, numBytes int32, op
 			 */
 			(*TOpNode)(unsafe.Pointer(nodePtr)).Fconstant = libc.BoolUint8(int32(*(*uint8)(unsafe.Pointer(bp))) != libc.Int32FromInt32(m_BINARY)|libc.Int32FromInt32(3))
 			if complete >= 0 {
-				*(*int32)(unsafe.Pointer(nodes + uintptr(complete)*16 + 8)) = int32(int32(nodesUsed))
+				*(*int32)(unsafe.Pointer(nodes + uintptr(complete)*16 + 8)) = int32(nodesUsed)
 				(*TOpNode)(unsafe.Pointer(nodePtr)).Fconstant = libc.BoolUint8((*TOpNode)(unsafe.Pointer(nodePtr)).Fconstant != 0 && (*(*TOpNode)(unsafe.Pointer(nodes + uintptr(complete)*16))).Fconstant != 0)
 			} else {
 				(*TOpNode)(unsafe.Pointer(nodePtr)).Fconstant = libc.BoolUint8((*TOpNode)(unsafe.Pointer(nodePtr)).Fconstant != 0 && complete == int32(_OT_LITERAL))
@@ -111876,7 +111979,7 @@ func _ParseExpr(tls *libc.TLS, interp uintptr, start uintptr, numBytes int32, op
 			 * Push it onto the stack of incomplete trees.
 			 */
 			*(*int32)(unsafe.Pointer(nodePtr + 8)) = incomplete
-			v23 = int32(int32(nodesUsed))
+			v23 = int32(nodesUsed)
 			lastParsed = v23
 			incomplete = v23
 			nodesUsed++
@@ -111932,7 +112035,7 @@ error:
 			v26 = ts + 7777
 		}
 		if start-uintptr(limit) < (*TTcl_Parse)(unsafe.Pointer(parsePtr)).Fstring1 {
-			v27 = int32(int64(int64(start)) - int64((*TTcl_Parse)(unsafe.Pointer(parsePtr)).Fstring1))
+			v27 = int32(int64(start) - int64((*TTcl_Parse)(unsafe.Pointer(parsePtr)).Fstring1))
 		} else {
 			v27 = limit - int32(3)
 		}
@@ -111957,7 +112060,7 @@ error:
 			v31 = ts + 1943
 		}
 		if start+uintptr(scanned)+uintptr(limit) > (*TTcl_Parse)(unsafe.Pointer(parsePtr)).Fend {
-			v32 = int32(int64((*TTcl_Parse)(unsafe.Pointer(parsePtr)).Fend)-int64(int64(start))) - scanned
+			v32 = int32(int64((*TTcl_Parse)(unsafe.Pointer(parsePtr)).Fend)-int64(start)) - scanned
 		} else {
 			v32 = limit - int32(3)
 		}
@@ -112073,13 +112176,13 @@ func _ConvertTreeToTokens(tls *libc.TLS, start uintptr, numBytes int32, nodes ui
 				if allocated > int32(libc.Uint64FromUint32(0xffffffff)/libc.Uint64FromInt64(24)) {
 					allocated = int32(libc.Uint64FromUint32(0xffffffff) / libc.Uint64FromInt64(24))
 				}
-				newPtr = XTclpRealloc(tls, oldPtr, uint32(uint64(uint64(allocated))*libc.Uint64FromInt64(24)))
+				newPtr = XTclpRealloc(tls, oldPtr, uint32(uint64(allocated)*libc.Uint64FromInt64(24)))
 				if newPtr == libc.UintptrFromInt32(0) {
 					allocated = int32(uint64(_needed+int32(2)) + libc.Uint64FromInt32(m_TCL_MIN_GROWTH)/libc.Uint64FromInt64(24))
 					if allocated > int32(libc.Uint64FromUint32(0xffffffff)/libc.Uint64FromInt64(24)) {
 						allocated = int32(libc.Uint64FromUint32(0xffffffff) / libc.Uint64FromInt64(24))
 					}
-					newPtr = XTcl_Realloc(tls, oldPtr, uint32(uint64(uint64(allocated))*libc.Uint64FromInt64(24)))
+					newPtr = XTcl_Realloc(tls, oldPtr, uint32(uint64(allocated)*libc.Uint64FromInt64(24)))
 				}
 				(*TTcl_Parse)(unsafe.Pointer(parsePtr)).FtokensAvailable = allocated
 				if oldPtr == libc.UintptrFromInt32(0) {
@@ -112119,13 +112222,13 @@ func _ConvertTreeToTokens(tls *libc.TLS, start uintptr, numBytes int32, nodes ui
 					if allocated1 > int32(libc.Uint64FromUint32(0xffffffff)/libc.Uint64FromInt64(24)) {
 						allocated1 = int32(libc.Uint64FromUint32(0xffffffff) / libc.Uint64FromInt64(24))
 					}
-					newPtr1 = XTclpRealloc(tls, oldPtr1, uint32(uint64(uint64(allocated1))*libc.Uint64FromInt64(24)))
+					newPtr1 = XTclpRealloc(tls, oldPtr1, uint32(uint64(allocated1)*libc.Uint64FromInt64(24)))
 					if newPtr1 == libc.UintptrFromInt32(0) {
 						allocated1 = int32(uint64(_needed1+toCopy) + libc.Uint64FromInt32(m_TCL_MIN_GROWTH)/libc.Uint64FromInt64(24))
 						if allocated1 > int32(libc.Uint64FromUint32(0xffffffff)/libc.Uint64FromInt64(24)) {
 							allocated1 = int32(libc.Uint64FromUint32(0xffffffff) / libc.Uint64FromInt64(24))
 						}
-						newPtr1 = XTcl_Realloc(tls, oldPtr1, uint32(uint64(uint64(allocated1))*libc.Uint64FromInt64(24)))
+						newPtr1 = XTcl_Realloc(tls, oldPtr1, uint32(uint64(allocated1)*libc.Uint64FromInt64(24)))
 					}
 					(*TTcl_Parse)(unsafe.Pointer(parsePtr)).FtokensAvailable = allocated1
 					if oldPtr1 == libc.UintptrFromInt32(0) {
@@ -112134,7 +112237,7 @@ func _ConvertTreeToTokens(tls *libc.TLS, start uintptr, numBytes int32, nodes ui
 					(*TTcl_Parse)(unsafe.Pointer(parsePtr)).FtokenPtr = newPtr1
 				}
 				subExprTokenPtr = (*TTcl_Parse)(unsafe.Pointer(parsePtr)).FtokenPtr + uintptr((*TTcl_Parse)(unsafe.Pointer(parsePtr)).FnumTokens)*24
-				libc.Xmemcpy(tls, subExprTokenPtr, tokenPtr, uint64(uint64(toCopy))*uint64(24))
+				libc.Xmemcpy(tls, subExprTokenPtr, tokenPtr, uint64(toCopy)*uint64(24))
 				(*TTcl_Token)(unsafe.Pointer(subExprTokenPtr)).Ftype1 = int32(m_TCL_TOKEN_SUB_EXPR)
 				*(*int32)(unsafe.Pointer(parsePtr + 40)) += toCopy
 			} else {
@@ -112156,13 +112259,13 @@ func _ConvertTreeToTokens(tls *libc.TLS, start uintptr, numBytes int32, nodes ui
 					if allocated2 > int32(libc.Uint64FromUint32(0xffffffff)/libc.Uint64FromInt64(24)) {
 						allocated2 = int32(libc.Uint64FromUint32(0xffffffff) / libc.Uint64FromInt64(24))
 					}
-					newPtr2 = XTclpRealloc(tls, oldPtr2, uint32(uint64(uint64(allocated2))*libc.Uint64FromInt64(24)))
+					newPtr2 = XTclpRealloc(tls, oldPtr2, uint32(uint64(allocated2)*libc.Uint64FromInt64(24)))
 					if newPtr2 == libc.UintptrFromInt32(0) {
 						allocated2 = int32(uint64(_needed2+(toCopy+int32(1))) + libc.Uint64FromInt32(m_TCL_MIN_GROWTH)/libc.Uint64FromInt64(24))
 						if allocated2 > int32(libc.Uint64FromUint32(0xffffffff)/libc.Uint64FromInt64(24)) {
 							allocated2 = int32(libc.Uint64FromUint32(0xffffffff) / libc.Uint64FromInt64(24))
 						}
-						newPtr2 = XTcl_Realloc(tls, oldPtr2, uint32(uint64(uint64(allocated2))*libc.Uint64FromInt64(24)))
+						newPtr2 = XTcl_Realloc(tls, oldPtr2, uint32(uint64(allocated2)*libc.Uint64FromInt64(24)))
 					}
 					(*TTcl_Parse)(unsafe.Pointer(parsePtr)).FtokensAvailable = allocated2
 					if oldPtr2 == libc.UintptrFromInt32(0) {
@@ -112175,10 +112278,10 @@ func _ConvertTreeToTokens(tls *libc.TLS, start uintptr, numBytes int32, nodes ui
 				(*TTcl_Token)(unsafe.Pointer(subExprTokenPtr)).Ftype1 = int32(m_TCL_TOKEN_SUB_EXPR)
 				(*TTcl_Token)(unsafe.Pointer(subExprTokenPtr)).FnumComponents++
 				subExprTokenPtr += 24
-				libc.Xmemcpy(tls, subExprTokenPtr, tokenPtr, uint64(uint64(toCopy))*uint64(24))
+				libc.Xmemcpy(tls, subExprTokenPtr, tokenPtr, uint64(toCopy)*uint64(24))
 				*(*int32)(unsafe.Pointer(parsePtr + 40)) += toCopy + int32(1)
 			}
-			scanned = int32(int64((*TTcl_Token)(unsafe.Pointer(tokenPtr)).Fstart+uintptr((*TTcl_Token)(unsafe.Pointer(tokenPtr)).Fsize)) - int64(int64(start)))
+			scanned = int32(int64((*TTcl_Token)(unsafe.Pointer(tokenPtr)).Fstart+uintptr((*TTcl_Token)(unsafe.Pointer(tokenPtr)).Fsize)) - int64(start))
 			start += uintptr(scanned)
 			numBytes -= scanned
 			tokenPtr += uintptr(toCopy) * 24
@@ -112231,13 +112334,13 @@ func _ConvertTreeToTokens(tls *libc.TLS, start uintptr, numBytes int32, nodes ui
 					if allocated3 > int32(libc.Uint64FromUint32(0xffffffff)/libc.Uint64FromInt64(24)) {
 						allocated3 = int32(libc.Uint64FromUint32(0xffffffff) / libc.Uint64FromInt64(24))
 					}
-					newPtr3 = XTclpRealloc(tls, oldPtr3, uint32(uint64(uint64(allocated3))*libc.Uint64FromInt64(24)))
+					newPtr3 = XTclpRealloc(tls, oldPtr3, uint32(uint64(allocated3)*libc.Uint64FromInt64(24)))
 					if newPtr3 == libc.UintptrFromInt32(0) {
 						allocated3 = int32(uint64(_needed3+int32(2)) + libc.Uint64FromInt32(m_TCL_MIN_GROWTH)/libc.Uint64FromInt64(24))
 						if allocated3 > int32(libc.Uint64FromUint32(0xffffffff)/libc.Uint64FromInt64(24)) {
 							allocated3 = int32(libc.Uint64FromUint32(0xffffffff) / libc.Uint64FromInt64(24))
 						}
-						newPtr3 = XTcl_Realloc(tls, oldPtr3, uint32(uint64(uint64(allocated3))*libc.Uint64FromInt64(24)))
+						newPtr3 = XTcl_Realloc(tls, oldPtr3, uint32(uint64(allocated3)*libc.Uint64FromInt64(24)))
 					}
 					(*TTcl_Parse)(unsafe.Pointer(parsePtr)).FtokensAvailable = allocated3
 					if oldPtr3 == libc.UintptrFromInt32(0) {
@@ -112333,7 +112436,7 @@ func _ConvertTreeToTokens(tls *libc.TLS, start uintptr, numBytes int32, nodes ui
 				 * substring for the subexpression ends.
 				 */
 				subExprTokenPtr = (*TTcl_Parse)(unsafe.Pointer(parsePtr)).FtokenPtr + uintptr(subExprTokenIdx)*24
-				(*TTcl_Token)(unsafe.Pointer(subExprTokenPtr)).Fsize = int32(int64(int64(start)) - int64((*TTcl_Token)(unsafe.Pointer(subExprTokenPtr)).Fstart))
+				(*TTcl_Token)(unsafe.Pointer(subExprTokenPtr)).Fsize = int32(int64(start) - int64((*TTcl_Token)(unsafe.Pointer(subExprTokenPtr)).Fstart))
 				/*
 				 * All the Tcl_Tokens allocated and filled belong to
 				 * this subexpresion. The first token is the leading
@@ -112495,11 +112598,11 @@ func _ParseLexeme(tls *libc.TLS, start uintptr, numBytes int32, lexemePtr uintpt
 		return 0
 	}
 	byte1 = uint8(*(*int8)(unsafe.Pointer(start)))
-	if uint64(uint64(byte1)) < uint64(128) && int32(_Lexeme[byte1]) != 0 {
+	if uint64(byte1) < uint64(128) && int32(_Lexeme[byte1]) != 0 {
 		*(*uint8)(unsafe.Pointer(lexemePtr)) = _Lexeme[byte1]
 		return int32(1)
 	}
-	switch int32(int32(byte1)) {
+	switch int32(byte1) {
 	case int32('*'):
 		if numBytes > int32(1) && int32(*(*int8)(unsafe.Pointer(start + 1))) == int32('*') {
 			*(*uint8)(unsafe.Pointer(lexemePtr)) = uint8(libc.Int32FromInt32(m_BINARY) | libc.Int32FromInt32(24))
@@ -112605,14 +112708,14 @@ func _ParseLexeme(tls *libc.TLS, start uintptr, numBytes int32, lexemePtr uintpt
 			goto _1
 		}
 	number:
-		if int64(*(*uintptr)(unsafe.Pointer(bp)))-int64(int64(start)) == 0 {
+		if int64(*(*uintptr)(unsafe.Pointer(bp)))-int64(start) == 0 {
 			(*TTcl_Obj)(unsafe.Pointer(literal)).Fbytes = XtclEmptyStringRep
 			(*TTcl_Obj)(unsafe.Pointer(literal)).Flength = 0
 		} else {
-			(*TTcl_Obj)(unsafe.Pointer(literal)).Fbytes = XTcl_Alloc(tls, uint32(int64(*(*uintptr)(unsafe.Pointer(bp)))-int64(int64(start)))+libc.Uint32FromUint32(1))
-			libc.Xmemcpy(tls, (*TTcl_Obj)(unsafe.Pointer(literal)).Fbytes, start, uint64(int64(*(*uintptr)(unsafe.Pointer(bp)))-int64(int64(start))))
-			*(*int8)(unsafe.Pointer((*TTcl_Obj)(unsafe.Pointer(literal)).Fbytes + uintptr(int64(*(*uintptr)(unsafe.Pointer(bp)))-int64(int64(start))))) = int8('\000')
-			(*TTcl_Obj)(unsafe.Pointer(literal)).Flength = int32(int64(*(*uintptr)(unsafe.Pointer(bp))) - int64(int64(start)))
+			(*TTcl_Obj)(unsafe.Pointer(literal)).Fbytes = XTcl_Alloc(tls, uint32(int64(*(*uintptr)(unsafe.Pointer(bp)))-int64(start))+libc.Uint32FromUint32(1))
+			libc.Xmemcpy(tls, (*TTcl_Obj)(unsafe.Pointer(literal)).Fbytes, start, uint64(int64(*(*uintptr)(unsafe.Pointer(bp)))-int64(start)))
+			*(*int8)(unsafe.Pointer((*TTcl_Obj)(unsafe.Pointer(literal)).Fbytes + uintptr(int64(*(*uintptr)(unsafe.Pointer(bp)))-int64(start)))) = int8('\000')
+			(*TTcl_Obj)(unsafe.Pointer(literal)).Flength = int32(int64(*(*uintptr)(unsafe.Pointer(bp))) - int64(start))
 		}
 		*(*uint8)(unsafe.Pointer(lexemePtr)) = uint8(libc.Int32FromInt32(m_LEAF) | libc.Int32FromInt32(1))
 		if literalPtr != 0 {
@@ -112626,7 +112729,7 @@ func _ParseLexeme(tls *libc.TLS, start uintptr, numBytes int32, lexemePtr uintpt
 				XTclFreeObj(tls, _objPtr)
 			}
 		}
-		return int32(int64(*(*uintptr)(unsafe.Pointer(bp))) - int64(int64(start)))
+		return int32(int64(*(*uintptr)(unsafe.Pointer(bp))) - int64(start))
 		goto _2
 	_1:
 		/*
@@ -112650,7 +112753,7 @@ func _ParseLexeme(tls *libc.TLS, start uintptr, numBytes int32, lexemePtr uintpt
 				}
 			}
 		}
-		_ParseLexeme(tls, *(*uintptr)(unsafe.Pointer(bp)), int32(int64(int64(numBytes))-(int64(*(*uintptr)(unsafe.Pointer(bp)))-int64(int64(start)))), bp+10, libc.UintptrFromInt32(0))
+		_ParseLexeme(tls, *(*uintptr)(unsafe.Pointer(bp)), int32(int64(numBytes)-(int64(*(*uintptr)(unsafe.Pointer(bp)))-int64(start))), bp+10, libc.UintptrFromInt32(0))
 		if int32(m_NODE_TYPE)&int32(*(*uint8)(unsafe.Pointer(bp + 10))) == int32(m_BINARY) {
 			/*
 			 * The bareword characters following the number take the
@@ -112679,7 +112782,7 @@ func _ParseLexeme(tls *libc.TLS, start uintptr, numBytes int32, lexemePtr uintpt
 			}
 			scanned = v6
 		} else {
-			libc.Xmemcpy(tls, bp+12, start, uint64(uint64(numBytes)))
+			libc.Xmemcpy(tls, bp+12, start, uint64(numBytes))
 			(*(*[3]int8)(unsafe.Pointer(bp + 12)))[numBytes] = int8('\000')
 			if int32(uint8(*(*int8)(unsafe.Pointer(bp + 12)))) < int32(0x80) {
 				*(*TTcl_UniChar)(unsafe.Pointer(bp + 8)) = uint16(uint8(*(*int8)(unsafe.Pointer(bp + 12))))
@@ -112706,7 +112809,7 @@ func _ParseLexeme(tls *libc.TLS, start uintptr, numBytes int32, lexemePtr uintpt
 	}
 	*(*uint8)(unsafe.Pointer(lexemePtr)) = uint8(m_BAREWORD)
 	if literalPtr != 0 {
-		XTcl_SetStringObj(tls, literal, start, int32(int64(*(*uintptr)(unsafe.Pointer(bp)))-int64(int64(start))))
+		XTcl_SetStringObj(tls, literal, start, int32(int64(*(*uintptr)(unsafe.Pointer(bp)))-int64(start)))
 		*(*uintptr)(unsafe.Pointer(literalPtr)) = literal
 	} else {
 		_objPtr2 = literal
@@ -112717,7 +112820,7 @@ func _ParseLexeme(tls *libc.TLS, start uintptr, numBytes int32, lexemePtr uintpt
 			XTclFreeObj(tls, _objPtr2)
 		}
 	}
-	return int32(int64(*(*uintptr)(unsafe.Pointer(bp))) - int64(int64(start)))
+	return int32(int64(*(*uintptr)(unsafe.Pointer(bp))) - int64(start))
 }
 
 /*
@@ -113168,7 +113271,7 @@ func _CompileExprTree(tls *libc.TLS, interp uintptr, nodes uintptr, index int32,
 				freePtr = jumpPtr
 				jumpPtr = (*TJumpList)(unsafe.Pointer(jumpPtr)).Fnext
 				XTclStackFree(tls, interp, freePtr)
-				XTclFixupForwardJump(tls, envPtr, jumpPtr, int32(uint32(uint32(target))-(*TJumpList)(unsafe.Pointer(jumpPtr)).Fjump.FcodeOffset), int32(127))
+				XTclFixupForwardJump(tls, envPtr, jumpPtr, int32(uint32(target)-(*TJumpList)(unsafe.Pointer(jumpPtr)).Fjump.FcodeOffset), int32(127))
 				freePtr = jumpPtr
 				jumpPtr = (*TJumpList)(unsafe.Pointer(jumpPtr)).Fnext
 				XTclStackFree(tls, interp, freePtr)
@@ -113328,7 +113431,7 @@ func _CompileExprTree(tls *libc.TLS, interp uintptr, nodes uintptr, index int32,
 					}
 				}
 				*(*int32)(unsafe.Pointer(envPtr + 48)) += -int32(1)
-				*(*uint8)(unsafe.Pointer((*TCompileEnv)(unsafe.Pointer(envPtr)).FcodeStart + uintptr(pc1) + libc.UintptrFromInt32(1))) = uint8(uint32(int64((*TCompileEnv)(unsafe.Pointer(envPtr)).FcodeNext) - int64((*TCompileEnv)(unsafe.Pointer(envPtr)).FcodeStart) - int64(int64(pc1))))
+				*(*uint8)(unsafe.Pointer((*TCompileEnv)(unsafe.Pointer(envPtr)).FcodeStart + uintptr(pc1) + libc.UintptrFromInt32(1))) = uint8(uint32(int64((*TCompileEnv)(unsafe.Pointer(envPtr)).FcodeNext) - int64((*TCompileEnv)(unsafe.Pointer(envPtr)).FcodeStart) - int64(pc1)))
 				if XTclFixupForwardJump(tls, envPtr, jumpPtr, int32(int64((*TCompileEnv)(unsafe.Pointer(envPtr)).FcodeNext)-int64((*TCompileEnv)(unsafe.Pointer(envPtr)).FcodeStart)-int64((*TJumpFixup)(unsafe.Pointer(jumpPtr)).FcodeOffset)), int32(127)) != 0 {
 					pc2 += int32(3)
 				}
@@ -113405,7 +113508,7 @@ func _CompileExprTree(tls *libc.TLS, interp uintptr, nodes uintptr, index int32,
 						*(*int32)(unsafe.Pointer(envPtr + 48)) += _delta8
 					}
 				}
-				*(*uint8)(unsafe.Pointer((*TCompileEnv)(unsafe.Pointer(envPtr)).FcodeStart + uintptr(pc2) + libc.UintptrFromInt32(1))) = uint8(uint32(int64((*TCompileEnv)(unsafe.Pointer(envPtr)).FcodeNext) - int64((*TCompileEnv)(unsafe.Pointer(envPtr)).FcodeStart) - int64(int64(pc2))))
+				*(*uint8)(unsafe.Pointer((*TCompileEnv)(unsafe.Pointer(envPtr)).FcodeStart + uintptr(pc2) + libc.UintptrFromInt32(1))) = uint8(uint32(int64((*TCompileEnv)(unsafe.Pointer(envPtr)).FcodeNext) - int64((*TCompileEnv)(unsafe.Pointer(envPtr)).FcodeStart) - int64(pc2)))
 				convert = 0
 				freePtr = jumpPtr
 				jumpPtr = (*TJumpList)(unsafe.Pointer(jumpPtr)).Fnext
@@ -113472,7 +113575,7 @@ func _CompileExprTree(tls *libc.TLS, interp uintptr, nodes uintptr, index int32,
 				}
 				bytes = v76
 				idx = XTclRegisterLiteral(tls, envPtr, bytes, *(*int32)(unsafe.Pointer(bp + 220)), 0)
-				objPtr = XTclFetchLiteral(tls, envPtr, uint32(uint32(idx)))
+				objPtr = XTclFetchLiteral(tls, envPtr, uint32(idx))
 				if (*TTcl_Obj)(unsafe.Pointer(objPtr)).FtypePtr == libc.UintptrFromInt32(0) && (*TTcl_Obj)(unsafe.Pointer(literal)).FtypePtr != libc.UintptrFromInt32(0) {
 					/*
 					 * Would like to do this:
@@ -113651,7 +113754,7 @@ func _CompileExprTree(tls *libc.TLS, interp uintptr, nodes uintptr, index int32,
 					 */
 					if (*TTcl_Obj)(unsafe.Pointer(objPtr1)).Fbytes != 0 {
 						idx1 = XTclRegisterLiteral(tls, envPtr, (*TTcl_Obj)(unsafe.Pointer(objPtr1)).Fbytes, (*TTcl_Obj)(unsafe.Pointer(objPtr1)).Flength, 0)
-						tableValue = XTclFetchLiteral(tls, envPtr, uint32(uint32(idx1)))
+						tableValue = XTclFetchLiteral(tls, envPtr, uint32(idx1))
 						if (*TTcl_Obj)(unsafe.Pointer(tableValue)).FtypePtr == libc.UintptrFromInt32(0) && (*TTcl_Obj)(unsafe.Pointer(objPtr1)).FtypePtr != libc.UintptrFromInt32(0) {
 							/*
 							 * Same internalrep surgery as for OT_LITERAL.
@@ -115214,7 +115317,7 @@ func _CompileCmdLiteral(tls *libc.TLS, interp uintptr, cmdObj uintptr, envPtr ui
 	bytes = XTcl_GetStringFromObj(tls, cmdObj, bp)
 	cmdLitIdx = XTclRegisterLiteral(tls, envPtr, bytes, *(*int32)(unsafe.Pointer(bp)), extraLiteralFlags)
 	if cmdPtr != 0 {
-		XTclSetCmdNameObj(tls, interp, XTclFetchLiteral(tls, envPtr, uint32(uint32(cmdLitIdx))), cmdPtr)
+		XTclSetCmdNameObj(tls, interp, XTclFetchLiteral(tls, envPtr, uint32(cmdLitIdx)), cmdPtr)
 	}
 	_objIndexCopy = cmdLitIdx
 	if _objIndexCopy <= int32(255) {
@@ -115313,7 +115416,7 @@ func XTclCompileInvocation(tls *libc.TLS, interp uintptr, tokenPtr uintptr, cmdO
 		}
 		objIdx = XTclRegisterLiteral(tls, envPtr, (*(*TTcl_Token)(unsafe.Pointer(tokenPtr + 1*24))).Fstart, (*(*TTcl_Token)(unsafe.Pointer(tokenPtr + 1*24))).Fsize, 0)
 		if (*TCompileEnv)(unsafe.Pointer(envPtr)).FclNext != 0 {
-			XTclContinuationsEnterDerived(tls, XTclFetchLiteral(tls, envPtr, uint32(uint32(objIdx))), int32(int64((*(*TTcl_Token)(unsafe.Pointer(tokenPtr + 1*24))).Fstart)-int64((*TCompileEnv)(unsafe.Pointer(envPtr)).Fsource)), (*TCompileEnv)(unsafe.Pointer(envPtr)).FclNext)
+			XTclContinuationsEnterDerived(tls, XTclFetchLiteral(tls, envPtr, uint32(objIdx)), int32(int64((*(*TTcl_Token)(unsafe.Pointer(tokenPtr + 1*24))).Fstart)-int64((*TCompileEnv)(unsafe.Pointer(envPtr)).Fsource)), (*TCompileEnv)(unsafe.Pointer(envPtr)).FclNext)
 		}
 		_objIndexCopy = objIdx
 		if _objIndexCopy <= int32(255) {
@@ -115467,7 +115570,7 @@ func _CompileExpanded(tls *libc.TLS, interp uintptr, tokenPtr uintptr, cmdObj ui
 		}
 		objIdx = XTclRegisterLiteral(tls, envPtr, (*(*TTcl_Token)(unsafe.Pointer(tokenPtr + 1*24))).Fstart, (*(*TTcl_Token)(unsafe.Pointer(tokenPtr + 1*24))).Fsize, 0)
 		if (*TCompileEnv)(unsafe.Pointer(envPtr)).FclNext != 0 {
-			XTclContinuationsEnterDerived(tls, XTclFetchLiteral(tls, envPtr, uint32(uint32(objIdx))), int32(int64((*(*TTcl_Token)(unsafe.Pointer(tokenPtr + 1*24))).Fstart)-int64((*TCompileEnv)(unsafe.Pointer(envPtr)).Fsource)), (*TCompileEnv)(unsafe.Pointer(envPtr)).FclNext)
+			XTclContinuationsEnterDerived(tls, XTclFetchLiteral(tls, envPtr, uint32(objIdx)), int32(int64((*(*TTcl_Token)(unsafe.Pointer(tokenPtr + 1*24))).Fstart)-int64((*TCompileEnv)(unsafe.Pointer(envPtr)).Fsource)), (*TCompileEnv)(unsafe.Pointer(envPtr)).FclNext)
 		}
 		_objIndexCopy = objIdx
 		if _objIndexCopy <= int32(255) {
@@ -115667,10 +115770,10 @@ func _CompileCmdCompileProc(tls *libc.TLS, interp uintptr, parsePtr uintptr, cmd
 			*(*uint8)(unsafe.Pointer(incrPtr + libc.UintptrFromInt32(3))) = uint8(uint32(int32(*(*uint8)(unsafe.Pointer(incrPtr)))<<libc.Int32FromInt32(24)|int32(*(*uint8)(unsafe.Pointer(incrPtr + libc.UintptrFromInt32(1))))<<libc.Int32FromInt32(16)|int32(*(*uint8)(unsafe.Pointer(incrPtr + libc.UintptrFromInt32(2))))<<libc.Int32FromInt32(8)|int32(*(*uint8)(unsafe.Pointer(incrPtr + libc.UintptrFromInt32(3))))) + uint32(libc.Int32FromInt32(1)))
 			if unwind != 0 {
 				/* We started the INST_START_CMD.  Record the code length. */
-				*(*uint8)(unsafe.Pointer(startPtr + libc.UintptrFromInt32(1))) = uint8(uint32(int64((*TCompileEnv)(unsafe.Pointer(envPtr)).FcodeNext)-int64(int64(startPtr))) >> libc.Int32FromInt32(24))
-				*(*uint8)(unsafe.Pointer(startPtr + libc.UintptrFromInt32(1) + libc.UintptrFromInt32(1))) = uint8(uint32(int64((*TCompileEnv)(unsafe.Pointer(envPtr)).FcodeNext)-int64(int64(startPtr))) >> libc.Int32FromInt32(16))
-				*(*uint8)(unsafe.Pointer(startPtr + libc.UintptrFromInt32(1) + libc.UintptrFromInt32(2))) = uint8(uint32(int64((*TCompileEnv)(unsafe.Pointer(envPtr)).FcodeNext)-int64(int64(startPtr))) >> libc.Int32FromInt32(8))
-				*(*uint8)(unsafe.Pointer(startPtr + libc.UintptrFromInt32(1) + libc.UintptrFromInt32(3))) = uint8(uint32(int64((*TCompileEnv)(unsafe.Pointer(envPtr)).FcodeNext) - int64(int64(startPtr))))
+				*(*uint8)(unsafe.Pointer(startPtr + libc.UintptrFromInt32(1))) = uint8(uint32(int64((*TCompileEnv)(unsafe.Pointer(envPtr)).FcodeNext)-int64(startPtr)) >> libc.Int32FromInt32(24))
+				*(*uint8)(unsafe.Pointer(startPtr + libc.UintptrFromInt32(1) + libc.UintptrFromInt32(1))) = uint8(uint32(int64((*TCompileEnv)(unsafe.Pointer(envPtr)).FcodeNext)-int64(startPtr)) >> libc.Int32FromInt32(16))
+				*(*uint8)(unsafe.Pointer(startPtr + libc.UintptrFromInt32(1) + libc.UintptrFromInt32(2))) = uint8(uint32(int64((*TCompileEnv)(unsafe.Pointer(envPtr)).FcodeNext)-int64(startPtr)) >> libc.Int32FromInt32(8))
+				*(*uint8)(unsafe.Pointer(startPtr + libc.UintptrFromInt32(1) + libc.UintptrFromInt32(3))) = uint8(uint32(int64((*TCompileEnv)(unsafe.Pointer(envPtr)).FcodeNext) - int64(startPtr)))
 			}
 		}
 		_dd = depth + int32(1)
@@ -115816,7 +115919,7 @@ func _CompileCommandTokens(tls *libc.TLS, interp uintptr, parsePtr uintptr, envP
 		}
 		*(*int32)(unsafe.Pointer(envPtr + 48)) += _delta
 	}
-	_EnterCmdExtentData(tls, envPtr, cmdIdx, int32(int64((*TTcl_Parse)(unsafe.Pointer(parsePtr)).Fterm)-int64((*TTcl_Parse)(unsafe.Pointer(parsePtr)).FcommandStart)), int32(int64((*TCompileEnv)(unsafe.Pointer(envPtr)).FcodeNext)-int64((*TCompileEnv)(unsafe.Pointer(envPtr)).FcodeStart)-int64(int64(startCodeOffset))))
+	_EnterCmdExtentData(tls, envPtr, cmdIdx, int32(int64((*TTcl_Parse)(unsafe.Pointer(parsePtr)).Fterm)-int64((*TTcl_Parse)(unsafe.Pointer(parsePtr)).FcommandStart)), int32(int64((*TCompileEnv)(unsafe.Pointer(envPtr)).FcodeNext)-int64((*TCompileEnv)(unsafe.Pointer(envPtr)).FcodeStart)-int64(startCodeOffset)))
 	/*
 	 * TIP #280: Free full form of per-word line data and insert the reduced
 	 * form now
@@ -115891,7 +115994,7 @@ func XTclCompileScript(tls *libc.TLS, interp uintptr, script uintptr, numBytes i
 			 * Advance parser to the next command in the script.
 			 */
 			next = (*TTcl_Parse)(unsafe.Pointer(parsePtr)).FcommandStart + uintptr((*TTcl_Parse)(unsafe.Pointer(parsePtr)).FcommandSize)
-			numBytes = int32(int64(numBytes) - (int64(int64(next)) - int64(int64(p))))
+			numBytes = int32(int64(numBytes) - (int64(next) - int64(p)))
 			p = next
 			if (*TTcl_Parse)(unsafe.Pointer(parsePtr)).FnumWords == 0 {
 				/*
@@ -115923,7 +116026,7 @@ func XTclCompileScript(tls *libc.TLS, interp uintptr, script uintptr, numBytes i
 			 * TIP #280: Track lines in the just compiled command.
 			 */
 			XTclAdvanceLines(tls, envPtr+3560, (*TTcl_Parse)(unsafe.Pointer(parsePtr)).FcommandStart, p)
-			XTclAdvanceContinuations(tls, envPtr+3560, envPtr+3576, int32(int64(int64(p))-int64((*TCompileEnv)(unsafe.Pointer(envPtr)).Fsource)))
+			XTclAdvanceContinuations(tls, envPtr+3560, envPtr+3576, int32(int64(p)-int64((*TCompileEnv)(unsafe.Pointer(envPtr)).Fsource)))
 			XTcl_FreeParse(tls, parsePtr)
 		}
 		XTclpFree(tls, parsePtr)
@@ -116396,7 +116499,7 @@ func XTclCompileTokens(tls *libc.TLS, interp uintptr, tokenPtr uintptr, count in
 	}
 	if isLiteral != 0 {
 		maxNumCL = int32(m_NUM_STATIC_POS)
-		clPosition = XTcl_Alloc(tls, uint32(uint64(uint64(maxNumCL))*libc.Uint64FromInt64(4)))
+		clPosition = XTcl_Alloc(tls, uint32(uint64(maxNumCL)*libc.Uint64FromInt64(4)))
 	}
 	adjust = 0
 	XTcl_DStringInit(tls, bp)
@@ -116431,7 +116534,7 @@ func XTclCompileTokens(tls *libc.TLS, interp uintptr, tokenPtr uintptr, count in
 					clPos = (*TTcl_DString)(unsafe.Pointer(bp)).Flength
 					if numCL >= maxNumCL {
 						maxNumCL *= int32(2)
-						clPosition = XTcl_Realloc(tls, clPosition, uint32(uint64(uint64(maxNumCL))*libc.Uint64FromInt64(4)))
+						clPosition = XTcl_Realloc(tls, clPosition, uint32(uint64(maxNumCL)*libc.Uint64FromInt64(4)))
 					}
 					*(*int32)(unsafe.Pointer(clPosition + uintptr(numCL)*4)) = clPos
 					numCL++
@@ -116512,7 +116615,7 @@ func XTclCompileTokens(tls *libc.TLS, interp uintptr, tokenPtr uintptr, count in
 				numObjsToConcat++
 				XTcl_DStringFree(tls, bp)
 				if numCL != 0 {
-					XTclContinuationsEnter(tls, XTclFetchLiteral(tls, envPtr, uint32(uint32(literal))), numCL, clPosition)
+					XTclContinuationsEnter(tls, XTclFetchLiteral(tls, envPtr, uint32(literal)), numCL, clPosition)
 				}
 				numCL = 0
 			}
@@ -116681,7 +116784,7 @@ func XTclCompileTokens(tls *libc.TLS, interp uintptr, tokenPtr uintptr, count in
 		}
 		numObjsToConcat++
 		if numCL != 0 {
-			XTclContinuationsEnter(tls, XTclFetchLiteral(tls, envPtr, uint32(uint32(literal2))), numCL, clPosition)
+			XTclContinuationsEnter(tls, XTclFetchLiteral(tls, envPtr, uint32(literal2)), numCL, clPosition)
 		}
 		numCL = 0
 	}
@@ -117279,11 +117382,11 @@ func XTclInitByteCodeObj(tls *libc.TLS, objPtr uintptr, envPtr uintptr) {
 	(*TByteCode)(unsafe.Pointer(codePtr)).FprocPtr = (*TCompileEnv)(unsafe.Pointer(envPtr)).FprocPtr
 	(*TByteCode)(unsafe.Pointer(codePtr)).FnumCommands = (*TCompileEnv)(unsafe.Pointer(envPtr)).FnumCommands
 	(*TByteCode)(unsafe.Pointer(codePtr)).FnumSrcBytes = (*TCompileEnv)(unsafe.Pointer(envPtr)).FnumSrcBytes
-	(*TByteCode)(unsafe.Pointer(codePtr)).FnumCodeBytes = int32(int32(codeBytes))
+	(*TByteCode)(unsafe.Pointer(codePtr)).FnumCodeBytes = int32(codeBytes)
 	(*TByteCode)(unsafe.Pointer(codePtr)).FnumLitObjects = numLitObjects
 	(*TByteCode)(unsafe.Pointer(codePtr)).FnumExceptRanges = (*TCompileEnv)(unsafe.Pointer(envPtr)).FexceptArrayNext
 	(*TByteCode)(unsafe.Pointer(codePtr)).FnumAuxDataItems = (*TCompileEnv)(unsafe.Pointer(envPtr)).FauxDataArrayNext
-	(*TByteCode)(unsafe.Pointer(codePtr)).FnumCmdLocBytes = int32(int32(cmdLocBytes))
+	(*TByteCode)(unsafe.Pointer(codePtr)).FnumCmdLocBytes = int32(cmdLocBytes)
 	(*TByteCode)(unsafe.Pointer(codePtr)).FmaxExceptDepth = (*TCompileEnv)(unsafe.Pointer(envPtr)).FmaxExceptDepth
 	(*TByteCode)(unsafe.Pointer(codePtr)).FmaxStackDepth = (*TCompileEnv)(unsafe.Pointer(envPtr)).FmaxStackDepth
 	p += uintptr(176)
@@ -117296,7 +117399,7 @@ func XTclInitByteCodeObj(tls *libc.TLS, objPtr uintptr, envPtr uintptr) {
 		if !(i < numLitObjects) {
 			break
 		}
-		fetched = XTclFetchLiteral(tls, envPtr, uint32(uint32(i)))
+		fetched = XTclFetchLiteral(tls, envPtr, uint32(i))
 		if objPtr == fetched {
 			bytes = XTcl_GetStringFromObj(tls, objPtr, bp+4)
 			*(*uintptr)(unsafe.Pointer((*TByteCode)(unsafe.Pointer(codePtr)).FobjArrayPtr + uintptr(i)*8)) = XTcl_NewStringObj(tls, bytes, *(*int32)(unsafe.Pointer(bp + 4)))
@@ -117431,7 +117534,7 @@ func XTclFindCompiledLocal(tls *libc.TLS, name uintptr, nameBytes int32, create 
 			}
 			if !((*TCompiledLocal)(unsafe.Pointer(localPtr)).Fflags&libc.Int32FromInt32(m_VAR_TEMPORARY) != 0) {
 				localName1 = localPtr + 40
-				if nameBytes == (*TCompiledLocal)(unsafe.Pointer(localPtr)).FnameLength && libc.Xstrncmp(tls, name, localName1, uint64(uint64(nameBytes))) == 0 {
+				if nameBytes == (*TCompiledLocal)(unsafe.Pointer(localPtr)).FnameLength && libc.Xstrncmp(tls, name, localName1, uint64(nameBytes)) == 0 {
 					return i
 				}
 			}
@@ -117446,7 +117549,7 @@ func XTclFindCompiledLocal(tls *libc.TLS, name uintptr, nameBytes int32, create 
 	 */
 	if create != 0 || name == libc.UintptrFromInt32(0) {
 		localVar = (*TProc)(unsafe.Pointer(procPtr)).FnumCompiledLocals
-		localPtr = XTcl_Alloc(tls, uint32(int32(uint64(libc.UintptrFromInt32(0)+40)))+libc.Uint32FromUint32(1)+uint32(uint32(nameBytes)))
+		localPtr = XTcl_Alloc(tls, uint32(int32(uint64(libc.UintptrFromInt32(0)+40)))+libc.Uint32FromUint32(1)+uint32(nameBytes))
 		if (*TProc)(unsafe.Pointer(procPtr)).FfirstLocalPtr == libc.UintptrFromInt32(0) {
 			v3 = localPtr
 			(*TProc)(unsafe.Pointer(procPtr)).FlastLocalPtr = v3
@@ -117465,7 +117568,7 @@ func XTclFindCompiledLocal(tls *libc.TLS, name uintptr, nameBytes int32, create 
 		(*TCompiledLocal)(unsafe.Pointer(localPtr)).FdefValuePtr = libc.UintptrFromInt32(0)
 		(*TCompiledLocal)(unsafe.Pointer(localPtr)).FresolveInfo = libc.UintptrFromInt32(0)
 		if name != libc.UintptrFromInt32(0) {
-			libc.Xmemcpy(tls, localPtr+40, name, uint64(uint64(nameBytes)))
+			libc.Xmemcpy(tls, localPtr+40, name, uint64(nameBytes))
 		}
 		*(*int8)(unsafe.Pointer(localPtr + 40 + uintptr(nameBytes))) = int8('\000')
 		(*TProc)(unsafe.Pointer(procPtr)).FnumCompiledLocals++
@@ -117575,7 +117678,7 @@ func _EnterCmdStartData(tls *libc.TLS, envPtr uintptr, cmdIndex int32, srcOffset
 			(*TCompileEnv)(unsafe.Pointer(envPtr)).FcmdMapPtr = newPtr
 			(*TCompileEnv)(unsafe.Pointer(envPtr)).FmallocedCmdMap = int32(1)
 		}
-		(*TCompileEnv)(unsafe.Pointer(envPtr)).FcmdMapEnd = int32(int32(newElems))
+		(*TCompileEnv)(unsafe.Pointer(envPtr)).FcmdMapEnd = int32(newElems)
 	}
 	if cmdIndex > 0 {
 		if codeOffset < (*(*TCmdLocation)(unsafe.Pointer((*TCompileEnv)(unsafe.Pointer(envPtr)).FcmdMapPtr + uintptr(cmdIndex-int32(1))*16))).FcodeOffset {
@@ -117671,14 +117774,14 @@ func _EnterCmdWordData(tls *libc.TLS, eclPtr uintptr, srcOffset int32, tokenPtr 
 		newElems = v1
 		newBytes = newElems * uint64(24)
 		(*TExtCmdLoc)(unsafe.Pointer(eclPtr)).Floc = XTcl_Realloc(tls, (*TExtCmdLoc)(unsafe.Pointer(eclPtr)).Floc, uint32(newBytes))
-		(*TExtCmdLoc)(unsafe.Pointer(eclPtr)).Fnloc = int32(int32(newElems))
+		(*TExtCmdLoc)(unsafe.Pointer(eclPtr)).Fnloc = int32(newElems)
 	}
 	ePtr = (*TExtCmdLoc)(unsafe.Pointer(eclPtr)).Floc + uintptr((*TExtCmdLoc)(unsafe.Pointer(eclPtr)).Fnuloc)*24
 	(*TECL)(unsafe.Pointer(ePtr)).FsrcOffset = srcOffset
-	(*TECL)(unsafe.Pointer(ePtr)).Fline = XTcl_Alloc(tls, uint32(uint64(uint64(numWords))*libc.Uint64FromInt64(4)))
-	(*TECL)(unsafe.Pointer(ePtr)).Fnext = XTcl_Alloc(tls, uint32(uint64(uint64(numWords))*libc.Uint64FromInt64(8)))
+	(*TECL)(unsafe.Pointer(ePtr)).Fline = XTcl_Alloc(tls, uint32(uint64(numWords)*libc.Uint64FromInt64(4)))
+	(*TECL)(unsafe.Pointer(ePtr)).Fnext = XTcl_Alloc(tls, uint32(uint64(numWords)*libc.Uint64FromInt64(8)))
 	(*TECL)(unsafe.Pointer(ePtr)).Fnline = numWords
-	wwlines = XTcl_Alloc(tls, uint32(uint64(uint64(numWords))*libc.Uint64FromInt64(4)))
+	wwlines = XTcl_Alloc(tls, uint32(uint64(numWords)*libc.Uint64FromInt64(4)))
 	last = cmd
 	*(*int32)(unsafe.Pointer(bp)) = line
 	*(*uintptr)(unsafe.Pointer(bp + 8)) = clNext
@@ -117745,8 +117848,8 @@ func XTclCreateExceptRange(tls *libc.TLS, type1 TExceptionRangeType, envPtr uint
 		currBytes = uint64((*TCompileEnv)(unsafe.Pointer(envPtr)).FexceptArrayNext) * uint64(28)
 		currBytes2 = uint64((*TCompileEnv)(unsafe.Pointer(envPtr)).FexceptArrayNext) * uint64(56)
 		newElems = int32(2) * (*TCompileEnv)(unsafe.Pointer(envPtr)).FexceptArrayEnd
-		newBytes = uint64(uint64(newElems)) * uint64(28)
-		newBytes2 = uint64(uint64(newElems)) * uint64(56)
+		newBytes = uint64(newElems) * uint64(28)
+		newBytes2 = uint64(newElems) * uint64(56)
 		if (*TCompileEnv)(unsafe.Pointer(envPtr)).FmallocedExceptArray != 0 {
 			(*TCompileEnv)(unsafe.Pointer(envPtr)).FexceptArrayPtr = XTcl_Realloc(tls, (*TCompileEnv)(unsafe.Pointer(envPtr)).FexceptArrayPtr, uint32(newBytes))
 			(*TCompileEnv)(unsafe.Pointer(envPtr)).FexceptAuxArrayPtr = XTcl_Realloc(tls, (*TCompileEnv)(unsafe.Pointer(envPtr)).FexceptAuxArrayPtr, uint32(newBytes2))
@@ -117838,7 +117941,7 @@ func XTclAddLoopBreakFixup(tls *libc.TLS, envPtr uintptr, auxPtr uintptr) {
 	var _delta, range1, v1 int32
 	var v10, v11, v12, v2, v3, v4, v5, v6, v7, v8, v9 uintptr
 	_, _, _, _, _, _, _, _, _, _, _, _, _, _ = _delta, range1, v1, v10, v11, v12, v2, v3, v4, v5, v6, v7, v8, v9
-	range1 = int32((int64(int64(auxPtr)) - int64((*TCompileEnv)(unsafe.Pointer(envPtr)).FexceptAuxArrayPtr)) / 56)
+	range1 = int32((int64(auxPtr) - int64((*TCompileEnv)(unsafe.Pointer(envPtr)).FexceptAuxArrayPtr)) / 56)
 	if (*(*TExceptionRange)(unsafe.Pointer((*TCompileEnv)(unsafe.Pointer(envPtr)).FexceptArrayPtr + uintptr(range1)*28))).Ftype1 != int32(_LOOP_EXCEPTION_RANGE) {
 		XTcl_Panic(tls, ts+21069, 0)
 	}
@@ -117899,7 +118002,7 @@ func XTclAddLoopContinueFixup(tls *libc.TLS, envPtr uintptr, auxPtr uintptr) {
 	var _delta, range1, v1 int32
 	var v10, v11, v12, v2, v3, v4, v5, v6, v7, v8, v9 uintptr
 	_, _, _, _, _, _, _, _, _, _, _, _, _, _ = _delta, range1, v1, v10, v11, v12, v2, v3, v4, v5, v6, v7, v8, v9
-	range1 = int32((int64(int64(auxPtr)) - int64((*TCompileEnv)(unsafe.Pointer(envPtr)).FexceptAuxArrayPtr)) / 56)
+	range1 = int32((int64(auxPtr) - int64((*TCompileEnv)(unsafe.Pointer(envPtr)).FexceptAuxArrayPtr)) / 56)
 	if (*(*TExceptionRange)(unsafe.Pointer((*TCompileEnv)(unsafe.Pointer(envPtr)).FexceptArrayPtr + uintptr(range1)*28))).Ftype1 != int32(_LOOP_EXCEPTION_RANGE) {
 		XTcl_Panic(tls, ts+21121, 0)
 	}
@@ -118253,7 +118356,7 @@ func XTclCreateAuxData(tls *libc.TLS, clientData TClientData, typePtr uintptr, e
 		 */
 		currBytes = uint64((*TCompileEnv)(unsafe.Pointer(envPtr)).FauxDataArrayNext) * uint64(16)
 		newElems = int32(2) * (*TCompileEnv)(unsafe.Pointer(envPtr)).FauxDataArrayEnd
-		newBytes = uint64(uint64(newElems)) * uint64(16)
+		newBytes = uint64(newElems) * uint64(16)
 		if (*TCompileEnv)(unsafe.Pointer(envPtr)).FmallocedAuxDataArray != 0 {
 			(*TCompileEnv)(unsafe.Pointer(envPtr)).FauxDataArrayPtr = XTcl_Realloc(tls, (*TCompileEnv)(unsafe.Pointer(envPtr)).FauxDataArrayPtr, uint32(newBytes))
 		} else {
@@ -118335,7 +118438,7 @@ func XTclExpandJumpFixupArray(tls *libc.TLS, fixupArrayPtr uintptr) {
 	 */
 	currBytes = uint64((*TJumpFixupArray)(unsafe.Pointer(fixupArrayPtr)).Fnext) * uint64(16)
 	newElems = int32(2) * ((*TJumpFixupArray)(unsafe.Pointer(fixupArrayPtr)).Fend + int32(1))
-	newBytes = uint64(uint64(newElems)) * uint64(16)
+	newBytes = uint64(newElems) * uint64(16)
 	if (*TJumpFixupArray)(unsafe.Pointer(fixupArrayPtr)).FmallocedArray != 0 {
 		(*TJumpFixupArray)(unsafe.Pointer(fixupArrayPtr)).Ffixup = XTcl_Realloc(tls, (*TJumpFixupArray)(unsafe.Pointer(fixupArrayPtr)).Ffixup, uint32(newBytes))
 	} else {
@@ -118593,9 +118696,9 @@ func XTclFixupForwardJump(tls *libc.TLS, envPtr uintptr, jumpFixupPtr uintptr, j
 		XTclExpandCodeArray(tls, envPtr)
 	}
 	jumpPc = (*TCompileEnv)(unsafe.Pointer(envPtr)).FcodeStart + uintptr((*TJumpFixup)(unsafe.Pointer(jumpFixupPtr)).FcodeOffset)
-	numBytes = uint32(int64((*TCompileEnv)(unsafe.Pointer(envPtr)).FcodeNext) - int64(int64(jumpPc)) - int64(2))
+	numBytes = uint32(int64((*TCompileEnv)(unsafe.Pointer(envPtr)).FcodeNext) - int64(jumpPc) - int64(2))
 	p = jumpPc + uintptr(2)
-	libc.Xmemmove(tls, p+uintptr(3), p, uint64(uint64(numBytes)))
+	libc.Xmemmove(tls, p+uintptr(3), p, uint64(numBytes))
 	*(*uintptr)(unsafe.Pointer(envPtr + 120)) += uintptr(3)
 	jumpDist += int32(3)
 	switch (*TJumpFixup)(unsafe.Pointer(jumpFixupPtr)).FjumpType {
@@ -120976,10 +121079,10 @@ yynewstate:
 	   have just been pushed.  So pushing a state here evens the stacks.  */
 	yyssp += 2
 yysetstate:
-	*(*Tyytype_int16)(unsafe.Pointer(yyssp)) = int16(int16(yystate))
+	*(*Tyytype_int16)(unsafe.Pointer(yyssp)) = int16(yystate)
 	if yyss+uintptr(yystacksize)*2-uintptr(1)*2 <= yyssp {
 		/* Get the current used size of the three stacks, in elements.  */
-		yysize = uint64((int64(int64(yyssp))-int64(int64(yyss)))/2 + int64(1))
+		yysize = uint64((int64(yyssp)-int64(yyss))/2 + int64(1))
 		/* Extend the stack our own way.  */
 		if uint64(m_YYMAXDEPTH) <= yystacksize {
 			goto yyexhaustedlab
@@ -122527,7 +122630,7 @@ func _TclDatelex(tls *libc.TLS, yylvalPtr uintptr, location uintptr, info uintpt
 				if !(libc.BoolInt32(uint32(uint8(v5))-uint32('0') < uint32(10)) != 0) {
 					break
 				} /* INTL: digit */
-				(*TYYSTYPE)(unsafe.Pointer(yylvalPtr)).FNumber = int64(10)*(*TYYSTYPE)(unsafe.Pointer(yylvalPtr)).FNumber + int64(int64(c)) - int64('0')
+				(*TYYSTYPE)(unsafe.Pointer(yylvalPtr)).FNumber = int64(10)*(*TYYSTYPE)(unsafe.Pointer(yylvalPtr)).FNumber + int64(c) - int64('0')
 				Count++
 				goto _4
 			_4:
@@ -122545,7 +122648,7 @@ func _TclDatelex(tls *libc.TLS, yylvalPtr uintptr, location uintptr, info uintpt
 				return int32(_tUNUMBER)
 			}
 		}
-		if !(int32(int32(c))&libc.Int32FromInt32(0x80) != 0) && libc.BoolInt32(uint32(uint8(c))|uint32(32)-uint32('a') < uint32(26)) != 0 { /* INTL: ISO only. */
+		if !(int32(c)&libc.Int32FromInt32(0x80) != 0) && libc.BoolInt32(uint32(uint8(c))|uint32(32)-uint32('a') < uint32(26)) != 0 { /* INTL: ISO only. */
 			p = bp
 			for {
 				v11 = info + 176
@@ -122553,7 +122656,7 @@ func _TclDatelex(tls *libc.TLS, yylvalPtr uintptr, location uintptr, info uintpt
 				*(*uintptr)(unsafe.Pointer(v11))++
 				v9 = *(*int8)(unsafe.Pointer(v10))
 				c = v9
-				if !(libc.BoolInt32(uint32(uint8(v9))|uint32(32)-uint32('a') < uint32(26)) != 0 || int32(int32(c)) == int32('.')) {
+				if !(libc.BoolInt32(uint32(uint8(v9))|uint32(32)-uint32('a') < uint32(26)) != 0 || int32(c) == int32('.')) {
 					break
 				}
 				if p < bp+uintptr(libc.Uint64FromInt64(20)-libc.Uint64FromInt32(1)) {
@@ -122569,7 +122672,7 @@ func _TclDatelex(tls *libc.TLS, yylvalPtr uintptr, location uintptr, info uintpt
 			(*TYYLTYPE)(unsafe.Pointer(location)).Flast_column = int32(int64((*TDateInfo)(unsafe.Pointer(info)).FdateInput) - int64((*TDateInfo)(unsafe.Pointer(info)).FdateStart) - int64(1))
 			return _LookupWord(tls, yylvalPtr, bp)
 		}
-		if int32(int32(c)) != int32('(') {
+		if int32(c) != int32('(') {
 			(*TYYLTYPE)(unsafe.Pointer(location)).Flast_column = int32(int64((*TDateInfo)(unsafe.Pointer(info)).FdateInput) - int64((*TDateInfo)(unsafe.Pointer(info)).FdateStart))
 			v14 = info + 176
 			v13 = *(*uintptr)(unsafe.Pointer(v14))
@@ -122582,14 +122685,14 @@ func _TclDatelex(tls *libc.TLS, yylvalPtr uintptr, location uintptr, info uintpt
 			v15 = *(*uintptr)(unsafe.Pointer(v16))
 			*(*uintptr)(unsafe.Pointer(v16))++
 			c = *(*int8)(unsafe.Pointer(v15))
-			if int32(int32(c)) == int32('\000') {
+			if int32(c) == int32('\000') {
 				(*TYYLTYPE)(unsafe.Pointer(location)).Flast_column = int32(int64((*TDateInfo)(unsafe.Pointer(info)).FdateInput) - int64((*TDateInfo)(unsafe.Pointer(info)).FdateStart) - int64(1))
-				return int32(int32(c))
+				return int32(c)
 			} else {
-				if int32(int32(c)) == int32('(') {
+				if int32(c) == int32('(') {
 					Count++
 				} else {
-					if int32(int32(c)) == int32(')') {
+					if int32(c) == int32(')') {
 						Count--
 					}
 				}
@@ -123675,10 +123778,10 @@ func _UpdateStringOfDict(tls *libc.TLS, dictPtr uintptr) {
 		i += int32(2)
 		cPtr = (*TChainEntry)(unsafe.Pointer(cPtr)).FnextPtr
 	}
-	if bytesNeeded+uint32(uint32(numElems)) > libc.Uint32FromInt32(m_INT_MAX)+libc.Uint32FromUint32(1) {
+	if bytesNeeded+uint32(numElems) > libc.Uint32FromInt32(m_INT_MAX)+libc.Uint32FromUint32(1) {
 		XTcl_Panic(tls, ts+9291, libc.VaList(bp+80, int32(m_INT_MAX)))
 	}
-	bytesNeeded += uint32(uint32(numElems))
+	bytesNeeded += uint32(numElems)
 	/*
 	 * Pass 2: copy into string rep buffer.
 	 */
@@ -123849,7 +123952,7 @@ func _SetDictFromAny(tls *libc.TLS, interp uintptr, objPtr uintptr) (r int32) {
 		*(*uintptr)(unsafe.Pointer(bp + 24)) = v5
 		limit = *(*uintptr)(unsafe.Pointer(bp + 24)) + uintptr(*(*int32)(unsafe.Pointer(bp + 16)))
 		for *(*uintptr)(unsafe.Pointer(bp + 24)) < limit {
-			if XTclFindDictElement(tls, interp, *(*uintptr)(unsafe.Pointer(bp + 24)), int32(int64(int64(limit))-int64(*(*uintptr)(unsafe.Pointer(bp + 24)))), bp+32, bp+24, bp+40, bp+44) != m_TCL_OK {
+			if XTclFindDictElement(tls, interp, *(*uintptr)(unsafe.Pointer(bp + 24)), int32(int64(limit)-int64(*(*uintptr)(unsafe.Pointer(bp + 24)))), bp+32, bp+24, bp+40, bp+44) != m_TCL_OK {
 				goto errorInFindDictElement
 			}
 			if *(*uintptr)(unsafe.Pointer(bp + 32)) == limit {
@@ -123895,7 +123998,7 @@ func _SetDictFromAny(tls *libc.TLS, interp uintptr, objPtr uintptr) (r int32) {
 				(*TTcl_Obj)(unsafe.Pointer(keyPtr)).Fbytes = XTcl_Alloc(tls, uint32(*(*int32)(unsafe.Pointer(bp + 40)))+libc.Uint32FromInt32(1))
 				(*TTcl_Obj)(unsafe.Pointer(keyPtr)).Flength = XTclCopyAndCollapse(tls, *(*int32)(unsafe.Pointer(bp + 40)), *(*uintptr)(unsafe.Pointer(bp + 32)), (*TTcl_Obj)(unsafe.Pointer(keyPtr)).Fbytes)
 			}
-			if XTclFindDictElement(tls, interp, *(*uintptr)(unsafe.Pointer(bp + 24)), int32(int64(int64(limit))-int64(*(*uintptr)(unsafe.Pointer(bp + 24)))), bp+32, bp+24, bp+40, bp+44) != m_TCL_OK {
+			if XTclFindDictElement(tls, interp, *(*uintptr)(unsafe.Pointer(bp + 24)), int32(int64(limit)-int64(*(*uintptr)(unsafe.Pointer(bp + 24)))), bp+32, bp+24, bp+40, bp+44) != m_TCL_OK {
 				v7 = keyPtr
 				v6 = *(*int32)(unsafe.Pointer(v7))
 				*(*int32)(unsafe.Pointer(v7))--
@@ -128613,7 +128716,7 @@ func _DisassembleByteCodeObj(tls *libc.TLS, interp uintptr, objPtr uintptr) (r u
 		/*
 		 * Print instructions before command i.
 		 */
-		for int64(int64(pc))-int64(int64(codeStart)) < int64(int64(codeOffset)) {
+		for int64(pc)-int64(codeStart) < int64(codeOffset) {
 			XTcl_AppendToObj(tls, bufferObj, ts+24450, -int32(1))
 			pc += uintptr(_FormatInstruction(tls, codePtr, pc, bufferObj))
 		}
@@ -128665,7 +128768,7 @@ func _FormatInstruction(tls *libc.TLS, codePtr uintptr, pc uintptr, bufferObj ui
 	opCode = *(*uint8)(unsafe.Pointer(pc))
 	instDesc = uintptr(unsafe.Pointer(&XtclInstructionTable)) + uintptr(opCode)*32
 	codeStart = (*TByteCode)(unsafe.Pointer(codePtr)).FcodeStart
-	pcOffset = uint32(int64(int64(pc)) - int64(int64(codeStart)))
+	pcOffset = uint32(int64(pc) - int64(codeStart))
 	opnd = 0
 	numBytes = int32(1)
 	if procPtr != 0 {
@@ -128737,29 +128840,29 @@ func _FormatInstruction(tls *libc.TLS, codePtr uintptr, pc uintptr, bufferObj ui
 	_6:
 		opnd = int32(uint32(*(*uint8)(unsafe.Pointer(pc + uintptr(numBytes)))))
 		numBytes++
-		XTcl_AppendPrintfToObj(tls, bufferObj, ts+24537, libc.VaList(bp+144, uint32(uint32(opnd))))
+		XTcl_AppendPrintfToObj(tls, bufferObj, ts+24537, libc.VaList(bp+144, uint32(opnd)))
 		goto _19
 	_7:
 		opnd = int32(uint32(int32(*(*uint8)(unsafe.Pointer(pc + uintptr(numBytes))))<<libc.Int32FromInt32(24) | int32(*(*uint8)(unsafe.Pointer(pc + uintptr(numBytes) + libc.UintptrFromInt32(1))))<<libc.Int32FromInt32(16) | int32(*(*uint8)(unsafe.Pointer(pc + uintptr(numBytes) + libc.UintptrFromInt32(2))))<<libc.Int32FromInt32(8) | int32(*(*uint8)(unsafe.Pointer(pc + uintptr(numBytes) + libc.UintptrFromInt32(3))))))
 		numBytes += int32(4)
-		if int32(int32(opCode)) == int32(m_INST_START_CMD) {
+		if int32(opCode) == int32(m_INST_START_CMD) {
 			libc.Xsprintf(tls, bp+uintptr(libc.Xstrlen(tls, bp)), ts+24541, libc.VaList(bp+144, opnd))
 		}
-		XTcl_AppendPrintfToObj(tls, bufferObj, ts+24537, libc.VaList(bp+144, uint32(uint32(opnd))))
+		XTcl_AppendPrintfToObj(tls, bufferObj, ts+24537, libc.VaList(bp+144, uint32(opnd)))
 		goto _19
 	_8:
 		opnd = int32(*(*int8)(unsafe.Pointer(pc + uintptr(numBytes))))
 		numBytes++
-		libc.Xsprintf(tls, bp, ts+24562, libc.VaList(bp+144, pcOffset+uint32(uint32(opnd))))
+		libc.Xsprintf(tls, bp, ts+24562, libc.VaList(bp+144, pcOffset+uint32(opnd)))
 		XTcl_AppendPrintfToObj(tls, bufferObj, ts+24532, libc.VaList(bp+144, opnd))
 		goto _19
 	_9:
 		opnd = int32(uint32(*(*uint8)(unsafe.Pointer(pc + uintptr(numBytes))))<<libc.Int32FromInt32(24) | uint32(int32(*(*uint8)(unsafe.Pointer(pc + uintptr(numBytes) + libc.UintptrFromInt32(1))))<<libc.Int32FromInt32(16)) | uint32(int32(*(*uint8)(unsafe.Pointer(pc + uintptr(numBytes) + libc.UintptrFromInt32(2))))<<libc.Int32FromInt32(8)) | uint32(*(*uint8)(unsafe.Pointer(pc + uintptr(numBytes) + libc.UintptrFromInt32(3)))))
 		numBytes += int32(4)
-		if int32(int32(opCode)) == int32(m_INST_START_CMD) {
-			libc.Xsprintf(tls, bp, ts+24568, libc.VaList(bp+144, pcOffset+uint32(uint32(opnd))))
+		if int32(opCode) == int32(m_INST_START_CMD) {
+			libc.Xsprintf(tls, bp, ts+24568, libc.VaList(bp+144, pcOffset+uint32(opnd)))
 		} else {
-			libc.Xsprintf(tls, bp, ts+24562, libc.VaList(bp+144, pcOffset+uint32(uint32(opnd))))
+			libc.Xsprintf(tls, bp, ts+24562, libc.VaList(bp+144, pcOffset+uint32(opnd)))
 		}
 		XTcl_AppendPrintfToObj(tls, bufferObj, ts+24532, libc.VaList(bp+144, opnd))
 		goto _19
@@ -128767,18 +128870,18 @@ func _FormatInstruction(tls *libc.TLS, codePtr uintptr, pc uintptr, bufferObj ui
 		opnd = int32(uint32(*(*uint8)(unsafe.Pointer(pc + uintptr(numBytes)))))
 		numBytes++
 		suffixObj = *(*uintptr)(unsafe.Pointer((*TByteCode)(unsafe.Pointer(codePtr)).FobjArrayPtr + uintptr(opnd)*8))
-		XTcl_AppendPrintfToObj(tls, bufferObj, ts+24537, libc.VaList(bp+144, uint32(uint32(opnd))))
+		XTcl_AppendPrintfToObj(tls, bufferObj, ts+24537, libc.VaList(bp+144, uint32(opnd)))
 		goto _19
 	_11:
 		opnd = int32(uint32(int32(*(*uint8)(unsafe.Pointer(pc + uintptr(numBytes))))<<libc.Int32FromInt32(24) | int32(*(*uint8)(unsafe.Pointer(pc + uintptr(numBytes) + libc.UintptrFromInt32(1))))<<libc.Int32FromInt32(16) | int32(*(*uint8)(unsafe.Pointer(pc + uintptr(numBytes) + libc.UintptrFromInt32(2))))<<libc.Int32FromInt32(8) | int32(*(*uint8)(unsafe.Pointer(pc + uintptr(numBytes) + libc.UintptrFromInt32(3))))))
 		numBytes += int32(4)
 		suffixObj = *(*uintptr)(unsafe.Pointer((*TByteCode)(unsafe.Pointer(codePtr)).FobjArrayPtr + uintptr(opnd)*8))
-		XTcl_AppendPrintfToObj(tls, bufferObj, ts+24537, libc.VaList(bp+144, uint32(uint32(opnd))))
+		XTcl_AppendPrintfToObj(tls, bufferObj, ts+24537, libc.VaList(bp+144, uint32(opnd)))
 		goto _19
 	_12:
 		opnd = int32(uint32(int32(*(*uint8)(unsafe.Pointer(pc + uintptr(numBytes))))<<libc.Int32FromInt32(24) | int32(*(*uint8)(unsafe.Pointer(pc + uintptr(numBytes) + libc.UintptrFromInt32(1))))<<libc.Int32FromInt32(16) | int32(*(*uint8)(unsafe.Pointer(pc + uintptr(numBytes) + libc.UintptrFromInt32(2))))<<libc.Int32FromInt32(8) | int32(*(*uint8)(unsafe.Pointer(pc + uintptr(numBytes) + libc.UintptrFromInt32(3))))))
 		numBytes += int32(4)
-		XTcl_AppendPrintfToObj(tls, bufferObj, ts+24537, libc.VaList(bp+144, uint32(uint32(opnd))))
+		XTcl_AppendPrintfToObj(tls, bufferObj, ts+24537, libc.VaList(bp+144, uint32(opnd)))
 		auxPtr = (*TByteCode)(unsafe.Pointer(codePtr)).FauxDataArrayPtr + uintptr(opnd)*16
 		goto _19
 	_13:
@@ -128804,7 +128907,7 @@ func _FormatInstruction(tls *libc.TLS, codePtr uintptr, pc uintptr, bufferObj ui
 	printLVTindex:
 		if localPtr != libc.UintptrFromInt32(0) {
 			if opnd >= localCt {
-				XTcl_Panic(tls, ts+24603, libc.VaList(bp+144, uint32(uint32(opnd)), localCt))
+				XTcl_Panic(tls, ts+24603, libc.VaList(bp+144, uint32(opnd), localCt))
 			}
 			j = 0
 			for {
@@ -128817,13 +128920,13 @@ func _FormatInstruction(tls *libc.TLS, codePtr uintptr, pc uintptr, bufferObj ui
 				j++
 			}
 			if (*TCompiledLocal)(unsafe.Pointer(localPtr)).Fflags&int32(m_VAR_TEMPORARY) != 0 {
-				libc.Xsprintf(tls, bp, ts+24657, libc.VaList(bp+144, uint32(uint32(opnd))))
+				libc.Xsprintf(tls, bp, ts+24657, libc.VaList(bp+144, uint32(opnd)))
 			} else {
 				libc.Xsprintf(tls, bp, ts+24669, 0)
 				suffixSrc = localPtr + 40
 			}
 		}
-		XTcl_AppendPrintfToObj(tls, bufferObj, ts+24674, libc.VaList(bp+144, uint32(uint32(opnd))))
+		XTcl_AppendPrintfToObj(tls, bufferObj, ts+24674, libc.VaList(bp+144, uint32(opnd)))
 		goto _19
 	_16:
 		opnd = int32(uint32(*(*uint8)(unsafe.Pointer(pc + uintptr(numBytes)))))
@@ -129039,7 +129142,7 @@ func XTclNewInstNameObj(tls *libc.TLS, inst uint8) (r uintptr) {
 	(*TTcl_Obj)(unsafe.Pointer(objPtr)).Flength = 0
 	(*TTcl_Obj)(unsafe.Pointer(objPtr)).FtypePtr = libc.UintptrFromInt32(0)
 	(*TTcl_Obj)(unsafe.Pointer(objPtr)).FtypePtr = uintptr(unsafe.Pointer(&_tclInstNameType))
-	(*TTcl_Obj)(unsafe.Pointer(objPtr)).FinternalRep.FlongValue = int64(int64(inst))
+	(*TTcl_Obj)(unsafe.Pointer(objPtr)).FinternalRep.FlongValue = int64(inst)
 	(*TTcl_Obj)(unsafe.Pointer(objPtr)).Fbytes = libc.UintptrFromInt32(0)
 	return objPtr
 }
@@ -129291,7 +129394,7 @@ func _DisassembleByteCodeAsDicts(tls *libc.TLS, interp uintptr, objPtr uintptr) 
 			break
 		}
 		instDesc = uintptr(unsafe.Pointer(&XtclInstructionTable)) + uintptr(*(*uint8)(unsafe.Pointer(pc)))*32
-		address = int32(int64(int64(pc)) - int64((*TByteCode)(unsafe.Pointer(codePtr)).FcodeStart))
+		address = int32(int64(pc) - int64((*TByteCode)(unsafe.Pointer(codePtr)).FcodeStart))
 		if XtclFreeObjList == libc.UintptrFromInt32(0) {
 			XTclAllocateFreeObjects(tls)
 		}
@@ -130627,14 +130730,14 @@ func XTclInitEncodingSubsystem(tls *libc.TLS) {
 	(*TTableEncodingData)(unsafe.Pointer(dataPtr)).Ffallback = int32('?')
 	size = uint32(libc.Uint64FromInt32(256) * (libc.Uint64FromInt64(8) + libc.Uint64FromInt64(2)))
 	(*TTableEncodingData)(unsafe.Pointer(dataPtr)).FtoUnicode = XTcl_Alloc(tls, size)
-	libc.Xmemset(tls, (*TTableEncodingData)(unsafe.Pointer(dataPtr)).FtoUnicode, 0, uint64(uint64(size)))
+	libc.Xmemset(tls, (*TTableEncodingData)(unsafe.Pointer(dataPtr)).FtoUnicode, 0, uint64(size))
 	(*TTableEncodingData)(unsafe.Pointer(dataPtr)).FfromUnicode = XTcl_Alloc(tls, size)
-	libc.Xmemset(tls, (*TTableEncodingData)(unsafe.Pointer(dataPtr)).FfromUnicode, 0, uint64(uint64(size)))
+	libc.Xmemset(tls, (*TTableEncodingData)(unsafe.Pointer(dataPtr)).FfromUnicode, 0, uint64(size))
 	*(*uintptr)(unsafe.Pointer((*TTableEncodingData)(unsafe.Pointer(dataPtr)).FtoUnicode)) = (*TTableEncodingData)(unsafe.Pointer(dataPtr)).FtoUnicode + libc.UintptrFromInt32(256)*8
 	*(*uintptr)(unsafe.Pointer((*TTableEncodingData)(unsafe.Pointer(dataPtr)).FfromUnicode)) = (*TTableEncodingData)(unsafe.Pointer(dataPtr)).FfromUnicode + libc.UintptrFromInt32(256)*8
 	i = uint16(1)
 	for {
-		if !(int32(int32(i)) < int32(256)) {
+		if !(int32(i) < int32(256)) {
 			break
 		}
 		*(*uintptr)(unsafe.Pointer((*TTableEncodingData)(unsafe.Pointer(dataPtr)).FtoUnicode + uintptr(i)*8)) = uintptr(unsafe.Pointer(&_emptyPage))
@@ -130645,7 +130748,7 @@ func XTclInitEncodingSubsystem(tls *libc.TLS) {
 	}
 	i = uint16(0)
 	for {
-		if !(int32(int32(i)) < int32(256)) {
+		if !(int32(i) < int32(256)) {
 			break
 		}
 		*(*uint16)(unsafe.Pointer(*(*uintptr)(unsafe.Pointer((*TTableEncodingData)(unsafe.Pointer(dataPtr)).FtoUnicode)) + uintptr(i)*2)) = i
@@ -131263,7 +131366,7 @@ func XTcl_ExternalToUtf(tls *libc.TLS, interp uintptr, encoding TTcl_Encoding, s
 		if *(*int32)(unsafe.Pointer(dstCharsPtr)) <= maxChars {
 			break
 		}
-		dstLen = int32(int64(XTcl_UtfAtIndex(tls, dst, maxChars)) - int64(int64(dst)) + int64(libc.Int32FromInt32(m_TCL_UTF_MAX)-libc.Int32FromInt32(1)))
+		dstLen = int32(int64(XTcl_UtfAtIndex(tls, dst, maxChars)) - int64(dst) + int64(libc.Int32FromInt32(m_TCL_UTF_MAX)-libc.Int32FromInt32(1)))
 		*(*TTcl_EncodingState)(unsafe.Pointer(statePtr)) = savedState
 	}
 	if !(noTerminate != 0) {
@@ -131742,9 +131845,9 @@ func _LoadTableEncoding(tls *libc.TLS, name uintptr, type1 int32, chan1 TTcl_Cha
 	 * malloc to get the memory for the array and all the pages needed by the
 	 * array.
 	 */
-	size = uint32(libc.Uint64FromInt32(256)*libc.Uint64FromInt64(8) + uint64(uint64(numPages))*(libc.Uint64FromInt32(256)*libc.Uint64FromInt64(2)))
+	size = uint32(libc.Uint64FromInt32(256)*libc.Uint64FromInt64(8) + uint64(numPages)*(libc.Uint64FromInt32(256)*libc.Uint64FromInt64(2)))
 	(*TTableEncodingData)(unsafe.Pointer(dataPtr)).FtoUnicode = XTcl_Alloc(tls, size)
-	libc.Xmemset(tls, (*TTableEncodingData)(unsafe.Pointer(dataPtr)).FtoUnicode, 0, uint64(uint64(size)))
+	libc.Xmemset(tls, (*TTableEncodingData)(unsafe.Pointer(dataPtr)).FtoUnicode, 0, uint64(size))
 	pageMemPtr = (*TTableEncodingData)(unsafe.Pointer(dataPtr)).FtoUnicode + libc.UintptrFromInt32(256)*8
 	if XtclFreeObjList == libc.UintptrFromInt32(0) {
 		XTclAllocateFreeObjects(tls)
@@ -131789,7 +131892,7 @@ func _LoadTableEncoding(tls *libc.TLS, name uintptr, type1 int32, chan1 TTcl_Cha
 			if ch != 0 {
 				(*(*[256]uint8)(unsafe.Pointer(bp + 224)))[ch>>int32(8)] = uint8(1)
 			}
-			*(*uint16)(unsafe.Pointer(pageMemPtr)) = uint16(uint16(ch))
+			*(*uint16)(unsafe.Pointer(pageMemPtr)) = uint16(ch)
 			pageMemPtr += 2
 			p += uintptr(4)
 			goto _3
@@ -131856,9 +131959,9 @@ func _LoadTableEncoding(tls *libc.TLS, name uintptr, type1 int32, chan1 TTcl_Cha
 	_7:
 		hi++
 	}
-	size = uint32(libc.Uint64FromInt32(256)*libc.Uint64FromInt64(8) + uint64(uint64(numPages))*(libc.Uint64FromInt32(256)*libc.Uint64FromInt64(2)))
+	size = uint32(libc.Uint64FromInt32(256)*libc.Uint64FromInt64(8) + uint64(numPages)*(libc.Uint64FromInt32(256)*libc.Uint64FromInt64(2)))
 	(*TTableEncodingData)(unsafe.Pointer(dataPtr)).FfromUnicode = XTcl_Alloc(tls, size)
-	libc.Xmemset(tls, (*TTableEncodingData)(unsafe.Pointer(dataPtr)).FfromUnicode, 0, uint64(uint64(size)))
+	libc.Xmemset(tls, (*TTableEncodingData)(unsafe.Pointer(dataPtr)).FfromUnicode, 0, uint64(size))
 	pageMemPtr = (*TTableEncodingData)(unsafe.Pointer(dataPtr)).FfromUnicode + libc.UintptrFromInt32(256)*8
 	hi = 0
 	for {
@@ -131926,7 +132029,7 @@ func _LoadTableEncoding(tls *libc.TLS, name uintptr, type1 int32, chan1 TTcl_Cha
 				break
 			}
 			if int32(*(*uint16)(unsafe.Pointer(*(*uintptr)(unsafe.Pointer((*TTableEncodingData)(unsafe.Pointer(dataPtr)).FtoUnicode)) + uintptr(lo)*2))) != 0 {
-				*(*uint16)(unsafe.Pointer(page + uintptr(lo)*2)) = uint16(uint16(lo))
+				*(*uint16)(unsafe.Pointer(page + uintptr(lo)*2)) = uint16(lo)
 			}
 			goto _10
 		_10:
@@ -132004,7 +132107,7 @@ func _LoadTableEncoding(tls *libc.TLS, name uintptr, type1 int32, chan1 TTcl_Cha
 			if from == 0 {
 				goto _15
 			}
-			*(*uint16)(unsafe.Pointer(*(*uintptr)(unsafe.Pointer((*TTableEncodingData)(unsafe.Pointer(dataPtr)).FfromUnicode + uintptr(from>>int32(8))*8)) + uintptr(from&int32(0xFF))*2)) = uint16(uint16(to))
+			*(*uint16)(unsafe.Pointer(*(*uintptr)(unsafe.Pointer((*TTableEncodingData)(unsafe.Pointer(dataPtr)).FfromUnicode + uintptr(from>>int32(8))*8)) + uintptr(from&int32(0xFF))*2)) = uint16(to)
 			goto _15
 		_15:
 			p1 += uintptr(5)
@@ -132458,7 +132561,7 @@ func _BinaryProc(tls *libc.TLS, clientData TClientData, src uintptr, srcLen int3
 	*(*int32)(unsafe.Pointer(srcReadPtr)) = srcLen
 	*(*int32)(unsafe.Pointer(dstWrotePtr)) = srcLen
 	*(*int32)(unsafe.Pointer(dstCharsPtr)) = srcLen
-	libc.Xmemcpy(tls, dst, src, uint64(uint64(srcLen)))
+	libc.Xmemcpy(tls, dst, src, uint64(srcLen))
 	return result
 }
 
@@ -132567,7 +132670,7 @@ func _UtfToUtfProc(tls *libc.TLS, clientData TClientData, src uintptr, srcLen in
 		if !(src < srcEnd && numChars <= charLimit) {
 			break
 		}
-		if src > srcClose && !(XTcl_UtfCharComplete(tls, src, int32(int64(int64(srcEnd))-int64(int64(src)))) != 0) {
+		if src > srcClose && !(XTcl_UtfCharComplete(tls, src, int32(int64(srcEnd)-int64(src))) != 0) {
 			/*
 			 * If there is more string to follow, this will ensure that the
 			 * last UTF-8 character in the source buffer hasn't been cut off.
@@ -132601,7 +132704,7 @@ func _UtfToUtfProc(tls *libc.TLS, clientData TClientData, src uintptr, srcLen in
 				*(*TTcl_UniChar)(unsafe.Pointer(chPtr)) = uint16(0) /* reset surrogate handling */
 				src += uintptr(2)
 			} else {
-				if !(XTcl_UtfCharComplete(tls, src, int32(int64(int64(srcEnd))-int64(int64(src)))) != 0) {
+				if !(XTcl_UtfCharComplete(tls, src, int32(int64(srcEnd)-int64(src))) != 0) {
 					/*
 					 * Always check before using TclUtfToUniChar. Not doing can so
 					 * cause it run beyond the end of the buffer! If we happen such an
@@ -132684,8 +132787,8 @@ func _UtfToUtfProc(tls *libc.TLS, clientData TClientData, src uintptr, srcLen in
 	_2:
 		numChars++
 	}
-	*(*int32)(unsafe.Pointer(srcReadPtr)) = int32(int64(int64(src)) - int64(int64(srcStart)))
-	*(*int32)(unsafe.Pointer(dstWrotePtr)) = int32(int64(int64(dst)) - int64(int64(dstStart)))
+	*(*int32)(unsafe.Pointer(srcReadPtr)) = int32(int64(src) - int64(srcStart))
+	*(*int32)(unsafe.Pointer(dstWrotePtr)) = int32(int64(dst) - int64(dstStart))
 	*(*int32)(unsafe.Pointer(dstCharsPtr)) = numChars
 	return result
 }
@@ -132761,20 +132864,20 @@ func _UnicodeToUtfProc(tls *libc.TLS, clientData TClientData, src uintptr, srcLe
 		 * Special case for 1-byte utf chars for speed. Make sure we work with
 		 * unsigned short-size data.
 		 */
-		if ch != 0 && int32(int32(ch)) < int32(0x80) {
+		if ch != 0 && int32(ch) < int32(0x80) {
 			v4 = dst
 			dst++
-			*(*int8)(unsafe.Pointer(v4)) = int8(int32(int32(ch)) & libc.Int32FromInt32(0xFF))
+			*(*int8)(unsafe.Pointer(v4)) = int8(int32(ch) & libc.Int32FromInt32(0xFF))
 		} else {
-			dst += uintptr(XTcl_UniCharToUtf(tls, int32(int32(ch)), dst))
+			dst += uintptr(XTcl_UniCharToUtf(tls, int32(ch), dst))
 		}
 		src += uintptr(2)
 		goto _3
 	_3:
 		numChars++
 	}
-	*(*int32)(unsafe.Pointer(srcReadPtr)) = int32(int64(int64(src)) - int64(int64(srcStart)))
-	*(*int32)(unsafe.Pointer(dstWrotePtr)) = int32(int64(int64(dst)) - int64(int64(dstStart)))
+	*(*int32)(unsafe.Pointer(srcReadPtr)) = int32(int64(src) - int64(srcStart))
+	*(*int32)(unsafe.Pointer(dstWrotePtr)) = int32(int64(dst) - int64(dstStart))
 	*(*int32)(unsafe.Pointer(dstCharsPtr)) = numChars
 	return result
 }
@@ -132820,7 +132923,7 @@ func _UtfToUnicodeProc(tls *libc.TLS, clientData TClientData, src uintptr, srcLe
 		if !(src < srcEnd) {
 			break
 		}
-		if src > srcClose && !(XTcl_UtfCharComplete(tls, src, int32(int64(int64(srcEnd))-int64(int64(src)))) != 0) {
+		if src > srcClose && !(XTcl_UtfCharComplete(tls, src, int32(int64(srcEnd)-int64(src))) != 0) {
 			/*
 			 * If there is more string to follow, this will ensure that the
 			 * last UTF-8 character in the source buffer hasn't been cut off.
@@ -132858,8 +132961,8 @@ func _UtfToUnicodeProc(tls *libc.TLS, clientData TClientData, src uintptr, srcLe
 	_1:
 		numChars++
 	}
-	*(*int32)(unsafe.Pointer(srcReadPtr)) = int32(int64(int64(src)) - int64(int64(srcStart)))
-	*(*int32)(unsafe.Pointer(dstWrotePtr)) = int32(int64(int64(dst)) - int64(int64(dstStart)))
+	*(*int32)(unsafe.Pointer(srcReadPtr)) = int32(int64(src) - int64(srcStart))
+	*(*int32)(unsafe.Pointer(dstWrotePtr)) = int32(int64(dst) - int64(dstStart))
 	*(*int32)(unsafe.Pointer(dstCharsPtr)) = numChars
 	return result
 }
@@ -132924,7 +133027,7 @@ func _TableToUtfProc(tls *libc.TLS, clientData TClientData, src uintptr, srcLen 
 		} else {
 			ch = *(*uint16)(unsafe.Pointer(pageZero + uintptr(byte1)*2))
 		}
-		if int32(int32(ch)) == 0 && byte1 != 0 {
+		if int32(ch) == 0 && byte1 != 0 {
 			if flags&int32(m_TCL_ENCODING_STOPONERROR) != 0 {
 				result = -int32(2)
 				break
@@ -132932,25 +133035,25 @@ func _TableToUtfProc(tls *libc.TLS, clientData TClientData, src uintptr, srcLen 
 			if *(*int8)(unsafe.Pointer(prefixBytes + uintptr(byte1))) != 0 {
 				src--
 			}
-			ch = uint16(uint16(byte1))
+			ch = uint16(byte1)
 		}
 		/*
 		 * Special case for 1-byte utf chars for speed.
 		 */
-		if ch != 0 && int32(int32(ch)) < int32(0x80) {
+		if ch != 0 && int32(ch) < int32(0x80) {
 			v2 = dst
 			dst++
-			*(*int8)(unsafe.Pointer(v2)) = int8(int8(ch))
+			*(*int8)(unsafe.Pointer(v2)) = int8(ch)
 		} else {
-			dst += uintptr(XTcl_UniCharToUtf(tls, int32(int32(ch)), dst))
+			dst += uintptr(XTcl_UniCharToUtf(tls, int32(ch), dst))
 		}
 		src++
 		goto _1
 	_1:
 		numChars++
 	}
-	*(*int32)(unsafe.Pointer(srcReadPtr)) = int32(int64(int64(src)) - int64(int64(srcStart)))
-	*(*int32)(unsafe.Pointer(dstWrotePtr)) = int32(int64(int64(dst)) - int64(int64(dstStart)))
+	*(*int32)(unsafe.Pointer(srcReadPtr)) = int32(int64(src) - int64(srcStart))
+	*(*int32)(unsafe.Pointer(dstWrotePtr)) = int32(int64(dst) - int64(dstStart))
 	*(*int32)(unsafe.Pointer(dstCharsPtr)) = numChars
 	return result
 }
@@ -132999,7 +133102,7 @@ func _TableFromUtfProc(tls *libc.TLS, clientData TClientData, src uintptr, srcLe
 		if !(src < srcEnd) {
 			break
 		}
-		if src > srcClose && !(XTcl_UtfCharComplete(tls, src, int32(int64(int64(srcEnd))-int64(int64(src)))) != 0) {
+		if src > srcClose && !(XTcl_UtfCharComplete(tls, src, int32(int64(srcEnd)-int64(src))) != 0) {
 			/*
 			 * If there is more string to follow, this will ensure that the
 			 * last UTF-8 character in the source buffer hasn't been cut off.
@@ -133028,14 +133131,14 @@ func _TableFromUtfProc(tls *libc.TLS, clientData TClientData, src uintptr, srcLe
 				break
 			}
 			*(*int8)(unsafe.Pointer(dst)) = int8(word >> libc.Int32FromInt32(8))
-			*(*int8)(unsafe.Pointer(dst + 1)) = int8(int8(word))
+			*(*int8)(unsafe.Pointer(dst + 1)) = int8(word)
 			dst += uintptr(2)
 		} else {
 			if dst > dstEnd {
 				result = -int32(4)
 				break
 			}
-			*(*int8)(unsafe.Pointer(dst)) = int8(int8(word))
+			*(*int8)(unsafe.Pointer(dst)) = int8(word)
 			dst++
 		}
 		src += uintptr(len1)
@@ -133043,8 +133146,8 @@ func _TableFromUtfProc(tls *libc.TLS, clientData TClientData, src uintptr, srcLe
 	_1:
 		numChars++
 	}
-	*(*int32)(unsafe.Pointer(srcReadPtr)) = int32(int64(int64(src)) - int64(int64(srcStart)))
-	*(*int32)(unsafe.Pointer(dstWrotePtr)) = int32(int64(int64(dst)) - int64(int64(dstStart)))
+	*(*int32)(unsafe.Pointer(srcReadPtr)) = int32(int64(src) - int64(srcStart))
+	*(*int32)(unsafe.Pointer(dstWrotePtr)) = int32(int64(dst) - int64(dstStart))
 	*(*int32)(unsafe.Pointer(dstCharsPtr)) = numChars
 	return result
 }
@@ -133096,20 +133199,20 @@ func _Iso88591ToUtfProc(tls *libc.TLS, clientData TClientData, src uintptr, srcL
 		/*
 		 * Special case for 1-byte utf chars for speed.
 		 */
-		if ch != 0 && int32(int32(ch)) < int32(0x80) {
+		if ch != 0 && int32(ch) < int32(0x80) {
 			v2 = dst
 			dst++
-			*(*int8)(unsafe.Pointer(v2)) = int8(int8(ch))
+			*(*int8)(unsafe.Pointer(v2)) = int8(ch)
 		} else {
-			dst += uintptr(XTcl_UniCharToUtf(tls, int32(int32(ch)), dst))
+			dst += uintptr(XTcl_UniCharToUtf(tls, int32(ch), dst))
 		}
 		src++
 		goto _1
 	_1:
 		numChars++
 	}
-	*(*int32)(unsafe.Pointer(srcReadPtr)) = int32(int64(int64(src)) - int64(int64(srcStart)))
-	*(*int32)(unsafe.Pointer(dstWrotePtr)) = int32(int64(int64(dst)) - int64(int64(dstStart)))
+	*(*int32)(unsafe.Pointer(srcReadPtr)) = int32(int64(src) - int64(srcStart))
+	*(*int32)(unsafe.Pointer(dstWrotePtr)) = int32(int64(dst) - int64(dstStart))
 	*(*int32)(unsafe.Pointer(dstCharsPtr)) = numChars
 	return result
 }
@@ -133154,7 +133257,7 @@ func _Iso88591FromUtfProc(tls *libc.TLS, clientData TClientData, src uintptr, sr
 		if !(src < srcEnd) {
 			break
 		}
-		if src > srcClose && !(XTcl_UtfCharComplete(tls, src, int32(int64(int64(srcEnd))-int64(int64(src)))) != 0) {
+		if src > srcClose && !(XTcl_UtfCharComplete(tls, src, int32(int64(srcEnd)-int64(src))) != 0) {
 			/*
 			 * If there is more string to follow, this will ensure that the
 			 * last UTF-8 character in the source buffer hasn't been cut off.
@@ -133194,8 +133297,8 @@ func _Iso88591FromUtfProc(tls *libc.TLS, clientData TClientData, src uintptr, sr
 	_1:
 		numChars++
 	}
-	*(*int32)(unsafe.Pointer(srcReadPtr)) = int32(int64(int64(src)) - int64(int64(srcStart)))
-	*(*int32)(unsafe.Pointer(dstWrotePtr)) = int32(int64(int64(dst)) - int64(int64(dstStart)))
+	*(*int32)(unsafe.Pointer(srcReadPtr)) = int32(int64(src) - int64(srcStart))
+	*(*int32)(unsafe.Pointer(dstWrotePtr)) = int32(int64(dst) - int64(dstStart))
 	*(*int32)(unsafe.Pointer(dstCharsPtr)) = numChars
 	return result
 }
@@ -133290,13 +133393,13 @@ func _EscapeToUtfProc(tls *libc.TLS, clientData TClientData, src uintptr, srcLen
 			/*
 			 * Saw the beginning of an escape sequence.
 			 */
-			left = uint32(int64(int64(srcEnd)) - int64(int64(src)))
+			left = uint32(int64(srcEnd) - int64(src))
 			len1 = (*TEscapeEncodingData)(unsafe.Pointer(dataPtr)).FinitLen
 			longest = len1
 			checked = 0
 			if len1 <= left {
 				checked++
-				if len1 > uint32(0) && libc.Xmemcmp(tls, src, dataPtr+8, uint64(uint64(len1))) == 0 {
+				if len1 > uint32(0) && libc.Xmemcmp(tls, src, dataPtr+8, uint64(len1)) == 0 {
 					/*
 					 * If we see initialization string, skip it, even if we're
 					 * not at the beginning of the buffer.
@@ -133311,7 +133414,7 @@ func _EscapeToUtfProc(tls *libc.TLS, clientData TClientData, src uintptr, srcLen
 			}
 			if len1 <= left {
 				checked++
-				if len1 > uint32(0) && libc.Xmemcmp(tls, src, dataPtr+28, uint64(uint64(len1))) == 0 {
+				if len1 > uint32(0) && libc.Xmemcmp(tls, src, dataPtr+28, uint64(len1)) == 0 {
 					/*
 					 * If we see finalization string, skip it, even if we're
 					 * not at the end of the buffer.
@@ -133332,7 +133435,7 @@ func _EscapeToUtfProc(tls *libc.TLS, clientData TClientData, src uintptr, srcLen
 				}
 				if len1 <= left {
 					checked++
-					if len1 > uint32(0) && libc.Xmemcmp(tls, src, subTablePtr+4, uint64(uint64(len1))) == 0 {
+					if len1 > uint32(0) && libc.Xmemcmp(tls, src, subTablePtr+4, uint64(len1)) == 0 {
 						state = i
 						encodingPtr = libc.UintptrFromInt32(0)
 						subTablePtr = libc.UintptrFromInt32(0)
@@ -133398,8 +133501,8 @@ func _EscapeToUtfProc(tls *libc.TLS, clientData TClientData, src uintptr, srcLen
 	_1:
 	}
 	*(*TTcl_EncodingState)(unsafe.Pointer(statePtr)) = uintptr(int64(state))
-	*(*int32)(unsafe.Pointer(srcReadPtr)) = int32(int64(int64(src)) - int64(int64(srcStart)))
-	*(*int32)(unsafe.Pointer(dstWrotePtr)) = int32(int64(int64(dst)) - int64(int64(dstStart)))
+	*(*int32)(unsafe.Pointer(srcReadPtr)) = int32(int64(src) - int64(srcStart))
+	*(*int32)(unsafe.Pointer(dstWrotePtr)) = int32(int64(dst) - int64(dstStart))
 	*(*int32)(unsafe.Pointer(dstCharsPtr)) = numChars
 	return result
 }
@@ -133467,7 +133570,7 @@ func _EscapeFromUtfProc(tls *libc.TLS, clientData TClientData, src uintptr, srcL
 		if !(src < srcEnd) {
 			break
 		}
-		if src > srcClose && !(XTcl_UtfCharComplete(tls, src, int32(int64(int64(srcEnd))-int64(int64(src)))) != 0) {
+		if src > srcClose && !(XTcl_UtfCharComplete(tls, src, int32(int64(srcEnd)-int64(src))) != 0) {
 			/*
 			 * If there is more string to follow, this will ensure that the
 			 * last UTF-8 character in the source buffer hasn't been cut off.
@@ -133540,14 +133643,14 @@ func _EscapeFromUtfProc(tls *libc.TLS, clientData TClientData, src uintptr, srcL
 				break
 			}
 			*(*int8)(unsafe.Pointer(dst)) = int8(word >> libc.Int32FromInt32(8))
-			*(*int8)(unsafe.Pointer(dst + 1)) = int8(int8(word))
+			*(*int8)(unsafe.Pointer(dst + 1)) = int8(word)
 			dst += uintptr(2)
 		} else {
 			if dst > dstEnd {
 				result = -int32(4)
 				break
 			}
-			*(*int8)(unsafe.Pointer(dst)) = int8(int8(word))
+			*(*int8)(unsafe.Pointer(dst)) = int8(word)
 			dst++
 		}
 		src += uintptr(len1)
@@ -133574,7 +133677,7 @@ func _EscapeFromUtfProc(tls *libc.TLS, clientData TClientData, src uintptr, srcL
 			result = -int32(4)
 		} else {
 			if state != 0 {
-				libc.Xmemcpy(tls, dst, dataPtr+304+4, uint64(uint64(len11)))
+				libc.Xmemcpy(tls, dst, dataPtr+304+4, uint64(len11))
 				dst += uintptr(len11)
 			}
 			libc.Xmemcpy(tls, dst, dataPtr+28, uint64((*TEscapeEncodingData)(unsafe.Pointer(dataPtr)).FfinalLen))
@@ -133583,8 +133686,8 @@ func _EscapeFromUtfProc(tls *libc.TLS, clientData TClientData, src uintptr, srcL
 		}
 	}
 	*(*TTcl_EncodingState)(unsafe.Pointer(statePtr)) = uintptr(int64(state))
-	*(*int32)(unsafe.Pointer(srcReadPtr)) = int32(int64(int64(src)) - int64(int64(srcStart)))
-	*(*int32)(unsafe.Pointer(dstWrotePtr)) = int32(int64(int64(dst)) - int64(int64(dstStart)))
+	*(*int32)(unsafe.Pointer(srcReadPtr)) = int32(int64(src) - int64(srcStart))
+	*(*int32)(unsafe.Pointer(dstWrotePtr)) = int32(int64(dst) - int64(dstStart))
 	*(*int32)(unsafe.Pointer(dstCharsPtr)) = numChars
 	return result
 }
@@ -133704,7 +133807,7 @@ func _unilen(tls *libc.TLS, src uintptr) (r Tsize_t) {
 	for int32(*(*uint16)(unsafe.Pointer(p))) != 0x0000 {
 		p += 2
 	}
-	return uint64(int64(p) - int64(int64(src)))
+	return uint64(int64(p) - int64(src))
 }
 
 /*
@@ -136222,8 +136325,8 @@ func XTclSpellFix(tls *libc.TLS, interp uintptr, objv uintptr, objc int32, badId
 		store = *(*uintptr)(unsafe.Pointer(search + 2*8))
 	} else {
 		tmp = XTcl_Alloc(tls, uint32(libc.Uint64FromInt32(3)*libc.Uint64FromInt64(8)))
-		store = XTcl_Alloc(tls, uint32(uint64(uint64(size))*libc.Uint64FromInt64(8)))
-		libc.Xmemcpy(tls, store, (*TInterp)(unsafe.Pointer(iPtr)).FensembleRewrite.FsourceObjs, uint64(uint64(size))*uint64(8))
+		store = XTcl_Alloc(tls, uint32(uint64(size)*libc.Uint64FromInt64(8)))
+		libc.Xmemcpy(tls, store, (*TInterp)(unsafe.Pointer(iPtr)).FensembleRewrite.FsourceObjs, uint64(size)*uint64(8))
 		/*
 		 * Awful casting abuse here! Note that the NULL in the first element
 		 * indicates that the initial objects are a raw array in the second
@@ -137283,7 +137386,7 @@ checkNextWord:
 				break
 			}
 			str = XTcl_GetStringFromObj(tls, *(*uintptr)(unsafe.Pointer(*(*uintptr)(unsafe.Pointer(bp + 32)) + uintptr(i)*8)), bp+48)
-			if *(*int32)(unsafe.Pointer(bp + 48)) == int32(int32(numBytes)) && !(libc.Xmemcmp(tls, word, str, uint64(uint64(numBytes))) != 0) {
+			if *(*int32)(unsafe.Pointer(bp + 48)) == int32(numBytes) && !(libc.Xmemcmp(tls, word, str, uint64(numBytes)) != 0) {
 				/*
 				 * Exact match! Excellent!
 				 */
@@ -137302,7 +137405,7 @@ checkNextWord:
 			 * in the prefix case; might be another entry later in the list
 			 * that causes things to fail.
 			 */
-			if *(*int32)(unsafe.Pointer(bp + 44))&int32(m_TCL_ENSEMBLE_PREFIX) != 0 && libc.Xstrncmp(tls, word, str, uint64(uint64(numBytes))) == 0 {
+			if *(*int32)(unsafe.Pointer(bp + 44))&int32(m_TCL_ENSEMBLE_PREFIX) != 0 && libc.Xstrncmp(tls, word, str, uint64(numBytes)) == 0 {
 				if matchObj != libc.UintptrFromInt32(0) {
 					goto failed
 				}
@@ -137333,14 +137436,14 @@ checkNextWord:
 			Fptr2 uintptr
 		})(unsafe.Pointer(XtclFreeObjList + 32))).Fptr1
 		(*TTcl_Obj)(unsafe.Pointer(*(*uintptr)(unsafe.Pointer(bp + 8)))).FrefCount = 0
-		if int32(int32(numBytes)) == 0 {
+		if int32(numBytes) == 0 {
 			(*TTcl_Obj)(unsafe.Pointer(*(*uintptr)(unsafe.Pointer(bp + 8)))).Fbytes = XtclEmptyStringRep
 			(*TTcl_Obj)(unsafe.Pointer(*(*uintptr)(unsafe.Pointer(bp + 8)))).Flength = 0
 		} else {
-			(*TTcl_Obj)(unsafe.Pointer(*(*uintptr)(unsafe.Pointer(bp + 8)))).Fbytes = XTcl_Alloc(tls, uint32(int32(int32(numBytes)))+libc.Uint32FromUint32(1))
-			libc.Xmemcpy(tls, (*TTcl_Obj)(unsafe.Pointer(*(*uintptr)(unsafe.Pointer(bp + 8)))).Fbytes, word, uint64(int32(int32(numBytes))))
-			*(*int8)(unsafe.Pointer((*TTcl_Obj)(unsafe.Pointer(*(*uintptr)(unsafe.Pointer(bp + 8)))).Fbytes + uintptr(int32(int32(numBytes))))) = int8('\000')
-			(*TTcl_Obj)(unsafe.Pointer(*(*uintptr)(unsafe.Pointer(bp + 8)))).Flength = int32(int32(numBytes))
+			(*TTcl_Obj)(unsafe.Pointer(*(*uintptr)(unsafe.Pointer(bp + 8)))).Fbytes = XTcl_Alloc(tls, uint32(int32(numBytes))+libc.Uint32FromUint32(1))
+			libc.Xmemcpy(tls, (*TTcl_Obj)(unsafe.Pointer(*(*uintptr)(unsafe.Pointer(bp + 8)))).Fbytes, word, uint64(int32(numBytes)))
+			*(*int8)(unsafe.Pointer((*TTcl_Obj)(unsafe.Pointer(*(*uintptr)(unsafe.Pointer(bp + 8)))).Fbytes + uintptr(int32(numBytes)))) = int8('\000')
+			(*TTcl_Obj)(unsafe.Pointer(*(*uintptr)(unsafe.Pointer(bp + 8)))).Flength = int32(numBytes)
 		}
 		(*TTcl_Obj)(unsafe.Pointer(*(*uintptr)(unsafe.Pointer(bp + 8)))).FtypePtr = libc.UintptrFromInt32(0)
 		result = XTcl_DictObjGet(tls, libc.UintptrFromInt32(0), *(*uintptr)(unsafe.Pointer(bp)), *(*uintptr)(unsafe.Pointer(bp + 8)), bp+16)
@@ -137389,7 +137492,7 @@ checkNextWord:
 			} else {
 				v5 = XTcl_GetString(tls, *(*uintptr)(unsafe.Pointer(bp + 8)))
 			}
-			if libc.Xstrncmp(tls, v5, word, uint64(uint64(numBytes))) == 0 {
+			if libc.Xstrncmp(tls, v5, word, uint64(numBytes)) == 0 {
 				v6 = matched
 				matched++
 				if v6 != 0 {
@@ -137779,7 +137882,7 @@ func _CompileToInvokedCommand(tls *libc.TLS, interp uintptr, parsePtr uintptr, r
 		if (*TTcl_Token)(unsafe.Pointer(tokPtr)).Ftype1 == int32(m_TCL_TOKEN_SIMPLE_WORD) {
 			literal = XTclRegisterLiteral(tls, envPtr, (*(*TTcl_Token)(unsafe.Pointer(tokPtr + 1*24))).Fstart, (*(*TTcl_Token)(unsafe.Pointer(tokPtr + 1*24))).Fsize, 0)
 			if (*TCompileEnv)(unsafe.Pointer(envPtr)).FclNext != 0 {
-				XTclContinuationsEnterDerived(tls, XTclFetchLiteral(tls, envPtr, uint32(uint32(literal))), int32(int64((*(*TTcl_Token)(unsafe.Pointer(tokPtr + 1*24))).Fstart)-int64((*TCompileEnv)(unsafe.Pointer(envPtr)).Fsource)), (*TCompileEnv)(unsafe.Pointer(envPtr)).FclNext)
+				XTclContinuationsEnterDerived(tls, XTclFetchLiteral(tls, envPtr, uint32(literal)), int32(int64((*(*TTcl_Token)(unsafe.Pointer(tokPtr + 1*24))).Fstart)-int64((*TCompileEnv)(unsafe.Pointer(envPtr)).Fsource)), (*TCompileEnv)(unsafe.Pointer(envPtr)).FclNext)
 			}
 			_objIndexCopy1 = literal
 			if _objIndexCopy1 <= int32(255) {
@@ -137879,7 +137982,7 @@ func _CompileToInvokedCommand(tls *libc.TLS, interp uintptr, parsePtr uintptr, r
 		extraLiteralFlags |= int32(m_LITERAL_UNSHARED)
 	}
 	cmdLit = XTclRegisterLiteral(tls, envPtr, bytes, *(*int32)(unsafe.Pointer(bp + 8)), extraLiteralFlags)
-	XTclSetCmdNameObj(tls, interp, XTclFetchLiteral(tls, envPtr, uint32(uint32(cmdLit))), cmdPtr)
+	XTclSetCmdNameObj(tls, interp, XTclFetchLiteral(tls, envPtr, uint32(cmdLit)), cmdPtr)
 	_objIndexCopy2 = cmdLit
 	if _objIndexCopy2 <= int32(255) {
 		if (*TCompileEnv)(unsafe.Pointer(envPtr)).FcodeNext+uintptr(2) > (*TCompileEnv)(unsafe.Pointer(envPtr)).FcodeEnd {
@@ -138416,7 +138519,7 @@ func XTclSetEnv(tls *libc.TLS, name uintptr, value uintptr) {
 	 */
 	valueLength = uint32(libc.Xstrlen(tls, value))
 	p = XTcl_Alloc(tls, nameLength+valueLength+libc.Uint32FromInt32(2))
-	libc.Xmemcpy(tls, p, name, uint64(uint64(nameLength)))
+	libc.Xmemcpy(tls, p, name, uint64(nameLength))
 	*(*int8)(unsafe.Pointer(p + uintptr(nameLength))) = int8('=')
 	libc.Xmemcpy(tls, p+uintptr(nameLength)+uintptr(1), value, uint64(valueLength+uint32(1)))
 	p2 = XTcl_UtfToExternalDString(tls, libc.UintptrFromInt32(0), p, -int32(1), bp)
@@ -141065,7 +141168,7 @@ func XTclCreateExecEnv(tls *libc.TLS, interp uintptr, size int32) (r uintptr) {
 	var eePtr, esPtr uintptr
 	_, _ = eePtr, esPtr
 	eePtr = XTcl_Alloc(tls, uint32(libc.Uint64FromInt64(56)))
-	esPtr = XTcl_Alloc(tls, uint32(uint64(int32(uint64(libc.UintptrFromInt32(0)+40)))+uint64(uint64(size))*libc.Uint64FromInt64(8)))
+	esPtr = XTcl_Alloc(tls, uint32(uint64(int32(uint64(libc.UintptrFromInt32(0)+40)))+uint64(size)*libc.Uint64FromInt64(8)))
 	(*TExecEnv)(unsafe.Pointer(eePtr)).FexecStackPtr = esPtr
 	if XtclFreeObjList == libc.UintptrFromInt32(0) {
 		XTclAllocateFreeObjects(tls)
@@ -141244,7 +141347,7 @@ func _wordSkip(tls *libc.TLS, ptr uintptr) (r int32) {
 	_, _ = base, mask
 	mask = int32(libc.Uint64FromInt32(2)*libc.Uint64FromInt64(8) - libc.Uint64FromInt32(1))
 	base = int32(int64(ptr)) & mask
-	return int32((libc.Uint64FromInt32(2)*libc.Uint64FromInt64(8) - uint64(uint64(base))) / uint64(8))
+	return int32((libc.Uint64FromInt32(2)*libc.Uint64FromInt64(8) - uint64(base)) / uint64(8))
 }
 
 /*
@@ -141277,7 +141380,7 @@ func _GrowEvaluationStack(tls *libc.TLS, eePtr uintptr, growth int32, move int32
 	_, _, _, _, _, _, _, _, _, _, _ = currElems, esPtr, markerPtr, memStart, moveWords, needed, newBytes, newElems, offset, oldPtr, tmpMarkerPtr
 	esPtr = (*TExecEnv)(unsafe.Pointer(eePtr)).FexecStackPtr
 	oldPtr = libc.UintptrFromInt32(0)
-	needed = int32(int64(int64(growth)) - (int64((*TExecStack)(unsafe.Pointer(esPtr)).FendPtr)-int64((*TExecStack)(unsafe.Pointer(esPtr)).FtosPtr))/8)
+	needed = int32(int64(growth) - (int64((*TExecStack)(unsafe.Pointer(esPtr)).FendPtr)-int64((*TExecStack)(unsafe.Pointer(esPtr)).FtosPtr))/8)
 	markerPtr = (*TExecStack)(unsafe.Pointer(esPtr)).FmarkerPtr
 	moveWords = 0
 	if move != 0 {
@@ -141342,7 +141445,7 @@ func _GrowEvaluationStack(tls *libc.TLS, eePtr uintptr, growth int32, move int32
 	for needed > newElems {
 		newElems *= int32(2)
 	}
-	newBytes = int32(uint64(int32(uint64(libc.UintptrFromInt32(0)+40))) + uint64(uint64(newElems))*uint64(8))
+	newBytes = int32(uint64(int32(uint64(libc.UintptrFromInt32(0)+40))) + uint64(newElems)*uint64(8))
 	oldPtr = esPtr
 	esPtr = XTcl_Alloc(tls, uint32(newBytes))
 	(*TExecStack)(unsafe.Pointer(oldPtr)).FnextPtr = esPtr
@@ -141361,7 +141464,7 @@ newStackReady:
 	memStart = (*TExecStack)(unsafe.Pointer(esPtr)).FmarkerPtr + uintptr(_wordSkip(tls, (*TExecStack)(unsafe.Pointer(esPtr)).FmarkerPtr))*8
 	(*TExecStack)(unsafe.Pointer(esPtr)).FtosPtr = memStart - uintptr(1)*8
 	if move != 0 {
-		libc.Xmemcpy(tls, memStart, markerPtr+uintptr(_wordSkip(tls, markerPtr))*8, uint64(uint64(moveWords))*uint64(8))
+		libc.Xmemcpy(tls, memStart, markerPtr+uintptr(_wordSkip(tls, markerPtr))*8, uint64(moveWords)*uint64(8))
 		*(*uintptr)(unsafe.Pointer(esPtr + 32)) += uintptr(moveWords) * 8
 		(*TExecStack)(unsafe.Pointer(oldPtr)).FmarkerPtr = *(*uintptr)(unsafe.Pointer(markerPtr))
 		(*TExecStack)(unsafe.Pointer(oldPtr)).FtosPtr = markerPtr - uintptr(1)*8
@@ -141476,7 +141579,7 @@ func XTclStackAlloc(tls *libc.TLS, interp uintptr, numBytes int32) (r uintptr) {
 	if iPtr == libc.UintptrFromInt32(0) || (*TInterp)(unsafe.Pointer(iPtr)).FexecEnvPtr == libc.UintptrFromInt32(0) {
 		return XTcl_Alloc(tls, uint32(numBytes))
 	}
-	numWords = int32((uint64(uint64(numBytes)) + (libc.Uint64FromInt64(8) - libc.Uint64FromInt32(1))) / uint64(8))
+	numWords = int32((uint64(numBytes) + (libc.Uint64FromInt64(8) - libc.Uint64FromInt32(1))) / uint64(8))
 	return _StackAllocWords(tls, interp, numWords)
 }
 
@@ -141494,7 +141597,7 @@ func XTclStackRealloc(tls *libc.TLS, interp uintptr, ptr uintptr, numBytes int32
 	if markerPtr+uintptr(_wordSkip(tls, markerPtr))*8 != ptr {
 		XTcl_Panic(tls, ts+27926, 0)
 	}
-	numWords = int32((uint64(uint64(numBytes)) + (libc.Uint64FromInt64(8) - libc.Uint64FromInt32(1))) / uint64(8))
+	numWords = int32((uint64(numBytes) + (libc.Uint64FromInt64(8) - libc.Uint64FromInt32(1))) / uint64(8))
 	return _StackReallocWords(tls, interp, numWords)
 }
 
@@ -142158,7 +142261,7 @@ func XTclIncrObj(tls *libc.TLS, interp uintptr, valuePtr uintptr, incrPtr uintpt
 	if *(*int32)(unsafe.Pointer(bp + 24)) == int32(m_TCL_NUMBER_LONG) && *(*int32)(unsafe.Pointer(bp + 28)) == int32(m_TCL_NUMBER_LONG) {
 		augend = *(*int64)(unsafe.Pointer(*(*TClientData)(unsafe.Pointer(bp + 8))))
 		addend = *(*int64)(unsafe.Pointer(*(*TClientData)(unsafe.Pointer(bp + 16))))
-		sum = int64(uint64(uint64(augend)) + uint64(uint64(addend)))
+		sum = int64(uint64(augend) + uint64(addend))
 		/*
 		 * Overflow when (augend and sum have different sign) and (augend and
 		 * addend have the same sign). This is encapsulated in the Overflowing
@@ -142239,7 +142342,7 @@ func _ArgumentBCEnter(tls *libc.TLS, interp uintptr, codePtr uintptr, tdPtr uint
 	defer tls.Free(16)
 	var _ /* cmd at bp+0 */ int32
 	if _GetSrcInfoForPc(tls, pc, codePtr, libc.UintptrFromInt32(0), libc.UintptrFromInt32(0), bp) != 0 {
-		XTclArgumentBCEnter(tls, interp, objv, objc, codePtr, tdPtr+24, *(*int32)(unsafe.Pointer(bp)), int32(int64(int64(pc))-int64((*TByteCode)(unsafe.Pointer(codePtr)).FcodeStart)))
+		XTclArgumentBCEnter(tls, interp, objv, objc, codePtr, tdPtr+24, *(*int32)(unsafe.Pointer(bp)), int32(int64(pc)-int64((*TByteCode)(unsafe.Pointer(codePtr)).FcodeStart)))
 	}
 }
 
@@ -142269,7 +142372,7 @@ func XTclNRExecuteByteCode(tls *libc.TLS, interp uintptr, codePtr uintptr) (r in
 	_, _, _, _, _, _, _, _ = TD, _callbackPtr, _objPtr, iPtr, numWords, size, v1, v2
 	iPtr = interp
 	size = int32(libc.Uint64FromInt64(120) - libc.Uint64FromInt32(1) + uint64((*TByteCode)(unsafe.Pointer(codePtr)).FmaxStackDepth+(*TByteCode)(unsafe.Pointer(codePtr)).FmaxExceptDepth)*uint64(8))
-	numWords = int32((uint64(uint64(size)) + uint64(8) - uint64(1)) / uint64(8))
+	numWords = int32((uint64(size) + uint64(8) - uint64(1)) / uint64(8))
 	(*TByteCode)(unsafe.Pointer(codePtr)).FrefCount++
 	/*
 	 * Reserve the stack, setup the TEBCdataPtr (TD) and CallFrame
@@ -142861,10 +142964,10 @@ peepholeStart:
 		if 0 != 0 {
 		}
 	}
-	if int32(int32(inst)) == int32(m_INST_LOAD_SCALAR1) {
+	if int32(inst) == int32(m_INST_LOAD_SCALAR1) {
 		goto instLoadScalar1
 	} else {
-		if int32(int32(inst)) == int32(m_INST_PUSH1) {
+		if int32(inst) == int32(m_INST_PUSH1) {
 			v41 = *(*uintptr)(unsafe.Pointer((*TByteCode)(unsafe.Pointer((*TTEBCdata)(unsafe.Pointer(TD)).FcodePtr)).FobjArrayPtr + uintptr(uint32(*(*uint8)(unsafe.Pointer(pc + libc.UintptrFromInt32(1)))))*8))
 			tosPtr += 8
 			v42 = tosPtr
@@ -142874,7 +142977,7 @@ peepholeStart:
 			inst = *(*uint8)(unsafe.Pointer(pc))
 			goto peepholeStart
 		} else {
-			if int32(int32(inst)) == int32(m_INST_START_CMD) {
+			if int32(inst) == int32(m_INST_START_CMD) {
 				/*
 				 * Peephole: do not run INST_START_CMD, just skip it
 				 */
@@ -142890,8 +142993,8 @@ peepholeStart:
 				inst = *(*uint8)(unsafe.Pointer(pc))
 				goto peepholeStart
 			} else {
-				if int32(int32(inst)) == int32(m_INST_NOP) {
-					for int32(int32(inst)) == int32(m_INST_NOP) {
+				if int32(inst) == int32(m_INST_NOP) {
+					for int32(inst) == int32(m_INST_NOP) {
 						pc++
 						v44 = pc
 						inst = *(*uint8)(unsafe.Pointer(v44))
@@ -142901,7 +143004,7 @@ peepholeStart:
 			}
 		}
 	}
-	switch int32(int32(inst)) {
+	switch int32(inst) {
 	case int32(m_INST_RETURN_IMM):
 		goto _45
 	case int32(m_INST_SYNTAX):
@@ -144132,7 +144235,7 @@ _59:
 	(*(*struct {
 		Fptr1 uintptr
 		Fptr2 uintptr
-	})(unsafe.Pointer(objPtr + 32))).Fptr2 = uintptr((int64(int64(tosPtr)) - int64(TD+112-libc.UintptrFromInt32(1)*8+uintptr((*TByteCode)(unsafe.Pointer((*TTEBCdata)(unsafe.Pointer(TD)).FcodePtr)).FmaxExceptDepth)*8)) / 8)
+	})(unsafe.Pointer(objPtr + 32))).Fptr2 = uintptr((int64(tosPtr) - int64(TD+112-libc.UintptrFromInt32(1)*8+uintptr((*TByteCode)(unsafe.Pointer((*TTEBCdata)(unsafe.Pointer(TD)).FcodePtr)).FmaxExceptDepth)*8)) / 8)
 	(*TTcl_Obj)(unsafe.Pointer(objPtr)).Flength = 0
 	if (*TTEBCdata)(unsafe.Pointer(TD)).FauxObjList != 0 {
 		*(*int32)(unsafe.Pointer(objPtr + 16)) += (*TTcl_Obj)(unsafe.Pointer((*TTEBCdata)(unsafe.Pointer(TD)).FauxObjList)).Flength
@@ -144196,7 +144299,7 @@ _60:
 	 * restore the stack to the state before the point where the aux
 	 * element was created.
 	 */
-	*(*int32)(unsafe.Pointer(bp + 32)) = int32((int64(int64(tosPtr))-int64(TD+112-libc.UintptrFromInt32(1)*8+uintptr((*TByteCode)(unsafe.Pointer((*TTEBCdata)(unsafe.Pointer(TD)).FcodePtr)).FmaxExceptDepth)*8))/8 - int64(int32(int64((*(*struct {
+	*(*int32)(unsafe.Pointer(bp + 32)) = int32((int64(tosPtr)-int64(TD+112-libc.UintptrFromInt32(1)*8+uintptr((*TByteCode)(unsafe.Pointer((*TTEBCdata)(unsafe.Pointer(TD)).FcodePtr)).FmaxExceptDepth)*8))/8 - int64(int32(int64((*(*struct {
 		Fptr1 uintptr
 		Fptr2 uintptr
 	})(unsafe.Pointer((*TTEBCdata)(unsafe.Pointer(TD)).FauxObjList + 32))).Fptr2))))
@@ -144256,7 +144359,7 @@ _61:
 	 */
 	*(*int32)(unsafe.Pointer((*TTEBCdata)(unsafe.Pointer(TD)).FauxObjList + 16)) += *(*int32)(unsafe.Pointer(bp + 32)) - int32(1)
 	if *(*int32)(unsafe.Pointer(bp + 32)) > int32(1) && (*TTcl_Obj)(unsafe.Pointer((*TTEBCdata)(unsafe.Pointer(TD)).FauxObjList)).Flength > 0 {
-		*(*int32)(unsafe.Pointer(bp + 36)) = int32(int64((*TTcl_Obj)(unsafe.Pointer((*TTEBCdata)(unsafe.Pointer(TD)).FauxObjList)).Flength+(*TByteCode)(unsafe.Pointer((*TTEBCdata)(unsafe.Pointer(TD)).FcodePtr)).FmaxStackDepth) - (int64(int64(tosPtr))-int64(TD+112-libc.UintptrFromInt32(1)*8+uintptr((*TByteCode)(unsafe.Pointer((*TTEBCdata)(unsafe.Pointer(TD)).FcodePtr)).FmaxExceptDepth)*8))/8) /* Relative to where we are */
+		*(*int32)(unsafe.Pointer(bp + 36)) = int32(int64((*TTcl_Obj)(unsafe.Pointer((*TTEBCdata)(unsafe.Pointer(TD)).FauxObjList)).Flength+(*TByteCode)(unsafe.Pointer((*TTEBCdata)(unsafe.Pointer(TD)).FcodePtr)).FmaxStackDepth) - (int64(tosPtr)-int64(TD+112-libc.UintptrFromInt32(1)*8+uintptr((*TByteCode)(unsafe.Pointer((*TTEBCdata)(unsafe.Pointer(TD)).FcodePtr)).FmaxExceptDepth)*8))/8) /* Relative to where we are */
 		(*TExecStack)(unsafe.Pointer((*TExecEnv1)(unsafe.Pointer((*TInterp)(unsafe.Pointer(interp)).FexecEnvPtr)).FexecStackPtr)).FtosPtr = tosPtr
 		moved = (int64(_GrowEvaluationStack(tls, (*TInterp)(unsafe.Pointer(interp)).FexecEnvPtr, *(*int32)(unsafe.Pointer(bp + 36)), int32(1))) - int64(TD)) / 8
 		if moved != 0 {
@@ -144405,7 +144508,7 @@ instEvalStk:
 	/* add TEBCResume for object at top of stack */
 	return XTclNRExecuteByteCode(tls, interp, XTclCompileObj(tls, interp, *(*uintptr)(unsafe.Pointer(tosPtr)), libc.UintptrFromInt32(0), 0))
 _64:
-	*(*int32)(unsafe.Pointer(bp + 32)) = int32((int64(int64(tosPtr))-int64(TD+112-libc.UintptrFromInt32(1)*8+uintptr((*TByteCode)(unsafe.Pointer((*TTEBCdata)(unsafe.Pointer(TD)).FcodePtr)).FmaxExceptDepth)*8))/8 - int64(int32(int64((*(*struct {
+	*(*int32)(unsafe.Pointer(bp + 32)) = int32((int64(tosPtr)-int64(TD+112-libc.UintptrFromInt32(1)*8+uintptr((*TByteCode)(unsafe.Pointer((*TTEBCdata)(unsafe.Pointer(TD)).FcodePtr)).FmaxExceptDepth)*8))/8 - int64(int32(int64((*(*struct {
 		Fptr1 uintptr
 		Fptr2 uintptr
 	})(unsafe.Pointer((*TTEBCdata)(unsafe.Pointer(TD)).FauxObjList + 32))).Fptr2))))
@@ -145793,7 +145896,7 @@ _109:
 		if v400 == m_TCL_OK {
 			if *(*int32)(unsafe.Pointer(bp + 72)) == int32(m_TCL_NUMBER_LONG) {
 				augend = *(*int64)(unsafe.Pointer(*(*TClientData)(unsafe.Pointer(bp + 64))))
-				sum = int64(uint64(uint64(augend)) + uint64(uint64(increment)))
+				sum = int64(uint64(augend) + uint64(increment))
 				/*
 				 * Overflow when (augend and sum have different sign) and
 				 * (augend and increment have the same sign). This is
@@ -151183,9 +151286,9 @@ _169:
 		if !(ustring1 < end) {
 			break
 		}
-		if int32(*(*TTcl_UniChar)(unsafe.Pointer(ustring1))) == int32(*(*TTcl_UniChar)(unsafe.Pointer(ustring2))) && (int64(int64(end))-int64(int64(ustring1)))/2 >= int64(*(*int32)(unsafe.Pointer(bp + 124))) && (*(*int32)(unsafe.Pointer(bp + 124)) == int32(1) || libc.Xmemcmp(tls, ustring1, ustring2, uint64(2)*uint64(*(*int32)(unsafe.Pointer(bp + 124)))) == 0) {
+		if int32(*(*TTcl_UniChar)(unsafe.Pointer(ustring1))) == int32(*(*TTcl_UniChar)(unsafe.Pointer(ustring2))) && (int64(end)-int64(ustring1))/2 >= int64(*(*int32)(unsafe.Pointer(bp + 124))) && (*(*int32)(unsafe.Pointer(bp + 124)) == int32(1) || libc.Xmemcmp(tls, ustring1, ustring2, uint64(2)*uint64(*(*int32)(unsafe.Pointer(bp + 124)))) == 0) {
 			if p1 != ustring1 {
-				XTcl_AppendUnicodeToObj(tls, *(*uintptr)(unsafe.Pointer(bp + 8)), p1, int32((int64(int64(ustring1))-int64(int64(p1)))/2))
+				XTcl_AppendUnicodeToObj(tls, *(*uintptr)(unsafe.Pointer(bp + 8)), p1, int32((int64(ustring1)-int64(p1))/2))
 				p1 = ustring1 + uintptr(*(*int32)(unsafe.Pointer(bp + 124)))*2
 			} else {
 				p1 += uintptr(*(*int32)(unsafe.Pointer(bp + 124))) * 2
@@ -151201,7 +151304,7 @@ _169:
 		/*
 		 * Put the rest of the unmapped chars onto result.
 		 */
-		XTcl_AppendUnicodeToObj(tls, *(*uintptr)(unsafe.Pointer(bp + 8)), p1, int32((int64(int64(ustring1))-int64(int64(p1)))/2))
+		XTcl_AppendUnicodeToObj(tls, *(*uintptr)(unsafe.Pointer(bp + 8)), p1, int32((int64(ustring1)-int64(p1))/2))
 	}
 doneStringMap:
 	pc += uintptr(libc.Int32FromInt32(1))
@@ -151226,7 +151329,7 @@ _170:
 				break
 			}
 			if int32(*(*TTcl_UniChar)(unsafe.Pointer(p1))) == int32(*(*TTcl_UniChar)(unsafe.Pointer(ustring2))) && libc.Xmemcmp(tls, ustring2, p1, uint64(2)*uint64(*(*int32)(unsafe.Pointer(bp + 124)))) == 0 {
-				match = int32((int64(int64(p1)) - int64(int64(ustring1))) / 2)
+				match = int32((int64(p1) - int64(ustring1)) / 2)
 				break
 			}
 			goto _849
@@ -151304,7 +151407,7 @@ _171:
 				break
 			}
 			if int32(*(*TTcl_UniChar)(unsafe.Pointer(p1))) == int32(*(*TTcl_UniChar)(unsafe.Pointer(ustring2))) && libc.Xmemcmp(tls, ustring2, p1, uint64(2)*uint64(*(*int32)(unsafe.Pointer(bp + 124)))) == 0 {
-				match = int32((int64(int64(p1)) - int64(int64(ustring1))) / 2)
+				match = int32((int64(p1) - int64(ustring1)) / 2)
 				break
 			}
 			goto _855
@@ -153448,7 +153551,7 @@ _1101:
 				if (lResult < 0 || lResult == 0 && (l1 < 0 && l2 > 0 || l1 > 0 && l2 < 0)) && lResult*l2 != l1 {
 					lResult -= int64(1)
 				}
-				lResult = int64(uint64(uint64(l1)) - uint64(uint64(l2))*uint64(uint64(lResult)))
+				lResult = int64(uint64(l1) - uint64(l2)*uint64(lResult))
 				goto longResultOfArithmetic
 			}
 		}
@@ -153585,7 +153688,7 @@ _1102:
 			/*
 			 * Handle shifts within the native long range.
 			 */
-			lResult = l1 >> int32(int32(l2))
+			lResult = l1 >> int32(l2)
 			goto longResultOfArithmetic
 		}
 	}
@@ -153655,19 +153758,19 @@ _1103:
 				XTcl_SetObjResult(tls, interp, XTcl_NewStringObj(tls, ts+10416, -int32(1)))
 				goto gotError
 			} else {
-				shift = int32(int32(l2))
+				shift = int32(l2)
 				/*
 				 * Handle shifts within the native long range.
 				 */
-				if v1134 = uint64(uint64(shift)) < libc.Uint64FromInt32(m_CHAR_BIT)*libc.Uint64FromInt64(8); v1134 {
+				if v1134 = uint64(shift) < libc.Uint64FromInt32(m_CHAR_BIT)*libc.Uint64FromInt64(8); v1134 {
 					if l1 > 0 {
 						v1133 = l1
 					} else {
 						v1133 = ^l1
 					}
 				}
-				if v1134 && !(uint64(v1133)&-(libc.Uint64FromUint64(1)<<(libc.Uint64FromInt32(m_CHAR_BIT)*libc.Uint64FromInt64(8)-libc.Uint64FromInt32(1)-uint64(uint64(shift)))) != 0) {
-					lResult = int64(uint64(uint64(l1)) << shift)
+				if v1134 && !(uint64(v1133)&-(libc.Uint64FromUint64(1)<<(libc.Uint64FromInt32(m_CHAR_BIT)*libc.Uint64FromInt64(8)-libc.Uint64FromInt32(1)-uint64(shift))) != 0) {
+					lResult = int64(uint64(l1) << shift)
 					goto longResultOfArithmetic
 				}
 			}
@@ -154016,7 +154119,7 @@ _191:
 	_1167:
 		w1 = l1
 		w2 = l2
-		wResult = int64(uint64(uint64(w1)) + uint64(uint64(w2)))
+		wResult = int64(uint64(w1) + uint64(w2))
 		/*
 		 * Check for overflow.
 		 */
@@ -154027,7 +154130,7 @@ _191:
 	_1168:
 		w1 = l1
 		w2 = l2
-		wResult = int64(uint64(uint64(w1)) - uint64(uint64(w2)))
+		wResult = int64(uint64(w1) - uint64(w2))
 		/*
 		 * Must check for overflow. The macro tests for overflows in
 		 * sums by looking at the sign bits. As we have a subtraction
@@ -155368,7 +155471,7 @@ _205: /* DEPRECATED */
 	listTmpIndex = (*TForeachInfo)(unsafe.Pointer(infoPtr)).FfirstValueTemp
 	i4 = 0
 	for {
-		if !(i4 < int64(int64(numLists))) {
+		if !(i4 < int64(numLists)) {
 			break
 		}
 		varListPtr = *(*uintptr)(unsafe.Pointer(infoPtr + 16 + uintptr(i4)*8))
@@ -155407,7 +155510,7 @@ _205: /* DEPRECATED */
 		listTmpIndex = (*TForeachInfo)(unsafe.Pointer(infoPtr)).FfirstValueTemp
 		i4 = 0
 		for {
-			if !(i4 < int64(int64(numLists))) {
+			if !(i4 < int64(numLists)) {
 				break
 			}
 			varListPtr = *(*uintptr)(unsafe.Pointer(infoPtr + 16 + uintptr(i4)*8))
@@ -155681,7 +155784,7 @@ _206:
 	listTmpDepth = numLists1 - int32(1)
 	i5 = 0
 	for {
-		if !(i5 < int64(int64(numLists1))) {
+		if !(i5 < int64(numLists1)) {
 			break
 		}
 		varListPtr1 = *(*uintptr)(unsafe.Pointer(infoPtr1 + 16 + uintptr(i5)*8))
@@ -155816,7 +155919,7 @@ _207:
 		listTmpDepth = numLists1 + int32(1)
 		i5 = 0
 		for {
-			if !(i5 < int64(int64(numLists1))) {
+			if !(i5 < int64(numLists1)) {
 				break
 			}
 			varListPtr1 = *(*uintptr)(unsafe.Pointer(infoPtr1 + 16 + uintptr(i5)*8))
@@ -156052,7 +156155,7 @@ _210:
 	v1337 = TD + 8
 	*(*uintptr)(unsafe.Pointer(v1337)) += 8
 	v1336 = *(*uintptr)(unsafe.Pointer(v1337))
-	*(*Tptrdiff_t)(unsafe.Pointer(v1336)) = (int64(int64(tosPtr)) - int64(TD+112-libc.UintptrFromInt32(1)*8+uintptr((*TByteCode)(unsafe.Pointer((*TTEBCdata)(unsafe.Pointer(TD)).FcodePtr)).FmaxExceptDepth)*8)) / 8
+	*(*Tptrdiff_t)(unsafe.Pointer(v1336)) = (int64(tosPtr) - int64(TD+112-libc.UintptrFromInt32(1)*8+uintptr((*TByteCode)(unsafe.Pointer((*TTEBCdata)(unsafe.Pointer(TD)).FcodePtr)).FmaxExceptDepth)*8)) / 8
 	goto _1339
 _1339:
 	if true {
@@ -158596,7 +158699,7 @@ checkForCatch:
 	 * had when starting to execute the range's catch command.
 	 */
 processCatch:
-	for (int64(int64(tosPtr))-int64(TD+112-libc.UintptrFromInt32(1)*8+uintptr((*TByteCode)(unsafe.Pointer((*TTEBCdata)(unsafe.Pointer(TD)).FcodePtr)).FmaxExceptDepth)*8))/8 > *(*Tptrdiff_t)(unsafe.Pointer((*TTEBCdata)(unsafe.Pointer(TD)).FcatchTop)) {
+	for (int64(tosPtr)-int64(TD+112-libc.UintptrFromInt32(1)*8+uintptr((*TByteCode)(unsafe.Pointer((*TTEBCdata)(unsafe.Pointer(TD)).FcodePtr)).FmaxExceptDepth)*8))/8 > *(*Tptrdiff_t)(unsafe.Pointer((*TTEBCdata)(unsafe.Pointer(TD)).FcatchTop)) {
 		v1548 = tosPtr
 		tosPtr -= 8
 		*(*uintptr)(unsafe.Pointer(bp + 16)) = *(*uintptr)(unsafe.Pointer(v1548))
@@ -158712,7 +158815,7 @@ abnormalReturn:
 		}
 	}
 	if tosPtr < TD+112-libc.UintptrFromInt32(1)*8+uintptr((*TByteCode)(unsafe.Pointer((*TTEBCdata)(unsafe.Pointer(TD)).FcodePtr)).FmaxExceptDepth)*8 {
-		libc.Xfprintf(tls, libc.Xstderr, ts+28960, libc.VaList(bp+304, uint32(int64(int64(pc))-int64((*TByteCode)(unsafe.Pointer((*TTEBCdata)(unsafe.Pointer(TD)).FcodePtr)).FcodeStart)), uint32((int64(int64(tosPtr))-int64(TD+112-libc.UintptrFromInt32(1)*8+uintptr((*TByteCode)(unsafe.Pointer((*TTEBCdata)(unsafe.Pointer(TD)).FcodePtr)).FmaxExceptDepth)*8))/8), libc.Uint32FromInt32(0)))
+		libc.Xfprintf(tls, libc.Xstderr, ts+28960, libc.VaList(bp+304, uint32(int64(pc)-int64((*TByteCode)(unsafe.Pointer((*TTEBCdata)(unsafe.Pointer(TD)).FcodePtr)).FcodeStart)), uint32((int64(tosPtr)-int64(TD+112-libc.UintptrFromInt32(1)*8+uintptr((*TByteCode)(unsafe.Pointer((*TTEBCdata)(unsafe.Pointer(TD)).FcodePtr)).FmaxExceptDepth)*8))/8), libc.Uint32FromInt32(0)))
 		XTcl_Panic(tls, ts+29044, 0)
 	}
 	(*TInterp)(unsafe.Pointer(interp)).FcmdFramePtr = (*TCmdFrame)(unsafe.Pointer(TD + 24)).FnextPtr
@@ -159089,7 +159192,7 @@ _14:
 		/*
 		 * Handle shifts within the native wide range.
 		 */
-		if *(*int32)(unsafe.Pointer(bp + 8)) != int32(m_TCL_NUMBER_BIG) && uint64(uint64(shift)) < libc.Uint64FromInt32(m_CHAR_BIT)*libc.Uint64FromInt64(8) {
+		if *(*int32)(unsafe.Pointer(bp + 8)) != int32(m_TCL_NUMBER_BIG) && uint64(shift) < libc.Uint64FromInt32(m_CHAR_BIT)*libc.Uint64FromInt64(8) {
 			if (*TTcl_Obj)(unsafe.Pointer(valuePtr)).FtypePtr == uintptr(unsafe.Pointer(&XtclIntType)) {
 				*(*TTcl_WideInt)(unsafe.Pointer(bp + 48)) = (*TTcl_Obj)(unsafe.Pointer(valuePtr)).FinternalRep.FlongValue
 				_ = libc.Int32FromInt32(m_TCL_OK)
@@ -159101,7 +159204,7 @@ _14:
 			} else {
 				v27 = ^*(*TTcl_WideInt)(unsafe.Pointer(bp + 48))
 			}
-			if !(uint64(v27)&-(libc.Uint64FromInt32(1)<<(libc.Uint64FromInt32(m_CHAR_BIT)*libc.Uint64FromInt64(8)-libc.Uint64FromInt32(1)-uint64(uint64(shift)))) != 0) {
+			if !(uint64(v27)&-(libc.Uint64FromInt32(1)<<(libc.Uint64FromInt32(m_CHAR_BIT)*libc.Uint64FromInt64(8)-libc.Uint64FromInt32(1)-uint64(shift))) != 0) {
 				if (*TTcl_Obj)(unsafe.Pointer(valuePtr)).FrefCount > int32(1) {
 					return XTcl_NewWideIntObj(tls, int64(uint64(*(*TTcl_WideInt)(unsafe.Pointer(bp + 48)))<<shift))
 				} else {
@@ -159160,9 +159263,9 @@ _14:
 	XTcl_TakeBignumFromObj(tls, libc.UintptrFromInt32(0), valuePtr, bp+64)
 	XTclBN_mp_init(tls, bp+112)
 	if opcode == int32(m_INST_LSHIFT) {
-		XTclBN_mp_mul_2d(tls, bp+64, int32(int32(shift)), bp+112)
+		XTclBN_mp_mul_2d(tls, bp+64, int32(shift), bp+112)
 	} else {
-		XTclBN_mp_signed_rsh(tls, bp+64, int32(int32(shift)), bp+112)
+		XTclBN_mp_signed_rsh(tls, bp+64, int32(shift), bp+112)
 	}
 	XTclBN_mp_clear(tls, bp+64)
 	if (*TTcl_Obj)(unsafe.Pointer(valuePtr)).FrefCount > int32(1) {
@@ -159366,7 +159469,7 @@ _19:
 			/*
 			 * Reduce small powers of 2 to shifts.
 			 */
-			if uint64(uint64(l2)) < libc.Uint64FromInt32(m_CHAR_BIT)*libc.Uint64FromInt64(8)-libc.Uint64FromInt32(1) {
+			if uint64(l2) < libc.Uint64FromInt32(m_CHAR_BIT)*libc.Uint64FromInt64(8)-libc.Uint64FromInt32(1) {
 				if (*TTcl_Obj)(unsafe.Pointer(valuePtr)).FrefCount > int32(1) {
 					if XtclFreeObjList == libc.UintptrFromInt32(0) {
 						XTclAllocateFreeObjects(tls)
@@ -159398,7 +159501,7 @@ _19:
 			/*
 			 * Reduce small powers of 2 to shifts.
 			 */
-			if uint64(uint64(l2)) < libc.Uint64FromInt32(m_CHAR_BIT)*libc.Uint64FromInt64(8)-libc.Uint64FromInt32(1) {
+			if uint64(l2) < libc.Uint64FromInt32(m_CHAR_BIT)*libc.Uint64FromInt64(8)-libc.Uint64FromInt32(1) {
 				if (*TTcl_Obj)(unsafe.Pointer(valuePtr)).FrefCount > int32(1) {
 					if XtclFreeObjList == libc.UintptrFromInt32(0) {
 						XTclAllocateFreeObjects(tls)
@@ -159410,11 +159513,11 @@ _19:
 					})(unsafe.Pointer(XtclFreeObjList + 32))).Fptr1
 					(*TTcl_Obj)(unsafe.Pointer(objResultPtr)).FrefCount = 0
 					(*TTcl_Obj)(unsafe.Pointer(objResultPtr)).Fbytes = libc.UintptrFromInt32(0)
-					(*TTcl_Obj)(unsafe.Pointer(objResultPtr)).FinternalRep.FlongValue = int64(int64(signum)) * (libc.Int64FromInt64(1) << l2)
+					(*TTcl_Obj)(unsafe.Pointer(objResultPtr)).FinternalRep.FlongValue = int64(signum) * (libc.Int64FromInt64(1) << l2)
 					(*TTcl_Obj)(unsafe.Pointer(objResultPtr)).FtypePtr = uintptr(unsafe.Pointer(&XtclIntType))
 					return objResultPtr
 				} else {
-					XTcl_SetLongObj(tls, valuePtr, int64(int64(signum))*(int64(1)<<l2))
+					XTcl_SetLongObj(tls, valuePtr, int64(signum)*(int64(1)<<l2))
 					return libc.UintptrFromInt32(0)
 				}
 			}
@@ -159424,7 +159527,7 @@ _19:
 		*(*TTcl_WideInt)(unsafe.Pointer(bp + 48)) = l1
 	}
 	/* From here (up to overflowExpon) base is wide-int (w1). */
-	if l2-int64(2) < int64(int64(_MaxBase64Size)) && *(*TTcl_WideInt)(unsafe.Pointer(bp + 48)) <= _MaxBase64[l2-int64(2)] && *(*TTcl_WideInt)(unsafe.Pointer(bp + 48)) >= -_MaxBase64[l2-int64(2)] {
+	if l2-int64(2) < int64(_MaxBase64Size) && *(*TTcl_WideInt)(unsafe.Pointer(bp + 48)) <= _MaxBase64[l2-int64(2)] && *(*TTcl_WideInt)(unsafe.Pointer(bp + 48)) >= -_MaxBase64[l2-int64(2)] {
 		/*
 		 * Small powers of integers whose result is wide.
 		 */
@@ -159440,9 +159543,9 @@ _19:
 	 * Handle cases of powers > 16 that still fit in a 64-bit word by
 	 * doing table lookup.
 	 */
-	if *(*TTcl_WideInt)(unsafe.Pointer(bp + 48))-int64(3) >= 0 && *(*TTcl_WideInt)(unsafe.Pointer(bp + 48))-int64(2) < int64(int64(_Exp64IndexSize)) && l2-int64(2) < int64(_Exp64ValueSize+_MaxBase64Size) {
+	if *(*TTcl_WideInt)(unsafe.Pointer(bp + 48))-int64(3) >= 0 && *(*TTcl_WideInt)(unsafe.Pointer(bp + 48))-int64(2) < int64(_Exp64IndexSize) && l2-int64(2) < int64(_Exp64ValueSize+_MaxBase64Size) {
 		base = uint16(int32(_Exp64Index[*(*TTcl_WideInt)(unsafe.Pointer(bp + 48))-int64(3)]) + int32(uint16(uint64(l2-libc.Int64FromInt32(2))-_MaxBase64Size)))
-		if int32(int32(base)) < int32(_Exp64Index[*(*TTcl_WideInt)(unsafe.Pointer(bp + 48))-int64(2)]) {
+		if int32(base) < int32(_Exp64Index[*(*TTcl_WideInt)(unsafe.Pointer(bp + 48))-int64(2)]) {
 			/*
 			 * 64-bit number raised to intermediate power, done by
 			 * table lookup.
@@ -159455,9 +159558,9 @@ _19:
 			}
 		}
 	}
-	if -*(*TTcl_WideInt)(unsafe.Pointer(bp + 48))-int64(3) >= 0 && -*(*TTcl_WideInt)(unsafe.Pointer(bp + 48))-int64(2) < int64(int64(_Exp64IndexSize)) && l2-int64(2) < int64(_Exp64ValueSize+_MaxBase64Size) {
+	if -*(*TTcl_WideInt)(unsafe.Pointer(bp + 48))-int64(3) >= 0 && -*(*TTcl_WideInt)(unsafe.Pointer(bp + 48))-int64(2) < int64(_Exp64IndexSize) && l2-int64(2) < int64(_Exp64ValueSize+_MaxBase64Size) {
 		base = uint16(int32(_Exp64Index[-*(*TTcl_WideInt)(unsafe.Pointer(bp + 48))-int64(3)]) + int32(uint16(uint64(l2-libc.Int64FromInt32(2))-_MaxBase64Size)))
-		if int32(int32(base)) < int32(_Exp64Index[-*(*TTcl_WideInt)(unsafe.Pointer(bp + 48))-int64(2)]) {
+		if int32(base) < int32(_Exp64Index[-*(*TTcl_WideInt)(unsafe.Pointer(bp + 48))-int64(2)]) {
 			/*
 			 * 64-bit number raised to intermediate power, done by
 			 * table lookup.
@@ -159603,7 +159706,7 @@ _35:
 			/*
 			 * Need a bignum to represent (LLONG_MIN / -1)
 			 */
-			if int64(*(*TTcl_WideInt)(unsafe.Pointer(bp + 48))) == -libc.Int64FromInt64(0x7fffffffffffffff)-libc.Int64FromInt32(1) && *(*TTcl_WideInt)(unsafe.Pointer(bp + 56)) == int64(-int32(1)) {
+			if *(*TTcl_WideInt)(unsafe.Pointer(bp + 48)) == -libc.Int64FromInt64(0x7fffffffffffffff)-libc.Int64FromInt32(1) && *(*TTcl_WideInt)(unsafe.Pointer(bp + 56)) == int64(-int32(1)) {
 				goto overflowBasic
 			}
 			wResult = *(*TTcl_WideInt)(unsafe.Pointer(bp + 48)) / *(*TTcl_WideInt)(unsafe.Pointer(bp + 56))
@@ -159759,7 +159862,7 @@ func _ExecuteExtendedUnaryMathOp(tls *libc.TLS, opcode int32, valuePtr uintptr) 
 			fallthrough
 		case int32(m_TCL_NUMBER_LONG):
 			w = *(*int64)(unsafe.Pointer(*(*TClientData)(unsafe.Pointer(bp + 8))))
-			if int64(int64(w)) != -libc.Int64FromInt64(0x7fffffffffffffff)-libc.Int64FromInt32(1) {
+			if w != -libc.Int64FromInt64(0x7fffffffffffffff)-libc.Int64FromInt32(1) {
 				if (*TTcl_Obj)(unsafe.Pointer(valuePtr)).FrefCount > int32(1) {
 					return XTcl_NewWideIntObj(tls, -w)
 				} else {
@@ -159912,13 +160015,13 @@ longCompare:
 	return v22
 _19:
 	d2 = *(*float64)(unsafe.Pointer(*(*TClientData)(unsafe.Pointer(bp + 24))))
-	d1 = float64(float64(l1))
+	d1 = float64(l1)
 	/*
 	 * If the double has a fractional part, or if the long can be
 	 * converted to double without loss of precision, then compare as
 	 * doubles.
 	 */
-	if libc.Bool(uint64(m_DBL_MANT_DIG) > libc.Uint64FromInt32(m_CHAR_BIT)*libc.Uint64FromInt64(8)) || l1 == int64(int64(d1)) || libc.Xmodf(tls, d2, bp+80) != float64(0) {
+	if libc.Bool(uint64(m_DBL_MANT_DIG) > libc.Uint64FromInt32(m_CHAR_BIT)*libc.Uint64FromInt64(8)) || l1 == int64(d1) || libc.Xmodf(tls, d2, bp+80) != float64(0) {
 		goto doubleCompare
 	}
 	/*
@@ -159938,7 +160041,7 @@ _19:
 	if d2 > libc.Float64FromInt64(0x7fffffffffffffff) {
 		return -int32(1)
 	}
-	l2 = int64(int64(d2))
+	l2 = int64(d2)
 	goto longCompare
 _20:
 	XTcl_TakeBignumFromObj(tls, libc.UintptrFromInt32(0), value2Ptr, bp+56)
@@ -159978,8 +160081,8 @@ doubleCompare:
 	return v28
 _25:
 	l2 = *(*int64)(unsafe.Pointer(*(*TClientData)(unsafe.Pointer(bp + 24))))
-	d2 = float64(float64(l2))
-	if libc.Bool(uint64(m_DBL_MANT_DIG) > libc.Uint64FromInt32(m_CHAR_BIT)*libc.Uint64FromInt64(8)) || l2 == int64(int64(d2)) || libc.Xmodf(tls, d1, bp+80) != float64(0) {
+	d2 = float64(l2)
+	if libc.Bool(uint64(m_DBL_MANT_DIG) > libc.Uint64FromInt32(m_CHAR_BIT)*libc.Uint64FromInt64(8)) || l2 == int64(d2) || libc.Xmodf(tls, d1, bp+80) != float64(0) {
 		goto doubleCompare
 	}
 	if d1 < float64(-libc.Int64FromInt64(0x7fffffffffffffff)-libc.Int64FromInt32(1)) {
@@ -159988,7 +160091,7 @@ _25:
 	if d1 > libc.Float64FromInt64(0x7fffffffffffffff) {
 		return int32(m_MP_GT)
 	}
-	l1 = int64(int64(d1))
+	l1 = int64(d1)
 	goto longCompare
 _26:
 	if d1 > float64(1.7976931348623157e+308) || d1 < -libc.Float64FromFloat64(1.7976931348623157e+308) {
@@ -160132,11 +160235,11 @@ func _IllegalExprOperandType(tls *libc.TLS, interp uintptr, pc uintptr, opndPtr 
 	_, _, _, _, _, _, _, _ = bytes, description, op, opcode, v1, v2, v4, v6
 	opcode = *(*uint8)(unsafe.Pointer(pc))
 	op = ts + 12726
-	if int32(int32(opcode)) == int32(m_INST_EXPON) {
+	if int32(opcode) == int32(m_INST_EXPON) {
 		op = ts + 5593
 	} else {
-		if int32(int32(opcode)) <= int32(m_INST_LNOT) {
-			op = _operatorStrings[int32(int32(opcode))-int32(m_INST_LOR)]
+		if int32(opcode) <= int32(m_INST_LNOT) {
+			op = _operatorStrings[int32(opcode)-int32(m_INST_LOR)]
 		}
 	}
 	if (*TTcl_Obj)(unsafe.Pointer(opndPtr)).FtypePtr == uintptr(unsafe.Pointer(&XtclIntType)) {
@@ -160305,7 +160408,7 @@ func _GetSrcInfoForPc(tls *libc.TLS, pc uintptr, codePtr uintptr, lengthPtr uint
 	var bestCmdIdx, bestDist, bestSrcLength, bestSrcOffset, codeEnd, codeLen, codeOffset, delta, dist, i, numCmds, pcOffset, srcLen, srcOffset, v1 int32
 	var codeDeltaNext, codeLengthNext, curr, prev, srcDeltaNext, srcLengthNext, v3 uintptr
 	_, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _ = bestCmdIdx, bestDist, bestSrcLength, bestSrcOffset, codeDeltaNext, codeEnd, codeLen, codeLengthNext, codeOffset, curr, delta, dist, i, numCmds, pcOffset, prev, srcDeltaNext, srcLen, srcLengthNext, srcOffset, v1, v3
-	pcOffset = int32(int64(int64(pc)) - int64((*TByteCode)(unsafe.Pointer(codePtr)).FcodeStart))
+	pcOffset = int32(int64(pc) - int64((*TByteCode)(unsafe.Pointer(codePtr)).FcodeStart))
 	numCmds = (*TByteCode)(unsafe.Pointer(codePtr)).FnumCommands
 	bestDist = int32(m_INT_MAX) /* Distance of pc to best cmd's start pc. */
 	bestSrcOffset = -int32(1)   /* Initialized to avoid compiler warning. */
@@ -160442,7 +160545,7 @@ func _GetExceptRangeForPc(tls *libc.TLS, pc uintptr, searchMode int32, codePtr u
 	var rangeArrayPtr, rangePtr, v1 uintptr
 	_, _, _, _, _, _ = numRanges, pcOffset, rangeArrayPtr, rangePtr, start, v1
 	numRanges = (*TByteCode)(unsafe.Pointer(codePtr)).FnumExceptRanges
-	pcOffset = int32(int64(int64(pc)) - int64((*TByteCode)(unsafe.Pointer(codePtr)).FcodeStart))
+	pcOffset = int32(int64(pc) - int64((*TByteCode)(unsafe.Pointer(codePtr)).FcodeStart))
 	if numRanges == 0 {
 		return libc.UintptrFromInt32(0)
 	}
@@ -162130,7 +162233,7 @@ func XTclFileTemporaryCmd(tls *libc.TLS, clientData TClientData, interp uintptr,
 		 * The template only gives a directory if there is a directory
 		 * separator in it.
 		 */
-		if libc.Xstrchr(tls, string1, int32('/')) != libc.UintptrFromInt32(0) || int32(XtclPlatform) == int32(_TCL_PLATFORM_WINDOWS) && libc.Xstrchr(tls, string1, int32('\\')) != libc.UintptrFromInt32(0) {
+		if libc.Xstrchr(tls, string1, int32('/')) != libc.UintptrFromInt32(0) || XtclPlatform == int32(_TCL_PLATFORM_WINDOWS) && libc.Xstrchr(tls, string1, int32('\\')) != libc.UintptrFromInt32(0) {
 			tempDirObj = XTclPathPart(tls, interp, templateObj, int32(_TCL_PATH_DIRNAME))
 			/*
 			 * Only allow creation of temporary files in the native filesystem
@@ -162163,7 +162266,7 @@ func XTclFileTemporaryCmd(tls *libc.TLS, clientData TClientData, interp uintptr,
 		 * The template only gives the filename if the last character isn't a
 		 * directory separator.
 		 */
-		if int32(*(*int8)(unsafe.Pointer(string1 + uintptr(*(*int32)(unsafe.Pointer(bp))-int32(1))))) != int32('/') && (int32(XtclPlatform) != int32(_TCL_PLATFORM_WINDOWS) || int32(*(*int8)(unsafe.Pointer(string1 + uintptr(*(*int32)(unsafe.Pointer(bp))-int32(1))))) != int32('\\')) {
+		if int32(*(*int8)(unsafe.Pointer(string1 + uintptr(*(*int32)(unsafe.Pointer(bp))-int32(1))))) != int32('/') && (XtclPlatform != int32(_TCL_PLATFORM_WINDOWS) || int32(*(*int8)(unsafe.Pointer(string1 + uintptr(*(*int32)(unsafe.Pointer(bp))-int32(1))))) != int32('\\')) {
 			tailObj = XTclPathPart(tls, interp, templateObj, int32(_TCL_PATH_TAIL))
 			if tailObj != libc.UintptrFromInt32(0) {
 				tempBaseObj = XTclPathPart(tls, interp, tailObj, int32(_TCL_PATH_ROOT))
@@ -162713,7 +162816,7 @@ func XTclpGetNativePathType(tls *libc.TLS, pathPtr uintptr, driveNameLengthPtr u
 			for int32(*(*int8)(unsafe.Pointer(end))) != int32('\000') && int32(*(*int8)(unsafe.Pointer(end))) != int32('/') {
 				end++
 			}
-			*(*int32)(unsafe.Pointer(driveNameLengthPtr)) = int32(int64(int64(end)) - int64(int64(path)))
+			*(*int32)(unsafe.Pointer(driveNameLengthPtr)) = int32(int64(end) - int64(path))
 		}
 	} else {
 		switch XtclPlatform {
@@ -162728,7 +162831,7 @@ func XTclpGetNativePathType(tls *libc.TLS, pathPtr uintptr, driveNameLengthPtr u
 					/*
 					 * We need this addition in case the QNX or Cygwin code was used.
 					 */
-					*(*int32)(unsafe.Pointer(driveNameLengthPtr)) = int32(int64(int64(path)) - int64(int64(origPath)))
+					*(*int32)(unsafe.Pointer(driveNameLengthPtr)) = int32(int64(path) - int64(origPath))
 				}
 			} else {
 				*(*TTcl_PathType)(unsafe.Pointer(bp)) = int32(_TCL_PATH_RELATIVE)
@@ -162737,7 +162840,7 @@ func XTclpGetNativePathType(tls *libc.TLS, pathPtr uintptr, driveNameLengthPtr u
 			XTcl_DStringInit(tls, bp+8)
 			rootEnd = _ExtractWinRoot(tls, path, bp+8, 0, bp)
 			if rootEnd != path && driveNameLengthPtr != libc.UintptrFromInt32(0) {
-				*(*int32)(unsafe.Pointer(driveNameLengthPtr)) = int32(int64(int64(rootEnd)) - int64(int64(path)))
+				*(*int32)(unsafe.Pointer(driveNameLengthPtr)) = int32(int64(rootEnd) - int64(path))
 				if driveNameRef != libc.UintptrFromInt32(0) {
 					*(*uintptr)(unsafe.Pointer(driveNameRef)) = XTclDStringToObj(tls, bp+8)
 					(*TTcl_Obj)(unsafe.Pointer(*(*uintptr)(unsafe.Pointer(driveNameRef)))).FrefCount++
@@ -162874,7 +162977,7 @@ func XTcl_SplitPath(tls *libc.TLS, path uintptr, argcPtr uintptr, argvPtr uintpt
 	 * Allocate a buffer large enough to hold the contents of all of the list
 	 * plus the argv pointers and the terminating NULL pointer.
 	 */
-	*(*uintptr)(unsafe.Pointer(argvPtr)) = XTcl_Alloc(tls, uint32(uint64(*(*int32)(unsafe.Pointer(argcPtr))+libc.Int32FromInt32(1))*libc.Uint64FromInt64(8)+uint64(uint64(size))))
+	*(*uintptr)(unsafe.Pointer(argvPtr)) = XTcl_Alloc(tls, uint32(uint64(*(*int32)(unsafe.Pointer(argcPtr))+libc.Int32FromInt32(1))*libc.Uint64FromInt64(8)+uint64(size)))
 	/*
 	 * Position p after the last argv pointer and copy the contents of the
 	 * list in, piece by piece.
@@ -162969,7 +163072,7 @@ func _SplitUnixPath(tls *libc.TLS, path uintptr) (r uintptr) {
 	(*TTcl_Obj)(unsafe.Pointer(result)).FtypePtr = libc.UintptrFromInt32(0)
 	if int32(*(*int8)(unsafe.Pointer(path))) == int32('/') {
 		path++
-		rootElt = XTcl_NewStringObj(tls, origPath, int32(int64(int64(path))-int64(int64(origPath))))
+		rootElt = XTcl_NewStringObj(tls, origPath, int32(int64(path)-int64(origPath)))
 		XTcl_ListObjAppendElement(tls, libc.UintptrFromInt32(0), result, rootElt)
 		for int32(*(*int8)(unsafe.Pointer(path))) == int32('/') {
 			path++
@@ -162984,7 +163087,7 @@ func _SplitUnixPath(tls *libc.TLS, path uintptr) (r uintptr) {
 		for int32(*(*int8)(unsafe.Pointer(path))) != int32('\000') && int32(*(*int8)(unsafe.Pointer(path))) != int32('/') {
 			path++
 		}
-		length = int32(int64(int64(path)) - int64(int64(elementStart)))
+		length = int32(int64(path) - int64(elementStart))
 		if length > 0 {
 			if int32(*(*int8)(unsafe.Pointer(elementStart))) == int32('~') && elementStart != origPath {
 				if XtclFreeObjList == libc.UintptrFromInt32(0) {
@@ -163080,7 +163183,7 @@ func _SplitWinPath(tls *libc.TLS, path uintptr) (r uintptr) {
 		for int32(*(*int8)(unsafe.Pointer(p))) != int32('\000') && int32(*(*int8)(unsafe.Pointer(p))) != int32('/') && int32(*(*int8)(unsafe.Pointer(p))) != int32('\\') {
 			p++
 		}
-		length = int32(int64(int64(p)) - int64(int64(elementStart)))
+		length = int32(int64(p) - int64(elementStart))
 		if length > 0 {
 			if elementStart != path && (int32(*(*int8)(unsafe.Pointer(elementStart))) == int32('~') || libc.BoolInt32(uint32(uint8(*(*int8)(unsafe.Pointer(elementStart))))|uint32(32)-uint32('a') < uint32(26)) != 0 && int32(*(*int8)(unsafe.Pointer(elementStart + 1))) == int32(':')) {
 				if XtclFreeObjList == libc.UintptrFromInt32(0) {
@@ -163162,9 +163265,9 @@ func XTcl_FSJoinToPath(tls *libc.TLS, _pathPtr uintptr, objc int32, objv uintptr
 		return XTclJoinPath(tls, int32(2), bp+8, 0)
 	} else {
 		elemc = objc + int32(1)
-		elemv = XTcl_Alloc(tls, uint32(uint64(uint64(elemc))*libc.Uint64FromInt64(8)))
+		elemv = XTcl_Alloc(tls, uint32(uint64(elemc)*libc.Uint64FromInt64(8)))
 		*(*uintptr)(unsafe.Pointer(elemv)) = *(*uintptr)(unsafe.Pointer(bp))
-		libc.Xmemcpy(tls, elemv+uintptr(1)*8, objv, uint64(uint64(objc))*uint64(8))
+		libc.Xmemcpy(tls, elemv+uintptr(1)*8, objv, uint64(objc)*uint64(8))
 		ret = XTclJoinPath(tls, elemc, elemv, 0)
 		XTclpFree(tls, elemv)
 		return ret
@@ -163202,7 +163305,7 @@ func XTclpNativeJoinPath(tls *libc.TLS, prefix uintptr, joining uintptr) {
 	 */
 	p = joining
 	if *(*int32)(unsafe.Pointer(bp)) != 0 {
-		if int32(*(*int8)(unsafe.Pointer(p))) == int32('.') && int32(*(*int8)(unsafe.Pointer(p + 1))) == int32('/') && (int32(*(*int8)(unsafe.Pointer(p + 2))) == int32('~') || int32(XtclPlatform) == int32(_TCL_PLATFORM_WINDOWS) && libc.BoolInt32(uint32(uint8(*(*int8)(unsafe.Pointer(p + 2))))|uint32(32)-uint32('a') < uint32(26)) != 0 && int32(*(*int8)(unsafe.Pointer(p + 3))) == int32(':')) {
+		if int32(*(*int8)(unsafe.Pointer(p))) == int32('.') && int32(*(*int8)(unsafe.Pointer(p + 1))) == int32('/') && (int32(*(*int8)(unsafe.Pointer(p + 2))) == int32('~') || XtclPlatform == int32(_TCL_PLATFORM_WINDOWS) && libc.BoolInt32(uint32(uint8(*(*int8)(unsafe.Pointer(p + 2))))|uint32(32)-uint32('a') < uint32(26)) != 0 && int32(*(*int8)(unsafe.Pointer(p + 3))) == int32(':')) {
 			p += uintptr(2)
 		}
 	}
@@ -163244,7 +163347,7 @@ func XTclpNativeJoinPath(tls *libc.TLS, prefix uintptr, joining uintptr) {
 		_1:
 			p++
 		}
-		*(*int32)(unsafe.Pointer(bp)) = int32(int64(int64(dest)) - int64(XTcl_GetString(tls, prefix)))
+		*(*int32)(unsafe.Pointer(bp)) = int32(int64(dest) - int64(XTcl_GetString(tls, prefix)))
 		XTcl_SetObjLength(tls, prefix, *(*int32)(unsafe.Pointer(bp)))
 	case int32(_TCL_PLATFORM_WINDOWS):
 		if *(*int32)(unsafe.Pointer(bp)) > 0 && int32(*(*int8)(unsafe.Pointer(start + uintptr(*(*int32)(unsafe.Pointer(bp))-int32(1))))) != int32('/') && int32(*(*int8)(unsafe.Pointer(start + uintptr(*(*int32)(unsafe.Pointer(bp))-int32(1))))) != int32(':') {
@@ -163280,7 +163383,7 @@ func XTclpNativeJoinPath(tls *libc.TLS, prefix uintptr, joining uintptr) {
 		_4:
 			p++
 		}
-		*(*int32)(unsafe.Pointer(bp)) = int32(int64(int64(dest)) - int64(XTcl_GetString(tls, prefix)))
+		*(*int32)(unsafe.Pointer(bp)) = int32(int64(dest) - int64(XTcl_GetString(tls, prefix)))
 		XTcl_SetObjLength(tls, prefix, *(*int32)(unsafe.Pointer(bp)))
 		break
 	}
@@ -163434,7 +163537,7 @@ func XTcl_TranslateFileName(tls *libc.TLS, interp uintptr, name uintptr, bufferP
 	 * Convert forward slashes to backslashes in Windows paths because some
 	 * system interfaces don't accept forward slashes.
 	 */
-	if int32(XtclPlatform) == int32(_TCL_PLATFORM_WINDOWS) {
+	if XtclPlatform == int32(_TCL_PLATFORM_WINDOWS) {
 		p = (*TTcl_DString)(unsafe.Pointer(bufferPtr)).Fstring1
 		for {
 			if !(int32(*(*int8)(unsafe.Pointer(p))) != int32('\000')) {
@@ -163747,8 +163850,8 @@ endOfForLoop:
 				/*
 				 * Have to split off the end.
 				 */
-				XTcl_DStringAppend(tls, bp+240, last, int32(int64(first+uintptr(*(*int32)(unsafe.Pointer(bp + 232))))-int64(int64(last))))
-				pathOrDir = XTcl_NewStringObj(tls, first, int32(int64(int64(last))-int64(int64(first))-int64(1)))
+				XTcl_DStringAppend(tls, bp+240, last, int32(int64(first+uintptr(*(*int32)(unsafe.Pointer(bp + 232))))-int64(last)))
+				pathOrDir = XTcl_NewStringObj(tls, first, int32(int64(last)-int64(first)-int64(1)))
 				/*
 				 * We must ensure that we haven't cut off too much, and turned
 				 * a valid path like '/' or 'C:/' into an incorrect path like
@@ -163770,7 +163873,7 @@ endOfForLoop:
 				if !(v6 != libc.UintptrFromInt32(0)) {
 					break
 				}
-				XTcl_DStringAppend(tls, bp+16, search, int32(int64(int64(find))-int64(int64(search))))
+				XTcl_DStringAppend(tls, bp+16, search, int32(int64(find)-int64(search)))
 				XTcl_DStringAppend(tls, bp+16, ts+12607, int32(libc.Uint64FromInt64(2)-libc.Uint64FromInt32(1)))
 				XTcl_DStringAppend(tls, bp+16, find, int32(1))
 				search = find + uintptr(1)
@@ -164186,7 +164289,7 @@ func XTclGlob(tls *libc.TLS, interp uintptr, pattern uintptr, pathPrefix uintptr
 			pathPrefix = XTclDStringToObj(tls, bp)
 			(*TTcl_Obj)(unsafe.Pointer(pathPrefix)).FrefCount++
 			globFlags |= int32(m_TCL_GLOBMODE_DIR)
-			if int32(int32(c)) != int32('\000') {
+			if int32(c) != int32('\000') {
 				tail++
 			}
 			XTcl_DStringFree(tls, bp)
@@ -164206,7 +164309,7 @@ func XTclGlob(tls *libc.TLS, interp uintptr, pattern uintptr, pathPrefix uintptr
 	 * Similarly on Unix with '/' at the head of the pattern -- it just
 	 * indicates the root volume, so we treat it as such.
 	 */
-	if int32(XtclPlatform) == int32(_TCL_PLATFORM_WINDOWS) {
+	if XtclPlatform == int32(_TCL_PLATFORM_WINDOWS) {
 		if pathPrefix == libc.UintptrFromInt32(0) && int32(*(*int8)(unsafe.Pointer(tail))) != int32('\000') && int32(*(*int8)(unsafe.Pointer(tail + 1))) == int32(':') {
 			p = tail + uintptr(1)
 			pathPrefix = XTcl_NewStringObj(tls, tail, int32(1))
@@ -164286,7 +164389,7 @@ func XTclGlob(tls *libc.TLS, interp uintptr, pattern uintptr, pathPrefix uintptr
 		 */
 		separators = ts + 31198
 	} else {
-		if int32(XtclPlatform) == int32(_TCL_PLATFORM_UNIX) {
+		if XtclPlatform == int32(_TCL_PLATFORM_UNIX) {
 			if pathPrefix == libc.UintptrFromInt32(0) && int32(*(*int8)(unsafe.Pointer(tail))) == int32('/') {
 				pathPrefix = XTcl_NewStringObj(tls, tail, int32(1))
 				tail++
@@ -164432,7 +164535,7 @@ func XTclGlob(tls *libc.TLS, interp uintptr, pattern uintptr, pathPrefix uintptr
 			 * like 'C:', then there won't be a path separator in between, so
 			 * no need to skip it here.
 			 */
-			if int32(XtclPlatform) != int32(_TCL_PLATFORM_WINDOWS) || *(*int32)(unsafe.Pointer(bp + 264)) != int32(2) || int32(*(*int8)(unsafe.Pointer(pre + 1))) != int32(':') {
+			if XtclPlatform != int32(_TCL_PLATFORM_WINDOWS) || *(*int32)(unsafe.Pointer(bp + 264)) != int32(2) || int32(*(*int8)(unsafe.Pointer(pre + 1))) != int32(':') {
 				*(*int32)(unsafe.Pointer(bp + 264))++
 			}
 		}
@@ -164794,7 +164897,7 @@ func _DoGlob(tls *libc.TLS, interp uintptr, matchesObj uintptr, separators uintp
 		 * element and the remainder to the fixed portion before the first
 		 * brace and recursively call DoGlob.
 		 */
-		XTcl_DStringAppend(tls, bp+8, pattern, int32(int64(int64(openBrace))-int64(int64(pattern))))
+		XTcl_DStringAppend(tls, bp+8, pattern, int32(int64(openBrace)-int64(pattern)))
 		baseLength = (*TTcl_DString)(unsafe.Pointer(bp + 8)).Flength
 		*(*int8)(unsafe.Pointer(closeBrace)) = int8('\000')
 		*(*uintptr)(unsafe.Pointer(bp)) = openBrace
@@ -164806,7 +164909,7 @@ func _DoGlob(tls *libc.TLS, interp uintptr, matchesObj uintptr, separators uintp
 			element = *(*uintptr)(unsafe.Pointer(bp))
 			_SkipToChar(tls, bp, int32(','))
 			XTcl_DStringSetLength(tls, bp+8, baseLength)
-			XTcl_DStringAppend(tls, bp+8, element, int32(int64(*(*uintptr)(unsafe.Pointer(bp)))-int64(int64(element))))
+			XTcl_DStringAppend(tls, bp+8, element, int32(int64(*(*uintptr)(unsafe.Pointer(bp)))-int64(element)))
 			XTcl_DStringAppend(tls, bp+8, closeBrace+uintptr(1), -int32(1))
 			result = _DoGlob(tls, interp, matchesObj, separators, pathPtr, flags, (*TTcl_DString)(unsafe.Pointer(bp+8)).Fstring1, types)
 			if result != m_TCL_OK {
@@ -164979,7 +165082,7 @@ func _DoGlob(tls *libc.TLS, interp uintptr, matchesObj uintptr, separators uintp
 		 * approach).
 		 */
 		XTcl_DStringInit(tls, bp+272)
-		XTcl_DStringAppend(tls, bp+272, pattern, int32(int64(*(*uintptr)(unsafe.Pointer(bp)))-int64(int64(pattern))))
+		XTcl_DStringAppend(tls, bp+272, pattern, int32(int64(*(*uintptr)(unsafe.Pointer(bp)))-int64(pattern)))
 		if pathPtr != libc.UintptrFromInt32(0) {
 			XTcl_GetStringFromObj(tls, pathPtr, bp+264)
 		} else {
@@ -165039,10 +165142,10 @@ func _DoGlob(tls *libc.TLS, interp uintptr, matchesObj uintptr, separators uintp
 	 * If it's not the end of the string, we must recurse
 	 */
 	if pathPtr == libc.UintptrFromInt32(0) {
-		joinedPtr = XTcl_NewStringObj(tls, pattern, int32(int64(*(*uintptr)(unsafe.Pointer(bp)))-int64(int64(pattern))))
+		joinedPtr = XTcl_NewStringObj(tls, pattern, int32(int64(*(*uintptr)(unsafe.Pointer(bp)))-int64(pattern)))
 	} else {
 		if flags != 0 {
-			joinedPtr = XTclNewFSPathObj(tls, pathPtr, pattern, int32(int64(*(*uintptr)(unsafe.Pointer(bp)))-int64(int64(pattern))))
+			joinedPtr = XTclNewFSPathObj(tls, pathPtr, pattern, int32(int64(*(*uintptr)(unsafe.Pointer(bp)))-int64(pattern)))
 		} else {
 			joinedPtr = XTcl_DuplicateObj(tls, pathPtr)
 			if libc.Xstrchr(tls, separators, int32(*(*int8)(unsafe.Pointer(pattern)))) == libc.UintptrFromInt32(0) {
@@ -165053,7 +165156,7 @@ func _DoGlob(tls *libc.TLS, interp uintptr, matchesObj uintptr, separators uintp
 					}
 				}
 			}
-			XTcl_AppendToObj(tls, joinedPtr, pattern, int32(int64(*(*uintptr)(unsafe.Pointer(bp)))-int64(int64(pattern))))
+			XTcl_AppendToObj(tls, joinedPtr, pattern, int32(int64(*(*uintptr)(unsafe.Pointer(bp)))-int64(pattern)))
 		}
 	}
 	(*TTcl_Obj)(unsafe.Pointer(joinedPtr)).FrefCount++
@@ -165857,7 +165960,7 @@ func XTcl_HashStats(tls *libc.TLS, tablePtr uintptr) (r uintptr) {
 		} else {
 			overflow++
 		}
-		tmp = float64(float64(j))
+		tmp = float64(j)
 		if (*TTcl_HashTable)(unsafe.Pointer(tablePtr)).FnumEntries != 0 {
 			average += (tmp + float64(1)) * (tmp / float64((*TTcl_HashTable)(unsafe.Pointer(tablePtr)).FnumEntries)) / float64(2)
 		}
@@ -165912,8 +166015,8 @@ func _AllocArrayEntry(tls *libc.TLS, tablePtr uintptr, keyPtr uintptr) (r uintpt
 	_, _, _, _, _, _ = array, count, hPtr, iPtr1, iPtr2, size
 	array = keyPtr
 	count = (*TTcl_HashTable)(unsafe.Pointer(tablePtr)).FkeyType
-	size = uint32(uint64(int32(uint64(libc.UintptrFromInt32(0)+32))) + uint64(uint64(count))*uint64(4))
-	if uint64(uint64(size)) < uint64(40) {
+	size = uint32(uint64(int32(uint64(libc.UintptrFromInt32(0)+32))) + uint64(count)*uint64(4))
+	if uint64(size) < uint64(40) {
 		size = uint32(40)
 	}
 	hPtr = XTcl_Alloc(tls, size)
@@ -166041,12 +166144,12 @@ func _AllocStringEntry(tls *libc.TLS, tablePtr uintptr, keyPtr uintptr) (r uintp
 	v1 = uint32(libc.Xstrlen(tls, string1) + libc.Uint64FromInt32(1))
 	size = v1
 	allocsize = v1
-	if uint64(uint64(size)) < uint64(8) {
+	if uint64(size) < uint64(8) {
 		allocsize = uint32(8)
 	}
 	hPtr = XTcl_Alloc(tls, uint32(int32(uint64(libc.UintptrFromInt32(0)+32)))+allocsize)
 	libc.Xmemset(tls, hPtr, 0, uint64(uint32(int32(uint64(libc.UintptrFromInt32(0)+32)))+allocsize))
-	libc.Xmemcpy(tls, hPtr+32, string1, uint64(uint64(size)))
+	libc.Xmemcpy(tls, hPtr+32, string1, uint64(size))
 	(*TTcl_HashEntry)(unsafe.Pointer(hPtr)).FclientData = uintptr(0)
 	return hPtr
 }
@@ -167010,7 +167113,7 @@ func _UpdateStringOfIndex(tls *libc.TLS, objPtr uintptr) {
 	buf = XTcl_Alloc(tls, len1+libc.Uint32FromInt32(1))
 	libc.Xmemcpy(tls, buf, indexStr, uint64(len1+uint32(1)))
 	(*TTcl_Obj)(unsafe.Pointer(objPtr)).Fbytes = buf
-	(*TTcl_Obj)(unsafe.Pointer(objPtr)).Flength = int32(int32(len1))
+	(*TTcl_Obj)(unsafe.Pointer(objPtr)).Flength = int32(len1)
 }
 
 /*
@@ -167445,7 +167548,7 @@ func _PrefixLongestObjCmd(tls *libc.TLS, clientData TClientData, interp uintptr,
 						}
 						v4 = v5
 					}
-					resultLength = int32(int64(v4) - int64(int64(resultString)))
+					resultLength = int32(int64(v4) - int64(resultString))
 					break
 				}
 				goto _3
@@ -167774,7 +167877,7 @@ func XTcl_ParseArgsObjv(tls *libc.TLS, interp uintptr, argTable uintptr, objcPtr
 			if (*TTcl_ArgvInfo)(unsafe.Pointer(infoPtr)).FkeyStr == libc.UintptrFromInt32(0) {
 				goto _2
 			}
-			if int32(*(*int8)(unsafe.Pointer((*TTcl_ArgvInfo)(unsafe.Pointer(infoPtr)).FkeyStr + 1))) != int32(int32(c)) || libc.Xstrncmp(tls, (*TTcl_ArgvInfo)(unsafe.Pointer(infoPtr)).FkeyStr, str, uint64(*(*int32)(unsafe.Pointer(bp)))) != 0 {
+			if int32(*(*int8)(unsafe.Pointer((*TTcl_ArgvInfo)(unsafe.Pointer(infoPtr)).FkeyStr + 1))) != int32(c) || libc.Xstrncmp(tls, (*TTcl_ArgvInfo)(unsafe.Pointer(infoPtr)).FkeyStr, str, uint64(*(*int32)(unsafe.Pointer(bp)))) != 0 {
 				goto _2
 			}
 			if int32(*(*int8)(unsafe.Pointer((*TTcl_ArgvInfo)(unsafe.Pointer(infoPtr)).FkeyStr + uintptr(*(*int32)(unsafe.Pointer(bp)))))) == 0 {
@@ -167884,14 +167987,14 @@ argsDone:
 		return m_TCL_OK
 	}
 	if objc > 0 {
-		libc.Xmemcpy(tls, leftovers+uintptr(nrem)*8, objv+uintptr(srcIndex)*8, uint64(uint64(objc))*uint64(8))
+		libc.Xmemcpy(tls, leftovers+uintptr(nrem)*8, objv+uintptr(srcIndex)*8, uint64(objc)*uint64(8))
 		nrem += objc
 	}
 	*(*uintptr)(unsafe.Pointer(leftovers + uintptr(nrem)*8)) = libc.UintptrFromInt32(0)
 	v4 = nrem
 	nrem++
 	*(*int32)(unsafe.Pointer(objcPtr)) = v4
-	*(*uintptr)(unsafe.Pointer(remObjv)) = XTcl_Realloc(tls, leftovers, uint32(uint64(uint64(nrem))*libc.Uint64FromInt64(8)))
+	*(*uintptr)(unsafe.Pointer(remObjv)) = XTcl_Realloc(tls, leftovers, uint32(uint64(nrem)*libc.Uint64FromInt64(8)))
 	return m_TCL_OK
 	/*
 	 * Make sure to handle freeing any temporary space we've allocated on the
@@ -169084,7 +169187,7 @@ func XTcl_CreateAlias(tls *libc.TLS, childInterp uintptr, childCmd uintptr, targ
 	var _objPtr, _objPtr1, _objPtr2, childObjPtr, objv, targetObjPtr, v4, v6, v8 uintptr
 	var i, result, v3, v5, v7 int32
 	_, _, _, _, _, _, _, _, _, _, _, _, _, _ = _objPtr, _objPtr1, _objPtr2, childObjPtr, i, objv, result, targetObjPtr, v3, v4, v5, v6, v7, v8
-	objv = XTclStackAlloc(tls, childInterp, int32(libc.Uint32FromInt64(8)*uint32(uint32(argc))))
+	objv = XTclStackAlloc(tls, childInterp, int32(libc.Uint32FromInt64(8)*uint32(argc)))
 	i = 0
 	for {
 		if !(i < argc) {
@@ -169407,7 +169510,7 @@ func _AliasCreate(tls *libc.TLS, interp uintptr, childInterp uintptr, parentInte
 	var i, v10, v13, v5, v7 int32
 	var _ /* isNew at bp+0 */ int32
 	_, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _ = _objPtr, _objPtr1, _objPtr2, _objPtr3, aliasPtr, childPtr, cmdPtr, hPtr, i, newToken, parentPtr, prefv, string1, targetPtr, v10, v11, v12, v13, v14, v2, v3, v4, v5, v6, v7, v8
-	aliasPtr = XTcl_Alloc(tls, uint32(libc.Uint64FromInt64(56)+uint64(uint64(objc))*libc.Uint64FromInt64(8)))
+	aliasPtr = XTcl_Alloc(tls, uint32(libc.Uint64FromInt64(56)+uint64(objc)*libc.Uint64FromInt64(8)))
 	(*TAlias)(unsafe.Pointer(aliasPtr)).Ftoken = namePtr
 	(*TTcl_Obj)(unsafe.Pointer((*TAlias)(unsafe.Pointer(aliasPtr)).Ftoken)).FrefCount++
 	(*TAlias)(unsafe.Pointer(aliasPtr)).FtargetInterp = parentInterp
@@ -169757,7 +169860,7 @@ func _AliasNRCmd(tls *libc.TLS, clientData TClientData, interp uintptr, objc int
 	(*TList)(unsafe.Pointer(listRep)).FelemCount = cmdc
 	cmdv = listRep + 16
 	prefv = aliasPtr + 48
-	libc.Xmemcpy(tls, cmdv, prefv, uint64(uint64(prefc))*uint64(8))
+	libc.Xmemcpy(tls, cmdv, prefv, uint64(prefc)*uint64(8))
 	libc.Xmemcpy(tls, cmdv+uintptr(prefc)*8, objv+uintptr(1)*8, uint64(objc-libc.Int32FromInt32(1))*uint64(8))
 	i = 0
 	for {
@@ -169815,9 +169918,9 @@ func _AliasObjCmd(tls *libc.TLS, clientData TClientData, interp uintptr, objc in
 	if cmdc <= int32(10) {
 		cmdv = bp
 	} else {
-		cmdv = XTclStackAlloc(tls, interp, int32(uint64(uint64(cmdc))*uint64(8)))
+		cmdv = XTclStackAlloc(tls, interp, int32(uint64(cmdc)*uint64(8)))
 	}
-	libc.Xmemcpy(tls, cmdv, prefv, uint64(uint64(prefc))*uint64(8))
+	libc.Xmemcpy(tls, cmdv, prefv, uint64(prefc)*uint64(8))
 	libc.Xmemcpy(tls, cmdv+uintptr(prefc)*8, objv+uintptr(1)*8, uint64(objc-libc.Int32FromInt32(1))*uint64(8))
 	XTcl_ResetResult(tls, targetInterp)
 	i = 0
@@ -172158,7 +172261,7 @@ func _SetScriptLimitCallback(tls *libc.TLS, interp uintptr, type1 int32, targetI
 		XTcl_Panic(tls, ts+36547, 0)
 	}
 	(*(*TScriptLimitCallbackKey)(unsafe.Pointer(bp + 8))).Finterp = targetInterp
-	(*(*TScriptLimitCallbackKey)(unsafe.Pointer(bp + 8))).Ftype1 = int64(int64(type1))
+	(*(*TScriptLimitCallbackKey)(unsafe.Pointer(bp + 8))).Ftype1 = int64(type1)
 	if scriptObj == libc.UintptrFromInt32(0) {
 		hashPtr = (*(*func(*libc.TLS, uintptr, uintptr) uintptr)(unsafe.Pointer(&struct{ uintptr }{(*TTcl_HashTable)(unsafe.Pointer(iPtr + 768 + 72)).FfindProc})))(tls, iPtr+768+72, bp+8)
 		if hashPtr != libc.UintptrFromInt32(0) {
@@ -176701,12 +176804,12 @@ func _Write(tls *libc.TLS, chanPtr uintptr, src uintptr, srcLen int32, encoding 
 	 */
 	endEncoding = libc.BoolInt32((*TChannelState)(unsafe.Pointer(statePtr)).FoutputEncodingFlags&int32(m_TCL_ENCODING_END) != 0)
 	if (*TChannelState)(unsafe.Pointer(statePtr)).Fflags&(libc.Int32FromInt32(1)<<libc.Int32FromInt32(4)) != 0 || (*TChannelState)(unsafe.Pointer(statePtr)).FoutputTranslation != int32(_TCL_TRANSLATE_LF) {
-		nextNewLine = libc.Xmemchr(tls, src, int32('\n'), uint64(uint64(srcLen)))
+		nextNewLine = libc.Xmemchr(tls, src, int32('\n'), uint64(srcLen))
 	}
 	for srcLen+saved+endEncoding > 0 && !(encodingError != 0) {
 		srcLimit = srcLen
 		if nextNewLine != 0 {
-			srcLimit = int32(int64(int64(nextNewLine)) - int64(int64(src)))
+			srcLimit = int32(int64(nextNewLine) - int64(src))
 		}
 		/* Get space to write into */
 		bufPtr = (*TChannelState)(unsafe.Pointer(statePtr)).FcurOutPtr
@@ -176719,7 +176822,7 @@ func _Write(tls *libc.TLS, chanPtr uintptr, src uintptr, srcLen int32, encoding 
 			 * Here's some translated bytes left over from the last buffer
 			 * that we need to stick at the beginning of this buffer.
 			 */
-			libc.Xmemcpy(tls, bufPtr+24+uintptr((*TChannelBuffer)(unsafe.Pointer(bufPtr)).FnextAdded), bp, uint64(uint64(saved)))
+			libc.Xmemcpy(tls, bufPtr+24+uintptr((*TChannelBuffer)(unsafe.Pointer(bufPtr)).FnextAdded), bp, uint64(saved))
 			*(*int32)(unsafe.Pointer(bufPtr + 4)) += saved
 			saved = 0
 		}
@@ -176765,7 +176868,7 @@ func _Write(tls *libc.TLS, chanPtr uintptr, src uintptr, srcLen int32, encoding 
 			total += *(*int32)(unsafe.Pointer(bp + 20))
 			dst += uintptr(*(*int32)(unsafe.Pointer(bp + 20)))
 			dstLen -= *(*int32)(unsafe.Pointer(bp + 20))
-			nextNewLine = libc.Xmemchr(tls, src, int32('\n'), uint64(uint64(srcLen)))
+			nextNewLine = libc.Xmemchr(tls, src, int32('\n'), uint64(srcLen))
 			needNlFlush = int32(1)
 		}
 		if (*TChannelBuffer)(unsafe.Pointer(bufPtr)).FnextAdded > (*TChannelBuffer)(unsafe.Pointer(bufPtr)).FbufLength {
@@ -176777,7 +176880,7 @@ func _Write(tls *libc.TLS, chanPtr uintptr, src uintptr, srcLen int32, encoding 
 			 * beginning of the next buffer.
 			 */
 			saved = -((*TChannelBuffer)(unsafe.Pointer(bufPtr)).FbufLength - (*TChannelBuffer)(unsafe.Pointer(bufPtr)).FnextAdded)
-			libc.Xmemcpy(tls, bp, dst+uintptr(dstLen), uint64(uint64(saved)))
+			libc.Xmemcpy(tls, bp, dst+uintptr(dstLen), uint64(saved))
 			(*TChannelBuffer)(unsafe.Pointer(bufPtr)).FnextAdded = (*TChannelBuffer)(unsafe.Pointer(bufPtr)).FbufLength
 		}
 		if srcLen+saved == 0 && result == m_TCL_OK {
@@ -177082,7 +177185,7 @@ func XTcl_GetsObj(tls *libc.TLS, chan1 TTcl_Channel, objPtr uintptr) (r int32) {
 				 */
 				if eol >= *(*uintptr)(unsafe.Pointer(bp + 72)) {
 					if eol != eof {
-						offset = int32(int64(int64(eol)) - int64((*TTcl_Obj)(unsafe.Pointer(objPtr)).Fbytes))
+						offset = int32(int64(eol) - int64((*TTcl_Obj)(unsafe.Pointer(objPtr)).Fbytes))
 						*(*uintptr)(unsafe.Pointer(bp + 64)) = *(*uintptr)(unsafe.Pointer(bp + 72))
 						if _FilterInputBytes(tls, chanPtr, bp) != 0 {
 							goto restore
@@ -177134,7 +177237,7 @@ func XTcl_GetsObj(tls *libc.TLS, chan1 TTcl_Channel, objPtr uintptr) (r int32) {
 					 * available, unless EOF char was found already.
 					 */
 					if eol != eof {
-						offset1 = int32(int64(int64(eol)) - int64((*TTcl_Obj)(unsafe.Pointer(objPtr)).Fbytes))
+						offset1 = int32(int64(eol) - int64((*TTcl_Obj)(unsafe.Pointer(objPtr)).Fbytes))
 						*(*uintptr)(unsafe.Pointer(bp + 64)) = *(*uintptr)(unsafe.Pointer(bp + 72))
 						_PeekAhead(tls, chanPtr, bp+72, bp)
 						eol = (*TTcl_Obj)(unsafe.Pointer(objPtr)).Fbytes + uintptr(offset1)
@@ -177213,12 +177316,12 @@ gotEOL:
 		XTcl_Panic(tls, ts+38280, 0)
 	}
 	(*TChannelState)(unsafe.Pointer(statePtr)).FinputEncodingState = (*(*TGetsState)(unsafe.Pointer(bp))).Fstate
-	XTcl_ExternalToUtf(tls, libc.UintptrFromInt32(0), (*(*TGetsState)(unsafe.Pointer(bp))).Fencoding, bufPtr+24+uintptr((*TChannelBuffer)(unsafe.Pointer(bufPtr)).FnextRemoved), (*(*TGetsState)(unsafe.Pointer(bp))).FrawRead, (*TChannelState)(unsafe.Pointer(statePtr)).FinputEncodingFlags|int32(m_TCL_ENCODING_NO_TERMINATE), statePtr+24, *(*uintptr)(unsafe.Pointer(bp + 64)), int32(int64(int64(eol))-int64(*(*uintptr)(unsafe.Pointer(bp + 64)))+int64(int64(skip))+int64(m_TCL_UTF_MAX)-int64(1)), bp+40, libc.UintptrFromInt32(0), bp+48)
+	XTcl_ExternalToUtf(tls, libc.UintptrFromInt32(0), (*(*TGetsState)(unsafe.Pointer(bp))).Fencoding, bufPtr+24+uintptr((*TChannelBuffer)(unsafe.Pointer(bufPtr)).FnextRemoved), (*(*TGetsState)(unsafe.Pointer(bp))).FrawRead, (*TChannelState)(unsafe.Pointer(statePtr)).FinputEncodingFlags|int32(m_TCL_ENCODING_NO_TERMINATE), statePtr+24, *(*uintptr)(unsafe.Pointer(bp + 64)), int32(int64(eol)-int64(*(*uintptr)(unsafe.Pointer(bp + 64)))+int64(skip)+int64(m_TCL_UTF_MAX)-int64(1)), bp+40, libc.UintptrFromInt32(0), bp+48)
 	*(*int32)(unsafe.Pointer(bufPtr + 8)) += (*(*TGetsState)(unsafe.Pointer(bp))).FrawRead
 	/*
 	 * Recycle all the emptied buffers.
 	 */
-	XTcl_SetObjLength(tls, objPtr, int32(int64(int64(eol))-int64((*TTcl_Obj)(unsafe.Pointer(objPtr)).Fbytes)))
+	XTcl_SetObjLength(tls, objPtr, int32(int64(eol)-int64((*TTcl_Obj)(unsafe.Pointer(objPtr)).Fbytes)))
 	_CommonGetsCleanup(tls, chanPtr)
 	*(*int32)(unsafe.Pointer(statePtr + 8)) &= ^(libc.Int32FromInt32(1) << libc.Int32FromInt32(11))
 	copiedTotal = (*(*TGetsState)(unsafe.Pointer(bp))).FtotalChars + (*(*TGetsState)(unsafe.Pointer(bp))).FcharsWrote - skip
@@ -177461,9 +177564,9 @@ func _TclGetsObjBinary(tls *libc.TLS, chan1 TTcl_Channel, objPtr uintptr) (r int
 		 * Copy bytes from the channel buffer to the ByteArray. This may
 		 * realloc space, so keep track of result.
 		 */
-		rawLen = int32(int64(int64(dstEnd)) - int64(int64(dst)))
+		rawLen = int32(int64(dstEnd) - int64(dst))
 		byteArray = XTcl_SetByteArrayLength(tls, objPtr, *(*int32)(unsafe.Pointer(bp))+rawLen)
-		libc.Xmemcpy(tls, byteArray+uintptr(*(*int32)(unsafe.Pointer(bp))), dst, uint64(uint64(rawLen)))
+		libc.Xmemcpy(tls, byteArray+uintptr(*(*int32)(unsafe.Pointer(bp))), dst, uint64(rawLen))
 		*(*int32)(unsafe.Pointer(bp)) += rawLen
 	}
 	/*
@@ -177475,9 +177578,9 @@ gotEOL:
 	if bufPtr == libc.UintptrFromInt32(0) {
 		XTcl_Panic(tls, ts+38326, 0)
 	}
-	rawLen = int32(int64(int64(eol)) - int64(int64(dst)))
+	rawLen = int32(int64(eol) - int64(dst))
 	byteArray = XTcl_SetByteArrayLength(tls, objPtr, *(*int32)(unsafe.Pointer(bp))+rawLen)
-	libc.Xmemcpy(tls, byteArray+uintptr(*(*int32)(unsafe.Pointer(bp))), dst, uint64(uint64(rawLen)))
+	libc.Xmemcpy(tls, byteArray+uintptr(*(*int32)(unsafe.Pointer(bp))), dst, uint64(rawLen))
 	*(*int32)(unsafe.Pointer(bp)) += rawLen
 	*(*int32)(unsafe.Pointer(bufPtr + 8)) += rawLen + skip
 	/*
@@ -177665,7 +177768,7 @@ _2:
 	raw = bufPtr + 24 + uintptr((*TChannelBuffer)(unsafe.Pointer(bufPtr)).FnextRemoved)
 	rawLen = (*TChannelBuffer)(unsafe.Pointer(bufPtr)).FnextAdded - (*TChannelBuffer)(unsafe.Pointer(bufPtr)).FnextRemoved
 	dst = *(*uintptr)(unsafe.Pointer((*TGetsState)(unsafe.Pointer(gsPtr)).FdstPtr))
-	offset = int32(int64(int64(dst)) - int64((*TTcl_Obj)(unsafe.Pointer(objPtr)).Fbytes))
+	offset = int32(int64(dst) - int64((*TTcl_Obj)(unsafe.Pointer(objPtr)).Fbytes))
 	toRead = int32(m_ENCODING_LINESIZE)
 	if toRead > rawLen {
 		toRead = rawLen
@@ -177729,7 +177832,7 @@ _2:
 				(*TChannelState)(unsafe.Pointer(statePtr)).FinQueueTail = nextPtr
 			}
 			extra = rawLen - (*TGetsState)(unsafe.Pointer(gsPtr)).FrawRead
-			libc.Xmemcpy(tls, nextPtr+24+uintptr(libc.Int32FromInt32(m_BUFFER_PADDING)-extra), raw+uintptr((*TGetsState)(unsafe.Pointer(gsPtr)).FrawRead), uint64(uint64(extra)))
+			libc.Xmemcpy(tls, nextPtr+24+uintptr(libc.Int32FromInt32(m_BUFFER_PADDING)-extra), raw+uintptr((*TGetsState)(unsafe.Pointer(gsPtr)).FrawRead), uint64(extra))
 			*(*int32)(unsafe.Pointer(nextPtr + 8)) -= extra
 			*(*int32)(unsafe.Pointer(bufPtr + 4)) -= extra
 		}
@@ -177866,7 +177969,7 @@ func _CommonGetsCleanup(tls *libc.TLS, chanPtr uintptr) {
 			}
 			extra = (*TChannelBuffer)(unsafe.Pointer(bufPtr)).FbufLength - (*TChannelBuffer)(unsafe.Pointer(bufPtr)).FnextAdded
 			if extra > 0 {
-				libc.Xmemcpy(tls, bufPtr+24+uintptr((*TChannelBuffer)(unsafe.Pointer(bufPtr)).FnextAdded), nextPtr+24+uintptr(libc.Int32FromInt32(m_BUFFER_PADDING)-extra), uint64(uint64(extra)))
+				libc.Xmemcpy(tls, bufPtr+24+uintptr((*TChannelBuffer)(unsafe.Pointer(bufPtr)).FnextAdded), nextPtr+24+uintptr(libc.Int32FromInt32(m_BUFFER_PADDING)-extra), uint64(extra))
 				*(*int32)(unsafe.Pointer(bufPtr + 4)) += extra
 				(*TChannelBuffer)(unsafe.Pointer(nextPtr)).FnextRemoved = int32(m_BUFFER_PADDING)
 			}
@@ -177966,7 +178069,7 @@ func XTcl_ReadRaw(tls *libc.TLS, chan1 TTcl_Channel, readBuf uintptr, bytesToRea
 		/*
 		 * Copy the current chunk into the read buffer.
 		 */
-		libc.Xmemcpy(tls, readBuf, bufPtr+24+uintptr((*TChannelBuffer)(unsafe.Pointer(bufPtr)).FnextRemoved), uint64(uint64(toCopy)))
+		libc.Xmemcpy(tls, readBuf, bufPtr+24+uintptr((*TChannelBuffer)(unsafe.Pointer(bufPtr)).FnextRemoved), uint64(toCopy))
 		*(*int32)(unsafe.Pointer(bufPtr + 8)) += toCopy
 		copied += toCopy
 		readBuf += uintptr(toCopy)
@@ -178168,7 +178271,7 @@ func _DoReadChars(tls *libc.TLS, chanPtr uintptr, objPtr uintptr, toRead int32, 
 	*(*int32)(unsafe.Pointer(statePtr + 32)) &= ^libc.Int32FromInt32(m_TCL_ENCODING_END)
 	copied = 0
 	for {
-		if !(uint32(uint32(toRead)) > uint32(0)) {
+		if !(uint32(toRead) > uint32(0)) {
 			break
 		}
 		copiedNow = -int32(1)
@@ -178555,7 +178658,7 @@ func _ReadChars(tls *libc.TLS, statePtr uintptr, objPtr uintptr, charsToRead int
 			 * and try again.  Don't forget the extra padding of TCL_UTF_MAX
 			 * bytes demanded by the Tcl_ExternalToUtf() call!
 			 */
-			dstLimit = int32(int64(XTcl_UtfAtIndex(tls, dst, charsToRead)) - int64(int64(dst)) + int64(libc.Int32FromInt32(m_TCL_UTF_MAX)-libc.Int32FromInt32(1)))
+			dstLimit = int32(int64(XTcl_UtfAtIndex(tls, dst, charsToRead)) - int64(dst) + int64(libc.Int32FromInt32(m_TCL_UTF_MAX)-libc.Int32FromInt32(1)))
 			(*TChannelState)(unsafe.Pointer(statePtr)).Fflags = savedFlags
 			(*TChannelState)(unsafe.Pointer(statePtr)).FinputEncodingFlags = savedIEFlags
 			(*TChannelState)(unsafe.Pointer(statePtr)).FinputEncodingState = savedState
@@ -178608,7 +178711,7 @@ func _ReadChars(tls *libc.TLS, statePtr uintptr, objPtr uintptr, charsToRead int
 				XTcl_Panic(tls, ts+38410, 0)
 			}
 			*(*int32)(unsafe.Pointer(nextPtr + 8)) -= srcLen
-			libc.Xmemcpy(tls, nextPtr+24+uintptr((*TChannelBuffer)(unsafe.Pointer(nextPtr)).FnextRemoved), src, uint64(uint64(srcLen)))
+			libc.Xmemcpy(tls, nextPtr+24+uintptr((*TChannelBuffer)(unsafe.Pointer(nextPtr)).FnextRemoved), src, uint64(srcLen))
 			_RecycleBuffer(tls, statePtr, bufPtr, 0)
 			(*TChannelState)(unsafe.Pointer(statePtr)).FinQueueHead = nextPtr
 			XTcl_SetObjLength(tls, objPtr, *(*int32)(unsafe.Pointer(bp)))
@@ -178689,10 +178792,10 @@ func _TranslateInputEOL(tls *libc.TLS, statePtr uintptr, dstStart uintptr, srcSt
 		 * Make sure we do not read past any logical end of channel input
 		 * created by the presence of the input eof char.
 		 */
-		v1 = libc.Xmemchr(tls, srcStart, inEofChar, uint64(uint64(srcLen)))
+		v1 = libc.Xmemchr(tls, srcStart, inEofChar, uint64(srcLen))
 		eof = v1
 		if v1 != 0 {
-			srcLen = int32(int64(int64(eof)) - int64(int64(srcStart)))
+			srcLen = int32(int64(eof) - int64(srcStart))
 		}
 	}
 	switch (*TChannelState)(unsafe.Pointer(statePtr)).FinputTranslation {
@@ -178700,13 +178803,13 @@ func _TranslateInputEOL(tls *libc.TLS, statePtr uintptr, dstStart uintptr, srcSt
 		fallthrough
 	case int32(_TCL_TRANSLATE_CR):
 		if dstStart != srcStart {
-			libc.Xmemcpy(tls, dstStart, srcStart, uint64(uint64(srcLen)))
+			libc.Xmemcpy(tls, dstStart, srcStart, uint64(srcLen))
 		}
 		if (*TChannelState)(unsafe.Pointer(statePtr)).FinputTranslation == int32(_TCL_TRANSLATE_CR) {
 			dst = dstStart
 			dstEnd = dstStart + uintptr(srcLen)
 			for {
-				v2 = libc.Xmemchr(tls, dst, int32('\r'), uint64(int64(int64(dstEnd))-int64(int64(dst))))
+				v2 = libc.Xmemchr(tls, dst, int32('\r'), uint64(int64(dstEnd)-int64(dst)))
 				dst = v2
 				if !(v2 != 0) {
 					break
@@ -178727,13 +178830,13 @@ func _TranslateInputEOL(tls *libc.TLS, statePtr uintptr, dstStart uintptr, srcSt
 		}
 		lesser = v4
 		for {
-			v5 = libc.Xmemchr(tls, src, int32('\r'), uint64(uint64(lesser)))
+			v5 = libc.Xmemchr(tls, src, int32('\r'), uint64(lesser))
 			crFound = v5
 			if !(v5 != 0) {
 				break
 			}
-			numBytes = int32(int64(int64(crFound)) - int64(int64(src)))
-			libc.Xmemmove(tls, dst1, src, uint64(uint64(numBytes)))
+			numBytes = int32(int64(crFound) - int64(src))
+			libc.Xmemmove(tls, dst1, src, uint64(numBytes))
 			dst1 += uintptr(numBytes)
 			dstLen -= numBytes
 			src += uintptr(numBytes)
@@ -178773,9 +178876,9 @@ func _TranslateInputEOL(tls *libc.TLS, statePtr uintptr, dstStart uintptr, srcSt
 			}
 			lesser = v9
 		}
-		libc.Xmemmove(tls, dst1, src, uint64(uint64(lesser)))
-		srcLen = int32(int64(src+uintptr(lesser)) - int64(int64(srcStart)))
-		dstLen = int32(int64(dst1+uintptr(lesser)) - int64(int64(dstStart)))
+		libc.Xmemmove(tls, dst1, src, uint64(lesser))
+		srcLen = int32(int64(src+uintptr(lesser)) - int64(srcStart))
+		dstLen = int32(int64(dst1+uintptr(lesser)) - int64(dstStart))
 	case int32(_TCL_TRANSLATE_AUTO):
 		src1 = srcStart
 		dst2 = dstStart
@@ -178793,13 +178896,13 @@ func _TranslateInputEOL(tls *libc.TLS, statePtr uintptr, dstStart uintptr, srcSt
 		}
 		lesser1 = v10
 		for {
-			v11 = libc.Xmemchr(tls, src1, int32('\r'), uint64(uint64(lesser1)))
+			v11 = libc.Xmemchr(tls, src1, int32('\r'), uint64(lesser1))
 			crFound1 = v11
 			if !(v11 != 0) {
 				break
 			}
-			numBytes1 = int32(int64(int64(crFound1)) - int64(int64(src1)))
-			libc.Xmemmove(tls, dst2, src1, uint64(uint64(numBytes1)))
+			numBytes1 = int32(int64(crFound1) - int64(src1))
+			libc.Xmemmove(tls, dst2, src1, uint64(numBytes1))
 			*(*int8)(unsafe.Pointer(dst2 + uintptr(numBytes1))) = int8('\n')
 			dst2 += uintptr(numBytes1 + int32(1))
 			dstLen -= numBytes1 + int32(1)
@@ -178820,9 +178923,9 @@ func _TranslateInputEOL(tls *libc.TLS, statePtr uintptr, dstStart uintptr, srcSt
 			}
 			lesser1 = v12
 		}
-		libc.Xmemmove(tls, dst2, src1, uint64(uint64(lesser1)))
-		srcLen = int32(int64(src1+uintptr(lesser1)) - int64(int64(srcStart)))
-		dstLen = int32(int64(dst2+uintptr(lesser1)) - int64(int64(dstStart)))
+		libc.Xmemmove(tls, dst2, src1, uint64(lesser1))
+		srcLen = int32(int64(src1+uintptr(lesser1)) - int64(srcStart))
+		dstLen = int32(int64(dst2+uintptr(lesser1)) - int64(dstStart))
 	default:
 		XTcl_Panic(tls, ts+38454, libc.VaList(bp+8, (*TChannelState)(unsafe.Pointer(statePtr)).FinputTranslation))
 	}
@@ -178887,7 +178990,7 @@ func XTcl_Ungets(tls *libc.TLS, chan1 TTcl_Channel, str uintptr, len1 int32, atE
 	*(*int32)(unsafe.Pointer(statePtr + 8)) &= ^(libc.Int32FromInt32(1)<<libc.Int32FromInt32(11) | libc.Int32FromInt32(1)<<libc.Int32FromInt32(10) | libc.Int32FromInt32(1)<<libc.Int32FromInt32(9) | libc.Int32FromInt32(1)<<libc.Int32FromInt32(12))
 	*(*int32)(unsafe.Pointer(statePtr + 32)) &= ^libc.Int32FromInt32(m_TCL_ENCODING_END)
 	bufPtr = _AllocChannelBuffer(tls, len1)
-	libc.Xmemcpy(tls, bufPtr+24+uintptr((*TChannelBuffer)(unsafe.Pointer(bufPtr)).FnextAdded), str, uint64(uint64(len1)))
+	libc.Xmemcpy(tls, bufPtr+24+uintptr((*TChannelBuffer)(unsafe.Pointer(bufPtr)).FnextAdded), str, uint64(len1))
 	*(*int32)(unsafe.Pointer(bufPtr + 4)) += len1
 	if (*TChannelState)(unsafe.Pointer(statePtr)).FinQueueHead == libc.UintptrFromInt32(0) {
 		(*TChannelBuffer)(unsafe.Pointer(bufPtr)).FnextPtr = libc.UintptrFromInt32(0)
@@ -179190,7 +179293,7 @@ func XTcl_Seek(tls *libc.TLS, chan1 TTcl_Channel, offset TTcl_WideInt, mode int3
 	 * corrected offset taking into account the amount of unread input.
 	 */
 	if mode == int32(m_SEEK_CUR) {
-		offset -= int64(int64(inputBuffered))
+		offset -= int64(inputBuffered)
 	}
 	/*
 	 * Discard any queued input - this input should not be read after the
@@ -179330,9 +179433,9 @@ func XTcl_Tell(tls *libc.TLS, chan1 TTcl_Channel) (r TTcl_WideInt) {
 		return int64(-int32(1))
 	}
 	if inputBuffered != 0 {
-		return curPos - int64(int64(inputBuffered))
+		return curPos - int64(inputBuffered)
 	}
-	return curPos + int64(int64(outputBuffered))
+	return curPos + int64(outputBuffered)
 }
 
 /*
@@ -179358,7 +179461,7 @@ func XTcl_SeekOld(tls *libc.TLS, chan1 TTcl_Channel, offset int32, mode int32) (
 	/* Relative to which location to seek? */
 	var wOffset, wResult TTcl_WideInt
 	_, _ = wOffset, wResult
-	wOffset = int64(int64(offset))
+	wOffset = int64(offset)
 	wResult = XTcl_Seek(tls, chan1, wOffset, mode)
 	return int32(wResult)
 }
@@ -180350,7 +180453,7 @@ func XTcl_SetChannelOption(tls *libc.TLS, interp uintptr, chan1 TTcl_Channel, op
 								 * to see if the new translation mode allows us to complete the
 								 * line.
 								 */
-								if int32(translation) != (*TChannelState)(unsafe.Pointer(statePtr)).FinputTranslation {
+								if translation != (*TChannelState)(unsafe.Pointer(statePtr)).FinputTranslation {
 									(*TChannelState)(unsafe.Pointer(statePtr)).FinputTranslation = translation
 									*(*int32)(unsafe.Pointer(statePtr + 8)) &= ^(libc.Int32FromInt32(1)<<libc.Int32FromInt32(12) | libc.Int32FromInt32(1)<<libc.Int32FromInt32(14))
 									_UpdateInterest(tls, chanPtr)
@@ -181280,7 +181383,7 @@ func _ZeroTransferTimerProc(tls *libc.TLS, clientData TClientData) {
 
 func XTclCopyChannelOld(tls *libc.TLS, interp uintptr, inChan TTcl_Channel, outChan TTcl_Channel, toRead int32, cmdPtr uintptr) (r int32) {
 	/* Pointer to script to execute or NULL. */
-	return XTclCopyChannel(tls, interp, inChan, outChan, int64(int64(toRead)), cmdPtr)
+	return XTclCopyChannel(tls, interp, inChan, outChan, int64(toRead), cmdPtr)
 }
 
 func XTclCopyChannel(tls *libc.TLS, interp uintptr, inChan TTcl_Channel, outChan TTcl_Channel, toRead TTcl_WideInt, cmdPtr uintptr) (r int32) {
@@ -181561,7 +181664,7 @@ func _MBWrite(tls *libc.TLS, csPtr uintptr) (r int32) {
 		 */
 		bufPtr = _AllocChannelBuffer(tls, extra)
 		*(*int32)(unsafe.Pointer(tail + 4)) -= extra
-		libc.Xmemcpy(tls, bufPtr+24+uintptr((*TChannelBuffer)(unsafe.Pointer(bufPtr)).FnextAdded), tail+24+uintptr((*TChannelBuffer)(unsafe.Pointer(tail)).FnextAdded), uint64(uint64(extra)))
+		libc.Xmemcpy(tls, bufPtr+24+uintptr((*TChannelBuffer)(unsafe.Pointer(bufPtr)).FnextAdded), tail+24+uintptr((*TChannelBuffer)(unsafe.Pointer(tail)).FnextAdded), uint64(extra))
 		*(*int32)(unsafe.Pointer(bufPtr + 4)) += extra
 		(*TChannelBuffer)(unsafe.Pointer(bufPtr)).FnextPtr = (*TChannelBuffer)(unsafe.Pointer(tail)).FnextPtr
 		(*TChannelBuffer)(unsafe.Pointer(tail)).FnextPtr = libc.UintptrFromInt32(0)
@@ -181881,9 +181984,9 @@ _10:
 	 * of bytes left to copy.
 	 */
 	if (*TCopyState)(unsafe.Pointer(csPtr)).FtoRead != int64(-int32(1)) {
-		*(*TTcl_WideInt)(unsafe.Pointer(csPtr + 24)) -= int64(int64(size))
+		*(*TTcl_WideInt)(unsafe.Pointer(csPtr + 24)) -= int64(size)
 	}
-	*(*TTcl_WideInt)(unsafe.Pointer(csPtr + 32)) += int64(int64(size))
+	*(*TTcl_WideInt)(unsafe.Pointer(csPtr + 32)) += int64(size)
 	/*
 	 * Break loop if EOF && (size>0)
 	 */
@@ -182232,7 +182335,7 @@ _1:
 	}
 	_UpdateInterest(tls, chanPtr)
 	XTclChannelRelease(tls, chanPtr)
-	return int32(int64(int64(p)) - int64(int64(dst)))
+	return int32(int64(p) - int64(dst))
 }
 
 /*
@@ -183315,7 +183418,7 @@ func _FixLevelCode(tls *libc.TLS, msg uintptr) (r uintptr) {
 	if newcode >= 0 {
 		lcn += int32(2)
 	}
-	lvn = XTcl_Alloc(tls, uint32(uint64(uint64(lcn))*libc.Uint64FromInt64(8)))
+	lvn = XTcl_Alloc(tls, uint32(uint64(lcn)*libc.Uint64FromInt64(8)))
 	/*
 	 * New level/code information is spliced into the first occurence of
 	 * -level, -code, further occurences are ignored. The options cannot be
@@ -183553,6 +183656,31 @@ func _FreeChannelInternalRep(tls *libc.TLS, objPtr uintptr) {
 	XTclpFree(tls, resPtr)
 }
 
+type TCopyState1 = struct {
+	FreadPtr    uintptr
+	FwritePtr   uintptr
+	FreadFlags  int32
+	FwriteFlags int32
+	FtoRead     TTcl_WideInt
+	Ftotal      TTcl_WideInt
+	Finterp     uintptr
+	FcmdPtr     uintptr
+	FbufSize    int32
+	Fbuffer     [1]int8
+}
+
+type TChannel1 = struct {
+	Fstate        uintptr
+	FinstanceData TClientData
+	FtypePtr      uintptr
+	FdownChanPtr  uintptr
+	FupChanPtr    uintptr
+	FinQueueHead  uintptr
+	FinQueueTail  uintptr
+	FrefCount     int32
+	F__ccgo_pad8  [4]byte
+}
+
 type TChannelState1 = struct {
 	FchannelName         uintptr
 	Fflags               int32
@@ -183589,31 +183717,6 @@ type TChannelState1 = struct {
 	FchanMsg             uintptr
 	FunreportedMsg       uintptr
 	Fepoch               int32
-}
-
-type TChannel1 = struct {
-	Fstate        uintptr
-	FinstanceData TClientData
-	FtypePtr      uintptr
-	FdownChanPtr  uintptr
-	FupChanPtr    uintptr
-	FinQueueHead  uintptr
-	FinQueueTail  uintptr
-	FrefCount     int32
-	F__ccgo_pad8  [4]byte
-}
-
-type TCopyState1 = struct {
-	FreadPtr    uintptr
-	FwritePtr   uintptr
-	FreadFlags  int32
-	FwriteFlags int32
-	FtoRead     TTcl_WideInt
-	Ftotal      TTcl_WideInt
-	Finterp     uintptr
-	FcmdPtr     uintptr
-	FbufSize    int32
-	Fbuffer     [1]int8
 }
 
 const m_O_RDONLY = 0
@@ -185124,7 +185227,7 @@ func _AcceptCallbackProc(tls *libc.TLS, callbackData TClientData, chan1 TTcl_Cha
 		interp = (*TAcceptCallback)(unsafe.Pointer(acceptCallbackPtr)).Finterp
 		XTcl_Preserve(tls, script)
 		XTcl_Preserve(tls, interp)
-		XTclFormatInt(tls, bp, int64(int64(port)))
+		XTclFormatInt(tls, bp, int64(port))
 		XTcl_RegisterChannel(tls, interp, chan1)
 		/*
 		 * Artificially bump the refcount to protect the channel from being
@@ -185339,7 +185442,7 @@ _6:
 		acceptCallbackPtr = XTcl_Alloc(tls, uint32(libc.Uint64FromInt64(16)))
 		len1 = uint32(libc.Xstrlen(tls, script) + uint64(1))
 		copyScript = XTcl_Alloc(tls, len1)
-		libc.Xmemcpy(tls, copyScript, script, uint64(uint64(len1)))
+		libc.Xmemcpy(tls, copyScript, script, uint64(len1))
 		(*TAcceptCallback)(unsafe.Pointer(acceptCallbackPtr)).Fscript = copyScript
 		(*TAcceptCallback)(unsafe.Pointer(acceptCallbackPtr)).Finterp = interp
 		chan1 = XTcl_OpenTcpServer(tls, interp, *(*int32)(unsafe.Pointer(bp + 4)), host, __ccgo_fp(_AcceptCallbackProc), acceptCallbackPtr)
@@ -187473,7 +187576,7 @@ func _NewReflectedChannel(tls *libc.TLS, interp uintptr, cmdpfxObj uintptr, mode
 	(*TReflectedChannel)(unsafe.Pointer(rcPtr)).Fcmd = XTclListObjCopy(tls, libc.UintptrFromInt32(0), cmdpfxObj)
 	(*TTcl_Obj)(unsafe.Pointer((*TReflectedChannel)(unsafe.Pointer(rcPtr)).Fcmd)).FrefCount++
 	(*TReflectedChannel)(unsafe.Pointer(rcPtr)).Fmethods = XTcl_NewListObj(tls, int32(_METH_WRITE)+libc.Int32FromInt32(1), libc.UintptrFromInt32(0))
-	for int32(mn) <= int32(_METH_WRITE) {
+	for mn <= int32(_METH_WRITE) {
 		v1 = mn
 		mn++
 		XTcl_ListObjAppendElement(tls, libc.UintptrFromInt32(0), (*TReflectedChannel)(unsafe.Pointer(rcPtr)).Fmethods, XTcl_NewStringObj(tls, _methodNames[v1], -int32(1)))
@@ -187615,7 +187718,7 @@ func _InvokeTclMethod(tls *libc.TLS, rcPtr uintptr, method TMethodName, argOneOb
 	 * before the channel id.
 	 */
 	cmd = XTclListObjCopy(tls, libc.UintptrFromInt32(0), (*TReflectedChannel)(unsafe.Pointer(rcPtr)).Fcmd)
-	XTcl_ListObjIndex(tls, libc.UintptrFromInt32(0), (*TReflectedChannel)(unsafe.Pointer(rcPtr)).Fmethods, int32(method), bp)
+	XTcl_ListObjIndex(tls, libc.UintptrFromInt32(0), (*TReflectedChannel)(unsafe.Pointer(rcPtr)).Fmethods, method, bp)
 	XTcl_ListObjAppendElement(tls, libc.UintptrFromInt32(0), cmd, *(*uintptr)(unsafe.Pointer(bp)))
 	XTcl_ListObjAppendElement(tls, libc.UintptrFromInt32(0), cmd, (*TReflectedChannel)(unsafe.Pointer(rcPtr)).Fname)
 	/*
@@ -188527,7 +188630,7 @@ func _ReflectInput1(tls *libc.TLS, clientData TClientData, buf uintptr, toRead i
 		 * Loop until the request is satisfied (or no data available from
 		 * below, possibly EOF).
 		 */
-		copied = int32(_ResultCopy(tls, rtPtr+80, buf, uint64(uint64(toRead))))
+		copied = int32(_ResultCopy(tls, rtPtr+80, buf, uint64(toRead)))
 		toRead -= copied
 		buf += uintptr(copied)
 		gotBytes += copied
@@ -189715,7 +189818,7 @@ func _ResultCopy(tls *libc.TLS, rPtr uintptr, buf uintptr, toRead Tsize_t) (r Ts
 			 */
 			libc.Xmemcpy(tls, buf, (*TResultBuffer)(unsafe.Pointer(rPtr)).Fbuf, toRead)
 			(*TResultBuffer)(unsafe.Pointer(rPtr)).Fused = uint64(0)
-			copied = int32(int32(toRead))
+			copied = int32(toRead)
 		} else {
 			if (*TResultBuffer)(unsafe.Pointer(rPtr)).Fused > toRead {
 				/*
@@ -189725,7 +189828,7 @@ func _ResultCopy(tls *libc.TLS, rPtr uintptr, buf uintptr, toRead Tsize_t) (r Ts
 				libc.Xmemcpy(tls, buf, (*TResultBuffer)(unsafe.Pointer(rPtr)).Fbuf, toRead)
 				libc.Xmemmove(tls, (*TResultBuffer)(unsafe.Pointer(rPtr)).Fbuf, (*TResultBuffer)(unsafe.Pointer(rPtr)).Fbuf+uintptr(toRead), (*TResultBuffer)(unsafe.Pointer(rPtr)).Fused-toRead)
 				*(*Tsize_t)(unsafe.Pointer(rPtr + 16)) -= toRead
-				copied = int32(int32(toRead))
+				copied = int32(toRead)
 			} else {
 				/*
 				 * There is not enough in the buffer to satisfy the caller, so take
@@ -189734,12 +189837,12 @@ func _ResultCopy(tls *libc.TLS, rPtr uintptr, buf uintptr, toRead Tsize_t) (r Ts
 				libc.Xmemcpy(tls, buf, (*TResultBuffer)(unsafe.Pointer(rPtr)).Fbuf, (*TResultBuffer)(unsafe.Pointer(rPtr)).Fused)
 				toRead = (*TResultBuffer)(unsafe.Pointer(rPtr)).Fused
 				(*TResultBuffer)(unsafe.Pointer(rPtr)).Fused = uint64(0)
-				copied = int32(int32(toRead))
+				copied = int32(toRead)
 			}
 		}
 	}
 	/* -- common postwork code ------- */
-	return uint64(uint64(copied))
+	return uint64(copied)
 }
 
 func _TransformRead(tls *libc.TLS, rtPtr uintptr, errorCodePtr uintptr, bufObj uintptr) (r int32) {
@@ -190481,7 +190584,7 @@ func _TransformInputProc(tls *libc.TLS, instanceData TClientData, buf uintptr, t
 		 * Loop until the request is satisfied (or no data is available from
 		 * below, possibly EOF).
 		 */
-		copied = int32(_ResultCopy1(tls, dataPtr+64, buf, uint64(uint64(toRead))))
+		copied = int32(_ResultCopy1(tls, dataPtr+64, buf, uint64(toRead)))
 		toRead -= copied
 		buf += uintptr(copied)
 		gotBytes += copied
@@ -191243,16 +191346,16 @@ func XTclSockMinimumBuffers(tls *libc.TLS, sock uintptr, _size int32) (r int32) 
 	var _ /* current at bp+4 */ int32
 	var _ /* len at bp+8 */ Tsocklen_t
 	*(*Tsocklen_t)(unsafe.Pointer(bp + 8)) = uint32(4)
-	libc.Xgetsockopt(tls, int32(uint64(uint64(sock))), int32(m_SOL_SOCKET), int32(m_SO_SNDBUF), bp+4, bp+8)
+	libc.Xgetsockopt(tls, int32(uint64(sock)), int32(m_SOL_SOCKET), int32(m_SO_SNDBUF), bp+4, bp+8)
 	if *(*int32)(unsafe.Pointer(bp + 4)) < *(*int32)(unsafe.Pointer(bp)) {
 		*(*Tsocklen_t)(unsafe.Pointer(bp + 8)) = uint32(4)
-		libc.Xsetsockopt(tls, int32(uint64(uint64(sock))), int32(m_SOL_SOCKET), int32(m_SO_SNDBUF), bp, *(*Tsocklen_t)(unsafe.Pointer(bp + 8)))
+		libc.Xsetsockopt(tls, int32(uint64(sock)), int32(m_SOL_SOCKET), int32(m_SO_SNDBUF), bp, *(*Tsocklen_t)(unsafe.Pointer(bp + 8)))
 	}
 	*(*Tsocklen_t)(unsafe.Pointer(bp + 8)) = uint32(4)
-	libc.Xgetsockopt(tls, int32(uint64(uint64(sock))), int32(m_SOL_SOCKET), int32(m_SO_RCVBUF), bp+4, bp+8)
+	libc.Xgetsockopt(tls, int32(uint64(sock)), int32(m_SOL_SOCKET), int32(m_SO_RCVBUF), bp+4, bp+8)
 	if *(*int32)(unsafe.Pointer(bp + 4)) < *(*int32)(unsafe.Pointer(bp)) {
 		*(*Tsocklen_t)(unsafe.Pointer(bp + 8)) = uint32(4)
-		libc.Xsetsockopt(tls, int32(uint64(uint64(sock))), int32(m_SOL_SOCKET), int32(m_SO_RCVBUF), bp, *(*Tsocklen_t)(unsafe.Pointer(bp + 8)))
+		libc.Xsetsockopt(tls, int32(uint64(sock)), int32(m_SOL_SOCKET), int32(m_SO_RCVBUF), bp, *(*Tsocklen_t)(unsafe.Pointer(bp + 8)))
 	}
 	return m_TCL_OK
 }
@@ -191300,7 +191403,7 @@ func XTclCreateSocketAddress(tls *libc.TLS, interp uintptr, addrlist uintptr, ho
 	if host != libc.UintptrFromInt32(0) && port == 0 {
 		portstring = libc.UintptrFromInt32(0)
 	} else {
-		XTclFormatInt(tls, bp+48, int64(int64(port)))
+		XTclFormatInt(tls, bp+48, int64(port))
 		portstring = bp + 48
 	}
 	libc.Xmemset(tls, bp, 0, uint64(48))
@@ -195203,10 +195306,10 @@ func XTcl_FSSplitPath(tls *libc.TLS, pathPtr uintptr, lenPtr uintptr) (r uintptr
 	 */
 	for {
 		elementStart = p
-		for int32(*(*int8)(unsafe.Pointer(p))) != int32('\000') && int32(*(*int8)(unsafe.Pointer(p))) != int32(int32(separator)) {
+		for int32(*(*int8)(unsafe.Pointer(p))) != int32('\000') && int32(*(*int8)(unsafe.Pointer(p))) != int32(separator) {
 			p++
 		}
-		length = int32(int64(int64(p)) - int64(int64(elementStart)))
+		length = int32(int64(p) - int64(elementStart))
 		if length > 0 {
 			if int32(*(*int8)(unsafe.Pointer(elementStart))) == int32('~') {
 				if XtclFreeObjList == libc.UintptrFromInt32(0) {
@@ -195291,9 +195394,9 @@ func XTclGetPathType(tls *libc.TLS, pathPtr uintptr, filesystemPtrPtr uintptr, d
 	_, _ = path, type1
 	path = XTcl_GetStringFromObj(tls, pathPtr, bp)
 	type1 = XTclFSNonnativePathType(tls, path, *(*int32)(unsafe.Pointer(bp)), filesystemPtrPtr, driveNameLengthPtr, driveNameRef)
-	if int32(type1) != int32(_TCL_PATH_ABSOLUTE) {
+	if type1 != int32(_TCL_PATH_ABSOLUTE) {
 		type1 = XTclpGetNativePathType(tls, pathPtr, driveNameLengthPtr, driveNameRef)
-		if int32(type1) == int32(_TCL_PATH_ABSOLUTE) && filesystemPtrPtr != libc.UintptrFromInt32(0) {
+		if type1 == int32(_TCL_PATH_ABSOLUTE) && filesystemPtrPtr != libc.UintptrFromInt32(0) {
 			*(*uintptr)(unsafe.Pointer(filesystemPtrPtr)) = uintptr(unsafe.Pointer(&XtclNativeFilesystem))
 		}
 	}
@@ -195415,7 +195518,7 @@ func XTclFSNonnativePathType(tls *libc.TLS, path uintptr, pathLen int32, filesys
 				if v2 <= int32(1) {
 					XTclFreeObj(tls, _objPtr)
 				}
-				if int32(type1) == int32(_TCL_PATH_ABSOLUTE) {
+				if type1 == int32(_TCL_PATH_ABSOLUTE) {
 					/*
 					 * We don't need to examine any more filesystems.
 					 */
@@ -196825,7 +196928,7 @@ func _NewListInternalRep(tls *libc.TLS, objc int32, objv uintptr, p int32) (r ui
 	 * fairly small value when you're on a serious 64-bit machine, but that
 	 * requires API changes to fix. See [Bug 219196] for a discussion.
 	 */
-	if uint64(uint64(objc)) > uint64(libc.Int32FromInt32(1)+int32((libc.Uint64FromUint32(0xffffffff)-libc.Uint64FromInt64(24))/libc.Uint64FromInt64(8))) {
+	if uint64(objc) > uint64(libc.Int32FromInt32(1)+int32((libc.Uint64FromUint32(0xffffffff)-libc.Uint64FromInt64(24))/libc.Uint64FromInt64(8))) {
 		if p != 0 {
 			XTcl_Panic(tls, ts+14309, libc.VaList(bp+8, libc.Int32FromInt32(1)+int32((libc.Uint64FromUint32(0xffffffff)-libc.Uint64FromInt64(24))/libc.Uint64FromInt64(8))))
 		}
@@ -197360,7 +197463,7 @@ func XTcl_ListObjAppendElement(tls *libc.TLS, interp uintptr, listPtr uintptr, _
 			/*
 			 * Old internalrep to be freed, re-use refCounts.
 			 */
-			libc.Xmemcpy(tls, dst, src, uint64(uint64(numElems))*uint64(8))
+			libc.Xmemcpy(tls, dst, src, uint64(numElems)*uint64(8))
 			XTclpFree(tls, listRepPtr)
 		}
 		listRepPtr = newPtr
@@ -197672,7 +197775,7 @@ func XTcl_ListObjReplace(tls *libc.TLS, interp uintptr, listPtr uintptr, first i
 		shift = objc - count /* numNewElems - numDeleted */
 		if numAfterLast > 0 && shift != 0 {
 			src = elemPtrs + uintptr(start)*8
-			libc.Xmemmove(tls, src+uintptr(shift)*8, src, uint64(uint64(numAfterLast))*uint64(8))
+			libc.Xmemmove(tls, src+uintptr(shift)*8, src, uint64(numAfterLast)*uint64(8))
 		}
 	} else {
 		/*
@@ -197757,7 +197860,7 @@ func XTcl_ListObjReplace(tls *libc.TLS, interp uintptr, listPtr uintptr, first i
 			 * The old struct will be removed; use its inherited refCounts.
 			 */
 			if first > 0 {
-				libc.Xmemcpy(tls, elemPtrs, oldPtrs, uint64(uint64(first))*uint64(8))
+				libc.Xmemcpy(tls, elemPtrs, oldPtrs, uint64(first)*uint64(8))
 			}
 			/*
 			 * "Delete" count elements starting at first.
@@ -197797,7 +197900,7 @@ func XTcl_ListObjReplace(tls *libc.TLS, interp uintptr, listPtr uintptr, first i
 			start = first + count
 			numAfterLast = numElems - start
 			if numAfterLast > 0 {
-				libc.Xmemcpy(tls, elemPtrs+uintptr(first)*8+uintptr(objc)*8, oldPtrs+uintptr(start)*8, uint64(uint64(numAfterLast))*uint64(8))
+				libc.Xmemcpy(tls, elemPtrs+uintptr(first)*8+uintptr(objc)*8, oldPtrs+uintptr(start)*8, uint64(numAfterLast)*uint64(8))
 			}
 			XTclpFree(tls, oldListRepPtr)
 		}
@@ -198842,7 +198945,7 @@ func _SetListFromAny(tls *libc.TLS, interp uintptr, objPtr uintptr) (r int32) {
 			elemPtrs += 8
 			(*TTcl_Obj)(unsafe.Pointer(*(*uintptr)(unsafe.Pointer(v8)))).FrefCount++ /* Since list now holds ref to it. */
 		}
-		(*TList)(unsafe.Pointer(listRepPtr)).FelemCount = int32((int64(int64(elemPtrs)) - t__predefined_ptrdiff_t(listRepPtr+16)) / 8)
+		(*TList)(unsafe.Pointer(listRepPtr)).FelemCount = int32((int64(elemPtrs) - t__predefined_ptrdiff_t(listRepPtr+16)) / 8)
 	}
 	/*
 	 * Free the old internalRep before setting the new one. We do this as late
@@ -198955,10 +199058,10 @@ func _UpdateStringOfList(tls *libc.TLS, listPtr uintptr) {
 	_1:
 		i++
 	}
-	if bytesNeeded+uint32(uint32(numElems)) > libc.Uint32FromInt32(m_INT_MAX)+libc.Uint32FromUint32(1) {
+	if bytesNeeded+uint32(numElems) > libc.Uint32FromInt32(m_INT_MAX)+libc.Uint32FromUint32(1) {
 		XTcl_Panic(tls, ts+9291, libc.VaList(bp+80, int32(m_INT_MAX)))
 	}
-	bytesNeeded += uint32(uint32(numElems))
+	bytesNeeded += uint32(numElems)
 	/*
 	 * Pass 2: copy into string rep buffer.
 	 */
@@ -199186,7 +199289,7 @@ func XTclCreateLiteral(tls *libc.TLS, iPtr uintptr, bytes uintptr, length int32,
 				v2 = XTcl_GetStringFromObj(tls, objPtr, bp)
 			}
 			objBytes = v2
-			if *(*int32)(unsafe.Pointer(bp)) == length && (length == 0 || int32(*(*int8)(unsafe.Pointer(objBytes))) == int32(*(*int8)(unsafe.Pointer(bytes))) && libc.Xmemcmp(tls, objBytes, bytes, uint64(uint64(length))) == 0) {
+			if *(*int32)(unsafe.Pointer(bp)) == length && (length == 0 || int32(*(*int8)(unsafe.Pointer(objBytes))) == int32(*(*int8)(unsafe.Pointer(bytes))) && libc.Xmemcmp(tls, objBytes, bytes, uint64(length)) == 0) {
 				/*
 				 * A literal was found: return it
 				 */
@@ -199361,11 +199464,11 @@ func XTclRegisterLiteral(tls *libc.TLS, ePtr uintptr, bytes uintptr, length int3
 			break
 		}
 		objPtr = (*TLiteralEntry)(unsafe.Pointer(localPtr)).FobjPtr
-		if (*TTcl_Obj)(unsafe.Pointer(objPtr)).Flength == length && (length == 0 || int32(*(*int8)(unsafe.Pointer((*TTcl_Obj)(unsafe.Pointer(objPtr)).Fbytes))) == int32(*(*int8)(unsafe.Pointer(bytes))) && libc.Xmemcmp(tls, (*TTcl_Obj)(unsafe.Pointer(objPtr)).Fbytes, bytes, uint64(uint64(length))) == 0) {
+		if (*TTcl_Obj)(unsafe.Pointer(objPtr)).Flength == length && (length == 0 || int32(*(*int8)(unsafe.Pointer((*TTcl_Obj)(unsafe.Pointer(objPtr)).Fbytes))) == int32(*(*int8)(unsafe.Pointer(bytes))) && libc.Xmemcmp(tls, (*TTcl_Obj)(unsafe.Pointer(objPtr)).Fbytes, bytes, uint64(length)) == 0) {
 			if flags&int32(m_LITERAL_ON_HEAP) != 0 {
 				XTclpFree(tls, bytes)
 			}
-			objIndex = int32((int64(int64(localPtr)) - int64((*TCompileEnv)(unsafe.Pointer(envPtr)).FliteralArrayPtr)) / 32)
+			objIndex = int32((int64(localPtr) - int64((*TCompileEnv)(unsafe.Pointer(envPtr)).FliteralArrayPtr)) / 32)
 			return objIndex
 		}
 		goto _2
@@ -199586,7 +199689,7 @@ func _ExpandLocalLiteralArray(tls *libc.TLS, envPtr uintptr) {
 	 */
 	localTablePtr = envPtr + 56
 	currElems = (*TCompileEnv)(unsafe.Pointer(envPtr)).FliteralArrayNext
-	currBytes = uint64(uint64(currElems)) * libc.Uint64FromInt64(32)
+	currBytes = uint64(currElems) * libc.Uint64FromInt64(32)
 	currArrayPtr = (*TCompileEnv)(unsafe.Pointer(envPtr)).FliteralArrayPtr
 	if currBytes <= uint64(libc.Uint32FromUint32(0xffffffff)/libc.Uint32FromInt32(2)) {
 		v1 = uint64(2) * currBytes
@@ -199594,7 +199697,7 @@ func _ExpandLocalLiteralArray(tls *libc.TLS, envPtr uintptr) {
 		v1 = uint64(0xffffffff)
 	}
 	newSize = uint32(v1)
-	if currBytes == uint64(uint64(newSize)) {
+	if currBytes == uint64(newSize) {
 		XTcl_Panic(tls, ts+44199, libc.VaList(bp+8, currElems))
 	}
 	if (*TCompileEnv)(unsafe.Pointer(envPtr)).FmallocedLiteralArray != 0 {
@@ -199618,7 +199721,7 @@ func _ExpandLocalLiteralArray(tls *libc.TLS, envPtr uintptr) {
 				break
 			}
 			if (*(*TLiteralEntry)(unsafe.Pointer(newArrayPtr + uintptr(i)*32))).FnextPtr != libc.UintptrFromInt32(0) {
-				(*(*TLiteralEntry)(unsafe.Pointer(newArrayPtr + uintptr(i)*32))).FnextPtr = newArrayPtr + uintptr((int64((*(*TLiteralEntry)(unsafe.Pointer(newArrayPtr + uintptr(i)*32))).FnextPtr)-int64(int64(currArrayPtr)))/32)*32
+				(*(*TLiteralEntry)(unsafe.Pointer(newArrayPtr + uintptr(i)*32))).FnextPtr = newArrayPtr + uintptr((int64((*(*TLiteralEntry)(unsafe.Pointer(newArrayPtr + uintptr(i)*32))).FnextPtr)-int64(currArrayPtr))/32)*32
 			}
 			goto _2
 		_2:
@@ -199630,7 +199733,7 @@ func _ExpandLocalLiteralArray(tls *libc.TLS, envPtr uintptr) {
 				break
 			}
 			if *(*uintptr)(unsafe.Pointer((*TLiteralTable)(unsafe.Pointer(localTablePtr)).Fbuckets + uintptr(i)*8)) != libc.UintptrFromInt32(0) {
-				*(*uintptr)(unsafe.Pointer((*TLiteralTable)(unsafe.Pointer(localTablePtr)).Fbuckets + uintptr(i)*8)) = newArrayPtr + uintptr((int64(*(*uintptr)(unsafe.Pointer((*TLiteralTable)(unsafe.Pointer(localTablePtr)).Fbuckets + uintptr(i)*8)))-int64(int64(currArrayPtr)))/32)*32
+				*(*uintptr)(unsafe.Pointer((*TLiteralTable)(unsafe.Pointer(localTablePtr)).Fbuckets + uintptr(i)*8)) = newArrayPtr + uintptr((int64(*(*uintptr)(unsafe.Pointer((*TLiteralTable)(unsafe.Pointer(localTablePtr)).Fbuckets + uintptr(i)*8)))-int64(currArrayPtr))/32)*32
 			}
 			goto _3
 		_3:
@@ -199638,7 +199741,7 @@ func _ExpandLocalLiteralArray(tls *libc.TLS, envPtr uintptr) {
 		}
 	}
 	(*TCompileEnv)(unsafe.Pointer(envPtr)).FliteralArrayPtr = newArrayPtr
-	(*TCompileEnv)(unsafe.Pointer(envPtr)).FliteralArrayEnd = int32(uint64(uint64(newSize)) / uint64(32))
+	(*TCompileEnv)(unsafe.Pointer(envPtr)).FliteralArrayEnd = int32(uint64(newSize) / uint64(32))
 }
 
 /*
@@ -199851,7 +199954,7 @@ func _RebuildLiteralTable(tls *libc.TLS, tablePtr uintptr) {
 	 * Allocate and initialize the new bucket array, and set up hashing
 	 * constants for new array size.
 	 */
-	if uint64(uint64(oldSize)) > libc.Uint64FromUint32(0xffffffff)/(libc.Uint64FromInt32(4)*libc.Uint64FromInt64(8)) {
+	if uint64(oldSize) > libc.Uint64FromUint32(0xffffffff)/(libc.Uint64FromInt32(4)*libc.Uint64FromInt64(8)) {
 		/*
 		 * Memory allocator limitations will not let us create the
 		 * next larger table size.  Best option is to limp along
@@ -200266,7 +200369,7 @@ func XTcl_LoadObjCmd(tls *libc.TLS, dummy TClientData, interp uintptr, objc int3
 					code = int32(m_TCL_ERROR)
 					goto done
 				}
-				XTcl_DStringAppend(tls, bp, pkgGuess, int32(int64(int64(p))-int64(int64(pkgGuess))))
+				XTcl_DStringAppend(tls, bp, pkgGuess, int32(int64(p)-int64(pkgGuess)))
 				_objPtr1 = splitPtr
 				v9 = _objPtr1
 				v8 = *(*int32)(unsafe.Pointer(v9))
@@ -200310,10 +200413,10 @@ func XTcl_LoadObjCmd(tls *libc.TLS, dummy TClientData, interp uintptr, objc int3
 		pkgPtr = XTcl_Alloc(tls, uint32(libc.Uint64FromInt64(72)))
 		len1 = uint32(libc.Xstrlen(tls, fullFileName) + uint64(1))
 		(*TLoadedPackage)(unsafe.Pointer(pkgPtr)).FfileName = XTcl_Alloc(tls, len1)
-		libc.Xmemcpy(tls, (*TLoadedPackage)(unsafe.Pointer(pkgPtr)).FfileName, fullFileName, uint64(uint64(len1)))
+		libc.Xmemcpy(tls, (*TLoadedPackage)(unsafe.Pointer(pkgPtr)).FfileName, fullFileName, uint64(len1))
 		len1 = uint32((*TTcl_DString)(unsafe.Pointer(bp)).Flength) + uint32(1)
 		(*TLoadedPackage)(unsafe.Pointer(pkgPtr)).FpackageName = XTcl_Alloc(tls, len1)
-		libc.Xmemcpy(tls, (*TLoadedPackage)(unsafe.Pointer(pkgPtr)).FpackageName, (*TTcl_DString)(unsafe.Pointer(bp)).Fstring1, uint64(uint64(len1)))
+		libc.Xmemcpy(tls, (*TLoadedPackage)(unsafe.Pointer(pkgPtr)).FpackageName, (*TTcl_DString)(unsafe.Pointer(bp)).Fstring1, uint64(len1))
 		(*TLoadedPackage)(unsafe.Pointer(pkgPtr)).FloadHandle = *(*TTcl_LoadHandle)(unsafe.Pointer(bp + 1320))
 		(*TLoadedPackage)(unsafe.Pointer(pkgPtr)).FinitProc = *(*uintptr)(unsafe.Pointer(bp + 1312))
 		(*TLoadedPackage)(unsafe.Pointer(pkgPtr)).FsafeInitProc = XTcl_FindSymbol(tls, interp, *(*TTcl_LoadHandle)(unsafe.Pointer(bp + 1320)), (*TTcl_DString)(unsafe.Pointer(bp+648)).Fstring1)
@@ -202969,7 +203072,7 @@ doCreate:
 	nsPtr = XTcl_Alloc(tls, uint32(libc.Uint64FromInt64(448)))
 	nameLen = int32(libc.Xstrlen(tls, *(*uintptr)(unsafe.Pointer(bp + 24))) + uint64(1))
 	(*TNamespace)(unsafe.Pointer(nsPtr)).Fname = XTcl_Alloc(tls, uint32(nameLen))
-	libc.Xmemcpy(tls, (*TNamespace)(unsafe.Pointer(nsPtr)).Fname, *(*uintptr)(unsafe.Pointer(bp + 24)), uint64(uint64(nameLen)))
+	libc.Xmemcpy(tls, (*TNamespace)(unsafe.Pointer(nsPtr)).Fname, *(*uintptr)(unsafe.Pointer(bp + 24)), uint64(nameLen))
 	(*TNamespace)(unsafe.Pointer(nsPtr)).FfullName = libc.UintptrFromInt32(0) /* Set below. */
 	(*TNamespace)(unsafe.Pointer(nsPtr)).FclientData = clientData
 	(*TNamespace)(unsafe.Pointer(nsPtr)).FdeleteProc = deleteProc
@@ -203293,7 +203396,7 @@ func XTclTeardownNamespace(tls *libc.TLS, nsPtr uintptr) {
 	 */
 	for (*TNamespace)(unsafe.Pointer(nsPtr)).FcmdTable.FnumEntries > 0 {
 		length = (*TNamespace)(unsafe.Pointer(nsPtr)).FcmdTable.FnumEntries
-		cmds = XTclStackAlloc(tls, iPtr, int32(uint64(8)*uint64(uint64(length))))
+		cmds = XTclStackAlloc(tls, iPtr, int32(uint64(8)*uint64(length)))
 		i = 0
 		entryPtr = XTcl_FirstHashEntry(tls, nsPtr+160, bp)
 		for {
@@ -203369,7 +203472,7 @@ func XTclTeardownNamespace(tls *libc.TLS, nsPtr uintptr) {
 	 */
 	for (*TNamespace)(unsafe.Pointer(nsPtr)).FchildTable.FnumEntries > 0 {
 		length1 = (*TNamespace)(unsafe.Pointer(nsPtr)).FchildTable.FnumEntries
-		children = XTclStackAlloc(tls, iPtr, int32(uint64(8)*uint64(uint64(length1))))
+		children = XTclStackAlloc(tls, iPtr, int32(uint64(8)*uint64(length1)))
 		i = 0
 		entryPtr = XTcl_FirstHashEntry(tls, nsPtr+40, bp)
 		for {
@@ -204365,7 +204468,7 @@ func XTclGetNamespaceForQualName(tls *libc.TLS, interp uintptr, qualName uintptr
 		_1:
 			end++
 		}
-		if int32(*(*int8)(unsafe.Pointer(end))) == int32('\000') && !(int64(int64(end))-int64(int64(start)) >= int64(2) && int32(*(*int8)(unsafe.Pointer(end - libc.UintptrFromInt32(1)))) == int32(':') && int32(*(*int8)(unsafe.Pointer(end - libc.UintptrFromInt32(2)))) == int32(':')) {
+		if int32(*(*int8)(unsafe.Pointer(end))) == int32('\000') && !(int64(end)-int64(start) >= int64(2) && int32(*(*int8)(unsafe.Pointer(end - libc.UintptrFromInt32(1)))) == int32(':') && int32(*(*int8)(unsafe.Pointer(end - libc.UintptrFromInt32(2)))) == int32(':')) {
 			/*
 			 * qualName ended with a simple name at start. If TCL_FIND_ONLY_NS
 			 * was specified, look this up as a namespace. Otherwise, start is
@@ -204737,7 +204840,7 @@ func XTclResetShadowedCmdRefs(tls *libc.TLS, interp uintptr, newCmdPtr uintptr) 
 	globalNsPtr = (*TInterp)(unsafe.Pointer(interp)).FglobalNsPtr
 	trailFront = -int32(1)
 	trailSize = int32(5) /* Formerly NUM_TRAIL_ELEMS. */
-	trailPtr = XTclStackAlloc(tls, interp, int32(uint64(uint64(trailSize))*uint64(8)))
+	trailPtr = XTclStackAlloc(tls, interp, int32(uint64(trailSize)*uint64(8)))
 	/*
 	 * Start at the namespace containing the new command, and work up through
 	 * the list of parents. Stop just before the global namespace, since the
@@ -204820,7 +204923,7 @@ func XTclResetShadowedCmdRefs(tls *libc.TLS, interp uintptr, newCmdPtr uintptr) 
 		trailFront++
 		if trailFront == trailSize {
 			newSize = int32(2) * trailSize
-			trailPtr = XTclStackRealloc(tls, interp, trailPtr, int32(uint64(uint64(newSize))*uint64(8)))
+			trailPtr = XTclStackRealloc(tls, interp, trailPtr, int32(uint64(newSize)*uint64(8)))
 			trailSize = newSize
 		}
 		*(*uintptr)(unsafe.Pointer(trailPtr + uintptr(trailFront)*8)) = nsPtr
@@ -205010,7 +205113,7 @@ func _NamespaceChildrenCmd(tls *libc.TLS, dummy TClientData, interp uintptr, obj
 	listPtr = XTcl_NewListObj(tls, 0, libc.UintptrFromInt32(0))
 	if pattern != libc.UintptrFromInt32(0) && libc.Xstrpbrk(tls, pattern, ts+13417) == libc.UintptrFromInt32(0) {
 		length = uint32(libc.Xstrlen(tls, (*TNamespace)(unsafe.Pointer(nsPtr)).FfullName))
-		if libc.Xstrncmp(tls, pattern, (*TNamespace)(unsafe.Pointer(nsPtr)).FfullName, uint64(uint64(length))) != 0 {
+		if libc.Xstrncmp(tls, pattern, (*TNamespace)(unsafe.Pointer(nsPtr)).FfullName, uint64(length)) != 0 {
 			goto searchDone
 		}
 		if (*(*func(*libc.TLS, uintptr, uintptr) uintptr)(unsafe.Pointer(&struct{ uintptr }{(*TTcl_HashTable)(unsafe.Pointer(nsPtr + 40)).FfindProc})))(tls, nsPtr+40, pattern+uintptr(length)) != libc.UintptrFromInt32(0) {
@@ -206187,7 +206290,7 @@ func XTclSetNsPath(tls *libc.TLS, nsPtr uintptr, pathLength int32, pathAry uintp
 	var tmpPathArray uintptr
 	_, _ = i, tmpPathArray
 	if pathLength != 0 {
-		tmpPathArray = XTcl_Alloc(tls, uint32(libc.Uint64FromInt64(32)*uint64(uint64(pathLength))))
+		tmpPathArray = XTcl_Alloc(tls, uint32(libc.Uint64FromInt64(32)*uint64(pathLength)))
 		i = 0
 		for {
 			if !(i < pathLength) {
@@ -206367,7 +206470,7 @@ func _NamespaceQualifiersCmd(tls *libc.TLS, dummy TClientData, interp uintptr, o
 		}
 	}
 	if p >= name {
-		length = int32(int64(int64(p)) - int64(int64(name)) + int64(1))
+		length = int32(int64(p) - int64(name) + int64(1))
 		XTcl_SetObjResult(tls, interp, XTcl_NewStringObj(tls, name, length))
 	}
 	return m_TCL_OK
@@ -207273,14 +207376,6 @@ func XTcl_LogCommandInfo(tls *libc.TLS, interp uintptr, script uintptr, command 
 	XTclLogCommandInfo(tls, interp, script, command, length, libc.UintptrFromInt32(0), libc.UintptrFromInt32(0))
 }
 
-type TTcl_Namespace1 = struct {
-	Fname       uintptr
-	FfullName   uintptr
-	FclientData TClientData
-	FdeleteProc uintptr
-	FparentPtr  uintptr
-}
-
 type TNamespace1 = struct {
 	Fname                  uintptr
 	FfullName              uintptr
@@ -207310,6 +207405,14 @@ type TNamespace1 = struct {
 	FcommandPathArray      uintptr
 	FcommandPathSourceList uintptr
 	FearlyDeleteProc       uintptr
+}
+
+type TTcl_Namespace1 = struct {
+	Fname       uintptr
+	FfullName   uintptr
+	FclientData TClientData
+	FdeleteProc uintptr
+	FparentPtr  uintptr
 }
 
 const m_TCL_SERVICE_ALL = 1
@@ -207685,7 +207788,7 @@ func XTcl_ThreadQueueEvent(tls *libc.TLS, threadId TTcl_ThreadId, evPtr uintptr,
 func _QueueEvent(tls *libc.TLS, tsdPtr uintptr, evPtr uintptr, position TTcl_QueuePosition) {
 	/* One of TCL_QUEUE_TAIL, TCL_QUEUE_HEAD,
 	 * TCL_QUEUE_MARK. */
-	if int32(position) == int32(_TCL_QUEUE_TAIL) {
+	if position == int32(_TCL_QUEUE_TAIL) {
 		/*
 		 * Append the event on the end of the queue.
 		 */
@@ -207697,7 +207800,7 @@ func _QueueEvent(tls *libc.TLS, tsdPtr uintptr, evPtr uintptr, position TTcl_Que
 		}
 		(*TThreadSpecificData8)(unsafe.Pointer(tsdPtr)).FlastEventPtr = evPtr
 	} else {
-		if int32(position) == int32(_TCL_QUEUE_HEAD) {
+		if position == int32(_TCL_QUEUE_HEAD) {
 			/*
 			 * Push the event on the head of the queue.
 			 */
@@ -207707,7 +207810,7 @@ func _QueueEvent(tls *libc.TLS, tsdPtr uintptr, evPtr uintptr, position TTcl_Que
 			}
 			(*TThreadSpecificData8)(unsafe.Pointer(tsdPtr)).FfirstEventPtr = evPtr
 		} else {
-			if int32(position) == int32(_TCL_QUEUE_MARK) {
+			if position == int32(_TCL_QUEUE_MARK) {
 				/*
 				 * Insert the event after the current marker event and advance the
 				 * marker to the new event.
@@ -208615,7 +208718,7 @@ func XTclContinuationsEnter(tls *libc.TLS, objPtr uintptr, num int32, loc uintpt
 	_, _, _ = clLocPtr, hPtr, tsdPtr
 	tsdPtr = _TclGetContLineTable(tls)
 	hPtr = (*(*func(*libc.TLS, uintptr, uintptr, uintptr) uintptr)(unsafe.Pointer(&struct{ uintptr }{(*TTcl_HashTable)(unsafe.Pointer((*TThreadSpecificData9)(unsafe.Pointer(tsdPtr)).FlineCLPtr)).FcreateProc})))(tls, (*TThreadSpecificData9)(unsafe.Pointer(tsdPtr)).FlineCLPtr, objPtr, bp)
-	clLocPtr = XTcl_Alloc(tls, uint32(uint64(int32(uint64(libc.UintptrFromInt32(0)+4)))+uint64(uint32(uint32(num))+libc.Uint32FromUint32(1))*libc.Uint64FromInt64(4)))
+	clLocPtr = XTcl_Alloc(tls, uint32(uint64(int32(uint64(libc.UintptrFromInt32(0)+4)))+uint64(uint32(num)+libc.Uint32FromUint32(1))*libc.Uint64FromInt64(4)))
 	if !(*(*int32)(unsafe.Pointer(bp)) != 0) {
 		/*
 		 * We're entering ContLineLoc data for the same value more than one
@@ -208640,7 +208743,7 @@ func XTclContinuationsEnter(tls *libc.TLS, objPtr uintptr, num int32, loc uintpt
 		XTclpFree(tls, (*TTcl_HashEntry)(unsafe.Pointer(hPtr)).FclientData)
 	}
 	(*TContLineLoc)(unsafe.Pointer(clLocPtr)).Fnum = num
-	libc.Xmemcpy(tls, clLocPtr+4, loc, uint64(uint64(num))*uint64(4))
+	libc.Xmemcpy(tls, clLocPtr+4, loc, uint64(num)*uint64(4))
 	*(*int32)(unsafe.Pointer(clLocPtr + 4 + uintptr(num)*4)) = -int32(1) /* Sentinel */
 	(*TTcl_HashEntry)(unsafe.Pointer(hPtr)).FclientData = clLocPtr
 	return clLocPtr
@@ -208711,7 +208814,7 @@ func XTclContinuationsEnterDerived(tls *libc.TLS, objPtr uintptr, start int32, c
 	/*
 	 * And generate the table from the slice, if it was not empty.
 	 */
-	num = int32((int64(int64(wordCLLast)) - int64(int64(clNext))) / 4)
+	num = int32((int64(wordCLLast) - int64(clNext)) / 4)
 	if num != 0 {
 		clLocPtr = XTclContinuationsEnter(tls, objPtr, num, clNext)
 		/*
@@ -209853,7 +209956,7 @@ func _ParseBoolean(tls *libc.TLS, objPtr uintptr) (r int32) {
 			break
 		}
 		c = *(*int8)(unsafe.Pointer(str + uintptr(i)))
-		switch int32(int32(c)) {
+		switch int32(c) {
 		case int32('A'):
 			fallthrough
 		case int32('E'):
@@ -209875,7 +209978,7 @@ func _ParseBoolean(tls *libc.TLS, objPtr uintptr) (r int32) {
 		case int32('U'):
 			fallthrough
 		case int32('Y'):
-			(*(*[6]int8)(unsafe.Pointer(bp + 6)))[i] = int8(int32(int32(c)) + int32(int8(libc.Int32FromUint8('a')-libc.Int32FromUint8('A'))))
+			(*(*[6]int8)(unsafe.Pointer(bp + 6)))[i] = int8(int32(c) + int32(int8(libc.Int32FromUint8('a')-libc.Int32FromUint8('A'))))
 		case int32('a'):
 			fallthrough
 		case int32('e'):
@@ -209963,7 +210066,7 @@ goodBoolean:
 		}
 		(*TTcl_Obj)(unsafe.Pointer(objPtr)).FtypePtr = libc.UintptrFromInt32(0)
 	}
-	(*TTcl_Obj)(unsafe.Pointer(objPtr)).FinternalRep.FlongValue = int64(int64(newBool))
+	(*TTcl_Obj)(unsafe.Pointer(objPtr)).FinternalRep.FlongValue = int64(newBool)
 	(*TTcl_Obj)(unsafe.Pointer(objPtr)).FtypePtr = uintptr(unsafe.Pointer(&XtclBooleanType))
 	return m_TCL_OK
 numericBoolean:
@@ -209973,7 +210076,7 @@ numericBoolean:
 		}
 		(*TTcl_Obj)(unsafe.Pointer(objPtr)).FtypePtr = libc.UintptrFromInt32(0)
 	}
-	(*TTcl_Obj)(unsafe.Pointer(objPtr)).FinternalRep.FlongValue = int64(int64(newBool))
+	(*TTcl_Obj)(unsafe.Pointer(objPtr)).FinternalRep.FlongValue = int64(newBool)
 	(*TTcl_Obj)(unsafe.Pointer(objPtr)).FtypePtr = uintptr(unsafe.Pointer(&XtclIntType))
 	return m_TCL_OK
 }
@@ -210670,7 +210773,7 @@ func XTcl_GetLongFromObj(tls *libc.TLS, interp uintptr, objPtr uintptr, longPtr 
 					if (*(*Tmp_int)(unsafe.Pointer(bp))).Fsign != 0 {
 						*(*int64)(unsafe.Pointer(longPtr)) = int64(-value)
 					} else {
-						*(*int64)(unsafe.Pointer(longPtr)) = int64(int64(value))
+						*(*int64)(unsafe.Pointer(longPtr)) = int64(value)
 					}
 					return m_TCL_OK
 				}
@@ -210915,7 +211018,7 @@ func XTcl_GetWideIntFromObj(tls *libc.TLS, interp uintptr, objPtr uintptr, wideI
 					if (*(*Tmp_int)(unsafe.Pointer(bp))).Fsign != 0 {
 						*(*TTcl_WideInt)(unsafe.Pointer(wideIntPtr)) = int64(-value)
 					} else {
-						*(*TTcl_WideInt)(unsafe.Pointer(wideIntPtr)) = int64(int64(value))
+						*(*TTcl_WideInt)(unsafe.Pointer(wideIntPtr)) = int64(value)
 					}
 					return m_TCL_OK
 				}
@@ -211474,7 +211577,7 @@ func XTcl_SetBignumObj(tls *libc.TLS, objPtr uintptr, bignumValue uintptr) {
 				}
 				(*TTcl_Obj)(unsafe.Pointer(objPtr)).FtypePtr = libc.UintptrFromInt32(0)
 			}
-			(*TTcl_Obj)(unsafe.Pointer(objPtr)).FinternalRep.FlongValue = int64(int64(value))
+			(*TTcl_Obj)(unsafe.Pointer(objPtr)).FinternalRep.FlongValue = int64(value)
 			(*TTcl_Obj)(unsafe.Pointer(objPtr)).FtypePtr = uintptr(unsafe.Pointer(&XtclIntType))
 		}
 		XTclBN_mp_clear(tls, bignumValue)
@@ -213180,13 +213283,13 @@ func XTcl_ParseCommand(tls *libc.TLS, interp uintptr, start uintptr, numBytes in
 			if allocated > int32(libc.Uint64FromUint32(0xffffffff)/libc.Uint64FromInt64(24)) {
 				allocated = int32(libc.Uint64FromUint32(0xffffffff) / libc.Uint64FromInt64(24))
 			}
-			newPtr = XTclpRealloc(tls, oldPtr, uint32(uint64(uint64(allocated))*libc.Uint64FromInt64(24)))
+			newPtr = XTclpRealloc(tls, oldPtr, uint32(uint64(allocated)*libc.Uint64FromInt64(24)))
 			if newPtr == libc.UintptrFromInt32(0) {
 				allocated = int32(uint64(_needed+int32(1)) + libc.Uint64FromInt32(m_TCL_MIN_GROWTH)/libc.Uint64FromInt64(24))
 				if allocated > int32(libc.Uint64FromUint32(0xffffffff)/libc.Uint64FromInt64(24)) {
 					allocated = int32(libc.Uint64FromUint32(0xffffffff) / libc.Uint64FromInt64(24))
 				}
-				newPtr = XTcl_Realloc(tls, oldPtr, uint32(uint64(uint64(allocated))*libc.Uint64FromInt64(24)))
+				newPtr = XTcl_Realloc(tls, oldPtr, uint32(uint64(allocated)*libc.Uint64FromInt64(24)))
 			}
 			(*TTcl_Parse)(unsafe.Pointer(parsePtr)).FtokensAvailable = allocated
 			if oldPtr == libc.UintptrFromInt32(0) {
@@ -213227,7 +213330,7 @@ func XTcl_ParseCommand(tls *libc.TLS, interp uintptr, start uintptr, numBytes in
 				goto error
 			}
 			src = *(*uintptr)(unsafe.Pointer(bp + 8))
-			numBytes = int32(int64((*TTcl_Parse)(unsafe.Pointer(parsePtr)).Fend) - int64(int64(src)))
+			numBytes = int32(int64((*TTcl_Parse)(unsafe.Pointer(parsePtr)).Fend) - int64(src))
 		} else {
 			if int32(*(*int8)(unsafe.Pointer(src))) == int32('{') {
 				expIdx = wordIndex + int32(1)
@@ -213235,7 +213338,7 @@ func XTcl_ParseCommand(tls *libc.TLS, interp uintptr, start uintptr, numBytes in
 					goto error
 				}
 				src = *(*uintptr)(unsafe.Pointer(bp + 8))
-				numBytes = int32(int64((*TTcl_Parse)(unsafe.Pointer(parsePtr)).Fend) - int64(int64(src)))
+				numBytes = int32(int64((*TTcl_Parse)(unsafe.Pointer(parsePtr)).Fend) - int64(src))
 				/*
 				 * Check whether the braces contained the word expansion prefix
 				 * {*}
@@ -213255,7 +213358,7 @@ func XTcl_ParseCommand(tls *libc.TLS, interp uintptr, start uintptr, numBytes in
 					goto error
 				}
 				src = (*TTcl_Parse)(unsafe.Pointer(parsePtr)).Fterm
-				numBytes = int32(int64((*TTcl_Parse)(unsafe.Pointer(parsePtr)).Fend) - int64(int64(src)))
+				numBytes = int32(int64((*TTcl_Parse)(unsafe.Pointer(parsePtr)).Fend) - int64(src))
 			}
 		}
 		/*
@@ -213263,7 +213366,7 @@ func XTcl_ParseCommand(tls *libc.TLS, interp uintptr, start uintptr, numBytes in
 		 * case of a word consisting of a single range of literal text.
 		 */
 		tokenPtr = (*TTcl_Parse)(unsafe.Pointer(parsePtr)).FtokenPtr + uintptr(wordIndex)*24
-		(*TTcl_Token)(unsafe.Pointer(tokenPtr)).Fsize = int32(int64(int64(src)) - int64((*TTcl_Token)(unsafe.Pointer(tokenPtr)).Fstart))
+		(*TTcl_Token)(unsafe.Pointer(tokenPtr)).Fsize = int32(int64(src) - int64((*TTcl_Token)(unsafe.Pointer(tokenPtr)).Fstart))
 		(*TTcl_Token)(unsafe.Pointer(tokenPtr)).FnumComponents = (*TTcl_Parse)(unsafe.Pointer(parsePtr)).FnumTokens - (wordIndex + int32(1))
 		if expandWord != 0 {
 			isLiteral = int32(1)
@@ -213312,7 +213415,7 @@ func XTcl_ParseCommand(tls *libc.TLS, interp uintptr, start uintptr, numBytes in
 				 * elements.
 				 */
 				for *(*uintptr)(unsafe.Pointer(bp + 24)) < listEnd {
-					code = XTclFindElement(tls, libc.UintptrFromInt32(0), *(*uintptr)(unsafe.Pointer(bp + 24)), int32(int64(int64(listEnd))-int64(*(*uintptr)(unsafe.Pointer(bp + 24)))), bp+32, bp+24, bp+40, bp+16)
+					code = XTclFindElement(tls, libc.UintptrFromInt32(0), *(*uintptr)(unsafe.Pointer(bp + 24)), int32(int64(listEnd)-int64(*(*uintptr)(unsafe.Pointer(bp + 24)))), bp+32, bp+24, bp+40, bp+16)
 					if code != m_TCL_OK || !(*(*int32)(unsafe.Pointer(bp + 16)) != 0) {
 						break
 					}
@@ -213359,13 +213462,13 @@ func XTcl_ParseCommand(tls *libc.TLS, interp uintptr, start uintptr, numBytes in
 								if allocated1 > int32(libc.Uint64FromUint32(0xffffffff)/libc.Uint64FromInt64(24)) {
 									allocated1 = int32(libc.Uint64FromUint32(0xffffffff) / libc.Uint64FromInt64(24))
 								}
-								newPtr1 = XTclpRealloc(tls, oldPtr1, uint32(uint64(uint64(allocated1))*libc.Uint64FromInt64(24)))
+								newPtr1 = XTclpRealloc(tls, oldPtr1, uint32(uint64(allocated1)*libc.Uint64FromInt64(24)))
 								if newPtr1 == libc.UintptrFromInt32(0) {
 									allocated1 = int32(uint64(_needed1+growthNeeded) + libc.Uint64FromInt32(m_TCL_MIN_GROWTH)/libc.Uint64FromInt64(24))
 									if allocated1 > int32(libc.Uint64FromUint32(0xffffffff)/libc.Uint64FromInt64(24)) {
 										allocated1 = int32(libc.Uint64FromUint32(0xffffffff) / libc.Uint64FromInt64(24))
 									}
-									newPtr1 = XTcl_Realloc(tls, oldPtr1, uint32(uint64(uint64(allocated1))*libc.Uint64FromInt64(24)))
+									newPtr1 = XTcl_Realloc(tls, oldPtr1, uint32(uint64(allocated1)*libc.Uint64FromInt64(24)))
 								}
 								(*TTcl_Parse)(unsafe.Pointer(parsePtr)).FtokensAvailable = allocated1
 								if oldPtr1 == libc.UintptrFromInt32(0) {
@@ -213393,10 +213496,10 @@ func XTcl_ParseCommand(tls *libc.TLS, interp uintptr, start uintptr, numBytes in
 							tokenPtr += 24
 							(*TTcl_Token)(unsafe.Pointer(tokenPtr)).Ftype1 = int32(m_TCL_TOKEN_TEXT)
 							(*TTcl_Token)(unsafe.Pointer(tokenPtr)).FnumComponents = 0
-							XTclFindElement(tls, libc.UintptrFromInt32(0), *(*uintptr)(unsafe.Pointer(bp + 24)), int32(int64(int64(listEnd))-int64(*(*uintptr)(unsafe.Pointer(bp + 24)))), tokenPtr+8, bp+24, tokenPtr+16, libc.UintptrFromInt32(0))
+							XTclFindElement(tls, libc.UintptrFromInt32(0), *(*uintptr)(unsafe.Pointer(bp + 24)), int32(int64(listEnd)-int64(*(*uintptr)(unsafe.Pointer(bp + 24)))), tokenPtr+8, bp+24, tokenPtr+16, libc.UintptrFromInt32(0))
 							quoted = libc.BoolInt32((int32(*(*int8)(unsafe.Pointer((*TTcl_Token)(unsafe.Pointer(tokenPtr)).Fstart + uintptr(-libc.Int32FromInt32(1))))) == int32('{') || int32(*(*int8)(unsafe.Pointer((*TTcl_Token)(unsafe.Pointer(tokenPtr)).Fstart + uintptr(-libc.Int32FromInt32(1))))) == int32('"')) && (*TTcl_Token)(unsafe.Pointer(tokenPtr)).Fstart > listStart)
 							(*(*TTcl_Token)(unsafe.Pointer(tokenPtr + uintptr(-libc.Int32FromInt32(1))*24))).Fstart = (*TTcl_Token)(unsafe.Pointer(tokenPtr)).Fstart - uintptr(quoted)
-							(*(*TTcl_Token)(unsafe.Pointer(tokenPtr + uintptr(-libc.Int32FromInt32(1))*24))).Fsize = int32(int64((*TTcl_Token)(unsafe.Pointer(tokenPtr)).Fstart+uintptr((*TTcl_Token)(unsafe.Pointer(tokenPtr)).Fsize)) - int64((*(*TTcl_Token)(unsafe.Pointer(tokenPtr + uintptr(-libc.Int32FromInt32(1))*24))).Fstart) + int64(int64(quoted)))
+							(*(*TTcl_Token)(unsafe.Pointer(tokenPtr + uintptr(-libc.Int32FromInt32(1))*24))).Fsize = int32(int64((*TTcl_Token)(unsafe.Pointer(tokenPtr)).Fstart+uintptr((*TTcl_Token)(unsafe.Pointer(tokenPtr)).Fsize)) - int64((*(*TTcl_Token)(unsafe.Pointer(tokenPtr + uintptr(-libc.Int32FromInt32(1))*24))).Fstart) + int64(quoted))
 							tokenPtr += 24
 						}
 					}
@@ -213448,7 +213551,7 @@ func XTcl_ParseCommand(tls *libc.TLS, interp uintptr, start uintptr, numBytes in
 		(*TTcl_Parse)(unsafe.Pointer(parsePtr)).Fterm = src
 		goto error
 	}
-	(*TTcl_Parse)(unsafe.Pointer(parsePtr)).FcommandSize = int32(int64(int64(src)) - int64((*TTcl_Parse)(unsafe.Pointer(parsePtr)).FcommandStart))
+	(*TTcl_Parse)(unsafe.Pointer(parsePtr)).FcommandSize = int32(int64(src) - int64((*TTcl_Parse)(unsafe.Pointer(parsePtr)).FcommandStart))
 	return m_TCL_OK
 error:
 	XTcl_FreeParse(tls, parsePtr)
@@ -213557,7 +213660,7 @@ func _ParseWhiteSpace(tls *libc.TLS, src uintptr, numBytes int32, incompletePtr 
 			numBytes--
 			p++
 		}
-		if numBytes != 0 && int32(int32(type1))&int32(m_TYPE_SUBS) != 0 {
+		if numBytes != 0 && int32(type1)&int32(m_TYPE_SUBS) != 0 {
 			if int32(*(*int8)(unsafe.Pointer(p))) != int32('\\') {
 				break
 			}
@@ -213581,7 +213684,7 @@ func _ParseWhiteSpace(tls *libc.TLS, src uintptr, numBytes int32, incompletePtr 
 		break
 	}
 	*(*int8)(unsafe.Pointer(typePtr)) = type1
-	return int32(int64(int64(p)) - int64(int64(src)))
+	return int32(int64(p) - int64(src))
 }
 
 /*
@@ -213623,7 +213726,7 @@ func XTclParseAllWhiteSpace(tls *libc.TLS, src uintptr, numBytes int32) (r int32
 			break
 		}
 	}
-	return int32(int64(int64(p)) - int64(int64(src)))
+	return int32(int64(p) - int64(src))
 }
 
 /*
@@ -213665,23 +213768,23 @@ func _ParseHex(tls *libc.TLS, src uintptr, numBytes int32, resultPtr uintptr) (r
 			break
 		}
 		digit = uint8(*(*int8)(unsafe.Pointer(p)))
-		if !(libc.Xisxdigit(tls, int32(int32(digit))) != 0) || result > int32(0x10FFF) {
+		if !(libc.Xisxdigit(tls, int32(digit)) != 0) || result > int32(0x10FFF) {
 			break
 		}
 		p++
 		result <<= int32(4)
-		if int32(int32(digit)) >= int32('a') {
-			result |= int32(10) + int32(int32(digit)) - int32('a')
+		if int32(digit) >= int32('a') {
+			result |= int32(10) + int32(digit) - int32('a')
 		} else {
-			if int32(int32(digit)) >= int32('A') {
-				result |= int32(10) + int32(int32(digit)) - int32('A')
+			if int32(digit) >= int32('A') {
+				result |= int32(10) + int32(digit) - int32('A')
 			} else {
-				result |= int32(int32(digit)) - int32('0')
+				result |= int32(digit) - int32('0')
 			}
 		}
 	}
 	*(*int32)(unsafe.Pointer(resultPtr)) = result
-	return int32(int64(int64(p)) - int64(int64(src)))
+	return int32(int64(p) - int64(src))
 }
 
 /*
@@ -213945,9 +214048,9 @@ func _ParseComment(tls *libc.TLS, src uintptr, numBytes int32, parsePtr uintptr)
 				}
 			}
 		}
-		(*TTcl_Parse)(unsafe.Pointer(parsePtr)).FcommentSize = int32(int64(int64(p)) - int64((*TTcl_Parse)(unsafe.Pointer(parsePtr)).FcommentStart))
+		(*TTcl_Parse)(unsafe.Pointer(parsePtr)).FcommentSize = int32(int64(p) - int64((*TTcl_Parse)(unsafe.Pointer(parsePtr)).FcommentStart))
 	}
-	return int32(int64(int64(p)) - int64(int64(src)))
+	return int32(int64(p) - int64(src))
 }
 
 /*
@@ -214016,13 +214119,13 @@ func _ParseTokens(tls *libc.TLS, src uintptr, numBytes int32, mask int32, flags 
 			if allocated > int32(libc.Uint64FromUint32(0xffffffff)/libc.Uint64FromInt64(24)) {
 				allocated = int32(libc.Uint64FromUint32(0xffffffff) / libc.Uint64FromInt64(24))
 			}
-			newPtr = XTclpRealloc(tls, oldPtr, uint32(uint64(uint64(allocated))*libc.Uint64FromInt64(24)))
+			newPtr = XTclpRealloc(tls, oldPtr, uint32(uint64(allocated)*libc.Uint64FromInt64(24)))
 			if newPtr == libc.UintptrFromInt32(0) {
 				allocated = int32(uint64(_needed+int32(1)) + libc.Uint64FromInt32(m_TCL_MIN_GROWTH)/libc.Uint64FromInt64(24))
 				if allocated > int32(libc.Uint64FromUint32(0xffffffff)/libc.Uint64FromInt64(24)) {
 					allocated = int32(libc.Uint64FromUint32(0xffffffff) / libc.Uint64FromInt64(24))
 				}
-				newPtr = XTcl_Realloc(tls, oldPtr, uint32(uint64(uint64(allocated))*libc.Uint64FromInt64(24)))
+				newPtr = XTcl_Realloc(tls, oldPtr, uint32(uint64(allocated)*libc.Uint64FromInt64(24)))
 			}
 			(*TTcl_Parse)(unsafe.Pointer(parsePtr)).FtokensAvailable = allocated
 			if oldPtr == libc.UintptrFromInt32(0) {
@@ -214033,7 +214136,7 @@ func _ParseTokens(tls *libc.TLS, src uintptr, numBytes int32, mask int32, flags 
 		tokenPtr = (*TTcl_Parse)(unsafe.Pointer(parsePtr)).FtokenPtr + uintptr((*TTcl_Parse)(unsafe.Pointer(parsePtr)).FnumTokens)*24
 		(*TTcl_Token)(unsafe.Pointer(tokenPtr)).Fstart = src
 		(*TTcl_Token)(unsafe.Pointer(tokenPtr)).FnumComponents = 0
-		if int32(int32(type1))&int32(m_TYPE_SUBS) == 0 {
+		if int32(type1)&int32(m_TYPE_SUBS) == 0 {
 			/*
 			 * This is a simple range of characters. Scan to find the end of
 			 * the range.
@@ -214048,7 +214151,7 @@ func _ParseTokens(tls *libc.TLS, src uintptr, numBytes int32, mask int32, flags 
 				/* empty loop */
 			}
 			(*TTcl_Token)(unsafe.Pointer(tokenPtr)).Ftype1 = int32(m_TCL_TOKEN_TEXT)
-			(*TTcl_Token)(unsafe.Pointer(tokenPtr)).Fsize = int32(int64(int64(src)) - int64((*TTcl_Token)(unsafe.Pointer(tokenPtr)).Fstart))
+			(*TTcl_Token)(unsafe.Pointer(tokenPtr)).Fsize = int32(int64(src) - int64((*TTcl_Token)(unsafe.Pointer(tokenPtr)).Fstart))
 			(*TTcl_Parse)(unsafe.Pointer(parsePtr)).FnumTokens++
 		} else {
 			if int32(*(*int8)(unsafe.Pointer(src))) == int32('$') {
@@ -214098,7 +214201,7 @@ func _ParseTokens(tls *libc.TLS, src uintptr, numBytes int32, mask int32, flags 
 						}
 						curEnd = src + uintptr(numBytes)
 						src = (*TTcl_Parse)(unsafe.Pointer(nestedPtr)).FcommandStart + uintptr((*TTcl_Parse)(unsafe.Pointer(nestedPtr)).FcommandSize)
-						numBytes = int32(int64(int64(curEnd)) - int64(int64(src)))
+						numBytes = int32(int64(curEnd) - int64(src))
 						XTcl_FreeParse(tls, nestedPtr)
 						/*
 						 * Check for the closing ']' that ends the command
@@ -214121,7 +214224,7 @@ func _ParseTokens(tls *libc.TLS, src uintptr, numBytes int32, mask int32, flags 
 					}
 					XTclStackFree(tls, (*TTcl_Parse)(unsafe.Pointer(parsePtr)).Finterp, nestedPtr)
 					(*TTcl_Token)(unsafe.Pointer(tokenPtr)).Ftype1 = int32(m_TCL_TOKEN_COMMAND)
-					(*TTcl_Token)(unsafe.Pointer(tokenPtr)).Fsize = int32(int64(int64(src)) - int64((*TTcl_Token)(unsafe.Pointer(tokenPtr)).Fstart))
+					(*TTcl_Token)(unsafe.Pointer(tokenPtr)).Fsize = int32(int64(src) - int64((*TTcl_Token)(unsafe.Pointer(tokenPtr)).Fstart))
 					(*TTcl_Parse)(unsafe.Pointer(parsePtr)).FnumTokens++
 				} else {
 					if int32(*(*int8)(unsafe.Pointer(src))) == int32('\\') {
@@ -214202,13 +214305,13 @@ func _ParseTokens(tls *libc.TLS, src uintptr, numBytes int32, mask int32, flags 
 		if allocated1 > int32(libc.Uint64FromUint32(0xffffffff)/libc.Uint64FromInt64(24)) {
 			allocated1 = int32(libc.Uint64FromUint32(0xffffffff) / libc.Uint64FromInt64(24))
 		}
-		newPtr1 = XTclpRealloc(tls, oldPtr1, uint32(uint64(uint64(allocated1))*libc.Uint64FromInt64(24)))
+		newPtr1 = XTclpRealloc(tls, oldPtr1, uint32(uint64(allocated1)*libc.Uint64FromInt64(24)))
 		if newPtr1 == libc.UintptrFromInt32(0) {
 			allocated1 = int32(uint64(_needed1+int32(1)) + libc.Uint64FromInt32(m_TCL_MIN_GROWTH)/libc.Uint64FromInt64(24))
 			if allocated1 > int32(libc.Uint64FromUint32(0xffffffff)/libc.Uint64FromInt64(24)) {
 				allocated1 = int32(libc.Uint64FromUint32(0xffffffff) / libc.Uint64FromInt64(24))
 			}
-			newPtr1 = XTcl_Realloc(tls, oldPtr1, uint32(uint64(uint64(allocated1))*libc.Uint64FromInt64(24)))
+			newPtr1 = XTcl_Realloc(tls, oldPtr1, uint32(uint64(allocated1)*libc.Uint64FromInt64(24)))
 		}
 		(*TTcl_Parse)(unsafe.Pointer(parsePtr)).FtokensAvailable = allocated1
 		if oldPtr1 == libc.UintptrFromInt32(0) {
@@ -214319,13 +214422,13 @@ func XTcl_ParseVarName(tls *libc.TLS, interp uintptr, start uintptr, numBytes in
 		if allocated > int32(libc.Uint64FromUint32(0xffffffff)/libc.Uint64FromInt64(24)) {
 			allocated = int32(libc.Uint64FromUint32(0xffffffff) / libc.Uint64FromInt64(24))
 		}
-		newPtr = XTclpRealloc(tls, oldPtr, uint32(uint64(uint64(allocated))*libc.Uint64FromInt64(24)))
+		newPtr = XTclpRealloc(tls, oldPtr, uint32(uint64(allocated)*libc.Uint64FromInt64(24)))
 		if newPtr == libc.UintptrFromInt32(0) {
 			allocated = int32(uint64(_needed+int32(2)) + libc.Uint64FromInt32(m_TCL_MIN_GROWTH)/libc.Uint64FromInt64(24))
 			if allocated > int32(libc.Uint64FromUint32(0xffffffff)/libc.Uint64FromInt64(24)) {
 				allocated = int32(libc.Uint64FromUint32(0xffffffff) / libc.Uint64FromInt64(24))
 			}
-			newPtr = XTcl_Realloc(tls, oldPtr, uint32(uint64(uint64(allocated))*libc.Uint64FromInt64(24)))
+			newPtr = XTcl_Realloc(tls, oldPtr, uint32(uint64(allocated)*libc.Uint64FromInt64(24)))
 		}
 		(*TTcl_Parse)(unsafe.Pointer(parsePtr)).FtokensAvailable = allocated
 		if oldPtr == libc.UintptrFromInt32(0) {
@@ -214381,8 +214484,8 @@ func XTcl_ParseVarName(tls *libc.TLS, interp uintptr, start uintptr, numBytes in
 			(*TTcl_Parse)(unsafe.Pointer(parsePtr)).Fincomplete = int32(1)
 			goto error
 		}
-		(*TTcl_Token)(unsafe.Pointer(tokenPtr)).Fsize = int32(int64(int64(src)) - int64((*TTcl_Token)(unsafe.Pointer(tokenPtr)).Fstart))
-		(*(*TTcl_Token)(unsafe.Pointer(tokenPtr + uintptr(-libc.Int32FromInt32(1))*24))).Fsize = int32(int64(int64(src)) - int64((*(*TTcl_Token)(unsafe.Pointer(tokenPtr + uintptr(-libc.Int32FromInt32(1))*24))).Fstart))
+		(*TTcl_Token)(unsafe.Pointer(tokenPtr)).Fsize = int32(int64(src) - int64((*TTcl_Token)(unsafe.Pointer(tokenPtr)).Fstart))
+		(*(*TTcl_Token)(unsafe.Pointer(tokenPtr + uintptr(-libc.Int32FromInt32(1))*24))).Fsize = int32(int64(src) - int64((*(*TTcl_Token)(unsafe.Pointer(tokenPtr + uintptr(-libc.Int32FromInt32(1))*24))).Fstart))
 		(*TTcl_Parse)(unsafe.Pointer(parsePtr)).FnumTokens++
 		src++
 	} else {
@@ -214410,7 +214513,7 @@ func XTcl_ParseVarName(tls *libc.TLS, interp uintptr, start uintptr, numBytes in
 		 * Support for empty array names here.
 		 */
 		array = libc.BoolUint32(numBytes != 0 && int32(*(*int8)(unsafe.Pointer(src))) == int32('('))
-		(*TTcl_Token)(unsafe.Pointer(tokenPtr)).Fsize = int32(int64(int64(src)) - int64((*TTcl_Token)(unsafe.Pointer(tokenPtr)).Fstart))
+		(*TTcl_Token)(unsafe.Pointer(tokenPtr)).Fsize = int32(int64(src) - int64((*TTcl_Token)(unsafe.Pointer(tokenPtr)).Fstart))
 		if (*TTcl_Token)(unsafe.Pointer(tokenPtr)).Fsize == 0 && !(array != 0) {
 			goto justADollarSign
 		}
@@ -214437,7 +214540,7 @@ func XTcl_ParseVarName(tls *libc.TLS, interp uintptr, start uintptr, numBytes in
 		}
 	}
 	tokenPtr = (*TTcl_Parse)(unsafe.Pointer(parsePtr)).FtokenPtr + uintptr(varIndex)*24
-	(*TTcl_Token)(unsafe.Pointer(tokenPtr)).Fsize = int32(int64(int64(src)) - int64((*TTcl_Token)(unsafe.Pointer(tokenPtr)).Fstart))
+	(*TTcl_Token)(unsafe.Pointer(tokenPtr)).Fsize = int32(int64(src) - int64((*TTcl_Token)(unsafe.Pointer(tokenPtr)).Fstart))
 	(*TTcl_Token)(unsafe.Pointer(tokenPtr)).FnumComponents = (*TTcl_Parse)(unsafe.Pointer(parsePtr)).FnumTokens - (varIndex + int32(1))
 	return m_TCL_OK
 	/*
@@ -214586,13 +214689,13 @@ func XTcl_ParseBraces(tls *libc.TLS, interp uintptr, start uintptr, numBytes int
 		if allocated > int32(libc.Uint64FromUint32(0xffffffff)/libc.Uint64FromInt64(24)) {
 			allocated = int32(libc.Uint64FromUint32(0xffffffff) / libc.Uint64FromInt64(24))
 		}
-		newPtr = XTclpRealloc(tls, oldPtr, uint32(uint64(uint64(allocated))*libc.Uint64FromInt64(24)))
+		newPtr = XTclpRealloc(tls, oldPtr, uint32(uint64(allocated)*libc.Uint64FromInt64(24)))
 		if newPtr == libc.UintptrFromInt32(0) {
 			allocated = int32(uint64(_needed+int32(1)) + libc.Uint64FromInt32(m_TCL_MIN_GROWTH)/libc.Uint64FromInt64(24))
 			if allocated > int32(libc.Uint64FromUint32(0xffffffff)/libc.Uint64FromInt64(24)) {
 				allocated = int32(libc.Uint64FromUint32(0xffffffff) / libc.Uint64FromInt64(24))
 			}
-			newPtr = XTcl_Realloc(tls, oldPtr, uint32(uint64(uint64(allocated))*libc.Uint64FromInt64(24)))
+			newPtr = XTcl_Realloc(tls, oldPtr, uint32(uint64(allocated)*libc.Uint64FromInt64(24)))
 		}
 		(*TTcl_Parse)(unsafe.Pointer(parsePtr)).FtokensAvailable = allocated
 		if oldPtr == libc.UintptrFromInt32(0) {
@@ -214640,7 +214743,7 @@ func XTcl_ParseBraces(tls *libc.TLS, interp uintptr, start uintptr, numBytes int
 				 * that describes the braced string.
 				 */
 				if src != (*TTcl_Token)(unsafe.Pointer(tokenPtr)).Fstart || (*TTcl_Parse)(unsafe.Pointer(parsePtr)).FnumTokens == startIndex {
-					(*TTcl_Token)(unsafe.Pointer(tokenPtr)).Fsize = int32(int64(int64(src)) - int64((*TTcl_Token)(unsafe.Pointer(tokenPtr)).Fstart))
+					(*TTcl_Token)(unsafe.Pointer(tokenPtr)).Fsize = int32(int64(src) - int64((*TTcl_Token)(unsafe.Pointer(tokenPtr)).Fstart))
 					(*TTcl_Parse)(unsafe.Pointer(parsePtr)).FnumTokens++
 				}
 				if termPtr != libc.UintptrFromInt32(0) {
@@ -214660,7 +214763,7 @@ func XTcl_ParseBraces(tls *libc.TLS, interp uintptr, start uintptr, numBytes int
 				if numBytes == int32(2) {
 					(*TTcl_Parse)(unsafe.Pointer(parsePtr)).Fincomplete = int32(1)
 				}
-				(*TTcl_Token)(unsafe.Pointer(tokenPtr)).Fsize = int32(int64(int64(src)) - int64((*TTcl_Token)(unsafe.Pointer(tokenPtr)).Fstart))
+				(*TTcl_Token)(unsafe.Pointer(tokenPtr)).Fsize = int32(int64(src) - int64((*TTcl_Token)(unsafe.Pointer(tokenPtr)).Fstart))
 				if (*TTcl_Token)(unsafe.Pointer(tokenPtr)).Fsize != 0 {
 					(*TTcl_Parse)(unsafe.Pointer(parsePtr)).FnumTokens++
 				}
@@ -214677,13 +214780,13 @@ func XTcl_ParseBraces(tls *libc.TLS, interp uintptr, start uintptr, numBytes int
 					if allocated1 > int32(libc.Uint64FromUint32(0xffffffff)/libc.Uint64FromInt64(24)) {
 						allocated1 = int32(libc.Uint64FromUint32(0xffffffff) / libc.Uint64FromInt64(24))
 					}
-					newPtr1 = XTclpRealloc(tls, oldPtr1, uint32(uint64(uint64(allocated1))*libc.Uint64FromInt64(24)))
+					newPtr1 = XTclpRealloc(tls, oldPtr1, uint32(uint64(allocated1)*libc.Uint64FromInt64(24)))
 					if newPtr1 == libc.UintptrFromInt32(0) {
 						allocated1 = int32(uint64(_needed1+int32(2)) + libc.Uint64FromInt32(m_TCL_MIN_GROWTH)/libc.Uint64FromInt64(24))
 						if allocated1 > int32(libc.Uint64FromUint32(0xffffffff)/libc.Uint64FromInt64(24)) {
 							allocated1 = int32(libc.Uint64FromUint32(0xffffffff) / libc.Uint64FromInt64(24))
 						}
-						newPtr1 = XTcl_Realloc(tls, oldPtr1, uint32(uint64(uint64(allocated1))*libc.Uint64FromInt64(24)))
+						newPtr1 = XTcl_Realloc(tls, oldPtr1, uint32(uint64(allocated1)*libc.Uint64FromInt64(24)))
 					}
 					(*TTcl_Parse)(unsafe.Pointer(parsePtr)).FtokensAvailable = allocated1
 					if oldPtr1 == libc.UintptrFromInt32(0) {
@@ -214882,7 +214985,7 @@ func XTclSubstParse(tls *libc.TLS, interp uintptr, bytes uintptr, numBytes int32
 		 * Call ParseTokens again, working on the string up to parse.term.
 		 * Keep repeating until we get a good parse on a prefix.
 		 */
-		for cond := true; cond; cond = m_TCL_OK != _ParseTokens(tls, p, int32(int64((*TTcl_Parse)(unsafe.Pointer(parsePtr)).Fend)-int64(int64(p))), 0, flags, parsePtr) {
+		for cond := true; cond; cond = m_TCL_OK != _ParseTokens(tls, p, int32(int64((*TTcl_Parse)(unsafe.Pointer(parsePtr)).Fend)-int64(p)), 0, flags, parsePtr) {
 			(*TTcl_Parse)(unsafe.Pointer(parsePtr)).FnumTokens = 0
 			(*TTcl_Parse)(unsafe.Pointer(parsePtr)).FtokensAvailable = int32(m_NUM_STATIC_TOKENS)
 			(*TTcl_Parse)(unsafe.Pointer(parsePtr)).Fend = (*TTcl_Parse)(unsafe.Pointer(parsePtr)).Fterm
@@ -214931,7 +215034,7 @@ func XTclSubstParse(tls *libc.TLS, interp uintptr, bytes uintptr, numBytes int32
 		case int32('['):
 			(*TTcl_Parse)(unsafe.Pointer(parsePtr)).Fend = p + uintptr(length)
 			p = (*TTcl_Parse)(unsafe.Pointer(parsePtr)).Fterm + uintptr(1)
-			length = int32(int64((*TTcl_Parse)(unsafe.Pointer(parsePtr)).Fend) - int64(int64(p)))
+			length = int32(int64((*TTcl_Parse)(unsafe.Pointer(parsePtr)).Fend) - int64(p))
 			if length == 0 {
 				/*
 				 * No commands, just an unmatched [. As in previous cases,
@@ -214943,7 +215046,7 @@ func XTclSubstParse(tls *libc.TLS, interp uintptr, bytes uintptr, numBytes int32
 				for m_TCL_OK == XTcl_ParseCommand(tls, libc.UintptrFromInt32(0), p, length, 0, nestedPtr) {
 					XTcl_FreeParse(tls, nestedPtr)
 					p = (*TTcl_Parse)(unsafe.Pointer(nestedPtr)).Fterm + libc.BoolUintptr((*TTcl_Parse)(unsafe.Pointer(nestedPtr)).Fterm < (*TTcl_Parse)(unsafe.Pointer(nestedPtr)).Fend)
-					length = int32(int64((*TTcl_Parse)(unsafe.Pointer(nestedPtr)).Fend) - int64(int64(p)))
+					length = int32(int64((*TTcl_Parse)(unsafe.Pointer(nestedPtr)).Fend) - int64(p))
 					if length == 0 && (*TTcl_Parse)(unsafe.Pointer(nestedPtr)).Fterm == (*TTcl_Parse)(unsafe.Pointer(nestedPtr)).Fend {
 						/*
 						 * If we run out of string, blame the missing close
@@ -214979,13 +215082,13 @@ func XTclSubstParse(tls *libc.TLS, interp uintptr, bytes uintptr, numBytes int32
 					if allocated > int32(libc.Uint64FromUint32(0xffffffff)/libc.Uint64FromInt64(24)) {
 						allocated = int32(libc.Uint64FromUint32(0xffffffff) / libc.Uint64FromInt64(24))
 					}
-					newPtr = XTclpRealloc(tls, oldPtr, uint32(uint64(uint64(allocated))*libc.Uint64FromInt64(24)))
+					newPtr = XTclpRealloc(tls, oldPtr, uint32(uint64(allocated)*libc.Uint64FromInt64(24)))
 					if newPtr == libc.UintptrFromInt32(0) {
 						allocated = int32(uint64(_needed+int32(1)) + libc.Uint64FromInt32(m_TCL_MIN_GROWTH)/libc.Uint64FromInt64(24))
 						if allocated > int32(libc.Uint64FromUint32(0xffffffff)/libc.Uint64FromInt64(24)) {
 							allocated = int32(libc.Uint64FromUint32(0xffffffff) / libc.Uint64FromInt64(24))
 						}
-						newPtr = XTcl_Realloc(tls, oldPtr, uint32(uint64(uint64(allocated))*libc.Uint64FromInt64(24)))
+						newPtr = XTcl_Realloc(tls, oldPtr, uint32(uint64(allocated)*libc.Uint64FromInt64(24)))
 					}
 					(*TTcl_Parse)(unsafe.Pointer(parsePtr)).FtokensAvailable = allocated
 					if oldPtr == libc.UintptrFromInt32(0) {
@@ -214997,7 +215100,7 @@ func XTclSubstParse(tls *libc.TLS, interp uintptr, bytes uintptr, numBytes int32
 				(*TTcl_Token)(unsafe.Pointer(tokenPtr)).Fstart = (*TTcl_Parse)(unsafe.Pointer(parsePtr)).Fterm
 				(*TTcl_Token)(unsafe.Pointer(tokenPtr)).FnumComponents = 0
 				(*TTcl_Token)(unsafe.Pointer(tokenPtr)).Ftype1 = int32(m_TCL_TOKEN_COMMAND)
-				(*TTcl_Token)(unsafe.Pointer(tokenPtr)).Fsize = int32(int64(int64(lastTerm)) - int64((*TTcl_Token)(unsafe.Pointer(tokenPtr)).Fstart) + int64(1))
+				(*TTcl_Token)(unsafe.Pointer(tokenPtr)).Fsize = int32(int64(lastTerm) - int64((*TTcl_Token)(unsafe.Pointer(tokenPtr)).Fstart) + int64(1))
 				(*TTcl_Parse)(unsafe.Pointer(parsePtr)).FnumTokens++
 			}
 		default:
@@ -215091,7 +215194,7 @@ func XTclSubstTokens(tls *libc.TLS, interp uintptr, tokenPtr uintptr, count int3
 	}
 	if isLiteral != 0 {
 		maxNumCL = int32(m_NUM_STATIC_POS)
-		clPosition = XTcl_Alloc(tls, uint32(uint64(uint64(maxNumCL))*libc.Uint64FromInt64(4)))
+		clPosition = XTcl_Alloc(tls, uint32(uint64(maxNumCL)*libc.Uint64FromInt64(4)))
 	}
 	adjust = 0
 	result = libc.UintptrFromInt32(0)
@@ -215133,7 +215236,7 @@ func XTclSubstTokens(tls *libc.TLS, interp uintptr, tokenPtr uintptr, count int3
 					}
 					if numCL >= maxNumCL {
 						maxNumCL *= int32(2)
-						clPosition = XTcl_Realloc(tls, clPosition, uint32(uint64(uint64(maxNumCL))*libc.Uint64FromInt64(4)))
+						clPosition = XTcl_Realloc(tls, clPosition, uint32(uint64(maxNumCL)*libc.Uint64FromInt64(4)))
 					}
 					*(*int32)(unsafe.Pointer(clPosition + uintptr(numCL)*4)) = *(*int32)(unsafe.Pointer(bp + 24))
 					numCL++
@@ -215145,7 +215248,7 @@ func XTclSubstTokens(tls *libc.TLS, interp uintptr, tokenPtr uintptr, count int3
 			(*TInterp)(unsafe.Pointer(iPtr)).FnumLevels++
 			code = XTclInterpReady(tls, interp)
 			if code == m_TCL_OK {
-				XTclAdvanceContinuations(tls, bp, bp+8, int32(int64((*TTcl_Token)(unsafe.Pointer(tokenPtr)).Fstart)-int64(int64(outerScript))))
+				XTclAdvanceContinuations(tls, bp, bp+8, int32(int64((*TTcl_Token)(unsafe.Pointer(tokenPtr)).Fstart)-int64(outerScript)))
 				theline = *(*int32)(unsafe.Pointer(bp)) + adjust
 				code = XTclEvalEx(tls, interp, (*TTcl_Token)(unsafe.Pointer(tokenPtr)).Fstart+uintptr(1), (*TTcl_Token)(unsafe.Pointer(tokenPtr)).Fsize-int32(2), 0, theline, *(*uintptr)(unsafe.Pointer(bp + 8)), outerScript)
 				XTclAdvanceLines(tls, bp, (*TTcl_Token)(unsafe.Pointer(tokenPtr)).Fstart+uintptr(1), (*TTcl_Token)(unsafe.Pointer(tokenPtr)).Fstart+uintptr((*TTcl_Token)(unsafe.Pointer(tokenPtr)).Fsize)-uintptr(1))
@@ -215325,7 +215428,7 @@ func _CommandComplete(tls *libc.TLS, script uintptr, numBytes int32) (r int32) {
 	_, _, _ = end, p, result
 	p = script
 	end = p + uintptr(numBytes)
-	for XTcl_ParseCommand(tls, libc.UintptrFromInt32(0), p, int32(int64(int64(end))-int64(int64(p))), 0, bp) == m_TCL_OK {
+	for XTcl_ParseCommand(tls, libc.UintptrFromInt32(0), p, int32(int64(end)-int64(p)), 0, bp) == m_TCL_OK {
 		p = (*(*TTcl_Parse)(unsafe.Pointer(bp))).FcommandStart + uintptr((*(*TTcl_Parse)(unsafe.Pointer(bp))).FcommandSize)
 		if p >= end {
 			break
@@ -215520,7 +215623,7 @@ func XTclFSNormalizeAbsolutePath(tls *libc.TLS, interp uintptr, pathPtr uintptr)
 		v1 = XTcl_GetString(tls, pathPtr)
 	}
 	dirSep = v1
-	if int32(XtclPlatform) == int32(_TCL_PLATFORM_WINDOWS) {
+	if XtclPlatform == int32(_TCL_PLATFORM_WINDOWS) {
 		if (int32(*(*int8)(unsafe.Pointer(dirSep))) == int32('/') || int32(*(*int8)(unsafe.Pointer(dirSep))) == int32('\\')) && (int32(*(*int8)(unsafe.Pointer(dirSep + 1))) == int32('/') || int32(*(*int8)(unsafe.Pointer(dirSep + 1))) == int32('\\')) && int32(*(*int8)(unsafe.Pointer(dirSep + 2))) == int32('?') && (int32(*(*int8)(unsafe.Pointer(dirSep + 3))) == int32('/') || int32(*(*int8)(unsafe.Pointer(dirSep + 3))) == int32('\\')) {
 			/* NT extended path */
 			dirSep += uintptr(4)
@@ -215559,13 +215662,13 @@ func XTclFSNormalizeAbsolutePath(tls *libc.TLS, interp uintptr, pathPtr uintptr)
 		dirSep += uintptr(_FindSplitPos(tls, dirSep, int32('/')))
 		if int32(*(*int8)(unsafe.Pointer(dirSep))) == 0 || int32(*(*int8)(unsafe.Pointer(dirSep + 1))) == 0 {
 			if retVal != libc.UintptrFromInt32(0) {
-				XTcl_AppendToObj(tls, retVal, oldDirSep, int32(int64(int64(dirSep))-int64(int64(oldDirSep))))
+				XTcl_AppendToObj(tls, retVal, oldDirSep, int32(int64(dirSep)-int64(oldDirSep)))
 			}
 			break
 		}
 		if int32(*(*int8)(unsafe.Pointer(dirSep + 1))) == int32('.') {
 			if retVal != libc.UintptrFromInt32(0) {
-				XTcl_AppendToObj(tls, retVal, oldDirSep, int32(int64(int64(dirSep))-int64(int64(oldDirSep))))
+				XTcl_AppendToObj(tls, retVal, oldDirSep, int32(int64(dirSep)-int64(oldDirSep)))
 				oldDirSep = dirSep
 			}
 		again:
@@ -215577,7 +215680,7 @@ func XTclFSNormalizeAbsolutePath(tls *libc.TLS, interp uintptr, pathPtr uintptr)
 						v2 = XTcl_GetString(tls, pathPtr)
 					}
 					path = v2
-					retVal = XTcl_NewStringObj(tls, path, int32(int64(int64(dirSep))-int64(int64(path))))
+					retVal = XTcl_NewStringObj(tls, path, int32(int64(dirSep)-int64(path)))
 					(*TTcl_Obj)(unsafe.Pointer(retVal)).FrefCount++
 				}
 				XTcl_GetStringFromObj(tls, retVal, bp)
@@ -215602,14 +215705,14 @@ func XTclFSNormalizeAbsolutePath(tls *libc.TLS, interp uintptr, pathPtr uintptr)
 						v3 = XTcl_GetString(tls, pathPtr)
 					}
 					path1 = v3
-					retVal = XTcl_NewStringObj(tls, path1, int32(int64(int64(dirSep))-int64(int64(path1))))
+					retVal = XTcl_NewStringObj(tls, path1, int32(int64(dirSep)-int64(path1)))
 					(*TTcl_Obj)(unsafe.Pointer(retVal)).FrefCount++
 				}
 				XTcl_GetStringFromObj(tls, retVal, bp+4)
 				if *(*int32)(unsafe.Pointer(bp + 4)) == 0 {
 					XTcl_AppendToObj(tls, retVal, dirSep, int32(1))
 				}
-				if !(first != 0) || int32(XtclPlatform) == int32(_TCL_PLATFORM_UNIX) {
+				if !(first != 0) || XtclPlatform == int32(_TCL_PLATFORM_UNIX) {
 					linkObj = XTcl_FSLink(tls, retVal, libc.UintptrFromInt32(0), 0)
 					/* Safety check in case driver caused sharing */
 					if (*TTcl_Obj)(unsafe.Pointer(retVal)).FrefCount > int32(1) {
@@ -215640,7 +215743,7 @@ func XTclFSNormalizeAbsolutePath(tls *libc.TLS, interp uintptr, pathPtr uintptr)
 						 * or absolute, for those platforms where relative
 						 * links exist.
 						 */
-						if int32(XtclPlatform) != int32(_TCL_PLATFORM_WINDOWS) && XTcl_FSGetPathType(tls, linkObj) == int32(_TCL_PATH_RELATIVE) {
+						if XtclPlatform != int32(_TCL_PLATFORM_WINDOWS) && XTcl_FSGetPathType(tls, linkObj) == int32(_TCL_PATH_RELATIVE) {
 							/*
 							 * We need to follow this link which is relative
 							 * to retVal's directory. This means concatenating
@@ -215730,7 +215833,7 @@ func XTclFSNormalizeAbsolutePath(tls *libc.TLS, interp uintptr, pathPtr uintptr)
 							/*
 							 * Convert to forward-slashes on windows.
 							 */
-							if int32(XtclPlatform) == int32(_TCL_PLATFORM_WINDOWS) {
+							if XtclPlatform == int32(_TCL_PLATFORM_WINDOWS) {
 								i = 0
 								for {
 									if !(i < *(*int32)(unsafe.Pointer(bp + 4))) {
@@ -215781,7 +215884,7 @@ func XTclFSNormalizeAbsolutePath(tls *libc.TLS, interp uintptr, pathPtr uintptr)
 		}
 		first = 0
 		if retVal != libc.UintptrFromInt32(0) {
-			XTcl_AppendToObj(tls, retVal, oldDirSep, int32(int64(int64(dirSep))-int64(int64(oldDirSep))))
+			XTcl_AppendToObj(tls, retVal, oldDirSep, int32(int64(dirSep)-int64(oldDirSep)))
 		}
 	}
 	/*
@@ -215827,7 +215930,7 @@ func XTclFSNormalizeAbsolutePath(tls *libc.TLS, interp uintptr, pathPtr uintptr)
 	/*
 	 * Ensure a windows drive like C:/ has a trailing separator.
 	 */
-	if int32(XtclPlatform) == int32(_TCL_PLATFORM_WINDOWS) {
+	if XtclPlatform == int32(_TCL_PLATFORM_WINDOWS) {
 		path3 = XTcl_GetStringFromObj(tls, retVal, bp+8)
 		if *(*int32)(unsafe.Pointer(bp + 8)) == int32(2) && int32(*(*int8)(unsafe.Pointer(path3))) != 0 && int32(*(*int8)(unsafe.Pointer(path3 + 1))) == int32(':') {
 			if (*TTcl_Obj)(unsafe.Pointer(retVal)).FrefCount > int32(1) {
@@ -216018,7 +216121,7 @@ func XTclPathPart(tls *libc.TLS, interp uintptr, pathPtr uintptr, portion TTcl_P
 			if *(*int32)(unsafe.Pointer(bp)) == 0 {
 				goto standardPath
 			}
-			if int32(XtclPlatform) == int32(_TCL_PLATFORM_WINDOWS) && libc.Xstrchr(tls, rest, int32('\\')) != libc.UintptrFromInt32(0) {
+			if XtclPlatform == int32(_TCL_PLATFORM_WINDOWS) && libc.Xstrchr(tls, rest, int32('\\')) != libc.UintptrFromInt32(0) {
 				goto standardPath
 			}
 			/*
@@ -216042,7 +216145,7 @@ func XTclPathPart(tls *libc.TLS, interp uintptr, pathPtr uintptr, portion TTcl_P
 			if *(*int32)(unsafe.Pointer(bp + 4)) == 0 {
 				goto standardPath
 			}
-			if int32(XtclPlatform) == int32(_TCL_PLATFORM_WINDOWS) && libc.Xstrchr(tls, rest1, int32('\\')) != libc.UintptrFromInt32(0) {
+			if XtclPlatform == int32(_TCL_PLATFORM_WINDOWS) && libc.Xstrchr(tls, rest1, int32('\\')) != libc.UintptrFromInt32(0) {
 				goto standardPath
 			}
 			(*TTcl_Obj)(unsafe.Pointer((*TFsPath)(unsafe.Pointer(fsPathPtr)).FnormPathPtr)).FrefCount++
@@ -216090,10 +216193,10 @@ func XTclPathPart(tls *libc.TLS, interp uintptr, pathPtr uintptr, portion TTcl_P
 _1:
 standardPath:
 	*(*uintptr)(unsafe.Pointer(bp + 16)) = libc.UintptrFromInt32(0)
-	if int32(portion) == int32(_TCL_PATH_EXTENSION) {
+	if portion == int32(_TCL_PATH_EXTENSION) {
 		return _GetExtension(tls, pathPtr)
 	} else {
-		if int32(portion) == int32(_TCL_PATH_ROOT) {
+		if portion == int32(_TCL_PATH_ROOT) {
 			fileName1 = XTcl_GetStringFromObj(tls, pathPtr, bp+24)
 			extension1 = XTclGetExtension(tls, fileName1)
 			if extension1 == libc.UintptrFromInt32(0) {
@@ -216147,7 +216250,7 @@ standardPath:
 		splitPtr = XTcl_FSSplitPath(tls, norm, bp+12)
 		(*TTcl_Obj)(unsafe.Pointer(splitPtr)).FrefCount++
 	}
-	if int32(portion) == int32(_TCL_PATH_TAIL) {
+	if portion == int32(_TCL_PATH_TAIL) {
 		/*
 		 * Return the last component, unless it is the only component, and
 		 * it is the root of an absolute path.
@@ -216391,7 +216494,7 @@ func XTclJoinPath(tls *libc.TLS, elements int32, objv uintptr, forceRelative int
 				v1 = XTclGetPathType(tls, tailObj, libc.UintptrFromInt32(0), libc.UintptrFromInt32(0), libc.UintptrFromInt32(0))
 			}
 			type1 = v1
-			if int32(type1) == int32(_TCL_PATH_RELATIVE) {
+			if type1 == int32(_TCL_PATH_RELATIVE) {
 				str = XTcl_GetStringFromObj(tls, tailObj, bp+8)
 				if *(*int32)(unsafe.Pointer(bp + 8)) == 0 {
 					/*
@@ -216409,13 +216512,13 @@ func XTclJoinPath(tls *libc.TLS, elements int32, objv uintptr, forceRelative int
 				 * would not have forward slashes only, and this would
 				 * therefore contradict our 'file join' documentation).
 				 */
-				if int32(*(*int8)(unsafe.Pointer(str))) != int32('.') && (int32(XtclPlatform) != int32(_TCL_PLATFORM_WINDOWS) || libc.Xstrchr(tls, str, int32('\\')) == libc.UintptrFromInt32(0)) {
+				if int32(*(*int8)(unsafe.Pointer(str))) != int32('.') && (XtclPlatform != int32(_TCL_PLATFORM_WINDOWS) || libc.Xstrchr(tls, str, int32('\\')) == libc.UintptrFromInt32(0)) {
 					/*
 					 * Finally, on Windows, 'file join' is defined to convert
 					 * all backslashes to forward slashes, so the base part
 					 * cannot have backslashes either.
 					 */
-					if int32(XtclPlatform) != int32(_TCL_PLATFORM_WINDOWS) || libc.Xstrchr(tls, XTcl_GetString(tls, elt), int32('\\')) == libc.UintptrFromInt32(0) {
+					if XtclPlatform != int32(_TCL_PLATFORM_WINDOWS) || libc.Xstrchr(tls, XTcl_GetString(tls, elt), int32('\\')) == libc.UintptrFromInt32(0) {
 						if (*TFsPath)(unsafe.Pointer((*(*struct {
 							Fptr1 uintptr
 							Fptr2 uintptr
@@ -216439,7 +216542,7 @@ func XTclJoinPath(tls *libc.TLS, elements int32, objv uintptr, forceRelative int
 				 * more general code below handle things.
 				 */
 			} else {
-				if int32(XtclPlatform) == int32(_TCL_PLATFORM_UNIX) {
+				if XtclPlatform == int32(_TCL_PLATFORM_UNIX) {
 					return tailObj
 				} else {
 					if (*TTcl_Obj)(unsafe.Pointer(tailObj)).Fbytes != 0 {
@@ -216448,7 +216551,7 @@ func XTclJoinPath(tls *libc.TLS, elements int32, objv uintptr, forceRelative int
 						v2 = XTcl_GetString(tls, tailObj)
 					}
 					str1 = v2
-					if int32(XtclPlatform) == int32(_TCL_PLATFORM_WINDOWS) {
+					if XtclPlatform == int32(_TCL_PLATFORM_WINDOWS) {
 						if libc.Xstrchr(tls, str1, int32('\\')) == libc.UintptrFromInt32(0) {
 							return tailObj
 						}
@@ -216473,7 +216576,7 @@ func XTclJoinPath(tls *libc.TLS, elements int32, objv uintptr, forceRelative int
 			v4 = XTclGetPathType(tls, elt1, bp, bp+12, bp+24)
 		}
 		type11 = v4
-		if int32(type11) != int32(_TCL_PATH_RELATIVE) {
+		if type11 != int32(_TCL_PATH_RELATIVE) {
 			/*
 			 * Zero out the current result.
 			 */
@@ -216550,12 +216653,12 @@ func XTclJoinPath(tls *libc.TLS, elements int32, objv uintptr, forceRelative int
 		 * form to be returned. Then we can short-cut the rest of this
 		 * function.
 		 */
-		if *(*uintptr)(unsafe.Pointer(bp + 24)) == libc.UintptrFromInt32(0) && i == elements-int32(1) && (int32(type11) != int32(_TCL_PATH_RELATIVE) || res == libc.UintptrFromInt32(0)) {
+		if *(*uintptr)(unsafe.Pointer(bp + 24)) == libc.UintptrFromInt32(0) && i == elements-int32(1) && (type11 != int32(_TCL_PATH_RELATIVE) || res == libc.UintptrFromInt32(0)) {
 			/*
 			 * It's the last path segment. Perform a quick check if the path
 			 * is already in a suitable form.
 			 */
-			if int32(XtclPlatform) == int32(_TCL_PLATFORM_WINDOWS) {
+			if XtclPlatform == int32(_TCL_PLATFORM_WINDOWS) {
 				if libc.Xstrchr(tls, strElt, int32('\\')) != libc.UintptrFromInt32(0) {
 					goto noQuickReturn
 				}
@@ -216727,7 +216830,7 @@ func XTclJoinPath(tls *libc.TLS, elements int32, objv uintptr, forceRelative int
 			} else {
 				v22 = XTcl_GetString(tls, res)
 			}
-			*(*int32)(unsafe.Pointer(bp + 20)) = int32(int64(int64(ptr)) - int64(v22))
+			*(*int32)(unsafe.Pointer(bp + 20)) = int32(int64(ptr) - int64(v22))
 			XTcl_SetObjLength(tls, res, *(*int32)(unsafe.Pointer(bp + 20)))
 		}
 		goto _3
@@ -217714,7 +217817,7 @@ func XTcl_FSGetNormalizedPath(tls *libc.TLS, interp uintptr, pathPtr uintptr) (r
 			 * depending on how env(HOME) is set.
 			 */
 			type1 = XTcl_FSGetPathType(tls, *(*uintptr)(unsafe.Pointer(bp + 16)))
-			if int32(type1) == int32(_TCL_PATH_RELATIVE) {
+			if type1 == int32(_TCL_PATH_RELATIVE) {
 				useThisCwd = XTcl_FSGetCwd(tls, interp)
 				if useThisCwd == libc.UintptrFromInt32(0) {
 					return libc.UintptrFromInt32(0)
@@ -218145,7 +218248,7 @@ func _SetFsPathFromAny(tls *libc.TLS, interp uintptr, _pathPtr uintptr) (r int32
 		 * We have multiple cases '~/foo/bar...', '~user/foo/bar...', etc.
 		 * split becomes value 1 for '~/...' as well as for '~'.
 		 */
-		split = _FindSplitPos(tls, name, int32(int32(separator)))
+		split = _FindSplitPos(tls, name, int32(separator))
 		/*
 		 * Do some tilde substitution.
 		 */
@@ -218182,7 +218285,7 @@ func _SetFsPathFromAny(tls *libc.TLS, interp uintptr, _pathPtr uintptr) (r int32
 			/*
 			 * Join up the tilde substitution with the rest.
 			 */
-			if int32(*(*int8)(unsafe.Pointer(name + uintptr(split+int32(1))))) == int32(int32(separator)) {
+			if int32(*(*int8)(unsafe.Pointer(name + uintptr(split+int32(1))))) == int32(separator) {
 				parts = XTclpNativeSplitPath(tls, *(*uintptr)(unsafe.Pointer(bp)), libc.UintptrFromInt32(0))
 				if (*TTcl_Obj)(unsafe.Pointer(parts)).FtypePtr == uintptr(unsafe.Pointer(&XtclListType)) {
 					*(*uintptr)(unsafe.Pointer(bp + 680)) = (*(*struct {
@@ -219357,7 +219460,7 @@ func XTclCreatePipeline(tls *libc.TLS, interp uintptr, argc int32, argv uintptr,
 	 * arguments between the "|" characters.
 	 */
 	XTcl_ReapDetachedProcs(tls)
-	pidPtr = XTcl_Alloc(tls, uint32(uint64(uint64(cmdCount))*libc.Uint64FromInt64(8)))
+	pidPtr = XTcl_Alloc(tls, uint32(uint64(cmdCount)*libc.Uint64FromInt64(8)))
 	curInFile = *(*TTclFile)(unsafe.Pointer(bp))
 	i = 0
 	for {
@@ -221177,7 +221280,7 @@ func _CheckVersionAndConvert(tls *libc.TLS, interp uintptr, string1 uintptr, int
 		if !(int32(*(*int8)(unsafe.Pointer(p))) != 0) {
 			break
 		}
-		if !(libc.BoolInt32(uint32(uint8(*(*int8)(unsafe.Pointer(p))))-libc.Uint32FromUint8('0') < libc.Uint32FromInt32(10)) != 0) && (int32(*(*int8)(unsafe.Pointer(p))) != int32('.') && int32(*(*int8)(unsafe.Pointer(p))) != int32('a') && int32(*(*int8)(unsafe.Pointer(p))) != int32('b') || (hasunstable != 0 && (int32(*(*int8)(unsafe.Pointer(p))) == int32('a') || int32(*(*int8)(unsafe.Pointer(p))) == int32('b')) || (int32(int32(prevChar)) == int32('a') || int32(int32(prevChar)) == int32('b') || int32(int32(prevChar)) == int32('.')) && int32(*(*int8)(unsafe.Pointer(p))) == int32('.') || (int32(*(*int8)(unsafe.Pointer(p))) == int32('a') || int32(*(*int8)(unsafe.Pointer(p))) == int32('b') || int32(*(*int8)(unsafe.Pointer(p))) == int32('.')) && int32(int32(prevChar)) == int32('.'))) {
+		if !(libc.BoolInt32(uint32(uint8(*(*int8)(unsafe.Pointer(p))))-libc.Uint32FromUint8('0') < libc.Uint32FromInt32(10)) != 0) && (int32(*(*int8)(unsafe.Pointer(p))) != int32('.') && int32(*(*int8)(unsafe.Pointer(p))) != int32('a') && int32(*(*int8)(unsafe.Pointer(p))) != int32('b') || (hasunstable != 0 && (int32(*(*int8)(unsafe.Pointer(p))) == int32('a') || int32(*(*int8)(unsafe.Pointer(p))) == int32('b')) || (int32(prevChar) == int32('a') || int32(prevChar) == int32('b') || int32(prevChar) == int32('.')) && int32(*(*int8)(unsafe.Pointer(p))) == int32('.') || (int32(*(*int8)(unsafe.Pointer(p))) == int32('a') || int32(*(*int8)(unsafe.Pointer(p))) == int32('b') || int32(*(*int8)(unsafe.Pointer(p))) == int32('.')) && int32(prevChar) == int32('.'))) {
 			goto error
 		}
 		if int32(*(*int8)(unsafe.Pointer(p))) == int32('a') || int32(*(*int8)(unsafe.Pointer(p))) == int32('b') {
@@ -221238,7 +221341,7 @@ func _CheckVersionAndConvert(tls *libc.TLS, interp uintptr, string1 uintptr, int
 	_2:
 		p++
 	}
-	if int32(int32(prevChar)) != int32('.') && int32(int32(prevChar)) != int32('a') && int32(int32(prevChar)) != int32('b') {
+	if int32(prevChar) != int32('.') && int32(prevChar) != int32('a') && int32(prevChar) != int32('b') {
 		*(*int8)(unsafe.Pointer(ip)) = int8('\000')
 		if internal != libc.UintptrFromInt32(0) {
 			*(*uintptr)(unsafe.Pointer(internal)) = ibuf
@@ -221361,10 +221464,10 @@ func _CompareVersions(tls *libc.TLS, v1 uintptr, v2 uintptr, isMajorPtr uintptr)
 		 * another shortcut. Compare lengths. Shorter string is smaller
 		 * number! Thus we strcmp only strings of identical length.
 		 */
-		if int64(int64(e1))-int64(int64(s1)) < int64(int64(e2))-int64(int64(s2)) {
+		if int64(e1)-int64(s1) < int64(e2)-int64(s2) {
 			res = -int32(1)
 		} else {
-			if int64(int64(e2))-int64(int64(s2)) < int64(int64(e1))-int64(int64(s1)) {
+			if int64(e2)-int64(s2) < int64(e1)-int64(s1) {
 				res = int32(1)
 			} else {
 				o1 = *(*int8)(unsafe.Pointer(e1))
@@ -221522,7 +221625,7 @@ func _CheckRequirement(tls *libc.TLS, interp uintptr, string1 uintptr) (r int32)
 	local__len = uint32(libc.Xstrlen(tls, string1) + libc.Uint64FromInt32(1))
 	buf = XTcl_Alloc(tls, local__len)
 	libc.Xmemcpy(tls, buf, string1, uint64(local__len))
-	dash = buf + uintptr(int64(int64(dash))-int64(int64(string1)))
+	dash = buf + uintptr(int64(dash)-int64(string1))
 	*(*int8)(unsafe.Pointer(dash)) = int8('\000') /* buf now <=> min part */
 	dash++                                        /* dash now <=> max part */
 	if _CheckVersionAndConvert(tls, interp, buf, libc.UintptrFromInt32(0), libc.UintptrFromInt32(0)) != m_TCL_OK || int32(*(*int8)(unsafe.Pointer(dash))) != int32('\000') && _CheckVersionAndConvert(tls, interp, dash, libc.UintptrFromInt32(0), libc.UintptrFromInt32(0)) != m_TCL_OK {
@@ -221713,7 +221816,7 @@ func _RequirementSatisfied(tls *libc.TLS, havei uintptr, req uintptr) (r int32) 
 	local__len = uint32(libc.Xstrlen(tls, req) + libc.Uint64FromInt32(1))
 	buf = XTcl_Alloc(tls, local__len)
 	libc.Xmemcpy(tls, buf, req, uint64(local__len))
-	dash = buf + uintptr(int64(int64(dash))-int64(int64(req)))
+	dash = buf + uintptr(int64(dash)-int64(req))
 	*(*int8)(unsafe.Pointer(dash)) = int8('\000') /* buf now <=> min part */
 	dash++                                        /* dash now <=> max part */
 	if int32(*(*int8)(unsafe.Pointer(dash))) == int32('\000') {
@@ -222890,7 +222993,7 @@ func XTcl_Preserve(tls *libc.TLS, clientData TClientData) {
 			v2 = int32(m_INITIAL_SIZE)
 		}
 		_spaceAvl = v2
-		_refArray = XTcl_Realloc(tls, _refArray, uint32(uint64(uint64(_spaceAvl))*libc.Uint64FromInt64(24)))
+		_refArray = XTcl_Realloc(tls, _refArray, uint32(uint64(_spaceAvl)*libc.Uint64FromInt64(24)))
 	}
 	/*
 	 * Make a new entry for the new reference.
@@ -224602,7 +224705,7 @@ func _InitResolvedLocals(tls *libc.TLS, interp uintptr, codePtr uintptr, varPtr 
 	/*
 	 * Find the localPtr corresponding to varPtr
 	 */
-	varNum = int32((int64(int64(varPtr)) - int64((*TCallFrame)(unsafe.Pointer((*TInterp)(unsafe.Pointer(iPtr)).FframePtr)).FcompiledLocals)) / 16)
+	varNum = int32((int64(varPtr) - int64((*TCallFrame)(unsafe.Pointer((*TInterp)(unsafe.Pointer(iPtr)).FframePtr)).FcompiledLocals)) / 16)
 	localPtr = (*TProc)(unsafe.Pointer((*TCallFrame)(unsafe.Pointer((*TInterp)(unsafe.Pointer(iPtr)).FframePtr)).FprocPtr)).FfirstLocalPtr
 	for {
 		v1 = varNum
@@ -224735,7 +224838,7 @@ func _InitLocalCache(tls *libc.TLS, procPtr uintptr) {
 	 * cache in both the framePtr for this execution and in the codePtr
 	 * for future calls.
 	 */
-	localCachePtr = XTcl_Alloc(tls, uint32(uint64(int32(uint64(libc.UintptrFromInt32(0)+8)))+uint64(uint64(localCt))*libc.Uint64FromInt64(8)+uint64(uint64(numArgs))*libc.Uint64FromInt64(16)))
+	localCachePtr = XTcl_Alloc(tls, uint32(uint64(int32(uint64(libc.UintptrFromInt32(0)+8)))+uint64(localCt)*libc.Uint64FromInt64(8)+uint64(numArgs)*libc.Uint64FromInt64(16)))
 	namePtr = localCachePtr + 8
 	varPtr = namePtr + uintptr(localCt)*8
 	localPtr = (*TProc)(unsafe.Pointer(procPtr)).FfirstLocalPtr
@@ -224812,7 +224915,7 @@ func _InitArgsAndLocals(tls *libc.TLS, interp uintptr, procNameObj uintptr, skip
 	 * all the procedure's compiled local variables, including its formal
 	 * parameters.
 	 */
-	varPtr = XTclStackAlloc(tls, interp, int32(uint64(uint64(localCt))*uint64(16)))
+	varPtr = XTclStackAlloc(tls, interp, int32(uint64(localCt)*uint64(16)))
 	(*TCallFrame)(unsafe.Pointer(framePtr)).FcompiledLocals = varPtr
 	(*TCallFrame)(unsafe.Pointer(framePtr)).FnumCompiledLocals = localCt
 	/*
@@ -224947,7 +225050,7 @@ incorrectArgs:
 		(*TNRE_callback)(unsafe.Pointer(_callbackPtr)).FnextPtr = (*TExecEnv1)(unsafe.Pointer((*TInterp)(unsafe.Pointer(interp)).FexecEnvPtr)).FcallbackPtr
 		(*TExecEnv1)(unsafe.Pointer((*TInterp)(unsafe.Pointer(interp)).FexecEnvPtr)).FcallbackPtr = _callbackPtr
 	}
-	libc.Xmemset(tls, varPtr, 0, uint64((int64((*TCallFrame)(unsafe.Pointer(framePtr)).FcompiledLocals+uintptr(localCt)*16)-int64(int64(varPtr)))/16)*uint64(16))
+	libc.Xmemset(tls, varPtr, 0, uint64((int64((*TCallFrame)(unsafe.Pointer(framePtr)).FcompiledLocals+uintptr(localCt)*16)-int64(varPtr))/16)*uint64(16))
 	return _ProcWrongNumArgs(tls, interp, skip)
 }
 
@@ -226530,7 +226633,7 @@ func XTcl_RegExpRange(tls *libc.TLS, re TTcl_RegExp, index int32, startPtr uintp
 	var regexpPtr, string1, v1, v2, v3 uintptr
 	_, _, _, _, _ = regexpPtr, string1, v1, v2, v3
 	regexpPtr = re
-	if uint64(uint64(index)) > (*TTclRegexp)(unsafe.Pointer(regexpPtr)).Fre.Fre_nsub {
+	if uint64(index) > (*TTclRegexp)(unsafe.Pointer(regexpPtr)).Fre.Fre_nsub {
 		v1 = libc.UintptrFromInt32(0)
 		*(*uintptr)(unsafe.Pointer(endPtr)) = v1
 		*(*uintptr)(unsafe.Pointer(startPtr)) = v1
@@ -226585,10 +226688,10 @@ func _RegExpExecUniChar(tls *libc.TLS, interp uintptr, re TTcl_RegExp, wString u
 	regexpPtr = re
 	last = (*TTclRegexp)(unsafe.Pointer(regexpPtr)).Fre.Fre_nsub + uint64(1)
 	nm = last
-	if nmatches >= 0 && uint64(uint64(nmatches)) < nm {
-		nm = uint64(uint64(nmatches))
+	if nmatches >= 0 && uint64(nmatches) < nm {
+		nm = uint64(nmatches)
 	}
-	status = XTclReExec(tls, regexpPtr+8, wString, uint64(uint64(numChars)), regexpPtr+96, nm, (*TTclRegexp)(unsafe.Pointer(regexpPtr)).Fmatches, flags)
+	status = XTclReExec(tls, regexpPtr+8, wString, uint64(numChars), regexpPtr+96, nm, (*TTclRegexp)(unsafe.Pointer(regexpPtr)).Fmatches, flags)
 	/*
 	 * Check for errors.
 	 */
@@ -226634,7 +226737,7 @@ func XTclRegExpRangeUniChar(tls *libc.TLS, re TTcl_RegExp, index int32, startPtr
 		*(*int32)(unsafe.Pointer(startPtr)) = int32((*TTclRegexp)(unsafe.Pointer(regexpPtr)).Fdetails.Frm_extend.Frm_so)
 		*(*int32)(unsafe.Pointer(endPtr)) = int32((*TTclRegexp)(unsafe.Pointer(regexpPtr)).Fdetails.Frm_extend.Frm_eo)
 	} else {
-		if uint64(uint64(index)) > (*TTclRegexp)(unsafe.Pointer(regexpPtr)).Fre.Fre_nsub {
+		if uint64(index) > (*TTclRegexp)(unsafe.Pointer(regexpPtr)).Fre.Fre_nsub {
 			*(*int32)(unsafe.Pointer(startPtr)) = -int32(1)
 			*(*int32)(unsafe.Pointer(endPtr)) = -int32(1)
 		} else {
@@ -227261,7 +227364,7 @@ func _CompileRegexp(tls *libc.TLS, interp uintptr, string1 uintptr, length int32
 	 * Compile the string and check for errors.
 	 */
 	(*TTclRegexp)(unsafe.Pointer(regexpPtr)).Fflags = flags
-	status = XTclReComp(tls, regexpPtr+8, uniString, uint64(uint64(numChars)), flags)
+	status = XTclReComp(tls, regexpPtr+8, uniString, uint64(numChars), flags)
 	XTcl_DStringFree(tls, bp+8)
 	if status != m_REG_OKAY {
 		/*
@@ -227510,7 +227613,7 @@ func XTcl_AddInterpResolvers(tls *libc.TLS, interp uintptr, name uintptr, cmdPro
 	resPtr = XTcl_Alloc(tls, uint32(libc.Uint64FromInt64(40)))
 	len1 = uint32(libc.Xstrlen(tls, name) + uint64(1))
 	(*TResolverScheme)(unsafe.Pointer(resPtr)).Fname = XTcl_Alloc(tls, len1)
-	libc.Xmemcpy(tls, (*TResolverScheme)(unsafe.Pointer(resPtr)).Fname, name, uint64(uint64(len1)))
+	libc.Xmemcpy(tls, (*TResolverScheme)(unsafe.Pointer(resPtr)).Fname, name, uint64(len1))
 	(*TResolverScheme)(unsafe.Pointer(resPtr)).FcmdResProc = cmdProc
 	(*TResolverScheme)(unsafe.Pointer(resPtr)).FvarResProc = varProc
 	(*TResolverScheme)(unsafe.Pointer(resPtr)).FcompiledVarResProc = compiledVarProc
@@ -229985,9 +230088,9 @@ func _BuildCharSet(tls *libc.TLS, cset uintptr, format uintptr) (r uintptr) {
 		}
 		end += uintptr(v4)
 	}
-	(*TCharSet)(unsafe.Pointer(cset)).Fchars = XTcl_Alloc(tls, uint32(libc.Uint64FromInt64(2)*uint64(int64(int64(end))-int64(int64(format))-libc.Int64FromInt32(1))))
+	(*TCharSet)(unsafe.Pointer(cset)).Fchars = XTcl_Alloc(tls, uint32(libc.Uint64FromInt64(2)*uint64(int64(end)-int64(format)-libc.Int64FromInt32(1))))
 	if nranges > 0 {
-		(*TCharSet)(unsafe.Pointer(cset)).Franges = XTcl_Alloc(tls, uint32(libc.Uint64FromInt64(4)*uint64(uint64(nranges))))
+		(*TCharSet)(unsafe.Pointer(cset)).Franges = XTcl_Alloc(tls, uint32(libc.Uint64FromInt64(4)*uint64(nranges)))
 	} else {
 		(*TCharSet)(unsafe.Pointer(cset)).Franges = libc.UintptrFromInt32(0)
 	}
@@ -230052,7 +230155,7 @@ func _BuildCharSet(tls *libc.TLS, cset uintptr, format uintptr) (r uintptr) {
 					/*
 					 * Check to see if the range is in reverse order.
 					 */
-					if int32(int32(start)) < int32(*(*TTcl_UniChar)(unsafe.Pointer(bp))) {
+					if int32(start) < int32(*(*TTcl_UniChar)(unsafe.Pointer(bp))) {
 						(*(*TRange)(unsafe.Pointer((*TCharSet)(unsafe.Pointer(cset)).Franges + uintptr((*TCharSet)(unsafe.Pointer(cset)).Fnranges)*4))).Fstart = start
 						(*(*TRange)(unsafe.Pointer((*TCharSet)(unsafe.Pointer(cset)).Franges + uintptr((*TCharSet)(unsafe.Pointer(cset)).Fnranges)*4))).Fend = *(*TTcl_UniChar)(unsafe.Pointer(bp))
 					} else {
@@ -230101,14 +230204,14 @@ func _CharInSet(tls *libc.TLS, cset uintptr, c int32) (r int32) {
 	var ch TTcl_UniChar
 	var i, match, v3 int32
 	_, _, _, _ = ch, i, match, v3
-	ch = uint16(uint16(c))
+	ch = uint16(c)
 	match = 0
 	i = 0
 	for {
 		if !(i < (*TCharSet)(unsafe.Pointer(cset)).Fnchars) {
 			break
 		}
-		if int32(*(*TTcl_UniChar)(unsafe.Pointer((*TCharSet)(unsafe.Pointer(cset)).Fchars + uintptr(i)*2))) == int32(int32(ch)) {
+		if int32(*(*TTcl_UniChar)(unsafe.Pointer((*TCharSet)(unsafe.Pointer(cset)).Fchars + uintptr(i)*2))) == int32(ch) {
 			match = int32(1)
 			break
 		}
@@ -230122,7 +230225,7 @@ func _CharInSet(tls *libc.TLS, cset uintptr, c int32) (r int32) {
 			if !(i < (*TCharSet)(unsafe.Pointer(cset)).Fnranges) {
 				break
 			}
-			if int32((*(*TRange)(unsafe.Pointer((*TCharSet)(unsafe.Pointer(cset)).Franges + uintptr(i)*4))).Fstart) <= int32(int32(ch)) && int32(int32(ch)) <= int32((*(*TRange)(unsafe.Pointer((*TCharSet)(unsafe.Pointer(cset)).Franges + uintptr(i)*4))).Fend) {
+			if int32((*(*TRange)(unsafe.Pointer((*TCharSet)(unsafe.Pointer(cset)).Franges + uintptr(i)*4))).Fstart) <= int32(ch) && int32(ch) <= int32((*(*TRange)(unsafe.Pointer((*TCharSet)(unsafe.Pointer(cset)).Franges + uintptr(i)*4))).Fend) {
 				match = int32(1)
 				break
 			}
@@ -230192,7 +230295,7 @@ func _ValidateFormat(tls *libc.TLS, interp uintptr, _format uintptr, numVars int
 	_, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _ = errorMsg, flags, gotSequential, gotXpg, i, nassign, nspace, objIndex, value, xpgSize, v10, v11, v13, v14, v15, v2, v3, v35, v36, v37, v38, v4, v7, v8, v9
 	*(*TTcl_UniChar)(unsafe.Pointer(bp + 16)) = uint16(0)
 	nspace = numVars
-	nassign = XTclStackAlloc(tls, interp, int32(uint64(uint64(nspace))*uint64(4))) /* Place to build an error messages. Note that
+	nassign = XTclStackAlloc(tls, interp, int32(uint64(nspace)*uint64(4))) /* Place to build an error messages. Note that
 	 * these are messy operations because we do
 	 * not want to use the formatting engine;
 	 * we're inside there! */
@@ -230521,7 +230624,7 @@ _33:
 			} else {
 				nspace += int32(16) /* formerly STATIC_LIST_SIZE */
 			}
-			nassign = XTclStackRealloc(tls, interp, nassign, int32(uint64(uint64(nspace))*uint64(4)))
+			nassign = XTclStackRealloc(tls, interp, nassign, int32(uint64(nspace)*uint64(4)))
 			i = value
 			for {
 				if !(i < nspace) {
@@ -230833,7 +230936,7 @@ _7:
 			})(unsafe.Pointer(XtclFreeObjList + 32))).Fptr1
 			(*TTcl_Obj)(unsafe.Pointer(objPtr)).FrefCount = 0
 			(*TTcl_Obj)(unsafe.Pointer(objPtr)).Fbytes = libc.UintptrFromInt32(0)
-			(*TTcl_Obj)(unsafe.Pointer(objPtr)).FinternalRep.FlongValue = int64(int64(string1)) - int64(int64(baseString))
+			(*TTcl_Obj)(unsafe.Pointer(objPtr)).FinternalRep.FlongValue = int64(string1) - int64(baseString)
 			(*TTcl_Obj)(unsafe.Pointer(objPtr)).FtypePtr = uintptr(unsafe.Pointer(&XtclIntType))
 			(*TTcl_Obj)(unsafe.Pointer(objPtr)).FrefCount++
 			v15 = objIndex
@@ -230917,7 +231020,7 @@ _7:
 	/*
 	 * Perform the requested scanning operation.
 	 */
-	switch int32(int32(op)) {
+	switch int32(op) {
 	case int32('s'):
 		goto _17
 	case int32('['):
@@ -230957,7 +231060,7 @@ _17:
 		}
 	}
 	if !(flags&libc.Int32FromInt32(m_SCAN_SUPPRESS) != 0) {
-		objPtr = XTcl_NewStringObj(tls, string1, int32(int64(*(*uintptr)(unsafe.Pointer(bp + 24)))-int64(int64(string1))))
+		objPtr = XTcl_NewStringObj(tls, string1, int32(int64(*(*uintptr)(unsafe.Pointer(bp + 24)))-int64(string1)))
 		(*TTcl_Obj)(unsafe.Pointer(objPtr)).FrefCount++
 		v25 = objIndex
 		objIndex++
@@ -230997,7 +231100,7 @@ _18:
 		goto done
 	}
 	if !(flags&libc.Int32FromInt32(m_SCAN_SUPPRESS) != 0) {
-		objPtr = XTcl_NewStringObj(tls, string1, int32(int64(*(*uintptr)(unsafe.Pointer(bp + 24)))-int64(int64(string1))))
+		objPtr = XTcl_NewStringObj(tls, string1, int32(int64(*(*uintptr)(unsafe.Pointer(bp + 24)))-int64(string1)))
 		(*TTcl_Obj)(unsafe.Pointer(objPtr)).FrefCount++
 		v28 = objIndex
 		objIndex++
@@ -231420,7 +231523,7 @@ func _GrowStringBuffer(tls *libc.TLS, objPtr uintptr, needed int32, flag int32) 
 	if flag == 0 || (*TString)(unsafe.Pointer(stringPtr)).Fallocated > 0 {
 		if needed <= libc.Int32FromInt32(m_INT_MAX)/libc.Int32FromInt32(2) {
 			attempt = int32(2) * needed
-			ptr = XTclpRealloc(tls, (*TTcl_Obj)(unsafe.Pointer(objPtr)).Fbytes, uint32(uint32(attempt))+libc.Uint32FromUint32(1))
+			ptr = XTclpRealloc(tls, (*TTcl_Obj)(unsafe.Pointer(objPtr)).Fbytes, uint32(attempt)+libc.Uint32FromUint32(1))
 		}
 		if ptr == libc.UintptrFromInt32(0) {
 			/*
@@ -231436,7 +231539,7 @@ func _GrowStringBuffer(tls *libc.TLS, objPtr uintptr, needed int32, flag int32) 
 			}
 			growth = int32(v1)
 			attempt = needed + growth
-			ptr = XTclpRealloc(tls, (*TTcl_Obj)(unsafe.Pointer(objPtr)).Fbytes, uint32(uint32(attempt))+libc.Uint32FromUint32(1))
+			ptr = XTclpRealloc(tls, (*TTcl_Obj)(unsafe.Pointer(objPtr)).Fbytes, uint32(attempt)+libc.Uint32FromUint32(1))
 		}
 	}
 	if ptr == libc.UintptrFromInt32(0) {
@@ -231444,7 +231547,7 @@ func _GrowStringBuffer(tls *libc.TLS, objPtr uintptr, needed int32, flag int32) 
 		 * First allocation - just big enough; or last chance fallback.
 		 */
 		attempt = needed
-		ptr = XTcl_Realloc(tls, (*TTcl_Obj)(unsafe.Pointer(objPtr)).Fbytes, uint32(uint32(attempt))+libc.Uint32FromUint32(1))
+		ptr = XTcl_Realloc(tls, (*TTcl_Obj)(unsafe.Pointer(objPtr)).Fbytes, uint32(attempt)+libc.Uint32FromUint32(1))
 	}
 	(*TTcl_Obj)(unsafe.Pointer(objPtr)).Fbytes = ptr
 	(*TString)(unsafe.Pointer(stringPtr)).Fallocated = attempt
@@ -232179,9 +232282,9 @@ func XTcl_SetObjLength(tls *libc.TLS, objPtr uintptr, length int32) {
 			 * Need to enlarge the buffer.
 			 */
 			if (*TTcl_Obj)(unsafe.Pointer(objPtr)).Fbytes == XtclEmptyStringRep {
-				(*TTcl_Obj)(unsafe.Pointer(objPtr)).Fbytes = XTcl_Alloc(tls, uint32(uint32(length))+libc.Uint32FromUint32(1))
+				(*TTcl_Obj)(unsafe.Pointer(objPtr)).Fbytes = XTcl_Alloc(tls, uint32(length)+libc.Uint32FromUint32(1))
 			} else {
-				(*TTcl_Obj)(unsafe.Pointer(objPtr)).Fbytes = XTcl_Realloc(tls, (*TTcl_Obj)(unsafe.Pointer(objPtr)).Fbytes, uint32(uint32(length))+libc.Uint32FromUint32(1))
+				(*TTcl_Obj)(unsafe.Pointer(objPtr)).Fbytes = XTcl_Realloc(tls, (*TTcl_Obj)(unsafe.Pointer(objPtr)).Fbytes, uint32(length)+libc.Uint32FromUint32(1))
 			}
 			(*TString)(unsafe.Pointer(stringPtr)).Fallocated = length
 		}
@@ -232274,9 +232377,9 @@ func XTcl_AttemptSetObjLength(tls *libc.TLS, objPtr uintptr, length int32) (r in
 		 */
 		if length > (*TString)(unsafe.Pointer(stringPtr)).Fallocated {
 			if (*TTcl_Obj)(unsafe.Pointer(objPtr)).Fbytes == XtclEmptyStringRep {
-				newBytes = XTclpAlloc(tls, uint32(uint32(length))+libc.Uint32FromUint32(1))
+				newBytes = XTclpAlloc(tls, uint32(length)+libc.Uint32FromUint32(1))
 			} else {
-				newBytes = XTclpRealloc(tls, (*TTcl_Obj)(unsafe.Pointer(objPtr)).Fbytes, uint32(uint32(length))+libc.Uint32FromUint32(1))
+				newBytes = XTclpRealloc(tls, (*TTcl_Obj)(unsafe.Pointer(objPtr)).Fbytes, uint32(length)+libc.Uint32FromUint32(1))
 			}
 			if newBytes == libc.UintptrFromInt32(0) {
 				return 0
@@ -232394,7 +232497,7 @@ func _SetUnicodeObj(tls *libc.TLS, objPtr uintptr, unicode uintptr, numChars int
 	})(unsafe.Pointer(objPtr + 32))).Fptr1 = stringPtr
 	(*TTcl_Obj)(unsafe.Pointer(objPtr)).FtypePtr = uintptr(unsafe.Pointer(&XtclStringType))
 	(*TString)(unsafe.Pointer(stringPtr)).FmaxChars = numChars
-	libc.Xmemcpy(tls, stringPtr+16, unicode, uint64(uint64(numChars))*uint64(2))
+	libc.Xmemcpy(tls, stringPtr+16, unicode, uint64(numChars)*uint64(2))
 	*(*TTcl_UniChar)(unsafe.Pointer(stringPtr + 16 + uintptr(numChars)*2)) = uint16(0)
 	(*TString)(unsafe.Pointer(stringPtr)).FnumChars = numChars
 	(*TString)(unsafe.Pointer(stringPtr)).FhasUnicode = int32(1)
@@ -232469,7 +232572,7 @@ func XTcl_AppendLimitedToObj(tls *libc.TLS, objPtr uintptr, bytes uintptr, lengt
 				}
 				v2 = v3
 			}
-			eLen = int32(int64(v2) - int64(int64(ellipsis)))
+			eLen = int32(int64(v2) - int64(ellipsis))
 		}
 		if bytes+uintptr(limit)+uintptr(1)-uintptr(eLen) < bytes+uintptr(2) {
 			v4 = bytes
@@ -232481,7 +232584,7 @@ func XTcl_AppendLimitedToObj(tls *libc.TLS, objPtr uintptr, bytes uintptr, lengt
 			}
 			v4 = v5
 		}
-		toCopy = int32(int64(v4) - int64(int64(bytes)))
+		toCopy = int32(int64(v4) - int64(bytes))
 	}
 	/*
 	 * If objPtr has a valid Unicode rep, then append the Unicode conversion
@@ -232755,7 +232858,7 @@ func _AppendUnicodeToUnicodeRep(tls *libc.TLS, objPtr uintptr, unicode uintptr, 
 		 * the reallocs below.
 		 */
 		if unicode != 0 && unicode >= stringPtr+16 && unicode <= stringPtr+16+uintptr((*TString)(unsafe.Pointer(stringPtr)).FmaxChars)*2 {
-			offset = int32((int64(int64(unicode)) - t__predefined_ptrdiff_t(stringPtr+16)) / 2)
+			offset = int32((int64(unicode) - t__predefined_ptrdiff_t(stringPtr+16)) / 2)
 		}
 		_GrowUnicodeBuffer(tls, objPtr, numChars)
 		stringPtr = (*(*struct {
@@ -232774,7 +232877,7 @@ func _AppendUnicodeToUnicodeRep(tls *libc.TLS, objPtr uintptr, unicode uintptr, 
 	 * trailing null.
 	 */
 	if unicode != 0 {
-		libc.Xmemmove(tls, stringPtr+16+uintptr((*TString)(unsafe.Pointer(stringPtr)).FnumChars)*2, unicode, uint64(uint64(appendNumChars))*uint64(2))
+		libc.Xmemmove(tls, stringPtr+16+uintptr((*TString)(unsafe.Pointer(stringPtr)).FnumChars)*2, unicode, uint64(appendNumChars)*uint64(2))
 	}
 	*(*TTcl_UniChar)(unsafe.Pointer(stringPtr + 16 + uintptr(numChars)*2)) = uint16(0)
 	(*TString)(unsafe.Pointer(stringPtr)).FnumChars = numChars
@@ -232910,7 +233013,7 @@ func _AppendUtfToUtfRep(tls *libc.TLS, objPtr uintptr, bytes uintptr, numBytes i
 		 * the reallocs below.
 		 */
 		if bytes != 0 && (*TTcl_Obj)(unsafe.Pointer(objPtr)).Fbytes != 0 && bytes >= (*TTcl_Obj)(unsafe.Pointer(objPtr)).Fbytes && bytes <= (*TTcl_Obj)(unsafe.Pointer(objPtr)).Fbytes+uintptr((*TTcl_Obj)(unsafe.Pointer(objPtr)).Flength) {
-			offset = int32(int64(int64(bytes)) - int64((*TTcl_Obj)(unsafe.Pointer(objPtr)).Fbytes))
+			offset = int32(int64(bytes) - int64((*TTcl_Obj)(unsafe.Pointer(objPtr)).Fbytes))
 		}
 		/*
 		 * TODO: consider passing flag=1: no overalloc on first append. This
@@ -232930,7 +233033,7 @@ func _AppendUtfToUtfRep(tls *libc.TLS, objPtr uintptr, bytes uintptr, numBytes i
 	(*TString)(unsafe.Pointer(stringPtr)).FnumChars = -int32(1)
 	(*TString)(unsafe.Pointer(stringPtr)).FhasUnicode = 0
 	if bytes != 0 {
-		libc.Xmemmove(tls, (*TTcl_Obj)(unsafe.Pointer(objPtr)).Fbytes+uintptr(oldLength), bytes, uint64(uint64(numBytes)))
+		libc.Xmemmove(tls, (*TTcl_Obj)(unsafe.Pointer(objPtr)).Fbytes+uintptr(oldLength), bytes, uint64(numBytes))
 	}
 	*(*int8)(unsafe.Pointer((*TTcl_Obj)(unsafe.Pointer(objPtr)).Fbytes + uintptr(newLength))) = 0
 	(*TTcl_Obj)(unsafe.Pointer(objPtr)).Flength = newLength
@@ -233458,14 +233561,14 @@ func XTcl_AppendFormatToObj(tls *libc.TLS, interp uintptr, appendObj uintptr, fo
 					}
 					if useShort != 0 {
 						s = int16(*(*int64)(unsafe.Pointer(bp + 40)))
-						isNegative = libc.BoolInt32(int32(int32(s)) < int32(libc.Int16FromInt32(0)))
+						isNegative = libc.BoolInt32(int32(s) < int32(libc.Int16FromInt32(0)))
 					} else {
 						isNegative = libc.BoolInt32(*(*int64)(unsafe.Pointer(bp + 40)) < libc.Int64FromInt32(0))
 					}
 				} else {
 					if useShort != 0 {
 						s = int16(*(*int64)(unsafe.Pointer(bp + 40)))
-						isNegative = libc.BoolInt32(int32(int32(s)) < int32(libc.Int16FromInt32(0)))
+						isNegative = libc.BoolInt32(int32(s) < int32(libc.Int16FromInt32(0)))
 					} else {
 						isNegative = libc.BoolInt32(*(*int64)(unsafe.Pointer(bp + 40)) < libc.Int64FromInt32(0))
 					}
@@ -233531,7 +233634,7 @@ func XTcl_AppendFormatToObj(tls *libc.TLS, interp uintptr, appendObj uintptr, fo
 					})(unsafe.Pointer(XtclFreeObjList + 32))).Fptr1
 					(*TTcl_Obj)(unsafe.Pointer(pure)).FrefCount = 0
 					(*TTcl_Obj)(unsafe.Pointer(pure)).Fbytes = libc.UintptrFromInt32(0)
-					(*TTcl_Obj)(unsafe.Pointer(pure)).FinternalRep.FlongValue = int64(int32(int32(s)))
+					(*TTcl_Obj)(unsafe.Pointer(pure)).FinternalRep.FlongValue = int64(int32(s))
 					(*TTcl_Obj)(unsafe.Pointer(pure)).FtypePtr = uintptr(unsafe.Pointer(&XtclIntType))
 				} else {
 					if useBig != 0 {
@@ -233623,8 +233726,8 @@ func XTcl_AppendFormatToObj(tls *libc.TLS, interp uintptr, appendObj uintptr, fo
 					}
 				}
 				if useShort != 0 {
-					us = uint16(uint16(s))
-					bits = uint64(uint64(us))
+					us = uint16(s)
+					bits = uint64(us)
 					for us != 0 {
 						numDigits++
 						us = uint16(int32(us) / base)
@@ -233633,10 +233736,10 @@ func XTcl_AppendFormatToObj(tls *libc.TLS, interp uintptr, appendObj uintptr, fo
 					if useBig != 0 && (*(*Tmp_int)(unsafe.Pointer(bp + 56))).Fused != 0 {
 						leftover = (*(*Tmp_int)(unsafe.Pointer(bp + 56))).Fused * int32(m_MP_DIGIT_BIT) % numBits
 						mask = ^libc.Uint32FromInt32(0) << (int32(m_MP_DIGIT_BIT) - leftover)
-						numDigits = int64(1) + int64((*(*Tmp_int)(unsafe.Pointer(bp + 56))).Fused)*int64(m_MP_DIGIT_BIT)/int64(int64(numBits))
+						numDigits = int64(1) + int64((*(*Tmp_int)(unsafe.Pointer(bp + 56))).Fused)*int64(m_MP_DIGIT_BIT)/int64(numBits)
 						for mask&*(*Tmp_digit)(unsafe.Pointer((*(*Tmp_int)(unsafe.Pointer(bp + 56))).Fdp + uintptr((*(*Tmp_int)(unsafe.Pointer(bp + 56))).Fused-int32(1))*4)) == uint32(0) {
 							numDigits--
-							mask >>= uint32(uint32(numBits))
+							mask >>= uint32(numBits)
 						}
 						if numDigits > int64(m_INT_MAX) {
 							msg = _overflow
@@ -233649,7 +233752,7 @@ func XTcl_AppendFormatToObj(tls *libc.TLS, interp uintptr, appendObj uintptr, fo
 							bits = ul
 							for ul != 0 {
 								numDigits++
-								ul /= uint64(uint64(base))
+								ul /= uint64(base)
 							}
 						}
 					}
@@ -233672,14 +233775,14 @@ func XTcl_AppendFormatToObj(tls *libc.TLS, interp uintptr, appendObj uintptr, fo
 				(*TTcl_Obj)(unsafe.Pointer(pure1)).Fbytes = XtclEmptyStringRep
 				(*TTcl_Obj)(unsafe.Pointer(pure1)).Flength = 0
 				(*TTcl_Obj)(unsafe.Pointer(pure1)).FtypePtr = libc.UintptrFromInt32(0)
-				XTcl_SetObjLength(tls, pure1, int32(int32(numDigits)))
+				XTcl_SetObjLength(tls, pure1, int32(numDigits))
 				if (*TTcl_Obj)(unsafe.Pointer(pure1)).Fbytes != 0 {
 					v30 = (*TTcl_Obj)(unsafe.Pointer(pure1)).Fbytes
 				} else {
 					v30 = XTcl_GetString(tls, pure1)
 				}
 				bytes1 = v30
-				v31 = int32(int32(numDigits))
+				v31 = int32(numDigits)
 				length2 = v31
 				toAppend = v31
 				for {
@@ -233689,7 +233792,7 @@ func XTcl_AppendFormatToObj(tls *libc.TLS, interp uintptr, appendObj uintptr, fo
 						break
 					}
 					if useBig != 0 && (*(*Tmp_int)(unsafe.Pointer(bp + 56))).Fused != 0 {
-						if index < (*(*Tmp_int)(unsafe.Pointer(bp + 56))).Fused && uint64(uint64(shift)) < libc.Uint64FromInt32(m_CHAR_BIT)*libc.Uint64FromInt64(8)-libc.Uint64FromInt32(m_MP_DIGIT_BIT) {
+						if index < (*(*Tmp_int)(unsafe.Pointer(bp + 56))).Fused && uint64(shift) < libc.Uint64FromInt32(m_CHAR_BIT)*libc.Uint64FromInt64(8)-libc.Uint64FromInt32(m_MP_DIGIT_BIT) {
 							v33 = index
 							index++
 							bits |= uint64(*(*Tmp_digit)(unsafe.Pointer((*(*Tmp_int)(unsafe.Pointer(bp + 56))).Fdp + uintptr(v33)*4))) << shift
@@ -233697,7 +233800,7 @@ func XTcl_AppendFormatToObj(tls *libc.TLS, interp uintptr, appendObj uintptr, fo
 						}
 						shift -= numBits
 					}
-					digitOffset = int32(bits % uint64(uint64(base)))
+					digitOffset = int32(bits % uint64(base))
 					if digitOffset > int32(9) {
 						if int32(*(*TTcl_UniChar)(unsafe.Pointer(bp + 4))) == int32('X') {
 							*(*int8)(unsafe.Pointer(bytes1 + uintptr(numDigits))) = int8(int32('A') + digitOffset - int32(10))
@@ -233707,7 +233810,7 @@ func XTcl_AppendFormatToObj(tls *libc.TLS, interp uintptr, appendObj uintptr, fo
 					} else {
 						*(*int8)(unsafe.Pointer(bytes1 + uintptr(numDigits))) = int8(int32('0') + digitOffset)
 					}
-					bits /= uint64(uint64(base))
+					bits /= uint64(base)
 				}
 				if useBig != 0 {
 					XTclBN_mp_clear(tls, bp+56)
@@ -234078,14 +234181,14 @@ func _AppendPrintfToObjVA(tls *libc.TLS, objPtr uintptr, format uintptr, argList
 					v4 = v5
 				}
 				q = v4
-				if !(XTcl_UtfCharComplete(tls, q, int32(int64(int64(end))-int64(int64(q)))) != 0) {
+				if !(XTcl_UtfCharComplete(tls, q, int32(int64(end)-int64(q))) != 0) {
 					end = q
 				}
 				q = bytes + uintptr(m_TCL_UTF_MAX)
 				for bytes < end && bytes < q && int32(*(*int8)(unsafe.Pointer(bytes)))&int32(0xC0) == int32(0x80) {
 					bytes++
 				}
-				XTcl_ListObjAppendElement(tls, libc.UintptrFromInt32(0), list, XTcl_NewStringObj(tls, bytes, int32(int64(int64(end))-int64(int64(bytes)))))
+				XTcl_ListObjAppendElement(tls, libc.UintptrFromInt32(0), list, XTcl_NewStringObj(tls, bytes, int32(int64(end)-int64(bytes))))
 			case int32('c'):
 				fallthrough
 			case int32('i'):
@@ -234820,7 +234923,7 @@ copyBytes:
 		i++
 	}
 	*(*int8)(unsafe.Pointer(dst)) = int8('\000')
-	(*TTcl_Obj)(unsafe.Pointer(objPtr)).Flength = int32(int64(int64(dst)) - int64((*TTcl_Obj)(unsafe.Pointer(objPtr)).Fbytes))
+	(*TTcl_Obj)(unsafe.Pointer(objPtr)).Flength = int32(int64(dst) - int64((*TTcl_Obj)(unsafe.Pointer(objPtr)).Fbytes))
 	return numChars
 }
 
@@ -235274,7 +235377,7 @@ func XTclParseNumber(tls *libc.TLS, interp uintptr, objPtr uintptr, expected uin
 		bytes = v1
 	}
 	p = bytes
-	len1 = uint64(uint64(numBytes))
+	len1 = uint64(numBytes)
 	acceptPoint = p
 	acceptLen = len1
 	for int32(1) != 0 {
@@ -235355,7 +235458,7 @@ func XTclParseNumber(tls *libc.TLS, interp uintptr, objPtr uintptr, expected uin
 		if int32(c) > int32(0x20) {
 			v34 = 0
 		} else {
-			v34 = XTclIsSpaceProc(tls, int32(int32(c)))
+			v34 = XTclIsSpaceProc(tls, int32(c))
 		}
 		if v34 != 0 {
 			if flags&int32(m_TCL_PARSE_NO_WHITESPACE) != 0 {
@@ -235363,11 +235466,11 @@ func XTclParseNumber(tls *libc.TLS, interp uintptr, objPtr uintptr, expected uin
 			}
 			goto _33
 		} else {
-			if int32(int32(c)) == int32('+') {
+			if int32(c) == int32('+') {
 				state = 1
 				goto _33
 			} else {
-				if int32(int32(c)) == int32('-') {
+				if int32(c) == int32('-') {
 					signum = int32(1)
 					state = 1
 					goto _33
@@ -235380,7 +235483,7 @@ func XTclParseNumber(tls *libc.TLS, interp uintptr, objPtr uintptr, expected uin
 		 * Scanned a leading + or -. Acceptable characters are digits,
 		 * period, I, and N.
 		 */
-		if int32(int32(c)) == int32('0') {
+		if int32(c) == int32('0') {
 			if flags&int32(m_TCL_PARSE_DECIMAL_ONLY) != 0 {
 				state = 10
 			} else {
@@ -235398,7 +235501,7 @@ func XTclParseNumber(tls *libc.TLS, interp uintptr, objPtr uintptr, expected uin
 						goto zeroo
 					} else {
 						if libc.BoolInt32(uint32(uint8(c))-uint32('0') < uint32(10)) != 0 {
-							*(*TTcl_WideUInt)(unsafe.Pointer(bp)) = uint64(int32(int32(c)) - int32('0'))
+							*(*TTcl_WideUInt)(unsafe.Pointer(bp)) = uint64(int32(c) - int32('0'))
 							numSigDigs = int32(1)
 							state = 10
 							goto _33
@@ -235406,15 +235509,15 @@ func XTclParseNumber(tls *libc.TLS, interp uintptr, objPtr uintptr, expected uin
 							if flags&int32(m_TCL_PARSE_INTEGER_ONLY) != 0 {
 								goto endgame
 							} else {
-								if int32(int32(c)) == int32('.') {
+								if int32(c) == int32('.') {
 									state = 11
 									goto _33
 								} else {
-									if int32(int32(c)) == int32('I') || int32(int32(c)) == int32('i') {
+									if int32(c) == int32('I') || int32(c) == int32('i') {
 										state = 16
 										goto _33
 									} else {
-										if int32(int32(c)) == int32('N') || int32(int32(c)) == int32('n') {
+										if int32(c) == int32('N') || int32(c) == int32('n') {
 											state = 24
 											goto _33
 										}
@@ -235437,7 +235540,7 @@ func XTclParseNumber(tls *libc.TLS, interp uintptr, objPtr uintptr, expected uin
 		acceptState = state
 		acceptPoint = p
 		acceptLen = len1
-		if int32(int32(c)) == int32('x') || int32(int32(c)) == int32('X') {
+		if int32(c) == int32('x') || int32(c) == int32('X') {
 			if flags&(libc.Int32FromInt32(m_TCL_PARSE_OCTAL_ONLY)|libc.Int32FromInt32(m_TCL_PARSE_BINARY_ONLY)) != 0 {
 				goto endgame
 			}
@@ -235450,7 +235553,7 @@ func XTclParseNumber(tls *libc.TLS, interp uintptr, objPtr uintptr, expected uin
 		if flags&int32(m_TCL_PARSE_SCAN_PREFIXES) != 0 {
 			goto zeroo
 		}
-		if int32(int32(c)) == int32('b') || int32(int32(c)) == int32('B') {
+		if int32(c) == int32('b') || int32(c) == int32('B') {
 			if flags&int32(m_TCL_PARSE_OCTAL_ONLY) != 0 {
 				goto endgame
 			}
@@ -235460,7 +235563,7 @@ func XTclParseNumber(tls *libc.TLS, interp uintptr, objPtr uintptr, expected uin
 		if flags&int32(m_TCL_PARSE_BINARY_ONLY) != 0 {
 			goto zerob
 		}
-		if int32(int32(c)) == int32('o') || int32(int32(c)) == int32('O') {
+		if int32(c) == int32('o') || int32(c) == int32('O') {
 			explicitOctal = int32(1)
 			state = 4
 			goto _33
@@ -235478,22 +235581,22 @@ func XTclParseNumber(tls *libc.TLS, interp uintptr, objPtr uintptr, expected uin
 		/* FALLTHROUGH */
 	_7:
 	zeroo:
-		if int32(int32(c)) == int32('0') {
+		if int32(c) == int32('0') {
 			numTrailZeros++
 			state = 8
 			goto _33
 		} else {
-			if int32(int32(c)) >= int32('1') && int32(int32(c)) <= int32('7') {
+			if int32(c) >= int32('1') && int32(c) <= int32('7') {
 				if objPtr != libc.UintptrFromInt32(0) {
 					shift = int32(3) * (numTrailZeros + int32(1))
-					significandOverflow = _AccumulateDecimalDigit(tls, uint32(int32(int32(c))-libc.Int32FromUint8('0')), numTrailZeros, bp, bp+8, significandOverflow)
+					significandOverflow = _AccumulateDecimalDigit(tls, uint32(int32(c)-libc.Int32FromUint8('0')), numTrailZeros, bp, bp+8, significandOverflow)
 					if !(octalSignificandOverflow != 0) {
 						/*
 						 * Shifting by as many or more bits than are in the
 						 * value being shifted is undefined behavior. Check
 						 * for too large shifts first.
 						 */
-						if octalSignificandWide != uint64(0) && (uint64(uint64(shift)) >= libc.Uint64FromInt32(m_CHAR_BIT)*libc.Uint64FromInt64(8) || octalSignificandWide > uint64(-libc.Int32FromInt32(1))>>shift) {
+						if octalSignificandWide != uint64(0) && (uint64(shift) >= libc.Uint64FromInt32(m_CHAR_BIT)*libc.Uint64FromInt64(8) || octalSignificandWide > uint64(-libc.Int32FromInt32(1))>>shift) {
 							octalSignificandOverflow = int32(1)
 							XTclBNInitBignumFromWideUInt(tls, bp+32, octalSignificandWide)
 						}
@@ -235506,12 +235609,12 @@ func XTclParseNumber(tls *libc.TLS, interp uintptr, objPtr uintptr, expected uin
 						 * significand is 0 to avoid undefined behavior.
 						 */
 						if octalSignificandWide != uint64(0) {
-							octalSignificandWide <<= uint64(uint64(shift))
+							octalSignificandWide <<= uint64(shift)
 						}
-						octalSignificandWide += uint64(int32(int32(c)) - int32('0'))
+						octalSignificandWide += uint64(int32(c) - int32('0'))
 					} else {
 						XTclBN_mp_mul_2d(tls, bp+32, shift, bp+32)
-						XTclBN_mp_add_d(tls, bp+32, uint32(int32(int32(c))-libc.Int32FromUint8('0')), bp+32)
+						XTclBN_mp_add_d(tls, bp+32, uint32(int32(c)-libc.Int32FromUint8('0')), bp+32)
 					}
 				}
 				if numSigDigs != 0 {
@@ -235543,14 +235646,14 @@ func XTclParseNumber(tls *libc.TLS, interp uintptr, objPtr uintptr, expected uin
 		 * radix point or E. This is an invalid octal number, but might
 		 * still be floating point.
 		 */
-		if int32(int32(c)) == int32('0') {
+		if int32(c) == int32('0') {
 			numTrailZeros++
 			state = 9
 			goto _33
 		} else {
 			if libc.BoolInt32(uint32(uint8(c))-uint32('0') < uint32(10)) != 0 {
 				if objPtr != libc.UintptrFromInt32(0) {
-					significandOverflow = _AccumulateDecimalDigit(tls, uint32(int32(int32(c))-libc.Int32FromUint8('0')), numTrailZeros, bp, bp+8, significandOverflow)
+					significandOverflow = _AccumulateDecimalDigit(tls, uint32(int32(c)-libc.Int32FromUint8('0')), numTrailZeros, bp, bp+8, significandOverflow)
 				}
 				if numSigDigs != 0 {
 					numSigDigs += numTrailZeros + int32(1)
@@ -235561,11 +235664,11 @@ func XTclParseNumber(tls *libc.TLS, interp uintptr, objPtr uintptr, expected uin
 				state = 9
 				goto _33
 			} else {
-				if int32(int32(c)) == int32('.') {
+				if int32(c) == int32('.') {
 					state = 12
 					goto _33
 				} else {
-					if int32(int32(c)) == int32('E') || int32(int32(c)) == int32('e') {
+					if int32(c) == int32('E') || int32(c) == int32('e') {
 						state = 13
 						goto _33
 					}
@@ -235585,19 +235688,19 @@ func XTclParseNumber(tls *libc.TLS, interp uintptr, objPtr uintptr, expected uin
 		/* FALLTHROUGH */
 	_10:
 	zerox:
-		if int32(int32(c)) == int32('0') {
+		if int32(c) == int32('0') {
 			numTrailZeros++
 			state = 7
 			goto _33
 		} else {
 			if libc.BoolInt32(uint32(uint8(c))-uint32('0') < uint32(10)) != 0 {
-				d = int8(int32(int32(c)) - libc.Int32FromUint8('0'))
+				d = int8(int32(c) - libc.Int32FromUint8('0'))
 			} else {
-				if int32(int32(c)) >= int32('A') && int32(int32(c)) <= int32('F') {
-					d = int8(int32(int32(c)) - libc.Int32FromUint8('A') + libc.Int32FromInt32(10))
+				if int32(c) >= int32('A') && int32(c) <= int32('F') {
+					d = int8(int32(c) - libc.Int32FromUint8('A') + libc.Int32FromInt32(10))
 				} else {
-					if int32(int32(c)) >= int32('a') && int32(int32(c)) <= int32('f') {
-						d = int8(int32(int32(c)) - libc.Int32FromUint8('a') + libc.Int32FromInt32(10))
+					if int32(c) >= int32('a') && int32(c) <= int32('f') {
+						d = int8(int32(c) - libc.Int32FromUint8('a') + libc.Int32FromInt32(10))
 					} else {
 						goto endgame
 					}
@@ -235612,7 +235715,7 @@ func XTclParseNumber(tls *libc.TLS, interp uintptr, objPtr uintptr, expected uin
 				 * value being shifted is undefined behavior. Check
 				 * for too large shifts first.
 				 */
-				if *(*TTcl_WideUInt)(unsafe.Pointer(bp)) != uint64(0) && (uint64(uint64(shift)) >= libc.Uint64FromInt32(m_CHAR_BIT)*libc.Uint64FromInt64(8) || *(*TTcl_WideUInt)(unsafe.Pointer(bp)) > uint64(-libc.Int32FromInt32(1))>>shift) {
+				if *(*TTcl_WideUInt)(unsafe.Pointer(bp)) != uint64(0) && (uint64(shift) >= libc.Uint64FromInt32(m_CHAR_BIT)*libc.Uint64FromInt64(8) || *(*TTcl_WideUInt)(unsafe.Pointer(bp)) > uint64(-libc.Int32FromInt32(1))>>shift) {
 					significandOverflow = int32(1)
 					XTclBNInitBignumFromWideUInt(tls, bp+8, *(*TTcl_WideUInt)(unsafe.Pointer(bp)))
 				}
@@ -235625,12 +235728,12 @@ func XTclParseNumber(tls *libc.TLS, interp uintptr, objPtr uintptr, expected uin
 				 * significand is 0 to avoid undefined behavior.
 				 */
 				if *(*TTcl_WideUInt)(unsafe.Pointer(bp)) != uint64(0) {
-					*(*TTcl_WideUInt)(unsafe.Pointer(bp)) <<= uint64(uint64(shift))
+					*(*TTcl_WideUInt)(unsafe.Pointer(bp)) <<= uint64(shift)
 				}
-				*(*TTcl_WideUInt)(unsafe.Pointer(bp)) += uint64(uint64(d))
+				*(*TTcl_WideUInt)(unsafe.Pointer(bp)) += uint64(d)
 			} else {
 				XTclBN_mp_mul_2d(tls, bp+8, shift, bp+8)
-				XTclBN_mp_add_d(tls, bp+8, uint32(uint32(d)), bp+8)
+				XTclBN_mp_add_d(tls, bp+8, uint32(d), bp+8)
 			}
 		}
 		numTrailZeros = 0
@@ -235643,12 +235746,12 @@ func XTclParseNumber(tls *libc.TLS, interp uintptr, objPtr uintptr, expected uin
 		/* FALLTHRU */
 	_12:
 	zerob:
-		if int32(int32(c)) == int32('0') {
+		if int32(c) == int32('0') {
 			numTrailZeros++
 			state = 6
 			goto _33
 		} else {
-			if int32(int32(c)) != int32('1') {
+			if int32(c) != int32('1') {
 				goto endgame
 			}
 		}
@@ -235660,7 +235763,7 @@ func XTclParseNumber(tls *libc.TLS, interp uintptr, objPtr uintptr, expected uin
 				 * value being shifted is undefined behavior. Check
 				 * for too large shifts first.
 				 */
-				if *(*TTcl_WideUInt)(unsafe.Pointer(bp)) != uint64(0) && (uint64(uint64(shift)) >= libc.Uint64FromInt32(m_CHAR_BIT)*libc.Uint64FromInt64(8) || *(*TTcl_WideUInt)(unsafe.Pointer(bp)) > uint64(-libc.Int32FromInt32(1))>>shift) {
+				if *(*TTcl_WideUInt)(unsafe.Pointer(bp)) != uint64(0) && (uint64(shift) >= libc.Uint64FromInt32(m_CHAR_BIT)*libc.Uint64FromInt64(8) || *(*TTcl_WideUInt)(unsafe.Pointer(bp)) > uint64(-libc.Int32FromInt32(1))>>shift) {
 					significandOverflow = int32(1)
 					XTclBNInitBignumFromWideUInt(tls, bp+8, *(*TTcl_WideUInt)(unsafe.Pointer(bp)))
 				}
@@ -235673,7 +235776,7 @@ func XTclParseNumber(tls *libc.TLS, interp uintptr, objPtr uintptr, expected uin
 				 * significand is 0 to avoid undefined behavior.
 				 */
 				if *(*TTcl_WideUInt)(unsafe.Pointer(bp)) != uint64(0) {
-					*(*TTcl_WideUInt)(unsafe.Pointer(bp)) <<= uint64(uint64(shift))
+					*(*TTcl_WideUInt)(unsafe.Pointer(bp)) <<= uint64(shift)
 				}
 				*(*TTcl_WideUInt)(unsafe.Pointer(bp)) += uint64(1)
 			} else {
@@ -235692,14 +235795,14 @@ func XTclParseNumber(tls *libc.TLS, interp uintptr, objPtr uintptr, expected uin
 		acceptState = state
 		acceptPoint = p
 		acceptLen = len1
-		if int32(int32(c)) == int32('0') {
+		if int32(c) == int32('0') {
 			numTrailZeros++
 			state = 10
 			goto _33
 		} else {
 			if libc.BoolInt32(uint32(uint8(c))-uint32('0') < uint32(10)) != 0 {
 				if objPtr != libc.UintptrFromInt32(0) {
-					significandOverflow = _AccumulateDecimalDigit(tls, uint32(int32(int32(c))-libc.Int32FromUint8('0')), numTrailZeros, bp, bp+8, significandOverflow)
+					significandOverflow = _AccumulateDecimalDigit(tls, uint32(int32(c)-libc.Int32FromUint8('0')), numTrailZeros, bp, bp+8, significandOverflow)
 				}
 				numSigDigs += numTrailZeros + int32(1)
 				numTrailZeros = 0
@@ -235709,11 +235812,11 @@ func XTclParseNumber(tls *libc.TLS, interp uintptr, objPtr uintptr, expected uin
 				if flags&int32(m_TCL_PARSE_INTEGER_ONLY) != 0 {
 					goto endgame
 				} else {
-					if int32(int32(c)) == int32('.') {
+					if int32(c) == int32('.') {
 						state = 12
 						goto _33
 					} else {
-						if int32(int32(c)) == int32('E') || int32(int32(c)) == int32('e') {
+						if int32(c) == int32('E') || int32(c) == int32('e') {
 							state = 13
 							goto _33
 						}
@@ -235731,13 +235834,13 @@ func XTclParseNumber(tls *libc.TLS, interp uintptr, objPtr uintptr, expected uin
 		acceptState = state
 		acceptPoint = p
 		acceptLen = len1
-		if int32(int32(c)) == int32('E') || int32(int32(c)) == int32('e') {
+		if int32(c) == int32('E') || int32(c) == int32('e') {
 			state = 13
 			goto _33
 		}
 		/* FALLTHROUGH */
 	_15:
-		if int32(int32(c)) == int32('0') {
+		if int32(c) == int32('0') {
 			numDigitsAfterDp++
 			numTrailZeros++
 			state = 12
@@ -235746,7 +235849,7 @@ func XTclParseNumber(tls *libc.TLS, interp uintptr, objPtr uintptr, expected uin
 			if libc.BoolInt32(uint32(uint8(c))-uint32('0') < uint32(10)) != 0 {
 				numDigitsAfterDp++
 				if objPtr != libc.UintptrFromInt32(0) {
-					significandOverflow = _AccumulateDecimalDigit(tls, uint32(int32(int32(c))-libc.Int32FromUint8('0')), numTrailZeros, bp, bp+8, significandOverflow)
+					significandOverflow = _AccumulateDecimalDigit(tls, uint32(int32(c)-libc.Int32FromUint8('0')), numTrailZeros, bp, bp+8, significandOverflow)
 				}
 				if numSigDigs != 0 {
 					numSigDigs += numTrailZeros + int32(1)
@@ -235765,11 +235868,11 @@ func XTclParseNumber(tls *libc.TLS, interp uintptr, objPtr uintptr, expected uin
 		 * character follows before using the C library strtol routine,
 		 * which allows whitespace.
 		 */
-		if int32(int32(c)) == int32('+') {
+		if int32(c) == int32('+') {
 			state = 14
 			goto _33
 		} else {
-			if int32(int32(c)) == int32('-') {
+			if int32(c) == int32('-') {
 				exponentSignum = int32(1)
 				state = 14
 				goto _33
@@ -235782,7 +235885,7 @@ func XTclParseNumber(tls *libc.TLS, interp uintptr, objPtr uintptr, expected uin
 		 * character.
 		 */
 		if libc.BoolInt32(uint32(uint8(c))-uint32('0') < uint32(10)) != 0 {
-			exponent = int64(int32(int32(c)) - int32('0'))
+			exponent = int64(int32(c) - int32('0'))
 			state = 15
 			goto _33
 		}
@@ -235797,7 +235900,7 @@ func XTclParseNumber(tls *libc.TLS, interp uintptr, objPtr uintptr, expected uin
 		acceptLen = len1
 		if libc.BoolInt32(uint32(uint8(c))-uint32('0') < uint32(10)) != 0 {
 			if exponent < (libc.Int64FromInt64(0x7fffffffffffffff)-libc.Int64FromInt32(9))/libc.Int64FromInt32(10) {
-				exponent = int64(10)*exponent + int64(int32(int32(c))-libc.Int32FromUint8('0'))
+				exponent = int64(10)*exponent + int64(int32(c)-libc.Int32FromUint8('0'))
 			} else {
 				exponent = int64(0x7fffffffffffffff)
 			}
@@ -235810,13 +235913,13 @@ func XTclParseNumber(tls *libc.TLS, interp uintptr, objPtr uintptr, expected uin
 		 * as an abbreviation; other prefices are not.
 		 */
 	_19:
-		if int32(int32(c)) == int32('n') || int32(int32(c)) == int32('N') {
+		if int32(c) == int32('n') || int32(c) == int32('N') {
 			state = 17
 			goto _33
 		}
 		goto endgame
 	_20:
-		if int32(int32(c)) == int32('f') || int32(int32(c)) == int32('F') {
+		if int32(c) == int32('f') || int32(c) == int32('F') {
 			state = 18
 			goto _33
 		}
@@ -235825,31 +235928,31 @@ func XTclParseNumber(tls *libc.TLS, interp uintptr, objPtr uintptr, expected uin
 		acceptState = state
 		acceptPoint = p
 		acceptLen = len1
-		if int32(int32(c)) == int32('i') || int32(int32(c)) == int32('I') {
+		if int32(c) == int32('i') || int32(c) == int32('I') {
 			state = 19
 			goto _33
 		}
 		goto endgame
 	_22:
-		if int32(int32(c)) == int32('n') || int32(int32(c)) == int32('N') {
+		if int32(c) == int32('n') || int32(c) == int32('N') {
 			state = 20
 			goto _33
 		}
 		goto endgame
 	_23:
-		if int32(int32(c)) == int32('i') || int32(int32(c)) == int32('I') {
+		if int32(c) == int32('i') || int32(c) == int32('I') {
 			state = 21
 			goto _33
 		}
 		goto endgame
 	_24:
-		if int32(int32(c)) == int32('t') || int32(int32(c)) == int32('T') {
+		if int32(c) == int32('t') || int32(c) == int32('T') {
 			state = 22
 			goto _33
 		}
 		goto endgame
 	_25:
-		if int32(int32(c)) == int32('y') || int32(int32(c)) == int32('Y') {
+		if int32(c) == int32('y') || int32(c) == int32('Y') {
 			state = 23
 			goto _33
 		}
@@ -235858,13 +235961,13 @@ func XTclParseNumber(tls *libc.TLS, interp uintptr, objPtr uintptr, expected uin
 		 * Parse NaN's.
 		 */
 	_26:
-		if int32(int32(c)) == int32('a') || int32(int32(c)) == int32('A') {
+		if int32(c) == int32('a') || int32(c) == int32('A') {
 			state = 25
 			goto _33
 		}
 		goto endgame
 	_27:
-		if int32(int32(c)) == int32('n') || int32(int32(c)) == int32('N') {
+		if int32(c) == int32('n') || int32(c) == int32('N') {
 			state = 26
 			goto _33
 		}
@@ -235873,7 +235976,7 @@ func XTclParseNumber(tls *libc.TLS, interp uintptr, objPtr uintptr, expected uin
 		acceptState = state
 		acceptPoint = p
 		acceptLen = len1
-		if int32(int32(c)) == int32('(') {
+		if int32(c) == int32('(') {
 			state = 27
 			goto _33
 		}
@@ -235882,7 +235985,7 @@ func XTclParseNumber(tls *libc.TLS, interp uintptr, objPtr uintptr, expected uin
 		 * Parse NaN(hexdigits)
 		 */
 	_29:
-		if int32(int32(c)) == int32(')') {
+		if int32(c) == int32(')') {
 			state = 29
 			goto _33
 		}
@@ -235891,27 +235994,27 @@ func XTclParseNumber(tls *libc.TLS, interp uintptr, objPtr uintptr, expected uin
 		if int32(c) > int32(0x20) {
 			v35 = 0
 		} else {
-			v35 = XTclIsSpaceProc(tls, int32(int32(c)))
+			v35 = XTclIsSpaceProc(tls, int32(c))
 		}
 		if v35 != 0 {
 			goto _33
 		}
 		if numSigDigs < int32(13) {
-			if int32(int32(c)) >= int32('0') && int32(int32(c)) <= int32('9') {
-				d = int8(int32(int32(c)) - int32('0'))
+			if int32(c) >= int32('0') && int32(c) <= int32('9') {
+				d = int8(int32(c) - int32('0'))
 			} else {
-				if int32(int32(c)) >= int32('a') && int32(int32(c)) <= int32('f') {
-					d = int8(int32(10) + int32(int32(c)) - int32('a'))
+				if int32(c) >= int32('a') && int32(c) <= int32('f') {
+					d = int8(int32(10) + int32(c) - int32('a'))
 				} else {
-					if int32(int32(c)) >= int32('A') && int32(int32(c)) <= int32('F') {
-						d = int8(int32(10) + int32(int32(c)) - int32('A'))
+					if int32(c) >= int32('A') && int32(c) <= int32('F') {
+						d = int8(int32(10) + int32(c) - int32('A'))
 					} else {
 						goto endgame
 					}
 				}
 			}
 			numSigDigs++
-			*(*TTcl_WideUInt)(unsafe.Pointer(bp)) = *(*TTcl_WideUInt)(unsafe.Pointer(bp))<<libc.Int32FromInt32(4) + uint64(uint64(d))
+			*(*TTcl_WideUInt)(unsafe.Pointer(bp)) = *(*TTcl_WideUInt)(unsafe.Pointer(bp))<<libc.Int32FromInt32(4) + uint64(d)
 			state = 28
 			goto _33
 		}
@@ -235927,7 +236030,7 @@ func XTclParseNumber(tls *libc.TLS, interp uintptr, objPtr uintptr, expected uin
 		len1--
 	}
 endgame:
-	if int32(acceptState) == 0 {
+	if acceptState == 0 {
 		/*
 		 * No numeric string at all found.
 		 */
@@ -236062,7 +236165,7 @@ endgame:
 		XTcl_Panic(tls, ts+57735, libc.VaList(bp+64, acceptState, bytes))
 	_56:
 		shift = numTrailZeros
-		if !(significandOverflow != 0) && *(*TTcl_WideUInt)(unsafe.Pointer(bp)) != uint64(0) && (uint64(uint64(shift)) >= libc.Uint64FromInt32(m_CHAR_BIT)*libc.Uint64FromInt64(8) || *(*TTcl_WideUInt)(unsafe.Pointer(bp)) > (uint64(-libc.Int32FromInt32(1))>>libc.Int32FromInt32(1)+uint64(uint64(signum)))>>shift) {
+		if !(significandOverflow != 0) && *(*TTcl_WideUInt)(unsafe.Pointer(bp)) != uint64(0) && (uint64(shift) >= libc.Uint64FromInt32(m_CHAR_BIT)*libc.Uint64FromInt64(8) || *(*TTcl_WideUInt)(unsafe.Pointer(bp)) > (uint64(-libc.Int32FromInt32(1))>>libc.Int32FromInt32(1)+uint64(signum))>>shift) {
 			significandOverflow = int32(1)
 			XTclBNInitBignumFromWideUInt(tls, bp+8, *(*TTcl_WideUInt)(unsafe.Pointer(bp)))
 		}
@@ -236075,7 +236178,7 @@ endgame:
 				 * significand is 0 to avoid undefined behavior.
 				 */
 				if *(*TTcl_WideUInt)(unsafe.Pointer(bp)) != uint64(0) {
-					*(*TTcl_WideUInt)(unsafe.Pointer(bp)) <<= uint64(uint64(shift))
+					*(*TTcl_WideUInt)(unsafe.Pointer(bp)) <<= uint64(shift)
 				}
 			} else {
 				XTclBN_mp_mul_2d(tls, bp+8, shift, bp+8)
@@ -236087,7 +236190,7 @@ endgame:
 		 * Returning a hex integer. Final scaling step.
 		 */
 		shift = int32(4) * numTrailZeros
-		if !(significandOverflow != 0) && *(*TTcl_WideUInt)(unsafe.Pointer(bp)) != uint64(0) && (uint64(uint64(shift)) >= libc.Uint64FromInt32(m_CHAR_BIT)*libc.Uint64FromInt64(8) || *(*TTcl_WideUInt)(unsafe.Pointer(bp)) > (uint64(-libc.Int32FromInt32(1))>>libc.Int32FromInt32(1)+uint64(uint64(signum)))>>shift) {
+		if !(significandOverflow != 0) && *(*TTcl_WideUInt)(unsafe.Pointer(bp)) != uint64(0) && (uint64(shift) >= libc.Uint64FromInt32(m_CHAR_BIT)*libc.Uint64FromInt64(8) || *(*TTcl_WideUInt)(unsafe.Pointer(bp)) > (uint64(-libc.Int32FromInt32(1))>>libc.Int32FromInt32(1)+uint64(signum))>>shift) {
 			significandOverflow = int32(1)
 			XTclBNInitBignumFromWideUInt(tls, bp+8, *(*TTcl_WideUInt)(unsafe.Pointer(bp)))
 		}
@@ -236100,7 +236203,7 @@ endgame:
 				 * significand is 0 to avoid undefined behavior.
 				 */
 				if *(*TTcl_WideUInt)(unsafe.Pointer(bp)) != uint64(0) {
-					*(*TTcl_WideUInt)(unsafe.Pointer(bp)) <<= uint64(uint64(shift))
+					*(*TTcl_WideUInt)(unsafe.Pointer(bp)) <<= uint64(shift)
 				}
 			} else {
 				XTclBN_mp_mul_2d(tls, bp+8, shift, bp+8)
@@ -236112,7 +236215,7 @@ endgame:
 		 * Returning an octal integer. Final scaling step.
 		 */
 		shift = int32(3) * numTrailZeros
-		if !(octalSignificandOverflow != 0) && octalSignificandWide != uint64(0) && (uint64(uint64(shift)) >= libc.Uint64FromInt32(m_CHAR_BIT)*libc.Uint64FromInt64(8) || octalSignificandWide > (uint64(-libc.Int32FromInt32(1))>>libc.Int32FromInt32(1)+uint64(uint64(signum)))>>shift) {
+		if !(octalSignificandOverflow != 0) && octalSignificandWide != uint64(0) && (uint64(shift) >= libc.Uint64FromInt32(m_CHAR_BIT)*libc.Uint64FromInt64(8) || octalSignificandWide > (uint64(-libc.Int32FromInt32(1))>>libc.Int32FromInt32(1)+uint64(signum))>>shift) {
 			octalSignificandOverflow = int32(1)
 			XTclBNInitBignumFromWideUInt(tls, bp+32, octalSignificandWide)
 		}
@@ -236125,14 +236228,14 @@ endgame:
 				 * significand is 0 to avoid undefined behavior.
 				 */
 				if octalSignificandWide != uint64(0) {
-					octalSignificandWide <<= uint64(uint64(shift))
+					octalSignificandWide <<= uint64(shift)
 				}
 			} else {
 				XTclBN_mp_mul_2d(tls, bp+32, shift, bp+32)
 			}
 		}
 		if !(octalSignificandOverflow != 0) {
-			if octalSignificandWide > ^libc.Uint64FromInt32(0)>>libc.Int32FromInt32(1)+uint64(uint64(signum)) {
+			if octalSignificandWide > ^libc.Uint64FromInt32(0)>>libc.Int32FromInt32(1)+uint64(signum) {
 				XTclBNInitBignumFromWideUInt(tls, bp+32, octalSignificandWide)
 				octalSignificandOverflow = int32(1)
 			} else {
@@ -236140,7 +236243,7 @@ endgame:
 				if signum != 0 {
 					(*TTcl_Obj)(unsafe.Pointer(objPtr)).FinternalRep.FlongValue = int64(-octalSignificandWide)
 				} else {
-					(*TTcl_Obj)(unsafe.Pointer(objPtr)).FinternalRep.FlongValue = int64(int64(octalSignificandWide))
+					(*TTcl_Obj)(unsafe.Pointer(objPtr)).FinternalRep.FlongValue = int64(octalSignificandWide)
 				}
 			}
 		}
@@ -236154,13 +236257,13 @@ endgame:
 	_60:
 	_59:
 		significandOverflow = _AccumulateDecimalDigit(tls, uint32(0), numTrailZeros-int32(1), bp, bp+8, significandOverflow)
-		if !(significandOverflow != 0) && *(*TTcl_WideUInt)(unsafe.Pointer(bp)) > uint64(-libc.Int32FromInt32(1))>>libc.Int32FromInt32(1)+uint64(uint64(signum)) {
+		if !(significandOverflow != 0) && *(*TTcl_WideUInt)(unsafe.Pointer(bp)) > uint64(-libc.Int32FromInt32(1))>>libc.Int32FromInt32(1)+uint64(signum) {
 			significandOverflow = int32(1)
 			XTclBNInitBignumFromWideUInt(tls, bp+8, *(*TTcl_WideUInt)(unsafe.Pointer(bp)))
 		}
 	returnInteger:
 		if !(significandOverflow != 0) {
-			if *(*TTcl_WideUInt)(unsafe.Pointer(bp)) > ^libc.Uint64FromInt32(0)>>libc.Int32FromInt32(1)+uint64(uint64(signum)) {
+			if *(*TTcl_WideUInt)(unsafe.Pointer(bp)) > ^libc.Uint64FromInt32(0)>>libc.Int32FromInt32(1)+uint64(signum) {
 				XTclBNInitBignumFromWideUInt(tls, bp+8, *(*TTcl_WideUInt)(unsafe.Pointer(bp)))
 				significandOverflow = int32(1)
 			} else {
@@ -236203,16 +236306,16 @@ endgame:
 		 * respectively.
 		 */
 		if exponent >= 0 {
-			if exponent-int64(int64(numDigitsAfterDp)) > int64(0x7fffffffffffffff)-int64(int64(numTrailZeros)) {
+			if exponent-int64(numDigitsAfterDp) > int64(0x7fffffffffffffff)-int64(numTrailZeros) {
 				exponent = int64(0x7fffffffffffffff)
 			} else {
-				exponent = exponent - int64(int64(numDigitsAfterDp)) + int64(int64(numTrailZeros))
+				exponent = exponent - int64(numDigitsAfterDp) + int64(numTrailZeros)
 			}
 		} else {
-			if exponent+int64(int64(numTrailZeros)) < -libc.Int64FromInt64(0x7fffffffffffffff)-libc.Int64FromInt32(1)+int64(int64(numDigitsAfterDp)) {
+			if exponent+int64(numTrailZeros) < -libc.Int64FromInt64(0x7fffffffffffffff)-libc.Int64FromInt32(1)+int64(numDigitsAfterDp) {
 				exponent = -libc.Int64FromInt64(0x7fffffffffffffff) - libc.Int64FromInt32(1)
 			} else {
-				exponent = exponent + int64(int64(numTrailZeros)) - int64(int64(numDigitsAfterDp))
+				exponent = exponent + int64(numTrailZeros) - int64(numDigitsAfterDp)
 			}
 		}
 		/*
@@ -236253,7 +236356,7 @@ endgame:
 			msg = XTcl_ObjPrintf(tls, ts+57831, libc.VaList(bp+64, expected))
 			XTcl_AppendLimitedToObj(tls, msg, bytes, numBytes, int32(50), ts+1943)
 			XTcl_AppendToObj(tls, msg, ts+24811, -int32(1))
-			if int32(state) == 9 {
+			if state == 9 {
 				XTcl_AppendToObj(tls, msg, ts+57853, -int32(1))
 			}
 			XTcl_SetObjResult(tls, interp, msg)
@@ -236304,10 +236407,10 @@ func _AccumulateDecimalDigit(tls *libc.TLS, digit uint32, numZeros int32, wideRe
 			/*
 			 * There's no need to multiply if the multiplicand is zero.
 			 */
-			*(*TTcl_WideUInt)(unsafe.Pointer(wideRepPtr)) = uint64(uint64(digit))
+			*(*TTcl_WideUInt)(unsafe.Pointer(wideRepPtr)) = uint64(digit)
 			return 0
 		} else {
-			if numZeros >= _maxpow10_wide || w > (uint64(-libc.Int32FromInt32(1))-uint64(uint64(digit))) / *(*TTcl_WideUInt)(unsafe.Pointer(_pow10_wide + uintptr(numZeros+int32(1))*8)) {
+			if numZeros >= _maxpow10_wide || w > (uint64(-libc.Int32FromInt32(1))-uint64(digit)) / *(*TTcl_WideUInt)(unsafe.Pointer(_pow10_wide + uintptr(numZeros+int32(1))*8)) {
 				/*
 				 * Wide multiplication will overflow.  Expand the number to a
 				 * bignum and fall through into the bignum case.
@@ -236317,7 +236420,7 @@ func _AccumulateDecimalDigit(tls *libc.TLS, digit uint32, numZeros int32, wideRe
 				/*
 				 * Wide multiplication.
 				 */
-				*(*TTcl_WideUInt)(unsafe.Pointer(wideRepPtr)) = w**(*TTcl_WideUInt)(unsafe.Pointer(_pow10_wide + uintptr(numZeros+int32(1))*8)) + uint64(uint64(digit))
+				*(*TTcl_WideUInt)(unsafe.Pointer(wideRepPtr)) = w**(*TTcl_WideUInt)(unsafe.Pointer(_pow10_wide + uintptr(numZeros+int32(1))*8)) + uint64(digit)
 				return 0
 			}
 		}
@@ -236404,25 +236507,25 @@ func _MakeLowPrecisionDouble(tls *libc.TLS, signum int32, significand TTcl_WideU
 	 */
 	if numSigDigs <= int32(m_QUICK_MAX) {
 		if exponent >= 0 {
-			if exponent <= int64(int64(_mmaxpow)) {
+			if exponent <= int64(_mmaxpow) {
 				/*
 				 * The significand is an exact integer, and so is
 				 * 10**exponent. The product will be correct to within 1/2 ulp
 				 * without special handling.
 				 */
-				libc.AtomicStorePFloat64(bp+24, float64(int64(int64(significand)))*_pow10vals[exponent])
+				libc.AtomicStorePFloat64(bp+24, float64(int64(significand))*_pow10vals[exponent])
 				goto returnValue
 			} else {
 				diff = int32(m_QUICK_MAX) - numSigDigs
-				if exponent-int64(int64(diff)) <= int64(int64(_mmaxpow)) {
+				if exponent-int64(diff) <= int64(_mmaxpow) {
 					/*
 					 * 10**exponent is not an exact integer, but
 					 * 10**(exponent-diff) is exact, and so is
 					 * significand*10**diff, so we can still compute the value
 					 * with only one roundoff.
 					 */
-					*(*float64)(unsafe.Pointer(bp + 32)) = float64(int64(int64(significand))) * _pow10vals[diff]
-					libc.AtomicStorePFloat64(bp+24, libc.AtomicLoadPFloat64(bp+32)*_pow10vals[exponent-int64(int64(diff))])
+					*(*float64)(unsafe.Pointer(bp + 32)) = float64(int64(significand)) * _pow10vals[diff]
+					libc.AtomicStorePFloat64(bp+24, libc.AtomicLoadPFloat64(bp+32)*_pow10vals[exponent-int64(diff)])
 					goto returnValue
 				}
 			}
@@ -236433,7 +236536,7 @@ func _MakeLowPrecisionDouble(tls *libc.TLS, signum int32, significand TTcl_WideU
 				 * significand. Compute the result by one division, again with
 				 * only one rounding.
 				 */
-				libc.AtomicStorePFloat64(bp+24, float64(int64(int64(significand)))/_pow10vals[-exponent])
+				libc.AtomicStorePFloat64(bp+24, float64(int64(significand))/_pow10vals[-exponent])
 				goto returnValue
 			}
 		}
@@ -236507,7 +236610,7 @@ func _MakeHighPrecisionDouble(tls *libc.TLS, signum int32, significand uintptr, 
 		libc.AtomicStorePFloat64(bp+8, float64(libc.X__builtin_inff(tls)))
 		goto returnValue
 	} else {
-		if exponent < 0 && int64(int64(numSigDigs))+exponent < int64(_minDigits+int32(1)) {
+		if exponent < 0 && int64(numSigDigs)+exponent < int64(_minDigits+int32(1)) {
 			libc.AtomicStorePFloat64(bp+8, float64(0))
 			goto returnValue
 		}
@@ -236521,7 +236624,7 @@ func _MakeHighPrecisionDouble(tls *libc.TLS, signum int32, significand uintptr, 
 	 * for overflow. Convert back to a double, and test for underflow.
 	 */
 	libc.AtomicStorePFloat64(bp+8, _BignumToBiasedFrExp(tls, significand, bp))
-	libc.AtomicStorePFloat64(bp+8, _Pow10TimesFrExp(tls, int32(int32(exponent)), libc.AtomicLoadPFloat64(bp+8), bp))
+	libc.AtomicStorePFloat64(bp+8, _Pow10TimesFrExp(tls, int32(exponent), libc.AtomicLoadPFloat64(bp+8), bp))
 	if *(*int32)(unsafe.Pointer(bp)) > int32(m_DBL_MAX_EXP)*_log2FLT_RADIX {
 		libc.AtomicStorePFloat64(bp+8, float64(libc.X__builtin_inff(tls)))
 		goto returnValue
@@ -236537,8 +236640,8 @@ func _MakeHighPrecisionDouble(tls *libc.TLS, signum int32, significand uintptr, 
 	 * Refine the result twice. (The second refinement should be necessary
 	 * only if the best approximation is a power of 2 minus 1/2 ulp).
 	 */
-	libc.AtomicStorePFloat64(bp+8, _RefineApproximation(tls, libc.AtomicLoadPFloat64(bp+8), significand, int32(int32(exponent))))
-	libc.AtomicStorePFloat64(bp+8, _RefineApproximation(tls, libc.AtomicLoadPFloat64(bp+8), significand, int32(int32(exponent))))
+	libc.AtomicStorePFloat64(bp+8, _RefineApproximation(tls, libc.AtomicLoadPFloat64(bp+8), significand, int32(exponent)))
+	libc.AtomicStorePFloat64(bp+8, _RefineApproximation(tls, libc.AtomicLoadPFloat64(bp+8), significand, int32(exponent)))
 	/*
 	 * Come here to return the computed value.
 	 */
@@ -236664,8 +236767,8 @@ func _RefineApproximation(tls *libc.TLS, approxResult float64, exactSignificand 
 		if !(v1 >= 0) {
 			break
 		}
-		*(*Tmp_digit)(unsafe.Pointer((*(*Tmp_int)(unsafe.Pointer(bp + 8))).Fdp + uintptr(nDigits)*4)) = uint32(uint32(significand))
-		significand -= float64(uint32(uint32(significand)))
+		*(*Tmp_digit)(unsafe.Pointer((*(*Tmp_int)(unsafe.Pointer(bp + 8))).Fdp + uintptr(nDigits)*4)) = uint32(significand)
+		significand -= float64(uint32(significand))
 		significand = _SafeLdExp(tls, significand, int32(m_MP_DIGIT_BIT))
 	}
 	i = 0
@@ -237114,9 +237217,9 @@ func _ApproximateLog10(tls *libc.TLS, bw TTcl_WideUInt, be int32, bbits int32) (
 		Fword0 int32
 	})(unsafe.Pointer(bp))).Fword0 |= libc.Int32FromInt32(m_EXPONENT_BIAS) << libc.Int32FromInt32(m_EXP_SHIFT)
 	i = be + bbits - int32(1)
-	ds = (*(*float64)(unsafe.Pointer(bp))-float64(1.5))*float64(m_TWO_OVER_3LOG10) + float64(m_LOG10_3HALVES_PLUS_FUDGE) + float64(m_LOG10_2)*float64(float64(i))
-	k = int32(int32(ds))
-	if float64(float64(k)) > ds {
+	ds = (*(*float64)(unsafe.Pointer(bp))-float64(1.5))*float64(m_TWO_OVER_3LOG10) + float64(m_LOG10_3HALVES_PLUS_FUDGE) + float64(m_LOG10_2)*float64(i)
+	k = int32(ds)
+	if float64(k) > ds {
 		k--
 	}
 	return k
@@ -237417,8 +237520,8 @@ func _ShorteningQuickFormat(tls *libc.TLS, d float64, k int32, ilim int32, eps f
 		/*
 		 * Convert a digit.
 		 */
-		digit = int32(int32(d))
-		d -= float64(float64(digit))
+		digit = int32(d)
+		d -= float64(digit)
 		v2 = s
 		s++
 		*(*int8)(unsafe.Pointer(v2)) = int8(int32('0') + digit)
@@ -237485,8 +237588,8 @@ func _StrictQuickFormat(tls *libc.TLS, d float64, k int32, ilim int32, eps float
 		/*
 		 * Extract a digit.
 		 */
-		digit = int32(int32(d))
-		d -= float64(float64(digit))
+		digit = int32(d)
+		d -= float64(digit)
 		if d == float64(0) {
 			ilim = i
 		}
@@ -237578,7 +237681,7 @@ func _QuickConversion(tls *libc.TLS, _e float64, k int32, k_check int32, flags i
 	/*
 	 * Compute estimated roundoff error.
 	 */
-	*(*float64)(unsafe.Pointer(bp + 8)) = float64(float64(ieps))*libc.AtomicLoadPFloat64(bp+16) + float64(7)
+	*(*float64)(unsafe.Pointer(bp + 8)) = float64(ieps)*libc.AtomicLoadPFloat64(bp+16) + float64(7)
 	(*(*struct {
 		Fword1 int32
 		Fword0 int32
@@ -238033,7 +238136,7 @@ func _ShorteningBignumConversionPowD(tls *libc.TLS, dPtr uintptr, convType int32
 	 */
 	XTclBNInitBignumFromWideUInt(tls, bp+8, bw)
 	XTclBN_mp_init_set(tls, bp+56, uint32(1))
-	_MulPow5(tls, bp+8, uint32(uint32(b5)), bp+8)
+	_MulPow5(tls, bp+8, uint32(b5), bp+8)
 	XTclBN_mp_mul_2d(tls, bp+8, b2, bp+8)
 	/*
 	 * Adjust if the logarithm was guessed wrong.
@@ -238051,7 +238154,7 @@ func _ShorteningBignumConversionPowD(tls *libc.TLS, dPtr uintptr, convType int32
 	 * mplus = 5**m5 * 2**m2plus
 	 */
 	XTclBN_mp_mul_2d(tls, bp+56, m2minus, bp+56)
-	_MulPow5(tls, bp+56, uint32(uint32(m5)), bp+56)
+	_MulPow5(tls, bp+56, uint32(m5), bp+56)
 	if m2plus > m2minus {
 		XTclBN_mp_init_copy(tls, bp+32, bp+56)
 		XTclBN_mp_mul_2d(tls, bp+32, m2plus-m2minus, bp+32)
@@ -238203,7 +238306,7 @@ func _StrictBignumConversionPowD(tls *libc.TLS, dPtr uintptr, convType int32, bw
 	 * b = bw * 2**b2 * 5**b5
 	 */
 	XTclBNInitBignumFromWideUInt(tls, bp+8, bw)
-	_MulPow5(tls, bp+8, uint32(uint32(b5)), bp+8)
+	_MulPow5(tls, bp+8, uint32(b5), bp+8)
 	XTclBN_mp_mul_2d(tls, bp+8, b2, bp+8)
 	/*
 	 * Adjust if the logarithm was guessed wrong.
@@ -238385,7 +238488,7 @@ func _ShorteningBignumConversion(tls *libc.TLS, dPtr uintptr, convType int32, bw
 	XTclBNInitBignumFromWideUInt(tls, bp+8, bw)
 	XTclBN_mp_mul_2d(tls, bp+8, b2, bp+8)
 	XTclBN_mp_init_set(tls, bp+80, uint32(1))
-	_MulPow5(tls, bp+80, uint32(uint32(s5)), bp+80)
+	_MulPow5(tls, bp+80, uint32(s5), bp+80)
 	XTclBN_mp_mul_2d(tls, bp+80, s2, bp+80)
 	/*
 	 * Handle the case where we guess the position of the decimal point wrong.
@@ -238399,7 +238502,7 @@ func _ShorteningBignumConversion(tls *libc.TLS, dPtr uintptr, convType int32, bw
 	/*
 	 * mminus = 2**m2minus * 5**m5
 	 */
-	XTclBN_mp_init_set(tls, bp+32, uint32(uint32(minit)))
+	XTclBN_mp_init_set(tls, bp+32, uint32(minit))
 	XTclBN_mp_mul_2d(tls, bp+32, m2minus, bp+32)
 	if m2plus > m2minus {
 		XTclBN_mp_init_copy(tls, bp+56, bp+32)
@@ -238583,7 +238686,7 @@ func _StrictBignumConversion(tls *libc.TLS, dPtr uintptr, convType int32, bw TTc
 	XTclBNInitBignumFromWideUInt(tls, bp+8, bw)
 	XTclBN_mp_mul_2d(tls, bp+8, b2, bp+8)
 	XTclBN_mp_init_set(tls, bp+32, uint32(1))
-	_MulPow5(tls, bp+32, uint32(uint32(s5)), bp+32)
+	_MulPow5(tls, bp+32, uint32(s5), bp+32)
 	XTclBN_mp_mul_2d(tls, bp+32, s2, bp+32)
 	/*
 	 * Handle the case where we guess the position of the decimal point wrong.
@@ -239842,7 +239945,7 @@ func XTcl_GetThreadData(tls *libc.TLS, keyPtr uintptr, size int32) (r uintptr) {
 	_ = result
 	if *(*TTcl_ThreadDataKey)(unsafe.Pointer(keyPtr)) == libc.UintptrFromInt32(0) {
 		result = XTcl_Alloc(tls, uint32(size))
-		libc.Xmemset(tls, result, 0, uint64(uint64(size)))
+		libc.Xmemset(tls, result, 0, uint64(size))
 		*(*TTcl_ThreadDataKey)(unsafe.Pointer(keyPtr)) = result
 		_RememberSyncObject(tls, keyPtr, uintptr(unsafe.Pointer(&_keyRecord)))
 	} else {
@@ -240288,7 +240391,7 @@ func XTclBN_mp_set_ull(tls *libc.TLS, a uintptr, b TTcl_WideUInt) {
 	for b != 0 {
 		v1 = i
 		i++
-		*(*Tmp_digit)(unsafe.Pointer((*Tmp_int)(unsafe.Pointer(a)).Fdp + uintptr(v1)*4)) = uint32(uint32(b)) & (libc.Uint32FromInt32(1)<<libc.Uint32FromInt32(m_MP_DIGIT_BIT) - libc.Uint32FromInt32(1))
+		*(*Tmp_digit)(unsafe.Pointer((*Tmp_int)(unsafe.Pointer(a)).Fdp + uintptr(v1)*4)) = uint32(b) & (libc.Uint32FromInt32(1)<<libc.Uint32FromInt32(m_MP_DIGIT_BIT) - libc.Uint32FromInt32(1))
 		if libc.Uint64FromInt32(m_CHAR_BIT)*libc.Uint64FromInt64(8) <= uint64(m_MP_DIGIT_BIT) {
 			break
 		}
@@ -240340,9 +240443,9 @@ func XTclBN_mp_set_ll(tls *libc.TLS, a uintptr, b TTcl_WideInt) {
 	var v1 uint64
 	_ = v1
 	if b < 0 {
-		v1 = -uint64(uint64(b))
+		v1 = -uint64(b)
 	} else {
-		v1 = uint64(uint64(b))
+		v1 = uint64(b)
 	}
 	XTclBN_mp_set_ull(tls, a, v1)
 	if b < 0 {
@@ -240384,7 +240487,7 @@ func _TclBNMpDivLd(tls *libc.TLS, a uintptr, b TTcl_WideUInt, c uintptr, d uintp
 	} else {
 		v1 = libc.UintptrFromInt32(0)
 	}
-	result = XTclBN_mp_div_d(tls, a, uint32(uint32(b)), c, v1)
+	result = XTclBN_mp_div_d(tls, a, uint32(b), c, v1)
 	if d != 0 {
 		*(*TTcl_WideUInt)(unsafe.Pointer(d)) = uint64(*(*Tmp_digit)(unsafe.Pointer(bp)))
 	}
@@ -240432,12 +240535,12 @@ func XTclBN_mp_toradix_n(tls *libc.TLS, a uintptr, str uintptr, radix int32, max
 	if maxlen < 0 {
 		return -int32(3)
 	}
-	return XTclBN_mp_to_radix(tls, a, str, uint64(uint64(maxlen)), libc.UintptrFromInt32(0), radix)
+	return XTclBN_mp_to_radix(tls, a, str, uint64(maxlen), libc.UintptrFromInt32(0), radix)
 }
 
 func XTclBN_reverse(tls *libc.TLS, s uintptr, len1 int32) {
 	if len1 > 0 {
-		XTclBN_s_mp_reverse(tls, s, uint64(uint64(len1)))
+		XTclBN_s_mp_reverse(tls, s, uint64(len1))
 	}
 }
 
@@ -243348,7 +243451,7 @@ func XTcl_TraceObjCmd(tls *libc.TLS, dummy TClientData, interp uintptr, objc int
 			p++
 		}
 		(*(*[6]uintptr)(unsafe.Pointer(bp + 16)))[0] = libc.UintptrFromInt32(0)
-		libc.Xmemcpy(tls, bp+16+uintptr(1)*8, objv, uint64(uint64(objc))*uint64(8))
+		libc.Xmemcpy(tls, bp+16+uintptr(1)*8, objv, uint64(objc)*uint64(8))
 		(*(*[6]uintptr)(unsafe.Pointer(bp + 16)))[int32(4)] = opsList
 		if *(*int32)(unsafe.Pointer(bp)) == 3 {
 			code = (*(*func(*libc.TLS, uintptr, int32, int32, uintptr) int32)(unsafe.Pointer(&struct{ uintptr }{_traceSubCmds[libc.Int32FromInt32(2)]})))(tls, interp, 0, objc+int32(1), bp+16)
@@ -243473,7 +243576,7 @@ func _TraceExecutionObjCmd(tls *libc.TLS, interp uintptr, optionIndex int32, obj
 	var _ /* listLen at bp+8 */ int32
 	var _ /* numOps at bp+24 */ int32
 	_, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _ = _objPtr, _objPtr1, clientData, clientData1, command, eachTraceObjPtr, elemObjPtr, flags, i, length, name, opObj, result, resultListPtr, tcmdPtr, tcmdPtr1, tcmdPtr2, v1, v10, v11, v3, v4, v5, v6, v8, v9
-	switch int32(optionIndex) {
+	switch optionIndex {
 	case 0:
 		fallthrough
 	case 2:
@@ -243533,7 +243636,7 @@ func _TraceExecutionObjCmd(tls *libc.TLS, interp uintptr, optionIndex int32, obj
 		}
 		command = XTcl_GetStringFromObj(tls, *(*uintptr)(unsafe.Pointer(objv + 5*8)), bp)
 		length = uint64(*(*int32)(unsafe.Pointer(bp)))
-		if int32(optionIndex) == 0 {
+		if optionIndex == 0 {
 			tcmdPtr = XTcl_Alloc(tls, uint32(uint64(int32(uint64(libc.UintptrFromInt32(0)+52))+libc.Int32FromInt32(1))+length))
 			(*TTraceCommandInfo)(unsafe.Pointer(tcmdPtr)).Fflags = flags
 			(*TTraceCommandInfo)(unsafe.Pointer(tcmdPtr)).FstepTrace = libc.UintptrFromInt32(0)
@@ -243798,7 +243901,7 @@ func _TraceCommandObjCmd(tls *libc.TLS, interp uintptr, optionIndex int32, objc 
 	var _ /* listLen at bp+8 */ int32
 	var _ /* numOps at bp+24 */ int32
 	_, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _ = _objPtr, _objPtr1, clientData, clientData1, command, eachTraceObjPtr, elemObjPtr, flags, i, length, name, opObj, result, resultListPtr, tcmdPtr, tcmdPtr1, tcmdPtr2, v1, v10, v11, v3, v4, v5, v6, v8, v9
-	switch int32(optionIndex) {
+	switch optionIndex {
 	case 0:
 		fallthrough
 	case 2:
@@ -243854,7 +243957,7 @@ func _TraceCommandObjCmd(tls *libc.TLS, interp uintptr, optionIndex int32, objc 
 		}
 		command = XTcl_GetStringFromObj(tls, *(*uintptr)(unsafe.Pointer(objv + 5*8)), bp)
 		length = uint64(*(*int32)(unsafe.Pointer(bp)))
-		if int32(optionIndex) == 0 {
+		if optionIndex == 0 {
 			tcmdPtr = XTcl_Alloc(tls, uint32(uint64(int32(uint64(libc.UintptrFromInt32(0)+52))+libc.Int32FromInt32(1))+length))
 			(*TTraceCommandInfo)(unsafe.Pointer(tcmdPtr)).Fflags = flags
 			(*TTraceCommandInfo)(unsafe.Pointer(tcmdPtr)).FstepTrace = libc.UintptrFromInt32(0)
@@ -244046,7 +244149,7 @@ func _TraceVariableObjCmd(tls *libc.TLS, interp uintptr, optionIndex int32, objc
 	var _ /* index at bp+4 */ int32
 	var _ /* listLen at bp+8 */ int32
 	_, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _ = clientData, command, ctvarPtr, eachTraceObjPtr, elemObjPtr, flags, i, length, name, opObjPtr, result, resultListPtr, tvarPtr, tvarPtr1, v1, v3, v4
-	switch int32(optionIndex) {
+	switch optionIndex {
 	case 0:
 		fallthrough
 	case 2:
@@ -244106,7 +244209,7 @@ func _TraceVariableObjCmd(tls *libc.TLS, interp uintptr, optionIndex int32, objc
 		}
 		command = XTcl_GetStringFromObj(tls, *(*uintptr)(unsafe.Pointer(objv + 5*8)), bp)
 		length = uint64(*(*int32)(unsafe.Pointer(bp)))
-		if int32(optionIndex) == 0 {
+		if optionIndex == 0 {
 			ctvarPtr = XTcl_Alloc(tls, uint32(uint64(int32(uint64(libc.UintptrFromInt32(0)+32+16))+libc.Int32FromInt32(1))+length))
 			(*TCombinedTraceVarInfo)(unsafe.Pointer(ctvarPtr)).FtraceCmdInfo.Fflags = flags
 			if *(*uintptr)(unsafe.Pointer(objv)) == libc.UintptrFromInt32(0) {
@@ -244893,7 +244996,7 @@ func _CallTraceFunction(tls *libc.TLS, interp uintptr, tracePtr uintptr, cmdPtr 
 	 * Copy the command characters into a new string.
 	 */
 	commandCopy = XTclStackAlloc(tls, interp, numChars+int32(1))
-	libc.Xmemcpy(tls, commandCopy, command, uint64(uint64(numChars)))
+	libc.Xmemcpy(tls, commandCopy, command, uint64(numChars))
 	*(*int8)(unsafe.Pointer(commandCopy + uintptr(numChars))) = int8('\000')
 	/*
 	 * Call the trace function then free allocated storage.
@@ -245112,7 +245215,7 @@ func _TraceExecutionProc(tls *libc.TLS, clientData TClientData, interp uintptr, 
 			len1 = uint32(libc.Xstrlen(tls, command) + uint64(1))
 			(*TTraceCommandInfo)(unsafe.Pointer(tcmdPtr)).FstartLevel = level
 			(*TTraceCommandInfo)(unsafe.Pointer(tcmdPtr)).FstartCmd = XTcl_Alloc(tls, len1)
-			libc.Xmemcpy(tls, (*TTraceCommandInfo)(unsafe.Pointer(tcmdPtr)).FstartCmd, command, uint64(uint64(len1)))
+			libc.Xmemcpy(tls, (*TTraceCommandInfo)(unsafe.Pointer(tcmdPtr)).FstartCmd, command, uint64(len1))
 			(*TTraceCommandInfo)(unsafe.Pointer(tcmdPtr)).FrefCount++
 			(*TTraceCommandInfo)(unsafe.Pointer(tcmdPtr)).FstepTrace = XTcl_CreateObjTrace(tls, interp, 0, (*TTraceCommandInfo)(unsafe.Pointer(tcmdPtr)).Fflags&int32(m_TCL_TRACE_ANY_EXEC)>>int32(2), __ccgo_fp(_TraceExecutionProc), tcmdPtr, __ccgo_fp(_CommandObjTraceDeleted))
 		}
@@ -245748,9 +245851,9 @@ func XTclCallVarTraces(tls *libc.TLS, iPtr uintptr, arrayPtr uintptr, varPtr uin
 				}
 				p--
 				if int32(*(*int8)(unsafe.Pointer(p))) == int32(')') {
-					offset = int32(int64(int64(openParen)) - int64(int64(part1)))
+					offset = int32(int64(openParen) - int64(part1))
 					XTcl_DStringInit(tls, bp+24)
-					XTcl_DStringAppend(tls, bp+24, part1, int32(int64(int64(p))-int64(int64(part1))))
+					XTcl_DStringAppend(tls, bp+24, part1, int32(int64(p)-int64(part1)))
 					newPart1 = (*TTcl_DString)(unsafe.Pointer(bp + 24)).Fstring1
 					*(*int8)(unsafe.Pointer(newPart1 + uintptr(offset))) = 0
 					part1 = newPart1
@@ -259976,9 +260079,9 @@ func _Invalid(tls *libc.TLS, src uintptr) (r int32) {
 	var index int32
 	_, _ = byte1, index
 	byte1 = uint8(*(*int8)(unsafe.Pointer(src)))
-	if int32(int32(byte1))&int32(0xC3) == int32(0xC0) {
+	if int32(byte1)&int32(0xC3) == int32(0xC0) {
 		/* Only lead bytes 0xC0, 0xE0, 0xF0, 0xF4 need examination */
-		index = (int32(int32(byte1)) - int32(0xC0)) >> int32(1)
+		index = (int32(byte1) - int32(0xC0)) >> int32(1)
 		if int32(uint8(*(*int8)(unsafe.Pointer(src + 1)))) < int32(_bounds[index]) || int32(uint8(*(*int8)(unsafe.Pointer(src + 1)))) > int32(_bounds[index+int32(1)]) {
 			/* Out of bounds - report invalid. */
 			return int32(1)
@@ -260011,7 +260114,7 @@ func XTcl_UniCharToUtf(tls *libc.TLS, ch int32, buf uintptr) (r int32) {
 	 * large enough to hold the UTF-8 character
 	 * (at most TCL_UTF_MAX bytes). */
 	if uint32(ch-libc.Int32FromInt32(1)) < uint32(libc.Int32FromInt32(m_UNICODE_SELF)-libc.Int32FromInt32(1)) {
-		*(*int8)(unsafe.Pointer(buf)) = int8(int8(ch))
+		*(*int8)(unsafe.Pointer(buf)) = int8(ch)
 		return int32(1)
 	}
 	if ch >= 0 {
@@ -260075,7 +260178,7 @@ func XTcl_UniCharToUtfDString(tls *libc.TLS, uniStr uintptr, uniLength int32, ds
 		goto _1
 	_1:
 	}
-	XTcl_DStringSetLength(tls, dsPtr, int32(int64(int64(oldLength))+(int64(int64(p))-int64(int64(string1)))))
+	XTcl_DStringSetLength(tls, dsPtr, int32(int64(oldLength)+(int64(p)-int64(string1))))
 	return string1
 }
 
@@ -260123,7 +260226,7 @@ func XTcl_UtfToUniChar(tls *libc.TLS, src uintptr, chPtr uintptr) (r int32) {
 	 * Unroll 1 to 3 (or 4) byte UTF-8 sequences.
 	 */
 	byte1 = uint16(uint8(*(*int8)(unsafe.Pointer(src))))
-	if int32(int32(byte1)) < int32(0xC0) {
+	if int32(byte1) < int32(0xC0) {
 		/*
 		 * Handles properly formed UTF-8 characters between 0x01 and 0x7F.
 		 * Also treats \0 and naked trail bytes 0x80 to 0xBF as valid
@@ -260134,19 +260237,19 @@ func XTcl_UtfToUniChar(tls *libc.TLS, src uintptr, chPtr uintptr) (r int32) {
 		 * bytes, then we must produce a follow-up low surrogate. We only
 		 * do that if the high surrogate matches the bits we encounter.
 		 */
-		if int32(int32(byte1))&int32(0xC0) == int32(0x80) && int32(*(*int8)(unsafe.Pointer(src + 1)))&int32(0xC0) == int32(0x80) && int32(*(*int8)(unsafe.Pointer(src + 2)))&int32(0xC0) == int32(0x80) && (int32(int32(byte1))-int32(0x10))<<int32(2)&int32(0xFC)|int32(0xD800) == int32(*(*TTcl_UniChar)(unsafe.Pointer(chPtr)))&int32(0xFCFC) && int32(*(*int8)(unsafe.Pointer(src + 1)))&int32(0xF0) == int32(*(*TTcl_UniChar)(unsafe.Pointer(chPtr)))<<int32(4)&int32(0x30)|int32(0x80) {
+		if int32(byte1)&int32(0xC0) == int32(0x80) && int32(*(*int8)(unsafe.Pointer(src + 1)))&int32(0xC0) == int32(0x80) && int32(*(*int8)(unsafe.Pointer(src + 2)))&int32(0xC0) == int32(0x80) && (int32(byte1)-int32(0x10))<<int32(2)&int32(0xFC)|int32(0xD800) == int32(*(*TTcl_UniChar)(unsafe.Pointer(chPtr)))&int32(0xFCFC) && int32(*(*int8)(unsafe.Pointer(src + 1)))&int32(0xF0) == int32(*(*TTcl_UniChar)(unsafe.Pointer(chPtr)))<<int32(4)&int32(0x30)|int32(0x80) {
 			*(*TTcl_UniChar)(unsafe.Pointer(chPtr)) = uint16(int32(*(*int8)(unsafe.Pointer(src + 1)))&int32(0x0F)<<int32(6) + int32(*(*int8)(unsafe.Pointer(src + 2)))&int32(0x3F) + int32(0xDC00))
 			return int32(3)
 		}
 		*(*TTcl_UniChar)(unsafe.Pointer(chPtr)) = byte1
 		return int32(1)
 	} else {
-		if int32(int32(byte1)) < int32(0xE0) {
+		if int32(byte1) < int32(0xE0) {
 			if int32(*(*int8)(unsafe.Pointer(src + 1)))&int32(0xC0) == int32(0x80) {
 				/*
 				 * Two-byte-character lead-byte followed by a trail-byte.
 				 */
-				*(*TTcl_UniChar)(unsafe.Pointer(chPtr)) = uint16(int32(int32(byte1))&libc.Int32FromInt32(0x1F)<<libc.Int32FromInt32(6) | int32(*(*int8)(unsafe.Pointer(src + 1)))&libc.Int32FromInt32(0x3F))
+				*(*TTcl_UniChar)(unsafe.Pointer(chPtr)) = uint16(int32(byte1)&libc.Int32FromInt32(0x1F)<<libc.Int32FromInt32(6) | int32(*(*int8)(unsafe.Pointer(src + 1)))&libc.Int32FromInt32(0x3F))
 				if uint32(int32(*(*TTcl_UniChar)(unsafe.Pointer(chPtr)))-libc.Int32FromInt32(1)) >= uint32(libc.Int32FromInt32(m_UNICODE_SELF)-libc.Int32FromInt32(1)) {
 					return int32(2)
 				}
@@ -260156,12 +260259,12 @@ func XTcl_UtfToUniChar(tls *libc.TLS, src uintptr, chPtr uintptr) (r int32) {
 			 * represents itself.
 			 */
 		} else {
-			if int32(int32(byte1)) < int32(0xF0) {
+			if int32(byte1) < int32(0xF0) {
 				if int32(*(*int8)(unsafe.Pointer(src + 1)))&int32(0xC0) == int32(0x80) && int32(*(*int8)(unsafe.Pointer(src + 2)))&int32(0xC0) == int32(0x80) {
 					/*
 					 * Three-byte-character lead byte followed by two trail bytes.
 					 */
-					*(*TTcl_UniChar)(unsafe.Pointer(chPtr)) = uint16(int32(int32(byte1))&libc.Int32FromInt32(0x0F)<<libc.Int32FromInt32(12) | int32(*(*int8)(unsafe.Pointer(src + 1)))&libc.Int32FromInt32(0x3F)<<libc.Int32FromInt32(6) | int32(*(*int8)(unsafe.Pointer(src + 2)))&libc.Int32FromInt32(0x3F))
+					*(*TTcl_UniChar)(unsafe.Pointer(chPtr)) = uint16(int32(byte1)&libc.Int32FromInt32(0x0F)<<libc.Int32FromInt32(12) | int32(*(*int8)(unsafe.Pointer(src + 1)))&libc.Int32FromInt32(0x3F)<<libc.Int32FromInt32(6) | int32(*(*int8)(unsafe.Pointer(src + 2)))&libc.Int32FromInt32(0x3F))
 					if int32(*(*TTcl_UniChar)(unsafe.Pointer(chPtr))) > int32(0x7FF) {
 						return int32(3)
 					}
@@ -260171,16 +260274,16 @@ func XTcl_UtfToUniChar(tls *libc.TLS, src uintptr, chPtr uintptr) (r int32) {
 				 * represents itself.
 				 */
 			} else {
-				if int32(int32(byte1)) < int32(0xF5) {
+				if int32(byte1) < int32(0xF5) {
 					if int32(*(*int8)(unsafe.Pointer(src + 1)))&int32(0xC0) == int32(0x80) && int32(*(*int8)(unsafe.Pointer(src + 2)))&int32(0xC0) == int32(0x80) {
 						/*
 						 * Four-byte-character lead byte followed by at least two trail bytes.
 						 * We don't test the validity of 3th trail byte, see [ed29806ba]
 						 */
-						high = uint16(int32(int32(byte1))&int32(0x07)<<int32(8) | int32(*(*int8)(unsafe.Pointer(src + 1)))&int32(0x3F)<<int32(2) | int32(*(*int8)(unsafe.Pointer(src + 2)))&int32(0x3F)>>int32(4) - int32(0x40))
-						if int32(int32(high)) < int32(0x400) {
+						high = uint16(int32(byte1)&int32(0x07)<<int32(8) | int32(*(*int8)(unsafe.Pointer(src + 1)))&int32(0x3F)<<int32(2) | int32(*(*int8)(unsafe.Pointer(src + 2)))&int32(0x3F)>>int32(4) - int32(0x40))
+						if int32(high) < int32(0x400) {
 							/* produce high surrogate, advance source pointer */
-							*(*TTcl_UniChar)(unsafe.Pointer(chPtr)) = uint16(int32(0xD800) + int32(int32(high)))
+							*(*TTcl_UniChar)(unsafe.Pointer(chPtr)) = uint16(int32(0xD800) + int32(high))
 							return int32(1)
 						}
 						/* out of range, < 0x10000 or > 0x10FFFF */
@@ -260237,7 +260340,7 @@ func XTcl_UtfToUniCharDString(tls *libc.TLS, src uintptr, length int32, dsPtr ui
 	 * bytes.
 	 */
 	oldLength = (*TTcl_DString)(unsafe.Pointer(dsPtr)).Flength
-	XTcl_DStringSetLength(tls, dsPtr, int32(uint64(uint64(oldLength))+uint64(length+libc.Int32FromInt32(1))*uint64(2)))
+	XTcl_DStringSetLength(tls, dsPtr, int32(uint64(oldLength)+uint64(length+libc.Int32FromInt32(1))*uint64(2)))
 	wString = (*TTcl_DString)(unsafe.Pointer(dsPtr)).Fstring1 + uintptr(oldLength)
 	w = wString
 	p = src
@@ -260256,7 +260359,7 @@ func XTcl_UtfToUniCharDString(tls *libc.TLS, src uintptr, length int32, dsPtr ui
 		*(*TTcl_UniChar)(unsafe.Pointer(v2)) = *(*TTcl_UniChar)(unsafe.Pointer(bp))
 	}
 	for p < endPtr {
-		if XTcl_UtfCharComplete(tls, p, int32(int64(int64(endPtr))-int64(int64(p)))) != 0 {
+		if XTcl_UtfCharComplete(tls, p, int32(int64(endPtr)-int64(p))) != 0 {
 			if int32(uint8(*(*int8)(unsafe.Pointer(p)))) < int32(0x80) {
 				*(*TTcl_UniChar)(unsafe.Pointer(bp)) = uint16(uint8(*(*int8)(unsafe.Pointer(p))))
 				v3 = libc.Int32FromInt32(1)
@@ -260276,7 +260379,7 @@ func XTcl_UtfToUniCharDString(tls *libc.TLS, src uintptr, length int32, dsPtr ui
 		}
 	}
 	*(*TTcl_UniChar)(unsafe.Pointer(w)) = uint16('\000')
-	XTcl_DStringSetLength(tls, dsPtr, int32(int64(int64(oldLength))+(int64(w)-int64(wString))))
+	XTcl_DStringSetLength(tls, dsPtr, int32(int64(oldLength)+(int64(w)-int64(wString))))
 	return wString
 }
 
@@ -260369,7 +260472,7 @@ func XTcl_NumUtfChars(tls *libc.TLS, src uintptr, length int32) (r int32) {
 		}
 		/* Loop over the remaining string where call must happen */
 		for src < endPtr {
-			if XTcl_UtfCharComplete(tls, src, int32(int64(int64(endPtr))-int64(int64(src)))) != 0 {
+			if XTcl_UtfCharComplete(tls, src, int32(int64(endPtr)-int64(src))) != 0 {
 				if int32(uint8(*(*int8)(unsafe.Pointer(src)))) < int32(0x80) {
 					*(*TTcl_UniChar)(unsafe.Pointer(bp)) = uint16(uint8(*(*int8)(unsafe.Pointer(src))))
 					v3 = libc.Int32FromInt32(1)
@@ -260565,7 +260668,7 @@ func XTcl_UtfPrev(tls *libc.TLS, src uintptr, start uintptr) (r uintptr) {
 	}
 	for cond := true; cond; cond = trailBytesSeen < int32(3) {
 		byte1 = uint8(*(*int8)(unsafe.Pointer(look)))
-		if int32(int32(byte1)) < int32(0x80) {
+		if int32(byte1) < int32(0x80) {
 			/*
 			 * Single byte character. Either this is a correct previous
 			 * character, or it is followed by at least one trail byte
@@ -260574,7 +260677,7 @@ func XTcl_UtfPrev(tls *libc.TLS, src uintptr, start uintptr) (r uintptr) {
 			 */
 			return fallback
 		}
-		if int32(int32(byte1)) >= int32(0xC0) {
+		if int32(byte1) >= int32(0xC0) {
 			/* Non-trail byte; May be multibyte lead. */
 			if trailBytesSeen == 0 || trailBytesSeen >= int32(_totalBytes[byte1]) {
 				/*
@@ -260791,7 +260894,7 @@ func XTcl_UtfToUpper(tls *libc.TLS, str uintptr) (r int32) {
 		 * char to dst if its size is <= the original char.
 		 */
 		if len1 < _UtfCount(tls, upChar) {
-			libc.Xmemmove(tls, dst, src, uint64(uint64(len1)))
+			libc.Xmemmove(tls, dst, src, uint64(len1))
 			dst += uintptr(len1)
 		} else {
 			dst += uintptr(XTclUCS4ToUtf(tls, upChar, dst))
@@ -260799,7 +260902,7 @@ func XTcl_UtfToUpper(tls *libc.TLS, str uintptr) (r int32) {
 		src += uintptr(len1)
 	}
 	*(*int8)(unsafe.Pointer(dst)) = int8('\000')
-	return int32(int64(int64(dst)) - int64(int64(str)))
+	return int32(int64(dst) - int64(str))
 }
 
 /*
@@ -260842,7 +260945,7 @@ func XTcl_UtfToLower(tls *libc.TLS, str uintptr) (r int32) {
 		 * char to dst if its size is <= the original char.
 		 */
 		if len1 < _UtfCount(tls, lowChar) {
-			libc.Xmemmove(tls, dst, src, uint64(uint64(len1)))
+			libc.Xmemmove(tls, dst, src, uint64(len1))
 			dst += uintptr(len1)
 		} else {
 			dst += uintptr(XTclUCS4ToUtf(tls, lowChar, dst))
@@ -260850,7 +260953,7 @@ func XTcl_UtfToLower(tls *libc.TLS, str uintptr) (r int32) {
 		src += uintptr(len1)
 	}
 	*(*int8)(unsafe.Pointer(dst)) = int8('\000')
-	return int32(int64(int64(dst)) - int64(int64(str)))
+	return int32(int64(dst) - int64(str))
 }
 
 /*
@@ -260890,7 +260993,7 @@ func XTcl_UtfToTitle(tls *libc.TLS, str uintptr) (r int32) {
 		len1 = XTclUtfToUCS4(tls, src, bp)
 		titleChar = _UCS4ToTitle(tls, *(*int32)(unsafe.Pointer(bp)))
 		if len1 < _UtfCount(tls, titleChar) {
-			libc.Xmemmove(tls, dst, src, uint64(uint64(len1)))
+			libc.Xmemmove(tls, dst, src, uint64(len1))
 			dst += uintptr(len1)
 		} else {
 			dst += uintptr(XTclUCS4ToUtf(tls, titleChar, dst))
@@ -260905,7 +261008,7 @@ func XTcl_UtfToTitle(tls *libc.TLS, str uintptr) (r int32) {
 			lowChar = XTclUCS4ToLower(tls, lowChar)
 		}
 		if len1 < _UtfCount(tls, lowChar) {
-			libc.Xmemmove(tls, dst, src, uint64(uint64(len1)))
+			libc.Xmemmove(tls, dst, src, uint64(len1))
 			dst += uintptr(len1)
 		} else {
 			dst += uintptr(XTclUCS4ToUtf(tls, lowChar, dst))
@@ -260913,7 +261016,7 @@ func XTcl_UtfToTitle(tls *libc.TLS, str uintptr) (r int32) {
 		src += uintptr(len1)
 	}
 	*(*int8)(unsafe.Pointer(dst)) = int8('\000')
-	return int32(int64(int64(dst)) - int64(int64(str)))
+	return int32(int64(dst) - int64(str))
 }
 
 /*
@@ -260971,7 +261074,7 @@ func XTclpUtfNcmp2(tls *libc.TLS, cs uintptr, ct uintptr, numBytes uint64) (r in
 			v3 = int32(uint8(*(*int8)(unsafe.Pointer(ct))))
 		}
 		c2 = uint8(v3)
-		result = int32(int32(c1)) - int32(int32(c2))
+		result = int32(c1) - int32(c2)
 	}
 	return result
 }
@@ -261374,8 +261477,8 @@ func XTcl_UniCharNcasecmp(tls *libc.TLS, ucs uintptr, uct uintptr, numChars uint
 		if int32(*(*TTcl_UniChar)(unsafe.Pointer(ucs))) != int32(*(*TTcl_UniChar)(unsafe.Pointer(uct))) {
 			lcs = XTcl_UniCharToLower(tls, int32(*(*TTcl_UniChar)(unsafe.Pointer(ucs))))
 			lct = XTcl_UniCharToLower(tls, int32(*(*TTcl_UniChar)(unsafe.Pointer(uct))))
-			if int32(int32(lcs)) != int32(int32(lct)) {
-				return int32(int32(lcs)) - int32(int32(lct))
+			if int32(lcs) != int32(lct) {
+				return int32(lcs) - int32(lct)
 			}
 		}
 		goto _1
@@ -261582,10 +261685,10 @@ func XTcl_UniCharIsSpace(tls *libc.TLS, ch int32) (r int32) {
 	 * standard C function, otherwise consult the Unicode table.
 	 */
 	if ch < int32(0x80) {
-		if int32(int8(int8(ch))) > int32(0x20) {
+		if int32(int8(ch)) > int32(0x20) {
 			v1 = 0
 		} else {
-			v1 = XTclIsSpaceProc(tls, int32(int8(int8(ch))))
+			v1 = XTclIsSpaceProc(tls, int32(int8(ch)))
 		}
 		return v1
 	} else {
@@ -261677,10 +261780,10 @@ func XTcl_UniCharCaseMatch(tls *libc.TLS, uniStr uintptr, uniPattern uintptr, no
 		 * we succeeded. If we're at the end of the pattern but not at the end
 		 * of the string, we failed.
 		 */
-		if int32(int32(p)) == 0 {
+		if int32(p) == 0 {
 			return libc.BoolInt32(int32(*(*TTcl_UniChar)(unsafe.Pointer(uniStr))) == 0)
 		}
-		if int32(*(*TTcl_UniChar)(unsafe.Pointer(uniStr))) == 0 && int32(int32(p)) != int32('*') {
+		if int32(*(*TTcl_UniChar)(unsafe.Pointer(uniStr))) == 0 && int32(p) != int32('*') {
 			return 0
 		}
 		/*
@@ -261690,7 +261793,7 @@ func XTcl_UniCharCaseMatch(tls *libc.TLS, uniStr uintptr, uniPattern uintptr, no
 		 * recursively for each postfix of string, until either we match or we
 		 * reach the end of the string.
 		 */
-		if int32(int32(p)) == int32('*') {
+		if int32(p) == int32('*') {
 			/*
 			 * Skip all successive *'s in the pattern
 			 */
@@ -261703,11 +261806,11 @@ func XTcl_UniCharCaseMatch(tls *libc.TLS, uniStr uintptr, uniPattern uintptr, no
 				/* empty body */
 			}
 			p = *(*TTcl_UniChar)(unsafe.Pointer(uniPattern))
-			if int32(int32(p)) == 0 {
+			if int32(p) == 0 {
 				return int32(1)
 			}
 			if nocase != 0 {
-				p = XTcl_UniCharToLower(tls, int32(int32(p)))
+				p = XTcl_UniCharToLower(tls, int32(p))
 			}
 			for int32(1) != 0 {
 				/*
@@ -261715,13 +261818,13 @@ func XTcl_UniCharCaseMatch(tls *libc.TLS, uniStr uintptr, uniPattern uintptr, no
 				 * quickly if the next char in the pattern isn't a special
 				 * character
 				 */
-				if int32(int32(p)) != int32('[') && int32(int32(p)) != int32('?') && int32(int32(p)) != int32('\\') {
+				if int32(p) != int32('[') && int32(p) != int32('?') && int32(p) != int32('\\') {
 					if nocase != 0 {
-						for *(*TTcl_UniChar)(unsafe.Pointer(uniStr)) != 0 && int32(int32(p)) != int32(*(*TTcl_UniChar)(unsafe.Pointer(uniStr))) && int32(int32(p)) != int32(XTcl_UniCharToLower(tls, int32(*(*TTcl_UniChar)(unsafe.Pointer(uniStr))))) {
+						for *(*TTcl_UniChar)(unsafe.Pointer(uniStr)) != 0 && int32(p) != int32(*(*TTcl_UniChar)(unsafe.Pointer(uniStr))) && int32(p) != int32(XTcl_UniCharToLower(tls, int32(*(*TTcl_UniChar)(unsafe.Pointer(uniStr))))) {
 							uniStr += 2
 						}
 					} else {
-						for *(*TTcl_UniChar)(unsafe.Pointer(uniStr)) != 0 && int32(int32(p)) != int32(*(*TTcl_UniChar)(unsafe.Pointer(uniStr))) {
+						for *(*TTcl_UniChar)(unsafe.Pointer(uniStr)) != 0 && int32(p) != int32(*(*TTcl_UniChar)(unsafe.Pointer(uniStr))) {
 							uniStr += 2
 						}
 					}
@@ -261739,7 +261842,7 @@ func XTcl_UniCharCaseMatch(tls *libc.TLS, uniStr uintptr, uniPattern uintptr, no
 		 * Check for a "?" as the next pattern character. It matches any
 		 * single character.
 		 */
-		if int32(int32(p)) == int32('?') {
+		if int32(p) == int32('?') {
 			uniPattern += 2
 			uniStr += 2
 			continue
@@ -261749,7 +261852,7 @@ func XTcl_UniCharCaseMatch(tls *libc.TLS, uniStr uintptr, uniPattern uintptr, no
 		 * list of characters that are acceptable, or by a range (two
 		 * characters separated by "-").
 		 */
-		if int32(int32(p)) == int32('[') {
+		if int32(p) == int32('[') {
 			uniPattern += 2
 			if nocase != 0 {
 				v2 = int32(XTcl_UniCharToLower(tls, int32(*(*TTcl_UniChar)(unsafe.Pointer(uniStr)))))
@@ -261781,14 +261884,14 @@ func XTcl_UniCharCaseMatch(tls *libc.TLS, uniStr uintptr, uniPattern uintptr, no
 					}
 					endChar = uint16(v4)
 					uniPattern += 2
-					if int32(int32(startChar)) <= int32(int32(ch1)) && int32(int32(ch1)) <= int32(int32(endChar)) || int32(int32(endChar)) <= int32(int32(ch1)) && int32(int32(ch1)) <= int32(int32(startChar)) {
+					if int32(startChar) <= int32(ch1) && int32(ch1) <= int32(endChar) || int32(endChar) <= int32(ch1) && int32(ch1) <= int32(startChar) {
 						/*
 						 * Matches ranges of form [a-z] or [z-a].
 						 */
 						break
 					}
 				} else {
-					if int32(int32(startChar)) == int32(int32(ch1)) {
+					if int32(startChar) == int32(ch1) {
 						break
 					}
 				}
@@ -261807,7 +261910,7 @@ func XTcl_UniCharCaseMatch(tls *libc.TLS, uniStr uintptr, uniPattern uintptr, no
 		 * If the next pattern character is '\', just strip off the '\' so we
 		 * do exact matching on the character that follows.
 		 */
-		if int32(int32(p)) == int32('\\') {
+		if int32(p) == int32('\\') {
 			uniPattern += 2
 			v5 = uniPattern
 			if int32(*(*TTcl_UniChar)(unsafe.Pointer(v5))) == int32('\000') {
@@ -261872,7 +261975,7 @@ func XTclUniCharMatch(tls *libc.TLS, string1 uintptr, strLen int32, pattern uint
 			return libc.BoolInt32(string1 == stringEnd)
 		}
 		p = *(*TTcl_UniChar)(unsafe.Pointer(pattern))
-		if string1 == stringEnd && int32(int32(p)) != int32('*') {
+		if string1 == stringEnd && int32(p) != int32('*') {
 			return 0
 		}
 		/*
@@ -261882,7 +261985,7 @@ func XTclUniCharMatch(tls *libc.TLS, string1 uintptr, strLen int32, pattern uint
 		 * recursively for each postfix of string, until either we match or we
 		 * reach the end of the string.
 		 */
-		if int32(int32(p)) == int32('*') {
+		if int32(p) == int32('*') {
 			/*
 			 * Skip all successive *'s in the pattern.
 			 */
@@ -261899,7 +262002,7 @@ func XTclUniCharMatch(tls *libc.TLS, string1 uintptr, strLen int32, pattern uint
 			}
 			p = *(*TTcl_UniChar)(unsafe.Pointer(pattern))
 			if nocase != 0 {
-				p = XTcl_UniCharToLower(tls, int32(int32(p)))
+				p = XTcl_UniCharToLower(tls, int32(p))
 			}
 			for int32(1) != 0 {
 				/*
@@ -261907,18 +262010,18 @@ func XTclUniCharMatch(tls *libc.TLS, string1 uintptr, strLen int32, pattern uint
 				 * quickly if the next char in the pattern isn't a special
 				 * character.
 				 */
-				if int32(int32(p)) != int32('[') && int32(int32(p)) != int32('?') && int32(int32(p)) != int32('\\') {
+				if int32(p) != int32('[') && int32(p) != int32('?') && int32(p) != int32('\\') {
 					if nocase != 0 {
-						for string1 < stringEnd && int32(int32(p)) != int32(*(*TTcl_UniChar)(unsafe.Pointer(string1))) && int32(int32(p)) != int32(XTcl_UniCharToLower(tls, int32(*(*TTcl_UniChar)(unsafe.Pointer(string1))))) {
+						for string1 < stringEnd && int32(p) != int32(*(*TTcl_UniChar)(unsafe.Pointer(string1))) && int32(p) != int32(XTcl_UniCharToLower(tls, int32(*(*TTcl_UniChar)(unsafe.Pointer(string1))))) {
 							string1 += 2
 						}
 					} else {
-						for string1 < stringEnd && int32(int32(p)) != int32(*(*TTcl_UniChar)(unsafe.Pointer(string1))) {
+						for string1 < stringEnd && int32(p) != int32(*(*TTcl_UniChar)(unsafe.Pointer(string1))) {
 							string1 += 2
 						}
 					}
 				}
-				if XTclUniCharMatch(tls, string1, int32((int64(int64(stringEnd))-int64(int64(string1)))/2), pattern, int32((int64(int64(patternEnd))-int64(int64(pattern)))/2), nocase) != 0 {
+				if XTclUniCharMatch(tls, string1, int32((int64(stringEnd)-int64(string1))/2), pattern, int32((int64(patternEnd)-int64(pattern))/2), nocase) != 0 {
 					return int32(1)
 				}
 				if string1 == stringEnd {
@@ -261931,7 +262034,7 @@ func XTclUniCharMatch(tls *libc.TLS, string1 uintptr, strLen int32, pattern uint
 		 * Check for a "?" as the next pattern character. It matches any
 		 * single character.
 		 */
-		if int32(int32(p)) == int32('?') {
+		if int32(p) == int32('?') {
 			pattern += 2
 			string1 += 2
 			continue
@@ -261941,7 +262044,7 @@ func XTclUniCharMatch(tls *libc.TLS, string1 uintptr, strLen int32, pattern uint
 		 * list of characters that are acceptable, or by a range (two
 		 * characters separated by "-").
 		 */
-		if int32(int32(p)) == int32('[') {
+		if int32(p) == int32('[') {
 			pattern += 2
 			if nocase != 0 {
 				v2 = int32(XTcl_UniCharToLower(tls, int32(*(*TTcl_UniChar)(unsafe.Pointer(string1)))))
@@ -261973,14 +262076,14 @@ func XTclUniCharMatch(tls *libc.TLS, string1 uintptr, strLen int32, pattern uint
 					}
 					endChar = uint16(v4)
 					pattern += 2
-					if int32(int32(startChar)) <= int32(int32(ch1)) && int32(int32(ch1)) <= int32(int32(endChar)) || int32(int32(endChar)) <= int32(int32(ch1)) && int32(int32(ch1)) <= int32(int32(startChar)) {
+					if int32(startChar) <= int32(ch1) && int32(ch1) <= int32(endChar) || int32(endChar) <= int32(ch1) && int32(ch1) <= int32(startChar) {
 						/*
 						 * Matches ranges of form [a-z] or [z-a].
 						 */
 						break
 					}
 				} else {
-					if int32(int32(startChar)) == int32(int32(ch1)) {
+					if int32(startChar) == int32(ch1) {
 						break
 					}
 				}
@@ -261999,7 +262102,7 @@ func XTclUniCharMatch(tls *libc.TLS, string1 uintptr, strLen int32, pattern uint
 		 * If the next pattern character is '\', just strip off the '\' so we
 		 * do exact matching on the character that follows.
 		 */
-		if int32(int32(p)) == int32('\\') {
+		if int32(p) == int32('\\') {
 			pattern += 2
 			v5 = pattern
 			if v5 == patternEnd {
@@ -262672,7 +262775,7 @@ func _FindElement(tls *libc.TLS, interp uintptr, string1 uintptr, stringLength i
 				openBraces--
 			} else {
 				if openBraces == int32(1) {
-					size = int32(int64(int64(p)) - int64(int64(elemStart)))
+					size = int32(int64(p) - int64(elemStart))
 					p++
 					if v4 = p >= limit; !v4 {
 						if int32(*(*int8)(unsafe.Pointer(p))) > int32(0x20) {
@@ -262702,7 +262805,7 @@ func _FindElement(tls *libc.TLS, interp uintptr, string1 uintptr, stringLength i
 							}
 							p2++
 						}
-						XTcl_SetObjResult(tls, interp, XTcl_ObjPrintf(tls, ts+59169, libc.VaList(bp+16, typeStr, int32(int64(int64(p2))-int64(int64(p))), p)))
+						XTcl_SetObjResult(tls, interp, XTcl_ObjPrintf(tls, ts+59169, libc.VaList(bp+16, typeStr, int32(int64(p2)-int64(p)), p)))
 						XTcl_SetErrorCode(tls, interp, libc.VaList(bp+16, ts+3490, ts+6801, typeCode, ts+59226, libc.UintptrFromInt32(0)))
 					}
 					return int32(m_TCL_ERROR)
@@ -262724,7 +262827,7 @@ func _FindElement(tls *libc.TLS, interp uintptr, string1 uintptr, stringLength i
 				 */
 				literal = 0
 			}
-			XTclParseBackslash(tls, p, int32(int64(int64(limit))-int64(int64(p))), bp, libc.UintptrFromInt32(0))
+			XTclParseBackslash(tls, p, int32(int64(limit)-int64(p)), bp, libc.UintptrFromInt32(0))
 			p += uintptr(*(*int32)(unsafe.Pointer(bp)) - libc.Int32FromInt32(1))
 			break
 			/*
@@ -262733,7 +262836,7 @@ func _FindElement(tls *libc.TLS, interp uintptr, string1 uintptr, stringLength i
 			fallthrough
 		case int32('"'):
 			if inQuotes != 0 {
-				size = int32(int64(int64(p)) - int64(int64(elemStart)))
+				size = int32(int64(p) - int64(elemStart))
 				p++
 				if v8 = p >= limit; !v8 {
 					if int32(*(*int8)(unsafe.Pointer(p))) > int32(0x20) {
@@ -262763,7 +262866,7 @@ func _FindElement(tls *libc.TLS, interp uintptr, string1 uintptr, stringLength i
 						}
 						p2++
 					}
-					XTcl_SetObjResult(tls, interp, XTcl_ObjPrintf(tls, ts+59231, libc.VaList(bp+16, typeStr, int32(int64(int64(p2))-int64(int64(p))), p)))
+					XTcl_SetObjResult(tls, interp, XTcl_ObjPrintf(tls, ts+59231, libc.VaList(bp+16, typeStr, int32(int64(p2)-int64(p)), p)))
 					XTcl_SetErrorCode(tls, interp, libc.VaList(bp+16, ts+3490, ts+6801, typeCode, ts+59226, libc.UintptrFromInt32(0)))
 				}
 				return int32(m_TCL_ERROR)
@@ -262780,7 +262883,7 @@ func _FindElement(tls *libc.TLS, interp uintptr, string1 uintptr, stringLength i
 				 * otherwise terminate element.
 				 */
 				if openBraces == 0 && !(inQuotes != 0) {
-					size = int32(int64(int64(p)) - int64(int64(elemStart)))
+					size = int32(int64(p) - int64(elemStart))
 					goto done
 				}
 			}
@@ -262807,7 +262910,7 @@ func _FindElement(tls *libc.TLS, interp uintptr, string1 uintptr, stringLength i
 				return int32(m_TCL_ERROR)
 			}
 		}
-		size = int32(int64(int64(p)) - int64(int64(elemStart)))
+		size = int32(int64(p) - int64(elemStart))
 	}
 done:
 	for {
@@ -262863,7 +262966,7 @@ func XTclCopyAndCollapse(tls *libc.TLS, count int32, src uintptr, dst uintptr) (
 	newCount = 0
 	for count > 0 {
 		c = *(*int8)(unsafe.Pointer(src))
-		if int32(int32(c)) == int32('\\') {
+		if int32(c) == int32('\\') {
 			backslashCount = XTclParseBackslash(tls, src, count, bp, dst)
 			dst += uintptr(backslashCount)
 			newCount += backslashCount
@@ -262930,16 +263033,16 @@ func XTcl_SplitList(tls *libc.TLS, interp uintptr, _list uintptr, argcPtr uintpt
 	 */
 	size = XTclMaxListLength(tls, *(*uintptr)(unsafe.Pointer(bp)), -int32(1), bp+8) + int32(1)
 	length = int32(int64(*(*uintptr)(unsafe.Pointer(bp + 8))) - int64(*(*uintptr)(unsafe.Pointer(bp))))
-	argv = XTcl_Alloc(tls, uint32(uint64(uint64(size))*libc.Uint64FromInt64(8)+uint64(uint64(length))+libc.Uint64FromInt32(1)))
+	argv = XTcl_Alloc(tls, uint32(uint64(size)*libc.Uint64FromInt64(8)+uint64(length)+libc.Uint64FromInt32(1)))
 	i = 0
-	p = argv + uintptr(uint64(uint64(size))*libc.Uint64FromInt64(8))
+	p = argv + uintptr(uint64(size)*libc.Uint64FromInt64(8))
 	for {
 		if !(int32(*(*int8)(unsafe.Pointer(*(*uintptr)(unsafe.Pointer(bp))))) != 0) {
 			break
 		}
 		prevList = *(*uintptr)(unsafe.Pointer(bp))
 		result = XTclFindElement(tls, interp, *(*uintptr)(unsafe.Pointer(bp)), length, bp+16, bp, bp+24, bp+28)
-		length = int32(int64(length) - (int64(*(*uintptr)(unsafe.Pointer(bp))) - int64(int64(prevList))))
+		length = int32(int64(length) - (int64(*(*uintptr)(unsafe.Pointer(bp))) - int64(prevList)))
 		if result != m_TCL_OK {
 			XTclpFree(tls, argv)
 			return result
@@ -263203,13 +263306,13 @@ endOfString:
 	/*
 	 * We need at least as many bytes as are in the element value...
 	 */
-	bytesNeeded = uint32(int64(int64(p)) - int64(int64(src)))
+	bytesNeeded = uint32(int64(p) - int64(src))
 	if requireEscape != 0 {
 		/*
 		 * We must use escape sequences.  Add all the extra bytes needed to
 		 * have room to create them.
 		 */
-		bytesNeeded += uint32(uint32(extra))
+		bytesNeeded += uint32(extra)
 		/*
 		 * Make room to escape leading #, if needed.
 		 */
@@ -263258,7 +263361,7 @@ endOfString:
 			 * escape the braces.
 			 */
 			if int32(*(*int8)(unsafe.Pointer(flagPtr)))&int32(m_TCL_DONT_USE_BRACES) != 0 {
-				bytesNeeded += uint32(uint32(braceCount))
+				bytesNeeded += uint32(braceCount)
 			}
 			*(*int8)(unsafe.Pointer(flagPtr)) = int8(libc.Int32FromInt32(m_CONVERT_BRACE) | libc.Int32FromInt32(m_CONVERT_ESCAPE))
 			goto overflowCheck
@@ -263268,7 +263371,7 @@ endOfString:
 			 * If the caller reports it will direct TclConvertElement() to
 			 * use escapes, add the extra bytes needed to have room for them.
 			 */
-			bytesNeeded += uint32(uint32(extra))
+			bytesNeeded += uint32(extra)
 			/*
 			 * Make room to escape leading #, if needed.
 			 */
@@ -263426,9 +263529,9 @@ func XTclConvertElement(tls *libc.TLS, src uintptr, length int32, dst uintptr, f
 				src++
 				*(*int8)(unsafe.Pointer(v1)) = *(*int8)(unsafe.Pointer(v2))
 			}
-			return int32(int64(int64(p)) - int64(int64(dst)))
+			return int32(int64(p) - int64(dst))
 		} else {
-			libc.Xmemcpy(tls, dst, src, uint64(uint64(length)))
+			libc.Xmemcpy(tls, dst, src, uint64(length))
 			return length
 		}
 	}
@@ -263448,12 +263551,12 @@ func XTclConvertElement(tls *libc.TLS, src uintptr, length int32, dst uintptr, f
 				*(*int8)(unsafe.Pointer(v3)) = *(*int8)(unsafe.Pointer(v4))
 			}
 		} else {
-			libc.Xmemcpy(tls, p, src, uint64(uint64(length)))
+			libc.Xmemcpy(tls, p, src, uint64(length))
 			p += uintptr(length)
 		}
 		*(*int8)(unsafe.Pointer(p)) = int8('}')
 		p++
-		return int32(int64(int64(p)) - int64(int64(dst)))
+		return int32(int64(p) - int64(dst))
 	}
 	/* conversion == CONVERT_ESCAPE or CONVERT_MASK */
 	/*
@@ -263518,7 +263621,7 @@ func XTclConvertElement(tls *libc.TLS, src uintptr, length int32, dst uintptr, f
 			goto _5
 		case int32('\000'):
 			if length == -int32(1) {
-				return int32(int64(int64(p)) - int64(int64(dst)))
+				return int32(int64(p) - int64(dst))
 			}
 			/*
 			 * If we reach this point, there's an embedded NULL in the string
@@ -263536,7 +263639,7 @@ func XTclConvertElement(tls *libc.TLS, src uintptr, length int32, dst uintptr, f
 		src++
 		length -= libc.BoolInt32(length > 0)
 	}
-	return int32(int64(int64(p)) - int64(int64(dst)))
+	return int32(int64(p) - int64(dst))
 }
 
 /*
@@ -263608,10 +263711,10 @@ func XTcl_Merge(tls *libc.TLS, argc int32, argv uintptr) (r uintptr) {
 	_1:
 		i++
 	}
-	if bytesNeeded+uint32(uint32(argc)) > libc.Uint32FromInt32(m_INT_MAX)+libc.Uint32FromUint32(1) {
+	if bytesNeeded+uint32(argc) > libc.Uint32FromInt32(m_INT_MAX)+libc.Uint32FromUint32(1) {
 		XTcl_Panic(tls, ts+9291, libc.VaList(bp+72, int32(m_INT_MAX)))
 	}
-	bytesNeeded += uint32(uint32(argc))
+	bytesNeeded += uint32(argc)
 	/*
 	 * Pass two: copy into the result area.
 	 */
@@ -263764,7 +263867,7 @@ func XTclTrimRight(tls *libc.TLS, bytes uintptr, numBytes int32, trim uintptr, n
 		}
 		p = pp
 	}
-	return int32(int64(int64(numBytes)) - (int64(int64(p)) - int64(int64(bytes))))
+	return int32(int64(numBytes) - (int64(p) - int64(bytes)))
 }
 
 /*
@@ -263827,7 +263930,7 @@ func XTclTrimLeft(tls *libc.TLS, bytes uintptr, numBytes int32, trim uintptr, nu
 		p += uintptr(pInc)
 		numBytes -= pInc
 	}
-	return int32(int64(int64(p)) - int64(int64(bytes)))
+	return int32(int64(p) - int64(bytes))
 }
 
 /*
@@ -263865,7 +263968,7 @@ func XTclTrim(tls *libc.TLS, bytes uintptr, numBytes int32, trim uintptr, numTri
 		if numBytes > 0 {
 			first = bytes + uintptr(trimLeft)
 			bytes += uintptr(XTclUtfToUCS4(tls, first, bp))
-			numBytes = int32(int64(numBytes) - (int64(int64(bytes)) - int64(int64(first))))
+			numBytes = int32(int64(numBytes) - (int64(bytes) - int64(first)))
 			if numBytes > 0 {
 				/* When bytes is NUL-terminated, returns
 				 * 0 <= trimRight <= numBytes */
@@ -263970,7 +264073,7 @@ func XTcl_Concat(tls *libc.TLS, argc int32, argv uintptr) (r uintptr) {
 			p++
 			*(*int8)(unsafe.Pointer(v3)) = int8(' ')
 		}
-		libc.Xmemcpy(tls, p, element, uint64(uint64(elemLength)))
+		libc.Xmemcpy(tls, p, element, uint64(elemLength))
 		p += uintptr(elemLength)
 		needSpace = int32(1)
 		goto _2
@@ -264480,7 +264583,7 @@ func XTclByteArrayMatch(tls *libc.TLS, string1 uintptr, strLen int32, pattern ui
 			return libc.BoolInt32(string1 == stringEnd)
 		}
 		p = *(*uint8)(unsafe.Pointer(pattern))
-		if string1 == stringEnd && int32(int32(p)) != int32('*') {
+		if string1 == stringEnd && int32(p) != int32('*') {
 			return 0
 		}
 		/*
@@ -264490,7 +264593,7 @@ func XTclByteArrayMatch(tls *libc.TLS, string1 uintptr, strLen int32, pattern ui
 		 * recursively for each postfix of string, until either we match or we
 		 * reach the end of the string.
 		 */
-		if int32(int32(p)) == int32('*') {
+		if int32(p) == int32('*') {
 			/*
 			 * Skip all successive *'s in the pattern.
 			 */
@@ -264512,12 +264615,12 @@ func XTclByteArrayMatch(tls *libc.TLS, string1 uintptr, strLen int32, pattern ui
 				 * quickly if the next char in the pattern isn't a special
 				 * character.
 				 */
-				if int32(int32(p)) != int32('[') && int32(int32(p)) != int32('?') && int32(int32(p)) != int32('\\') {
-					for string1 < stringEnd && int32(int32(p)) != int32(*(*uint8)(unsafe.Pointer(string1))) {
+				if int32(p) != int32('[') && int32(p) != int32('?') && int32(p) != int32('\\') {
+					for string1 < stringEnd && int32(p) != int32(*(*uint8)(unsafe.Pointer(string1))) {
 						string1++
 					}
 				}
-				if XTclByteArrayMatch(tls, string1, int32(int64(int64(stringEnd))-int64(int64(string1))), pattern, int32(int64(int64(patternEnd))-int64(int64(pattern))), 0) != 0 {
+				if XTclByteArrayMatch(tls, string1, int32(int64(stringEnd)-int64(string1)), pattern, int32(int64(patternEnd)-int64(pattern)), 0) != 0 {
 					return int32(1)
 				}
 				if string1 == stringEnd {
@@ -264530,7 +264633,7 @@ func XTclByteArrayMatch(tls *libc.TLS, string1 uintptr, strLen int32, pattern ui
 		 * Check for a "?" as the next pattern character. It matches any
 		 * single character.
 		 */
-		if int32(int32(p)) == int32('?') {
+		if int32(p) == int32('?') {
 			pattern++
 			string1++
 			continue
@@ -264540,7 +264643,7 @@ func XTclByteArrayMatch(tls *libc.TLS, string1 uintptr, strLen int32, pattern ui
 		 * list of characters that are acceptable, or by a range (two
 		 * characters separated by "-").
 		 */
-		if int32(int32(p)) == int32('[') {
+		if int32(p) == int32('[') {
 			pattern++
 			ch1 = *(*uint8)(unsafe.Pointer(string1))
 			string1++
@@ -264557,14 +264660,14 @@ func XTclByteArrayMatch(tls *libc.TLS, string1 uintptr, strLen int32, pattern ui
 					}
 					endChar = *(*uint8)(unsafe.Pointer(pattern))
 					pattern++
-					if int32(int32(startChar)) <= int32(int32(ch1)) && int32(int32(ch1)) <= int32(int32(endChar)) || int32(int32(endChar)) <= int32(int32(ch1)) && int32(int32(ch1)) <= int32(int32(startChar)) {
+					if int32(startChar) <= int32(ch1) && int32(ch1) <= int32(endChar) || int32(endChar) <= int32(ch1) && int32(ch1) <= int32(startChar) {
 						/*
 						 * Matches ranges of form [a-z] or [z-a].
 						 */
 						break
 					}
 				} else {
-					if int32(int32(startChar)) == int32(int32(ch1)) {
+					if int32(startChar) == int32(ch1) {
 						break
 					}
 				}
@@ -264583,7 +264686,7 @@ func XTclByteArrayMatch(tls *libc.TLS, string1 uintptr, strLen int32, pattern ui
 		 * If the next pattern character is '\', just strip off the '\' so we
 		 * do exact matching on the character that follows.
 		 */
-		if int32(int32(p)) == int32('\\') {
+		if int32(p) == int32('\\') {
 			pattern++
 			v2 = pattern
 			if v2 == patternEnd {
@@ -264734,7 +264837,7 @@ func XTcl_DStringAppend(tls *libc.TLS, dsPtr uintptr, bytes uintptr, length int3
 			offset = -int32(1)
 			/* See [16896d49fd] */
 			if bytes >= (*TTcl_DString)(unsafe.Pointer(dsPtr)).Fstring1 && bytes <= (*TTcl_DString)(unsafe.Pointer(dsPtr)).Fstring1+uintptr((*TTcl_DString)(unsafe.Pointer(dsPtr)).Flength) {
-				offset = int32(int64(int64(bytes)) - int64((*TTcl_DString)(unsafe.Pointer(dsPtr)).Fstring1))
+				offset = int32(int64(bytes) - int64((*TTcl_DString)(unsafe.Pointer(dsPtr)).Fstring1))
 			}
 			(*TTcl_DString)(unsafe.Pointer(dsPtr)).Fstring1 = XTcl_Realloc(tls, (*TTcl_DString)(unsafe.Pointer(dsPtr)).Fstring1, uint32((*TTcl_DString)(unsafe.Pointer(dsPtr)).FspaceAvl))
 			if offset >= 0 {
@@ -264745,7 +264848,7 @@ func XTcl_DStringAppend(tls *libc.TLS, dsPtr uintptr, bytes uintptr, length int3
 	/*
 	 * Copy the new string into the buffer at the end of the old one.
 	 */
-	libc.Xmemcpy(tls, (*TTcl_DString)(unsafe.Pointer(dsPtr)).Fstring1+uintptr((*TTcl_DString)(unsafe.Pointer(dsPtr)).Flength), bytes, uint64(uint64(length)))
+	libc.Xmemcpy(tls, (*TTcl_DString)(unsafe.Pointer(dsPtr)).Fstring1+uintptr((*TTcl_DString)(unsafe.Pointer(dsPtr)).Flength), bytes, uint64(length))
 	*(*int32)(unsafe.Pointer(dsPtr + 8)) += length
 	*(*int8)(unsafe.Pointer((*TTcl_DString)(unsafe.Pointer(dsPtr)).Fstring1 + uintptr((*TTcl_DString)(unsafe.Pointer(dsPtr)).Flength))) = int8('\000')
 	return (*TTcl_DString)(unsafe.Pointer(dsPtr)).Fstring1
@@ -264863,7 +264966,7 @@ func XTcl_DStringAppendElement(tls *libc.TLS, dsPtr uintptr, element uintptr) (r
 			offset = -int32(1)
 			/* See [16896d49fd] */
 			if element >= (*TTcl_DString)(unsafe.Pointer(dsPtr)).Fstring1 && element <= (*TTcl_DString)(unsafe.Pointer(dsPtr)).Fstring1+uintptr((*TTcl_DString)(unsafe.Pointer(dsPtr)).Flength) {
-				offset = int32(int64(int64(element)) - int64((*TTcl_DString)(unsafe.Pointer(dsPtr)).Fstring1))
+				offset = int32(int64(element) - int64((*TTcl_DString)(unsafe.Pointer(dsPtr)).Fstring1))
 			}
 			(*TTcl_DString)(unsafe.Pointer(dsPtr)).Fstring1 = XTcl_Realloc(tls, (*TTcl_DString)(unsafe.Pointer(dsPtr)).Fstring1, uint32((*TTcl_DString)(unsafe.Pointer(dsPtr)).FspaceAvl))
 			if offset >= 0 {
@@ -265363,11 +265466,11 @@ _2:
 		p++
 		*(*int8)(unsafe.Pointer(v4)) = *(*int8)(unsafe.Pointer(v5))
 		c = *(*int8)(unsafe.Pointer(p))
-		if int32(int32(c)) != int32('\000') {
+		if int32(c) != int32('\000') {
 			v6 = dst
 			dst++
 			*(*int8)(unsafe.Pointer(v6)) = int8('.')
-			for int32(int32(c)) != int32('\000') {
+			for int32(c) != int32('\000') {
 				v7 = dst
 				dst++
 				*(*int8)(unsafe.Pointer(v7)) = c
@@ -265401,7 +265504,7 @@ _2:
 			if !(v10 >= 0) {
 				break
 			}
-			if int32(int32(c)) != int32('\000') {
+			if int32(c) != int32('\000') {
 				v11 = dst
 				dst++
 				*(*int8)(unsafe.Pointer(v11)) = c
@@ -265417,7 +265520,7 @@ _2:
 		v14 = dst
 		dst++
 		*(*int8)(unsafe.Pointer(v14)) = int8('.')
-		if int32(int32(c)) == int32('\000') {
+		if int32(c) == int32('\000') {
 			v15 = dst
 			dst++
 			*(*int8)(unsafe.Pointer(v15)) = int8('0')
@@ -265432,7 +265535,7 @@ _2:
 				dst++
 				*(*int8)(unsafe.Pointer(v17)) = int8('0')
 			}
-			for int32(int32(c)) != int32('\000') {
+			for int32(c) != int32('\000') {
 				v18 = dst
 				dst++
 				*(*int8)(unsafe.Pointer(v18)) = c
@@ -265643,9 +265746,9 @@ func XTclFormatInt(tls *libc.TLS, buffer uintptr, n int64) (r int32) {
 	 * Generate the characters of the result backwards in the buffer.
 	 */
 	if n < 0 {
-		v1 = -uint64(uint64(n))
+		v1 = -uint64(n)
 	} else {
-		v1 = uint64(uint64(n))
+		v1 = uint64(n)
 	}
 	intVal = v1
 	for cond := true; cond; cond = intVal > uint64(0) {
@@ -265764,7 +265867,7 @@ func XTclGetIntForIndex(tls *libc.TLS, interp uintptr, objPtr uintptr, endValue 
 	}
 	if XTclParseNumber(tls, libc.UintptrFromInt32(0), libc.UintptrFromInt32(0), libc.UintptrFromInt32(0), bytes, *(*int32)(unsafe.Pointer(bp)), bp+8, libc.Int32FromInt32(m_TCL_PARSE_INTEGER_ONLY)|libc.Int32FromInt32(m_TCL_PARSE_NO_WHITESPACE)) == m_TCL_OK {
 		savedOp = *(*int8)(unsafe.Pointer(*(*uintptr)(unsafe.Pointer(bp + 8))))
-		if int32(int32(savedOp)) != int32('+') && int32(int32(savedOp)) != int32('-') {
+		if int32(savedOp) != int32('+') && int32(savedOp) != int32('-') {
 			goto parseError
 		}
 		if int32(*(*int8)(unsafe.Pointer(*(*uintptr)(unsafe.Pointer(bp + 8)) + 1))) > int32(0x20) {
@@ -265784,7 +265887,7 @@ func XTclGetIntForIndex(tls *libc.TLS, interp uintptr, objPtr uintptr, endValue 
 		if int32(m_TCL_ERROR) == XTcl_GetInt(tls, interp, *(*uintptr)(unsafe.Pointer(bp + 8))+uintptr(1), bp+20) {
 			goto parseError
 		}
-		if int32(int32(savedOp)) == int32('+') {
+		if int32(savedOp) == int32('+') {
 			*(*int32)(unsafe.Pointer(indexPtr)) = *(*int32)(unsafe.Pointer(bp + 16)) + *(*int32)(unsafe.Pointer(bp + 20))
 		} else {
 			*(*int32)(unsafe.Pointer(indexPtr)) = *(*int32)(unsafe.Pointer(bp + 16)) - *(*int32)(unsafe.Pointer(bp + 20))
@@ -266659,7 +266762,7 @@ func XTclReToGlob(tls *libc.TLS, interp uintptr, reStr uintptr, reStrLen int32, 
 		v6 = dsStr
 		dsStr++
 		*(*int8)(unsafe.Pointer(v6)) = int8('*')
-		XTcl_DStringSetLength(tls, dsPtr, int32(int64(int64(dsStr))-int64(int64(dsStrStart))))
+		XTcl_DStringSetLength(tls, dsPtr, int32(int64(dsStr)-int64(dsStrStart)))
 		if exactPtr != 0 {
 			*(*int32)(unsafe.Pointer(exactPtr)) = 0
 		}
@@ -266871,7 +266974,7 @@ func XTclReToGlob(tls *libc.TLS, interp uintptr, reStr uintptr, reStrLen int32, 
 		dsStr++
 		*(*int8)(unsafe.Pointer(v26)) = int8('*')
 	}
-	XTcl_DStringSetLength(tls, dsPtr, int32(int64(int64(dsStr))-int64(int64(dsStrStart))))
+	XTcl_DStringSetLength(tls, dsPtr, int32(int64(dsStr)-int64(dsStrStart)))
 	if exactPtr != 0 {
 		*(*int32)(unsafe.Pointer(exactPtr)) = libc.BoolInt32(anchorLeft != 0 && anchorRight != 0)
 	}
@@ -267404,7 +267507,7 @@ _3:
 				len2 = *(*int32)(unsafe.Pointer(bp + 4)) - i - int32(2)
 				*(*int32)(unsafe.Pointer(bp + 4)) = i
 				newPart2 = XTcl_Alloc(tls, uint32(len2+libc.Int32FromInt32(1)))
-				libc.Xmemcpy(tls, newPart2, part2, uint64(uint64(len2)))
+				libc.Xmemcpy(tls, newPart2, part2, uint64(len2))
 				*(*int8)(unsafe.Pointer(newPart2 + uintptr(len2))) = int8('\000')
 				part2 = newPart2
 				part2Ptr = XTcl_NewStringObj(tls, newPart2, -int32(1))
@@ -271570,7 +271673,7 @@ func XTcl_GetVariableFullName(tls *libc.TLS, interp uintptr, variable TTcl_Var, 
 		}
 	} else {
 		if (*TCallFrame)(unsafe.Pointer((*TInterp)(unsafe.Pointer(iPtr)).FvarFramePtr)).FprocPtr != 0 {
-			index = int32((int64(int64(varPtr)) - int64((*TCallFrame)(unsafe.Pointer((*TInterp)(unsafe.Pointer(iPtr)).FvarFramePtr)).FcompiledLocals)) / 16)
+			index = int32((int64(varPtr) - int64((*TCallFrame)(unsafe.Pointer((*TInterp)(unsafe.Pointer(iPtr)).FvarFramePtr)).FcompiledLocals)) / 16)
 			if index >= 0 && index < (*TCallFrame)(unsafe.Pointer((*TInterp)(unsafe.Pointer(iPtr)).FvarFramePtr)).FnumCompiledLocals {
 				namePtr = *(*uintptr)(unsafe.Pointer((*TCallFrame)(unsafe.Pointer((*TInterp)(unsafe.Pointer(iPtr)).FvarFramePtr)).FlocalCachePtr + 8 + uintptr(index)*8))
 				XTcl_AppendObjToObj(tls, objPtr, namePtr)
@@ -271979,7 +272082,7 @@ func _SetArraySearchObj(tls *libc.TLS, interp uintptr, objPtr uintptr) (r int32)
 	 * in string to use for the check in the object instead.
 	 */
 	*(*uintptr)(unsafe.Pointer(bp))++
-	offset = uint64(int64(*(*uintptr)(unsafe.Pointer(bp))) - int64(int64(string1)))
+	offset = uint64(int64(*(*uintptr)(unsafe.Pointer(bp))) - int64(string1))
 	if (*TTcl_Obj)(unsafe.Pointer(objPtr)).FtypePtr != libc.UintptrFromInt32(0) {
 		if (*TTcl_ObjType)(unsafe.Pointer((*TTcl_Obj)(unsafe.Pointer(objPtr)).FtypePtr)).FfreeIntRepProc != libc.UintptrFromInt32(0) {
 			(*(*func(*libc.TLS, uintptr))(unsafe.Pointer(&struct{ uintptr }{(*TTcl_ObjType)(unsafe.Pointer((*TTcl_Obj)(unsafe.Pointer(objPtr)).FtypePtr)).FfreeIntRepProc})))(tls, objPtr)
@@ -272698,7 +272801,7 @@ func _DupParsedVarName(tls *libc.TLS, srcPtr uintptr, dupPtr uintptr) {
 		(*TTcl_Obj)(unsafe.Pointer(arrayPtr)).FrefCount++
 		elemLen = uint32(libc.Xstrlen(tls, elem))
 		elemCopy = XTcl_Alloc(tls, elemLen+libc.Uint32FromInt32(1))
-		libc.Xmemcpy(tls, elemCopy, elem, uint64(uint64(elemLen)))
+		libc.Xmemcpy(tls, elemCopy, elem, uint64(elemLen))
 		*(*int8)(unsafe.Pointer(elemCopy + uintptr(elemLen))) = int8('\000')
 		elem = elemCopy
 	}
@@ -272751,7 +272854,7 @@ func _UpdateParsedVarName(tls *libc.TLS, objPtr uintptr) {
 	v2 = p
 	p++
 	*(*int8)(unsafe.Pointer(v2)) = int8('(')
-	libc.Xmemcpy(tls, p, part2, uint64(uint64(len2)))
+	libc.Xmemcpy(tls, p, part2, uint64(len2))
 	p += uintptr(len2)
 	v3 = p
 	p++
@@ -273552,7 +273655,7 @@ func _CompareVarKeys(tls *libc.TLS, keyPtr uintptr, hPtr uintptr) (r int32) {
 	/*
 	 * Only compare string representations of the same length.
 	 */
-	return libc.BoolInt32(l1 == l2 && !(libc.Xmemcmp(tls, p1, p2, uint64(uint64(l1))) != 0))
+	return libc.BoolInt32(l1 == l2 && !(libc.Xmemcmp(tls, p1, p2, uint64(l1)) != 0))
 }
 
 const m_ASYNC = 1
@@ -274116,7 +274219,7 @@ _7:
 		(*TTcl_Obj)(unsafe.Pointer((*(*[4]uintptr)(unsafe.Pointer(bp)))[int32(2)])).Flength = int32(libc.Uint64FromInt64(10) - libc.Uint64FromInt32(1))
 	}
 	(*TTcl_Obj)(unsafe.Pointer((*(*[4]uintptr)(unsafe.Pointer(bp)))[int32(2)])).FtypePtr = libc.UintptrFromInt32(0)
-	(*(*[4]uintptr)(unsafe.Pointer(bp)))[int32(3)] = XTcl_NewWideIntObj(tls, int64(int64(adler)))
+	(*(*[4]uintptr)(unsafe.Pointer(bp)))[int32(3)] = XTcl_NewWideIntObj(tls, int64(adler))
 	return XTcl_NewListObj(tls, int32(4), bp)
 	/*
 	 * These should _not_ happen! This function is for dealing with error
@@ -274405,10 +274508,10 @@ func _Deflate(tls *libc.TLS, strm Tz_streamp, bufferPtr uintptr, bufferSize int3
 	var e int32
 	_ = e
 	(*Tz_stream)(unsafe.Pointer(strm)).Fnext_out = bufferPtr
-	(*Tz_stream)(unsafe.Pointer(strm)).Favail_out = uint32(uint32(bufferSize))
+	(*Tz_stream)(unsafe.Pointer(strm)).Favail_out = uint32(bufferSize)
 	e = libz.Xdeflate(tls, strm, flush)
 	if writtenPtr != libc.UintptrFromInt32(0) {
-		*(*int32)(unsafe.Pointer(writtenPtr)) = int32(uint32(uint32(bufferSize)) - (*Tz_stream)(unsafe.Pointer(strm)).Favail_out)
+		*(*int32)(unsafe.Pointer(writtenPtr)) = int32(uint32(bufferSize) - (*Tz_stream)(unsafe.Pointer(strm)).Favail_out)
 	}
 	return e
 }
@@ -275073,7 +275176,7 @@ func XTcl_ZlibStreamGet(tls *libc.TLS, zshandle TTcl_ZlibStream, data uintptr, c
 		dataPtr = XTcl_SetByteArrayLength(tls, data, *(*int32)(unsafe.Pointer(bp + 16))+count)
 		dataPtr += uintptr(*(*int32)(unsafe.Pointer(bp + 16)))
 		(*TZlibStreamHandle)(unsafe.Pointer(zshPtr)).Fstream.Fnext_out = dataPtr
-		(*TZlibStreamHandle)(unsafe.Pointer(zshPtr)).Fstream.Favail_out = uint32(uint32(count))
+		(*TZlibStreamHandle)(unsafe.Pointer(zshPtr)).Fstream.Favail_out = uint32(count)
 		if (*TZlibStreamHandle)(unsafe.Pointer(zshPtr)).Fstream.Favail_in == uint32(0) {
 			/*
 			 * zlib will probably need more data to decompress.
@@ -275282,7 +275385,7 @@ func XTcl_ZlibStreamGet(tls *libc.TLS, zshandle TTcl_ZlibStream, data uintptr, c
 			itemPtr = XTcl_GetByteArrayFromObj(tls, *(*uintptr)(unsafe.Pointer(bp + 8)), bp+4)
 			if *(*int32)(unsafe.Pointer(bp + 4))-(*TZlibStreamHandle)(unsafe.Pointer(zshPtr)).FoutPos >= count-dataPos {
 				len1 = uint32(count - dataPos)
-				libc.Xmemcpy(tls, dataPtr+uintptr(dataPos), itemPtr+uintptr((*TZlibStreamHandle)(unsafe.Pointer(zshPtr)).FoutPos), uint64(uint64(len1)))
+				libc.Xmemcpy(tls, dataPtr+uintptr(dataPos), itemPtr+uintptr((*TZlibStreamHandle)(unsafe.Pointer(zshPtr)).FoutPos), uint64(len1))
 				p13 = zshPtr + 152
 				*(*int32)(unsafe.Pointer(p13)) = int32(uint32(*(*int32)(unsafe.Pointer(p13))) + len1)
 				dataPos = int32(uint32(dataPos) + len1)
@@ -275291,7 +275394,7 @@ func XTcl_ZlibStreamGet(tls *libc.TLS, zshandle TTcl_ZlibStream, data uintptr, c
 				}
 			} else {
 				len11 = uint32(*(*int32)(unsafe.Pointer(bp + 4)) - (*TZlibStreamHandle)(unsafe.Pointer(zshPtr)).FoutPos)
-				libc.Xmemcpy(tls, dataPtr+uintptr(dataPos), itemPtr+uintptr((*TZlibStreamHandle)(unsafe.Pointer(zshPtr)).FoutPos), uint64(uint64(len11)))
+				libc.Xmemcpy(tls, dataPtr+uintptr(dataPos), itemPtr+uintptr((*TZlibStreamHandle)(unsafe.Pointer(zshPtr)).FoutPos), uint64(len11))
 				dataPos = int32(uint32(dataPos) + len11)
 				(*TZlibStreamHandle)(unsafe.Pointer(zshPtr)).FoutPos = 0
 			}
@@ -275554,7 +275657,7 @@ func XTcl_ZlibInflate(tls *libc.TLS, interp uintptr, format int32, data uintptr,
 	(*(*Tz_stream)(unsafe.Pointer(bp + 8))).Favail_in = uint32(*(*int32)(unsafe.Pointer(bp))) + uint32(1) /* +1 because zlib can "over-request"
 	 * input (but ignore it!) */
 	(*(*Tz_stream)(unsafe.Pointer(bp + 8))).Fnext_in = inData
-	(*(*Tz_stream)(unsafe.Pointer(bp + 8))).Favail_out = uint32(uint32(bufferSize))
+	(*(*Tz_stream)(unsafe.Pointer(bp + 8))).Favail_out = uint32(bufferSize)
 	(*(*Tz_stream)(unsafe.Pointer(bp + 8))).Fnext_out = outData
 	/*
 	 * Initialize zlib for decompression.
@@ -275588,7 +275691,7 @@ func XTcl_ZlibInflate(tls *libc.TLS, interp uintptr, format int32, data uintptr,
 			e = -int32(2)
 			break
 		}
-		newBufferSize = int32(uint32(uint32(bufferSize)) + uint32(5)*(*(*Tz_stream)(unsafe.Pointer(bp + 8))).Favail_in)
+		newBufferSize = int32(uint32(bufferSize) + uint32(5)*(*(*Tz_stream)(unsafe.Pointer(bp + 8))).Favail_in)
 		if newBufferSize == bufferSize {
 			newBufferSize = bufferSize + int32(1000)
 		}
@@ -275665,11 +275768,11 @@ error:
 
 func XTcl_ZlibCRC32(tls *libc.TLS, crc uint32, buf uintptr, len1 int32) (r uint32) {
 	/* Nothing much to do, just wrap the crc32(). */
-	return uint32(libz.Xcrc32(tls, uint64(uint64(crc)), buf, uint32(uint32(len1))))
+	return uint32(libz.Xcrc32(tls, uint64(crc), buf, uint32(len1)))
 }
 
 func XTcl_ZlibAdler32(tls *libc.TLS, adler uint32, buf uintptr, len1 int32) (r uint32) {
-	return uint32(libz.Xadler32(tls, uint64(uint64(adler)), buf, uint32(uint32(len1))))
+	return uint32(libz.Xadler32(tls, uint64(adler), buf, uint32(len1)))
 }
 
 /*
@@ -276989,7 +277092,7 @@ func _ZlibTransformInput(tls *libc.TLS, instanceData TClientData, buf uintptr, t
 			return -int32(1)
 		}
 		/* more bytes (or Eof if readBytes == 0) */
-		(*TZlibChannelData)(unsafe.Pointer(cd)).FinStream.Favail_in += uint32(uint32(readBytes))
+		(*TZlibChannelData)(unsafe.Pointer(cd)).FinStream.Favail_in += uint32(readBytes)
 	copyDecompressed:
 		/*
 		 * Transform the read chunk, if not empty. Anything we get
@@ -277063,7 +277166,7 @@ func _ZlibTransformOutput(tls *libc.TLS, instanceData TClientData, buf uintptr, 
 		return 0
 	}
 	(*TZlibChannelData)(unsafe.Pointer(cd)).FoutStream.Fnext_in = buf
-	(*TZlibChannelData)(unsafe.Pointer(cd)).FoutStream.Favail_in = uint32(uint32(toWrite))
+	(*TZlibChannelData)(unsafe.Pointer(cd)).FoutStream.Favail_in = uint32(toWrite)
 	for (*TZlibChannelData)(unsafe.Pointer(cd)).FoutStream.Favail_in > uint32(0) {
 		e = _Deflate(tls, cd+144, (*TZlibChannelData)(unsafe.Pointer(cd)).FoutBuffer, (*TZlibChannelData)(unsafe.Pointer(cd)).FoutAllocated, m_Z_NO_FLUSH, bp)
 		if e != m_Z_OK || *(*int32)(unsafe.Pointer(bp)) == 0 {
@@ -277075,7 +277178,7 @@ func _ZlibTransformOutput(tls *libc.TLS, instanceData TClientData, buf uintptr, 
 		}
 	}
 	if e == m_Z_OK {
-		return int32(uint32(uint32(toWrite)) - (*TZlibChannelData)(unsafe.Pointer(cd)).FoutStream.Favail_in)
+		return int32(uint32(toWrite) - (*TZlibChannelData)(unsafe.Pointer(cd)).FoutStream.Favail_in)
 	}
 	errObj = XTcl_NewListObj(tls, 0, libc.UintptrFromInt32(0))
 	XTcl_ListObjAppendElement(tls, libc.UintptrFromInt32(0), errObj, XTcl_NewStringObj(tls, ts+11906, -int32(1)))
@@ -277666,7 +277769,7 @@ func _ResultDecompress(tls *libc.TLS, cd uintptr, buf uintptr, toRead int32, flu
 	resBytes = 0
 	*(*int32)(unsafe.Pointer(cd + 16)) &= ^libc.Int32FromInt32(m_STREAM_DECOMPRESS)
 	(*TZlibChannelData)(unsafe.Pointer(cd)).FinStream.Fnext_out = buf
-	(*TZlibChannelData)(unsafe.Pointer(cd)).FinStream.Favail_out = uint32(uint32(toRead))
+	(*TZlibChannelData)(unsafe.Pointer(cd)).FinStream.Favail_out = uint32(toRead)
 	for (*TZlibChannelData)(unsafe.Pointer(cd)).FinStream.Favail_out > uint32(0) {
 		e = libz.Xinflate(tls, cd+32, flush)
 		if e == int32(m_Z_NEED_DICT) && (*TZlibChannelData)(unsafe.Pointer(cd)).FcompDictObj != 0 {
@@ -277682,7 +277785,7 @@ func _ResultDecompress(tls *libc.TLS, cd uintptr, buf uintptr, toRead int32, flu
 		 * avail_out is now the left over space in the output.  Therefore
 		 * "toRead - avail_out" is the amount of bytes generated.
 		 */
-		written = int32(uint32(uint32(toRead)) - (*TZlibChannelData)(unsafe.Pointer(cd)).FinStream.Favail_out)
+		written = int32(uint32(toRead) - (*TZlibChannelData)(unsafe.Pointer(cd)).FinStream.Favail_out)
 		/*
 		 * The cases where we're definitely done.
 		 */
@@ -277871,10 +277974,10 @@ func XTclBNInitBignumFromLong(tls *libc.TLS, a uintptr, initVal int64) (r int32)
 	 */
 	if initVal < 0 {
 		(*Tmp_int)(unsafe.Pointer(a)).Fsign = int32(m_MP_NEG)
-		v = -uint64(uint64(initVal))
+		v = -uint64(initVal)
 	} else {
 		(*Tmp_int)(unsafe.Pointer(a)).Fsign = m_MP_ZPOS
-		v = uint64(uint64(initVal))
+		v = uint64(initVal)
 	}
 	/*
 	 * Store the magnitude in the bignum.
@@ -277886,7 +277989,7 @@ func XTclBNInitBignumFromLong(tls *libc.TLS, a uintptr, initVal int64) (r int32)
 		*(*Tmp_digit)(unsafe.Pointer(v1)) = uint32(v & uint64(libc.Uint32FromInt32(1)<<libc.Uint32FromInt32(m_MP_DIGIT_BIT)-libc.Uint32FromInt32(1)))
 		v >>= uint64(m_MP_DIGIT_BIT)
 	}
-	(*Tmp_int)(unsafe.Pointer(a)).Fused = int32((int64(int64(p)) - int64((*Tmp_int)(unsafe.Pointer(a)).Fdp)) / 4)
+	(*Tmp_int)(unsafe.Pointer(a)).Fused = int32((int64(p) - int64((*Tmp_int)(unsafe.Pointer(a)).Fdp)) / 4)
 	return m_MP_OKAY
 }
 
@@ -277909,10 +278012,10 @@ func XTclBNInitBignumFromLong(tls *libc.TLS, a uintptr, initVal int64) (r int32)
 func XTclBNInitBignumFromWideInt(tls *libc.TLS, a uintptr, v TTcl_WideInt) (r int32) {
 	/* Initial value */
 	if v < 0 {
-		XTclBNInitBignumFromWideUInt(tls, a, -uint64(uint64(v)))
+		XTclBNInitBignumFromWideUInt(tls, a, -uint64(v))
 		return XTclBN_mp_neg(tls, a, a)
 	}
-	XTclBNInitBignumFromWideUInt(tls, a, uint64(uint64(v)))
+	XTclBNInitBignumFromWideUInt(tls, a, uint64(v))
 	return m_MP_OKAY
 }
 
@@ -277953,7 +278056,7 @@ func XTclBNInitBignumFromWideUInt(tls *libc.TLS, a uintptr, v TTcl_WideUInt) (r 
 		*(*Tmp_digit)(unsafe.Pointer(v1)) = uint32(v & uint64(libc.Uint32FromInt32(1)<<libc.Uint32FromInt32(m_MP_DIGIT_BIT)-libc.Uint32FromInt32(1)))
 		v >>= uint64(m_MP_DIGIT_BIT)
 	}
-	(*Tmp_int)(unsafe.Pointer(a)).Fused = int32((int64(int64(p)) - int64((*Tmp_int)(unsafe.Pointer(a)).Fdp)) / 4)
+	(*Tmp_int)(unsafe.Pointer(a)).Fused = int32((int64(p) - int64((*Tmp_int)(unsafe.Pointer(a)).Fdp)) / 4)
 	return m_MP_OKAY
 }
 
@@ -278227,7 +278330,7 @@ func _FileInputProc(tls *libc.TLS, instanceData TClientData, buf uintptr, toRead
 	 * nonblocking, the read will never block.
 	 */
 	for cond := true; cond; cond = bytesRead < 0 && *(*int32)(unsafe.Pointer(libc.X__errno_location(tls))) == int32(m_EINTR) {
-		bytesRead = int32(libc.Xread(tls, (*TFileState)(unsafe.Pointer(fsPtr)).Ffd, buf, uint64(uint64(toRead))))
+		bytesRead = int32(libc.Xread(tls, (*TFileState)(unsafe.Pointer(fsPtr)).Ffd, buf, uint64(toRead)))
 	}
 	if bytesRead < 0 {
 		*(*int32)(unsafe.Pointer(errorCodePtr)) = *(*int32)(unsafe.Pointer(libc.X__errno_location(tls)))
@@ -278269,7 +278372,7 @@ func _FileOutputProc(tls *libc.TLS, instanceData TClientData, buf uintptr, toWri
 		 */
 		return 0
 	}
-	written = int32(libc.Xwrite(tls, (*TFileState)(unsafe.Pointer(fsPtr)).Ffd, buf, uint64(uint64(toWrite))))
+	written = int32(libc.Xwrite(tls, (*TFileState)(unsafe.Pointer(fsPtr)).Ffd, buf, uint64(toWrite)))
 	if written > -int32(1) {
 		return written
 	}
@@ -278564,7 +278667,7 @@ func _TtySetOptionProc(tls *libc.TLS, instanceData TClientData, interp uintptr, 
 	/*
 	 * Option -mode baud,parity,databits,stopbits
 	 */
-	if len1 > uint32(2) && libc.Xstrncmp(tls, optionName, ts+63775, uint64(uint64(len1))) == 0 {
+	if len1 > uint32(2) && libc.Xstrncmp(tls, optionName, ts+63775, uint64(len1)) == 0 {
 		if _TtyParseMode(tls, interp, value, bp) != m_TCL_OK {
 			return int32(m_TCL_ERROR)
 		}
@@ -278577,25 +278680,25 @@ func _TtySetOptionProc(tls *libc.TLS, instanceData TClientData, interp uintptr, 
 	/*
 	 * Option -handshake none|xonxoff|rtscts|dtrdsr
 	 */
-	if len1 > uint32(1) && libc.Xstrncmp(tls, optionName, ts+63781, uint64(uint64(len1))) == 0 {
+	if len1 > uint32(1) && libc.Xstrncmp(tls, optionName, ts+63781, uint64(len1)) == 0 {
 		/*
 		 * Reset all handshake options. DTR and RTS are ON by default.
 		 */
 		libc.Xtcgetattr(tls, (*TFileState)(unsafe.Pointer(fsPtr)).Ffd, bp+32)
 		*(*Ttcflag_t)(unsafe.Pointer(bp + 32)) &= uint32(^(libc.Int32FromInt32(m_IXON) | libc.Int32FromInt32(m_IXOFF) | libc.Int32FromInt32(m_IXANY)))
 		*(*Ttcflag_t)(unsafe.Pointer(bp + 32 + 8)) &= ^libc.Uint32FromUint32(m_CRTSCTS)
-		if XTcl_UtfNcasecmp(tls, value, ts+8097, uint64(uint64(vlen))) == 0 {
+		if XTcl_UtfNcasecmp(tls, value, ts+8097, uint64(vlen)) == 0 {
 			/*
 			 * Leave all handshake options disabled.
 			 */
 		} else {
-			if XTcl_UtfNcasecmp(tls, value, ts+63792, uint64(uint64(vlen))) == 0 {
+			if XTcl_UtfNcasecmp(tls, value, ts+63792, uint64(vlen)) == 0 {
 				*(*Ttcflag_t)(unsafe.Pointer(bp + 32)) |= uint32(libc.Int32FromInt32(m_IXON) | libc.Int32FromInt32(m_IXOFF) | libc.Int32FromInt32(m_IXANY))
 			} else {
-				if XTcl_UtfNcasecmp(tls, value, ts+63800, uint64(uint64(vlen))) == 0 {
+				if XTcl_UtfNcasecmp(tls, value, ts+63800, uint64(vlen)) == 0 {
 					*(*Ttcflag_t)(unsafe.Pointer(bp + 32 + 8)) |= uint32(m_CRTSCTS)
 				} else {
-					if XTcl_UtfNcasecmp(tls, value, ts+63807, uint64(uint64(vlen))) == 0 {
+					if XTcl_UtfNcasecmp(tls, value, ts+63807, uint64(vlen)) == 0 {
 						if interp != 0 {
 							XTcl_SetObjResult(tls, interp, XTcl_ObjPrintf(tls, ts+63814, libc.VaList(bp+336, ts+63849)))
 							XTcl_SetErrorCode(tls, interp, libc.VaList(bp+336, ts+3490, ts+63867, libc.UintptrFromInt32(0)))
@@ -278617,7 +278720,7 @@ func _TtySetOptionProc(tls *libc.TLS, instanceData TClientData, interp uintptr, 
 	/*
 	 * Option -xchar {\x11 \x13}
 	 */
-	if len1 > uint32(1) && libc.Xstrncmp(tls, optionName, ts+63963, uint64(uint64(len1))) == 0 {
+	if len1 > uint32(1) && libc.Xstrncmp(tls, optionName, ts+63963, uint64(len1)) == 0 {
 		if XTcl_SplitList(tls, interp, value, bp+16, bp+24) == int32(m_TCL_ERROR) {
 			return int32(m_TCL_ERROR)
 		} else {
@@ -278644,7 +278747,7 @@ func _TtySetOptionProc(tls *libc.TLS, instanceData TClientData, interp uintptr, 
 	/*
 	 * Option -timeout msec
 	 */
-	if len1 > uint32(2) && libc.Xstrncmp(tls, optionName, ts+64025, uint64(uint64(len1))) == 0 {
+	if len1 > uint32(2) && libc.Xstrncmp(tls, optionName, ts+64025, uint64(len1)) == 0 {
 		libc.Xtcgetattr(tls, (*TFileState)(unsafe.Pointer(fsPtr)).Ffd, bp+32)
 		if XTcl_GetInt(tls, interp, value, bp+312) != m_TCL_OK {
 			return int32(m_TCL_ERROR)
@@ -278667,7 +278770,7 @@ func _TtySetOptionProc(tls *libc.TLS, instanceData TClientData, interp uintptr, 
 	/*
 	 * Option -ttycontrol {DTR 1 RTS 0 BREAK 0}
 	 */
-	if len1 > uint32(4) && libc.Xstrncmp(tls, optionName, ts+64034, uint64(uint64(len1))) == 0 {
+	if len1 > uint32(4) && libc.Xstrncmp(tls, optionName, ts+64034, uint64(len1)) == 0 {
 		if XTcl_SplitList(tls, interp, value, bp+16, bp+24) == int32(m_TCL_ERROR) {
 			return int32(m_TCL_ERROR)
 		}
@@ -278772,7 +278875,7 @@ func _TtyGetOptionProc(tls *libc.TLS, instanceData TClientData, interp uintptr, 
 	if len1 == uint32(0) {
 		XTcl_DStringAppendElement(tls, dsPtr, ts+63775)
 	}
-	if len1 == uint32(0) || len1 > uint32(2) && libc.Xstrncmp(tls, optionName, ts+63775, uint64(uint64(len1))) == 0 {
+	if len1 == uint32(0) || len1 > uint32(2) && libc.Xstrncmp(tls, optionName, ts+63775, uint64(len1)) == 0 {
 		valid = int32(1)
 		_TtyGetAttributes(tls, (*TFileState)(unsafe.Pointer(fsPtr)).Ffd, bp+88)
 		libc.Xsprintf(tls, bp, ts+64225, libc.VaList(bp+408, (*(*TTtyAttrs)(unsafe.Pointer(bp + 88))).Fbaud, (*(*TTtyAttrs)(unsafe.Pointer(bp + 88))).Fparity, (*(*TTtyAttrs)(unsafe.Pointer(bp + 88))).Fdata, (*(*TTtyAttrs)(unsafe.Pointer(bp + 88))).Fstop))
@@ -278785,7 +278888,7 @@ func _TtyGetOptionProc(tls *libc.TLS, instanceData TClientData, interp uintptr, 
 		XTcl_DStringAppendElement(tls, dsPtr, ts+63963)
 		XTcl_DStringStartSublist(tls, dsPtr)
 	}
-	if len1 == uint32(0) || len1 > uint32(1) && libc.Xstrncmp(tls, optionName, ts+63963, uint64(uint64(len1))) == 0 {
+	if len1 == uint32(0) || len1 > uint32(1) && libc.Xstrncmp(tls, optionName, ts+63963, uint64(len1)) == 0 {
 		valid = int32(1)
 		libc.Xtcgetattr(tls, (*TFileState)(unsafe.Pointer(fsPtr)).Ffd, bp+104)
 		XTcl_DStringInit(tls, bp+168)
@@ -278804,7 +278907,7 @@ func _TtyGetOptionProc(tls *libc.TLS, instanceData TClientData, interp uintptr, 
 	 * Option is readonly and returned by [fconfigure chan -queue] but not
 	 * returned by unnamed [fconfigure chan].
 	 */
-	if len1 > uint32(1) && libc.Xstrncmp(tls, optionName, ts+64237, uint64(uint64(len1))) == 0 {
+	if len1 > uint32(1) && libc.Xstrncmp(tls, optionName, ts+64237, uint64(len1)) == 0 {
 		*(*int32)(unsafe.Pointer(bp + 384)) = 0
 		*(*int32)(unsafe.Pointer(bp + 388)) = 0
 		valid = int32(1)
@@ -278822,7 +278925,7 @@ func _TtyGetOptionProc(tls *libc.TLS, instanceData TClientData, interp uintptr, 
 	 * Option is readonly and returned by [fconfigure chan -ttystatus] but not
 	 * returned by unnamed [fconfigure chan].
 	 */
-	if len1 > uint32(4) && libc.Xstrncmp(tls, optionName, ts+64244, uint64(uint64(len1))) == 0 {
+	if len1 > uint32(4) && libc.Xstrncmp(tls, optionName, ts+64244, uint64(len1)) == 0 {
 		valid = int32(1)
 		libc.Xioctl(tls, (*TFileState)(unsafe.Pointer(fsPtr)).Ffd, int32(m_TIOCMGET), libc.VaList(bp+408, bp+392))
 		_TtyModemStatusStr(tls, *(*int32)(unsafe.Pointer(bp + 392)), dsPtr)
@@ -280158,7 +280261,7 @@ func XTclUnixCopyFile(tls *libc.TLS, src uintptr, dst uintptr, statBufPtr uintpt
 	}
 	buffer = XTcl_Alloc(tls, blockSize)
 	for int32(1) != 0 {
-		nread = uint64(libc.Xread(tls, srcFd, buffer, uint64(uint64(blockSize))))
+		nread = uint64(libc.Xread(tls, srcFd, buffer, uint64(blockSize)))
 		if nread == uint64(-libc.Int32FromInt32(1)) || nread == uint64(0) {
 			break
 		}
@@ -280432,7 +280535,7 @@ func _DoRemoveDirectory(tls *libc.TLS, pathPtr uintptr, recursive int32, errorPt
 			oldPerm = (*(*TTcl_StatBuf)(unsafe.Pointer(bp))).Fst_mode & libc.Uint32FromInt32(0x00007FFF)
 		}
 		newPerm = int32(oldPerm | uint32(libc.Int32FromInt32(64)+libc.Int32FromInt32(128)+libc.Int32FromInt32(256)))
-		libc.Xchmod(tls, path, uint32(uint32(newPerm)))
+		libc.Xchmod(tls, path, uint32(newPerm))
 	}
 	if libc.Xrmdir(tls, path) == 0 { /* INTL: Native. */
 		return m_TCL_OK
@@ -281408,7 +281511,7 @@ func XTclpObjNormalizePath(tls *libc.TLS, interp uintptr, pathPtr uintptr, nextC
 	if nextCheckpoint == 0 && libc.Bool(int32(m_haveRealpath) != 0) {
 		lastDir = libc.Xstrrchr(tls, currentPathEndPosition, int32('/'))
 		if lastDir != libc.UintptrFromInt32(0) {
-			nativePath = XTcl_UtfToExternalDString(tls, libc.UintptrFromInt32(0), path, int32(int64(int64(lastDir))-int64(int64(path))), bp+8)
+			nativePath = XTcl_UtfToExternalDString(tls, libc.UintptrFromInt32(0), path, int32(int64(lastDir)-int64(path)), bp+8)
 			if libc.Xrealpath(tls, nativePath, bp+224) != libc.UintptrFromInt32(0) {
 				if int32(*(*int8)(unsafe.Pointer(nativePath))) != int32('/') && int32(*(*int8)(unsafe.Pointer(bp + 224))) == int32('/') {
 					/*
@@ -281416,7 +281519,7 @@ func XTclpObjNormalizePath(tls *libc.TLS, interp uintptr, pathPtr uintptr, nextC
 					 * absolute path, we do not know how to handle this.
 					 */
 				} else {
-					nextCheckpoint = int32(int64(int64(lastDir)) - int64(int64(path)))
+					nextCheckpoint = int32(int64(lastDir) - int64(path))
 					goto wholeStringOk
 				}
 			}
@@ -281428,8 +281531,8 @@ func XTclpObjNormalizePath(tls *libc.TLS, interp uintptr, pathPtr uintptr, nextC
 	 */
 	for int32(1) != 0 {
 		cur = *(*int8)(unsafe.Pointer(currentPathEndPosition))
-		if int32(int32(cur)) == int32('/') && path != currentPathEndPosition {
-			nativePath = XTcl_UtfToExternalDString(tls, libc.UintptrFromInt32(0), path, int32(int64(int64(currentPathEndPosition))-int64(int64(path))), bp+8)
+		if int32(cur) == int32('/') && path != currentPathEndPosition {
+			nativePath = XTcl_UtfToExternalDString(tls, libc.UintptrFromInt32(0), path, int32(int64(currentPathEndPosition)-int64(path)), bp+8)
 			accessOk = libc.Xaccess(tls, nativePath, m_F_OK)
 			XTcl_DStringFree(tls, bp+8)
 			if accessOk != 0 {
@@ -281441,9 +281544,9 @@ func XTclpObjNormalizePath(tls *libc.TLS, interp uintptr, pathPtr uintptr, nextC
 			/*
 			 * Update the acceptable point.
 			 */
-			nextCheckpoint = int32(int64(int64(currentPathEndPosition)) - int64(int64(path)))
+			nextCheckpoint = int32(int64(currentPathEndPosition) - int64(path))
 		} else {
-			if int32(int32(cur)) == 0 {
+			if int32(cur) == 0 {
 				/*
 				 * Reached end of string.
 				 */
@@ -281737,7 +281840,7 @@ func XTclpFindExecutable(tls *libc.TLS, argv0 uintptr) {
 		}
 		XTcl_DStringSetLength(tls, bp+144, 0)
 		if p != name {
-			XTcl_DStringAppend(tls, bp+144, name, int32(int64(int64(p))-int64(int64(name))))
+			XTcl_DStringAppend(tls, bp+144, name, int32(int64(p)-int64(name)))
 			if int32(*(*int8)(unsafe.Pointer(p + uintptr(-libc.Int32FromInt32(1))))) != int32('/') {
 				XTcl_DStringAppend(tls, bp+144, ts+5689, int32(libc.Uint64FromInt64(2)-libc.Uint64FromInt32(1)))
 			}
@@ -283433,7 +283536,7 @@ func _PipeInputProc(tls *libc.TLS, instanceData TClientData, buf uintptr, toRead
 	 * interrupt error, for which we should immediately retry. [Bug #415131]
 	 */
 	for cond := true; cond; cond = bytesRead < 0 && *(*int32)(unsafe.Pointer(libc.X__errno_location(tls))) == int32(m_EINTR) {
-		bytesRead = int32(libc.Xread(tls, int32(int64((*TPipeState)(unsafe.Pointer(psPtr)).FinFile))-int32(1), buf, uint64(uint64(toRead))))
+		bytesRead = int32(libc.Xread(tls, int32(int64((*TPipeState)(unsafe.Pointer(psPtr)).FinFile))-int32(1), buf, uint64(toRead)))
 	}
 	if bytesRead < 0 {
 		*(*int32)(unsafe.Pointer(errorCodePtr)) = *(*int32)(unsafe.Pointer(libc.X__errno_location(tls)))
@@ -283472,7 +283575,7 @@ func _PipeOutputProc(tls *libc.TLS, instanceData TClientData, buf uintptr, toWri
 	 * retry. [Bug #415131]
 	 */
 	for cond := true; cond; cond = written < 0 && *(*int32)(unsafe.Pointer(libc.X__errno_location(tls))) == int32(m_EINTR) {
-		written = int32(libc.Xwrite(tls, int32(int64((*TPipeState)(unsafe.Pointer(psPtr)).FoutFile))-int32(1), buf, uint64(uint64(toWrite))))
+		written = int32(libc.Xwrite(tls, int32(int64((*TPipeState)(unsafe.Pointer(psPtr)).FoutFile))-int32(1), buf, uint64(toWrite)))
 	}
 	if written < 0 {
 		*(*int32)(unsafe.Pointer(errorCodePtr)) = *(*int32)(unsafe.Pointer(libc.X__errno_location(tls)))
@@ -283859,9 +283962,9 @@ func _InitializeHostName(tls *libc.TLS, valuePtr uintptr, lengthPtr uintptr, enc
 			 */
 			dot = libc.Xstrchr(tls, bp+65, int32('.'))
 			if dot != libc.UintptrFromInt32(0) {
-				node = XTcl_Alloc(tls, uint32(int64(int64(dot))-t__predefined_ptrdiff_t(bp+65)+libc.Int64FromInt32(1)))
-				libc.Xmemcpy(tls, node, bp+65, uint64(int64(int64(dot))-t__predefined_ptrdiff_t(bp+65)))
-				*(*int8)(unsafe.Pointer(node + uintptr(int64(int64(dot))-t__predefined_ptrdiff_t(bp+65)))) = int8('\000')
+				node = XTcl_Alloc(tls, uint32(int64(dot)-t__predefined_ptrdiff_t(bp+65)+libc.Int64FromInt32(1)))
+				libc.Xmemcpy(tls, node, bp+65, uint64(int64(dot)-t__predefined_ptrdiff_t(bp+65)))
+				*(*int8)(unsafe.Pointer(node + uintptr(int64(dot)-t__predefined_ptrdiff_t(bp+65)))) = int8('\000')
 				hp = XTclpGetHostByName(tls, node)
 				XTclpFree(tls, node)
 			}
@@ -284092,7 +284195,7 @@ func _TcpInputProc(tls *libc.TLS, instanceData uintptr, buf uintptr, bufSize int
 	if _WaitForConnect(tls, statePtr, errorCodePtr) != 0 {
 		return -int32(1)
 	}
-	bytesRead = int32(libc.Xrecv(tls, (*TTcpState)(unsafe.Pointer(statePtr)).Ffds.Ffd, buf, uint64(uint64(bufSize)), 0))
+	bytesRead = int32(libc.Xrecv(tls, (*TTcpState)(unsafe.Pointer(statePtr)).Ffds.Ffd, buf, uint64(bufSize), 0))
 	if bytesRead >= 0 {
 		return bytesRead
 	}
@@ -284137,7 +284240,7 @@ func _TcpOutputProc(tls *libc.TLS, instanceData uintptr, buf uintptr, toWrite in
 	if _WaitForConnect(tls, statePtr, errorCodePtr) != 0 {
 		return -int32(1)
 	}
-	written = int32(libc.Xsend(tls, (*TTcpState)(unsafe.Pointer(statePtr)).Ffds.Ffd, buf, uint64(uint64(toWrite)), 0))
+	written = int32(libc.Xsend(tls, (*TTcpState)(unsafe.Pointer(statePtr)).Ffds.Ffd, buf, uint64(toWrite), 0))
 	if written >= 0 {
 		return written
 	}
@@ -284928,7 +285031,7 @@ func XTcl_OpenTcpClient(tls *libc.TLS, interp uintptr, port int32, host uintptr,
 		_TcpCloseProc(tls, statePtr, libc.UintptrFromInt32(0))
 		return libc.UintptrFromInt32(0)
 	}
-	libc.Xsprintf(tls, bp+24, ts+65522, libc.VaList(bp+56, int64(int64(statePtr))))
+	libc.Xsprintf(tls, bp+24, ts+65522, libc.VaList(bp+56, int64(statePtr)))
 	(*TTcpState)(unsafe.Pointer(statePtr)).Fchannel = XTcl_CreateChannel(tls, uintptr(unsafe.Pointer(&_tcpChannelType)), bp+24, statePtr, libc.Int32FromInt32(1)<<libc.Int32FromInt32(1)|libc.Int32FromInt32(1)<<libc.Int32FromInt32(2))
 	if XTcl_SetChannelOption(tls, interp, (*TTcpState)(unsafe.Pointer(statePtr)).Fchannel, ts+38672, ts+64581) == int32(m_TCL_ERROR) {
 		XTcl_Close(tls, libc.UintptrFromInt32(0), (*TTcpState)(unsafe.Pointer(statePtr)).Fchannel)
@@ -284986,7 +285089,7 @@ func XTclpMakeTcpClientChannelMode(tls *libc.TLS, sock uintptr, mode int32) (r u
 	libc.Xmemset(tls, statePtr, 0, uint64(104))
 	(*TTcpState)(unsafe.Pointer(statePtr)).Ffds.Ffd = int32(int64(sock))
 	(*TTcpState)(unsafe.Pointer(statePtr)).Fflags = 0
-	libc.Xsprintf(tls, bp, ts+65522, libc.VaList(bp+32, int64(int64(statePtr))))
+	libc.Xsprintf(tls, bp, ts+65522, libc.VaList(bp+32, int64(statePtr)))
 	(*TTcpState)(unsafe.Pointer(statePtr)).Fchannel = XTcl_CreateChannel(tls, uintptr(unsafe.Pointer(&_tcpChannelType)), bp, statePtr, mode)
 	if XTcl_SetChannelOption(tls, libc.UintptrFromInt32(0), (*TTcpState)(unsafe.Pointer(statePtr)).Fchannel, ts+38672, ts+64581) == int32(m_TCL_ERROR) {
 		XTcl_Close(tls, libc.UintptrFromInt32(0), (*TTcpState)(unsafe.Pointer(statePtr)).Fchannel)
@@ -285050,7 +285153,7 @@ func XTcl_OpenTcpServer(tls *libc.TLS, interp uintptr, port int32, myHost uintpt
 		}
 		sock = libc.Xsocket(tls, (*Taddrinfo)(unsafe.Pointer(addrPtr)).Fai_family, (*Taddrinfo)(unsafe.Pointer(addrPtr)).Fai_socktype, (*Taddrinfo)(unsafe.Pointer(addrPtr)).Fai_protocol)
 		if sock == -int32(1) {
-			if int32(howfar) < 1 {
+			if howfar < 1 {
 				howfar = 1
 				my_errno = *(*int32)(unsafe.Pointer(libc.X__errno_location(tls)))
 			}
@@ -285078,7 +285181,7 @@ func XTcl_OpenTcpServer(tls *libc.TLS, interp uintptr, port int32, myHost uintpt
 		 * as sockaddr_in, we can handle both through the IPv4 API.
 		 */
 		if port == 0 && chosenport != 0 {
-			(*Tsockaddr_in)(unsafe.Pointer((*Taddrinfo)(unsafe.Pointer(addrPtr)).Fai_addr)).Fsin_port = libc.Xhtons(tls, uint16(uint16(chosenport)))
+			(*Tsockaddr_in)(unsafe.Pointer((*Taddrinfo)(unsafe.Pointer(addrPtr)).Fai_addr)).Fsin_port = libc.Xhtons(tls, uint16(chosenport))
 		}
 		/*
 		 * Missing on: Solaris 2.8
@@ -285089,7 +285192,7 @@ func XTcl_OpenTcpServer(tls *libc.TLS, interp uintptr, port int32, myHost uintpt
 		}
 		status = libc.Xbind(tls, sock, (*Taddrinfo)(unsafe.Pointer(addrPtr)).Fai_addr, (*Taddrinfo)(unsafe.Pointer(addrPtr)).Fai_addrlen)
 		if status == -int32(1) {
-			if int32(howfar) < 2 {
+			if howfar < 2 {
 				howfar = 2
 				my_errno = *(*int32)(unsafe.Pointer(libc.X__errno_location(tls)))
 			}
@@ -285109,7 +285212,7 @@ func XTcl_OpenTcpServer(tls *libc.TLS, interp uintptr, port int32, myHost uintpt
 		}
 		status = libc.Xlisten(tls, sock, int32(m_SOMAXCONN))
 		if status < 0 {
-			if int32(howfar) < 3 {
+			if howfar < 3 {
 				howfar = 3
 				my_errno = *(*int32)(unsafe.Pointer(libc.X__errno_location(tls)))
 			}
@@ -285125,7 +285228,7 @@ func XTcl_OpenTcpServer(tls *libc.TLS, interp uintptr, port int32, myHost uintpt
 			libc.Xmemset(tls, statePtr, 0, uint64(104))
 			(*TTcpState)(unsafe.Pointer(statePtr)).FacceptProc = acceptProc
 			(*TTcpState)(unsafe.Pointer(statePtr)).FacceptProcData = acceptProcData
-			libc.Xsprintf(tls, bp+16, ts+65522, libc.VaList(bp+200, int64(int64(statePtr))))
+			libc.Xsprintf(tls, bp+16, ts+65522, libc.VaList(bp+200, int64(statePtr)))
 			newfds = statePtr + 8
 		} else {
 			newfds = XTcl_Alloc(tls, uint32(libc.Uint64FromInt64(24)))
@@ -285211,7 +285314,7 @@ func _TcpAccept(tls *libc.TLS, data uintptr, mask int32) {
 	libc.Xmemset(tls, newSockState, 0, uint64(104))
 	(*TTcpState)(unsafe.Pointer(newSockState)).Fflags = 0
 	(*TTcpState)(unsafe.Pointer(newSockState)).Ffds.Ffd = newsock
-	libc.Xsprintf(tls, bp+132, ts+65522, libc.VaList(bp+448, int64(int64(newSockState))))
+	libc.Xsprintf(tls, bp+132, ts+65522, libc.VaList(bp+448, int64(newSockState)))
 	(*TTcpState)(unsafe.Pointer(newSockState)).Fchannel = XTcl_CreateChannel(tls, uintptr(unsafe.Pointer(&_tcpChannelType)), bp+132, newSockState, libc.Int32FromInt32(1)<<libc.Int32FromInt32(1)|libc.Int32FromInt32(1)<<libc.Int32FromInt32(2))
 	XTcl_SetChannelOption(tls, libc.UintptrFromInt32(0), (*TTcpState)(unsafe.Pointer(newSockState)).Fchannel, ts+38672, ts+64581)
 	if (*TTcpState)(unsafe.Pointer((*TTcpFdList)(unsafe.Pointer(fds)).FstatePtr)).FacceptProc != libc.UintptrFromInt32(0) {
@@ -286789,7 +286892,7 @@ func XTclpFindVariable(tls *libc.TLS, name uintptr, lengthPtr uintptr) (r int32)
 			p2++
 		}
 		if int32(*(*int8)(unsafe.Pointer(p1))) == int32('=') && int32(*(*int8)(unsafe.Pointer(p2))) == int32('\000') {
-			*(*int32)(unsafe.Pointer(lengthPtr)) = int32(int64(int64(p2)) - int64(int64(name)))
+			*(*int32)(unsafe.Pointer(lengthPtr)) = int32(int64(p2) - int64(name))
 			result = i
 			goto done
 		}
@@ -287244,7 +287347,7 @@ func XTclpGetHostByName(tls *libc.TLS, name uintptr) (r uintptr) {
  */
 
 func XTclpGetHostByAddr(tls *libc.TLS, addr uintptr, length int32, type1 int32) (r uintptr) {
-	return libc.Xgethostbyaddr(tls, addr, uint32(uint32(length)), type1)
+	return libc.Xgethostbyaddr(tls, addr, uint32(length), type1)
 }
 
 /*
@@ -293546,7 +293649,7 @@ func XTclOOGetSortedMethodList(tls *libc.TLS, oPtr uintptr, flags int32, strings
 		 */
 		if i > 0 {
 			if i > int32(1) {
-				libc.Xqsort(tls, strings, uint64(uint64(i)), uint64(8), __ccgo_fp(_CmpStr))
+				libc.Xqsort(tls, strings, uint64(i), uint64(8), __ccgo_fp(_CmpStr))
 			}
 			*(*uintptr)(unsafe.Pointer(stringsPtr)) = strings
 		} else {
@@ -293626,7 +293729,7 @@ func XTclOOGetSortedClassMethodList(tls *libc.TLS, clsPtr uintptr, flags int32, 
 		 */
 		if i > 0 {
 			if i > int32(1) {
-				libc.Xqsort(tls, strings, uint64(uint64(i)), uint64(8), __ccgo_fp(_CmpStr))
+				libc.Xqsort(tls, strings, uint64(i), uint64(8), __ccgo_fp(_CmpStr))
 			}
 			*(*uintptr)(unsafe.Pointer(stringsPtr)) = strings
 		} else {
@@ -295008,7 +295111,7 @@ func XTclOOObjectSetFilters(tls *libc.TLS, oPtr uintptr, numFilters int32, filte
 		(*TObject)(unsafe.Pointer(oPtr)).Ffilters.Fnum = 0
 		_RecomputeClassCacheFlag(tls, oPtr)
 	} else {
-		size = int32(uint64(8) * uint64(uint64(numFilters))) /* should be size_t */
+		size = int32(uint64(8) * uint64(numFilters)) /* should be size_t */
 		if (*TObject)(unsafe.Pointer(oPtr)).Ffilters.Fnum == 0 {
 			filtersList = XTcl_Alloc(tls, uint32(size))
 		} else {
@@ -295078,7 +295181,7 @@ func XTclOOClassSetFilters(tls *libc.TLS, interp uintptr, classPtr uintptr, numF
 		(*TClass)(unsafe.Pointer(classPtr)).Ffilters.Flist = libc.UintptrFromInt32(0)
 		(*TClass)(unsafe.Pointer(classPtr)).Ffilters.Fnum = 0
 	} else {
-		size = int32(uint64(8) * uint64(uint64(numFilters))) /* should be size_t */
+		size = int32(uint64(8) * uint64(numFilters)) /* should be size_t */
 		if (*TClass)(unsafe.Pointer(classPtr)).Ffilters.Fnum == 0 {
 			filtersList = XTcl_Alloc(tls, uint32(size))
 		} else {
@@ -295163,13 +295266,13 @@ func XTclOOObjectSetMixins(tls *libc.TLS, oPtr uintptr, numMixins int32, mixins 
 			_2:
 				i++
 			}
-			(*TObject)(unsafe.Pointer(oPtr)).Fmixins.Flist = XTcl_Realloc(tls, (*TObject)(unsafe.Pointer(oPtr)).Fmixins.Flist, uint32(libc.Uint64FromInt64(8)*uint64(uint64(numMixins))))
+			(*TObject)(unsafe.Pointer(oPtr)).Fmixins.Flist = XTcl_Realloc(tls, (*TObject)(unsafe.Pointer(oPtr)).Fmixins.Flist, uint32(libc.Uint64FromInt64(8)*uint64(numMixins)))
 		} else {
-			(*TObject)(unsafe.Pointer(oPtr)).Fmixins.Flist = XTcl_Alloc(tls, uint32(libc.Uint64FromInt64(8)*uint64(uint64(numMixins))))
+			(*TObject)(unsafe.Pointer(oPtr)).Fmixins.Flist = XTcl_Alloc(tls, uint32(libc.Uint64FromInt64(8)*uint64(numMixins)))
 			*(*int32)(unsafe.Pointer(oPtr + 92)) &= ^libc.Int32FromInt32(m_USE_CLASS_CACHE)
 		}
 		(*TObject)(unsafe.Pointer(oPtr)).Fmixins.Fnum = numMixins
-		libc.Xmemcpy(tls, (*TObject)(unsafe.Pointer(oPtr)).Fmixins.Flist, mixins, uint64(8)*uint64(uint64(numMixins)))
+		libc.Xmemcpy(tls, (*TObject)(unsafe.Pointer(oPtr)).Fmixins.Flist, mixins, uint64(8)*uint64(numMixins))
 		i = 0
 		for {
 			if !(i < (*TObject)(unsafe.Pointer(oPtr)).Fmixins.Fnum) {
@@ -295253,12 +295356,12 @@ func XTclOOClassSetMixins(tls *libc.TLS, interp uintptr, classPtr uintptr, numMi
 			_2:
 				i++
 			}
-			(*TClass)(unsafe.Pointer(classPtr)).Fmixins.Flist = XTcl_Realloc(tls, (*TClass)(unsafe.Pointer(classPtr)).Fmixins.Flist, uint32(libc.Uint64FromInt64(8)*uint64(uint64(numMixins))))
+			(*TClass)(unsafe.Pointer(classPtr)).Fmixins.Flist = XTcl_Realloc(tls, (*TClass)(unsafe.Pointer(classPtr)).Fmixins.Flist, uint32(libc.Uint64FromInt64(8)*uint64(numMixins)))
 		} else {
-			(*TClass)(unsafe.Pointer(classPtr)).Fmixins.Flist = XTcl_Alloc(tls, uint32(libc.Uint64FromInt64(8)*uint64(uint64(numMixins))))
+			(*TClass)(unsafe.Pointer(classPtr)).Fmixins.Flist = XTcl_Alloc(tls, uint32(libc.Uint64FromInt64(8)*uint64(numMixins)))
 		}
 		(*TClass)(unsafe.Pointer(classPtr)).Fmixins.Fnum = numMixins
-		libc.Xmemcpy(tls, (*TClass)(unsafe.Pointer(classPtr)).Fmixins.Flist, mixins, uint64(8)*uint64(uint64(numMixins)))
+		libc.Xmemcpy(tls, (*TClass)(unsafe.Pointer(classPtr)).Fmixins.Flist, mixins, uint64(8)*uint64(numMixins))
 		i = 0
 		for {
 			if !(i < (*TClass)(unsafe.Pointer(classPtr)).Fmixins.Fnum) {
@@ -297379,7 +297482,7 @@ func _ClassVarsSet(tls *libc.TLS, clientData TClientData, interp uintptr, contex
 		/*
 		 * Shouldn't be necessary, but maintain num/list invariant.
 		 */
-		(*TClass1)(unsafe.Pointer((*TObject)(unsafe.Pointer(oPtr)).FclassPtr)).Fvariables.Flist = XTcl_Realloc(tls, (*TClass1)(unsafe.Pointer((*TObject)(unsafe.Pointer(oPtr)).FclassPtr)).Fvariables.Flist, uint32(libc.Uint64FromInt64(8)*uint64(uint64(n))))
+		(*TClass1)(unsafe.Pointer((*TObject)(unsafe.Pointer(oPtr)).FclassPtr)).Fvariables.Flist = XTcl_Realloc(tls, (*TClass1)(unsafe.Pointer((*TObject)(unsafe.Pointer(oPtr)).FclassPtr)).Fvariables.Flist, uint32(libc.Uint64FromInt64(8)*uint64(n)))
 		XTcl_DeleteHashTable(tls, bp+24)
 	}
 	return m_TCL_OK
@@ -297779,7 +297882,7 @@ func _ObjVarsSet(tls *libc.TLS, clientData TClientData, interp uintptr, context 
 		/*
 		 * Shouldn't be necessary, but maintain num/list invariant.
 		 */
-		(*TObject)(unsafe.Pointer(oPtr)).Fvariables.Flist = XTcl_Realloc(tls, (*TObject)(unsafe.Pointer(oPtr)).Fvariables.Flist, uint32(libc.Uint64FromInt64(8)*uint64(uint64(n))))
+		(*TObject)(unsafe.Pointer(oPtr)).Fvariables.Flist = XTcl_Realloc(tls, (*TObject)(unsafe.Pointer(oPtr)).Fvariables.Flist, uint32(libc.Uint64FromInt64(8)*uint64(n)))
 		XTcl_DeleteHashTable(tls, bp+24)
 	}
 	return m_TCL_OK
@@ -301702,8 +301805,8 @@ func _InitEnsembleRewrite(tls *libc.TLS, interp uintptr, objc int32, objv uintpt
 	var len1 uint32
 	_, _, _, _ = _callbackPtr, _objPtr, argObjs, len1
 	len1 = uint32(rewriteLength + objc - toRewrite)
-	argObjs = XTclStackAlloc(tls, interp, int32(uint64(8)*uint64(uint64(len1))))
-	libc.Xmemcpy(tls, argObjs, rewriteObjs, uint64(uint64(rewriteLength))*uint64(8))
+	argObjs = XTclStackAlloc(tls, interp, int32(uint64(8)*uint64(len1)))
+	libc.Xmemcpy(tls, argObjs, rewriteObjs, uint64(rewriteLength)*uint64(8))
 	libc.Xmemcpy(tls, argObjs+uintptr(rewriteLength)*8, objv+uintptr(toRewrite)*8, uint64(8)*uint64(objc-toRewrite))
 	/*
 	 * Now plumb this into the core ensemble rewrite logging system so that
@@ -301731,7 +301834,7 @@ func _InitEnsembleRewrite(tls *libc.TLS, interp uintptr, objc int32, objv uintpt
 		(*TNRE_callback)(unsafe.Pointer(_callbackPtr)).FnextPtr = (*TExecEnv1)(unsafe.Pointer((*TInterp)(unsafe.Pointer(interp)).FexecEnvPtr)).FcallbackPtr
 		(*TExecEnv1)(unsafe.Pointer((*TInterp)(unsafe.Pointer(interp)).FexecEnvPtr)).FcallbackPtr = _callbackPtr
 	}
-	*(*int32)(unsafe.Pointer(lengthPtr)) = int32(int32(len1))
+	*(*int32)(unsafe.Pointer(lengthPtr)) = int32(len1)
 	return argObjs
 }
 
@@ -302115,7 +302218,7 @@ func XTclBN_fast_s_mp_mul_digs(tls *libc.TLS, a uintptr, b uintptr, c uintptr, d
 			iz++
 		}
 		/* store term */
-		W[ix] = uint32(uint32(_W)) & (libc.Uint32FromInt32(1)<<libc.Uint32FromInt32(m_MP_DIGIT_BIT) - libc.Uint32FromInt32(1))
+		W[ix] = uint32(_W) & (libc.Uint32FromInt32(1)<<libc.Uint32FromInt32(m_MP_DIGIT_BIT) - libc.Uint32FromInt32(1))
 		/* make next carry */
 		_W = _W >> libc.Uint64FromInt32(m_MP_DIGIT_BIT)
 		goto _3
@@ -302246,11 +302349,11 @@ func XTclBN_fast_s_mp_sqr(tls *libc.TLS, a uintptr, b uintptr) (r Tmp_err) {
 		/* double the inner product and add carry */
 		_W = _W + _W + W1
 		/* even columns have the square term in them */
-		if uint32(uint32(ix))&uint32(1) == 0 {
+		if uint32(ix)&uint32(1) == 0 {
 			_W += uint64(*(*Tmp_digit)(unsafe.Pointer((*Tmp_int)(unsafe.Pointer(a)).Fdp + uintptr(ix>>int32(1))*4))) * uint64(*(*Tmp_digit)(unsafe.Pointer((*Tmp_int)(unsafe.Pointer(a)).Fdp + uintptr(ix>>int32(1))*4)))
 		}
 		/* store it */
-		W[ix] = uint32(uint32(_W)) & (libc.Uint32FromInt32(1)<<libc.Uint32FromInt32(m_MP_DIGIT_BIT) - libc.Uint32FromInt32(1))
+		W[ix] = uint32(_W) & (libc.Uint32FromInt32(1)<<libc.Uint32FromInt32(m_MP_DIGIT_BIT) - libc.Uint32FromInt32(1))
 		/* make next carry */
 		W1 = _W >> libc.Uint64FromInt32(m_MP_DIGIT_BIT)
 		goto _2
@@ -302587,7 +302690,7 @@ func XTclBN_mp_clear(tls *libc.TLS, a uintptr) {
 		fd_ = (*Tmp_int)(unsafe.Pointer(a)).Falloc
 		fm_ = (*Tmp_int)(unsafe.Pointer(a)).Fdp
 		if fm_ != libc.UintptrFromInt32(0) {
-			fs_ = uint64(4) * uint64(uint64(fd_))
+			fs_ = uint64(4) * uint64(fd_)
 			zs_ = fs_
 			zm_ = fm_
 			for {
@@ -303190,7 +303293,7 @@ func XTclBN_mp_div_d(tls *libc.TLS, a uintptr, b Tmp_digit, c uintptr, d uintptr
 			ix++
 		}
 		if d != libc.UintptrFromInt32(0) {
-			*(*Tmp_digit)(unsafe.Pointer(d)) = uint32(uint64(*(*Tmp_digit)(unsafe.Pointer((*Tmp_int)(unsafe.Pointer(a)).Fdp))) & (uint64(libc.Uint32FromInt32(1)<<uint32(uint32(ix))) - uint64(1)))
+			*(*Tmp_digit)(unsafe.Pointer(d)) = uint32(uint64(*(*Tmp_digit)(unsafe.Pointer((*Tmp_int)(unsafe.Pointer(a)).Fdp))) & (uint64(libc.Uint32FromInt32(1)<<uint32(ix)) - uint64(1)))
 		}
 		if c != libc.UintptrFromInt32(0) {
 			return XTclBN_mp_div_2d(tls, a, ix, c, libc.UintptrFromInt32(0))
@@ -303216,9 +303319,9 @@ func XTclBN_mp_div_d(tls *libc.TLS, a uintptr, b Tmp_digit, c uintptr, d uintptr
 			break
 		}
 		w = w<<libc.Uint64FromInt32(m_MP_DIGIT_BIT) | uint64(*(*Tmp_digit)(unsafe.Pointer((*Tmp_int)(unsafe.Pointer(a)).Fdp + uintptr(ix)*4)))
-		if w >= uint64(uint64(b)) {
-			t = uint32(w / uint64(uint64(b)))
-			w -= uint64(uint64(t)) * uint64(uint64(b))
+		if w >= uint64(b) {
+			t = uint32(w / uint64(b))
+			w -= uint64(t) * uint64(b)
 		} else {
 			t = uint32(0)
 		}
@@ -303228,7 +303331,7 @@ func XTclBN_mp_div_d(tls *libc.TLS, a uintptr, b Tmp_digit, c uintptr, d uintptr
 		ix--
 	}
 	if d != libc.UintptrFromInt32(0) {
-		*(*Tmp_digit)(unsafe.Pointer(d)) = uint32(uint32(w))
+		*(*Tmp_digit)(unsafe.Pointer(d)) = uint32(w)
 	}
 	if c != libc.UintptrFromInt32(0) {
 		XTclBN_mp_clamp(tls, bp)
@@ -303419,7 +303522,7 @@ func XTclBN_mp_div_3(tls *libc.TLS, a uintptr, c uintptr, d uintptr) (r Tmp_err)
 		w = w<<libc.Uint64FromInt32(m_MP_DIGIT_BIT) | uint64(*(*Tmp_digit)(unsafe.Pointer((*Tmp_int)(unsafe.Pointer(a)).Fdp + uintptr(ix)*4)))
 		if w >= uint64(3) {
 			/* multiply w by [1/3] */
-			t = w * uint64(uint64(b)) >> libc.Uint64FromInt32(m_MP_DIGIT_BIT)
+			t = w * uint64(b) >> libc.Uint64FromInt32(m_MP_DIGIT_BIT)
 			/* now subtract 3 * [w/3] from w, to get the remainder */
 			w -= t + t + t
 			/* fixup the remainder as required since
@@ -303432,14 +303535,14 @@ func XTclBN_mp_div_3(tls *libc.TLS, a uintptr, c uintptr, d uintptr) (r Tmp_err)
 		} else {
 			t = uint64(0)
 		}
-		*(*Tmp_digit)(unsafe.Pointer((*(*Tmp_int)(unsafe.Pointer(bp))).Fdp + uintptr(ix)*4)) = uint32(uint32(t))
+		*(*Tmp_digit)(unsafe.Pointer((*(*Tmp_int)(unsafe.Pointer(bp))).Fdp + uintptr(ix)*4)) = uint32(t)
 		goto _2
 	_2:
 		ix--
 	}
 	/* [optional] store the remainder */
 	if d != libc.UintptrFromInt32(0) {
-		*(*Tmp_digit)(unsafe.Pointer(d)) = uint32(uint32(w))
+		*(*Tmp_digit)(unsafe.Pointer(d)) = uint32(w)
 	}
 	/* [optional] store the quotient */
 	if c != libc.UintptrFromInt32(0) {
@@ -303541,7 +303644,7 @@ func XTclBN_mp_grow(tls *libc.TLS, a uintptr, size int32) (r Tmp_err) {
 		 * in case the operation failed we don't want
 		 * to overwrite the dp member of a.
 		 */
-		tmp = XTcl_Realloc(tls, (*Tmp_int)(unsafe.Pointer(a)).Fdp, uint32(uint64(uint64(size))*libc.Uint64FromInt64(4)))
+		tmp = XTcl_Realloc(tls, (*Tmp_int)(unsafe.Pointer(a)).Fdp, uint32(uint64(size)*libc.Uint64FromInt64(4)))
 		if tmp == libc.UintptrFromInt32(0) {
 			/* reallocation failed but "a" is still valid [can be freed] */
 			return -int32(2)
@@ -303701,7 +303804,7 @@ func XTclBN_mp_init_size(tls *libc.TLS, a uintptr, size int32) (r Tmp_err) {
 	}
 	size = v1
 	/* alloc mem */
-	(*Tmp_int)(unsafe.Pointer(a)).Fdp = libc.Xmemset(tls, XTcl_Alloc(tls, uint32(uint64(uint64(size))*libc.Uint64FromInt64(4))), 0, uint64(uint64(size))*libc.Uint64FromInt64(4))
+	(*Tmp_int)(unsafe.Pointer(a)).Fdp = libc.Xmemset(tls, XTcl_Alloc(tls, uint32(uint64(size)*libc.Uint64FromInt64(4))), 0, uint64(size)*libc.Uint64FromInt64(4))
 	if (*Tmp_int)(unsafe.Pointer(a)).Fdp == libc.UintptrFromInt32(0) {
 		return -int32(2)
 	}
@@ -304642,7 +304745,7 @@ func XTclBN_mp_mul_d(tls *libc.TLS, a uintptr, b Tmp_digit, c uintptr) (r1 Tmp_e
 		/* compute product and carry sum for this term */
 		v3 = tmpa
 		tmpa += 4
-		r = uint64(uint64(u)) + uint64(*(*Tmp_digit)(unsafe.Pointer(v3)))*uint64(uint64(b))
+		r = uint64(u) + uint64(*(*Tmp_digit)(unsafe.Pointer(v3)))*uint64(b)
 		/* mask off higher bits to get a single digit */
 		v4 = tmpc
 		tmpc += 4
@@ -304862,7 +304965,7 @@ func XTclBN_mp_radix_size(tls *libc.TLS, a uintptr, radix int32, size uintptr) (
 	(*(*Tmp_int)(unsafe.Pointer(bp))).Fsign = m_MP_ZPOS
 	/* fetch out all of the digits */
 	for !((*Tmp_int)(unsafe.Pointer(bp)).Fused == libc.Int32FromInt32(0)) {
-		v3 = XTclBN_mp_div_d(tls, bp, uint32(uint32(radix)), bp, bp+24)
+		v3 = XTclBN_mp_div_d(tls, bp, uint32(radix), bp, bp+24)
 		err = v3
 		if v3 != m_MP_OKAY {
 			goto LBL_ERR
@@ -304928,8 +305031,8 @@ func XTclBN_mp_read_radix(tls *libc.TLS, a uintptr, str uintptr, radix int32) (r
 			v1 = int32(*(*int8)(unsafe.Pointer(str)))
 		}
 		ch = int8(v1)
-		pos = uint32(int32(int32(ch)) - libc.Int32FromUint8('('))
-		if Xmp_s_rmap_reverse_sz < uint64(uint64(pos)) {
+		pos = uint32(int32(ch) - libc.Int32FromUint8('('))
+		if Xmp_s_rmap_reverse_sz < uint64(pos) {
 			break
 		}
 		y = int32(Xmp_s_rmap_reverse[pos])
@@ -304940,12 +305043,12 @@ func XTclBN_mp_read_radix(tls *libc.TLS, a uintptr, str uintptr, radix int32) (r
 		if y == int32(0xff) || y >= radix {
 			break
 		}
-		v3 = XTclBN_mp_mul_d(tls, a, uint32(uint32(radix)), a)
+		v3 = XTclBN_mp_mul_d(tls, a, uint32(radix), a)
 		err = v3
 		if v3 != m_MP_OKAY {
 			return err
 		}
-		v4 = XTclBN_mp_add_d(tls, a, uint32(uint32(y)), a)
+		v4 = XTclBN_mp_add_d(tls, a, uint32(y), a)
 		err = v4
 		if v4 != m_MP_OKAY {
 			return err
@@ -305089,7 +305192,7 @@ func XTclBN_mp_shrink(tls *libc.TLS, a uintptr) (r Tmp_err) {
 	}
 	alloc = v1
 	if (*Tmp_int)(unsafe.Pointer(a)).Falloc != alloc {
-		v2 = XTcl_Realloc(tls, (*Tmp_int)(unsafe.Pointer(a)).Fdp, uint32(uint64(uint64(alloc))*libc.Uint64FromInt64(4)))
+		v2 = XTcl_Realloc(tls, (*Tmp_int)(unsafe.Pointer(a)).Fdp, uint32(uint64(alloc)*libc.Uint64FromInt64(4)))
 		tmp = v2
 		if v2 == libc.UintptrFromInt32(0) {
 			return -int32(2)
@@ -305210,7 +305313,7 @@ func XTclBN_mp_sqrt(tls *libc.TLS, arg uintptr, ret uintptr) (r Tmp_err) {
 	if dig != 0 {
 		(*(*Tmp_int)(unsafe.Pointer(bp))).Fused = i + int32(2)
 		p5 = bp + 48
-		libc.AtomicStorePFloat64(p5, libc.Xldexp(tls, float64(float64(dig)), int32(m_MP_DIGIT_BIT))-libc.AtomicLoadPFloat64(p5))
+		libc.AtomicStorePFloat64(p5, libc.Xldexp(tls, float64(dig), int32(m_MP_DIGIT_BIT))-libc.AtomicLoadPFloat64(p5))
 		if libc.AtomicLoadPFloat64(bp+48) >= float64(1) {
 			*(*Tmp_digit)(unsafe.Pointer((*(*Tmp_int)(unsafe.Pointer(bp))).Fdp + uintptr(i+int32(1))*4)) = dig
 			*(*Tmp_digit)(unsafe.Pointer((*(*Tmp_int)(unsafe.Pointer(bp))).Fdp + uintptr(i)*4)) = uint32(libc.AtomicLoadPFloat64(bp+48)) - uint32(1)
@@ -306252,7 +306355,7 @@ func XTclBN_mp_to_radix(tls *libc.TLS, a uintptr, str uintptr, maxlen Tsize_t, w
 			err = -int32(5)
 			goto LBL_ERR
 		}
-		v5 = XTclBN_mp_div_d(tls, bp, uint32(uint32(radix)), bp, bp+24)
+		v5 = XTclBN_mp_div_d(tls, bp, uint32(radix), bp, bp+24)
 		err = v5
 		if v5 != m_MP_OKAY {
 			goto LBL_ERR
@@ -306617,7 +306720,7 @@ func XTclBN_s_mp_mul_digs(tls *libc.TLS, a uintptr, b uintptr, c uintptr, digs i
 			/* compute the column as a mp_word */
 			v7 = tmpy
 			tmpy += 4
-			r = uint64(*(*Tmp_digit)(unsafe.Pointer(tmpt))) + uint64(uint64(tmpx))*uint64(*(*Tmp_digit)(unsafe.Pointer(v7))) + uint64(uint64(u))
+			r = uint64(*(*Tmp_digit)(unsafe.Pointer(tmpt))) + uint64(tmpx)*uint64(*(*Tmp_digit)(unsafe.Pointer(v7))) + uint64(u)
 			/* the new column is the lower part of the result */
 			v8 = tmpt
 			tmpt += 4
@@ -306692,11 +306795,11 @@ func XTclBN_s_mp_sqr(tls *libc.TLS, a uintptr, b uintptr) (r1 Tmp_err) {
 				break
 			}
 			/* first calculate the product */
-			r = uint64(uint64(tmpx)) * uint64(*(*Tmp_digit)(unsafe.Pointer((*Tmp_int)(unsafe.Pointer(a)).Fdp + uintptr(iy)*4)))
+			r = uint64(tmpx) * uint64(*(*Tmp_digit)(unsafe.Pointer((*Tmp_int)(unsafe.Pointer(a)).Fdp + uintptr(iy)*4)))
 			/* now calculate the double precision result, note we use
 			 * addition instead of *2 since it's easier to optimize
 			 */
-			r = uint64(*(*Tmp_digit)(unsafe.Pointer(tmpt))) + r + r + uint64(uint64(u))
+			r = uint64(*(*Tmp_digit)(unsafe.Pointer(tmpt))) + r + r + uint64(u)
 			/* store lower part */
 			v4 = tmpt
 			tmpt += 4
@@ -306708,8 +306811,8 @@ func XTclBN_s_mp_sqr(tls *libc.TLS, a uintptr, b uintptr) (r1 Tmp_err) {
 			iy++
 		}
 		/* propagate upwards */
-		for uint64(uint64(u)) != 0 {
-			r = uint64(*(*Tmp_digit)(unsafe.Pointer(tmpt))) + uint64(uint64(u))
+		for uint64(u) != 0 {
+			r = uint64(*(*Tmp_digit)(unsafe.Pointer(tmpt))) + uint64(u)
 			v5 = tmpt
 			tmpt += 4
 			*(*Tmp_digit)(unsafe.Pointer(v5)) = uint32(r & uint64(libc.Uint32FromInt32(1)<<libc.Uint32FromInt32(m_MP_DIGIT_BIT)-libc.Uint32FromInt32(1)))
