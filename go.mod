@@ -3,7 +3,7 @@ module modernc.org/libtcl8.6
 go 1.20
 
 require (
-	modernc.org/libc/v2 v2.1.10
+	modernc.org/libc/v2 v2.1.12
 	modernc.org/libz v0.0.7
 )
 

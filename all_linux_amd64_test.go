@@ -20,11 +20,7 @@ import (
 var (
 	notFiles = []string{}
 	skip     = []string{
-		// // crashes
-		"coroutine-7.4",
-		"coroutine-7.6",
-
-		// // // fails
+		// fails
 		"iortrans-3.1",
 		"unixInit-3.1",
 		"unixInit-3.2",

@@ -37154,21 +37154,20 @@ func x_TclFinalizeEvaluation(tls *libc.TLS) {
 func x_Tcl_CreateInterp(tls *libc.TLS) (r uintptr) {
 	bp := tls.Alloc(64)
 	defer tls.Free(64)
-	var builtinFuncPtr, cancelInfo, cmdInfoPtr, cmdPtr, framePtr, hPtr, iPtr, interp, nsPtr, occdPtr, opcmdInfoPtr, v4 uintptr
+	var builtinFuncPtr, cancelInfo, cmdInfoPtr, cmdPtr, framePtr, hPtr, iPtr, interp, nsPtr, occdPtr, opcmdInfoPtr, version, v4 uintptr
 	var _ /* isNew at bp+0 */ int32
 	var _ /* mathFuncName at bp+6 */ [32]int8
 	var _ /* order at bp+4 */ struct {
 		Fs [0]int16
 		Fc [2]int8
 	}
-	_, _, _, _, _, _, _, _, _, _, _, _ = builtinFuncPtr, cancelInfo, cmdInfoPtr, cmdPtr, framePtr, hPtr, iPtr, interp, nsPtr, occdPtr, opcmdInfoPtr, v4
-	x_TclInitSubsystems(tls)
+	_, _, _, _, _, _, _, _, _, _, _, _, _ = builtinFuncPtr, cancelInfo, cmdInfoPtr, cmdPtr, framePtr, hPtr, iPtr, interp, nsPtr, occdPtr, opcmdInfoPtr, version, v4
+	version = x_TclInitSubsystems(tls)
 	/*
 	 * Panic if someone updated the CallFrame structure without also updating
 	 * the Tcl_CallFrame structure (or vice versa).
 	 */
 	if uint64(104) < uint64(104) {
-		/*NOTREACHED*/
 		x_Tcl_Panic(tls, ts+16543, 0)
 	}
 	if _cancelTableInitialized == 0 {
@@ -37187,7 +37186,18 @@ func x_Tcl_CreateInterp(tls *libc.TLS) (r uintptr) {
 	(*TInterp)(unsafe.Pointer(iPtr)).Fresult = iPtr + 472
 	(*TInterp)(unsafe.Pointer(iPtr)).FfreeProc = libc.UintptrFromInt32(0)
 	(*TInterp)(unsafe.Pointer(iPtr)).FerrorLine = 0
-	(*TInterp)(unsafe.Pointer(iPtr)).FobjResultPtr = x_Tcl_NewObj(tls)
+	if x_tclFreeObjList == libc.UintptrFromInt32(0) {
+		x_TclAllocateFreeObjects(tls)
+	}
+	(*TInterp)(unsafe.Pointer(iPtr)).FobjResultPtr = x_tclFreeObjList
+	x_tclFreeObjList = (*(*struct {
+		Fptr1 uintptr
+		Fptr2 uintptr
+	})(unsafe.Pointer(x_tclFreeObjList + 32))).Fptr1
+	(*TTcl_Obj)(unsafe.Pointer((*TInterp)(unsafe.Pointer(iPtr)).FobjResultPtr)).FrefCount = 0
+	(*TTcl_Obj)(unsafe.Pointer((*TInterp)(unsafe.Pointer(iPtr)).FobjResultPtr)).Fbytes = x_tclEmptyStringRep
+	(*TTcl_Obj)(unsafe.Pointer((*TInterp)(unsafe.Pointer(iPtr)).FobjResultPtr)).Flength = 0
+	(*TTcl_Obj)(unsafe.Pointer((*TInterp)(unsafe.Pointer(iPtr)).FobjResultPtr)).FtypePtr = libc.UintptrFromInt32(0)
 	(*TTcl_Obj)(unsafe.Pointer((*TInterp)(unsafe.Pointer(iPtr)).FobjResultPtr)).FrefCount++
 	(*TInterp)(unsafe.Pointer(iPtr)).Fhandle = x_TclHandleCreate(tls, iPtr)
 	(*TInterp)(unsafe.Pointer(iPtr)).FglobalNsPtr = libc.UintptrFromInt32(0)
@@ -37350,7 +37360,18 @@ func x_Tcl_CreateInterp(tls *libc.TLS) (r uintptr) {
 	(*TInterp)(unsafe.Pointer(iPtr)).FactiveInterpTracePtr = libc.UintptrFromInt32(0)
 	(*TInterp)(unsafe.Pointer(iPtr)).FassocData = libc.UintptrFromInt32(0)
 	(*TInterp)(unsafe.Pointer(iPtr)).FexecEnvPtr = libc.UintptrFromInt32(0) /* Set after namespaces initialized. */
-	(*TInterp)(unsafe.Pointer(iPtr)).FemptyObjPtr = x_Tcl_NewObj(tls)
+	if x_tclFreeObjList == libc.UintptrFromInt32(0) {
+		x_TclAllocateFreeObjects(tls)
+	}
+	(*TInterp)(unsafe.Pointer(iPtr)).FemptyObjPtr = x_tclFreeObjList
+	x_tclFreeObjList = (*(*struct {
+		Fptr1 uintptr
+		Fptr2 uintptr
+	})(unsafe.Pointer(x_tclFreeObjList + 32))).Fptr1
+	(*TTcl_Obj)(unsafe.Pointer((*TInterp)(unsafe.Pointer(iPtr)).FemptyObjPtr)).FrefCount = 0
+	(*TTcl_Obj)(unsafe.Pointer((*TInterp)(unsafe.Pointer(iPtr)).FemptyObjPtr)).Fbytes = x_tclEmptyStringRep
+	(*TTcl_Obj)(unsafe.Pointer((*TInterp)(unsafe.Pointer(iPtr)).FemptyObjPtr)).Flength = 0
+	(*TTcl_Obj)(unsafe.Pointer((*TInterp)(unsafe.Pointer(iPtr)).FemptyObjPtr)).FtypePtr = libc.UintptrFromInt32(0)
 	/* Another empty object. */
 	(*TTcl_Obj)(unsafe.Pointer((*TInterp)(unsafe.Pointer(iPtr)).FemptyObjPtr)).FrefCount++
 	*(*int8)(unsafe.Pointer(iPtr + 472)) = 0
@@ -37396,7 +37417,18 @@ func x_Tcl_CreateInterp(tls *libc.TLS) (r uintptr) {
 	/*
 	 * TIP #285, Script cancellation support.
 	 */
-	(*TInterp)(unsafe.Pointer(iPtr)).FasyncCancelMsg = x_Tcl_NewObj(tls)
+	if x_tclFreeObjList == libc.UintptrFromInt32(0) {
+		x_TclAllocateFreeObjects(tls)
+	}
+	(*TInterp)(unsafe.Pointer(iPtr)).FasyncCancelMsg = x_tclFreeObjList
+	x_tclFreeObjList = (*(*struct {
+		Fptr1 uintptr
+		Fptr2 uintptr
+	})(unsafe.Pointer(x_tclFreeObjList + 32))).Fptr1
+	(*TTcl_Obj)(unsafe.Pointer((*TInterp)(unsafe.Pointer(iPtr)).FasyncCancelMsg)).FrefCount = 0
+	(*TTcl_Obj)(unsafe.Pointer((*TInterp)(unsafe.Pointer(iPtr)).FasyncCancelMsg)).Fbytes = x_tclEmptyStringRep
+	(*TTcl_Obj)(unsafe.Pointer((*TInterp)(unsafe.Pointer(iPtr)).FasyncCancelMsg)).Flength = 0
+	(*TTcl_Obj)(unsafe.Pointer((*TInterp)(unsafe.Pointer(iPtr)).FasyncCancelMsg)).FtypePtr = libc.UintptrFromInt32(0)
 	cancelInfo = x_Tcl_Alloc(tls, uint32(libc.Uint64FromInt64(48)))
 	(*TCancelInfo)(unsafe.Pointer(cancelInfo)).Finterp = interp
 	(*TInterp)(unsafe.Pointer(iPtr)).FasyncCancel = x_Tcl_AsyncCreate(tls, __ccgo_fp(_CancelEvalProc), cancelInfo)
@@ -37611,7 +37643,7 @@ func x_Tcl_CreateInterp(tls *libc.TLS) (r uintptr) {
 	 * Register Tcl's version number.
 	 * TIP #268: Full patchlevel instead of just major.minor
 	 */
-	x_Tcl_PkgProvideEx(tls, interp, ts+17232, ts+150, uintptr(unsafe.Pointer(&x_tclStubs)))
+	x_Tcl_PkgProvideEx(tls, interp, ts+17232, version, uintptr(unsafe.Pointer(&x_tclStubs)))
 	if x_TclTommath_Init(tls, interp) != m_TCL_OK {
 		x_Tcl_Panic(tls, ts+4989, libc.VaList(bp+48, x_Tcl_GetString(tls, x_Tcl_GetObjResult(tls, interp))))
 	}
@@ -37705,7 +37737,7 @@ func x_Tcl_CallWhenDeleted(tls *libc.TLS, interp uintptr, proc uintptr, clientDa
 	var _ /* isNew at bp+0 */ int32
 	_, _, _, _ = assocDataCounterPtr, dPtr, hPtr, iPtr
 	iPtr = interp
-	assocDataCounterPtr = x_Tcl_GetThreadData(tls, uintptr(unsafe.Pointer(&_assocDataCounterKey)), libc.Int32FromInt64(4))
+	assocDataCounterPtr = x_Tcl_GetThreadData(tls, uintptr(unsafe.Pointer(&_assocDataCounterKey)), int32(4))
 	dPtr = x_Tcl_Alloc(tls, uint32(libc.Uint64FromInt64(16)))
 	libc.Xsprintf(tls, bp+4, ts+17335, libc.VaList(bp+72, *(*int32)(unsafe.Pointer(assocDataCounterPtr))))
 	*(*int32)(unsafe.Pointer(assocDataCounterPtr))++
@@ -38880,9 +38912,11 @@ func x_Tcl_CreateObjCommand(tls *libc.TLS, interp uintptr, cmdName uintptr, proc
 	return x_TclCreateObjCommandInNs(tls, interp, *(*uintptr)(unsafe.Pointer(bp + 8)), *(*uintptr)(unsafe.Pointer(bp)), proc, clientData, deleteProc)
 }
 
-func x_TclCreateObjCommandInNs(tls *libc.TLS, interp uintptr, cmdName uintptr, namespace uintptr, proc uintptr, clientData TClientData, deleteProc uintptr) (r TTcl_Command) {
+func x_TclCreateObjCommandInNs(tls *libc.TLS, interp uintptr, cmdName uintptr, namesp uintptr, proc uintptr, clientData TClientData, deleteProc uintptr) (r TTcl_Command) {
 	bp := tls.Alloc(16)
 	defer tls.Free(16)
+	/* If not NULL, gives a function to call when
+	 * this command is deleted. */
 	var cmdPtr, dataPtr, hPtr, nsPtr, oldRefPtr, refCmdPtr, v2 uintptr
 	var deleted, v1 int32
 	var _ /* isNew at bp+0 */ int32
@@ -38890,12 +38924,12 @@ func x_TclCreateObjCommandInNs(tls *libc.TLS, interp uintptr, cmdName uintptr, n
 	deleted = 0
 	*(*int32)(unsafe.Pointer(bp)) = 0
 	oldRefPtr = libc.UintptrFromInt32(0)
-	nsPtr = namespace
+	nsPtr = namesp
 	/*
-	 * If the command name we seek to create already exists, we need to
-	 * delete that first.  That can be tricky in the presence of traces.
-	 * Loop until we no longer find an existing command in the way, or
-	 * until we've deleted one command and that didn't finish the job.
+	 * If the command name we seek to create already exists, we need to delete
+	 * that first. That can be tricky in the presence of traces. Loop until we
+	 * no longer find an existing command in the way, or until we've deleted
+	 * one command and that didn't finish the job.
 	 */
 	for int32(1) != 0 {
 		hPtr = (*(*func(*libc.TLS, uintptr, uintptr, uintptr) uintptr)(unsafe.Pointer(&struct{ uintptr }{(*TTcl_HashTable)(unsafe.Pointer(nsPtr + 160)).FcreateProc})))(tls, nsPtr+160, cmdName, bp)
@@ -38953,9 +38987,9 @@ func x_TclCreateObjCommandInNs(tls *libc.TLS, interp uintptr, cmdName uintptr, n
 	}
 	if !(*(*int32)(unsafe.Pointer(bp)) != 0) {
 		/*
-		 * If the deletion callback recreated the command, just throw away
-		 * the new command (if we try to delete it again, we could get
-		 * stuck in an infinite loop).
+		 * If the deletion callback recreated the command, just throw away the
+		 * new command (if we try to delete it again, we could get stuck in an
+		 * infinite loop).
 		 */
 		x_TclpFree(tls, (*TTcl_HashEntry)(unsafe.Pointer(hPtr)).FclientData)
 	}
@@ -39050,7 +39084,7 @@ func x_TclInvokeStringCommand(tls *libc.TLS, clientData TClientData, interp uint
 	var i, result int32
 	_, _, _, _ = argv, cmdPtr, i, result
 	cmdPtr = clientData
-	argv = x_TclStackAlloc(tls, interp, int32(uint64(uint32(objc+libc.Int32FromInt32(1)))*uint64(8)))
+	argv = x_TclStackAlloc(tls, interp, int32(uint64(objc+libc.Int32FromInt32(1))*uint64(8)))
 	i = 0
 	for {
 		if !(i < objc) {
@@ -39082,7 +39116,7 @@ func x_TclInvokeStringCommand(tls *libc.TLS, clientData TClientData, interp uint
  *	in the Command structure.
  *
  * Results:
- *	A standard Tcl string result value.
+ *	A standard Tcl result value.
  *
  * Side effects:
  *	Besides those side effects of the called Tcl_ObjCmdProc,
@@ -39097,7 +39131,7 @@ func x_TclInvokeObjectCommand(tls *libc.TLS, clientData TClientData, interp uint
 	var i, length, result, v3 int32
 	_, _, _, _, _, _, _, _, _ = _objPtr, cmdPtr, i, length, objPtr, objv, result, v3, v4
 	cmdPtr = clientData
-	objv = x_TclStackAlloc(tls, interp, int32(uint32(uint64(argc)*libc.Uint64FromInt64(8))))
+	objv = x_TclStackAlloc(tls, interp, int32(uint64(argc)*libc.Uint64FromInt64(8)))
 	i = 0
 	for {
 		if !(i < argc) {
@@ -39230,7 +39264,18 @@ func x_TclRenameCommand(tls *libc.TLS, interp uintptr, oldName uintptr, newName 
 		return m_TCL_OK
 	}
 	cmdNsPtr = (*TCommand)(unsafe.Pointer(cmdPtr)).FnsPtr
-	oldFullName = x_Tcl_NewObj(tls)
+	if x_tclFreeObjList == libc.UintptrFromInt32(0) {
+		x_TclAllocateFreeObjects(tls)
+	}
+	oldFullName = x_tclFreeObjList
+	x_tclFreeObjList = (*(*struct {
+		Fptr1 uintptr
+		Fptr2 uintptr
+	})(unsafe.Pointer(x_tclFreeObjList + 32))).Fptr1
+	(*TTcl_Obj)(unsafe.Pointer(oldFullName)).FrefCount = 0
+	(*TTcl_Obj)(unsafe.Pointer(oldFullName)).Fbytes = x_tclEmptyStringRep
+	(*TTcl_Obj)(unsafe.Pointer(oldFullName)).Flength = 0
+	(*TTcl_Obj)(unsafe.Pointer(oldFullName)).FtypePtr = libc.UintptrFromInt32(0)
 	(*TTcl_Obj)(unsafe.Pointer(oldFullName)).FrefCount++
 	x_Tcl_GetCommandFullName(tls, interp, cmd, oldFullName)
 	/*
@@ -39728,7 +39773,7 @@ func x_Tcl_DeleteCommandFromToken(tls *libc.TLS, interp uintptr, cmd TTcl_Comman
 		(*TCommand)(unsafe.Pointer(cmdPtr)).FtracePtr = libc.UintptrFromInt32(0)
 	}
 	/*
-	 * The list of command exported from the namespace might have changed.
+	 * The list of commands exported from the namespace might have changed.
 	 * However, we do not need to recompute this just yet; next time we need
 	 * the info will be soon enough.
 	 */
@@ -39750,11 +39795,11 @@ func x_Tcl_DeleteCommandFromToken(tls *libc.TLS, interp uintptr, cmd TTcl_Comman
 	if (*TCommand)(unsafe.Pointer(cmdPtr)).FcompileProc != libc.UintptrFromInt32(0) {
 		(*TInterp)(unsafe.Pointer(iPtr)).FcompileEpoch++
 	}
-	/*
-	 * Delete any imports of this routine elsewhere before calling deleteProc
-	 * to that traces on the imports don't reference deallocated storage.
-	 */
 	if !((*TCommand)(unsafe.Pointer(cmdPtr)).Fflags&libc.Int32FromInt32(m_CMD_REDEF_IN_PROGRESS) != 0) {
+		/*
+		 * Delete any imports of this routine before deleting this routine itself.
+		 * See issue 688fcc7082fa.
+		 */
 		refPtr = (*TCommand)(unsafe.Pointer(cmdPtr)).FimportRefPtr
 		for {
 			if !(refPtr != libc.UintptrFromInt32(0)) {
@@ -39794,6 +39839,11 @@ func x_Tcl_DeleteCommandFromToken(tls *libc.TLS, interp uintptr, cmd TTcl_Comman
 	if (*TCommand)(unsafe.Pointer(cmdPtr)).FhPtr != libc.UintptrFromInt32(0) {
 		x_Tcl_DeleteHashEntry(tls, (*TCommand)(unsafe.Pointer(cmdPtr)).FhPtr)
 		(*TCommand)(unsafe.Pointer(cmdPtr)).FhPtr = libc.UintptrFromInt32(0)
+		/*
+		 * Bump the command epoch counter. This will invalidate all cached
+		 * references that point to this command.
+		 */
+		(*TCommand)(unsafe.Pointer(cmdPtr)).FcmdEpoch++
 	}
 	/*
 	 * A number of tests for particular kinds of commands are done by checking
@@ -40050,8 +40100,13 @@ func _CancelEvalProc(tls *libc.TLS, clientData TClientData, interp uintptr, code
 func x_TclCleanupCommand(tls *libc.TLS, cmdPtr uintptr) {
 	/* Points to the Command structure to
 	 * be freed. */
-	(*TCommand)(unsafe.Pointer(cmdPtr)).FrefCount--
-	if (*TCommand)(unsafe.Pointer(cmdPtr)).FrefCount <= 0 {
+	var v1 int32
+	var v2 uintptr
+	_, _ = v1, v2
+	v2 = cmdPtr + 16
+	v1 = *(*int32)(unsafe.Pointer(v2))
+	*(*int32)(unsafe.Pointer(v2))--
+	if v1 <= int32(1) {
 		x_TclpFree(tls, cmdPtr)
 	}
 }
@@ -40089,7 +40144,9 @@ func x_Tcl_CreateMathFunc(tls *libc.TLS, interp uintptr, name uintptr, numArgs i
 	(*TOldMathFuncData)(unsafe.Pointer(data)).Fproc = proc
 	(*TOldMathFuncData)(unsafe.Pointer(data)).FnumArgs = numArgs
 	(*TOldMathFuncData)(unsafe.Pointer(data)).FargTypes = x_Tcl_Alloc(tls, uint32(uint64(numArgs)*libc.Uint64FromInt64(4)))
-	libc.Xmemcpy(tls, (*TOldMathFuncData)(unsafe.Pointer(data)).FargTypes, argTypes, uint64(numArgs)*uint64(4))
+	if numArgs > 0 && argTypes != libc.UintptrFromInt32(0) {
+		libc.Xmemcpy(tls, (*TOldMathFuncData)(unsafe.Pointer(data)).FargTypes, argTypes, uint64(numArgs)*uint64(4))
+	}
 	(*TOldMathFuncData)(unsafe.Pointer(data)).FclientData = clientData
 	x_Tcl_DStringInit(tls, bp)
 	x_Tcl_DStringAppend(tls, bp, ts+17093, int32(libc.Uint64FromInt64(18)-libc.Uint64FromInt32(1)))
@@ -40408,7 +40465,18 @@ func x_Tcl_ListMathFuncs(tls *libc.TLS, interp uintptr, pattern uintptr) (r uint
 	if m_TCL_OK == x_Tcl_EvalObjEx(tls, interp, script, 0) {
 		result = x_Tcl_DuplicateObj(tls, x_Tcl_GetObjResult(tls, interp))
 	} else {
-		result = x_Tcl_NewObj(tls)
+		if x_tclFreeObjList == libc.UintptrFromInt32(0) {
+			x_TclAllocateFreeObjects(tls)
+		}
+		result = x_tclFreeObjList
+		x_tclFreeObjList = (*(*struct {
+			Fptr1 uintptr
+			Fptr2 uintptr
+		})(unsafe.Pointer(x_tclFreeObjList + 32))).Fptr1
+		(*TTcl_Obj)(unsafe.Pointer(result)).FrefCount = 0
+		(*TTcl_Obj)(unsafe.Pointer(result)).Fbytes = x_tclEmptyStringRep
+		(*TTcl_Obj)(unsafe.Pointer(result)).Flength = 0
+		(*TTcl_Obj)(unsafe.Pointer(result)).FtypePtr = libc.UintptrFromInt32(0)
 	}
 	_objPtr1 = script
 	v4 = _objPtr1
@@ -41247,11 +41315,11 @@ func _TEOV_Error(tls *libc.TLS, data uintptr, interp uintptr, result int32) (r i
 func _TEOV_NotFound(tls *libc.TLS, interp uintptr, objc int32, objv uintptr, lookupNsPtr uintptr) (r int32) {
 	bp := tls.Alloc(64)
 	defer tls.Free(64)
-	var _callbackPtr, _objPtr, _objPtr1, cmdPtr, currNsPtr, iPtr, newObjv, savedNsPtr, varFramePtr, v2, v3, v6 uintptr
-	var i, newObjc, v5 int32
+	var _callbackPtr, _objPtr, _objPtr1, cmdPtr, currNsPtr, iPtr, newObjv, savedNsPtr, varFramePtr, v3, v4, v7 uintptr
+	var i, newObjc, v6 int32
 	var _ /* handlerObjc at bp+0 */ int32
 	var _ /* handlerObjv at bp+8 */ uintptr
-	_, _, _, _, _, _, _, _, _, _, _, _, _, _, _ = _callbackPtr, _objPtr, _objPtr1, cmdPtr, currNsPtr, i, iPtr, newObjc, newObjv, savedNsPtr, varFramePtr, v2, v3, v5, v6
+	_, _, _, _, _, _, _, _, _, _, _, _, _, _, _ = _callbackPtr, _objPtr, _objPtr1, cmdPtr, currNsPtr, i, iPtr, newObjc, newObjv, savedNsPtr, varFramePtr, v3, v4, v6, v7
 	iPtr = interp
 	varFramePtr = (*TInterp)(unsafe.Pointer(iPtr)).FvarFramePtr
 	currNsPtr = libc.UintptrFromInt32(0) /* Used to check for and invoke any registered
@@ -41296,9 +41364,21 @@ func _TEOV_NotFound(tls *libc.TLS, interp uintptr, objc int32, objv uintptr, loo
 	 * to hold both the handler prefix and all words of the command invokation
 	 * itself.
 	 */
-	x_Tcl_ListObjGetElements(tls, libc.UintptrFromInt32(0), (*TNamespace)(unsafe.Pointer(currNsPtr)).FunknownHandlerPtr, bp, bp+8)
+	if (*TTcl_Obj)(unsafe.Pointer((*TNamespace)(unsafe.Pointer(currNsPtr)).FunknownHandlerPtr)).FtypePtr == uintptr(unsafe.Pointer(&x_tclListType)) {
+		*(*uintptr)(unsafe.Pointer(bp + 8)) = (*(*struct {
+			Fptr1 uintptr
+			Fptr2 uintptr
+		})(unsafe.Pointer((*TNamespace)(unsafe.Pointer(currNsPtr)).FunknownHandlerPtr + 32))).Fptr1 + 16
+		*(*int32)(unsafe.Pointer(bp)) = (*TList)(unsafe.Pointer((*(*struct {
+			Fptr1 uintptr
+			Fptr2 uintptr
+		})(unsafe.Pointer((*TNamespace)(unsafe.Pointer(currNsPtr)).FunknownHandlerPtr + 32))).Fptr1)).FelemCount
+		_ = libc.Int32FromInt32(m_TCL_OK)
+	} else {
+		x_Tcl_ListObjGetElements(tls, libc.UintptrFromInt32(0), (*TNamespace)(unsafe.Pointer(currNsPtr)).FunknownHandlerPtr, bp, bp+8)
+	}
 	newObjc = objc + *(*int32)(unsafe.Pointer(bp))
-	newObjv = x_TclStackAlloc(tls, interp, libc.Int32FromInt64(8)*newObjc)
+	newObjv = x_TclStackAlloc(tls, interp, int32(uint64(8)*uint64(newObjc)))
 	/*
 	 * Copy command prefix from unknown handler and add on the real command's
 	 * full argument list. Note that we only use memcpy() once because we have
@@ -41311,8 +41391,8 @@ func _TEOV_NotFound(tls *libc.TLS, interp uintptr, objc int32, objv uintptr, loo
 		}
 		*(*uintptr)(unsafe.Pointer(newObjv + uintptr(i)*8)) = *(*uintptr)(unsafe.Pointer(*(*uintptr)(unsafe.Pointer(bp + 8)) + uintptr(i)*8))
 		(*TTcl_Obj)(unsafe.Pointer(*(*uintptr)(unsafe.Pointer(newObjv + uintptr(i)*8)))).FrefCount++
-		goto _1
-	_1:
+		goto _2
+	_2:
 		i++
 	}
 	libc.Xmemcpy(tls, newObjv+uintptr(*(*int32)(unsafe.Pointer(bp)))*8, objv, uint64(8)*uint64(objc))
@@ -41328,17 +41408,17 @@ func _TEOV_NotFound(tls *libc.TLS, interp uintptr, objc int32, objv uintptr, loo
 	cmdPtr = _TEOV_LookupCmdFromObj(tls, interp, *(*uintptr)(unsafe.Pointer(newObjv)), lookupNsPtr)
 	if cmdPtr == libc.UintptrFromInt32(0) {
 		if (*TTcl_Obj)(unsafe.Pointer(*(*uintptr)(unsafe.Pointer(objv)))).Fbytes != 0 {
-			v2 = (*TTcl_Obj)(unsafe.Pointer(*(*uintptr)(unsafe.Pointer(objv)))).Fbytes
-		} else {
-			v2 = x_Tcl_GetString(tls, *(*uintptr)(unsafe.Pointer(objv)))
-		}
-		x_Tcl_SetObjResult(tls, interp, x_Tcl_ObjPrintf(tls, ts+18550, libc.VaList(bp+24, v2)))
-		if (*TTcl_Obj)(unsafe.Pointer(*(*uintptr)(unsafe.Pointer(objv)))).Fbytes != 0 {
 			v3 = (*TTcl_Obj)(unsafe.Pointer(*(*uintptr)(unsafe.Pointer(objv)))).Fbytes
 		} else {
 			v3 = x_Tcl_GetString(tls, *(*uintptr)(unsafe.Pointer(objv)))
 		}
-		x_Tcl_SetErrorCode(tls, interp, libc.VaList(bp+24, ts+14426, ts+17885, ts+18036, v3, libc.UintptrFromInt32(0)))
+		x_Tcl_SetObjResult(tls, interp, x_Tcl_ObjPrintf(tls, ts+18550, libc.VaList(bp+24, v3)))
+		if (*TTcl_Obj)(unsafe.Pointer(*(*uintptr)(unsafe.Pointer(objv)))).Fbytes != 0 {
+			v4 = (*TTcl_Obj)(unsafe.Pointer(*(*uintptr)(unsafe.Pointer(objv)))).Fbytes
+		} else {
+			v4 = x_Tcl_GetString(tls, *(*uintptr)(unsafe.Pointer(objv)))
+		}
+		x_Tcl_SetErrorCode(tls, interp, libc.VaList(bp+24, ts+14426, ts+17885, ts+18036, v4, libc.UintptrFromInt32(0)))
 		/*
 		 * Release any resources we locked and allocated during the handler
 		 * call.
@@ -41349,14 +41429,14 @@ func _TEOV_NotFound(tls *libc.TLS, interp uintptr, objc int32, objv uintptr, loo
 				break
 			}
 			_objPtr = *(*uintptr)(unsafe.Pointer(newObjv + uintptr(i)*8))
-			v6 = _objPtr
-			v5 = *(*int32)(unsafe.Pointer(v6))
-			*(*int32)(unsafe.Pointer(v6))--
-			if v5 <= int32(1) {
+			v7 = _objPtr
+			v6 = *(*int32)(unsafe.Pointer(v7))
+			*(*int32)(unsafe.Pointer(v7))--
+			if v6 <= int32(1) {
 				x_TclFreeObj(tls, _objPtr)
 			}
-			goto _4
-		_4:
+			goto _5
+		_5:
 			i++
 		}
 		x_TclStackFree(tls, interp, newObjv)
@@ -41684,8 +41764,8 @@ func x_TclEvalEx(tls *libc.TLS, interp uintptr, script uintptr, numBytes int32, 
 	 * Tcl_EvalEx() and TclEvalObjEx() for places
 	 * generating arguments for which this is
 	 * true. */
-	var _objPtr, _objPtr1, _objPtr2, _objPtr3, _objPtr4, _objPtr5, copy1, eeFramePtr, expand, expandStack, iPtr, lcopy, lineSpace, lines, linesStack, next, norm, objv, objvSpace, p, parsePtr, savedVarFramePtr, stackObjArray, temp, tokenPtr, wordStart, v1, v10, v11, v16, v19, v2, v22, v25, v27, v8 uintptr
-	var allowExceptions, bytesLeft, code, commandLength, expandRequested, gotParse, objIdx, wordIdx, v12, v13, v14, v15, v17, v18, v21, v24, v26, v3, v5, v6, v7, v9 int32
+	var _objPtr, _objPtr1, _objPtr2, _objPtr3, _objPtr4, _objPtr5, copy1, eeFramePtr, expand, expandStack, iPtr, lcopy, lineSpace, lines, linesStack, next, norm, objv, objvSpace, p, parsePtr, savedVarFramePtr, stackObjArray, temp, tokenPtr, wordStart, v1, v10, v11, v17, v2, v20, v23, v26, v28, v8 uintptr
+	var allowExceptions, bytesLeft, code, commandLength, expandRequested, gotParse, objIdx, wordIdx, v12, v14, v15, v16, v18, v19, v22, v25, v27, v3, v5, v6, v7, v9 int32
 	var i, minObjs, numWords, objectsNeeded, objectsUsed uint32
 	var _ /* clNext at bp+8 */ uintptr
 	var _ /* elements at bp+40 */ uintptr
@@ -41693,7 +41773,7 @@ func x_TclEvalEx(tls *libc.TLS, interp uintptr, script uintptr, numBytes int32, 
 	var _ /* numElements at bp+36 */ int32
 	var _ /* wordCLNext at bp+24 */ uintptr
 	var _ /* wordLine at bp+16 */ int32
-	_, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _ = _objPtr, _objPtr1, _objPtr2, _objPtr3, _objPtr4, _objPtr5, allowExceptions, bytesLeft, code, commandLength, copy1, eeFramePtr, expand, expandRequested, expandStack, gotParse, i, iPtr, lcopy, lineSpace, lines, linesStack, minObjs, next, norm, numWords, objIdx, objectsNeeded, objectsUsed, objv, objvSpace, p, parsePtr, savedVarFramePtr, stackObjArray, temp, tokenPtr, wordIdx, wordStart, v1, v10, v11, v12, v13, v14, v15, v16, v17, v18, v19, v2, v21, v22, v24, v25, v26, v27, v3, v5, v6, v7, v8, v9
+	_, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _ = _objPtr, _objPtr1, _objPtr2, _objPtr3, _objPtr4, _objPtr5, allowExceptions, bytesLeft, code, commandLength, copy1, eeFramePtr, expand, expandRequested, expandStack, gotParse, i, iPtr, lcopy, lineSpace, lines, linesStack, minObjs, next, norm, numWords, objIdx, objectsNeeded, objectsUsed, objv, objvSpace, p, parsePtr, savedVarFramePtr, stackObjArray, temp, tokenPtr, wordIdx, wordStart, v1, v10, v11, v12, v14, v15, v16, v17, v18, v19, v2, v20, v22, v23, v25, v26, v27, v28, v3, v5, v6, v7, v8, v9
 	iPtr = interp
 	minObjs = uint32(20)
 	code = m_TCL_OK /* Saves old copy of iPtr->varFramePtr in case
@@ -41963,32 +42043,44 @@ func x_TclEvalEx(tls *libc.TLS, interp uintptr, script uintptr, numBytes int32, 
 					}
 					if *(*int32)(unsafe.Pointer(expand + uintptr(wordIdx)*4)) != 0 {
 						temp = *(*uintptr)(unsafe.Pointer(copy1 + uintptr(wordIdx)*8))
-						x_Tcl_ListObjGetElements(tls, libc.UintptrFromInt32(0), temp, bp+36, bp+40)
+						if (*TTcl_Obj)(unsafe.Pointer(temp)).FtypePtr == uintptr(unsafe.Pointer(&x_tclListType)) {
+							*(*uintptr)(unsafe.Pointer(bp + 40)) = (*(*struct {
+								Fptr1 uintptr
+								Fptr2 uintptr
+							})(unsafe.Pointer(temp + 32))).Fptr1 + 16
+							*(*int32)(unsafe.Pointer(bp + 36)) = (*TList)(unsafe.Pointer((*(*struct {
+								Fptr1 uintptr
+								Fptr2 uintptr
+							})(unsafe.Pointer(temp + 32))).Fptr1)).FelemCount
+							_ = libc.Int32FromInt32(m_TCL_OK)
+						} else {
+							x_Tcl_ListObjGetElements(tls, libc.UintptrFromInt32(0), temp, bp+36, bp+40)
+						}
 						objectsUsed += uint32(*(*int32)(unsafe.Pointer(bp + 36)))
 						for {
-							v13 = *(*int32)(unsafe.Pointer(bp + 36))
+							v14 = *(*int32)(unsafe.Pointer(bp + 36))
 							*(*int32)(unsafe.Pointer(bp + 36))--
-							if !(v13 != 0) {
+							if !(v14 != 0) {
 								break
 							}
 							*(*int32)(unsafe.Pointer(lines + uintptr(objIdx)*4)) = -int32(1)
-							v14 = objIdx
+							v15 = objIdx
 							objIdx--
-							*(*uintptr)(unsafe.Pointer(objv + uintptr(v14)*8)) = *(*uintptr)(unsafe.Pointer(*(*uintptr)(unsafe.Pointer(bp + 40)) + uintptr(*(*int32)(unsafe.Pointer(bp + 36)))*8))
+							*(*uintptr)(unsafe.Pointer(objv + uintptr(v15)*8)) = *(*uintptr)(unsafe.Pointer(*(*uintptr)(unsafe.Pointer(bp + 40)) + uintptr(*(*int32)(unsafe.Pointer(bp + 36)))*8))
 							(*TTcl_Obj)(unsafe.Pointer(*(*uintptr)(unsafe.Pointer(*(*uintptr)(unsafe.Pointer(bp + 40)) + uintptr(*(*int32)(unsafe.Pointer(bp + 36)))*8)))).FrefCount++
 						}
 						_objPtr1 = temp
-						v16 = _objPtr1
-						v15 = *(*int32)(unsafe.Pointer(v16))
-						*(*int32)(unsafe.Pointer(v16))--
-						if v15 <= int32(1) {
+						v17 = _objPtr1
+						v16 = *(*int32)(unsafe.Pointer(v17))
+						*(*int32)(unsafe.Pointer(v17))--
+						if v16 <= int32(1) {
 							x_TclFreeObj(tls, _objPtr1)
 						}
 					} else {
 						*(*int32)(unsafe.Pointer(lines + uintptr(objIdx)*4)) = *(*int32)(unsafe.Pointer(lcopy + uintptr(wordIdx)*4))
-						v17 = objIdx
+						v18 = objIdx
 						objIdx--
-						*(*uintptr)(unsafe.Pointer(objv + uintptr(v17)*8)) = *(*uintptr)(unsafe.Pointer(copy1 + uintptr(wordIdx)*8))
+						*(*uintptr)(unsafe.Pointer(objv + uintptr(v18)*8)) = *(*uintptr)(unsafe.Pointer(copy1 + uintptr(wordIdx)*8))
 						objectsUsed++
 					}
 				}
@@ -42023,10 +42115,10 @@ func x_TclEvalEx(tls *libc.TLS, interp uintptr, script uintptr, numBytes int32, 
 			(*TCmdFrame)(unsafe.Pointer(eeFramePtr)).Fnline = 0
 			if (*TCmdFrame)(unsafe.Pointer(eeFramePtr)).FcmdObj != 0 {
 				_objPtr2 = (*TCmdFrame)(unsafe.Pointer(eeFramePtr)).FcmdObj
-				v19 = _objPtr2
-				v18 = *(*int32)(unsafe.Pointer(v19))
-				*(*int32)(unsafe.Pointer(v19))--
-				if v18 <= int32(1) {
+				v20 = _objPtr2
+				v19 = *(*int32)(unsafe.Pointer(v20))
+				*(*int32)(unsafe.Pointer(v20))--
+				if v19 <= int32(1) {
 					x_TclFreeObj(tls, _objPtr2)
 				}
 				(*TCmdFrame)(unsafe.Pointer(eeFramePtr)).FcmdObj = libc.UintptrFromInt32(0)
@@ -42040,14 +42132,14 @@ func x_TclEvalEx(tls *libc.TLS, interp uintptr, script uintptr, numBytes int32, 
 					break
 				}
 				_objPtr3 = *(*uintptr)(unsafe.Pointer(objv + uintptr(i)*8))
-				v22 = _objPtr3
-				v21 = *(*int32)(unsafe.Pointer(v22))
-				*(*int32)(unsafe.Pointer(v22))--
-				if v21 <= int32(1) {
+				v23 = _objPtr3
+				v22 = *(*int32)(unsafe.Pointer(v23))
+				*(*int32)(unsafe.Pointer(v23))--
+				if v22 <= int32(1) {
 					x_TclFreeObj(tls, _objPtr3)
 				}
-				goto _20
-			_20:
+				goto _21
+			_21:
 				i++
 			}
 			objectsUsed = uint32(0)
@@ -42119,14 +42211,14 @@ posterror:
 			break
 		}
 		_objPtr4 = *(*uintptr)(unsafe.Pointer(objv + uintptr(i)*8))
-		v25 = _objPtr4
-		v24 = *(*int32)(unsafe.Pointer(v25))
-		*(*int32)(unsafe.Pointer(v25))--
-		if v24 <= int32(1) {
+		v26 = _objPtr4
+		v25 = *(*int32)(unsafe.Pointer(v26))
+		*(*int32)(unsafe.Pointer(v26))--
+		if v25 <= int32(1) {
 			x_TclFreeObj(tls, _objPtr4)
 		}
-		goto _23
-	_23:
+		goto _24
+	_24:
 		i++
 	}
 	if gotParse != 0 {
@@ -42147,10 +42239,10 @@ cleanup_return:
 	(*TInterp)(unsafe.Pointer(iPtr)).FcmdFramePtr = (*TCmdFrame)(unsafe.Pointer((*TInterp)(unsafe.Pointer(iPtr)).FcmdFramePtr)).FnextPtr
 	if (*TCmdFrame)(unsafe.Pointer(eeFramePtr)).Ftype1 == int32(m_TCL_LOCATION_SOURCE) {
 		_objPtr5 = (*TCmdFrame)(unsafe.Pointer(eeFramePtr)).Fdata.Feval.Fpath
-		v27 = _objPtr5
-		v26 = *(*int32)(unsafe.Pointer(v27))
-		*(*int32)(unsafe.Pointer(v27))--
-		if v26 <= int32(1) {
+		v28 = _objPtr5
+		v27 = *(*int32)(unsafe.Pointer(v28))
+		*(*int32)(unsafe.Pointer(v28))--
+		if v27 <= int32(1) {
 			x_TclFreeObj(tls, _objPtr5)
 		}
 	}
@@ -42272,7 +42364,7 @@ func x_TclArgumentEnter(tls *libc.TLS, interp uintptr, objv uintptr, objc int32,
 	defer tls.Free(16)
 	var cfwPtr, hPtr, iPtr uintptr
 	var i int32
-	var _ /* new at bp+0 */ int32
+	var _ /* isNew at bp+0 */ int32
 	_, _, _, _ = cfwPtr, hPtr, i, iPtr
 	iPtr = interp
 	i = int32(1)
@@ -42336,9 +42428,9 @@ func x_TclArgumentEnter(tls *libc.TLS, interp uintptr, objv uintptr, objc int32,
  */
 
 func x_TclArgumentRelease(tls *libc.TLS, interp uintptr, objv uintptr, objc int32) {
-	var cfwPtr, hPtr, iPtr uintptr
-	var i int32
-	_, _, _, _ = cfwPtr, hPtr, i, iPtr
+	var cfwPtr, hPtr, iPtr, v3 uintptr
+	var i, v2 int32
+	_, _, _, _, _, _ = cfwPtr, hPtr, i, iPtr, v2, v3
 	iPtr = interp
 	i = int32(1)
 	for {
@@ -42350,8 +42442,10 @@ func x_TclArgumentRelease(tls *libc.TLS, interp uintptr, objv uintptr, objc int3
 			goto _1
 		}
 		cfwPtr = (*TTcl_HashEntry)(unsafe.Pointer(hPtr)).FclientData
-		(*TCFWord)(unsafe.Pointer(cfwPtr)).FrefCount--
-		if (*TCFWord)(unsafe.Pointer(cfwPtr)).FrefCount > 0 {
+		v3 = cfwPtr + 12
+		v2 = *(*int32)(unsafe.Pointer(v3))
+		*(*int32)(unsafe.Pointer(v3))--
+		if v2 > int32(1) {
 			goto _1
 		}
 		x_TclpFree(tls, cfwPtr)
@@ -42387,7 +42481,7 @@ func x_TclArgumentBCEnter(tls *libc.TLS, interp uintptr, objv uintptr, objc int3
 	defer tls.Free(16)
 	var cfwPtr, ePtr, eclPtr, hPtr, hePtr, iPtr, lastPtr uintptr
 	var word int32
-	var _ /* isnew at bp+0 */ int32
+	var _ /* isNew at bp+0 */ int32
 	_, _, _, _, _, _, _, _ = cfwPtr, ePtr, eclPtr, hPtr, hePtr, iPtr, lastPtr, word
 	lastPtr = libc.UintptrFromInt32(0)
 	iPtr = interp
@@ -42721,7 +42815,7 @@ func x_TclNREvalObjEx(tls *libc.TLS, interp uintptr, objPtr uintptr, flags int32
 		/*
 		 * Shimmer protection! Always pass an unshared obj. The caller could
 		 * incr the refCount of objPtr AFTER calling us! To be completely safe
-		 * we always make a copy. The callback takes care od the refCounts for
+		 * we always make a copy. The callback takes care of the refCounts for
 		 * both listPtr and objPtr.
 		 *
 		 * TODO: Create a test to demo this need, or eliminate it.
@@ -43653,7 +43747,6 @@ func x_Tcl_VarEvalVA(tls *libc.TLS, interp uintptr, argList Tva_list) (r int32) 
 //	 *
 //	 *----------------------------------------------------------------------
 //	 */
-//	/* ARGSUSED */
 func x_Tcl_VarEval(tls *libc.TLS, interp uintptr, va uintptr) (r int32) {
 	var argList Tva_list
 	var result int32
@@ -44296,9 +44389,9 @@ func _ExprWideFunc(tls *libc.TLS, clientData TClientData, interp uintptr, objc i
 func _ExprRandFunc(tls *libc.TLS, clientData TClientData, interp uintptr, objc int32, objv uintptr) (r int32) {
 	/* Actual parameter vector. */
 	var dResult float64
-	var iPtr, oResult, p1 uintptr
+	var iPtr, oResult uintptr
 	var tmp int64
-	_, _, _, _, _ = dResult, iPtr, oResult, tmp, p1
+	_, _, _, _ = dResult, iPtr, oResult, tmp
 	iPtr = interp
 	if objc != int32(1) {
 		_MathFuncWrongNumArgs(tls, interp, int32(1), objc, objv)
@@ -44310,12 +44403,11 @@ func _ExprRandFunc(tls *libc.TLS, clientData TClientData, interp uintptr, objc i
 		 * To ensure different seeds in different threads (bug #416643),
 		 * take into consideration the thread this interp is running in.
 		 */
-		(*TInterp)(unsafe.Pointer(iPtr)).FrandSeed = int64(x_TclpGetClicks(tls) + uint64(int32(int64(x_Tcl_GetCurrentThread(tls)))<<libc.Int32FromInt32(12)))
+		(*TInterp)(unsafe.Pointer(iPtr)).FrandSeed = int64(x_TclpGetClicks(tls) + uint64(uint32(uint64(x_Tcl_GetCurrentThread(tls)))*uint32(4093)))
 		/*
 		 * Make sure 1 <= randSeed <= (2^31) - 2. See below.
 		 */
-		p1 = iPtr + 432
-		*(*int64)(unsafe.Pointer(p1)) = int64(uint64(*(*int64)(unsafe.Pointer(p1))) & libc.Uint64FromInt32(0x7FFFFFFF))
+		*(*int64)(unsafe.Pointer(iPtr + 432)) &= int64(0x7FFFFFFF)
 		if (*TInterp)(unsafe.Pointer(iPtr)).FrandSeed == 0 || (*TInterp)(unsafe.Pointer(iPtr)).FrandSeed == int64(0x7FFFFFFF) {
 			*(*int64)(unsafe.Pointer(iPtr + 432)) ^= int64(123459876)
 		}
@@ -44850,15 +44942,27 @@ func x_TclNRTailcallObjCmd(tls *libc.TLS, clientData TClientData, interp uintptr
 func x_TclNRTailcallEval(tls *libc.TLS, data uintptr, interp uintptr, result int32) (r int32) {
 	bp := tls.Alloc(32)
 	defer tls.Free(32)
-	var _callbackPtr, _objPtr, _objPtr1, iPtr, listPtr, nsObjPtr, v2 uintptr
-	var v1 int32
+	var _callbackPtr, _objPtr, _objPtr1, iPtr, listPtr, nsObjPtr, v3 uintptr
+	var v2 int32
 	var _ /* nsPtr at bp+0 */ uintptr
 	var _ /* objc at bp+8 */ int32
 	var _ /* objv at bp+16 */ uintptr
-	_, _, _, _, _, _, _, _ = _callbackPtr, _objPtr, _objPtr1, iPtr, listPtr, nsObjPtr, v1, v2
+	_, _, _, _, _, _, _, _ = _callbackPtr, _objPtr, _objPtr1, iPtr, listPtr, nsObjPtr, v2, v3
 	iPtr = interp
 	listPtr = *(*TClientData)(unsafe.Pointer(data))
-	x_Tcl_ListObjGetElements(tls, interp, listPtr, bp+8, bp+16)
+	if (*TTcl_Obj)(unsafe.Pointer(listPtr)).FtypePtr == uintptr(unsafe.Pointer(&x_tclListType)) {
+		*(*uintptr)(unsafe.Pointer(bp + 16)) = (*(*struct {
+			Fptr1 uintptr
+			Fptr2 uintptr
+		})(unsafe.Pointer(listPtr + 32))).Fptr1 + 16
+		*(*int32)(unsafe.Pointer(bp + 8)) = (*TList)(unsafe.Pointer((*(*struct {
+			Fptr1 uintptr
+			Fptr2 uintptr
+		})(unsafe.Pointer(listPtr + 32))).Fptr1)).FelemCount
+		_ = libc.Int32FromInt32(m_TCL_OK)
+	} else {
+		x_Tcl_ListObjGetElements(tls, interp, listPtr, bp+8, bp+16)
+	}
 	nsObjPtr = *(*uintptr)(unsafe.Pointer(*(*uintptr)(unsafe.Pointer(bp + 16))))
 	if result == m_TCL_OK {
 		result = x_TclGetNamespaceFromObj(tls, interp, nsObjPtr, bp)
@@ -44869,10 +44973,10 @@ func x_TclNRTailcallEval(tls *libc.TLS, data uintptr, interp uintptr, result int
 		 * a now-gone namespace: cleanup and return.
 		 */
 		_objPtr = listPtr
-		v2 = _objPtr
-		v1 = *(*int32)(unsafe.Pointer(v2))
-		*(*int32)(unsafe.Pointer(v2))--
-		if v1 <= int32(1) {
+		v3 = _objPtr
+		v2 = *(*int32)(unsafe.Pointer(v3))
+		*(*int32)(unsafe.Pointer(v3))--
+		if v2 <= int32(1) {
 			x_TclFreeObj(tls, _objPtr)
 		}
 		return result
@@ -45181,12 +45285,13 @@ func _NRCoroutineExitCallback(tls *libc.TLS, data uintptr, interp uintptr, resul
 func x_TclNRCoroutineActivateCallback(tls *libc.TLS, data uintptr, interp uintptr, result int32) (r int32) {
 	bp := tls.Alloc(48)
 	defer tls.Free(48)
-	var _callbackPtr, _objPtr, corPtr uintptr
-	var numLevels, type1, unused int32
-	_, _, _, _, _, _ = _callbackPtr, _objPtr, corPtr, numLevels, type1, unused
+	var _callbackPtr, _objPtr, corPtr, stackLevel uintptr
+	var numLevels, type1 int32
+	var _ /* unused at bp+0 */ int32
+	_, _, _, _, _, _ = _callbackPtr, _objPtr, corPtr, numLevels, stackLevel, type1
 	corPtr = *(*TClientData)(unsafe.Pointer(data))
 	type1 = int32(int64(*(*TClientData)(unsafe.Pointer(data + 1*8))))
-	//ccgo: int *stackLevel = &unused;
+	stackLevel = bp
 	if !((*TCoroutineData)(unsafe.Pointer(corPtr)).FstackLevel != 0) {
 		/*
 		 * -- Coroutine is suspended --
@@ -45213,8 +45318,7 @@ func x_TclNRCoroutineActivateCallback(tls *libc.TLS, data uintptr, interp uintpt
 		 * Record the stackLevel at which the resume is happening, then swap
 		 * the interp's environment to make it suitable to run this coroutine.
 		 */
-		//ccgo: corPtr->stackLevel = stackLevel;
-		(*TCoroutineData)(unsafe.Pointer(corPtr)).FstackLevel = corPtr
+		(*TCoroutineData)(unsafe.Pointer(corPtr)).FstackLevel = stackLevel
 		numLevels = (*TCoroutineData)(unsafe.Pointer(corPtr)).FauxNumLevels
 		(*TCoroutineData)(unsafe.Pointer(corPtr)).FauxNumLevels = (*TInterp)(unsafe.Pointer(interp)).FnumLevels
 		(*TCoroutineData)(unsafe.Pointer(corPtr)).Fcaller.FframePtr = (*TInterp)(unsafe.Pointer(interp)).FframePtr
@@ -45232,10 +45336,9 @@ func x_TclNRCoroutineActivateCallback(tls *libc.TLS, data uintptr, interp uintpt
 		/*
 		 * Coroutine is active: yield
 		 */
-		//ccgo: if (corPtr->stackLevel != stackLevel) {
-		if (*TCoroutineData)(unsafe.Pointer(corPtr)).FstackLevel != corPtr {
+		if (*TCoroutineData)(unsafe.Pointer(corPtr)).FstackLevel != stackLevel {
 			x_Tcl_SetObjResult(tls, interp, x_Tcl_NewStringObj(tls, ts+19462, -int32(1)))
-			x_Tcl_SetErrorCode(tls, interp, libc.VaList(bp+8, ts+14426, ts+19323, ts+19489, libc.UintptrFromInt32(0)))
+			x_Tcl_SetErrorCode(tls, interp, libc.VaList(bp+16, ts+14426, ts+19323, ts+19489, libc.UintptrFromInt32(0)))
 			return int32(m_TCL_ERROR)
 		}
 		if type1 == int32(int64(libc.UintptrFromInt32(0))) {
@@ -193754,19 +193857,6 @@ func _FreeChannelInternalRep(tls *libc.TLS, objPtr uintptr) {
 	x_TclpFree(tls, resPtr)
 }
 
-type TCopyState1 = struct {
-	FreadPtr    uintptr
-	FwritePtr   uintptr
-	FreadFlags  int32
-	FwriteFlags int32
-	FtoRead     TTcl_WideInt
-	Ftotal      TTcl_WideInt
-	Finterp     uintptr
-	FcmdPtr     uintptr
-	FbufSize    int32
-	Fbuffer     [1]int8
-}
-
 type TChannel1 = struct {
 	Fstate        uintptr
 	FinstanceData TClientData
@@ -193815,6 +193905,19 @@ type TChannelState1 = struct {
 	FchanMsg             uintptr
 	FunreportedMsg       uintptr
 	Fepoch               int32
+}
+
+type TCopyState1 = struct {
+	FreadPtr    uintptr
+	FwritePtr   uintptr
+	FreadFlags  int32
+	FwriteFlags int32
+	FtoRead     TTcl_WideInt
+	Ftotal      TTcl_WideInt
+	Finterp     uintptr
+	FcmdPtr     uintptr
+	FbufSize    int32
+	Fbuffer     [1]int8
 }
 
 const m_O_RDWR = 2
