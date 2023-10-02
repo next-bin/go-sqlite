@@ -154,7 +154,7 @@ func main() {
 			"sqlite3.c",
 			// "-DSQLITE_DEBUG",     //TODO-
 			// "-DSQLITE_MEM_DEBUG", //TODO-
-			// "-UNDEBUG",           //TODO-
+			"-DNDEBUG", //TODO-
 		)
 		if err := ccgo.NewTask(goos, goarch, config, os.Stdout, os.Stderr, nil).Main(); err != nil {
 			return err
@@ -244,7 +244,7 @@ func main() {
 			"-Dpwrite64=pwrite",
 			// "-DSQLITE_DEBUG",     //TODO-
 			// "-DSQLITE_MEM_DEBUG", //TODO-
-			// "-UNDEBUG",           //TODO-
+			"-DNDEBUG", //TODO-
 			//TODO "-DSQLITE_ENABLE_RBU",
 			//TODO "-DSQLITE_MUTEX_APPDEF=1",
 			//TODO "-DSQLITE_MUTEX_NOOP",

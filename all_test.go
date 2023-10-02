@@ -6,38 +6,17 @@ package libsqlite3 // import "modernc.org/libsqlite3"
 
 // linux/amd64
 //
-//	$ go test -suite=extraquick |& tee log-extraquick
-//	execute /usr/local/go/bin/go ["build" "-o" "/tmp/TestTclTest2016296276/001/testfixture" "-tags=" "internal/testfixture/ccgo_linux_amd64.go"] in /home/jnml/src/modernc.org/libsqlite3
-//	all_linux_amd64_test.go:66:TestTclTest: TRC ["/home/jnml/src/modernc.org/libsqlite3/internal/test/permutations.test" "extraquick"]
-//	execute /tmp/TestTclTest2016296276/001/testfixture ["/home/jnml/src/modernc.org/libsqlite3/internal/test/permutations.test" "extraquick" "-verbose=0" "-q"] in /tmp/TestTclTest2016296276/001
-//	...
+// Go
+//
 //	SQLite 2023-03-22 11:56:21 0d1fc92f94cb6b76bffe3ec34d69cffde2924203304e8ffc4155597af0c191da
-//	18 errors out of 215479 tests on e5-1650 Linux 64-bit little-endian
-//	!Failures on these tests: dbstatus-4.0.1 dbstatus-4.1.1 dbstatus-4.2.1 dbstatus-4.2.2 dbstatus-4.2.3 dbstatus-4.2.4 misc4-1.2.1 misc4-1.6 schema-4.2 schema-5.4 schema-6.4 schema-7.4 schema-8.2 schema-12.1 tkt1644-2.1 tkt1644-2.2 tkt1644-2.3 zeroblob-12.4
-//	WARNING: Multi-threaded tests skipped: Linked against a non-threadsafe Tcl build
-//	All memory allocations freed - no leaks
-//	Maximum memory usage: 9256032 bytes
-//	Current memory usage: 0 bytes
-//	Number of malloc()  : -1 calls
+//	24 errors out of 848333 tests on e5-1650 Linux 64-bit little-endian
+//	!Failures on these tests: busy2-2.2.3 busy2-2.2.5 dbstatus-4.0.1 dbstatus-4.1.1 dbstatus-4.2.1 dbstatus-4.2.2 dbstatus-4.2.3 dbstatus-4.2.4 malloc5-6.2.2 malloc5-6.2.3 misc4-1.2.1 misc4-1.6 schema-4.2 schema-5.4 schema-6.4 schema-7.4 schema-8.2 schema-12.1 sort4-init001 sort4-init002 tkt1644-2.1 tkt1644-2.2 tkt1644-2.3 zeroblob-12.4
 //
-//	$ ./testfixture test/permutations.test extraquick -verbose=0 -q |& tee log-extraquick-c
+// C
+//
 //	SQLite 2023-03-22 11:56:21 0d1fc92f94cb6b76bffe3ec34d69cffde2924203304e8ffc4155597af0c191da
-//	14 errors out of 257387 tests on e5-1650 Linux 64-bit little-endian
-//	!Failures on these tests: fts5corrupt3-74.1 fts5corrupt3-75.1 misc4-1.2.1 misc4-1.6 schema-4.2 schema-5.4 schema-6.4 schema-7.4 schema-8.2 schema-12.1 tkt1644-2.1 tkt1644-2.2 tkt1644-2.3 zeroblob-12.4
-//	WARNING: Multi-threaded tests skipped: SQLite build is not threadsafe
-//	All memory allocations freed - no leaks
-//	Maximum memory usage: 9155784 bytes
-//	Current memory usage: 0 bytes
-//	Number of malloc()  : -1 calls
-//
-//TODO Test passing in C but not in Go
-//
-//	dbstatus-4.0.1
-//	dbstatus-4.1.1
-//	dbstatus-4.2.1
-//	dbstatus-4.2.2
-//	dbstatus-4.2.3
-//	dbstatus-4.2.4
+//	16 errors out of 1167014 tests on e5-1650 Linux 64-bit little-endian
+//	!Failures on these tests: fts5corrupt3-74.1 fts5corrupt3-75.1 misc4-1.2.1 misc4-1.6 schema-4.2 schema-5.4 schema-6.4 schema-7.4 schema-8.2 schema-12.1 sort4-init001 sort4-init002 tkt1644-2.1 tkt1644-2.2 tkt1644-2.3 zeroblob-12.4
 
 import (
 	"flag"
