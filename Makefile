@@ -5,7 +5,7 @@
 .PHONY:	all clean dev dwonload edit editor generate test work
 
 DIR = /tmp/libtcl8.6
-TAR = tcl8.6.13-src.tar.gz
+TAR = tcl8.6.11-src.tar.gz
 URL = http://prdownloads.sourceforge.net/tcl/$(TAR)
 
 all: editor

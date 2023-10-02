@@ -34,7 +34,7 @@ namespace eval ::tcl::test::io {
 	package require -exact Tcltest [info patchlevel]
 	set ::tcltestlib [lindex [package ifneeded Tcltest [info patchlevel]] 1]
     }
-    source [file join [file dirname [info script]] tcltests.tcl]
+    package require tcltests
 
     testConstraint testbytestring   [llength [info commands testbytestring]]
     testConstraint testchannel      [llength [info commands testchannel]]

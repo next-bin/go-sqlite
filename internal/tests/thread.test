@@ -15,8 +15,7 @@
 #  when thread::release is used, -wait is passed in order allow the thread to
 #  be fully finalized, which avoids valgrind "still reachable" reports.
 
-package require tcltest 2.5
-source [file join [file dirname [info script]] tcltests.tcl]
+package require tcltests
 
 ::tcltest::loadTestedCommands
 catch [list package require -exact Tcltest [info patchlevel]]

@@ -22,7 +22,7 @@ import (
 )
 
 const (
-	archivePath = "tcl8.6.13-src.tar.gz"
+	archivePath = "tcl8.6.11-src.tar.gz"
 )
 
 var (
@@ -95,7 +95,7 @@ func main() {
 			// "-DTCL_MEM_DEBUG", //TODO-
 			"-UHAVE_CPUID",
 			"-UHAVE_FTS",
-			// "-UNDEBUG", //TODO-
+			"-DNDEBUG",
 		}
 		if s := cc.LongDouble64Flag(goos, goarch); s != "" {
 			cflags = append(cflags, s)
@@ -145,6 +145,8 @@ func main() {
 	mustCopyFile(filepath.Join("library", "assets", "tclConfig.sh"), filepath.Join(makeRoot, "tclConfig.sh"), nil)
 	mustCopyDir(filepath.Join("library", "assets"), filepath.Join(libRoot, "library"), nil, false)
 	mustCopyDir("internal/tests", filepath.Join(libRoot, "tests"), nil, false)
+	mustCopyFile(filepath.FromSlash("library/assets/tcltests/pkgIndex.tcl"), filepath.FromSlash("internal/tests/pkgIndex.tcl"), nil)
+	mustCopyFile(filepath.FromSlash("library/assets/tcltests/tcltests.tcl"), filepath.FromSlash("internal/tests/tcltests.tcl"), nil)
 
 	fn := fmt.Sprintf("ccgo_%s_%s.go", goos, goarch)
 	mustCopyFile(fn, filepath.Join(makeRoot, result), nil)

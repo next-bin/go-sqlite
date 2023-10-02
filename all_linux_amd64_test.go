@@ -20,7 +20,7 @@ import (
 var (
 	notFiles = []string{}
 	skip     = []string{
-		// fails
+		//TODO fails
 		"iortrans-3.1",
 		"unixInit-3.1",
 		"unixInit-3.2",
