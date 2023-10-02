@@ -5,8 +5,10 @@
 .PHONY:	all clean dev download edit editor generate work test
 
 DIR = /tmp/libz
-TAR = zlib-1.3.tar.gz
-URL = https://www.zlib.net/$(TAR)
+TAR = v1.2.11.tar.gz
+URL = https://github.com/madler/zlib/archive/refs/tags/$(TAR)
+
+
 
 all: editor
 	golint 2>&1

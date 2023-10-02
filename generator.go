@@ -22,7 +22,7 @@ import (
 )
 
 const (
-	archivePath = "zlib-1.3.tar.gz"
+	archivePath = "v1.2.11.tar.gz"
 )
 
 var (
@@ -55,6 +55,7 @@ func main() {
 
 	_, extractedArchivePath := filepath.Split(archivePath)
 	extractedArchivePath = extractedArchivePath[:len(extractedArchivePath)-len(".tar.gz")]
+	extractedArchivePath = "zlib-" + extractedArchivePath[1:]
 	tempDir := os.Getenv("GO_GENERATE_DIR")
 	dev := os.Getenv("GO_GENERATE_DEV") != ""
 	switch {
@@ -81,16 +82,16 @@ func main() {
 
 	util.MustUntar(true, tempDir, f, nil)
 	libRoot := filepath.Join(tempDir, extractedArchivePath)
-	mustCopyFile("LICENSE-ZLIB", filepath.Join(libRoot, "LICENSE"), nil)
+	mustCopyFile("LICENSE-ZLIB", filepath.Join(libRoot, "README"), nil)
 	result := "libz.a.go"
 	util.MustInDir(true, libRoot, func() (err error) {
 		cflags := []string{
-			// "-UNDEBUG", //TODO-
+			"-DNDEBUG", //TODO-
 		}
 		if s := cc.LongDouble64Flag(goos, goarch); s != "" {
 			cflags = append(cflags, s)
 		}
-		util.MustShell(true, "sh", "-c", "go mod init example.com/libz ; go get modernc.org/libc/v2@master")
+		util.MustShell(true, "sh", "-c", "go mod init example.com/libz ; go get modernc.org/libc/v2@latest")
 		if dev {
 			util.MustShell(true, "sh", "-c", "go work init ; go work use $GOPATH/src/modernc.org/libc/v2")
 		}
@@ -117,7 +118,7 @@ func main() {
 			"--prefix-undefined=_",
 			"-extended-errors",
 		)
-		if err := ccgo.NewTask(goos, goarch, append(args, "--package-name=main", "-exec", "make", "-j", j,  "libz.a", "example64", "minigzip64"), os.Stdout, os.Stderr, nil).Exec(); err != nil {
+		if err := ccgo.NewTask(goos, goarch, append(args, "--package-name=main", "-exec", "make", "-j", j, "libz.a", "example64", "minigzip64"), os.Stdout, os.Stderr, nil).Exec(); err != nil {
 			fail(1, "%v", err)
 		}
 
