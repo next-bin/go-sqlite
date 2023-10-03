@@ -13,7 +13,8 @@ edit:
 	@if [ -f "Session.vim" ]; then gvim -S & else gvim -p Makefile *.go & fi
 
 editor:
-	gofmt -l -s -w *.go
+	gofmt -l -s -w .
+	go build -v ./...
 	go test -o /dev/null -c
 	go install -v 2>&1 | tee log-editor
 

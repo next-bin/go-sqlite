@@ -7,7 +7,7 @@
 // 'gomod' does not use the 'go' command and it does not use the module cache.
 // It only uses the locally cloned repositories and the 'git' command.
 //
-// Example of usage
+// # Example of usage
 //
 // Install and run the update subcommand:
 //
@@ -20,7 +20,7 @@
 //	in modernc.org/strutil go get -d modernc.org/mathutil@v1.5.0
 //	~ $
 //
-// Subcommand update
+// # Subcommand update
 //
 // Find git repositories in or bellow current directory and learn their tags.
 // Look for go.mod files and try to determine dependencies that can be be
@@ -32,13 +32,13 @@
 //	-head	list repositores not tagged at HEAD
 //	-v      verbose output
 //
-// Caveats
+// # Caveats
 //
 // - At the moment only the 'require' clause of go.mod files is considered.
 //
 // - 'vendor' directories are ignored.
 //
-// Legacy
+// # Legacy
 //
 // This used to be a tool that predated go work files. To get the old behavior of
 // this command
@@ -51,16 +51,9 @@ package main // import "modernc.org/gomod"
 import (
 	"flag"
 	"fmt"
-	"io/fs"
 	"os"
-	"os/exec"
-	"path"
-	"path/filepath"
-	"sort"
-	"strings"
 
-	"golang.org/x/mod/modfile"
-	"golang.org/x/mod/semver"
+	"modernc.org/gomod/engine"
 )
 
 var (
@@ -87,7 +80,7 @@ func main1() error {
 	case 1:
 		switch arg := flag.Arg(0); arg {
 		case "update":
-			return newUpdater().run()
+			return engine.NewUpdater(os.Stdout, os.Stderr, *oVerbose, *oDbg, *oAll, *oHead).Run()
 		default:
 			fail(2, "%s %s: unknown command", os.Args[0], arg)
 		}
@@ -95,301 +88,4 @@ func main1() error {
 		fail(2, "unexpected number of arguments")
 	}
 	panic("unreachable")
-}
-
-func normalize(ver string) (r string) {
-	r = semver.Canonical(ver)
-	if semver.Prerelease(r) != "" {
-		return ""
-	}
-
-	if s := semver.Build(r); s != "" {
-		r = r[:len(r)-len(s)]
-	}
-	return r
-}
-
-type module struct {
-	tag string
-
-	isOutdated bool
-}
-
-type updater struct {
-	moduleIndex map[string]*module
-	nowWalking  *repo
-	repos       []*repo
-	repoIndex   map[string]*repo // path: *repo
-}
-
-func newUpdater() *updater {
-	return &updater{
-		moduleIndex: map[string]*module{},
-		repoIndex:   map[string]*repo{},
-	}
-}
-
-func (u *updater) run() error {
-	wd, err := os.Getwd()
-	if err != nil {
-		return err
-	}
-
-	if err := u.findRepos(wd); err != nil {
-		return err
-	}
-
-	for _, r := range u.repos {
-		if *oVerbose {
-			fmt.Fprintf(os.Stderr, "chcecking repository %s at %q %s\n", r.pth, r.tag, r.commit)
-		}
-		for _, gomod := range r.gomods {
-			var gomodTag string
-			gomodPath := gomod.file.Module.Mod.Path
-			goModule := u.moduleIndex[gomodPath]
-			if goModule != nil {
-				gomodTag = goModule.tag
-			}
-			if *oVerbose {
-				fmt.Fprintf(os.Stderr, "\tgo.mod %s: %s is at %s\n", gomod.pth, gomod.file.Module.Mod.Path, gomodTag)
-			}
-			for _, req := range gomod.file.Require {
-				if req.Indirect {
-					continue
-				}
-
-				uses := normalize(req.Mod.Version)
-				modulePath := req.Mod.Path
-				module := u.moduleIndex[modulePath]
-				if module == nil {
-					continue
-				}
-
-				if *oVerbose {
-					fmt.Fprintf(os.Stderr, "\t\trequire %v@%v\n", req.Mod.Path, req.Mod.Version)
-				}
-				moduleTag := normalize(module.tag)
-				if moduleTag == "" || uses == "" || moduleTag == uses {
-					continue
-				}
-
-				if semver.Compare(uses, moduleTag) > 0 {
-					return fmt.Errorf("module %s uses %s@%s but the local clone is at %s", gomodPath, modulePath, uses, moduleTag)
-				}
-
-				gomod.updates = append(gomod.updates, &update{module: modulePath, tag: module.tag})
-				if *oVerbose {
-					fmt.Fprintf(os.Stderr, "\t\t\tcan update to %s\n", module.tag)
-				}
-				if goModule != nil && !goModule.isOutdated {
-					goModule.isOutdated = true
-					if *oDbg {
-						fmt.Fprintf(os.Stderr, "\t\t\t%q is outdated\n", gomodPath)
-					}
-				}
-			}
-		}
-	}
-	var out []string
-	for _, r := range u.repos {
-	next:
-		for _, gomod := range r.gomods {
-			for _, v := range gomod.file.Require {
-				if m := u.moduleIndex[v.Mod.Path]; m != nil && m.isOutdated && !*oAll {
-					continue next
-				}
-			}
-
-			var updates []string
-			for _, update := range gomod.updates {
-				if m := u.moduleIndex[update.module]; m != nil && m.isOutdated && !*oAll {
-					continue next
-				}
-
-				updates = append(updates, fmt.Sprintf("%s@%s", update.module, update.tag))
-			}
-			if len(updates) != 0 {
-				out = append(out, fmt.Sprintf("in %s go get -d %s", gomod.file.Module.Mod.Path, strings.Join(updates, " ")))
-			}
-		}
-	}
-	sort.Strings(out)
-	for _, v := range out {
-		fmt.Println(v)
-	}
-	return nil
-}
-
-func (u *updater) findRepos(root string) error {
-	return fs.WalkDir(os.DirFS(root), ".", func(path string, d fs.DirEntry, err error) error {
-		if err != nil {
-			return err
-		}
-
-		dir, file := filepath.Split(path)
-		switch {
-		case d.IsDir():
-			switch file {
-			case ".git":
-				r, err := newRepo(dir)
-				if err != nil {
-					return err
-				}
-
-				u.addRepo(r)
-			}
-		default:
-			switch file {
-			case "go.mod":
-				dir, _ := filepath.Split(path)
-				if fi, err := os.Stat(filepath.Join(dir, ".gomodignore")); err == nil && !fi.IsDir() {
-					return nil
-				}
-
-				if err := u.addMod(path); err != nil {
-					return err
-				}
-			}
-		}
-
-		return nil
-	})
-}
-
-func (u *updater) addRepo(r *repo) {
-	u.nowWalking = r
-	if r == nil {
-		return
-	}
-
-	u.repos = append(u.repos, r)
-	u.repoIndex[r.pth] = r
-}
-
-func (u *updater) addMod(pth string) error {
-	if strings.Contains(filepath.ToSlash(pth), "/vendor/") {
-		return nil
-	}
-
-	r := u.nowWalking
-	if r == nil {
-		return nil
-	}
-
-	b, err := os.ReadFile(pth)
-	if err != nil {
-		return err
-	}
-
-	f, err := modfile.ParseLax(pth, b, nil)
-	if err != nil {
-		return err
-	}
-
-	maj := ""
-	switch _, last := path.Split(f.Module.Mod.Path); {
-	case semver.IsValid(last):
-		maj = semver.Major(last)
-	}
-	var tags []string
-	switch maj {
-	case "":
-		if tags = r.tagIndex["v1"]; len(tags) == 0 {
-			tags = r.tagIndex["v0"]
-		}
-	default:
-		tags = r.tagIndex[maj]
-	}
-	ver := ""
-	if n := len(tags); n != 0 {
-		ver = tags[n-1]
-	}
-	mpath := f.Module.Mod.Path
-	r.gomods = append(r.gomods, &gomod{pth: pth, file: f, version: ver})
-	if ver == "" {
-		return nil
-	}
-
-	switch m := u.moduleIndex[mpath]; {
-	case m != nil:
-		if m.tag != ver {
-			if *oDbg {
-				fmt.Fprintf(os.Stderr, "%q: invalidating %q (%q and %q)\n", pth, mpath, m.tag, ver)
-			}
-			m.tag = ""
-		}
-	default:
-		isOutdated := r.tag == ""
-		u.moduleIndex[mpath] = &module{tag: ver, isOutdated: isOutdated}
-		if *oDbg {
-			fmt.Fprintf(os.Stderr, "%q: registering %q at %q, outdated %v\n", pth, mpath, ver, isOutdated)
-		}
-	}
-	return nil
-}
-
-type update struct {
-	module string
-	tag    string
-}
-
-type gomod struct {
-	file    *modfile.File
-	pth     string
-	updates []*update
-	version string
-}
-
-type repo struct {
-	commit   string
-	gomods   []*gomod // go.mod files in this repo
-	pth      string
-	tag      string
-	tagIndex map[string][]string // semver.Major(tag): tags
-	tags     []string
-}
-
-func newRepo(pth string) (r *repo, err error) {
-	cmd := exec.Command("git", "-C", pth, "tag")
-	out, err := cmd.CombinedOutput()
-	if err != nil {
-		return nil, fmt.Errorf("executing 'git tag' in '%s': output: `%s`\nFAIL: %v", pth, out, err)
-	}
-
-	r = &repo{pth: pth, tagIndex: map[string][]string{}}
-	for _, v := range strings.Split(string(out), "\n") {
-		v = strings.TrimSpace(v)
-		if semver.IsValid(v) /* && semver.Major(v) != "v0" */ {
-			r.tags = append(r.tags, v)
-		}
-	}
-	semver.Sort(r.tags)
-	for _, v := range r.tags {
-		major := semver.Major(v)
-		r.tagIndex[major] = append(r.tagIndex[major], v)
-	}
-
-	cmd = exec.Command("git", "-C", pth, "rev-list", "-n", "1", "HEAD")
-	if out, err = cmd.CombinedOutput(); err != nil {
-		return nil, fmt.Errorf("executing 'git rev-list' in '%s': output: `%s`\nFAIL: %v", pth, out, err)
-	}
-
-	r.commit = strings.TrimSpace(string(out))
-
-	for _, tags := range r.tagIndex {
-		tag := tags[len(tags)-1]
-		cmd = exec.Command("git", "-C", pth, "rev-list", "-n", "1", tag)
-		if out, err = cmd.CombinedOutput(); err != nil {
-			return nil, fmt.Errorf("executing 'git rev-list' in '%s': output: `%s`\nFAIL: %v", pth, out, err)
-		}
-
-		if strings.TrimSpace(string(out)) == r.commit {
-			r.tag = tag
-			break
-		}
-	}
-	if *oHead && r.tag == "" {
-		fmt.Printf("HEAD not tagged: %s\n", pth)
-	}
-	return r, nil
 }
