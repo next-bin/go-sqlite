@@ -192,11 +192,9 @@ func (u *Updater) findRepos(root string) error {
 			switch file {
 			case ".git":
 				r, err := newRepo(u, dir)
-				if err != nil {
-					return err
+				if err == nil {
+					u.addRepo(r)
 				}
-
-				u.addRepo(r)
 			}
 		default:
 			switch file {
