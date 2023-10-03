@@ -58,7 +58,7 @@ type Updater struct {
 	verbose bool
 }
 
-func NewUpdater(stdout, stderr io.Writer, dir string, verbose, dbg, all, head bool) *Updater {
+func NewUpdater(stdout, stderr io.Writer, dir string, verbose, dbg, all, head bool) (r *Updater) {
 	if stdout == nil {
 		stdout = io.Discard
 	}
@@ -74,6 +74,8 @@ func NewUpdater(stdout, stderr io.Writer, dir string, verbose, dbg, all, head bo
 		head:           head,
 		moduleIndex:    map[string]*module{},
 		repoIndex:      map[string]*repo{},
+		stderr:         stderr,
+		stdout:         stdout,
 		verbose:        verbose,
 	}
 }
@@ -335,6 +337,9 @@ func newRepo(u *Updater, pth string) (r *repo, err error) {
 		}
 	}
 	if u.head && r.tag == "" {
+		if pth == "" {
+			pth = "."
+		}
 		fmt.Fprintf(u.stdout, "HEAD not tagged: %s\n", pth)
 		u.HeadsNotTagged[pth] = struct{}{}
 	}
