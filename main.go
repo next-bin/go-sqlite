@@ -75,12 +75,17 @@ func main() {
 }
 
 func main1() error {
+	wd, err := os.Getwd()
+	if err != nil {
+		fail(1, "%s", err)
+	}
+
 	flag.Parse()
 	switch flag.NArg() {
 	case 1:
 		switch arg := flag.Arg(0); arg {
 		case "update":
-			return engine.NewUpdater(os.Stdout, os.Stderr, *oVerbose, *oDbg, *oAll, *oHead).Run()
+			return engine.NewUpdater(os.Stdout, os.Stderr, wd, *oVerbose, *oDbg, *oAll, *oHead).Run()
 		default:
 			fail(2, "%s %s: unknown command", os.Args[0], arg)
 		}

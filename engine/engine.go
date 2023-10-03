@@ -45,6 +45,7 @@ type Update struct {
 type Updater struct {
 	HeadsNotTagged map[string]struct{}  // key is package import path
 	Updates        map[string][]*Update // key is package import path
+	dir            string
 	moduleIndex    map[string]*module
 	nowWalking     *repo
 	repoIndex      map[string]*repo // path: *repo
@@ -57,7 +58,7 @@ type Updater struct {
 	verbose bool
 }
 
-func NewUpdater(stdout, stderr io.Writer, verbose, dbg, all, head bool) *Updater {
+func NewUpdater(stdout, stderr io.Writer, dir string, verbose, dbg, all, head bool) *Updater {
 	if stdout == nil {
 		stdout = io.Discard
 	}
@@ -69,6 +70,7 @@ func NewUpdater(stdout, stderr io.Writer, verbose, dbg, all, head bool) *Updater
 		Updates:        map[string][]*Update{},
 		all:            all,
 		dbg:            dbg,
+		dir:            dir,
 		head:           head,
 		moduleIndex:    map[string]*module{},
 		repoIndex:      map[string]*repo{},
@@ -77,12 +79,7 @@ func NewUpdater(stdout, stderr io.Writer, verbose, dbg, all, head bool) *Updater
 }
 
 func (u *Updater) Run() error {
-	wd, err := os.Getwd()
-	if err != nil {
-		return err
-	}
-
-	if err := u.findRepos(wd); err != nil {
+	if err := u.findRepos(u.dir); err != nil {
 		return err
 	}
 
