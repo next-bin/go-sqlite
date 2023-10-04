@@ -233,7 +233,7 @@ func (u *Updater) Run() error {
 	}
 	sort.Strings(out)
 	for _, v := range out {
-		fmt.Println(v)
+		fmt.Fprintln(u.stdout, v)
 	}
 	return nil
 }
@@ -332,7 +332,7 @@ func (u *Updater) addMod(pth string) error {
 	case m != nil:
 		if m.tag != ver {
 			if u.dbg {
-				fmt.Fprintf(os.Stderr, "%q: invalidating %q (%q and %q)\n", pth, mpath, m.tag, ver)
+				fmt.Fprintf(u.stderr, "%q: invalidating %q (%q and %q)\n", pth, mpath, m.tag, ver)
 			}
 			m.tag = ""
 		}
@@ -340,7 +340,7 @@ func (u *Updater) addMod(pth string) error {
 		isOutdated := r.tag == ""
 		u.moduleIndex[mpath] = &module{tag: ver, isOutdated: isOutdated}
 		if u.dbg {
-			fmt.Fprintf(os.Stderr, "%q: registering %q at %q, outdated %v\n", pth, mpath, ver, isOutdated)
+			fmt.Fprintf(u.stderr, "%q: registering %q at %q, outdated %v\n", pth, mpath, ver, isOutdated)
 		}
 	}
 	return nil
