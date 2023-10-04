@@ -3835,9 +3835,9 @@ func _parsebranch(tls *libc.TLS, v uintptr, stopper int32, type1 int32, left uin
 //	 */
 func _parseqatom(tls *libc.TLS, v uintptr, stopper int32, type1 int32, lp uintptr, rp uintptr, top uintptr) {
 	/* subtree top */
-	var atom, atomp, s, s2, t, p41, p46, p48 uintptr
-	var atomtype, cap1, f, m, n, pos, qprefer, subno, v22, v23, v24, v25, v26, v29, v30, v31, v32, v33, v34, v35, v36, v37, v38, v39, v40, v42, v43, v44, v45, v47, v49 int32
-	_, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _ = atom, atomp, atomtype, cap1, f, m, n, pos, qprefer, s, s2, subno, t, v22, v23, v24, v25, v26, v29, v30, v31, v32, v33, v34, v35, v36, v37, v38, v39, v40, v42, v43, v44, v45, v47, v49, p41, p46, p48 /* where the pointer to atom is */
+	var atom, atomp, s, s2, t, p42, p47, p49 uintptr
+	var atomtype, cap1, f, m, n, pos, qprefer, subno, v22, v23, v24, v25, v26, v30, v31, v32, v33, v34, v35, v36, v37, v38, v39, v40, v41, v43, v44, v45, v46, v48, v50 int32
+	_, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _ = atom, atomp, atomtype, cap1, f, m, n, pos, qprefer, s, s2, subno, t, v22, v23, v24, v25, v26, v30, v31, v32, v33, v34, v35, v36, v37, v38, v39, v40, v41, v43, v44, v45, v46, v48, v50, p42, p47, p49 /* where the pointer to atom is */
 	/*
 	 * Initial bookkeeping.
 	 */
@@ -4103,22 +4103,8 @@ _19: /* value flags as capturing or non */
 	 */
 	goto _21
 _20: /* the Feature From The Black Lagoon */
-_28:
+_29:
 	if !(type1 != libc.Int32FromUint8('L')) {
-		(*Tvars)(unsafe.Pointer(v)).Fnexttype = int32('e')
-		if (*Tvars)(unsafe.Pointer(v)).Ferr != 0 {
-			v29 = (*Tvars)(unsafe.Pointer(v)).Ferr
-		} else {
-			v29 = int32(m_REG_ESUBREG)
-		}
-		(*Tvars)(unsafe.Pointer(v)).Ferr = v29
-	}
-	if 0 != 0 {
-		goto _28
-	}
-	goto _27
-_27:
-	if !(uint32((*Tvars)(unsafe.Pointer(v)).Fnextvalue) < (*Tvars)(unsafe.Pointer(v)).Fnsubs) {
 		(*Tvars)(unsafe.Pointer(v)).Fnexttype = int32('e')
 		if (*Tvars)(unsafe.Pointer(v)).Ferr != 0 {
 			v30 = (*Tvars)(unsafe.Pointer(v)).Ferr
@@ -4127,7 +4113,14 @@ _27:
 		}
 		(*Tvars)(unsafe.Pointer(v)).Ferr = v30
 	}
-	if !(*(*uintptr)(unsafe.Pointer((*Tvars)(unsafe.Pointer(v)).Fsubs + uintptr((*Tvars)(unsafe.Pointer(v)).Fnextvalue)*4)) != libc.UintptrFromInt32(0)) {
+	goto _28
+_28:
+	if 0 != 0 {
+		goto _29
+	}
+	goto _27
+_27:
+	if !(uint32((*Tvars)(unsafe.Pointer(v)).Fnextvalue) < (*Tvars)(unsafe.Pointer(v)).Fnsubs) {
 		(*Tvars)(unsafe.Pointer(v)).Fnexttype = int32('e')
 		if (*Tvars)(unsafe.Pointer(v)).Ferr != 0 {
 			v31 = (*Tvars)(unsafe.Pointer(v)).Ferr
@@ -4135,6 +4128,15 @@ _27:
 			v31 = int32(m_REG_ESUBREG)
 		}
 		(*Tvars)(unsafe.Pointer(v)).Ferr = v31
+	}
+	if !(*(*uintptr)(unsafe.Pointer((*Tvars)(unsafe.Pointer(v)).Fsubs + uintptr((*Tvars)(unsafe.Pointer(v)).Fnextvalue)*4)) != libc.UintptrFromInt32(0)) {
+		(*Tvars)(unsafe.Pointer(v)).Fnexttype = int32('e')
+		if (*Tvars)(unsafe.Pointer(v)).Ferr != 0 {
+			v32 = (*Tvars)(unsafe.Pointer(v)).Ferr
+		} else {
+			v32 = int32(m_REG_ESUBREG)
+		}
+		(*Tvars)(unsafe.Pointer(v)).Ferr = v32
 	}
 	if (*Tvars)(unsafe.Pointer(v)).Ferr != 0 {
 		return
@@ -4157,31 +4159,31 @@ _21:
 		m = 0
 		n = libc.Int32FromInt32(m__POSIX2_RE_DUP_MAX) + libc.Int32FromInt32(1)
 		if (*Tvars)(unsafe.Pointer(v)).Fnextvalue != 0 {
-			v32 = int32(m_LONGER)
-		} else {
-			v32 = int32(m_SHORTER)
-		}
-		qprefer = v32
-		_next(tls, v)
-	case int32('+'):
-		m = int32(1)
-		n = libc.Int32FromInt32(m__POSIX2_RE_DUP_MAX) + libc.Int32FromInt32(1)
-		if (*Tvars)(unsafe.Pointer(v)).Fnextvalue != 0 {
 			v33 = int32(m_LONGER)
 		} else {
 			v33 = int32(m_SHORTER)
 		}
 		qprefer = v33
 		_next(tls, v)
-	case int32('?'):
-		m = 0
-		n = int32(1)
+	case int32('+'):
+		m = int32(1)
+		n = libc.Int32FromInt32(m__POSIX2_RE_DUP_MAX) + libc.Int32FromInt32(1)
 		if (*Tvars)(unsafe.Pointer(v)).Fnextvalue != 0 {
 			v34 = int32(m_LONGER)
 		} else {
 			v34 = int32(m_SHORTER)
 		}
 		qprefer = v34
+		_next(tls, v)
+	case int32('?'):
+		m = 0
+		n = int32(1)
+		if (*Tvars)(unsafe.Pointer(v)).Fnextvalue != 0 {
+			v35 = int32(m_LONGER)
+		} else {
+			v35 = int32(m_SHORTER)
+		}
+		qprefer = v35
 		_next(tls, v)
 	case int32('{'):
 		_next(tls, v)
@@ -4195,22 +4197,22 @@ _21:
 			if m > n {
 				(*Tvars)(unsafe.Pointer(v)).Fnexttype = int32('e')
 				if (*Tvars)(unsafe.Pointer(v)).Ferr != 0 {
-					v35 = (*Tvars)(unsafe.Pointer(v)).Ferr
+					v36 = (*Tvars)(unsafe.Pointer(v)).Ferr
 				} else {
-					v35 = int32(m_REG_BADBR)
+					v36 = int32(m_REG_BADBR)
 				}
-				(*Tvars)(unsafe.Pointer(v)).Ferr = v35
+				(*Tvars)(unsafe.Pointer(v)).Ferr = v36
 				return
 			}
 			/*
 			 * {m,n} exercises preference, even if it's {m,m}
 			 */
 			if (*Tvars)(unsafe.Pointer(v)).Fnextvalue != 0 {
-				v36 = int32(m_LONGER)
+				v37 = int32(m_LONGER)
 			} else {
-				v36 = int32(m_SHORTER)
+				v37 = int32(m_SHORTER)
 			}
-			qprefer = v36
+			qprefer = v37
 		} else {
 			n = m
 			/*
@@ -4221,18 +4223,18 @@ _21:
 		if !((*Tvars)(unsafe.Pointer(v)).Fnexttype == libc.Int32FromUint8('}')) { /* catches errors too */
 			(*Tvars)(unsafe.Pointer(v)).Fnexttype = int32('e')
 			if (*Tvars)(unsafe.Pointer(v)).Ferr != 0 {
-				v37 = (*Tvars)(unsafe.Pointer(v)).Ferr
+				v38 = (*Tvars)(unsafe.Pointer(v)).Ferr
 			} else {
-				v37 = int32(m_REG_BADBR)
+				v38 = int32(m_REG_BADBR)
 			}
-			(*Tvars)(unsafe.Pointer(v)).Ferr = v37
+			(*Tvars)(unsafe.Pointer(v)).Ferr = v38
 			return
 		}
 		_next(tls, v)
 	default: /* no quantifier */
-		v38 = libc.Int32FromInt32(1)
-		n = v38
-		m = v38
+		v39 = libc.Int32FromInt32(1)
+		n = v39
+		m = v39
 		qprefer = 0
 		break
 	}
@@ -4254,11 +4256,11 @@ _21:
 	 * If not a messy case, avoid hard part.
 	 */
 	if atom != libc.UintptrFromInt32(0) {
-		v39 = int32((*Tsubre)(unsafe.Pointer(atom)).Fflags)
+		v40 = int32((*Tsubre)(unsafe.Pointer(atom)).Fflags)
 	} else {
-		v39 = 0
+		v40 = 0
 	}
-	f = int32((*Tsubre)(unsafe.Pointer(top)).Fflags) | qprefer | v39
+	f = int32((*Tsubre)(unsafe.Pointer(top)).Fflags) | qprefer | v40
 	if atomtype != int32('(') && atomtype != int32('b') && !((f & ^libc.Int32FromInt32(m_NOPROP) | f<<libc.Int32FromInt32(2)&(f<<libc.Int32FromInt32(1))&libc.Int32FromInt32(m_MIXED))&(libc.Int32FromInt32(m_MIXED)|libc.Int32FromInt32(m_CAP)|libc.Int32FromInt32(m_BACKR)) != 0) {
 		if !(m == int32(1) && n == int32(1)) {
 			_repeat(tls, v, lp, rp, m, n)
@@ -4322,11 +4324,11 @@ _21:
 	 * Break remaining subRE into x{...} and what follows.
 	 */
 	if qprefer&int32(m_NOPROP) != 0 {
-		v40 = qprefer & int32(m_NOPROP)
+		v41 = qprefer & int32(m_NOPROP)
 	} else {
-		v40 = int32((*Tsubre)(unsafe.Pointer(atom)).Fflags) & int32(m_NOPROP)
+		v41 = int32((*Tsubre)(unsafe.Pointer(atom)).Fflags) & int32(m_NOPROP)
 	}
-	t = _subre(tls, v, int32('.'), (qprefer|int32((*Tsubre)(unsafe.Pointer(atom)).Fflags)) & ^libc.Int32FromInt32(m_NOPROP) | (qprefer|int32((*Tsubre)(unsafe.Pointer(atom)).Fflags))<<int32(2)&((qprefer|int32((*Tsubre)(unsafe.Pointer(atom)).Fflags))<<int32(1))&int32(m_MIXED) | v40, lp, rp)
+	t = _subre(tls, v, int32('.'), (qprefer|int32((*Tsubre)(unsafe.Pointer(atom)).Fflags)) & ^libc.Int32FromInt32(m_NOPROP) | (qprefer|int32((*Tsubre)(unsafe.Pointer(atom)).Fflags))<<int32(2)&((qprefer|int32((*Tsubre)(unsafe.Pointer(atom)).Fflags))<<int32(1))&int32(m_MIXED) | v41, lp, rp)
 	if (*Tvars)(unsafe.Pointer(v)).Ferr != 0 {
 		return
 	}
@@ -4375,13 +4377,13 @@ _21:
 		_repeat(tls, v, (*Tsubre)(unsafe.Pointer(atom)).Fbegin, (*Tsubre)(unsafe.Pointer(atom)).Fend, m, n)
 		(*Tsubre)(unsafe.Pointer(atom)).Fmin = int16(m)
 		(*Tsubre)(unsafe.Pointer(atom)).Fmax = int16(n)
-		p41 = atom + 1
+		p42 = atom + 1
 		if qprefer&int32(m_NOPROP) != 0 {
-			v42 = qprefer & int32(m_NOPROP)
+			v43 = qprefer & int32(m_NOPROP)
 		} else {
-			v42 = int32((*Tsubre)(unsafe.Pointer(atom)).Fflags) & int32(m_NOPROP)
+			v43 = int32((*Tsubre)(unsafe.Pointer(atom)).Fflags) & int32(m_NOPROP)
 		}
-		*(*int8)(unsafe.Pointer(p41)) = int8(int32(*(*int8)(unsafe.Pointer(p41))) | ((qprefer|int32((*Tsubre)(unsafe.Pointer(atom)).Fflags)) & ^libc.Int32FromInt32(m_NOPROP) | (qprefer|int32((*Tsubre)(unsafe.Pointer(atom)).Fflags))<<libc.Int32FromInt32(2)&((qprefer|int32((*Tsubre)(unsafe.Pointer(atom)).Fflags))<<libc.Int32FromInt32(1))&libc.Int32FromInt32(m_MIXED) | v42))
+		*(*int8)(unsafe.Pointer(p42)) = int8(int32(*(*int8)(unsafe.Pointer(p42))) | ((qprefer|int32((*Tsubre)(unsafe.Pointer(atom)).Fflags)) & ^libc.Int32FromInt32(m_NOPROP) | (qprefer|int32((*Tsubre)(unsafe.Pointer(atom)).Fflags))<<libc.Int32FromInt32(2)&((qprefer|int32((*Tsubre)(unsafe.Pointer(atom)).Fflags))<<libc.Int32FromInt32(1))&libc.Int32FromInt32(m_MIXED) | v43))
 		/* rest of branch can be strung starting from atom->end */
 		s2 = (*Tsubre)(unsafe.Pointer(atom)).Fend
 	} else {
@@ -4404,17 +4406,17 @@ _21:
 				 */
 				_dupnfa(tls, (*Tvars)(unsafe.Pointer(v)).Fnfa, (*Tsubre)(unsafe.Pointer(atom)).Fbegin, (*Tsubre)(unsafe.Pointer(atom)).Fend, s, (*Tsubre)(unsafe.Pointer(atom)).Fbegin)
 				if n == libc.Int32FromInt32(m__POSIX2_RE_DUP_MAX)+libc.Int32FromInt32(1) {
-					v43 = n
+					v44 = n
 				} else {
-					v43 = n - int32(1)
+					v44 = n - int32(1)
 				}
-				_repeat(tls, v, s, (*Tsubre)(unsafe.Pointer(atom)).Fbegin, m-int32(1), v43)
+				_repeat(tls, v, s, (*Tsubre)(unsafe.Pointer(atom)).Fbegin, m-int32(1), v44)
 				if qprefer&int32(m_NOPROP) != 0 {
-					v44 = qprefer & int32(m_NOPROP)
+					v45 = qprefer & int32(m_NOPROP)
 				} else {
-					v44 = int32((*Tsubre)(unsafe.Pointer(atom)).Fflags) & int32(m_NOPROP)
+					v45 = int32((*Tsubre)(unsafe.Pointer(atom)).Fflags) & int32(m_NOPROP)
 				}
-				f = (qprefer|int32((*Tsubre)(unsafe.Pointer(atom)).Fflags)) & ^libc.Int32FromInt32(m_NOPROP) | (qprefer|int32((*Tsubre)(unsafe.Pointer(atom)).Fflags))<<int32(2)&((qprefer|int32((*Tsubre)(unsafe.Pointer(atom)).Fflags))<<int32(1))&int32(m_MIXED) | v44
+				f = (qprefer|int32((*Tsubre)(unsafe.Pointer(atom)).Fflags)) & ^libc.Int32FromInt32(m_NOPROP) | (qprefer|int32((*Tsubre)(unsafe.Pointer(atom)).Fflags))<<int32(2)&((qprefer|int32((*Tsubre)(unsafe.Pointer(atom)).Fflags))<<int32(1))&int32(m_MIXED) | v45
 				t = _subre(tls, v, int32('.'), f, s, (*Tsubre)(unsafe.Pointer(atom)).Fend) /* prefix and atom */
 				if (*Tvars)(unsafe.Pointer(v)).Ferr != 0 {
 					return
@@ -4440,11 +4442,11 @@ _21:
 				_dupnfa(tls, (*Tvars)(unsafe.Pointer(v)).Fnfa, (*Tsubre)(unsafe.Pointer(atom)).Fbegin, (*Tsubre)(unsafe.Pointer(atom)).Fend, s, s2)
 				_repeat(tls, v, s, s2, m, n)
 				if qprefer&int32(m_NOPROP) != 0 {
-					v45 = qprefer & int32(m_NOPROP)
+					v46 = qprefer & int32(m_NOPROP)
 				} else {
-					v45 = int32((*Tsubre)(unsafe.Pointer(atom)).Fflags) & int32(m_NOPROP)
+					v46 = int32((*Tsubre)(unsafe.Pointer(atom)).Fflags) & int32(m_NOPROP)
 				}
-				f = (qprefer|int32((*Tsubre)(unsafe.Pointer(atom)).Fflags)) & ^libc.Int32FromInt32(m_NOPROP) | (qprefer|int32((*Tsubre)(unsafe.Pointer(atom)).Fflags))<<int32(2)&((qprefer|int32((*Tsubre)(unsafe.Pointer(atom)).Fflags))<<int32(1))&int32(m_MIXED) | v45
+				f = (qprefer|int32((*Tsubre)(unsafe.Pointer(atom)).Fflags)) & ^libc.Int32FromInt32(m_NOPROP) | (qprefer|int32((*Tsubre)(unsafe.Pointer(atom)).Fflags))<<int32(2)&((qprefer|int32((*Tsubre)(unsafe.Pointer(atom)).Fflags))<<int32(1))&int32(m_MIXED) | v46
 				t = _subre(tls, v, int32('*'), f, s, s2)
 				if (*Tvars)(unsafe.Pointer(v)).Ferr != 0 {
 					return
@@ -4470,20 +4472,20 @@ _21:
 	if (*Tvars)(unsafe.Pointer(v)).Ferr != 0 {
 		return
 	}
-	p46 = t + 1
+	p47 = t + 1
 	if int32((*Tsubre)(unsafe.Pointer(t)).Fflags)&int32(m_NOPROP) != 0 {
-		v47 = int32((*Tsubre)(unsafe.Pointer(t)).Fflags) & int32(m_NOPROP)
+		v48 = int32((*Tsubre)(unsafe.Pointer(t)).Fflags) & int32(m_NOPROP)
 	} else {
-		v47 = int32((*Tsubre)(unsafe.Pointer((*Tsubre)(unsafe.Pointer(t)).Fright)).Fflags) & int32(m_NOPROP)
+		v48 = int32((*Tsubre)(unsafe.Pointer((*Tsubre)(unsafe.Pointer(t)).Fright)).Fflags) & int32(m_NOPROP)
 	}
-	*(*int8)(unsafe.Pointer(p46)) = int8(int32(*(*int8)(unsafe.Pointer(p46))) | ((int32((*Tsubre)(unsafe.Pointer(t)).Fflags)|int32((*Tsubre)(unsafe.Pointer((*Tsubre)(unsafe.Pointer(t)).Fright)).Fflags)) & ^libc.Int32FromInt32(m_NOPROP) | (int32((*Tsubre)(unsafe.Pointer(t)).Fflags)|int32((*Tsubre)(unsafe.Pointer((*Tsubre)(unsafe.Pointer(t)).Fright)).Fflags))<<libc.Int32FromInt32(2)&((int32((*Tsubre)(unsafe.Pointer(t)).Fflags)|int32((*Tsubre)(unsafe.Pointer((*Tsubre)(unsafe.Pointer(t)).Fright)).Fflags))<<libc.Int32FromInt32(1))&libc.Int32FromInt32(m_MIXED) | v47))
-	p48 = top + 1
+	*(*int8)(unsafe.Pointer(p47)) = int8(int32(*(*int8)(unsafe.Pointer(p47))) | ((int32((*Tsubre)(unsafe.Pointer(t)).Fflags)|int32((*Tsubre)(unsafe.Pointer((*Tsubre)(unsafe.Pointer(t)).Fright)).Fflags)) & ^libc.Int32FromInt32(m_NOPROP) | (int32((*Tsubre)(unsafe.Pointer(t)).Fflags)|int32((*Tsubre)(unsafe.Pointer((*Tsubre)(unsafe.Pointer(t)).Fright)).Fflags))<<libc.Int32FromInt32(2)&((int32((*Tsubre)(unsafe.Pointer(t)).Fflags)|int32((*Tsubre)(unsafe.Pointer((*Tsubre)(unsafe.Pointer(t)).Fright)).Fflags))<<libc.Int32FromInt32(1))&libc.Int32FromInt32(m_MIXED) | v48))
+	p49 = top + 1
 	if int32((*Tsubre)(unsafe.Pointer(top)).Fflags)&int32(m_NOPROP) != 0 {
-		v49 = int32((*Tsubre)(unsafe.Pointer(top)).Fflags) & int32(m_NOPROP)
+		v50 = int32((*Tsubre)(unsafe.Pointer(top)).Fflags) & int32(m_NOPROP)
 	} else {
-		v49 = int32((*Tsubre)(unsafe.Pointer(t)).Fflags) & int32(m_NOPROP)
+		v50 = int32((*Tsubre)(unsafe.Pointer(t)).Fflags) & int32(m_NOPROP)
 	}
-	*(*int8)(unsafe.Pointer(p48)) = int8(int32(*(*int8)(unsafe.Pointer(p48))) | ((int32((*Tsubre)(unsafe.Pointer(top)).Fflags)|int32((*Tsubre)(unsafe.Pointer(t)).Fflags)) & ^libc.Int32FromInt32(m_NOPROP) | (int32((*Tsubre)(unsafe.Pointer(top)).Fflags)|int32((*Tsubre)(unsafe.Pointer(t)).Fflags))<<libc.Int32FromInt32(2)&((int32((*Tsubre)(unsafe.Pointer(top)).Fflags)|int32((*Tsubre)(unsafe.Pointer(t)).Fflags))<<libc.Int32FromInt32(1))&libc.Int32FromInt32(m_MIXED) | v49))
+	*(*int8)(unsafe.Pointer(p49)) = int8(int32(*(*int8)(unsafe.Pointer(p49))) | ((int32((*Tsubre)(unsafe.Pointer(top)).Fflags)|int32((*Tsubre)(unsafe.Pointer(t)).Fflags)) & ^libc.Int32FromInt32(m_NOPROP) | (int32((*Tsubre)(unsafe.Pointer(top)).Fflags)|int32((*Tsubre)(unsafe.Pointer(t)).Fflags))<<libc.Int32FromInt32(2)&((int32((*Tsubre)(unsafe.Pointer(top)).Fflags)|int32((*Tsubre)(unsafe.Pointer(t)).Fflags))<<libc.Int32FromInt32(1))&libc.Int32FromInt32(m_MIXED) | v50))
 }
 
 // C documentation
@@ -44383,7 +44385,7 @@ func _PathTypeCmd(tls *libc.TLS, clientData TClientData, interp uintptr, objc in
 	}
 	goto _5
 _1:
-_7:
+_8:
 	if XtclFreeObjList == libc.UintptrFromInt32(0) {
 		XTclAllocateFreeObjects(tls)
 	}
@@ -44403,8 +44405,10 @@ _7:
 		(*TTcl_Obj)(unsafe.Pointer(typeName)).Flength = int32(libc.Uint32FromInt64(9) - libc.Uint32FromInt32(1))
 	}
 	(*TTcl_Obj)(unsafe.Pointer(typeName)).FtypePtr = libc.UintptrFromInt32(0)
+	goto _7
+_7:
 	if 0 != 0 {
-		goto _7
+		goto _8
 	}
 	goto _6
 _6:
@@ -47849,10 +47853,10 @@ done:
 func XTclInfoFrame(tls *libc.TLS, interp uintptr, framePtr uintptr) (r uintptr) {
 	bp := tls.Alloc(80)
 	defer tls.Free(80) /* Frame to get info for. */
-	var _objPtr, _objPtr1, current, efiPtr, fPtr, iPtr, idx, namePtr, procNameObj, procPtr, tmpObj, top, v1, v27, v48 uintptr
-	var c, i, lc, needsFree, t, v10, v11, v12, v13, v14, v15, v16, v17, v18, v19, v20, v21, v22, v23, v24, v25, v26, v28, v29, v30, v31, v32, v33, v34, v35, v36, v37, v38, v39, v41, v42, v43, v45, v46, v47 int32
+	var _objPtr, _objPtr1, current, efiPtr, fPtr, iPtr, idx, namePtr, procNameObj, procPtr, tmpObj, top, v1, v28, v49 uintptr
+	var c, i, lc, needsFree, t, v11, v12, v13, v14, v15, v16, v17, v18, v19, v20, v21, v22, v23, v24, v25, v26, v27, v29, v30, v31, v32, v33, v34, v35, v36, v37, v38, v39, v40, v42, v43, v44, v46, v47, v48 int32
 	var _ /* lv at bp+0 */ [20]uintptr
-	_, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _ = _objPtr, _objPtr1, c, current, efiPtr, fPtr, i, iPtr, idx, lc, namePtr, needsFree, procNameObj, procPtr, t, tmpObj, top, v1, v10, v11, v12, v13, v14, v15, v16, v17, v18, v19, v20, v21, v22, v23, v24, v25, v26, v27, v28, v29, v30, v31, v32, v33, v34, v35, v36, v37, v38, v39, v41, v42, v43, v45, v46, v47, v48
+	_, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _ = _objPtr, _objPtr1, c, current, efiPtr, fPtr, i, iPtr, idx, lc, namePtr, needsFree, procNameObj, procPtr, t, tmpObj, top, v1, v11, v12, v13, v14, v15, v16, v17, v18, v19, v20, v21, v22, v23, v24, v25, v26, v27, v28, v29, v30, v31, v32, v33, v34, v35, v36, v37, v38, v39, v40, v42, v43, v44, v46, v47, v48, v49
 	iPtr = interp /* Keep uptodate when more keys are added to
 	 * the dict. */
 	lc = 0
@@ -47885,7 +47889,7 @@ _2:
 	 * Evaluation, dynamic script. Type, line, cmd, the latter through
 	 * str.
 	 */
-_9:
+_10:
 	if XtclFreeObjList == libc.UintptrFromInt32(0) {
 		XTclAllocateFreeObjects(tls)
 	}
@@ -47905,17 +47909,19 @@ _9:
 		(*TTcl_Obj)(unsafe.Pointer(tmpObj)).Flength = int32(libc.Uint32FromInt64(5) - libc.Uint32FromInt32(1))
 	}
 	(*TTcl_Obj)(unsafe.Pointer(tmpObj)).FtypePtr = libc.UintptrFromInt32(0)
+	goto _9
+_9:
 	if 0 != 0 {
-		goto _9
+		goto _10
 	}
 	goto _8
 _8:
-	v10 = lc
-	lc++
-	(*(*[20]uintptr)(unsafe.Pointer(bp)))[v10] = tmpObj
 	v11 = lc
 	lc++
-	(*(*[20]uintptr)(unsafe.Pointer(bp)))[v11] = XTcl_NewStringObj(tls, _typeString[(*TCmdFrame)(unsafe.Pointer(framePtr)).Ftype1], -int32(1))
+	(*(*[20]uintptr)(unsafe.Pointer(bp)))[v11] = tmpObj
+	v12 = lc
+	lc++
+	(*(*[20]uintptr)(unsafe.Pointer(bp)))[v12] = XTcl_NewStringObj(tls, _typeString[(*TCmdFrame)(unsafe.Pointer(framePtr)).Ftype1], -int32(1))
 	if (*TCmdFrame)(unsafe.Pointer(framePtr)).Fline != 0 {
 		if XtclFreeObjList == libc.UintptrFromInt32(0) {
 			XTclAllocateFreeObjects(tls)
@@ -47936,12 +47942,12 @@ _8:
 			(*TTcl_Obj)(unsafe.Pointer(tmpObj)).Flength = int32(libc.Uint32FromInt64(5) - libc.Uint32FromInt32(1))
 		}
 		(*TTcl_Obj)(unsafe.Pointer(tmpObj)).FtypePtr = libc.UintptrFromInt32(0)
-		v12 = lc
-		lc++
-		(*(*[20]uintptr)(unsafe.Pointer(bp)))[v12] = tmpObj
 		v13 = lc
 		lc++
-		(*(*[20]uintptr)(unsafe.Pointer(bp)))[v13] = XTcl_NewIntObj(tls, *(*int32)(unsafe.Pointer((*TCmdFrame)(unsafe.Pointer(framePtr)).Fline)))
+		(*(*[20]uintptr)(unsafe.Pointer(bp)))[v13] = tmpObj
+		v14 = lc
+		lc++
+		(*(*[20]uintptr)(unsafe.Pointer(bp)))[v14] = XTcl_NewIntObj(tls, *(*int32)(unsafe.Pointer((*TCmdFrame)(unsafe.Pointer(framePtr)).Fline)))
 	} else {
 		if XtclFreeObjList == libc.UintptrFromInt32(0) {
 			XTclAllocateFreeObjects(tls)
@@ -47962,12 +47968,12 @@ _8:
 			(*TTcl_Obj)(unsafe.Pointer(tmpObj)).Flength = int32(libc.Uint32FromInt64(5) - libc.Uint32FromInt32(1))
 		}
 		(*TTcl_Obj)(unsafe.Pointer(tmpObj)).FtypePtr = libc.UintptrFromInt32(0)
-		v14 = lc
-		lc++
-		(*(*[20]uintptr)(unsafe.Pointer(bp)))[v14] = tmpObj
 		v15 = lc
 		lc++
-		(*(*[20]uintptr)(unsafe.Pointer(bp)))[v15] = XTcl_NewIntObj(tls, int32(1))
+		(*(*[20]uintptr)(unsafe.Pointer(bp)))[v15] = tmpObj
+		v16 = lc
+		lc++
+		(*(*[20]uintptr)(unsafe.Pointer(bp)))[v16] = XTcl_NewIntObj(tls, int32(1))
 	}
 	if XtclFreeObjList == libc.UintptrFromInt32(0) {
 		XTclAllocateFreeObjects(tls)
@@ -47988,12 +47994,12 @@ _8:
 		(*TTcl_Obj)(unsafe.Pointer(tmpObj)).Flength = int32(libc.Uint32FromInt64(4) - libc.Uint32FromInt32(1))
 	}
 	(*TTcl_Obj)(unsafe.Pointer(tmpObj)).FtypePtr = libc.UintptrFromInt32(0)
-	v16 = lc
-	lc++
-	(*(*[20]uintptr)(unsafe.Pointer(bp)))[v16] = tmpObj
 	v17 = lc
 	lc++
-	(*(*[20]uintptr)(unsafe.Pointer(bp)))[v17] = XTclGetSourceFromFrame(tls, framePtr, 0, libc.UintptrFromInt32(0))
+	(*(*[20]uintptr)(unsafe.Pointer(bp)))[v17] = tmpObj
+	v18 = lc
+	lc++
+	(*(*[20]uintptr)(unsafe.Pointer(bp)))[v18] = XTclGetSourceFromFrame(tls, framePtr, 0, libc.UintptrFromInt32(0))
 	goto _7
 _3:
 	/*
@@ -48018,12 +48024,12 @@ _3:
 		(*TTcl_Obj)(unsafe.Pointer(tmpObj)).Flength = int32(libc.Uint32FromInt64(5) - libc.Uint32FromInt32(1))
 	}
 	(*TTcl_Obj)(unsafe.Pointer(tmpObj)).FtypePtr = libc.UintptrFromInt32(0)
-	v18 = lc
-	lc++
-	(*(*[20]uintptr)(unsafe.Pointer(bp)))[v18] = tmpObj
 	v19 = lc
 	lc++
-	(*(*[20]uintptr)(unsafe.Pointer(bp)))[v19] = XTcl_NewStringObj(tls, _typeString[(*TCmdFrame)(unsafe.Pointer(framePtr)).Ftype1], -int32(1))
+	(*(*[20]uintptr)(unsafe.Pointer(bp)))[v19] = tmpObj
+	v20 = lc
+	lc++
+	(*(*[20]uintptr)(unsafe.Pointer(bp)))[v20] = XTcl_NewStringObj(tls, _typeString[(*TCmdFrame)(unsafe.Pointer(framePtr)).Ftype1], -int32(1))
 	goto _7
 _4:
 	/*
@@ -48060,12 +48066,12 @@ _4:
 		(*TTcl_Obj)(unsafe.Pointer(tmpObj)).Flength = int32(libc.Uint32FromInt64(5) - libc.Uint32FromInt32(1))
 	}
 	(*TTcl_Obj)(unsafe.Pointer(tmpObj)).FtypePtr = libc.UintptrFromInt32(0)
-	v20 = lc
-	lc++
-	(*(*[20]uintptr)(unsafe.Pointer(bp)))[v20] = tmpObj
 	v21 = lc
 	lc++
-	(*(*[20]uintptr)(unsafe.Pointer(bp)))[v21] = XTcl_NewStringObj(tls, _typeString[(*TCmdFrame)(unsafe.Pointer(fPtr)).Ftype1], -int32(1))
+	(*(*[20]uintptr)(unsafe.Pointer(bp)))[v21] = tmpObj
+	v22 = lc
+	lc++
+	(*(*[20]uintptr)(unsafe.Pointer(bp)))[v22] = XTcl_NewStringObj(tls, _typeString[(*TCmdFrame)(unsafe.Pointer(fPtr)).Ftype1], -int32(1))
 	if (*TCmdFrame)(unsafe.Pointer(fPtr)).Fline != 0 {
 		if XtclFreeObjList == libc.UintptrFromInt32(0) {
 			XTclAllocateFreeObjects(tls)
@@ -48086,12 +48092,12 @@ _4:
 			(*TTcl_Obj)(unsafe.Pointer(tmpObj)).Flength = int32(libc.Uint32FromInt64(5) - libc.Uint32FromInt32(1))
 		}
 		(*TTcl_Obj)(unsafe.Pointer(tmpObj)).FtypePtr = libc.UintptrFromInt32(0)
-		v22 = lc
-		lc++
-		(*(*[20]uintptr)(unsafe.Pointer(bp)))[v22] = tmpObj
 		v23 = lc
 		lc++
-		(*(*[20]uintptr)(unsafe.Pointer(bp)))[v23] = XTcl_NewIntObj(tls, *(*int32)(unsafe.Pointer((*TCmdFrame)(unsafe.Pointer(fPtr)).Fline)))
+		(*(*[20]uintptr)(unsafe.Pointer(bp)))[v23] = tmpObj
+		v24 = lc
+		lc++
+		(*(*[20]uintptr)(unsafe.Pointer(bp)))[v24] = XTcl_NewIntObj(tls, *(*int32)(unsafe.Pointer((*TCmdFrame)(unsafe.Pointer(fPtr)).Fline)))
 	}
 	if (*TCmdFrame)(unsafe.Pointer(fPtr)).Ftype1 == int32(m_TCL_LOCATION_SOURCE) {
 		if XtclFreeObjList == libc.UintptrFromInt32(0) {
@@ -48113,20 +48119,20 @@ _4:
 			(*TTcl_Obj)(unsafe.Pointer(tmpObj)).Flength = int32(libc.Uint32FromInt64(5) - libc.Uint32FromInt32(1))
 		}
 		(*TTcl_Obj)(unsafe.Pointer(tmpObj)).FtypePtr = libc.UintptrFromInt32(0)
-		v24 = lc
-		lc++
-		(*(*[20]uintptr)(unsafe.Pointer(bp)))[v24] = tmpObj
 		v25 = lc
 		lc++
-		(*(*[20]uintptr)(unsafe.Pointer(bp)))[v25] = (*TCmdFrame)(unsafe.Pointer(fPtr)).Fdata.Feval.Fpath
+		(*(*[20]uintptr)(unsafe.Pointer(bp)))[v25] = tmpObj
+		v26 = lc
+		lc++
+		(*(*[20]uintptr)(unsafe.Pointer(bp)))[v26] = (*TCmdFrame)(unsafe.Pointer(fPtr)).Fdata.Feval.Fpath
 		/*
 		 * Death of reference by TclGetSrcInfoForPc.
 		 */
 		_objPtr = (*TCmdFrame)(unsafe.Pointer(fPtr)).Fdata.Feval.Fpath
-		v27 = _objPtr
-		v26 = *(*int32)(unsafe.Pointer(v27))
-		*(*int32)(unsafe.Pointer(v27))--
-		if v26 <= int32(1) {
+		v28 = _objPtr
+		v27 = *(*int32)(unsafe.Pointer(v28))
+		*(*int32)(unsafe.Pointer(v28))--
+		if v27 <= int32(1) {
 			XTclFreeObj(tls, _objPtr)
 		}
 	}
@@ -48149,12 +48155,12 @@ _4:
 		(*TTcl_Obj)(unsafe.Pointer(tmpObj)).Flength = int32(libc.Uint32FromInt64(4) - libc.Uint32FromInt32(1))
 	}
 	(*TTcl_Obj)(unsafe.Pointer(tmpObj)).FtypePtr = libc.UintptrFromInt32(0)
-	v28 = lc
-	lc++
-	(*(*[20]uintptr)(unsafe.Pointer(bp)))[v28] = tmpObj
 	v29 = lc
 	lc++
-	(*(*[20]uintptr)(unsafe.Pointer(bp)))[v29] = XTclGetSourceFromFrame(tls, fPtr, 0, libc.UintptrFromInt32(0))
+	(*(*[20]uintptr)(unsafe.Pointer(bp)))[v29] = tmpObj
+	v30 = lc
+	lc++
+	(*(*[20]uintptr)(unsafe.Pointer(bp)))[v30] = XTclGetSourceFromFrame(tls, fPtr, 0, libc.UintptrFromInt32(0))
 	if (*TCmdFrame)(unsafe.Pointer(fPtr)).FcmdObj != 0 && (*TCmdFrame)(unsafe.Pointer(framePtr)).FcmdObj == libc.UintptrFromInt32(0) {
 		needsFree = lc - int32(1)
 	}
@@ -48183,12 +48189,12 @@ _5:
 		(*TTcl_Obj)(unsafe.Pointer(tmpObj)).Flength = int32(libc.Uint32FromInt64(5) - libc.Uint32FromInt32(1))
 	}
 	(*TTcl_Obj)(unsafe.Pointer(tmpObj)).FtypePtr = libc.UintptrFromInt32(0)
-	v30 = lc
-	lc++
-	(*(*[20]uintptr)(unsafe.Pointer(bp)))[v30] = tmpObj
 	v31 = lc
 	lc++
-	(*(*[20]uintptr)(unsafe.Pointer(bp)))[v31] = XTcl_NewStringObj(tls, _typeString[(*TCmdFrame)(unsafe.Pointer(framePtr)).Ftype1], -int32(1))
+	(*(*[20]uintptr)(unsafe.Pointer(bp)))[v31] = tmpObj
+	v32 = lc
+	lc++
+	(*(*[20]uintptr)(unsafe.Pointer(bp)))[v32] = XTcl_NewStringObj(tls, _typeString[(*TCmdFrame)(unsafe.Pointer(framePtr)).Ftype1], -int32(1))
 	if XtclFreeObjList == libc.UintptrFromInt32(0) {
 		XTclAllocateFreeObjects(tls)
 	}
@@ -48208,12 +48214,12 @@ _5:
 		(*TTcl_Obj)(unsafe.Pointer(tmpObj)).Flength = int32(libc.Uint32FromInt64(5) - libc.Uint32FromInt32(1))
 	}
 	(*TTcl_Obj)(unsafe.Pointer(tmpObj)).FtypePtr = libc.UintptrFromInt32(0)
-	v32 = lc
-	lc++
-	(*(*[20]uintptr)(unsafe.Pointer(bp)))[v32] = tmpObj
 	v33 = lc
 	lc++
-	(*(*[20]uintptr)(unsafe.Pointer(bp)))[v33] = XTcl_NewIntObj(tls, *(*int32)(unsafe.Pointer((*TCmdFrame)(unsafe.Pointer(framePtr)).Fline)))
+	(*(*[20]uintptr)(unsafe.Pointer(bp)))[v33] = tmpObj
+	v34 = lc
+	lc++
+	(*(*[20]uintptr)(unsafe.Pointer(bp)))[v34] = XTcl_NewIntObj(tls, *(*int32)(unsafe.Pointer((*TCmdFrame)(unsafe.Pointer(framePtr)).Fline)))
 	if XtclFreeObjList == libc.UintptrFromInt32(0) {
 		XTclAllocateFreeObjects(tls)
 	}
@@ -48233,12 +48239,12 @@ _5:
 		(*TTcl_Obj)(unsafe.Pointer(tmpObj)).Flength = int32(libc.Uint32FromInt64(5) - libc.Uint32FromInt32(1))
 	}
 	(*TTcl_Obj)(unsafe.Pointer(tmpObj)).FtypePtr = libc.UintptrFromInt32(0)
-	v34 = lc
-	lc++
-	(*(*[20]uintptr)(unsafe.Pointer(bp)))[v34] = tmpObj
 	v35 = lc
 	lc++
-	(*(*[20]uintptr)(unsafe.Pointer(bp)))[v35] = (*TCmdFrame)(unsafe.Pointer(framePtr)).Fdata.Feval.Fpath
+	(*(*[20]uintptr)(unsafe.Pointer(bp)))[v35] = tmpObj
+	v36 = lc
+	lc++
+	(*(*[20]uintptr)(unsafe.Pointer(bp)))[v36] = (*TCmdFrame)(unsafe.Pointer(framePtr)).Fdata.Feval.Fpath
 	/*
 	 * Refcount framePtr->data.eval.path goes up when lv is converted into
 	 * the result list object.
@@ -48262,12 +48268,12 @@ _5:
 		(*TTcl_Obj)(unsafe.Pointer(tmpObj)).Flength = int32(libc.Uint32FromInt64(4) - libc.Uint32FromInt32(1))
 	}
 	(*TTcl_Obj)(unsafe.Pointer(tmpObj)).FtypePtr = libc.UintptrFromInt32(0)
-	v36 = lc
-	lc++
-	(*(*[20]uintptr)(unsafe.Pointer(bp)))[v36] = tmpObj
 	v37 = lc
 	lc++
-	(*(*[20]uintptr)(unsafe.Pointer(bp)))[v37] = XTclGetSourceFromFrame(tls, framePtr, 0, libc.UintptrFromInt32(0))
+	(*(*[20]uintptr)(unsafe.Pointer(bp)))[v37] = tmpObj
+	v38 = lc
+	lc++
+	(*(*[20]uintptr)(unsafe.Pointer(bp)))[v38] = XTclGetSourceFromFrame(tls, framePtr, 0, libc.UintptrFromInt32(0))
 	goto _7
 _6:
 	XTcl_Panic(tls, __ccgo_ts+13604, 0)
@@ -48315,12 +48321,12 @@ _7:
 				(*TTcl_Obj)(unsafe.Pointer(tmpObj)).Flength = int32(libc.Uint32FromInt64(5) - libc.Uint32FromInt32(1))
 			}
 			(*TTcl_Obj)(unsafe.Pointer(tmpObj)).FtypePtr = libc.UintptrFromInt32(0)
-			v38 = lc
-			lc++
-			(*(*[20]uintptr)(unsafe.Pointer(bp)))[v38] = tmpObj
 			v39 = lc
 			lc++
-			(*(*[20]uintptr)(unsafe.Pointer(bp)))[v39] = procNameObj
+			(*(*[20]uintptr)(unsafe.Pointer(bp)))[v39] = tmpObj
+			v40 = lc
+			lc++
+			(*(*[20]uintptr)(unsafe.Pointer(bp)))[v40] = procNameObj
 		} else {
 			if (*TCommand1)(unsafe.Pointer((*TProc)(unsafe.Pointer(procPtr)).FcmdPtr)).FclientData != 0 {
 				efiPtr = (*TCommand1)(unsafe.Pointer((*TProc)(unsafe.Pointer(procPtr)).FcmdPtr)).FclientData
@@ -48333,20 +48339,20 @@ _7:
 					if !(i < (*TExtraFrameInfo)(unsafe.Pointer(efiPtr)).Flength) {
 						break
 					}
-					v41 = lc
+					v42 = lc
 					lc++
-					(*(*[20]uintptr)(unsafe.Pointer(bp)))[v41] = XTcl_NewStringObj(tls, (*(*TExtraFrameInfoField)(unsafe.Pointer(efiPtr + 4 + uintptr(i)*12))).Fname, -int32(1))
+					(*(*[20]uintptr)(unsafe.Pointer(bp)))[v42] = XTcl_NewStringObj(tls, (*(*TExtraFrameInfoField)(unsafe.Pointer(efiPtr + 4 + uintptr(i)*12))).Fname, -int32(1))
 					if (*(*TExtraFrameInfoField)(unsafe.Pointer(efiPtr + 4 + uintptr(i)*12))).Fproc != 0 {
-						v42 = lc
-						lc++
-						(*(*[20]uintptr)(unsafe.Pointer(bp)))[v42] = (*(*func(*libc.TLS, TClientData) uintptr)(unsafe.Pointer(&struct{ uintptr }{(*(*TExtraFrameInfoField)(unsafe.Pointer(efiPtr + 4 + uintptr(i)*12))).Fproc})))(tls, (*(*TExtraFrameInfoField)(unsafe.Pointer(efiPtr + 4 + uintptr(i)*12))).FclientData)
-					} else {
 						v43 = lc
 						lc++
-						(*(*[20]uintptr)(unsafe.Pointer(bp)))[v43] = (*(*TExtraFrameInfoField)(unsafe.Pointer(efiPtr + 4 + uintptr(i)*12))).FclientData
+						(*(*[20]uintptr)(unsafe.Pointer(bp)))[v43] = (*(*func(*libc.TLS, TClientData) uintptr)(unsafe.Pointer(&struct{ uintptr }{(*(*TExtraFrameInfoField)(unsafe.Pointer(efiPtr + 4 + uintptr(i)*12))).Fproc})))(tls, (*(*TExtraFrameInfoField)(unsafe.Pointer(efiPtr + 4 + uintptr(i)*12))).FclientData)
+					} else {
+						v44 = lc
+						lc++
+						(*(*[20]uintptr)(unsafe.Pointer(bp)))[v44] = (*(*TExtraFrameInfoField)(unsafe.Pointer(efiPtr + 4 + uintptr(i)*12))).FclientData
 					}
-					goto _40
-				_40:
+					goto _41
+				_41:
 					i++
 				}
 			}
@@ -48386,26 +48392,26 @@ _7:
 					(*TTcl_Obj)(unsafe.Pointer(tmpObj)).Flength = int32(libc.Uint32FromInt64(6) - libc.Uint32FromInt32(1))
 				}
 				(*TTcl_Obj)(unsafe.Pointer(tmpObj)).FtypePtr = libc.UintptrFromInt32(0)
-				v45 = lc
-				lc++
-				(*(*[20]uintptr)(unsafe.Pointer(bp)))[v45] = tmpObj
 				v46 = lc
 				lc++
-				(*(*[20]uintptr)(unsafe.Pointer(bp)))[v46] = XTcl_NewIntObj(tls, t-c)
+				(*(*[20]uintptr)(unsafe.Pointer(bp)))[v46] = tmpObj
+				v47 = lc
+				lc++
+				(*(*[20]uintptr)(unsafe.Pointer(bp)))[v47] = XTcl_NewIntObj(tls, t-c)
 				break
 			}
-			goto _44
-		_44:
+			goto _45
+		_45:
 			idx = (*TCallFrame)(unsafe.Pointer(idx)).FcallerVarPtr
 		}
 	}
 	tmpObj = XTcl_NewListObj(tls, lc, bp)
 	if needsFree >= 0 {
 		_objPtr1 = (*(*[20]uintptr)(unsafe.Pointer(bp)))[needsFree]
-		v48 = _objPtr1
-		v47 = *(*int32)(unsafe.Pointer(v48))
-		*(*int32)(unsafe.Pointer(v48))--
-		if v47 <= int32(1) {
+		v49 = _objPtr1
+		v48 = *(*int32)(unsafe.Pointer(v49))
+		*(*int32)(unsafe.Pointer(v49))--
+		if v48 <= int32(1) {
 			XTclFreeObj(tls, _objPtr1)
 		}
 	}
@@ -62111,8 +62117,8 @@ func XTclCompileCatchCmd(tls *libc.TLS, interp uintptr, parsePtr uintptr, cmdPtr
 func XTclCompileClockClicksCmd(tls *libc.TLS, interp uintptr, parsePtr uintptr, cmdPtr uintptr, envPtr uintptr) (r int32) {
 	/* Holds resulting instructions. */
 	var _delta, _delta1, _delta2 int32
-	var tokenPtr, v10, v11, v12, v13, v14, v15, v16, v17, v18, v7, v8, v9 uintptr
-	_, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _ = _delta, _delta1, _delta2, tokenPtr, v10, v11, v12, v13, v14, v15, v16, v17, v18, v7, v8, v9
+	var tokenPtr, v10, v11, v12, v13, v14, v15, v16, v17, v18, v19, v8, v9 uintptr
+	_, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _ = _delta, _delta1, _delta2, tokenPtr, v10, v11, v12, v13, v14, v15, v16, v17, v18, v19, v8, v9
 	switch (*TTcl_Parse)(unsafe.Pointer(parsePtr)).FnumWords {
 	case int32(1):
 		goto _1
@@ -62126,18 +62132,18 @@ _1:
 	/*
 	 * No args
 	 */
-_6:
+_7:
 	if (*TCompileEnv)(unsafe.Pointer(envPtr)).FcodeNext+uintptr(2) > (*TCompileEnv)(unsafe.Pointer(envPtr)).FcodeEnd {
 		XTclExpandCodeArray(tls, envPtr)
 	}
-	v8 = envPtr + 76
-	v7 = *(*uintptr)(unsafe.Pointer(v8))
-	*(*uintptr)(unsafe.Pointer(v8))++
-	*(*uint8)(unsafe.Pointer(v7)) = uint8(libc.Int32FromInt32(m_INST_CLOCK_READ))
-	v10 = envPtr + 76
-	v9 = *(*uintptr)(unsafe.Pointer(v10))
-	*(*uintptr)(unsafe.Pointer(v10))++
-	*(*uint8)(unsafe.Pointer(v9)) = uint8(uint32(libc.Int32FromInt32(0)))
+	v9 = envPtr + 76
+	v8 = *(*uintptr)(unsafe.Pointer(v9))
+	*(*uintptr)(unsafe.Pointer(v9))++
+	*(*uint8)(unsafe.Pointer(v8)) = uint8(libc.Int32FromInt32(m_INST_CLOCK_READ))
+	v11 = envPtr + 76
+	v10 = *(*uintptr)(unsafe.Pointer(v11))
+	*(*uintptr)(unsafe.Pointer(v11))++
+	*(*uint8)(unsafe.Pointer(v10)) = uint8(uint32(libc.Int32FromInt32(0)))
 	if (*TCompileEnv)(unsafe.Pointer(envPtr)).FatCmdStart < int32(2) {
 		(*TCompileEnv)(unsafe.Pointer(envPtr)).FatCmdStart = 0
 	}
@@ -62153,8 +62159,10 @@ _6:
 		}
 		*(*int32)(unsafe.Pointer(envPtr + 32)) += _delta
 	}
+	goto _6
+_6:
 	if 0 != 0 {
-		goto _6
+		goto _7
 	}
 	goto _5
 _5:
@@ -62171,14 +62179,14 @@ _2:
 			if (*TCompileEnv)(unsafe.Pointer(envPtr)).FcodeNext+uintptr(2) > (*TCompileEnv)(unsafe.Pointer(envPtr)).FcodeEnd {
 				XTclExpandCodeArray(tls, envPtr)
 			}
-			v12 = envPtr + 76
-			v11 = *(*uintptr)(unsafe.Pointer(v12))
-			*(*uintptr)(unsafe.Pointer(v12))++
-			*(*uint8)(unsafe.Pointer(v11)) = uint8(libc.Int32FromInt32(m_INST_CLOCK_READ))
-			v14 = envPtr + 76
-			v13 = *(*uintptr)(unsafe.Pointer(v14))
-			*(*uintptr)(unsafe.Pointer(v14))++
-			*(*uint8)(unsafe.Pointer(v13)) = uint8(uint32(libc.Int32FromInt32(1)))
+			v13 = envPtr + 76
+			v12 = *(*uintptr)(unsafe.Pointer(v13))
+			*(*uintptr)(unsafe.Pointer(v13))++
+			*(*uint8)(unsafe.Pointer(v12)) = uint8(libc.Int32FromInt32(m_INST_CLOCK_READ))
+			v15 = envPtr + 76
+			v14 = *(*uintptr)(unsafe.Pointer(v15))
+			*(*uintptr)(unsafe.Pointer(v15))++
+			*(*uint8)(unsafe.Pointer(v14)) = uint8(uint32(libc.Int32FromInt32(1)))
 			if (*TCompileEnv)(unsafe.Pointer(envPtr)).FatCmdStart < int32(2) {
 				(*TCompileEnv)(unsafe.Pointer(envPtr)).FatCmdStart = 0
 			}
@@ -62200,14 +62208,14 @@ _2:
 				if (*TCompileEnv)(unsafe.Pointer(envPtr)).FcodeNext+uintptr(2) > (*TCompileEnv)(unsafe.Pointer(envPtr)).FcodeEnd {
 					XTclExpandCodeArray(tls, envPtr)
 				}
-				v16 = envPtr + 76
-				v15 = *(*uintptr)(unsafe.Pointer(v16))
-				*(*uintptr)(unsafe.Pointer(v16))++
-				*(*uint8)(unsafe.Pointer(v15)) = uint8(libc.Int32FromInt32(m_INST_CLOCK_READ))
-				v18 = envPtr + 76
-				v17 = *(*uintptr)(unsafe.Pointer(v18))
-				*(*uintptr)(unsafe.Pointer(v18))++
-				*(*uint8)(unsafe.Pointer(v17)) = uint8(uint32(libc.Int32FromInt32(2)))
+				v17 = envPtr + 76
+				v16 = *(*uintptr)(unsafe.Pointer(v17))
+				*(*uintptr)(unsafe.Pointer(v17))++
+				*(*uint8)(unsafe.Pointer(v16)) = uint8(libc.Int32FromInt32(m_INST_CLOCK_READ))
+				v19 = envPtr + 76
+				v18 = *(*uintptr)(unsafe.Pointer(v19))
+				*(*uintptr)(unsafe.Pointer(v19))++
+				*(*uint8)(unsafe.Pointer(v18)) = uint8(uint32(libc.Int32FromInt32(2)))
 				if (*TCompileEnv)(unsafe.Pointer(envPtr)).FatCmdStart < int32(2) {
 					(*TCompileEnv)(unsafe.Pointer(envPtr)).FatCmdStart = 0
 				}
@@ -87851,11 +87859,11 @@ func XTclCompileStringIndexCmd(tls *libc.TLS, interp uintptr, parsePtr uintptr, 
 func XTclCompileStringIsCmd(tls *libc.TLS, interp uintptr, parsePtr uintptr, cmdPtr uintptr, envPtr uintptr) (r int32) {
 	bp := tls.Alloc(16)
 	defer tls.Free(16) /* Holds resulting instructions. */
-	var _delta, _delta1, _delta10, _delta11, _delta12, _delta13, _delta14, _delta15, _delta16, _delta17, _delta18, _delta19, _delta2, _delta20, _delta21, _delta22, _delta23, _delta24, _delta25, _delta26, _delta27, _delta28, _delta29, _delta3, _delta30, _delta31, _delta32, _delta33, _delta34, _delta35, _delta36, _delta37, _delta38, _delta39, _delta4, _delta40, _delta41, _delta42, _delta43, _delta44, _delta45, _delta46, _delta47, _delta48, _delta49, _delta5, _delta50, _delta51, _delta52, _delta53, _delta54, _delta55, _delta56, _delta57, _delta58, _delta59, _delta6, _delta60, _delta61, _delta62, _delta63, _delta64, _delta65, _delta66, _delta67, _delta68, _delta69, _delta7, _delta70, _delta71, _delta72, _delta73, _delta74, _delta75, _delta76, _delta77, _delta78, _delta79, _delta8, _delta80, _delta81, _delta82, _delta83, _delta84, _delta85, _delta86, _delta87, _delta88, _delta89, _delta9, _objIndexCopy, _objIndexCopy1, _objIndexCopy10, _objIndexCopy11, _objIndexCopy12, _objIndexCopy13, _objIndexCopy14, _objIndexCopy15, _objIndexCopy16, _objIndexCopy2, _objIndexCopy3, _objIndexCopy4, _objIndexCopy5, _objIndexCopy6, _objIndexCopy7, _objIndexCopy8, _objIndexCopy9, allowEmpty, eclIndex, end, isEmpty, over, over1, over2, over21, range1, satisfied, testNumType, v1, v3, v431, v5 int32
-	var _objPtr, _objPtr1, _objPtr2, isClass, mapPtr, tokenPtr, v10, v100, v101, v102, v103, v104, v105, v106, v107, v108, v109, v11, v110, v111, v112, v113, v114, v115, v116, v117, v118, v119, v12, v120, v121, v122, v123, v124, v125, v126, v127, v128, v129, v13, v130, v131, v132, v133, v134, v135, v136, v137, v138, v139, v14, v140, v141, v142, v143, v144, v145, v146, v147, v148, v149, v15, v150, v151, v152, v153, v154, v155, v156, v157, v158, v159, v16, v160, v161, v162, v163, v164, v165, v166, v167, v168, v169, v17, v170, v171, v172, v173, v174, v175, v176, v177, v178, v179, v18, v180, v181, v182, v183, v184, v185, v186, v187, v188, v189, v19, v190, v191, v192, v193, v194, v195, v196, v197, v198, v199, v2, v20, v200, v201, v202, v203, v204, v205, v206, v207, v208, v209, v210, v211, v212, v213, v214, v215, v216, v217, v218, v219, v220, v221, v222, v223, v224, v225, v226, v227, v228, v229, v230, v231, v232, v233, v234, v235, v236, v237, v238, v239, v240, v241, v242, v243, v244, v245, v246, v247, v248, v249, v250, v251, v252, v253, v254, v255, v256, v257, v258, v259, v260, v261, v262, v263, v264, v265, v266, v267, v268, v269, v270, v271, v272, v273, v274, v275, v276, v277, v278, v279, v280, v281, v282, v283, v284, v285, v286, v287, v288, v289, v290, v291, v292, v293, v294, v295, v296, v297, v298, v299, v300, v301, v302, v303, v304, v305, v306, v307, v308, v309, v310, v311, v312, v313, v314, v315, v316, v317, v318, v319, v320, v321, v322, v323, v324, v325, v326, v327, v328, v329, v330, v331, v332, v333, v334, v335, v336, v337, v338, v339, v340, v341, v342, v343, v344, v345, v346, v347, v348, v349, v350, v351, v352, v353, v354, v355, v356, v357, v358, v359, v360, v361, v362, v363, v364, v365, v366, v373, v374, v375, v376, v377, v378, v379, v380, v381, v382, v383, v384, v385, v386, v387, v388, v389, v390, v391, v392, v393, v394, v395, v396, v397, v398, v399, v4, v400, v401, v402, v403, v404, v405, v406, v407, v408, v409, v410, v411, v412, v413, v414, v415, v416, v417, v418, v419, v420, v421, v422, v423, v424, v425, v426, v427, v428, v429, v43, v430, v432, v433, v434, v435, v436, v437, v438, v439, v44, v440, v441, v442, v443, v444, v445, v45, v46, v47, v48, v49, v50, v51, v52, v53, v54, v55, v56, v57, v58, v59, v6, v60, v61, v62, v63, v64, v65, v66, v67, v68, v69, v7, v70, v71, v72, v73, v74, v75, v76, v77, v78, v79, v8, v80, v81, v82, v83, v84, v85, v86, v87, v88, v89, v9, v90, v91, v92, v93, v94, v99 uintptr
+	var _delta, _delta1, _delta10, _delta11, _delta12, _delta13, _delta14, _delta15, _delta16, _delta17, _delta18, _delta19, _delta2, _delta20, _delta21, _delta22, _delta23, _delta24, _delta25, _delta26, _delta27, _delta28, _delta29, _delta3, _delta30, _delta31, _delta32, _delta33, _delta34, _delta35, _delta36, _delta37, _delta38, _delta39, _delta4, _delta40, _delta41, _delta42, _delta43, _delta44, _delta45, _delta46, _delta47, _delta48, _delta49, _delta5, _delta50, _delta51, _delta52, _delta53, _delta54, _delta55, _delta56, _delta57, _delta58, _delta59, _delta6, _delta60, _delta61, _delta62, _delta63, _delta64, _delta65, _delta66, _delta67, _delta68, _delta69, _delta7, _delta70, _delta71, _delta72, _delta73, _delta74, _delta75, _delta76, _delta77, _delta78, _delta79, _delta8, _delta80, _delta81, _delta82, _delta83, _delta84, _delta85, _delta86, _delta87, _delta88, _delta89, _delta9, _objIndexCopy, _objIndexCopy1, _objIndexCopy10, _objIndexCopy11, _objIndexCopy12, _objIndexCopy13, _objIndexCopy14, _objIndexCopy15, _objIndexCopy16, _objIndexCopy2, _objIndexCopy3, _objIndexCopy4, _objIndexCopy5, _objIndexCopy6, _objIndexCopy7, _objIndexCopy8, _objIndexCopy9, allowEmpty, eclIndex, end, isEmpty, over, over1, over2, over21, range1, satisfied, testNumType, v1, v3, v432, v5 int32
+	var _objPtr, _objPtr1, _objPtr2, isClass, mapPtr, tokenPtr, v10, v100, v101, v102, v103, v104, v105, v106, v107, v108, v109, v11, v110, v111, v112, v113, v114, v115, v116, v117, v118, v119, v12, v120, v121, v122, v123, v124, v125, v126, v127, v128, v129, v13, v130, v131, v132, v133, v134, v135, v136, v137, v138, v139, v14, v140, v141, v142, v143, v144, v145, v146, v147, v148, v149, v15, v150, v151, v152, v153, v154, v155, v156, v157, v158, v159, v16, v160, v161, v162, v163, v164, v165, v166, v167, v168, v169, v17, v170, v171, v172, v173, v174, v175, v176, v177, v178, v179, v18, v180, v181, v182, v183, v184, v185, v186, v187, v188, v189, v19, v190, v191, v192, v193, v194, v195, v196, v197, v198, v199, v2, v20, v200, v201, v202, v203, v204, v205, v206, v207, v208, v209, v210, v211, v212, v213, v214, v215, v216, v217, v218, v219, v220, v221, v222, v223, v224, v225, v226, v227, v228, v229, v230, v231, v232, v233, v234, v235, v236, v237, v238, v239, v240, v241, v242, v243, v244, v245, v246, v247, v248, v249, v250, v251, v252, v253, v254, v255, v256, v257, v258, v259, v260, v261, v262, v263, v264, v265, v266, v267, v268, v269, v270, v271, v272, v273, v274, v275, v276, v277, v278, v279, v280, v281, v282, v283, v284, v285, v286, v287, v288, v289, v290, v291, v292, v293, v294, v295, v296, v297, v298, v299, v300, v301, v302, v303, v304, v305, v306, v307, v308, v309, v310, v311, v312, v313, v314, v315, v316, v317, v318, v319, v320, v321, v322, v323, v324, v325, v326, v327, v328, v329, v330, v331, v332, v333, v334, v335, v336, v337, v338, v339, v340, v341, v342, v343, v344, v345, v346, v347, v348, v349, v350, v351, v352, v353, v354, v355, v356, v357, v358, v359, v360, v361, v362, v363, v364, v365, v366, v374, v375, v376, v377, v378, v379, v380, v381, v382, v383, v384, v385, v386, v387, v388, v389, v390, v391, v392, v393, v394, v395, v396, v397, v398, v399, v4, v400, v401, v402, v403, v404, v405, v406, v407, v408, v409, v410, v411, v412, v413, v414, v415, v416, v417, v418, v419, v420, v421, v422, v423, v424, v425, v426, v427, v428, v429, v43, v430, v431, v433, v434, v435, v436, v437, v438, v439, v44, v440, v441, v442, v443, v444, v445, v446, v45, v46, v47, v48, v49, v50, v51, v52, v53, v54, v55, v56, v57, v58, v59, v6, v60, v61, v62, v63, v64, v65, v66, v67, v68, v69, v7, v70, v71, v72, v73, v74, v75, v76, v77, v78, v79, v8, v80, v81, v82, v83, v84, v85, v86, v87, v88, v89, v9, v90, v91, v92, v93, v94, v99 uintptr
 	var strClassType TInstStringClassType
 	var _ /* t at bp+0 */ int32
-	_, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _ = _delta, _delta1, _delta10, _delta11, _delta12, _delta13, _delta14, _delta15, _delta16, _delta17, _delta18, _delta19, _delta2, _delta20, _delta21, _delta22, _delta23, _delta24, _delta25, _delta26, _delta27, _delta28, _delta29, _delta3, _delta30, _delta31, _delta32, _delta33, _delta34, _delta35, _delta36, _delta37, _delta38, _delta39, _delta4, _delta40, _delta41, _delta42, _delta43, _delta44, _delta45, _delta46, _delta47, _delta48, _delta49, _delta5, _delta50, _delta51, _delta52, _delta53, _delta54, _delta55, _delta56, _delta57, _delta58, _delta59, _delta6, _delta60, _delta61, _delta62, _delta63, _delta64, _delta65, _delta66, _delta67, _delta68, _delta69, _delta7, _delta70, _delta71, _delta72, _delta73, _delta74, _delta75, _delta76, _delta77, _delta78, _delta79, _delta8, _delta80, _delta81, _delta82, _delta83, _delta84, _delta85, _delta86, _delta87, _delta88, _delta89, _delta9, _objIndexCopy, _objIndexCopy1, _objIndexCopy10, _objIndexCopy11, _objIndexCopy12, _objIndexCopy13, _objIndexCopy14, _objIndexCopy15, _objIndexCopy16, _objIndexCopy2, _objIndexCopy3, _objIndexCopy4, _objIndexCopy5, _objIndexCopy6, _objIndexCopy7, _objIndexCopy8, _objIndexCopy9, _objPtr, _objPtr1, _objPtr2, allowEmpty, eclIndex, end, isClass, isEmpty, mapPtr, over, over1, over2, over21, range1, satisfied, strClassType, testNumType, tokenPtr, v1, v10, v100, v101, v102, v103, v104, v105, v106, v107, v108, v109, v11, v110, v111, v112, v113, v114, v115, v116, v117, v118, v119, v12, v120, v121, v122, v123, v124, v125, v126, v127, v128, v129, v13, v130, v131, v132, v133, v134, v135, v136, v137, v138, v139, v14, v140, v141, v142, v143, v144, v145, v146, v147, v148, v149, v15, v150, v151, v152, v153, v154, v155, v156, v157, v158, v159, v16, v160, v161, v162, v163, v164, v165, v166, v167, v168, v169, v17, v170, v171, v172, v173, v174, v175, v176, v177, v178, v179, v18, v180, v181, v182, v183, v184, v185, v186, v187, v188, v189, v19, v190, v191, v192, v193, v194, v195, v196, v197, v198, v199, v2, v20, v200, v201, v202, v203, v204, v205, v206, v207, v208, v209, v210, v211, v212, v213, v214, v215, v216, v217, v218, v219, v220, v221, v222, v223, v224, v225, v226, v227, v228, v229, v230, v231, v232, v233, v234, v235, v236, v237, v238, v239, v240, v241, v242, v243, v244, v245, v246, v247, v248, v249, v250, v251, v252, v253, v254, v255, v256, v257, v258, v259, v260, v261, v262, v263, v264, v265, v266, v267, v268, v269, v270, v271, v272, v273, v274, v275, v276, v277, v278, v279, v280, v281, v282, v283, v284, v285, v286, v287, v288, v289, v290, v291, v292, v293, v294, v295, v296, v297, v298, v299, v3, v300, v301, v302, v303, v304, v305, v306, v307, v308, v309, v310, v311, v312, v313, v314, v315, v316, v317, v318, v319, v320, v321, v322, v323, v324, v325, v326, v327, v328, v329, v330, v331, v332, v333, v334, v335, v336, v337, v338, v339, v340, v341, v342, v343, v344, v345, v346, v347, v348, v349, v350, v351, v352, v353, v354, v355, v356, v357, v358, v359, v360, v361, v362, v363, v364, v365, v366, v373, v374, v375, v376, v377, v378, v379, v380, v381, v382, v383, v384, v385, v386, v387, v388, v389, v390, v391, v392, v393, v394, v395, v396, v397, v398, v399, v4, v400, v401, v402, v403, v404, v405, v406, v407, v408, v409, v410, v411, v412, v413, v414, v415, v416, v417, v418, v419, v420, v421, v422, v423, v424, v425, v426, v427, v428, v429, v43, v430, v431, v432, v433, v434, v435, v436, v437, v438, v439, v44, v440, v441, v442, v443, v444, v445, v45, v46, v47, v48, v49, v5, v50, v51, v52, v53, v54, v55, v56, v57, v58, v59, v6, v60, v61, v62, v63, v64, v65, v66, v67, v68, v69, v7, v70, v71, v72, v73, v74, v75, v76, v77, v78, v79, v8, v80, v81, v82, v83, v84, v85, v86, v87, v88, v89, v9, v90, v91, v92, v93, v94, v99
+	_, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _ = _delta, _delta1, _delta10, _delta11, _delta12, _delta13, _delta14, _delta15, _delta16, _delta17, _delta18, _delta19, _delta2, _delta20, _delta21, _delta22, _delta23, _delta24, _delta25, _delta26, _delta27, _delta28, _delta29, _delta3, _delta30, _delta31, _delta32, _delta33, _delta34, _delta35, _delta36, _delta37, _delta38, _delta39, _delta4, _delta40, _delta41, _delta42, _delta43, _delta44, _delta45, _delta46, _delta47, _delta48, _delta49, _delta5, _delta50, _delta51, _delta52, _delta53, _delta54, _delta55, _delta56, _delta57, _delta58, _delta59, _delta6, _delta60, _delta61, _delta62, _delta63, _delta64, _delta65, _delta66, _delta67, _delta68, _delta69, _delta7, _delta70, _delta71, _delta72, _delta73, _delta74, _delta75, _delta76, _delta77, _delta78, _delta79, _delta8, _delta80, _delta81, _delta82, _delta83, _delta84, _delta85, _delta86, _delta87, _delta88, _delta89, _delta9, _objIndexCopy, _objIndexCopy1, _objIndexCopy10, _objIndexCopy11, _objIndexCopy12, _objIndexCopy13, _objIndexCopy14, _objIndexCopy15, _objIndexCopy16, _objIndexCopy2, _objIndexCopy3, _objIndexCopy4, _objIndexCopy5, _objIndexCopy6, _objIndexCopy7, _objIndexCopy8, _objIndexCopy9, _objPtr, _objPtr1, _objPtr2, allowEmpty, eclIndex, end, isClass, isEmpty, mapPtr, over, over1, over2, over21, range1, satisfied, strClassType, testNumType, tokenPtr, v1, v10, v100, v101, v102, v103, v104, v105, v106, v107, v108, v109, v11, v110, v111, v112, v113, v114, v115, v116, v117, v118, v119, v12, v120, v121, v122, v123, v124, v125, v126, v127, v128, v129, v13, v130, v131, v132, v133, v134, v135, v136, v137, v138, v139, v14, v140, v141, v142, v143, v144, v145, v146, v147, v148, v149, v15, v150, v151, v152, v153, v154, v155, v156, v157, v158, v159, v16, v160, v161, v162, v163, v164, v165, v166, v167, v168, v169, v17, v170, v171, v172, v173, v174, v175, v176, v177, v178, v179, v18, v180, v181, v182, v183, v184, v185, v186, v187, v188, v189, v19, v190, v191, v192, v193, v194, v195, v196, v197, v198, v199, v2, v20, v200, v201, v202, v203, v204, v205, v206, v207, v208, v209, v210, v211, v212, v213, v214, v215, v216, v217, v218, v219, v220, v221, v222, v223, v224, v225, v226, v227, v228, v229, v230, v231, v232, v233, v234, v235, v236, v237, v238, v239, v240, v241, v242, v243, v244, v245, v246, v247, v248, v249, v250, v251, v252, v253, v254, v255, v256, v257, v258, v259, v260, v261, v262, v263, v264, v265, v266, v267, v268, v269, v270, v271, v272, v273, v274, v275, v276, v277, v278, v279, v280, v281, v282, v283, v284, v285, v286, v287, v288, v289, v290, v291, v292, v293, v294, v295, v296, v297, v298, v299, v3, v300, v301, v302, v303, v304, v305, v306, v307, v308, v309, v310, v311, v312, v313, v314, v315, v316, v317, v318, v319, v320, v321, v322, v323, v324, v325, v326, v327, v328, v329, v330, v331, v332, v333, v334, v335, v336, v337, v338, v339, v340, v341, v342, v343, v344, v345, v346, v347, v348, v349, v350, v351, v352, v353, v354, v355, v356, v357, v358, v359, v360, v361, v362, v363, v364, v365, v366, v374, v375, v376, v377, v378, v379, v380, v381, v382, v383, v384, v385, v386, v387, v388, v389, v390, v391, v392, v393, v394, v395, v396, v397, v398, v399, v4, v400, v401, v402, v403, v404, v405, v406, v407, v408, v409, v410, v411, v412, v413, v414, v415, v416, v417, v418, v419, v420, v421, v422, v423, v424, v425, v426, v427, v428, v429, v43, v430, v431, v432, v433, v434, v435, v436, v437, v438, v439, v44, v440, v441, v442, v443, v444, v445, v446, v45, v46, v47, v48, v49, v5, v50, v51, v52, v53, v54, v55, v56, v57, v58, v59, v6, v60, v61, v62, v63, v64, v65, v66, v67, v68, v69, v7, v70, v71, v72, v73, v74, v75, v76, v77, v78, v79, v8, v80, v81, v82, v83, v84, v85, v86, v87, v88, v89, v9, v90, v91, v92, v93, v94, v99
 	mapPtr = (*TCompileEnv)(unsafe.Pointer(envPtr)).FextCmdMapPtr
 	eclIndex = (*TExtCmdLoc)(unsafe.Pointer(mapPtr)).Fnuloc - int32(1) /* TIP #280 */
 	tokenPtr = (*TTcl_Parse)(unsafe.Pointer(parsePtr)).FtokenPtr + uintptr((*TTcl_Token)(unsafe.Pointer((*TTcl_Parse)(unsafe.Pointer(parsePtr)).FtokenPtr)).FnumComponents+libc.Int32FromInt32(1))*16
@@ -90136,20 +90144,20 @@ _38:
 	}
 	goto _370
 _367:
-_372:
+_373:
 	_objIndexCopy14 = XTclRegisterLiteral(tls, envPtr, __ccgo_ts+18120, int32(libc.Uint32FromInt64(2)-libc.Uint32FromInt32(1)), 0)
 	if _objIndexCopy14 <= int32(255) {
 		if (*TCompileEnv)(unsafe.Pointer(envPtr)).FcodeNext+uintptr(2) > (*TCompileEnv)(unsafe.Pointer(envPtr)).FcodeEnd {
 			XTclExpandCodeArray(tls, envPtr)
 		}
-		v374 = envPtr + 76
-		v373 = *(*uintptr)(unsafe.Pointer(v374))
-		*(*uintptr)(unsafe.Pointer(v374))++
-		*(*uint8)(unsafe.Pointer(v373)) = uint8(libc.Int32FromInt32(m_INST_PUSH1))
-		v376 = envPtr + 76
-		v375 = *(*uintptr)(unsafe.Pointer(v376))
-		*(*uintptr)(unsafe.Pointer(v376))++
-		*(*uint8)(unsafe.Pointer(v375)) = uint8(uint32(_objIndexCopy14))
+		v375 = envPtr + 76
+		v374 = *(*uintptr)(unsafe.Pointer(v375))
+		*(*uintptr)(unsafe.Pointer(v375))++
+		*(*uint8)(unsafe.Pointer(v374)) = uint8(libc.Int32FromInt32(m_INST_PUSH1))
+		v377 = envPtr + 76
+		v376 = *(*uintptr)(unsafe.Pointer(v377))
+		*(*uintptr)(unsafe.Pointer(v377))++
+		*(*uint8)(unsafe.Pointer(v376)) = uint8(uint32(_objIndexCopy14))
 		if (*TCompileEnv)(unsafe.Pointer(envPtr)).FatCmdStart < int32(2) {
 			(*TCompileEnv)(unsafe.Pointer(envPtr)).FatCmdStart = 0
 		}
@@ -90169,26 +90177,26 @@ _372:
 		if (*TCompileEnv)(unsafe.Pointer(envPtr)).FcodeNext+uintptr(5) > (*TCompileEnv)(unsafe.Pointer(envPtr)).FcodeEnd {
 			XTclExpandCodeArray(tls, envPtr)
 		}
-		v378 = envPtr + 76
-		v377 = *(*uintptr)(unsafe.Pointer(v378))
-		*(*uintptr)(unsafe.Pointer(v378))++
-		*(*uint8)(unsafe.Pointer(v377)) = uint8(libc.Int32FromInt32(m_INST_PUSH4))
-		v380 = envPtr + 76
-		v379 = *(*uintptr)(unsafe.Pointer(v380))
-		*(*uintptr)(unsafe.Pointer(v380))++
-		*(*uint8)(unsafe.Pointer(v379)) = uint8(uint32(_objIndexCopy14) >> libc.Int32FromInt32(24))
-		v382 = envPtr + 76
-		v381 = *(*uintptr)(unsafe.Pointer(v382))
-		*(*uintptr)(unsafe.Pointer(v382))++
-		*(*uint8)(unsafe.Pointer(v381)) = uint8(uint32(_objIndexCopy14) >> libc.Int32FromInt32(16))
-		v384 = envPtr + 76
-		v383 = *(*uintptr)(unsafe.Pointer(v384))
-		*(*uintptr)(unsafe.Pointer(v384))++
-		*(*uint8)(unsafe.Pointer(v383)) = uint8(uint32(_objIndexCopy14) >> libc.Int32FromInt32(8))
-		v386 = envPtr + 76
-		v385 = *(*uintptr)(unsafe.Pointer(v386))
-		*(*uintptr)(unsafe.Pointer(v386))++
-		*(*uint8)(unsafe.Pointer(v385)) = uint8(uint32(_objIndexCopy14))
+		v379 = envPtr + 76
+		v378 = *(*uintptr)(unsafe.Pointer(v379))
+		*(*uintptr)(unsafe.Pointer(v379))++
+		*(*uint8)(unsafe.Pointer(v378)) = uint8(libc.Int32FromInt32(m_INST_PUSH4))
+		v381 = envPtr + 76
+		v380 = *(*uintptr)(unsafe.Pointer(v381))
+		*(*uintptr)(unsafe.Pointer(v381))++
+		*(*uint8)(unsafe.Pointer(v380)) = uint8(uint32(_objIndexCopy14) >> libc.Int32FromInt32(24))
+		v383 = envPtr + 76
+		v382 = *(*uintptr)(unsafe.Pointer(v383))
+		*(*uintptr)(unsafe.Pointer(v383))++
+		*(*uint8)(unsafe.Pointer(v382)) = uint8(uint32(_objIndexCopy14) >> libc.Int32FromInt32(16))
+		v385 = envPtr + 76
+		v384 = *(*uintptr)(unsafe.Pointer(v385))
+		*(*uintptr)(unsafe.Pointer(v385))++
+		*(*uint8)(unsafe.Pointer(v384)) = uint8(uint32(_objIndexCopy14) >> libc.Int32FromInt32(8))
+		v387 = envPtr + 76
+		v386 = *(*uintptr)(unsafe.Pointer(v387))
+		*(*uintptr)(unsafe.Pointer(v387))++
+		*(*uint8)(unsafe.Pointer(v386)) = uint8(uint32(_objIndexCopy14))
 		if (*TCompileEnv)(unsafe.Pointer(envPtr)).FatCmdStart < int32(2) {
 			(*TCompileEnv)(unsafe.Pointer(envPtr)).FatCmdStart = 0
 		}
@@ -90205,18 +90213,20 @@ _372:
 			*(*int32)(unsafe.Pointer(envPtr + 32)) += _delta74
 		}
 	}
+	goto _372
+_372:
 	if 0 != 0 {
-		goto _372
+		goto _373
 	}
 	goto _371
 _371:
 	if (*TCompileEnv)(unsafe.Pointer(envPtr)).FcodeNext == (*TCompileEnv)(unsafe.Pointer(envPtr)).FcodeEnd {
 		XTclExpandCodeArray(tls, envPtr)
 	}
-	v388 = envPtr + 76
-	v387 = *(*uintptr)(unsafe.Pointer(v388))
-	*(*uintptr)(unsafe.Pointer(v388))++
-	*(*uint8)(unsafe.Pointer(v387)) = uint8(libc.Int32FromInt32(m_INST_EQ))
+	v389 = envPtr + 76
+	v388 = *(*uintptr)(unsafe.Pointer(v389))
+	*(*uintptr)(unsafe.Pointer(v389))++
+	*(*uint8)(unsafe.Pointer(v388)) = uint8(libc.Int32FromInt32(m_INST_EQ))
 	if (*TCompileEnv)(unsafe.Pointer(envPtr)).FatCmdStart < int32(2) {
 		(*TCompileEnv)(unsafe.Pointer(envPtr)).FatCmdStart = 0
 	}
@@ -90239,14 +90249,14 @@ _368:
 		if (*TCompileEnv)(unsafe.Pointer(envPtr)).FcodeNext+uintptr(2) > (*TCompileEnv)(unsafe.Pointer(envPtr)).FcodeEnd {
 			XTclExpandCodeArray(tls, envPtr)
 		}
-		v390 = envPtr + 76
-		v389 = *(*uintptr)(unsafe.Pointer(v390))
-		*(*uintptr)(unsafe.Pointer(v390))++
-		*(*uint8)(unsafe.Pointer(v389)) = uint8(libc.Int32FromInt32(m_INST_PUSH1))
-		v392 = envPtr + 76
-		v391 = *(*uintptr)(unsafe.Pointer(v392))
-		*(*uintptr)(unsafe.Pointer(v392))++
-		*(*uint8)(unsafe.Pointer(v391)) = uint8(uint32(_objIndexCopy15))
+		v391 = envPtr + 76
+		v390 = *(*uintptr)(unsafe.Pointer(v391))
+		*(*uintptr)(unsafe.Pointer(v391))++
+		*(*uint8)(unsafe.Pointer(v390)) = uint8(libc.Int32FromInt32(m_INST_PUSH1))
+		v393 = envPtr + 76
+		v392 = *(*uintptr)(unsafe.Pointer(v393))
+		*(*uintptr)(unsafe.Pointer(v393))++
+		*(*uint8)(unsafe.Pointer(v392)) = uint8(uint32(_objIndexCopy15))
 		if (*TCompileEnv)(unsafe.Pointer(envPtr)).FatCmdStart < int32(2) {
 			(*TCompileEnv)(unsafe.Pointer(envPtr)).FatCmdStart = 0
 		}
@@ -90266,26 +90276,26 @@ _368:
 		if (*TCompileEnv)(unsafe.Pointer(envPtr)).FcodeNext+uintptr(5) > (*TCompileEnv)(unsafe.Pointer(envPtr)).FcodeEnd {
 			XTclExpandCodeArray(tls, envPtr)
 		}
-		v394 = envPtr + 76
-		v393 = *(*uintptr)(unsafe.Pointer(v394))
-		*(*uintptr)(unsafe.Pointer(v394))++
-		*(*uint8)(unsafe.Pointer(v393)) = uint8(libc.Int32FromInt32(m_INST_PUSH4))
-		v396 = envPtr + 76
-		v395 = *(*uintptr)(unsafe.Pointer(v396))
-		*(*uintptr)(unsafe.Pointer(v396))++
-		*(*uint8)(unsafe.Pointer(v395)) = uint8(uint32(_objIndexCopy15) >> libc.Int32FromInt32(24))
-		v398 = envPtr + 76
-		v397 = *(*uintptr)(unsafe.Pointer(v398))
-		*(*uintptr)(unsafe.Pointer(v398))++
-		*(*uint8)(unsafe.Pointer(v397)) = uint8(uint32(_objIndexCopy15) >> libc.Int32FromInt32(16))
-		v400 = envPtr + 76
-		v399 = *(*uintptr)(unsafe.Pointer(v400))
-		*(*uintptr)(unsafe.Pointer(v400))++
-		*(*uint8)(unsafe.Pointer(v399)) = uint8(uint32(_objIndexCopy15) >> libc.Int32FromInt32(8))
-		v402 = envPtr + 76
-		v401 = *(*uintptr)(unsafe.Pointer(v402))
-		*(*uintptr)(unsafe.Pointer(v402))++
-		*(*uint8)(unsafe.Pointer(v401)) = uint8(uint32(_objIndexCopy15))
+		v395 = envPtr + 76
+		v394 = *(*uintptr)(unsafe.Pointer(v395))
+		*(*uintptr)(unsafe.Pointer(v395))++
+		*(*uint8)(unsafe.Pointer(v394)) = uint8(libc.Int32FromInt32(m_INST_PUSH4))
+		v397 = envPtr + 76
+		v396 = *(*uintptr)(unsafe.Pointer(v397))
+		*(*uintptr)(unsafe.Pointer(v397))++
+		*(*uint8)(unsafe.Pointer(v396)) = uint8(uint32(_objIndexCopy15) >> libc.Int32FromInt32(24))
+		v399 = envPtr + 76
+		v398 = *(*uintptr)(unsafe.Pointer(v399))
+		*(*uintptr)(unsafe.Pointer(v399))++
+		*(*uint8)(unsafe.Pointer(v398)) = uint8(uint32(_objIndexCopy15) >> libc.Int32FromInt32(16))
+		v401 = envPtr + 76
+		v400 = *(*uintptr)(unsafe.Pointer(v401))
+		*(*uintptr)(unsafe.Pointer(v401))++
+		*(*uint8)(unsafe.Pointer(v400)) = uint8(uint32(_objIndexCopy15) >> libc.Int32FromInt32(8))
+		v403 = envPtr + 76
+		v402 = *(*uintptr)(unsafe.Pointer(v403))
+		*(*uintptr)(unsafe.Pointer(v403))++
+		*(*uint8)(unsafe.Pointer(v402)) = uint8(uint32(_objIndexCopy15))
 		if (*TCompileEnv)(unsafe.Pointer(envPtr)).FatCmdStart < int32(2) {
 			(*TCompileEnv)(unsafe.Pointer(envPtr)).FatCmdStart = 0
 		}
@@ -90305,10 +90315,10 @@ _368:
 	if (*TCompileEnv)(unsafe.Pointer(envPtr)).FcodeNext == (*TCompileEnv)(unsafe.Pointer(envPtr)).FcodeEnd {
 		XTclExpandCodeArray(tls, envPtr)
 	}
-	v404 = envPtr + 76
-	v403 = *(*uintptr)(unsafe.Pointer(v404))
-	*(*uintptr)(unsafe.Pointer(v404))++
-	*(*uint8)(unsafe.Pointer(v403)) = uint8(libc.Int32FromInt32(m_INST_LE))
+	v405 = envPtr + 76
+	v404 = *(*uintptr)(unsafe.Pointer(v405))
+	*(*uintptr)(unsafe.Pointer(v405))++
+	*(*uint8)(unsafe.Pointer(v404)) = uint8(libc.Int32FromInt32(m_INST_LE))
 	if (*TCompileEnv)(unsafe.Pointer(envPtr)).FatCmdStart < int32(2) {
 		(*TCompileEnv)(unsafe.Pointer(envPtr)).FatCmdStart = 0
 	}
@@ -90331,14 +90341,14 @@ _369:
 		if (*TCompileEnv)(unsafe.Pointer(envPtr)).FcodeNext+uintptr(2) > (*TCompileEnv)(unsafe.Pointer(envPtr)).FcodeEnd {
 			XTclExpandCodeArray(tls, envPtr)
 		}
-		v406 = envPtr + 76
-		v405 = *(*uintptr)(unsafe.Pointer(v406))
-		*(*uintptr)(unsafe.Pointer(v406))++
-		*(*uint8)(unsafe.Pointer(v405)) = uint8(libc.Int32FromInt32(m_INST_PUSH1))
-		v408 = envPtr + 76
-		v407 = *(*uintptr)(unsafe.Pointer(v408))
-		*(*uintptr)(unsafe.Pointer(v408))++
-		*(*uint8)(unsafe.Pointer(v407)) = uint8(uint32(_objIndexCopy16))
+		v407 = envPtr + 76
+		v406 = *(*uintptr)(unsafe.Pointer(v407))
+		*(*uintptr)(unsafe.Pointer(v407))++
+		*(*uint8)(unsafe.Pointer(v406)) = uint8(libc.Int32FromInt32(m_INST_PUSH1))
+		v409 = envPtr + 76
+		v408 = *(*uintptr)(unsafe.Pointer(v409))
+		*(*uintptr)(unsafe.Pointer(v409))++
+		*(*uint8)(unsafe.Pointer(v408)) = uint8(uint32(_objIndexCopy16))
 		if (*TCompileEnv)(unsafe.Pointer(envPtr)).FatCmdStart < int32(2) {
 			(*TCompileEnv)(unsafe.Pointer(envPtr)).FatCmdStart = 0
 		}
@@ -90358,26 +90368,26 @@ _369:
 		if (*TCompileEnv)(unsafe.Pointer(envPtr)).FcodeNext+uintptr(5) > (*TCompileEnv)(unsafe.Pointer(envPtr)).FcodeEnd {
 			XTclExpandCodeArray(tls, envPtr)
 		}
-		v410 = envPtr + 76
-		v409 = *(*uintptr)(unsafe.Pointer(v410))
-		*(*uintptr)(unsafe.Pointer(v410))++
-		*(*uint8)(unsafe.Pointer(v409)) = uint8(libc.Int32FromInt32(m_INST_PUSH4))
-		v412 = envPtr + 76
-		v411 = *(*uintptr)(unsafe.Pointer(v412))
-		*(*uintptr)(unsafe.Pointer(v412))++
-		*(*uint8)(unsafe.Pointer(v411)) = uint8(uint32(_objIndexCopy16) >> libc.Int32FromInt32(24))
-		v414 = envPtr + 76
-		v413 = *(*uintptr)(unsafe.Pointer(v414))
-		*(*uintptr)(unsafe.Pointer(v414))++
-		*(*uint8)(unsafe.Pointer(v413)) = uint8(uint32(_objIndexCopy16) >> libc.Int32FromInt32(16))
-		v416 = envPtr + 76
-		v415 = *(*uintptr)(unsafe.Pointer(v416))
-		*(*uintptr)(unsafe.Pointer(v416))++
-		*(*uint8)(unsafe.Pointer(v415)) = uint8(uint32(_objIndexCopy16) >> libc.Int32FromInt32(8))
-		v418 = envPtr + 76
-		v417 = *(*uintptr)(unsafe.Pointer(v418))
-		*(*uintptr)(unsafe.Pointer(v418))++
-		*(*uint8)(unsafe.Pointer(v417)) = uint8(uint32(_objIndexCopy16))
+		v411 = envPtr + 76
+		v410 = *(*uintptr)(unsafe.Pointer(v411))
+		*(*uintptr)(unsafe.Pointer(v411))++
+		*(*uint8)(unsafe.Pointer(v410)) = uint8(libc.Int32FromInt32(m_INST_PUSH4))
+		v413 = envPtr + 76
+		v412 = *(*uintptr)(unsafe.Pointer(v413))
+		*(*uintptr)(unsafe.Pointer(v413))++
+		*(*uint8)(unsafe.Pointer(v412)) = uint8(uint32(_objIndexCopy16) >> libc.Int32FromInt32(24))
+		v415 = envPtr + 76
+		v414 = *(*uintptr)(unsafe.Pointer(v415))
+		*(*uintptr)(unsafe.Pointer(v415))++
+		*(*uint8)(unsafe.Pointer(v414)) = uint8(uint32(_objIndexCopy16) >> libc.Int32FromInt32(16))
+		v417 = envPtr + 76
+		v416 = *(*uintptr)(unsafe.Pointer(v417))
+		*(*uintptr)(unsafe.Pointer(v417))++
+		*(*uint8)(unsafe.Pointer(v416)) = uint8(uint32(_objIndexCopy16) >> libc.Int32FromInt32(8))
+		v419 = envPtr + 76
+		v418 = *(*uintptr)(unsafe.Pointer(v419))
+		*(*uintptr)(unsafe.Pointer(v419))++
+		*(*uint8)(unsafe.Pointer(v418)) = uint8(uint32(_objIndexCopy16))
 		if (*TCompileEnv)(unsafe.Pointer(envPtr)).FatCmdStart < int32(2) {
 			(*TCompileEnv)(unsafe.Pointer(envPtr)).FatCmdStart = 0
 		}
@@ -90397,10 +90407,10 @@ _369:
 	if (*TCompileEnv)(unsafe.Pointer(envPtr)).FcodeNext == (*TCompileEnv)(unsafe.Pointer(envPtr)).FcodeEnd {
 		XTclExpandCodeArray(tls, envPtr)
 	}
-	v420 = envPtr + 76
-	v419 = *(*uintptr)(unsafe.Pointer(v420))
-	*(*uintptr)(unsafe.Pointer(v420))++
-	*(*uint8)(unsafe.Pointer(v419)) = uint8(libc.Int32FromInt32(m_INST_LE))
+	v421 = envPtr + 76
+	v420 = *(*uintptr)(unsafe.Pointer(v421))
+	*(*uintptr)(unsafe.Pointer(v421))++
+	*(*uint8)(unsafe.Pointer(v420)) = uint8(libc.Int32FromInt32(m_INST_LE))
 	if (*TCompileEnv)(unsafe.Pointer(envPtr)).FatCmdStart < int32(2) {
 		(*TCompileEnv)(unsafe.Pointer(envPtr)).FatCmdStart = 0
 	}
@@ -90425,26 +90435,26 @@ _41:
 	if (*TCompileEnv)(unsafe.Pointer(envPtr)).FcodeNext+uintptr(5) > (*TCompileEnv)(unsafe.Pointer(envPtr)).FcodeEnd {
 		XTclExpandCodeArray(tls, envPtr)
 	}
-	v422 = envPtr + 76
-	v421 = *(*uintptr)(unsafe.Pointer(v422))
-	*(*uintptr)(unsafe.Pointer(v422))++
-	*(*uint8)(unsafe.Pointer(v421)) = uint8(libc.Int32FromInt32(m_INST_BEGIN_CATCH4))
-	v424 = envPtr + 76
-	v423 = *(*uintptr)(unsafe.Pointer(v424))
-	*(*uintptr)(unsafe.Pointer(v424))++
-	*(*uint8)(unsafe.Pointer(v423)) = uint8(uint32(range1) >> libc.Int32FromInt32(24))
-	v426 = envPtr + 76
-	v425 = *(*uintptr)(unsafe.Pointer(v426))
-	*(*uintptr)(unsafe.Pointer(v426))++
-	*(*uint8)(unsafe.Pointer(v425)) = uint8(uint32(range1) >> libc.Int32FromInt32(16))
-	v428 = envPtr + 76
-	v427 = *(*uintptr)(unsafe.Pointer(v428))
-	*(*uintptr)(unsafe.Pointer(v428))++
-	*(*uint8)(unsafe.Pointer(v427)) = uint8(uint32(range1) >> libc.Int32FromInt32(8))
-	v430 = envPtr + 76
-	v429 = *(*uintptr)(unsafe.Pointer(v430))
-	*(*uintptr)(unsafe.Pointer(v430))++
-	*(*uint8)(unsafe.Pointer(v429)) = uint8(uint32(range1))
+	v423 = envPtr + 76
+	v422 = *(*uintptr)(unsafe.Pointer(v423))
+	*(*uintptr)(unsafe.Pointer(v423))++
+	*(*uint8)(unsafe.Pointer(v422)) = uint8(libc.Int32FromInt32(m_INST_BEGIN_CATCH4))
+	v425 = envPtr + 76
+	v424 = *(*uintptr)(unsafe.Pointer(v425))
+	*(*uintptr)(unsafe.Pointer(v425))++
+	*(*uint8)(unsafe.Pointer(v424)) = uint8(uint32(range1) >> libc.Int32FromInt32(24))
+	v427 = envPtr + 76
+	v426 = *(*uintptr)(unsafe.Pointer(v427))
+	*(*uintptr)(unsafe.Pointer(v427))++
+	*(*uint8)(unsafe.Pointer(v426)) = uint8(uint32(range1) >> libc.Int32FromInt32(16))
+	v429 = envPtr + 76
+	v428 = *(*uintptr)(unsafe.Pointer(v429))
+	*(*uintptr)(unsafe.Pointer(v429))++
+	*(*uint8)(unsafe.Pointer(v428)) = uint8(uint32(range1) >> libc.Int32FromInt32(8))
+	v431 = envPtr + 76
+	v430 = *(*uintptr)(unsafe.Pointer(v431))
+	*(*uintptr)(unsafe.Pointer(v431))++
+	*(*uint8)(unsafe.Pointer(v430)) = uint8(uint32(range1))
 	if (*TCompileEnv)(unsafe.Pointer(envPtr)).FatCmdStart < int32(2) {
 		(*TCompileEnv)(unsafe.Pointer(envPtr)).FatCmdStart = 0
 	}
@@ -90462,19 +90472,19 @@ _41:
 	}
 	(*TCompileEnv)(unsafe.Pointer(envPtr)).FexceptDepth++
 	if (*TCompileEnv)(unsafe.Pointer(envPtr)).FexceptDepth > (*TCompileEnv)(unsafe.Pointer(envPtr)).FmaxExceptDepth {
-		v431 = (*TCompileEnv)(unsafe.Pointer(envPtr)).FexceptDepth
+		v432 = (*TCompileEnv)(unsafe.Pointer(envPtr)).FexceptDepth
 	} else {
-		v431 = (*TCompileEnv)(unsafe.Pointer(envPtr)).FmaxExceptDepth
+		v432 = (*TCompileEnv)(unsafe.Pointer(envPtr)).FmaxExceptDepth
 	}
-	(*TCompileEnv)(unsafe.Pointer(envPtr)).FmaxExceptDepth = v431
+	(*TCompileEnv)(unsafe.Pointer(envPtr)).FmaxExceptDepth = v432
 	(*(*TExceptionRange)(unsafe.Pointer((*TCompileEnv)(unsafe.Pointer(envPtr)).FexceptArrayPtr + uintptr(range1)*28))).FcodeOffset = int32((*TCompileEnv)(unsafe.Pointer(envPtr)).FcodeNext) - int32((*TCompileEnv)(unsafe.Pointer(envPtr)).FcodeStart)
 	if (*TCompileEnv)(unsafe.Pointer(envPtr)).FcodeNext == (*TCompileEnv)(unsafe.Pointer(envPtr)).FcodeEnd {
 		XTclExpandCodeArray(tls, envPtr)
 	}
-	v433 = envPtr + 76
-	v432 = *(*uintptr)(unsafe.Pointer(v433))
-	*(*uintptr)(unsafe.Pointer(v433))++
-	*(*uint8)(unsafe.Pointer(v432)) = uint8(libc.Int32FromInt32(m_INST_DUP))
+	v434 = envPtr + 76
+	v433 = *(*uintptr)(unsafe.Pointer(v434))
+	*(*uintptr)(unsafe.Pointer(v434))++
+	*(*uint8)(unsafe.Pointer(v433)) = uint8(libc.Int32FromInt32(m_INST_DUP))
 	if (*TCompileEnv)(unsafe.Pointer(envPtr)).FatCmdStart < int32(2) {
 		(*TCompileEnv)(unsafe.Pointer(envPtr)).FatCmdStart = 0
 	}
@@ -90493,10 +90503,10 @@ _41:
 	if (*TCompileEnv)(unsafe.Pointer(envPtr)).FcodeNext == (*TCompileEnv)(unsafe.Pointer(envPtr)).FcodeEnd {
 		XTclExpandCodeArray(tls, envPtr)
 	}
-	v435 = envPtr + 76
-	v434 = *(*uintptr)(unsafe.Pointer(v435))
-	*(*uintptr)(unsafe.Pointer(v435))++
-	*(*uint8)(unsafe.Pointer(v434)) = uint8(libc.Int32FromInt32(m_INST_LIST_LENGTH))
+	v436 = envPtr + 76
+	v435 = *(*uintptr)(unsafe.Pointer(v436))
+	*(*uintptr)(unsafe.Pointer(v436))++
+	*(*uint8)(unsafe.Pointer(v435)) = uint8(libc.Int32FromInt32(m_INST_LIST_LENGTH))
 	if (*TCompileEnv)(unsafe.Pointer(envPtr)).FatCmdStart < int32(2) {
 		(*TCompileEnv)(unsafe.Pointer(envPtr)).FatCmdStart = 0
 	}
@@ -90515,10 +90525,10 @@ _41:
 	if (*TCompileEnv)(unsafe.Pointer(envPtr)).FcodeNext == (*TCompileEnv)(unsafe.Pointer(envPtr)).FcodeEnd {
 		XTclExpandCodeArray(tls, envPtr)
 	}
-	v437 = envPtr + 76
-	v436 = *(*uintptr)(unsafe.Pointer(v437))
-	*(*uintptr)(unsafe.Pointer(v437))++
-	*(*uint8)(unsafe.Pointer(v436)) = uint8(libc.Int32FromInt32(m_INST_POP))
+	v438 = envPtr + 76
+	v437 = *(*uintptr)(unsafe.Pointer(v438))
+	*(*uintptr)(unsafe.Pointer(v438))++
+	*(*uint8)(unsafe.Pointer(v437)) = uint8(libc.Int32FromInt32(m_INST_POP))
 	if (*TCompileEnv)(unsafe.Pointer(envPtr)).FatCmdStart < int32(2) {
 		(*TCompileEnv)(unsafe.Pointer(envPtr)).FatCmdStart = 0
 	}
@@ -90540,10 +90550,10 @@ _41:
 	if (*TCompileEnv)(unsafe.Pointer(envPtr)).FcodeNext == (*TCompileEnv)(unsafe.Pointer(envPtr)).FcodeEnd {
 		XTclExpandCodeArray(tls, envPtr)
 	}
-	v439 = envPtr + 76
-	v438 = *(*uintptr)(unsafe.Pointer(v439))
-	*(*uintptr)(unsafe.Pointer(v439))++
-	*(*uint8)(unsafe.Pointer(v438)) = uint8(libc.Int32FromInt32(m_INST_POP))
+	v440 = envPtr + 76
+	v439 = *(*uintptr)(unsafe.Pointer(v440))
+	*(*uintptr)(unsafe.Pointer(v440))++
+	*(*uint8)(unsafe.Pointer(v439)) = uint8(libc.Int32FromInt32(m_INST_POP))
 	if (*TCompileEnv)(unsafe.Pointer(envPtr)).FatCmdStart < int32(2) {
 		(*TCompileEnv)(unsafe.Pointer(envPtr)).FatCmdStart = 0
 	}
@@ -90562,10 +90572,10 @@ _41:
 	if (*TCompileEnv)(unsafe.Pointer(envPtr)).FcodeNext == (*TCompileEnv)(unsafe.Pointer(envPtr)).FcodeEnd {
 		XTclExpandCodeArray(tls, envPtr)
 	}
-	v441 = envPtr + 76
-	v440 = *(*uintptr)(unsafe.Pointer(v441))
-	*(*uintptr)(unsafe.Pointer(v441))++
-	*(*uint8)(unsafe.Pointer(v440)) = uint8(libc.Int32FromInt32(m_INST_PUSH_RETURN_CODE))
+	v442 = envPtr + 76
+	v441 = *(*uintptr)(unsafe.Pointer(v442))
+	*(*uintptr)(unsafe.Pointer(v442))++
+	*(*uint8)(unsafe.Pointer(v441)) = uint8(libc.Int32FromInt32(m_INST_PUSH_RETURN_CODE))
 	if (*TCompileEnv)(unsafe.Pointer(envPtr)).FatCmdStart < int32(2) {
 		(*TCompileEnv)(unsafe.Pointer(envPtr)).FatCmdStart = 0
 	}
@@ -90584,10 +90594,10 @@ _41:
 	if (*TCompileEnv)(unsafe.Pointer(envPtr)).FcodeNext == (*TCompileEnv)(unsafe.Pointer(envPtr)).FcodeEnd {
 		XTclExpandCodeArray(tls, envPtr)
 	}
-	v443 = envPtr + 76
-	v442 = *(*uintptr)(unsafe.Pointer(v443))
-	*(*uintptr)(unsafe.Pointer(v443))++
-	*(*uint8)(unsafe.Pointer(v442)) = uint8(libc.Int32FromInt32(m_INST_END_CATCH))
+	v444 = envPtr + 76
+	v443 = *(*uintptr)(unsafe.Pointer(v444))
+	*(*uintptr)(unsafe.Pointer(v444))++
+	*(*uint8)(unsafe.Pointer(v443)) = uint8(libc.Int32FromInt32(m_INST_END_CATCH))
 	if (*TCompileEnv)(unsafe.Pointer(envPtr)).FatCmdStart < int32(2) {
 		(*TCompileEnv)(unsafe.Pointer(envPtr)).FatCmdStart = 0
 	}
@@ -90606,10 +90616,10 @@ _41:
 	if (*TCompileEnv)(unsafe.Pointer(envPtr)).FcodeNext == (*TCompileEnv)(unsafe.Pointer(envPtr)).FcodeEnd {
 		XTclExpandCodeArray(tls, envPtr)
 	}
-	v445 = envPtr + 76
-	v444 = *(*uintptr)(unsafe.Pointer(v445))
-	*(*uintptr)(unsafe.Pointer(v445))++
-	*(*uint8)(unsafe.Pointer(v444)) = uint8(libc.Int32FromInt32(m_INST_LNOT))
+	v446 = envPtr + 76
+	v445 = *(*uintptr)(unsafe.Pointer(v446))
+	*(*uintptr)(unsafe.Pointer(v446))++
+	*(*uint8)(unsafe.Pointer(v445)) = uint8(libc.Int32FromInt32(m_INST_LNOT))
 	if (*TCompileEnv)(unsafe.Pointer(envPtr)).FatCmdStart < int32(2) {
 		(*TCompileEnv)(unsafe.Pointer(envPtr)).FatCmdStart = 0
 	}
@@ -95964,11 +95974,11 @@ freeTemporaries:
 func _IssueSwitchChainedTests(tls *libc.TLS, interp uintptr, envPtr uintptr, mode int32, noCase int32, valueIndex int32, numBodyTokens int32, bodyToken uintptr, bodyLines uintptr, bodyContLines uintptr) {
 	bp := tls.Alloc(240)
 	defer tls.Free(240) /* Array of continuation line info. */
-	var _delta, _delta1, _delta10, _delta11, _delta12, _delta13, _delta14, _delta15, _delta2, _delta3, _delta4, _delta5, _delta6, _delta7, _delta8, _delta9, _objIndexCopy, _objIndexCopy1, _objIndexCopy2, cflags, contFixCount, contFixIndex, fixupCount, foundDefault, i, j, j1, nextArmFixupIndex, simple, v27, v66 int32
-	var fixupArray, fixupTargetArray, v10, v11, v12, v13, v14, v15, v16, v17, v18, v19, v20, v21, v22, v23, v24, v25, v26, v28, v29, v30, v31, v32, v33, v34, v35, v36, v37, v38, v39, v40, v41, v42, v43, v44, v45, v46, v47, v48, v49, v50, v51, v52, v53, v54, v55, v56, v57, v58, v59, v60, v61, v62, v63, v64, v65, v67, v68, v69, v70, v71, v72, v73, v74, v75, v76, v78, v79, v80, v81, v82, v83, v84, v85, v86, v87, v88, v89, v9, v90, v91, v92, v93, v94, v95 uintptr
+	var _delta, _delta1, _delta10, _delta11, _delta12, _delta13, _delta14, _delta15, _delta2, _delta3, _delta4, _delta5, _delta6, _delta7, _delta8, _delta9, _objIndexCopy, _objIndexCopy1, _objIndexCopy2, cflags, contFixCount, contFixIndex, fixupCount, foundDefault, i, j, j1, nextArmFixupIndex, simple, v28, v67 int32
+	var fixupArray, fixupTargetArray, v10, v11, v12, v13, v14, v15, v16, v17, v18, v19, v20, v21, v22, v23, v24, v25, v26, v27, v29, v30, v31, v32, v33, v34, v35, v36, v37, v38, v39, v40, v41, v42, v43, v44, v45, v46, v47, v48, v49, v50, v51, v52, v53, v54, v55, v56, v57, v58, v59, v60, v61, v62, v63, v64, v65, v66, v68, v69, v70, v71, v72, v73, v74, v75, v76, v77, v79, v80, v81, v82, v83, v84, v85, v86, v87, v88, v89, v90, v91, v92, v93, v94, v95, v96 uintptr
 	var _ /* ds at bp+4 */ TTcl_DString
 	var _ /* exact at bp+0 */ int32
-	_, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _ = _delta, _delta1, _delta10, _delta11, _delta12, _delta13, _delta14, _delta15, _delta2, _delta3, _delta4, _delta5, _delta6, _delta7, _delta8, _delta9, _objIndexCopy, _objIndexCopy1, _objIndexCopy2, cflags, contFixCount, contFixIndex, fixupArray, fixupCount, fixupTargetArray, foundDefault, i, j, j1, nextArmFixupIndex, simple, v10, v11, v12, v13, v14, v15, v16, v17, v18, v19, v20, v21, v22, v23, v24, v25, v26, v27, v28, v29, v30, v31, v32, v33, v34, v35, v36, v37, v38, v39, v40, v41, v42, v43, v44, v45, v46, v47, v48, v49, v50, v51, v52, v53, v54, v55, v56, v57, v58, v59, v60, v61, v62, v63, v64, v65, v66, v67, v68, v69, v70, v71, v72, v73, v74, v75, v76, v78, v79, v80, v81, v82, v83, v84, v85, v86, v87, v88, v89, v9, v90, v91, v92, v93, v94, v95
+	_, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _ = _delta, _delta1, _delta10, _delta11, _delta12, _delta13, _delta14, _delta15, _delta2, _delta3, _delta4, _delta5, _delta6, _delta7, _delta8, _delta9, _objIndexCopy, _objIndexCopy1, _objIndexCopy2, cflags, contFixCount, contFixIndex, fixupArray, fixupCount, fixupTargetArray, foundDefault, i, j, j1, nextArmFixupIndex, simple, v10, v11, v12, v13, v14, v15, v16, v17, v18, v19, v20, v21, v22, v23, v24, v25, v26, v27, v28, v29, v30, v31, v32, v33, v34, v35, v36, v37, v38, v39, v40, v41, v42, v43, v44, v45, v46, v47, v48, v49, v50, v51, v52, v53, v54, v55, v56, v57, v58, v59, v60, v61, v62, v63, v64, v65, v66, v67, v68, v69, v70, v71, v72, v73, v74, v75, v76, v77, v79, v80, v81, v82, v83, v84, v85, v86, v87, v88, v89, v90, v91, v92, v93, v94, v95, v96
 	/*
 	 * Generate a test for each arm.
 	 */
@@ -96001,14 +96011,14 @@ func _IssueSwitchChainedTests(tls *libc.TLS, interp uintptr, envPtr uintptr, mod
 			}
 			goto _6
 		_2:
-		_8:
+		_9:
 			if (*TCompileEnv)(unsafe.Pointer(envPtr)).FcodeNext == (*TCompileEnv)(unsafe.Pointer(envPtr)).FcodeEnd {
 				XTclExpandCodeArray(tls, envPtr)
 			}
-			v10 = envPtr + 76
-			v9 = *(*uintptr)(unsafe.Pointer(v10))
-			*(*uintptr)(unsafe.Pointer(v10))++
-			*(*uint8)(unsafe.Pointer(v9)) = uint8(libc.Int32FromInt32(m_INST_DUP))
+			v11 = envPtr + 76
+			v10 = *(*uintptr)(unsafe.Pointer(v11))
+			*(*uintptr)(unsafe.Pointer(v11))++
+			*(*uint8)(unsafe.Pointer(v10)) = uint8(libc.Int32FromInt32(m_INST_DUP))
 			if (*TCompileEnv)(unsafe.Pointer(envPtr)).FatCmdStart < int32(2) {
 				(*TCompileEnv)(unsafe.Pointer(envPtr)).FatCmdStart = 0
 			}
@@ -96024,8 +96034,10 @@ func _IssueSwitchChainedTests(tls *libc.TLS, interp uintptr, envPtr uintptr, mod
 				}
 				*(*int32)(unsafe.Pointer(envPtr + 32)) += _delta
 			}
+			goto _8
+		_8:
 			if 0 != 0 {
-				goto _8
+				goto _9
 			}
 			goto _7
 		_7:
@@ -96033,10 +96045,10 @@ func _IssueSwitchChainedTests(tls *libc.TLS, interp uintptr, envPtr uintptr, mod
 			if (*TCompileEnv)(unsafe.Pointer(envPtr)).FcodeNext == (*TCompileEnv)(unsafe.Pointer(envPtr)).FcodeEnd {
 				XTclExpandCodeArray(tls, envPtr)
 			}
-			v12 = envPtr + 76
-			v11 = *(*uintptr)(unsafe.Pointer(v12))
-			*(*uintptr)(unsafe.Pointer(v12))++
-			*(*uint8)(unsafe.Pointer(v11)) = uint8(libc.Int32FromInt32(m_INST_STR_EQ))
+			v13 = envPtr + 76
+			v12 = *(*uintptr)(unsafe.Pointer(v13))
+			*(*uintptr)(unsafe.Pointer(v13))++
+			*(*uint8)(unsafe.Pointer(v12)) = uint8(libc.Int32FromInt32(m_INST_STR_EQ))
 			if (*TCompileEnv)(unsafe.Pointer(envPtr)).FatCmdStart < int32(2) {
 				(*TCompileEnv)(unsafe.Pointer(envPtr)).FatCmdStart = 0
 			}
@@ -96058,26 +96070,26 @@ func _IssueSwitchChainedTests(tls *libc.TLS, interp uintptr, envPtr uintptr, mod
 			if (*TCompileEnv)(unsafe.Pointer(envPtr)).FcodeNext+uintptr(5) > (*TCompileEnv)(unsafe.Pointer(envPtr)).FcodeEnd {
 				XTclExpandCodeArray(tls, envPtr)
 			}
-			v14 = envPtr + 76
-			v13 = *(*uintptr)(unsafe.Pointer(v14))
-			*(*uintptr)(unsafe.Pointer(v14))++
-			*(*uint8)(unsafe.Pointer(v13)) = uint8(libc.Int32FromInt32(m_INST_OVER))
-			v16 = envPtr + 76
-			v15 = *(*uintptr)(unsafe.Pointer(v16))
-			*(*uintptr)(unsafe.Pointer(v16))++
-			*(*uint8)(unsafe.Pointer(v15)) = uint8(uint32(libc.Int32FromInt32(1)) >> libc.Int32FromInt32(24))
-			v18 = envPtr + 76
-			v17 = *(*uintptr)(unsafe.Pointer(v18))
-			*(*uintptr)(unsafe.Pointer(v18))++
-			*(*uint8)(unsafe.Pointer(v17)) = uint8(uint32(libc.Int32FromInt32(1)) >> libc.Int32FromInt32(16))
-			v20 = envPtr + 76
-			v19 = *(*uintptr)(unsafe.Pointer(v20))
-			*(*uintptr)(unsafe.Pointer(v20))++
-			*(*uint8)(unsafe.Pointer(v19)) = uint8(uint32(libc.Int32FromInt32(1)) >> libc.Int32FromInt32(8))
-			v22 = envPtr + 76
-			v21 = *(*uintptr)(unsafe.Pointer(v22))
-			*(*uintptr)(unsafe.Pointer(v22))++
-			*(*uint8)(unsafe.Pointer(v21)) = uint8(uint32(libc.Int32FromInt32(1)))
+			v15 = envPtr + 76
+			v14 = *(*uintptr)(unsafe.Pointer(v15))
+			*(*uintptr)(unsafe.Pointer(v15))++
+			*(*uint8)(unsafe.Pointer(v14)) = uint8(libc.Int32FromInt32(m_INST_OVER))
+			v17 = envPtr + 76
+			v16 = *(*uintptr)(unsafe.Pointer(v17))
+			*(*uintptr)(unsafe.Pointer(v17))++
+			*(*uint8)(unsafe.Pointer(v16)) = uint8(uint32(libc.Int32FromInt32(1)) >> libc.Int32FromInt32(24))
+			v19 = envPtr + 76
+			v18 = *(*uintptr)(unsafe.Pointer(v19))
+			*(*uintptr)(unsafe.Pointer(v19))++
+			*(*uint8)(unsafe.Pointer(v18)) = uint8(uint32(libc.Int32FromInt32(1)) >> libc.Int32FromInt32(16))
+			v21 = envPtr + 76
+			v20 = *(*uintptr)(unsafe.Pointer(v21))
+			*(*uintptr)(unsafe.Pointer(v21))++
+			*(*uint8)(unsafe.Pointer(v20)) = uint8(uint32(libc.Int32FromInt32(1)) >> libc.Int32FromInt32(8))
+			v23 = envPtr + 76
+			v22 = *(*uintptr)(unsafe.Pointer(v23))
+			*(*uintptr)(unsafe.Pointer(v23))++
+			*(*uint8)(unsafe.Pointer(v22)) = uint8(uint32(libc.Int32FromInt32(1)))
 			if (*TCompileEnv)(unsafe.Pointer(envPtr)).FatCmdStart < int32(2) {
 				(*TCompileEnv)(unsafe.Pointer(envPtr)).FatCmdStart = 0
 			}
@@ -96096,14 +96108,14 @@ func _IssueSwitchChainedTests(tls *libc.TLS, interp uintptr, envPtr uintptr, mod
 			if (*TCompileEnv)(unsafe.Pointer(envPtr)).FcodeNext+uintptr(2) > (*TCompileEnv)(unsafe.Pointer(envPtr)).FcodeEnd {
 				XTclExpandCodeArray(tls, envPtr)
 			}
-			v24 = envPtr + 76
-			v23 = *(*uintptr)(unsafe.Pointer(v24))
-			*(*uintptr)(unsafe.Pointer(v24))++
-			*(*uint8)(unsafe.Pointer(v23)) = uint8(libc.Int32FromInt32(m_INST_STR_MATCH))
-			v26 = envPtr + 76
-			v25 = *(*uintptr)(unsafe.Pointer(v26))
-			*(*uintptr)(unsafe.Pointer(v26))++
-			*(*uint8)(unsafe.Pointer(v25)) = uint8(uint32(noCase))
+			v25 = envPtr + 76
+			v24 = *(*uintptr)(unsafe.Pointer(v25))
+			*(*uintptr)(unsafe.Pointer(v25))++
+			*(*uint8)(unsafe.Pointer(v24)) = uint8(libc.Int32FromInt32(m_INST_STR_MATCH))
+			v27 = envPtr + 76
+			v26 = *(*uintptr)(unsafe.Pointer(v27))
+			*(*uintptr)(unsafe.Pointer(v27))++
+			*(*uint8)(unsafe.Pointer(v26)) = uint8(uint32(noCase))
 			if (*TCompileEnv)(unsafe.Pointer(envPtr)).FatCmdStart < int32(2) {
 				(*TCompileEnv)(unsafe.Pointer(envPtr)).FatCmdStart = 0
 			}
@@ -96121,9 +96133,9 @@ func _IssueSwitchChainedTests(tls *libc.TLS, interp uintptr, envPtr uintptr, mod
 			}
 			goto _6
 		_4:
-			v27 = libc.Int32FromInt32(0)
-			*(*int32)(unsafe.Pointer(bp)) = v27
-			simple = v27
+			v28 = libc.Int32FromInt32(0)
+			*(*int32)(unsafe.Pointer(bp)) = v28
+			simple = v28
 			/*
 			 * Keep in sync with TclCompileRegexpCmd.
 			 */
@@ -96138,14 +96150,14 @@ func _IssueSwitchChainedTests(tls *libc.TLS, interp uintptr, envPtr uintptr, mod
 						if (*TCompileEnv)(unsafe.Pointer(envPtr)).FcodeNext+uintptr(2) > (*TCompileEnv)(unsafe.Pointer(envPtr)).FcodeEnd {
 							XTclExpandCodeArray(tls, envPtr)
 						}
-						v29 = envPtr + 76
-						v28 = *(*uintptr)(unsafe.Pointer(v29))
-						*(*uintptr)(unsafe.Pointer(v29))++
-						*(*uint8)(unsafe.Pointer(v28)) = uint8(libc.Int32FromInt32(m_INST_PUSH1))
-						v31 = envPtr + 76
-						v30 = *(*uintptr)(unsafe.Pointer(v31))
-						*(*uintptr)(unsafe.Pointer(v31))++
-						*(*uint8)(unsafe.Pointer(v30)) = uint8(uint32(_objIndexCopy))
+						v30 = envPtr + 76
+						v29 = *(*uintptr)(unsafe.Pointer(v30))
+						*(*uintptr)(unsafe.Pointer(v30))++
+						*(*uint8)(unsafe.Pointer(v29)) = uint8(libc.Int32FromInt32(m_INST_PUSH1))
+						v32 = envPtr + 76
+						v31 = *(*uintptr)(unsafe.Pointer(v32))
+						*(*uintptr)(unsafe.Pointer(v32))++
+						*(*uint8)(unsafe.Pointer(v31)) = uint8(uint32(_objIndexCopy))
 						if (*TCompileEnv)(unsafe.Pointer(envPtr)).FatCmdStart < int32(2) {
 							(*TCompileEnv)(unsafe.Pointer(envPtr)).FatCmdStart = 0
 						}
@@ -96165,26 +96177,26 @@ func _IssueSwitchChainedTests(tls *libc.TLS, interp uintptr, envPtr uintptr, mod
 						if (*TCompileEnv)(unsafe.Pointer(envPtr)).FcodeNext+uintptr(5) > (*TCompileEnv)(unsafe.Pointer(envPtr)).FcodeEnd {
 							XTclExpandCodeArray(tls, envPtr)
 						}
-						v33 = envPtr + 76
-						v32 = *(*uintptr)(unsafe.Pointer(v33))
-						*(*uintptr)(unsafe.Pointer(v33))++
-						*(*uint8)(unsafe.Pointer(v32)) = uint8(libc.Int32FromInt32(m_INST_PUSH4))
-						v35 = envPtr + 76
-						v34 = *(*uintptr)(unsafe.Pointer(v35))
-						*(*uintptr)(unsafe.Pointer(v35))++
-						*(*uint8)(unsafe.Pointer(v34)) = uint8(uint32(_objIndexCopy) >> libc.Int32FromInt32(24))
-						v37 = envPtr + 76
-						v36 = *(*uintptr)(unsafe.Pointer(v37))
-						*(*uintptr)(unsafe.Pointer(v37))++
-						*(*uint8)(unsafe.Pointer(v36)) = uint8(uint32(_objIndexCopy) >> libc.Int32FromInt32(16))
-						v39 = envPtr + 76
-						v38 = *(*uintptr)(unsafe.Pointer(v39))
-						*(*uintptr)(unsafe.Pointer(v39))++
-						*(*uint8)(unsafe.Pointer(v38)) = uint8(uint32(_objIndexCopy) >> libc.Int32FromInt32(8))
-						v41 = envPtr + 76
-						v40 = *(*uintptr)(unsafe.Pointer(v41))
-						*(*uintptr)(unsafe.Pointer(v41))++
-						*(*uint8)(unsafe.Pointer(v40)) = uint8(uint32(_objIndexCopy))
+						v34 = envPtr + 76
+						v33 = *(*uintptr)(unsafe.Pointer(v34))
+						*(*uintptr)(unsafe.Pointer(v34))++
+						*(*uint8)(unsafe.Pointer(v33)) = uint8(libc.Int32FromInt32(m_INST_PUSH4))
+						v36 = envPtr + 76
+						v35 = *(*uintptr)(unsafe.Pointer(v36))
+						*(*uintptr)(unsafe.Pointer(v36))++
+						*(*uint8)(unsafe.Pointer(v35)) = uint8(uint32(_objIndexCopy) >> libc.Int32FromInt32(24))
+						v38 = envPtr + 76
+						v37 = *(*uintptr)(unsafe.Pointer(v38))
+						*(*uintptr)(unsafe.Pointer(v38))++
+						*(*uint8)(unsafe.Pointer(v37)) = uint8(uint32(_objIndexCopy) >> libc.Int32FromInt32(16))
+						v40 = envPtr + 76
+						v39 = *(*uintptr)(unsafe.Pointer(v40))
+						*(*uintptr)(unsafe.Pointer(v40))++
+						*(*uint8)(unsafe.Pointer(v39)) = uint8(uint32(_objIndexCopy) >> libc.Int32FromInt32(8))
+						v42 = envPtr + 76
+						v41 = *(*uintptr)(unsafe.Pointer(v42))
+						*(*uintptr)(unsafe.Pointer(v42))++
+						*(*uint8)(unsafe.Pointer(v41)) = uint8(uint32(_objIndexCopy))
 						if (*TCompileEnv)(unsafe.Pointer(envPtr)).FatCmdStart < int32(2) {
 							(*TCompileEnv)(unsafe.Pointer(envPtr)).FatCmdStart = 0
 						}
@@ -96214,14 +96226,14 @@ func _IssueSwitchChainedTests(tls *libc.TLS, interp uintptr, envPtr uintptr, mod
 						if (*TCompileEnv)(unsafe.Pointer(envPtr)).FcodeNext+uintptr(2) > (*TCompileEnv)(unsafe.Pointer(envPtr)).FcodeEnd {
 							XTclExpandCodeArray(tls, envPtr)
 						}
-						v43 = envPtr + 76
-						v42 = *(*uintptr)(unsafe.Pointer(v43))
-						*(*uintptr)(unsafe.Pointer(v43))++
-						*(*uint8)(unsafe.Pointer(v42)) = uint8(libc.Int32FromInt32(m_INST_PUSH1))
-						v45 = envPtr + 76
-						v44 = *(*uintptr)(unsafe.Pointer(v45))
-						*(*uintptr)(unsafe.Pointer(v45))++
-						*(*uint8)(unsafe.Pointer(v44)) = uint8(uint32(_objIndexCopy1))
+						v44 = envPtr + 76
+						v43 = *(*uintptr)(unsafe.Pointer(v44))
+						*(*uintptr)(unsafe.Pointer(v44))++
+						*(*uint8)(unsafe.Pointer(v43)) = uint8(libc.Int32FromInt32(m_INST_PUSH1))
+						v46 = envPtr + 76
+						v45 = *(*uintptr)(unsafe.Pointer(v46))
+						*(*uintptr)(unsafe.Pointer(v46))++
+						*(*uint8)(unsafe.Pointer(v45)) = uint8(uint32(_objIndexCopy1))
 						if (*TCompileEnv)(unsafe.Pointer(envPtr)).FatCmdStart < int32(2) {
 							(*TCompileEnv)(unsafe.Pointer(envPtr)).FatCmdStart = 0
 						}
@@ -96241,26 +96253,26 @@ func _IssueSwitchChainedTests(tls *libc.TLS, interp uintptr, envPtr uintptr, mod
 						if (*TCompileEnv)(unsafe.Pointer(envPtr)).FcodeNext+uintptr(5) > (*TCompileEnv)(unsafe.Pointer(envPtr)).FcodeEnd {
 							XTclExpandCodeArray(tls, envPtr)
 						}
-						v47 = envPtr + 76
-						v46 = *(*uintptr)(unsafe.Pointer(v47))
-						*(*uintptr)(unsafe.Pointer(v47))++
-						*(*uint8)(unsafe.Pointer(v46)) = uint8(libc.Int32FromInt32(m_INST_PUSH4))
-						v49 = envPtr + 76
-						v48 = *(*uintptr)(unsafe.Pointer(v49))
-						*(*uintptr)(unsafe.Pointer(v49))++
-						*(*uint8)(unsafe.Pointer(v48)) = uint8(uint32(_objIndexCopy1) >> libc.Int32FromInt32(24))
-						v51 = envPtr + 76
-						v50 = *(*uintptr)(unsafe.Pointer(v51))
-						*(*uintptr)(unsafe.Pointer(v51))++
-						*(*uint8)(unsafe.Pointer(v50)) = uint8(uint32(_objIndexCopy1) >> libc.Int32FromInt32(16))
-						v53 = envPtr + 76
-						v52 = *(*uintptr)(unsafe.Pointer(v53))
-						*(*uintptr)(unsafe.Pointer(v53))++
-						*(*uint8)(unsafe.Pointer(v52)) = uint8(uint32(_objIndexCopy1) >> libc.Int32FromInt32(8))
-						v55 = envPtr + 76
-						v54 = *(*uintptr)(unsafe.Pointer(v55))
-						*(*uintptr)(unsafe.Pointer(v55))++
-						*(*uint8)(unsafe.Pointer(v54)) = uint8(uint32(_objIndexCopy1))
+						v48 = envPtr + 76
+						v47 = *(*uintptr)(unsafe.Pointer(v48))
+						*(*uintptr)(unsafe.Pointer(v48))++
+						*(*uint8)(unsafe.Pointer(v47)) = uint8(libc.Int32FromInt32(m_INST_PUSH4))
+						v50 = envPtr + 76
+						v49 = *(*uintptr)(unsafe.Pointer(v50))
+						*(*uintptr)(unsafe.Pointer(v50))++
+						*(*uint8)(unsafe.Pointer(v49)) = uint8(uint32(_objIndexCopy1) >> libc.Int32FromInt32(24))
+						v52 = envPtr + 76
+						v51 = *(*uintptr)(unsafe.Pointer(v52))
+						*(*uintptr)(unsafe.Pointer(v52))++
+						*(*uint8)(unsafe.Pointer(v51)) = uint8(uint32(_objIndexCopy1) >> libc.Int32FromInt32(16))
+						v54 = envPtr + 76
+						v53 = *(*uintptr)(unsafe.Pointer(v54))
+						*(*uintptr)(unsafe.Pointer(v54))++
+						*(*uint8)(unsafe.Pointer(v53)) = uint8(uint32(_objIndexCopy1) >> libc.Int32FromInt32(8))
+						v56 = envPtr + 76
+						v55 = *(*uintptr)(unsafe.Pointer(v56))
+						*(*uintptr)(unsafe.Pointer(v56))++
+						*(*uint8)(unsafe.Pointer(v55)) = uint8(uint32(_objIndexCopy1))
 						if (*TCompileEnv)(unsafe.Pointer(envPtr)).FatCmdStart < int32(2) {
 							(*TCompileEnv)(unsafe.Pointer(envPtr)).FatCmdStart = 0
 						}
@@ -96286,26 +96298,26 @@ func _IssueSwitchChainedTests(tls *libc.TLS, interp uintptr, envPtr uintptr, mod
 			if (*TCompileEnv)(unsafe.Pointer(envPtr)).FcodeNext+uintptr(5) > (*TCompileEnv)(unsafe.Pointer(envPtr)).FcodeEnd {
 				XTclExpandCodeArray(tls, envPtr)
 			}
-			v57 = envPtr + 76
-			v56 = *(*uintptr)(unsafe.Pointer(v57))
-			*(*uintptr)(unsafe.Pointer(v57))++
-			*(*uint8)(unsafe.Pointer(v56)) = uint8(libc.Int32FromInt32(m_INST_OVER))
-			v59 = envPtr + 76
-			v58 = *(*uintptr)(unsafe.Pointer(v59))
-			*(*uintptr)(unsafe.Pointer(v59))++
-			*(*uint8)(unsafe.Pointer(v58)) = uint8(uint32(libc.Int32FromInt32(1)) >> libc.Int32FromInt32(24))
-			v61 = envPtr + 76
-			v60 = *(*uintptr)(unsafe.Pointer(v61))
-			*(*uintptr)(unsafe.Pointer(v61))++
-			*(*uint8)(unsafe.Pointer(v60)) = uint8(uint32(libc.Int32FromInt32(1)) >> libc.Int32FromInt32(16))
-			v63 = envPtr + 76
-			v62 = *(*uintptr)(unsafe.Pointer(v63))
-			*(*uintptr)(unsafe.Pointer(v63))++
-			*(*uint8)(unsafe.Pointer(v62)) = uint8(uint32(libc.Int32FromInt32(1)) >> libc.Int32FromInt32(8))
-			v65 = envPtr + 76
-			v64 = *(*uintptr)(unsafe.Pointer(v65))
-			*(*uintptr)(unsafe.Pointer(v65))++
-			*(*uint8)(unsafe.Pointer(v64)) = uint8(uint32(libc.Int32FromInt32(1)))
+			v58 = envPtr + 76
+			v57 = *(*uintptr)(unsafe.Pointer(v58))
+			*(*uintptr)(unsafe.Pointer(v58))++
+			*(*uint8)(unsafe.Pointer(v57)) = uint8(libc.Int32FromInt32(m_INST_OVER))
+			v60 = envPtr + 76
+			v59 = *(*uintptr)(unsafe.Pointer(v60))
+			*(*uintptr)(unsafe.Pointer(v60))++
+			*(*uint8)(unsafe.Pointer(v59)) = uint8(uint32(libc.Int32FromInt32(1)) >> libc.Int32FromInt32(24))
+			v62 = envPtr + 76
+			v61 = *(*uintptr)(unsafe.Pointer(v62))
+			*(*uintptr)(unsafe.Pointer(v62))++
+			*(*uint8)(unsafe.Pointer(v61)) = uint8(uint32(libc.Int32FromInt32(1)) >> libc.Int32FromInt32(16))
+			v64 = envPtr + 76
+			v63 = *(*uintptr)(unsafe.Pointer(v64))
+			*(*uintptr)(unsafe.Pointer(v64))++
+			*(*uint8)(unsafe.Pointer(v63)) = uint8(uint32(libc.Int32FromInt32(1)) >> libc.Int32FromInt32(8))
+			v66 = envPtr + 76
+			v65 = *(*uintptr)(unsafe.Pointer(v66))
+			*(*uintptr)(unsafe.Pointer(v66))++
+			*(*uint8)(unsafe.Pointer(v65)) = uint8(uint32(libc.Int32FromInt32(1)))
 			if (*TCompileEnv)(unsafe.Pointer(envPtr)).FatCmdStart < int32(2) {
 				(*TCompileEnv)(unsafe.Pointer(envPtr)).FatCmdStart = 0
 			}
@@ -96323,9 +96335,9 @@ func _IssueSwitchChainedTests(tls *libc.TLS, interp uintptr, envPtr uintptr, mod
 			}
 			if !(simple != 0) {
 				if noCase != 0 {
-					v66 = int32(m_TCL_REG_NOCASE)
+					v67 = int32(m_TCL_REG_NOCASE)
 				} else {
-					v66 = 0
+					v67 = 0
 				}
 				/*
 				 * Pass correct RE compile flags. We use only Int1
@@ -96333,18 +96345,18 @@ func _IssueSwitchChainedTests(tls *libc.TLS, interp uintptr, envPtr uintptr, mod
 				 * pass. Don't use TCL_REG_NOSUB as we may have backrefs
 				 * or capture vars.
 				 */
-				cflags = int32(m_TCL_REG_ADVANCED) | v66
+				cflags = int32(m_TCL_REG_ADVANCED) | v67
 				if (*TCompileEnv)(unsafe.Pointer(envPtr)).FcodeNext+uintptr(2) > (*TCompileEnv)(unsafe.Pointer(envPtr)).FcodeEnd {
 					XTclExpandCodeArray(tls, envPtr)
 				}
-				v68 = envPtr + 76
-				v67 = *(*uintptr)(unsafe.Pointer(v68))
-				*(*uintptr)(unsafe.Pointer(v68))++
-				*(*uint8)(unsafe.Pointer(v67)) = uint8(libc.Int32FromInt32(m_INST_REGEXP))
-				v70 = envPtr + 76
-				v69 = *(*uintptr)(unsafe.Pointer(v70))
-				*(*uintptr)(unsafe.Pointer(v70))++
-				*(*uint8)(unsafe.Pointer(v69)) = uint8(uint32(cflags))
+				v69 = envPtr + 76
+				v68 = *(*uintptr)(unsafe.Pointer(v69))
+				*(*uintptr)(unsafe.Pointer(v69))++
+				*(*uint8)(unsafe.Pointer(v68)) = uint8(libc.Int32FromInt32(m_INST_REGEXP))
+				v71 = envPtr + 76
+				v70 = *(*uintptr)(unsafe.Pointer(v71))
+				*(*uintptr)(unsafe.Pointer(v71))++
+				*(*uint8)(unsafe.Pointer(v70)) = uint8(uint32(cflags))
 				if (*TCompileEnv)(unsafe.Pointer(envPtr)).FatCmdStart < int32(2) {
 					(*TCompileEnv)(unsafe.Pointer(envPtr)).FatCmdStart = 0
 				}
@@ -96365,10 +96377,10 @@ func _IssueSwitchChainedTests(tls *libc.TLS, interp uintptr, envPtr uintptr, mod
 					if (*TCompileEnv)(unsafe.Pointer(envPtr)).FcodeNext == (*TCompileEnv)(unsafe.Pointer(envPtr)).FcodeEnd {
 						XTclExpandCodeArray(tls, envPtr)
 					}
-					v72 = envPtr + 76
-					v71 = *(*uintptr)(unsafe.Pointer(v72))
-					*(*uintptr)(unsafe.Pointer(v72))++
-					*(*uint8)(unsafe.Pointer(v71)) = uint8(libc.Int32FromInt32(m_INST_STR_EQ))
+					v73 = envPtr + 76
+					v72 = *(*uintptr)(unsafe.Pointer(v73))
+					*(*uintptr)(unsafe.Pointer(v73))++
+					*(*uint8)(unsafe.Pointer(v72)) = uint8(libc.Int32FromInt32(m_INST_STR_EQ))
 					if (*TCompileEnv)(unsafe.Pointer(envPtr)).FatCmdStart < int32(2) {
 						(*TCompileEnv)(unsafe.Pointer(envPtr)).FatCmdStart = 0
 					}
@@ -96388,14 +96400,14 @@ func _IssueSwitchChainedTests(tls *libc.TLS, interp uintptr, envPtr uintptr, mod
 					if (*TCompileEnv)(unsafe.Pointer(envPtr)).FcodeNext+uintptr(2) > (*TCompileEnv)(unsafe.Pointer(envPtr)).FcodeEnd {
 						XTclExpandCodeArray(tls, envPtr)
 					}
-					v74 = envPtr + 76
-					v73 = *(*uintptr)(unsafe.Pointer(v74))
-					*(*uintptr)(unsafe.Pointer(v74))++
-					*(*uint8)(unsafe.Pointer(v73)) = uint8(libc.Int32FromInt32(m_INST_STR_MATCH))
-					v76 = envPtr + 76
-					v75 = *(*uintptr)(unsafe.Pointer(v76))
-					*(*uintptr)(unsafe.Pointer(v76))++
-					*(*uint8)(unsafe.Pointer(v75)) = uint8(uint32(noCase))
+					v75 = envPtr + 76
+					v74 = *(*uintptr)(unsafe.Pointer(v75))
+					*(*uintptr)(unsafe.Pointer(v75))++
+					*(*uint8)(unsafe.Pointer(v74)) = uint8(libc.Int32FromInt32(m_INST_STR_MATCH))
+					v77 = envPtr + 76
+					v76 = *(*uintptr)(unsafe.Pointer(v77))
+					*(*uintptr)(unsafe.Pointer(v77))++
+					*(*uint8)(unsafe.Pointer(v76)) = uint8(uint32(noCase))
 					if (*TCompileEnv)(unsafe.Pointer(envPtr)).FatCmdStart < int32(2) {
 						(*TCompileEnv)(unsafe.Pointer(envPtr)).FatCmdStart = 0
 					}
@@ -96460,8 +96472,8 @@ func _IssueSwitchChainedTests(tls *libc.TLS, interp uintptr, envPtr uintptr, mod
 					break
 				}
 				*(*uint32)(unsafe.Pointer(fixupTargetArray + uintptr(contFixIndex+j)*4)) = uint32(int32((*TCompileEnv)(unsafe.Pointer(envPtr)).FcodeNext) - int32((*TCompileEnv)(unsafe.Pointer(envPtr)).FcodeStart))
-				goto _77
-			_77:
+				goto _78
+			_78:
 				j++
 			}
 			contFixIndex = -int32(1)
@@ -96474,10 +96486,10 @@ func _IssueSwitchChainedTests(tls *libc.TLS, interp uintptr, envPtr uintptr, mod
 		if (*TCompileEnv)(unsafe.Pointer(envPtr)).FcodeNext == (*TCompileEnv)(unsafe.Pointer(envPtr)).FcodeEnd {
 			XTclExpandCodeArray(tls, envPtr)
 		}
-		v79 = envPtr + 76
-		v78 = *(*uintptr)(unsafe.Pointer(v79))
-		*(*uintptr)(unsafe.Pointer(v79))++
-		*(*uint8)(unsafe.Pointer(v78)) = uint8(libc.Int32FromInt32(m_INST_POP))
+		v80 = envPtr + 76
+		v79 = *(*uintptr)(unsafe.Pointer(v80))
+		*(*uintptr)(unsafe.Pointer(v80))++
+		*(*uint8)(unsafe.Pointer(v79)) = uint8(libc.Int32FromInt32(m_INST_POP))
 		if (*TCompileEnv)(unsafe.Pointer(envPtr)).FatCmdStart < int32(2) {
 			(*TCompileEnv)(unsafe.Pointer(envPtr)).FatCmdStart = 0
 		}
@@ -96515,10 +96527,10 @@ func _IssueSwitchChainedTests(tls *libc.TLS, interp uintptr, envPtr uintptr, mod
 		if (*TCompileEnv)(unsafe.Pointer(envPtr)).FcodeNext == (*TCompileEnv)(unsafe.Pointer(envPtr)).FcodeEnd {
 			XTclExpandCodeArray(tls, envPtr)
 		}
-		v81 = envPtr + 76
-		v80 = *(*uintptr)(unsafe.Pointer(v81))
-		*(*uintptr)(unsafe.Pointer(v81))++
-		*(*uint8)(unsafe.Pointer(v80)) = uint8(libc.Int32FromInt32(m_INST_POP))
+		v82 = envPtr + 76
+		v81 = *(*uintptr)(unsafe.Pointer(v82))
+		*(*uintptr)(unsafe.Pointer(v82))++
+		*(*uint8)(unsafe.Pointer(v81)) = uint8(libc.Int32FromInt32(m_INST_POP))
 		if (*TCompileEnv)(unsafe.Pointer(envPtr)).FatCmdStart < int32(2) {
 			(*TCompileEnv)(unsafe.Pointer(envPtr)).FatCmdStart = 0
 		}
@@ -96539,14 +96551,14 @@ func _IssueSwitchChainedTests(tls *libc.TLS, interp uintptr, envPtr uintptr, mod
 			if (*TCompileEnv)(unsafe.Pointer(envPtr)).FcodeNext+uintptr(2) > (*TCompileEnv)(unsafe.Pointer(envPtr)).FcodeEnd {
 				XTclExpandCodeArray(tls, envPtr)
 			}
-			v83 = envPtr + 76
-			v82 = *(*uintptr)(unsafe.Pointer(v83))
-			*(*uintptr)(unsafe.Pointer(v83))++
-			*(*uint8)(unsafe.Pointer(v82)) = uint8(libc.Int32FromInt32(m_INST_PUSH1))
-			v85 = envPtr + 76
-			v84 = *(*uintptr)(unsafe.Pointer(v85))
-			*(*uintptr)(unsafe.Pointer(v85))++
-			*(*uint8)(unsafe.Pointer(v84)) = uint8(uint32(_objIndexCopy2))
+			v84 = envPtr + 76
+			v83 = *(*uintptr)(unsafe.Pointer(v84))
+			*(*uintptr)(unsafe.Pointer(v84))++
+			*(*uint8)(unsafe.Pointer(v83)) = uint8(libc.Int32FromInt32(m_INST_PUSH1))
+			v86 = envPtr + 76
+			v85 = *(*uintptr)(unsafe.Pointer(v86))
+			*(*uintptr)(unsafe.Pointer(v86))++
+			*(*uint8)(unsafe.Pointer(v85)) = uint8(uint32(_objIndexCopy2))
 			if (*TCompileEnv)(unsafe.Pointer(envPtr)).FatCmdStart < int32(2) {
 				(*TCompileEnv)(unsafe.Pointer(envPtr)).FatCmdStart = 0
 			}
@@ -96566,26 +96578,26 @@ func _IssueSwitchChainedTests(tls *libc.TLS, interp uintptr, envPtr uintptr, mod
 			if (*TCompileEnv)(unsafe.Pointer(envPtr)).FcodeNext+uintptr(5) > (*TCompileEnv)(unsafe.Pointer(envPtr)).FcodeEnd {
 				XTclExpandCodeArray(tls, envPtr)
 			}
-			v87 = envPtr + 76
-			v86 = *(*uintptr)(unsafe.Pointer(v87))
-			*(*uintptr)(unsafe.Pointer(v87))++
-			*(*uint8)(unsafe.Pointer(v86)) = uint8(libc.Int32FromInt32(m_INST_PUSH4))
-			v89 = envPtr + 76
-			v88 = *(*uintptr)(unsafe.Pointer(v89))
-			*(*uintptr)(unsafe.Pointer(v89))++
-			*(*uint8)(unsafe.Pointer(v88)) = uint8(uint32(_objIndexCopy2) >> libc.Int32FromInt32(24))
-			v91 = envPtr + 76
-			v90 = *(*uintptr)(unsafe.Pointer(v91))
-			*(*uintptr)(unsafe.Pointer(v91))++
-			*(*uint8)(unsafe.Pointer(v90)) = uint8(uint32(_objIndexCopy2) >> libc.Int32FromInt32(16))
-			v93 = envPtr + 76
-			v92 = *(*uintptr)(unsafe.Pointer(v93))
-			*(*uintptr)(unsafe.Pointer(v93))++
-			*(*uint8)(unsafe.Pointer(v92)) = uint8(uint32(_objIndexCopy2) >> libc.Int32FromInt32(8))
-			v95 = envPtr + 76
-			v94 = *(*uintptr)(unsafe.Pointer(v95))
-			*(*uintptr)(unsafe.Pointer(v95))++
-			*(*uint8)(unsafe.Pointer(v94)) = uint8(uint32(_objIndexCopy2))
+			v88 = envPtr + 76
+			v87 = *(*uintptr)(unsafe.Pointer(v88))
+			*(*uintptr)(unsafe.Pointer(v88))++
+			*(*uint8)(unsafe.Pointer(v87)) = uint8(libc.Int32FromInt32(m_INST_PUSH4))
+			v90 = envPtr + 76
+			v89 = *(*uintptr)(unsafe.Pointer(v90))
+			*(*uintptr)(unsafe.Pointer(v90))++
+			*(*uint8)(unsafe.Pointer(v89)) = uint8(uint32(_objIndexCopy2) >> libc.Int32FromInt32(24))
+			v92 = envPtr + 76
+			v91 = *(*uintptr)(unsafe.Pointer(v92))
+			*(*uintptr)(unsafe.Pointer(v92))++
+			*(*uint8)(unsafe.Pointer(v91)) = uint8(uint32(_objIndexCopy2) >> libc.Int32FromInt32(16))
+			v94 = envPtr + 76
+			v93 = *(*uintptr)(unsafe.Pointer(v94))
+			*(*uintptr)(unsafe.Pointer(v94))++
+			*(*uint8)(unsafe.Pointer(v93)) = uint8(uint32(_objIndexCopy2) >> libc.Int32FromInt32(8))
+			v96 = envPtr + 76
+			v95 = *(*uintptr)(unsafe.Pointer(v96))
+			*(*uintptr)(unsafe.Pointer(v96))++
+			*(*uint8)(unsafe.Pointer(v95)) = uint8(uint32(_objIndexCopy2))
 			if (*TCompileEnv)(unsafe.Pointer(envPtr)).FatCmdStart < int32(2) {
 				(*TCompileEnv)(unsafe.Pointer(envPtr)).FatCmdStart = 0
 			}
@@ -96615,8 +96627,8 @@ func _IssueSwitchChainedTests(tls *libc.TLS, interp uintptr, envPtr uintptr, mod
 		if *(*uint32)(unsafe.Pointer(fixupTargetArray + uintptr(i)*4)) == uint32(0) {
 			*(*uint32)(unsafe.Pointer(fixupTargetArray + uintptr(i)*4)) = uint32(int32((*TCompileEnv)(unsafe.Pointer(envPtr)).FcodeNext) - int32((*TCompileEnv)(unsafe.Pointer(envPtr)).FcodeStart))
 		}
-		goto _96
-	_96:
+		goto _97
+	_97:
 		i++
 	}
 	/*
@@ -96640,13 +96652,13 @@ func _IssueSwitchChainedTests(tls *libc.TLS, interp uintptr, envPtr uintptr, mod
 				if *(*uint32)(unsafe.Pointer(fixupTargetArray + uintptr(j1)*4)) > (*(*TJumpFixup)(unsafe.Pointer(fixupArray + uintptr(i)*16))).FcodeOffset {
 					*(*uint32)(unsafe.Pointer(fixupTargetArray + uintptr(j1)*4)) += uint32(3)
 				}
-				goto _98
-			_98:
+				goto _99
+			_99:
 				j1--
 			}
 		}
-		goto _97
-	_97:
+		goto _98
+	_98:
 		i--
 	}
 	XTclStackFree(tls, interp, fixupTargetArray)
@@ -112265,13 +112277,13 @@ func _ExecConstantExprTree(tls *libc.TLS, interp uintptr, nodes uintptr, index i
 func _CompileExprTree(tls *libc.TLS, interp uintptr, nodes uintptr, index int32, litObjvPtr uintptr, funcObjv uintptr, tokenPtr uintptr, envPtr uintptr, optimize int32) {
 	bp := tls.Alloc(240)
 	defer tls.Free(240)
-	var _delta, _delta1, _delta10, _delta11, _delta12, _delta13, _delta14, _delta15, _delta2, _delta3, _delta4, _delta5, _delta6, _delta7, _delta8, _delta9, _objIndexCopy, _objIndexCopy1, _objIndexCopy2, _objIndexCopy3, _objIndexCopy4, _objIndexCopy5, convert, idx, idx1, next, numWords, pc1, pc2, target, v16, v31, v34, v35, v36, v75 int32
-	var bytes, freePtr, jumpPtr, litObjv, literal, newJump, nodePtr, objPtr, objPtr1, p, rootPtr, tableValue, v1, v10, v100, v101, v102, v103, v104, v105, v106, v107, v108, v109, v11, v110, v111, v112, v113, v114, v115, v116, v117, v118, v12, v13, v14, v15, v2, v27, v28, v29, v3, v30, v32, v33, v37, v38, v39, v4, v40, v41, v42, v43, v44, v45, v46, v47, v48, v49, v5, v50, v51, v52, v53, v54, v55, v56, v57, v58, v59, v6, v60, v61, v62, v63, v64, v65, v66, v67, v68, v69, v7, v70, v73, v74, v76, v77, v78, v79, v8, v80, v81, v82, v83, v84, v85, v86, v87, v88, v89, v9, v90, v91, v92, v93, v94, v95, v96, v97, v98, v99 uintptr
+	var _delta, _delta1, _delta10, _delta11, _delta12, _delta13, _delta14, _delta15, _delta2, _delta3, _delta4, _delta5, _delta6, _delta7, _delta8, _delta9, _objIndexCopy, _objIndexCopy1, _objIndexCopy2, _objIndexCopy3, _objIndexCopy4, _objIndexCopy5, convert, idx, idx1, next, numWords, pc1, pc2, target, v16, v31, v34, v35, v36, v76 int32
+	var bytes, freePtr, jumpPtr, litObjv, literal, newJump, nodePtr, objPtr, objPtr1, p, rootPtr, tableValue, v1, v10, v100, v101, v102, v103, v104, v105, v106, v107, v108, v109, v11, v110, v111, v112, v113, v114, v115, v116, v117, v118, v119, v12, v13, v14, v15, v2, v27, v28, v29, v3, v30, v32, v33, v37, v38, v39, v4, v40, v41, v42, v43, v44, v45, v46, v47, v48, v49, v5, v50, v51, v52, v53, v54, v55, v56, v57, v58, v59, v6, v60, v61, v62, v63, v64, v65, v66, v67, v68, v69, v7, v70, v74, v75, v77, v78, v79, v8, v80, v81, v82, v83, v84, v85, v86, v87, v88, v89, v9, v90, v91, v92, v93, v94, v95, v96, v97, v98, v99 uintptr
 	var save TTcl_InterpState
 	var _ /* cmdName at bp+0 */ TTcl_DString
 	var _ /* length at bp+212 */ int32
 	var _ /* length at bp+216 */ int32
-	_, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _ = _delta, _delta1, _delta10, _delta11, _delta12, _delta13, _delta14, _delta15, _delta2, _delta3, _delta4, _delta5, _delta6, _delta7, _delta8, _delta9, _objIndexCopy, _objIndexCopy1, _objIndexCopy2, _objIndexCopy3, _objIndexCopy4, _objIndexCopy5, bytes, convert, freePtr, idx, idx1, jumpPtr, litObjv, literal, newJump, next, nodePtr, numWords, objPtr, objPtr1, p, pc1, pc2, rootPtr, save, tableValue, target, v1, v10, v100, v101, v102, v103, v104, v105, v106, v107, v108, v109, v11, v110, v111, v112, v113, v114, v115, v116, v117, v118, v12, v13, v14, v15, v16, v2, v27, v28, v29, v3, v30, v31, v32, v33, v34, v35, v36, v37, v38, v39, v4, v40, v41, v42, v43, v44, v45, v46, v47, v48, v49, v5, v50, v51, v52, v53, v54, v55, v56, v57, v58, v59, v6, v60, v61, v62, v63, v64, v65, v66, v67, v68, v69, v7, v70, v73, v74, v75, v76, v77, v78, v79, v8, v80, v81, v82, v83, v84, v85, v86, v87, v88, v89, v9, v90, v91, v92, v93, v94, v95, v96, v97, v98, v99
+	_, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _ = _delta, _delta1, _delta10, _delta11, _delta12, _delta13, _delta14, _delta15, _delta2, _delta3, _delta4, _delta5, _delta6, _delta7, _delta8, _delta9, _objIndexCopy, _objIndexCopy1, _objIndexCopy2, _objIndexCopy3, _objIndexCopy4, _objIndexCopy5, bytes, convert, freePtr, idx, idx1, jumpPtr, litObjv, literal, newJump, next, nodePtr, numWords, objPtr, objPtr1, p, pc1, pc2, rootPtr, save, tableValue, target, v1, v10, v100, v101, v102, v103, v104, v105, v106, v107, v108, v109, v11, v110, v111, v112, v113, v114, v115, v116, v117, v118, v119, v12, v13, v14, v15, v16, v2, v27, v28, v29, v3, v30, v31, v32, v33, v34, v35, v36, v37, v38, v39, v4, v40, v41, v42, v43, v44, v45, v46, v47, v48, v49, v5, v50, v51, v52, v53, v54, v55, v56, v57, v58, v59, v6, v60, v61, v62, v63, v64, v65, v66, v67, v68, v69, v7, v70, v74, v75, v76, v77, v78, v79, v8, v80, v81, v82, v83, v84, v85, v86, v87, v88, v89, v9, v90, v91, v92, v93, v94, v95, v96, v97, v98, v99
 	nodePtr = nodes + uintptr(index)*16
 	rootPtr = nodePtr
 	numWords = 0
@@ -112740,21 +112752,21 @@ func _CompileExprTree(tls *libc.TLS, interp uintptr, nodes uintptr, index int32,
 				XTclStackFree(tls, interp, freePtr)
 				goto _26
 			_25:
-			_72:
+			_73:
 				if (*TCompileEnv)(unsafe.Pointer(envPtr)).FcodeNext == (*TCompileEnv)(unsafe.Pointer(envPtr)).FcodeEnd {
 					XTclExpandCodeArray(tls, envPtr)
 				}
-				v74 = envPtr + 76
-				v73 = *(*uintptr)(unsafe.Pointer(v74))
-				*(*uintptr)(unsafe.Pointer(v74))++
-				*(*uint8)(unsafe.Pointer(v73)) = _instruction[(*TOpNode)(unsafe.Pointer(nodePtr)).Flexeme]
+				v75 = envPtr + 76
+				v74 = *(*uintptr)(unsafe.Pointer(v75))
+				*(*uintptr)(unsafe.Pointer(v75))++
+				*(*uint8)(unsafe.Pointer(v74)) = _instruction[(*TOpNode)(unsafe.Pointer(nodePtr)).Flexeme]
 				if (*TCompileEnv)(unsafe.Pointer(envPtr)).FatCmdStart < int32(2) {
 					if int32(_instruction[(*TOpNode)(unsafe.Pointer(nodePtr)).Flexeme]) == int32(m_INST_START_CMD) {
-						v75 = int32(1)
+						v76 = int32(1)
 					} else {
-						v75 = 0
+						v76 = 0
 					}
-					(*TCompileEnv)(unsafe.Pointer(envPtr)).FatCmdStart = v75
+					(*TCompileEnv)(unsafe.Pointer(envPtr)).FatCmdStart = v76
 				}
 				_delta9 = XtclInstructionTable[_instruction[(*TOpNode)(unsafe.Pointer(nodePtr)).Flexeme]].FstackEffect
 				if _delta9 != 0 {
@@ -112768,8 +112780,10 @@ func _CompileExprTree(tls *libc.TLS, interp uintptr, nodes uintptr, index int32,
 					}
 					*(*int32)(unsafe.Pointer(envPtr + 32)) += _delta9
 				}
+				goto _72
+			_72:
 				if 0 != 0 {
-					goto _72
+					goto _73
 				}
 				goto _71
 			_71:
@@ -112794,11 +112808,11 @@ func _CompileExprTree(tls *libc.TLS, interp uintptr, nodes uintptr, index int32,
 			if optimize != 0 {
 				if (*TTcl_Obj)(unsafe.Pointer(literal)).Fbytes != 0 {
 					*(*int32)(unsafe.Pointer(bp + 216)) = (*TTcl_Obj)(unsafe.Pointer(literal)).Flength
-					v76 = (*TTcl_Obj)(unsafe.Pointer(literal)).Fbytes
+					v77 = (*TTcl_Obj)(unsafe.Pointer(literal)).Fbytes
 				} else {
-					v76 = XTcl_GetStringFromObj(tls, literal, bp+216)
+					v77 = XTcl_GetStringFromObj(tls, literal, bp+216)
 				}
-				bytes = v76
+				bytes = v77
 				idx = XTclRegisterLiteral(tls, envPtr, bytes, *(*int32)(unsafe.Pointer(bp + 216)), 0)
 				objPtr = XTclFetchLiteral(tls, envPtr, uint32(idx))
 				if (*TTcl_Obj)(unsafe.Pointer(objPtr)).FtypePtr == libc.UintptrFromInt32(0) && (*TTcl_Obj)(unsafe.Pointer(literal)).FtypePtr != libc.UintptrFromInt32(0) {
@@ -112823,14 +112837,14 @@ func _CompileExprTree(tls *libc.TLS, interp uintptr, nodes uintptr, index int32,
 					if (*TCompileEnv)(unsafe.Pointer(envPtr)).FcodeNext+uintptr(2) > (*TCompileEnv)(unsafe.Pointer(envPtr)).FcodeEnd {
 						XTclExpandCodeArray(tls, envPtr)
 					}
-					v78 = envPtr + 76
-					v77 = *(*uintptr)(unsafe.Pointer(v78))
-					*(*uintptr)(unsafe.Pointer(v78))++
-					*(*uint8)(unsafe.Pointer(v77)) = uint8(libc.Int32FromInt32(m_INST_PUSH1))
-					v80 = envPtr + 76
-					v79 = *(*uintptr)(unsafe.Pointer(v80))
-					*(*uintptr)(unsafe.Pointer(v80))++
-					*(*uint8)(unsafe.Pointer(v79)) = uint8(uint32(_objIndexCopy3))
+					v79 = envPtr + 76
+					v78 = *(*uintptr)(unsafe.Pointer(v79))
+					*(*uintptr)(unsafe.Pointer(v79))++
+					*(*uint8)(unsafe.Pointer(v78)) = uint8(libc.Int32FromInt32(m_INST_PUSH1))
+					v81 = envPtr + 76
+					v80 = *(*uintptr)(unsafe.Pointer(v81))
+					*(*uintptr)(unsafe.Pointer(v81))++
+					*(*uint8)(unsafe.Pointer(v80)) = uint8(uint32(_objIndexCopy3))
 					if (*TCompileEnv)(unsafe.Pointer(envPtr)).FatCmdStart < int32(2) {
 						(*TCompileEnv)(unsafe.Pointer(envPtr)).FatCmdStart = 0
 					}
@@ -112850,26 +112864,26 @@ func _CompileExprTree(tls *libc.TLS, interp uintptr, nodes uintptr, index int32,
 					if (*TCompileEnv)(unsafe.Pointer(envPtr)).FcodeNext+uintptr(5) > (*TCompileEnv)(unsafe.Pointer(envPtr)).FcodeEnd {
 						XTclExpandCodeArray(tls, envPtr)
 					}
-					v82 = envPtr + 76
-					v81 = *(*uintptr)(unsafe.Pointer(v82))
-					*(*uintptr)(unsafe.Pointer(v82))++
-					*(*uint8)(unsafe.Pointer(v81)) = uint8(libc.Int32FromInt32(m_INST_PUSH4))
-					v84 = envPtr + 76
-					v83 = *(*uintptr)(unsafe.Pointer(v84))
-					*(*uintptr)(unsafe.Pointer(v84))++
-					*(*uint8)(unsafe.Pointer(v83)) = uint8(uint32(_objIndexCopy3) >> libc.Int32FromInt32(24))
-					v86 = envPtr + 76
-					v85 = *(*uintptr)(unsafe.Pointer(v86))
-					*(*uintptr)(unsafe.Pointer(v86))++
-					*(*uint8)(unsafe.Pointer(v85)) = uint8(uint32(_objIndexCopy3) >> libc.Int32FromInt32(16))
-					v88 = envPtr + 76
-					v87 = *(*uintptr)(unsafe.Pointer(v88))
-					*(*uintptr)(unsafe.Pointer(v88))++
-					*(*uint8)(unsafe.Pointer(v87)) = uint8(uint32(_objIndexCopy3) >> libc.Int32FromInt32(8))
-					v90 = envPtr + 76
-					v89 = *(*uintptr)(unsafe.Pointer(v90))
-					*(*uintptr)(unsafe.Pointer(v90))++
-					*(*uint8)(unsafe.Pointer(v89)) = uint8(uint32(_objIndexCopy3))
+					v83 = envPtr + 76
+					v82 = *(*uintptr)(unsafe.Pointer(v83))
+					*(*uintptr)(unsafe.Pointer(v83))++
+					*(*uint8)(unsafe.Pointer(v82)) = uint8(libc.Int32FromInt32(m_INST_PUSH4))
+					v85 = envPtr + 76
+					v84 = *(*uintptr)(unsafe.Pointer(v85))
+					*(*uintptr)(unsafe.Pointer(v85))++
+					*(*uint8)(unsafe.Pointer(v84)) = uint8(uint32(_objIndexCopy3) >> libc.Int32FromInt32(24))
+					v87 = envPtr + 76
+					v86 = *(*uintptr)(unsafe.Pointer(v87))
+					*(*uintptr)(unsafe.Pointer(v87))++
+					*(*uint8)(unsafe.Pointer(v86)) = uint8(uint32(_objIndexCopy3) >> libc.Int32FromInt32(16))
+					v89 = envPtr + 76
+					v88 = *(*uintptr)(unsafe.Pointer(v89))
+					*(*uintptr)(unsafe.Pointer(v89))++
+					*(*uint8)(unsafe.Pointer(v88)) = uint8(uint32(_objIndexCopy3) >> libc.Int32FromInt32(8))
+					v91 = envPtr + 76
+					v90 = *(*uintptr)(unsafe.Pointer(v91))
+					*(*uintptr)(unsafe.Pointer(v91))++
+					*(*uint8)(unsafe.Pointer(v90)) = uint8(uint32(_objIndexCopy3))
 					if (*TCompileEnv)(unsafe.Pointer(envPtr)).FatCmdStart < int32(2) {
 						(*TCompileEnv)(unsafe.Pointer(envPtr)).FatCmdStart = 0
 					}
@@ -112900,14 +112914,14 @@ func _CompileExprTree(tls *libc.TLS, interp uintptr, nodes uintptr, index int32,
 					if (*TCompileEnv)(unsafe.Pointer(envPtr)).FcodeNext+uintptr(2) > (*TCompileEnv)(unsafe.Pointer(envPtr)).FcodeEnd {
 						XTclExpandCodeArray(tls, envPtr)
 					}
-					v92 = envPtr + 76
-					v91 = *(*uintptr)(unsafe.Pointer(v92))
-					*(*uintptr)(unsafe.Pointer(v92))++
-					*(*uint8)(unsafe.Pointer(v91)) = uint8(libc.Int32FromInt32(m_INST_PUSH1))
-					v94 = envPtr + 76
-					v93 = *(*uintptr)(unsafe.Pointer(v94))
-					*(*uintptr)(unsafe.Pointer(v94))++
-					*(*uint8)(unsafe.Pointer(v93)) = uint8(uint32(_objIndexCopy4))
+					v93 = envPtr + 76
+					v92 = *(*uintptr)(unsafe.Pointer(v93))
+					*(*uintptr)(unsafe.Pointer(v93))++
+					*(*uint8)(unsafe.Pointer(v92)) = uint8(libc.Int32FromInt32(m_INST_PUSH1))
+					v95 = envPtr + 76
+					v94 = *(*uintptr)(unsafe.Pointer(v95))
+					*(*uintptr)(unsafe.Pointer(v95))++
+					*(*uint8)(unsafe.Pointer(v94)) = uint8(uint32(_objIndexCopy4))
 					if (*TCompileEnv)(unsafe.Pointer(envPtr)).FatCmdStart < int32(2) {
 						(*TCompileEnv)(unsafe.Pointer(envPtr)).FatCmdStart = 0
 					}
@@ -112927,26 +112941,26 @@ func _CompileExprTree(tls *libc.TLS, interp uintptr, nodes uintptr, index int32,
 					if (*TCompileEnv)(unsafe.Pointer(envPtr)).FcodeNext+uintptr(5) > (*TCompileEnv)(unsafe.Pointer(envPtr)).FcodeEnd {
 						XTclExpandCodeArray(tls, envPtr)
 					}
-					v96 = envPtr + 76
-					v95 = *(*uintptr)(unsafe.Pointer(v96))
-					*(*uintptr)(unsafe.Pointer(v96))++
-					*(*uint8)(unsafe.Pointer(v95)) = uint8(libc.Int32FromInt32(m_INST_PUSH4))
-					v98 = envPtr + 76
-					v97 = *(*uintptr)(unsafe.Pointer(v98))
-					*(*uintptr)(unsafe.Pointer(v98))++
-					*(*uint8)(unsafe.Pointer(v97)) = uint8(uint32(_objIndexCopy4) >> libc.Int32FromInt32(24))
-					v100 = envPtr + 76
-					v99 = *(*uintptr)(unsafe.Pointer(v100))
-					*(*uintptr)(unsafe.Pointer(v100))++
-					*(*uint8)(unsafe.Pointer(v99)) = uint8(uint32(_objIndexCopy4) >> libc.Int32FromInt32(16))
-					v102 = envPtr + 76
-					v101 = *(*uintptr)(unsafe.Pointer(v102))
-					*(*uintptr)(unsafe.Pointer(v102))++
-					*(*uint8)(unsafe.Pointer(v101)) = uint8(uint32(_objIndexCopy4) >> libc.Int32FromInt32(8))
-					v104 = envPtr + 76
-					v103 = *(*uintptr)(unsafe.Pointer(v104))
-					*(*uintptr)(unsafe.Pointer(v104))++
-					*(*uint8)(unsafe.Pointer(v103)) = uint8(uint32(_objIndexCopy4))
+					v97 = envPtr + 76
+					v96 = *(*uintptr)(unsafe.Pointer(v97))
+					*(*uintptr)(unsafe.Pointer(v97))++
+					*(*uint8)(unsafe.Pointer(v96)) = uint8(libc.Int32FromInt32(m_INST_PUSH4))
+					v99 = envPtr + 76
+					v98 = *(*uintptr)(unsafe.Pointer(v99))
+					*(*uintptr)(unsafe.Pointer(v99))++
+					*(*uint8)(unsafe.Pointer(v98)) = uint8(uint32(_objIndexCopy4) >> libc.Int32FromInt32(24))
+					v101 = envPtr + 76
+					v100 = *(*uintptr)(unsafe.Pointer(v101))
+					*(*uintptr)(unsafe.Pointer(v101))++
+					*(*uint8)(unsafe.Pointer(v100)) = uint8(uint32(_objIndexCopy4) >> libc.Int32FromInt32(16))
+					v103 = envPtr + 76
+					v102 = *(*uintptr)(unsafe.Pointer(v103))
+					*(*uintptr)(unsafe.Pointer(v103))++
+					*(*uint8)(unsafe.Pointer(v102)) = uint8(uint32(_objIndexCopy4) >> libc.Int32FromInt32(8))
+					v105 = envPtr + 76
+					v104 = *(*uintptr)(unsafe.Pointer(v105))
+					*(*uintptr)(unsafe.Pointer(v105))++
+					*(*uint8)(unsafe.Pointer(v104)) = uint8(uint32(_objIndexCopy4))
 					if (*TCompileEnv)(unsafe.Pointer(envPtr)).FatCmdStart < int32(2) {
 						(*TCompileEnv)(unsafe.Pointer(envPtr)).FatCmdStart = 0
 					}
@@ -112996,14 +113010,14 @@ func _CompileExprTree(tls *libc.TLS, interp uintptr, nodes uintptr, index int32,
 						if (*TCompileEnv)(unsafe.Pointer(envPtr)).FcodeNext+uintptr(2) > (*TCompileEnv)(unsafe.Pointer(envPtr)).FcodeEnd {
 							XTclExpandCodeArray(tls, envPtr)
 						}
-						v106 = envPtr + 76
-						v105 = *(*uintptr)(unsafe.Pointer(v106))
-						*(*uintptr)(unsafe.Pointer(v106))++
-						*(*uint8)(unsafe.Pointer(v105)) = uint8(libc.Int32FromInt32(m_INST_PUSH1))
-						v108 = envPtr + 76
-						v107 = *(*uintptr)(unsafe.Pointer(v108))
-						*(*uintptr)(unsafe.Pointer(v108))++
-						*(*uint8)(unsafe.Pointer(v107)) = uint8(uint32(_objIndexCopy5))
+						v107 = envPtr + 76
+						v106 = *(*uintptr)(unsafe.Pointer(v107))
+						*(*uintptr)(unsafe.Pointer(v107))++
+						*(*uint8)(unsafe.Pointer(v106)) = uint8(libc.Int32FromInt32(m_INST_PUSH1))
+						v109 = envPtr + 76
+						v108 = *(*uintptr)(unsafe.Pointer(v109))
+						*(*uintptr)(unsafe.Pointer(v109))++
+						*(*uint8)(unsafe.Pointer(v108)) = uint8(uint32(_objIndexCopy5))
 						if (*TCompileEnv)(unsafe.Pointer(envPtr)).FatCmdStart < int32(2) {
 							(*TCompileEnv)(unsafe.Pointer(envPtr)).FatCmdStart = 0
 						}
@@ -113023,26 +113037,26 @@ func _CompileExprTree(tls *libc.TLS, interp uintptr, nodes uintptr, index int32,
 						if (*TCompileEnv)(unsafe.Pointer(envPtr)).FcodeNext+uintptr(5) > (*TCompileEnv)(unsafe.Pointer(envPtr)).FcodeEnd {
 							XTclExpandCodeArray(tls, envPtr)
 						}
-						v110 = envPtr + 76
-						v109 = *(*uintptr)(unsafe.Pointer(v110))
-						*(*uintptr)(unsafe.Pointer(v110))++
-						*(*uint8)(unsafe.Pointer(v109)) = uint8(libc.Int32FromInt32(m_INST_PUSH4))
-						v112 = envPtr + 76
-						v111 = *(*uintptr)(unsafe.Pointer(v112))
-						*(*uintptr)(unsafe.Pointer(v112))++
-						*(*uint8)(unsafe.Pointer(v111)) = uint8(uint32(_objIndexCopy5) >> libc.Int32FromInt32(24))
-						v114 = envPtr + 76
-						v113 = *(*uintptr)(unsafe.Pointer(v114))
-						*(*uintptr)(unsafe.Pointer(v114))++
-						*(*uint8)(unsafe.Pointer(v113)) = uint8(uint32(_objIndexCopy5) >> libc.Int32FromInt32(16))
-						v116 = envPtr + 76
-						v115 = *(*uintptr)(unsafe.Pointer(v116))
-						*(*uintptr)(unsafe.Pointer(v116))++
-						*(*uint8)(unsafe.Pointer(v115)) = uint8(uint32(_objIndexCopy5) >> libc.Int32FromInt32(8))
-						v118 = envPtr + 76
-						v117 = *(*uintptr)(unsafe.Pointer(v118))
-						*(*uintptr)(unsafe.Pointer(v118))++
-						*(*uint8)(unsafe.Pointer(v117)) = uint8(uint32(_objIndexCopy5))
+						v111 = envPtr + 76
+						v110 = *(*uintptr)(unsafe.Pointer(v111))
+						*(*uintptr)(unsafe.Pointer(v111))++
+						*(*uint8)(unsafe.Pointer(v110)) = uint8(libc.Int32FromInt32(m_INST_PUSH4))
+						v113 = envPtr + 76
+						v112 = *(*uintptr)(unsafe.Pointer(v113))
+						*(*uintptr)(unsafe.Pointer(v113))++
+						*(*uint8)(unsafe.Pointer(v112)) = uint8(uint32(_objIndexCopy5) >> libc.Int32FromInt32(24))
+						v115 = envPtr + 76
+						v114 = *(*uintptr)(unsafe.Pointer(v115))
+						*(*uintptr)(unsafe.Pointer(v115))++
+						*(*uint8)(unsafe.Pointer(v114)) = uint8(uint32(_objIndexCopy5) >> libc.Int32FromInt32(16))
+						v117 = envPtr + 76
+						v116 = *(*uintptr)(unsafe.Pointer(v117))
+						*(*uintptr)(unsafe.Pointer(v117))++
+						*(*uint8)(unsafe.Pointer(v116)) = uint8(uint32(_objIndexCopy5) >> libc.Int32FromInt32(8))
+						v119 = envPtr + 76
+						v118 = *(*uintptr)(unsafe.Pointer(v119))
+						*(*uintptr)(unsafe.Pointer(v119))++
+						*(*uint8)(unsafe.Pointer(v118)) = uint8(uint32(_objIndexCopy5))
 						if (*TCompileEnv)(unsafe.Pointer(envPtr)).FatCmdStart < int32(2) {
 							(*TCompileEnv)(unsafe.Pointer(envPtr)).FatCmdStart = 0
 						}
@@ -117708,8 +117722,8 @@ func XTclEmitForwardJump(tls *libc.TLS, envPtr uintptr, jumpType TTclJumpType, j
 	 * initialize with information about this
 	 * forward jump. */
 	var _delta, _delta1, _delta2 int32
-	var v10, v11, v12, v13, v14, v15, v16, v17, v18, v7, v8, v9 uintptr
-	_, _, _, _, _, _, _, _, _, _, _, _, _, _, _ = _delta, _delta1, _delta2, v10, v11, v12, v13, v14, v15, v16, v17, v18, v7, v8, v9
+	var v10, v11, v12, v13, v14, v15, v16, v17, v18, v19, v8, v9 uintptr
+	_, _, _, _, _, _, _, _, _, _, _, _, _, _, _ = _delta, _delta1, _delta2, v10, v11, v12, v13, v14, v15, v16, v17, v18, v19, v8, v9
 	/*
 	 * Initialize the JumpFixup structure:
 	 *    - codeOffset is offset of first byte of jump below
@@ -117731,18 +117745,18 @@ func XTclEmitForwardJump(tls *libc.TLS, envPtr uintptr, jumpType TTclJumpType, j
 	}
 	goto _4
 _1:
-_6:
+_7:
 	if (*TCompileEnv)(unsafe.Pointer(envPtr)).FcodeNext+uintptr(2) > (*TCompileEnv)(unsafe.Pointer(envPtr)).FcodeEnd {
 		XTclExpandCodeArray(tls, envPtr)
 	}
-	v8 = envPtr + 76
-	v7 = *(*uintptr)(unsafe.Pointer(v8))
-	*(*uintptr)(unsafe.Pointer(v8))++
-	*(*uint8)(unsafe.Pointer(v7)) = uint8(libc.Int32FromInt32(m_INST_JUMP1))
-	v10 = envPtr + 76
-	v9 = *(*uintptr)(unsafe.Pointer(v10))
-	*(*uintptr)(unsafe.Pointer(v10))++
-	*(*uint8)(unsafe.Pointer(v9)) = uint8(uint32(libc.Int32FromInt32(0)))
+	v9 = envPtr + 76
+	v8 = *(*uintptr)(unsafe.Pointer(v9))
+	*(*uintptr)(unsafe.Pointer(v9))++
+	*(*uint8)(unsafe.Pointer(v8)) = uint8(libc.Int32FromInt32(m_INST_JUMP1))
+	v11 = envPtr + 76
+	v10 = *(*uintptr)(unsafe.Pointer(v11))
+	*(*uintptr)(unsafe.Pointer(v11))++
+	*(*uint8)(unsafe.Pointer(v10)) = uint8(uint32(libc.Int32FromInt32(0)))
 	if (*TCompileEnv)(unsafe.Pointer(envPtr)).FatCmdStart < int32(2) {
 		(*TCompileEnv)(unsafe.Pointer(envPtr)).FatCmdStart = 0
 	}
@@ -117758,8 +117772,10 @@ _6:
 		}
 		*(*int32)(unsafe.Pointer(envPtr + 32)) += _delta
 	}
+	goto _6
+_6:
 	if 0 != 0 {
-		goto _6
+		goto _7
 	}
 	goto _5
 _5:
@@ -117768,14 +117784,14 @@ _2:
 	if (*TCompileEnv)(unsafe.Pointer(envPtr)).FcodeNext+uintptr(2) > (*TCompileEnv)(unsafe.Pointer(envPtr)).FcodeEnd {
 		XTclExpandCodeArray(tls, envPtr)
 	}
-	v12 = envPtr + 76
-	v11 = *(*uintptr)(unsafe.Pointer(v12))
-	*(*uintptr)(unsafe.Pointer(v12))++
-	*(*uint8)(unsafe.Pointer(v11)) = uint8(libc.Int32FromInt32(m_INST_JUMP_TRUE1))
-	v14 = envPtr + 76
-	v13 = *(*uintptr)(unsafe.Pointer(v14))
-	*(*uintptr)(unsafe.Pointer(v14))++
-	*(*uint8)(unsafe.Pointer(v13)) = uint8(uint32(libc.Int32FromInt32(0)))
+	v13 = envPtr + 76
+	v12 = *(*uintptr)(unsafe.Pointer(v13))
+	*(*uintptr)(unsafe.Pointer(v13))++
+	*(*uint8)(unsafe.Pointer(v12)) = uint8(libc.Int32FromInt32(m_INST_JUMP_TRUE1))
+	v15 = envPtr + 76
+	v14 = *(*uintptr)(unsafe.Pointer(v15))
+	*(*uintptr)(unsafe.Pointer(v15))++
+	*(*uint8)(unsafe.Pointer(v14)) = uint8(uint32(libc.Int32FromInt32(0)))
 	if (*TCompileEnv)(unsafe.Pointer(envPtr)).FatCmdStart < int32(2) {
 		(*TCompileEnv)(unsafe.Pointer(envPtr)).FatCmdStart = 0
 	}
@@ -117796,14 +117812,14 @@ _3:
 	if (*TCompileEnv)(unsafe.Pointer(envPtr)).FcodeNext+uintptr(2) > (*TCompileEnv)(unsafe.Pointer(envPtr)).FcodeEnd {
 		XTclExpandCodeArray(tls, envPtr)
 	}
-	v16 = envPtr + 76
-	v15 = *(*uintptr)(unsafe.Pointer(v16))
-	*(*uintptr)(unsafe.Pointer(v16))++
-	*(*uint8)(unsafe.Pointer(v15)) = uint8(libc.Int32FromInt32(m_INST_JUMP_FALSE1))
-	v18 = envPtr + 76
-	v17 = *(*uintptr)(unsafe.Pointer(v18))
-	*(*uintptr)(unsafe.Pointer(v18))++
-	*(*uint8)(unsafe.Pointer(v17)) = uint8(uint32(libc.Int32FromInt32(0)))
+	v17 = envPtr + 76
+	v16 = *(*uintptr)(unsafe.Pointer(v17))
+	*(*uintptr)(unsafe.Pointer(v17))++
+	*(*uint8)(unsafe.Pointer(v16)) = uint8(libc.Int32FromInt32(m_INST_JUMP_FALSE1))
+	v19 = envPtr + 76
+	v18 = *(*uintptr)(unsafe.Pointer(v19))
+	*(*uintptr)(unsafe.Pointer(v19))++
+	*(*uint8)(unsafe.Pointer(v18)) = uint8(uint32(libc.Int32FromInt32(0)))
 	if (*TCompileEnv)(unsafe.Pointer(envPtr)).FatCmdStart < int32(2) {
 		(*TCompileEnv)(unsafe.Pointer(envPtr)).FatCmdStart = 0
 	}
@@ -117869,11 +117885,13 @@ func XTclFixupForwardJump(tls *libc.TLS, envPtr uintptr, jumpFixupPtr uintptr, j
 		}
 		goto _4
 	_1:
-	_6:
+	_7:
 		*(*uint8)(unsafe.Pointer(jumpPc)) = uint8(libc.Int32FromInt32(m_INST_JUMP1))
 		*(*uint8)(unsafe.Pointer(jumpPc + libc.UintptrFromInt32(1))) = uint8(uint32(jumpDist))
+		goto _6
+	_6:
 		if 0 != 0 {
-			goto _6
+			goto _7
 		}
 		goto _5
 	_5:
@@ -117906,41 +117924,43 @@ func XTclFixupForwardJump(tls *libc.TLS, envPtr uintptr, jumpFixupPtr uintptr, j
 	jumpDist += int32(3)
 	switch (*TJumpFixup)(unsafe.Pointer(jumpFixupPtr)).FjumpType {
 	case int32(_TCL_UNCONDITIONAL_JUMP):
-		goto _7
-	case int32(_TCL_TRUE_JUMP):
 		goto _8
-	default:
+	case int32(_TCL_TRUE_JUMP):
 		goto _9
+	default:
+		goto _10
 	}
-	goto _10
-_7:
-_12:
+	goto _11
+_8:
+_14:
 	*(*uint8)(unsafe.Pointer(jumpPc)) = uint8(libc.Int32FromInt32(m_INST_JUMP4))
 	*(*uint8)(unsafe.Pointer(jumpPc + libc.UintptrFromInt32(1))) = uint8(uint32(jumpDist) >> libc.Int32FromInt32(24))
 	*(*uint8)(unsafe.Pointer(jumpPc + libc.UintptrFromInt32(1) + libc.UintptrFromInt32(1))) = uint8(uint32(jumpDist) >> libc.Int32FromInt32(16))
 	*(*uint8)(unsafe.Pointer(jumpPc + libc.UintptrFromInt32(1) + libc.UintptrFromInt32(2))) = uint8(uint32(jumpDist) >> libc.Int32FromInt32(8))
 	*(*uint8)(unsafe.Pointer(jumpPc + libc.UintptrFromInt32(1) + libc.UintptrFromInt32(3))) = uint8(uint32(jumpDist))
+	goto _13
+_13:
 	if 0 != 0 {
-		goto _12
+		goto _14
 	}
+	goto _12
+_12:
 	goto _11
-_11:
-	goto _10
-_8:
+_9:
 	*(*uint8)(unsafe.Pointer(jumpPc)) = uint8(libc.Int32FromInt32(m_INST_JUMP_TRUE4))
 	*(*uint8)(unsafe.Pointer(jumpPc + libc.UintptrFromInt32(1))) = uint8(uint32(jumpDist) >> libc.Int32FromInt32(24))
 	*(*uint8)(unsafe.Pointer(jumpPc + libc.UintptrFromInt32(1) + libc.UintptrFromInt32(1))) = uint8(uint32(jumpDist) >> libc.Int32FromInt32(16))
 	*(*uint8)(unsafe.Pointer(jumpPc + libc.UintptrFromInt32(1) + libc.UintptrFromInt32(2))) = uint8(uint32(jumpDist) >> libc.Int32FromInt32(8))
 	*(*uint8)(unsafe.Pointer(jumpPc + libc.UintptrFromInt32(1) + libc.UintptrFromInt32(3))) = uint8(uint32(jumpDist))
-	goto _10
-_9:
+	goto _11
+_10:
 	*(*uint8)(unsafe.Pointer(jumpPc)) = uint8(libc.Int32FromInt32(m_INST_JUMP_FALSE4))
 	*(*uint8)(unsafe.Pointer(jumpPc + libc.UintptrFromInt32(1))) = uint8(uint32(jumpDist) >> libc.Int32FromInt32(24))
 	*(*uint8)(unsafe.Pointer(jumpPc + libc.UintptrFromInt32(1) + libc.UintptrFromInt32(1))) = uint8(uint32(jumpDist) >> libc.Int32FromInt32(16))
 	*(*uint8)(unsafe.Pointer(jumpPc + libc.UintptrFromInt32(1) + libc.UintptrFromInt32(2))) = uint8(uint32(jumpDist) >> libc.Int32FromInt32(8))
 	*(*uint8)(unsafe.Pointer(jumpPc + libc.UintptrFromInt32(1) + libc.UintptrFromInt32(3))) = uint8(uint32(jumpDist))
-	goto _10
-_10:
+	goto _11
+_11:
 	/*
 	 * Adjust the code offsets for any commands and any ExceptionRange records
 	 * between the jump and the current code address.
@@ -117954,8 +117974,8 @@ _10:
 				break
 			}
 			(*(*TCmdLocation)(unsafe.Pointer((*TCompileEnv)(unsafe.Pointer(envPtr)).FcmdMapPtr + uintptr(k)*16))).FcodeOffset += int32(3)
-			goto _13
-		_13:
+			goto _15
+		_15:
 			k++
 		}
 	}
@@ -117979,8 +117999,8 @@ _10:
 		default:
 			XTcl_Panic(tls, __ccgo_ts+21218, libc.VaList(bp+8, (*TExceptionRange)(unsafe.Pointer(rangePtr)).Ftype1))
 		}
-		goto _14
-	_14:
+		goto _16
+	_16:
 		k++
 	}
 	k = 0
@@ -117997,8 +118017,8 @@ _10:
 			if (*TJumpFixup)(unsafe.Pointer(jumpFixupPtr)).FcodeOffset < *(*uint32)(unsafe.Pointer((*TExceptionAux)(unsafe.Pointer(auxPtr)).FbreakTargets + uintptr(i)*4)) {
 				*(*uint32)(unsafe.Pointer((*TExceptionAux)(unsafe.Pointer(auxPtr)).FbreakTargets + uintptr(i)*4)) += uint32(3)
 			}
-			goto _16
-		_16:
+			goto _18
+		_18:
 			i++
 		}
 		i = 0
@@ -118009,12 +118029,12 @@ _10:
 			if (*TJumpFixup)(unsafe.Pointer(jumpFixupPtr)).FcodeOffset < *(*uint32)(unsafe.Pointer((*TExceptionAux)(unsafe.Pointer(auxPtr)).FcontinueTargets + uintptr(i)*4)) {
 				*(*uint32)(unsafe.Pointer((*TExceptionAux)(unsafe.Pointer(auxPtr)).FcontinueTargets + uintptr(i)*4)) += uint32(3)
 			}
-			goto _17
-		_17:
+			goto _19
+		_19:
 			i++
 		}
-		goto _15
-	_15:
+		goto _17
+	_17:
 		k++
 	}
 	return int32(1) /* the jump was grown */
@@ -118046,11 +118066,11 @@ func XTclEmitInvoke(tls *libc.TLS, envPtr uintptr, opcode int32, va uintptr) {
 	defer tls.Free(48)
 	var _dd, _delta, _delta1, _delta2, _delta3, _delta4, _delta5, arg1, arg2, breakRange, cleanup, continueRange, depth, expandCount, loopRange, savedExpandCount, savedStackDepth, wordCount, v1, v10, v11, v2, v3, v4, v5, v6, v7, v8, v9 int32
 	var argList Tva_list
-	var rangePtr, v21, v22, v23, v24, v25, v26, v27, v28, v29, v30, v31, v32, v33, v34, v35, v36, v37, v38, v39, v40, v41, v42, v43, v44, v45, v46, v47, v48, v49, v50, v51, v52 uintptr
+	var rangePtr, v22, v23, v24, v25, v26, v27, v28, v29, v30, v31, v32, v33, v34, v35, v36, v37, v38, v39, v40, v41, v42, v43, v44, v45, v46, v47, v48, v49, v50, v51, v52, v53 uintptr
 	var _ /* auxBreakPtr at bp+0 */ uintptr
 	var _ /* auxContinuePtr at bp+4 */ uintptr
 	var _ /* nonTrapFixup at bp+8 */ TJumpFixup
-	_, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _ = _dd, _delta, _delta1, _delta2, _delta3, _delta4, _delta5, arg1, arg2, argList, breakRange, cleanup, continueRange, depth, expandCount, loopRange, rangePtr, savedExpandCount, savedStackDepth, wordCount, v1, v10, v11, v2, v21, v22, v23, v24, v25, v26, v27, v28, v29, v3, v30, v31, v32, v33, v34, v35, v36, v37, v38, v39, v4, v40, v41, v42, v43, v44, v45, v46, v47, v48, v49, v5, v50, v51, v52, v6, v7, v8, v9
+	_, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _ = _dd, _delta, _delta1, _delta2, _delta3, _delta4, _delta5, arg1, arg2, argList, breakRange, cleanup, continueRange, depth, expandCount, loopRange, rangePtr, savedExpandCount, savedStackDepth, wordCount, v1, v10, v11, v2, v22, v23, v24, v25, v26, v27, v28, v29, v3, v30, v31, v32, v33, v34, v35, v36, v37, v38, v39, v4, v40, v41, v42, v43, v44, v45, v46, v47, v48, v49, v5, v50, v51, v52, v53, v6, v7, v8, v9
 	wordCount = 0
 	expandCount = 0
 	loopRange = 0
@@ -118167,18 +118187,18 @@ func XTclEmitInvoke(tls *libc.TLS, envPtr uintptr, opcode int32, va uintptr) {
 	}
 	goto _18
 _12:
-_20:
+_21:
 	if (*TCompileEnv)(unsafe.Pointer(envPtr)).FcodeNext+uintptr(2) > (*TCompileEnv)(unsafe.Pointer(envPtr)).FcodeEnd {
 		XTclExpandCodeArray(tls, envPtr)
 	}
-	v22 = envPtr + 76
-	v21 = *(*uintptr)(unsafe.Pointer(v22))
-	*(*uintptr)(unsafe.Pointer(v22))++
-	*(*uint8)(unsafe.Pointer(v21)) = uint8(libc.Int32FromInt32(m_INST_INVOKE_STK1))
-	v24 = envPtr + 76
-	v23 = *(*uintptr)(unsafe.Pointer(v24))
-	*(*uintptr)(unsafe.Pointer(v24))++
-	*(*uint8)(unsafe.Pointer(v23)) = uint8(uint32(arg1))
+	v23 = envPtr + 76
+	v22 = *(*uintptr)(unsafe.Pointer(v23))
+	*(*uintptr)(unsafe.Pointer(v23))++
+	*(*uint8)(unsafe.Pointer(v22)) = uint8(libc.Int32FromInt32(m_INST_INVOKE_STK1))
+	v25 = envPtr + 76
+	v24 = *(*uintptr)(unsafe.Pointer(v25))
+	*(*uintptr)(unsafe.Pointer(v25))++
+	*(*uint8)(unsafe.Pointer(v24)) = uint8(uint32(arg1))
 	if (*TCompileEnv)(unsafe.Pointer(envPtr)).FatCmdStart < int32(2) {
 		(*TCompileEnv)(unsafe.Pointer(envPtr)).FatCmdStart = 0
 	}
@@ -118194,8 +118214,10 @@ _20:
 		}
 		*(*int32)(unsafe.Pointer(envPtr + 32)) += _delta
 	}
+	goto _20
+_20:
 	if 0 != 0 {
-		goto _20
+		goto _21
 	}
 	goto _19
 _19:
@@ -118204,26 +118226,26 @@ _13:
 	if (*TCompileEnv)(unsafe.Pointer(envPtr)).FcodeNext+uintptr(5) > (*TCompileEnv)(unsafe.Pointer(envPtr)).FcodeEnd {
 		XTclExpandCodeArray(tls, envPtr)
 	}
-	v26 = envPtr + 76
-	v25 = *(*uintptr)(unsafe.Pointer(v26))
-	*(*uintptr)(unsafe.Pointer(v26))++
-	*(*uint8)(unsafe.Pointer(v25)) = uint8(libc.Int32FromInt32(m_INST_INVOKE_STK4))
-	v28 = envPtr + 76
-	v27 = *(*uintptr)(unsafe.Pointer(v28))
-	*(*uintptr)(unsafe.Pointer(v28))++
-	*(*uint8)(unsafe.Pointer(v27)) = uint8(uint32(arg1) >> libc.Int32FromInt32(24))
-	v30 = envPtr + 76
-	v29 = *(*uintptr)(unsafe.Pointer(v30))
-	*(*uintptr)(unsafe.Pointer(v30))++
-	*(*uint8)(unsafe.Pointer(v29)) = uint8(uint32(arg1) >> libc.Int32FromInt32(16))
-	v32 = envPtr + 76
-	v31 = *(*uintptr)(unsafe.Pointer(v32))
-	*(*uintptr)(unsafe.Pointer(v32))++
-	*(*uint8)(unsafe.Pointer(v31)) = uint8(uint32(arg1) >> libc.Int32FromInt32(8))
-	v34 = envPtr + 76
-	v33 = *(*uintptr)(unsafe.Pointer(v34))
-	*(*uintptr)(unsafe.Pointer(v34))++
-	*(*uint8)(unsafe.Pointer(v33)) = uint8(uint32(arg1))
+	v27 = envPtr + 76
+	v26 = *(*uintptr)(unsafe.Pointer(v27))
+	*(*uintptr)(unsafe.Pointer(v27))++
+	*(*uint8)(unsafe.Pointer(v26)) = uint8(libc.Int32FromInt32(m_INST_INVOKE_STK4))
+	v29 = envPtr + 76
+	v28 = *(*uintptr)(unsafe.Pointer(v29))
+	*(*uintptr)(unsafe.Pointer(v29))++
+	*(*uint8)(unsafe.Pointer(v28)) = uint8(uint32(arg1) >> libc.Int32FromInt32(24))
+	v31 = envPtr + 76
+	v30 = *(*uintptr)(unsafe.Pointer(v31))
+	*(*uintptr)(unsafe.Pointer(v31))++
+	*(*uint8)(unsafe.Pointer(v30)) = uint8(uint32(arg1) >> libc.Int32FromInt32(16))
+	v33 = envPtr + 76
+	v32 = *(*uintptr)(unsafe.Pointer(v33))
+	*(*uintptr)(unsafe.Pointer(v33))++
+	*(*uint8)(unsafe.Pointer(v32)) = uint8(uint32(arg1) >> libc.Int32FromInt32(8))
+	v35 = envPtr + 76
+	v34 = *(*uintptr)(unsafe.Pointer(v35))
+	*(*uintptr)(unsafe.Pointer(v35))++
+	*(*uint8)(unsafe.Pointer(v34)) = uint8(uint32(arg1))
 	if (*TCompileEnv)(unsafe.Pointer(envPtr)).FatCmdStart < int32(2) {
 		(*TCompileEnv)(unsafe.Pointer(envPtr)).FatCmdStart = 0
 	}
@@ -118244,10 +118266,10 @@ _14:
 	if (*TCompileEnv)(unsafe.Pointer(envPtr)).FcodeNext == (*TCompileEnv)(unsafe.Pointer(envPtr)).FcodeEnd {
 		XTclExpandCodeArray(tls, envPtr)
 	}
-	v36 = envPtr + 76
-	v35 = *(*uintptr)(unsafe.Pointer(v36))
-	*(*uintptr)(unsafe.Pointer(v36))++
-	*(*uint8)(unsafe.Pointer(v35)) = uint8(libc.Int32FromInt32(m_INST_INVOKE_EXPANDED))
+	v37 = envPtr + 76
+	v36 = *(*uintptr)(unsafe.Pointer(v37))
+	*(*uintptr)(unsafe.Pointer(v37))++
+	*(*uint8)(unsafe.Pointer(v36)) = uint8(libc.Int32FromInt32(m_INST_INVOKE_EXPANDED))
 	if (*TCompileEnv)(unsafe.Pointer(envPtr)).FatCmdStart < int32(2) {
 		(*TCompileEnv)(unsafe.Pointer(envPtr)).FatCmdStart = 0
 	}
@@ -118275,10 +118297,10 @@ _15:
 	if (*TCompileEnv)(unsafe.Pointer(envPtr)).FcodeNext == (*TCompileEnv)(unsafe.Pointer(envPtr)).FcodeEnd {
 		XTclExpandCodeArray(tls, envPtr)
 	}
-	v38 = envPtr + 76
-	v37 = *(*uintptr)(unsafe.Pointer(v38))
-	*(*uintptr)(unsafe.Pointer(v38))++
-	*(*uint8)(unsafe.Pointer(v37)) = uint8(libc.Int32FromInt32(m_INST_EVAL_STK))
+	v39 = envPtr + 76
+	v38 = *(*uintptr)(unsafe.Pointer(v39))
+	*(*uintptr)(unsafe.Pointer(v39))++
+	*(*uint8)(unsafe.Pointer(v38)) = uint8(libc.Int32FromInt32(m_INST_EVAL_STK))
 	if (*TCompileEnv)(unsafe.Pointer(envPtr)).FatCmdStart < int32(2) {
 		(*TCompileEnv)(unsafe.Pointer(envPtr)).FatCmdStart = 0
 	}
@@ -118299,10 +118321,10 @@ _16:
 	if (*TCompileEnv)(unsafe.Pointer(envPtr)).FcodeNext == (*TCompileEnv)(unsafe.Pointer(envPtr)).FcodeEnd {
 		XTclExpandCodeArray(tls, envPtr)
 	}
-	v40 = envPtr + 76
-	v39 = *(*uintptr)(unsafe.Pointer(v40))
-	*(*uintptr)(unsafe.Pointer(v40))++
-	*(*uint8)(unsafe.Pointer(v39)) = uint8(libc.Int32FromInt32(m_INST_RETURN_STK))
+	v41 = envPtr + 76
+	v40 = *(*uintptr)(unsafe.Pointer(v41))
+	*(*uintptr)(unsafe.Pointer(v41))++
+	*(*uint8)(unsafe.Pointer(v40)) = uint8(libc.Int32FromInt32(m_INST_RETURN_STK))
 	if (*TCompileEnv)(unsafe.Pointer(envPtr)).FatCmdStart < int32(2) {
 		(*TCompileEnv)(unsafe.Pointer(envPtr)).FatCmdStart = 0
 	}
@@ -118323,26 +118345,26 @@ _17:
 	if (*TCompileEnv)(unsafe.Pointer(envPtr)).FcodeNext+uintptr(5) > (*TCompileEnv)(unsafe.Pointer(envPtr)).FcodeEnd {
 		XTclExpandCodeArray(tls, envPtr)
 	}
-	v42 = envPtr + 76
-	v41 = *(*uintptr)(unsafe.Pointer(v42))
-	*(*uintptr)(unsafe.Pointer(v42))++
-	*(*uint8)(unsafe.Pointer(v41)) = uint8(libc.Int32FromInt32(m_INST_INVOKE_REPLACE))
-	v44 = envPtr + 76
-	v43 = *(*uintptr)(unsafe.Pointer(v44))
-	*(*uintptr)(unsafe.Pointer(v44))++
-	*(*uint8)(unsafe.Pointer(v43)) = uint8(uint32(arg1) >> libc.Int32FromInt32(24))
-	v46 = envPtr + 76
-	v45 = *(*uintptr)(unsafe.Pointer(v46))
-	*(*uintptr)(unsafe.Pointer(v46))++
-	*(*uint8)(unsafe.Pointer(v45)) = uint8(uint32(arg1) >> libc.Int32FromInt32(16))
-	v48 = envPtr + 76
-	v47 = *(*uintptr)(unsafe.Pointer(v48))
-	*(*uintptr)(unsafe.Pointer(v48))++
-	*(*uint8)(unsafe.Pointer(v47)) = uint8(uint32(arg1) >> libc.Int32FromInt32(8))
-	v50 = envPtr + 76
-	v49 = *(*uintptr)(unsafe.Pointer(v50))
-	*(*uintptr)(unsafe.Pointer(v50))++
-	*(*uint8)(unsafe.Pointer(v49)) = uint8(uint32(arg1))
+	v43 = envPtr + 76
+	v42 = *(*uintptr)(unsafe.Pointer(v43))
+	*(*uintptr)(unsafe.Pointer(v43))++
+	*(*uint8)(unsafe.Pointer(v42)) = uint8(libc.Int32FromInt32(m_INST_INVOKE_REPLACE))
+	v45 = envPtr + 76
+	v44 = *(*uintptr)(unsafe.Pointer(v45))
+	*(*uintptr)(unsafe.Pointer(v45))++
+	*(*uint8)(unsafe.Pointer(v44)) = uint8(uint32(arg1) >> libc.Int32FromInt32(24))
+	v47 = envPtr + 76
+	v46 = *(*uintptr)(unsafe.Pointer(v47))
+	*(*uintptr)(unsafe.Pointer(v47))++
+	*(*uint8)(unsafe.Pointer(v46)) = uint8(uint32(arg1) >> libc.Int32FromInt32(16))
+	v49 = envPtr + 76
+	v48 = *(*uintptr)(unsafe.Pointer(v49))
+	*(*uintptr)(unsafe.Pointer(v49))++
+	*(*uint8)(unsafe.Pointer(v48)) = uint8(uint32(arg1) >> libc.Int32FromInt32(8))
+	v51 = envPtr + 76
+	v50 = *(*uintptr)(unsafe.Pointer(v51))
+	*(*uintptr)(unsafe.Pointer(v51))++
+	*(*uint8)(unsafe.Pointer(v50)) = uint8(uint32(arg1))
 	if (*TCompileEnv)(unsafe.Pointer(envPtr)).FatCmdStart < int32(2) {
 		(*TCompileEnv)(unsafe.Pointer(envPtr)).FatCmdStart = 0
 	}
@@ -118361,10 +118383,10 @@ _17:
 	if (*TCompileEnv)(unsafe.Pointer(envPtr)).FcodeNext == (*TCompileEnv)(unsafe.Pointer(envPtr)).FcodeEnd {
 		XTclExpandCodeArray(tls, envPtr)
 	}
-	v52 = envPtr + 76
-	v51 = *(*uintptr)(unsafe.Pointer(v52))
-	*(*uintptr)(unsafe.Pointer(v52))++
-	*(*uint8)(unsafe.Pointer(v51)) = uint8(uint32(arg2))
+	v53 = envPtr + 76
+	v52 = *(*uintptr)(unsafe.Pointer(v53))
+	*(*uintptr)(unsafe.Pointer(v53))++
+	*(*uint8)(unsafe.Pointer(v52)) = uint8(uint32(arg2))
 	if -int32(1) < 0 {
 		if (*TCompileEnv)(unsafe.Pointer(envPtr)).FmaxStackDepth < (*TCompileEnv)(unsafe.Pointer(envPtr)).FcurrStackDepth {
 			(*TCompileEnv)(unsafe.Pointer(envPtr)).FmaxStackDepth = (*TCompileEnv)(unsafe.Pointer(envPtr)).FcurrStackDepth
@@ -138012,15 +138034,15 @@ func _HandleBgErrors(tls *libc.TLS, clientData TClientData) {
 func XTclDefaultBgErrorHandlerObjCmd(tls *libc.TLS, dummy TClientData, interp uintptr, objc int32, objv uintptr) (r int32) {
 	bp := tls.Alloc(64)
 	defer tls.Free(64) /* Argument objects. */
-	var _objPtr, _objPtr1, _objPtr2, _objPtr3, _objPtr4, _objPtr5, _objPtr6, keyPtr, resultPtr, v13, v15, v17, v19, v2, v21, v4 uintptr
+	var _objPtr, _objPtr1, _objPtr2, _objPtr3, _objPtr4, _objPtr5, _objPtr6, keyPtr, resultPtr, v14, v16, v18, v2, v20, v22, v4 uintptr
 	var errChannel TTcl_Channel
-	var result, v1, v12, v14, v16, v18, v20, v3 int32
+	var result, v1, v13, v15, v17, v19, v21, v3 int32
 	var saved TTcl_InterpState
 	var _ /* code at bp+16 */ int32
 	var _ /* level at bp+20 */ int32
 	var _ /* tempObjv at bp+8 */ [2]uintptr
 	var _ /* valuePtr at bp+0 */ uintptr
-	_, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _ = _objPtr, _objPtr1, _objPtr2, _objPtr3, _objPtr4, _objPtr5, _objPtr6, errChannel, keyPtr, result, resultPtr, saved, v1, v12, v13, v14, v15, v16, v17, v18, v19, v2, v20, v21, v3, v4
+	_, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _ = _objPtr, _objPtr1, _objPtr2, _objPtr3, _objPtr4, _objPtr5, _objPtr6, errChannel, keyPtr, result, resultPtr, saved, v1, v13, v14, v15, v16, v17, v18, v19, v2, v20, v21, v22, v3, v4
 	if objc != int32(3) {
 		XTcl_WrongNumArgs(tls, interp, int32(1), objv, __ccgo_ts+27088)
 		return int32(m_TCL_ERROR)
@@ -138156,7 +138178,7 @@ _5:
 	(*(*[2]uintptr)(unsafe.Pointer(bp + 8)))[int32(1)] = *(*uintptr)(unsafe.Pointer(objv + 1*4))
 	goto _9
 _6:
-_11:
+_12:
 	if XtclFreeObjList == libc.UintptrFromInt32(0) {
 		XTclAllocateFreeObjects(tls)
 	}
@@ -138176,8 +138198,10 @@ _11:
 		(*TTcl_Obj)(unsafe.Pointer((*(*[2]uintptr)(unsafe.Pointer(bp + 8)))[int32(1)])).Flength = int32(libc.Uint32FromInt64(34) - libc.Uint32FromInt32(1))
 	}
 	(*TTcl_Obj)(unsafe.Pointer((*(*[2]uintptr)(unsafe.Pointer(bp + 8)))[int32(1)])).FtypePtr = libc.UintptrFromInt32(0)
+	goto _11
+_11:
 	if 0 != 0 {
-		goto _11
+		goto _12
 	}
 	goto _10
 _10:
@@ -138233,10 +138257,10 @@ _9:
 	(*TTcl_Obj)(unsafe.Pointer(keyPtr)).FrefCount++
 	result = XTcl_DictObjGet(tls, libc.UintptrFromInt32(0), *(*uintptr)(unsafe.Pointer(objv + 2*4)), keyPtr, bp)
 	_objPtr2 = keyPtr
-	v13 = _objPtr2
-	v12 = *(*int32)(unsafe.Pointer(v13))
-	*(*int32)(unsafe.Pointer(v13))--
-	if v12 <= int32(1) {
+	v14 = _objPtr2
+	v13 = *(*int32)(unsafe.Pointer(v14))
+	*(*int32)(unsafe.Pointer(v14))--
+	if v13 <= int32(1) {
 		XTclFreeObj(tls, _objPtr2)
 	}
 	if result == m_TCL_OK && *(*uintptr)(unsafe.Pointer(bp)) != libc.UintptrFromInt32(0) {
@@ -138264,10 +138288,10 @@ _9:
 	(*TTcl_Obj)(unsafe.Pointer(keyPtr)).FrefCount++
 	result = XTcl_DictObjGet(tls, libc.UintptrFromInt32(0), *(*uintptr)(unsafe.Pointer(objv + 2*4)), keyPtr, bp)
 	_objPtr3 = keyPtr
-	v15 = _objPtr3
-	v14 = *(*int32)(unsafe.Pointer(v15))
-	*(*int32)(unsafe.Pointer(v15))--
-	if v14 <= int32(1) {
+	v16 = _objPtr3
+	v15 = *(*int32)(unsafe.Pointer(v16))
+	*(*int32)(unsafe.Pointer(v16))--
+	if v15 <= int32(1) {
 		XTclFreeObj(tls, _objPtr3)
 	}
 	if result == m_TCL_OK && *(*uintptr)(unsafe.Pointer(bp)) != libc.UintptrFromInt32(0) {
@@ -138319,10 +138343,10 @@ _9:
 					XTcl_WriteChars(tls, errChannel, __ccgo_ts+285, -int32(1))
 				}
 				_objPtr4 = resultPtr
-				v17 = _objPtr4
-				v16 = *(*int32)(unsafe.Pointer(v17))
-				*(*int32)(unsafe.Pointer(v17))--
-				if v16 <= int32(1) {
+				v18 = _objPtr4
+				v17 = *(*int32)(unsafe.Pointer(v18))
+				*(*int32)(unsafe.Pointer(v18))--
+				if v17 <= int32(1) {
 					XTclFreeObj(tls, _objPtr4)
 				}
 				XTcl_Flush(tls, errChannel)
@@ -138335,17 +138359,17 @@ _9:
 		XTcl_DiscardInterpState(tls, saved)
 	}
 	_objPtr5 = (*(*[2]uintptr)(unsafe.Pointer(bp + 8)))[0]
-	v19 = _objPtr5
-	v18 = *(*int32)(unsafe.Pointer(v19))
-	*(*int32)(unsafe.Pointer(v19))--
-	if v18 <= int32(1) {
+	v20 = _objPtr5
+	v19 = *(*int32)(unsafe.Pointer(v20))
+	*(*int32)(unsafe.Pointer(v20))--
+	if v19 <= int32(1) {
 		XTclFreeObj(tls, _objPtr5)
 	}
 	_objPtr6 = (*(*[2]uintptr)(unsafe.Pointer(bp + 8)))[int32(1)]
-	v21 = _objPtr6
-	v20 = *(*int32)(unsafe.Pointer(v21))
-	*(*int32)(unsafe.Pointer(v21))--
-	if v20 <= int32(1) {
+	v22 = _objPtr6
+	v21 = *(*int32)(unsafe.Pointer(v22))
+	*(*int32)(unsafe.Pointer(v22))--
+	if v21 <= int32(1) {
 		XTclFreeObj(tls, _objPtr6)
 	}
 	XTcl_ResetResult(tls, interp)
@@ -141410,16 +141434,16 @@ func XTclNRExecuteByteCode(tls *libc.TLS, interp uintptr, codePtr uintptr) (r in
 func _TEBCresume(tls *libc.TLS, data uintptr, interp uintptr, result int32) (r int32) {
 	bp := tls.Alloc(272)
 	defer tls.Free(272)
-	var TD, _callbackPtr, _callbackPtr1, _callbackPtr10, _callbackPtr2, _callbackPtr3, _callbackPtr4, _callbackPtr5, _callbackPtr6, _callbackPtr7, _callbackPtr8, _callbackPtr9, _isobjPtr, _isobjPtr1, _isobjPtr10, _isobjPtr11, _isobjPtr2, _isobjPtr3, _isobjPtr4, _isobjPtr5, _isobjPtr6, _isobjPtr7, _isobjPtr8, _isobjPtr9, _objPtr, _objPtr1, _objPtr10, _objPtr11, _objPtr12, _objPtr13, _objPtr14, _objPtr15, _objPtr16, _objPtr17, _objPtr18, _objPtr19, _objPtr2, _objPtr20, _objPtr21, _objPtr22, _objPtr23, _objPtr24, _objPtr25, _objPtr26, _objPtr27, _objPtr28, _objPtr29, _objPtr3, _objPtr30, _objPtr31, _objPtr32, _objPtr33, _objPtr34, _objPtr35, _objPtr36, _objPtr37, _objPtr38, _objPtr39, _objPtr4, _objPtr40, _objPtr5, _objPtr6, _objPtr7, _objPtr8, _objPtr9, a, b, bytes, bytes1, bytes11, bytes12, bytes2, bytes21, bytes22, classPtr, compiledLocals, constants, contextPtr, copyPtr, corPtr, corPtr1, curInstName, currNsPtr, currPtr, dictPtr, duiPtr, emptyPtr, end, framePtr1, framePtr2, hPtr, incrPtr, infoPtr, infoPtr1, interp2, iterVarPtr, jtPtr, keysPtr, linkPtr, listPtr, listPtr1, listPtr2, listPtr3, listVarPtr, mPtr, methodType, methodType1, miPtr, newCodePtr, newValue, nsObjPtr, oPtr, objPtr, oldValuePtr, otherPtr, p, p1, part1Ptr, part2Ptr, pc, rangePtr, rootFramePtr, s1, s2, savedFramePtr, savedNsPtr, savedString, searchPtr, statePtr, string1, string2, tmpPtr, tmpPtr1, tmpPtr2, tosPtr, ustring1, ustring11, ustring2, ustring21, ustring3, value2Ptr, value3Ptr, valueToAssign, var2Ptr, varListPtr, varListPtr1, varNamePtr, v1004, v1005, v1006, v1012, v1013, v1014, v1028, v1029, v1030, v1058, v1059, v1060, v1066, v1067, v1068, v1074, v1075, v1076, v1082, v1083, v1084, v1090, v1091, v1092, v1117, v1118, v1119, v1122, v1123, v1124, v1127, v1128, v1129, v1132, v1133, v1134, v1137, v1138, v1139, v1144, v1145, v1146, v1149, v1150, v1151, v1154, v1155, v1156, v1159, v1160, v1161, v1183, v1184, v1185, v1188, v1189, v1190, v1193, v1194, v1195, v1198, v1199, v12, v1200, v1204, v1205, v1206, v1216, v1217, v1218, v1221, v1222, v1223, v1226, v1227, v1228, v1231, v1232, v1233, v1243, v1244, v1245, v1248, v1249, v1250, v1253, v1254, v1255, v1258, v1259, v1260, v1263, v1264, v1265, v1275, v1276, v1277, v1280, v1281, v1282, v1285, v1286, v1287, v1290, v1291, v1292, v1295, v1296, v1297, v1304, v1306, v1308, v1311, v1312, v1313, v1319, v1320, v1321, v1328, v1329, v1330, v1331, v1332, v1337, v1340, v1341, v1342, v1345, v1346, v1347, v1348, v1349, v1352, v1353, v1354, v1357, v1358, v1359, v1362, v1363, v1364, v1367, v1368, v1369, v1372, v1373, v1374, v1378, v1379, v1380, v1383, v1384, v1385, v1387, v1388, v1396, v1398, v14, v1400, v1402, v1404, v1406, v1408, v1410, v1412, v1414, v1417, v1418, v1419, v1422, v1423, v1424, v1425, v1427, v1429, v1430, v1431, v1432, v1433, v1434, v1435, v1436, v1437, v1448, v1449, v1450, v1456, v1457, v1458, v1464, v1465, v1466, v1472, v1473, v1474, v1480, v1481, v1482, v1486, v1488, v1490, v1493, v1494, v1495, v1498, v1499, v1500, v1505, v1507, v1510, v1511, v1512, v1516, v1517, v1518, v1519, v1522, v1524, v1526, v1529, v1530, v1531, v1535, v1536, v1537, v1540, v1541, v1542, v1544, v1546, v1549, v1550, v1551, v1554, v1555, v1556, v1559, v1560, v1562, v1565, v1566, v1567, v1569, v1570, v1572, v1574, v1575, v1576, v16, v17, v19, v2, v21, v236, v237, v238, v239, v241, v244, v245, v246, v248, v250, v252, v253, v255, v256, v259, v260, v261, v262, v264, v267, v268, v269, v272, v273, v274, v277, v278, v279, v28, v282, v283, v284, v288, v289, v290, v292, v296, v297, v298, v30, v300, v302, v304, v305, v307, v31, v310, v311, v312, v314, v317, v318, v319, v320, v321, v322, v323, v324, v325, v326, v328, v329, v33, v330, v331, v332, v333, v334, v335, v336, v338, v34, v340, v342, v343, v345, v348, v349, v350, v351, v354, v355, v356, v357, v36, v360, v361, v362, v364, v366, v369, v370, v371, v374, v375, v376, v378, v380, v384, v385, v389, v391, v393, v395, v398, v4, v407, v409, v41, v410, v412, v414, v416, v42, v425, v428, v429, v430, v433, v434, v435, v438, v44, v441, v442, v443, v446, v447, v448, v451, v452, v453, v457, v460, v461, v462, v463, v466, v467, v468, v471, v472, v473, v476, v477, v478, v481, v482, v483, v487, v488, v489, v490, v493, v494, v495, v498, v499, v500, v505, v506, v507, v510, v511, v512, v515, v516, v517, v520, v521, v522, v525, v526, v529, v530, v531, v534, v535, v536, v537, v538, v541, v542, v543, v546, v547, v548, v549, v552, v553, v557, v558, v559, v562, v563, v564, v567, v568, v569, v573, v574, v575, v580, v583, v584, v585, v589, v590, v591, v592, v594, v595, v597, v6, v600, v601, v602, v606, v607, v608, v611, v612, v613, v618, v619, v620, v623, v624, v625, v626, v628, v639, v640, v641, v647, v648, v649, v655, v656, v657, v663, v664, v665, v671, v672, v673, v675, v678, v679, v680, v683, v684, v685, v696, v697, v698, v704, v705, v706, v712, v713, v714, v720, v721, v722, v728, v729, v730, v733, v734, v735, v736, v737, v740, v741, v742, v743, v746, v747, v748, v749, v750, v753, v754, v755, v756, v759, v760, v761, v762, v763, v766, v767, v768, v769, v772, v773, v774, v778, v779, v780, v786, v787, v788, v793, v794, v795, v796, v801, v803, v804, v806, v807, v809, v812, v813, v814, v816, v819, v820, v821, v823, v826, v827, v828, v831, v832, v833, v835, v838, v839, v840, v842, v845, v846, v847, v852, v853, v854, v858, v859, v860, v872, v873, v874, v880, v881, v882, v888, v889, v890, v896, v897, v898, v904, v905, v906, v907, v908, v919, v920, v921, v927, v928, v929, v935, v936, v937, v943, v944, v945, v951, v952, v953, v954, v955, v956, v957, v958, v959, v962, v963, v964, v967, v968, v969, v980, v981, v982, v988, v989, v990, v996, v997, v998, p43 uintptr
-	var allocateDict, allocdict, appendLen, augend, cflags, ch, checkEq, checkInterp, cleanup, code, compare, continueLoop, createdNewObj, endIdx, flags, found, found1, i, i1, i2, i5, i6, i7, iResult, iResult1, increment, instructionCount, iterMax, iterNum, iterNum1, iterTmp, iterTmpIndex, j, j1, jumpOffset, l1, l2, lResult, level, listTmpDepth, listTmpIndex, match, newDepth, nocase, numArgs, numIndices, numLists, numLists1, numVars, numVars1, onlyb, opnd, opnd2, pcAdjustment, res, shift, skip, storeFlags, sum, trim1, valIndex, valIndex1, varIndex, varIndex1, yieldParameter, v1, v1000, v1001, v1007, v1008, v1009, v1015, v1016, v1017, v1021, v1022, v1023, v1024, v1025, v1031, v1032, v1033, v1037, v1038, v1039, v1040, v1044, v1046, v1047, v1061, v1062, v1063, v1069, v1070, v1071, v1077, v1078, v1079, v1085, v1086, v1087, v1093, v1094, v1095, v1099, v1100, v1101, v1102, v1106, v1140, v1162, v1163, v1164, v1168, v1169, v1170, v1171, v1175, v1201, v1207, v1208, v1209, v1213, v1234, v1235, v1236, v1240, v1266, v1267, v1268, v1272, v1299, v13, v1303, v1305, v1307, v1314, v1315, v1316, v1322, v1323, v1324, v1326, v1327, v1336, v1375, v1386, v1391, v1392, v1393, v1394, v1395, v1397, v1399, v1401, v1403, v1405, v1407, v1409, v1411, v1413, v1426, v1428, v1451, v1452, v1453, v1459, v1460, v1461, v1467, v1468, v1469, v1475, v1476, v1477, v1483, v1485, v1487, v1489, v15, v1501, v1504, v1506, v1513, v1520, v1521, v1523, v1525, v1532, v1543, v1545, v1557, v1558, v1561, v1568, v1571, v1573, v18, v20, v240, v247, v249, v251, v254, v263, v27, v29, v299, v3, v301, v306, v313, v32, v327, v337, v339, v341, v344, v35, v363, v365, v37, v377, v379, v38, v381, v382, v383, v386, v387, v388, v39, v390, v394, v396, v397, v399, v40, v400, v401, v405, v406, v408, v411, v413, v415, v419, v420, v421, v422, v423, v424, v436, v437, v454, v455, v456, v484, v5, v501, v502, v523, v554, v570, v576, v577, v579, v586, v593, v596, v603, v627, v642, v643, v644, v650, v651, v652, v658, v659, v660, v666, v667, v668, v674, v699, v700, v701, v707, v708, v709, v715, v716, v717, v723, v724, v725, v775, v781, v782, v797, v798, v800, v802, v805, v808, v815, v822, v834, v841, v875, v876, v877, v883, v884, v885, v891, v892, v893, v899, v900, v901, v922, v923, v924, v930, v931, v932, v938, v939, v940, v946, v947, v948, v983, v984, v985, v991, v992, v993, v999 int32
+	var TD, _callbackPtr, _callbackPtr1, _callbackPtr10, _callbackPtr2, _callbackPtr3, _callbackPtr4, _callbackPtr5, _callbackPtr6, _callbackPtr7, _callbackPtr8, _callbackPtr9, _isobjPtr, _isobjPtr1, _isobjPtr10, _isobjPtr11, _isobjPtr2, _isobjPtr3, _isobjPtr4, _isobjPtr5, _isobjPtr6, _isobjPtr7, _isobjPtr8, _isobjPtr9, _objPtr, _objPtr1, _objPtr10, _objPtr11, _objPtr12, _objPtr13, _objPtr14, _objPtr15, _objPtr16, _objPtr17, _objPtr18, _objPtr19, _objPtr2, _objPtr20, _objPtr21, _objPtr22, _objPtr23, _objPtr24, _objPtr25, _objPtr26, _objPtr27, _objPtr28, _objPtr29, _objPtr3, _objPtr30, _objPtr31, _objPtr32, _objPtr33, _objPtr34, _objPtr35, _objPtr36, _objPtr37, _objPtr38, _objPtr39, _objPtr4, _objPtr40, _objPtr5, _objPtr6, _objPtr7, _objPtr8, _objPtr9, a, b, bytes, bytes1, bytes11, bytes12, bytes2, bytes21, bytes22, classPtr, compiledLocals, constants, contextPtr, copyPtr, corPtr, corPtr1, curInstName, currNsPtr, currPtr, dictPtr, duiPtr, emptyPtr, end, framePtr1, framePtr2, hPtr, incrPtr, infoPtr, infoPtr1, interp2, iterVarPtr, jtPtr, keysPtr, linkPtr, listPtr, listPtr1, listPtr2, listPtr3, listVarPtr, mPtr, methodType, methodType1, miPtr, newCodePtr, newValue, nsObjPtr, oPtr, objPtr, oldValuePtr, otherPtr, p, p1, part1Ptr, part2Ptr, pc, rangePtr, rootFramePtr, s1, s2, savedFramePtr, savedNsPtr, savedString, searchPtr, statePtr, string1, string2, tmpPtr, tmpPtr1, tmpPtr2, tosPtr, ustring1, ustring11, ustring2, ustring21, ustring3, value2Ptr, value3Ptr, valueToAssign, var2Ptr, varListPtr, varListPtr1, varNamePtr, v1001, v1002, v1003, v1009, v1010, v1011, v1017, v1018, v1019, v1033, v1034, v1035, v1064, v1065, v1066, v1072, v1073, v1074, v1080, v1081, v1082, v1088, v1089, v1090, v1096, v1097, v1098, v1123, v1124, v1125, v1128, v1129, v1130, v1133, v1134, v1135, v1138, v1139, v1140, v1143, v1144, v1145, v1150, v1151, v1152, v1155, v1156, v1157, v1160, v1161, v1162, v1165, v1166, v1167, v1189, v1190, v1191, v1194, v1195, v1196, v1199, v12, v1200, v1201, v1204, v1205, v1206, v1210, v1211, v1212, v1222, v1223, v1224, v1227, v1228, v1229, v1232, v1233, v1234, v1237, v1238, v1239, v1249, v1250, v1251, v1254, v1255, v1256, v1259, v1260, v1261, v1264, v1265, v1266, v1269, v1270, v1271, v1281, v1282, v1283, v1286, v1287, v1288, v1291, v1292, v1293, v1296, v1297, v1298, v1301, v1302, v1303, v1310, v1312, v1314, v1317, v1318, v1319, v1325, v1326, v1327, v1334, v1335, v1336, v1337, v1338, v1343, v1346, v1347, v1348, v1351, v1352, v1353, v1354, v1355, v1358, v1359, v1360, v1363, v1364, v1365, v1368, v1369, v1370, v1373, v1374, v1375, v1378, v1379, v1380, v1384, v1385, v1386, v1389, v1390, v1391, v1393, v1394, v14, v1402, v1404, v1406, v1408, v1410, v1412, v1414, v1416, v1418, v1420, v1423, v1424, v1425, v1428, v1429, v1430, v1431, v1433, v1435, v1436, v1437, v1438, v1439, v1440, v1441, v1442, v1443, v1455, v1456, v1457, v1463, v1464, v1465, v1471, v1472, v1473, v1479, v1480, v1481, v1487, v1488, v1489, v1493, v1495, v1497, v1500, v1501, v1502, v1505, v1506, v1507, v1512, v1514, v1517, v1518, v1519, v1523, v1524, v1525, v1526, v1529, v1531, v1533, v1536, v1537, v1538, v1542, v1543, v1544, v1547, v1548, v1549, v1551, v1553, v1556, v1557, v1558, v1561, v1562, v1563, v1566, v1567, v1569, v1572, v1573, v1574, v1576, v1577, v1579, v1581, v1582, v1583, v16, v17, v19, v2, v21, v236, v237, v238, v239, v241, v244, v245, v246, v248, v250, v252, v253, v255, v256, v259, v260, v261, v262, v264, v267, v268, v269, v272, v273, v274, v277, v278, v279, v28, v282, v283, v284, v288, v289, v290, v292, v296, v297, v298, v30, v300, v302, v304, v305, v307, v31, v310, v311, v312, v314, v317, v318, v319, v320, v321, v322, v323, v324, v325, v326, v328, v329, v33, v330, v331, v332, v333, v334, v335, v336, v338, v34, v340, v342, v343, v345, v348, v349, v350, v351, v354, v355, v356, v357, v36, v360, v361, v362, v364, v366, v369, v370, v371, v374, v375, v376, v378, v380, v384, v385, v389, v391, v393, v395, v398, v4, v407, v409, v41, v410, v412, v414, v416, v42, v425, v428, v429, v430, v433, v434, v435, v438, v44, v441, v442, v443, v446, v447, v448, v451, v452, v453, v457, v460, v461, v462, v463, v466, v467, v468, v471, v472, v473, v476, v477, v478, v481, v482, v483, v487, v488, v489, v490, v493, v494, v495, v498, v499, v500, v505, v506, v507, v510, v511, v512, v515, v516, v517, v520, v521, v522, v525, v526, v529, v530, v531, v534, v535, v536, v537, v538, v541, v542, v543, v546, v547, v548, v549, v552, v553, v557, v558, v559, v562, v563, v564, v567, v568, v569, v573, v574, v575, v580, v583, v584, v585, v589, v590, v591, v592, v594, v595, v597, v6, v600, v601, v602, v606, v607, v608, v611, v612, v613, v618, v619, v620, v623, v624, v625, v626, v628, v640, v641, v642, v648, v649, v650, v656, v657, v658, v664, v665, v666, v672, v673, v674, v676, v679, v680, v681, v684, v685, v686, v698, v699, v700, v706, v707, v708, v714, v715, v716, v722, v723, v724, v730, v731, v732, v735, v736, v737, v738, v739, v742, v743, v744, v745, v748, v749, v750, v751, v752, v755, v756, v757, v758, v761, v762, v763, v764, v765, v768, v769, v770, v771, v774, v775, v776, v780, v781, v782, v788, v789, v790, v795, v796, v797, v798, v803, v805, v806, v808, v809, v811, v814, v815, v816, v818, v821, v822, v823, v825, v828, v829, v830, v833, v834, v835, v837, v840, v841, v842, v844, v847, v848, v849, v854, v855, v856, v860, v861, v862, v875, v876, v877, v883, v884, v885, v891, v892, v893, v899, v900, v901, v907, v908, v909, v910, v911, v923, v924, v925, v931, v932, v933, v939, v940, v941, v947, v948, v949, v955, v956, v957, v958, v959, v960, v961, v962, v963, v966, v967, v968, v971, v972, v973, v985, v986, v987, v993, v994, v995, p43 uintptr
+	var allocateDict, allocdict, appendLen, augend, cflags, ch, checkEq, checkInterp, cleanup, code, compare, continueLoop, createdNewObj, endIdx, flags, found, found1, i, i1, i2, i5, i6, i7, iResult, iResult1, increment, instructionCount, iterMax, iterNum, iterNum1, iterTmp, iterTmpIndex, j, j1, jumpOffset, l1, l2, lResult, level, listTmpDepth, listTmpIndex, match, newDepth, nocase, numArgs, numIndices, numLists, numLists1, numVars, numVars1, onlyb, opnd, opnd2, pcAdjustment, res, shift, skip, storeFlags, sum, trim1, valIndex, valIndex1, varIndex, varIndex1, yieldParameter, v1, v1004, v1005, v1006, v1012, v1013, v1014, v1020, v1021, v1022, v1026, v1027, v1028, v1029, v1030, v1036, v1037, v1038, v1042, v1043, v1044, v1045, v1049, v1051, v1052, v1067, v1068, v1069, v1075, v1076, v1077, v1083, v1084, v1085, v1091, v1092, v1093, v1099, v1100, v1101, v1105, v1106, v1107, v1108, v1112, v1146, v1168, v1169, v1170, v1174, v1175, v1176, v1177, v1181, v1207, v1213, v1214, v1215, v1219, v1240, v1241, v1242, v1246, v1272, v1273, v1274, v1278, v13, v1305, v1309, v1311, v1313, v1320, v1321, v1322, v1328, v1329, v1330, v1332, v1333, v1342, v1381, v1392, v1397, v1398, v1399, v1400, v1401, v1403, v1405, v1407, v1409, v1411, v1413, v1415, v1417, v1419, v1432, v1434, v1458, v1459, v1460, v1466, v1467, v1468, v1474, v1475, v1476, v1482, v1483, v1484, v1490, v1492, v1494, v1496, v15, v1508, v1511, v1513, v1520, v1527, v1528, v1530, v1532, v1539, v1550, v1552, v1564, v1565, v1568, v1575, v1578, v1580, v18, v20, v240, v247, v249, v251, v254, v263, v27, v29, v299, v3, v301, v306, v313, v32, v327, v337, v339, v341, v344, v35, v363, v365, v37, v377, v379, v38, v381, v382, v383, v386, v387, v388, v39, v390, v394, v396, v397, v399, v40, v400, v401, v405, v406, v408, v411, v413, v415, v419, v420, v421, v422, v423, v424, v436, v437, v454, v455, v456, v484, v5, v501, v502, v523, v554, v570, v576, v577, v579, v586, v593, v596, v603, v627, v643, v644, v645, v651, v652, v653, v659, v660, v661, v667, v668, v669, v675, v701, v702, v703, v709, v710, v711, v717, v718, v719, v725, v726, v727, v777, v783, v784, v799, v800, v802, v804, v807, v810, v817, v824, v836, v843, v878, v879, v880, v886, v887, v888, v894, v895, v896, v902, v903, v904, v926, v927, v928, v934, v935, v936, v942, v943, v944, v950, v951, v952, v988, v989, v990, v996, v997, v998 int32
 	var cmd, origCmd TTcl_Command
 	var inst uint8
 	var jmpOffset [2]int32
 	var moved Tptrdiff_t
 	var regExpr TTcl_RegExp
 	var sum1, w, w11, w2, wResult, wval TTcl_WideInt
-	var v1019, v1035, v1042, v1097, v1104, v1166, v1173, v1211, v1238, v1270, v403 uint64
-	var v1045, v1141, v1502, v578, v783, v799 bool
+	var v1024, v1040, v1047, v1103, v1110, v1172, v1179, v1217, v1244, v1276, v403 uint64
+	var v1050, v1147, v1509, v578, v785, v801 bool
 	var _ /* __u at bp+0 */ struct {
 		F__i [0]uint64
 		F__f float64
@@ -141469,7 +141493,7 @@ func _TEBCresume(tls *libc.TLS, data uintptr, interp uintptr, result int32) (r i
 	var _ /* valuePtr at bp+12 */ uintptr
 	var _ /* varPtr at bp+28 */ uintptr
 	var _ /* w at bp+152 */ TTcl_WideInt
-	_, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _ = TD, _callbackPtr, _callbackPtr1, _callbackPtr10, _callbackPtr2, _callbackPtr3, _callbackPtr4, _callbackPtr5, _callbackPtr6, _callbackPtr7, _callbackPtr8, _callbackPtr9, _isobjPtr, _isobjPtr1, _isobjPtr10, _isobjPtr11, _isobjPtr2, _isobjPtr3, _isobjPtr4, _isobjPtr5, _isobjPtr6, _isobjPtr7, _isobjPtr8, _isobjPtr9, _objPtr, _objPtr1, _objPtr10, _objPtr11, _objPtr12, _objPtr13, _objPtr14, _objPtr15, _objPtr16, _objPtr17, _objPtr18, _objPtr19, _objPtr2, _objPtr20, _objPtr21, _objPtr22, _objPtr23, _objPtr24, _objPtr25, _objPtr26, _objPtr27, _objPtr28, _objPtr29, _objPtr3, _objPtr30, _objPtr31, _objPtr32, _objPtr33, _objPtr34, _objPtr35, _objPtr36, _objPtr37, _objPtr38, _objPtr39, _objPtr4, _objPtr40, _objPtr5, _objPtr6, _objPtr7, _objPtr8, _objPtr9, a, allocateDict, allocdict, appendLen, augend, b, bytes, bytes1, bytes11, bytes12, bytes2, bytes21, bytes22, cflags, ch, checkEq, checkInterp, classPtr, cleanup, cmd, code, compare, compiledLocals, constants, contextPtr, continueLoop, copyPtr, corPtr, corPtr1, createdNewObj, curInstName, currNsPtr, currPtr, dictPtr, duiPtr, emptyPtr, end, endIdx, flags, found, found1, framePtr1, framePtr2, hPtr, i, i1, i2, i5, i6, i7, iResult, iResult1, incrPtr, increment, infoPtr, infoPtr1, inst, instructionCount, interp2, iterMax, iterNum, iterNum1, iterTmp, iterTmpIndex, iterVarPtr, j, j1, jmpOffset, jtPtr, jumpOffset, keysPtr, l1, l2, lResult, level, linkPtr, listPtr, listPtr1, listPtr2, listPtr3, listTmpDepth, listTmpIndex, listVarPtr, mPtr, match, methodType, methodType1, miPtr, moved, newCodePtr, newDepth, newValue, nocase, nsObjPtr, numArgs, numIndices, numLists, numLists1, numVars, numVars1, oPtr, objPtr, oldValuePtr, onlyb, opnd, opnd2, origCmd, otherPtr, p, p1, part1Ptr, part2Ptr, pc, pcAdjustment, rangePtr, regExpr, res, rootFramePtr, s1, s2, savedFramePtr, savedNsPtr, savedString, searchPtr, shift, skip, statePtr, storeFlags, string1, string2, sum, sum1, tmpPtr, tmpPtr1, tmpPtr2, tosPtr, trim1, ustring1, ustring11, ustring2, ustring21, ustring3, valIndex, valIndex1, value2Ptr, value3Ptr, valueToAssign, var2Ptr, varIndex, varIndex1, varListPtr, varListPtr1, varNamePtr, w, w11, w2, wResult, wval, yieldParameter, v1, v1000, v1001, v1004, v1005, v1006, v1007, v1008, v1009, v1012, v1013, v1014, v1015, v1016, v1017, v1019, v1021, v1022, v1023, v1024, v1025, v1028, v1029, v1030, v1031, v1032, v1033, v1035, v1037, v1038, v1039, v1040, v1042, v1044, v1045, v1046, v1047, v1058, v1059, v1060, v1061, v1062, v1063, v1066, v1067, v1068, v1069, v1070, v1071, v1074, v1075, v1076, v1077, v1078, v1079, v1082, v1083, v1084, v1085, v1086, v1087, v1090, v1091, v1092, v1093, v1094, v1095, v1097, v1099, v1100, v1101, v1102, v1104, v1106, v1117, v1118, v1119, v1122, v1123, v1124, v1127, v1128, v1129, v1132, v1133, v1134, v1137, v1138, v1139, v1140, v1141, v1144, v1145, v1146, v1149, v1150, v1151, v1154, v1155, v1156, v1159, v1160, v1161, v1162, v1163, v1164, v1166, v1168, v1169, v1170, v1171, v1173, v1175, v1183, v1184, v1185, v1188, v1189, v1190, v1193, v1194, v1195, v1198, v1199, v12, v1200, v1201, v1204, v1205, v1206, v1207, v1208, v1209, v1211, v1213, v1216, v1217, v1218, v1221, v1222, v1223, v1226, v1227, v1228, v1231, v1232, v1233, v1234, v1235, v1236, v1238, v1240, v1243, v1244, v1245, v1248, v1249, v1250, v1253, v1254, v1255, v1258, v1259, v1260, v1263, v1264, v1265, v1266, v1267, v1268, v1270, v1272, v1275, v1276, v1277, v1280, v1281, v1282, v1285, v1286, v1287, v1290, v1291, v1292, v1295, v1296, v1297, v1299, v13, v1303, v1304, v1305, v1306, v1307, v1308, v1311, v1312, v1313, v1314, v1315, v1316, v1319, v1320, v1321, v1322, v1323, v1324, v1326, v1327, v1328, v1329, v1330, v1331, v1332, v1336, v1337, v1340, v1341, v1342, v1345, v1346, v1347, v1348, v1349, v1352, v1353, v1354, v1357, v1358, v1359, v1362, v1363, v1364, v1367, v1368, v1369, v1372, v1373, v1374, v1375, v1378, v1379, v1380, v1383, v1384, v1385, v1386, v1387, v1388, v1391, v1392, v1393, v1394, v1395, v1396, v1397, v1398, v1399, v14, v1400, v1401, v1402, v1403, v1404, v1405, v1406, v1407, v1408, v1409, v1410, v1411, v1412, v1413, v1414, v1417, v1418, v1419, v1422, v1423, v1424, v1425, v1426, v1427, v1428, v1429, v1430, v1431, v1432, v1433, v1434, v1435, v1436, v1437, v1448, v1449, v1450, v1451, v1452, v1453, v1456, v1457, v1458, v1459, v1460, v1461, v1464, v1465, v1466, v1467, v1468, v1469, v1472, v1473, v1474, v1475, v1476, v1477, v1480, v1481, v1482, v1483, v1485, v1486, v1487, v1488, v1489, v1490, v1493, v1494, v1495, v1498, v1499, v15, v1500, v1501, v1502, v1504, v1505, v1506, v1507, v1510, v1511, v1512, v1513, v1516, v1517, v1518, v1519, v1520, v1521, v1522, v1523, v1524, v1525, v1526, v1529, v1530, v1531, v1532, v1535, v1536, v1537, v1540, v1541, v1542, v1543, v1544, v1545, v1546, v1549, v1550, v1551, v1554, v1555, v1556, v1557, v1558, v1559, v1560, v1561, v1562, v1565, v1566, v1567, v1568, v1569, v1570, v1571, v1572, v1573, v1574, v1575, v1576, v16, v17, v18, v19, v2, v20, v21, v236, v237, v238, v239, v240, v241, v244, v245, v246, v247, v248, v249, v250, v251, v252, v253, v254, v255, v256, v259, v260, v261, v262, v263, v264, v267, v268, v269, v27, v272, v273, v274, v277, v278, v279, v28, v282, v283, v284, v288, v289, v29, v290, v292, v296, v297, v298, v299, v3, v30, v300, v301, v302, v304, v305, v306, v307, v31, v310, v311, v312, v313, v314, v317, v318, v319, v32, v320, v321, v322, v323, v324, v325, v326, v327, v328, v329, v33, v330, v331, v332, v333, v334, v335, v336, v337, v338, v339, v34, v340, v341, v342, v343, v344, v345, v348, v349, v35, v350, v351, v354, v355, v356, v357, v36, v360, v361, v362, v363, v364, v365, v366, v369, v37, v370, v371, v374, v375, v376, v377, v378, v379, v38, v380, v381, v382, v383, v384, v385, v386, v387, v388, v389, v39, v390, v391, v393, v394, v395, v396, v397, v398, v399, v4, v40, v400, v401, v403, v405, v406, v407, v408, v409, v41, v410, v411, v412, v413, v414, v415, v416, v419, v42, v420, v421, v422, v423, v424, v425, v428, v429, v430, v433, v434, v435, v436, v437, v438, v44, v441, v442, v443, v446, v447, v448, v451, v452, v453, v454, v455, v456, v457, v460, v461, v462, v463, v466, v467, v468, v471, v472, v473, v476, v477, v478, v481, v482, v483, v484, v487, v488, v489, v490, v493, v494, v495, v498, v499, v5, v500, v501, v502, v505, v506, v507, v510, v511, v512, v515, v516, v517, v520, v521, v522, v523, v525, v526, v529, v530, v531, v534, v535, v536, v537, v538, v541, v542, v543, v546, v547, v548, v549, v552, v553, v554, v557, v558, v559, v562, v563, v564, v567, v568, v569, v570, v573, v574, v575, v576, v577, v578, v579, v580, v583, v584, v585, v586, v589, v590, v591, v592, v593, v594, v595, v596, v597, v6, v600, v601, v602, v603, v606, v607, v608, v611, v612, v613, v618, v619, v620, v623, v624, v625, v626, v627, v628, v639, v640, v641, v642, v643, v644, v647, v648, v649, v650, v651, v652, v655, v656, v657, v658, v659, v660, v663, v664, v665, v666, v667, v668, v671, v672, v673, v674, v675, v678, v679, v680, v683, v684, v685, v696, v697, v698, v699, v700, v701, v704, v705, v706, v707, v708, v709, v712, v713, v714, v715, v716, v717, v720, v721, v722, v723, v724, v725, v728, v729, v730, v733, v734, v735, v736, v737, v740, v741, v742, v743, v746, v747, v748, v749, v750, v753, v754, v755, v756, v759, v760, v761, v762, v763, v766, v767, v768, v769, v772, v773, v774, v775, v778, v779, v780, v781, v782, v783, v786, v787, v788, v793, v794, v795, v796, v797, v798, v799, v800, v801, v802, v803, v804, v805, v806, v807, v808, v809, v812, v813, v814, v815, v816, v819, v820, v821, v822, v823, v826, v827, v828, v831, v832, v833, v834, v835, v838, v839, v840, v841, v842, v845, v846, v847, v852, v853, v854, v858, v859, v860, v872, v873, v874, v875, v876, v877, v880, v881, v882, v883, v884, v885, v888, v889, v890, v891, v892, v893, v896, v897, v898, v899, v900, v901, v904, v905, v906, v907, v908, v919, v920, v921, v922, v923, v924, v927, v928, v929, v930, v931, v932, v935, v936, v937, v938, v939, v940, v943, v944, v945, v946, v947, v948, v951, v952, v953, v954, v955, v956, v957, v958, v959, v962, v963, v964, v967, v968, v969, v980, v981, v982, v983, v984, v985, v988, v989, v990, v991, v992, v993, v996, v997, v998, v999, p43
+	_, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _ = TD, _callbackPtr, _callbackPtr1, _callbackPtr10, _callbackPtr2, _callbackPtr3, _callbackPtr4, _callbackPtr5, _callbackPtr6, _callbackPtr7, _callbackPtr8, _callbackPtr9, _isobjPtr, _isobjPtr1, _isobjPtr10, _isobjPtr11, _isobjPtr2, _isobjPtr3, _isobjPtr4, _isobjPtr5, _isobjPtr6, _isobjPtr7, _isobjPtr8, _isobjPtr9, _objPtr, _objPtr1, _objPtr10, _objPtr11, _objPtr12, _objPtr13, _objPtr14, _objPtr15, _objPtr16, _objPtr17, _objPtr18, _objPtr19, _objPtr2, _objPtr20, _objPtr21, _objPtr22, _objPtr23, _objPtr24, _objPtr25, _objPtr26, _objPtr27, _objPtr28, _objPtr29, _objPtr3, _objPtr30, _objPtr31, _objPtr32, _objPtr33, _objPtr34, _objPtr35, _objPtr36, _objPtr37, _objPtr38, _objPtr39, _objPtr4, _objPtr40, _objPtr5, _objPtr6, _objPtr7, _objPtr8, _objPtr9, a, allocateDict, allocdict, appendLen, augend, b, bytes, bytes1, bytes11, bytes12, bytes2, bytes21, bytes22, cflags, ch, checkEq, checkInterp, classPtr, cleanup, cmd, code, compare, compiledLocals, constants, contextPtr, continueLoop, copyPtr, corPtr, corPtr1, createdNewObj, curInstName, currNsPtr, currPtr, dictPtr, duiPtr, emptyPtr, end, endIdx, flags, found, found1, framePtr1, framePtr2, hPtr, i, i1, i2, i5, i6, i7, iResult, iResult1, incrPtr, increment, infoPtr, infoPtr1, inst, instructionCount, interp2, iterMax, iterNum, iterNum1, iterTmp, iterTmpIndex, iterVarPtr, j, j1, jmpOffset, jtPtr, jumpOffset, keysPtr, l1, l2, lResult, level, linkPtr, listPtr, listPtr1, listPtr2, listPtr3, listTmpDepth, listTmpIndex, listVarPtr, mPtr, match, methodType, methodType1, miPtr, moved, newCodePtr, newDepth, newValue, nocase, nsObjPtr, numArgs, numIndices, numLists, numLists1, numVars, numVars1, oPtr, objPtr, oldValuePtr, onlyb, opnd, opnd2, origCmd, otherPtr, p, p1, part1Ptr, part2Ptr, pc, pcAdjustment, rangePtr, regExpr, res, rootFramePtr, s1, s2, savedFramePtr, savedNsPtr, savedString, searchPtr, shift, skip, statePtr, storeFlags, string1, string2, sum, sum1, tmpPtr, tmpPtr1, tmpPtr2, tosPtr, trim1, ustring1, ustring11, ustring2, ustring21, ustring3, valIndex, valIndex1, value2Ptr, value3Ptr, valueToAssign, var2Ptr, varIndex, varIndex1, varListPtr, varListPtr1, varNamePtr, w, w11, w2, wResult, wval, yieldParameter, v1, v1001, v1002, v1003, v1004, v1005, v1006, v1009, v1010, v1011, v1012, v1013, v1014, v1017, v1018, v1019, v1020, v1021, v1022, v1024, v1026, v1027, v1028, v1029, v1030, v1033, v1034, v1035, v1036, v1037, v1038, v1040, v1042, v1043, v1044, v1045, v1047, v1049, v1050, v1051, v1052, v1064, v1065, v1066, v1067, v1068, v1069, v1072, v1073, v1074, v1075, v1076, v1077, v1080, v1081, v1082, v1083, v1084, v1085, v1088, v1089, v1090, v1091, v1092, v1093, v1096, v1097, v1098, v1099, v1100, v1101, v1103, v1105, v1106, v1107, v1108, v1110, v1112, v1123, v1124, v1125, v1128, v1129, v1130, v1133, v1134, v1135, v1138, v1139, v1140, v1143, v1144, v1145, v1146, v1147, v1150, v1151, v1152, v1155, v1156, v1157, v1160, v1161, v1162, v1165, v1166, v1167, v1168, v1169, v1170, v1172, v1174, v1175, v1176, v1177, v1179, v1181, v1189, v1190, v1191, v1194, v1195, v1196, v1199, v12, v1200, v1201, v1204, v1205, v1206, v1207, v1210, v1211, v1212, v1213, v1214, v1215, v1217, v1219, v1222, v1223, v1224, v1227, v1228, v1229, v1232, v1233, v1234, v1237, v1238, v1239, v1240, v1241, v1242, v1244, v1246, v1249, v1250, v1251, v1254, v1255, v1256, v1259, v1260, v1261, v1264, v1265, v1266, v1269, v1270, v1271, v1272, v1273, v1274, v1276, v1278, v1281, v1282, v1283, v1286, v1287, v1288, v1291, v1292, v1293, v1296, v1297, v1298, v13, v1301, v1302, v1303, v1305, v1309, v1310, v1311, v1312, v1313, v1314, v1317, v1318, v1319, v1320, v1321, v1322, v1325, v1326, v1327, v1328, v1329, v1330, v1332, v1333, v1334, v1335, v1336, v1337, v1338, v1342, v1343, v1346, v1347, v1348, v1351, v1352, v1353, v1354, v1355, v1358, v1359, v1360, v1363, v1364, v1365, v1368, v1369, v1370, v1373, v1374, v1375, v1378, v1379, v1380, v1381, v1384, v1385, v1386, v1389, v1390, v1391, v1392, v1393, v1394, v1397, v1398, v1399, v14, v1400, v1401, v1402, v1403, v1404, v1405, v1406, v1407, v1408, v1409, v1410, v1411, v1412, v1413, v1414, v1415, v1416, v1417, v1418, v1419, v1420, v1423, v1424, v1425, v1428, v1429, v1430, v1431, v1432, v1433, v1434, v1435, v1436, v1437, v1438, v1439, v1440, v1441, v1442, v1443, v1455, v1456, v1457, v1458, v1459, v1460, v1463, v1464, v1465, v1466, v1467, v1468, v1471, v1472, v1473, v1474, v1475, v1476, v1479, v1480, v1481, v1482, v1483, v1484, v1487, v1488, v1489, v1490, v1492, v1493, v1494, v1495, v1496, v1497, v15, v1500, v1501, v1502, v1505, v1506, v1507, v1508, v1509, v1511, v1512, v1513, v1514, v1517, v1518, v1519, v1520, v1523, v1524, v1525, v1526, v1527, v1528, v1529, v1530, v1531, v1532, v1533, v1536, v1537, v1538, v1539, v1542, v1543, v1544, v1547, v1548, v1549, v1550, v1551, v1552, v1553, v1556, v1557, v1558, v1561, v1562, v1563, v1564, v1565, v1566, v1567, v1568, v1569, v1572, v1573, v1574, v1575, v1576, v1577, v1578, v1579, v1580, v1581, v1582, v1583, v16, v17, v18, v19, v2, v20, v21, v236, v237, v238, v239, v240, v241, v244, v245, v246, v247, v248, v249, v250, v251, v252, v253, v254, v255, v256, v259, v260, v261, v262, v263, v264, v267, v268, v269, v27, v272, v273, v274, v277, v278, v279, v28, v282, v283, v284, v288, v289, v29, v290, v292, v296, v297, v298, v299, v3, v30, v300, v301, v302, v304, v305, v306, v307, v31, v310, v311, v312, v313, v314, v317, v318, v319, v32, v320, v321, v322, v323, v324, v325, v326, v327, v328, v329, v33, v330, v331, v332, v333, v334, v335, v336, v337, v338, v339, v34, v340, v341, v342, v343, v344, v345, v348, v349, v35, v350, v351, v354, v355, v356, v357, v36, v360, v361, v362, v363, v364, v365, v366, v369, v37, v370, v371, v374, v375, v376, v377, v378, v379, v38, v380, v381, v382, v383, v384, v385, v386, v387, v388, v389, v39, v390, v391, v393, v394, v395, v396, v397, v398, v399, v4, v40, v400, v401, v403, v405, v406, v407, v408, v409, v41, v410, v411, v412, v413, v414, v415, v416, v419, v42, v420, v421, v422, v423, v424, v425, v428, v429, v430, v433, v434, v435, v436, v437, v438, v44, v441, v442, v443, v446, v447, v448, v451, v452, v453, v454, v455, v456, v457, v460, v461, v462, v463, v466, v467, v468, v471, v472, v473, v476, v477, v478, v481, v482, v483, v484, v487, v488, v489, v490, v493, v494, v495, v498, v499, v5, v500, v501, v502, v505, v506, v507, v510, v511, v512, v515, v516, v517, v520, v521, v522, v523, v525, v526, v529, v530, v531, v534, v535, v536, v537, v538, v541, v542, v543, v546, v547, v548, v549, v552, v553, v554, v557, v558, v559, v562, v563, v564, v567, v568, v569, v570, v573, v574, v575, v576, v577, v578, v579, v580, v583, v584, v585, v586, v589, v590, v591, v592, v593, v594, v595, v596, v597, v6, v600, v601, v602, v603, v606, v607, v608, v611, v612, v613, v618, v619, v620, v623, v624, v625, v626, v627, v628, v640, v641, v642, v643, v644, v645, v648, v649, v650, v651, v652, v653, v656, v657, v658, v659, v660, v661, v664, v665, v666, v667, v668, v669, v672, v673, v674, v675, v676, v679, v680, v681, v684, v685, v686, v698, v699, v700, v701, v702, v703, v706, v707, v708, v709, v710, v711, v714, v715, v716, v717, v718, v719, v722, v723, v724, v725, v726, v727, v730, v731, v732, v735, v736, v737, v738, v739, v742, v743, v744, v745, v748, v749, v750, v751, v752, v755, v756, v757, v758, v761, v762, v763, v764, v765, v768, v769, v770, v771, v774, v775, v776, v777, v780, v781, v782, v783, v784, v785, v788, v789, v790, v795, v796, v797, v798, v799, v800, v801, v802, v803, v804, v805, v806, v807, v808, v809, v810, v811, v814, v815, v816, v817, v818, v821, v822, v823, v824, v825, v828, v829, v830, v833, v834, v835, v836, v837, v840, v841, v842, v843, v844, v847, v848, v849, v854, v855, v856, v860, v861, v862, v875, v876, v877, v878, v879, v880, v883, v884, v885, v886, v887, v888, v891, v892, v893, v894, v895, v896, v899, v900, v901, v902, v903, v904, v907, v908, v909, v910, v911, v923, v924, v925, v926, v927, v928, v931, v932, v933, v934, v935, v936, v939, v940, v941, v942, v943, v944, v947, v948, v949, v950, v951, v952, v955, v956, v957, v958, v959, v960, v961, v962, v963, v966, v967, v968, v971, v972, v973, v985, v986, v987, v988, v989, v990, v993, v994, v995, v996, v997, v998, p43
 	/*
 	 * Compiler cast directive - not a real variable.
 	 *	   Interp *iPtr = (Interp *) interp;
@@ -142345,8 +142369,6 @@ _45:
 	 */
 	result = XTclProcessReturn(tls, interp, code, level, *(*uintptr)(unsafe.Pointer(tosPtr)))
 	if result == m_TCL_OK {
-		goto _235
-	_235:
 		if false {
 			if 0 != 0 {
 				if 0 > 0 {
@@ -142389,6 +142411,8 @@ _45:
 				}
 			}
 		}
+		goto _235
+	_235:
 		goto _234
 	_234: /**/ //
 	}
@@ -142412,8 +142436,6 @@ _47:
 			XTclFreeObj(tls, _objPtr1)
 		}
 		*(*uintptr)(unsafe.Pointer(tosPtr)) = *(*uintptr)(unsafe.Pointer(bp + 8))
-		goto _243
-	_243:
 		if true {
 			if 0 != 0 {
 				if 0 > 0 {
@@ -142456,6 +142478,8 @@ _47:
 				}
 			}
 		}
+		goto _243
+	_243:
 		goto _242
 	_242: /**/
 		//
@@ -142648,8 +142672,6 @@ _51:
 	goto abnormalReturn
 _52:
 	*(*uintptr)(unsafe.Pointer(bp + 8)) = *(*uintptr)(unsafe.Pointer((*TByteCode)(unsafe.Pointer((*TTEBCdata)(unsafe.Pointer(TD)).FcodePtr)).FobjArrayPtr + uintptr(uint32(int32(*(*uint8)(unsafe.Pointer(pc + libc.UintptrFromInt32(1))))<<libc.Int32FromInt32(24))|uint32(int32(*(*uint8)(unsafe.Pointer(pc + libc.UintptrFromInt32(1) + libc.UintptrFromInt32(1))))<<libc.Int32FromInt32(16))|uint32(int32(*(*uint8)(unsafe.Pointer(pc + libc.UintptrFromInt32(1) + libc.UintptrFromInt32(2))))<<libc.Int32FromInt32(8))|uint32(*(*uint8)(unsafe.Pointer(pc + libc.UintptrFromInt32(1) + libc.UintptrFromInt32(3)))))*4))
-	goto _258
-_258:
 	if true {
 		if int32(1) != 0 {
 			if int32(1) > 0 {
@@ -142692,6 +142714,8 @@ _258:
 			}
 		}
 	}
+	goto _258
+_258:
 	goto _257
 _257: /**/
 	; //
@@ -142718,8 +142742,6 @@ _53:
 			XTclFreeObj(tls, objPtr)
 		}
 	}
-	goto _266
-_266:
 	if true {
 		if 0 != 0 {
 			if 0 > 0 {
@@ -142762,14 +142784,14 @@ _266:
 			}
 		}
 	}
+	goto _266
+_266:
 	goto _265
 _265: /**/
 	; //
 	goto _233
 _54:
 	*(*uintptr)(unsafe.Pointer(bp + 8)) = *(*uintptr)(unsafe.Pointer(tosPtr))
-	goto _271
-_271:
 	if true {
 		if int32(1) != 0 {
 			if int32(1) > 0 {
@@ -142812,6 +142834,8 @@ _271:
 			}
 		}
 	}
+	goto _271
+_271:
 	goto _270
 _270: /**/
 	; //
@@ -142819,8 +142843,6 @@ _270: /**/
 _55:
 	opnd = int32(uint32(int32(*(*uint8)(unsafe.Pointer(pc + libc.UintptrFromInt32(1))))<<libc.Int32FromInt32(24)) | uint32(int32(*(*uint8)(unsafe.Pointer(pc + libc.UintptrFromInt32(1) + libc.UintptrFromInt32(1))))<<libc.Int32FromInt32(16)) | uint32(int32(*(*uint8)(unsafe.Pointer(pc + libc.UintptrFromInt32(1) + libc.UintptrFromInt32(2))))<<libc.Int32FromInt32(8)) | uint32(*(*uint8)(unsafe.Pointer(pc + libc.UintptrFromInt32(1) + libc.UintptrFromInt32(3)))))
 	*(*uintptr)(unsafe.Pointer(bp + 8)) = *(*uintptr)(unsafe.Pointer(tosPtr - uintptr(opnd)*4))
-	goto _276
-_276:
 	if true {
 		if int32(1) != 0 {
 			if int32(1) > 0 {
@@ -142863,6 +142885,8 @@ _276:
 			}
 		}
 	}
+	goto _276
+_276:
 	goto _275
 _275: /**/
 	; //
@@ -142878,8 +142902,6 @@ _56:
 		a += 4
 		b -= 4
 	}
-	goto _281
-_281:
 	if true {
 		if 0 != 0 {
 			if 0 > 0 {
@@ -142922,6 +142944,8 @@ _281:
 			}
 		}
 	}
+	goto _281
+_281:
 	goto _280
 _280: /**/
 	; //
@@ -143198,8 +143222,6 @@ _59:
 		Fptr2 uintptr
 	})(unsafe.Pointer(objPtr + 16))).Fptr1 = (*TTEBCdata)(unsafe.Pointer(TD)).FauxObjList
 	(*TTEBCdata)(unsafe.Pointer(TD)).FauxObjList = objPtr
-	goto _295
-_295:
 	if true {
 		if 0 != 0 {
 			if 0 > 0 {
@@ -143242,6 +143264,8 @@ _295:
 			}
 		}
 	}
+	goto _295
+_295:
 	goto _294
 _294: /**/
 	; //
@@ -143351,8 +143375,6 @@ _61:
 	if v306 <= int32(1) {
 		XTclFreeObj(tls, _objPtr8)
 	}
-	goto _309
-_309:
 	if true {
 		if 0 != 0 {
 			if 0 > 0 {
@@ -143395,6 +143417,8 @@ _309:
 			}
 		}
 	}
+	goto _309
+_309:
 	goto _308
 _308: /**/
 	; //
@@ -143496,8 +143520,6 @@ _64:
 	(*TTcl_Obj)(unsafe.Pointer(*(*uintptr)(unsafe.Pointer(bp + 8)))).Fbytes = XtclEmptyStringRep
 	(*TTcl_Obj)(unsafe.Pointer(*(*uintptr)(unsafe.Pointer(bp + 8)))).Flength = 0
 	(*TTcl_Obj)(unsafe.Pointer(*(*uintptr)(unsafe.Pointer(bp + 8)))).FtypePtr = libc.UintptrFromInt32(0)
-	goto _316
-_316:
 	if true {
 		if int32(1) != 0 {
 			if int32(1) > 0 {
@@ -143540,6 +143562,8 @@ _316:
 			}
 		}
 	}
+	goto _316
+_316:
 	goto _315
 _315: /**/
 	; //
@@ -143838,8 +143862,6 @@ instLoadScalar1:
 		 * No errors, no traces: just get the value.
 		 */
 		*(*uintptr)(unsafe.Pointer(bp + 8)) = *(*uintptr)(unsafe.Pointer(*(*uintptr)(unsafe.Pointer(bp + 28)) + 4))
-		goto _347
-	_347:
 		if true {
 			if int32(1) != 0 {
 				if int32(1) > 0 {
@@ -143882,6 +143904,8 @@ instLoadScalar1:
 				}
 			}
 		}
+		goto _347
+	_347:
 		goto _346
 	_346: /**/
 		//
@@ -143904,8 +143928,6 @@ _71:
 		 * No errors, no traces: just get the value.
 		 */
 		*(*uintptr)(unsafe.Pointer(bp + 8)) = *(*uintptr)(unsafe.Pointer(*(*uintptr)(unsafe.Pointer(bp + 28)) + 4))
-		goto _353
-	_353:
 		if true {
 			if int32(1) != 0 {
 				if int32(1) > 0 {
@@ -143948,6 +143970,8 @@ _71:
 				}
 			}
 		}
+		goto _353
+	_353:
 		goto _352
 	_352: /**/
 		//
@@ -143980,8 +144004,6 @@ doLoadArray:
 			 * No errors, no traces: just get the value.
 			 */
 			*(*uintptr)(unsafe.Pointer(bp + 8)) = *(*uintptr)(unsafe.Pointer(*(*uintptr)(unsafe.Pointer(bp + 28)) + 4))
-			goto _359
-		_359:
 			if false {
 				if int32(1) != 0 {
 					if int32(1) > 0 {
@@ -144024,6 +144046,8 @@ doLoadArray:
 					}
 				}
 			}
+			goto _359
+		_359:
 			goto _358
 		_358: /**/
 			//
@@ -144181,8 +144205,6 @@ doStoreVarDirect:
 	*(*uintptr)(unsafe.Pointer(*(*uintptr)(unsafe.Pointer(bp + 28)) + 4)) = *(*uintptr)(unsafe.Pointer(bp + 8))
 	if int32(*(*uint8)(unsafe.Pointer(pc + uintptr(pcAdjustment)))) == int32(m_INST_POP) {
 		tosPtr -= 4
-		goto _368
-	_368:
 		if true {
 			if 0 != 0 {
 				if 0 > 0 {
@@ -144225,12 +144247,12 @@ doStoreVarDirect:
 				}
 			}
 		}
+		goto _368
+	_368:
 		goto _367
 	_367: /**/ //
 	}
 	(*TTcl_Obj)(unsafe.Pointer(*(*uintptr)(unsafe.Pointer(bp + 8)))).FrefCount++
-	goto _373
-_373:
 	if true {
 		if 0 != 0 {
 			if 0 > 0 {
@@ -144273,6 +144295,8 @@ _373:
 			}
 		}
 	}
+	goto _373
+_373:
 	goto _372
 _372: /**/
 	; //
@@ -145153,8 +145177,6 @@ doExistStk:
 	 */
 afterExistsPeephole:
 	found = libc.BoolInt32(*(*uintptr)(unsafe.Pointer(bp + 28)) != 0 && !(*(*uintptr)(unsafe.Pointer(*(*uintptr)(unsafe.Pointer(bp + 28)) + 4)) == libc.UintptrFromInt32(0)))
-	goto _418
-_418:
 	pc += uintptr(pcAdjustment)
 	switch int32(*(*uint8)(unsafe.Pointer(pc))) {
 	case int32(m_INST_JUMP_FALSE1):
@@ -145250,6 +145272,8 @@ _418:
 		}
 		break
 	}
+	goto _418
+_418:
 	goto _417
 _417: /**/
 	; //
@@ -145300,8 +145324,6 @@ _114:
 			}
 		}
 		*(*uintptr)(unsafe.Pointer(*(*uintptr)(unsafe.Pointer(bp + 28)) + 4)) = libc.UintptrFromInt32(0)
-		goto _427
-	_427:
 		if true {
 			if 0 != 0 {
 				if 0 > 0 {
@@ -145344,6 +145366,8 @@ _114:
 				}
 			}
 		}
+		goto _427
+	_427:
 		goto _426
 	_426: /**/
 		//
@@ -145354,8 +145378,6 @@ slowUnsetScalar:
 		goto errorInUnset
 	}
 	checkInterp = int32(1)
-	goto _432
-_432:
 	if true {
 		if 0 != 0 {
 			if 0 > 0 {
@@ -145398,6 +145420,8 @@ _432:
 			}
 		}
 	}
+	goto _432
+_432:
 	goto _431
 _431: /**/
 	; //
@@ -145454,8 +145478,6 @@ _115:
 					goto slowUnsetArray
 				}
 			}
-			goto _440
-		_440:
 			if false {
 				if 0 != 0 {
 					if 0 > 0 {
@@ -145498,6 +145520,8 @@ _115:
 					}
 				}
 			}
+			goto _440
+		_440:
 			goto _439
 		_439: /**/ //
 		} else {
@@ -145505,8 +145529,6 @@ _115:
 				/*
 				 * Don't need to do anything here.
 				 */
-				goto _445
-			_445:
 				if false {
 					if 0 != 0 {
 						if 0 > 0 {
@@ -145549,6 +145571,8 @@ _115:
 						}
 					}
 				}
+				goto _445
+			_445:
 				goto _444
 			_444: /**/ //
 			}
@@ -145567,8 +145591,6 @@ slowUnsetArray:
 		}
 	}
 	checkInterp = int32(1)
-	goto _450
-_450:
 	if false {
 		if 0 != 0 {
 			if 0 > 0 {
@@ -145611,6 +145633,8 @@ _450:
 			}
 		}
 	}
+	goto _450
+_450:
 	goto _449
 _449: /**/
 	; //
@@ -145690,8 +145714,6 @@ _118:
 		XTclPtrUnsetVarIdx(tls, interp, *(*uintptr)(unsafe.Pointer(bp + 28)), libc.UintptrFromInt32(0), libc.UintptrFromInt32(0), libc.UintptrFromInt32(0), 0, opnd)
 		checkInterp = int32(1)
 	}
-	goto _459
-_459:
 	if true {
 		if 0 != 0 {
 			if 0 > 0 {
@@ -145734,6 +145756,8 @@ _459:
 			}
 		}
 	}
+	goto _459
+_459:
 	goto _458
 _458: /**/
 	; //
@@ -145897,8 +145921,6 @@ doLinkVars:
 			 */
 			linkPtr = *(*uintptr)(unsafe.Pointer(*(*uintptr)(unsafe.Pointer(bp + 28)) + 4))
 			if linkPtr == otherPtr {
-				goto _465
-			_465:
 				if false {
 					if 0 != 0 {
 						if 0 > 0 {
@@ -145941,6 +145963,8 @@ doLinkVars:
 						}
 					}
 				}
+				goto _465
+			_465:
 				goto _464
 			_464: /**/ //
 			}
@@ -145965,8 +145989,6 @@ doLinkVars:
 	 * Do not pop the namespace or frame index, it may be needed for other
 	 * variables - and [variable] did not push it at all.
 	 */
-	goto _470
-_470:
 	if false {
 		if 0 != 0 {
 			if 0 > 0 {
@@ -146009,6 +146031,8 @@ _470:
 			}
 		}
 	}
+	goto _470
+_470:
 	goto _469
 _469: /**/
 	; //
@@ -146019,8 +146043,6 @@ _469: /**/
 	 */
 _126:
 	opnd = int32(*(*int8)(unsafe.Pointer(pc + libc.UintptrFromInt32(1))))
-	goto _475
-_475:
 	if true {
 		if 0 != 0 {
 			if 0 > 0 {
@@ -146063,14 +146085,14 @@ _475:
 			}
 		}
 	}
+	goto _475
+_475:
 	goto _474
 _474: /**/
 	; //
 	goto _233
 _127:
 	opnd = int32(uint32(*(*uint8)(unsafe.Pointer(pc + libc.UintptrFromInt32(1))))<<libc.Int32FromInt32(24)) | int32(*(*uint8)(unsafe.Pointer(pc + libc.UintptrFromInt32(1) + libc.UintptrFromInt32(1))))<<int32(16) | int32(*(*uint8)(unsafe.Pointer(pc + libc.UintptrFromInt32(1) + libc.UintptrFromInt32(2))))<<int32(8) | int32(*(*uint8)(unsafe.Pointer(pc + libc.UintptrFromInt32(1) + libc.UintptrFromInt32(3))))
-	goto _480
-_480:
 	if true {
 		if 0 != 0 {
 			if 0 > 0 {
@@ -146113,6 +146135,8 @@ _480:
 			}
 		}
 	}
+	goto _480
+_480:
 	goto _479
 _479: /**/
 	; //
@@ -146146,8 +146170,6 @@ doCondJump:
 	if v484 != m_TCL_OK {
 		goto gotError
 	}
-	goto _486
-_486:
 	if false {
 		if 0 != 0 {
 			if 0 > 0 {
@@ -146190,6 +146212,8 @@ _486:
 			}
 		}
 	}
+	goto _486
+_486:
 	goto _485
 _485: /**/
 	; //
@@ -146209,8 +146233,6 @@ _132:
 	hPtr = (*(*func(*libc.TLS, uintptr, uintptr) uintptr)(unsafe.Pointer(&struct{ uintptr }{(*TTcl_HashTable)(unsafe.Pointer(jtPtr)).FfindProc})))(tls, jtPtr, v490)
 	if hPtr != libc.UintptrFromInt32(0) {
 		jumpOffset = int32((*TTcl_HashEntry)(unsafe.Pointer(hPtr)).FclientData)
-		goto _492
-	_492:
 		if false {
 			if 0 != 0 {
 				if 0 > 0 {
@@ -146253,11 +146275,11 @@ _132:
 				}
 			}
 		}
+		goto _492
+	_492:
 		goto _491
 	_491: /**/ //
 	} else {
-		goto _497
-	_497:
 		if false {
 			if 0 != 0 {
 				if 0 > 0 {
@@ -146300,6 +146322,8 @@ _132:
 				}
 			}
 		}
+		goto _497
+	_497:
 		goto _496
 	_496: /**/ //
 	}
@@ -146342,8 +146366,6 @@ _133:
 		iResult = libc.BoolInt32(*(*int32)(unsafe.Pointer(bp + 60)) != 0 && *(*int32)(unsafe.Pointer(bp + 64)) != 0)
 	}
 	*(*uintptr)(unsafe.Pointer(bp + 8)) = *(*uintptr)(unsafe.Pointer(constants + uintptr(iResult)*4))
-	goto _504
-_504:
 	if false {
 		if int32(1) != 0 {
 			if int32(1) > 0 {
@@ -146386,6 +146408,8 @@ _504:
 			}
 		}
 	}
+	goto _504
+_504:
 	goto _503
 _503: /**/
 	; //
@@ -146437,8 +146461,6 @@ _135:
 		}
 		(*TTcl_Obj)(unsafe.Pointer(*(*uintptr)(unsafe.Pointer(bp + 8)))).FtypePtr = libc.UintptrFromInt32(0)
 	}
-	goto _509
-_509:
 	if true {
 		if int32(1) != 0 {
 			if int32(1) > 0 {
@@ -146481,6 +146503,8 @@ _509:
 			}
 		}
 	}
+	goto _509
+_509:
 	goto _508
 _508: /**/
 	; //
@@ -146502,8 +146526,6 @@ _136:
 	if corPtr1 != 0 && !((*TCommand1)(unsafe.Pointer((*TCoroutineData)(unsafe.Pointer(corPtr1)).FcmdPtr)).Fflags&libc.Int32FromInt32(m_CMD_IS_DELETED) != 0) {
 		XTcl_GetCommandFullName(tls, interp, (*TCoroutineData)(unsafe.Pointer(corPtr1)).FcmdPtr, *(*uintptr)(unsafe.Pointer(bp + 8)))
 	}
-	goto _514
-_514:
 	if true {
 		if int32(1) != 0 {
 			if int32(1) > 0 {
@@ -146546,6 +146568,8 @@ _514:
 			}
 		}
 	}
+	goto _514
+_514:
 	goto _513
 _513: /**/
 	; //
@@ -146563,8 +146587,6 @@ _137:
 	(*TTcl_Obj)(unsafe.Pointer(*(*uintptr)(unsafe.Pointer(bp + 8)))).Fbytes = libc.UintptrFromInt32(0)
 	(*TTcl_Obj)(unsafe.Pointer(*(*uintptr)(unsafe.Pointer(bp + 8)))).FinternalRep.FlongValue = (*TCallFrame)(unsafe.Pointer((*TInterp)(unsafe.Pointer(interp)).FvarFramePtr)).Flevel
 	(*TTcl_Obj)(unsafe.Pointer(*(*uintptr)(unsafe.Pointer(bp + 8)))).FtypePtr = uintptr(unsafe.Pointer(&XtclIntType))
-	goto _519
-_519:
 	if true {
 		if int32(1) != 0 {
 			if int32(1) > 0 {
@@ -146607,6 +146629,8 @@ _519:
 			}
 		}
 	}
+	goto _519
+_519:
 	goto _518
 _518: /**/
 	; //
@@ -146653,8 +146677,6 @@ _138:
 		goto gotError
 	}
 	*(*uintptr)(unsafe.Pointer(bp + 8)) = XTcl_NewListObj(tls, (*TCallFrame)(unsafe.Pointer(framePtr1)).Fobjc, (*TCallFrame)(unsafe.Pointer(framePtr1)).Fobjv)
-	goto _528
-_528:
 	if false {
 		if int32(1) != 0 {
 			if int32(1) > 0 {
@@ -146697,6 +146719,8 @@ _528:
 			}
 		}
 	}
+	goto _528
+_528:
 	goto _527
 _527: /**/
 	; //
@@ -146717,8 +146741,6 @@ _139:
 	if cmd != libc.UintptrFromInt32(0) {
 		XTcl_GetCommandFullName(tls, interp, cmd, *(*uintptr)(unsafe.Pointer(bp + 8)))
 	}
-	goto _533
-_533:
 	if false {
 		if int32(1) != 0 {
 			if int32(1) > 0 {
@@ -146761,6 +146783,8 @@ _533:
 			}
 		}
 	}
+	goto _533
+_533:
 	goto _532
 _532: /**/
 	; //
@@ -146800,8 +146824,6 @@ _140:
 	(*TTcl_Obj)(unsafe.Pointer(*(*uintptr)(unsafe.Pointer(bp + 8)))).Flength = 0
 	(*TTcl_Obj)(unsafe.Pointer(*(*uintptr)(unsafe.Pointer(bp + 8)))).FtypePtr = libc.UintptrFromInt32(0)
 	XTcl_GetCommandFullName(tls, interp, origCmd, *(*uintptr)(unsafe.Pointer(bp + 8)))
-	goto _540
-_540:
 	if false {
 		if int32(1) != 0 {
 			if int32(1) > 0 {
@@ -146844,6 +146866,8 @@ _540:
 			}
 		}
 	}
+	goto _540
+_540:
 	goto _539
 _539: /**/
 	; //
@@ -146865,8 +146889,6 @@ _141:
 	 * Call out to get the name; it's expensive to compute but cached.
 	 */
 	*(*uintptr)(unsafe.Pointer(bp + 8)) = XTclOOObjectName(tls, interp, (*TCallContext)(unsafe.Pointer(contextPtr)).FoPtr)
-	goto _545
-_545:
 	if true {
 		if int32(1) != 0 {
 			if int32(1) > 0 {
@@ -146909,6 +146931,8 @@ _545:
 			}
 		}
 	}
+	goto _545
+_545:
 	goto _544
 _544: /**/
 	; //
@@ -147115,8 +147139,6 @@ _144:
 		v554 = 0
 	}
 	*(*uintptr)(unsafe.Pointer(bp + 8)) = *(*uintptr)(unsafe.Pointer(constants + uintptr(v554)*4))
-	goto _556
-_556:
 	if false {
 		if int32(1) != 0 {
 			if int32(1) > 0 {
@@ -147159,6 +147181,8 @@ _556:
 			}
 		}
 	}
+	goto _556
+_556:
 	goto _555
 _555: /**/
 	; //
@@ -147168,8 +147192,6 @@ _145:
 		goto gotError
 	}
 	*(*uintptr)(unsafe.Pointer(bp + 8)) = XTclOOObjectName(tls, interp, (*TClass1)(unsafe.Pointer((*TObject)(unsafe.Pointer(oPtr)).FselfCls)).FthisPtr)
-	goto _561
-_561:
 	if false {
 		if int32(1) != 0 {
 			if int32(1) > 0 {
@@ -147212,6 +147234,8 @@ _561:
 			}
 		}
 	}
+	goto _561
+_561:
 	goto _560
 _560: /**/
 	; //
@@ -147242,8 +147266,6 @@ _146:
 		(*TTcl_Obj)(unsafe.Pointer(*(*uintptr)(unsafe.Pointer(bp + 8)))).Flength = int32(libc.Xstrlen(tls, (*TTcl_Namespace)(unsafe.Pointer((*TObject)(unsafe.Pointer(oPtr)).FnamespacePtr)).FfullName))
 	}
 	(*TTcl_Obj)(unsafe.Pointer(*(*uintptr)(unsafe.Pointer(bp + 8)))).FtypePtr = libc.UintptrFromInt32(0)
-	goto _566
-_566:
 	if false {
 		if int32(1) != 0 {
 			if int32(1) > 0 {
@@ -147286,6 +147308,8 @@ _566:
 			}
 		}
 	}
+	goto _566
+_566:
 	goto _565
 _565: /**/
 	; //
@@ -147336,8 +147360,6 @@ _148:
 	(*TTcl_Obj)(unsafe.Pointer(*(*uintptr)(unsafe.Pointer(bp + 8)))).Fbytes = libc.UintptrFromInt32(0)
 	(*TTcl_Obj)(unsafe.Pointer(*(*uintptr)(unsafe.Pointer(bp + 8)))).FinternalRep.FlongValue = *(*int32)(unsafe.Pointer(bp + 24))
 	(*TTcl_Obj)(unsafe.Pointer(*(*uintptr)(unsafe.Pointer(bp + 8)))).FtypePtr = uintptr(unsafe.Pointer(&XtclIntType))
-	goto _572
-_572:
 	if false {
 		if int32(1) != 0 {
 			if int32(1) > 0 {
@@ -147380,6 +147402,8 @@ _572:
 			}
 		}
 	}
+	goto _572
+_572:
 	goto _571
 _571: /**/
 	; //
@@ -147440,8 +147464,6 @@ _149: /* lindex with objc == 3 */
 	/*
 	 * Stash the list element on the stack.
 	 */
-	goto _582
-_582:
 	if false {
 		if -int32(1) != 0 {
 			if -int32(1) > 0 {
@@ -147484,6 +147506,8 @@ _582:
 			}
 		}
 	}
+	goto _582
+_582:
 	goto _581
 _581: /**/
 	; //
@@ -147535,8 +147559,6 @@ lindexFastPath:
 		(*TTcl_Obj)(unsafe.Pointer(*(*uintptr)(unsafe.Pointer(bp + 8)))).Flength = 0
 		(*TTcl_Obj)(unsafe.Pointer(*(*uintptr)(unsafe.Pointer(bp + 8)))).FtypePtr = libc.UintptrFromInt32(0)
 	}
-	goto _588
-_588:
 	if false {
 		if int32(1) != 0 {
 			if int32(1) > 0 {
@@ -147579,6 +147601,8 @@ _588:
 			}
 		}
 	}
+	goto _588
+_588:
 	goto _587
 _587: /**/
 	; //
@@ -147682,8 +147706,6 @@ _153: /* 'lset' with 4 args */
 	/*
 	 * Set result.
 	 */
-	goto _599
-_599:
 	if false {
 		if -int32(1) != 0 {
 			if -int32(1) > 0 {
@@ -147726,6 +147748,8 @@ _599:
 			}
 		}
 	}
+	goto _599
+_599:
 	goto _598
 _598: /**/
 	; //
@@ -147762,8 +147786,6 @@ _154: /* lrange with objc==4 and both indices in
 	 * with uses of [lassign]).
 	 */
 	if int32(*(*uint8)(unsafe.Pointer(pc + libc.UintptrFromInt32(9)))) == int32(m_INST_POP) {
-		goto _605
-	_605:
 		if false {
 			if 0 != 0 {
 				if 0 > 0 {
@@ -147806,6 +147828,8 @@ _154: /* lrange with objc==4 and both indices in
 				}
 			}
 		}
+		goto _605
+	_605:
 		goto _604
 	_604: /**/ //
 	}
@@ -147813,8 +147837,6 @@ _154: /* lrange with objc==4 and both indices in
 	if *(*int32)(unsafe.Pointer(bp + 20)) == 0 {
 		/* avoid return of not canonical list (e. g. spaces in string repr.) */
 		if !((*TTcl_Obj)(unsafe.Pointer(*(*uintptr)(unsafe.Pointer(bp + 12)))).Fbytes != 0) || !((*TTcl_Obj)(unsafe.Pointer(*(*uintptr)(unsafe.Pointer(bp + 12)))).Flength != 0) {
-			goto _610
-		_610:
 			if true {
 				if 0 != 0 {
 					if 0 > 0 {
@@ -147857,6 +147879,8 @@ _154: /* lrange with objc==4 and both indices in
 					}
 				}
 			}
+			goto _610
+		_610:
 			goto _609
 		_609: /**/ //
 		}
@@ -147906,8 +147930,6 @@ _154: /* lrange with objc==4 and both indices in
 			XTcl_ListObjReplace(tls, libc.UintptrFromInt32(0), *(*uintptr)(unsafe.Pointer(bp + 12)), *(*int32)(unsafe.Pointer(bp + 80))+int32(1), libc.Int32FromInt32(1)+int32((libc.Uint32FromUint32(0xffffffff)-libc.Uint32FromInt64(20))/libc.Uint32FromInt64(4)), 0, libc.UintptrFromInt32(0))
 		}
 		XTcl_ListObjReplace(tls, libc.UintptrFromInt32(0), *(*uintptr)(unsafe.Pointer(bp + 12)), 0, *(*int32)(unsafe.Pointer(bp + 76)), 0, libc.UintptrFromInt32(0))
-		goto _617
-	_617:
 		if true {
 			if 0 != 0 {
 				if 0 > 0 {
@@ -147950,6 +147972,8 @@ _154: /* lrange with objc==4 and both indices in
 				}
 			}
 		}
+		goto _617
+	_617:
 		goto _616
 	_616: /**/ //
 	}
@@ -147969,8 +147993,6 @@ emptyList:
 	(*TTcl_Obj)(unsafe.Pointer(*(*uintptr)(unsafe.Pointer(bp + 8)))).Flength = 0
 	(*TTcl_Obj)(unsafe.Pointer(*(*uintptr)(unsafe.Pointer(bp + 8)))).FtypePtr = libc.UintptrFromInt32(0)
 _615:
-	goto _622
-_622:
 	if false {
 		if int32(1) != 0 {
 			if int32(1) > 0 {
@@ -148013,6 +148035,8 @@ _622:
 			}
 		}
 	}
+	goto _622
+_622:
 	goto _621
 _621: /**/
 	; //
@@ -148073,8 +148097,6 @@ _155: /* Basic list containment operators. */
 	 * We're saving the effort of pushing a boolean value only to pop it
 	 * for branching.
 	 */
-	goto _630
-_630:
 	pc += uintptr(libc.Int32FromInt32(1))
 	switch int32(*(*uint8)(unsafe.Pointer(pc))) {
 	case int32(m_INST_JUMP_FALSE1):
@@ -148090,48 +148112,33 @@ _630:
 	}
 	goto _636
 _631:
-_638:
+_639:
 	if false {
 		if 0 != 0 {
 			if 0 > 0 {
-				v639 = *(*uintptr)(unsafe.Pointer(bp + 8))
-				tosPtr += 4
-				v640 = tosPtr
-				*(*uintptr)(unsafe.Pointer(v640)) = v639
-				(*TTcl_Obj)(unsafe.Pointer(v639)).FrefCount++
-			} else {
+				v640 = *(*uintptr)(unsafe.Pointer(bp + 8))
 				tosPtr += 4
 				v641 = tosPtr
-				*(*uintptr)(unsafe.Pointer(v641)) = *(*uintptr)(unsafe.Pointer(bp + 8))
+				*(*uintptr)(unsafe.Pointer(v641)) = v640
+				(*TTcl_Obj)(unsafe.Pointer(v640)).FrefCount++
+			} else {
+				tosPtr += 4
+				v642 = tosPtr
+				*(*uintptr)(unsafe.Pointer(v642)) = *(*uintptr)(unsafe.Pointer(bp + 8))
 			}
 		}
 		if match != 0 {
-			v642 = int32(2)
+			v643 = int32(2)
 		} else {
-			v642 = int32(*(*int8)(unsafe.Pointer(pc + libc.UintptrFromInt32(1))))
+			v643 = int32(*(*int8)(unsafe.Pointer(pc + libc.UintptrFromInt32(1))))
 		}
-		pc += uintptr(v642)
+		pc += uintptr(v643)
 		goto cleanup0
 	} else {
 		if 0 != 0 {
 			if 0 > 0 {
 				(*TTcl_Obj)(unsafe.Pointer(*(*uintptr)(unsafe.Pointer(bp + 8)))).FrefCount++
 			}
-			if match != 0 {
-				v643 = int32(2)
-			} else {
-				v643 = int32(*(*int8)(unsafe.Pointer(pc + libc.UintptrFromInt32(1))))
-			}
-			pc += uintptr(v643)
-			switch libc.Int32FromInt32(2) {
-			case int32(1):
-				goto cleanup1_pushObjResultPtr
-			case int32(2):
-				goto cleanup2_pushObjResultPtr
-			case 0:
-				break
-			}
-		} else {
 			if match != 0 {
 				v644 = int32(2)
 			} else {
@@ -148140,6 +148147,21 @@ _638:
 			pc += uintptr(v644)
 			switch libc.Int32FromInt32(2) {
 			case int32(1):
+				goto cleanup1_pushObjResultPtr
+			case int32(2):
+				goto cleanup2_pushObjResultPtr
+			case 0:
+				break
+			}
+		} else {
+			if match != 0 {
+				v645 = int32(2)
+			} else {
+				v645 = int32(*(*int8)(unsafe.Pointer(pc + libc.UintptrFromInt32(1))))
+			}
+			pc += uintptr(v645)
+			switch libc.Int32FromInt32(2) {
+			case int32(1):
 				goto cleanup1
 			case int32(2):
 				goto cleanup2
@@ -148148,56 +148170,41 @@ _638:
 			}
 		}
 	}
+	goto _638
+_638:
 	if 0 != 0 {
-		goto _638
+		goto _639
 	}
 	goto _637
 _637:
 	goto _636
 _632:
-	goto _646
-_646:
 	if false {
 		if 0 != 0 {
 			if 0 > 0 {
-				v647 = *(*uintptr)(unsafe.Pointer(bp + 8))
-				tosPtr += 4
-				v648 = tosPtr
-				*(*uintptr)(unsafe.Pointer(v648)) = v647
-				(*TTcl_Obj)(unsafe.Pointer(v647)).FrefCount++
-			} else {
+				v648 = *(*uintptr)(unsafe.Pointer(bp + 8))
 				tosPtr += 4
 				v649 = tosPtr
-				*(*uintptr)(unsafe.Pointer(v649)) = *(*uintptr)(unsafe.Pointer(bp + 8))
+				*(*uintptr)(unsafe.Pointer(v649)) = v648
+				(*TTcl_Obj)(unsafe.Pointer(v648)).FrefCount++
+			} else {
+				tosPtr += 4
+				v650 = tosPtr
+				*(*uintptr)(unsafe.Pointer(v650)) = *(*uintptr)(unsafe.Pointer(bp + 8))
 			}
 		}
 		if match != 0 {
-			v650 = int32(*(*int8)(unsafe.Pointer(pc + libc.UintptrFromInt32(1))))
+			v651 = int32(*(*int8)(unsafe.Pointer(pc + libc.UintptrFromInt32(1))))
 		} else {
-			v650 = int32(2)
+			v651 = int32(2)
 		}
-		pc += uintptr(v650)
+		pc += uintptr(v651)
 		goto cleanup0
 	} else {
 		if 0 != 0 {
 			if 0 > 0 {
 				(*TTcl_Obj)(unsafe.Pointer(*(*uintptr)(unsafe.Pointer(bp + 8)))).FrefCount++
 			}
-			if match != 0 {
-				v651 = int32(*(*int8)(unsafe.Pointer(pc + libc.UintptrFromInt32(1))))
-			} else {
-				v651 = int32(2)
-			}
-			pc += uintptr(v651)
-			switch libc.Int32FromInt32(2) {
-			case int32(1):
-				goto cleanup1_pushObjResultPtr
-			case int32(2):
-				goto cleanup2_pushObjResultPtr
-			case 0:
-				break
-			}
-		} else {
 			if match != 0 {
 				v652 = int32(*(*int8)(unsafe.Pointer(pc + libc.UintptrFromInt32(1))))
 			} else {
@@ -148206,6 +148213,21 @@ _646:
 			pc += uintptr(v652)
 			switch libc.Int32FromInt32(2) {
 			case int32(1):
+				goto cleanup1_pushObjResultPtr
+			case int32(2):
+				goto cleanup2_pushObjResultPtr
+			case 0:
+				break
+			}
+		} else {
+			if match != 0 {
+				v653 = int32(*(*int8)(unsafe.Pointer(pc + libc.UintptrFromInt32(1))))
+			} else {
+				v653 = int32(2)
+			}
+			pc += uintptr(v653)
+			switch libc.Int32FromInt32(2) {
+			case int32(1):
 				goto cleanup1
 			case int32(2):
 				goto cleanup2
@@ -148214,54 +148236,39 @@ _646:
 			}
 		}
 	}
-	goto _645
-_645: /**/
+	goto _647
+_647:
+	goto _646
+_646: /**/
 	; //
 	goto _636
 _633:
-	goto _654
-_654:
 	if false {
 		if 0 != 0 {
 			if 0 > 0 {
-				v655 = *(*uintptr)(unsafe.Pointer(bp + 8))
-				tosPtr += 4
-				v656 = tosPtr
-				*(*uintptr)(unsafe.Pointer(v656)) = v655
-				(*TTcl_Obj)(unsafe.Pointer(v655)).FrefCount++
-			} else {
+				v656 = *(*uintptr)(unsafe.Pointer(bp + 8))
 				tosPtr += 4
 				v657 = tosPtr
-				*(*uintptr)(unsafe.Pointer(v657)) = *(*uintptr)(unsafe.Pointer(bp + 8))
+				*(*uintptr)(unsafe.Pointer(v657)) = v656
+				(*TTcl_Obj)(unsafe.Pointer(v656)).FrefCount++
+			} else {
+				tosPtr += 4
+				v658 = tosPtr
+				*(*uintptr)(unsafe.Pointer(v658)) = *(*uintptr)(unsafe.Pointer(bp + 8))
 			}
 		}
 		if match != 0 {
-			v658 = int32(5)
+			v659 = int32(5)
 		} else {
-			v658 = int32(uint32(*(*uint8)(unsafe.Pointer(pc + libc.UintptrFromInt32(1))))<<libc.Int32FromInt32(24)) | int32(*(*uint8)(unsafe.Pointer(pc + libc.UintptrFromInt32(1) + libc.UintptrFromInt32(1))))<<int32(16) | int32(*(*uint8)(unsafe.Pointer(pc + libc.UintptrFromInt32(1) + libc.UintptrFromInt32(2))))<<int32(8) | int32(*(*uint8)(unsafe.Pointer(pc + libc.UintptrFromInt32(1) + libc.UintptrFromInt32(3))))
+			v659 = int32(uint32(*(*uint8)(unsafe.Pointer(pc + libc.UintptrFromInt32(1))))<<libc.Int32FromInt32(24)) | int32(*(*uint8)(unsafe.Pointer(pc + libc.UintptrFromInt32(1) + libc.UintptrFromInt32(1))))<<int32(16) | int32(*(*uint8)(unsafe.Pointer(pc + libc.UintptrFromInt32(1) + libc.UintptrFromInt32(2))))<<int32(8) | int32(*(*uint8)(unsafe.Pointer(pc + libc.UintptrFromInt32(1) + libc.UintptrFromInt32(3))))
 		}
-		pc += uintptr(v658)
+		pc += uintptr(v659)
 		goto cleanup0
 	} else {
 		if 0 != 0 {
 			if 0 > 0 {
 				(*TTcl_Obj)(unsafe.Pointer(*(*uintptr)(unsafe.Pointer(bp + 8)))).FrefCount++
 			}
-			if match != 0 {
-				v659 = int32(5)
-			} else {
-				v659 = int32(uint32(*(*uint8)(unsafe.Pointer(pc + libc.UintptrFromInt32(1))))<<libc.Int32FromInt32(24)) | int32(*(*uint8)(unsafe.Pointer(pc + libc.UintptrFromInt32(1) + libc.UintptrFromInt32(1))))<<int32(16) | int32(*(*uint8)(unsafe.Pointer(pc + libc.UintptrFromInt32(1) + libc.UintptrFromInt32(2))))<<int32(8) | int32(*(*uint8)(unsafe.Pointer(pc + libc.UintptrFromInt32(1) + libc.UintptrFromInt32(3))))
-			}
-			pc += uintptr(v659)
-			switch libc.Int32FromInt32(2) {
-			case int32(1):
-				goto cleanup1_pushObjResultPtr
-			case int32(2):
-				goto cleanup2_pushObjResultPtr
-			case 0:
-				break
-			}
-		} else {
 			if match != 0 {
 				v660 = int32(5)
 			} else {
@@ -148270,6 +148277,21 @@ _654:
 			pc += uintptr(v660)
 			switch libc.Int32FromInt32(2) {
 			case int32(1):
+				goto cleanup1_pushObjResultPtr
+			case int32(2):
+				goto cleanup2_pushObjResultPtr
+			case 0:
+				break
+			}
+		} else {
+			if match != 0 {
+				v661 = int32(5)
+			} else {
+				v661 = int32(uint32(*(*uint8)(unsafe.Pointer(pc + libc.UintptrFromInt32(1))))<<libc.Int32FromInt32(24)) | int32(*(*uint8)(unsafe.Pointer(pc + libc.UintptrFromInt32(1) + libc.UintptrFromInt32(1))))<<int32(16) | int32(*(*uint8)(unsafe.Pointer(pc + libc.UintptrFromInt32(1) + libc.UintptrFromInt32(2))))<<int32(8) | int32(*(*uint8)(unsafe.Pointer(pc + libc.UintptrFromInt32(1) + libc.UintptrFromInt32(3))))
+			}
+			pc += uintptr(v661)
+			switch libc.Int32FromInt32(2) {
+			case int32(1):
 				goto cleanup1
 			case int32(2):
 				goto cleanup2
@@ -148278,33 +148300,33 @@ _654:
 			}
 		}
 	}
-	goto _653
-_653: /**/
+	goto _655
+_655:
+	goto _654
+_654: /**/
 	; //
 	goto _636
 _634:
-	goto _662
-_662:
 	if false {
 		if 0 != 0 {
 			if 0 > 0 {
-				v663 = *(*uintptr)(unsafe.Pointer(bp + 8))
-				tosPtr += 4
-				v664 = tosPtr
-				*(*uintptr)(unsafe.Pointer(v664)) = v663
-				(*TTcl_Obj)(unsafe.Pointer(v663)).FrefCount++
-			} else {
+				v664 = *(*uintptr)(unsafe.Pointer(bp + 8))
 				tosPtr += 4
 				v665 = tosPtr
-				*(*uintptr)(unsafe.Pointer(v665)) = *(*uintptr)(unsafe.Pointer(bp + 8))
+				*(*uintptr)(unsafe.Pointer(v665)) = v664
+				(*TTcl_Obj)(unsafe.Pointer(v664)).FrefCount++
+			} else {
+				tosPtr += 4
+				v666 = tosPtr
+				*(*uintptr)(unsafe.Pointer(v666)) = *(*uintptr)(unsafe.Pointer(bp + 8))
 			}
 		}
 		if match != 0 {
-			v666 = int32(uint32(*(*uint8)(unsafe.Pointer(pc + libc.UintptrFromInt32(1))))<<libc.Int32FromInt32(24)) | int32(*(*uint8)(unsafe.Pointer(pc + libc.UintptrFromInt32(1) + libc.UintptrFromInt32(1))))<<int32(16) | int32(*(*uint8)(unsafe.Pointer(pc + libc.UintptrFromInt32(1) + libc.UintptrFromInt32(2))))<<int32(8) | int32(*(*uint8)(unsafe.Pointer(pc + libc.UintptrFromInt32(1) + libc.UintptrFromInt32(3))))
+			v667 = int32(uint32(*(*uint8)(unsafe.Pointer(pc + libc.UintptrFromInt32(1))))<<libc.Int32FromInt32(24)) | int32(*(*uint8)(unsafe.Pointer(pc + libc.UintptrFromInt32(1) + libc.UintptrFromInt32(1))))<<int32(16) | int32(*(*uint8)(unsafe.Pointer(pc + libc.UintptrFromInt32(1) + libc.UintptrFromInt32(2))))<<int32(8) | int32(*(*uint8)(unsafe.Pointer(pc + libc.UintptrFromInt32(1) + libc.UintptrFromInt32(3))))
 		} else {
-			v666 = int32(5)
+			v667 = int32(5)
 		}
-		pc += uintptr(v666)
+		pc += uintptr(v667)
 		goto cleanup0
 	} else {
 		if 0 != 0 {
@@ -148312,11 +148334,11 @@ _662:
 				(*TTcl_Obj)(unsafe.Pointer(*(*uintptr)(unsafe.Pointer(bp + 8)))).FrefCount++
 			}
 			if match != 0 {
-				v667 = int32(uint32(*(*uint8)(unsafe.Pointer(pc + libc.UintptrFromInt32(1))))<<libc.Int32FromInt32(24)) | int32(*(*uint8)(unsafe.Pointer(pc + libc.UintptrFromInt32(1) + libc.UintptrFromInt32(1))))<<int32(16) | int32(*(*uint8)(unsafe.Pointer(pc + libc.UintptrFromInt32(1) + libc.UintptrFromInt32(2))))<<int32(8) | int32(*(*uint8)(unsafe.Pointer(pc + libc.UintptrFromInt32(1) + libc.UintptrFromInt32(3))))
+				v668 = int32(uint32(*(*uint8)(unsafe.Pointer(pc + libc.UintptrFromInt32(1))))<<libc.Int32FromInt32(24)) | int32(*(*uint8)(unsafe.Pointer(pc + libc.UintptrFromInt32(1) + libc.UintptrFromInt32(1))))<<int32(16) | int32(*(*uint8)(unsafe.Pointer(pc + libc.UintptrFromInt32(1) + libc.UintptrFromInt32(2))))<<int32(8) | int32(*(*uint8)(unsafe.Pointer(pc + libc.UintptrFromInt32(1) + libc.UintptrFromInt32(3))))
 			} else {
-				v667 = int32(5)
+				v668 = int32(5)
 			}
-			pc += uintptr(v667)
+			pc += uintptr(v668)
 			switch libc.Int32FromInt32(2) {
 			case int32(1):
 				goto cleanup1_pushObjResultPtr
@@ -148327,11 +148349,11 @@ _662:
 			}
 		} else {
 			if match != 0 {
-				v668 = int32(uint32(*(*uint8)(unsafe.Pointer(pc + libc.UintptrFromInt32(1))))<<libc.Int32FromInt32(24)) | int32(*(*uint8)(unsafe.Pointer(pc + libc.UintptrFromInt32(1) + libc.UintptrFromInt32(1))))<<int32(16) | int32(*(*uint8)(unsafe.Pointer(pc + libc.UintptrFromInt32(1) + libc.UintptrFromInt32(2))))<<int32(8) | int32(*(*uint8)(unsafe.Pointer(pc + libc.UintptrFromInt32(1) + libc.UintptrFromInt32(3))))
+				v669 = int32(uint32(*(*uint8)(unsafe.Pointer(pc + libc.UintptrFromInt32(1))))<<libc.Int32FromInt32(24)) | int32(*(*uint8)(unsafe.Pointer(pc + libc.UintptrFromInt32(1) + libc.UintptrFromInt32(1))))<<int32(16) | int32(*(*uint8)(unsafe.Pointer(pc + libc.UintptrFromInt32(1) + libc.UintptrFromInt32(2))))<<int32(8) | int32(*(*uint8)(unsafe.Pointer(pc + libc.UintptrFromInt32(1) + libc.UintptrFromInt32(3))))
 			} else {
-				v668 = int32(5)
+				v669 = int32(5)
 			}
-			pc += uintptr(v668)
+			pc += uintptr(v669)
 			switch libc.Int32FromInt32(2) {
 			case int32(1):
 				goto cleanup1
@@ -148342,8 +148364,10 @@ _662:
 			}
 		}
 	}
-	goto _661
-_661: /**/
+	goto _663
+_663:
+	goto _662
+_662: /**/
 	; //
 	goto _636
 _635:
@@ -148363,20 +148387,18 @@ _635:
 	} else {
 		*(*uintptr)(unsafe.Pointer(bp + 8)) = *(*uintptr)(unsafe.Pointer(constants + libc.BoolUintptr(match > libc.Int32FromInt32(0))*4))
 	}
-	goto _670
-_670:
 	if false {
 		if int32(1) != 0 {
 			if int32(1) > 0 {
-				v671 = *(*uintptr)(unsafe.Pointer(bp + 8))
-				tosPtr += 4
-				v672 = tosPtr
-				*(*uintptr)(unsafe.Pointer(v672)) = v671
-				(*TTcl_Obj)(unsafe.Pointer(v671)).FrefCount++
-			} else {
+				v672 = *(*uintptr)(unsafe.Pointer(bp + 8))
 				tosPtr += 4
 				v673 = tosPtr
-				*(*uintptr)(unsafe.Pointer(v673)) = *(*uintptr)(unsafe.Pointer(bp + 8))
+				*(*uintptr)(unsafe.Pointer(v673)) = v672
+				(*TTcl_Obj)(unsafe.Pointer(v672)).FrefCount++
+			} else {
+				tosPtr += 4
+				v674 = tosPtr
+				*(*uintptr)(unsafe.Pointer(v674)) = *(*uintptr)(unsafe.Pointer(bp + 8))
 			}
 		}
 		pc += uintptr(libc.Int32FromInt32(0))
@@ -148407,11 +148429,15 @@ _670:
 			}
 		}
 	}
-	goto _669
-_669: /**/
+	goto _671
+_671:
+	goto _670
+_670: /**/
 	; //
 	goto _636
 _636:
+	goto _630
+_630:
 	goto _629
 _629: /**/
 	; //
@@ -148421,10 +148447,10 @@ _157:
 	if (*TTcl_Obj)(unsafe.Pointer(*(*uintptr)(unsafe.Pointer(bp + 12)))).FrefCount > int32(1) {
 		*(*uintptr)(unsafe.Pointer(bp + 8)) = XTcl_DuplicateObj(tls, *(*uintptr)(unsafe.Pointer(bp + 12)))
 		if XTcl_ListObjAppendList(tls, interp, *(*uintptr)(unsafe.Pointer(bp + 8)), value2Ptr) != m_TCL_OK {
-			v675 = *(*uintptr)(unsafe.Pointer(bp + 8))
-			v674 = *(*int32)(unsafe.Pointer(v675))
-			*(*int32)(unsafe.Pointer(v675))--
-			if !(v674 > int32(1)) {
+			v676 = *(*uintptr)(unsafe.Pointer(bp + 8))
+			v675 = *(*int32)(unsafe.Pointer(v676))
+			*(*int32)(unsafe.Pointer(v676))--
+			if !(v675 > int32(1)) {
 				if !((*TTcl_Obj)(unsafe.Pointer(*(*uintptr)(unsafe.Pointer(bp + 8)))).FtypePtr != 0) || !((*TTcl_ObjType)(unsafe.Pointer((*TTcl_Obj)(unsafe.Pointer(*(*uintptr)(unsafe.Pointer(bp + 8)))).FtypePtr)).FfreeIntRepProc != 0) {
 					if (*TTcl_Obj)(unsafe.Pointer(*(*uintptr)(unsafe.Pointer(bp + 8)))).Fbytes != 0 && (*TTcl_Obj)(unsafe.Pointer(*(*uintptr)(unsafe.Pointer(bp + 8)))).Fbytes != XtclEmptyStringRep {
 						XTclpFree(tls, (*TTcl_Obj)(unsafe.Pointer(*(*uintptr)(unsafe.Pointer(bp + 8)))).Fbytes)
@@ -148441,20 +148467,18 @@ _157:
 			}
 			goto gotError
 		}
-		goto _677
-	_677:
 		if false {
 			if int32(1) != 0 {
 				if int32(1) > 0 {
-					v678 = *(*uintptr)(unsafe.Pointer(bp + 8))
-					tosPtr += 4
-					v679 = tosPtr
-					*(*uintptr)(unsafe.Pointer(v679)) = v678
-					(*TTcl_Obj)(unsafe.Pointer(v678)).FrefCount++
-				} else {
+					v679 = *(*uintptr)(unsafe.Pointer(bp + 8))
 					tosPtr += 4
 					v680 = tosPtr
-					*(*uintptr)(unsafe.Pointer(v680)) = *(*uintptr)(unsafe.Pointer(bp + 8))
+					*(*uintptr)(unsafe.Pointer(v680)) = v679
+					(*TTcl_Obj)(unsafe.Pointer(v679)).FrefCount++
+				} else {
+					tosPtr += 4
+					v681 = tosPtr
+					*(*uintptr)(unsafe.Pointer(v681)) = *(*uintptr)(unsafe.Pointer(bp + 8))
 				}
 			}
 			pc += uintptr(libc.Int32FromInt32(1))
@@ -148485,27 +148509,27 @@ _157:
 				}
 			}
 		}
-		goto _676
-	_676: /**/
+		goto _678
+	_678:
+		goto _677
+	_677: /**/
 		//
 	} else {
 		if XTcl_ListObjAppendList(tls, interp, *(*uintptr)(unsafe.Pointer(bp + 12)), value2Ptr) != m_TCL_OK {
 			goto gotError
 		}
-		goto _682
-	_682:
 		if false {
 			if 0 != 0 {
 				if 0 > 0 {
-					v683 = *(*uintptr)(unsafe.Pointer(bp + 8))
-					tosPtr += 4
-					v684 = tosPtr
-					*(*uintptr)(unsafe.Pointer(v684)) = v683
-					(*TTcl_Obj)(unsafe.Pointer(v683)).FrefCount++
-				} else {
+					v684 = *(*uintptr)(unsafe.Pointer(bp + 8))
 					tosPtr += 4
 					v685 = tosPtr
-					*(*uintptr)(unsafe.Pointer(v685)) = *(*uintptr)(unsafe.Pointer(bp + 8))
+					*(*uintptr)(unsafe.Pointer(v685)) = v684
+					(*TTcl_Obj)(unsafe.Pointer(v684)).FrefCount++
+				} else {
+					tosPtr += 4
+					v686 = tosPtr
+					*(*uintptr)(unsafe.Pointer(v686)) = *(*uintptr)(unsafe.Pointer(bp + 8))
 				}
 			}
 			pc += uintptr(libc.Int32FromInt32(1))
@@ -148536,8 +148560,10 @@ _157:
 				}
 			}
 		}
-		goto _681
-	_681: /**/ //
+		goto _683
+	_683:
+		goto _682
+	_682: /**/ //
 	}
 	/*
 	 *	   End of INST_LIST and related instructions.
@@ -148580,110 +148606,42 @@ stringCompare:
 			break
 		}
 	}
-	goto _687
-_687:
 	pc += uintptr(libc.Int32FromInt32(1))
 	switch int32(*(*uint8)(unsafe.Pointer(pc))) {
 	case int32(m_INST_JUMP_FALSE1):
-		goto _688
-	case int32(m_INST_JUMP_TRUE1):
 		goto _689
-	case int32(m_INST_JUMP_FALSE4):
+	case int32(m_INST_JUMP_TRUE1):
 		goto _690
-	case int32(m_INST_JUMP_TRUE4):
+	case int32(m_INST_JUMP_FALSE4):
 		goto _691
-	default:
+	case int32(m_INST_JUMP_TRUE4):
 		goto _692
-	}
-	goto _693
-_688:
-_695:
-	if false {
-		if 0 != 0 {
-			if 0 > 0 {
-				v696 = *(*uintptr)(unsafe.Pointer(bp + 8))
-				tosPtr += 4
-				v697 = tosPtr
-				*(*uintptr)(unsafe.Pointer(v697)) = v696
-				(*TTcl_Obj)(unsafe.Pointer(v696)).FrefCount++
-			} else {
-				tosPtr += 4
-				v698 = tosPtr
-				*(*uintptr)(unsafe.Pointer(v698)) = *(*uintptr)(unsafe.Pointer(bp + 8))
-			}
-		}
-		if match != 0 {
-			v699 = int32(2)
-		} else {
-			v699 = int32(*(*int8)(unsafe.Pointer(pc + libc.UintptrFromInt32(1))))
-		}
-		pc += uintptr(v699)
-		goto cleanup0
-	} else {
-		if 0 != 0 {
-			if 0 > 0 {
-				(*TTcl_Obj)(unsafe.Pointer(*(*uintptr)(unsafe.Pointer(bp + 8)))).FrefCount++
-			}
-			if match != 0 {
-				v700 = int32(2)
-			} else {
-				v700 = int32(*(*int8)(unsafe.Pointer(pc + libc.UintptrFromInt32(1))))
-			}
-			pc += uintptr(v700)
-			switch libc.Int32FromInt32(2) {
-			case int32(1):
-				goto cleanup1_pushObjResultPtr
-			case int32(2):
-				goto cleanup2_pushObjResultPtr
-			case 0:
-				break
-			}
-		} else {
-			if match != 0 {
-				v701 = int32(2)
-			} else {
-				v701 = int32(*(*int8)(unsafe.Pointer(pc + libc.UintptrFromInt32(1))))
-			}
-			pc += uintptr(v701)
-			switch libc.Int32FromInt32(2) {
-			case int32(1):
-				goto cleanup1
-			case int32(2):
-				goto cleanup2
-			case 0:
-				break
-			}
-		}
-	}
-	if 0 != 0 {
-		goto _695
+	default:
+		goto _693
 	}
 	goto _694
-_694:
-	goto _693
 _689:
-	goto _703
-_703:
+_697:
 	if false {
 		if 0 != 0 {
 			if 0 > 0 {
-				v704 = *(*uintptr)(unsafe.Pointer(bp + 8))
+				v698 = *(*uintptr)(unsafe.Pointer(bp + 8))
 				tosPtr += 4
-				v705 = tosPtr
-				*(*uintptr)(unsafe.Pointer(v705)) = v704
-				(*TTcl_Obj)(unsafe.Pointer(v704)).FrefCount++
+				v699 = tosPtr
+				*(*uintptr)(unsafe.Pointer(v699)) = v698
+				(*TTcl_Obj)(unsafe.Pointer(v698)).FrefCount++
 			} else {
 				tosPtr += 4
-				v706 = tosPtr
-				*(*uintptr)(unsafe.Pointer(v706)) = *(*uintptr)(unsafe.Pointer(bp + 8))
+				v700 = tosPtr
+				*(*uintptr)(unsafe.Pointer(v700)) = *(*uintptr)(unsafe.Pointer(bp + 8))
 			}
 		}
 		if match != 0 {
-			v707 = int32(*(*int8)(unsafe.Pointer(pc + libc.UintptrFromInt32(1))))
+			v701 = int32(2)
 		} else {
-			v707 = int32(2)
+			v701 = int32(*(*int8)(unsafe.Pointer(pc + libc.UintptrFromInt32(1))))
 		}
-		pc += uintptr(v707)
+		pc += uintptr(v701)
 		goto cleanup0
 	} else {
 		if 0 != 0 {
@@ -148691,11 +148649,11 @@ _703:
 				(*TTcl_Obj)(unsafe.Pointer(*(*uintptr)(unsafe.Pointer(bp + 8)))).FrefCount++
 			}
 			if match != 0 {
-				v708 = int32(*(*int8)(unsafe.Pointer(pc + libc.UintptrFromInt32(1))))
+				v702 = int32(2)
 			} else {
-				v708 = int32(2)
+				v702 = int32(*(*int8)(unsafe.Pointer(pc + libc.UintptrFromInt32(1))))
 			}
-			pc += uintptr(v708)
+			pc += uintptr(v702)
 			switch libc.Int32FromInt32(2) {
 			case int32(1):
 				goto cleanup1_pushObjResultPtr
@@ -148706,11 +148664,11 @@ _703:
 			}
 		} else {
 			if match != 0 {
-				v709 = int32(*(*int8)(unsafe.Pointer(pc + libc.UintptrFromInt32(1))))
+				v703 = int32(2)
 			} else {
-				v709 = int32(2)
+				v703 = int32(*(*int8)(unsafe.Pointer(pc + libc.UintptrFromInt32(1))))
 			}
-			pc += uintptr(v709)
+			pc += uintptr(v703)
 			switch libc.Int32FromInt32(2) {
 			case int32(1):
 				goto cleanup1
@@ -148721,33 +148679,35 @@ _703:
 			}
 		}
 	}
-	goto _702
-_702: /**/
-	; //
-	goto _693
+	goto _696
+_696:
+	if 0 != 0 {
+		goto _697
+	}
+	goto _695
+_695:
+	goto _694
 _690:
-	goto _711
-_711:
 	if false {
 		if 0 != 0 {
 			if 0 > 0 {
-				v712 = *(*uintptr)(unsafe.Pointer(bp + 8))
+				v706 = *(*uintptr)(unsafe.Pointer(bp + 8))
 				tosPtr += 4
-				v713 = tosPtr
-				*(*uintptr)(unsafe.Pointer(v713)) = v712
-				(*TTcl_Obj)(unsafe.Pointer(v712)).FrefCount++
+				v707 = tosPtr
+				*(*uintptr)(unsafe.Pointer(v707)) = v706
+				(*TTcl_Obj)(unsafe.Pointer(v706)).FrefCount++
 			} else {
 				tosPtr += 4
-				v714 = tosPtr
-				*(*uintptr)(unsafe.Pointer(v714)) = *(*uintptr)(unsafe.Pointer(bp + 8))
+				v708 = tosPtr
+				*(*uintptr)(unsafe.Pointer(v708)) = *(*uintptr)(unsafe.Pointer(bp + 8))
 			}
 		}
 		if match != 0 {
-			v715 = int32(5)
+			v709 = int32(*(*int8)(unsafe.Pointer(pc + libc.UintptrFromInt32(1))))
 		} else {
-			v715 = int32(uint32(*(*uint8)(unsafe.Pointer(pc + libc.UintptrFromInt32(1))))<<libc.Int32FromInt32(24)) | int32(*(*uint8)(unsafe.Pointer(pc + libc.UintptrFromInt32(1) + libc.UintptrFromInt32(1))))<<int32(16) | int32(*(*uint8)(unsafe.Pointer(pc + libc.UintptrFromInt32(1) + libc.UintptrFromInt32(2))))<<int32(8) | int32(*(*uint8)(unsafe.Pointer(pc + libc.UintptrFromInt32(1) + libc.UintptrFromInt32(3))))
+			v709 = int32(2)
 		}
-		pc += uintptr(v715)
+		pc += uintptr(v709)
 		goto cleanup0
 	} else {
 		if 0 != 0 {
@@ -148755,11 +148715,11 @@ _711:
 				(*TTcl_Obj)(unsafe.Pointer(*(*uintptr)(unsafe.Pointer(bp + 8)))).FrefCount++
 			}
 			if match != 0 {
-				v716 = int32(5)
+				v710 = int32(*(*int8)(unsafe.Pointer(pc + libc.UintptrFromInt32(1))))
 			} else {
-				v716 = int32(uint32(*(*uint8)(unsafe.Pointer(pc + libc.UintptrFromInt32(1))))<<libc.Int32FromInt32(24)) | int32(*(*uint8)(unsafe.Pointer(pc + libc.UintptrFromInt32(1) + libc.UintptrFromInt32(1))))<<int32(16) | int32(*(*uint8)(unsafe.Pointer(pc + libc.UintptrFromInt32(1) + libc.UintptrFromInt32(2))))<<int32(8) | int32(*(*uint8)(unsafe.Pointer(pc + libc.UintptrFromInt32(1) + libc.UintptrFromInt32(3))))
+				v710 = int32(2)
 			}
-			pc += uintptr(v716)
+			pc += uintptr(v710)
 			switch libc.Int32FromInt32(2) {
 			case int32(1):
 				goto cleanup1_pushObjResultPtr
@@ -148770,11 +148730,11 @@ _711:
 			}
 		} else {
 			if match != 0 {
-				v717 = int32(5)
+				v711 = int32(*(*int8)(unsafe.Pointer(pc + libc.UintptrFromInt32(1))))
 			} else {
-				v717 = int32(uint32(*(*uint8)(unsafe.Pointer(pc + libc.UintptrFromInt32(1))))<<libc.Int32FromInt32(24)) | int32(*(*uint8)(unsafe.Pointer(pc + libc.UintptrFromInt32(1) + libc.UintptrFromInt32(1))))<<int32(16) | int32(*(*uint8)(unsafe.Pointer(pc + libc.UintptrFromInt32(1) + libc.UintptrFromInt32(2))))<<int32(8) | int32(*(*uint8)(unsafe.Pointer(pc + libc.UintptrFromInt32(1) + libc.UintptrFromInt32(3))))
+				v711 = int32(2)
 			}
-			pc += uintptr(v717)
+			pc += uintptr(v711)
 			switch libc.Int32FromInt32(2) {
 			case int32(1):
 				goto cleanup1
@@ -148785,33 +148745,33 @@ _711:
 			}
 		}
 	}
-	goto _710
-_710: /**/
+	goto _705
+_705:
+	goto _704
+_704: /**/
 	; //
-	goto _693
+	goto _694
 _691:
-	goto _719
-_719:
 	if false {
 		if 0 != 0 {
 			if 0 > 0 {
-				v720 = *(*uintptr)(unsafe.Pointer(bp + 8))
+				v714 = *(*uintptr)(unsafe.Pointer(bp + 8))
 				tosPtr += 4
-				v721 = tosPtr
-				*(*uintptr)(unsafe.Pointer(v721)) = v720
-				(*TTcl_Obj)(unsafe.Pointer(v720)).FrefCount++
+				v715 = tosPtr
+				*(*uintptr)(unsafe.Pointer(v715)) = v714
+				(*TTcl_Obj)(unsafe.Pointer(v714)).FrefCount++
 			} else {
 				tosPtr += 4
-				v722 = tosPtr
-				*(*uintptr)(unsafe.Pointer(v722)) = *(*uintptr)(unsafe.Pointer(bp + 8))
+				v716 = tosPtr
+				*(*uintptr)(unsafe.Pointer(v716)) = *(*uintptr)(unsafe.Pointer(bp + 8))
 			}
 		}
 		if match != 0 {
-			v723 = int32(uint32(*(*uint8)(unsafe.Pointer(pc + libc.UintptrFromInt32(1))))<<libc.Int32FromInt32(24)) | int32(*(*uint8)(unsafe.Pointer(pc + libc.UintptrFromInt32(1) + libc.UintptrFromInt32(1))))<<int32(16) | int32(*(*uint8)(unsafe.Pointer(pc + libc.UintptrFromInt32(1) + libc.UintptrFromInt32(2))))<<int32(8) | int32(*(*uint8)(unsafe.Pointer(pc + libc.UintptrFromInt32(1) + libc.UintptrFromInt32(3))))
+			v717 = int32(5)
 		} else {
-			v723 = int32(5)
+			v717 = int32(uint32(*(*uint8)(unsafe.Pointer(pc + libc.UintptrFromInt32(1))))<<libc.Int32FromInt32(24)) | int32(*(*uint8)(unsafe.Pointer(pc + libc.UintptrFromInt32(1) + libc.UintptrFromInt32(1))))<<int32(16) | int32(*(*uint8)(unsafe.Pointer(pc + libc.UintptrFromInt32(1) + libc.UintptrFromInt32(2))))<<int32(8) | int32(*(*uint8)(unsafe.Pointer(pc + libc.UintptrFromInt32(1) + libc.UintptrFromInt32(3))))
 		}
-		pc += uintptr(v723)
+		pc += uintptr(v717)
 		goto cleanup0
 	} else {
 		if 0 != 0 {
@@ -148819,11 +148779,11 @@ _719:
 				(*TTcl_Obj)(unsafe.Pointer(*(*uintptr)(unsafe.Pointer(bp + 8)))).FrefCount++
 			}
 			if match != 0 {
-				v724 = int32(uint32(*(*uint8)(unsafe.Pointer(pc + libc.UintptrFromInt32(1))))<<libc.Int32FromInt32(24)) | int32(*(*uint8)(unsafe.Pointer(pc + libc.UintptrFromInt32(1) + libc.UintptrFromInt32(1))))<<int32(16) | int32(*(*uint8)(unsafe.Pointer(pc + libc.UintptrFromInt32(1) + libc.UintptrFromInt32(2))))<<int32(8) | int32(*(*uint8)(unsafe.Pointer(pc + libc.UintptrFromInt32(1) + libc.UintptrFromInt32(3))))
+				v718 = int32(5)
 			} else {
-				v724 = int32(5)
+				v718 = int32(uint32(*(*uint8)(unsafe.Pointer(pc + libc.UintptrFromInt32(1))))<<libc.Int32FromInt32(24)) | int32(*(*uint8)(unsafe.Pointer(pc + libc.UintptrFromInt32(1) + libc.UintptrFromInt32(1))))<<int32(16) | int32(*(*uint8)(unsafe.Pointer(pc + libc.UintptrFromInt32(1) + libc.UintptrFromInt32(2))))<<int32(8) | int32(*(*uint8)(unsafe.Pointer(pc + libc.UintptrFromInt32(1) + libc.UintptrFromInt32(3))))
 			}
-			pc += uintptr(v724)
+			pc += uintptr(v718)
 			switch libc.Int32FromInt32(2) {
 			case int32(1):
 				goto cleanup1_pushObjResultPtr
@@ -148834,11 +148794,11 @@ _719:
 			}
 		} else {
 			if match != 0 {
-				v725 = int32(uint32(*(*uint8)(unsafe.Pointer(pc + libc.UintptrFromInt32(1))))<<libc.Int32FromInt32(24)) | int32(*(*uint8)(unsafe.Pointer(pc + libc.UintptrFromInt32(1) + libc.UintptrFromInt32(1))))<<int32(16) | int32(*(*uint8)(unsafe.Pointer(pc + libc.UintptrFromInt32(1) + libc.UintptrFromInt32(2))))<<int32(8) | int32(*(*uint8)(unsafe.Pointer(pc + libc.UintptrFromInt32(1) + libc.UintptrFromInt32(3))))
+				v719 = int32(5)
 			} else {
-				v725 = int32(5)
+				v719 = int32(uint32(*(*uint8)(unsafe.Pointer(pc + libc.UintptrFromInt32(1))))<<libc.Int32FromInt32(24)) | int32(*(*uint8)(unsafe.Pointer(pc + libc.UintptrFromInt32(1) + libc.UintptrFromInt32(1))))<<int32(16) | int32(*(*uint8)(unsafe.Pointer(pc + libc.UintptrFromInt32(1) + libc.UintptrFromInt32(2))))<<int32(8) | int32(*(*uint8)(unsafe.Pointer(pc + libc.UintptrFromInt32(1) + libc.UintptrFromInt32(3))))
 			}
-			pc += uintptr(v725)
+			pc += uintptr(v719)
 			switch libc.Int32FromInt32(2) {
 			case int32(1):
 				goto cleanup1
@@ -148849,11 +148809,77 @@ _719:
 			}
 		}
 	}
-	goto _718
-_718: /**/
+	goto _713
+_713:
+	goto _712
+_712: /**/
 	; //
-	goto _693
+	goto _694
 _692:
+	if false {
+		if 0 != 0 {
+			if 0 > 0 {
+				v722 = *(*uintptr)(unsafe.Pointer(bp + 8))
+				tosPtr += 4
+				v723 = tosPtr
+				*(*uintptr)(unsafe.Pointer(v723)) = v722
+				(*TTcl_Obj)(unsafe.Pointer(v722)).FrefCount++
+			} else {
+				tosPtr += 4
+				v724 = tosPtr
+				*(*uintptr)(unsafe.Pointer(v724)) = *(*uintptr)(unsafe.Pointer(bp + 8))
+			}
+		}
+		if match != 0 {
+			v725 = int32(uint32(*(*uint8)(unsafe.Pointer(pc + libc.UintptrFromInt32(1))))<<libc.Int32FromInt32(24)) | int32(*(*uint8)(unsafe.Pointer(pc + libc.UintptrFromInt32(1) + libc.UintptrFromInt32(1))))<<int32(16) | int32(*(*uint8)(unsafe.Pointer(pc + libc.UintptrFromInt32(1) + libc.UintptrFromInt32(2))))<<int32(8) | int32(*(*uint8)(unsafe.Pointer(pc + libc.UintptrFromInt32(1) + libc.UintptrFromInt32(3))))
+		} else {
+			v725 = int32(5)
+		}
+		pc += uintptr(v725)
+		goto cleanup0
+	} else {
+		if 0 != 0 {
+			if 0 > 0 {
+				(*TTcl_Obj)(unsafe.Pointer(*(*uintptr)(unsafe.Pointer(bp + 8)))).FrefCount++
+			}
+			if match != 0 {
+				v726 = int32(uint32(*(*uint8)(unsafe.Pointer(pc + libc.UintptrFromInt32(1))))<<libc.Int32FromInt32(24)) | int32(*(*uint8)(unsafe.Pointer(pc + libc.UintptrFromInt32(1) + libc.UintptrFromInt32(1))))<<int32(16) | int32(*(*uint8)(unsafe.Pointer(pc + libc.UintptrFromInt32(1) + libc.UintptrFromInt32(2))))<<int32(8) | int32(*(*uint8)(unsafe.Pointer(pc + libc.UintptrFromInt32(1) + libc.UintptrFromInt32(3))))
+			} else {
+				v726 = int32(5)
+			}
+			pc += uintptr(v726)
+			switch libc.Int32FromInt32(2) {
+			case int32(1):
+				goto cleanup1_pushObjResultPtr
+			case int32(2):
+				goto cleanup2_pushObjResultPtr
+			case 0:
+				break
+			}
+		} else {
+			if match != 0 {
+				v727 = int32(uint32(*(*uint8)(unsafe.Pointer(pc + libc.UintptrFromInt32(1))))<<libc.Int32FromInt32(24)) | int32(*(*uint8)(unsafe.Pointer(pc + libc.UintptrFromInt32(1) + libc.UintptrFromInt32(1))))<<int32(16) | int32(*(*uint8)(unsafe.Pointer(pc + libc.UintptrFromInt32(1) + libc.UintptrFromInt32(2))))<<int32(8) | int32(*(*uint8)(unsafe.Pointer(pc + libc.UintptrFromInt32(1) + libc.UintptrFromInt32(3))))
+			} else {
+				v727 = int32(5)
+			}
+			pc += uintptr(v727)
+			switch libc.Int32FromInt32(2) {
+			case int32(1):
+				goto cleanup1
+			case int32(2):
+				goto cleanup2
+			case 0:
+				break
+			}
+		}
+	}
+	goto _721
+_721:
+	goto _720
+_720: /**/
+	; //
+	goto _694
+_693:
 	if match < 0 {
 		if XtclFreeObjList == libc.UintptrFromInt32(0) {
 			XTclAllocateFreeObjects(tls)
@@ -148870,20 +148896,18 @@ _692:
 	} else {
 		*(*uintptr)(unsafe.Pointer(bp + 8)) = *(*uintptr)(unsafe.Pointer(constants + libc.BoolUintptr(match > libc.Int32FromInt32(0))*4))
 	}
-	goto _727
-_727:
 	if false {
 		if int32(1) != 0 {
 			if int32(1) > 0 {
-				v728 = *(*uintptr)(unsafe.Pointer(bp + 8))
+				v730 = *(*uintptr)(unsafe.Pointer(bp + 8))
 				tosPtr += 4
-				v729 = tosPtr
-				*(*uintptr)(unsafe.Pointer(v729)) = v728
-				(*TTcl_Obj)(unsafe.Pointer(v728)).FrefCount++
+				v731 = tosPtr
+				*(*uintptr)(unsafe.Pointer(v731)) = v730
+				(*TTcl_Obj)(unsafe.Pointer(v730)).FrefCount++
 			} else {
 				tosPtr += 4
-				v730 = tosPtr
-				*(*uintptr)(unsafe.Pointer(v730)) = *(*uintptr)(unsafe.Pointer(bp + 8))
+				v732 = tosPtr
+				*(*uintptr)(unsafe.Pointer(v732)) = *(*uintptr)(unsafe.Pointer(bp + 8))
 			}
 		}
 		pc += uintptr(libc.Int32FromInt32(0))
@@ -148914,13 +148938,17 @@ _727:
 			}
 		}
 	}
-	goto _726
-_726: /**/
+	goto _729
+_729:
+	goto _728
+_728: /**/
 	; //
-	goto _693
-_693:
-	goto _686
-_686: /**/
+	goto _694
+_694:
+	goto _688
+_688:
+	goto _687
+_687: /**/
 	; //
 _161:
 	*(*uintptr)(unsafe.Pointer(bp + 12)) = *(*uintptr)(unsafe.Pointer(tosPtr))
@@ -148937,20 +148965,18 @@ _161:
 	(*TTcl_Obj)(unsafe.Pointer(*(*uintptr)(unsafe.Pointer(bp + 8)))).Fbytes = libc.UintptrFromInt32(0)
 	(*TTcl_Obj)(unsafe.Pointer(*(*uintptr)(unsafe.Pointer(bp + 8)))).FinternalRep.FlongValue = *(*int32)(unsafe.Pointer(bp + 24))
 	(*TTcl_Obj)(unsafe.Pointer(*(*uintptr)(unsafe.Pointer(bp + 8)))).FtypePtr = uintptr(unsafe.Pointer(&XtclIntType))
-	goto _732
-_732:
 	if false {
 		if int32(1) != 0 {
 			if int32(1) > 0 {
-				v733 = *(*uintptr)(unsafe.Pointer(bp + 8))
+				v735 = *(*uintptr)(unsafe.Pointer(bp + 8))
 				tosPtr += 4
-				v734 = tosPtr
-				*(*uintptr)(unsafe.Pointer(v734)) = v733
-				(*TTcl_Obj)(unsafe.Pointer(v733)).FrefCount++
+				v736 = tosPtr
+				*(*uintptr)(unsafe.Pointer(v736)) = v735
+				(*TTcl_Obj)(unsafe.Pointer(v735)).FrefCount++
 			} else {
 				tosPtr += 4
-				v735 = tosPtr
-				*(*uintptr)(unsafe.Pointer(v735)) = *(*uintptr)(unsafe.Pointer(bp + 8))
+				v737 = tosPtr
+				*(*uintptr)(unsafe.Pointer(v737)) = *(*uintptr)(unsafe.Pointer(bp + 8))
 			}
 		}
 		pc += uintptr(libc.Int32FromInt32(1))
@@ -148981,19 +149007,21 @@ _732:
 			}
 		}
 	}
-	goto _731
-_731: /**/
+	goto _734
+_734:
+	goto _733
+_733: /**/
 	; //
 _162:
 	*(*uintptr)(unsafe.Pointer(bp + 12)) = *(*uintptr)(unsafe.Pointer(tosPtr))
 	if (*TTcl_Obj)(unsafe.Pointer(*(*uintptr)(unsafe.Pointer(bp + 12)))).FrefCount > int32(1) {
 		if (*TTcl_Obj)(unsafe.Pointer(*(*uintptr)(unsafe.Pointer(bp + 12)))).Fbytes != 0 {
 			*(*int32)(unsafe.Pointer(bp + 24)) = (*TTcl_Obj)(unsafe.Pointer(*(*uintptr)(unsafe.Pointer(bp + 12)))).Flength
-			v736 = (*TTcl_Obj)(unsafe.Pointer(*(*uintptr)(unsafe.Pointer(bp + 12)))).Fbytes
+			v738 = (*TTcl_Obj)(unsafe.Pointer(*(*uintptr)(unsafe.Pointer(bp + 12)))).Fbytes
 		} else {
-			v736 = XTcl_GetStringFromObj(tls, *(*uintptr)(unsafe.Pointer(bp + 12)), bp+24)
+			v738 = XTcl_GetStringFromObj(tls, *(*uintptr)(unsafe.Pointer(bp + 12)), bp+24)
 		}
-		s1 = v736
+		s1 = v738
 		if XtclFreeObjList == libc.UintptrFromInt32(0) {
 			XTclAllocateFreeObjects(tls)
 		}
@@ -149014,26 +149042,24 @@ _162:
 		}
 		(*TTcl_Obj)(unsafe.Pointer(*(*uintptr)(unsafe.Pointer(bp + 8)))).FtypePtr = libc.UintptrFromInt32(0)
 		if (*TTcl_Obj)(unsafe.Pointer(*(*uintptr)(unsafe.Pointer(bp + 8)))).Fbytes != 0 {
-			v737 = (*TTcl_Obj)(unsafe.Pointer(*(*uintptr)(unsafe.Pointer(bp + 8)))).Fbytes
+			v739 = (*TTcl_Obj)(unsafe.Pointer(*(*uintptr)(unsafe.Pointer(bp + 8)))).Fbytes
 		} else {
-			v737 = XTcl_GetString(tls, *(*uintptr)(unsafe.Pointer(bp + 8)))
+			v739 = XTcl_GetString(tls, *(*uintptr)(unsafe.Pointer(bp + 8)))
 		}
-		*(*int32)(unsafe.Pointer(bp + 24)) = XTcl_UtfToUpper(tls, v737)
+		*(*int32)(unsafe.Pointer(bp + 24)) = XTcl_UtfToUpper(tls, v739)
 		XTcl_SetObjLength(tls, *(*uintptr)(unsafe.Pointer(bp + 8)), *(*int32)(unsafe.Pointer(bp + 24)))
-		goto _739
-	_739:
 		if false {
 			if int32(1) != 0 {
 				if int32(1) > 0 {
-					v740 = *(*uintptr)(unsafe.Pointer(bp + 8))
+					v742 = *(*uintptr)(unsafe.Pointer(bp + 8))
 					tosPtr += 4
-					v741 = tosPtr
-					*(*uintptr)(unsafe.Pointer(v741)) = v740
-					(*TTcl_Obj)(unsafe.Pointer(v740)).FrefCount++
+					v743 = tosPtr
+					*(*uintptr)(unsafe.Pointer(v743)) = v742
+					(*TTcl_Obj)(unsafe.Pointer(v742)).FrefCount++
 				} else {
 					tosPtr += 4
-					v742 = tosPtr
-					*(*uintptr)(unsafe.Pointer(v742)) = *(*uintptr)(unsafe.Pointer(bp + 8))
+					v744 = tosPtr
+					*(*uintptr)(unsafe.Pointer(v744)) = *(*uintptr)(unsafe.Pointer(bp + 8))
 				}
 			}
 			pc += uintptr(libc.Int32FromInt32(1))
@@ -149064,16 +149090,18 @@ _162:
 				}
 			}
 		}
-		goto _738
-	_738: /**/
+		goto _741
+	_741:
+		goto _740
+	_740: /**/
 		//
 	} else {
 		if (*TTcl_Obj)(unsafe.Pointer(*(*uintptr)(unsafe.Pointer(bp + 12)))).Fbytes != 0 {
-			v743 = (*TTcl_Obj)(unsafe.Pointer(*(*uintptr)(unsafe.Pointer(bp + 12)))).Fbytes
+			v745 = (*TTcl_Obj)(unsafe.Pointer(*(*uintptr)(unsafe.Pointer(bp + 12)))).Fbytes
 		} else {
-			v743 = XTcl_GetString(tls, *(*uintptr)(unsafe.Pointer(bp + 12)))
+			v745 = XTcl_GetString(tls, *(*uintptr)(unsafe.Pointer(bp + 12)))
 		}
-		*(*int32)(unsafe.Pointer(bp + 24)) = XTcl_UtfToUpper(tls, v743)
+		*(*int32)(unsafe.Pointer(bp + 24)) = XTcl_UtfToUpper(tls, v745)
 		XTcl_SetObjLength(tls, *(*uintptr)(unsafe.Pointer(bp + 12)), *(*int32)(unsafe.Pointer(bp + 24)))
 		if (*TTcl_Obj)(unsafe.Pointer(*(*uintptr)(unsafe.Pointer(bp + 12)))).FtypePtr != libc.UintptrFromInt32(0) {
 			if (*TTcl_ObjType)(unsafe.Pointer((*TTcl_Obj)(unsafe.Pointer(*(*uintptr)(unsafe.Pointer(bp + 12)))).FtypePtr)).FfreeIntRepProc != libc.UintptrFromInt32(0) {
@@ -149081,20 +149109,18 @@ _162:
 			}
 			(*TTcl_Obj)(unsafe.Pointer(*(*uintptr)(unsafe.Pointer(bp + 12)))).FtypePtr = libc.UintptrFromInt32(0)
 		}
-		goto _745
-	_745:
 		if true {
 			if 0 != 0 {
 				if 0 > 0 {
-					v746 = *(*uintptr)(unsafe.Pointer(bp + 8))
+					v748 = *(*uintptr)(unsafe.Pointer(bp + 8))
 					tosPtr += 4
-					v747 = tosPtr
-					*(*uintptr)(unsafe.Pointer(v747)) = v746
-					(*TTcl_Obj)(unsafe.Pointer(v746)).FrefCount++
+					v749 = tosPtr
+					*(*uintptr)(unsafe.Pointer(v749)) = v748
+					(*TTcl_Obj)(unsafe.Pointer(v748)).FrefCount++
 				} else {
 					tosPtr += 4
-					v748 = tosPtr
-					*(*uintptr)(unsafe.Pointer(v748)) = *(*uintptr)(unsafe.Pointer(bp + 8))
+					v750 = tosPtr
+					*(*uintptr)(unsafe.Pointer(v750)) = *(*uintptr)(unsafe.Pointer(bp + 8))
 				}
 			}
 			pc += uintptr(libc.Int32FromInt32(1))
@@ -149125,8 +149151,10 @@ _162:
 				}
 			}
 		}
-		goto _744
-	_744: /**/
+		goto _747
+	_747:
+		goto _746
+	_746: /**/
 		//
 	}
 _163:
@@ -149134,11 +149162,11 @@ _163:
 	if (*TTcl_Obj)(unsafe.Pointer(*(*uintptr)(unsafe.Pointer(bp + 12)))).FrefCount > int32(1) {
 		if (*TTcl_Obj)(unsafe.Pointer(*(*uintptr)(unsafe.Pointer(bp + 12)))).Fbytes != 0 {
 			*(*int32)(unsafe.Pointer(bp + 24)) = (*TTcl_Obj)(unsafe.Pointer(*(*uintptr)(unsafe.Pointer(bp + 12)))).Flength
-			v749 = (*TTcl_Obj)(unsafe.Pointer(*(*uintptr)(unsafe.Pointer(bp + 12)))).Fbytes
+			v751 = (*TTcl_Obj)(unsafe.Pointer(*(*uintptr)(unsafe.Pointer(bp + 12)))).Fbytes
 		} else {
-			v749 = XTcl_GetStringFromObj(tls, *(*uintptr)(unsafe.Pointer(bp + 12)), bp+24)
+			v751 = XTcl_GetStringFromObj(tls, *(*uintptr)(unsafe.Pointer(bp + 12)), bp+24)
 		}
-		s1 = v749
+		s1 = v751
 		if XtclFreeObjList == libc.UintptrFromInt32(0) {
 			XTclAllocateFreeObjects(tls)
 		}
@@ -149159,26 +149187,24 @@ _163:
 		}
 		(*TTcl_Obj)(unsafe.Pointer(*(*uintptr)(unsafe.Pointer(bp + 8)))).FtypePtr = libc.UintptrFromInt32(0)
 		if (*TTcl_Obj)(unsafe.Pointer(*(*uintptr)(unsafe.Pointer(bp + 8)))).Fbytes != 0 {
-			v750 = (*TTcl_Obj)(unsafe.Pointer(*(*uintptr)(unsafe.Pointer(bp + 8)))).Fbytes
+			v752 = (*TTcl_Obj)(unsafe.Pointer(*(*uintptr)(unsafe.Pointer(bp + 8)))).Fbytes
 		} else {
-			v750 = XTcl_GetString(tls, *(*uintptr)(unsafe.Pointer(bp + 8)))
+			v752 = XTcl_GetString(tls, *(*uintptr)(unsafe.Pointer(bp + 8)))
 		}
-		*(*int32)(unsafe.Pointer(bp + 24)) = XTcl_UtfToLower(tls, v750)
+		*(*int32)(unsafe.Pointer(bp + 24)) = XTcl_UtfToLower(tls, v752)
 		XTcl_SetObjLength(tls, *(*uintptr)(unsafe.Pointer(bp + 8)), *(*int32)(unsafe.Pointer(bp + 24)))
-		goto _752
-	_752:
 		if false {
 			if int32(1) != 0 {
 				if int32(1) > 0 {
-					v753 = *(*uintptr)(unsafe.Pointer(bp + 8))
+					v755 = *(*uintptr)(unsafe.Pointer(bp + 8))
 					tosPtr += 4
-					v754 = tosPtr
-					*(*uintptr)(unsafe.Pointer(v754)) = v753
-					(*TTcl_Obj)(unsafe.Pointer(v753)).FrefCount++
+					v756 = tosPtr
+					*(*uintptr)(unsafe.Pointer(v756)) = v755
+					(*TTcl_Obj)(unsafe.Pointer(v755)).FrefCount++
 				} else {
 					tosPtr += 4
-					v755 = tosPtr
-					*(*uintptr)(unsafe.Pointer(v755)) = *(*uintptr)(unsafe.Pointer(bp + 8))
+					v757 = tosPtr
+					*(*uintptr)(unsafe.Pointer(v757)) = *(*uintptr)(unsafe.Pointer(bp + 8))
 				}
 			}
 			pc += uintptr(libc.Int32FromInt32(1))
@@ -149209,16 +149235,18 @@ _163:
 				}
 			}
 		}
-		goto _751
-	_751: /**/
+		goto _754
+	_754:
+		goto _753
+	_753: /**/
 		//
 	} else {
 		if (*TTcl_Obj)(unsafe.Pointer(*(*uintptr)(unsafe.Pointer(bp + 12)))).Fbytes != 0 {
-			v756 = (*TTcl_Obj)(unsafe.Pointer(*(*uintptr)(unsafe.Pointer(bp + 12)))).Fbytes
+			v758 = (*TTcl_Obj)(unsafe.Pointer(*(*uintptr)(unsafe.Pointer(bp + 12)))).Fbytes
 		} else {
-			v756 = XTcl_GetString(tls, *(*uintptr)(unsafe.Pointer(bp + 12)))
+			v758 = XTcl_GetString(tls, *(*uintptr)(unsafe.Pointer(bp + 12)))
 		}
-		*(*int32)(unsafe.Pointer(bp + 24)) = XTcl_UtfToLower(tls, v756)
+		*(*int32)(unsafe.Pointer(bp + 24)) = XTcl_UtfToLower(tls, v758)
 		XTcl_SetObjLength(tls, *(*uintptr)(unsafe.Pointer(bp + 12)), *(*int32)(unsafe.Pointer(bp + 24)))
 		if (*TTcl_Obj)(unsafe.Pointer(*(*uintptr)(unsafe.Pointer(bp + 12)))).FtypePtr != libc.UintptrFromInt32(0) {
 			if (*TTcl_ObjType)(unsafe.Pointer((*TTcl_Obj)(unsafe.Pointer(*(*uintptr)(unsafe.Pointer(bp + 12)))).FtypePtr)).FfreeIntRepProc != libc.UintptrFromInt32(0) {
@@ -149226,20 +149254,18 @@ _163:
 			}
 			(*TTcl_Obj)(unsafe.Pointer(*(*uintptr)(unsafe.Pointer(bp + 12)))).FtypePtr = libc.UintptrFromInt32(0)
 		}
-		goto _758
-	_758:
 		if true {
 			if 0 != 0 {
 				if 0 > 0 {
-					v759 = *(*uintptr)(unsafe.Pointer(bp + 8))
+					v761 = *(*uintptr)(unsafe.Pointer(bp + 8))
 					tosPtr += 4
-					v760 = tosPtr
-					*(*uintptr)(unsafe.Pointer(v760)) = v759
-					(*TTcl_Obj)(unsafe.Pointer(v759)).FrefCount++
+					v762 = tosPtr
+					*(*uintptr)(unsafe.Pointer(v762)) = v761
+					(*TTcl_Obj)(unsafe.Pointer(v761)).FrefCount++
 				} else {
 					tosPtr += 4
-					v761 = tosPtr
-					*(*uintptr)(unsafe.Pointer(v761)) = *(*uintptr)(unsafe.Pointer(bp + 8))
+					v763 = tosPtr
+					*(*uintptr)(unsafe.Pointer(v763)) = *(*uintptr)(unsafe.Pointer(bp + 8))
 				}
 			}
 			pc += uintptr(libc.Int32FromInt32(1))
@@ -149270,8 +149296,10 @@ _163:
 				}
 			}
 		}
-		goto _757
-	_757: /**/
+		goto _760
+	_760:
+		goto _759
+	_759: /**/
 		//
 	}
 _164:
@@ -149279,11 +149307,11 @@ _164:
 	if (*TTcl_Obj)(unsafe.Pointer(*(*uintptr)(unsafe.Pointer(bp + 12)))).FrefCount > int32(1) {
 		if (*TTcl_Obj)(unsafe.Pointer(*(*uintptr)(unsafe.Pointer(bp + 12)))).Fbytes != 0 {
 			*(*int32)(unsafe.Pointer(bp + 24)) = (*TTcl_Obj)(unsafe.Pointer(*(*uintptr)(unsafe.Pointer(bp + 12)))).Flength
-			v762 = (*TTcl_Obj)(unsafe.Pointer(*(*uintptr)(unsafe.Pointer(bp + 12)))).Fbytes
+			v764 = (*TTcl_Obj)(unsafe.Pointer(*(*uintptr)(unsafe.Pointer(bp + 12)))).Fbytes
 		} else {
-			v762 = XTcl_GetStringFromObj(tls, *(*uintptr)(unsafe.Pointer(bp + 12)), bp+24)
+			v764 = XTcl_GetStringFromObj(tls, *(*uintptr)(unsafe.Pointer(bp + 12)), bp+24)
 		}
-		s1 = v762
+		s1 = v764
 		if XtclFreeObjList == libc.UintptrFromInt32(0) {
 			XTclAllocateFreeObjects(tls)
 		}
@@ -149304,26 +149332,24 @@ _164:
 		}
 		(*TTcl_Obj)(unsafe.Pointer(*(*uintptr)(unsafe.Pointer(bp + 8)))).FtypePtr = libc.UintptrFromInt32(0)
 		if (*TTcl_Obj)(unsafe.Pointer(*(*uintptr)(unsafe.Pointer(bp + 8)))).Fbytes != 0 {
-			v763 = (*TTcl_Obj)(unsafe.Pointer(*(*uintptr)(unsafe.Pointer(bp + 8)))).Fbytes
+			v765 = (*TTcl_Obj)(unsafe.Pointer(*(*uintptr)(unsafe.Pointer(bp + 8)))).Fbytes
 		} else {
-			v763 = XTcl_GetString(tls, *(*uintptr)(unsafe.Pointer(bp + 8)))
+			v765 = XTcl_GetString(tls, *(*uintptr)(unsafe.Pointer(bp + 8)))
 		}
-		*(*int32)(unsafe.Pointer(bp + 24)) = XTcl_UtfToTitle(tls, v763)
+		*(*int32)(unsafe.Pointer(bp + 24)) = XTcl_UtfToTitle(tls, v765)
 		XTcl_SetObjLength(tls, *(*uintptr)(unsafe.Pointer(bp + 8)), *(*int32)(unsafe.Pointer(bp + 24)))
-		goto _765
-	_765:
 		if false {
 			if int32(1) != 0 {
 				if int32(1) > 0 {
-					v766 = *(*uintptr)(unsafe.Pointer(bp + 8))
+					v768 = *(*uintptr)(unsafe.Pointer(bp + 8))
 					tosPtr += 4
-					v767 = tosPtr
-					*(*uintptr)(unsafe.Pointer(v767)) = v766
-					(*TTcl_Obj)(unsafe.Pointer(v766)).FrefCount++
+					v769 = tosPtr
+					*(*uintptr)(unsafe.Pointer(v769)) = v768
+					(*TTcl_Obj)(unsafe.Pointer(v768)).FrefCount++
 				} else {
 					tosPtr += 4
-					v768 = tosPtr
-					*(*uintptr)(unsafe.Pointer(v768)) = *(*uintptr)(unsafe.Pointer(bp + 8))
+					v770 = tosPtr
+					*(*uintptr)(unsafe.Pointer(v770)) = *(*uintptr)(unsafe.Pointer(bp + 8))
 				}
 			}
 			pc += uintptr(libc.Int32FromInt32(1))
@@ -149354,16 +149380,18 @@ _164:
 				}
 			}
 		}
-		goto _764
-	_764: /**/
+		goto _767
+	_767:
+		goto _766
+	_766: /**/
 		//
 	} else {
 		if (*TTcl_Obj)(unsafe.Pointer(*(*uintptr)(unsafe.Pointer(bp + 12)))).Fbytes != 0 {
-			v769 = (*TTcl_Obj)(unsafe.Pointer(*(*uintptr)(unsafe.Pointer(bp + 12)))).Fbytes
+			v771 = (*TTcl_Obj)(unsafe.Pointer(*(*uintptr)(unsafe.Pointer(bp + 12)))).Fbytes
 		} else {
-			v769 = XTcl_GetString(tls, *(*uintptr)(unsafe.Pointer(bp + 12)))
+			v771 = XTcl_GetString(tls, *(*uintptr)(unsafe.Pointer(bp + 12)))
 		}
-		*(*int32)(unsafe.Pointer(bp + 24)) = XTcl_UtfToTitle(tls, v769)
+		*(*int32)(unsafe.Pointer(bp + 24)) = XTcl_UtfToTitle(tls, v771)
 		XTcl_SetObjLength(tls, *(*uintptr)(unsafe.Pointer(bp + 12)), *(*int32)(unsafe.Pointer(bp + 24)))
 		if (*TTcl_Obj)(unsafe.Pointer(*(*uintptr)(unsafe.Pointer(bp + 12)))).FtypePtr != libc.UintptrFromInt32(0) {
 			if (*TTcl_ObjType)(unsafe.Pointer((*TTcl_Obj)(unsafe.Pointer(*(*uintptr)(unsafe.Pointer(bp + 12)))).FtypePtr)).FfreeIntRepProc != libc.UintptrFromInt32(0) {
@@ -149371,20 +149399,18 @@ _164:
 			}
 			(*TTcl_Obj)(unsafe.Pointer(*(*uintptr)(unsafe.Pointer(bp + 12)))).FtypePtr = libc.UintptrFromInt32(0)
 		}
-		goto _771
-	_771:
 		if true {
 			if 0 != 0 {
 				if 0 > 0 {
-					v772 = *(*uintptr)(unsafe.Pointer(bp + 8))
+					v774 = *(*uintptr)(unsafe.Pointer(bp + 8))
 					tosPtr += 4
-					v773 = tosPtr
-					*(*uintptr)(unsafe.Pointer(v773)) = v772
-					(*TTcl_Obj)(unsafe.Pointer(v772)).FrefCount++
+					v775 = tosPtr
+					*(*uintptr)(unsafe.Pointer(v775)) = v774
+					(*TTcl_Obj)(unsafe.Pointer(v774)).FrefCount++
 				} else {
 					tosPtr += 4
-					v774 = tosPtr
-					*(*uintptr)(unsafe.Pointer(v774)) = *(*uintptr)(unsafe.Pointer(bp + 8))
+					v776 = tosPtr
+					*(*uintptr)(unsafe.Pointer(v776)) = *(*uintptr)(unsafe.Pointer(bp + 8))
 				}
 			}
 			pc += uintptr(libc.Int32FromInt32(1))
@@ -149415,8 +149441,10 @@ _164:
 				}
 			}
 		}
-		goto _770
-	_770: /**/
+		goto _773
+	_773:
+		goto _772
+	_772: /**/
 		//
 	}
 _165:
@@ -149428,11 +149456,11 @@ _165:
 	*(*int32)(unsafe.Pointer(bp + 24)) = XTcl_GetCharLength(tls, *(*uintptr)(unsafe.Pointer(bp + 12)))
 	if (*TTcl_Obj)(unsafe.Pointer(value2Ptr)).FtypePtr == uintptr(unsafe.Pointer(&XtclIntType)) {
 		*(*int32)(unsafe.Pointer(bp + 72)) = (*TTcl_Obj)(unsafe.Pointer(value2Ptr)).FinternalRep.FlongValue
-		v775 = libc.Int32FromInt32(m_TCL_OK)
+		v777 = libc.Int32FromInt32(m_TCL_OK)
 	} else {
-		v775 = XTclGetIntForIndex(tls, interp, value2Ptr, *(*int32)(unsafe.Pointer(bp + 24))-int32(1), bp+72)
+		v777 = XTclGetIntForIndex(tls, interp, value2Ptr, *(*int32)(unsafe.Pointer(bp + 24))-int32(1), bp+72)
 	}
-	if v775 != m_TCL_OK {
+	if v777 != m_TCL_OK {
 		goto gotError
 	}
 	if *(*int32)(unsafe.Pointer(bp + 72)) < 0 || *(*int32)(unsafe.Pointer(bp + 72)) >= *(*int32)(unsafe.Pointer(bp + 24)) {
@@ -149462,20 +149490,18 @@ _165:
 			}
 		}
 	}
-	goto _777
-_777:
 	if false {
 		if int32(1) != 0 {
 			if int32(1) > 0 {
-				v778 = *(*uintptr)(unsafe.Pointer(bp + 8))
+				v780 = *(*uintptr)(unsafe.Pointer(bp + 8))
 				tosPtr += 4
-				v779 = tosPtr
-				*(*uintptr)(unsafe.Pointer(v779)) = v778
-				(*TTcl_Obj)(unsafe.Pointer(v778)).FrefCount++
+				v781 = tosPtr
+				*(*uintptr)(unsafe.Pointer(v781)) = v780
+				(*TTcl_Obj)(unsafe.Pointer(v780)).FrefCount++
 			} else {
 				tosPtr += 4
-				v780 = tosPtr
-				*(*uintptr)(unsafe.Pointer(v780)) = *(*uintptr)(unsafe.Pointer(bp + 8))
+				v782 = tosPtr
+				*(*uintptr)(unsafe.Pointer(v782)) = *(*uintptr)(unsafe.Pointer(bp + 8))
 			}
 		}
 		pc += uintptr(libc.Int32FromInt32(1))
@@ -149506,26 +149532,28 @@ _777:
 			}
 		}
 	}
-	goto _776
-_776: /**/
+	goto _779
+_779:
+	goto _778
+_778: /**/
 	; //
 _166:
 	*(*int32)(unsafe.Pointer(bp + 24)) = XTcl_GetCharLength(tls, *(*uintptr)(unsafe.Pointer(tosPtr - uintptr(libc.Int32FromInt32(2))*4))) - int32(1)
 	if (*TTcl_Obj)(unsafe.Pointer(*(*uintptr)(unsafe.Pointer(tosPtr - libc.UintptrFromInt32(1)*4)))).FtypePtr == uintptr(unsafe.Pointer(&XtclIntType)) {
 		*(*int32)(unsafe.Pointer(bp + 76)) = (*TTcl_Obj)(unsafe.Pointer(*(*uintptr)(unsafe.Pointer(tosPtr - libc.UintptrFromInt32(1)*4)))).FinternalRep.FlongValue
-		v781 = libc.Int32FromInt32(m_TCL_OK)
+		v783 = libc.Int32FromInt32(m_TCL_OK)
 	} else {
-		v781 = XTclGetIntForIndex(tls, interp, *(*uintptr)(unsafe.Pointer(tosPtr - libc.UintptrFromInt32(1)*4)), *(*int32)(unsafe.Pointer(bp + 24)), bp+76)
+		v783 = XTclGetIntForIndex(tls, interp, *(*uintptr)(unsafe.Pointer(tosPtr - libc.UintptrFromInt32(1)*4)), *(*int32)(unsafe.Pointer(bp + 24)), bp+76)
 	}
-	if v783 = v781 != m_TCL_OK; !v783 {
+	if v785 = v783 != m_TCL_OK; !v785 {
 		if (*TTcl_Obj)(unsafe.Pointer(*(*uintptr)(unsafe.Pointer(tosPtr)))).FtypePtr == uintptr(unsafe.Pointer(&XtclIntType)) {
 			*(*int32)(unsafe.Pointer(bp + 80)) = (*TTcl_Obj)(unsafe.Pointer(*(*uintptr)(unsafe.Pointer(tosPtr)))).FinternalRep.FlongValue
-			v782 = libc.Int32FromInt32(m_TCL_OK)
+			v784 = libc.Int32FromInt32(m_TCL_OK)
 		} else {
-			v782 = XTclGetIntForIndex(tls, interp, *(*uintptr)(unsafe.Pointer(tosPtr)), *(*int32)(unsafe.Pointer(bp + 24)), bp+80)
+			v784 = XTclGetIntForIndex(tls, interp, *(*uintptr)(unsafe.Pointer(tosPtr)), *(*int32)(unsafe.Pointer(bp + 24)), bp+80)
 		}
 	}
-	if v783 || v782 != m_TCL_OK {
+	if v785 || v784 != m_TCL_OK {
 		goto gotError
 	}
 	if *(*int32)(unsafe.Pointer(bp + 76)) < 0 {
@@ -149567,20 +149595,18 @@ _167:
 	*(*int32)(unsafe.Pointer(bp + 24)) = XTcl_GetCharLength(tls, *(*uintptr)(unsafe.Pointer(bp + 12)))
 	/* Every range of an empty value is an empty value */
 	if *(*int32)(unsafe.Pointer(bp + 24)) == 0 {
-		goto _785
-	_785:
 		if true {
 			if 0 != 0 {
 				if 0 > 0 {
-					v786 = *(*uintptr)(unsafe.Pointer(bp + 8))
+					v788 = *(*uintptr)(unsafe.Pointer(bp + 8))
 					tosPtr += 4
-					v787 = tosPtr
-					*(*uintptr)(unsafe.Pointer(v787)) = v786
-					(*TTcl_Obj)(unsafe.Pointer(v786)).FrefCount++
+					v789 = tosPtr
+					*(*uintptr)(unsafe.Pointer(v789)) = v788
+					(*TTcl_Obj)(unsafe.Pointer(v788)).FrefCount++
 				} else {
 					tosPtr += 4
-					v788 = tosPtr
-					*(*uintptr)(unsafe.Pointer(v788)) = *(*uintptr)(unsafe.Pointer(bp + 8))
+					v790 = tosPtr
+					*(*uintptr)(unsafe.Pointer(v790)) = *(*uintptr)(unsafe.Pointer(bp + 8))
 				}
 			}
 			pc += uintptr(libc.Int32FromInt32(9))
@@ -149611,8 +149637,10 @@ _167:
 				}
 			}
 		}
-		goto _784
-	_784: /**/ //
+		goto _787
+	_787:
+		goto _786
+	_786: /**/ //
 	}
 	/* Decode index operands. */
 	/*
@@ -149652,11 +149680,11 @@ _167:
 		*(*int32)(unsafe.Pointer(bp + 76)) = 0
 	}
 	if !(*(*int32)(unsafe.Pointer(bp + 76)) <= *(*int32)(unsafe.Pointer(bp + 80))) {
-		goto _789
+		goto _791
 	}
 	*(*uintptr)(unsafe.Pointer(bp + 8)) = XTcl_GetRange(tls, *(*uintptr)(unsafe.Pointer(bp + 12)), *(*int32)(unsafe.Pointer(bp + 76)), *(*int32)(unsafe.Pointer(bp + 80)))
-	goto _790
-_789:
+	goto _792
+_791:
 emptyRange:
 	if XtclFreeObjList == libc.UintptrFromInt32(0) {
 		XTclAllocateFreeObjects(tls)
@@ -149670,21 +149698,19 @@ emptyRange:
 	(*TTcl_Obj)(unsafe.Pointer(*(*uintptr)(unsafe.Pointer(bp + 8)))).Fbytes = XtclEmptyStringRep
 	(*TTcl_Obj)(unsafe.Pointer(*(*uintptr)(unsafe.Pointer(bp + 8)))).Flength = 0
 	(*TTcl_Obj)(unsafe.Pointer(*(*uintptr)(unsafe.Pointer(bp + 8)))).FtypePtr = libc.UintptrFromInt32(0)
-_790:
-	goto _792
 _792:
 	if false {
 		if int32(1) != 0 {
 			if int32(1) > 0 {
-				v793 = *(*uintptr)(unsafe.Pointer(bp + 8))
+				v795 = *(*uintptr)(unsafe.Pointer(bp + 8))
 				tosPtr += 4
-				v794 = tosPtr
-				*(*uintptr)(unsafe.Pointer(v794)) = v793
-				(*TTcl_Obj)(unsafe.Pointer(v793)).FrefCount++
+				v796 = tosPtr
+				*(*uintptr)(unsafe.Pointer(v796)) = v795
+				(*TTcl_Obj)(unsafe.Pointer(v795)).FrefCount++
 			} else {
 				tosPtr += 4
-				v795 = tosPtr
-				*(*uintptr)(unsafe.Pointer(v795)) = *(*uintptr)(unsafe.Pointer(bp + 8))
+				v797 = tosPtr
+				*(*uintptr)(unsafe.Pointer(v797)) = *(*uintptr)(unsafe.Pointer(bp + 8))
 			}
 		}
 		pc += uintptr(libc.Int32FromInt32(9))
@@ -149715,34 +149741,36 @@ _792:
 			}
 		}
 	}
-	goto _791
-_791: /**/
+	goto _794
+_794:
+	goto _793
+_793: /**/
 	; //
 _168:
-	v796 = tosPtr
+	v798 = tosPtr
 	tosPtr -= 4
-	value3Ptr = *(*uintptr)(unsafe.Pointer(v796))
+	value3Ptr = *(*uintptr)(unsafe.Pointer(v798))
 	*(*uintptr)(unsafe.Pointer(bp + 12)) = *(*uintptr)(unsafe.Pointer(tosPtr - uintptr(libc.Int32FromInt32(2))*4))
 	endIdx = XTcl_GetCharLength(tls, *(*uintptr)(unsafe.Pointer(bp + 12))) - int32(1)
 	if (*TTcl_Obj)(unsafe.Pointer(*(*uintptr)(unsafe.Pointer(tosPtr - libc.UintptrFromInt32(1)*4)))).FtypePtr == uintptr(unsafe.Pointer(&XtclIntType)) {
 		*(*int32)(unsafe.Pointer(bp + 76)) = (*TTcl_Obj)(unsafe.Pointer(*(*uintptr)(unsafe.Pointer(tosPtr - libc.UintptrFromInt32(1)*4)))).FinternalRep.FlongValue
-		v797 = libc.Int32FromInt32(m_TCL_OK)
+		v799 = libc.Int32FromInt32(m_TCL_OK)
 	} else {
-		v797 = XTclGetIntForIndex(tls, interp, *(*uintptr)(unsafe.Pointer(tosPtr - libc.UintptrFromInt32(1)*4)), endIdx, bp+76)
+		v799 = XTclGetIntForIndex(tls, interp, *(*uintptr)(unsafe.Pointer(tosPtr - libc.UintptrFromInt32(1)*4)), endIdx, bp+76)
 	}
-	if v799 = v797 != m_TCL_OK; !v799 {
+	if v801 = v799 != m_TCL_OK; !v801 {
 		if (*TTcl_Obj)(unsafe.Pointer(*(*uintptr)(unsafe.Pointer(tosPtr)))).FtypePtr == uintptr(unsafe.Pointer(&XtclIntType)) {
 			*(*int32)(unsafe.Pointer(bp + 80)) = (*TTcl_Obj)(unsafe.Pointer(*(*uintptr)(unsafe.Pointer(tosPtr)))).FinternalRep.FlongValue
-			v798 = libc.Int32FromInt32(m_TCL_OK)
+			v800 = libc.Int32FromInt32(m_TCL_OK)
 		} else {
-			v798 = XTclGetIntForIndex(tls, interp, *(*uintptr)(unsafe.Pointer(tosPtr)), endIdx, bp+80)
+			v800 = XTclGetIntForIndex(tls, interp, *(*uintptr)(unsafe.Pointer(tosPtr)), endIdx, bp+80)
 		}
 	}
-	if v799 || v798 != m_TCL_OK {
-		v801 = value3Ptr
-		v800 = *(*int32)(unsafe.Pointer(v801))
-		*(*int32)(unsafe.Pointer(v801))--
-		if !(v800 > int32(1)) {
+	if v801 || v800 != m_TCL_OK {
+		v803 = value3Ptr
+		v802 = *(*int32)(unsafe.Pointer(v803))
+		*(*int32)(unsafe.Pointer(v803))--
+		if !(v802 > int32(1)) {
 			if !((*TTcl_Obj)(unsafe.Pointer(value3Ptr)).FtypePtr != 0) || !((*TTcl_ObjType)(unsafe.Pointer((*TTcl_Obj)(unsafe.Pointer(value3Ptr)).FtypePtr)).FfreeIntRepProc != 0) {
 				if (*TTcl_Obj)(unsafe.Pointer(value3Ptr)).Fbytes != 0 && (*TTcl_Obj)(unsafe.Pointer(value3Ptr)).Fbytes != XtclEmptyStringRep {
 					XTclpFree(tls, (*TTcl_Obj)(unsafe.Pointer(value3Ptr)).Fbytes)
@@ -149759,10 +149787,10 @@ _168:
 		}
 		goto gotError
 	}
-	v803 = *(*uintptr)(unsafe.Pointer(tosPtr))
-	v802 = *(*int32)(unsafe.Pointer(v803))
-	*(*int32)(unsafe.Pointer(v803))--
-	if !(v802 > int32(1)) {
+	v805 = *(*uintptr)(unsafe.Pointer(tosPtr))
+	v804 = *(*int32)(unsafe.Pointer(v805))
+	*(*int32)(unsafe.Pointer(v805))--
+	if !(v804 > int32(1)) {
 		if !((*TTcl_Obj)(unsafe.Pointer(*(*uintptr)(unsafe.Pointer(tosPtr)))).FtypePtr != 0) || !((*TTcl_ObjType)(unsafe.Pointer((*TTcl_Obj)(unsafe.Pointer(*(*uintptr)(unsafe.Pointer(tosPtr)))).FtypePtr)).FfreeIntRepProc != 0) {
 			if (*TTcl_Obj)(unsafe.Pointer(*(*uintptr)(unsafe.Pointer(tosPtr)))).Fbytes != 0 && (*TTcl_Obj)(unsafe.Pointer(*(*uintptr)(unsafe.Pointer(tosPtr)))).Fbytes != XtclEmptyStringRep {
 				XTclpFree(tls, (*TTcl_Obj)(unsafe.Pointer(*(*uintptr)(unsafe.Pointer(tosPtr)))).Fbytes)
@@ -149777,13 +149805,13 @@ _168:
 			XTclFreeObj(tls, *(*uintptr)(unsafe.Pointer(tosPtr)))
 		}
 	}
-	v804 = tosPtr
+	v806 = tosPtr
 	tosPtr -= 4
-	_ = *(*uintptr)(unsafe.Pointer(v804))
-	v806 = *(*uintptr)(unsafe.Pointer(tosPtr))
-	v805 = *(*int32)(unsafe.Pointer(v806))
-	*(*int32)(unsafe.Pointer(v806))--
-	if !(v805 > int32(1)) {
+	_ = *(*uintptr)(unsafe.Pointer(v806))
+	v808 = *(*uintptr)(unsafe.Pointer(tosPtr))
+	v807 = *(*int32)(unsafe.Pointer(v808))
+	*(*int32)(unsafe.Pointer(v808))--
+	if !(v807 > int32(1)) {
 		if !((*TTcl_Obj)(unsafe.Pointer(*(*uintptr)(unsafe.Pointer(tosPtr)))).FtypePtr != 0) || !((*TTcl_ObjType)(unsafe.Pointer((*TTcl_Obj)(unsafe.Pointer(*(*uintptr)(unsafe.Pointer(tosPtr)))).FtypePtr)).FfreeIntRepProc != 0) {
 			if (*TTcl_Obj)(unsafe.Pointer(*(*uintptr)(unsafe.Pointer(tosPtr)))).Fbytes != 0 && (*TTcl_Obj)(unsafe.Pointer(*(*uintptr)(unsafe.Pointer(tosPtr)))).Fbytes != XtclEmptyStringRep {
 				XTclpFree(tls, (*TTcl_Obj)(unsafe.Pointer(*(*uintptr)(unsafe.Pointer(tosPtr)))).Fbytes)
@@ -149798,14 +149826,14 @@ _168:
 			XTclFreeObj(tls, *(*uintptr)(unsafe.Pointer(tosPtr)))
 		}
 	}
-	v807 = tosPtr
+	v809 = tosPtr
 	tosPtr -= 4
-	_ = *(*uintptr)(unsafe.Pointer(v807))
+	_ = *(*uintptr)(unsafe.Pointer(v809))
 	if *(*int32)(unsafe.Pointer(bp + 80)) < 0 || *(*int32)(unsafe.Pointer(bp + 76)) > endIdx || *(*int32)(unsafe.Pointer(bp + 80)) < *(*int32)(unsafe.Pointer(bp + 76)) {
-		v809 = value3Ptr
-		v808 = *(*int32)(unsafe.Pointer(v809))
-		*(*int32)(unsafe.Pointer(v809))--
-		if !(v808 > int32(1)) {
+		v811 = value3Ptr
+		v810 = *(*int32)(unsafe.Pointer(v811))
+		*(*int32)(unsafe.Pointer(v811))--
+		if !(v810 > int32(1)) {
 			if !((*TTcl_Obj)(unsafe.Pointer(value3Ptr)).FtypePtr != 0) || !((*TTcl_ObjType)(unsafe.Pointer((*TTcl_Obj)(unsafe.Pointer(value3Ptr)).FtypePtr)).FfreeIntRepProc != 0) {
 				if (*TTcl_Obj)(unsafe.Pointer(value3Ptr)).Fbytes != 0 && (*TTcl_Obj)(unsafe.Pointer(value3Ptr)).Fbytes != XtclEmptyStringRep {
 					XTclpFree(tls, (*TTcl_Obj)(unsafe.Pointer(value3Ptr)).Fbytes)
@@ -149820,20 +149848,18 @@ _168:
 				XTclFreeObj(tls, value3Ptr)
 			}
 		}
-		goto _811
-	_811:
 		if true {
 			if 0 != 0 {
 				if 0 > 0 {
-					v812 = *(*uintptr)(unsafe.Pointer(bp + 8))
+					v814 = *(*uintptr)(unsafe.Pointer(bp + 8))
 					tosPtr += 4
-					v813 = tosPtr
-					*(*uintptr)(unsafe.Pointer(v813)) = v812
-					(*TTcl_Obj)(unsafe.Pointer(v812)).FrefCount++
+					v815 = tosPtr
+					*(*uintptr)(unsafe.Pointer(v815)) = v814
+					(*TTcl_Obj)(unsafe.Pointer(v814)).FrefCount++
 				} else {
 					tosPtr += 4
-					v814 = tosPtr
-					*(*uintptr)(unsafe.Pointer(v814)) = *(*uintptr)(unsafe.Pointer(bp + 8))
+					v816 = tosPtr
+					*(*uintptr)(unsafe.Pointer(v816)) = *(*uintptr)(unsafe.Pointer(bp + 8))
 				}
 			}
 			pc += uintptr(libc.Int32FromInt32(1))
@@ -149864,8 +149890,10 @@ _168:
 				}
 			}
 		}
-		goto _810
-	_810: /**/ //
+		goto _813
+	_813:
+		goto _812
+	_812: /**/ //
 	}
 	if *(*int32)(unsafe.Pointer(bp + 76)) < 0 {
 		*(*int32)(unsafe.Pointer(bp + 76)) = 0
@@ -149874,10 +149902,10 @@ _168:
 		*(*int32)(unsafe.Pointer(bp + 80)) = endIdx
 	}
 	if *(*int32)(unsafe.Pointer(bp + 76)) == 0 && *(*int32)(unsafe.Pointer(bp + 80)) == endIdx {
-		v816 = *(*uintptr)(unsafe.Pointer(tosPtr))
-		v815 = *(*int32)(unsafe.Pointer(v816))
-		*(*int32)(unsafe.Pointer(v816))--
-		if !(v815 > int32(1)) {
+		v818 = *(*uintptr)(unsafe.Pointer(tosPtr))
+		v817 = *(*int32)(unsafe.Pointer(v818))
+		*(*int32)(unsafe.Pointer(v818))--
+		if !(v817 > int32(1)) {
 			if !((*TTcl_Obj)(unsafe.Pointer(*(*uintptr)(unsafe.Pointer(tosPtr)))).FtypePtr != 0) || !((*TTcl_ObjType)(unsafe.Pointer((*TTcl_Obj)(unsafe.Pointer(*(*uintptr)(unsafe.Pointer(tosPtr)))).FtypePtr)).FfreeIntRepProc != 0) {
 				if (*TTcl_Obj)(unsafe.Pointer(*(*uintptr)(unsafe.Pointer(tosPtr)))).Fbytes != 0 && (*TTcl_Obj)(unsafe.Pointer(*(*uintptr)(unsafe.Pointer(tosPtr)))).Fbytes != XtclEmptyStringRep {
 					XTclpFree(tls, (*TTcl_Obj)(unsafe.Pointer(*(*uintptr)(unsafe.Pointer(tosPtr)))).Fbytes)
@@ -149893,20 +149921,18 @@ _168:
 			}
 		}
 		*(*uintptr)(unsafe.Pointer(tosPtr)) = value3Ptr
-		goto _818
-	_818:
 		if true {
 			if 0 != 0 {
 				if 0 > 0 {
-					v819 = *(*uintptr)(unsafe.Pointer(bp + 8))
+					v821 = *(*uintptr)(unsafe.Pointer(bp + 8))
 					tosPtr += 4
-					v820 = tosPtr
-					*(*uintptr)(unsafe.Pointer(v820)) = v819
-					(*TTcl_Obj)(unsafe.Pointer(v819)).FrefCount++
+					v822 = tosPtr
+					*(*uintptr)(unsafe.Pointer(v822)) = v821
+					(*TTcl_Obj)(unsafe.Pointer(v821)).FrefCount++
 				} else {
 					tosPtr += 4
-					v821 = tosPtr
-					*(*uintptr)(unsafe.Pointer(v821)) = *(*uintptr)(unsafe.Pointer(bp + 8))
+					v823 = tosPtr
+					*(*uintptr)(unsafe.Pointer(v823)) = *(*uintptr)(unsafe.Pointer(bp + 8))
 				}
 			}
 			pc += uintptr(libc.Int32FromInt32(1))
@@ -149937,8 +149963,10 @@ _168:
 				}
 			}
 		}
-		goto _817
-	_817: /**/
+		goto _820
+	_820:
+		goto _819
+	_819: /**/
 		//
 	}
 	*(*int32)(unsafe.Pointer(bp + 112)) = XTcl_GetCharLength(tls, value3Ptr)
@@ -149963,10 +149991,10 @@ _168:
 			libc.Xmemcpy(tls, ustring1+uintptr(*(*int32)(unsafe.Pointer(bp + 76)))*2, ustring2, uint32(*(*int32)(unsafe.Pointer(bp + 112)))*uint32(2))
 		}
 		XTcl_InvalidateStringRep(tls, *(*uintptr)(unsafe.Pointer(bp + 8)))
-		v823 = value3Ptr
-		v822 = *(*int32)(unsafe.Pointer(v823))
-		*(*int32)(unsafe.Pointer(v823))--
-		if !(v822 > int32(1)) {
+		v825 = value3Ptr
+		v824 = *(*int32)(unsafe.Pointer(v825))
+		*(*int32)(unsafe.Pointer(v825))--
+		if !(v824 > int32(1)) {
 			if !((*TTcl_Obj)(unsafe.Pointer(value3Ptr)).FtypePtr != 0) || !((*TTcl_ObjType)(unsafe.Pointer((*TTcl_Obj)(unsafe.Pointer(value3Ptr)).FtypePtr)).FfreeIntRepProc != 0) {
 				if (*TTcl_Obj)(unsafe.Pointer(value3Ptr)).Fbytes != 0 && (*TTcl_Obj)(unsafe.Pointer(value3Ptr)).Fbytes != XtclEmptyStringRep {
 					XTclpFree(tls, (*TTcl_Obj)(unsafe.Pointer(value3Ptr)).Fbytes)
@@ -149982,20 +150010,18 @@ _168:
 			}
 		}
 		if *(*uintptr)(unsafe.Pointer(bp + 8)) == *(*uintptr)(unsafe.Pointer(bp + 12)) {
-			goto _825
-		_825:
 			if true {
 				if 0 != 0 {
 					if 0 > 0 {
-						v826 = *(*uintptr)(unsafe.Pointer(bp + 8))
+						v828 = *(*uintptr)(unsafe.Pointer(bp + 8))
 						tosPtr += 4
-						v827 = tosPtr
-						*(*uintptr)(unsafe.Pointer(v827)) = v826
-						(*TTcl_Obj)(unsafe.Pointer(v826)).FrefCount++
+						v829 = tosPtr
+						*(*uintptr)(unsafe.Pointer(v829)) = v828
+						(*TTcl_Obj)(unsafe.Pointer(v828)).FrefCount++
 					} else {
 						tosPtr += 4
-						v828 = tosPtr
-						*(*uintptr)(unsafe.Pointer(v828)) = *(*uintptr)(unsafe.Pointer(bp + 8))
+						v830 = tosPtr
+						*(*uintptr)(unsafe.Pointer(v830)) = *(*uintptr)(unsafe.Pointer(bp + 8))
 					}
 				}
 				pc += uintptr(libc.Int32FromInt32(1))
@@ -150026,23 +150052,23 @@ _168:
 					}
 				}
 			}
-			goto _824
-		_824: /**/ //
+			goto _827
+		_827:
+			goto _826
+		_826: /**/ //
 		} else {
-			goto _830
-		_830:
 			if false {
 				if int32(1) != 0 {
 					if int32(1) > 0 {
-						v831 = *(*uintptr)(unsafe.Pointer(bp + 8))
+						v833 = *(*uintptr)(unsafe.Pointer(bp + 8))
 						tosPtr += 4
-						v832 = tosPtr
-						*(*uintptr)(unsafe.Pointer(v832)) = v831
-						(*TTcl_Obj)(unsafe.Pointer(v831)).FrefCount++
+						v834 = tosPtr
+						*(*uintptr)(unsafe.Pointer(v834)) = v833
+						(*TTcl_Obj)(unsafe.Pointer(v833)).FrefCount++
 					} else {
 						tosPtr += 4
-						v833 = tosPtr
-						*(*uintptr)(unsafe.Pointer(v833)) = *(*uintptr)(unsafe.Pointer(bp + 8))
+						v835 = tosPtr
+						*(*uintptr)(unsafe.Pointer(v835)) = *(*uintptr)(unsafe.Pointer(bp + 8))
 					}
 				}
 				pc += uintptr(libc.Int32FromInt32(1))
@@ -150073,8 +150099,10 @@ _168:
 					}
 				}
 			}
-			goto _829
-		_829: /**/ //
+			goto _832
+		_832:
+			goto _831
+		_831: /**/ //
 		}
 	}
 	/*
@@ -150115,10 +150143,10 @@ _168:
 	}
 	if *(*uintptr)(unsafe.Pointer(bp + 8)) == value3Ptr {
 		/* See [Bug 82e7f67325] */
-		v835 = *(*uintptr)(unsafe.Pointer(tosPtr))
-		v834 = *(*int32)(unsafe.Pointer(v835))
-		*(*int32)(unsafe.Pointer(v835))--
-		if !(v834 > int32(1)) {
+		v837 = *(*uintptr)(unsafe.Pointer(tosPtr))
+		v836 = *(*int32)(unsafe.Pointer(v837))
+		*(*int32)(unsafe.Pointer(v837))--
+		if !(v836 > int32(1)) {
 			if !((*TTcl_Obj)(unsafe.Pointer(*(*uintptr)(unsafe.Pointer(tosPtr)))).FtypePtr != 0) || !((*TTcl_ObjType)(unsafe.Pointer((*TTcl_Obj)(unsafe.Pointer(*(*uintptr)(unsafe.Pointer(tosPtr)))).FtypePtr)).FfreeIntRepProc != 0) {
 				if (*TTcl_Obj)(unsafe.Pointer(*(*uintptr)(unsafe.Pointer(tosPtr)))).Fbytes != 0 && (*TTcl_Obj)(unsafe.Pointer(*(*uintptr)(unsafe.Pointer(tosPtr)))).Fbytes != XtclEmptyStringRep {
 					XTclpFree(tls, (*TTcl_Obj)(unsafe.Pointer(*(*uintptr)(unsafe.Pointer(tosPtr)))).Fbytes)
@@ -150134,20 +150162,18 @@ _168:
 			}
 		}
 		*(*uintptr)(unsafe.Pointer(tosPtr)) = value3Ptr
-		goto _837
-	_837:
 		if true {
 			if 0 != 0 {
 				if 0 > 0 {
-					v838 = *(*uintptr)(unsafe.Pointer(bp + 8))
+					v840 = *(*uintptr)(unsafe.Pointer(bp + 8))
 					tosPtr += 4
-					v839 = tosPtr
-					*(*uintptr)(unsafe.Pointer(v839)) = v838
-					(*TTcl_Obj)(unsafe.Pointer(v838)).FrefCount++
+					v841 = tosPtr
+					*(*uintptr)(unsafe.Pointer(v841)) = v840
+					(*TTcl_Obj)(unsafe.Pointer(v840)).FrefCount++
 				} else {
 					tosPtr += 4
-					v840 = tosPtr
-					*(*uintptr)(unsafe.Pointer(v840)) = *(*uintptr)(unsafe.Pointer(bp + 8))
+					v842 = tosPtr
+					*(*uintptr)(unsafe.Pointer(v842)) = *(*uintptr)(unsafe.Pointer(bp + 8))
 				}
 			}
 			pc += uintptr(libc.Int32FromInt32(1))
@@ -150178,14 +150204,16 @@ _168:
 				}
 			}
 		}
-		goto _836
-	_836: /**/
+		goto _839
+	_839:
+		goto _838
+	_838: /**/
 		//
 	}
-	v842 = value3Ptr
-	v841 = *(*int32)(unsafe.Pointer(v842))
-	*(*int32)(unsafe.Pointer(v842))--
-	if !(v841 > int32(1)) {
+	v844 = value3Ptr
+	v843 = *(*int32)(unsafe.Pointer(v844))
+	*(*int32)(unsafe.Pointer(v844))--
+	if !(v843 > int32(1)) {
 		if !((*TTcl_Obj)(unsafe.Pointer(value3Ptr)).FtypePtr != 0) || !((*TTcl_ObjType)(unsafe.Pointer((*TTcl_Obj)(unsafe.Pointer(value3Ptr)).FtypePtr)).FfreeIntRepProc != 0) {
 			if (*TTcl_Obj)(unsafe.Pointer(value3Ptr)).Fbytes != 0 && (*TTcl_Obj)(unsafe.Pointer(value3Ptr)).Fbytes != XtclEmptyStringRep {
 				XTclpFree(tls, (*TTcl_Obj)(unsafe.Pointer(value3Ptr)).Fbytes)
@@ -150200,20 +150228,18 @@ _168:
 			XTclFreeObj(tls, value3Ptr)
 		}
 	}
-	goto _844
-_844:
 	if false {
 		if int32(1) != 0 {
 			if int32(1) > 0 {
-				v845 = *(*uintptr)(unsafe.Pointer(bp + 8))
+				v847 = *(*uintptr)(unsafe.Pointer(bp + 8))
 				tosPtr += 4
-				v846 = tosPtr
-				*(*uintptr)(unsafe.Pointer(v846)) = v845
-				(*TTcl_Obj)(unsafe.Pointer(v845)).FrefCount++
+				v848 = tosPtr
+				*(*uintptr)(unsafe.Pointer(v848)) = v847
+				(*TTcl_Obj)(unsafe.Pointer(v847)).FrefCount++
 			} else {
 				tosPtr += 4
-				v847 = tosPtr
-				*(*uintptr)(unsafe.Pointer(v847)) = *(*uintptr)(unsafe.Pointer(bp + 8))
+				v849 = tosPtr
+				*(*uintptr)(unsafe.Pointer(v849)) = *(*uintptr)(unsafe.Pointer(bp + 8))
 			}
 		}
 		pc += uintptr(libc.Int32FromInt32(1))
@@ -150244,8 +150270,10 @@ _844:
 			}
 		}
 	}
-	goto _843
-_843: /**/
+	goto _846
+_846:
+	goto _845
+_845: /**/
 	; //
 _169:
 	*(*uintptr)(unsafe.Pointer(bp + 12)) = *(*uintptr)(unsafe.Pointer(tosPtr))          /* "Main" string. */
@@ -150297,8 +150325,8 @@ _169:
 			ustring1 = p1 - uintptr(1)*2
 			XTcl_AppendUnicodeToObj(tls, *(*uintptr)(unsafe.Pointer(bp + 8)), ustring3, *(*int32)(unsafe.Pointer(bp + 112)))
 		}
-		goto _848
-	_848:
+		goto _850
+	_850:
 		ustring1 += 2
 	}
 	if p1 != ustring1 {
@@ -150333,8 +150361,8 @@ _170:
 				match = (int32(p1) - int32(ustring1)) / 2
 				break
 			}
-			goto _849
-		_849:
+			goto _851
+		_851:
 			p1 += 2
 		}
 	}
@@ -150350,20 +150378,18 @@ _170:
 	(*TTcl_Obj)(unsafe.Pointer(*(*uintptr)(unsafe.Pointer(bp + 8)))).Fbytes = libc.UintptrFromInt32(0)
 	(*TTcl_Obj)(unsafe.Pointer(*(*uintptr)(unsafe.Pointer(bp + 8)))).FinternalRep.FlongValue = match
 	(*TTcl_Obj)(unsafe.Pointer(*(*uintptr)(unsafe.Pointer(bp + 8)))).FtypePtr = uintptr(unsafe.Pointer(&XtclIntType))
-	goto _851
-_851:
 	if false {
 		if int32(1) != 0 {
 			if int32(1) > 0 {
-				v852 = *(*uintptr)(unsafe.Pointer(bp + 8))
+				v854 = *(*uintptr)(unsafe.Pointer(bp + 8))
 				tosPtr += 4
-				v853 = tosPtr
-				*(*uintptr)(unsafe.Pointer(v853)) = v852
-				(*TTcl_Obj)(unsafe.Pointer(v852)).FrefCount++
+				v855 = tosPtr
+				*(*uintptr)(unsafe.Pointer(v855)) = v854
+				(*TTcl_Obj)(unsafe.Pointer(v854)).FrefCount++
 			} else {
 				tosPtr += 4
-				v854 = tosPtr
-				*(*uintptr)(unsafe.Pointer(v854)) = *(*uintptr)(unsafe.Pointer(bp + 8))
+				v856 = tosPtr
+				*(*uintptr)(unsafe.Pointer(v856)) = *(*uintptr)(unsafe.Pointer(bp + 8))
 			}
 		}
 		pc += uintptr(libc.Int32FromInt32(1))
@@ -150394,8 +150420,10 @@ _851:
 			}
 		}
 	}
-	goto _850
-_850: /**/
+	goto _853
+_853:
+	goto _852
+_852: /**/
 	; //
 _171:
 	ustring1 = XTcl_GetUnicodeFromObj(tls, *(*uintptr)(unsafe.Pointer(tosPtr)), bp+24)                              /* Haystack */
@@ -150411,8 +150439,8 @@ _171:
 				match = (int32(p1) - int32(ustring1)) / 2
 				break
 			}
-			goto _855
-		_855:
+			goto _857
+		_857:
 			p1 -= 2
 		}
 	}
@@ -150428,20 +150456,18 @@ _171:
 	(*TTcl_Obj)(unsafe.Pointer(*(*uintptr)(unsafe.Pointer(bp + 8)))).Fbytes = libc.UintptrFromInt32(0)
 	(*TTcl_Obj)(unsafe.Pointer(*(*uintptr)(unsafe.Pointer(bp + 8)))).FinternalRep.FlongValue = match
 	(*TTcl_Obj)(unsafe.Pointer(*(*uintptr)(unsafe.Pointer(bp + 8)))).FtypePtr = uintptr(unsafe.Pointer(&XtclIntType))
-	goto _857
-_857:
 	if false {
 		if int32(1) != 0 {
 			if int32(1) > 0 {
-				v858 = *(*uintptr)(unsafe.Pointer(bp + 8))
+				v860 = *(*uintptr)(unsafe.Pointer(bp + 8))
 				tosPtr += 4
-				v859 = tosPtr
-				*(*uintptr)(unsafe.Pointer(v859)) = v858
-				(*TTcl_Obj)(unsafe.Pointer(v858)).FrefCount++
+				v861 = tosPtr
+				*(*uintptr)(unsafe.Pointer(v861)) = v860
+				(*TTcl_Obj)(unsafe.Pointer(v860)).FrefCount++
 			} else {
 				tosPtr += 4
-				v860 = tosPtr
-				*(*uintptr)(unsafe.Pointer(v860)) = *(*uintptr)(unsafe.Pointer(bp + 8))
+				v862 = tosPtr
+				*(*uintptr)(unsafe.Pointer(v862)) = *(*uintptr)(unsafe.Pointer(bp + 8))
 			}
 		}
 		pc += uintptr(libc.Int32FromInt32(1))
@@ -150472,8 +150498,10 @@ _857:
 			}
 		}
 	}
-	goto _856
-_856: /**/
+	goto _859
+_859:
+	goto _858
+_858: /**/
 	; //
 _172:
 	opnd = int32(*(*int8)(unsafe.Pointer(pc + libc.UintptrFromInt32(1))))
@@ -150493,178 +150521,46 @@ _172:
 				match = 0
 				break
 			}
-			goto _861
-		_861:
+			goto _863
+		_863:
 		}
 	}
-	goto _863
-_863:
 	pc += uintptr(libc.Int32FromInt32(2))
 	switch int32(*(*uint8)(unsafe.Pointer(pc))) {
 	case int32(m_INST_JUMP_FALSE1):
-		goto _864
-	case int32(m_INST_JUMP_TRUE1):
-		goto _865
-	case int32(m_INST_JUMP_FALSE4):
 		goto _866
-	case int32(m_INST_JUMP_TRUE4):
+	case int32(m_INST_JUMP_TRUE1):
 		goto _867
-	default:
+	case int32(m_INST_JUMP_FALSE4):
 		goto _868
+	case int32(m_INST_JUMP_TRUE4):
+		goto _869
+	default:
+		goto _870
 	}
-	goto _869
-_864:
-_871:
-	if false {
-		if 0 != 0 {
-			if 0 > 0 {
-				v872 = *(*uintptr)(unsafe.Pointer(bp + 8))
-				tosPtr += 4
-				v873 = tosPtr
-				*(*uintptr)(unsafe.Pointer(v873)) = v872
-				(*TTcl_Obj)(unsafe.Pointer(v872)).FrefCount++
-			} else {
-				tosPtr += 4
-				v874 = tosPtr
-				*(*uintptr)(unsafe.Pointer(v874)) = *(*uintptr)(unsafe.Pointer(bp + 8))
-			}
-		}
-		if match != 0 {
-			v875 = int32(2)
-		} else {
-			v875 = int32(*(*int8)(unsafe.Pointer(pc + libc.UintptrFromInt32(1))))
-		}
-		pc += uintptr(v875)
-		goto cleanup0
-	} else {
-		if 0 != 0 {
-			if 0 > 0 {
-				(*TTcl_Obj)(unsafe.Pointer(*(*uintptr)(unsafe.Pointer(bp + 8)))).FrefCount++
-			}
-			if match != 0 {
-				v876 = int32(2)
-			} else {
-				v876 = int32(*(*int8)(unsafe.Pointer(pc + libc.UintptrFromInt32(1))))
-			}
-			pc += uintptr(v876)
-			switch libc.Int32FromInt32(1) {
-			case int32(1):
-				goto cleanup1_pushObjResultPtr
-			case int32(2):
-				goto cleanup2_pushObjResultPtr
-			case 0:
-				break
-			}
-		} else {
-			if match != 0 {
-				v877 = int32(2)
-			} else {
-				v877 = int32(*(*int8)(unsafe.Pointer(pc + libc.UintptrFromInt32(1))))
-			}
-			pc += uintptr(v877)
-			switch libc.Int32FromInt32(1) {
-			case int32(1):
-				goto cleanup1
-			case int32(2):
-				goto cleanup2
-			case 0:
-				break
-			}
-		}
-	}
-	if 0 != 0 {
-		goto _871
-	}
-	goto _870
-_870:
-	goto _869
-_865:
-	goto _879
-_879:
-	if false {
-		if 0 != 0 {
-			if 0 > 0 {
-				v880 = *(*uintptr)(unsafe.Pointer(bp + 8))
-				tosPtr += 4
-				v881 = tosPtr
-				*(*uintptr)(unsafe.Pointer(v881)) = v880
-				(*TTcl_Obj)(unsafe.Pointer(v880)).FrefCount++
-			} else {
-				tosPtr += 4
-				v882 = tosPtr
-				*(*uintptr)(unsafe.Pointer(v882)) = *(*uintptr)(unsafe.Pointer(bp + 8))
-			}
-		}
-		if match != 0 {
-			v883 = int32(*(*int8)(unsafe.Pointer(pc + libc.UintptrFromInt32(1))))
-		} else {
-			v883 = int32(2)
-		}
-		pc += uintptr(v883)
-		goto cleanup0
-	} else {
-		if 0 != 0 {
-			if 0 > 0 {
-				(*TTcl_Obj)(unsafe.Pointer(*(*uintptr)(unsafe.Pointer(bp + 8)))).FrefCount++
-			}
-			if match != 0 {
-				v884 = int32(*(*int8)(unsafe.Pointer(pc + libc.UintptrFromInt32(1))))
-			} else {
-				v884 = int32(2)
-			}
-			pc += uintptr(v884)
-			switch libc.Int32FromInt32(1) {
-			case int32(1):
-				goto cleanup1_pushObjResultPtr
-			case int32(2):
-				goto cleanup2_pushObjResultPtr
-			case 0:
-				break
-			}
-		} else {
-			if match != 0 {
-				v885 = int32(*(*int8)(unsafe.Pointer(pc + libc.UintptrFromInt32(1))))
-			} else {
-				v885 = int32(2)
-			}
-			pc += uintptr(v885)
-			switch libc.Int32FromInt32(1) {
-			case int32(1):
-				goto cleanup1
-			case int32(2):
-				goto cleanup2
-			case 0:
-				break
-			}
-		}
-	}
-	goto _878
-_878: /**/
-	; //
-	goto _869
+	goto _871
 _866:
-	goto _887
-_887:
+_874:
 	if false {
 		if 0 != 0 {
 			if 0 > 0 {
-				v888 = *(*uintptr)(unsafe.Pointer(bp + 8))
+				v875 = *(*uintptr)(unsafe.Pointer(bp + 8))
 				tosPtr += 4
-				v889 = tosPtr
-				*(*uintptr)(unsafe.Pointer(v889)) = v888
-				(*TTcl_Obj)(unsafe.Pointer(v888)).FrefCount++
+				v876 = tosPtr
+				*(*uintptr)(unsafe.Pointer(v876)) = v875
+				(*TTcl_Obj)(unsafe.Pointer(v875)).FrefCount++
 			} else {
 				tosPtr += 4
-				v890 = tosPtr
-				*(*uintptr)(unsafe.Pointer(v890)) = *(*uintptr)(unsafe.Pointer(bp + 8))
+				v877 = tosPtr
+				*(*uintptr)(unsafe.Pointer(v877)) = *(*uintptr)(unsafe.Pointer(bp + 8))
 			}
 		}
 		if match != 0 {
-			v891 = int32(5)
+			v878 = int32(2)
 		} else {
-			v891 = int32(uint32(*(*uint8)(unsafe.Pointer(pc + libc.UintptrFromInt32(1))))<<libc.Int32FromInt32(24)) | int32(*(*uint8)(unsafe.Pointer(pc + libc.UintptrFromInt32(1) + libc.UintptrFromInt32(1))))<<int32(16) | int32(*(*uint8)(unsafe.Pointer(pc + libc.UintptrFromInt32(1) + libc.UintptrFromInt32(2))))<<int32(8) | int32(*(*uint8)(unsafe.Pointer(pc + libc.UintptrFromInt32(1) + libc.UintptrFromInt32(3))))
+			v878 = int32(*(*int8)(unsafe.Pointer(pc + libc.UintptrFromInt32(1))))
 		}
-		pc += uintptr(v891)
+		pc += uintptr(v878)
 		goto cleanup0
 	} else {
 		if 0 != 0 {
@@ -150672,11 +150568,11 @@ _887:
 				(*TTcl_Obj)(unsafe.Pointer(*(*uintptr)(unsafe.Pointer(bp + 8)))).FrefCount++
 			}
 			if match != 0 {
-				v892 = int32(5)
+				v879 = int32(2)
 			} else {
-				v892 = int32(uint32(*(*uint8)(unsafe.Pointer(pc + libc.UintptrFromInt32(1))))<<libc.Int32FromInt32(24)) | int32(*(*uint8)(unsafe.Pointer(pc + libc.UintptrFromInt32(1) + libc.UintptrFromInt32(1))))<<int32(16) | int32(*(*uint8)(unsafe.Pointer(pc + libc.UintptrFromInt32(1) + libc.UintptrFromInt32(2))))<<int32(8) | int32(*(*uint8)(unsafe.Pointer(pc + libc.UintptrFromInt32(1) + libc.UintptrFromInt32(3))))
+				v879 = int32(*(*int8)(unsafe.Pointer(pc + libc.UintptrFromInt32(1))))
 			}
-			pc += uintptr(v892)
+			pc += uintptr(v879)
 			switch libc.Int32FromInt32(1) {
 			case int32(1):
 				goto cleanup1_pushObjResultPtr
@@ -150687,11 +150583,11 @@ _887:
 			}
 		} else {
 			if match != 0 {
-				v893 = int32(5)
+				v880 = int32(2)
 			} else {
-				v893 = int32(uint32(*(*uint8)(unsafe.Pointer(pc + libc.UintptrFromInt32(1))))<<libc.Int32FromInt32(24)) | int32(*(*uint8)(unsafe.Pointer(pc + libc.UintptrFromInt32(1) + libc.UintptrFromInt32(1))))<<int32(16) | int32(*(*uint8)(unsafe.Pointer(pc + libc.UintptrFromInt32(1) + libc.UintptrFromInt32(2))))<<int32(8) | int32(*(*uint8)(unsafe.Pointer(pc + libc.UintptrFromInt32(1) + libc.UintptrFromInt32(3))))
+				v880 = int32(*(*int8)(unsafe.Pointer(pc + libc.UintptrFromInt32(1))))
 			}
-			pc += uintptr(v893)
+			pc += uintptr(v880)
 			switch libc.Int32FromInt32(1) {
 			case int32(1):
 				goto cleanup1
@@ -150702,33 +150598,35 @@ _887:
 			}
 		}
 	}
-	goto _886
-_886: /**/
-	; //
-	goto _869
+	goto _873
+_873:
+	if 0 != 0 {
+		goto _874
+	}
+	goto _872
+_872:
+	goto _871
 _867:
-	goto _895
-_895:
 	if false {
 		if 0 != 0 {
 			if 0 > 0 {
-				v896 = *(*uintptr)(unsafe.Pointer(bp + 8))
+				v883 = *(*uintptr)(unsafe.Pointer(bp + 8))
 				tosPtr += 4
-				v897 = tosPtr
-				*(*uintptr)(unsafe.Pointer(v897)) = v896
-				(*TTcl_Obj)(unsafe.Pointer(v896)).FrefCount++
+				v884 = tosPtr
+				*(*uintptr)(unsafe.Pointer(v884)) = v883
+				(*TTcl_Obj)(unsafe.Pointer(v883)).FrefCount++
 			} else {
 				tosPtr += 4
-				v898 = tosPtr
-				*(*uintptr)(unsafe.Pointer(v898)) = *(*uintptr)(unsafe.Pointer(bp + 8))
+				v885 = tosPtr
+				*(*uintptr)(unsafe.Pointer(v885)) = *(*uintptr)(unsafe.Pointer(bp + 8))
 			}
 		}
 		if match != 0 {
-			v899 = int32(uint32(*(*uint8)(unsafe.Pointer(pc + libc.UintptrFromInt32(1))))<<libc.Int32FromInt32(24)) | int32(*(*uint8)(unsafe.Pointer(pc + libc.UintptrFromInt32(1) + libc.UintptrFromInt32(1))))<<int32(16) | int32(*(*uint8)(unsafe.Pointer(pc + libc.UintptrFromInt32(1) + libc.UintptrFromInt32(2))))<<int32(8) | int32(*(*uint8)(unsafe.Pointer(pc + libc.UintptrFromInt32(1) + libc.UintptrFromInt32(3))))
+			v886 = int32(*(*int8)(unsafe.Pointer(pc + libc.UintptrFromInt32(1))))
 		} else {
-			v899 = int32(5)
+			v886 = int32(2)
 		}
-		pc += uintptr(v899)
+		pc += uintptr(v886)
 		goto cleanup0
 	} else {
 		if 0 != 0 {
@@ -150736,11 +150634,11 @@ _895:
 				(*TTcl_Obj)(unsafe.Pointer(*(*uintptr)(unsafe.Pointer(bp + 8)))).FrefCount++
 			}
 			if match != 0 {
-				v900 = int32(uint32(*(*uint8)(unsafe.Pointer(pc + libc.UintptrFromInt32(1))))<<libc.Int32FromInt32(24)) | int32(*(*uint8)(unsafe.Pointer(pc + libc.UintptrFromInt32(1) + libc.UintptrFromInt32(1))))<<int32(16) | int32(*(*uint8)(unsafe.Pointer(pc + libc.UintptrFromInt32(1) + libc.UintptrFromInt32(2))))<<int32(8) | int32(*(*uint8)(unsafe.Pointer(pc + libc.UintptrFromInt32(1) + libc.UintptrFromInt32(3))))
+				v887 = int32(*(*int8)(unsafe.Pointer(pc + libc.UintptrFromInt32(1))))
 			} else {
-				v900 = int32(5)
+				v887 = int32(2)
 			}
-			pc += uintptr(v900)
+			pc += uintptr(v887)
 			switch libc.Int32FromInt32(1) {
 			case int32(1):
 				goto cleanup1_pushObjResultPtr
@@ -150751,11 +150649,11 @@ _895:
 			}
 		} else {
 			if match != 0 {
-				v901 = int32(uint32(*(*uint8)(unsafe.Pointer(pc + libc.UintptrFromInt32(1))))<<libc.Int32FromInt32(24)) | int32(*(*uint8)(unsafe.Pointer(pc + libc.UintptrFromInt32(1) + libc.UintptrFromInt32(1))))<<int32(16) | int32(*(*uint8)(unsafe.Pointer(pc + libc.UintptrFromInt32(1) + libc.UintptrFromInt32(2))))<<int32(8) | int32(*(*uint8)(unsafe.Pointer(pc + libc.UintptrFromInt32(1) + libc.UintptrFromInt32(3))))
+				v888 = int32(*(*int8)(unsafe.Pointer(pc + libc.UintptrFromInt32(1))))
 			} else {
-				v901 = int32(5)
+				v888 = int32(2)
 			}
-			pc += uintptr(v901)
+			pc += uintptr(v888)
 			switch libc.Int32FromInt32(1) {
 			case int32(1):
 				goto cleanup1
@@ -150766,11 +150664,141 @@ _895:
 			}
 		}
 	}
-	goto _894
-_894: /**/
+	goto _882
+_882:
+	goto _881
+_881: /**/
 	; //
-	goto _869
+	goto _871
 _868:
+	if false {
+		if 0 != 0 {
+			if 0 > 0 {
+				v891 = *(*uintptr)(unsafe.Pointer(bp + 8))
+				tosPtr += 4
+				v892 = tosPtr
+				*(*uintptr)(unsafe.Pointer(v892)) = v891
+				(*TTcl_Obj)(unsafe.Pointer(v891)).FrefCount++
+			} else {
+				tosPtr += 4
+				v893 = tosPtr
+				*(*uintptr)(unsafe.Pointer(v893)) = *(*uintptr)(unsafe.Pointer(bp + 8))
+			}
+		}
+		if match != 0 {
+			v894 = int32(5)
+		} else {
+			v894 = int32(uint32(*(*uint8)(unsafe.Pointer(pc + libc.UintptrFromInt32(1))))<<libc.Int32FromInt32(24)) | int32(*(*uint8)(unsafe.Pointer(pc + libc.UintptrFromInt32(1) + libc.UintptrFromInt32(1))))<<int32(16) | int32(*(*uint8)(unsafe.Pointer(pc + libc.UintptrFromInt32(1) + libc.UintptrFromInt32(2))))<<int32(8) | int32(*(*uint8)(unsafe.Pointer(pc + libc.UintptrFromInt32(1) + libc.UintptrFromInt32(3))))
+		}
+		pc += uintptr(v894)
+		goto cleanup0
+	} else {
+		if 0 != 0 {
+			if 0 > 0 {
+				(*TTcl_Obj)(unsafe.Pointer(*(*uintptr)(unsafe.Pointer(bp + 8)))).FrefCount++
+			}
+			if match != 0 {
+				v895 = int32(5)
+			} else {
+				v895 = int32(uint32(*(*uint8)(unsafe.Pointer(pc + libc.UintptrFromInt32(1))))<<libc.Int32FromInt32(24)) | int32(*(*uint8)(unsafe.Pointer(pc + libc.UintptrFromInt32(1) + libc.UintptrFromInt32(1))))<<int32(16) | int32(*(*uint8)(unsafe.Pointer(pc + libc.UintptrFromInt32(1) + libc.UintptrFromInt32(2))))<<int32(8) | int32(*(*uint8)(unsafe.Pointer(pc + libc.UintptrFromInt32(1) + libc.UintptrFromInt32(3))))
+			}
+			pc += uintptr(v895)
+			switch libc.Int32FromInt32(1) {
+			case int32(1):
+				goto cleanup1_pushObjResultPtr
+			case int32(2):
+				goto cleanup2_pushObjResultPtr
+			case 0:
+				break
+			}
+		} else {
+			if match != 0 {
+				v896 = int32(5)
+			} else {
+				v896 = int32(uint32(*(*uint8)(unsafe.Pointer(pc + libc.UintptrFromInt32(1))))<<libc.Int32FromInt32(24)) | int32(*(*uint8)(unsafe.Pointer(pc + libc.UintptrFromInt32(1) + libc.UintptrFromInt32(1))))<<int32(16) | int32(*(*uint8)(unsafe.Pointer(pc + libc.UintptrFromInt32(1) + libc.UintptrFromInt32(2))))<<int32(8) | int32(*(*uint8)(unsafe.Pointer(pc + libc.UintptrFromInt32(1) + libc.UintptrFromInt32(3))))
+			}
+			pc += uintptr(v896)
+			switch libc.Int32FromInt32(1) {
+			case int32(1):
+				goto cleanup1
+			case int32(2):
+				goto cleanup2
+			case 0:
+				break
+			}
+		}
+	}
+	goto _890
+_890:
+	goto _889
+_889: /**/
+	; //
+	goto _871
+_869:
+	if false {
+		if 0 != 0 {
+			if 0 > 0 {
+				v899 = *(*uintptr)(unsafe.Pointer(bp + 8))
+				tosPtr += 4
+				v900 = tosPtr
+				*(*uintptr)(unsafe.Pointer(v900)) = v899
+				(*TTcl_Obj)(unsafe.Pointer(v899)).FrefCount++
+			} else {
+				tosPtr += 4
+				v901 = tosPtr
+				*(*uintptr)(unsafe.Pointer(v901)) = *(*uintptr)(unsafe.Pointer(bp + 8))
+			}
+		}
+		if match != 0 {
+			v902 = int32(uint32(*(*uint8)(unsafe.Pointer(pc + libc.UintptrFromInt32(1))))<<libc.Int32FromInt32(24)) | int32(*(*uint8)(unsafe.Pointer(pc + libc.UintptrFromInt32(1) + libc.UintptrFromInt32(1))))<<int32(16) | int32(*(*uint8)(unsafe.Pointer(pc + libc.UintptrFromInt32(1) + libc.UintptrFromInt32(2))))<<int32(8) | int32(*(*uint8)(unsafe.Pointer(pc + libc.UintptrFromInt32(1) + libc.UintptrFromInt32(3))))
+		} else {
+			v902 = int32(5)
+		}
+		pc += uintptr(v902)
+		goto cleanup0
+	} else {
+		if 0 != 0 {
+			if 0 > 0 {
+				(*TTcl_Obj)(unsafe.Pointer(*(*uintptr)(unsafe.Pointer(bp + 8)))).FrefCount++
+			}
+			if match != 0 {
+				v903 = int32(uint32(*(*uint8)(unsafe.Pointer(pc + libc.UintptrFromInt32(1))))<<libc.Int32FromInt32(24)) | int32(*(*uint8)(unsafe.Pointer(pc + libc.UintptrFromInt32(1) + libc.UintptrFromInt32(1))))<<int32(16) | int32(*(*uint8)(unsafe.Pointer(pc + libc.UintptrFromInt32(1) + libc.UintptrFromInt32(2))))<<int32(8) | int32(*(*uint8)(unsafe.Pointer(pc + libc.UintptrFromInt32(1) + libc.UintptrFromInt32(3))))
+			} else {
+				v903 = int32(5)
+			}
+			pc += uintptr(v903)
+			switch libc.Int32FromInt32(1) {
+			case int32(1):
+				goto cleanup1_pushObjResultPtr
+			case int32(2):
+				goto cleanup2_pushObjResultPtr
+			case 0:
+				break
+			}
+		} else {
+			if match != 0 {
+				v904 = int32(uint32(*(*uint8)(unsafe.Pointer(pc + libc.UintptrFromInt32(1))))<<libc.Int32FromInt32(24)) | int32(*(*uint8)(unsafe.Pointer(pc + libc.UintptrFromInt32(1) + libc.UintptrFromInt32(1))))<<int32(16) | int32(*(*uint8)(unsafe.Pointer(pc + libc.UintptrFromInt32(1) + libc.UintptrFromInt32(2))))<<int32(8) | int32(*(*uint8)(unsafe.Pointer(pc + libc.UintptrFromInt32(1) + libc.UintptrFromInt32(3))))
+			} else {
+				v904 = int32(5)
+			}
+			pc += uintptr(v904)
+			switch libc.Int32FromInt32(1) {
+			case int32(1):
+				goto cleanup1
+			case int32(2):
+				goto cleanup2
+			case 0:
+				break
+			}
+		}
+	}
+	goto _898
+_898:
+	goto _897
+_897: /**/
+	; //
+	goto _871
+_870:
 	if match < 0 {
 		if XtclFreeObjList == libc.UintptrFromInt32(0) {
 			XTclAllocateFreeObjects(tls)
@@ -150787,20 +150815,18 @@ _868:
 	} else {
 		*(*uintptr)(unsafe.Pointer(bp + 8)) = *(*uintptr)(unsafe.Pointer(constants + libc.BoolUintptr(match > libc.Int32FromInt32(0))*4))
 	}
-	goto _903
-_903:
 	if false {
 		if int32(1) != 0 {
 			if int32(1) > 0 {
-				v904 = *(*uintptr)(unsafe.Pointer(bp + 8))
+				v907 = *(*uintptr)(unsafe.Pointer(bp + 8))
 				tosPtr += 4
-				v905 = tosPtr
-				*(*uintptr)(unsafe.Pointer(v905)) = v904
-				(*TTcl_Obj)(unsafe.Pointer(v904)).FrefCount++
+				v908 = tosPtr
+				*(*uintptr)(unsafe.Pointer(v908)) = v907
+				(*TTcl_Obj)(unsafe.Pointer(v907)).FrefCount++
 			} else {
 				tosPtr += 4
-				v906 = tosPtr
-				*(*uintptr)(unsafe.Pointer(v906)) = *(*uintptr)(unsafe.Pointer(bp + 8))
+				v909 = tosPtr
+				*(*uintptr)(unsafe.Pointer(v909)) = *(*uintptr)(unsafe.Pointer(bp + 8))
 			}
 		}
 		pc += uintptr(libc.Int32FromInt32(0))
@@ -150831,13 +150857,17 @@ _903:
 			}
 		}
 	}
-	goto _902
-_902: /**/
+	goto _906
+_906:
+	goto _905
+_905: /**/
 	; //
-	goto _869
-_869:
-	goto _862
-_862: /**/
+	goto _871
+_871:
+	goto _865
+_865:
+	goto _864
+_864: /**/
 	; //
 _173:
 	nocase = int32(*(*int8)(unsafe.Pointer(pc + libc.UintptrFromInt32(1))))
@@ -150858,16 +150888,16 @@ _173:
 			match = XTclByteArrayMatch(tls, bytes12, *(*int32)(unsafe.Pointer(bp + 24)), bytes22, *(*int32)(unsafe.Pointer(bp + 84)), 0)
 		} else {
 			if (*TTcl_Obj)(unsafe.Pointer(*(*uintptr)(unsafe.Pointer(bp + 12)))).Fbytes != 0 {
-				v907 = (*TTcl_Obj)(unsafe.Pointer(*(*uintptr)(unsafe.Pointer(bp + 12)))).Fbytes
+				v910 = (*TTcl_Obj)(unsafe.Pointer(*(*uintptr)(unsafe.Pointer(bp + 12)))).Fbytes
 			} else {
-				v907 = XTcl_GetString(tls, *(*uintptr)(unsafe.Pointer(bp + 12)))
+				v910 = XTcl_GetString(tls, *(*uintptr)(unsafe.Pointer(bp + 12)))
 			}
 			if (*TTcl_Obj)(unsafe.Pointer(value2Ptr)).Fbytes != 0 {
-				v908 = (*TTcl_Obj)(unsafe.Pointer(value2Ptr)).Fbytes
+				v911 = (*TTcl_Obj)(unsafe.Pointer(value2Ptr)).Fbytes
 			} else {
-				v908 = XTcl_GetString(tls, value2Ptr)
+				v911 = XTcl_GetString(tls, value2Ptr)
 			}
-			match = XTcl_StringCaseMatch(tls, v907, v908, nocase)
+			match = XTcl_StringCaseMatch(tls, v910, v911, nocase)
 		}
 	}
 	/*
@@ -150877,238 +150907,42 @@ _173:
 	/*
 	 * Peep-hole optimisation: if you're about to jump, do jump from here.
 	 */
-	goto _910
-_910:
 	pc += uintptr(libc.Int32FromInt32(2))
 	switch int32(*(*uint8)(unsafe.Pointer(pc))) {
 	case int32(m_INST_JUMP_FALSE1):
-		goto _911
-	case int32(m_INST_JUMP_TRUE1):
-		goto _912
-	case int32(m_INST_JUMP_FALSE4):
-		goto _913
-	case int32(m_INST_JUMP_TRUE4):
 		goto _914
-	default:
+	case int32(m_INST_JUMP_TRUE1):
 		goto _915
-	}
-	goto _916
-_911:
-_918:
-	if false {
-		if 0 != 0 {
-			if 0 > 0 {
-				v919 = *(*uintptr)(unsafe.Pointer(bp + 8))
-				tosPtr += 4
-				v920 = tosPtr
-				*(*uintptr)(unsafe.Pointer(v920)) = v919
-				(*TTcl_Obj)(unsafe.Pointer(v919)).FrefCount++
-			} else {
-				tosPtr += 4
-				v921 = tosPtr
-				*(*uintptr)(unsafe.Pointer(v921)) = *(*uintptr)(unsafe.Pointer(bp + 8))
-			}
-		}
-		if match != 0 {
-			v922 = int32(2)
-		} else {
-			v922 = int32(*(*int8)(unsafe.Pointer(pc + libc.UintptrFromInt32(1))))
-		}
-		pc += uintptr(v922)
-		goto cleanup0
-	} else {
-		if 0 != 0 {
-			if 0 > 0 {
-				(*TTcl_Obj)(unsafe.Pointer(*(*uintptr)(unsafe.Pointer(bp + 8)))).FrefCount++
-			}
-			if match != 0 {
-				v923 = int32(2)
-			} else {
-				v923 = int32(*(*int8)(unsafe.Pointer(pc + libc.UintptrFromInt32(1))))
-			}
-			pc += uintptr(v923)
-			switch libc.Int32FromInt32(2) {
-			case int32(1):
-				goto cleanup1_pushObjResultPtr
-			case int32(2):
-				goto cleanup2_pushObjResultPtr
-			case 0:
-				break
-			}
-		} else {
-			if match != 0 {
-				v924 = int32(2)
-			} else {
-				v924 = int32(*(*int8)(unsafe.Pointer(pc + libc.UintptrFromInt32(1))))
-			}
-			pc += uintptr(v924)
-			switch libc.Int32FromInt32(2) {
-			case int32(1):
-				goto cleanup1
-			case int32(2):
-				goto cleanup2
-			case 0:
-				break
-			}
-		}
-	}
-	if 0 != 0 {
+	case int32(m_INST_JUMP_FALSE4):
+		goto _916
+	case int32(m_INST_JUMP_TRUE4):
+		goto _917
+	default:
 		goto _918
 	}
-	goto _917
-_917:
-	goto _916
-_912:
-	goto _926
-_926:
-	if false {
-		if 0 != 0 {
-			if 0 > 0 {
-				v927 = *(*uintptr)(unsafe.Pointer(bp + 8))
-				tosPtr += 4
-				v928 = tosPtr
-				*(*uintptr)(unsafe.Pointer(v928)) = v927
-				(*TTcl_Obj)(unsafe.Pointer(v927)).FrefCount++
-			} else {
-				tosPtr += 4
-				v929 = tosPtr
-				*(*uintptr)(unsafe.Pointer(v929)) = *(*uintptr)(unsafe.Pointer(bp + 8))
-			}
-		}
-		if match != 0 {
-			v930 = int32(*(*int8)(unsafe.Pointer(pc + libc.UintptrFromInt32(1))))
-		} else {
-			v930 = int32(2)
-		}
-		pc += uintptr(v930)
-		goto cleanup0
-	} else {
-		if 0 != 0 {
-			if 0 > 0 {
-				(*TTcl_Obj)(unsafe.Pointer(*(*uintptr)(unsafe.Pointer(bp + 8)))).FrefCount++
-			}
-			if match != 0 {
-				v931 = int32(*(*int8)(unsafe.Pointer(pc + libc.UintptrFromInt32(1))))
-			} else {
-				v931 = int32(2)
-			}
-			pc += uintptr(v931)
-			switch libc.Int32FromInt32(2) {
-			case int32(1):
-				goto cleanup1_pushObjResultPtr
-			case int32(2):
-				goto cleanup2_pushObjResultPtr
-			case 0:
-				break
-			}
-		} else {
-			if match != 0 {
-				v932 = int32(*(*int8)(unsafe.Pointer(pc + libc.UintptrFromInt32(1))))
-			} else {
-				v932 = int32(2)
-			}
-			pc += uintptr(v932)
-			switch libc.Int32FromInt32(2) {
-			case int32(1):
-				goto cleanup1
-			case int32(2):
-				goto cleanup2
-			case 0:
-				break
-			}
-		}
-	}
-	goto _925
-_925: /**/
-	; //
-	goto _916
-_913:
-	goto _934
-_934:
-	if false {
-		if 0 != 0 {
-			if 0 > 0 {
-				v935 = *(*uintptr)(unsafe.Pointer(bp + 8))
-				tosPtr += 4
-				v936 = tosPtr
-				*(*uintptr)(unsafe.Pointer(v936)) = v935
-				(*TTcl_Obj)(unsafe.Pointer(v935)).FrefCount++
-			} else {
-				tosPtr += 4
-				v937 = tosPtr
-				*(*uintptr)(unsafe.Pointer(v937)) = *(*uintptr)(unsafe.Pointer(bp + 8))
-			}
-		}
-		if match != 0 {
-			v938 = int32(5)
-		} else {
-			v938 = int32(uint32(*(*uint8)(unsafe.Pointer(pc + libc.UintptrFromInt32(1))))<<libc.Int32FromInt32(24)) | int32(*(*uint8)(unsafe.Pointer(pc + libc.UintptrFromInt32(1) + libc.UintptrFromInt32(1))))<<int32(16) | int32(*(*uint8)(unsafe.Pointer(pc + libc.UintptrFromInt32(1) + libc.UintptrFromInt32(2))))<<int32(8) | int32(*(*uint8)(unsafe.Pointer(pc + libc.UintptrFromInt32(1) + libc.UintptrFromInt32(3))))
-		}
-		pc += uintptr(v938)
-		goto cleanup0
-	} else {
-		if 0 != 0 {
-			if 0 > 0 {
-				(*TTcl_Obj)(unsafe.Pointer(*(*uintptr)(unsafe.Pointer(bp + 8)))).FrefCount++
-			}
-			if match != 0 {
-				v939 = int32(5)
-			} else {
-				v939 = int32(uint32(*(*uint8)(unsafe.Pointer(pc + libc.UintptrFromInt32(1))))<<libc.Int32FromInt32(24)) | int32(*(*uint8)(unsafe.Pointer(pc + libc.UintptrFromInt32(1) + libc.UintptrFromInt32(1))))<<int32(16) | int32(*(*uint8)(unsafe.Pointer(pc + libc.UintptrFromInt32(1) + libc.UintptrFromInt32(2))))<<int32(8) | int32(*(*uint8)(unsafe.Pointer(pc + libc.UintptrFromInt32(1) + libc.UintptrFromInt32(3))))
-			}
-			pc += uintptr(v939)
-			switch libc.Int32FromInt32(2) {
-			case int32(1):
-				goto cleanup1_pushObjResultPtr
-			case int32(2):
-				goto cleanup2_pushObjResultPtr
-			case 0:
-				break
-			}
-		} else {
-			if match != 0 {
-				v940 = int32(5)
-			} else {
-				v940 = int32(uint32(*(*uint8)(unsafe.Pointer(pc + libc.UintptrFromInt32(1))))<<libc.Int32FromInt32(24)) | int32(*(*uint8)(unsafe.Pointer(pc + libc.UintptrFromInt32(1) + libc.UintptrFromInt32(1))))<<int32(16) | int32(*(*uint8)(unsafe.Pointer(pc + libc.UintptrFromInt32(1) + libc.UintptrFromInt32(2))))<<int32(8) | int32(*(*uint8)(unsafe.Pointer(pc + libc.UintptrFromInt32(1) + libc.UintptrFromInt32(3))))
-			}
-			pc += uintptr(v940)
-			switch libc.Int32FromInt32(2) {
-			case int32(1):
-				goto cleanup1
-			case int32(2):
-				goto cleanup2
-			case 0:
-				break
-			}
-		}
-	}
-	goto _933
-_933: /**/
-	; //
-	goto _916
+	goto _919
 _914:
-	goto _942
-_942:
+_922:
 	if false {
 		if 0 != 0 {
 			if 0 > 0 {
-				v943 = *(*uintptr)(unsafe.Pointer(bp + 8))
+				v923 = *(*uintptr)(unsafe.Pointer(bp + 8))
 				tosPtr += 4
-				v944 = tosPtr
-				*(*uintptr)(unsafe.Pointer(v944)) = v943
-				(*TTcl_Obj)(unsafe.Pointer(v943)).FrefCount++
+				v924 = tosPtr
+				*(*uintptr)(unsafe.Pointer(v924)) = v923
+				(*TTcl_Obj)(unsafe.Pointer(v923)).FrefCount++
 			} else {
 				tosPtr += 4
-				v945 = tosPtr
-				*(*uintptr)(unsafe.Pointer(v945)) = *(*uintptr)(unsafe.Pointer(bp + 8))
+				v925 = tosPtr
+				*(*uintptr)(unsafe.Pointer(v925)) = *(*uintptr)(unsafe.Pointer(bp + 8))
 			}
 		}
 		if match != 0 {
-			v946 = int32(uint32(*(*uint8)(unsafe.Pointer(pc + libc.UintptrFromInt32(1))))<<libc.Int32FromInt32(24)) | int32(*(*uint8)(unsafe.Pointer(pc + libc.UintptrFromInt32(1) + libc.UintptrFromInt32(1))))<<int32(16) | int32(*(*uint8)(unsafe.Pointer(pc + libc.UintptrFromInt32(1) + libc.UintptrFromInt32(2))))<<int32(8) | int32(*(*uint8)(unsafe.Pointer(pc + libc.UintptrFromInt32(1) + libc.UintptrFromInt32(3))))
+			v926 = int32(2)
 		} else {
-			v946 = int32(5)
+			v926 = int32(*(*int8)(unsafe.Pointer(pc + libc.UintptrFromInt32(1))))
 		}
-		pc += uintptr(v946)
+		pc += uintptr(v926)
 		goto cleanup0
 	} else {
 		if 0 != 0 {
@@ -151116,11 +150950,11 @@ _942:
 				(*TTcl_Obj)(unsafe.Pointer(*(*uintptr)(unsafe.Pointer(bp + 8)))).FrefCount++
 			}
 			if match != 0 {
-				v947 = int32(uint32(*(*uint8)(unsafe.Pointer(pc + libc.UintptrFromInt32(1))))<<libc.Int32FromInt32(24)) | int32(*(*uint8)(unsafe.Pointer(pc + libc.UintptrFromInt32(1) + libc.UintptrFromInt32(1))))<<int32(16) | int32(*(*uint8)(unsafe.Pointer(pc + libc.UintptrFromInt32(1) + libc.UintptrFromInt32(2))))<<int32(8) | int32(*(*uint8)(unsafe.Pointer(pc + libc.UintptrFromInt32(1) + libc.UintptrFromInt32(3))))
+				v927 = int32(2)
 			} else {
-				v947 = int32(5)
+				v927 = int32(*(*int8)(unsafe.Pointer(pc + libc.UintptrFromInt32(1))))
 			}
-			pc += uintptr(v947)
+			pc += uintptr(v927)
 			switch libc.Int32FromInt32(2) {
 			case int32(1):
 				goto cleanup1_pushObjResultPtr
@@ -151131,11 +150965,11 @@ _942:
 			}
 		} else {
 			if match != 0 {
-				v948 = int32(uint32(*(*uint8)(unsafe.Pointer(pc + libc.UintptrFromInt32(1))))<<libc.Int32FromInt32(24)) | int32(*(*uint8)(unsafe.Pointer(pc + libc.UintptrFromInt32(1) + libc.UintptrFromInt32(1))))<<int32(16) | int32(*(*uint8)(unsafe.Pointer(pc + libc.UintptrFromInt32(1) + libc.UintptrFromInt32(2))))<<int32(8) | int32(*(*uint8)(unsafe.Pointer(pc + libc.UintptrFromInt32(1) + libc.UintptrFromInt32(3))))
+				v928 = int32(2)
 			} else {
-				v948 = int32(5)
+				v928 = int32(*(*int8)(unsafe.Pointer(pc + libc.UintptrFromInt32(1))))
 			}
-			pc += uintptr(v948)
+			pc += uintptr(v928)
 			switch libc.Int32FromInt32(2) {
 			case int32(1):
 				goto cleanup1
@@ -151146,11 +150980,207 @@ _942:
 			}
 		}
 	}
-	goto _941
-_941: /**/
-	; //
-	goto _916
+	goto _921
+_921:
+	if 0 != 0 {
+		goto _922
+	}
+	goto _920
+_920:
+	goto _919
 _915:
+	if false {
+		if 0 != 0 {
+			if 0 > 0 {
+				v931 = *(*uintptr)(unsafe.Pointer(bp + 8))
+				tosPtr += 4
+				v932 = tosPtr
+				*(*uintptr)(unsafe.Pointer(v932)) = v931
+				(*TTcl_Obj)(unsafe.Pointer(v931)).FrefCount++
+			} else {
+				tosPtr += 4
+				v933 = tosPtr
+				*(*uintptr)(unsafe.Pointer(v933)) = *(*uintptr)(unsafe.Pointer(bp + 8))
+			}
+		}
+		if match != 0 {
+			v934 = int32(*(*int8)(unsafe.Pointer(pc + libc.UintptrFromInt32(1))))
+		} else {
+			v934 = int32(2)
+		}
+		pc += uintptr(v934)
+		goto cleanup0
+	} else {
+		if 0 != 0 {
+			if 0 > 0 {
+				(*TTcl_Obj)(unsafe.Pointer(*(*uintptr)(unsafe.Pointer(bp + 8)))).FrefCount++
+			}
+			if match != 0 {
+				v935 = int32(*(*int8)(unsafe.Pointer(pc + libc.UintptrFromInt32(1))))
+			} else {
+				v935 = int32(2)
+			}
+			pc += uintptr(v935)
+			switch libc.Int32FromInt32(2) {
+			case int32(1):
+				goto cleanup1_pushObjResultPtr
+			case int32(2):
+				goto cleanup2_pushObjResultPtr
+			case 0:
+				break
+			}
+		} else {
+			if match != 0 {
+				v936 = int32(*(*int8)(unsafe.Pointer(pc + libc.UintptrFromInt32(1))))
+			} else {
+				v936 = int32(2)
+			}
+			pc += uintptr(v936)
+			switch libc.Int32FromInt32(2) {
+			case int32(1):
+				goto cleanup1
+			case int32(2):
+				goto cleanup2
+			case 0:
+				break
+			}
+		}
+	}
+	goto _930
+_930:
+	goto _929
+_929: /**/
+	; //
+	goto _919
+_916:
+	if false {
+		if 0 != 0 {
+			if 0 > 0 {
+				v939 = *(*uintptr)(unsafe.Pointer(bp + 8))
+				tosPtr += 4
+				v940 = tosPtr
+				*(*uintptr)(unsafe.Pointer(v940)) = v939
+				(*TTcl_Obj)(unsafe.Pointer(v939)).FrefCount++
+			} else {
+				tosPtr += 4
+				v941 = tosPtr
+				*(*uintptr)(unsafe.Pointer(v941)) = *(*uintptr)(unsafe.Pointer(bp + 8))
+			}
+		}
+		if match != 0 {
+			v942 = int32(5)
+		} else {
+			v942 = int32(uint32(*(*uint8)(unsafe.Pointer(pc + libc.UintptrFromInt32(1))))<<libc.Int32FromInt32(24)) | int32(*(*uint8)(unsafe.Pointer(pc + libc.UintptrFromInt32(1) + libc.UintptrFromInt32(1))))<<int32(16) | int32(*(*uint8)(unsafe.Pointer(pc + libc.UintptrFromInt32(1) + libc.UintptrFromInt32(2))))<<int32(8) | int32(*(*uint8)(unsafe.Pointer(pc + libc.UintptrFromInt32(1) + libc.UintptrFromInt32(3))))
+		}
+		pc += uintptr(v942)
+		goto cleanup0
+	} else {
+		if 0 != 0 {
+			if 0 > 0 {
+				(*TTcl_Obj)(unsafe.Pointer(*(*uintptr)(unsafe.Pointer(bp + 8)))).FrefCount++
+			}
+			if match != 0 {
+				v943 = int32(5)
+			} else {
+				v943 = int32(uint32(*(*uint8)(unsafe.Pointer(pc + libc.UintptrFromInt32(1))))<<libc.Int32FromInt32(24)) | int32(*(*uint8)(unsafe.Pointer(pc + libc.UintptrFromInt32(1) + libc.UintptrFromInt32(1))))<<int32(16) | int32(*(*uint8)(unsafe.Pointer(pc + libc.UintptrFromInt32(1) + libc.UintptrFromInt32(2))))<<int32(8) | int32(*(*uint8)(unsafe.Pointer(pc + libc.UintptrFromInt32(1) + libc.UintptrFromInt32(3))))
+			}
+			pc += uintptr(v943)
+			switch libc.Int32FromInt32(2) {
+			case int32(1):
+				goto cleanup1_pushObjResultPtr
+			case int32(2):
+				goto cleanup2_pushObjResultPtr
+			case 0:
+				break
+			}
+		} else {
+			if match != 0 {
+				v944 = int32(5)
+			} else {
+				v944 = int32(uint32(*(*uint8)(unsafe.Pointer(pc + libc.UintptrFromInt32(1))))<<libc.Int32FromInt32(24)) | int32(*(*uint8)(unsafe.Pointer(pc + libc.UintptrFromInt32(1) + libc.UintptrFromInt32(1))))<<int32(16) | int32(*(*uint8)(unsafe.Pointer(pc + libc.UintptrFromInt32(1) + libc.UintptrFromInt32(2))))<<int32(8) | int32(*(*uint8)(unsafe.Pointer(pc + libc.UintptrFromInt32(1) + libc.UintptrFromInt32(3))))
+			}
+			pc += uintptr(v944)
+			switch libc.Int32FromInt32(2) {
+			case int32(1):
+				goto cleanup1
+			case int32(2):
+				goto cleanup2
+			case 0:
+				break
+			}
+		}
+	}
+	goto _938
+_938:
+	goto _937
+_937: /**/
+	; //
+	goto _919
+_917:
+	if false {
+		if 0 != 0 {
+			if 0 > 0 {
+				v947 = *(*uintptr)(unsafe.Pointer(bp + 8))
+				tosPtr += 4
+				v948 = tosPtr
+				*(*uintptr)(unsafe.Pointer(v948)) = v947
+				(*TTcl_Obj)(unsafe.Pointer(v947)).FrefCount++
+			} else {
+				tosPtr += 4
+				v949 = tosPtr
+				*(*uintptr)(unsafe.Pointer(v949)) = *(*uintptr)(unsafe.Pointer(bp + 8))
+			}
+		}
+		if match != 0 {
+			v950 = int32(uint32(*(*uint8)(unsafe.Pointer(pc + libc.UintptrFromInt32(1))))<<libc.Int32FromInt32(24)) | int32(*(*uint8)(unsafe.Pointer(pc + libc.UintptrFromInt32(1) + libc.UintptrFromInt32(1))))<<int32(16) | int32(*(*uint8)(unsafe.Pointer(pc + libc.UintptrFromInt32(1) + libc.UintptrFromInt32(2))))<<int32(8) | int32(*(*uint8)(unsafe.Pointer(pc + libc.UintptrFromInt32(1) + libc.UintptrFromInt32(3))))
+		} else {
+			v950 = int32(5)
+		}
+		pc += uintptr(v950)
+		goto cleanup0
+	} else {
+		if 0 != 0 {
+			if 0 > 0 {
+				(*TTcl_Obj)(unsafe.Pointer(*(*uintptr)(unsafe.Pointer(bp + 8)))).FrefCount++
+			}
+			if match != 0 {
+				v951 = int32(uint32(*(*uint8)(unsafe.Pointer(pc + libc.UintptrFromInt32(1))))<<libc.Int32FromInt32(24)) | int32(*(*uint8)(unsafe.Pointer(pc + libc.UintptrFromInt32(1) + libc.UintptrFromInt32(1))))<<int32(16) | int32(*(*uint8)(unsafe.Pointer(pc + libc.UintptrFromInt32(1) + libc.UintptrFromInt32(2))))<<int32(8) | int32(*(*uint8)(unsafe.Pointer(pc + libc.UintptrFromInt32(1) + libc.UintptrFromInt32(3))))
+			} else {
+				v951 = int32(5)
+			}
+			pc += uintptr(v951)
+			switch libc.Int32FromInt32(2) {
+			case int32(1):
+				goto cleanup1_pushObjResultPtr
+			case int32(2):
+				goto cleanup2_pushObjResultPtr
+			case 0:
+				break
+			}
+		} else {
+			if match != 0 {
+				v952 = int32(uint32(*(*uint8)(unsafe.Pointer(pc + libc.UintptrFromInt32(1))))<<libc.Int32FromInt32(24)) | int32(*(*uint8)(unsafe.Pointer(pc + libc.UintptrFromInt32(1) + libc.UintptrFromInt32(1))))<<int32(16) | int32(*(*uint8)(unsafe.Pointer(pc + libc.UintptrFromInt32(1) + libc.UintptrFromInt32(2))))<<int32(8) | int32(*(*uint8)(unsafe.Pointer(pc + libc.UintptrFromInt32(1) + libc.UintptrFromInt32(3))))
+			} else {
+				v952 = int32(5)
+			}
+			pc += uintptr(v952)
+			switch libc.Int32FromInt32(2) {
+			case int32(1):
+				goto cleanup1
+			case int32(2):
+				goto cleanup2
+			case 0:
+				break
+			}
+		}
+	}
+	goto _946
+_946:
+	goto _945
+_945: /**/
+	; //
+	goto _919
+_918:
 	if match < 0 {
 		if XtclFreeObjList == libc.UintptrFromInt32(0) {
 			XTclAllocateFreeObjects(tls)
@@ -151167,20 +151197,18 @@ _915:
 	} else {
 		*(*uintptr)(unsafe.Pointer(bp + 8)) = *(*uintptr)(unsafe.Pointer(constants + libc.BoolUintptr(match > libc.Int32FromInt32(0))*4))
 	}
-	goto _950
-_950:
 	if false {
 		if int32(1) != 0 {
 			if int32(1) > 0 {
-				v951 = *(*uintptr)(unsafe.Pointer(bp + 8))
+				v955 = *(*uintptr)(unsafe.Pointer(bp + 8))
 				tosPtr += 4
-				v952 = tosPtr
-				*(*uintptr)(unsafe.Pointer(v952)) = v951
-				(*TTcl_Obj)(unsafe.Pointer(v951)).FrefCount++
+				v956 = tosPtr
+				*(*uintptr)(unsafe.Pointer(v956)) = v955
+				(*TTcl_Obj)(unsafe.Pointer(v955)).FrefCount++
 			} else {
 				tosPtr += 4
-				v953 = tosPtr
-				*(*uintptr)(unsafe.Pointer(v953)) = *(*uintptr)(unsafe.Pointer(bp + 8))
+				v957 = tosPtr
+				*(*uintptr)(unsafe.Pointer(v957)) = *(*uintptr)(unsafe.Pointer(bp + 8))
 			}
 		}
 		pc += uintptr(libc.Int32FromInt32(0))
@@ -151211,55 +151239,19 @@ _950:
 			}
 		}
 	}
-	goto _949
-_949: /**/
+	goto _954
+_954:
+	goto _953
+_953: /**/
 	; //
-	goto _916
-_916:
-	goto _909
-_909: /**/
+	goto _919
+_919:
+	goto _913
+_913:
+	goto _912
+_912: /**/
 	; //
 _174:
-	*(*uintptr)(unsafe.Pointer(bp + 12)) = *(*uintptr)(unsafe.Pointer(tosPtr - libc.UintptrFromInt32(1)*4)) /* String */
-	value2Ptr = *(*uintptr)(unsafe.Pointer(tosPtr))                                                         /* TrimSet */
-	if (*TTcl_Obj)(unsafe.Pointer(value2Ptr)).Fbytes != 0 {
-		*(*int32)(unsafe.Pointer(bp + 84)) = (*TTcl_Obj)(unsafe.Pointer(value2Ptr)).Flength
-		v954 = (*TTcl_Obj)(unsafe.Pointer(value2Ptr)).Fbytes
-	} else {
-		v954 = XTcl_GetStringFromObj(tls, value2Ptr, bp+84)
-	}
-	string2 = v954
-	if (*TTcl_Obj)(unsafe.Pointer(*(*uintptr)(unsafe.Pointer(bp + 12)))).Fbytes != 0 {
-		*(*int32)(unsafe.Pointer(bp + 24)) = (*TTcl_Obj)(unsafe.Pointer(*(*uintptr)(unsafe.Pointer(bp + 12)))).Flength
-		v955 = (*TTcl_Obj)(unsafe.Pointer(*(*uintptr)(unsafe.Pointer(bp + 12)))).Fbytes
-	} else {
-		v955 = XTcl_GetStringFromObj(tls, *(*uintptr)(unsafe.Pointer(bp + 12)), bp+24)
-	}
-	string1 = v955
-	trim1 = XTclTrimLeft(tls, string1, *(*int32)(unsafe.Pointer(bp + 24)), string2, *(*int32)(unsafe.Pointer(bp + 84)))
-	*(*int32)(unsafe.Pointer(bp + 120)) = 0
-	goto createTrimmedString
-_175:
-	*(*uintptr)(unsafe.Pointer(bp + 12)) = *(*uintptr)(unsafe.Pointer(tosPtr - libc.UintptrFromInt32(1)*4)) /* String */
-	value2Ptr = *(*uintptr)(unsafe.Pointer(tosPtr))                                                         /* TrimSet */
-	if (*TTcl_Obj)(unsafe.Pointer(value2Ptr)).Fbytes != 0 {
-		*(*int32)(unsafe.Pointer(bp + 84)) = (*TTcl_Obj)(unsafe.Pointer(value2Ptr)).Flength
-		v956 = (*TTcl_Obj)(unsafe.Pointer(value2Ptr)).Fbytes
-	} else {
-		v956 = XTcl_GetStringFromObj(tls, value2Ptr, bp+84)
-	}
-	string2 = v956
-	if (*TTcl_Obj)(unsafe.Pointer(*(*uintptr)(unsafe.Pointer(bp + 12)))).Fbytes != 0 {
-		*(*int32)(unsafe.Pointer(bp + 24)) = (*TTcl_Obj)(unsafe.Pointer(*(*uintptr)(unsafe.Pointer(bp + 12)))).Flength
-		v957 = (*TTcl_Obj)(unsafe.Pointer(*(*uintptr)(unsafe.Pointer(bp + 12)))).Fbytes
-	} else {
-		v957 = XTcl_GetStringFromObj(tls, *(*uintptr)(unsafe.Pointer(bp + 12)), bp+24)
-	}
-	string1 = v957
-	*(*int32)(unsafe.Pointer(bp + 120)) = XTclTrimRight(tls, string1, *(*int32)(unsafe.Pointer(bp + 24)), string2, *(*int32)(unsafe.Pointer(bp + 84)))
-	trim1 = 0
-	goto createTrimmedString
-_176:
 	*(*uintptr)(unsafe.Pointer(bp + 12)) = *(*uintptr)(unsafe.Pointer(tosPtr - libc.UintptrFromInt32(1)*4)) /* String */
 	value2Ptr = *(*uintptr)(unsafe.Pointer(tosPtr))                                                         /* TrimSet */
 	if (*TTcl_Obj)(unsafe.Pointer(value2Ptr)).Fbytes != 0 {
@@ -151276,6 +151268,46 @@ _176:
 		v959 = XTcl_GetStringFromObj(tls, *(*uintptr)(unsafe.Pointer(bp + 12)), bp+24)
 	}
 	string1 = v959
+	trim1 = XTclTrimLeft(tls, string1, *(*int32)(unsafe.Pointer(bp + 24)), string2, *(*int32)(unsafe.Pointer(bp + 84)))
+	*(*int32)(unsafe.Pointer(bp + 120)) = 0
+	goto createTrimmedString
+_175:
+	*(*uintptr)(unsafe.Pointer(bp + 12)) = *(*uintptr)(unsafe.Pointer(tosPtr - libc.UintptrFromInt32(1)*4)) /* String */
+	value2Ptr = *(*uintptr)(unsafe.Pointer(tosPtr))                                                         /* TrimSet */
+	if (*TTcl_Obj)(unsafe.Pointer(value2Ptr)).Fbytes != 0 {
+		*(*int32)(unsafe.Pointer(bp + 84)) = (*TTcl_Obj)(unsafe.Pointer(value2Ptr)).Flength
+		v960 = (*TTcl_Obj)(unsafe.Pointer(value2Ptr)).Fbytes
+	} else {
+		v960 = XTcl_GetStringFromObj(tls, value2Ptr, bp+84)
+	}
+	string2 = v960
+	if (*TTcl_Obj)(unsafe.Pointer(*(*uintptr)(unsafe.Pointer(bp + 12)))).Fbytes != 0 {
+		*(*int32)(unsafe.Pointer(bp + 24)) = (*TTcl_Obj)(unsafe.Pointer(*(*uintptr)(unsafe.Pointer(bp + 12)))).Flength
+		v961 = (*TTcl_Obj)(unsafe.Pointer(*(*uintptr)(unsafe.Pointer(bp + 12)))).Fbytes
+	} else {
+		v961 = XTcl_GetStringFromObj(tls, *(*uintptr)(unsafe.Pointer(bp + 12)), bp+24)
+	}
+	string1 = v961
+	*(*int32)(unsafe.Pointer(bp + 120)) = XTclTrimRight(tls, string1, *(*int32)(unsafe.Pointer(bp + 24)), string2, *(*int32)(unsafe.Pointer(bp + 84)))
+	trim1 = 0
+	goto createTrimmedString
+_176:
+	*(*uintptr)(unsafe.Pointer(bp + 12)) = *(*uintptr)(unsafe.Pointer(tosPtr - libc.UintptrFromInt32(1)*4)) /* String */
+	value2Ptr = *(*uintptr)(unsafe.Pointer(tosPtr))                                                         /* TrimSet */
+	if (*TTcl_Obj)(unsafe.Pointer(value2Ptr)).Fbytes != 0 {
+		*(*int32)(unsafe.Pointer(bp + 84)) = (*TTcl_Obj)(unsafe.Pointer(value2Ptr)).Flength
+		v962 = (*TTcl_Obj)(unsafe.Pointer(value2Ptr)).Fbytes
+	} else {
+		v962 = XTcl_GetStringFromObj(tls, value2Ptr, bp+84)
+	}
+	string2 = v962
+	if (*TTcl_Obj)(unsafe.Pointer(*(*uintptr)(unsafe.Pointer(bp + 12)))).Fbytes != 0 {
+		*(*int32)(unsafe.Pointer(bp + 24)) = (*TTcl_Obj)(unsafe.Pointer(*(*uintptr)(unsafe.Pointer(bp + 12)))).Flength
+		v963 = (*TTcl_Obj)(unsafe.Pointer(*(*uintptr)(unsafe.Pointer(bp + 12)))).Fbytes
+	} else {
+		v963 = XTcl_GetStringFromObj(tls, *(*uintptr)(unsafe.Pointer(bp + 12)), bp+24)
+	}
+	string1 = v963
 	trim1 = XTclTrim(tls, string1, *(*int32)(unsafe.Pointer(bp + 24)), string2, *(*int32)(unsafe.Pointer(bp + 84)), bp+120)
 createTrimmedString:
 	/*
@@ -151283,79 +151315,29 @@ createTrimmedString:
 	 * take care when printing. [Bug 971cb4f1db]
 	 */
 	if trim1 == 0 && *(*int32)(unsafe.Pointer(bp + 120)) == 0 {
-		goto _961
-	_961:
 		if false {
 			if 0 != 0 {
 				if 0 > 0 {
-					v962 = *(*uintptr)(unsafe.Pointer(bp + 8))
+					v966 = *(*uintptr)(unsafe.Pointer(bp + 8))
 					tosPtr += 4
-					v963 = tosPtr
-					*(*uintptr)(unsafe.Pointer(v963)) = v962
-					(*TTcl_Obj)(unsafe.Pointer(v962)).FrefCount++
+					v967 = tosPtr
+					*(*uintptr)(unsafe.Pointer(v967)) = v966
+					(*TTcl_Obj)(unsafe.Pointer(v966)).FrefCount++
 				} else {
-					tosPtr += 4
-					v964 = tosPtr
-					*(*uintptr)(unsafe.Pointer(v964)) = *(*uintptr)(unsafe.Pointer(bp + 8))
-				}
-			}
-			pc += uintptr(libc.Int32FromInt32(1))
-			goto cleanup0
-		} else {
-			if 0 != 0 {
-				if 0 > 0 {
-					(*TTcl_Obj)(unsafe.Pointer(*(*uintptr)(unsafe.Pointer(bp + 8)))).FrefCount++
-				}
-				pc += uintptr(libc.Int32FromInt32(1))
-				switch libc.Int32FromInt32(1) {
-				case int32(1):
-					goto cleanup1_pushObjResultPtr
-				case int32(2):
-					goto cleanup2_pushObjResultPtr
-				case 0:
-					break
-				}
-			} else {
-				pc += uintptr(libc.Int32FromInt32(1))
-				switch libc.Int32FromInt32(1) {
-				case int32(1):
-					goto cleanup1
-				case int32(2):
-					goto cleanup2
-				case 0:
-					break
-				}
-			}
-		}
-		goto _960
-	_960: /**/ //
-	} else {
-		*(*uintptr)(unsafe.Pointer(bp + 8)) = XTcl_NewStringObj(tls, string1+uintptr(trim1), *(*int32)(unsafe.Pointer(bp + 24))-trim1-*(*int32)(unsafe.Pointer(bp + 120)))
-		goto _966
-	_966:
-		if false {
-			if int32(1) != 0 {
-				if int32(1) > 0 {
-					v967 = *(*uintptr)(unsafe.Pointer(bp + 8))
 					tosPtr += 4
 					v968 = tosPtr
-					*(*uintptr)(unsafe.Pointer(v968)) = v967
-					(*TTcl_Obj)(unsafe.Pointer(v967)).FrefCount++
-				} else {
-					tosPtr += 4
-					v969 = tosPtr
-					*(*uintptr)(unsafe.Pointer(v969)) = *(*uintptr)(unsafe.Pointer(bp + 8))
+					*(*uintptr)(unsafe.Pointer(v968)) = *(*uintptr)(unsafe.Pointer(bp + 8))
 				}
 			}
 			pc += uintptr(libc.Int32FromInt32(1))
 			goto cleanup0
 		} else {
-			if int32(1) != 0 {
-				if int32(1) > 0 {
+			if 0 != 0 {
+				if 0 > 0 {
 					(*TTcl_Obj)(unsafe.Pointer(*(*uintptr)(unsafe.Pointer(bp + 8)))).FrefCount++
 				}
 				pc += uintptr(libc.Int32FromInt32(1))
-				switch libc.Int32FromInt32(2) {
+				switch libc.Int32FromInt32(1) {
 				case int32(1):
 					goto cleanup1_pushObjResultPtr
 				case int32(2):
@@ -151365,7 +151347,7 @@ createTrimmedString:
 				}
 			} else {
 				pc += uintptr(libc.Int32FromInt32(1))
-				switch libc.Int32FromInt32(2) {
+				switch libc.Int32FromInt32(1) {
 				case int32(1):
 					goto cleanup1
 				case int32(2):
@@ -151376,7 +151358,57 @@ createTrimmedString:
 			}
 		}
 		goto _965
-	_965: /**/
+	_965:
+		goto _964
+	_964: /**/ //
+	} else {
+		*(*uintptr)(unsafe.Pointer(bp + 8)) = XTcl_NewStringObj(tls, string1+uintptr(trim1), *(*int32)(unsafe.Pointer(bp + 24))-trim1-*(*int32)(unsafe.Pointer(bp + 120)))
+		if false {
+			if int32(1) != 0 {
+				if int32(1) > 0 {
+					v971 = *(*uintptr)(unsafe.Pointer(bp + 8))
+					tosPtr += 4
+					v972 = tosPtr
+					*(*uintptr)(unsafe.Pointer(v972)) = v971
+					(*TTcl_Obj)(unsafe.Pointer(v971)).FrefCount++
+				} else {
+					tosPtr += 4
+					v973 = tosPtr
+					*(*uintptr)(unsafe.Pointer(v973)) = *(*uintptr)(unsafe.Pointer(bp + 8))
+				}
+			}
+			pc += uintptr(libc.Int32FromInt32(1))
+			goto cleanup0
+		} else {
+			if int32(1) != 0 {
+				if int32(1) > 0 {
+					(*TTcl_Obj)(unsafe.Pointer(*(*uintptr)(unsafe.Pointer(bp + 8)))).FrefCount++
+				}
+				pc += uintptr(libc.Int32FromInt32(1))
+				switch libc.Int32FromInt32(2) {
+				case int32(1):
+					goto cleanup1_pushObjResultPtr
+				case int32(2):
+					goto cleanup2_pushObjResultPtr
+				case 0:
+					break
+				}
+			} else {
+				pc += uintptr(libc.Int32FromInt32(1))
+				switch libc.Int32FromInt32(2) {
+				case int32(1):
+					goto cleanup1
+				case int32(2):
+					goto cleanup2
+				case 0:
+					break
+				}
+			}
+		}
+		goto _970
+	_970:
+		goto _969
+	_969: /**/
 		//
 	}
 _177:
@@ -151398,44 +151430,236 @@ _177:
 	 * Peep-hole optimisation: if you're about to jump, do jump from here.
 	 * Adjustment is 2 due to the nocase byte.
 	 */
-	goto _971
-_971:
 	pc += uintptr(libc.Int32FromInt32(2))
 	switch int32(*(*uint8)(unsafe.Pointer(pc))) {
 	case int32(m_INST_JUMP_FALSE1):
-		goto _972
-	case int32(m_INST_JUMP_TRUE1):
-		goto _973
-	case int32(m_INST_JUMP_FALSE4):
-		goto _974
-	case int32(m_INST_JUMP_TRUE4):
-		goto _975
-	default:
 		goto _976
+	case int32(m_INST_JUMP_TRUE1):
+		goto _977
+	case int32(m_INST_JUMP_FALSE4):
+		goto _978
+	case int32(m_INST_JUMP_TRUE4):
+		goto _979
+	default:
+		goto _980
 	}
-	goto _977
-_972:
+	goto _981
+_976:
+_984:
+	if false {
+		if 0 != 0 {
+			if 0 > 0 {
+				v985 = *(*uintptr)(unsafe.Pointer(bp + 8))
+				tosPtr += 4
+				v986 = tosPtr
+				*(*uintptr)(unsafe.Pointer(v986)) = v985
+				(*TTcl_Obj)(unsafe.Pointer(v985)).FrefCount++
+			} else {
+				tosPtr += 4
+				v987 = tosPtr
+				*(*uintptr)(unsafe.Pointer(v987)) = *(*uintptr)(unsafe.Pointer(bp + 8))
+			}
+		}
+		if match != 0 {
+			v988 = int32(2)
+		} else {
+			v988 = int32(*(*int8)(unsafe.Pointer(pc + libc.UintptrFromInt32(1))))
+		}
+		pc += uintptr(v988)
+		goto cleanup0
+	} else {
+		if 0 != 0 {
+			if 0 > 0 {
+				(*TTcl_Obj)(unsafe.Pointer(*(*uintptr)(unsafe.Pointer(bp + 8)))).FrefCount++
+			}
+			if match != 0 {
+				v989 = int32(2)
+			} else {
+				v989 = int32(*(*int8)(unsafe.Pointer(pc + libc.UintptrFromInt32(1))))
+			}
+			pc += uintptr(v989)
+			switch libc.Int32FromInt32(2) {
+			case int32(1):
+				goto cleanup1_pushObjResultPtr
+			case int32(2):
+				goto cleanup2_pushObjResultPtr
+			case 0:
+				break
+			}
+		} else {
+			if match != 0 {
+				v990 = int32(2)
+			} else {
+				v990 = int32(*(*int8)(unsafe.Pointer(pc + libc.UintptrFromInt32(1))))
+			}
+			pc += uintptr(v990)
+			switch libc.Int32FromInt32(2) {
+			case int32(1):
+				goto cleanup1
+			case int32(2):
+				goto cleanup2
+			case 0:
+				break
+			}
+		}
+	}
+	goto _983
+_983:
+	if 0 != 0 {
+		goto _984
+	}
+	goto _982
+_982:
+	goto _981
+_977:
+	if false {
+		if 0 != 0 {
+			if 0 > 0 {
+				v993 = *(*uintptr)(unsafe.Pointer(bp + 8))
+				tosPtr += 4
+				v994 = tosPtr
+				*(*uintptr)(unsafe.Pointer(v994)) = v993
+				(*TTcl_Obj)(unsafe.Pointer(v993)).FrefCount++
+			} else {
+				tosPtr += 4
+				v995 = tosPtr
+				*(*uintptr)(unsafe.Pointer(v995)) = *(*uintptr)(unsafe.Pointer(bp + 8))
+			}
+		}
+		if match != 0 {
+			v996 = int32(*(*int8)(unsafe.Pointer(pc + libc.UintptrFromInt32(1))))
+		} else {
+			v996 = int32(2)
+		}
+		pc += uintptr(v996)
+		goto cleanup0
+	} else {
+		if 0 != 0 {
+			if 0 > 0 {
+				(*TTcl_Obj)(unsafe.Pointer(*(*uintptr)(unsafe.Pointer(bp + 8)))).FrefCount++
+			}
+			if match != 0 {
+				v997 = int32(*(*int8)(unsafe.Pointer(pc + libc.UintptrFromInt32(1))))
+			} else {
+				v997 = int32(2)
+			}
+			pc += uintptr(v997)
+			switch libc.Int32FromInt32(2) {
+			case int32(1):
+				goto cleanup1_pushObjResultPtr
+			case int32(2):
+				goto cleanup2_pushObjResultPtr
+			case 0:
+				break
+			}
+		} else {
+			if match != 0 {
+				v998 = int32(*(*int8)(unsafe.Pointer(pc + libc.UintptrFromInt32(1))))
+			} else {
+				v998 = int32(2)
+			}
+			pc += uintptr(v998)
+			switch libc.Int32FromInt32(2) {
+			case int32(1):
+				goto cleanup1
+			case int32(2):
+				goto cleanup2
+			case 0:
+				break
+			}
+		}
+	}
+	goto _992
+_992:
+	goto _991
+_991: /**/
+	; //
+	goto _981
+_978:
+	if false {
+		if 0 != 0 {
+			if 0 > 0 {
+				v1001 = *(*uintptr)(unsafe.Pointer(bp + 8))
+				tosPtr += 4
+				v1002 = tosPtr
+				*(*uintptr)(unsafe.Pointer(v1002)) = v1001
+				(*TTcl_Obj)(unsafe.Pointer(v1001)).FrefCount++
+			} else {
+				tosPtr += 4
+				v1003 = tosPtr
+				*(*uintptr)(unsafe.Pointer(v1003)) = *(*uintptr)(unsafe.Pointer(bp + 8))
+			}
+		}
+		if match != 0 {
+			v1004 = int32(5)
+		} else {
+			v1004 = int32(uint32(*(*uint8)(unsafe.Pointer(pc + libc.UintptrFromInt32(1))))<<libc.Int32FromInt32(24)) | int32(*(*uint8)(unsafe.Pointer(pc + libc.UintptrFromInt32(1) + libc.UintptrFromInt32(1))))<<int32(16) | int32(*(*uint8)(unsafe.Pointer(pc + libc.UintptrFromInt32(1) + libc.UintptrFromInt32(2))))<<int32(8) | int32(*(*uint8)(unsafe.Pointer(pc + libc.UintptrFromInt32(1) + libc.UintptrFromInt32(3))))
+		}
+		pc += uintptr(v1004)
+		goto cleanup0
+	} else {
+		if 0 != 0 {
+			if 0 > 0 {
+				(*TTcl_Obj)(unsafe.Pointer(*(*uintptr)(unsafe.Pointer(bp + 8)))).FrefCount++
+			}
+			if match != 0 {
+				v1005 = int32(5)
+			} else {
+				v1005 = int32(uint32(*(*uint8)(unsafe.Pointer(pc + libc.UintptrFromInt32(1))))<<libc.Int32FromInt32(24)) | int32(*(*uint8)(unsafe.Pointer(pc + libc.UintptrFromInt32(1) + libc.UintptrFromInt32(1))))<<int32(16) | int32(*(*uint8)(unsafe.Pointer(pc + libc.UintptrFromInt32(1) + libc.UintptrFromInt32(2))))<<int32(8) | int32(*(*uint8)(unsafe.Pointer(pc + libc.UintptrFromInt32(1) + libc.UintptrFromInt32(3))))
+			}
+			pc += uintptr(v1005)
+			switch libc.Int32FromInt32(2) {
+			case int32(1):
+				goto cleanup1_pushObjResultPtr
+			case int32(2):
+				goto cleanup2_pushObjResultPtr
+			case 0:
+				break
+			}
+		} else {
+			if match != 0 {
+				v1006 = int32(5)
+			} else {
+				v1006 = int32(uint32(*(*uint8)(unsafe.Pointer(pc + libc.UintptrFromInt32(1))))<<libc.Int32FromInt32(24)) | int32(*(*uint8)(unsafe.Pointer(pc + libc.UintptrFromInt32(1) + libc.UintptrFromInt32(1))))<<int32(16) | int32(*(*uint8)(unsafe.Pointer(pc + libc.UintptrFromInt32(1) + libc.UintptrFromInt32(2))))<<int32(8) | int32(*(*uint8)(unsafe.Pointer(pc + libc.UintptrFromInt32(1) + libc.UintptrFromInt32(3))))
+			}
+			pc += uintptr(v1006)
+			switch libc.Int32FromInt32(2) {
+			case int32(1):
+				goto cleanup1
+			case int32(2):
+				goto cleanup2
+			case 0:
+				break
+			}
+		}
+	}
+	goto _1000
+_1000:
+	goto _999
+_999: /**/
+	; //
+	goto _981
 _979:
 	if false {
 		if 0 != 0 {
 			if 0 > 0 {
-				v980 = *(*uintptr)(unsafe.Pointer(bp + 8))
+				v1009 = *(*uintptr)(unsafe.Pointer(bp + 8))
 				tosPtr += 4
-				v981 = tosPtr
-				*(*uintptr)(unsafe.Pointer(v981)) = v980
-				(*TTcl_Obj)(unsafe.Pointer(v980)).FrefCount++
+				v1010 = tosPtr
+				*(*uintptr)(unsafe.Pointer(v1010)) = v1009
+				(*TTcl_Obj)(unsafe.Pointer(v1009)).FrefCount++
 			} else {
 				tosPtr += 4
-				v982 = tosPtr
-				*(*uintptr)(unsafe.Pointer(v982)) = *(*uintptr)(unsafe.Pointer(bp + 8))
+				v1011 = tosPtr
+				*(*uintptr)(unsafe.Pointer(v1011)) = *(*uintptr)(unsafe.Pointer(bp + 8))
 			}
 		}
 		if match != 0 {
-			v983 = int32(2)
+			v1012 = int32(uint32(*(*uint8)(unsafe.Pointer(pc + libc.UintptrFromInt32(1))))<<libc.Int32FromInt32(24)) | int32(*(*uint8)(unsafe.Pointer(pc + libc.UintptrFromInt32(1) + libc.UintptrFromInt32(1))))<<int32(16) | int32(*(*uint8)(unsafe.Pointer(pc + libc.UintptrFromInt32(1) + libc.UintptrFromInt32(2))))<<int32(8) | int32(*(*uint8)(unsafe.Pointer(pc + libc.UintptrFromInt32(1) + libc.UintptrFromInt32(3))))
 		} else {
-			v983 = int32(*(*int8)(unsafe.Pointer(pc + libc.UintptrFromInt32(1))))
+			v1012 = int32(5)
 		}
-		pc += uintptr(v983)
+		pc += uintptr(v1012)
 		goto cleanup0
 	} else {
 		if 0 != 0 {
@@ -151443,11 +151667,11 @@ _979:
 				(*TTcl_Obj)(unsafe.Pointer(*(*uintptr)(unsafe.Pointer(bp + 8)))).FrefCount++
 			}
 			if match != 0 {
-				v984 = int32(2)
+				v1013 = int32(uint32(*(*uint8)(unsafe.Pointer(pc + libc.UintptrFromInt32(1))))<<libc.Int32FromInt32(24)) | int32(*(*uint8)(unsafe.Pointer(pc + libc.UintptrFromInt32(1) + libc.UintptrFromInt32(1))))<<int32(16) | int32(*(*uint8)(unsafe.Pointer(pc + libc.UintptrFromInt32(1) + libc.UintptrFromInt32(2))))<<int32(8) | int32(*(*uint8)(unsafe.Pointer(pc + libc.UintptrFromInt32(1) + libc.UintptrFromInt32(3))))
 			} else {
-				v984 = int32(*(*int8)(unsafe.Pointer(pc + libc.UintptrFromInt32(1))))
+				v1013 = int32(5)
 			}
-			pc += uintptr(v984)
+			pc += uintptr(v1013)
 			switch libc.Int32FromInt32(2) {
 			case int32(1):
 				goto cleanup1_pushObjResultPtr
@@ -151458,11 +151682,11 @@ _979:
 			}
 		} else {
 			if match != 0 {
-				v985 = int32(2)
+				v1014 = int32(uint32(*(*uint8)(unsafe.Pointer(pc + libc.UintptrFromInt32(1))))<<libc.Int32FromInt32(24)) | int32(*(*uint8)(unsafe.Pointer(pc + libc.UintptrFromInt32(1) + libc.UintptrFromInt32(1))))<<int32(16) | int32(*(*uint8)(unsafe.Pointer(pc + libc.UintptrFromInt32(1) + libc.UintptrFromInt32(2))))<<int32(8) | int32(*(*uint8)(unsafe.Pointer(pc + libc.UintptrFromInt32(1) + libc.UintptrFromInt32(3))))
 			} else {
-				v985 = int32(*(*int8)(unsafe.Pointer(pc + libc.UintptrFromInt32(1))))
+				v1014 = int32(5)
 			}
-			pc += uintptr(v985)
+			pc += uintptr(v1014)
 			switch libc.Int32FromInt32(2) {
 			case int32(1):
 				goto cleanup1
@@ -151473,205 +151697,13 @@ _979:
 			}
 		}
 	}
-	if 0 != 0 {
-		goto _979
-	}
-	goto _978
-_978:
-	goto _977
-_973:
-	goto _987
-_987:
-	if false {
-		if 0 != 0 {
-			if 0 > 0 {
-				v988 = *(*uintptr)(unsafe.Pointer(bp + 8))
-				tosPtr += 4
-				v989 = tosPtr
-				*(*uintptr)(unsafe.Pointer(v989)) = v988
-				(*TTcl_Obj)(unsafe.Pointer(v988)).FrefCount++
-			} else {
-				tosPtr += 4
-				v990 = tosPtr
-				*(*uintptr)(unsafe.Pointer(v990)) = *(*uintptr)(unsafe.Pointer(bp + 8))
-			}
-		}
-		if match != 0 {
-			v991 = int32(*(*int8)(unsafe.Pointer(pc + libc.UintptrFromInt32(1))))
-		} else {
-			v991 = int32(2)
-		}
-		pc += uintptr(v991)
-		goto cleanup0
-	} else {
-		if 0 != 0 {
-			if 0 > 0 {
-				(*TTcl_Obj)(unsafe.Pointer(*(*uintptr)(unsafe.Pointer(bp + 8)))).FrefCount++
-			}
-			if match != 0 {
-				v992 = int32(*(*int8)(unsafe.Pointer(pc + libc.UintptrFromInt32(1))))
-			} else {
-				v992 = int32(2)
-			}
-			pc += uintptr(v992)
-			switch libc.Int32FromInt32(2) {
-			case int32(1):
-				goto cleanup1_pushObjResultPtr
-			case int32(2):
-				goto cleanup2_pushObjResultPtr
-			case 0:
-				break
-			}
-		} else {
-			if match != 0 {
-				v993 = int32(*(*int8)(unsafe.Pointer(pc + libc.UintptrFromInt32(1))))
-			} else {
-				v993 = int32(2)
-			}
-			pc += uintptr(v993)
-			switch libc.Int32FromInt32(2) {
-			case int32(1):
-				goto cleanup1
-			case int32(2):
-				goto cleanup2
-			case 0:
-				break
-			}
-		}
-	}
-	goto _986
-_986: /**/
+	goto _1008
+_1008:
+	goto _1007
+_1007: /**/
 	; //
-	goto _977
-_974:
-	goto _995
-_995:
-	if false {
-		if 0 != 0 {
-			if 0 > 0 {
-				v996 = *(*uintptr)(unsafe.Pointer(bp + 8))
-				tosPtr += 4
-				v997 = tosPtr
-				*(*uintptr)(unsafe.Pointer(v997)) = v996
-				(*TTcl_Obj)(unsafe.Pointer(v996)).FrefCount++
-			} else {
-				tosPtr += 4
-				v998 = tosPtr
-				*(*uintptr)(unsafe.Pointer(v998)) = *(*uintptr)(unsafe.Pointer(bp + 8))
-			}
-		}
-		if match != 0 {
-			v999 = int32(5)
-		} else {
-			v999 = int32(uint32(*(*uint8)(unsafe.Pointer(pc + libc.UintptrFromInt32(1))))<<libc.Int32FromInt32(24)) | int32(*(*uint8)(unsafe.Pointer(pc + libc.UintptrFromInt32(1) + libc.UintptrFromInt32(1))))<<int32(16) | int32(*(*uint8)(unsafe.Pointer(pc + libc.UintptrFromInt32(1) + libc.UintptrFromInt32(2))))<<int32(8) | int32(*(*uint8)(unsafe.Pointer(pc + libc.UintptrFromInt32(1) + libc.UintptrFromInt32(3))))
-		}
-		pc += uintptr(v999)
-		goto cleanup0
-	} else {
-		if 0 != 0 {
-			if 0 > 0 {
-				(*TTcl_Obj)(unsafe.Pointer(*(*uintptr)(unsafe.Pointer(bp + 8)))).FrefCount++
-			}
-			if match != 0 {
-				v1000 = int32(5)
-			} else {
-				v1000 = int32(uint32(*(*uint8)(unsafe.Pointer(pc + libc.UintptrFromInt32(1))))<<libc.Int32FromInt32(24)) | int32(*(*uint8)(unsafe.Pointer(pc + libc.UintptrFromInt32(1) + libc.UintptrFromInt32(1))))<<int32(16) | int32(*(*uint8)(unsafe.Pointer(pc + libc.UintptrFromInt32(1) + libc.UintptrFromInt32(2))))<<int32(8) | int32(*(*uint8)(unsafe.Pointer(pc + libc.UintptrFromInt32(1) + libc.UintptrFromInt32(3))))
-			}
-			pc += uintptr(v1000)
-			switch libc.Int32FromInt32(2) {
-			case int32(1):
-				goto cleanup1_pushObjResultPtr
-			case int32(2):
-				goto cleanup2_pushObjResultPtr
-			case 0:
-				break
-			}
-		} else {
-			if match != 0 {
-				v1001 = int32(5)
-			} else {
-				v1001 = int32(uint32(*(*uint8)(unsafe.Pointer(pc + libc.UintptrFromInt32(1))))<<libc.Int32FromInt32(24)) | int32(*(*uint8)(unsafe.Pointer(pc + libc.UintptrFromInt32(1) + libc.UintptrFromInt32(1))))<<int32(16) | int32(*(*uint8)(unsafe.Pointer(pc + libc.UintptrFromInt32(1) + libc.UintptrFromInt32(2))))<<int32(8) | int32(*(*uint8)(unsafe.Pointer(pc + libc.UintptrFromInt32(1) + libc.UintptrFromInt32(3))))
-			}
-			pc += uintptr(v1001)
-			switch libc.Int32FromInt32(2) {
-			case int32(1):
-				goto cleanup1
-			case int32(2):
-				goto cleanup2
-			case 0:
-				break
-			}
-		}
-	}
-	goto _994
-_994: /**/
-	; //
-	goto _977
-_975:
-	goto _1003
-_1003:
-	if false {
-		if 0 != 0 {
-			if 0 > 0 {
-				v1004 = *(*uintptr)(unsafe.Pointer(bp + 8))
-				tosPtr += 4
-				v1005 = tosPtr
-				*(*uintptr)(unsafe.Pointer(v1005)) = v1004
-				(*TTcl_Obj)(unsafe.Pointer(v1004)).FrefCount++
-			} else {
-				tosPtr += 4
-				v1006 = tosPtr
-				*(*uintptr)(unsafe.Pointer(v1006)) = *(*uintptr)(unsafe.Pointer(bp + 8))
-			}
-		}
-		if match != 0 {
-			v1007 = int32(uint32(*(*uint8)(unsafe.Pointer(pc + libc.UintptrFromInt32(1))))<<libc.Int32FromInt32(24)) | int32(*(*uint8)(unsafe.Pointer(pc + libc.UintptrFromInt32(1) + libc.UintptrFromInt32(1))))<<int32(16) | int32(*(*uint8)(unsafe.Pointer(pc + libc.UintptrFromInt32(1) + libc.UintptrFromInt32(2))))<<int32(8) | int32(*(*uint8)(unsafe.Pointer(pc + libc.UintptrFromInt32(1) + libc.UintptrFromInt32(3))))
-		} else {
-			v1007 = int32(5)
-		}
-		pc += uintptr(v1007)
-		goto cleanup0
-	} else {
-		if 0 != 0 {
-			if 0 > 0 {
-				(*TTcl_Obj)(unsafe.Pointer(*(*uintptr)(unsafe.Pointer(bp + 8)))).FrefCount++
-			}
-			if match != 0 {
-				v1008 = int32(uint32(*(*uint8)(unsafe.Pointer(pc + libc.UintptrFromInt32(1))))<<libc.Int32FromInt32(24)) | int32(*(*uint8)(unsafe.Pointer(pc + libc.UintptrFromInt32(1) + libc.UintptrFromInt32(1))))<<int32(16) | int32(*(*uint8)(unsafe.Pointer(pc + libc.UintptrFromInt32(1) + libc.UintptrFromInt32(2))))<<int32(8) | int32(*(*uint8)(unsafe.Pointer(pc + libc.UintptrFromInt32(1) + libc.UintptrFromInt32(3))))
-			} else {
-				v1008 = int32(5)
-			}
-			pc += uintptr(v1008)
-			switch libc.Int32FromInt32(2) {
-			case int32(1):
-				goto cleanup1_pushObjResultPtr
-			case int32(2):
-				goto cleanup2_pushObjResultPtr
-			case 0:
-				break
-			}
-		} else {
-			if match != 0 {
-				v1009 = int32(uint32(*(*uint8)(unsafe.Pointer(pc + libc.UintptrFromInt32(1))))<<libc.Int32FromInt32(24)) | int32(*(*uint8)(unsafe.Pointer(pc + libc.UintptrFromInt32(1) + libc.UintptrFromInt32(1))))<<int32(16) | int32(*(*uint8)(unsafe.Pointer(pc + libc.UintptrFromInt32(1) + libc.UintptrFromInt32(2))))<<int32(8) | int32(*(*uint8)(unsafe.Pointer(pc + libc.UintptrFromInt32(1) + libc.UintptrFromInt32(3))))
-			} else {
-				v1009 = int32(5)
-			}
-			pc += uintptr(v1009)
-			switch libc.Int32FromInt32(2) {
-			case int32(1):
-				goto cleanup1
-			case int32(2):
-				goto cleanup2
-			case 0:
-				break
-			}
-		}
-	}
-	goto _1002
-_1002: /**/
-	; //
-	goto _977
-_976:
+	goto _981
+_980:
 	if match < 0 {
 		if XtclFreeObjList == libc.UintptrFromInt32(0) {
 			XTclAllocateFreeObjects(tls)
@@ -151688,20 +151720,18 @@ _976:
 	} else {
 		*(*uintptr)(unsafe.Pointer(bp + 8)) = *(*uintptr)(unsafe.Pointer(constants + libc.BoolUintptr(match > libc.Int32FromInt32(0))*4))
 	}
-	goto _1011
-_1011:
 	if false {
 		if int32(1) != 0 {
 			if int32(1) > 0 {
-				v1012 = *(*uintptr)(unsafe.Pointer(bp + 8))
+				v1017 = *(*uintptr)(unsafe.Pointer(bp + 8))
 				tosPtr += 4
-				v1013 = tosPtr
-				*(*uintptr)(unsafe.Pointer(v1013)) = v1012
-				(*TTcl_Obj)(unsafe.Pointer(v1012)).FrefCount++
+				v1018 = tosPtr
+				*(*uintptr)(unsafe.Pointer(v1018)) = v1017
+				(*TTcl_Obj)(unsafe.Pointer(v1017)).FrefCount++
 			} else {
 				tosPtr += 4
-				v1014 = tosPtr
-				*(*uintptr)(unsafe.Pointer(v1014)) = *(*uintptr)(unsafe.Pointer(bp + 8))
+				v1019 = tosPtr
+				*(*uintptr)(unsafe.Pointer(v1019)) = *(*uintptr)(unsafe.Pointer(bp + 8))
 			}
 		}
 		pc += uintptr(libc.Int32FromInt32(0))
@@ -151732,13 +151762,17 @@ _1011:
 			}
 		}
 	}
-	goto _1010
-_1010: /**/
+	goto _1016
+_1016:
+	goto _1015
+_1015: /**/
 	; //
-	goto _977
-_977:
-	goto _970
-_970: /**/
+	goto _981
+_981:
+	goto _975
+_975:
+	goto _974
+_974: /**/
 	; //
 	/*
 	 *	   End of string-related instructions.
@@ -151749,77 +151783,77 @@ _178:
 	if (*TTcl_Obj)(unsafe.Pointer(*(*uintptr)(unsafe.Pointer(tosPtr)))).FtypePtr == uintptr(unsafe.Pointer(&XtclIntType)) {
 		*(*int32)(unsafe.Pointer(bp + 132)) = int32(m_TCL_NUMBER_LONG)
 		*(*TClientData)(unsafe.Pointer(bp + 124)) = *(*uintptr)(unsafe.Pointer(tosPtr)) + 16
-		v1015 = libc.Int32FromInt32(m_TCL_OK)
+		v1020 = libc.Int32FromInt32(m_TCL_OK)
 	} else {
 		if (*TTcl_Obj)(unsafe.Pointer(*(*uintptr)(unsafe.Pointer(tosPtr)))).FtypePtr == uintptr(unsafe.Pointer(&XtclWideIntType)) {
 			*(*int32)(unsafe.Pointer(bp + 132)) = int32(m_TCL_NUMBER_WIDE)
 			*(*TClientData)(unsafe.Pointer(bp + 124)) = *(*uintptr)(unsafe.Pointer(tosPtr)) + 16
-			v1016 = libc.Int32FromInt32(m_TCL_OK)
+			v1021 = libc.Int32FromInt32(m_TCL_OK)
 		} else {
 			if (*TTcl_Obj)(unsafe.Pointer(*(*uintptr)(unsafe.Pointer(tosPtr)))).FtypePtr == uintptr(unsafe.Pointer(&XtclDoubleType)) {
 				*(*float64)(unsafe.Pointer(bp)) = *(*float64)(unsafe.Pointer(*(*uintptr)(unsafe.Pointer(tosPtr)) + 16))
-				v1019 = *(*uint64)(unsafe.Pointer(bp))
-				goto _1020
-			_1020:
-				if libc.BoolInt32(v1019&(-libc.Uint64FromUint64(1)>>libc.Int32FromInt32(1)) > libc.Uint64FromUint64(0x7ff)<<libc.Int32FromInt32(52)) != 0 {
+				v1024 = *(*uint64)(unsafe.Pointer(bp))
+				goto _1025
+			_1025:
+				if libc.BoolInt32(v1024&(-libc.Uint64FromUint64(1)>>libc.Int32FromInt32(1)) > libc.Uint64FromUint64(0x7ff)<<libc.Int32FromInt32(52)) != 0 {
 					*(*int32)(unsafe.Pointer(bp + 132)) = int32(m_TCL_NUMBER_NAN)
 				} else {
 					*(*int32)(unsafe.Pointer(bp + 132)) = int32(m_TCL_NUMBER_DOUBLE)
 				}
 				*(*TClientData)(unsafe.Pointer(bp + 124)) = *(*uintptr)(unsafe.Pointer(tosPtr)) + 16
-				v1017 = libc.Int32FromInt32(m_TCL_OK)
+				v1022 = libc.Int32FromInt32(m_TCL_OK)
 			} else {
 				if (*TTcl_Obj)(unsafe.Pointer(*(*uintptr)(unsafe.Pointer(tosPtr)))).Fbytes != libc.UintptrFromInt32(0) && (*TTcl_Obj)(unsafe.Pointer(*(*uintptr)(unsafe.Pointer(tosPtr)))).Flength == 0 {
 					*(*int32)(unsafe.Pointer(bp + 132)) = int32(m_TCL_NUMBER_LONG)
-					v1021 = libc.Int32FromInt32(m_TCL_ERROR)
+					v1026 = libc.Int32FromInt32(m_TCL_ERROR)
 				} else {
-					v1021 = XTclGetNumberFromObj(tls, libc.UintptrFromInt32(0), *(*uintptr)(unsafe.Pointer(tosPtr)), bp+124, bp+132)
+					v1026 = XTclGetNumberFromObj(tls, libc.UintptrFromInt32(0), *(*uintptr)(unsafe.Pointer(tosPtr)), bp+124, bp+132)
 				}
-				v1017 = v1021
+				v1022 = v1026
 			}
-			v1016 = v1017
+			v1021 = v1022
 		}
-		v1015 = v1016
+		v1020 = v1021
 	}
-	if v1015 != m_TCL_OK {
+	if v1020 != m_TCL_OK {
 		*(*int32)(unsafe.Pointer(bp + 132)) = 0
 	} else {
 		if *(*int32)(unsafe.Pointer(bp + 132)) == int32(m_TCL_NUMBER_LONG) {
 			if (*TTcl_Obj)(unsafe.Pointer(*(*uintptr)(unsafe.Pointer(tosPtr)))).FtypePtr == uintptr(unsafe.Pointer(&XtclIntType)) {
 				*(*int32)(unsafe.Pointer(bp + 140)) = (*TTcl_Obj)(unsafe.Pointer(*(*uintptr)(unsafe.Pointer(tosPtr)))).FinternalRep.FlongValue
-				v1022 = libc.Int32FromInt32(m_TCL_OK)
+				v1027 = libc.Int32FromInt32(m_TCL_OK)
 			} else {
-				v1022 = XTcl_GetIntFromObj(tls, libc.UintptrFromInt32(0), *(*uintptr)(unsafe.Pointer(tosPtr)), bp+140)
+				v1027 = XTcl_GetIntFromObj(tls, libc.UintptrFromInt32(0), *(*uintptr)(unsafe.Pointer(tosPtr)), bp+140)
 			}
-			if v1022 != m_TCL_OK {
+			if v1027 != m_TCL_OK {
 				*(*int32)(unsafe.Pointer(bp + 132)) = int32(m_TCL_NUMBER_WIDE)
 			}
 		} else {
 			if *(*int32)(unsafe.Pointer(bp + 132)) == int32(m_TCL_NUMBER_WIDE) {
 				if (*TTcl_Obj)(unsafe.Pointer(*(*uintptr)(unsafe.Pointer(tosPtr)))).FtypePtr == uintptr(unsafe.Pointer(&XtclIntType)) {
 					*(*int32)(unsafe.Pointer(bp + 144)) = (*TTcl_Obj)(unsafe.Pointer(*(*uintptr)(unsafe.Pointer(tosPtr)))).FinternalRep.FlongValue
-					v1023 = libc.Int32FromInt32(m_TCL_OK)
+					v1028 = libc.Int32FromInt32(m_TCL_OK)
 				} else {
-					v1023 = XTcl_GetIntFromObj(tls, libc.UintptrFromInt32(0), *(*uintptr)(unsafe.Pointer(tosPtr)), bp+144)
+					v1028 = XTcl_GetIntFromObj(tls, libc.UintptrFromInt32(0), *(*uintptr)(unsafe.Pointer(tosPtr)), bp+144)
 				}
-				if v1023 == m_TCL_OK {
+				if v1028 == m_TCL_OK {
 					*(*int32)(unsafe.Pointer(bp + 132)) = int32(m_TCL_NUMBER_LONG)
 				}
 			} else {
 				if *(*int32)(unsafe.Pointer(bp + 132)) == int32(m_TCL_NUMBER_BIG) {
 					if (*TTcl_Obj)(unsafe.Pointer(*(*uintptr)(unsafe.Pointer(tosPtr)))).FtypePtr == uintptr(unsafe.Pointer(&XtclWideIntType)) {
 						*(*TTcl_WideInt)(unsafe.Pointer(bp + 152)) = *(*TTcl_WideInt)(unsafe.Pointer(*(*uintptr)(unsafe.Pointer(tosPtr)) + 16))
-						v1024 = libc.Int32FromInt32(m_TCL_OK)
+						v1029 = libc.Int32FromInt32(m_TCL_OK)
 					} else {
 						if (*TTcl_Obj)(unsafe.Pointer(*(*uintptr)(unsafe.Pointer(tosPtr)))).FtypePtr == uintptr(unsafe.Pointer(&XtclIntType)) {
 							*(*TTcl_WideInt)(unsafe.Pointer(bp + 152)) = int64((*TTcl_Obj)(unsafe.Pointer(*(*uintptr)(unsafe.Pointer(tosPtr)))).FinternalRep.FlongValue)
-							v1025 = libc.Int32FromInt32(m_TCL_OK)
+							v1030 = libc.Int32FromInt32(m_TCL_OK)
 						} else {
-							v1025 = XTcl_GetWideIntFromObj(tls, libc.UintptrFromInt32(0), *(*uintptr)(unsafe.Pointer(tosPtr)), bp+152)
+							v1030 = XTcl_GetWideIntFromObj(tls, libc.UintptrFromInt32(0), *(*uintptr)(unsafe.Pointer(tosPtr)), bp+152)
 						}
-						v1024 = v1025
+						v1029 = v1030
 					}
-					if v1024 == m_TCL_OK {
+					if v1029 == m_TCL_OK {
 						*(*int32)(unsafe.Pointer(bp + 132)) = int32(m_TCL_NUMBER_WIDE)
 					}
 				}
@@ -151838,20 +151872,18 @@ _178:
 	(*TTcl_Obj)(unsafe.Pointer(*(*uintptr)(unsafe.Pointer(bp + 8)))).Fbytes = libc.UintptrFromInt32(0)
 	(*TTcl_Obj)(unsafe.Pointer(*(*uintptr)(unsafe.Pointer(bp + 8)))).FinternalRep.FlongValue = *(*int32)(unsafe.Pointer(bp + 132))
 	(*TTcl_Obj)(unsafe.Pointer(*(*uintptr)(unsafe.Pointer(bp + 8)))).FtypePtr = uintptr(unsafe.Pointer(&XtclIntType))
-	goto _1027
-_1027:
 	if false {
 		if int32(1) != 0 {
 			if int32(1) > 0 {
-				v1028 = *(*uintptr)(unsafe.Pointer(bp + 8))
+				v1033 = *(*uintptr)(unsafe.Pointer(bp + 8))
 				tosPtr += 4
-				v1029 = tosPtr
-				*(*uintptr)(unsafe.Pointer(v1029)) = v1028
-				(*TTcl_Obj)(unsafe.Pointer(v1028)).FrefCount++
+				v1034 = tosPtr
+				*(*uintptr)(unsafe.Pointer(v1034)) = v1033
+				(*TTcl_Obj)(unsafe.Pointer(v1033)).FrefCount++
 			} else {
 				tosPtr += 4
-				v1030 = tosPtr
-				*(*uintptr)(unsafe.Pointer(v1030)) = *(*uintptr)(unsafe.Pointer(bp + 8))
+				v1035 = tosPtr
+				*(*uintptr)(unsafe.Pointer(v1035)) = *(*uintptr)(unsafe.Pointer(bp + 8))
 			}
 		}
 		pc += uintptr(libc.Int32FromInt32(1))
@@ -151882,8 +151914,10 @@ _1027:
 			}
 		}
 	}
-	goto _1026
-_1026: /**/
+	goto _1032
+_1032:
+	goto _1031
+_1031: /**/
 	; //
 _184:
 _183:
@@ -151905,76 +151939,76 @@ _179:
 	if (*TTcl_Obj)(unsafe.Pointer(*(*uintptr)(unsafe.Pointer(bp + 12)))).FtypePtr == uintptr(unsafe.Pointer(&XtclIntType)) {
 		*(*int32)(unsafe.Pointer(bp + 132)) = int32(m_TCL_NUMBER_LONG)
 		*(*TClientData)(unsafe.Pointer(bp + 124)) = *(*uintptr)(unsafe.Pointer(bp + 12)) + 16
-		v1031 = libc.Int32FromInt32(m_TCL_OK)
+		v1036 = libc.Int32FromInt32(m_TCL_OK)
 	} else {
 		if (*TTcl_Obj)(unsafe.Pointer(*(*uintptr)(unsafe.Pointer(bp + 12)))).FtypePtr == uintptr(unsafe.Pointer(&XtclWideIntType)) {
 			*(*int32)(unsafe.Pointer(bp + 132)) = int32(m_TCL_NUMBER_WIDE)
 			*(*TClientData)(unsafe.Pointer(bp + 124)) = *(*uintptr)(unsafe.Pointer(bp + 12)) + 16
-			v1032 = libc.Int32FromInt32(m_TCL_OK)
+			v1037 = libc.Int32FromInt32(m_TCL_OK)
 		} else {
 			if (*TTcl_Obj)(unsafe.Pointer(*(*uintptr)(unsafe.Pointer(bp + 12)))).FtypePtr == uintptr(unsafe.Pointer(&XtclDoubleType)) {
 				*(*float64)(unsafe.Pointer(bp)) = *(*float64)(unsafe.Pointer(*(*uintptr)(unsafe.Pointer(bp + 12)) + 16))
-				v1035 = *(*uint64)(unsafe.Pointer(bp))
-				goto _1036
-			_1036:
-				if libc.BoolInt32(v1035&(-libc.Uint64FromUint64(1)>>libc.Int32FromInt32(1)) > libc.Uint64FromUint64(0x7ff)<<libc.Int32FromInt32(52)) != 0 {
+				v1040 = *(*uint64)(unsafe.Pointer(bp))
+				goto _1041
+			_1041:
+				if libc.BoolInt32(v1040&(-libc.Uint64FromUint64(1)>>libc.Int32FromInt32(1)) > libc.Uint64FromUint64(0x7ff)<<libc.Int32FromInt32(52)) != 0 {
 					*(*int32)(unsafe.Pointer(bp + 132)) = int32(m_TCL_NUMBER_NAN)
 				} else {
 					*(*int32)(unsafe.Pointer(bp + 132)) = int32(m_TCL_NUMBER_DOUBLE)
 				}
 				*(*TClientData)(unsafe.Pointer(bp + 124)) = *(*uintptr)(unsafe.Pointer(bp + 12)) + 16
-				v1033 = libc.Int32FromInt32(m_TCL_OK)
+				v1038 = libc.Int32FromInt32(m_TCL_OK)
 			} else {
 				if (*TTcl_Obj)(unsafe.Pointer(*(*uintptr)(unsafe.Pointer(bp + 12)))).Fbytes != libc.UintptrFromInt32(0) && (*TTcl_Obj)(unsafe.Pointer(*(*uintptr)(unsafe.Pointer(bp + 12)))).Flength == 0 {
 					*(*int32)(unsafe.Pointer(bp + 132)) = int32(m_TCL_NUMBER_LONG)
-					v1037 = libc.Int32FromInt32(m_TCL_ERROR)
+					v1042 = libc.Int32FromInt32(m_TCL_ERROR)
 				} else {
-					v1037 = XTclGetNumberFromObj(tls, libc.UintptrFromInt32(0), *(*uintptr)(unsafe.Pointer(bp + 12)), bp+124, bp+132)
+					v1042 = XTclGetNumberFromObj(tls, libc.UintptrFromInt32(0), *(*uintptr)(unsafe.Pointer(bp + 12)), bp+124, bp+132)
 				}
-				v1033 = v1037
+				v1038 = v1042
 			}
-			v1032 = v1033
+			v1037 = v1038
 		}
-		v1031 = v1032
+		v1036 = v1037
 	}
-	if v1045 = v1031 != m_TCL_OK; !v1045 {
+	if v1050 = v1036 != m_TCL_OK; !v1050 {
 		if (*TTcl_Obj)(unsafe.Pointer(value2Ptr)).FtypePtr == uintptr(unsafe.Pointer(&XtclIntType)) {
 			*(*int32)(unsafe.Pointer(bp + 136)) = int32(m_TCL_NUMBER_LONG)
 			*(*TClientData)(unsafe.Pointer(bp + 128)) = value2Ptr + 16
-			v1038 = libc.Int32FromInt32(m_TCL_OK)
+			v1043 = libc.Int32FromInt32(m_TCL_OK)
 		} else {
 			if (*TTcl_Obj)(unsafe.Pointer(value2Ptr)).FtypePtr == uintptr(unsafe.Pointer(&XtclWideIntType)) {
 				*(*int32)(unsafe.Pointer(bp + 136)) = int32(m_TCL_NUMBER_WIDE)
 				*(*TClientData)(unsafe.Pointer(bp + 128)) = value2Ptr + 16
-				v1039 = libc.Int32FromInt32(m_TCL_OK)
+				v1044 = libc.Int32FromInt32(m_TCL_OK)
 			} else {
 				if (*TTcl_Obj)(unsafe.Pointer(value2Ptr)).FtypePtr == uintptr(unsafe.Pointer(&XtclDoubleType)) {
 					*(*float64)(unsafe.Pointer(bp)) = *(*float64)(unsafe.Pointer(value2Ptr + 16))
-					v1042 = *(*uint64)(unsafe.Pointer(bp))
-					goto _1043
-				_1043:
-					if libc.BoolInt32(v1042&(-libc.Uint64FromUint64(1)>>libc.Int32FromInt32(1)) > libc.Uint64FromUint64(0x7ff)<<libc.Int32FromInt32(52)) != 0 {
+					v1047 = *(*uint64)(unsafe.Pointer(bp))
+					goto _1048
+				_1048:
+					if libc.BoolInt32(v1047&(-libc.Uint64FromUint64(1)>>libc.Int32FromInt32(1)) > libc.Uint64FromUint64(0x7ff)<<libc.Int32FromInt32(52)) != 0 {
 						*(*int32)(unsafe.Pointer(bp + 136)) = int32(m_TCL_NUMBER_NAN)
 					} else {
 						*(*int32)(unsafe.Pointer(bp + 136)) = int32(m_TCL_NUMBER_DOUBLE)
 					}
 					*(*TClientData)(unsafe.Pointer(bp + 128)) = value2Ptr + 16
-					v1040 = libc.Int32FromInt32(m_TCL_OK)
+					v1045 = libc.Int32FromInt32(m_TCL_OK)
 				} else {
 					if (*TTcl_Obj)(unsafe.Pointer(value2Ptr)).Fbytes != libc.UintptrFromInt32(0) && (*TTcl_Obj)(unsafe.Pointer(value2Ptr)).Flength == 0 {
 						*(*int32)(unsafe.Pointer(bp + 136)) = int32(m_TCL_NUMBER_LONG)
-						v1044 = libc.Int32FromInt32(m_TCL_ERROR)
+						v1049 = libc.Int32FromInt32(m_TCL_ERROR)
 					} else {
-						v1044 = XTclGetNumberFromObj(tls, libc.UintptrFromInt32(0), value2Ptr, bp+128, bp+136)
+						v1049 = XTclGetNumberFromObj(tls, libc.UintptrFromInt32(0), value2Ptr, bp+128, bp+136)
 					}
-					v1040 = v1044
+					v1045 = v1049
 				}
-				v1039 = v1040
+				v1044 = v1045
 			}
-			v1038 = v1039
+			v1043 = v1044
 		}
 	}
-	if v1045 || v1038 != m_TCL_OK {
+	if v1050 || v1043 != m_TCL_OK {
 		/*
 		 * At least one non-numeric argument - compare as strings.
 		 */
@@ -151995,16 +152029,16 @@ _179:
 		l1 = *(*int32)(unsafe.Pointer(*(*TClientData)(unsafe.Pointer(bp + 124))))
 		l2 = *(*int32)(unsafe.Pointer(*(*TClientData)(unsafe.Pointer(bp + 128))))
 		if l1 < l2 {
-			v1046 = -int32(1)
+			v1051 = -int32(1)
 		} else {
 			if l1 > l2 {
-				v1047 = int32(m_MP_GT)
+				v1052 = int32(m_MP_GT)
 			} else {
-				v1047 = m_MP_EQ
+				v1052 = m_MP_EQ
 			}
-			v1046 = v1047
+			v1051 = v1052
 		}
-		compare = v1046
+		compare = v1051
 	} else {
 		compare = XTclCompareTwoNumbers(tls, *(*uintptr)(unsafe.Pointer(bp + 12)), value2Ptr)
 	}
@@ -152031,44 +152065,172 @@ convertComparison:
 	 * Peep-hole optimisation: if you're about to jump, do jump from here.
 	 */
 foundResult:
-	goto _1049
-_1049:
 	pc += uintptr(libc.Int32FromInt32(1))
 	switch int32(*(*uint8)(unsafe.Pointer(pc))) {
 	case int32(m_INST_JUMP_FALSE1):
-		goto _1050
+		goto _1055
 	case int32(m_INST_JUMP_TRUE1):
-		goto _1051
+		goto _1056
 	case int32(m_INST_JUMP_FALSE4):
-		goto _1052
+		goto _1057
 	case int32(m_INST_JUMP_TRUE4):
-		goto _1053
+		goto _1058
 	default:
-		goto _1054
+		goto _1059
 	}
-	goto _1055
-_1050:
+	goto _1060
+_1055:
+_1063:
+	if false {
+		if 0 != 0 {
+			if 0 > 0 {
+				v1064 = *(*uintptr)(unsafe.Pointer(bp + 8))
+				tosPtr += 4
+				v1065 = tosPtr
+				*(*uintptr)(unsafe.Pointer(v1065)) = v1064
+				(*TTcl_Obj)(unsafe.Pointer(v1064)).FrefCount++
+			} else {
+				tosPtr += 4
+				v1066 = tosPtr
+				*(*uintptr)(unsafe.Pointer(v1066)) = *(*uintptr)(unsafe.Pointer(bp + 8))
+			}
+		}
+		if iResult1 != 0 {
+			v1067 = int32(2)
+		} else {
+			v1067 = int32(*(*int8)(unsafe.Pointer(pc + libc.UintptrFromInt32(1))))
+		}
+		pc += uintptr(v1067)
+		goto cleanup0
+	} else {
+		if 0 != 0 {
+			if 0 > 0 {
+				(*TTcl_Obj)(unsafe.Pointer(*(*uintptr)(unsafe.Pointer(bp + 8)))).FrefCount++
+			}
+			if iResult1 != 0 {
+				v1068 = int32(2)
+			} else {
+				v1068 = int32(*(*int8)(unsafe.Pointer(pc + libc.UintptrFromInt32(1))))
+			}
+			pc += uintptr(v1068)
+			switch libc.Int32FromInt32(2) {
+			case int32(1):
+				goto cleanup1_pushObjResultPtr
+			case int32(2):
+				goto cleanup2_pushObjResultPtr
+			case 0:
+				break
+			}
+		} else {
+			if iResult1 != 0 {
+				v1069 = int32(2)
+			} else {
+				v1069 = int32(*(*int8)(unsafe.Pointer(pc + libc.UintptrFromInt32(1))))
+			}
+			pc += uintptr(v1069)
+			switch libc.Int32FromInt32(2) {
+			case int32(1):
+				goto cleanup1
+			case int32(2):
+				goto cleanup2
+			case 0:
+				break
+			}
+		}
+	}
+	goto _1062
+_1062:
+	if 0 != 0 {
+		goto _1063
+	}
+	goto _1061
+_1061:
+	goto _1060
+_1056:
+	if false {
+		if 0 != 0 {
+			if 0 > 0 {
+				v1072 = *(*uintptr)(unsafe.Pointer(bp + 8))
+				tosPtr += 4
+				v1073 = tosPtr
+				*(*uintptr)(unsafe.Pointer(v1073)) = v1072
+				(*TTcl_Obj)(unsafe.Pointer(v1072)).FrefCount++
+			} else {
+				tosPtr += 4
+				v1074 = tosPtr
+				*(*uintptr)(unsafe.Pointer(v1074)) = *(*uintptr)(unsafe.Pointer(bp + 8))
+			}
+		}
+		if iResult1 != 0 {
+			v1075 = int32(*(*int8)(unsafe.Pointer(pc + libc.UintptrFromInt32(1))))
+		} else {
+			v1075 = int32(2)
+		}
+		pc += uintptr(v1075)
+		goto cleanup0
+	} else {
+		if 0 != 0 {
+			if 0 > 0 {
+				(*TTcl_Obj)(unsafe.Pointer(*(*uintptr)(unsafe.Pointer(bp + 8)))).FrefCount++
+			}
+			if iResult1 != 0 {
+				v1076 = int32(*(*int8)(unsafe.Pointer(pc + libc.UintptrFromInt32(1))))
+			} else {
+				v1076 = int32(2)
+			}
+			pc += uintptr(v1076)
+			switch libc.Int32FromInt32(2) {
+			case int32(1):
+				goto cleanup1_pushObjResultPtr
+			case int32(2):
+				goto cleanup2_pushObjResultPtr
+			case 0:
+				break
+			}
+		} else {
+			if iResult1 != 0 {
+				v1077 = int32(*(*int8)(unsafe.Pointer(pc + libc.UintptrFromInt32(1))))
+			} else {
+				v1077 = int32(2)
+			}
+			pc += uintptr(v1077)
+			switch libc.Int32FromInt32(2) {
+			case int32(1):
+				goto cleanup1
+			case int32(2):
+				goto cleanup2
+			case 0:
+				break
+			}
+		}
+	}
+	goto _1071
+_1071:
+	goto _1070
+_1070: /**/
+	; //
+	goto _1060
 _1057:
 	if false {
 		if 0 != 0 {
 			if 0 > 0 {
-				v1058 = *(*uintptr)(unsafe.Pointer(bp + 8))
+				v1080 = *(*uintptr)(unsafe.Pointer(bp + 8))
 				tosPtr += 4
-				v1059 = tosPtr
-				*(*uintptr)(unsafe.Pointer(v1059)) = v1058
-				(*TTcl_Obj)(unsafe.Pointer(v1058)).FrefCount++
+				v1081 = tosPtr
+				*(*uintptr)(unsafe.Pointer(v1081)) = v1080
+				(*TTcl_Obj)(unsafe.Pointer(v1080)).FrefCount++
 			} else {
 				tosPtr += 4
-				v1060 = tosPtr
-				*(*uintptr)(unsafe.Pointer(v1060)) = *(*uintptr)(unsafe.Pointer(bp + 8))
+				v1082 = tosPtr
+				*(*uintptr)(unsafe.Pointer(v1082)) = *(*uintptr)(unsafe.Pointer(bp + 8))
 			}
 		}
 		if iResult1 != 0 {
-			v1061 = int32(2)
+			v1083 = int32(5)
 		} else {
-			v1061 = int32(*(*int8)(unsafe.Pointer(pc + libc.UintptrFromInt32(1))))
+			v1083 = int32(uint32(*(*uint8)(unsafe.Pointer(pc + libc.UintptrFromInt32(1))))<<libc.Int32FromInt32(24)) | int32(*(*uint8)(unsafe.Pointer(pc + libc.UintptrFromInt32(1) + libc.UintptrFromInt32(1))))<<int32(16) | int32(*(*uint8)(unsafe.Pointer(pc + libc.UintptrFromInt32(1) + libc.UintptrFromInt32(2))))<<int32(8) | int32(*(*uint8)(unsafe.Pointer(pc + libc.UintptrFromInt32(1) + libc.UintptrFromInt32(3))))
 		}
-		pc += uintptr(v1061)
+		pc += uintptr(v1083)
 		goto cleanup0
 	} else {
 		if 0 != 0 {
@@ -152076,11 +152238,11 @@ _1057:
 				(*TTcl_Obj)(unsafe.Pointer(*(*uintptr)(unsafe.Pointer(bp + 8)))).FrefCount++
 			}
 			if iResult1 != 0 {
-				v1062 = int32(2)
+				v1084 = int32(5)
 			} else {
-				v1062 = int32(*(*int8)(unsafe.Pointer(pc + libc.UintptrFromInt32(1))))
+				v1084 = int32(uint32(*(*uint8)(unsafe.Pointer(pc + libc.UintptrFromInt32(1))))<<libc.Int32FromInt32(24)) | int32(*(*uint8)(unsafe.Pointer(pc + libc.UintptrFromInt32(1) + libc.UintptrFromInt32(1))))<<int32(16) | int32(*(*uint8)(unsafe.Pointer(pc + libc.UintptrFromInt32(1) + libc.UintptrFromInt32(2))))<<int32(8) | int32(*(*uint8)(unsafe.Pointer(pc + libc.UintptrFromInt32(1) + libc.UintptrFromInt32(3))))
 			}
-			pc += uintptr(v1062)
+			pc += uintptr(v1084)
 			switch libc.Int32FromInt32(2) {
 			case int32(1):
 				goto cleanup1_pushObjResultPtr
@@ -152091,11 +152253,11 @@ _1057:
 			}
 		} else {
 			if iResult1 != 0 {
-				v1063 = int32(2)
+				v1085 = int32(5)
 			} else {
-				v1063 = int32(*(*int8)(unsafe.Pointer(pc + libc.UintptrFromInt32(1))))
+				v1085 = int32(uint32(*(*uint8)(unsafe.Pointer(pc + libc.UintptrFromInt32(1))))<<libc.Int32FromInt32(24)) | int32(*(*uint8)(unsafe.Pointer(pc + libc.UintptrFromInt32(1) + libc.UintptrFromInt32(1))))<<int32(16) | int32(*(*uint8)(unsafe.Pointer(pc + libc.UintptrFromInt32(1) + libc.UintptrFromInt32(2))))<<int32(8) | int32(*(*uint8)(unsafe.Pointer(pc + libc.UintptrFromInt32(1) + libc.UintptrFromInt32(3))))
 			}
-			pc += uintptr(v1063)
+			pc += uintptr(v1085)
 			switch libc.Int32FromInt32(2) {
 			case int32(1):
 				goto cleanup1
@@ -152106,35 +152268,33 @@ _1057:
 			}
 		}
 	}
-	if 0 != 0 {
-		goto _1057
-	}
-	goto _1056
-_1056:
-	goto _1055
-_1051:
-	goto _1065
-_1065:
+	goto _1079
+_1079:
+	goto _1078
+_1078: /**/
+	; //
+	goto _1060
+_1058:
 	if false {
 		if 0 != 0 {
 			if 0 > 0 {
-				v1066 = *(*uintptr)(unsafe.Pointer(bp + 8))
+				v1088 = *(*uintptr)(unsafe.Pointer(bp + 8))
 				tosPtr += 4
-				v1067 = tosPtr
-				*(*uintptr)(unsafe.Pointer(v1067)) = v1066
-				(*TTcl_Obj)(unsafe.Pointer(v1066)).FrefCount++
+				v1089 = tosPtr
+				*(*uintptr)(unsafe.Pointer(v1089)) = v1088
+				(*TTcl_Obj)(unsafe.Pointer(v1088)).FrefCount++
 			} else {
 				tosPtr += 4
-				v1068 = tosPtr
-				*(*uintptr)(unsafe.Pointer(v1068)) = *(*uintptr)(unsafe.Pointer(bp + 8))
+				v1090 = tosPtr
+				*(*uintptr)(unsafe.Pointer(v1090)) = *(*uintptr)(unsafe.Pointer(bp + 8))
 			}
 		}
 		if iResult1 != 0 {
-			v1069 = int32(*(*int8)(unsafe.Pointer(pc + libc.UintptrFromInt32(1))))
+			v1091 = int32(uint32(*(*uint8)(unsafe.Pointer(pc + libc.UintptrFromInt32(1))))<<libc.Int32FromInt32(24)) | int32(*(*uint8)(unsafe.Pointer(pc + libc.UintptrFromInt32(1) + libc.UintptrFromInt32(1))))<<int32(16) | int32(*(*uint8)(unsafe.Pointer(pc + libc.UintptrFromInt32(1) + libc.UintptrFromInt32(2))))<<int32(8) | int32(*(*uint8)(unsafe.Pointer(pc + libc.UintptrFromInt32(1) + libc.UintptrFromInt32(3))))
 		} else {
-			v1069 = int32(2)
+			v1091 = int32(5)
 		}
-		pc += uintptr(v1069)
+		pc += uintptr(v1091)
 		goto cleanup0
 	} else {
 		if 0 != 0 {
@@ -152142,11 +152302,11 @@ _1065:
 				(*TTcl_Obj)(unsafe.Pointer(*(*uintptr)(unsafe.Pointer(bp + 8)))).FrefCount++
 			}
 			if iResult1 != 0 {
-				v1070 = int32(*(*int8)(unsafe.Pointer(pc + libc.UintptrFromInt32(1))))
+				v1092 = int32(uint32(*(*uint8)(unsafe.Pointer(pc + libc.UintptrFromInt32(1))))<<libc.Int32FromInt32(24)) | int32(*(*uint8)(unsafe.Pointer(pc + libc.UintptrFromInt32(1) + libc.UintptrFromInt32(1))))<<int32(16) | int32(*(*uint8)(unsafe.Pointer(pc + libc.UintptrFromInt32(1) + libc.UintptrFromInt32(2))))<<int32(8) | int32(*(*uint8)(unsafe.Pointer(pc + libc.UintptrFromInt32(1) + libc.UintptrFromInt32(3))))
 			} else {
-				v1070 = int32(2)
+				v1092 = int32(5)
 			}
-			pc += uintptr(v1070)
+			pc += uintptr(v1092)
 			switch libc.Int32FromInt32(2) {
 			case int32(1):
 				goto cleanup1_pushObjResultPtr
@@ -152157,11 +152317,11 @@ _1065:
 			}
 		} else {
 			if iResult1 != 0 {
-				v1071 = int32(*(*int8)(unsafe.Pointer(pc + libc.UintptrFromInt32(1))))
+				v1093 = int32(uint32(*(*uint8)(unsafe.Pointer(pc + libc.UintptrFromInt32(1))))<<libc.Int32FromInt32(24)) | int32(*(*uint8)(unsafe.Pointer(pc + libc.UintptrFromInt32(1) + libc.UintptrFromInt32(1))))<<int32(16) | int32(*(*uint8)(unsafe.Pointer(pc + libc.UintptrFromInt32(1) + libc.UintptrFromInt32(2))))<<int32(8) | int32(*(*uint8)(unsafe.Pointer(pc + libc.UintptrFromInt32(1) + libc.UintptrFromInt32(3))))
 			} else {
-				v1071 = int32(2)
+				v1093 = int32(5)
 			}
-			pc += uintptr(v1071)
+			pc += uintptr(v1093)
 			switch libc.Int32FromInt32(2) {
 			case int32(1):
 				goto cleanup1
@@ -152172,139 +152332,13 @@ _1065:
 			}
 		}
 	}
-	goto _1064
-_1064: /**/
+	goto _1087
+_1087:
+	goto _1086
+_1086: /**/
 	; //
-	goto _1055
-_1052:
-	goto _1073
-_1073:
-	if false {
-		if 0 != 0 {
-			if 0 > 0 {
-				v1074 = *(*uintptr)(unsafe.Pointer(bp + 8))
-				tosPtr += 4
-				v1075 = tosPtr
-				*(*uintptr)(unsafe.Pointer(v1075)) = v1074
-				(*TTcl_Obj)(unsafe.Pointer(v1074)).FrefCount++
-			} else {
-				tosPtr += 4
-				v1076 = tosPtr
-				*(*uintptr)(unsafe.Pointer(v1076)) = *(*uintptr)(unsafe.Pointer(bp + 8))
-			}
-		}
-		if iResult1 != 0 {
-			v1077 = int32(5)
-		} else {
-			v1077 = int32(uint32(*(*uint8)(unsafe.Pointer(pc + libc.UintptrFromInt32(1))))<<libc.Int32FromInt32(24)) | int32(*(*uint8)(unsafe.Pointer(pc + libc.UintptrFromInt32(1) + libc.UintptrFromInt32(1))))<<int32(16) | int32(*(*uint8)(unsafe.Pointer(pc + libc.UintptrFromInt32(1) + libc.UintptrFromInt32(2))))<<int32(8) | int32(*(*uint8)(unsafe.Pointer(pc + libc.UintptrFromInt32(1) + libc.UintptrFromInt32(3))))
-		}
-		pc += uintptr(v1077)
-		goto cleanup0
-	} else {
-		if 0 != 0 {
-			if 0 > 0 {
-				(*TTcl_Obj)(unsafe.Pointer(*(*uintptr)(unsafe.Pointer(bp + 8)))).FrefCount++
-			}
-			if iResult1 != 0 {
-				v1078 = int32(5)
-			} else {
-				v1078 = int32(uint32(*(*uint8)(unsafe.Pointer(pc + libc.UintptrFromInt32(1))))<<libc.Int32FromInt32(24)) | int32(*(*uint8)(unsafe.Pointer(pc + libc.UintptrFromInt32(1) + libc.UintptrFromInt32(1))))<<int32(16) | int32(*(*uint8)(unsafe.Pointer(pc + libc.UintptrFromInt32(1) + libc.UintptrFromInt32(2))))<<int32(8) | int32(*(*uint8)(unsafe.Pointer(pc + libc.UintptrFromInt32(1) + libc.UintptrFromInt32(3))))
-			}
-			pc += uintptr(v1078)
-			switch libc.Int32FromInt32(2) {
-			case int32(1):
-				goto cleanup1_pushObjResultPtr
-			case int32(2):
-				goto cleanup2_pushObjResultPtr
-			case 0:
-				break
-			}
-		} else {
-			if iResult1 != 0 {
-				v1079 = int32(5)
-			} else {
-				v1079 = int32(uint32(*(*uint8)(unsafe.Pointer(pc + libc.UintptrFromInt32(1))))<<libc.Int32FromInt32(24)) | int32(*(*uint8)(unsafe.Pointer(pc + libc.UintptrFromInt32(1) + libc.UintptrFromInt32(1))))<<int32(16) | int32(*(*uint8)(unsafe.Pointer(pc + libc.UintptrFromInt32(1) + libc.UintptrFromInt32(2))))<<int32(8) | int32(*(*uint8)(unsafe.Pointer(pc + libc.UintptrFromInt32(1) + libc.UintptrFromInt32(3))))
-			}
-			pc += uintptr(v1079)
-			switch libc.Int32FromInt32(2) {
-			case int32(1):
-				goto cleanup1
-			case int32(2):
-				goto cleanup2
-			case 0:
-				break
-			}
-		}
-	}
-	goto _1072
-_1072: /**/
-	; //
-	goto _1055
-_1053:
-	goto _1081
-_1081:
-	if false {
-		if 0 != 0 {
-			if 0 > 0 {
-				v1082 = *(*uintptr)(unsafe.Pointer(bp + 8))
-				tosPtr += 4
-				v1083 = tosPtr
-				*(*uintptr)(unsafe.Pointer(v1083)) = v1082
-				(*TTcl_Obj)(unsafe.Pointer(v1082)).FrefCount++
-			} else {
-				tosPtr += 4
-				v1084 = tosPtr
-				*(*uintptr)(unsafe.Pointer(v1084)) = *(*uintptr)(unsafe.Pointer(bp + 8))
-			}
-		}
-		if iResult1 != 0 {
-			v1085 = int32(uint32(*(*uint8)(unsafe.Pointer(pc + libc.UintptrFromInt32(1))))<<libc.Int32FromInt32(24)) | int32(*(*uint8)(unsafe.Pointer(pc + libc.UintptrFromInt32(1) + libc.UintptrFromInt32(1))))<<int32(16) | int32(*(*uint8)(unsafe.Pointer(pc + libc.UintptrFromInt32(1) + libc.UintptrFromInt32(2))))<<int32(8) | int32(*(*uint8)(unsafe.Pointer(pc + libc.UintptrFromInt32(1) + libc.UintptrFromInt32(3))))
-		} else {
-			v1085 = int32(5)
-		}
-		pc += uintptr(v1085)
-		goto cleanup0
-	} else {
-		if 0 != 0 {
-			if 0 > 0 {
-				(*TTcl_Obj)(unsafe.Pointer(*(*uintptr)(unsafe.Pointer(bp + 8)))).FrefCount++
-			}
-			if iResult1 != 0 {
-				v1086 = int32(uint32(*(*uint8)(unsafe.Pointer(pc + libc.UintptrFromInt32(1))))<<libc.Int32FromInt32(24)) | int32(*(*uint8)(unsafe.Pointer(pc + libc.UintptrFromInt32(1) + libc.UintptrFromInt32(1))))<<int32(16) | int32(*(*uint8)(unsafe.Pointer(pc + libc.UintptrFromInt32(1) + libc.UintptrFromInt32(2))))<<int32(8) | int32(*(*uint8)(unsafe.Pointer(pc + libc.UintptrFromInt32(1) + libc.UintptrFromInt32(3))))
-			} else {
-				v1086 = int32(5)
-			}
-			pc += uintptr(v1086)
-			switch libc.Int32FromInt32(2) {
-			case int32(1):
-				goto cleanup1_pushObjResultPtr
-			case int32(2):
-				goto cleanup2_pushObjResultPtr
-			case 0:
-				break
-			}
-		} else {
-			if iResult1 != 0 {
-				v1087 = int32(uint32(*(*uint8)(unsafe.Pointer(pc + libc.UintptrFromInt32(1))))<<libc.Int32FromInt32(24)) | int32(*(*uint8)(unsafe.Pointer(pc + libc.UintptrFromInt32(1) + libc.UintptrFromInt32(1))))<<int32(16) | int32(*(*uint8)(unsafe.Pointer(pc + libc.UintptrFromInt32(1) + libc.UintptrFromInt32(2))))<<int32(8) | int32(*(*uint8)(unsafe.Pointer(pc + libc.UintptrFromInt32(1) + libc.UintptrFromInt32(3))))
-			} else {
-				v1087 = int32(5)
-			}
-			pc += uintptr(v1087)
-			switch libc.Int32FromInt32(2) {
-			case int32(1):
-				goto cleanup1
-			case int32(2):
-				goto cleanup2
-			case 0:
-				break
-			}
-		}
-	}
-	goto _1080
-_1080: /**/
-	; //
-	goto _1055
-_1054:
+	goto _1060
+_1059:
 	if iResult1 < 0 {
 		if XtclFreeObjList == libc.UintptrFromInt32(0) {
 			XTclAllocateFreeObjects(tls)
@@ -152321,20 +152355,18 @@ _1054:
 	} else {
 		*(*uintptr)(unsafe.Pointer(bp + 8)) = *(*uintptr)(unsafe.Pointer(constants + libc.BoolUintptr(iResult1 > libc.Int32FromInt32(0))*4))
 	}
-	goto _1089
-_1089:
 	if false {
 		if int32(1) != 0 {
 			if int32(1) > 0 {
-				v1090 = *(*uintptr)(unsafe.Pointer(bp + 8))
+				v1096 = *(*uintptr)(unsafe.Pointer(bp + 8))
 				tosPtr += 4
-				v1091 = tosPtr
-				*(*uintptr)(unsafe.Pointer(v1091)) = v1090
-				(*TTcl_Obj)(unsafe.Pointer(v1090)).FrefCount++
+				v1097 = tosPtr
+				*(*uintptr)(unsafe.Pointer(v1097)) = v1096
+				(*TTcl_Obj)(unsafe.Pointer(v1096)).FrefCount++
 			} else {
 				tosPtr += 4
-				v1092 = tosPtr
-				*(*uintptr)(unsafe.Pointer(v1092)) = *(*uintptr)(unsafe.Pointer(bp + 8))
+				v1098 = tosPtr
+				*(*uintptr)(unsafe.Pointer(v1098)) = *(*uintptr)(unsafe.Pointer(bp + 8))
 			}
 		}
 		pc += uintptr(libc.Int32FromInt32(0))
@@ -152365,13 +152397,17 @@ _1089:
 			}
 		}
 	}
-	goto _1088
-_1088: /**/
+	goto _1095
+_1095:
+	goto _1094
+_1094: /**/
 	; //
-	goto _1055
-_1055:
-	goto _1048
-_1048: /**/
+	goto _1060
+_1060:
+	goto _1054
+_1054:
+	goto _1053
+_1053: /**/
 	; //
 _190:
 _189:
@@ -152384,39 +152420,39 @@ _185:
 	if (*TTcl_Obj)(unsafe.Pointer(*(*uintptr)(unsafe.Pointer(bp + 12)))).FtypePtr == uintptr(unsafe.Pointer(&XtclIntType)) {
 		*(*int32)(unsafe.Pointer(bp + 132)) = int32(m_TCL_NUMBER_LONG)
 		*(*TClientData)(unsafe.Pointer(bp + 124)) = *(*uintptr)(unsafe.Pointer(bp + 12)) + 16
-		v1093 = libc.Int32FromInt32(m_TCL_OK)
+		v1099 = libc.Int32FromInt32(m_TCL_OK)
 	} else {
 		if (*TTcl_Obj)(unsafe.Pointer(*(*uintptr)(unsafe.Pointer(bp + 12)))).FtypePtr == uintptr(unsafe.Pointer(&XtclWideIntType)) {
 			*(*int32)(unsafe.Pointer(bp + 132)) = int32(m_TCL_NUMBER_WIDE)
 			*(*TClientData)(unsafe.Pointer(bp + 124)) = *(*uintptr)(unsafe.Pointer(bp + 12)) + 16
-			v1094 = libc.Int32FromInt32(m_TCL_OK)
+			v1100 = libc.Int32FromInt32(m_TCL_OK)
 		} else {
 			if (*TTcl_Obj)(unsafe.Pointer(*(*uintptr)(unsafe.Pointer(bp + 12)))).FtypePtr == uintptr(unsafe.Pointer(&XtclDoubleType)) {
 				*(*float64)(unsafe.Pointer(bp)) = *(*float64)(unsafe.Pointer(*(*uintptr)(unsafe.Pointer(bp + 12)) + 16))
-				v1097 = *(*uint64)(unsafe.Pointer(bp))
-				goto _1098
-			_1098:
-				if libc.BoolInt32(v1097&(-libc.Uint64FromUint64(1)>>libc.Int32FromInt32(1)) > libc.Uint64FromUint64(0x7ff)<<libc.Int32FromInt32(52)) != 0 {
+				v1103 = *(*uint64)(unsafe.Pointer(bp))
+				goto _1104
+			_1104:
+				if libc.BoolInt32(v1103&(-libc.Uint64FromUint64(1)>>libc.Int32FromInt32(1)) > libc.Uint64FromUint64(0x7ff)<<libc.Int32FromInt32(52)) != 0 {
 					*(*int32)(unsafe.Pointer(bp + 132)) = int32(m_TCL_NUMBER_NAN)
 				} else {
 					*(*int32)(unsafe.Pointer(bp + 132)) = int32(m_TCL_NUMBER_DOUBLE)
 				}
 				*(*TClientData)(unsafe.Pointer(bp + 124)) = *(*uintptr)(unsafe.Pointer(bp + 12)) + 16
-				v1095 = libc.Int32FromInt32(m_TCL_OK)
+				v1101 = libc.Int32FromInt32(m_TCL_OK)
 			} else {
 				if (*TTcl_Obj)(unsafe.Pointer(*(*uintptr)(unsafe.Pointer(bp + 12)))).Fbytes != libc.UintptrFromInt32(0) && (*TTcl_Obj)(unsafe.Pointer(*(*uintptr)(unsafe.Pointer(bp + 12)))).Flength == 0 {
 					*(*int32)(unsafe.Pointer(bp + 132)) = int32(m_TCL_NUMBER_LONG)
-					v1099 = libc.Int32FromInt32(m_TCL_ERROR)
+					v1105 = libc.Int32FromInt32(m_TCL_ERROR)
 				} else {
-					v1099 = XTclGetNumberFromObj(tls, libc.UintptrFromInt32(0), *(*uintptr)(unsafe.Pointer(bp + 12)), bp+124, bp+132)
+					v1105 = XTclGetNumberFromObj(tls, libc.UintptrFromInt32(0), *(*uintptr)(unsafe.Pointer(bp + 12)), bp+124, bp+132)
 				}
-				v1095 = v1099
+				v1101 = v1105
 			}
-			v1094 = v1095
+			v1100 = v1101
 		}
-		v1093 = v1094
+		v1099 = v1100
 	}
-	if v1093 != m_TCL_OK || *(*int32)(unsafe.Pointer(bp + 132)) == int32(m_TCL_NUMBER_DOUBLE) || *(*int32)(unsafe.Pointer(bp + 132)) == int32(m_TCL_NUMBER_NAN) {
+	if v1099 != m_TCL_OK || *(*int32)(unsafe.Pointer(bp + 132)) == int32(m_TCL_NUMBER_DOUBLE) || *(*int32)(unsafe.Pointer(bp + 132)) == int32(m_TCL_NUMBER_NAN) {
 		(*TExecStack)(unsafe.Pointer((*TExecEnv1)(unsafe.Pointer((*TInterp)(unsafe.Pointer(interp)).FexecEnvPtr)).FexecStackPtr)).FtosPtr = tosPtr
 		_IllegalExprOperandType(tls, interp, pc, *(*uintptr)(unsafe.Pointer(bp + 12)))
 		checkInterp = int32(1)
@@ -152425,39 +152461,39 @@ _185:
 	if (*TTcl_Obj)(unsafe.Pointer(value2Ptr)).FtypePtr == uintptr(unsafe.Pointer(&XtclIntType)) {
 		*(*int32)(unsafe.Pointer(bp + 136)) = int32(m_TCL_NUMBER_LONG)
 		*(*TClientData)(unsafe.Pointer(bp + 128)) = value2Ptr + 16
-		v1100 = libc.Int32FromInt32(m_TCL_OK)
+		v1106 = libc.Int32FromInt32(m_TCL_OK)
 	} else {
 		if (*TTcl_Obj)(unsafe.Pointer(value2Ptr)).FtypePtr == uintptr(unsafe.Pointer(&XtclWideIntType)) {
 			*(*int32)(unsafe.Pointer(bp + 136)) = int32(m_TCL_NUMBER_WIDE)
 			*(*TClientData)(unsafe.Pointer(bp + 128)) = value2Ptr + 16
-			v1101 = libc.Int32FromInt32(m_TCL_OK)
+			v1107 = libc.Int32FromInt32(m_TCL_OK)
 		} else {
 			if (*TTcl_Obj)(unsafe.Pointer(value2Ptr)).FtypePtr == uintptr(unsafe.Pointer(&XtclDoubleType)) {
 				*(*float64)(unsafe.Pointer(bp)) = *(*float64)(unsafe.Pointer(value2Ptr + 16))
-				v1104 = *(*uint64)(unsafe.Pointer(bp))
-				goto _1105
-			_1105:
-				if libc.BoolInt32(v1104&(-libc.Uint64FromUint64(1)>>libc.Int32FromInt32(1)) > libc.Uint64FromUint64(0x7ff)<<libc.Int32FromInt32(52)) != 0 {
+				v1110 = *(*uint64)(unsafe.Pointer(bp))
+				goto _1111
+			_1111:
+				if libc.BoolInt32(v1110&(-libc.Uint64FromUint64(1)>>libc.Int32FromInt32(1)) > libc.Uint64FromUint64(0x7ff)<<libc.Int32FromInt32(52)) != 0 {
 					*(*int32)(unsafe.Pointer(bp + 136)) = int32(m_TCL_NUMBER_NAN)
 				} else {
 					*(*int32)(unsafe.Pointer(bp + 136)) = int32(m_TCL_NUMBER_DOUBLE)
 				}
 				*(*TClientData)(unsafe.Pointer(bp + 128)) = value2Ptr + 16
-				v1102 = libc.Int32FromInt32(m_TCL_OK)
+				v1108 = libc.Int32FromInt32(m_TCL_OK)
 			} else {
 				if (*TTcl_Obj)(unsafe.Pointer(value2Ptr)).Fbytes != libc.UintptrFromInt32(0) && (*TTcl_Obj)(unsafe.Pointer(value2Ptr)).Flength == 0 {
 					*(*int32)(unsafe.Pointer(bp + 136)) = int32(m_TCL_NUMBER_LONG)
-					v1106 = libc.Int32FromInt32(m_TCL_ERROR)
+					v1112 = libc.Int32FromInt32(m_TCL_ERROR)
 				} else {
-					v1106 = XTclGetNumberFromObj(tls, libc.UintptrFromInt32(0), value2Ptr, bp+128, bp+136)
+					v1112 = XTclGetNumberFromObj(tls, libc.UintptrFromInt32(0), value2Ptr, bp+128, bp+136)
 				}
-				v1102 = v1106
+				v1108 = v1112
 			}
-			v1101 = v1102
+			v1107 = v1108
 		}
-		v1100 = v1101
+		v1106 = v1107
 	}
-	if v1100 != m_TCL_OK || *(*int32)(unsafe.Pointer(bp + 136)) == int32(m_TCL_NUMBER_DOUBLE) || *(*int32)(unsafe.Pointer(bp + 136)) == int32(m_TCL_NUMBER_NAN) {
+	if v1106 != m_TCL_OK || *(*int32)(unsafe.Pointer(bp + 136)) == int32(m_TCL_NUMBER_DOUBLE) || *(*int32)(unsafe.Pointer(bp + 136)) == int32(m_TCL_NUMBER_NAN) {
 		(*TExecStack)(unsafe.Pointer((*TExecEnv1)(unsafe.Pointer((*TInterp)(unsafe.Pointer(interp)).FexecEnvPtr)).FexecStackPtr)).FtosPtr = tosPtr
 		_IllegalExprOperandType(tls, interp, pc, value2Ptr)
 		checkInterp = int32(1)
@@ -152467,26 +152503,26 @@ _185:
 	 * Check for common, simple case.
 	 */
 	if !(*(*int32)(unsafe.Pointer(bp + 132)) == int32(m_TCL_NUMBER_LONG) && *(*int32)(unsafe.Pointer(bp + 136)) == int32(m_TCL_NUMBER_LONG)) {
-		goto _1107
+		goto _1113
 	}
 	l1 = *(*int32)(unsafe.Pointer(*(*TClientData)(unsafe.Pointer(bp + 124))))
 	l2 = *(*int32)(unsafe.Pointer(*(*TClientData)(unsafe.Pointer(bp + 128))))
 	switch int32(*(*uint8)(unsafe.Pointer(pc))) {
 	case int32(m_INST_MOD):
-		goto _1108
+		goto _1114
 	case int32(m_INST_RSHIFT):
-		goto _1109
+		goto _1115
 	case int32(m_INST_LSHIFT):
-		goto _1110
+		goto _1116
 	case int32(m_INST_BITAND):
-		goto _1111
+		goto _1117
 	case int32(m_INST_BITOR):
-		goto _1112
+		goto _1118
 	case int32(m_INST_BITXOR):
-		goto _1113
+		goto _1119
 	}
-	goto _1114
-_1108:
+	goto _1120
+_1114:
 	if l2 == 0 {
 		goto divideByZero
 	} else {
@@ -152495,20 +152531,18 @@ _1108:
 			 * Div. by |1| always yields remainder of 0.
 			 */
 			*(*uintptr)(unsafe.Pointer(bp + 8)) = *(*uintptr)(unsafe.Pointer(constants))
-			goto _1116
-		_1116:
 			if false {
 				if int32(1) != 0 {
 					if int32(1) > 0 {
-						v1117 = *(*uintptr)(unsafe.Pointer(bp + 8))
+						v1123 = *(*uintptr)(unsafe.Pointer(bp + 8))
 						tosPtr += 4
-						v1118 = tosPtr
-						*(*uintptr)(unsafe.Pointer(v1118)) = v1117
-						(*TTcl_Obj)(unsafe.Pointer(v1117)).FrefCount++
+						v1124 = tosPtr
+						*(*uintptr)(unsafe.Pointer(v1124)) = v1123
+						(*TTcl_Obj)(unsafe.Pointer(v1123)).FrefCount++
 					} else {
 						tosPtr += 4
-						v1119 = tosPtr
-						*(*uintptr)(unsafe.Pointer(v1119)) = *(*uintptr)(unsafe.Pointer(bp + 8))
+						v1125 = tosPtr
+						*(*uintptr)(unsafe.Pointer(v1125)) = *(*uintptr)(unsafe.Pointer(bp + 8))
 					}
 				}
 				pc += uintptr(libc.Int32FromInt32(1))
@@ -152539,8 +152573,10 @@ _1108:
 					}
 				}
 			}
-			goto _1115
-		_1115: /**/
+			goto _1122
+		_1122:
+			goto _1121
+		_1121: /**/
 			//
 		} else {
 			if l1 == 0 {
@@ -152548,20 +152584,18 @@ _1108:
 				 * 0 % (non-zero) always yields remainder of 0.
 				 */
 				*(*uintptr)(unsafe.Pointer(bp + 8)) = *(*uintptr)(unsafe.Pointer(constants))
-				goto _1121
-			_1121:
 				if false {
 					if int32(1) != 0 {
 						if int32(1) > 0 {
-							v1122 = *(*uintptr)(unsafe.Pointer(bp + 8))
+							v1128 = *(*uintptr)(unsafe.Pointer(bp + 8))
 							tosPtr += 4
-							v1123 = tosPtr
-							*(*uintptr)(unsafe.Pointer(v1123)) = v1122
-							(*TTcl_Obj)(unsafe.Pointer(v1122)).FrefCount++
+							v1129 = tosPtr
+							*(*uintptr)(unsafe.Pointer(v1129)) = v1128
+							(*TTcl_Obj)(unsafe.Pointer(v1128)).FrefCount++
 						} else {
 							tosPtr += 4
-							v1124 = tosPtr
-							*(*uintptr)(unsafe.Pointer(v1124)) = *(*uintptr)(unsafe.Pointer(bp + 8))
+							v1130 = tosPtr
+							*(*uintptr)(unsafe.Pointer(v1130)) = *(*uintptr)(unsafe.Pointer(bp + 8))
 						}
 					}
 					pc += uintptr(libc.Int32FromInt32(1))
@@ -152592,8 +152626,10 @@ _1108:
 						}
 					}
 				}
-				goto _1120
-			_1120: /**/
+				goto _1127
+			_1127:
+				goto _1126
+			_1126: /**/
 				//
 			} else {
 				lResult = l1 / l2
@@ -152609,28 +152645,26 @@ _1108:
 			}
 		}
 	}
-	goto _1114
-_1109:
+	goto _1120
+_1115:
 	if l2 < 0 {
 		XTcl_SetObjResult(tls, interp, XTcl_NewStringObj(tls, __ccgo_ts+28594, -int32(1)))
 		goto gotError
 	} else {
 		if l1 == 0 {
 			*(*uintptr)(unsafe.Pointer(bp + 8)) = *(*uintptr)(unsafe.Pointer(constants))
-			goto _1126
-		_1126:
 			if false {
 				if int32(1) != 0 {
 					if int32(1) > 0 {
-						v1127 = *(*uintptr)(unsafe.Pointer(bp + 8))
+						v1133 = *(*uintptr)(unsafe.Pointer(bp + 8))
 						tosPtr += 4
-						v1128 = tosPtr
-						*(*uintptr)(unsafe.Pointer(v1128)) = v1127
-						(*TTcl_Obj)(unsafe.Pointer(v1127)).FrefCount++
+						v1134 = tosPtr
+						*(*uintptr)(unsafe.Pointer(v1134)) = v1133
+						(*TTcl_Obj)(unsafe.Pointer(v1133)).FrefCount++
 					} else {
 						tosPtr += 4
-						v1129 = tosPtr
-						*(*uintptr)(unsafe.Pointer(v1129)) = *(*uintptr)(unsafe.Pointer(bp + 8))
+						v1135 = tosPtr
+						*(*uintptr)(unsafe.Pointer(v1135)) = *(*uintptr)(unsafe.Pointer(bp + 8))
 					}
 				}
 				pc += uintptr(libc.Int32FromInt32(1))
@@ -152661,8 +152695,10 @@ _1109:
 					}
 				}
 			}
-			goto _1125
-		_1125: /**/
+			goto _1132
+		_1132:
+			goto _1131
+		_1131: /**/
 			//
 		} else {
 			/*
@@ -152691,20 +152727,18 @@ _1109:
 					(*TTcl_Obj)(unsafe.Pointer(*(*uintptr)(unsafe.Pointer(bp + 8)))).FinternalRep.FlongValue = -libc.Int32FromInt32(1)
 					(*TTcl_Obj)(unsafe.Pointer(*(*uintptr)(unsafe.Pointer(bp + 8)))).FtypePtr = uintptr(unsafe.Pointer(&XtclIntType))
 				}
-				goto _1131
-			_1131:
 				if false {
 					if int32(1) != 0 {
 						if int32(1) > 0 {
-							v1132 = *(*uintptr)(unsafe.Pointer(bp + 8))
+							v1138 = *(*uintptr)(unsafe.Pointer(bp + 8))
 							tosPtr += 4
-							v1133 = tosPtr
-							*(*uintptr)(unsafe.Pointer(v1133)) = v1132
-							(*TTcl_Obj)(unsafe.Pointer(v1132)).FrefCount++
+							v1139 = tosPtr
+							*(*uintptr)(unsafe.Pointer(v1139)) = v1138
+							(*TTcl_Obj)(unsafe.Pointer(v1138)).FrefCount++
 						} else {
 							tosPtr += 4
-							v1134 = tosPtr
-							*(*uintptr)(unsafe.Pointer(v1134)) = *(*uintptr)(unsafe.Pointer(bp + 8))
+							v1140 = tosPtr
+							*(*uintptr)(unsafe.Pointer(v1140)) = *(*uintptr)(unsafe.Pointer(bp + 8))
 						}
 					}
 					pc += uintptr(libc.Int32FromInt32(1))
@@ -152735,8 +152769,10 @@ _1109:
 						}
 					}
 				}
-				goto _1130
-			_1130: /**/ //
+				goto _1137
+			_1137:
+				goto _1136
+			_1136: /**/ //
 			}
 			/*
 			 * Handle shifts within the native long range.
@@ -152745,28 +152781,26 @@ _1109:
 			goto longResultOfArithmetic
 		}
 	}
-	goto _1114
-_1110:
+	goto _1120
+_1116:
 	if l2 < 0 {
 		XTcl_SetObjResult(tls, interp, XTcl_NewStringObj(tls, __ccgo_ts+28594, -int32(1)))
 		goto gotError
 	} else {
 		if l1 == 0 {
 			*(*uintptr)(unsafe.Pointer(bp + 8)) = *(*uintptr)(unsafe.Pointer(constants))
-			goto _1136
-		_1136:
 			if false {
 				if int32(1) != 0 {
 					if int32(1) > 0 {
-						v1137 = *(*uintptr)(unsafe.Pointer(bp + 8))
+						v1143 = *(*uintptr)(unsafe.Pointer(bp + 8))
 						tosPtr += 4
-						v1138 = tosPtr
-						*(*uintptr)(unsafe.Pointer(v1138)) = v1137
-						(*TTcl_Obj)(unsafe.Pointer(v1137)).FrefCount++
+						v1144 = tosPtr
+						*(*uintptr)(unsafe.Pointer(v1144)) = v1143
+						(*TTcl_Obj)(unsafe.Pointer(v1143)).FrefCount++
 					} else {
 						tosPtr += 4
-						v1139 = tosPtr
-						*(*uintptr)(unsafe.Pointer(v1139)) = *(*uintptr)(unsafe.Pointer(bp + 8))
+						v1145 = tosPtr
+						*(*uintptr)(unsafe.Pointer(v1145)) = *(*uintptr)(unsafe.Pointer(bp + 8))
 					}
 				}
 				pc += uintptr(libc.Int32FromInt32(1))
@@ -152797,8 +152831,10 @@ _1110:
 					}
 				}
 			}
-			goto _1135
-		_1135: /**/
+			goto _1142
+		_1142:
+			goto _1141
+		_1141: /**/
 			//
 		} else {
 			if l2 > libc.Int32FromInt32(m_INT_MAX) {
@@ -152815,14 +152851,14 @@ _1110:
 				/*
 				 * Handle shifts within the native long range.
 				 */
-				if v1141 = uint32(shift) < libc.Uint32FromInt32(m_CHAR_BIT)*libc.Uint32FromInt64(4) && l1 != 0; v1141 {
+				if v1147 = uint32(shift) < libc.Uint32FromInt32(m_CHAR_BIT)*libc.Uint32FromInt64(4) && l1 != 0; v1147 {
 					if l1 > 0 {
-						v1140 = l1
+						v1146 = l1
 					} else {
-						v1140 = ^l1
+						v1146 = ^l1
 					}
 				}
-				if v1141 && !(v1140&-(libc.Int32FromInt32(1)<<(libc.Uint32FromInt32(m_CHAR_BIT)*libc.Uint32FromInt64(4)-libc.Uint32FromInt32(1)-uint32(shift))) != 0) {
+				if v1147 && !(v1146&-(libc.Int32FromInt32(1)<<(libc.Uint32FromInt32(m_CHAR_BIT)*libc.Uint32FromInt64(4)-libc.Uint32FromInt32(1)-uint32(shift))) != 0) {
 					lResult = l1 << shift
 					goto longResultOfArithmetic
 				}
@@ -152832,14 +152868,14 @@ _1110:
 	/*
 	 * Too large; need to use the broken-out function.
 	 */
-	goto _1114
-_1111:
+	goto _1120
+_1117:
 	lResult = l1 & l2
 	goto longResultOfArithmetic
-_1112:
+_1118:
 	lResult = l1 | l2
 	goto longResultOfArithmetic
-_1113:
+_1119:
 	lResult = l1 ^ l2
 longResultOfArithmetic:
 	if (*TTcl_Obj)(unsafe.Pointer(*(*uintptr)(unsafe.Pointer(bp + 12)))).FrefCount > int32(1) {
@@ -152855,20 +152891,18 @@ longResultOfArithmetic:
 		(*TTcl_Obj)(unsafe.Pointer(*(*uintptr)(unsafe.Pointer(bp + 8)))).Fbytes = libc.UintptrFromInt32(0)
 		(*TTcl_Obj)(unsafe.Pointer(*(*uintptr)(unsafe.Pointer(bp + 8)))).FinternalRep.FlongValue = lResult
 		(*TTcl_Obj)(unsafe.Pointer(*(*uintptr)(unsafe.Pointer(bp + 8)))).FtypePtr = uintptr(unsafe.Pointer(&XtclIntType))
-		goto _1143
-	_1143:
 		if false {
 			if int32(1) != 0 {
 				if int32(1) > 0 {
-					v1144 = *(*uintptr)(unsafe.Pointer(bp + 8))
+					v1150 = *(*uintptr)(unsafe.Pointer(bp + 8))
 					tosPtr += 4
-					v1145 = tosPtr
-					*(*uintptr)(unsafe.Pointer(v1145)) = v1144
-					(*TTcl_Obj)(unsafe.Pointer(v1144)).FrefCount++
+					v1151 = tosPtr
+					*(*uintptr)(unsafe.Pointer(v1151)) = v1150
+					(*TTcl_Obj)(unsafe.Pointer(v1150)).FrefCount++
 				} else {
 					tosPtr += 4
-					v1146 = tosPtr
-					*(*uintptr)(unsafe.Pointer(v1146)) = *(*uintptr)(unsafe.Pointer(bp + 8))
+					v1152 = tosPtr
+					*(*uintptr)(unsafe.Pointer(v1152)) = *(*uintptr)(unsafe.Pointer(bp + 8))
 				}
 			}
 			pc += uintptr(libc.Int32FromInt32(1))
@@ -152899,8 +152933,10 @@ longResultOfArithmetic:
 				}
 			}
 		}
-		goto _1142
-	_1142: /**/
+		goto _1149
+	_1149:
+		goto _1148
+	_1148: /**/
 		//
 	}
 	_isobjPtr2 = *(*uintptr)(unsafe.Pointer(bp + 12))
@@ -152918,20 +152954,18 @@ longResultOfArithmetic:
 	}
 	(*TTcl_Obj)(unsafe.Pointer(*(*uintptr)(unsafe.Pointer(bp + 12)))).FinternalRep.FlongValue = lResult
 	(*TTcl_Obj)(unsafe.Pointer(*(*uintptr)(unsafe.Pointer(bp + 12)))).FtypePtr = uintptr(unsafe.Pointer(&XtclIntType))
-	goto _1148
-_1148:
 	if false {
 		if 0 != 0 {
 			if 0 > 0 {
-				v1149 = *(*uintptr)(unsafe.Pointer(bp + 8))
+				v1155 = *(*uintptr)(unsafe.Pointer(bp + 8))
 				tosPtr += 4
-				v1150 = tosPtr
-				*(*uintptr)(unsafe.Pointer(v1150)) = v1149
-				(*TTcl_Obj)(unsafe.Pointer(v1149)).FrefCount++
+				v1156 = tosPtr
+				*(*uintptr)(unsafe.Pointer(v1156)) = v1155
+				(*TTcl_Obj)(unsafe.Pointer(v1155)).FrefCount++
 			} else {
 				tosPtr += 4
-				v1151 = tosPtr
-				*(*uintptr)(unsafe.Pointer(v1151)) = *(*uintptr)(unsafe.Pointer(bp + 8))
+				v1157 = tosPtr
+				*(*uintptr)(unsafe.Pointer(v1157)) = *(*uintptr)(unsafe.Pointer(bp + 8))
 			}
 		}
 		pc += uintptr(libc.Int32FromInt32(1))
@@ -152962,11 +152996,13 @@ _1148:
 			}
 		}
 	}
-	goto _1147
-_1147: /**/
+	goto _1154
+_1154:
+	goto _1153
+_1153: /**/
 	; //
-_1114:
-_1107:
+_1120:
+_1113:
 	/*
 	 * DO NOT MERGE THIS WITH THE EQUIVALENT SECTION LATER! That would
 	 * encourage the compiler to inline ExecuteExtendedBinaryMathOp, which
@@ -152980,67 +153016,65 @@ _1107:
 			goto gotError
 		} else {
 			if *(*uintptr)(unsafe.Pointer(bp + 8)) == libc.UintptrFromInt32(0) {
-				goto _1153
-			_1153:
 				if false {
 					if 0 != 0 {
 						if 0 > 0 {
-							v1154 = *(*uintptr)(unsafe.Pointer(bp + 8))
-							tosPtr += 4
-							v1155 = tosPtr
-							*(*uintptr)(unsafe.Pointer(v1155)) = v1154
-							(*TTcl_Obj)(unsafe.Pointer(v1154)).FrefCount++
-						} else {
-							tosPtr += 4
-							v1156 = tosPtr
-							*(*uintptr)(unsafe.Pointer(v1156)) = *(*uintptr)(unsafe.Pointer(bp + 8))
-						}
-					}
-					pc += uintptr(libc.Int32FromInt32(1))
-					goto cleanup0
-				} else {
-					if 0 != 0 {
-						if 0 > 0 {
-							(*TTcl_Obj)(unsafe.Pointer(*(*uintptr)(unsafe.Pointer(bp + 8)))).FrefCount++
-						}
-						pc += uintptr(libc.Int32FromInt32(1))
-						switch libc.Int32FromInt32(1) {
-						case int32(1):
-							goto cleanup1_pushObjResultPtr
-						case int32(2):
-							goto cleanup2_pushObjResultPtr
-						case 0:
-							break
-						}
-					} else {
-						pc += uintptr(libc.Int32FromInt32(1))
-						switch libc.Int32FromInt32(1) {
-						case int32(1):
-							goto cleanup1
-						case int32(2):
-							goto cleanup2
-						case 0:
-							break
-						}
-					}
-				}
-				goto _1152
-			_1152: /**/ //
-			} else {
-				goto _1158
-			_1158:
-				if false {
-					if int32(1) != 0 {
-						if int32(1) > 0 {
-							v1159 = *(*uintptr)(unsafe.Pointer(bp + 8))
-							tosPtr += 4
-							v1160 = tosPtr
-							*(*uintptr)(unsafe.Pointer(v1160)) = v1159
-							(*TTcl_Obj)(unsafe.Pointer(v1159)).FrefCount++
-						} else {
+							v1160 = *(*uintptr)(unsafe.Pointer(bp + 8))
 							tosPtr += 4
 							v1161 = tosPtr
-							*(*uintptr)(unsafe.Pointer(v1161)) = *(*uintptr)(unsafe.Pointer(bp + 8))
+							*(*uintptr)(unsafe.Pointer(v1161)) = v1160
+							(*TTcl_Obj)(unsafe.Pointer(v1160)).FrefCount++
+						} else {
+							tosPtr += 4
+							v1162 = tosPtr
+							*(*uintptr)(unsafe.Pointer(v1162)) = *(*uintptr)(unsafe.Pointer(bp + 8))
+						}
+					}
+					pc += uintptr(libc.Int32FromInt32(1))
+					goto cleanup0
+				} else {
+					if 0 != 0 {
+						if 0 > 0 {
+							(*TTcl_Obj)(unsafe.Pointer(*(*uintptr)(unsafe.Pointer(bp + 8)))).FrefCount++
+						}
+						pc += uintptr(libc.Int32FromInt32(1))
+						switch libc.Int32FromInt32(1) {
+						case int32(1):
+							goto cleanup1_pushObjResultPtr
+						case int32(2):
+							goto cleanup2_pushObjResultPtr
+						case 0:
+							break
+						}
+					} else {
+						pc += uintptr(libc.Int32FromInt32(1))
+						switch libc.Int32FromInt32(1) {
+						case int32(1):
+							goto cleanup1
+						case int32(2):
+							goto cleanup2
+						case 0:
+							break
+						}
+					}
+				}
+				goto _1159
+			_1159:
+				goto _1158
+			_1158: /**/ //
+			} else {
+				if false {
+					if int32(1) != 0 {
+						if int32(1) > 0 {
+							v1165 = *(*uintptr)(unsafe.Pointer(bp + 8))
+							tosPtr += 4
+							v1166 = tosPtr
+							*(*uintptr)(unsafe.Pointer(v1166)) = v1165
+							(*TTcl_Obj)(unsafe.Pointer(v1165)).FrefCount++
+						} else {
+							tosPtr += 4
+							v1167 = tosPtr
+							*(*uintptr)(unsafe.Pointer(v1167)) = *(*uintptr)(unsafe.Pointer(bp + 8))
 						}
 					}
 					pc += uintptr(libc.Int32FromInt32(1))
@@ -153071,8 +153105,10 @@ _1107:
 						}
 					}
 				}
-				goto _1157
-			_1157: /**/ //
+				goto _1164
+			_1164:
+				goto _1163
+			_1163: /**/ //
 			}
 		}
 	}
@@ -153086,39 +153122,39 @@ _191:
 	if (*TTcl_Obj)(unsafe.Pointer(*(*uintptr)(unsafe.Pointer(bp + 12)))).FtypePtr == uintptr(unsafe.Pointer(&XtclIntType)) {
 		*(*int32)(unsafe.Pointer(bp + 132)) = int32(m_TCL_NUMBER_LONG)
 		*(*TClientData)(unsafe.Pointer(bp + 124)) = *(*uintptr)(unsafe.Pointer(bp + 12)) + 16
-		v1162 = libc.Int32FromInt32(m_TCL_OK)
+		v1168 = libc.Int32FromInt32(m_TCL_OK)
 	} else {
 		if (*TTcl_Obj)(unsafe.Pointer(*(*uintptr)(unsafe.Pointer(bp + 12)))).FtypePtr == uintptr(unsafe.Pointer(&XtclWideIntType)) {
 			*(*int32)(unsafe.Pointer(bp + 132)) = int32(m_TCL_NUMBER_WIDE)
 			*(*TClientData)(unsafe.Pointer(bp + 124)) = *(*uintptr)(unsafe.Pointer(bp + 12)) + 16
-			v1163 = libc.Int32FromInt32(m_TCL_OK)
+			v1169 = libc.Int32FromInt32(m_TCL_OK)
 		} else {
 			if (*TTcl_Obj)(unsafe.Pointer(*(*uintptr)(unsafe.Pointer(bp + 12)))).FtypePtr == uintptr(unsafe.Pointer(&XtclDoubleType)) {
 				*(*float64)(unsafe.Pointer(bp)) = *(*float64)(unsafe.Pointer(*(*uintptr)(unsafe.Pointer(bp + 12)) + 16))
-				v1166 = *(*uint64)(unsafe.Pointer(bp))
-				goto _1167
-			_1167:
-				if libc.BoolInt32(v1166&(-libc.Uint64FromUint64(1)>>libc.Int32FromInt32(1)) > libc.Uint64FromUint64(0x7ff)<<libc.Int32FromInt32(52)) != 0 {
+				v1172 = *(*uint64)(unsafe.Pointer(bp))
+				goto _1173
+			_1173:
+				if libc.BoolInt32(v1172&(-libc.Uint64FromUint64(1)>>libc.Int32FromInt32(1)) > libc.Uint64FromUint64(0x7ff)<<libc.Int32FromInt32(52)) != 0 {
 					*(*int32)(unsafe.Pointer(bp + 132)) = int32(m_TCL_NUMBER_NAN)
 				} else {
 					*(*int32)(unsafe.Pointer(bp + 132)) = int32(m_TCL_NUMBER_DOUBLE)
 				}
 				*(*TClientData)(unsafe.Pointer(bp + 124)) = *(*uintptr)(unsafe.Pointer(bp + 12)) + 16
-				v1164 = libc.Int32FromInt32(m_TCL_OK)
+				v1170 = libc.Int32FromInt32(m_TCL_OK)
 			} else {
 				if (*TTcl_Obj)(unsafe.Pointer(*(*uintptr)(unsafe.Pointer(bp + 12)))).Fbytes != libc.UintptrFromInt32(0) && (*TTcl_Obj)(unsafe.Pointer(*(*uintptr)(unsafe.Pointer(bp + 12)))).Flength == 0 {
 					*(*int32)(unsafe.Pointer(bp + 132)) = int32(m_TCL_NUMBER_LONG)
-					v1168 = libc.Int32FromInt32(m_TCL_ERROR)
+					v1174 = libc.Int32FromInt32(m_TCL_ERROR)
 				} else {
-					v1168 = XTclGetNumberFromObj(tls, libc.UintptrFromInt32(0), *(*uintptr)(unsafe.Pointer(bp + 12)), bp+124, bp+132)
+					v1174 = XTclGetNumberFromObj(tls, libc.UintptrFromInt32(0), *(*uintptr)(unsafe.Pointer(bp + 12)), bp+124, bp+132)
 				}
-				v1164 = v1168
+				v1170 = v1174
 			}
-			v1163 = v1164
+			v1169 = v1170
 		}
-		v1162 = v1163
+		v1168 = v1169
 	}
-	if v1162 != m_TCL_OK || *(*int32)(unsafe.Pointer(bp + 132)) == int32(m_TCL_NUMBER_NAN) {
+	if v1168 != m_TCL_OK || *(*int32)(unsafe.Pointer(bp + 132)) == int32(m_TCL_NUMBER_NAN) {
 		(*TExecStack)(unsafe.Pointer((*TExecEnv1)(unsafe.Pointer((*TInterp)(unsafe.Pointer(interp)).FexecEnvPtr)).FexecStackPtr)).FtosPtr = tosPtr
 		_IllegalExprOperandType(tls, interp, pc, *(*uintptr)(unsafe.Pointer(bp + 12)))
 		checkInterp = int32(1)
@@ -153127,39 +153163,39 @@ _191:
 	if (*TTcl_Obj)(unsafe.Pointer(value2Ptr)).FtypePtr == uintptr(unsafe.Pointer(&XtclIntType)) {
 		*(*int32)(unsafe.Pointer(bp + 136)) = int32(m_TCL_NUMBER_LONG)
 		*(*TClientData)(unsafe.Pointer(bp + 128)) = value2Ptr + 16
-		v1169 = libc.Int32FromInt32(m_TCL_OK)
+		v1175 = libc.Int32FromInt32(m_TCL_OK)
 	} else {
 		if (*TTcl_Obj)(unsafe.Pointer(value2Ptr)).FtypePtr == uintptr(unsafe.Pointer(&XtclWideIntType)) {
 			*(*int32)(unsafe.Pointer(bp + 136)) = int32(m_TCL_NUMBER_WIDE)
 			*(*TClientData)(unsafe.Pointer(bp + 128)) = value2Ptr + 16
-			v1170 = libc.Int32FromInt32(m_TCL_OK)
+			v1176 = libc.Int32FromInt32(m_TCL_OK)
 		} else {
 			if (*TTcl_Obj)(unsafe.Pointer(value2Ptr)).FtypePtr == uintptr(unsafe.Pointer(&XtclDoubleType)) {
 				*(*float64)(unsafe.Pointer(bp)) = *(*float64)(unsafe.Pointer(value2Ptr + 16))
-				v1173 = *(*uint64)(unsafe.Pointer(bp))
-				goto _1174
-			_1174:
-				if libc.BoolInt32(v1173&(-libc.Uint64FromUint64(1)>>libc.Int32FromInt32(1)) > libc.Uint64FromUint64(0x7ff)<<libc.Int32FromInt32(52)) != 0 {
+				v1179 = *(*uint64)(unsafe.Pointer(bp))
+				goto _1180
+			_1180:
+				if libc.BoolInt32(v1179&(-libc.Uint64FromUint64(1)>>libc.Int32FromInt32(1)) > libc.Uint64FromUint64(0x7ff)<<libc.Int32FromInt32(52)) != 0 {
 					*(*int32)(unsafe.Pointer(bp + 136)) = int32(m_TCL_NUMBER_NAN)
 				} else {
 					*(*int32)(unsafe.Pointer(bp + 136)) = int32(m_TCL_NUMBER_DOUBLE)
 				}
 				*(*TClientData)(unsafe.Pointer(bp + 128)) = value2Ptr + 16
-				v1171 = libc.Int32FromInt32(m_TCL_OK)
+				v1177 = libc.Int32FromInt32(m_TCL_OK)
 			} else {
 				if (*TTcl_Obj)(unsafe.Pointer(value2Ptr)).Fbytes != libc.UintptrFromInt32(0) && (*TTcl_Obj)(unsafe.Pointer(value2Ptr)).Flength == 0 {
 					*(*int32)(unsafe.Pointer(bp + 136)) = int32(m_TCL_NUMBER_LONG)
-					v1175 = libc.Int32FromInt32(m_TCL_ERROR)
+					v1181 = libc.Int32FromInt32(m_TCL_ERROR)
 				} else {
-					v1175 = XTclGetNumberFromObj(tls, libc.UintptrFromInt32(0), value2Ptr, bp+128, bp+136)
+					v1181 = XTclGetNumberFromObj(tls, libc.UintptrFromInt32(0), value2Ptr, bp+128, bp+136)
 				}
-				v1171 = v1175
+				v1177 = v1181
 			}
-			v1170 = v1171
+			v1176 = v1177
 		}
-		v1169 = v1170
+		v1175 = v1176
 	}
-	if v1169 != m_TCL_OK || *(*int32)(unsafe.Pointer(bp + 136)) == int32(m_TCL_NUMBER_NAN) {
+	if v1175 != m_TCL_OK || *(*int32)(unsafe.Pointer(bp + 136)) == int32(m_TCL_NUMBER_NAN) {
 		(*TExecStack)(unsafe.Pointer((*TExecEnv1)(unsafe.Pointer((*TInterp)(unsafe.Pointer(interp)).FexecEnvPtr)).FexecStackPtr)).FtosPtr = tosPtr
 		_IllegalExprOperandType(tls, interp, pc, value2Ptr)
 		checkInterp = int32(1)
@@ -153174,41 +153210,39 @@ _191:
 		l2 = *(*int32)(unsafe.Pointer(*(*TClientData)(unsafe.Pointer(bp + 128))))
 		switch int32(*(*uint8)(unsafe.Pointer(pc))) {
 		case int32(m_INST_ADD):
-			goto _1176
+			goto _1182
 		case int32(m_INST_SUB):
-			goto _1177
+			goto _1183
 		case int32(m_INST_DIV):
-			goto _1178
+			goto _1184
 		case int32(m_INST_MULT):
-			goto _1179
+			goto _1185
 		}
-		goto _1180
-	_1176:
+		goto _1186
+	_1182:
 		w11 = int64(l1)
 		w2 = int64(l2)
 		wResult = w11 + w2
 		goto wideResultOfArithmetic
-	_1177:
+	_1183:
 		w11 = int64(l1)
 		w2 = int64(l2)
 		wResult = w11 - w2
 	wideResultOfArithmetic:
 		if (*TTcl_Obj)(unsafe.Pointer(*(*uintptr)(unsafe.Pointer(bp + 12)))).FrefCount > int32(1) {
 			*(*uintptr)(unsafe.Pointer(bp + 8)) = XTcl_NewWideIntObj(tls, wResult)
-			goto _1182
-		_1182:
 			if false {
 				if int32(1) != 0 {
 					if int32(1) > 0 {
-						v1183 = *(*uintptr)(unsafe.Pointer(bp + 8))
+						v1189 = *(*uintptr)(unsafe.Pointer(bp + 8))
 						tosPtr += 4
-						v1184 = tosPtr
-						*(*uintptr)(unsafe.Pointer(v1184)) = v1183
-						(*TTcl_Obj)(unsafe.Pointer(v1183)).FrefCount++
+						v1190 = tosPtr
+						*(*uintptr)(unsafe.Pointer(v1190)) = v1189
+						(*TTcl_Obj)(unsafe.Pointer(v1189)).FrefCount++
 					} else {
 						tosPtr += 4
-						v1185 = tosPtr
-						*(*uintptr)(unsafe.Pointer(v1185)) = *(*uintptr)(unsafe.Pointer(bp + 8))
+						v1191 = tosPtr
+						*(*uintptr)(unsafe.Pointer(v1191)) = *(*uintptr)(unsafe.Pointer(bp + 8))
 					}
 				}
 				pc += uintptr(libc.Int32FromInt32(1))
@@ -153239,25 +153273,25 @@ _191:
 					}
 				}
 			}
-			goto _1181
-		_1181: /**/
+			goto _1188
+		_1188:
+			goto _1187
+		_1187: /**/
 			//
 		}
 		XTcl_SetWideIntObj(tls, *(*uintptr)(unsafe.Pointer(bp + 12)), wResult)
-		goto _1187
-	_1187:
 		if false {
 			if 0 != 0 {
 				if 0 > 0 {
-					v1188 = *(*uintptr)(unsafe.Pointer(bp + 8))
+					v1194 = *(*uintptr)(unsafe.Pointer(bp + 8))
 					tosPtr += 4
-					v1189 = tosPtr
-					*(*uintptr)(unsafe.Pointer(v1189)) = v1188
-					(*TTcl_Obj)(unsafe.Pointer(v1188)).FrefCount++
+					v1195 = tosPtr
+					*(*uintptr)(unsafe.Pointer(v1195)) = v1194
+					(*TTcl_Obj)(unsafe.Pointer(v1194)).FrefCount++
 				} else {
 					tosPtr += 4
-					v1190 = tosPtr
-					*(*uintptr)(unsafe.Pointer(v1190)) = *(*uintptr)(unsafe.Pointer(bp + 8))
+					v1196 = tosPtr
+					*(*uintptr)(unsafe.Pointer(v1196)) = *(*uintptr)(unsafe.Pointer(bp + 8))
 				}
 			}
 			pc += uintptr(libc.Int32FromInt32(1))
@@ -153288,11 +153322,13 @@ _191:
 				}
 			}
 		}
-		goto _1186
-	_1186: /**/
+		goto _1193
+	_1193:
+		goto _1192
+	_1192: /**/
 		; //
-		goto _1180
-	_1178:
+		goto _1186
+	_1184:
 		if l2 == 0 {
 			goto divideByZero
 		} else {
@@ -153312,12 +153348,12 @@ _191:
 			lResult -= int32(1)
 		}
 		goto longResultOfArithmetic
-	_1179:
+	_1185:
 		if libc.Bool(libc.Bool(libc.Bool(libc.Bool(libc.Bool(uint32(4) >= libc.Uint32FromInt32(2)*libc.Uint32FromInt64(4)) && l1 <= int32(m_INT_MAX)) && l1 >= -libc.Int32FromInt32(1)-libc.Int32FromInt32(0x7fffffff)) && l2 <= int32(m_INT_MAX)) && l2 >= -libc.Int32FromInt32(1)-libc.Int32FromInt32(0x7fffffff)) || libc.Bool(uint32(4) >= libc.Uint32FromInt32(2)*libc.Uint32FromInt64(2)) && l1 <= int32(m_SHRT_MAX) && l1 >= -libc.Int32FromInt32(1)-libc.Int32FromInt32(0x7fff) && l2 <= int32(m_SHRT_MAX) && l2 >= -libc.Int32FromInt32(1)-libc.Int32FromInt32(0x7fff) {
 			lResult = l1 * l2
 			goto longResultOfArithmetic
 		}
-	_1180:
+	_1186:
 		/*
 		 * Fall through with INST_EXPON, INST_DIV and large multiplies.
 		 */
@@ -153334,67 +153370,65 @@ overflow:
 				goto gotError
 			} else {
 				if *(*uintptr)(unsafe.Pointer(bp + 8)) == libc.UintptrFromInt32(0) {
-					goto _1192
-				_1192:
 					if false {
 						if 0 != 0 {
 							if 0 > 0 {
-								v1193 = *(*uintptr)(unsafe.Pointer(bp + 8))
-								tosPtr += 4
-								v1194 = tosPtr
-								*(*uintptr)(unsafe.Pointer(v1194)) = v1193
-								(*TTcl_Obj)(unsafe.Pointer(v1193)).FrefCount++
-							} else {
-								tosPtr += 4
-								v1195 = tosPtr
-								*(*uintptr)(unsafe.Pointer(v1195)) = *(*uintptr)(unsafe.Pointer(bp + 8))
-							}
-						}
-						pc += uintptr(libc.Int32FromInt32(1))
-						goto cleanup0
-					} else {
-						if 0 != 0 {
-							if 0 > 0 {
-								(*TTcl_Obj)(unsafe.Pointer(*(*uintptr)(unsafe.Pointer(bp + 8)))).FrefCount++
-							}
-							pc += uintptr(libc.Int32FromInt32(1))
-							switch libc.Int32FromInt32(1) {
-							case int32(1):
-								goto cleanup1_pushObjResultPtr
-							case int32(2):
-								goto cleanup2_pushObjResultPtr
-							case 0:
-								break
-							}
-						} else {
-							pc += uintptr(libc.Int32FromInt32(1))
-							switch libc.Int32FromInt32(1) {
-							case int32(1):
-								goto cleanup1
-							case int32(2):
-								goto cleanup2
-							case 0:
-								break
-							}
-						}
-					}
-					goto _1191
-				_1191: /**/ //
-				} else {
-					goto _1197
-				_1197:
-					if false {
-						if int32(1) != 0 {
-							if int32(1) > 0 {
-								v1198 = *(*uintptr)(unsafe.Pointer(bp + 8))
-								tosPtr += 4
-								v1199 = tosPtr
-								*(*uintptr)(unsafe.Pointer(v1199)) = v1198
-								(*TTcl_Obj)(unsafe.Pointer(v1198)).FrefCount++
-							} else {
+								v1199 = *(*uintptr)(unsafe.Pointer(bp + 8))
 								tosPtr += 4
 								v1200 = tosPtr
-								*(*uintptr)(unsafe.Pointer(v1200)) = *(*uintptr)(unsafe.Pointer(bp + 8))
+								*(*uintptr)(unsafe.Pointer(v1200)) = v1199
+								(*TTcl_Obj)(unsafe.Pointer(v1199)).FrefCount++
+							} else {
+								tosPtr += 4
+								v1201 = tosPtr
+								*(*uintptr)(unsafe.Pointer(v1201)) = *(*uintptr)(unsafe.Pointer(bp + 8))
+							}
+						}
+						pc += uintptr(libc.Int32FromInt32(1))
+						goto cleanup0
+					} else {
+						if 0 != 0 {
+							if 0 > 0 {
+								(*TTcl_Obj)(unsafe.Pointer(*(*uintptr)(unsafe.Pointer(bp + 8)))).FrefCount++
+							}
+							pc += uintptr(libc.Int32FromInt32(1))
+							switch libc.Int32FromInt32(1) {
+							case int32(1):
+								goto cleanup1_pushObjResultPtr
+							case int32(2):
+								goto cleanup2_pushObjResultPtr
+							case 0:
+								break
+							}
+						} else {
+							pc += uintptr(libc.Int32FromInt32(1))
+							switch libc.Int32FromInt32(1) {
+							case int32(1):
+								goto cleanup1
+							case int32(2):
+								goto cleanup2
+							case 0:
+								break
+							}
+						}
+					}
+					goto _1198
+				_1198:
+					goto _1197
+				_1197: /**/ //
+				} else {
+					if false {
+						if int32(1) != 0 {
+							if int32(1) > 0 {
+								v1204 = *(*uintptr)(unsafe.Pointer(bp + 8))
+								tosPtr += 4
+								v1205 = tosPtr
+								*(*uintptr)(unsafe.Pointer(v1205)) = v1204
+								(*TTcl_Obj)(unsafe.Pointer(v1204)).FrefCount++
+							} else {
+								tosPtr += 4
+								v1206 = tosPtr
+								*(*uintptr)(unsafe.Pointer(v1206)) = *(*uintptr)(unsafe.Pointer(bp + 8))
 							}
 						}
 						pc += uintptr(libc.Int32FromInt32(1))
@@ -153425,8 +153459,10 @@ overflow:
 							}
 						}
 					}
-					goto _1196
-				_1196: /**/ //
+					goto _1203
+				_1203:
+					goto _1202
+				_1202: /**/ //
 				}
 			}
 		}
@@ -153437,11 +153473,11 @@ _196:
 	/* TODO - consider optimization search for constants */
 	if (*TTcl_Obj)(unsafe.Pointer(*(*uintptr)(unsafe.Pointer(bp + 12)))).FtypePtr == uintptr(unsafe.Pointer(&XtclIntType)) || (*TTcl_Obj)(unsafe.Pointer(*(*uintptr)(unsafe.Pointer(bp + 12)))).FtypePtr == uintptr(unsafe.Pointer(&XtclBooleanType)) {
 		*(*int32)(unsafe.Pointer(bp + 160)) = libc.BoolInt32((*TTcl_Obj)(unsafe.Pointer(*(*uintptr)(unsafe.Pointer(bp + 12)))).FinternalRep.FlongValue != 0)
-		v1201 = libc.Int32FromInt32(m_TCL_OK)
+		v1207 = libc.Int32FromInt32(m_TCL_OK)
 	} else {
-		v1201 = XTcl_GetBooleanFromObj(tls, libc.UintptrFromInt32(0), *(*uintptr)(unsafe.Pointer(bp + 12)), bp+160)
+		v1207 = XTcl_GetBooleanFromObj(tls, libc.UintptrFromInt32(0), *(*uintptr)(unsafe.Pointer(bp + 12)), bp+160)
 	}
-	if v1201 != m_TCL_OK {
+	if v1207 != m_TCL_OK {
 		(*TExecStack)(unsafe.Pointer((*TExecEnv1)(unsafe.Pointer((*TInterp)(unsafe.Pointer(interp)).FexecEnvPtr)).FexecStackPtr)).FtosPtr = tosPtr
 		_IllegalExprOperandType(tls, interp, pc, *(*uintptr)(unsafe.Pointer(bp + 12)))
 		checkInterp = int32(1)
@@ -153449,20 +153485,18 @@ _196:
 	}
 	/* TODO: Consider peephole opt. */
 	*(*uintptr)(unsafe.Pointer(bp + 8)) = *(*uintptr)(unsafe.Pointer(constants + libc.BoolUintptr(!(*(*int32)(unsafe.Pointer(bp + 160)) != 0))*4))
-	goto _1203
-_1203:
 	if false {
 		if int32(1) != 0 {
 			if int32(1) > 0 {
-				v1204 = *(*uintptr)(unsafe.Pointer(bp + 8))
+				v1210 = *(*uintptr)(unsafe.Pointer(bp + 8))
 				tosPtr += 4
-				v1205 = tosPtr
-				*(*uintptr)(unsafe.Pointer(v1205)) = v1204
-				(*TTcl_Obj)(unsafe.Pointer(v1204)).FrefCount++
+				v1211 = tosPtr
+				*(*uintptr)(unsafe.Pointer(v1211)) = v1210
+				(*TTcl_Obj)(unsafe.Pointer(v1210)).FrefCount++
 			} else {
 				tosPtr += 4
-				v1206 = tosPtr
-				*(*uintptr)(unsafe.Pointer(v1206)) = *(*uintptr)(unsafe.Pointer(bp + 8))
+				v1212 = tosPtr
+				*(*uintptr)(unsafe.Pointer(v1212)) = *(*uintptr)(unsafe.Pointer(bp + 8))
 			}
 		}
 		pc += uintptr(libc.Int32FromInt32(1))
@@ -153493,47 +153527,49 @@ _1203:
 			}
 		}
 	}
-	goto _1202
-_1202: /**/
+	goto _1209
+_1209:
+	goto _1208
+_1208: /**/
 	; //
 _197:
 	*(*uintptr)(unsafe.Pointer(bp + 12)) = *(*uintptr)(unsafe.Pointer(tosPtr))
 	if (*TTcl_Obj)(unsafe.Pointer(*(*uintptr)(unsafe.Pointer(bp + 12)))).FtypePtr == uintptr(unsafe.Pointer(&XtclIntType)) {
 		*(*int32)(unsafe.Pointer(bp + 132)) = int32(m_TCL_NUMBER_LONG)
 		*(*TClientData)(unsafe.Pointer(bp + 124)) = *(*uintptr)(unsafe.Pointer(bp + 12)) + 16
-		v1207 = libc.Int32FromInt32(m_TCL_OK)
+		v1213 = libc.Int32FromInt32(m_TCL_OK)
 	} else {
 		if (*TTcl_Obj)(unsafe.Pointer(*(*uintptr)(unsafe.Pointer(bp + 12)))).FtypePtr == uintptr(unsafe.Pointer(&XtclWideIntType)) {
 			*(*int32)(unsafe.Pointer(bp + 132)) = int32(m_TCL_NUMBER_WIDE)
 			*(*TClientData)(unsafe.Pointer(bp + 124)) = *(*uintptr)(unsafe.Pointer(bp + 12)) + 16
-			v1208 = libc.Int32FromInt32(m_TCL_OK)
+			v1214 = libc.Int32FromInt32(m_TCL_OK)
 		} else {
 			if (*TTcl_Obj)(unsafe.Pointer(*(*uintptr)(unsafe.Pointer(bp + 12)))).FtypePtr == uintptr(unsafe.Pointer(&XtclDoubleType)) {
 				*(*float64)(unsafe.Pointer(bp)) = *(*float64)(unsafe.Pointer(*(*uintptr)(unsafe.Pointer(bp + 12)) + 16))
-				v1211 = *(*uint64)(unsafe.Pointer(bp))
-				goto _1212
-			_1212:
-				if libc.BoolInt32(v1211&(-libc.Uint64FromUint64(1)>>libc.Int32FromInt32(1)) > libc.Uint64FromUint64(0x7ff)<<libc.Int32FromInt32(52)) != 0 {
+				v1217 = *(*uint64)(unsafe.Pointer(bp))
+				goto _1218
+			_1218:
+				if libc.BoolInt32(v1217&(-libc.Uint64FromUint64(1)>>libc.Int32FromInt32(1)) > libc.Uint64FromUint64(0x7ff)<<libc.Int32FromInt32(52)) != 0 {
 					*(*int32)(unsafe.Pointer(bp + 132)) = int32(m_TCL_NUMBER_NAN)
 				} else {
 					*(*int32)(unsafe.Pointer(bp + 132)) = int32(m_TCL_NUMBER_DOUBLE)
 				}
 				*(*TClientData)(unsafe.Pointer(bp + 124)) = *(*uintptr)(unsafe.Pointer(bp + 12)) + 16
-				v1209 = libc.Int32FromInt32(m_TCL_OK)
+				v1215 = libc.Int32FromInt32(m_TCL_OK)
 			} else {
 				if (*TTcl_Obj)(unsafe.Pointer(*(*uintptr)(unsafe.Pointer(bp + 12)))).Fbytes != libc.UintptrFromInt32(0) && (*TTcl_Obj)(unsafe.Pointer(*(*uintptr)(unsafe.Pointer(bp + 12)))).Flength == 0 {
 					*(*int32)(unsafe.Pointer(bp + 132)) = int32(m_TCL_NUMBER_LONG)
-					v1213 = libc.Int32FromInt32(m_TCL_ERROR)
+					v1219 = libc.Int32FromInt32(m_TCL_ERROR)
 				} else {
-					v1213 = XTclGetNumberFromObj(tls, libc.UintptrFromInt32(0), *(*uintptr)(unsafe.Pointer(bp + 12)), bp+124, bp+132)
+					v1219 = XTclGetNumberFromObj(tls, libc.UintptrFromInt32(0), *(*uintptr)(unsafe.Pointer(bp + 12)), bp+124, bp+132)
 				}
-				v1209 = v1213
+				v1215 = v1219
 			}
-			v1208 = v1209
+			v1214 = v1215
 		}
-		v1207 = v1208
+		v1213 = v1214
 	}
-	if v1207 != m_TCL_OK || *(*int32)(unsafe.Pointer(bp + 132)) == int32(m_TCL_NUMBER_NAN) || *(*int32)(unsafe.Pointer(bp + 132)) == int32(m_TCL_NUMBER_DOUBLE) {
+	if v1213 != m_TCL_OK || *(*int32)(unsafe.Pointer(bp + 132)) == int32(m_TCL_NUMBER_NAN) || *(*int32)(unsafe.Pointer(bp + 132)) == int32(m_TCL_NUMBER_DOUBLE) {
 		/*
 		 * ... ~$NonInteger => raise an error.
 		 */
@@ -153557,20 +153593,18 @@ _197:
 			(*TTcl_Obj)(unsafe.Pointer(*(*uintptr)(unsafe.Pointer(bp + 8)))).Fbytes = libc.UintptrFromInt32(0)
 			(*TTcl_Obj)(unsafe.Pointer(*(*uintptr)(unsafe.Pointer(bp + 8)))).FinternalRep.FlongValue = ^l1
 			(*TTcl_Obj)(unsafe.Pointer(*(*uintptr)(unsafe.Pointer(bp + 8)))).FtypePtr = uintptr(unsafe.Pointer(&XtclIntType))
-			goto _1215
-		_1215:
 			if false {
 				if int32(1) != 0 {
 					if int32(1) > 0 {
-						v1216 = *(*uintptr)(unsafe.Pointer(bp + 8))
+						v1222 = *(*uintptr)(unsafe.Pointer(bp + 8))
 						tosPtr += 4
-						v1217 = tosPtr
-						*(*uintptr)(unsafe.Pointer(v1217)) = v1216
-						(*TTcl_Obj)(unsafe.Pointer(v1216)).FrefCount++
+						v1223 = tosPtr
+						*(*uintptr)(unsafe.Pointer(v1223)) = v1222
+						(*TTcl_Obj)(unsafe.Pointer(v1222)).FrefCount++
 					} else {
 						tosPtr += 4
-						v1218 = tosPtr
-						*(*uintptr)(unsafe.Pointer(v1218)) = *(*uintptr)(unsafe.Pointer(bp + 8))
+						v1224 = tosPtr
+						*(*uintptr)(unsafe.Pointer(v1224)) = *(*uintptr)(unsafe.Pointer(bp + 8))
 					}
 				}
 				pc += uintptr(libc.Int32FromInt32(1))
@@ -153601,8 +153635,10 @@ _197:
 					}
 				}
 			}
-			goto _1214
-		_1214: /**/
+			goto _1221
+		_1221:
+			goto _1220
+		_1220: /**/
 			//
 		}
 		_isobjPtr3 = *(*uintptr)(unsafe.Pointer(bp + 12))
@@ -153620,20 +153656,18 @@ _197:
 		}
 		(*TTcl_Obj)(unsafe.Pointer(*(*uintptr)(unsafe.Pointer(bp + 12)))).FinternalRep.FlongValue = ^l1
 		(*TTcl_Obj)(unsafe.Pointer(*(*uintptr)(unsafe.Pointer(bp + 12)))).FtypePtr = uintptr(unsafe.Pointer(&XtclIntType))
-		goto _1220
-	_1220:
 		if true {
 			if 0 != 0 {
 				if 0 > 0 {
-					v1221 = *(*uintptr)(unsafe.Pointer(bp + 8))
+					v1227 = *(*uintptr)(unsafe.Pointer(bp + 8))
 					tosPtr += 4
-					v1222 = tosPtr
-					*(*uintptr)(unsafe.Pointer(v1222)) = v1221
-					(*TTcl_Obj)(unsafe.Pointer(v1221)).FrefCount++
+					v1228 = tosPtr
+					*(*uintptr)(unsafe.Pointer(v1228)) = v1227
+					(*TTcl_Obj)(unsafe.Pointer(v1227)).FrefCount++
 				} else {
 					tosPtr += 4
-					v1223 = tosPtr
-					*(*uintptr)(unsafe.Pointer(v1223)) = *(*uintptr)(unsafe.Pointer(bp + 8))
+					v1229 = tosPtr
+					*(*uintptr)(unsafe.Pointer(v1229)) = *(*uintptr)(unsafe.Pointer(bp + 8))
 				}
 			}
 			pc += uintptr(libc.Int32FromInt32(1))
@@ -153664,26 +153698,26 @@ _197:
 				}
 			}
 		}
-		goto _1219
-	_1219: /**/
+		goto _1226
+	_1226:
+		goto _1225
+	_1225: /**/
 		//
 	}
 	*(*uintptr)(unsafe.Pointer(bp + 8)) = _ExecuteExtendedUnaryMathOp(tls, int32(*(*uint8)(unsafe.Pointer(pc))), *(*uintptr)(unsafe.Pointer(bp + 12)))
 	if *(*uintptr)(unsafe.Pointer(bp + 8)) != libc.UintptrFromInt32(0) {
-		goto _1225
-	_1225:
 		if false {
 			if int32(1) != 0 {
 				if int32(1) > 0 {
-					v1226 = *(*uintptr)(unsafe.Pointer(bp + 8))
+					v1232 = *(*uintptr)(unsafe.Pointer(bp + 8))
 					tosPtr += 4
-					v1227 = tosPtr
-					*(*uintptr)(unsafe.Pointer(v1227)) = v1226
-					(*TTcl_Obj)(unsafe.Pointer(v1226)).FrefCount++
+					v1233 = tosPtr
+					*(*uintptr)(unsafe.Pointer(v1233)) = v1232
+					(*TTcl_Obj)(unsafe.Pointer(v1232)).FrefCount++
 				} else {
 					tosPtr += 4
-					v1228 = tosPtr
-					*(*uintptr)(unsafe.Pointer(v1228)) = *(*uintptr)(unsafe.Pointer(bp + 8))
+					v1234 = tosPtr
+					*(*uintptr)(unsafe.Pointer(v1234)) = *(*uintptr)(unsafe.Pointer(bp + 8))
 				}
 			}
 			pc += uintptr(libc.Int32FromInt32(1))
@@ -153714,23 +153748,23 @@ _197:
 				}
 			}
 		}
-		goto _1224
-	_1224: /**/ //
-	} else {
+		goto _1231
+	_1231:
 		goto _1230
-	_1230:
+	_1230: /**/ //
+	} else {
 		if true {
 			if 0 != 0 {
 				if 0 > 0 {
-					v1231 = *(*uintptr)(unsafe.Pointer(bp + 8))
+					v1237 = *(*uintptr)(unsafe.Pointer(bp + 8))
 					tosPtr += 4
-					v1232 = tosPtr
-					*(*uintptr)(unsafe.Pointer(v1232)) = v1231
-					(*TTcl_Obj)(unsafe.Pointer(v1231)).FrefCount++
+					v1238 = tosPtr
+					*(*uintptr)(unsafe.Pointer(v1238)) = v1237
+					(*TTcl_Obj)(unsafe.Pointer(v1237)).FrefCount++
 				} else {
 					tosPtr += 4
-					v1233 = tosPtr
-					*(*uintptr)(unsafe.Pointer(v1233)) = *(*uintptr)(unsafe.Pointer(bp + 8))
+					v1239 = tosPtr
+					*(*uintptr)(unsafe.Pointer(v1239)) = *(*uintptr)(unsafe.Pointer(bp + 8))
 				}
 			}
 			pc += uintptr(libc.Int32FromInt32(1))
@@ -153761,47 +153795,49 @@ _197:
 				}
 			}
 		}
-		goto _1229
-	_1229: /**/ //
+		goto _1236
+	_1236:
+		goto _1235
+	_1235: /**/ //
 	}
 _198:
 	*(*uintptr)(unsafe.Pointer(bp + 12)) = *(*uintptr)(unsafe.Pointer(tosPtr))
 	if (*TTcl_Obj)(unsafe.Pointer(*(*uintptr)(unsafe.Pointer(bp + 12)))).FtypePtr == uintptr(unsafe.Pointer(&XtclIntType)) {
 		*(*int32)(unsafe.Pointer(bp + 132)) = int32(m_TCL_NUMBER_LONG)
 		*(*TClientData)(unsafe.Pointer(bp + 124)) = *(*uintptr)(unsafe.Pointer(bp + 12)) + 16
-		v1234 = libc.Int32FromInt32(m_TCL_OK)
+		v1240 = libc.Int32FromInt32(m_TCL_OK)
 	} else {
 		if (*TTcl_Obj)(unsafe.Pointer(*(*uintptr)(unsafe.Pointer(bp + 12)))).FtypePtr == uintptr(unsafe.Pointer(&XtclWideIntType)) {
 			*(*int32)(unsafe.Pointer(bp + 132)) = int32(m_TCL_NUMBER_WIDE)
 			*(*TClientData)(unsafe.Pointer(bp + 124)) = *(*uintptr)(unsafe.Pointer(bp + 12)) + 16
-			v1235 = libc.Int32FromInt32(m_TCL_OK)
+			v1241 = libc.Int32FromInt32(m_TCL_OK)
 		} else {
 			if (*TTcl_Obj)(unsafe.Pointer(*(*uintptr)(unsafe.Pointer(bp + 12)))).FtypePtr == uintptr(unsafe.Pointer(&XtclDoubleType)) {
 				*(*float64)(unsafe.Pointer(bp)) = *(*float64)(unsafe.Pointer(*(*uintptr)(unsafe.Pointer(bp + 12)) + 16))
-				v1238 = *(*uint64)(unsafe.Pointer(bp))
-				goto _1239
-			_1239:
-				if libc.BoolInt32(v1238&(-libc.Uint64FromUint64(1)>>libc.Int32FromInt32(1)) > libc.Uint64FromUint64(0x7ff)<<libc.Int32FromInt32(52)) != 0 {
+				v1244 = *(*uint64)(unsafe.Pointer(bp))
+				goto _1245
+			_1245:
+				if libc.BoolInt32(v1244&(-libc.Uint64FromUint64(1)>>libc.Int32FromInt32(1)) > libc.Uint64FromUint64(0x7ff)<<libc.Int32FromInt32(52)) != 0 {
 					*(*int32)(unsafe.Pointer(bp + 132)) = int32(m_TCL_NUMBER_NAN)
 				} else {
 					*(*int32)(unsafe.Pointer(bp + 132)) = int32(m_TCL_NUMBER_DOUBLE)
 				}
 				*(*TClientData)(unsafe.Pointer(bp + 124)) = *(*uintptr)(unsafe.Pointer(bp + 12)) + 16
-				v1236 = libc.Int32FromInt32(m_TCL_OK)
+				v1242 = libc.Int32FromInt32(m_TCL_OK)
 			} else {
 				if (*TTcl_Obj)(unsafe.Pointer(*(*uintptr)(unsafe.Pointer(bp + 12)))).Fbytes != libc.UintptrFromInt32(0) && (*TTcl_Obj)(unsafe.Pointer(*(*uintptr)(unsafe.Pointer(bp + 12)))).Flength == 0 {
 					*(*int32)(unsafe.Pointer(bp + 132)) = int32(m_TCL_NUMBER_LONG)
-					v1240 = libc.Int32FromInt32(m_TCL_ERROR)
+					v1246 = libc.Int32FromInt32(m_TCL_ERROR)
 				} else {
-					v1240 = XTclGetNumberFromObj(tls, libc.UintptrFromInt32(0), *(*uintptr)(unsafe.Pointer(bp + 12)), bp+124, bp+132)
+					v1246 = XTclGetNumberFromObj(tls, libc.UintptrFromInt32(0), *(*uintptr)(unsafe.Pointer(bp + 12)), bp+124, bp+132)
 				}
-				v1236 = v1240
+				v1242 = v1246
 			}
-			v1235 = v1236
+			v1241 = v1242
 		}
-		v1234 = v1235
+		v1240 = v1241
 	}
-	if v1234 != m_TCL_OK || *(*int32)(unsafe.Pointer(bp + 132)) == int32(m_TCL_NUMBER_NAN) {
+	if v1240 != m_TCL_OK || *(*int32)(unsafe.Pointer(bp + 132)) == int32(m_TCL_NUMBER_NAN) {
 		(*TExecStack)(unsafe.Pointer((*TExecEnv1)(unsafe.Pointer((*TInterp)(unsafe.Pointer(interp)).FexecEnvPtr)).FexecStackPtr)).FtosPtr = tosPtr
 		_IllegalExprOperandType(tls, interp, pc, *(*uintptr)(unsafe.Pointer(bp + 12)))
 		checkInterp = int32(1)
@@ -153809,20 +153845,18 @@ _198:
 	}
 	switch *(*int32)(unsafe.Pointer(bp + 132)) {
 	case int32(m_TCL_NUMBER_NAN):
-		goto _1242
-	_1242:
 		if true {
 			if 0 != 0 {
 				if 0 > 0 {
-					v1243 = *(*uintptr)(unsafe.Pointer(bp + 8))
+					v1249 = *(*uintptr)(unsafe.Pointer(bp + 8))
 					tosPtr += 4
-					v1244 = tosPtr
-					*(*uintptr)(unsafe.Pointer(v1244)) = v1243
-					(*TTcl_Obj)(unsafe.Pointer(v1243)).FrefCount++
+					v1250 = tosPtr
+					*(*uintptr)(unsafe.Pointer(v1250)) = v1249
+					(*TTcl_Obj)(unsafe.Pointer(v1249)).FrefCount++
 				} else {
 					tosPtr += 4
-					v1245 = tosPtr
-					*(*uintptr)(unsafe.Pointer(v1245)) = *(*uintptr)(unsafe.Pointer(bp + 8))
+					v1251 = tosPtr
+					*(*uintptr)(unsafe.Pointer(v1251)) = *(*uintptr)(unsafe.Pointer(bp + 8))
 				}
 			}
 			pc += uintptr(libc.Int32FromInt32(1))
@@ -153853,8 +153887,10 @@ _198:
 				}
 			}
 		}
-		goto _1241
-	_1241: /**/
+		goto _1248
+	_1248:
+		goto _1247
+	_1247: /**/
 		; //
 	case int32(m_TCL_NUMBER_LONG):
 		l1 = *(*int32)(unsafe.Pointer(*(*TClientData)(unsafe.Pointer(bp + 124))))
@@ -153872,20 +153908,18 @@ _198:
 				(*TTcl_Obj)(unsafe.Pointer(*(*uintptr)(unsafe.Pointer(bp + 8)))).Fbytes = libc.UintptrFromInt32(0)
 				(*TTcl_Obj)(unsafe.Pointer(*(*uintptr)(unsafe.Pointer(bp + 8)))).FinternalRep.FlongValue = -l1
 				(*TTcl_Obj)(unsafe.Pointer(*(*uintptr)(unsafe.Pointer(bp + 8)))).FtypePtr = uintptr(unsafe.Pointer(&XtclIntType))
-				goto _1247
-			_1247:
 				if false {
 					if int32(1) != 0 {
 						if int32(1) > 0 {
-							v1248 = *(*uintptr)(unsafe.Pointer(bp + 8))
+							v1254 = *(*uintptr)(unsafe.Pointer(bp + 8))
 							tosPtr += 4
-							v1249 = tosPtr
-							*(*uintptr)(unsafe.Pointer(v1249)) = v1248
-							(*TTcl_Obj)(unsafe.Pointer(v1248)).FrefCount++
+							v1255 = tosPtr
+							*(*uintptr)(unsafe.Pointer(v1255)) = v1254
+							(*TTcl_Obj)(unsafe.Pointer(v1254)).FrefCount++
 						} else {
 							tosPtr += 4
-							v1250 = tosPtr
-							*(*uintptr)(unsafe.Pointer(v1250)) = *(*uintptr)(unsafe.Pointer(bp + 8))
+							v1256 = tosPtr
+							*(*uintptr)(unsafe.Pointer(v1256)) = *(*uintptr)(unsafe.Pointer(bp + 8))
 						}
 					}
 					pc += uintptr(libc.Int32FromInt32(1))
@@ -153916,8 +153950,10 @@ _198:
 						}
 					}
 				}
-				goto _1246
-			_1246: /**/
+				goto _1253
+			_1253:
+				goto _1252
+			_1252: /**/
 				//
 			}
 			_isobjPtr4 = *(*uintptr)(unsafe.Pointer(bp + 12))
@@ -153935,20 +153971,18 @@ _198:
 			}
 			(*TTcl_Obj)(unsafe.Pointer(*(*uintptr)(unsafe.Pointer(bp + 12)))).FinternalRep.FlongValue = -l1
 			(*TTcl_Obj)(unsafe.Pointer(*(*uintptr)(unsafe.Pointer(bp + 12)))).FtypePtr = uintptr(unsafe.Pointer(&XtclIntType))
-			goto _1252
-		_1252:
 			if true {
 				if 0 != 0 {
 					if 0 > 0 {
-						v1253 = *(*uintptr)(unsafe.Pointer(bp + 8))
+						v1259 = *(*uintptr)(unsafe.Pointer(bp + 8))
 						tosPtr += 4
-						v1254 = tosPtr
-						*(*uintptr)(unsafe.Pointer(v1254)) = v1253
-						(*TTcl_Obj)(unsafe.Pointer(v1253)).FrefCount++
+						v1260 = tosPtr
+						*(*uintptr)(unsafe.Pointer(v1260)) = v1259
+						(*TTcl_Obj)(unsafe.Pointer(v1259)).FrefCount++
 					} else {
 						tosPtr += 4
-						v1255 = tosPtr
-						*(*uintptr)(unsafe.Pointer(v1255)) = *(*uintptr)(unsafe.Pointer(bp + 8))
+						v1261 = tosPtr
+						*(*uintptr)(unsafe.Pointer(v1261)) = *(*uintptr)(unsafe.Pointer(bp + 8))
 					}
 				}
 				pc += uintptr(libc.Int32FromInt32(1))
@@ -153979,28 +154013,28 @@ _198:
 					}
 				}
 			}
-			goto _1251
-		_1251: /**/
+			goto _1258
+		_1258:
+			goto _1257
+		_1257: /**/
 			//
 		}
 		/* FALLTHROUGH */
 	}
 	*(*uintptr)(unsafe.Pointer(bp + 8)) = _ExecuteExtendedUnaryMathOp(tls, int32(*(*uint8)(unsafe.Pointer(pc))), *(*uintptr)(unsafe.Pointer(bp + 12)))
 	if *(*uintptr)(unsafe.Pointer(bp + 8)) != libc.UintptrFromInt32(0) {
-		goto _1257
-	_1257:
 		if false {
 			if int32(1) != 0 {
 				if int32(1) > 0 {
-					v1258 = *(*uintptr)(unsafe.Pointer(bp + 8))
+					v1264 = *(*uintptr)(unsafe.Pointer(bp + 8))
 					tosPtr += 4
-					v1259 = tosPtr
-					*(*uintptr)(unsafe.Pointer(v1259)) = v1258
-					(*TTcl_Obj)(unsafe.Pointer(v1258)).FrefCount++
+					v1265 = tosPtr
+					*(*uintptr)(unsafe.Pointer(v1265)) = v1264
+					(*TTcl_Obj)(unsafe.Pointer(v1264)).FrefCount++
 				} else {
 					tosPtr += 4
-					v1260 = tosPtr
-					*(*uintptr)(unsafe.Pointer(v1260)) = *(*uintptr)(unsafe.Pointer(bp + 8))
+					v1266 = tosPtr
+					*(*uintptr)(unsafe.Pointer(v1266)) = *(*uintptr)(unsafe.Pointer(bp + 8))
 				}
 			}
 			pc += uintptr(libc.Int32FromInt32(1))
@@ -154031,23 +154065,23 @@ _198:
 				}
 			}
 		}
-		goto _1256
-	_1256: /**/ //
-	} else {
+		goto _1263
+	_1263:
 		goto _1262
-	_1262:
+	_1262: /**/ //
+	} else {
 		if true {
 			if 0 != 0 {
 				if 0 > 0 {
-					v1263 = *(*uintptr)(unsafe.Pointer(bp + 8))
+					v1269 = *(*uintptr)(unsafe.Pointer(bp + 8))
 					tosPtr += 4
-					v1264 = tosPtr
-					*(*uintptr)(unsafe.Pointer(v1264)) = v1263
-					(*TTcl_Obj)(unsafe.Pointer(v1263)).FrefCount++
+					v1270 = tosPtr
+					*(*uintptr)(unsafe.Pointer(v1270)) = v1269
+					(*TTcl_Obj)(unsafe.Pointer(v1269)).FrefCount++
 				} else {
 					tosPtr += 4
-					v1265 = tosPtr
-					*(*uintptr)(unsafe.Pointer(v1265)) = *(*uintptr)(unsafe.Pointer(bp + 8))
+					v1271 = tosPtr
+					*(*uintptr)(unsafe.Pointer(v1271)) = *(*uintptr)(unsafe.Pointer(bp + 8))
 				}
 			}
 			pc += uintptr(libc.Int32FromInt32(1))
@@ -154078,8 +154112,10 @@ _198:
 				}
 			}
 		}
-		goto _1261
-	_1261: /**/ //
+		goto _1268
+	_1268:
+		goto _1267
+	_1267: /**/ //
 	}
 _200:
 _199:
@@ -154092,39 +154128,39 @@ _199:
 	if (*TTcl_Obj)(unsafe.Pointer(*(*uintptr)(unsafe.Pointer(bp + 12)))).FtypePtr == uintptr(unsafe.Pointer(&XtclIntType)) {
 		*(*int32)(unsafe.Pointer(bp + 132)) = int32(m_TCL_NUMBER_LONG)
 		*(*TClientData)(unsafe.Pointer(bp + 124)) = *(*uintptr)(unsafe.Pointer(bp + 12)) + 16
-		v1266 = libc.Int32FromInt32(m_TCL_OK)
+		v1272 = libc.Int32FromInt32(m_TCL_OK)
 	} else {
 		if (*TTcl_Obj)(unsafe.Pointer(*(*uintptr)(unsafe.Pointer(bp + 12)))).FtypePtr == uintptr(unsafe.Pointer(&XtclWideIntType)) {
 			*(*int32)(unsafe.Pointer(bp + 132)) = int32(m_TCL_NUMBER_WIDE)
 			*(*TClientData)(unsafe.Pointer(bp + 124)) = *(*uintptr)(unsafe.Pointer(bp + 12)) + 16
-			v1267 = libc.Int32FromInt32(m_TCL_OK)
+			v1273 = libc.Int32FromInt32(m_TCL_OK)
 		} else {
 			if (*TTcl_Obj)(unsafe.Pointer(*(*uintptr)(unsafe.Pointer(bp + 12)))).FtypePtr == uintptr(unsafe.Pointer(&XtclDoubleType)) {
 				*(*float64)(unsafe.Pointer(bp)) = *(*float64)(unsafe.Pointer(*(*uintptr)(unsafe.Pointer(bp + 12)) + 16))
-				v1270 = *(*uint64)(unsafe.Pointer(bp))
-				goto _1271
-			_1271:
-				if libc.BoolInt32(v1270&(-libc.Uint64FromUint64(1)>>libc.Int32FromInt32(1)) > libc.Uint64FromUint64(0x7ff)<<libc.Int32FromInt32(52)) != 0 {
+				v1276 = *(*uint64)(unsafe.Pointer(bp))
+				goto _1277
+			_1277:
+				if libc.BoolInt32(v1276&(-libc.Uint64FromUint64(1)>>libc.Int32FromInt32(1)) > libc.Uint64FromUint64(0x7ff)<<libc.Int32FromInt32(52)) != 0 {
 					*(*int32)(unsafe.Pointer(bp + 132)) = int32(m_TCL_NUMBER_NAN)
 				} else {
 					*(*int32)(unsafe.Pointer(bp + 132)) = int32(m_TCL_NUMBER_DOUBLE)
 				}
 				*(*TClientData)(unsafe.Pointer(bp + 124)) = *(*uintptr)(unsafe.Pointer(bp + 12)) + 16
-				v1268 = libc.Int32FromInt32(m_TCL_OK)
+				v1274 = libc.Int32FromInt32(m_TCL_OK)
 			} else {
 				if (*TTcl_Obj)(unsafe.Pointer(*(*uintptr)(unsafe.Pointer(bp + 12)))).Fbytes != libc.UintptrFromInt32(0) && (*TTcl_Obj)(unsafe.Pointer(*(*uintptr)(unsafe.Pointer(bp + 12)))).Flength == 0 {
 					*(*int32)(unsafe.Pointer(bp + 132)) = int32(m_TCL_NUMBER_LONG)
-					v1272 = libc.Int32FromInt32(m_TCL_ERROR)
+					v1278 = libc.Int32FromInt32(m_TCL_ERROR)
 				} else {
-					v1272 = XTclGetNumberFromObj(tls, libc.UintptrFromInt32(0), *(*uintptr)(unsafe.Pointer(bp + 12)), bp+124, bp+132)
+					v1278 = XTclGetNumberFromObj(tls, libc.UintptrFromInt32(0), *(*uintptr)(unsafe.Pointer(bp + 12)), bp+124, bp+132)
 				}
-				v1268 = v1272
+				v1274 = v1278
 			}
-			v1267 = v1268
+			v1273 = v1274
 		}
-		v1266 = v1267
+		v1272 = v1273
 	}
-	if v1266 != m_TCL_OK {
+	if v1272 != m_TCL_OK {
 		if int32(*(*uint8)(unsafe.Pointer(pc))) == int32(m_INST_UPLUS) {
 			/*
 			 * ... +$NonNumeric => raise an error.
@@ -154135,20 +154171,18 @@ _199:
 			goto gotError
 		}
 		/* ... TryConvertToNumeric($NonNumeric) is acceptable */
-		goto _1274
-	_1274:
 		if true {
 			if 0 != 0 {
 				if 0 > 0 {
-					v1275 = *(*uintptr)(unsafe.Pointer(bp + 8))
+					v1281 = *(*uintptr)(unsafe.Pointer(bp + 8))
 					tosPtr += 4
-					v1276 = tosPtr
-					*(*uintptr)(unsafe.Pointer(v1276)) = v1275
-					(*TTcl_Obj)(unsafe.Pointer(v1275)).FrefCount++
+					v1282 = tosPtr
+					*(*uintptr)(unsafe.Pointer(v1282)) = v1281
+					(*TTcl_Obj)(unsafe.Pointer(v1281)).FrefCount++
 				} else {
 					tosPtr += 4
-					v1277 = tosPtr
-					*(*uintptr)(unsafe.Pointer(v1277)) = *(*uintptr)(unsafe.Pointer(bp + 8))
+					v1283 = tosPtr
+					*(*uintptr)(unsafe.Pointer(v1283)) = *(*uintptr)(unsafe.Pointer(bp + 8))
 				}
 			}
 			pc += uintptr(libc.Int32FromInt32(1))
@@ -154179,8 +154213,10 @@ _199:
 				}
 			}
 		}
-		goto _1273
-	_1273: /**/ //
+		goto _1280
+	_1280:
+		goto _1279
+	_1279: /**/ //
 	}
 	if *(*int32)(unsafe.Pointer(bp + 132)) == int32(m_TCL_NUMBER_NAN) {
 		if int32(*(*uint8)(unsafe.Pointer(pc))) == int32(m_INST_UPLUS) {
@@ -154209,20 +154245,18 @@ _199:
 	 * value.
 	 */
 	if (*TTcl_Obj)(unsafe.Pointer(*(*uintptr)(unsafe.Pointer(bp + 12)))).Fbytes == libc.UintptrFromInt32(0) {
-		goto _1279
-	_1279:
 		if true {
 			if 0 != 0 {
 				if 0 > 0 {
-					v1280 = *(*uintptr)(unsafe.Pointer(bp + 8))
+					v1286 = *(*uintptr)(unsafe.Pointer(bp + 8))
 					tosPtr += 4
-					v1281 = tosPtr
-					*(*uintptr)(unsafe.Pointer(v1281)) = v1280
-					(*TTcl_Obj)(unsafe.Pointer(v1280)).FrefCount++
+					v1287 = tosPtr
+					*(*uintptr)(unsafe.Pointer(v1287)) = v1286
+					(*TTcl_Obj)(unsafe.Pointer(v1286)).FrefCount++
 				} else {
 					tosPtr += 4
-					v1282 = tosPtr
-					*(*uintptr)(unsafe.Pointer(v1282)) = *(*uintptr)(unsafe.Pointer(bp + 8))
+					v1288 = tosPtr
+					*(*uintptr)(unsafe.Pointer(v1288)) = *(*uintptr)(unsafe.Pointer(bp + 8))
 				}
 			}
 			pc += uintptr(libc.Int32FromInt32(1))
@@ -154253,8 +154287,10 @@ _199:
 				}
 			}
 		}
-		goto _1278
-	_1278: /**/ //
+		goto _1285
+	_1285:
+		goto _1284
+	_1284: /**/ //
 	}
 	if (*TTcl_Obj)(unsafe.Pointer(*(*uintptr)(unsafe.Pointer(bp + 12)))).FrefCount > int32(1) {
 		/*
@@ -154266,20 +154302,18 @@ _199:
 		(*TTcl_Obj)(unsafe.Pointer(*(*uintptr)(unsafe.Pointer(bp + 12)))).Fbytes = libc.UintptrFromInt32(0)
 		*(*uintptr)(unsafe.Pointer(bp + 8)) = XTcl_DuplicateObj(tls, *(*uintptr)(unsafe.Pointer(bp + 12)))
 		(*TTcl_Obj)(unsafe.Pointer(*(*uintptr)(unsafe.Pointer(bp + 12)))).Fbytes = savedString
-		goto _1284
-	_1284:
 		if false {
 			if int32(1) != 0 {
 				if int32(1) > 0 {
-					v1285 = *(*uintptr)(unsafe.Pointer(bp + 8))
+					v1291 = *(*uintptr)(unsafe.Pointer(bp + 8))
 					tosPtr += 4
-					v1286 = tosPtr
-					*(*uintptr)(unsafe.Pointer(v1286)) = v1285
-					(*TTcl_Obj)(unsafe.Pointer(v1285)).FrefCount++
+					v1292 = tosPtr
+					*(*uintptr)(unsafe.Pointer(v1292)) = v1291
+					(*TTcl_Obj)(unsafe.Pointer(v1291)).FrefCount++
 				} else {
 					tosPtr += 4
-					v1287 = tosPtr
-					*(*uintptr)(unsafe.Pointer(v1287)) = *(*uintptr)(unsafe.Pointer(bp + 8))
+					v1293 = tosPtr
+					*(*uintptr)(unsafe.Pointer(v1293)) = *(*uintptr)(unsafe.Pointer(bp + 8))
 				}
 			}
 			pc += uintptr(libc.Int32FromInt32(1))
@@ -154310,8 +154344,10 @@ _199:
 				}
 			}
 		}
-		goto _1283
-	_1283: /**/
+		goto _1290
+	_1290:
+		goto _1289
+	_1289: /**/
 		//
 	}
 	_isobjPtr5 = *(*uintptr)(unsafe.Pointer(bp + 12))
@@ -154321,20 +154357,18 @@ _199:
 		}
 		(*TTcl_Obj)(unsafe.Pointer(_isobjPtr5)).Fbytes = libc.UintptrFromInt32(0)
 	}
-	goto _1289
-_1289:
 	if true {
 		if 0 != 0 {
 			if 0 > 0 {
-				v1290 = *(*uintptr)(unsafe.Pointer(bp + 8))
+				v1296 = *(*uintptr)(unsafe.Pointer(bp + 8))
 				tosPtr += 4
-				v1291 = tosPtr
-				*(*uintptr)(unsafe.Pointer(v1291)) = v1290
-				(*TTcl_Obj)(unsafe.Pointer(v1290)).FrefCount++
+				v1297 = tosPtr
+				*(*uintptr)(unsafe.Pointer(v1297)) = v1296
+				(*TTcl_Obj)(unsafe.Pointer(v1296)).FrefCount++
 			} else {
 				tosPtr += 4
-				v1292 = tosPtr
-				*(*uintptr)(unsafe.Pointer(v1292)) = *(*uintptr)(unsafe.Pointer(bp + 8))
+				v1298 = tosPtr
+				*(*uintptr)(unsafe.Pointer(v1298)) = *(*uintptr)(unsafe.Pointer(bp + 8))
 			}
 		}
 		pc += uintptr(libc.Int32FromInt32(1))
@@ -154365,8 +154399,10 @@ _1289:
 			}
 		}
 	}
-	goto _1288
-_1288: /**/
+	goto _1295
+_1295:
+	goto _1294
+_1294: /**/
 	; //
 	goto _233
 	/*
@@ -154381,20 +154417,18 @@ _201:
 		res = libc.BoolInt32(XTclSetBooleanFromAny(tls, libc.UintptrFromInt32(0), *(*uintptr)(unsafe.Pointer(bp + 12))) == m_TCL_OK)
 		*(*uintptr)(unsafe.Pointer(bp + 8)) = *(*uintptr)(unsafe.Pointer(constants + uintptr(res)*4))
 	}
-	goto _1294
-_1294:
 	if true {
 		if int32(1) != 0 {
 			if int32(1) > 0 {
-				v1295 = *(*uintptr)(unsafe.Pointer(bp + 8))
+				v1301 = *(*uintptr)(unsafe.Pointer(bp + 8))
 				tosPtr += 4
-				v1296 = tosPtr
-				*(*uintptr)(unsafe.Pointer(v1296)) = v1295
-				(*TTcl_Obj)(unsafe.Pointer(v1295)).FrefCount++
+				v1302 = tosPtr
+				*(*uintptr)(unsafe.Pointer(v1302)) = v1301
+				(*TTcl_Obj)(unsafe.Pointer(v1301)).FrefCount++
 			} else {
 				tosPtr += 4
-				v1297 = tosPtr
-				*(*uintptr)(unsafe.Pointer(v1297)) = *(*uintptr)(unsafe.Pointer(bp + 8))
+				v1303 = tosPtr
+				*(*uintptr)(unsafe.Pointer(v1303)) = *(*uintptr)(unsafe.Pointer(bp + 8))
 			}
 		}
 		pc += uintptr(libc.Int32FromInt32(1))
@@ -154425,8 +154459,10 @@ _1294:
 			}
 		}
 	}
-	goto _1293
-_1293: /**/
+	goto _1300
+_1300:
+	goto _1299
+_1299: /**/
 	; //
 	goto _233
 _202:
@@ -154553,19 +154589,19 @@ _205: /* DEPRECATED */
 				Fptr1 uintptr
 				Fptr2 uintptr
 			})(unsafe.Pointer(listPtr1 + 16))).Fptr1)).FelemCount
-			v1299 = libc.Int32FromInt32(m_TCL_OK)
+			v1305 = libc.Int32FromInt32(m_TCL_OK)
 		} else {
-			v1299 = XTcl_ListObjLength(tls, interp, listPtr1, bp+168)
+			v1305 = XTcl_ListObjLength(tls, interp, listPtr1, bp+168)
 		}
-		if v1299 != m_TCL_OK {
+		if v1305 != m_TCL_OK {
 			goto gotError
 		}
 		if *(*int32)(unsafe.Pointer(bp + 168)) > iterNum*numVars {
 			continueLoop = int32(1)
 		}
 		listTmpIndex++
-		goto _1298
-	_1298:
+		goto _1304
+	_1304:
 		i5++
 	}
 	/*
@@ -154631,10 +154667,10 @@ _205: /* DEPRECATED */
 					value2Ptr = *(*uintptr)(unsafe.Pointer(*(*uintptr)(unsafe.Pointer(bp + 28)) + 4))
 					if *(*uintptr)(unsafe.Pointer(bp + 12)) != value2Ptr {
 						if value2Ptr != libc.UintptrFromInt32(0) {
-							v1304 = value2Ptr
-							v1303 = *(*int32)(unsafe.Pointer(v1304))
-							*(*int32)(unsafe.Pointer(v1304))--
-							if !(v1303 > int32(1)) {
+							v1310 = value2Ptr
+							v1309 = *(*int32)(unsafe.Pointer(v1310))
+							*(*int32)(unsafe.Pointer(v1310))--
+							if !(v1309 > int32(1)) {
 								if !((*TTcl_Obj)(unsafe.Pointer(value2Ptr)).FtypePtr != 0) || !((*TTcl_ObjType)(unsafe.Pointer((*TTcl_Obj)(unsafe.Pointer(value2Ptr)).FtypePtr)).FfreeIntRepProc != 0) {
 									if (*TTcl_Obj)(unsafe.Pointer(value2Ptr)).Fbytes != 0 && (*TTcl_Obj)(unsafe.Pointer(value2Ptr)).Fbytes != XtclEmptyStringRep {
 										XTclpFree(tls, (*TTcl_Obj)(unsafe.Pointer(value2Ptr)).Fbytes)
@@ -154657,10 +154693,10 @@ _205: /* DEPRECATED */
 					(*TExecStack)(unsafe.Pointer((*TExecEnv1)(unsafe.Pointer((*TInterp)(unsafe.Pointer(interp)).FexecEnvPtr)).FexecStackPtr)).FtosPtr = tosPtr
 					if XTclPtrSetVarIdx(tls, interp, *(*uintptr)(unsafe.Pointer(bp + 28)), libc.UintptrFromInt32(0), libc.UintptrFromInt32(0), libc.UintptrFromInt32(0), *(*uintptr)(unsafe.Pointer(bp + 12)), int32(m_TCL_LEAVE_ERR_MSG), varIndex) == libc.UintptrFromInt32(0) {
 						checkInterp = int32(1)
-						v1306 = listPtr1
-						v1305 = *(*int32)(unsafe.Pointer(v1306))
-						*(*int32)(unsafe.Pointer(v1306))--
-						if !(v1305 > int32(1)) {
+						v1312 = listPtr1
+						v1311 = *(*int32)(unsafe.Pointer(v1312))
+						*(*int32)(unsafe.Pointer(v1312))--
+						if !(v1311 > int32(1)) {
 							if !((*TTcl_Obj)(unsafe.Pointer(listPtr1)).FtypePtr != 0) || !((*TTcl_ObjType)(unsafe.Pointer((*TTcl_Obj)(unsafe.Pointer(listPtr1)).FtypePtr)).FfreeIntRepProc != 0) {
 								if (*TTcl_Obj)(unsafe.Pointer(listPtr1)).Fbytes != 0 && (*TTcl_Obj)(unsafe.Pointer(listPtr1)).Fbytes != XtclEmptyStringRep {
 									XTclpFree(tls, (*TTcl_Obj)(unsafe.Pointer(listPtr1)).Fbytes)
@@ -154680,14 +154716,14 @@ _205: /* DEPRECATED */
 					checkInterp = int32(1)
 				}
 				valIndex++
-				goto _1302
-			_1302:
+				goto _1308
+			_1308:
 				j++
 			}
-			v1308 = listPtr1
-			v1307 = *(*int32)(unsafe.Pointer(v1308))
-			*(*int32)(unsafe.Pointer(v1308))--
-			if !(v1307 > int32(1)) {
+			v1314 = listPtr1
+			v1313 = *(*int32)(unsafe.Pointer(v1314))
+			*(*int32)(unsafe.Pointer(v1314))--
+			if !(v1313 > int32(1)) {
 				if !((*TTcl_Obj)(unsafe.Pointer(listPtr1)).FtypePtr != 0) || !((*TTcl_ObjType)(unsafe.Pointer((*TTcl_Obj)(unsafe.Pointer(listPtr1)).FtypePtr)).FfreeIntRepProc != 0) {
 					if (*TTcl_Obj)(unsafe.Pointer(listPtr1)).Fbytes != 0 && (*TTcl_Obj)(unsafe.Pointer(listPtr1)).Fbytes != XtclEmptyStringRep {
 						XTclpFree(tls, (*TTcl_Obj)(unsafe.Pointer(listPtr1)).Fbytes)
@@ -154703,8 +154739,8 @@ _205: /* DEPRECATED */
 				}
 			}
 			listTmpIndex++
-			goto _1300
-		_1300:
+			goto _1306
+		_1306:
 			i5++
 		}
 	}
@@ -154715,28 +154751,26 @@ _205: /* DEPRECATED */
 	 */
 	pc += uintptr(5)
 	if int32(*(*uint8)(unsafe.Pointer(pc))) == int32(m_INST_JUMP_FALSE1) {
-		goto _1310
-	_1310:
 		if true {
 			if 0 != 0 {
 				if 0 > 0 {
-					v1311 = *(*uintptr)(unsafe.Pointer(bp + 8))
+					v1317 = *(*uintptr)(unsafe.Pointer(bp + 8))
 					tosPtr += 4
-					v1312 = tosPtr
-					*(*uintptr)(unsafe.Pointer(v1312)) = v1311
-					(*TTcl_Obj)(unsafe.Pointer(v1311)).FrefCount++
+					v1318 = tosPtr
+					*(*uintptr)(unsafe.Pointer(v1318)) = v1317
+					(*TTcl_Obj)(unsafe.Pointer(v1317)).FrefCount++
 				} else {
 					tosPtr += 4
-					v1313 = tosPtr
-					*(*uintptr)(unsafe.Pointer(v1313)) = *(*uintptr)(unsafe.Pointer(bp + 8))
+					v1319 = tosPtr
+					*(*uintptr)(unsafe.Pointer(v1319)) = *(*uintptr)(unsafe.Pointer(bp + 8))
 				}
 			}
 			if continueLoop != 0 {
-				v1314 = int32(2)
+				v1320 = int32(2)
 			} else {
-				v1314 = int32(*(*int8)(unsafe.Pointer(pc + libc.UintptrFromInt32(1))))
+				v1320 = int32(*(*int8)(unsafe.Pointer(pc + libc.UintptrFromInt32(1))))
 			}
-			pc += uintptr(v1314)
+			pc += uintptr(v1320)
 			goto cleanup0
 		} else {
 			if 0 != 0 {
@@ -154744,11 +154778,11 @@ _205: /* DEPRECATED */
 					(*TTcl_Obj)(unsafe.Pointer(*(*uintptr)(unsafe.Pointer(bp + 8)))).FrefCount++
 				}
 				if continueLoop != 0 {
-					v1315 = int32(2)
+					v1321 = int32(2)
 				} else {
-					v1315 = int32(*(*int8)(unsafe.Pointer(pc + libc.UintptrFromInt32(1))))
+					v1321 = int32(*(*int8)(unsafe.Pointer(pc + libc.UintptrFromInt32(1))))
 				}
-				pc += uintptr(v1315)
+				pc += uintptr(v1321)
 				switch libc.Int32FromInt32(0) {
 				case int32(1):
 					goto cleanup1_pushObjResultPtr
@@ -154759,11 +154793,11 @@ _205: /* DEPRECATED */
 				}
 			} else {
 				if continueLoop != 0 {
-					v1316 = int32(2)
+					v1322 = int32(2)
 				} else {
-					v1316 = int32(*(*int8)(unsafe.Pointer(pc + libc.UintptrFromInt32(1))))
+					v1322 = int32(*(*int8)(unsafe.Pointer(pc + libc.UintptrFromInt32(1))))
 				}
-				pc += uintptr(v1316)
+				pc += uintptr(v1322)
 				switch libc.Int32FromInt32(0) {
 				case int32(1):
 					goto cleanup1
@@ -154774,31 +154808,31 @@ _205: /* DEPRECATED */
 				}
 			}
 		}
-		goto _1309
-	_1309: /**/ //
+		goto _1316
+	_1316:
+		goto _1315
+	_1315: /**/ //
 	} else {
-		goto _1318
-	_1318:
 		if true {
 			if 0 != 0 {
 				if 0 > 0 {
-					v1319 = *(*uintptr)(unsafe.Pointer(bp + 8))
+					v1325 = *(*uintptr)(unsafe.Pointer(bp + 8))
 					tosPtr += 4
-					v1320 = tosPtr
-					*(*uintptr)(unsafe.Pointer(v1320)) = v1319
-					(*TTcl_Obj)(unsafe.Pointer(v1319)).FrefCount++
+					v1326 = tosPtr
+					*(*uintptr)(unsafe.Pointer(v1326)) = v1325
+					(*TTcl_Obj)(unsafe.Pointer(v1325)).FrefCount++
 				} else {
 					tosPtr += 4
-					v1321 = tosPtr
-					*(*uintptr)(unsafe.Pointer(v1321)) = *(*uintptr)(unsafe.Pointer(bp + 8))
+					v1327 = tosPtr
+					*(*uintptr)(unsafe.Pointer(v1327)) = *(*uintptr)(unsafe.Pointer(bp + 8))
 				}
 			}
 			if continueLoop != 0 {
-				v1322 = int32(5)
+				v1328 = int32(5)
 			} else {
-				v1322 = int32(uint32(*(*uint8)(unsafe.Pointer(pc + libc.UintptrFromInt32(1))))<<libc.Int32FromInt32(24)) | int32(*(*uint8)(unsafe.Pointer(pc + libc.UintptrFromInt32(1) + libc.UintptrFromInt32(1))))<<int32(16) | int32(*(*uint8)(unsafe.Pointer(pc + libc.UintptrFromInt32(1) + libc.UintptrFromInt32(2))))<<int32(8) | int32(*(*uint8)(unsafe.Pointer(pc + libc.UintptrFromInt32(1) + libc.UintptrFromInt32(3))))
+				v1328 = int32(uint32(*(*uint8)(unsafe.Pointer(pc + libc.UintptrFromInt32(1))))<<libc.Int32FromInt32(24)) | int32(*(*uint8)(unsafe.Pointer(pc + libc.UintptrFromInt32(1) + libc.UintptrFromInt32(1))))<<int32(16) | int32(*(*uint8)(unsafe.Pointer(pc + libc.UintptrFromInt32(1) + libc.UintptrFromInt32(2))))<<int32(8) | int32(*(*uint8)(unsafe.Pointer(pc + libc.UintptrFromInt32(1) + libc.UintptrFromInt32(3))))
 			}
-			pc += uintptr(v1322)
+			pc += uintptr(v1328)
 			goto cleanup0
 		} else {
 			if 0 != 0 {
@@ -154806,11 +154840,11 @@ _205: /* DEPRECATED */
 					(*TTcl_Obj)(unsafe.Pointer(*(*uintptr)(unsafe.Pointer(bp + 8)))).FrefCount++
 				}
 				if continueLoop != 0 {
-					v1323 = int32(5)
+					v1329 = int32(5)
 				} else {
-					v1323 = int32(uint32(*(*uint8)(unsafe.Pointer(pc + libc.UintptrFromInt32(1))))<<libc.Int32FromInt32(24)) | int32(*(*uint8)(unsafe.Pointer(pc + libc.UintptrFromInt32(1) + libc.UintptrFromInt32(1))))<<int32(16) | int32(*(*uint8)(unsafe.Pointer(pc + libc.UintptrFromInt32(1) + libc.UintptrFromInt32(2))))<<int32(8) | int32(*(*uint8)(unsafe.Pointer(pc + libc.UintptrFromInt32(1) + libc.UintptrFromInt32(3))))
+					v1329 = int32(uint32(*(*uint8)(unsafe.Pointer(pc + libc.UintptrFromInt32(1))))<<libc.Int32FromInt32(24)) | int32(*(*uint8)(unsafe.Pointer(pc + libc.UintptrFromInt32(1) + libc.UintptrFromInt32(1))))<<int32(16) | int32(*(*uint8)(unsafe.Pointer(pc + libc.UintptrFromInt32(1) + libc.UintptrFromInt32(2))))<<int32(8) | int32(*(*uint8)(unsafe.Pointer(pc + libc.UintptrFromInt32(1) + libc.UintptrFromInt32(3))))
 				}
-				pc += uintptr(v1323)
+				pc += uintptr(v1329)
 				switch libc.Int32FromInt32(0) {
 				case int32(1):
 					goto cleanup1_pushObjResultPtr
@@ -154821,11 +154855,11 @@ _205: /* DEPRECATED */
 				}
 			} else {
 				if continueLoop != 0 {
-					v1324 = int32(5)
+					v1330 = int32(5)
 				} else {
-					v1324 = int32(uint32(*(*uint8)(unsafe.Pointer(pc + libc.UintptrFromInt32(1))))<<libc.Int32FromInt32(24)) | int32(*(*uint8)(unsafe.Pointer(pc + libc.UintptrFromInt32(1) + libc.UintptrFromInt32(1))))<<int32(16) | int32(*(*uint8)(unsafe.Pointer(pc + libc.UintptrFromInt32(1) + libc.UintptrFromInt32(2))))<<int32(8) | int32(*(*uint8)(unsafe.Pointer(pc + libc.UintptrFromInt32(1) + libc.UintptrFromInt32(3))))
+					v1330 = int32(uint32(*(*uint8)(unsafe.Pointer(pc + libc.UintptrFromInt32(1))))<<libc.Int32FromInt32(24)) | int32(*(*uint8)(unsafe.Pointer(pc + libc.UintptrFromInt32(1) + libc.UintptrFromInt32(1))))<<int32(16) | int32(*(*uint8)(unsafe.Pointer(pc + libc.UintptrFromInt32(1) + libc.UintptrFromInt32(2))))<<int32(8) | int32(*(*uint8)(unsafe.Pointer(pc + libc.UintptrFromInt32(1) + libc.UintptrFromInt32(3))))
 				}
-				pc += uintptr(v1324)
+				pc += uintptr(v1330)
 				switch libc.Int32FromInt32(0) {
 				case int32(1):
 					goto cleanup1
@@ -154836,8 +154870,10 @@ _205: /* DEPRECATED */
 				}
 			}
 		}
-		goto _1317
-	_1317: /**/ //
+		goto _1324
+	_1324:
+		goto _1323
+	_1323: /**/ //
 	}
 _206:
 	/*
@@ -154865,21 +154901,21 @@ _206:
 				Fptr1 uintptr
 				Fptr2 uintptr
 			})(unsafe.Pointer(listPtr2 + 16))).Fptr1)).FelemCount
-			v1326 = libc.Int32FromInt32(m_TCL_OK)
+			v1332 = libc.Int32FromInt32(m_TCL_OK)
 		} else {
-			v1326 = XTcl_ListObjLength(tls, interp, listPtr2, bp+176)
+			v1332 = XTcl_ListObjLength(tls, interp, listPtr2, bp+176)
 		}
-		if v1326 != m_TCL_OK {
+		if v1332 != m_TCL_OK {
 			goto gotError
 		}
 		if (*TTcl_Obj)(unsafe.Pointer(listPtr2)).FrefCount > int32(1) {
 			objPtr = XTclListObjCopy(tls, libc.UintptrFromInt32(0), listPtr2)
 			(*TTcl_Obj)(unsafe.Pointer(objPtr)).FrefCount++
 			_objPtr34 = listPtr2
-			v1328 = _objPtr34
-			v1327 = *(*int32)(unsafe.Pointer(v1328))
-			*(*int32)(unsafe.Pointer(v1328))--
-			if v1327 <= int32(1) {
+			v1334 = _objPtr34
+			v1333 = *(*int32)(unsafe.Pointer(v1334))
+			*(*int32)(unsafe.Pointer(v1334))--
+			if v1333 <= int32(1) {
 				XTclFreeObj(tls, _objPtr34)
 			}
 			*(*uintptr)(unsafe.Pointer(tosPtr - uintptr(listTmpDepth)*4)) = objPtr
@@ -154889,8 +154925,8 @@ _206:
 			iterMax = iterTmp
 		}
 		listTmpDepth--
-		goto _1325
-	_1325:
+		goto _1331
+	_1331:
 		i6++
 	}
 	/*
@@ -154919,11 +154955,11 @@ _206:
 		Fptr1 uintptr
 		Fptr2 uintptr
 	})(unsafe.Pointer(tmpPtr + 16))).Fptr2 = uintptr(iterMax)
-	v1329 = tmpPtr
+	v1335 = tmpPtr
 	tosPtr += 4
-	v1330 = tosPtr
-	*(*uintptr)(unsafe.Pointer(v1330)) = v1329
-	(*TTcl_Obj)(unsafe.Pointer(v1329)).FrefCount++ /* iterCounts object */
+	v1336 = tosPtr
+	*(*uintptr)(unsafe.Pointer(v1336)) = v1335
+	(*TTcl_Obj)(unsafe.Pointer(v1335)).FrefCount++ /* iterCounts object */
 	/*
 	 * Store a pointer to the ForeachInfo struct; same dirty trick
 	 * as above
@@ -154944,11 +154980,11 @@ _206:
 		Fptr1 uintptr
 		Fptr2 uintptr
 	})(unsafe.Pointer(tmpPtr + 16))).Fptr1 = infoPtr1
-	v1331 = tmpPtr
+	v1337 = tmpPtr
 	tosPtr += 4
-	v1332 = tosPtr
-	*(*uintptr)(unsafe.Pointer(v1332)) = v1331
-	(*TTcl_Obj)(unsafe.Pointer(v1331)).FrefCount++ /* infoPtr object */
+	v1338 = tosPtr
+	*(*uintptr)(unsafe.Pointer(v1338)) = v1337
+	(*TTcl_Obj)(unsafe.Pointer(v1337)).FrefCount++ /* infoPtr object */
 	/*
 	 * Jump directly to the INST_FOREACH_STEP instruction; the C code just
 	 * falls through.
@@ -155039,10 +155075,10 @@ _207:
 					value2Ptr = *(*uintptr)(unsafe.Pointer(*(*uintptr)(unsafe.Pointer(bp + 28)) + 4))
 					if *(*uintptr)(unsafe.Pointer(bp + 12)) != value2Ptr {
 						if value2Ptr != libc.UintptrFromInt32(0) {
-							v1337 = value2Ptr
-							v1336 = *(*int32)(unsafe.Pointer(v1337))
-							*(*int32)(unsafe.Pointer(v1337))--
-							if !(v1336 > int32(1)) {
+							v1343 = value2Ptr
+							v1342 = *(*int32)(unsafe.Pointer(v1343))
+							*(*int32)(unsafe.Pointer(v1343))--
+							if !(v1342 > int32(1)) {
 								if !((*TTcl_Obj)(unsafe.Pointer(value2Ptr)).FtypePtr != 0) || !((*TTcl_ObjType)(unsafe.Pointer((*TTcl_Obj)(unsafe.Pointer(value2Ptr)).FtypePtr)).FfreeIntRepProc != 0) {
 									if (*TTcl_Obj)(unsafe.Pointer(value2Ptr)).Fbytes != 0 && (*TTcl_Obj)(unsafe.Pointer(value2Ptr)).Fbytes != XtclEmptyStringRep {
 										XTclpFree(tls, (*TTcl_Obj)(unsafe.Pointer(value2Ptr)).Fbytes)
@@ -155070,30 +155106,28 @@ _207:
 					checkInterp = int32(1)
 				}
 				valIndex1++
-				goto _1335
-			_1335:
+				goto _1341
+			_1341:
 				j1++
 			}
 			listTmpDepth--
-			goto _1333
-		_1333:
+			goto _1339
+		_1339:
 			i6++
 		}
 		/* loopCtTemp being 'misused' for storing the jump size */
-		goto _1339
-	_1339:
 		if true {
 			if 0 != 0 {
 				if 0 > 0 {
-					v1340 = *(*uintptr)(unsafe.Pointer(bp + 8))
+					v1346 = *(*uintptr)(unsafe.Pointer(bp + 8))
 					tosPtr += 4
-					v1341 = tosPtr
-					*(*uintptr)(unsafe.Pointer(v1341)) = v1340
-					(*TTcl_Obj)(unsafe.Pointer(v1340)).FrefCount++
+					v1347 = tosPtr
+					*(*uintptr)(unsafe.Pointer(v1347)) = v1346
+					(*TTcl_Obj)(unsafe.Pointer(v1346)).FrefCount++
 				} else {
 					tosPtr += 4
-					v1342 = tosPtr
-					*(*uintptr)(unsafe.Pointer(v1342)) = *(*uintptr)(unsafe.Pointer(bp + 8))
+					v1348 = tosPtr
+					*(*uintptr)(unsafe.Pointer(v1348)) = *(*uintptr)(unsafe.Pointer(bp + 8))
 				}
 			}
 			pc += uintptr((*TForeachInfo)(unsafe.Pointer(infoPtr1)).FloopCtTemp)
@@ -155124,8 +155158,10 @@ _207:
 				}
 			}
 		}
-		goto _1338
-	_1338: /**/
+		goto _1345
+	_1345:
+		goto _1344
+	_1344: /**/
 		//
 	}
 	/*
@@ -155168,20 +155204,18 @@ _209:
 	numLists1 = (*TForeachInfo)(unsafe.Pointer(infoPtr1)).FnumLists
 	objPtr = *(*uintptr)(unsafe.Pointer(tosPtr - uintptr(libc.Int32FromInt32(3)+numLists1)*4))
 	XTcl_ListObjAppendElement(tls, libc.UintptrFromInt32(0), objPtr, *(*uintptr)(unsafe.Pointer(tosPtr)))
-	goto _1344
-_1344:
 	if false {
 		if 0 != 0 {
 			if 0 > 0 {
-				v1345 = *(*uintptr)(unsafe.Pointer(bp + 8))
+				v1351 = *(*uintptr)(unsafe.Pointer(bp + 8))
 				tosPtr += 4
-				v1346 = tosPtr
-				*(*uintptr)(unsafe.Pointer(v1346)) = v1345
-				(*TTcl_Obj)(unsafe.Pointer(v1345)).FrefCount++
+				v1352 = tosPtr
+				*(*uintptr)(unsafe.Pointer(v1352)) = v1351
+				(*TTcl_Obj)(unsafe.Pointer(v1351)).FrefCount++
 			} else {
 				tosPtr += 4
-				v1347 = tosPtr
-				*(*uintptr)(unsafe.Pointer(v1347)) = *(*uintptr)(unsafe.Pointer(bp + 8))
+				v1353 = tosPtr
+				*(*uintptr)(unsafe.Pointer(v1353)) = *(*uintptr)(unsafe.Pointer(bp + 8))
 			}
 		}
 		pc += uintptr(libc.Int32FromInt32(1))
@@ -155212,8 +155246,10 @@ _1344:
 			}
 		}
 	}
-	goto _1343
-_1343: /**/
+	goto _1350
+_1350:
+	goto _1349
+_1349: /**/
 	; //
 	goto _233
 _210:
@@ -155222,24 +155258,22 @@ _210:
 	 * to the operand. Push the current stack depth onto the special catch
 	 * stack.
 	 */
-	v1349 = TD + 4
-	*(*uintptr)(unsafe.Pointer(v1349)) += 4
-	v1348 = *(*uintptr)(unsafe.Pointer(v1349))
-	*(*Tptrdiff_t)(unsafe.Pointer(v1348)) = (int32(tosPtr) - int32(TD+60-libc.UintptrFromInt32(1)*4+uintptr((*TByteCode)(unsafe.Pointer((*TTEBCdata)(unsafe.Pointer(TD)).FcodePtr)).FmaxExceptDepth)*4)) / 4
-	goto _1351
-_1351:
+	v1355 = TD + 4
+	*(*uintptr)(unsafe.Pointer(v1355)) += 4
+	v1354 = *(*uintptr)(unsafe.Pointer(v1355))
+	*(*Tptrdiff_t)(unsafe.Pointer(v1354)) = (int32(tosPtr) - int32(TD+60-libc.UintptrFromInt32(1)*4+uintptr((*TByteCode)(unsafe.Pointer((*TTEBCdata)(unsafe.Pointer(TD)).FcodePtr)).FmaxExceptDepth)*4)) / 4
 	if true {
 		if 0 != 0 {
 			if 0 > 0 {
-				v1352 = *(*uintptr)(unsafe.Pointer(bp + 8))
+				v1358 = *(*uintptr)(unsafe.Pointer(bp + 8))
 				tosPtr += 4
-				v1353 = tosPtr
-				*(*uintptr)(unsafe.Pointer(v1353)) = v1352
-				(*TTcl_Obj)(unsafe.Pointer(v1352)).FrefCount++
+				v1359 = tosPtr
+				*(*uintptr)(unsafe.Pointer(v1359)) = v1358
+				(*TTcl_Obj)(unsafe.Pointer(v1358)).FrefCount++
 			} else {
 				tosPtr += 4
-				v1354 = tosPtr
-				*(*uintptr)(unsafe.Pointer(v1354)) = *(*uintptr)(unsafe.Pointer(bp + 8))
+				v1360 = tosPtr
+				*(*uintptr)(unsafe.Pointer(v1360)) = *(*uintptr)(unsafe.Pointer(bp + 8))
 			}
 		}
 		pc += uintptr(libc.Int32FromInt32(5))
@@ -155270,8 +155304,10 @@ _1351:
 			}
 		}
 	}
-	goto _1350
-_1350: /**/
+	goto _1357
+_1357:
+	goto _1356
+_1356: /**/
 	; //
 	goto _233
 _211:
@@ -155280,20 +155316,18 @@ _211:
 	XTcl_ResetResult(tls, interp)
 	checkInterp = int32(1)
 	result = m_TCL_OK
-	goto _1356
-_1356:
 	if true {
 		if 0 != 0 {
 			if 0 > 0 {
-				v1357 = *(*uintptr)(unsafe.Pointer(bp + 8))
+				v1363 = *(*uintptr)(unsafe.Pointer(bp + 8))
 				tosPtr += 4
-				v1358 = tosPtr
-				*(*uintptr)(unsafe.Pointer(v1358)) = v1357
-				(*TTcl_Obj)(unsafe.Pointer(v1357)).FrefCount++
+				v1364 = tosPtr
+				*(*uintptr)(unsafe.Pointer(v1364)) = v1363
+				(*TTcl_Obj)(unsafe.Pointer(v1363)).FrefCount++
 			} else {
 				tosPtr += 4
-				v1359 = tosPtr
-				*(*uintptr)(unsafe.Pointer(v1359)) = *(*uintptr)(unsafe.Pointer(bp + 8))
+				v1365 = tosPtr
+				*(*uintptr)(unsafe.Pointer(v1365)) = *(*uintptr)(unsafe.Pointer(bp + 8))
 			}
 		}
 		pc += uintptr(libc.Int32FromInt32(1))
@@ -155324,8 +155358,10 @@ _1356:
 			}
 		}
 	}
-	goto _1355
-_1355: /**/
+	goto _1362
+_1362:
+	goto _1361
+_1361: /**/
 	; //
 	goto _233
 _212:
@@ -155347,20 +155383,18 @@ _212:
 	(*TTcl_Obj)(unsafe.Pointer(objPtr)).FtypePtr = libc.UintptrFromInt32(0)
 	(*TTcl_Obj)(unsafe.Pointer(objPtr)).FrefCount++
 	(*TInterp)(unsafe.Pointer(interp)).FobjResultPtr = objPtr
-	goto _1361
-_1361:
 	if true {
 		if -int32(1) != 0 {
 			if -int32(1) > 0 {
-				v1362 = *(*uintptr)(unsafe.Pointer(bp + 8))
+				v1368 = *(*uintptr)(unsafe.Pointer(bp + 8))
 				tosPtr += 4
-				v1363 = tosPtr
-				*(*uintptr)(unsafe.Pointer(v1363)) = v1362
-				(*TTcl_Obj)(unsafe.Pointer(v1362)).FrefCount++
+				v1369 = tosPtr
+				*(*uintptr)(unsafe.Pointer(v1369)) = v1368
+				(*TTcl_Obj)(unsafe.Pointer(v1368)).FrefCount++
 			} else {
 				tosPtr += 4
-				v1364 = tosPtr
-				*(*uintptr)(unsafe.Pointer(v1364)) = *(*uintptr)(unsafe.Pointer(bp + 8))
+				v1370 = tosPtr
+				*(*uintptr)(unsafe.Pointer(v1370)) = *(*uintptr)(unsafe.Pointer(bp + 8))
 			}
 		}
 		pc += uintptr(libc.Int32FromInt32(1))
@@ -155391,8 +155425,10 @@ _1361:
 			}
 		}
 	}
-	goto _1360
-_1360: /**/
+	goto _1367
+_1367:
+	goto _1366
+_1366: /**/
 	; //
 	goto _233
 _213:
@@ -155408,20 +155444,18 @@ _213:
 	(*TTcl_Obj)(unsafe.Pointer(*(*uintptr)(unsafe.Pointer(bp + 8)))).Fbytes = libc.UintptrFromInt32(0)
 	(*TTcl_Obj)(unsafe.Pointer(*(*uintptr)(unsafe.Pointer(bp + 8)))).FinternalRep.FlongValue = result
 	(*TTcl_Obj)(unsafe.Pointer(*(*uintptr)(unsafe.Pointer(bp + 8)))).FtypePtr = uintptr(unsafe.Pointer(&XtclIntType))
-	goto _1366
-_1366:
 	if true {
 		if int32(1) != 0 {
 			if int32(1) > 0 {
-				v1367 = *(*uintptr)(unsafe.Pointer(bp + 8))
+				v1373 = *(*uintptr)(unsafe.Pointer(bp + 8))
 				tosPtr += 4
-				v1368 = tosPtr
-				*(*uintptr)(unsafe.Pointer(v1368)) = v1367
-				(*TTcl_Obj)(unsafe.Pointer(v1367)).FrefCount++
+				v1374 = tosPtr
+				*(*uintptr)(unsafe.Pointer(v1374)) = v1373
+				(*TTcl_Obj)(unsafe.Pointer(v1373)).FrefCount++
 			} else {
 				tosPtr += 4
-				v1369 = tosPtr
-				*(*uintptr)(unsafe.Pointer(v1369)) = *(*uintptr)(unsafe.Pointer(bp + 8))
+				v1375 = tosPtr
+				*(*uintptr)(unsafe.Pointer(v1375)) = *(*uintptr)(unsafe.Pointer(bp + 8))
 			}
 		}
 		pc += uintptr(libc.Int32FromInt32(1))
@@ -155452,83 +155486,19 @@ _1366:
 			}
 		}
 	}
-	goto _1365
-_1365: /**/
+	goto _1372
+_1372:
+	goto _1371
+_1371: /**/
 	; //
 	goto _233
 _214:
 	(*TExecStack)(unsafe.Pointer((*TExecEnv1)(unsafe.Pointer((*TInterp)(unsafe.Pointer(interp)).FexecEnvPtr)).FexecStackPtr)).FtosPtr = tosPtr
 	*(*uintptr)(unsafe.Pointer(bp + 8)) = XTcl_GetReturnOptions(tls, interp, result)
 	checkInterp = int32(1)
-	goto _1371
-_1371:
 	if true {
 		if int32(1) != 0 {
 			if int32(1) > 0 {
-				v1372 = *(*uintptr)(unsafe.Pointer(bp + 8))
-				tosPtr += 4
-				v1373 = tosPtr
-				*(*uintptr)(unsafe.Pointer(v1373)) = v1372
-				(*TTcl_Obj)(unsafe.Pointer(v1372)).FrefCount++
-			} else {
-				tosPtr += 4
-				v1374 = tosPtr
-				*(*uintptr)(unsafe.Pointer(v1374)) = *(*uintptr)(unsafe.Pointer(bp + 8))
-			}
-		}
-		pc += uintptr(libc.Int32FromInt32(1))
-		goto cleanup0
-	} else {
-		if int32(1) != 0 {
-			if int32(1) > 0 {
-				(*TTcl_Obj)(unsafe.Pointer(*(*uintptr)(unsafe.Pointer(bp + 8)))).FrefCount++
-			}
-			pc += uintptr(libc.Int32FromInt32(1))
-			switch libc.Int32FromInt32(0) {
-			case int32(1):
-				goto cleanup1_pushObjResultPtr
-			case int32(2):
-				goto cleanup2_pushObjResultPtr
-			case 0:
-				break
-			}
-		} else {
-			pc += uintptr(libc.Int32FromInt32(1))
-			switch libc.Int32FromInt32(0) {
-			case int32(1):
-				goto cleanup1
-			case int32(2):
-				goto cleanup2
-			case 0:
-				break
-			}
-		}
-	}
-	goto _1370
-_1370: /**/
-	; //
-	goto _233
-_215:
-	if (*TTcl_Obj)(unsafe.Pointer(*(*uintptr)(unsafe.Pointer(tosPtr)))).FtypePtr == uintptr(unsafe.Pointer(&XtclIntType)) {
-		*(*int32)(unsafe.Pointer(bp + 180)) = (*TTcl_Obj)(unsafe.Pointer(*(*uintptr)(unsafe.Pointer(tosPtr)))).FinternalRep.FlongValue
-		v1375 = libc.Int32FromInt32(m_TCL_OK)
-	} else {
-		v1375 = XTcl_GetIntFromObj(tls, libc.UintptrFromInt32(0), *(*uintptr)(unsafe.Pointer(tosPtr)), bp+180)
-	}
-	if v1375 != m_TCL_OK {
-		XTcl_Panic(tls, __ccgo_ts+28618, 0)
-	}
-	if *(*int32)(unsafe.Pointer(bp + 180)) == m_TCL_OK {
-		XTcl_Panic(tls, __ccgo_ts+28666, 0)
-	}
-	if *(*int32)(unsafe.Pointer(bp + 180)) < int32(m_TCL_ERROR) || *(*int32)(unsafe.Pointer(bp + 180)) > int32(m_TCL_CONTINUE) {
-		*(*int32)(unsafe.Pointer(bp + 180)) = libc.Int32FromInt32(m_TCL_CONTINUE) + libc.Int32FromInt32(1)
-	}
-	goto _1377
-_1377:
-	if false {
-		if 0 != 0 {
-			if 0 > 0 {
 				v1378 = *(*uintptr)(unsafe.Pointer(bp + 8))
 				tosPtr += 4
 				v1379 = tosPtr
@@ -155538,6 +155508,70 @@ _1377:
 				tosPtr += 4
 				v1380 = tosPtr
 				*(*uintptr)(unsafe.Pointer(v1380)) = *(*uintptr)(unsafe.Pointer(bp + 8))
+			}
+		}
+		pc += uintptr(libc.Int32FromInt32(1))
+		goto cleanup0
+	} else {
+		if int32(1) != 0 {
+			if int32(1) > 0 {
+				(*TTcl_Obj)(unsafe.Pointer(*(*uintptr)(unsafe.Pointer(bp + 8)))).FrefCount++
+			}
+			pc += uintptr(libc.Int32FromInt32(1))
+			switch libc.Int32FromInt32(0) {
+			case int32(1):
+				goto cleanup1_pushObjResultPtr
+			case int32(2):
+				goto cleanup2_pushObjResultPtr
+			case 0:
+				break
+			}
+		} else {
+			pc += uintptr(libc.Int32FromInt32(1))
+			switch libc.Int32FromInt32(0) {
+			case int32(1):
+				goto cleanup1
+			case int32(2):
+				goto cleanup2
+			case 0:
+				break
+			}
+		}
+	}
+	goto _1377
+_1377:
+	goto _1376
+_1376: /**/
+	; //
+	goto _233
+_215:
+	if (*TTcl_Obj)(unsafe.Pointer(*(*uintptr)(unsafe.Pointer(tosPtr)))).FtypePtr == uintptr(unsafe.Pointer(&XtclIntType)) {
+		*(*int32)(unsafe.Pointer(bp + 180)) = (*TTcl_Obj)(unsafe.Pointer(*(*uintptr)(unsafe.Pointer(tosPtr)))).FinternalRep.FlongValue
+		v1381 = libc.Int32FromInt32(m_TCL_OK)
+	} else {
+		v1381 = XTcl_GetIntFromObj(tls, libc.UintptrFromInt32(0), *(*uintptr)(unsafe.Pointer(tosPtr)), bp+180)
+	}
+	if v1381 != m_TCL_OK {
+		XTcl_Panic(tls, __ccgo_ts+28618, 0)
+	}
+	if *(*int32)(unsafe.Pointer(bp + 180)) == m_TCL_OK {
+		XTcl_Panic(tls, __ccgo_ts+28666, 0)
+	}
+	if *(*int32)(unsafe.Pointer(bp + 180)) < int32(m_TCL_ERROR) || *(*int32)(unsafe.Pointer(bp + 180)) > int32(m_TCL_CONTINUE) {
+		*(*int32)(unsafe.Pointer(bp + 180)) = libc.Int32FromInt32(m_TCL_CONTINUE) + libc.Int32FromInt32(1)
+	}
+	if false {
+		if 0 != 0 {
+			if 0 > 0 {
+				v1384 = *(*uintptr)(unsafe.Pointer(bp + 8))
+				tosPtr += 4
+				v1385 = tosPtr
+				*(*uintptr)(unsafe.Pointer(v1385)) = v1384
+				(*TTcl_Obj)(unsafe.Pointer(v1384)).FrefCount++
+			} else {
+				tosPtr += 4
+				v1386 = tosPtr
+				*(*uintptr)(unsafe.Pointer(v1386)) = *(*uintptr)(unsafe.Pointer(bp + 8))
 			}
 		}
 		pc += uintptr(libc.Int32FromInt32(2)**(*int32)(unsafe.Pointer(bp + 180)) - libc.Int32FromInt32(1))
@@ -155568,8 +155602,10 @@ _1377:
 			}
 		}
 	}
-	goto _1376
-_1376: /**/
+	goto _1383
+_1383:
+	goto _1382
+_1382: /**/
 	; //
 	/*
 	 * -----------------------------------------------------------------
@@ -155580,20 +155616,18 @@ _216:
 	if XTcl_DictObjSize(tls, interp, dictPtr, bp+184) != m_TCL_OK {
 		goto gotError
 	}
-	goto _1382
-_1382:
 	if false {
 		if 0 != 0 {
 			if 0 > 0 {
-				v1383 = *(*uintptr)(unsafe.Pointer(bp + 8))
+				v1389 = *(*uintptr)(unsafe.Pointer(bp + 8))
 				tosPtr += 4
-				v1384 = tosPtr
-				*(*uintptr)(unsafe.Pointer(v1384)) = v1383
-				(*TTcl_Obj)(unsafe.Pointer(v1383)).FrefCount++
+				v1390 = tosPtr
+				*(*uintptr)(unsafe.Pointer(v1390)) = v1389
+				(*TTcl_Obj)(unsafe.Pointer(v1389)).FrefCount++
 			} else {
 				tosPtr += 4
-				v1385 = tosPtr
-				*(*uintptr)(unsafe.Pointer(v1385)) = *(*uintptr)(unsafe.Pointer(bp + 8))
+				v1391 = tosPtr
+				*(*uintptr)(unsafe.Pointer(v1391)) = *(*uintptr)(unsafe.Pointer(bp + 8))
 			}
 		}
 		pc += uintptr(libc.Int32FromInt32(1))
@@ -155624,8 +155658,10 @@ _1382:
 			}
 		}
 	}
-	goto _1381
-_1381: /**/
+	goto _1388
+_1388:
+	goto _1387
+_1387: /**/
 	; //
 _218:
 _217:
@@ -155648,27 +155684,27 @@ _217:
 	if XTcl_DictObjGet(tls, interp2, dictPtr, *(*uintptr)(unsafe.Pointer(tosPtr)), bp+8) == m_TCL_OK {
 		if int32(*(*uint8)(unsafe.Pointer(pc))) == int32(m_INST_DICT_EXISTS) {
 			if *(*uintptr)(unsafe.Pointer(bp + 8)) != 0 {
-				v1386 = int32(1)
+				v1392 = int32(1)
 			} else {
-				v1386 = 0
+				v1392 = 0
 			}
-			found1 = v1386
+			found1 = v1392
 			goto afterDictExists
 		}
 		if !(*(*uintptr)(unsafe.Pointer(bp + 8)) != 0) {
 			if (*TTcl_Obj)(unsafe.Pointer(*(*uintptr)(unsafe.Pointer(tosPtr)))).Fbytes != 0 {
-				v1387 = (*TTcl_Obj)(unsafe.Pointer(*(*uintptr)(unsafe.Pointer(tosPtr)))).Fbytes
+				v1393 = (*TTcl_Obj)(unsafe.Pointer(*(*uintptr)(unsafe.Pointer(tosPtr)))).Fbytes
 			} else {
-				v1387 = XTcl_GetString(tls, *(*uintptr)(unsafe.Pointer(tosPtr)))
+				v1393 = XTcl_GetString(tls, *(*uintptr)(unsafe.Pointer(tosPtr)))
 			}
-			XTcl_SetObjResult(tls, interp, XTcl_ObjPrintf(tls, __ccgo_ts+23015, libc.VaList(bp+224, v1387)))
+			XTcl_SetObjResult(tls, interp, XTcl_ObjPrintf(tls, __ccgo_ts+23015, libc.VaList(bp+224, v1393)))
 			(*TExecStack)(unsafe.Pointer((*TExecEnv1)(unsafe.Pointer((*TInterp)(unsafe.Pointer(interp)).FexecEnvPtr)).FexecStackPtr)).FtosPtr = tosPtr
 			if (*TTcl_Obj)(unsafe.Pointer(*(*uintptr)(unsafe.Pointer(tosPtr)))).Fbytes != 0 {
-				v1388 = (*TTcl_Obj)(unsafe.Pointer(*(*uintptr)(unsafe.Pointer(tosPtr)))).Fbytes
+				v1394 = (*TTcl_Obj)(unsafe.Pointer(*(*uintptr)(unsafe.Pointer(tosPtr)))).Fbytes
 			} else {
-				v1388 = XTcl_GetString(tls, *(*uintptr)(unsafe.Pointer(tosPtr)))
+				v1394 = XTcl_GetString(tls, *(*uintptr)(unsafe.Pointer(tosPtr)))
 			}
-			XTcl_SetErrorCode(tls, interp, libc.VaList(bp+224, __ccgo_ts+3490, __ccgo_ts+7056, __ccgo_ts+23048, v1388, libc.UintptrFromInt32(0)))
+			XTcl_SetErrorCode(tls, interp, libc.VaList(bp+224, __ccgo_ts+3490, __ccgo_ts+7056, __ccgo_ts+23048, v1394, libc.UintptrFromInt32(0)))
 			checkInterp = int32(1)
 			goto gotError
 		}
@@ -155696,17 +155732,15 @@ afterDictExists:
 	 * peephole optimization (note that we're careful to not close out
 	 * someone doing something else).
 	 */
-	goto _1390
-_1390:
 	pc += uintptr(libc.Int32FromInt32(5))
 	switch int32(*(*uint8)(unsafe.Pointer(pc))) {
 	case int32(m_INST_JUMP_FALSE1):
 		if found1 != 0 {
-			v1391 = int32(2)
+			v1397 = int32(2)
 		} else {
-			v1391 = int32(*(*int8)(unsafe.Pointer(pc + libc.UintptrFromInt32(1))))
+			v1397 = int32(*(*int8)(unsafe.Pointer(pc + libc.UintptrFromInt32(1))))
 		}
-		pc += uintptr(v1391)
+		pc += uintptr(v1397)
 		cleanup = opnd + int32(1)
 		if 0 != 0 {
 			if 0 > 0 {
@@ -155718,11 +155752,11 @@ _1390:
 		}
 	case int32(m_INST_JUMP_TRUE1):
 		if found1 != 0 {
-			v1392 = int32(*(*int8)(unsafe.Pointer(pc + libc.UintptrFromInt32(1))))
+			v1398 = int32(*(*int8)(unsafe.Pointer(pc + libc.UintptrFromInt32(1))))
 		} else {
-			v1392 = int32(2)
+			v1398 = int32(2)
 		}
-		pc += uintptr(v1392)
+		pc += uintptr(v1398)
 		cleanup = opnd + int32(1)
 		if 0 != 0 {
 			if 0 > 0 {
@@ -155734,11 +155768,11 @@ _1390:
 		}
 	case int32(m_INST_JUMP_FALSE4):
 		if found1 != 0 {
-			v1393 = int32(5)
+			v1399 = int32(5)
 		} else {
-			v1393 = int32(uint32(*(*uint8)(unsafe.Pointer(pc + libc.UintptrFromInt32(1))))<<libc.Int32FromInt32(24)) | int32(*(*uint8)(unsafe.Pointer(pc + libc.UintptrFromInt32(1) + libc.UintptrFromInt32(1))))<<int32(16) | int32(*(*uint8)(unsafe.Pointer(pc + libc.UintptrFromInt32(1) + libc.UintptrFromInt32(2))))<<int32(8) | int32(*(*uint8)(unsafe.Pointer(pc + libc.UintptrFromInt32(1) + libc.UintptrFromInt32(3))))
+			v1399 = int32(uint32(*(*uint8)(unsafe.Pointer(pc + libc.UintptrFromInt32(1))))<<libc.Int32FromInt32(24)) | int32(*(*uint8)(unsafe.Pointer(pc + libc.UintptrFromInt32(1) + libc.UintptrFromInt32(1))))<<int32(16) | int32(*(*uint8)(unsafe.Pointer(pc + libc.UintptrFromInt32(1) + libc.UintptrFromInt32(2))))<<int32(8) | int32(*(*uint8)(unsafe.Pointer(pc + libc.UintptrFromInt32(1) + libc.UintptrFromInt32(3))))
 		}
-		pc += uintptr(v1393)
+		pc += uintptr(v1399)
 		cleanup = opnd + int32(1)
 		if 0 != 0 {
 			if 0 > 0 {
@@ -155750,11 +155784,11 @@ _1390:
 		}
 	case int32(m_INST_JUMP_TRUE4):
 		if found1 != 0 {
-			v1394 = int32(uint32(*(*uint8)(unsafe.Pointer(pc + libc.UintptrFromInt32(1))))<<libc.Int32FromInt32(24)) | int32(*(*uint8)(unsafe.Pointer(pc + libc.UintptrFromInt32(1) + libc.UintptrFromInt32(1))))<<int32(16) | int32(*(*uint8)(unsafe.Pointer(pc + libc.UintptrFromInt32(1) + libc.UintptrFromInt32(2))))<<int32(8) | int32(*(*uint8)(unsafe.Pointer(pc + libc.UintptrFromInt32(1) + libc.UintptrFromInt32(3))))
+			v1400 = int32(uint32(*(*uint8)(unsafe.Pointer(pc + libc.UintptrFromInt32(1))))<<libc.Int32FromInt32(24)) | int32(*(*uint8)(unsafe.Pointer(pc + libc.UintptrFromInt32(1) + libc.UintptrFromInt32(1))))<<int32(16) | int32(*(*uint8)(unsafe.Pointer(pc + libc.UintptrFromInt32(1) + libc.UintptrFromInt32(2))))<<int32(8) | int32(*(*uint8)(unsafe.Pointer(pc + libc.UintptrFromInt32(1) + libc.UintptrFromInt32(3))))
 		} else {
-			v1394 = int32(5)
+			v1400 = int32(5)
 		}
-		pc += uintptr(v1394)
+		pc += uintptr(v1400)
 		cleanup = opnd + int32(1)
 		if 0 != 0 {
 			if 0 > 0 {
@@ -155793,8 +155827,10 @@ _1390:
 		}
 		break
 	}
-	goto _1389
-_1389: /**/
+	goto _1396
+_1396:
+	goto _1395
+_1395: /**/
 	; //
 _221:
 _220:
@@ -155873,10 +155909,10 @@ _219:
 					(*TTcl_Obj)(unsafe.Pointer(_isobjPtr8)).Fbytes = libc.UintptrFromInt32(0)
 				}
 			}
-			v1396 = value2Ptr
-			v1395 = *(*int32)(unsafe.Pointer(v1396))
-			*(*int32)(unsafe.Pointer(v1396))--
-			if !(v1395 > int32(1)) {
+			v1402 = value2Ptr
+			v1401 = *(*int32)(unsafe.Pointer(v1402))
+			*(*int32)(unsafe.Pointer(v1402))--
+			if !(v1401 > int32(1)) {
 				if !((*TTcl_Obj)(unsafe.Pointer(value2Ptr)).FtypePtr != 0) || !((*TTcl_ObjType)(unsafe.Pointer((*TTcl_Obj)(unsafe.Pointer(value2Ptr)).FtypePtr)).FfreeIntRepProc != 0) {
 					if (*TTcl_Obj)(unsafe.Pointer(value2Ptr)).Fbytes != 0 && (*TTcl_Obj)(unsafe.Pointer(value2Ptr)).Fbytes != XtclEmptyStringRep {
 						XTclpFree(tls, (*TTcl_Obj)(unsafe.Pointer(value2Ptr)).Fbytes)
@@ -155901,10 +155937,10 @@ _219:
 	}
 	if result != m_TCL_OK {
 		if allocateDict != 0 {
-			v1398 = dictPtr
-			v1397 = *(*int32)(unsafe.Pointer(v1398))
-			*(*int32)(unsafe.Pointer(v1398))--
-			if !(v1397 > int32(1)) {
+			v1404 = dictPtr
+			v1403 = *(*int32)(unsafe.Pointer(v1404))
+			*(*int32)(unsafe.Pointer(v1404))--
+			if !(v1403 > int32(1)) {
 				if !((*TTcl_Obj)(unsafe.Pointer(dictPtr)).FtypePtr != 0) || !((*TTcl_ObjType)(unsafe.Pointer((*TTcl_Obj)(unsafe.Pointer(dictPtr)).FtypePtr)).FfreeIntRepProc != 0) {
 					if (*TTcl_Obj)(unsafe.Pointer(dictPtr)).Fbytes != 0 && (*TTcl_Obj)(unsafe.Pointer(dictPtr)).Fbytes != XtclEmptyStringRep {
 						XTclpFree(tls, (*TTcl_Obj)(unsafe.Pointer(dictPtr)).Fbytes)
@@ -155927,10 +155963,10 @@ _219:
 			value2Ptr = *(*uintptr)(unsafe.Pointer(*(*uintptr)(unsafe.Pointer(bp + 28)) + 4))
 			(*TTcl_Obj)(unsafe.Pointer(dictPtr)).FrefCount++
 			if value2Ptr != libc.UintptrFromInt32(0) {
-				v1400 = value2Ptr
-				v1399 = *(*int32)(unsafe.Pointer(v1400))
-				*(*int32)(unsafe.Pointer(v1400))--
-				if !(v1399 > int32(1)) {
+				v1406 = value2Ptr
+				v1405 = *(*int32)(unsafe.Pointer(v1406))
+				*(*int32)(unsafe.Pointer(v1406))--
+				if !(v1405 > int32(1)) {
 					if !((*TTcl_Obj)(unsafe.Pointer(value2Ptr)).FtypePtr != 0) || !((*TTcl_ObjType)(unsafe.Pointer((*TTcl_Obj)(unsafe.Pointer(value2Ptr)).FtypePtr)).FfreeIntRepProc != 0) {
 						if (*TTcl_Obj)(unsafe.Pointer(value2Ptr)).Fbytes != 0 && (*TTcl_Obj)(unsafe.Pointer(value2Ptr)).Fbytes != XtclEmptyStringRep {
 							XTclpFree(tls, (*TTcl_Obj)(unsafe.Pointer(value2Ptr)).Fbytes)
@@ -155954,10 +155990,10 @@ _219:
 		(*TExecStack)(unsafe.Pointer((*TExecEnv1)(unsafe.Pointer((*TInterp)(unsafe.Pointer(interp)).FexecEnvPtr)).FexecStackPtr)).FtosPtr = tosPtr
 		*(*uintptr)(unsafe.Pointer(bp + 8)) = XTclPtrSetVarIdx(tls, interp, *(*uintptr)(unsafe.Pointer(bp + 28)), libc.UintptrFromInt32(0), libc.UintptrFromInt32(0), libc.UintptrFromInt32(0), dictPtr, int32(m_TCL_LEAVE_ERR_MSG), opnd2)
 		checkInterp = int32(1)
-		v1402 = dictPtr
-		v1401 = *(*int32)(unsafe.Pointer(v1402))
-		*(*int32)(unsafe.Pointer(v1402))--
-		if !(v1401 > int32(1)) {
+		v1408 = dictPtr
+		v1407 = *(*int32)(unsafe.Pointer(v1408))
+		*(*int32)(unsafe.Pointer(v1408))--
+		if !(v1407 > int32(1)) {
 			if !((*TTcl_Obj)(unsafe.Pointer(dictPtr)).FtypePtr != 0) || !((*TTcl_ObjType)(unsafe.Pointer((*TTcl_Obj)(unsafe.Pointer(dictPtr)).FtypePtr)).FfreeIntRepProc != 0) {
 				if (*TTcl_Obj)(unsafe.Pointer(dictPtr)).Fbytes != 0 && (*TTcl_Obj)(unsafe.Pointer(dictPtr)).Fbytes != XtclEmptyStringRep {
 					XTclpFree(tls, (*TTcl_Obj)(unsafe.Pointer(dictPtr)).Fbytes)
@@ -156034,10 +156070,10 @@ _222:
 	}
 	if XTcl_DictObjGet(tls, interp, dictPtr, *(*uintptr)(unsafe.Pointer(tosPtr - libc.UintptrFromInt32(1)*4)), bp+12) != m_TCL_OK {
 		if allocateDict != 0 {
-			v1404 = dictPtr
-			v1403 = *(*int32)(unsafe.Pointer(v1404))
-			*(*int32)(unsafe.Pointer(v1404))--
-			if !(v1403 > int32(1)) {
+			v1410 = dictPtr
+			v1409 = *(*int32)(unsafe.Pointer(v1410))
+			*(*int32)(unsafe.Pointer(v1410))--
+			if !(v1409 > int32(1)) {
 				if !((*TTcl_Obj)(unsafe.Pointer(dictPtr)).FtypePtr != 0) || !((*TTcl_ObjType)(unsafe.Pointer((*TTcl_Obj)(unsafe.Pointer(dictPtr)).FtypePtr)).FfreeIntRepProc != 0) {
 					if (*TTcl_Obj)(unsafe.Pointer(dictPtr)).Fbytes != 0 && (*TTcl_Obj)(unsafe.Pointer(dictPtr)).Fbytes != XtclEmptyStringRep {
 						XTclpFree(tls, (*TTcl_Obj)(unsafe.Pointer(dictPtr)).Fbytes)
@@ -156095,10 +156131,10 @@ _222:
 			if (*TTcl_Obj)(unsafe.Pointer(*(*uintptr)(unsafe.Pointer(bp + 12)))).FrefCount > int32(1) {
 				*(*uintptr)(unsafe.Pointer(bp + 12)) = XTcl_DuplicateObj(tls, *(*uintptr)(unsafe.Pointer(bp + 12)))
 				if XTcl_ListObjAppendElement(tls, interp, *(*uintptr)(unsafe.Pointer(bp + 12)), *(*uintptr)(unsafe.Pointer(tosPtr))) != m_TCL_OK {
-					v1406 = *(*uintptr)(unsafe.Pointer(bp + 12))
-					v1405 = *(*int32)(unsafe.Pointer(v1406))
-					*(*int32)(unsafe.Pointer(v1406))--
-					if !(v1405 > int32(1)) {
+					v1412 = *(*uintptr)(unsafe.Pointer(bp + 12))
+					v1411 = *(*int32)(unsafe.Pointer(v1412))
+					*(*int32)(unsafe.Pointer(v1412))--
+					if !(v1411 > int32(1)) {
 						if !((*TTcl_Obj)(unsafe.Pointer(*(*uintptr)(unsafe.Pointer(bp + 12)))).FtypePtr != 0) || !((*TTcl_ObjType)(unsafe.Pointer((*TTcl_Obj)(unsafe.Pointer(*(*uintptr)(unsafe.Pointer(bp + 12)))).FtypePtr)).FfreeIntRepProc != 0) {
 							if (*TTcl_Obj)(unsafe.Pointer(*(*uintptr)(unsafe.Pointer(bp + 12)))).Fbytes != 0 && (*TTcl_Obj)(unsafe.Pointer(*(*uintptr)(unsafe.Pointer(bp + 12)))).Fbytes != XtclEmptyStringRep {
 								XTclpFree(tls, (*TTcl_Obj)(unsafe.Pointer(*(*uintptr)(unsafe.Pointer(bp + 12)))).Fbytes)
@@ -156114,10 +156150,10 @@ _222:
 						}
 					}
 					if allocateDict != 0 {
-						v1408 = dictPtr
-						v1407 = *(*int32)(unsafe.Pointer(v1408))
-						*(*int32)(unsafe.Pointer(v1408))--
-						if !(v1407 > int32(1)) {
+						v1414 = dictPtr
+						v1413 = *(*int32)(unsafe.Pointer(v1414))
+						*(*int32)(unsafe.Pointer(v1414))--
+						if !(v1413 > int32(1)) {
 							if !((*TTcl_Obj)(unsafe.Pointer(dictPtr)).FtypePtr != 0) || !((*TTcl_ObjType)(unsafe.Pointer((*TTcl_Obj)(unsafe.Pointer(dictPtr)).FtypePtr)).FfreeIntRepProc != 0) {
 								if (*TTcl_Obj)(unsafe.Pointer(dictPtr)).Fbytes != 0 && (*TTcl_Obj)(unsafe.Pointer(dictPtr)).Fbytes != XtclEmptyStringRep {
 									XTclpFree(tls, (*TTcl_Obj)(unsafe.Pointer(dictPtr)).Fbytes)
@@ -156139,10 +156175,10 @@ _222:
 			} else {
 				if XTcl_ListObjAppendElement(tls, interp, *(*uintptr)(unsafe.Pointer(bp + 12)), *(*uintptr)(unsafe.Pointer(tosPtr))) != m_TCL_OK {
 					if allocateDict != 0 {
-						v1410 = dictPtr
-						v1409 = *(*int32)(unsafe.Pointer(v1410))
-						*(*int32)(unsafe.Pointer(v1410))--
-						if !(v1409 > int32(1)) {
+						v1416 = dictPtr
+						v1415 = *(*int32)(unsafe.Pointer(v1416))
+						*(*int32)(unsafe.Pointer(v1416))--
+						if !(v1415 > int32(1)) {
 							if !((*TTcl_Obj)(unsafe.Pointer(dictPtr)).FtypePtr != 0) || !((*TTcl_ObjType)(unsafe.Pointer((*TTcl_Obj)(unsafe.Pointer(dictPtr)).FtypePtr)).FfreeIntRepProc != 0) {
 								if (*TTcl_Obj)(unsafe.Pointer(dictPtr)).Fbytes != 0 && (*TTcl_Obj)(unsafe.Pointer(dictPtr)).Fbytes != XtclEmptyStringRep {
 									XTclpFree(tls, (*TTcl_Obj)(unsafe.Pointer(dictPtr)).Fbytes)
@@ -156184,10 +156220,10 @@ _222:
 			value2Ptr = *(*uintptr)(unsafe.Pointer(*(*uintptr)(unsafe.Pointer(bp + 28)) + 4))
 			(*TTcl_Obj)(unsafe.Pointer(dictPtr)).FrefCount++
 			if value2Ptr != libc.UintptrFromInt32(0) {
-				v1412 = value2Ptr
-				v1411 = *(*int32)(unsafe.Pointer(v1412))
-				*(*int32)(unsafe.Pointer(v1412))--
-				if !(v1411 > int32(1)) {
+				v1418 = value2Ptr
+				v1417 = *(*int32)(unsafe.Pointer(v1418))
+				*(*int32)(unsafe.Pointer(v1418))--
+				if !(v1417 > int32(1)) {
 					if !((*TTcl_Obj)(unsafe.Pointer(value2Ptr)).FtypePtr != 0) || !((*TTcl_ObjType)(unsafe.Pointer((*TTcl_Obj)(unsafe.Pointer(value2Ptr)).FtypePtr)).FfreeIntRepProc != 0) {
 						if (*TTcl_Obj)(unsafe.Pointer(value2Ptr)).Fbytes != 0 && (*TTcl_Obj)(unsafe.Pointer(value2Ptr)).Fbytes != XtclEmptyStringRep {
 							XTclpFree(tls, (*TTcl_Obj)(unsafe.Pointer(value2Ptr)).Fbytes)
@@ -156211,10 +156247,10 @@ _222:
 		(*TExecStack)(unsafe.Pointer((*TExecEnv1)(unsafe.Pointer((*TInterp)(unsafe.Pointer(interp)).FexecEnvPtr)).FexecStackPtr)).FtosPtr = tosPtr
 		*(*uintptr)(unsafe.Pointer(bp + 8)) = XTclPtrSetVarIdx(tls, interp, *(*uintptr)(unsafe.Pointer(bp + 28)), libc.UintptrFromInt32(0), libc.UintptrFromInt32(0), libc.UintptrFromInt32(0), dictPtr, int32(m_TCL_LEAVE_ERR_MSG), opnd)
 		checkInterp = int32(1)
-		v1414 = dictPtr
-		v1413 = *(*int32)(unsafe.Pointer(v1414))
-		*(*int32)(unsafe.Pointer(v1414))--
-		if !(v1413 > int32(1)) {
+		v1420 = dictPtr
+		v1419 = *(*int32)(unsafe.Pointer(v1420))
+		*(*int32)(unsafe.Pointer(v1420))--
+		if !(v1419 > int32(1)) {
 			if !((*TTcl_Obj)(unsafe.Pointer(dictPtr)).FtypePtr != 0) || !((*TTcl_ObjType)(unsafe.Pointer((*TTcl_Obj)(unsafe.Pointer(dictPtr)).FtypePtr)).FfreeIntRepProc != 0) {
 				if (*TTcl_Obj)(unsafe.Pointer(dictPtr)).Fbytes != 0 && (*TTcl_Obj)(unsafe.Pointer(dictPtr)).Fbytes != XtclEmptyStringRep {
 					XTclpFree(tls, (*TTcl_Obj)(unsafe.Pointer(dictPtr)).Fbytes)
@@ -156234,20 +156270,18 @@ _222:
 		}
 	}
 	if int32(*(*uint8)(unsafe.Pointer(pc + libc.UintptrFromInt32(5)))) == int32(m_INST_POP) {
-		goto _1416
-	_1416:
 		if false {
 			if 0 != 0 {
 				if 0 > 0 {
-					v1417 = *(*uintptr)(unsafe.Pointer(bp + 8))
+					v1423 = *(*uintptr)(unsafe.Pointer(bp + 8))
 					tosPtr += 4
-					v1418 = tosPtr
-					*(*uintptr)(unsafe.Pointer(v1418)) = v1417
-					(*TTcl_Obj)(unsafe.Pointer(v1417)).FrefCount++
+					v1424 = tosPtr
+					*(*uintptr)(unsafe.Pointer(v1424)) = v1423
+					(*TTcl_Obj)(unsafe.Pointer(v1423)).FrefCount++
 				} else {
 					tosPtr += 4
-					v1419 = tosPtr
-					*(*uintptr)(unsafe.Pointer(v1419)) = *(*uintptr)(unsafe.Pointer(bp + 8))
+					v1425 = tosPtr
+					*(*uintptr)(unsafe.Pointer(v1425)) = *(*uintptr)(unsafe.Pointer(bp + 8))
 				}
 			}
 			pc += uintptr(libc.Int32FromInt32(6))
@@ -156278,23 +156312,23 @@ _222:
 				}
 			}
 		}
-		goto _1415
-	_1415: /**/ //
+		goto _1422
+	_1422:
+		goto _1421
+	_1421: /**/ //
 	}
-	goto _1421
-_1421:
 	if false {
 		if int32(1) != 0 {
 			if int32(1) > 0 {
-				v1422 = *(*uintptr)(unsafe.Pointer(bp + 8))
+				v1428 = *(*uintptr)(unsafe.Pointer(bp + 8))
 				tosPtr += 4
-				v1423 = tosPtr
-				*(*uintptr)(unsafe.Pointer(v1423)) = v1422
-				(*TTcl_Obj)(unsafe.Pointer(v1422)).FrefCount++
+				v1429 = tosPtr
+				*(*uintptr)(unsafe.Pointer(v1429)) = v1428
+				(*TTcl_Obj)(unsafe.Pointer(v1428)).FrefCount++
 			} else {
 				tosPtr += 4
-				v1424 = tosPtr
-				*(*uintptr)(unsafe.Pointer(v1424)) = *(*uintptr)(unsafe.Pointer(bp + 8))
+				v1430 = tosPtr
+				*(*uintptr)(unsafe.Pointer(v1430)) = *(*uintptr)(unsafe.Pointer(bp + 8))
 			}
 		}
 		pc += uintptr(libc.Int32FromInt32(5))
@@ -156325,14 +156359,16 @@ _1421:
 			}
 		}
 	}
-	goto _1420
-_1420: /**/
+	goto _1427
+_1427:
+	goto _1426
+_1426: /**/
 	; //
 _224:
 	opnd = int32(uint32(int32(*(*uint8)(unsafe.Pointer(pc + libc.UintptrFromInt32(1))))<<libc.Int32FromInt32(24)) | uint32(int32(*(*uint8)(unsafe.Pointer(pc + libc.UintptrFromInt32(1) + libc.UintptrFromInt32(1))))<<libc.Int32FromInt32(16)) | uint32(int32(*(*uint8)(unsafe.Pointer(pc + libc.UintptrFromInt32(1) + libc.UintptrFromInt32(2))))<<libc.Int32FromInt32(8)) | uint32(*(*uint8)(unsafe.Pointer(pc + libc.UintptrFromInt32(1) + libc.UintptrFromInt32(3)))))
-	v1425 = tosPtr
+	v1431 = tosPtr
 	tosPtr -= 4
-	dictPtr = *(*uintptr)(unsafe.Pointer(v1425))
+	dictPtr = *(*uintptr)(unsafe.Pointer(v1431))
 	searchPtr = XTcl_Alloc(tls, libc.Uint32FromInt64(12))
 	if XTcl_DictObjFirst(tls, interp, dictPtr, searchPtr, bp+188, bp+12, bp+184) != m_TCL_OK {
 		/*
@@ -156341,10 +156377,10 @@ _224:
 		 * to drop the refcount [Tcl Bug 9b352768e6].
 		 */
 		_objPtr35 = dictPtr
-		v1427 = _objPtr35
-		v1426 = *(*int32)(unsafe.Pointer(v1427))
-		*(*int32)(unsafe.Pointer(v1427))--
-		if v1426 <= int32(1) {
+		v1433 = _objPtr35
+		v1432 = *(*int32)(unsafe.Pointer(v1433))
+		*(*int32)(unsafe.Pointer(v1433))--
+		if v1432 <= int32(1) {
 			XTclFreeObj(tls, _objPtr35)
 		}
 		XTclpFree(tls, searchPtr)
@@ -156376,10 +156412,10 @@ _224:
 		if (*TTcl_Obj)(unsafe.Pointer(*(*uintptr)(unsafe.Pointer(*(*uintptr)(unsafe.Pointer(bp + 28)) + 4)))).FtypePtr == uintptr(unsafe.Pointer(&_dictIteratorType)) {
 			XTcl_Panic(tls, __ccgo_ts+28725, 0)
 		}
-		v1429 = *(*uintptr)(unsafe.Pointer(*(*uintptr)(unsafe.Pointer(bp + 28)) + 4))
-		v1428 = *(*int32)(unsafe.Pointer(v1429))
-		*(*int32)(unsafe.Pointer(v1429))--
-		if !(v1428 > int32(1)) {
+		v1435 = *(*uintptr)(unsafe.Pointer(*(*uintptr)(unsafe.Pointer(bp + 28)) + 4))
+		v1434 = *(*int32)(unsafe.Pointer(v1435))
+		*(*int32)(unsafe.Pointer(v1435))--
+		if !(v1434 > int32(1)) {
 			if !((*TTcl_Obj)(unsafe.Pointer(*(*uintptr)(unsafe.Pointer(*(*uintptr)(unsafe.Pointer(bp + 28)) + 4)))).FtypePtr != 0) || !((*TTcl_ObjType)(unsafe.Pointer((*TTcl_Obj)(unsafe.Pointer(*(*uintptr)(unsafe.Pointer(*(*uintptr)(unsafe.Pointer(bp + 28)) + 4)))).FtypePtr)).FfreeIntRepProc != 0) {
 				if (*TTcl_Obj)(unsafe.Pointer(*(*uintptr)(unsafe.Pointer(*(*uintptr)(unsafe.Pointer(bp + 28)) + 4)))).Fbytes != 0 && (*TTcl_Obj)(unsafe.Pointer(*(*uintptr)(unsafe.Pointer(*(*uintptr)(unsafe.Pointer(bp + 28)) + 4)))).Fbytes != XtclEmptyStringRep {
 					XTclpFree(tls, (*TTcl_Obj)(unsafe.Pointer(*(*uintptr)(unsafe.Pointer(*(*uintptr)(unsafe.Pointer(bp + 28)) + 4)))).Fbytes)
@@ -156423,27 +156459,27 @@ pushDictIteratorResult:
 		(*TTcl_Obj)(unsafe.Pointer(emptyPtr)).Fbytes = XtclEmptyStringRep
 		(*TTcl_Obj)(unsafe.Pointer(emptyPtr)).Flength = 0
 		(*TTcl_Obj)(unsafe.Pointer(emptyPtr)).FtypePtr = libc.UintptrFromInt32(0)
-		v1430 = emptyPtr
-		tosPtr += 4
-		v1431 = tosPtr
-		*(*uintptr)(unsafe.Pointer(v1431)) = v1430
-		(*TTcl_Obj)(unsafe.Pointer(v1430)).FrefCount++
-		v1432 = emptyPtr
-		tosPtr += 4
-		v1433 = tosPtr
-		*(*uintptr)(unsafe.Pointer(v1433)) = v1432
-		(*TTcl_Obj)(unsafe.Pointer(v1432)).FrefCount++
-	} else {
-		v1434 = *(*uintptr)(unsafe.Pointer(bp + 12))
-		tosPtr += 4
-		v1435 = tosPtr
-		*(*uintptr)(unsafe.Pointer(v1435)) = v1434
-		(*TTcl_Obj)(unsafe.Pointer(v1434)).FrefCount++
-		v1436 = *(*uintptr)(unsafe.Pointer(bp + 188))
+		v1436 = emptyPtr
 		tosPtr += 4
 		v1437 = tosPtr
 		*(*uintptr)(unsafe.Pointer(v1437)) = v1436
 		(*TTcl_Obj)(unsafe.Pointer(v1436)).FrefCount++
+		v1438 = emptyPtr
+		tosPtr += 4
+		v1439 = tosPtr
+		*(*uintptr)(unsafe.Pointer(v1439)) = v1438
+		(*TTcl_Obj)(unsafe.Pointer(v1438)).FrefCount++
+	} else {
+		v1440 = *(*uintptr)(unsafe.Pointer(bp + 12))
+		tosPtr += 4
+		v1441 = tosPtr
+		*(*uintptr)(unsafe.Pointer(v1441)) = v1440
+		(*TTcl_Obj)(unsafe.Pointer(v1440)).FrefCount++
+		v1442 = *(*uintptr)(unsafe.Pointer(bp + 188))
+		tosPtr += 4
+		v1443 = tosPtr
+		*(*uintptr)(unsafe.Pointer(v1443)) = v1442
+		(*TTcl_Obj)(unsafe.Pointer(v1442)).FrefCount++
 	}
 	/*
 	 * The INST_DICT_FIRST and INST_DICT_NEXT instructsions are always
@@ -156451,44 +156487,42 @@ pushDictIteratorResult:
 	 * do some peephole optimization (note that we're careful to not close
 	 * out someone doing something else).
 	 */
-	goto _1439
-_1439:
 	pc += uintptr(libc.Int32FromInt32(5))
 	switch int32(*(*uint8)(unsafe.Pointer(pc))) {
 	case int32(m_INST_JUMP_FALSE1):
-		goto _1440
+		goto _1446
 	case int32(m_INST_JUMP_TRUE1):
-		goto _1441
+		goto _1447
 	case int32(m_INST_JUMP_FALSE4):
-		goto _1442
+		goto _1448
 	case int32(m_INST_JUMP_TRUE4):
-		goto _1443
+		goto _1449
 	default:
-		goto _1444
+		goto _1450
 	}
-	goto _1445
-_1440:
-_1447:
+	goto _1451
+_1446:
+_1454:
 	if true {
 		if 0 != 0 {
 			if 0 > 0 {
-				v1448 = *(*uintptr)(unsafe.Pointer(bp + 8))
+				v1455 = *(*uintptr)(unsafe.Pointer(bp + 8))
 				tosPtr += 4
-				v1449 = tosPtr
-				*(*uintptr)(unsafe.Pointer(v1449)) = v1448
-				(*TTcl_Obj)(unsafe.Pointer(v1448)).FrefCount++
+				v1456 = tosPtr
+				*(*uintptr)(unsafe.Pointer(v1456)) = v1455
+				(*TTcl_Obj)(unsafe.Pointer(v1455)).FrefCount++
 			} else {
 				tosPtr += 4
-				v1450 = tosPtr
-				*(*uintptr)(unsafe.Pointer(v1450)) = *(*uintptr)(unsafe.Pointer(bp + 8))
+				v1457 = tosPtr
+				*(*uintptr)(unsafe.Pointer(v1457)) = *(*uintptr)(unsafe.Pointer(bp + 8))
 			}
 		}
 		if *(*int32)(unsafe.Pointer(bp + 184)) != 0 {
-			v1451 = int32(2)
+			v1458 = int32(2)
 		} else {
-			v1451 = int32(*(*int8)(unsafe.Pointer(pc + libc.UintptrFromInt32(1))))
+			v1458 = int32(*(*int8)(unsafe.Pointer(pc + libc.UintptrFromInt32(1))))
 		}
-		pc += uintptr(v1451)
+		pc += uintptr(v1458)
 		goto cleanup0
 	} else {
 		if 0 != 0 {
@@ -156496,11 +156530,11 @@ _1447:
 				(*TTcl_Obj)(unsafe.Pointer(*(*uintptr)(unsafe.Pointer(bp + 8)))).FrefCount++
 			}
 			if *(*int32)(unsafe.Pointer(bp + 184)) != 0 {
-				v1452 = int32(2)
+				v1459 = int32(2)
 			} else {
-				v1452 = int32(*(*int8)(unsafe.Pointer(pc + libc.UintptrFromInt32(1))))
+				v1459 = int32(*(*int8)(unsafe.Pointer(pc + libc.UintptrFromInt32(1))))
 			}
-			pc += uintptr(v1452)
+			pc += uintptr(v1459)
 			switch libc.Int32FromInt32(0) {
 			case int32(1):
 				goto cleanup1_pushObjResultPtr
@@ -156511,79 +156545,13 @@ _1447:
 			}
 		} else {
 			if *(*int32)(unsafe.Pointer(bp + 184)) != 0 {
-				v1453 = int32(2)
-			} else {
-				v1453 = int32(*(*int8)(unsafe.Pointer(pc + libc.UintptrFromInt32(1))))
-			}
-			pc += uintptr(v1453)
-			switch libc.Int32FromInt32(0) {
-			case int32(1):
-				goto cleanup1
-			case int32(2):
-				goto cleanup2
-			case 0:
-				break
-			}
-		}
-	}
-	if 0 != 0 {
-		goto _1447
-	}
-	goto _1446
-_1446:
-	goto _1445
-_1441:
-	goto _1455
-_1455:
-	if true {
-		if 0 != 0 {
-			if 0 > 0 {
-				v1456 = *(*uintptr)(unsafe.Pointer(bp + 8))
-				tosPtr += 4
-				v1457 = tosPtr
-				*(*uintptr)(unsafe.Pointer(v1457)) = v1456
-				(*TTcl_Obj)(unsafe.Pointer(v1456)).FrefCount++
-			} else {
-				tosPtr += 4
-				v1458 = tosPtr
-				*(*uintptr)(unsafe.Pointer(v1458)) = *(*uintptr)(unsafe.Pointer(bp + 8))
-			}
-		}
-		if *(*int32)(unsafe.Pointer(bp + 184)) != 0 {
-			v1459 = int32(*(*int8)(unsafe.Pointer(pc + libc.UintptrFromInt32(1))))
-		} else {
-			v1459 = int32(2)
-		}
-		pc += uintptr(v1459)
-		goto cleanup0
-	} else {
-		if 0 != 0 {
-			if 0 > 0 {
-				(*TTcl_Obj)(unsafe.Pointer(*(*uintptr)(unsafe.Pointer(bp + 8)))).FrefCount++
-			}
-			if *(*int32)(unsafe.Pointer(bp + 184)) != 0 {
-				v1460 = int32(*(*int8)(unsafe.Pointer(pc + libc.UintptrFromInt32(1))))
-			} else {
 				v1460 = int32(2)
+			} else {
+				v1460 = int32(*(*int8)(unsafe.Pointer(pc + libc.UintptrFromInt32(1))))
 			}
 			pc += uintptr(v1460)
 			switch libc.Int32FromInt32(0) {
 			case int32(1):
-				goto cleanup1_pushObjResultPtr
-			case int32(2):
-				goto cleanup2_pushObjResultPtr
-			case 0:
-				break
-			}
-		} else {
-			if *(*int32)(unsafe.Pointer(bp + 184)) != 0 {
-				v1461 = int32(*(*int8)(unsafe.Pointer(pc + libc.UintptrFromInt32(1))))
-			} else {
-				v1461 = int32(2)
-			}
-			pc += uintptr(v1461)
-			switch libc.Int32FromInt32(0) {
-			case int32(1):
 				goto cleanup1
 			case int32(2):
 				goto cleanup2
@@ -156592,33 +156560,35 @@ _1455:
 			}
 		}
 	}
-	goto _1454
-_1454: /**/
-	; //
-	goto _1445
-_1442:
-	goto _1463
-_1463:
+	goto _1453
+_1453:
+	if 0 != 0 {
+		goto _1454
+	}
+	goto _1452
+_1452:
+	goto _1451
+_1447:
 	if true {
 		if 0 != 0 {
 			if 0 > 0 {
-				v1464 = *(*uintptr)(unsafe.Pointer(bp + 8))
+				v1463 = *(*uintptr)(unsafe.Pointer(bp + 8))
 				tosPtr += 4
-				v1465 = tosPtr
-				*(*uintptr)(unsafe.Pointer(v1465)) = v1464
-				(*TTcl_Obj)(unsafe.Pointer(v1464)).FrefCount++
+				v1464 = tosPtr
+				*(*uintptr)(unsafe.Pointer(v1464)) = v1463
+				(*TTcl_Obj)(unsafe.Pointer(v1463)).FrefCount++
 			} else {
 				tosPtr += 4
-				v1466 = tosPtr
-				*(*uintptr)(unsafe.Pointer(v1466)) = *(*uintptr)(unsafe.Pointer(bp + 8))
+				v1465 = tosPtr
+				*(*uintptr)(unsafe.Pointer(v1465)) = *(*uintptr)(unsafe.Pointer(bp + 8))
 			}
 		}
 		if *(*int32)(unsafe.Pointer(bp + 184)) != 0 {
-			v1467 = int32(5)
+			v1466 = int32(*(*int8)(unsafe.Pointer(pc + libc.UintptrFromInt32(1))))
 		} else {
-			v1467 = int32(uint32(*(*uint8)(unsafe.Pointer(pc + libc.UintptrFromInt32(1))))<<libc.Int32FromInt32(24)) | int32(*(*uint8)(unsafe.Pointer(pc + libc.UintptrFromInt32(1) + libc.UintptrFromInt32(1))))<<int32(16) | int32(*(*uint8)(unsafe.Pointer(pc + libc.UintptrFromInt32(1) + libc.UintptrFromInt32(2))))<<int32(8) | int32(*(*uint8)(unsafe.Pointer(pc + libc.UintptrFromInt32(1) + libc.UintptrFromInt32(3))))
+			v1466 = int32(2)
 		}
-		pc += uintptr(v1467)
+		pc += uintptr(v1466)
 		goto cleanup0
 	} else {
 		if 0 != 0 {
@@ -156626,11 +156596,11 @@ _1463:
 				(*TTcl_Obj)(unsafe.Pointer(*(*uintptr)(unsafe.Pointer(bp + 8)))).FrefCount++
 			}
 			if *(*int32)(unsafe.Pointer(bp + 184)) != 0 {
-				v1468 = int32(5)
+				v1467 = int32(*(*int8)(unsafe.Pointer(pc + libc.UintptrFromInt32(1))))
 			} else {
-				v1468 = int32(uint32(*(*uint8)(unsafe.Pointer(pc + libc.UintptrFromInt32(1))))<<libc.Int32FromInt32(24)) | int32(*(*uint8)(unsafe.Pointer(pc + libc.UintptrFromInt32(1) + libc.UintptrFromInt32(1))))<<int32(16) | int32(*(*uint8)(unsafe.Pointer(pc + libc.UintptrFromInt32(1) + libc.UintptrFromInt32(2))))<<int32(8) | int32(*(*uint8)(unsafe.Pointer(pc + libc.UintptrFromInt32(1) + libc.UintptrFromInt32(3))))
+				v1467 = int32(2)
 			}
-			pc += uintptr(v1468)
+			pc += uintptr(v1467)
 			switch libc.Int32FromInt32(0) {
 			case int32(1):
 				goto cleanup1_pushObjResultPtr
@@ -156641,11 +156611,11 @@ _1463:
 			}
 		} else {
 			if *(*int32)(unsafe.Pointer(bp + 184)) != 0 {
-				v1469 = int32(5)
+				v1468 = int32(*(*int8)(unsafe.Pointer(pc + libc.UintptrFromInt32(1))))
 			} else {
-				v1469 = int32(uint32(*(*uint8)(unsafe.Pointer(pc + libc.UintptrFromInt32(1))))<<libc.Int32FromInt32(24)) | int32(*(*uint8)(unsafe.Pointer(pc + libc.UintptrFromInt32(1) + libc.UintptrFromInt32(1))))<<int32(16) | int32(*(*uint8)(unsafe.Pointer(pc + libc.UintptrFromInt32(1) + libc.UintptrFromInt32(2))))<<int32(8) | int32(*(*uint8)(unsafe.Pointer(pc + libc.UintptrFromInt32(1) + libc.UintptrFromInt32(3))))
+				v1468 = int32(2)
 			}
-			pc += uintptr(v1469)
+			pc += uintptr(v1468)
 			switch libc.Int32FromInt32(0) {
 			case int32(1):
 				goto cleanup1
@@ -156657,32 +156627,32 @@ _1463:
 		}
 	}
 	goto _1462
-_1462: /**/
+_1462:
+	goto _1461
+_1461: /**/
 	; //
-	goto _1445
-_1443:
-	goto _1471
-_1471:
+	goto _1451
+_1448:
 	if true {
 		if 0 != 0 {
 			if 0 > 0 {
-				v1472 = *(*uintptr)(unsafe.Pointer(bp + 8))
+				v1471 = *(*uintptr)(unsafe.Pointer(bp + 8))
 				tosPtr += 4
-				v1473 = tosPtr
-				*(*uintptr)(unsafe.Pointer(v1473)) = v1472
-				(*TTcl_Obj)(unsafe.Pointer(v1472)).FrefCount++
+				v1472 = tosPtr
+				*(*uintptr)(unsafe.Pointer(v1472)) = v1471
+				(*TTcl_Obj)(unsafe.Pointer(v1471)).FrefCount++
 			} else {
 				tosPtr += 4
-				v1474 = tosPtr
-				*(*uintptr)(unsafe.Pointer(v1474)) = *(*uintptr)(unsafe.Pointer(bp + 8))
+				v1473 = tosPtr
+				*(*uintptr)(unsafe.Pointer(v1473)) = *(*uintptr)(unsafe.Pointer(bp + 8))
 			}
 		}
 		if *(*int32)(unsafe.Pointer(bp + 184)) != 0 {
-			v1475 = int32(uint32(*(*uint8)(unsafe.Pointer(pc + libc.UintptrFromInt32(1))))<<libc.Int32FromInt32(24)) | int32(*(*uint8)(unsafe.Pointer(pc + libc.UintptrFromInt32(1) + libc.UintptrFromInt32(1))))<<int32(16) | int32(*(*uint8)(unsafe.Pointer(pc + libc.UintptrFromInt32(1) + libc.UintptrFromInt32(2))))<<int32(8) | int32(*(*uint8)(unsafe.Pointer(pc + libc.UintptrFromInt32(1) + libc.UintptrFromInt32(3))))
+			v1474 = int32(5)
 		} else {
-			v1475 = int32(5)
+			v1474 = int32(uint32(*(*uint8)(unsafe.Pointer(pc + libc.UintptrFromInt32(1))))<<libc.Int32FromInt32(24)) | int32(*(*uint8)(unsafe.Pointer(pc + libc.UintptrFromInt32(1) + libc.UintptrFromInt32(1))))<<int32(16) | int32(*(*uint8)(unsafe.Pointer(pc + libc.UintptrFromInt32(1) + libc.UintptrFromInt32(2))))<<int32(8) | int32(*(*uint8)(unsafe.Pointer(pc + libc.UintptrFromInt32(1) + libc.UintptrFromInt32(3))))
 		}
-		pc += uintptr(v1475)
+		pc += uintptr(v1474)
 		goto cleanup0
 	} else {
 		if 0 != 0 {
@@ -156690,11 +156660,11 @@ _1471:
 				(*TTcl_Obj)(unsafe.Pointer(*(*uintptr)(unsafe.Pointer(bp + 8)))).FrefCount++
 			}
 			if *(*int32)(unsafe.Pointer(bp + 184)) != 0 {
-				v1476 = int32(uint32(*(*uint8)(unsafe.Pointer(pc + libc.UintptrFromInt32(1))))<<libc.Int32FromInt32(24)) | int32(*(*uint8)(unsafe.Pointer(pc + libc.UintptrFromInt32(1) + libc.UintptrFromInt32(1))))<<int32(16) | int32(*(*uint8)(unsafe.Pointer(pc + libc.UintptrFromInt32(1) + libc.UintptrFromInt32(2))))<<int32(8) | int32(*(*uint8)(unsafe.Pointer(pc + libc.UintptrFromInt32(1) + libc.UintptrFromInt32(3))))
+				v1475 = int32(5)
 			} else {
-				v1476 = int32(5)
+				v1475 = int32(uint32(*(*uint8)(unsafe.Pointer(pc + libc.UintptrFromInt32(1))))<<libc.Int32FromInt32(24)) | int32(*(*uint8)(unsafe.Pointer(pc + libc.UintptrFromInt32(1) + libc.UintptrFromInt32(1))))<<int32(16) | int32(*(*uint8)(unsafe.Pointer(pc + libc.UintptrFromInt32(1) + libc.UintptrFromInt32(2))))<<int32(8) | int32(*(*uint8)(unsafe.Pointer(pc + libc.UintptrFromInt32(1) + libc.UintptrFromInt32(3))))
 			}
-			pc += uintptr(v1476)
+			pc += uintptr(v1475)
 			switch libc.Int32FromInt32(0) {
 			case int32(1):
 				goto cleanup1_pushObjResultPtr
@@ -156705,11 +156675,11 @@ _1471:
 			}
 		} else {
 			if *(*int32)(unsafe.Pointer(bp + 184)) != 0 {
-				v1477 = int32(uint32(*(*uint8)(unsafe.Pointer(pc + libc.UintptrFromInt32(1))))<<libc.Int32FromInt32(24)) | int32(*(*uint8)(unsafe.Pointer(pc + libc.UintptrFromInt32(1) + libc.UintptrFromInt32(1))))<<int32(16) | int32(*(*uint8)(unsafe.Pointer(pc + libc.UintptrFromInt32(1) + libc.UintptrFromInt32(2))))<<int32(8) | int32(*(*uint8)(unsafe.Pointer(pc + libc.UintptrFromInt32(1) + libc.UintptrFromInt32(3))))
+				v1476 = int32(5)
 			} else {
-				v1477 = int32(5)
+				v1476 = int32(uint32(*(*uint8)(unsafe.Pointer(pc + libc.UintptrFromInt32(1))))<<libc.Int32FromInt32(24)) | int32(*(*uint8)(unsafe.Pointer(pc + libc.UintptrFromInt32(1) + libc.UintptrFromInt32(1))))<<int32(16) | int32(*(*uint8)(unsafe.Pointer(pc + libc.UintptrFromInt32(1) + libc.UintptrFromInt32(2))))<<int32(8) | int32(*(*uint8)(unsafe.Pointer(pc + libc.UintptrFromInt32(1) + libc.UintptrFromInt32(3))))
 			}
-			pc += uintptr(v1477)
+			pc += uintptr(v1476)
 			switch libc.Int32FromInt32(0) {
 			case int32(1):
 				goto cleanup1
@@ -156721,10 +156691,76 @@ _1471:
 		}
 	}
 	goto _1470
-_1470: /**/
+_1470:
+	goto _1469
+_1469: /**/
 	; //
-	goto _1445
-_1444:
+	goto _1451
+_1449:
+	if true {
+		if 0 != 0 {
+			if 0 > 0 {
+				v1479 = *(*uintptr)(unsafe.Pointer(bp + 8))
+				tosPtr += 4
+				v1480 = tosPtr
+				*(*uintptr)(unsafe.Pointer(v1480)) = v1479
+				(*TTcl_Obj)(unsafe.Pointer(v1479)).FrefCount++
+			} else {
+				tosPtr += 4
+				v1481 = tosPtr
+				*(*uintptr)(unsafe.Pointer(v1481)) = *(*uintptr)(unsafe.Pointer(bp + 8))
+			}
+		}
+		if *(*int32)(unsafe.Pointer(bp + 184)) != 0 {
+			v1482 = int32(uint32(*(*uint8)(unsafe.Pointer(pc + libc.UintptrFromInt32(1))))<<libc.Int32FromInt32(24)) | int32(*(*uint8)(unsafe.Pointer(pc + libc.UintptrFromInt32(1) + libc.UintptrFromInt32(1))))<<int32(16) | int32(*(*uint8)(unsafe.Pointer(pc + libc.UintptrFromInt32(1) + libc.UintptrFromInt32(2))))<<int32(8) | int32(*(*uint8)(unsafe.Pointer(pc + libc.UintptrFromInt32(1) + libc.UintptrFromInt32(3))))
+		} else {
+			v1482 = int32(5)
+		}
+		pc += uintptr(v1482)
+		goto cleanup0
+	} else {
+		if 0 != 0 {
+			if 0 > 0 {
+				(*TTcl_Obj)(unsafe.Pointer(*(*uintptr)(unsafe.Pointer(bp + 8)))).FrefCount++
+			}
+			if *(*int32)(unsafe.Pointer(bp + 184)) != 0 {
+				v1483 = int32(uint32(*(*uint8)(unsafe.Pointer(pc + libc.UintptrFromInt32(1))))<<libc.Int32FromInt32(24)) | int32(*(*uint8)(unsafe.Pointer(pc + libc.UintptrFromInt32(1) + libc.UintptrFromInt32(1))))<<int32(16) | int32(*(*uint8)(unsafe.Pointer(pc + libc.UintptrFromInt32(1) + libc.UintptrFromInt32(2))))<<int32(8) | int32(*(*uint8)(unsafe.Pointer(pc + libc.UintptrFromInt32(1) + libc.UintptrFromInt32(3))))
+			} else {
+				v1483 = int32(5)
+			}
+			pc += uintptr(v1483)
+			switch libc.Int32FromInt32(0) {
+			case int32(1):
+				goto cleanup1_pushObjResultPtr
+			case int32(2):
+				goto cleanup2_pushObjResultPtr
+			case 0:
+				break
+			}
+		} else {
+			if *(*int32)(unsafe.Pointer(bp + 184)) != 0 {
+				v1484 = int32(uint32(*(*uint8)(unsafe.Pointer(pc + libc.UintptrFromInt32(1))))<<libc.Int32FromInt32(24)) | int32(*(*uint8)(unsafe.Pointer(pc + libc.UintptrFromInt32(1) + libc.UintptrFromInt32(1))))<<int32(16) | int32(*(*uint8)(unsafe.Pointer(pc + libc.UintptrFromInt32(1) + libc.UintptrFromInt32(2))))<<int32(8) | int32(*(*uint8)(unsafe.Pointer(pc + libc.UintptrFromInt32(1) + libc.UintptrFromInt32(3))))
+			} else {
+				v1484 = int32(5)
+			}
+			pc += uintptr(v1484)
+			switch libc.Int32FromInt32(0) {
+			case int32(1):
+				goto cleanup1
+			case int32(2):
+				goto cleanup2
+			case 0:
+				break
+			}
+		}
+	}
+	goto _1478
+_1478:
+	goto _1477
+_1477: /**/
+	; //
+	goto _1451
+_1450:
 	if *(*int32)(unsafe.Pointer(bp + 184)) < 0 {
 		if XtclFreeObjList == libc.UintptrFromInt32(0) {
 			XTclAllocateFreeObjects(tls)
@@ -156741,20 +156777,18 @@ _1444:
 	} else {
 		*(*uintptr)(unsafe.Pointer(bp + 8)) = *(*uintptr)(unsafe.Pointer(constants + libc.BoolUintptr(*(*int32)(unsafe.Pointer(bp + 184)) > libc.Int32FromInt32(0))*4))
 	}
-	goto _1479
-_1479:
 	if true {
 		if int32(1) != 0 {
 			if int32(1) > 0 {
-				v1480 = *(*uintptr)(unsafe.Pointer(bp + 8))
+				v1487 = *(*uintptr)(unsafe.Pointer(bp + 8))
 				tosPtr += 4
-				v1481 = tosPtr
-				*(*uintptr)(unsafe.Pointer(v1481)) = v1480
-				(*TTcl_Obj)(unsafe.Pointer(v1480)).FrefCount++
+				v1488 = tosPtr
+				*(*uintptr)(unsafe.Pointer(v1488)) = v1487
+				(*TTcl_Obj)(unsafe.Pointer(v1487)).FrefCount++
 			} else {
 				tosPtr += 4
-				v1482 = tosPtr
-				*(*uintptr)(unsafe.Pointer(v1482)) = *(*uintptr)(unsafe.Pointer(bp + 8))
+				v1489 = tosPtr
+				*(*uintptr)(unsafe.Pointer(v1489)) = *(*uintptr)(unsafe.Pointer(bp + 8))
 			}
 		}
 		pc += uintptr(libc.Int32FromInt32(0))
@@ -156785,13 +156819,17 @@ _1479:
 			}
 		}
 	}
-	goto _1478
-_1478: /**/
+	goto _1486
+_1486:
+	goto _1485
+_1485: /**/
 	; //
+	goto _1451
+_1451:
 	goto _1445
 _1445:
-	goto _1438
-_1438: /**/
+	goto _1444
+_1444: /**/
 	; //
 _226:
 	opnd = int32(uint32(int32(*(*uint8)(unsafe.Pointer(pc + libc.UintptrFromInt32(1))))<<libc.Int32FromInt32(24)) | uint32(int32(*(*uint8)(unsafe.Pointer(pc + libc.UintptrFromInt32(1) + libc.UintptrFromInt32(1))))<<libc.Int32FromInt32(16)) | uint32(int32(*(*uint8)(unsafe.Pointer(pc + libc.UintptrFromInt32(1) + libc.UintptrFromInt32(2))))<<libc.Int32FromInt32(8)) | uint32(*(*uint8)(unsafe.Pointer(pc + libc.UintptrFromInt32(1) + libc.UintptrFromInt32(3)))))
@@ -156821,11 +156859,11 @@ _226:
 			Fptr1 uintptr
 			Fptr2 uintptr
 		})(unsafe.Pointer(*(*uintptr)(unsafe.Pointer(tosPtr)) + 16))).Fptr1)).FelemCount
-		v1483 = libc.Int32FromInt32(m_TCL_OK)
+		v1490 = libc.Int32FromInt32(m_TCL_OK)
 	} else {
-		v1483 = XTcl_ListObjGetElements(tls, interp, *(*uintptr)(unsafe.Pointer(tosPtr)), bp+24, bp+192)
+		v1490 = XTcl_ListObjGetElements(tls, interp, *(*uintptr)(unsafe.Pointer(tosPtr)), bp+24, bp+192)
 	}
-	if v1483 != m_TCL_OK {
+	if v1490 != m_TCL_OK {
 		goto gotError
 	}
 	if *(*int32)(unsafe.Pointer(bp + 24)) != (*TDictUpdateInfo)(unsafe.Pointer(duiPtr)).Flength {
@@ -156838,10 +156876,10 @@ _226:
 		}
 		if XTcl_DictObjGet(tls, interp, dictPtr, *(*uintptr)(unsafe.Pointer(*(*uintptr)(unsafe.Pointer(bp + 192)) + uintptr(i7)*4)), bp+12) != m_TCL_OK {
 			_objPtr36 = dictPtr
-			v1486 = _objPtr36
-			v1485 = *(*int32)(unsafe.Pointer(v1486))
-			*(*int32)(unsafe.Pointer(v1486))--
-			if v1485 <= int32(1) {
+			v1493 = _objPtr36
+			v1492 = *(*int32)(unsafe.Pointer(v1493))
+			*(*int32)(unsafe.Pointer(v1493))--
+			if v1492 <= int32(1) {
 				XTclFreeObj(tls, _objPtr36)
 			}
 			goto gotError
@@ -156857,24 +156895,24 @@ _226:
 			if XTclPtrSetVarIdx(tls, interp, *(*uintptr)(unsafe.Pointer(bp + 28)), libc.UintptrFromInt32(0), libc.UintptrFromInt32(0), libc.UintptrFromInt32(0), *(*uintptr)(unsafe.Pointer(bp + 12)), int32(m_TCL_LEAVE_ERR_MSG), *(*int32)(unsafe.Pointer(duiPtr + 4 + uintptr(i7)*4))) == libc.UintptrFromInt32(0) {
 				checkInterp = int32(1)
 				_objPtr37 = dictPtr
-				v1488 = _objPtr37
-				v1487 = *(*int32)(unsafe.Pointer(v1488))
-				*(*int32)(unsafe.Pointer(v1488))--
-				if v1487 <= int32(1) {
+				v1495 = _objPtr37
+				v1494 = *(*int32)(unsafe.Pointer(v1495))
+				*(*int32)(unsafe.Pointer(v1495))--
+				if v1494 <= int32(1) {
 					XTclFreeObj(tls, _objPtr37)
 				}
 				goto gotError
 			}
 		}
 		checkInterp = int32(1)
-		goto _1484
-	_1484:
+		goto _1491
+	_1491:
 		i7++
 	}
-	v1490 = dictPtr
-	v1489 = *(*int32)(unsafe.Pointer(v1490))
-	*(*int32)(unsafe.Pointer(v1490))--
-	if !(v1489 > int32(1)) {
+	v1497 = dictPtr
+	v1496 = *(*int32)(unsafe.Pointer(v1497))
+	*(*int32)(unsafe.Pointer(v1497))--
+	if !(v1496 > int32(1)) {
 		if !((*TTcl_Obj)(unsafe.Pointer(dictPtr)).FtypePtr != 0) || !((*TTcl_ObjType)(unsafe.Pointer((*TTcl_Obj)(unsafe.Pointer(dictPtr)).FtypePtr)).FfreeIntRepProc != 0) {
 			if (*TTcl_Obj)(unsafe.Pointer(dictPtr)).Fbytes != 0 && (*TTcl_Obj)(unsafe.Pointer(dictPtr)).Fbytes != XtclEmptyStringRep {
 				XTclpFree(tls, (*TTcl_Obj)(unsafe.Pointer(dictPtr)).Fbytes)
@@ -156889,20 +156927,18 @@ _226:
 			XTclFreeObj(tls, dictPtr)
 		}
 	}
-	goto _1492
-_1492:
 	if true {
 		if 0 != 0 {
 			if 0 > 0 {
-				v1493 = *(*uintptr)(unsafe.Pointer(bp + 8))
+				v1500 = *(*uintptr)(unsafe.Pointer(bp + 8))
 				tosPtr += 4
-				v1494 = tosPtr
-				*(*uintptr)(unsafe.Pointer(v1494)) = v1493
-				(*TTcl_Obj)(unsafe.Pointer(v1493)).FrefCount++
+				v1501 = tosPtr
+				*(*uintptr)(unsafe.Pointer(v1501)) = v1500
+				(*TTcl_Obj)(unsafe.Pointer(v1500)).FrefCount++
 			} else {
 				tosPtr += 4
-				v1495 = tosPtr
-				*(*uintptr)(unsafe.Pointer(v1495)) = *(*uintptr)(unsafe.Pointer(bp + 8))
+				v1502 = tosPtr
+				*(*uintptr)(unsafe.Pointer(v1502)) = *(*uintptr)(unsafe.Pointer(bp + 8))
 			}
 		}
 		pc += uintptr(libc.Int32FromInt32(9))
@@ -156933,8 +156969,10 @@ _1492:
 			}
 		}
 	}
-	goto _1491
-_1491: /**/
+	goto _1499
+_1499:
+	goto _1498
+_1498: /**/
 	; //
 _227:
 	opnd = int32(uint32(int32(*(*uint8)(unsafe.Pointer(pc + libc.UintptrFromInt32(1))))<<libc.Int32FromInt32(24)) | uint32(int32(*(*uint8)(unsafe.Pointer(pc + libc.UintptrFromInt32(1) + libc.UintptrFromInt32(1))))<<libc.Int32FromInt32(16)) | uint32(int32(*(*uint8)(unsafe.Pointer(pc + libc.UintptrFromInt32(1) + libc.UintptrFromInt32(2))))<<libc.Int32FromInt32(8)) | uint32(*(*uint8)(unsafe.Pointer(pc + libc.UintptrFromInt32(1) + libc.UintptrFromInt32(3)))))
@@ -156952,20 +156990,18 @@ _227:
 		checkInterp = int32(1)
 	}
 	if dictPtr == libc.UintptrFromInt32(0) {
-		goto _1497
-	_1497:
 		if false {
 			if 0 != 0 {
 				if 0 > 0 {
-					v1498 = *(*uintptr)(unsafe.Pointer(bp + 8))
+					v1505 = *(*uintptr)(unsafe.Pointer(bp + 8))
 					tosPtr += 4
-					v1499 = tosPtr
-					*(*uintptr)(unsafe.Pointer(v1499)) = v1498
-					(*TTcl_Obj)(unsafe.Pointer(v1498)).FrefCount++
+					v1506 = tosPtr
+					*(*uintptr)(unsafe.Pointer(v1506)) = v1505
+					(*TTcl_Obj)(unsafe.Pointer(v1505)).FrefCount++
 				} else {
 					tosPtr += 4
-					v1500 = tosPtr
-					*(*uintptr)(unsafe.Pointer(v1500)) = *(*uintptr)(unsafe.Pointer(bp + 8))
+					v1507 = tosPtr
+					*(*uintptr)(unsafe.Pointer(v1507)) = *(*uintptr)(unsafe.Pointer(bp + 8))
 				}
 			}
 			pc += uintptr(libc.Int32FromInt32(9))
@@ -156996,10 +157032,12 @@ _227:
 				}
 			}
 		}
-		goto _1496
-	_1496: /**/ //
+		goto _1504
+	_1504:
+		goto _1503
+	_1503: /**/ //
 	}
-	if v1502 = XTcl_DictObjSize(tls, interp, dictPtr, bp+24) != m_TCL_OK; !v1502 {
+	if v1509 = XTcl_DictObjSize(tls, interp, dictPtr, bp+24) != m_TCL_OK; !v1509 {
 		if (*TTcl_Obj)(unsafe.Pointer(*(*uintptr)(unsafe.Pointer(tosPtr)))).FtypePtr == uintptr(unsafe.Pointer(&XtclListType)) {
 			*(*uintptr)(unsafe.Pointer(bp + 192)) = (*(*struct {
 				Fptr1 uintptr
@@ -157009,12 +157047,12 @@ _227:
 				Fptr1 uintptr
 				Fptr2 uintptr
 			})(unsafe.Pointer(*(*uintptr)(unsafe.Pointer(tosPtr)) + 16))).Fptr1)).FelemCount
-			v1501 = libc.Int32FromInt32(m_TCL_OK)
+			v1508 = libc.Int32FromInt32(m_TCL_OK)
 		} else {
-			v1501 = XTcl_ListObjGetElements(tls, interp, *(*uintptr)(unsafe.Pointer(tosPtr)), bp+24, bp+192)
+			v1508 = XTcl_ListObjGetElements(tls, interp, *(*uintptr)(unsafe.Pointer(tosPtr)), bp+24, bp+192)
 		}
 	}
-	if v1502 || v1501 != m_TCL_OK {
+	if v1509 || v1508 != m_TCL_OK {
 		goto gotError
 	}
 	allocdict = libc.BoolInt32((*TTcl_Obj)(unsafe.Pointer(dictPtr)).FrefCount > int32(1))
@@ -157055,16 +157093,16 @@ _227:
 				XTcl_DictObjPut(tls, interp, dictPtr, *(*uintptr)(unsafe.Pointer(*(*uintptr)(unsafe.Pointer(bp + 192)) + uintptr(i7)*4)), *(*uintptr)(unsafe.Pointer(bp + 12)))
 			}
 		}
-		goto _1503
-	_1503:
+		goto _1510
+	_1510:
 		i7++
 	}
 	if !((*TVar)(unsafe.Pointer(*(*uintptr)(unsafe.Pointer(bp + 28)))).Fflags&(libc.Int32FromInt32(m_VAR_ARRAY)|libc.Int32FromInt32(m_VAR_LINK)|libc.Int32FromInt32(m_VAR_TRACED_WRITE)|libc.Int32FromInt32(m_VAR_DEAD_HASH)) != 0) {
 		(*TTcl_Obj)(unsafe.Pointer(dictPtr)).FrefCount++
-		v1505 = *(*uintptr)(unsafe.Pointer(*(*uintptr)(unsafe.Pointer(bp + 28)) + 4))
-		v1504 = *(*int32)(unsafe.Pointer(v1505))
-		*(*int32)(unsafe.Pointer(v1505))--
-		if !(v1504 > int32(1)) {
+		v1512 = *(*uintptr)(unsafe.Pointer(*(*uintptr)(unsafe.Pointer(bp + 28)) + 4))
+		v1511 = *(*int32)(unsafe.Pointer(v1512))
+		*(*int32)(unsafe.Pointer(v1512))--
+		if !(v1511 > int32(1)) {
 			if !((*TTcl_Obj)(unsafe.Pointer(*(*uintptr)(unsafe.Pointer(*(*uintptr)(unsafe.Pointer(bp + 28)) + 4)))).FtypePtr != 0) || !((*TTcl_ObjType)(unsafe.Pointer((*TTcl_Obj)(unsafe.Pointer(*(*uintptr)(unsafe.Pointer(*(*uintptr)(unsafe.Pointer(bp + 28)) + 4)))).FtypePtr)).FfreeIntRepProc != 0) {
 				if (*TTcl_Obj)(unsafe.Pointer(*(*uintptr)(unsafe.Pointer(*(*uintptr)(unsafe.Pointer(bp + 28)) + 4)))).Fbytes != 0 && (*TTcl_Obj)(unsafe.Pointer(*(*uintptr)(unsafe.Pointer(*(*uintptr)(unsafe.Pointer(bp + 28)) + 4)))).Fbytes != XtclEmptyStringRep {
 					XTclpFree(tls, (*TTcl_Obj)(unsafe.Pointer(*(*uintptr)(unsafe.Pointer(*(*uintptr)(unsafe.Pointer(bp + 28)) + 4)))).Fbytes)
@@ -157086,10 +157124,10 @@ _227:
 		checkInterp = int32(1)
 		if *(*uintptr)(unsafe.Pointer(bp + 8)) == libc.UintptrFromInt32(0) {
 			if allocdict != 0 {
-				v1507 = dictPtr
-				v1506 = *(*int32)(unsafe.Pointer(v1507))
-				*(*int32)(unsafe.Pointer(v1507))--
-				if !(v1506 > int32(1)) {
+				v1514 = dictPtr
+				v1513 = *(*int32)(unsafe.Pointer(v1514))
+				*(*int32)(unsafe.Pointer(v1514))--
+				if !(v1513 > int32(1)) {
 					if !((*TTcl_Obj)(unsafe.Pointer(dictPtr)).FtypePtr != 0) || !((*TTcl_ObjType)(unsafe.Pointer((*TTcl_Obj)(unsafe.Pointer(dictPtr)).FtypePtr)).FfreeIntRepProc != 0) {
 						if (*TTcl_Obj)(unsafe.Pointer(dictPtr)).Fbytes != 0 && (*TTcl_Obj)(unsafe.Pointer(dictPtr)).Fbytes != XtclEmptyStringRep {
 							XTclpFree(tls, (*TTcl_Obj)(unsafe.Pointer(dictPtr)).Fbytes)
@@ -157108,20 +157146,18 @@ _227:
 			goto gotError
 		}
 	}
-	goto _1509
-_1509:
 	if false {
 		if 0 != 0 {
 			if 0 > 0 {
-				v1510 = *(*uintptr)(unsafe.Pointer(bp + 8))
+				v1517 = *(*uintptr)(unsafe.Pointer(bp + 8))
 				tosPtr += 4
-				v1511 = tosPtr
-				*(*uintptr)(unsafe.Pointer(v1511)) = v1510
-				(*TTcl_Obj)(unsafe.Pointer(v1510)).FrefCount++
+				v1518 = tosPtr
+				*(*uintptr)(unsafe.Pointer(v1518)) = v1517
+				(*TTcl_Obj)(unsafe.Pointer(v1517)).FrefCount++
 			} else {
 				tosPtr += 4
-				v1512 = tosPtr
-				*(*uintptr)(unsafe.Pointer(v1512)) = *(*uintptr)(unsafe.Pointer(bp + 8))
+				v1519 = tosPtr
+				*(*uintptr)(unsafe.Pointer(v1519)) = *(*uintptr)(unsafe.Pointer(bp + 8))
 			}
 		}
 		pc += uintptr(libc.Int32FromInt32(9))
@@ -157152,8 +157188,10 @@ _1509:
 			}
 		}
 	}
-	goto _1508
-_1508: /**/
+	goto _1516
+_1516:
+	goto _1515
+_1515: /**/
 	; //
 _228:
 	dictPtr = *(*uintptr)(unsafe.Pointer(tosPtr - libc.UintptrFromInt32(1)*4))
@@ -157167,31 +157205,29 @@ _228:
 			Fptr1 uintptr
 			Fptr2 uintptr
 		})(unsafe.Pointer(listPtr3 + 16))).Fptr1)).FelemCount
-		v1513 = libc.Int32FromInt32(m_TCL_OK)
+		v1520 = libc.Int32FromInt32(m_TCL_OK)
 	} else {
-		v1513 = XTcl_ListObjGetElements(tls, interp, listPtr3, bp+20, bp+16)
+		v1520 = XTcl_ListObjGetElements(tls, interp, listPtr3, bp+20, bp+16)
 	}
-	if v1513 != m_TCL_OK {
+	if v1520 != m_TCL_OK {
 		goto gotError
 	}
 	*(*uintptr)(unsafe.Pointer(bp + 8)) = XTclDictWithInit(tls, interp, dictPtr, *(*int32)(unsafe.Pointer(bp + 20)), *(*uintptr)(unsafe.Pointer(bp + 16)))
 	if *(*uintptr)(unsafe.Pointer(bp + 8)) == libc.UintptrFromInt32(0) {
 		goto gotError
 	}
-	goto _1515
-_1515:
 	if false {
 		if int32(1) != 0 {
 			if int32(1) > 0 {
-				v1516 = *(*uintptr)(unsafe.Pointer(bp + 8))
+				v1523 = *(*uintptr)(unsafe.Pointer(bp + 8))
 				tosPtr += 4
-				v1517 = tosPtr
-				*(*uintptr)(unsafe.Pointer(v1517)) = v1516
-				(*TTcl_Obj)(unsafe.Pointer(v1516)).FrefCount++
+				v1524 = tosPtr
+				*(*uintptr)(unsafe.Pointer(v1524)) = v1523
+				(*TTcl_Obj)(unsafe.Pointer(v1523)).FrefCount++
 			} else {
 				tosPtr += 4
-				v1518 = tosPtr
-				*(*uintptr)(unsafe.Pointer(v1518)) = *(*uintptr)(unsafe.Pointer(bp + 8))
+				v1525 = tosPtr
+				*(*uintptr)(unsafe.Pointer(v1525)) = *(*uintptr)(unsafe.Pointer(bp + 8))
 			}
 		}
 		pc += uintptr(libc.Int32FromInt32(1))
@@ -157222,13 +157258,15 @@ _1515:
 			}
 		}
 	}
-	goto _1514
-_1514: /**/
+	goto _1522
+_1522:
+	goto _1521
+_1521: /**/
 	; //
 _229:
-	v1519 = tosPtr
+	v1526 = tosPtr
 	tosPtr -= 4
-	keysPtr = *(*uintptr)(unsafe.Pointer(v1519))
+	keysPtr = *(*uintptr)(unsafe.Pointer(v1526))
 	varNamePtr = *(*uintptr)(unsafe.Pointer(tosPtr - libc.UintptrFromInt32(1)*4))
 	listPtr3 = *(*uintptr)(unsafe.Pointer(tosPtr))
 	if (*TTcl_Obj)(unsafe.Pointer(listPtr3)).FtypePtr == uintptr(unsafe.Pointer(&XtclListType)) {
@@ -157240,15 +157278,15 @@ _229:
 			Fptr1 uintptr
 			Fptr2 uintptr
 		})(unsafe.Pointer(listPtr3 + 16))).Fptr1)).FelemCount
-		v1520 = libc.Int32FromInt32(m_TCL_OK)
+		v1527 = libc.Int32FromInt32(m_TCL_OK)
 	} else {
-		v1520 = XTcl_ListObjGetElements(tls, interp, listPtr3, bp+20, bp+16)
+		v1527 = XTcl_ListObjGetElements(tls, interp, listPtr3, bp+20, bp+16)
 	}
-	if v1520 != m_TCL_OK {
-		v1522 = keysPtr
-		v1521 = *(*int32)(unsafe.Pointer(v1522))
-		*(*int32)(unsafe.Pointer(v1522))--
-		if !(v1521 > int32(1)) {
+	if v1527 != m_TCL_OK {
+		v1529 = keysPtr
+		v1528 = *(*int32)(unsafe.Pointer(v1529))
+		*(*int32)(unsafe.Pointer(v1529))--
+		if !(v1528 > int32(1)) {
 			if !((*TTcl_Obj)(unsafe.Pointer(keysPtr)).FtypePtr != 0) || !((*TTcl_ObjType)(unsafe.Pointer((*TTcl_Obj)(unsafe.Pointer(keysPtr)).FtypePtr)).FfreeIntRepProc != 0) {
 				if (*TTcl_Obj)(unsafe.Pointer(keysPtr)).Fbytes != 0 && (*TTcl_Obj)(unsafe.Pointer(keysPtr)).Fbytes != XtclEmptyStringRep {
 					XTclpFree(tls, (*TTcl_Obj)(unsafe.Pointer(keysPtr)).Fbytes)
@@ -157267,10 +157305,10 @@ _229:
 	}
 	*(*uintptr)(unsafe.Pointer(bp + 28)) = XTclObjLookupVarEx(tls, interp, varNamePtr, libc.UintptrFromInt32(0), int32(m_TCL_LEAVE_ERR_MSG), __ccgo_ts+5200, int32(1), int32(1), bp+32)
 	if *(*uintptr)(unsafe.Pointer(bp + 28)) == libc.UintptrFromInt32(0) {
-		v1524 = keysPtr
-		v1523 = *(*int32)(unsafe.Pointer(v1524))
-		*(*int32)(unsafe.Pointer(v1524))--
-		if !(v1523 > int32(1)) {
+		v1531 = keysPtr
+		v1530 = *(*int32)(unsafe.Pointer(v1531))
+		*(*int32)(unsafe.Pointer(v1531))--
+		if !(v1530 > int32(1)) {
 			if !((*TTcl_Obj)(unsafe.Pointer(keysPtr)).FtypePtr != 0) || !((*TTcl_ObjType)(unsafe.Pointer((*TTcl_Obj)(unsafe.Pointer(keysPtr)).FtypePtr)).FfreeIntRepProc != 0) {
 				if (*TTcl_Obj)(unsafe.Pointer(keysPtr)).Fbytes != 0 && (*TTcl_Obj)(unsafe.Pointer(keysPtr)).Fbytes != XtclEmptyStringRep {
 					XTclpFree(tls, (*TTcl_Obj)(unsafe.Pointer(keysPtr)).Fbytes)
@@ -157290,10 +157328,10 @@ _229:
 	(*TExecStack)(unsafe.Pointer((*TExecEnv1)(unsafe.Pointer((*TInterp)(unsafe.Pointer(interp)).FexecEnvPtr)).FexecStackPtr)).FtosPtr = tosPtr
 	result = XTclDictWithFinish(tls, interp, *(*uintptr)(unsafe.Pointer(bp + 28)), *(*uintptr)(unsafe.Pointer(bp + 32)), varNamePtr, libc.UintptrFromInt32(0), -int32(1), *(*int32)(unsafe.Pointer(bp + 20)), *(*uintptr)(unsafe.Pointer(bp + 16)), keysPtr)
 	checkInterp = int32(1)
-	v1526 = keysPtr
-	v1525 = *(*int32)(unsafe.Pointer(v1526))
-	*(*int32)(unsafe.Pointer(v1526))--
-	if !(v1525 > int32(1)) {
+	v1533 = keysPtr
+	v1532 = *(*int32)(unsafe.Pointer(v1533))
+	*(*int32)(unsafe.Pointer(v1533))--
+	if !(v1532 > int32(1)) {
 		if !((*TTcl_Obj)(unsafe.Pointer(keysPtr)).FtypePtr != 0) || !((*TTcl_ObjType)(unsafe.Pointer((*TTcl_Obj)(unsafe.Pointer(keysPtr)).FtypePtr)).FfreeIntRepProc != 0) {
 			if (*TTcl_Obj)(unsafe.Pointer(keysPtr)).Fbytes != 0 && (*TTcl_Obj)(unsafe.Pointer(keysPtr)).Fbytes != XtclEmptyStringRep {
 				XTclpFree(tls, (*TTcl_Obj)(unsafe.Pointer(keysPtr)).Fbytes)
@@ -157311,20 +157349,18 @@ _229:
 	if result != m_TCL_OK {
 		goto gotError
 	}
-	goto _1528
-_1528:
 	if false {
 		if 0 != 0 {
 			if 0 > 0 {
-				v1529 = *(*uintptr)(unsafe.Pointer(bp + 8))
+				v1536 = *(*uintptr)(unsafe.Pointer(bp + 8))
 				tosPtr += 4
-				v1530 = tosPtr
-				*(*uintptr)(unsafe.Pointer(v1530)) = v1529
-				(*TTcl_Obj)(unsafe.Pointer(v1529)).FrefCount++
+				v1537 = tosPtr
+				*(*uintptr)(unsafe.Pointer(v1537)) = v1536
+				(*TTcl_Obj)(unsafe.Pointer(v1536)).FrefCount++
 			} else {
 				tosPtr += 4
-				v1531 = tosPtr
-				*(*uintptr)(unsafe.Pointer(v1531)) = *(*uintptr)(unsafe.Pointer(bp + 8))
+				v1538 = tosPtr
+				*(*uintptr)(unsafe.Pointer(v1538)) = *(*uintptr)(unsafe.Pointer(bp + 8))
 			}
 		}
 		pc += uintptr(libc.Int32FromInt32(1))
@@ -157355,8 +157391,10 @@ _1528:
 			}
 		}
 	}
-	goto _1527
-_1527: /**/
+	goto _1535
+_1535:
+	goto _1534
+_1534: /**/
 	; //
 _230:
 	opnd = int32(uint32(int32(*(*uint8)(unsafe.Pointer(pc + libc.UintptrFromInt32(1))))<<libc.Int32FromInt32(24)) | uint32(int32(*(*uint8)(unsafe.Pointer(pc + libc.UintptrFromInt32(1) + libc.UintptrFromInt32(1))))<<libc.Int32FromInt32(16)) | uint32(int32(*(*uint8)(unsafe.Pointer(pc + libc.UintptrFromInt32(1) + libc.UintptrFromInt32(2))))<<libc.Int32FromInt32(8)) | uint32(*(*uint8)(unsafe.Pointer(pc + libc.UintptrFromInt32(1) + libc.UintptrFromInt32(3)))))
@@ -157372,11 +157410,11 @@ _230:
 			Fptr1 uintptr
 			Fptr2 uintptr
 		})(unsafe.Pointer(listPtr3 + 16))).Fptr1)).FelemCount
-		v1532 = libc.Int32FromInt32(m_TCL_OK)
+		v1539 = libc.Int32FromInt32(m_TCL_OK)
 	} else {
-		v1532 = XTcl_ListObjGetElements(tls, interp, listPtr3, bp+20, bp+16)
+		v1539 = XTcl_ListObjGetElements(tls, interp, listPtr3, bp+20, bp+16)
 	}
-	if v1532 != m_TCL_OK {
+	if v1539 != m_TCL_OK {
 		goto gotError
 	}
 	for (*TVar)(unsafe.Pointer(*(*uintptr)(unsafe.Pointer(bp + 28)))).Fflags&int32(m_VAR_LINK) != 0 {
@@ -157388,20 +157426,18 @@ _230:
 	if result != m_TCL_OK {
 		goto gotError
 	}
-	goto _1534
-_1534:
 	if false {
 		if 0 != 0 {
 			if 0 > 0 {
-				v1535 = *(*uintptr)(unsafe.Pointer(bp + 8))
+				v1542 = *(*uintptr)(unsafe.Pointer(bp + 8))
 				tosPtr += 4
-				v1536 = tosPtr
-				*(*uintptr)(unsafe.Pointer(v1536)) = v1535
-				(*TTcl_Obj)(unsafe.Pointer(v1535)).FrefCount++
+				v1543 = tosPtr
+				*(*uintptr)(unsafe.Pointer(v1543)) = v1542
+				(*TTcl_Obj)(unsafe.Pointer(v1542)).FrefCount++
 			} else {
 				tosPtr += 4
-				v1537 = tosPtr
-				*(*uintptr)(unsafe.Pointer(v1537)) = *(*uintptr)(unsafe.Pointer(bp + 8))
+				v1544 = tosPtr
+				*(*uintptr)(unsafe.Pointer(v1544)) = *(*uintptr)(unsafe.Pointer(bp + 8))
 			}
 		}
 		pc += uintptr(libc.Int32FromInt32(5))
@@ -157432,8 +157468,10 @@ _1534:
 			}
 		}
 	}
-	goto _1533
-_1533: /**/
+	goto _1541
+_1541:
+	goto _1540
+_1540: /**/
 	; //
 	goto _233
 	/*
@@ -157457,20 +157495,18 @@ _231:
 		XTcl_Panic(tls, __ccgo_ts+28809, 0)
 	}
 	*(*uintptr)(unsafe.Pointer(bp + 8)) = XTcl_NewWideIntObj(tls, wval)
-	goto _1539
-_1539:
 	if true {
 		if int32(1) != 0 {
 			if int32(1) > 0 {
-				v1540 = *(*uintptr)(unsafe.Pointer(bp + 8))
+				v1547 = *(*uintptr)(unsafe.Pointer(bp + 8))
 				tosPtr += 4
-				v1541 = tosPtr
-				*(*uintptr)(unsafe.Pointer(v1541)) = v1540
-				(*TTcl_Obj)(unsafe.Pointer(v1540)).FrefCount++
+				v1548 = tosPtr
+				*(*uintptr)(unsafe.Pointer(v1548)) = v1547
+				(*TTcl_Obj)(unsafe.Pointer(v1547)).FrefCount++
 			} else {
 				tosPtr += 4
-				v1542 = tosPtr
-				*(*uintptr)(unsafe.Pointer(v1542)) = *(*uintptr)(unsafe.Pointer(bp + 8))
+				v1549 = tosPtr
+				*(*uintptr)(unsafe.Pointer(v1549)) = *(*uintptr)(unsafe.Pointer(bp + 8))
 			}
 		}
 		pc += uintptr(libc.Int32FromInt32(2))
@@ -157501,8 +157537,10 @@ _1539:
 			}
 		}
 	}
-	goto _1538
-_1538: /**/
+	goto _1546
+_1546:
+	goto _1545
+_1545: /**/
 	; //
 	goto _233
 _232:
@@ -157526,18 +157564,18 @@ processExceptionReturn:
 			goto processCatch
 		}
 		for {
-			v1543 = cleanup
+			v1550 = cleanup
 			cleanup--
-			if !(v1543 != 0) {
+			if !(v1550 != 0) {
 				break
 			}
-			v1544 = tosPtr
+			v1551 = tosPtr
 			tosPtr -= 4
-			*(*uintptr)(unsafe.Pointer(bp + 12)) = *(*uintptr)(unsafe.Pointer(v1544))
-			v1546 = *(*uintptr)(unsafe.Pointer(bp + 12))
-			v1545 = *(*int32)(unsafe.Pointer(v1546))
-			*(*int32)(unsafe.Pointer(v1546))--
-			if !(v1545 > int32(1)) {
+			*(*uintptr)(unsafe.Pointer(bp + 12)) = *(*uintptr)(unsafe.Pointer(v1551))
+			v1553 = *(*uintptr)(unsafe.Pointer(bp + 12))
+			v1552 = *(*int32)(unsafe.Pointer(v1553))
+			*(*int32)(unsafe.Pointer(v1553))--
+			if !(v1552 > int32(1)) {
 				if !((*TTcl_Obj)(unsafe.Pointer(*(*uintptr)(unsafe.Pointer(bp + 12)))).FtypePtr != 0) || !((*TTcl_ObjType)(unsafe.Pointer((*TTcl_Obj)(unsafe.Pointer(*(*uintptr)(unsafe.Pointer(bp + 12)))).FtypePtr)).FfreeIntRepProc != 0) {
 					if (*TTcl_Obj)(unsafe.Pointer(*(*uintptr)(unsafe.Pointer(bp + 12)))).Fbytes != 0 && (*TTcl_Obj)(unsafe.Pointer(*(*uintptr)(unsafe.Pointer(bp + 12)))).Fbytes != XtclEmptyStringRep {
 						XTclpFree(tls, (*TTcl_Obj)(unsafe.Pointer(*(*uintptr)(unsafe.Pointer(bp + 12)))).Fbytes)
@@ -157556,20 +157594,18 @@ processExceptionReturn:
 		if result == int32(m_TCL_BREAK) {
 			result = m_TCL_OK
 			pc = (*TByteCode)(unsafe.Pointer((*TTEBCdata)(unsafe.Pointer(TD)).FcodePtr)).FcodeStart + uintptr((*TExceptionRange)(unsafe.Pointer(rangePtr)).FbreakOffset)
-			goto _1548
-		_1548:
 			if true {
 				if 0 != 0 {
 					if 0 > 0 {
-						v1549 = *(*uintptr)(unsafe.Pointer(bp + 8))
+						v1556 = *(*uintptr)(unsafe.Pointer(bp + 8))
 						tosPtr += 4
-						v1550 = tosPtr
-						*(*uintptr)(unsafe.Pointer(v1550)) = v1549
-						(*TTcl_Obj)(unsafe.Pointer(v1549)).FrefCount++
+						v1557 = tosPtr
+						*(*uintptr)(unsafe.Pointer(v1557)) = v1556
+						(*TTcl_Obj)(unsafe.Pointer(v1556)).FrefCount++
 					} else {
 						tosPtr += 4
-						v1551 = tosPtr
-						*(*uintptr)(unsafe.Pointer(v1551)) = *(*uintptr)(unsafe.Pointer(bp + 8))
+						v1558 = tosPtr
+						*(*uintptr)(unsafe.Pointer(v1558)) = *(*uintptr)(unsafe.Pointer(bp + 8))
 					}
 				}
 				pc += uintptr(libc.Int32FromInt32(0))
@@ -157600,8 +157636,10 @@ processExceptionReturn:
 					}
 				}
 			}
-			goto _1547
-		_1547: /**/
+			goto _1555
+		_1555:
+			goto _1554
+		_1554: /**/
 			//
 		}
 		if (*TExceptionRange)(unsafe.Pointer(rangePtr)).FcontinueOffset == -int32(1) {
@@ -157609,20 +157647,18 @@ processExceptionReturn:
 		}
 		result = m_TCL_OK
 		pc = (*TByteCode)(unsafe.Pointer((*TTEBCdata)(unsafe.Pointer(TD)).FcodePtr)).FcodeStart + uintptr((*TExceptionRange)(unsafe.Pointer(rangePtr)).FcontinueOffset)
-		goto _1553
-	_1553:
 		if true {
 			if 0 != 0 {
 				if 0 > 0 {
-					v1554 = *(*uintptr)(unsafe.Pointer(bp + 8))
+					v1561 = *(*uintptr)(unsafe.Pointer(bp + 8))
 					tosPtr += 4
-					v1555 = tosPtr
-					*(*uintptr)(unsafe.Pointer(v1555)) = v1554
-					(*TTcl_Obj)(unsafe.Pointer(v1554)).FrefCount++
+					v1562 = tosPtr
+					*(*uintptr)(unsafe.Pointer(v1562)) = v1561
+					(*TTcl_Obj)(unsafe.Pointer(v1561)).FrefCount++
 				} else {
 					tosPtr += 4
-					v1556 = tosPtr
-					*(*uintptr)(unsafe.Pointer(v1556)) = *(*uintptr)(unsafe.Pointer(bp + 8))
+					v1563 = tosPtr
+					*(*uintptr)(unsafe.Pointer(v1563)) = *(*uintptr)(unsafe.Pointer(bp + 8))
 				}
 			}
 			pc += uintptr(libc.Int32FromInt32(0))
@@ -157653,8 +157689,10 @@ processExceptionReturn:
 				}
 			}
 		}
-		goto _1552
-	_1552: /**/
+		goto _1560
+	_1560:
+		goto _1559
+	_1559: /**/
 		//
 	}
 	goto checkForCatch
@@ -157698,11 +157736,11 @@ checkForCatch:
 		bytes1 = _GetSrcInfoForPc(tls, pc, (*TTEBCdata)(unsafe.Pointer(TD)).FcodePtr, bp+24, bp+208, libc.UintptrFromInt32(0))
 		(*TExecStack)(unsafe.Pointer((*TExecEnv1)(unsafe.Pointer((*TInterp)(unsafe.Pointer(interp)).FexecEnvPtr)).FexecStackPtr)).FtosPtr = tosPtr
 		if bytes1 != 0 {
-			v1557 = *(*int32)(unsafe.Pointer(bp + 24))
+			v1564 = *(*int32)(unsafe.Pointer(bp + 24))
 		} else {
-			v1557 = 0
+			v1564 = 0
 		}
-		XTclLogCommandInfo(tls, interp, (*TByteCode)(unsafe.Pointer((*TTEBCdata)(unsafe.Pointer(TD)).FcodePtr)).Fsource, bytes1, v1557, *(*uintptr)(unsafe.Pointer(bp + 208)), tosPtr)
+		XTclLogCommandInfo(tls, interp, (*TByteCode)(unsafe.Pointer((*TTEBCdata)(unsafe.Pointer(TD)).FcodePtr)).Fsource, bytes1, v1564, *(*uintptr)(unsafe.Pointer(bp + 208)), tosPtr)
 		checkInterp = int32(1)
 	}
 	*(*int32)(unsafe.Pointer(interp + 256)) &= ^libc.Int32FromInt32(m_ERR_ALREADY_LOGGED)
@@ -157723,10 +157761,10 @@ checkForCatch:
 			Fptr2 uintptr
 		})(unsafe.Pointer(tmpPtr + 16))).Fptr1
 		_objPtr38 = tmpPtr
-		v1559 = _objPtr38
-		v1558 = *(*int32)(unsafe.Pointer(v1559))
-		*(*int32)(unsafe.Pointer(v1559))--
-		if v1558 <= int32(1) {
+		v1566 = _objPtr38
+		v1565 = *(*int32)(unsafe.Pointer(v1566))
+		*(*int32)(unsafe.Pointer(v1566))--
+		if v1565 <= int32(1) {
 			XTclFreeObj(tls, _objPtr38)
 		}
 	}
@@ -157770,13 +157808,13 @@ checkForCatch:
 	 */
 processCatch:
 	for (int32(tosPtr)-int32(TD+60-libc.UintptrFromInt32(1)*4+uintptr((*TByteCode)(unsafe.Pointer((*TTEBCdata)(unsafe.Pointer(TD)).FcodePtr)).FmaxExceptDepth)*4))/4 > *(*Tptrdiff_t)(unsafe.Pointer((*TTEBCdata)(unsafe.Pointer(TD)).FcatchTop)) {
-		v1560 = tosPtr
+		v1567 = tosPtr
 		tosPtr -= 4
-		*(*uintptr)(unsafe.Pointer(bp + 12)) = *(*uintptr)(unsafe.Pointer(v1560))
-		v1562 = *(*uintptr)(unsafe.Pointer(bp + 12))
-		v1561 = *(*int32)(unsafe.Pointer(v1562))
-		*(*int32)(unsafe.Pointer(v1562))--
-		if !(v1561 > int32(1)) {
+		*(*uintptr)(unsafe.Pointer(bp + 12)) = *(*uintptr)(unsafe.Pointer(v1567))
+		v1569 = *(*uintptr)(unsafe.Pointer(bp + 12))
+		v1568 = *(*int32)(unsafe.Pointer(v1569))
+		*(*int32)(unsafe.Pointer(v1569))--
+		if !(v1568 > int32(1)) {
 			if !((*TTcl_Obj)(unsafe.Pointer(*(*uintptr)(unsafe.Pointer(bp + 12)))).FtypePtr != 0) || !((*TTcl_ObjType)(unsafe.Pointer((*TTcl_Obj)(unsafe.Pointer(*(*uintptr)(unsafe.Pointer(bp + 12)))).FtypePtr)).FfreeIntRepProc != 0) {
 				if (*TTcl_Obj)(unsafe.Pointer(*(*uintptr)(unsafe.Pointer(bp + 12)))).Fbytes != 0 && (*TTcl_Obj)(unsafe.Pointer(*(*uintptr)(unsafe.Pointer(bp + 12)))).Fbytes != XtclEmptyStringRep {
 					XTclpFree(tls, (*TTcl_Obj)(unsafe.Pointer(*(*uintptr)(unsafe.Pointer(bp + 12)))).Fbytes)
@@ -157793,20 +157831,18 @@ processCatch:
 		}
 	}
 	pc = (*TByteCode)(unsafe.Pointer((*TTEBCdata)(unsafe.Pointer(TD)).FcodePtr)).FcodeStart + uintptr((*TExceptionRange)(unsafe.Pointer(rangePtr)).FcatchOffset)
-	goto _1564
-_1564:
 	if true {
 		if 0 != 0 {
 			if 0 > 0 {
-				v1565 = *(*uintptr)(unsafe.Pointer(bp + 8))
+				v1572 = *(*uintptr)(unsafe.Pointer(bp + 8))
 				tosPtr += 4
-				v1566 = tosPtr
-				*(*uintptr)(unsafe.Pointer(v1566)) = v1565
-				(*TTcl_Obj)(unsafe.Pointer(v1565)).FrefCount++
+				v1573 = tosPtr
+				*(*uintptr)(unsafe.Pointer(v1573)) = v1572
+				(*TTcl_Obj)(unsafe.Pointer(v1572)).FrefCount++
 			} else {
 				tosPtr += 4
-				v1567 = tosPtr
-				*(*uintptr)(unsafe.Pointer(v1567)) = *(*uintptr)(unsafe.Pointer(bp + 8))
+				v1574 = tosPtr
+				*(*uintptr)(unsafe.Pointer(v1574)) = *(*uintptr)(unsafe.Pointer(bp + 8))
 			}
 		}
 		pc += uintptr(libc.Int32FromInt32(0))
@@ -157837,8 +157873,10 @@ _1564:
 			}
 		}
 	}
-	goto _1563
-_1563: /**/
+	goto _1571
+_1571:
+	goto _1570
+_1570: /**/
 	; //
 	/* Restart the execution loop at pc. */
 	/*
@@ -157865,22 +157903,22 @@ abnormalReturn:
 			Fptr2 uintptr
 		})(unsafe.Pointer(tmpPtr + 16))).Fptr1
 		_objPtr39 = tmpPtr
-		v1569 = _objPtr39
-		v1568 = *(*int32)(unsafe.Pointer(v1569))
-		*(*int32)(unsafe.Pointer(v1569))--
-		if v1568 <= int32(1) {
+		v1576 = _objPtr39
+		v1575 = *(*int32)(unsafe.Pointer(v1576))
+		*(*int32)(unsafe.Pointer(v1576))--
+		if v1575 <= int32(1) {
 			XTclFreeObj(tls, _objPtr39)
 		}
 	}
 	for tosPtr > TD+60-libc.UintptrFromInt32(1)*4+uintptr((*TByteCode)(unsafe.Pointer((*TTEBCdata)(unsafe.Pointer(TD)).FcodePtr)).FmaxExceptDepth)*4 {
-		v1570 = tosPtr
+		v1577 = tosPtr
 		tosPtr -= 4
-		objPtr = *(*uintptr)(unsafe.Pointer(v1570))
+		objPtr = *(*uintptr)(unsafe.Pointer(v1577))
 		_objPtr40 = objPtr
-		v1572 = _objPtr40
-		v1571 = *(*int32)(unsafe.Pointer(v1572))
-		*(*int32)(unsafe.Pointer(v1572))--
-		if v1571 <= int32(1) {
+		v1579 = _objPtr40
+		v1578 = *(*int32)(unsafe.Pointer(v1579))
+		*(*int32)(unsafe.Pointer(v1579))--
+		if v1578 <= int32(1) {
 			XTclFreeObj(tls, _objPtr40)
 		}
 	}
@@ -157889,10 +157927,10 @@ abnormalReturn:
 		XTcl_Panic(tls, __ccgo_ts+29044, 0)
 	}
 	(*TInterp)(unsafe.Pointer(interp)).FcmdFramePtr = (*TCmdFrame)(unsafe.Pointer(TD + 12)).FnextPtr
-	v1574 = (*TTEBCdata)(unsafe.Pointer(TD)).FcodePtr + 16
-	v1573 = *(*int32)(unsafe.Pointer(v1574))
-	*(*int32)(unsafe.Pointer(v1574))--
-	if v1573 <= int32(1) {
+	v1581 = (*TTEBCdata)(unsafe.Pointer(TD)).FcodePtr + 16
+	v1580 = *(*int32)(unsafe.Pointer(v1581))
+	*(*int32)(unsafe.Pointer(v1581))--
+	if v1580 <= int32(1) {
 		XTclCleanupByteCode(tls, (*TTEBCdata)(unsafe.Pointer(TD)).FcodePtr)
 	}
 	XTclStackFree(tls, interp, TD) /* free my stack */
@@ -157924,11 +157962,11 @@ instStartCmdFailed:
 	bytes2 = _GetSrcInfoForPc(tls, pc, (*TTEBCdata)(unsafe.Pointer(TD)).FcodePtr, bp+24, libc.UintptrFromInt32(0), libc.UintptrFromInt32(0))
 	opnd = int32(uint32(int32(*(*uint8)(unsafe.Pointer(pc + libc.UintptrFromInt32(1))))<<libc.Int32FromInt32(24)) | uint32(int32(*(*uint8)(unsafe.Pointer(pc + libc.UintptrFromInt32(1) + libc.UintptrFromInt32(1))))<<libc.Int32FromInt32(16)) | uint32(int32(*(*uint8)(unsafe.Pointer(pc + libc.UintptrFromInt32(1) + libc.UintptrFromInt32(2))))<<libc.Int32FromInt32(8)) | uint32(*(*uint8)(unsafe.Pointer(pc + libc.UintptrFromInt32(1) + libc.UintptrFromInt32(3)))))
 	pc += uintptr(opnd - libc.Int32FromInt32(1))
-	v1575 = XTcl_NewStringObj(tls, bytes2, *(*int32)(unsafe.Pointer(bp + 24)))
+	v1582 = XTcl_NewStringObj(tls, bytes2, *(*int32)(unsafe.Pointer(bp + 24)))
 	tosPtr += 4
-	v1576 = tosPtr
-	*(*uintptr)(unsafe.Pointer(v1576)) = v1575
-	(*TTcl_Obj)(unsafe.Pointer(v1575)).FrefCount++
+	v1583 = tosPtr
+	*(*uintptr)(unsafe.Pointer(v1583)) = v1582
+	(*TTcl_Obj)(unsafe.Pointer(v1582)).FrefCount++
 	goto instEvalStk
 	return r
 }
@@ -195824,7 +195862,7 @@ _14:
 	 * ever happen).
 	 */
 _15:
-_18:
+_19:
 	if XtclFreeObjList == libc.UintptrFromInt32(0) {
 		XTclAllocateFreeObjects(tls)
 	}
@@ -195844,8 +195882,10 @@ _18:
 		(*TTcl_Obj)(unsafe.Pointer(resultObj)).Flength = int32(libc.Uint32FromInt64(3) - libc.Uint32FromInt32(1))
 	}
 	(*TTcl_Obj)(unsafe.Pointer(resultObj)).FtypePtr = libc.UintptrFromInt32(0)
+	goto _18
+_18:
 	if 0 != 0 {
-		goto _18
+		goto _19
 	}
 	goto _17
 _17:
@@ -209794,15 +209834,15 @@ func XTcl_SetLongObj(tls *libc.TLS, objPtr uintptr, longValue int32) {
 func XTcl_GetLongFromObj(tls *libc.TLS, interp uintptr, objPtr uintptr, longPtr uintptr) (r int32) {
 	bp := tls.Alloc(64)
 	defer tls.Free(64) /* Place to store resulting long. */
-	var bytes, msg, s, v3, v6 uintptr
+	var bytes, msg, s, v4, v7 uintptr
 	var value uint32
 	var w TTcl_WideInt
-	var v5 Tsize_t
+	var v6 Tsize_t
 	var _ /* big at bp+0 */ Tmp_int
 	var _ /* numBytes at bp+16 */ Tsize_t
 	var _ /* scratch at bp+20 */ int32
-	_, _, _, _, _, _, _, _ = bytes, msg, s, value, w, v3, v5, v6
-_2:
+	_, _, _, _, _, _, _, _ = bytes, msg, s, value, w, v4, v6, v7
+_3:
 	if (*TTcl_Obj)(unsafe.Pointer(objPtr)).FtypePtr == uintptr(unsafe.Pointer(&XtclIntType)) {
 		*(*int32)(unsafe.Pointer(longPtr)) = (*TTcl_Obj)(unsafe.Pointer(objPtr)).FinternalRep.FlongValue
 		return m_TCL_OK
@@ -209825,17 +209865,17 @@ _2:
 	if (*TTcl_Obj)(unsafe.Pointer(objPtr)).FtypePtr == uintptr(unsafe.Pointer(&XtclDoubleType)) {
 		if interp != libc.UintptrFromInt32(0) {
 			if (*TTcl_Obj)(unsafe.Pointer(objPtr)).Fbytes != 0 {
-				v3 = (*TTcl_Obj)(unsafe.Pointer(objPtr)).Fbytes
+				v4 = (*TTcl_Obj)(unsafe.Pointer(objPtr)).Fbytes
 			} else {
-				v3 = XTcl_GetString(tls, objPtr)
+				v4 = XTcl_GetString(tls, objPtr)
 			}
-			XTcl_SetObjResult(tls, interp, XTcl_ObjPrintf(tls, __ccgo_ts+46991, libc.VaList(bp+32, v3)))
+			XTcl_SetObjResult(tls, interp, XTcl_ObjPrintf(tls, __ccgo_ts+46991, libc.VaList(bp+32, v4)))
 			XTcl_SetErrorCode(tls, interp, libc.VaList(bp+32, __ccgo_ts+3490, __ccgo_ts+6801, __ccgo_ts+47021, libc.UintptrFromInt32(0)))
 		}
 		return int32(m_TCL_ERROR)
 	}
 	if !((*TTcl_Obj)(unsafe.Pointer(objPtr)).FtypePtr == uintptr(unsafe.Pointer(&XtclBignumType))) {
-		goto _4
+		goto _5
 	}
 	if (*(*struct {
 		Fptr1 uintptr
@@ -209868,14 +209908,14 @@ _2:
 		bytes = bp + 20
 		if XTclBN_mp_to_ubin(tls, bp, bytes, uint32(4), bp+16) == m_MP_OKAY {
 			for {
-				v5 = *(*Tsize_t)(unsafe.Pointer(bp + 16))
+				v6 = *(*Tsize_t)(unsafe.Pointer(bp + 16))
 				*(*Tsize_t)(unsafe.Pointer(bp + 16))--
-				if !(v5 > uint32(0)) {
+				if !(v6 > uint32(0)) {
 					break
 				}
-				v6 = bytes
+				v7 = bytes
 				bytes++
-				value = value<<int32(m_CHAR_BIT) | uint32(*(*uint8)(unsafe.Pointer(v6)))
+				value = value<<int32(m_CHAR_BIT) | uint32(*(*uint8)(unsafe.Pointer(v7)))
 			}
 			if (*(*Tmp_int)(unsafe.Pointer(bp))).Fsign != 0 {
 				*(*int32)(unsafe.Pointer(longPtr)) = -int32(value)
@@ -209893,9 +209933,11 @@ tooLarge:
 		XTcl_SetErrorCode(tls, interp, libc.VaList(bp+32, __ccgo_ts+8135, __ccgo_ts+47029, s, libc.UintptrFromInt32(0)))
 	}
 	return int32(m_TCL_ERROR)
-_4:
+_5:
+	goto _2
+_2:
 	if XTclParseNumber(tls, interp, objPtr, __ccgo_ts+5573, libc.UintptrFromInt32(0), -int32(1), libc.UintptrFromInt32(0), int32(m_TCL_PARSE_INTEGER_ONLY)) == m_TCL_OK {
-		goto _2
+		goto _3
 	}
 	goto _1
 _1:
@@ -223640,7 +223682,7 @@ func _ProcWrongNumArgs(tls *libc.TLS, interp uintptr, skip int32) (r int32) {
 	numArgs = (*TProc)(unsafe.Pointer((*TCallFrame)(unsafe.Pointer(framePtr)).FprocPtr)).FnumArgs
 	desiredObjs = XTclStackAlloc(tls, interp, libc.Int32FromInt64(4)*(numArgs+int32(1)))
 	if (*TCallFrame)(unsafe.Pointer(framePtr)).FisProcCallFrame&int32(m_FRAME_IS_LAMBDA) != 0 {
-		*(*uintptr)(unsafe.Pointer(desiredObjs)) = XTcl_NewStringObj(tls, __ccgo_ts+54960, -int32(1))
+		*(*uintptr)(unsafe.Pointer(desiredObjs)) = XTcl_NewStringObj(tls, __ccgo_ts+54951, -int32(1))
 	} else {
 		*(*uintptr)(unsafe.Pointer(desiredObjs)) = XTcl_NewListObj(tls, int32(1), (*TCallFrame)(unsafe.Pointer(framePtr)).Fobjv+uintptr(skip)*4-uintptr(1)*4)
 	}
@@ -272858,7 +272900,7 @@ func _ConvertErrorToList(tls *libc.TLS, code int32, adler TuLong) (r uintptr) {
 	}
 	goto _11
 _1:
-_13:
+_14:
 	if XtclFreeObjList == libc.UintptrFromInt32(0) {
 		XTclAllocateFreeObjects(tls)
 	}
@@ -272878,8 +272920,10 @@ _13:
 		(*TTcl_Obj)(unsafe.Pointer((*(*[4]uintptr)(unsafe.Pointer(bp)))[int32(2)])).Flength = int32(libc.Uint32FromInt64(7) - libc.Uint32FromInt32(1))
 	}
 	(*TTcl_Obj)(unsafe.Pointer((*(*[4]uintptr)(unsafe.Pointer(bp)))[int32(2)])).FtypePtr = libc.UintptrFromInt32(0)
+	goto _13
+_13:
 	if 0 != 0 {
-		goto _13
+		goto _14
 	}
 	goto _12
 _12:
@@ -305285,7 +305329,7 @@ var XtclArraySearchType = TTcl_ObjType{
 }
 
 var XtclBignumType = TTcl_ObjType{
-	Fname:             __ccgo_ts + 46533,
+	Fname:             __ccgo_ts + 46541,
 	FfreeIntRepProc:   uintptr(0),
 	FdupIntRepProc:    uintptr(0),
 	FupdateStringProc: uintptr(0),
@@ -305293,7 +305337,7 @@ var XtclBignumType = TTcl_ObjType{
 }
 
 var XtclBooleanType = TTcl_ObjType{
-	Fname:             __ccgo_ts + 46511,
+	Fname:             __ccgo_ts + 46519,
 	FfreeIntRepProc:   uintptr(0),
 	FdupIntRepProc:    uintptr(0),
 	FupdateStringProc: uintptr(0),
@@ -305339,7 +305383,7 @@ var XtclByteArrayType = TTcl_ObjType{
  */
 
 var XtclByteCodeType = TTcl_ObjType{
-	Fname:             __ccgo_ts + 20640,
+	Fname:             __ccgo_ts + 19857,
 	FfreeIntRepProc:   uintptr(0),
 	FdupIntRepProc:    uintptr(0),
 	FupdateStringProc: uintptr(0),
@@ -305783,7 +305827,7 @@ var XtclCharTypeTable = [384]int8{
  */
 
 var XtclCmdNameType = TTcl_ObjType{
-	Fname:             __ccgo_ts + 46540,
+	Fname:             __ccgo_ts + 46511,
 	FfreeIntRepProc:   uintptr(0),
 	FdupIntRepProc:    uintptr(0),
 	FupdateStringProc: uintptr(0),
@@ -305890,14 +305934,14 @@ var XtclIdentityEncoding TTcl_Encoding
 
 var XtclInstructionTable = [191]TInstructionDesc{
 	0: {
-		Fname:        __ccgo_ts + 19857,
+		Fname:        __ccgo_ts + 19866,
 		FnumBytes:    int32(1),
 		FstackEffect: -int32(1),
 		FnumOperands: int32(0),
 		FopTypes:     [2]TInstOperandType{},
 	},
 	1: {
-		Fname:        __ccgo_ts + 19862,
+		Fname:        __ccgo_ts + 19871,
 		FnumBytes:    int32(2),
 		FstackEffect: +libc.Int32FromInt32(1),
 		FnumOperands: int32(1),
@@ -305906,7 +305950,7 @@ var XtclInstructionTable = [191]TInstructionDesc{
 		},
 	},
 	2: {
-		Fname:        __ccgo_ts + 19868,
+		Fname:        __ccgo_ts + 19877,
 		FnumBytes:    int32(5),
 		FstackEffect: +libc.Int32FromInt32(1),
 		FnumOperands: int32(1),
@@ -305938,7 +305982,7 @@ var XtclInstructionTable = [191]TInstructionDesc{
 		},
 	},
 	6: {
-		Fname:        __ccgo_ts + 19874,
+		Fname:        __ccgo_ts + 19883,
 		FnumBytes:    int32(2),
 		FstackEffect: -libc.Int32FromInt32(1) - libc.Int32FromInt32(0x7fffffff),
 		FnumOperands: int32(1),
@@ -305947,7 +305991,7 @@ var XtclInstructionTable = [191]TInstructionDesc{
 		},
 	},
 	7: {
-		Fname:        __ccgo_ts + 19885,
+		Fname:        __ccgo_ts + 19894,
 		FnumBytes:    int32(5),
 		FstackEffect: -libc.Int32FromInt32(1) - libc.Int32FromInt32(0x7fffffff),
 		FnumOperands: int32(1),
@@ -305970,7 +306014,7 @@ var XtclInstructionTable = [191]TInstructionDesc{
 		FopTypes:     [2]TInstOperandType{},
 	},
 	10: {
-		Fname:        __ccgo_ts + 19896,
+		Fname:        __ccgo_ts + 19905,
 		FnumBytes:    int32(2),
 		FstackEffect: int32(1),
 		FnumOperands: int32(1),
@@ -305979,7 +306023,7 @@ var XtclInstructionTable = [191]TInstructionDesc{
 		},
 	},
 	11: {
-		Fname:        __ccgo_ts + 19908,
+		Fname:        __ccgo_ts + 19917,
 		FnumBytes:    int32(5),
 		FstackEffect: int32(1),
 		FnumOperands: int32(1),
@@ -305988,14 +306032,14 @@ var XtclInstructionTable = [191]TInstructionDesc{
 		},
 	},
 	12: {
-		Fname:        __ccgo_ts + 19920,
+		Fname:        __ccgo_ts + 19929,
 		FnumBytes:    int32(1),
 		FstackEffect: int32(0),
 		FnumOperands: int32(0),
 		FopTypes:     [2]TInstOperandType{},
 	},
 	13: {
-		Fname:        __ccgo_ts + 19934,
+		Fname:        __ccgo_ts + 19943,
 		FnumBytes:    int32(2),
 		FstackEffect: int32(0),
 		FnumOperands: int32(1),
@@ -306004,7 +306048,7 @@ var XtclInstructionTable = [191]TInstructionDesc{
 		},
 	},
 	14: {
-		Fname:        __ccgo_ts + 19945,
+		Fname:        __ccgo_ts + 19954,
 		FnumBytes:    int32(5),
 		FstackEffect: int32(0),
 		FnumOperands: int32(1),
@@ -306027,7 +306071,7 @@ var XtclInstructionTable = [191]TInstructionDesc{
 		FopTypes:     [2]TInstOperandType{},
 	},
 	17: {
-		Fname:        __ccgo_ts + 19956,
+		Fname:        __ccgo_ts + 19965,
 		FnumBytes:    int32(2),
 		FstackEffect: int32(0),
 		FnumOperands: int32(1),
@@ -306036,7 +306080,7 @@ var XtclInstructionTable = [191]TInstructionDesc{
 		},
 	},
 	18: {
-		Fname:        __ccgo_ts + 19969,
+		Fname:        __ccgo_ts + 19978,
 		FnumBytes:    int32(5),
 		FstackEffect: int32(0),
 		FnumOperands: int32(1),
@@ -306045,14 +306089,14 @@ var XtclInstructionTable = [191]TInstructionDesc{
 		},
 	},
 	19: {
-		Fname:        __ccgo_ts + 19982,
+		Fname:        __ccgo_ts + 19991,
 		FnumBytes:    int32(1),
 		FstackEffect: -int32(1),
 		FnumOperands: int32(0),
 		FopTypes:     [2]TInstOperandType{},
 	},
 	20: {
-		Fname:        __ccgo_ts + 19997,
+		Fname:        __ccgo_ts + 20006,
 		FnumBytes:    int32(2),
 		FstackEffect: -int32(1),
 		FnumOperands: int32(1),
@@ -306061,7 +306105,7 @@ var XtclInstructionTable = [191]TInstructionDesc{
 		},
 	},
 	21: {
-		Fname:        __ccgo_ts + 20009,
+		Fname:        __ccgo_ts + 20018,
 		FnumBytes:    int32(5),
 		FstackEffect: -int32(1),
 		FnumOperands: int32(1),
@@ -306084,7 +306128,7 @@ var XtclInstructionTable = [191]TInstructionDesc{
 		FopTypes:     [2]TInstOperandType{},
 	},
 	24: {
-		Fname:        __ccgo_ts + 20021,
+		Fname:        __ccgo_ts + 20030,
 		FnumBytes:    int32(2),
 		FstackEffect: int32(0),
 		FnumOperands: int32(1),
@@ -306093,14 +306137,14 @@ var XtclInstructionTable = [191]TInstructionDesc{
 		},
 	},
 	25: {
-		Fname:        __ccgo_ts + 20033,
+		Fname:        __ccgo_ts + 20042,
 		FnumBytes:    int32(1),
 		FstackEffect: -int32(1),
 		FnumOperands: int32(0),
 		FopTypes:     [2]TInstOperandType{},
 	},
 	26: {
-		Fname:        __ccgo_ts + 20047,
+		Fname:        __ccgo_ts + 20056,
 		FnumBytes:    int32(2),
 		FstackEffect: -int32(1),
 		FnumOperands: int32(1),
@@ -306123,7 +306167,7 @@ var XtclInstructionTable = [191]TInstructionDesc{
 		FopTypes:     [2]TInstOperandType{},
 	},
 	29: {
-		Fname:        __ccgo_ts + 20058,
+		Fname:        __ccgo_ts + 20067,
 		FnumBytes:    int32(3),
 		FstackEffect: +libc.Int32FromInt32(1),
 		FnumOperands: int32(2),
@@ -306133,7 +306177,7 @@ var XtclInstructionTable = [191]TInstructionDesc{
 		},
 	},
 	30: {
-		Fname:        __ccgo_ts + 20073,
+		Fname:        __ccgo_ts + 20082,
 		FnumBytes:    int32(2),
 		FstackEffect: int32(0),
 		FnumOperands: int32(1),
@@ -306142,7 +306186,7 @@ var XtclInstructionTable = [191]TInstructionDesc{
 		},
 	},
 	31: {
-		Fname:        __ccgo_ts + 20090,
+		Fname:        __ccgo_ts + 20099,
 		FnumBytes:    int32(3),
 		FstackEffect: int32(0),
 		FnumOperands: int32(2),
@@ -306170,7 +306214,7 @@ var XtclInstructionTable = [191]TInstructionDesc{
 		},
 	},
 	34: {
-		Fname:        __ccgo_ts + 20104,
+		Fname:        __ccgo_ts + 20113,
 		FnumBytes:    int32(2),
 		FstackEffect: int32(0),
 		FnumOperands: int32(1),
@@ -306188,7 +306232,7 @@ var XtclInstructionTable = [191]TInstructionDesc{
 		},
 	},
 	36: {
-		Fname:        __ccgo_ts + 20110,
+		Fname:        __ccgo_ts + 20119,
 		FnumBytes:    int32(2),
 		FstackEffect: -int32(1),
 		FnumOperands: int32(1),
@@ -306206,7 +306250,7 @@ var XtclInstructionTable = [191]TInstructionDesc{
 		},
 	},
 	38: {
-		Fname:        __ccgo_ts + 20120,
+		Fname:        __ccgo_ts + 20129,
 		FnumBytes:    int32(2),
 		FstackEffect: -int32(1),
 		FnumOperands: int32(1),
@@ -306378,7 +306422,7 @@ var XtclInstructionTable = [191]TInstructionDesc{
 		FopTypes:     [2]TInstOperandType{},
 	},
 	62: {
-		Fname:        __ccgo_ts + 20131,
+		Fname:        __ccgo_ts + 20140,
 		FnumBytes:    int32(2),
 		FstackEffect: int32(1),
 		FnumOperands: int32(1),
@@ -306387,7 +306431,7 @@ var XtclInstructionTable = [191]TInstructionDesc{
 		},
 	},
 	63: {
-		Fname:        __ccgo_ts + 20148,
+		Fname:        __ccgo_ts + 20157,
 		FnumBytes:    int32(2),
 		FstackEffect: -libc.Int32FromInt32(1) - libc.Int32FromInt32(0x7fffffff),
 		FnumOperands: int32(1),
@@ -306417,7 +306461,7 @@ var XtclInstructionTable = [191]TInstructionDesc{
 		FopTypes:     [2]TInstOperandType{},
 	},
 	67: {
-		Fname:        __ccgo_ts + 20158,
+		Fname:        __ccgo_ts + 20167,
 		FnumBytes:    int32(5),
 		FstackEffect: int32(0),
 		FnumOperands: int32(1),
@@ -306426,7 +306470,7 @@ var XtclInstructionTable = [191]TInstructionDesc{
 		},
 	},
 	68: {
-		Fname:        __ccgo_ts + 20173,
+		Fname:        __ccgo_ts + 20182,
 		FnumBytes:    int32(5),
 		FstackEffect: +libc.Int32FromInt32(1),
 		FnumOperands: int32(1),
@@ -306435,7 +306479,7 @@ var XtclInstructionTable = [191]TInstructionDesc{
 		},
 	},
 	69: {
-		Fname:        __ccgo_ts + 20187,
+		Fname:        __ccgo_ts + 20196,
 		FnumBytes:    int32(5),
 		FstackEffect: int32(0),
 		FnumOperands: int32(1),
@@ -306532,7 +306576,7 @@ var XtclInstructionTable = [191]TInstructionDesc{
 		FopTypes:     [2]TInstOperandType{},
 	},
 	82: {
-		Fname:        __ccgo_ts + 20199,
+		Fname:        __ccgo_ts + 20208,
 		FnumBytes:    int32(2),
 		FstackEffect: int32(0),
 		FnumOperands: int32(1),
@@ -306541,7 +306585,7 @@ var XtclInstructionTable = [191]TInstructionDesc{
 		},
 	},
 	83: {
-		Fname:        __ccgo_ts + 20213,
+		Fname:        __ccgo_ts + 20222,
 		FnumBytes:    int32(5),
 		FstackEffect: int32(0),
 		FnumOperands: int32(1),
@@ -306550,7 +306594,7 @@ var XtclInstructionTable = [191]TInstructionDesc{
 		},
 	},
 	84: {
-		Fname:        __ccgo_ts + 20227,
+		Fname:        __ccgo_ts + 20236,
 		FnumBytes:    int32(2),
 		FstackEffect: -int32(1),
 		FnumOperands: int32(1),
@@ -306559,7 +306603,7 @@ var XtclInstructionTable = [191]TInstructionDesc{
 		},
 	},
 	85: {
-		Fname:        __ccgo_ts + 20240,
+		Fname:        __ccgo_ts + 20249,
 		FnumBytes:    int32(5),
 		FstackEffect: -int32(1),
 		FnumOperands: int32(1),
@@ -306582,7 +306626,7 @@ var XtclInstructionTable = [191]TInstructionDesc{
 		FopTypes:     [2]TInstOperandType{},
 	},
 	88: {
-		Fname:        __ccgo_ts + 20253,
+		Fname:        __ccgo_ts + 20262,
 		FnumBytes:    int32(2),
 		FstackEffect: int32(0),
 		FnumOperands: int32(1),
@@ -306591,7 +306635,7 @@ var XtclInstructionTable = [191]TInstructionDesc{
 		},
 	},
 	89: {
-		Fname:        __ccgo_ts + 20268,
+		Fname:        __ccgo_ts + 20277,
 		FnumBytes:    int32(5),
 		FstackEffect: int32(0),
 		FnumOperands: int32(1),
@@ -306600,7 +306644,7 @@ var XtclInstructionTable = [191]TInstructionDesc{
 		},
 	},
 	90: {
-		Fname:        __ccgo_ts + 20283,
+		Fname:        __ccgo_ts + 20292,
 		FnumBytes:    int32(2),
 		FstackEffect: -int32(1),
 		FnumOperands: int32(1),
@@ -306609,7 +306653,7 @@ var XtclInstructionTable = [191]TInstructionDesc{
 		},
 	},
 	91: {
-		Fname:        __ccgo_ts + 20297,
+		Fname:        __ccgo_ts + 20306,
 		FnumBytes:    int32(5),
 		FstackEffect: -int32(1),
 		FnumOperands: int32(1),
@@ -306666,7 +306710,7 @@ var XtclInstructionTable = [191]TInstructionDesc{
 		},
 	},
 	98: {
-		Fname:        __ccgo_ts + 20311,
+		Fname:        __ccgo_ts + 20320,
 		FnumBytes:    int32(9),
 		FstackEffect: -int32(1),
 		FnumOperands: int32(2),
@@ -306683,14 +306727,14 @@ var XtclInstructionTable = [191]TInstructionDesc{
 		FopTypes:     [2]TInstOperandType{},
 	},
 	100: {
-		Fname:        __ccgo_ts + 20321,
+		Fname:        __ccgo_ts + 20330,
 		FnumBytes:    int32(1),
 		FstackEffect: int32(0),
 		FnumOperands: int32(0),
 		FopTypes:     [2]TInstOperandType{},
 	},
 	101: {
-		Fname:        __ccgo_ts + 20333,
+		Fname:        __ccgo_ts + 20342,
 		FnumBytes:    int32(5),
 		FstackEffect: int32(0),
 		FnumOperands: int32(1),
@@ -306699,7 +306743,7 @@ var XtclInstructionTable = [191]TInstructionDesc{
 		},
 	},
 	102: {
-		Fname:        __ccgo_ts + 20346,
+		Fname:        __ccgo_ts + 20355,
 		FnumBytes:    int32(1),
 		FstackEffect: int32(0),
 		FnumOperands: int32(0),
@@ -306715,7 +306759,7 @@ var XtclInstructionTable = [191]TInstructionDesc{
 		},
 	},
 	104: {
-		Fname:        __ccgo_ts + 20361,
+		Fname:        __ccgo_ts + 20370,
 		FnumBytes:    int32(9),
 		FstackEffect: int32(0),
 		FnumOperands: int32(2),
@@ -306725,7 +306769,7 @@ var XtclInstructionTable = [191]TInstructionDesc{
 		},
 	},
 	105: {
-		Fname:        __ccgo_ts + 20374,
+		Fname:        __ccgo_ts + 20383,
 		FnumBytes:    int32(9),
 		FstackEffect: int32(0),
 		FnumOperands: int32(2),
@@ -306756,7 +306800,7 @@ var XtclInstructionTable = [191]TInstructionDesc{
 		FopTypes:     [2]TInstOperandType{},
 	},
 	109: {
-		Fname:        __ccgo_ts + 20387,
+		Fname:        __ccgo_ts + 20396,
 		FnumBytes:    int32(1),
 		FstackEffect: -int32(1),
 		FnumOperands: int32(0),
@@ -306820,7 +306864,7 @@ var XtclInstructionTable = [191]TInstructionDesc{
 		},
 	},
 	116: {
-		Fname:        __ccgo_ts + 20397,
+		Fname:        __ccgo_ts + 20406,
 		FnumBytes:    int32(5),
 		FstackEffect: +libc.Int32FromInt32(2),
 		FnumOperands: int32(1),
@@ -306829,7 +306873,7 @@ var XtclInstructionTable = [191]TInstructionDesc{
 		},
 	},
 	117: {
-		Fname:        __ccgo_ts + 20407,
+		Fname:        __ccgo_ts + 20416,
 		FnumBytes:    int32(5),
 		FstackEffect: +libc.Int32FromInt32(3),
 		FnumOperands: int32(1),
@@ -306838,7 +306882,7 @@ var XtclInstructionTable = [191]TInstructionDesc{
 		},
 	},
 	118: {
-		Fname:        __ccgo_ts + 20416,
+		Fname:        __ccgo_ts + 20425,
 		FnumBytes:    int32(5),
 		FstackEffect: int32(0),
 		FnumOperands: int32(1),
@@ -306847,7 +306891,7 @@ var XtclInstructionTable = [191]TInstructionDesc{
 		},
 	},
 	119: {
-		Fname:        __ccgo_ts + 20425,
+		Fname:        __ccgo_ts + 20434,
 		FnumBytes:    int32(9),
 		FstackEffect: int32(0),
 		FnumOperands: int32(2),
@@ -306857,7 +306901,7 @@ var XtclInstructionTable = [191]TInstructionDesc{
 		},
 	},
 	120: {
-		Fname:        __ccgo_ts + 20441,
+		Fname:        __ccgo_ts + 20450,
 		FnumBytes:    int32(9),
 		FstackEffect: -int32(1),
 		FnumOperands: int32(2),
@@ -306903,7 +306947,7 @@ var XtclInstructionTable = [191]TInstructionDesc{
 		},
 	},
 	125: {
-		Fname:        __ccgo_ts + 20455,
+		Fname:        __ccgo_ts + 20464,
 		FnumBytes:    int32(9),
 		FstackEffect: -int32(1),
 		FnumOperands: int32(2),
@@ -306931,7 +306975,7 @@ var XtclInstructionTable = [191]TInstructionDesc{
 		},
 	},
 	128: {
-		Fname:        __ccgo_ts + 20462,
+		Fname:        __ccgo_ts + 20471,
 		FnumBytes:    int32(5),
 		FstackEffect: int32(1),
 		FnumOperands: int32(1),
@@ -306970,14 +307014,14 @@ var XtclInstructionTable = [191]TInstructionDesc{
 		FopTypes:     [2]TInstOperandType{},
 	},
 	133: {
-		Fname:        __ccgo_ts + 20474,
+		Fname:        __ccgo_ts + 20483,
 		FnumBytes:    int32(1),
 		FstackEffect: -int32(1),
 		FnumOperands: int32(0),
 		FopTypes:     [2]TInstOperandType{},
 	},
 	134: {
-		Fname:        __ccgo_ts + 20491,
+		Fname:        __ccgo_ts + 20500,
 		FnumBytes:    int32(6),
 		FstackEffect: int32(0),
 		FnumOperands: int32(2),
@@ -307075,7 +307119,7 @@ var XtclInstructionTable = [191]TInstructionDesc{
 		FopTypes:     [2]TInstOperandType{},
 	},
 	146: {
-		Fname:        __ccgo_ts + 20503,
+		Fname:        __ccgo_ts + 20512,
 		FnumBytes:    int32(9),
 		FstackEffect: int32(0),
 		FnumOperands: int32(2),
@@ -307203,7 +307247,7 @@ var XtclInstructionTable = [191]TInstructionDesc{
 		},
 	},
 	163: {
-		Fname:        __ccgo_ts + 20515,
+		Fname:        __ccgo_ts + 20524,
 		FnumBytes:    int32(6),
 		FstackEffect: -libc.Int32FromInt32(1) - libc.Int32FromInt32(0x7fffffff),
 		FnumOperands: int32(2),
@@ -307220,14 +307264,14 @@ var XtclInstructionTable = [191]TInstructionDesc{
 		FopTypes:     [2]TInstOperandType{},
 	},
 	165: {
-		Fname:        __ccgo_ts + 20529,
+		Fname:        __ccgo_ts + 20538,
 		FnumBytes:    int32(1),
 		FstackEffect: int32(0),
 		FnumOperands: int32(0),
 		FopTypes:     [2]TInstOperandType{},
 	},
 	166: {
-		Fname:        __ccgo_ts + 20540,
+		Fname:        __ccgo_ts + 20549,
 		FnumBytes:    int32(5),
 		FstackEffect: +libc.Int32FromInt32(2),
 		FnumOperands: int32(1),
@@ -307236,21 +307280,21 @@ var XtclInstructionTable = [191]TInstructionDesc{
 		},
 	},
 	167: {
-		Fname:        __ccgo_ts + 20554,
+		Fname:        __ccgo_ts + 20563,
 		FnumBytes:    int32(1),
 		FstackEffect: int32(0),
 		FnumOperands: int32(0),
 		FopTypes:     [2]TInstOperandType{},
 	},
 	168: {
-		Fname:        __ccgo_ts + 20567,
+		Fname:        __ccgo_ts + 20576,
 		FnumBytes:    int32(1),
 		FstackEffect: int32(0),
 		FnumOperands: int32(0),
 		FopTypes:     [2]TInstOperandType{},
 	},
 	169: {
-		Fname:        __ccgo_ts + 20579,
+		Fname:        __ccgo_ts + 20588,
 		FnumBytes:    int32(1),
 		FstackEffect: -int32(1),
 		FnumOperands: int32(0),
@@ -307322,7 +307366,7 @@ var XtclInstructionTable = [191]TInstructionDesc{
 		FopTypes:     [2]TInstOperandType{},
 	},
 	179: {
-		Fname:        __ccgo_ts + 20592,
+		Fname:        __ccgo_ts + 20601,
 		FnumBytes:    int32(2),
 		FstackEffect: -libc.Int32FromInt32(1) - libc.Int32FromInt32(0x7fffffff),
 		FnumOperands: int32(1),
@@ -307331,7 +307375,7 @@ var XtclInstructionTable = [191]TInstructionDesc{
 		},
 	},
 	180: {
-		Fname:        __ccgo_ts + 20602,
+		Fname:        __ccgo_ts + 20611,
 		FnumBytes:    int32(2),
 		FstackEffect: -libc.Int32FromInt32(1) - libc.Int32FromInt32(0x7fffffff),
 		FnumOperands: int32(1),
@@ -307340,7 +307384,7 @@ var XtclInstructionTable = [191]TInstructionDesc{
 		},
 	},
 	181: {
-		Fname:        __ccgo_ts + 20617,
+		Fname:        __ccgo_ts + 20626,
 		FnumBytes:    int32(1),
 		FstackEffect: int32(0),
 		FnumOperands: int32(0),
@@ -307361,7 +307405,7 @@ var XtclInstructionTable = [191]TInstructionDesc{
 		FopTypes:     [2]TInstOperandType{},
 	},
 	184: {
-		Fname:        __ccgo_ts + 20631,
+		Fname:        __ccgo_ts + 20640,
 		FnumBytes:    int32(2),
 		FstackEffect: int32(0),
 		FnumOperands: int32(1),
@@ -307443,7 +307487,7 @@ var XtclJumptableInfoType = TAuxDataType{
  */
 
 var XtclLambdaType = TTcl_ObjType{
-	Fname:             __ccgo_ts + 54960,
+	Fname:             __ccgo_ts + 54951,
 	FfreeIntRepProc:   uintptr(0),
 	FdupIntRepProc:    uintptr(0),
 	FupdateStringProc: uintptr(0),
@@ -307606,7 +307650,7 @@ var XtclPlatform TTclPlatformType
  */
 
 var XtclProcBodyType = TTcl_ObjType{
-	Fname:             __ccgo_ts + 54951,
+	Fname:             __ccgo_ts + 54962,
 	FfreeIntRepProc:   uintptr(0),
 	FdupIntRepProc:    uintptr(0),
 	FupdateStringProc: uintptr(0),
@@ -308450,7 +308494,7 @@ var XtclTomMathStubs = TTclTomMathStubs{
 }
 
 var XtclWideIntType = TTcl_ObjType{
-	Fname:             __ccgo_ts + 46525,
+	Fname:             __ccgo_ts + 46533,
 	FfreeIntRepProc:   uintptr(0),
 	FdupIntRepProc:    uintptr(0),
 	FupdateStringProc: uintptr(0),
@@ -308481,4 +308525,4 @@ var XtclpFileAttrStrings = [4]uintptr{
 
 var __ccgo_ts = (*reflect.StringHeader)(unsafe.Pointer(&__ccgo_ts1)).Data
 
-var __ccgo_ts1 = "\n\n\n========= RAW ==========\n\x00\n\n\n========= TREE FIXED ==========\n\x00\n\n\n========= LA%d ==========\n\x00\n\n\n========= SEARCH ==========\n\x00\n\n\n========= TREE NODE %s ==========\n\x00null tree\n\x00%s. `%c'\x00 longest\x00 shortest\x00 hasmixed\x00 hascapture\x00 hasbackref\x00 UNUSED\x00 (#%d)\x00 {%d,\x00%d\x00}\x00 %ld-%ld\x00 L:%s\x00 R:%s\x00\n\x00unable\x00%p\x00\ninitial cleanup:\n\x00\nempties:\n\x00\nconstraints:\n\x00\nfinal cleanup:\n\x00NUL\x00SOH\x00STX\x00ETX\x00EOT\x00ENQ\x00ACK\x00BEL\x00alert\x00BS\x00backspace\x00HT\x00tab\x00LF\x00newline\x00VT\x00vertical-tab\x00FF\x00form-feed\x00CR\x00carriage-return\x00SO\x00SI\x00DLE\x00DC1\x00DC2\x00DC3\x00DC4\x00NAK\x00SYN\x00ETB\x00CAN\x00EM\x00SUB\x00ESC\x00IS4\x00FS\x00IS3\x00GS\x00IS2\x00RS\x00IS1\x00US\x00space\x00exclamation-mark\x00quotation-mark\x00number-sign\x00dollar-sign\x00percent-sign\x00ampersand\x00apostrophe\x00left-parenthesis\x00right-parenthesis\x00asterisk\x00plus-sign\x00comma\x00hyphen\x00hyphen-minus\x00period\x00full-stop\x00slash\x00solidus\x00zero\x00one\x00two\x00three\x00four\x00five\x00six\x00seven\x00eight\x00nine\x00colon\x00semicolon\x00less-than-sign\x00equals-sign\x00greater-than-sign\x00question-mark\x00commercial-at\x00left-square-bracket\x00backslash\x00reverse-solidus\x00right-square-bracket\x00circumflex\x00circumflex-accent\x00underscore\x00low-line\x00grave-accent\x00left-brace\x00left-curly-bracket\x00vertical-line\x00right-brace\x00right-curly-bracket\x00tilde\x00DEL\x00alnum\x00alpha\x00ascii\x00blank\x00cntrl\x00digit\x00graph\x00lower\x00print\x00punct\x00upper\x00xdigit\x00REG_OKAY\x00no errors detected\x00REG_NOMATCH\x00failed to match\x00REG_BADPAT\x00invalid regexp (reg version 0.8)\x00REG_ECOLLATE\x00invalid collating element\x00REG_ECTYPE\x00invalid character class\x00REG_EESCAPE\x00invalid escape \\ sequence\x00REG_ESUBREG\x00invalid backreference number\x00REG_EBRACK\x00brackets [] not balanced\x00REG_EPAREN\x00parentheses () not balanced\x00REG_EBRACE\x00braces {} not balanced\x00REG_BADBR\x00invalid repetition count(s)\x00REG_ERANGE\x00invalid character range\x00REG_ESPACE\x00out of memory\x00REG_BADRPT\x00quantifier operand invalid\x00REG_ASSERT\x00\"can't happen\" -- you found a bug\x00REG_INVARG\x00invalid argument to regex function\x00REG_MIXED\x00character widths of regex and string differ\x00REG_BADOPT\x00invalid embedded option\x00REG_ETOOBIG\x00regular expression is too complex\x00REG_ECOLORS\x00too many colors\x00\x00oops\x00REG_%u\x00assemblecode\x00push\x00add\x00append\x00appendArray\x00appendArrayStk\x00appendStk\x00arrayExistsImm\x00arrayExistsStk\x00arrayMakeImm\x00arrayMakeStk\x00beginCatch\x00bitand\x00bitnot\x00bitor\x00bitxor\x00clockRead\x00concat\x00concatStk\x00coroName\x00currentNamespace\x00dictAppend\x00dictExists\x00dictExpand\x00dictGet\x00dictIncrImm\x00dictLappend\x00dictRecombineStk\x00dictRecombineImm\x00dictSet\x00dictUnset\x00div\x00dup\x00endCatch\x00eq\x00eval\x00evalStk\x00exist\x00existArray\x00existArrayStk\x00existStk\x00expon\x00expr\x00exprStk\x00ge\x00gt\x00incr\x00incrArray\x00incrArrayImm\x00incrArrayStk\x00incrArrayStkImm\x00incrImm\x00incrStk\x00incrStkImm\x00infoLevelArgs\x00infoLevelNumber\x00invokeStk\x00jump\x00jump4\x00jumpFalse\x00jumpFalse4\x00jumpTable\x00jumpTrue\x00jumpTrue4\x00label\x00land\x00lappend\x00lappendArray\x00lappendArrayStk\x00lappendList\x00lappendListArray\x00lappendListArrayStk\x00lappendListStk\x00lappendStk\x00le\x00lindexMulti\x00list\x00listConcat\x00listIn\x00listIndex\x00listIndexImm\x00listLength\x00listNotIn\x00load\x00loadArray\x00loadArrayStk\x00loadStk\x00lor\x00lsetFlat\x00lsetList\x00lshift\x00lt\x00mod\x00mult\x00neq\x00nop\x00not\x00nsupvar\x00numericType\x00originCmd\x00over\x00pop\x00pushReturnCode\x00pushReturnOpts\x00pushResult\x00regexp\x00resolveCmd\x00reverse\x00rshift\x00store\x00storeArray\x00storeArrayStk\x00storeStk\x00strcaseLower\x00strcaseTitle\x00strcaseUpper\x00strcmp\x00strcat\x00streq\x00strfind\x00strindex\x00strlen\x00strmap\x00strmatch\x00strneq\x00strrange\x00strreplace\x00strrfind\x00strtrim\x00strtrimLeft\x00strtrimRight\x00sub\x00tclooClass\x00tclooIsObject\x00tclooNamespace\x00tclooSelf\x00tryCvtToBoolean\x00tryCvtToNumeric\x00uminus\x00unset\x00unsetArray\x00unsetArrayStk\x00unsetStk\x00uplus\x00upvar\x00variable\x00verifyDict\x00yield\x00bytecodeList\x00\n    (\"\x00\" body, line \x00)\x00\n    (\"%.*s\" body, line %d)\x00instruction\x00value\x00boolean\x00boolean varName\x00imm8\x00operand must be [0..3]\x00TCL\x00ASSEM\x00OPERAND<0,>3\x00count\x00count varName\x00script\x00expression\x00table\x00name\x00operand must be >=2\x00OPERAND>=2\x00varname\x00varName imm8\x00Instruction \"%s\" could not be found, can't happen\n\x00no ASSEM_EVAL case for %s (%d), can't happen\x00jump table must have an even number of list elements\x00BADJUMPTABLE\x00duplicate entry in jump table for \"%s\"\x00DUPJUMPTABLEENTRY\x00assembly code may not contain substitutions\x00NOSUBST\x00cannot use this instruction to create a variable in a non-proc context\x00LVT\x00variable \"%s\" is not local\x00NONLOCAL\x00operand does not fit in one byte\x001BYTE\x00operand must be nonnegative\x00NONNEGATIVE\x00operand must be positive\x00POSITIVE\x00duplicate definition of label \"%s\"\x00DUPLABEL\x00undefined label \"%s\"\x00NOLABEL\x00\"%s\" instruction may not appear in a context where an exception has been caught and not disposed of.\x00BADTHROW\x00inconsistent stack depths on two execution paths\x00BADSTACK\x00stack underflow\x00code pops stack below level of enclosing catch\x00BADSTACKINCATCH\x00stack is unbalanced on exit from the code (depth=%d)\x00execution reaches an instruction in inconsistent exception contexts\x00BADCATCH\x00endCatch without a corresponding beginCatch\x00BADENDCATCH\x00catch still active on exit from assembly code\x00UNCLOSEDCATCH\x00unclosed catch at end of code in tclAssembly.c:BuildExceptionRanges, can't happen\x00undefined label in tclAssembly.c:BuildExceptionRanges, can't happen\x00\n    in assembly code between lines \x00 and \x00end of assembly code\x00Tcl_AsyncDelete: async handler deleted by the wrong thread\x00Tcl_AsyncDelete: cannot find async handler\x00apply\x00break\x00case\x00catch\x00continue\x00coroutine\x00error\x00for\x00foreach\x00format\x00global\x00if\x00join\x00lassign\x00lindex\x00linsert\x00llength\x00lmap\x00lrange\x00lrepeat\x00lreplace\x00lreverse\x00lsearch\x00lset\x00lsort\x00package\x00proc\x00regsub\x00rename\x00return\x00scan\x00set\x00split\x00subst\x00switch\x00tailcall\x00throw\x00trace\x00try\x00uplevel\x00while\x00yieldto\x00after\x00cd\x00close\x00eof\x00exec\x00exit\x00fblocked\x00fconfigure\x00fcopy\x00fileevent\x00flush\x00gets\x00glob\x00open\x00pid\x00puts\x00pwd\x00read\x00seek\x00socket\x00source\x00tell\x00time\x00unload\x00update\x00vwait\x00abs\x00acos\x00asin\x00atan\x00atan2\x00bool\x00ceil\x00cos\x00cosh\x00double\x00entier\x00exp\x00floor\x00fmod\x00hypot\x00int\x00isqrt\x00log\x00log10\x00pow\x00rand\x00round\x00sin\x00sinh\x00sqrt\x00srand\x00tan\x00tanh\x00wide\x00~\x00integer\x00!\x00+\x00*\x00&\x00|\x00^\x00**\x00<<\x00integer shift\x00>>\x00%\x00integer integer\x00!=\x00value value\x00ne\x00in\x00value list\x00ni\x00-\x00value ?value ...?\x00/\x00<\x00<=\x00>\x00>=\x00==\x00Tcl_CallFrame must not be smaller than CallFrame\x00::errorInfo\x00UP\x00CALL\x00INNER\x00::errorCode\x00TCL_PKG_PREFER_LATEST\x00TCL_INTERP_DEBUG_FRAME\x00Tcl_CreateInterp: can't create global namespace\x00builtin command with NULL object command proc and a NULL compile proc\x00::tcl::Bgerror\x00::tcl::unsupported::disassemble\x00::tcl::unsupported::getbytecode\x00::tcl::unsupported::representation\x00::tcl::unsupported::assemble\x00::tcl::unsupported::inject\x00::tcl::unsupported::corotype\x00::tcl::unsupported::timerate\x00::tcl::unsupported\x00::tcl::mathfunc\x00Can't create math function namespace\x00::tcl::mathfunc::\x00::tcl::mathop\x00can't create math operator namespace\x00::tcl::mathop::\x00failed to create math operator %s\x00tcl_platform\x00engine\x00Tcl\x00littleEndian\x00bigEndian\x00byteOrder\x00wordSize\x00pointerSize\x00tcl_patchLevel\x008.6.11\x00tcl_version\x008.6\x00tcl_precision\x00%s\x00Assoc Data Key #%d\x00DeleteInterpProc called with active evals\x00DeleteInterpProc called on interpreter not marked deleted\x00DeleteInterpProc: popping rootCallFrame with other frames on top\x00Argument location tracking table not empty\x00::\x00cannot use namespace qualifiers in hidden command token (rename)\x00VALUE\x00HIDDENTOKEN\x00can only hide global namespace commands (use rename then hide)\x00HIDE\x00NON_GLOBAL\x00hidden command named \"%s\" already exists\x00ALREADY_HIDDEN\x00cannot expose to a namespace (use expose to toplevel, then rename)\x00EXPOSE\x00unknown hidden command \"%s\"\x00LOOKUP\x00trying to expose a non-global command namespace command\x00exposed command \"%s\" already exists\x00COMMAND_EXISTS\x00delete\x00can't %s \"%s\": command doesn't exist\x00COMMAND\x00can't rename to \"%s\": bad command name\x00can't rename to \"%s\": command already exists\x00OPERATION\x00RENAME\x00TARGET_EXISTS\x00argument to math function didn't have numeric value\x00tcl::mathfunc::\x00unknown math function \"%s\"\x00MATHFUNC\x00::info functions \x00attempt to call eval in deleted interpreter\x00IDELETE\x00too many nested evaluations (infinite loop?)\x00LIMIT\x00STACK\x00IUNWIND\x00eval unwound\x00ICANCEL\x00eval canceled\x00CANCEL\x00attempt to invoke a deleted command\x00EVAL\x00DELETEDCOMMAND\x00Tcl_EvalObjv: NULL global namespace pointer\x00::unknown\x00invalid command name \"%s\"\x00\n    (enter trace on \"\x00...\x00\")\x00\n    (leave trace on \"\x00\n    (expanding word %d)\x00TclArgumentBC Enter/Release Mismatch\x00invoked \"break\" outside of a loop\x00invoked \"continue\" outside of a loop\x00command returned bad code: %d\x00UNEXPECTED_RESULT_CODE\x00illegal argument vector\x00TclObjInvoke: called without TCL_INVOKE_HIDDEN\x00invalid hidden command name \"%s\"\x00NONE\x00square root of negative argument\x00ARITH\x00DOMAIN\x00domain error: argument not in valid range\x00not enough\x00too many\x00%s arguments for math function \"%s\"\x00WRONGARGS\x00tailcall cannot find the right splicing spot: should not happen!\x00?command? ?arg ...?\x00tailcall can only be called from a proc, lambda or method\x00TAILCALL\x00ILLEGAL\x00Adding a callback without an objProc?!\x00?returnValue?\x00yield can only be called in a coroutine\x00COROUTINE\x00ILLEGAL_YIELD\x00command ?arg ...?\x00yieldto can only be called in a coroutine\x00yieldto called in deleted namespace\x00YIELDTO_IN_DELETED\x00cannot yield: C stack busy\x00CANT_YIELD\x00Yield received an option which is not implemented\x00can only get coroutine type of a coroutine\x00active\x00unknown coroutine type\x00BAD_TYPE\x00coroName cmd ?arg1 arg2 ...?\x00can only inject a command into a coroutine\x00can only inject a command into a suspended coroutine\x00ACTIVE\x00coroutine \"%s\" is already running\x00BUSY\x00?arg?\x00wrong coro nargs; how did we get here? not implemented!\x00name cmd ?arg ...?\x00can't create procedure \"%s\": unknown namespace\x00NAMESPACE\x00can't create procedure \"%s\": bad procedure name\x00bytearray\x00encode\x00decode\x00hex\x00uuencode\x00base64\x00%s called with shared object\x00Tcl_SetByteArrayObj\x00Tcl_SetByteArrayLength\x00max size for a Tcl value (%d bytes) exceeded\x00TclAppendBytesToByteArray\x00%s must be called with definite number of bytes to append\x00binary\x00binary encode\x00binary decode\x00formatString ?arg ...?\x00number of elements in list does not match count\x00cannot use \"*\" in format string with \"x\"\x00hexadecimal\x00expected %s string but got \"%s\" instead\x00missing count for \"@\" field specifier\x00not enough arguments for all format specifiers\x00bad field specifier \"%s\"\x00value formatString ?varName ...?\x00unexpected fallthrough\x00data\x00-strict\x00?options? data\x00option\x00invalid hexadecimal digit \"%c\" at position %d\x00BINARY\x00DECODE\x00INVALID\x00-maxlen\x00-wrapchar\x00?-maxlen len? ?-wrapchar char? data\x00line length out of range\x00ENCODE\x00LINE_LENGTH\x00limit hit\x00invalid wrapchar; will defeat decoding\x00WRAPCHAR\x00short uuencode data\x00SHORT\x00invalid uuencode character \"%c\" at position %d\x00invalid base64 character \"%c\" at position %d\x00unable to alloc %u bytes\x00unable to alloc %u bytes, %s line %d\x00unable to realloc %u bytes\x00unable to realloc %u bytes, %s line %d\x00%a %b %d %H:%M:%S %Z %Y\x00BCE\x00C\x00cannot use -gmt and -timezone in same call\x00CE\x00dayOfMonth\x00dayOfWeek\x00dayOfYear\x00era\x00:GMT\x00gregorian\x00integer value too large to represent\x00iso8601Week\x00iso8601Year\x00julianDay\x00localSeconds\x00month\x00seconds\x00tzName\x00tzOffset\x00year\x00getenv\x00Oldscan\x00ConvertLocalToUTC\x00GetDateFields\x00GetJulianDayFromEraYearMonthDay\x00GetJulianDayFromEraYearWeekDay\x00ParseFormatArgs\x00clicks\x00microseconds\x00milliseconds\x00::tcl::clock::\x00clock\x00dict tzdata changeover\x00key \"localseconds\" not found in dictionary\x00seconds tzdata changeover\x00expected key(s) not found in dictionary\x00dict changeover\x00loop in ConvertLocalToUTCUsingTable\x00time value too large/small to represent\x00number too large to represent as a Posix time\x00CLOCK\x00argTooLarge\x00localtime failed (clock value may be too large/small to represent)\x00localtimeFailed\x00%02d\x00-milliseconds\x00-microseconds\x00?-switch?\x00-format\x00-gmt\x00-locale\x00-timezone\x00clock format clockval ?-format string? ?-gmt boolean? ?-locale LOCALE? ?-timezone ZONE?\x00wrongNumArgs\x00badOption\x00gmtWithTimezone\x00TZ\x00string ?in? ?pattern body ...? ?default body?\x00extra case pattern with no body\x00default\x00\n    (\"%.50s\" arm line %d)\x00script ?resultVarName? ?optionVarName?\x00\n    (\"catch\" body line %d)\x00?dirName?\x00couldn't change working directory to \"%s\": %s\x00convertfrom\x00convertto\x00dirs\x00names\x00system\x00encoding\x00::tcl::encoding::\x00tcl:encoding:\x00___tmp\x00problem making 'encoding %s' safe: %s\x00problem making 'encoding' safe: %s\x00not allowed to invoke subcommand %s of encoding\x00SAFE\x00SUBCOMMAND\x00?encoding? data\x00?dirList?\x00expected directory list but got \"%s\"\x00ENCODING\x00BADPATH\x00?encoding?\x00message ?errorInfo? ?errorCode?\x00-code error -level 0\x00-errorinfo\x00-errorcode\x00\n    (\"eval\" body line %d)\x00arg ?arg ...?\x00?returnCode?\x00atime\x00attributes\x00channels\x00copy\x00dirname\x00executable\x00exists\x00extension\x00isdirectory\x00isfile\x00link\x00lstat\x00mtime\x00mkdir\x00nativename\x00normalize\x00owned\x00pathtype\x00readable\x00readlink\x00rootname\x00separator\x00size\x00stat\x00tail\x00tempfile\x00type\x00volumes\x00writable\x00file\x00::tcl::file::\x00tcl:file:\x00problem making 'file %s' safe: %s\x00problem making 'file' safe: %s\x00not allowed to invoke subcommand %s of file\x00name ?time?\x00could not set access time for file \"%s\": %s\x00could not set modification time for file \"%s\": %s\x00name varName\x00unrecognised path\x00FILESYSTEM\x00name ?name ...?\x00could not read \"%s\": no such file or directory\x00PATHSPLIT\x00NONESUCH\x00absolute\x00relative\x00volumerelative\x00?name?\x00\\\x00could not read \"%s\": %s\x00dev\x00ino\x00nlink\x00uid\x00gid\x00blocks\x00blksize\x00ctime\x00mode\x00directory\x00characterSpecial\x00blockSpecial\x00fifo\x00unknown\x00start test next command\x00\n    (\"for\" body line %d)\x00\n    (\"for\" initial command)\x00\n    (\"for\" loop-end command)\x00varList list ?varList list ...? command\x00%s varlist is empty\x00LMAP\x00FOREACH\x00NEEDVARS\x00\n    (\"%s\" body line %d)\x00\n    (setting %s loop variable \"%s\")\x00args\x00body\x00cmdcount\x00commands\x00complete\x00errorstack\x00frame\x00functions\x00globals\x00hostname\x00level\x00library\x00loaded\x00locals\x00nameofexecutable\x00patchlevel\x00procs\x00sharedlibextension\x00tclversion\x00vars\x00wrong # args: no expression after \"%s\" argument\x00then\x00elseif\x00else\x00wrong # args: extra words after \"else\" clause in \"if\" command\x00wrong # args: no script following \"%s\" argument\x00varName ?increment?\x00info\x00procname\x00\"%s\" isn't a procedure\x00PROCEDURE\x00?pattern?\x00*[?\\\x00command\x00procname arg varname\x00procedure \"%s\" doesn't have an argument \"%s\"\x00ARGUMENT\x00?interp?\x00varName\x00?number?\x00Broken frame level calculation\x00bad level \"%s\"\x00LEVEL\x00precompiled\x00line\x00cmd\x00TCL_LOCATION_PROC found in standard frame\x00\t    ::apply [::list {{pattern *}} {\n\t\t::set cmds {}\n\t\t::foreach cmd [::info commands ::tcl::mathfunc::$pattern] {\n\t\t    ::lappend cmds [::namespace tail $cmd]\n\t\t}\n\t\t::foreach cmd [::info commands tcl::mathfunc::$pattern] {\n\t\t    ::set cmd [::namespace tail $cmd]\n\t\t    ::if {$cmd ni $cmds} {\n\t\t\t::lappend cmds $cmd\n\t\t    }\n\t\t}\n\t\t::return $cmds\n\t    } [::namespace current]] \x00unable to determine name of host\x00HOSTNAME\x00UNKNOWN\x00tcl_library\x00no library has been specified for Tcl\x00VARIABLE\x00?filename?\x00list ?joinString?\x00 \x00list ?varName ...?\x00list ?index ...?\x00list index ?element ...?\x00list first last\x00count ?value ...?\x00bad count \"%d\": must be integer >= 0\x00LREPEAT\x00NEGARG\x00max length of a Tcl list (%d elements) exceeded\x00MEMORY\x00list first last ?element ...?\x00-all\x00-ascii\x00-bisect\x00-decreasing\x00-dictionary\x00-exact\x00-glob\x00-increasing\x00-index\x00-inline\x00-integer\x00-nocase\x00-not\x00-real\x00-regexp\x00-sorted\x00-start\x00-subindices\x00?-option value ...? list pattern\x00missing starting index\x00MISSING\x00\"-index\" option must be followed by list index\x00index \"%s\" cannot select an element from any list\x00INDEXOUTOFRANGE\x00\n    (-index option item number %d)\x00-subindices cannot be used without -index option\x00LSEARCH\x00BAD_OPTION_MIX\x00-bisect is not compatible with -all or -not\x00listVar ?index? ?index ...? value\x00-command\x00-indices\x00-stride\x00-unique\x00?-option value ...? list\x00\"-command\" option must be followed by comparison command\x00\"-stride\" option must be followed by stride length\x00stride length must be at least 2\x00LSORT\x00BADSTRIDE\x00list size must be a multiple of the stride length\x00when used with \"-stride\", the leading \"-index\" value must be within the group\x00BADINDEX\x00no enough memory to proccess sort of %d items\x00\n    (-compare command)\x00-compare command returned non-integer result\x00COMPARISONFAILED\x00element %d missing from sublist \"%s\"\x00INDEXFAILED\x00-about\x00-expanded\x00-line\x00-linestop\x00-lineanchor\x00--\x00?-option ...? exp string ?matchVar? ?subMatchVar ...?\x00regexp match variables not allowed when using -inline\x00REGEXP\x00MIX_VAR_INLINE\x00?-option ...? exp string subSpec ?varName?\x00&\\\x00*+?{}()[].\\|^$\x00oldName newName\x00?-encoding name? fileName\x00-encoding\x00 \n\t\r\x00string ?splitChars?\x00needleString haystackString ?startIndex?\x00string charIndex\x00control\x00false\x00true\x00wideinteger\x00wordchar\x00-failindex\x00class ?-strict? ?-failindex var? str\x00class\x00?-strict? ?-failindex var? str\x00?-nocase? charMap string\x00bad option \"%s\": must be -nocase\x00INDEX\x00char map list unbalanced\x00MAP\x00UNBALANCED\x00?-nocase? pattern string\x00string first last\x00string count\x00result exceeds max size for a Tcl value (%d bytes)\x00string size overflow, out of memory allocating %u bytes\x00string first last ?string?\x00string\x00string index\x00?-nocase? ?-length int? string1 string2\x00-length\x00bad option \"%s\": must be -nocase or -length\x00string ?first? ?last?\x00string ?chars?\x00bytelength\x00cat\x00compare\x00equal\x00first\x00index\x00is\x00last\x00length\x00map\x00match\x00range\x00repeat\x00replace\x00tolower\x00toupper\x00totitle\x00trim\x00trimleft\x00trimright\x00wordend\x00wordstart\x00-nobackslashes\x00-nocommands\x00-novariables\x00Tcl_SubstObjCmd: bad option index to SubstOptions\x00?-nobackslashes? ?-nocommands? ?-novariables? string\x00-indexvar\x00-matchvar\x00bad option \"%s\": %s option already found\x00SWITCH\x00DOUBLEOPT\x00missing variable name argument to %s option\x00NOVAR\x00?-option ...? string ?pattern body ...? ?default body?\x00%s option requires -regexp option\x00MODERESTRICTION\x00?-option ...? string {?pattern body ...? ?default body?}\x00extra switch pattern with no body\x00BADARM\x00, this may be due to a comment incorrectly placed outside of a switch body - see the \"switch\" documentation\x00COMMENT?\x00no body specified for pattern \"%s\"\x00FALLTHROUGH\x00fall-out when searching for body to match pattern\x00\n    (\"%.*s%s\" arm line %d)\x00type message\x00type must be non-empty list\x00THROW\x00BADEXCEPTION\x00-code error -level 0 -errorcode\x00command ?count?\x00per\x00iteration\x00-direct\x00-overhead\x00-calibrate\x00?-direct? ?-calibrate? ?-overhead double? command ?time ?max-count??\x00µs/#-overhead\x00%.*f\x00%.3f\x00net-ms\x00µs/#\x00#\x00#/sec\x00finally\x00on\x00trap\x00body ?handler ...? ?finally script?\x00handler type\x00finally clause must be last\x00TRY\x00FINALLY\x00NONTERMINAL\x00wrong # args to finally clause: must be \"... finally script\"\x00wrong # args to on clause: must be \"... on code variableList script\"\x00ON\x00wrong # args to trap clause: must be \"... trap pattern variableList script\"\x00TRAP\x00bad prefix '%s': must be a list\x00EXNFORMAT\x00last non-finally clause must not have a body of \"-\"\x00BADFALLTHROUGH\x00-during\x00\n    (\"%s ... %s\" handler line %d)\x00\n    (\"%s ... finally\" body line %d)\x00test command\x00\n    (\"while\" body line %d)\x00ForeachInfo\x00NewForeachInfo\x00DictUpdateInfo\x000\x001\x00list must have an even number of elements\x00-errorcode {TCL ARGUMENT FORMAT}\x00bad stack depth computations: is %i, should be %i\x00TclCompileCatchCmd: bad jump distance %d\x00TclCompileDictCmd(update): bad jump distance %d\x00, \x00%%v%u\x00variables\x00data=[\x00], loop=%%v%u\x00,\x00\n\t\t it%%v%u\t[\x00]\x00jumpOffset=%+d, vars=\x00[\x00loop\x00assign\x00jumpOffset\x00TclCompileIfCmd: unexpected opcode \"%d\" updating ifFalse jump\x00object\x00::namespace inscope \x00::namespace\x00inscope\x00:\x002\x00end\x00-options\x00namespace\x00JumptableInfo\x00word\x003\x00TclCompileSubstCmd: bad start jump distance %d\x00unexpected token type in TclCompileSubstCmd: %d\x00TclCompileSubstCmd: bad break jump distance %d\x00TclCompileSubstCmd: bad continue jump distance %d\x00TclCompileSubstCmd: bad return jump distance %d\x00TclCompileSubstCmd: bad other jump distance %d\x00TclCompileSubstCmd: bad ok jump distance %d\x00TclCompileSubstCmd: bad end jump distance %d\x00unknown switch mode: %d\x00\n\t\t\x00\"%s\"->pc %d\x00mapping\x00-errorcode {TCL OPERATION THROW BADEXCEPTION}\x00-level 0 -code 0\x00-nocomplain\x00-1\x001.0\x00_@_\x00not enough memory to parse expression\x00NOMEM\x00invalid character \"%.*s\"\x00BADCHAR\x00incomplete operator \"%.*s\"\x00PARTOP\x00invalid bareword \"%.*s%s\"\x00should be \"$%.*s%s\" or \"{%.*s%s}\"\x00 or \"%.*s%s(...)\" or ...\x00BAREWORD\x00 (invalid binary number?)\x00BADNUMBER\x00 (invalid octal number?)\x00OCTAL\x00missing operator at %s\x00max # of tokens for a Tcl parse (%d) exceeded\x00invalid character \"$\"\x00missing close-bracket\x00empty subexpression at %s\x00EMPTY\x00unbalanced open paren\x00missing function argument at %s\x00empty expression\x00unbalanced close paren\x00missing operand at %s\x00missing operator \":\" at %s\x00unexpected operator \":\" without preceding \"?\"\x00SURPRISE\x00unexpected \",\" outside function argument list\x00\nin expression \"%s%.*s%.*s%s%s%.*s%s\"\x00;\n\x00\n    (parsing expression \"%.*s%s\")\x00PARSE\x00EXPR\x00done\x00push1\x00push4\x00invokeStk1\x00invokeStk4\x00loadScalar1\x00loadScalar4\x00loadScalarStk\x00loadArray1\x00loadArray4\x00storeScalar1\x00storeScalar4\x00storeScalarStk\x00storeArray1\x00storeArray4\x00incrScalar1\x00incrScalarStk\x00incrArray1\x00incrScalar1Imm\x00incrScalarStkImm\x00incrArray1Imm\x00jump1\x00jumpTrue1\x00jumpFalse1\x00callBuiltinFunc1\x00callFunc1\x00foreach_start4\x00foreach_step4\x00beginCatch4\x00appendScalar1\x00appendScalar4\x00appendArray1\x00appendArray4\x00lappendScalar1\x00lappendScalar4\x00lappendArray1\x00lappendArray4\x00returnImm\x00expandStart\x00expandStkTop\x00invokeExpanded\x00listRangeImm\x00startCommand\x00returnStk\x00dictFirst\x00dictNext\x00dictDone\x00dictUpdateStart\x00dictUpdateEnd\x00syntax\x00existScalar\x00returnCodeBranch\x00unsetScalar\x00strrangeImm\x00invokeReplace\x00expandDrop\x00foreach_start\x00foreach_step\x00foreach_end\x00lmap_collect\x00tclooNext\x00tclooNextClass\x00yieldToInvoke\x00strclass\x00bytecode\x00substcode\x00::tcl\x00::tcl::\x00TclCompileScript() called on uninitialized CompileEnv\x00too many nested compilations (infinite loop?)\x00Unexpected token type in TclCompileTokens: %d; %.*s\x00TclInitByteCodeObj() called on uninitialized CompileEnv\x00EnterCmdStartData: bad command index %d\x00EnterCmdStartData: cmd map not sorted by code offset\x00EnterCmdExtentData: bad command index %d\x00EnterCmdExtentData: missing start data for command %d\x00trying to add 'break' fixup to full exception range\x00trying to add 'continue' fixup to full exception range\x00trying to finalize a loop exception range\x00TclFixupForwardJump: bad ExceptionRange type %d\x00unexpected opcode\x00GetCmdLocEncodingSize: bad code offset\x00GetCmdLocEncodingSize: bad code length\x00GetCmdLocEncodingSize: bad source length\x00EncodeCmdLocMap: bad code offset\x00EncodeCmdLocMap: bad code length\x00EncodeCmdLocMap: bad source length\x00%s.\n%s: %s\x00Tcl_RegisterConfig\x00Unable to create namespace for package configuration.\x00::pkgconfig\x00%s: %s\x00Unable to create query command for package configuration\x00get\x00subcommand ?arg?\x00subcommand\x00package not known\x00FATAL\x00PKGCFG_BASE\x00key\x00key not known\x00CONFIG\x00insufficient memory to create list\x00QueryConfigObjCmd: Unknown subcommand to 'pkgconfig'. This can't happen\x00tclPackageAboutDict\x00Deleting\x00syntax error\x00Error: discarding\x00Error: popping\x00memory exhausted\x00Cleanup: discarding lookahead\x00Cleanup: popping\x00january\x00february\x00march\x00april\x00may\x00june\x00july\x00august\x00september\x00sept\x00october\x00november\x00december\x00sunday\x00monday\x00tuesday\x00tues\x00wednesday\x00wednes\x00thursday\x00thur\x00thurs\x00friday\x00saturday\x00fortnight\x00week\x00day\x00hour\x00minute\x00min\x00second\x00sec\x00tomorrow\x00yesterday\x00today\x00now\x00this\x00next\x00ago\x00epoch\x00stardate\x00gmt\x00ut\x00utc\x00uct\x00wet\x00bst\x00wat\x00at\x00nft\x00nst\x00ndt\x00ast\x00adt\x00est\x00edt\x00cst\x00cdt\x00mst\x00mdt\x00pst\x00pdt\x00yst\x00ydt\x00hst\x00hdt\x00ahst\x00nt\x00idlw\x00cet\x00cest\x00met\x00mewt\x00mest\x00swt\x00sst\x00fwt\x00fst\x00eet\x00bt\x00it\x00zp4\x00zp5\x00ist\x00zp6\x00wast\x00wadt\x00jt\x00cct\x00jst\x00jdt\x00kst\x00kdt\x00cast\x00cadt\x00east\x00eadt\x00gst\x00nzt\x00nzst\x00nzdt\x00idle\x00dst\x00a\x00b\x00c\x00d\x00e\x00f\x00g\x00h\x00i\x00k\x00l\x00m\x00n\x00o\x00p\x00q\x00r\x00s\x00t\x00u\x00v\x00w\x00x\x00y\x00z\x00 (characters \x00am\x00a.m.\x00pm\x00p.m.\x00stringToParse baseYear baseMonth baseDay\x00DATE\x00Unknown status returned from date parser. Please report this error as a bug in Tcl.\x00BUG\x00more than one date in string\x00MULTIPLE\x00more than one time of day in string\x00more than one time zone in string\x00more than one weekday in string\x00more than one ordinal month in string\x00dict\x00create\x00filter\x00keys\x00merge\x00remove\x00values\x00with\x00missing value to go with key\x00DICTIONARY\x00key \"%s\" not known in dictionary\x00DICT\x00Tcl_DictObjPut\x00Tcl_DictObjRemove\x00concurrent dictionary modification and search\x00Tcl_DictObjPutKeyList\x00%s called with empty key list\x00Tcl_DictObjRemoveKeyList\x00?key value ...?\x00dictionary ?key ...?\x00dictionary ?key value ...?\x00dictionary ?pattern?\x00dictionary\x00dictionary key ?key ...?\x00dictVarName key ?increment?\x00\n    (reading increment)\x00dictVarName key ?value ...?\x00{keyVarName valueVarName} dictionary script\x00must have exactly two variable names\x00SYNTAX\x00\n    (\"dict for\" body line %d)\x00\n    (\"dict map\" body line %d)\x00dictVarName key ?key ...? value\x00dictVarName key ?key ...?\x00dictionary filterType ?arg ...?\x00filterType\x00dictionary script {keyVarName valueVarName} filterScript\x00\n    (\"dict filter\" filter script key variable)\x00\n    (\"dict filter\" filter script value variable)\x00\n    (\"dict filter\" script line %d)\x00dictVarName key varName ?key varName ...? script\x00\n    (body of \"dict update\")\x00dictVarName ?key ...? script\x00\n    (body of \"dict with\")\x00instname\x00ByteCode 0x%s, refCt %u, epoch %u, interp 0x%s (epoch %u)\n\x00  Source \x00\n  File \"%s\" Line %d\x00\n  Cmds %d, src %d, inst %d, litObjs %u, aux %d, stkDepth %u, code/src %.2f\n\x00  Proc 0x%s, refCt %d, args %d, compiled locals %d\n\x00, scalar\x00, array\x00, link\x00, arg\x00, temp\x00, resolved\x00      slot %d%s%s%s%s%s%s\x00, \"%s\"\n\x00  Exception ranges %d, depth %d:\n\x00      %d: level %d, %s, pc %d-%d, \x00continue %d, break %d\n\x00catch %d\n\x00DisassembleByteCodeObj: bad ExceptionRange type %d\x00    \x00  Commands %d:\x00     \x00\n   \x00%s%4d: pc %d-%d, src %d-%d\x00  Command %d: \x00(%u) %s \x00%+d \x00%u \x00, %u cmds start here\x00pc %u\x00next cmd at pc %u\x00%d \x00end \x00end-%d \x00FormatInstruction: bad local var index %u (%u locals)\x00temp var %u\x00var \x00%%v%u \x00%s \x00\t# \x00\t# %s\x00\t\t[\x00]\n\x00InnerContext: bad tos -- appending null object\x00InnerContext: bad tos -- appending freed object %p\x00inst_%d\x00\"\"\x00\"\x00\\\"\x00\\f\x00\\n\x00\\r\x00\\t\x00\\v\x00\\U%08x\x00\\u%04x\x00%c\x00scalar\x00array\x00arg\x00temp\x00resolved\x00pc %d\x00@%d\x00%%%d\x00.%d\x00.end\x00.end-%d\x00?%d\x00=%s\x00opcode %d with more than zero 'no' operands\x00type %s level %d from %d to %d break %d continue %d\x00type %s level %d from %d to %d catch %d\x00codefrom\x00codeto\x00scriptfrom\x00scriptto\x00literals\x00exception\x00instructions\x00auxiliary\x00stackdepth\x00exceptdepth\x00initiallinenumber\x00sourcefile\x00constructor\x00destructor\x00lambda\x00method\x00objmethod\x00type ...\x00lambdaTerm\x00procName\x00PROC\x00className\x00\"%s\" is not a class\x00CLASS\x00\"%s\" has no defined constructor\x00DISASSEMBLE\x00CONSRUCTOR\x00body not available for this kind of constructor\x00METHODTYPE\x00body of constructor\x00\"%s\" has no defined destructor\x00DESRUCTOR\x00body not available for this kind of destructor\x00body of destructor\x00className methodName\x00objectName methodName\x00unknown method \"%s\"\x00METHOD\x00body not available for this kind of method\x00body of method\x00may not disassemble prebuilt bytecode\x00BYTECODE\x00*.enc\x00identity\x00utf-8\x00unicode\x00iso8859-1\x00FreeEncoding: refcount problem !!!\x00.enc\x00unknown encoding \"%s\"\x00invalid encoding file \"%s\"\x00init\x00final\x00EscapeToUtfProc: invalid sub table\x00configure\x00-map\x00-parameters\x00-prefixes\x00-subcommands\x00-unknown\x00-namespace\x00ensembleCommand\x00tried to manipulate ensemble of deleted namespace\x00ENSEMBLE\x00DEAD\x00subcommand ?arg ...?\x00?option value ...?\x00ensemble subcommand implementations must be non-empty lists\x00EMPTY_TARGET\x00cmdname\x00cmdname ?-option value ...? ?arg ...?\x00option -namespace is read-only\x00READ_ONLY\x00unexpected ensemble command\x00command is not an ensemble\x00NOT_ENSEMBLE\x00ensemble target is not a fully-qualified command\x00UNQUALIFIED_TARGET\x00\"%s\" is not an ensemble command\x00tcl:\x00invalid ensemble name '%s'\x00unable to find or create %s namespace!\x00ensemble activated for deleted namespace\x00full name %s not found in supposedly synchronized hash\x00unknown subcommand \"%s\": namespace %s does not export any commands\x00 or ambiguous\x00unknown%s subcommand \"%s\": must be \x00or %s\x00SpellFix: programming error\x00unknown subcommand handler deleted its ensemble\x00UNKNOWN_DELETED\x00\n    while parsing result of ensemble unknown subcommand handler\x00unknown subcommand handler returned bad code: \x00\n    result of ensemble unknown subcommand handler: \x00UNKNOWN_RESULT\x00\n    (ensemble unknown subcommand handler)\x00env\x00HOME\x00no such variable\x00tclBgError\x00error in background error handler:\n\x00msg options\x00-level\x00missing return option \"-level\"\x00-code\x00missing return option \"-code\"\x00bgerror\x00errorInfo\x00bgerror failed to handle background error.\n\x00    Original error: \x00    Error in bgerror: \x00TclSetBgErrorHandler: NULL cmdPrefix argument\x00OS exit failed!\x00TclInitSubsystems called while exiting\x00exit handlers were created during Tcl_Finalize\x00limit exceeded\x00can't wait for variable \"%s\": would wait forever\x00EVENT\x00NO_SOURCES\x00idletasks\x00Tcl_UpdateObjCmd: bad option index to UpdateOptions\x00?idletasks?\x00||\x00&&\x00exprcode\x00dictIterator\x00freeing an execStack which is still in use\x00Deleting execEnv with pending TEOV callbacks!\x00Deleting execEnv with existing coroutine\x00STACK: Reallocating with no previous alloc\x00STACK: Stack after current is in use\x00STACK: Stack after current is not last\x00TclStackFree: incorrect freePtr (%p != %p). Call out of sequence?\x00TclStackRealloc: incorrect ptr. Call out of sequence?\x00Tcl_EvalObj: compiled script jumped interps\x00TclIncrObj\x00tailcall can only be called from a proc or lambda\x00TclNRExecuteByteCode: unrecognized builtin function code %d\x00\n    (reading value of variable to increment)\x00access\x00array set\x00variable isn't array\x00WRITE\x00ARRAY\x00STACK_LEVEL\x00self may only be called from inside a method\x00OO\x00CONTEXT_REQUIRED\x00nextto may only be called from inside a method\x00CLASS_REQUIRED\x00%s implementation by \"%s\" not reachable from here\x00CLASS_NOT_REACHABLE\x00%s has no non-filter implementation by \"%s\"\x00CLASS_NOT_THERE\x00next may only be called from inside a method\x00no next %s implementation\x00NOTHING_NEXT\x00negative shift argument\x00INST_RETURN_CODE_BRANCH: TOS not a return code!\x00INST_RETURN_CODE_BRANCH: TOS is TCL_OK!\x00Should not happen!\x00mis-issued dictFirst!\x00mis-issued dictNext!\x00dictUpdateStart argument length mismatch\x00clockRead instruction with unknown clock#\x00TclNRExecuteByteCode: unrecognized opCode %u\x00divide by zero\x00DIVZERO\x00exponentiation of zero by negative power\x00\nTclNRExecuteByteCode: abnormal return at pc %u: stack top %d < entry stack top %d\n\x00TclNRExecuteByteCode execution failure: end stack top < start stack top\x00exponent too large\x00unexpected number type\x00empty string\x00invalid octal number\x00non-numeric string\x00non-numeric floating-point value\x00floating-point value\x00(big) integer\x00can't use %s as operand of \"%s\"\x00LocSearch failure\x00floating-point value too small to represent\x00UNDERFLOW\x00floating-point value too large to represent\x00OVERFLOW\x00unknown floating-point error, errno = %d\x00?-option value ...? source ?source ...? target\x00copying\x00renaming\x00error %s: target \"%s\" is not a directory\x00can't create directory \"%s\": %s\x00error deleting \"%s\": directory not empty\x00error deleting unknown file: %s\x00error deleting \"%s\": %s\x00can't overwrite file \"%s\" with directory \"%s\"\x00can't overwrite directory \"%s\" with file \"%s\"\x00u+w\x00-permissions\x00error renaming \"%s\" to \"%s\": trying to rename a volume or move a directory into itself\x00::tcl::CopyDirectory\x00can't unlink \"%s\": %s\x00error %s \"%s\"\x00 to \"%s\"\x00: \"%s\"\x00: %s\x00-force\x00name ?-option value ...?\x00must not update objPtrRef's variable and return non-NULL\x00bad option \"%s\", there are no file attributes in this filesystem\x00FATTR\x00value for \"%s\" missing\x00NOVALUE\x00?-linktype? linkname ?target?\x00-symbolic\x00-hard\x00could not create new link \"%s\": that path already exists\x00could not create new link \"%s\": no such file or directory\x00could not create new link \"%s\": target \"%s\" doesn't exist\x00could not create new link \"%s\" pointing to \"%s\": %s\x00could not read link \"%s\": %s\x00?nameVar? ?template?\x00can't create temporary file: %s\x00//?/UNC/\x00//?/\x00//\x00./\x00/\\:\x00couldn't find HOME environment variable to expand path\x00FILENAME\x00NO_HOME\x00user \"%s\" doesn't exist\x00USER\x00-directory\x00-join\x00-path\x00-tails\x00-types\x00missing argument to \"-directory\"\x00\"-directory\" may only be used once\x00\"-directory\" cannot be used with \"-path\"\x00GLOB\x00BADOPTIONCOMBINATION\x00missing argument to \"-path\"\x00\"-path\" may only be used once\x00\"-path\" cannot be used with \"-dictionary\"\x00missing argument to \"-types\"\x00\"-tails\" must be used with either \"-directory\" or \"-path\"\x00\\/\x00\\[]*?{}\x00readonly\x00hidden\x00macintosh\x00creator\x00bad argument to \"-types\": %s\x00BAD\x00only one MacOS type or creator argument to \"-types\" allowed\x00no files matched glob pattern%s \"\x00%s%s\x00NOMATCH\x00/\\\x00Called TclGlob with TCL_GLOBMODE_TAILS and pathPrefix==NULL\x00.\x00unmatched open-brace in file name\x00BALANCE\x00unmatched close-brace in file name\x00*[]?\\\x00invalid sharing of Tcl_Obj on C stack\x00malformed bucket chain in Tcl_DeleteHashEntry\x00%d entries in table, %d buckets\n\x00number of buckets with %d entries: %d\n\x00number of buckets with %d or more entries: %d\n\x00average search distance for entry: %.1f\x00called %s on deleted table\x00Tcl_FindHashEntry\x00Tcl_CreateHashEntry\x00::tcl::HistoryObjs\x00::history\x00ambiguous \x00bad \x00 \"\x00\": no valid options\x00\": must be \x00 or \x00all\x00longest\x00::tcl::prefix\x00prefix\x00-error\x00-message\x00?options? table string\x00missing value for -message\x00NOARG\x00missing value for -error\x00error options must have an even number of elements\x00table string\x00 or \"\x00wrong # args: should be \"\x00ambiguous option \"%s\"\x00unrecognized argument \"%s\"\x00expected integer argument for \"%s\" but got \"%s\"\x00expected floating-point argument for \"%s\" but got \"%s\"\x00bad argument type %d in Tcl_ArgvInfo\x00\"%s\" option requires an additional argument\x00Command-specific options:\x00\n%s\x00\n %s:\x00\n\t\tDefault value: %d\x00\n\t\tDefault value: %g\x00%g\x00\n\t\tDefault value: \"%s\"\x00ok\x00bad completion code \"%s\": must be ok, error, return, break, continue, or an integer\x00RESULT\x00ILLEGAL_CODE\x00if {[namespace which -command tclInit] eq \"\"} {\n  proc tclInit {} {\n    global tcl_libPath tcl_library env tclDefaultLibrary\n    rename tclInit {}\n    if {[info exists tcl_library]} {\n\tset scripts {{set tcl_library}}\n    } else {\n\tset scripts {}\n\tif {[info exists env(TCL_LIBRARY)] && ($env(TCL_LIBRARY) ne {})} {\n\t    lappend scripts {set env(TCL_LIBRARY)}\n\t    lappend scripts {\nif {[regexp ^tcl(.*)$ [file tail $env(TCL_LIBRARY)] -> tail] == 0} continue\nif {$tail eq [info tclversion]} continue\nfile join [file dirname $env(TCL_LIBRARY)] tcl[info tclversion]}\n\t}\n\tif {[info exists tclDefaultLibrary]} {\n\t    lappend scripts {set tclDefaultLibrary}\n\t} else {\n\t    lappend scripts {::tcl::pkgconfig get scriptdir,runtime}\n\t}\n\tlappend scripts {\nset parentDir [file dirname [file dirname [info nameofexecutable]]]\nset grandParentDir [file dirname $parentDir]\nfile join $parentDir lib tcl[info tclversion]} \\\n\t{file join $grandParentDir lib tcl[info tclversion]} \\\n\t{file join $parentDir library} \\\n\t{file join $grandParentDir library} \\\n\t{file join $grandParentDir tcl[info patchlevel] library} \\\n\t{\nfile join [file dirname $grandParentDir] tcl[info patchlevel] library}\n\tif {[info exists tcl_libPath]\n\t\t&& [catch {llength $tcl_libPath} len] == 0} {\n\t    for {set i 0} {$i < $len} {incr i} {\n\t\tlappend scripts [list lindex \\$tcl_libPath $i]\n\t    }\n\t}\n    }\n    set dirs {}\n    set errors {}\n    foreach script $scripts {\n\tlappend dirs [eval $script]\n\tset tcl_library [lindex $dirs end]\n\tset tclfile [file join $tcl_library init.tcl]\n\tif {[file exists $tclfile]} {\n\t    if {[catch {uplevel #0 [list source $tclfile]} msg opts]} {\n\t\tappend errors \"$tclfile: $msg\n\"\n\t\tappend errors \"[dict get $opts -errorinfo]\n\"\n\t\tcontinue\n\t    }\n\t    unset -nocomplain tclDefaultLibrary\n\t    return\n\t}\n    }\n    unset -nocomplain tclDefaultLibrary\n    set msg \"Can't find a usable init.tcl in the following directories: \n\"\n    append msg \"    $dirs\n\n\"\n    append msg \"$errors\n\n\"\n    append msg \"This probably means that Tcl wasn't installed properly.\n\"\n    error $msg\n  }\n}\ntclInit\x00interp\x00InterpInfoDeleteProc: still exist commands\x00InterpInfoDeleteProc: still exist aliases\x00alias\x00aliases\x00cancel\x00children\x00debug\x00expose\x00hide\x00issafe\x00invokehidden\x00limit\x00marktrusted\x00recursionlimit\x00slaves\x00share\x00target\x00transfer\x00cmd ?arg ...?\x00slavePath slaveCmd ?masterPath masterCmd? ?arg ...?\x00path ?cmdPrefix?\x00-unwind\x00?-unwind? ?--? ?path? ?result?\x00-safe\x00?-safe? ?--? ?path?\x00interp%d\x00path ?-frame ?bool??\x00cannot delete the current interpreter\x00INTERP\x00DELETESELF\x00path arg ?arg ...?\x00path hiddenCmdName ?cmdName?\x00path cmdName ?hiddenCmdName?\x00-global\x00path ?-namespace ns? ?-global? ?--? cmd ?arg ..?\x00path limitType ?-option value ...?\x00limit type\x00path\x00path ?newlimit?\x00srcPath channelId destPath\x00path alias\x00alias \"%s\" in path \"%s\" not found\x00ALIAS\x00target interpreter for alias \"%s\" in path \"%s\" is not my descendant\x00TARGETSHROUDED\x00?path?\x00alias \"%s\" not found\x00cannot define or rename alias \"%s\": interpreter deleted\x00cannot define or rename alias \"%s\": would create a loop\x00ALIASLOOP\x00could not find interpreter \"%s\"\x00cmdPrefix must be list of length >= 1\x00BGERRORFORMAT\x00interpreter named \"%s\" already exists, cannot create\x00tcl_interactive\x00ChildObjCmd: interpreter has been deleted\x00aliasName ?targetName? ?arg ...?\x00?cmdPrefix?\x00?-frame ?bool??\x00hiddenCmdName ?cmdName?\x00cmdName ?hiddenCmdName?\x00?-namespace ns? ?-global? ?--? cmd ?arg ..?\x00limitType ?-option value ...?\x00?newlimit?\x00-frame\x00debug option\x00permission denied: safe interpreter cannot expose commands\x00UNSAFE\x00permission denied: safe interpreters cannot change recursion limit\x00recursion limit must be > 0\x00BADLIMIT\x00falling back due to new recursion limit\x00RECURSION\x00permission denied: safe interpreter cannot hide commands\x00not allowed to invoke hidden commands from safe interpreter\x00permission denied: safe interpreter cannot mark trusted\x00namespace eval ::tcl {namespace eval mathfunc {}}\x00::tcl::mathfunc::min\x00::tcl::mathfunc::max\x00os\x00osVersion\x00machine\x00user\x00tclDefaultLibrary\x00tcl_pkgPath\x00command count limit exceeded\x00COMMANDS\x00time limit exceeded\x00TIME\x00unknown type of resource limit\x00\n    (while waiting for event)\x00limit granularity must be positive\x00installing limit callback to the limited interpreter\x00-granularity\x00-value\x00limits on current interpreter inaccessible\x00SELF\x00?-option value ...?\x00granularity must be at least 1\x00BADVALUE\x00command limit value must be at least 0\x00-seconds\x00milliseconds must be at least 0\x00seconds must be at least 0\x00may only set -milliseconds if -seconds is not also being reset\x00BADUSAGE\x00may only reset -milliseconds if -seconds is also being reset\x00channel\x00TCL_FLUSH_NONBLOCKING_ON_EXIT\x00-blocking\x00tclIO\x00Tcl_RegisterChannel: channel without name\x00Tcl_RegisterChannel: duplicate channel names\x00illegal recursive call to close through close-handler of channel\x00stdin\x00stdout\x00stderr\x00can not find channel named \"%s\"\x00CHANNEL\x00channel type %s must define closeProc\x00channel type %s must define inputProc when used for reader channel\x00channel type %s must define outputProc when used for writer channel\x00channel type %s must define watchProc\x00channel type %s must define seekProc if defining wideSeekProc\x00couldn't find state for channel \"%s\"\x00reading and writing both disallowed for channel \"%s\"\x00could not flush channel \"%s\"\x00Channel released more than preserved\x00channel \"%s\" does not support OS handles\x00Reuse of ChannelBuffer! %p\x00unable to access channel: invalid channel\x00TclFlush, closed channel: queued output left\x00FlushChannel: damaged channel list\x00SpliceChannel: trying to add channel used in different list\x00called Tcl_Close on channel with refCount > 0\x00double-close of channels not supported by %ss\x00half-close of channels not supported by %ss\x00half-close not applicable to stack of transformations\x00write\x00Half-close of %s-side not possible, side not opened or already closed\x00ClosechanHalf, closed write-side of channel: queued output left\x00unknown output translation requested\x00Tcl_GetsObj: gotEOL reached with bufPtr==NULL\x00TclGetsObjBinary: gotEOL reached with bufPtr==NULL\x00binary encoding is not available\x00Buffer Underflow, BUFFER_PADDING not enough\x00unknown input translation %d\x00blocking buffering buffersize encoding eofchar translation\x00malformed option list in channel driver\x00bad option \"%s\": should be one of \x00-%s, \x00or -%s\x00-buffering\x00none\x00full\x00-buffersize\x00-eofchar\x00-translation\x00auto\x00cr\x00crlf\x00lf\x00unable to set channel options: background copy in progress\x00bad value for -buffering: must be one of full, line, or none\x00bad value for -eofchar: must be non-NUL ASCII character\x00bad value for -eofchar: should be a list of zero, one, or two elements\x00bad value for -translation: must be a one or two element list\x00platform\x00bad value for -translation: must be one of auto, binary, cr, lf, crlf, or platform\x00tcp\x00channelId event ?script?\x00event name\x00channel is not %s\x00channel \"%s\" is busy\x00writ\x00error %sing \"%s\": %s\x00error reading \"\x00\": \x00error writing \"\x00error setting blocking mode: %s\x00Tcl_SetChannelError: bad syntax of message\x00Defined newlevel not used in rewrite\x00Defined newcode not used in rewrite\x00-nonewline\x00nonewline\x00?-nonewline? ?channelId? string\x00channel \"%s\" wasn't opened for writing\x00error writing \"%s\": %s\x00channelId\x00error flushing \"%s\": %s\x00channelId ?varName?\x00channel \"%s\" wasn't opened for reading\x00error reading \"%s\": %s\x00channelId ?numChars?\x00?-nonewline? channelId\x00expected non-negative integer but got \"%s\"\x00NUMBER\x00start\x00current\x00channelId offset ?origin?\x00origin\x00error during seek on \"%s\": %s\x00channelId ?direction?\x00direction\x00channelId ?-option value ...?\x00-ignorestderr\x00-keepnewline\x00?-option ...? arg ?arg ...?\x00error reading output from command: %s\x00fileName ?access? ?permissions?\x000o\x00Tcl_OpenCmd: invalid mode value\x00tclTCPAcceptCallbacks\x00RegisterTcpServerCleanup: damaged accept record table\x00-async\x00-myaddr\x00-myport\x00-server\x00cannot set -async option for server sockets\x00no argument given for -myaddr option\x00no argument given for -myport option\x00no argument given for -server option\x00Tcl_SocketObjCmd: bad option index to SocketOptions\x00option -myport is not valid for servers\x00?-myaddr addr? ?-myport myport? ?-async? host port\x00-server command ?-myaddr addr? port\x00-size\x00input output ?-size size? ?-command callback?\x00input\x00output\x00mode channelId\x00channelId ?length?\x00cannot truncate to negative length of file\x00could not determine current location in \"%s\": %s\x00error during truncate on \"%s\": %s\x00blocked\x00event\x00pending\x00pipe\x00postevent\x00truncate\x00::fconfigure\x00chan\x00tclrchannel\x00blocking\x00cget\x00cgetall\x00finalize\x00initialize\x00watch\x00{read delivered more than requested}\x00{write wrote more than requested}\x00{write wrote nothing}\x00{Tried to seek before origin}\x00{Owner lost}\x00-code 1 -level 0 -errorcode NONE -errorinfo {} -errorline 1 {Owner lost}\x00mode cmdprefix\x00chan handler \"%s initialize\" returned non-list: %s\x00chan handler \"\x00 initialize\" returned \x00chan handler \"%s\" does not support all required methods\x00chan handler \"%s\" lacks a \"read\" method\x00chan handler \"%s\" lacks a \"write\" method\x00chan handler \"%s\" supports \"cget\" but not \"cgetall\"\x00chan handler \"%s\" supports \"cgetall\" but not \"cget\"\x00TclChanCreateObjCmd: duplicate channel names\x00channel eventspec\x00can not find reflected channel named \"%s\"\x00TclChanPostEventObjCmd: channel is not a reflected channel\x00TclChanPostEventObjCmd: postevent accepted for call from outside interpreter\x00tried to post events channel \"%s\" is not interested in\x00TclChanCaughtErrorBypass: Bad syntax of caught result\x00Expected list with even number of elements, got %d element%s instead\x00bad %s list: is empty\x00read write\x00rc%lu\x00chan handler returned bad code: %d\x00\n    (chan handler subcommand \"%s\")\x00EAGAIN\x00ReflectedChannelMap\x00tclrtransform\x00clear\x00drain\x00limit?\x00{read not supported by Tcl driver}\x00{write not supported by Tcl driver}\x00channel cmdprefix\x00chan handler \"%s initialize\" returned %s\x00chan handler \"%s\" makes the channel inaccessible\x00chan handler \"%s\" supports \"drain\" but not \"read\"\x00chan handler \"%s\" supports \"flush\" but not \"write\"\x00TclChanPushObjCmd: duplicate transformation handle\x00rt%lu\x00ReflectedTransformMap\x00transform\x00-command value is not a list\x00\nfailed to stack channel \"%s\"\x00create/write\x00create/read\x00delete/write\x00flush/write\x00flush/read\x00delete/read\x00query/maxRead\x00clear/read\x00couldn't open socket: port number too high\x00::tcl::unsupported::socketAF\x00inet\x00inet6\x00native\x00glob couldn't determine the current working directory\x00illegal access mode \"%s\"\x00\n    while processing open access modes \"\x00RDONLY\x00WRONLY\x00RDWR\x00APPEND\x00CREAT\x00EXCL\x00NOCTTY\x00NONBLOCK\x00TRUNC\x00invalid access mode \"%s\": must be RDONLY, WRONLY, RDWR, APPEND, BINARY, CREAT, EXCL, NOCTTY, NONBLOCK, or TRUNC\x00access mode must include either RDONLY, WRONLY, or RDWR\x00couldn't read file \"%s\": %s\x00\x1a {}\x00\ufeff\x00\n    (file \"%.*s%s\" line %d)\x00POSIX\x00could not seek to end of file while opening \"%s\": %s\x00couldn't open \"%s\": %s\x00error getting working directory name: %s\x00TCL_TEMPLOAD_NO_UNLINK\x00couldn't load library \"%s\": %s\x00couldn't load from current filesystem\x000700\x00cannot unload: filesystem does not support unloading\x00wb\x00rb\x00Tcl_FSGetFileSystemForPath called with NULL object\x00Tcl_FSGetFileSystemForPath called with object with refCount == 0\x00variable '%s' is already linked\x00internal error: bad linked variable type\x00linked variable is read-only\x00internal error: linked variable couldn't be read\x00variable must have integer value\x00variable must have real value\x00variable must have boolean value\x00variable must have char value\x00variable must have unsigned char value\x00variable must have short value\x00variable must have unsigned short value\x00variable must have unsigned int value\x00variable must have long value\x00variable must have unsigned long value\x00variable must have unsigned wide int value\x00variable must have float value\x00NULL\x00??\x00invalidReal\x00xXbBoO\x00+-\x00NewListIntRep: expects postive element count\x00list creation failed: unable to alloc %u bytes\x00Tcl_SetListObj\x00Tcl_ListObjAppendList\x00Tcl_ListObjAppendElement\x00Tcl_ListObjReplace\x00list index out of range\x00LSET\x00TclListObjSetElement\x00max size of Tcl literal array (%d literals) exceeded\x00-lazy\x00?-global? ?-lazy? ?--? fileName ?packageName? ?interp?\x00must specify either file name or package name\x00LOAD\x00NOLIBRARY\x00file \"%s\" is already loaded for package \"%s\"\x00SPLITPERSONALITY\x00tclLoad\x00package \"%s\" isn't loaded statically\x00NOTSTATIC\x00couldn't figure out package name for %s\x00WHATPACKAGE\x00_Init\x00_SafeInit\x00_Unload\x00_SafeUnload\x00can't use package in a safe interpreter: no %s_SafeInit procedure\x00can't attach package to interpreter: no %s_Init procedure\x00ENTRYPOINT\x00-keeplibrary\x00?-switch ...? fileName ?packageName? ?interp?\x00UNLOAD\x00package \"%s\" is loaded statically and cannot be unloaded\x00STATIC\x00file \"%s\" has never been loaded\x00NEVERLOADED\x00file \"%s\" has never been loaded in this interpreter\x00file \"%s\" cannot be unloaded under a safe interpreter\x00CANNOT\x00file \"%s\" cannot be unloaded under a trusted interpreter\x00tcl_rcFileName\x00argv0\x00argc\x00argv\x00application-specific initialization failed: \x00exit %d\x00TCL_FINALIZE_ON_EXIT\x00tcl_prompt2\x00tcl_prompt1\x00% \x00\n    (script that generates prompt)\x00nsName\x00code\x00ensemble\x00export\x00forget\x00import\x00parent\x00qualifiers\x00which\x00Trying to push call frame for dead namespace\x00errorCode\x00can't create namespace \"\": only global namespace can have empty name\x00CREATEGLOBAL\x00can't create namespace \"%s\": already exists\x00CREATEEXISTING\x00invalid export pattern \"%s\": pattern can't specify a namespace\x00EXPORT\x00auto_import\x00empty import pattern\x00IMPORT\x00unknown namespace in import pattern \"%s\"\x00no namespace specified in import pattern \"%s\"\x00ORIGIN\x00import pattern \"%s\" tries to import from namespace \"%s\" into itself\x00import pattern \"%s\" would create a loop containing command \"%s\"\x00LOOP\x00can't import command \"%s\": already exists\x00OVERWRITE\x00unknown namespace in namespace forget pattern \"%s\"\x00DeleteImportedCmd: did not find cmd in real cmd's list of import references\x00Could not create namespace '%s'\x00unknown namespace \"%s\"\x00unknown command \"%s\"\x00namespace \"%s\" not found\x00namespace \"%s\" not found in \"%s\"\x00?name? ?pattern?\x00?name name...?\x00unknown namespace \"%s\" in namespace delete command\x00name arg ?arg...?\x00\n    (in namespace %s \"%.*s%s\" script line %d)\x00?-clear? ?pattern pattern...?\x00-clear\x00?pattern pattern...?\x00?-force? ?pattern pattern...?\x00?pathList?\x00?script?\x00ns ?otherVar myVar ...?\x00-variable\x00?-command? ?-variable? name\x00while executing\x00invoked from within\x00\n    %s\n\"%.*s%s\"\x00booleanString\x00wideInt\x00bignum\x00cmdName\x00Derived ICL data for object using offsets from before the script\x00can't convert value to type %s\x00API_ABUSE\x00TclSetDuplicateObj\x00UpdateStringProc should not be invoked for type %s\x00UpdateStringProc for type '%s' failed to create a valid string rep\x00Tcl_SetBooleanObj\x00boolean value\x00expected boolean value but got \"\x00BOOLEAN\x00yes\x00no\x00off\x00Tcl_SetDoubleObj\x00floating point value is Not a Number\x00DOUBLE\x00NAN\x00floating-point number\x00Tcl_SetIntObj\x00Tcl_SetLongObj\x00expected integer but got \"%s\"\x00INTEGER\x00IOVERFLOW\x00%lld\x00Tcl_SetWideIntObj\x00initialization failure in DupBignum\x00radix size failure in UpdateStringOfBignum\x00UpdateStringOfBignum: string length limit exceeded\x00conversion failure in UpdateStringOfBignum\x00insufficient memory to unpack bignum\x00Tcl_SetBignumObj\x00number\x00pure string\x00value is a %s with a refcount of %d, object pointer at %s\x00%p:%p\x00, internal representation %s\x00, string representation \"\x00, no string representation\x00can't parse a NULL pointer\x00extra characters after close-quote\x00extra characters after close-brace\x00ParseTokens encountered unknown character\x00missing close-brace for variable name\x00missing )\x00$\x00missing close-brace\x00: possible unbalanced brace in comment\x00missing \"\x00TclSubstParse: programming error\x00bad parse in TclSubstParse: %c\x00unexpected token type in TclSubstTokens: %d\x00Bad portion to TclPathPart\x00can't find object string representation\x00PATH\x00WTF\x00HOMELESS\x00NOUSER\x00Called UpdateStringOfFsPath with invalid object\x00writing\x00reading\x00channel \"%s\" wasn't opened for %s\x00EXEC\x00BADCHAN\x00couldn't %s file \"%s\": %s\x00can't specify \"%s\" as last word in command\x00child process lost (is SIGCHLD ignored or trapped?)\x00error waiting for process to exit: %s\x00%lu\x00%u\x00CHILDSTATUS\x00CHILDKILLED\x00child killed: %s\n\x00CHILDSUSP\x00child suspended: %s\n\x00child wait status didn't make sense\n\x00ODDWAITRESULT\x00error reading stderr output file: %s\x00child process exited abnormally\x00illegal use of | or |& in command\x00PIPESYNTAX\x00must specify \"%s\" as last word in command\x00couldn't create input file for command: %s\x00couldn't create input pipe for command: %s\x00couldn't create output pipe for command: %s\x00couldn't create error file for command: %s\x00couldn't create pipe: %s\x00can't read output from command: standard output was redirected\x00BADREDIRECT\x00can't write input to command: standard input was redirected\x00pipe for command could not be created\x00NOPIPE\x00conflicting versions provided for package \"%s\": %s, then %s\x00PACKAGE\x00VERSIONCONFLICT\x00Cannot load package \"%s\" in standalone executable: This package is not compiled with stub support\x00UNSTUBBED\x00bad return code: %d\x00BADRESULT\x00\n    (\"package unknown\" script)\x00can't find package %s\x00UNFOUND\x00version conflict for package \"%s\": have %s, need\x00circular package dependency: attempt to provide %s %s requires %s\x00CIRCULARITY\x00attempt to provide package %s %s failed: no version of package %s provided\x00UNPROVIDED\x00attempt to provide package %s %s failed: package %s %s provided instead\x00WRONGPROVIDE\x00attempt to provide package %s %s failed: bad return code: %s\x00\n    (\"package ifneeded %s %s\" script)\x00package %s %s is not present\x00package %s is not present\x00ifneeded\x00prefer\x00present\x00provide\x00require\x00vcompare\x00versions\x00vsatisfies\x00option ?arg ...?\x00package version ?script?\x00package ?version?\x00?-exact? package ?requirement ...?\x00?command?\x00latest\x00stable\x00?latest|stable?\x00preference\x00version1 version2\x00version ?requirement ...?\x00Tcl_PackageObjCmd: bad option index to pkgOptions\x00expected version number but got \"%s\"\x00VERSION\x00expected versionMin-versionMax but got \"%s\"\x00VERSIONRANGE\x00 exactly %s\x00 %s\x00 0-\x00 -2\x00threaded\x00profiled\x0064bit\x00optimized\x00mem_debug\x00compile_debug\x00compile_stats\x00libdir,runtime\x00/usr/local/lib\x00bindir,runtime\x00/usr/local/bin\x00scriptdir,runtime\x00/usr/local/lib/tcl8.6\x00includedir,runtime\x00/usr/local/include\x00docdir,runtime\x00/usr/local/man\x00libdir,install\x00bindir,install\x00scriptdir,install\x00includedir,install\x00docdir,install\x00tcl\x00E2BIG\x00EACCES\x00EADDRINUSE\x00EADDRNOTAVAIL\x00EADV\x00EAFNOSUPPORT\x00EALREADY\x00EBADE\x00EBADF\x00EBADFD\x00EBADMSG\x00ECANCELED\x00EBADR\x00EBADRQC\x00EBADSLT\x00EBFONT\x00EBUSY\x00ECHILD\x00ECHRNG\x00ECOMM\x00ECONNABORTED\x00ECONNREFUSED\x00ECONNRESET\x00EDEADLK\x00EDESTADDRREQ\x00EDOM\x00EDOTDOT\x00EDQUOT\x00EEXIST\x00EFAULT\x00EFBIG\x00EHOSTDOWN\x00EHOSTUNREACH\x00EIDRM\x00EINPROGRESS\x00EINTR\x00EINVAL\x00EIO\x00EISCONN\x00EISDIR\x00EL2HLT\x00EL2NSYNC\x00EL3HLT\x00EL3RST\x00ELIBACC\x00ELIBBAD\x00ELIBEXEC\x00ELIBMAX\x00ELIBSCN\x00ELNRNG\x00ELOOP\x00EMFILE\x00EMLINK\x00EMSGSIZE\x00EMULTIHOP\x00ENAMETOOLONG\x00ENAVAIL\x00ENETDOWN\x00ENETRESET\x00ENETUNREACH\x00ENFILE\x00ENOANO\x00ENOBUFS\x00ENOCSI\x00ENODATA\x00ENODEV\x00ENOENT\x00ENOEXEC\x00ENOLCK\x00ENOLINK\x00ENOMEM\x00ENOMSG\x00ENONET\x00ENOPKG\x00ENOPROTOOPT\x00ENOSPC\x00ENOSR\x00ENOSTR\x00ENOSYS\x00ENOTBLK\x00ENOTCONN\x00ENOTRECOVERABLE\x00ENOTDIR\x00ENOTEMPTY\x00ENOTNAM\x00ENOTSOCK\x00ENOTSUP\x00ENOTTY\x00ENOTUNIQ\x00ENXIO\x00EOVERFLOW\x00EOWNERDEAD\x00EPERM\x00EPFNOSUPPORT\x00EPIPE\x00EPROTO\x00EPROTONOSUPPORT\x00EPROTOTYPE\x00ERANGE\x00EREMCHG\x00EREMOTE\x00EREMOTEIO\x00EROFS\x00ESHUTDOWN\x00ESOCKTNOSUPPORT\x00ESPIPE\x00ESRCH\x00ESRMNT\x00ESTALE\x00ETIME\x00ETIMEDOUT\x00ETOOMANYREFS\x00ETXTBSY\x00EUCLEAN\x00EUNATCH\x00EUSERS\x00EXDEV\x00EXFULL\x00unknown error\x00argument list too long\x00permission denied\x00address already in use\x00cannot assign requested address\x00advertise error\x00address family not supported by protocol\x00resource temporarily unavailable\x00operation already in progress\x00bad exchange descriptor\x00bad file number\x00file descriptor in bad state\x00not a data message\x00operation canceled\x00bad request descriptor\x00bad request code\x00invalid slot\x00bad font file format\x00file busy\x00no children\x00channel number out of range\x00communication error on send\x00software caused connection abort\x00connection refused\x00connection reset by peer\x00resource deadlock avoided\x00destination address required\x00math argument out of range\x00cross mount point\x00disk quota exceeded\x00file already exists\x00bad address in system call argument\x00file too large\x00host is down\x00host is unreachable\x00identifier removed\x00operation now in progress\x00interrupted system call\x00invalid argument\x00I/O error\x00socket is already connected\x00illegal operation on a directory\x00level 2 halted\x00level 2 not synchronized\x00level 3 halted\x00level 3 reset\x00cannot access a needed shared library\x00accessing a corrupted shared library\x00cannot exec a shared library directly\x00attempting to link in more shared libraries than system limit\x00.lib section in a.out corrupted\x00link number out of range\x00too many levels of symbolic links\x00too many open files\x00too many links\x00message too long\x00multihop attempted\x00file name too long\x00not available\x00network is down\x00network dropped connection on reset\x00network is unreachable\x00file table overflow\x00anode table overflow\x00no buffer space available\x00no CSI structure available\x00no data available\x00no such device\x00no such file or directory\x00exec format error\x00no locks available\x00link has been severed\x00not enough memory\x00no message of desired type\x00machine is not on the network\x00package not installed\x00bad protocol option\x00no space left on device\x00out of stream resources\x00not a stream device\x00function not implemented\x00block device required\x00socket is not connected\x00state not recoverable\x00not a directory\x00directory not empty\x00not a name file\x00socket operation on non-socket\x00operation not supported\x00inappropriate device for ioctl\x00name not unique on network\x00no such device or address\x00file too big\x00owner died\x00not owner\x00protocol family not supported\x00broken pipe\x00protocol error\x00protocol not supported\x00protocol wrong type for socket\x00math result unrepresentable\x00remote address changed\x00pathname hit remote file system\x00remote i/o error\x00read-only file system\x00cannot send after socket shutdown\x00socket type not supported\x00invalid seek\x00no such process\x00srmount error\x00stale remote file handle\x00timer expired\x00connection timed out\x00too many references: cannot splice\x00text file or pseudo-device busy\x00structure needs cleaning\x00protocol driver not attached\x00too many users\x00cross-domain link\x00message tables full\x00SIGABRT\x00SIGALRM\x00SIGBUS\x00SIGCHLD\x00SIGCONT\x00SIGFPE\x00SIGHUP\x00SIGILL\x00SIGINT\x00SIGIO\x00SIGKILL\x00SIGPIPE\x00SIGPROF\x00SIGPWR\x00SIGQUIT\x00SIGSEGV\x00SIGSTOP\x00SIGSYS\x00SIGTERM\x00SIGTRAP\x00SIGTSTP\x00SIGTTIN\x00SIGTTOU\x00SIGURG\x00SIGUSR1\x00SIGUSR2\x00SIGVTALRM\x00SIGWINCH\x00SIGXCPU\x00SIGXFSZ\x00unknown signal\x00alarm clock\x00bus error\x00child status changed\x00continue after stop\x00floating-point exception\x00hangup\x00illegal instruction\x00interrupt\x00input/output possible on file\x00kill signal\x00write on pipe with no readers\x00profiling alarm\x00power-fail restart\x00quit signal\x00segmentation violation\x00stop\x00bad argument to system call\x00software termination signal\x00trace trap\x00stop signal from tty\x00background tty read\x00background tty write\x00urgent I/O condition\x00user-defined signal 1\x00user-defined signal 2\x00virtual time alarm\x00window changed\x00exceeded CPU time limit\x00exceeded file size limit\x00Tcl_Release couldn't find reference for %p\x00Tcl_EventuallyFree called twice for %p\x00procbody\x00lambdaExpr\x00levelReference\x00name args body\x00\n    (creating proc \"\x00procedure \"%s\": arg list contains %d entries, precompiled header expects %d\x00BYTECODELIES\x00too many fields in argument specifier \"\x00FORMALARGUMENTFORMAT\x00argument with no name\x00formal parameter \"%s\" is an array element\x00formal parameter \"\x00\" is not a simple name\x00procedure \"%s\": formal parameter %d is inconsistent with precompiled body\x00procedure \"%s\": formal parameter \"\x00\" has default value inconsistent with precompiled body\x00STACKLEVEL\x00\n    (\"uplevel\" body line %d)\x00?level? command ?arg ...?\x00?\x00?arg ...?\x00body object for proc attached to frame is not a byte code type\x00body of lambda term\x00body of proc\x00invoked \"%s\" outside of a loop\x00UNEXPECTED\x00a precompiled script jumped interps\x00CROSSINTERPBYTECODE\x00\n    (procedure \"%.*s%s\" line %d)\x00TclUpdateReturnInfo: negative return level\x00can't interpret \"%s\" as a lambda expression\x00LAMBDA\x00\n    (parsing lambda expression \"%s\")\x00lambdaExpr ?arg ...?\x00\n    (lambda term \"%.*s%s\" line %d)\x00error while matching regular expression: \x00REG_UBACKREF\x00REG_ULOOKAHEAD\x00REG_UBOUNDS\x00REG_UBRACES\x00REG_UBSALNUM\x00REG_UPBOTCH\x00REG_UBBS\x00REG_UNONPOSIX\x00REG_UUNSPEC\x00REG_UUNPORT\x00REG_ULOCALE\x00REG_UEMPTYMATCH\x00REG_UIMPOSSIBLE\x00REG_USHORTEST\x00%s%s%s\x00couldn't compile regular expression pattern: \x00-errorline\x00-errorstack\x00bad %s value: expected dictionary but got \"%s\"\x00ILLEGAL_OPTIONS\x00bad -level value: expected non-negative integer but got \"%s\"\x00ILLEGAL_LEVEL\x00bad -errorcode value: expected a list but got \"%s\"\x00ILLEGAL_ERRORCODE\x00bad -errorstack value: expected a list but got \"%s\"\x00NONLIST_ERRORSTACK\x00forbidden odd-sized list for -errorstack: \"%s\"\x00ODDSIZEDLIST_ERRORSTACK\x00expected dict but got \"%s\"\x00cannot mix \"%\" and \"%n$\" conversion specifiers\x00FORMAT\x00MIXEDSPECTYPES\x00field width may not be specified in %c conversion\x00BADWIDTH\x00field size modifier may not be specified in %\x00 conversion\x00BADSIZE\x00unsigned bignum scans are invalid\x00BADUNSIGNED\x00unmatched [ in format string\x00BRACKET\x00bad scan conversion character \"\x00BADTYPE\x00variable is assigned by multiple \"%n$\" conversion specifiers\x00POLYASSIGNED\x00variable is not assigned by any conversion specifiers\x00UNASSIGNED\x00\"%n$\" argument index out of range\x00INDEXRANGE\x00different numbers of variable names and field specifiers\x00FIELDVARMISMATCH\x00string format ?varName ...?\x00Tcl_SetStringObj\x00Tcl_SetObjLength: negative length requested: %d (integer overflow?)\x00Tcl_SetObjLength\x00max length for a Tcl unicode value (%d chars) exceeded\x00Tcl_AttemptSetObjLength\x00Tcl_SetUnicodeObj\x00Tcl_AppendLimitedToObj\x00Tcl_AppendUnicodeToObj\x00Tcl_AppendStringsToObj\x00max size for a Tcl value exceeded\x00Tcl_AppendFormatToObj\x00format string ended in middle of field specifier\x00INCOMPLETE\x00unsigned bignum format is invalid\x000X\x000x\x000b\x00bad field specifier \"%c\"\x00Unable to format \"%s\" with supplied arguments: %s\x00TclParseNumber: bad acceptState %d parsing '%s'\x00TclParseNumber: state INITIAL can't happen here\x00expected %s but got \"\x00 (looks like invalid octal number)\x00assembler statements not supported\x00tclStrToD.c\x00MakeLowPrecisionDouble\x00MakeHighPrecisionDouble\x00Infinity\x00NaN\x00impossible conversion type in TclDoubleDigits\x00wrong digit!\x00in ShouldBankerRoundUp, trichotomy fails!\x00in ShouldBankerRoundUpToNext, trichotomy fails!\x00This code doesn't work on a decimal machine!\x00unknown floating point word order on this machine\x00(%llx)\x00Tcl_GetMemoryInfo called when threaded memory allocator not in use\x00TclFinalizeThreadAlloc called when threaded memory allocator not in use\x00tclAfter\x00bad argument \"%s\": must be cancel, idle, info, or an integer\x00argument\x00after#%d\x00id|command\x00script ?script ...?\x00?id?\x00event \"%s\" doesn't exist\x00timer\x00Tcl_AfterObjCmd: bad subcommand index to afterSubCmds\x00after#\x00\n    (\"after\" script)\x00execution\x00vdelete\x00vinfo\x00type ?arg ...?\x00type name\x00name ops command\x00bad operations \"%s\": should be one or more of rwua\x00TRACE\x00BADOPS\x00enter\x00leave\x00enterstep\x00leavestep\x00name opList command\x00bad operation list \"\": must be one or more of enter, leave, enterstep, or leavestep\x00NOOPS\x00operation\x00bad operation list \"\": must be one or more of delete or rename\x00bad operation list \"\": must be one or more of array, read, unset, or write\x00 rename\x00 delete\x00TraceExecutionProc: bad flag combination\x00 a\x00 r\x00 w\x00 u\x00 array\x00 read\x00 write\x00 unset\x00Cannot trace a variable with no name\x00trace array\x00(\x00\n    (%s trace on \"%s%s%s%s\")\x00bad result flag combination\x00end-offset\x00LIST\x00%s element in braces followed by \"%.*s\" instead of space\x00JUNK\x00%s element in quotes followed by \"%.*s\" instead of space\x00unmatched open brace in %s\x00BRACE\x00unmatched open quote in %s\x00QUOTE\x00internal error in Tcl_SplitList\x00INTERNAL\x00Tcl_SplitList\x00TclScanElement: string length overflow\x00Tcl_Concat: max size of Tcl value exceeded\x00 \f\v\r\t\n\x00 {\x00{\x00-Inf\x00Inf\x00e%+d\x00e%+03d\x00can't modify precision from a safe interpreter\x00improper value for precision\x00bad index \"%s\": must be integer?[+-]integer? or end?[+-]integer?\x00end-\x00bad index \"%s\": must be end?[+-]integer?\x00PGV Initializer did not initialize\x00***=\x00invalid escape sequence\x00BADESCAPE\x00$ not anchor\x00NONANCHOR\x00unhandled RE special char\x00UNHANDLED\x00excessive recursive glob backtrack potential\x00OVERCOMPLEX\x00RE2GLOB\x00array search\x00localVarName\x00parsedVarName\x00\"%s\" isn't an array\x00VARNAME\x00ELEMENT\x00varPtr must not be NULL\x00part1Ptr must not be NULL\x00READ\x00varName ?newValue?\x00newValuePtr must not be NULL\x00UNSET\x00varName ?value ...?\x00arrayName\x00s-%d-%s\x00arrayName searchId\x00arrayName ?pattern?\x00arrayName ?mode? ?pattern?\x00exact matching shouldn't get here\x00arrayName list\x00error reading array statistics\x00anymore\x00donesearch\x00nextelement\x00startsearch\x00statistics\x00bad variable name \"%s\": can't create namespace variable that refers to procedure variable\x00UPVAR\x00INVERTED\x00ObjMakeUpvar called with an index outside from a proc\x00bad variable name \"%s\": can't create a scalar variable that looks like an array element\x00LOCAL_ELEMENT\x00can't upvar from variable to itself\x00variable \"%s\" has traces: can't use for upvar\x00TRACED\x00variable \"%s\" already exists\x00EXISTS\x00define\x00?level? otherVar localVar ?otherVar localVar ...?\x00illegal search identifier \"%s\"\x00ARRAYSEARCH\x00search identifier \"%s\" isn't for variable \"%s\"\x00couldn't find search \"%s\"\x00invalid part1Ptr and invalid index together\x00can't %s \"%s%s%s%s\": %s\x00%s of type %s should not be called\x00updateStringProc\x00setFromAnyProc\x00scalar parsedVarName without a string rep\x00unknown variable \"%s\"\x00zlib\x00STREAM\x00DATA\x00MEM\x00BUF\x00NEED_DICT\x00unexpected zlib result in error handler: Z_OK\x00unexpected zlib result in error handler: Z_STREAM_END\x00ZLIB\x00text\x00no latin-1 encoding\x00comment\x00crc\x00filename\x00incorrect zlib data format, must be TCL_ZLIB_FORMAT_ZLIB, TCL_ZLIB_FORMAT_GZIP or TCL_ZLIB_FORMAT_RAW\x00compression level should be between 0 (no compression) and 9 (best compression) or -1 for default compression level\x00incorrect zlib data format, must be TCL_ZLIB_FORMAT_ZLIB, TCL_ZLIB_FORMAT_GZIP, TCL_ZLIB_FORMAT_RAW or TCL_ZLIB_FORMAT_AUTO\x00bad mode, must be TCL_ZLIB_STREAM_DEFLATE or TCL_ZLIB_STREAM_INFLATE\x001.2.11\x00::incr ::tcl::zlib::cmdcounter\x00::tcl::zlib::streamcmd_\x00BUG: Stream command name already exists\x00EXISTING_CMD\x00already past compressed stream end\x00ZIP\x00CLOSED\x00unexpected zlib internal state during decompression\x00STATE\x00incorrect zlib data format, must be TCL_ZLIB_FORMAT_ZLIB, TCL_ZLIB_FORMAT_GZIP or TCL_ZLIB_FORMAT_ZLIB\x00compression level should be between 0 (uncompressed) and 9 (best compression) or -1 for default compression level\x00adler32\x00compress\x00crc32\x00decompress\x00deflate\x00gunzip\x00gzip\x00inflate\x00stream\x00command arg ?...?\x00data ?startValue?\x00data ?level?\x00\n    (in -level option)\x00data ?-level level? ?-header header?\x00-header\x00data ?bufferSize?\x00data ?-headerVar varName?\x00-headerVar\x00level must be 0 to 9\x00COMPRESSIONLEVEL\x00buffer size must be %d to %d\x00BUFFERSIZE\x00mode ?-option value...?\x00should be unreachable\x00-limit\x00mode channel ?options...?\x00compression may only be applied to writable channels\x00UNWRITABLE\x00decompression may only be applied to readable channels\x00UNREADABLE\x00value missing for %s option\x00NOVAL\x00read ahead limit must be 1 to %d\x00a compression dictionary may not be set in the gzip format\x00BADOPT\x00\n    (in \x00 option)\x00checksum\x00fullflush\x00header\x00put\x00reset\x00option data ?...?\x00?count?\x00-buffer\x00-finalize\x00-flush\x00-fullflush\x00\"-buffer\" option must be followed by integer decompression buffersize\x00buffer size must be 1 to %d\x00\"-dictionary\" option must be followed by compression dictionary bytes\x00\"-flush\", \"-fullflush\" and \"-finalize\" options are mutually exclusive\x00EXCLUSIVE\x00only gunzip streams can produce header information\x00BADOP\x00error while finalizing file: %s\x00problem flushing channel: %s\x00dictionary flush\x00dictionary limit\x00flush limit\x00sync\x00unknown -flush type \"%s\": must be full or sync\x00FLUSH\x00-limit must be between 1 and 65536\x00READLIMIT\x00checksum dictionary\x00checksum dictionary limit\x00checksum header limit\x00-checksum\x00unknown mode: %d\x00bad format: %d\x00namespace eval ::tcl::zlib {variable cmdcounter 0}\x00zlibVersion\x002.0.1\x00tcl::tommath\x00initialization failure in TclBNInitBignumFromLong\x00initialization failure in TclBNInitBignumFromWideUInt\x00tty\x00CTS\x00DSR\x00RING\x00DCD\x00-mode\x00-handshake\x00XONXOFF\x00RTSCTS\x00DTRDSR\x00%s not supported for this platform\x00-handshake DTRDSR\x00UNSUPPORTED\x00bad value for -handshake: must be one of xonxoff, rtscts, dtrdsr or none\x00FCONFIGURE\x00-xchar\x00bad value for -xchar: should be a list of two elements\x00-timeout\x00-ttycontrol\x00bad value for -ttycontrol: should be a list of signal,value pairs\x00DTR\x00RTS\x00BREAK\x00bad signal \"%s\" for -ttycontrol: must be DTR, RTS or BREAK\x00mode handshake timeout ttycontrol xchar\x00%d,%c,%d,%d\x00-queue\x00-ttystatus\x00mode queue ttystatus xchar\x00bad value for -mode\x00%d,%c,%d,%d%n\x00%s: should be baud,parity,data,stop\x00SERIALMODE\x00noems\x00%s parity: should be %s\x00n, o, e, m, or s\x00%s data: should be 5, 6, 7, or 8\x00%s stop: should be 1 or 2\x00TclpOpenFileChannel: invalid mode value\x00couldn't open \"\x00\": filename is invalid on this platform\x00file%d\x00/dev/tty\x00auto crlf\x00serial%d\x00TclGetDefaultStdChannel: Unexpected channel type\x00\"%s\" wasn't opened for writing\x00NOT_WRITABLE\x00\"%s\" wasn't opened for reading\x00NOT_READABLE\x00cannot get a FILE * for \"%s\"\x00FILE_FAILURE\x00\"%s\" cannot be used to get a FILE *\x00NO_DESCRIPTOR\x00TclUnixWaitForFile can't handle file id %d\x00-group\x00-owner\x00..\x00%0#5lo\x00could not set group for file \"%s\": group \"%s\" does not exist\x00SETGRP\x00NO_GROUP\x00could not set group for file \"%s\": %s\x00could not set owner for file \"%s\": user \"%s\" does not exist\x00SETOWN\x00NO_USER\x00could not set owner for file \"%s\": %s\x00unknown permission string format \"%s\"\x00PERMISSION\x00could not set permissions for file \"%s\": %s\x00_XXXXXX\x00TMPDIR\x00/tmp\x00:/bin:/usr/bin\x00couldn't read directory \"%s\": %s\x00couldn't create temporary file: %s\x00pipe creation failed: %s\x00?channelId?\x00::tcl::unsupported::noReverseDNS\x00-connecting\x00-peername\x00can't get peername: %s\x00-sockname\x00can't get sockname: %s\x00connecting peername sockname\x00couldn't open socket: %s\x00sock%lx\x00couldn't open socket: \x00ansi-1251\x00cp1251\x00ansi_x3.4-1968\x00big5\x00cp1250\x00cp1252\x00cp1253\x00cp1254\x00cp1255\x00cp1256\x00cp1257\x00cp1258\x00cp437\x00cp737\x00cp775\x00cp850\x00cp852\x00cp855\x00cp857\x00cp860\x00cp861\x00cp862\x00cp863\x00cp864\x00cp865\x00cp866\x00cp869\x00cp874\x00cp932\x00cp936\x00cp949\x00cp950\x00dingbats\x00ebcdic\x00euc-cn\x00euc-jp\x00euc-kr\x00eucjp\x00euckr\x00euctw\x00gb12345\x00gb1988\x00gb2312\x00gb2312-1980\x00gb2312-raw\x00greek8\x00ibm1250\x00ibm1251\x00ibm1252\x00ibm1253\x00ibm1254\x00ibm1255\x00ibm1256\x00ibm1257\x00ibm1258\x00ibm437\x00ibm737\x00ibm775\x00ibm850\x00ibm852\x00ibm855\x00ibm857\x00ibm860\x00ibm861\x00ibm862\x00ibm863\x00ibm864\x00ibm865\x00ibm866\x00ibm869\x00ibm874\x00ibm932\x00ibm936\x00ibm949\x00ibm950\x00iso-2022\x00iso2022\x00iso-2022-jp\x00iso2022-jp\x00iso-2022-kr\x00iso2022-kr\x00iso-8859-1\x00iso-8859-10\x00iso8859-10\x00iso-8859-13\x00iso8859-13\x00iso-8859-14\x00iso8859-14\x00iso-8859-15\x00iso8859-15\x00iso-8859-16\x00iso8859-16\x00iso-8859-2\x00iso8859-2\x00iso-8859-3\x00iso8859-3\x00iso-8859-4\x00iso8859-4\x00iso-8859-5\x00iso8859-5\x00iso-8859-6\x00iso8859-6\x00iso-8859-7\x00iso8859-7\x00iso-8859-8\x00iso8859-8\x00iso-8859-9\x00iso8859-9\x00iso88591\x00iso885915\x00iso88592\x00iso88595\x00iso88596\x00iso88597\x00iso88598\x00iso88599\x00ja\x00ja_jp\x00ja_jp.euc\x00ja_jp.eucjp\x00ja_jp.jis\x00ja_jp.mscode\x00shiftjis\x00ja_jp.sjis\x00ja_jp.ujis\x00japan\x00japanese\x00japanese-sjis\x00japanese-ujis\x00japanese.euc\x00japanese.sjis\x00jis0201\x00jis0208\x00jis0212\x00jp_jp\x00ko\x00ko_kr\x00ko_kr.euc\x00ko_kw.euckw\x00koi8-r\x00koi8-u\x00korean\x00ksc5601\x00maccenteuro\x00macCentEuro\x00maccroatian\x00macCroatian\x00maccyrillic\x00macCyrillic\x00macdingbats\x00macDingbats\x00macgreek\x00macGreek\x00maciceland\x00macIceland\x00macjapan\x00macJapan\x00macroman\x00macRoman\x00macromania\x00macRomania\x00macthai\x00macThai\x00macturkish\x00macTurkish\x00macukraine\x00macUkraine\x00roman8\x00ru\x00ru_ru\x00ru_su\x00sjis\x00symbol\x00tis-620\x00tis620\x00turkish8\x00utf8\x00zh\x00zh_cn.gb2312\x00zh_cn.gbk\x00zh_cz.gb2312\x00zh_tw\x00euc-tw\x00zh_tw.big5\x00/dev/null\x00TCL_LIBRARY\x00lib/tcl%s\x00LC_ALL\x00LC_CTYPE\x00LANG\x00unix\x00pathSeparator\x00deletemethod\x00forward\x00renamemethod\x00self\x00unexport\x00destroy\x00core method: \"destroy\"\x00core method: \"eval\"\x00core method: \"unknown\"\x00core method: \"variable\"\x00core method: \"varname\"\x00core method: \"create\"\x00new\x00core method: \"new\"\x00createWithNamespace\x00core method: \"createWithNamespace\"\x00oo::class constructor\x00package ifneeded TclOO 1.1.0 {# Already present, OK?};namespace eval ::oo { variable version 1.1.0 };namespace eval ::oo { variable patchlevel 1.1.0 };\x00::oo::define ::oo::Slot {\n    method Get {} {error unimplemented}\n    method Set list {error unimplemented}\n    method -set args {\n        uplevel 1 [list [namespace which my] Set $args]\n    }\n    method -append args {\n        uplevel 1 [list [namespace which my] Set [list                {*}[uplevel 1 [list [namespace which my] Get]] {*}$args]]\n    }\n    method -clear {} {uplevel 1 [list [namespace which my] Set {}]}\n    forward --default-operation my -append\n    method unknown {args} {\n        set def --default-operation\n        if {[llength $args] == 0} {\n            return [uplevel 1 [list [namespace which my] $def]]\n        } elseif {![string match -* [lindex $args 0]]} {\n            return [uplevel 1 [list [namespace which my] $def {*}$args]]\n        }\n        next {*}$args\n    }\n    export -set -append -clear\n    unexport unknown destroy\n}\n::oo::objdefine ::oo::define::superclass forward --default-operation my -set\n::oo::objdefine ::oo::define::mixin forward --default-operation my -set\n::oo::objdefine ::oo::objdefine::mixin forward --default-operation my -set\n\x00foreach p [info procs [info object namespace $originObject]::*] {    set args [info args $p];    set idx -1;    foreach a $args {        lset args [incr idx]             [if {[info default $p $a d]} {list $a $d} {list $a}]    };    set b [info body $p];    set p [namespace tail $p];    proc $p $args $b;};foreach v [info vars [info object namespace $originObject]::*] {    upvar 0 $v vOrigin;    namespace upvar [namespace current] [namespace tail $v] vNew;    if {[info exists vOrigin]} {        if {[array exists vOrigin]} {            array set vNew [array get vOrigin];        } else {            set vNew $vOrigin;        }    }}\x00TclOO\x001.1.0\x00::oo\x00[a-z]*\x00::oo::define\x00::oo::objdefine\x00::oo::Helpers\x00<constructor>\x00<destructor>\x00<cloned>\x00::oo::UnknownDefinition\x00::oo::define::\x00::oo::objdefine::\x00originObject\x00::oo::Helpers::next\x00::oo::Helpers::nextto\x00::oo::Helpers::self\x00::oo::copy\x00::oo::Obj%d\x00my\x00deleting class structure for non-deleted %s\x00::oo::class\x00::oo::object\x00can't create object \"%s\": command already exists with that name\x00OVERWRITE_OBJECT\x00object deleted in constructor\x00STILLBORN\x00may not clone the class of classes\x00CLONING_CLASS\x00\n    (while performing post-copy callback)\x00\n    (while mapping method name)\x00impossible to invoke method \"%s\": no defined method or unknown method\x00METHOD_MAPPED\x00no valid method implementation\x00%s does not refer to an object\x00OBJECT\x00?definitionScript?\x00object \"%s\" is not a class\x00INSTANTIATE_NONCLASS\x00objectName ?arg ...?\x00object name must not be empty\x00EMPTY_NAME\x00objectName namespaceName ?arg ...?\x00namespace name must not be empty\x00\n    (in \"%s eval\" script line %d)\x00method ?arg ...?\x00visible methods\x00methods\x00object \"%s\" has no %s\x00unknown method \"%s\": must be \x00?varName ...?\x00variable name \"%s\" illegal: must not contain namespace separator\x00name refers to an element in an array\x00refer to\x00%s may only be called from inside a method\x00class ?arg...?\x00call\x00caller\x00method not defined by a class\x00UNMATCHED_CONTEXT\x00not inside a filtering context\x00caller is not an object\x00method without declarer!\x00filtering call chain without terminal non-filter\x00sourceName ?targetName? ?targetNamespace?\x00%s refers to an existing namespace\x00TclOO method name\x00::oo::define::filter\x00core method: define::filter Getter\x00core method: define::filter Setter\x00::oo::define::mixin\x00core method: define::mixin Getter\x00core method: define::mixin Setter\x00::oo::define::superclass\x00core method: define::superclass Getter\x00core method: define::superclass Setter\x00::oo::define::variable\x00core method: define::variable Getter\x00core method: define::variable Setter\x00::oo::objdefine::filter\x00core method: objdefine::filter Getter\x00core method: objdefine::filter Setter\x00::oo::objdefine::mixin\x00core method: objdefine::mixin Getter\x00core method: objdefine::mixin Setter\x00::oo::objdefine::variable\x00core method: objdefine::variable Getter\x00core method: objdefine::variable Setter\x00method %s does not exist\x00cannot rename method to itself\x00RENAME_TO_SELF\x00method called %s already exists\x00RENAME_OVER\x00bad call of unknown handler\x00BAD_UNKNOWN\x00cannot process definitions; support namespace deleted\x00MONKEY_BUSINESS\x00this command may only be called from within the context of an ::oo::define or ::oo::objdefine command\x00this command cannot be called when the object has been deleted\x00getting outer context when already in global context\x00\n    (in definition script for %s \"%.*s%s\" line %d)\x00className arg ?arg ...?\x00%s does not refer to a class\x00objectName arg ?arg ...?\x00class object\x00may not modify the class of the root object class\x00may not modify the class of the class of classes\x00the class of an object must be a class\x00may not change classes into an instance of themselves\x00arguments body\x00attempt to misuse API\x00name cmdName ?arg ...?\x00Get\x00Set\x00::oo::Slot\x00filterList\x00mixinList\x00may only mix in classes\x00may not mix a class into itself\x00SELF_MIXIN\x00superclassList\x00may not modify the superclass of the root object\x00only a class can be a superclass\x00class should only be a direct superclass once\x00REPETITIOUS\x00attempt to form circular dependency graph\x00invalid declared variable name \"%s\": must not %s\x00contain namespace separators\x00BAD_DECLVAR\x00*(*)\x00refer to an array element\x00variableList\x00definition\x00filters\x00isa\x00methodtype\x00mixins\x00instances\x00subclasses\x00superclasses\x00::oo::InfoObject\x00::oo::InfoClass\x00objName ?className?\x00objName methodName\x00definition not available for this kind of method\x00objName\x00prefix argument list not available for this kind of method\x00metaclass\x00mixin\x00typeof\x00category objName ?arg ...?\x00category\x00objName className\x00-localprivate\x00-private\x00objName ?-option value ...?\x00objName ?pattern?\x00METHOD_TYPE\x00className ?pattern?\x00className ?-option value ...?\x00cannot construct any call chain\x00method not declared in class or object\x00\n    (%s \"%.*s%s\" method \"%.*s%s\" line %d)\x00\n    (%s \"%.*s%s\" constructor line %d)\x00\n    (%s \"%.*s%s\" destructor line %d)\x00method forward prefix must be non-empty\x00BAD_FORWARD\x00dynamic loading is not currently available on this system\x000123456789ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz+/\x00"
+var __ccgo_ts1 = "\n\n\n========= RAW ==========\n\x00\n\n\n========= TREE FIXED ==========\n\x00\n\n\n========= LA%d ==========\n\x00\n\n\n========= SEARCH ==========\n\x00\n\n\n========= TREE NODE %s ==========\n\x00null tree\n\x00%s. `%c'\x00 longest\x00 shortest\x00 hasmixed\x00 hascapture\x00 hasbackref\x00 UNUSED\x00 (#%d)\x00 {%d,\x00%d\x00}\x00 %ld-%ld\x00 L:%s\x00 R:%s\x00\n\x00unable\x00%p\x00\ninitial cleanup:\n\x00\nempties:\n\x00\nconstraints:\n\x00\nfinal cleanup:\n\x00NUL\x00SOH\x00STX\x00ETX\x00EOT\x00ENQ\x00ACK\x00BEL\x00alert\x00BS\x00backspace\x00HT\x00tab\x00LF\x00newline\x00VT\x00vertical-tab\x00FF\x00form-feed\x00CR\x00carriage-return\x00SO\x00SI\x00DLE\x00DC1\x00DC2\x00DC3\x00DC4\x00NAK\x00SYN\x00ETB\x00CAN\x00EM\x00SUB\x00ESC\x00IS4\x00FS\x00IS3\x00GS\x00IS2\x00RS\x00IS1\x00US\x00space\x00exclamation-mark\x00quotation-mark\x00number-sign\x00dollar-sign\x00percent-sign\x00ampersand\x00apostrophe\x00left-parenthesis\x00right-parenthesis\x00asterisk\x00plus-sign\x00comma\x00hyphen\x00hyphen-minus\x00period\x00full-stop\x00slash\x00solidus\x00zero\x00one\x00two\x00three\x00four\x00five\x00six\x00seven\x00eight\x00nine\x00colon\x00semicolon\x00less-than-sign\x00equals-sign\x00greater-than-sign\x00question-mark\x00commercial-at\x00left-square-bracket\x00backslash\x00reverse-solidus\x00right-square-bracket\x00circumflex\x00circumflex-accent\x00underscore\x00low-line\x00grave-accent\x00left-brace\x00left-curly-bracket\x00vertical-line\x00right-brace\x00right-curly-bracket\x00tilde\x00DEL\x00alnum\x00alpha\x00ascii\x00blank\x00cntrl\x00digit\x00graph\x00lower\x00print\x00punct\x00upper\x00xdigit\x00REG_OKAY\x00no errors detected\x00REG_NOMATCH\x00failed to match\x00REG_BADPAT\x00invalid regexp (reg version 0.8)\x00REG_ECOLLATE\x00invalid collating element\x00REG_ECTYPE\x00invalid character class\x00REG_EESCAPE\x00invalid escape \\ sequence\x00REG_ESUBREG\x00invalid backreference number\x00REG_EBRACK\x00brackets [] not balanced\x00REG_EPAREN\x00parentheses () not balanced\x00REG_EBRACE\x00braces {} not balanced\x00REG_BADBR\x00invalid repetition count(s)\x00REG_ERANGE\x00invalid character range\x00REG_ESPACE\x00out of memory\x00REG_BADRPT\x00quantifier operand invalid\x00REG_ASSERT\x00\"can't happen\" -- you found a bug\x00REG_INVARG\x00invalid argument to regex function\x00REG_MIXED\x00character widths of regex and string differ\x00REG_BADOPT\x00invalid embedded option\x00REG_ETOOBIG\x00regular expression is too complex\x00REG_ECOLORS\x00too many colors\x00\x00oops\x00REG_%u\x00assemblecode\x00push\x00add\x00append\x00appendArray\x00appendArrayStk\x00appendStk\x00arrayExistsImm\x00arrayExistsStk\x00arrayMakeImm\x00arrayMakeStk\x00beginCatch\x00bitand\x00bitnot\x00bitor\x00bitxor\x00clockRead\x00concat\x00concatStk\x00coroName\x00currentNamespace\x00dictAppend\x00dictExists\x00dictExpand\x00dictGet\x00dictIncrImm\x00dictLappend\x00dictRecombineStk\x00dictRecombineImm\x00dictSet\x00dictUnset\x00div\x00dup\x00endCatch\x00eq\x00eval\x00evalStk\x00exist\x00existArray\x00existArrayStk\x00existStk\x00expon\x00expr\x00exprStk\x00ge\x00gt\x00incr\x00incrArray\x00incrArrayImm\x00incrArrayStk\x00incrArrayStkImm\x00incrImm\x00incrStk\x00incrStkImm\x00infoLevelArgs\x00infoLevelNumber\x00invokeStk\x00jump\x00jump4\x00jumpFalse\x00jumpFalse4\x00jumpTable\x00jumpTrue\x00jumpTrue4\x00label\x00land\x00lappend\x00lappendArray\x00lappendArrayStk\x00lappendList\x00lappendListArray\x00lappendListArrayStk\x00lappendListStk\x00lappendStk\x00le\x00lindexMulti\x00list\x00listConcat\x00listIn\x00listIndex\x00listIndexImm\x00listLength\x00listNotIn\x00load\x00loadArray\x00loadArrayStk\x00loadStk\x00lor\x00lsetFlat\x00lsetList\x00lshift\x00lt\x00mod\x00mult\x00neq\x00nop\x00not\x00nsupvar\x00numericType\x00originCmd\x00over\x00pop\x00pushReturnCode\x00pushReturnOpts\x00pushResult\x00regexp\x00resolveCmd\x00reverse\x00rshift\x00store\x00storeArray\x00storeArrayStk\x00storeStk\x00strcaseLower\x00strcaseTitle\x00strcaseUpper\x00strcmp\x00strcat\x00streq\x00strfind\x00strindex\x00strlen\x00strmap\x00strmatch\x00strneq\x00strrange\x00strreplace\x00strrfind\x00strtrim\x00strtrimLeft\x00strtrimRight\x00sub\x00tclooClass\x00tclooIsObject\x00tclooNamespace\x00tclooSelf\x00tryCvtToBoolean\x00tryCvtToNumeric\x00uminus\x00unset\x00unsetArray\x00unsetArrayStk\x00unsetStk\x00uplus\x00upvar\x00variable\x00verifyDict\x00yield\x00bytecodeList\x00\n    (\"\x00\" body, line \x00)\x00\n    (\"%.*s\" body, line %d)\x00instruction\x00value\x00boolean\x00boolean varName\x00imm8\x00operand must be [0..3]\x00TCL\x00ASSEM\x00OPERAND<0,>3\x00count\x00count varName\x00script\x00expression\x00table\x00name\x00operand must be >=2\x00OPERAND>=2\x00varname\x00varName imm8\x00Instruction \"%s\" could not be found, can't happen\n\x00no ASSEM_EVAL case for %s (%d), can't happen\x00jump table must have an even number of list elements\x00BADJUMPTABLE\x00duplicate entry in jump table for \"%s\"\x00DUPJUMPTABLEENTRY\x00assembly code may not contain substitutions\x00NOSUBST\x00cannot use this instruction to create a variable in a non-proc context\x00LVT\x00variable \"%s\" is not local\x00NONLOCAL\x00operand does not fit in one byte\x001BYTE\x00operand must be nonnegative\x00NONNEGATIVE\x00operand must be positive\x00POSITIVE\x00duplicate definition of label \"%s\"\x00DUPLABEL\x00undefined label \"%s\"\x00NOLABEL\x00\"%s\" instruction may not appear in a context where an exception has been caught and not disposed of.\x00BADTHROW\x00inconsistent stack depths on two execution paths\x00BADSTACK\x00stack underflow\x00code pops stack below level of enclosing catch\x00BADSTACKINCATCH\x00stack is unbalanced on exit from the code (depth=%d)\x00execution reaches an instruction in inconsistent exception contexts\x00BADCATCH\x00endCatch without a corresponding beginCatch\x00BADENDCATCH\x00catch still active on exit from assembly code\x00UNCLOSEDCATCH\x00unclosed catch at end of code in tclAssembly.c:BuildExceptionRanges, can't happen\x00undefined label in tclAssembly.c:BuildExceptionRanges, can't happen\x00\n    in assembly code between lines \x00 and \x00end of assembly code\x00Tcl_AsyncDelete: async handler deleted by the wrong thread\x00Tcl_AsyncDelete: cannot find async handler\x00apply\x00break\x00case\x00catch\x00continue\x00coroutine\x00error\x00for\x00foreach\x00format\x00global\x00if\x00join\x00lassign\x00lindex\x00linsert\x00llength\x00lmap\x00lrange\x00lrepeat\x00lreplace\x00lreverse\x00lsearch\x00lset\x00lsort\x00package\x00proc\x00regsub\x00rename\x00return\x00scan\x00set\x00split\x00subst\x00switch\x00tailcall\x00throw\x00trace\x00try\x00uplevel\x00while\x00yieldto\x00after\x00cd\x00close\x00eof\x00exec\x00exit\x00fblocked\x00fconfigure\x00fcopy\x00fileevent\x00flush\x00gets\x00glob\x00open\x00pid\x00puts\x00pwd\x00read\x00seek\x00socket\x00source\x00tell\x00time\x00unload\x00update\x00vwait\x00abs\x00acos\x00asin\x00atan\x00atan2\x00bool\x00ceil\x00cos\x00cosh\x00double\x00entier\x00exp\x00floor\x00fmod\x00hypot\x00int\x00isqrt\x00log\x00log10\x00pow\x00rand\x00round\x00sin\x00sinh\x00sqrt\x00srand\x00tan\x00tanh\x00wide\x00~\x00integer\x00!\x00+\x00*\x00&\x00|\x00^\x00**\x00<<\x00integer shift\x00>>\x00%\x00integer integer\x00!=\x00value value\x00ne\x00in\x00value list\x00ni\x00-\x00value ?value ...?\x00/\x00<\x00<=\x00>\x00>=\x00==\x00Tcl_CallFrame must not be smaller than CallFrame\x00::errorInfo\x00UP\x00CALL\x00INNER\x00::errorCode\x00TCL_PKG_PREFER_LATEST\x00TCL_INTERP_DEBUG_FRAME\x00Tcl_CreateInterp: can't create global namespace\x00builtin command with NULL object command proc and a NULL compile proc\x00::tcl::Bgerror\x00::tcl::unsupported::disassemble\x00::tcl::unsupported::getbytecode\x00::tcl::unsupported::representation\x00::tcl::unsupported::assemble\x00::tcl::unsupported::inject\x00::tcl::unsupported::corotype\x00::tcl::unsupported::timerate\x00::tcl::unsupported\x00::tcl::mathfunc\x00Can't create math function namespace\x00::tcl::mathfunc::\x00::tcl::mathop\x00can't create math operator namespace\x00::tcl::mathop::\x00failed to create math operator %s\x00tcl_platform\x00engine\x00Tcl\x00littleEndian\x00bigEndian\x00byteOrder\x00wordSize\x00pointerSize\x00tcl_patchLevel\x008.6.11\x00tcl_version\x008.6\x00tcl_precision\x00%s\x00Assoc Data Key #%d\x00DeleteInterpProc called with active evals\x00DeleteInterpProc called on interpreter not marked deleted\x00DeleteInterpProc: popping rootCallFrame with other frames on top\x00Argument location tracking table not empty\x00::\x00cannot use namespace qualifiers in hidden command token (rename)\x00VALUE\x00HIDDENTOKEN\x00can only hide global namespace commands (use rename then hide)\x00HIDE\x00NON_GLOBAL\x00hidden command named \"%s\" already exists\x00ALREADY_HIDDEN\x00cannot expose to a namespace (use expose to toplevel, then rename)\x00EXPOSE\x00unknown hidden command \"%s\"\x00LOOKUP\x00trying to expose a non-global command namespace command\x00exposed command \"%s\" already exists\x00COMMAND_EXISTS\x00delete\x00can't %s \"%s\": command doesn't exist\x00COMMAND\x00can't rename to \"%s\": bad command name\x00can't rename to \"%s\": command already exists\x00OPERATION\x00RENAME\x00TARGET_EXISTS\x00argument to math function didn't have numeric value\x00tcl::mathfunc::\x00unknown math function \"%s\"\x00MATHFUNC\x00::info functions \x00attempt to call eval in deleted interpreter\x00IDELETE\x00too many nested evaluations (infinite loop?)\x00LIMIT\x00STACK\x00IUNWIND\x00eval unwound\x00ICANCEL\x00eval canceled\x00CANCEL\x00attempt to invoke a deleted command\x00EVAL\x00DELETEDCOMMAND\x00Tcl_EvalObjv: NULL global namespace pointer\x00::unknown\x00invalid command name \"%s\"\x00\n    (enter trace on \"\x00...\x00\")\x00\n    (leave trace on \"\x00\n    (expanding word %d)\x00TclArgumentBC Enter/Release Mismatch\x00invoked \"break\" outside of a loop\x00invoked \"continue\" outside of a loop\x00command returned bad code: %d\x00UNEXPECTED_RESULT_CODE\x00illegal argument vector\x00TclObjInvoke: called without TCL_INVOKE_HIDDEN\x00invalid hidden command name \"%s\"\x00NONE\x00square root of negative argument\x00ARITH\x00DOMAIN\x00domain error: argument not in valid range\x00not enough\x00too many\x00%s arguments for math function \"%s\"\x00WRONGARGS\x00tailcall cannot find the right splicing spot: should not happen!\x00?command? ?arg ...?\x00tailcall can only be called from a proc, lambda or method\x00TAILCALL\x00ILLEGAL\x00Adding a callback without an objProc?!\x00?returnValue?\x00yield can only be called in a coroutine\x00COROUTINE\x00ILLEGAL_YIELD\x00command ?arg ...?\x00yieldto can only be called in a coroutine\x00yieldto called in deleted namespace\x00YIELDTO_IN_DELETED\x00cannot yield: C stack busy\x00CANT_YIELD\x00Yield received an option which is not implemented\x00can only get coroutine type of a coroutine\x00active\x00unknown coroutine type\x00BAD_TYPE\x00coroName cmd ?arg1 arg2 ...?\x00can only inject a command into a coroutine\x00can only inject a command into a suspended coroutine\x00ACTIVE\x00coroutine \"%s\" is already running\x00BUSY\x00?arg?\x00wrong coro nargs; how did we get here? not implemented!\x00name cmd ?arg ...?\x00can't create procedure \"%s\": unknown namespace\x00NAMESPACE\x00can't create procedure \"%s\": bad procedure name\x00bytearray\x00encode\x00decode\x00hex\x00uuencode\x00base64\x00%s called with shared object\x00Tcl_SetByteArrayObj\x00Tcl_SetByteArrayLength\x00max size for a Tcl value (%d bytes) exceeded\x00TclAppendBytesToByteArray\x00%s must be called with definite number of bytes to append\x00binary\x00binary encode\x00binary decode\x00formatString ?arg ...?\x00number of elements in list does not match count\x00cannot use \"*\" in format string with \"x\"\x00hexadecimal\x00expected %s string but got \"%s\" instead\x00missing count for \"@\" field specifier\x00not enough arguments for all format specifiers\x00bad field specifier \"%s\"\x00value formatString ?varName ...?\x00unexpected fallthrough\x00data\x00-strict\x00?options? data\x00option\x00invalid hexadecimal digit \"%c\" at position %d\x00BINARY\x00DECODE\x00INVALID\x00-maxlen\x00-wrapchar\x00?-maxlen len? ?-wrapchar char? data\x00line length out of range\x00ENCODE\x00LINE_LENGTH\x00limit hit\x00invalid wrapchar; will defeat decoding\x00WRAPCHAR\x00short uuencode data\x00SHORT\x00invalid uuencode character \"%c\" at position %d\x00invalid base64 character \"%c\" at position %d\x00unable to alloc %u bytes\x00unable to alloc %u bytes, %s line %d\x00unable to realloc %u bytes\x00unable to realloc %u bytes, %s line %d\x00%a %b %d %H:%M:%S %Z %Y\x00BCE\x00C\x00cannot use -gmt and -timezone in same call\x00CE\x00dayOfMonth\x00dayOfWeek\x00dayOfYear\x00era\x00:GMT\x00gregorian\x00integer value too large to represent\x00iso8601Week\x00iso8601Year\x00julianDay\x00localSeconds\x00month\x00seconds\x00tzName\x00tzOffset\x00year\x00getenv\x00Oldscan\x00ConvertLocalToUTC\x00GetDateFields\x00GetJulianDayFromEraYearMonthDay\x00GetJulianDayFromEraYearWeekDay\x00ParseFormatArgs\x00clicks\x00microseconds\x00milliseconds\x00::tcl::clock::\x00clock\x00dict tzdata changeover\x00key \"localseconds\" not found in dictionary\x00seconds tzdata changeover\x00expected key(s) not found in dictionary\x00dict changeover\x00loop in ConvertLocalToUTCUsingTable\x00time value too large/small to represent\x00number too large to represent as a Posix time\x00CLOCK\x00argTooLarge\x00localtime failed (clock value may be too large/small to represent)\x00localtimeFailed\x00%02d\x00-milliseconds\x00-microseconds\x00?-switch?\x00-format\x00-gmt\x00-locale\x00-timezone\x00clock format clockval ?-format string? ?-gmt boolean? ?-locale LOCALE? ?-timezone ZONE?\x00wrongNumArgs\x00badOption\x00gmtWithTimezone\x00TZ\x00string ?in? ?pattern body ...? ?default body?\x00extra case pattern with no body\x00default\x00\n    (\"%.50s\" arm line %d)\x00script ?resultVarName? ?optionVarName?\x00\n    (\"catch\" body line %d)\x00?dirName?\x00couldn't change working directory to \"%s\": %s\x00convertfrom\x00convertto\x00dirs\x00names\x00system\x00encoding\x00::tcl::encoding::\x00tcl:encoding:\x00___tmp\x00problem making 'encoding %s' safe: %s\x00problem making 'encoding' safe: %s\x00not allowed to invoke subcommand %s of encoding\x00SAFE\x00SUBCOMMAND\x00?encoding? data\x00?dirList?\x00expected directory list but got \"%s\"\x00ENCODING\x00BADPATH\x00?encoding?\x00message ?errorInfo? ?errorCode?\x00-code error -level 0\x00-errorinfo\x00-errorcode\x00\n    (\"eval\" body line %d)\x00arg ?arg ...?\x00?returnCode?\x00atime\x00attributes\x00channels\x00copy\x00dirname\x00executable\x00exists\x00extension\x00isdirectory\x00isfile\x00link\x00lstat\x00mtime\x00mkdir\x00nativename\x00normalize\x00owned\x00pathtype\x00readable\x00readlink\x00rootname\x00separator\x00size\x00stat\x00tail\x00tempfile\x00type\x00volumes\x00writable\x00file\x00::tcl::file::\x00tcl:file:\x00problem making 'file %s' safe: %s\x00problem making 'file' safe: %s\x00not allowed to invoke subcommand %s of file\x00name ?time?\x00could not set access time for file \"%s\": %s\x00could not set modification time for file \"%s\": %s\x00name varName\x00unrecognised path\x00FILESYSTEM\x00name ?name ...?\x00could not read \"%s\": no such file or directory\x00PATHSPLIT\x00NONESUCH\x00absolute\x00relative\x00volumerelative\x00?name?\x00\\\x00could not read \"%s\": %s\x00dev\x00ino\x00nlink\x00uid\x00gid\x00blocks\x00blksize\x00ctime\x00mode\x00directory\x00characterSpecial\x00blockSpecial\x00fifo\x00unknown\x00start test next command\x00\n    (\"for\" body line %d)\x00\n    (\"for\" initial command)\x00\n    (\"for\" loop-end command)\x00varList list ?varList list ...? command\x00%s varlist is empty\x00LMAP\x00FOREACH\x00NEEDVARS\x00\n    (\"%s\" body line %d)\x00\n    (setting %s loop variable \"%s\")\x00args\x00body\x00cmdcount\x00commands\x00complete\x00errorstack\x00frame\x00functions\x00globals\x00hostname\x00level\x00library\x00loaded\x00locals\x00nameofexecutable\x00patchlevel\x00procs\x00sharedlibextension\x00tclversion\x00vars\x00wrong # args: no expression after \"%s\" argument\x00then\x00elseif\x00else\x00wrong # args: extra words after \"else\" clause in \"if\" command\x00wrong # args: no script following \"%s\" argument\x00varName ?increment?\x00info\x00procname\x00\"%s\" isn't a procedure\x00PROCEDURE\x00?pattern?\x00*[?\\\x00command\x00procname arg varname\x00procedure \"%s\" doesn't have an argument \"%s\"\x00ARGUMENT\x00?interp?\x00varName\x00?number?\x00Broken frame level calculation\x00bad level \"%s\"\x00LEVEL\x00precompiled\x00line\x00cmd\x00TCL_LOCATION_PROC found in standard frame\x00\t    ::apply [::list {{pattern *}} {\n\t\t::set cmds {}\n\t\t::foreach cmd [::info commands ::tcl::mathfunc::$pattern] {\n\t\t    ::lappend cmds [::namespace tail $cmd]\n\t\t}\n\t\t::foreach cmd [::info commands tcl::mathfunc::$pattern] {\n\t\t    ::set cmd [::namespace tail $cmd]\n\t\t    ::if {$cmd ni $cmds} {\n\t\t\t::lappend cmds $cmd\n\t\t    }\n\t\t}\n\t\t::return $cmds\n\t    } [::namespace current]] \x00unable to determine name of host\x00HOSTNAME\x00UNKNOWN\x00tcl_library\x00no library has been specified for Tcl\x00VARIABLE\x00?filename?\x00list ?joinString?\x00 \x00list ?varName ...?\x00list ?index ...?\x00list index ?element ...?\x00list first last\x00count ?value ...?\x00bad count \"%d\": must be integer >= 0\x00LREPEAT\x00NEGARG\x00max length of a Tcl list (%d elements) exceeded\x00MEMORY\x00list first last ?element ...?\x00-all\x00-ascii\x00-bisect\x00-decreasing\x00-dictionary\x00-exact\x00-glob\x00-increasing\x00-index\x00-inline\x00-integer\x00-nocase\x00-not\x00-real\x00-regexp\x00-sorted\x00-start\x00-subindices\x00?-option value ...? list pattern\x00missing starting index\x00MISSING\x00\"-index\" option must be followed by list index\x00index \"%s\" cannot select an element from any list\x00INDEXOUTOFRANGE\x00\n    (-index option item number %d)\x00-subindices cannot be used without -index option\x00LSEARCH\x00BAD_OPTION_MIX\x00-bisect is not compatible with -all or -not\x00listVar ?index? ?index ...? value\x00-command\x00-indices\x00-stride\x00-unique\x00?-option value ...? list\x00\"-command\" option must be followed by comparison command\x00\"-stride\" option must be followed by stride length\x00stride length must be at least 2\x00LSORT\x00BADSTRIDE\x00list size must be a multiple of the stride length\x00when used with \"-stride\", the leading \"-index\" value must be within the group\x00BADINDEX\x00no enough memory to proccess sort of %d items\x00\n    (-compare command)\x00-compare command returned non-integer result\x00COMPARISONFAILED\x00element %d missing from sublist \"%s\"\x00INDEXFAILED\x00-about\x00-expanded\x00-line\x00-linestop\x00-lineanchor\x00--\x00?-option ...? exp string ?matchVar? ?subMatchVar ...?\x00regexp match variables not allowed when using -inline\x00REGEXP\x00MIX_VAR_INLINE\x00?-option ...? exp string subSpec ?varName?\x00&\\\x00*+?{}()[].\\|^$\x00oldName newName\x00?-encoding name? fileName\x00-encoding\x00 \n\t\r\x00string ?splitChars?\x00needleString haystackString ?startIndex?\x00string charIndex\x00control\x00false\x00true\x00wideinteger\x00wordchar\x00-failindex\x00class ?-strict? ?-failindex var? str\x00class\x00?-strict? ?-failindex var? str\x00?-nocase? charMap string\x00bad option \"%s\": must be -nocase\x00INDEX\x00char map list unbalanced\x00MAP\x00UNBALANCED\x00?-nocase? pattern string\x00string first last\x00string count\x00result exceeds max size for a Tcl value (%d bytes)\x00string size overflow, out of memory allocating %u bytes\x00string first last ?string?\x00string\x00string index\x00?-nocase? ?-length int? string1 string2\x00-length\x00bad option \"%s\": must be -nocase or -length\x00string ?first? ?last?\x00string ?chars?\x00bytelength\x00cat\x00compare\x00equal\x00first\x00index\x00is\x00last\x00length\x00map\x00match\x00range\x00repeat\x00replace\x00tolower\x00toupper\x00totitle\x00trim\x00trimleft\x00trimright\x00wordend\x00wordstart\x00-nobackslashes\x00-nocommands\x00-novariables\x00Tcl_SubstObjCmd: bad option index to SubstOptions\x00?-nobackslashes? ?-nocommands? ?-novariables? string\x00-indexvar\x00-matchvar\x00bad option \"%s\": %s option already found\x00SWITCH\x00DOUBLEOPT\x00missing variable name argument to %s option\x00NOVAR\x00?-option ...? string ?pattern body ...? ?default body?\x00%s option requires -regexp option\x00MODERESTRICTION\x00?-option ...? string {?pattern body ...? ?default body?}\x00extra switch pattern with no body\x00BADARM\x00, this may be due to a comment incorrectly placed outside of a switch body - see the \"switch\" documentation\x00COMMENT?\x00no body specified for pattern \"%s\"\x00FALLTHROUGH\x00fall-out when searching for body to match pattern\x00\n    (\"%.*s%s\" arm line %d)\x00type message\x00type must be non-empty list\x00THROW\x00BADEXCEPTION\x00-code error -level 0 -errorcode\x00command ?count?\x00per\x00iteration\x00-direct\x00-overhead\x00-calibrate\x00?-direct? ?-calibrate? ?-overhead double? command ?time ?max-count??\x00µs/#-overhead\x00%.*f\x00%.3f\x00net-ms\x00µs/#\x00#\x00#/sec\x00finally\x00on\x00trap\x00body ?handler ...? ?finally script?\x00handler type\x00finally clause must be last\x00TRY\x00FINALLY\x00NONTERMINAL\x00wrong # args to finally clause: must be \"... finally script\"\x00wrong # args to on clause: must be \"... on code variableList script\"\x00ON\x00wrong # args to trap clause: must be \"... trap pattern variableList script\"\x00TRAP\x00bad prefix '%s': must be a list\x00EXNFORMAT\x00last non-finally clause must not have a body of \"-\"\x00BADFALLTHROUGH\x00-during\x00\n    (\"%s ... %s\" handler line %d)\x00\n    (\"%s ... finally\" body line %d)\x00test command\x00\n    (\"while\" body line %d)\x00ForeachInfo\x00NewForeachInfo\x00DictUpdateInfo\x000\x001\x00list must have an even number of elements\x00-errorcode {TCL ARGUMENT FORMAT}\x00bad stack depth computations: is %i, should be %i\x00TclCompileCatchCmd: bad jump distance %d\x00TclCompileDictCmd(update): bad jump distance %d\x00, \x00%%v%u\x00variables\x00data=[\x00], loop=%%v%u\x00,\x00\n\t\t it%%v%u\t[\x00]\x00jumpOffset=%+d, vars=\x00[\x00loop\x00assign\x00jumpOffset\x00TclCompileIfCmd: unexpected opcode \"%d\" updating ifFalse jump\x00object\x00::namespace inscope \x00::namespace\x00inscope\x00:\x002\x00end\x00-options\x00namespace\x00JumptableInfo\x00word\x003\x00TclCompileSubstCmd: bad start jump distance %d\x00unexpected token type in TclCompileSubstCmd: %d\x00TclCompileSubstCmd: bad break jump distance %d\x00TclCompileSubstCmd: bad continue jump distance %d\x00TclCompileSubstCmd: bad return jump distance %d\x00TclCompileSubstCmd: bad other jump distance %d\x00TclCompileSubstCmd: bad ok jump distance %d\x00TclCompileSubstCmd: bad end jump distance %d\x00unknown switch mode: %d\x00\n\t\t\x00\"%s\"->pc %d\x00mapping\x00-errorcode {TCL OPERATION THROW BADEXCEPTION}\x00-level 0 -code 0\x00-nocomplain\x00-1\x001.0\x00_@_\x00not enough memory to parse expression\x00NOMEM\x00invalid character \"%.*s\"\x00BADCHAR\x00incomplete operator \"%.*s\"\x00PARTOP\x00invalid bareword \"%.*s%s\"\x00should be \"$%.*s%s\" or \"{%.*s%s}\"\x00 or \"%.*s%s(...)\" or ...\x00BAREWORD\x00 (invalid binary number?)\x00BADNUMBER\x00 (invalid octal number?)\x00OCTAL\x00missing operator at %s\x00max # of tokens for a Tcl parse (%d) exceeded\x00invalid character \"$\"\x00missing close-bracket\x00empty subexpression at %s\x00EMPTY\x00unbalanced open paren\x00missing function argument at %s\x00empty expression\x00unbalanced close paren\x00missing operand at %s\x00missing operator \":\" at %s\x00unexpected operator \":\" without preceding \"?\"\x00SURPRISE\x00unexpected \",\" outside function argument list\x00\nin expression \"%s%.*s%.*s%s%s%.*s%s\"\x00;\n\x00\n    (parsing expression \"%.*s%s\")\x00PARSE\x00EXPR\x00bytecode\x00done\x00push1\x00push4\x00invokeStk1\x00invokeStk4\x00loadScalar1\x00loadScalar4\x00loadScalarStk\x00loadArray1\x00loadArray4\x00storeScalar1\x00storeScalar4\x00storeScalarStk\x00storeArray1\x00storeArray4\x00incrScalar1\x00incrScalarStk\x00incrArray1\x00incrScalar1Imm\x00incrScalarStkImm\x00incrArray1Imm\x00jump1\x00jumpTrue1\x00jumpFalse1\x00callBuiltinFunc1\x00callFunc1\x00foreach_start4\x00foreach_step4\x00beginCatch4\x00appendScalar1\x00appendScalar4\x00appendArray1\x00appendArray4\x00lappendScalar1\x00lappendScalar4\x00lappendArray1\x00lappendArray4\x00returnImm\x00expandStart\x00expandStkTop\x00invokeExpanded\x00listRangeImm\x00startCommand\x00returnStk\x00dictFirst\x00dictNext\x00dictDone\x00dictUpdateStart\x00dictUpdateEnd\x00syntax\x00existScalar\x00returnCodeBranch\x00unsetScalar\x00strrangeImm\x00invokeReplace\x00expandDrop\x00foreach_start\x00foreach_step\x00foreach_end\x00lmap_collect\x00tclooNext\x00tclooNextClass\x00yieldToInvoke\x00strclass\x00substcode\x00::tcl\x00::tcl::\x00TclCompileScript() called on uninitialized CompileEnv\x00too many nested compilations (infinite loop?)\x00Unexpected token type in TclCompileTokens: %d; %.*s\x00TclInitByteCodeObj() called on uninitialized CompileEnv\x00EnterCmdStartData: bad command index %d\x00EnterCmdStartData: cmd map not sorted by code offset\x00EnterCmdExtentData: bad command index %d\x00EnterCmdExtentData: missing start data for command %d\x00trying to add 'break' fixup to full exception range\x00trying to add 'continue' fixup to full exception range\x00trying to finalize a loop exception range\x00TclFixupForwardJump: bad ExceptionRange type %d\x00unexpected opcode\x00GetCmdLocEncodingSize: bad code offset\x00GetCmdLocEncodingSize: bad code length\x00GetCmdLocEncodingSize: bad source length\x00EncodeCmdLocMap: bad code offset\x00EncodeCmdLocMap: bad code length\x00EncodeCmdLocMap: bad source length\x00%s.\n%s: %s\x00Tcl_RegisterConfig\x00Unable to create namespace for package configuration.\x00::pkgconfig\x00%s: %s\x00Unable to create query command for package configuration\x00get\x00subcommand ?arg?\x00subcommand\x00package not known\x00FATAL\x00PKGCFG_BASE\x00key\x00key not known\x00CONFIG\x00insufficient memory to create list\x00QueryConfigObjCmd: Unknown subcommand to 'pkgconfig'. This can't happen\x00tclPackageAboutDict\x00Deleting\x00syntax error\x00Error: discarding\x00Error: popping\x00memory exhausted\x00Cleanup: discarding lookahead\x00Cleanup: popping\x00january\x00february\x00march\x00april\x00may\x00june\x00july\x00august\x00september\x00sept\x00october\x00november\x00december\x00sunday\x00monday\x00tuesday\x00tues\x00wednesday\x00wednes\x00thursday\x00thur\x00thurs\x00friday\x00saturday\x00fortnight\x00week\x00day\x00hour\x00minute\x00min\x00second\x00sec\x00tomorrow\x00yesterday\x00today\x00now\x00this\x00next\x00ago\x00epoch\x00stardate\x00gmt\x00ut\x00utc\x00uct\x00wet\x00bst\x00wat\x00at\x00nft\x00nst\x00ndt\x00ast\x00adt\x00est\x00edt\x00cst\x00cdt\x00mst\x00mdt\x00pst\x00pdt\x00yst\x00ydt\x00hst\x00hdt\x00ahst\x00nt\x00idlw\x00cet\x00cest\x00met\x00mewt\x00mest\x00swt\x00sst\x00fwt\x00fst\x00eet\x00bt\x00it\x00zp4\x00zp5\x00ist\x00zp6\x00wast\x00wadt\x00jt\x00cct\x00jst\x00jdt\x00kst\x00kdt\x00cast\x00cadt\x00east\x00eadt\x00gst\x00nzt\x00nzst\x00nzdt\x00idle\x00dst\x00a\x00b\x00c\x00d\x00e\x00f\x00g\x00h\x00i\x00k\x00l\x00m\x00n\x00o\x00p\x00q\x00r\x00s\x00t\x00u\x00v\x00w\x00x\x00y\x00z\x00 (characters \x00am\x00a.m.\x00pm\x00p.m.\x00stringToParse baseYear baseMonth baseDay\x00DATE\x00Unknown status returned from date parser. Please report this error as a bug in Tcl.\x00BUG\x00more than one date in string\x00MULTIPLE\x00more than one time of day in string\x00more than one time zone in string\x00more than one weekday in string\x00more than one ordinal month in string\x00dict\x00create\x00filter\x00keys\x00merge\x00remove\x00values\x00with\x00missing value to go with key\x00DICTIONARY\x00key \"%s\" not known in dictionary\x00DICT\x00Tcl_DictObjPut\x00Tcl_DictObjRemove\x00concurrent dictionary modification and search\x00Tcl_DictObjPutKeyList\x00%s called with empty key list\x00Tcl_DictObjRemoveKeyList\x00?key value ...?\x00dictionary ?key ...?\x00dictionary ?key value ...?\x00dictionary ?pattern?\x00dictionary\x00dictionary key ?key ...?\x00dictVarName key ?increment?\x00\n    (reading increment)\x00dictVarName key ?value ...?\x00{keyVarName valueVarName} dictionary script\x00must have exactly two variable names\x00SYNTAX\x00\n    (\"dict for\" body line %d)\x00\n    (\"dict map\" body line %d)\x00dictVarName key ?key ...? value\x00dictVarName key ?key ...?\x00dictionary filterType ?arg ...?\x00filterType\x00dictionary script {keyVarName valueVarName} filterScript\x00\n    (\"dict filter\" filter script key variable)\x00\n    (\"dict filter\" filter script value variable)\x00\n    (\"dict filter\" script line %d)\x00dictVarName key varName ?key varName ...? script\x00\n    (body of \"dict update\")\x00dictVarName ?key ...? script\x00\n    (body of \"dict with\")\x00instname\x00ByteCode 0x%s, refCt %u, epoch %u, interp 0x%s (epoch %u)\n\x00  Source \x00\n  File \"%s\" Line %d\x00\n  Cmds %d, src %d, inst %d, litObjs %u, aux %d, stkDepth %u, code/src %.2f\n\x00  Proc 0x%s, refCt %d, args %d, compiled locals %d\n\x00, scalar\x00, array\x00, link\x00, arg\x00, temp\x00, resolved\x00      slot %d%s%s%s%s%s%s\x00, \"%s\"\n\x00  Exception ranges %d, depth %d:\n\x00      %d: level %d, %s, pc %d-%d, \x00continue %d, break %d\n\x00catch %d\n\x00DisassembleByteCodeObj: bad ExceptionRange type %d\x00    \x00  Commands %d:\x00     \x00\n   \x00%s%4d: pc %d-%d, src %d-%d\x00  Command %d: \x00(%u) %s \x00%+d \x00%u \x00, %u cmds start here\x00pc %u\x00next cmd at pc %u\x00%d \x00end \x00end-%d \x00FormatInstruction: bad local var index %u (%u locals)\x00temp var %u\x00var \x00%%v%u \x00%s \x00\t# \x00\t# %s\x00\t\t[\x00]\n\x00InnerContext: bad tos -- appending null object\x00InnerContext: bad tos -- appending freed object %p\x00inst_%d\x00\"\"\x00\"\x00\\\"\x00\\f\x00\\n\x00\\r\x00\\t\x00\\v\x00\\U%08x\x00\\u%04x\x00%c\x00scalar\x00array\x00arg\x00temp\x00resolved\x00pc %d\x00@%d\x00%%%d\x00.%d\x00.end\x00.end-%d\x00?%d\x00=%s\x00opcode %d with more than zero 'no' operands\x00type %s level %d from %d to %d break %d continue %d\x00type %s level %d from %d to %d catch %d\x00codefrom\x00codeto\x00scriptfrom\x00scriptto\x00literals\x00exception\x00instructions\x00auxiliary\x00stackdepth\x00exceptdepth\x00initiallinenumber\x00sourcefile\x00constructor\x00destructor\x00lambda\x00method\x00objmethod\x00type ...\x00lambdaTerm\x00procName\x00PROC\x00className\x00\"%s\" is not a class\x00CLASS\x00\"%s\" has no defined constructor\x00DISASSEMBLE\x00CONSRUCTOR\x00body not available for this kind of constructor\x00METHODTYPE\x00body of constructor\x00\"%s\" has no defined destructor\x00DESRUCTOR\x00body not available for this kind of destructor\x00body of destructor\x00className methodName\x00objectName methodName\x00unknown method \"%s\"\x00METHOD\x00body not available for this kind of method\x00body of method\x00may not disassemble prebuilt bytecode\x00BYTECODE\x00*.enc\x00identity\x00utf-8\x00unicode\x00iso8859-1\x00FreeEncoding: refcount problem !!!\x00.enc\x00unknown encoding \"%s\"\x00invalid encoding file \"%s\"\x00init\x00final\x00EscapeToUtfProc: invalid sub table\x00configure\x00-map\x00-parameters\x00-prefixes\x00-subcommands\x00-unknown\x00-namespace\x00ensembleCommand\x00tried to manipulate ensemble of deleted namespace\x00ENSEMBLE\x00DEAD\x00subcommand ?arg ...?\x00?option value ...?\x00ensemble subcommand implementations must be non-empty lists\x00EMPTY_TARGET\x00cmdname\x00cmdname ?-option value ...? ?arg ...?\x00option -namespace is read-only\x00READ_ONLY\x00unexpected ensemble command\x00command is not an ensemble\x00NOT_ENSEMBLE\x00ensemble target is not a fully-qualified command\x00UNQUALIFIED_TARGET\x00\"%s\" is not an ensemble command\x00tcl:\x00invalid ensemble name '%s'\x00unable to find or create %s namespace!\x00ensemble activated for deleted namespace\x00full name %s not found in supposedly synchronized hash\x00unknown subcommand \"%s\": namespace %s does not export any commands\x00 or ambiguous\x00unknown%s subcommand \"%s\": must be \x00or %s\x00SpellFix: programming error\x00unknown subcommand handler deleted its ensemble\x00UNKNOWN_DELETED\x00\n    while parsing result of ensemble unknown subcommand handler\x00unknown subcommand handler returned bad code: \x00\n    result of ensemble unknown subcommand handler: \x00UNKNOWN_RESULT\x00\n    (ensemble unknown subcommand handler)\x00env\x00HOME\x00no such variable\x00tclBgError\x00error in background error handler:\n\x00msg options\x00-level\x00missing return option \"-level\"\x00-code\x00missing return option \"-code\"\x00bgerror\x00errorInfo\x00bgerror failed to handle background error.\n\x00    Original error: \x00    Error in bgerror: \x00TclSetBgErrorHandler: NULL cmdPrefix argument\x00OS exit failed!\x00TclInitSubsystems called while exiting\x00exit handlers were created during Tcl_Finalize\x00limit exceeded\x00can't wait for variable \"%s\": would wait forever\x00EVENT\x00NO_SOURCES\x00idletasks\x00Tcl_UpdateObjCmd: bad option index to UpdateOptions\x00?idletasks?\x00||\x00&&\x00exprcode\x00dictIterator\x00freeing an execStack which is still in use\x00Deleting execEnv with pending TEOV callbacks!\x00Deleting execEnv with existing coroutine\x00STACK: Reallocating with no previous alloc\x00STACK: Stack after current is in use\x00STACK: Stack after current is not last\x00TclStackFree: incorrect freePtr (%p != %p). Call out of sequence?\x00TclStackRealloc: incorrect ptr. Call out of sequence?\x00Tcl_EvalObj: compiled script jumped interps\x00TclIncrObj\x00tailcall can only be called from a proc or lambda\x00TclNRExecuteByteCode: unrecognized builtin function code %d\x00\n    (reading value of variable to increment)\x00access\x00array set\x00variable isn't array\x00WRITE\x00ARRAY\x00STACK_LEVEL\x00self may only be called from inside a method\x00OO\x00CONTEXT_REQUIRED\x00nextto may only be called from inside a method\x00CLASS_REQUIRED\x00%s implementation by \"%s\" not reachable from here\x00CLASS_NOT_REACHABLE\x00%s has no non-filter implementation by \"%s\"\x00CLASS_NOT_THERE\x00next may only be called from inside a method\x00no next %s implementation\x00NOTHING_NEXT\x00negative shift argument\x00INST_RETURN_CODE_BRANCH: TOS not a return code!\x00INST_RETURN_CODE_BRANCH: TOS is TCL_OK!\x00Should not happen!\x00mis-issued dictFirst!\x00mis-issued dictNext!\x00dictUpdateStart argument length mismatch\x00clockRead instruction with unknown clock#\x00TclNRExecuteByteCode: unrecognized opCode %u\x00divide by zero\x00DIVZERO\x00exponentiation of zero by negative power\x00\nTclNRExecuteByteCode: abnormal return at pc %u: stack top %d < entry stack top %d\n\x00TclNRExecuteByteCode execution failure: end stack top < start stack top\x00exponent too large\x00unexpected number type\x00empty string\x00invalid octal number\x00non-numeric string\x00non-numeric floating-point value\x00floating-point value\x00(big) integer\x00can't use %s as operand of \"%s\"\x00LocSearch failure\x00floating-point value too small to represent\x00UNDERFLOW\x00floating-point value too large to represent\x00OVERFLOW\x00unknown floating-point error, errno = %d\x00?-option value ...? source ?source ...? target\x00copying\x00renaming\x00error %s: target \"%s\" is not a directory\x00can't create directory \"%s\": %s\x00error deleting \"%s\": directory not empty\x00error deleting unknown file: %s\x00error deleting \"%s\": %s\x00can't overwrite file \"%s\" with directory \"%s\"\x00can't overwrite directory \"%s\" with file \"%s\"\x00u+w\x00-permissions\x00error renaming \"%s\" to \"%s\": trying to rename a volume or move a directory into itself\x00::tcl::CopyDirectory\x00can't unlink \"%s\": %s\x00error %s \"%s\"\x00 to \"%s\"\x00: \"%s\"\x00: %s\x00-force\x00name ?-option value ...?\x00must not update objPtrRef's variable and return non-NULL\x00bad option \"%s\", there are no file attributes in this filesystem\x00FATTR\x00value for \"%s\" missing\x00NOVALUE\x00?-linktype? linkname ?target?\x00-symbolic\x00-hard\x00could not create new link \"%s\": that path already exists\x00could not create new link \"%s\": no such file or directory\x00could not create new link \"%s\": target \"%s\" doesn't exist\x00could not create new link \"%s\" pointing to \"%s\": %s\x00could not read link \"%s\": %s\x00?nameVar? ?template?\x00can't create temporary file: %s\x00//?/UNC/\x00//?/\x00//\x00./\x00/\\:\x00couldn't find HOME environment variable to expand path\x00FILENAME\x00NO_HOME\x00user \"%s\" doesn't exist\x00USER\x00-directory\x00-join\x00-path\x00-tails\x00-types\x00missing argument to \"-directory\"\x00\"-directory\" may only be used once\x00\"-directory\" cannot be used with \"-path\"\x00GLOB\x00BADOPTIONCOMBINATION\x00missing argument to \"-path\"\x00\"-path\" may only be used once\x00\"-path\" cannot be used with \"-dictionary\"\x00missing argument to \"-types\"\x00\"-tails\" must be used with either \"-directory\" or \"-path\"\x00\\/\x00\\[]*?{}\x00readonly\x00hidden\x00macintosh\x00creator\x00bad argument to \"-types\": %s\x00BAD\x00only one MacOS type or creator argument to \"-types\" allowed\x00no files matched glob pattern%s \"\x00%s%s\x00NOMATCH\x00/\\\x00Called TclGlob with TCL_GLOBMODE_TAILS and pathPrefix==NULL\x00.\x00unmatched open-brace in file name\x00BALANCE\x00unmatched close-brace in file name\x00*[]?\\\x00invalid sharing of Tcl_Obj on C stack\x00malformed bucket chain in Tcl_DeleteHashEntry\x00%d entries in table, %d buckets\n\x00number of buckets with %d entries: %d\n\x00number of buckets with %d or more entries: %d\n\x00average search distance for entry: %.1f\x00called %s on deleted table\x00Tcl_FindHashEntry\x00Tcl_CreateHashEntry\x00::tcl::HistoryObjs\x00::history\x00ambiguous \x00bad \x00 \"\x00\": no valid options\x00\": must be \x00 or \x00all\x00longest\x00::tcl::prefix\x00prefix\x00-error\x00-message\x00?options? table string\x00missing value for -message\x00NOARG\x00missing value for -error\x00error options must have an even number of elements\x00table string\x00 or \"\x00wrong # args: should be \"\x00ambiguous option \"%s\"\x00unrecognized argument \"%s\"\x00expected integer argument for \"%s\" but got \"%s\"\x00expected floating-point argument for \"%s\" but got \"%s\"\x00bad argument type %d in Tcl_ArgvInfo\x00\"%s\" option requires an additional argument\x00Command-specific options:\x00\n%s\x00\n %s:\x00\n\t\tDefault value: %d\x00\n\t\tDefault value: %g\x00%g\x00\n\t\tDefault value: \"%s\"\x00ok\x00bad completion code \"%s\": must be ok, error, return, break, continue, or an integer\x00RESULT\x00ILLEGAL_CODE\x00if {[namespace which -command tclInit] eq \"\"} {\n  proc tclInit {} {\n    global tcl_libPath tcl_library env tclDefaultLibrary\n    rename tclInit {}\n    if {[info exists tcl_library]} {\n\tset scripts {{set tcl_library}}\n    } else {\n\tset scripts {}\n\tif {[info exists env(TCL_LIBRARY)] && ($env(TCL_LIBRARY) ne {})} {\n\t    lappend scripts {set env(TCL_LIBRARY)}\n\t    lappend scripts {\nif {[regexp ^tcl(.*)$ [file tail $env(TCL_LIBRARY)] -> tail] == 0} continue\nif {$tail eq [info tclversion]} continue\nfile join [file dirname $env(TCL_LIBRARY)] tcl[info tclversion]}\n\t}\n\tif {[info exists tclDefaultLibrary]} {\n\t    lappend scripts {set tclDefaultLibrary}\n\t} else {\n\t    lappend scripts {::tcl::pkgconfig get scriptdir,runtime}\n\t}\n\tlappend scripts {\nset parentDir [file dirname [file dirname [info nameofexecutable]]]\nset grandParentDir [file dirname $parentDir]\nfile join $parentDir lib tcl[info tclversion]} \\\n\t{file join $grandParentDir lib tcl[info tclversion]} \\\n\t{file join $parentDir library} \\\n\t{file join $grandParentDir library} \\\n\t{file join $grandParentDir tcl[info patchlevel] library} \\\n\t{\nfile join [file dirname $grandParentDir] tcl[info patchlevel] library}\n\tif {[info exists tcl_libPath]\n\t\t&& [catch {llength $tcl_libPath} len] == 0} {\n\t    for {set i 0} {$i < $len} {incr i} {\n\t\tlappend scripts [list lindex \\$tcl_libPath $i]\n\t    }\n\t}\n    }\n    set dirs {}\n    set errors {}\n    foreach script $scripts {\n\tlappend dirs [eval $script]\n\tset tcl_library [lindex $dirs end]\n\tset tclfile [file join $tcl_library init.tcl]\n\tif {[file exists $tclfile]} {\n\t    if {[catch {uplevel #0 [list source $tclfile]} msg opts]} {\n\t\tappend errors \"$tclfile: $msg\n\"\n\t\tappend errors \"[dict get $opts -errorinfo]\n\"\n\t\tcontinue\n\t    }\n\t    unset -nocomplain tclDefaultLibrary\n\t    return\n\t}\n    }\n    unset -nocomplain tclDefaultLibrary\n    set msg \"Can't find a usable init.tcl in the following directories: \n\"\n    append msg \"    $dirs\n\n\"\n    append msg \"$errors\n\n\"\n    append msg \"This probably means that Tcl wasn't installed properly.\n\"\n    error $msg\n  }\n}\ntclInit\x00interp\x00InterpInfoDeleteProc: still exist commands\x00InterpInfoDeleteProc: still exist aliases\x00alias\x00aliases\x00cancel\x00children\x00debug\x00expose\x00hide\x00issafe\x00invokehidden\x00limit\x00marktrusted\x00recursionlimit\x00slaves\x00share\x00target\x00transfer\x00cmd ?arg ...?\x00slavePath slaveCmd ?masterPath masterCmd? ?arg ...?\x00path ?cmdPrefix?\x00-unwind\x00?-unwind? ?--? ?path? ?result?\x00-safe\x00?-safe? ?--? ?path?\x00interp%d\x00path ?-frame ?bool??\x00cannot delete the current interpreter\x00INTERP\x00DELETESELF\x00path arg ?arg ...?\x00path hiddenCmdName ?cmdName?\x00path cmdName ?hiddenCmdName?\x00-global\x00path ?-namespace ns? ?-global? ?--? cmd ?arg ..?\x00path limitType ?-option value ...?\x00limit type\x00path\x00path ?newlimit?\x00srcPath channelId destPath\x00path alias\x00alias \"%s\" in path \"%s\" not found\x00ALIAS\x00target interpreter for alias \"%s\" in path \"%s\" is not my descendant\x00TARGETSHROUDED\x00?path?\x00alias \"%s\" not found\x00cannot define or rename alias \"%s\": interpreter deleted\x00cannot define or rename alias \"%s\": would create a loop\x00ALIASLOOP\x00could not find interpreter \"%s\"\x00cmdPrefix must be list of length >= 1\x00BGERRORFORMAT\x00interpreter named \"%s\" already exists, cannot create\x00tcl_interactive\x00ChildObjCmd: interpreter has been deleted\x00aliasName ?targetName? ?arg ...?\x00?cmdPrefix?\x00?-frame ?bool??\x00hiddenCmdName ?cmdName?\x00cmdName ?hiddenCmdName?\x00?-namespace ns? ?-global? ?--? cmd ?arg ..?\x00limitType ?-option value ...?\x00?newlimit?\x00-frame\x00debug option\x00permission denied: safe interpreter cannot expose commands\x00UNSAFE\x00permission denied: safe interpreters cannot change recursion limit\x00recursion limit must be > 0\x00BADLIMIT\x00falling back due to new recursion limit\x00RECURSION\x00permission denied: safe interpreter cannot hide commands\x00not allowed to invoke hidden commands from safe interpreter\x00permission denied: safe interpreter cannot mark trusted\x00namespace eval ::tcl {namespace eval mathfunc {}}\x00::tcl::mathfunc::min\x00::tcl::mathfunc::max\x00os\x00osVersion\x00machine\x00user\x00tclDefaultLibrary\x00tcl_pkgPath\x00command count limit exceeded\x00COMMANDS\x00time limit exceeded\x00TIME\x00unknown type of resource limit\x00\n    (while waiting for event)\x00limit granularity must be positive\x00installing limit callback to the limited interpreter\x00-granularity\x00-value\x00limits on current interpreter inaccessible\x00SELF\x00?-option value ...?\x00granularity must be at least 1\x00BADVALUE\x00command limit value must be at least 0\x00-seconds\x00milliseconds must be at least 0\x00seconds must be at least 0\x00may only set -milliseconds if -seconds is not also being reset\x00BADUSAGE\x00may only reset -milliseconds if -seconds is also being reset\x00channel\x00TCL_FLUSH_NONBLOCKING_ON_EXIT\x00-blocking\x00tclIO\x00Tcl_RegisterChannel: channel without name\x00Tcl_RegisterChannel: duplicate channel names\x00illegal recursive call to close through close-handler of channel\x00stdin\x00stdout\x00stderr\x00can not find channel named \"%s\"\x00CHANNEL\x00channel type %s must define closeProc\x00channel type %s must define inputProc when used for reader channel\x00channel type %s must define outputProc when used for writer channel\x00channel type %s must define watchProc\x00channel type %s must define seekProc if defining wideSeekProc\x00couldn't find state for channel \"%s\"\x00reading and writing both disallowed for channel \"%s\"\x00could not flush channel \"%s\"\x00Channel released more than preserved\x00channel \"%s\" does not support OS handles\x00Reuse of ChannelBuffer! %p\x00unable to access channel: invalid channel\x00TclFlush, closed channel: queued output left\x00FlushChannel: damaged channel list\x00SpliceChannel: trying to add channel used in different list\x00called Tcl_Close on channel with refCount > 0\x00double-close of channels not supported by %ss\x00half-close of channels not supported by %ss\x00half-close not applicable to stack of transformations\x00write\x00Half-close of %s-side not possible, side not opened or already closed\x00ClosechanHalf, closed write-side of channel: queued output left\x00unknown output translation requested\x00Tcl_GetsObj: gotEOL reached with bufPtr==NULL\x00TclGetsObjBinary: gotEOL reached with bufPtr==NULL\x00binary encoding is not available\x00Buffer Underflow, BUFFER_PADDING not enough\x00unknown input translation %d\x00blocking buffering buffersize encoding eofchar translation\x00malformed option list in channel driver\x00bad option \"%s\": should be one of \x00-%s, \x00or -%s\x00-buffering\x00none\x00full\x00-buffersize\x00-eofchar\x00-translation\x00auto\x00cr\x00crlf\x00lf\x00unable to set channel options: background copy in progress\x00bad value for -buffering: must be one of full, line, or none\x00bad value for -eofchar: must be non-NUL ASCII character\x00bad value for -eofchar: should be a list of zero, one, or two elements\x00bad value for -translation: must be a one or two element list\x00platform\x00bad value for -translation: must be one of auto, binary, cr, lf, crlf, or platform\x00tcp\x00channelId event ?script?\x00event name\x00channel is not %s\x00channel \"%s\" is busy\x00writ\x00error %sing \"%s\": %s\x00error reading \"\x00\": \x00error writing \"\x00error setting blocking mode: %s\x00Tcl_SetChannelError: bad syntax of message\x00Defined newlevel not used in rewrite\x00Defined newcode not used in rewrite\x00-nonewline\x00nonewline\x00?-nonewline? ?channelId? string\x00channel \"%s\" wasn't opened for writing\x00error writing \"%s\": %s\x00channelId\x00error flushing \"%s\": %s\x00channelId ?varName?\x00channel \"%s\" wasn't opened for reading\x00error reading \"%s\": %s\x00channelId ?numChars?\x00?-nonewline? channelId\x00expected non-negative integer but got \"%s\"\x00NUMBER\x00start\x00current\x00channelId offset ?origin?\x00origin\x00error during seek on \"%s\": %s\x00channelId ?direction?\x00direction\x00channelId ?-option value ...?\x00-ignorestderr\x00-keepnewline\x00?-option ...? arg ?arg ...?\x00error reading output from command: %s\x00fileName ?access? ?permissions?\x000o\x00Tcl_OpenCmd: invalid mode value\x00tclTCPAcceptCallbacks\x00RegisterTcpServerCleanup: damaged accept record table\x00-async\x00-myaddr\x00-myport\x00-server\x00cannot set -async option for server sockets\x00no argument given for -myaddr option\x00no argument given for -myport option\x00no argument given for -server option\x00Tcl_SocketObjCmd: bad option index to SocketOptions\x00option -myport is not valid for servers\x00?-myaddr addr? ?-myport myport? ?-async? host port\x00-server command ?-myaddr addr? port\x00-size\x00input output ?-size size? ?-command callback?\x00input\x00output\x00mode channelId\x00channelId ?length?\x00cannot truncate to negative length of file\x00could not determine current location in \"%s\": %s\x00error during truncate on \"%s\": %s\x00blocked\x00event\x00pending\x00pipe\x00postevent\x00truncate\x00::fconfigure\x00chan\x00tclrchannel\x00blocking\x00cget\x00cgetall\x00finalize\x00initialize\x00watch\x00{read delivered more than requested}\x00{write wrote more than requested}\x00{write wrote nothing}\x00{Tried to seek before origin}\x00{Owner lost}\x00-code 1 -level 0 -errorcode NONE -errorinfo {} -errorline 1 {Owner lost}\x00mode cmdprefix\x00chan handler \"%s initialize\" returned non-list: %s\x00chan handler \"\x00 initialize\" returned \x00chan handler \"%s\" does not support all required methods\x00chan handler \"%s\" lacks a \"read\" method\x00chan handler \"%s\" lacks a \"write\" method\x00chan handler \"%s\" supports \"cget\" but not \"cgetall\"\x00chan handler \"%s\" supports \"cgetall\" but not \"cget\"\x00TclChanCreateObjCmd: duplicate channel names\x00channel eventspec\x00can not find reflected channel named \"%s\"\x00TclChanPostEventObjCmd: channel is not a reflected channel\x00TclChanPostEventObjCmd: postevent accepted for call from outside interpreter\x00tried to post events channel \"%s\" is not interested in\x00TclChanCaughtErrorBypass: Bad syntax of caught result\x00Expected list with even number of elements, got %d element%s instead\x00bad %s list: is empty\x00read write\x00rc%lu\x00chan handler returned bad code: %d\x00\n    (chan handler subcommand \"%s\")\x00EAGAIN\x00ReflectedChannelMap\x00tclrtransform\x00clear\x00drain\x00limit?\x00{read not supported by Tcl driver}\x00{write not supported by Tcl driver}\x00channel cmdprefix\x00chan handler \"%s initialize\" returned %s\x00chan handler \"%s\" makes the channel inaccessible\x00chan handler \"%s\" supports \"drain\" but not \"read\"\x00chan handler \"%s\" supports \"flush\" but not \"write\"\x00TclChanPushObjCmd: duplicate transformation handle\x00rt%lu\x00ReflectedTransformMap\x00transform\x00-command value is not a list\x00\nfailed to stack channel \"%s\"\x00create/write\x00create/read\x00delete/write\x00flush/write\x00flush/read\x00delete/read\x00query/maxRead\x00clear/read\x00couldn't open socket: port number too high\x00::tcl::unsupported::socketAF\x00inet\x00inet6\x00native\x00glob couldn't determine the current working directory\x00illegal access mode \"%s\"\x00\n    while processing open access modes \"\x00RDONLY\x00WRONLY\x00RDWR\x00APPEND\x00CREAT\x00EXCL\x00NOCTTY\x00NONBLOCK\x00TRUNC\x00invalid access mode \"%s\": must be RDONLY, WRONLY, RDWR, APPEND, BINARY, CREAT, EXCL, NOCTTY, NONBLOCK, or TRUNC\x00access mode must include either RDONLY, WRONLY, or RDWR\x00couldn't read file \"%s\": %s\x00\x1a {}\x00\ufeff\x00\n    (file \"%.*s%s\" line %d)\x00POSIX\x00could not seek to end of file while opening \"%s\": %s\x00couldn't open \"%s\": %s\x00error getting working directory name: %s\x00TCL_TEMPLOAD_NO_UNLINK\x00couldn't load library \"%s\": %s\x00couldn't load from current filesystem\x000700\x00cannot unload: filesystem does not support unloading\x00wb\x00rb\x00Tcl_FSGetFileSystemForPath called with NULL object\x00Tcl_FSGetFileSystemForPath called with object with refCount == 0\x00variable '%s' is already linked\x00internal error: bad linked variable type\x00linked variable is read-only\x00internal error: linked variable couldn't be read\x00variable must have integer value\x00variable must have real value\x00variable must have boolean value\x00variable must have char value\x00variable must have unsigned char value\x00variable must have short value\x00variable must have unsigned short value\x00variable must have unsigned int value\x00variable must have long value\x00variable must have unsigned long value\x00variable must have unsigned wide int value\x00variable must have float value\x00NULL\x00??\x00invalidReal\x00xXbBoO\x00+-\x00NewListIntRep: expects postive element count\x00list creation failed: unable to alloc %u bytes\x00Tcl_SetListObj\x00Tcl_ListObjAppendList\x00Tcl_ListObjAppendElement\x00Tcl_ListObjReplace\x00list index out of range\x00LSET\x00TclListObjSetElement\x00max size of Tcl literal array (%d literals) exceeded\x00-lazy\x00?-global? ?-lazy? ?--? fileName ?packageName? ?interp?\x00must specify either file name or package name\x00LOAD\x00NOLIBRARY\x00file \"%s\" is already loaded for package \"%s\"\x00SPLITPERSONALITY\x00tclLoad\x00package \"%s\" isn't loaded statically\x00NOTSTATIC\x00couldn't figure out package name for %s\x00WHATPACKAGE\x00_Init\x00_SafeInit\x00_Unload\x00_SafeUnload\x00can't use package in a safe interpreter: no %s_SafeInit procedure\x00can't attach package to interpreter: no %s_Init procedure\x00ENTRYPOINT\x00-keeplibrary\x00?-switch ...? fileName ?packageName? ?interp?\x00UNLOAD\x00package \"%s\" is loaded statically and cannot be unloaded\x00STATIC\x00file \"%s\" has never been loaded\x00NEVERLOADED\x00file \"%s\" has never been loaded in this interpreter\x00file \"%s\" cannot be unloaded under a safe interpreter\x00CANNOT\x00file \"%s\" cannot be unloaded under a trusted interpreter\x00tcl_rcFileName\x00argv0\x00argc\x00argv\x00application-specific initialization failed: \x00exit %d\x00TCL_FINALIZE_ON_EXIT\x00tcl_prompt2\x00tcl_prompt1\x00% \x00\n    (script that generates prompt)\x00nsName\x00code\x00ensemble\x00export\x00forget\x00import\x00parent\x00qualifiers\x00which\x00Trying to push call frame for dead namespace\x00errorCode\x00can't create namespace \"\": only global namespace can have empty name\x00CREATEGLOBAL\x00can't create namespace \"%s\": already exists\x00CREATEEXISTING\x00invalid export pattern \"%s\": pattern can't specify a namespace\x00EXPORT\x00auto_import\x00empty import pattern\x00IMPORT\x00unknown namespace in import pattern \"%s\"\x00no namespace specified in import pattern \"%s\"\x00ORIGIN\x00import pattern \"%s\" tries to import from namespace \"%s\" into itself\x00import pattern \"%s\" would create a loop containing command \"%s\"\x00LOOP\x00can't import command \"%s\": already exists\x00OVERWRITE\x00unknown namespace in namespace forget pattern \"%s\"\x00DeleteImportedCmd: did not find cmd in real cmd's list of import references\x00Could not create namespace '%s'\x00unknown namespace \"%s\"\x00unknown command \"%s\"\x00namespace \"%s\" not found\x00namespace \"%s\" not found in \"%s\"\x00?name? ?pattern?\x00?name name...?\x00unknown namespace \"%s\" in namespace delete command\x00name arg ?arg...?\x00\n    (in namespace %s \"%.*s%s\" script line %d)\x00?-clear? ?pattern pattern...?\x00-clear\x00?pattern pattern...?\x00?-force? ?pattern pattern...?\x00?pathList?\x00?script?\x00ns ?otherVar myVar ...?\x00-variable\x00?-command? ?-variable? name\x00while executing\x00invoked from within\x00\n    %s\n\"%.*s%s\"\x00cmdName\x00booleanString\x00wideInt\x00bignum\x00Derived ICL data for object using offsets from before the script\x00can't convert value to type %s\x00API_ABUSE\x00TclSetDuplicateObj\x00UpdateStringProc should not be invoked for type %s\x00UpdateStringProc for type '%s' failed to create a valid string rep\x00Tcl_SetBooleanObj\x00boolean value\x00expected boolean value but got \"\x00BOOLEAN\x00yes\x00no\x00off\x00Tcl_SetDoubleObj\x00floating point value is Not a Number\x00DOUBLE\x00NAN\x00floating-point number\x00Tcl_SetIntObj\x00Tcl_SetLongObj\x00expected integer but got \"%s\"\x00INTEGER\x00IOVERFLOW\x00%lld\x00Tcl_SetWideIntObj\x00initialization failure in DupBignum\x00radix size failure in UpdateStringOfBignum\x00UpdateStringOfBignum: string length limit exceeded\x00conversion failure in UpdateStringOfBignum\x00insufficient memory to unpack bignum\x00Tcl_SetBignumObj\x00number\x00pure string\x00value is a %s with a refcount of %d, object pointer at %s\x00%p:%p\x00, internal representation %s\x00, string representation \"\x00, no string representation\x00can't parse a NULL pointer\x00extra characters after close-quote\x00extra characters after close-brace\x00ParseTokens encountered unknown character\x00missing close-brace for variable name\x00missing )\x00$\x00missing close-brace\x00: possible unbalanced brace in comment\x00missing \"\x00TclSubstParse: programming error\x00bad parse in TclSubstParse: %c\x00unexpected token type in TclSubstTokens: %d\x00Bad portion to TclPathPart\x00can't find object string representation\x00PATH\x00WTF\x00HOMELESS\x00NOUSER\x00Called UpdateStringOfFsPath with invalid object\x00writing\x00reading\x00channel \"%s\" wasn't opened for %s\x00EXEC\x00BADCHAN\x00couldn't %s file \"%s\": %s\x00can't specify \"%s\" as last word in command\x00child process lost (is SIGCHLD ignored or trapped?)\x00error waiting for process to exit: %s\x00%lu\x00%u\x00CHILDSTATUS\x00CHILDKILLED\x00child killed: %s\n\x00CHILDSUSP\x00child suspended: %s\n\x00child wait status didn't make sense\n\x00ODDWAITRESULT\x00error reading stderr output file: %s\x00child process exited abnormally\x00illegal use of | or |& in command\x00PIPESYNTAX\x00must specify \"%s\" as last word in command\x00couldn't create input file for command: %s\x00couldn't create input pipe for command: %s\x00couldn't create output pipe for command: %s\x00couldn't create error file for command: %s\x00couldn't create pipe: %s\x00can't read output from command: standard output was redirected\x00BADREDIRECT\x00can't write input to command: standard input was redirected\x00pipe for command could not be created\x00NOPIPE\x00conflicting versions provided for package \"%s\": %s, then %s\x00PACKAGE\x00VERSIONCONFLICT\x00Cannot load package \"%s\" in standalone executable: This package is not compiled with stub support\x00UNSTUBBED\x00bad return code: %d\x00BADRESULT\x00\n    (\"package unknown\" script)\x00can't find package %s\x00UNFOUND\x00version conflict for package \"%s\": have %s, need\x00circular package dependency: attempt to provide %s %s requires %s\x00CIRCULARITY\x00attempt to provide package %s %s failed: no version of package %s provided\x00UNPROVIDED\x00attempt to provide package %s %s failed: package %s %s provided instead\x00WRONGPROVIDE\x00attempt to provide package %s %s failed: bad return code: %s\x00\n    (\"package ifneeded %s %s\" script)\x00package %s %s is not present\x00package %s is not present\x00ifneeded\x00prefer\x00present\x00provide\x00require\x00vcompare\x00versions\x00vsatisfies\x00option ?arg ...?\x00package version ?script?\x00package ?version?\x00?-exact? package ?requirement ...?\x00?command?\x00latest\x00stable\x00?latest|stable?\x00preference\x00version1 version2\x00version ?requirement ...?\x00Tcl_PackageObjCmd: bad option index to pkgOptions\x00expected version number but got \"%s\"\x00VERSION\x00expected versionMin-versionMax but got \"%s\"\x00VERSIONRANGE\x00 exactly %s\x00 %s\x00 0-\x00 -2\x00threaded\x00profiled\x0064bit\x00optimized\x00mem_debug\x00compile_debug\x00compile_stats\x00libdir,runtime\x00/usr/local/lib\x00bindir,runtime\x00/usr/local/bin\x00scriptdir,runtime\x00/usr/local/lib/tcl8.6\x00includedir,runtime\x00/usr/local/include\x00docdir,runtime\x00/usr/local/man\x00libdir,install\x00bindir,install\x00scriptdir,install\x00includedir,install\x00docdir,install\x00tcl\x00E2BIG\x00EACCES\x00EADDRINUSE\x00EADDRNOTAVAIL\x00EADV\x00EAFNOSUPPORT\x00EALREADY\x00EBADE\x00EBADF\x00EBADFD\x00EBADMSG\x00ECANCELED\x00EBADR\x00EBADRQC\x00EBADSLT\x00EBFONT\x00EBUSY\x00ECHILD\x00ECHRNG\x00ECOMM\x00ECONNABORTED\x00ECONNREFUSED\x00ECONNRESET\x00EDEADLK\x00EDESTADDRREQ\x00EDOM\x00EDOTDOT\x00EDQUOT\x00EEXIST\x00EFAULT\x00EFBIG\x00EHOSTDOWN\x00EHOSTUNREACH\x00EIDRM\x00EINPROGRESS\x00EINTR\x00EINVAL\x00EIO\x00EISCONN\x00EISDIR\x00EL2HLT\x00EL2NSYNC\x00EL3HLT\x00EL3RST\x00ELIBACC\x00ELIBBAD\x00ELIBEXEC\x00ELIBMAX\x00ELIBSCN\x00ELNRNG\x00ELOOP\x00EMFILE\x00EMLINK\x00EMSGSIZE\x00EMULTIHOP\x00ENAMETOOLONG\x00ENAVAIL\x00ENETDOWN\x00ENETRESET\x00ENETUNREACH\x00ENFILE\x00ENOANO\x00ENOBUFS\x00ENOCSI\x00ENODATA\x00ENODEV\x00ENOENT\x00ENOEXEC\x00ENOLCK\x00ENOLINK\x00ENOMEM\x00ENOMSG\x00ENONET\x00ENOPKG\x00ENOPROTOOPT\x00ENOSPC\x00ENOSR\x00ENOSTR\x00ENOSYS\x00ENOTBLK\x00ENOTCONN\x00ENOTRECOVERABLE\x00ENOTDIR\x00ENOTEMPTY\x00ENOTNAM\x00ENOTSOCK\x00ENOTSUP\x00ENOTTY\x00ENOTUNIQ\x00ENXIO\x00EOVERFLOW\x00EOWNERDEAD\x00EPERM\x00EPFNOSUPPORT\x00EPIPE\x00EPROTO\x00EPROTONOSUPPORT\x00EPROTOTYPE\x00ERANGE\x00EREMCHG\x00EREMOTE\x00EREMOTEIO\x00EROFS\x00ESHUTDOWN\x00ESOCKTNOSUPPORT\x00ESPIPE\x00ESRCH\x00ESRMNT\x00ESTALE\x00ETIME\x00ETIMEDOUT\x00ETOOMANYREFS\x00ETXTBSY\x00EUCLEAN\x00EUNATCH\x00EUSERS\x00EXDEV\x00EXFULL\x00unknown error\x00argument list too long\x00permission denied\x00address already in use\x00cannot assign requested address\x00advertise error\x00address family not supported by protocol\x00resource temporarily unavailable\x00operation already in progress\x00bad exchange descriptor\x00bad file number\x00file descriptor in bad state\x00not a data message\x00operation canceled\x00bad request descriptor\x00bad request code\x00invalid slot\x00bad font file format\x00file busy\x00no children\x00channel number out of range\x00communication error on send\x00software caused connection abort\x00connection refused\x00connection reset by peer\x00resource deadlock avoided\x00destination address required\x00math argument out of range\x00cross mount point\x00disk quota exceeded\x00file already exists\x00bad address in system call argument\x00file too large\x00host is down\x00host is unreachable\x00identifier removed\x00operation now in progress\x00interrupted system call\x00invalid argument\x00I/O error\x00socket is already connected\x00illegal operation on a directory\x00level 2 halted\x00level 2 not synchronized\x00level 3 halted\x00level 3 reset\x00cannot access a needed shared library\x00accessing a corrupted shared library\x00cannot exec a shared library directly\x00attempting to link in more shared libraries than system limit\x00.lib section in a.out corrupted\x00link number out of range\x00too many levels of symbolic links\x00too many open files\x00too many links\x00message too long\x00multihop attempted\x00file name too long\x00not available\x00network is down\x00network dropped connection on reset\x00network is unreachable\x00file table overflow\x00anode table overflow\x00no buffer space available\x00no CSI structure available\x00no data available\x00no such device\x00no such file or directory\x00exec format error\x00no locks available\x00link has been severed\x00not enough memory\x00no message of desired type\x00machine is not on the network\x00package not installed\x00bad protocol option\x00no space left on device\x00out of stream resources\x00not a stream device\x00function not implemented\x00block device required\x00socket is not connected\x00state not recoverable\x00not a directory\x00directory not empty\x00not a name file\x00socket operation on non-socket\x00operation not supported\x00inappropriate device for ioctl\x00name not unique on network\x00no such device or address\x00file too big\x00owner died\x00not owner\x00protocol family not supported\x00broken pipe\x00protocol error\x00protocol not supported\x00protocol wrong type for socket\x00math result unrepresentable\x00remote address changed\x00pathname hit remote file system\x00remote i/o error\x00read-only file system\x00cannot send after socket shutdown\x00socket type not supported\x00invalid seek\x00no such process\x00srmount error\x00stale remote file handle\x00timer expired\x00connection timed out\x00too many references: cannot splice\x00text file or pseudo-device busy\x00structure needs cleaning\x00protocol driver not attached\x00too many users\x00cross-domain link\x00message tables full\x00SIGABRT\x00SIGALRM\x00SIGBUS\x00SIGCHLD\x00SIGCONT\x00SIGFPE\x00SIGHUP\x00SIGILL\x00SIGINT\x00SIGIO\x00SIGKILL\x00SIGPIPE\x00SIGPROF\x00SIGPWR\x00SIGQUIT\x00SIGSEGV\x00SIGSTOP\x00SIGSYS\x00SIGTERM\x00SIGTRAP\x00SIGTSTP\x00SIGTTIN\x00SIGTTOU\x00SIGURG\x00SIGUSR1\x00SIGUSR2\x00SIGVTALRM\x00SIGWINCH\x00SIGXCPU\x00SIGXFSZ\x00unknown signal\x00alarm clock\x00bus error\x00child status changed\x00continue after stop\x00floating-point exception\x00hangup\x00illegal instruction\x00interrupt\x00input/output possible on file\x00kill signal\x00write on pipe with no readers\x00profiling alarm\x00power-fail restart\x00quit signal\x00segmentation violation\x00stop\x00bad argument to system call\x00software termination signal\x00trace trap\x00stop signal from tty\x00background tty read\x00background tty write\x00urgent I/O condition\x00user-defined signal 1\x00user-defined signal 2\x00virtual time alarm\x00window changed\x00exceeded CPU time limit\x00exceeded file size limit\x00Tcl_Release couldn't find reference for %p\x00Tcl_EventuallyFree called twice for %p\x00lambdaExpr\x00procbody\x00levelReference\x00name args body\x00\n    (creating proc \"\x00procedure \"%s\": arg list contains %d entries, precompiled header expects %d\x00BYTECODELIES\x00too many fields in argument specifier \"\x00FORMALARGUMENTFORMAT\x00argument with no name\x00formal parameter \"%s\" is an array element\x00formal parameter \"\x00\" is not a simple name\x00procedure \"%s\": formal parameter %d is inconsistent with precompiled body\x00procedure \"%s\": formal parameter \"\x00\" has default value inconsistent with precompiled body\x00STACKLEVEL\x00\n    (\"uplevel\" body line %d)\x00?level? command ?arg ...?\x00?\x00?arg ...?\x00body object for proc attached to frame is not a byte code type\x00body of lambda term\x00body of proc\x00invoked \"%s\" outside of a loop\x00UNEXPECTED\x00a precompiled script jumped interps\x00CROSSINTERPBYTECODE\x00\n    (procedure \"%.*s%s\" line %d)\x00TclUpdateReturnInfo: negative return level\x00can't interpret \"%s\" as a lambda expression\x00LAMBDA\x00\n    (parsing lambda expression \"%s\")\x00lambdaExpr ?arg ...?\x00\n    (lambda term \"%.*s%s\" line %d)\x00error while matching regular expression: \x00REG_UBACKREF\x00REG_ULOOKAHEAD\x00REG_UBOUNDS\x00REG_UBRACES\x00REG_UBSALNUM\x00REG_UPBOTCH\x00REG_UBBS\x00REG_UNONPOSIX\x00REG_UUNSPEC\x00REG_UUNPORT\x00REG_ULOCALE\x00REG_UEMPTYMATCH\x00REG_UIMPOSSIBLE\x00REG_USHORTEST\x00%s%s%s\x00couldn't compile regular expression pattern: \x00-errorline\x00-errorstack\x00bad %s value: expected dictionary but got \"%s\"\x00ILLEGAL_OPTIONS\x00bad -level value: expected non-negative integer but got \"%s\"\x00ILLEGAL_LEVEL\x00bad -errorcode value: expected a list but got \"%s\"\x00ILLEGAL_ERRORCODE\x00bad -errorstack value: expected a list but got \"%s\"\x00NONLIST_ERRORSTACK\x00forbidden odd-sized list for -errorstack: \"%s\"\x00ODDSIZEDLIST_ERRORSTACK\x00expected dict but got \"%s\"\x00cannot mix \"%\" and \"%n$\" conversion specifiers\x00FORMAT\x00MIXEDSPECTYPES\x00field width may not be specified in %c conversion\x00BADWIDTH\x00field size modifier may not be specified in %\x00 conversion\x00BADSIZE\x00unsigned bignum scans are invalid\x00BADUNSIGNED\x00unmatched [ in format string\x00BRACKET\x00bad scan conversion character \"\x00BADTYPE\x00variable is assigned by multiple \"%n$\" conversion specifiers\x00POLYASSIGNED\x00variable is not assigned by any conversion specifiers\x00UNASSIGNED\x00\"%n$\" argument index out of range\x00INDEXRANGE\x00different numbers of variable names and field specifiers\x00FIELDVARMISMATCH\x00string format ?varName ...?\x00Tcl_SetStringObj\x00Tcl_SetObjLength: negative length requested: %d (integer overflow?)\x00Tcl_SetObjLength\x00max length for a Tcl unicode value (%d chars) exceeded\x00Tcl_AttemptSetObjLength\x00Tcl_SetUnicodeObj\x00Tcl_AppendLimitedToObj\x00Tcl_AppendUnicodeToObj\x00Tcl_AppendStringsToObj\x00max size for a Tcl value exceeded\x00Tcl_AppendFormatToObj\x00format string ended in middle of field specifier\x00INCOMPLETE\x00unsigned bignum format is invalid\x000X\x000x\x000b\x00bad field specifier \"%c\"\x00Unable to format \"%s\" with supplied arguments: %s\x00TclParseNumber: bad acceptState %d parsing '%s'\x00TclParseNumber: state INITIAL can't happen here\x00expected %s but got \"\x00 (looks like invalid octal number)\x00assembler statements not supported\x00tclStrToD.c\x00MakeLowPrecisionDouble\x00MakeHighPrecisionDouble\x00Infinity\x00NaN\x00impossible conversion type in TclDoubleDigits\x00wrong digit!\x00in ShouldBankerRoundUp, trichotomy fails!\x00in ShouldBankerRoundUpToNext, trichotomy fails!\x00This code doesn't work on a decimal machine!\x00unknown floating point word order on this machine\x00(%llx)\x00Tcl_GetMemoryInfo called when threaded memory allocator not in use\x00TclFinalizeThreadAlloc called when threaded memory allocator not in use\x00tclAfter\x00bad argument \"%s\": must be cancel, idle, info, or an integer\x00argument\x00after#%d\x00id|command\x00script ?script ...?\x00?id?\x00event \"%s\" doesn't exist\x00timer\x00Tcl_AfterObjCmd: bad subcommand index to afterSubCmds\x00after#\x00\n    (\"after\" script)\x00execution\x00vdelete\x00vinfo\x00type ?arg ...?\x00type name\x00name ops command\x00bad operations \"%s\": should be one or more of rwua\x00TRACE\x00BADOPS\x00enter\x00leave\x00enterstep\x00leavestep\x00name opList command\x00bad operation list \"\": must be one or more of enter, leave, enterstep, or leavestep\x00NOOPS\x00operation\x00bad operation list \"\": must be one or more of delete or rename\x00bad operation list \"\": must be one or more of array, read, unset, or write\x00 rename\x00 delete\x00TraceExecutionProc: bad flag combination\x00 a\x00 r\x00 w\x00 u\x00 array\x00 read\x00 write\x00 unset\x00Cannot trace a variable with no name\x00trace array\x00(\x00\n    (%s trace on \"%s%s%s%s\")\x00bad result flag combination\x00end-offset\x00LIST\x00%s element in braces followed by \"%.*s\" instead of space\x00JUNK\x00%s element in quotes followed by \"%.*s\" instead of space\x00unmatched open brace in %s\x00BRACE\x00unmatched open quote in %s\x00QUOTE\x00internal error in Tcl_SplitList\x00INTERNAL\x00Tcl_SplitList\x00TclScanElement: string length overflow\x00Tcl_Concat: max size of Tcl value exceeded\x00 \f\v\r\t\n\x00 {\x00{\x00-Inf\x00Inf\x00e%+d\x00e%+03d\x00can't modify precision from a safe interpreter\x00improper value for precision\x00bad index \"%s\": must be integer?[+-]integer? or end?[+-]integer?\x00end-\x00bad index \"%s\": must be end?[+-]integer?\x00PGV Initializer did not initialize\x00***=\x00invalid escape sequence\x00BADESCAPE\x00$ not anchor\x00NONANCHOR\x00unhandled RE special char\x00UNHANDLED\x00excessive recursive glob backtrack potential\x00OVERCOMPLEX\x00RE2GLOB\x00array search\x00localVarName\x00parsedVarName\x00\"%s\" isn't an array\x00VARNAME\x00ELEMENT\x00varPtr must not be NULL\x00part1Ptr must not be NULL\x00READ\x00varName ?newValue?\x00newValuePtr must not be NULL\x00UNSET\x00varName ?value ...?\x00arrayName\x00s-%d-%s\x00arrayName searchId\x00arrayName ?pattern?\x00arrayName ?mode? ?pattern?\x00exact matching shouldn't get here\x00arrayName list\x00error reading array statistics\x00anymore\x00donesearch\x00nextelement\x00startsearch\x00statistics\x00bad variable name \"%s\": can't create namespace variable that refers to procedure variable\x00UPVAR\x00INVERTED\x00ObjMakeUpvar called with an index outside from a proc\x00bad variable name \"%s\": can't create a scalar variable that looks like an array element\x00LOCAL_ELEMENT\x00can't upvar from variable to itself\x00variable \"%s\" has traces: can't use for upvar\x00TRACED\x00variable \"%s\" already exists\x00EXISTS\x00define\x00?level? otherVar localVar ?otherVar localVar ...?\x00illegal search identifier \"%s\"\x00ARRAYSEARCH\x00search identifier \"%s\" isn't for variable \"%s\"\x00couldn't find search \"%s\"\x00invalid part1Ptr and invalid index together\x00can't %s \"%s%s%s%s\": %s\x00%s of type %s should not be called\x00updateStringProc\x00setFromAnyProc\x00scalar parsedVarName without a string rep\x00unknown variable \"%s\"\x00zlib\x00STREAM\x00DATA\x00MEM\x00BUF\x00NEED_DICT\x00unexpected zlib result in error handler: Z_OK\x00unexpected zlib result in error handler: Z_STREAM_END\x00ZLIB\x00text\x00no latin-1 encoding\x00comment\x00crc\x00filename\x00incorrect zlib data format, must be TCL_ZLIB_FORMAT_ZLIB, TCL_ZLIB_FORMAT_GZIP or TCL_ZLIB_FORMAT_RAW\x00compression level should be between 0 (no compression) and 9 (best compression) or -1 for default compression level\x00incorrect zlib data format, must be TCL_ZLIB_FORMAT_ZLIB, TCL_ZLIB_FORMAT_GZIP, TCL_ZLIB_FORMAT_RAW or TCL_ZLIB_FORMAT_AUTO\x00bad mode, must be TCL_ZLIB_STREAM_DEFLATE or TCL_ZLIB_STREAM_INFLATE\x001.2.11\x00::incr ::tcl::zlib::cmdcounter\x00::tcl::zlib::streamcmd_\x00BUG: Stream command name already exists\x00EXISTING_CMD\x00already past compressed stream end\x00ZIP\x00CLOSED\x00unexpected zlib internal state during decompression\x00STATE\x00incorrect zlib data format, must be TCL_ZLIB_FORMAT_ZLIB, TCL_ZLIB_FORMAT_GZIP or TCL_ZLIB_FORMAT_ZLIB\x00compression level should be between 0 (uncompressed) and 9 (best compression) or -1 for default compression level\x00adler32\x00compress\x00crc32\x00decompress\x00deflate\x00gunzip\x00gzip\x00inflate\x00stream\x00command arg ?...?\x00data ?startValue?\x00data ?level?\x00\n    (in -level option)\x00data ?-level level? ?-header header?\x00-header\x00data ?bufferSize?\x00data ?-headerVar varName?\x00-headerVar\x00level must be 0 to 9\x00COMPRESSIONLEVEL\x00buffer size must be %d to %d\x00BUFFERSIZE\x00mode ?-option value...?\x00should be unreachable\x00-limit\x00mode channel ?options...?\x00compression may only be applied to writable channels\x00UNWRITABLE\x00decompression may only be applied to readable channels\x00UNREADABLE\x00value missing for %s option\x00NOVAL\x00read ahead limit must be 1 to %d\x00a compression dictionary may not be set in the gzip format\x00BADOPT\x00\n    (in \x00 option)\x00checksum\x00fullflush\x00header\x00put\x00reset\x00option data ?...?\x00?count?\x00-buffer\x00-finalize\x00-flush\x00-fullflush\x00\"-buffer\" option must be followed by integer decompression buffersize\x00buffer size must be 1 to %d\x00\"-dictionary\" option must be followed by compression dictionary bytes\x00\"-flush\", \"-fullflush\" and \"-finalize\" options are mutually exclusive\x00EXCLUSIVE\x00only gunzip streams can produce header information\x00BADOP\x00error while finalizing file: %s\x00problem flushing channel: %s\x00dictionary flush\x00dictionary limit\x00flush limit\x00sync\x00unknown -flush type \"%s\": must be full or sync\x00FLUSH\x00-limit must be between 1 and 65536\x00READLIMIT\x00checksum dictionary\x00checksum dictionary limit\x00checksum header limit\x00-checksum\x00unknown mode: %d\x00bad format: %d\x00namespace eval ::tcl::zlib {variable cmdcounter 0}\x00zlibVersion\x002.0.1\x00tcl::tommath\x00initialization failure in TclBNInitBignumFromLong\x00initialization failure in TclBNInitBignumFromWideUInt\x00tty\x00CTS\x00DSR\x00RING\x00DCD\x00-mode\x00-handshake\x00XONXOFF\x00RTSCTS\x00DTRDSR\x00%s not supported for this platform\x00-handshake DTRDSR\x00UNSUPPORTED\x00bad value for -handshake: must be one of xonxoff, rtscts, dtrdsr or none\x00FCONFIGURE\x00-xchar\x00bad value for -xchar: should be a list of two elements\x00-timeout\x00-ttycontrol\x00bad value for -ttycontrol: should be a list of signal,value pairs\x00DTR\x00RTS\x00BREAK\x00bad signal \"%s\" for -ttycontrol: must be DTR, RTS or BREAK\x00mode handshake timeout ttycontrol xchar\x00%d,%c,%d,%d\x00-queue\x00-ttystatus\x00mode queue ttystatus xchar\x00bad value for -mode\x00%d,%c,%d,%d%n\x00%s: should be baud,parity,data,stop\x00SERIALMODE\x00noems\x00%s parity: should be %s\x00n, o, e, m, or s\x00%s data: should be 5, 6, 7, or 8\x00%s stop: should be 1 or 2\x00TclpOpenFileChannel: invalid mode value\x00couldn't open \"\x00\": filename is invalid on this platform\x00file%d\x00/dev/tty\x00auto crlf\x00serial%d\x00TclGetDefaultStdChannel: Unexpected channel type\x00\"%s\" wasn't opened for writing\x00NOT_WRITABLE\x00\"%s\" wasn't opened for reading\x00NOT_READABLE\x00cannot get a FILE * for \"%s\"\x00FILE_FAILURE\x00\"%s\" cannot be used to get a FILE *\x00NO_DESCRIPTOR\x00TclUnixWaitForFile can't handle file id %d\x00-group\x00-owner\x00..\x00%0#5lo\x00could not set group for file \"%s\": group \"%s\" does not exist\x00SETGRP\x00NO_GROUP\x00could not set group for file \"%s\": %s\x00could not set owner for file \"%s\": user \"%s\" does not exist\x00SETOWN\x00NO_USER\x00could not set owner for file \"%s\": %s\x00unknown permission string format \"%s\"\x00PERMISSION\x00could not set permissions for file \"%s\": %s\x00_XXXXXX\x00TMPDIR\x00/tmp\x00:/bin:/usr/bin\x00couldn't read directory \"%s\": %s\x00couldn't create temporary file: %s\x00pipe creation failed: %s\x00?channelId?\x00::tcl::unsupported::noReverseDNS\x00-connecting\x00-peername\x00can't get peername: %s\x00-sockname\x00can't get sockname: %s\x00connecting peername sockname\x00couldn't open socket: %s\x00sock%lx\x00couldn't open socket: \x00ansi-1251\x00cp1251\x00ansi_x3.4-1968\x00big5\x00cp1250\x00cp1252\x00cp1253\x00cp1254\x00cp1255\x00cp1256\x00cp1257\x00cp1258\x00cp437\x00cp737\x00cp775\x00cp850\x00cp852\x00cp855\x00cp857\x00cp860\x00cp861\x00cp862\x00cp863\x00cp864\x00cp865\x00cp866\x00cp869\x00cp874\x00cp932\x00cp936\x00cp949\x00cp950\x00dingbats\x00ebcdic\x00euc-cn\x00euc-jp\x00euc-kr\x00eucjp\x00euckr\x00euctw\x00gb12345\x00gb1988\x00gb2312\x00gb2312-1980\x00gb2312-raw\x00greek8\x00ibm1250\x00ibm1251\x00ibm1252\x00ibm1253\x00ibm1254\x00ibm1255\x00ibm1256\x00ibm1257\x00ibm1258\x00ibm437\x00ibm737\x00ibm775\x00ibm850\x00ibm852\x00ibm855\x00ibm857\x00ibm860\x00ibm861\x00ibm862\x00ibm863\x00ibm864\x00ibm865\x00ibm866\x00ibm869\x00ibm874\x00ibm932\x00ibm936\x00ibm949\x00ibm950\x00iso-2022\x00iso2022\x00iso-2022-jp\x00iso2022-jp\x00iso-2022-kr\x00iso2022-kr\x00iso-8859-1\x00iso-8859-10\x00iso8859-10\x00iso-8859-13\x00iso8859-13\x00iso-8859-14\x00iso8859-14\x00iso-8859-15\x00iso8859-15\x00iso-8859-16\x00iso8859-16\x00iso-8859-2\x00iso8859-2\x00iso-8859-3\x00iso8859-3\x00iso-8859-4\x00iso8859-4\x00iso-8859-5\x00iso8859-5\x00iso-8859-6\x00iso8859-6\x00iso-8859-7\x00iso8859-7\x00iso-8859-8\x00iso8859-8\x00iso-8859-9\x00iso8859-9\x00iso88591\x00iso885915\x00iso88592\x00iso88595\x00iso88596\x00iso88597\x00iso88598\x00iso88599\x00ja\x00ja_jp\x00ja_jp.euc\x00ja_jp.eucjp\x00ja_jp.jis\x00ja_jp.mscode\x00shiftjis\x00ja_jp.sjis\x00ja_jp.ujis\x00japan\x00japanese\x00japanese-sjis\x00japanese-ujis\x00japanese.euc\x00japanese.sjis\x00jis0201\x00jis0208\x00jis0212\x00jp_jp\x00ko\x00ko_kr\x00ko_kr.euc\x00ko_kw.euckw\x00koi8-r\x00koi8-u\x00korean\x00ksc5601\x00maccenteuro\x00macCentEuro\x00maccroatian\x00macCroatian\x00maccyrillic\x00macCyrillic\x00macdingbats\x00macDingbats\x00macgreek\x00macGreek\x00maciceland\x00macIceland\x00macjapan\x00macJapan\x00macroman\x00macRoman\x00macromania\x00macRomania\x00macthai\x00macThai\x00macturkish\x00macTurkish\x00macukraine\x00macUkraine\x00roman8\x00ru\x00ru_ru\x00ru_su\x00sjis\x00symbol\x00tis-620\x00tis620\x00turkish8\x00utf8\x00zh\x00zh_cn.gb2312\x00zh_cn.gbk\x00zh_cz.gb2312\x00zh_tw\x00euc-tw\x00zh_tw.big5\x00/dev/null\x00TCL_LIBRARY\x00lib/tcl%s\x00LC_ALL\x00LC_CTYPE\x00LANG\x00unix\x00pathSeparator\x00deletemethod\x00forward\x00renamemethod\x00self\x00unexport\x00destroy\x00core method: \"destroy\"\x00core method: \"eval\"\x00core method: \"unknown\"\x00core method: \"variable\"\x00core method: \"varname\"\x00core method: \"create\"\x00new\x00core method: \"new\"\x00createWithNamespace\x00core method: \"createWithNamespace\"\x00oo::class constructor\x00package ifneeded TclOO 1.1.0 {# Already present, OK?};namespace eval ::oo { variable version 1.1.0 };namespace eval ::oo { variable patchlevel 1.1.0 };\x00::oo::define ::oo::Slot {\n    method Get {} {error unimplemented}\n    method Set list {error unimplemented}\n    method -set args {\n        uplevel 1 [list [namespace which my] Set $args]\n    }\n    method -append args {\n        uplevel 1 [list [namespace which my] Set [list                {*}[uplevel 1 [list [namespace which my] Get]] {*}$args]]\n    }\n    method -clear {} {uplevel 1 [list [namespace which my] Set {}]}\n    forward --default-operation my -append\n    method unknown {args} {\n        set def --default-operation\n        if {[llength $args] == 0} {\n            return [uplevel 1 [list [namespace which my] $def]]\n        } elseif {![string match -* [lindex $args 0]]} {\n            return [uplevel 1 [list [namespace which my] $def {*}$args]]\n        }\n        next {*}$args\n    }\n    export -set -append -clear\n    unexport unknown destroy\n}\n::oo::objdefine ::oo::define::superclass forward --default-operation my -set\n::oo::objdefine ::oo::define::mixin forward --default-operation my -set\n::oo::objdefine ::oo::objdefine::mixin forward --default-operation my -set\n\x00foreach p [info procs [info object namespace $originObject]::*] {    set args [info args $p];    set idx -1;    foreach a $args {        lset args [incr idx]             [if {[info default $p $a d]} {list $a $d} {list $a}]    };    set b [info body $p];    set p [namespace tail $p];    proc $p $args $b;};foreach v [info vars [info object namespace $originObject]::*] {    upvar 0 $v vOrigin;    namespace upvar [namespace current] [namespace tail $v] vNew;    if {[info exists vOrigin]} {        if {[array exists vOrigin]} {            array set vNew [array get vOrigin];        } else {            set vNew $vOrigin;        }    }}\x00TclOO\x001.1.0\x00::oo\x00[a-z]*\x00::oo::define\x00::oo::objdefine\x00::oo::Helpers\x00<constructor>\x00<destructor>\x00<cloned>\x00::oo::UnknownDefinition\x00::oo::define::\x00::oo::objdefine::\x00originObject\x00::oo::Helpers::next\x00::oo::Helpers::nextto\x00::oo::Helpers::self\x00::oo::copy\x00::oo::Obj%d\x00my\x00deleting class structure for non-deleted %s\x00::oo::class\x00::oo::object\x00can't create object \"%s\": command already exists with that name\x00OVERWRITE_OBJECT\x00object deleted in constructor\x00STILLBORN\x00may not clone the class of classes\x00CLONING_CLASS\x00\n    (while performing post-copy callback)\x00\n    (while mapping method name)\x00impossible to invoke method \"%s\": no defined method or unknown method\x00METHOD_MAPPED\x00no valid method implementation\x00%s does not refer to an object\x00OBJECT\x00?definitionScript?\x00object \"%s\" is not a class\x00INSTANTIATE_NONCLASS\x00objectName ?arg ...?\x00object name must not be empty\x00EMPTY_NAME\x00objectName namespaceName ?arg ...?\x00namespace name must not be empty\x00\n    (in \"%s eval\" script line %d)\x00method ?arg ...?\x00visible methods\x00methods\x00object \"%s\" has no %s\x00unknown method \"%s\": must be \x00?varName ...?\x00variable name \"%s\" illegal: must not contain namespace separator\x00name refers to an element in an array\x00refer to\x00%s may only be called from inside a method\x00class ?arg...?\x00call\x00caller\x00method not defined by a class\x00UNMATCHED_CONTEXT\x00not inside a filtering context\x00caller is not an object\x00method without declarer!\x00filtering call chain without terminal non-filter\x00sourceName ?targetName? ?targetNamespace?\x00%s refers to an existing namespace\x00TclOO method name\x00::oo::define::filter\x00core method: define::filter Getter\x00core method: define::filter Setter\x00::oo::define::mixin\x00core method: define::mixin Getter\x00core method: define::mixin Setter\x00::oo::define::superclass\x00core method: define::superclass Getter\x00core method: define::superclass Setter\x00::oo::define::variable\x00core method: define::variable Getter\x00core method: define::variable Setter\x00::oo::objdefine::filter\x00core method: objdefine::filter Getter\x00core method: objdefine::filter Setter\x00::oo::objdefine::mixin\x00core method: objdefine::mixin Getter\x00core method: objdefine::mixin Setter\x00::oo::objdefine::variable\x00core method: objdefine::variable Getter\x00core method: objdefine::variable Setter\x00method %s does not exist\x00cannot rename method to itself\x00RENAME_TO_SELF\x00method called %s already exists\x00RENAME_OVER\x00bad call of unknown handler\x00BAD_UNKNOWN\x00cannot process definitions; support namespace deleted\x00MONKEY_BUSINESS\x00this command may only be called from within the context of an ::oo::define or ::oo::objdefine command\x00this command cannot be called when the object has been deleted\x00getting outer context when already in global context\x00\n    (in definition script for %s \"%.*s%s\" line %d)\x00className arg ?arg ...?\x00%s does not refer to a class\x00objectName arg ?arg ...?\x00class object\x00may not modify the class of the root object class\x00may not modify the class of the class of classes\x00the class of an object must be a class\x00may not change classes into an instance of themselves\x00arguments body\x00attempt to misuse API\x00name cmdName ?arg ...?\x00Get\x00Set\x00::oo::Slot\x00filterList\x00mixinList\x00may only mix in classes\x00may not mix a class into itself\x00SELF_MIXIN\x00superclassList\x00may not modify the superclass of the root object\x00only a class can be a superclass\x00class should only be a direct superclass once\x00REPETITIOUS\x00attempt to form circular dependency graph\x00invalid declared variable name \"%s\": must not %s\x00contain namespace separators\x00BAD_DECLVAR\x00*(*)\x00refer to an array element\x00variableList\x00definition\x00filters\x00isa\x00methodtype\x00mixins\x00instances\x00subclasses\x00superclasses\x00::oo::InfoObject\x00::oo::InfoClass\x00objName ?className?\x00objName methodName\x00definition not available for this kind of method\x00objName\x00prefix argument list not available for this kind of method\x00metaclass\x00mixin\x00typeof\x00category objName ?arg ...?\x00category\x00objName className\x00-localprivate\x00-private\x00objName ?-option value ...?\x00objName ?pattern?\x00METHOD_TYPE\x00className ?pattern?\x00className ?-option value ...?\x00cannot construct any call chain\x00method not declared in class or object\x00\n    (%s \"%.*s%s\" method \"%.*s%s\" line %d)\x00\n    (%s \"%.*s%s\" constructor line %d)\x00\n    (%s \"%.*s%s\" destructor line %d)\x00method forward prefix must be non-empty\x00BAD_FORWARD\x00dynamic loading is not currently available on this system\x000123456789ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz+/\x00"
