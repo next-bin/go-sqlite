@@ -12,12 +12,67 @@ import (
 	"os/exec"
 	"path"
 	"path/filepath"
+	"runtime"
 	"sort"
 	"strings"
 
 	"golang.org/x/mod/modfile"
 	"golang.org/x/mod/semver"
 )
+
+// origin returns caller's short position, skipping skip frames.
+func origin(skip int) string {
+	pc, fn, fl, _ := runtime.Caller(skip)
+	f := runtime.FuncForPC(pc)
+	var fns string
+	if f != nil {
+		fns = f.Name()
+		if x := strings.LastIndex(fns, "."); x > 0 {
+			fns = fns[x+1:]
+		}
+		if strings.HasPrefix(fns, "func") {
+			num := true
+			for _, c := range fns[len("func"):] {
+				if c < '0' || c > '9' {
+					num = false
+					break
+				}
+			}
+			if num {
+				return origin(skip + 2)
+			}
+		}
+	}
+	return fmt.Sprintf("%s:%d:%s", filepath.Base(fn), fl, fns)
+}
+
+// todo prints and return caller's position and an optional message tagged with TODO. Output goes to stderr.
+func todo(s string, args ...interface{}) string {
+	switch {
+	case s == "":
+		s = fmt.Sprintf(strings.Repeat("%v ", len(args)), args...)
+	default:
+		s = fmt.Sprintf(s, args...)
+	}
+	r := fmt.Sprintf("%s\n\tTODO %s", origin(2), s)
+	// fmt.Fprintf(os.Stderr, "%s\n", r)
+	// os.Stdout.Sync()
+	return r
+}
+
+// trc prints and return caller's position and an optional message tagged with TRC. Output goes to stderr.
+func trc(s string, args ...interface{}) string {
+	switch {
+	case s == "":
+		s = fmt.Sprintf(strings.Repeat("%v ", len(args)), args...)
+	default:
+		s = fmt.Sprintf(s, args...)
+	}
+	r := fmt.Sprintf("%s: TRC %s", origin(2), s)
+	fmt.Fprintf(os.Stderr, "%s\n", r)
+	os.Stderr.Sync()
+	return r
+}
 
 type module struct {
 	tag string
@@ -81,6 +136,21 @@ func NewUpdater(stdout, stderr io.Writer, dir string, verbose, dbg, all, head bo
 }
 
 func (u *Updater) Run() error {
+	wd, err := os.Getwd()
+	if err != nil {
+		return err
+	}
+
+	if err := os.Chdir(u.dir); err != nil {
+		return err
+	}
+
+	defer func() {
+		if e := os.Chdir(wd); e != nil {
+			err = e
+		}
+	}()
+
 	if err := u.findRepos(u.dir); err != nil {
 		return err
 	}
@@ -335,9 +405,7 @@ func newRepo(u *Updater, pth string) (r *repo, err error) {
 		}
 	}
 	if u.head && r.tag == "" {
-		if pth == "" {
-			pth = "."
-		}
+		pth = filepath.Clean(pth)
 		fmt.Fprintf(u.stdout, "HEAD not tagged: %s\n", pth)
 		u.HeadsNotTagged[pth] = struct{}{}
 	}
