@@ -4,7 +4,8 @@ go 1.20
 
 require (
 	modernc.org/ccgo/v3 v3.16.15
-	modernc.org/libc/v2 v2.1.16
+	modernc.org/ccgo/v4 v4.0.21
+	modernc.org/libc/v2 v2.1.18
 )
 
 require (
@@ -19,7 +20,6 @@ require (
 	lukechampine.com/uint128 v1.2.0 // indirect
 	modernc.org/cc/v3 v3.41.0 // indirect
 	modernc.org/cc/v4 v4.14.8 // indirect
-	modernc.org/ccgo/v4 v4.0.20 // indirect
 	modernc.org/gc/v2 v2.3.0 // indirect
 	modernc.org/libc v1.24.1 // indirect
 	modernc.org/mathutil v1.6.0 // indirect
