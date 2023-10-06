@@ -13,8 +13,11 @@ import (
 	"syscall"
 	"unsafe"
 
+	"modernc.org/ccgo/v4/lib"
 	"modernc.org/libc/v2"
 )
+
+var _ ccgo.Task
 
 /*
  *---------------------------------------------------------------------------
