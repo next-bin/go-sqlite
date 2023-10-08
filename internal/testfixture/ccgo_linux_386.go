@@ -14032,11 +14032,6 @@ type TExprList_item = struct {
 	}
 }
 
-type TsColMap = struct {
-	FiFrom int32
-	FzCol  uintptr
-}
-
 type TIdList_item = struct {
 	FzName uintptr
 	Fu4    struct {
@@ -14052,6 +14047,11 @@ type Tsqlite3InitInfo = struct {
 	F__ccgo_align3 [2]byte
 	F__ccgo8       uint8
 	FazInit        uintptr
+}
+
+type TsColMap = struct {
+	FiFrom int32
+	FzCol  uintptr
 }
 
 type TMemValue = struct {
@@ -280285,6 +280285,13 @@ func x_sqlite3_sourceid(tls *libc.TLS) (r uintptr) {
 	return __ccgo_ts + 82385
 }
 
+type TAggInfo_func = struct {
+	FpFExpr    uintptr
+	FpFunc     uintptr
+	FiDistinct int32
+	FiDistAddr int32
+}
+
 type TInLoop = struct {
 	FiCur        int32
 	FaddrInTop   int32
@@ -280294,11 +280301,9 @@ type TInLoop = struct {
 	F__ccgo_pad5 [3]byte
 }
 
-type TAggInfo_func = struct {
-	FpFExpr    uintptr
-	FpFunc     uintptr
-	FiDistinct int32
-	FiDistAddr int32
+type T_ht = struct {
+	Fcount uint32
+	Fchain uintptr
 }
 
 type TWalSegment = struct {
@@ -280315,11 +280320,6 @@ type TAggInfo_col = struct {
 	FiTable        int32
 	FiColumn       Ti16
 	FiSorterColumn Ti16
-}
-
-type T_ht = struct {
-	Fcount uint32
-	Fchain uintptr
 }
 
 func __ccgo_fp(f interface{}) uintptr {
