@@ -14042,6 +14042,24 @@ type TsColMap = struct {
 	FzCol  uintptr
 }
 
+type Tsqlite3InitInfo = struct {
+	FnewTnum       TPgno
+	FiDb           Tu8
+	Fbusy          Tu8
+	F__ccgo_align3 [2]byte
+	F__ccgo8       uint8
+	FazInit        uintptr
+}
+
+type TIdList_item = struct {
+	FzName uintptr
+	Fu4    struct {
+		FpExpr       [0]uintptr
+		Fidx         int32
+		F__ccgo_pad2 [4]byte
+	}
+}
+
 type TExprList_item = struct {
 	FpExpr  uintptr
 	FzEName uintptr
@@ -14062,22 +14080,12 @@ type TExprList_item = struct {
 	F__ccgo_pad4 [4]byte
 }
 
-type Tsqlite3InitInfo = struct {
-	FnewTnum       TPgno
-	FiDb           Tu8
-	Fbusy          Tu8
-	F__ccgo_align3 [2]byte
-	F__ccgo8       uint8
-	FazInit        uintptr
-}
-
-type TIdList_item = struct {
-	FzName uintptr
-	Fu4    struct {
-		FpExpr       [0]uintptr
-		Fidx         int32
-		F__ccgo_pad2 [4]byte
-	}
+type TMemValue = struct {
+	Fi      [0]Ti64
+	FnZero  [0]int32
+	FzPType [0]uintptr
+	FpDef   [0]uintptr
+	Fr      float64
 }
 
 type Tp4union = struct {
@@ -14096,14 +14104,6 @@ type Tp4union = struct {
 	FpTab         [0]uintptr
 	Fi            int32
 	F__ccgo_pad14 [4]byte
-}
-
-type TMemValue = struct {
-	Fi      [0]Ti64
-	FnZero  [0]int32
-	FzPType [0]uintptr
-	FpDef   [0]uintptr
-	Fr      float64
 }
 
 const m_SAVEPOINT_RELEASE = 1
@@ -280436,6 +280436,21 @@ type T_ht = struct {
 	Fchain uintptr
 }
 
+type TAggInfo_col = struct {
+	FpTab          uintptr
+	FpCExpr        uintptr
+	FiTable        int32
+	FiColumn       Ti16
+	FiSorterColumn Ti16
+}
+
+type TAggInfo_func = struct {
+	FpFExpr    uintptr
+	FpFunc     uintptr
+	FiDistinct int32
+	FiDistAddr int32
+}
+
 type TInLoop = struct {
 	FiCur        int32
 	FaddrInTop   int32
@@ -280451,21 +280466,6 @@ type TWalSegment = struct {
 	FaPgno  uintptr
 	FnEntry int32
 	FiZero  int32
-}
-
-type TAggInfo_func = struct {
-	FpFExpr    uintptr
-	FpFunc     uintptr
-	FiDistinct int32
-	FiDistAddr int32
-}
-
-type TAggInfo_col = struct {
-	FpTab          uintptr
-	FpCExpr        uintptr
-	FiTable        int32
-	FiColumn       Ti16
-	FiSorterColumn Ti16
 }
 
 func __ccgo_fp(f interface{}) uintptr {
