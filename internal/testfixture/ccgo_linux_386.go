@@ -14022,6 +14022,19 @@ type Tsqlite3InitInfo = struct {
 	FazInit        uintptr
 }
 
+type TsColMap = struct {
+	FiFrom int32
+	FzCol  uintptr
+}
+
+type TIdList_item = struct {
+	FzName uintptr
+	Fu4    struct {
+		FpExpr [0]uintptr
+		Fidx   int32
+	}
+}
+
 type TExprList_item = struct {
 	FpExpr  uintptr
 	FzEName uintptr
@@ -14038,19 +14051,6 @@ type TExprList_item = struct {
 			FiOrderByCol Tu16
 			FiAlias      Tu16
 		}
-	}
-}
-
-type TsColMap = struct {
-	FiFrom int32
-	FzCol  uintptr
-}
-
-type TIdList_item = struct {
-	FzName uintptr
-	Fu4    struct {
-		FpExpr [0]uintptr
-		Fidx   int32
 	}
 }
 
@@ -280299,14 +280299,6 @@ type TInLoop = struct {
 	F__ccgo_pad5 [3]byte
 }
 
-type TWalSegment = struct {
-	FiNext  int32
-	FaIndex uintptr
-	FaPgno  uintptr
-	FnEntry int32
-	FiZero  int32
-}
-
 type TAggInfo_col = struct {
 	FpTab          uintptr
 	FpCExpr        uintptr
@@ -280320,6 +280312,14 @@ type TAggInfo_func = struct {
 	FpFunc     uintptr
 	FiDistinct int32
 	FiDistAddr int32
+}
+
+type TWalSegment = struct {
+	FiNext  int32
+	FaIndex uintptr
+	FaPgno  uintptr
+	FnEntry int32
+	FiZero  int32
 }
 
 func __ccgo_fp(f interface{}) uintptr {
