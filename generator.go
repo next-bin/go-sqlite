@@ -22,7 +22,7 @@ import (
 )
 
 const (
-	archivePath = "tcl8.6.11-src.tar.gz"
+	archivePath = "tcl8.6.13-src.tar.gz"
 )
 
 var (
@@ -30,6 +30,60 @@ var (
 	goarch = runtime.GOARCH
 	j      = fmt.Sprint(runtime.GOMAXPROCS(-1))
 )
+
+// origin returns caller's short position, skipping skip frames.
+func origin(skip int) string {
+	pc, fn, fl, _ := runtime.Caller(skip)
+	f := runtime.FuncForPC(pc)
+	var fns string
+	if f != nil {
+		fns = f.Name()
+		if x := strings.LastIndex(fns, "."); x > 0 {
+			fns = fns[x+1:]
+		}
+		if strings.HasPrefix(fns, "func") {
+			num := true
+			for _, c := range fns[len("func"):] {
+				if c < '0' || c > '9' {
+					num = false
+					break
+				}
+			}
+			if num {
+				return origin(skip + 2)
+			}
+		}
+	}
+	return fmt.Sprintf("%s:%d:%s", filepath.Base(fn), fl, fns)
+}
+
+// todo prints and return caller's position and an optional message tagged with TODO. Output goes to stderr.
+func todo(s string, args ...interface{}) string {
+	switch {
+	case s == "":
+		s = fmt.Sprintf(strings.Repeat("%v ", len(args)), args...)
+	default:
+		s = fmt.Sprintf(s, args...)
+	}
+	r := fmt.Sprintf("%s\n\tTODO %s", origin(2), s)
+	// fmt.Fprintf(os.Stderr, "%s\n", r)
+	// os.Stdout.Sync()
+	return r
+}
+
+// trc prints and return caller's position and an optional message tagged with TRC. Output goes to stderr.
+func trc(s string, args ...interface{}) string {
+	switch {
+	case s == "":
+		s = fmt.Sprintf(strings.Repeat("%v ", len(args)), args...)
+	default:
+		s = fmt.Sprintf(s, args...)
+	}
+	r := fmt.Sprintf("%s: TRC %s", origin(2), s)
+	fmt.Fprintf(os.Stderr, "%s\n", r)
+	os.Stderr.Sync()
+	return r
+}
 
 func fail(rc int, msg string, args ...any) {
 	fmt.Fprintln(os.Stderr, strings.TrimSpace(fmt.Sprintf(msg, args...)))
@@ -84,11 +138,18 @@ func main() {
 	fmt.Fprintf(os.Stderr, "makeRoot %s\n", makeRoot)
 
 	os.RemoveAll(filepath.Join("library", "assets"))
+	os.RemoveAll(filepath.Join("include", goos, goarch))
 	os.Remove(filepath.Join("internal/tests"))
 	util.MustUntar(true, tempDir, f, nil)
 	mustCopyDir(libRoot, filepath.Join("overlay", "all"), nil, true)
 	mustCopyDir(libRoot, filepath.Join("overlay", goos, goarch), nil, true)
 	mustCopyFile("LICENSE-TCL", filepath.Join(libRoot, "license.terms"), nil)
+	ccgoInc, err := filepath.Abs(filepath.Join(libRoot, "ccgo"))
+	if err != nil {
+		fail(1, "%s\n", err)
+	}
+
+	mustCopyDir(ccgoInc, filepath.Join("..", "libz", "include", goos, goarch), nil, false)
 	result := "libtcl.a.go"
 	util.MustInDir(true, makeRoot, func() (err error) {
 		cflags := []string{
@@ -127,32 +188,36 @@ func main() {
 			"--prefix-undefined=_",
 			"-extended-errors",
 			"-hide", "TclpCreateProcess",
+			fmt.Sprintf("-I%s", ccgoInc),
 		)
-		if err := ccgo.NewTask(goos, goarch, append(args, "-exec", "make", "-j", j, "libtcl8.6.a"), os.Stdout, os.Stderr, nil).Exec(); err != nil {
+		if err := ccgo.NewTask(goos, goarch, append(args, "-exec", "make", "-j", j, "test"), os.Stdout, os.Stderr, nil).Exec(); err != nil {
+			trc("FAIL err=%v", err)
+		}
+		if err := ccgo.NewTask(goos, goarch, append(args, "-o", result, "--package-name", "libtcl8_6", "-ignore-link-errors", "libtcl8.6.a", "-lz"), os.Stdout, os.Stderr, nil).Main(); err != nil {
 			return err
 		}
 
-		if err := ccgo.NewTask(goos, goarch, append(args, "-exec", "make", "-j", j, "tcltest"), os.Stdout, os.Stderr, nil).Exec(); err != nil {
-			return err
-		}
+		// if err := ccgo.NewTask(goos, goarch, append(args, "-exec", "make", "-j", j, "tcltest"), os.Stdout, os.Stderr, nil).Exec(); err != nil {
+		// 	return err
+		// }
 
-		return ccgo.NewTask(goos, goarch, append(args, "-o", result, "--package-name", "libtcl8_6", "-ignore-link-errors", "libtcl8.6.a", "-lz"), os.Stdout, os.Stderr, nil).Main()
+		return nil
 	})
 
-	mustCopyFile(filepath.Join("include", goos, goarch, "tcl.h"), filepath.Join(libRoot, "generic", "tcl.h"), nil)
-	mustCopyFile(filepath.Join("include", goos, goarch, "tclDecls.h"), filepath.Join(libRoot, "generic", "tclDecls.h"), nil)
-	mustCopyFile(filepath.Join("include", goos, goarch, "tclPlatDecls.h"), filepath.Join(libRoot, "generic", "tclPlatDecls.h"), nil)
-	mustCopyFile(filepath.Join("library", "assets", "tclConfig.sh"), filepath.Join(makeRoot, "tclConfig.sh"), nil)
+	// mustCopyFile(filepath.Join("include", goos, goarch, "tcl.h"), filepath.Join(libRoot, "generic", "tcl.h"), nil)
+	// mustCopyFile(filepath.Join("include", goos, goarch, "tclDecls.h"), filepath.Join(libRoot, "generic", "tclDecls.h"), nil)
+	// mustCopyFile(filepath.Join("include", goos, goarch, "tclPlatDecls.h"), filepath.Join(libRoot, "generic", "tclPlatDecls.h"), nil)
+	// mustCopyFile(filepath.Join("library", "assets", "tclConfig.sh"), filepath.Join(makeRoot, "tclConfig.sh"), nil)
 	mustCopyDir(filepath.Join("library", "assets"), filepath.Join(libRoot, "library"), nil, false)
-	mustCopyDir("internal/tests", filepath.Join(libRoot, "tests"), nil, false)
-	mustCopyFile(filepath.FromSlash("library/assets/tcltests/pkgIndex.tcl"), filepath.FromSlash("internal/tests/pkgIndex.tcl"), nil)
-	mustCopyFile(filepath.FromSlash("library/assets/tcltests/tcltests.tcl"), filepath.FromSlash("internal/tests/tcltests.tcl"), nil)
+	// mustCopyDir("internal/tests", filepath.Join(libRoot, "tests"), nil, false)
+	// mustCopyFile(filepath.FromSlash("library/assets/tcltests/pkgIndex.tcl"), filepath.FromSlash("internal/tests/pkgIndex.tcl"), nil)
+	// mustCopyFile(filepath.FromSlash("library/assets/tcltests/tcltests.tcl"), filepath.FromSlash("internal/tests/tcltests.tcl"), nil)
 
 	fn := fmt.Sprintf("ccgo_%s_%s.go", goos, goarch)
 	mustCopyFile(fn, filepath.Join(makeRoot, result), nil)
 	util.MustShell(true, "sed", "-i", `s/\<T__\([a-zA-Z0-9][a-zA-Z0-9_]\+\)/t__\1/g`, fn)
 	util.MustShell(true, "sed", "-i", `s/\<x_\([a-zA-Z0-9][a-zA-Z0-9_]\+\)/X\1/g`, fn)
-	mustCopyFile(filepath.Join("internal", "tcltest", fn), filepath.Join(makeRoot, "tcltest.go"), nil)
+	// mustCopyFile(filepath.Join("internal", "tcltest", fn), filepath.Join(makeRoot, "tcltest.go"), nil)
 	util.Shell("sh", "-c", "./unconvert.sh")
 	util.MustShell(true, "go", "test", "-run", "@")
 	util.Shell("git", "status")
