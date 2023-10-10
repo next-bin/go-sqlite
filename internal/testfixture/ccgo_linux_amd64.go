@@ -14037,6 +14037,26 @@ var _longdouble_size = int32(8)
 
 var _query_plan = __ccgo_ts + 9498
 
+type TExprList_item = struct {
+	FpExpr  uintptr
+	FzEName uintptr
+	Ffg     struct {
+		F__ccgo_align  [0]uint32
+		FsortFlags     Tu8
+		F__ccgo_align1 [2]byte
+		F__ccgo4       uint16
+		F__ccgo_pad9   [2]byte
+	}
+	Fu struct {
+		FiConstExprReg [0]int32
+		Fx             struct {
+			FiOrderByCol Tu16
+			FiAlias      Tu16
+		}
+	}
+	F__ccgo_pad4 [4]byte
+}
+
 type TsColMap = struct {
 	FiFrom int32
 	FzCol  uintptr
@@ -14058,26 +14078,6 @@ type Tsqlite3InitInfo = struct {
 	F__ccgo_align3 [2]byte
 	F__ccgo8       uint8
 	FazInit        uintptr
-}
-
-type TExprList_item = struct {
-	FpExpr  uintptr
-	FzEName uintptr
-	Ffg     struct {
-		F__ccgo_align  [0]uint32
-		FsortFlags     Tu8
-		F__ccgo_align1 [2]byte
-		F__ccgo4       uint16
-		F__ccgo_pad9   [2]byte
-	}
-	Fu struct {
-		FiConstExprReg [0]int32
-		Fx             struct {
-			FiOrderByCol Tu16
-			FiAlias      Tu16
-		}
-	}
-	F__ccgo_pad4 [4]byte
 }
 
 type TMemValue = struct {
@@ -19152,6 +19152,12 @@ func init() {
 	*(*uintptr)(unsafe.Add(p, 32)) = __ccgo_fp(_declare_vtab)
 }
 
+type Tsqlite3_index_orderby = struct {
+	FiColumn     int32
+	Fdesc        uint8
+	F__ccgo_pad2 [3]byte
+}
+
 type Tsqlite3_index_constraint = struct {
 	FiColumn     int32
 	Fop          uint8
@@ -19162,12 +19168,6 @@ type Tsqlite3_index_constraint = struct {
 type Tsqlite3_index_constraint_usage = struct {
 	FargvIndex   int32
 	Fomit        uint8
-	F__ccgo_pad2 [3]byte
-}
-
-type Tsqlite3_index_orderby = struct {
-	FiColumn     int32
-	Fdesc        uint8
 	F__ccgo_pad2 [3]byte
 }
 
@@ -280431,11 +280431,6 @@ func x_sqlite3_sourceid(tls *libc.TLS) (r uintptr) {
 	return __ccgo_ts + 82385
 }
 
-type T_ht = struct {
-	Fcount uint32
-	Fchain uintptr
-}
-
 type TInLoop = struct {
 	FiCur        int32
 	FaddrInTop   int32
@@ -280443,6 +280438,13 @@ type TInLoop = struct {
 	FnPrefix     int32
 	FeEndLoopOp  Tu8
 	F__ccgo_pad5 [3]byte
+}
+
+type TAggInfo_func = struct {
+	FpFExpr    uintptr
+	FpFunc     uintptr
+	FiDistinct int32
+	FiDistAddr int32
 }
 
 type TAggInfo_col = struct {
@@ -280453,19 +280455,17 @@ type TAggInfo_col = struct {
 	FiSorterColumn Ti16
 }
 
+type T_ht = struct {
+	Fcount uint32
+	Fchain uintptr
+}
+
 type TWalSegment = struct {
 	FiNext  int32
 	FaIndex uintptr
 	FaPgno  uintptr
 	FnEntry int32
 	FiZero  int32
-}
-
-type TAggInfo_func = struct {
-	FpFExpr    uintptr
-	FpFunc     uintptr
-	FiDistinct int32
-	FiDistAddr int32
 }
 
 func __ccgo_fp(f interface{}) uintptr {
