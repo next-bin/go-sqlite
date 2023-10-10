@@ -598,6 +598,7 @@ func _byte_swap(tls *libc.TLS, word Tz_word_t) (r Tz_word_t) {
 }
 
 var _crc_table = [256]Tz_crc_t{
+	0:   uint32(0x00000000),
 	1:   uint32(0x77073096),
 	2:   uint32(0xee0e612c),
 	3:   uint32(0x990951ba),
@@ -855,6 +856,7 @@ var _crc_table = [256]Tz_crc_t{
 	255: uint32(0x2d02ef8d),
 }
 var _crc_big_table = [256]Tz_word_t{
+	0:   uint64(0x0000000000000000),
 	1:   uint64(0x9630077700000000),
 	2:   uint64(0x2c610eee00000000),
 	3:   uint64(0xba51099900000000),
@@ -1113,6 +1115,7 @@ var _crc_big_table = [256]Tz_word_t{
 }
 var _crc_braid_table = [8][256]Tz_crc_t{
 	0: {
+		0:   uint32(0x00000000),
 		1:   uint32(0xaf449247),
 		2:   uint32(0x85f822cf),
 		3:   uint32(0x2abcb088),
@@ -1370,6 +1373,7 @@ var _crc_braid_table = [8][256]Tz_crc_t{
 		255: uint32(0xe9947565),
 	},
 	1: {
+		0:   uint32(0x00000000),
 		1:   uint32(0x4e890ba9),
 		2:   uint32(0x9d121752),
 		3:   uint32(0xd39b1cfb),
@@ -1627,6 +1631,7 @@ var _crc_braid_table = [8][256]Tz_crc_t{
 		255: uint32(0xf7d05006),
 	},
 	2: {
+		0:   uint32(0x00000000),
 		1:   uint32(0x8d88fde2),
 		2:   uint32(0xc060fd85),
 		3:   uint32(0x4de80067),
@@ -1884,6 +1889,7 @@ var _crc_braid_table = [8][256]Tz_crc_t{
 		255: uint32(0xb2075b94),
 	},
 	3: {
+		0:   uint32(0x00000000),
 		1:   uint32(0x80f0171f),
 		2:   uint32(0xda91287f),
 		3:   uint32(0x5a613f60),
@@ -2141,6 +2147,7 @@ var _crc_braid_table = [8][256]Tz_crc_t{
 		255: uint32(0xba50bcb9),
 	},
 	4: {
+		0:   uint32(0x00000000),
 		1:   uint32(0x9570d495),
 		2:   uint32(0xf190af6b),
 		3:   uint32(0x64e07bfe),
@@ -2398,6 +2405,7 @@ var _crc_braid_table = [8][256]Tz_crc_t{
 		255: uint32(0x808abcf4),
 	},
 	5: {
+		0:   uint32(0x00000000),
 		1:   uint32(0xcf9e17c8),
 		2:   uint32(0x444d29d1),
 		3:   uint32(0x8bd33e19),
@@ -2655,6 +2663,7 @@ var _crc_braid_table = [8][256]Tz_crc_t{
 		255: uint32(0xefdb3f95),
 	},
 	6: {
+		0:   uint32(0x00000000),
 		1:   uint32(0x24825136),
 		2:   uint32(0x4904a26c),
 		3:   uint32(0x6d86f35a),
@@ -2912,6 +2921,7 @@ var _crc_braid_table = [8][256]Tz_crc_t{
 		255: uint32(0x0e2fbf43),
 	},
 	7: {
+		0:   uint32(0x00000000),
 		1:   uint32(0x36f290f3),
 		2:   uint32(0x6de521e6),
 		3:   uint32(0x5b17b115),
@@ -3171,6 +3181,7 @@ var _crc_braid_table = [8][256]Tz_crc_t{
 }
 var _crc_braid_big_table = [8][256]Tz_word_t{
 	0: {
+		0:   uint64(0x0000000000000000),
 		1:   uint64(0xf390f23600000000),
 		2:   uint64(0xe621e56d00000000),
 		3:   uint64(0x15b1175b00000000),
@@ -3428,6 +3439,7 @@ var _crc_braid_big_table = [8][256]Tz_word_t{
 		255: uint64(0x087137f400000000),
 	},
 	1: {
+		0:   uint64(0x0000000000000000),
 		1:   uint64(0x3651822400000000),
 		2:   uint64(0x6ca2044900000000),
 		3:   uint64(0x5af3866d00000000),
@@ -3685,6 +3697,7 @@ var _crc_braid_big_table = [8][256]Tz_word_t{
 		255: uint64(0x43bf2f0e00000000),
 	},
 	2: {
+		0:   uint64(0x0000000000000000),
 		1:   uint64(0xc8179ecf00000000),
 		2:   uint64(0xd1294d4400000000),
 		3:   uint64(0x193ed38b00000000),
@@ -3942,6 +3955,7 @@ var _crc_braid_big_table = [8][256]Tz_word_t{
 		255: uint64(0x953fdbef00000000),
 	},
 	3: {
+		0:   uint64(0x0000000000000000),
 		1:   uint64(0x95d4709500000000),
 		2:   uint64(0x6baf90f100000000),
 		3:   uint64(0xfe7be06400000000),
@@ -4199,6 +4213,7 @@ var _crc_braid_big_table = [8][256]Tz_word_t{
 		255: uint64(0xf4bc8a8000000000),
 	},
 	4: {
+		0:   uint64(0x0000000000000000),
 		1:   uint64(0x1f17f08000000000),
 		2:   uint64(0x7f2891da00000000),
 		3:   uint64(0x603f615a00000000),
@@ -4456,6 +4471,7 @@ var _crc_braid_big_table = [8][256]Tz_word_t{
 		255: uint64(0xb9bc50ba00000000),
 	},
 	5: {
+		0:   uint64(0x0000000000000000),
 		1:   uint64(0xe2fd888d00000000),
 		2:   uint64(0x85fd60c000000000),
 		3:   uint64(0x6700e84d00000000),
@@ -4713,6 +4729,7 @@ var _crc_braid_big_table = [8][256]Tz_word_t{
 		255: uint64(0x945b07b200000000),
 	},
 	6: {
+		0:   uint64(0x0000000000000000),
 		1:   uint64(0xa90b894e00000000),
 		2:   uint64(0x5217129d00000000),
 		3:   uint64(0xfb1c9bd300000000),
@@ -4970,6 +4987,7 @@ var _crc_braid_big_table = [8][256]Tz_word_t{
 		255: uint64(0x0650d0f700000000),
 	},
 	7: {
+		0:   uint64(0x0000000000000000),
 		1:   uint64(0x479244af00000000),
 		2:   uint64(0xcf22f88500000000),
 		3:   uint64(0x88b0bc2a00000000),
@@ -5863,60 +5881,75 @@ type Tconfig = struct {
 type Tconfig_s = Tconfig
 
 var _configuration_table = [10]Tconfig{
-	0: {},
+	0: {
+		Fgood_length: uint16(0),
+		Fmax_lazy:    uint16(0),
+		Fnice_length: uint16(0),
+		Fmax_chain:   uint16(0),
+		Ffunc1:       uintptr(0),
+	},
 	1: {
 		Fgood_length: uint16(4),
 		Fmax_lazy:    uint16(4),
 		Fnice_length: uint16(8),
 		Fmax_chain:   uint16(4),
+		Ffunc1:       uintptr(0),
 	},
 	2: {
 		Fgood_length: uint16(4),
 		Fmax_lazy:    uint16(5),
 		Fnice_length: uint16(16),
 		Fmax_chain:   uint16(8),
+		Ffunc1:       uintptr(0),
 	},
 	3: {
 		Fgood_length: uint16(4),
 		Fmax_lazy:    uint16(6),
 		Fnice_length: uint16(32),
 		Fmax_chain:   uint16(32),
+		Ffunc1:       uintptr(0),
 	},
 	4: {
 		Fgood_length: uint16(4),
 		Fmax_lazy:    uint16(4),
 		Fnice_length: uint16(16),
 		Fmax_chain:   uint16(16),
+		Ffunc1:       uintptr(0),
 	},
 	5: {
 		Fgood_length: uint16(8),
 		Fmax_lazy:    uint16(16),
 		Fnice_length: uint16(32),
 		Fmax_chain:   uint16(32),
+		Ffunc1:       uintptr(0),
 	},
 	6: {
 		Fgood_length: uint16(8),
 		Fmax_lazy:    uint16(16),
 		Fnice_length: uint16(128),
 		Fmax_chain:   uint16(128),
+		Ffunc1:       uintptr(0),
 	},
 	7: {
 		Fgood_length: uint16(8),
 		Fmax_lazy:    uint16(32),
 		Fnice_length: uint16(128),
 		Fmax_chain:   uint16(256),
+		Ffunc1:       uintptr(0),
 	},
 	8: {
 		Fgood_length: uint16(32),
 		Fmax_lazy:    uint16(128),
 		Fnice_length: uint16(258),
 		Fmax_chain:   uint16(1024),
+		Ffunc1:       uintptr(0),
 	},
 	9: {
 		Fgood_length: uint16(32),
 		Fmax_lazy:    uint16(258),
 		Fnice_length: uint16(258),
 		Fmax_chain:   uint16(4096),
+		Ffunc1:       uintptr(0),
 	},
 }
 
@@ -8615,12 +8648,15 @@ var _lenfix = [512]Tcode{
 	0: {
 		Fop:   uint8(96),
 		Fbits: uint8(7),
+		Fval:  uint16(0),
 	},
 	1: {
+		Fop:   uint8(0),
 		Fbits: uint8(8),
 		Fval:  uint16(80),
 	},
 	2: {
+		Fop:   uint8(0),
 		Fbits: uint8(8),
 		Fval:  uint16(16),
 	},
@@ -8635,14 +8671,17 @@ var _lenfix = [512]Tcode{
 		Fval:  uint16(31),
 	},
 	5: {
+		Fop:   uint8(0),
 		Fbits: uint8(8),
 		Fval:  uint16(112),
 	},
 	6: {
+		Fop:   uint8(0),
 		Fbits: uint8(8),
 		Fval:  uint16(48),
 	},
 	7: {
+		Fop:   uint8(0),
 		Fbits: uint8(9),
 		Fval:  uint16(192),
 	},
@@ -8652,29 +8691,37 @@ var _lenfix = [512]Tcode{
 		Fval:  uint16(10),
 	},
 	9: {
+		Fop:   uint8(0),
 		Fbits: uint8(8),
 		Fval:  uint16(96),
 	},
 	10: {
+		Fop:   uint8(0),
 		Fbits: uint8(8),
 		Fval:  uint16(32),
 	},
 	11: {
+		Fop:   uint8(0),
 		Fbits: uint8(9),
 		Fval:  uint16(160),
 	},
 	12: {
+		Fop:   uint8(0),
 		Fbits: uint8(8),
+		Fval:  uint16(0),
 	},
 	13: {
+		Fop:   uint8(0),
 		Fbits: uint8(8),
 		Fval:  uint16(128),
 	},
 	14: {
+		Fop:   uint8(0),
 		Fbits: uint8(8),
 		Fval:  uint16(64),
 	},
 	15: {
+		Fop:   uint8(0),
 		Fbits: uint8(9),
 		Fval:  uint16(224),
 	},
@@ -8684,14 +8731,17 @@ var _lenfix = [512]Tcode{
 		Fval:  uint16(6),
 	},
 	17: {
+		Fop:   uint8(0),
 		Fbits: uint8(8),
 		Fval:  uint16(88),
 	},
 	18: {
+		Fop:   uint8(0),
 		Fbits: uint8(8),
 		Fval:  uint16(24),
 	},
 	19: {
+		Fop:   uint8(0),
 		Fbits: uint8(9),
 		Fval:  uint16(144),
 	},
@@ -8701,14 +8751,17 @@ var _lenfix = [512]Tcode{
 		Fval:  uint16(59),
 	},
 	21: {
+		Fop:   uint8(0),
 		Fbits: uint8(8),
 		Fval:  uint16(120),
 	},
 	22: {
+		Fop:   uint8(0),
 		Fbits: uint8(8),
 		Fval:  uint16(56),
 	},
 	23: {
+		Fop:   uint8(0),
 		Fbits: uint8(9),
 		Fval:  uint16(208),
 	},
@@ -8718,30 +8771,37 @@ var _lenfix = [512]Tcode{
 		Fval:  uint16(17),
 	},
 	25: {
+		Fop:   uint8(0),
 		Fbits: uint8(8),
 		Fval:  uint16(104),
 	},
 	26: {
+		Fop:   uint8(0),
 		Fbits: uint8(8),
 		Fval:  uint16(40),
 	},
 	27: {
+		Fop:   uint8(0),
 		Fbits: uint8(9),
 		Fval:  uint16(176),
 	},
 	28: {
+		Fop:   uint8(0),
 		Fbits: uint8(8),
 		Fval:  uint16(8),
 	},
 	29: {
+		Fop:   uint8(0),
 		Fbits: uint8(8),
 		Fval:  uint16(136),
 	},
 	30: {
+		Fop:   uint8(0),
 		Fbits: uint8(8),
 		Fval:  uint16(72),
 	},
 	31: {
+		Fop:   uint8(0),
 		Fbits: uint8(9),
 		Fval:  uint16(240),
 	},
@@ -8751,10 +8811,12 @@ var _lenfix = [512]Tcode{
 		Fval:  uint16(4),
 	},
 	33: {
+		Fop:   uint8(0),
 		Fbits: uint8(8),
 		Fval:  uint16(84),
 	},
 	34: {
+		Fop:   uint8(0),
 		Fbits: uint8(8),
 		Fval:  uint16(20),
 	},
@@ -8769,14 +8831,17 @@ var _lenfix = [512]Tcode{
 		Fval:  uint16(43),
 	},
 	37: {
+		Fop:   uint8(0),
 		Fbits: uint8(8),
 		Fval:  uint16(116),
 	},
 	38: {
+		Fop:   uint8(0),
 		Fbits: uint8(8),
 		Fval:  uint16(52),
 	},
 	39: {
+		Fop:   uint8(0),
 		Fbits: uint8(9),
 		Fval:  uint16(200),
 	},
@@ -8786,30 +8851,37 @@ var _lenfix = [512]Tcode{
 		Fval:  uint16(13),
 	},
 	41: {
+		Fop:   uint8(0),
 		Fbits: uint8(8),
 		Fval:  uint16(100),
 	},
 	42: {
+		Fop:   uint8(0),
 		Fbits: uint8(8),
 		Fval:  uint16(36),
 	},
 	43: {
+		Fop:   uint8(0),
 		Fbits: uint8(9),
 		Fval:  uint16(168),
 	},
 	44: {
+		Fop:   uint8(0),
 		Fbits: uint8(8),
 		Fval:  uint16(4),
 	},
 	45: {
+		Fop:   uint8(0),
 		Fbits: uint8(8),
 		Fval:  uint16(132),
 	},
 	46: {
+		Fop:   uint8(0),
 		Fbits: uint8(8),
 		Fval:  uint16(68),
 	},
 	47: {
+		Fop:   uint8(0),
 		Fbits: uint8(9),
 		Fval:  uint16(232),
 	},
@@ -8819,14 +8891,17 @@ var _lenfix = [512]Tcode{
 		Fval:  uint16(8),
 	},
 	49: {
+		Fop:   uint8(0),
 		Fbits: uint8(8),
 		Fval:  uint16(92),
 	},
 	50: {
+		Fop:   uint8(0),
 		Fbits: uint8(8),
 		Fval:  uint16(28),
 	},
 	51: {
+		Fop:   uint8(0),
 		Fbits: uint8(9),
 		Fval:  uint16(152),
 	},
@@ -8836,14 +8911,17 @@ var _lenfix = [512]Tcode{
 		Fval:  uint16(83),
 	},
 	53: {
+		Fop:   uint8(0),
 		Fbits: uint8(8),
 		Fval:  uint16(124),
 	},
 	54: {
+		Fop:   uint8(0),
 		Fbits: uint8(8),
 		Fval:  uint16(60),
 	},
 	55: {
+		Fop:   uint8(0),
 		Fbits: uint8(9),
 		Fval:  uint16(216),
 	},
@@ -8853,30 +8931,37 @@ var _lenfix = [512]Tcode{
 		Fval:  uint16(23),
 	},
 	57: {
+		Fop:   uint8(0),
 		Fbits: uint8(8),
 		Fval:  uint16(108),
 	},
 	58: {
+		Fop:   uint8(0),
 		Fbits: uint8(8),
 		Fval:  uint16(44),
 	},
 	59: {
+		Fop:   uint8(0),
 		Fbits: uint8(9),
 		Fval:  uint16(184),
 	},
 	60: {
+		Fop:   uint8(0),
 		Fbits: uint8(8),
 		Fval:  uint16(12),
 	},
 	61: {
+		Fop:   uint8(0),
 		Fbits: uint8(8),
 		Fval:  uint16(140),
 	},
 	62: {
+		Fop:   uint8(0),
 		Fbits: uint8(8),
 		Fval:  uint16(76),
 	},
 	63: {
+		Fop:   uint8(0),
 		Fbits: uint8(9),
 		Fval:  uint16(248),
 	},
@@ -8886,10 +8971,12 @@ var _lenfix = [512]Tcode{
 		Fval:  uint16(3),
 	},
 	65: {
+		Fop:   uint8(0),
 		Fbits: uint8(8),
 		Fval:  uint16(82),
 	},
 	66: {
+		Fop:   uint8(0),
 		Fbits: uint8(8),
 		Fval:  uint16(18),
 	},
@@ -8904,14 +8991,17 @@ var _lenfix = [512]Tcode{
 		Fval:  uint16(35),
 	},
 	69: {
+		Fop:   uint8(0),
 		Fbits: uint8(8),
 		Fval:  uint16(114),
 	},
 	70: {
+		Fop:   uint8(0),
 		Fbits: uint8(8),
 		Fval:  uint16(50),
 	},
 	71: {
+		Fop:   uint8(0),
 		Fbits: uint8(9),
 		Fval:  uint16(196),
 	},
@@ -8921,30 +9011,37 @@ var _lenfix = [512]Tcode{
 		Fval:  uint16(11),
 	},
 	73: {
+		Fop:   uint8(0),
 		Fbits: uint8(8),
 		Fval:  uint16(98),
 	},
 	74: {
+		Fop:   uint8(0),
 		Fbits: uint8(8),
 		Fval:  uint16(34),
 	},
 	75: {
+		Fop:   uint8(0),
 		Fbits: uint8(9),
 		Fval:  uint16(164),
 	},
 	76: {
+		Fop:   uint8(0),
 		Fbits: uint8(8),
 		Fval:  uint16(2),
 	},
 	77: {
+		Fop:   uint8(0),
 		Fbits: uint8(8),
 		Fval:  uint16(130),
 	},
 	78: {
+		Fop:   uint8(0),
 		Fbits: uint8(8),
 		Fval:  uint16(66),
 	},
 	79: {
+		Fop:   uint8(0),
 		Fbits: uint8(9),
 		Fval:  uint16(228),
 	},
@@ -8954,14 +9051,17 @@ var _lenfix = [512]Tcode{
 		Fval:  uint16(7),
 	},
 	81: {
+		Fop:   uint8(0),
 		Fbits: uint8(8),
 		Fval:  uint16(90),
 	},
 	82: {
+		Fop:   uint8(0),
 		Fbits: uint8(8),
 		Fval:  uint16(26),
 	},
 	83: {
+		Fop:   uint8(0),
 		Fbits: uint8(9),
 		Fval:  uint16(148),
 	},
@@ -8971,14 +9071,17 @@ var _lenfix = [512]Tcode{
 		Fval:  uint16(67),
 	},
 	85: {
+		Fop:   uint8(0),
 		Fbits: uint8(8),
 		Fval:  uint16(122),
 	},
 	86: {
+		Fop:   uint8(0),
 		Fbits: uint8(8),
 		Fval:  uint16(58),
 	},
 	87: {
+		Fop:   uint8(0),
 		Fbits: uint8(9),
 		Fval:  uint16(212),
 	},
@@ -8988,30 +9091,37 @@ var _lenfix = [512]Tcode{
 		Fval:  uint16(19),
 	},
 	89: {
+		Fop:   uint8(0),
 		Fbits: uint8(8),
 		Fval:  uint16(106),
 	},
 	90: {
+		Fop:   uint8(0),
 		Fbits: uint8(8),
 		Fval:  uint16(42),
 	},
 	91: {
+		Fop:   uint8(0),
 		Fbits: uint8(9),
 		Fval:  uint16(180),
 	},
 	92: {
+		Fop:   uint8(0),
 		Fbits: uint8(8),
 		Fval:  uint16(10),
 	},
 	93: {
+		Fop:   uint8(0),
 		Fbits: uint8(8),
 		Fval:  uint16(138),
 	},
 	94: {
+		Fop:   uint8(0),
 		Fbits: uint8(8),
 		Fval:  uint16(74),
 	},
 	95: {
+		Fop:   uint8(0),
 		Fbits: uint8(9),
 		Fval:  uint16(244),
 	},
@@ -9021,16 +9131,19 @@ var _lenfix = [512]Tcode{
 		Fval:  uint16(5),
 	},
 	97: {
+		Fop:   uint8(0),
 		Fbits: uint8(8),
 		Fval:  uint16(86),
 	},
 	98: {
+		Fop:   uint8(0),
 		Fbits: uint8(8),
 		Fval:  uint16(22),
 	},
 	99: {
 		Fop:   uint8(64),
 		Fbits: uint8(8),
+		Fval:  uint16(0),
 	},
 	100: {
 		Fop:   uint8(19),
@@ -9038,14 +9151,17 @@ var _lenfix = [512]Tcode{
 		Fval:  uint16(51),
 	},
 	101: {
+		Fop:   uint8(0),
 		Fbits: uint8(8),
 		Fval:  uint16(118),
 	},
 	102: {
+		Fop:   uint8(0),
 		Fbits: uint8(8),
 		Fval:  uint16(54),
 	},
 	103: {
+		Fop:   uint8(0),
 		Fbits: uint8(9),
 		Fval:  uint16(204),
 	},
@@ -9055,30 +9171,37 @@ var _lenfix = [512]Tcode{
 		Fval:  uint16(15),
 	},
 	105: {
+		Fop:   uint8(0),
 		Fbits: uint8(8),
 		Fval:  uint16(102),
 	},
 	106: {
+		Fop:   uint8(0),
 		Fbits: uint8(8),
 		Fval:  uint16(38),
 	},
 	107: {
+		Fop:   uint8(0),
 		Fbits: uint8(9),
 		Fval:  uint16(172),
 	},
 	108: {
+		Fop:   uint8(0),
 		Fbits: uint8(8),
 		Fval:  uint16(6),
 	},
 	109: {
+		Fop:   uint8(0),
 		Fbits: uint8(8),
 		Fval:  uint16(134),
 	},
 	110: {
+		Fop:   uint8(0),
 		Fbits: uint8(8),
 		Fval:  uint16(70),
 	},
 	111: {
+		Fop:   uint8(0),
 		Fbits: uint8(9),
 		Fval:  uint16(236),
 	},
@@ -9088,14 +9211,17 @@ var _lenfix = [512]Tcode{
 		Fval:  uint16(9),
 	},
 	113: {
+		Fop:   uint8(0),
 		Fbits: uint8(8),
 		Fval:  uint16(94),
 	},
 	114: {
+		Fop:   uint8(0),
 		Fbits: uint8(8),
 		Fval:  uint16(30),
 	},
 	115: {
+		Fop:   uint8(0),
 		Fbits: uint8(9),
 		Fval:  uint16(156),
 	},
@@ -9105,14 +9231,17 @@ var _lenfix = [512]Tcode{
 		Fval:  uint16(99),
 	},
 	117: {
+		Fop:   uint8(0),
 		Fbits: uint8(8),
 		Fval:  uint16(126),
 	},
 	118: {
+		Fop:   uint8(0),
 		Fbits: uint8(8),
 		Fval:  uint16(62),
 	},
 	119: {
+		Fop:   uint8(0),
 		Fbits: uint8(9),
 		Fval:  uint16(220),
 	},
@@ -9122,42 +9251,52 @@ var _lenfix = [512]Tcode{
 		Fval:  uint16(27),
 	},
 	121: {
+		Fop:   uint8(0),
 		Fbits: uint8(8),
 		Fval:  uint16(110),
 	},
 	122: {
+		Fop:   uint8(0),
 		Fbits: uint8(8),
 		Fval:  uint16(46),
 	},
 	123: {
+		Fop:   uint8(0),
 		Fbits: uint8(9),
 		Fval:  uint16(188),
 	},
 	124: {
+		Fop:   uint8(0),
 		Fbits: uint8(8),
 		Fval:  uint16(14),
 	},
 	125: {
+		Fop:   uint8(0),
 		Fbits: uint8(8),
 		Fval:  uint16(142),
 	},
 	126: {
+		Fop:   uint8(0),
 		Fbits: uint8(8),
 		Fval:  uint16(78),
 	},
 	127: {
+		Fop:   uint8(0),
 		Fbits: uint8(9),
 		Fval:  uint16(252),
 	},
 	128: {
 		Fop:   uint8(96),
 		Fbits: uint8(7),
+		Fval:  uint16(0),
 	},
 	129: {
+		Fop:   uint8(0),
 		Fbits: uint8(8),
 		Fval:  uint16(81),
 	},
 	130: {
+		Fop:   uint8(0),
 		Fbits: uint8(8),
 		Fval:  uint16(17),
 	},
@@ -9172,14 +9311,17 @@ var _lenfix = [512]Tcode{
 		Fval:  uint16(31),
 	},
 	133: {
+		Fop:   uint8(0),
 		Fbits: uint8(8),
 		Fval:  uint16(113),
 	},
 	134: {
+		Fop:   uint8(0),
 		Fbits: uint8(8),
 		Fval:  uint16(49),
 	},
 	135: {
+		Fop:   uint8(0),
 		Fbits: uint8(9),
 		Fval:  uint16(194),
 	},
@@ -9189,30 +9331,37 @@ var _lenfix = [512]Tcode{
 		Fval:  uint16(10),
 	},
 	137: {
+		Fop:   uint8(0),
 		Fbits: uint8(8),
 		Fval:  uint16(97),
 	},
 	138: {
+		Fop:   uint8(0),
 		Fbits: uint8(8),
 		Fval:  uint16(33),
 	},
 	139: {
+		Fop:   uint8(0),
 		Fbits: uint8(9),
 		Fval:  uint16(162),
 	},
 	140: {
+		Fop:   uint8(0),
 		Fbits: uint8(8),
 		Fval:  uint16(1),
 	},
 	141: {
+		Fop:   uint8(0),
 		Fbits: uint8(8),
 		Fval:  uint16(129),
 	},
 	142: {
+		Fop:   uint8(0),
 		Fbits: uint8(8),
 		Fval:  uint16(65),
 	},
 	143: {
+		Fop:   uint8(0),
 		Fbits: uint8(9),
 		Fval:  uint16(226),
 	},
@@ -9222,14 +9371,17 @@ var _lenfix = [512]Tcode{
 		Fval:  uint16(6),
 	},
 	145: {
+		Fop:   uint8(0),
 		Fbits: uint8(8),
 		Fval:  uint16(89),
 	},
 	146: {
+		Fop:   uint8(0),
 		Fbits: uint8(8),
 		Fval:  uint16(25),
 	},
 	147: {
+		Fop:   uint8(0),
 		Fbits: uint8(9),
 		Fval:  uint16(146),
 	},
@@ -9239,14 +9391,17 @@ var _lenfix = [512]Tcode{
 		Fval:  uint16(59),
 	},
 	149: {
+		Fop:   uint8(0),
 		Fbits: uint8(8),
 		Fval:  uint16(121),
 	},
 	150: {
+		Fop:   uint8(0),
 		Fbits: uint8(8),
 		Fval:  uint16(57),
 	},
 	151: {
+		Fop:   uint8(0),
 		Fbits: uint8(9),
 		Fval:  uint16(210),
 	},
@@ -9256,30 +9411,37 @@ var _lenfix = [512]Tcode{
 		Fval:  uint16(17),
 	},
 	153: {
+		Fop:   uint8(0),
 		Fbits: uint8(8),
 		Fval:  uint16(105),
 	},
 	154: {
+		Fop:   uint8(0),
 		Fbits: uint8(8),
 		Fval:  uint16(41),
 	},
 	155: {
+		Fop:   uint8(0),
 		Fbits: uint8(9),
 		Fval:  uint16(178),
 	},
 	156: {
+		Fop:   uint8(0),
 		Fbits: uint8(8),
 		Fval:  uint16(9),
 	},
 	157: {
+		Fop:   uint8(0),
 		Fbits: uint8(8),
 		Fval:  uint16(137),
 	},
 	158: {
+		Fop:   uint8(0),
 		Fbits: uint8(8),
 		Fval:  uint16(73),
 	},
 	159: {
+		Fop:   uint8(0),
 		Fbits: uint8(9),
 		Fval:  uint16(242),
 	},
@@ -9289,10 +9451,12 @@ var _lenfix = [512]Tcode{
 		Fval:  uint16(4),
 	},
 	161: {
+		Fop:   uint8(0),
 		Fbits: uint8(8),
 		Fval:  uint16(85),
 	},
 	162: {
+		Fop:   uint8(0),
 		Fbits: uint8(8),
 		Fval:  uint16(21),
 	},
@@ -9307,14 +9471,17 @@ var _lenfix = [512]Tcode{
 		Fval:  uint16(43),
 	},
 	165: {
+		Fop:   uint8(0),
 		Fbits: uint8(8),
 		Fval:  uint16(117),
 	},
 	166: {
+		Fop:   uint8(0),
 		Fbits: uint8(8),
 		Fval:  uint16(53),
 	},
 	167: {
+		Fop:   uint8(0),
 		Fbits: uint8(9),
 		Fval:  uint16(202),
 	},
@@ -9324,30 +9491,37 @@ var _lenfix = [512]Tcode{
 		Fval:  uint16(13),
 	},
 	169: {
+		Fop:   uint8(0),
 		Fbits: uint8(8),
 		Fval:  uint16(101),
 	},
 	170: {
+		Fop:   uint8(0),
 		Fbits: uint8(8),
 		Fval:  uint16(37),
 	},
 	171: {
+		Fop:   uint8(0),
 		Fbits: uint8(9),
 		Fval:  uint16(170),
 	},
 	172: {
+		Fop:   uint8(0),
 		Fbits: uint8(8),
 		Fval:  uint16(5),
 	},
 	173: {
+		Fop:   uint8(0),
 		Fbits: uint8(8),
 		Fval:  uint16(133),
 	},
 	174: {
+		Fop:   uint8(0),
 		Fbits: uint8(8),
 		Fval:  uint16(69),
 	},
 	175: {
+		Fop:   uint8(0),
 		Fbits: uint8(9),
 		Fval:  uint16(234),
 	},
@@ -9357,14 +9531,17 @@ var _lenfix = [512]Tcode{
 		Fval:  uint16(8),
 	},
 	177: {
+		Fop:   uint8(0),
 		Fbits: uint8(8),
 		Fval:  uint16(93),
 	},
 	178: {
+		Fop:   uint8(0),
 		Fbits: uint8(8),
 		Fval:  uint16(29),
 	},
 	179: {
+		Fop:   uint8(0),
 		Fbits: uint8(9),
 		Fval:  uint16(154),
 	},
@@ -9374,14 +9551,17 @@ var _lenfix = [512]Tcode{
 		Fval:  uint16(83),
 	},
 	181: {
+		Fop:   uint8(0),
 		Fbits: uint8(8),
 		Fval:  uint16(125),
 	},
 	182: {
+		Fop:   uint8(0),
 		Fbits: uint8(8),
 		Fval:  uint16(61),
 	},
 	183: {
+		Fop:   uint8(0),
 		Fbits: uint8(9),
 		Fval:  uint16(218),
 	},
@@ -9391,30 +9571,37 @@ var _lenfix = [512]Tcode{
 		Fval:  uint16(23),
 	},
 	185: {
+		Fop:   uint8(0),
 		Fbits: uint8(8),
 		Fval:  uint16(109),
 	},
 	186: {
+		Fop:   uint8(0),
 		Fbits: uint8(8),
 		Fval:  uint16(45),
 	},
 	187: {
+		Fop:   uint8(0),
 		Fbits: uint8(9),
 		Fval:  uint16(186),
 	},
 	188: {
+		Fop:   uint8(0),
 		Fbits: uint8(8),
 		Fval:  uint16(13),
 	},
 	189: {
+		Fop:   uint8(0),
 		Fbits: uint8(8),
 		Fval:  uint16(141),
 	},
 	190: {
+		Fop:   uint8(0),
 		Fbits: uint8(8),
 		Fval:  uint16(77),
 	},
 	191: {
+		Fop:   uint8(0),
 		Fbits: uint8(9),
 		Fval:  uint16(250),
 	},
@@ -9424,10 +9611,12 @@ var _lenfix = [512]Tcode{
 		Fval:  uint16(3),
 	},
 	193: {
+		Fop:   uint8(0),
 		Fbits: uint8(8),
 		Fval:  uint16(83),
 	},
 	194: {
+		Fop:   uint8(0),
 		Fbits: uint8(8),
 		Fval:  uint16(19),
 	},
@@ -9442,14 +9631,17 @@ var _lenfix = [512]Tcode{
 		Fval:  uint16(35),
 	},
 	197: {
+		Fop:   uint8(0),
 		Fbits: uint8(8),
 		Fval:  uint16(115),
 	},
 	198: {
+		Fop:   uint8(0),
 		Fbits: uint8(8),
 		Fval:  uint16(51),
 	},
 	199: {
+		Fop:   uint8(0),
 		Fbits: uint8(9),
 		Fval:  uint16(198),
 	},
@@ -9459,30 +9651,37 @@ var _lenfix = [512]Tcode{
 		Fval:  uint16(11),
 	},
 	201: {
+		Fop:   uint8(0),
 		Fbits: uint8(8),
 		Fval:  uint16(99),
 	},
 	202: {
+		Fop:   uint8(0),
 		Fbits: uint8(8),
 		Fval:  uint16(35),
 	},
 	203: {
+		Fop:   uint8(0),
 		Fbits: uint8(9),
 		Fval:  uint16(166),
 	},
 	204: {
+		Fop:   uint8(0),
 		Fbits: uint8(8),
 		Fval:  uint16(3),
 	},
 	205: {
+		Fop:   uint8(0),
 		Fbits: uint8(8),
 		Fval:  uint16(131),
 	},
 	206: {
+		Fop:   uint8(0),
 		Fbits: uint8(8),
 		Fval:  uint16(67),
 	},
 	207: {
+		Fop:   uint8(0),
 		Fbits: uint8(9),
 		Fval:  uint16(230),
 	},
@@ -9492,14 +9691,17 @@ var _lenfix = [512]Tcode{
 		Fval:  uint16(7),
 	},
 	209: {
+		Fop:   uint8(0),
 		Fbits: uint8(8),
 		Fval:  uint16(91),
 	},
 	210: {
+		Fop:   uint8(0),
 		Fbits: uint8(8),
 		Fval:  uint16(27),
 	},
 	211: {
+		Fop:   uint8(0),
 		Fbits: uint8(9),
 		Fval:  uint16(150),
 	},
@@ -9509,14 +9711,17 @@ var _lenfix = [512]Tcode{
 		Fval:  uint16(67),
 	},
 	213: {
+		Fop:   uint8(0),
 		Fbits: uint8(8),
 		Fval:  uint16(123),
 	},
 	214: {
+		Fop:   uint8(0),
 		Fbits: uint8(8),
 		Fval:  uint16(59),
 	},
 	215: {
+		Fop:   uint8(0),
 		Fbits: uint8(9),
 		Fval:  uint16(214),
 	},
@@ -9526,30 +9731,37 @@ var _lenfix = [512]Tcode{
 		Fval:  uint16(19),
 	},
 	217: {
+		Fop:   uint8(0),
 		Fbits: uint8(8),
 		Fval:  uint16(107),
 	},
 	218: {
+		Fop:   uint8(0),
 		Fbits: uint8(8),
 		Fval:  uint16(43),
 	},
 	219: {
+		Fop:   uint8(0),
 		Fbits: uint8(9),
 		Fval:  uint16(182),
 	},
 	220: {
+		Fop:   uint8(0),
 		Fbits: uint8(8),
 		Fval:  uint16(11),
 	},
 	221: {
+		Fop:   uint8(0),
 		Fbits: uint8(8),
 		Fval:  uint16(139),
 	},
 	222: {
+		Fop:   uint8(0),
 		Fbits: uint8(8),
 		Fval:  uint16(75),
 	},
 	223: {
+		Fop:   uint8(0),
 		Fbits: uint8(9),
 		Fval:  uint16(246),
 	},
@@ -9559,16 +9771,19 @@ var _lenfix = [512]Tcode{
 		Fval:  uint16(5),
 	},
 	225: {
+		Fop:   uint8(0),
 		Fbits: uint8(8),
 		Fval:  uint16(87),
 	},
 	226: {
+		Fop:   uint8(0),
 		Fbits: uint8(8),
 		Fval:  uint16(23),
 	},
 	227: {
 		Fop:   uint8(64),
 		Fbits: uint8(8),
+		Fval:  uint16(0),
 	},
 	228: {
 		Fop:   uint8(19),
@@ -9576,14 +9791,17 @@ var _lenfix = [512]Tcode{
 		Fval:  uint16(51),
 	},
 	229: {
+		Fop:   uint8(0),
 		Fbits: uint8(8),
 		Fval:  uint16(119),
 	},
 	230: {
+		Fop:   uint8(0),
 		Fbits: uint8(8),
 		Fval:  uint16(55),
 	},
 	231: {
+		Fop:   uint8(0),
 		Fbits: uint8(9),
 		Fval:  uint16(206),
 	},
@@ -9593,30 +9811,37 @@ var _lenfix = [512]Tcode{
 		Fval:  uint16(15),
 	},
 	233: {
+		Fop:   uint8(0),
 		Fbits: uint8(8),
 		Fval:  uint16(103),
 	},
 	234: {
+		Fop:   uint8(0),
 		Fbits: uint8(8),
 		Fval:  uint16(39),
 	},
 	235: {
+		Fop:   uint8(0),
 		Fbits: uint8(9),
 		Fval:  uint16(174),
 	},
 	236: {
+		Fop:   uint8(0),
 		Fbits: uint8(8),
 		Fval:  uint16(7),
 	},
 	237: {
+		Fop:   uint8(0),
 		Fbits: uint8(8),
 		Fval:  uint16(135),
 	},
 	238: {
+		Fop:   uint8(0),
 		Fbits: uint8(8),
 		Fval:  uint16(71),
 	},
 	239: {
+		Fop:   uint8(0),
 		Fbits: uint8(9),
 		Fval:  uint16(238),
 	},
@@ -9626,14 +9851,17 @@ var _lenfix = [512]Tcode{
 		Fval:  uint16(9),
 	},
 	241: {
+		Fop:   uint8(0),
 		Fbits: uint8(8),
 		Fval:  uint16(95),
 	},
 	242: {
+		Fop:   uint8(0),
 		Fbits: uint8(8),
 		Fval:  uint16(31),
 	},
 	243: {
+		Fop:   uint8(0),
 		Fbits: uint8(9),
 		Fval:  uint16(158),
 	},
@@ -9643,14 +9871,17 @@ var _lenfix = [512]Tcode{
 		Fval:  uint16(99),
 	},
 	245: {
+		Fop:   uint8(0),
 		Fbits: uint8(8),
 		Fval:  uint16(127),
 	},
 	246: {
+		Fop:   uint8(0),
 		Fbits: uint8(8),
 		Fval:  uint16(63),
 	},
 	247: {
+		Fop:   uint8(0),
 		Fbits: uint8(9),
 		Fval:  uint16(222),
 	},
@@ -9660,42 +9891,52 @@ var _lenfix = [512]Tcode{
 		Fval:  uint16(27),
 	},
 	249: {
+		Fop:   uint8(0),
 		Fbits: uint8(8),
 		Fval:  uint16(111),
 	},
 	250: {
+		Fop:   uint8(0),
 		Fbits: uint8(8),
 		Fval:  uint16(47),
 	},
 	251: {
+		Fop:   uint8(0),
 		Fbits: uint8(9),
 		Fval:  uint16(190),
 	},
 	252: {
+		Fop:   uint8(0),
 		Fbits: uint8(8),
 		Fval:  uint16(15),
 	},
 	253: {
+		Fop:   uint8(0),
 		Fbits: uint8(8),
 		Fval:  uint16(143),
 	},
 	254: {
+		Fop:   uint8(0),
 		Fbits: uint8(8),
 		Fval:  uint16(79),
 	},
 	255: {
+		Fop:   uint8(0),
 		Fbits: uint8(9),
 		Fval:  uint16(254),
 	},
 	256: {
 		Fop:   uint8(96),
 		Fbits: uint8(7),
+		Fval:  uint16(0),
 	},
 	257: {
+		Fop:   uint8(0),
 		Fbits: uint8(8),
 		Fval:  uint16(80),
 	},
 	258: {
+		Fop:   uint8(0),
 		Fbits: uint8(8),
 		Fval:  uint16(16),
 	},
@@ -9710,14 +9951,17 @@ var _lenfix = [512]Tcode{
 		Fval:  uint16(31),
 	},
 	261: {
+		Fop:   uint8(0),
 		Fbits: uint8(8),
 		Fval:  uint16(112),
 	},
 	262: {
+		Fop:   uint8(0),
 		Fbits: uint8(8),
 		Fval:  uint16(48),
 	},
 	263: {
+		Fop:   uint8(0),
 		Fbits: uint8(9),
 		Fval:  uint16(193),
 	},
@@ -9727,29 +9971,37 @@ var _lenfix = [512]Tcode{
 		Fval:  uint16(10),
 	},
 	265: {
+		Fop:   uint8(0),
 		Fbits: uint8(8),
 		Fval:  uint16(96),
 	},
 	266: {
+		Fop:   uint8(0),
 		Fbits: uint8(8),
 		Fval:  uint16(32),
 	},
 	267: {
+		Fop:   uint8(0),
 		Fbits: uint8(9),
 		Fval:  uint16(161),
 	},
 	268: {
+		Fop:   uint8(0),
 		Fbits: uint8(8),
+		Fval:  uint16(0),
 	},
 	269: {
+		Fop:   uint8(0),
 		Fbits: uint8(8),
 		Fval:  uint16(128),
 	},
 	270: {
+		Fop:   uint8(0),
 		Fbits: uint8(8),
 		Fval:  uint16(64),
 	},
 	271: {
+		Fop:   uint8(0),
 		Fbits: uint8(9),
 		Fval:  uint16(225),
 	},
@@ -9759,14 +10011,17 @@ var _lenfix = [512]Tcode{
 		Fval:  uint16(6),
 	},
 	273: {
+		Fop:   uint8(0),
 		Fbits: uint8(8),
 		Fval:  uint16(88),
 	},
 	274: {
+		Fop:   uint8(0),
 		Fbits: uint8(8),
 		Fval:  uint16(24),
 	},
 	275: {
+		Fop:   uint8(0),
 		Fbits: uint8(9),
 		Fval:  uint16(145),
 	},
@@ -9776,14 +10031,17 @@ var _lenfix = [512]Tcode{
 		Fval:  uint16(59),
 	},
 	277: {
+		Fop:   uint8(0),
 		Fbits: uint8(8),
 		Fval:  uint16(120),
 	},
 	278: {
+		Fop:   uint8(0),
 		Fbits: uint8(8),
 		Fval:  uint16(56),
 	},
 	279: {
+		Fop:   uint8(0),
 		Fbits: uint8(9),
 		Fval:  uint16(209),
 	},
@@ -9793,30 +10051,37 @@ var _lenfix = [512]Tcode{
 		Fval:  uint16(17),
 	},
 	281: {
+		Fop:   uint8(0),
 		Fbits: uint8(8),
 		Fval:  uint16(104),
 	},
 	282: {
+		Fop:   uint8(0),
 		Fbits: uint8(8),
 		Fval:  uint16(40),
 	},
 	283: {
+		Fop:   uint8(0),
 		Fbits: uint8(9),
 		Fval:  uint16(177),
 	},
 	284: {
+		Fop:   uint8(0),
 		Fbits: uint8(8),
 		Fval:  uint16(8),
 	},
 	285: {
+		Fop:   uint8(0),
 		Fbits: uint8(8),
 		Fval:  uint16(136),
 	},
 	286: {
+		Fop:   uint8(0),
 		Fbits: uint8(8),
 		Fval:  uint16(72),
 	},
 	287: {
+		Fop:   uint8(0),
 		Fbits: uint8(9),
 		Fval:  uint16(241),
 	},
@@ -9826,10 +10091,12 @@ var _lenfix = [512]Tcode{
 		Fval:  uint16(4),
 	},
 	289: {
+		Fop:   uint8(0),
 		Fbits: uint8(8),
 		Fval:  uint16(84),
 	},
 	290: {
+		Fop:   uint8(0),
 		Fbits: uint8(8),
 		Fval:  uint16(20),
 	},
@@ -9844,14 +10111,17 @@ var _lenfix = [512]Tcode{
 		Fval:  uint16(43),
 	},
 	293: {
+		Fop:   uint8(0),
 		Fbits: uint8(8),
 		Fval:  uint16(116),
 	},
 	294: {
+		Fop:   uint8(0),
 		Fbits: uint8(8),
 		Fval:  uint16(52),
 	},
 	295: {
+		Fop:   uint8(0),
 		Fbits: uint8(9),
 		Fval:  uint16(201),
 	},
@@ -9861,30 +10131,37 @@ var _lenfix = [512]Tcode{
 		Fval:  uint16(13),
 	},
 	297: {
+		Fop:   uint8(0),
 		Fbits: uint8(8),
 		Fval:  uint16(100),
 	},
 	298: {
+		Fop:   uint8(0),
 		Fbits: uint8(8),
 		Fval:  uint16(36),
 	},
 	299: {
+		Fop:   uint8(0),
 		Fbits: uint8(9),
 		Fval:  uint16(169),
 	},
 	300: {
+		Fop:   uint8(0),
 		Fbits: uint8(8),
 		Fval:  uint16(4),
 	},
 	301: {
+		Fop:   uint8(0),
 		Fbits: uint8(8),
 		Fval:  uint16(132),
 	},
 	302: {
+		Fop:   uint8(0),
 		Fbits: uint8(8),
 		Fval:  uint16(68),
 	},
 	303: {
+		Fop:   uint8(0),
 		Fbits: uint8(9),
 		Fval:  uint16(233),
 	},
@@ -9894,14 +10171,17 @@ var _lenfix = [512]Tcode{
 		Fval:  uint16(8),
 	},
 	305: {
+		Fop:   uint8(0),
 		Fbits: uint8(8),
 		Fval:  uint16(92),
 	},
 	306: {
+		Fop:   uint8(0),
 		Fbits: uint8(8),
 		Fval:  uint16(28),
 	},
 	307: {
+		Fop:   uint8(0),
 		Fbits: uint8(9),
 		Fval:  uint16(153),
 	},
@@ -9911,14 +10191,17 @@ var _lenfix = [512]Tcode{
 		Fval:  uint16(83),
 	},
 	309: {
+		Fop:   uint8(0),
 		Fbits: uint8(8),
 		Fval:  uint16(124),
 	},
 	310: {
+		Fop:   uint8(0),
 		Fbits: uint8(8),
 		Fval:  uint16(60),
 	},
 	311: {
+		Fop:   uint8(0),
 		Fbits: uint8(9),
 		Fval:  uint16(217),
 	},
@@ -9928,30 +10211,37 @@ var _lenfix = [512]Tcode{
 		Fval:  uint16(23),
 	},
 	313: {
+		Fop:   uint8(0),
 		Fbits: uint8(8),
 		Fval:  uint16(108),
 	},
 	314: {
+		Fop:   uint8(0),
 		Fbits: uint8(8),
 		Fval:  uint16(44),
 	},
 	315: {
+		Fop:   uint8(0),
 		Fbits: uint8(9),
 		Fval:  uint16(185),
 	},
 	316: {
+		Fop:   uint8(0),
 		Fbits: uint8(8),
 		Fval:  uint16(12),
 	},
 	317: {
+		Fop:   uint8(0),
 		Fbits: uint8(8),
 		Fval:  uint16(140),
 	},
 	318: {
+		Fop:   uint8(0),
 		Fbits: uint8(8),
 		Fval:  uint16(76),
 	},
 	319: {
+		Fop:   uint8(0),
 		Fbits: uint8(9),
 		Fval:  uint16(249),
 	},
@@ -9961,10 +10251,12 @@ var _lenfix = [512]Tcode{
 		Fval:  uint16(3),
 	},
 	321: {
+		Fop:   uint8(0),
 		Fbits: uint8(8),
 		Fval:  uint16(82),
 	},
 	322: {
+		Fop:   uint8(0),
 		Fbits: uint8(8),
 		Fval:  uint16(18),
 	},
@@ -9979,14 +10271,17 @@ var _lenfix = [512]Tcode{
 		Fval:  uint16(35),
 	},
 	325: {
+		Fop:   uint8(0),
 		Fbits: uint8(8),
 		Fval:  uint16(114),
 	},
 	326: {
+		Fop:   uint8(0),
 		Fbits: uint8(8),
 		Fval:  uint16(50),
 	},
 	327: {
+		Fop:   uint8(0),
 		Fbits: uint8(9),
 		Fval:  uint16(197),
 	},
@@ -9996,30 +10291,37 @@ var _lenfix = [512]Tcode{
 		Fval:  uint16(11),
 	},
 	329: {
+		Fop:   uint8(0),
 		Fbits: uint8(8),
 		Fval:  uint16(98),
 	},
 	330: {
+		Fop:   uint8(0),
 		Fbits: uint8(8),
 		Fval:  uint16(34),
 	},
 	331: {
+		Fop:   uint8(0),
 		Fbits: uint8(9),
 		Fval:  uint16(165),
 	},
 	332: {
+		Fop:   uint8(0),
 		Fbits: uint8(8),
 		Fval:  uint16(2),
 	},
 	333: {
+		Fop:   uint8(0),
 		Fbits: uint8(8),
 		Fval:  uint16(130),
 	},
 	334: {
+		Fop:   uint8(0),
 		Fbits: uint8(8),
 		Fval:  uint16(66),
 	},
 	335: {
+		Fop:   uint8(0),
 		Fbits: uint8(9),
 		Fval:  uint16(229),
 	},
@@ -10029,14 +10331,17 @@ var _lenfix = [512]Tcode{
 		Fval:  uint16(7),
 	},
 	337: {
+		Fop:   uint8(0),
 		Fbits: uint8(8),
 		Fval:  uint16(90),
 	},
 	338: {
+		Fop:   uint8(0),
 		Fbits: uint8(8),
 		Fval:  uint16(26),
 	},
 	339: {
+		Fop:   uint8(0),
 		Fbits: uint8(9),
 		Fval:  uint16(149),
 	},
@@ -10046,14 +10351,17 @@ var _lenfix = [512]Tcode{
 		Fval:  uint16(67),
 	},
 	341: {
+		Fop:   uint8(0),
 		Fbits: uint8(8),
 		Fval:  uint16(122),
 	},
 	342: {
+		Fop:   uint8(0),
 		Fbits: uint8(8),
 		Fval:  uint16(58),
 	},
 	343: {
+		Fop:   uint8(0),
 		Fbits: uint8(9),
 		Fval:  uint16(213),
 	},
@@ -10063,30 +10371,37 @@ var _lenfix = [512]Tcode{
 		Fval:  uint16(19),
 	},
 	345: {
+		Fop:   uint8(0),
 		Fbits: uint8(8),
 		Fval:  uint16(106),
 	},
 	346: {
+		Fop:   uint8(0),
 		Fbits: uint8(8),
 		Fval:  uint16(42),
 	},
 	347: {
+		Fop:   uint8(0),
 		Fbits: uint8(9),
 		Fval:  uint16(181),
 	},
 	348: {
+		Fop:   uint8(0),
 		Fbits: uint8(8),
 		Fval:  uint16(10),
 	},
 	349: {
+		Fop:   uint8(0),
 		Fbits: uint8(8),
 		Fval:  uint16(138),
 	},
 	350: {
+		Fop:   uint8(0),
 		Fbits: uint8(8),
 		Fval:  uint16(74),
 	},
 	351: {
+		Fop:   uint8(0),
 		Fbits: uint8(9),
 		Fval:  uint16(245),
 	},
@@ -10096,16 +10411,19 @@ var _lenfix = [512]Tcode{
 		Fval:  uint16(5),
 	},
 	353: {
+		Fop:   uint8(0),
 		Fbits: uint8(8),
 		Fval:  uint16(86),
 	},
 	354: {
+		Fop:   uint8(0),
 		Fbits: uint8(8),
 		Fval:  uint16(22),
 	},
 	355: {
 		Fop:   uint8(64),
 		Fbits: uint8(8),
+		Fval:  uint16(0),
 	},
 	356: {
 		Fop:   uint8(19),
@@ -10113,14 +10431,17 @@ var _lenfix = [512]Tcode{
 		Fval:  uint16(51),
 	},
 	357: {
+		Fop:   uint8(0),
 		Fbits: uint8(8),
 		Fval:  uint16(118),
 	},
 	358: {
+		Fop:   uint8(0),
 		Fbits: uint8(8),
 		Fval:  uint16(54),
 	},
 	359: {
+		Fop:   uint8(0),
 		Fbits: uint8(9),
 		Fval:  uint16(205),
 	},
@@ -10130,30 +10451,37 @@ var _lenfix = [512]Tcode{
 		Fval:  uint16(15),
 	},
 	361: {
+		Fop:   uint8(0),
 		Fbits: uint8(8),
 		Fval:  uint16(102),
 	},
 	362: {
+		Fop:   uint8(0),
 		Fbits: uint8(8),
 		Fval:  uint16(38),
 	},
 	363: {
+		Fop:   uint8(0),
 		Fbits: uint8(9),
 		Fval:  uint16(173),
 	},
 	364: {
+		Fop:   uint8(0),
 		Fbits: uint8(8),
 		Fval:  uint16(6),
 	},
 	365: {
+		Fop:   uint8(0),
 		Fbits: uint8(8),
 		Fval:  uint16(134),
 	},
 	366: {
+		Fop:   uint8(0),
 		Fbits: uint8(8),
 		Fval:  uint16(70),
 	},
 	367: {
+		Fop:   uint8(0),
 		Fbits: uint8(9),
 		Fval:  uint16(237),
 	},
@@ -10163,14 +10491,17 @@ var _lenfix = [512]Tcode{
 		Fval:  uint16(9),
 	},
 	369: {
+		Fop:   uint8(0),
 		Fbits: uint8(8),
 		Fval:  uint16(94),
 	},
 	370: {
+		Fop:   uint8(0),
 		Fbits: uint8(8),
 		Fval:  uint16(30),
 	},
 	371: {
+		Fop:   uint8(0),
 		Fbits: uint8(9),
 		Fval:  uint16(157),
 	},
@@ -10180,14 +10511,17 @@ var _lenfix = [512]Tcode{
 		Fval:  uint16(99),
 	},
 	373: {
+		Fop:   uint8(0),
 		Fbits: uint8(8),
 		Fval:  uint16(126),
 	},
 	374: {
+		Fop:   uint8(0),
 		Fbits: uint8(8),
 		Fval:  uint16(62),
 	},
 	375: {
+		Fop:   uint8(0),
 		Fbits: uint8(9),
 		Fval:  uint16(221),
 	},
@@ -10197,42 +10531,52 @@ var _lenfix = [512]Tcode{
 		Fval:  uint16(27),
 	},
 	377: {
+		Fop:   uint8(0),
 		Fbits: uint8(8),
 		Fval:  uint16(110),
 	},
 	378: {
+		Fop:   uint8(0),
 		Fbits: uint8(8),
 		Fval:  uint16(46),
 	},
 	379: {
+		Fop:   uint8(0),
 		Fbits: uint8(9),
 		Fval:  uint16(189),
 	},
 	380: {
+		Fop:   uint8(0),
 		Fbits: uint8(8),
 		Fval:  uint16(14),
 	},
 	381: {
+		Fop:   uint8(0),
 		Fbits: uint8(8),
 		Fval:  uint16(142),
 	},
 	382: {
+		Fop:   uint8(0),
 		Fbits: uint8(8),
 		Fval:  uint16(78),
 	},
 	383: {
+		Fop:   uint8(0),
 		Fbits: uint8(9),
 		Fval:  uint16(253),
 	},
 	384: {
 		Fop:   uint8(96),
 		Fbits: uint8(7),
+		Fval:  uint16(0),
 	},
 	385: {
+		Fop:   uint8(0),
 		Fbits: uint8(8),
 		Fval:  uint16(81),
 	},
 	386: {
+		Fop:   uint8(0),
 		Fbits: uint8(8),
 		Fval:  uint16(17),
 	},
@@ -10247,14 +10591,17 @@ var _lenfix = [512]Tcode{
 		Fval:  uint16(31),
 	},
 	389: {
+		Fop:   uint8(0),
 		Fbits: uint8(8),
 		Fval:  uint16(113),
 	},
 	390: {
+		Fop:   uint8(0),
 		Fbits: uint8(8),
 		Fval:  uint16(49),
 	},
 	391: {
+		Fop:   uint8(0),
 		Fbits: uint8(9),
 		Fval:  uint16(195),
 	},
@@ -10264,30 +10611,37 @@ var _lenfix = [512]Tcode{
 		Fval:  uint16(10),
 	},
 	393: {
+		Fop:   uint8(0),
 		Fbits: uint8(8),
 		Fval:  uint16(97),
 	},
 	394: {
+		Fop:   uint8(0),
 		Fbits: uint8(8),
 		Fval:  uint16(33),
 	},
 	395: {
+		Fop:   uint8(0),
 		Fbits: uint8(9),
 		Fval:  uint16(163),
 	},
 	396: {
+		Fop:   uint8(0),
 		Fbits: uint8(8),
 		Fval:  uint16(1),
 	},
 	397: {
+		Fop:   uint8(0),
 		Fbits: uint8(8),
 		Fval:  uint16(129),
 	},
 	398: {
+		Fop:   uint8(0),
 		Fbits: uint8(8),
 		Fval:  uint16(65),
 	},
 	399: {
+		Fop:   uint8(0),
 		Fbits: uint8(9),
 		Fval:  uint16(227),
 	},
@@ -10297,14 +10651,17 @@ var _lenfix = [512]Tcode{
 		Fval:  uint16(6),
 	},
 	401: {
+		Fop:   uint8(0),
 		Fbits: uint8(8),
 		Fval:  uint16(89),
 	},
 	402: {
+		Fop:   uint8(0),
 		Fbits: uint8(8),
 		Fval:  uint16(25),
 	},
 	403: {
+		Fop:   uint8(0),
 		Fbits: uint8(9),
 		Fval:  uint16(147),
 	},
@@ -10314,14 +10671,17 @@ var _lenfix = [512]Tcode{
 		Fval:  uint16(59),
 	},
 	405: {
+		Fop:   uint8(0),
 		Fbits: uint8(8),
 		Fval:  uint16(121),
 	},
 	406: {
+		Fop:   uint8(0),
 		Fbits: uint8(8),
 		Fval:  uint16(57),
 	},
 	407: {
+		Fop:   uint8(0),
 		Fbits: uint8(9),
 		Fval:  uint16(211),
 	},
@@ -10331,30 +10691,37 @@ var _lenfix = [512]Tcode{
 		Fval:  uint16(17),
 	},
 	409: {
+		Fop:   uint8(0),
 		Fbits: uint8(8),
 		Fval:  uint16(105),
 	},
 	410: {
+		Fop:   uint8(0),
 		Fbits: uint8(8),
 		Fval:  uint16(41),
 	},
 	411: {
+		Fop:   uint8(0),
 		Fbits: uint8(9),
 		Fval:  uint16(179),
 	},
 	412: {
+		Fop:   uint8(0),
 		Fbits: uint8(8),
 		Fval:  uint16(9),
 	},
 	413: {
+		Fop:   uint8(0),
 		Fbits: uint8(8),
 		Fval:  uint16(137),
 	},
 	414: {
+		Fop:   uint8(0),
 		Fbits: uint8(8),
 		Fval:  uint16(73),
 	},
 	415: {
+		Fop:   uint8(0),
 		Fbits: uint8(9),
 		Fval:  uint16(243),
 	},
@@ -10364,10 +10731,12 @@ var _lenfix = [512]Tcode{
 		Fval:  uint16(4),
 	},
 	417: {
+		Fop:   uint8(0),
 		Fbits: uint8(8),
 		Fval:  uint16(85),
 	},
 	418: {
+		Fop:   uint8(0),
 		Fbits: uint8(8),
 		Fval:  uint16(21),
 	},
@@ -10382,14 +10751,17 @@ var _lenfix = [512]Tcode{
 		Fval:  uint16(43),
 	},
 	421: {
+		Fop:   uint8(0),
 		Fbits: uint8(8),
 		Fval:  uint16(117),
 	},
 	422: {
+		Fop:   uint8(0),
 		Fbits: uint8(8),
 		Fval:  uint16(53),
 	},
 	423: {
+		Fop:   uint8(0),
 		Fbits: uint8(9),
 		Fval:  uint16(203),
 	},
@@ -10399,30 +10771,37 @@ var _lenfix = [512]Tcode{
 		Fval:  uint16(13),
 	},
 	425: {
+		Fop:   uint8(0),
 		Fbits: uint8(8),
 		Fval:  uint16(101),
 	},
 	426: {
+		Fop:   uint8(0),
 		Fbits: uint8(8),
 		Fval:  uint16(37),
 	},
 	427: {
+		Fop:   uint8(0),
 		Fbits: uint8(9),
 		Fval:  uint16(171),
 	},
 	428: {
+		Fop:   uint8(0),
 		Fbits: uint8(8),
 		Fval:  uint16(5),
 	},
 	429: {
+		Fop:   uint8(0),
 		Fbits: uint8(8),
 		Fval:  uint16(133),
 	},
 	430: {
+		Fop:   uint8(0),
 		Fbits: uint8(8),
 		Fval:  uint16(69),
 	},
 	431: {
+		Fop:   uint8(0),
 		Fbits: uint8(9),
 		Fval:  uint16(235),
 	},
@@ -10432,14 +10811,17 @@ var _lenfix = [512]Tcode{
 		Fval:  uint16(8),
 	},
 	433: {
+		Fop:   uint8(0),
 		Fbits: uint8(8),
 		Fval:  uint16(93),
 	},
 	434: {
+		Fop:   uint8(0),
 		Fbits: uint8(8),
 		Fval:  uint16(29),
 	},
 	435: {
+		Fop:   uint8(0),
 		Fbits: uint8(9),
 		Fval:  uint16(155),
 	},
@@ -10449,14 +10831,17 @@ var _lenfix = [512]Tcode{
 		Fval:  uint16(83),
 	},
 	437: {
+		Fop:   uint8(0),
 		Fbits: uint8(8),
 		Fval:  uint16(125),
 	},
 	438: {
+		Fop:   uint8(0),
 		Fbits: uint8(8),
 		Fval:  uint16(61),
 	},
 	439: {
+		Fop:   uint8(0),
 		Fbits: uint8(9),
 		Fval:  uint16(219),
 	},
@@ -10466,30 +10851,37 @@ var _lenfix = [512]Tcode{
 		Fval:  uint16(23),
 	},
 	441: {
+		Fop:   uint8(0),
 		Fbits: uint8(8),
 		Fval:  uint16(109),
 	},
 	442: {
+		Fop:   uint8(0),
 		Fbits: uint8(8),
 		Fval:  uint16(45),
 	},
 	443: {
+		Fop:   uint8(0),
 		Fbits: uint8(9),
 		Fval:  uint16(187),
 	},
 	444: {
+		Fop:   uint8(0),
 		Fbits: uint8(8),
 		Fval:  uint16(13),
 	},
 	445: {
+		Fop:   uint8(0),
 		Fbits: uint8(8),
 		Fval:  uint16(141),
 	},
 	446: {
+		Fop:   uint8(0),
 		Fbits: uint8(8),
 		Fval:  uint16(77),
 	},
 	447: {
+		Fop:   uint8(0),
 		Fbits: uint8(9),
 		Fval:  uint16(251),
 	},
@@ -10499,10 +10891,12 @@ var _lenfix = [512]Tcode{
 		Fval:  uint16(3),
 	},
 	449: {
+		Fop:   uint8(0),
 		Fbits: uint8(8),
 		Fval:  uint16(83),
 	},
 	450: {
+		Fop:   uint8(0),
 		Fbits: uint8(8),
 		Fval:  uint16(19),
 	},
@@ -10517,14 +10911,17 @@ var _lenfix = [512]Tcode{
 		Fval:  uint16(35),
 	},
 	453: {
+		Fop:   uint8(0),
 		Fbits: uint8(8),
 		Fval:  uint16(115),
 	},
 	454: {
+		Fop:   uint8(0),
 		Fbits: uint8(8),
 		Fval:  uint16(51),
 	},
 	455: {
+		Fop:   uint8(0),
 		Fbits: uint8(9),
 		Fval:  uint16(199),
 	},
@@ -10534,30 +10931,37 @@ var _lenfix = [512]Tcode{
 		Fval:  uint16(11),
 	},
 	457: {
+		Fop:   uint8(0),
 		Fbits: uint8(8),
 		Fval:  uint16(99),
 	},
 	458: {
+		Fop:   uint8(0),
 		Fbits: uint8(8),
 		Fval:  uint16(35),
 	},
 	459: {
+		Fop:   uint8(0),
 		Fbits: uint8(9),
 		Fval:  uint16(167),
 	},
 	460: {
+		Fop:   uint8(0),
 		Fbits: uint8(8),
 		Fval:  uint16(3),
 	},
 	461: {
+		Fop:   uint8(0),
 		Fbits: uint8(8),
 		Fval:  uint16(131),
 	},
 	462: {
+		Fop:   uint8(0),
 		Fbits: uint8(8),
 		Fval:  uint16(67),
 	},
 	463: {
+		Fop:   uint8(0),
 		Fbits: uint8(9),
 		Fval:  uint16(231),
 	},
@@ -10567,14 +10971,17 @@ var _lenfix = [512]Tcode{
 		Fval:  uint16(7),
 	},
 	465: {
+		Fop:   uint8(0),
 		Fbits: uint8(8),
 		Fval:  uint16(91),
 	},
 	466: {
+		Fop:   uint8(0),
 		Fbits: uint8(8),
 		Fval:  uint16(27),
 	},
 	467: {
+		Fop:   uint8(0),
 		Fbits: uint8(9),
 		Fval:  uint16(151),
 	},
@@ -10584,14 +10991,17 @@ var _lenfix = [512]Tcode{
 		Fval:  uint16(67),
 	},
 	469: {
+		Fop:   uint8(0),
 		Fbits: uint8(8),
 		Fval:  uint16(123),
 	},
 	470: {
+		Fop:   uint8(0),
 		Fbits: uint8(8),
 		Fval:  uint16(59),
 	},
 	471: {
+		Fop:   uint8(0),
 		Fbits: uint8(9),
 		Fval:  uint16(215),
 	},
@@ -10601,30 +11011,37 @@ var _lenfix = [512]Tcode{
 		Fval:  uint16(19),
 	},
 	473: {
+		Fop:   uint8(0),
 		Fbits: uint8(8),
 		Fval:  uint16(107),
 	},
 	474: {
+		Fop:   uint8(0),
 		Fbits: uint8(8),
 		Fval:  uint16(43),
 	},
 	475: {
+		Fop:   uint8(0),
 		Fbits: uint8(9),
 		Fval:  uint16(183),
 	},
 	476: {
+		Fop:   uint8(0),
 		Fbits: uint8(8),
 		Fval:  uint16(11),
 	},
 	477: {
+		Fop:   uint8(0),
 		Fbits: uint8(8),
 		Fval:  uint16(139),
 	},
 	478: {
+		Fop:   uint8(0),
 		Fbits: uint8(8),
 		Fval:  uint16(75),
 	},
 	479: {
+		Fop:   uint8(0),
 		Fbits: uint8(9),
 		Fval:  uint16(247),
 	},
@@ -10634,16 +11051,19 @@ var _lenfix = [512]Tcode{
 		Fval:  uint16(5),
 	},
 	481: {
+		Fop:   uint8(0),
 		Fbits: uint8(8),
 		Fval:  uint16(87),
 	},
 	482: {
+		Fop:   uint8(0),
 		Fbits: uint8(8),
 		Fval:  uint16(23),
 	},
 	483: {
 		Fop:   uint8(64),
 		Fbits: uint8(8),
+		Fval:  uint16(0),
 	},
 	484: {
 		Fop:   uint8(19),
@@ -10651,14 +11071,17 @@ var _lenfix = [512]Tcode{
 		Fval:  uint16(51),
 	},
 	485: {
+		Fop:   uint8(0),
 		Fbits: uint8(8),
 		Fval:  uint16(119),
 	},
 	486: {
+		Fop:   uint8(0),
 		Fbits: uint8(8),
 		Fval:  uint16(55),
 	},
 	487: {
+		Fop:   uint8(0),
 		Fbits: uint8(9),
 		Fval:  uint16(207),
 	},
@@ -10668,30 +11091,37 @@ var _lenfix = [512]Tcode{
 		Fval:  uint16(15),
 	},
 	489: {
+		Fop:   uint8(0),
 		Fbits: uint8(8),
 		Fval:  uint16(103),
 	},
 	490: {
+		Fop:   uint8(0),
 		Fbits: uint8(8),
 		Fval:  uint16(39),
 	},
 	491: {
+		Fop:   uint8(0),
 		Fbits: uint8(9),
 		Fval:  uint16(175),
 	},
 	492: {
+		Fop:   uint8(0),
 		Fbits: uint8(8),
 		Fval:  uint16(7),
 	},
 	493: {
+		Fop:   uint8(0),
 		Fbits: uint8(8),
 		Fval:  uint16(135),
 	},
 	494: {
+		Fop:   uint8(0),
 		Fbits: uint8(8),
 		Fval:  uint16(71),
 	},
 	495: {
+		Fop:   uint8(0),
 		Fbits: uint8(9),
 		Fval:  uint16(239),
 	},
@@ -10701,14 +11131,17 @@ var _lenfix = [512]Tcode{
 		Fval:  uint16(9),
 	},
 	497: {
+		Fop:   uint8(0),
 		Fbits: uint8(8),
 		Fval:  uint16(95),
 	},
 	498: {
+		Fop:   uint8(0),
 		Fbits: uint8(8),
 		Fval:  uint16(31),
 	},
 	499: {
+		Fop:   uint8(0),
 		Fbits: uint8(9),
 		Fval:  uint16(159),
 	},
@@ -10718,14 +11151,17 @@ var _lenfix = [512]Tcode{
 		Fval:  uint16(99),
 	},
 	501: {
+		Fop:   uint8(0),
 		Fbits: uint8(8),
 		Fval:  uint16(127),
 	},
 	502: {
+		Fop:   uint8(0),
 		Fbits: uint8(8),
 		Fval:  uint16(63),
 	},
 	503: {
+		Fop:   uint8(0),
 		Fbits: uint8(9),
 		Fval:  uint16(223),
 	},
@@ -10735,30 +11171,37 @@ var _lenfix = [512]Tcode{
 		Fval:  uint16(27),
 	},
 	505: {
+		Fop:   uint8(0),
 		Fbits: uint8(8),
 		Fval:  uint16(111),
 	},
 	506: {
+		Fop:   uint8(0),
 		Fbits: uint8(8),
 		Fval:  uint16(47),
 	},
 	507: {
+		Fop:   uint8(0),
 		Fbits: uint8(9),
 		Fval:  uint16(191),
 	},
 	508: {
+		Fop:   uint8(0),
 		Fbits: uint8(8),
 		Fval:  uint16(15),
 	},
 	509: {
+		Fop:   uint8(0),
 		Fbits: uint8(8),
 		Fval:  uint16(143),
 	},
 	510: {
+		Fop:   uint8(0),
 		Fbits: uint8(8),
 		Fval:  uint16(79),
 	},
 	511: {
+		Fop:   uint8(0),
 		Fbits: uint8(9),
 		Fval:  uint16(255),
 	},
@@ -10843,6 +11286,7 @@ var _distfix = [32]Tcode{
 	15: {
 		Fop:   uint8(64),
 		Fbits: uint8(5),
+		Fval:  uint16(0),
 	},
 	16: {
 		Fop:   uint8(16),
@@ -10922,6 +11366,7 @@ var _distfix = [32]Tcode{
 	31: {
 		Fop:   uint8(64),
 		Fbits: uint8(5),
+		Fval:  uint16(0),
 	},
 }
 
@@ -11652,6 +12097,7 @@ var _order = [19]uint16{
 	0:  uint16(16),
 	1:  uint16(17),
 	2:  uint16(18),
+	3:  uint16(0),
 	4:  uint16(8),
 	5:  uint16(7),
 	6:  uint16(9),
@@ -12208,12 +12654,15 @@ var _lenfix1 = [512]Tcode{
 	0: {
 		Fop:   uint8(96),
 		Fbits: uint8(7),
+		Fval:  uint16(0),
 	},
 	1: {
+		Fop:   uint8(0),
 		Fbits: uint8(8),
 		Fval:  uint16(80),
 	},
 	2: {
+		Fop:   uint8(0),
 		Fbits: uint8(8),
 		Fval:  uint16(16),
 	},
@@ -12228,14 +12677,17 @@ var _lenfix1 = [512]Tcode{
 		Fval:  uint16(31),
 	},
 	5: {
+		Fop:   uint8(0),
 		Fbits: uint8(8),
 		Fval:  uint16(112),
 	},
 	6: {
+		Fop:   uint8(0),
 		Fbits: uint8(8),
 		Fval:  uint16(48),
 	},
 	7: {
+		Fop:   uint8(0),
 		Fbits: uint8(9),
 		Fval:  uint16(192),
 	},
@@ -12245,29 +12697,37 @@ var _lenfix1 = [512]Tcode{
 		Fval:  uint16(10),
 	},
 	9: {
+		Fop:   uint8(0),
 		Fbits: uint8(8),
 		Fval:  uint16(96),
 	},
 	10: {
+		Fop:   uint8(0),
 		Fbits: uint8(8),
 		Fval:  uint16(32),
 	},
 	11: {
+		Fop:   uint8(0),
 		Fbits: uint8(9),
 		Fval:  uint16(160),
 	},
 	12: {
+		Fop:   uint8(0),
 		Fbits: uint8(8),
+		Fval:  uint16(0),
 	},
 	13: {
+		Fop:   uint8(0),
 		Fbits: uint8(8),
 		Fval:  uint16(128),
 	},
 	14: {
+		Fop:   uint8(0),
 		Fbits: uint8(8),
 		Fval:  uint16(64),
 	},
 	15: {
+		Fop:   uint8(0),
 		Fbits: uint8(9),
 		Fval:  uint16(224),
 	},
@@ -12277,14 +12737,17 @@ var _lenfix1 = [512]Tcode{
 		Fval:  uint16(6),
 	},
 	17: {
+		Fop:   uint8(0),
 		Fbits: uint8(8),
 		Fval:  uint16(88),
 	},
 	18: {
+		Fop:   uint8(0),
 		Fbits: uint8(8),
 		Fval:  uint16(24),
 	},
 	19: {
+		Fop:   uint8(0),
 		Fbits: uint8(9),
 		Fval:  uint16(144),
 	},
@@ -12294,14 +12757,17 @@ var _lenfix1 = [512]Tcode{
 		Fval:  uint16(59),
 	},
 	21: {
+		Fop:   uint8(0),
 		Fbits: uint8(8),
 		Fval:  uint16(120),
 	},
 	22: {
+		Fop:   uint8(0),
 		Fbits: uint8(8),
 		Fval:  uint16(56),
 	},
 	23: {
+		Fop:   uint8(0),
 		Fbits: uint8(9),
 		Fval:  uint16(208),
 	},
@@ -12311,30 +12777,37 @@ var _lenfix1 = [512]Tcode{
 		Fval:  uint16(17),
 	},
 	25: {
+		Fop:   uint8(0),
 		Fbits: uint8(8),
 		Fval:  uint16(104),
 	},
 	26: {
+		Fop:   uint8(0),
 		Fbits: uint8(8),
 		Fval:  uint16(40),
 	},
 	27: {
+		Fop:   uint8(0),
 		Fbits: uint8(9),
 		Fval:  uint16(176),
 	},
 	28: {
+		Fop:   uint8(0),
 		Fbits: uint8(8),
 		Fval:  uint16(8),
 	},
 	29: {
+		Fop:   uint8(0),
 		Fbits: uint8(8),
 		Fval:  uint16(136),
 	},
 	30: {
+		Fop:   uint8(0),
 		Fbits: uint8(8),
 		Fval:  uint16(72),
 	},
 	31: {
+		Fop:   uint8(0),
 		Fbits: uint8(9),
 		Fval:  uint16(240),
 	},
@@ -12344,10 +12817,12 @@ var _lenfix1 = [512]Tcode{
 		Fval:  uint16(4),
 	},
 	33: {
+		Fop:   uint8(0),
 		Fbits: uint8(8),
 		Fval:  uint16(84),
 	},
 	34: {
+		Fop:   uint8(0),
 		Fbits: uint8(8),
 		Fval:  uint16(20),
 	},
@@ -12362,14 +12837,17 @@ var _lenfix1 = [512]Tcode{
 		Fval:  uint16(43),
 	},
 	37: {
+		Fop:   uint8(0),
 		Fbits: uint8(8),
 		Fval:  uint16(116),
 	},
 	38: {
+		Fop:   uint8(0),
 		Fbits: uint8(8),
 		Fval:  uint16(52),
 	},
 	39: {
+		Fop:   uint8(0),
 		Fbits: uint8(9),
 		Fval:  uint16(200),
 	},
@@ -12379,30 +12857,37 @@ var _lenfix1 = [512]Tcode{
 		Fval:  uint16(13),
 	},
 	41: {
+		Fop:   uint8(0),
 		Fbits: uint8(8),
 		Fval:  uint16(100),
 	},
 	42: {
+		Fop:   uint8(0),
 		Fbits: uint8(8),
 		Fval:  uint16(36),
 	},
 	43: {
+		Fop:   uint8(0),
 		Fbits: uint8(9),
 		Fval:  uint16(168),
 	},
 	44: {
+		Fop:   uint8(0),
 		Fbits: uint8(8),
 		Fval:  uint16(4),
 	},
 	45: {
+		Fop:   uint8(0),
 		Fbits: uint8(8),
 		Fval:  uint16(132),
 	},
 	46: {
+		Fop:   uint8(0),
 		Fbits: uint8(8),
 		Fval:  uint16(68),
 	},
 	47: {
+		Fop:   uint8(0),
 		Fbits: uint8(9),
 		Fval:  uint16(232),
 	},
@@ -12412,14 +12897,17 @@ var _lenfix1 = [512]Tcode{
 		Fval:  uint16(8),
 	},
 	49: {
+		Fop:   uint8(0),
 		Fbits: uint8(8),
 		Fval:  uint16(92),
 	},
 	50: {
+		Fop:   uint8(0),
 		Fbits: uint8(8),
 		Fval:  uint16(28),
 	},
 	51: {
+		Fop:   uint8(0),
 		Fbits: uint8(9),
 		Fval:  uint16(152),
 	},
@@ -12429,14 +12917,17 @@ var _lenfix1 = [512]Tcode{
 		Fval:  uint16(83),
 	},
 	53: {
+		Fop:   uint8(0),
 		Fbits: uint8(8),
 		Fval:  uint16(124),
 	},
 	54: {
+		Fop:   uint8(0),
 		Fbits: uint8(8),
 		Fval:  uint16(60),
 	},
 	55: {
+		Fop:   uint8(0),
 		Fbits: uint8(9),
 		Fval:  uint16(216),
 	},
@@ -12446,30 +12937,37 @@ var _lenfix1 = [512]Tcode{
 		Fval:  uint16(23),
 	},
 	57: {
+		Fop:   uint8(0),
 		Fbits: uint8(8),
 		Fval:  uint16(108),
 	},
 	58: {
+		Fop:   uint8(0),
 		Fbits: uint8(8),
 		Fval:  uint16(44),
 	},
 	59: {
+		Fop:   uint8(0),
 		Fbits: uint8(9),
 		Fval:  uint16(184),
 	},
 	60: {
+		Fop:   uint8(0),
 		Fbits: uint8(8),
 		Fval:  uint16(12),
 	},
 	61: {
+		Fop:   uint8(0),
 		Fbits: uint8(8),
 		Fval:  uint16(140),
 	},
 	62: {
+		Fop:   uint8(0),
 		Fbits: uint8(8),
 		Fval:  uint16(76),
 	},
 	63: {
+		Fop:   uint8(0),
 		Fbits: uint8(9),
 		Fval:  uint16(248),
 	},
@@ -12479,10 +12977,12 @@ var _lenfix1 = [512]Tcode{
 		Fval:  uint16(3),
 	},
 	65: {
+		Fop:   uint8(0),
 		Fbits: uint8(8),
 		Fval:  uint16(82),
 	},
 	66: {
+		Fop:   uint8(0),
 		Fbits: uint8(8),
 		Fval:  uint16(18),
 	},
@@ -12497,14 +12997,17 @@ var _lenfix1 = [512]Tcode{
 		Fval:  uint16(35),
 	},
 	69: {
+		Fop:   uint8(0),
 		Fbits: uint8(8),
 		Fval:  uint16(114),
 	},
 	70: {
+		Fop:   uint8(0),
 		Fbits: uint8(8),
 		Fval:  uint16(50),
 	},
 	71: {
+		Fop:   uint8(0),
 		Fbits: uint8(9),
 		Fval:  uint16(196),
 	},
@@ -12514,30 +13017,37 @@ var _lenfix1 = [512]Tcode{
 		Fval:  uint16(11),
 	},
 	73: {
+		Fop:   uint8(0),
 		Fbits: uint8(8),
 		Fval:  uint16(98),
 	},
 	74: {
+		Fop:   uint8(0),
 		Fbits: uint8(8),
 		Fval:  uint16(34),
 	},
 	75: {
+		Fop:   uint8(0),
 		Fbits: uint8(9),
 		Fval:  uint16(164),
 	},
 	76: {
+		Fop:   uint8(0),
 		Fbits: uint8(8),
 		Fval:  uint16(2),
 	},
 	77: {
+		Fop:   uint8(0),
 		Fbits: uint8(8),
 		Fval:  uint16(130),
 	},
 	78: {
+		Fop:   uint8(0),
 		Fbits: uint8(8),
 		Fval:  uint16(66),
 	},
 	79: {
+		Fop:   uint8(0),
 		Fbits: uint8(9),
 		Fval:  uint16(228),
 	},
@@ -12547,14 +13057,17 @@ var _lenfix1 = [512]Tcode{
 		Fval:  uint16(7),
 	},
 	81: {
+		Fop:   uint8(0),
 		Fbits: uint8(8),
 		Fval:  uint16(90),
 	},
 	82: {
+		Fop:   uint8(0),
 		Fbits: uint8(8),
 		Fval:  uint16(26),
 	},
 	83: {
+		Fop:   uint8(0),
 		Fbits: uint8(9),
 		Fval:  uint16(148),
 	},
@@ -12564,14 +13077,17 @@ var _lenfix1 = [512]Tcode{
 		Fval:  uint16(67),
 	},
 	85: {
+		Fop:   uint8(0),
 		Fbits: uint8(8),
 		Fval:  uint16(122),
 	},
 	86: {
+		Fop:   uint8(0),
 		Fbits: uint8(8),
 		Fval:  uint16(58),
 	},
 	87: {
+		Fop:   uint8(0),
 		Fbits: uint8(9),
 		Fval:  uint16(212),
 	},
@@ -12581,30 +13097,37 @@ var _lenfix1 = [512]Tcode{
 		Fval:  uint16(19),
 	},
 	89: {
+		Fop:   uint8(0),
 		Fbits: uint8(8),
 		Fval:  uint16(106),
 	},
 	90: {
+		Fop:   uint8(0),
 		Fbits: uint8(8),
 		Fval:  uint16(42),
 	},
 	91: {
+		Fop:   uint8(0),
 		Fbits: uint8(9),
 		Fval:  uint16(180),
 	},
 	92: {
+		Fop:   uint8(0),
 		Fbits: uint8(8),
 		Fval:  uint16(10),
 	},
 	93: {
+		Fop:   uint8(0),
 		Fbits: uint8(8),
 		Fval:  uint16(138),
 	},
 	94: {
+		Fop:   uint8(0),
 		Fbits: uint8(8),
 		Fval:  uint16(74),
 	},
 	95: {
+		Fop:   uint8(0),
 		Fbits: uint8(9),
 		Fval:  uint16(244),
 	},
@@ -12614,16 +13137,19 @@ var _lenfix1 = [512]Tcode{
 		Fval:  uint16(5),
 	},
 	97: {
+		Fop:   uint8(0),
 		Fbits: uint8(8),
 		Fval:  uint16(86),
 	},
 	98: {
+		Fop:   uint8(0),
 		Fbits: uint8(8),
 		Fval:  uint16(22),
 	},
 	99: {
 		Fop:   uint8(64),
 		Fbits: uint8(8),
+		Fval:  uint16(0),
 	},
 	100: {
 		Fop:   uint8(19),
@@ -12631,14 +13157,17 @@ var _lenfix1 = [512]Tcode{
 		Fval:  uint16(51),
 	},
 	101: {
+		Fop:   uint8(0),
 		Fbits: uint8(8),
 		Fval:  uint16(118),
 	},
 	102: {
+		Fop:   uint8(0),
 		Fbits: uint8(8),
 		Fval:  uint16(54),
 	},
 	103: {
+		Fop:   uint8(0),
 		Fbits: uint8(9),
 		Fval:  uint16(204),
 	},
@@ -12648,30 +13177,37 @@ var _lenfix1 = [512]Tcode{
 		Fval:  uint16(15),
 	},
 	105: {
+		Fop:   uint8(0),
 		Fbits: uint8(8),
 		Fval:  uint16(102),
 	},
 	106: {
+		Fop:   uint8(0),
 		Fbits: uint8(8),
 		Fval:  uint16(38),
 	},
 	107: {
+		Fop:   uint8(0),
 		Fbits: uint8(9),
 		Fval:  uint16(172),
 	},
 	108: {
+		Fop:   uint8(0),
 		Fbits: uint8(8),
 		Fval:  uint16(6),
 	},
 	109: {
+		Fop:   uint8(0),
 		Fbits: uint8(8),
 		Fval:  uint16(134),
 	},
 	110: {
+		Fop:   uint8(0),
 		Fbits: uint8(8),
 		Fval:  uint16(70),
 	},
 	111: {
+		Fop:   uint8(0),
 		Fbits: uint8(9),
 		Fval:  uint16(236),
 	},
@@ -12681,14 +13217,17 @@ var _lenfix1 = [512]Tcode{
 		Fval:  uint16(9),
 	},
 	113: {
+		Fop:   uint8(0),
 		Fbits: uint8(8),
 		Fval:  uint16(94),
 	},
 	114: {
+		Fop:   uint8(0),
 		Fbits: uint8(8),
 		Fval:  uint16(30),
 	},
 	115: {
+		Fop:   uint8(0),
 		Fbits: uint8(9),
 		Fval:  uint16(156),
 	},
@@ -12698,14 +13237,17 @@ var _lenfix1 = [512]Tcode{
 		Fval:  uint16(99),
 	},
 	117: {
+		Fop:   uint8(0),
 		Fbits: uint8(8),
 		Fval:  uint16(126),
 	},
 	118: {
+		Fop:   uint8(0),
 		Fbits: uint8(8),
 		Fval:  uint16(62),
 	},
 	119: {
+		Fop:   uint8(0),
 		Fbits: uint8(9),
 		Fval:  uint16(220),
 	},
@@ -12715,42 +13257,52 @@ var _lenfix1 = [512]Tcode{
 		Fval:  uint16(27),
 	},
 	121: {
+		Fop:   uint8(0),
 		Fbits: uint8(8),
 		Fval:  uint16(110),
 	},
 	122: {
+		Fop:   uint8(0),
 		Fbits: uint8(8),
 		Fval:  uint16(46),
 	},
 	123: {
+		Fop:   uint8(0),
 		Fbits: uint8(9),
 		Fval:  uint16(188),
 	},
 	124: {
+		Fop:   uint8(0),
 		Fbits: uint8(8),
 		Fval:  uint16(14),
 	},
 	125: {
+		Fop:   uint8(0),
 		Fbits: uint8(8),
 		Fval:  uint16(142),
 	},
 	126: {
+		Fop:   uint8(0),
 		Fbits: uint8(8),
 		Fval:  uint16(78),
 	},
 	127: {
+		Fop:   uint8(0),
 		Fbits: uint8(9),
 		Fval:  uint16(252),
 	},
 	128: {
 		Fop:   uint8(96),
 		Fbits: uint8(7),
+		Fval:  uint16(0),
 	},
 	129: {
+		Fop:   uint8(0),
 		Fbits: uint8(8),
 		Fval:  uint16(81),
 	},
 	130: {
+		Fop:   uint8(0),
 		Fbits: uint8(8),
 		Fval:  uint16(17),
 	},
@@ -12765,14 +13317,17 @@ var _lenfix1 = [512]Tcode{
 		Fval:  uint16(31),
 	},
 	133: {
+		Fop:   uint8(0),
 		Fbits: uint8(8),
 		Fval:  uint16(113),
 	},
 	134: {
+		Fop:   uint8(0),
 		Fbits: uint8(8),
 		Fval:  uint16(49),
 	},
 	135: {
+		Fop:   uint8(0),
 		Fbits: uint8(9),
 		Fval:  uint16(194),
 	},
@@ -12782,30 +13337,37 @@ var _lenfix1 = [512]Tcode{
 		Fval:  uint16(10),
 	},
 	137: {
+		Fop:   uint8(0),
 		Fbits: uint8(8),
 		Fval:  uint16(97),
 	},
 	138: {
+		Fop:   uint8(0),
 		Fbits: uint8(8),
 		Fval:  uint16(33),
 	},
 	139: {
+		Fop:   uint8(0),
 		Fbits: uint8(9),
 		Fval:  uint16(162),
 	},
 	140: {
+		Fop:   uint8(0),
 		Fbits: uint8(8),
 		Fval:  uint16(1),
 	},
 	141: {
+		Fop:   uint8(0),
 		Fbits: uint8(8),
 		Fval:  uint16(129),
 	},
 	142: {
+		Fop:   uint8(0),
 		Fbits: uint8(8),
 		Fval:  uint16(65),
 	},
 	143: {
+		Fop:   uint8(0),
 		Fbits: uint8(9),
 		Fval:  uint16(226),
 	},
@@ -12815,14 +13377,17 @@ var _lenfix1 = [512]Tcode{
 		Fval:  uint16(6),
 	},
 	145: {
+		Fop:   uint8(0),
 		Fbits: uint8(8),
 		Fval:  uint16(89),
 	},
 	146: {
+		Fop:   uint8(0),
 		Fbits: uint8(8),
 		Fval:  uint16(25),
 	},
 	147: {
+		Fop:   uint8(0),
 		Fbits: uint8(9),
 		Fval:  uint16(146),
 	},
@@ -12832,14 +13397,17 @@ var _lenfix1 = [512]Tcode{
 		Fval:  uint16(59),
 	},
 	149: {
+		Fop:   uint8(0),
 		Fbits: uint8(8),
 		Fval:  uint16(121),
 	},
 	150: {
+		Fop:   uint8(0),
 		Fbits: uint8(8),
 		Fval:  uint16(57),
 	},
 	151: {
+		Fop:   uint8(0),
 		Fbits: uint8(9),
 		Fval:  uint16(210),
 	},
@@ -12849,30 +13417,37 @@ var _lenfix1 = [512]Tcode{
 		Fval:  uint16(17),
 	},
 	153: {
+		Fop:   uint8(0),
 		Fbits: uint8(8),
 		Fval:  uint16(105),
 	},
 	154: {
+		Fop:   uint8(0),
 		Fbits: uint8(8),
 		Fval:  uint16(41),
 	},
 	155: {
+		Fop:   uint8(0),
 		Fbits: uint8(9),
 		Fval:  uint16(178),
 	},
 	156: {
+		Fop:   uint8(0),
 		Fbits: uint8(8),
 		Fval:  uint16(9),
 	},
 	157: {
+		Fop:   uint8(0),
 		Fbits: uint8(8),
 		Fval:  uint16(137),
 	},
 	158: {
+		Fop:   uint8(0),
 		Fbits: uint8(8),
 		Fval:  uint16(73),
 	},
 	159: {
+		Fop:   uint8(0),
 		Fbits: uint8(9),
 		Fval:  uint16(242),
 	},
@@ -12882,10 +13457,12 @@ var _lenfix1 = [512]Tcode{
 		Fval:  uint16(4),
 	},
 	161: {
+		Fop:   uint8(0),
 		Fbits: uint8(8),
 		Fval:  uint16(85),
 	},
 	162: {
+		Fop:   uint8(0),
 		Fbits: uint8(8),
 		Fval:  uint16(21),
 	},
@@ -12900,14 +13477,17 @@ var _lenfix1 = [512]Tcode{
 		Fval:  uint16(43),
 	},
 	165: {
+		Fop:   uint8(0),
 		Fbits: uint8(8),
 		Fval:  uint16(117),
 	},
 	166: {
+		Fop:   uint8(0),
 		Fbits: uint8(8),
 		Fval:  uint16(53),
 	},
 	167: {
+		Fop:   uint8(0),
 		Fbits: uint8(9),
 		Fval:  uint16(202),
 	},
@@ -12917,30 +13497,37 @@ var _lenfix1 = [512]Tcode{
 		Fval:  uint16(13),
 	},
 	169: {
+		Fop:   uint8(0),
 		Fbits: uint8(8),
 		Fval:  uint16(101),
 	},
 	170: {
+		Fop:   uint8(0),
 		Fbits: uint8(8),
 		Fval:  uint16(37),
 	},
 	171: {
+		Fop:   uint8(0),
 		Fbits: uint8(9),
 		Fval:  uint16(170),
 	},
 	172: {
+		Fop:   uint8(0),
 		Fbits: uint8(8),
 		Fval:  uint16(5),
 	},
 	173: {
+		Fop:   uint8(0),
 		Fbits: uint8(8),
 		Fval:  uint16(133),
 	},
 	174: {
+		Fop:   uint8(0),
 		Fbits: uint8(8),
 		Fval:  uint16(69),
 	},
 	175: {
+		Fop:   uint8(0),
 		Fbits: uint8(9),
 		Fval:  uint16(234),
 	},
@@ -12950,14 +13537,17 @@ var _lenfix1 = [512]Tcode{
 		Fval:  uint16(8),
 	},
 	177: {
+		Fop:   uint8(0),
 		Fbits: uint8(8),
 		Fval:  uint16(93),
 	},
 	178: {
+		Fop:   uint8(0),
 		Fbits: uint8(8),
 		Fval:  uint16(29),
 	},
 	179: {
+		Fop:   uint8(0),
 		Fbits: uint8(9),
 		Fval:  uint16(154),
 	},
@@ -12967,14 +13557,17 @@ var _lenfix1 = [512]Tcode{
 		Fval:  uint16(83),
 	},
 	181: {
+		Fop:   uint8(0),
 		Fbits: uint8(8),
 		Fval:  uint16(125),
 	},
 	182: {
+		Fop:   uint8(0),
 		Fbits: uint8(8),
 		Fval:  uint16(61),
 	},
 	183: {
+		Fop:   uint8(0),
 		Fbits: uint8(9),
 		Fval:  uint16(218),
 	},
@@ -12984,30 +13577,37 @@ var _lenfix1 = [512]Tcode{
 		Fval:  uint16(23),
 	},
 	185: {
+		Fop:   uint8(0),
 		Fbits: uint8(8),
 		Fval:  uint16(109),
 	},
 	186: {
+		Fop:   uint8(0),
 		Fbits: uint8(8),
 		Fval:  uint16(45),
 	},
 	187: {
+		Fop:   uint8(0),
 		Fbits: uint8(9),
 		Fval:  uint16(186),
 	},
 	188: {
+		Fop:   uint8(0),
 		Fbits: uint8(8),
 		Fval:  uint16(13),
 	},
 	189: {
+		Fop:   uint8(0),
 		Fbits: uint8(8),
 		Fval:  uint16(141),
 	},
 	190: {
+		Fop:   uint8(0),
 		Fbits: uint8(8),
 		Fval:  uint16(77),
 	},
 	191: {
+		Fop:   uint8(0),
 		Fbits: uint8(9),
 		Fval:  uint16(250),
 	},
@@ -13017,10 +13617,12 @@ var _lenfix1 = [512]Tcode{
 		Fval:  uint16(3),
 	},
 	193: {
+		Fop:   uint8(0),
 		Fbits: uint8(8),
 		Fval:  uint16(83),
 	},
 	194: {
+		Fop:   uint8(0),
 		Fbits: uint8(8),
 		Fval:  uint16(19),
 	},
@@ -13035,14 +13637,17 @@ var _lenfix1 = [512]Tcode{
 		Fval:  uint16(35),
 	},
 	197: {
+		Fop:   uint8(0),
 		Fbits: uint8(8),
 		Fval:  uint16(115),
 	},
 	198: {
+		Fop:   uint8(0),
 		Fbits: uint8(8),
 		Fval:  uint16(51),
 	},
 	199: {
+		Fop:   uint8(0),
 		Fbits: uint8(9),
 		Fval:  uint16(198),
 	},
@@ -13052,30 +13657,37 @@ var _lenfix1 = [512]Tcode{
 		Fval:  uint16(11),
 	},
 	201: {
+		Fop:   uint8(0),
 		Fbits: uint8(8),
 		Fval:  uint16(99),
 	},
 	202: {
+		Fop:   uint8(0),
 		Fbits: uint8(8),
 		Fval:  uint16(35),
 	},
 	203: {
+		Fop:   uint8(0),
 		Fbits: uint8(9),
 		Fval:  uint16(166),
 	},
 	204: {
+		Fop:   uint8(0),
 		Fbits: uint8(8),
 		Fval:  uint16(3),
 	},
 	205: {
+		Fop:   uint8(0),
 		Fbits: uint8(8),
 		Fval:  uint16(131),
 	},
 	206: {
+		Fop:   uint8(0),
 		Fbits: uint8(8),
 		Fval:  uint16(67),
 	},
 	207: {
+		Fop:   uint8(0),
 		Fbits: uint8(9),
 		Fval:  uint16(230),
 	},
@@ -13085,14 +13697,17 @@ var _lenfix1 = [512]Tcode{
 		Fval:  uint16(7),
 	},
 	209: {
+		Fop:   uint8(0),
 		Fbits: uint8(8),
 		Fval:  uint16(91),
 	},
 	210: {
+		Fop:   uint8(0),
 		Fbits: uint8(8),
 		Fval:  uint16(27),
 	},
 	211: {
+		Fop:   uint8(0),
 		Fbits: uint8(9),
 		Fval:  uint16(150),
 	},
@@ -13102,14 +13717,17 @@ var _lenfix1 = [512]Tcode{
 		Fval:  uint16(67),
 	},
 	213: {
+		Fop:   uint8(0),
 		Fbits: uint8(8),
 		Fval:  uint16(123),
 	},
 	214: {
+		Fop:   uint8(0),
 		Fbits: uint8(8),
 		Fval:  uint16(59),
 	},
 	215: {
+		Fop:   uint8(0),
 		Fbits: uint8(9),
 		Fval:  uint16(214),
 	},
@@ -13119,30 +13737,37 @@ var _lenfix1 = [512]Tcode{
 		Fval:  uint16(19),
 	},
 	217: {
+		Fop:   uint8(0),
 		Fbits: uint8(8),
 		Fval:  uint16(107),
 	},
 	218: {
+		Fop:   uint8(0),
 		Fbits: uint8(8),
 		Fval:  uint16(43),
 	},
 	219: {
+		Fop:   uint8(0),
 		Fbits: uint8(9),
 		Fval:  uint16(182),
 	},
 	220: {
+		Fop:   uint8(0),
 		Fbits: uint8(8),
 		Fval:  uint16(11),
 	},
 	221: {
+		Fop:   uint8(0),
 		Fbits: uint8(8),
 		Fval:  uint16(139),
 	},
 	222: {
+		Fop:   uint8(0),
 		Fbits: uint8(8),
 		Fval:  uint16(75),
 	},
 	223: {
+		Fop:   uint8(0),
 		Fbits: uint8(9),
 		Fval:  uint16(246),
 	},
@@ -13152,16 +13777,19 @@ var _lenfix1 = [512]Tcode{
 		Fval:  uint16(5),
 	},
 	225: {
+		Fop:   uint8(0),
 		Fbits: uint8(8),
 		Fval:  uint16(87),
 	},
 	226: {
+		Fop:   uint8(0),
 		Fbits: uint8(8),
 		Fval:  uint16(23),
 	},
 	227: {
 		Fop:   uint8(64),
 		Fbits: uint8(8),
+		Fval:  uint16(0),
 	},
 	228: {
 		Fop:   uint8(19),
@@ -13169,14 +13797,17 @@ var _lenfix1 = [512]Tcode{
 		Fval:  uint16(51),
 	},
 	229: {
+		Fop:   uint8(0),
 		Fbits: uint8(8),
 		Fval:  uint16(119),
 	},
 	230: {
+		Fop:   uint8(0),
 		Fbits: uint8(8),
 		Fval:  uint16(55),
 	},
 	231: {
+		Fop:   uint8(0),
 		Fbits: uint8(9),
 		Fval:  uint16(206),
 	},
@@ -13186,30 +13817,37 @@ var _lenfix1 = [512]Tcode{
 		Fval:  uint16(15),
 	},
 	233: {
+		Fop:   uint8(0),
 		Fbits: uint8(8),
 		Fval:  uint16(103),
 	},
 	234: {
+		Fop:   uint8(0),
 		Fbits: uint8(8),
 		Fval:  uint16(39),
 	},
 	235: {
+		Fop:   uint8(0),
 		Fbits: uint8(9),
 		Fval:  uint16(174),
 	},
 	236: {
+		Fop:   uint8(0),
 		Fbits: uint8(8),
 		Fval:  uint16(7),
 	},
 	237: {
+		Fop:   uint8(0),
 		Fbits: uint8(8),
 		Fval:  uint16(135),
 	},
 	238: {
+		Fop:   uint8(0),
 		Fbits: uint8(8),
 		Fval:  uint16(71),
 	},
 	239: {
+		Fop:   uint8(0),
 		Fbits: uint8(9),
 		Fval:  uint16(238),
 	},
@@ -13219,14 +13857,17 @@ var _lenfix1 = [512]Tcode{
 		Fval:  uint16(9),
 	},
 	241: {
+		Fop:   uint8(0),
 		Fbits: uint8(8),
 		Fval:  uint16(95),
 	},
 	242: {
+		Fop:   uint8(0),
 		Fbits: uint8(8),
 		Fval:  uint16(31),
 	},
 	243: {
+		Fop:   uint8(0),
 		Fbits: uint8(9),
 		Fval:  uint16(158),
 	},
@@ -13236,14 +13877,17 @@ var _lenfix1 = [512]Tcode{
 		Fval:  uint16(99),
 	},
 	245: {
+		Fop:   uint8(0),
 		Fbits: uint8(8),
 		Fval:  uint16(127),
 	},
 	246: {
+		Fop:   uint8(0),
 		Fbits: uint8(8),
 		Fval:  uint16(63),
 	},
 	247: {
+		Fop:   uint8(0),
 		Fbits: uint8(9),
 		Fval:  uint16(222),
 	},
@@ -13253,42 +13897,52 @@ var _lenfix1 = [512]Tcode{
 		Fval:  uint16(27),
 	},
 	249: {
+		Fop:   uint8(0),
 		Fbits: uint8(8),
 		Fval:  uint16(111),
 	},
 	250: {
+		Fop:   uint8(0),
 		Fbits: uint8(8),
 		Fval:  uint16(47),
 	},
 	251: {
+		Fop:   uint8(0),
 		Fbits: uint8(9),
 		Fval:  uint16(190),
 	},
 	252: {
+		Fop:   uint8(0),
 		Fbits: uint8(8),
 		Fval:  uint16(15),
 	},
 	253: {
+		Fop:   uint8(0),
 		Fbits: uint8(8),
 		Fval:  uint16(143),
 	},
 	254: {
+		Fop:   uint8(0),
 		Fbits: uint8(8),
 		Fval:  uint16(79),
 	},
 	255: {
+		Fop:   uint8(0),
 		Fbits: uint8(9),
 		Fval:  uint16(254),
 	},
 	256: {
 		Fop:   uint8(96),
 		Fbits: uint8(7),
+		Fval:  uint16(0),
 	},
 	257: {
+		Fop:   uint8(0),
 		Fbits: uint8(8),
 		Fval:  uint16(80),
 	},
 	258: {
+		Fop:   uint8(0),
 		Fbits: uint8(8),
 		Fval:  uint16(16),
 	},
@@ -13303,14 +13957,17 @@ var _lenfix1 = [512]Tcode{
 		Fval:  uint16(31),
 	},
 	261: {
+		Fop:   uint8(0),
 		Fbits: uint8(8),
 		Fval:  uint16(112),
 	},
 	262: {
+		Fop:   uint8(0),
 		Fbits: uint8(8),
 		Fval:  uint16(48),
 	},
 	263: {
+		Fop:   uint8(0),
 		Fbits: uint8(9),
 		Fval:  uint16(193),
 	},
@@ -13320,29 +13977,37 @@ var _lenfix1 = [512]Tcode{
 		Fval:  uint16(10),
 	},
 	265: {
+		Fop:   uint8(0),
 		Fbits: uint8(8),
 		Fval:  uint16(96),
 	},
 	266: {
+		Fop:   uint8(0),
 		Fbits: uint8(8),
 		Fval:  uint16(32),
 	},
 	267: {
+		Fop:   uint8(0),
 		Fbits: uint8(9),
 		Fval:  uint16(161),
 	},
 	268: {
+		Fop:   uint8(0),
 		Fbits: uint8(8),
+		Fval:  uint16(0),
 	},
 	269: {
+		Fop:   uint8(0),
 		Fbits: uint8(8),
 		Fval:  uint16(128),
 	},
 	270: {
+		Fop:   uint8(0),
 		Fbits: uint8(8),
 		Fval:  uint16(64),
 	},
 	271: {
+		Fop:   uint8(0),
 		Fbits: uint8(9),
 		Fval:  uint16(225),
 	},
@@ -13352,14 +14017,17 @@ var _lenfix1 = [512]Tcode{
 		Fval:  uint16(6),
 	},
 	273: {
+		Fop:   uint8(0),
 		Fbits: uint8(8),
 		Fval:  uint16(88),
 	},
 	274: {
+		Fop:   uint8(0),
 		Fbits: uint8(8),
 		Fval:  uint16(24),
 	},
 	275: {
+		Fop:   uint8(0),
 		Fbits: uint8(9),
 		Fval:  uint16(145),
 	},
@@ -13369,14 +14037,17 @@ var _lenfix1 = [512]Tcode{
 		Fval:  uint16(59),
 	},
 	277: {
+		Fop:   uint8(0),
 		Fbits: uint8(8),
 		Fval:  uint16(120),
 	},
 	278: {
+		Fop:   uint8(0),
 		Fbits: uint8(8),
 		Fval:  uint16(56),
 	},
 	279: {
+		Fop:   uint8(0),
 		Fbits: uint8(9),
 		Fval:  uint16(209),
 	},
@@ -13386,30 +14057,37 @@ var _lenfix1 = [512]Tcode{
 		Fval:  uint16(17),
 	},
 	281: {
+		Fop:   uint8(0),
 		Fbits: uint8(8),
 		Fval:  uint16(104),
 	},
 	282: {
+		Fop:   uint8(0),
 		Fbits: uint8(8),
 		Fval:  uint16(40),
 	},
 	283: {
+		Fop:   uint8(0),
 		Fbits: uint8(9),
 		Fval:  uint16(177),
 	},
 	284: {
+		Fop:   uint8(0),
 		Fbits: uint8(8),
 		Fval:  uint16(8),
 	},
 	285: {
+		Fop:   uint8(0),
 		Fbits: uint8(8),
 		Fval:  uint16(136),
 	},
 	286: {
+		Fop:   uint8(0),
 		Fbits: uint8(8),
 		Fval:  uint16(72),
 	},
 	287: {
+		Fop:   uint8(0),
 		Fbits: uint8(9),
 		Fval:  uint16(241),
 	},
@@ -13419,10 +14097,12 @@ var _lenfix1 = [512]Tcode{
 		Fval:  uint16(4),
 	},
 	289: {
+		Fop:   uint8(0),
 		Fbits: uint8(8),
 		Fval:  uint16(84),
 	},
 	290: {
+		Fop:   uint8(0),
 		Fbits: uint8(8),
 		Fval:  uint16(20),
 	},
@@ -13437,14 +14117,17 @@ var _lenfix1 = [512]Tcode{
 		Fval:  uint16(43),
 	},
 	293: {
+		Fop:   uint8(0),
 		Fbits: uint8(8),
 		Fval:  uint16(116),
 	},
 	294: {
+		Fop:   uint8(0),
 		Fbits: uint8(8),
 		Fval:  uint16(52),
 	},
 	295: {
+		Fop:   uint8(0),
 		Fbits: uint8(9),
 		Fval:  uint16(201),
 	},
@@ -13454,30 +14137,37 @@ var _lenfix1 = [512]Tcode{
 		Fval:  uint16(13),
 	},
 	297: {
+		Fop:   uint8(0),
 		Fbits: uint8(8),
 		Fval:  uint16(100),
 	},
 	298: {
+		Fop:   uint8(0),
 		Fbits: uint8(8),
 		Fval:  uint16(36),
 	},
 	299: {
+		Fop:   uint8(0),
 		Fbits: uint8(9),
 		Fval:  uint16(169),
 	},
 	300: {
+		Fop:   uint8(0),
 		Fbits: uint8(8),
 		Fval:  uint16(4),
 	},
 	301: {
+		Fop:   uint8(0),
 		Fbits: uint8(8),
 		Fval:  uint16(132),
 	},
 	302: {
+		Fop:   uint8(0),
 		Fbits: uint8(8),
 		Fval:  uint16(68),
 	},
 	303: {
+		Fop:   uint8(0),
 		Fbits: uint8(9),
 		Fval:  uint16(233),
 	},
@@ -13487,14 +14177,17 @@ var _lenfix1 = [512]Tcode{
 		Fval:  uint16(8),
 	},
 	305: {
+		Fop:   uint8(0),
 		Fbits: uint8(8),
 		Fval:  uint16(92),
 	},
 	306: {
+		Fop:   uint8(0),
 		Fbits: uint8(8),
 		Fval:  uint16(28),
 	},
 	307: {
+		Fop:   uint8(0),
 		Fbits: uint8(9),
 		Fval:  uint16(153),
 	},
@@ -13504,14 +14197,17 @@ var _lenfix1 = [512]Tcode{
 		Fval:  uint16(83),
 	},
 	309: {
+		Fop:   uint8(0),
 		Fbits: uint8(8),
 		Fval:  uint16(124),
 	},
 	310: {
+		Fop:   uint8(0),
 		Fbits: uint8(8),
 		Fval:  uint16(60),
 	},
 	311: {
+		Fop:   uint8(0),
 		Fbits: uint8(9),
 		Fval:  uint16(217),
 	},
@@ -13521,30 +14217,37 @@ var _lenfix1 = [512]Tcode{
 		Fval:  uint16(23),
 	},
 	313: {
+		Fop:   uint8(0),
 		Fbits: uint8(8),
 		Fval:  uint16(108),
 	},
 	314: {
+		Fop:   uint8(0),
 		Fbits: uint8(8),
 		Fval:  uint16(44),
 	},
 	315: {
+		Fop:   uint8(0),
 		Fbits: uint8(9),
 		Fval:  uint16(185),
 	},
 	316: {
+		Fop:   uint8(0),
 		Fbits: uint8(8),
 		Fval:  uint16(12),
 	},
 	317: {
+		Fop:   uint8(0),
 		Fbits: uint8(8),
 		Fval:  uint16(140),
 	},
 	318: {
+		Fop:   uint8(0),
 		Fbits: uint8(8),
 		Fval:  uint16(76),
 	},
 	319: {
+		Fop:   uint8(0),
 		Fbits: uint8(9),
 		Fval:  uint16(249),
 	},
@@ -13554,10 +14257,12 @@ var _lenfix1 = [512]Tcode{
 		Fval:  uint16(3),
 	},
 	321: {
+		Fop:   uint8(0),
 		Fbits: uint8(8),
 		Fval:  uint16(82),
 	},
 	322: {
+		Fop:   uint8(0),
 		Fbits: uint8(8),
 		Fval:  uint16(18),
 	},
@@ -13572,14 +14277,17 @@ var _lenfix1 = [512]Tcode{
 		Fval:  uint16(35),
 	},
 	325: {
+		Fop:   uint8(0),
 		Fbits: uint8(8),
 		Fval:  uint16(114),
 	},
 	326: {
+		Fop:   uint8(0),
 		Fbits: uint8(8),
 		Fval:  uint16(50),
 	},
 	327: {
+		Fop:   uint8(0),
 		Fbits: uint8(9),
 		Fval:  uint16(197),
 	},
@@ -13589,30 +14297,37 @@ var _lenfix1 = [512]Tcode{
 		Fval:  uint16(11),
 	},
 	329: {
+		Fop:   uint8(0),
 		Fbits: uint8(8),
 		Fval:  uint16(98),
 	},
 	330: {
+		Fop:   uint8(0),
 		Fbits: uint8(8),
 		Fval:  uint16(34),
 	},
 	331: {
+		Fop:   uint8(0),
 		Fbits: uint8(9),
 		Fval:  uint16(165),
 	},
 	332: {
+		Fop:   uint8(0),
 		Fbits: uint8(8),
 		Fval:  uint16(2),
 	},
 	333: {
+		Fop:   uint8(0),
 		Fbits: uint8(8),
 		Fval:  uint16(130),
 	},
 	334: {
+		Fop:   uint8(0),
 		Fbits: uint8(8),
 		Fval:  uint16(66),
 	},
 	335: {
+		Fop:   uint8(0),
 		Fbits: uint8(9),
 		Fval:  uint16(229),
 	},
@@ -13622,14 +14337,17 @@ var _lenfix1 = [512]Tcode{
 		Fval:  uint16(7),
 	},
 	337: {
+		Fop:   uint8(0),
 		Fbits: uint8(8),
 		Fval:  uint16(90),
 	},
 	338: {
+		Fop:   uint8(0),
 		Fbits: uint8(8),
 		Fval:  uint16(26),
 	},
 	339: {
+		Fop:   uint8(0),
 		Fbits: uint8(9),
 		Fval:  uint16(149),
 	},
@@ -13639,14 +14357,17 @@ var _lenfix1 = [512]Tcode{
 		Fval:  uint16(67),
 	},
 	341: {
+		Fop:   uint8(0),
 		Fbits: uint8(8),
 		Fval:  uint16(122),
 	},
 	342: {
+		Fop:   uint8(0),
 		Fbits: uint8(8),
 		Fval:  uint16(58),
 	},
 	343: {
+		Fop:   uint8(0),
 		Fbits: uint8(9),
 		Fval:  uint16(213),
 	},
@@ -13656,30 +14377,37 @@ var _lenfix1 = [512]Tcode{
 		Fval:  uint16(19),
 	},
 	345: {
+		Fop:   uint8(0),
 		Fbits: uint8(8),
 		Fval:  uint16(106),
 	},
 	346: {
+		Fop:   uint8(0),
 		Fbits: uint8(8),
 		Fval:  uint16(42),
 	},
 	347: {
+		Fop:   uint8(0),
 		Fbits: uint8(9),
 		Fval:  uint16(181),
 	},
 	348: {
+		Fop:   uint8(0),
 		Fbits: uint8(8),
 		Fval:  uint16(10),
 	},
 	349: {
+		Fop:   uint8(0),
 		Fbits: uint8(8),
 		Fval:  uint16(138),
 	},
 	350: {
+		Fop:   uint8(0),
 		Fbits: uint8(8),
 		Fval:  uint16(74),
 	},
 	351: {
+		Fop:   uint8(0),
 		Fbits: uint8(9),
 		Fval:  uint16(245),
 	},
@@ -13689,16 +14417,19 @@ var _lenfix1 = [512]Tcode{
 		Fval:  uint16(5),
 	},
 	353: {
+		Fop:   uint8(0),
 		Fbits: uint8(8),
 		Fval:  uint16(86),
 	},
 	354: {
+		Fop:   uint8(0),
 		Fbits: uint8(8),
 		Fval:  uint16(22),
 	},
 	355: {
 		Fop:   uint8(64),
 		Fbits: uint8(8),
+		Fval:  uint16(0),
 	},
 	356: {
 		Fop:   uint8(19),
@@ -13706,14 +14437,17 @@ var _lenfix1 = [512]Tcode{
 		Fval:  uint16(51),
 	},
 	357: {
+		Fop:   uint8(0),
 		Fbits: uint8(8),
 		Fval:  uint16(118),
 	},
 	358: {
+		Fop:   uint8(0),
 		Fbits: uint8(8),
 		Fval:  uint16(54),
 	},
 	359: {
+		Fop:   uint8(0),
 		Fbits: uint8(9),
 		Fval:  uint16(205),
 	},
@@ -13723,30 +14457,37 @@ var _lenfix1 = [512]Tcode{
 		Fval:  uint16(15),
 	},
 	361: {
+		Fop:   uint8(0),
 		Fbits: uint8(8),
 		Fval:  uint16(102),
 	},
 	362: {
+		Fop:   uint8(0),
 		Fbits: uint8(8),
 		Fval:  uint16(38),
 	},
 	363: {
+		Fop:   uint8(0),
 		Fbits: uint8(9),
 		Fval:  uint16(173),
 	},
 	364: {
+		Fop:   uint8(0),
 		Fbits: uint8(8),
 		Fval:  uint16(6),
 	},
 	365: {
+		Fop:   uint8(0),
 		Fbits: uint8(8),
 		Fval:  uint16(134),
 	},
 	366: {
+		Fop:   uint8(0),
 		Fbits: uint8(8),
 		Fval:  uint16(70),
 	},
 	367: {
+		Fop:   uint8(0),
 		Fbits: uint8(9),
 		Fval:  uint16(237),
 	},
@@ -13756,14 +14497,17 @@ var _lenfix1 = [512]Tcode{
 		Fval:  uint16(9),
 	},
 	369: {
+		Fop:   uint8(0),
 		Fbits: uint8(8),
 		Fval:  uint16(94),
 	},
 	370: {
+		Fop:   uint8(0),
 		Fbits: uint8(8),
 		Fval:  uint16(30),
 	},
 	371: {
+		Fop:   uint8(0),
 		Fbits: uint8(9),
 		Fval:  uint16(157),
 	},
@@ -13773,14 +14517,17 @@ var _lenfix1 = [512]Tcode{
 		Fval:  uint16(99),
 	},
 	373: {
+		Fop:   uint8(0),
 		Fbits: uint8(8),
 		Fval:  uint16(126),
 	},
 	374: {
+		Fop:   uint8(0),
 		Fbits: uint8(8),
 		Fval:  uint16(62),
 	},
 	375: {
+		Fop:   uint8(0),
 		Fbits: uint8(9),
 		Fval:  uint16(221),
 	},
@@ -13790,42 +14537,52 @@ var _lenfix1 = [512]Tcode{
 		Fval:  uint16(27),
 	},
 	377: {
+		Fop:   uint8(0),
 		Fbits: uint8(8),
 		Fval:  uint16(110),
 	},
 	378: {
+		Fop:   uint8(0),
 		Fbits: uint8(8),
 		Fval:  uint16(46),
 	},
 	379: {
+		Fop:   uint8(0),
 		Fbits: uint8(9),
 		Fval:  uint16(189),
 	},
 	380: {
+		Fop:   uint8(0),
 		Fbits: uint8(8),
 		Fval:  uint16(14),
 	},
 	381: {
+		Fop:   uint8(0),
 		Fbits: uint8(8),
 		Fval:  uint16(142),
 	},
 	382: {
+		Fop:   uint8(0),
 		Fbits: uint8(8),
 		Fval:  uint16(78),
 	},
 	383: {
+		Fop:   uint8(0),
 		Fbits: uint8(9),
 		Fval:  uint16(253),
 	},
 	384: {
 		Fop:   uint8(96),
 		Fbits: uint8(7),
+		Fval:  uint16(0),
 	},
 	385: {
+		Fop:   uint8(0),
 		Fbits: uint8(8),
 		Fval:  uint16(81),
 	},
 	386: {
+		Fop:   uint8(0),
 		Fbits: uint8(8),
 		Fval:  uint16(17),
 	},
@@ -13840,14 +14597,17 @@ var _lenfix1 = [512]Tcode{
 		Fval:  uint16(31),
 	},
 	389: {
+		Fop:   uint8(0),
 		Fbits: uint8(8),
 		Fval:  uint16(113),
 	},
 	390: {
+		Fop:   uint8(0),
 		Fbits: uint8(8),
 		Fval:  uint16(49),
 	},
 	391: {
+		Fop:   uint8(0),
 		Fbits: uint8(9),
 		Fval:  uint16(195),
 	},
@@ -13857,30 +14617,37 @@ var _lenfix1 = [512]Tcode{
 		Fval:  uint16(10),
 	},
 	393: {
+		Fop:   uint8(0),
 		Fbits: uint8(8),
 		Fval:  uint16(97),
 	},
 	394: {
+		Fop:   uint8(0),
 		Fbits: uint8(8),
 		Fval:  uint16(33),
 	},
 	395: {
+		Fop:   uint8(0),
 		Fbits: uint8(9),
 		Fval:  uint16(163),
 	},
 	396: {
+		Fop:   uint8(0),
 		Fbits: uint8(8),
 		Fval:  uint16(1),
 	},
 	397: {
+		Fop:   uint8(0),
 		Fbits: uint8(8),
 		Fval:  uint16(129),
 	},
 	398: {
+		Fop:   uint8(0),
 		Fbits: uint8(8),
 		Fval:  uint16(65),
 	},
 	399: {
+		Fop:   uint8(0),
 		Fbits: uint8(9),
 		Fval:  uint16(227),
 	},
@@ -13890,14 +14657,17 @@ var _lenfix1 = [512]Tcode{
 		Fval:  uint16(6),
 	},
 	401: {
+		Fop:   uint8(0),
 		Fbits: uint8(8),
 		Fval:  uint16(89),
 	},
 	402: {
+		Fop:   uint8(0),
 		Fbits: uint8(8),
 		Fval:  uint16(25),
 	},
 	403: {
+		Fop:   uint8(0),
 		Fbits: uint8(9),
 		Fval:  uint16(147),
 	},
@@ -13907,14 +14677,17 @@ var _lenfix1 = [512]Tcode{
 		Fval:  uint16(59),
 	},
 	405: {
+		Fop:   uint8(0),
 		Fbits: uint8(8),
 		Fval:  uint16(121),
 	},
 	406: {
+		Fop:   uint8(0),
 		Fbits: uint8(8),
 		Fval:  uint16(57),
 	},
 	407: {
+		Fop:   uint8(0),
 		Fbits: uint8(9),
 		Fval:  uint16(211),
 	},
@@ -13924,30 +14697,37 @@ var _lenfix1 = [512]Tcode{
 		Fval:  uint16(17),
 	},
 	409: {
+		Fop:   uint8(0),
 		Fbits: uint8(8),
 		Fval:  uint16(105),
 	},
 	410: {
+		Fop:   uint8(0),
 		Fbits: uint8(8),
 		Fval:  uint16(41),
 	},
 	411: {
+		Fop:   uint8(0),
 		Fbits: uint8(9),
 		Fval:  uint16(179),
 	},
 	412: {
+		Fop:   uint8(0),
 		Fbits: uint8(8),
 		Fval:  uint16(9),
 	},
 	413: {
+		Fop:   uint8(0),
 		Fbits: uint8(8),
 		Fval:  uint16(137),
 	},
 	414: {
+		Fop:   uint8(0),
 		Fbits: uint8(8),
 		Fval:  uint16(73),
 	},
 	415: {
+		Fop:   uint8(0),
 		Fbits: uint8(9),
 		Fval:  uint16(243),
 	},
@@ -13957,10 +14737,12 @@ var _lenfix1 = [512]Tcode{
 		Fval:  uint16(4),
 	},
 	417: {
+		Fop:   uint8(0),
 		Fbits: uint8(8),
 		Fval:  uint16(85),
 	},
 	418: {
+		Fop:   uint8(0),
 		Fbits: uint8(8),
 		Fval:  uint16(21),
 	},
@@ -13975,14 +14757,17 @@ var _lenfix1 = [512]Tcode{
 		Fval:  uint16(43),
 	},
 	421: {
+		Fop:   uint8(0),
 		Fbits: uint8(8),
 		Fval:  uint16(117),
 	},
 	422: {
+		Fop:   uint8(0),
 		Fbits: uint8(8),
 		Fval:  uint16(53),
 	},
 	423: {
+		Fop:   uint8(0),
 		Fbits: uint8(9),
 		Fval:  uint16(203),
 	},
@@ -13992,30 +14777,37 @@ var _lenfix1 = [512]Tcode{
 		Fval:  uint16(13),
 	},
 	425: {
+		Fop:   uint8(0),
 		Fbits: uint8(8),
 		Fval:  uint16(101),
 	},
 	426: {
+		Fop:   uint8(0),
 		Fbits: uint8(8),
 		Fval:  uint16(37),
 	},
 	427: {
+		Fop:   uint8(0),
 		Fbits: uint8(9),
 		Fval:  uint16(171),
 	},
 	428: {
+		Fop:   uint8(0),
 		Fbits: uint8(8),
 		Fval:  uint16(5),
 	},
 	429: {
+		Fop:   uint8(0),
 		Fbits: uint8(8),
 		Fval:  uint16(133),
 	},
 	430: {
+		Fop:   uint8(0),
 		Fbits: uint8(8),
 		Fval:  uint16(69),
 	},
 	431: {
+		Fop:   uint8(0),
 		Fbits: uint8(9),
 		Fval:  uint16(235),
 	},
@@ -14025,14 +14817,17 @@ var _lenfix1 = [512]Tcode{
 		Fval:  uint16(8),
 	},
 	433: {
+		Fop:   uint8(0),
 		Fbits: uint8(8),
 		Fval:  uint16(93),
 	},
 	434: {
+		Fop:   uint8(0),
 		Fbits: uint8(8),
 		Fval:  uint16(29),
 	},
 	435: {
+		Fop:   uint8(0),
 		Fbits: uint8(9),
 		Fval:  uint16(155),
 	},
@@ -14042,14 +14837,17 @@ var _lenfix1 = [512]Tcode{
 		Fval:  uint16(83),
 	},
 	437: {
+		Fop:   uint8(0),
 		Fbits: uint8(8),
 		Fval:  uint16(125),
 	},
 	438: {
+		Fop:   uint8(0),
 		Fbits: uint8(8),
 		Fval:  uint16(61),
 	},
 	439: {
+		Fop:   uint8(0),
 		Fbits: uint8(9),
 		Fval:  uint16(219),
 	},
@@ -14059,30 +14857,37 @@ var _lenfix1 = [512]Tcode{
 		Fval:  uint16(23),
 	},
 	441: {
+		Fop:   uint8(0),
 		Fbits: uint8(8),
 		Fval:  uint16(109),
 	},
 	442: {
+		Fop:   uint8(0),
 		Fbits: uint8(8),
 		Fval:  uint16(45),
 	},
 	443: {
+		Fop:   uint8(0),
 		Fbits: uint8(9),
 		Fval:  uint16(187),
 	},
 	444: {
+		Fop:   uint8(0),
 		Fbits: uint8(8),
 		Fval:  uint16(13),
 	},
 	445: {
+		Fop:   uint8(0),
 		Fbits: uint8(8),
 		Fval:  uint16(141),
 	},
 	446: {
+		Fop:   uint8(0),
 		Fbits: uint8(8),
 		Fval:  uint16(77),
 	},
 	447: {
+		Fop:   uint8(0),
 		Fbits: uint8(9),
 		Fval:  uint16(251),
 	},
@@ -14092,10 +14897,12 @@ var _lenfix1 = [512]Tcode{
 		Fval:  uint16(3),
 	},
 	449: {
+		Fop:   uint8(0),
 		Fbits: uint8(8),
 		Fval:  uint16(83),
 	},
 	450: {
+		Fop:   uint8(0),
 		Fbits: uint8(8),
 		Fval:  uint16(19),
 	},
@@ -14110,14 +14917,17 @@ var _lenfix1 = [512]Tcode{
 		Fval:  uint16(35),
 	},
 	453: {
+		Fop:   uint8(0),
 		Fbits: uint8(8),
 		Fval:  uint16(115),
 	},
 	454: {
+		Fop:   uint8(0),
 		Fbits: uint8(8),
 		Fval:  uint16(51),
 	},
 	455: {
+		Fop:   uint8(0),
 		Fbits: uint8(9),
 		Fval:  uint16(199),
 	},
@@ -14127,30 +14937,37 @@ var _lenfix1 = [512]Tcode{
 		Fval:  uint16(11),
 	},
 	457: {
+		Fop:   uint8(0),
 		Fbits: uint8(8),
 		Fval:  uint16(99),
 	},
 	458: {
+		Fop:   uint8(0),
 		Fbits: uint8(8),
 		Fval:  uint16(35),
 	},
 	459: {
+		Fop:   uint8(0),
 		Fbits: uint8(9),
 		Fval:  uint16(167),
 	},
 	460: {
+		Fop:   uint8(0),
 		Fbits: uint8(8),
 		Fval:  uint16(3),
 	},
 	461: {
+		Fop:   uint8(0),
 		Fbits: uint8(8),
 		Fval:  uint16(131),
 	},
 	462: {
+		Fop:   uint8(0),
 		Fbits: uint8(8),
 		Fval:  uint16(67),
 	},
 	463: {
+		Fop:   uint8(0),
 		Fbits: uint8(9),
 		Fval:  uint16(231),
 	},
@@ -14160,14 +14977,17 @@ var _lenfix1 = [512]Tcode{
 		Fval:  uint16(7),
 	},
 	465: {
+		Fop:   uint8(0),
 		Fbits: uint8(8),
 		Fval:  uint16(91),
 	},
 	466: {
+		Fop:   uint8(0),
 		Fbits: uint8(8),
 		Fval:  uint16(27),
 	},
 	467: {
+		Fop:   uint8(0),
 		Fbits: uint8(9),
 		Fval:  uint16(151),
 	},
@@ -14177,14 +14997,17 @@ var _lenfix1 = [512]Tcode{
 		Fval:  uint16(67),
 	},
 	469: {
+		Fop:   uint8(0),
 		Fbits: uint8(8),
 		Fval:  uint16(123),
 	},
 	470: {
+		Fop:   uint8(0),
 		Fbits: uint8(8),
 		Fval:  uint16(59),
 	},
 	471: {
+		Fop:   uint8(0),
 		Fbits: uint8(9),
 		Fval:  uint16(215),
 	},
@@ -14194,30 +15017,37 @@ var _lenfix1 = [512]Tcode{
 		Fval:  uint16(19),
 	},
 	473: {
+		Fop:   uint8(0),
 		Fbits: uint8(8),
 		Fval:  uint16(107),
 	},
 	474: {
+		Fop:   uint8(0),
 		Fbits: uint8(8),
 		Fval:  uint16(43),
 	},
 	475: {
+		Fop:   uint8(0),
 		Fbits: uint8(9),
 		Fval:  uint16(183),
 	},
 	476: {
+		Fop:   uint8(0),
 		Fbits: uint8(8),
 		Fval:  uint16(11),
 	},
 	477: {
+		Fop:   uint8(0),
 		Fbits: uint8(8),
 		Fval:  uint16(139),
 	},
 	478: {
+		Fop:   uint8(0),
 		Fbits: uint8(8),
 		Fval:  uint16(75),
 	},
 	479: {
+		Fop:   uint8(0),
 		Fbits: uint8(9),
 		Fval:  uint16(247),
 	},
@@ -14227,16 +15057,19 @@ var _lenfix1 = [512]Tcode{
 		Fval:  uint16(5),
 	},
 	481: {
+		Fop:   uint8(0),
 		Fbits: uint8(8),
 		Fval:  uint16(87),
 	},
 	482: {
+		Fop:   uint8(0),
 		Fbits: uint8(8),
 		Fval:  uint16(23),
 	},
 	483: {
 		Fop:   uint8(64),
 		Fbits: uint8(8),
+		Fval:  uint16(0),
 	},
 	484: {
 		Fop:   uint8(19),
@@ -14244,14 +15077,17 @@ var _lenfix1 = [512]Tcode{
 		Fval:  uint16(51),
 	},
 	485: {
+		Fop:   uint8(0),
 		Fbits: uint8(8),
 		Fval:  uint16(119),
 	},
 	486: {
+		Fop:   uint8(0),
 		Fbits: uint8(8),
 		Fval:  uint16(55),
 	},
 	487: {
+		Fop:   uint8(0),
 		Fbits: uint8(9),
 		Fval:  uint16(207),
 	},
@@ -14261,30 +15097,37 @@ var _lenfix1 = [512]Tcode{
 		Fval:  uint16(15),
 	},
 	489: {
+		Fop:   uint8(0),
 		Fbits: uint8(8),
 		Fval:  uint16(103),
 	},
 	490: {
+		Fop:   uint8(0),
 		Fbits: uint8(8),
 		Fval:  uint16(39),
 	},
 	491: {
+		Fop:   uint8(0),
 		Fbits: uint8(9),
 		Fval:  uint16(175),
 	},
 	492: {
+		Fop:   uint8(0),
 		Fbits: uint8(8),
 		Fval:  uint16(7),
 	},
 	493: {
+		Fop:   uint8(0),
 		Fbits: uint8(8),
 		Fval:  uint16(135),
 	},
 	494: {
+		Fop:   uint8(0),
 		Fbits: uint8(8),
 		Fval:  uint16(71),
 	},
 	495: {
+		Fop:   uint8(0),
 		Fbits: uint8(9),
 		Fval:  uint16(239),
 	},
@@ -14294,14 +15137,17 @@ var _lenfix1 = [512]Tcode{
 		Fval:  uint16(9),
 	},
 	497: {
+		Fop:   uint8(0),
 		Fbits: uint8(8),
 		Fval:  uint16(95),
 	},
 	498: {
+		Fop:   uint8(0),
 		Fbits: uint8(8),
 		Fval:  uint16(31),
 	},
 	499: {
+		Fop:   uint8(0),
 		Fbits: uint8(9),
 		Fval:  uint16(159),
 	},
@@ -14311,14 +15157,17 @@ var _lenfix1 = [512]Tcode{
 		Fval:  uint16(99),
 	},
 	501: {
+		Fop:   uint8(0),
 		Fbits: uint8(8),
 		Fval:  uint16(127),
 	},
 	502: {
+		Fop:   uint8(0),
 		Fbits: uint8(8),
 		Fval:  uint16(63),
 	},
 	503: {
+		Fop:   uint8(0),
 		Fbits: uint8(9),
 		Fval:  uint16(223),
 	},
@@ -14328,30 +15177,37 @@ var _lenfix1 = [512]Tcode{
 		Fval:  uint16(27),
 	},
 	505: {
+		Fop:   uint8(0),
 		Fbits: uint8(8),
 		Fval:  uint16(111),
 	},
 	506: {
+		Fop:   uint8(0),
 		Fbits: uint8(8),
 		Fval:  uint16(47),
 	},
 	507: {
+		Fop:   uint8(0),
 		Fbits: uint8(9),
 		Fval:  uint16(191),
 	},
 	508: {
+		Fop:   uint8(0),
 		Fbits: uint8(8),
 		Fval:  uint16(15),
 	},
 	509: {
+		Fop:   uint8(0),
 		Fbits: uint8(8),
 		Fval:  uint16(143),
 	},
 	510: {
+		Fop:   uint8(0),
 		Fbits: uint8(8),
 		Fval:  uint16(79),
 	},
 	511: {
+		Fop:   uint8(0),
 		Fbits: uint8(9),
 		Fval:  uint16(255),
 	},
@@ -14436,6 +15292,7 @@ var _distfix1 = [32]Tcode{
 	15: {
 		Fop:   uint8(64),
 		Fbits: uint8(5),
+		Fval:  uint16(0),
 	},
 	16: {
 		Fop:   uint8(16),
@@ -14515,6 +15372,7 @@ var _distfix1 = [32]Tcode{
 	31: {
 		Fop:   uint8(64),
 		Fbits: uint8(5),
+		Fval:  uint16(0),
 	},
 }
 
@@ -15806,6 +16664,7 @@ var _order1 = [19]uint16{
 	0:  uint16(16),
 	1:  uint16(17),
 	2:  uint16(18),
+	3:  uint16(0),
 	4:  uint16(8),
 	5:  uint16(7),
 	6:  uint16(9),
@@ -16478,6 +17337,8 @@ var _lbase = [31]uint16{
 	26: uint16(195),
 	27: uint16(227),
 	28: uint16(258),
+	29: uint16(0),
+	30: uint16(0),
 }
 
 var _lext = [31]uint16{
@@ -16545,6 +17406,8 @@ var _dbase = [32]uint16{
 	27: uint16(12289),
 	28: uint16(16385),
 	29: uint16(24577),
+	30: uint16(0),
+	31: uint16(0),
 }
 
 var _dext = [32]uint16{
@@ -16619,6 +17482,14 @@ type Tstatic_tree_desc_s = Tstatic_tree_desc
 
 /* repeat a zero length 11-138 times  (7 bits of repeat count) */
 var _extra_lbits = [29]int32{
+	0:  int32(0),
+	1:  int32(0),
+	2:  int32(0),
+	3:  int32(0),
+	4:  int32(0),
+	5:  int32(0),
+	6:  int32(0),
+	7:  int32(0),
 	8:  int32(1),
 	9:  int32(1),
 	10: int32(1),
@@ -16639,9 +17510,14 @@ var _extra_lbits = [29]int32{
 	25: int32(5),
 	26: int32(5),
 	27: int32(5),
+	28: int32(0),
 }
 
 var _extra_dbits = [30]int32{
+	0:  int32(0),
+	1:  int32(0),
+	2:  int32(0),
+	3:  int32(0),
 	4:  int32(1),
 	5:  int32(1),
 	6:  int32(2),
@@ -16671,6 +17547,22 @@ var _extra_dbits = [30]int32{
 }
 
 var _extra_blbits = [19]int32{
+	0:  int32(0),
+	1:  int32(0),
+	2:  int32(0),
+	3:  int32(0),
+	4:  int32(0),
+	5:  int32(0),
+	6:  int32(0),
+	7:  int32(0),
+	8:  int32(0),
+	9:  int32(0),
+	10: int32(0),
+	11: int32(0),
+	12: int32(0),
+	13: int32(0),
+	14: int32(0),
+	15: int32(0),
 	16: int32(2),
 	17: int32(3),
 	18: int32(7),
@@ -16680,6 +17572,7 @@ var _bl_order = [19]Tuch{
 	0:  uint8(16),
 	1:  uint8(17),
 	2:  uint8(18),
+	3:  uint8(0),
 	4:  uint8(8),
 	5:  uint8(7),
 	6:  uint8(9),
@@ -19258,6 +20151,10 @@ var _static_ltree = [288]Tct_data{
 		})(unsafe.Pointer(&struct{ f Tush }{f: uint16(9)})),
 	},
 	256: {
+		Ffc: struct {
+			Fcode [0]Tush
+			Ffreq Tush
+		}{},
 		Fdl: *(*struct {
 			Flen1 [0]Tush
 			Fdad  Tush
@@ -19576,6 +20473,10 @@ var _static_ltree = [288]Tct_data{
 }
 var _static_dtree = [30]Tct_data{
 	0: {
+		Ffc: struct {
+			Fcode [0]Tush
+			Ffreq Tush
+		}{},
 		Fdl: *(*struct {
 			Flen1 [0]Tush
 			Fdad  Tush
@@ -19873,6 +20774,7 @@ var _static_dtree = [30]Tct_data{
 	},
 }
 var _base_length = [29]int32{
+	0:  int32(0),
 	1:  int32(1),
 	2:  int32(2),
 	3:  int32(3),
@@ -19900,8 +20802,10 @@ var _base_length = [29]int32{
 	25: int32(160),
 	26: int32(192),
 	27: int32(224),
+	28: int32(0),
 }
 var _base_dist = [30]int32{
+	0:  int32(0),
 	1:  int32(1),
 	2:  int32(2),
 	3:  int32(3),
@@ -19944,14 +20848,17 @@ var _static_l_desc = Tstatic_tree_desc{
 var _static_d_desc = Tstatic_tree_desc{
 	Fstatic_tree: uintptr(unsafe.Pointer(&_static_dtree)),
 	Fextra_bits:  uintptr(unsafe.Pointer(&_extra_dbits)),
+	Fextra_base:  int32(0),
 	Felems:       int32(m_D_CODES),
 	Fmax_length:  int32(m_MAX_BITS),
 }
 
 var _static_bl_desc = Tstatic_tree_desc{
-	Fextra_bits: uintptr(unsafe.Pointer(&_extra_blbits)),
-	Felems:      int32(m_BL_CODES),
-	Fmax_length: int32(m_MAX_BL_BITS),
+	Fstatic_tree: libc.UintptrFromInt32(0),
+	Fextra_bits:  uintptr(unsafe.Pointer(&_extra_blbits)),
+	Fextra_base:  int32(0),
+	Felems:       int32(m_BL_CODES),
+	Fmax_length:  int32(m_MAX_BL_BITS),
 }
 
 /* ===========================================================================
@@ -23620,6 +24527,7 @@ func __ccgo_fp(f interface{}) uintptr {
 }
 
 var x__dist_code = [512]Tuch{
+	0:   uint8(0),
 	1:   uint8(1),
 	2:   uint8(2),
 	3:   uint8(3),
@@ -23875,6 +24783,8 @@ var x__dist_code = [512]Tuch{
 	253: uint8(15),
 	254: uint8(15),
 	255: uint8(15),
+	256: uint8(0),
+	257: uint8(0),
 	258: uint8(16),
 	259: uint8(17),
 	260: uint8(18),
@@ -24132,6 +25042,7 @@ var x__dist_code = [512]Tuch{
 }
 
 var x__length_code = [256]Tuch{
+	0:   uint8(0),
 	1:   uint8(1),
 	2:   uint8(2),
 	3:   uint8(3),
