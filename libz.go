@@ -7,9 +7,3 @@
 // Package libz is a ccgo/v4 version of the zlib general purpose data
 // compression library.
 package libz // import "modernc.org/libz"
-
-import (
-	"modernc.org/ccgo/v4/lib"
-)
-
-var _ ccgo.Task

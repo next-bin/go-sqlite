@@ -13,6 +13,7 @@ import (
 	"testing"
 
 	util "modernc.org/ccgo/v3/lib"
+	_ "modernc.org/ccgo/v4/lib"
 )
 
 func TestMain(m *testing.M) {

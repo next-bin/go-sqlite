@@ -22,7 +22,7 @@ import (
 )
 
 const (
-	archivePath = "v1.2.11.tar.gz"
+	archivePath = "zlib-1.3.tar.gz"
 )
 
 var (
@@ -55,7 +55,6 @@ func main() {
 
 	_, extractedArchivePath := filepath.Split(archivePath)
 	extractedArchivePath = extractedArchivePath[:len(extractedArchivePath)-len(".tar.gz")]
-	extractedArchivePath = "zlib-" + extractedArchivePath[1:]
 	tempDir := os.Getenv("GO_GENERATE_DIR")
 	dev := os.Getenv("GO_GENERATE_DEV") != ""
 	switch {
