@@ -3280,9 +3280,7 @@ type Tvars = struct {
 // C documentation
 //
 //	/* static function list */
-var _functions = Tfns{
-	Ffree: uintptr(0),
-}
+var _functions = Tfns{}
 
 func init() {
 	p := unsafe.Pointer(&_functions)
@@ -11248,7 +11246,6 @@ type Tcname = struct {
 var _cnames = [96]Tcname{
 	0: {
 		Fname: __ccgo_ts + 359,
-		Fcode: int8('\000'),
 	},
 	1: {
 		Fname: __ccgo_ts + 363,
@@ -11626,7 +11623,6 @@ var _cnames = [96]Tcname{
 		Fname: __ccgo_ts + 1114,
 		Fcode: int8('\177'),
 	},
-	95: {},
 }
 
 /*
@@ -12854,8 +12850,7 @@ var _alphaCharTable = [162]Tchr{
 
 var _controlRangeTable = [9]Tcrange{
 	0: {
-		Fstart: uint16(0x0),
-		Fend:   uint16(0x1F),
+		Fend: uint16(0x1F),
 	},
 	1: {
 		Fstart: uint16(0x7F),
@@ -16788,7 +16783,6 @@ var _classNames = [14]uintptr{
 	10: __ccgo_ts + 557,
 	11: __ccgo_ts + 1178,
 	12: __ccgo_ts + 1184,
-	13: libc.UintptrFromInt32(0),
 }
 
 // C documentation
@@ -18975,7 +18969,6 @@ type Trerr = struct {
 
 var _rerrs = [21]Trerr{
 	0: {
-		Fcode:    int32(m_REG_OKAY),
 		Fname:    __ccgo_ts + 1191,
 		Fexplain: __ccgo_ts + 1200,
 	},
@@ -20320,19 +20313,13 @@ type TAssemblyEnv = struct {
  */
 
 var _assembleCodeType = TTcl_ObjType{
-	Fname:             __ccgo_ts + 1956,
-	FfreeIntRepProc:   uintptr(0),
-	FdupIntRepProc:    uintptr(0),
-	FupdateStringProc: uintptr(0),
-	FsetFromAnyProc:   uintptr(0),
+	Fname: __ccgo_ts + 1956,
 }
 
 func init() {
 	p := unsafe.Pointer(&_assembleCodeType)
 	*(*uintptr)(unsafe.Add(p, 4)) = __ccgo_fp(_FreeAssembleCodeInternalRep)
 	*(*uintptr)(unsafe.Add(p, 8)) = __ccgo_fp(_DupAssembleCodeInternalRep)
-	*(*uintptr)(unsafe.Add(p, 12)) = libc.UintptrFromInt32(0)
-	*(*uintptr)(unsafe.Add(p, 16)) = libc.UintptrFromInt32(0)
 }
 
 /*
@@ -20344,12 +20331,10 @@ var _TalInstructionTable = [148]TTalInstDesc{
 		Fname:             __ccgo_ts + 1969,
 		FinstType:         int32(_ASSEM_PUSH),
 		FtclInstCode:      libc.Int32FromInt32(m_INST_PUSH1)<<libc.Int32FromInt32(8) | libc.Int32FromInt32(m_INST_PUSH4),
-		FoperandsConsumed: int32(0),
 		FoperandsProduced: int32(1),
 	},
 	1: {
 		Fname:             __ccgo_ts + 1974,
-		FinstType:         int32(_ASSEM_1BYTE),
 		FtclInstCode:      int32(m_INST_ADD),
 		FoperandsConsumed: int32(2),
 		FoperandsProduced: int32(1),
@@ -20370,14 +20355,12 @@ var _TalInstructionTable = [148]TTalInstDesc{
 	},
 	4: {
 		Fname:             __ccgo_ts + 1997,
-		FinstType:         int32(_ASSEM_1BYTE),
 		FtclInstCode:      int32(m_INST_APPEND_ARRAY_STK),
 		FoperandsConsumed: int32(3),
 		FoperandsProduced: int32(1),
 	},
 	5: {
 		Fname:             __ccgo_ts + 2012,
-		FinstType:         int32(_ASSEM_1BYTE),
 		FtclInstCode:      int32(m_INST_APPEND_STK),
 		FoperandsConsumed: int32(2),
 		FoperandsProduced: int32(1),
@@ -20386,61 +20369,49 @@ var _TalInstructionTable = [148]TTalInstDesc{
 		Fname:             __ccgo_ts + 2022,
 		FinstType:         int32(_ASSEM_LVT4),
 		FtclInstCode:      int32(m_INST_ARRAY_EXISTS_IMM),
-		FoperandsConsumed: int32(0),
 		FoperandsProduced: int32(1),
 	},
 	7: {
 		Fname:             __ccgo_ts + 2037,
-		FinstType:         int32(_ASSEM_1BYTE),
 		FtclInstCode:      int32(m_INST_ARRAY_EXISTS_STK),
 		FoperandsConsumed: int32(1),
 		FoperandsProduced: int32(1),
 	},
 	8: {
-		Fname:             __ccgo_ts + 2052,
-		FinstType:         int32(_ASSEM_LVT4),
-		FtclInstCode:      int32(m_INST_ARRAY_MAKE_IMM),
-		FoperandsConsumed: int32(0),
-		FoperandsProduced: int32(0),
+		Fname:        __ccgo_ts + 2052,
+		FinstType:    int32(_ASSEM_LVT4),
+		FtclInstCode: int32(m_INST_ARRAY_MAKE_IMM),
 	},
 	9: {
 		Fname:             __ccgo_ts + 2065,
-		FinstType:         int32(_ASSEM_1BYTE),
 		FtclInstCode:      int32(m_INST_ARRAY_MAKE_STK),
 		FoperandsConsumed: int32(1),
-		FoperandsProduced: int32(0),
 	},
 	10: {
-		Fname:             __ccgo_ts + 2078,
-		FinstType:         int32(_ASSEM_BEGIN_CATCH),
-		FtclInstCode:      int32(m_INST_BEGIN_CATCH4),
-		FoperandsConsumed: int32(0),
-		FoperandsProduced: int32(0),
+		Fname:        __ccgo_ts + 2078,
+		FinstType:    int32(_ASSEM_BEGIN_CATCH),
+		FtclInstCode: int32(m_INST_BEGIN_CATCH4),
 	},
 	11: {
 		Fname:             __ccgo_ts + 2089,
-		FinstType:         int32(_ASSEM_1BYTE),
 		FtclInstCode:      int32(m_INST_BITAND),
 		FoperandsConsumed: int32(2),
 		FoperandsProduced: int32(1),
 	},
 	12: {
 		Fname:             __ccgo_ts + 2096,
-		FinstType:         int32(_ASSEM_1BYTE),
 		FtclInstCode:      int32(m_INST_BITNOT),
 		FoperandsConsumed: int32(1),
 		FoperandsProduced: int32(1),
 	},
 	13: {
 		Fname:             __ccgo_ts + 2103,
-		FinstType:         int32(_ASSEM_1BYTE),
 		FtclInstCode:      int32(m_INST_BITOR),
 		FoperandsConsumed: int32(2),
 		FoperandsProduced: int32(1),
 	},
 	14: {
 		Fname:             __ccgo_ts + 2109,
-		FinstType:         int32(_ASSEM_1BYTE),
 		FtclInstCode:      int32(m_INST_BITXOR),
 		FoperandsConsumed: int32(2),
 		FoperandsProduced: int32(1),
@@ -20449,7 +20420,6 @@ var _TalInstructionTable = [148]TTalInstDesc{
 		Fname:             __ccgo_ts + 2116,
 		FinstType:         int32(_ASSEM_CLOCK_READ),
 		FtclInstCode:      int32(m_INST_CLOCK_READ),
-		FoperandsConsumed: int32(0),
 		FoperandsProduced: int32(1),
 	},
 	16: {
@@ -20468,16 +20438,12 @@ var _TalInstructionTable = [148]TTalInstDesc{
 	},
 	18: {
 		Fname:             __ccgo_ts + 2143,
-		FinstType:         int32(_ASSEM_1BYTE),
 		FtclInstCode:      int32(m_INST_COROUTINE_NAME),
-		FoperandsConsumed: int32(0),
 		FoperandsProduced: int32(1),
 	},
 	19: {
 		Fname:             __ccgo_ts + 2152,
-		FinstType:         int32(_ASSEM_1BYTE),
 		FtclInstCode:      int32(m_INST_NS_CURRENT),
-		FoperandsConsumed: int32(0),
 		FoperandsProduced: int32(1),
 	},
 	20: {
@@ -20496,7 +20462,6 @@ var _TalInstructionTable = [148]TTalInstDesc{
 	},
 	22: {
 		Fname:             __ccgo_ts + 2191,
-		FinstType:         int32(_ASSEM_1BYTE),
 		FtclInstCode:      int32(m_INST_DICT_EXPAND),
 		FoperandsConsumed: int32(3),
 		FoperandsProduced: int32(1),
@@ -20524,17 +20489,14 @@ var _TalInstructionTable = [148]TTalInstDesc{
 	},
 	26: {
 		Fname:             __ccgo_ts + 2234,
-		FinstType:         int32(_ASSEM_1BYTE),
 		FtclInstCode:      int32(m_INST_DICT_RECOMBINE_STK),
 		FoperandsConsumed: int32(3),
-		FoperandsProduced: int32(0),
 	},
 	27: {
 		Fname:             __ccgo_ts + 2251,
 		FinstType:         int32(_ASSEM_LVT4),
 		FtclInstCode:      int32(m_INST_DICT_RECOMBINE_IMM),
 		FoperandsConsumed: int32(2),
-		FoperandsProduced: int32(0),
 	},
 	28: {
 		Fname:             __ccgo_ts + 2268,
@@ -20552,28 +20514,23 @@ var _TalInstructionTable = [148]TTalInstDesc{
 	},
 	30: {
 		Fname:             __ccgo_ts + 2286,
-		FinstType:         int32(_ASSEM_1BYTE),
 		FtclInstCode:      int32(m_INST_DIV),
 		FoperandsConsumed: int32(2),
 		FoperandsProduced: int32(1),
 	},
 	31: {
 		Fname:             __ccgo_ts + 2290,
-		FinstType:         int32(_ASSEM_1BYTE),
 		FtclInstCode:      int32(m_INST_DUP),
 		FoperandsConsumed: int32(1),
 		FoperandsProduced: int32(2),
 	},
 	32: {
-		Fname:             __ccgo_ts + 2294,
-		FinstType:         int32(_ASSEM_END_CATCH),
-		FtclInstCode:      int32(m_INST_END_CATCH),
-		FoperandsConsumed: int32(0),
-		FoperandsProduced: int32(0),
+		Fname:        __ccgo_ts + 2294,
+		FinstType:    int32(_ASSEM_END_CATCH),
+		FtclInstCode: int32(m_INST_END_CATCH),
 	},
 	33: {
 		Fname:             __ccgo_ts + 2303,
-		FinstType:         int32(_ASSEM_1BYTE),
 		FtclInstCode:      int32(m_INST_EQ),
 		FoperandsConsumed: int32(2),
 		FoperandsProduced: int32(1),
@@ -20587,7 +20544,6 @@ var _TalInstructionTable = [148]TTalInstDesc{
 	},
 	35: {
 		Fname:             __ccgo_ts + 2311,
-		FinstType:         int32(_ASSEM_1BYTE),
 		FtclInstCode:      int32(m_INST_EVAL_STK),
 		FoperandsConsumed: int32(1),
 		FoperandsProduced: int32(1),
@@ -20596,7 +20552,6 @@ var _TalInstructionTable = [148]TTalInstDesc{
 		Fname:             __ccgo_ts + 2319,
 		FinstType:         int32(_ASSEM_LVT4),
 		FtclInstCode:      int32(m_INST_EXIST_SCALAR),
-		FoperandsConsumed: int32(0),
 		FoperandsProduced: int32(1),
 	},
 	37: {
@@ -20608,21 +20563,18 @@ var _TalInstructionTable = [148]TTalInstDesc{
 	},
 	38: {
 		Fname:             __ccgo_ts + 2336,
-		FinstType:         int32(_ASSEM_1BYTE),
 		FtclInstCode:      int32(m_INST_EXIST_ARRAY_STK),
 		FoperandsConsumed: int32(2),
 		FoperandsProduced: int32(1),
 	},
 	39: {
 		Fname:             __ccgo_ts + 2350,
-		FinstType:         int32(_ASSEM_1BYTE),
 		FtclInstCode:      int32(m_INST_EXIST_STK),
 		FoperandsConsumed: int32(1),
 		FoperandsProduced: int32(1),
 	},
 	40: {
 		Fname:             __ccgo_ts + 2359,
-		FinstType:         int32(_ASSEM_1BYTE),
 		FtclInstCode:      int32(m_INST_EXPON),
 		FoperandsConsumed: int32(2),
 		FoperandsProduced: int32(1),
@@ -20636,21 +20588,18 @@ var _TalInstructionTable = [148]TTalInstDesc{
 	},
 	42: {
 		Fname:             __ccgo_ts + 2370,
-		FinstType:         int32(_ASSEM_1BYTE),
 		FtclInstCode:      int32(m_INST_EXPR_STK),
 		FoperandsConsumed: int32(1),
 		FoperandsProduced: int32(1),
 	},
 	43: {
 		Fname:             __ccgo_ts + 2378,
-		FinstType:         int32(_ASSEM_1BYTE),
 		FtclInstCode:      int32(m_INST_GE),
 		FoperandsConsumed: int32(2),
 		FoperandsProduced: int32(1),
 	},
 	44: {
 		Fname:             __ccgo_ts + 2381,
-		FinstType:         int32(_ASSEM_1BYTE),
 		FtclInstCode:      int32(m_INST_GT),
 		FoperandsConsumed: int32(2),
 		FoperandsProduced: int32(1),
@@ -20678,7 +20627,6 @@ var _TalInstructionTable = [148]TTalInstDesc{
 	},
 	48: {
 		Fname:             __ccgo_ts + 2412,
-		FinstType:         int32(_ASSEM_1BYTE),
 		FtclInstCode:      int32(m_INST_INCR_ARRAY_STK),
 		FoperandsConsumed: int32(3),
 		FoperandsProduced: int32(1),
@@ -20694,12 +20642,10 @@ var _TalInstructionTable = [148]TTalInstDesc{
 		Fname:             __ccgo_ts + 2441,
 		FinstType:         int32(_ASSEM_LVT1_SINT1),
 		FtclInstCode:      int32(m_INST_INCR_SCALAR1_IMM),
-		FoperandsConsumed: int32(0),
 		FoperandsProduced: int32(1),
 	},
 	51: {
 		Fname:             __ccgo_ts + 2449,
-		FinstType:         int32(_ASSEM_1BYTE),
 		FtclInstCode:      int32(m_INST_INCR_STK),
 		FoperandsConsumed: int32(2),
 		FoperandsProduced: int32(1),
@@ -20713,16 +20659,13 @@ var _TalInstructionTable = [148]TTalInstDesc{
 	},
 	53: {
 		Fname:             __ccgo_ts + 2468,
-		FinstType:         int32(_ASSEM_1BYTE),
 		FtclInstCode:      int32(m_INST_INFO_LEVEL_ARGS),
 		FoperandsConsumed: int32(1),
 		FoperandsProduced: int32(1),
 	},
 	54: {
 		Fname:             __ccgo_ts + 2482,
-		FinstType:         int32(_ASSEM_1BYTE),
 		FtclInstCode:      int32(m_INST_INFO_LEVEL_NUM),
-		FoperandsConsumed: int32(0),
 		FoperandsProduced: int32(1),
 	},
 	55: {
@@ -20733,64 +20676,51 @@ var _TalInstructionTable = [148]TTalInstDesc{
 		FoperandsProduced: int32(1),
 	},
 	56: {
-		Fname:             __ccgo_ts + 2508,
-		FinstType:         int32(_ASSEM_JUMP),
-		FtclInstCode:      int32(m_INST_JUMP1),
-		FoperandsConsumed: int32(0),
-		FoperandsProduced: int32(0),
+		Fname:        __ccgo_ts + 2508,
+		FinstType:    int32(_ASSEM_JUMP),
+		FtclInstCode: int32(m_INST_JUMP1),
 	},
 	57: {
-		Fname:             __ccgo_ts + 2513,
-		FinstType:         int32(_ASSEM_JUMP4),
-		FtclInstCode:      int32(m_INST_JUMP4),
-		FoperandsConsumed: int32(0),
-		FoperandsProduced: int32(0),
+		Fname:        __ccgo_ts + 2513,
+		FinstType:    int32(_ASSEM_JUMP4),
+		FtclInstCode: int32(m_INST_JUMP4),
 	},
 	58: {
 		Fname:             __ccgo_ts + 2519,
 		FinstType:         int32(_ASSEM_JUMP),
 		FtclInstCode:      int32(m_INST_JUMP_FALSE1),
 		FoperandsConsumed: int32(1),
-		FoperandsProduced: int32(0),
 	},
 	59: {
 		Fname:             __ccgo_ts + 2529,
 		FinstType:         int32(_ASSEM_JUMP4),
 		FtclInstCode:      int32(m_INST_JUMP_FALSE4),
 		FoperandsConsumed: int32(1),
-		FoperandsProduced: int32(0),
 	},
 	60: {
 		Fname:             __ccgo_ts + 2540,
 		FinstType:         int32(_ASSEM_JUMPTABLE),
 		FtclInstCode:      int32(m_INST_JUMP_TABLE),
 		FoperandsConsumed: int32(1),
-		FoperandsProduced: int32(0),
 	},
 	61: {
 		Fname:             __ccgo_ts + 2550,
 		FinstType:         int32(_ASSEM_JUMP),
 		FtclInstCode:      int32(m_INST_JUMP_TRUE1),
 		FoperandsConsumed: int32(1),
-		FoperandsProduced: int32(0),
 	},
 	62: {
 		Fname:             __ccgo_ts + 2559,
 		FinstType:         int32(_ASSEM_JUMP4),
 		FtclInstCode:      int32(m_INST_JUMP_TRUE4),
 		FoperandsConsumed: int32(1),
-		FoperandsProduced: int32(0),
 	},
 	63: {
-		Fname:             __ccgo_ts + 2569,
-		FinstType:         int32(_ASSEM_LABEL),
-		FtclInstCode:      int32(0),
-		FoperandsConsumed: int32(0),
-		FoperandsProduced: int32(0),
+		Fname:     __ccgo_ts + 2569,
+		FinstType: int32(_ASSEM_LABEL),
 	},
 	64: {
 		Fname:             __ccgo_ts + 2575,
-		FinstType:         int32(_ASSEM_1BYTE),
 		FtclInstCode:      int32(m_INST_LAND),
 		FoperandsConsumed: int32(2),
 		FoperandsProduced: int32(1),
@@ -20811,7 +20741,6 @@ var _TalInstructionTable = [148]TTalInstDesc{
 	},
 	67: {
 		Fname:             __ccgo_ts + 2601,
-		FinstType:         int32(_ASSEM_1BYTE),
 		FtclInstCode:      int32(m_INST_LAPPEND_ARRAY_STK),
 		FoperandsConsumed: int32(3),
 		FoperandsProduced: int32(1),
@@ -20832,28 +20761,24 @@ var _TalInstructionTable = [148]TTalInstDesc{
 	},
 	70: {
 		Fname:             __ccgo_ts + 2646,
-		FinstType:         int32(_ASSEM_1BYTE),
 		FtclInstCode:      int32(m_INST_LAPPEND_LIST_ARRAY_STK),
 		FoperandsConsumed: int32(3),
 		FoperandsProduced: int32(1),
 	},
 	71: {
 		Fname:             __ccgo_ts + 2666,
-		FinstType:         int32(_ASSEM_1BYTE),
 		FtclInstCode:      int32(m_INST_LAPPEND_LIST_STK),
 		FoperandsConsumed: int32(2),
 		FoperandsProduced: int32(1),
 	},
 	72: {
 		Fname:             __ccgo_ts + 2681,
-		FinstType:         int32(_ASSEM_1BYTE),
 		FtclInstCode:      int32(m_INST_LAPPEND_STK),
 		FoperandsConsumed: int32(2),
 		FoperandsProduced: int32(1),
 	},
 	73: {
 		Fname:             __ccgo_ts + 2692,
-		FinstType:         int32(_ASSEM_1BYTE),
 		FtclInstCode:      int32(m_INST_LE),
 		FoperandsConsumed: int32(2),
 		FoperandsProduced: int32(1),
@@ -20874,21 +20799,18 @@ var _TalInstructionTable = [148]TTalInstDesc{
 	},
 	76: {
 		Fname:             __ccgo_ts + 2712,
-		FinstType:         int32(_ASSEM_1BYTE),
 		FtclInstCode:      int32(m_INST_LIST_CONCAT),
 		FoperandsConsumed: int32(2),
 		FoperandsProduced: int32(1),
 	},
 	77: {
 		Fname:             __ccgo_ts + 2723,
-		FinstType:         int32(_ASSEM_1BYTE),
 		FtclInstCode:      int32(m_INST_LIST_IN),
 		FoperandsConsumed: int32(2),
 		FoperandsProduced: int32(1),
 	},
 	78: {
 		Fname:             __ccgo_ts + 2730,
-		FinstType:         int32(_ASSEM_1BYTE),
 		FtclInstCode:      int32(m_INST_LIST_INDEX),
 		FoperandsConsumed: int32(2),
 		FoperandsProduced: int32(1),
@@ -20902,14 +20824,12 @@ var _TalInstructionTable = [148]TTalInstDesc{
 	},
 	80: {
 		Fname:             __ccgo_ts + 2753,
-		FinstType:         int32(_ASSEM_1BYTE),
 		FtclInstCode:      int32(m_INST_LIST_LENGTH),
 		FoperandsConsumed: int32(1),
 		FoperandsProduced: int32(1),
 	},
 	81: {
 		Fname:             __ccgo_ts + 2764,
-		FinstType:         int32(_ASSEM_1BYTE),
 		FtclInstCode:      int32(m_INST_LIST_NOT_IN),
 		FoperandsConsumed: int32(2),
 		FoperandsProduced: int32(1),
@@ -20918,7 +20838,6 @@ var _TalInstructionTable = [148]TTalInstDesc{
 		Fname:             __ccgo_ts + 2774,
 		FinstType:         int32(_ASSEM_LVT),
 		FtclInstCode:      libc.Int32FromInt32(m_INST_LOAD_SCALAR1)<<libc.Int32FromInt32(8) | libc.Int32FromInt32(m_INST_LOAD_SCALAR4),
-		FoperandsConsumed: int32(0),
 		FoperandsProduced: int32(1),
 	},
 	83: {
@@ -20930,21 +20849,18 @@ var _TalInstructionTable = [148]TTalInstDesc{
 	},
 	84: {
 		Fname:             __ccgo_ts + 2789,
-		FinstType:         int32(_ASSEM_1BYTE),
 		FtclInstCode:      int32(m_INST_LOAD_ARRAY_STK),
 		FoperandsConsumed: int32(2),
 		FoperandsProduced: int32(1),
 	},
 	85: {
 		Fname:             __ccgo_ts + 2802,
-		FinstType:         int32(_ASSEM_1BYTE),
 		FtclInstCode:      int32(m_INST_LOAD_STK),
 		FoperandsConsumed: int32(1),
 		FoperandsProduced: int32(1),
 	},
 	86: {
 		Fname:             __ccgo_ts + 2810,
-		FinstType:         int32(_ASSEM_1BYTE),
 		FtclInstCode:      int32(m_INST_LOR),
 		FoperandsConsumed: int32(2),
 		FoperandsProduced: int32(1),
@@ -20958,56 +20874,46 @@ var _TalInstructionTable = [148]TTalInstDesc{
 	},
 	88: {
 		Fname:             __ccgo_ts + 2823,
-		FinstType:         int32(_ASSEM_1BYTE),
 		FtclInstCode:      int32(m_INST_LSET_LIST),
 		FoperandsConsumed: int32(3),
 		FoperandsProduced: int32(1),
 	},
 	89: {
 		Fname:             __ccgo_ts + 2832,
-		FinstType:         int32(_ASSEM_1BYTE),
 		FtclInstCode:      int32(m_INST_LSHIFT),
 		FoperandsConsumed: int32(2),
 		FoperandsProduced: int32(1),
 	},
 	90: {
 		Fname:             __ccgo_ts + 2839,
-		FinstType:         int32(_ASSEM_1BYTE),
 		FtclInstCode:      int32(m_INST_LT),
 		FoperandsConsumed: int32(2),
 		FoperandsProduced: int32(1),
 	},
 	91: {
 		Fname:             __ccgo_ts + 2842,
-		FinstType:         int32(_ASSEM_1BYTE),
 		FtclInstCode:      int32(m_INST_MOD),
 		FoperandsConsumed: int32(2),
 		FoperandsProduced: int32(1),
 	},
 	92: {
 		Fname:             __ccgo_ts + 2846,
-		FinstType:         int32(_ASSEM_1BYTE),
 		FtclInstCode:      int32(m_INST_MULT),
 		FoperandsConsumed: int32(2),
 		FoperandsProduced: int32(1),
 	},
 	93: {
 		Fname:             __ccgo_ts + 2851,
-		FinstType:         int32(_ASSEM_1BYTE),
 		FtclInstCode:      int32(m_INST_NEQ),
 		FoperandsConsumed: int32(2),
 		FoperandsProduced: int32(1),
 	},
 	94: {
-		Fname:             __ccgo_ts + 2855,
-		FinstType:         int32(_ASSEM_1BYTE),
-		FtclInstCode:      int32(m_INST_NOP),
-		FoperandsConsumed: int32(0),
-		FoperandsProduced: int32(0),
+		Fname:        __ccgo_ts + 2855,
+		FtclInstCode: int32(m_INST_NOP),
 	},
 	95: {
 		Fname:             __ccgo_ts + 2859,
-		FinstType:         int32(_ASSEM_1BYTE),
 		FtclInstCode:      int32(m_INST_LNOT),
 		FoperandsConsumed: int32(1),
 		FoperandsProduced: int32(1),
@@ -21021,14 +20927,12 @@ var _TalInstructionTable = [148]TTalInstDesc{
 	},
 	97: {
 		Fname:             __ccgo_ts + 2871,
-		FinstType:         int32(_ASSEM_1BYTE),
 		FtclInstCode:      int32(m_INST_NUM_TYPE),
 		FoperandsConsumed: int32(1),
 		FoperandsProduced: int32(1),
 	},
 	98: {
 		Fname:             __ccgo_ts + 2883,
-		FinstType:         int32(_ASSEM_1BYTE),
 		FtclInstCode:      int32(m_INST_ORIGIN_COMMAND),
 		FoperandsConsumed: int32(1),
 		FoperandsProduced: int32(1),
@@ -21042,30 +20946,22 @@ var _TalInstructionTable = [148]TTalInstDesc{
 	},
 	100: {
 		Fname:             __ccgo_ts + 2898,
-		FinstType:         int32(_ASSEM_1BYTE),
 		FtclInstCode:      int32(m_INST_POP),
 		FoperandsConsumed: int32(1),
-		FoperandsProduced: int32(0),
 	},
 	101: {
 		Fname:             __ccgo_ts + 2902,
-		FinstType:         int32(_ASSEM_1BYTE),
 		FtclInstCode:      int32(m_INST_PUSH_RETURN_CODE),
-		FoperandsConsumed: int32(0),
 		FoperandsProduced: int32(1),
 	},
 	102: {
 		Fname:             __ccgo_ts + 2917,
-		FinstType:         int32(_ASSEM_1BYTE),
 		FtclInstCode:      int32(m_INST_PUSH_RETURN_OPTIONS),
-		FoperandsConsumed: int32(0),
 		FoperandsProduced: int32(1),
 	},
 	103: {
 		Fname:             __ccgo_ts + 2932,
-		FinstType:         int32(_ASSEM_1BYTE),
 		FtclInstCode:      int32(m_INST_PUSH_RESULT),
-		FoperandsConsumed: int32(0),
 		FoperandsProduced: int32(1),
 	},
 	104: {
@@ -21077,7 +20973,6 @@ var _TalInstructionTable = [148]TTalInstDesc{
 	},
 	105: {
 		Fname:             __ccgo_ts + 2950,
-		FinstType:         int32(_ASSEM_1BYTE),
 		FtclInstCode:      int32(m_INST_RESOLVE_COMMAND),
 		FoperandsConsumed: int32(1),
 		FoperandsProduced: int32(1),
@@ -21091,7 +20986,6 @@ var _TalInstructionTable = [148]TTalInstDesc{
 	},
 	107: {
 		Fname:             __ccgo_ts + 2969,
-		FinstType:         int32(_ASSEM_1BYTE),
 		FtclInstCode:      int32(m_INST_RSHIFT),
 		FoperandsConsumed: int32(2),
 		FoperandsProduced: int32(1),
@@ -21112,42 +21006,36 @@ var _TalInstructionTable = [148]TTalInstDesc{
 	},
 	110: {
 		Fname:             __ccgo_ts + 2993,
-		FinstType:         int32(_ASSEM_1BYTE),
 		FtclInstCode:      int32(m_INST_STORE_ARRAY_STK),
 		FoperandsConsumed: int32(3),
 		FoperandsProduced: int32(1),
 	},
 	111: {
 		Fname:             __ccgo_ts + 3007,
-		FinstType:         int32(_ASSEM_1BYTE),
 		FtclInstCode:      int32(m_INST_STORE_STK),
 		FoperandsConsumed: int32(2),
 		FoperandsProduced: int32(1),
 	},
 	112: {
 		Fname:             __ccgo_ts + 3016,
-		FinstType:         int32(_ASSEM_1BYTE),
 		FtclInstCode:      int32(m_INST_STR_LOWER),
 		FoperandsConsumed: int32(1),
 		FoperandsProduced: int32(1),
 	},
 	113: {
 		Fname:             __ccgo_ts + 3029,
-		FinstType:         int32(_ASSEM_1BYTE),
 		FtclInstCode:      int32(m_INST_STR_TITLE),
 		FoperandsConsumed: int32(1),
 		FoperandsProduced: int32(1),
 	},
 	114: {
 		Fname:             __ccgo_ts + 3042,
-		FinstType:         int32(_ASSEM_1BYTE),
 		FtclInstCode:      int32(m_INST_STR_UPPER),
 		FoperandsConsumed: int32(1),
 		FoperandsProduced: int32(1),
 	},
 	115: {
 		Fname:             __ccgo_ts + 3055,
-		FinstType:         int32(_ASSEM_1BYTE),
 		FtclInstCode:      int32(m_INST_STR_CMP),
 		FoperandsConsumed: int32(2),
 		FoperandsProduced: int32(1),
@@ -21161,35 +21049,30 @@ var _TalInstructionTable = [148]TTalInstDesc{
 	},
 	117: {
 		Fname:             __ccgo_ts + 3069,
-		FinstType:         int32(_ASSEM_1BYTE),
 		FtclInstCode:      int32(m_INST_STR_EQ),
 		FoperandsConsumed: int32(2),
 		FoperandsProduced: int32(1),
 	},
 	118: {
 		Fname:             __ccgo_ts + 3075,
-		FinstType:         int32(_ASSEM_1BYTE),
 		FtclInstCode:      int32(m_INST_STR_FIND),
 		FoperandsConsumed: int32(2),
 		FoperandsProduced: int32(1),
 	},
 	119: {
 		Fname:             __ccgo_ts + 3083,
-		FinstType:         int32(_ASSEM_1BYTE),
 		FtclInstCode:      int32(m_INST_STR_INDEX),
 		FoperandsConsumed: int32(2),
 		FoperandsProduced: int32(1),
 	},
 	120: {
 		Fname:             __ccgo_ts + 3092,
-		FinstType:         int32(_ASSEM_1BYTE),
 		FtclInstCode:      int32(m_INST_STR_LEN),
 		FoperandsConsumed: int32(1),
 		FoperandsProduced: int32(1),
 	},
 	121: {
 		Fname:             __ccgo_ts + 3099,
-		FinstType:         int32(_ASSEM_1BYTE),
 		FtclInstCode:      int32(m_INST_STR_MAP),
 		FoperandsConsumed: int32(3),
 		FoperandsProduced: int32(1),
@@ -21203,140 +21086,118 @@ var _TalInstructionTable = [148]TTalInstDesc{
 	},
 	123: {
 		Fname:             __ccgo_ts + 3115,
-		FinstType:         int32(_ASSEM_1BYTE),
 		FtclInstCode:      int32(m_INST_STR_NEQ),
 		FoperandsConsumed: int32(2),
 		FoperandsProduced: int32(1),
 	},
 	124: {
 		Fname:             __ccgo_ts + 3122,
-		FinstType:         int32(_ASSEM_1BYTE),
 		FtclInstCode:      int32(m_INST_STR_RANGE),
 		FoperandsConsumed: int32(3),
 		FoperandsProduced: int32(1),
 	},
 	125: {
 		Fname:             __ccgo_ts + 3131,
-		FinstType:         int32(_ASSEM_1BYTE),
 		FtclInstCode:      int32(m_INST_STR_REPLACE),
 		FoperandsConsumed: int32(4),
 		FoperandsProduced: int32(1),
 	},
 	126: {
 		Fname:             __ccgo_ts + 3142,
-		FinstType:         int32(_ASSEM_1BYTE),
 		FtclInstCode:      int32(m_INST_STR_FIND_LAST),
 		FoperandsConsumed: int32(2),
 		FoperandsProduced: int32(1),
 	},
 	127: {
 		Fname:             __ccgo_ts + 3151,
-		FinstType:         int32(_ASSEM_1BYTE),
 		FtclInstCode:      int32(m_INST_STR_TRIM),
 		FoperandsConsumed: int32(2),
 		FoperandsProduced: int32(1),
 	},
 	128: {
 		Fname:             __ccgo_ts + 3159,
-		FinstType:         int32(_ASSEM_1BYTE),
 		FtclInstCode:      int32(m_INST_STR_TRIM_LEFT),
 		FoperandsConsumed: int32(2),
 		FoperandsProduced: int32(1),
 	},
 	129: {
 		Fname:             __ccgo_ts + 3171,
-		FinstType:         int32(_ASSEM_1BYTE),
 		FtclInstCode:      int32(m_INST_STR_TRIM_RIGHT),
 		FoperandsConsumed: int32(2),
 		FoperandsProduced: int32(1),
 	},
 	130: {
 		Fname:             __ccgo_ts + 3184,
-		FinstType:         int32(_ASSEM_1BYTE),
 		FtclInstCode:      int32(m_INST_SUB),
 		FoperandsConsumed: int32(2),
 		FoperandsProduced: int32(1),
 	},
 	131: {
 		Fname:             __ccgo_ts + 3188,
-		FinstType:         int32(_ASSEM_1BYTE),
 		FtclInstCode:      int32(m_INST_TCLOO_CLASS),
 		FoperandsConsumed: int32(1),
 		FoperandsProduced: int32(1),
 	},
 	132: {
 		Fname:             __ccgo_ts + 3199,
-		FinstType:         int32(_ASSEM_1BYTE),
 		FtclInstCode:      int32(m_INST_TCLOO_IS_OBJECT),
 		FoperandsConsumed: int32(1),
 		FoperandsProduced: int32(1),
 	},
 	133: {
 		Fname:             __ccgo_ts + 3213,
-		FinstType:         int32(_ASSEM_1BYTE),
 		FtclInstCode:      int32(m_INST_TCLOO_NS),
 		FoperandsConsumed: int32(1),
 		FoperandsProduced: int32(1),
 	},
 	134: {
 		Fname:             __ccgo_ts + 3228,
-		FinstType:         int32(_ASSEM_1BYTE),
 		FtclInstCode:      int32(m_INST_TCLOO_SELF),
-		FoperandsConsumed: int32(0),
 		FoperandsProduced: int32(1),
 	},
 	135: {
 		Fname:             __ccgo_ts + 3238,
-		FinstType:         int32(_ASSEM_1BYTE),
 		FtclInstCode:      int32(m_INST_TRY_CVT_TO_BOOLEAN),
 		FoperandsConsumed: int32(1),
 		FoperandsProduced: int32(2),
 	},
 	136: {
 		Fname:             __ccgo_ts + 3254,
-		FinstType:         int32(_ASSEM_1BYTE),
 		FtclInstCode:      int32(m_INST_TRY_CVT_TO_NUMERIC),
 		FoperandsConsumed: int32(1),
 		FoperandsProduced: int32(1),
 	},
 	137: {
 		Fname:             __ccgo_ts + 3270,
-		FinstType:         int32(_ASSEM_1BYTE),
 		FtclInstCode:      int32(m_INST_UMINUS),
 		FoperandsConsumed: int32(1),
 		FoperandsProduced: int32(1),
 	},
 	138: {
-		Fname:             __ccgo_ts + 3277,
-		FinstType:         int32(_ASSEM_BOOL_LVT4),
-		FtclInstCode:      int32(m_INST_UNSET_SCALAR),
-		FoperandsConsumed: int32(0),
-		FoperandsProduced: int32(0),
+		Fname:        __ccgo_ts + 3277,
+		FinstType:    int32(_ASSEM_BOOL_LVT4),
+		FtclInstCode: int32(m_INST_UNSET_SCALAR),
 	},
 	139: {
 		Fname:             __ccgo_ts + 3283,
 		FinstType:         int32(_ASSEM_BOOL_LVT4),
 		FtclInstCode:      int32(m_INST_UNSET_ARRAY),
 		FoperandsConsumed: int32(1),
-		FoperandsProduced: int32(0),
 	},
 	140: {
 		Fname:             __ccgo_ts + 3294,
 		FinstType:         int32(_ASSEM_BOOL),
 		FtclInstCode:      int32(m_INST_UNSET_ARRAY_STK),
 		FoperandsConsumed: int32(2),
-		FoperandsProduced: int32(0),
 	},
 	141: {
 		Fname:             __ccgo_ts + 3308,
 		FinstType:         int32(_ASSEM_BOOL),
 		FtclInstCode:      int32(m_INST_UNSET_STK),
 		FoperandsConsumed: int32(1),
-		FoperandsProduced: int32(0),
 	},
 	142: {
 		Fname:             __ccgo_ts + 3317,
-		FinstType:         int32(_ASSEM_1BYTE),
 		FtclInstCode:      int32(m_INST_UPLUS),
 		FoperandsConsumed: int32(1),
 		FoperandsProduced: int32(1),
@@ -21353,23 +21214,18 @@ var _TalInstructionTable = [148]TTalInstDesc{
 		FinstType:         int32(_ASSEM_LVT4),
 		FtclInstCode:      int32(m_INST_VARIABLE),
 		FoperandsConsumed: int32(1),
-		FoperandsProduced: int32(0),
 	},
 	145: {
 		Fname:             __ccgo_ts + 3338,
-		FinstType:         int32(_ASSEM_1BYTE),
 		FtclInstCode:      int32(m_INST_DICT_VERIFY),
 		FoperandsConsumed: int32(1),
-		FoperandsProduced: int32(0),
 	},
 	146: {
 		Fname:             __ccgo_ts + 3349,
-		FinstType:         int32(_ASSEM_1BYTE),
 		FtclInstCode:      int32(m_INST_YIELD),
 		FoperandsConsumed: int32(1),
 		FoperandsProduced: int32(1),
 	},
-	147: {},
 }
 
 /*
@@ -25440,606 +25296,340 @@ type TCmdInfo = struct {
 
 var _builtInCmds = [82]TCmdInfo{
 	0: {
-		Fname:        __ccgo_ts + 1978,
-		FobjProc:     uintptr(0),
-		FcompileProc: uintptr(0),
-		FnreProc:     uintptr(0),
-		Fflags:       int32(m_CMD_IS_SAFE),
+		Fname:  __ccgo_ts + 1978,
+		Fflags: int32(m_CMD_IS_SAFE),
 	},
 	1: {
-		Fname:        __ccgo_ts + 4991,
-		FobjProc:     uintptr(0),
-		FcompileProc: uintptr(0),
-		FnreProc:     uintptr(0),
-		Fflags:       int32(m_CMD_IS_SAFE),
+		Fname:  __ccgo_ts + 4991,
+		Fflags: int32(m_CMD_IS_SAFE),
 	},
 	2: {
-		Fname:        __ccgo_ts + 4997,
-		FobjProc:     uintptr(0),
-		FcompileProc: uintptr(0),
-		FnreProc:     uintptr(0),
-		Fflags:       int32(m_CMD_IS_SAFE),
+		Fname:  __ccgo_ts + 4997,
+		Fflags: int32(m_CMD_IS_SAFE),
 	},
 	3: {
-		Fname:        __ccgo_ts + 5003,
-		FobjProc:     uintptr(0),
-		FcompileProc: uintptr(0),
-		FnreProc:     uintptr(0),
-		Fflags:       int32(m_CMD_IS_SAFE),
+		Fname:  __ccgo_ts + 5003,
+		Fflags: int32(m_CMD_IS_SAFE),
 	},
 	4: {
-		Fname:        __ccgo_ts + 5008,
-		FobjProc:     uintptr(0),
-		FcompileProc: uintptr(0),
-		FnreProc:     uintptr(0),
-		Fflags:       int32(m_CMD_IS_SAFE),
+		Fname:  __ccgo_ts + 5008,
+		Fflags: int32(m_CMD_IS_SAFE),
 	},
 	5: {
-		Fname:        __ccgo_ts + 2126,
-		FobjProc:     uintptr(0),
-		FcompileProc: uintptr(0),
-		FnreProc:     uintptr(0),
-		Fflags:       int32(m_CMD_IS_SAFE),
+		Fname:  __ccgo_ts + 2126,
+		Fflags: int32(m_CMD_IS_SAFE),
 	},
 	6: {
-		Fname:        __ccgo_ts + 5014,
-		FobjProc:     uintptr(0),
-		FcompileProc: uintptr(0),
-		FnreProc:     uintptr(0),
-		Fflags:       int32(m_CMD_IS_SAFE),
+		Fname:  __ccgo_ts + 5014,
+		Fflags: int32(m_CMD_IS_SAFE),
 	},
 	7: {
-		Fname:        __ccgo_ts + 5023,
-		FobjProc:     uintptr(0),
-		FcompileProc: uintptr(0),
-		FnreProc:     uintptr(0),
-		Fflags:       int32(m_CMD_IS_SAFE),
+		Fname:  __ccgo_ts + 5023,
+		Fflags: int32(m_CMD_IS_SAFE),
 	},
 	8: {
-		Fname:        __ccgo_ts + 5033,
-		FobjProc:     uintptr(0),
-		FcompileProc: uintptr(0),
-		FnreProc:     uintptr(0),
-		Fflags:       int32(m_CMD_IS_SAFE),
+		Fname:  __ccgo_ts + 5033,
+		Fflags: int32(m_CMD_IS_SAFE),
 	},
 	9: {
-		Fname:        __ccgo_ts + 2306,
-		FobjProc:     uintptr(0),
-		FcompileProc: uintptr(0),
-		FnreProc:     uintptr(0),
-		Fflags:       int32(m_CMD_IS_SAFE),
+		Fname:  __ccgo_ts + 2306,
+		Fflags: int32(m_CMD_IS_SAFE),
 	},
 	10: {
-		Fname:        __ccgo_ts + 2365,
-		FobjProc:     uintptr(0),
-		FcompileProc: uintptr(0),
-		FnreProc:     uintptr(0),
-		Fflags:       int32(m_CMD_IS_SAFE),
+		Fname:  __ccgo_ts + 2365,
+		Fflags: int32(m_CMD_IS_SAFE),
 	},
 	11: {
-		Fname:        __ccgo_ts + 5039,
-		FobjProc:     uintptr(0),
-		FcompileProc: uintptr(0),
-		FnreProc:     uintptr(0),
-		Fflags:       int32(m_CMD_IS_SAFE),
+		Fname:  __ccgo_ts + 5039,
+		Fflags: int32(m_CMD_IS_SAFE),
 	},
 	12: {
-		Fname:        __ccgo_ts + 5043,
-		FobjProc:     uintptr(0),
-		FcompileProc: uintptr(0),
-		FnreProc:     uintptr(0),
-		Fflags:       int32(m_CMD_IS_SAFE),
+		Fname:  __ccgo_ts + 5043,
+		Fflags: int32(m_CMD_IS_SAFE),
 	},
 	13: {
-		Fname:        __ccgo_ts + 5051,
-		FobjProc:     uintptr(0),
-		FcompileProc: uintptr(0),
-		FnreProc:     uintptr(0),
-		Fflags:       int32(m_CMD_IS_SAFE),
+		Fname:  __ccgo_ts + 5051,
+		Fflags: int32(m_CMD_IS_SAFE),
 	},
 	14: {
-		Fname:        __ccgo_ts + 5058,
-		FobjProc:     uintptr(0),
-		FcompileProc: uintptr(0),
-		FnreProc:     uintptr(0),
-		Fflags:       int32(m_CMD_IS_SAFE),
+		Fname:  __ccgo_ts + 5058,
+		Fflags: int32(m_CMD_IS_SAFE),
 	},
 	15: {
-		Fname:        __ccgo_ts + 5065,
-		FobjProc:     uintptr(0),
-		FcompileProc: uintptr(0),
-		FnreProc:     uintptr(0),
-		Fflags:       int32(m_CMD_IS_SAFE),
+		Fname:  __ccgo_ts + 5065,
+		Fflags: int32(m_CMD_IS_SAFE),
 	},
 	16: {
-		Fname:        __ccgo_ts + 2384,
-		FobjProc:     uintptr(0),
-		FcompileProc: uintptr(0),
-		FnreProc:     uintptr(0),
-		Fflags:       int32(m_CMD_IS_SAFE),
+		Fname:  __ccgo_ts + 2384,
+		Fflags: int32(m_CMD_IS_SAFE),
 	},
 	17: {
-		Fname:        __ccgo_ts + 5068,
-		FobjProc:     uintptr(0),
-		FcompileProc: uintptr(0),
-		FnreProc:     uintptr(0),
-		Fflags:       int32(m_CMD_IS_SAFE),
+		Fname:  __ccgo_ts + 5068,
+		Fflags: int32(m_CMD_IS_SAFE),
 	},
 	18: {
-		Fname:        __ccgo_ts + 2580,
-		FobjProc:     uintptr(0),
-		FcompileProc: uintptr(0),
-		FnreProc:     uintptr(0),
-		Fflags:       int32(m_CMD_IS_SAFE),
+		Fname:  __ccgo_ts + 2580,
+		Fflags: int32(m_CMD_IS_SAFE),
 	},
 	19: {
-		Fname:        __ccgo_ts + 5073,
-		FobjProc:     uintptr(0),
-		FcompileProc: uintptr(0),
-		FnreProc:     uintptr(0),
-		Fflags:       int32(m_CMD_IS_SAFE),
+		Fname:  __ccgo_ts + 5073,
+		Fflags: int32(m_CMD_IS_SAFE),
 	},
 	20: {
-		Fname:        __ccgo_ts + 5081,
-		FobjProc:     uintptr(0),
-		FcompileProc: uintptr(0),
-		FnreProc:     uintptr(0),
-		Fflags:       int32(m_CMD_IS_SAFE),
+		Fname:  __ccgo_ts + 5081,
+		Fflags: int32(m_CMD_IS_SAFE),
 	},
 	21: {
-		Fname:        __ccgo_ts + 5088,
-		FobjProc:     uintptr(0),
-		FcompileProc: uintptr(0),
-		FnreProc:     uintptr(0),
-		Fflags:       int32(m_CMD_IS_SAFE),
+		Fname:  __ccgo_ts + 5088,
+		Fflags: int32(m_CMD_IS_SAFE),
 	},
 	22: {
-		Fname:        __ccgo_ts + 2707,
-		FobjProc:     uintptr(0),
-		FcompileProc: uintptr(0),
-		FnreProc:     uintptr(0),
-		Fflags:       libc.Int32FromInt32(m_CMD_IS_SAFE) | libc.Int32FromInt32(m_CMD_COMPILES_EXPANDED),
+		Fname:  __ccgo_ts + 2707,
+		Fflags: libc.Int32FromInt32(m_CMD_IS_SAFE) | libc.Int32FromInt32(m_CMD_COMPILES_EXPANDED),
 	},
 	23: {
-		Fname:        __ccgo_ts + 5096,
-		FobjProc:     uintptr(0),
-		FcompileProc: uintptr(0),
-		FnreProc:     uintptr(0),
-		Fflags:       int32(m_CMD_IS_SAFE),
+		Fname:  __ccgo_ts + 5096,
+		Fflags: int32(m_CMD_IS_SAFE),
 	},
 	24: {
-		Fname:        __ccgo_ts + 5104,
-		FobjProc:     uintptr(0),
-		FcompileProc: uintptr(0),
-		FnreProc:     uintptr(0),
-		Fflags:       int32(m_CMD_IS_SAFE),
+		Fname:  __ccgo_ts + 5104,
+		Fflags: int32(m_CMD_IS_SAFE),
 	},
 	25: {
-		Fname:        __ccgo_ts + 5109,
-		FobjProc:     uintptr(0),
-		FcompileProc: uintptr(0),
-		FnreProc:     uintptr(0),
-		Fflags:       int32(m_CMD_IS_SAFE),
+		Fname:  __ccgo_ts + 5109,
+		Fflags: int32(m_CMD_IS_SAFE),
 	},
 	26: {
-		Fname:        __ccgo_ts + 5116,
-		FobjProc:     uintptr(0),
-		FcompileProc: uintptr(0),
-		FnreProc:     uintptr(0),
-		Fflags:       int32(m_CMD_IS_SAFE),
+		Fname:  __ccgo_ts + 5116,
+		Fflags: int32(m_CMD_IS_SAFE),
 	},
 	27: {
-		Fname:        __ccgo_ts + 5124,
-		FobjProc:     uintptr(0),
-		FcompileProc: uintptr(0),
-		FnreProc:     uintptr(0),
-		Fflags:       int32(m_CMD_IS_SAFE),
+		Fname:  __ccgo_ts + 5124,
+		Fflags: int32(m_CMD_IS_SAFE),
 	},
 	28: {
-		Fname:        __ccgo_ts + 5133,
-		FobjProc:     uintptr(0),
-		FcompileProc: uintptr(0),
-		FnreProc:     uintptr(0),
-		Fflags:       int32(m_CMD_IS_SAFE),
+		Fname:  __ccgo_ts + 5133,
+		Fflags: int32(m_CMD_IS_SAFE),
 	},
 	29: {
-		Fname:        __ccgo_ts + 5142,
-		FobjProc:     uintptr(0),
-		FcompileProc: uintptr(0),
-		FnreProc:     uintptr(0),
-		Fflags:       int32(m_CMD_IS_SAFE),
+		Fname:  __ccgo_ts + 5142,
+		Fflags: int32(m_CMD_IS_SAFE),
 	},
 	30: {
-		Fname:        __ccgo_ts + 5150,
-		FobjProc:     uintptr(0),
-		FcompileProc: uintptr(0),
-		FnreProc:     uintptr(0),
-		Fflags:       int32(m_CMD_IS_SAFE),
+		Fname:  __ccgo_ts + 5150,
+		Fflags: int32(m_CMD_IS_SAFE),
 	},
 	31: {
-		Fname:        __ccgo_ts + 5155,
-		FobjProc:     uintptr(0),
-		FcompileProc: uintptr(0),
-		FnreProc:     uintptr(0),
-		Fflags:       int32(m_CMD_IS_SAFE),
+		Fname:  __ccgo_ts + 5155,
+		Fflags: int32(m_CMD_IS_SAFE),
 	},
 	32: {
-		Fname:        __ccgo_ts + 5161,
-		FobjProc:     uintptr(0),
-		FcompileProc: uintptr(0),
-		FnreProc:     uintptr(0),
-		Fflags:       int32(m_CMD_IS_SAFE),
+		Fname:  __ccgo_ts + 5161,
+		Fflags: int32(m_CMD_IS_SAFE),
 	},
 	33: {
-		Fname:        __ccgo_ts + 5169,
-		FobjProc:     uintptr(0),
-		FcompileProc: uintptr(0),
-		FnreProc:     uintptr(0),
-		Fflags:       int32(m_CMD_IS_SAFE),
+		Fname:  __ccgo_ts + 5169,
+		Fflags: int32(m_CMD_IS_SAFE),
 	},
 	34: {
-		Fname:        __ccgo_ts + 2943,
-		FobjProc:     uintptr(0),
-		FcompileProc: uintptr(0),
-		FnreProc:     uintptr(0),
-		Fflags:       int32(m_CMD_IS_SAFE),
+		Fname:  __ccgo_ts + 2943,
+		Fflags: int32(m_CMD_IS_SAFE),
 	},
 	35: {
-		Fname:        __ccgo_ts + 5174,
-		FobjProc:     uintptr(0),
-		FcompileProc: uintptr(0),
-		FnreProc:     uintptr(0),
-		Fflags:       int32(m_CMD_IS_SAFE),
+		Fname:  __ccgo_ts + 5174,
+		Fflags: int32(m_CMD_IS_SAFE),
 	},
 	36: {
-		Fname:        __ccgo_ts + 5181,
-		FobjProc:     uintptr(0),
-		FcompileProc: uintptr(0),
-		FnreProc:     uintptr(0),
-		Fflags:       int32(m_CMD_IS_SAFE),
+		Fname:  __ccgo_ts + 5181,
+		Fflags: int32(m_CMD_IS_SAFE),
 	},
 	37: {
-		Fname:        __ccgo_ts + 5188,
-		FobjProc:     uintptr(0),
-		FcompileProc: uintptr(0),
-		FnreProc:     uintptr(0),
-		Fflags:       int32(m_CMD_IS_SAFE),
+		Fname:  __ccgo_ts + 5188,
+		Fflags: int32(m_CMD_IS_SAFE),
 	},
 	38: {
-		Fname:        __ccgo_ts + 5195,
-		FobjProc:     uintptr(0),
-		FcompileProc: uintptr(0),
-		FnreProc:     uintptr(0),
-		Fflags:       int32(m_CMD_IS_SAFE),
+		Fname:  __ccgo_ts + 5195,
+		Fflags: int32(m_CMD_IS_SAFE),
 	},
 	39: {
-		Fname:        __ccgo_ts + 5200,
-		FobjProc:     uintptr(0),
-		FcompileProc: uintptr(0),
-		FnreProc:     uintptr(0),
-		Fflags:       int32(m_CMD_IS_SAFE),
+		Fname:  __ccgo_ts + 5200,
+		Fflags: int32(m_CMD_IS_SAFE),
 	},
 	40: {
-		Fname:        __ccgo_ts + 5204,
-		FobjProc:     uintptr(0),
-		FcompileProc: uintptr(0),
-		FnreProc:     uintptr(0),
-		Fflags:       int32(m_CMD_IS_SAFE),
+		Fname:  __ccgo_ts + 5204,
+		Fflags: int32(m_CMD_IS_SAFE),
 	},
 	41: {
-		Fname:        __ccgo_ts + 5210,
-		FobjProc:     uintptr(0),
-		FcompileProc: uintptr(0),
-		FnreProc:     uintptr(0),
-		Fflags:       int32(m_CMD_IS_SAFE),
+		Fname:  __ccgo_ts + 5210,
+		Fflags: int32(m_CMD_IS_SAFE),
 	},
 	42: {
-		Fname:        __ccgo_ts + 5216,
-		FobjProc:     uintptr(0),
-		FcompileProc: uintptr(0),
-		FnreProc:     uintptr(0),
-		Fflags:       int32(m_CMD_IS_SAFE),
+		Fname:  __ccgo_ts + 5216,
+		Fflags: int32(m_CMD_IS_SAFE),
 	},
 	43: {
-		Fname:        __ccgo_ts + 5223,
-		FobjProc:     uintptr(0),
-		FcompileProc: uintptr(0),
-		FnreProc:     uintptr(0),
-		Fflags:       int32(m_CMD_IS_SAFE),
+		Fname:  __ccgo_ts + 5223,
+		Fflags: int32(m_CMD_IS_SAFE),
 	},
 	44: {
-		Fname:        __ccgo_ts + 5232,
-		FobjProc:     uintptr(0),
-		FcompileProc: uintptr(0),
-		FnreProc:     uintptr(0),
-		Fflags:       int32(m_CMD_IS_SAFE),
+		Fname:  __ccgo_ts + 5232,
+		Fflags: int32(m_CMD_IS_SAFE),
 	},
 	45: {
-		Fname:        __ccgo_ts + 5238,
-		FobjProc:     uintptr(0),
-		FcompileProc: uintptr(0),
-		FnreProc:     uintptr(0),
-		Fflags:       int32(m_CMD_IS_SAFE),
+		Fname:  __ccgo_ts + 5238,
+		Fflags: int32(m_CMD_IS_SAFE),
 	},
 	46: {
-		Fname:        __ccgo_ts + 5244,
-		FobjProc:     uintptr(0),
-		FcompileProc: uintptr(0),
-		FnreProc:     uintptr(0),
-		Fflags:       int32(m_CMD_IS_SAFE),
+		Fname:  __ccgo_ts + 5244,
+		Fflags: int32(m_CMD_IS_SAFE),
 	},
 	47: {
-		Fname:        __ccgo_ts + 3277,
-		FobjProc:     uintptr(0),
-		FcompileProc: uintptr(0),
-		FnreProc:     uintptr(0),
-		Fflags:       int32(m_CMD_IS_SAFE),
+		Fname:  __ccgo_ts + 3277,
+		Fflags: int32(m_CMD_IS_SAFE),
 	},
 	48: {
-		Fname:        __ccgo_ts + 5248,
-		FobjProc:     uintptr(0),
-		FcompileProc: uintptr(0),
-		FnreProc:     uintptr(0),
-		Fflags:       int32(m_CMD_IS_SAFE),
+		Fname:  __ccgo_ts + 5248,
+		Fflags: int32(m_CMD_IS_SAFE),
 	},
 	49: {
-		Fname:        __ccgo_ts + 3323,
-		FobjProc:     uintptr(0),
-		FcompileProc: uintptr(0),
-		FnreProc:     uintptr(0),
-		Fflags:       int32(m_CMD_IS_SAFE),
+		Fname:  __ccgo_ts + 3323,
+		Fflags: int32(m_CMD_IS_SAFE),
 	},
 	50: {
-		Fname:        __ccgo_ts + 3329,
-		FobjProc:     uintptr(0),
-		FcompileProc: uintptr(0),
-		FnreProc:     uintptr(0),
-		Fflags:       int32(m_CMD_IS_SAFE),
+		Fname:  __ccgo_ts + 3329,
+		Fflags: int32(m_CMD_IS_SAFE),
 	},
 	51: {
-		Fname:        __ccgo_ts + 5256,
-		FobjProc:     uintptr(0),
-		FcompileProc: uintptr(0),
-		FnreProc:     uintptr(0),
-		Fflags:       int32(m_CMD_IS_SAFE),
+		Fname:  __ccgo_ts + 5256,
+		Fflags: int32(m_CMD_IS_SAFE),
 	},
 	52: {
-		Fname:        __ccgo_ts + 3349,
-		FobjProc:     uintptr(0),
-		FcompileProc: uintptr(0),
-		FnreProc:     uintptr(0),
-		Fflags:       int32(m_CMD_IS_SAFE),
+		Fname:  __ccgo_ts + 3349,
+		Fflags: int32(m_CMD_IS_SAFE),
 	},
 	53: {
-		Fname:        __ccgo_ts + 5262,
-		FobjProc:     uintptr(0),
-		FcompileProc: uintptr(0),
-		FnreProc:     uintptr(0),
-		Fflags:       int32(m_CMD_IS_SAFE),
+		Fname:  __ccgo_ts + 5262,
+		Fflags: int32(m_CMD_IS_SAFE),
 	},
 	54: {
-		Fname:        __ccgo_ts + 5270,
-		FobjProc:     uintptr(0),
-		FcompileProc: uintptr(0),
-		FnreProc:     uintptr(0),
-		Fflags:       int32(m_CMD_IS_SAFE),
+		Fname:  __ccgo_ts + 5270,
+		Fflags: int32(m_CMD_IS_SAFE),
 	},
 	55: {
-		Fname:        __ccgo_ts + 5276,
-		FobjProc:     uintptr(0),
-		FcompileProc: uintptr(0),
-		FnreProc:     uintptr(0),
-		Fflags:       int32(0),
+		Fname: __ccgo_ts + 5276,
 	},
 	56: {
-		Fname:        __ccgo_ts + 5279,
-		FobjProc:     uintptr(0),
-		FcompileProc: uintptr(0),
-		FnreProc:     uintptr(0),
-		Fflags:       int32(m_CMD_IS_SAFE),
+		Fname:  __ccgo_ts + 5279,
+		Fflags: int32(m_CMD_IS_SAFE),
 	},
 	57: {
-		Fname:        __ccgo_ts + 5285,
-		FobjProc:     uintptr(0),
-		FcompileProc: uintptr(0),
-		FnreProc:     uintptr(0),
-		Fflags:       int32(m_CMD_IS_SAFE),
+		Fname:  __ccgo_ts + 5285,
+		Fflags: int32(m_CMD_IS_SAFE),
 	},
 	58: {
-		Fname:        __ccgo_ts + 5289,
-		FobjProc:     uintptr(0),
-		FcompileProc: uintptr(0),
-		FnreProc:     uintptr(0),
-		Fflags:       int32(0),
+		Fname: __ccgo_ts + 5289,
 	},
 	59: {
-		Fname:        __ccgo_ts + 5294,
-		FobjProc:     uintptr(0),
-		FcompileProc: uintptr(0),
-		FnreProc:     uintptr(0),
-		Fflags:       int32(0),
+		Fname: __ccgo_ts + 5294,
 	},
 	60: {
-		Fname:        __ccgo_ts + 5299,
-		FobjProc:     uintptr(0),
-		FcompileProc: uintptr(0),
-		FnreProc:     uintptr(0),
-		Fflags:       int32(m_CMD_IS_SAFE),
+		Fname:  __ccgo_ts + 5299,
+		Fflags: int32(m_CMD_IS_SAFE),
 	},
 	61: {
-		Fname:        __ccgo_ts + 5308,
-		FobjProc:     uintptr(0),
-		FcompileProc: uintptr(0),
-		FnreProc:     uintptr(0),
-		Fflags:       int32(0),
+		Fname: __ccgo_ts + 5308,
 	},
 	62: {
-		Fname:        __ccgo_ts + 5319,
-		FobjProc:     uintptr(0),
-		FcompileProc: uintptr(0),
-		FnreProc:     uintptr(0),
-		Fflags:       int32(m_CMD_IS_SAFE),
+		Fname:  __ccgo_ts + 5319,
+		Fflags: int32(m_CMD_IS_SAFE),
 	},
 	63: {
-		Fname:        __ccgo_ts + 5325,
-		FobjProc:     uintptr(0),
-		FcompileProc: uintptr(0),
-		FnreProc:     uintptr(0),
-		Fflags:       int32(m_CMD_IS_SAFE),
+		Fname:  __ccgo_ts + 5325,
+		Fflags: int32(m_CMD_IS_SAFE),
 	},
 	64: {
-		Fname:        __ccgo_ts + 5335,
-		FobjProc:     uintptr(0),
-		FcompileProc: uintptr(0),
-		FnreProc:     uintptr(0),
-		Fflags:       int32(m_CMD_IS_SAFE),
+		Fname:  __ccgo_ts + 5335,
+		Fflags: int32(m_CMD_IS_SAFE),
 	},
 	65: {
-		Fname:        __ccgo_ts + 5341,
-		FobjProc:     uintptr(0),
-		FcompileProc: uintptr(0),
-		FnreProc:     uintptr(0),
-		Fflags:       int32(m_CMD_IS_SAFE),
+		Fname:  __ccgo_ts + 5341,
+		Fflags: int32(m_CMD_IS_SAFE),
 	},
 	66: {
-		Fname:        __ccgo_ts + 5346,
-		FobjProc:     uintptr(0),
-		FcompileProc: uintptr(0),
-		FnreProc:     uintptr(0),
-		Fflags:       int32(0),
+		Fname: __ccgo_ts + 5346,
 	},
 	67: {
-		Fname:        __ccgo_ts + 2774,
-		FobjProc:     uintptr(0),
-		FcompileProc: uintptr(0),
-		FnreProc:     uintptr(0),
-		Fflags:       int32(0),
+		Fname: __ccgo_ts + 2774,
 	},
 	68: {
-		Fname:        __ccgo_ts + 5351,
-		FobjProc:     uintptr(0),
-		FcompileProc: uintptr(0),
-		FnreProc:     uintptr(0),
-		Fflags:       int32(0),
+		Fname: __ccgo_ts + 5351,
 	},
 	69: {
-		Fname:        __ccgo_ts + 5356,
-		FobjProc:     uintptr(0),
-		FcompileProc: uintptr(0),
-		FnreProc:     uintptr(0),
-		Fflags:       int32(m_CMD_IS_SAFE),
+		Fname:  __ccgo_ts + 5356,
+		Fflags: int32(m_CMD_IS_SAFE),
 	},
 	70: {
-		Fname:        __ccgo_ts + 5360,
-		FobjProc:     uintptr(0),
-		FcompileProc: uintptr(0),
-		FnreProc:     uintptr(0),
-		Fflags:       int32(m_CMD_IS_SAFE),
+		Fname:  __ccgo_ts + 5360,
+		Fflags: int32(m_CMD_IS_SAFE),
 	},
 	71: {
-		Fname:        __ccgo_ts + 5365,
-		FobjProc:     uintptr(0),
-		FcompileProc: uintptr(0),
-		FnreProc:     uintptr(0),
-		Fflags:       int32(0),
+		Fname: __ccgo_ts + 5365,
 	},
 	72: {
-		Fname:        __ccgo_ts + 5369,
-		FobjProc:     uintptr(0),
-		FcompileProc: uintptr(0),
-		FnreProc:     uintptr(0),
-		Fflags:       int32(m_CMD_IS_SAFE),
+		Fname:  __ccgo_ts + 5369,
+		Fflags: int32(m_CMD_IS_SAFE),
 	},
 	73: {
-		Fname:        __ccgo_ts + 5374,
-		FobjProc:     uintptr(0),
-		FcompileProc: uintptr(0),
-		FnreProc:     uintptr(0),
-		Fflags:       int32(m_CMD_IS_SAFE),
+		Fname:  __ccgo_ts + 5374,
+		Fflags: int32(m_CMD_IS_SAFE),
 	},
 	74: {
-		Fname:        __ccgo_ts + 5379,
-		FobjProc:     uintptr(0),
-		FcompileProc: uintptr(0),
-		FnreProc:     uintptr(0),
-		Fflags:       int32(0),
+		Fname: __ccgo_ts + 5379,
 	},
 	75: {
-		Fname:        __ccgo_ts + 5386,
-		FobjProc:     uintptr(0),
-		FcompileProc: uintptr(0),
-		FnreProc:     uintptr(0),
-		Fflags:       int32(0),
+		Fname: __ccgo_ts + 5386,
 	},
 	76: {
-		Fname:        __ccgo_ts + 5393,
-		FobjProc:     uintptr(0),
-		FcompileProc: uintptr(0),
-		FnreProc:     uintptr(0),
-		Fflags:       int32(m_CMD_IS_SAFE),
+		Fname:  __ccgo_ts + 5393,
+		Fflags: int32(m_CMD_IS_SAFE),
 	},
 	77: {
-		Fname:        __ccgo_ts + 5398,
-		FobjProc:     uintptr(0),
-		FcompileProc: uintptr(0),
-		FnreProc:     uintptr(0),
-		Fflags:       int32(m_CMD_IS_SAFE),
+		Fname:  __ccgo_ts + 5398,
+		Fflags: int32(m_CMD_IS_SAFE),
 	},
 	78: {
-		Fname:        __ccgo_ts + 5403,
-		FobjProc:     uintptr(0),
-		FcompileProc: uintptr(0),
-		FnreProc:     uintptr(0),
-		Fflags:       int32(0),
+		Fname: __ccgo_ts + 5403,
 	},
 	79: {
-		Fname:        __ccgo_ts + 5410,
-		FobjProc:     uintptr(0),
-		FcompileProc: uintptr(0),
-		FnreProc:     uintptr(0),
-		Fflags:       int32(m_CMD_IS_SAFE),
+		Fname:  __ccgo_ts + 5410,
+		Fflags: int32(m_CMD_IS_SAFE),
 	},
 	80: {
-		Fname:        __ccgo_ts + 5417,
-		FobjProc:     uintptr(0),
-		FcompileProc: uintptr(0),
-		FnreProc:     uintptr(0),
-		Fflags:       int32(m_CMD_IS_SAFE),
+		Fname:  __ccgo_ts + 5417,
+		Fflags: int32(m_CMD_IS_SAFE),
 	},
-	81: {},
 }
 
 func init() {
 	p := unsafe.Pointer(&_builtInCmds)
 	*(*uintptr)(unsafe.Add(p, 4)) = __ccgo_fp(XTcl_AppendObjCmd)
 	*(*uintptr)(unsafe.Add(p, 8)) = __ccgo_fp(XTclCompileAppendCmd)
-	*(*uintptr)(unsafe.Add(p, 12)) = libc.UintptrFromInt32(0)
 	*(*uintptr)(unsafe.Add(p, 24)) = __ccgo_fp(XTcl_ApplyObjCmd)
-	*(*uintptr)(unsafe.Add(p, 28)) = libc.UintptrFromInt32(0)
 	*(*uintptr)(unsafe.Add(p, 32)) = __ccgo_fp(XTclNRApplyObjCmd)
 	*(*uintptr)(unsafe.Add(p, 44)) = __ccgo_fp(XTcl_BreakObjCmd)
 	*(*uintptr)(unsafe.Add(p, 48)) = __ccgo_fp(XTclCompileBreakCmd)
-	*(*uintptr)(unsafe.Add(p, 52)) = libc.UintptrFromInt32(0)
 	*(*uintptr)(unsafe.Add(p, 64)) = __ccgo_fp(XTcl_CaseObjCmd)
-	*(*uintptr)(unsafe.Add(p, 68)) = libc.UintptrFromInt32(0)
-	*(*uintptr)(unsafe.Add(p, 72)) = libc.UintptrFromInt32(0)
 	*(*uintptr)(unsafe.Add(p, 84)) = __ccgo_fp(XTcl_CatchObjCmd)
 	*(*uintptr)(unsafe.Add(p, 88)) = __ccgo_fp(XTclCompileCatchCmd)
 	*(*uintptr)(unsafe.Add(p, 92)) = __ccgo_fp(XTclNRCatchObjCmd)
 	*(*uintptr)(unsafe.Add(p, 104)) = __ccgo_fp(XTcl_ConcatObjCmd)
 	*(*uintptr)(unsafe.Add(p, 108)) = __ccgo_fp(XTclCompileConcatCmd)
-	*(*uintptr)(unsafe.Add(p, 112)) = libc.UintptrFromInt32(0)
 	*(*uintptr)(unsafe.Add(p, 124)) = __ccgo_fp(XTcl_ContinueObjCmd)
 	*(*uintptr)(unsafe.Add(p, 128)) = __ccgo_fp(XTclCompileContinueCmd)
-	*(*uintptr)(unsafe.Add(p, 132)) = libc.UintptrFromInt32(0)
-	*(*uintptr)(unsafe.Add(p, 144)) = libc.UintptrFromInt32(0)
-	*(*uintptr)(unsafe.Add(p, 148)) = libc.UintptrFromInt32(0)
 	*(*uintptr)(unsafe.Add(p, 152)) = __ccgo_fp(XTclNRCoroutineObjCmd)
 	*(*uintptr)(unsafe.Add(p, 164)) = __ccgo_fp(XTcl_ErrorObjCmd)
 	*(*uintptr)(unsafe.Add(p, 168)) = __ccgo_fp(XTclCompileErrorCmd)
-	*(*uintptr)(unsafe.Add(p, 172)) = libc.UintptrFromInt32(0)
 	*(*uintptr)(unsafe.Add(p, 184)) = __ccgo_fp(XTcl_EvalObjCmd)
-	*(*uintptr)(unsafe.Add(p, 188)) = libc.UintptrFromInt32(0)
 	*(*uintptr)(unsafe.Add(p, 192)) = __ccgo_fp(XTclNREvalObjCmd)
 	*(*uintptr)(unsafe.Add(p, 204)) = __ccgo_fp(XTcl_ExprObjCmd)
 	*(*uintptr)(unsafe.Add(p, 208)) = __ccgo_fp(XTclCompileExprCmd)
@@ -26052,208 +25642,110 @@ func init() {
 	*(*uintptr)(unsafe.Add(p, 252)) = __ccgo_fp(XTclNRForeachCmd)
 	*(*uintptr)(unsafe.Add(p, 264)) = __ccgo_fp(XTcl_FormatObjCmd)
 	*(*uintptr)(unsafe.Add(p, 268)) = __ccgo_fp(XTclCompileFormatCmd)
-	*(*uintptr)(unsafe.Add(p, 272)) = libc.UintptrFromInt32(0)
 	*(*uintptr)(unsafe.Add(p, 284)) = __ccgo_fp(XTcl_GlobalObjCmd)
 	*(*uintptr)(unsafe.Add(p, 288)) = __ccgo_fp(XTclCompileGlobalCmd)
-	*(*uintptr)(unsafe.Add(p, 292)) = libc.UintptrFromInt32(0)
 	*(*uintptr)(unsafe.Add(p, 304)) = __ccgo_fp(XTcl_IfObjCmd)
 	*(*uintptr)(unsafe.Add(p, 308)) = __ccgo_fp(XTclCompileIfCmd)
 	*(*uintptr)(unsafe.Add(p, 312)) = __ccgo_fp(XTclNRIfObjCmd)
 	*(*uintptr)(unsafe.Add(p, 324)) = __ccgo_fp(XTcl_IncrObjCmd)
 	*(*uintptr)(unsafe.Add(p, 328)) = __ccgo_fp(XTclCompileIncrCmd)
-	*(*uintptr)(unsafe.Add(p, 332)) = libc.UintptrFromInt32(0)
 	*(*uintptr)(unsafe.Add(p, 344)) = __ccgo_fp(XTcl_JoinObjCmd)
-	*(*uintptr)(unsafe.Add(p, 348)) = libc.UintptrFromInt32(0)
-	*(*uintptr)(unsafe.Add(p, 352)) = libc.UintptrFromInt32(0)
 	*(*uintptr)(unsafe.Add(p, 364)) = __ccgo_fp(XTcl_LappendObjCmd)
 	*(*uintptr)(unsafe.Add(p, 368)) = __ccgo_fp(XTclCompileLappendCmd)
-	*(*uintptr)(unsafe.Add(p, 372)) = libc.UintptrFromInt32(0)
 	*(*uintptr)(unsafe.Add(p, 384)) = __ccgo_fp(XTcl_LassignObjCmd)
 	*(*uintptr)(unsafe.Add(p, 388)) = __ccgo_fp(XTclCompileLassignCmd)
-	*(*uintptr)(unsafe.Add(p, 392)) = libc.UintptrFromInt32(0)
 	*(*uintptr)(unsafe.Add(p, 404)) = __ccgo_fp(XTcl_LindexObjCmd)
 	*(*uintptr)(unsafe.Add(p, 408)) = __ccgo_fp(XTclCompileLindexCmd)
-	*(*uintptr)(unsafe.Add(p, 412)) = libc.UintptrFromInt32(0)
 	*(*uintptr)(unsafe.Add(p, 424)) = __ccgo_fp(XTcl_LinsertObjCmd)
 	*(*uintptr)(unsafe.Add(p, 428)) = __ccgo_fp(XTclCompileLinsertCmd)
-	*(*uintptr)(unsafe.Add(p, 432)) = libc.UintptrFromInt32(0)
 	*(*uintptr)(unsafe.Add(p, 444)) = __ccgo_fp(XTcl_ListObjCmd)
 	*(*uintptr)(unsafe.Add(p, 448)) = __ccgo_fp(XTclCompileListCmd)
-	*(*uintptr)(unsafe.Add(p, 452)) = libc.UintptrFromInt32(0)
 	*(*uintptr)(unsafe.Add(p, 464)) = __ccgo_fp(XTcl_LlengthObjCmd)
 	*(*uintptr)(unsafe.Add(p, 468)) = __ccgo_fp(XTclCompileLlengthCmd)
-	*(*uintptr)(unsafe.Add(p, 472)) = libc.UintptrFromInt32(0)
 	*(*uintptr)(unsafe.Add(p, 484)) = __ccgo_fp(XTcl_LmapObjCmd)
 	*(*uintptr)(unsafe.Add(p, 488)) = __ccgo_fp(XTclCompileLmapCmd)
 	*(*uintptr)(unsafe.Add(p, 492)) = __ccgo_fp(XTclNRLmapCmd)
 	*(*uintptr)(unsafe.Add(p, 504)) = __ccgo_fp(XTcl_LrangeObjCmd)
 	*(*uintptr)(unsafe.Add(p, 508)) = __ccgo_fp(XTclCompileLrangeCmd)
-	*(*uintptr)(unsafe.Add(p, 512)) = libc.UintptrFromInt32(0)
 	*(*uintptr)(unsafe.Add(p, 524)) = __ccgo_fp(XTcl_LrepeatObjCmd)
-	*(*uintptr)(unsafe.Add(p, 528)) = libc.UintptrFromInt32(0)
-	*(*uintptr)(unsafe.Add(p, 532)) = libc.UintptrFromInt32(0)
 	*(*uintptr)(unsafe.Add(p, 544)) = __ccgo_fp(XTcl_LreplaceObjCmd)
 	*(*uintptr)(unsafe.Add(p, 548)) = __ccgo_fp(XTclCompileLreplaceCmd)
-	*(*uintptr)(unsafe.Add(p, 552)) = libc.UintptrFromInt32(0)
 	*(*uintptr)(unsafe.Add(p, 564)) = __ccgo_fp(XTcl_LreverseObjCmd)
-	*(*uintptr)(unsafe.Add(p, 568)) = libc.UintptrFromInt32(0)
-	*(*uintptr)(unsafe.Add(p, 572)) = libc.UintptrFromInt32(0)
 	*(*uintptr)(unsafe.Add(p, 584)) = __ccgo_fp(XTcl_LsearchObjCmd)
-	*(*uintptr)(unsafe.Add(p, 588)) = libc.UintptrFromInt32(0)
-	*(*uintptr)(unsafe.Add(p, 592)) = libc.UintptrFromInt32(0)
 	*(*uintptr)(unsafe.Add(p, 604)) = __ccgo_fp(XTcl_LsetObjCmd)
 	*(*uintptr)(unsafe.Add(p, 608)) = __ccgo_fp(XTclCompileLsetCmd)
-	*(*uintptr)(unsafe.Add(p, 612)) = libc.UintptrFromInt32(0)
 	*(*uintptr)(unsafe.Add(p, 624)) = __ccgo_fp(XTcl_LsortObjCmd)
-	*(*uintptr)(unsafe.Add(p, 628)) = libc.UintptrFromInt32(0)
-	*(*uintptr)(unsafe.Add(p, 632)) = libc.UintptrFromInt32(0)
 	*(*uintptr)(unsafe.Add(p, 644)) = __ccgo_fp(XTcl_PackageObjCmd)
-	*(*uintptr)(unsafe.Add(p, 648)) = libc.UintptrFromInt32(0)
 	*(*uintptr)(unsafe.Add(p, 652)) = __ccgo_fp(XTclNRPackageObjCmd)
 	*(*uintptr)(unsafe.Add(p, 664)) = __ccgo_fp(XTcl_ProcObjCmd)
-	*(*uintptr)(unsafe.Add(p, 668)) = libc.UintptrFromInt32(0)
-	*(*uintptr)(unsafe.Add(p, 672)) = libc.UintptrFromInt32(0)
 	*(*uintptr)(unsafe.Add(p, 684)) = __ccgo_fp(XTcl_RegexpObjCmd)
 	*(*uintptr)(unsafe.Add(p, 688)) = __ccgo_fp(XTclCompileRegexpCmd)
-	*(*uintptr)(unsafe.Add(p, 692)) = libc.UintptrFromInt32(0)
 	*(*uintptr)(unsafe.Add(p, 704)) = __ccgo_fp(XTcl_RegsubObjCmd)
 	*(*uintptr)(unsafe.Add(p, 708)) = __ccgo_fp(XTclCompileRegsubCmd)
-	*(*uintptr)(unsafe.Add(p, 712)) = libc.UintptrFromInt32(0)
 	*(*uintptr)(unsafe.Add(p, 724)) = __ccgo_fp(XTcl_RenameObjCmd)
-	*(*uintptr)(unsafe.Add(p, 728)) = libc.UintptrFromInt32(0)
-	*(*uintptr)(unsafe.Add(p, 732)) = libc.UintptrFromInt32(0)
 	*(*uintptr)(unsafe.Add(p, 744)) = __ccgo_fp(XTcl_ReturnObjCmd)
 	*(*uintptr)(unsafe.Add(p, 748)) = __ccgo_fp(XTclCompileReturnCmd)
-	*(*uintptr)(unsafe.Add(p, 752)) = libc.UintptrFromInt32(0)
 	*(*uintptr)(unsafe.Add(p, 764)) = __ccgo_fp(XTcl_ScanObjCmd)
-	*(*uintptr)(unsafe.Add(p, 768)) = libc.UintptrFromInt32(0)
-	*(*uintptr)(unsafe.Add(p, 772)) = libc.UintptrFromInt32(0)
 	*(*uintptr)(unsafe.Add(p, 784)) = __ccgo_fp(XTcl_SetObjCmd)
 	*(*uintptr)(unsafe.Add(p, 788)) = __ccgo_fp(XTclCompileSetCmd)
-	*(*uintptr)(unsafe.Add(p, 792)) = libc.UintptrFromInt32(0)
 	*(*uintptr)(unsafe.Add(p, 804)) = __ccgo_fp(XTcl_SplitObjCmd)
-	*(*uintptr)(unsafe.Add(p, 808)) = libc.UintptrFromInt32(0)
-	*(*uintptr)(unsafe.Add(p, 812)) = libc.UintptrFromInt32(0)
 	*(*uintptr)(unsafe.Add(p, 824)) = __ccgo_fp(XTcl_SubstObjCmd)
 	*(*uintptr)(unsafe.Add(p, 828)) = __ccgo_fp(XTclCompileSubstCmd)
 	*(*uintptr)(unsafe.Add(p, 832)) = __ccgo_fp(XTclNRSubstObjCmd)
 	*(*uintptr)(unsafe.Add(p, 844)) = __ccgo_fp(XTcl_SwitchObjCmd)
 	*(*uintptr)(unsafe.Add(p, 848)) = __ccgo_fp(XTclCompileSwitchCmd)
 	*(*uintptr)(unsafe.Add(p, 852)) = __ccgo_fp(XTclNRSwitchObjCmd)
-	*(*uintptr)(unsafe.Add(p, 864)) = libc.UintptrFromInt32(0)
 	*(*uintptr)(unsafe.Add(p, 868)) = __ccgo_fp(XTclCompileTailcallCmd)
 	*(*uintptr)(unsafe.Add(p, 872)) = __ccgo_fp(XTclNRTailcallObjCmd)
 	*(*uintptr)(unsafe.Add(p, 884)) = __ccgo_fp(XTcl_ThrowObjCmd)
 	*(*uintptr)(unsafe.Add(p, 888)) = __ccgo_fp(XTclCompileThrowCmd)
-	*(*uintptr)(unsafe.Add(p, 892)) = libc.UintptrFromInt32(0)
 	*(*uintptr)(unsafe.Add(p, 904)) = __ccgo_fp(XTcl_TraceObjCmd)
-	*(*uintptr)(unsafe.Add(p, 908)) = libc.UintptrFromInt32(0)
-	*(*uintptr)(unsafe.Add(p, 912)) = libc.UintptrFromInt32(0)
 	*(*uintptr)(unsafe.Add(p, 924)) = __ccgo_fp(XTcl_TryObjCmd)
 	*(*uintptr)(unsafe.Add(p, 928)) = __ccgo_fp(XTclCompileTryCmd)
 	*(*uintptr)(unsafe.Add(p, 932)) = __ccgo_fp(XTclNRTryObjCmd)
 	*(*uintptr)(unsafe.Add(p, 944)) = __ccgo_fp(XTcl_UnsetObjCmd)
 	*(*uintptr)(unsafe.Add(p, 948)) = __ccgo_fp(XTclCompileUnsetCmd)
-	*(*uintptr)(unsafe.Add(p, 952)) = libc.UintptrFromInt32(0)
 	*(*uintptr)(unsafe.Add(p, 964)) = __ccgo_fp(XTcl_UplevelObjCmd)
-	*(*uintptr)(unsafe.Add(p, 968)) = libc.UintptrFromInt32(0)
 	*(*uintptr)(unsafe.Add(p, 972)) = __ccgo_fp(XTclNRUplevelObjCmd)
 	*(*uintptr)(unsafe.Add(p, 984)) = __ccgo_fp(XTcl_UpvarObjCmd)
 	*(*uintptr)(unsafe.Add(p, 988)) = __ccgo_fp(XTclCompileUpvarCmd)
-	*(*uintptr)(unsafe.Add(p, 992)) = libc.UintptrFromInt32(0)
 	*(*uintptr)(unsafe.Add(p, 1004)) = __ccgo_fp(XTcl_VariableObjCmd)
 	*(*uintptr)(unsafe.Add(p, 1008)) = __ccgo_fp(XTclCompileVariableCmd)
-	*(*uintptr)(unsafe.Add(p, 1012)) = libc.UintptrFromInt32(0)
 	*(*uintptr)(unsafe.Add(p, 1024)) = __ccgo_fp(XTcl_WhileObjCmd)
 	*(*uintptr)(unsafe.Add(p, 1028)) = __ccgo_fp(XTclCompileWhileCmd)
 	*(*uintptr)(unsafe.Add(p, 1032)) = __ccgo_fp(XTclNRWhileObjCmd)
-	*(*uintptr)(unsafe.Add(p, 1044)) = libc.UintptrFromInt32(0)
 	*(*uintptr)(unsafe.Add(p, 1048)) = __ccgo_fp(XTclCompileYieldCmd)
 	*(*uintptr)(unsafe.Add(p, 1052)) = __ccgo_fp(XTclNRYieldObjCmd)
-	*(*uintptr)(unsafe.Add(p, 1064)) = libc.UintptrFromInt32(0)
 	*(*uintptr)(unsafe.Add(p, 1068)) = __ccgo_fp(XTclCompileYieldToCmd)
 	*(*uintptr)(unsafe.Add(p, 1072)) = __ccgo_fp(XTclNRYieldToObjCmd)
 	*(*uintptr)(unsafe.Add(p, 1084)) = __ccgo_fp(XTcl_AfterObjCmd)
-	*(*uintptr)(unsafe.Add(p, 1088)) = libc.UintptrFromInt32(0)
-	*(*uintptr)(unsafe.Add(p, 1092)) = libc.UintptrFromInt32(0)
 	*(*uintptr)(unsafe.Add(p, 1104)) = __ccgo_fp(XTcl_CdObjCmd)
-	*(*uintptr)(unsafe.Add(p, 1108)) = libc.UintptrFromInt32(0)
-	*(*uintptr)(unsafe.Add(p, 1112)) = libc.UintptrFromInt32(0)
 	*(*uintptr)(unsafe.Add(p, 1124)) = __ccgo_fp(XTcl_CloseObjCmd)
-	*(*uintptr)(unsafe.Add(p, 1128)) = libc.UintptrFromInt32(0)
-	*(*uintptr)(unsafe.Add(p, 1132)) = libc.UintptrFromInt32(0)
 	*(*uintptr)(unsafe.Add(p, 1144)) = __ccgo_fp(XTcl_EofObjCmd)
-	*(*uintptr)(unsafe.Add(p, 1148)) = libc.UintptrFromInt32(0)
-	*(*uintptr)(unsafe.Add(p, 1152)) = libc.UintptrFromInt32(0)
 	*(*uintptr)(unsafe.Add(p, 1164)) = __ccgo_fp(XTcl_ExecObjCmd)
-	*(*uintptr)(unsafe.Add(p, 1168)) = libc.UintptrFromInt32(0)
-	*(*uintptr)(unsafe.Add(p, 1172)) = libc.UintptrFromInt32(0)
 	*(*uintptr)(unsafe.Add(p, 1184)) = __ccgo_fp(XTcl_ExitObjCmd)
-	*(*uintptr)(unsafe.Add(p, 1188)) = libc.UintptrFromInt32(0)
-	*(*uintptr)(unsafe.Add(p, 1192)) = libc.UintptrFromInt32(0)
 	*(*uintptr)(unsafe.Add(p, 1204)) = __ccgo_fp(XTcl_FblockedObjCmd)
-	*(*uintptr)(unsafe.Add(p, 1208)) = libc.UintptrFromInt32(0)
-	*(*uintptr)(unsafe.Add(p, 1212)) = libc.UintptrFromInt32(0)
 	*(*uintptr)(unsafe.Add(p, 1224)) = __ccgo_fp(XTcl_FconfigureObjCmd)
-	*(*uintptr)(unsafe.Add(p, 1228)) = libc.UintptrFromInt32(0)
-	*(*uintptr)(unsafe.Add(p, 1232)) = libc.UintptrFromInt32(0)
 	*(*uintptr)(unsafe.Add(p, 1244)) = __ccgo_fp(XTcl_FcopyObjCmd)
-	*(*uintptr)(unsafe.Add(p, 1248)) = libc.UintptrFromInt32(0)
-	*(*uintptr)(unsafe.Add(p, 1252)) = libc.UintptrFromInt32(0)
 	*(*uintptr)(unsafe.Add(p, 1264)) = __ccgo_fp(XTcl_FileEventObjCmd)
-	*(*uintptr)(unsafe.Add(p, 1268)) = libc.UintptrFromInt32(0)
-	*(*uintptr)(unsafe.Add(p, 1272)) = libc.UintptrFromInt32(0)
 	*(*uintptr)(unsafe.Add(p, 1284)) = __ccgo_fp(XTcl_FlushObjCmd)
-	*(*uintptr)(unsafe.Add(p, 1288)) = libc.UintptrFromInt32(0)
-	*(*uintptr)(unsafe.Add(p, 1292)) = libc.UintptrFromInt32(0)
 	*(*uintptr)(unsafe.Add(p, 1304)) = __ccgo_fp(XTcl_GetsObjCmd)
-	*(*uintptr)(unsafe.Add(p, 1308)) = libc.UintptrFromInt32(0)
-	*(*uintptr)(unsafe.Add(p, 1312)) = libc.UintptrFromInt32(0)
 	*(*uintptr)(unsafe.Add(p, 1324)) = __ccgo_fp(XTcl_GlobObjCmd)
-	*(*uintptr)(unsafe.Add(p, 1328)) = libc.UintptrFromInt32(0)
-	*(*uintptr)(unsafe.Add(p, 1332)) = libc.UintptrFromInt32(0)
 	*(*uintptr)(unsafe.Add(p, 1344)) = __ccgo_fp(XTcl_LoadObjCmd)
-	*(*uintptr)(unsafe.Add(p, 1348)) = libc.UintptrFromInt32(0)
-	*(*uintptr)(unsafe.Add(p, 1352)) = libc.UintptrFromInt32(0)
 	*(*uintptr)(unsafe.Add(p, 1364)) = __ccgo_fp(XTcl_OpenObjCmd)
-	*(*uintptr)(unsafe.Add(p, 1368)) = libc.UintptrFromInt32(0)
-	*(*uintptr)(unsafe.Add(p, 1372)) = libc.UintptrFromInt32(0)
 	*(*uintptr)(unsafe.Add(p, 1384)) = __ccgo_fp(XTcl_PidObjCmd)
-	*(*uintptr)(unsafe.Add(p, 1388)) = libc.UintptrFromInt32(0)
-	*(*uintptr)(unsafe.Add(p, 1392)) = libc.UintptrFromInt32(0)
 	*(*uintptr)(unsafe.Add(p, 1404)) = __ccgo_fp(XTcl_PutsObjCmd)
-	*(*uintptr)(unsafe.Add(p, 1408)) = libc.UintptrFromInt32(0)
-	*(*uintptr)(unsafe.Add(p, 1412)) = libc.UintptrFromInt32(0)
 	*(*uintptr)(unsafe.Add(p, 1424)) = __ccgo_fp(XTcl_PwdObjCmd)
-	*(*uintptr)(unsafe.Add(p, 1428)) = libc.UintptrFromInt32(0)
-	*(*uintptr)(unsafe.Add(p, 1432)) = libc.UintptrFromInt32(0)
 	*(*uintptr)(unsafe.Add(p, 1444)) = __ccgo_fp(XTcl_ReadObjCmd)
-	*(*uintptr)(unsafe.Add(p, 1448)) = libc.UintptrFromInt32(0)
-	*(*uintptr)(unsafe.Add(p, 1452)) = libc.UintptrFromInt32(0)
 	*(*uintptr)(unsafe.Add(p, 1464)) = __ccgo_fp(XTcl_SeekObjCmd)
-	*(*uintptr)(unsafe.Add(p, 1468)) = libc.UintptrFromInt32(0)
-	*(*uintptr)(unsafe.Add(p, 1472)) = libc.UintptrFromInt32(0)
 	*(*uintptr)(unsafe.Add(p, 1484)) = __ccgo_fp(XTcl_SocketObjCmd)
-	*(*uintptr)(unsafe.Add(p, 1488)) = libc.UintptrFromInt32(0)
-	*(*uintptr)(unsafe.Add(p, 1492)) = libc.UintptrFromInt32(0)
 	*(*uintptr)(unsafe.Add(p, 1504)) = __ccgo_fp(XTcl_SourceObjCmd)
-	*(*uintptr)(unsafe.Add(p, 1508)) = libc.UintptrFromInt32(0)
 	*(*uintptr)(unsafe.Add(p, 1512)) = __ccgo_fp(XTclNRSourceObjCmd)
 	*(*uintptr)(unsafe.Add(p, 1524)) = __ccgo_fp(XTcl_TellObjCmd)
-	*(*uintptr)(unsafe.Add(p, 1528)) = libc.UintptrFromInt32(0)
-	*(*uintptr)(unsafe.Add(p, 1532)) = libc.UintptrFromInt32(0)
 	*(*uintptr)(unsafe.Add(p, 1544)) = __ccgo_fp(XTcl_TimeObjCmd)
-	*(*uintptr)(unsafe.Add(p, 1548)) = libc.UintptrFromInt32(0)
-	*(*uintptr)(unsafe.Add(p, 1552)) = libc.UintptrFromInt32(0)
 	*(*uintptr)(unsafe.Add(p, 1564)) = __ccgo_fp(XTcl_UnloadObjCmd)
-	*(*uintptr)(unsafe.Add(p, 1568)) = libc.UintptrFromInt32(0)
-	*(*uintptr)(unsafe.Add(p, 1572)) = libc.UintptrFromInt32(0)
 	*(*uintptr)(unsafe.Add(p, 1584)) = __ccgo_fp(XTcl_UpdateObjCmd)
-	*(*uintptr)(unsafe.Add(p, 1588)) = libc.UintptrFromInt32(0)
-	*(*uintptr)(unsafe.Add(p, 1592)) = libc.UintptrFromInt32(0)
 	*(*uintptr)(unsafe.Add(p, 1604)) = __ccgo_fp(XTcl_VwaitObjCmd)
-	*(*uintptr)(unsafe.Add(p, 1608)) = libc.UintptrFromInt32(0)
-	*(*uintptr)(unsafe.Add(p, 1612)) = libc.UintptrFromInt32(0)
 }
 
 /*
@@ -26268,151 +25760,92 @@ type TBuiltinFuncDef = struct {
 
 var _BuiltinFuncTable = [30]TBuiltinFuncDef{
 	0: {
-		Fname:       __ccgo_ts + 5423,
-		FobjCmdProc: uintptr(0),
-		FclientData: libc.UintptrFromInt32(0),
+		Fname: __ccgo_ts + 5423,
 	},
 	1: {
-		Fname:       __ccgo_ts + 5427,
-		FobjCmdProc: uintptr(0),
-		FclientData: uintptr(0),
+		Fname: __ccgo_ts + 5427,
 	},
 	2: {
-		Fname:       __ccgo_ts + 5432,
-		FobjCmdProc: uintptr(0),
-		FclientData: uintptr(0),
+		Fname: __ccgo_ts + 5432,
 	},
 	3: {
-		Fname:       __ccgo_ts + 5437,
-		FobjCmdProc: uintptr(0),
-		FclientData: uintptr(0),
+		Fname: __ccgo_ts + 5437,
 	},
 	4: {
-		Fname:       __ccgo_ts + 5442,
-		FobjCmdProc: uintptr(0),
-		FclientData: uintptr(0),
+		Fname: __ccgo_ts + 5442,
 	},
 	5: {
-		Fname:       __ccgo_ts + 5448,
-		FobjCmdProc: uintptr(0),
-		FclientData: libc.UintptrFromInt32(0),
+		Fname: __ccgo_ts + 5448,
 	},
 	6: {
-		Fname:       __ccgo_ts + 5453,
-		FobjCmdProc: uintptr(0),
-		FclientData: libc.UintptrFromInt32(0),
+		Fname: __ccgo_ts + 5453,
 	},
 	7: {
-		Fname:       __ccgo_ts + 5458,
-		FobjCmdProc: uintptr(0),
-		FclientData: uintptr(0),
+		Fname: __ccgo_ts + 5458,
 	},
 	8: {
-		Fname:       __ccgo_ts + 5462,
-		FobjCmdProc: uintptr(0),
-		FclientData: uintptr(0),
+		Fname: __ccgo_ts + 5462,
 	},
 	9: {
-		Fname:       __ccgo_ts + 5467,
-		FobjCmdProc: uintptr(0),
-		FclientData: libc.UintptrFromInt32(0),
+		Fname: __ccgo_ts + 5467,
 	},
 	10: {
-		Fname:       __ccgo_ts + 5474,
-		FobjCmdProc: uintptr(0),
-		FclientData: libc.UintptrFromInt32(0),
+		Fname: __ccgo_ts + 5474,
 	},
 	11: {
-		Fname:       __ccgo_ts + 5481,
-		FobjCmdProc: uintptr(0),
-		FclientData: uintptr(0),
+		Fname: __ccgo_ts + 5481,
 	},
 	12: {
-		Fname:       __ccgo_ts + 5485,
-		FobjCmdProc: uintptr(0),
-		FclientData: libc.UintptrFromInt32(0),
+		Fname: __ccgo_ts + 5485,
 	},
 	13: {
-		Fname:       __ccgo_ts + 5491,
-		FobjCmdProc: uintptr(0),
-		FclientData: uintptr(0),
+		Fname: __ccgo_ts + 5491,
 	},
 	14: {
-		Fname:       __ccgo_ts + 5496,
-		FobjCmdProc: uintptr(0),
-		FclientData: uintptr(0),
+		Fname: __ccgo_ts + 5496,
 	},
 	15: {
-		Fname:       __ccgo_ts + 5502,
-		FobjCmdProc: uintptr(0),
-		FclientData: libc.UintptrFromInt32(0),
+		Fname: __ccgo_ts + 5502,
 	},
 	16: {
-		Fname:       __ccgo_ts + 5506,
-		FobjCmdProc: uintptr(0),
-		FclientData: libc.UintptrFromInt32(0),
+		Fname: __ccgo_ts + 5506,
 	},
 	17: {
-		Fname:       __ccgo_ts + 5512,
-		FobjCmdProc: uintptr(0),
-		FclientData: uintptr(0),
+		Fname: __ccgo_ts + 5512,
 	},
 	18: {
-		Fname:       __ccgo_ts + 5516,
-		FobjCmdProc: uintptr(0),
-		FclientData: uintptr(0),
+		Fname: __ccgo_ts + 5516,
 	},
 	19: {
-		Fname:       __ccgo_ts + 5522,
-		FobjCmdProc: uintptr(0),
-		FclientData: uintptr(0),
+		Fname: __ccgo_ts + 5522,
 	},
 	20: {
-		Fname:       __ccgo_ts + 5526,
-		FobjCmdProc: uintptr(0),
-		FclientData: libc.UintptrFromInt32(0),
+		Fname: __ccgo_ts + 5526,
 	},
 	21: {
-		Fname:       __ccgo_ts + 5531,
-		FobjCmdProc: uintptr(0),
-		FclientData: libc.UintptrFromInt32(0),
+		Fname: __ccgo_ts + 5531,
 	},
 	22: {
-		Fname:       __ccgo_ts + 5537,
-		FobjCmdProc: uintptr(0),
-		FclientData: uintptr(0),
+		Fname: __ccgo_ts + 5537,
 	},
 	23: {
-		Fname:       __ccgo_ts + 5541,
-		FobjCmdProc: uintptr(0),
-		FclientData: uintptr(0),
+		Fname: __ccgo_ts + 5541,
 	},
 	24: {
-		Fname:       __ccgo_ts + 5546,
-		FobjCmdProc: uintptr(0),
-		FclientData: libc.UintptrFromInt32(0),
+		Fname: __ccgo_ts + 5546,
 	},
 	25: {
-		Fname:       __ccgo_ts + 5551,
-		FobjCmdProc: uintptr(0),
-		FclientData: libc.UintptrFromInt32(0),
+		Fname: __ccgo_ts + 5551,
 	},
 	26: {
-		Fname:       __ccgo_ts + 5557,
-		FobjCmdProc: uintptr(0),
-		FclientData: uintptr(0),
+		Fname: __ccgo_ts + 5557,
 	},
 	27: {
-		Fname:       __ccgo_ts + 5561,
-		FobjCmdProc: uintptr(0),
-		FclientData: uintptr(0),
+		Fname: __ccgo_ts + 5561,
 	},
 	28: {
-		Fname:       __ccgo_ts + 5566,
-		FobjCmdProc: uintptr(0),
-		FclientData: libc.UintptrFromInt32(0),
+		Fname: __ccgo_ts + 5566,
 	},
-	29: {},
 }
 
 func init() {
@@ -26481,9 +25914,7 @@ type TOpCmdInfo = struct {
 
 var _mathOpCmds = [24]TOpCmdInfo{
 	0: {
-		Fname:        __ccgo_ts + 5571,
-		FobjProc:     uintptr(0),
-		FcompileProc: uintptr(0),
+		Fname: __ccgo_ts + 5571,
 		Fi: *(*struct {
 			Fidentity [0]int32
 			FnumArgs  int32
@@ -26491,9 +25922,7 @@ var _mathOpCmds = [24]TOpCmdInfo{
 		Fexpected: __ccgo_ts + 5573,
 	},
 	1: {
-		Fname:        __ccgo_ts + 5581,
-		FobjProc:     uintptr(0),
-		FcompileProc: uintptr(0),
+		Fname: __ccgo_ts + 5581,
 		Fi: *(*struct {
 			Fidentity [0]int32
 			FnumArgs  int32
@@ -26501,69 +25930,37 @@ var _mathOpCmds = [24]TOpCmdInfo{
 		Fexpected: __ccgo_ts + 3438,
 	},
 	2: {
-		Fname:        __ccgo_ts + 5583,
-		FobjProc:     uintptr(0),
-		FcompileProc: uintptr(0),
-		Fi: struct {
-			Fidentity [0]int32
-			FnumArgs  int32
-		}{},
-		Fexpected: libc.UintptrFromInt32(0),
+		Fname: __ccgo_ts + 5583,
 	},
 	3: {
-		Fname:        __ccgo_ts + 5585,
-		FobjProc:     uintptr(0),
-		FcompileProc: uintptr(0),
+		Fname: __ccgo_ts + 5585,
 		Fi: *(*struct {
 			Fidentity [0]int32
 			FnumArgs  int32
 		})(unsafe.Pointer(&struct{ f int32 }{f: int32(1)})),
-		Fexpected: libc.UintptrFromInt32(0),
 	},
 	4: {
-		Fname:        __ccgo_ts + 5587,
-		FobjProc:     uintptr(0),
-		FcompileProc: uintptr(0),
+		Fname: __ccgo_ts + 5587,
 		Fi: *(*struct {
 			Fidentity [0]int32
 			FnumArgs  int32
 		})(unsafe.Pointer(&struct{ f int32 }{f: -int32(1)})),
-		Fexpected: libc.UintptrFromInt32(0),
 	},
 	5: {
-		Fname:        __ccgo_ts + 5589,
-		FobjProc:     uintptr(0),
-		FcompileProc: uintptr(0),
-		Fi: struct {
-			Fidentity [0]int32
-			FnumArgs  int32
-		}{},
-		Fexpected: libc.UintptrFromInt32(0),
+		Fname: __ccgo_ts + 5589,
 	},
 	6: {
-		Fname:        __ccgo_ts + 5591,
-		FobjProc:     uintptr(0),
-		FcompileProc: uintptr(0),
-		Fi: struct {
-			Fidentity [0]int32
-			FnumArgs  int32
-		}{},
-		Fexpected: libc.UintptrFromInt32(0),
+		Fname: __ccgo_ts + 5591,
 	},
 	7: {
-		Fname:        __ccgo_ts + 5593,
-		FobjProc:     uintptr(0),
-		FcompileProc: uintptr(0),
+		Fname: __ccgo_ts + 5593,
 		Fi: *(*struct {
 			Fidentity [0]int32
 			FnumArgs  int32
 		})(unsafe.Pointer(&struct{ f int32 }{f: int32(1)})),
-		Fexpected: libc.UintptrFromInt32(0),
 	},
 	8: {
-		Fname:        __ccgo_ts + 5596,
-		FobjProc:     uintptr(0),
-		FcompileProc: uintptr(0),
+		Fname: __ccgo_ts + 5596,
 		Fi: *(*struct {
 			Fidentity [0]int32
 			FnumArgs  int32
@@ -26571,9 +25968,7 @@ var _mathOpCmds = [24]TOpCmdInfo{
 		Fexpected: __ccgo_ts + 5599,
 	},
 	9: {
-		Fname:        __ccgo_ts + 5613,
-		FobjProc:     uintptr(0),
-		FcompileProc: uintptr(0),
+		Fname: __ccgo_ts + 5613,
 		Fi: *(*struct {
 			Fidentity [0]int32
 			FnumArgs  int32
@@ -26581,9 +25976,7 @@ var _mathOpCmds = [24]TOpCmdInfo{
 		Fexpected: __ccgo_ts + 5599,
 	},
 	10: {
-		Fname:        __ccgo_ts + 5616,
-		FobjProc:     uintptr(0),
-		FcompileProc: uintptr(0),
+		Fname: __ccgo_ts + 5616,
 		Fi: *(*struct {
 			Fidentity [0]int32
 			FnumArgs  int32
@@ -26591,9 +25984,7 @@ var _mathOpCmds = [24]TOpCmdInfo{
 		Fexpected: __ccgo_ts + 5618,
 	},
 	11: {
-		Fname:        __ccgo_ts + 5634,
-		FobjProc:     uintptr(0),
-		FcompileProc: uintptr(0),
+		Fname: __ccgo_ts + 5634,
 		Fi: *(*struct {
 			Fidentity [0]int32
 			FnumArgs  int32
@@ -26601,9 +25992,7 @@ var _mathOpCmds = [24]TOpCmdInfo{
 		Fexpected: __ccgo_ts + 5637,
 	},
 	12: {
-		Fname:        __ccgo_ts + 5649,
-		FobjProc:     uintptr(0),
-		FcompileProc: uintptr(0),
+		Fname: __ccgo_ts + 5649,
 		Fi: *(*struct {
 			Fidentity [0]int32
 			FnumArgs  int32
@@ -26611,9 +26000,7 @@ var _mathOpCmds = [24]TOpCmdInfo{
 		Fexpected: __ccgo_ts + 5637,
 	},
 	13: {
-		Fname:        __ccgo_ts + 5652,
-		FobjProc:     uintptr(0),
-		FcompileProc: uintptr(0),
+		Fname: __ccgo_ts + 5652,
 		Fi: *(*struct {
 			Fidentity [0]int32
 			FnumArgs  int32
@@ -26621,9 +26008,7 @@ var _mathOpCmds = [24]TOpCmdInfo{
 		Fexpected: __ccgo_ts + 5655,
 	},
 	14: {
-		Fname:        __ccgo_ts + 5666,
-		FobjProc:     uintptr(0),
-		FcompileProc: uintptr(0),
+		Fname: __ccgo_ts + 5666,
 		Fi: *(*struct {
 			Fidentity [0]int32
 			FnumArgs  int32
@@ -26631,86 +26016,31 @@ var _mathOpCmds = [24]TOpCmdInfo{
 		Fexpected: __ccgo_ts + 5655,
 	},
 	15: {
-		Fname:        __ccgo_ts + 5669,
-		FobjProc:     uintptr(0),
-		FcompileProc: uintptr(0),
-		Fi: struct {
-			Fidentity [0]int32
-			FnumArgs  int32
-		}{},
+		Fname:     __ccgo_ts + 5669,
 		Fexpected: __ccgo_ts + 5671,
 	},
 	16: {
-		Fname:        __ccgo_ts + 5689,
-		FobjProc:     uintptr(0),
-		FcompileProc: uintptr(0),
-		Fi: struct {
-			Fidentity [0]int32
-			FnumArgs  int32
-		}{},
+		Fname:     __ccgo_ts + 5689,
 		Fexpected: __ccgo_ts + 5671,
 	},
 	17: {
-		Fname:        __ccgo_ts + 5691,
-		FobjProc:     uintptr(0),
-		FcompileProc: uintptr(0),
-		Fi: struct {
-			Fidentity [0]int32
-			FnumArgs  int32
-		}{},
-		Fexpected: libc.UintptrFromInt32(0),
+		Fname: __ccgo_ts + 5691,
 	},
 	18: {
-		Fname:        __ccgo_ts + 5693,
-		FobjProc:     uintptr(0),
-		FcompileProc: uintptr(0),
-		Fi: struct {
-			Fidentity [0]int32
-			FnumArgs  int32
-		}{},
-		Fexpected: libc.UintptrFromInt32(0),
+		Fname: __ccgo_ts + 5693,
 	},
 	19: {
-		Fname:        __ccgo_ts + 5696,
-		FobjProc:     uintptr(0),
-		FcompileProc: uintptr(0),
-		Fi: struct {
-			Fidentity [0]int32
-			FnumArgs  int32
-		}{},
-		Fexpected: libc.UintptrFromInt32(0),
+		Fname: __ccgo_ts + 5696,
 	},
 	20: {
-		Fname:        __ccgo_ts + 5698,
-		FobjProc:     uintptr(0),
-		FcompileProc: uintptr(0),
-		Fi: struct {
-			Fidentity [0]int32
-			FnumArgs  int32
-		}{},
-		Fexpected: libc.UintptrFromInt32(0),
+		Fname: __ccgo_ts + 5698,
 	},
 	21: {
-		Fname:        __ccgo_ts + 5701,
-		FobjProc:     uintptr(0),
-		FcompileProc: uintptr(0),
-		Fi: struct {
-			Fidentity [0]int32
-			FnumArgs  int32
-		}{},
-		Fexpected: libc.UintptrFromInt32(0),
+		Fname: __ccgo_ts + 5701,
 	},
 	22: {
-		Fname:        __ccgo_ts + 2303,
-		FobjProc:     uintptr(0),
-		FcompileProc: uintptr(0),
-		Fi: struct {
-			Fidentity [0]int32
-			FnumArgs  int32
-		}{},
-		Fexpected: libc.UintptrFromInt32(0),
+		Fname: __ccgo_ts + 2303,
 	},
-	23: {},
 }
 
 func init() {
@@ -35667,136 +34997,67 @@ var _B64Digits = [65]int8{
 
 var _binaryMap = [5]TEnsembleImplMap{
 	0: {
-		Fname:        __ccgo_ts + 5051,
-		Fproc:        uintptr(0),
-		FcompileProc: uintptr(0),
-		FnreProc:     uintptr(0),
-		FclientData:  libc.UintptrFromInt32(0),
-		Funsafe:      int32(0),
+		Fname: __ccgo_ts + 5051,
 	},
 	1: {
-		Fname:        __ccgo_ts + 5195,
-		Fproc:        uintptr(0),
-		FcompileProc: uintptr(0),
-		FnreProc:     uintptr(0),
-		FclientData:  libc.UintptrFromInt32(0),
-		Funsafe:      int32(0),
+		Fname: __ccgo_ts + 5195,
 	},
 	2: {
-		Fname:        __ccgo_ts + 9185,
-		Fproc:        uintptr(0),
-		FcompileProc: uintptr(0),
-		FnreProc:     uintptr(0),
-		FclientData:  libc.UintptrFromInt32(0),
-		Funsafe:      int32(0),
+		Fname: __ccgo_ts + 9185,
 	},
 	3: {
-		Fname:        __ccgo_ts + 9192,
-		Fproc:        uintptr(0),
-		FcompileProc: uintptr(0),
-		FnreProc:     uintptr(0),
-		FclientData:  libc.UintptrFromInt32(0),
-		Funsafe:      int32(0),
+		Fname: __ccgo_ts + 9192,
 	},
-	4: {},
 }
 
 func init() {
 	p := unsafe.Pointer(&_binaryMap)
 	*(*uintptr)(unsafe.Add(p, 4)) = __ccgo_fp(_BinaryFormatCmd)
 	*(*uintptr)(unsafe.Add(p, 8)) = __ccgo_fp(XTclCompileBasicMin1ArgCmd)
-	*(*uintptr)(unsafe.Add(p, 12)) = libc.UintptrFromInt32(0)
 	*(*uintptr)(unsafe.Add(p, 28)) = __ccgo_fp(_BinaryScanCmd)
 	*(*uintptr)(unsafe.Add(p, 32)) = __ccgo_fp(XTclCompileBasicMin2ArgCmd)
-	*(*uintptr)(unsafe.Add(p, 36)) = libc.UintptrFromInt32(0)
-	*(*uintptr)(unsafe.Add(p, 52)) = libc.UintptrFromInt32(0)
-	*(*uintptr)(unsafe.Add(p, 56)) = libc.UintptrFromInt32(0)
-	*(*uintptr)(unsafe.Add(p, 60)) = libc.UintptrFromInt32(0)
-	*(*uintptr)(unsafe.Add(p, 76)) = libc.UintptrFromInt32(0)
-	*(*uintptr)(unsafe.Add(p, 80)) = libc.UintptrFromInt32(0)
-	*(*uintptr)(unsafe.Add(p, 84)) = libc.UintptrFromInt32(0)
 }
 
 var _encodeMap = [4]TEnsembleImplMap{
 	0: {
-		Fname:        __ccgo_ts + 9199,
-		Fproc:        uintptr(0),
-		FcompileProc: uintptr(0),
-		FnreProc:     uintptr(0),
-		FclientData:  libc.UintptrFromInt32(0),
-		Funsafe:      int32(0),
+		Fname: __ccgo_ts + 9199,
 	},
 	1: {
-		Fname:        __ccgo_ts + 9203,
-		Fproc:        uintptr(0),
-		FcompileProc: uintptr(0),
-		FnreProc:     uintptr(0),
-		FclientData:  libc.UintptrFromInt32(0),
-		Funsafe:      int32(0),
+		Fname: __ccgo_ts + 9203,
 	},
 	2: {
-		Fname:        __ccgo_ts + 9212,
-		Fproc:        uintptr(0),
-		FcompileProc: uintptr(0),
-		FnreProc:     uintptr(0),
-		FclientData:  libc.UintptrFromInt32(0),
-		Funsafe:      int32(0),
+		Fname: __ccgo_ts + 9212,
 	},
-	3: {},
 }
 
 func init() {
 	p := unsafe.Pointer(&_encodeMap)
 	*(*uintptr)(unsafe.Add(p, 4)) = __ccgo_fp(_BinaryEncodeHex)
 	*(*uintptr)(unsafe.Add(p, 8)) = __ccgo_fp(XTclCompileBasic1ArgCmd)
-	*(*uintptr)(unsafe.Add(p, 12)) = libc.UintptrFromInt32(0)
 	*(*uintptr)(unsafe.Add(p, 28)) = __ccgo_fp(_BinaryEncodeUu)
-	*(*uintptr)(unsafe.Add(p, 32)) = libc.UintptrFromInt32(0)
-	*(*uintptr)(unsafe.Add(p, 36)) = libc.UintptrFromInt32(0)
 	*(*uintptr)(unsafe.Add(p, 52)) = __ccgo_fp(_BinaryEncode64)
-	*(*uintptr)(unsafe.Add(p, 56)) = libc.UintptrFromInt32(0)
-	*(*uintptr)(unsafe.Add(p, 60)) = libc.UintptrFromInt32(0)
 }
 
 var _decodeMap = [4]TEnsembleImplMap{
 	0: {
-		Fname:        __ccgo_ts + 9199,
-		Fproc:        uintptr(0),
-		FcompileProc: uintptr(0),
-		FnreProc:     uintptr(0),
-		FclientData:  libc.UintptrFromInt32(0),
-		Funsafe:      int32(0),
+		Fname: __ccgo_ts + 9199,
 	},
 	1: {
-		Fname:        __ccgo_ts + 9203,
-		Fproc:        uintptr(0),
-		FcompileProc: uintptr(0),
-		FnreProc:     uintptr(0),
-		FclientData:  libc.UintptrFromInt32(0),
-		Funsafe:      int32(0),
+		Fname: __ccgo_ts + 9203,
 	},
 	2: {
-		Fname:        __ccgo_ts + 9212,
-		Fproc:        uintptr(0),
-		FcompileProc: uintptr(0),
-		FnreProc:     uintptr(0),
-		FclientData:  libc.UintptrFromInt32(0),
-		Funsafe:      int32(0),
+		Fname: __ccgo_ts + 9212,
 	},
-	3: {},
 }
 
 func init() {
 	p := unsafe.Pointer(&_decodeMap)
 	*(*uintptr)(unsafe.Add(p, 4)) = __ccgo_fp(_BinaryDecodeHex)
 	*(*uintptr)(unsafe.Add(p, 8)) = __ccgo_fp(XTclCompileBasic1Or2ArgCmd)
-	*(*uintptr)(unsafe.Add(p, 12)) = libc.UintptrFromInt32(0)
 	*(*uintptr)(unsafe.Add(p, 28)) = __ccgo_fp(_BinaryDecodeUu)
 	*(*uintptr)(unsafe.Add(p, 32)) = __ccgo_fp(XTclCompileBasic1Or2ArgCmd)
-	*(*uintptr)(unsafe.Add(p, 36)) = libc.UintptrFromInt32(0)
 	*(*uintptr)(unsafe.Add(p, 52)) = __ccgo_fp(_BinaryDecode64)
 	*(*uintptr)(unsafe.Add(p, 56)) = __ccgo_fp(XTclCompileBasic1Or2ArgCmd)
-	*(*uintptr)(unsafe.Add(p, 60)) = libc.UintptrFromInt32(0)
 }
 
 func init() {
@@ -38530,7 +37791,6 @@ badChar:
 
 var _optStrings = [2]uintptr{
 	0: __ccgo_ts + 9790,
-	1: libc.UintptrFromInt32(0),
 }
 
 /*
@@ -38757,7 +38017,6 @@ func _BinaryEncode64(tls *libc.TLS, clientData TClientData, interp uintptr, objc
 var _optStrings1 = [3]uintptr{
 	0: __ccgo_ts + 9888,
 	1: __ccgo_ts + 9896,
-	2: libc.UintptrFromInt32(0),
 }
 
 /*
@@ -38971,7 +38230,6 @@ func _BinaryEncodeUu(tls *libc.TLS, clientData TClientData, interp uintptr, objc
 var _optStrings2 = [3]uintptr{
 	0: __ccgo_ts + 9888,
 	1: __ccgo_ts + 9896,
-	2: libc.UintptrFromInt32(0),
 }
 
 /*
@@ -39227,7 +38485,6 @@ badUu:
 
 var _optStrings3 = [2]uintptr{
 	0: __ccgo_ts + 9790,
-	1: libc.UintptrFromInt32(0),
 }
 
 /*
@@ -39477,7 +38734,6 @@ bad64:
 
 var _optStrings4 = [2]uintptr{
 	0: __ccgo_ts + 9790,
-	1: libc.UintptrFromInt32(0),
 }
 
 /*
@@ -39764,7 +39020,6 @@ var _hath = [2][12]int32{
 }
 var _daysInPriorMonths = [2][13]int32{
 	0: {
-		0:  int32(0),
 		1:  int32(31),
 		2:  int32(59),
 		3:  int32(90),
@@ -39779,7 +39034,6 @@ var _daysInPriorMonths = [2][13]int32{
 		12: int32(365),
 	},
 	1: {
-		0:  int32(0),
 		1:  int32(31),
 		2:  int32(60),
 		3:  int32(91),
@@ -39892,7 +39146,6 @@ const _CE = 0
 var _eras = [3]uintptr{
 	0: __ccgo_ts + 10363,
 	1: __ccgo_ts + 10314,
-	2: libc.UintptrFromInt32(0),
 }
 
 /*
@@ -39913,34 +39166,26 @@ type TClockCommand = struct {
 
 var _clockCommands = [8]TClockCommand{
 	0: {
-		Fname:       __ccgo_ts + 10535,
-		FobjCmdProc: uintptr(0),
+		Fname: __ccgo_ts + 10535,
 	},
 	1: {
-		Fname:       __ccgo_ts + 10542,
-		FobjCmdProc: uintptr(0),
+		Fname: __ccgo_ts + 10542,
 	},
 	2: {
-		Fname:       __ccgo_ts + 10550,
-		FobjCmdProc: uintptr(0),
+		Fname: __ccgo_ts + 10550,
 	},
 	3: {
-		Fname:       __ccgo_ts + 10568,
-		FobjCmdProc: uintptr(0),
+		Fname: __ccgo_ts + 10568,
 	},
 	4: {
-		Fname:       __ccgo_ts + 10582,
-		FobjCmdProc: uintptr(0),
+		Fname: __ccgo_ts + 10582,
 	},
 	5: {
-		Fname:       __ccgo_ts + 10614,
-		FobjCmdProc: uintptr(0),
+		Fname: __ccgo_ts + 10614,
 	},
 	6: {
-		Fname:       __ccgo_ts + 10645,
-		FobjCmdProc: uintptr(0),
+		Fname: __ccgo_ts + 10645,
 	},
-	7: {},
 }
 
 func init() {
@@ -40028,87 +39273,44 @@ func XTclClockInit(tls *libc.TLS, interp uintptr) {
 
 var _clockImplMap = [8]TEnsembleImplMap{
 	0: {
-		Fname:        __ccgo_ts + 1974,
-		Fproc:        uintptr(0),
-		FcompileProc: uintptr(0),
-		FnreProc:     uintptr(0),
-		FclientData:  libc.UintptrFromInt32(0),
-		Funsafe:      0,
+		Fname: __ccgo_ts + 1974,
 	},
 	1: {
-		Fname:        __ccgo_ts + 10661,
-		Fproc:        uintptr(0),
-		FcompileProc: uintptr(0),
-		FnreProc:     uintptr(0),
-		FclientData:  libc.UintptrFromInt32(0),
-		Funsafe:      0,
+		Fname: __ccgo_ts + 10661,
 	},
 	2: {
-		Fname:        __ccgo_ts + 5051,
-		Fproc:        uintptr(0),
-		FcompileProc: uintptr(0),
-		FnreProc:     uintptr(0),
-		FclientData:  libc.UintptrFromInt32(0),
-		Funsafe:      0,
+		Fname: __ccgo_ts + 5051,
 	},
 	3: {
-		Fname:        __ccgo_ts + 10668,
-		Fproc:        uintptr(0),
-		FcompileProc: uintptr(0),
-		FnreProc:     uintptr(0),
-		FclientData:  uintptr(libc.Int32FromInt32(1)),
-		Funsafe:      0,
+		Fname:       __ccgo_ts + 10668,
+		FclientData: uintptr(libc.Int32FromInt32(1)),
 	},
 	4: {
-		Fname:        __ccgo_ts + 10681,
-		Fproc:        uintptr(0),
-		FcompileProc: uintptr(0),
-		FnreProc:     uintptr(0),
-		FclientData:  uintptr(libc.Int32FromInt32(2)),
-		Funsafe:      0,
+		Fname:       __ccgo_ts + 10681,
+		FclientData: uintptr(libc.Int32FromInt32(2)),
 	},
 	5: {
-		Fname:        __ccgo_ts + 5195,
-		Fproc:        uintptr(0),
-		FcompileProc: uintptr(0),
-		FnreProc:     uintptr(0),
-		FclientData:  libc.UintptrFromInt32(0),
-		Funsafe:      0,
+		Fname: __ccgo_ts + 5195,
 	},
 	6: {
-		Fname:        __ccgo_ts + 10506,
-		Fproc:        uintptr(0),
-		FcompileProc: uintptr(0),
-		FnreProc:     uintptr(0),
-		FclientData:  uintptr(libc.Int32FromInt32(3)),
-		Funsafe:      0,
+		Fname:       __ccgo_ts + 10506,
+		FclientData: uintptr(libc.Int32FromInt32(3)),
 	},
-	7: {},
 }
 
 func init() {
 	p := unsafe.Pointer(&_clockImplMap)
-	*(*uintptr)(unsafe.Add(p, 4)) = libc.UintptrFromInt32(0)
 	*(*uintptr)(unsafe.Add(p, 8)) = __ccgo_fp(XTclCompileBasicMin1ArgCmd)
-	*(*uintptr)(unsafe.Add(p, 12)) = libc.UintptrFromInt32(0)
 	*(*uintptr)(unsafe.Add(p, 28)) = __ccgo_fp(_ClockClicksObjCmd)
 	*(*uintptr)(unsafe.Add(p, 32)) = __ccgo_fp(XTclCompileClockClicksCmd)
-	*(*uintptr)(unsafe.Add(p, 36)) = libc.UintptrFromInt32(0)
-	*(*uintptr)(unsafe.Add(p, 52)) = libc.UintptrFromInt32(0)
 	*(*uintptr)(unsafe.Add(p, 56)) = __ccgo_fp(XTclCompileBasicMin1ArgCmd)
-	*(*uintptr)(unsafe.Add(p, 60)) = libc.UintptrFromInt32(0)
 	*(*uintptr)(unsafe.Add(p, 76)) = __ccgo_fp(_ClockMicrosecondsObjCmd)
 	*(*uintptr)(unsafe.Add(p, 80)) = __ccgo_fp(XTclCompileClockReadingCmd)
-	*(*uintptr)(unsafe.Add(p, 84)) = libc.UintptrFromInt32(0)
 	*(*uintptr)(unsafe.Add(p, 100)) = __ccgo_fp(_ClockMillisecondsObjCmd)
 	*(*uintptr)(unsafe.Add(p, 104)) = __ccgo_fp(XTclCompileClockReadingCmd)
-	*(*uintptr)(unsafe.Add(p, 108)) = libc.UintptrFromInt32(0)
-	*(*uintptr)(unsafe.Add(p, 124)) = libc.UintptrFromInt32(0)
 	*(*uintptr)(unsafe.Add(p, 128)) = __ccgo_fp(XTclCompileBasicMin1ArgCmd)
-	*(*uintptr)(unsafe.Add(p, 132)) = libc.UintptrFromInt32(0)
 	*(*uintptr)(unsafe.Add(p, 148)) = __ccgo_fp(_ClockSecondsObjCmd)
 	*(*uintptr)(unsafe.Add(p, 152)) = __ccgo_fp(XTclCompileClockReadingCmd)
-	*(*uintptr)(unsafe.Add(p, 156)) = libc.UintptrFromInt32(0)
 }
 
 /*
@@ -41564,7 +40766,6 @@ func _ClockClicksObjCmd(tls *libc.TLS, clientData TClientData, interp uintptr, o
 var _clicksSwitches = [3]uintptr{
 	0: __ccgo_ts + 11091,
 	1: __ccgo_ts + 11105,
-	2: libc.UintptrFromInt32(0),
 }
 
 /*----------------------------------------------------------------------
@@ -41739,7 +40940,6 @@ var _options = [5]uintptr{
 	1: __ccgo_ts + 11137,
 	2: __ccgo_ts + 11142,
 	3: __ccgo_ts + 11150,
-	4: libc.UintptrFromInt32(0),
 } /* Index of an option. */
 
 /*----------------------------------------------------------------------
@@ -42408,65 +41608,34 @@ func XTclInitEncodingCmd(tls *libc.TLS, interp uintptr) (r TTcl_Command) {
 /* Tcl interpreter */
 var _encodingImplMap = [6]TEnsembleImplMap{
 	0: {
-		Fname:        __ccgo_ts + 11526,
-		Fproc:        uintptr(0),
-		FcompileProc: uintptr(0),
-		FnreProc:     uintptr(0),
-		FclientData:  libc.UintptrFromInt32(0),
-		Funsafe:      0,
+		Fname: __ccgo_ts + 11526,
 	},
 	1: {
-		Fname:        __ccgo_ts + 11538,
-		Fproc:        uintptr(0),
-		FcompileProc: uintptr(0),
-		FnreProc:     uintptr(0),
-		FclientData:  libc.UintptrFromInt32(0),
-		Funsafe:      0,
+		Fname: __ccgo_ts + 11538,
 	},
 	2: {
-		Fname:        __ccgo_ts + 11548,
-		Fproc:        uintptr(0),
-		FcompileProc: uintptr(0),
-		FnreProc:     uintptr(0),
-		FclientData:  libc.UintptrFromInt32(0),
-		Funsafe:      0,
+		Fname: __ccgo_ts + 11548,
 	},
 	3: {
-		Fname:        __ccgo_ts + 11553,
-		Fproc:        uintptr(0),
-		FcompileProc: uintptr(0),
-		FnreProc:     uintptr(0),
-		FclientData:  libc.UintptrFromInt32(0),
-		Funsafe:      0,
+		Fname: __ccgo_ts + 11553,
 	},
 	4: {
-		Fname:        __ccgo_ts + 11559,
-		Fproc:        uintptr(0),
-		FcompileProc: uintptr(0),
-		FnreProc:     uintptr(0),
-		FclientData:  libc.UintptrFromInt32(0),
-		Funsafe:      0,
+		Fname: __ccgo_ts + 11559,
 	},
-	5: {},
 }
 
 func init() {
 	p := unsafe.Pointer(&_encodingImplMap)
 	*(*uintptr)(unsafe.Add(p, 4)) = __ccgo_fp(_EncodingConvertfromObjCmd)
 	*(*uintptr)(unsafe.Add(p, 8)) = __ccgo_fp(XTclCompileBasic1Or2ArgCmd)
-	*(*uintptr)(unsafe.Add(p, 12)) = libc.UintptrFromInt32(0)
 	*(*uintptr)(unsafe.Add(p, 28)) = __ccgo_fp(_EncodingConverttoObjCmd)
 	*(*uintptr)(unsafe.Add(p, 32)) = __ccgo_fp(XTclCompileBasic1Or2ArgCmd)
-	*(*uintptr)(unsafe.Add(p, 36)) = libc.UintptrFromInt32(0)
 	*(*uintptr)(unsafe.Add(p, 52)) = __ccgo_fp(_EncodingDirsObjCmd)
 	*(*uintptr)(unsafe.Add(p, 56)) = __ccgo_fp(XTclCompileBasic0Or1ArgCmd)
-	*(*uintptr)(unsafe.Add(p, 60)) = libc.UintptrFromInt32(0)
 	*(*uintptr)(unsafe.Add(p, 76)) = __ccgo_fp(_EncodingNamesObjCmd)
 	*(*uintptr)(unsafe.Add(p, 80)) = __ccgo_fp(XTclCompileBasic0ArgCmd)
-	*(*uintptr)(unsafe.Add(p, 84)) = libc.UintptrFromInt32(0)
 	*(*uintptr)(unsafe.Add(p, 100)) = __ccgo_fp(_EncodingSystemObjCmd)
 	*(*uintptr)(unsafe.Add(p, 104)) = __ccgo_fp(XTclCompileBasic0Or1ArgCmd)
-	*(*uintptr)(unsafe.Add(p, 108)) = libc.UintptrFromInt32(0)
 }
 
 /*
@@ -42536,11 +41705,9 @@ var _unsafeInfo = [6]struct {
 }{
 	0: {
 		FcmdName: __ccgo_ts + 11526,
-		Funsafe:  0,
 	},
 	1: {
 		FcmdName: __ccgo_ts + 11538,
-		Funsafe:  0,
 	},
 	2: {
 		FcmdName: __ccgo_ts + 11548,
@@ -42548,13 +41715,10 @@ var _unsafeInfo = [6]struct {
 	},
 	3: {
 		FcmdName: __ccgo_ts + 11553,
-		Funsafe:  0,
 	},
 	4: {
 		FcmdName: __ccgo_ts + 11559,
-		Funsafe:  0,
 	},
-	5: {},
 }
 
 /*
@@ -43176,384 +42340,176 @@ func XTclInitFileCmd(tls *libc.TLS, interp uintptr) (r TTcl_Command) {
 
 var _initMap = [35]TEnsembleImplMap{
 	0: {
-		Fname:        __ccgo_ts + 11971,
-		Fproc:        uintptr(0),
-		FcompileProc: uintptr(0),
-		FnreProc:     uintptr(0),
-		FclientData:  libc.UintptrFromInt32(0),
-		Funsafe:      0,
+		Fname: __ccgo_ts + 11971,
 	},
 	1: {
-		Fname:        __ccgo_ts + 11977,
-		Fproc:        uintptr(0),
-		FcompileProc: uintptr(0),
-		FnreProc:     uintptr(0),
-		FclientData:  libc.UintptrFromInt32(0),
-		Funsafe:      0,
+		Fname: __ccgo_ts + 11977,
 	},
 	2: {
-		Fname:        __ccgo_ts + 11988,
-		Fproc:        uintptr(0),
-		FcompileProc: uintptr(0),
-		FnreProc:     uintptr(0),
-		FclientData:  libc.UintptrFromInt32(0),
-		Funsafe:      0,
+		Fname: __ccgo_ts + 11988,
 	},
 	3: {
-		Fname:        __ccgo_ts + 11997,
-		Fproc:        uintptr(0),
-		FcompileProc: uintptr(0),
-		FnreProc:     uintptr(0),
-		FclientData:  libc.UintptrFromInt32(0),
-		Funsafe:      0,
+		Fname: __ccgo_ts + 11997,
 	},
 	4: {
-		Fname:        __ccgo_ts + 7170,
-		Fproc:        uintptr(0),
-		FcompileProc: uintptr(0),
-		FnreProc:     uintptr(0),
-		FclientData:  libc.UintptrFromInt32(0),
-		Funsafe:      0,
+		Fname: __ccgo_ts + 7170,
 	},
 	5: {
-		Fname:        __ccgo_ts + 12002,
-		Fproc:        uintptr(0),
-		FcompileProc: uintptr(0),
-		FnreProc:     uintptr(0),
-		FclientData:  libc.UintptrFromInt32(0),
-		Funsafe:      0,
+		Fname: __ccgo_ts + 12002,
 	},
 	6: {
-		Fname:        __ccgo_ts + 12010,
-		Fproc:        uintptr(0),
-		FcompileProc: uintptr(0),
-		FnreProc:     uintptr(0),
-		FclientData:  libc.UintptrFromInt32(0),
-		Funsafe:      0,
+		Fname: __ccgo_ts + 12010,
 	},
 	7: {
-		Fname:        __ccgo_ts + 12021,
-		Fproc:        uintptr(0),
-		FcompileProc: uintptr(0),
-		FnreProc:     uintptr(0),
-		FclientData:  libc.UintptrFromInt32(0),
-		Funsafe:      0,
+		Fname: __ccgo_ts + 12021,
 	},
 	8: {
-		Fname:        __ccgo_ts + 12028,
-		Fproc:        uintptr(0),
-		FcompileProc: uintptr(0),
-		FnreProc:     uintptr(0),
-		FclientData:  libc.UintptrFromInt32(0),
-		Funsafe:      0,
+		Fname: __ccgo_ts + 12028,
 	},
 	9: {
-		Fname:        __ccgo_ts + 12038,
-		Fproc:        uintptr(0),
-		FcompileProc: uintptr(0),
-		FnreProc:     uintptr(0),
-		FclientData:  libc.UintptrFromInt32(0),
-		Funsafe:      0,
+		Fname: __ccgo_ts + 12038,
 	},
 	10: {
-		Fname:        __ccgo_ts + 12050,
-		Fproc:        uintptr(0),
-		FcompileProc: uintptr(0),
-		FnreProc:     uintptr(0),
-		FclientData:  libc.UintptrFromInt32(0),
-		Funsafe:      0,
+		Fname: __ccgo_ts + 12050,
 	},
 	11: {
-		Fname:        __ccgo_ts + 5068,
-		Fproc:        uintptr(0),
-		FcompileProc: uintptr(0),
-		FnreProc:     uintptr(0),
-		FclientData:  libc.UintptrFromInt32(0),
-		Funsafe:      0,
+		Fname: __ccgo_ts + 5068,
 	},
 	12: {
-		Fname:        __ccgo_ts + 12057,
-		Fproc:        uintptr(0),
-		FcompileProc: uintptr(0),
-		FnreProc:     uintptr(0),
-		FclientData:  libc.UintptrFromInt32(0),
-		Funsafe:      0,
+		Fname: __ccgo_ts + 12057,
 	},
 	13: {
-		Fname:        __ccgo_ts + 12062,
-		Fproc:        uintptr(0),
-		FcompileProc: uintptr(0),
-		FnreProc:     uintptr(0),
-		FclientData:  libc.UintptrFromInt32(0),
-		Funsafe:      0,
+		Fname: __ccgo_ts + 12062,
 	},
 	14: {
-		Fname:        __ccgo_ts + 12068,
-		Fproc:        uintptr(0),
-		FcompileProc: uintptr(0),
-		FnreProc:     uintptr(0),
-		FclientData:  libc.UintptrFromInt32(0),
-		Funsafe:      0,
+		Fname: __ccgo_ts + 12068,
 	},
 	15: {
-		Fname:        __ccgo_ts + 12074,
-		Fproc:        uintptr(0),
-		FcompileProc: uintptr(0),
-		FnreProc:     uintptr(0),
-		FclientData:  libc.UintptrFromInt32(0),
-		Funsafe:      0,
+		Fname: __ccgo_ts + 12074,
 	},
 	16: {
-		Fname:        __ccgo_ts + 12080,
-		Fproc:        uintptr(0),
-		FcompileProc: uintptr(0),
-		FnreProc:     uintptr(0),
-		FclientData:  libc.UintptrFromInt32(0),
-		Funsafe:      0,
+		Fname: __ccgo_ts + 12080,
 	},
 	17: {
-		Fname:        __ccgo_ts + 12091,
-		Fproc:        uintptr(0),
-		FcompileProc: uintptr(0),
-		FnreProc:     uintptr(0),
-		FclientData:  libc.UintptrFromInt32(0),
-		Funsafe:      0,
+		Fname: __ccgo_ts + 12091,
 	},
 	18: {
-		Fname:        __ccgo_ts + 12101,
-		Fproc:        uintptr(0),
-		FcompileProc: uintptr(0),
-		FnreProc:     uintptr(0),
-		FclientData:  libc.UintptrFromInt32(0),
-		Funsafe:      0,
+		Fname: __ccgo_ts + 12101,
 	},
 	19: {
-		Fname:        __ccgo_ts + 12107,
-		Fproc:        uintptr(0),
-		FcompileProc: uintptr(0),
-		FnreProc:     uintptr(0),
-		FclientData:  libc.UintptrFromInt32(0),
-		Funsafe:      0,
+		Fname: __ccgo_ts + 12107,
 	},
 	20: {
-		Fname:        __ccgo_ts + 12116,
-		Fproc:        uintptr(0),
-		FcompileProc: uintptr(0),
-		FnreProc:     uintptr(0),
-		FclientData:  libc.UintptrFromInt32(0),
-		Funsafe:      0,
+		Fname: __ccgo_ts + 12116,
 	},
 	21: {
-		Fname:        __ccgo_ts + 12125,
-		Fproc:        uintptr(0),
-		FcompileProc: uintptr(0),
-		FnreProc:     uintptr(0),
-		FclientData:  libc.UintptrFromInt32(0),
-		Funsafe:      0,
+		Fname: __ccgo_ts + 12125,
 	},
 	22: {
-		Fname:        __ccgo_ts + 5181,
-		Fproc:        uintptr(0),
-		FcompileProc: uintptr(0),
-		FnreProc:     uintptr(0),
-		FclientData:  libc.UintptrFromInt32(0),
-		Funsafe:      0,
+		Fname: __ccgo_ts + 5181,
 	},
 	23: {
-		Fname:        __ccgo_ts + 12134,
-		Fproc:        uintptr(0),
-		FcompileProc: uintptr(0),
-		FnreProc:     uintptr(0),
-		FclientData:  libc.UintptrFromInt32(0),
-		Funsafe:      0,
+		Fname: __ccgo_ts + 12134,
 	},
 	24: {
-		Fname:        __ccgo_ts + 12143,
-		Fproc:        uintptr(0),
-		FcompileProc: uintptr(0),
-		FnreProc:     uintptr(0),
-		FclientData:  libc.UintptrFromInt32(0),
-		Funsafe:      0,
+		Fname: __ccgo_ts + 12143,
 	},
 	25: {
-		Fname:        __ccgo_ts + 12153,
-		Fproc:        uintptr(0),
-		FcompileProc: uintptr(0),
-		FnreProc:     uintptr(0),
-		FclientData:  libc.UintptrFromInt32(0),
-		Funsafe:      0,
+		Fname: __ccgo_ts + 12153,
 	},
 	26: {
-		Fname:        __ccgo_ts + 5204,
-		Fproc:        uintptr(0),
-		FcompileProc: uintptr(0),
-		FnreProc:     uintptr(0),
-		FclientData:  libc.UintptrFromInt32(0),
-		Funsafe:      0,
+		Fname: __ccgo_ts + 5204,
 	},
 	27: {
-		Fname:        __ccgo_ts + 12158,
-		Fproc:        uintptr(0),
-		FcompileProc: uintptr(0),
-		FnreProc:     uintptr(0),
-		FclientData:  libc.UintptrFromInt32(0),
-		Funsafe:      0,
+		Fname: __ccgo_ts + 12158,
 	},
 	28: {
-		Fname:        __ccgo_ts + 11559,
-		Fproc:        uintptr(0),
-		FcompileProc: uintptr(0),
-		FnreProc:     uintptr(0),
-		FclientData:  libc.UintptrFromInt32(0),
-		Funsafe:      0,
+		Fname: __ccgo_ts + 11559,
 	},
 	29: {
-		Fname:        __ccgo_ts + 12163,
-		Fproc:        uintptr(0),
-		FcompileProc: uintptr(0),
-		FnreProc:     uintptr(0),
-		FclientData:  libc.UintptrFromInt32(0),
-		Funsafe:      0,
+		Fname: __ccgo_ts + 12163,
 	},
 	30: {
-		Fname:        __ccgo_ts + 12168,
-		Fproc:        uintptr(0),
-		FcompileProc: uintptr(0),
-		FnreProc:     uintptr(0),
-		FclientData:  libc.UintptrFromInt32(0),
-		Funsafe:      0,
+		Fname: __ccgo_ts + 12168,
 	},
 	31: {
-		Fname:        __ccgo_ts + 12177,
-		Fproc:        uintptr(0),
-		FcompileProc: uintptr(0),
-		FnreProc:     uintptr(0),
-		FclientData:  libc.UintptrFromInt32(0),
-		Funsafe:      0,
+		Fname: __ccgo_ts + 12177,
 	},
 	32: {
-		Fname:        __ccgo_ts + 12182,
-		Fproc:        uintptr(0),
-		FcompileProc: uintptr(0),
-		FnreProc:     uintptr(0),
-		FclientData:  libc.UintptrFromInt32(0),
-		Funsafe:      0,
+		Fname: __ccgo_ts + 12182,
 	},
 	33: {
-		Fname:        __ccgo_ts + 12190,
-		Fproc:        uintptr(0),
-		FcompileProc: uintptr(0),
-		FnreProc:     uintptr(0),
-		FclientData:  libc.UintptrFromInt32(0),
-		Funsafe:      0,
+		Fname: __ccgo_ts + 12190,
 	},
-	34: {},
 }
 
 func init() {
 	p := unsafe.Pointer(&_initMap)
 	*(*uintptr)(unsafe.Add(p, 4)) = __ccgo_fp(_FileAttrAccessTimeCmd)
 	*(*uintptr)(unsafe.Add(p, 8)) = __ccgo_fp(XTclCompileBasic1Or2ArgCmd)
-	*(*uintptr)(unsafe.Add(p, 12)) = libc.UintptrFromInt32(0)
 	*(*uintptr)(unsafe.Add(p, 28)) = __ccgo_fp(XTclFileAttrsCmd)
-	*(*uintptr)(unsafe.Add(p, 32)) = libc.UintptrFromInt32(0)
-	*(*uintptr)(unsafe.Add(p, 36)) = libc.UintptrFromInt32(0)
 	*(*uintptr)(unsafe.Add(p, 52)) = __ccgo_fp(XTclChannelNamesCmd)
 	*(*uintptr)(unsafe.Add(p, 56)) = __ccgo_fp(XTclCompileBasic0Or1ArgCmd)
-	*(*uintptr)(unsafe.Add(p, 60)) = libc.UintptrFromInt32(0)
 	*(*uintptr)(unsafe.Add(p, 76)) = __ccgo_fp(XTclFileCopyCmd)
-	*(*uintptr)(unsafe.Add(p, 80)) = libc.UintptrFromInt32(0)
-	*(*uintptr)(unsafe.Add(p, 84)) = libc.UintptrFromInt32(0)
 	*(*uintptr)(unsafe.Add(p, 100)) = __ccgo_fp(XTclFileDeleteCmd)
 	*(*uintptr)(unsafe.Add(p, 104)) = __ccgo_fp(XTclCompileBasicMin0ArgCmd)
-	*(*uintptr)(unsafe.Add(p, 108)) = libc.UintptrFromInt32(0)
 	*(*uintptr)(unsafe.Add(p, 124)) = __ccgo_fp(_PathDirNameCmd)
 	*(*uintptr)(unsafe.Add(p, 128)) = __ccgo_fp(XTclCompileBasic1ArgCmd)
-	*(*uintptr)(unsafe.Add(p, 132)) = libc.UintptrFromInt32(0)
 	*(*uintptr)(unsafe.Add(p, 148)) = __ccgo_fp(_FileAttrIsExecutableCmd)
 	*(*uintptr)(unsafe.Add(p, 152)) = __ccgo_fp(XTclCompileBasic1ArgCmd)
-	*(*uintptr)(unsafe.Add(p, 156)) = libc.UintptrFromInt32(0)
 	*(*uintptr)(unsafe.Add(p, 172)) = __ccgo_fp(_FileAttrIsExistingCmd)
 	*(*uintptr)(unsafe.Add(p, 176)) = __ccgo_fp(XTclCompileBasic1ArgCmd)
-	*(*uintptr)(unsafe.Add(p, 180)) = libc.UintptrFromInt32(0)
 	*(*uintptr)(unsafe.Add(p, 196)) = __ccgo_fp(_PathExtensionCmd)
 	*(*uintptr)(unsafe.Add(p, 200)) = __ccgo_fp(XTclCompileBasic1ArgCmd)
-	*(*uintptr)(unsafe.Add(p, 204)) = libc.UintptrFromInt32(0)
 	*(*uintptr)(unsafe.Add(p, 220)) = __ccgo_fp(_FileAttrIsDirectoryCmd)
 	*(*uintptr)(unsafe.Add(p, 224)) = __ccgo_fp(XTclCompileBasic1ArgCmd)
-	*(*uintptr)(unsafe.Add(p, 228)) = libc.UintptrFromInt32(0)
 	*(*uintptr)(unsafe.Add(p, 244)) = __ccgo_fp(_FileAttrIsFileCmd)
 	*(*uintptr)(unsafe.Add(p, 248)) = __ccgo_fp(XTclCompileBasic1ArgCmd)
-	*(*uintptr)(unsafe.Add(p, 252)) = libc.UintptrFromInt32(0)
 	*(*uintptr)(unsafe.Add(p, 268)) = __ccgo_fp(_PathJoinCmd)
 	*(*uintptr)(unsafe.Add(p, 272)) = __ccgo_fp(XTclCompileBasicMin1ArgCmd)
-	*(*uintptr)(unsafe.Add(p, 276)) = libc.UintptrFromInt32(0)
 	*(*uintptr)(unsafe.Add(p, 292)) = __ccgo_fp(XTclFileLinkCmd)
 	*(*uintptr)(unsafe.Add(p, 296)) = __ccgo_fp(XTclCompileBasic1To3ArgCmd)
-	*(*uintptr)(unsafe.Add(p, 300)) = libc.UintptrFromInt32(0)
 	*(*uintptr)(unsafe.Add(p, 316)) = __ccgo_fp(_FileAttrLinkStatCmd)
 	*(*uintptr)(unsafe.Add(p, 320)) = __ccgo_fp(XTclCompileBasic2ArgCmd)
-	*(*uintptr)(unsafe.Add(p, 324)) = libc.UintptrFromInt32(0)
 	*(*uintptr)(unsafe.Add(p, 340)) = __ccgo_fp(_FileAttrModifyTimeCmd)
 	*(*uintptr)(unsafe.Add(p, 344)) = __ccgo_fp(XTclCompileBasic1Or2ArgCmd)
-	*(*uintptr)(unsafe.Add(p, 348)) = libc.UintptrFromInt32(0)
 	*(*uintptr)(unsafe.Add(p, 364)) = __ccgo_fp(XTclFileMakeDirsCmd)
 	*(*uintptr)(unsafe.Add(p, 368)) = __ccgo_fp(XTclCompileBasicMin0ArgCmd)
-	*(*uintptr)(unsafe.Add(p, 372)) = libc.UintptrFromInt32(0)
 	*(*uintptr)(unsafe.Add(p, 388)) = __ccgo_fp(_PathNativeNameCmd)
 	*(*uintptr)(unsafe.Add(p, 392)) = __ccgo_fp(XTclCompileBasic1ArgCmd)
-	*(*uintptr)(unsafe.Add(p, 396)) = libc.UintptrFromInt32(0)
 	*(*uintptr)(unsafe.Add(p, 412)) = __ccgo_fp(_PathNormalizeCmd)
 	*(*uintptr)(unsafe.Add(p, 416)) = __ccgo_fp(XTclCompileBasic1ArgCmd)
-	*(*uintptr)(unsafe.Add(p, 420)) = libc.UintptrFromInt32(0)
 	*(*uintptr)(unsafe.Add(p, 436)) = __ccgo_fp(_FileAttrIsOwnedCmd)
 	*(*uintptr)(unsafe.Add(p, 440)) = __ccgo_fp(XTclCompileBasic1ArgCmd)
-	*(*uintptr)(unsafe.Add(p, 444)) = libc.UintptrFromInt32(0)
 	*(*uintptr)(unsafe.Add(p, 460)) = __ccgo_fp(_PathTypeCmd)
 	*(*uintptr)(unsafe.Add(p, 464)) = __ccgo_fp(XTclCompileBasic1ArgCmd)
-	*(*uintptr)(unsafe.Add(p, 468)) = libc.UintptrFromInt32(0)
 	*(*uintptr)(unsafe.Add(p, 484)) = __ccgo_fp(_FileAttrIsReadableCmd)
 	*(*uintptr)(unsafe.Add(p, 488)) = __ccgo_fp(XTclCompileBasic1ArgCmd)
-	*(*uintptr)(unsafe.Add(p, 492)) = libc.UintptrFromInt32(0)
 	*(*uintptr)(unsafe.Add(p, 508)) = __ccgo_fp(XTclFileReadLinkCmd)
 	*(*uintptr)(unsafe.Add(p, 512)) = __ccgo_fp(XTclCompileBasic1ArgCmd)
-	*(*uintptr)(unsafe.Add(p, 516)) = libc.UintptrFromInt32(0)
 	*(*uintptr)(unsafe.Add(p, 532)) = __ccgo_fp(XTclFileRenameCmd)
-	*(*uintptr)(unsafe.Add(p, 536)) = libc.UintptrFromInt32(0)
-	*(*uintptr)(unsafe.Add(p, 540)) = libc.UintptrFromInt32(0)
 	*(*uintptr)(unsafe.Add(p, 556)) = __ccgo_fp(_PathRootNameCmd)
 	*(*uintptr)(unsafe.Add(p, 560)) = __ccgo_fp(XTclCompileBasic1ArgCmd)
-	*(*uintptr)(unsafe.Add(p, 564)) = libc.UintptrFromInt32(0)
 	*(*uintptr)(unsafe.Add(p, 580)) = __ccgo_fp(_FilesystemSeparatorCmd)
 	*(*uintptr)(unsafe.Add(p, 584)) = __ccgo_fp(XTclCompileBasic0Or1ArgCmd)
-	*(*uintptr)(unsafe.Add(p, 588)) = libc.UintptrFromInt32(0)
 	*(*uintptr)(unsafe.Add(p, 604)) = __ccgo_fp(_FileAttrSizeCmd)
 	*(*uintptr)(unsafe.Add(p, 608)) = __ccgo_fp(XTclCompileBasic1ArgCmd)
-	*(*uintptr)(unsafe.Add(p, 612)) = libc.UintptrFromInt32(0)
 	*(*uintptr)(unsafe.Add(p, 628)) = __ccgo_fp(_PathSplitCmd)
 	*(*uintptr)(unsafe.Add(p, 632)) = __ccgo_fp(XTclCompileBasic1ArgCmd)
-	*(*uintptr)(unsafe.Add(p, 636)) = libc.UintptrFromInt32(0)
 	*(*uintptr)(unsafe.Add(p, 652)) = __ccgo_fp(_FileAttrStatCmd)
 	*(*uintptr)(unsafe.Add(p, 656)) = __ccgo_fp(XTclCompileBasic2ArgCmd)
-	*(*uintptr)(unsafe.Add(p, 660)) = libc.UintptrFromInt32(0)
 	*(*uintptr)(unsafe.Add(p, 676)) = __ccgo_fp(_PathFilesystemCmd)
 	*(*uintptr)(unsafe.Add(p, 680)) = __ccgo_fp(XTclCompileBasic0Or1ArgCmd)
-	*(*uintptr)(unsafe.Add(p, 684)) = libc.UintptrFromInt32(0)
 	*(*uintptr)(unsafe.Add(p, 700)) = __ccgo_fp(_PathTailCmd)
 	*(*uintptr)(unsafe.Add(p, 704)) = __ccgo_fp(XTclCompileBasic1ArgCmd)
-	*(*uintptr)(unsafe.Add(p, 708)) = libc.UintptrFromInt32(0)
 	*(*uintptr)(unsafe.Add(p, 724)) = __ccgo_fp(XTclFileTemporaryCmd)
 	*(*uintptr)(unsafe.Add(p, 728)) = __ccgo_fp(XTclCompileBasic0To2ArgCmd)
-	*(*uintptr)(unsafe.Add(p, 732)) = libc.UintptrFromInt32(0)
 	*(*uintptr)(unsafe.Add(p, 748)) = __ccgo_fp(_FileAttrTypeCmd)
 	*(*uintptr)(unsafe.Add(p, 752)) = __ccgo_fp(XTclCompileBasic1ArgCmd)
-	*(*uintptr)(unsafe.Add(p, 756)) = libc.UintptrFromInt32(0)
 	*(*uintptr)(unsafe.Add(p, 772)) = __ccgo_fp(_FilesystemVolumesCmd)
 	*(*uintptr)(unsafe.Add(p, 776)) = __ccgo_fp(XTclCompileBasic0ArgCmd)
-	*(*uintptr)(unsafe.Add(p, 780)) = libc.UintptrFromInt32(0)
 	*(*uintptr)(unsafe.Add(p, 796)) = __ccgo_fp(_FileAttrIsWritableCmd)
 	*(*uintptr)(unsafe.Add(p, 800)) = __ccgo_fp(XTclCompileBasic1ArgCmd)
-	*(*uintptr)(unsafe.Add(p, 804)) = libc.UintptrFromInt32(0)
 }
 
 /*
@@ -43631,7 +42587,6 @@ var _unsafeInfo1 = [35]struct {
 	},
 	2: {
 		FcmdName: __ccgo_ts + 11988,
-		Funsafe:  0,
 	},
 	3: {
 		FcmdName: __ccgo_ts + 11997,
@@ -43667,7 +42622,6 @@ var _unsafeInfo1 = [35]struct {
 	},
 	11: {
 		FcmdName: __ccgo_ts + 5068,
-		Funsafe:  0,
 	},
 	12: {
 		FcmdName: __ccgo_ts + 12057,
@@ -43699,7 +42653,6 @@ var _unsafeInfo1 = [35]struct {
 	},
 	19: {
 		FcmdName: __ccgo_ts + 12107,
-		Funsafe:  0,
 	},
 	20: {
 		FcmdName: __ccgo_ts + 12116,
@@ -43719,7 +42672,6 @@ var _unsafeInfo1 = [35]struct {
 	},
 	24: {
 		FcmdName: __ccgo_ts + 12143,
-		Funsafe:  0,
 	},
 	25: {
 		FcmdName: __ccgo_ts + 12153,
@@ -43727,7 +42679,6 @@ var _unsafeInfo1 = [35]struct {
 	},
 	26: {
 		FcmdName: __ccgo_ts + 5204,
-		Funsafe:  0,
 	},
 	27: {
 		FcmdName: __ccgo_ts + 12158,
@@ -43735,7 +42686,6 @@ var _unsafeInfo1 = [35]struct {
 	},
 	28: {
 		FcmdName: __ccgo_ts + 11559,
-		Funsafe:  0,
 	},
 	29: {
 		FcmdName: __ccgo_ts + 12163,
@@ -43757,7 +42707,6 @@ var _unsafeInfo1 = [35]struct {
 		FcmdName: __ccgo_ts + 12190,
 		Funsafe:  int32(1),
 	},
-	34: {},
 }
 
 /*
@@ -46613,274 +45562,129 @@ type TSortInfo = struct {
 
 var _defaultInfoMap = [25]TEnsembleImplMap{
 	0: {
-		Fname:        __ccgo_ts + 12987,
-		Fproc:        uintptr(0),
-		FcompileProc: uintptr(0),
-		FnreProc:     uintptr(0),
-		FclientData:  libc.UintptrFromInt32(0),
-		Funsafe:      int32(0),
+		Fname: __ccgo_ts + 12987,
 	},
 	1: {
-		Fname:        __ccgo_ts + 12992,
-		Fproc:        uintptr(0),
-		FcompileProc: uintptr(0),
-		FnreProc:     uintptr(0),
-		FclientData:  libc.UintptrFromInt32(0),
-		Funsafe:      int32(0),
+		Fname: __ccgo_ts + 12992,
 	},
 	2: {
-		Fname:        __ccgo_ts + 12997,
-		Fproc:        uintptr(0),
-		FcompileProc: uintptr(0),
-		FnreProc:     uintptr(0),
-		FclientData:  libc.UintptrFromInt32(0),
-		Funsafe:      int32(0),
+		Fname: __ccgo_ts + 12997,
 	},
 	3: {
-		Fname:        __ccgo_ts + 13006,
-		Fproc:        uintptr(0),
-		FcompileProc: uintptr(0),
-		FnreProc:     uintptr(0),
-		FclientData:  libc.UintptrFromInt32(0),
-		Funsafe:      int32(0),
+		Fname: __ccgo_ts + 13006,
 	},
 	4: {
-		Fname:        __ccgo_ts + 13015,
-		Fproc:        uintptr(0),
-		FcompileProc: uintptr(0),
-		FnreProc:     uintptr(0),
-		FclientData:  libc.UintptrFromInt32(0),
-		Funsafe:      int32(0),
+		Fname: __ccgo_ts + 13015,
 	},
 	5: {
-		Fname:        __ccgo_ts + 5023,
-		Fproc:        uintptr(0),
-		FcompileProc: uintptr(0),
-		FnreProc:     uintptr(0),
-		FclientData:  libc.UintptrFromInt32(0),
-		Funsafe:      int32(0),
+		Fname: __ccgo_ts + 5023,
 	},
 	6: {
-		Fname:        __ccgo_ts + 11368,
-		Fproc:        uintptr(0),
-		FcompileProc: uintptr(0),
-		FnreProc:     uintptr(0),
-		FclientData:  libc.UintptrFromInt32(0),
-		Funsafe:      int32(0),
+		Fname: __ccgo_ts + 11368,
 	},
 	7: {
-		Fname:        __ccgo_ts + 13024,
-		Fproc:        uintptr(0),
-		FcompileProc: uintptr(0),
-		FnreProc:     uintptr(0),
-		FclientData:  libc.UintptrFromInt32(0),
-		Funsafe:      int32(0),
+		Fname: __ccgo_ts + 13024,
 	},
 	8: {
-		Fname:        __ccgo_ts + 12021,
-		Fproc:        uintptr(0),
-		FcompileProc: uintptr(0),
-		FnreProc:     uintptr(0),
-		FclientData:  libc.UintptrFromInt32(0),
-		Funsafe:      int32(0),
+		Fname: __ccgo_ts + 12021,
 	},
 	9: {
-		Fname:        __ccgo_ts + 13035,
-		Fproc:        uintptr(0),
-		FcompileProc: uintptr(0),
-		FnreProc:     uintptr(0),
-		FclientData:  libc.UintptrFromInt32(0),
-		Funsafe:      int32(0),
+		Fname: __ccgo_ts + 13035,
 	},
 	10: {
-		Fname:        __ccgo_ts + 13041,
-		Fproc:        uintptr(0),
-		FcompileProc: uintptr(0),
-		FnreProc:     uintptr(0),
-		FclientData:  libc.UintptrFromInt32(0),
-		Funsafe:      int32(0),
+		Fname: __ccgo_ts + 13041,
 	},
 	11: {
-		Fname:        __ccgo_ts + 13051,
-		Fproc:        uintptr(0),
-		FcompileProc: uintptr(0),
-		FnreProc:     uintptr(0),
-		FclientData:  libc.UintptrFromInt32(0),
-		Funsafe:      int32(0),
+		Fname: __ccgo_ts + 13051,
 	},
 	12: {
-		Fname:        __ccgo_ts + 13059,
-		Fproc:        uintptr(0),
-		FcompileProc: uintptr(0),
-		FnreProc:     uintptr(0),
-		FclientData:  libc.UintptrFromInt32(0),
-		Funsafe:      int32(0),
+		Fname: __ccgo_ts + 13059,
 	},
 	13: {
-		Fname:        __ccgo_ts + 13068,
-		Fproc:        uintptr(0),
-		FcompileProc: uintptr(0),
-		FnreProc:     uintptr(0),
-		FclientData:  libc.UintptrFromInt32(0),
-		Funsafe:      int32(0),
+		Fname: __ccgo_ts + 13068,
 	},
 	14: {
-		Fname:        __ccgo_ts + 13074,
-		Fproc:        uintptr(0),
-		FcompileProc: uintptr(0),
-		FnreProc:     uintptr(0),
-		FclientData:  libc.UintptrFromInt32(0),
-		Funsafe:      int32(0),
+		Fname: __ccgo_ts + 13074,
 	},
 	15: {
-		Fname:        __ccgo_ts + 13082,
-		Fproc:        uintptr(0),
-		FcompileProc: uintptr(0),
-		FnreProc:     uintptr(0),
-		FclientData:  libc.UintptrFromInt32(0),
-		Funsafe:      int32(0),
+		Fname: __ccgo_ts + 13082,
 	},
 	16: {
-		Fname:        __ccgo_ts + 13089,
-		Fproc:        uintptr(0),
-		FcompileProc: uintptr(0),
-		FnreProc:     uintptr(0),
-		FclientData:  libc.UintptrFromInt32(0),
-		Funsafe:      int32(0),
+		Fname: __ccgo_ts + 13089,
 	},
 	17: {
-		Fname:        __ccgo_ts + 13096,
-		Fproc:        uintptr(0),
-		FcompileProc: uintptr(0),
-		FnreProc:     uintptr(0),
-		FclientData:  libc.UintptrFromInt32(0),
-		Funsafe:      int32(0),
+		Fname: __ccgo_ts + 13096,
 	},
 	18: {
-		Fname:        __ccgo_ts + 13113,
-		Fproc:        uintptr(0),
-		FcompileProc: uintptr(0),
-		FnreProc:     uintptr(0),
-		FclientData:  libc.UintptrFromInt32(0),
-		Funsafe:      int32(0),
+		Fname: __ccgo_ts + 13113,
 	},
 	19: {
-		Fname:        __ccgo_ts + 13124,
-		Fproc:        uintptr(0),
-		FcompileProc: uintptr(0),
-		FnreProc:     uintptr(0),
-		FclientData:  libc.UintptrFromInt32(0),
-		Funsafe:      int32(0),
+		Fname: __ccgo_ts + 13124,
 	},
 	20: {
-		Fname:        __ccgo_ts + 3533,
-		Fproc:        uintptr(0),
-		FcompileProc: uintptr(0),
-		FnreProc:     uintptr(0),
-		FclientData:  libc.UintptrFromInt32(0),
-		Funsafe:      int32(0),
+		Fname: __ccgo_ts + 3533,
 	},
 	21: {
-		Fname:        __ccgo_ts + 13130,
-		Fproc:        uintptr(0),
-		FcompileProc: uintptr(0),
-		FnreProc:     uintptr(0),
-		FclientData:  libc.UintptrFromInt32(0),
-		Funsafe:      int32(0),
+		Fname: __ccgo_ts + 13130,
 	},
 	22: {
-		Fname:        __ccgo_ts + 13149,
-		Fproc:        uintptr(0),
-		FcompileProc: uintptr(0),
-		FnreProc:     uintptr(0),
-		FclientData:  libc.UintptrFromInt32(0),
-		Funsafe:      int32(0),
+		Fname: __ccgo_ts + 13149,
 	},
 	23: {
-		Fname:        __ccgo_ts + 13160,
-		Fproc:        uintptr(0),
-		FcompileProc: uintptr(0),
-		FnreProc:     uintptr(0),
-		FclientData:  libc.UintptrFromInt32(0),
-		Funsafe:      int32(0),
+		Fname: __ccgo_ts + 13160,
 	},
-	24: {},
 }
 
 func init() {
 	p := unsafe.Pointer(&_defaultInfoMap)
 	*(*uintptr)(unsafe.Add(p, 4)) = __ccgo_fp(_InfoArgsCmd)
 	*(*uintptr)(unsafe.Add(p, 8)) = __ccgo_fp(XTclCompileBasic1ArgCmd)
-	*(*uintptr)(unsafe.Add(p, 12)) = libc.UintptrFromInt32(0)
 	*(*uintptr)(unsafe.Add(p, 28)) = __ccgo_fp(_InfoBodyCmd)
 	*(*uintptr)(unsafe.Add(p, 32)) = __ccgo_fp(XTclCompileBasic1ArgCmd)
-	*(*uintptr)(unsafe.Add(p, 36)) = libc.UintptrFromInt32(0)
 	*(*uintptr)(unsafe.Add(p, 52)) = __ccgo_fp(_InfoCmdCountCmd)
 	*(*uintptr)(unsafe.Add(p, 56)) = __ccgo_fp(XTclCompileBasic0ArgCmd)
-	*(*uintptr)(unsafe.Add(p, 60)) = libc.UintptrFromInt32(0)
 	*(*uintptr)(unsafe.Add(p, 76)) = __ccgo_fp(_InfoCommandsCmd)
 	*(*uintptr)(unsafe.Add(p, 80)) = __ccgo_fp(XTclCompileInfoCommandsCmd)
-	*(*uintptr)(unsafe.Add(p, 84)) = libc.UintptrFromInt32(0)
 	*(*uintptr)(unsafe.Add(p, 100)) = __ccgo_fp(_InfoCompleteCmd)
 	*(*uintptr)(unsafe.Add(p, 104)) = __ccgo_fp(XTclCompileBasic1ArgCmd)
-	*(*uintptr)(unsafe.Add(p, 108)) = libc.UintptrFromInt32(0)
 	*(*uintptr)(unsafe.Add(p, 124)) = __ccgo_fp(XTclInfoCoroutineCmd)
 	*(*uintptr)(unsafe.Add(p, 128)) = __ccgo_fp(XTclCompileInfoCoroutineCmd)
-	*(*uintptr)(unsafe.Add(p, 132)) = libc.UintptrFromInt32(0)
 	*(*uintptr)(unsafe.Add(p, 148)) = __ccgo_fp(_InfoDefaultCmd)
 	*(*uintptr)(unsafe.Add(p, 152)) = __ccgo_fp(XTclCompileBasic3ArgCmd)
-	*(*uintptr)(unsafe.Add(p, 156)) = libc.UintptrFromInt32(0)
 	*(*uintptr)(unsafe.Add(p, 172)) = __ccgo_fp(_InfoErrorStackCmd)
 	*(*uintptr)(unsafe.Add(p, 176)) = __ccgo_fp(XTclCompileBasic0Or1ArgCmd)
-	*(*uintptr)(unsafe.Add(p, 180)) = libc.UintptrFromInt32(0)
 	*(*uintptr)(unsafe.Add(p, 196)) = __ccgo_fp(XTclInfoExistsCmd)
 	*(*uintptr)(unsafe.Add(p, 200)) = __ccgo_fp(XTclCompileInfoExistsCmd)
-	*(*uintptr)(unsafe.Add(p, 204)) = libc.UintptrFromInt32(0)
 	*(*uintptr)(unsafe.Add(p, 220)) = __ccgo_fp(_InfoFrameCmd)
 	*(*uintptr)(unsafe.Add(p, 224)) = __ccgo_fp(XTclCompileBasic0Or1ArgCmd)
-	*(*uintptr)(unsafe.Add(p, 228)) = libc.UintptrFromInt32(0)
 	*(*uintptr)(unsafe.Add(p, 244)) = __ccgo_fp(_InfoFunctionsCmd)
 	*(*uintptr)(unsafe.Add(p, 248)) = __ccgo_fp(XTclCompileBasic0Or1ArgCmd)
-	*(*uintptr)(unsafe.Add(p, 252)) = libc.UintptrFromInt32(0)
 	*(*uintptr)(unsafe.Add(p, 268)) = __ccgo_fp(XTclInfoGlobalsCmd)
 	*(*uintptr)(unsafe.Add(p, 272)) = __ccgo_fp(XTclCompileBasic0Or1ArgCmd)
-	*(*uintptr)(unsafe.Add(p, 276)) = libc.UintptrFromInt32(0)
 	*(*uintptr)(unsafe.Add(p, 292)) = __ccgo_fp(_InfoHostnameCmd)
 	*(*uintptr)(unsafe.Add(p, 296)) = __ccgo_fp(XTclCompileBasic0ArgCmd)
-	*(*uintptr)(unsafe.Add(p, 300)) = libc.UintptrFromInt32(0)
 	*(*uintptr)(unsafe.Add(p, 316)) = __ccgo_fp(_InfoLevelCmd)
 	*(*uintptr)(unsafe.Add(p, 320)) = __ccgo_fp(XTclCompileInfoLevelCmd)
-	*(*uintptr)(unsafe.Add(p, 324)) = libc.UintptrFromInt32(0)
 	*(*uintptr)(unsafe.Add(p, 340)) = __ccgo_fp(_InfoLibraryCmd)
 	*(*uintptr)(unsafe.Add(p, 344)) = __ccgo_fp(XTclCompileBasic0ArgCmd)
-	*(*uintptr)(unsafe.Add(p, 348)) = libc.UintptrFromInt32(0)
 	*(*uintptr)(unsafe.Add(p, 364)) = __ccgo_fp(_InfoLoadedCmd)
 	*(*uintptr)(unsafe.Add(p, 368)) = __ccgo_fp(XTclCompileBasic0Or1ArgCmd)
-	*(*uintptr)(unsafe.Add(p, 372)) = libc.UintptrFromInt32(0)
 	*(*uintptr)(unsafe.Add(p, 388)) = __ccgo_fp(XTclInfoLocalsCmd)
 	*(*uintptr)(unsafe.Add(p, 392)) = __ccgo_fp(XTclCompileBasic0Or1ArgCmd)
-	*(*uintptr)(unsafe.Add(p, 396)) = libc.UintptrFromInt32(0)
 	*(*uintptr)(unsafe.Add(p, 412)) = __ccgo_fp(_InfoNameOfExecutableCmd)
 	*(*uintptr)(unsafe.Add(p, 416)) = __ccgo_fp(XTclCompileBasic0ArgCmd)
-	*(*uintptr)(unsafe.Add(p, 420)) = libc.UintptrFromInt32(0)
 	*(*uintptr)(unsafe.Add(p, 436)) = __ccgo_fp(_InfoPatchLevelCmd)
 	*(*uintptr)(unsafe.Add(p, 440)) = __ccgo_fp(XTclCompileBasic0ArgCmd)
-	*(*uintptr)(unsafe.Add(p, 444)) = libc.UintptrFromInt32(0)
 	*(*uintptr)(unsafe.Add(p, 460)) = __ccgo_fp(_InfoProcsCmd)
 	*(*uintptr)(unsafe.Add(p, 464)) = __ccgo_fp(XTclCompileBasic0Or1ArgCmd)
-	*(*uintptr)(unsafe.Add(p, 468)) = libc.UintptrFromInt32(0)
 	*(*uintptr)(unsafe.Add(p, 484)) = __ccgo_fp(_InfoScriptCmd)
 	*(*uintptr)(unsafe.Add(p, 488)) = __ccgo_fp(XTclCompileBasic0Or1ArgCmd)
-	*(*uintptr)(unsafe.Add(p, 492)) = libc.UintptrFromInt32(0)
 	*(*uintptr)(unsafe.Add(p, 508)) = __ccgo_fp(_InfoSharedlibCmd)
 	*(*uintptr)(unsafe.Add(p, 512)) = __ccgo_fp(XTclCompileBasic0ArgCmd)
-	*(*uintptr)(unsafe.Add(p, 516)) = libc.UintptrFromInt32(0)
 	*(*uintptr)(unsafe.Add(p, 532)) = __ccgo_fp(_InfoTclVersionCmd)
 	*(*uintptr)(unsafe.Add(p, 536)) = __ccgo_fp(XTclCompileBasic0ArgCmd)
-	*(*uintptr)(unsafe.Add(p, 540)) = libc.UintptrFromInt32(0)
 	*(*uintptr)(unsafe.Add(p, 556)) = __ccgo_fp(XTclInfoVarsCmd)
 	*(*uintptr)(unsafe.Add(p, 560)) = __ccgo_fp(XTclCompileBasic0Or1ArgCmd)
-	*(*uintptr)(unsafe.Add(p, 564)) = libc.UintptrFromInt32(0)
 }
 
 /*
@@ -51000,7 +49804,6 @@ var _options1 = [19]uintptr{
 	15: __ccgo_ts + 14514,
 	16: __ccgo_ts + 14522,
 	17: __ccgo_ts + 14529,
-	18: libc.UintptrFromInt32(0),
 }
 
 /*
@@ -51772,7 +50575,6 @@ var _switches = [13]uintptr{
 	9:  __ccgo_ts + 14500,
 	10: __ccgo_ts + 14922,
 	11: __ccgo_ts + 14930,
-	12: libc.UintptrFromInt32(0),
 }
 
 /*
@@ -52656,7 +51458,6 @@ var _options2 = [12]uintptr{
 	8:  __ccgo_ts + 14487,
 	9:  __ccgo_ts + 14522,
 	10: __ccgo_ts + 15483,
-	11: libc.UintptrFromInt32(0),
 }
 
 /*
@@ -53124,7 +51925,6 @@ var _options3 = [9]uintptr{
 	5: __ccgo_ts + 15471,
 	6: __ccgo_ts + 14522,
 	7: __ccgo_ts + 15483,
-	8: libc.UintptrFromInt32(0),
 }
 
 /*
@@ -53258,7 +52058,6 @@ func XTclNRSourceObjCmd(tls *libc.TLS, dummy TClientData, interp uintptr, objc i
 
 var _options4 = [2]uintptr{
 	0: __ccgo_ts + 15719,
-	1: libc.UintptrFromInt32(0),
 }
 
 /*
@@ -54299,13 +53098,11 @@ var _isClasses = [22]uintptr{
 	18: __ccgo_ts + 15831,
 	19: __ccgo_ts + 15843,
 	20: __ccgo_ts + 1184,
-	21: libc.UintptrFromInt32(0),
 }
 
 var _isOptions = [3]uintptr{
 	0: __ccgo_ts + 9790,
 	1: __ccgo_ts + 15852,
-	2: libc.UintptrFromInt32(0),
 }
 
 func _UniCharIsAscii(tls *libc.TLS, character int32) (r int32) {
@@ -56179,263 +54976,124 @@ func XTclInitStringCmd(tls *libc.TLS, interp uintptr) (r TTcl_Command) {
 /* Current interpreter. */
 var _stringImplMap = [24]TEnsembleImplMap{
 	0: {
-		Fname:        __ccgo_ts + 16380,
-		Fproc:        uintptr(0),
-		FcompileProc: uintptr(0),
-		FnreProc:     uintptr(0),
-		FclientData:  libc.UintptrFromInt32(0),
-		Funsafe:      0,
+		Fname: __ccgo_ts + 16380,
 	},
 	1: {
-		Fname:        __ccgo_ts + 16391,
-		Fproc:        uintptr(0),
-		FcompileProc: uintptr(0),
-		FnreProc:     uintptr(0),
-		FclientData:  libc.UintptrFromInt32(0),
-		Funsafe:      0,
+		Fname: __ccgo_ts + 16391,
 	},
 	2: {
-		Fname:        __ccgo_ts + 16395,
-		Fproc:        uintptr(0),
-		FcompileProc: uintptr(0),
-		FnreProc:     uintptr(0),
-		FclientData:  libc.UintptrFromInt32(0),
-		Funsafe:      0,
+		Fname: __ccgo_ts + 16395,
 	},
 	3: {
-		Fname:        __ccgo_ts + 16403,
-		Fproc:        uintptr(0),
-		FcompileProc: uintptr(0),
-		FnreProc:     uintptr(0),
-		FclientData:  libc.UintptrFromInt32(0),
-		Funsafe:      0,
+		Fname: __ccgo_ts + 16403,
 	},
 	4: {
-		Fname:        __ccgo_ts + 16409,
-		Fproc:        uintptr(0),
-		FcompileProc: uintptr(0),
-		FnreProc:     uintptr(0),
-		FclientData:  libc.UintptrFromInt32(0),
-		Funsafe:      0,
+		Fname: __ccgo_ts + 16409,
 	},
 	5: {
-		Fname:        __ccgo_ts + 16415,
-		Fproc:        uintptr(0),
-		FcompileProc: uintptr(0),
-		FnreProc:     uintptr(0),
-		FclientData:  libc.UintptrFromInt32(0),
-		Funsafe:      0,
+		Fname: __ccgo_ts + 16415,
 	},
 	6: {
-		Fname:        __ccgo_ts + 16421,
-		Fproc:        uintptr(0),
-		FcompileProc: uintptr(0),
-		FnreProc:     uintptr(0),
-		FclientData:  libc.UintptrFromInt32(0),
-		Funsafe:      0,
+		Fname: __ccgo_ts + 16421,
 	},
 	7: {
-		Fname:        __ccgo_ts + 16424,
-		Fproc:        uintptr(0),
-		FcompileProc: uintptr(0),
-		FnreProc:     uintptr(0),
-		FclientData:  libc.UintptrFromInt32(0),
-		Funsafe:      0,
+		Fname: __ccgo_ts + 16424,
 	},
 	8: {
-		Fname:        __ccgo_ts + 16429,
-		Fproc:        uintptr(0),
-		FcompileProc: uintptr(0),
-		FnreProc:     uintptr(0),
-		FclientData:  libc.UintptrFromInt32(0),
-		Funsafe:      0,
+		Fname: __ccgo_ts + 16429,
 	},
 	9: {
-		Fname:        __ccgo_ts + 16436,
-		Fproc:        uintptr(0),
-		FcompileProc: uintptr(0),
-		FnreProc:     uintptr(0),
-		FclientData:  libc.UintptrFromInt32(0),
-		Funsafe:      0,
+		Fname: __ccgo_ts + 16436,
 	},
 	10: {
-		Fname:        __ccgo_ts + 16440,
-		Fproc:        uintptr(0),
-		FcompileProc: uintptr(0),
-		FnreProc:     uintptr(0),
-		FclientData:  libc.UintptrFromInt32(0),
-		Funsafe:      0,
+		Fname: __ccgo_ts + 16440,
 	},
 	11: {
-		Fname:        __ccgo_ts + 16446,
-		Fproc:        uintptr(0),
-		FcompileProc: uintptr(0),
-		FnreProc:     uintptr(0),
-		FclientData:  libc.UintptrFromInt32(0),
-		Funsafe:      0,
+		Fname: __ccgo_ts + 16446,
 	},
 	12: {
-		Fname:        __ccgo_ts + 16452,
-		Fproc:        uintptr(0),
-		FcompileProc: uintptr(0),
-		FnreProc:     uintptr(0),
-		FclientData:  libc.UintptrFromInt32(0),
-		Funsafe:      0,
+		Fname: __ccgo_ts + 16452,
 	},
 	13: {
-		Fname:        __ccgo_ts + 16459,
-		Fproc:        uintptr(0),
-		FcompileProc: uintptr(0),
-		FnreProc:     uintptr(0),
-		FclientData:  libc.UintptrFromInt32(0),
-		Funsafe:      0,
+		Fname: __ccgo_ts + 16459,
 	},
 	14: {
-		Fname:        __ccgo_ts + 2961,
-		Fproc:        uintptr(0),
-		FcompileProc: uintptr(0),
-		FnreProc:     uintptr(0),
-		FclientData:  libc.UintptrFromInt32(0),
-		Funsafe:      0,
+		Fname: __ccgo_ts + 2961,
 	},
 	15: {
-		Fname:        __ccgo_ts + 16467,
-		Fproc:        uintptr(0),
-		FcompileProc: uintptr(0),
-		FnreProc:     uintptr(0),
-		FclientData:  libc.UintptrFromInt32(0),
-		Funsafe:      0,
+		Fname: __ccgo_ts + 16467,
 	},
 	16: {
-		Fname:        __ccgo_ts + 16475,
-		Fproc:        uintptr(0),
-		FcompileProc: uintptr(0),
-		FnreProc:     uintptr(0),
-		FclientData:  libc.UintptrFromInt32(0),
-		Funsafe:      0,
+		Fname: __ccgo_ts + 16475,
 	},
 	17: {
-		Fname:        __ccgo_ts + 16483,
-		Fproc:        uintptr(0),
-		FcompileProc: uintptr(0),
-		FnreProc:     uintptr(0),
-		FclientData:  libc.UintptrFromInt32(0),
-		Funsafe:      0,
+		Fname: __ccgo_ts + 16483,
 	},
 	18: {
-		Fname:        __ccgo_ts + 16491,
-		Fproc:        uintptr(0),
-		FcompileProc: uintptr(0),
-		FnreProc:     uintptr(0),
-		FclientData:  libc.UintptrFromInt32(0),
-		Funsafe:      0,
+		Fname: __ccgo_ts + 16491,
 	},
 	19: {
-		Fname:        __ccgo_ts + 16496,
-		Fproc:        uintptr(0),
-		FcompileProc: uintptr(0),
-		FnreProc:     uintptr(0),
-		FclientData:  libc.UintptrFromInt32(0),
-		Funsafe:      0,
+		Fname: __ccgo_ts + 16496,
 	},
 	20: {
-		Fname:        __ccgo_ts + 16505,
-		Fproc:        uintptr(0),
-		FcompileProc: uintptr(0),
-		FnreProc:     uintptr(0),
-		FclientData:  libc.UintptrFromInt32(0),
-		Funsafe:      0,
+		Fname: __ccgo_ts + 16505,
 	},
 	21: {
-		Fname:        __ccgo_ts + 16515,
-		Fproc:        uintptr(0),
-		FcompileProc: uintptr(0),
-		FnreProc:     uintptr(0),
-		FclientData:  libc.UintptrFromInt32(0),
-		Funsafe:      0,
+		Fname: __ccgo_ts + 16515,
 	},
 	22: {
-		Fname:        __ccgo_ts + 16523,
-		Fproc:        uintptr(0),
-		FcompileProc: uintptr(0),
-		FnreProc:     uintptr(0),
-		FclientData:  libc.UintptrFromInt32(0),
-		Funsafe:      0,
+		Fname: __ccgo_ts + 16523,
 	},
-	23: {},
 }
 
 func init() {
 	p := unsafe.Pointer(&_stringImplMap)
 	*(*uintptr)(unsafe.Add(p, 4)) = __ccgo_fp(_StringBytesCmd)
 	*(*uintptr)(unsafe.Add(p, 8)) = __ccgo_fp(XTclCompileBasic1ArgCmd)
-	*(*uintptr)(unsafe.Add(p, 12)) = libc.UintptrFromInt32(0)
 	*(*uintptr)(unsafe.Add(p, 28)) = __ccgo_fp(_StringCatCmd)
 	*(*uintptr)(unsafe.Add(p, 32)) = __ccgo_fp(XTclCompileStringCatCmd)
-	*(*uintptr)(unsafe.Add(p, 36)) = libc.UintptrFromInt32(0)
 	*(*uintptr)(unsafe.Add(p, 52)) = __ccgo_fp(_StringCmpCmd)
 	*(*uintptr)(unsafe.Add(p, 56)) = __ccgo_fp(XTclCompileStringCmpCmd)
-	*(*uintptr)(unsafe.Add(p, 60)) = libc.UintptrFromInt32(0)
 	*(*uintptr)(unsafe.Add(p, 76)) = __ccgo_fp(_StringEqualCmd)
 	*(*uintptr)(unsafe.Add(p, 80)) = __ccgo_fp(XTclCompileStringEqualCmd)
-	*(*uintptr)(unsafe.Add(p, 84)) = libc.UintptrFromInt32(0)
 	*(*uintptr)(unsafe.Add(p, 100)) = __ccgo_fp(_StringFirstCmd)
 	*(*uintptr)(unsafe.Add(p, 104)) = __ccgo_fp(XTclCompileStringFirstCmd)
-	*(*uintptr)(unsafe.Add(p, 108)) = libc.UintptrFromInt32(0)
 	*(*uintptr)(unsafe.Add(p, 124)) = __ccgo_fp(_StringIndexCmd)
 	*(*uintptr)(unsafe.Add(p, 128)) = __ccgo_fp(XTclCompileStringIndexCmd)
-	*(*uintptr)(unsafe.Add(p, 132)) = libc.UintptrFromInt32(0)
 	*(*uintptr)(unsafe.Add(p, 148)) = __ccgo_fp(_StringIsCmd)
 	*(*uintptr)(unsafe.Add(p, 152)) = __ccgo_fp(XTclCompileStringIsCmd)
-	*(*uintptr)(unsafe.Add(p, 156)) = libc.UintptrFromInt32(0)
 	*(*uintptr)(unsafe.Add(p, 172)) = __ccgo_fp(_StringLastCmd)
 	*(*uintptr)(unsafe.Add(p, 176)) = __ccgo_fp(XTclCompileStringLastCmd)
-	*(*uintptr)(unsafe.Add(p, 180)) = libc.UintptrFromInt32(0)
 	*(*uintptr)(unsafe.Add(p, 196)) = __ccgo_fp(_StringLenCmd)
 	*(*uintptr)(unsafe.Add(p, 200)) = __ccgo_fp(XTclCompileStringLenCmd)
-	*(*uintptr)(unsafe.Add(p, 204)) = libc.UintptrFromInt32(0)
 	*(*uintptr)(unsafe.Add(p, 220)) = __ccgo_fp(_StringMapCmd)
 	*(*uintptr)(unsafe.Add(p, 224)) = __ccgo_fp(XTclCompileStringMapCmd)
-	*(*uintptr)(unsafe.Add(p, 228)) = libc.UintptrFromInt32(0)
 	*(*uintptr)(unsafe.Add(p, 244)) = __ccgo_fp(_StringMatchCmd)
 	*(*uintptr)(unsafe.Add(p, 248)) = __ccgo_fp(XTclCompileStringMatchCmd)
-	*(*uintptr)(unsafe.Add(p, 252)) = libc.UintptrFromInt32(0)
 	*(*uintptr)(unsafe.Add(p, 268)) = __ccgo_fp(_StringRangeCmd)
 	*(*uintptr)(unsafe.Add(p, 272)) = __ccgo_fp(XTclCompileStringRangeCmd)
-	*(*uintptr)(unsafe.Add(p, 276)) = libc.UintptrFromInt32(0)
 	*(*uintptr)(unsafe.Add(p, 292)) = __ccgo_fp(_StringReptCmd)
 	*(*uintptr)(unsafe.Add(p, 296)) = __ccgo_fp(XTclCompileBasic2ArgCmd)
-	*(*uintptr)(unsafe.Add(p, 300)) = libc.UintptrFromInt32(0)
 	*(*uintptr)(unsafe.Add(p, 316)) = __ccgo_fp(_StringRplcCmd)
 	*(*uintptr)(unsafe.Add(p, 320)) = __ccgo_fp(XTclCompileStringReplaceCmd)
-	*(*uintptr)(unsafe.Add(p, 324)) = libc.UintptrFromInt32(0)
 	*(*uintptr)(unsafe.Add(p, 340)) = __ccgo_fp(_StringRevCmd)
 	*(*uintptr)(unsafe.Add(p, 344)) = __ccgo_fp(XTclCompileBasic1ArgCmd)
-	*(*uintptr)(unsafe.Add(p, 348)) = libc.UintptrFromInt32(0)
 	*(*uintptr)(unsafe.Add(p, 364)) = __ccgo_fp(_StringLowerCmd)
 	*(*uintptr)(unsafe.Add(p, 368)) = __ccgo_fp(XTclCompileStringToLowerCmd)
-	*(*uintptr)(unsafe.Add(p, 372)) = libc.UintptrFromInt32(0)
 	*(*uintptr)(unsafe.Add(p, 388)) = __ccgo_fp(_StringUpperCmd)
 	*(*uintptr)(unsafe.Add(p, 392)) = __ccgo_fp(XTclCompileStringToUpperCmd)
-	*(*uintptr)(unsafe.Add(p, 396)) = libc.UintptrFromInt32(0)
 	*(*uintptr)(unsafe.Add(p, 412)) = __ccgo_fp(_StringTitleCmd)
 	*(*uintptr)(unsafe.Add(p, 416)) = __ccgo_fp(XTclCompileStringToTitleCmd)
-	*(*uintptr)(unsafe.Add(p, 420)) = libc.UintptrFromInt32(0)
 	*(*uintptr)(unsafe.Add(p, 436)) = __ccgo_fp(_StringTrimCmd)
 	*(*uintptr)(unsafe.Add(p, 440)) = __ccgo_fp(XTclCompileStringTrimCmd)
-	*(*uintptr)(unsafe.Add(p, 444)) = libc.UintptrFromInt32(0)
 	*(*uintptr)(unsafe.Add(p, 460)) = __ccgo_fp(_StringTrimLCmd)
 	*(*uintptr)(unsafe.Add(p, 464)) = __ccgo_fp(XTclCompileStringTrimLCmd)
-	*(*uintptr)(unsafe.Add(p, 468)) = libc.UintptrFromInt32(0)
 	*(*uintptr)(unsafe.Add(p, 484)) = __ccgo_fp(_StringTrimRCmd)
 	*(*uintptr)(unsafe.Add(p, 488)) = __ccgo_fp(XTclCompileStringTrimRCmd)
-	*(*uintptr)(unsafe.Add(p, 492)) = libc.UintptrFromInt32(0)
 	*(*uintptr)(unsafe.Add(p, 508)) = __ccgo_fp(_StringEndCmd)
 	*(*uintptr)(unsafe.Add(p, 512)) = __ccgo_fp(XTclCompileBasic2ArgCmd)
-	*(*uintptr)(unsafe.Add(p, 516)) = libc.UintptrFromInt32(0)
 	*(*uintptr)(unsafe.Add(p, 532)) = __ccgo_fp(_StringStartCmd)
 	*(*uintptr)(unsafe.Add(p, 536)) = __ccgo_fp(XTclCompileBasic2ArgCmd)
-	*(*uintptr)(unsafe.Add(p, 540)) = libc.UintptrFromInt32(0)
 }
 
 /*
@@ -56493,7 +55151,6 @@ var _substOptions = [4]uintptr{
 	0: __ccgo_ts + 16533,
 	1: __ccgo_ts + 16548,
 	2: __ccgo_ts + 16560,
-	3: libc.UintptrFromInt32(0),
 }
 
 func XTcl_SubstObjCmd(tls *libc.TLS, dummy TClientData, interp uintptr, objc int32, objv uintptr) (r int32) {
@@ -57079,7 +55736,6 @@ var _options5 = [8]uintptr{
 	4: __ccgo_ts + 14487,
 	5: __ccgo_ts + 14506,
 	6: __ccgo_ts + 15483,
-	7: libc.UintptrFromInt32(0),
 }
 
 func _SwitchPostProc(tls *libc.TLS, data uintptr, interp uintptr, result int32) (r int32) {
@@ -57978,7 +56634,6 @@ var _options6 = [5]uintptr{
 	1: __ccgo_ts + 17379,
 	2: __ccgo_ts + 17389,
 	3: __ccgo_ts + 15483,
-	4: libc.UintptrFromInt32(0),
 }
 
 /*
@@ -58250,7 +56905,6 @@ var _handlerNames = [4]uintptr{
 	0: __ccgo_ts + 17515,
 	1: __ccgo_ts + 17523,
 	2: __ccgo_ts + 17526,
-	3: libc.UintptrFromInt32(0),
 }
 
 /*
@@ -59013,11 +57667,7 @@ const m_TCL_TOKEN_TEXT = 4
  */
 
 var _foreachInfoType = TAuxDataType{
-	Fname:            __ccgo_ts + 18076,
-	FdupProc:         uintptr(0),
-	FfreeProc:        uintptr(0),
-	FprintProc:       uintptr(0),
-	FdisassembleProc: uintptr(0),
+	Fname: __ccgo_ts + 18076,
 }
 
 func init() {
@@ -59029,11 +57679,7 @@ func init() {
 }
 
 var _newForeachInfoType = TAuxDataType{
-	Fname:            __ccgo_ts + 18088,
-	FdupProc:         uintptr(0),
-	FfreeProc:        uintptr(0),
-	FprintProc:       uintptr(0),
-	FdisassembleProc: uintptr(0),
+	Fname: __ccgo_ts + 18088,
 }
 
 func init() {
@@ -59045,11 +57691,7 @@ func init() {
 }
 
 var _dictUpdateInfoType = TAuxDataType{
-	Fname:            __ccgo_ts + 18103,
-	FdupProc:         uintptr(0),
-	FfreeProc:        uintptr(0),
-	FprintProc:       uintptr(0),
-	FdisassembleProc: uintptr(0),
+	Fname: __ccgo_ts + 18103,
 }
 
 func init() {
@@ -74076,15 +72718,10 @@ func XTclLocalScalar(tls *libc.TLS, bytes uintptr, numBytes int32, envPtr uintpt
 	*(*[2]TTcl_Token)(unsafe.Pointer(bp)) = [2]TTcl_Token{
 		0: {
 			Ftype1:         int32(m_TCL_TOKEN_SIMPLE_WORD),
-			Fstart:         libc.UintptrFromInt32(0),
-			Fsize:          0,
 			FnumComponents: int32(1),
 		},
 		1: {
-			Ftype1:         int32(m_TCL_TOKEN_TEXT),
-			Fstart:         libc.UintptrFromInt32(0),
-			Fsize:          0,
-			FnumComponents: 0,
+			Ftype1: int32(m_TCL_TOKEN_TEXT),
 		},
 	}
 	(*(*[2]TTcl_Token)(unsafe.Pointer(bp)))[int32(1)].Fstart = bytes
@@ -91332,7 +89969,6 @@ var _isClasses1 = [22]uintptr{
 	18: __ccgo_ts + 15831,
 	19: __ccgo_ts + 15843,
 	20: __ccgo_ts + 1184,
-	21: libc.UintptrFromInt32(0),
 }
 
 func XTclCompileStringMatchCmd(tls *libc.TLS, interp uintptr, parsePtr uintptr, cmdPtr uintptr, envPtr uintptr) (r int32) {
@@ -110651,71 +109287,6 @@ _PREC_UNARY = 18
  */
 
 var _prec = [136]uint8{
-	0:   uint8(0),
-	1:   uint8(0),
-	2:   uint8(0),
-	3:   uint8(0),
-	4:   uint8(0),
-	5:   uint8(0),
-	6:   uint8(0),
-	7:   uint8(0),
-	8:   uint8(0),
-	9:   uint8(0),
-	10:  uint8(0),
-	11:  uint8(0),
-	12:  uint8(0),
-	13:  uint8(0),
-	14:  uint8(0),
-	15:  uint8(0),
-	16:  uint8(0),
-	17:  uint8(0),
-	18:  uint8(0),
-	19:  uint8(0),
-	20:  uint8(0),
-	21:  uint8(0),
-	22:  uint8(0),
-	23:  uint8(0),
-	24:  uint8(0),
-	25:  uint8(0),
-	26:  uint8(0),
-	27:  uint8(0),
-	28:  uint8(0),
-	29:  uint8(0),
-	30:  uint8(0),
-	31:  uint8(0),
-	32:  uint8(0),
-	33:  uint8(0),
-	34:  uint8(0),
-	35:  uint8(0),
-	36:  uint8(0),
-	37:  uint8(0),
-	38:  uint8(0),
-	39:  uint8(0),
-	40:  uint8(0),
-	41:  uint8(0),
-	42:  uint8(0),
-	43:  uint8(0),
-	44:  uint8(0),
-	45:  uint8(0),
-	46:  uint8(0),
-	47:  uint8(0),
-	48:  uint8(0),
-	49:  uint8(0),
-	50:  uint8(0),
-	51:  uint8(0),
-	52:  uint8(0),
-	53:  uint8(0),
-	54:  uint8(0),
-	55:  uint8(0),
-	56:  uint8(0),
-	57:  uint8(0),
-	58:  uint8(0),
-	59:  uint8(0),
-	60:  uint8(0),
-	61:  uint8(0),
-	62:  uint8(0),
-	63:  uint8(0),
-	64:  uint8(0),
 	65:  uint8(_PREC_ADD),
 	66:  uint8(_PREC_ADD),
 	67:  uint8(_PREC_COMMA),
@@ -110744,42 +109315,6 @@ var _prec = [136]uint8{
 	90:  uint8(_PREC_EQUAL),
 	91:  uint8(_PREC_CLOSE_PAREN),
 	92:  uint8(_PREC_END),
-	93:  uint8(0),
-	94:  uint8(0),
-	95:  uint8(0),
-	96:  uint8(0),
-	97:  uint8(0),
-	98:  uint8(0),
-	99:  uint8(0),
-	100: uint8(0),
-	101: uint8(0),
-	102: uint8(0),
-	103: uint8(0),
-	104: uint8(0),
-	105: uint8(0),
-	106: uint8(0),
-	107: uint8(0),
-	108: uint8(0),
-	109: uint8(0),
-	110: uint8(0),
-	111: uint8(0),
-	112: uint8(0),
-	113: uint8(0),
-	114: uint8(0),
-	115: uint8(0),
-	116: uint8(0),
-	117: uint8(0),
-	118: uint8(0),
-	119: uint8(0),
-	120: uint8(0),
-	121: uint8(0),
-	122: uint8(0),
-	123: uint8(0),
-	124: uint8(0),
-	125: uint8(0),
-	126: uint8(0),
-	127: uint8(0),
-	128: uint8(0),
 	129: uint8(_PREC_UNARY),
 	130: uint8(_PREC_UNARY),
 	131: uint8(_PREC_UNARY),
@@ -110794,74 +109329,8 @@ var _prec = [136]uint8{
  */
 
 var _instruction = [136]uint8{
-	0:   uint8(0),
-	1:   uint8(0),
-	2:   uint8(0),
-	3:   uint8(0),
-	4:   uint8(0),
-	5:   uint8(0),
-	6:   uint8(0),
-	7:   uint8(0),
-	8:   uint8(0),
-	9:   uint8(0),
-	10:  uint8(0),
-	11:  uint8(0),
-	12:  uint8(0),
-	13:  uint8(0),
-	14:  uint8(0),
-	15:  uint8(0),
-	16:  uint8(0),
-	17:  uint8(0),
-	18:  uint8(0),
-	19:  uint8(0),
-	20:  uint8(0),
-	21:  uint8(0),
-	22:  uint8(0),
-	23:  uint8(0),
-	24:  uint8(0),
-	25:  uint8(0),
-	26:  uint8(0),
-	27:  uint8(0),
-	28:  uint8(0),
-	29:  uint8(0),
-	30:  uint8(0),
-	31:  uint8(0),
-	32:  uint8(0),
-	33:  uint8(0),
-	34:  uint8(0),
-	35:  uint8(0),
-	36:  uint8(0),
-	37:  uint8(0),
-	38:  uint8(0),
-	39:  uint8(0),
-	40:  uint8(0),
-	41:  uint8(0),
-	42:  uint8(0),
-	43:  uint8(0),
-	44:  uint8(0),
-	45:  uint8(0),
-	46:  uint8(0),
-	47:  uint8(0),
-	48:  uint8(0),
-	49:  uint8(0),
-	50:  uint8(0),
-	51:  uint8(0),
-	52:  uint8(0),
-	53:  uint8(0),
-	54:  uint8(0),
-	55:  uint8(0),
-	56:  uint8(0),
-	57:  uint8(0),
-	58:  uint8(0),
-	59:  uint8(0),
-	60:  uint8(0),
-	61:  uint8(0),
-	62:  uint8(0),
-	63:  uint8(0),
-	64:  uint8(0),
 	65:  uint8(m_INST_ADD),
 	66:  uint8(m_INST_SUB),
-	67:  uint8(0),
 	68:  uint8(m_INST_MULT),
 	69:  uint8(m_INST_DIV),
 	70:  uint8(m_INST_MOD),
@@ -110870,64 +109339,19 @@ var _instruction = [136]uint8{
 	73:  uint8(m_INST_BITAND),
 	74:  uint8(m_INST_BITXOR),
 	75:  uint8(m_INST_BITOR),
-	76:  uint8(0),
-	77:  uint8(0),
 	78:  uint8(m_INST_LSHIFT),
 	79:  uint8(m_INST_RSHIFT),
 	80:  uint8(m_INST_LE),
 	81:  uint8(m_INST_GE),
 	82:  uint8(m_INST_EQ),
 	83:  uint8(m_INST_NEQ),
-	84:  uint8(0),
-	85:  uint8(0),
 	86:  uint8(m_INST_STR_EQ),
 	87:  uint8(m_INST_STR_NEQ),
 	88:  uint8(m_INST_EXPON),
 	89:  uint8(m_INST_LIST_IN),
 	90:  uint8(m_INST_LIST_NOT_IN),
-	91:  uint8(0),
-	92:  uint8(0),
-	93:  uint8(0),
-	94:  uint8(0),
-	95:  uint8(0),
-	96:  uint8(0),
-	97:  uint8(0),
-	98:  uint8(0),
-	99:  uint8(0),
-	100: uint8(0),
-	101: uint8(0),
-	102: uint8(0),
-	103: uint8(0),
-	104: uint8(0),
-	105: uint8(0),
-	106: uint8(0),
-	107: uint8(0),
-	108: uint8(0),
-	109: uint8(0),
-	110: uint8(0),
-	111: uint8(0),
-	112: uint8(0),
-	113: uint8(0),
-	114: uint8(0),
-	115: uint8(0),
-	116: uint8(0),
-	117: uint8(0),
-	118: uint8(0),
-	119: uint8(0),
-	120: uint8(0),
-	121: uint8(0),
-	122: uint8(0),
-	123: uint8(0),
-	124: uint8(0),
-	125: uint8(0),
-	126: uint8(0),
-	127: uint8(0),
-	128: uint8(0),
 	129: uint8(m_INST_UPLUS),
 	130: uint8(m_INST_UMINUS),
-	131: uint8(0),
-	132: uint8(0),
-	133: uint8(0),
 	134: uint8(m_INST_LNOT),
 	135: uint8(m_INST_BITNOT),
 }
@@ -110971,98 +109395,28 @@ var _Lexeme = [128]uint8{
 	30:  uint8(m_INVALID),
 	31:  uint8(m_INVALID),
 	32:  uint8(m_INVALID),
-	33:  uint8(0),
 	34:  uint8(libc.Int32FromInt32(m_LEAF) | libc.Int32FromInt32(6)),
 	35:  uint8(m_INVALID),
 	36:  uint8(libc.Int32FromInt32(m_LEAF) | libc.Int32FromInt32(5)),
 	37:  uint8(libc.Int32FromInt32(m_BINARY) | libc.Int32FromInt32(6)),
-	38:  uint8(0),
 	39:  uint8(m_INVALID),
 	40:  uint8(libc.Int32FromInt32(m_UNARY) | libc.Int32FromInt32(5)),
 	41:  uint8(libc.Int32FromInt32(m_BINARY) | libc.Int32FromInt32(27)),
-	42:  uint8(0),
 	43:  uint8(m_PLUS),
 	44:  uint8(libc.Int32FromInt32(m_BINARY) | libc.Int32FromInt32(3)),
 	45:  uint8(m_MINUS),
-	46:  uint8(0),
 	47:  uint8(libc.Int32FromInt32(m_BINARY) | libc.Int32FromInt32(5)),
-	48:  uint8(0),
-	49:  uint8(0),
-	50:  uint8(0),
-	51:  uint8(0),
-	52:  uint8(0),
-	53:  uint8(0),
-	54:  uint8(0),
-	55:  uint8(0),
-	56:  uint8(0),
-	57:  uint8(0),
 	58:  uint8(libc.Int32FromInt32(m_BINARY) | libc.Int32FromInt32(13)),
 	59:  uint8(m_INVALID),
-	60:  uint8(0),
-	61:  uint8(0),
-	62:  uint8(0),
 	63:  uint8(libc.Int32FromInt32(m_BINARY) | libc.Int32FromInt32(12)),
 	64:  uint8(m_INVALID),
-	65:  uint8(0),
-	66:  uint8(0),
-	67:  uint8(0),
-	68:  uint8(0),
-	69:  uint8(0),
-	70:  uint8(0),
-	71:  uint8(0),
-	72:  uint8(0),
-	73:  uint8(0),
-	74:  uint8(0),
-	75:  uint8(0),
-	76:  uint8(0),
-	77:  uint8(0),
-	78:  uint8(0),
-	79:  uint8(0),
-	80:  uint8(0),
-	81:  uint8(0),
-	82:  uint8(0),
-	83:  uint8(0),
-	84:  uint8(0),
-	85:  uint8(0),
-	86:  uint8(0),
-	87:  uint8(0),
-	88:  uint8(0),
-	89:  uint8(0),
-	90:  uint8(0),
 	91:  uint8(libc.Int32FromInt32(m_LEAF) | libc.Int32FromInt32(2)),
 	92:  uint8(m_INVALID),
 	93:  uint8(m_INVALID),
 	94:  uint8(libc.Int32FromInt32(m_BINARY) | libc.Int32FromInt32(10)),
 	95:  uint8(m_INVALID),
 	96:  uint8(m_INVALID),
-	97:  uint8(0),
-	98:  uint8(0),
-	99:  uint8(0),
-	100: uint8(0),
-	101: uint8(0),
-	102: uint8(0),
-	103: uint8(0),
-	104: uint8(0),
-	105: uint8(0),
-	106: uint8(0),
-	107: uint8(0),
-	108: uint8(0),
-	109: uint8(0),
-	110: uint8(0),
-	111: uint8(0),
-	112: uint8(0),
-	113: uint8(0),
-	114: uint8(0),
-	115: uint8(0),
-	116: uint8(0),
-	117: uint8(0),
-	118: uint8(0),
-	119: uint8(0),
-	120: uint8(0),
-	121: uint8(0),
-	122: uint8(0),
 	123: uint8(libc.Int32FromInt32(m_LEAF) | libc.Int32FromInt32(4)),
-	124: uint8(0),
 	125: uint8(m_INVALID),
 	126: uint8(libc.Int32FromInt32(m_UNARY) | libc.Int32FromInt32(7)),
 	127: uint8(m_INVALID),
@@ -114270,7 +112624,6 @@ func init() {
 	p := unsafe.Pointer(&XtclByteCodeType)
 	*(*uintptr)(unsafe.Add(p, 4)) = __ccgo_fp(_FreeByteCodeInternalRep)
 	*(*uintptr)(unsafe.Add(p, 8)) = __ccgo_fp(_DupByteCodeInternalRep)
-	*(*uintptr)(unsafe.Add(p, 12)) = libc.UintptrFromInt32(0)
 	*(*uintptr)(unsafe.Add(p, 16)) = __ccgo_fp(_SetByteCodeFromAny)
 }
 
@@ -114280,19 +112633,13 @@ func init() {
  */
 
 var _substCodeType = TTcl_ObjType{
-	Fname:             __ccgo_ts + 20649,
-	FfreeIntRepProc:   uintptr(0),
-	FdupIntRepProc:    uintptr(0),
-	FupdateStringProc: uintptr(0),
-	FsetFromAnyProc:   uintptr(0),
+	Fname: __ccgo_ts + 20649,
 }
 
 func init() {
 	p := unsafe.Pointer(&_substCodeType)
 	*(*uintptr)(unsafe.Add(p, 4)) = __ccgo_fp(_FreeSubstCodeInternalRep)
 	*(*uintptr)(unsafe.Add(p, 8)) = __ccgo_fp(_DupByteCodeInternalRep)
-	*(*uintptr)(unsafe.Add(p, 12)) = libc.UintptrFromInt32(0)
-	*(*uintptr)(unsafe.Add(p, 16)) = libc.UintptrFromInt32(0)
 }
 
 /*
@@ -119859,7 +118206,6 @@ func _QueryConfigObjCmd(tls *libc.TLS, clientData TClientData, interp uintptr, o
 var _subcmdStrings = [3]uintptr{
 	0: __ccgo_ts + 21664,
 	1: __ccgo_ts + 2707,
-	2: libc.UintptrFromInt32(0),
 }
 
 /*
@@ -120205,7 +118551,6 @@ type Tyyalloc = struct {
 //	/* YYTRANSLATE[TOKEN-NUM] -- Symbol number corresponding to TOKEN-NUM
 //	   as returned by yylex, without out-of-bounds checking.  */
 var _yytranslate = [275]Tyytype_uint8{
-	0:   uint8(0),
 	1:   uint8(2),
 	2:   uint8(2),
 	3:   uint8(2),
@@ -120581,20 +118926,16 @@ var _yypact = [85]Tyytype_int8{
 //	     means the default is an error.  */
 var _yydefact = [85]Tyytype_uint8{
 	0:  uint8(2),
-	1:  uint8(0),
 	2:  uint8(1),
 	3:  uint8(20),
 	4:  uint8(18),
-	5:  uint8(0),
 	6:  uint8(53),
-	7:  uint8(0),
 	8:  uint8(51),
 	9:  uint8(54),
 	10: uint8(17),
 	11: uint8(33),
 	12: uint8(27),
 	13: uint8(52),
-	14: uint8(0),
 	15: uint8(49),
 	16: uint8(50),
 	17: uint8(3),
@@ -120607,36 +118948,24 @@ var _yydefact = [85]Tyytype_uint8{
 	24: uint8(11),
 	25: uint8(9),
 	26: uint8(43),
-	27: uint8(0),
 	28: uint8(48),
 	29: uint8(12),
 	30: uint8(21),
 	31: uint8(30),
-	32: uint8(0),
 	33: uint8(22),
 	34: uint8(13),
 	35: uint8(32),
-	36: uint8(0),
-	37: uint8(0),
-	38: uint8(0),
 	39: uint8(45),
 	40: uint8(16),
-	41: uint8(0),
 	42: uint8(40),
 	43: uint8(24),
 	44: uint8(35),
-	45: uint8(0),
 	46: uint8(46),
 	47: uint8(42),
 	48: uint8(19),
-	49: uint8(0),
-	50: uint8(0),
 	51: uint8(34),
 	52: uint8(55),
 	53: uint8(25),
-	54: uint8(0),
-	55: uint8(0),
-	56: uint8(0),
 	57: uint8(38),
 	58: uint8(36),
 	59: uint8(47),
@@ -120645,25 +118974,13 @@ var _yydefact = [85]Tyytype_uint8{
 	62: uint8(31),
 	63: uint8(41),
 	64: uint8(56),
-	65: uint8(0),
 	66: uint8(14),
-	67: uint8(0),
-	68: uint8(0),
-	69: uint8(0),
-	70: uint8(0),
 	71: uint8(55),
 	72: uint8(26),
 	73: uint8(28),
 	74: uint8(29),
-	75: uint8(0),
 	76: uint8(15),
-	77: uint8(0),
-	78: uint8(0),
-	79: uint8(0),
 	80: uint8(39),
-	81: uint8(0),
-	82: uint8(0),
-	83: uint8(0),
 	84: uint8(37),
 }
 
@@ -120804,7 +119121,6 @@ var _yytable = [82]Tyytype_uint8{
 var _yycheck = [82]Tyytype_uint8{
 	0:  uint8(9),
 	1:  uint8(7),
-	2:  uint8(0),
 	3:  uint8(8),
 	4:  uint8(21),
 	5:  uint8(14),
@@ -120891,9 +119207,7 @@ var _yycheck = [82]Tyytype_uint8{
 //	/* YYSTOS[STATE-NUM] -- The (internal number of the) accessing
 //	     symbol of state STATE-NUM.  */
 var _yystos = [85]Tyytype_uint8{
-	0:  uint8(0),
 	1:  uint8(27),
-	2:  uint8(0),
 	3:  uint8(4),
 	4:  uint8(5),
 	5:  uint8(8),
@@ -120982,7 +119296,6 @@ var _yystos = [85]Tyytype_uint8{
 //
 //	/* YYR1[YYN] -- Symbol number of symbol that rule YYN derives.  */
 var _yyr1 = [57]Tyytype_uint8{
-	0:  uint8(0),
 	1:  uint8(26),
 	2:  uint8(27),
 	3:  uint8(27),
@@ -121045,9 +119358,7 @@ var _yyr1 = [57]Tyytype_uint8{
 //
 //	/* YYR2[YYN] -- Number of symbols on the right hand side of rule YYN.  */
 var _yyr2 = [57]Tyytype_uint8{
-	0:  uint8(0),
 	1:  uint8(2),
-	2:  uint8(0),
 	3:  uint8(2),
 	4:  uint8(1),
 	5:  uint8(1),
@@ -121100,7 +119411,6 @@ var _yyr2 = [57]Tyytype_uint8{
 	52: uint8(1),
 	53: uint8(1),
 	54: uint8(1),
-	55: uint8(0),
 	56: uint8(1),
 }
 
@@ -121820,7 +120130,6 @@ var _MonthDayTable = [25]TTABLE{
 	13: {
 		Fname:  __ccgo_ts + 22094,
 		Ftype1: int32(_tDAY),
-		Fvalue: int64(0),
 	},
 	14: {
 		Fname:  __ccgo_ts + 22101,
@@ -121872,7 +120181,6 @@ var _MonthDayTable = [25]TTABLE{
 		Ftype1: int32(_tDAY),
 		Fvalue: int64(6),
 	},
-	24: {},
 }
 
 /*
@@ -121930,7 +120238,6 @@ var _UnitsTable = [11]TTABLE{
 		Ftype1: int32(_tSEC_UNIT),
 		Fvalue: int64(1),
 	},
-	10: {},
 }
 
 /*
@@ -121951,12 +120258,10 @@ var _OtherTable = [11]TTABLE{
 	2: {
 		Fname:  __ccgo_ts + 22239,
 		Ftype1: int32(_tDAY_UNIT),
-		Fvalue: int64(0),
 	},
 	3: {
 		Fname:  __ccgo_ts + 22245,
 		Ftype1: int32(_tSEC_UNIT),
-		Fvalue: int64(0),
 	},
 	4: {
 		Fname:  __ccgo_ts + 16424,
@@ -121966,7 +120271,6 @@ var _OtherTable = [11]TTABLE{
 	5: {
 		Fname:  __ccgo_ts + 22249,
 		Ftype1: int32(_tSEC_UNIT),
-		Fvalue: int64(0),
 	},
 	6: {
 		Fname:  __ccgo_ts + 22254,
@@ -121981,14 +120285,11 @@ var _OtherTable = [11]TTABLE{
 	8: {
 		Fname:  __ccgo_ts + 22263,
 		Ftype1: int32(_tEPOCH),
-		Fvalue: int64(0),
 	},
 	9: {
 		Fname:  __ccgo_ts + 22269,
 		Ftype1: int32(_tSTARDATE),
-		Fvalue: int64(0),
 	},
-	10: {},
 }
 
 /*
@@ -122000,32 +120301,26 @@ var _TimezoneTable = [64]TTABLE{
 	0: {
 		Fname:  __ccgo_ts + 22278,
 		Ftype1: int32(_tZONE),
-		Fvalue: int64(libc.Int32FromInt32(60) * libc.Int32FromInt32(0)),
 	},
 	1: {
 		Fname:  __ccgo_ts + 22282,
 		Ftype1: int32(_tZONE),
-		Fvalue: int64(libc.Int32FromInt32(60) * libc.Int32FromInt32(0)),
 	},
 	2: {
 		Fname:  __ccgo_ts + 22285,
 		Ftype1: int32(_tZONE),
-		Fvalue: int64(libc.Int32FromInt32(60) * libc.Int32FromInt32(0)),
 	},
 	3: {
 		Fname:  __ccgo_ts + 22289,
 		Ftype1: int32(_tZONE),
-		Fvalue: int64(libc.Int32FromInt32(60) * libc.Int32FromInt32(0)),
 	},
 	4: {
 		Fname:  __ccgo_ts + 22293,
 		Ftype1: int32(_tZONE),
-		Fvalue: int64(libc.Int32FromInt32(60) * libc.Int32FromInt32(0)),
 	},
 	5: {
 		Fname:  __ccgo_ts + 22297,
 		Ftype1: int32(_tDAYZONE),
-		Fvalue: int64(libc.Int32FromInt32(60) * libc.Int32FromInt32(0)),
 	},
 	6: {
 		Fname:  __ccgo_ts + 22301,
@@ -122310,9 +120605,7 @@ var _TimezoneTable = [64]TTABLE{
 	62: {
 		Fname:  __ccgo_ts + 22530,
 		Ftype1: int32(_tDST),
-		Fvalue: int64(libc.Int32FromInt32(60) * libc.Int32FromInt32(0)),
 	},
-	63: {},
 }
 
 /*
@@ -122445,7 +120738,6 @@ var _MilitaryTable = [26]TTABLE{
 		Ftype1: int32(_tZONE),
 		Fvalue: int64(libc.Int32FromInt32(60)*libc.Int32FromInt32(0) + libc.Int32FromInt32(60)*libc.Int32FromInt32(100)),
 	},
-	25: {},
 }
 
 /*
@@ -123175,230 +121467,107 @@ type TDict1 = struct {
 
 var _implementationMap = [21]TEnsembleImplMap{
 	0: {
-		Fname:        __ccgo_ts + 1978,
-		Fproc:        uintptr(0),
-		FcompileProc: uintptr(0),
-		FnreProc:     uintptr(0),
-		FclientData:  libc.UintptrFromInt32(0),
-		Funsafe:      int32(0),
+		Fname: __ccgo_ts + 1978,
 	},
 	1: {
-		Fname:        __ccgo_ts + 22931,
-		Fproc:        uintptr(0),
-		FcompileProc: uintptr(0),
-		FnreProc:     uintptr(0),
-		FclientData:  libc.UintptrFromInt32(0),
-		Funsafe:      int32(0),
+		Fname: __ccgo_ts + 22931,
 	},
 	2: {
-		Fname:        __ccgo_ts + 12021,
-		Fproc:        uintptr(0),
-		FcompileProc: uintptr(0),
-		FnreProc:     uintptr(0),
-		FclientData:  libc.UintptrFromInt32(0),
-		Funsafe:      int32(0),
+		Fname: __ccgo_ts + 12021,
 	},
 	3: {
-		Fname:        __ccgo_ts + 22938,
-		Fproc:        uintptr(0),
-		FcompileProc: uintptr(0),
-		FnreProc:     uintptr(0),
-		FclientData:  libc.UintptrFromInt32(0),
-		Funsafe:      int32(0),
+		Fname: __ccgo_ts + 22938,
 	},
 	4: {
-		Fname:        __ccgo_ts + 5039,
-		Fproc:        uintptr(0),
-		FcompileProc: uintptr(0),
-		FnreProc:     uintptr(0),
-		FclientData:  libc.UintptrFromInt32(0),
-		Funsafe:      int32(0),
+		Fname: __ccgo_ts + 5039,
 	},
 	5: {
-		Fname:        __ccgo_ts + 21664,
-		Fproc:        uintptr(0),
-		FcompileProc: uintptr(0),
-		FnreProc:     uintptr(0),
-		FclientData:  libc.UintptrFromInt32(0),
-		Funsafe:      int32(0),
+		Fname: __ccgo_ts + 21664,
 	},
 	6: {
-		Fname:        __ccgo_ts + 2384,
-		Fproc:        uintptr(0),
-		FcompileProc: uintptr(0),
-		FnreProc:     uintptr(0),
-		FclientData:  libc.UintptrFromInt32(0),
-		Funsafe:      int32(0),
+		Fname: __ccgo_ts + 2384,
 	},
 	7: {
-		Fname:        __ccgo_ts + 13360,
-		Fproc:        uintptr(0),
-		FcompileProc: uintptr(0),
-		FnreProc:     uintptr(0),
-		FclientData:  libc.UintptrFromInt32(0),
-		Funsafe:      int32(0),
+		Fname: __ccgo_ts + 13360,
 	},
 	8: {
-		Fname:        __ccgo_ts + 22945,
-		Fproc:        uintptr(0),
-		FcompileProc: uintptr(0),
-		FnreProc:     uintptr(0),
-		FclientData:  libc.UintptrFromInt32(0),
-		Funsafe:      int32(0),
+		Fname: __ccgo_ts + 22945,
 	},
 	9: {
-		Fname:        __ccgo_ts + 2580,
-		Fproc:        uintptr(0),
-		FcompileProc: uintptr(0),
-		FnreProc:     uintptr(0),
-		FclientData:  libc.UintptrFromInt32(0),
-		Funsafe:      int32(0),
+		Fname: __ccgo_ts + 2580,
 	},
 	10: {
-		Fname:        __ccgo_ts + 16436,
-		Fproc:        uintptr(0),
-		FcompileProc: uintptr(0),
-		FnreProc:     uintptr(0),
-		FclientData:  libc.UintptrFromInt32(0),
-		Funsafe:      int32(0),
+		Fname: __ccgo_ts + 16436,
 	},
 	11: {
-		Fname:        __ccgo_ts + 22950,
-		Fproc:        uintptr(0),
-		FcompileProc: uintptr(0),
-		FnreProc:     uintptr(0),
-		FclientData:  libc.UintptrFromInt32(0),
-		Funsafe:      int32(0),
+		Fname: __ccgo_ts + 22950,
 	},
 	12: {
-		Fname:        __ccgo_ts + 22956,
-		Fproc:        uintptr(0),
-		FcompileProc: uintptr(0),
-		FnreProc:     uintptr(0),
-		FclientData:  libc.UintptrFromInt32(0),
-		Funsafe:      int32(0),
+		Fname: __ccgo_ts + 22956,
 	},
 	13: {
-		Fname:        __ccgo_ts + 16459,
-		Fproc:        uintptr(0),
-		FcompileProc: uintptr(0),
-		FnreProc:     uintptr(0),
-		FclientData:  libc.UintptrFromInt32(0),
-		Funsafe:      int32(0),
+		Fname: __ccgo_ts + 16459,
 	},
 	14: {
-		Fname:        __ccgo_ts + 5200,
-		Fproc:        uintptr(0),
-		FcompileProc: uintptr(0),
-		FnreProc:     uintptr(0),
-		FclientData:  libc.UintptrFromInt32(0),
-		Funsafe:      int32(0),
+		Fname: __ccgo_ts + 5200,
 	},
 	15: {
-		Fname:        __ccgo_ts + 12153,
-		Fproc:        uintptr(0),
-		FcompileProc: uintptr(0),
-		FnreProc:     uintptr(0),
-		FclientData:  libc.UintptrFromInt32(0),
-		Funsafe:      int32(0),
+		Fname: __ccgo_ts + 12153,
 	},
 	16: {
-		Fname:        __ccgo_ts + 3277,
-		Fproc:        uintptr(0),
-		FcompileProc: uintptr(0),
-		FnreProc:     uintptr(0),
-		FclientData:  libc.UintptrFromInt32(0),
-		Funsafe:      int32(0),
+		Fname: __ccgo_ts + 3277,
 	},
 	17: {
-		Fname:        __ccgo_ts + 5410,
-		Fproc:        uintptr(0),
-		FcompileProc: uintptr(0),
-		FnreProc:     uintptr(0),
-		FclientData:  libc.UintptrFromInt32(0),
-		Funsafe:      int32(0),
+		Fname: __ccgo_ts + 5410,
 	},
 	18: {
-		Fname:        __ccgo_ts + 22963,
-		Fproc:        uintptr(0),
-		FcompileProc: uintptr(0),
-		FnreProc:     uintptr(0),
-		FclientData:  libc.UintptrFromInt32(0),
-		Funsafe:      int32(0),
+		Fname: __ccgo_ts + 22963,
 	},
 	19: {
-		Fname:        __ccgo_ts + 22970,
-		Fproc:        uintptr(0),
-		FcompileProc: uintptr(0),
-		FnreProc:     uintptr(0),
-		FclientData:  libc.UintptrFromInt32(0),
-		Funsafe:      int32(0),
+		Fname: __ccgo_ts + 22970,
 	},
-	20: {},
 }
 
 func init() {
 	p := unsafe.Pointer(&_implementationMap)
 	*(*uintptr)(unsafe.Add(p, 4)) = __ccgo_fp(_DictAppendCmd)
 	*(*uintptr)(unsafe.Add(p, 8)) = __ccgo_fp(XTclCompileDictAppendCmd)
-	*(*uintptr)(unsafe.Add(p, 12)) = libc.UintptrFromInt32(0)
 	*(*uintptr)(unsafe.Add(p, 28)) = __ccgo_fp(_DictCreateCmd)
 	*(*uintptr)(unsafe.Add(p, 32)) = __ccgo_fp(XTclCompileDictCreateCmd)
-	*(*uintptr)(unsafe.Add(p, 36)) = libc.UintptrFromInt32(0)
 	*(*uintptr)(unsafe.Add(p, 52)) = __ccgo_fp(_DictExistsCmd)
 	*(*uintptr)(unsafe.Add(p, 56)) = __ccgo_fp(XTclCompileDictExistsCmd)
-	*(*uintptr)(unsafe.Add(p, 60)) = libc.UintptrFromInt32(0)
 	*(*uintptr)(unsafe.Add(p, 76)) = __ccgo_fp(_DictFilterCmd)
-	*(*uintptr)(unsafe.Add(p, 80)) = libc.UintptrFromInt32(0)
-	*(*uintptr)(unsafe.Add(p, 84)) = libc.UintptrFromInt32(0)
-	*(*uintptr)(unsafe.Add(p, 100)) = libc.UintptrFromInt32(0)
 	*(*uintptr)(unsafe.Add(p, 104)) = __ccgo_fp(XTclCompileDictForCmd)
 	*(*uintptr)(unsafe.Add(p, 108)) = __ccgo_fp(_DictForNRCmd)
 	*(*uintptr)(unsafe.Add(p, 124)) = __ccgo_fp(_DictGetCmd)
 	*(*uintptr)(unsafe.Add(p, 128)) = __ccgo_fp(XTclCompileDictGetCmd)
-	*(*uintptr)(unsafe.Add(p, 132)) = libc.UintptrFromInt32(0)
 	*(*uintptr)(unsafe.Add(p, 148)) = __ccgo_fp(_DictIncrCmd)
 	*(*uintptr)(unsafe.Add(p, 152)) = __ccgo_fp(XTclCompileDictIncrCmd)
-	*(*uintptr)(unsafe.Add(p, 156)) = libc.UintptrFromInt32(0)
 	*(*uintptr)(unsafe.Add(p, 172)) = __ccgo_fp(_DictInfoCmd)
 	*(*uintptr)(unsafe.Add(p, 176)) = __ccgo_fp(XTclCompileBasic1ArgCmd)
-	*(*uintptr)(unsafe.Add(p, 180)) = libc.UintptrFromInt32(0)
 	*(*uintptr)(unsafe.Add(p, 196)) = __ccgo_fp(_DictKeysCmd)
 	*(*uintptr)(unsafe.Add(p, 200)) = __ccgo_fp(XTclCompileBasic1Or2ArgCmd)
-	*(*uintptr)(unsafe.Add(p, 204)) = libc.UintptrFromInt32(0)
 	*(*uintptr)(unsafe.Add(p, 220)) = __ccgo_fp(_DictLappendCmd)
 	*(*uintptr)(unsafe.Add(p, 224)) = __ccgo_fp(XTclCompileDictLappendCmd)
-	*(*uintptr)(unsafe.Add(p, 228)) = libc.UintptrFromInt32(0)
-	*(*uintptr)(unsafe.Add(p, 244)) = libc.UintptrFromInt32(0)
 	*(*uintptr)(unsafe.Add(p, 248)) = __ccgo_fp(XTclCompileDictMapCmd)
 	*(*uintptr)(unsafe.Add(p, 252)) = __ccgo_fp(_DictMapNRCmd)
 	*(*uintptr)(unsafe.Add(p, 268)) = __ccgo_fp(_DictMergeCmd)
 	*(*uintptr)(unsafe.Add(p, 272)) = __ccgo_fp(XTclCompileDictMergeCmd)
-	*(*uintptr)(unsafe.Add(p, 276)) = libc.UintptrFromInt32(0)
 	*(*uintptr)(unsafe.Add(p, 292)) = __ccgo_fp(_DictRemoveCmd)
 	*(*uintptr)(unsafe.Add(p, 296)) = __ccgo_fp(XTclCompileBasicMin1ArgCmd)
-	*(*uintptr)(unsafe.Add(p, 300)) = libc.UintptrFromInt32(0)
 	*(*uintptr)(unsafe.Add(p, 316)) = __ccgo_fp(_DictReplaceCmd)
-	*(*uintptr)(unsafe.Add(p, 320)) = libc.UintptrFromInt32(0)
-	*(*uintptr)(unsafe.Add(p, 324)) = libc.UintptrFromInt32(0)
 	*(*uintptr)(unsafe.Add(p, 340)) = __ccgo_fp(_DictSetCmd)
 	*(*uintptr)(unsafe.Add(p, 344)) = __ccgo_fp(XTclCompileDictSetCmd)
-	*(*uintptr)(unsafe.Add(p, 348)) = libc.UintptrFromInt32(0)
 	*(*uintptr)(unsafe.Add(p, 364)) = __ccgo_fp(_DictSizeCmd)
 	*(*uintptr)(unsafe.Add(p, 368)) = __ccgo_fp(XTclCompileBasic1ArgCmd)
-	*(*uintptr)(unsafe.Add(p, 372)) = libc.UintptrFromInt32(0)
 	*(*uintptr)(unsafe.Add(p, 388)) = __ccgo_fp(_DictUnsetCmd)
 	*(*uintptr)(unsafe.Add(p, 392)) = __ccgo_fp(XTclCompileDictUnsetCmd)
-	*(*uintptr)(unsafe.Add(p, 396)) = libc.UintptrFromInt32(0)
 	*(*uintptr)(unsafe.Add(p, 412)) = __ccgo_fp(_DictUpdateCmd)
 	*(*uintptr)(unsafe.Add(p, 416)) = __ccgo_fp(XTclCompileDictUpdateCmd)
-	*(*uintptr)(unsafe.Add(p, 420)) = libc.UintptrFromInt32(0)
 	*(*uintptr)(unsafe.Add(p, 436)) = __ccgo_fp(_DictValuesCmd)
 	*(*uintptr)(unsafe.Add(p, 440)) = __ccgo_fp(XTclCompileBasic1Or2ArgCmd)
-	*(*uintptr)(unsafe.Add(p, 444)) = libc.UintptrFromInt32(0)
 	*(*uintptr)(unsafe.Add(p, 460)) = __ccgo_fp(_DictWithCmd)
 	*(*uintptr)(unsafe.Add(p, 464)) = __ccgo_fp(XTclCompileDictWithCmd)
-	*(*uintptr)(unsafe.Add(p, 468)) = libc.UintptrFromInt32(0)
 }
 
 /*
@@ -123455,12 +121624,7 @@ func init() {
  */
 
 var _chainHashType = TTcl_HashKeyType{
-	Fversion:         int32(m_TCL_HASH_KEY_TYPE_VERSION),
-	Fflags:           int32(0),
-	FhashKeyProc:     uintptr(0),
-	FcompareKeysProc: uintptr(0),
-	FallocEntryProc:  uintptr(0),
-	FfreeEntryProc:   uintptr(0),
+	Fversion: int32(m_TCL_HASH_KEY_TYPE_VERSION),
 }
 
 func init() {
@@ -127639,7 +125803,6 @@ var _filters = [4]uintptr{
 	0: __ccgo_ts + 21732,
 	1: __ccgo_ts + 3533,
 	2: __ccgo_ts + 3432,
-	3: libc.UintptrFromInt32(0),
 }
 
 /*
@@ -128487,19 +126650,12 @@ const m_VAR_RESOLVED = 32768
  */
 
 var _tclInstNameType = TTcl_ObjType{
-	Fname:             __ccgo_ts + 23987,
-	FfreeIntRepProc:   uintptr(0),
-	FdupIntRepProc:    uintptr(0),
-	FupdateStringProc: uintptr(0),
-	FsetFromAnyProc:   uintptr(0),
+	Fname: __ccgo_ts + 23987,
 }
 
 func init() {
 	p := unsafe.Pointer(&_tclInstNameType)
-	*(*uintptr)(unsafe.Add(p, 4)) = libc.UintptrFromInt32(0)
-	*(*uintptr)(unsafe.Add(p, 8)) = libc.UintptrFromInt32(0)
 	*(*uintptr)(unsafe.Add(p, 12)) = __ccgo_fp(_UpdateStringOfInstName)
-	*(*uintptr)(unsafe.Add(p, 16)) = libc.UintptrFromInt32(0)
 }
 
 /*
@@ -130256,7 +128412,6 @@ var _types = [8]uintptr{
 	4: __ccgo_ts + 25222,
 	5: __ccgo_ts + 5169,
 	6: __ccgo_ts + 3533,
-	7: libc.UintptrFromInt32(0),
 }
 
 const m_ENCODING_DOUBLEBYTE = 1
@@ -130325,15 +128480,7 @@ type TEscapeEncodingData = struct {
 	FnumSubTables int32
 }
 
-var _encodingSearchPath = TProcessGlobalValue{
-	Fepoch:    int32(0),
-	FnumBytes: int32(0),
-	Fvalue:    libc.UintptrFromInt32(0),
-	Fencoding: libc.UintptrFromInt32(0),
-	Fproc:     uintptr(0),
-	Fmutex:    libc.UintptrFromInt32(0),
-	Fkey:      libc.UintptrFromInt32(0),
-}
+var _encodingSearchPath = TProcessGlobalValue{}
 
 func init() {
 	p := unsafe.Pointer(&_encodingSearchPath)
@@ -130356,15 +128503,7 @@ var _encodingFileMap = TProcessGlobalValue{}
  * to each directory in this "libraryPath".
  */
 
-var _libraryPath = TProcessGlobalValue{
-	Fepoch:    int32(0),
-	FnumBytes: int32(0),
-	Fvalue:    libc.UintptrFromInt32(0),
-	Fencoding: libc.UintptrFromInt32(0),
-	Fproc:     uintptr(0),
-	Fmutex:    libc.UintptrFromInt32(0),
-	Fkey:      libc.UintptrFromInt32(0),
-}
+var _libraryPath = TProcessGlobalValue{}
 
 func init() {
 	p := unsafe.Pointer(&_libraryPath)
@@ -130403,19 +128542,13 @@ var _emptyPage [256]uint16
  */
 
 var _encodingType = TTcl_ObjType{
-	Fname:             __ccgo_ts + 11566,
-	FfreeIntRepProc:   uintptr(0),
-	FdupIntRepProc:    uintptr(0),
-	FupdateStringProc: uintptr(0),
-	FsetFromAnyProc:   uintptr(0),
+	Fname: __ccgo_ts + 11566,
 }
 
 func init() {
 	p := unsafe.Pointer(&_encodingType)
 	*(*uintptr)(unsafe.Add(p, 4)) = __ccgo_fp(_FreeEncodingInternalRep)
 	*(*uintptr)(unsafe.Add(p, 8)) = __ccgo_fp(_DupEncodingInternalRep)
-	*(*uintptr)(unsafe.Add(p, 12)) = libc.UintptrFromInt32(0)
-	*(*uintptr)(unsafe.Add(p, 16)) = libc.UintptrFromInt32(0)
 }
 
 /*
@@ -130663,10 +128796,8 @@ func _FillEncodingFileMap(tls *libc.TLS) {
 			break
 		}
 		*(*TTcl_GlobTypeData)(unsafe.Pointer(bp + 16)) = TTcl_GlobTypeData{
-			Ftype1:      libc.Int32FromInt32(1) << libc.Int32FromInt32(4),
-			Fperm:       libc.Int32FromInt32(1) << libc.Int32FromInt32(2),
-			FmacType:    libc.UintptrFromInt32(0),
-			FmacCreator: libc.UintptrFromInt32(0),
+			Ftype1: libc.Int32FromInt32(1) << libc.Int32FromInt32(4),
+			Fperm:  libc.Int32FromInt32(1) << libc.Int32FromInt32(2),
 		}
 		if XtclFreeObjList == libc.UintptrFromInt32(0) {
 			XTclAllocateFreeObjects(tls)
@@ -132246,55 +130377,6 @@ doneParse:
  */
 
 var _staticHex = [256]int8{
-	0:   0,
-	1:   0,
-	2:   0,
-	3:   0,
-	4:   0,
-	5:   0,
-	6:   0,
-	7:   0,
-	8:   0,
-	9:   0,
-	10:  0,
-	11:  0,
-	12:  0,
-	13:  0,
-	14:  0,
-	15:  0,
-	16:  0,
-	17:  0,
-	18:  0,
-	19:  0,
-	20:  0,
-	21:  0,
-	22:  0,
-	23:  0,
-	24:  0,
-	25:  0,
-	26:  0,
-	27:  0,
-	28:  0,
-	29:  0,
-	30:  0,
-	31:  0,
-	32:  0,
-	33:  0,
-	34:  0,
-	35:  0,
-	36:  0,
-	37:  0,
-	38:  0,
-	39:  0,
-	40:  0,
-	41:  0,
-	42:  0,
-	43:  0,
-	44:  0,
-	45:  0,
-	46:  0,
-	47:  0,
-	48:  0,
 	49:  int8(1),
 	50:  int8(2),
 	51:  int8(3),
@@ -132304,61 +130386,18 @@ var _staticHex = [256]int8{
 	55:  int8(7),
 	56:  int8(8),
 	57:  int8(9),
-	58:  0,
-	59:  0,
-	60:  0,
-	61:  0,
-	62:  0,
-	63:  0,
-	64:  0,
 	65:  int8(10),
 	66:  int8(11),
 	67:  int8(12),
 	68:  int8(13),
 	69:  int8(14),
 	70:  int8(15),
-	71:  0,
-	72:  0,
-	73:  0,
-	74:  0,
-	75:  0,
-	76:  0,
-	77:  0,
-	78:  0,
-	79:  0,
-	80:  0,
-	81:  0,
-	82:  0,
-	83:  0,
-	84:  0,
-	85:  0,
-	86:  0,
-	87:  0,
-	88:  0,
-	89:  0,
-	90:  0,
-	91:  0,
-	92:  0,
-	93:  0,
-	94:  0,
-	95:  0,
-	96:  0,
 	97:  int8(10),
 	98:  int8(11),
 	99:  int8(12),
 	100: int8(13),
 	101: int8(14),
 	102: int8(15),
-	103: 0,
-	104: 0,
-	105: 0,
-	106: 0,
-	107: 0,
-	108: 0,
-	109: 0,
-	110: 0,
-	111: 0,
-	112: 0,
 	113: int8(1),
 	114: int8(2),
 	115: int8(3),
@@ -132368,140 +130407,6 @@ var _staticHex = [256]int8{
 	119: int8(7),
 	120: int8(8),
 	121: int8(9),
-	122: 0,
-	123: 0,
-	124: 0,
-	125: 0,
-	126: 0,
-	127: 0,
-	128: 0,
-	129: 0,
-	130: 0,
-	131: 0,
-	132: 0,
-	133: 0,
-	134: 0,
-	135: 0,
-	136: 0,
-	137: 0,
-	138: 0,
-	139: 0,
-	140: 0,
-	141: 0,
-	142: 0,
-	143: 0,
-	144: 0,
-	145: 0,
-	146: 0,
-	147: 0,
-	148: 0,
-	149: 0,
-	150: 0,
-	151: 0,
-	152: 0,
-	153: 0,
-	154: 0,
-	155: 0,
-	156: 0,
-	157: 0,
-	158: 0,
-	159: 0,
-	160: 0,
-	161: 0,
-	162: 0,
-	163: 0,
-	164: 0,
-	165: 0,
-	166: 0,
-	167: 0,
-	168: 0,
-	169: 0,
-	170: 0,
-	171: 0,
-	172: 0,
-	173: 0,
-	174: 0,
-	175: 0,
-	176: 0,
-	177: 0,
-	178: 0,
-	179: 0,
-	180: 0,
-	181: 0,
-	182: 0,
-	183: 0,
-	184: 0,
-	185: 0,
-	186: 0,
-	187: 0,
-	188: 0,
-	189: 0,
-	190: 0,
-	191: 0,
-	192: 0,
-	193: 0,
-	194: 0,
-	195: 0,
-	196: 0,
-	197: 0,
-	198: 0,
-	199: 0,
-	200: 0,
-	201: 0,
-	202: 0,
-	203: 0,
-	204: 0,
-	205: 0,
-	206: 0,
-	207: 0,
-	208: 0,
-	209: 0,
-	210: 0,
-	211: 0,
-	212: 0,
-	213: 0,
-	214: 0,
-	215: 0,
-	216: 0,
-	217: 0,
-	218: 0,
-	219: 0,
-	220: 0,
-	221: 0,
-	222: 0,
-	223: 0,
-	224: 0,
-	225: 0,
-	226: 0,
-	227: 0,
-	228: 0,
-	229: 0,
-	230: 0,
-	231: 0,
-	232: 0,
-	233: 0,
-	234: 0,
-	235: 0,
-	236: 0,
-	237: 0,
-	238: 0,
-	239: 0,
-	240: 0,
-	241: 0,
-	242: 0,
-	243: 0,
-	244: 0,
-	245: 0,
-	246: 0,
-	247: 0,
-	248: 0,
-	249: 0,
-	250: 0,
-	251: 0,
-	252: 0,
-	253: 0,
-	254: 0,
-	255: 0,
 }
 
 /*
@@ -134057,7 +131962,6 @@ var _ensembleSubcommands = [4]uintptr{
 	0: __ccgo_ts + 25892,
 	1: __ccgo_ts + 22931,
 	2: __ccgo_ts + 12021,
-	3: libc.UintptrFromInt32(0),
 }
 
 type _EnsSubcmds = int32
@@ -134073,7 +131977,6 @@ var _ensembleCreateOptions = [7]uintptr{
 	3: __ccgo_ts + 25919,
 	4: __ccgo_ts + 25929,
 	5: __ccgo_ts + 25942,
-	6: libc.UintptrFromInt32(0),
 }
 
 type _EnsCreateOpts = int32
@@ -134092,7 +131995,6 @@ var _ensembleConfigOptions = [7]uintptr{
 	3: __ccgo_ts + 25919,
 	4: __ccgo_ts + 25929,
 	5: __ccgo_ts + 25942,
-	6: libc.UintptrFromInt32(0),
 }
 
 type _EnsConfigOpts = int32
@@ -134112,19 +132014,13 @@ const _CONF_UNKNOWN = 5
  */
 
 var _ensembleCmdType = TTcl_ObjType{
-	Fname:             __ccgo_ts + 25962,
-	FfreeIntRepProc:   uintptr(0),
-	FdupIntRepProc:    uintptr(0),
-	FupdateStringProc: uintptr(0),
-	FsetFromAnyProc:   uintptr(0),
+	Fname: __ccgo_ts + 25962,
 }
 
 func init() {
 	p := unsafe.Pointer(&_ensembleCmdType)
 	*(*uintptr)(unsafe.Add(p, 4)) = __ccgo_fp(_FreeEnsembleCmdRep)
 	*(*uintptr)(unsafe.Add(p, 8)) = __ccgo_fp(_DupEnsembleCmdRep)
-	*(*uintptr)(unsafe.Add(p, 12)) = libc.UintptrFromInt32(0)
-	*(*uintptr)(unsafe.Add(p, 16)) = libc.UintptrFromInt32(0)
 }
 
 /*
@@ -140614,7 +138510,6 @@ func XTcl_UpdateObjCmd(tls *libc.TLS, clientData TClientData, interp uintptr, ob
 
 var _updateOptions = [2]uintptr{
 	0: __ccgo_ts + 27509,
-	1: libc.UintptrFromInt32(0),
 }
 
 /*
@@ -140859,8 +138754,7 @@ var _tclBuiltinFuncTable = [27]TBuiltinFunc{
 		FnumArgs: int32(1),
 	},
 	22: {
-		Fname:    __ccgo_ts + 5526,
-		FnumArgs: int32(0),
+		Fname: __ccgo_ts + 5526,
 	},
 	23: {
 		Fname:    __ccgo_ts + 5531,
@@ -140874,7 +138768,6 @@ var _tclBuiltinFuncTable = [27]TBuiltinFunc{
 		Fname:    __ccgo_ts + 5566,
 		FnumArgs: int32(1),
 	},
-	26: {},
 }
 
 /*
@@ -141016,7 +138909,6 @@ var _MaxBase32Size = libc.Uint32FromInt64(28) / libc.Uint32FromInt64(4)
  */
 
 var _Exp32Index = [9]uint16{
-	0: uint16(0),
 	1: uint16(11),
 	2: uint16(18),
 	3: uint16(23),
@@ -141094,7 +138986,6 @@ var _MaxBase64Size = libc.Uint32FromInt64(120) / libc.Uint32FromInt64(8)
  */
 
 var _Exp64Index = [12]uint16{
-	0:  uint16(0),
 	1:  uint16(23),
 	2:  uint16(38),
 	3:  uint16(49),
@@ -141194,19 +139085,13 @@ var _Exp64ValueSize = libc.Uint32FromInt64(608) / libc.Uint32FromInt64(8)
  */
 
 var _exprCodeType = TTcl_ObjType{
-	Fname:             __ccgo_ts + 27589,
-	FfreeIntRepProc:   uintptr(0),
-	FdupIntRepProc:    uintptr(0),
-	FupdateStringProc: uintptr(0),
-	FsetFromAnyProc:   uintptr(0),
+	Fname: __ccgo_ts + 27589,
 }
 
 func init() {
 	p := unsafe.Pointer(&_exprCodeType)
 	*(*uintptr)(unsafe.Add(p, 4)) = __ccgo_fp(_FreeExprCodeInternalRep)
 	*(*uintptr)(unsafe.Add(p, 8)) = __ccgo_fp(_DupExprCodeInternalRep)
-	*(*uintptr)(unsafe.Add(p, 12)) = libc.UintptrFromInt32(0)
-	*(*uintptr)(unsafe.Add(p, 16)) = libc.UintptrFromInt32(0)
 }
 
 /*
@@ -141215,19 +139100,12 @@ func init() {
  */
 
 var _dictIteratorType = TTcl_ObjType{
-	Fname:             __ccgo_ts + 27598,
-	FfreeIntRepProc:   uintptr(0),
-	FdupIntRepProc:    uintptr(0),
-	FupdateStringProc: uintptr(0),
-	FsetFromAnyProc:   uintptr(0),
+	Fname: __ccgo_ts + 27598,
 }
 
 func init() {
 	p := unsafe.Pointer(&_dictIteratorType)
 	*(*uintptr)(unsafe.Add(p, 4)) = __ccgo_fp(_ReleaseDictIterator)
-	*(*uintptr)(unsafe.Add(p, 8)) = libc.UintptrFromInt32(0)
-	*(*uintptr)(unsafe.Add(p, 12)) = libc.UintptrFromInt32(0)
-	*(*uintptr)(unsafe.Add(p, 16)) = libc.UintptrFromInt32(0)
 }
 
 /*
@@ -162438,7 +160316,6 @@ func _FileForceOption(tls *libc.TLS, interp uintptr, objc int32, objv uintptr, f
 var _options7 = [3]uintptr{
 	0: __ccgo_ts + 29985,
 	1: __ccgo_ts + 15483,
-	2: libc.UintptrFromInt32(0),
 }
 
 /*
@@ -162960,7 +160837,6 @@ func XTclFileLinkCmd(tls *libc.TLS, clientData TClientData, interp uintptr, objc
 var _linkTypes = [3]uintptr{
 	0: __ccgo_ts + 30206,
 	1: __ccgo_ts + 30216,
-	2: libc.UintptrFromInt32(0),
 }
 
 /*
@@ -165044,7 +162920,6 @@ var _options8 = [8]uintptr{
 	4: __ccgo_ts + 30677,
 	5: __ccgo_ts + 30684,
 	6: __ccgo_ts + 15483,
-	7: libc.UintptrFromInt32(0),
 }
 
 /*
@@ -166036,10 +163911,7 @@ func _DoGlob(tls *libc.TLS, interp uintptr, matchesObj uintptr, separators uintp
  */
 
 var _dirOnly = TTcl_GlobTypeData{
-	Ftype1:      libc.Int32FromInt32(1) << libc.Int32FromInt32(2),
-	Fperm:       0,
-	FmacType:    libc.UintptrFromInt32(0),
-	FmacCreator: libc.UintptrFromInt32(0),
+	Ftype1: libc.Int32FromInt32(1) << libc.Int32FromInt32(2),
 }
 
 /*
@@ -166279,15 +164151,6 @@ func init() {
 	*(*uintptr)(unsafe.Add(p, 8)) = __ccgo_fp(_HashArrayKey)
 	*(*uintptr)(unsafe.Add(p, 12)) = __ccgo_fp(_CompareArrayKeys)
 	*(*uintptr)(unsafe.Add(p, 16)) = __ccgo_fp(_AllocArrayEntry)
-	*(*uintptr)(unsafe.Add(p, 20)) = libc.UintptrFromInt32(0)
-}
-
-func init() {
-	p := unsafe.Pointer(&XtclOneWordHashKeyType)
-	*(*uintptr)(unsafe.Add(p, 8)) = libc.UintptrFromInt32(0)
-	*(*uintptr)(unsafe.Add(p, 12)) = libc.UintptrFromInt32(0)
-	*(*uintptr)(unsafe.Add(p, 16)) = libc.UintptrFromInt32(0)
-	*(*uintptr)(unsafe.Add(p, 20)) = libc.UintptrFromInt32(0)
 }
 
 func init() {
@@ -166295,7 +164158,6 @@ func init() {
 	*(*uintptr)(unsafe.Add(p, 8)) = __ccgo_fp(_HashStringKey)
 	*(*uintptr)(unsafe.Add(p, 12)) = __ccgo_fp(_CompareStringKeys)
 	*(*uintptr)(unsafe.Add(p, 16)) = __ccgo_fp(_AllocStringEntry)
-	*(*uintptr)(unsafe.Add(p, 20)) = libc.UintptrFromInt32(0)
 }
 
 /*
@@ -167558,11 +165420,7 @@ const m_TCL_ARGV_STRING = 17
  */
 
 var _indexType = TTcl_ObjType{
-	Fname:             __ccgo_ts + 16415,
-	FfreeIntRepProc:   uintptr(0),
-	FdupIntRepProc:    uintptr(0),
-	FupdateStringProc: uintptr(0),
-	FsetFromAnyProc:   uintptr(0),
+	Fname: __ccgo_ts + 16415,
 }
 
 func init() {
@@ -167570,7 +165428,6 @@ func init() {
 	*(*uintptr)(unsafe.Add(p, 4)) = __ccgo_fp(_FreeIndex)
 	*(*uintptr)(unsafe.Add(p, 8)) = __ccgo_fp(_DupIndex)
 	*(*uintptr)(unsafe.Add(p, 12)) = __ccgo_fp(_UpdateStringOfIndex)
-	*(*uintptr)(unsafe.Add(p, 16)) = libc.UintptrFromInt32(0)
 }
 
 /*
@@ -168061,43 +165918,24 @@ func XTclInitPrefixCmd(tls *libc.TLS, interp uintptr) (r TTcl_Command) {
 
 var _prefixImplMap = [4]TEnsembleImplMap{
 	0: {
-		Fname:        __ccgo_ts + 31739,
-		Fproc:        uintptr(0),
-		FcompileProc: uintptr(0),
-		FnreProc:     uintptr(0),
-		FclientData:  libc.UintptrFromInt32(0),
-		Funsafe:      0,
+		Fname: __ccgo_ts + 31739,
 	},
 	1: {
-		Fname:        __ccgo_ts + 31743,
-		Fproc:        uintptr(0),
-		FcompileProc: uintptr(0),
-		FnreProc:     uintptr(0),
-		FclientData:  libc.UintptrFromInt32(0),
-		Funsafe:      0,
+		Fname: __ccgo_ts + 31743,
 	},
 	2: {
-		Fname:        __ccgo_ts + 16440,
-		Fproc:        uintptr(0),
-		FcompileProc: uintptr(0),
-		FnreProc:     uintptr(0),
-		FclientData:  libc.UintptrFromInt32(0),
-		Funsafe:      0,
+		Fname: __ccgo_ts + 16440,
 	},
-	3: {},
 }
 
 func init() {
 	p := unsafe.Pointer(&_prefixImplMap)
 	*(*uintptr)(unsafe.Add(p, 4)) = __ccgo_fp(_PrefixAllObjCmd)
 	*(*uintptr)(unsafe.Add(p, 8)) = __ccgo_fp(XTclCompileBasic2ArgCmd)
-	*(*uintptr)(unsafe.Add(p, 12)) = libc.UintptrFromInt32(0)
 	*(*uintptr)(unsafe.Add(p, 28)) = __ccgo_fp(_PrefixLongestObjCmd)
 	*(*uintptr)(unsafe.Add(p, 32)) = __ccgo_fp(XTclCompileBasic2ArgCmd)
-	*(*uintptr)(unsafe.Add(p, 36)) = libc.UintptrFromInt32(0)
 	*(*uintptr)(unsafe.Add(p, 52)) = __ccgo_fp(_PrefixMatchObjCmd)
 	*(*uintptr)(unsafe.Add(p, 56)) = __ccgo_fp(XTclCompileBasicMin2ArgCmd)
-	*(*uintptr)(unsafe.Add(p, 60)) = libc.UintptrFromInt32(0)
 }
 
 /*----------------------------------------------------------------------
@@ -168232,7 +166070,6 @@ var _matchOptions = [4]uintptr{
 	0: __ccgo_ts + 31772,
 	1: __ccgo_ts + 14438,
 	2: __ccgo_ts + 31779,
-	3: libc.UintptrFromInt32(0),
 }
 
 /*----------------------------------------------------------------------
@@ -169019,7 +166856,6 @@ var _returnCodes = [6]uintptr{
 	2: __ccgo_ts + 5188,
 	3: __ccgo_ts + 4997,
 	4: __ccgo_ts + 5014,
-	5: libc.UintptrFromInt32(0),
 }
 
 const m_LIMIT_HANDLER_ACTIVE = 1
@@ -169960,32 +167796,27 @@ var _options9 = [23]uintptr{
 	19: __ccgo_ts + 34669,
 	20: __ccgo_ts + 34675,
 	21: __ccgo_ts + 34682,
-	22: libc.UintptrFromInt32(0),
 }
 
 var _cancelOptions = [3]uintptr{
 	0: __ccgo_ts + 34774,
 	1: __ccgo_ts + 15483,
-	2: libc.UintptrFromInt32(0),
 }
 
 var _createOptions = [3]uintptr{
 	0: __ccgo_ts + 34813,
 	1: __ccgo_ts + 15483,
-	2: libc.UintptrFromInt32(0),
 }
 
 var _hiddenOptions = [4]uintptr{
 	0: __ccgo_ts + 35002,
 	1: __ccgo_ts + 25951,
 	2: __ccgo_ts + 15483,
-	3: libc.UintptrFromInt32(0),
 }
 
 var _limitTypes = [3]uintptr{
 	0: __ccgo_ts + 13006,
 	1: __ccgo_ts + 5398,
-	2: libc.UintptrFromInt32(0),
 }
 
 /*
@@ -171612,20 +169443,17 @@ var _options10 = [14]uintptr{
 	10: __ccgo_ts + 34629,
 	11: __ccgo_ts + 34635,
 	12: __ccgo_ts + 34647,
-	13: libc.UintptrFromInt32(0),
 }
 
 var _hiddenOptions1 = [4]uintptr{
 	0: __ccgo_ts + 35002,
 	1: __ccgo_ts + 25951,
 	2: __ccgo_ts + 15483,
-	3: libc.UintptrFromInt32(0),
 }
 
 var _limitTypes1 = [3]uintptr{
 	0: __ccgo_ts + 13006,
 	1: __ccgo_ts + 5398,
-	2: libc.UintptrFromInt32(0),
 }
 
 /*
@@ -171734,7 +169562,6 @@ func _ChildDebugCmd(tls *libc.TLS, interp uintptr, childInterp uintptr, objc int
 
 var _debugTypes = [2]uintptr{
 	0: __ccgo_ts + 35826,
-	1: libc.UintptrFromInt32(0),
 }
 
 /*
@@ -173479,7 +171306,6 @@ var _options11 = [4]uintptr{
 	0: __ccgo_ts + 14904,
 	1: __ccgo_ts + 36600,
 	2: __ccgo_ts + 36613,
-	3: libc.UintptrFromInt32(0),
 }
 
 /*
@@ -173768,7 +171594,6 @@ var _options12 = [5]uintptr{
 	1: __ccgo_ts + 36600,
 	2: __ccgo_ts + 11091,
 	3: __ccgo_ts + 36767,
-	4: libc.UintptrFromInt32(0),
 }
 
 const m_BUFFER_PADDING = 16
@@ -174030,19 +171855,13 @@ type TResolvedChanName = struct {
 }
 
 var _chanObjType = TTcl_ObjType{
-	Fname:             __ccgo_ts + 36968,
-	FfreeIntRepProc:   uintptr(0),
-	FdupIntRepProc:    uintptr(0),
-	FupdateStringProc: uintptr(0),
-	FsetFromAnyProc:   uintptr(0),
+	Fname: __ccgo_ts + 36968,
 }
 
 func init() {
 	p := unsafe.Pointer(&_chanObjType)
 	*(*uintptr)(unsafe.Add(p, 4)) = __ccgo_fp(_FreeChannelInternalRep)
 	*(*uintptr)(unsafe.Add(p, 8)) = __ccgo_fp(_DupChannelInternalRep)
-	*(*uintptr)(unsafe.Add(p, 12)) = libc.UintptrFromInt32(0)
-	*(*uintptr)(unsafe.Add(p, 16)) = libc.UintptrFromInt32(0)
 }
 
 /*
@@ -182184,7 +180003,6 @@ func XTcl_FileEventObjCmd(tls *libc.TLS, dummy TClientData, interp uintptr, objc
 var _modeOptions = [3]uintptr{
 	0: __ccgo_ts + 12116,
 	1: __ccgo_ts + 12190,
-	2: libc.UintptrFromInt32(0),
 }
 
 var _maskArray = [2]int32{
@@ -185221,11 +183039,9 @@ var _originOptions = [4]uintptr{
 	0: __ccgo_ts + 39716,
 	1: __ccgo_ts + 39722,
 	2: __ccgo_ts + 18555,
-	3: libc.UintptrFromInt32(0),
 }
 
 var _modeArray = [3]int32{
-	0: m_SEEK_SET,
 	1: int32(m_SEEK_CUR),
 	2: int32(m_SEEK_END),
 }
@@ -185381,7 +183197,6 @@ func XTcl_CloseObjCmd(tls *libc.TLS, clientData TClientData, interp uintptr, obj
 var _dirOptions = [3]uintptr{
 	0: __ccgo_ts + 5369,
 	1: __ccgo_ts + 38103,
-	2: libc.UintptrFromInt32(0),
 }
 
 var _dirArray = [2]int32{
@@ -185717,7 +183532,6 @@ var _options13 = [4]uintptr{
 	0: __ccgo_ts + 39855,
 	1: __ccgo_ts + 39869,
 	2: __ccgo_ts + 15483,
-	3: libc.UintptrFromInt32(0),
 }
 
 /*
@@ -186335,7 +184149,6 @@ var _socketOptions = [5]uintptr{
 	1: __ccgo_ts + 40098,
 	2: __ccgo_ts + 40106,
 	3: __ccgo_ts + 40114,
-	4: libc.UintptrFromInt32(0),
 }
 
 /*
@@ -186437,7 +184250,6 @@ func XTcl_FcopyObjCmd(tls *libc.TLS, dummy TClientData, interp uintptr, objc int
 var _switches1 = [3]uintptr{
 	0: __ccgo_ts + 40456,
 	1: __ccgo_ts + 14904,
-	2: libc.UintptrFromInt32(0),
 }
 
 /*
@@ -186499,7 +184311,6 @@ func _ChanPendingObjCmd(tls *libc.TLS, unused TClientData, interp uintptr, objc 
 var _options14 = [3]uintptr{
 	0: __ccgo_ts + 40508,
 	1: __ccgo_ts + 40514,
-	2: libc.UintptrFromInt32(0),
 }
 
 /*
@@ -186714,225 +184525,106 @@ func XTclInitChanCmd(tls *libc.TLS, interp uintptr) (r TTcl_Command) {
  */
 var _initMap1 = [20]TEnsembleImplMap{
 	0: {
-		Fname:        __ccgo_ts + 40681,
-		Fproc:        uintptr(0),
-		FcompileProc: uintptr(0),
-		FnreProc:     uintptr(0),
-		FclientData:  libc.UintptrFromInt32(0),
-		Funsafe:      0,
+		Fname: __ccgo_ts + 40681,
 	},
 	1: {
-		Fname:        __ccgo_ts + 5279,
-		Fproc:        uintptr(0),
-		FcompileProc: uintptr(0),
-		FnreProc:     uintptr(0),
-		FclientData:  libc.UintptrFromInt32(0),
-		Funsafe:      0,
+		Fname: __ccgo_ts + 5279,
 	},
 	2: {
-		Fname:        __ccgo_ts + 11997,
-		Fproc:        uintptr(0),
-		FcompileProc: uintptr(0),
-		FnreProc:     uintptr(0),
-		FclientData:  libc.UintptrFromInt32(0),
-		Funsafe:      0,
+		Fname: __ccgo_ts + 11997,
 	},
 	3: {
-		Fname:        __ccgo_ts + 22931,
-		Fproc:        uintptr(0),
-		FcompileProc: uintptr(0),
-		FnreProc:     uintptr(0),
-		FclientData:  libc.UintptrFromInt32(0),
-		Funsafe:      0,
+		Fname: __ccgo_ts + 22931,
 	},
 	4: {
-		Fname:        __ccgo_ts + 5285,
-		Fproc:        uintptr(0),
-		FcompileProc: uintptr(0),
-		FnreProc:     uintptr(0),
-		FclientData:  libc.UintptrFromInt32(0),
-		Funsafe:      0,
+		Fname: __ccgo_ts + 5285,
 	},
 	5: {
-		Fname:        __ccgo_ts + 40689,
-		Fproc:        uintptr(0),
-		FcompileProc: uintptr(0),
-		FnreProc:     uintptr(0),
-		FclientData:  libc.UintptrFromInt32(0),
-		Funsafe:      0,
+		Fname: __ccgo_ts + 40689,
 	},
 	6: {
-		Fname:        __ccgo_ts + 5335,
-		Fproc:        uintptr(0),
-		FcompileProc: uintptr(0),
-		FnreProc:     uintptr(0),
-		FclientData:  libc.UintptrFromInt32(0),
-		Funsafe:      0,
+		Fname: __ccgo_ts + 5335,
 	},
 	7: {
-		Fname:        __ccgo_ts + 5341,
-		Fproc:        uintptr(0),
-		FcompileProc: uintptr(0),
-		FnreProc:     uintptr(0),
-		FclientData:  libc.UintptrFromInt32(0),
-		Funsafe:      0,
+		Fname: __ccgo_ts + 5341,
 	},
 	8: {
-		Fname:        __ccgo_ts + 11553,
-		Fproc:        uintptr(0),
-		FcompileProc: uintptr(0),
-		FnreProc:     uintptr(0),
-		FclientData:  libc.UintptrFromInt32(0),
-		Funsafe:      0,
+		Fname: __ccgo_ts + 11553,
 	},
 	9: {
-		Fname:        __ccgo_ts + 40695,
-		Fproc:        uintptr(0),
-		FcompileProc: uintptr(0),
-		FnreProc:     uintptr(0),
-		FclientData:  libc.UintptrFromInt32(0),
-		Funsafe:      0,
+		Fname: __ccgo_ts + 40695,
 	},
 	10: {
-		Fname:        __ccgo_ts + 40703,
-		Fproc:        uintptr(0),
-		FcompileProc: uintptr(0),
-		FnreProc:     uintptr(0),
-		FclientData:  libc.UintptrFromInt32(0),
-		Funsafe:      0,
+		Fname: __ccgo_ts + 40703,
 	},
 	11: {
-		Fname:        __ccgo_ts + 2898,
-		Fproc:        uintptr(0),
-		FcompileProc: uintptr(0),
-		FnreProc:     uintptr(0),
-		FclientData:  libc.UintptrFromInt32(0),
-		Funsafe:      0,
+		Fname: __ccgo_ts + 2898,
 	},
 	12: {
-		Fname:        __ccgo_ts + 40708,
-		Fproc:        uintptr(0),
-		FcompileProc: uintptr(0),
-		FnreProc:     uintptr(0),
-		FclientData:  libc.UintptrFromInt32(0),
-		Funsafe:      0,
+		Fname: __ccgo_ts + 40708,
 	},
 	13: {
-		Fname:        __ccgo_ts + 1969,
-		Fproc:        uintptr(0),
-		FcompileProc: uintptr(0),
-		FnreProc:     uintptr(0),
-		FclientData:  libc.UintptrFromInt32(0),
-		Funsafe:      0,
+		Fname: __ccgo_ts + 1969,
 	},
 	14: {
-		Fname:        __ccgo_ts + 5360,
-		Fproc:        uintptr(0),
-		FcompileProc: uintptr(0),
-		FnreProc:     uintptr(0),
-		FclientData:  libc.UintptrFromInt32(0),
-		Funsafe:      0,
+		Fname: __ccgo_ts + 5360,
 	},
 	15: {
-		Fname:        __ccgo_ts + 5369,
-		Fproc:        uintptr(0),
-		FcompileProc: uintptr(0),
-		FnreProc:     uintptr(0),
-		FclientData:  libc.UintptrFromInt32(0),
-		Funsafe:      0,
+		Fname: __ccgo_ts + 5369,
 	},
 	16: {
-		Fname:        __ccgo_ts + 5374,
-		Fproc:        uintptr(0),
-		FcompileProc: uintptr(0),
-		FnreProc:     uintptr(0),
-		FclientData:  libc.UintptrFromInt32(0),
-		Funsafe:      0,
+		Fname: __ccgo_ts + 5374,
 	},
 	17: {
-		Fname:        __ccgo_ts + 5393,
-		Fproc:        uintptr(0),
-		FcompileProc: uintptr(0),
-		FnreProc:     uintptr(0),
-		FclientData:  libc.UintptrFromInt32(0),
-		Funsafe:      0,
+		Fname: __ccgo_ts + 5393,
 	},
 	18: {
-		Fname:        __ccgo_ts + 40718,
-		Fproc:        uintptr(0),
-		FcompileProc: uintptr(0),
-		FnreProc:     uintptr(0),
-		FclientData:  libc.UintptrFromInt32(0),
-		Funsafe:      0,
+		Fname: __ccgo_ts + 40718,
 	},
-	19: {},
 }
 
 func init() {
 	p := unsafe.Pointer(&_initMap1)
 	*(*uintptr)(unsafe.Add(p, 4)) = __ccgo_fp(XTcl_FblockedObjCmd)
 	*(*uintptr)(unsafe.Add(p, 8)) = __ccgo_fp(XTclCompileBasic1ArgCmd)
-	*(*uintptr)(unsafe.Add(p, 12)) = libc.UintptrFromInt32(0)
 	*(*uintptr)(unsafe.Add(p, 28)) = __ccgo_fp(XTcl_CloseObjCmd)
 	*(*uintptr)(unsafe.Add(p, 32)) = __ccgo_fp(XTclCompileBasic1Or2ArgCmd)
-	*(*uintptr)(unsafe.Add(p, 36)) = libc.UintptrFromInt32(0)
 	*(*uintptr)(unsafe.Add(p, 52)) = __ccgo_fp(XTcl_FcopyObjCmd)
-	*(*uintptr)(unsafe.Add(p, 56)) = libc.UintptrFromInt32(0)
-	*(*uintptr)(unsafe.Add(p, 60)) = libc.UintptrFromInt32(0)
 	*(*uintptr)(unsafe.Add(p, 76)) = __ccgo_fp(XTclChanCreateObjCmd)
 	*(*uintptr)(unsafe.Add(p, 80)) = __ccgo_fp(XTclCompileBasic2ArgCmd)
-	*(*uintptr)(unsafe.Add(p, 84)) = libc.UintptrFromInt32(0)
 	*(*uintptr)(unsafe.Add(p, 100)) = __ccgo_fp(XTcl_EofObjCmd)
 	*(*uintptr)(unsafe.Add(p, 104)) = __ccgo_fp(XTclCompileBasic1ArgCmd)
-	*(*uintptr)(unsafe.Add(p, 108)) = libc.UintptrFromInt32(0)
 	*(*uintptr)(unsafe.Add(p, 124)) = __ccgo_fp(XTcl_FileEventObjCmd)
 	*(*uintptr)(unsafe.Add(p, 128)) = __ccgo_fp(XTclCompileBasic2Or3ArgCmd)
-	*(*uintptr)(unsafe.Add(p, 132)) = libc.UintptrFromInt32(0)
 	*(*uintptr)(unsafe.Add(p, 148)) = __ccgo_fp(XTcl_FlushObjCmd)
 	*(*uintptr)(unsafe.Add(p, 152)) = __ccgo_fp(XTclCompileBasic1ArgCmd)
-	*(*uintptr)(unsafe.Add(p, 156)) = libc.UintptrFromInt32(0)
 	*(*uintptr)(unsafe.Add(p, 172)) = __ccgo_fp(XTcl_GetsObjCmd)
 	*(*uintptr)(unsafe.Add(p, 176)) = __ccgo_fp(XTclCompileBasic1Or2ArgCmd)
-	*(*uintptr)(unsafe.Add(p, 180)) = libc.UintptrFromInt32(0)
 	*(*uintptr)(unsafe.Add(p, 196)) = __ccgo_fp(XTclChannelNamesCmd)
 	*(*uintptr)(unsafe.Add(p, 200)) = __ccgo_fp(XTclCompileBasic0Or1ArgCmd)
-	*(*uintptr)(unsafe.Add(p, 204)) = libc.UintptrFromInt32(0)
 	*(*uintptr)(unsafe.Add(p, 220)) = __ccgo_fp(_ChanPendingObjCmd)
 	*(*uintptr)(unsafe.Add(p, 224)) = __ccgo_fp(XTclCompileBasic2ArgCmd)
-	*(*uintptr)(unsafe.Add(p, 228)) = libc.UintptrFromInt32(0)
 	*(*uintptr)(unsafe.Add(p, 244)) = __ccgo_fp(_ChanPipeObjCmd)
 	*(*uintptr)(unsafe.Add(p, 248)) = __ccgo_fp(XTclCompileBasic0ArgCmd)
-	*(*uintptr)(unsafe.Add(p, 252)) = libc.UintptrFromInt32(0)
 	*(*uintptr)(unsafe.Add(p, 268)) = __ccgo_fp(XTclChanPopObjCmd)
 	*(*uintptr)(unsafe.Add(p, 272)) = __ccgo_fp(XTclCompileBasic1ArgCmd)
-	*(*uintptr)(unsafe.Add(p, 276)) = libc.UintptrFromInt32(0)
 	*(*uintptr)(unsafe.Add(p, 292)) = __ccgo_fp(XTclChanPostEventObjCmd)
 	*(*uintptr)(unsafe.Add(p, 296)) = __ccgo_fp(XTclCompileBasic2ArgCmd)
-	*(*uintptr)(unsafe.Add(p, 300)) = libc.UintptrFromInt32(0)
 	*(*uintptr)(unsafe.Add(p, 316)) = __ccgo_fp(XTclChanPushObjCmd)
 	*(*uintptr)(unsafe.Add(p, 320)) = __ccgo_fp(XTclCompileBasic2ArgCmd)
-	*(*uintptr)(unsafe.Add(p, 324)) = libc.UintptrFromInt32(0)
 	*(*uintptr)(unsafe.Add(p, 340)) = __ccgo_fp(XTcl_PutsObjCmd)
-	*(*uintptr)(unsafe.Add(p, 344)) = libc.UintptrFromInt32(0)
-	*(*uintptr)(unsafe.Add(p, 348)) = libc.UintptrFromInt32(0)
 	*(*uintptr)(unsafe.Add(p, 364)) = __ccgo_fp(XTcl_ReadObjCmd)
-	*(*uintptr)(unsafe.Add(p, 368)) = libc.UintptrFromInt32(0)
-	*(*uintptr)(unsafe.Add(p, 372)) = libc.UintptrFromInt32(0)
 	*(*uintptr)(unsafe.Add(p, 388)) = __ccgo_fp(XTcl_SeekObjCmd)
 	*(*uintptr)(unsafe.Add(p, 392)) = __ccgo_fp(XTclCompileBasic2Or3ArgCmd)
-	*(*uintptr)(unsafe.Add(p, 396)) = libc.UintptrFromInt32(0)
 	*(*uintptr)(unsafe.Add(p, 412)) = __ccgo_fp(XTcl_TellObjCmd)
 	*(*uintptr)(unsafe.Add(p, 416)) = __ccgo_fp(XTclCompileBasic1ArgCmd)
-	*(*uintptr)(unsafe.Add(p, 420)) = libc.UintptrFromInt32(0)
 	*(*uintptr)(unsafe.Add(p, 436)) = __ccgo_fp(_ChanTruncateObjCmd)
 	*(*uintptr)(unsafe.Add(p, 440)) = __ccgo_fp(XTclCompileBasic1Or2ArgCmd)
-	*(*uintptr)(unsafe.Add(p, 444)) = libc.UintptrFromInt32(0)
 }
 
 var _extras = [3]uintptr{
 	0: __ccgo_ts + 25892,
 	1: __ccgo_ts + 40727,
-	2: libc.UintptrFromInt32(0),
 }
 
 const m_EOK = 0
@@ -186943,23 +184635,8 @@ const m_RCMKEY = "ReflectedChannelMap"
  */
 
 var _tclRChannelType = TTcl_ChannelType{
-	FtypeName:         __ccgo_ts + 40745,
-	Fversion:          libc.UintptrFromInt32(0x5),
-	FcloseProc:        uintptr(0),
-	FinputProc:        uintptr(0),
-	FoutputProc:       uintptr(0),
-	FseekProc:         uintptr(0),
-	FsetOptionProc:    uintptr(0),
-	FgetOptionProc:    uintptr(0),
-	FwatchProc:        uintptr(0),
-	FgetHandleProc:    uintptr(0),
-	Fclose2Proc:       uintptr(0),
-	FblockModeProc:    uintptr(0),
-	FflushProc:        uintptr(0),
-	FhandlerProc:      uintptr(0),
-	FwideSeekProc:     uintptr(0),
-	FthreadActionProc: uintptr(0),
-	FtruncateProc:     uintptr(0),
+	FtypeName: __ccgo_ts + 40745,
+	Fversion:  libc.UintptrFromInt32(0x5),
 }
 
 func init() {
@@ -186971,14 +184648,9 @@ func init() {
 	*(*uintptr)(unsafe.Add(p, 24)) = __ccgo_fp(_ReflectSetOption)
 	*(*uintptr)(unsafe.Add(p, 28)) = __ccgo_fp(_ReflectGetOption)
 	*(*uintptr)(unsafe.Add(p, 32)) = __ccgo_fp(_ReflectWatch)
-	*(*uintptr)(unsafe.Add(p, 36)) = libc.UintptrFromInt32(0)
 	*(*uintptr)(unsafe.Add(p, 40)) = __ccgo_fp(_ReflectClose2)
 	*(*uintptr)(unsafe.Add(p, 44)) = __ccgo_fp(_ReflectBlock)
-	*(*uintptr)(unsafe.Add(p, 48)) = libc.UintptrFromInt32(0)
-	*(*uintptr)(unsafe.Add(p, 52)) = libc.UintptrFromInt32(0)
 	*(*uintptr)(unsafe.Add(p, 56)) = __ccgo_fp(_ReflectSeekWide)
-	*(*uintptr)(unsafe.Add(p, 60)) = libc.UintptrFromInt32(0)
-	*(*uintptr)(unsafe.Add(p, 64)) = libc.UintptrFromInt32(0)
 }
 
 /*
@@ -187018,7 +184690,6 @@ type TReflectedChannelMap = struct {
 var _eventOptions = [3]uintptr{
 	0: __ccgo_ts + 5369,
 	1: __ccgo_ts + 38103,
-	2: libc.UintptrFromInt32(0),
 }
 
 type TEventOption = int32
@@ -187031,17 +184702,16 @@ const _EVENT_WRITE = 1
  */
 
 var _methodNames = [11]uintptr{
-	0:  __ccgo_ts + 40757,
-	1:  __ccgo_ts + 40766,
-	2:  __ccgo_ts + 40771,
-	3:  __ccgo_ts + 25892,
-	4:  __ccgo_ts + 40779,
-	5:  __ccgo_ts + 40788,
-	6:  __ccgo_ts + 5369,
-	7:  __ccgo_ts + 5374,
-	8:  __ccgo_ts + 40799,
-	9:  __ccgo_ts + 38103,
-	10: libc.UintptrFromInt32(0),
+	0: __ccgo_ts + 40757,
+	1: __ccgo_ts + 40766,
+	2: __ccgo_ts + 40771,
+	3: __ccgo_ts + 25892,
+	4: __ccgo_ts + 40779,
+	5: __ccgo_ts + 40788,
+	6: __ccgo_ts + 5369,
+	7: __ccgo_ts + 5374,
+	8: __ccgo_ts + 40799,
+	9: __ccgo_ts + 38103,
 }
 
 type TMethodName = int32
@@ -188838,23 +186508,8 @@ const m_RTMKEY = "ReflectedTransformMap"
  */
 
 var _tclRTransformType = TTcl_ChannelType{
-	FtypeName:         __ccgo_ts + 41915,
-	Fversion:          libc.UintptrFromInt32(0x5),
-	FcloseProc:        uintptr(0),
-	FinputProc:        uintptr(0),
-	FoutputProc:       uintptr(0),
-	FseekProc:         uintptr(0),
-	FsetOptionProc:    uintptr(0),
-	FgetOptionProc:    uintptr(0),
-	FwatchProc:        uintptr(0),
-	FgetHandleProc:    uintptr(0),
-	Fclose2Proc:       uintptr(0),
-	FblockModeProc:    uintptr(0),
-	FflushProc:        uintptr(0),
-	FhandlerProc:      uintptr(0),
-	FwideSeekProc:     uintptr(0),
-	FthreadActionProc: uintptr(0),
-	FtruncateProc:     uintptr(0),
+	FtypeName: __ccgo_ts + 41915,
+	Fversion:  libc.UintptrFromInt32(0x5),
 }
 
 func init() {
@@ -188869,11 +186524,8 @@ func init() {
 	*(*uintptr)(unsafe.Add(p, 36)) = __ccgo_fp(_ReflectHandle)
 	*(*uintptr)(unsafe.Add(p, 40)) = __ccgo_fp(_ReflectClose21)
 	*(*uintptr)(unsafe.Add(p, 44)) = __ccgo_fp(_ReflectBlock1)
-	*(*uintptr)(unsafe.Add(p, 48)) = libc.UintptrFromInt32(0)
 	*(*uintptr)(unsafe.Add(p, 52)) = __ccgo_fp(_ReflectNotify)
 	*(*uintptr)(unsafe.Add(p, 56)) = __ccgo_fp(_ReflectSeekWide1)
-	*(*uintptr)(unsafe.Add(p, 60)) = libc.UintptrFromInt32(0)
-	*(*uintptr)(unsafe.Add(p, 64)) = libc.UintptrFromInt32(0)
 }
 
 /*
@@ -188940,7 +186592,6 @@ var _methodNames1 = [9]uintptr{
 	5: __ccgo_ts + 41941,
 	6: __ccgo_ts + 5369,
 	7: __ccgo_ts + 38103,
-	8: libc.UintptrFromInt32(0),
 }
 
 const _METH_CLEAR = 0
@@ -190971,23 +188622,8 @@ type TTransformChannelData = struct {
  */
 
 var _transformChannelType = TTcl_ChannelType{
-	FtypeName:         __ccgo_ts + 42307,
-	Fversion:          libc.UintptrFromInt32(0x5),
-	FcloseProc:        uintptr(0),
-	FinputProc:        uintptr(0),
-	FoutputProc:       uintptr(0),
-	FseekProc:         uintptr(0),
-	FsetOptionProc:    uintptr(0),
-	FgetOptionProc:    uintptr(0),
-	FwatchProc:        uintptr(0),
-	FgetHandleProc:    uintptr(0),
-	Fclose2Proc:       uintptr(0),
-	FblockModeProc:    uintptr(0),
-	FflushProc:        uintptr(0),
-	FhandlerProc:      uintptr(0),
-	FwideSeekProc:     uintptr(0),
-	FthreadActionProc: uintptr(0),
-	FtruncateProc:     uintptr(0),
+	FtypeName: __ccgo_ts + 42307,
+	Fversion:  libc.UintptrFromInt32(0x5),
 }
 
 func init() {
@@ -191002,11 +188638,8 @@ func init() {
 	*(*uintptr)(unsafe.Add(p, 36)) = __ccgo_fp(_TransformGetFileHandleProc)
 	*(*uintptr)(unsafe.Add(p, 40)) = __ccgo_fp(_TransformClose2Proc)
 	*(*uintptr)(unsafe.Add(p, 44)) = __ccgo_fp(_TransformBlockModeProc)
-	*(*uintptr)(unsafe.Add(p, 48)) = libc.UintptrFromInt32(0)
 	*(*uintptr)(unsafe.Add(p, 52)) = __ccgo_fp(_TransformNotifyProc)
 	*(*uintptr)(unsafe.Add(p, 56)) = __ccgo_fp(_TransformWideSeekProc)
-	*(*uintptr)(unsafe.Add(p, 60)) = libc.UintptrFromInt32(0)
-	*(*uintptr)(unsafe.Add(p, 64)) = libc.UintptrFromInt32(0)
 }
 
 /*
@@ -192429,10 +190062,7 @@ func init() {
  */
 
 var _nativeFilesystemRecord = TFilesystemRecord{
-	FclientData: libc.UintptrFromInt32(0),
-	FfsPtr:      uintptr(unsafe.Pointer(&XtclNativeFilesystem)),
-	FnextPtr:    libc.UintptrFromInt32(0),
-	FprevPtr:    libc.UintptrFromInt32(0),
+	FfsPtr: uintptr(unsafe.Pointer(&XtclNativeFilesystem)),
 }
 
 /*
@@ -196057,10 +193687,7 @@ func _FsListMounts(tls *libc.TLS, pathPtr uintptr, pattern uintptr) (r uintptr) 
 	var _ /* mountsOnly at bp+0 */ TTcl_GlobTypeData
 	_, _ = fsRecPtr, resultPtr
 	*(*TTcl_GlobTypeData)(unsafe.Pointer(bp)) = TTcl_GlobTypeData{
-		Ftype1:      libc.Int32FromInt32(1) << libc.Int32FromInt32(7),
-		Fperm:       0,
-		FmacType:    libc.UintptrFromInt32(0),
-		FmacCreator: libc.UintptrFromInt32(0),
+		Ftype1: libc.Int32FromInt32(1) << libc.Int32FromInt32(7),
 	}
 	resultPtr = libc.UintptrFromInt32(0)
 	/*
@@ -197622,19 +195249,7 @@ _16:
 }
 
 var _invalidRealType = TTcl_ObjType{
-	Fname:             __ccgo_ts + 43949,
-	FfreeIntRepProc:   uintptr(0),
-	FdupIntRepProc:    uintptr(0),
-	FupdateStringProc: uintptr(0),
-	FsetFromAnyProc:   uintptr(0),
-}
-
-func init() {
-	p := unsafe.Pointer(&_invalidRealType)
-	*(*uintptr)(unsafe.Add(p, 4)) = libc.UintptrFromInt32(0)
-	*(*uintptr)(unsafe.Add(p, 8)) = libc.UintptrFromInt32(0)
-	*(*uintptr)(unsafe.Add(p, 12)) = libc.UintptrFromInt32(0)
-	*(*uintptr)(unsafe.Add(p, 16)) = libc.UintptrFromInt32(0)
+	Fname: __ccgo_ts + 43949,
 }
 
 func _SetInvalidRealFromAny(tls *libc.TLS, interp uintptr, objPtr uintptr) (r int32) {
@@ -201364,7 +198979,6 @@ var _options15 = [4]uintptr{
 	0: __ccgo_ts + 35002,
 	1: __ccgo_ts + 44252,
 	2: __ccgo_ts + 15483,
-	3: libc.UintptrFromInt32(0),
 }
 
 /*
@@ -201715,7 +199329,6 @@ var _options16 = [4]uintptr{
 	0: __ccgo_ts + 19086,
 	1: __ccgo_ts + 44714,
 	2: __ccgo_ts + 15483,
-	3: libc.UintptrFromInt32(0),
 }
 
 /*
@@ -203218,18 +200831,13 @@ type TResolvedNsName = struct {
  */
 
 var _nsNameType = TTcl_ObjType{
-	Fname:             __ccgo_ts + 45223,
-	FfreeIntRepProc:   uintptr(0),
-	FdupIntRepProc:    uintptr(0),
-	FupdateStringProc: uintptr(0),
-	FsetFromAnyProc:   uintptr(0),
+	Fname: __ccgo_ts + 45223,
 }
 
 func init() {
 	p := unsafe.Pointer(&_nsNameType)
 	*(*uintptr)(unsafe.Add(p, 4)) = __ccgo_fp(_FreeNsNameInternalRep)
 	*(*uintptr)(unsafe.Add(p, 8)) = __ccgo_fp(_DupNsNameInternalRep)
-	*(*uintptr)(unsafe.Add(p, 12)) = libc.UintptrFromInt32(0)
 	*(*uintptr)(unsafe.Add(p, 16)) = __ccgo_fp(_SetNsNameFromAny)
 }
 
@@ -203240,219 +200848,103 @@ func init() {
 
 var _defaultNamespaceMap = [20]TEnsembleImplMap{
 	0: {
-		Fname:        __ccgo_ts + 34582,
-		Fproc:        uintptr(0),
-		FcompileProc: uintptr(0),
-		FnreProc:     uintptr(0),
-		FclientData:  libc.UintptrFromInt32(0),
-		Funsafe:      int32(0),
+		Fname: __ccgo_ts + 34582,
 	},
 	1: {
-		Fname:        __ccgo_ts + 45230,
-		Fproc:        uintptr(0),
-		FcompileProc: uintptr(0),
-		FnreProc:     uintptr(0),
-		FclientData:  libc.UintptrFromInt32(0),
-		Funsafe:      int32(0),
+		Fname: __ccgo_ts + 45230,
 	},
 	2: {
-		Fname:        __ccgo_ts + 39722,
-		Fproc:        uintptr(0),
-		FcompileProc: uintptr(0),
-		FnreProc:     uintptr(0),
-		FclientData:  libc.UintptrFromInt32(0),
-		Funsafe:      int32(0),
+		Fname: __ccgo_ts + 39722,
 	},
 	3: {
-		Fname:        __ccgo_ts + 7170,
-		Fproc:        uintptr(0),
-		FcompileProc: uintptr(0),
-		FnreProc:     uintptr(0),
-		FclientData:  libc.UintptrFromInt32(0),
-		Funsafe:      int32(0),
+		Fname: __ccgo_ts + 7170,
 	},
 	4: {
-		Fname:        __ccgo_ts + 45235,
-		Fproc:        uintptr(0),
-		FcompileProc: uintptr(0),
-		FnreProc:     uintptr(0),
-		FclientData:  libc.UintptrFromInt32(0),
-		Funsafe:      int32(0),
+		Fname: __ccgo_ts + 45235,
 	},
 	5: {
-		Fname:        __ccgo_ts + 2306,
-		Fproc:        uintptr(0),
-		FcompileProc: uintptr(0),
-		FnreProc:     uintptr(0),
-		FclientData:  libc.UintptrFromInt32(0),
-		Funsafe:      int32(0),
+		Fname: __ccgo_ts + 2306,
 	},
 	6: {
-		Fname:        __ccgo_ts + 12021,
-		Fproc:        uintptr(0),
-		FcompileProc: uintptr(0),
-		FnreProc:     uintptr(0),
-		FclientData:  libc.UintptrFromInt32(0),
-		Funsafe:      int32(0),
+		Fname: __ccgo_ts + 12021,
 	},
 	7: {
-		Fname:        __ccgo_ts + 45244,
-		Fproc:        uintptr(0),
-		FcompileProc: uintptr(0),
-		FnreProc:     uintptr(0),
-		FclientData:  libc.UintptrFromInt32(0),
-		Funsafe:      int32(0),
+		Fname: __ccgo_ts + 45244,
 	},
 	8: {
-		Fname:        __ccgo_ts + 45251,
-		Fproc:        uintptr(0),
-		FcompileProc: uintptr(0),
-		FnreProc:     uintptr(0),
-		FclientData:  libc.UintptrFromInt32(0),
-		Funsafe:      int32(0),
+		Fname: __ccgo_ts + 45251,
 	},
 	9: {
-		Fname:        __ccgo_ts + 45258,
-		Fproc:        uintptr(0),
-		FcompileProc: uintptr(0),
-		FnreProc:     uintptr(0),
-		FclientData:  libc.UintptrFromInt32(0),
-		Funsafe:      int32(0),
+		Fname: __ccgo_ts + 45258,
 	},
 	10: {
-		Fname:        __ccgo_ts + 18543,
-		Fproc:        uintptr(0),
-		FcompileProc: uintptr(0),
-		FnreProc:     uintptr(0),
-		FclientData:  libc.UintptrFromInt32(0),
-		Funsafe:      int32(0),
+		Fname: __ccgo_ts + 18543,
 	},
 	11: {
-		Fname:        __ccgo_ts + 39756,
-		Fproc:        uintptr(0),
-		FcompileProc: uintptr(0),
-		FnreProc:     uintptr(0),
-		FclientData:  libc.UintptrFromInt32(0),
-		Funsafe:      int32(0),
+		Fname: __ccgo_ts + 39756,
 	},
 	12: {
-		Fname:        __ccgo_ts + 45265,
-		Fproc:        uintptr(0),
-		FcompileProc: uintptr(0),
-		FnreProc:     uintptr(0),
-		FclientData:  libc.UintptrFromInt32(0),
-		Funsafe:      int32(0),
+		Fname: __ccgo_ts + 45265,
 	},
 	13: {
-		Fname:        __ccgo_ts + 35105,
-		Fproc:        uintptr(0),
-		FcompileProc: uintptr(0),
-		FnreProc:     uintptr(0),
-		FclientData:  libc.UintptrFromInt32(0),
-		Funsafe:      int32(0),
+		Fname: __ccgo_ts + 35105,
 	},
 	14: {
-		Fname:        __ccgo_ts + 45272,
-		Fproc:        uintptr(0),
-		FcompileProc: uintptr(0),
-		FnreProc:     uintptr(0),
-		FclientData:  libc.UintptrFromInt32(0),
-		Funsafe:      int32(0),
+		Fname: __ccgo_ts + 45272,
 	},
 	15: {
-		Fname:        __ccgo_ts + 12163,
-		Fproc:        uintptr(0),
-		FcompileProc: uintptr(0),
-		FnreProc:     uintptr(0),
-		FclientData:  libc.UintptrFromInt32(0),
-		Funsafe:      int32(0),
+		Fname: __ccgo_ts + 12163,
 	},
 	16: {
-		Fname:        __ccgo_ts + 12726,
-		Fproc:        uintptr(0),
-		FcompileProc: uintptr(0),
-		FnreProc:     uintptr(0),
-		FclientData:  libc.UintptrFromInt32(0),
-		Funsafe:      int32(0),
+		Fname: __ccgo_ts + 12726,
 	},
 	17: {
-		Fname:        __ccgo_ts + 3323,
-		Fproc:        uintptr(0),
-		FcompileProc: uintptr(0),
-		FnreProc:     uintptr(0),
-		FclientData:  libc.UintptrFromInt32(0),
-		Funsafe:      int32(0),
+		Fname: __ccgo_ts + 3323,
 	},
 	18: {
-		Fname:        __ccgo_ts + 45283,
-		Fproc:        uintptr(0),
-		FcompileProc: uintptr(0),
-		FnreProc:     uintptr(0),
-		FclientData:  libc.UintptrFromInt32(0),
-		Funsafe:      int32(0),
+		Fname: __ccgo_ts + 45283,
 	},
-	19: {},
 }
 
 func init() {
 	p := unsafe.Pointer(&_defaultNamespaceMap)
 	*(*uintptr)(unsafe.Add(p, 4)) = __ccgo_fp(_NamespaceChildrenCmd)
 	*(*uintptr)(unsafe.Add(p, 8)) = __ccgo_fp(XTclCompileBasic0To2ArgCmd)
-	*(*uintptr)(unsafe.Add(p, 12)) = libc.UintptrFromInt32(0)
 	*(*uintptr)(unsafe.Add(p, 28)) = __ccgo_fp(_NamespaceCodeCmd)
 	*(*uintptr)(unsafe.Add(p, 32)) = __ccgo_fp(XTclCompileNamespaceCodeCmd)
-	*(*uintptr)(unsafe.Add(p, 36)) = libc.UintptrFromInt32(0)
 	*(*uintptr)(unsafe.Add(p, 52)) = __ccgo_fp(_NamespaceCurrentCmd)
 	*(*uintptr)(unsafe.Add(p, 56)) = __ccgo_fp(XTclCompileNamespaceCurrentCmd)
-	*(*uintptr)(unsafe.Add(p, 60)) = libc.UintptrFromInt32(0)
 	*(*uintptr)(unsafe.Add(p, 76)) = __ccgo_fp(_NamespaceDeleteCmd)
 	*(*uintptr)(unsafe.Add(p, 80)) = __ccgo_fp(XTclCompileBasicMin0ArgCmd)
-	*(*uintptr)(unsafe.Add(p, 84)) = libc.UintptrFromInt32(0)
 	*(*uintptr)(unsafe.Add(p, 100)) = __ccgo_fp(XTclNamespaceEnsembleCmd)
-	*(*uintptr)(unsafe.Add(p, 104)) = libc.UintptrFromInt32(0)
-	*(*uintptr)(unsafe.Add(p, 108)) = libc.UintptrFromInt32(0)
 	*(*uintptr)(unsafe.Add(p, 124)) = __ccgo_fp(_NamespaceEvalCmd)
-	*(*uintptr)(unsafe.Add(p, 128)) = libc.UintptrFromInt32(0)
 	*(*uintptr)(unsafe.Add(p, 132)) = __ccgo_fp(_NRNamespaceEvalCmd)
 	*(*uintptr)(unsafe.Add(p, 148)) = __ccgo_fp(_NamespaceExistsCmd)
 	*(*uintptr)(unsafe.Add(p, 152)) = __ccgo_fp(XTclCompileBasic1ArgCmd)
-	*(*uintptr)(unsafe.Add(p, 156)) = libc.UintptrFromInt32(0)
 	*(*uintptr)(unsafe.Add(p, 172)) = __ccgo_fp(_NamespaceExportCmd)
 	*(*uintptr)(unsafe.Add(p, 176)) = __ccgo_fp(XTclCompileBasicMin0ArgCmd)
-	*(*uintptr)(unsafe.Add(p, 180)) = libc.UintptrFromInt32(0)
 	*(*uintptr)(unsafe.Add(p, 196)) = __ccgo_fp(_NamespaceForgetCmd)
 	*(*uintptr)(unsafe.Add(p, 200)) = __ccgo_fp(XTclCompileBasicMin0ArgCmd)
-	*(*uintptr)(unsafe.Add(p, 204)) = libc.UintptrFromInt32(0)
 	*(*uintptr)(unsafe.Add(p, 220)) = __ccgo_fp(_NamespaceImportCmd)
 	*(*uintptr)(unsafe.Add(p, 224)) = __ccgo_fp(XTclCompileBasicMin0ArgCmd)
-	*(*uintptr)(unsafe.Add(p, 228)) = libc.UintptrFromInt32(0)
 	*(*uintptr)(unsafe.Add(p, 244)) = __ccgo_fp(_NamespaceInscopeCmd)
-	*(*uintptr)(unsafe.Add(p, 248)) = libc.UintptrFromInt32(0)
 	*(*uintptr)(unsafe.Add(p, 252)) = __ccgo_fp(_NRNamespaceInscopeCmd)
 	*(*uintptr)(unsafe.Add(p, 268)) = __ccgo_fp(_NamespaceOriginCmd)
 	*(*uintptr)(unsafe.Add(p, 272)) = __ccgo_fp(XTclCompileNamespaceOriginCmd)
-	*(*uintptr)(unsafe.Add(p, 276)) = libc.UintptrFromInt32(0)
 	*(*uintptr)(unsafe.Add(p, 292)) = __ccgo_fp(_NamespaceParentCmd)
 	*(*uintptr)(unsafe.Add(p, 296)) = __ccgo_fp(XTclCompileBasic0Or1ArgCmd)
-	*(*uintptr)(unsafe.Add(p, 300)) = libc.UintptrFromInt32(0)
 	*(*uintptr)(unsafe.Add(p, 316)) = __ccgo_fp(_NamespacePathCmd)
 	*(*uintptr)(unsafe.Add(p, 320)) = __ccgo_fp(XTclCompileBasic0Or1ArgCmd)
-	*(*uintptr)(unsafe.Add(p, 324)) = libc.UintptrFromInt32(0)
 	*(*uintptr)(unsafe.Add(p, 340)) = __ccgo_fp(_NamespaceQualifiersCmd)
 	*(*uintptr)(unsafe.Add(p, 344)) = __ccgo_fp(XTclCompileNamespaceQualifiersCmd)
-	*(*uintptr)(unsafe.Add(p, 348)) = libc.UintptrFromInt32(0)
 	*(*uintptr)(unsafe.Add(p, 364)) = __ccgo_fp(_NamespaceTailCmd)
 	*(*uintptr)(unsafe.Add(p, 368)) = __ccgo_fp(XTclCompileNamespaceTailCmd)
-	*(*uintptr)(unsafe.Add(p, 372)) = libc.UintptrFromInt32(0)
 	*(*uintptr)(unsafe.Add(p, 388)) = __ccgo_fp(_NamespaceUnknownCmd)
 	*(*uintptr)(unsafe.Add(p, 392)) = __ccgo_fp(XTclCompileBasic0Or1ArgCmd)
-	*(*uintptr)(unsafe.Add(p, 396)) = libc.UintptrFromInt32(0)
 	*(*uintptr)(unsafe.Add(p, 412)) = __ccgo_fp(_NamespaceUpvarCmd)
 	*(*uintptr)(unsafe.Add(p, 416)) = __ccgo_fp(XTclCompileNamespaceUpvarCmd)
-	*(*uintptr)(unsafe.Add(p, 420)) = libc.UintptrFromInt32(0)
 	*(*uintptr)(unsafe.Add(p, 436)) = __ccgo_fp(_NamespaceWhichCmd)
 	*(*uintptr)(unsafe.Add(p, 440)) = __ccgo_fp(XTclCompileNamespaceWhichCmd)
-	*(*uintptr)(unsafe.Add(p, 444)) = libc.UintptrFromInt32(0)
 }
 
 /*
@@ -207784,7 +205276,6 @@ _2:
 var _opts = [3]uintptr{
 	0: __ccgo_ts + 14904,
 	1: __ccgo_ts + 46419,
-	2: libc.UintptrFromInt32(0),
 }
 
 /*
@@ -208243,6 +205734,14 @@ func XTcl_LogCommandInfo(tls *libc.TLS, interp uintptr, script uintptr, command 
 	XTclLogCommandInfo(tls, interp, script, command, length, libc.UintptrFromInt32(0), libc.UintptrFromInt32(0))
 }
 
+type TTcl_Namespace1 = struct {
+	Fname       uintptr
+	FfullName   uintptr
+	FclientData TClientData
+	FdeleteProc uintptr
+	FparentPtr  uintptr
+}
+
 type TNamespace1 = struct {
 	Fname                  uintptr
 	FfullName              uintptr
@@ -208272,14 +205771,6 @@ type TNamespace1 = struct {
 	FcommandPathArray      uintptr
 	FcommandPathSourceList uintptr
 	FearlyDeleteProc       uintptr
-}
-
-type TTcl_Namespace1 = struct {
-	Fname       uintptr
-	FfullName   uintptr
-	FclientData TClientData
-	FdeleteProc uintptr
-	FparentPtr  uintptr
 }
 
 const m_TCL_SERVICE_ALL = 1
@@ -209354,49 +206845,33 @@ var _pendingObjData TPendingObjData
  */
 
 var _oldBooleanType = TTcl_ObjType{
-	Fname:             __ccgo_ts + 3438,
-	FfreeIntRepProc:   uintptr(0),
-	FdupIntRepProc:    uintptr(0),
-	FupdateStringProc: uintptr(0),
-	FsetFromAnyProc:   uintptr(0),
+	Fname: __ccgo_ts + 3438,
 }
 
 func init() {
 	p := unsafe.Pointer(&_oldBooleanType)
-	*(*uintptr)(unsafe.Add(p, 4)) = libc.UintptrFromInt32(0)
-	*(*uintptr)(unsafe.Add(p, 8)) = libc.UintptrFromInt32(0)
-	*(*uintptr)(unsafe.Add(p, 12)) = libc.UintptrFromInt32(0)
 	*(*uintptr)(unsafe.Add(p, 16)) = __ccgo_fp(XTclSetBooleanFromAny)
 }
 
 func init() {
 	p := unsafe.Pointer(&XtclBooleanType)
-	*(*uintptr)(unsafe.Add(p, 4)) = libc.UintptrFromInt32(0)
-	*(*uintptr)(unsafe.Add(p, 8)) = libc.UintptrFromInt32(0)
-	*(*uintptr)(unsafe.Add(p, 12)) = libc.UintptrFromInt32(0)
 	*(*uintptr)(unsafe.Add(p, 16)) = __ccgo_fp(XTclSetBooleanFromAny)
 }
 
 func init() {
 	p := unsafe.Pointer(&XtclDoubleType)
-	*(*uintptr)(unsafe.Add(p, 4)) = libc.UintptrFromInt32(0)
-	*(*uintptr)(unsafe.Add(p, 8)) = libc.UintptrFromInt32(0)
 	*(*uintptr)(unsafe.Add(p, 12)) = __ccgo_fp(_UpdateStringOfDouble)
 	*(*uintptr)(unsafe.Add(p, 16)) = __ccgo_fp(_SetDoubleFromAny)
 }
 
 func init() {
 	p := unsafe.Pointer(&XtclIntType)
-	*(*uintptr)(unsafe.Add(p, 4)) = libc.UintptrFromInt32(0)
-	*(*uintptr)(unsafe.Add(p, 8)) = libc.UintptrFromInt32(0)
 	*(*uintptr)(unsafe.Add(p, 12)) = __ccgo_fp(_UpdateStringOfInt)
 	*(*uintptr)(unsafe.Add(p, 16)) = __ccgo_fp(_SetIntFromAny)
 }
 
 func init() {
 	p := unsafe.Pointer(&XtclWideIntType)
-	*(*uintptr)(unsafe.Add(p, 4)) = libc.UintptrFromInt32(0)
-	*(*uintptr)(unsafe.Add(p, 8)) = libc.UintptrFromInt32(0)
 	*(*uintptr)(unsafe.Add(p, 12)) = __ccgo_fp(_UpdateStringOfWideInt)
 	*(*uintptr)(unsafe.Add(p, 16)) = __ccgo_fp(_SetWideIntFromAny)
 }
@@ -209406,7 +206881,6 @@ func init() {
 	*(*uintptr)(unsafe.Add(p, 4)) = __ccgo_fp(_FreeBignum)
 	*(*uintptr)(unsafe.Add(p, 8)) = __ccgo_fp(_DupBignum)
 	*(*uintptr)(unsafe.Add(p, 12)) = __ccgo_fp(_UpdateStringOfBignum)
-	*(*uintptr)(unsafe.Add(p, 16)) = libc.UintptrFromInt32(0)
 }
 
 func init() {
@@ -209421,7 +206895,6 @@ func init() {
 	p := unsafe.Pointer(&XtclCmdNameType)
 	*(*uintptr)(unsafe.Add(p, 4)) = __ccgo_fp(_FreeCmdNameInternalRep)
 	*(*uintptr)(unsafe.Add(p, 8)) = __ccgo_fp(_DupCmdNameInternalRep)
-	*(*uintptr)(unsafe.Add(p, 12)) = libc.UintptrFromInt32(0)
 	*(*uintptr)(unsafe.Add(p, 16)) = __ccgo_fp(_SetCmdNameFromAny)
 }
 
@@ -216552,11 +214025,7 @@ const m_TCLPATH_NEEDNORM = 4
  */
 
 var _tclFsPathType = TTcl_ObjType{
-	Fname:             __ccgo_ts + 35105,
-	FfreeIntRepProc:   uintptr(0),
-	FdupIntRepProc:    uintptr(0),
-	FupdateStringProc: uintptr(0),
-	FsetFromAnyProc:   uintptr(0),
+	Fname: __ccgo_ts + 35105,
 }
 
 func init() {
@@ -222118,13 +219587,11 @@ var _pkgOptions = [12]uintptr{
 	8:  __ccgo_ts + 49623,
 	9:  __ccgo_ts + 49632,
 	10: __ccgo_ts + 49641,
-	11: libc.UintptrFromInt32(0),
 }
 
 var _pkgPreferOptions = [3]uintptr{
 	0: __ccgo_ts + 49757,
 	1: __ccgo_ts + 49764,
-	2: libc.UintptrFromInt32(0),
 }
 
 func _TclNRPackageObjCmdCleanup(tls *libc.TLS, data uintptr, interp uintptr, result int32) (r int32) {
@@ -223047,7 +220514,6 @@ var _cfg = [19]TTcl_Config{
 		Fkey:   __ccgo_ts + 50325,
 		Fvalue: __ccgo_ts + 50243,
 	},
-	18: {},
 }
 
 func XTclInitEmbeddedConfigurationInformation(tls *libc.TLS, interp uintptr) {
@@ -224600,8 +222066,6 @@ func init() {
 	p := unsafe.Pointer(&XtclProcBodyType)
 	*(*uintptr)(unsafe.Add(p, 4)) = __ccgo_fp(_ProcBodyFree)
 	*(*uintptr)(unsafe.Add(p, 8)) = __ccgo_fp(_ProcBodyDup)
-	*(*uintptr)(unsafe.Add(p, 12)) = libc.UintptrFromInt32(0)
-	*(*uintptr)(unsafe.Add(p, 16)) = libc.UintptrFromInt32(0)
 }
 
 /*
@@ -224613,26 +222077,13 @@ func init() {
  */
 
 var _levelReferenceType = TTcl_ObjType{
-	Fname:             __ccgo_ts + 54999,
-	FfreeIntRepProc:   uintptr(0),
-	FdupIntRepProc:    uintptr(0),
-	FupdateStringProc: uintptr(0),
-	FsetFromAnyProc:   uintptr(0),
-}
-
-func init() {
-	p := unsafe.Pointer(&_levelReferenceType)
-	*(*uintptr)(unsafe.Add(p, 4)) = libc.UintptrFromInt32(0)
-	*(*uintptr)(unsafe.Add(p, 8)) = libc.UintptrFromInt32(0)
-	*(*uintptr)(unsafe.Add(p, 12)) = libc.UintptrFromInt32(0)
-	*(*uintptr)(unsafe.Add(p, 16)) = libc.UintptrFromInt32(0)
+	Fname: __ccgo_ts + 54999,
 }
 
 func init() {
 	p := unsafe.Pointer(&XtclLambdaType)
 	*(*uintptr)(unsafe.Add(p, 4)) = __ccgo_fp(_FreeLambdaInternalRep)
 	*(*uintptr)(unsafe.Add(p, 8)) = __ccgo_fp(_DupLambdaInternalRep)
-	*(*uintptr)(unsafe.Add(p, 12)) = libc.UintptrFromInt32(0)
 	*(*uintptr)(unsafe.Add(p, 16)) = __ccgo_fp(_SetLambdaFromAny)
 }
 
@@ -227564,7 +225015,6 @@ func init() {
 	p := unsafe.Pointer(&XtclRegexpType)
 	*(*uintptr)(unsafe.Add(p, 4)) = __ccgo_fp(_FreeRegexpInternalRep)
 	*(*uintptr)(unsafe.Add(p, 8)) = __ccgo_fp(_DupRegexpInternalRep)
-	*(*uintptr)(unsafe.Add(p, 12)) = libc.UintptrFromInt32(0)
 	*(*uintptr)(unsafe.Add(p, 16)) = __ccgo_fp(_SetRegexpFromAny)
 }
 
@@ -228166,7 +225616,6 @@ var _infonames = [15]struct {
 		Fbit:  int32(m_REG_USHORTEST),
 		Ftext: __ccgo_ts + 56177,
 	},
-	14: {},
 }
 
 /*
@@ -241683,279 +239132,12 @@ func XTclBN_reverse(tls *libc.TLS, s uintptr, len1 int32) {
 /* !BEGIN!: Do not edit below this line. */
 
 var _tclIntStubs = TTclIntStubs{
-	Fmagic:                        libc.Int32FromUint32(0xFCA3BACF),
-	Fhooks:                        uintptr(0),
-	Freserved0:                    uintptr(0),
-	Freserved1:                    uintptr(0),
-	Freserved2:                    uintptr(0),
-	FtclAllocateFreeObjects:       uintptr(0),
-	Freserved4:                    uintptr(0),
-	FtclCleanupChildren:           uintptr(0),
-	FtclCleanupCommand:            uintptr(0),
-	FtclCopyAndCollapse:           uintptr(0),
-	FtclCopyChannelOld:            uintptr(0),
-	FtclCreatePipeline:            uintptr(0),
-	FtclCreateProc:                uintptr(0),
-	FtclDeleteCompiledLocalVars:   uintptr(0),
-	FtclDeleteVars:                uintptr(0),
-	Freserved13:                   uintptr(0),
-	FtclDumpMemoryInfo:            uintptr(0),
-	Freserved15:                   uintptr(0),
-	FtclExprFloatError:            uintptr(0),
-	Freserved17:                   uintptr(0),
-	Freserved18:                   uintptr(0),
-	Freserved19:                   uintptr(0),
-	Freserved20:                   uintptr(0),
-	Freserved21:                   uintptr(0),
-	FtclFindElement:               uintptr(0),
-	FtclFindProc:                  uintptr(0),
-	FtclFormatInt:                 uintptr(0),
-	FtclFreePackageInfo:           uintptr(0),
-	Freserved26:                   uintptr(0),
-	Freserved27:                   uintptr(0),
-	FtclpGetDefaultStdChannel:     uintptr(0),
-	Freserved29:                   uintptr(0),
-	Freserved30:                   uintptr(0),
-	FtclGetExtension:              uintptr(0),
-	FtclGetFrame:                  uintptr(0),
-	Freserved33:                   uintptr(0),
-	FtclGetIntForIndex:            uintptr(0),
-	Freserved35:                   uintptr(0),
-	Freserved36:                   uintptr(0),
-	FtclGetLoadedPackages:         uintptr(0),
-	FtclGetNamespaceForQualName:   uintptr(0),
-	FtclGetObjInterpProc:          uintptr(0),
-	FtclGetOpenMode:               uintptr(0),
-	FtclGetOriginalCommand:        uintptr(0),
-	FtclpGetUserHome:              uintptr(0),
-	Freserved43:                   uintptr(0),
-	FtclGuessPackageName:          uintptr(0),
-	FtclHideUnsafeCommands:        uintptr(0),
-	FtclInExit:                    uintptr(0),
-	Freserved47:                   uintptr(0),
-	Freserved48:                   uintptr(0),
-	Freserved49:                   uintptr(0),
-	FtclInitCompiledLocals:        uintptr(0),
-	FtclInterpInit:                uintptr(0),
-	Freserved52:                   uintptr(0),
-	FtclInvokeObjectCommand:       uintptr(0),
-	FtclInvokeStringCommand:       uintptr(0),
-	FtclIsProc:                    uintptr(0),
-	Freserved56:                   uintptr(0),
-	Freserved57:                   uintptr(0),
-	FtclLookupVar:                 uintptr(0),
-	Freserved59:                   uintptr(0),
-	FtclNeedSpace:                 uintptr(0),
-	FtclNewProcBodyObj:            uintptr(0),
-	FtclObjCommandComplete:        uintptr(0),
-	FtclObjInterpProc:             uintptr(0),
-	FtclObjInvoke:                 uintptr(0),
-	Freserved65:                   uintptr(0),
-	Freserved66:                   uintptr(0),
-	Freserved67:                   uintptr(0),
-	Freserved68:                   uintptr(0),
-	FtclpAlloc:                    uintptr(0),
-	Freserved70:                   uintptr(0),
-	Freserved71:                   uintptr(0),
-	Freserved72:                   uintptr(0),
-	Freserved73:                   uintptr(0),
-	FtclpFree:                     uintptr(0),
-	FtclpGetClicks:                uintptr(0),
-	FtclpGetSeconds:               uintptr(0),
-	FtclpGetTime:                  uintptr(0),
-	Freserved78:                   uintptr(0),
-	Freserved79:                   uintptr(0),
-	Freserved80:                   uintptr(0),
-	FtclpRealloc:                  uintptr(0),
-	Freserved82:                   uintptr(0),
-	Freserved83:                   uintptr(0),
-	Freserved84:                   uintptr(0),
-	Freserved85:                   uintptr(0),
-	Freserved86:                   uintptr(0),
-	Freserved87:                   uintptr(0),
-	FtclPrecTraceProc:             uintptr(0),
-	FtclPreventAliasLoop:          uintptr(0),
-	Freserved90:                   uintptr(0),
-	FtclProcCleanupProc:           uintptr(0),
-	FtclProcCompileProc:           uintptr(0),
-	FtclProcDeleteProc:            uintptr(0),
-	Freserved94:                   uintptr(0),
-	Freserved95:                   uintptr(0),
-	FtclRenameCommand:             uintptr(0),
-	FtclResetShadowedCmdRefs:      uintptr(0),
-	FtclServiceIdle:               uintptr(0),
-	Freserved99:                   uintptr(0),
-	Freserved100:                  uintptr(0),
-	FtclSetPreInitScript:          uintptr(0),
-	FtclSetupEnv:                  uintptr(0),
-	FtclSockGetPort:               uintptr(0),
-	FtclSockMinimumBuffersOld:     uintptr(0),
-	Freserved105:                  uintptr(0),
-	Freserved106:                  uintptr(0),
-	Freserved107:                  uintptr(0),
-	FtclTeardownNamespace:         uintptr(0),
-	FtclUpdateReturnInfo:          uintptr(0),
-	FtclSockMinimumBuffers:        uintptr(0),
-	Ftcl_AddInterpResolvers:       uintptr(0),
-	Ftcl_AppendExportList:         uintptr(0),
-	Ftcl_CreateNamespace:          uintptr(0),
-	Ftcl_DeleteNamespace:          uintptr(0),
-	Ftcl_Export:                   uintptr(0),
-	Ftcl_FindCommand:              uintptr(0),
-	Ftcl_FindNamespace:            uintptr(0),
-	Ftcl_GetInterpResolvers:       uintptr(0),
-	Ftcl_GetNamespaceResolvers:    uintptr(0),
-	Ftcl_FindNamespaceVar:         uintptr(0),
-	Ftcl_ForgetImport:             uintptr(0),
-	Ftcl_GetCommandFromObj:        uintptr(0),
-	Ftcl_GetCommandFullName:       uintptr(0),
-	Ftcl_GetCurrentNamespace:      uintptr(0),
-	Ftcl_GetGlobalNamespace:       uintptr(0),
-	Ftcl_GetVariableFullName:      uintptr(0),
-	Ftcl_Import:                   uintptr(0),
-	Ftcl_PopCallFrame:             uintptr(0),
-	Ftcl_PushCallFrame:            uintptr(0),
-	Ftcl_RemoveInterpResolvers:    uintptr(0),
-	Ftcl_SetNamespaceResolvers:    uintptr(0),
-	FtclpHasSockets:               uintptr(0),
-	FtclpGetDate:                  uintptr(0),
-	Freserved134:                  uintptr(0),
-	Freserved135:                  uintptr(0),
-	Freserved136:                  uintptr(0),
-	Freserved137:                  uintptr(0),
-	FtclGetEnv:                    uintptr(0),
-	Freserved139:                  uintptr(0),
-	Freserved140:                  uintptr(0),
-	FtclpGetCwd:                   uintptr(0),
-	FtclSetByteCodeFromAny:        uintptr(0),
-	FtclAddLiteralObj:             uintptr(0),
-	FtclHideLiteral:               uintptr(0),
-	FtclGetAuxDataType:            uintptr(0),
-	FtclHandleCreate:              uintptr(0),
-	FtclHandleFree:                uintptr(0),
-	FtclHandlePreserve:            uintptr(0),
-	FtclHandleRelease:             uintptr(0),
-	FtclRegAbout:                  uintptr(0),
-	FtclRegExpRangeUniChar:        uintptr(0),
-	FtclSetLibraryPath:            uintptr(0),
-	FtclGetLibraryPath:            uintptr(0),
-	Freserved154:                  uintptr(0),
-	Freserved155:                  uintptr(0),
-	FtclRegError:                  uintptr(0),
-	FtclVarTraceExists:            uintptr(0),
-	FtclSetStartupScriptFileName:  uintptr(0),
-	FtclGetStartupScriptFileName:  uintptr(0),
-	Freserved160:                  uintptr(0),
-	FtclChannelTransform:          uintptr(0),
-	FtclChannelEventScriptInvoker: uintptr(0),
-	FtclGetInstructionTable:       uintptr(0),
-	FtclExpandCodeArray:           uintptr(0),
-	FtclpSetInitialEncodings:      uintptr(0),
-	FtclListObjSetElement:         uintptr(0),
-	FtclSetStartupScriptPath:      uintptr(0),
-	FtclGetStartupScriptPath:      uintptr(0),
-	FtclpUtfNcmp2:                 uintptr(0),
-	FtclCheckInterpTraces:         uintptr(0),
-	FtclCheckExecutionTraces:      uintptr(0),
-	FtclInThreadExit:              uintptr(0),
-	FtclUniCharMatch:              uintptr(0),
-	Freserved174:                  uintptr(0),
-	FtclCallVarTraces:             uintptr(0),
-	FtclCleanupVar:                uintptr(0),
-	FtclVarErrMsg:                 uintptr(0),
-	Ftcl_SetStartupScript:         uintptr(0),
-	Ftcl_GetStartupScript:         uintptr(0),
-	Freserved180:                  uintptr(0),
-	Freserved181:                  uintptr(0),
-	FtclpLocaltime:                uintptr(0),
-	FtclpGmtime:                   uintptr(0),
-	Freserved184:                  uintptr(0),
-	Freserved185:                  uintptr(0),
-	Freserved186:                  uintptr(0),
-	Freserved187:                  uintptr(0),
-	Freserved188:                  uintptr(0),
-	Freserved189:                  uintptr(0),
-	Freserved190:                  uintptr(0),
-	Freserved191:                  uintptr(0),
-	Freserved192:                  uintptr(0),
-	Freserved193:                  uintptr(0),
-	Freserved194:                  uintptr(0),
-	Freserved195:                  uintptr(0),
-	Freserved196:                  uintptr(0),
-	Freserved197:                  uintptr(0),
-	FtclObjGetFrame:               uintptr(0),
-	Freserved199:                  uintptr(0),
-	FtclpObjRemoveDirectory:       uintptr(0),
-	FtclpObjCopyDirectory:         uintptr(0),
-	FtclpObjCreateDirectory:       uintptr(0),
-	FtclpObjDeleteFile:            uintptr(0),
-	FtclpObjCopyFile:              uintptr(0),
-	FtclpObjRenameFile:            uintptr(0),
-	FtclpObjStat:                  uintptr(0),
-	FtclpObjAccess:                uintptr(0),
-	FtclpOpenFileChannel:          uintptr(0),
-	Freserved209:                  uintptr(0),
-	Freserved210:                  uintptr(0),
-	Freserved211:                  uintptr(0),
-	FtclpFindExecutable:           uintptr(0),
-	FtclGetObjNameOfExecutable:    uintptr(0),
-	FtclSetObjNameOfExecutable:    uintptr(0),
-	FtclStackAlloc:                uintptr(0),
-	FtclStackFree:                 uintptr(0),
-	FtclPushStackFrame:            uintptr(0),
-	FtclPopStackFrame:             uintptr(0),
-	Freserved219:                  uintptr(0),
-	Freserved220:                  uintptr(0),
-	Freserved221:                  uintptr(0),
-	Freserved222:                  uintptr(0),
-	Freserved223:                  uintptr(0),
-	FtclGetPlatform:               uintptr(0),
-	FtclTraceDictPath:             uintptr(0),
-	FtclObjBeingDeleted:           uintptr(0),
-	FtclSetNsPath:                 uintptr(0),
-	Freserved228:                  uintptr(0),
-	FtclPtrMakeUpvar:              uintptr(0),
-	FtclObjLookupVar:              uintptr(0),
-	FtclGetNamespaceFromObj:       uintptr(0),
-	FtclEvalObjEx:                 uintptr(0),
-	FtclGetSrcInfoForPc:           uintptr(0),
-	FtclVarHashCreateVar:          uintptr(0),
-	FtclInitVarHashTable:          uintptr(0),
-	FtclBackgroundException:       uintptr(0),
-	FtclResetCancellation:         uintptr(0),
-	FtclNRInterpProc:              uintptr(0),
-	FtclNRInterpProcCore:          uintptr(0),
-	FtclNRRunCallbacks:            uintptr(0),
-	FtclNREvalObjEx:               uintptr(0),
-	FtclNREvalObjv:                uintptr(0),
-	FtclDbDumpActiveObjects:       uintptr(0),
-	FtclGetNamespaceChildTable:    uintptr(0),
-	FtclGetNamespaceCommandTable:  uintptr(0),
-	FtclInitRewriteEnsemble:       uintptr(0),
-	FtclResetRewriteEnsemble:      uintptr(0),
-	FtclCopyChannel:               uintptr(0),
-	FtclDoubleDigits:              uintptr(0),
-	FtclSetSlaveCancelFlags:       uintptr(0),
-	FtclRegisterLiteral:           uintptr(0),
-	FtclPtrGetVar:                 uintptr(0),
-	FtclPtrSetVar:                 uintptr(0),
-	FtclPtrIncrObjVar:             uintptr(0),
-	FtclPtrObjMakeUpvar:           uintptr(0),
-	FtclPtrUnsetVar:               uintptr(0),
-	FtclStaticPackage:             uintptr(0),
-	Freserved258:                  uintptr(0),
-	Freserved259:                  uintptr(0),
-	Freserved260:                  uintptr(0),
-	FtclUnusedStubEntry:           uintptr(0),
+	Fmagic: libc.Int32FromUint32(0xFCA3BACF),
 }
 
 func init() {
 	p := unsafe.Pointer(&_tclIntStubs)
-	*(*uintptr)(unsafe.Add(p, 8)) = uintptr(0)
-	*(*uintptr)(unsafe.Add(p, 12)) = uintptr(0)
-	*(*uintptr)(unsafe.Add(p, 16)) = uintptr(0)
 	*(*uintptr)(unsafe.Add(p, 20)) = __ccgo_fp(XTclAllocateFreeObjects)
-	*(*uintptr)(unsafe.Add(p, 24)) = uintptr(0)
 	*(*uintptr)(unsafe.Add(p, 28)) = __ccgo_fp(XTclCleanupChildren)
 	*(*uintptr)(unsafe.Add(p, 32)) = __ccgo_fp(XTclCleanupCommand)
 	*(*uintptr)(unsafe.Add(p, 36)) = __ccgo_fp(XTclCopyAndCollapse)
@@ -241964,101 +239146,54 @@ func init() {
 	*(*uintptr)(unsafe.Add(p, 48)) = __ccgo_fp(XTclCreateProc)
 	*(*uintptr)(unsafe.Add(p, 52)) = __ccgo_fp(XTclDeleteCompiledLocalVars)
 	*(*uintptr)(unsafe.Add(p, 56)) = __ccgo_fp(XTclDeleteVars)
-	*(*uintptr)(unsafe.Add(p, 60)) = uintptr(0)
 	*(*uintptr)(unsafe.Add(p, 64)) = __ccgo_fp(XTclDumpMemoryInfo)
-	*(*uintptr)(unsafe.Add(p, 68)) = uintptr(0)
 	*(*uintptr)(unsafe.Add(p, 72)) = __ccgo_fp(XTclExprFloatError)
-	*(*uintptr)(unsafe.Add(p, 76)) = uintptr(0)
-	*(*uintptr)(unsafe.Add(p, 80)) = uintptr(0)
-	*(*uintptr)(unsafe.Add(p, 84)) = uintptr(0)
-	*(*uintptr)(unsafe.Add(p, 88)) = uintptr(0)
-	*(*uintptr)(unsafe.Add(p, 92)) = uintptr(0)
 	*(*uintptr)(unsafe.Add(p, 96)) = __ccgo_fp(XTclFindElement)
 	*(*uintptr)(unsafe.Add(p, 100)) = __ccgo_fp(XTclFindProc)
 	*(*uintptr)(unsafe.Add(p, 104)) = __ccgo_fp(XTclFormatInt)
 	*(*uintptr)(unsafe.Add(p, 108)) = __ccgo_fp(XTclFreePackageInfo)
-	*(*uintptr)(unsafe.Add(p, 112)) = uintptr(0)
-	*(*uintptr)(unsafe.Add(p, 116)) = uintptr(0)
 	*(*uintptr)(unsafe.Add(p, 120)) = __ccgo_fp(XTclpGetDefaultStdChannel)
-	*(*uintptr)(unsafe.Add(p, 124)) = uintptr(0)
-	*(*uintptr)(unsafe.Add(p, 128)) = uintptr(0)
 	*(*uintptr)(unsafe.Add(p, 132)) = __ccgo_fp(XTclGetExtension)
 	*(*uintptr)(unsafe.Add(p, 136)) = __ccgo_fp(XTclGetFrame)
-	*(*uintptr)(unsafe.Add(p, 140)) = uintptr(0)
 	*(*uintptr)(unsafe.Add(p, 144)) = __ccgo_fp(XTclGetIntForIndex)
-	*(*uintptr)(unsafe.Add(p, 148)) = uintptr(0)
-	*(*uintptr)(unsafe.Add(p, 152)) = uintptr(0)
 	*(*uintptr)(unsafe.Add(p, 156)) = __ccgo_fp(XTclGetLoadedPackages)
 	*(*uintptr)(unsafe.Add(p, 160)) = __ccgo_fp(XTclGetNamespaceForQualName)
 	*(*uintptr)(unsafe.Add(p, 164)) = __ccgo_fp(XTclGetObjInterpProc)
 	*(*uintptr)(unsafe.Add(p, 168)) = __ccgo_fp(XTclGetOpenMode)
 	*(*uintptr)(unsafe.Add(p, 172)) = __ccgo_fp(XTclGetOriginalCommand)
 	*(*uintptr)(unsafe.Add(p, 176)) = __ccgo_fp(XTclpGetUserHome)
-	*(*uintptr)(unsafe.Add(p, 180)) = uintptr(0)
 	*(*uintptr)(unsafe.Add(p, 184)) = __ccgo_fp(XTclGuessPackageName)
 	*(*uintptr)(unsafe.Add(p, 188)) = __ccgo_fp(XTclHideUnsafeCommands)
 	*(*uintptr)(unsafe.Add(p, 192)) = __ccgo_fp(XTclInExit)
-	*(*uintptr)(unsafe.Add(p, 196)) = uintptr(0)
-	*(*uintptr)(unsafe.Add(p, 200)) = uintptr(0)
-	*(*uintptr)(unsafe.Add(p, 204)) = uintptr(0)
 	*(*uintptr)(unsafe.Add(p, 208)) = __ccgo_fp(XTclInitCompiledLocals)
 	*(*uintptr)(unsafe.Add(p, 212)) = __ccgo_fp(XTclInterpInit)
-	*(*uintptr)(unsafe.Add(p, 216)) = uintptr(0)
 	*(*uintptr)(unsafe.Add(p, 220)) = __ccgo_fp(XTclInvokeObjectCommand)
 	*(*uintptr)(unsafe.Add(p, 224)) = __ccgo_fp(XTclInvokeStringCommand)
 	*(*uintptr)(unsafe.Add(p, 228)) = __ccgo_fp(XTclIsProc)
-	*(*uintptr)(unsafe.Add(p, 232)) = uintptr(0)
-	*(*uintptr)(unsafe.Add(p, 236)) = uintptr(0)
 	*(*uintptr)(unsafe.Add(p, 240)) = __ccgo_fp(XTclLookupVar)
-	*(*uintptr)(unsafe.Add(p, 244)) = uintptr(0)
 	*(*uintptr)(unsafe.Add(p, 248)) = __ccgo_fp(XTclNeedSpace)
 	*(*uintptr)(unsafe.Add(p, 252)) = __ccgo_fp(XTclNewProcBodyObj)
 	*(*uintptr)(unsafe.Add(p, 256)) = __ccgo_fp(XTclObjCommandComplete)
 	*(*uintptr)(unsafe.Add(p, 260)) = __ccgo_fp(XTclObjInterpProc)
 	*(*uintptr)(unsafe.Add(p, 264)) = __ccgo_fp(XTclObjInvoke)
-	*(*uintptr)(unsafe.Add(p, 268)) = uintptr(0)
-	*(*uintptr)(unsafe.Add(p, 272)) = uintptr(0)
-	*(*uintptr)(unsafe.Add(p, 276)) = uintptr(0)
-	*(*uintptr)(unsafe.Add(p, 280)) = uintptr(0)
 	*(*uintptr)(unsafe.Add(p, 284)) = __ccgo_fp(XTclpAlloc)
-	*(*uintptr)(unsafe.Add(p, 288)) = uintptr(0)
-	*(*uintptr)(unsafe.Add(p, 292)) = uintptr(0)
-	*(*uintptr)(unsafe.Add(p, 296)) = uintptr(0)
-	*(*uintptr)(unsafe.Add(p, 300)) = uintptr(0)
 	*(*uintptr)(unsafe.Add(p, 304)) = __ccgo_fp(XTclpFree)
 	*(*uintptr)(unsafe.Add(p, 308)) = __ccgo_fp(XTclpGetClicks)
 	*(*uintptr)(unsafe.Add(p, 312)) = __ccgo_fp(XTclpGetSeconds)
 	*(*uintptr)(unsafe.Add(p, 316)) = __ccgo_fp(XTclpGetTime)
-	*(*uintptr)(unsafe.Add(p, 320)) = uintptr(0)
-	*(*uintptr)(unsafe.Add(p, 324)) = uintptr(0)
-	*(*uintptr)(unsafe.Add(p, 328)) = uintptr(0)
 	*(*uintptr)(unsafe.Add(p, 332)) = __ccgo_fp(XTclpRealloc)
-	*(*uintptr)(unsafe.Add(p, 336)) = uintptr(0)
-	*(*uintptr)(unsafe.Add(p, 340)) = uintptr(0)
-	*(*uintptr)(unsafe.Add(p, 344)) = uintptr(0)
-	*(*uintptr)(unsafe.Add(p, 348)) = uintptr(0)
-	*(*uintptr)(unsafe.Add(p, 352)) = uintptr(0)
-	*(*uintptr)(unsafe.Add(p, 356)) = uintptr(0)
 	*(*uintptr)(unsafe.Add(p, 360)) = __ccgo_fp(XTclPrecTraceProc)
 	*(*uintptr)(unsafe.Add(p, 364)) = __ccgo_fp(XTclPreventAliasLoop)
-	*(*uintptr)(unsafe.Add(p, 368)) = uintptr(0)
 	*(*uintptr)(unsafe.Add(p, 372)) = __ccgo_fp(XTclProcCleanupProc)
 	*(*uintptr)(unsafe.Add(p, 376)) = __ccgo_fp(XTclProcCompileProc)
 	*(*uintptr)(unsafe.Add(p, 380)) = __ccgo_fp(XTclProcDeleteProc)
-	*(*uintptr)(unsafe.Add(p, 384)) = uintptr(0)
-	*(*uintptr)(unsafe.Add(p, 388)) = uintptr(0)
 	*(*uintptr)(unsafe.Add(p, 392)) = __ccgo_fp(XTclRenameCommand)
 	*(*uintptr)(unsafe.Add(p, 396)) = __ccgo_fp(XTclResetShadowedCmdRefs)
 	*(*uintptr)(unsafe.Add(p, 400)) = __ccgo_fp(XTclServiceIdle)
-	*(*uintptr)(unsafe.Add(p, 404)) = uintptr(0)
-	*(*uintptr)(unsafe.Add(p, 408)) = uintptr(0)
 	*(*uintptr)(unsafe.Add(p, 412)) = __ccgo_fp(XTclSetPreInitScript)
 	*(*uintptr)(unsafe.Add(p, 416)) = __ccgo_fp(XTclSetupEnv)
 	*(*uintptr)(unsafe.Add(p, 420)) = __ccgo_fp(XTclSockGetPort)
 	*(*uintptr)(unsafe.Add(p, 424)) = __ccgo_fp(_sockMinimumBuffersOld)
-	*(*uintptr)(unsafe.Add(p, 428)) = uintptr(0)
-	*(*uintptr)(unsafe.Add(p, 432)) = uintptr(0)
-	*(*uintptr)(unsafe.Add(p, 436)) = uintptr(0)
 	*(*uintptr)(unsafe.Add(p, 440)) = __ccgo_fp(XTclTeardownNamespace)
 	*(*uintptr)(unsafe.Add(p, 444)) = __ccgo_fp(XTclUpdateReturnInfo)
 	*(*uintptr)(unsafe.Add(p, 448)) = __ccgo_fp(XTclSockMinimumBuffers)
@@ -242085,13 +239220,7 @@ func init() {
 	*(*uintptr)(unsafe.Add(p, 532)) = __ccgo_fp(XTcl_SetNamespaceResolvers)
 	*(*uintptr)(unsafe.Add(p, 536)) = __ccgo_fp(XTclpHasSockets)
 	*(*uintptr)(unsafe.Add(p, 540)) = __ccgo_fp(XTclpGetDate)
-	*(*uintptr)(unsafe.Add(p, 544)) = uintptr(0)
-	*(*uintptr)(unsafe.Add(p, 548)) = uintptr(0)
-	*(*uintptr)(unsafe.Add(p, 552)) = uintptr(0)
-	*(*uintptr)(unsafe.Add(p, 556)) = uintptr(0)
 	*(*uintptr)(unsafe.Add(p, 560)) = __ccgo_fp(XTclGetEnv)
-	*(*uintptr)(unsafe.Add(p, 564)) = uintptr(0)
-	*(*uintptr)(unsafe.Add(p, 568)) = uintptr(0)
 	*(*uintptr)(unsafe.Add(p, 572)) = __ccgo_fp(XTclpGetCwd)
 	*(*uintptr)(unsafe.Add(p, 576)) = __ccgo_fp(XTclSetByteCodeFromAny)
 	*(*uintptr)(unsafe.Add(p, 580)) = __ccgo_fp(XTclAddLiteralObj)
@@ -242105,13 +239234,10 @@ func init() {
 	*(*uintptr)(unsafe.Add(p, 612)) = __ccgo_fp(XTclRegExpRangeUniChar)
 	*(*uintptr)(unsafe.Add(p, 616)) = __ccgo_fp(XTclSetLibraryPath)
 	*(*uintptr)(unsafe.Add(p, 620)) = __ccgo_fp(XTclGetLibraryPath)
-	*(*uintptr)(unsafe.Add(p, 624)) = uintptr(0)
-	*(*uintptr)(unsafe.Add(p, 628)) = uintptr(0)
 	*(*uintptr)(unsafe.Add(p, 632)) = __ccgo_fp(XTclRegError)
 	*(*uintptr)(unsafe.Add(p, 636)) = __ccgo_fp(XTclVarTraceExists)
 	*(*uintptr)(unsafe.Add(p, 640)) = __ccgo_fp(_setStartupScriptFileName)
 	*(*uintptr)(unsafe.Add(p, 644)) = __ccgo_fp(_getStartupScriptFileName)
-	*(*uintptr)(unsafe.Add(p, 648)) = uintptr(0)
 	*(*uintptr)(unsafe.Add(p, 652)) = __ccgo_fp(XTclChannelTransform)
 	*(*uintptr)(unsafe.Add(p, 656)) = __ccgo_fp(XTclChannelEventScriptInvoker)
 	*(*uintptr)(unsafe.Add(p, 660)) = __ccgo_fp(XTclGetInstructionTable)
@@ -242125,32 +239251,14 @@ func init() {
 	*(*uintptr)(unsafe.Add(p, 692)) = __ccgo_fp(XTclCheckExecutionTraces)
 	*(*uintptr)(unsafe.Add(p, 696)) = __ccgo_fp(XTclInThreadExit)
 	*(*uintptr)(unsafe.Add(p, 700)) = __ccgo_fp(XTclUniCharMatch)
-	*(*uintptr)(unsafe.Add(p, 704)) = uintptr(0)
 	*(*uintptr)(unsafe.Add(p, 708)) = __ccgo_fp(XTclCallVarTraces)
 	*(*uintptr)(unsafe.Add(p, 712)) = __ccgo_fp(XTclCleanupVar)
 	*(*uintptr)(unsafe.Add(p, 716)) = __ccgo_fp(XTclVarErrMsg)
 	*(*uintptr)(unsafe.Add(p, 720)) = __ccgo_fp(XTcl_SetStartupScript)
 	*(*uintptr)(unsafe.Add(p, 724)) = __ccgo_fp(XTcl_GetStartupScript)
-	*(*uintptr)(unsafe.Add(p, 728)) = uintptr(0)
-	*(*uintptr)(unsafe.Add(p, 732)) = uintptr(0)
 	*(*uintptr)(unsafe.Add(p, 736)) = __ccgo_fp(XTclpLocaltime)
 	*(*uintptr)(unsafe.Add(p, 740)) = __ccgo_fp(XTclpGmtime)
-	*(*uintptr)(unsafe.Add(p, 744)) = uintptr(0)
-	*(*uintptr)(unsafe.Add(p, 748)) = uintptr(0)
-	*(*uintptr)(unsafe.Add(p, 752)) = uintptr(0)
-	*(*uintptr)(unsafe.Add(p, 756)) = uintptr(0)
-	*(*uintptr)(unsafe.Add(p, 760)) = uintptr(0)
-	*(*uintptr)(unsafe.Add(p, 764)) = uintptr(0)
-	*(*uintptr)(unsafe.Add(p, 768)) = uintptr(0)
-	*(*uintptr)(unsafe.Add(p, 772)) = uintptr(0)
-	*(*uintptr)(unsafe.Add(p, 776)) = uintptr(0)
-	*(*uintptr)(unsafe.Add(p, 780)) = uintptr(0)
-	*(*uintptr)(unsafe.Add(p, 784)) = uintptr(0)
-	*(*uintptr)(unsafe.Add(p, 788)) = uintptr(0)
-	*(*uintptr)(unsafe.Add(p, 792)) = uintptr(0)
-	*(*uintptr)(unsafe.Add(p, 796)) = uintptr(0)
 	*(*uintptr)(unsafe.Add(p, 800)) = __ccgo_fp(XTclObjGetFrame)
-	*(*uintptr)(unsafe.Add(p, 804)) = uintptr(0)
 	*(*uintptr)(unsafe.Add(p, 808)) = __ccgo_fp(XTclpObjRemoveDirectory)
 	*(*uintptr)(unsafe.Add(p, 812)) = __ccgo_fp(XTclpObjCopyDirectory)
 	*(*uintptr)(unsafe.Add(p, 816)) = __ccgo_fp(XTclpObjCreateDirectory)
@@ -242160,9 +239268,6 @@ func init() {
 	*(*uintptr)(unsafe.Add(p, 832)) = __ccgo_fp(XTclpObjStat)
 	*(*uintptr)(unsafe.Add(p, 836)) = __ccgo_fp(XTclpObjAccess)
 	*(*uintptr)(unsafe.Add(p, 840)) = __ccgo_fp(XTclpOpenFileChannel)
-	*(*uintptr)(unsafe.Add(p, 844)) = uintptr(0)
-	*(*uintptr)(unsafe.Add(p, 848)) = uintptr(0)
-	*(*uintptr)(unsafe.Add(p, 852)) = uintptr(0)
 	*(*uintptr)(unsafe.Add(p, 856)) = __ccgo_fp(XTclpFindExecutable)
 	*(*uintptr)(unsafe.Add(p, 860)) = __ccgo_fp(XTclGetObjNameOfExecutable)
 	*(*uintptr)(unsafe.Add(p, 864)) = __ccgo_fp(XTclSetObjNameOfExecutable)
@@ -242170,16 +239275,10 @@ func init() {
 	*(*uintptr)(unsafe.Add(p, 872)) = __ccgo_fp(XTclStackFree)
 	*(*uintptr)(unsafe.Add(p, 876)) = __ccgo_fp(XTclPushStackFrame)
 	*(*uintptr)(unsafe.Add(p, 880)) = __ccgo_fp(XTclPopStackFrame)
-	*(*uintptr)(unsafe.Add(p, 884)) = uintptr(0)
-	*(*uintptr)(unsafe.Add(p, 888)) = uintptr(0)
-	*(*uintptr)(unsafe.Add(p, 892)) = uintptr(0)
-	*(*uintptr)(unsafe.Add(p, 896)) = uintptr(0)
-	*(*uintptr)(unsafe.Add(p, 900)) = uintptr(0)
 	*(*uintptr)(unsafe.Add(p, 904)) = __ccgo_fp(XTclGetPlatform)
 	*(*uintptr)(unsafe.Add(p, 908)) = __ccgo_fp(XTclTraceDictPath)
 	*(*uintptr)(unsafe.Add(p, 912)) = __ccgo_fp(XTclObjBeingDeleted)
 	*(*uintptr)(unsafe.Add(p, 916)) = __ccgo_fp(XTclSetNsPath)
-	*(*uintptr)(unsafe.Add(p, 920)) = uintptr(0)
 	*(*uintptr)(unsafe.Add(p, 924)) = __ccgo_fp(XTclPtrMakeUpvar)
 	*(*uintptr)(unsafe.Add(p, 928)) = __ccgo_fp(XTclObjLookupVar)
 	*(*uintptr)(unsafe.Add(p, 932)) = __ccgo_fp(XTclGetNamespaceFromObj)
@@ -242209,46 +239308,10 @@ func init() {
 	*(*uintptr)(unsafe.Add(p, 1028)) = __ccgo_fp(XTclPtrObjMakeUpvar)
 	*(*uintptr)(unsafe.Add(p, 1032)) = __ccgo_fp(XTclPtrUnsetVar)
 	*(*uintptr)(unsafe.Add(p, 1036)) = __ccgo_fp(XTcl_StaticPackage)
-	*(*uintptr)(unsafe.Add(p, 1040)) = uintptr(0)
-	*(*uintptr)(unsafe.Add(p, 1044)) = uintptr(0)
-	*(*uintptr)(unsafe.Add(p, 1048)) = uintptr(0)
-	*(*uintptr)(unsafe.Add(p, 1052)) = uintptr(m_TclUnusedStubEntry)
 }
 
 var _tclIntPlatStubs = TTclIntPlatStubs{
-	Fmagic:                           libc.Int32FromUint32(0xFCA3BACF),
-	Fhooks:                           uintptr(0),
-	FtclGetAndDetachPids:             uintptr(0),
-	FtclpCloseFile:                   uintptr(0),
-	FtclpCreateCommandChannel:        uintptr(0),
-	FtclpCreatePipe:                  uintptr(0),
-	FtclpCreateProcess:               uintptr(0),
-	FtclUnixWaitForFile_:             uintptr(0),
-	FtclpMakeFile:                    uintptr(0),
-	FtclpOpenFile:                    uintptr(0),
-	FtclUnixWaitForFile:              uintptr(0),
-	FtclpCreateTempFile:              uintptr(0),
-	FtclpReaddir:                     uintptr(0),
-	FtclpLocaltime_unix:              uintptr(0),
-	FtclpGmtime_unix:                 uintptr(0),
-	FtclpInetNtoa:                    uintptr(0),
-	FtclUnixCopyFile:                 uintptr(0),
-	FtclMacOSXGetFileAttribute:       uintptr(0),
-	FtclMacOSXSetFileAttribute:       uintptr(0),
-	FtclMacOSXCopyFileAttributes:     uintptr(0),
-	FtclMacOSXMatchType:              uintptr(0),
-	FtclMacOSXNotifierAddRunLoopMode: uintptr(0),
-	Freserved20:                      uintptr(0),
-	Freserved21:                      uintptr(0),
-	FtclpCreateTempFile_:             uintptr(0),
-	Freserved23:                      uintptr(0),
-	Freserved24:                      uintptr(0),
-	Freserved25:                      uintptr(0),
-	Freserved26:                      uintptr(0),
-	Freserved27:                      uintptr(0),
-	Freserved28:                      uintptr(0),
-	FtclWinCPUID:                     uintptr(0),
-	FtclUnixOpenTemporaryFile:        uintptr(0),
+	Fmagic: libc.Int32FromUint32(0xFCA3BACF),
 }
 
 func init() {
@@ -242273,22 +239336,13 @@ func init() {
 	*(*uintptr)(unsafe.Add(p, 76)) = __ccgo_fp(XTclUnixCopyFile)
 	*(*uintptr)(unsafe.Add(p, 80)) = __ccgo_fp(XTclpMakeFile)
 	*(*uintptr)(unsafe.Add(p, 84)) = __ccgo_fp(XTclpOpenFile)
-	*(*uintptr)(unsafe.Add(p, 88)) = uintptr(0)
-	*(*uintptr)(unsafe.Add(p, 92)) = uintptr(0)
 	*(*uintptr)(unsafe.Add(p, 96)) = __ccgo_fp(XTclpCreateTempFile)
-	*(*uintptr)(unsafe.Add(p, 100)) = uintptr(0)
-	*(*uintptr)(unsafe.Add(p, 104)) = uintptr(0)
-	*(*uintptr)(unsafe.Add(p, 108)) = uintptr(0)
-	*(*uintptr)(unsafe.Add(p, 112)) = uintptr(0)
-	*(*uintptr)(unsafe.Add(p, 116)) = uintptr(0)
-	*(*uintptr)(unsafe.Add(p, 120)) = uintptr(0)
 	*(*uintptr)(unsafe.Add(p, 124)) = __ccgo_fp(XTclWinCPUID)
 	*(*uintptr)(unsafe.Add(p, 128)) = __ccgo_fp(XTclUnixOpenTemporaryFile)
 }
 
 var _tclPlatStubs = TTclPlatStubs{
 	Fmagic: libc.Int32FromUint32(0xFCA3BACF),
-	Fhooks: uintptr(0),
 }
 
 func init() {
@@ -242364,13 +239418,10 @@ func init() {
 	*(*uintptr)(unsafe.Add(p, 280)) = __ccgo_fp(XTclBN_mp_set_ull)
 	*(*uintptr)(unsafe.Add(p, 284)) = __ccgo_fp(XTclBN_mp_get_mag_ull)
 	*(*uintptr)(unsafe.Add(p, 288)) = __ccgo_fp(XTclBN_mp_set_ll)
-	*(*uintptr)(unsafe.Add(p, 292)) = uintptr(0)
-	*(*uintptr)(unsafe.Add(p, 296)) = uintptr(0)
 	*(*uintptr)(unsafe.Add(p, 300)) = __ccgo_fp(XTclBN_mp_and)
 	*(*uintptr)(unsafe.Add(p, 304)) = __ccgo_fp(XTclBN_mp_or)
 	*(*uintptr)(unsafe.Add(p, 308)) = __ccgo_fp(XTclBN_mp_xor)
 	*(*uintptr)(unsafe.Add(p, 312)) = __ccgo_fp(XTclBN_mp_signed_rsh)
-	*(*uintptr)(unsafe.Add(p, 316)) = uintptr(0)
 	*(*uintptr)(unsafe.Add(p, 320)) = __ccgo_fp(XTclBN_mp_to_ubin)
 	*(*uintptr)(unsafe.Add(p, 324)) = __ccgo_fp(_TclBNMpDivLd)
 	*(*uintptr)(unsafe.Add(p, 328)) = __ccgo_fp(XTclBN_mp_to_radix)
@@ -242572,7 +239623,6 @@ func init() {
 	*(*uintptr)(unsafe.Add(p, 748)) = __ccgo_fp(XTcl_IsSafe)
 	*(*uintptr)(unsafe.Add(p, 752)) = __ccgo_fp(XTcl_JoinPath)
 	*(*uintptr)(unsafe.Add(p, 756)) = __ccgo_fp(XTcl_LinkVar)
-	*(*uintptr)(unsafe.Add(p, 760)) = uintptr(0)
 	*(*uintptr)(unsafe.Add(p, 764)) = __ccgo_fp(XTcl_MakeFileChannel)
 	*(*uintptr)(unsafe.Add(p, 768)) = __ccgo_fp(XTcl_MakeSafe)
 	*(*uintptr)(unsafe.Add(p, 772)) = __ccgo_fp(XTcl_MakeTcpClientChannel)
@@ -242669,7 +239719,6 @@ func init() {
 	*(*uintptr)(unsafe.Add(p, 1136)) = __ccgo_fp(XTcl_UnstackChannel)
 	*(*uintptr)(unsafe.Add(p, 1140)) = __ccgo_fp(XTcl_GetStackedChannel)
 	*(*uintptr)(unsafe.Add(p, 1144)) = __ccgo_fp(XTcl_SetMainLoop)
-	*(*uintptr)(unsafe.Add(p, 1148)) = uintptr(0)
 	*(*uintptr)(unsafe.Add(p, 1152)) = __ccgo_fp(XTcl_AppendObjToObj)
 	*(*uintptr)(unsafe.Add(p, 1156)) = __ccgo_fp(XTcl_CreateEncoding)
 	*(*uintptr)(unsafe.Add(p, 1160)) = __ccgo_fp(XTcl_CreateThreadExitHandler)
@@ -243015,59 +240064,6 @@ func init() {
 	*(*uintptr)(unsafe.Add(p, 2520)) = __ccgo_fp(XTcl_FindSymbol)
 	*(*uintptr)(unsafe.Add(p, 2524)) = __ccgo_fp(XTcl_FSUnloadFile)
 	*(*uintptr)(unsafe.Add(p, 2528)) = __ccgo_fp(XTcl_ZlibStreamSetCompressionDictionary)
-	*(*uintptr)(unsafe.Add(p, 2532)) = uintptr(0)
-	*(*uintptr)(unsafe.Add(p, 2536)) = uintptr(0)
-	*(*uintptr)(unsafe.Add(p, 2540)) = uintptr(0)
-	*(*uintptr)(unsafe.Add(p, 2544)) = uintptr(0)
-	*(*uintptr)(unsafe.Add(p, 2548)) = uintptr(0)
-	*(*uintptr)(unsafe.Add(p, 2552)) = uintptr(0)
-	*(*uintptr)(unsafe.Add(p, 2556)) = uintptr(0)
-	*(*uintptr)(unsafe.Add(p, 2560)) = uintptr(0)
-	*(*uintptr)(unsafe.Add(p, 2564)) = uintptr(0)
-	*(*uintptr)(unsafe.Add(p, 2568)) = uintptr(0)
-	*(*uintptr)(unsafe.Add(p, 2572)) = uintptr(0)
-	*(*uintptr)(unsafe.Add(p, 2576)) = uintptr(0)
-	*(*uintptr)(unsafe.Add(p, 2580)) = uintptr(0)
-	*(*uintptr)(unsafe.Add(p, 2584)) = uintptr(0)
-	*(*uintptr)(unsafe.Add(p, 2588)) = uintptr(0)
-	*(*uintptr)(unsafe.Add(p, 2592)) = uintptr(0)
-	*(*uintptr)(unsafe.Add(p, 2596)) = uintptr(0)
-	*(*uintptr)(unsafe.Add(p, 2600)) = uintptr(0)
-	*(*uintptr)(unsafe.Add(p, 2604)) = uintptr(0)
-	*(*uintptr)(unsafe.Add(p, 2608)) = uintptr(0)
-	*(*uintptr)(unsafe.Add(p, 2612)) = uintptr(0)
-	*(*uintptr)(unsafe.Add(p, 2616)) = uintptr(0)
-	*(*uintptr)(unsafe.Add(p, 2620)) = uintptr(0)
-	*(*uintptr)(unsafe.Add(p, 2624)) = uintptr(0)
-	*(*uintptr)(unsafe.Add(p, 2628)) = uintptr(0)
-	*(*uintptr)(unsafe.Add(p, 2632)) = uintptr(0)
-	*(*uintptr)(unsafe.Add(p, 2636)) = uintptr(0)
-	*(*uintptr)(unsafe.Add(p, 2640)) = uintptr(0)
-	*(*uintptr)(unsafe.Add(p, 2644)) = uintptr(0)
-	*(*uintptr)(unsafe.Add(p, 2648)) = uintptr(0)
-	*(*uintptr)(unsafe.Add(p, 2652)) = uintptr(0)
-	*(*uintptr)(unsafe.Add(p, 2656)) = uintptr(0)
-	*(*uintptr)(unsafe.Add(p, 2660)) = uintptr(0)
-	*(*uintptr)(unsafe.Add(p, 2664)) = uintptr(0)
-	*(*uintptr)(unsafe.Add(p, 2668)) = uintptr(0)
-	*(*uintptr)(unsafe.Add(p, 2672)) = uintptr(0)
-	*(*uintptr)(unsafe.Add(p, 2676)) = uintptr(0)
-	*(*uintptr)(unsafe.Add(p, 2680)) = uintptr(0)
-	*(*uintptr)(unsafe.Add(p, 2684)) = uintptr(0)
-	*(*uintptr)(unsafe.Add(p, 2688)) = uintptr(0)
-	*(*uintptr)(unsafe.Add(p, 2692)) = uintptr(0)
-	*(*uintptr)(unsafe.Add(p, 2696)) = uintptr(0)
-	*(*uintptr)(unsafe.Add(p, 2700)) = uintptr(0)
-	*(*uintptr)(unsafe.Add(p, 2704)) = uintptr(0)
-	*(*uintptr)(unsafe.Add(p, 2708)) = uintptr(0)
-	*(*uintptr)(unsafe.Add(p, 2712)) = uintptr(0)
-	*(*uintptr)(unsafe.Add(p, 2716)) = uintptr(0)
-	*(*uintptr)(unsafe.Add(p, 2720)) = uintptr(0)
-	*(*uintptr)(unsafe.Add(p, 2724)) = uintptr(0)
-	*(*uintptr)(unsafe.Add(p, 2728)) = uintptr(0)
-	*(*uintptr)(unsafe.Add(p, 2732)) = uintptr(0)
-	*(*uintptr)(unsafe.Add(p, 2736)) = uintptr(0)
-	*(*uintptr)(unsafe.Add(p, 2740)) = uintptr(m_TclUnusedStubEntry)
 }
 
 const m_SLEEP_OFFLOAD_GETTIMEOFDAY = 20
@@ -243970,7 +240966,6 @@ var _afterSubCmds = [4]uintptr{
 	0: __ccgo_ts + 34575,
 	1: __ccgo_ts + 22525,
 	2: __ccgo_ts + 13360,
-	3: libc.UintptrFromInt32(0),
 }
 
 /*
@@ -244358,13 +241353,8 @@ var _traceTypeOptions = [4]uintptr{
 	0: __ccgo_ts + 58636,
 	1: __ccgo_ts + 13422,
 	2: __ccgo_ts + 3329,
-	3: libc.UintptrFromInt32(0),
 }
-var _traceSubCmds = [3]uintptr{
-	0: uintptr(0),
-	1: uintptr(0),
-	2: uintptr(0),
-}
+var _traceSubCmds = [3]uintptr{}
 
 func init() {
 	p := unsafe.Pointer(&_traceSubCmds)
@@ -244683,7 +241673,6 @@ var _traceOptions = [7]uintptr{
 	3: __ccgo_ts + 3329,
 	4: __ccgo_ts + 58646,
 	5: __ccgo_ts + 58654,
-	6: libc.UintptrFromInt32(0),
 }
 
 /*
@@ -245008,7 +241997,6 @@ var _opStrings = [5]uintptr{
 	1: __ccgo_ts + 58772,
 	2: __ccgo_ts + 58778,
 	3: __ccgo_ts + 58788,
-	4: libc.UintptrFromInt32(0),
 }
 
 /*
@@ -245257,7 +242245,6 @@ func _TraceCommandObjCmd(tls *libc.TLS, interp uintptr, optionIndex int32, objc 
 var _opStrings1 = [3]uintptr{
 	0: __ccgo_ts + 7170,
 	1: __ccgo_ts + 5181,
-	2: libc.UintptrFromInt32(0),
 }
 
 /*
@@ -245526,7 +242513,6 @@ var _opStrings2 = [5]uintptr{
 	1: __ccgo_ts + 5369,
 	2: __ccgo_ts + 3277,
 	3: __ccgo_ts + 38103,
-	4: libc.UintptrFromInt32(0),
 }
 
 /*
@@ -247641,11 +244627,9 @@ const m_UNICODE_SELF = 128
  */
 
 var _pageMap = [2048]uint16{
-	0:    uint16(0),
 	1:    uint16(32),
 	2:    uint16(64),
 	3:    uint16(96),
-	4:    uint16(0),
 	5:    uint16(128),
 	6:    uint16(160),
 	7:    uint16(192),
@@ -250490,18 +247474,12 @@ var _groupMap = [10624]uint8{
 	789:   uint8(11),
 	790:   uint8(23),
 	791:   uint8(24),
-	792:   uint8(0),
-	793:   uint8(0),
 	794:   uint8(92),
 	795:   uint8(42),
 	796:   uint8(42),
 	797:   uint8(42),
 	798:   uint8(3),
 	799:   uint8(95),
-	800:   uint8(0),
-	801:   uint8(0),
-	802:   uint8(0),
-	803:   uint8(0),
 	804:   uint8(11),
 	805:   uint8(11),
 	806:   uint8(96),
@@ -250509,9 +247487,7 @@ var _groupMap = [10624]uint8{
 	808:   uint8(97),
 	809:   uint8(97),
 	810:   uint8(97),
-	811:   uint8(0),
 	812:   uint8(98),
-	813:   uint8(0),
 	814:   uint8(99),
 	815:   uint8(99),
 	816:   uint8(21),
@@ -250532,7 +247508,6 @@ var _groupMap = [10624]uint8{
 	831:   uint8(10),
 	832:   uint8(10),
 	833:   uint8(10),
-	834:   uint8(0),
 	835:   uint8(10),
 	836:   uint8(10),
 	837:   uint8(10),
@@ -250802,7 +247777,6 @@ var _groupMap = [10624]uint8{
 	1101:  uint8(24),
 	1102:  uint8(23),
 	1103:  uint8(24),
-	1104:  uint8(0),
 	1105:  uint8(123),
 	1106:  uint8(123),
 	1107:  uint8(123),
@@ -250841,8 +247815,6 @@ var _groupMap = [10624]uint8{
 	1140:  uint8(123),
 	1141:  uint8(123),
 	1142:  uint8(123),
-	1143:  uint8(0),
-	1144:  uint8(0),
 	1145:  uint8(92),
 	1146:  uint8(3),
 	1147:  uint8(3),
@@ -250893,12 +247865,9 @@ var _groupMap = [10624]uint8{
 	1192:  uint8(21),
 	1193:  uint8(3),
 	1194:  uint8(8),
-	1195:  uint8(0),
-	1196:  uint8(0),
 	1197:  uint8(14),
 	1198:  uint8(14),
 	1199:  uint8(4),
-	1200:  uint8(0),
 	1201:  uint8(93),
 	1202:  uint8(93),
 	1203:  uint8(93),
@@ -250954,14 +247923,6 @@ var _groupMap = [10624]uint8{
 	1253:  uint8(93),
 	1254:  uint8(3),
 	1255:  uint8(93),
-	1256:  uint8(0),
-	1257:  uint8(0),
-	1258:  uint8(0),
-	1259:  uint8(0),
-	1260:  uint8(0),
-	1261:  uint8(0),
-	1262:  uint8(0),
-	1263:  uint8(0),
 	1264:  uint8(15),
 	1265:  uint8(15),
 	1266:  uint8(15),
@@ -250989,27 +247950,12 @@ var _groupMap = [10624]uint8{
 	1288:  uint8(15),
 	1289:  uint8(15),
 	1290:  uint8(15),
-	1291:  uint8(0),
-	1292:  uint8(0),
-	1293:  uint8(0),
-	1294:  uint8(0),
 	1295:  uint8(15),
 	1296:  uint8(15),
 	1297:  uint8(15),
 	1298:  uint8(15),
 	1299:  uint8(3),
 	1300:  uint8(3),
-	1301:  uint8(0),
-	1302:  uint8(0),
-	1303:  uint8(0),
-	1304:  uint8(0),
-	1305:  uint8(0),
-	1306:  uint8(0),
-	1307:  uint8(0),
-	1308:  uint8(0),
-	1309:  uint8(0),
-	1310:  uint8(0),
-	1311:  uint8(0),
 	1312:  uint8(17),
 	1313:  uint8(17),
 	1314:  uint8(17),
@@ -251216,7 +248162,6 @@ var _groupMap = [10624]uint8{
 	1515:  uint8(3),
 	1516:  uint8(3),
 	1517:  uint8(3),
-	1518:  uint8(0),
 	1519:  uint8(17),
 	1520:  uint8(15),
 	1521:  uint8(93),
@@ -251277,8 +248222,6 @@ var _groupMap = [10624]uint8{
 	1576:  uint8(93),
 	1577:  uint8(93),
 	1578:  uint8(93),
-	1579:  uint8(0),
-	1580:  uint8(0),
 	1581:  uint8(15),
 	1582:  uint8(15),
 	1583:  uint8(15),
@@ -251316,20 +248259,6 @@ var _groupMap = [10624]uint8{
 	1615:  uint8(93),
 	1616:  uint8(93),
 	1617:  uint8(15),
-	1618:  uint8(0),
-	1619:  uint8(0),
-	1620:  uint8(0),
-	1621:  uint8(0),
-	1622:  uint8(0),
-	1623:  uint8(0),
-	1624:  uint8(0),
-	1625:  uint8(0),
-	1626:  uint8(0),
-	1627:  uint8(0),
-	1628:  uint8(0),
-	1629:  uint8(0),
-	1630:  uint8(0),
-	1631:  uint8(0),
 	1632:  uint8(9),
 	1633:  uint8(9),
 	1634:  uint8(9),
@@ -251389,8 +248318,6 @@ var _groupMap = [10624]uint8{
 	1688:  uint8(3),
 	1689:  uint8(3),
 	1690:  uint8(92),
-	1691:  uint8(0),
-	1692:  uint8(0),
 	1693:  uint8(93),
 	1694:  uint8(4),
 	1695:  uint8(4),
@@ -251440,8 +248367,6 @@ var _groupMap = [10624]uint8{
 	1739:  uint8(93),
 	1740:  uint8(93),
 	1741:  uint8(93),
-	1742:  uint8(0),
-	1743:  uint8(0),
 	1744:  uint8(3),
 	1745:  uint8(3),
 	1746:  uint8(3),
@@ -251457,7 +248382,6 @@ var _groupMap = [10624]uint8{
 	1756:  uint8(3),
 	1757:  uint8(3),
 	1758:  uint8(3),
-	1759:  uint8(0),
 	1760:  uint8(15),
 	1761:  uint8(15),
 	1762:  uint8(15),
@@ -251486,10 +248410,7 @@ var _groupMap = [10624]uint8{
 	1785:  uint8(93),
 	1786:  uint8(93),
 	1787:  uint8(93),
-	1788:  uint8(0),
-	1789:  uint8(0),
 	1790:  uint8(3),
-	1791:  uint8(0),
 	1792:  uint8(15),
 	1793:  uint8(15),
 	1794:  uint8(15),
@@ -251501,11 +248422,6 @@ var _groupMap = [10624]uint8{
 	1800:  uint8(15),
 	1801:  uint8(15),
 	1802:  uint8(15),
-	1803:  uint8(0),
-	1804:  uint8(0),
-	1805:  uint8(0),
-	1806:  uint8(0),
-	1807:  uint8(0),
 	1808:  uint8(15),
 	1809:  uint8(15),
 	1810:  uint8(15),
@@ -251537,15 +248453,8 @@ var _groupMap = [10624]uint8{
 	1836:  uint8(15),
 	1837:  uint8(15),
 	1838:  uint8(15),
-	1839:  uint8(0),
 	1840:  uint8(17),
 	1841:  uint8(17),
-	1842:  uint8(0),
-	1843:  uint8(0),
-	1844:  uint8(0),
-	1845:  uint8(0),
-	1846:  uint8(0),
-	1847:  uint8(0),
 	1848:  uint8(93),
 	1849:  uint8(93),
 	1850:  uint8(93),
@@ -251750,7 +248659,6 @@ var _groupMap = [10624]uint8{
 	2049:  uint8(93),
 	2050:  uint8(125),
 	2051:  uint8(125),
-	2052:  uint8(0),
 	2053:  uint8(15),
 	2054:  uint8(15),
 	2055:  uint8(15),
@@ -251759,12 +248667,8 @@ var _groupMap = [10624]uint8{
 	2058:  uint8(15),
 	2059:  uint8(15),
 	2060:  uint8(15),
-	2061:  uint8(0),
-	2062:  uint8(0),
 	2063:  uint8(15),
 	2064:  uint8(15),
-	2065:  uint8(0),
-	2066:  uint8(0),
 	2067:  uint8(15),
 	2068:  uint8(15),
 	2069:  uint8(15),
@@ -251787,7 +248691,6 @@ var _groupMap = [10624]uint8{
 	2086:  uint8(15),
 	2087:  uint8(15),
 	2088:  uint8(15),
-	2089:  uint8(0),
 	2090:  uint8(15),
 	2091:  uint8(15),
 	2092:  uint8(15),
@@ -251795,17 +248698,11 @@ var _groupMap = [10624]uint8{
 	2094:  uint8(15),
 	2095:  uint8(15),
 	2096:  uint8(15),
-	2097:  uint8(0),
 	2098:  uint8(15),
-	2099:  uint8(0),
-	2100:  uint8(0),
-	2101:  uint8(0),
 	2102:  uint8(15),
 	2103:  uint8(15),
 	2104:  uint8(15),
 	2105:  uint8(15),
-	2106:  uint8(0),
-	2107:  uint8(0),
 	2108:  uint8(93),
 	2109:  uint8(15),
 	2110:  uint8(125),
@@ -251815,39 +248712,20 @@ var _groupMap = [10624]uint8{
 	2114:  uint8(93),
 	2115:  uint8(93),
 	2116:  uint8(93),
-	2117:  uint8(0),
-	2118:  uint8(0),
 	2119:  uint8(125),
 	2120:  uint8(125),
-	2121:  uint8(0),
-	2122:  uint8(0),
 	2123:  uint8(125),
 	2124:  uint8(125),
 	2125:  uint8(93),
 	2126:  uint8(15),
-	2127:  uint8(0),
-	2128:  uint8(0),
-	2129:  uint8(0),
-	2130:  uint8(0),
-	2131:  uint8(0),
-	2132:  uint8(0),
-	2133:  uint8(0),
-	2134:  uint8(0),
 	2135:  uint8(125),
-	2136:  uint8(0),
-	2137:  uint8(0),
-	2138:  uint8(0),
-	2139:  uint8(0),
 	2140:  uint8(15),
 	2141:  uint8(15),
-	2142:  uint8(0),
 	2143:  uint8(15),
 	2144:  uint8(15),
 	2145:  uint8(15),
 	2146:  uint8(93),
 	2147:  uint8(93),
-	2148:  uint8(0),
-	2149:  uint8(0),
 	2150:  uint8(9),
 	2151:  uint8(9),
 	2152:  uint8(9),
@@ -251873,26 +248751,17 @@ var _groupMap = [10624]uint8{
 	2172:  uint8(15),
 	2173:  uint8(3),
 	2174:  uint8(93),
-	2175:  uint8(0),
-	2176:  uint8(0),
 	2177:  uint8(93),
 	2178:  uint8(93),
 	2179:  uint8(125),
-	2180:  uint8(0),
 	2181:  uint8(15),
 	2182:  uint8(15),
 	2183:  uint8(15),
 	2184:  uint8(15),
 	2185:  uint8(15),
 	2186:  uint8(15),
-	2187:  uint8(0),
-	2188:  uint8(0),
-	2189:  uint8(0),
-	2190:  uint8(0),
 	2191:  uint8(15),
 	2192:  uint8(15),
-	2193:  uint8(0),
-	2194:  uint8(0),
 	2195:  uint8(15),
 	2196:  uint8(15),
 	2197:  uint8(15),
@@ -251915,7 +248784,6 @@ var _groupMap = [10624]uint8{
 	2214:  uint8(15),
 	2215:  uint8(15),
 	2216:  uint8(15),
-	2217:  uint8(0),
 	2218:  uint8(15),
 	2219:  uint8(15),
 	2220:  uint8(15),
@@ -251923,59 +248791,29 @@ var _groupMap = [10624]uint8{
 	2222:  uint8(15),
 	2223:  uint8(15),
 	2224:  uint8(15),
-	2225:  uint8(0),
 	2226:  uint8(15),
 	2227:  uint8(15),
-	2228:  uint8(0),
 	2229:  uint8(15),
 	2230:  uint8(15),
-	2231:  uint8(0),
 	2232:  uint8(15),
 	2233:  uint8(15),
-	2234:  uint8(0),
-	2235:  uint8(0),
 	2236:  uint8(93),
-	2237:  uint8(0),
 	2238:  uint8(125),
 	2239:  uint8(125),
 	2240:  uint8(125),
 	2241:  uint8(93),
 	2242:  uint8(93),
-	2243:  uint8(0),
-	2244:  uint8(0),
-	2245:  uint8(0),
-	2246:  uint8(0),
 	2247:  uint8(93),
 	2248:  uint8(93),
-	2249:  uint8(0),
-	2250:  uint8(0),
 	2251:  uint8(93),
 	2252:  uint8(93),
 	2253:  uint8(93),
-	2254:  uint8(0),
-	2255:  uint8(0),
-	2256:  uint8(0),
 	2257:  uint8(93),
-	2258:  uint8(0),
-	2259:  uint8(0),
-	2260:  uint8(0),
-	2261:  uint8(0),
-	2262:  uint8(0),
-	2263:  uint8(0),
-	2264:  uint8(0),
 	2265:  uint8(15),
 	2266:  uint8(15),
 	2267:  uint8(15),
 	2268:  uint8(15),
-	2269:  uint8(0),
 	2270:  uint8(15),
-	2271:  uint8(0),
-	2272:  uint8(0),
-	2273:  uint8(0),
-	2274:  uint8(0),
-	2275:  uint8(0),
-	2276:  uint8(0),
-	2277:  uint8(0),
 	2278:  uint8(9),
 	2279:  uint8(9),
 	2280:  uint8(9),
@@ -251993,20 +248831,9 @@ var _groupMap = [10624]uint8{
 	2292:  uint8(15),
 	2293:  uint8(93),
 	2294:  uint8(3),
-	2295:  uint8(0),
-	2296:  uint8(0),
-	2297:  uint8(0),
-	2298:  uint8(0),
-	2299:  uint8(0),
-	2300:  uint8(0),
-	2301:  uint8(0),
-	2302:  uint8(0),
-	2303:  uint8(0),
-	2304:  uint8(0),
 	2305:  uint8(93),
 	2306:  uint8(93),
 	2307:  uint8(125),
-	2308:  uint8(0),
 	2309:  uint8(15),
 	2310:  uint8(15),
 	2311:  uint8(15),
@@ -252016,11 +248843,9 @@ var _groupMap = [10624]uint8{
 	2315:  uint8(15),
 	2316:  uint8(15),
 	2317:  uint8(15),
-	2318:  uint8(0),
 	2319:  uint8(15),
 	2320:  uint8(15),
 	2321:  uint8(15),
-	2322:  uint8(0),
 	2323:  uint8(15),
 	2324:  uint8(15),
 	2325:  uint8(15),
@@ -252043,7 +248868,6 @@ var _groupMap = [10624]uint8{
 	2342:  uint8(15),
 	2343:  uint8(15),
 	2344:  uint8(15),
-	2345:  uint8(0),
 	2346:  uint8(15),
 	2347:  uint8(15),
 	2348:  uint8(15),
@@ -252051,17 +248875,13 @@ var _groupMap = [10624]uint8{
 	2350:  uint8(15),
 	2351:  uint8(15),
 	2352:  uint8(15),
-	2353:  uint8(0),
 	2354:  uint8(15),
 	2355:  uint8(15),
-	2356:  uint8(0),
 	2357:  uint8(15),
 	2358:  uint8(15),
 	2359:  uint8(15),
 	2360:  uint8(15),
 	2361:  uint8(15),
-	2362:  uint8(0),
-	2363:  uint8(0),
 	2364:  uint8(93),
 	2365:  uint8(15),
 	2366:  uint8(125),
@@ -252072,38 +248892,17 @@ var _groupMap = [10624]uint8{
 	2371:  uint8(93),
 	2372:  uint8(93),
 	2373:  uint8(93),
-	2374:  uint8(0),
 	2375:  uint8(93),
 	2376:  uint8(93),
 	2377:  uint8(125),
-	2378:  uint8(0),
 	2379:  uint8(125),
 	2380:  uint8(125),
 	2381:  uint8(93),
-	2382:  uint8(0),
-	2383:  uint8(0),
 	2384:  uint8(15),
-	2385:  uint8(0),
-	2386:  uint8(0),
-	2387:  uint8(0),
-	2388:  uint8(0),
-	2389:  uint8(0),
-	2390:  uint8(0),
-	2391:  uint8(0),
-	2392:  uint8(0),
-	2393:  uint8(0),
-	2394:  uint8(0),
-	2395:  uint8(0),
-	2396:  uint8(0),
-	2397:  uint8(0),
-	2398:  uint8(0),
-	2399:  uint8(0),
 	2400:  uint8(15),
 	2401:  uint8(15),
 	2402:  uint8(93),
 	2403:  uint8(93),
-	2404:  uint8(0),
-	2405:  uint8(0),
 	2406:  uint8(9),
 	2407:  uint8(9),
 	2408:  uint8(9),
@@ -252116,13 +248915,6 @@ var _groupMap = [10624]uint8{
 	2415:  uint8(9),
 	2416:  uint8(3),
 	2417:  uint8(4),
-	2418:  uint8(0),
-	2419:  uint8(0),
-	2420:  uint8(0),
-	2421:  uint8(0),
-	2422:  uint8(0),
-	2423:  uint8(0),
-	2424:  uint8(0),
 	2425:  uint8(15),
 	2426:  uint8(93),
 	2427:  uint8(93),
@@ -252130,11 +248922,9 @@ var _groupMap = [10624]uint8{
 	2429:  uint8(93),
 	2430:  uint8(93),
 	2431:  uint8(93),
-	2432:  uint8(0),
 	2433:  uint8(93),
 	2434:  uint8(125),
 	2435:  uint8(125),
-	2436:  uint8(0),
 	2437:  uint8(15),
 	2438:  uint8(15),
 	2439:  uint8(15),
@@ -252143,12 +248933,8 @@ var _groupMap = [10624]uint8{
 	2442:  uint8(15),
 	2443:  uint8(15),
 	2444:  uint8(15),
-	2445:  uint8(0),
-	2446:  uint8(0),
 	2447:  uint8(15),
 	2448:  uint8(15),
-	2449:  uint8(0),
-	2450:  uint8(0),
 	2451:  uint8(15),
 	2452:  uint8(15),
 	2453:  uint8(15),
@@ -252171,7 +248957,6 @@ var _groupMap = [10624]uint8{
 	2470:  uint8(15),
 	2471:  uint8(15),
 	2472:  uint8(15),
-	2473:  uint8(0),
 	2474:  uint8(15),
 	2475:  uint8(15),
 	2476:  uint8(15),
@@ -252179,17 +248964,13 @@ var _groupMap = [10624]uint8{
 	2478:  uint8(15),
 	2479:  uint8(15),
 	2480:  uint8(15),
-	2481:  uint8(0),
 	2482:  uint8(15),
 	2483:  uint8(15),
-	2484:  uint8(0),
 	2485:  uint8(15),
 	2486:  uint8(15),
 	2487:  uint8(15),
 	2488:  uint8(15),
 	2489:  uint8(15),
-	2490:  uint8(0),
-	2491:  uint8(0),
 	2492:  uint8(93),
 	2493:  uint8(15),
 	2494:  uint8(125),
@@ -252199,39 +248980,21 @@ var _groupMap = [10624]uint8{
 	2498:  uint8(93),
 	2499:  uint8(93),
 	2500:  uint8(93),
-	2501:  uint8(0),
-	2502:  uint8(0),
 	2503:  uint8(125),
 	2504:  uint8(125),
-	2505:  uint8(0),
-	2506:  uint8(0),
 	2507:  uint8(125),
 	2508:  uint8(125),
 	2509:  uint8(93),
-	2510:  uint8(0),
-	2511:  uint8(0),
-	2512:  uint8(0),
-	2513:  uint8(0),
-	2514:  uint8(0),
-	2515:  uint8(0),
-	2516:  uint8(0),
 	2517:  uint8(93),
 	2518:  uint8(93),
 	2519:  uint8(125),
-	2520:  uint8(0),
-	2521:  uint8(0),
-	2522:  uint8(0),
-	2523:  uint8(0),
 	2524:  uint8(15),
 	2525:  uint8(15),
-	2526:  uint8(0),
 	2527:  uint8(15),
 	2528:  uint8(15),
 	2529:  uint8(15),
 	2530:  uint8(93),
 	2531:  uint8(93),
-	2532:  uint8(0),
-	2533:  uint8(0),
 	2534:  uint8(9),
 	2535:  uint8(9),
 	2536:  uint8(9),
@@ -252250,60 +249013,31 @@ var _groupMap = [10624]uint8{
 	2549:  uint8(18),
 	2550:  uint8(18),
 	2551:  uint8(18),
-	2552:  uint8(0),
-	2553:  uint8(0),
-	2554:  uint8(0),
-	2555:  uint8(0),
-	2556:  uint8(0),
-	2557:  uint8(0),
-	2558:  uint8(0),
-	2559:  uint8(0),
-	2560:  uint8(0),
-	2561:  uint8(0),
 	2562:  uint8(93),
 	2563:  uint8(15),
-	2564:  uint8(0),
 	2565:  uint8(15),
 	2566:  uint8(15),
 	2567:  uint8(15),
 	2568:  uint8(15),
 	2569:  uint8(15),
 	2570:  uint8(15),
-	2571:  uint8(0),
-	2572:  uint8(0),
-	2573:  uint8(0),
 	2574:  uint8(15),
 	2575:  uint8(15),
 	2576:  uint8(15),
-	2577:  uint8(0),
 	2578:  uint8(15),
 	2579:  uint8(15),
 	2580:  uint8(15),
 	2581:  uint8(15),
-	2582:  uint8(0),
-	2583:  uint8(0),
-	2584:  uint8(0),
 	2585:  uint8(15),
 	2586:  uint8(15),
-	2587:  uint8(0),
 	2588:  uint8(15),
-	2589:  uint8(0),
 	2590:  uint8(15),
 	2591:  uint8(15),
-	2592:  uint8(0),
-	2593:  uint8(0),
-	2594:  uint8(0),
 	2595:  uint8(15),
 	2596:  uint8(15),
-	2597:  uint8(0),
-	2598:  uint8(0),
-	2599:  uint8(0),
 	2600:  uint8(15),
 	2601:  uint8(15),
 	2602:  uint8(15),
-	2603:  uint8(0),
-	2604:  uint8(0),
-	2605:  uint8(0),
 	2606:  uint8(15),
 	2607:  uint8(15),
 	2608:  uint8(15),
@@ -252316,50 +249050,20 @@ var _groupMap = [10624]uint8{
 	2615:  uint8(15),
 	2616:  uint8(15),
 	2617:  uint8(15),
-	2618:  uint8(0),
-	2619:  uint8(0),
-	2620:  uint8(0),
-	2621:  uint8(0),
 	2622:  uint8(125),
 	2623:  uint8(125),
 	2624:  uint8(93),
 	2625:  uint8(125),
 	2626:  uint8(125),
-	2627:  uint8(0),
-	2628:  uint8(0),
-	2629:  uint8(0),
 	2630:  uint8(125),
 	2631:  uint8(125),
 	2632:  uint8(125),
-	2633:  uint8(0),
 	2634:  uint8(125),
 	2635:  uint8(125),
 	2636:  uint8(125),
 	2637:  uint8(93),
-	2638:  uint8(0),
-	2639:  uint8(0),
 	2640:  uint8(15),
-	2641:  uint8(0),
-	2642:  uint8(0),
-	2643:  uint8(0),
-	2644:  uint8(0),
-	2645:  uint8(0),
-	2646:  uint8(0),
 	2647:  uint8(125),
-	2648:  uint8(0),
-	2649:  uint8(0),
-	2650:  uint8(0),
-	2651:  uint8(0),
-	2652:  uint8(0),
-	2653:  uint8(0),
-	2654:  uint8(0),
-	2655:  uint8(0),
-	2656:  uint8(0),
-	2657:  uint8(0),
-	2658:  uint8(0),
-	2659:  uint8(0),
-	2660:  uint8(0),
-	2661:  uint8(0),
 	2662:  uint8(9),
 	2663:  uint8(9),
 	2664:  uint8(9),
@@ -252381,11 +249085,6 @@ var _groupMap = [10624]uint8{
 	2680:  uint8(14),
 	2681:  uint8(4),
 	2682:  uint8(14),
-	2683:  uint8(0),
-	2684:  uint8(0),
-	2685:  uint8(0),
-	2686:  uint8(0),
-	2687:  uint8(0),
 	2688:  uint8(93),
 	2689:  uint8(125),
 	2690:  uint8(125),
@@ -252399,11 +249098,9 @@ var _groupMap = [10624]uint8{
 	2698:  uint8(15),
 	2699:  uint8(15),
 	2700:  uint8(15),
-	2701:  uint8(0),
 	2702:  uint8(15),
 	2703:  uint8(15),
 	2704:  uint8(15),
-	2705:  uint8(0),
 	2706:  uint8(15),
 	2707:  uint8(15),
 	2708:  uint8(15),
@@ -252427,7 +249124,6 @@ var _groupMap = [10624]uint8{
 	2726:  uint8(15),
 	2727:  uint8(15),
 	2728:  uint8(15),
-	2729:  uint8(0),
 	2730:  uint8(15),
 	2731:  uint8(15),
 	2732:  uint8(15),
@@ -252444,8 +249140,6 @@ var _groupMap = [10624]uint8{
 	2743:  uint8(15),
 	2744:  uint8(15),
 	2745:  uint8(15),
-	2746:  uint8(0),
-	2747:  uint8(0),
 	2748:  uint8(93),
 	2749:  uint8(15),
 	2750:  uint8(93),
@@ -252455,39 +249149,23 @@ var _groupMap = [10624]uint8{
 	2754:  uint8(125),
 	2755:  uint8(125),
 	2756:  uint8(125),
-	2757:  uint8(0),
 	2758:  uint8(93),
 	2759:  uint8(93),
 	2760:  uint8(93),
-	2761:  uint8(0),
 	2762:  uint8(93),
 	2763:  uint8(93),
 	2764:  uint8(93),
 	2765:  uint8(93),
-	2766:  uint8(0),
-	2767:  uint8(0),
-	2768:  uint8(0),
-	2769:  uint8(0),
-	2770:  uint8(0),
-	2771:  uint8(0),
-	2772:  uint8(0),
 	2773:  uint8(93),
 	2774:  uint8(93),
-	2775:  uint8(0),
 	2776:  uint8(15),
 	2777:  uint8(15),
 	2778:  uint8(15),
-	2779:  uint8(0),
-	2780:  uint8(0),
 	2781:  uint8(15),
-	2782:  uint8(0),
-	2783:  uint8(0),
 	2784:  uint8(15),
 	2785:  uint8(15),
 	2786:  uint8(93),
 	2787:  uint8(93),
-	2788:  uint8(0),
-	2789:  uint8(0),
 	2790:  uint8(9),
 	2791:  uint8(9),
 	2792:  uint8(9),
@@ -252498,13 +249176,6 @@ var _groupMap = [10624]uint8{
 	2797:  uint8(9),
 	2798:  uint8(9),
 	2799:  uint8(9),
-	2800:  uint8(0),
-	2801:  uint8(0),
-	2802:  uint8(0),
-	2803:  uint8(0),
-	2804:  uint8(0),
-	2805:  uint8(0),
-	2806:  uint8(0),
 	2807:  uint8(3),
 	2808:  uint8(18),
 	2809:  uint8(18),
@@ -252527,11 +249198,9 @@ var _groupMap = [10624]uint8{
 	2826:  uint8(15),
 	2827:  uint8(15),
 	2828:  uint8(15),
-	2829:  uint8(0),
 	2830:  uint8(15),
 	2831:  uint8(15),
 	2832:  uint8(15),
-	2833:  uint8(0),
 	2834:  uint8(15),
 	2835:  uint8(15),
 	2836:  uint8(15),
@@ -252555,7 +249224,6 @@ var _groupMap = [10624]uint8{
 	2854:  uint8(15),
 	2855:  uint8(15),
 	2856:  uint8(15),
-	2857:  uint8(0),
 	2858:  uint8(15),
 	2859:  uint8(15),
 	2860:  uint8(15),
@@ -252566,14 +249234,11 @@ var _groupMap = [10624]uint8{
 	2865:  uint8(15),
 	2866:  uint8(15),
 	2867:  uint8(15),
-	2868:  uint8(0),
 	2869:  uint8(15),
 	2870:  uint8(15),
 	2871:  uint8(15),
 	2872:  uint8(15),
 	2873:  uint8(15),
-	2874:  uint8(0),
-	2875:  uint8(0),
 	2876:  uint8(93),
 	2877:  uint8(15),
 	2878:  uint8(125),
@@ -252583,39 +249248,21 @@ var _groupMap = [10624]uint8{
 	2882:  uint8(125),
 	2883:  uint8(125),
 	2884:  uint8(125),
-	2885:  uint8(0),
 	2886:  uint8(93),
 	2887:  uint8(125),
 	2888:  uint8(125),
-	2889:  uint8(0),
 	2890:  uint8(125),
 	2891:  uint8(125),
 	2892:  uint8(93),
 	2893:  uint8(93),
-	2894:  uint8(0),
-	2895:  uint8(0),
-	2896:  uint8(0),
-	2897:  uint8(0),
-	2898:  uint8(0),
-	2899:  uint8(0),
-	2900:  uint8(0),
 	2901:  uint8(125),
 	2902:  uint8(125),
-	2903:  uint8(0),
-	2904:  uint8(0),
-	2905:  uint8(0),
-	2906:  uint8(0),
-	2907:  uint8(0),
-	2908:  uint8(0),
 	2909:  uint8(15),
 	2910:  uint8(15),
-	2911:  uint8(0),
 	2912:  uint8(15),
 	2913:  uint8(15),
 	2914:  uint8(93),
 	2915:  uint8(93),
-	2916:  uint8(0),
-	2917:  uint8(0),
 	2918:  uint8(9),
 	2919:  uint8(9),
 	2920:  uint8(9),
@@ -252626,22 +249273,9 @@ var _groupMap = [10624]uint8{
 	2925:  uint8(9),
 	2926:  uint8(9),
 	2927:  uint8(9),
-	2928:  uint8(0),
 	2929:  uint8(15),
 	2930:  uint8(15),
 	2931:  uint8(125),
-	2932:  uint8(0),
-	2933:  uint8(0),
-	2934:  uint8(0),
-	2935:  uint8(0),
-	2936:  uint8(0),
-	2937:  uint8(0),
-	2938:  uint8(0),
-	2939:  uint8(0),
-	2940:  uint8(0),
-	2941:  uint8(0),
-	2942:  uint8(0),
-	2943:  uint8(0),
 	2944:  uint8(93),
 	2945:  uint8(93),
 	2946:  uint8(125),
@@ -252655,11 +249289,9 @@ var _groupMap = [10624]uint8{
 	2954:  uint8(15),
 	2955:  uint8(15),
 	2956:  uint8(15),
-	2957:  uint8(0),
 	2958:  uint8(15),
 	2959:  uint8(15),
 	2960:  uint8(15),
-	2961:  uint8(0),
 	2962:  uint8(15),
 	2963:  uint8(15),
 	2964:  uint8(15),
@@ -252711,21 +249343,15 @@ var _groupMap = [10624]uint8{
 	3010:  uint8(93),
 	3011:  uint8(93),
 	3012:  uint8(93),
-	3013:  uint8(0),
 	3014:  uint8(125),
 	3015:  uint8(125),
 	3016:  uint8(125),
-	3017:  uint8(0),
 	3018:  uint8(125),
 	3019:  uint8(125),
 	3020:  uint8(125),
 	3021:  uint8(93),
 	3022:  uint8(15),
 	3023:  uint8(14),
-	3024:  uint8(0),
-	3025:  uint8(0),
-	3026:  uint8(0),
-	3027:  uint8(0),
 	3028:  uint8(15),
 	3029:  uint8(15),
 	3030:  uint8(15),
@@ -252742,8 +249368,6 @@ var _groupMap = [10624]uint8{
 	3041:  uint8(15),
 	3042:  uint8(93),
 	3043:  uint8(93),
-	3044:  uint8(0),
-	3045:  uint8(0),
 	3046:  uint8(9),
 	3047:  uint8(9),
 	3048:  uint8(9),
@@ -252770,11 +249394,9 @@ var _groupMap = [10624]uint8{
 	3069:  uint8(15),
 	3070:  uint8(15),
 	3071:  uint8(15),
-	3072:  uint8(0),
 	3073:  uint8(93),
 	3074:  uint8(125),
 	3075:  uint8(125),
-	3076:  uint8(0),
 	3077:  uint8(15),
 	3078:  uint8(15),
 	3079:  uint8(15),
@@ -252793,9 +249415,6 @@ var _groupMap = [10624]uint8{
 	3092:  uint8(15),
 	3093:  uint8(15),
 	3094:  uint8(15),
-	3095:  uint8(0),
-	3096:  uint8(0),
-	3097:  uint8(0),
 	3098:  uint8(15),
 	3099:  uint8(15),
 	3100:  uint8(15),
@@ -252820,7 +249439,6 @@ var _groupMap = [10624]uint8{
 	3119:  uint8(15),
 	3120:  uint8(15),
 	3121:  uint8(15),
-	3122:  uint8(0),
 	3123:  uint8(15),
 	3124:  uint8(15),
 	3125:  uint8(15),
@@ -252830,10 +249448,7 @@ var _groupMap = [10624]uint8{
 	3129:  uint8(15),
 	3130:  uint8(15),
 	3131:  uint8(15),
-	3132:  uint8(0),
 	3133:  uint8(15),
-	3134:  uint8(0),
-	3135:  uint8(0),
 	3136:  uint8(15),
 	3137:  uint8(15),
 	3138:  uint8(15),
@@ -252841,23 +249456,14 @@ var _groupMap = [10624]uint8{
 	3140:  uint8(15),
 	3141:  uint8(15),
 	3142:  uint8(15),
-	3143:  uint8(0),
-	3144:  uint8(0),
-	3145:  uint8(0),
 	3146:  uint8(93),
-	3147:  uint8(0),
-	3148:  uint8(0),
-	3149:  uint8(0),
-	3150:  uint8(0),
 	3151:  uint8(125),
 	3152:  uint8(125),
 	3153:  uint8(125),
 	3154:  uint8(93),
 	3155:  uint8(93),
 	3156:  uint8(93),
-	3157:  uint8(0),
 	3158:  uint8(93),
-	3159:  uint8(0),
 	3160:  uint8(125),
 	3161:  uint8(125),
 	3162:  uint8(125),
@@ -252866,12 +249472,6 @@ var _groupMap = [10624]uint8{
 	3165:  uint8(125),
 	3166:  uint8(125),
 	3167:  uint8(125),
-	3168:  uint8(0),
-	3169:  uint8(0),
-	3170:  uint8(0),
-	3171:  uint8(0),
-	3172:  uint8(0),
-	3173:  uint8(0),
 	3174:  uint8(9),
 	3175:  uint8(9),
 	3176:  uint8(9),
@@ -252882,23 +249482,9 @@ var _groupMap = [10624]uint8{
 	3181:  uint8(9),
 	3182:  uint8(9),
 	3183:  uint8(9),
-	3184:  uint8(0),
-	3185:  uint8(0),
 	3186:  uint8(125),
 	3187:  uint8(125),
 	3188:  uint8(3),
-	3189:  uint8(0),
-	3190:  uint8(0),
-	3191:  uint8(0),
-	3192:  uint8(0),
-	3193:  uint8(0),
-	3194:  uint8(0),
-	3195:  uint8(0),
-	3196:  uint8(0),
-	3197:  uint8(0),
-	3198:  uint8(0),
-	3199:  uint8(0),
-	3200:  uint8(0),
 	3201:  uint8(15),
 	3202:  uint8(15),
 	3203:  uint8(15),
@@ -252957,10 +249543,6 @@ var _groupMap = [10624]uint8{
 	3256:  uint8(93),
 	3257:  uint8(93),
 	3258:  uint8(93),
-	3259:  uint8(0),
-	3260:  uint8(0),
-	3261:  uint8(0),
-	3262:  uint8(0),
 	3263:  uint8(4),
 	3264:  uint8(15),
 	3265:  uint8(15),
@@ -252990,54 +249572,14 @@ var _groupMap = [10624]uint8{
 	3289:  uint8(9),
 	3290:  uint8(3),
 	3291:  uint8(3),
-	3292:  uint8(0),
-	3293:  uint8(0),
-	3294:  uint8(0),
-	3295:  uint8(0),
-	3296:  uint8(0),
-	3297:  uint8(0),
-	3298:  uint8(0),
-	3299:  uint8(0),
-	3300:  uint8(0),
-	3301:  uint8(0),
-	3302:  uint8(0),
-	3303:  uint8(0),
-	3304:  uint8(0),
-	3305:  uint8(0),
-	3306:  uint8(0),
-	3307:  uint8(0),
-	3308:  uint8(0),
-	3309:  uint8(0),
-	3310:  uint8(0),
-	3311:  uint8(0),
-	3312:  uint8(0),
-	3313:  uint8(0),
-	3314:  uint8(0),
-	3315:  uint8(0),
-	3316:  uint8(0),
-	3317:  uint8(0),
-	3318:  uint8(0),
-	3319:  uint8(0),
-	3320:  uint8(0),
-	3321:  uint8(0),
-	3322:  uint8(0),
-	3323:  uint8(0),
-	3324:  uint8(0),
-	3325:  uint8(0),
-	3326:  uint8(0),
-	3327:  uint8(0),
-	3328:  uint8(0),
 	3329:  uint8(15),
 	3330:  uint8(15),
-	3331:  uint8(0),
 	3332:  uint8(15),
-	3333:  uint8(0),
 	3334:  uint8(15),
 	3335:  uint8(15),
 	3336:  uint8(15),
 	3337:  uint8(15),
 	3338:  uint8(15),
-	3339:  uint8(0),
 	3340:  uint8(15),
 	3341:  uint8(15),
 	3342:  uint8(15),
@@ -253062,9 +249604,7 @@ var _groupMap = [10624]uint8{
 	3361:  uint8(15),
 	3362:  uint8(15),
 	3363:  uint8(15),
-	3364:  uint8(0),
 	3365:  uint8(15),
-	3366:  uint8(0),
 	3367:  uint8(15),
 	3368:  uint8(15),
 	3369:  uint8(15),
@@ -253088,16 +249628,12 @@ var _groupMap = [10624]uint8{
 	3387:  uint8(93),
 	3388:  uint8(93),
 	3389:  uint8(15),
-	3390:  uint8(0),
-	3391:  uint8(0),
 	3392:  uint8(15),
 	3393:  uint8(15),
 	3394:  uint8(15),
 	3395:  uint8(15),
 	3396:  uint8(15),
-	3397:  uint8(0),
 	3398:  uint8(92),
-	3399:  uint8(0),
 	3400:  uint8(93),
 	3401:  uint8(93),
 	3402:  uint8(93),
@@ -253105,7 +249641,6 @@ var _groupMap = [10624]uint8{
 	3404:  uint8(93),
 	3405:  uint8(93),
 	3406:  uint8(93),
-	3407:  uint8(0),
 	3408:  uint8(9),
 	3409:  uint8(9),
 	3410:  uint8(9),
@@ -253116,8 +249651,6 @@ var _groupMap = [10624]uint8{
 	3415:  uint8(9),
 	3416:  uint8(9),
 	3417:  uint8(9),
-	3418:  uint8(0),
-	3419:  uint8(0),
 	3420:  uint8(15),
 	3421:  uint8(15),
 	3422:  uint8(15),
@@ -253194,7 +249727,6 @@ var _groupMap = [10624]uint8{
 	3493:  uint8(15),
 	3494:  uint8(15),
 	3495:  uint8(15),
-	3496:  uint8(0),
 	3497:  uint8(15),
 	3498:  uint8(15),
 	3499:  uint8(15),
@@ -253231,10 +249763,6 @@ var _groupMap = [10624]uint8{
 	3530:  uint8(15),
 	3531:  uint8(15),
 	3532:  uint8(15),
-	3533:  uint8(0),
-	3534:  uint8(0),
-	3535:  uint8(0),
-	3536:  uint8(0),
 	3537:  uint8(93),
 	3538:  uint8(93),
 	3539:  uint8(93),
@@ -253274,7 +249802,6 @@ var _groupMap = [10624]uint8{
 	3573:  uint8(93),
 	3574:  uint8(93),
 	3575:  uint8(93),
-	3576:  uint8(0),
 	3577:  uint8(93),
 	3578:  uint8(93),
 	3579:  uint8(93),
@@ -253311,7 +249838,6 @@ var _groupMap = [10624]uint8{
 	3610:  uint8(93),
 	3611:  uint8(93),
 	3612:  uint8(93),
-	3613:  uint8(0),
 	3614:  uint8(14),
 	3615:  uint8(14),
 	3616:  uint8(14),
@@ -253327,7 +249853,6 @@ var _groupMap = [10624]uint8{
 	3626:  uint8(14),
 	3627:  uint8(14),
 	3628:  uint8(14),
-	3629:  uint8(0),
 	3630:  uint8(14),
 	3631:  uint8(14),
 	3632:  uint8(3),
@@ -253341,11 +249866,6 @@ var _groupMap = [10624]uint8{
 	3640:  uint8(14),
 	3641:  uint8(3),
 	3642:  uint8(3),
-	3643:  uint8(0),
-	3644:  uint8(0),
-	3645:  uint8(0),
-	3646:  uint8(0),
-	3647:  uint8(0),
 	3648:  uint8(15),
 	3649:  uint8(15),
 	3650:  uint8(15),
@@ -253512,16 +250032,8 @@ var _groupMap = [10624]uint8{
 	3811:  uint8(126),
 	3812:  uint8(126),
 	3813:  uint8(126),
-	3814:  uint8(0),
 	3815:  uint8(126),
-	3816:  uint8(0),
-	3817:  uint8(0),
-	3818:  uint8(0),
-	3819:  uint8(0),
-	3820:  uint8(0),
 	3821:  uint8(126),
-	3822:  uint8(0),
-	3823:  uint8(0),
 	3824:  uint8(127),
 	3825:  uint8(127),
 	3826:  uint8(127),
@@ -253579,13 +250091,10 @@ var _groupMap = [10624]uint8{
 	3878:  uint8(15),
 	3879:  uint8(15),
 	3880:  uint8(15),
-	3881:  uint8(0),
 	3882:  uint8(15),
 	3883:  uint8(15),
 	3884:  uint8(15),
 	3885:  uint8(15),
-	3886:  uint8(0),
-	3887:  uint8(0),
 	3888:  uint8(15),
 	3889:  uint8(15),
 	3890:  uint8(15),
@@ -253593,15 +250102,11 @@ var _groupMap = [10624]uint8{
 	3892:  uint8(15),
 	3893:  uint8(15),
 	3894:  uint8(15),
-	3895:  uint8(0),
 	3896:  uint8(15),
-	3897:  uint8(0),
 	3898:  uint8(15),
 	3899:  uint8(15),
 	3900:  uint8(15),
 	3901:  uint8(15),
-	3902:  uint8(0),
-	3903:  uint8(0),
 	3904:  uint8(15),
 	3905:  uint8(15),
 	3906:  uint8(15),
@@ -253611,13 +250116,10 @@ var _groupMap = [10624]uint8{
 	3910:  uint8(15),
 	3911:  uint8(15),
 	3912:  uint8(15),
-	3913:  uint8(0),
 	3914:  uint8(15),
 	3915:  uint8(15),
 	3916:  uint8(15),
 	3917:  uint8(15),
-	3918:  uint8(0),
-	3919:  uint8(0),
 	3920:  uint8(15),
 	3921:  uint8(15),
 	3922:  uint8(15),
@@ -253651,13 +250153,10 @@ var _groupMap = [10624]uint8{
 	3950:  uint8(15),
 	3951:  uint8(15),
 	3952:  uint8(15),
-	3953:  uint8(0),
 	3954:  uint8(15),
 	3955:  uint8(15),
 	3956:  uint8(15),
 	3957:  uint8(15),
-	3958:  uint8(0),
-	3959:  uint8(0),
 	3960:  uint8(15),
 	3961:  uint8(15),
 	3962:  uint8(15),
@@ -253665,15 +250164,11 @@ var _groupMap = [10624]uint8{
 	3964:  uint8(15),
 	3965:  uint8(15),
 	3966:  uint8(15),
-	3967:  uint8(0),
 	3968:  uint8(15),
-	3969:  uint8(0),
 	3970:  uint8(15),
 	3971:  uint8(15),
 	3972:  uint8(15),
 	3973:  uint8(15),
-	3974:  uint8(0),
-	3975:  uint8(0),
 	3976:  uint8(15),
 	3977:  uint8(15),
 	3978:  uint8(15),
@@ -253689,7 +250184,6 @@ var _groupMap = [10624]uint8{
 	3988:  uint8(15),
 	3989:  uint8(15),
 	3990:  uint8(15),
-	3991:  uint8(0),
 	3992:  uint8(15),
 	3993:  uint8(15),
 	3994:  uint8(15),
@@ -253715,13 +250209,10 @@ var _groupMap = [10624]uint8{
 	4014:  uint8(15),
 	4015:  uint8(15),
 	4016:  uint8(15),
-	4017:  uint8(0),
 	4018:  uint8(15),
 	4019:  uint8(15),
 	4020:  uint8(15),
 	4021:  uint8(15),
-	4022:  uint8(0),
-	4023:  uint8(0),
 	4024:  uint8(15),
 	4025:  uint8(15),
 	4026:  uint8(15),
@@ -253757,8 +250248,6 @@ var _groupMap = [10624]uint8{
 	4056:  uint8(15),
 	4057:  uint8(15),
 	4058:  uint8(15),
-	4059:  uint8(0),
-	4060:  uint8(0),
 	4061:  uint8(93),
 	4062:  uint8(93),
 	4063:  uint8(93),
@@ -253791,9 +250280,6 @@ var _groupMap = [10624]uint8{
 	4090:  uint8(18),
 	4091:  uint8(18),
 	4092:  uint8(18),
-	4093:  uint8(0),
-	4094:  uint8(0),
-	4095:  uint8(0),
 	4096:  uint8(15),
 	4097:  uint8(15),
 	4098:  uint8(15),
@@ -253820,12 +250306,6 @@ var _groupMap = [10624]uint8{
 	4119:  uint8(14),
 	4120:  uint8(14),
 	4121:  uint8(14),
-	4122:  uint8(0),
-	4123:  uint8(0),
-	4124:  uint8(0),
-	4125:  uint8(0),
-	4126:  uint8(0),
-	4127:  uint8(0),
 	4128:  uint8(128),
 	4129:  uint8(128),
 	4130:  uint8(128),
@@ -253880,16 +250360,12 @@ var _groupMap = [10624]uint8{
 	4179:  uint8(105),
 	4180:  uint8(105),
 	4181:  uint8(105),
-	4182:  uint8(0),
-	4183:  uint8(0),
 	4184:  uint8(111),
 	4185:  uint8(111),
 	4186:  uint8(111),
 	4187:  uint8(111),
 	4188:  uint8(111),
 	4189:  uint8(111),
-	4190:  uint8(0),
-	4191:  uint8(0),
 	4192:  uint8(8),
 	4193:  uint8(15),
 	4194:  uint8(15),
@@ -253983,9 +250459,6 @@ var _groupMap = [10624]uint8{
 	4282:  uint8(15),
 	4283:  uint8(5),
 	4284:  uint8(6),
-	4285:  uint8(0),
-	4286:  uint8(0),
-	4287:  uint8(0),
 	4288:  uint8(15),
 	4289:  uint8(15),
 	4290:  uint8(15),
@@ -254011,13 +250484,6 @@ var _groupMap = [10624]uint8{
 	4310:  uint8(15),
 	4311:  uint8(15),
 	4312:  uint8(15),
-	4313:  uint8(0),
-	4314:  uint8(0),
-	4315:  uint8(0),
-	4316:  uint8(0),
-	4317:  uint8(0),
-	4318:  uint8(0),
-	4319:  uint8(0),
 	4320:  uint8(15),
 	4321:  uint8(15),
 	4322:  uint8(15),
@@ -254040,15 +250506,6 @@ var _groupMap = [10624]uint8{
 	4339:  uint8(93),
 	4340:  uint8(93),
 	4341:  uint8(125),
-	4342:  uint8(0),
-	4343:  uint8(0),
-	4344:  uint8(0),
-	4345:  uint8(0),
-	4346:  uint8(0),
-	4347:  uint8(0),
-	4348:  uint8(0),
-	4349:  uint8(0),
-	4350:  uint8(0),
 	4351:  uint8(15),
 	4352:  uint8(15),
 	4353:  uint8(15),
@@ -254073,15 +250530,6 @@ var _groupMap = [10624]uint8{
 	4372:  uint8(125),
 	4373:  uint8(3),
 	4374:  uint8(3),
-	4375:  uint8(0),
-	4376:  uint8(0),
-	4377:  uint8(0),
-	4378:  uint8(0),
-	4379:  uint8(0),
-	4380:  uint8(0),
-	4381:  uint8(0),
-	4382:  uint8(0),
-	4383:  uint8(0),
 	4384:  uint8(15),
 	4385:  uint8(15),
 	4386:  uint8(15),
@@ -254102,18 +250550,6 @@ var _groupMap = [10624]uint8{
 	4401:  uint8(15),
 	4402:  uint8(93),
 	4403:  uint8(93),
-	4404:  uint8(0),
-	4405:  uint8(0),
-	4406:  uint8(0),
-	4407:  uint8(0),
-	4408:  uint8(0),
-	4409:  uint8(0),
-	4410:  uint8(0),
-	4411:  uint8(0),
-	4412:  uint8(0),
-	4413:  uint8(0),
-	4414:  uint8(0),
-	4415:  uint8(0),
 	4416:  uint8(15),
 	4417:  uint8(15),
 	4418:  uint8(15),
@@ -254127,25 +250563,11 @@ var _groupMap = [10624]uint8{
 	4426:  uint8(15),
 	4427:  uint8(15),
 	4428:  uint8(15),
-	4429:  uint8(0),
 	4430:  uint8(15),
 	4431:  uint8(15),
 	4432:  uint8(15),
-	4433:  uint8(0),
 	4434:  uint8(93),
 	4435:  uint8(93),
-	4436:  uint8(0),
-	4437:  uint8(0),
-	4438:  uint8(0),
-	4439:  uint8(0),
-	4440:  uint8(0),
-	4441:  uint8(0),
-	4442:  uint8(0),
-	4443:  uint8(0),
-	4444:  uint8(0),
-	4445:  uint8(0),
-	4446:  uint8(0),
-	4447:  uint8(0),
 	4448:  uint8(15),
 	4449:  uint8(15),
 	4450:  uint8(15),
@@ -254208,8 +250630,6 @@ var _groupMap = [10624]uint8{
 	4507:  uint8(4),
 	4508:  uint8(15),
 	4509:  uint8(93),
-	4510:  uint8(0),
-	4511:  uint8(0),
 	4512:  uint8(9),
 	4513:  uint8(9),
 	4514:  uint8(9),
@@ -254220,12 +250640,6 @@ var _groupMap = [10624]uint8{
 	4519:  uint8(9),
 	4520:  uint8(9),
 	4521:  uint8(9),
-	4522:  uint8(0),
-	4523:  uint8(0),
-	4524:  uint8(0),
-	4525:  uint8(0),
-	4526:  uint8(0),
-	4527:  uint8(0),
 	4528:  uint8(18),
 	4529:  uint8(18),
 	4530:  uint8(18),
@@ -254236,12 +250650,6 @@ var _groupMap = [10624]uint8{
 	4535:  uint8(18),
 	4536:  uint8(18),
 	4537:  uint8(18),
-	4538:  uint8(0),
-	4539:  uint8(0),
-	4540:  uint8(0),
-	4541:  uint8(0),
-	4542:  uint8(0),
-	4543:  uint8(0),
 	4544:  uint8(3),
 	4545:  uint8(3),
 	4546:  uint8(3),
@@ -254268,12 +250676,6 @@ var _groupMap = [10624]uint8{
 	4567:  uint8(9),
 	4568:  uint8(9),
 	4569:  uint8(9),
-	4570:  uint8(0),
-	4571:  uint8(0),
-	4572:  uint8(0),
-	4573:  uint8(0),
-	4574:  uint8(0),
-	4575:  uint8(0),
 	4576:  uint8(15),
 	4577:  uint8(15),
 	4578:  uint8(15),
@@ -254331,13 +250733,6 @@ var _groupMap = [10624]uint8{
 	4630:  uint8(15),
 	4631:  uint8(15),
 	4632:  uint8(15),
-	4633:  uint8(0),
-	4634:  uint8(0),
-	4635:  uint8(0),
-	4636:  uint8(0),
-	4637:  uint8(0),
-	4638:  uint8(0),
-	4639:  uint8(0),
 	4640:  uint8(15),
 	4641:  uint8(15),
 	4642:  uint8(15),
@@ -254381,11 +250776,6 @@ var _groupMap = [10624]uint8{
 	4680:  uint8(15),
 	4681:  uint8(93),
 	4682:  uint8(15),
-	4683:  uint8(0),
-	4684:  uint8(0),
-	4685:  uint8(0),
-	4686:  uint8(0),
-	4687:  uint8(0),
 	4688:  uint8(15),
 	4689:  uint8(15),
 	4690:  uint8(15),
@@ -254424,16 +250814,6 @@ var _groupMap = [10624]uint8{
 	4723:  uint8(15),
 	4724:  uint8(15),
 	4725:  uint8(15),
-	4726:  uint8(0),
-	4727:  uint8(0),
-	4728:  uint8(0),
-	4729:  uint8(0),
-	4730:  uint8(0),
-	4731:  uint8(0),
-	4732:  uint8(0),
-	4733:  uint8(0),
-	4734:  uint8(0),
-	4735:  uint8(0),
 	4736:  uint8(15),
 	4737:  uint8(15),
 	4738:  uint8(15),
@@ -254465,7 +250845,6 @@ var _groupMap = [10624]uint8{
 	4764:  uint8(15),
 	4765:  uint8(15),
 	4766:  uint8(15),
-	4767:  uint8(0),
 	4768:  uint8(93),
 	4769:  uint8(93),
 	4770:  uint8(93),
@@ -254478,10 +250857,6 @@ var _groupMap = [10624]uint8{
 	4777:  uint8(125),
 	4778:  uint8(125),
 	4779:  uint8(125),
-	4780:  uint8(0),
-	4781:  uint8(0),
-	4782:  uint8(0),
-	4783:  uint8(0),
 	4784:  uint8(125),
 	4785:  uint8(125),
 	4786:  uint8(93),
@@ -254494,14 +250869,7 @@ var _groupMap = [10624]uint8{
 	4793:  uint8(93),
 	4794:  uint8(93),
 	4795:  uint8(93),
-	4796:  uint8(0),
-	4797:  uint8(0),
-	4798:  uint8(0),
-	4799:  uint8(0),
 	4800:  uint8(14),
-	4801:  uint8(0),
-	4802:  uint8(0),
-	4803:  uint8(0),
 	4804:  uint8(3),
 	4805:  uint8(3),
 	4806:  uint8(9),
@@ -254544,24 +250912,11 @@ var _groupMap = [10624]uint8{
 	4843:  uint8(15),
 	4844:  uint8(15),
 	4845:  uint8(15),
-	4846:  uint8(0),
-	4847:  uint8(0),
 	4848:  uint8(15),
 	4849:  uint8(15),
 	4850:  uint8(15),
 	4851:  uint8(15),
 	4852:  uint8(15),
-	4853:  uint8(0),
-	4854:  uint8(0),
-	4855:  uint8(0),
-	4856:  uint8(0),
-	4857:  uint8(0),
-	4858:  uint8(0),
-	4859:  uint8(0),
-	4860:  uint8(0),
-	4861:  uint8(0),
-	4862:  uint8(0),
-	4863:  uint8(0),
 	4864:  uint8(15),
 	4865:  uint8(15),
 	4866:  uint8(15),
@@ -254574,10 +250929,6 @@ var _groupMap = [10624]uint8{
 	4873:  uint8(15),
 	4874:  uint8(15),
 	4875:  uint8(15),
-	4876:  uint8(0),
-	4877:  uint8(0),
-	4878:  uint8(0),
-	4879:  uint8(0),
 	4880:  uint8(15),
 	4881:  uint8(15),
 	4882:  uint8(15),
@@ -254604,12 +250955,6 @@ var _groupMap = [10624]uint8{
 	4903:  uint8(15),
 	4904:  uint8(15),
 	4905:  uint8(15),
-	4906:  uint8(0),
-	4907:  uint8(0),
-	4908:  uint8(0),
-	4909:  uint8(0),
-	4910:  uint8(0),
-	4911:  uint8(0),
 	4912:  uint8(9),
 	4913:  uint8(9),
 	4914:  uint8(9),
@@ -254621,9 +250966,6 @@ var _groupMap = [10624]uint8{
 	4920:  uint8(9),
 	4921:  uint8(9),
 	4922:  uint8(18),
-	4923:  uint8(0),
-	4924:  uint8(0),
-	4925:  uint8(0),
 	4926:  uint8(14),
 	4927:  uint8(14),
 	4928:  uint8(14),
@@ -254686,8 +251028,6 @@ var _groupMap = [10624]uint8{
 	4985:  uint8(125),
 	4986:  uint8(125),
 	4987:  uint8(93),
-	4988:  uint8(0),
-	4989:  uint8(0),
 	4990:  uint8(3),
 	4991:  uint8(3),
 	4992:  uint8(15),
@@ -254721,7 +251061,6 @@ var _groupMap = [10624]uint8{
 	5020:  uint8(93),
 	5021:  uint8(93),
 	5022:  uint8(93),
-	5023:  uint8(0),
 	5024:  uint8(93),
 	5025:  uint8(125),
 	5026:  uint8(93),
@@ -254751,8 +251090,6 @@ var _groupMap = [10624]uint8{
 	5050:  uint8(93),
 	5051:  uint8(93),
 	5052:  uint8(93),
-	5053:  uint8(0),
-	5054:  uint8(0),
 	5055:  uint8(93),
 	5056:  uint8(9),
 	5057:  uint8(9),
@@ -254764,12 +251101,6 @@ var _groupMap = [10624]uint8{
 	5063:  uint8(9),
 	5064:  uint8(9),
 	5065:  uint8(9),
-	5066:  uint8(0),
-	5067:  uint8(0),
-	5068:  uint8(0),
-	5069:  uint8(0),
-	5070:  uint8(0),
-	5071:  uint8(0),
 	5072:  uint8(9),
 	5073:  uint8(9),
 	5074:  uint8(9),
@@ -254780,12 +251111,6 @@ var _groupMap = [10624]uint8{
 	5079:  uint8(9),
 	5080:  uint8(9),
 	5081:  uint8(9),
-	5082:  uint8(0),
-	5083:  uint8(0),
-	5084:  uint8(0),
-	5085:  uint8(0),
-	5086:  uint8(0),
-	5087:  uint8(0),
 	5088:  uint8(3),
 	5089:  uint8(3),
 	5090:  uint8(3),
@@ -254800,8 +251125,6 @@ var _groupMap = [10624]uint8{
 	5099:  uint8(3),
 	5100:  uint8(3),
 	5101:  uint8(3),
-	5102:  uint8(0),
-	5103:  uint8(0),
 	5104:  uint8(93),
 	5105:  uint8(93),
 	5106:  uint8(93),
@@ -254833,23 +251156,6 @@ var _groupMap = [10624]uint8{
 	5132:  uint8(93),
 	5133:  uint8(93),
 	5134:  uint8(93),
-	5135:  uint8(0),
-	5136:  uint8(0),
-	5137:  uint8(0),
-	5138:  uint8(0),
-	5139:  uint8(0),
-	5140:  uint8(0),
-	5141:  uint8(0),
-	5142:  uint8(0),
-	5143:  uint8(0),
-	5144:  uint8(0),
-	5145:  uint8(0),
-	5146:  uint8(0),
-	5147:  uint8(0),
-	5148:  uint8(0),
-	5149:  uint8(0),
-	5150:  uint8(0),
-	5151:  uint8(0),
 	5152:  uint8(93),
 	5153:  uint8(93),
 	5154:  uint8(93),
@@ -254927,9 +251233,6 @@ var _groupMap = [10624]uint8{
 	5226:  uint8(15),
 	5227:  uint8(15),
 	5228:  uint8(15),
-	5229:  uint8(0),
-	5230:  uint8(0),
-	5231:  uint8(0),
 	5232:  uint8(9),
 	5233:  uint8(9),
 	5234:  uint8(9),
@@ -254977,7 +251280,6 @@ var _groupMap = [10624]uint8{
 	5276:  uint8(14),
 	5277:  uint8(3),
 	5278:  uint8(3),
-	5279:  uint8(0),
 	5280:  uint8(93),
 	5281:  uint8(93),
 	5282:  uint8(125),
@@ -255062,14 +251364,6 @@ var _groupMap = [10624]uint8{
 	5361:  uint8(93),
 	5362:  uint8(125),
 	5363:  uint8(125),
-	5364:  uint8(0),
-	5365:  uint8(0),
-	5366:  uint8(0),
-	5367:  uint8(0),
-	5368:  uint8(0),
-	5369:  uint8(0),
-	5370:  uint8(0),
-	5371:  uint8(0),
 	5372:  uint8(3),
 	5373:  uint8(3),
 	5374:  uint8(3),
@@ -255098,9 +251392,6 @@ var _groupMap = [10624]uint8{
 	5397:  uint8(125),
 	5398:  uint8(93),
 	5399:  uint8(93),
-	5400:  uint8(0),
-	5401:  uint8(0),
-	5402:  uint8(0),
 	5403:  uint8(3),
 	5404:  uint8(3),
 	5405:  uint8(3),
@@ -255116,9 +251407,6 @@ var _groupMap = [10624]uint8{
 	5415:  uint8(9),
 	5416:  uint8(9),
 	5417:  uint8(9),
-	5418:  uint8(0),
-	5419:  uint8(0),
-	5420:  uint8(0),
 	5421:  uint8(15),
 	5422:  uint8(15),
 	5423:  uint8(15),
@@ -255179,13 +251467,6 @@ var _groupMap = [10624]uint8{
 	5478:  uint8(135),
 	5479:  uint8(136),
 	5480:  uint8(137),
-	5481:  uint8(0),
-	5482:  uint8(0),
-	5483:  uint8(0),
-	5484:  uint8(0),
-	5485:  uint8(0),
-	5486:  uint8(0),
-	5487:  uint8(0),
 	5488:  uint8(138),
 	5489:  uint8(138),
 	5490:  uint8(138),
@@ -255229,8 +251510,6 @@ var _groupMap = [10624]uint8{
 	5528:  uint8(138),
 	5529:  uint8(138),
 	5530:  uint8(138),
-	5531:  uint8(0),
-	5532:  uint8(0),
 	5533:  uint8(138),
 	5534:  uint8(138),
 	5535:  uint8(138),
@@ -255242,14 +251521,6 @@ var _groupMap = [10624]uint8{
 	5541:  uint8(3),
 	5542:  uint8(3),
 	5543:  uint8(3),
-	5544:  uint8(0),
-	5545:  uint8(0),
-	5546:  uint8(0),
-	5547:  uint8(0),
-	5548:  uint8(0),
-	5549:  uint8(0),
-	5550:  uint8(0),
-	5551:  uint8(0),
 	5552:  uint8(93),
 	5553:  uint8(93),
 	5554:  uint8(93),
@@ -255293,11 +251564,6 @@ var _groupMap = [10624]uint8{
 	5592:  uint8(93),
 	5593:  uint8(93),
 	5594:  uint8(15),
-	5595:  uint8(0),
-	5596:  uint8(0),
-	5597:  uint8(0),
-	5598:  uint8(0),
-	5599:  uint8(0),
 	5600:  uint8(21),
 	5601:  uint8(21),
 	5602:  uint8(21),
@@ -255512,16 +251778,12 @@ var _groupMap = [10624]uint8{
 	5811:  uint8(144),
 	5812:  uint8(144),
 	5813:  uint8(144),
-	5814:  uint8(0),
-	5815:  uint8(0),
 	5816:  uint8(145),
 	5817:  uint8(145),
 	5818:  uint8(145),
 	5819:  uint8(145),
 	5820:  uint8(145),
 	5821:  uint8(145),
-	5822:  uint8(0),
-	5823:  uint8(0),
 	5824:  uint8(144),
 	5825:  uint8(144),
 	5826:  uint8(144),
@@ -255560,16 +251822,12 @@ var _groupMap = [10624]uint8{
 	5859:  uint8(144),
 	5860:  uint8(144),
 	5861:  uint8(144),
-	5862:  uint8(0),
-	5863:  uint8(0),
 	5864:  uint8(145),
 	5865:  uint8(145),
 	5866:  uint8(145),
 	5867:  uint8(145),
 	5868:  uint8(145),
 	5869:  uint8(145),
-	5870:  uint8(0),
-	5871:  uint8(0),
 	5872:  uint8(21),
 	5873:  uint8(144),
 	5874:  uint8(21),
@@ -255578,13 +251836,9 @@ var _groupMap = [10624]uint8{
 	5877:  uint8(144),
 	5878:  uint8(21),
 	5879:  uint8(144),
-	5880:  uint8(0),
 	5881:  uint8(145),
-	5882:  uint8(0),
 	5883:  uint8(145),
-	5884:  uint8(0),
 	5885:  uint8(145),
-	5886:  uint8(0),
 	5887:  uint8(145),
 	5888:  uint8(144),
 	5889:  uint8(144),
@@ -255616,8 +251870,6 @@ var _groupMap = [10624]uint8{
 	5915:  uint8(150),
 	5916:  uint8(151),
 	5917:  uint8(151),
-	5918:  uint8(0),
-	5919:  uint8(0),
 	5920:  uint8(144),
 	5921:  uint8(144),
 	5922:  uint8(144),
@@ -255671,7 +251923,6 @@ var _groupMap = [10624]uint8{
 	5970:  uint8(21),
 	5971:  uint8(153),
 	5972:  uint8(21),
-	5973:  uint8(0),
 	5974:  uint8(21),
 	5975:  uint8(21),
 	5976:  uint8(145),
@@ -255687,7 +251938,6 @@ var _groupMap = [10624]uint8{
 	5986:  uint8(21),
 	5987:  uint8(153),
 	5988:  uint8(21),
-	5989:  uint8(0),
 	5990:  uint8(21),
 	5991:  uint8(21),
 	5992:  uint8(157),
@@ -255702,15 +251952,12 @@ var _groupMap = [10624]uint8{
 	6001:  uint8(144),
 	6002:  uint8(21),
 	6003:  uint8(21),
-	6004:  uint8(0),
-	6005:  uint8(0),
 	6006:  uint8(21),
 	6007:  uint8(21),
 	6008:  uint8(145),
 	6009:  uint8(145),
 	6010:  uint8(158),
 	6011:  uint8(158),
-	6012:  uint8(0),
 	6013:  uint8(11),
 	6014:  uint8(11),
 	6015:  uint8(11),
@@ -255730,12 +251977,9 @@ var _groupMap = [10624]uint8{
 	6029:  uint8(11),
 	6030:  uint8(11),
 	6031:  uint8(11),
-	6032:  uint8(0),
-	6033:  uint8(0),
 	6034:  uint8(21),
 	6035:  uint8(153),
 	6036:  uint8(21),
-	6037:  uint8(0),
 	6038:  uint8(21),
 	6039:  uint8(21),
 	6040:  uint8(160),
@@ -255745,7 +251989,6 @@ var _groupMap = [10624]uint8{
 	6044:  uint8(155),
 	6045:  uint8(11),
 	6046:  uint8(11),
-	6047:  uint8(0),
 	6048:  uint8(2),
 	6049:  uint8(2),
 	6050:  uint8(2),
@@ -255847,7 +252090,6 @@ var _groupMap = [10624]uint8{
 	6146:  uint8(17),
 	6147:  uint8(17),
 	6148:  uint8(17),
-	6149:  uint8(0),
 	6150:  uint8(17),
 	6151:  uint8(17),
 	6152:  uint8(17),
@@ -255860,8 +252102,6 @@ var _groupMap = [10624]uint8{
 	6159:  uint8(17),
 	6160:  uint8(18),
 	6161:  uint8(92),
-	6162:  uint8(0),
-	6163:  uint8(0),
 	6164:  uint8(18),
 	6165:  uint8(18),
 	6166:  uint8(18),
@@ -255889,7 +252129,6 @@ var _groupMap = [10624]uint8{
 	6188:  uint8(7),
 	6189:  uint8(5),
 	6190:  uint8(6),
-	6191:  uint8(0),
 	6192:  uint8(92),
 	6193:  uint8(92),
 	6194:  uint8(92),
@@ -255903,9 +252142,6 @@ var _groupMap = [10624]uint8{
 	6202:  uint8(92),
 	6203:  uint8(92),
 	6204:  uint8(92),
-	6205:  uint8(0),
-	6206:  uint8(0),
-	6207:  uint8(0),
 	6208:  uint8(4),
 	6209:  uint8(4),
 	6210:  uint8(4),
@@ -255939,21 +252175,6 @@ var _groupMap = [10624]uint8{
 	6238:  uint8(4),
 	6239:  uint8(4),
 	6240:  uint8(4),
-	6241:  uint8(0),
-	6242:  uint8(0),
-	6243:  uint8(0),
-	6244:  uint8(0),
-	6245:  uint8(0),
-	6246:  uint8(0),
-	6247:  uint8(0),
-	6248:  uint8(0),
-	6249:  uint8(0),
-	6250:  uint8(0),
-	6251:  uint8(0),
-	6252:  uint8(0),
-	6253:  uint8(0),
-	6254:  uint8(0),
-	6255:  uint8(0),
 	6256:  uint8(93),
 	6257:  uint8(93),
 	6258:  uint8(93),
@@ -255987,21 +252208,6 @@ var _groupMap = [10624]uint8{
 	6286:  uint8(93),
 	6287:  uint8(93),
 	6288:  uint8(93),
-	6289:  uint8(0),
-	6290:  uint8(0),
-	6291:  uint8(0),
-	6292:  uint8(0),
-	6293:  uint8(0),
-	6294:  uint8(0),
-	6295:  uint8(0),
-	6296:  uint8(0),
-	6297:  uint8(0),
-	6298:  uint8(0),
-	6299:  uint8(0),
-	6300:  uint8(0),
-	6301:  uint8(0),
-	6302:  uint8(0),
-	6303:  uint8(0),
 	6304:  uint8(14),
 	6305:  uint8(14),
 	6306:  uint8(108),
@@ -256142,10 +252348,6 @@ var _groupMap = [10624]uint8{
 	6441:  uint8(18),
 	6442:  uint8(14),
 	6443:  uint8(14),
-	6444:  uint8(0),
-	6445:  uint8(0),
-	6446:  uint8(0),
-	6447:  uint8(0),
 	6448:  uint8(7),
 	6449:  uint8(7),
 	6450:  uint8(7),
@@ -256521,31 +252723,6 @@ var _groupMap = [10624]uint8{
 	6820:  uint8(14),
 	6821:  uint8(14),
 	6822:  uint8(14),
-	6823:  uint8(0),
-	6824:  uint8(0),
-	6825:  uint8(0),
-	6826:  uint8(0),
-	6827:  uint8(0),
-	6828:  uint8(0),
-	6829:  uint8(0),
-	6830:  uint8(0),
-	6831:  uint8(0),
-	6832:  uint8(0),
-	6833:  uint8(0),
-	6834:  uint8(0),
-	6835:  uint8(0),
-	6836:  uint8(0),
-	6837:  uint8(0),
-	6838:  uint8(0),
-	6839:  uint8(0),
-	6840:  uint8(0),
-	6841:  uint8(0),
-	6842:  uint8(0),
-	6843:  uint8(0),
-	6844:  uint8(0),
-	6845:  uint8(0),
-	6846:  uint8(0),
-	6847:  uint8(0),
 	6848:  uint8(14),
 	6849:  uint8(14),
 	6850:  uint8(14),
@@ -256557,27 +252734,6 @@ var _groupMap = [10624]uint8{
 	6856:  uint8(14),
 	6857:  uint8(14),
 	6858:  uint8(14),
-	6859:  uint8(0),
-	6860:  uint8(0),
-	6861:  uint8(0),
-	6862:  uint8(0),
-	6863:  uint8(0),
-	6864:  uint8(0),
-	6865:  uint8(0),
-	6866:  uint8(0),
-	6867:  uint8(0),
-	6868:  uint8(0),
-	6869:  uint8(0),
-	6870:  uint8(0),
-	6871:  uint8(0),
-	6872:  uint8(0),
-	6873:  uint8(0),
-	6874:  uint8(0),
-	6875:  uint8(0),
-	6876:  uint8(0),
-	6877:  uint8(0),
-	6878:  uint8(0),
-	6879:  uint8(0),
 	6880:  uint8(18),
 	6881:  uint8(18),
 	6882:  uint8(18),
@@ -257174,8 +253330,6 @@ var _groupMap = [10624]uint8{
 	7473:  uint8(14),
 	7474:  uint8(14),
 	7475:  uint8(14),
-	7476:  uint8(0),
-	7477:  uint8(0),
 	7478:  uint8(14),
 	7479:  uint8(14),
 	7480:  uint8(14),
@@ -257208,7 +253362,6 @@ var _groupMap = [10624]uint8{
 	7507:  uint8(14),
 	7508:  uint8(14),
 	7509:  uint8(14),
-	7510:  uint8(0),
 	7511:  uint8(14),
 	7512:  uint8(14),
 	7513:  uint8(14),
@@ -257366,11 +253519,6 @@ var _groupMap = [10624]uint8{
 	7665:  uint8(93),
 	7666:  uint8(23),
 	7667:  uint8(24),
-	7668:  uint8(0),
-	7669:  uint8(0),
-	7670:  uint8(0),
-	7671:  uint8(0),
-	7672:  uint8(0),
 	7673:  uint8(3),
 	7674:  uint8(3),
 	7675:  uint8(3),
@@ -257416,16 +253564,8 @@ var _groupMap = [10624]uint8{
 	7715:  uint8(183),
 	7716:  uint8(183),
 	7717:  uint8(183),
-	7718:  uint8(0),
 	7719:  uint8(183),
-	7720:  uint8(0),
-	7721:  uint8(0),
-	7722:  uint8(0),
-	7723:  uint8(0),
-	7724:  uint8(0),
 	7725:  uint8(183),
-	7726:  uint8(0),
-	7727:  uint8(0),
 	7728:  uint8(15),
 	7729:  uint8(15),
 	7730:  uint8(15),
@@ -257450,29 +253590,8 @@ var _groupMap = [10624]uint8{
 	7749:  uint8(15),
 	7750:  uint8(15),
 	7751:  uint8(15),
-	7752:  uint8(0),
-	7753:  uint8(0),
-	7754:  uint8(0),
-	7755:  uint8(0),
-	7756:  uint8(0),
-	7757:  uint8(0),
-	7758:  uint8(0),
 	7759:  uint8(92),
 	7760:  uint8(3),
-	7761:  uint8(0),
-	7762:  uint8(0),
-	7763:  uint8(0),
-	7764:  uint8(0),
-	7765:  uint8(0),
-	7766:  uint8(0),
-	7767:  uint8(0),
-	7768:  uint8(0),
-	7769:  uint8(0),
-	7770:  uint8(0),
-	7771:  uint8(0),
-	7772:  uint8(0),
-	7773:  uint8(0),
-	7774:  uint8(0),
 	7775:  uint8(93),
 	7776:  uint8(15),
 	7777:  uint8(15),
@@ -257497,15 +253616,6 @@ var _groupMap = [10624]uint8{
 	7796:  uint8(15),
 	7797:  uint8(15),
 	7798:  uint8(15),
-	7799:  uint8(0),
-	7800:  uint8(0),
-	7801:  uint8(0),
-	7802:  uint8(0),
-	7803:  uint8(0),
-	7804:  uint8(0),
-	7805:  uint8(0),
-	7806:  uint8(0),
-	7807:  uint8(0),
 	7808:  uint8(15),
 	7809:  uint8(15),
 	7810:  uint8(15),
@@ -257513,7 +253623,6 @@ var _groupMap = [10624]uint8{
 	7812:  uint8(15),
 	7813:  uint8(15),
 	7814:  uint8(15),
-	7815:  uint8(0),
 	7816:  uint8(15),
 	7817:  uint8(15),
 	7818:  uint8(15),
@@ -257521,7 +253630,6 @@ var _groupMap = [10624]uint8{
 	7820:  uint8(15),
 	7821:  uint8(15),
 	7822:  uint8(15),
-	7823:  uint8(0),
 	7824:  uint8(15),
 	7825:  uint8(15),
 	7826:  uint8(15),
@@ -257529,7 +253637,6 @@ var _groupMap = [10624]uint8{
 	7828:  uint8(15),
 	7829:  uint8(15),
 	7830:  uint8(15),
-	7831:  uint8(0),
 	7832:  uint8(15),
 	7833:  uint8(15),
 	7834:  uint8(15),
@@ -257537,7 +253644,6 @@ var _groupMap = [10624]uint8{
 	7836:  uint8(15),
 	7837:  uint8(15),
 	7838:  uint8(15),
-	7839:  uint8(0),
 	7840:  uint8(3),
 	7841:  uint8(3),
 	7842:  uint8(16),
@@ -257632,8 +253738,6 @@ var _groupMap = [10624]uint8{
 	7931:  uint8(5),
 	7932:  uint8(6),
 	7933:  uint8(8),
-	7934:  uint8(0),
-	7935:  uint8(0),
 	7936:  uint8(14),
 	7937:  uint8(14),
 	7938:  uint8(14),
@@ -257660,7 +253764,6 @@ var _groupMap = [10624]uint8{
 	7959:  uint8(14),
 	7960:  uint8(14),
 	7961:  uint8(14),
-	7962:  uint8(0),
 	7963:  uint8(14),
 	7964:  uint8(14),
 	7965:  uint8(14),
@@ -257686,18 +253789,6 @@ var _groupMap = [10624]uint8{
 	7985:  uint8(14),
 	7986:  uint8(14),
 	7987:  uint8(14),
-	7988:  uint8(0),
-	7989:  uint8(0),
-	7990:  uint8(0),
-	7991:  uint8(0),
-	7992:  uint8(0),
-	7993:  uint8(0),
-	7994:  uint8(0),
-	7995:  uint8(0),
-	7996:  uint8(0),
-	7997:  uint8(0),
-	7998:  uint8(0),
-	7999:  uint8(0),
 	8000:  uint8(14),
 	8001:  uint8(14),
 	8002:  uint8(14),
@@ -257720,32 +253811,6 @@ var _groupMap = [10624]uint8{
 	8019:  uint8(14),
 	8020:  uint8(14),
 	8021:  uint8(14),
-	8022:  uint8(0),
-	8023:  uint8(0),
-	8024:  uint8(0),
-	8025:  uint8(0),
-	8026:  uint8(0),
-	8027:  uint8(0),
-	8028:  uint8(0),
-	8029:  uint8(0),
-	8030:  uint8(0),
-	8031:  uint8(0),
-	8032:  uint8(0),
-	8033:  uint8(0),
-	8034:  uint8(0),
-	8035:  uint8(0),
-	8036:  uint8(0),
-	8037:  uint8(0),
-	8038:  uint8(0),
-	8039:  uint8(0),
-	8040:  uint8(0),
-	8041:  uint8(0),
-	8042:  uint8(0),
-	8043:  uint8(0),
-	8044:  uint8(0),
-	8045:  uint8(0),
-	8046:  uint8(0),
-	8047:  uint8(0),
 	8048:  uint8(14),
 	8049:  uint8(14),
 	8050:  uint8(14),
@@ -257758,10 +253823,6 @@ var _groupMap = [10624]uint8{
 	8057:  uint8(14),
 	8058:  uint8(14),
 	8059:  uint8(14),
-	8060:  uint8(0),
-	8061:  uint8(0),
-	8062:  uint8(0),
-	8063:  uint8(0),
 	8064:  uint8(2),
 	8065:  uint8(3),
 	8066:  uint8(3),
@@ -257849,8 +253910,6 @@ var _groupMap = [10624]uint8{
 	8148:  uint8(15),
 	8149:  uint8(15),
 	8150:  uint8(15),
-	8151:  uint8(0),
-	8152:  uint8(0),
 	8153:  uint8(93),
 	8154:  uint8(93),
 	8155:  uint8(11),
@@ -257890,11 +253949,6 @@ var _groupMap = [10624]uint8{
 	8189:  uint8(92),
 	8190:  uint8(92),
 	8191:  uint8(15),
-	8192:  uint8(0),
-	8193:  uint8(0),
-	8194:  uint8(0),
-	8195:  uint8(0),
-	8196:  uint8(0),
 	8197:  uint8(15),
 	8198:  uint8(15),
 	8199:  uint8(15),
@@ -257938,7 +253992,6 @@ var _groupMap = [10624]uint8{
 	8237:  uint8(15),
 	8238:  uint8(15),
 	8239:  uint8(15),
-	8240:  uint8(0),
 	8241:  uint8(15),
 	8242:  uint8(15),
 	8243:  uint8(15),
@@ -257969,7 +254022,6 @@ var _groupMap = [10624]uint8{
 	8268:  uint8(15),
 	8269:  uint8(15),
 	8270:  uint8(15),
-	8271:  uint8(0),
 	8272:  uint8(14),
 	8273:  uint8(14),
 	8274:  uint8(18),
@@ -257990,18 +254042,6 @@ var _groupMap = [10624]uint8{
 	8289:  uint8(14),
 	8290:  uint8(14),
 	8291:  uint8(14),
-	8292:  uint8(0),
-	8293:  uint8(0),
-	8294:  uint8(0),
-	8295:  uint8(0),
-	8296:  uint8(0),
-	8297:  uint8(0),
-	8298:  uint8(0),
-	8299:  uint8(0),
-	8300:  uint8(0),
-	8301:  uint8(0),
-	8302:  uint8(0),
-	8303:  uint8(0),
 	8304:  uint8(15),
 	8305:  uint8(15),
 	8306:  uint8(15),
@@ -258049,7 +254089,6 @@ var _groupMap = [10624]uint8{
 	8348:  uint8(14),
 	8349:  uint8(14),
 	8350:  uint8(14),
-	8351:  uint8(0),
 	8352:  uint8(18),
 	8353:  uint8(18),
 	8354:  uint8(18),
@@ -258191,9 +254230,6 @@ var _groupMap = [10624]uint8{
 	8490:  uint8(15),
 	8491:  uint8(15),
 	8492:  uint8(15),
-	8493:  uint8(0),
-	8494:  uint8(0),
-	8495:  uint8(0),
 	8496:  uint8(14),
 	8497:  uint8(14),
 	8498:  uint8(14),
@@ -258217,15 +254253,6 @@ var _groupMap = [10624]uint8{
 	8516:  uint8(14),
 	8517:  uint8(14),
 	8518:  uint8(14),
-	8519:  uint8(0),
-	8520:  uint8(0),
-	8521:  uint8(0),
-	8522:  uint8(0),
-	8523:  uint8(0),
-	8524:  uint8(0),
-	8525:  uint8(0),
-	8526:  uint8(0),
-	8527:  uint8(0),
 	8528:  uint8(15),
 	8529:  uint8(15),
 	8530:  uint8(15),
@@ -258286,26 +254313,6 @@ var _groupMap = [10624]uint8{
 	8585:  uint8(9),
 	8586:  uint8(15),
 	8587:  uint8(15),
-	8588:  uint8(0),
-	8589:  uint8(0),
-	8590:  uint8(0),
-	8591:  uint8(0),
-	8592:  uint8(0),
-	8593:  uint8(0),
-	8594:  uint8(0),
-	8595:  uint8(0),
-	8596:  uint8(0),
-	8597:  uint8(0),
-	8598:  uint8(0),
-	8599:  uint8(0),
-	8600:  uint8(0),
-	8601:  uint8(0),
-	8602:  uint8(0),
-	8603:  uint8(0),
-	8604:  uint8(0),
-	8605:  uint8(0),
-	8606:  uint8(0),
-	8607:  uint8(0),
 	8608:  uint8(23),
 	8609:  uint8(24),
 	8610:  uint8(23),
@@ -258394,14 +254401,6 @@ var _groupMap = [10624]uint8{
 	8693:  uint8(3),
 	8694:  uint8(3),
 	8695:  uint8(3),
-	8696:  uint8(0),
-	8697:  uint8(0),
-	8698:  uint8(0),
-	8699:  uint8(0),
-	8700:  uint8(0),
-	8701:  uint8(0),
-	8702:  uint8(0),
-	8703:  uint8(0),
 	8704:  uint8(11),
 	8705:  uint8(11),
 	8706:  uint8(11),
@@ -258573,45 +254572,14 @@ var _groupMap = [10624]uint8{
 	8872:  uint8(24),
 	8873:  uint8(23),
 	8874:  uint8(24),
-	8875:  uint8(0),
-	8876:  uint8(0),
-	8877:  uint8(0),
-	8878:  uint8(0),
-	8879:  uint8(0),
 	8880:  uint8(23),
 	8881:  uint8(24),
-	8882:  uint8(0),
 	8883:  uint8(21),
-	8884:  uint8(0),
 	8885:  uint8(21),
 	8886:  uint8(23),
 	8887:  uint8(24),
 	8888:  uint8(23),
 	8889:  uint8(24),
-	8890:  uint8(0),
-	8891:  uint8(0),
-	8892:  uint8(0),
-	8893:  uint8(0),
-	8894:  uint8(0),
-	8895:  uint8(0),
-	8896:  uint8(0),
-	8897:  uint8(0),
-	8898:  uint8(0),
-	8899:  uint8(0),
-	8900:  uint8(0),
-	8901:  uint8(0),
-	8902:  uint8(0),
-	8903:  uint8(0),
-	8904:  uint8(0),
-	8905:  uint8(0),
-	8906:  uint8(0),
-	8907:  uint8(0),
-	8908:  uint8(0),
-	8909:  uint8(0),
-	8910:  uint8(0),
-	8911:  uint8(0),
-	8912:  uint8(0),
-	8913:  uint8(0),
 	8914:  uint8(92),
 	8915:  uint8(92),
 	8916:  uint8(92),
@@ -258671,9 +254639,6 @@ var _groupMap = [10624]uint8{
 	8970:  uint8(14),
 	8971:  uint8(14),
 	8972:  uint8(93),
-	8973:  uint8(0),
-	8974:  uint8(0),
-	8975:  uint8(0),
 	8976:  uint8(18),
 	8977:  uint8(18),
 	8978:  uint8(18),
@@ -258684,12 +254649,6 @@ var _groupMap = [10624]uint8{
 	8983:  uint8(14),
 	8984:  uint8(4),
 	8985:  uint8(14),
-	8986:  uint8(0),
-	8987:  uint8(0),
-	8988:  uint8(0),
-	8989:  uint8(0),
-	8990:  uint8(0),
-	8991:  uint8(0),
 	8992:  uint8(15),
 	8993:  uint8(15),
 	8994:  uint8(15),
@@ -258714,14 +254673,6 @@ var _groupMap = [10624]uint8{
 	9013:  uint8(3),
 	9014:  uint8(3),
 	9015:  uint8(3),
-	9016:  uint8(0),
-	9017:  uint8(0),
-	9018:  uint8(0),
-	9019:  uint8(0),
-	9020:  uint8(0),
-	9021:  uint8(0),
-	9022:  uint8(0),
-	9023:  uint8(0),
 	9024:  uint8(125),
 	9025:  uint8(125),
 	9026:  uint8(15),
@@ -258792,14 +254743,6 @@ var _groupMap = [10624]uint8{
 	9091:  uint8(125),
 	9092:  uint8(93),
 	9093:  uint8(93),
-	9094:  uint8(0),
-	9095:  uint8(0),
-	9096:  uint8(0),
-	9097:  uint8(0),
-	9098:  uint8(0),
-	9099:  uint8(0),
-	9100:  uint8(0),
-	9101:  uint8(0),
 	9102:  uint8(3),
 	9103:  uint8(3),
 	9104:  uint8(9),
@@ -258812,12 +254755,6 @@ var _groupMap = [10624]uint8{
 	9111:  uint8(9),
 	9112:  uint8(9),
 	9113:  uint8(9),
-	9114:  uint8(0),
-	9115:  uint8(0),
-	9116:  uint8(0),
-	9117:  uint8(0),
-	9118:  uint8(0),
-	9119:  uint8(0),
 	9120:  uint8(93),
 	9121:  uint8(93),
 	9122:  uint8(93),
@@ -258902,17 +254839,6 @@ var _groupMap = [10624]uint8{
 	9201:  uint8(93),
 	9202:  uint8(125),
 	9203:  uint8(125),
-	9204:  uint8(0),
-	9205:  uint8(0),
-	9206:  uint8(0),
-	9207:  uint8(0),
-	9208:  uint8(0),
-	9209:  uint8(0),
-	9210:  uint8(0),
-	9211:  uint8(0),
-	9212:  uint8(0),
-	9213:  uint8(0),
-	9214:  uint8(0),
 	9215:  uint8(3),
 	9216:  uint8(15),
 	9217:  uint8(15),
@@ -258943,9 +254869,6 @@ var _groupMap = [10624]uint8{
 	9242:  uint8(15),
 	9243:  uint8(15),
 	9244:  uint8(15),
-	9245:  uint8(0),
-	9246:  uint8(0),
-	9247:  uint8(0),
 	9248:  uint8(15),
 	9249:  uint8(15),
 	9250:  uint8(15),
@@ -258992,7 +254915,6 @@ var _groupMap = [10624]uint8{
 	9291:  uint8(3),
 	9292:  uint8(3),
 	9293:  uint8(3),
-	9294:  uint8(0),
 	9295:  uint8(92),
 	9296:  uint8(9),
 	9297:  uint8(9),
@@ -259004,10 +254926,6 @@ var _groupMap = [10624]uint8{
 	9303:  uint8(9),
 	9304:  uint8(9),
 	9305:  uint8(9),
-	9306:  uint8(0),
-	9307:  uint8(0),
-	9308:  uint8(0),
-	9309:  uint8(0),
 	9310:  uint8(3),
 	9311:  uint8(3),
 	9312:  uint8(15),
@@ -259041,7 +254959,6 @@ var _groupMap = [10624]uint8{
 	9340:  uint8(15),
 	9341:  uint8(15),
 	9342:  uint8(15),
-	9343:  uint8(0),
 	9344:  uint8(15),
 	9345:  uint8(15),
 	9346:  uint8(15),
@@ -259065,15 +254982,6 @@ var _groupMap = [10624]uint8{
 	9364:  uint8(125),
 	9365:  uint8(93),
 	9366:  uint8(93),
-	9367:  uint8(0),
-	9368:  uint8(0),
-	9369:  uint8(0),
-	9370:  uint8(0),
-	9371:  uint8(0),
-	9372:  uint8(0),
-	9373:  uint8(0),
-	9374:  uint8(0),
-	9375:  uint8(0),
 	9376:  uint8(15),
 	9377:  uint8(15),
 	9378:  uint8(15),
@@ -259088,8 +254996,6 @@ var _groupMap = [10624]uint8{
 	9387:  uint8(15),
 	9388:  uint8(93),
 	9389:  uint8(125),
-	9390:  uint8(0),
-	9391:  uint8(0),
 	9392:  uint8(9),
 	9393:  uint8(9),
 	9394:  uint8(9),
@@ -259100,8 +255006,6 @@ var _groupMap = [10624]uint8{
 	9399:  uint8(9),
 	9400:  uint8(9),
 	9401:  uint8(9),
-	9402:  uint8(0),
-	9403:  uint8(0),
 	9404:  uint8(3),
 	9405:  uint8(3),
 	9406:  uint8(3),
@@ -259173,30 +255077,6 @@ var _groupMap = [10624]uint8{
 	9472:  uint8(15),
 	9473:  uint8(93),
 	9474:  uint8(15),
-	9475:  uint8(0),
-	9476:  uint8(0),
-	9477:  uint8(0),
-	9478:  uint8(0),
-	9479:  uint8(0),
-	9480:  uint8(0),
-	9481:  uint8(0),
-	9482:  uint8(0),
-	9483:  uint8(0),
-	9484:  uint8(0),
-	9485:  uint8(0),
-	9486:  uint8(0),
-	9487:  uint8(0),
-	9488:  uint8(0),
-	9489:  uint8(0),
-	9490:  uint8(0),
-	9491:  uint8(0),
-	9492:  uint8(0),
-	9493:  uint8(0),
-	9494:  uint8(0),
-	9495:  uint8(0),
-	9496:  uint8(0),
-	9497:  uint8(0),
-	9498:  uint8(0),
 	9499:  uint8(15),
 	9500:  uint8(15),
 	9501:  uint8(92),
@@ -259225,47 +255105,24 @@ var _groupMap = [10624]uint8{
 	9524:  uint8(92),
 	9525:  uint8(125),
 	9526:  uint8(93),
-	9527:  uint8(0),
-	9528:  uint8(0),
-	9529:  uint8(0),
-	9530:  uint8(0),
-	9531:  uint8(0),
-	9532:  uint8(0),
-	9533:  uint8(0),
-	9534:  uint8(0),
-	9535:  uint8(0),
-	9536:  uint8(0),
 	9537:  uint8(15),
 	9538:  uint8(15),
 	9539:  uint8(15),
 	9540:  uint8(15),
 	9541:  uint8(15),
 	9542:  uint8(15),
-	9543:  uint8(0),
-	9544:  uint8(0),
 	9545:  uint8(15),
 	9546:  uint8(15),
 	9547:  uint8(15),
 	9548:  uint8(15),
 	9549:  uint8(15),
 	9550:  uint8(15),
-	9551:  uint8(0),
-	9552:  uint8(0),
 	9553:  uint8(15),
 	9554:  uint8(15),
 	9555:  uint8(15),
 	9556:  uint8(15),
 	9557:  uint8(15),
 	9558:  uint8(15),
-	9559:  uint8(0),
-	9560:  uint8(0),
-	9561:  uint8(0),
-	9562:  uint8(0),
-	9563:  uint8(0),
-	9564:  uint8(0),
-	9565:  uint8(0),
-	9566:  uint8(0),
-	9567:  uint8(0),
 	9568:  uint8(15),
 	9569:  uint8(15),
 	9570:  uint8(15),
@@ -259273,7 +255130,6 @@ var _groupMap = [10624]uint8{
 	9572:  uint8(15),
 	9573:  uint8(15),
 	9574:  uint8(15),
-	9575:  uint8(0),
 	9576:  uint8(15),
 	9577:  uint8(15),
 	9578:  uint8(15),
@@ -259281,7 +255137,6 @@ var _groupMap = [10624]uint8{
 	9580:  uint8(15),
 	9581:  uint8(15),
 	9582:  uint8(15),
-	9583:  uint8(0),
 	9584:  uint8(21),
 	9585:  uint8(21),
 	9586:  uint8(21),
@@ -259342,10 +255197,6 @@ var _groupMap = [10624]uint8{
 	9641:  uint8(92),
 	9642:  uint8(11),
 	9643:  uint8(11),
-	9644:  uint8(0),
-	9645:  uint8(0),
-	9646:  uint8(0),
-	9647:  uint8(0),
 	9648:  uint8(199),
 	9649:  uint8(199),
 	9650:  uint8(199),
@@ -259408,8 +255259,6 @@ var _groupMap = [10624]uint8{
 	9707:  uint8(3),
 	9708:  uint8(125),
 	9709:  uint8(93),
-	9710:  uint8(0),
-	9711:  uint8(0),
 	9712:  uint8(9),
 	9713:  uint8(9),
 	9714:  uint8(9),
@@ -259420,28 +255269,10 @@ var _groupMap = [10624]uint8{
 	9719:  uint8(9),
 	9720:  uint8(9),
 	9721:  uint8(9),
-	9722:  uint8(0),
-	9723:  uint8(0),
-	9724:  uint8(0),
-	9725:  uint8(0),
-	9726:  uint8(0),
-	9727:  uint8(0),
 	9728:  uint8(15),
 	9729:  uint8(15),
 	9730:  uint8(15),
 	9731:  uint8(15),
-	9732:  uint8(0),
-	9733:  uint8(0),
-	9734:  uint8(0),
-	9735:  uint8(0),
-	9736:  uint8(0),
-	9737:  uint8(0),
-	9738:  uint8(0),
-	9739:  uint8(0),
-	9740:  uint8(0),
-	9741:  uint8(0),
-	9742:  uint8(0),
-	9743:  uint8(0),
 	9744:  uint8(15),
 	9745:  uint8(15),
 	9746:  uint8(15),
@@ -259465,10 +255296,6 @@ var _groupMap = [10624]uint8{
 	9764:  uint8(15),
 	9765:  uint8(15),
 	9766:  uint8(15),
-	9767:  uint8(0),
-	9768:  uint8(0),
-	9769:  uint8(0),
-	9770:  uint8(0),
 	9771:  uint8(15),
 	9772:  uint8(15),
 	9773:  uint8(15),
@@ -259518,10 +255345,6 @@ var _groupMap = [10624]uint8{
 	9817:  uint8(15),
 	9818:  uint8(15),
 	9819:  uint8(15),
-	9820:  uint8(0),
-	9821:  uint8(0),
-	9822:  uint8(0),
-	9823:  uint8(0),
 	9824:  uint8(200),
 	9825:  uint8(200),
 	9826:  uint8(200),
@@ -259600,8 +255423,6 @@ var _groupMap = [10624]uint8{
 	9899:  uint8(15),
 	9900:  uint8(15),
 	9901:  uint8(15),
-	9902:  uint8(0),
-	9903:  uint8(0),
 	9904:  uint8(15),
 	9905:  uint8(15),
 	9906:  uint8(15),
@@ -259644,12 +255465,6 @@ var _groupMap = [10624]uint8{
 	9943:  uint8(15),
 	9944:  uint8(15),
 	9945:  uint8(15),
-	9946:  uint8(0),
-	9947:  uint8(0),
-	9948:  uint8(0),
-	9949:  uint8(0),
-	9950:  uint8(0),
-	9951:  uint8(0),
 	9952:  uint8(21),
 	9953:  uint8(21),
 	9954:  uint8(21),
@@ -259657,28 +255472,11 @@ var _groupMap = [10624]uint8{
 	9956:  uint8(21),
 	9957:  uint8(21),
 	9958:  uint8(21),
-	9959:  uint8(0),
-	9960:  uint8(0),
-	9961:  uint8(0),
-	9962:  uint8(0),
-	9963:  uint8(0),
-	9964:  uint8(0),
-	9965:  uint8(0),
-	9966:  uint8(0),
-	9967:  uint8(0),
-	9968:  uint8(0),
-	9969:  uint8(0),
-	9970:  uint8(0),
 	9971:  uint8(21),
 	9972:  uint8(21),
 	9973:  uint8(21),
 	9974:  uint8(21),
 	9975:  uint8(21),
-	9976:  uint8(0),
-	9977:  uint8(0),
-	9978:  uint8(0),
-	9979:  uint8(0),
-	9980:  uint8(0),
 	9981:  uint8(15),
 	9982:  uint8(93),
 	9983:  uint8(15),
@@ -259705,21 +255503,16 @@ var _groupMap = [10624]uint8{
 	10004: uint8(15),
 	10005: uint8(15),
 	10006: uint8(15),
-	10007: uint8(0),
 	10008: uint8(15),
 	10009: uint8(15),
 	10010: uint8(15),
 	10011: uint8(15),
 	10012: uint8(15),
-	10013: uint8(0),
 	10014: uint8(15),
-	10015: uint8(0),
 	10016: uint8(15),
 	10017: uint8(15),
-	10018: uint8(0),
 	10019: uint8(15),
 	10020: uint8(15),
-	10021: uint8(0),
 	10022: uint8(15),
 	10023: uint8(15),
 	10024: uint8(15),
@@ -259781,22 +255574,6 @@ var _groupMap = [10624]uint8{
 	10080: uint8(11),
 	10081: uint8(11),
 	10082: uint8(11),
-	10083: uint8(0),
-	10084: uint8(0),
-	10085: uint8(0),
-	10086: uint8(0),
-	10087: uint8(0),
-	10088: uint8(0),
-	10089: uint8(0),
-	10090: uint8(0),
-	10091: uint8(0),
-	10092: uint8(0),
-	10093: uint8(0),
-	10094: uint8(0),
-	10095: uint8(0),
-	10096: uint8(0),
-	10097: uint8(0),
-	10098: uint8(0),
 	10099: uint8(15),
 	10100: uint8(15),
 	10101: uint8(15),
@@ -259890,8 +255667,6 @@ var _groupMap = [10624]uint8{
 	10189: uint8(15),
 	10190: uint8(15),
 	10191: uint8(15),
-	10192: uint8(0),
-	10193: uint8(0),
 	10194: uint8(15),
 	10195: uint8(15),
 	10196: uint8(15),
@@ -259914,46 +255689,7 @@ var _groupMap = [10624]uint8{
 	10213: uint8(15),
 	10214: uint8(15),
 	10215: uint8(15),
-	10216: uint8(0),
-	10217: uint8(0),
-	10218: uint8(0),
-	10219: uint8(0),
-	10220: uint8(0),
-	10221: uint8(0),
-	10222: uint8(0),
 	10223: uint8(14),
-	10224: uint8(0),
-	10225: uint8(0),
-	10226: uint8(0),
-	10227: uint8(0),
-	10228: uint8(0),
-	10229: uint8(0),
-	10230: uint8(0),
-	10231: uint8(0),
-	10232: uint8(0),
-	10233: uint8(0),
-	10234: uint8(0),
-	10235: uint8(0),
-	10236: uint8(0),
-	10237: uint8(0),
-	10238: uint8(0),
-	10239: uint8(0),
-	10240: uint8(0),
-	10241: uint8(0),
-	10242: uint8(0),
-	10243: uint8(0),
-	10244: uint8(0),
-	10245: uint8(0),
-	10246: uint8(0),
-	10247: uint8(0),
-	10248: uint8(0),
-	10249: uint8(0),
-	10250: uint8(0),
-	10251: uint8(0),
-	10252: uint8(0),
-	10253: uint8(0),
-	10254: uint8(0),
-	10255: uint8(0),
 	10256: uint8(15),
 	10257: uint8(15),
 	10258: uint8(15),
@@ -259996,12 +255732,6 @@ var _groupMap = [10624]uint8{
 	10295: uint8(5),
 	10296: uint8(6),
 	10297: uint8(3),
-	10298: uint8(0),
-	10299: uint8(0),
-	10300: uint8(0),
-	10301: uint8(0),
-	10302: uint8(0),
-	10303: uint8(0),
 	10304: uint8(93),
 	10305: uint8(93),
 	10306: uint8(93),
@@ -260053,7 +255783,6 @@ var _groupMap = [10624]uint8{
 	10352: uint8(3),
 	10353: uint8(3),
 	10354: uint8(3),
-	10355: uint8(0),
 	10356: uint8(3),
 	10357: uint8(3),
 	10358: uint8(3),
@@ -260073,21 +255802,15 @@ var _groupMap = [10624]uint8{
 	10372: uint8(7),
 	10373: uint8(7),
 	10374: uint8(7),
-	10375: uint8(0),
 	10376: uint8(3),
 	10377: uint8(4),
 	10378: uint8(3),
 	10379: uint8(3),
-	10380: uint8(0),
-	10381: uint8(0),
-	10382: uint8(0),
-	10383: uint8(0),
 	10384: uint8(15),
 	10385: uint8(15),
 	10386: uint8(15),
 	10387: uint8(15),
 	10388: uint8(15),
-	10389: uint8(0),
 	10390: uint8(15),
 	10391: uint8(15),
 	10392: uint8(15),
@@ -260127,10 +255850,7 @@ var _groupMap = [10624]uint8{
 	10426: uint8(15),
 	10427: uint8(15),
 	10428: uint8(15),
-	10429: uint8(0),
-	10430: uint8(0),
 	10431: uint8(17),
-	10432: uint8(0),
 	10433: uint8(3),
 	10434: uint8(3),
 	10435: uint8(3),
@@ -260258,38 +255978,27 @@ var _groupMap = [10624]uint8{
 	10557: uint8(15),
 	10558: uint8(92),
 	10559: uint8(92),
-	10560: uint8(0),
-	10561: uint8(0),
 	10562: uint8(15),
 	10563: uint8(15),
 	10564: uint8(15),
 	10565: uint8(15),
 	10566: uint8(15),
 	10567: uint8(15),
-	10568: uint8(0),
-	10569: uint8(0),
 	10570: uint8(15),
 	10571: uint8(15),
 	10572: uint8(15),
 	10573: uint8(15),
 	10574: uint8(15),
 	10575: uint8(15),
-	10576: uint8(0),
-	10577: uint8(0),
 	10578: uint8(15),
 	10579: uint8(15),
 	10580: uint8(15),
 	10581: uint8(15),
 	10582: uint8(15),
 	10583: uint8(15),
-	10584: uint8(0),
-	10585: uint8(0),
 	10586: uint8(15),
 	10587: uint8(15),
 	10588: uint8(15),
-	10589: uint8(0),
-	10590: uint8(0),
-	10591: uint8(0),
 	10592: uint8(4),
 	10593: uint8(4),
 	10594: uint8(7),
@@ -260297,7 +256006,6 @@ var _groupMap = [10624]uint8{
 	10596: uint8(14),
 	10597: uint8(4),
 	10598: uint8(4),
-	10599: uint8(0),
 	10600: uint8(14),
 	10601: uint8(7),
 	10602: uint8(7),
@@ -260305,23 +256013,11 @@ var _groupMap = [10624]uint8{
 	10604: uint8(7),
 	10605: uint8(14),
 	10606: uint8(14),
-	10607: uint8(0),
-	10608: uint8(0),
-	10609: uint8(0),
-	10610: uint8(0),
-	10611: uint8(0),
-	10612: uint8(0),
-	10613: uint8(0),
-	10614: uint8(0),
-	10615: uint8(0),
-	10616: uint8(0),
 	10617: uint8(17),
 	10618: uint8(17),
 	10619: uint8(17),
 	10620: uint8(14),
 	10621: uint8(14),
-	10622: uint8(0),
-	10623: uint8(0),
 }
 
 /*
@@ -260343,7 +256039,6 @@ var _groupMap = [10624]uint8{
  */
 
 var _groups = [208]int32{
-	0:   int32(0),
 	1:   int32(15),
 	2:   int32(12),
 	3:   int32(25),
@@ -263446,8 +259141,6 @@ var _precisionKey TTcl_ThreadDataKey
 
 func init() {
 	p := unsafe.Pointer(&XtclEndOffsetType)
-	*(*uintptr)(unsafe.Add(p, 4)) = libc.UintptrFromInt32(0)
-	*(*uintptr)(unsafe.Add(p, 8)) = libc.UintptrFromInt32(0)
 	*(*uintptr)(unsafe.Add(p, 12)) = __ccgo_fp(_UpdateStringOfEndOffset)
 	*(*uintptr)(unsafe.Add(p, 16)) = __ccgo_fp(_SetEndOffsetFromAny)
 }
@@ -268131,12 +263824,7 @@ invalidGlob:
 }
 
 var _tclVarHashKeyType = TTcl_HashKeyType{
-	Fversion:         int32(m_TCL_HASH_KEY_TYPE_VERSION),
-	Fflags:           int32(0),
-	FhashKeyProc:     uintptr(0),
-	FcompareKeysProc: uintptr(0),
-	FallocEntryProc:  uintptr(0),
-	FfreeEntryProc:   uintptr(0),
+	Fversion: int32(m_TCL_HASH_KEY_TYPE_VERSION),
 }
 
 func init() {
@@ -268239,11 +263927,7 @@ type TArraySearch = struct {
  */
 
 var _localVarNameType = TTcl_ObjType{
-	Fname:             __ccgo_ts + 60071,
-	FfreeIntRepProc:   uintptr(0),
-	FdupIntRepProc:    uintptr(0),
-	FupdateStringProc: uintptr(0),
-	FsetFromAnyProc:   uintptr(0),
+	Fname: __ccgo_ts + 60071,
 }
 
 func init() {
@@ -268255,11 +263939,7 @@ func init() {
 }
 
 var _tclParsedVarNameType = TTcl_ObjType{
-	Fname:             __ccgo_ts + 60084,
-	FfreeIntRepProc:   uintptr(0),
-	FdupIntRepProc:    uintptr(0),
-	FupdateStringProc: uintptr(0),
-	FsetFromAnyProc:   uintptr(0),
+	Fname: __ccgo_ts + 60084,
 }
 
 func init() {
@@ -268272,9 +263952,6 @@ func init() {
 
 func init() {
 	p := unsafe.Pointer(&XtclArraySearchType)
-	*(*uintptr)(unsafe.Add(p, 4)) = libc.UintptrFromInt32(0)
-	*(*uintptr)(unsafe.Add(p, 8)) = libc.UintptrFromInt32(0)
-	*(*uintptr)(unsafe.Add(p, 12)) = libc.UintptrFromInt32(0)
 	*(*uintptr)(unsafe.Add(p, 16)) = __ccgo_fp(_SetArraySearchObj)
 }
 
@@ -271764,7 +267441,6 @@ var _options17 = [4]uintptr{
 	0: __ccgo_ts + 14438,
 	1: __ccgo_ts + 14445,
 	2: __ccgo_ts + 14506,
-	3: libc.UintptrFromInt32(0),
 }
 
 /*
@@ -272261,131 +267937,64 @@ func XTclInitArrayCmd(tls *libc.TLS, interp uintptr) (r TTcl_Command) {
 /* Current interpreter. */
 var _arrayImplMap = [12]TEnsembleImplMap{
 	0: {
-		Fname:        __ccgo_ts + 60427,
-		Fproc:        uintptr(0),
-		FcompileProc: uintptr(0),
-		FnreProc:     uintptr(0),
-		FclientData:  libc.UintptrFromInt32(0),
-		Funsafe:      0,
+		Fname: __ccgo_ts + 60427,
 	},
 	1: {
-		Fname:        __ccgo_ts + 60435,
-		Fproc:        uintptr(0),
-		FcompileProc: uintptr(0),
-		FnreProc:     uintptr(0),
-		FclientData:  libc.UintptrFromInt32(0),
-		Funsafe:      0,
+		Fname: __ccgo_ts + 60435,
 	},
 	2: {
-		Fname:        __ccgo_ts + 12021,
-		Fproc:        uintptr(0),
-		FcompileProc: uintptr(0),
-		FnreProc:     uintptr(0),
-		FclientData:  libc.UintptrFromInt32(0),
-		Funsafe:      0,
+		Fname: __ccgo_ts + 12021,
 	},
 	3: {
-		Fname:        __ccgo_ts + 21664,
-		Fproc:        uintptr(0),
-		FcompileProc: uintptr(0),
-		FnreProc:     uintptr(0),
-		FclientData:  libc.UintptrFromInt32(0),
-		Funsafe:      0,
+		Fname: __ccgo_ts + 21664,
 	},
 	4: {
-		Fname:        __ccgo_ts + 11553,
-		Fproc:        uintptr(0),
-		FcompileProc: uintptr(0),
-		FnreProc:     uintptr(0),
-		FclientData:  libc.UintptrFromInt32(0),
-		Funsafe:      0,
+		Fname: __ccgo_ts + 11553,
 	},
 	5: {
-		Fname:        __ccgo_ts + 60446,
-		Fproc:        uintptr(0),
-		FcompileProc: uintptr(0),
-		FnreProc:     uintptr(0),
-		FclientData:  libc.UintptrFromInt32(0),
-		Funsafe:      0,
+		Fname: __ccgo_ts + 60446,
 	},
 	6: {
-		Fname:        __ccgo_ts + 5200,
-		Fproc:        uintptr(0),
-		FcompileProc: uintptr(0),
-		FnreProc:     uintptr(0),
-		FclientData:  libc.UintptrFromInt32(0),
-		Funsafe:      0,
+		Fname: __ccgo_ts + 5200,
 	},
 	7: {
-		Fname:        __ccgo_ts + 12153,
-		Fproc:        uintptr(0),
-		FcompileProc: uintptr(0),
-		FnreProc:     uintptr(0),
-		FclientData:  libc.UintptrFromInt32(0),
-		Funsafe:      0,
+		Fname: __ccgo_ts + 12153,
 	},
 	8: {
-		Fname:        __ccgo_ts + 60458,
-		Fproc:        uintptr(0),
-		FcompileProc: uintptr(0),
-		FnreProc:     uintptr(0),
-		FclientData:  libc.UintptrFromInt32(0),
-		Funsafe:      0,
+		Fname: __ccgo_ts + 60458,
 	},
 	9: {
-		Fname:        __ccgo_ts + 60470,
-		Fproc:        uintptr(0),
-		FcompileProc: uintptr(0),
-		FnreProc:     uintptr(0),
-		FclientData:  libc.UintptrFromInt32(0),
-		Funsafe:      0,
+		Fname: __ccgo_ts + 60470,
 	},
 	10: {
-		Fname:        __ccgo_ts + 3277,
-		Fproc:        uintptr(0),
-		FcompileProc: uintptr(0),
-		FnreProc:     uintptr(0),
-		FclientData:  libc.UintptrFromInt32(0),
-		Funsafe:      0,
+		Fname: __ccgo_ts + 3277,
 	},
-	11: {},
 }
 
 func init() {
 	p := unsafe.Pointer(&_arrayImplMap)
 	*(*uintptr)(unsafe.Add(p, 4)) = __ccgo_fp(_ArrayAnyMoreCmd)
 	*(*uintptr)(unsafe.Add(p, 8)) = __ccgo_fp(XTclCompileBasic2ArgCmd)
-	*(*uintptr)(unsafe.Add(p, 12)) = libc.UintptrFromInt32(0)
 	*(*uintptr)(unsafe.Add(p, 28)) = __ccgo_fp(_ArrayDoneSearchCmd)
 	*(*uintptr)(unsafe.Add(p, 32)) = __ccgo_fp(XTclCompileBasic2ArgCmd)
-	*(*uintptr)(unsafe.Add(p, 36)) = libc.UintptrFromInt32(0)
 	*(*uintptr)(unsafe.Add(p, 52)) = __ccgo_fp(_ArrayExistsCmd)
 	*(*uintptr)(unsafe.Add(p, 56)) = __ccgo_fp(XTclCompileArrayExistsCmd)
-	*(*uintptr)(unsafe.Add(p, 60)) = libc.UintptrFromInt32(0)
 	*(*uintptr)(unsafe.Add(p, 76)) = __ccgo_fp(_ArrayGetCmd)
 	*(*uintptr)(unsafe.Add(p, 80)) = __ccgo_fp(XTclCompileBasic1Or2ArgCmd)
-	*(*uintptr)(unsafe.Add(p, 84)) = libc.UintptrFromInt32(0)
 	*(*uintptr)(unsafe.Add(p, 100)) = __ccgo_fp(_ArrayNamesCmd)
 	*(*uintptr)(unsafe.Add(p, 104)) = __ccgo_fp(XTclCompileBasic1To3ArgCmd)
-	*(*uintptr)(unsafe.Add(p, 108)) = libc.UintptrFromInt32(0)
 	*(*uintptr)(unsafe.Add(p, 124)) = __ccgo_fp(_ArrayNextElementCmd)
 	*(*uintptr)(unsafe.Add(p, 128)) = __ccgo_fp(XTclCompileBasic2ArgCmd)
-	*(*uintptr)(unsafe.Add(p, 132)) = libc.UintptrFromInt32(0)
 	*(*uintptr)(unsafe.Add(p, 148)) = __ccgo_fp(_ArraySetCmd)
 	*(*uintptr)(unsafe.Add(p, 152)) = __ccgo_fp(XTclCompileArraySetCmd)
-	*(*uintptr)(unsafe.Add(p, 156)) = libc.UintptrFromInt32(0)
 	*(*uintptr)(unsafe.Add(p, 172)) = __ccgo_fp(_ArraySizeCmd)
 	*(*uintptr)(unsafe.Add(p, 176)) = __ccgo_fp(XTclCompileBasic1ArgCmd)
-	*(*uintptr)(unsafe.Add(p, 180)) = libc.UintptrFromInt32(0)
 	*(*uintptr)(unsafe.Add(p, 196)) = __ccgo_fp(_ArrayStartSearchCmd)
 	*(*uintptr)(unsafe.Add(p, 200)) = __ccgo_fp(XTclCompileBasic1ArgCmd)
-	*(*uintptr)(unsafe.Add(p, 204)) = libc.UintptrFromInt32(0)
 	*(*uintptr)(unsafe.Add(p, 220)) = __ccgo_fp(_ArrayStatsCmd)
 	*(*uintptr)(unsafe.Add(p, 224)) = __ccgo_fp(XTclCompileBasic1ArgCmd)
-	*(*uintptr)(unsafe.Add(p, 228)) = libc.UintptrFromInt32(0)
 	*(*uintptr)(unsafe.Add(p, 244)) = __ccgo_fp(_ArrayUnsetCmd)
 	*(*uintptr)(unsafe.Add(p, 248)) = __ccgo_fp(XTclCompileArrayUnsetCmd)
-	*(*uintptr)(unsafe.Add(p, 252)) = libc.UintptrFromInt32(0)
 }
 
 /*
@@ -275018,23 +270627,8 @@ type TZlibChannelData = struct {
  */
 
 var _zlibChannelType = TTcl_ChannelType{
-	FtypeName:         __ccgo_ts + 61239,
-	Fversion:          libc.UintptrFromInt32(0x5),
-	FcloseProc:        uintptr(0),
-	FinputProc:        uintptr(0),
-	FoutputProc:       uintptr(0),
-	FseekProc:         uintptr(0),
-	FsetOptionProc:    uintptr(0),
-	FgetOptionProc:    uintptr(0),
-	FwatchProc:        uintptr(0),
-	FgetHandleProc:    uintptr(0),
-	Fclose2Proc:       uintptr(0),
-	FblockModeProc:    uintptr(0),
-	FflushProc:        uintptr(0),
-	FhandlerProc:      uintptr(0),
-	FwideSeekProc:     uintptr(0),
-	FthreadActionProc: uintptr(0),
-	FtruncateProc:     uintptr(0),
+	FtypeName: __ccgo_ts + 61239,
+	Fversion:  libc.UintptrFromInt32(0x5),
 }
 
 func init() {
@@ -275042,18 +270636,12 @@ func init() {
 	*(*uintptr)(unsafe.Add(p, 8)) = __ccgo_fp(_ZlibTransformClose)
 	*(*uintptr)(unsafe.Add(p, 12)) = __ccgo_fp(_ZlibTransformInput)
 	*(*uintptr)(unsafe.Add(p, 16)) = __ccgo_fp(_ZlibTransformOutput)
-	*(*uintptr)(unsafe.Add(p, 20)) = libc.UintptrFromInt32(0)
 	*(*uintptr)(unsafe.Add(p, 24)) = __ccgo_fp(_ZlibTransformSetOption)
 	*(*uintptr)(unsafe.Add(p, 28)) = __ccgo_fp(_ZlibTransformGetOption)
 	*(*uintptr)(unsafe.Add(p, 32)) = __ccgo_fp(_ZlibTransformWatch)
 	*(*uintptr)(unsafe.Add(p, 36)) = __ccgo_fp(_ZlibTransformGetHandle)
-	*(*uintptr)(unsafe.Add(p, 40)) = libc.UintptrFromInt32(0)
 	*(*uintptr)(unsafe.Add(p, 44)) = __ccgo_fp(_ZlibTransformBlockMode)
-	*(*uintptr)(unsafe.Add(p, 48)) = libc.UintptrFromInt32(0)
 	*(*uintptr)(unsafe.Add(p, 52)) = __ccgo_fp(_ZlibTransformEventHandler)
-	*(*uintptr)(unsafe.Add(p, 56)) = libc.UintptrFromInt32(0)
-	*(*uintptr)(unsafe.Add(p, 60)) = libc.UintptrFromInt32(0)
-	*(*uintptr)(unsafe.Add(p, 64)) = libc.UintptrFromInt32(0)
 }
 
 /*
@@ -277177,29 +272765,26 @@ badBuffer:
 }
 
 var _commands = [11]uintptr{
-	0:  __ccgo_ts + 62269,
-	1:  __ccgo_ts + 62277,
-	2:  __ccgo_ts + 62286,
-	3:  __ccgo_ts + 62292,
-	4:  __ccgo_ts + 62303,
-	5:  __ccgo_ts + 62311,
-	6:  __ccgo_ts + 62318,
-	7:  __ccgo_ts + 62323,
-	8:  __ccgo_ts + 1969,
-	9:  __ccgo_ts + 62331,
-	10: libc.UintptrFromInt32(0),
+	0: __ccgo_ts + 62269,
+	1: __ccgo_ts + 62277,
+	2: __ccgo_ts + 62286,
+	3: __ccgo_ts + 62292,
+	4: __ccgo_ts + 62303,
+	5: __ccgo_ts + 62311,
+	6: __ccgo_ts + 62318,
+	7: __ccgo_ts + 62323,
+	8: __ccgo_ts + 1969,
+	9: __ccgo_ts + 62331,
 }
 
 var _gzipopts = [3]uintptr{
 	0: __ccgo_ts + 62448,
 	1: __ccgo_ts + 27100,
-	2: libc.UintptrFromInt32(0),
 }
 
 var _gunzipopts = [3]uintptr{
 	0: __ccgo_ts + 38651,
 	1: __ccgo_ts + 62500,
-	2: libc.UintptrFromInt32(0),
 }
 
 /*
@@ -277322,7 +272907,6 @@ var _stream_formats = [7]uintptr{
 	3: __ccgo_ts + 62311,
 	4: __ccgo_ts + 62318,
 	5: __ccgo_ts + 62323,
-	6: libc.UintptrFromInt32(0),
 }
 
 var _compressionOpts = [3]struct {
@@ -277330,15 +272914,13 @@ var _compressionOpts = [3]struct {
 	Foffset int32
 }{
 	0: {
-		Fname:   __ccgo_ts + 14426,
-		Foffset: 0,
+		Fname: __ccgo_ts + 14426,
 	},
 	1: {
 		Fname:   __ccgo_ts + 27100,
 		Foffset: 2,
 	},
 	2: {
-		Fname:   libc.UintptrFromInt32(0),
 		Foffset: -1,
 	},
 }
@@ -277356,7 +272938,6 @@ var _gzipOpts = [3]struct {
 		Foffset: 2,
 	},
 	2: {
-		Fname:   libc.UintptrFromInt32(0),
 		Foffset: -1,
 	},
 }
@@ -277366,11 +272947,9 @@ var _expansionOpts = [2]struct {
 	Foffset int32
 }{
 	0: {
-		Fname:   __ccgo_ts + 14426,
-		Foffset: 0,
+		Fname: __ccgo_ts + 14426,
 	},
 	1: {
-		Fname:   libc.UintptrFromInt32(0),
 		Foffset: -1,
 	},
 }
@@ -277380,7 +272959,6 @@ var _gunzipOpts = [1]struct {
 	Foffset int32
 }{
 	0: {
-		Fname:   libc.UintptrFromInt32(0),
 		Foffset: -1,
 	},
 }
@@ -277536,14 +273114,12 @@ var _stream_formats1 = [7]uintptr{
 	3: __ccgo_ts + 62311,
 	4: __ccgo_ts + 62318,
 	5: __ccgo_ts + 62323,
-	6: libc.UintptrFromInt32(0),
 }
 
 var _pushCompressOptions = [4]uintptr{
 	0: __ccgo_ts + 14426,
 	1: __ccgo_ts + 62448,
 	2: __ccgo_ts + 27100,
-	3: libc.UintptrFromInt32(0),
 }
 
 var _pushDecompressOptions = [5]uintptr{
@@ -277551,7 +273127,6 @@ var _pushDecompressOptions = [5]uintptr{
 	1: __ccgo_ts + 62448,
 	2: __ccgo_ts + 27100,
 	3: __ccgo_ts + 62635,
-	4: libc.UintptrFromInt32(0),
 }
 
 /*
@@ -277795,7 +273370,6 @@ var _cmds = [12]uintptr{
 	8:  __ccgo_ts + 62969,
 	9:  __ccgo_ts + 62976,
 	10: __ccgo_ts + 62980,
-	11: libc.UintptrFromInt32(0),
 }
 
 func _ZlibStreamAddCmd(tls *libc.TLS, cd TClientData, interp uintptr, objc int32, objv uintptr) (r int32) {
@@ -277941,7 +273515,6 @@ var _add_options = [6]uintptr{
 	2: __ccgo_ts + 63020,
 	3: __ccgo_ts + 63030,
 	4: __ccgo_ts + 63037,
-	5: libc.UintptrFromInt32(0),
 }
 
 func _ZlibStreamPutCmd(tls *libc.TLS, cd TClientData, interp uintptr, objc int32, objv uintptr) (r int32) {
@@ -278027,7 +273600,6 @@ var _put_options = [5]uintptr{
 	1: __ccgo_ts + 63020,
 	2: __ccgo_ts + 63030,
 	3: __ccgo_ts + 63037,
-	4: libc.UintptrFromInt32(0),
 }
 
 func _ZlibStreamHeaderCmd(tls *libc.TLS, cd TClientData, interp uintptr, objc int32, objv uintptr) (r int32) {
@@ -279324,23 +274896,8 @@ type TTtyAttrs = struct {
  */
 
 var _fileChannelType = TTcl_ChannelType{
-	FtypeName:         __ccgo_ts + 12199,
-	Fversion:          libc.UintptrFromInt32(0x5),
-	FcloseProc:        uintptr(0),
-	FinputProc:        uintptr(0),
-	FoutputProc:       uintptr(0),
-	FseekProc:         uintptr(0),
-	FsetOptionProc:    uintptr(0),
-	FgetOptionProc:    uintptr(0),
-	FwatchProc:        uintptr(0),
-	FgetHandleProc:    uintptr(0),
-	Fclose2Proc:       uintptr(0),
-	FblockModeProc:    uintptr(0),
-	FflushProc:        uintptr(0),
-	FhandlerProc:      uintptr(0),
-	FwideSeekProc:     uintptr(0),
-	FthreadActionProc: uintptr(0),
-	FtruncateProc:     uintptr(0),
+	FtypeName: __ccgo_ts + 12199,
+	Fversion:  libc.UintptrFromInt32(0x5),
 }
 
 func init() {
@@ -279349,16 +274906,11 @@ func init() {
 	*(*uintptr)(unsafe.Add(p, 12)) = __ccgo_fp(_FileInputProc)
 	*(*uintptr)(unsafe.Add(p, 16)) = __ccgo_fp(_FileOutputProc)
 	*(*uintptr)(unsafe.Add(p, 20)) = __ccgo_fp(_FileSeekProc)
-	*(*uintptr)(unsafe.Add(p, 24)) = libc.UintptrFromInt32(0)
-	*(*uintptr)(unsafe.Add(p, 28)) = libc.UintptrFromInt32(0)
 	*(*uintptr)(unsafe.Add(p, 32)) = __ccgo_fp(_FileWatchProc)
 	*(*uintptr)(unsafe.Add(p, 36)) = __ccgo_fp(_FileGetHandleProc)
 	*(*uintptr)(unsafe.Add(p, 40)) = __ccgo_fp(_FileClose2Proc)
 	*(*uintptr)(unsafe.Add(p, 44)) = __ccgo_fp(_FileBlockModeProc)
-	*(*uintptr)(unsafe.Add(p, 48)) = libc.UintptrFromInt32(0)
-	*(*uintptr)(unsafe.Add(p, 52)) = libc.UintptrFromInt32(0)
 	*(*uintptr)(unsafe.Add(p, 56)) = __ccgo_fp(_FileWideSeekProc)
-	*(*uintptr)(unsafe.Add(p, 60)) = libc.UintptrFromInt32(0)
 	*(*uintptr)(unsafe.Add(p, 64)) = __ccgo_fp(_FileTruncateProc)
 }
 
@@ -279368,23 +274920,8 @@ func init() {
  */
 
 var _ttyChannelType = TTcl_ChannelType{
-	FtypeName:         __ccgo_ts + 63859,
-	Fversion:          libc.UintptrFromInt32(0x5),
-	FcloseProc:        uintptr(0),
-	FinputProc:        uintptr(0),
-	FoutputProc:       uintptr(0),
-	FseekProc:         uintptr(0),
-	FsetOptionProc:    uintptr(0),
-	FgetOptionProc:    uintptr(0),
-	FwatchProc:        uintptr(0),
-	FgetHandleProc:    uintptr(0),
-	Fclose2Proc:       uintptr(0),
-	FblockModeProc:    uintptr(0),
-	FflushProc:        uintptr(0),
-	FhandlerProc:      uintptr(0),
-	FwideSeekProc:     uintptr(0),
-	FthreadActionProc: uintptr(0),
-	FtruncateProc:     uintptr(0),
+	FtypeName: __ccgo_ts + 63859,
+	Fversion:  libc.UintptrFromInt32(0x5),
 }
 
 func init() {
@@ -279392,18 +274929,12 @@ func init() {
 	*(*uintptr)(unsafe.Add(p, 8)) = __ccgo_fp(_FileCloseProc)
 	*(*uintptr)(unsafe.Add(p, 12)) = __ccgo_fp(_FileInputProc)
 	*(*uintptr)(unsafe.Add(p, 16)) = __ccgo_fp(_FileOutputProc)
-	*(*uintptr)(unsafe.Add(p, 20)) = libc.UintptrFromInt32(0)
 	*(*uintptr)(unsafe.Add(p, 24)) = __ccgo_fp(_TtySetOptionProc)
 	*(*uintptr)(unsafe.Add(p, 28)) = __ccgo_fp(_TtyGetOptionProc)
 	*(*uintptr)(unsafe.Add(p, 32)) = __ccgo_fp(_FileWatchProc)
 	*(*uintptr)(unsafe.Add(p, 36)) = __ccgo_fp(_FileGetHandleProc)
 	*(*uintptr)(unsafe.Add(p, 40)) = __ccgo_fp(_FileClose2Proc)
 	*(*uintptr)(unsafe.Add(p, 44)) = __ccgo_fp(_FileBlockModeProc)
-	*(*uintptr)(unsafe.Add(p, 48)) = libc.UintptrFromInt32(0)
-	*(*uintptr)(unsafe.Add(p, 52)) = libc.UintptrFromInt32(0)
-	*(*uintptr)(unsafe.Add(p, 56)) = libc.UintptrFromInt32(0)
-	*(*uintptr)(unsafe.Add(p, 60)) = libc.UintptrFromInt32(0)
-	*(*uintptr)(unsafe.Add(p, 64)) = libc.UintptrFromInt32(0)
 }
 
 /*
@@ -280078,7 +275609,6 @@ var _speeds = [34]struct {
 	Fbaud  int32
 	Fspeed Tspeed_t
 }{
-	0: {},
 	1: {
 		Fbaud:  int32(50),
 		Fspeed: uint32(m_B50),
@@ -280208,8 +275738,7 @@ var _speeds = [34]struct {
 		Fspeed: uint32(m_B4000000),
 	},
 	33: {
-		Fbaud:  -int32(1),
-		Fspeed: uint32(0),
+		Fbaud: -int32(1),
 	},
 }
 
@@ -283954,23 +279483,8 @@ type TPipeState = struct {
  */
 
 var _pipeChannelType = TTcl_ChannelType{
-	FtypeName:         __ccgo_ts + 40703,
-	Fversion:          libc.UintptrFromInt32(0x5),
-	FcloseProc:        uintptr(0),
-	FinputProc:        uintptr(0),
-	FoutputProc:       uintptr(0),
-	FseekProc:         uintptr(0),
-	FsetOptionProc:    uintptr(0),
-	FgetOptionProc:    uintptr(0),
-	FwatchProc:        uintptr(0),
-	FgetHandleProc:    uintptr(0),
-	Fclose2Proc:       uintptr(0),
-	FblockModeProc:    uintptr(0),
-	FflushProc:        uintptr(0),
-	FhandlerProc:      uintptr(0),
-	FwideSeekProc:     uintptr(0),
-	FthreadActionProc: uintptr(0),
-	FtruncateProc:     uintptr(0),
+	FtypeName: __ccgo_ts + 40703,
+	Fversion:  libc.UintptrFromInt32(0x5),
 }
 
 func init() {
@@ -283978,18 +279492,10 @@ func init() {
 	*(*uintptr)(unsafe.Add(p, 8)) = libc.UintptrFromInt32(1)
 	*(*uintptr)(unsafe.Add(p, 12)) = __ccgo_fp(_PipeInputProc)
 	*(*uintptr)(unsafe.Add(p, 16)) = __ccgo_fp(_PipeOutputProc)
-	*(*uintptr)(unsafe.Add(p, 20)) = libc.UintptrFromInt32(0)
-	*(*uintptr)(unsafe.Add(p, 24)) = libc.UintptrFromInt32(0)
-	*(*uintptr)(unsafe.Add(p, 28)) = libc.UintptrFromInt32(0)
 	*(*uintptr)(unsafe.Add(p, 32)) = __ccgo_fp(_PipeWatchProc)
 	*(*uintptr)(unsafe.Add(p, 36)) = __ccgo_fp(_PipeGetHandleProc)
 	*(*uintptr)(unsafe.Add(p, 40)) = __ccgo_fp(_PipeClose2Proc)
 	*(*uintptr)(unsafe.Add(p, 44)) = __ccgo_fp(_PipeBlockModeProc)
-	*(*uintptr)(unsafe.Add(p, 48)) = libc.UintptrFromInt32(0)
-	*(*uintptr)(unsafe.Add(p, 52)) = libc.UintptrFromInt32(0)
-	*(*uintptr)(unsafe.Add(p, 56)) = libc.UintptrFromInt32(0)
-	*(*uintptr)(unsafe.Add(p, 60)) = libc.UintptrFromInt32(0)
-	*(*uintptr)(unsafe.Add(p, 64)) = libc.UintptrFromInt32(0)
 }
 
 /*
@@ -285016,23 +280522,8 @@ type TTcpState1 = struct {
  */
 
 var _tcpChannelType = TTcl_ChannelType{
-	FtypeName:         __ccgo_ts + 39102,
-	Fversion:          libc.UintptrFromInt32(0x5),
-	FcloseProc:        uintptr(0),
-	FinputProc:        uintptr(0),
-	FoutputProc:       uintptr(0),
-	FseekProc:         uintptr(0),
-	FsetOptionProc:    uintptr(0),
-	FgetOptionProc:    uintptr(0),
-	FwatchProc:        uintptr(0),
-	FgetHandleProc:    uintptr(0),
-	Fclose2Proc:       uintptr(0),
-	FblockModeProc:    uintptr(0),
-	FflushProc:        uintptr(0),
-	FhandlerProc:      uintptr(0),
-	FwideSeekProc:     uintptr(0),
-	FthreadActionProc: uintptr(0),
-	FtruncateProc:     uintptr(0),
+	FtypeName: __ccgo_ts + 39102,
+	Fversion:  libc.UintptrFromInt32(0x5),
 }
 
 func init() {
@@ -285040,29 +280531,15 @@ func init() {
 	*(*uintptr)(unsafe.Add(p, 8)) = __ccgo_fp(_TcpCloseProc)
 	*(*uintptr)(unsafe.Add(p, 12)) = __ccgo_fp(_TcpInputProc)
 	*(*uintptr)(unsafe.Add(p, 16)) = __ccgo_fp(_TcpOutputProc)
-	*(*uintptr)(unsafe.Add(p, 20)) = libc.UintptrFromInt32(0)
-	*(*uintptr)(unsafe.Add(p, 24)) = libc.UintptrFromInt32(0)
 	*(*uintptr)(unsafe.Add(p, 28)) = __ccgo_fp(_TcpGetOptionProc)
 	*(*uintptr)(unsafe.Add(p, 32)) = __ccgo_fp(_TcpWatchProc)
 	*(*uintptr)(unsafe.Add(p, 36)) = __ccgo_fp(_TcpGetHandleProc)
 	*(*uintptr)(unsafe.Add(p, 40)) = __ccgo_fp(_TcpClose2Proc)
 	*(*uintptr)(unsafe.Add(p, 44)) = __ccgo_fp(_TcpBlockModeProc)
-	*(*uintptr)(unsafe.Add(p, 48)) = libc.UintptrFromInt32(0)
-	*(*uintptr)(unsafe.Add(p, 52)) = libc.UintptrFromInt32(0)
-	*(*uintptr)(unsafe.Add(p, 56)) = libc.UintptrFromInt32(0)
 	*(*uintptr)(unsafe.Add(p, 60)) = __ccgo_fp(_TcpThreadActionProc)
-	*(*uintptr)(unsafe.Add(p, 64)) = libc.UintptrFromInt32(0)
 }
 
-var _hostName = TProcessGlobalValue{
-	Fepoch:    int32(0),
-	FnumBytes: int32(0),
-	Fvalue:    libc.UintptrFromInt32(0),
-	Fencoding: libc.UintptrFromInt32(0),
-	Fproc:     uintptr(0),
-	Fmutex:    libc.UintptrFromInt32(0),
-	Fkey:      libc.UintptrFromInt32(0),
-}
+var _hostName = TProcessGlobalValue{}
 
 func init() {
 	p := unsafe.Pointer(&_hostName)
@@ -289251,51 +284728,32 @@ var _defineCmds = [10]struct {
 	Fflag    int32
 }{
 	0: {
-		Fname:    __ccgo_ts + 25185,
-		FobjProc: uintptr(0),
-		Fflag:    int32(0),
+		Fname: __ccgo_ts + 25185,
 	},
 	1: {
-		Fname:    __ccgo_ts + 67317,
-		FobjProc: uintptr(0),
-		Fflag:    int32(0),
+		Fname: __ccgo_ts + 67317,
 	},
 	2: {
-		Fname:    __ccgo_ts + 25197,
-		FobjProc: uintptr(0),
-		Fflag:    int32(0),
+		Fname: __ccgo_ts + 25197,
 	},
 	3: {
-		Fname:    __ccgo_ts + 45244,
-		FobjProc: uintptr(0),
-		Fflag:    int32(0),
+		Fname: __ccgo_ts + 45244,
 	},
 	4: {
-		Fname:    __ccgo_ts + 67330,
-		FobjProc: uintptr(0),
-		Fflag:    int32(0),
+		Fname: __ccgo_ts + 67330,
 	},
 	5: {
-		Fname:    __ccgo_ts + 25215,
-		FobjProc: uintptr(0),
-		Fflag:    int32(0),
+		Fname: __ccgo_ts + 25215,
 	},
 	6: {
-		Fname:    __ccgo_ts + 67338,
-		FobjProc: uintptr(0),
-		Fflag:    int32(0),
+		Fname: __ccgo_ts + 67338,
 	},
 	7: {
-		Fname:    __ccgo_ts + 67351,
-		FobjProc: uintptr(0),
-		Fflag:    int32(0),
+		Fname: __ccgo_ts + 67351,
 	},
 	8: {
-		Fname:    __ccgo_ts + 67356,
-		FobjProc: uintptr(0),
-		Fflag:    int32(0),
+		Fname: __ccgo_ts + 67356,
 	},
-	9: {},
 }
 
 func init() {
@@ -289317,41 +284775,33 @@ var _objdefCmds = [8]struct {
 	Fflag    int32
 }{
 	0: {
-		Fname:    __ccgo_ts + 15900,
-		FobjProc: uintptr(0),
-		Fflag:    int32(1),
+		Fname: __ccgo_ts + 15900,
+		Fflag: int32(1),
 	},
 	1: {
-		Fname:    __ccgo_ts + 67317,
-		FobjProc: uintptr(0),
-		Fflag:    int32(1),
+		Fname: __ccgo_ts + 67317,
+		Fflag: int32(1),
 	},
 	2: {
-		Fname:    __ccgo_ts + 45244,
-		FobjProc: uintptr(0),
-		Fflag:    int32(1),
+		Fname: __ccgo_ts + 45244,
+		Fflag: int32(1),
 	},
 	3: {
-		Fname:    __ccgo_ts + 67330,
-		FobjProc: uintptr(0),
-		Fflag:    int32(1),
+		Fname: __ccgo_ts + 67330,
+		Fflag: int32(1),
 	},
 	4: {
-		Fname:    __ccgo_ts + 25215,
-		FobjProc: uintptr(0),
-		Fflag:    int32(1),
+		Fname: __ccgo_ts + 25215,
+		Fflag: int32(1),
 	},
 	5: {
-		Fname:    __ccgo_ts + 67338,
-		FobjProc: uintptr(0),
-		Fflag:    int32(1),
+		Fname: __ccgo_ts + 67338,
+		Fflag: int32(1),
 	},
 	6: {
-		Fname:    __ccgo_ts + 67356,
-		FobjProc: uintptr(0),
-		Fflag:    int32(1),
+		Fname: __ccgo_ts + 67356,
+		Fflag: int32(1),
 	},
-	7: {},
 }
 
 func init() {
@@ -289378,77 +284828,47 @@ var _objMethods = [6]TDeclaredClassMethod{
 		Fname:     __ccgo_ts + 67365,
 		FisPublic: int32(1),
 		Fdefinition: TTcl_MethodType{
-			Fversion:    int32(m_TCL_OO_METHOD_VERSION_CURRENT),
-			Fname:       __ccgo_ts + 67373,
-			FcallProc:   uintptr(0),
-			FdeleteProc: uintptr(0),
-			FcloneProc:  uintptr(0),
+			Fversion: int32(m_TCL_OO_METHOD_VERSION_CURRENT),
+			Fname:    __ccgo_ts + 67373,
 		},
 	},
 	1: {
-		Fname:     __ccgo_ts + 2306,
-		FisPublic: int32(0),
+		Fname: __ccgo_ts + 2306,
 		Fdefinition: TTcl_MethodType{
-			Fversion:    int32(m_TCL_OO_METHOD_VERSION_CURRENT),
-			Fname:       __ccgo_ts + 67396,
-			FcallProc:   uintptr(0),
-			FdeleteProc: uintptr(0),
-			FcloneProc:  uintptr(0),
+			Fversion: int32(m_TCL_OO_METHOD_VERSION_CURRENT),
+			Fname:    __ccgo_ts + 67396,
 		},
 	},
 	2: {
-		Fname:     __ccgo_ts + 12726,
-		FisPublic: int32(0),
+		Fname: __ccgo_ts + 12726,
 		Fdefinition: TTcl_MethodType{
-			Fversion:    int32(m_TCL_OO_METHOD_VERSION_CURRENT),
-			Fname:       __ccgo_ts + 67416,
-			FcallProc:   uintptr(0),
-			FdeleteProc: uintptr(0),
-			FcloneProc:  uintptr(0),
+			Fversion: int32(m_TCL_OO_METHOD_VERSION_CURRENT),
+			Fname:    __ccgo_ts + 67416,
 		},
 	},
 	3: {
-		Fname:     __ccgo_ts + 3329,
-		FisPublic: int32(0),
+		Fname: __ccgo_ts + 3329,
 		Fdefinition: TTcl_MethodType{
-			Fversion:    int32(m_TCL_OO_METHOD_VERSION_CURRENT),
-			Fname:       __ccgo_ts + 67439,
-			FcallProc:   uintptr(0),
-			FdeleteProc: uintptr(0),
-			FcloneProc:  uintptr(0),
+			Fversion: int32(m_TCL_OO_METHOD_VERSION_CURRENT),
+			Fname:    __ccgo_ts + 67439,
 		},
 	},
 	4: {
-		Fname:     __ccgo_ts + 3593,
-		FisPublic: int32(0),
+		Fname: __ccgo_ts + 3593,
 		Fdefinition: TTcl_MethodType{
-			Fversion:    int32(m_TCL_OO_METHOD_VERSION_CURRENT),
-			Fname:       __ccgo_ts + 67463,
-			FcallProc:   uintptr(0),
-			FdeleteProc: uintptr(0),
-			FcloneProc:  uintptr(0),
+			Fversion: int32(m_TCL_OO_METHOD_VERSION_CURRENT),
+			Fname:    __ccgo_ts + 67463,
 		},
 	},
-	5: {},
 }
 
 func init() {
 	p := unsafe.Pointer(&_objMethods)
 	*(*uintptr)(unsafe.Add(p, 16)) = __ccgo_fp(XTclOO_Object_Destroy)
-	*(*uintptr)(unsafe.Add(p, 20)) = libc.UintptrFromInt32(0)
-	*(*uintptr)(unsafe.Add(p, 24)) = libc.UintptrFromInt32(0)
 	*(*uintptr)(unsafe.Add(p, 44)) = __ccgo_fp(XTclOO_Object_Eval)
-	*(*uintptr)(unsafe.Add(p, 48)) = libc.UintptrFromInt32(0)
-	*(*uintptr)(unsafe.Add(p, 52)) = libc.UintptrFromInt32(0)
 	*(*uintptr)(unsafe.Add(p, 72)) = __ccgo_fp(XTclOO_Object_Unknown)
-	*(*uintptr)(unsafe.Add(p, 76)) = libc.UintptrFromInt32(0)
-	*(*uintptr)(unsafe.Add(p, 80)) = libc.UintptrFromInt32(0)
 	*(*uintptr)(unsafe.Add(p, 100)) = __ccgo_fp(XTclOO_Object_LinkVar)
-	*(*uintptr)(unsafe.Add(p, 104)) = libc.UintptrFromInt32(0)
-	*(*uintptr)(unsafe.Add(p, 108)) = libc.UintptrFromInt32(0)
 	*(*uintptr)(unsafe.Add(p, 128)) = __ccgo_fp(XTclOO_Object_VarName)
-	*(*uintptr)(unsafe.Add(p, 132)) = libc.UintptrFromInt32(0)
-	*(*uintptr)(unsafe.Add(p, 136)) = libc.UintptrFromInt32(0)
 }
 
 var _clsMethods = [4]TDeclaredClassMethod{
@@ -289456,49 +284876,32 @@ var _clsMethods = [4]TDeclaredClassMethod{
 		Fname:     __ccgo_ts + 22931,
 		FisPublic: int32(1),
 		Fdefinition: TTcl_MethodType{
-			Fversion:    int32(m_TCL_OO_METHOD_VERSION_CURRENT),
-			Fname:       __ccgo_ts + 67486,
-			FcallProc:   uintptr(0),
-			FdeleteProc: uintptr(0),
-			FcloneProc:  uintptr(0),
+			Fversion: int32(m_TCL_OO_METHOD_VERSION_CURRENT),
+			Fname:    __ccgo_ts + 67486,
 		},
 	},
 	1: {
 		Fname:     __ccgo_ts + 67508,
 		FisPublic: int32(1),
 		Fdefinition: TTcl_MethodType{
-			Fversion:    int32(m_TCL_OO_METHOD_VERSION_CURRENT),
-			Fname:       __ccgo_ts + 67512,
-			FcallProc:   uintptr(0),
-			FdeleteProc: uintptr(0),
-			FcloneProc:  uintptr(0),
+			Fversion: int32(m_TCL_OO_METHOD_VERSION_CURRENT),
+			Fname:    __ccgo_ts + 67512,
 		},
 	},
 	2: {
-		Fname:     __ccgo_ts + 67531,
-		FisPublic: int32(0),
+		Fname: __ccgo_ts + 67531,
 		Fdefinition: TTcl_MethodType{
-			Fversion:    int32(m_TCL_OO_METHOD_VERSION_CURRENT),
-			Fname:       __ccgo_ts + 67551,
-			FcallProc:   uintptr(0),
-			FdeleteProc: uintptr(0),
-			FcloneProc:  uintptr(0),
+			Fversion: int32(m_TCL_OO_METHOD_VERSION_CURRENT),
+			Fname:    __ccgo_ts + 67551,
 		},
 	},
-	3: {},
 }
 
 func init() {
 	p := unsafe.Pointer(&_clsMethods)
 	*(*uintptr)(unsafe.Add(p, 16)) = __ccgo_fp(XTclOO_Class_Create)
-	*(*uintptr)(unsafe.Add(p, 20)) = libc.UintptrFromInt32(0)
-	*(*uintptr)(unsafe.Add(p, 24)) = libc.UintptrFromInt32(0)
 	*(*uintptr)(unsafe.Add(p, 44)) = __ccgo_fp(XTclOO_Class_New)
-	*(*uintptr)(unsafe.Add(p, 48)) = libc.UintptrFromInt32(0)
-	*(*uintptr)(unsafe.Add(p, 52)) = libc.UintptrFromInt32(0)
 	*(*uintptr)(unsafe.Add(p, 72)) = __ccgo_fp(XTclOO_Class_CreateNs)
-	*(*uintptr)(unsafe.Add(p, 76)) = libc.UintptrFromInt32(0)
-	*(*uintptr)(unsafe.Add(p, 80)) = libc.UintptrFromInt32(0)
 }
 
 /*
@@ -289506,18 +284909,13 @@ func init() {
  */
 
 var _classConstructor = TTcl_MethodType{
-	Fversion:    int32(m_TCL_OO_METHOD_VERSION_CURRENT),
-	Fname:       __ccgo_ts + 67586,
-	FcallProc:   uintptr(0),
-	FdeleteProc: uintptr(0),
-	FcloneProc:  uintptr(0),
+	Fversion: int32(m_TCL_OO_METHOD_VERSION_CURRENT),
+	Fname:    __ccgo_ts + 67586,
 }
 
 func init() {
 	p := unsafe.Pointer(&_classConstructor)
 	*(*uintptr)(unsafe.Add(p, 8)) = __ccgo_fp(XTclOO_Class_Constructor)
-	*(*uintptr)(unsafe.Add(p, 12)) = libc.UintptrFromInt32(0)
-	*(*uintptr)(unsafe.Add(p, 16)) = libc.UintptrFromInt32(0)
 }
 
 /*
@@ -294112,7 +289510,6 @@ var _subcmds = [10]uintptr{
 	6: __ccgo_ts + 22254,
 	7: __ccgo_ts + 18503,
 	8: __ccgo_ts + 34675,
-	9: libc.UintptrFromInt32(0),
 }
 
 /*
@@ -294266,19 +289663,13 @@ type TChainBuilder = struct {
  */
 
 var _methodNameType = TTcl_ObjType{
-	Fname:             __ccgo_ts + 70831,
-	FfreeIntRepProc:   uintptr(0),
-	FdupIntRepProc:    uintptr(0),
-	FupdateStringProc: uintptr(0),
-	FsetFromAnyProc:   uintptr(0),
+	Fname: __ccgo_ts + 70831,
 }
 
 func init() {
 	p := unsafe.Pointer(&_methodNameType)
 	*(*uintptr)(unsafe.Add(p, 4)) = __ccgo_fp(_FreeMethodNameRep)
 	*(*uintptr)(unsafe.Add(p, 8)) = __ccgo_fp(_DupMethodNameRep)
-	*(*uintptr)(unsafe.Add(p, 12)) = libc.UintptrFromInt32(0)
-	*(*uintptr)(unsafe.Add(p, 16)) = libc.UintptrFromInt32(0)
 }
 
 /*
@@ -295982,169 +291373,98 @@ var _slots = [8]TDeclaredSlot{
 	0: {
 		Fname: __ccgo_ts + 70849,
 		FgetterType: TTcl_MethodType{
-			Fversion:    int32(m_TCL_OO_METHOD_VERSION_CURRENT),
-			Fname:       __ccgo_ts + 70870,
-			FcallProc:   uintptr(0),
-			FdeleteProc: uintptr(0),
-			FcloneProc:  uintptr(0),
+			Fversion: int32(m_TCL_OO_METHOD_VERSION_CURRENT),
+			Fname:    __ccgo_ts + 70870,
 		},
 		FsetterType: TTcl_MethodType{
-			Fversion:    int32(m_TCL_OO_METHOD_VERSION_CURRENT),
-			Fname:       __ccgo_ts + 70905,
-			FcallProc:   uintptr(0),
-			FdeleteProc: uintptr(0),
-			FcloneProc:  uintptr(0),
+			Fversion: int32(m_TCL_OO_METHOD_VERSION_CURRENT),
+			Fname:    __ccgo_ts + 70905,
 		},
 	},
 	1: {
 		Fname: __ccgo_ts + 70940,
 		FgetterType: TTcl_MethodType{
-			Fversion:    int32(m_TCL_OO_METHOD_VERSION_CURRENT),
-			Fname:       __ccgo_ts + 70960,
-			FcallProc:   uintptr(0),
-			FdeleteProc: uintptr(0),
-			FcloneProc:  uintptr(0),
+			Fversion: int32(m_TCL_OO_METHOD_VERSION_CURRENT),
+			Fname:    __ccgo_ts + 70960,
 		},
 		FsetterType: TTcl_MethodType{
-			Fversion:    int32(m_TCL_OO_METHOD_VERSION_CURRENT),
-			Fname:       __ccgo_ts + 70994,
-			FcallProc:   uintptr(0),
-			FdeleteProc: uintptr(0),
-			FcloneProc:  uintptr(0),
+			Fversion: int32(m_TCL_OO_METHOD_VERSION_CURRENT),
+			Fname:    __ccgo_ts + 70994,
 		},
 	},
 	2: {
 		Fname: __ccgo_ts + 71028,
 		FgetterType: TTcl_MethodType{
-			Fversion:    int32(m_TCL_OO_METHOD_VERSION_CURRENT),
-			Fname:       __ccgo_ts + 71053,
-			FcallProc:   uintptr(0),
-			FdeleteProc: uintptr(0),
-			FcloneProc:  uintptr(0),
+			Fversion: int32(m_TCL_OO_METHOD_VERSION_CURRENT),
+			Fname:    __ccgo_ts + 71053,
 		},
 		FsetterType: TTcl_MethodType{
-			Fversion:    int32(m_TCL_OO_METHOD_VERSION_CURRENT),
-			Fname:       __ccgo_ts + 71092,
-			FcallProc:   uintptr(0),
-			FdeleteProc: uintptr(0),
-			FcloneProc:  uintptr(0),
+			Fversion: int32(m_TCL_OO_METHOD_VERSION_CURRENT),
+			Fname:    __ccgo_ts + 71092,
 		},
 	},
 	3: {
 		Fname: __ccgo_ts + 71131,
 		FgetterType: TTcl_MethodType{
-			Fversion:    int32(m_TCL_OO_METHOD_VERSION_CURRENT),
-			Fname:       __ccgo_ts + 71154,
-			FcallProc:   uintptr(0),
-			FdeleteProc: uintptr(0),
-			FcloneProc:  uintptr(0),
+			Fversion: int32(m_TCL_OO_METHOD_VERSION_CURRENT),
+			Fname:    __ccgo_ts + 71154,
 		},
 		FsetterType: TTcl_MethodType{
-			Fversion:    int32(m_TCL_OO_METHOD_VERSION_CURRENT),
-			Fname:       __ccgo_ts + 71191,
-			FcallProc:   uintptr(0),
-			FdeleteProc: uintptr(0),
-			FcloneProc:  uintptr(0),
+			Fversion: int32(m_TCL_OO_METHOD_VERSION_CURRENT),
+			Fname:    __ccgo_ts + 71191,
 		},
 	},
 	4: {
 		Fname: __ccgo_ts + 71228,
 		FgetterType: TTcl_MethodType{
-			Fversion:    int32(m_TCL_OO_METHOD_VERSION_CURRENT),
-			Fname:       __ccgo_ts + 71252,
-			FcallProc:   uintptr(0),
-			FdeleteProc: uintptr(0),
-			FcloneProc:  uintptr(0),
+			Fversion: int32(m_TCL_OO_METHOD_VERSION_CURRENT),
+			Fname:    __ccgo_ts + 71252,
 		},
 		FsetterType: TTcl_MethodType{
-			Fversion:    int32(m_TCL_OO_METHOD_VERSION_CURRENT),
-			Fname:       __ccgo_ts + 71290,
-			FcallProc:   uintptr(0),
-			FdeleteProc: uintptr(0),
-			FcloneProc:  uintptr(0),
+			Fversion: int32(m_TCL_OO_METHOD_VERSION_CURRENT),
+			Fname:    __ccgo_ts + 71290,
 		},
 	},
 	5: {
 		Fname: __ccgo_ts + 71328,
 		FgetterType: TTcl_MethodType{
-			Fversion:    int32(m_TCL_OO_METHOD_VERSION_CURRENT),
-			Fname:       __ccgo_ts + 71351,
-			FcallProc:   uintptr(0),
-			FdeleteProc: uintptr(0),
-			FcloneProc:  uintptr(0),
+			Fversion: int32(m_TCL_OO_METHOD_VERSION_CURRENT),
+			Fname:    __ccgo_ts + 71351,
 		},
 		FsetterType: TTcl_MethodType{
-			Fversion:    int32(m_TCL_OO_METHOD_VERSION_CURRENT),
-			Fname:       __ccgo_ts + 71388,
-			FcallProc:   uintptr(0),
-			FdeleteProc: uintptr(0),
-			FcloneProc:  uintptr(0),
+			Fversion: int32(m_TCL_OO_METHOD_VERSION_CURRENT),
+			Fname:    __ccgo_ts + 71388,
 		},
 	},
 	6: {
 		Fname: __ccgo_ts + 71425,
 		FgetterType: TTcl_MethodType{
-			Fversion:    int32(m_TCL_OO_METHOD_VERSION_CURRENT),
-			Fname:       __ccgo_ts + 71451,
-			FcallProc:   uintptr(0),
-			FdeleteProc: uintptr(0),
-			FcloneProc:  uintptr(0),
+			Fversion: int32(m_TCL_OO_METHOD_VERSION_CURRENT),
+			Fname:    __ccgo_ts + 71451,
 		},
 		FsetterType: TTcl_MethodType{
-			Fversion:    int32(m_TCL_OO_METHOD_VERSION_CURRENT),
-			Fname:       __ccgo_ts + 71491,
-			FcallProc:   uintptr(0),
-			FdeleteProc: uintptr(0),
-			FcloneProc:  uintptr(0),
+			Fversion: int32(m_TCL_OO_METHOD_VERSION_CURRENT),
+			Fname:    __ccgo_ts + 71491,
 		},
 	},
-	7: {},
 }
 
 func init() {
 	p := unsafe.Pointer(&_slots)
 	*(*uintptr)(unsafe.Add(p, 12)) = __ccgo_fp(_ClassFilterGet)
-	*(*uintptr)(unsafe.Add(p, 16)) = libc.UintptrFromInt32(0)
-	*(*uintptr)(unsafe.Add(p, 20)) = libc.UintptrFromInt32(0)
 	*(*uintptr)(unsafe.Add(p, 32)) = __ccgo_fp(_ClassFilterSet)
-	*(*uintptr)(unsafe.Add(p, 36)) = libc.UintptrFromInt32(0)
-	*(*uintptr)(unsafe.Add(p, 40)) = libc.UintptrFromInt32(0)
 	*(*uintptr)(unsafe.Add(p, 56)) = __ccgo_fp(_ClassMixinGet)
-	*(*uintptr)(unsafe.Add(p, 60)) = libc.UintptrFromInt32(0)
-	*(*uintptr)(unsafe.Add(p, 64)) = libc.UintptrFromInt32(0)
 	*(*uintptr)(unsafe.Add(p, 76)) = __ccgo_fp(_ClassMixinSet)
-	*(*uintptr)(unsafe.Add(p, 80)) = libc.UintptrFromInt32(0)
-	*(*uintptr)(unsafe.Add(p, 84)) = libc.UintptrFromInt32(0)
 	*(*uintptr)(unsafe.Add(p, 100)) = __ccgo_fp(_ClassSuperGet)
-	*(*uintptr)(unsafe.Add(p, 104)) = libc.UintptrFromInt32(0)
-	*(*uintptr)(unsafe.Add(p, 108)) = libc.UintptrFromInt32(0)
 	*(*uintptr)(unsafe.Add(p, 120)) = __ccgo_fp(_ClassSuperSet)
-	*(*uintptr)(unsafe.Add(p, 124)) = libc.UintptrFromInt32(0)
-	*(*uintptr)(unsafe.Add(p, 128)) = libc.UintptrFromInt32(0)
 	*(*uintptr)(unsafe.Add(p, 144)) = __ccgo_fp(_ClassVarsGet)
-	*(*uintptr)(unsafe.Add(p, 148)) = libc.UintptrFromInt32(0)
-	*(*uintptr)(unsafe.Add(p, 152)) = libc.UintptrFromInt32(0)
 	*(*uintptr)(unsafe.Add(p, 164)) = __ccgo_fp(_ClassVarsSet)
-	*(*uintptr)(unsafe.Add(p, 168)) = libc.UintptrFromInt32(0)
-	*(*uintptr)(unsafe.Add(p, 172)) = libc.UintptrFromInt32(0)
 	*(*uintptr)(unsafe.Add(p, 188)) = __ccgo_fp(_ObjFilterGet)
-	*(*uintptr)(unsafe.Add(p, 192)) = libc.UintptrFromInt32(0)
-	*(*uintptr)(unsafe.Add(p, 196)) = libc.UintptrFromInt32(0)
 	*(*uintptr)(unsafe.Add(p, 208)) = __ccgo_fp(_ObjFilterSet)
-	*(*uintptr)(unsafe.Add(p, 212)) = libc.UintptrFromInt32(0)
-	*(*uintptr)(unsafe.Add(p, 216)) = libc.UintptrFromInt32(0)
 	*(*uintptr)(unsafe.Add(p, 232)) = __ccgo_fp(_ObjMixinGet)
-	*(*uintptr)(unsafe.Add(p, 236)) = libc.UintptrFromInt32(0)
-	*(*uintptr)(unsafe.Add(p, 240)) = libc.UintptrFromInt32(0)
 	*(*uintptr)(unsafe.Add(p, 252)) = __ccgo_fp(_ObjMixinSet)
-	*(*uintptr)(unsafe.Add(p, 256)) = libc.UintptrFromInt32(0)
-	*(*uintptr)(unsafe.Add(p, 260)) = libc.UintptrFromInt32(0)
 	*(*uintptr)(unsafe.Add(p, 276)) = __ccgo_fp(_ObjVarsGet)
-	*(*uintptr)(unsafe.Add(p, 280)) = libc.UintptrFromInt32(0)
-	*(*uintptr)(unsafe.Add(p, 284)) = libc.UintptrFromInt32(0)
 	*(*uintptr)(unsafe.Add(p, 296)) = __ccgo_fp(_ObjVarsSet)
-	*(*uintptr)(unsafe.Add(p, 300)) = libc.UintptrFromInt32(0)
-	*(*uintptr)(unsafe.Add(p, 304)) = libc.UintptrFromInt32(0)
 }
 
 /*
@@ -299029,142 +294349,69 @@ func _ObjVarsSet(tls *libc.TLS, clientData TClientData, interp uintptr, context 
 
 var _infoObjectCmds = [13]TEnsembleImplMap{
 	0: {
-		Fname:        __ccgo_ts + 70565,
-		Fproc:        uintptr(0),
-		FcompileProc: uintptr(0),
-		FnreProc:     uintptr(0),
-		FclientData:  libc.UintptrFromInt32(0),
-		Funsafe:      int32(0),
+		Fname: __ccgo_ts + 70565,
 	},
 	1: {
-		Fname:        __ccgo_ts + 15900,
-		Fproc:        uintptr(0),
-		FcompileProc: uintptr(0),
-		FnreProc:     uintptr(0),
-		FclientData:  libc.UintptrFromInt32(0),
-		Funsafe:      int32(0),
+		Fname: __ccgo_ts + 15900,
 	},
 	2: {
-		Fname:        __ccgo_ts + 72807,
-		Fproc:        uintptr(0),
-		FcompileProc: uintptr(0),
-		FnreProc:     uintptr(0),
-		FclientData:  libc.UintptrFromInt32(0),
-		Funsafe:      int32(0),
+		Fname: __ccgo_ts + 72807,
 	},
 	3: {
-		Fname:        __ccgo_ts + 72818,
-		Fproc:        uintptr(0),
-		FcompileProc: uintptr(0),
-		FnreProc:     uintptr(0),
-		FclientData:  libc.UintptrFromInt32(0),
-		Funsafe:      int32(0),
+		Fname: __ccgo_ts + 72818,
 	},
 	4: {
-		Fname:        __ccgo_ts + 67330,
-		Fproc:        uintptr(0),
-		FcompileProc: uintptr(0),
-		FnreProc:     uintptr(0),
-		FclientData:  libc.UintptrFromInt32(0),
-		Funsafe:      int32(0),
+		Fname: __ccgo_ts + 67330,
 	},
 	5: {
-		Fname:        __ccgo_ts + 72826,
-		Fproc:        uintptr(0),
-		FcompileProc: uintptr(0),
-		FnreProc:     uintptr(0),
-		FclientData:  libc.UintptrFromInt32(0),
-		Funsafe:      int32(0),
+		Fname: __ccgo_ts + 72826,
 	},
 	6: {
-		Fname:        __ccgo_ts + 70321,
-		Fproc:        uintptr(0),
-		FcompileProc: uintptr(0),
-		FnreProc:     uintptr(0),
-		FclientData:  libc.UintptrFromInt32(0),
-		Funsafe:      int32(0),
+		Fname: __ccgo_ts + 70321,
 	},
 	7: {
-		Fname:        __ccgo_ts + 72830,
-		Fproc:        uintptr(0),
-		FcompileProc: uintptr(0),
-		FnreProc:     uintptr(0),
-		FclientData:  libc.UintptrFromInt32(0),
-		Funsafe:      int32(0),
+		Fname: __ccgo_ts + 72830,
 	},
 	8: {
-		Fname:        __ccgo_ts + 72841,
-		Fproc:        uintptr(0),
-		FcompileProc: uintptr(0),
-		FnreProc:     uintptr(0),
-		FclientData:  libc.UintptrFromInt32(0),
-		Funsafe:      int32(0),
+		Fname: __ccgo_ts + 72841,
 	},
 	9: {
-		Fname:        __ccgo_ts + 18568,
-		Fproc:        uintptr(0),
-		FcompileProc: uintptr(0),
-		FnreProc:     uintptr(0),
-		FclientData:  libc.UintptrFromInt32(0),
-		Funsafe:      int32(0),
+		Fname: __ccgo_ts + 18568,
 	},
 	10: {
-		Fname:        __ccgo_ts + 18345,
-		Fproc:        uintptr(0),
-		FcompileProc: uintptr(0),
-		FnreProc:     uintptr(0),
-		FclientData:  libc.UintptrFromInt32(0),
-		Funsafe:      int32(0),
+		Fname: __ccgo_ts + 18345,
 	},
 	11: {
-		Fname:        __ccgo_ts + 13160,
-		Fproc:        uintptr(0),
-		FcompileProc: uintptr(0),
-		FnreProc:     uintptr(0),
-		FclientData:  libc.UintptrFromInt32(0),
-		Funsafe:      int32(0),
+		Fname: __ccgo_ts + 13160,
 	},
-	12: {},
 }
 
 func init() {
 	p := unsafe.Pointer(&_infoObjectCmds)
 	*(*uintptr)(unsafe.Add(p, 4)) = __ccgo_fp(_InfoObjectCallCmd)
 	*(*uintptr)(unsafe.Add(p, 8)) = __ccgo_fp(XTclCompileBasic2ArgCmd)
-	*(*uintptr)(unsafe.Add(p, 12)) = libc.UintptrFromInt32(0)
 	*(*uintptr)(unsafe.Add(p, 28)) = __ccgo_fp(_InfoObjectClassCmd)
 	*(*uintptr)(unsafe.Add(p, 32)) = __ccgo_fp(XTclCompileInfoObjectClassCmd)
-	*(*uintptr)(unsafe.Add(p, 36)) = libc.UintptrFromInt32(0)
 	*(*uintptr)(unsafe.Add(p, 52)) = __ccgo_fp(_InfoObjectDefnCmd)
 	*(*uintptr)(unsafe.Add(p, 56)) = __ccgo_fp(XTclCompileBasic2ArgCmd)
-	*(*uintptr)(unsafe.Add(p, 60)) = libc.UintptrFromInt32(0)
 	*(*uintptr)(unsafe.Add(p, 76)) = __ccgo_fp(_InfoObjectFiltersCmd)
 	*(*uintptr)(unsafe.Add(p, 80)) = __ccgo_fp(XTclCompileBasic1ArgCmd)
-	*(*uintptr)(unsafe.Add(p, 84)) = libc.UintptrFromInt32(0)
 	*(*uintptr)(unsafe.Add(p, 100)) = __ccgo_fp(_InfoObjectForwardCmd)
 	*(*uintptr)(unsafe.Add(p, 104)) = __ccgo_fp(XTclCompileBasic2ArgCmd)
-	*(*uintptr)(unsafe.Add(p, 108)) = libc.UintptrFromInt32(0)
 	*(*uintptr)(unsafe.Add(p, 124)) = __ccgo_fp(_InfoObjectIsACmd)
 	*(*uintptr)(unsafe.Add(p, 128)) = __ccgo_fp(XTclCompileInfoObjectIsACmd)
-	*(*uintptr)(unsafe.Add(p, 132)) = libc.UintptrFromInt32(0)
 	*(*uintptr)(unsafe.Add(p, 148)) = __ccgo_fp(_InfoObjectMethodsCmd)
 	*(*uintptr)(unsafe.Add(p, 152)) = __ccgo_fp(XTclCompileBasicMin1ArgCmd)
-	*(*uintptr)(unsafe.Add(p, 156)) = libc.UintptrFromInt32(0)
 	*(*uintptr)(unsafe.Add(p, 172)) = __ccgo_fp(_InfoObjectMethodTypeCmd)
 	*(*uintptr)(unsafe.Add(p, 176)) = __ccgo_fp(XTclCompileBasic2ArgCmd)
-	*(*uintptr)(unsafe.Add(p, 180)) = libc.UintptrFromInt32(0)
 	*(*uintptr)(unsafe.Add(p, 196)) = __ccgo_fp(_InfoObjectMixinsCmd)
 	*(*uintptr)(unsafe.Add(p, 200)) = __ccgo_fp(XTclCompileBasic1ArgCmd)
-	*(*uintptr)(unsafe.Add(p, 204)) = libc.UintptrFromInt32(0)
 	*(*uintptr)(unsafe.Add(p, 220)) = __ccgo_fp(_InfoObjectNsCmd)
 	*(*uintptr)(unsafe.Add(p, 224)) = __ccgo_fp(XTclCompileInfoObjectNamespaceCmd)
-	*(*uintptr)(unsafe.Add(p, 228)) = libc.UintptrFromInt32(0)
 	*(*uintptr)(unsafe.Add(p, 244)) = __ccgo_fp(_InfoObjectVariablesCmd)
 	*(*uintptr)(unsafe.Add(p, 248)) = __ccgo_fp(XTclCompileBasic1ArgCmd)
-	*(*uintptr)(unsafe.Add(p, 252)) = libc.UintptrFromInt32(0)
 	*(*uintptr)(unsafe.Add(p, 268)) = __ccgo_fp(_InfoObjectVarsCmd)
 	*(*uintptr)(unsafe.Add(p, 272)) = __ccgo_fp(XTclCompileBasic1Or2ArgCmd)
-	*(*uintptr)(unsafe.Add(p, 276)) = libc.UintptrFromInt32(0)
 }
 
 /*
@@ -299173,153 +294420,74 @@ func init() {
 
 var _infoClassCmds = [14]TEnsembleImplMap{
 	0: {
-		Fname:        __ccgo_ts + 70565,
-		Fproc:        uintptr(0),
-		FcompileProc: uintptr(0),
-		FnreProc:     uintptr(0),
-		FclientData:  libc.UintptrFromInt32(0),
-		Funsafe:      int32(0),
+		Fname: __ccgo_ts + 70565,
 	},
 	1: {
-		Fname:        __ccgo_ts + 25185,
-		Fproc:        uintptr(0),
-		FcompileProc: uintptr(0),
-		FnreProc:     uintptr(0),
-		FclientData:  libc.UintptrFromInt32(0),
-		Funsafe:      int32(0),
+		Fname: __ccgo_ts + 25185,
 	},
 	2: {
-		Fname:        __ccgo_ts + 72807,
-		Fproc:        uintptr(0),
-		FcompileProc: uintptr(0),
-		FnreProc:     uintptr(0),
-		FclientData:  libc.UintptrFromInt32(0),
-		Funsafe:      int32(0),
+		Fname: __ccgo_ts + 72807,
 	},
 	3: {
-		Fname:        __ccgo_ts + 25197,
-		Fproc:        uintptr(0),
-		FcompileProc: uintptr(0),
-		FnreProc:     uintptr(0),
-		FclientData:  libc.UintptrFromInt32(0),
-		Funsafe:      int32(0),
+		Fname: __ccgo_ts + 25197,
 	},
 	4: {
-		Fname:        __ccgo_ts + 72818,
-		Fproc:        uintptr(0),
-		FcompileProc: uintptr(0),
-		FnreProc:     uintptr(0),
-		FclientData:  libc.UintptrFromInt32(0),
-		Funsafe:      int32(0),
+		Fname: __ccgo_ts + 72818,
 	},
 	5: {
-		Fname:        __ccgo_ts + 67330,
-		Fproc:        uintptr(0),
-		FcompileProc: uintptr(0),
-		FnreProc:     uintptr(0),
-		FclientData:  libc.UintptrFromInt32(0),
-		Funsafe:      int32(0),
+		Fname: __ccgo_ts + 67330,
 	},
 	6: {
-		Fname:        __ccgo_ts + 72848,
-		Fproc:        uintptr(0),
-		FcompileProc: uintptr(0),
-		FnreProc:     uintptr(0),
-		FclientData:  libc.UintptrFromInt32(0),
-		Funsafe:      int32(0),
+		Fname: __ccgo_ts + 72848,
 	},
 	7: {
-		Fname:        __ccgo_ts + 70321,
-		Fproc:        uintptr(0),
-		FcompileProc: uintptr(0),
-		FnreProc:     uintptr(0),
-		FclientData:  libc.UintptrFromInt32(0),
-		Funsafe:      int32(0),
+		Fname: __ccgo_ts + 70321,
 	},
 	8: {
-		Fname:        __ccgo_ts + 72830,
-		Fproc:        uintptr(0),
-		FcompileProc: uintptr(0),
-		FnreProc:     uintptr(0),
-		FclientData:  libc.UintptrFromInt32(0),
-		Funsafe:      int32(0),
+		Fname: __ccgo_ts + 72830,
 	},
 	9: {
-		Fname:        __ccgo_ts + 72841,
-		Fproc:        uintptr(0),
-		FcompileProc: uintptr(0),
-		FnreProc:     uintptr(0),
-		FclientData:  libc.UintptrFromInt32(0),
-		Funsafe:      int32(0),
+		Fname: __ccgo_ts + 72841,
 	},
 	10: {
-		Fname:        __ccgo_ts + 72858,
-		Fproc:        uintptr(0),
-		FcompileProc: uintptr(0),
-		FnreProc:     uintptr(0),
-		FclientData:  libc.UintptrFromInt32(0),
-		Funsafe:      int32(0),
+		Fname: __ccgo_ts + 72858,
 	},
 	11: {
-		Fname:        __ccgo_ts + 72869,
-		Fproc:        uintptr(0),
-		FcompileProc: uintptr(0),
-		FnreProc:     uintptr(0),
-		FclientData:  libc.UintptrFromInt32(0),
-		Funsafe:      int32(0),
+		Fname: __ccgo_ts + 72869,
 	},
 	12: {
-		Fname:        __ccgo_ts + 18345,
-		Fproc:        uintptr(0),
-		FcompileProc: uintptr(0),
-		FnreProc:     uintptr(0),
-		FclientData:  libc.UintptrFromInt32(0),
-		Funsafe:      int32(0),
+		Fname: __ccgo_ts + 18345,
 	},
-	13: {},
 }
 
 func init() {
 	p := unsafe.Pointer(&_infoClassCmds)
 	*(*uintptr)(unsafe.Add(p, 4)) = __ccgo_fp(_InfoClassCallCmd)
 	*(*uintptr)(unsafe.Add(p, 8)) = __ccgo_fp(XTclCompileBasic2ArgCmd)
-	*(*uintptr)(unsafe.Add(p, 12)) = libc.UintptrFromInt32(0)
 	*(*uintptr)(unsafe.Add(p, 28)) = __ccgo_fp(_InfoClassConstrCmd)
 	*(*uintptr)(unsafe.Add(p, 32)) = __ccgo_fp(XTclCompileBasic1ArgCmd)
-	*(*uintptr)(unsafe.Add(p, 36)) = libc.UintptrFromInt32(0)
 	*(*uintptr)(unsafe.Add(p, 52)) = __ccgo_fp(_InfoClassDefnCmd)
 	*(*uintptr)(unsafe.Add(p, 56)) = __ccgo_fp(XTclCompileBasic2ArgCmd)
-	*(*uintptr)(unsafe.Add(p, 60)) = libc.UintptrFromInt32(0)
 	*(*uintptr)(unsafe.Add(p, 76)) = __ccgo_fp(_InfoClassDestrCmd)
 	*(*uintptr)(unsafe.Add(p, 80)) = __ccgo_fp(XTclCompileBasic1ArgCmd)
-	*(*uintptr)(unsafe.Add(p, 84)) = libc.UintptrFromInt32(0)
 	*(*uintptr)(unsafe.Add(p, 100)) = __ccgo_fp(_InfoClassFiltersCmd)
 	*(*uintptr)(unsafe.Add(p, 104)) = __ccgo_fp(XTclCompileBasic1ArgCmd)
-	*(*uintptr)(unsafe.Add(p, 108)) = libc.UintptrFromInt32(0)
 	*(*uintptr)(unsafe.Add(p, 124)) = __ccgo_fp(_InfoClassForwardCmd)
 	*(*uintptr)(unsafe.Add(p, 128)) = __ccgo_fp(XTclCompileBasic2ArgCmd)
-	*(*uintptr)(unsafe.Add(p, 132)) = libc.UintptrFromInt32(0)
 	*(*uintptr)(unsafe.Add(p, 148)) = __ccgo_fp(_InfoClassInstancesCmd)
 	*(*uintptr)(unsafe.Add(p, 152)) = __ccgo_fp(XTclCompileBasic1Or2ArgCmd)
-	*(*uintptr)(unsafe.Add(p, 156)) = libc.UintptrFromInt32(0)
 	*(*uintptr)(unsafe.Add(p, 172)) = __ccgo_fp(_InfoClassMethodsCmd)
 	*(*uintptr)(unsafe.Add(p, 176)) = __ccgo_fp(XTclCompileBasicMin1ArgCmd)
-	*(*uintptr)(unsafe.Add(p, 180)) = libc.UintptrFromInt32(0)
 	*(*uintptr)(unsafe.Add(p, 196)) = __ccgo_fp(_InfoClassMethodTypeCmd)
 	*(*uintptr)(unsafe.Add(p, 200)) = __ccgo_fp(XTclCompileBasic2ArgCmd)
-	*(*uintptr)(unsafe.Add(p, 204)) = libc.UintptrFromInt32(0)
 	*(*uintptr)(unsafe.Add(p, 220)) = __ccgo_fp(_InfoClassMixinsCmd)
 	*(*uintptr)(unsafe.Add(p, 224)) = __ccgo_fp(XTclCompileBasic1ArgCmd)
-	*(*uintptr)(unsafe.Add(p, 228)) = libc.UintptrFromInt32(0)
 	*(*uintptr)(unsafe.Add(p, 244)) = __ccgo_fp(_InfoClassSubsCmd)
 	*(*uintptr)(unsafe.Add(p, 248)) = __ccgo_fp(XTclCompileBasic1Or2ArgCmd)
-	*(*uintptr)(unsafe.Add(p, 252)) = libc.UintptrFromInt32(0)
 	*(*uintptr)(unsafe.Add(p, 268)) = __ccgo_fp(_InfoClassSupersCmd)
 	*(*uintptr)(unsafe.Add(p, 272)) = __ccgo_fp(XTclCompileBasic1ArgCmd)
-	*(*uintptr)(unsafe.Add(p, 276)) = libc.UintptrFromInt32(0)
 	*(*uintptr)(unsafe.Add(p, 292)) = __ccgo_fp(_InfoClassVariablesCmd)
 	*(*uintptr)(unsafe.Add(p, 296)) = __ccgo_fp(XTclCompileBasic1ArgCmd)
-	*(*uintptr)(unsafe.Add(p, 300)) = libc.UintptrFromInt32(0)
 }
 
 /*
@@ -299789,7 +294957,6 @@ var _categories = [6]uintptr{
 	2: __ccgo_ts + 73080,
 	3: __ccgo_ts + 18503,
 	4: __ccgo_ts + 73086,
-	5: libc.UintptrFromInt32(0),
 }
 
 /*
@@ -299907,7 +295074,6 @@ var _options18 = [4]uintptr{
 	0: __ccgo_ts + 14394,
 	1: __ccgo_ts + 73147,
 	2: __ccgo_ts + 73161,
-	3: libc.UintptrFromInt32(0),
 }
 
 /*
@@ -300699,7 +295865,6 @@ var _options19 = [4]uintptr{
 	0: __ccgo_ts + 14394,
 	1: __ccgo_ts + 73147,
 	2: __ccgo_ts + 73161,
-	3: libc.UintptrFromInt32(0),
 }
 
 /*
@@ -301406,11 +296571,8 @@ type TOOResVarInfo = struct {
  */
 
 var _procMethodType = TTcl_MethodType{
-	Fversion:    int32(m_TCL_OO_METHOD_VERSION_CURRENT),
-	Fname:       __ccgo_ts + 25215,
-	FcallProc:   uintptr(0),
-	FdeleteProc: uintptr(0),
-	FcloneProc:  uintptr(0),
+	Fversion: int32(m_TCL_OO_METHOD_VERSION_CURRENT),
+	Fname:    __ccgo_ts + 25215,
 }
 
 func init() {
@@ -301421,11 +296583,8 @@ func init() {
 }
 
 var _fwdMethodType = TTcl_MethodType{
-	Fversion:    int32(m_TCL_OO_METHOD_VERSION_CURRENT),
-	Fname:       __ccgo_ts + 67330,
-	FcallProc:   uintptr(0),
-	FdeleteProc: uintptr(0),
-	FcloneProc:  uintptr(0),
+	Fversion: int32(m_TCL_OO_METHOD_VERSION_CURRENT),
+	Fname:    __ccgo_ts + 67330,
 }
 
 func init() {
@@ -303095,24 +298254,7 @@ const m_TclOOUnusedStubEntry = 0
 /* !BEGIN!: Do not edit below this line. */
 
 var _tclOOIntStubs = TTclOOIntStubs{
-	Fmagic:                         libc.Int32FromUint32(0xFCA3BACF),
-	Fhooks:                         uintptr(0),
-	FtclOOGetDefineCmdContext:      uintptr(0),
-	FtclOOMakeProcInstanceMethod:   uintptr(0),
-	FtclOOMakeProcMethod:           uintptr(0),
-	FtclOONewProcInstanceMethod:    uintptr(0),
-	FtclOONewProcMethod:            uintptr(0),
-	FtclOOObjectCmdCore:            uintptr(0),
-	FtclOOIsReachable:              uintptr(0),
-	FtclOONewForwardMethod:         uintptr(0),
-	FtclOONewForwardInstanceMethod: uintptr(0),
-	FtclOONewProcInstanceMethodEx:  uintptr(0),
-	FtclOONewProcMethodEx:          uintptr(0),
-	FtclOOInvokeObject:             uintptr(0),
-	FtclOOObjectSetFilters:         uintptr(0),
-	FtclOOClassSetFilters:          uintptr(0),
-	FtclOOObjectSetMixins:          uintptr(0),
-	FtclOOClassSetMixins:           uintptr(0),
+	Fmagic: libc.Int32FromUint32(0xFCA3BACF),
 }
 
 func init() {
@@ -303170,12 +298312,6 @@ func init() {
 	*(*uintptr)(unsafe.Add(p, 112)) = __ccgo_fp(XTcl_ClassSetConstructor)
 	*(*uintptr)(unsafe.Add(p, 116)) = __ccgo_fp(XTcl_ClassSetDestructor)
 	*(*uintptr)(unsafe.Add(p, 120)) = __ccgo_fp(XTcl_GetObjectName)
-	*(*uintptr)(unsafe.Add(p, 124)) = uintptr(0)
-	*(*uintptr)(unsafe.Add(p, 128)) = uintptr(0)
-	*(*uintptr)(unsafe.Add(p, 132)) = uintptr(0)
-	*(*uintptr)(unsafe.Add(p, 136)) = uintptr(0)
-	*(*uintptr)(unsafe.Add(p, 140)) = uintptr(0)
-	*(*uintptr)(unsafe.Add(p, 144)) = uintptr(m_TclOOUnusedStubEntry)
 }
 
 /*
@@ -303984,21 +299120,13 @@ func XTclBN_mp_cmp_mag(tls *libc.TLS, a uintptr, b uintptr) (r Tmp_ord) {
 
 var _lnz = [16]int32{
 	0:  int32(4),
-	1:  int32(0),
 	2:  int32(1),
-	3:  int32(0),
 	4:  int32(2),
-	5:  int32(0),
 	6:  int32(1),
-	7:  int32(0),
 	8:  int32(3),
-	9:  int32(0),
 	10: int32(1),
-	11: int32(0),
 	12: int32(2),
-	13: int32(0),
 	14: int32(1),
-	15: int32(0),
 }
 
 // C documentation
@@ -308095,7 +303223,6 @@ var Xmp_s_rmap_reverse = [88]uint8{
 	5:  uint8(0xff),
 	6:  uint8(0xff),
 	7:  uint8(0x3f),
-	8:  uint8(0x00),
 	9:  uint8(0x01),
 	10: uint8(0x02),
 	11: uint8(0x03),
@@ -308180,12 +303307,8 @@ var Xmp_s_rmap_reverse = [88]uint8{
 var Xmp_s_rmap_reverse_sz = uint32(88)
 
 var XtclArrayHashKeyType = TTcl_HashKeyType{
-	Fversion:         int32(m_TCL_HASH_KEY_TYPE_VERSION),
-	Fflags:           int32(m_TCL_HASH_KEY_RANDOMIZE_HASH),
-	FhashKeyProc:     uintptr(0),
-	FcompareKeysProc: uintptr(0),
-	FallocEntryProc:  uintptr(0),
-	FfreeEntryProc:   uintptr(0),
+	Fversion: int32(m_TCL_HASH_KEY_TYPE_VERSION),
+	Fflags:   int32(m_TCL_HASH_KEY_RANDOMIZE_HASH),
 }
 
 /*
@@ -308201,27 +303324,15 @@ var XtclArrayHashKeyType = TTcl_HashKeyType{
  */
 
 var XtclArraySearchType = TTcl_ObjType{
-	Fname:             __ccgo_ts + 60058,
-	FfreeIntRepProc:   uintptr(0),
-	FdupIntRepProc:    uintptr(0),
-	FupdateStringProc: uintptr(0),
-	FsetFromAnyProc:   uintptr(0),
+	Fname: __ccgo_ts + 60058,
 }
 
 var XtclBignumType = TTcl_ObjType{
-	Fname:             __ccgo_ts + 46532,
-	FfreeIntRepProc:   uintptr(0),
-	FdupIntRepProc:    uintptr(0),
-	FupdateStringProc: uintptr(0),
-	FsetFromAnyProc:   uintptr(0),
+	Fname: __ccgo_ts + 46510,
 }
 
 var XtclBooleanType = TTcl_ObjType{
-	Fname:             __ccgo_ts + 46510,
-	FfreeIntRepProc:   uintptr(0),
-	FdupIntRepProc:    uintptr(0),
-	FupdateStringProc: uintptr(0),
-	FsetFromAnyProc:   uintptr(0),
+	Fname: __ccgo_ts + 46525,
 }
 
 /*
@@ -308250,11 +303361,7 @@ var XtclBooleanType = TTcl_ObjType{
  */
 
 var XtclByteArrayType = TTcl_ObjType{
-	Fname:             __ccgo_ts + 9175,
-	FfreeIntRepProc:   uintptr(0),
-	FdupIntRepProc:    uintptr(0),
-	FupdateStringProc: uintptr(0),
-	FsetFromAnyProc:   uintptr(0),
+	Fname: __ccgo_ts + 9175,
 }
 
 /*
@@ -308263,11 +303370,7 @@ var XtclByteArrayType = TTcl_ObjType{
  */
 
 var XtclByteCodeType = TTcl_ObjType{
-	Fname:             __ccgo_ts + 20640,
-	FfreeIntRepProc:   uintptr(0),
-	FdupIntRepProc:    uintptr(0),
-	FupdateStringProc: uintptr(0),
-	FsetFromAnyProc:   uintptr(0),
+	Fname: __ccgo_ts + 20640,
 }
 
 /*
@@ -308297,390 +303400,22 @@ var XtclByteCodeType = TTcl_ObjType{
  */
 
 var XtclCharTypeTable = [384]int8{
-	0:   int8(m_TYPE_NORMAL),
-	1:   int8(m_TYPE_NORMAL),
-	2:   int8(m_TYPE_NORMAL),
-	3:   int8(m_TYPE_NORMAL),
-	4:   int8(m_TYPE_NORMAL),
-	5:   int8(m_TYPE_NORMAL),
-	6:   int8(m_TYPE_NORMAL),
-	7:   int8(m_TYPE_NORMAL),
-	8:   int8(m_TYPE_NORMAL),
-	9:   int8(m_TYPE_NORMAL),
-	10:  int8(m_TYPE_NORMAL),
-	11:  int8(m_TYPE_NORMAL),
-	12:  int8(m_TYPE_NORMAL),
-	13:  int8(m_TYPE_NORMAL),
-	14:  int8(m_TYPE_NORMAL),
-	15:  int8(m_TYPE_NORMAL),
-	16:  int8(m_TYPE_NORMAL),
-	17:  int8(m_TYPE_NORMAL),
-	18:  int8(m_TYPE_NORMAL),
-	19:  int8(m_TYPE_NORMAL),
-	20:  int8(m_TYPE_NORMAL),
-	21:  int8(m_TYPE_NORMAL),
-	22:  int8(m_TYPE_NORMAL),
-	23:  int8(m_TYPE_NORMAL),
-	24:  int8(m_TYPE_NORMAL),
-	25:  int8(m_TYPE_NORMAL),
-	26:  int8(m_TYPE_NORMAL),
-	27:  int8(m_TYPE_NORMAL),
-	28:  int8(m_TYPE_NORMAL),
-	29:  int8(m_TYPE_NORMAL),
-	30:  int8(m_TYPE_NORMAL),
-	31:  int8(m_TYPE_NORMAL),
-	32:  int8(m_TYPE_NORMAL),
-	33:  int8(m_TYPE_NORMAL),
-	34:  int8(m_TYPE_NORMAL),
-	35:  int8(m_TYPE_NORMAL),
-	36:  int8(m_TYPE_NORMAL),
-	37:  int8(m_TYPE_NORMAL),
-	38:  int8(m_TYPE_NORMAL),
-	39:  int8(m_TYPE_NORMAL),
-	40:  int8(m_TYPE_NORMAL),
-	41:  int8(m_TYPE_NORMAL),
-	42:  int8(m_TYPE_NORMAL),
-	43:  int8(m_TYPE_NORMAL),
-	44:  int8(m_TYPE_NORMAL),
-	45:  int8(m_TYPE_NORMAL),
-	46:  int8(m_TYPE_NORMAL),
-	47:  int8(m_TYPE_NORMAL),
-	48:  int8(m_TYPE_NORMAL),
-	49:  int8(m_TYPE_NORMAL),
-	50:  int8(m_TYPE_NORMAL),
-	51:  int8(m_TYPE_NORMAL),
-	52:  int8(m_TYPE_NORMAL),
-	53:  int8(m_TYPE_NORMAL),
-	54:  int8(m_TYPE_NORMAL),
-	55:  int8(m_TYPE_NORMAL),
-	56:  int8(m_TYPE_NORMAL),
-	57:  int8(m_TYPE_NORMAL),
-	58:  int8(m_TYPE_NORMAL),
-	59:  int8(m_TYPE_NORMAL),
-	60:  int8(m_TYPE_NORMAL),
-	61:  int8(m_TYPE_NORMAL),
-	62:  int8(m_TYPE_NORMAL),
-	63:  int8(m_TYPE_NORMAL),
-	64:  int8(m_TYPE_NORMAL),
-	65:  int8(m_TYPE_NORMAL),
-	66:  int8(m_TYPE_NORMAL),
-	67:  int8(m_TYPE_NORMAL),
-	68:  int8(m_TYPE_NORMAL),
-	69:  int8(m_TYPE_NORMAL),
-	70:  int8(m_TYPE_NORMAL),
-	71:  int8(m_TYPE_NORMAL),
-	72:  int8(m_TYPE_NORMAL),
-	73:  int8(m_TYPE_NORMAL),
-	74:  int8(m_TYPE_NORMAL),
-	75:  int8(m_TYPE_NORMAL),
-	76:  int8(m_TYPE_NORMAL),
-	77:  int8(m_TYPE_NORMAL),
-	78:  int8(m_TYPE_NORMAL),
-	79:  int8(m_TYPE_NORMAL),
-	80:  int8(m_TYPE_NORMAL),
-	81:  int8(m_TYPE_NORMAL),
-	82:  int8(m_TYPE_NORMAL),
-	83:  int8(m_TYPE_NORMAL),
-	84:  int8(m_TYPE_NORMAL),
-	85:  int8(m_TYPE_NORMAL),
-	86:  int8(m_TYPE_NORMAL),
-	87:  int8(m_TYPE_NORMAL),
-	88:  int8(m_TYPE_NORMAL),
-	89:  int8(m_TYPE_NORMAL),
-	90:  int8(m_TYPE_NORMAL),
-	91:  int8(m_TYPE_NORMAL),
-	92:  int8(m_TYPE_NORMAL),
-	93:  int8(m_TYPE_NORMAL),
-	94:  int8(m_TYPE_NORMAL),
-	95:  int8(m_TYPE_NORMAL),
-	96:  int8(m_TYPE_NORMAL),
-	97:  int8(m_TYPE_NORMAL),
-	98:  int8(m_TYPE_NORMAL),
-	99:  int8(m_TYPE_NORMAL),
-	100: int8(m_TYPE_NORMAL),
-	101: int8(m_TYPE_NORMAL),
-	102: int8(m_TYPE_NORMAL),
-	103: int8(m_TYPE_NORMAL),
-	104: int8(m_TYPE_NORMAL),
-	105: int8(m_TYPE_NORMAL),
-	106: int8(m_TYPE_NORMAL),
-	107: int8(m_TYPE_NORMAL),
-	108: int8(m_TYPE_NORMAL),
-	109: int8(m_TYPE_NORMAL),
-	110: int8(m_TYPE_NORMAL),
-	111: int8(m_TYPE_NORMAL),
-	112: int8(m_TYPE_NORMAL),
-	113: int8(m_TYPE_NORMAL),
-	114: int8(m_TYPE_NORMAL),
-	115: int8(m_TYPE_NORMAL),
-	116: int8(m_TYPE_NORMAL),
-	117: int8(m_TYPE_NORMAL),
-	118: int8(m_TYPE_NORMAL),
-	119: int8(m_TYPE_NORMAL),
-	120: int8(m_TYPE_NORMAL),
-	121: int8(m_TYPE_NORMAL),
-	122: int8(m_TYPE_NORMAL),
-	123: int8(m_TYPE_NORMAL),
-	124: int8(m_TYPE_NORMAL),
-	125: int8(m_TYPE_NORMAL),
-	126: int8(m_TYPE_NORMAL),
-	127: int8(m_TYPE_NORMAL),
 	128: int8(m_TYPE_SUBS),
-	129: int8(m_TYPE_NORMAL),
-	130: int8(m_TYPE_NORMAL),
-	131: int8(m_TYPE_NORMAL),
-	132: int8(m_TYPE_NORMAL),
-	133: int8(m_TYPE_NORMAL),
-	134: int8(m_TYPE_NORMAL),
-	135: int8(m_TYPE_NORMAL),
-	136: int8(m_TYPE_NORMAL),
 	137: int8(m_TYPE_SPACE),
 	138: int8(m_TYPE_COMMAND_END),
 	139: int8(m_TYPE_SPACE),
 	140: int8(m_TYPE_SPACE),
 	141: int8(m_TYPE_SPACE),
-	142: int8(m_TYPE_NORMAL),
-	143: int8(m_TYPE_NORMAL),
-	144: int8(m_TYPE_NORMAL),
-	145: int8(m_TYPE_NORMAL),
-	146: int8(m_TYPE_NORMAL),
-	147: int8(m_TYPE_NORMAL),
-	148: int8(m_TYPE_NORMAL),
-	149: int8(m_TYPE_NORMAL),
-	150: int8(m_TYPE_NORMAL),
-	151: int8(m_TYPE_NORMAL),
-	152: int8(m_TYPE_NORMAL),
-	153: int8(m_TYPE_NORMAL),
-	154: int8(m_TYPE_NORMAL),
-	155: int8(m_TYPE_NORMAL),
-	156: int8(m_TYPE_NORMAL),
-	157: int8(m_TYPE_NORMAL),
-	158: int8(m_TYPE_NORMAL),
-	159: int8(m_TYPE_NORMAL),
 	160: int8(m_TYPE_SPACE),
-	161: int8(m_TYPE_NORMAL),
 	162: int8(m_TYPE_QUOTE),
-	163: int8(m_TYPE_NORMAL),
 	164: int8(m_TYPE_SUBS),
-	165: int8(m_TYPE_NORMAL),
-	166: int8(m_TYPE_NORMAL),
-	167: int8(m_TYPE_NORMAL),
-	168: int8(m_TYPE_NORMAL),
 	169: int8(m_TYPE_CLOSE_PAREN),
-	170: int8(m_TYPE_NORMAL),
-	171: int8(m_TYPE_NORMAL),
-	172: int8(m_TYPE_NORMAL),
-	173: int8(m_TYPE_NORMAL),
-	174: int8(m_TYPE_NORMAL),
-	175: int8(m_TYPE_NORMAL),
-	176: int8(m_TYPE_NORMAL),
-	177: int8(m_TYPE_NORMAL),
-	178: int8(m_TYPE_NORMAL),
-	179: int8(m_TYPE_NORMAL),
-	180: int8(m_TYPE_NORMAL),
-	181: int8(m_TYPE_NORMAL),
-	182: int8(m_TYPE_NORMAL),
-	183: int8(m_TYPE_NORMAL),
-	184: int8(m_TYPE_NORMAL),
-	185: int8(m_TYPE_NORMAL),
-	186: int8(m_TYPE_NORMAL),
 	187: int8(m_TYPE_COMMAND_END),
-	188: int8(m_TYPE_NORMAL),
-	189: int8(m_TYPE_NORMAL),
-	190: int8(m_TYPE_NORMAL),
-	191: int8(m_TYPE_NORMAL),
-	192: int8(m_TYPE_NORMAL),
-	193: int8(m_TYPE_NORMAL),
-	194: int8(m_TYPE_NORMAL),
-	195: int8(m_TYPE_NORMAL),
-	196: int8(m_TYPE_NORMAL),
-	197: int8(m_TYPE_NORMAL),
-	198: int8(m_TYPE_NORMAL),
-	199: int8(m_TYPE_NORMAL),
-	200: int8(m_TYPE_NORMAL),
-	201: int8(m_TYPE_NORMAL),
-	202: int8(m_TYPE_NORMAL),
-	203: int8(m_TYPE_NORMAL),
-	204: int8(m_TYPE_NORMAL),
-	205: int8(m_TYPE_NORMAL),
-	206: int8(m_TYPE_NORMAL),
-	207: int8(m_TYPE_NORMAL),
-	208: int8(m_TYPE_NORMAL),
-	209: int8(m_TYPE_NORMAL),
-	210: int8(m_TYPE_NORMAL),
-	211: int8(m_TYPE_NORMAL),
-	212: int8(m_TYPE_NORMAL),
-	213: int8(m_TYPE_NORMAL),
-	214: int8(m_TYPE_NORMAL),
-	215: int8(m_TYPE_NORMAL),
-	216: int8(m_TYPE_NORMAL),
-	217: int8(m_TYPE_NORMAL),
-	218: int8(m_TYPE_NORMAL),
 	219: int8(m_TYPE_SUBS),
 	220: int8(m_TYPE_SUBS),
 	221: int8(m_TYPE_CLOSE_BRACK),
-	222: int8(m_TYPE_NORMAL),
-	223: int8(m_TYPE_NORMAL),
-	224: int8(m_TYPE_NORMAL),
-	225: int8(m_TYPE_NORMAL),
-	226: int8(m_TYPE_NORMAL),
-	227: int8(m_TYPE_NORMAL),
-	228: int8(m_TYPE_NORMAL),
-	229: int8(m_TYPE_NORMAL),
-	230: int8(m_TYPE_NORMAL),
-	231: int8(m_TYPE_NORMAL),
-	232: int8(m_TYPE_NORMAL),
-	233: int8(m_TYPE_NORMAL),
-	234: int8(m_TYPE_NORMAL),
-	235: int8(m_TYPE_NORMAL),
-	236: int8(m_TYPE_NORMAL),
-	237: int8(m_TYPE_NORMAL),
-	238: int8(m_TYPE_NORMAL),
-	239: int8(m_TYPE_NORMAL),
-	240: int8(m_TYPE_NORMAL),
-	241: int8(m_TYPE_NORMAL),
-	242: int8(m_TYPE_NORMAL),
-	243: int8(m_TYPE_NORMAL),
-	244: int8(m_TYPE_NORMAL),
-	245: int8(m_TYPE_NORMAL),
-	246: int8(m_TYPE_NORMAL),
-	247: int8(m_TYPE_NORMAL),
-	248: int8(m_TYPE_NORMAL),
-	249: int8(m_TYPE_NORMAL),
-	250: int8(m_TYPE_NORMAL),
 	251: int8(m_TYPE_BRACE),
-	252: int8(m_TYPE_NORMAL),
 	253: int8(m_TYPE_BRACE),
-	254: int8(m_TYPE_NORMAL),
-	255: int8(m_TYPE_NORMAL),
-	256: int8(m_TYPE_NORMAL),
-	257: int8(m_TYPE_NORMAL),
-	258: int8(m_TYPE_NORMAL),
-	259: int8(m_TYPE_NORMAL),
-	260: int8(m_TYPE_NORMAL),
-	261: int8(m_TYPE_NORMAL),
-	262: int8(m_TYPE_NORMAL),
-	263: int8(m_TYPE_NORMAL),
-	264: int8(m_TYPE_NORMAL),
-	265: int8(m_TYPE_NORMAL),
-	266: int8(m_TYPE_NORMAL),
-	267: int8(m_TYPE_NORMAL),
-	268: int8(m_TYPE_NORMAL),
-	269: int8(m_TYPE_NORMAL),
-	270: int8(m_TYPE_NORMAL),
-	271: int8(m_TYPE_NORMAL),
-	272: int8(m_TYPE_NORMAL),
-	273: int8(m_TYPE_NORMAL),
-	274: int8(m_TYPE_NORMAL),
-	275: int8(m_TYPE_NORMAL),
-	276: int8(m_TYPE_NORMAL),
-	277: int8(m_TYPE_NORMAL),
-	278: int8(m_TYPE_NORMAL),
-	279: int8(m_TYPE_NORMAL),
-	280: int8(m_TYPE_NORMAL),
-	281: int8(m_TYPE_NORMAL),
-	282: int8(m_TYPE_NORMAL),
-	283: int8(m_TYPE_NORMAL),
-	284: int8(m_TYPE_NORMAL),
-	285: int8(m_TYPE_NORMAL),
-	286: int8(m_TYPE_NORMAL),
-	287: int8(m_TYPE_NORMAL),
-	288: int8(m_TYPE_NORMAL),
-	289: int8(m_TYPE_NORMAL),
-	290: int8(m_TYPE_NORMAL),
-	291: int8(m_TYPE_NORMAL),
-	292: int8(m_TYPE_NORMAL),
-	293: int8(m_TYPE_NORMAL),
-	294: int8(m_TYPE_NORMAL),
-	295: int8(m_TYPE_NORMAL),
-	296: int8(m_TYPE_NORMAL),
-	297: int8(m_TYPE_NORMAL),
-	298: int8(m_TYPE_NORMAL),
-	299: int8(m_TYPE_NORMAL),
-	300: int8(m_TYPE_NORMAL),
-	301: int8(m_TYPE_NORMAL),
-	302: int8(m_TYPE_NORMAL),
-	303: int8(m_TYPE_NORMAL),
-	304: int8(m_TYPE_NORMAL),
-	305: int8(m_TYPE_NORMAL),
-	306: int8(m_TYPE_NORMAL),
-	307: int8(m_TYPE_NORMAL),
-	308: int8(m_TYPE_NORMAL),
-	309: int8(m_TYPE_NORMAL),
-	310: int8(m_TYPE_NORMAL),
-	311: int8(m_TYPE_NORMAL),
-	312: int8(m_TYPE_NORMAL),
-	313: int8(m_TYPE_NORMAL),
-	314: int8(m_TYPE_NORMAL),
-	315: int8(m_TYPE_NORMAL),
-	316: int8(m_TYPE_NORMAL),
-	317: int8(m_TYPE_NORMAL),
-	318: int8(m_TYPE_NORMAL),
-	319: int8(m_TYPE_NORMAL),
-	320: int8(m_TYPE_NORMAL),
-	321: int8(m_TYPE_NORMAL),
-	322: int8(m_TYPE_NORMAL),
-	323: int8(m_TYPE_NORMAL),
-	324: int8(m_TYPE_NORMAL),
-	325: int8(m_TYPE_NORMAL),
-	326: int8(m_TYPE_NORMAL),
-	327: int8(m_TYPE_NORMAL),
-	328: int8(m_TYPE_NORMAL),
-	329: int8(m_TYPE_NORMAL),
-	330: int8(m_TYPE_NORMAL),
-	331: int8(m_TYPE_NORMAL),
-	332: int8(m_TYPE_NORMAL),
-	333: int8(m_TYPE_NORMAL),
-	334: int8(m_TYPE_NORMAL),
-	335: int8(m_TYPE_NORMAL),
-	336: int8(m_TYPE_NORMAL),
-	337: int8(m_TYPE_NORMAL),
-	338: int8(m_TYPE_NORMAL),
-	339: int8(m_TYPE_NORMAL),
-	340: int8(m_TYPE_NORMAL),
-	341: int8(m_TYPE_NORMAL),
-	342: int8(m_TYPE_NORMAL),
-	343: int8(m_TYPE_NORMAL),
-	344: int8(m_TYPE_NORMAL),
-	345: int8(m_TYPE_NORMAL),
-	346: int8(m_TYPE_NORMAL),
-	347: int8(m_TYPE_NORMAL),
-	348: int8(m_TYPE_NORMAL),
-	349: int8(m_TYPE_NORMAL),
-	350: int8(m_TYPE_NORMAL),
-	351: int8(m_TYPE_NORMAL),
-	352: int8(m_TYPE_NORMAL),
-	353: int8(m_TYPE_NORMAL),
-	354: int8(m_TYPE_NORMAL),
-	355: int8(m_TYPE_NORMAL),
-	356: int8(m_TYPE_NORMAL),
-	357: int8(m_TYPE_NORMAL),
-	358: int8(m_TYPE_NORMAL),
-	359: int8(m_TYPE_NORMAL),
-	360: int8(m_TYPE_NORMAL),
-	361: int8(m_TYPE_NORMAL),
-	362: int8(m_TYPE_NORMAL),
-	363: int8(m_TYPE_NORMAL),
-	364: int8(m_TYPE_NORMAL),
-	365: int8(m_TYPE_NORMAL),
-	366: int8(m_TYPE_NORMAL),
-	367: int8(m_TYPE_NORMAL),
-	368: int8(m_TYPE_NORMAL),
-	369: int8(m_TYPE_NORMAL),
-	370: int8(m_TYPE_NORMAL),
-	371: int8(m_TYPE_NORMAL),
-	372: int8(m_TYPE_NORMAL),
-	373: int8(m_TYPE_NORMAL),
-	374: int8(m_TYPE_NORMAL),
-	375: int8(m_TYPE_NORMAL),
-	376: int8(m_TYPE_NORMAL),
-	377: int8(m_TYPE_NORMAL),
-	378: int8(m_TYPE_NORMAL),
-	379: int8(m_TYPE_NORMAL),
-	380: int8(m_TYPE_NORMAL),
-	381: int8(m_TYPE_NORMAL),
-	382: int8(m_TYPE_NORMAL),
-	383: int8(m_TYPE_NORMAL),
 }
 
 /*
@@ -308707,11 +303442,7 @@ var XtclCharTypeTable = [384]int8{
  */
 
 var XtclCmdNameType = TTcl_ObjType{
-	Fname:             __ccgo_ts + 46539,
-	FfreeIntRepProc:   uintptr(0),
-	FdupIntRepProc:    uintptr(0),
-	FupdateStringProc: uintptr(0),
-	FsetFromAnyProc:   uintptr(0),
+	Fname: __ccgo_ts + 46517,
 }
 
 /*
@@ -308732,19 +303463,11 @@ var XtclDefaultTrimSet = [76]int8{9, 10, 11, 12, 13, ' ', -64, -128, -62, -123, 
  */
 
 var XtclDictType = TTcl_ObjType{
-	Fname:             __ccgo_ts + 22926,
-	FfreeIntRepProc:   uintptr(0),
-	FdupIntRepProc:    uintptr(0),
-	FupdateStringProc: uintptr(0),
-	FsetFromAnyProc:   uintptr(0),
+	Fname: __ccgo_ts + 22926,
 }
 
 var XtclDoubleType = TTcl_ObjType{
-	Fname:             __ccgo_ts + 5467,
-	FfreeIntRepProc:   uintptr(0),
-	FdupIntRepProc:    uintptr(0),
-	FupdateStringProc: uintptr(0),
-	FsetFromAnyProc:   uintptr(0),
+	Fname: __ccgo_ts + 5467,
 }
 
 /*
@@ -308770,11 +303493,7 @@ var XtclEmptyStringRep = uintptr(unsafe.Pointer(&XtclEmptyString))
  */
 
 var XtclEndOffsetType = TTcl_ObjType{
-	Fname:             __ccgo_ts + 59261,
-	FfreeIntRepProc:   uintptr(0),
-	FdupIntRepProc:    uintptr(0),
-	FupdateStringProc: uintptr(0),
-	FsetFromAnyProc:   uintptr(0),
+	Fname: __ccgo_ts + 59261,
 }
 
 /*
@@ -308817,8 +303536,6 @@ var XtclInstructionTable = [191]TInstructionDesc{
 		Fname:        __ccgo_ts + 19857,
 		FnumBytes:    int32(1),
 		FstackEffect: -int32(1),
-		FnumOperands: int32(0),
-		FopTypes:     [2]TInstOperandType{},
 	},
 	1: {
 		Fname:        __ccgo_ts + 19862,
@@ -308842,15 +303559,11 @@ var XtclInstructionTable = [191]TInstructionDesc{
 		Fname:        __ccgo_ts + 2898,
 		FnumBytes:    int32(1),
 		FstackEffect: -int32(1),
-		FnumOperands: int32(0),
-		FopTypes:     [2]TInstOperandType{},
 	},
 	4: {
 		Fname:        __ccgo_ts + 2290,
 		FnumBytes:    int32(1),
 		FstackEffect: +libc.Int32FromInt32(1),
-		FnumOperands: int32(0),
-		FopTypes:     [2]TInstOperandType{},
 	},
 	5: {
 		Fname:        __ccgo_ts + 3062,
@@ -308880,18 +303593,12 @@ var XtclInstructionTable = [191]TInstructionDesc{
 		},
 	},
 	8: {
-		Fname:        __ccgo_ts + 2311,
-		FnumBytes:    int32(1),
-		FstackEffect: int32(0),
-		FnumOperands: int32(0),
-		FopTypes:     [2]TInstOperandType{},
+		Fname:     __ccgo_ts + 2311,
+		FnumBytes: int32(1),
 	},
 	9: {
-		Fname:        __ccgo_ts + 2370,
-		FnumBytes:    int32(1),
-		FstackEffect: int32(0),
-		FnumOperands: int32(0),
-		FopTypes:     [2]TInstOperandType{},
+		Fname:     __ccgo_ts + 2370,
+		FnumBytes: int32(1),
 	},
 	10: {
 		Fname:        __ccgo_ts + 19896,
@@ -308912,16 +303619,12 @@ var XtclInstructionTable = [191]TInstructionDesc{
 		},
 	},
 	12: {
-		Fname:        __ccgo_ts + 19920,
-		FnumBytes:    int32(1),
-		FstackEffect: int32(0),
-		FnumOperands: int32(0),
-		FopTypes:     [2]TInstOperandType{},
+		Fname:     __ccgo_ts + 19920,
+		FnumBytes: int32(1),
 	},
 	13: {
 		Fname:        __ccgo_ts + 19934,
 		FnumBytes:    int32(2),
-		FstackEffect: int32(0),
 		FnumOperands: int32(1),
 		FopTypes: [2]TInstOperandType{
 			0: int32(_OPERAND_LVT1),
@@ -308930,7 +303633,6 @@ var XtclInstructionTable = [191]TInstructionDesc{
 	14: {
 		Fname:        __ccgo_ts + 19945,
 		FnumBytes:    int32(5),
-		FstackEffect: int32(0),
 		FnumOperands: int32(1),
 		FopTypes: [2]TInstOperandType{
 			0: int32(_OPERAND_LVT4),
@@ -308940,20 +303642,14 @@ var XtclInstructionTable = [191]TInstructionDesc{
 		Fname:        __ccgo_ts + 2789,
 		FnumBytes:    int32(1),
 		FstackEffect: -int32(1),
-		FnumOperands: int32(0),
-		FopTypes:     [2]TInstOperandType{},
 	},
 	16: {
-		Fname:        __ccgo_ts + 2802,
-		FnumBytes:    int32(1),
-		FstackEffect: int32(0),
-		FnumOperands: int32(0),
-		FopTypes:     [2]TInstOperandType{},
+		Fname:     __ccgo_ts + 2802,
+		FnumBytes: int32(1),
 	},
 	17: {
 		Fname:        __ccgo_ts + 19956,
 		FnumBytes:    int32(2),
-		FstackEffect: int32(0),
 		FnumOperands: int32(1),
 		FopTypes: [2]TInstOperandType{
 			0: int32(_OPERAND_LVT1),
@@ -308962,7 +303658,6 @@ var XtclInstructionTable = [191]TInstructionDesc{
 	18: {
 		Fname:        __ccgo_ts + 19969,
 		FnumBytes:    int32(5),
-		FstackEffect: int32(0),
 		FnumOperands: int32(1),
 		FopTypes: [2]TInstOperandType{
 			0: int32(_OPERAND_LVT4),
@@ -308972,8 +303667,6 @@ var XtclInstructionTable = [191]TInstructionDesc{
 		Fname:        __ccgo_ts + 19982,
 		FnumBytes:    int32(1),
 		FstackEffect: -int32(1),
-		FnumOperands: int32(0),
-		FopTypes:     [2]TInstOperandType{},
 	},
 	20: {
 		Fname:        __ccgo_ts + 19997,
@@ -308997,20 +303690,15 @@ var XtclInstructionTable = [191]TInstructionDesc{
 		Fname:        __ccgo_ts + 2993,
 		FnumBytes:    int32(1),
 		FstackEffect: -int32(2),
-		FnumOperands: int32(0),
-		FopTypes:     [2]TInstOperandType{},
 	},
 	23: {
 		Fname:        __ccgo_ts + 3007,
 		FnumBytes:    int32(1),
 		FstackEffect: -int32(1),
-		FnumOperands: int32(0),
-		FopTypes:     [2]TInstOperandType{},
 	},
 	24: {
 		Fname:        __ccgo_ts + 20021,
 		FnumBytes:    int32(2),
-		FstackEffect: int32(0),
 		FnumOperands: int32(1),
 		FopTypes: [2]TInstOperandType{
 			0: int32(_OPERAND_LVT1),
@@ -309020,8 +303708,6 @@ var XtclInstructionTable = [191]TInstructionDesc{
 		Fname:        __ccgo_ts + 20033,
 		FnumBytes:    int32(1),
 		FstackEffect: -int32(1),
-		FnumOperands: int32(0),
-		FopTypes:     [2]TInstOperandType{},
 	},
 	26: {
 		Fname:        __ccgo_ts + 20047,
@@ -309036,15 +303722,11 @@ var XtclInstructionTable = [191]TInstructionDesc{
 		Fname:        __ccgo_ts + 2412,
 		FnumBytes:    int32(1),
 		FstackEffect: -int32(2),
-		FnumOperands: int32(0),
-		FopTypes:     [2]TInstOperandType{},
 	},
 	28: {
 		Fname:        __ccgo_ts + 2449,
 		FnumBytes:    int32(1),
 		FstackEffect: -int32(1),
-		FnumOperands: int32(0),
-		FopTypes:     [2]TInstOperandType{},
 	},
 	29: {
 		Fname:        __ccgo_ts + 20058,
@@ -309059,7 +303741,6 @@ var XtclInstructionTable = [191]TInstructionDesc{
 	30: {
 		Fname:        __ccgo_ts + 20073,
 		FnumBytes:    int32(2),
-		FstackEffect: int32(0),
 		FnumOperands: int32(1),
 		FopTypes: [2]TInstOperandType{
 			0: int32(_OPERAND_INT1),
@@ -309068,7 +303749,6 @@ var XtclInstructionTable = [191]TInstructionDesc{
 	31: {
 		Fname:        __ccgo_ts + 20090,
 		FnumBytes:    int32(3),
-		FstackEffect: int32(0),
 		FnumOperands: int32(2),
 		FopTypes: [2]TInstOperandType{
 			0: int32(_OPERAND_LVT1),
@@ -309087,7 +303767,6 @@ var XtclInstructionTable = [191]TInstructionDesc{
 	33: {
 		Fname:        __ccgo_ts + 2457,
 		FnumBytes:    int32(2),
-		FstackEffect: int32(0),
 		FnumOperands: int32(1),
 		FopTypes: [2]TInstOperandType{
 			0: int32(_OPERAND_INT1),
@@ -309096,7 +303775,6 @@ var XtclInstructionTable = [191]TInstructionDesc{
 	34: {
 		Fname:        __ccgo_ts + 20104,
 		FnumBytes:    int32(2),
-		FstackEffect: int32(0),
 		FnumOperands: int32(1),
 		FopTypes: [2]TInstOperandType{
 			0: int32(_OPERAND_OFFSET1),
@@ -309105,7 +303783,6 @@ var XtclInstructionTable = [191]TInstructionDesc{
 	35: {
 		Fname:        __ccgo_ts + 2513,
 		FnumBytes:    int32(5),
-		FstackEffect: int32(0),
 		FnumOperands: int32(1),
 		FopTypes: [2]TInstOperandType{
 			0: int32(_OPERAND_OFFSET4),
@@ -309151,155 +303828,107 @@ var XtclInstructionTable = [191]TInstructionDesc{
 		Fname:        __ccgo_ts + 2810,
 		FnumBytes:    int32(1),
 		FstackEffect: -int32(1),
-		FnumOperands: int32(0),
-		FopTypes:     [2]TInstOperandType{},
 	},
 	41: {
 		Fname:        __ccgo_ts + 2575,
 		FnumBytes:    int32(1),
 		FstackEffect: -int32(1),
-		FnumOperands: int32(0),
-		FopTypes:     [2]TInstOperandType{},
 	},
 	42: {
 		Fname:        __ccgo_ts + 2103,
 		FnumBytes:    int32(1),
 		FstackEffect: -int32(1),
-		FnumOperands: int32(0),
-		FopTypes:     [2]TInstOperandType{},
 	},
 	43: {
 		Fname:        __ccgo_ts + 2109,
 		FnumBytes:    int32(1),
 		FstackEffect: -int32(1),
-		FnumOperands: int32(0),
-		FopTypes:     [2]TInstOperandType{},
 	},
 	44: {
 		Fname:        __ccgo_ts + 2089,
 		FnumBytes:    int32(1),
 		FstackEffect: -int32(1),
-		FnumOperands: int32(0),
-		FopTypes:     [2]TInstOperandType{},
 	},
 	45: {
 		Fname:        __ccgo_ts + 2303,
 		FnumBytes:    int32(1),
 		FstackEffect: -int32(1),
-		FnumOperands: int32(0),
-		FopTypes:     [2]TInstOperandType{},
 	},
 	46: {
 		Fname:        __ccgo_ts + 2851,
 		FnumBytes:    int32(1),
 		FstackEffect: -int32(1),
-		FnumOperands: int32(0),
-		FopTypes:     [2]TInstOperandType{},
 	},
 	47: {
 		Fname:        __ccgo_ts + 2839,
 		FnumBytes:    int32(1),
 		FstackEffect: -int32(1),
-		FnumOperands: int32(0),
-		FopTypes:     [2]TInstOperandType{},
 	},
 	48: {
 		Fname:        __ccgo_ts + 2381,
 		FnumBytes:    int32(1),
 		FstackEffect: -int32(1),
-		FnumOperands: int32(0),
-		FopTypes:     [2]TInstOperandType{},
 	},
 	49: {
 		Fname:        __ccgo_ts + 2692,
 		FnumBytes:    int32(1),
 		FstackEffect: -int32(1),
-		FnumOperands: int32(0),
-		FopTypes:     [2]TInstOperandType{},
 	},
 	50: {
 		Fname:        __ccgo_ts + 2378,
 		FnumBytes:    int32(1),
 		FstackEffect: -int32(1),
-		FnumOperands: int32(0),
-		FopTypes:     [2]TInstOperandType{},
 	},
 	51: {
 		Fname:        __ccgo_ts + 2832,
 		FnumBytes:    int32(1),
 		FstackEffect: -int32(1),
-		FnumOperands: int32(0),
-		FopTypes:     [2]TInstOperandType{},
 	},
 	52: {
 		Fname:        __ccgo_ts + 2969,
 		FnumBytes:    int32(1),
 		FstackEffect: -int32(1),
-		FnumOperands: int32(0),
-		FopTypes:     [2]TInstOperandType{},
 	},
 	53: {
 		Fname:        __ccgo_ts + 1974,
 		FnumBytes:    int32(1),
 		FstackEffect: -int32(1),
-		FnumOperands: int32(0),
-		FopTypes:     [2]TInstOperandType{},
 	},
 	54: {
 		Fname:        __ccgo_ts + 3184,
 		FnumBytes:    int32(1),
 		FstackEffect: -int32(1),
-		FnumOperands: int32(0),
-		FopTypes:     [2]TInstOperandType{},
 	},
 	55: {
 		Fname:        __ccgo_ts + 2846,
 		FnumBytes:    int32(1),
 		FstackEffect: -int32(1),
-		FnumOperands: int32(0),
-		FopTypes:     [2]TInstOperandType{},
 	},
 	56: {
 		Fname:        __ccgo_ts + 2286,
 		FnumBytes:    int32(1),
 		FstackEffect: -int32(1),
-		FnumOperands: int32(0),
-		FopTypes:     [2]TInstOperandType{},
 	},
 	57: {
 		Fname:        __ccgo_ts + 2842,
 		FnumBytes:    int32(1),
 		FstackEffect: -int32(1),
-		FnumOperands: int32(0),
-		FopTypes:     [2]TInstOperandType{},
 	},
 	58: {
-		Fname:        __ccgo_ts + 3317,
-		FnumBytes:    int32(1),
-		FstackEffect: int32(0),
-		FnumOperands: int32(0),
-		FopTypes:     [2]TInstOperandType{},
+		Fname:     __ccgo_ts + 3317,
+		FnumBytes: int32(1),
 	},
 	59: {
-		Fname:        __ccgo_ts + 3270,
-		FnumBytes:    int32(1),
-		FstackEffect: int32(0),
-		FnumOperands: int32(0),
-		FopTypes:     [2]TInstOperandType{},
+		Fname:     __ccgo_ts + 3270,
+		FnumBytes: int32(1),
 	},
 	60: {
-		Fname:        __ccgo_ts + 2096,
-		FnumBytes:    int32(1),
-		FstackEffect: int32(0),
-		FnumOperands: int32(0),
-		FopTypes:     [2]TInstOperandType{},
+		Fname:     __ccgo_ts + 2096,
+		FnumBytes: int32(1),
 	},
 	61: {
-		Fname:        __ccgo_ts + 2859,
-		FnumBytes:    int32(1),
-		FstackEffect: int32(0),
-		FnumOperands: int32(0),
-		FopTypes:     [2]TInstOperandType{},
+		Fname:     __ccgo_ts + 2859,
+		FnumBytes: int32(1),
 	},
 	62: {
 		Fname:        __ccgo_ts + 20131,
@@ -309320,30 +303949,20 @@ var XtclInstructionTable = [191]TInstructionDesc{
 		},
 	},
 	64: {
-		Fname:        __ccgo_ts + 3254,
-		FnumBytes:    int32(1),
-		FstackEffect: int32(0),
-		FnumOperands: int32(0),
-		FopTypes:     [2]TInstOperandType{},
+		Fname:     __ccgo_ts + 3254,
+		FnumBytes: int32(1),
 	},
 	65: {
-		Fname:        __ccgo_ts + 4997,
-		FnumBytes:    int32(1),
-		FstackEffect: int32(0),
-		FnumOperands: int32(0),
-		FopTypes:     [2]TInstOperandType{},
+		Fname:     __ccgo_ts + 4997,
+		FnumBytes: int32(1),
 	},
 	66: {
-		Fname:        __ccgo_ts + 5014,
-		FnumBytes:    int32(1),
-		FstackEffect: int32(0),
-		FnumOperands: int32(0),
-		FopTypes:     [2]TInstOperandType{},
+		Fname:     __ccgo_ts + 5014,
+		FnumBytes: int32(1),
 	},
 	67: {
 		Fname:        __ccgo_ts + 20158,
 		FnumBytes:    int32(5),
-		FstackEffect: int32(0),
 		FnumOperands: int32(1),
 		FopTypes: [2]TInstOperandType{
 			0: int32(_OPERAND_AUX4),
@@ -309361,67 +303980,48 @@ var XtclInstructionTable = [191]TInstructionDesc{
 	69: {
 		Fname:        __ccgo_ts + 20187,
 		FnumBytes:    int32(5),
-		FstackEffect: int32(0),
 		FnumOperands: int32(1),
 		FopTypes: [2]TInstOperandType{
 			0: int32(_OPERAND_UINT4),
 		},
 	},
 	70: {
-		Fname:        __ccgo_ts + 2294,
-		FnumBytes:    int32(1),
-		FstackEffect: int32(0),
-		FnumOperands: int32(0),
-		FopTypes:     [2]TInstOperandType{},
+		Fname:     __ccgo_ts + 2294,
+		FnumBytes: int32(1),
 	},
 	71: {
 		Fname:        __ccgo_ts + 2932,
 		FnumBytes:    int32(1),
 		FstackEffect: +libc.Int32FromInt32(1),
-		FnumOperands: int32(0),
-		FopTypes:     [2]TInstOperandType{},
 	},
 	72: {
 		Fname:        __ccgo_ts + 2902,
 		FnumBytes:    int32(1),
 		FstackEffect: +libc.Int32FromInt32(1),
-		FnumOperands: int32(0),
-		FopTypes:     [2]TInstOperandType{},
 	},
 	73: {
 		Fname:        __ccgo_ts + 3069,
 		FnumBytes:    int32(1),
 		FstackEffect: -int32(1),
-		FnumOperands: int32(0),
-		FopTypes:     [2]TInstOperandType{},
 	},
 	74: {
 		Fname:        __ccgo_ts + 3115,
 		FnumBytes:    int32(1),
 		FstackEffect: -int32(1),
-		FnumOperands: int32(0),
-		FopTypes:     [2]TInstOperandType{},
 	},
 	75: {
 		Fname:        __ccgo_ts + 3055,
 		FnumBytes:    int32(1),
 		FstackEffect: -int32(1),
-		FnumOperands: int32(0),
-		FopTypes:     [2]TInstOperandType{},
 	},
 	76: {
-		Fname:        __ccgo_ts + 3092,
-		FnumBytes:    int32(1),
-		FstackEffect: int32(0),
-		FnumOperands: int32(0),
-		FopTypes:     [2]TInstOperandType{},
+		Fname:     __ccgo_ts + 3092,
+		FnumBytes: int32(1),
 	},
 	77: {
 		Fname:        __ccgo_ts + 3083,
 		FnumBytes:    int32(1),
 		FstackEffect: -int32(1),
-		FnumOperands: int32(0),
-		FopTypes:     [2]TInstOperandType{},
 	},
 	78: {
 		Fname:        __ccgo_ts + 3106,
@@ -309445,20 +304045,14 @@ var XtclInstructionTable = [191]TInstructionDesc{
 		Fname:        __ccgo_ts + 2730,
 		FnumBytes:    int32(1),
 		FstackEffect: -int32(1),
-		FnumOperands: int32(0),
-		FopTypes:     [2]TInstOperandType{},
 	},
 	81: {
-		Fname:        __ccgo_ts + 2753,
-		FnumBytes:    int32(1),
-		FstackEffect: int32(0),
-		FnumOperands: int32(0),
-		FopTypes:     [2]TInstOperandType{},
+		Fname:     __ccgo_ts + 2753,
+		FnumBytes: int32(1),
 	},
 	82: {
 		Fname:        __ccgo_ts + 20199,
 		FnumBytes:    int32(2),
-		FstackEffect: int32(0),
 		FnumOperands: int32(1),
 		FopTypes: [2]TInstOperandType{
 			0: int32(_OPERAND_LVT1),
@@ -309467,7 +304061,6 @@ var XtclInstructionTable = [191]TInstructionDesc{
 	83: {
 		Fname:        __ccgo_ts + 20213,
 		FnumBytes:    int32(5),
-		FstackEffect: int32(0),
 		FnumOperands: int32(1),
 		FopTypes: [2]TInstOperandType{
 			0: int32(_OPERAND_LVT4),
@@ -309495,20 +304088,15 @@ var XtclInstructionTable = [191]TInstructionDesc{
 		Fname:        __ccgo_ts + 1997,
 		FnumBytes:    int32(1),
 		FstackEffect: -int32(2),
-		FnumOperands: int32(0),
-		FopTypes:     [2]TInstOperandType{},
 	},
 	87: {
 		Fname:        __ccgo_ts + 2012,
 		FnumBytes:    int32(1),
 		FstackEffect: -int32(1),
-		FnumOperands: int32(0),
-		FopTypes:     [2]TInstOperandType{},
 	},
 	88: {
 		Fname:        __ccgo_ts + 20253,
 		FnumBytes:    int32(2),
-		FstackEffect: int32(0),
 		FnumOperands: int32(1),
 		FopTypes: [2]TInstOperandType{
 			0: int32(_OPERAND_LVT1),
@@ -309517,7 +304105,6 @@ var XtclInstructionTable = [191]TInstructionDesc{
 	89: {
 		Fname:        __ccgo_ts + 20268,
 		FnumBytes:    int32(5),
-		FstackEffect: int32(0),
 		FnumOperands: int32(1),
 		FopTypes: [2]TInstOperandType{
 			0: int32(_OPERAND_LVT4),
@@ -309545,15 +304132,11 @@ var XtclInstructionTable = [191]TInstructionDesc{
 		Fname:        __ccgo_ts + 2601,
 		FnumBytes:    int32(1),
 		FstackEffect: -int32(2),
-		FnumOperands: int32(0),
-		FopTypes:     [2]TInstOperandType{},
 	},
 	93: {
 		Fname:        __ccgo_ts + 2681,
 		FnumBytes:    int32(1),
 		FstackEffect: -int32(1),
-		FnumOperands: int32(0),
-		FopTypes:     [2]TInstOperandType{},
 	},
 	94: {
 		Fname:        __ccgo_ts + 2695,
@@ -309577,8 +304160,6 @@ var XtclInstructionTable = [191]TInstructionDesc{
 		Fname:        __ccgo_ts + 2823,
 		FnumBytes:    int32(1),
 		FstackEffect: -int32(2),
-		FnumOperands: int32(0),
-		FopTypes:     [2]TInstOperandType{},
 	},
 	97: {
 		Fname:        __ccgo_ts + 2814,
@@ -309603,36 +304184,26 @@ var XtclInstructionTable = [191]TInstructionDesc{
 		Fname:        __ccgo_ts + 2359,
 		FnumBytes:    int32(1),
 		FstackEffect: -int32(1),
-		FnumOperands: int32(0),
-		FopTypes:     [2]TInstOperandType{},
 	},
 	100: {
-		Fname:        __ccgo_ts + 20321,
-		FnumBytes:    int32(1),
-		FstackEffect: int32(0),
-		FnumOperands: int32(0),
-		FopTypes:     [2]TInstOperandType{},
+		Fname:     __ccgo_ts + 20321,
+		FnumBytes: int32(1),
 	},
 	101: {
 		Fname:        __ccgo_ts + 20333,
 		FnumBytes:    int32(5),
-		FstackEffect: int32(0),
 		FnumOperands: int32(1),
 		FopTypes: [2]TInstOperandType{
 			0: int32(_OPERAND_UINT4),
 		},
 	},
 	102: {
-		Fname:        __ccgo_ts + 20346,
-		FnumBytes:    int32(1),
-		FstackEffect: int32(0),
-		FnumOperands: int32(0),
-		FopTypes:     [2]TInstOperandType{},
+		Fname:     __ccgo_ts + 20346,
+		FnumBytes: int32(1),
 	},
 	103: {
 		Fname:        __ccgo_ts + 2740,
 		FnumBytes:    int32(5),
-		FstackEffect: int32(0),
 		FnumOperands: int32(1),
 		FopTypes: [2]TInstOperandType{
 			0: int32(_OPERAND_IDX4),
@@ -309641,7 +304212,6 @@ var XtclInstructionTable = [191]TInstructionDesc{
 	104: {
 		Fname:        __ccgo_ts + 20361,
 		FnumBytes:    int32(9),
-		FstackEffect: int32(0),
 		FnumOperands: int32(2),
 		FopTypes: [2]TInstOperandType{
 			0: int32(_OPERAND_IDX4),
@@ -309651,7 +304221,6 @@ var XtclInstructionTable = [191]TInstructionDesc{
 	105: {
 		Fname:        __ccgo_ts + 20374,
 		FnumBytes:    int32(9),
-		FstackEffect: int32(0),
 		FnumOperands: int32(2),
 		FopTypes: [2]TInstOperandType{
 			0: int32(_OPERAND_OFFSET4),
@@ -309662,29 +304231,21 @@ var XtclInstructionTable = [191]TInstructionDesc{
 		Fname:        __ccgo_ts + 2723,
 		FnumBytes:    int32(1),
 		FstackEffect: -int32(1),
-		FnumOperands: int32(0),
-		FopTypes:     [2]TInstOperandType{},
 	},
 	107: {
 		Fname:        __ccgo_ts + 2764,
 		FnumBytes:    int32(1),
 		FstackEffect: -int32(1),
-		FnumOperands: int32(0),
-		FopTypes:     [2]TInstOperandType{},
 	},
 	108: {
 		Fname:        __ccgo_ts + 2917,
 		FnumBytes:    int32(1),
 		FstackEffect: +libc.Int32FromInt32(1),
-		FnumOperands: int32(0),
-		FopTypes:     [2]TInstOperandType{},
 	},
 	109: {
 		Fname:        __ccgo_ts + 20387,
 		FnumBytes:    int32(1),
 		FstackEffect: -int32(1),
-		FnumOperands: int32(0),
-		FopTypes:     [2]TInstOperandType{},
 	},
 	110: {
 		Fname:        __ccgo_ts + 2202,
@@ -309718,7 +304279,6 @@ var XtclInstructionTable = [191]TInstructionDesc{
 	113: {
 		Fname:        __ccgo_ts + 2210,
 		FnumBytes:    int32(9),
-		FstackEffect: int32(0),
 		FnumOperands: int32(2),
 		FopTypes: [2]TInstOperandType{
 			0: int32(_OPERAND_INT4),
@@ -309764,7 +304324,6 @@ var XtclInstructionTable = [191]TInstructionDesc{
 	118: {
 		Fname:        __ccgo_ts + 20416,
 		FnumBytes:    int32(5),
-		FstackEffect: int32(0),
 		FnumOperands: int32(1),
 		FopTypes: [2]TInstOperandType{
 			0: int32(_OPERAND_LVT4),
@@ -309773,7 +304332,6 @@ var XtclInstructionTable = [191]TInstructionDesc{
 	119: {
 		Fname:        __ccgo_ts + 20425,
 		FnumBytes:    int32(9),
-		FstackEffect: int32(0),
 		FnumOperands: int32(2),
 		FopTypes: [2]TInstOperandType{
 			0: int32(_OPERAND_LVT4),
@@ -309839,7 +304397,6 @@ var XtclInstructionTable = [191]TInstructionDesc{
 	126: {
 		Fname:        __ccgo_ts + 2961,
 		FnumBytes:    int32(5),
-		FstackEffect: int32(0),
 		FnumOperands: int32(1),
 		FopTypes: [2]TInstOperandType{
 			0: int32(_OPERAND_UINT4),
@@ -309866,7 +304423,6 @@ var XtclInstructionTable = [191]TInstructionDesc{
 	129: {
 		Fname:        __ccgo_ts + 2325,
 		FnumBytes:    int32(5),
-		FstackEffect: int32(0),
 		FnumOperands: int32(1),
 		FopTypes: [2]TInstOperandType{
 			0: int32(_OPERAND_LVT4),
@@ -309876,34 +304432,23 @@ var XtclInstructionTable = [191]TInstructionDesc{
 		Fname:        __ccgo_ts + 2336,
 		FnumBytes:    int32(1),
 		FstackEffect: -int32(1),
-		FnumOperands: int32(0),
-		FopTypes:     [2]TInstOperandType{},
 	},
 	131: {
-		Fname:        __ccgo_ts + 2350,
-		FnumBytes:    int32(1),
-		FstackEffect: int32(0),
-		FnumOperands: int32(0),
-		FopTypes:     [2]TInstOperandType{},
+		Fname:     __ccgo_ts + 2350,
+		FnumBytes: int32(1),
 	},
 	132: {
-		Fname:        __ccgo_ts + 2855,
-		FnumBytes:    int32(1),
-		FstackEffect: int32(0),
-		FnumOperands: int32(0),
-		FopTypes:     [2]TInstOperandType{},
+		Fname:     __ccgo_ts + 2855,
+		FnumBytes: int32(1),
 	},
 	133: {
 		Fname:        __ccgo_ts + 20474,
 		FnumBytes:    int32(1),
 		FstackEffect: -int32(1),
-		FnumOperands: int32(0),
-		FopTypes:     [2]TInstOperandType{},
 	},
 	134: {
 		Fname:        __ccgo_ts + 20491,
 		FnumBytes:    int32(6),
-		FstackEffect: int32(0),
 		FnumOperands: int32(2),
 		FopTypes: [2]TInstOperandType{
 			0: int32(_OPERAND_UINT1),
@@ -309942,15 +304487,11 @@ var XtclInstructionTable = [191]TInstructionDesc{
 		Fname:        __ccgo_ts + 2191,
 		FnumBytes:    int32(1),
 		FstackEffect: -int32(1),
-		FnumOperands: int32(0),
-		FopTypes:     [2]TInstOperandType{},
 	},
 	139: {
 		Fname:        __ccgo_ts + 2234,
 		FnumBytes:    int32(1),
 		FstackEffect: -int32(3),
-		FnumOperands: int32(0),
-		FopTypes:     [2]TInstOperandType{},
 	},
 	140: {
 		Fname:        __ccgo_ts + 2251,
@@ -309974,34 +304515,25 @@ var XtclInstructionTable = [191]TInstructionDesc{
 		Fname:        __ccgo_ts + 3338,
 		FnumBytes:    int32(1),
 		FstackEffect: -int32(1),
-		FnumOperands: int32(0),
-		FopTypes:     [2]TInstOperandType{},
 	},
 	143: {
 		Fname:        __ccgo_ts + 3099,
 		FnumBytes:    int32(1),
 		FstackEffect: -int32(2),
-		FnumOperands: int32(0),
-		FopTypes:     [2]TInstOperandType{},
 	},
 	144: {
 		Fname:        __ccgo_ts + 3075,
 		FnumBytes:    int32(1),
 		FstackEffect: -int32(1),
-		FnumOperands: int32(0),
-		FopTypes:     [2]TInstOperandType{},
 	},
 	145: {
 		Fname:        __ccgo_ts + 3142,
 		FnumBytes:    int32(1),
 		FstackEffect: -int32(1),
-		FnumOperands: int32(0),
-		FopTypes:     [2]TInstOperandType{},
 	},
 	146: {
 		Fname:        __ccgo_ts + 20503,
 		FnumBytes:    int32(9),
-		FstackEffect: int32(0),
 		FnumOperands: int32(2),
 		FopTypes: [2]TInstOperandType{
 			0: int32(_OPERAND_IDX4),
@@ -310012,22 +304544,15 @@ var XtclInstructionTable = [191]TInstructionDesc{
 		Fname:        __ccgo_ts + 3122,
 		FnumBytes:    int32(1),
 		FstackEffect: -int32(2),
-		FnumOperands: int32(0),
-		FopTypes:     [2]TInstOperandType{},
 	},
 	148: {
-		Fname:        __ccgo_ts + 3349,
-		FnumBytes:    int32(1),
-		FstackEffect: int32(0),
-		FnumOperands: int32(0),
-		FopTypes:     [2]TInstOperandType{},
+		Fname:     __ccgo_ts + 3349,
+		FnumBytes: int32(1),
 	},
 	149: {
 		Fname:        __ccgo_ts + 2143,
 		FnumBytes:    int32(1),
 		FstackEffect: +libc.Int32FromInt32(1),
-		FnumOperands: int32(0),
-		FopTypes:     [2]TInstOperandType{},
 	},
 	150: {
 		Fname:        __ccgo_ts + 5223,
@@ -310042,64 +304567,40 @@ var XtclInstructionTable = [191]TInstructionDesc{
 		Fname:        __ccgo_ts + 2152,
 		FnumBytes:    int32(1),
 		FstackEffect: +libc.Int32FromInt32(1),
-		FnumOperands: int32(0),
-		FopTypes:     [2]TInstOperandType{},
 	},
 	152: {
 		Fname:        __ccgo_ts + 2482,
 		FnumBytes:    int32(1),
 		FstackEffect: +libc.Int32FromInt32(1),
-		FnumOperands: int32(0),
-		FopTypes:     [2]TInstOperandType{},
 	},
 	153: {
-		Fname:        __ccgo_ts + 2468,
-		FnumBytes:    int32(1),
-		FstackEffect: int32(0),
-		FnumOperands: int32(0),
-		FopTypes:     [2]TInstOperandType{},
+		Fname:     __ccgo_ts + 2468,
+		FnumBytes: int32(1),
 	},
 	154: {
-		Fname:        __ccgo_ts + 2950,
-		FnumBytes:    int32(1),
-		FstackEffect: int32(0),
-		FnumOperands: int32(0),
-		FopTypes:     [2]TInstOperandType{},
+		Fname:     __ccgo_ts + 2950,
+		FnumBytes: int32(1),
 	},
 	155: {
 		Fname:        __ccgo_ts + 3228,
 		FnumBytes:    int32(1),
 		FstackEffect: +libc.Int32FromInt32(1),
-		FnumOperands: int32(0),
-		FopTypes:     [2]TInstOperandType{},
 	},
 	156: {
-		Fname:        __ccgo_ts + 3188,
-		FnumBytes:    int32(1),
-		FstackEffect: int32(0),
-		FnumOperands: int32(0),
-		FopTypes:     [2]TInstOperandType{},
+		Fname:     __ccgo_ts + 3188,
+		FnumBytes: int32(1),
 	},
 	157: {
-		Fname:        __ccgo_ts + 3213,
-		FnumBytes:    int32(1),
-		FstackEffect: int32(0),
-		FnumOperands: int32(0),
-		FopTypes:     [2]TInstOperandType{},
+		Fname:     __ccgo_ts + 3213,
+		FnumBytes: int32(1),
 	},
 	158: {
-		Fname:        __ccgo_ts + 3199,
-		FnumBytes:    int32(1),
-		FstackEffect: int32(0),
-		FnumOperands: int32(0),
-		FopTypes:     [2]TInstOperandType{},
+		Fname:     __ccgo_ts + 3199,
+		FnumBytes: int32(1),
 	},
 	159: {
-		Fname:        __ccgo_ts + 2037,
-		FnumBytes:    int32(1),
-		FstackEffect: int32(0),
-		FnumOperands: int32(0),
-		FopTypes:     [2]TInstOperandType{},
+		Fname:     __ccgo_ts + 2037,
+		FnumBytes: int32(1),
 	},
 	160: {
 		Fname:        __ccgo_ts + 2022,
@@ -310114,13 +304615,10 @@ var XtclInstructionTable = [191]TInstructionDesc{
 		Fname:        __ccgo_ts + 2065,
 		FnumBytes:    int32(1),
 		FstackEffect: -int32(1),
-		FnumOperands: int32(0),
-		FopTypes:     [2]TInstOperandType{},
 	},
 	162: {
 		Fname:        __ccgo_ts + 2052,
 		FnumBytes:    int32(5),
-		FstackEffect: int32(0),
 		FnumOperands: int32(1),
 		FopTypes: [2]TInstOperandType{
 			0: int32(_OPERAND_LVT4),
@@ -310140,15 +304638,10 @@ var XtclInstructionTable = [191]TInstructionDesc{
 		Fname:        __ccgo_ts + 2712,
 		FnumBytes:    int32(1),
 		FstackEffect: -int32(1),
-		FnumOperands: int32(0),
-		FopTypes:     [2]TInstOperandType{},
 	},
 	165: {
-		Fname:        __ccgo_ts + 20529,
-		FnumBytes:    int32(1),
-		FstackEffect: int32(0),
-		FnumOperands: int32(0),
-		FopTypes:     [2]TInstOperandType{},
+		Fname:     __ccgo_ts + 20529,
+		FnumBytes: int32(1),
 	},
 	166: {
 		Fname:        __ccgo_ts + 20540,
@@ -310160,46 +304653,32 @@ var XtclInstructionTable = [191]TInstructionDesc{
 		},
 	},
 	167: {
-		Fname:        __ccgo_ts + 20554,
-		FnumBytes:    int32(1),
-		FstackEffect: int32(0),
-		FnumOperands: int32(0),
-		FopTypes:     [2]TInstOperandType{},
+		Fname:     __ccgo_ts + 20554,
+		FnumBytes: int32(1),
 	},
 	168: {
-		Fname:        __ccgo_ts + 20567,
-		FnumBytes:    int32(1),
-		FstackEffect: int32(0),
-		FnumOperands: int32(0),
-		FopTypes:     [2]TInstOperandType{},
+		Fname:     __ccgo_ts + 20567,
+		FnumBytes: int32(1),
 	},
 	169: {
 		Fname:        __ccgo_ts + 20579,
 		FnumBytes:    int32(1),
 		FstackEffect: -int32(1),
-		FnumOperands: int32(0),
-		FopTypes:     [2]TInstOperandType{},
 	},
 	170: {
 		Fname:        __ccgo_ts + 3151,
 		FnumBytes:    int32(1),
 		FstackEffect: -int32(1),
-		FnumOperands: int32(0),
-		FopTypes:     [2]TInstOperandType{},
 	},
 	171: {
 		Fname:        __ccgo_ts + 3159,
 		FnumBytes:    int32(1),
 		FstackEffect: -int32(1),
-		FnumOperands: int32(0),
-		FopTypes:     [2]TInstOperandType{},
 	},
 	172: {
 		Fname:        __ccgo_ts + 3171,
 		FnumBytes:    int32(1),
 		FstackEffect: -int32(1),
-		FnumOperands: int32(0),
-		FopTypes:     [2]TInstOperandType{},
 	},
 	173: {
 		Fname:        __ccgo_ts + 2133,
@@ -310211,39 +304690,25 @@ var XtclInstructionTable = [191]TInstructionDesc{
 		},
 	},
 	174: {
-		Fname:        __ccgo_ts + 3042,
-		FnumBytes:    int32(1),
-		FstackEffect: int32(0),
-		FnumOperands: int32(0),
-		FopTypes:     [2]TInstOperandType{},
+		Fname:     __ccgo_ts + 3042,
+		FnumBytes: int32(1),
 	},
 	175: {
-		Fname:        __ccgo_ts + 3016,
-		FnumBytes:    int32(1),
-		FstackEffect: int32(0),
-		FnumOperands: int32(0),
-		FopTypes:     [2]TInstOperandType{},
+		Fname:     __ccgo_ts + 3016,
+		FnumBytes: int32(1),
 	},
 	176: {
-		Fname:        __ccgo_ts + 3029,
-		FnumBytes:    int32(1),
-		FstackEffect: int32(0),
-		FnumOperands: int32(0),
-		FopTypes:     [2]TInstOperandType{},
+		Fname:     __ccgo_ts + 3029,
+		FnumBytes: int32(1),
 	},
 	177: {
 		Fname:        __ccgo_ts + 3131,
 		FnumBytes:    int32(1),
 		FstackEffect: -int32(3),
-		FnumOperands: int32(0),
-		FopTypes:     [2]TInstOperandType{},
 	},
 	178: {
-		Fname:        __ccgo_ts + 2883,
-		FnumBytes:    int32(1),
-		FstackEffect: int32(0),
-		FnumOperands: int32(0),
-		FopTypes:     [2]TInstOperandType{},
+		Fname:     __ccgo_ts + 2883,
+		FnumBytes: int32(1),
 	},
 	179: {
 		Fname:        __ccgo_ts + 20592,
@@ -310264,30 +304729,21 @@ var XtclInstructionTable = [191]TInstructionDesc{
 		},
 	},
 	181: {
-		Fname:        __ccgo_ts + 20617,
-		FnumBytes:    int32(1),
-		FstackEffect: int32(0),
-		FnumOperands: int32(0),
-		FopTypes:     [2]TInstOperandType{},
+		Fname:     __ccgo_ts + 20617,
+		FnumBytes: int32(1),
 	},
 	182: {
-		Fname:        __ccgo_ts + 2871,
-		FnumBytes:    int32(1),
-		FstackEffect: int32(0),
-		FnumOperands: int32(0),
-		FopTypes:     [2]TInstOperandType{},
+		Fname:     __ccgo_ts + 2871,
+		FnumBytes: int32(1),
 	},
 	183: {
 		Fname:        __ccgo_ts + 3238,
 		FnumBytes:    int32(1),
 		FstackEffect: +libc.Int32FromInt32(1),
-		FnumOperands: int32(0),
-		FopTypes:     [2]TInstOperandType{},
 	},
 	184: {
 		Fname:        __ccgo_ts + 20631,
 		FnumBytes:    int32(2),
-		FstackEffect: int32(0),
 		FnumOperands: int32(1),
 		FopTypes: [2]TInstOperandType{
 			0: int32(_OPERAND_SCLS1),
@@ -310296,7 +304752,6 @@ var XtclInstructionTable = [191]TInstructionDesc{
 	185: {
 		Fname:        __ccgo_ts + 2617,
 		FnumBytes:    int32(5),
-		FstackEffect: int32(0),
 		FnumOperands: int32(1),
 		FopTypes: [2]TInstOperandType{
 			0: int32(_OPERAND_LVT4),
@@ -310315,15 +304770,11 @@ var XtclInstructionTable = [191]TInstructionDesc{
 		Fname:        __ccgo_ts + 2646,
 		FnumBytes:    int32(1),
 		FstackEffect: -int32(2),
-		FnumOperands: int32(0),
-		FopTypes:     [2]TInstOperandType{},
 	},
 	188: {
 		Fname:        __ccgo_ts + 2666,
 		FnumBytes:    int32(1),
 		FstackEffect: -int32(1),
-		FnumOperands: int32(0),
-		FopTypes:     [2]TInstOperandType{},
 	},
 	189: {
 		Fname:        __ccgo_ts + 2116,
@@ -310334,15 +304785,10 @@ var XtclInstructionTable = [191]TInstructionDesc{
 			0: int32(_OPERAND_UINT1),
 		},
 	},
-	190: {},
 }
 
 var XtclIntType = TTcl_ObjType{
-	Fname:             __ccgo_ts + 5502,
-	FfreeIntRepProc:   uintptr(0),
-	FdupIntRepProc:    uintptr(0),
-	FupdateStringProc: uintptr(0),
-	FsetFromAnyProc:   uintptr(0),
+	Fname: __ccgo_ts + 5502,
 }
 
 /*
@@ -310350,11 +304796,7 @@ var XtclIntType = TTcl_ObjType{
  */
 
 var XtclJumptableInfoType = TAuxDataType{
-	Fname:            __ccgo_ts + 18578,
-	FdupProc:         uintptr(0),
-	FfreeProc:        uintptr(0),
-	FprintProc:       uintptr(0),
-	FdisassembleProc: uintptr(0),
+	Fname: __ccgo_ts + 18578,
 }
 
 /*
@@ -310367,11 +304809,7 @@ var XtclJumptableInfoType = TAuxDataType{
  */
 
 var XtclLambdaType = TTcl_ObjType{
-	Fname:             __ccgo_ts + 54988,
-	FfreeIntRepProc:   uintptr(0),
-	FdupIntRepProc:    uintptr(0),
-	FupdateStringProc: uintptr(0),
-	FsetFromAnyProc:   uintptr(0),
+	Fname: __ccgo_ts + 54988,
 }
 
 /*
@@ -310388,11 +304826,7 @@ var XtclLambdaType = TTcl_ObjType{
  */
 
 var XtclListType = TTcl_ObjType{
-	Fname:             __ccgo_ts + 2707,
-	FfreeIntRepProc:   uintptr(0),
-	FdupIntRepProc:    uintptr(0),
-	FupdateStringProc: uintptr(0),
-	FsetFromAnyProc:   uintptr(0),
+	Fname: __ccgo_ts + 2707,
 }
 
 /*
@@ -310404,37 +304838,9 @@ var XtclListType = TTcl_ObjType{
  */
 
 var XtclNativeFilesystem = TTcl_Filesystem{
-	FtypeName:                 __ccgo_ts + 42557,
-	FstructureLength:          int32(124),
-	Fversion:                  libc.UintptrFromInt32(0x2),
-	FpathInFilesystemProc:     uintptr(0),
-	FdupInternalRepProc:       uintptr(0),
-	FfreeInternalRepProc:      uintptr(0),
-	FinternalToNormalizedProc: uintptr(0),
-	FcreateInternalRepProc:    uintptr(0),
-	FnormalizePathProc:        uintptr(0),
-	FfilesystemPathTypeProc:   uintptr(0),
-	FfilesystemSeparatorProc:  uintptr(0),
-	FstatProc:                 uintptr(0),
-	FaccessProc:               uintptr(0),
-	FopenFileChannelProc:      uintptr(0),
-	FmatchInDirectoryProc:     uintptr(0),
-	FutimeProc:                uintptr(0),
-	FlinkProc:                 uintptr(0),
-	FlistVolumesProc:          uintptr(0),
-	FfileAttrStringsProc:      uintptr(0),
-	FfileAttrsGetProc:         uintptr(0),
-	FfileAttrsSetProc:         uintptr(0),
-	FcreateDirectoryProc:      uintptr(0),
-	FremoveDirectoryProc:      uintptr(0),
-	FdeleteFileProc:           uintptr(0),
-	FcopyFileProc:             uintptr(0),
-	FrenameFileProc:           uintptr(0),
-	FcopyDirectoryProc:        uintptr(0),
-	FlstatProc:                uintptr(0),
-	FloadFileProc:             uintptr(0),
-	FgetCwdProc:               uintptr(0),
-	FchdirProc:                uintptr(0),
+	FtypeName:        __ccgo_ts + 42557,
+	FstructureLength: int32(124),
+	Fversion:         libc.UintptrFromInt32(0x2),
 }
 
 /*
@@ -310453,43 +304859,8 @@ var XtclNativeFilesystem = TTcl_Filesystem{
 var XtclNotifierHooks = TTcl_NotifierProcs{}
 
 var XtclOOStubs = TTclOOStubs{
-	Fmagic:                         libc.Int32FromUint32(0xFCA3BACF),
-	Fhooks:                         uintptr(unsafe.Pointer(&_tclOOStubHooks)),
-	Ftcl_CopyObjectInstance:        uintptr(0),
-	Ftcl_GetClassAsObject:          uintptr(0),
-	Ftcl_GetObjectAsClass:          uintptr(0),
-	Ftcl_GetObjectCommand:          uintptr(0),
-	Ftcl_GetObjectFromObj:          uintptr(0),
-	Ftcl_GetObjectNamespace:        uintptr(0),
-	Ftcl_MethodDeclarerClass:       uintptr(0),
-	Ftcl_MethodDeclarerObject:      uintptr(0),
-	Ftcl_MethodIsPublic:            uintptr(0),
-	Ftcl_MethodIsType:              uintptr(0),
-	Ftcl_MethodName:                uintptr(0),
-	Ftcl_NewInstanceMethod:         uintptr(0),
-	Ftcl_NewMethod:                 uintptr(0),
-	Ftcl_NewObjectInstance:         uintptr(0),
-	Ftcl_ObjectDeleted:             uintptr(0),
-	Ftcl_ObjectContextIsFiltering:  uintptr(0),
-	Ftcl_ObjectContextMethod:       uintptr(0),
-	Ftcl_ObjectContextObject:       uintptr(0),
-	Ftcl_ObjectContextSkippedArgs:  uintptr(0),
-	Ftcl_ClassGetMetadata:          uintptr(0),
-	Ftcl_ClassSetMetadata:          uintptr(0),
-	Ftcl_ObjectGetMetadata:         uintptr(0),
-	Ftcl_ObjectSetMetadata:         uintptr(0),
-	Ftcl_ObjectContextInvokeNext:   uintptr(0),
-	Ftcl_ObjectGetMethodNameMapper: uintptr(0),
-	Ftcl_ObjectSetMethodNameMapper: uintptr(0),
-	Ftcl_ClassSetConstructor:       uintptr(0),
-	Ftcl_ClassSetDestructor:        uintptr(0),
-	Ftcl_GetObjectName:             uintptr(0),
-	Freserved29:                    uintptr(0),
-	Freserved30:                    uintptr(0),
-	Freserved31:                    uintptr(0),
-	Freserved32:                    uintptr(0),
-	Freserved33:                    uintptr(0),
-	FtclOOUnusedStubEntry:          uintptr(0),
+	Fmagic: libc.Int32FromUint32(0xFCA3BACF),
+	Fhooks: uintptr(unsafe.Pointer(&_tclOOStubHooks)),
 }
 
 /*
@@ -310497,21 +304868,11 @@ var XtclOOStubs = TTclOOStubs{
  */
 
 var XtclObjHashKeyType = TTcl_HashKeyType{
-	Fversion:         int32(m_TCL_HASH_KEY_TYPE_VERSION),
-	Fflags:           int32(0),
-	FhashKeyProc:     uintptr(0),
-	FcompareKeysProc: uintptr(0),
-	FallocEntryProc:  uintptr(0),
-	FfreeEntryProc:   uintptr(0),
+	Fversion: int32(m_TCL_HASH_KEY_TYPE_VERSION),
 }
 
 var XtclOneWordHashKeyType = TTcl_HashKeyType{
-	Fversion:         int32(m_TCL_HASH_KEY_TYPE_VERSION),
-	Fflags:           int32(0),
-	FhashKeyProc:     uintptr(0),
-	FcompareKeysProc: uintptr(0),
-	FallocEntryProc:  uintptr(0),
-	FfreeEntryProc:   uintptr(0),
+	Fversion: int32(m_TCL_HASH_KEY_TYPE_VERSION),
 }
 
 /*
@@ -310534,11 +304895,7 @@ var XtclPlatform TTclPlatformType
  */
 
 var XtclProcBodyType = TTcl_ObjType{
-	Fname:             __ccgo_ts + 54979,
-	FfreeIntRepProc:   uintptr(0),
-	FdupIntRepProc:    uintptr(0),
-	FupdateStringProc: uintptr(0),
-	FsetFromAnyProc:   uintptr(0),
+	Fname: __ccgo_ts + 54979,
 }
 
 /*
@@ -310547,78 +304904,55 @@ var XtclProcBodyType = TTcl_ObjType{
  */
 
 var XtclRegexpType = TTcl_ObjType{
-	Fname:             __ccgo_ts + 2943,
-	FfreeIntRepProc:   uintptr(0),
-	FdupIntRepProc:    uintptr(0),
-	FupdateStringProc: uintptr(0),
-	FsetFromAnyProc:   uintptr(0),
+	Fname: __ccgo_ts + 2943,
 }
 
 var XtclScaleTimeProcPtr = uintptr(0)
 
 var XtclStringClassTable = [14]TStringClassDesc{
 	0: {
-		Fname:       __ccgo_ts + 1118,
-		Fcomparator: uintptr(0),
+		Fname: __ccgo_ts + 1118,
 	},
 	1: {
-		Fname:       __ccgo_ts + 1124,
-		Fcomparator: uintptr(0),
+		Fname: __ccgo_ts + 1124,
 	},
 	2: {
-		Fname:       __ccgo_ts + 1130,
-		Fcomparator: uintptr(0),
+		Fname: __ccgo_ts + 1130,
 	},
 	3: {
-		Fname:       __ccgo_ts + 15812,
-		Fcomparator: uintptr(0),
+		Fname: __ccgo_ts + 15812,
 	},
 	4: {
-		Fname:       __ccgo_ts + 1148,
-		Fcomparator: uintptr(0),
+		Fname: __ccgo_ts + 1148,
 	},
 	5: {
-		Fname:       __ccgo_ts + 1154,
-		Fcomparator: uintptr(0),
+		Fname: __ccgo_ts + 1154,
 	},
 	6: {
-		Fname:       __ccgo_ts + 1160,
-		Fcomparator: uintptr(0),
+		Fname: __ccgo_ts + 1160,
 	},
 	7: {
-		Fname:       __ccgo_ts + 1166,
-		Fcomparator: uintptr(0),
+		Fname: __ccgo_ts + 1166,
 	},
 	8: {
-		Fname:       __ccgo_ts + 1172,
-		Fcomparator: uintptr(0),
+		Fname: __ccgo_ts + 1172,
 	},
 	9: {
-		Fname:       __ccgo_ts + 557,
-		Fcomparator: uintptr(0),
+		Fname: __ccgo_ts + 557,
 	},
 	10: {
-		Fname:       __ccgo_ts + 1178,
-		Fcomparator: uintptr(0),
+		Fname: __ccgo_ts + 1178,
 	},
 	11: {
-		Fname:       __ccgo_ts + 18592,
-		Fcomparator: uintptr(0),
+		Fname: __ccgo_ts + 18592,
 	},
 	12: {
-		Fname:       __ccgo_ts + 1184,
-		Fcomparator: uintptr(0),
+		Fname: __ccgo_ts + 1184,
 	},
-	13: {},
 }
 
 var XtclStringHashKeyType = TTcl_HashKeyType{
-	Fversion:         int32(m_TCL_HASH_KEY_TYPE_VERSION),
-	Fflags:           int32(0),
-	FhashKeyProc:     uintptr(0),
-	FcompareKeysProc: uintptr(0),
-	FallocEntryProc:  uintptr(0),
-	FfreeEntryProc:   uintptr(0),
+	Fversion: int32(m_TCL_HASH_KEY_TYPE_VERSION),
 }
 
 /*
@@ -310627,820 +304961,36 @@ var XtclStringHashKeyType = TTcl_HashKeyType{
  */
 
 var XtclStringType = TTcl_ObjType{
-	Fname:             __ccgo_ts + 16231,
-	FfreeIntRepProc:   uintptr(0),
-	FdupIntRepProc:    uintptr(0),
-	FupdateStringProc: uintptr(0),
-	FsetFromAnyProc:   uintptr(0),
+	Fname: __ccgo_ts + 16231,
 }
 
 var XtclStubs = TTclStubs{
-	Fmagic:                                  libc.Int32FromUint32(0xFCA3BACF),
-	Fhooks:                                  uintptr(unsafe.Pointer(&_tclStubHooks)),
-	Ftcl_PkgProvideEx:                       uintptr(0),
-	Ftcl_PkgRequireEx:                       uintptr(0),
-	Ftcl_Panic:                              uintptr(0),
-	Ftcl_Alloc:                              uintptr(0),
-	Ftcl_Free:                               uintptr(0),
-	Ftcl_Realloc:                            uintptr(0),
-	Ftcl_DbCkalloc:                          uintptr(0),
-	Ftcl_DbCkfree:                           uintptr(0),
-	Ftcl_DbCkrealloc:                        uintptr(0),
-	Ftcl_CreateFileHandler:                  uintptr(0),
-	Ftcl_DeleteFileHandler:                  uintptr(0),
-	Ftcl_SetTimer:                           uintptr(0),
-	Ftcl_Sleep:                              uintptr(0),
-	Ftcl_WaitForEvent:                       uintptr(0),
-	Ftcl_AppendAllObjTypes:                  uintptr(0),
-	Ftcl_AppendStringsToObj:                 uintptr(0),
-	Ftcl_AppendToObj:                        uintptr(0),
-	Ftcl_ConcatObj:                          uintptr(0),
-	Ftcl_ConvertToType:                      uintptr(0),
-	Ftcl_DbDecrRefCount:                     uintptr(0),
-	Ftcl_DbIncrRefCount:                     uintptr(0),
-	Ftcl_DbIsShared:                         uintptr(0),
-	Ftcl_DbNewBooleanObj:                    uintptr(0),
-	Ftcl_DbNewByteArrayObj:                  uintptr(0),
-	Ftcl_DbNewDoubleObj:                     uintptr(0),
-	Ftcl_DbNewListObj:                       uintptr(0),
-	Ftcl_DbNewLongObj:                       uintptr(0),
-	Ftcl_DbNewObj:                           uintptr(0),
-	Ftcl_DbNewStringObj:                     uintptr(0),
-	Ftcl_DuplicateObj:                       uintptr(0),
-	FtclFreeObj:                             uintptr(0),
-	Ftcl_GetBoolean:                         uintptr(0),
-	Ftcl_GetBooleanFromObj:                  uintptr(0),
-	Ftcl_GetByteArrayFromObj:                uintptr(0),
-	Ftcl_GetDouble:                          uintptr(0),
-	Ftcl_GetDoubleFromObj:                   uintptr(0),
-	Ftcl_GetIndexFromObj:                    uintptr(0),
-	Ftcl_GetInt:                             uintptr(0),
-	Ftcl_GetIntFromObj:                      uintptr(0),
-	Ftcl_GetLongFromObj:                     uintptr(0),
-	Ftcl_GetObjType:                         uintptr(0),
-	Ftcl_GetStringFromObj:                   uintptr(0),
-	Ftcl_InvalidateStringRep:                uintptr(0),
-	Ftcl_ListObjAppendList:                  uintptr(0),
-	Ftcl_ListObjAppendElement:               uintptr(0),
-	Ftcl_ListObjGetElements:                 uintptr(0),
-	Ftcl_ListObjIndex:                       uintptr(0),
-	Ftcl_ListObjLength:                      uintptr(0),
-	Ftcl_ListObjReplace:                     uintptr(0),
-	Ftcl_NewBooleanObj:                      uintptr(0),
-	Ftcl_NewByteArrayObj:                    uintptr(0),
-	Ftcl_NewDoubleObj:                       uintptr(0),
-	Ftcl_NewIntObj:                          uintptr(0),
-	Ftcl_NewListObj:                         uintptr(0),
-	Ftcl_NewLongObj:                         uintptr(0),
-	Ftcl_NewObj:                             uintptr(0),
-	Ftcl_NewStringObj:                       uintptr(0),
-	Ftcl_SetBooleanObj:                      uintptr(0),
-	Ftcl_SetByteArrayLength:                 uintptr(0),
-	Ftcl_SetByteArrayObj:                    uintptr(0),
-	Ftcl_SetDoubleObj:                       uintptr(0),
-	Ftcl_SetIntObj:                          uintptr(0),
-	Ftcl_SetListObj:                         uintptr(0),
-	Ftcl_SetLongObj:                         uintptr(0),
-	Ftcl_SetObjLength:                       uintptr(0),
-	Ftcl_SetStringObj:                       uintptr(0),
-	Ftcl_AddErrorInfo:                       uintptr(0),
-	Ftcl_AddObjErrorInfo:                    uintptr(0),
-	Ftcl_AllowExceptions:                    uintptr(0),
-	Ftcl_AppendElement:                      uintptr(0),
-	Ftcl_AppendResult:                       uintptr(0),
-	Ftcl_AsyncCreate:                        uintptr(0),
-	Ftcl_AsyncDelete:                        uintptr(0),
-	Ftcl_AsyncInvoke:                        uintptr(0),
-	Ftcl_AsyncMark:                          uintptr(0),
-	Ftcl_AsyncReady:                         uintptr(0),
-	Ftcl_BackgroundError:                    uintptr(0),
-	Ftcl_Backslash:                          uintptr(0),
-	Ftcl_BadChannelOption:                   uintptr(0),
-	Ftcl_CallWhenDeleted:                    uintptr(0),
-	Ftcl_CancelIdleCall:                     uintptr(0),
-	Ftcl_Close:                              uintptr(0),
-	Ftcl_CommandComplete:                    uintptr(0),
-	Ftcl_Concat:                             uintptr(0),
-	Ftcl_ConvertElement:                     uintptr(0),
-	Ftcl_ConvertCountedElement:              uintptr(0),
-	Ftcl_CreateAlias:                        uintptr(0),
-	Ftcl_CreateAliasObj:                     uintptr(0),
-	Ftcl_CreateChannel:                      uintptr(0),
-	Ftcl_CreateChannelHandler:               uintptr(0),
-	Ftcl_CreateCloseHandler:                 uintptr(0),
-	Ftcl_CreateCommand:                      uintptr(0),
-	Ftcl_CreateEventSource:                  uintptr(0),
-	Ftcl_CreateExitHandler:                  uintptr(0),
-	Ftcl_CreateInterp:                       uintptr(0),
-	Ftcl_CreateMathFunc:                     uintptr(0),
-	Ftcl_CreateObjCommand:                   uintptr(0),
-	Ftcl_CreateSlave:                        uintptr(0),
-	Ftcl_CreateTimerHandler:                 uintptr(0),
-	Ftcl_CreateTrace:                        uintptr(0),
-	Ftcl_DeleteAssocData:                    uintptr(0),
-	Ftcl_DeleteChannelHandler:               uintptr(0),
-	Ftcl_DeleteCloseHandler:                 uintptr(0),
-	Ftcl_DeleteCommand:                      uintptr(0),
-	Ftcl_DeleteCommandFromToken:             uintptr(0),
-	Ftcl_DeleteEvents:                       uintptr(0),
-	Ftcl_DeleteEventSource:                  uintptr(0),
-	Ftcl_DeleteExitHandler:                  uintptr(0),
-	Ftcl_DeleteHashEntry:                    uintptr(0),
-	Ftcl_DeleteHashTable:                    uintptr(0),
-	Ftcl_DeleteInterp:                       uintptr(0),
-	Ftcl_DetachPids:                         uintptr(0),
-	Ftcl_DeleteTimerHandler:                 uintptr(0),
-	Ftcl_DeleteTrace:                        uintptr(0),
-	Ftcl_DontCallWhenDeleted:                uintptr(0),
-	Ftcl_DoOneEvent:                         uintptr(0),
-	Ftcl_DoWhenIdle:                         uintptr(0),
-	Ftcl_DStringAppend:                      uintptr(0),
-	Ftcl_DStringAppendElement:               uintptr(0),
-	Ftcl_DStringEndSublist:                  uintptr(0),
-	Ftcl_DStringFree:                        uintptr(0),
-	Ftcl_DStringGetResult:                   uintptr(0),
-	Ftcl_DStringInit:                        uintptr(0),
-	Ftcl_DStringResult:                      uintptr(0),
-	Ftcl_DStringSetLength:                   uintptr(0),
-	Ftcl_DStringStartSublist:                uintptr(0),
-	Ftcl_Eof:                                uintptr(0),
-	Ftcl_ErrnoId:                            uintptr(0),
-	Ftcl_ErrnoMsg:                           uintptr(0),
-	Ftcl_Eval:                               uintptr(0),
-	Ftcl_EvalFile:                           uintptr(0),
-	Ftcl_EvalObj:                            uintptr(0),
-	Ftcl_EventuallyFree:                     uintptr(0),
-	Ftcl_Exit:                               uintptr(0),
-	Ftcl_ExposeCommand:                      uintptr(0),
-	Ftcl_ExprBoolean:                        uintptr(0),
-	Ftcl_ExprBooleanObj:                     uintptr(0),
-	Ftcl_ExprDouble:                         uintptr(0),
-	Ftcl_ExprDoubleObj:                      uintptr(0),
-	Ftcl_ExprLong:                           uintptr(0),
-	Ftcl_ExprLongObj:                        uintptr(0),
-	Ftcl_ExprObj:                            uintptr(0),
-	Ftcl_ExprString:                         uintptr(0),
-	Ftcl_Finalize:                           uintptr(0),
-	Ftcl_FindExecutable:                     uintptr(0),
-	Ftcl_FirstHashEntry:                     uintptr(0),
-	Ftcl_Flush:                              uintptr(0),
-	Ftcl_FreeResult:                         uintptr(0),
-	Ftcl_GetAlias:                           uintptr(0),
-	Ftcl_GetAliasObj:                        uintptr(0),
-	Ftcl_GetAssocData:                       uintptr(0),
-	Ftcl_GetChannel:                         uintptr(0),
-	Ftcl_GetChannelBufferSize:               uintptr(0),
-	Ftcl_GetChannelHandle:                   uintptr(0),
-	Ftcl_GetChannelInstanceData:             uintptr(0),
-	Ftcl_GetChannelMode:                     uintptr(0),
-	Ftcl_GetChannelName:                     uintptr(0),
-	Ftcl_GetChannelOption:                   uintptr(0),
-	Ftcl_GetChannelType:                     uintptr(0),
-	Ftcl_GetCommandInfo:                     uintptr(0),
-	Ftcl_GetCommandName:                     uintptr(0),
-	Ftcl_GetErrno:                           uintptr(0),
-	Ftcl_GetHostName:                        uintptr(0),
-	Ftcl_GetInterpPath:                      uintptr(0),
-	Ftcl_GetMaster:                          uintptr(0),
-	Ftcl_GetNameOfExecutable:                uintptr(0),
-	Ftcl_GetObjResult:                       uintptr(0),
-	Ftcl_GetOpenFile:                        uintptr(0),
-	Ftcl_GetPathType:                        uintptr(0),
-	Ftcl_Gets:                               uintptr(0),
-	Ftcl_GetsObj:                            uintptr(0),
-	Ftcl_GetServiceMode:                     uintptr(0),
-	Ftcl_GetSlave:                           uintptr(0),
-	Ftcl_GetStdChannel:                      uintptr(0),
-	Ftcl_GetStringResult:                    uintptr(0),
-	Ftcl_GetVar:                             uintptr(0),
-	Ftcl_GetVar2:                            uintptr(0),
-	Ftcl_GlobalEval:                         uintptr(0),
-	Ftcl_GlobalEvalObj:                      uintptr(0),
-	Ftcl_HideCommand:                        uintptr(0),
-	Ftcl_Init:                               uintptr(0),
-	Ftcl_InitHashTable:                      uintptr(0),
-	Ftcl_InputBlocked:                       uintptr(0),
-	Ftcl_InputBuffered:                      uintptr(0),
-	Ftcl_InterpDeleted:                      uintptr(0),
-	Ftcl_IsSafe:                             uintptr(0),
-	Ftcl_JoinPath:                           uintptr(0),
-	Ftcl_LinkVar:                            uintptr(0),
-	Freserved188:                            uintptr(0),
-	Ftcl_MakeFileChannel:                    uintptr(0),
-	Ftcl_MakeSafe:                           uintptr(0),
-	Ftcl_MakeTcpClientChannel:               uintptr(0),
-	Ftcl_Merge:                              uintptr(0),
-	Ftcl_NextHashEntry:                      uintptr(0),
-	Ftcl_NotifyChannel:                      uintptr(0),
-	Ftcl_ObjGetVar2:                         uintptr(0),
-	Ftcl_ObjSetVar2:                         uintptr(0),
-	Ftcl_OpenCommandChannel:                 uintptr(0),
-	Ftcl_OpenFileChannel:                    uintptr(0),
-	Ftcl_OpenTcpClient:                      uintptr(0),
-	Ftcl_OpenTcpServer:                      uintptr(0),
-	Ftcl_Preserve:                           uintptr(0),
-	Ftcl_PrintDouble:                        uintptr(0),
-	Ftcl_PutEnv:                             uintptr(0),
-	Ftcl_PosixError:                         uintptr(0),
-	Ftcl_QueueEvent:                         uintptr(0),
-	Ftcl_Read:                               uintptr(0),
-	Ftcl_ReapDetachedProcs:                  uintptr(0),
-	Ftcl_RecordAndEval:                      uintptr(0),
-	Ftcl_RecordAndEvalObj:                   uintptr(0),
-	Ftcl_RegisterChannel:                    uintptr(0),
-	Ftcl_RegisterObjType:                    uintptr(0),
-	Ftcl_RegExpCompile:                      uintptr(0),
-	Ftcl_RegExpExec:                         uintptr(0),
-	Ftcl_RegExpMatch:                        uintptr(0),
-	Ftcl_RegExpRange:                        uintptr(0),
-	Ftcl_Release:                            uintptr(0),
-	Ftcl_ResetResult:                        uintptr(0),
-	Ftcl_ScanElement:                        uintptr(0),
-	Ftcl_ScanCountedElement:                 uintptr(0),
-	Ftcl_SeekOld:                            uintptr(0),
-	Ftcl_ServiceAll:                         uintptr(0),
-	Ftcl_ServiceEvent:                       uintptr(0),
-	Ftcl_SetAssocData:                       uintptr(0),
-	Ftcl_SetChannelBufferSize:               uintptr(0),
-	Ftcl_SetChannelOption:                   uintptr(0),
-	Ftcl_SetCommandInfo:                     uintptr(0),
-	Ftcl_SetErrno:                           uintptr(0),
-	Ftcl_SetErrorCode:                       uintptr(0),
-	Ftcl_SetMaxBlockTime:                    uintptr(0),
-	Ftcl_SetPanicProc:                       uintptr(0),
-	Ftcl_SetRecursionLimit:                  uintptr(0),
-	Ftcl_SetResult:                          uintptr(0),
-	Ftcl_SetServiceMode:                     uintptr(0),
-	Ftcl_SetObjErrorCode:                    uintptr(0),
-	Ftcl_SetObjResult:                       uintptr(0),
-	Ftcl_SetStdChannel:                      uintptr(0),
-	Ftcl_SetVar:                             uintptr(0),
-	Ftcl_SetVar2:                            uintptr(0),
-	Ftcl_SignalId:                           uintptr(0),
-	Ftcl_SignalMsg:                          uintptr(0),
-	Ftcl_SourceRCFile:                       uintptr(0),
-	Ftcl_SplitList:                          uintptr(0),
-	Ftcl_SplitPath:                          uintptr(0),
-	Ftcl_StaticPackage:                      uintptr(0),
-	Ftcl_StringMatch:                        uintptr(0),
-	Ftcl_TellOld:                            uintptr(0),
-	Ftcl_TraceVar:                           uintptr(0),
-	Ftcl_TraceVar2:                          uintptr(0),
-	Ftcl_TranslateFileName:                  uintptr(0),
-	Ftcl_Ungets:                             uintptr(0),
-	Ftcl_UnlinkVar:                          uintptr(0),
-	Ftcl_UnregisterChannel:                  uintptr(0),
-	Ftcl_UnsetVar:                           uintptr(0),
-	Ftcl_UnsetVar2:                          uintptr(0),
-	Ftcl_UntraceVar:                         uintptr(0),
-	Ftcl_UntraceVar2:                        uintptr(0),
-	Ftcl_UpdateLinkedVar:                    uintptr(0),
-	Ftcl_UpVar:                              uintptr(0),
-	Ftcl_UpVar2:                             uintptr(0),
-	Ftcl_VarEval:                            uintptr(0),
-	Ftcl_VarTraceInfo:                       uintptr(0),
-	Ftcl_VarTraceInfo2:                      uintptr(0),
-	Ftcl_Write:                              uintptr(0),
-	Ftcl_WrongNumArgs:                       uintptr(0),
-	Ftcl_DumpActiveMemory:                   uintptr(0),
-	Ftcl_ValidateAllMemory:                  uintptr(0),
-	Ftcl_AppendResultVA:                     uintptr(0),
-	Ftcl_AppendStringsToObjVA:               uintptr(0),
-	Ftcl_HashStats:                          uintptr(0),
-	Ftcl_ParseVar:                           uintptr(0),
-	Ftcl_PkgPresent:                         uintptr(0),
-	Ftcl_PkgPresentEx:                       uintptr(0),
-	Ftcl_PkgProvide:                         uintptr(0),
-	Ftcl_PkgRequire:                         uintptr(0),
-	Ftcl_SetErrorCodeVA:                     uintptr(0),
-	Ftcl_VarEvalVA:                          uintptr(0),
-	Ftcl_WaitPid:                            uintptr(0),
-	Ftcl_PanicVA:                            uintptr(0),
-	Ftcl_GetVersion:                         uintptr(0),
-	Ftcl_InitMemory:                         uintptr(0),
-	Ftcl_StackChannel:                       uintptr(0),
-	Ftcl_UnstackChannel:                     uintptr(0),
-	Ftcl_GetStackedChannel:                  uintptr(0),
-	Ftcl_SetMainLoop:                        uintptr(0),
-	Freserved285:                            uintptr(0),
-	Ftcl_AppendObjToObj:                     uintptr(0),
-	Ftcl_CreateEncoding:                     uintptr(0),
-	Ftcl_CreateThreadExitHandler:            uintptr(0),
-	Ftcl_DeleteThreadExitHandler:            uintptr(0),
-	Ftcl_DiscardResult:                      uintptr(0),
-	Ftcl_EvalEx:                             uintptr(0),
-	Ftcl_EvalObjv:                           uintptr(0),
-	Ftcl_EvalObjEx:                          uintptr(0),
-	Ftcl_ExitThread:                         uintptr(0),
-	Ftcl_ExternalToUtf:                      uintptr(0),
-	Ftcl_ExternalToUtfDString:               uintptr(0),
-	Ftcl_FinalizeThread:                     uintptr(0),
-	Ftcl_FinalizeNotifier:                   uintptr(0),
-	Ftcl_FreeEncoding:                       uintptr(0),
-	Ftcl_GetCurrentThread:                   uintptr(0),
-	Ftcl_GetEncoding:                        uintptr(0),
-	Ftcl_GetEncodingName:                    uintptr(0),
-	Ftcl_GetEncodingNames:                   uintptr(0),
-	Ftcl_GetIndexFromObjStruct:              uintptr(0),
-	Ftcl_GetThreadData:                      uintptr(0),
-	Ftcl_GetVar2Ex:                          uintptr(0),
-	Ftcl_InitNotifier:                       uintptr(0),
-	Ftcl_MutexLock:                          uintptr(0),
-	Ftcl_MutexUnlock:                        uintptr(0),
-	Ftcl_ConditionNotify:                    uintptr(0),
-	Ftcl_ConditionWait:                      uintptr(0),
-	Ftcl_NumUtfChars:                        uintptr(0),
-	Ftcl_ReadChars:                          uintptr(0),
-	Ftcl_RestoreResult:                      uintptr(0),
-	Ftcl_SaveResult:                         uintptr(0),
-	Ftcl_SetSystemEncoding:                  uintptr(0),
-	Ftcl_SetVar2Ex:                          uintptr(0),
-	Ftcl_ThreadAlert:                        uintptr(0),
-	Ftcl_ThreadQueueEvent:                   uintptr(0),
-	Ftcl_UniCharAtIndex:                     uintptr(0),
-	Ftcl_UniCharToLower:                     uintptr(0),
-	Ftcl_UniCharToTitle:                     uintptr(0),
-	Ftcl_UniCharToUpper:                     uintptr(0),
-	Ftcl_UniCharToUtf:                       uintptr(0),
-	Ftcl_UtfAtIndex:                         uintptr(0),
-	Ftcl_UtfCharComplete:                    uintptr(0),
-	Ftcl_UtfBackslash:                       uintptr(0),
-	Ftcl_UtfFindFirst:                       uintptr(0),
-	Ftcl_UtfFindLast:                        uintptr(0),
-	Ftcl_UtfNext:                            uintptr(0),
-	Ftcl_UtfPrev:                            uintptr(0),
-	Ftcl_UtfToExternal:                      uintptr(0),
-	Ftcl_UtfToExternalDString:               uintptr(0),
-	Ftcl_UtfToLower:                         uintptr(0),
-	Ftcl_UtfToTitle:                         uintptr(0),
-	Ftcl_UtfToUniChar:                       uintptr(0),
-	Ftcl_UtfToUpper:                         uintptr(0),
-	Ftcl_WriteChars:                         uintptr(0),
-	Ftcl_WriteObj:                           uintptr(0),
-	Ftcl_GetString:                          uintptr(0),
-	Ftcl_GetDefaultEncodingDir:              uintptr(0),
-	Ftcl_SetDefaultEncodingDir:              uintptr(0),
-	Ftcl_AlertNotifier:                      uintptr(0),
-	Ftcl_ServiceModeHook:                    uintptr(0),
-	Ftcl_UniCharIsAlnum:                     uintptr(0),
-	Ftcl_UniCharIsAlpha:                     uintptr(0),
-	Ftcl_UniCharIsDigit:                     uintptr(0),
-	Ftcl_UniCharIsLower:                     uintptr(0),
-	Ftcl_UniCharIsSpace:                     uintptr(0),
-	Ftcl_UniCharIsUpper:                     uintptr(0),
-	Ftcl_UniCharIsWordChar:                  uintptr(0),
-	Ftcl_UniCharLen:                         uintptr(0),
-	Ftcl_UniCharNcmp:                        uintptr(0),
-	Ftcl_UniCharToUtfDString:                uintptr(0),
-	Ftcl_UtfToUniCharDString:                uintptr(0),
-	Ftcl_GetRegExpFromObj:                   uintptr(0),
-	Ftcl_EvalTokens:                         uintptr(0),
-	Ftcl_FreeParse:                          uintptr(0),
-	Ftcl_LogCommandInfo:                     uintptr(0),
-	Ftcl_ParseBraces:                        uintptr(0),
-	Ftcl_ParseCommand:                       uintptr(0),
-	Ftcl_ParseExpr:                          uintptr(0),
-	Ftcl_ParseQuotedString:                  uintptr(0),
-	Ftcl_ParseVarName:                       uintptr(0),
-	Ftcl_GetCwd:                             uintptr(0),
-	Ftcl_Chdir:                              uintptr(0),
-	Ftcl_Access:                             uintptr(0),
-	Ftcl_Stat:                               uintptr(0),
-	Ftcl_UtfNcmp:                            uintptr(0),
-	Ftcl_UtfNcasecmp:                        uintptr(0),
-	Ftcl_StringCaseMatch:                    uintptr(0),
-	Ftcl_UniCharIsControl:                   uintptr(0),
-	Ftcl_UniCharIsGraph:                     uintptr(0),
-	Ftcl_UniCharIsPrint:                     uintptr(0),
-	Ftcl_UniCharIsPunct:                     uintptr(0),
-	Ftcl_RegExpExecObj:                      uintptr(0),
-	Ftcl_RegExpGetInfo:                      uintptr(0),
-	Ftcl_NewUnicodeObj:                      uintptr(0),
-	Ftcl_SetUnicodeObj:                      uintptr(0),
-	Ftcl_GetCharLength:                      uintptr(0),
-	Ftcl_GetUniChar:                         uintptr(0),
-	Ftcl_GetUnicode:                         uintptr(0),
-	Ftcl_GetRange:                           uintptr(0),
-	Ftcl_AppendUnicodeToObj:                 uintptr(0),
-	Ftcl_RegExpMatchObj:                     uintptr(0),
-	Ftcl_SetNotifier:                        uintptr(0),
-	Ftcl_GetAllocMutex:                      uintptr(0),
-	Ftcl_GetChannelNames:                    uintptr(0),
-	Ftcl_GetChannelNamesEx:                  uintptr(0),
-	Ftcl_ProcObjCmd:                         uintptr(0),
-	Ftcl_ConditionFinalize:                  uintptr(0),
-	Ftcl_MutexFinalize:                      uintptr(0),
-	Ftcl_CreateThread:                       uintptr(0),
-	Ftcl_ReadRaw:                            uintptr(0),
-	Ftcl_WriteRaw:                           uintptr(0),
-	Ftcl_GetTopChannel:                      uintptr(0),
-	Ftcl_ChannelBuffered:                    uintptr(0),
-	Ftcl_ChannelName:                        uintptr(0),
-	Ftcl_ChannelVersion:                     uintptr(0),
-	Ftcl_ChannelBlockModeProc:               uintptr(0),
-	Ftcl_ChannelCloseProc:                   uintptr(0),
-	Ftcl_ChannelClose2Proc:                  uintptr(0),
-	Ftcl_ChannelInputProc:                   uintptr(0),
-	Ftcl_ChannelOutputProc:                  uintptr(0),
-	Ftcl_ChannelSeekProc:                    uintptr(0),
-	Ftcl_ChannelSetOptionProc:               uintptr(0),
-	Ftcl_ChannelGetOptionProc:               uintptr(0),
-	Ftcl_ChannelWatchProc:                   uintptr(0),
-	Ftcl_ChannelGetHandleProc:               uintptr(0),
-	Ftcl_ChannelFlushProc:                   uintptr(0),
-	Ftcl_ChannelHandlerProc:                 uintptr(0),
-	Ftcl_JoinThread:                         uintptr(0),
-	Ftcl_IsChannelShared:                    uintptr(0),
-	Ftcl_IsChannelRegistered:                uintptr(0),
-	Ftcl_CutChannel:                         uintptr(0),
-	Ftcl_SpliceChannel:                      uintptr(0),
-	Ftcl_ClearChannelHandlers:               uintptr(0),
-	Ftcl_IsChannelExisting:                  uintptr(0),
-	Ftcl_UniCharNcasecmp:                    uintptr(0),
-	Ftcl_UniCharCaseMatch:                   uintptr(0),
-	Ftcl_FindHashEntry:                      uintptr(0),
-	Ftcl_CreateHashEntry:                    uintptr(0),
-	Ftcl_InitCustomHashTable:                uintptr(0),
-	Ftcl_InitObjHashTable:                   uintptr(0),
-	Ftcl_CommandTraceInfo:                   uintptr(0),
-	Ftcl_TraceCommand:                       uintptr(0),
-	Ftcl_UntraceCommand:                     uintptr(0),
-	Ftcl_AttemptAlloc:                       uintptr(0),
-	Ftcl_AttemptDbCkalloc:                   uintptr(0),
-	Ftcl_AttemptRealloc:                     uintptr(0),
-	Ftcl_AttemptDbCkrealloc:                 uintptr(0),
-	Ftcl_AttemptSetObjLength:                uintptr(0),
-	Ftcl_GetChannelThread:                   uintptr(0),
-	Ftcl_GetUnicodeFromObj:                  uintptr(0),
-	Ftcl_GetMathFuncInfo:                    uintptr(0),
-	Ftcl_ListMathFuncs:                      uintptr(0),
-	Ftcl_SubstObj:                           uintptr(0),
-	Ftcl_DetachChannel:                      uintptr(0),
-	Ftcl_IsStandardChannel:                  uintptr(0),
-	Ftcl_FSCopyFile:                         uintptr(0),
-	Ftcl_FSCopyDirectory:                    uintptr(0),
-	Ftcl_FSCreateDirectory:                  uintptr(0),
-	Ftcl_FSDeleteFile:                       uintptr(0),
-	Ftcl_FSLoadFile:                         uintptr(0),
-	Ftcl_FSMatchInDirectory:                 uintptr(0),
-	Ftcl_FSLink:                             uintptr(0),
-	Ftcl_FSRemoveDirectory:                  uintptr(0),
-	Ftcl_FSRenameFile:                       uintptr(0),
-	Ftcl_FSLstat:                            uintptr(0),
-	Ftcl_FSUtime:                            uintptr(0),
-	Ftcl_FSFileAttrsGet:                     uintptr(0),
-	Ftcl_FSFileAttrsSet:                     uintptr(0),
-	Ftcl_FSFileAttrStrings:                  uintptr(0),
-	Ftcl_FSStat:                             uintptr(0),
-	Ftcl_FSAccess:                           uintptr(0),
-	Ftcl_FSOpenFileChannel:                  uintptr(0),
-	Ftcl_FSGetCwd:                           uintptr(0),
-	Ftcl_FSChdir:                            uintptr(0),
-	Ftcl_FSConvertToPathType:                uintptr(0),
-	Ftcl_FSJoinPath:                         uintptr(0),
-	Ftcl_FSSplitPath:                        uintptr(0),
-	Ftcl_FSEqualPaths:                       uintptr(0),
-	Ftcl_FSGetNormalizedPath:                uintptr(0),
-	Ftcl_FSJoinToPath:                       uintptr(0),
-	Ftcl_FSGetInternalRep:                   uintptr(0),
-	Ftcl_FSGetTranslatedPath:                uintptr(0),
-	Ftcl_FSEvalFile:                         uintptr(0),
-	Ftcl_FSNewNativePath:                    uintptr(0),
-	Ftcl_FSGetNativePath:                    uintptr(0),
-	Ftcl_FSFileSystemInfo:                   uintptr(0),
-	Ftcl_FSPathSeparator:                    uintptr(0),
-	Ftcl_FSListVolumes:                      uintptr(0),
-	Ftcl_FSRegister:                         uintptr(0),
-	Ftcl_FSUnregister:                       uintptr(0),
-	Ftcl_FSData:                             uintptr(0),
-	Ftcl_FSGetTranslatedStringPath:          uintptr(0),
-	Ftcl_FSGetFileSystemForPath:             uintptr(0),
-	Ftcl_FSGetPathType:                      uintptr(0),
-	Ftcl_OutputBuffered:                     uintptr(0),
-	Ftcl_FSMountsChanged:                    uintptr(0),
-	Ftcl_EvalTokensStandard:                 uintptr(0),
-	Ftcl_GetTime:                            uintptr(0),
-	Ftcl_CreateObjTrace:                     uintptr(0),
-	Ftcl_GetCommandInfoFromToken:            uintptr(0),
-	Ftcl_SetCommandInfoFromToken:            uintptr(0),
-	Ftcl_DbNewWideIntObj:                    uintptr(0),
-	Ftcl_GetWideIntFromObj:                  uintptr(0),
-	Ftcl_NewWideIntObj:                      uintptr(0),
-	Ftcl_SetWideIntObj:                      uintptr(0),
-	Ftcl_AllocStatBuf:                       uintptr(0),
-	Ftcl_Seek:                               uintptr(0),
-	Ftcl_Tell:                               uintptr(0),
-	Ftcl_ChannelWideSeekProc:                uintptr(0),
-	Ftcl_DictObjPut:                         uintptr(0),
-	Ftcl_DictObjGet:                         uintptr(0),
-	Ftcl_DictObjRemove:                      uintptr(0),
-	Ftcl_DictObjSize:                        uintptr(0),
-	Ftcl_DictObjFirst:                       uintptr(0),
-	Ftcl_DictObjNext:                        uintptr(0),
-	Ftcl_DictObjDone:                        uintptr(0),
-	Ftcl_DictObjPutKeyList:                  uintptr(0),
-	Ftcl_DictObjRemoveKeyList:               uintptr(0),
-	Ftcl_NewDictObj:                         uintptr(0),
-	Ftcl_DbNewDictObj:                       uintptr(0),
-	Ftcl_RegisterConfig:                     uintptr(0),
-	Ftcl_CreateNamespace:                    uintptr(0),
-	Ftcl_DeleteNamespace:                    uintptr(0),
-	Ftcl_AppendExportList:                   uintptr(0),
-	Ftcl_Export:                             uintptr(0),
-	Ftcl_Import:                             uintptr(0),
-	Ftcl_ForgetImport:                       uintptr(0),
-	Ftcl_GetCurrentNamespace:                uintptr(0),
-	Ftcl_GetGlobalNamespace:                 uintptr(0),
-	Ftcl_FindNamespace:                      uintptr(0),
-	Ftcl_FindCommand:                        uintptr(0),
-	Ftcl_GetCommandFromObj:                  uintptr(0),
-	Ftcl_GetCommandFullName:                 uintptr(0),
-	Ftcl_FSEvalFileEx:                       uintptr(0),
-	Ftcl_SetExitProc:                        uintptr(0),
-	Ftcl_LimitAddHandler:                    uintptr(0),
-	Ftcl_LimitRemoveHandler:                 uintptr(0),
-	Ftcl_LimitReady:                         uintptr(0),
-	Ftcl_LimitCheck:                         uintptr(0),
-	Ftcl_LimitExceeded:                      uintptr(0),
-	Ftcl_LimitSetCommands:                   uintptr(0),
-	Ftcl_LimitSetTime:                       uintptr(0),
-	Ftcl_LimitSetGranularity:                uintptr(0),
-	Ftcl_LimitTypeEnabled:                   uintptr(0),
-	Ftcl_LimitTypeExceeded:                  uintptr(0),
-	Ftcl_LimitTypeSet:                       uintptr(0),
-	Ftcl_LimitTypeReset:                     uintptr(0),
-	Ftcl_LimitGetCommands:                   uintptr(0),
-	Ftcl_LimitGetTime:                       uintptr(0),
-	Ftcl_LimitGetGranularity:                uintptr(0),
-	Ftcl_SaveInterpState:                    uintptr(0),
-	Ftcl_RestoreInterpState:                 uintptr(0),
-	Ftcl_DiscardInterpState:                 uintptr(0),
-	Ftcl_SetReturnOptions:                   uintptr(0),
-	Ftcl_GetReturnOptions:                   uintptr(0),
-	Ftcl_IsEnsemble:                         uintptr(0),
-	Ftcl_CreateEnsemble:                     uintptr(0),
-	Ftcl_FindEnsemble:                       uintptr(0),
-	Ftcl_SetEnsembleSubcommandList:          uintptr(0),
-	Ftcl_SetEnsembleMappingDict:             uintptr(0),
-	Ftcl_SetEnsembleUnknownHandler:          uintptr(0),
-	Ftcl_SetEnsembleFlags:                   uintptr(0),
-	Ftcl_GetEnsembleSubcommandList:          uintptr(0),
-	Ftcl_GetEnsembleMappingDict:             uintptr(0),
-	Ftcl_GetEnsembleUnknownHandler:          uintptr(0),
-	Ftcl_GetEnsembleFlags:                   uintptr(0),
-	Ftcl_GetEnsembleNamespace:               uintptr(0),
-	Ftcl_SetTimeProc:                        uintptr(0),
-	Ftcl_QueryTimeProc:                      uintptr(0),
-	Ftcl_ChannelThreadActionProc:            uintptr(0),
-	Ftcl_NewBignumObj:                       uintptr(0),
-	Ftcl_DbNewBignumObj:                     uintptr(0),
-	Ftcl_SetBignumObj:                       uintptr(0),
-	Ftcl_GetBignumFromObj:                   uintptr(0),
-	Ftcl_TakeBignumFromObj:                  uintptr(0),
-	Ftcl_TruncateChannel:                    uintptr(0),
-	Ftcl_ChannelTruncateProc:                uintptr(0),
-	Ftcl_SetChannelErrorInterp:              uintptr(0),
-	Ftcl_GetChannelErrorInterp:              uintptr(0),
-	Ftcl_SetChannelError:                    uintptr(0),
-	Ftcl_GetChannelError:                    uintptr(0),
-	Ftcl_InitBignumFromDouble:               uintptr(0),
-	Ftcl_GetNamespaceUnknownHandler:         uintptr(0),
-	Ftcl_SetNamespaceUnknownHandler:         uintptr(0),
-	Ftcl_GetEncodingFromObj:                 uintptr(0),
-	Ftcl_GetEncodingSearchPath:              uintptr(0),
-	Ftcl_SetEncodingSearchPath:              uintptr(0),
-	Ftcl_GetEncodingNameFromEnvironment:     uintptr(0),
-	Ftcl_PkgRequireProc:                     uintptr(0),
-	Ftcl_AppendObjToErrorInfo:               uintptr(0),
-	Ftcl_AppendLimitedToObj:                 uintptr(0),
-	Ftcl_Format:                             uintptr(0),
-	Ftcl_AppendFormatToObj:                  uintptr(0),
-	Ftcl_ObjPrintf:                          uintptr(0),
-	Ftcl_AppendPrintfToObj:                  uintptr(0),
-	Ftcl_CancelEval:                         uintptr(0),
-	Ftcl_Canceled:                           uintptr(0),
-	Ftcl_CreatePipe:                         uintptr(0),
-	Ftcl_NRCreateCommand:                    uintptr(0),
-	Ftcl_NREvalObj:                          uintptr(0),
-	Ftcl_NREvalObjv:                         uintptr(0),
-	Ftcl_NRCmdSwap:                          uintptr(0),
-	Ftcl_NRAddCallback:                      uintptr(0),
-	Ftcl_NRCallObjProc:                      uintptr(0),
-	Ftcl_GetFSDeviceFromStat:                uintptr(0),
-	Ftcl_GetFSInodeFromStat:                 uintptr(0),
-	Ftcl_GetModeFromStat:                    uintptr(0),
-	Ftcl_GetLinkCountFromStat:               uintptr(0),
-	Ftcl_GetUserIdFromStat:                  uintptr(0),
-	Ftcl_GetGroupIdFromStat:                 uintptr(0),
-	Ftcl_GetDeviceTypeFromStat:              uintptr(0),
-	Ftcl_GetAccessTimeFromStat:              uintptr(0),
-	Ftcl_GetModificationTimeFromStat:        uintptr(0),
-	Ftcl_GetChangeTimeFromStat:              uintptr(0),
-	Ftcl_GetSizeFromStat:                    uintptr(0),
-	Ftcl_GetBlocksFromStat:                  uintptr(0),
-	Ftcl_GetBlockSizeFromStat:               uintptr(0),
-	Ftcl_SetEnsembleParameterList:           uintptr(0),
-	Ftcl_GetEnsembleParameterList:           uintptr(0),
-	Ftcl_ParseArgsObjv:                      uintptr(0),
-	Ftcl_GetErrorLine:                       uintptr(0),
-	Ftcl_SetErrorLine:                       uintptr(0),
-	Ftcl_TransferResult:                     uintptr(0),
-	Ftcl_InterpActive:                       uintptr(0),
-	Ftcl_BackgroundException:                uintptr(0),
-	Ftcl_ZlibDeflate:                        uintptr(0),
-	Ftcl_ZlibInflate:                        uintptr(0),
-	Ftcl_ZlibCRC32:                          uintptr(0),
-	Ftcl_ZlibAdler32:                        uintptr(0),
-	Ftcl_ZlibStreamInit:                     uintptr(0),
-	Ftcl_ZlibStreamGetCommandName:           uintptr(0),
-	Ftcl_ZlibStreamEof:                      uintptr(0),
-	Ftcl_ZlibStreamChecksum:                 uintptr(0),
-	Ftcl_ZlibStreamPut:                      uintptr(0),
-	Ftcl_ZlibStreamGet:                      uintptr(0),
-	Ftcl_ZlibStreamClose:                    uintptr(0),
-	Ftcl_ZlibStreamReset:                    uintptr(0),
-	Ftcl_SetStartupScript:                   uintptr(0),
-	Ftcl_GetStartupScript:                   uintptr(0),
-	Ftcl_CloseEx:                            uintptr(0),
-	Ftcl_NRExprObj:                          uintptr(0),
-	Ftcl_NRSubstObj:                         uintptr(0),
-	Ftcl_LoadFile:                           uintptr(0),
-	Ftcl_FindSymbol:                         uintptr(0),
-	Ftcl_FSUnloadFile:                       uintptr(0),
-	Ftcl_ZlibStreamSetCompressionDictionary: uintptr(0),
-	Freserved631:                            uintptr(0),
-	Freserved632:                            uintptr(0),
-	Freserved633:                            uintptr(0),
-	Freserved634:                            uintptr(0),
-	Freserved635:                            uintptr(0),
-	Freserved636:                            uintptr(0),
-	Freserved637:                            uintptr(0),
-	Freserved638:                            uintptr(0),
-	Freserved639:                            uintptr(0),
-	Freserved640:                            uintptr(0),
-	Freserved641:                            uintptr(0),
-	Freserved642:                            uintptr(0),
-	Freserved643:                            uintptr(0),
-	Freserved644:                            uintptr(0),
-	Freserved645:                            uintptr(0),
-	Freserved646:                            uintptr(0),
-	Freserved647:                            uintptr(0),
-	Freserved648:                            uintptr(0),
-	Freserved649:                            uintptr(0),
-	Freserved650:                            uintptr(0),
-	Freserved651:                            uintptr(0),
-	Freserved652:                            uintptr(0),
-	Freserved653:                            uintptr(0),
-	Freserved654:                            uintptr(0),
-	Freserved655:                            uintptr(0),
-	Freserved656:                            uintptr(0),
-	Freserved657:                            uintptr(0),
-	Freserved658:                            uintptr(0),
-	Freserved659:                            uintptr(0),
-	Freserved660:                            uintptr(0),
-	Freserved661:                            uintptr(0),
-	Freserved662:                            uintptr(0),
-	Freserved663:                            uintptr(0),
-	Freserved664:                            uintptr(0),
-	Freserved665:                            uintptr(0),
-	Freserved666:                            uintptr(0),
-	Freserved667:                            uintptr(0),
-	Freserved668:                            uintptr(0),
-	Freserved669:                            uintptr(0),
-	Freserved670:                            uintptr(0),
-	Freserved671:                            uintptr(0),
-	Freserved672:                            uintptr(0),
-	Freserved673:                            uintptr(0),
-	Freserved674:                            uintptr(0),
-	Freserved675:                            uintptr(0),
-	Freserved676:                            uintptr(0),
-	Freserved677:                            uintptr(0),
-	Freserved678:                            uintptr(0),
-	Freserved679:                            uintptr(0),
-	Freserved680:                            uintptr(0),
-	Freserved681:                            uintptr(0),
-	Freserved682:                            uintptr(0),
-	FtclUnusedStubEntry:                     uintptr(0),
+	Fmagic: libc.Int32FromUint32(0xFCA3BACF),
+	Fhooks: uintptr(unsafe.Pointer(&_tclStubHooks)),
 }
 
 var XtclTimeClientData TClientData
 
 var XtclTomMathStubs = TTclTomMathStubs{
-	Fmagic:                       libc.Int32FromUint32(0xFCA3BACF),
-	Fhooks:                       uintptr(0),
-	FtclBN_epoch:                 uintptr(0),
-	FtclBN_revision:              uintptr(0),
-	FtclBN_mp_add:                uintptr(0),
-	FtclBN_mp_add_d:              uintptr(0),
-	FtclBN_mp_and:                uintptr(0),
-	FtclBN_mp_clamp:              uintptr(0),
-	FtclBN_mp_clear:              uintptr(0),
-	FtclBN_mp_clear_multi:        uintptr(0),
-	FtclBN_mp_cmp:                uintptr(0),
-	FtclBN_mp_cmp_d:              uintptr(0),
-	FtclBN_mp_cmp_mag:            uintptr(0),
-	FtclBN_mp_copy:               uintptr(0),
-	FtclBN_mp_count_bits:         uintptr(0),
-	FtclBN_mp_div:                uintptr(0),
-	FtclBN_mp_div_d:              uintptr(0),
-	FtclBN_mp_div_2:              uintptr(0),
-	FtclBN_mp_div_2d:             uintptr(0),
-	FtclBN_mp_div_3:              uintptr(0),
-	FtclBN_mp_exch:               uintptr(0),
-	FtclBN_mp_expt_d:             uintptr(0),
-	FtclBN_mp_grow:               uintptr(0),
-	FtclBN_mp_init:               uintptr(0),
-	FtclBN_mp_init_copy:          uintptr(0),
-	FtclBN_mp_init_multi:         uintptr(0),
-	FtclBN_mp_init_set:           uintptr(0),
-	FtclBN_mp_init_size:          uintptr(0),
-	FtclBN_mp_lshd:               uintptr(0),
-	FtclBN_mp_mod:                uintptr(0),
-	FtclBN_mp_mod_2d:             uintptr(0),
-	FtclBN_mp_mul:                uintptr(0),
-	FtclBN_mp_mul_d:              uintptr(0),
-	FtclBN_mp_mul_2:              uintptr(0),
-	FtclBN_mp_mul_2d:             uintptr(0),
-	FtclBN_mp_neg:                uintptr(0),
-	FtclBN_mp_or:                 uintptr(0),
-	FtclBN_mp_radix_size:         uintptr(0),
-	FtclBN_mp_read_radix:         uintptr(0),
-	FtclBN_mp_rshd:               uintptr(0),
-	FtclBN_mp_shrink:             uintptr(0),
-	FtclBN_mp_set:                uintptr(0),
-	FtclBN_mp_sqr:                uintptr(0),
-	FtclBN_mp_sqrt:               uintptr(0),
-	FtclBN_mp_sub:                uintptr(0),
-	FtclBN_mp_sub_d:              uintptr(0),
-	FtclBN_mp_to_unsigned_bin:    uintptr(0),
-	FtclBN_mp_to_unsigned_bin_n:  uintptr(0),
-	FtclBN_mp_toradix_n:          uintptr(0),
-	FtclBN_mp_unsigned_bin_size:  uintptr(0),
-	FtclBN_mp_xor:                uintptr(0),
-	FtclBN_mp_zero:               uintptr(0),
-	FtclBN_reverse:               uintptr(0),
-	FtclBN_fast_s_mp_mul_digs:    uintptr(0),
-	FtclBN_fast_s_mp_sqr:         uintptr(0),
-	FtclBN_mp_karatsuba_mul:      uintptr(0),
-	FtclBN_mp_karatsuba_sqr:      uintptr(0),
-	FtclBN_mp_toom_mul:           uintptr(0),
-	FtclBN_mp_toom_sqr:           uintptr(0),
-	FtclBN_s_mp_add:              uintptr(0),
-	FtclBN_s_mp_mul_digs:         uintptr(0),
-	FtclBN_s_mp_sqr:              uintptr(0),
-	FtclBN_s_mp_sub:              uintptr(0),
-	FtclBN_mp_init_set_int:       uintptr(0),
-	FtclBN_mp_set_int:            uintptr(0),
-	FtclBN_mp_cnt_lsb:            uintptr(0),
-	FtclBNInitBignumFromLong:     uintptr(0),
-	FtclBNInitBignumFromWideInt:  uintptr(0),
-	FtclBNInitBignumFromWideUInt: uintptr(0),
-	FtclBN_mp_expt_d_ex:          uintptr(0),
-	FtclBN_mp_set_ull:            uintptr(0),
-	FtclBN_mp_get_mag_ull:        uintptr(0),
-	FtclBN_mp_set_ll:             uintptr(0),
-	Freserved71:                  uintptr(0),
-	Freserved72:                  uintptr(0),
-	FtclBN_mp_tc_and:             uintptr(0),
-	FtclBN_mp_tc_or:              uintptr(0),
-	FtclBN_mp_tc_xor:             uintptr(0),
-	FtclBN_mp_signed_rsh:         uintptr(0),
-	Freserved77:                  uintptr(0),
-	FtclBN_mp_to_ubin:            uintptr(0),
-	FtclBN_mp_div_ld:             uintptr(0),
-	FtclBN_mp_to_radix:           uintptr(0),
+	Fmagic: libc.Int32FromUint32(0xFCA3BACF),
 }
 
 var XtclWideIntType = TTcl_ObjType{
-	Fname:             __ccgo_ts + 46524,
-	FfreeIntRepProc:   uintptr(0),
-	FdupIntRepProc:    uintptr(0),
-	FupdateStringProc: uintptr(0),
-	FsetFromAnyProc:   uintptr(0),
+	Fname: __ccgo_ts + 46539,
 }
 
 var XtclpFileAttrProcs = [3]TTclFileAttrProcs{
-	0: {
-		FgetProc: uintptr(0),
-		FsetProc: uintptr(0),
-	},
-	1: {
-		FgetProc: uintptr(0),
-		FsetProc: uintptr(0),
-	},
-	2: {
-		FgetProc: uintptr(0),
-		FsetProc: uintptr(0),
-	},
+	0: {},
+	1: {},
+	2: {},
 }
 
 var XtclpFileAttrStrings = [4]uintptr{
 	0: __ccgo_ts + 64977,
 	1: __ccgo_ts + 64984,
 	2: __ccgo_ts + 29807,
-	3: libc.UintptrFromInt32(0),
 }
 
 var __ccgo_ts = (*reflect.StringHeader)(unsafe.Pointer(&__ccgo_ts1)).Data
 
-var __ccgo_ts1 = "\n\n\n========= RAW ==========\n\x00\n\n\n========= TREE FIXED ==========\n\x00\n\n\n========= LA%d ==========\n\x00\n\n\n========= SEARCH ==========\n\x00\n\n\n========= TREE NODE %s ==========\n\x00null tree\n\x00%s. `%c'\x00 longest\x00 shortest\x00 hasmixed\x00 hascapture\x00 hasbackref\x00 UNUSED\x00 (#%d)\x00 {%d,\x00%d\x00}\x00 %ld-%ld\x00 L:%s\x00 R:%s\x00\n\x00unable\x00%p\x00\ninitial cleanup:\n\x00\nempties:\n\x00\nconstraints:\n\x00\nfinal cleanup:\n\x00NUL\x00SOH\x00STX\x00ETX\x00EOT\x00ENQ\x00ACK\x00BEL\x00alert\x00BS\x00backspace\x00HT\x00tab\x00LF\x00newline\x00VT\x00vertical-tab\x00FF\x00form-feed\x00CR\x00carriage-return\x00SO\x00SI\x00DLE\x00DC1\x00DC2\x00DC3\x00DC4\x00NAK\x00SYN\x00ETB\x00CAN\x00EM\x00SUB\x00ESC\x00IS4\x00FS\x00IS3\x00GS\x00IS2\x00RS\x00IS1\x00US\x00space\x00exclamation-mark\x00quotation-mark\x00number-sign\x00dollar-sign\x00percent-sign\x00ampersand\x00apostrophe\x00left-parenthesis\x00right-parenthesis\x00asterisk\x00plus-sign\x00comma\x00hyphen\x00hyphen-minus\x00period\x00full-stop\x00slash\x00solidus\x00zero\x00one\x00two\x00three\x00four\x00five\x00six\x00seven\x00eight\x00nine\x00colon\x00semicolon\x00less-than-sign\x00equals-sign\x00greater-than-sign\x00question-mark\x00commercial-at\x00left-square-bracket\x00backslash\x00reverse-solidus\x00right-square-bracket\x00circumflex\x00circumflex-accent\x00underscore\x00low-line\x00grave-accent\x00left-brace\x00left-curly-bracket\x00vertical-line\x00right-brace\x00right-curly-bracket\x00tilde\x00DEL\x00alnum\x00alpha\x00ascii\x00blank\x00cntrl\x00digit\x00graph\x00lower\x00print\x00punct\x00upper\x00xdigit\x00REG_OKAY\x00no errors detected\x00REG_NOMATCH\x00failed to match\x00REG_BADPAT\x00invalid regexp (reg version 0.8)\x00REG_ECOLLATE\x00invalid collating element\x00REG_ECTYPE\x00invalid character class\x00REG_EESCAPE\x00invalid escape \\ sequence\x00REG_ESUBREG\x00invalid backreference number\x00REG_EBRACK\x00brackets [] not balanced\x00REG_EPAREN\x00parentheses () not balanced\x00REG_EBRACE\x00braces {} not balanced\x00REG_BADBR\x00invalid repetition count(s)\x00REG_ERANGE\x00invalid character range\x00REG_ESPACE\x00out of memory\x00REG_BADRPT\x00quantifier operand invalid\x00REG_ASSERT\x00\"can't happen\" -- you found a bug\x00REG_INVARG\x00invalid argument to regex function\x00REG_MIXED\x00character widths of regex and string differ\x00REG_BADOPT\x00invalid embedded option\x00REG_ETOOBIG\x00regular expression is too complex\x00REG_ECOLORS\x00too many colors\x00\x00oops\x00REG_%u\x00assemblecode\x00push\x00add\x00append\x00appendArray\x00appendArrayStk\x00appendStk\x00arrayExistsImm\x00arrayExistsStk\x00arrayMakeImm\x00arrayMakeStk\x00beginCatch\x00bitand\x00bitnot\x00bitor\x00bitxor\x00clockRead\x00concat\x00concatStk\x00coroName\x00currentNamespace\x00dictAppend\x00dictExists\x00dictExpand\x00dictGet\x00dictIncrImm\x00dictLappend\x00dictRecombineStk\x00dictRecombineImm\x00dictSet\x00dictUnset\x00div\x00dup\x00endCatch\x00eq\x00eval\x00evalStk\x00exist\x00existArray\x00existArrayStk\x00existStk\x00expon\x00expr\x00exprStk\x00ge\x00gt\x00incr\x00incrArray\x00incrArrayImm\x00incrArrayStk\x00incrArrayStkImm\x00incrImm\x00incrStk\x00incrStkImm\x00infoLevelArgs\x00infoLevelNumber\x00invokeStk\x00jump\x00jump4\x00jumpFalse\x00jumpFalse4\x00jumpTable\x00jumpTrue\x00jumpTrue4\x00label\x00land\x00lappend\x00lappendArray\x00lappendArrayStk\x00lappendList\x00lappendListArray\x00lappendListArrayStk\x00lappendListStk\x00lappendStk\x00le\x00lindexMulti\x00list\x00listConcat\x00listIn\x00listIndex\x00listIndexImm\x00listLength\x00listNotIn\x00load\x00loadArray\x00loadArrayStk\x00loadStk\x00lor\x00lsetFlat\x00lsetList\x00lshift\x00lt\x00mod\x00mult\x00neq\x00nop\x00not\x00nsupvar\x00numericType\x00originCmd\x00over\x00pop\x00pushReturnCode\x00pushReturnOpts\x00pushResult\x00regexp\x00resolveCmd\x00reverse\x00rshift\x00store\x00storeArray\x00storeArrayStk\x00storeStk\x00strcaseLower\x00strcaseTitle\x00strcaseUpper\x00strcmp\x00strcat\x00streq\x00strfind\x00strindex\x00strlen\x00strmap\x00strmatch\x00strneq\x00strrange\x00strreplace\x00strrfind\x00strtrim\x00strtrimLeft\x00strtrimRight\x00sub\x00tclooClass\x00tclooIsObject\x00tclooNamespace\x00tclooSelf\x00tryCvtToBoolean\x00tryCvtToNumeric\x00uminus\x00unset\x00unsetArray\x00unsetArrayStk\x00unsetStk\x00uplus\x00upvar\x00variable\x00verifyDict\x00yield\x00bytecodeList\x00\n    (\"\x00\" body, line \x00)\x00\n    (\"%.*s\" body, line %d)\x00instruction\x00value\x00boolean\x00boolean varName\x00imm8\x00operand must be [0..3]\x00TCL\x00ASSEM\x00OPERAND<0,>3\x00count\x00count varName\x00script\x00expression\x00table\x00name\x00operand must be >=2\x00OPERAND>=2\x00varname\x00varName imm8\x00Instruction \"%s\" could not be found, can't happen\n\x00no ASSEM_EVAL case for %s (%d), can't happen\x00jump table must have an even number of list elements\x00BADJUMPTABLE\x00duplicate entry in jump table for \"%s\"\x00DUPJUMPTABLEENTRY\x00assembly code may not contain substitutions\x00NOSUBST\x00cannot use this instruction to create a variable in a non-proc context\x00LVT\x00variable \"%s\" is not local\x00NONLOCAL\x00operand does not fit in one byte\x001BYTE\x00operand must be nonnegative\x00NONNEGATIVE\x00operand must be positive\x00POSITIVE\x00duplicate definition of label \"%s\"\x00DUPLABEL\x00undefined label \"%s\"\x00NOLABEL\x00\"%s\" instruction may not appear in a context where an exception has been caught and not disposed of.\x00BADTHROW\x00inconsistent stack depths on two execution paths\x00BADSTACK\x00stack underflow\x00code pops stack below level of enclosing catch\x00BADSTACKINCATCH\x00stack is unbalanced on exit from the code (depth=%d)\x00execution reaches an instruction in inconsistent exception contexts\x00BADCATCH\x00endCatch without a corresponding beginCatch\x00BADENDCATCH\x00catch still active on exit from assembly code\x00UNCLOSEDCATCH\x00unclosed catch at end of code in tclAssembly.c:BuildExceptionRanges, can't happen\x00undefined label in tclAssembly.c:BuildExceptionRanges, can't happen\x00\n    in assembly code between lines \x00 and \x00end of assembly code\x00Tcl_AsyncDelete: async handler deleted by the wrong thread\x00Tcl_AsyncDelete: cannot find async handler\x00apply\x00break\x00case\x00catch\x00continue\x00coroutine\x00error\x00for\x00foreach\x00format\x00global\x00if\x00join\x00lassign\x00lindex\x00linsert\x00llength\x00lmap\x00lrange\x00lrepeat\x00lreplace\x00lreverse\x00lsearch\x00lset\x00lsort\x00package\x00proc\x00regsub\x00rename\x00return\x00scan\x00set\x00split\x00subst\x00switch\x00tailcall\x00throw\x00trace\x00try\x00uplevel\x00while\x00yieldto\x00after\x00cd\x00close\x00eof\x00exec\x00exit\x00fblocked\x00fconfigure\x00fcopy\x00fileevent\x00flush\x00gets\x00glob\x00open\x00pid\x00puts\x00pwd\x00read\x00seek\x00socket\x00source\x00tell\x00time\x00unload\x00update\x00vwait\x00abs\x00acos\x00asin\x00atan\x00atan2\x00bool\x00ceil\x00cos\x00cosh\x00double\x00entier\x00exp\x00floor\x00fmod\x00hypot\x00int\x00isqrt\x00log\x00log10\x00pow\x00rand\x00round\x00sin\x00sinh\x00sqrt\x00srand\x00tan\x00tanh\x00wide\x00~\x00integer\x00!\x00+\x00*\x00&\x00|\x00^\x00**\x00<<\x00integer shift\x00>>\x00%\x00integer integer\x00!=\x00value value\x00ne\x00in\x00value list\x00ni\x00-\x00value ?value ...?\x00/\x00<\x00<=\x00>\x00>=\x00==\x00Tcl_CallFrame must not be smaller than CallFrame\x00::errorInfo\x00UP\x00CALL\x00INNER\x00::errorCode\x00TCL_PKG_PREFER_LATEST\x00TCL_INTERP_DEBUG_FRAME\x00Tcl_CreateInterp: can't create global namespace\x00builtin command with NULL object command proc and a NULL compile proc\x00::tcl::Bgerror\x00::tcl::unsupported::disassemble\x00::tcl::unsupported::getbytecode\x00::tcl::unsupported::representation\x00::tcl::unsupported::assemble\x00::tcl::unsupported::inject\x00::tcl::unsupported::corotype\x00::tcl::unsupported::timerate\x00::tcl::unsupported\x00::tcl::mathfunc\x00Can't create math function namespace\x00::tcl::mathfunc::\x00::tcl::mathop\x00can't create math operator namespace\x00::tcl::mathop::\x00failed to create math operator %s\x00tcl_platform\x00engine\x00Tcl\x00littleEndian\x00bigEndian\x00byteOrder\x00wordSize\x00pointerSize\x00tcl_patchLevel\x008.6.13\x00tcl_version\x008.6\x00tcl_precision\x00%s\x00Assoc Data Key #%d\x00DeleteInterpProc called with active evals\x00DeleteInterpProc called on interpreter not marked deleted\x00DeleteInterpProc: popping rootCallFrame with other frames on top\x00Argument location tracking table not empty\x00::\x00cannot use namespace qualifiers in hidden command token (rename)\x00VALUE\x00HIDDENTOKEN\x00can only hide global namespace commands (use rename then hide)\x00HIDE\x00NON_GLOBAL\x00hidden command named \"%s\" already exists\x00ALREADY_HIDDEN\x00cannot expose to a namespace (use expose to toplevel, then rename)\x00EXPOSE\x00unknown hidden command \"%s\"\x00LOOKUP\x00trying to expose a non-global command namespace command\x00exposed command \"%s\" already exists\x00COMMAND_EXISTS\x00delete\x00can't %s \"%s\": command doesn't exist\x00COMMAND\x00can't rename to \"%s\": bad command name\x00can't rename to \"%s\": command already exists\x00OPERATION\x00RENAME\x00TARGET_EXISTS\x00argument to math function didn't have numeric value\x00tcl::mathfunc::\x00unknown math function \"%s\"\x00MATHFUNC\x00::info functions \x00attempt to call eval in deleted interpreter\x00IDELETE\x00too many nested evaluations (infinite loop?)\x00LIMIT\x00STACK\x00IUNWIND\x00eval unwound\x00ICANCEL\x00eval canceled\x00CANCEL\x00attempt to invoke a deleted command\x00EVAL\x00DELETEDCOMMAND\x00Tcl_EvalObjv: NULL global namespace pointer\x00::unknown\x00invalid command name \"%s\"\x00\n    (enter trace on \"\x00...\x00\")\x00\n    (leave trace on \"\x00\n    (expanding word %d)\x00TclArgumentBC Enter/Release Mismatch\x00invoked \"break\" outside of a loop\x00invoked \"continue\" outside of a loop\x00command returned bad code: %d\x00UNEXPECTED_RESULT_CODE\x00illegal argument vector\x00TclObjInvoke: called without TCL_INVOKE_HIDDEN\x00invalid hidden command name \"%s\"\x00NONE\x00square root of negative argument\x00ARITH\x00DOMAIN\x00domain error: argument not in valid range\x00not enough\x00too many\x00%s arguments for math function \"%s\"\x00WRONGARGS\x00tailcall cannot find the right splicing spot: should not happen!\x00?command? ?arg ...?\x00tailcall can only be called from a proc, lambda or method\x00TAILCALL\x00ILLEGAL\x00Adding a callback without an objProc?!\x00?returnValue?\x00yield can only be called in a coroutine\x00COROUTINE\x00ILLEGAL_YIELD\x00command ?arg ...?\x00yieldto can only be called in a coroutine\x00yieldto called in deleted namespace\x00YIELDTO_IN_DELETED\x00cannot yield: C stack busy\x00CANT_YIELD\x00Yield received an option which is not implemented\x00can only get coroutine type of a coroutine\x00active\x00unknown coroutine type\x00BAD_TYPE\x00coroName cmd ?arg1 arg2 ...?\x00can only inject a command into a coroutine\x00can only inject a command into a suspended coroutine\x00ACTIVE\x00coroutine \"%s\" is already running\x00BUSY\x00?arg?\x00wrong coro nargs; how did we get here? not implemented!\x00name cmd ?arg ...?\x00can't create procedure \"%s\": unknown namespace\x00NAMESPACE\x00can't create procedure \"%s\": bad procedure name\x00bytearray\x00encode\x00decode\x00hex\x00uuencode\x00base64\x00%s called with shared object\x00Tcl_SetByteArrayObj\x00Tcl_SetByteArrayLength\x00max size for a Tcl value (%d bytes) exceeded\x00TclAppendBytesToByteArray\x00%s must be called with definite number of bytes to append\x00binary\x00binary encode\x00binary decode\x00formatString ?arg ...?\x00number of elements in list does not match count\x00cannot use \"*\" in format string with \"x\"\x00hexadecimal\x00expected %s string but got \"%s\" instead\x00missing count for \"@\" field specifier\x00not enough arguments for all format specifiers\x00bad field specifier \"%s\"\x00value formatString ?varName ...?\x00unexpected fallthrough\x00data\x00-strict\x00?options? data\x00option\x00invalid hexadecimal digit \"%c\" at position %d\x00BINARY\x00DECODE\x00INVALID\x00-maxlen\x00-wrapchar\x00?-maxlen len? ?-wrapchar char? data\x00line length out of range\x00ENCODE\x00LINE_LENGTH\x00limit hit\x00invalid wrapchar; will defeat decoding\x00WRAPCHAR\x00short uuencode data\x00SHORT\x00invalid uuencode character \"%c\" at position %d\x00invalid base64 character \"%c\" at position %d\x00unable to alloc %u bytes\x00unable to alloc %u bytes, %s line %d\x00unable to realloc %u bytes\x00unable to realloc %u bytes, %s line %d\x00%a %b %d %H:%M:%S %Z %Y\x00BCE\x00C\x00cannot use -gmt and -timezone in same call\x00CE\x00dayOfMonth\x00dayOfWeek\x00dayOfYear\x00era\x00:GMT\x00gregorian\x00integer value too large to represent\x00iso8601Week\x00iso8601Year\x00julianDay\x00localSeconds\x00month\x00seconds\x00tzName\x00tzOffset\x00year\x00getenv\x00Oldscan\x00ConvertLocalToUTC\x00GetDateFields\x00GetJulianDayFromEraYearMonthDay\x00GetJulianDayFromEraYearWeekDay\x00ParseFormatArgs\x00clicks\x00microseconds\x00milliseconds\x00::tcl::clock::\x00clock\x00dict tzdata changeover\x00key \"localseconds\" not found in dictionary\x00seconds tzdata changeover\x00expected key(s) not found in dictionary\x00dict changeover\x00loop in ConvertLocalToUTCUsingTable\x00time value too large/small to represent\x00number too large to represent as a Posix time\x00CLOCK\x00argTooLarge\x00localtime failed (clock value may be too large/small to represent)\x00localtimeFailed\x00%02d\x00-milliseconds\x00-microseconds\x00?-switch?\x00-format\x00-gmt\x00-locale\x00-timezone\x00clock format clockval ?-format string? ?-gmt boolean? ?-locale LOCALE? ?-timezone ZONE?\x00wrongNumArgs\x00badOption\x00gmtWithTimezone\x00TZ\x00string ?in? ?pattern body ...? ?default body?\x00extra case pattern with no body\x00default\x00\n    (\"%.50s\" arm line %d)\x00script ?resultVarName? ?optionVarName?\x00\n    (\"catch\" body line %d)\x00?dirName?\x00couldn't change working directory to \"%s\": %s\x00convertfrom\x00convertto\x00dirs\x00names\x00system\x00encoding\x00::tcl::encoding::\x00tcl:encoding:\x00___tmp\x00problem making 'encoding %s' safe: %s\x00problem making 'encoding' safe: %s\x00not allowed to invoke subcommand %s of encoding\x00SAFE\x00SUBCOMMAND\x00?encoding? data\x00?dirList?\x00expected directory list but got \"%s\"\x00ENCODING\x00BADPATH\x00?encoding?\x00message ?errorInfo? ?errorCode?\x00-code error -level 0\x00-errorinfo\x00-errorcode\x00\n    (\"eval\" body line %d)\x00arg ?arg ...?\x00?returnCode?\x00atime\x00attributes\x00channels\x00copy\x00dirname\x00executable\x00exists\x00extension\x00isdirectory\x00isfile\x00link\x00lstat\x00mtime\x00mkdir\x00nativename\x00normalize\x00owned\x00pathtype\x00readable\x00readlink\x00rootname\x00separator\x00size\x00stat\x00tail\x00tempfile\x00type\x00volumes\x00writable\x00file\x00::tcl::file::\x00tcl:file:\x00problem making 'file %s' safe: %s\x00problem making 'file' safe: %s\x00not allowed to invoke subcommand %s of file\x00name ?time?\x00could not set access time for file \"%s\": %s\x00could not set modification time for file \"%s\": %s\x00name varName\x00unrecognised path\x00FILESYSTEM\x00name ?name ...?\x00could not read \"%s\": no such file or directory\x00PATHSPLIT\x00NONESUCH\x00absolute\x00relative\x00volumerelative\x00?name?\x00\\\x00could not read \"%s\": %s\x00dev\x00ino\x00nlink\x00uid\x00gid\x00blocks\x00blksize\x00ctime\x00mode\x00directory\x00characterSpecial\x00blockSpecial\x00fifo\x00unknown\x00start test next command\x00\n    (\"for\" body line %d)\x00\n    (\"for\" initial command)\x00\n    (\"for\" loop-end command)\x00varList list ?varList list ...? command\x00%s varlist is empty\x00LMAP\x00FOREACH\x00NEEDVARS\x00\n    (\"%s\" body line %d)\x00\n    (setting %s loop variable \"%s\")\x00args\x00body\x00cmdcount\x00commands\x00complete\x00errorstack\x00frame\x00functions\x00globals\x00hostname\x00level\x00library\x00loaded\x00locals\x00nameofexecutable\x00patchlevel\x00procs\x00sharedlibextension\x00tclversion\x00vars\x00wrong # args: no expression after \"%s\" argument\x00then\x00elseif\x00else\x00wrong # args: extra words after \"else\" clause in \"if\" command\x00wrong # args: no script following \"%s\" argument\x00varName ?increment?\x00info\x00procname\x00\"%s\" isn't a procedure\x00PROCEDURE\x00?pattern?\x00*[?\\\x00command\x00procname arg varname\x00procedure \"%s\" doesn't have an argument \"%s\"\x00ARGUMENT\x00?interp?\x00varName\x00?number?\x00Broken frame level calculation\x00bad level \"%s\"\x00LEVEL\x00precompiled\x00line\x00cmd\x00TCL_LOCATION_PROC found in standard frame\x00\t    ::apply [::list {{pattern *}} {\n\t\t::set cmds {}\n\t\t::foreach cmd [::info commands ::tcl::mathfunc::$pattern] {\n\t\t    ::lappend cmds [::namespace tail $cmd]\n\t\t}\n\t\t::foreach cmd [::info commands tcl::mathfunc::$pattern] {\n\t\t    ::set cmd [::namespace tail $cmd]\n\t\t    ::if {$cmd ni $cmds} {\n\t\t\t::lappend cmds $cmd\n\t\t    }\n\t\t}\n\t\t::return $cmds\n\t    } [::namespace current]] \x00unable to determine name of host\x00HOSTNAME\x00UNKNOWN\x00tcl_library\x00no library has been specified for Tcl\x00VARIABLE\x00?filename?\x00list ?joinString?\x00 \x00list ?varName ...?\x00list ?index ...?\x00list index ?element ...?\x00list first last\x00count ?value ...?\x00bad count \"%d\": must be integer >= 0\x00LREPEAT\x00NEGARG\x00max length of a Tcl list (%d elements) exceeded\x00MEMORY\x00list first last ?element ...?\x00-all\x00-ascii\x00-bisect\x00-decreasing\x00-dictionary\x00-exact\x00-glob\x00-increasing\x00-index\x00-inline\x00-integer\x00-nocase\x00-not\x00-real\x00-regexp\x00-sorted\x00-start\x00-subindices\x00?-option value ...? list pattern\x00missing starting index\x00MISSING\x00\"-index\" option must be followed by list index\x00index \"%s\" cannot select an element from any list\x00INDEXOUTOFRANGE\x00\n    (-index option item number %d)\x00-subindices cannot be used without -index option\x00LSEARCH\x00BAD_OPTION_MIX\x00-bisect is not compatible with -all or -not\x00listVar ?index? ?index ...? value\x00-command\x00-indices\x00-stride\x00-unique\x00?-option value ...? list\x00\"-command\" option must be followed by comparison command\x00\"-stride\" option must be followed by stride length\x00stride length must be at least 2\x00LSORT\x00BADSTRIDE\x00list size must be a multiple of the stride length\x00when used with \"-stride\", the leading \"-index\" value must be within the group\x00BADINDEX\x00no enough memory to proccess sort of %d items\x00\n    (-compare command)\x00-compare command returned non-integer result\x00COMPARISONFAILED\x00element %d missing from sublist \"%s\"\x00INDEXFAILED\x00-about\x00-expanded\x00-line\x00-linestop\x00-lineanchor\x00--\x00?-option ...? exp string ?matchVar? ?subMatchVar ...?\x00regexp match variables not allowed when using -inline\x00REGEXP\x00MIX_VAR_INLINE\x00?-option ...? exp string subSpec ?varName?\x00&\\\x00*+?{}()[].\\|^$\x00oldName newName\x00?-encoding name? fileName\x00-encoding\x00 \n\t\r\x00string ?splitChars?\x00needleString haystackString ?startIndex?\x00string charIndex\x00control\x00false\x00true\x00wideinteger\x00wordchar\x00-failindex\x00class ?-strict? ?-failindex var? str\x00class\x00?-strict? ?-failindex var? str\x00?-nocase? charMap string\x00bad option \"%s\": must be -nocase\x00INDEX\x00char map list unbalanced\x00MAP\x00UNBALANCED\x00?-nocase? pattern string\x00string first last\x00string count\x00result exceeds max size for a Tcl value (%d bytes)\x00string size overflow, out of memory allocating %u bytes\x00string first last ?string?\x00string\x00string index\x00?-nocase? ?-length int? string1 string2\x00-length\x00bad option \"%s\": must be -nocase or -length\x00string ?first? ?last?\x00string ?chars?\x00bytelength\x00cat\x00compare\x00equal\x00first\x00index\x00is\x00last\x00length\x00map\x00match\x00range\x00repeat\x00replace\x00tolower\x00toupper\x00totitle\x00trim\x00trimleft\x00trimright\x00wordend\x00wordstart\x00-nobackslashes\x00-nocommands\x00-novariables\x00Tcl_SubstObjCmd: bad option index to SubstOptions\x00?-nobackslashes? ?-nocommands? ?-novariables? string\x00-indexvar\x00-matchvar\x00bad option \"%s\": %s option already found\x00SWITCH\x00DOUBLEOPT\x00missing variable name argument to %s option\x00NOVAR\x00?-option ...? string ?pattern body ...? ?default body?\x00%s option requires -regexp option\x00MODERESTRICTION\x00?-option ...? string {?pattern body ...? ?default body?}\x00extra switch pattern with no body\x00BADARM\x00, this may be due to a comment incorrectly placed outside of a switch body - see the \"switch\" documentation\x00COMMENT?\x00no body specified for pattern \"%s\"\x00FALLTHROUGH\x00fall-out when searching for body to match pattern\x00\n    (\"%.*s%s\" arm line %d)\x00type message\x00type must be non-empty list\x00THROW\x00BADEXCEPTION\x00-code error -level 0 -errorcode\x00command ?count?\x00per\x00iteration\x00-direct\x00-overhead\x00-calibrate\x00?-direct? ?-calibrate? ?-overhead double? command ?time ?max-count??\x00µs/#-overhead\x00%.*f\x00%.3f\x00net-ms\x00µs/#\x00#\x00#/sec\x00finally\x00on\x00trap\x00body ?handler ...? ?finally script?\x00handler type\x00finally clause must be last\x00TRY\x00FINALLY\x00NONTERMINAL\x00wrong # args to finally clause: must be \"... finally script\"\x00wrong # args to on clause: must be \"... on code variableList script\"\x00ON\x00wrong # args to trap clause: must be \"... trap pattern variableList script\"\x00TRAP\x00bad prefix '%s': must be a list\x00EXNFORMAT\x00last non-finally clause must not have a body of \"-\"\x00BADFALLTHROUGH\x00-during\x00\n    (\"%s ... %s\" handler line %d)\x00\n    (\"%s ... finally\" body line %d)\x00test command\x00\n    (\"while\" body line %d)\x00ForeachInfo\x00NewForeachInfo\x00DictUpdateInfo\x000\x001\x00list must have an even number of elements\x00-errorcode {TCL ARGUMENT FORMAT}\x00bad stack depth computations: is %i, should be %i\x00TclCompileCatchCmd: bad jump distance %d\x00TclCompileDictCmd(update): bad jump distance %d\x00, \x00%%v%u\x00variables\x00data=[\x00], loop=%%v%u\x00,\x00\n\t\t it%%v%u\t[\x00]\x00jumpOffset=%+d, vars=\x00[\x00loop\x00assign\x00jumpOffset\x00TclCompileIfCmd: unexpected opcode \"%d\" updating ifFalse jump\x00object\x00::namespace inscope \x00::namespace\x00inscope\x00:\x002\x00end\x00-options\x00namespace\x00JumptableInfo\x00word\x003\x00TclCompileSubstCmd: bad start jump distance %d\x00unexpected token type in TclCompileSubstCmd: %d\x00TclCompileSubstCmd: bad break jump distance %d\x00TclCompileSubstCmd: bad continue jump distance %d\x00TclCompileSubstCmd: bad return jump distance %d\x00TclCompileSubstCmd: bad other jump distance %d\x00TclCompileSubstCmd: bad ok jump distance %d\x00TclCompileSubstCmd: bad end jump distance %d\x00unknown switch mode: %d\x00\n\t\t\x00\"%s\"->pc %d\x00mapping\x00-errorcode {TCL OPERATION THROW BADEXCEPTION}\x00-level 0 -code 0\x00-nocomplain\x00-1\x001.0\x00_@_\x00not enough memory to parse expression\x00NOMEM\x00invalid character \"%.*s\"\x00BADCHAR\x00incomplete operator \"%.*s\"\x00PARTOP\x00invalid bareword \"%.*s%s\"\x00should be \"$%.*s%s\" or \"{%.*s%s}\"\x00 or \"%.*s%s(...)\" or ...\x00BAREWORD\x00 (invalid binary number?)\x00BADNUMBER\x00 (invalid octal number?)\x00OCTAL\x00missing operator at %s\x00max # of tokens for a Tcl parse (%d) exceeded\x00invalid character \"$\"\x00missing close-bracket\x00empty subexpression at %s\x00EMPTY\x00unbalanced open paren\x00missing function argument at %s\x00empty expression\x00unbalanced close paren\x00missing operand at %s\x00missing operator \":\" at %s\x00unexpected operator \":\" without preceding \"?\"\x00SURPRISE\x00unexpected \",\" outside function argument list\x00\nin expression \"%s%.*s%.*s%s%s%.*s%s\"\x00;\n\x00\n    (parsing expression \"%.*s%s\")\x00PARSE\x00EXPR\x00done\x00push1\x00push4\x00invokeStk1\x00invokeStk4\x00loadScalar1\x00loadScalar4\x00loadScalarStk\x00loadArray1\x00loadArray4\x00storeScalar1\x00storeScalar4\x00storeScalarStk\x00storeArray1\x00storeArray4\x00incrScalar1\x00incrScalarStk\x00incrArray1\x00incrScalar1Imm\x00incrScalarStkImm\x00incrArray1Imm\x00jump1\x00jumpTrue1\x00jumpFalse1\x00callBuiltinFunc1\x00callFunc1\x00foreach_start4\x00foreach_step4\x00beginCatch4\x00appendScalar1\x00appendScalar4\x00appendArray1\x00appendArray4\x00lappendScalar1\x00lappendScalar4\x00lappendArray1\x00lappendArray4\x00returnImm\x00expandStart\x00expandStkTop\x00invokeExpanded\x00listRangeImm\x00startCommand\x00returnStk\x00dictFirst\x00dictNext\x00dictDone\x00dictUpdateStart\x00dictUpdateEnd\x00syntax\x00existScalar\x00returnCodeBranch\x00unsetScalar\x00strrangeImm\x00invokeReplace\x00expandDrop\x00foreach_start\x00foreach_step\x00foreach_end\x00lmap_collect\x00tclooNext\x00tclooNextClass\x00yieldToInvoke\x00strclass\x00bytecode\x00substcode\x00::tcl\x00::tcl::\x00TclCompileScript() called on uninitialized CompileEnv\x00too many nested compilations (infinite loop?)\x00Unexpected token type in TclCompileTokens: %d; %.*s\x00TclInitByteCodeObj() called on uninitialized CompileEnv\x00EnterCmdStartData: bad command index %d\x00EnterCmdStartData: cmd map not sorted by code offset\x00EnterCmdExtentData: bad command index %d\x00EnterCmdExtentData: missing start data for command %d\x00trying to add 'break' fixup to full exception range\x00trying to add 'continue' fixup to full exception range\x00trying to finalize a loop exception range\x00TclFixupForwardJump: bad ExceptionRange type %d\x00unexpected opcode\x00GetCmdLocEncodingSize: bad code offset\x00GetCmdLocEncodingSize: bad code length\x00GetCmdLocEncodingSize: bad source length\x00EncodeCmdLocMap: bad code offset\x00EncodeCmdLocMap: bad code length\x00EncodeCmdLocMap: bad source length\x00%s.\n%s: %s\x00Tcl_RegisterConfig\x00Unable to create namespace for package configuration.\x00::pkgconfig\x00%s: %s\x00Unable to create query command for package configuration\x00get\x00subcommand ?arg?\x00subcommand\x00package not known\x00FATAL\x00PKGCFG_BASE\x00key\x00key not known\x00CONFIG\x00insufficient memory to create list\x00QueryConfigObjCmd: Unknown subcommand to 'pkgconfig'. This can't happen\x00tclPackageAboutDict\x00Deleting\x00syntax error\x00Error: discarding\x00Error: popping\x00memory exhausted\x00Cleanup: discarding lookahead\x00Cleanup: popping\x00january\x00february\x00march\x00april\x00may\x00june\x00july\x00august\x00september\x00sept\x00october\x00november\x00december\x00sunday\x00monday\x00tuesday\x00tues\x00wednesday\x00wednes\x00thursday\x00thur\x00thurs\x00friday\x00saturday\x00fortnight\x00week\x00day\x00hour\x00minute\x00min\x00second\x00sec\x00tomorrow\x00yesterday\x00today\x00now\x00this\x00next\x00ago\x00epoch\x00stardate\x00gmt\x00ut\x00utc\x00uct\x00wet\x00bst\x00wat\x00at\x00nft\x00nst\x00ndt\x00ast\x00adt\x00est\x00edt\x00cst\x00cdt\x00mst\x00mdt\x00pst\x00pdt\x00yst\x00ydt\x00hst\x00hdt\x00ahst\x00nt\x00idlw\x00cet\x00cest\x00met\x00mewt\x00mest\x00swt\x00sst\x00fwt\x00fst\x00eet\x00bt\x00it\x00zp4\x00zp5\x00ist\x00zp6\x00wast\x00wadt\x00jt\x00cct\x00jst\x00jdt\x00kst\x00kdt\x00cast\x00cadt\x00east\x00eadt\x00gst\x00nzt\x00nzst\x00nzdt\x00idle\x00dst\x00a\x00b\x00c\x00d\x00e\x00f\x00g\x00h\x00i\x00k\x00l\x00m\x00n\x00o\x00p\x00q\x00r\x00s\x00t\x00u\x00v\x00w\x00x\x00y\x00z\x00 (characters \x00am\x00a.m.\x00pm\x00p.m.\x00stringToParse baseYear baseMonth baseDay\x00DATE\x00Unknown status returned from date parser. Please report this error as a bug in Tcl.\x00BUG\x00more than one date in string\x00MULTIPLE\x00more than one time of day in string\x00more than one time zone in string\x00more than one weekday in string\x00more than one ordinal month in string\x00dict\x00create\x00filter\x00keys\x00merge\x00remove\x00values\x00with\x00missing value to go with key\x00DICTIONARY\x00key \"%s\" not known in dictionary\x00DICT\x00Tcl_DictObjPut\x00Tcl_DictObjRemove\x00concurrent dictionary modification and search\x00Tcl_DictObjPutKeyList\x00%s called with empty key list\x00Tcl_DictObjRemoveKeyList\x00?key value ...?\x00dictionary ?key ...?\x00dictionary ?key value ...?\x00dictionary ?pattern?\x00dictionary\x00dictionary key ?key ...?\x00dictVarName key ?increment?\x00\n    (reading increment)\x00dictVarName key ?value ...?\x00{keyVarName valueVarName} dictionary script\x00must have exactly two variable names\x00SYNTAX\x00\n    (\"dict for\" body line %d)\x00\n    (\"dict map\" body line %d)\x00dictVarName key ?key ...? value\x00dictVarName key ?key ...?\x00dictionary filterType ?arg ...?\x00filterType\x00dictionary script {keyVarName valueVarName} filterScript\x00\n    (\"dict filter\" filter script key variable)\x00\n    (\"dict filter\" filter script value variable)\x00\n    (\"dict filter\" script line %d)\x00dictVarName key varName ?key varName ...? script\x00\n    (body of \"dict update\")\x00dictVarName ?key ...? script\x00\n    (body of \"dict with\")\x00instname\x00ByteCode 0x%s, refCt %u, epoch %u, interp 0x%s (epoch %u)\n\x00  Source \x00\n  File \"%s\" Line %d\x00\n  Cmds %d, src %d, inst %d, litObjs %u, aux %d, stkDepth %u, code/src %.2f\n\x00  Proc 0x%s, refCt %d, args %d, compiled locals %d\n\x00, scalar\x00, array\x00, link\x00, arg\x00, temp\x00, resolved\x00      slot %d%s%s%s%s%s%s\x00, \"%s\"\n\x00  Exception ranges %d, depth %d:\n\x00      %d: level %d, %s, pc %d-%d, \x00continue %d, break %d\n\x00catch %d\n\x00DisassembleByteCodeObj: bad ExceptionRange type %d\x00    \x00  Commands %d:\x00     \x00\n   \x00%s%4d: pc %d-%d, src %d-%d\x00  Command %d: \x00(%u) %s \x00%+d \x00%u \x00, %u cmds start here\x00pc %u\x00next cmd at pc %u\x00%d \x00end \x00end-%d \x00FormatInstruction: bad local var index %u (%u locals)\x00temp var %u\x00var \x00%%v%u \x00%s \x00\t# \x00\t# %s\x00\t\t[\x00]\n\x00InnerContext: bad tos -- appending null object\x00InnerContext: bad tos -- appending freed object %p\x00inst_%d\x00\"\"\x00\"\x00\\\"\x00\\f\x00\\n\x00\\r\x00\\t\x00\\v\x00\\U%08x\x00\\u%04x\x00%c\x00scalar\x00array\x00arg\x00temp\x00resolved\x00pc %d\x00@%d\x00%%%d\x00.%d\x00.end\x00.end-%d\x00?%d\x00=%s\x00opcode %d with more than zero 'no' operands\x00type %s level %d from %d to %d break %d continue %d\x00type %s level %d from %d to %d catch %d\x00codefrom\x00codeto\x00scriptfrom\x00scriptto\x00literals\x00exception\x00instructions\x00auxiliary\x00stackdepth\x00exceptdepth\x00initiallinenumber\x00sourcefile\x00constructor\x00destructor\x00lambda\x00method\x00objmethod\x00type ...\x00lambdaTerm\x00procName\x00PROC\x00className\x00\"%s\" is not a class\x00CLASS\x00\"%s\" has no defined constructor\x00DISASSEMBLE\x00CONSRUCTOR\x00body not available for this kind of constructor\x00METHODTYPE\x00body of constructor\x00\"%s\" has no defined destructor\x00DESRUCTOR\x00body not available for this kind of destructor\x00body of destructor\x00className methodName\x00objectName methodName\x00unknown method \"%s\"\x00METHOD\x00body not available for this kind of method\x00body of method\x00may not disassemble prebuilt bytecode\x00BYTECODE\x00*.enc\x00identity\x00utf-8\x00unicode\x00iso8859-1\x00FreeEncoding: refcount problem !!!\x00.enc\x00unknown encoding \"%s\"\x00invalid encoding file \"%s\"\x00init\x00final\x00EscapeToUtfProc: invalid sub table\x00configure\x00-map\x00-parameters\x00-prefixes\x00-subcommands\x00-unknown\x00-namespace\x00ensembleCommand\x00tried to manipulate ensemble of deleted namespace\x00ENSEMBLE\x00DEAD\x00subcommand ?arg ...?\x00?option value ...?\x00ensemble subcommand implementations must be non-empty lists\x00EMPTY_TARGET\x00cmdname\x00cmdname ?-option value ...? ?arg ...?\x00option -namespace is read-only\x00READ_ONLY\x00unexpected ensemble command\x00command is not an ensemble\x00NOT_ENSEMBLE\x00ensemble target is not a fully-qualified command\x00UNQUALIFIED_TARGET\x00\"%s\" is not an ensemble command\x00tcl:\x00invalid ensemble name '%s'\x00unable to find or create %s namespace!\x00ensemble activated for deleted namespace\x00full name %s not found in supposedly synchronized hash\x00unknown subcommand \"%s\": namespace %s does not export any commands\x00 or ambiguous\x00unknown%s subcommand \"%s\": must be \x00or %s\x00SpellFix: programming error\x00unknown subcommand handler deleted its ensemble\x00UNKNOWN_DELETED\x00\n    while parsing result of ensemble unknown subcommand handler\x00unknown subcommand handler returned bad code: \x00\n    result of ensemble unknown subcommand handler: \x00UNKNOWN_RESULT\x00\n    (ensemble unknown subcommand handler)\x00env\x00HOME\x00no such variable\x00tclBgError\x00error in background error handler:\n\x00msg options\x00-level\x00missing return option \"-level\"\x00-code\x00missing return option \"-code\"\x00bgerror\x00errorInfo\x00bgerror failed to handle background error.\n\x00    Original error: \x00    Error in bgerror: \x00TclSetBgErrorHandler: NULL cmdPrefix argument\x00OS exit failed!\x00TclInitSubsystems called while exiting\x00exit handlers were created during Tcl_Finalize\x00limit exceeded\x00can't wait for variable \"%s\": would wait forever\x00EVENT\x00NO_SOURCES\x00idletasks\x00Tcl_UpdateObjCmd: bad option index to UpdateOptions\x00?idletasks?\x00||\x00&&\x00exprcode\x00dictIterator\x00freeing an execStack which is still in use\x00Deleting execEnv with pending TEOV callbacks!\x00Deleting execEnv with existing coroutine\x00STACK: Reallocating with no previous alloc\x00STACK: Stack after current is in use\x00STACK: Stack after current is not last\x00TclStackFree: incorrect freePtr (%p != %p). Call out of sequence?\x00TclStackRealloc: incorrect ptr. Call out of sequence?\x00Tcl_EvalObj: compiled script jumped interps\x00TclIncrObj\x00tailcall can only be called from a proc or lambda\x00TclNRExecuteByteCode: unrecognized builtin function code %d\x00\n    (reading value of variable to increment)\x00access\x00array set\x00variable isn't array\x00WRITE\x00ARRAY\x00STACK_LEVEL\x00self may only be called from inside a method\x00OO\x00CONTEXT_REQUIRED\x00nextto may only be called from inside a method\x00CLASS_REQUIRED\x00%s implementation by \"%s\" not reachable from here\x00CLASS_NOT_REACHABLE\x00%s has no non-filter implementation by \"%s\"\x00CLASS_NOT_THERE\x00next may only be called from inside a method\x00no next %s implementation\x00NOTHING_NEXT\x00negative shift argument\x00INST_RETURN_CODE_BRANCH: TOS not a return code!\x00INST_RETURN_CODE_BRANCH: TOS is TCL_OK!\x00Should not happen!\x00mis-issued dictFirst!\x00mis-issued dictNext!\x00dictUpdateStart argument length mismatch\x00clockRead instruction with unknown clock#\x00TclNRExecuteByteCode: unrecognized opCode %u\x00divide by zero\x00DIVZERO\x00exponentiation of zero by negative power\x00\nTclNRExecuteByteCode: abnormal return at pc %u: stack top %d < entry stack top %d\n\x00TclNRExecuteByteCode execution failure: end stack top < start stack top\x00exponent too large\x00unexpected number type\x00empty string\x00invalid octal number\x00non-numeric string\x00non-numeric floating-point value\x00floating-point value\x00(big) integer\x00can't use %s as operand of \"%s\"\x00LocSearch failure\x00floating-point value too small to represent\x00UNDERFLOW\x00floating-point value too large to represent\x00OVERFLOW\x00unknown floating-point error, errno = %d\x00?-option value ...? source ?source ...? target\x00copying\x00renaming\x00error %s: target \"%s\" is not a directory\x00can't create directory \"%s\": %s\x00error deleting \"%s\": directory not empty\x00error deleting unknown file: %s\x00error deleting \"%s\": %s\x00can't overwrite file \"%s\" with directory \"%s\"\x00can't overwrite directory \"%s\" with file \"%s\"\x00u+w\x00-permissions\x00error renaming \"%s\" to \"%s\": trying to rename a volume or move a directory into itself\x00::tcl::CopyDirectory\x00can't unlink \"%s\": %s\x00error %s \"%s\"\x00 to \"%s\"\x00: \"%s\"\x00: %s\x00-force\x00name ?-option value ...?\x00must not update objPtrRef's variable and return non-NULL\x00bad option \"%s\", there are no file attributes in this filesystem\x00FATTR\x00value for \"%s\" missing\x00NOVALUE\x00?-linktype? linkname ?target?\x00-symbolic\x00-hard\x00could not create new link \"%s\": that path already exists\x00could not create new link \"%s\": no such file or directory\x00could not create new link \"%s\": target \"%s\" doesn't exist\x00could not create new link \"%s\" pointing to \"%s\": %s\x00could not read link \"%s\": %s\x00?nameVar? ?template?\x00can't create temporary file: %s\x00//?/UNC/\x00//?/\x00//\x00./\x00/\\:\x00couldn't find HOME environment variable to expand path\x00FILENAME\x00NO_HOME\x00user \"%s\" doesn't exist\x00USER\x00-directory\x00-join\x00-path\x00-tails\x00-types\x00missing argument to \"-directory\"\x00\"-directory\" may only be used once\x00\"-directory\" cannot be used with \"-path\"\x00GLOB\x00BADOPTIONCOMBINATION\x00missing argument to \"-path\"\x00\"-path\" may only be used once\x00\"-path\" cannot be used with \"-dictionary\"\x00missing argument to \"-types\"\x00\"-tails\" must be used with either \"-directory\" or \"-path\"\x00\\/\x00\\[]*?{}\x00readonly\x00hidden\x00macintosh\x00creator\x00bad argument to \"-types\": %s\x00BAD\x00only one MacOS type or creator argument to \"-types\" allowed\x00no files matched glob pattern%s \"\x00%s%s\x00NOMATCH\x00/\\\x00Called TclGlob with TCL_GLOBMODE_TAILS and pathPrefix==NULL\x00.\x00unmatched open-brace in file name\x00BALANCE\x00unmatched close-brace in file name\x00*[]?\\\x00invalid sharing of Tcl_Obj on C stack\x00malformed bucket chain in Tcl_DeleteHashEntry\x00%d entries in table, %d buckets\n\x00number of buckets with %d entries: %d\n\x00number of buckets with %d or more entries: %d\n\x00average search distance for entry: %.1f\x00called %s on deleted table\x00Tcl_FindHashEntry\x00Tcl_CreateHashEntry\x00::tcl::HistoryObjs\x00::history\x00ambiguous \x00bad \x00 \"\x00\": no valid options\x00\": must be \x00 or \x00all\x00longest\x00::tcl::prefix\x00prefix\x00-error\x00-message\x00?options? table string\x00missing value for -message\x00NOARG\x00missing value for -error\x00error options must have an even number of elements\x00table string\x00 or \"\x00wrong # args: should be \"\x00ambiguous option \"%s\"\x00unrecognized argument \"%s\"\x00expected integer argument for \"%s\" but got \"%s\"\x00expected floating-point argument for \"%s\" but got \"%s\"\x00bad argument type %d in Tcl_ArgvInfo\x00\"%s\" option requires an additional argument\x00Command-specific options:\x00\n%s\x00\n %s:\x00\n\t\tDefault value: %d\x00\n\t\tDefault value: %g\x00\n\t\tDefault value: \"%s\"\x00ok\x00bad completion code \"%s\": must be ok, error, return, break, continue, or an integer\x00RESULT\x00ILLEGAL_CODE\x00if {[namespace which -command tclInit] eq \"\"} {\n  proc tclInit {} {\n    global tcl_libPath tcl_library env tclDefaultLibrary\n    rename tclInit {}\n    if {[info exists tcl_library]} {\n\tset scripts {{set tcl_library}}\n    } else {\n\tset scripts {}\n\tif {[info exists env(TCL_LIBRARY)] && ($env(TCL_LIBRARY) ne {})} {\n\t    lappend scripts {set env(TCL_LIBRARY)}\n\t    lappend scripts {\nif {[regexp ^tcl(.*)$ [file tail $env(TCL_LIBRARY)] -> tail] == 0} continue\nif {$tail eq [info tclversion]} continue\nfile join [file dirname $env(TCL_LIBRARY)] tcl[info tclversion]}\n\t}\n\tif {[info exists tclDefaultLibrary]} {\n\t    lappend scripts {set tclDefaultLibrary}\n\t} else {\n\t    lappend scripts {::tcl::pkgconfig get scriptdir,runtime}\n\t}\n\tlappend scripts {\nset parentDir [file dirname [file dirname [info nameofexecutable]]]\nset grandParentDir [file dirname $parentDir]\nfile join $parentDir lib tcl[info tclversion]} \\\n\t{file join $grandParentDir lib tcl[info tclversion]} \\\n\t{file join $parentDir library} \\\n\t{file join $grandParentDir library} \\\n\t{file join $grandParentDir tcl[info patchlevel] library} \\\n\t{\nfile join [file dirname $grandParentDir] tcl[info patchlevel] library}\n\tif {[info exists tcl_libPath]\n\t\t&& [catch {llength $tcl_libPath} len] == 0} {\n\t    for {set i 0} {$i < $len} {incr i} {\n\t\tlappend scripts [list lindex \\$tcl_libPath $i]\n\t    }\n\t}\n    }\n    set dirs {}\n    set errors {}\n    foreach script $scripts {\n\tlappend dirs [eval $script]\n\tset tcl_library [lindex $dirs end]\n\tset tclfile [file join $tcl_library init.tcl]\n\tif {[file exists $tclfile]} {\n\t    if {[catch {uplevel #0 [list source $tclfile]} msg opts]} {\n\t\tappend errors \"$tclfile: $msg\n\"\n\t\tappend errors \"[dict get $opts -errorinfo]\n\"\n\t\tcontinue\n\t    }\n\t    unset -nocomplain tclDefaultLibrary\n\t    return\n\t}\n    }\n    unset -nocomplain tclDefaultLibrary\n    set msg \"Can't find a usable init.tcl in the following directories: \n\"\n    append msg \"    $dirs\n\n\"\n    append msg \"$errors\n\n\"\n    append msg \"This probably means that Tcl wasn't installed properly.\n\"\n    error $msg\n  }\n}\ntclInit\x00interp\x00InterpInfoDeleteProc: still exist commands\x00InterpInfoDeleteProc: still exist aliases\x00alias\x00aliases\x00cancel\x00children\x00debug\x00expose\x00hide\x00issafe\x00invokehidden\x00limit\x00marktrusted\x00recursionlimit\x00slaves\x00share\x00target\x00transfer\x00cmd ?arg ...?\x00slavePath slaveCmd ?masterPath masterCmd? ?arg ...?\x00path ?cmdPrefix?\x00-unwind\x00?-unwind? ?--? ?path? ?result?\x00-safe\x00?-safe? ?--? ?path?\x00interp%d\x00path ?-frame ?bool??\x00cannot delete the current interpreter\x00INTERP\x00DELETESELF\x00path arg ?arg ...?\x00path hiddenCmdName ?cmdName?\x00path cmdName ?hiddenCmdName?\x00-global\x00path ?-namespace ns? ?-global? ?--? cmd ?arg ..?\x00path limitType ?-option value ...?\x00limit type\x00path\x00path ?newlimit?\x00srcPath channelId destPath\x00path alias\x00alias \"%s\" in path \"%s\" not found\x00ALIAS\x00target interpreter for alias \"%s\" in path \"%s\" is not my descendant\x00TARGETSHROUDED\x00?path?\x00alias \"%s\" not found\x00cannot define or rename alias \"%s\": interpreter deleted\x00cannot define or rename alias \"%s\": would create a loop\x00ALIASLOOP\x00could not find interpreter \"%s\"\x00cmdPrefix must be list of length >= 1\x00BGERRORFORMAT\x00interpreter named \"%s\" already exists, cannot create\x00tcl_interactive\x00ChildObjCmd: interpreter has been deleted\x00aliasName ?targetName? ?arg ...?\x00?cmdPrefix?\x00?-frame ?bool??\x00hiddenCmdName ?cmdName?\x00cmdName ?hiddenCmdName?\x00?-namespace ns? ?-global? ?--? cmd ?arg ..?\x00limitType ?-option value ...?\x00?newlimit?\x00-frame\x00debug option\x00permission denied: safe interpreter cannot expose commands\x00UNSAFE\x00permission denied: safe interpreters cannot change recursion limit\x00recursion limit must be > 0\x00BADLIMIT\x00falling back due to new recursion limit\x00RECURSION\x00permission denied: safe interpreter cannot hide commands\x00not allowed to invoke hidden commands from safe interpreter\x00permission denied: safe interpreter cannot mark trusted\x00namespace eval ::tcl {namespace eval mathfunc {}}\x00::tcl::mathfunc::min\x00::tcl::mathfunc::max\x00os\x00osVersion\x00machine\x00user\x00tclDefaultLibrary\x00tcl_pkgPath\x00command count limit exceeded\x00COMMANDS\x00time limit exceeded\x00TIME\x00unknown type of resource limit\x00\n    (while waiting for event)\x00limit granularity must be positive\x00installing limit callback to the limited interpreter\x00-granularity\x00-value\x00limits on current interpreter inaccessible\x00SELF\x00?-option value ...?\x00granularity must be at least 1\x00BADVALUE\x00command limit value must be at least 0\x00-seconds\x00milliseconds must be at least 0\x00seconds must be at least 0\x00may only set -milliseconds if -seconds is not also being reset\x00BADUSAGE\x00may only reset -milliseconds if -seconds is also being reset\x00channel\x00TCL_FLUSH_NONBLOCKING_ON_EXIT\x00-blocking\x00tclIO\x00Tcl_RegisterChannel: channel without name\x00Tcl_RegisterChannel: duplicate channel names\x00illegal recursive call to close through close-handler of channel\x00stdin\x00stdout\x00stderr\x00can not find channel named \"%s\"\x00CHANNEL\x00channel type %s must define closeProc\x00channel type %s must define inputProc when used for reader channel\x00channel type %s must define outputProc when used for writer channel\x00channel type %s must define watchProc\x00channel type %s must define seekProc if defining wideSeekProc\x00couldn't find state for channel \"%s\"\x00reading and writing both disallowed for channel \"%s\"\x00could not flush channel \"%s\"\x00Channel released more than preserved\x00channel \"%s\" does not support OS handles\x00Reuse of ChannelBuffer! %p\x00unable to access channel: invalid channel\x00TclFlush, closed channel: queued output left\x00FlushChannel: damaged channel list\x00SpliceChannel: trying to add channel used in different list\x00called Tcl_Close on channel with refCount > 0\x00double-close of channels not supported by %ss\x00half-close of channels not supported by %ss\x00half-close not applicable to stack of transformations\x00write\x00Half-close of %s-side not possible, side not opened or already closed\x00ClosechanHalf, closed write-side of channel: queued output left\x00unknown output translation requested\x00Tcl_GetsObj: gotEOL reached with bufPtr==NULL\x00TclGetsObjBinary: gotEOL reached with bufPtr==NULL\x00binary encoding is not available\x00Buffer Underflow, BUFFER_PADDING not enough\x00unknown input translation %d\x00blocking buffering buffersize encoding eofchar translation\x00malformed option list in channel driver\x00bad option \"%s\": should be one of \x00-%s, \x00or -%s\x00-buffering\x00none\x00full\x00-buffersize\x00-eofchar\x00-translation\x00auto\x00cr\x00crlf\x00lf\x00unable to set channel options: background copy in progress\x00bad value for -buffering: must be one of full, line, or none\x00bad value for -eofchar: must be non-NUL ASCII character\x00bad value for -eofchar: should be a list of zero, one, or two elements\x00bad value for -translation: must be a one or two element list\x00platform\x00bad value for -translation: must be one of auto, binary, cr, lf, crlf, or platform\x00tcp\x00channelId event ?script?\x00event name\x00channel is not %s\x00channel \"%s\" is busy\x00writ\x00error %sing \"%s\": %s\x00error reading \"\x00\": \x00error writing \"\x00error setting blocking mode: %s\x00Tcl_SetChannelError: bad syntax of message\x00Defined newlevel not used in rewrite\x00Defined newcode not used in rewrite\x00-nonewline\x00nonewline\x00?-nonewline? ?channelId? string\x00channel \"%s\" wasn't opened for writing\x00error writing \"%s\": %s\x00channelId\x00error flushing \"%s\": %s\x00channelId ?varName?\x00channel \"%s\" wasn't opened for reading\x00error reading \"%s\": %s\x00channelId ?numChars?\x00?-nonewline? channelId\x00expected non-negative integer but got \"%s\"\x00NUMBER\x00start\x00current\x00channelId offset ?origin?\x00origin\x00error during seek on \"%s\": %s\x00channelId ?direction?\x00direction\x00channelId ?-option value ...?\x00-ignorestderr\x00-keepnewline\x00?-option ...? arg ?arg ...?\x00error reading output from command: %s\x00fileName ?access? ?permissions?\x000o\x00Tcl_OpenCmd: invalid mode value\x00tclTCPAcceptCallbacks\x00RegisterTcpServerCleanup: damaged accept record table\x00-async\x00-myaddr\x00-myport\x00-server\x00cannot set -async option for server sockets\x00no argument given for -myaddr option\x00no argument given for -myport option\x00no argument given for -server option\x00Tcl_SocketObjCmd: bad option index to SocketOptions\x00option -myport is not valid for servers\x00?-myaddr addr? ?-myport myport? ?-async? host port\x00-server command ?-myaddr addr? port\x00-size\x00input output ?-size size? ?-command callback?\x00input\x00output\x00mode channelId\x00channelId ?length?\x00cannot truncate to negative length of file\x00could not determine current location in \"%s\": %s\x00error during truncate on \"%s\": %s\x00blocked\x00event\x00pending\x00pipe\x00postevent\x00truncate\x00::fconfigure\x00chan\x00tclrchannel\x00blocking\x00cget\x00cgetall\x00finalize\x00initialize\x00watch\x00{read delivered more than requested}\x00{write wrote more than requested}\x00{write wrote nothing}\x00{Tried to seek before origin}\x00{Owner lost}\x00-code 1 -level 0 -errorcode NONE -errorinfo {} -errorline 1 {Owner lost}\x00mode cmdprefix\x00chan handler \"%s initialize\" returned non-list: %s\x00chan handler \"\x00 initialize\" returned \x00chan handler \"%s\" does not support all required methods\x00chan handler \"%s\" lacks a \"read\" method\x00chan handler \"%s\" lacks a \"write\" method\x00chan handler \"%s\" supports \"cget\" but not \"cgetall\"\x00chan handler \"%s\" supports \"cgetall\" but not \"cget\"\x00TclChanCreateObjCmd: duplicate channel names\x00channel eventspec\x00can not find reflected channel named \"%s\"\x00TclChanPostEventObjCmd: channel is not a reflected channel\x00TclChanPostEventObjCmd: postevent accepted for call from outside interpreter\x00tried to post events channel \"%s\" is not interested in\x00TclChanCaughtErrorBypass: Bad syntax of caught result\x00Expected list with even number of elements, got %d element%s instead\x00bad %s list: is empty\x00read write\x00rc%lu\x00chan handler returned bad code: %d\x00\n    (chan handler subcommand \"%s\")\x00EAGAIN\x00ReflectedChannelMap\x00tclrtransform\x00clear\x00drain\x00limit?\x00{read not supported by Tcl driver}\x00{write not supported by Tcl driver}\x00channel cmdprefix\x00chan handler \"%s initialize\" returned %s\x00chan handler \"%s\" makes the channel inaccessible\x00chan handler \"%s\" supports \"drain\" but not \"read\"\x00chan handler \"%s\" supports \"flush\" but not \"write\"\x00TclChanPushObjCmd: duplicate transformation handle\x00rt%lu\x00ReflectedTransformMap\x00transform\x00-command value is not a list\x00\nfailed to stack channel \"%s\"\x00create/write\x00create/read\x00delete/write\x00flush/write\x00flush/read\x00delete/read\x00query/maxRead\x00clear/read\x00couldn't open socket: port number too high\x00::tcl::unsupported::socketAF\x00inet\x00inet6\x00native\x00glob couldn't determine the current working directory\x00illegal access mode \"%s\"\x00\n    while processing open access modes \"\x00RDONLY\x00WRONLY\x00RDWR\x00APPEND\x00CREAT\x00EXCL\x00NOCTTY\x00NONBLOCK\x00TRUNC\x00invalid access mode \"%s\": must be RDONLY, WRONLY, RDWR, APPEND, BINARY, CREAT, EXCL, NOCTTY, NONBLOCK, or TRUNC\x00access mode must include either RDONLY, WRONLY, or RDWR\x00couldn't read file \"%s\": %s\x00\x1a {}\x00\ufeff\x00\n    (file \"%.*s%s\" line %d)\x00POSIX\x00could not seek to end of file while opening \"%s\": %s\x00couldn't open \"%s\": %s\x00error getting working directory name: %s\x00TCL_TEMPLOAD_NO_UNLINK\x00couldn't load library \"%s\": %s\x00couldn't load from current filesystem\x000700\x00cannot unload: filesystem does not support unloading\x00wb\x00rb\x00Tcl_FSGetFileSystemForPath called with NULL object\x00Tcl_FSGetFileSystemForPath called with object with refCount == 0\x00variable '%s' is already linked\x00internal error: bad linked variable type\x00linked variable is read-only\x00internal error: linked variable couldn't be read\x00variable must have integer value\x00variable must have real value\x00variable must have boolean value\x00variable must have char value\x00variable must have unsigned char value\x00variable must have short value\x00variable must have unsigned short value\x00variable must have unsigned int value\x00variable must have long value\x00variable must have unsigned long value\x00variable must have unsigned wide int value\x00variable must have float value\x00NULL\x00??\x00invalidReal\x00xXbBoO\x00+-\x00NewListInternalRep: expects postive element count\x00list creation failed: unable to alloc %u bytes\x00Tcl_SetListObj\x00Tcl_ListObjAppendList\x00Tcl_ListObjAppendElement\x00Tcl_ListObjReplace\x00list index out of range\x00LSET\x00TclListObjSetElement\x00max size of Tcl literal array (%d literals) exceeded\x00-lazy\x00?-global? ?-lazy? ?--? fileName ?packageName? ?interp?\x00must specify either file name or package name\x00LOAD\x00NOLIBRARY\x00file \"%s\" is already loaded for package \"%s\"\x00SPLITPERSONALITY\x00tclLoad\x00package \"%s\" isn't loaded statically\x00NOTSTATIC\x00couldn't figure out package name for %s\x00WHATPACKAGE\x00_Init\x00_SafeInit\x00_Unload\x00_SafeUnload\x00can't use package in a safe interpreter: no %s_SafeInit procedure\x00can't attach package to interpreter: no %s_Init procedure\x00ENTRYPOINT\x00-keeplibrary\x00?-switch ...? fileName ?packageName? ?interp?\x00UNLOAD\x00package \"%s\" is loaded statically and cannot be unloaded\x00STATIC\x00file \"%s\" has never been loaded\x00NEVERLOADED\x00file \"%s\" has never been loaded in this interpreter\x00file \"%s\" cannot be unloaded under a safe interpreter\x00CANNOT\x00file \"%s\" cannot be unloaded under a trusted interpreter\x00tcl_rcFileName\x00argv0\x00argc\x00argv\x00application-specific initialization failed: \x00exit %d\x00TCL_FINALIZE_ON_EXIT\x00tcl_prompt2\x00tcl_prompt1\x00\n    (script that generates prompt)\x00nsName\x00code\x00ensemble\x00export\x00forget\x00import\x00parent\x00qualifiers\x00which\x00Trying to push call frame for dead namespace\x00errorCode\x00can't create namespace \"\": only global namespace can have empty name\x00CREATEGLOBAL\x00can't create namespace \"%s\": already exists\x00CREATEEXISTING\x00invalid export pattern \"%s\": pattern can't specify a namespace\x00EXPORT\x00auto_import\x00empty import pattern\x00IMPORT\x00unknown namespace in import pattern \"%s\"\x00no namespace specified in import pattern \"%s\"\x00ORIGIN\x00import pattern \"%s\" tries to import from namespace \"%s\" into itself\x00import pattern \"%s\" would create a loop containing command \"%s\"\x00LOOP\x00can't import command \"%s\": already exists\x00OVERWRITE\x00unknown namespace in namespace forget pattern \"%s\"\x00DeleteImportedCmd: did not find cmd in real cmd's list of import references\x00Could not create namespace '%s'\x00unknown namespace \"%s\"\x00unknown command \"%s\"\x00namespace \"%s\" not found\x00namespace \"%s\" not found in \"%s\"\x00?name? ?pattern?\x00?name name...?\x00unknown namespace \"%s\" in namespace delete command\x00name arg ?arg...?\x00\n    (in namespace %s \"%.*s%s\" script line %d)\x00?-clear? ?pattern pattern...?\x00-clear\x00?pattern pattern...?\x00?-force? ?pattern pattern...?\x00?pathList?\x00?script?\x00ns ?otherVar myVar ...?\x00-variable\x00?-command? ?-variable? name\x00while executing\x00invoked from within\x00\n    %s\n\"%.*s%s\"\x00booleanString\x00wideInt\x00bignum\x00cmdName\x00Derived ICL data for object using offsets from before the script\x00can't convert value to type %s\x00API_ABUSE\x00TclSetDuplicateObj\x00UpdateStringProc should not be invoked for type %s\x00UpdateStringProc for type '%s' failed to create a valid string rep\x00Tcl_SetBooleanObj\x00boolean value\x00expected boolean value but got \"\x00BOOLEAN\x00yes\x00no\x00off\x00Tcl_SetDoubleObj\x00floating point value is Not a Number\x00DOUBLE\x00NAN\x00floating-point number\x00Tcl_SetIntObj\x00Tcl_SetLongObj\x00expected integer but got \"%s\"\x00INTEGER\x00IOVERFLOW\x00%lld\x00Tcl_SetWideIntObj\x00initialization failure in DupBignum\x00radix size failure in UpdateStringOfBignum\x00UpdateStringOfBignum: string length limit exceeded\x00conversion failure in UpdateStringOfBignum\x00insufficient memory to unpack bignum\x00Tcl_SetBignumObj\x00number\x00pure string\x00value is a %s with a refcount of %d, object pointer at %s\x00%p:%p\x00, internal representation %s\x00, string representation \"\x00, no string representation\x00can't parse a NULL pointer\x00extra characters after close-quote\x00extra characters after close-brace\x00ParseTokens encountered unknown character\x00missing close-brace for variable name\x00missing )\x00$\x00missing close-brace\x00: possible unbalanced brace in comment\x00missing \"\x00TclSubstParse: programming error\x00bad parse in TclSubstParse: %c\x00unexpected token type in TclSubstTokens: %d\x00Bad portion to TclPathPart\x00can't find object string representation\x00PATH\x00WTF\x00HOMELESS\x00NOUSER\x00Called UpdateStringOfFsPath with invalid object\x00writing\x00reading\x00channel \"%s\" wasn't opened for %s\x00EXEC\x00BADCHAN\x00couldn't %s file \"%s\": %s\x00can't specify \"%s\" as last word in command\x00child process lost (is SIGCHLD ignored or trapped?)\x00error waiting for process to exit: %s\x00%lu\x00%u\x00CHILDSTATUS\x00CHILDKILLED\x00child killed: %s\n\x00CHILDSUSP\x00child suspended: %s\n\x00child wait status didn't make sense\n\x00ODDWAITRESULT\x00error reading stderr output file: %s\x00child process exited abnormally\x00illegal use of | or |& in command\x00PIPESYNTAX\x00must specify \"%s\" as last word in command\x00couldn't create input file for command: %s\x00couldn't create input pipe for command: %s\x00couldn't create output pipe for command: %s\x00couldn't create error file for command: %s\x00couldn't create pipe: %s\x00can't read output from command: standard output was redirected\x00BADREDIRECT\x00can't write input to command: standard input was redirected\x00pipe for command could not be created\x00NOPIPE\x00conflicting versions provided for package \"%s\": %s, then %s\x00PACKAGE\x00VERSIONCONFLICT\x00Cannot load package \"%s\" in standalone executable: This package is not compiled with stub support\x00UNSTUBBED\x00bad return code: %d\x00BADRESULT\x00\n    (\"package unknown\" script)\x00can't find package %s\x00UNFOUND\x00version conflict for package \"%s\": have %s, need\x00circular package dependency: attempt to provide %s %s requires %s\x00CIRCULARITY\x00attempt to provide package %s %s failed: no version of package %s provided\x00UNPROVIDED\x00attempt to provide package %s %s failed: package %s %s provided instead\x00WRONGPROVIDE\x00attempt to provide package %s %s failed: bad return code: %s\x00\n    (\"package ifneeded %s %s\" script)\x00package %s %s is not present\x00package %s is not present\x00ifneeded\x00prefer\x00present\x00provide\x00require\x00vcompare\x00versions\x00vsatisfies\x00option ?arg ...?\x00package version ?script?\x00package ?version?\x00?-exact? package ?requirement ...?\x00?command?\x00latest\x00stable\x00?latest|stable?\x00preference\x00version1 version2\x00version ?requirement ...?\x00Tcl_PackageObjCmd: bad option index to pkgOptions\x00expected version number but got \"%s\"\x00VERSION\x00expected versionMin-versionMax but got \"%s\"\x00VERSIONRANGE\x00 exactly %s\x00 %s\x00 0-\x00 -2\x00threaded\x00profiled\x0064bit\x00optimized\x00mem_debug\x00compile_debug\x00compile_stats\x00libdir,runtime\x00/usr/local/lib\x00bindir,runtime\x00/usr/local/bin\x00scriptdir,runtime\x00/usr/local/lib/tcl8.6\x00includedir,runtime\x00/usr/local/include\x00docdir,runtime\x00/usr/local/man\x00libdir,install\x00bindir,install\x00scriptdir,install\x00includedir,install\x00docdir,install\x00tcl\x00E2BIG\x00EACCES\x00EADDRINUSE\x00EADDRNOTAVAIL\x00EADV\x00EAFNOSUPPORT\x00EALREADY\x00EBADE\x00EBADF\x00EBADFD\x00EBADMSG\x00ECANCELED\x00EBADR\x00EBADRQC\x00EBADSLT\x00EBFONT\x00EBUSY\x00ECHILD\x00ECHRNG\x00ECOMM\x00ECONNABORTED\x00ECONNREFUSED\x00ECONNRESET\x00EDEADLK\x00EDESTADDRREQ\x00EDOM\x00EDOTDOT\x00EDQUOT\x00EEXIST\x00EFAULT\x00EFBIG\x00EHOSTDOWN\x00EHOSTUNREACH\x00EIDRM\x00EILSEQ\x00EINPROGRESS\x00EINTR\x00EINVAL\x00EIO\x00EISCONN\x00EISDIR\x00EL2HLT\x00EL2NSYNC\x00EL3HLT\x00EL3RST\x00ELIBACC\x00ELIBBAD\x00ELIBEXEC\x00ELIBMAX\x00ELIBSCN\x00ELNRNG\x00ELOOP\x00EMFILE\x00EMLINK\x00EMSGSIZE\x00EMULTIHOP\x00ENAMETOOLONG\x00ENAVAIL\x00ENETDOWN\x00ENETRESET\x00ENETUNREACH\x00ENFILE\x00ENOANO\x00ENOBUFS\x00ENOCSI\x00ENODATA\x00ENODEV\x00ENOENT\x00ENOEXEC\x00ENOLCK\x00ENOLINK\x00ENOMEM\x00ENOMSG\x00ENONET\x00ENOPKG\x00ENOPROTOOPT\x00ENOSPC\x00ENOSR\x00ENOSTR\x00ENOSYS\x00ENOTBLK\x00ENOTCONN\x00ENOTRECOVERABLE\x00ENOTDIR\x00ENOTEMPTY\x00ENOTNAM\x00ENOTSOCK\x00ENOTSUP\x00ENOTTY\x00ENOTUNIQ\x00ENXIO\x00EOVERFLOW\x00EOWNERDEAD\x00EPERM\x00EPFNOSUPPORT\x00EPIPE\x00EPROTO\x00EPROTONOSUPPORT\x00EPROTOTYPE\x00ERANGE\x00EREMCHG\x00EREMOTE\x00EREMOTEIO\x00EROFS\x00ESHUTDOWN\x00ESOCKTNOSUPPORT\x00ESPIPE\x00ESRCH\x00ESRMNT\x00ESTALE\x00ETIME\x00ETIMEDOUT\x00ETOOMANYREFS\x00ETXTBSY\x00EUCLEAN\x00EUNATCH\x00EUSERS\x00EXDEV\x00EXFULL\x00unknown error\x00argument list too long\x00permission denied\x00address already in use\x00cannot assign requested address\x00advertise error\x00address family not supported by protocol\x00resource temporarily unavailable\x00operation already in progress\x00bad exchange descriptor\x00bad file number\x00file descriptor in bad state\x00not a data message\x00operation canceled\x00bad request descriptor\x00bad request code\x00invalid slot\x00bad font file format\x00file busy\x00no children\x00channel number out of range\x00communication error on send\x00software caused connection abort\x00connection refused\x00connection reset by peer\x00resource deadlock avoided\x00destination address required\x00math argument out of range\x00cross mount point\x00disk quota exceeded\x00file already exists\x00bad address in system call argument\x00file too large\x00host is down\x00host is unreachable\x00identifier removed\x00illegal byte sequence\x00operation now in progress\x00interrupted system call\x00invalid argument\x00I/O error\x00socket is already connected\x00illegal operation on a directory\x00level 2 halted\x00level 2 not synchronized\x00level 3 halted\x00level 3 reset\x00cannot access a needed shared library\x00accessing a corrupted shared library\x00cannot exec a shared library directly\x00attempting to link in more shared libraries than system limit\x00.lib section in a.out corrupted\x00link number out of range\x00too many levels of symbolic links\x00too many open files\x00too many links\x00message too long\x00multihop attempted\x00file name too long\x00not available\x00network is down\x00network dropped connection on reset\x00network is unreachable\x00file table overflow\x00anode table overflow\x00no buffer space available\x00no CSI structure available\x00no data available\x00no such device\x00no such file or directory\x00exec format error\x00no locks available\x00link has been severed\x00not enough memory\x00no message of desired type\x00machine is not on the network\x00package not installed\x00bad protocol option\x00no space left on device\x00out of stream resources\x00not a stream device\x00function not implemented\x00block device required\x00socket is not connected\x00state not recoverable\x00not a directory\x00directory not empty\x00not a name file\x00socket operation on non-socket\x00operation not supported\x00inappropriate device for ioctl\x00name not unique on network\x00no such device or address\x00file too big\x00owner died\x00not owner\x00protocol family not supported\x00broken pipe\x00protocol error\x00protocol not supported\x00protocol wrong type for socket\x00math result unrepresentable\x00remote address changed\x00pathname hit remote file system\x00remote i/o error\x00read-only file system\x00cannot send after socket shutdown\x00socket type not supported\x00invalid seek\x00no such process\x00srmount error\x00stale remote file handle\x00timer expired\x00connection timed out\x00too many references: cannot splice\x00text file or pseudo-device busy\x00structure needs cleaning\x00protocol driver not attached\x00too many users\x00cross-domain link\x00message tables full\x00SIGABRT\x00SIGALRM\x00SIGBUS\x00SIGCHLD\x00SIGCONT\x00SIGFPE\x00SIGHUP\x00SIGILL\x00SIGINT\x00SIGIO\x00SIGKILL\x00SIGPIPE\x00SIGPROF\x00SIGPWR\x00SIGQUIT\x00SIGSEGV\x00SIGSTOP\x00SIGSYS\x00SIGTERM\x00SIGTRAP\x00SIGTSTP\x00SIGTTIN\x00SIGTTOU\x00SIGURG\x00SIGUSR1\x00SIGUSR2\x00SIGVTALRM\x00SIGWINCH\x00SIGXCPU\x00SIGXFSZ\x00unknown signal\x00alarm clock\x00bus error\x00child status changed\x00continue after stop\x00floating-point exception\x00hangup\x00illegal instruction\x00interrupt\x00input/output possible on file\x00kill signal\x00write on pipe with no readers\x00profiling alarm\x00power-fail restart\x00quit signal\x00segmentation violation\x00stop\x00bad argument to system call\x00software termination signal\x00trace trap\x00stop signal from tty\x00background tty read\x00background tty write\x00urgent I/O condition\x00user-defined signal 1\x00user-defined signal 2\x00virtual time alarm\x00window changed\x00exceeded CPU time limit\x00exceeded file size limit\x00Tcl_Release couldn't find reference for %p\x00Tcl_EventuallyFree called twice for %p\x00procbody\x00lambdaExpr\x00levelReference\x00name args body\x00\n    (creating proc \"\x00procedure \"%s\": arg list contains %d entries, precompiled header expects %d\x00BYTECODELIES\x00too many fields in argument specifier \"\x00FORMALARGUMENTFORMAT\x00argument with no name\x00formal parameter \"%s\" is an array element\x00formal parameter \"\x00\" is not a simple name\x00procedure \"%s\": formal parameter %d is inconsistent with precompiled body\x00procedure \"%s\": formal parameter \"\x00\" has default value inconsistent with precompiled body\x00STACKLEVEL\x00\n    (\"uplevel\" body line %d)\x00?level? command ?arg ...?\x00?\x00?arg ...?\x00body object for proc attached to frame is not a byte code type\x00body of lambda term\x00body of proc\x00invoked \"%s\" outside of a loop\x00UNEXPECTED\x00a precompiled script jumped interps\x00CROSSINTERPBYTECODE\x00\n    (procedure \"%.*s%s\" line %d)\x00TclUpdateReturnInfo: negative return level\x00can't interpret \"%s\" as a lambda expression\x00LAMBDA\x00\n    (parsing lambda expression \"%s\")\x00lambdaExpr ?arg ...?\x00\n    (lambda term \"%.*s%s\" line %d)\x00error while matching regular expression: \x00REG_UBACKREF\x00REG_ULOOKAHEAD\x00REG_UBOUNDS\x00REG_UBRACES\x00REG_UBSALNUM\x00REG_UPBOTCH\x00REG_UBBS\x00REG_UNONPOSIX\x00REG_UUNSPEC\x00REG_UUNPORT\x00REG_ULOCALE\x00REG_UEMPTYMATCH\x00REG_UIMPOSSIBLE\x00REG_USHORTEST\x00%s%s%s\x00couldn't compile regular expression pattern: \x00-errorline\x00-errorstack\x00bad %s value: expected dictionary but got \"%s\"\x00ILLEGAL_OPTIONS\x00bad -level value: expected non-negative integer but got \"%s\"\x00ILLEGAL_LEVEL\x00bad -errorcode value: expected a list but got \"%s\"\x00ILLEGAL_ERRORCODE\x00bad -errorstack value: expected a list but got \"%s\"\x00NONLIST_ERRORSTACK\x00forbidden odd-sized list for -errorstack: \"%s\"\x00ODDSIZEDLIST_ERRORSTACK\x00expected dict but got \"%s\"\x00cannot mix \"%\" and \"%n$\" conversion specifiers\x00FORMAT\x00MIXEDSPECTYPES\x00field width may not be specified in %c conversion\x00BADWIDTH\x00field size modifier may not be specified in %\x00 conversion\x00BADSIZE\x00unsigned bignum scans are invalid\x00BADUNSIGNED\x00unmatched [ in format string\x00BRACKET\x00bad scan conversion character \"\x00BADTYPE\x00variable is assigned by multiple \"%n$\" conversion specifiers\x00POLYASSIGNED\x00variable is not assigned by any conversion specifiers\x00UNASSIGNED\x00\"%n$\" argument index out of range\x00INDEXRANGE\x00different numbers of variable names and field specifiers\x00FIELDVARMISMATCH\x00string format ?varName ...?\x00Tcl_SetStringObj\x00Tcl_SetObjLength: negative length requested: %d (integer overflow?)\x00Tcl_SetObjLength\x00max length for a Tcl unicode value (%d chars) exceeded\x00Tcl_AttemptSetObjLength\x00Tcl_SetUnicodeObj\x00Tcl_AppendLimitedToObj\x00Tcl_AppendUnicodeToObj\x00Tcl_AppendStringsToObj\x00max size for a Tcl value exceeded\x00Tcl_AppendFormatToObj\x00format string ended in middle of field specifier\x00INCOMPLETE\x00unsigned bignum format is invalid\x000X\x000x\x000b\x00bad field specifier \"%c\"\x00Unable to format \"%s\" with supplied arguments: %s\x00TclParseNumber: bad acceptState %d parsing '%s'\x00TclParseNumber: state INITIAL can't happen here\x00expected %s but got \"\x00 (looks like invalid octal number)\x00assembler statements not supported\x00tclStrToD.c\x00MakeLowPrecisionDouble\x00MakeHighPrecisionDouble\x00Infinity\x00NaN\x00impossible conversion type in TclDoubleDigits\x00wrong digit!\x00in ShouldBankerRoundUp, trichotomy fails!\x00in ShouldBankerRoundUpToNext, trichotomy fails!\x00This code doesn't work on a decimal machine!\x00unknown floating point word order on this machine\x00(%llx)\x00Tcl_GetMemoryInfo called when threaded memory allocator not in use\x00TclFinalizeThreadAlloc called when threaded memory allocator not in use\x00tclAfter\x00bad argument \"%s\": must be cancel, idle, info, or an integer\x00argument\x00after#%d\x00id|command\x00script ?script ...?\x00?id?\x00event \"%s\" doesn't exist\x00timer\x00Tcl_AfterObjCmd: bad subcommand index to afterSubCmds\x00after#\x00\n    (\"after\" script)\x00execution\x00vdelete\x00vinfo\x00type ?arg ...?\x00type name\x00name ops command\x00bad operations \"%s\": should be one or more of rwua\x00TRACE\x00BADOPS\x00enter\x00leave\x00enterstep\x00leavestep\x00name opList command\x00bad operation list \"\": must be one or more of enter, leave, enterstep, or leavestep\x00NOOPS\x00operation\x00bad operation list \"\": must be one or more of delete or rename\x00bad operation list \"\": must be one or more of array, read, unset, or write\x00 rename\x00 delete\x00TraceExecutionProc: bad flag combination\x00 a\x00 r\x00 w\x00 u\x00 array\x00 read\x00 write\x00 unset\x00Cannot trace a variable with no name\x00trace array\x00(\x00\n    (%s trace on \"%s%s%s%s\")\x00bad result flag combination\x00end-offset\x00LIST\x00%s element in braces followed by \"%.*s\" instead of space\x00JUNK\x00%s element in quotes followed by \"%.*s\" instead of space\x00unmatched open brace in %s\x00BRACE\x00unmatched open quote in %s\x00QUOTE\x00internal error in Tcl_SplitList\x00INTERNAL\x00Tcl_SplitList\x00TclScanElement: string length overflow\x00Tcl_Merge called with negative argc (%d)\x00Tcl_Concat: max size of Tcl value exceeded\x00 \f\v\r\t\n\x00 {\x00{\x00-Inf\x00Inf\x00e%+d\x00e%+03d\x00can't modify precision from a safe interpreter\x00improper value for precision\x00bad index \"%s\": must be integer?[+-]integer? or end?[+-]integer?\x00end-\x00bad index \"%s\": must be end?[+-]integer?\x00PGV Initializer did not initialize\x00***=\x00invalid escape sequence\x00BADESCAPE\x00$ not anchor\x00NONANCHOR\x00unhandled RE special char\x00UNHANDLED\x00excessive recursive glob backtrack potential\x00OVERCOMPLEX\x00RE2GLOB\x00array search\x00localVarName\x00parsedVarName\x00\"%s\" isn't an array\x00VARNAME\x00ELEMENT\x00varPtr must not be NULL\x00part1Ptr must not be NULL\x00READ\x00varName ?newValue?\x00newValuePtr must not be NULL\x00UNSET\x00varName ?value ...?\x00arrayName\x00s-%d-%s\x00arrayName searchId\x00arrayName ?pattern?\x00arrayName ?mode? ?pattern?\x00exact matching shouldn't get here\x00arrayName list\x00error reading array statistics\x00anymore\x00donesearch\x00nextelement\x00startsearch\x00statistics\x00bad variable name \"%s\": can't create namespace variable that refers to procedure variable\x00UPVAR\x00INVERTED\x00ObjMakeUpvar called with an index outside from a proc\x00bad variable name \"%s\": can't create a scalar variable that looks like an array element\x00LOCAL_ELEMENT\x00can't upvar from variable to itself\x00variable \"%s\" has traces: can't use for upvar\x00TRACED\x00variable \"%s\" already exists\x00EXISTS\x00define\x00?level? otherVar localVar ?otherVar localVar ...?\x00illegal search identifier \"%s\"\x00ARRAYSEARCH\x00search identifier \"%s\" isn't for variable \"%s\"\x00couldn't find search \"%s\"\x00invalid part1Ptr and invalid index together\x00can't %s \"%s%s%s%s\": %s\x00%s of type %s should not be called\x00updateStringProc\x00setFromAnyProc\x00scalar parsedVarName without a string rep\x00unknown variable \"%s\"\x00zlib\x00STREAM\x00DATA\x00MEM\x00BUF\x00NEED_DICT\x00unexpected zlib result in error handler: Z_OK\x00unexpected zlib result in error handler: Z_STREAM_END\x00ZLIB\x00text\x00no latin-1 encoding\x00comment\x00crc\x00filename\x00incorrect zlib data format, must be TCL_ZLIB_FORMAT_ZLIB, TCL_ZLIB_FORMAT_GZIP or TCL_ZLIB_FORMAT_RAW\x00compression level should be between 0 (no compression) and 9 (best compression) or -1 for default compression level\x00incorrect zlib data format, must be TCL_ZLIB_FORMAT_ZLIB, TCL_ZLIB_FORMAT_GZIP, TCL_ZLIB_FORMAT_RAW or TCL_ZLIB_FORMAT_AUTO\x00bad mode, must be TCL_ZLIB_STREAM_DEFLATE or TCL_ZLIB_STREAM_INFLATE\x001.3\x00::incr ::tcl::zlib::cmdcounter\x00::tcl::zlib::streamcmd_\x00BUG: Stream command name already exists\x00EXISTING_CMD\x00already past compressed stream end\x00ZIP\x00CLOSED\x00unexpected zlib internal state during decompression\x00STATE\x00incorrect zlib data format, must be TCL_ZLIB_FORMAT_ZLIB, TCL_ZLIB_FORMAT_GZIP or TCL_ZLIB_FORMAT_ZLIB\x00compression level should be between 0 (uncompressed) and 9 (best compression) or -1 for default compression level\x00adler32\x00compress\x00crc32\x00decompress\x00deflate\x00gunzip\x00gzip\x00inflate\x00stream\x00command arg ?...?\x00data ?startValue?\x00data ?level?\x00\n    (in -level option)\x00data ?-level level? ?-header header?\x00-header\x00data ?bufferSize?\x00data ?-headerVar varName?\x00-headerVar\x00level must be 0 to 9\x00COMPRESSIONLEVEL\x00buffer size must be %d to %d\x00BUFFERSIZE\x00mode ?-option value...?\x00should be unreachable\x00-limit\x00mode channel ?options...?\x00compression may only be applied to writable channels\x00UNWRITABLE\x00decompression may only be applied to readable channels\x00UNREADABLE\x00value missing for %s option\x00NOVAL\x00read ahead limit must be 1 to %d\x00a compression dictionary may not be set in the gzip format\x00BADOPT\x00\n    (in \x00 option)\x00checksum\x00fullflush\x00header\x00put\x00reset\x00option data ?...?\x00?count?\x00-buffer\x00-finalize\x00-flush\x00-fullflush\x00\"-buffer\" option must be followed by integer decompression buffersize\x00buffer size must be 1 to %d\x00\"-dictionary\" option must be followed by compression dictionary bytes\x00\"-flush\", \"-fullflush\" and \"-finalize\" options are mutually exclusive\x00EXCLUSIVE\x00only gunzip streams can produce header information\x00BADOP\x00error while finalizing file: %s\x00problem flushing channel: %s\x00dictionary flush\x00dictionary limit\x00flush limit\x00sync\x00unknown -flush type \"%s\": must be full or sync\x00FLUSH\x00-limit must be between 1 and 65536\x00READLIMIT\x00checksum dictionary\x00checksum dictionary limit\x00checksum header limit\x00-checksum\x00unknown mode: %d\x00bad format: %d\x00namespace eval ::tcl::zlib {variable cmdcounter 0}\x00zlibVersion\x002.0.1\x00tcl::tommath\x00initialization failure in TclBNInitBignumFromLong\x00initialization failure in TclBNInitBignumFromWideUInt\x00tty\x00CTS\x00DSR\x00RING\x00DCD\x00-mode\x00-handshake\x00XONXOFF\x00RTSCTS\x00DTRDSR\x00%s not supported for this platform\x00-handshake DTRDSR\x00UNSUPPORTED\x00bad value for -handshake: must be one of xonxoff, rtscts, dtrdsr or none\x00FCONFIGURE\x00-xchar\x00bad value for -xchar: should be a list of two elements\x00-timeout\x00-ttycontrol\x00bad value for -ttycontrol: should be a list of signal,value pairs\x00DTR\x00RTS\x00BREAK\x00bad signal \"%s\" for -ttycontrol: must be DTR, RTS or BREAK\x00mode handshake timeout ttycontrol xchar\x00%d,%c,%d,%d\x00-queue\x00-ttystatus\x00mode queue ttystatus xchar\x00bad value for -mode\x00%d,%c,%d,%d%n\x00%s: should be baud,parity,data,stop\x00SERIALMODE\x00noems\x00%s parity: should be %s\x00n, o, e, m, or s\x00%s data: should be 5, 6, 7, or 8\x00%s stop: should be 1 or 2\x00TclpOpenFileChannel: invalid mode value\x00couldn't open \"\x00\": filename is invalid on this platform\x00file%d\x00/dev/tty\x00auto crlf\x00serial%d\x00TclGetDefaultStdChannel: Unexpected channel type\x00\"%s\" wasn't opened for writing\x00NOT_WRITABLE\x00\"%s\" wasn't opened for reading\x00NOT_READABLE\x00cannot get a FILE * for \"%s\"\x00FILE_FAILURE\x00\"%s\" cannot be used to get a FILE *\x00NO_DESCRIPTOR\x00TclUnixWaitForFile can't handle file id %d\x00-group\x00-owner\x00..\x00%0#5lo\x00could not set group for file \"%s\": group \"%s\" does not exist\x00SETGRP\x00NO_GROUP\x00could not set group for file \"%s\": %s\x00could not set owner for file \"%s\": user \"%s\" does not exist\x00SETOWN\x00NO_USER\x00could not set owner for file \"%s\": %s\x00unknown permission string format \"%s\"\x00PERMISSION\x00could not set permissions for file \"%s\": %s\x00_XXXXXX\x00TMPDIR\x00/tmp\x00:/bin:/usr/bin\x00couldn't read directory \"%s\": %s\x00couldn't create temporary file: %s\x00pipe creation failed: %s\x00?channelId?\x00::tcl::unsupported::noReverseDNS\x00-connecting\x00-peername\x00can't get peername: %s\x00-sockname\x00can't get sockname: %s\x00connecting peername sockname\x00couldn't open socket: %s\x00sock%lx\x00couldn't open socket: \x00ansi-1251\x00cp1251\x00ansi_x3.4-1968\x00big5\x00cp1250\x00cp1252\x00cp1253\x00cp1254\x00cp1255\x00cp1256\x00cp1257\x00cp1258\x00cp437\x00cp737\x00cp775\x00cp850\x00cp852\x00cp855\x00cp857\x00cp860\x00cp861\x00cp862\x00cp863\x00cp864\x00cp865\x00cp866\x00cp869\x00cp874\x00cp932\x00cp936\x00cp949\x00cp950\x00dingbats\x00ebcdic\x00euc-cn\x00euc-jp\x00euc-kr\x00eucjp\x00euckr\x00euctw\x00gb12345\x00gb1988\x00gb2312\x00gb2312-1980\x00gb2312-raw\x00greek8\x00ibm1250\x00ibm1251\x00ibm1252\x00ibm1253\x00ibm1254\x00ibm1255\x00ibm1256\x00ibm1257\x00ibm1258\x00ibm437\x00ibm737\x00ibm775\x00ibm850\x00ibm852\x00ibm855\x00ibm857\x00ibm860\x00ibm861\x00ibm862\x00ibm863\x00ibm864\x00ibm865\x00ibm866\x00ibm869\x00ibm874\x00ibm932\x00ibm936\x00ibm949\x00ibm950\x00iso-2022\x00iso2022\x00iso-2022-jp\x00iso2022-jp\x00iso-2022-kr\x00iso2022-kr\x00iso-8859-1\x00iso-8859-10\x00iso8859-10\x00iso-8859-13\x00iso8859-13\x00iso-8859-14\x00iso8859-14\x00iso-8859-15\x00iso8859-15\x00iso-8859-16\x00iso8859-16\x00iso-8859-2\x00iso8859-2\x00iso-8859-3\x00iso8859-3\x00iso-8859-4\x00iso8859-4\x00iso-8859-5\x00iso8859-5\x00iso-8859-6\x00iso8859-6\x00iso-8859-7\x00iso8859-7\x00iso-8859-8\x00iso8859-8\x00iso-8859-9\x00iso8859-9\x00iso88591\x00iso885915\x00iso88592\x00iso88595\x00iso88596\x00iso88597\x00iso88598\x00iso88599\x00ja\x00ja_jp\x00ja_jp.euc\x00ja_jp.eucjp\x00ja_jp.jis\x00ja_jp.mscode\x00shiftjis\x00ja_jp.sjis\x00ja_jp.ujis\x00japan\x00japanese\x00japanese-sjis\x00japanese-ujis\x00japanese.euc\x00japanese.sjis\x00jis0201\x00jis0208\x00jis0212\x00jp_jp\x00ko\x00ko_kr\x00ko_kr.euc\x00ko_kw.euckw\x00koi8-r\x00koi8-u\x00korean\x00ksc5601\x00maccenteuro\x00macCentEuro\x00maccroatian\x00macCroatian\x00maccyrillic\x00macCyrillic\x00macdingbats\x00macDingbats\x00macgreek\x00macGreek\x00maciceland\x00macIceland\x00macjapan\x00macJapan\x00macroman\x00macRoman\x00macromania\x00macRomania\x00macthai\x00macThai\x00macturkish\x00macTurkish\x00macukraine\x00macUkraine\x00roman8\x00ru\x00ru_ru\x00ru_su\x00sjis\x00symbol\x00tis-620\x00tis620\x00turkish8\x00utf8\x00zh\x00zh_cn.gb2312\x00zh_cn.gbk\x00zh_cz.gb2312\x00zh_tw\x00euc-tw\x00zh_tw.big5\x00/dev/null\x00TCL_LIBRARY\x00lib/tcl%s\x00LC_ALL\x00LC_CTYPE\x00LANG\x00unix\x00pathSeparator\x00deletemethod\x00forward\x00renamemethod\x00self\x00unexport\x00destroy\x00core method: \"destroy\"\x00core method: \"eval\"\x00core method: \"unknown\"\x00core method: \"variable\"\x00core method: \"varname\"\x00core method: \"create\"\x00new\x00core method: \"new\"\x00createWithNamespace\x00core method: \"createWithNamespace\"\x00oo::class constructor\x00::oo::define ::oo::Slot {\n    method Get {} {error unimplemented}\n    method Set list {error unimplemented}\n    method -set args {\n        uplevel 1 [list [namespace which my] Set $args]\n    }\n    method -append args {\n        uplevel 1 [list [namespace which my] Set [list                {*}[uplevel 1 [list [namespace which my] Get]] {*}$args]]\n    }\n    method -clear {} {uplevel 1 [list [namespace which my] Set {}]}\n    forward --default-operation my -append\n    method unknown {args} {\n        set def --default-operation\n        if {[llength $args] == 0} {\n            return [uplevel 1 [list [namespace which my] $def]]\n        } elseif {![string match -* [lindex $args 0]]} {\n            return [uplevel 1 [list [namespace which my] $def {*}$args]]\n        }\n        next {*}$args\n    }\n    export -set -append -clear\n    unexport unknown destroy\n}\n::oo::objdefine ::oo::define::superclass forward --default-operation my -set\n::oo::objdefine ::oo::define::mixin forward --default-operation my -set\n::oo::objdefine ::oo::objdefine::mixin forward --default-operation my -set\n\x00foreach p [info procs [info object namespace $originObject]::*] {    set args [info args $p];    set idx -1;    foreach a $args {        lset args [incr idx]             [if {[info default $p $a d]} {list $a $d} {list $a}]    };    set b [info body $p];    set p [namespace tail $p];    proc $p $args $b;};foreach v [info vars [info object namespace $originObject]::*] {    upvar 0 $v vOrigin;    namespace upvar [namespace current] [namespace tail $v] vNew;    if {[info exists vOrigin]} {        if {[array exists vOrigin]} {            array set vNew [array get vOrigin];        } else {            set vNew $vOrigin;        }    }}\x00TclOO\x001.1.0\x00::oo\x00[a-z]*\x00::oo::define\x00::oo::objdefine\x00::oo::Helpers\x00<constructor>\x00<destructor>\x00<cloned>\x00::oo::UnknownDefinition\x00::oo::define::\x00::oo::objdefine::\x00originObject\x00::oo::Helpers::next\x00::oo::Helpers::nextto\x00::oo::Helpers::self\x00::oo::copy\x00::oo::Obj%d\x00my\x00deleting class structure for non-deleted %s\x00::oo::class\x00::oo::object\x00can't create object \"%s\": command already exists with that name\x00OVERWRITE_OBJECT\x00object deleted in constructor\x00STILLBORN\x00may not clone the class of classes\x00CLONING_CLASS\x00\n    (while performing post-copy callback)\x00\n    (while mapping method name)\x00impossible to invoke method \"%s\": no defined method or unknown method\x00METHOD_MAPPED\x00no valid method implementation\x00%s does not refer to an object\x00OBJECT\x00?definitionScript?\x00object \"%s\" is not a class\x00INSTANTIATE_NONCLASS\x00objectName ?arg ...?\x00object name must not be empty\x00EMPTY_NAME\x00objectName namespaceName ?arg ...?\x00namespace name must not be empty\x00\n    (in \"%s eval\" script line %d)\x00method ?arg ...?\x00visible methods\x00methods\x00object \"%s\" has no %s\x00unknown method \"%s\": must be \x00?varName ...?\x00variable name \"%s\" illegal: must not contain namespace separator\x00name refers to an element in an array\x00refer to\x00%s may only be called from inside a method\x00class ?arg...?\x00call\x00caller\x00method not defined by a class\x00UNMATCHED_CONTEXT\x00not inside a filtering context\x00caller is not an object\x00method without declarer!\x00filtering call chain without terminal non-filter\x00sourceName ?targetName? ?targetNamespace?\x00%s refers to an existing namespace\x00TclOO method name\x00::oo::define::filter\x00core method: define::filter Getter\x00core method: define::filter Setter\x00::oo::define::mixin\x00core method: define::mixin Getter\x00core method: define::mixin Setter\x00::oo::define::superclass\x00core method: define::superclass Getter\x00core method: define::superclass Setter\x00::oo::define::variable\x00core method: define::variable Getter\x00core method: define::variable Setter\x00::oo::objdefine::filter\x00core method: objdefine::filter Getter\x00core method: objdefine::filter Setter\x00::oo::objdefine::mixin\x00core method: objdefine::mixin Getter\x00core method: objdefine::mixin Setter\x00::oo::objdefine::variable\x00core method: objdefine::variable Getter\x00core method: objdefine::variable Setter\x00method %s does not exist\x00cannot rename method to itself\x00RENAME_TO_SELF\x00method called %s already exists\x00RENAME_OVER\x00bad call of unknown handler\x00BAD_UNKNOWN\x00cannot process definitions; support namespace deleted\x00MONKEY_BUSINESS\x00this command may only be called from within the context of an ::oo::define or ::oo::objdefine command\x00this command cannot be called when the object has been deleted\x00getting outer context when already in global context\x00\n    (in definition script for %s \"%.*s%s\" line %d)\x00className arg ?arg ...?\x00%s does not refer to a class\x00objectName arg ?arg ...?\x00class object\x00may not modify the class of the root object class\x00may not modify the class of the class of classes\x00the class of an object must be a class\x00may not change classes into an instance of themselves\x00arguments body\x00attempt to misuse API\x00name cmdName ?arg ...?\x00Get\x00Set\x00::oo::Slot\x00filterList\x00mixinList\x00may only mix in classes\x00may not mix a class into itself\x00SELF_MIXIN\x00superclassList\x00may not modify the superclass of the root object\x00only a class can be a superclass\x00class should only be a direct superclass once\x00REPETITIOUS\x00attempt to form circular dependency graph\x00invalid declared variable name \"%s\": must not %s\x00contain namespace separators\x00BAD_DECLVAR\x00*(*)\x00refer to an array element\x00variableList\x00definition\x00filters\x00isa\x00methodtype\x00mixins\x00instances\x00subclasses\x00superclasses\x00::oo::InfoObject\x00::oo::InfoClass\x00objName ?className?\x00objName methodName\x00definition not available for this kind of method\x00objName\x00prefix argument list not available for this kind of method\x00metaclass\x00mixin\x00typeof\x00category objName ?arg ...?\x00category\x00objName className\x00-localprivate\x00-private\x00objName ?-option value ...?\x00objName ?pattern?\x00METHOD_TYPE\x00className ?pattern?\x00className ?-option value ...?\x00cannot construct any call chain\x00method not declared in class or object\x00\n    (%s \"%.*s%s\" method \"%.*s%s\" line %d)\x00\n    (%s \"%.*s%s\" constructor line %d)\x00\n    (%s \"%.*s%s\" destructor line %d)\x00method forward prefix must be non-empty\x00BAD_FORWARD\x00dynamic loading is not currently available on this system\x000123456789ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz+/\x00"
+var __ccgo_ts1 = "\n\n\n========= RAW ==========\n\x00\n\n\n========= TREE FIXED ==========\n\x00\n\n\n========= LA%d ==========\n\x00\n\n\n========= SEARCH ==========\n\x00\n\n\n========= TREE NODE %s ==========\n\x00null tree\n\x00%s. `%c'\x00 longest\x00 shortest\x00 hasmixed\x00 hascapture\x00 hasbackref\x00 UNUSED\x00 (#%d)\x00 {%d,\x00%d\x00}\x00 %ld-%ld\x00 L:%s\x00 R:%s\x00\n\x00unable\x00%p\x00\ninitial cleanup:\n\x00\nempties:\n\x00\nconstraints:\n\x00\nfinal cleanup:\n\x00NUL\x00SOH\x00STX\x00ETX\x00EOT\x00ENQ\x00ACK\x00BEL\x00alert\x00BS\x00backspace\x00HT\x00tab\x00LF\x00newline\x00VT\x00vertical-tab\x00FF\x00form-feed\x00CR\x00carriage-return\x00SO\x00SI\x00DLE\x00DC1\x00DC2\x00DC3\x00DC4\x00NAK\x00SYN\x00ETB\x00CAN\x00EM\x00SUB\x00ESC\x00IS4\x00FS\x00IS3\x00GS\x00IS2\x00RS\x00IS1\x00US\x00space\x00exclamation-mark\x00quotation-mark\x00number-sign\x00dollar-sign\x00percent-sign\x00ampersand\x00apostrophe\x00left-parenthesis\x00right-parenthesis\x00asterisk\x00plus-sign\x00comma\x00hyphen\x00hyphen-minus\x00period\x00full-stop\x00slash\x00solidus\x00zero\x00one\x00two\x00three\x00four\x00five\x00six\x00seven\x00eight\x00nine\x00colon\x00semicolon\x00less-than-sign\x00equals-sign\x00greater-than-sign\x00question-mark\x00commercial-at\x00left-square-bracket\x00backslash\x00reverse-solidus\x00right-square-bracket\x00circumflex\x00circumflex-accent\x00underscore\x00low-line\x00grave-accent\x00left-brace\x00left-curly-bracket\x00vertical-line\x00right-brace\x00right-curly-bracket\x00tilde\x00DEL\x00alnum\x00alpha\x00ascii\x00blank\x00cntrl\x00digit\x00graph\x00lower\x00print\x00punct\x00upper\x00xdigit\x00REG_OKAY\x00no errors detected\x00REG_NOMATCH\x00failed to match\x00REG_BADPAT\x00invalid regexp (reg version 0.8)\x00REG_ECOLLATE\x00invalid collating element\x00REG_ECTYPE\x00invalid character class\x00REG_EESCAPE\x00invalid escape \\ sequence\x00REG_ESUBREG\x00invalid backreference number\x00REG_EBRACK\x00brackets [] not balanced\x00REG_EPAREN\x00parentheses () not balanced\x00REG_EBRACE\x00braces {} not balanced\x00REG_BADBR\x00invalid repetition count(s)\x00REG_ERANGE\x00invalid character range\x00REG_ESPACE\x00out of memory\x00REG_BADRPT\x00quantifier operand invalid\x00REG_ASSERT\x00\"can't happen\" -- you found a bug\x00REG_INVARG\x00invalid argument to regex function\x00REG_MIXED\x00character widths of regex and string differ\x00REG_BADOPT\x00invalid embedded option\x00REG_ETOOBIG\x00regular expression is too complex\x00REG_ECOLORS\x00too many colors\x00\x00oops\x00REG_%u\x00assemblecode\x00push\x00add\x00append\x00appendArray\x00appendArrayStk\x00appendStk\x00arrayExistsImm\x00arrayExistsStk\x00arrayMakeImm\x00arrayMakeStk\x00beginCatch\x00bitand\x00bitnot\x00bitor\x00bitxor\x00clockRead\x00concat\x00concatStk\x00coroName\x00currentNamespace\x00dictAppend\x00dictExists\x00dictExpand\x00dictGet\x00dictIncrImm\x00dictLappend\x00dictRecombineStk\x00dictRecombineImm\x00dictSet\x00dictUnset\x00div\x00dup\x00endCatch\x00eq\x00eval\x00evalStk\x00exist\x00existArray\x00existArrayStk\x00existStk\x00expon\x00expr\x00exprStk\x00ge\x00gt\x00incr\x00incrArray\x00incrArrayImm\x00incrArrayStk\x00incrArrayStkImm\x00incrImm\x00incrStk\x00incrStkImm\x00infoLevelArgs\x00infoLevelNumber\x00invokeStk\x00jump\x00jump4\x00jumpFalse\x00jumpFalse4\x00jumpTable\x00jumpTrue\x00jumpTrue4\x00label\x00land\x00lappend\x00lappendArray\x00lappendArrayStk\x00lappendList\x00lappendListArray\x00lappendListArrayStk\x00lappendListStk\x00lappendStk\x00le\x00lindexMulti\x00list\x00listConcat\x00listIn\x00listIndex\x00listIndexImm\x00listLength\x00listNotIn\x00load\x00loadArray\x00loadArrayStk\x00loadStk\x00lor\x00lsetFlat\x00lsetList\x00lshift\x00lt\x00mod\x00mult\x00neq\x00nop\x00not\x00nsupvar\x00numericType\x00originCmd\x00over\x00pop\x00pushReturnCode\x00pushReturnOpts\x00pushResult\x00regexp\x00resolveCmd\x00reverse\x00rshift\x00store\x00storeArray\x00storeArrayStk\x00storeStk\x00strcaseLower\x00strcaseTitle\x00strcaseUpper\x00strcmp\x00strcat\x00streq\x00strfind\x00strindex\x00strlen\x00strmap\x00strmatch\x00strneq\x00strrange\x00strreplace\x00strrfind\x00strtrim\x00strtrimLeft\x00strtrimRight\x00sub\x00tclooClass\x00tclooIsObject\x00tclooNamespace\x00tclooSelf\x00tryCvtToBoolean\x00tryCvtToNumeric\x00uminus\x00unset\x00unsetArray\x00unsetArrayStk\x00unsetStk\x00uplus\x00upvar\x00variable\x00verifyDict\x00yield\x00bytecodeList\x00\n    (\"\x00\" body, line \x00)\x00\n    (\"%.*s\" body, line %d)\x00instruction\x00value\x00boolean\x00boolean varName\x00imm8\x00operand must be [0..3]\x00TCL\x00ASSEM\x00OPERAND<0,>3\x00count\x00count varName\x00script\x00expression\x00table\x00name\x00operand must be >=2\x00OPERAND>=2\x00varname\x00varName imm8\x00Instruction \"%s\" could not be found, can't happen\n\x00no ASSEM_EVAL case for %s (%d), can't happen\x00jump table must have an even number of list elements\x00BADJUMPTABLE\x00duplicate entry in jump table for \"%s\"\x00DUPJUMPTABLEENTRY\x00assembly code may not contain substitutions\x00NOSUBST\x00cannot use this instruction to create a variable in a non-proc context\x00LVT\x00variable \"%s\" is not local\x00NONLOCAL\x00operand does not fit in one byte\x001BYTE\x00operand must be nonnegative\x00NONNEGATIVE\x00operand must be positive\x00POSITIVE\x00duplicate definition of label \"%s\"\x00DUPLABEL\x00undefined label \"%s\"\x00NOLABEL\x00\"%s\" instruction may not appear in a context where an exception has been caught and not disposed of.\x00BADTHROW\x00inconsistent stack depths on two execution paths\x00BADSTACK\x00stack underflow\x00code pops stack below level of enclosing catch\x00BADSTACKINCATCH\x00stack is unbalanced on exit from the code (depth=%d)\x00execution reaches an instruction in inconsistent exception contexts\x00BADCATCH\x00endCatch without a corresponding beginCatch\x00BADENDCATCH\x00catch still active on exit from assembly code\x00UNCLOSEDCATCH\x00unclosed catch at end of code in tclAssembly.c:BuildExceptionRanges, can't happen\x00undefined label in tclAssembly.c:BuildExceptionRanges, can't happen\x00\n    in assembly code between lines \x00 and \x00end of assembly code\x00Tcl_AsyncDelete: async handler deleted by the wrong thread\x00Tcl_AsyncDelete: cannot find async handler\x00apply\x00break\x00case\x00catch\x00continue\x00coroutine\x00error\x00for\x00foreach\x00format\x00global\x00if\x00join\x00lassign\x00lindex\x00linsert\x00llength\x00lmap\x00lrange\x00lrepeat\x00lreplace\x00lreverse\x00lsearch\x00lset\x00lsort\x00package\x00proc\x00regsub\x00rename\x00return\x00scan\x00set\x00split\x00subst\x00switch\x00tailcall\x00throw\x00trace\x00try\x00uplevel\x00while\x00yieldto\x00after\x00cd\x00close\x00eof\x00exec\x00exit\x00fblocked\x00fconfigure\x00fcopy\x00fileevent\x00flush\x00gets\x00glob\x00open\x00pid\x00puts\x00pwd\x00read\x00seek\x00socket\x00source\x00tell\x00time\x00unload\x00update\x00vwait\x00abs\x00acos\x00asin\x00atan\x00atan2\x00bool\x00ceil\x00cos\x00cosh\x00double\x00entier\x00exp\x00floor\x00fmod\x00hypot\x00int\x00isqrt\x00log\x00log10\x00pow\x00rand\x00round\x00sin\x00sinh\x00sqrt\x00srand\x00tan\x00tanh\x00wide\x00~\x00integer\x00!\x00+\x00*\x00&\x00|\x00^\x00**\x00<<\x00integer shift\x00>>\x00%\x00integer integer\x00!=\x00value value\x00ne\x00in\x00value list\x00ni\x00-\x00value ?value ...?\x00/\x00<\x00<=\x00>\x00>=\x00==\x00Tcl_CallFrame must not be smaller than CallFrame\x00::errorInfo\x00UP\x00CALL\x00INNER\x00::errorCode\x00TCL_PKG_PREFER_LATEST\x00TCL_INTERP_DEBUG_FRAME\x00Tcl_CreateInterp: can't create global namespace\x00builtin command with NULL object command proc and a NULL compile proc\x00::tcl::Bgerror\x00::tcl::unsupported::disassemble\x00::tcl::unsupported::getbytecode\x00::tcl::unsupported::representation\x00::tcl::unsupported::assemble\x00::tcl::unsupported::inject\x00::tcl::unsupported::corotype\x00::tcl::unsupported::timerate\x00::tcl::unsupported\x00::tcl::mathfunc\x00Can't create math function namespace\x00::tcl::mathfunc::\x00::tcl::mathop\x00can't create math operator namespace\x00::tcl::mathop::\x00failed to create math operator %s\x00tcl_platform\x00engine\x00Tcl\x00littleEndian\x00bigEndian\x00byteOrder\x00wordSize\x00pointerSize\x00tcl_patchLevel\x008.6.13\x00tcl_version\x008.6\x00tcl_precision\x00%s\x00Assoc Data Key #%d\x00DeleteInterpProc called with active evals\x00DeleteInterpProc called on interpreter not marked deleted\x00DeleteInterpProc: popping rootCallFrame with other frames on top\x00Argument location tracking table not empty\x00::\x00cannot use namespace qualifiers in hidden command token (rename)\x00VALUE\x00HIDDENTOKEN\x00can only hide global namespace commands (use rename then hide)\x00HIDE\x00NON_GLOBAL\x00hidden command named \"%s\" already exists\x00ALREADY_HIDDEN\x00cannot expose to a namespace (use expose to toplevel, then rename)\x00EXPOSE\x00unknown hidden command \"%s\"\x00LOOKUP\x00trying to expose a non-global command namespace command\x00exposed command \"%s\" already exists\x00COMMAND_EXISTS\x00delete\x00can't %s \"%s\": command doesn't exist\x00COMMAND\x00can't rename to \"%s\": bad command name\x00can't rename to \"%s\": command already exists\x00OPERATION\x00RENAME\x00TARGET_EXISTS\x00argument to math function didn't have numeric value\x00tcl::mathfunc::\x00unknown math function \"%s\"\x00MATHFUNC\x00::info functions \x00attempt to call eval in deleted interpreter\x00IDELETE\x00too many nested evaluations (infinite loop?)\x00LIMIT\x00STACK\x00IUNWIND\x00eval unwound\x00ICANCEL\x00eval canceled\x00CANCEL\x00attempt to invoke a deleted command\x00EVAL\x00DELETEDCOMMAND\x00Tcl_EvalObjv: NULL global namespace pointer\x00::unknown\x00invalid command name \"%s\"\x00\n    (enter trace on \"\x00...\x00\")\x00\n    (leave trace on \"\x00\n    (expanding word %d)\x00TclArgumentBC Enter/Release Mismatch\x00invoked \"break\" outside of a loop\x00invoked \"continue\" outside of a loop\x00command returned bad code: %d\x00UNEXPECTED_RESULT_CODE\x00illegal argument vector\x00TclObjInvoke: called without TCL_INVOKE_HIDDEN\x00invalid hidden command name \"%s\"\x00NONE\x00square root of negative argument\x00ARITH\x00DOMAIN\x00domain error: argument not in valid range\x00not enough\x00too many\x00%s arguments for math function \"%s\"\x00WRONGARGS\x00tailcall cannot find the right splicing spot: should not happen!\x00?command? ?arg ...?\x00tailcall can only be called from a proc, lambda or method\x00TAILCALL\x00ILLEGAL\x00Adding a callback without an objProc?!\x00?returnValue?\x00yield can only be called in a coroutine\x00COROUTINE\x00ILLEGAL_YIELD\x00command ?arg ...?\x00yieldto can only be called in a coroutine\x00yieldto called in deleted namespace\x00YIELDTO_IN_DELETED\x00cannot yield: C stack busy\x00CANT_YIELD\x00Yield received an option which is not implemented\x00can only get coroutine type of a coroutine\x00active\x00unknown coroutine type\x00BAD_TYPE\x00coroName cmd ?arg1 arg2 ...?\x00can only inject a command into a coroutine\x00can only inject a command into a suspended coroutine\x00ACTIVE\x00coroutine \"%s\" is already running\x00BUSY\x00?arg?\x00wrong coro nargs; how did we get here? not implemented!\x00name cmd ?arg ...?\x00can't create procedure \"%s\": unknown namespace\x00NAMESPACE\x00can't create procedure \"%s\": bad procedure name\x00bytearray\x00encode\x00decode\x00hex\x00uuencode\x00base64\x00%s called with shared object\x00Tcl_SetByteArrayObj\x00Tcl_SetByteArrayLength\x00max size for a Tcl value (%d bytes) exceeded\x00TclAppendBytesToByteArray\x00%s must be called with definite number of bytes to append\x00binary\x00binary encode\x00binary decode\x00formatString ?arg ...?\x00number of elements in list does not match count\x00cannot use \"*\" in format string with \"x\"\x00hexadecimal\x00expected %s string but got \"%s\" instead\x00missing count for \"@\" field specifier\x00not enough arguments for all format specifiers\x00bad field specifier \"%s\"\x00value formatString ?varName ...?\x00unexpected fallthrough\x00data\x00-strict\x00?options? data\x00option\x00invalid hexadecimal digit \"%c\" at position %d\x00BINARY\x00DECODE\x00INVALID\x00-maxlen\x00-wrapchar\x00?-maxlen len? ?-wrapchar char? data\x00line length out of range\x00ENCODE\x00LINE_LENGTH\x00limit hit\x00invalid wrapchar; will defeat decoding\x00WRAPCHAR\x00short uuencode data\x00SHORT\x00invalid uuencode character \"%c\" at position %d\x00invalid base64 character \"%c\" at position %d\x00unable to alloc %u bytes\x00unable to alloc %u bytes, %s line %d\x00unable to realloc %u bytes\x00unable to realloc %u bytes, %s line %d\x00%a %b %d %H:%M:%S %Z %Y\x00BCE\x00C\x00cannot use -gmt and -timezone in same call\x00CE\x00dayOfMonth\x00dayOfWeek\x00dayOfYear\x00era\x00:GMT\x00gregorian\x00integer value too large to represent\x00iso8601Week\x00iso8601Year\x00julianDay\x00localSeconds\x00month\x00seconds\x00tzName\x00tzOffset\x00year\x00getenv\x00Oldscan\x00ConvertLocalToUTC\x00GetDateFields\x00GetJulianDayFromEraYearMonthDay\x00GetJulianDayFromEraYearWeekDay\x00ParseFormatArgs\x00clicks\x00microseconds\x00milliseconds\x00::tcl::clock::\x00clock\x00dict tzdata changeover\x00key \"localseconds\" not found in dictionary\x00seconds tzdata changeover\x00expected key(s) not found in dictionary\x00dict changeover\x00loop in ConvertLocalToUTCUsingTable\x00time value too large/small to represent\x00number too large to represent as a Posix time\x00CLOCK\x00argTooLarge\x00localtime failed (clock value may be too large/small to represent)\x00localtimeFailed\x00%02d\x00-milliseconds\x00-microseconds\x00?-switch?\x00-format\x00-gmt\x00-locale\x00-timezone\x00clock format clockval ?-format string? ?-gmt boolean? ?-locale LOCALE? ?-timezone ZONE?\x00wrongNumArgs\x00badOption\x00gmtWithTimezone\x00TZ\x00string ?in? ?pattern body ...? ?default body?\x00extra case pattern with no body\x00default\x00\n    (\"%.50s\" arm line %d)\x00script ?resultVarName? ?optionVarName?\x00\n    (\"catch\" body line %d)\x00?dirName?\x00couldn't change working directory to \"%s\": %s\x00convertfrom\x00convertto\x00dirs\x00names\x00system\x00encoding\x00::tcl::encoding::\x00tcl:encoding:\x00___tmp\x00problem making 'encoding %s' safe: %s\x00problem making 'encoding' safe: %s\x00not allowed to invoke subcommand %s of encoding\x00SAFE\x00SUBCOMMAND\x00?encoding? data\x00?dirList?\x00expected directory list but got \"%s\"\x00ENCODING\x00BADPATH\x00?encoding?\x00message ?errorInfo? ?errorCode?\x00-code error -level 0\x00-errorinfo\x00-errorcode\x00\n    (\"eval\" body line %d)\x00arg ?arg ...?\x00?returnCode?\x00atime\x00attributes\x00channels\x00copy\x00dirname\x00executable\x00exists\x00extension\x00isdirectory\x00isfile\x00link\x00lstat\x00mtime\x00mkdir\x00nativename\x00normalize\x00owned\x00pathtype\x00readable\x00readlink\x00rootname\x00separator\x00size\x00stat\x00tail\x00tempfile\x00type\x00volumes\x00writable\x00file\x00::tcl::file::\x00tcl:file:\x00problem making 'file %s' safe: %s\x00problem making 'file' safe: %s\x00not allowed to invoke subcommand %s of file\x00name ?time?\x00could not set access time for file \"%s\": %s\x00could not set modification time for file \"%s\": %s\x00name varName\x00unrecognised path\x00FILESYSTEM\x00name ?name ...?\x00could not read \"%s\": no such file or directory\x00PATHSPLIT\x00NONESUCH\x00absolute\x00relative\x00volumerelative\x00?name?\x00\\\x00could not read \"%s\": %s\x00dev\x00ino\x00nlink\x00uid\x00gid\x00blocks\x00blksize\x00ctime\x00mode\x00directory\x00characterSpecial\x00blockSpecial\x00fifo\x00unknown\x00start test next command\x00\n    (\"for\" body line %d)\x00\n    (\"for\" initial command)\x00\n    (\"for\" loop-end command)\x00varList list ?varList list ...? command\x00%s varlist is empty\x00LMAP\x00FOREACH\x00NEEDVARS\x00\n    (\"%s\" body line %d)\x00\n    (setting %s loop variable \"%s\")\x00args\x00body\x00cmdcount\x00commands\x00complete\x00errorstack\x00frame\x00functions\x00globals\x00hostname\x00level\x00library\x00loaded\x00locals\x00nameofexecutable\x00patchlevel\x00procs\x00sharedlibextension\x00tclversion\x00vars\x00wrong # args: no expression after \"%s\" argument\x00then\x00elseif\x00else\x00wrong # args: extra words after \"else\" clause in \"if\" command\x00wrong # args: no script following \"%s\" argument\x00varName ?increment?\x00info\x00procname\x00\"%s\" isn't a procedure\x00PROCEDURE\x00?pattern?\x00*[?\\\x00command\x00procname arg varname\x00procedure \"%s\" doesn't have an argument \"%s\"\x00ARGUMENT\x00?interp?\x00varName\x00?number?\x00Broken frame level calculation\x00bad level \"%s\"\x00LEVEL\x00precompiled\x00line\x00cmd\x00TCL_LOCATION_PROC found in standard frame\x00\t    ::apply [::list {{pattern *}} {\n\t\t::set cmds {}\n\t\t::foreach cmd [::info commands ::tcl::mathfunc::$pattern] {\n\t\t    ::lappend cmds [::namespace tail $cmd]\n\t\t}\n\t\t::foreach cmd [::info commands tcl::mathfunc::$pattern] {\n\t\t    ::set cmd [::namespace tail $cmd]\n\t\t    ::if {$cmd ni $cmds} {\n\t\t\t::lappend cmds $cmd\n\t\t    }\n\t\t}\n\t\t::return $cmds\n\t    } [::namespace current]] \x00unable to determine name of host\x00HOSTNAME\x00UNKNOWN\x00tcl_library\x00no library has been specified for Tcl\x00VARIABLE\x00?filename?\x00list ?joinString?\x00 \x00list ?varName ...?\x00list ?index ...?\x00list index ?element ...?\x00list first last\x00count ?value ...?\x00bad count \"%d\": must be integer >= 0\x00LREPEAT\x00NEGARG\x00max length of a Tcl list (%d elements) exceeded\x00MEMORY\x00list first last ?element ...?\x00-all\x00-ascii\x00-bisect\x00-decreasing\x00-dictionary\x00-exact\x00-glob\x00-increasing\x00-index\x00-inline\x00-integer\x00-nocase\x00-not\x00-real\x00-regexp\x00-sorted\x00-start\x00-subindices\x00?-option value ...? list pattern\x00missing starting index\x00MISSING\x00\"-index\" option must be followed by list index\x00index \"%s\" cannot select an element from any list\x00INDEXOUTOFRANGE\x00\n    (-index option item number %d)\x00-subindices cannot be used without -index option\x00LSEARCH\x00BAD_OPTION_MIX\x00-bisect is not compatible with -all or -not\x00listVar ?index? ?index ...? value\x00-command\x00-indices\x00-stride\x00-unique\x00?-option value ...? list\x00\"-command\" option must be followed by comparison command\x00\"-stride\" option must be followed by stride length\x00stride length must be at least 2\x00LSORT\x00BADSTRIDE\x00list size must be a multiple of the stride length\x00when used with \"-stride\", the leading \"-index\" value must be within the group\x00BADINDEX\x00no enough memory to proccess sort of %d items\x00\n    (-compare command)\x00-compare command returned non-integer result\x00COMPARISONFAILED\x00element %d missing from sublist \"%s\"\x00INDEXFAILED\x00-about\x00-expanded\x00-line\x00-linestop\x00-lineanchor\x00--\x00?-option ...? exp string ?matchVar? ?subMatchVar ...?\x00regexp match variables not allowed when using -inline\x00REGEXP\x00MIX_VAR_INLINE\x00?-option ...? exp string subSpec ?varName?\x00&\\\x00*+?{}()[].\\|^$\x00oldName newName\x00?-encoding name? fileName\x00-encoding\x00 \n\t\r\x00string ?splitChars?\x00needleString haystackString ?startIndex?\x00string charIndex\x00control\x00false\x00true\x00wideinteger\x00wordchar\x00-failindex\x00class ?-strict? ?-failindex var? str\x00class\x00?-strict? ?-failindex var? str\x00?-nocase? charMap string\x00bad option \"%s\": must be -nocase\x00INDEX\x00char map list unbalanced\x00MAP\x00UNBALANCED\x00?-nocase? pattern string\x00string first last\x00string count\x00result exceeds max size for a Tcl value (%d bytes)\x00string size overflow, out of memory allocating %u bytes\x00string first last ?string?\x00string\x00string index\x00?-nocase? ?-length int? string1 string2\x00-length\x00bad option \"%s\": must be -nocase or -length\x00string ?first? ?last?\x00string ?chars?\x00bytelength\x00cat\x00compare\x00equal\x00first\x00index\x00is\x00last\x00length\x00map\x00match\x00range\x00repeat\x00replace\x00tolower\x00toupper\x00totitle\x00trim\x00trimleft\x00trimright\x00wordend\x00wordstart\x00-nobackslashes\x00-nocommands\x00-novariables\x00Tcl_SubstObjCmd: bad option index to SubstOptions\x00?-nobackslashes? ?-nocommands? ?-novariables? string\x00-indexvar\x00-matchvar\x00bad option \"%s\": %s option already found\x00SWITCH\x00DOUBLEOPT\x00missing variable name argument to %s option\x00NOVAR\x00?-option ...? string ?pattern body ...? ?default body?\x00%s option requires -regexp option\x00MODERESTRICTION\x00?-option ...? string {?pattern body ...? ?default body?}\x00extra switch pattern with no body\x00BADARM\x00, this may be due to a comment incorrectly placed outside of a switch body - see the \"switch\" documentation\x00COMMENT?\x00no body specified for pattern \"%s\"\x00FALLTHROUGH\x00fall-out when searching for body to match pattern\x00\n    (\"%.*s%s\" arm line %d)\x00type message\x00type must be non-empty list\x00THROW\x00BADEXCEPTION\x00-code error -level 0 -errorcode\x00command ?count?\x00per\x00iteration\x00-direct\x00-overhead\x00-calibrate\x00?-direct? ?-calibrate? ?-overhead double? command ?time ?max-count??\x00µs/#-overhead\x00%.*f\x00%.3f\x00net-ms\x00µs/#\x00#\x00#/sec\x00finally\x00on\x00trap\x00body ?handler ...? ?finally script?\x00handler type\x00finally clause must be last\x00TRY\x00FINALLY\x00NONTERMINAL\x00wrong # args to finally clause: must be \"... finally script\"\x00wrong # args to on clause: must be \"... on code variableList script\"\x00ON\x00wrong # args to trap clause: must be \"... trap pattern variableList script\"\x00TRAP\x00bad prefix '%s': must be a list\x00EXNFORMAT\x00last non-finally clause must not have a body of \"-\"\x00BADFALLTHROUGH\x00-during\x00\n    (\"%s ... %s\" handler line %d)\x00\n    (\"%s ... finally\" body line %d)\x00test command\x00\n    (\"while\" body line %d)\x00ForeachInfo\x00NewForeachInfo\x00DictUpdateInfo\x000\x001\x00list must have an even number of elements\x00-errorcode {TCL ARGUMENT FORMAT}\x00bad stack depth computations: is %i, should be %i\x00TclCompileCatchCmd: bad jump distance %d\x00TclCompileDictCmd(update): bad jump distance %d\x00, \x00%%v%u\x00variables\x00data=[\x00], loop=%%v%u\x00,\x00\n\t\t it%%v%u\t[\x00]\x00jumpOffset=%+d, vars=\x00[\x00loop\x00assign\x00jumpOffset\x00TclCompileIfCmd: unexpected opcode \"%d\" updating ifFalse jump\x00object\x00::namespace inscope \x00::namespace\x00inscope\x00:\x002\x00end\x00-options\x00namespace\x00JumptableInfo\x00word\x003\x00TclCompileSubstCmd: bad start jump distance %d\x00unexpected token type in TclCompileSubstCmd: %d\x00TclCompileSubstCmd: bad break jump distance %d\x00TclCompileSubstCmd: bad continue jump distance %d\x00TclCompileSubstCmd: bad return jump distance %d\x00TclCompileSubstCmd: bad other jump distance %d\x00TclCompileSubstCmd: bad ok jump distance %d\x00TclCompileSubstCmd: bad end jump distance %d\x00unknown switch mode: %d\x00\n\t\t\x00\"%s\"->pc %d\x00mapping\x00-errorcode {TCL OPERATION THROW BADEXCEPTION}\x00-level 0 -code 0\x00-nocomplain\x00-1\x001.0\x00_@_\x00not enough memory to parse expression\x00NOMEM\x00invalid character \"%.*s\"\x00BADCHAR\x00incomplete operator \"%.*s\"\x00PARTOP\x00invalid bareword \"%.*s%s\"\x00should be \"$%.*s%s\" or \"{%.*s%s}\"\x00 or \"%.*s%s(...)\" or ...\x00BAREWORD\x00 (invalid binary number?)\x00BADNUMBER\x00 (invalid octal number?)\x00OCTAL\x00missing operator at %s\x00max # of tokens for a Tcl parse (%d) exceeded\x00invalid character \"$\"\x00missing close-bracket\x00empty subexpression at %s\x00EMPTY\x00unbalanced open paren\x00missing function argument at %s\x00empty expression\x00unbalanced close paren\x00missing operand at %s\x00missing operator \":\" at %s\x00unexpected operator \":\" without preceding \"?\"\x00SURPRISE\x00unexpected \",\" outside function argument list\x00\nin expression \"%s%.*s%.*s%s%s%.*s%s\"\x00;\n\x00\n    (parsing expression \"%.*s%s\")\x00PARSE\x00EXPR\x00done\x00push1\x00push4\x00invokeStk1\x00invokeStk4\x00loadScalar1\x00loadScalar4\x00loadScalarStk\x00loadArray1\x00loadArray4\x00storeScalar1\x00storeScalar4\x00storeScalarStk\x00storeArray1\x00storeArray4\x00incrScalar1\x00incrScalarStk\x00incrArray1\x00incrScalar1Imm\x00incrScalarStkImm\x00incrArray1Imm\x00jump1\x00jumpTrue1\x00jumpFalse1\x00callBuiltinFunc1\x00callFunc1\x00foreach_start4\x00foreach_step4\x00beginCatch4\x00appendScalar1\x00appendScalar4\x00appendArray1\x00appendArray4\x00lappendScalar1\x00lappendScalar4\x00lappendArray1\x00lappendArray4\x00returnImm\x00expandStart\x00expandStkTop\x00invokeExpanded\x00listRangeImm\x00startCommand\x00returnStk\x00dictFirst\x00dictNext\x00dictDone\x00dictUpdateStart\x00dictUpdateEnd\x00syntax\x00existScalar\x00returnCodeBranch\x00unsetScalar\x00strrangeImm\x00invokeReplace\x00expandDrop\x00foreach_start\x00foreach_step\x00foreach_end\x00lmap_collect\x00tclooNext\x00tclooNextClass\x00yieldToInvoke\x00strclass\x00bytecode\x00substcode\x00::tcl\x00::tcl::\x00TclCompileScript() called on uninitialized CompileEnv\x00too many nested compilations (infinite loop?)\x00Unexpected token type in TclCompileTokens: %d; %.*s\x00TclInitByteCodeObj() called on uninitialized CompileEnv\x00EnterCmdStartData: bad command index %d\x00EnterCmdStartData: cmd map not sorted by code offset\x00EnterCmdExtentData: bad command index %d\x00EnterCmdExtentData: missing start data for command %d\x00trying to add 'break' fixup to full exception range\x00trying to add 'continue' fixup to full exception range\x00trying to finalize a loop exception range\x00TclFixupForwardJump: bad ExceptionRange type %d\x00unexpected opcode\x00GetCmdLocEncodingSize: bad code offset\x00GetCmdLocEncodingSize: bad code length\x00GetCmdLocEncodingSize: bad source length\x00EncodeCmdLocMap: bad code offset\x00EncodeCmdLocMap: bad code length\x00EncodeCmdLocMap: bad source length\x00%s.\n%s: %s\x00Tcl_RegisterConfig\x00Unable to create namespace for package configuration.\x00::pkgconfig\x00%s: %s\x00Unable to create query command for package configuration\x00get\x00subcommand ?arg?\x00subcommand\x00package not known\x00FATAL\x00PKGCFG_BASE\x00key\x00key not known\x00CONFIG\x00insufficient memory to create list\x00QueryConfigObjCmd: Unknown subcommand to 'pkgconfig'. This can't happen\x00tclPackageAboutDict\x00Deleting\x00syntax error\x00Error: discarding\x00Error: popping\x00memory exhausted\x00Cleanup: discarding lookahead\x00Cleanup: popping\x00january\x00february\x00march\x00april\x00may\x00june\x00july\x00august\x00september\x00sept\x00october\x00november\x00december\x00sunday\x00monday\x00tuesday\x00tues\x00wednesday\x00wednes\x00thursday\x00thur\x00thurs\x00friday\x00saturday\x00fortnight\x00week\x00day\x00hour\x00minute\x00min\x00second\x00sec\x00tomorrow\x00yesterday\x00today\x00now\x00this\x00next\x00ago\x00epoch\x00stardate\x00gmt\x00ut\x00utc\x00uct\x00wet\x00bst\x00wat\x00at\x00nft\x00nst\x00ndt\x00ast\x00adt\x00est\x00edt\x00cst\x00cdt\x00mst\x00mdt\x00pst\x00pdt\x00yst\x00ydt\x00hst\x00hdt\x00ahst\x00nt\x00idlw\x00cet\x00cest\x00met\x00mewt\x00mest\x00swt\x00sst\x00fwt\x00fst\x00eet\x00bt\x00it\x00zp4\x00zp5\x00ist\x00zp6\x00wast\x00wadt\x00jt\x00cct\x00jst\x00jdt\x00kst\x00kdt\x00cast\x00cadt\x00east\x00eadt\x00gst\x00nzt\x00nzst\x00nzdt\x00idle\x00dst\x00a\x00b\x00c\x00d\x00e\x00f\x00g\x00h\x00i\x00k\x00l\x00m\x00n\x00o\x00p\x00q\x00r\x00s\x00t\x00u\x00v\x00w\x00x\x00y\x00z\x00 (characters \x00am\x00a.m.\x00pm\x00p.m.\x00stringToParse baseYear baseMonth baseDay\x00DATE\x00Unknown status returned from date parser. Please report this error as a bug in Tcl.\x00BUG\x00more than one date in string\x00MULTIPLE\x00more than one time of day in string\x00more than one time zone in string\x00more than one weekday in string\x00more than one ordinal month in string\x00dict\x00create\x00filter\x00keys\x00merge\x00remove\x00values\x00with\x00missing value to go with key\x00DICTIONARY\x00key \"%s\" not known in dictionary\x00DICT\x00Tcl_DictObjPut\x00Tcl_DictObjRemove\x00concurrent dictionary modification and search\x00Tcl_DictObjPutKeyList\x00%s called with empty key list\x00Tcl_DictObjRemoveKeyList\x00?key value ...?\x00dictionary ?key ...?\x00dictionary ?key value ...?\x00dictionary ?pattern?\x00dictionary\x00dictionary key ?key ...?\x00dictVarName key ?increment?\x00\n    (reading increment)\x00dictVarName key ?value ...?\x00{keyVarName valueVarName} dictionary script\x00must have exactly two variable names\x00SYNTAX\x00\n    (\"dict for\" body line %d)\x00\n    (\"dict map\" body line %d)\x00dictVarName key ?key ...? value\x00dictVarName key ?key ...?\x00dictionary filterType ?arg ...?\x00filterType\x00dictionary script {keyVarName valueVarName} filterScript\x00\n    (\"dict filter\" filter script key variable)\x00\n    (\"dict filter\" filter script value variable)\x00\n    (\"dict filter\" script line %d)\x00dictVarName key varName ?key varName ...? script\x00\n    (body of \"dict update\")\x00dictVarName ?key ...? script\x00\n    (body of \"dict with\")\x00instname\x00ByteCode 0x%s, refCt %u, epoch %u, interp 0x%s (epoch %u)\n\x00  Source \x00\n  File \"%s\" Line %d\x00\n  Cmds %d, src %d, inst %d, litObjs %u, aux %d, stkDepth %u, code/src %.2f\n\x00  Proc 0x%s, refCt %d, args %d, compiled locals %d\n\x00, scalar\x00, array\x00, link\x00, arg\x00, temp\x00, resolved\x00      slot %d%s%s%s%s%s%s\x00, \"%s\"\n\x00  Exception ranges %d, depth %d:\n\x00      %d: level %d, %s, pc %d-%d, \x00continue %d, break %d\n\x00catch %d\n\x00DisassembleByteCodeObj: bad ExceptionRange type %d\x00    \x00  Commands %d:\x00     \x00\n   \x00%s%4d: pc %d-%d, src %d-%d\x00  Command %d: \x00(%u) %s \x00%+d \x00%u \x00, %u cmds start here\x00pc %u\x00next cmd at pc %u\x00%d \x00end \x00end-%d \x00FormatInstruction: bad local var index %u (%u locals)\x00temp var %u\x00var \x00%%v%u \x00%s \x00\t# \x00\t# %s\x00\t\t[\x00]\n\x00InnerContext: bad tos -- appending null object\x00InnerContext: bad tos -- appending freed object %p\x00inst_%d\x00\"\"\x00\"\x00\\\"\x00\\f\x00\\n\x00\\r\x00\\t\x00\\v\x00\\U%08x\x00\\u%04x\x00%c\x00scalar\x00array\x00arg\x00temp\x00resolved\x00pc %d\x00@%d\x00%%%d\x00.%d\x00.end\x00.end-%d\x00?%d\x00=%s\x00opcode %d with more than zero 'no' operands\x00type %s level %d from %d to %d break %d continue %d\x00type %s level %d from %d to %d catch %d\x00codefrom\x00codeto\x00scriptfrom\x00scriptto\x00literals\x00exception\x00instructions\x00auxiliary\x00stackdepth\x00exceptdepth\x00initiallinenumber\x00sourcefile\x00constructor\x00destructor\x00lambda\x00method\x00objmethod\x00type ...\x00lambdaTerm\x00procName\x00PROC\x00className\x00\"%s\" is not a class\x00CLASS\x00\"%s\" has no defined constructor\x00DISASSEMBLE\x00CONSRUCTOR\x00body not available for this kind of constructor\x00METHODTYPE\x00body of constructor\x00\"%s\" has no defined destructor\x00DESRUCTOR\x00body not available for this kind of destructor\x00body of destructor\x00className methodName\x00objectName methodName\x00unknown method \"%s\"\x00METHOD\x00body not available for this kind of method\x00body of method\x00may not disassemble prebuilt bytecode\x00BYTECODE\x00*.enc\x00identity\x00utf-8\x00unicode\x00iso8859-1\x00FreeEncoding: refcount problem !!!\x00.enc\x00unknown encoding \"%s\"\x00invalid encoding file \"%s\"\x00init\x00final\x00EscapeToUtfProc: invalid sub table\x00configure\x00-map\x00-parameters\x00-prefixes\x00-subcommands\x00-unknown\x00-namespace\x00ensembleCommand\x00tried to manipulate ensemble of deleted namespace\x00ENSEMBLE\x00DEAD\x00subcommand ?arg ...?\x00?option value ...?\x00ensemble subcommand implementations must be non-empty lists\x00EMPTY_TARGET\x00cmdname\x00cmdname ?-option value ...? ?arg ...?\x00option -namespace is read-only\x00READ_ONLY\x00unexpected ensemble command\x00command is not an ensemble\x00NOT_ENSEMBLE\x00ensemble target is not a fully-qualified command\x00UNQUALIFIED_TARGET\x00\"%s\" is not an ensemble command\x00tcl:\x00invalid ensemble name '%s'\x00unable to find or create %s namespace!\x00ensemble activated for deleted namespace\x00full name %s not found in supposedly synchronized hash\x00unknown subcommand \"%s\": namespace %s does not export any commands\x00 or ambiguous\x00unknown%s subcommand \"%s\": must be \x00or %s\x00SpellFix: programming error\x00unknown subcommand handler deleted its ensemble\x00UNKNOWN_DELETED\x00\n    while parsing result of ensemble unknown subcommand handler\x00unknown subcommand handler returned bad code: \x00\n    result of ensemble unknown subcommand handler: \x00UNKNOWN_RESULT\x00\n    (ensemble unknown subcommand handler)\x00env\x00HOME\x00no such variable\x00tclBgError\x00error in background error handler:\n\x00msg options\x00-level\x00missing return option \"-level\"\x00-code\x00missing return option \"-code\"\x00bgerror\x00errorInfo\x00bgerror failed to handle background error.\n\x00    Original error: \x00    Error in bgerror: \x00TclSetBgErrorHandler: NULL cmdPrefix argument\x00OS exit failed!\x00TclInitSubsystems called while exiting\x00exit handlers were created during Tcl_Finalize\x00limit exceeded\x00can't wait for variable \"%s\": would wait forever\x00EVENT\x00NO_SOURCES\x00idletasks\x00Tcl_UpdateObjCmd: bad option index to UpdateOptions\x00?idletasks?\x00||\x00&&\x00exprcode\x00dictIterator\x00freeing an execStack which is still in use\x00Deleting execEnv with pending TEOV callbacks!\x00Deleting execEnv with existing coroutine\x00STACK: Reallocating with no previous alloc\x00STACK: Stack after current is in use\x00STACK: Stack after current is not last\x00TclStackFree: incorrect freePtr (%p != %p). Call out of sequence?\x00TclStackRealloc: incorrect ptr. Call out of sequence?\x00Tcl_EvalObj: compiled script jumped interps\x00TclIncrObj\x00tailcall can only be called from a proc or lambda\x00TclNRExecuteByteCode: unrecognized builtin function code %d\x00\n    (reading value of variable to increment)\x00access\x00array set\x00variable isn't array\x00WRITE\x00ARRAY\x00STACK_LEVEL\x00self may only be called from inside a method\x00OO\x00CONTEXT_REQUIRED\x00nextto may only be called from inside a method\x00CLASS_REQUIRED\x00%s implementation by \"%s\" not reachable from here\x00CLASS_NOT_REACHABLE\x00%s has no non-filter implementation by \"%s\"\x00CLASS_NOT_THERE\x00next may only be called from inside a method\x00no next %s implementation\x00NOTHING_NEXT\x00negative shift argument\x00INST_RETURN_CODE_BRANCH: TOS not a return code!\x00INST_RETURN_CODE_BRANCH: TOS is TCL_OK!\x00Should not happen!\x00mis-issued dictFirst!\x00mis-issued dictNext!\x00dictUpdateStart argument length mismatch\x00clockRead instruction with unknown clock#\x00TclNRExecuteByteCode: unrecognized opCode %u\x00divide by zero\x00DIVZERO\x00exponentiation of zero by negative power\x00\nTclNRExecuteByteCode: abnormal return at pc %u: stack top %d < entry stack top %d\n\x00TclNRExecuteByteCode execution failure: end stack top < start stack top\x00exponent too large\x00unexpected number type\x00empty string\x00invalid octal number\x00non-numeric string\x00non-numeric floating-point value\x00floating-point value\x00(big) integer\x00can't use %s as operand of \"%s\"\x00LocSearch failure\x00floating-point value too small to represent\x00UNDERFLOW\x00floating-point value too large to represent\x00OVERFLOW\x00unknown floating-point error, errno = %d\x00?-option value ...? source ?source ...? target\x00copying\x00renaming\x00error %s: target \"%s\" is not a directory\x00can't create directory \"%s\": %s\x00error deleting \"%s\": directory not empty\x00error deleting unknown file: %s\x00error deleting \"%s\": %s\x00can't overwrite file \"%s\" with directory \"%s\"\x00can't overwrite directory \"%s\" with file \"%s\"\x00u+w\x00-permissions\x00error renaming \"%s\" to \"%s\": trying to rename a volume or move a directory into itself\x00::tcl::CopyDirectory\x00can't unlink \"%s\": %s\x00error %s \"%s\"\x00 to \"%s\"\x00: \"%s\"\x00: %s\x00-force\x00name ?-option value ...?\x00must not update objPtrRef's variable and return non-NULL\x00bad option \"%s\", there are no file attributes in this filesystem\x00FATTR\x00value for \"%s\" missing\x00NOVALUE\x00?-linktype? linkname ?target?\x00-symbolic\x00-hard\x00could not create new link \"%s\": that path already exists\x00could not create new link \"%s\": no such file or directory\x00could not create new link \"%s\": target \"%s\" doesn't exist\x00could not create new link \"%s\" pointing to \"%s\": %s\x00could not read link \"%s\": %s\x00?nameVar? ?template?\x00can't create temporary file: %s\x00//?/UNC/\x00//?/\x00//\x00./\x00/\\:\x00couldn't find HOME environment variable to expand path\x00FILENAME\x00NO_HOME\x00user \"%s\" doesn't exist\x00USER\x00-directory\x00-join\x00-path\x00-tails\x00-types\x00missing argument to \"-directory\"\x00\"-directory\" may only be used once\x00\"-directory\" cannot be used with \"-path\"\x00GLOB\x00BADOPTIONCOMBINATION\x00missing argument to \"-path\"\x00\"-path\" may only be used once\x00\"-path\" cannot be used with \"-dictionary\"\x00missing argument to \"-types\"\x00\"-tails\" must be used with either \"-directory\" or \"-path\"\x00\\/\x00\\[]*?{}\x00readonly\x00hidden\x00macintosh\x00creator\x00bad argument to \"-types\": %s\x00BAD\x00only one MacOS type or creator argument to \"-types\" allowed\x00no files matched glob pattern%s \"\x00%s%s\x00NOMATCH\x00/\\\x00Called TclGlob with TCL_GLOBMODE_TAILS and pathPrefix==NULL\x00.\x00unmatched open-brace in file name\x00BALANCE\x00unmatched close-brace in file name\x00*[]?\\\x00invalid sharing of Tcl_Obj on C stack\x00malformed bucket chain in Tcl_DeleteHashEntry\x00%d entries in table, %d buckets\n\x00number of buckets with %d entries: %d\n\x00number of buckets with %d or more entries: %d\n\x00average search distance for entry: %.1f\x00called %s on deleted table\x00Tcl_FindHashEntry\x00Tcl_CreateHashEntry\x00::tcl::HistoryObjs\x00::history\x00ambiguous \x00bad \x00 \"\x00\": no valid options\x00\": must be \x00 or \x00all\x00longest\x00::tcl::prefix\x00prefix\x00-error\x00-message\x00?options? table string\x00missing value for -message\x00NOARG\x00missing value for -error\x00error options must have an even number of elements\x00table string\x00 or \"\x00wrong # args: should be \"\x00ambiguous option \"%s\"\x00unrecognized argument \"%s\"\x00expected integer argument for \"%s\" but got \"%s\"\x00expected floating-point argument for \"%s\" but got \"%s\"\x00bad argument type %d in Tcl_ArgvInfo\x00\"%s\" option requires an additional argument\x00Command-specific options:\x00\n%s\x00\n %s:\x00\n\t\tDefault value: %d\x00\n\t\tDefault value: %g\x00\n\t\tDefault value: \"%s\"\x00ok\x00bad completion code \"%s\": must be ok, error, return, break, continue, or an integer\x00RESULT\x00ILLEGAL_CODE\x00if {[namespace which -command tclInit] eq \"\"} {\n  proc tclInit {} {\n    global tcl_libPath tcl_library env tclDefaultLibrary\n    rename tclInit {}\n    if {[info exists tcl_library]} {\n\tset scripts {{set tcl_library}}\n    } else {\n\tset scripts {}\n\tif {[info exists env(TCL_LIBRARY)] && ($env(TCL_LIBRARY) ne {})} {\n\t    lappend scripts {set env(TCL_LIBRARY)}\n\t    lappend scripts {\nif {[regexp ^tcl(.*)$ [file tail $env(TCL_LIBRARY)] -> tail] == 0} continue\nif {$tail eq [info tclversion]} continue\nfile join [file dirname $env(TCL_LIBRARY)] tcl[info tclversion]}\n\t}\n\tif {[info exists tclDefaultLibrary]} {\n\t    lappend scripts {set tclDefaultLibrary}\n\t} else {\n\t    lappend scripts {::tcl::pkgconfig get scriptdir,runtime}\n\t}\n\tlappend scripts {\nset parentDir [file dirname [file dirname [info nameofexecutable]]]\nset grandParentDir [file dirname $parentDir]\nfile join $parentDir lib tcl[info tclversion]} \\\n\t{file join $grandParentDir lib tcl[info tclversion]} \\\n\t{file join $parentDir library} \\\n\t{file join $grandParentDir library} \\\n\t{file join $grandParentDir tcl[info patchlevel] library} \\\n\t{\nfile join [file dirname $grandParentDir] tcl[info patchlevel] library}\n\tif {[info exists tcl_libPath]\n\t\t&& [catch {llength $tcl_libPath} len] == 0} {\n\t    for {set i 0} {$i < $len} {incr i} {\n\t\tlappend scripts [list lindex \\$tcl_libPath $i]\n\t    }\n\t}\n    }\n    set dirs {}\n    set errors {}\n    foreach script $scripts {\n\tlappend dirs [eval $script]\n\tset tcl_library [lindex $dirs end]\n\tset tclfile [file join $tcl_library init.tcl]\n\tif {[file exists $tclfile]} {\n\t    if {[catch {uplevel #0 [list source $tclfile]} msg opts]} {\n\t\tappend errors \"$tclfile: $msg\n\"\n\t\tappend errors \"[dict get $opts -errorinfo]\n\"\n\t\tcontinue\n\t    }\n\t    unset -nocomplain tclDefaultLibrary\n\t    return\n\t}\n    }\n    unset -nocomplain tclDefaultLibrary\n    set msg \"Can't find a usable init.tcl in the following directories: \n\"\n    append msg \"    $dirs\n\n\"\n    append msg \"$errors\n\n\"\n    append msg \"This probably means that Tcl wasn't installed properly.\n\"\n    error $msg\n  }\n}\ntclInit\x00interp\x00InterpInfoDeleteProc: still exist commands\x00InterpInfoDeleteProc: still exist aliases\x00alias\x00aliases\x00cancel\x00children\x00debug\x00expose\x00hide\x00issafe\x00invokehidden\x00limit\x00marktrusted\x00recursionlimit\x00slaves\x00share\x00target\x00transfer\x00cmd ?arg ...?\x00slavePath slaveCmd ?masterPath masterCmd? ?arg ...?\x00path ?cmdPrefix?\x00-unwind\x00?-unwind? ?--? ?path? ?result?\x00-safe\x00?-safe? ?--? ?path?\x00interp%d\x00path ?-frame ?bool??\x00cannot delete the current interpreter\x00INTERP\x00DELETESELF\x00path arg ?arg ...?\x00path hiddenCmdName ?cmdName?\x00path cmdName ?hiddenCmdName?\x00-global\x00path ?-namespace ns? ?-global? ?--? cmd ?arg ..?\x00path limitType ?-option value ...?\x00limit type\x00path\x00path ?newlimit?\x00srcPath channelId destPath\x00path alias\x00alias \"%s\" in path \"%s\" not found\x00ALIAS\x00target interpreter for alias \"%s\" in path \"%s\" is not my descendant\x00TARGETSHROUDED\x00?path?\x00alias \"%s\" not found\x00cannot define or rename alias \"%s\": interpreter deleted\x00cannot define or rename alias \"%s\": would create a loop\x00ALIASLOOP\x00could not find interpreter \"%s\"\x00cmdPrefix must be list of length >= 1\x00BGERRORFORMAT\x00interpreter named \"%s\" already exists, cannot create\x00tcl_interactive\x00ChildObjCmd: interpreter has been deleted\x00aliasName ?targetName? ?arg ...?\x00?cmdPrefix?\x00?-frame ?bool??\x00hiddenCmdName ?cmdName?\x00cmdName ?hiddenCmdName?\x00?-namespace ns? ?-global? ?--? cmd ?arg ..?\x00limitType ?-option value ...?\x00?newlimit?\x00-frame\x00debug option\x00permission denied: safe interpreter cannot expose commands\x00UNSAFE\x00permission denied: safe interpreters cannot change recursion limit\x00recursion limit must be > 0\x00BADLIMIT\x00falling back due to new recursion limit\x00RECURSION\x00permission denied: safe interpreter cannot hide commands\x00not allowed to invoke hidden commands from safe interpreter\x00permission denied: safe interpreter cannot mark trusted\x00namespace eval ::tcl {namespace eval mathfunc {}}\x00::tcl::mathfunc::min\x00::tcl::mathfunc::max\x00os\x00osVersion\x00machine\x00user\x00tclDefaultLibrary\x00tcl_pkgPath\x00command count limit exceeded\x00COMMANDS\x00time limit exceeded\x00TIME\x00unknown type of resource limit\x00\n    (while waiting for event)\x00limit granularity must be positive\x00installing limit callback to the limited interpreter\x00-granularity\x00-value\x00limits on current interpreter inaccessible\x00SELF\x00?-option value ...?\x00granularity must be at least 1\x00BADVALUE\x00command limit value must be at least 0\x00-seconds\x00milliseconds must be at least 0\x00seconds must be at least 0\x00may only set -milliseconds if -seconds is not also being reset\x00BADUSAGE\x00may only reset -milliseconds if -seconds is also being reset\x00channel\x00TCL_FLUSH_NONBLOCKING_ON_EXIT\x00-blocking\x00tclIO\x00Tcl_RegisterChannel: channel without name\x00Tcl_RegisterChannel: duplicate channel names\x00illegal recursive call to close through close-handler of channel\x00stdin\x00stdout\x00stderr\x00can not find channel named \"%s\"\x00CHANNEL\x00channel type %s must define closeProc\x00channel type %s must define inputProc when used for reader channel\x00channel type %s must define outputProc when used for writer channel\x00channel type %s must define watchProc\x00channel type %s must define seekProc if defining wideSeekProc\x00couldn't find state for channel \"%s\"\x00reading and writing both disallowed for channel \"%s\"\x00could not flush channel \"%s\"\x00Channel released more than preserved\x00channel \"%s\" does not support OS handles\x00Reuse of ChannelBuffer! %p\x00unable to access channel: invalid channel\x00TclFlush, closed channel: queued output left\x00FlushChannel: damaged channel list\x00SpliceChannel: trying to add channel used in different list\x00called Tcl_Close on channel with refCount > 0\x00double-close of channels not supported by %ss\x00half-close of channels not supported by %ss\x00half-close not applicable to stack of transformations\x00write\x00Half-close of %s-side not possible, side not opened or already closed\x00ClosechanHalf, closed write-side of channel: queued output left\x00unknown output translation requested\x00Tcl_GetsObj: gotEOL reached with bufPtr==NULL\x00TclGetsObjBinary: gotEOL reached with bufPtr==NULL\x00binary encoding is not available\x00Buffer Underflow, BUFFER_PADDING not enough\x00unknown input translation %d\x00blocking buffering buffersize encoding eofchar translation\x00malformed option list in channel driver\x00bad option \"%s\": should be one of \x00-%s, \x00or -%s\x00-buffering\x00none\x00full\x00-buffersize\x00-eofchar\x00-translation\x00auto\x00cr\x00crlf\x00lf\x00unable to set channel options: background copy in progress\x00bad value for -buffering: must be one of full, line, or none\x00bad value for -eofchar: must be non-NUL ASCII character\x00bad value for -eofchar: should be a list of zero, one, or two elements\x00bad value for -translation: must be a one or two element list\x00platform\x00bad value for -translation: must be one of auto, binary, cr, lf, crlf, or platform\x00tcp\x00channelId event ?script?\x00event name\x00channel is not %s\x00channel \"%s\" is busy\x00writ\x00error %sing \"%s\": %s\x00error reading \"\x00\": \x00error writing \"\x00error setting blocking mode: %s\x00Tcl_SetChannelError: bad syntax of message\x00Defined newlevel not used in rewrite\x00Defined newcode not used in rewrite\x00-nonewline\x00nonewline\x00?-nonewline? ?channelId? string\x00channel \"%s\" wasn't opened for writing\x00error writing \"%s\": %s\x00channelId\x00error flushing \"%s\": %s\x00channelId ?varName?\x00channel \"%s\" wasn't opened for reading\x00error reading \"%s\": %s\x00channelId ?numChars?\x00?-nonewline? channelId\x00expected non-negative integer but got \"%s\"\x00NUMBER\x00start\x00current\x00channelId offset ?origin?\x00origin\x00error during seek on \"%s\": %s\x00channelId ?direction?\x00direction\x00channelId ?-option value ...?\x00-ignorestderr\x00-keepnewline\x00?-option ...? arg ?arg ...?\x00error reading output from command: %s\x00fileName ?access? ?permissions?\x000o\x00Tcl_OpenCmd: invalid mode value\x00tclTCPAcceptCallbacks\x00RegisterTcpServerCleanup: damaged accept record table\x00-async\x00-myaddr\x00-myport\x00-server\x00cannot set -async option for server sockets\x00no argument given for -myaddr option\x00no argument given for -myport option\x00no argument given for -server option\x00Tcl_SocketObjCmd: bad option index to SocketOptions\x00option -myport is not valid for servers\x00?-myaddr addr? ?-myport myport? ?-async? host port\x00-server command ?-myaddr addr? port\x00-size\x00input output ?-size size? ?-command callback?\x00input\x00output\x00mode channelId\x00channelId ?length?\x00cannot truncate to negative length of file\x00could not determine current location in \"%s\": %s\x00error during truncate on \"%s\": %s\x00blocked\x00event\x00pending\x00pipe\x00postevent\x00truncate\x00::fconfigure\x00chan\x00tclrchannel\x00blocking\x00cget\x00cgetall\x00finalize\x00initialize\x00watch\x00{read delivered more than requested}\x00{write wrote more than requested}\x00{write wrote nothing}\x00{Tried to seek before origin}\x00{Owner lost}\x00-code 1 -level 0 -errorcode NONE -errorinfo {} -errorline 1 {Owner lost}\x00mode cmdprefix\x00chan handler \"%s initialize\" returned non-list: %s\x00chan handler \"\x00 initialize\" returned \x00chan handler \"%s\" does not support all required methods\x00chan handler \"%s\" lacks a \"read\" method\x00chan handler \"%s\" lacks a \"write\" method\x00chan handler \"%s\" supports \"cget\" but not \"cgetall\"\x00chan handler \"%s\" supports \"cgetall\" but not \"cget\"\x00TclChanCreateObjCmd: duplicate channel names\x00channel eventspec\x00can not find reflected channel named \"%s\"\x00TclChanPostEventObjCmd: channel is not a reflected channel\x00TclChanPostEventObjCmd: postevent accepted for call from outside interpreter\x00tried to post events channel \"%s\" is not interested in\x00TclChanCaughtErrorBypass: Bad syntax of caught result\x00Expected list with even number of elements, got %d element%s instead\x00bad %s list: is empty\x00read write\x00rc%lu\x00chan handler returned bad code: %d\x00\n    (chan handler subcommand \"%s\")\x00EAGAIN\x00ReflectedChannelMap\x00tclrtransform\x00clear\x00drain\x00limit?\x00{read not supported by Tcl driver}\x00{write not supported by Tcl driver}\x00channel cmdprefix\x00chan handler \"%s initialize\" returned %s\x00chan handler \"%s\" makes the channel inaccessible\x00chan handler \"%s\" supports \"drain\" but not \"read\"\x00chan handler \"%s\" supports \"flush\" but not \"write\"\x00TclChanPushObjCmd: duplicate transformation handle\x00rt%lu\x00ReflectedTransformMap\x00transform\x00-command value is not a list\x00\nfailed to stack channel \"%s\"\x00create/write\x00create/read\x00delete/write\x00flush/write\x00flush/read\x00delete/read\x00query/maxRead\x00clear/read\x00couldn't open socket: port number too high\x00::tcl::unsupported::socketAF\x00inet\x00inet6\x00native\x00glob couldn't determine the current working directory\x00illegal access mode \"%s\"\x00\n    while processing open access modes \"\x00RDONLY\x00WRONLY\x00RDWR\x00APPEND\x00CREAT\x00EXCL\x00NOCTTY\x00NONBLOCK\x00TRUNC\x00invalid access mode \"%s\": must be RDONLY, WRONLY, RDWR, APPEND, BINARY, CREAT, EXCL, NOCTTY, NONBLOCK, or TRUNC\x00access mode must include either RDONLY, WRONLY, or RDWR\x00couldn't read file \"%s\": %s\x00\x1a {}\x00\ufeff\x00\n    (file \"%.*s%s\" line %d)\x00POSIX\x00could not seek to end of file while opening \"%s\": %s\x00couldn't open \"%s\": %s\x00error getting working directory name: %s\x00TCL_TEMPLOAD_NO_UNLINK\x00couldn't load library \"%s\": %s\x00couldn't load from current filesystem\x000700\x00cannot unload: filesystem does not support unloading\x00wb\x00rb\x00Tcl_FSGetFileSystemForPath called with NULL object\x00Tcl_FSGetFileSystemForPath called with object with refCount == 0\x00variable '%s' is already linked\x00internal error: bad linked variable type\x00linked variable is read-only\x00internal error: linked variable couldn't be read\x00variable must have integer value\x00variable must have real value\x00variable must have boolean value\x00variable must have char value\x00variable must have unsigned char value\x00variable must have short value\x00variable must have unsigned short value\x00variable must have unsigned int value\x00variable must have long value\x00variable must have unsigned long value\x00variable must have unsigned wide int value\x00variable must have float value\x00NULL\x00??\x00invalidReal\x00xXbBoO\x00+-\x00NewListInternalRep: expects postive element count\x00list creation failed: unable to alloc %u bytes\x00Tcl_SetListObj\x00Tcl_ListObjAppendList\x00Tcl_ListObjAppendElement\x00Tcl_ListObjReplace\x00list index out of range\x00LSET\x00TclListObjSetElement\x00max size of Tcl literal array (%d literals) exceeded\x00-lazy\x00?-global? ?-lazy? ?--? fileName ?packageName? ?interp?\x00must specify either file name or package name\x00LOAD\x00NOLIBRARY\x00file \"%s\" is already loaded for package \"%s\"\x00SPLITPERSONALITY\x00tclLoad\x00package \"%s\" isn't loaded statically\x00NOTSTATIC\x00couldn't figure out package name for %s\x00WHATPACKAGE\x00_Init\x00_SafeInit\x00_Unload\x00_SafeUnload\x00can't use package in a safe interpreter: no %s_SafeInit procedure\x00can't attach package to interpreter: no %s_Init procedure\x00ENTRYPOINT\x00-keeplibrary\x00?-switch ...? fileName ?packageName? ?interp?\x00UNLOAD\x00package \"%s\" is loaded statically and cannot be unloaded\x00STATIC\x00file \"%s\" has never been loaded\x00NEVERLOADED\x00file \"%s\" has never been loaded in this interpreter\x00file \"%s\" cannot be unloaded under a safe interpreter\x00CANNOT\x00file \"%s\" cannot be unloaded under a trusted interpreter\x00tcl_rcFileName\x00argv0\x00argc\x00argv\x00application-specific initialization failed: \x00exit %d\x00TCL_FINALIZE_ON_EXIT\x00tcl_prompt2\x00tcl_prompt1\x00\n    (script that generates prompt)\x00nsName\x00code\x00ensemble\x00export\x00forget\x00import\x00parent\x00qualifiers\x00which\x00Trying to push call frame for dead namespace\x00errorCode\x00can't create namespace \"\": only global namespace can have empty name\x00CREATEGLOBAL\x00can't create namespace \"%s\": already exists\x00CREATEEXISTING\x00invalid export pattern \"%s\": pattern can't specify a namespace\x00EXPORT\x00auto_import\x00empty import pattern\x00IMPORT\x00unknown namespace in import pattern \"%s\"\x00no namespace specified in import pattern \"%s\"\x00ORIGIN\x00import pattern \"%s\" tries to import from namespace \"%s\" into itself\x00import pattern \"%s\" would create a loop containing command \"%s\"\x00LOOP\x00can't import command \"%s\": already exists\x00OVERWRITE\x00unknown namespace in namespace forget pattern \"%s\"\x00DeleteImportedCmd: did not find cmd in real cmd's list of import references\x00Could not create namespace '%s'\x00unknown namespace \"%s\"\x00unknown command \"%s\"\x00namespace \"%s\" not found\x00namespace \"%s\" not found in \"%s\"\x00?name? ?pattern?\x00?name name...?\x00unknown namespace \"%s\" in namespace delete command\x00name arg ?arg...?\x00\n    (in namespace %s \"%.*s%s\" script line %d)\x00?-clear? ?pattern pattern...?\x00-clear\x00?pattern pattern...?\x00?-force? ?pattern pattern...?\x00?pathList?\x00?script?\x00ns ?otherVar myVar ...?\x00-variable\x00?-command? ?-variable? name\x00while executing\x00invoked from within\x00\n    %s\n\"%.*s%s\"\x00bignum\x00cmdName\x00booleanString\x00wideInt\x00Derived ICL data for object using offsets from before the script\x00can't convert value to type %s\x00API_ABUSE\x00TclSetDuplicateObj\x00UpdateStringProc should not be invoked for type %s\x00UpdateStringProc for type '%s' failed to create a valid string rep\x00Tcl_SetBooleanObj\x00boolean value\x00expected boolean value but got \"\x00BOOLEAN\x00yes\x00no\x00off\x00Tcl_SetDoubleObj\x00floating point value is Not a Number\x00DOUBLE\x00NAN\x00floating-point number\x00Tcl_SetIntObj\x00Tcl_SetLongObj\x00expected integer but got \"%s\"\x00INTEGER\x00IOVERFLOW\x00%lld\x00Tcl_SetWideIntObj\x00initialization failure in DupBignum\x00radix size failure in UpdateStringOfBignum\x00UpdateStringOfBignum: string length limit exceeded\x00conversion failure in UpdateStringOfBignum\x00insufficient memory to unpack bignum\x00Tcl_SetBignumObj\x00number\x00pure string\x00value is a %s with a refcount of %d, object pointer at %s\x00%p:%p\x00, internal representation %s\x00, string representation \"\x00, no string representation\x00can't parse a NULL pointer\x00extra characters after close-quote\x00extra characters after close-brace\x00ParseTokens encountered unknown character\x00missing close-brace for variable name\x00missing )\x00$\x00missing close-brace\x00: possible unbalanced brace in comment\x00missing \"\x00TclSubstParse: programming error\x00bad parse in TclSubstParse: %c\x00unexpected token type in TclSubstTokens: %d\x00Bad portion to TclPathPart\x00can't find object string representation\x00PATH\x00WTF\x00HOMELESS\x00NOUSER\x00Called UpdateStringOfFsPath with invalid object\x00writing\x00reading\x00channel \"%s\" wasn't opened for %s\x00EXEC\x00BADCHAN\x00couldn't %s file \"%s\": %s\x00can't specify \"%s\" as last word in command\x00child process lost (is SIGCHLD ignored or trapped?)\x00error waiting for process to exit: %s\x00%lu\x00%u\x00CHILDSTATUS\x00CHILDKILLED\x00child killed: %s\n\x00CHILDSUSP\x00child suspended: %s\n\x00child wait status didn't make sense\n\x00ODDWAITRESULT\x00error reading stderr output file: %s\x00child process exited abnormally\x00illegal use of | or |& in command\x00PIPESYNTAX\x00must specify \"%s\" as last word in command\x00couldn't create input file for command: %s\x00couldn't create input pipe for command: %s\x00couldn't create output pipe for command: %s\x00couldn't create error file for command: %s\x00couldn't create pipe: %s\x00can't read output from command: standard output was redirected\x00BADREDIRECT\x00can't write input to command: standard input was redirected\x00pipe for command could not be created\x00NOPIPE\x00conflicting versions provided for package \"%s\": %s, then %s\x00PACKAGE\x00VERSIONCONFLICT\x00Cannot load package \"%s\" in standalone executable: This package is not compiled with stub support\x00UNSTUBBED\x00bad return code: %d\x00BADRESULT\x00\n    (\"package unknown\" script)\x00can't find package %s\x00UNFOUND\x00version conflict for package \"%s\": have %s, need\x00circular package dependency: attempt to provide %s %s requires %s\x00CIRCULARITY\x00attempt to provide package %s %s failed: no version of package %s provided\x00UNPROVIDED\x00attempt to provide package %s %s failed: package %s %s provided instead\x00WRONGPROVIDE\x00attempt to provide package %s %s failed: bad return code: %s\x00\n    (\"package ifneeded %s %s\" script)\x00package %s %s is not present\x00package %s is not present\x00ifneeded\x00prefer\x00present\x00provide\x00require\x00vcompare\x00versions\x00vsatisfies\x00option ?arg ...?\x00package version ?script?\x00package ?version?\x00?-exact? package ?requirement ...?\x00?command?\x00latest\x00stable\x00?latest|stable?\x00preference\x00version1 version2\x00version ?requirement ...?\x00Tcl_PackageObjCmd: bad option index to pkgOptions\x00expected version number but got \"%s\"\x00VERSION\x00expected versionMin-versionMax but got \"%s\"\x00VERSIONRANGE\x00 exactly %s\x00 %s\x00 0-\x00 -2\x00threaded\x00profiled\x0064bit\x00optimized\x00mem_debug\x00compile_debug\x00compile_stats\x00libdir,runtime\x00/usr/local/lib\x00bindir,runtime\x00/usr/local/bin\x00scriptdir,runtime\x00/usr/local/lib/tcl8.6\x00includedir,runtime\x00/usr/local/include\x00docdir,runtime\x00/usr/local/man\x00libdir,install\x00bindir,install\x00scriptdir,install\x00includedir,install\x00docdir,install\x00tcl\x00E2BIG\x00EACCES\x00EADDRINUSE\x00EADDRNOTAVAIL\x00EADV\x00EAFNOSUPPORT\x00EALREADY\x00EBADE\x00EBADF\x00EBADFD\x00EBADMSG\x00ECANCELED\x00EBADR\x00EBADRQC\x00EBADSLT\x00EBFONT\x00EBUSY\x00ECHILD\x00ECHRNG\x00ECOMM\x00ECONNABORTED\x00ECONNREFUSED\x00ECONNRESET\x00EDEADLK\x00EDESTADDRREQ\x00EDOM\x00EDOTDOT\x00EDQUOT\x00EEXIST\x00EFAULT\x00EFBIG\x00EHOSTDOWN\x00EHOSTUNREACH\x00EIDRM\x00EILSEQ\x00EINPROGRESS\x00EINTR\x00EINVAL\x00EIO\x00EISCONN\x00EISDIR\x00EL2HLT\x00EL2NSYNC\x00EL3HLT\x00EL3RST\x00ELIBACC\x00ELIBBAD\x00ELIBEXEC\x00ELIBMAX\x00ELIBSCN\x00ELNRNG\x00ELOOP\x00EMFILE\x00EMLINK\x00EMSGSIZE\x00EMULTIHOP\x00ENAMETOOLONG\x00ENAVAIL\x00ENETDOWN\x00ENETRESET\x00ENETUNREACH\x00ENFILE\x00ENOANO\x00ENOBUFS\x00ENOCSI\x00ENODATA\x00ENODEV\x00ENOENT\x00ENOEXEC\x00ENOLCK\x00ENOLINK\x00ENOMEM\x00ENOMSG\x00ENONET\x00ENOPKG\x00ENOPROTOOPT\x00ENOSPC\x00ENOSR\x00ENOSTR\x00ENOSYS\x00ENOTBLK\x00ENOTCONN\x00ENOTRECOVERABLE\x00ENOTDIR\x00ENOTEMPTY\x00ENOTNAM\x00ENOTSOCK\x00ENOTSUP\x00ENOTTY\x00ENOTUNIQ\x00ENXIO\x00EOVERFLOW\x00EOWNERDEAD\x00EPERM\x00EPFNOSUPPORT\x00EPIPE\x00EPROTO\x00EPROTONOSUPPORT\x00EPROTOTYPE\x00ERANGE\x00EREMCHG\x00EREMOTE\x00EREMOTEIO\x00EROFS\x00ESHUTDOWN\x00ESOCKTNOSUPPORT\x00ESPIPE\x00ESRCH\x00ESRMNT\x00ESTALE\x00ETIME\x00ETIMEDOUT\x00ETOOMANYREFS\x00ETXTBSY\x00EUCLEAN\x00EUNATCH\x00EUSERS\x00EXDEV\x00EXFULL\x00unknown error\x00argument list too long\x00permission denied\x00address already in use\x00cannot assign requested address\x00advertise error\x00address family not supported by protocol\x00resource temporarily unavailable\x00operation already in progress\x00bad exchange descriptor\x00bad file number\x00file descriptor in bad state\x00not a data message\x00operation canceled\x00bad request descriptor\x00bad request code\x00invalid slot\x00bad font file format\x00file busy\x00no children\x00channel number out of range\x00communication error on send\x00software caused connection abort\x00connection refused\x00connection reset by peer\x00resource deadlock avoided\x00destination address required\x00math argument out of range\x00cross mount point\x00disk quota exceeded\x00file already exists\x00bad address in system call argument\x00file too large\x00host is down\x00host is unreachable\x00identifier removed\x00illegal byte sequence\x00operation now in progress\x00interrupted system call\x00invalid argument\x00I/O error\x00socket is already connected\x00illegal operation on a directory\x00level 2 halted\x00level 2 not synchronized\x00level 3 halted\x00level 3 reset\x00cannot access a needed shared library\x00accessing a corrupted shared library\x00cannot exec a shared library directly\x00attempting to link in more shared libraries than system limit\x00.lib section in a.out corrupted\x00link number out of range\x00too many levels of symbolic links\x00too many open files\x00too many links\x00message too long\x00multihop attempted\x00file name too long\x00not available\x00network is down\x00network dropped connection on reset\x00network is unreachable\x00file table overflow\x00anode table overflow\x00no buffer space available\x00no CSI structure available\x00no data available\x00no such device\x00no such file or directory\x00exec format error\x00no locks available\x00link has been severed\x00not enough memory\x00no message of desired type\x00machine is not on the network\x00package not installed\x00bad protocol option\x00no space left on device\x00out of stream resources\x00not a stream device\x00function not implemented\x00block device required\x00socket is not connected\x00state not recoverable\x00not a directory\x00directory not empty\x00not a name file\x00socket operation on non-socket\x00operation not supported\x00inappropriate device for ioctl\x00name not unique on network\x00no such device or address\x00file too big\x00owner died\x00not owner\x00protocol family not supported\x00broken pipe\x00protocol error\x00protocol not supported\x00protocol wrong type for socket\x00math result unrepresentable\x00remote address changed\x00pathname hit remote file system\x00remote i/o error\x00read-only file system\x00cannot send after socket shutdown\x00socket type not supported\x00invalid seek\x00no such process\x00srmount error\x00stale remote file handle\x00timer expired\x00connection timed out\x00too many references: cannot splice\x00text file or pseudo-device busy\x00structure needs cleaning\x00protocol driver not attached\x00too many users\x00cross-domain link\x00message tables full\x00SIGABRT\x00SIGALRM\x00SIGBUS\x00SIGCHLD\x00SIGCONT\x00SIGFPE\x00SIGHUP\x00SIGILL\x00SIGINT\x00SIGIO\x00SIGKILL\x00SIGPIPE\x00SIGPROF\x00SIGPWR\x00SIGQUIT\x00SIGSEGV\x00SIGSTOP\x00SIGSYS\x00SIGTERM\x00SIGTRAP\x00SIGTSTP\x00SIGTTIN\x00SIGTTOU\x00SIGURG\x00SIGUSR1\x00SIGUSR2\x00SIGVTALRM\x00SIGWINCH\x00SIGXCPU\x00SIGXFSZ\x00unknown signal\x00alarm clock\x00bus error\x00child status changed\x00continue after stop\x00floating-point exception\x00hangup\x00illegal instruction\x00interrupt\x00input/output possible on file\x00kill signal\x00write on pipe with no readers\x00profiling alarm\x00power-fail restart\x00quit signal\x00segmentation violation\x00stop\x00bad argument to system call\x00software termination signal\x00trace trap\x00stop signal from tty\x00background tty read\x00background tty write\x00urgent I/O condition\x00user-defined signal 1\x00user-defined signal 2\x00virtual time alarm\x00window changed\x00exceeded CPU time limit\x00exceeded file size limit\x00Tcl_Release couldn't find reference for %p\x00Tcl_EventuallyFree called twice for %p\x00procbody\x00lambdaExpr\x00levelReference\x00name args body\x00\n    (creating proc \"\x00procedure \"%s\": arg list contains %d entries, precompiled header expects %d\x00BYTECODELIES\x00too many fields in argument specifier \"\x00FORMALARGUMENTFORMAT\x00argument with no name\x00formal parameter \"%s\" is an array element\x00formal parameter \"\x00\" is not a simple name\x00procedure \"%s\": formal parameter %d is inconsistent with precompiled body\x00procedure \"%s\": formal parameter \"\x00\" has default value inconsistent with precompiled body\x00STACKLEVEL\x00\n    (\"uplevel\" body line %d)\x00?level? command ?arg ...?\x00?\x00?arg ...?\x00body object for proc attached to frame is not a byte code type\x00body of lambda term\x00body of proc\x00invoked \"%s\" outside of a loop\x00UNEXPECTED\x00a precompiled script jumped interps\x00CROSSINTERPBYTECODE\x00\n    (procedure \"%.*s%s\" line %d)\x00TclUpdateReturnInfo: negative return level\x00can't interpret \"%s\" as a lambda expression\x00LAMBDA\x00\n    (parsing lambda expression \"%s\")\x00lambdaExpr ?arg ...?\x00\n    (lambda term \"%.*s%s\" line %d)\x00error while matching regular expression: \x00REG_UBACKREF\x00REG_ULOOKAHEAD\x00REG_UBOUNDS\x00REG_UBRACES\x00REG_UBSALNUM\x00REG_UPBOTCH\x00REG_UBBS\x00REG_UNONPOSIX\x00REG_UUNSPEC\x00REG_UUNPORT\x00REG_ULOCALE\x00REG_UEMPTYMATCH\x00REG_UIMPOSSIBLE\x00REG_USHORTEST\x00%s%s%s\x00couldn't compile regular expression pattern: \x00-errorline\x00-errorstack\x00bad %s value: expected dictionary but got \"%s\"\x00ILLEGAL_OPTIONS\x00bad -level value: expected non-negative integer but got \"%s\"\x00ILLEGAL_LEVEL\x00bad -errorcode value: expected a list but got \"%s\"\x00ILLEGAL_ERRORCODE\x00bad -errorstack value: expected a list but got \"%s\"\x00NONLIST_ERRORSTACK\x00forbidden odd-sized list for -errorstack: \"%s\"\x00ODDSIZEDLIST_ERRORSTACK\x00expected dict but got \"%s\"\x00cannot mix \"%\" and \"%n$\" conversion specifiers\x00FORMAT\x00MIXEDSPECTYPES\x00field width may not be specified in %c conversion\x00BADWIDTH\x00field size modifier may not be specified in %\x00 conversion\x00BADSIZE\x00unsigned bignum scans are invalid\x00BADUNSIGNED\x00unmatched [ in format string\x00BRACKET\x00bad scan conversion character \"\x00BADTYPE\x00variable is assigned by multiple \"%n$\" conversion specifiers\x00POLYASSIGNED\x00variable is not assigned by any conversion specifiers\x00UNASSIGNED\x00\"%n$\" argument index out of range\x00INDEXRANGE\x00different numbers of variable names and field specifiers\x00FIELDVARMISMATCH\x00string format ?varName ...?\x00Tcl_SetStringObj\x00Tcl_SetObjLength: negative length requested: %d (integer overflow?)\x00Tcl_SetObjLength\x00max length for a Tcl unicode value (%d chars) exceeded\x00Tcl_AttemptSetObjLength\x00Tcl_SetUnicodeObj\x00Tcl_AppendLimitedToObj\x00Tcl_AppendUnicodeToObj\x00Tcl_AppendStringsToObj\x00max size for a Tcl value exceeded\x00Tcl_AppendFormatToObj\x00format string ended in middle of field specifier\x00INCOMPLETE\x00unsigned bignum format is invalid\x000X\x000x\x000b\x00bad field specifier \"%c\"\x00Unable to format \"%s\" with supplied arguments: %s\x00TclParseNumber: bad acceptState %d parsing '%s'\x00TclParseNumber: state INITIAL can't happen here\x00expected %s but got \"\x00 (looks like invalid octal number)\x00assembler statements not supported\x00tclStrToD.c\x00MakeLowPrecisionDouble\x00MakeHighPrecisionDouble\x00Infinity\x00NaN\x00impossible conversion type in TclDoubleDigits\x00wrong digit!\x00in ShouldBankerRoundUp, trichotomy fails!\x00in ShouldBankerRoundUpToNext, trichotomy fails!\x00This code doesn't work on a decimal machine!\x00unknown floating point word order on this machine\x00(%llx)\x00Tcl_GetMemoryInfo called when threaded memory allocator not in use\x00TclFinalizeThreadAlloc called when threaded memory allocator not in use\x00tclAfter\x00bad argument \"%s\": must be cancel, idle, info, or an integer\x00argument\x00after#%d\x00id|command\x00script ?script ...?\x00?id?\x00event \"%s\" doesn't exist\x00timer\x00Tcl_AfterObjCmd: bad subcommand index to afterSubCmds\x00after#\x00\n    (\"after\" script)\x00execution\x00vdelete\x00vinfo\x00type ?arg ...?\x00type name\x00name ops command\x00bad operations \"%s\": should be one or more of rwua\x00TRACE\x00BADOPS\x00enter\x00leave\x00enterstep\x00leavestep\x00name opList command\x00bad operation list \"\": must be one or more of enter, leave, enterstep, or leavestep\x00NOOPS\x00operation\x00bad operation list \"\": must be one or more of delete or rename\x00bad operation list \"\": must be one or more of array, read, unset, or write\x00 rename\x00 delete\x00TraceExecutionProc: bad flag combination\x00 a\x00 r\x00 w\x00 u\x00 array\x00 read\x00 write\x00 unset\x00Cannot trace a variable with no name\x00trace array\x00(\x00\n    (%s trace on \"%s%s%s%s\")\x00bad result flag combination\x00end-offset\x00LIST\x00%s element in braces followed by \"%.*s\" instead of space\x00JUNK\x00%s element in quotes followed by \"%.*s\" instead of space\x00unmatched open brace in %s\x00BRACE\x00unmatched open quote in %s\x00QUOTE\x00internal error in Tcl_SplitList\x00INTERNAL\x00Tcl_SplitList\x00TclScanElement: string length overflow\x00Tcl_Merge called with negative argc (%d)\x00Tcl_Concat: max size of Tcl value exceeded\x00 \f\v\r\t\n\x00 {\x00{\x00-Inf\x00Inf\x00e%+d\x00e%+03d\x00can't modify precision from a safe interpreter\x00improper value for precision\x00bad index \"%s\": must be integer?[+-]integer? or end?[+-]integer?\x00end-\x00bad index \"%s\": must be end?[+-]integer?\x00PGV Initializer did not initialize\x00***=\x00invalid escape sequence\x00BADESCAPE\x00$ not anchor\x00NONANCHOR\x00unhandled RE special char\x00UNHANDLED\x00excessive recursive glob backtrack potential\x00OVERCOMPLEX\x00RE2GLOB\x00array search\x00localVarName\x00parsedVarName\x00\"%s\" isn't an array\x00VARNAME\x00ELEMENT\x00varPtr must not be NULL\x00part1Ptr must not be NULL\x00READ\x00varName ?newValue?\x00newValuePtr must not be NULL\x00UNSET\x00varName ?value ...?\x00arrayName\x00s-%d-%s\x00arrayName searchId\x00arrayName ?pattern?\x00arrayName ?mode? ?pattern?\x00exact matching shouldn't get here\x00arrayName list\x00error reading array statistics\x00anymore\x00donesearch\x00nextelement\x00startsearch\x00statistics\x00bad variable name \"%s\": can't create namespace variable that refers to procedure variable\x00UPVAR\x00INVERTED\x00ObjMakeUpvar called with an index outside from a proc\x00bad variable name \"%s\": can't create a scalar variable that looks like an array element\x00LOCAL_ELEMENT\x00can't upvar from variable to itself\x00variable \"%s\" has traces: can't use for upvar\x00TRACED\x00variable \"%s\" already exists\x00EXISTS\x00define\x00?level? otherVar localVar ?otherVar localVar ...?\x00illegal search identifier \"%s\"\x00ARRAYSEARCH\x00search identifier \"%s\" isn't for variable \"%s\"\x00couldn't find search \"%s\"\x00invalid part1Ptr and invalid index together\x00can't %s \"%s%s%s%s\": %s\x00%s of type %s should not be called\x00updateStringProc\x00setFromAnyProc\x00scalar parsedVarName without a string rep\x00unknown variable \"%s\"\x00zlib\x00STREAM\x00DATA\x00MEM\x00BUF\x00NEED_DICT\x00unexpected zlib result in error handler: Z_OK\x00unexpected zlib result in error handler: Z_STREAM_END\x00ZLIB\x00text\x00no latin-1 encoding\x00comment\x00crc\x00filename\x00incorrect zlib data format, must be TCL_ZLIB_FORMAT_ZLIB, TCL_ZLIB_FORMAT_GZIP or TCL_ZLIB_FORMAT_RAW\x00compression level should be between 0 (no compression) and 9 (best compression) or -1 for default compression level\x00incorrect zlib data format, must be TCL_ZLIB_FORMAT_ZLIB, TCL_ZLIB_FORMAT_GZIP, TCL_ZLIB_FORMAT_RAW or TCL_ZLIB_FORMAT_AUTO\x00bad mode, must be TCL_ZLIB_STREAM_DEFLATE or TCL_ZLIB_STREAM_INFLATE\x001.3\x00::incr ::tcl::zlib::cmdcounter\x00::tcl::zlib::streamcmd_\x00BUG: Stream command name already exists\x00EXISTING_CMD\x00already past compressed stream end\x00ZIP\x00CLOSED\x00unexpected zlib internal state during decompression\x00STATE\x00incorrect zlib data format, must be TCL_ZLIB_FORMAT_ZLIB, TCL_ZLIB_FORMAT_GZIP or TCL_ZLIB_FORMAT_ZLIB\x00compression level should be between 0 (uncompressed) and 9 (best compression) or -1 for default compression level\x00adler32\x00compress\x00crc32\x00decompress\x00deflate\x00gunzip\x00gzip\x00inflate\x00stream\x00command arg ?...?\x00data ?startValue?\x00data ?level?\x00\n    (in -level option)\x00data ?-level level? ?-header header?\x00-header\x00data ?bufferSize?\x00data ?-headerVar varName?\x00-headerVar\x00level must be 0 to 9\x00COMPRESSIONLEVEL\x00buffer size must be %d to %d\x00BUFFERSIZE\x00mode ?-option value...?\x00should be unreachable\x00-limit\x00mode channel ?options...?\x00compression may only be applied to writable channels\x00UNWRITABLE\x00decompression may only be applied to readable channels\x00UNREADABLE\x00value missing for %s option\x00NOVAL\x00read ahead limit must be 1 to %d\x00a compression dictionary may not be set in the gzip format\x00BADOPT\x00\n    (in \x00 option)\x00checksum\x00fullflush\x00header\x00put\x00reset\x00option data ?...?\x00?count?\x00-buffer\x00-finalize\x00-flush\x00-fullflush\x00\"-buffer\" option must be followed by integer decompression buffersize\x00buffer size must be 1 to %d\x00\"-dictionary\" option must be followed by compression dictionary bytes\x00\"-flush\", \"-fullflush\" and \"-finalize\" options are mutually exclusive\x00EXCLUSIVE\x00only gunzip streams can produce header information\x00BADOP\x00error while finalizing file: %s\x00problem flushing channel: %s\x00dictionary flush\x00dictionary limit\x00flush limit\x00sync\x00unknown -flush type \"%s\": must be full or sync\x00FLUSH\x00-limit must be between 1 and 65536\x00READLIMIT\x00checksum dictionary\x00checksum dictionary limit\x00checksum header limit\x00-checksum\x00unknown mode: %d\x00bad format: %d\x00namespace eval ::tcl::zlib {variable cmdcounter 0}\x00zlibVersion\x002.0.1\x00tcl::tommath\x00initialization failure in TclBNInitBignumFromLong\x00initialization failure in TclBNInitBignumFromWideUInt\x00tty\x00CTS\x00DSR\x00RING\x00DCD\x00-mode\x00-handshake\x00XONXOFF\x00RTSCTS\x00DTRDSR\x00%s not supported for this platform\x00-handshake DTRDSR\x00UNSUPPORTED\x00bad value for -handshake: must be one of xonxoff, rtscts, dtrdsr or none\x00FCONFIGURE\x00-xchar\x00bad value for -xchar: should be a list of two elements\x00-timeout\x00-ttycontrol\x00bad value for -ttycontrol: should be a list of signal,value pairs\x00DTR\x00RTS\x00BREAK\x00bad signal \"%s\" for -ttycontrol: must be DTR, RTS or BREAK\x00mode handshake timeout ttycontrol xchar\x00%d,%c,%d,%d\x00-queue\x00-ttystatus\x00mode queue ttystatus xchar\x00bad value for -mode\x00%d,%c,%d,%d%n\x00%s: should be baud,parity,data,stop\x00SERIALMODE\x00noems\x00%s parity: should be %s\x00n, o, e, m, or s\x00%s data: should be 5, 6, 7, or 8\x00%s stop: should be 1 or 2\x00TclpOpenFileChannel: invalid mode value\x00couldn't open \"\x00\": filename is invalid on this platform\x00file%d\x00/dev/tty\x00auto crlf\x00serial%d\x00TclGetDefaultStdChannel: Unexpected channel type\x00\"%s\" wasn't opened for writing\x00NOT_WRITABLE\x00\"%s\" wasn't opened for reading\x00NOT_READABLE\x00cannot get a FILE * for \"%s\"\x00FILE_FAILURE\x00\"%s\" cannot be used to get a FILE *\x00NO_DESCRIPTOR\x00TclUnixWaitForFile can't handle file id %d\x00-group\x00-owner\x00..\x00%0#5lo\x00could not set group for file \"%s\": group \"%s\" does not exist\x00SETGRP\x00NO_GROUP\x00could not set group for file \"%s\": %s\x00could not set owner for file \"%s\": user \"%s\" does not exist\x00SETOWN\x00NO_USER\x00could not set owner for file \"%s\": %s\x00unknown permission string format \"%s\"\x00PERMISSION\x00could not set permissions for file \"%s\": %s\x00_XXXXXX\x00TMPDIR\x00/tmp\x00:/bin:/usr/bin\x00couldn't read directory \"%s\": %s\x00couldn't create temporary file: %s\x00pipe creation failed: %s\x00?channelId?\x00::tcl::unsupported::noReverseDNS\x00-connecting\x00-peername\x00can't get peername: %s\x00-sockname\x00can't get sockname: %s\x00connecting peername sockname\x00couldn't open socket: %s\x00sock%lx\x00couldn't open socket: \x00ansi-1251\x00cp1251\x00ansi_x3.4-1968\x00big5\x00cp1250\x00cp1252\x00cp1253\x00cp1254\x00cp1255\x00cp1256\x00cp1257\x00cp1258\x00cp437\x00cp737\x00cp775\x00cp850\x00cp852\x00cp855\x00cp857\x00cp860\x00cp861\x00cp862\x00cp863\x00cp864\x00cp865\x00cp866\x00cp869\x00cp874\x00cp932\x00cp936\x00cp949\x00cp950\x00dingbats\x00ebcdic\x00euc-cn\x00euc-jp\x00euc-kr\x00eucjp\x00euckr\x00euctw\x00gb12345\x00gb1988\x00gb2312\x00gb2312-1980\x00gb2312-raw\x00greek8\x00ibm1250\x00ibm1251\x00ibm1252\x00ibm1253\x00ibm1254\x00ibm1255\x00ibm1256\x00ibm1257\x00ibm1258\x00ibm437\x00ibm737\x00ibm775\x00ibm850\x00ibm852\x00ibm855\x00ibm857\x00ibm860\x00ibm861\x00ibm862\x00ibm863\x00ibm864\x00ibm865\x00ibm866\x00ibm869\x00ibm874\x00ibm932\x00ibm936\x00ibm949\x00ibm950\x00iso-2022\x00iso2022\x00iso-2022-jp\x00iso2022-jp\x00iso-2022-kr\x00iso2022-kr\x00iso-8859-1\x00iso-8859-10\x00iso8859-10\x00iso-8859-13\x00iso8859-13\x00iso-8859-14\x00iso8859-14\x00iso-8859-15\x00iso8859-15\x00iso-8859-16\x00iso8859-16\x00iso-8859-2\x00iso8859-2\x00iso-8859-3\x00iso8859-3\x00iso-8859-4\x00iso8859-4\x00iso-8859-5\x00iso8859-5\x00iso-8859-6\x00iso8859-6\x00iso-8859-7\x00iso8859-7\x00iso-8859-8\x00iso8859-8\x00iso-8859-9\x00iso8859-9\x00iso88591\x00iso885915\x00iso88592\x00iso88595\x00iso88596\x00iso88597\x00iso88598\x00iso88599\x00ja\x00ja_jp\x00ja_jp.euc\x00ja_jp.eucjp\x00ja_jp.jis\x00ja_jp.mscode\x00shiftjis\x00ja_jp.sjis\x00ja_jp.ujis\x00japan\x00japanese\x00japanese-sjis\x00japanese-ujis\x00japanese.euc\x00japanese.sjis\x00jis0201\x00jis0208\x00jis0212\x00jp_jp\x00ko\x00ko_kr\x00ko_kr.euc\x00ko_kw.euckw\x00koi8-r\x00koi8-u\x00korean\x00ksc5601\x00maccenteuro\x00macCentEuro\x00maccroatian\x00macCroatian\x00maccyrillic\x00macCyrillic\x00macdingbats\x00macDingbats\x00macgreek\x00macGreek\x00maciceland\x00macIceland\x00macjapan\x00macJapan\x00macroman\x00macRoman\x00macromania\x00macRomania\x00macthai\x00macThai\x00macturkish\x00macTurkish\x00macukraine\x00macUkraine\x00roman8\x00ru\x00ru_ru\x00ru_su\x00sjis\x00symbol\x00tis-620\x00tis620\x00turkish8\x00utf8\x00zh\x00zh_cn.gb2312\x00zh_cn.gbk\x00zh_cz.gb2312\x00zh_tw\x00euc-tw\x00zh_tw.big5\x00/dev/null\x00TCL_LIBRARY\x00lib/tcl%s\x00LC_ALL\x00LC_CTYPE\x00LANG\x00unix\x00pathSeparator\x00deletemethod\x00forward\x00renamemethod\x00self\x00unexport\x00destroy\x00core method: \"destroy\"\x00core method: \"eval\"\x00core method: \"unknown\"\x00core method: \"variable\"\x00core method: \"varname\"\x00core method: \"create\"\x00new\x00core method: \"new\"\x00createWithNamespace\x00core method: \"createWithNamespace\"\x00oo::class constructor\x00::oo::define ::oo::Slot {\n    method Get {} {error unimplemented}\n    method Set list {error unimplemented}\n    method -set args {\n        uplevel 1 [list [namespace which my] Set $args]\n    }\n    method -append args {\n        uplevel 1 [list [namespace which my] Set [list                {*}[uplevel 1 [list [namespace which my] Get]] {*}$args]]\n    }\n    method -clear {} {uplevel 1 [list [namespace which my] Set {}]}\n    forward --default-operation my -append\n    method unknown {args} {\n        set def --default-operation\n        if {[llength $args] == 0} {\n            return [uplevel 1 [list [namespace which my] $def]]\n        } elseif {![string match -* [lindex $args 0]]} {\n            return [uplevel 1 [list [namespace which my] $def {*}$args]]\n        }\n        next {*}$args\n    }\n    export -set -append -clear\n    unexport unknown destroy\n}\n::oo::objdefine ::oo::define::superclass forward --default-operation my -set\n::oo::objdefine ::oo::define::mixin forward --default-operation my -set\n::oo::objdefine ::oo::objdefine::mixin forward --default-operation my -set\n\x00foreach p [info procs [info object namespace $originObject]::*] {    set args [info args $p];    set idx -1;    foreach a $args {        lset args [incr idx]             [if {[info default $p $a d]} {list $a $d} {list $a}]    };    set b [info body $p];    set p [namespace tail $p];    proc $p $args $b;};foreach v [info vars [info object namespace $originObject]::*] {    upvar 0 $v vOrigin;    namespace upvar [namespace current] [namespace tail $v] vNew;    if {[info exists vOrigin]} {        if {[array exists vOrigin]} {            array set vNew [array get vOrigin];        } else {            set vNew $vOrigin;        }    }}\x00TclOO\x001.1.0\x00::oo\x00[a-z]*\x00::oo::define\x00::oo::objdefine\x00::oo::Helpers\x00<constructor>\x00<destructor>\x00<cloned>\x00::oo::UnknownDefinition\x00::oo::define::\x00::oo::objdefine::\x00originObject\x00::oo::Helpers::next\x00::oo::Helpers::nextto\x00::oo::Helpers::self\x00::oo::copy\x00::oo::Obj%d\x00my\x00deleting class structure for non-deleted %s\x00::oo::class\x00::oo::object\x00can't create object \"%s\": command already exists with that name\x00OVERWRITE_OBJECT\x00object deleted in constructor\x00STILLBORN\x00may not clone the class of classes\x00CLONING_CLASS\x00\n    (while performing post-copy callback)\x00\n    (while mapping method name)\x00impossible to invoke method \"%s\": no defined method or unknown method\x00METHOD_MAPPED\x00no valid method implementation\x00%s does not refer to an object\x00OBJECT\x00?definitionScript?\x00object \"%s\" is not a class\x00INSTANTIATE_NONCLASS\x00objectName ?arg ...?\x00object name must not be empty\x00EMPTY_NAME\x00objectName namespaceName ?arg ...?\x00namespace name must not be empty\x00\n    (in \"%s eval\" script line %d)\x00method ?arg ...?\x00visible methods\x00methods\x00object \"%s\" has no %s\x00unknown method \"%s\": must be \x00?varName ...?\x00variable name \"%s\" illegal: must not contain namespace separator\x00name refers to an element in an array\x00refer to\x00%s may only be called from inside a method\x00class ?arg...?\x00call\x00caller\x00method not defined by a class\x00UNMATCHED_CONTEXT\x00not inside a filtering context\x00caller is not an object\x00method without declarer!\x00filtering call chain without terminal non-filter\x00sourceName ?targetName? ?targetNamespace?\x00%s refers to an existing namespace\x00TclOO method name\x00::oo::define::filter\x00core method: define::filter Getter\x00core method: define::filter Setter\x00::oo::define::mixin\x00core method: define::mixin Getter\x00core method: define::mixin Setter\x00::oo::define::superclass\x00core method: define::superclass Getter\x00core method: define::superclass Setter\x00::oo::define::variable\x00core method: define::variable Getter\x00core method: define::variable Setter\x00::oo::objdefine::filter\x00core method: objdefine::filter Getter\x00core method: objdefine::filter Setter\x00::oo::objdefine::mixin\x00core method: objdefine::mixin Getter\x00core method: objdefine::mixin Setter\x00::oo::objdefine::variable\x00core method: objdefine::variable Getter\x00core method: objdefine::variable Setter\x00method %s does not exist\x00cannot rename method to itself\x00RENAME_TO_SELF\x00method called %s already exists\x00RENAME_OVER\x00bad call of unknown handler\x00BAD_UNKNOWN\x00cannot process definitions; support namespace deleted\x00MONKEY_BUSINESS\x00this command may only be called from within the context of an ::oo::define or ::oo::objdefine command\x00this command cannot be called when the object has been deleted\x00getting outer context when already in global context\x00\n    (in definition script for %s \"%.*s%s\" line %d)\x00className arg ?arg ...?\x00%s does not refer to a class\x00objectName arg ?arg ...?\x00class object\x00may not modify the class of the root object class\x00may not modify the class of the class of classes\x00the class of an object must be a class\x00may not change classes into an instance of themselves\x00arguments body\x00attempt to misuse API\x00name cmdName ?arg ...?\x00Get\x00Set\x00::oo::Slot\x00filterList\x00mixinList\x00may only mix in classes\x00may not mix a class into itself\x00SELF_MIXIN\x00superclassList\x00may not modify the superclass of the root object\x00only a class can be a superclass\x00class should only be a direct superclass once\x00REPETITIOUS\x00attempt to form circular dependency graph\x00invalid declared variable name \"%s\": must not %s\x00contain namespace separators\x00BAD_DECLVAR\x00*(*)\x00refer to an array element\x00variableList\x00definition\x00filters\x00isa\x00methodtype\x00mixins\x00instances\x00subclasses\x00superclasses\x00::oo::InfoObject\x00::oo::InfoClass\x00objName ?className?\x00objName methodName\x00definition not available for this kind of method\x00objName\x00prefix argument list not available for this kind of method\x00metaclass\x00mixin\x00typeof\x00category objName ?arg ...?\x00category\x00objName className\x00-localprivate\x00-private\x00objName ?-option value ...?\x00objName ?pattern?\x00METHOD_TYPE\x00className ?pattern?\x00className ?-option value ...?\x00cannot construct any call chain\x00method not declared in class or object\x00\n    (%s \"%.*s%s\" method \"%.*s%s\" line %d)\x00\n    (%s \"%.*s%s\" constructor line %d)\x00\n    (%s \"%.*s%s\" destructor line %d)\x00method forward prefix must be non-empty\x00BAD_FORWARD\x00dynamic loading is not currently available on this system\x000123456789ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz+/\x00"
