@@ -6,9 +6,3 @@
 
 // Package libsqlite3 is a ccgo/v4 version the libsqlite3.a (SQLite, http://sqlite.org)
 package libsqlite3 // import "modernc.org/libsqlite3"
-
-import (
-	"modernc.org/ccgo/v4/lib"
-)
-
-var _ ccgo.Task

@@ -22,8 +22,8 @@ import (
 )
 
 const (
-	archivePath  = "sqlite-amalgamation-3410200.zip"
-	archive2Path = "sqlite-src-3410200.zip"
+	archivePath  = "sqlite-amalgamation-3430200.zip"
+	archive2Path = "sqlite-src-3430200.zip"
 )
 
 var (
@@ -91,7 +91,13 @@ func main() {
 	fmt.Fprintf(os.Stderr, "tempDir %s\n", tempDir)
 	fmt.Fprintf(os.Stderr, "libRoot %s\n", libRoot)
 	fmt.Fprintf(os.Stderr, "makeRoot %s\n", makeRoot)
+	ccgoInc, err := filepath.Abs(filepath.Join(libRoot, "ccgo"))
+	if err != nil {
+		fail(1, "%s\n", err)
+	}
 
+	mustCopyDir(ccgoInc, filepath.Join("..", "libz", "include", goos, goarch), nil, false)
+	mustCopyDir(ccgoInc, filepath.Join("..", "libtcl8.6", "include", goos, goarch), nil, false)
 	util.MustShell(true, "unzip", archivePath, "-d", tempDir)
 	result := "sqlite3.go"
 	util.MustInDir(true, makeRoot, func() (err error) {
@@ -154,7 +160,8 @@ func main() {
 			"sqlite3.c",
 			// "-DSQLITE_DEBUG",     //TODO-
 			// "-DSQLITE_MEM_DEBUG", //TODO-
-			"-DNDEBUG", //TODO-
+			"-DNDEBUG",
+			fmt.Sprintf("-I%s", ccgoInc),
 		)
 		if err := ccgo.NewTask(goos, goarch, config, os.Stdout, os.Stderr, nil).Main(); err != nil {
 			return err
@@ -244,7 +251,7 @@ func main() {
 			"-Dpwrite64=pwrite",
 			// "-DSQLITE_DEBUG",     //TODO-
 			// "-DSQLITE_MEM_DEBUG", //TODO-
-			"-DNDEBUG", //TODO-
+			"-DNDEBUG",
 			//TODO "-DSQLITE_ENABLE_RBU",
 			//TODO "-DSQLITE_MUTEX_APPDEF=1",
 			//TODO "-DSQLITE_MUTEX_NOOP",
@@ -265,6 +272,7 @@ func main() {
 			"--prefix-typename=T",
 			"--prefix-undefined=_",
 			"-extended-errors",
+			fmt.Sprintf("-I%s", ccgoInc),
 
 			"-exec", "make", "-j", j, "testfixture",
 		)

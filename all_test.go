@@ -27,9 +27,10 @@ import (
 	"strings"
 	"testing"
 
+	"modernc.org/libtcl8.6/library"
+	_ "modernc.org/ccgo/v4/lib"
 	cp "github.com/otiai10/copy"
 	util "modernc.org/ccgo/v3/lib"
-	"modernc.org/libtcl8.6/library"
 )
 
 var (

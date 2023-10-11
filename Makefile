@@ -5,8 +5,8 @@
 .PHONY:	all clean dev download edit editor generate test work
 
 DIR = /tmp/libsqlite3
-ZIP = sqlite-amalgamation-3410200.zip
-ZIP2 = sqlite-src-3410200.zip
+ZIP = sqlite-amalgamation-3430200.zip
+ZIP2 = sqlite-src-3430200.zip
 URL = https://www.sqlite.org/2023/$(ZIP)
 URL2 = https://www.sqlite.org/2023/$(ZIP2)
 
