@@ -190,34 +190,21 @@ func main() {
 			"-hide", "TclpCreateProcess",
 			fmt.Sprintf("-I%s", ccgoInc),
 		)
-		if err := ccgo.NewTask(goos, goarch, append(args, "-exec", "make", "-j", j, "test"), os.Stdout, os.Stderr, nil).Exec(); err != nil {
-			trc("FAIL err=%v", err)
-		}
-		if err := ccgo.NewTask(goos, goarch, append(args, "-o", result, "--package-name", "libtcl8_6", "-ignore-link-errors", "libtcl8.6.a", "-lz"), os.Stdout, os.Stderr, nil).Main(); err != nil {
-			return err
-		}
-
-		// if err := ccgo.NewTask(goos, goarch, append(args, "-exec", "make", "-j", j, "tcltest"), os.Stdout, os.Stderr, nil).Exec(); err != nil {
-		// 	return err
-		// }
-
-		return nil
+		ccgo.NewTask(goos, goarch, append(args, "-exec", "make", "-j", j, "test"), os.Stdout, os.Stderr, nil).Exec()
+		return ccgo.NewTask(goos, goarch, append(args, "-o", result, "--package-name", "libtcl8_6", "-ignore-link-errors", "libtcl8.6.a", "-lz"), os.Stdout, os.Stderr, nil).Main()
 	})
 
-	// mustCopyFile(filepath.Join("include", goos, goarch, "tcl.h"), filepath.Join(libRoot, "generic", "tcl.h"), nil)
-	// mustCopyFile(filepath.Join("include", goos, goarch, "tclDecls.h"), filepath.Join(libRoot, "generic", "tclDecls.h"), nil)
-	// mustCopyFile(filepath.Join("include", goos, goarch, "tclPlatDecls.h"), filepath.Join(libRoot, "generic", "tclPlatDecls.h"), nil)
-	// mustCopyFile(filepath.Join("library", "assets", "tclConfig.sh"), filepath.Join(makeRoot, "tclConfig.sh"), nil)
+	mustCopyFile(filepath.Join("include", goos, goarch, "tcl.h"), filepath.Join(libRoot, "generic", "tcl.h"), nil)
+	mustCopyFile(filepath.Join("include", goos, goarch, "tclDecls.h"), filepath.Join(libRoot, "generic", "tclDecls.h"), nil)
+	mustCopyFile(filepath.Join("include", goos, goarch, "tclPlatDecls.h"), filepath.Join(libRoot, "generic", "tclPlatDecls.h"), nil)
 	mustCopyDir(filepath.Join("library", "assets"), filepath.Join(libRoot, "library"), nil, false)
-	// mustCopyDir("internal/tests", filepath.Join(libRoot, "tests"), nil, false)
-	// mustCopyFile(filepath.FromSlash("library/assets/tcltests/pkgIndex.tcl"), filepath.FromSlash("internal/tests/pkgIndex.tcl"), nil)
-	// mustCopyFile(filepath.FromSlash("library/assets/tcltests/tcltests.tcl"), filepath.FromSlash("internal/tests/tcltests.tcl"), nil)
+	mustCopyDir("internal/tests", filepath.Join(libRoot, "tests"), nil, false)
 
 	fn := fmt.Sprintf("ccgo_%s_%s.go", goos, goarch)
 	mustCopyFile(fn, filepath.Join(makeRoot, result), nil)
 	util.MustShell(true, "sed", "-i", `s/\<T__\([a-zA-Z0-9][a-zA-Z0-9_]\+\)/t__\1/g`, fn)
 	util.MustShell(true, "sed", "-i", `s/\<x_\([a-zA-Z0-9][a-zA-Z0-9_]\+\)/X\1/g`, fn)
-	// mustCopyFile(filepath.Join("internal", "tcltest", fn), filepath.Join(makeRoot, "tcltest.go"), nil)
+	mustCopyFile(filepath.Join("internal", "tcltest", fn), filepath.Join(makeRoot, "tcltest.go"), nil)
 	util.Shell("sh", "-c", "./unconvert.sh")
 	util.MustShell(true, "go", "test", "-run", "@")
 	util.Shell("git", "status")

@@ -6,9 +6,13 @@ package libtcl8_6 // import "modernc.org/libtcl8_6"
 
 import (
 	"flag"
+	"io"
 	"os"
+	"os/exec"
+	"path/filepath"
 	"strings"
 	"testing"
+	"time"
 
 	_ "modernc.org/ccgo/v4/lib"
 	"modernc.org/libc/v2"
@@ -69,82 +73,81 @@ func Test(t *testing.T) {
 }
 
 func Test2(t *testing.T) {
-	t.Skip("TODO")
-	// wd, err := os.Getwd()
-	// if err != nil {
-	// 	t.Fatal(err)
-	// }
+	wd, err := os.Getwd()
+	if err != nil {
+		t.Fatal(err)
+	}
 
-	// if wd, err = filepath.Abs(wd); err != nil {
-	// 	t.Fatal(err)
-	// }
+	if wd, err = filepath.Abs(wd); err != nil {
+		t.Fatal(err)
+	}
 
-	// const lib = "TCL_LIBRARY"
-	// sav := os.Getenv(lib)
+	const lib = "TCL_LIBRARY"
+	sav := os.Getenv(lib)
 
-	// defer func() {
-	// 	os.Setenv(lib, sav)
-	// }()
+	defer func() {
+		os.Setenv(lib, sav)
+	}()
 
-	// os.Setenv(lib, filepath.Join(wd, "library", "assets"))
+	os.Setenv(lib, filepath.Join(wd, "library", "assets"))
 
-	// dir := t.TempDir()
-	// bin := filepath.Join(dir, "tcltest")
-	// out, err := exec.Command("go", "build", "-o", bin, "-tags="+*oXTags, "./"+filepath.Join("internal", "tcltest")).CombinedOutput()
-	// if err != nil {
-	// 	t.Fatalf("%s\nFAIL: %s", out, err)
-	// }
-	// var stdout, stderr strings.Builder
-	// args := []string{
-	// 	filepath.Join(wd, "internal", "tests", "all.tcl"),
-	// 	"-debug", *oDebug,
-	// 	"-errfile", "errfile",
-	// 	"-singleproc", *oSingleProc,
-	// }
-	// if s := *oVerbose; s != "" {
-	// 	args = append(args, "-verbose", s)
-	// }
-	// if s := *oFile; s != "" {
-	// 	args = append(args, "-file", s)
-	// }
-	// if s := *oMatch; s != "" {
-	// 	args = append(args, "-match", s)
-	// }
-	// if s := *oNotFile; s != "" {
-	// 	args = append(args, "-notfile", s)
-	// }
-	// if s := *oSkip; s != "" {
-	// 	args = append(args, "-skip", s)
-	// }
-	// if s := *oTmpdir; s != "" {
-	// 	args = append(args, "-tmpdir", s)
-	// }
-	// t.Logf("%q %q", bin, args)
-	// cmd := exec.Command(bin, args...)
-	// cmd.Dir = dir
-	// cmd.Stdout = io.MultiWriter(os.Stdout, &stdout)
-	// cmd.Stderr = io.MultiWriter(os.Stderr, &stderr)
-	// cmd.WaitDelay = 10 * time.Second
-	// if err := cmd.Run(); err != nil {
-	// 	t.Error(err)
-	// }
-	// stdout.WriteString("\n")
-	// stdout.WriteString(stderr.String())
-	// all := strings.Split(stdout.String(), "\n")
-	// out:
-	// for i, v := range all {
-	// 	switch {
-	// 	case
-	// 		strings.HasPrefix(v, "====") && strings.Contains(v, "FAILED"),
-	// 		strings.Contains(v, "panic:"):
-	// 		t.Error(v)
-	// 	case strings.HasPrefix(v, "all.tcl:"):
-	// 		t.Logf("\n%s", strings.Join(all[i:], "\n"))
-	// 		break out
-	// 	}
-	// }
-	// errFile, err := os.ReadFile(filepath.Join(dir, "errfile"))
-	// if err == nil && len(errFile) != 0 {
-	// 	t.Errorf("FAIL\n%s", errFile)
-	// }
+	dir := t.TempDir()
+	bin := filepath.Join(dir, "tcltest")
+	out, err := exec.Command("go", "build", "-o", bin, "-tags="+*oXTags, "./"+filepath.Join("internal", "tcltest")).CombinedOutput()
+	if err != nil {
+		t.Fatalf("%s\nFAIL: %s", out, err)
+	}
+	var stdout, stderr strings.Builder
+	args := []string{
+		filepath.Join(wd, "internal", "tests", "all.tcl"),
+		"-debug", *oDebug,
+		"-errfile", "errfile",
+		"-singleproc", *oSingleProc,
+	}
+	if s := *oVerbose; s != "" {
+		args = append(args, "-verbose", s)
+	}
+	if s := *oFile; s != "" {
+		args = append(args, "-file", s)
+	}
+	if s := *oMatch; s != "" {
+		args = append(args, "-match", s)
+	}
+	if s := *oNotFile; s != "" {
+		args = append(args, "-notfile", s)
+	}
+	if s := *oSkip; s != "" {
+		args = append(args, "-skip", s)
+	}
+	if s := *oTmpdir; s != "" {
+		args = append(args, "-tmpdir", s)
+	}
+	t.Logf("%q %q", bin, args)
+	cmd := exec.Command(bin, args...)
+	cmd.Dir = dir
+	cmd.Stdout = io.MultiWriter(os.Stdout, &stdout)
+	cmd.Stderr = io.MultiWriter(os.Stderr, &stderr)
+	cmd.WaitDelay = 10 * time.Second
+	if err := cmd.Run(); err != nil {
+		t.Error(err)
+	}
+	stdout.WriteString("\n")
+	stdout.WriteString(stderr.String())
+	all := strings.Split(stdout.String(), "\n")
+out:
+	for i, v := range all {
+		switch {
+		case
+			strings.HasPrefix(v, "====") && strings.Contains(v, "FAILED"),
+			strings.Contains(v, "panic:"):
+			t.Error(v)
+		case strings.HasPrefix(v, "all.tcl:"):
+			t.Logf("\n%s", strings.Join(all[i:], "\n"))
+			break out
+		}
+	}
+	errFile, err := os.ReadFile(filepath.Join(dir, "errfile"))
+	if err == nil && len(errFile) != 0 {
+		t.Errorf("FAIL\n%s", errFile)
+	}
 }
