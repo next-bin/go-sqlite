@@ -5245,15 +5245,9 @@ func _t1CountStep(tls *libc.TLS, context uintptr, argc int32, argv uintptr) {
 		} else {
 			if v == int32(41) {
 				*(*[9]int8)(unsafe.Pointer(bp)) = [9]int8{
-					0: 0,
 					1: int8(0x61),
-					2: 0,
 					3: int8(0x62),
-					4: 0,
 					5: int8(0x63),
-					6: 0,
-					7: 0,
-					8: 0,
 				}
 				x_sqlite3_result_error16(tls, context, bp+uintptr(libc.Int32FromInt32(1)-libc.Int32FromInt32(m_SQLITE_BIGENDIAN)), -int32(1))
 			}
@@ -6105,9 +6099,7 @@ func _test_create_function_v2(tls *libc.TLS, clientData TClientData, interp uint
 		},
 		5: {
 			FzEnc: __ccgo_ts + 956,
-			Fenc:  0,
 		},
-		6: {},
 	}
 	if objc < int32(5) || objc%int32(2) == 0 {
 		libtcl8_6.XTcl_WrongNumArgs(tls, interp, int32(1), objv, __ccgo_ts+958)
@@ -6141,7 +6133,6 @@ func _test_create_function_v2(tls *libc.TLS, clientData TClientData, interp uint
 			1: __ccgo_ts + 1002,
 			2: __ccgo_ts + 1008,
 			3: __ccgo_ts + 1015,
-			4: uintptr(0),
 		}
 		if libtcl8_6.XTcl_GetIndexFromObjStruct(tls, interp, *(*uintptr)(unsafe.Pointer(objv + uintptr(i)*8)), bp+136, int32(8), __ccgo_ts+1024, 0, bp+128) != 0 {
 			x_sqlite3_free(tls, p)
@@ -7852,16 +7843,13 @@ var _aSpecialFp = [10]struct {
 	4: {
 		FzName:  __ccgo_ts + 1832,
 		FiUpper: uint32(0x7ff00000),
-		FiLower: uint32(0x00000000),
 	},
 	5: {
 		FzName:  __ccgo_ts + 1837,
 		FiUpper: uint32(0xfff00000),
-		FiLower: uint32(0x00000000),
 	},
 	6: {
 		FzName:  __ccgo_ts + 1842,
-		FiUpper: uint32(0x00000000),
 		FiLower: uint32(0x00000001),
 	},
 	7: {
@@ -7872,12 +7860,10 @@ var _aSpecialFp = [10]struct {
 	8: {
 		FzName:  __ccgo_ts + 1859,
 		FiUpper: uint32(0x7ff80000),
-		FiLower: uint32(0x00000000),
 	},
 	9: {
 		FzName:  __ccgo_ts + 1864,
 		FiUpper: uint32(0xfff80000),
-		FiLower: uint32(0x00000000),
 	},
 }
 
@@ -9349,7 +9335,6 @@ func _test_open_v2(tls *libc.TLS, clientData uintptr, interp uintptr, objc int32
 				FzFlag: __ccgo_ts + 2865,
 				Fflag:  int32(m_SQLITE_OPEN_EXRESCODE),
 			},
-			20: {},
 		}
 		rc = libtcl8_6.XTcl_GetIndexFromObjStruct(tls, interp, *(*uintptr)(unsafe.Pointer(*(*uintptr)(unsafe.Pointer(bp + 112)) + uintptr(i)*8)), bp+128, int32(16), __ccgo_ts+2887, 0, bp+120)
 		if rc != m_TCL_OK {
@@ -10945,7 +10930,6 @@ var _aId = [14]struct {
 }{
 	0: {
 		FzName: __ccgo_ts + 3136,
-		Fid:    m_SQLITE_LIMIT_LENGTH,
 	},
 	1: {
 		FzName: __ccgo_ts + 3156,
@@ -11267,7 +11251,6 @@ func _test_wal_checkpoint_v2(tls *libc.TLS, clientData TClientData, interp uintp
 		1: __ccgo_ts + 3592,
 		2: __ccgo_ts + 3597,
 		3: __ccgo_ts + 3605,
-		4: uintptr(0),
 	}
 	if objc != int32(3) && objc != int32(4) {
 		libtcl8_6.XTcl_WrongNumArgs(tls, interp, int32(1), objv, __ccgo_ts+3614)
@@ -11629,7 +11612,6 @@ func _test_test_control(tls *libc.TLS, clientData uintptr, interp uintptr, objc 
 			FzName: __ccgo_ts + 3811,
 			Fi:     int32(m_SQLITE_TESTCTRL_INTERNAL_FUNCTIONS),
 		},
-		4: {},
 	}
 	if objc < int32(2) {
 		libtcl8_6.XTcl_WrongNumArgs(tls, interp, int32(1), objv, __ccgo_ts+3846)
@@ -11849,7 +11831,6 @@ var _aOpt = [15]struct {
 	},
 	1: {
 		FzOptName: __ccgo_ts + 3964,
-		Fmask:     0,
 	},
 	2: {
 		FzOptName: __ccgo_ts + 3969,
@@ -11973,99 +11954,75 @@ var _aExtension = [24]struct {
 }{
 	0: {
 		FzExtName: __ccgo_ts + 4201,
-		FpInit:    uintptr(0),
 	},
 	1: {
 		FzExtName: __ccgo_ts + 4208,
-		FpInit:    uintptr(0),
 	},
 	2: {
 		FzExtName: __ccgo_ts + 4218,
-		FpInit:    uintptr(0),
 	},
 	3: {
 		FzExtName: __ccgo_ts + 4225,
-		FpInit:    uintptr(0),
 	},
 	4: {
 		FzExtName: __ccgo_ts + 4232,
-		FpInit:    uintptr(0),
 	},
 	5: {
 		FzExtName: __ccgo_ts + 4240,
-		FpInit:    uintptr(0),
 	},
 	6: {
 		FzExtName: __ccgo_ts + 4244,
-		FpInit:    uintptr(0),
 	},
 	7: {
 		FzExtName: __ccgo_ts + 4252,
-		FpInit:    uintptr(0),
 	},
 	8: {
 		FzExtName: __ccgo_ts + 4257,
-		FpInit:    uintptr(0),
 	},
 	9: {
 		FzExtName: __ccgo_ts + 4265,
-		FpInit:    uintptr(0),
 	},
 	10: {
 		FzExtName: __ccgo_ts + 4272,
-		FpInit:    uintptr(0),
 	},
 	11: {
 		FzExtName: __ccgo_ts + 4279,
-		FpInit:    uintptr(0),
 	},
 	12: {
 		FzExtName: __ccgo_ts + 4287,
-		FpInit:    uintptr(0),
 	},
 	13: {
 		FzExtName: __ccgo_ts + 4296,
-		FpInit:    uintptr(0),
 	},
 	14: {
 		FzExtName: __ccgo_ts + 4307,
-		FpInit:    uintptr(0),
 	},
 	15: {
 		FzExtName: __ccgo_ts + 4316,
-		FpInit:    uintptr(0),
 	},
 	16: {
 		FzExtName: __ccgo_ts + 4323,
-		FpInit:    uintptr(0),
 	},
 	17: {
 		FzExtName: __ccgo_ts + 4330,
-		FpInit:    uintptr(0),
 	},
 	18: {
 		FzExtName: __ccgo_ts + 4339,
-		FpInit:    uintptr(0),
 	},
 	19: {
 		FzExtName: __ccgo_ts + 4346,
-		FpInit:    uintptr(0),
 	},
 	20: {
 		FzExtName: __ccgo_ts + 4355,
-		FpInit:    uintptr(0),
 	},
 	21: {
 		FzExtName: __ccgo_ts + 4362,
-		FpInit:    uintptr(0),
 	},
 	22: {
 		FzExtName: __ccgo_ts + 4372,
-		FpInit:    uintptr(0),
 	},
 	23: {
 		FzExtName: __ccgo_ts + 4384,
-		FpInit:    uintptr(0),
 	},
 }
 
@@ -12866,163 +12823,123 @@ var _aCmd = [40]struct {
 }{
 	0: {
 		FzName: __ccgo_ts + 5033,
-		FxProc: uintptr(0),
 	},
 	1: {
 		FzName: __ccgo_ts + 5042,
-		FxProc: uintptr(0),
 	},
 	2: {
 		FzName: __ccgo_ts + 5051,
-		FxProc: uintptr(0),
 	},
 	3: {
 		FzName: __ccgo_ts + 5071,
-		FxProc: uintptr(0),
 	},
 	4: {
 		FzName: __ccgo_ts + 5093,
-		FxProc: uintptr(0),
 	},
 	5: {
 		FzName: __ccgo_ts + 5114,
-		FxProc: uintptr(0),
 	},
 	6: {
 		FzName: __ccgo_ts + 5134,
-		FxProc: uintptr(0),
 	},
 	7: {
 		FzName: __ccgo_ts + 5155,
-		FxProc: uintptr(0),
 	},
 	8: {
 		FzName: __ccgo_ts + 5179,
-		FxProc: uintptr(0),
 	},
 	9: {
 		FzName: __ccgo_ts + 5202,
-		FxProc: uintptr(0),
 	},
 	10: {
 		FzName: __ccgo_ts + 5225,
-		FxProc: uintptr(0),
 	},
 	11: {
 		FzName: __ccgo_ts + 5251,
-		FxProc: uintptr(0),
 	},
 	12: {
 		FzName: __ccgo_ts + 5274,
-		FxProc: uintptr(0),
 	},
 	13: {
 		FzName: __ccgo_ts + 5297,
-		FxProc: uintptr(0),
 	},
 	14: {
 		FzName: __ccgo_ts + 5318,
-		FxProc: uintptr(0),
 	},
 	15: {
 		FzName: __ccgo_ts + 5344,
-		FxProc: uintptr(0),
 	},
 	16: {
 		FzName: __ccgo_ts + 5364,
-		FxProc: uintptr(0),
 	},
 	17: {
 		FzName: __ccgo_ts + 5381,
-		FxProc: uintptr(0),
 	},
 	18: {
 		FzName: __ccgo_ts + 5394,
-		FxProc: uintptr(0),
 	},
 	19: {
 		FzName: __ccgo_ts + 5410,
-		FxProc: uintptr(0),
 	},
 	20: {
 		FzName: __ccgo_ts + 5435,
-		FxProc: uintptr(0),
 	},
 	21: {
 		FzName: __ccgo_ts + 5449,
-		FxProc: uintptr(0),
 	},
 	22: {
 		FzName: __ccgo_ts + 5466,
-		FxProc: uintptr(0),
 	},
 	23: {
 		FzName: __ccgo_ts + 5490,
-		FxProc: uintptr(0),
 	},
 	24: {
 		FzName: __ccgo_ts + 5515,
-		FxProc: uintptr(0),
 	},
 	25: {
 		FzName: __ccgo_ts + 5536,
-		FxProc: uintptr(0),
 	},
 	26: {
 		FzName: __ccgo_ts + 5566,
-		FxProc: uintptr(0),
 	},
 	27: {
 		FzName: __ccgo_ts + 5579,
-		FxProc: uintptr(0),
 	},
 	28: {
 		FzName: __ccgo_ts + 5591,
-		FxProc: uintptr(0),
 	},
 	29: {
 		FzName: __ccgo_ts + 5602,
-		FxProc: uintptr(0),
 	},
 	30: {
 		FzName: __ccgo_ts + 5614,
-		FxProc: uintptr(0),
 	},
 	31: {
 		FzName: __ccgo_ts + 5628,
-		FxProc: uintptr(0),
 	},
 	32: {
 		FzName: __ccgo_ts + 5646,
-		FxProc: uintptr(0),
 	},
 	33: {
 		FzName: __ccgo_ts + 5669,
-		FxProc: uintptr(0),
 	},
 	34: {
 		FzName: __ccgo_ts + 5692,
-		FxProc: uintptr(0),
 	},
 	35: {
 		FzName: __ccgo_ts + 5716,
-		FxProc: uintptr(0),
 	},
 	36: {
 		FzName: __ccgo_ts + 5739,
-		FxProc: uintptr(0),
 	},
 	37: {
 		FzName: __ccgo_ts + 5760,
-		FxProc: uintptr(0),
 	},
 	38: {
 		FzName: __ccgo_ts + 5767,
-		FxProc: uintptr(0),
 	},
 	39: {
 		FzName: __ccgo_ts + 5782,
-		FxProc: uintptr(0),
 	},
 }
 
@@ -13076,782 +12993,476 @@ var _aObjCmd = [157]struct {
 	FclientData uintptr
 }{
 	0: {
-		FzName:      __ccgo_ts + 5805,
-		FxProc:      uintptr(0),
-		FclientData: uintptr(0),
+		FzName: __ccgo_ts + 5805,
 	},
 	1: {
-		FzName:      __ccgo_ts + 5823,
-		FxProc:      uintptr(0),
-		FclientData: uintptr(0),
+		FzName: __ccgo_ts + 5823,
 	},
 	2: {
 		FzName:      __ccgo_ts + 5841,
-		FxProc:      uintptr(0),
 		FclientData: uintptr(unsafe.Pointer(&_iZero)),
 	},
 	3: {
 		FzName: __ccgo_ts + 5854,
-		FxProc: uintptr(0),
 	},
 	4: {
-		FzName:      __ccgo_ts + 5875,
-		FxProc:      uintptr(0),
-		FclientData: uintptr(0),
+		FzName: __ccgo_ts + 5875,
 	},
 	5: {
-		FzName:      __ccgo_ts + 5902,
-		FxProc:      uintptr(0),
-		FclientData: uintptr(0),
+		FzName: __ccgo_ts + 5902,
 	},
 	6: {
-		FzName:      __ccgo_ts + 5916,
-		FxProc:      uintptr(0),
-		FclientData: uintptr(0),
+		FzName: __ccgo_ts + 5916,
 	},
 	7: {
-		FzName:      __ccgo_ts + 5932,
-		FxProc:      uintptr(0),
-		FclientData: uintptr(0),
+		FzName: __ccgo_ts + 5932,
 	},
 	8: {
-		FzName:      __ccgo_ts + 5949,
-		FxProc:      uintptr(0),
-		FclientData: uintptr(0),
+		FzName: __ccgo_ts + 5949,
 	},
 	9: {
-		FzName:      __ccgo_ts + 5964,
-		FxProc:      uintptr(0),
-		FclientData: uintptr(0),
+		FzName: __ccgo_ts + 5964,
 	},
 	10: {
-		FzName:      __ccgo_ts + 5981,
-		FxProc:      uintptr(0),
-		FclientData: uintptr(0),
+		FzName: __ccgo_ts + 5981,
 	},
 	11: {
-		FzName:      __ccgo_ts + 6003,
-		FxProc:      uintptr(0),
-		FclientData: uintptr(0),
+		FzName: __ccgo_ts + 6003,
 	},
 	12: {
-		FzName:      __ccgo_ts + 6027,
-		FxProc:      uintptr(0),
-		FclientData: uintptr(0),
+		FzName: __ccgo_ts + 6027,
 	},
 	13: {
-		FzName:      __ccgo_ts + 6046,
-		FxProc:      uintptr(0),
-		FclientData: uintptr(0),
+		FzName: __ccgo_ts + 6046,
 	},
 	14: {
-		FzName:      __ccgo_ts + 6066,
-		FxProc:      uintptr(0),
-		FclientData: uintptr(0),
+		FzName: __ccgo_ts + 6066,
 	},
 	15: {
-		FzName:      __ccgo_ts + 6084,
-		FxProc:      uintptr(0),
-		FclientData: uintptr(0),
+		FzName: __ccgo_ts + 6084,
 	},
 	16: {
-		FzName:      __ccgo_ts + 6102,
-		FxProc:      uintptr(0),
-		FclientData: uintptr(0),
+		FzName: __ccgo_ts + 6102,
 	},
 	17: {
-		FzName:      __ccgo_ts + 6122,
-		FxProc:      uintptr(0),
-		FclientData: uintptr(0),
+		FzName: __ccgo_ts + 6122,
 	},
 	18: {
-		FzName:      __ccgo_ts + 6140,
-		FxProc:      uintptr(0),
-		FclientData: uintptr(0),
+		FzName: __ccgo_ts + 6140,
 	},
 	19: {
-		FzName:      __ccgo_ts + 6171,
-		FxProc:      uintptr(0),
-		FclientData: uintptr(0),
+		FzName: __ccgo_ts + 6171,
 	},
 	20: {
-		FzName:      __ccgo_ts + 6205,
-		FxProc:      uintptr(0),
-		FclientData: uintptr(0),
+		FzName: __ccgo_ts + 6205,
 	},
 	21: {
-		FzName:      __ccgo_ts + 6225,
-		FxProc:      uintptr(0),
-		FclientData: uintptr(0),
+		FzName: __ccgo_ts + 6225,
 	},
 	22: {
-		FzName:      __ccgo_ts + 6254,
-		FxProc:      uintptr(0),
-		FclientData: uintptr(0),
+		FzName: __ccgo_ts + 6254,
 	},
 	23: {
-		FzName:      __ccgo_ts + 6282,
-		FxProc:      uintptr(0),
-		FclientData: uintptr(0),
+		FzName: __ccgo_ts + 6282,
 	},
 	24: {
-		FzName:      __ccgo_ts + 6311,
-		FxProc:      uintptr(0),
-		FclientData: uintptr(0),
+		FzName: __ccgo_ts + 6311,
 	},
 	25: {
-		FzName:      __ccgo_ts + 6334,
-		FxProc:      uintptr(0),
-		FclientData: uintptr(0),
+		FzName: __ccgo_ts + 6334,
 	},
 	26: {
-		FzName:      __ccgo_ts + 6348,
-		FxProc:      uintptr(0),
-		FclientData: uintptr(0),
+		FzName: __ccgo_ts + 6348,
 	},
 	27: {
-		FzName:      __ccgo_ts + 6364,
-		FxProc:      uintptr(0),
-		FclientData: uintptr(0),
+		FzName: __ccgo_ts + 6364,
 	},
 	28: {
-		FzName:      __ccgo_ts + 6389,
-		FxProc:      uintptr(0),
-		FclientData: uintptr(0),
+		FzName: __ccgo_ts + 6389,
 	},
 	29: {
-		FzName:      __ccgo_ts + 6404,
-		FxProc:      uintptr(0),
-		FclientData: uintptr(0),
+		FzName: __ccgo_ts + 6404,
 	},
 	30: {
-		FzName:      __ccgo_ts + 6425,
-		FxProc:      uintptr(0),
-		FclientData: uintptr(0),
+		FzName: __ccgo_ts + 6425,
 	},
 	31: {
-		FzName:      __ccgo_ts + 6442,
-		FxProc:      uintptr(0),
-		FclientData: uintptr(0),
+		FzName: __ccgo_ts + 6442,
 	},
 	32: {
-		FzName:      __ccgo_ts + 6455,
-		FxProc:      uintptr(0),
-		FclientData: uintptr(0),
+		FzName: __ccgo_ts + 6455,
 	},
 	33: {
-		FzName:      __ccgo_ts + 6470,
-		FxProc:      uintptr(0),
-		FclientData: uintptr(0),
+		FzName: __ccgo_ts + 6470,
 	},
 	34: {
-		FzName:      __ccgo_ts + 6486,
-		FxProc:      uintptr(0),
-		FclientData: uintptr(0),
+		FzName: __ccgo_ts + 6486,
 	},
 	35: {
-		FzName:      __ccgo_ts + 6505,
-		FxProc:      uintptr(0),
-		FclientData: uintptr(0),
+		FzName: __ccgo_ts + 6505,
 	},
 	36: {
-		FzName:      __ccgo_ts + 6523,
-		FxProc:      uintptr(0),
-		FclientData: uintptr(0),
+		FzName: __ccgo_ts + 6523,
 	},
 	37: {
-		FzName:      __ccgo_ts + 6539,
-		FxProc:      uintptr(0),
-		FclientData: uintptr(0),
+		FzName: __ccgo_ts + 6539,
 	},
 	38: {
-		FzName:      __ccgo_ts + 6557,
-		FxProc:      uintptr(0),
-		FclientData: uintptr(0),
+		FzName: __ccgo_ts + 6557,
 	},
 	39: {
-		FzName:      __ccgo_ts + 6576,
-		FxProc:      uintptr(0),
-		FclientData: uintptr(0),
+		FzName: __ccgo_ts + 6576,
 	},
 	40: {
-		FzName:      __ccgo_ts + 6595,
-		FxProc:      uintptr(0),
-		FclientData: uintptr(0),
+		FzName: __ccgo_ts + 6595,
 	},
 	41: {
-		FzName:      __ccgo_ts + 6619,
-		FxProc:      uintptr(0),
-		FclientData: uintptr(0),
+		FzName: __ccgo_ts + 6619,
 	},
 	42: {
-		FzName:      __ccgo_ts + 6640,
-		FxProc:      uintptr(0),
-		FclientData: uintptr(0),
+		FzName: __ccgo_ts + 6640,
 	},
 	43: {
-		FzName:      __ccgo_ts + 6657,
-		FxProc:      uintptr(0),
-		FclientData: uintptr(0),
+		FzName: __ccgo_ts + 6657,
 	},
 	44: {
-		FzName:      __ccgo_ts + 6677,
-		FxProc:      uintptr(0),
-		FclientData: uintptr(0),
+		FzName: __ccgo_ts + 6677,
 	},
 	45: {
-		FzName:      __ccgo_ts + 6691,
-		FxProc:      uintptr(0),
-		FclientData: uintptr(0),
+		FzName: __ccgo_ts + 6691,
 	},
 	46: {
-		FzName:      __ccgo_ts + 6707,
-		FxProc:      uintptr(0),
-		FclientData: uintptr(0),
+		FzName: __ccgo_ts + 6707,
 	},
 	47: {
-		FzName:      __ccgo_ts + 6733,
-		FxProc:      uintptr(0),
-		FclientData: uintptr(0),
+		FzName: __ccgo_ts + 6733,
 	},
 	48: {
-		FzName:      __ccgo_ts + 6749,
-		FxProc:      uintptr(0),
-		FclientData: uintptr(0),
+		FzName: __ccgo_ts + 6749,
 	},
 	49: {
-		FzName:      __ccgo_ts + 6762,
-		FxProc:      uintptr(0),
-		FclientData: uintptr(0),
+		FzName: __ccgo_ts + 6762,
 	},
 	50: {
-		FzName:      __ccgo_ts + 6774,
-		FxProc:      uintptr(0),
-		FclientData: uintptr(0),
+		FzName: __ccgo_ts + 6774,
 	},
 	51: {
-		FzName:      __ccgo_ts + 6795,
-		FxProc:      uintptr(0),
-		FclientData: uintptr(0),
+		FzName: __ccgo_ts + 6795,
 	},
 	52: {
-		FzName:      __ccgo_ts + 6813,
-		FxProc:      uintptr(0),
-		FclientData: uintptr(0),
+		FzName: __ccgo_ts + 6813,
 	},
 	53: {
-		FzName:      __ccgo_ts + 6835,
-		FxProc:      uintptr(0),
-		FclientData: uintptr(0),
+		FzName: __ccgo_ts + 6835,
 	},
 	54: {
-		FzName:      __ccgo_ts + 6858,
-		FxProc:      uintptr(0),
-		FclientData: uintptr(0),
+		FzName: __ccgo_ts + 6858,
 	},
 	55: {
-		FzName:      __ccgo_ts + 6876,
-		FxProc:      uintptr(0),
-		FclientData: uintptr(0),
+		FzName: __ccgo_ts + 6876,
 	},
 	56: {
-		FzName:      __ccgo_ts + 6894,
-		FxProc:      uintptr(0),
-		FclientData: uintptr(0),
+		FzName: __ccgo_ts + 6894,
 	},
 	57: {
-		FzName:      __ccgo_ts + 6917,
-		FxProc:      uintptr(0),
-		FclientData: uintptr(0),
+		FzName: __ccgo_ts + 6917,
 	},
 	58: {
-		FzName:      __ccgo_ts + 6943,
-		FxProc:      uintptr(0),
-		FclientData: uintptr(0),
+		FzName: __ccgo_ts + 6943,
 	},
 	59: {
-		FzName:      __ccgo_ts + 6965,
-		FxProc:      uintptr(0),
-		FclientData: uintptr(0),
+		FzName: __ccgo_ts + 6965,
 	},
 	60: {
-		FzName:      __ccgo_ts + 6986,
-		FxProc:      uintptr(0),
-		FclientData: uintptr(0),
+		FzName: __ccgo_ts + 6986,
 	},
 	61: {
-		FzName:      __ccgo_ts + 7006,
-		FxProc:      uintptr(0),
-		FclientData: uintptr(0),
+		FzName: __ccgo_ts + 7006,
 	},
 	62: {
-		FzName:      __ccgo_ts + 7026,
-		FxProc:      uintptr(0),
-		FclientData: uintptr(0),
+		FzName: __ccgo_ts + 7026,
 	},
 	63: {
-		FzName:      __ccgo_ts + 7050,
-		FxProc:      uintptr(0),
-		FclientData: uintptr(0),
+		FzName: __ccgo_ts + 7050,
 	},
 	64: {
-		FzName:      __ccgo_ts + 7076,
-		FxProc:      uintptr(0),
-		FclientData: uintptr(0),
+		FzName: __ccgo_ts + 7076,
 	},
 	65: {
-		FzName:      __ccgo_ts + 7102,
-		FxProc:      uintptr(0),
-		FclientData: uintptr(0),
+		FzName: __ccgo_ts + 7102,
 	},
 	66: {
-		FzName:      __ccgo_ts + 7125,
-		FxProc:      uintptr(0),
-		FclientData: uintptr(0),
+		FzName: __ccgo_ts + 7125,
 	},
 	67: {
-		FzName:      __ccgo_ts + 7149,
-		FxProc:      uintptr(0),
-		FclientData: uintptr(0),
+		FzName: __ccgo_ts + 7149,
 	},
 	68: {
-		FzName:      __ccgo_ts + 7172,
-		FxProc:      uintptr(0),
-		FclientData: uintptr(0),
+		FzName: __ccgo_ts + 7172,
 	},
 	69: {
-		FzName:      __ccgo_ts + 7202,
-		FxProc:      uintptr(0),
-		FclientData: uintptr(0),
+		FzName: __ccgo_ts + 7202,
 	},
 	70: {
-		FzName:      __ccgo_ts + 7232,
-		FxProc:      uintptr(0),
-		FclientData: uintptr(0),
+		FzName: __ccgo_ts + 7232,
 	},
 	71: {
 		FzName: __ccgo_ts + 7246,
-		FxProc: uintptr(0),
 	},
 	72: {
-		FzName:      __ccgo_ts + 7274,
-		FxProc:      uintptr(0),
-		FclientData: uintptr(0),
+		FzName: __ccgo_ts + 7274,
 	},
 	73: {
-		FzName:      __ccgo_ts + 7290,
-		FxProc:      uintptr(0),
-		FclientData: uintptr(0),
+		FzName: __ccgo_ts + 7290,
 	},
 	74: {
-		FzName:      __ccgo_ts + 7309,
-		FxProc:      uintptr(0),
-		FclientData: uintptr(0),
+		FzName: __ccgo_ts + 7309,
 	},
 	75: {
-		FzName:      __ccgo_ts + 7326,
-		FxProc:      uintptr(0),
-		FclientData: uintptr(0),
+		FzName: __ccgo_ts + 7326,
 	},
 	76: {
-		FzName:      __ccgo_ts + 7336,
-		FxProc:      uintptr(0),
-		FclientData: uintptr(0),
+		FzName: __ccgo_ts + 7336,
 	},
 	77: {
-		FzName:      __ccgo_ts + 7356,
-		FxProc:      uintptr(0),
-		FclientData: uintptr(0),
+		FzName: __ccgo_ts + 7356,
 	},
 	78: {
-		FzName:      __ccgo_ts + 7379,
-		FxProc:      uintptr(0),
-		FclientData: uintptr(0),
+		FzName: __ccgo_ts + 7379,
 	},
 	79: {
-		FzName:      __ccgo_ts + 7403,
-		FxProc:      uintptr(0),
-		FclientData: uintptr(0),
+		FzName: __ccgo_ts + 7403,
 	},
 	80: {
-		FzName:      __ccgo_ts + 7424,
-		FxProc:      uintptr(0),
-		FclientData: uintptr(0),
+		FzName: __ccgo_ts + 7424,
 	},
 	81: {
-		FzName:      __ccgo_ts + 7436,
-		FxProc:      uintptr(0),
-		FclientData: uintptr(0),
+		FzName: __ccgo_ts + 7436,
 	},
 	82: {
-		FzName:      __ccgo_ts + 7457,
-		FxProc:      uintptr(0),
-		FclientData: uintptr(0),
+		FzName: __ccgo_ts + 7457,
 	},
 	83: {
-		FzName:      __ccgo_ts + 7476,
-		FxProc:      uintptr(0),
-		FclientData: uintptr(0),
+		FzName: __ccgo_ts + 7476,
 	},
 	84: {
-		FzName:      __ccgo_ts + 7496,
-		FxProc:      uintptr(0),
-		FclientData: uintptr(0),
+		FzName: __ccgo_ts + 7496,
 	},
 	85: {
-		FzName:      __ccgo_ts + 7516,
-		FxProc:      uintptr(0),
-		FclientData: uintptr(0),
+		FzName: __ccgo_ts + 7516,
 	},
 	86: {
-		FzName:      __ccgo_ts + 7538,
-		FxProc:      uintptr(0),
-		FclientData: uintptr(0),
+		FzName: __ccgo_ts + 7538,
 	},
 	87: {
-		FzName:      __ccgo_ts + 7559,
-		FxProc:      uintptr(0),
-		FclientData: uintptr(0),
+		FzName: __ccgo_ts + 7559,
 	},
 	88: {
-		FzName:      __ccgo_ts + 7579,
-		FxProc:      uintptr(0),
-		FclientData: uintptr(0),
+		FzName: __ccgo_ts + 7579,
 	},
 	89: {
-		FzName:      __ccgo_ts + 7599,
-		FxProc:      uintptr(0),
-		FclientData: uintptr(0),
+		FzName: __ccgo_ts + 7599,
 	},
 	90: {
-		FzName:      __ccgo_ts + 7618,
-		FxProc:      uintptr(0),
-		FclientData: uintptr(0),
+		FzName: __ccgo_ts + 7618,
 	},
 	91: {
-		FzName:      __ccgo_ts + 7639,
-		FxProc:      uintptr(0),
-		FclientData: uintptr(0),
+		FzName: __ccgo_ts + 7639,
 	},
 	92: {
-		FzName:      __ccgo_ts + 7663,
-		FxProc:      uintptr(0),
-		FclientData: uintptr(0),
+		FzName: __ccgo_ts + 7663,
 	},
 	93: {
-		FzName:      __ccgo_ts + 7692,
-		FxProc:      uintptr(0),
-		FclientData: uintptr(0),
+		FzName: __ccgo_ts + 7692,
 	},
 	94: {
-		FzName:      __ccgo_ts + 7718,
-		FxProc:      uintptr(0),
-		FclientData: uintptr(0),
+		FzName: __ccgo_ts + 7718,
 	},
 	95: {
-		FzName:      __ccgo_ts + 7745,
-		FxProc:      uintptr(0),
-		FclientData: uintptr(0),
+		FzName: __ccgo_ts + 7745,
 	},
 	96: {
-		FzName:      __ccgo_ts + 7768,
-		FxProc:      uintptr(0),
-		FclientData: uintptr(0),
+		FzName: __ccgo_ts + 7768,
 	},
 	97: {
-		FzName:      __ccgo_ts + 7790,
-		FxProc:      uintptr(0),
-		FclientData: uintptr(0),
+		FzName: __ccgo_ts + 7790,
 	},
 	98: {
-		FzName:      __ccgo_ts + 7812,
-		FxProc:      uintptr(0),
-		FclientData: uintptr(0),
+		FzName: __ccgo_ts + 7812,
 	},
 	99: {
-		FzName:      __ccgo_ts + 7842,
-		FxProc:      uintptr(0),
-		FclientData: uintptr(0),
+		FzName: __ccgo_ts + 7842,
 	},
 	100: {
-		FzName:      __ccgo_ts + 7868,
-		FxProc:      uintptr(0),
-		FclientData: uintptr(0),
+		FzName: __ccgo_ts + 7868,
 	},
 	101: {
-		FzName:      __ccgo_ts + 7899,
-		FxProc:      uintptr(0),
-		FclientData: uintptr(0),
+		FzName: __ccgo_ts + 7899,
 	},
 	102: {
-		FzName:      __ccgo_ts + 7927,
-		FxProc:      uintptr(0),
-		FclientData: uintptr(0),
+		FzName: __ccgo_ts + 7927,
 	},
 	103: {
-		FzName:      __ccgo_ts + 7956,
-		FxProc:      uintptr(0),
-		FclientData: uintptr(0),
+		FzName: __ccgo_ts + 7956,
 	},
 	104: {
-		FzName:      __ccgo_ts + 7984,
-		FxProc:      uintptr(0),
-		FclientData: uintptr(0),
+		FzName: __ccgo_ts + 7984,
 	},
 	105: {
-		FzName:      __ccgo_ts + 8007,
-		FxProc:      uintptr(0),
-		FclientData: uintptr(0),
+		FzName: __ccgo_ts + 8007,
 	},
 	106: {
-		FzName:      __ccgo_ts + 8025,
-		FxProc:      uintptr(0),
-		FclientData: uintptr(0),
+		FzName: __ccgo_ts + 8025,
 	},
 	107: {
-		FzName:      __ccgo_ts + 8041,
-		FxProc:      uintptr(0),
-		FclientData: uintptr(0),
+		FzName: __ccgo_ts + 8041,
 	},
 	108: {
-		FzName:      __ccgo_ts + 8059,
-		FxProc:      uintptr(0),
-		FclientData: uintptr(0),
+		FzName: __ccgo_ts + 8059,
 	},
 	109: {
-		FzName:      __ccgo_ts + 8078,
-		FxProc:      uintptr(0),
-		FclientData: uintptr(0),
+		FzName: __ccgo_ts + 8078,
 	},
 	110: {
-		FzName:      __ccgo_ts + 8097,
-		FxProc:      uintptr(0),
-		FclientData: uintptr(0),
+		FzName: __ccgo_ts + 8097,
 	},
 	111: {
-		FzName:      __ccgo_ts + 8115,
-		FxProc:      uintptr(0),
-		FclientData: uintptr(0),
+		FzName: __ccgo_ts + 8115,
 	},
 	112: {
-		FzName:      __ccgo_ts + 8143,
-		FxProc:      uintptr(0),
-		FclientData: uintptr(0),
+		FzName: __ccgo_ts + 8143,
 	},
 	113: {
-		FzName:      __ccgo_ts + 8171,
-		FxProc:      uintptr(0),
-		FclientData: uintptr(0),
+		FzName: __ccgo_ts + 8171,
 	},
 	114: {
-		FzName:      __ccgo_ts + 8199,
-		FxProc:      uintptr(0),
-		FclientData: uintptr(0),
+		FzName: __ccgo_ts + 8199,
 	},
 	115: {
-		FzName:      __ccgo_ts + 8226,
-		FxProc:      uintptr(0),
-		FclientData: uintptr(0),
+		FzName: __ccgo_ts + 8226,
 	},
 	116: {
-		FzName:      __ccgo_ts + 8252,
-		FxProc:      uintptr(0),
-		FclientData: uintptr(0),
+		FzName: __ccgo_ts + 8252,
 	},
 	117: {
-		FzName:      __ccgo_ts + 8277,
-		FxProc:      uintptr(0),
-		FclientData: uintptr(0),
+		FzName: __ccgo_ts + 8277,
 	},
 	118: {
-		FzName:      __ccgo_ts + 8310,
-		FxProc:      uintptr(0),
-		FclientData: uintptr(0),
+		FzName: __ccgo_ts + 8310,
 	},
 	119: {
-		FzName:      __ccgo_ts + 8331,
-		FxProc:      uintptr(0),
-		FclientData: uintptr(0),
+		FzName: __ccgo_ts + 8331,
 	},
 	120: {
-		FzName:      __ccgo_ts + 8357,
-		FxProc:      uintptr(0),
-		FclientData: uintptr(0),
+		FzName: __ccgo_ts + 8357,
 	},
 	121: {
-		FzName:      __ccgo_ts + 8383,
-		FxProc:      uintptr(0),
-		FclientData: uintptr(0),
+		FzName: __ccgo_ts + 8383,
 	},
 	122: {
-		FzName:      __ccgo_ts + 8412,
-		FxProc:      uintptr(0),
-		FclientData: uintptr(0),
+		FzName: __ccgo_ts + 8412,
 	},
 	123: {
-		FzName:      __ccgo_ts + 8429,
-		FxProc:      uintptr(0),
-		FclientData: uintptr(0),
+		FzName: __ccgo_ts + 8429,
 	},
 	124: {
-		FzName:      __ccgo_ts + 8456,
-		FxProc:      uintptr(0),
-		FclientData: uintptr(0),
+		FzName: __ccgo_ts + 8456,
 	},
 	125: {
-		FzName:      __ccgo_ts + 8473,
-		FxProc:      uintptr(0),
-		FclientData: uintptr(0),
+		FzName: __ccgo_ts + 8473,
 	},
 	126: {
-		FzName:      __ccgo_ts + 8497,
-		FxProc:      uintptr(0),
-		FclientData: uintptr(0),
+		FzName: __ccgo_ts + 8497,
 	},
 	127: {
-		FzName:      __ccgo_ts + 8515,
-		FxProc:      uintptr(0),
-		FclientData: uintptr(0),
+		FzName: __ccgo_ts + 8515,
 	},
 	128: {
-		FzName:      __ccgo_ts + 8541,
-		FxProc:      uintptr(0),
-		FclientData: uintptr(0),
+		FzName: __ccgo_ts + 8541,
 	},
 	129: {
-		FzName:      __ccgo_ts + 8561,
-		FxProc:      uintptr(0),
-		FclientData: uintptr(0),
+		FzName: __ccgo_ts + 8561,
 	},
 	130: {
-		FzName:      __ccgo_ts + 8579,
-		FxProc:      uintptr(0),
-		FclientData: uintptr(0),
+		FzName: __ccgo_ts + 8579,
 	},
 	131: {
-		FzName:      __ccgo_ts + 8607,
-		FxProc:      uintptr(0),
-		FclientData: uintptr(0),
+		FzName: __ccgo_ts + 8607,
 	},
 	132: {
-		FzName:      __ccgo_ts + 8635,
-		FxProc:      uintptr(0),
-		FclientData: uintptr(0),
+		FzName: __ccgo_ts + 8635,
 	},
 	133: {
-		FzName:      __ccgo_ts + 8661,
-		FxProc:      uintptr(0),
-		FclientData: uintptr(0),
+		FzName: __ccgo_ts + 8661,
 	},
 	134: {
-		FzName:      __ccgo_ts + 8691,
-		FxProc:      uintptr(0),
-		FclientData: uintptr(0),
+		FzName: __ccgo_ts + 8691,
 	},
 	135: {
-		FzName:      __ccgo_ts + 8711,
-		FxProc:      uintptr(0),
-		FclientData: uintptr(0),
+		FzName: __ccgo_ts + 8711,
 	},
 	136: {
-		FzName:      __ccgo_ts + 8724,
-		FxProc:      uintptr(0),
-		FclientData: uintptr(0),
+		FzName: __ccgo_ts + 8724,
 	},
 	137: {
-		FzName:      __ccgo_ts + 8746,
-		FxProc:      uintptr(0),
-		FclientData: uintptr(0),
+		FzName: __ccgo_ts + 8746,
 	},
 	138: {
-		FzName:      __ccgo_ts + 8769,
-		FxProc:      uintptr(0),
-		FclientData: uintptr(0),
+		FzName: __ccgo_ts + 8769,
 	},
 	139: {
-		FzName:      __ccgo_ts + 8795,
-		FxProc:      uintptr(0),
-		FclientData: uintptr(0),
+		FzName: __ccgo_ts + 8795,
 	},
 	140: {
-		FzName:      __ccgo_ts + 8822,
-		FxProc:      uintptr(0),
-		FclientData: uintptr(0),
+		FzName: __ccgo_ts + 8822,
 	},
 	141: {
-		FzName:      __ccgo_ts + 8839,
-		FxProc:      uintptr(0),
-		FclientData: uintptr(0),
+		FzName: __ccgo_ts + 8839,
 	},
 	142: {
 		FzName: __ccgo_ts + 8864,
-		FxProc: uintptr(0),
 	},
 	143: {
 		FzName: __ccgo_ts + 8885,
-		FxProc: uintptr(0),
 	},
 	144: {
 		FzName: __ccgo_ts + 8895,
-		FxProc: uintptr(0),
 	},
 	145: {
 		FzName: __ccgo_ts + 8917,
-		FxProc: uintptr(0),
 	},
 	146: {
 		FzName: __ccgo_ts + 8938,
-		FxProc: uintptr(0),
 	},
 	147: {
-		FzName:      __ccgo_ts + 8963,
-		FxProc:      uintptr(0),
-		FclientData: uintptr(0),
+		FzName: __ccgo_ts + 8963,
 	},
 	148: {
-		FzName:      __ccgo_ts + 8986,
-		FxProc:      uintptr(0),
-		FclientData: uintptr(0),
+		FzName: __ccgo_ts + 8986,
 	},
 	149: {
-		FzName:      __ccgo_ts + 9010,
-		FxProc:      uintptr(0),
-		FclientData: uintptr(0),
+		FzName: __ccgo_ts + 9010,
 	},
 	150: {
-		FzName:      __ccgo_ts + 9029,
-		FxProc:      uintptr(0),
-		FclientData: uintptr(0),
+		FzName: __ccgo_ts + 9029,
 	},
 	151: {
-		FzName:      __ccgo_ts + 9047,
-		FxProc:      uintptr(0),
-		FclientData: uintptr(0),
+		FzName: __ccgo_ts + 9047,
 	},
 	152: {
-		FzName:      __ccgo_ts + 9072,
-		FxProc:      uintptr(0),
-		FclientData: uintptr(0),
+		FzName: __ccgo_ts + 9072,
 	},
 	153: {
-		FzName:      __ccgo_ts + 9097,
-		FxProc:      uintptr(0),
-		FclientData: uintptr(0),
+		FzName: __ccgo_ts + 9097,
 	},
 	154: {
-		FzName:      __ccgo_ts + 9110,
-		FxProc:      uintptr(0),
-		FclientData: uintptr(0),
+		FzName: __ccgo_ts + 9110,
 	},
 	155: {
-		FzName:      __ccgo_ts + 9124,
-		FxProc:      uintptr(0),
-		FclientData: uintptr(0),
+		FzName: __ccgo_ts + 9124,
 	},
 	156: {
-		FzName:      __ccgo_ts + 9150,
-		FxProc:      uintptr(0),
-		FclientData: uintptr(0),
+		FzName: __ccgo_ts + 9150,
 	},
 }
 
@@ -14037,11 +13648,6 @@ var _longdouble_size = int32(8)
 
 var _query_plan = __ccgo_ts + 9498
 
-type TsColMap = struct {
-	FiFrom int32
-	FzCol  uintptr
-}
-
 type TIdList_item = struct {
 	FzName uintptr
 	Fu4    struct {
@@ -14049,6 +13655,15 @@ type TIdList_item = struct {
 		Fidx         int32
 		F__ccgo_pad2 [4]byte
 	}
+}
+
+type Tsqlite3InitInfo = struct {
+	FnewTnum       TPgno
+	FiDb           Tu8
+	Fbusy          Tu8
+	F__ccgo_align3 [2]byte
+	F__ccgo8       uint8
+	FazInit        uintptr
 }
 
 type TExprList_item = struct {
@@ -14071,13 +13686,17 @@ type TExprList_item = struct {
 	F__ccgo_pad4 [4]byte
 }
 
-type Tsqlite3InitInfo = struct {
-	FnewTnum       TPgno
-	FiDb           Tu8
-	Fbusy          Tu8
-	F__ccgo_align3 [2]byte
-	F__ccgo8       uint8
-	FazInit        uintptr
+type TsColMap = struct {
+	FiFrom int32
+	FzCol  uintptr
+}
+
+type TMemValue = struct {
+	Fi      [0]Ti64
+	FnZero  [0]int32
+	FzPType [0]uintptr
+	FpDef   [0]uintptr
+	Fr      float64
 }
 
 type Tp4union = struct {
@@ -14096,14 +13715,6 @@ type Tp4union = struct {
 	FpTab         [0]uintptr
 	Fi            int32
 	F__ccgo_pad14 [4]byte
-}
-
-type TMemValue = struct {
-	Fi      [0]Ti64
-	FnZero  [0]int32
-	FzPType [0]uintptr
-	FpDef   [0]uintptr
-	Fr      float64
 }
 
 const m_SAVEPOINT_RELEASE = 1
@@ -14845,83 +14456,63 @@ var _aCmd1 = [20]struct {
 }{
 	0: {
 		FzName: __ccgo_ts + 9954,
-		FxProc: uintptr(0),
 	},
 	1: {
 		FzName: __ccgo_ts + 9965,
-		FxProc: uintptr(0),
 	},
 	2: {
 		FzName: __ccgo_ts + 9977,
-		FxProc: uintptr(0),
 	},
 	3: {
 		FzName: __ccgo_ts + 9990,
-		FxProc: uintptr(0),
 	},
 	4: {
 		FzName: __ccgo_ts + 10005,
-		FxProc: uintptr(0),
 	},
 	5: {
 		FzName: __ccgo_ts + 10022,
-		FxProc: uintptr(0),
 	},
 	6: {
 		FzName: __ccgo_ts + 10040,
-		FxProc: uintptr(0),
 	},
 	7: {
 		FzName: __ccgo_ts + 10060,
-		FxProc: uintptr(0),
 	},
 	8: {
 		FzName: __ccgo_ts + 10072,
-		FxProc: uintptr(0),
 	},
 	9: {
 		FzName: __ccgo_ts + 10088,
-		FxProc: uintptr(0),
 	},
 	10: {
 		FzName: __ccgo_ts + 10097,
-		FxProc: uintptr(0),
 	},
 	11: {
 		FzName: __ccgo_ts + 10109,
-		FxProc: uintptr(0),
 	},
 	12: {
 		FzName: __ccgo_ts + 10120,
-		FxProc: uintptr(0),
 	},
 	13: {
 		FzName: __ccgo_ts + 10130,
-		FxProc: uintptr(0),
 	},
 	14: {
 		FzName: __ccgo_ts + 10141,
-		FxProc: uintptr(0),
 	},
 	15: {
 		FzName: __ccgo_ts + 10153,
-		FxProc: uintptr(0),
 	},
 	16: {
 		FzName: __ccgo_ts + 10168,
-		FxProc: uintptr(0),
 	},
 	17: {
 		FzName: __ccgo_ts + 10182,
-		FxProc: uintptr(0),
 	},
 	18: {
 		FzName: __ccgo_ts + 10207,
-		FxProc: uintptr(0),
 	},
 	19: {
 		FzName: __ccgo_ts + 10241,
-		FxProc: uintptr(0),
 	},
 }
 
@@ -15855,59 +15446,45 @@ var _aCmd2 = [14]struct {
 }{
 	0: {
 		FzName: __ccgo_ts + 10840,
-		FxProc: uintptr(0),
 	},
 	1: {
 		FzName: __ccgo_ts + 10851,
-		FxProc: uintptr(0),
 	},
 	2: {
 		FzName: __ccgo_ts + 10863,
-		FxProc: uintptr(0),
 	},
 	3: {
 		FzName: __ccgo_ts + 10887,
-		FxProc: uintptr(0),
 	},
 	4: {
 		FzName: __ccgo_ts + 10905,
-		FxProc: uintptr(0),
 	},
 	5: {
 		FzName: __ccgo_ts + 10918,
-		FxProc: uintptr(0),
 	},
 	6: {
 		FzName: __ccgo_ts + 10937,
-		FxProc: uintptr(0),
 	},
 	7: {
 		FzName: __ccgo_ts + 10948,
-		FxProc: uintptr(0),
 	},
 	8: {
 		FzName: __ccgo_ts + 10958,
-		FxProc: uintptr(0),
 	},
 	9: {
 		FzName: __ccgo_ts + 10977,
-		FxProc: uintptr(0),
 	},
 	10: {
 		FzName: __ccgo_ts + 10989,
-		FxProc: uintptr(0),
 	},
 	11: {
 		FzName: __ccgo_ts + 11007,
-		FxProc: uintptr(0),
 	},
 	12: {
 		FzName: __ccgo_ts + 11021,
-		FxProc: uintptr(0),
 	},
 	13: {
 		FzName: __ccgo_ts + 11035,
-		FxProc: uintptr(0),
 	},
 }
 
@@ -16065,7 +15642,6 @@ func _name_to_enc(tls *libc.TLS, interp uintptr, pObj uintptr) (r Tu8) {
 			FzName: __ccgo_ts + 11129,
 			Fenc:   uint8(m_SQLITE_UTF16),
 		},
-		4: {},
 	}
 	z = libtcl8_6.XTcl_GetString(tls, pObj)
 	pEnc = bp
@@ -16199,19 +15775,15 @@ var _aCmd3 = [4]struct {
 }{
 	0: {
 		FzName: __ccgo_ts + 11189,
-		FxProc: uintptr(0),
 	},
 	1: {
 		FzName: __ccgo_ts + 11198,
-		FxProc: uintptr(0),
 	},
 	2: {
 		FzName: __ccgo_ts + 11218,
-		FxProc: uintptr(0),
 	},
 	3: {
 		FzName: __ccgo_ts + 11233,
-		FxProc: uintptr(0),
 	},
 }
 
@@ -16395,11 +15967,7 @@ type TCrashGlobal1 = struct {
 }
 
 var _g = TCrashGlobal{
-	FpWriteList:             uintptr(0),
-	FpWriteListEnd:          uintptr(0),
-	FiSectorSize:            int32(m_SQLITE_DEFAULT_SECTOR_SIZE),
-	FiDeviceCharacteristics: int32(0),
-	FiCrash:                 int32(0),
+	FiSectorSize: int32(m_SQLITE_DEFAULT_SECTOR_SIZE),
 }
 
 // C documentation
@@ -16860,23 +16428,7 @@ func _cfShmMap(tls *libc.TLS, pFile uintptr, iRegion int32, sz int32, w int32, p
 }
 
 var _CrashFileVtab = Tsqlite3_io_methods{
-	FiVersion:               int32(2),
-	FxClose:                 uintptr(0),
-	FxRead:                  uintptr(0),
-	FxWrite:                 uintptr(0),
-	FxTruncate:              uintptr(0),
-	FxSync:                  uintptr(0),
-	FxFileSize:              uintptr(0),
-	FxLock:                  uintptr(0),
-	FxUnlock:                uintptr(0),
-	FxCheckReservedLock:     uintptr(0),
-	FxFileControl:           uintptr(0),
-	FxSectorSize:            uintptr(0),
-	FxDeviceCharacteristics: uintptr(0),
-	FxShmMap:                uintptr(0),
-	FxShmLock:               uintptr(0),
-	FxShmBarrier:            uintptr(0),
-	FxShmUnmap:              uintptr(0),
+	FiVersion: int32(2),
 }
 
 func init() {
@@ -17121,7 +16673,6 @@ func _processDevSymArgs(tls *libc.TLS, interp uintptr, objc int32, objv uintptr,
 			FzName:  __ccgo_ts + 11416,
 			FiValue: int32(m_SQLITE_IOCAP_BATCH_ATOMIC),
 		},
-		13: {},
 	}
 	iDc = 0
 	*(*int32)(unsafe.Pointer(bp + 224)) = 0
@@ -17253,25 +16804,8 @@ func _crashEnableCmd(tls *libc.TLS, clientData uintptr, interp uintptr, objc int
 }
 
 var _crashVfs = Tsqlite3_vfs{
-	FiVersion:          int32(2),
-	FszOsFile:          0,
-	FmxPathname:        0,
-	FpNext:             uintptr(0),
-	FzName:             __ccgo_ts + 11564,
-	FpAppData:          uintptr(0),
-	FxOpen:             uintptr(0),
-	FxDelete:           uintptr(0),
-	FxAccess:           uintptr(0),
-	FxFullPathname:     uintptr(0),
-	FxDlOpen:           uintptr(0),
-	FxDlError:          uintptr(0),
-	FxDlSym:            uintptr(0),
-	FxDlClose:          uintptr(0),
-	FxRandomness:       uintptr(0),
-	FxSleep:            uintptr(0),
-	FxCurrentTime:      uintptr(0),
-	FxGetLastError:     uintptr(0),
-	FxCurrentTimeInt64: uintptr(0),
+	FiVersion: int32(2),
+	FzName:    __ccgo_ts + 11564,
 }
 
 func init() {
@@ -17288,7 +16822,6 @@ func init() {
 	*(*uintptr)(unsafe.Add(p, 112)) = __ccgo_fp(_cfSleep)
 	*(*uintptr)(unsafe.Add(p, 120)) = __ccgo_fp(_cfCurrentTime)
 	*(*uintptr)(unsafe.Add(p, 128)) = __ccgo_fp(_cfGetLastError)
-	*(*uintptr)(unsafe.Add(p, 136)) = uintptr(0)
 }
 
 // C documentation
@@ -18940,26 +18473,7 @@ func _echoRollbackTo(tls *libc.TLS, pVTab uintptr, iSavepoint int32) (r int32) {
 //	** table (like an SQL VIEW).
 //	*/
 var _echoModule = Tsqlite3_module{
-	FiVersion:      int32(1),
-	FxCreate:       uintptr(0),
-	FxConnect:      uintptr(0),
-	FxBestIndex:    uintptr(0),
-	FxDisconnect:   uintptr(0),
-	FxDestroy:      uintptr(0),
-	FxOpen:         uintptr(0),
-	FxClose:        uintptr(0),
-	FxFilter:       uintptr(0),
-	FxNext:         uintptr(0),
-	FxEof:          uintptr(0),
-	FxColumn:       uintptr(0),
-	FxRowid:        uintptr(0),
-	FxUpdate:       uintptr(0),
-	FxBegin:        uintptr(0),
-	FxSync:         uintptr(0),
-	FxCommit:       uintptr(0),
-	FxRollback:     uintptr(0),
-	FxFindFunction: uintptr(0),
-	FxRename:       uintptr(0),
+	FiVersion: int32(1),
 }
 
 func init() {
@@ -18986,29 +18500,7 @@ func init() {
 }
 
 var _echoModuleV2 = Tsqlite3_module{
-	FiVersion:      int32(2),
-	FxCreate:       uintptr(0),
-	FxConnect:      uintptr(0),
-	FxBestIndex:    uintptr(0),
-	FxDisconnect:   uintptr(0),
-	FxDestroy:      uintptr(0),
-	FxOpen:         uintptr(0),
-	FxClose:        uintptr(0),
-	FxFilter:       uintptr(0),
-	FxNext:         uintptr(0),
-	FxEof:          uintptr(0),
-	FxColumn:       uintptr(0),
-	FxRowid:        uintptr(0),
-	FxUpdate:       uintptr(0),
-	FxBegin:        uintptr(0),
-	FxSync:         uintptr(0),
-	FxCommit:       uintptr(0),
-	FxRollback:     uintptr(0),
-	FxFindFunction: uintptr(0),
-	FxRename:       uintptr(0),
-	FxSavepoint:    uintptr(0),
-	FxRelease:      uintptr(0),
-	FxRollbackTo:   uintptr(0),
+	FiVersion: int32(2),
 }
 
 func init() {
@@ -19135,14 +18627,10 @@ var _aObjCmd1 = [2]struct {
 	FclientData uintptr
 }{
 	0: {
-		FzName:      __ccgo_ts + 12766,
-		FxProc:      uintptr(0),
-		FclientData: uintptr(0),
+		FzName: __ccgo_ts + 12766,
 	},
 	1: {
-		FzName:      __ccgo_ts + 12787,
-		FxProc:      uintptr(0),
-		FclientData: uintptr(0),
+		FzName: __ccgo_ts + 12787,
 	},
 }
 
@@ -19150,13 +18638,6 @@ func init() {
 	p := unsafe.Pointer(&_aObjCmd1)
 	*(*uintptr)(unsafe.Add(p, 8)) = __ccgo_fp(_register_echo_module)
 	*(*uintptr)(unsafe.Add(p, 32)) = __ccgo_fp(_declare_vtab)
-}
-
-type Tsqlite3_index_constraint = struct {
-	FiColumn     int32
-	Fop          uint8
-	Fusable      uint8
-	FiTermOffset int32
 }
 
 type Tsqlite3_index_constraint_usage = struct {
@@ -19169,6 +18650,13 @@ type Tsqlite3_index_orderby = struct {
 	FiColumn     int32
 	Fdesc        uint8
 	F__ccgo_pad2 [3]byte
+}
+
+type Tsqlite3_index_constraint = struct {
+	FiColumn     int32
+	Fop          uint8
+	Fusable      uint8
+	FiTermOffset int32
 }
 
 /*
@@ -19347,19 +18835,13 @@ var _aObjCmd2 = [3]struct {
 	FclientData uintptr
 }{
 	0: {
-		FzName:      __ccgo_ts + 12910,
-		FxProc:      uintptr(0),
-		FclientData: uintptr(0),
+		FzName: __ccgo_ts + 12910,
 	},
 	1: {
-		FzName:      __ccgo_ts + 12924,
-		FxProc:      uintptr(0),
-		FclientData: uintptr(0),
+		FzName: __ccgo_ts + 12924,
 	},
 	2: {
-		FzName:      __ccgo_ts + 12939,
-		FxProc:      uintptr(0),
-		FclientData: uintptr(0),
+		FzName: __ccgo_ts + 12939,
 	},
 }
 
@@ -20000,29 +19482,24 @@ func _backupTestCmd(tls *libc.TLS, clientData TClientData, interp uintptr, objc 
 	}{
 		0: {
 			FzCmd: __ccgo_ts + 12985,
-			FeCmd: 0,
 			FnArg: int32(1),
 			FzArg: __ccgo_ts + 12990,
 		},
 		1: {
 			FzCmd: __ccgo_ts + 12996,
 			FeCmd: 1,
-			FnArg: 0,
 			FzArg: __ccgo_ts + 1095,
 		},
 		2: {
 			FzCmd: __ccgo_ts + 13003,
 			FeCmd: 2,
-			FnArg: 0,
 			FzArg: __ccgo_ts + 1095,
 		},
 		3: {
 			FzCmd: __ccgo_ts + 13013,
 			FeCmd: 3,
-			FnArg: 0,
 			FzArg: __ccgo_ts + 1095,
 		},
-		4: {},
 	}
 	p = clientData
 	rc = libtcl8_6.XTcl_GetIndexFromObjStruct(tls, interp, *(*uintptr)(unsafe.Pointer(objv + 1*8)), bp, int32(24), __ccgo_ts+13023, 0, bp+120)
@@ -20660,7 +20137,6 @@ func _testBestIndexObj(tls *libc.TLS, clientData TClientData, interp uintptr, ob
 		3: __ccgo_ts + 13275,
 		4: __ccgo_ts + 13284,
 		5: __ccgo_ts + 13287,
-		6: uintptr(0),
 	}
 	pIdxInfo = clientData
 	if objc < int32(2) {
@@ -20943,28 +20419,7 @@ func _tclFindFunction(tls *libc.TLS, tab uintptr, nArg int32, zName uintptr, pxF
 //	** A virtual table module that provides read-only access to a
 //	** Tcl global variable namespace.
 //	*/
-var _tclModule = Tsqlite3_module{
-	FiVersion:      int32(0),
-	FxCreate:       uintptr(0),
-	FxConnect:      uintptr(0),
-	FxBestIndex:    uintptr(0),
-	FxDisconnect:   uintptr(0),
-	FxDestroy:      uintptr(0),
-	FxOpen:         uintptr(0),
-	FxClose:        uintptr(0),
-	FxFilter:       uintptr(0),
-	FxNext:         uintptr(0),
-	FxEof:          uintptr(0),
-	FxColumn:       uintptr(0),
-	FxRowid:        uintptr(0),
-	FxUpdate:       uintptr(0),
-	FxBegin:        uintptr(0),
-	FxSync:         uintptr(0),
-	FxCommit:       uintptr(0),
-	FxRollback:     uintptr(0),
-	FxFindFunction: uintptr(0),
-	FxRename:       uintptr(0),
-}
+var _tclModule = Tsqlite3_module{}
 
 func init() {
 	p := unsafe.Pointer(&_tclModule)
@@ -20980,13 +20435,7 @@ func init() {
 	*(*uintptr)(unsafe.Add(p, 80)) = __ccgo_fp(_tclEof)
 	*(*uintptr)(unsafe.Add(p, 88)) = __ccgo_fp(_tclColumn)
 	*(*uintptr)(unsafe.Add(p, 96)) = __ccgo_fp(_tclRowid)
-	*(*uintptr)(unsafe.Add(p, 104)) = uintptr(0)
-	*(*uintptr)(unsafe.Add(p, 112)) = uintptr(0)
-	*(*uintptr)(unsafe.Add(p, 120)) = uintptr(0)
-	*(*uintptr)(unsafe.Add(p, 128)) = uintptr(0)
-	*(*uintptr)(unsafe.Add(p, 136)) = uintptr(0)
 	*(*uintptr)(unsafe.Add(p, 144)) = __ccgo_fp(_tclFindFunction)
-	*(*uintptr)(unsafe.Add(p, 152)) = uintptr(0)
 }
 
 // C documentation
@@ -21036,9 +20485,7 @@ var _aObjCmd3 = [1]struct {
 	FclientData uintptr
 }{
 	0: {
-		FzName:      __ccgo_ts + 13438,
-		FxProc:      uintptr(0),
-		FclientData: uintptr(0),
+		FzName: __ccgo_ts + 13438,
 	},
 }
 
@@ -21366,23 +20813,18 @@ var _aObjCmd4 = [5]struct {
 }{
 	0: {
 		FzName: __ccgo_ts + 13632,
-		FxProc: uintptr(0),
 	},
 	1: {
 		FzName: __ccgo_ts + 13650,
-		FxProc: uintptr(0),
 	},
 	2: {
 		FzName: __ccgo_ts + 13669,
-		FxProc: uintptr(0),
 	},
 	3: {
 		FzName: __ccgo_ts + 13688,
-		FxProc: uintptr(0),
 	},
 	4: {
 		FzName: __ccgo_ts + 13706,
-		FxProc: uintptr(0),
 	},
 }
 
@@ -21805,24 +21247,17 @@ func x_sqlite3_delete_database(tls *libc.TLS, zFile uintptr) (r int32) {
 		Fb83     int32
 	}{
 		0: {
-			FzFmt:    __ccgo_ts + 15570,
-			FiOffset: 0,
-			Fb83:     0,
+			FzFmt: __ccgo_ts + 15570,
 		},
 		1: {
-			FzFmt:    __ccgo_ts + 15577,
-			FiOffset: 0,
-			Fb83:     0,
+			FzFmt: __ccgo_ts + 15577,
 		},
 		2: {
-			FzFmt:    __ccgo_ts + 15592,
-			FiOffset: 0,
-			Fb83:     0,
+			FzFmt: __ccgo_ts + 15592,
 		},
 		3: {
-			FzFmt:    __ccgo_ts + 15570,
-			FiOffset: 0,
-			Fb83:     int32(1),
+			FzFmt: __ccgo_ts + 15570,
+			Fb83:  int32(1),
 		},
 		4: {
 			FzFmt:    __ccgo_ts + 15577,
@@ -22396,19 +21831,7 @@ func _demoOpen(tls *libc.TLS, pVfs uintptr, zName uintptr, pFile uintptr, flags 
 }
 
 var _demoio = Tsqlite3_io_methods{
-	FiVersion:               int32(1),
-	FxClose:                 uintptr(0),
-	FxRead:                  uintptr(0),
-	FxWrite:                 uintptr(0),
-	FxTruncate:              uintptr(0),
-	FxSync:                  uintptr(0),
-	FxFileSize:              uintptr(0),
-	FxLock:                  uintptr(0),
-	FxUnlock:                uintptr(0),
-	FxCheckReservedLock:     uintptr(0),
-	FxFileControl:           uintptr(0),
-	FxSectorSize:            uintptr(0),
-	FxDeviceCharacteristics: uintptr(0),
+	FiVersion: int32(1),
 }
 
 func init() {
@@ -22608,23 +22031,10 @@ func x_sqlite3_demovfs(tls *libc.TLS) (r uintptr) {
 }
 
 var _demovfs = Tsqlite3_vfs{
-	FiVersion:      int32(1),
-	FszOsFile:      int32(40),
-	FmxPathname:    int32(m_MAXPATHNAME),
-	FpNext:         uintptr(0),
-	FzName:         __ccgo_ts + 15647,
-	FpAppData:      uintptr(0),
-	FxOpen:         uintptr(0),
-	FxDelete:       uintptr(0),
-	FxAccess:       uintptr(0),
-	FxFullPathname: uintptr(0),
-	FxDlOpen:       uintptr(0),
-	FxDlError:      uintptr(0),
-	FxDlSym:        uintptr(0),
-	FxDlClose:      uintptr(0),
-	FxRandomness:   uintptr(0),
-	FxSleep:        uintptr(0),
-	FxCurrentTime:  uintptr(0),
+	FiVersion:   int32(1),
+	FszOsFile:   int32(40),
+	FmxPathname: int32(m_MAXPATHNAME),
+	FzName:      __ccgo_ts + 15647,
 }
 
 func init() {
@@ -22914,23 +22324,7 @@ func _devsymOpen(tls *libc.TLS, pVfs uintptr, zName uintptr, pFile uintptr, flag
 }
 
 var _devsym_io_methods = Tsqlite3_io_methods{
-	FiVersion:               int32(2),
-	FxClose:                 uintptr(0),
-	FxRead:                  uintptr(0),
-	FxWrite:                 uintptr(0),
-	FxTruncate:              uintptr(0),
-	FxSync:                  uintptr(0),
-	FxFileSize:              uintptr(0),
-	FxLock:                  uintptr(0),
-	FxUnlock:                uintptr(0),
-	FxCheckReservedLock:     uintptr(0),
-	FxFileControl:           uintptr(0),
-	FxSectorSize:            uintptr(0),
-	FxDeviceCharacteristics: uintptr(0),
-	FxShmMap:                uintptr(0),
-	FxShmLock:               uintptr(0),
-	FxShmBarrier:            uintptr(0),
-	FxShmUnmap:              uintptr(0),
+	FiVersion: int32(2),
 }
 
 func init() {
@@ -23075,23 +22469,7 @@ func _writecrashOpen(tls *libc.TLS, pVfs uintptr, zName uintptr, pFile uintptr, 
 }
 
 var _writecrash_io_methods = Tsqlite3_io_methods{
-	FiVersion:               int32(2),
-	FxClose:                 uintptr(0),
-	FxRead:                  uintptr(0),
-	FxWrite:                 uintptr(0),
-	FxTruncate:              uintptr(0),
-	FxSync:                  uintptr(0),
-	FxFileSize:              uintptr(0),
-	FxLock:                  uintptr(0),
-	FxUnlock:                uintptr(0),
-	FxCheckReservedLock:     uintptr(0),
-	FxFileControl:           uintptr(0),
-	FxSectorSize:            uintptr(0),
-	FxDeviceCharacteristics: uintptr(0),
-	FxShmMap:                uintptr(0),
-	FxShmLock:               uintptr(0),
-	FxShmBarrier:            uintptr(0),
-	FxShmUnmap:              uintptr(0),
+	FiVersion: int32(2),
 }
 
 func init() {
@@ -23115,25 +22493,10 @@ func init() {
 }
 
 var _devsym_vfs = Tsqlite3_vfs{
-	FiVersion:          int32(2),
-	FszOsFile:          int32(16),
-	FmxPathname:        int32(m_DEVSYM_MAX_PATHNAME),
-	FpNext:             uintptr(0),
-	FzName:             __ccgo_ts + 15688,
-	FpAppData:          uintptr(0),
-	FxOpen:             uintptr(0),
-	FxDelete:           uintptr(0),
-	FxAccess:           uintptr(0),
-	FxFullPathname:     uintptr(0),
-	FxDlOpen:           uintptr(0),
-	FxDlError:          uintptr(0),
-	FxDlSym:            uintptr(0),
-	FxDlClose:          uintptr(0),
-	FxRandomness:       uintptr(0),
-	FxSleep:            uintptr(0),
-	FxCurrentTime:      uintptr(0),
-	FxGetLastError:     uintptr(0),
-	FxCurrentTimeInt64: uintptr(0),
+	FiVersion:   int32(2),
+	FszOsFile:   int32(16),
+	FmxPathname: int32(m_DEVSYM_MAX_PATHNAME),
+	FzName:      __ccgo_ts + 15688,
 }
 
 func init() {
@@ -23142,37 +22505,16 @@ func init() {
 	*(*uintptr)(unsafe.Add(p, 48)) = __ccgo_fp(_devsymDelete)
 	*(*uintptr)(unsafe.Add(p, 56)) = __ccgo_fp(_devsymAccess)
 	*(*uintptr)(unsafe.Add(p, 64)) = __ccgo_fp(_devsymFullPathname)
-	*(*uintptr)(unsafe.Add(p, 72)) = uintptr(0)
-	*(*uintptr)(unsafe.Add(p, 80)) = uintptr(0)
-	*(*uintptr)(unsafe.Add(p, 88)) = uintptr(0)
-	*(*uintptr)(unsafe.Add(p, 96)) = uintptr(0)
 	*(*uintptr)(unsafe.Add(p, 104)) = __ccgo_fp(_devsymRandomness)
 	*(*uintptr)(unsafe.Add(p, 112)) = __ccgo_fp(_devsymSleep)
 	*(*uintptr)(unsafe.Add(p, 120)) = __ccgo_fp(_devsymCurrentTime)
-	*(*uintptr)(unsafe.Add(p, 128)) = uintptr(0)
-	*(*uintptr)(unsafe.Add(p, 136)) = uintptr(0)
 }
 
 var _writecrash_vfs = Tsqlite3_vfs{
-	FiVersion:          int32(2),
-	FszOsFile:          int32(16),
-	FmxPathname:        int32(m_DEVSYM_MAX_PATHNAME),
-	FpNext:             uintptr(0),
-	FzName:             __ccgo_ts + 15695,
-	FpAppData:          uintptr(0),
-	FxOpen:             uintptr(0),
-	FxDelete:           uintptr(0),
-	FxAccess:           uintptr(0),
-	FxFullPathname:     uintptr(0),
-	FxDlOpen:           uintptr(0),
-	FxDlError:          uintptr(0),
-	FxDlSym:            uintptr(0),
-	FxDlClose:          uintptr(0),
-	FxRandomness:       uintptr(0),
-	FxSleep:            uintptr(0),
-	FxCurrentTime:      uintptr(0),
-	FxGetLastError:     uintptr(0),
-	FxCurrentTimeInt64: uintptr(0),
+	FiVersion:   int32(2),
+	FszOsFile:   int32(16),
+	FmxPathname: int32(m_DEVSYM_MAX_PATHNAME),
+	FzName:      __ccgo_ts + 15695,
 }
 
 func init() {
@@ -23181,15 +22523,9 @@ func init() {
 	*(*uintptr)(unsafe.Add(p, 48)) = __ccgo_fp(_devsymDelete)
 	*(*uintptr)(unsafe.Add(p, 56)) = __ccgo_fp(_devsymAccess)
 	*(*uintptr)(unsafe.Add(p, 64)) = __ccgo_fp(_devsymFullPathname)
-	*(*uintptr)(unsafe.Add(p, 72)) = uintptr(0)
-	*(*uintptr)(unsafe.Add(p, 80)) = uintptr(0)
-	*(*uintptr)(unsafe.Add(p, 88)) = uintptr(0)
-	*(*uintptr)(unsafe.Add(p, 96)) = uintptr(0)
 	*(*uintptr)(unsafe.Add(p, 104)) = __ccgo_fp(_devsymRandomness)
 	*(*uintptr)(unsafe.Add(p, 112)) = __ccgo_fp(_devsymSleep)
 	*(*uintptr)(unsafe.Add(p, 120)) = __ccgo_fp(_devsymCurrentTime)
-	*(*uintptr)(unsafe.Add(p, 128)) = uintptr(0)
-	*(*uintptr)(unsafe.Add(p, 136)) = uintptr(0)
 }
 
 // C documentation
@@ -24026,28 +23362,7 @@ func _fsBestIndex(tls *libc.TLS, tab uintptr, pIdxInfo uintptr) (r int32) {
 //	** A virtual table module that provides read-only access to a
 //	** Tcl global variable namespace.
 //	*/
-var _fsModule = Tsqlite3_module{
-	FiVersion:      int32(0),
-	FxCreate:       uintptr(0),
-	FxConnect:      uintptr(0),
-	FxBestIndex:    uintptr(0),
-	FxDisconnect:   uintptr(0),
-	FxDestroy:      uintptr(0),
-	FxOpen:         uintptr(0),
-	FxClose:        uintptr(0),
-	FxFilter:       uintptr(0),
-	FxNext:         uintptr(0),
-	FxEof:          uintptr(0),
-	FxColumn:       uintptr(0),
-	FxRowid:        uintptr(0),
-	FxUpdate:       uintptr(0),
-	FxBegin:        uintptr(0),
-	FxSync:         uintptr(0),
-	FxCommit:       uintptr(0),
-	FxRollback:     uintptr(0),
-	FxFindFunction: uintptr(0),
-	FxRename:       uintptr(0),
-}
+var _fsModule = Tsqlite3_module{}
 
 func init() {
 	p := unsafe.Pointer(&_fsModule)
@@ -24063,37 +23378,9 @@ func init() {
 	*(*uintptr)(unsafe.Add(p, 80)) = __ccgo_fp(_fsEof)
 	*(*uintptr)(unsafe.Add(p, 88)) = __ccgo_fp(_fsColumn)
 	*(*uintptr)(unsafe.Add(p, 96)) = __ccgo_fp(_fsRowid)
-	*(*uintptr)(unsafe.Add(p, 104)) = uintptr(0)
-	*(*uintptr)(unsafe.Add(p, 112)) = uintptr(0)
-	*(*uintptr)(unsafe.Add(p, 120)) = uintptr(0)
-	*(*uintptr)(unsafe.Add(p, 128)) = uintptr(0)
-	*(*uintptr)(unsafe.Add(p, 136)) = uintptr(0)
-	*(*uintptr)(unsafe.Add(p, 144)) = uintptr(0)
-	*(*uintptr)(unsafe.Add(p, 152)) = uintptr(0)
 }
 
-var _fsdirModule = Tsqlite3_module{
-	FiVersion:      int32(0),
-	FxCreate:       uintptr(0),
-	FxConnect:      uintptr(0),
-	FxBestIndex:    uintptr(0),
-	FxDisconnect:   uintptr(0),
-	FxDestroy:      uintptr(0),
-	FxOpen:         uintptr(0),
-	FxClose:        uintptr(0),
-	FxFilter:       uintptr(0),
-	FxNext:         uintptr(0),
-	FxEof:          uintptr(0),
-	FxColumn:       uintptr(0),
-	FxRowid:        uintptr(0),
-	FxUpdate:       uintptr(0),
-	FxBegin:        uintptr(0),
-	FxSync:         uintptr(0),
-	FxCommit:       uintptr(0),
-	FxRollback:     uintptr(0),
-	FxFindFunction: uintptr(0),
-	FxRename:       uintptr(0),
-}
+var _fsdirModule = Tsqlite3_module{}
 
 func init() {
 	p := unsafe.Pointer(&_fsdirModule)
@@ -24109,37 +23396,9 @@ func init() {
 	*(*uintptr)(unsafe.Add(p, 80)) = __ccgo_fp(_fsdirEof)
 	*(*uintptr)(unsafe.Add(p, 88)) = __ccgo_fp(_fsdirColumn)
 	*(*uintptr)(unsafe.Add(p, 96)) = __ccgo_fp(_fsdirRowid)
-	*(*uintptr)(unsafe.Add(p, 104)) = uintptr(0)
-	*(*uintptr)(unsafe.Add(p, 112)) = uintptr(0)
-	*(*uintptr)(unsafe.Add(p, 120)) = uintptr(0)
-	*(*uintptr)(unsafe.Add(p, 128)) = uintptr(0)
-	*(*uintptr)(unsafe.Add(p, 136)) = uintptr(0)
-	*(*uintptr)(unsafe.Add(p, 144)) = uintptr(0)
-	*(*uintptr)(unsafe.Add(p, 152)) = uintptr(0)
 }
 
-var _fstreeModule = Tsqlite3_module{
-	FiVersion:      int32(0),
-	FxCreate:       uintptr(0),
-	FxConnect:      uintptr(0),
-	FxBestIndex:    uintptr(0),
-	FxDisconnect:   uintptr(0),
-	FxDestroy:      uintptr(0),
-	FxOpen:         uintptr(0),
-	FxClose:        uintptr(0),
-	FxFilter:       uintptr(0),
-	FxNext:         uintptr(0),
-	FxEof:          uintptr(0),
-	FxColumn:       uintptr(0),
-	FxRowid:        uintptr(0),
-	FxUpdate:       uintptr(0),
-	FxBegin:        uintptr(0),
-	FxSync:         uintptr(0),
-	FxCommit:       uintptr(0),
-	FxRollback:     uintptr(0),
-	FxFindFunction: uintptr(0),
-	FxRename:       uintptr(0),
-}
+var _fstreeModule = Tsqlite3_module{}
 
 func init() {
 	p := unsafe.Pointer(&_fstreeModule)
@@ -24155,13 +23414,6 @@ func init() {
 	*(*uintptr)(unsafe.Add(p, 80)) = __ccgo_fp(_fstreeEof)
 	*(*uintptr)(unsafe.Add(p, 88)) = __ccgo_fp(_fstreeColumn)
 	*(*uintptr)(unsafe.Add(p, 96)) = __ccgo_fp(_fstreeRowid)
-	*(*uintptr)(unsafe.Add(p, 104)) = uintptr(0)
-	*(*uintptr)(unsafe.Add(p, 112)) = uintptr(0)
-	*(*uintptr)(unsafe.Add(p, 120)) = uintptr(0)
-	*(*uintptr)(unsafe.Add(p, 128)) = uintptr(0)
-	*(*uintptr)(unsafe.Add(p, 136)) = uintptr(0)
-	*(*uintptr)(unsafe.Add(p, 144)) = uintptr(0)
-	*(*uintptr)(unsafe.Add(p, 152)) = uintptr(0)
 }
 
 // C documentation
@@ -24213,9 +23465,7 @@ var _aObjCmd5 = [1]struct {
 	FclientData uintptr
 }{
 	0: {
-		FzName:      __ccgo_ts + 16112,
-		FxProc:      uintptr(0),
-		FclientData: uintptr(0),
+		FzName: __ccgo_ts + 16112,
 	},
 }
 
@@ -24909,121 +24159,100 @@ var _aFuncs = [20]struct {
 		FzName:    __ccgo_ts + 16184,
 		FnArg:     int8(2),
 		FeTextRep: uint32(m_SQLITE_UTF8),
-		FxFunc:    uintptr(0),
 	},
 	1: {
 		FzName:    __ccgo_ts + 16192,
 		FnArg:     int8(1),
 		FeTextRep: uint32(m_SQLITE_UTF8),
-		FxFunc:    uintptr(0),
 	},
 	2: {
 		FzName:    __ccgo_ts + 16208,
 		FnArg:     int8(1),
 		FeTextRep: uint32(m_SQLITE_UTF8),
-		FxFunc:    uintptr(0),
 	},
 	3: {
 		FzName:    __ccgo_ts + 16226,
 		FnArg:     int8(1),
 		FeTextRep: uint32(m_SQLITE_UTF8),
-		FxFunc:    uintptr(0),
 	},
 	4: {
 		FzName:    __ccgo_ts + 16241,
 		FnArg:     int8(1),
 		FeTextRep: uint32(m_SQLITE_UTF8),
-		FxFunc:    uintptr(0),
 	},
 	5: {
 		FzName:    __ccgo_ts + 16256,
 		FnArg:     int8(1),
 		FeTextRep: uint32(m_SQLITE_UTF8),
-		FxFunc:    uintptr(0),
 	},
 	6: {
 		FzName:    __ccgo_ts + 16268,
-		FnArg:     0,
 		FeTextRep: uint32(m_SQLITE_UTF8),
-		FxFunc:    uintptr(0),
 	},
 	7: {
 		FzName:    __ccgo_ts + 16290,
 		FnArg:     int8(-int32(1)),
 		FeTextRep: uint32(m_SQLITE_UTF8),
-		FxFunc:    uintptr(0),
 	},
 	8: {
 		FzName:    __ccgo_ts + 16303,
 		FnArg:     int8(1),
 		FeTextRep: uint32(m_SQLITE_UTF8),
-		FxFunc:    uintptr(0),
 	},
 	9: {
 		FzName:    __ccgo_ts + 16303,
 		FnArg:     int8(2),
 		FeTextRep: uint32(m_SQLITE_UTF8),
-		FxFunc:    uintptr(0),
 	},
 	10: {
 		FzName:    __ccgo_ts + 16314,
 		FnArg:     int8(1),
 		FeTextRep: uint32(m_SQLITE_UTF8),
-		FxFunc:    uintptr(0),
 	},
 	11: {
 		FzName:    __ccgo_ts + 16324,
 		FnArg:     int8(2),
 		FeTextRep: uint32(m_SQLITE_UTF8),
-		FxFunc:    uintptr(0),
 	},
 	12: {
 		FzName:    __ccgo_ts + 16339,
 		FnArg:     int8(1),
 		FeTextRep: uint32(m_SQLITE_UTF8),
-		FxFunc:    uintptr(0),
 	},
 	13: {
 		FzName:    __ccgo_ts + 16352,
 		FnArg:     int8(1),
 		FeTextRep: uint32(m_SQLITE_UTF8),
-		FxFunc:    uintptr(0),
 	},
 	14: {
 		FzName:    __ccgo_ts + 16361,
 		FnArg:     int8(1),
 		FeTextRep: uint32(m_SQLITE_UTF8),
-		FxFunc:    uintptr(0),
 	},
 	15: {
 		FzName:    __ccgo_ts + 16373,
 		FnArg:     int8(2),
 		FeTextRep: uint32(m_SQLITE_UTF8),
-		FxFunc:    uintptr(0),
 	},
 	16: {
 		FzName:    __ccgo_ts + 16386,
 		FnArg:     int8(1),
 		FeTextRep: uint32(libc.Int32FromInt32(m_SQLITE_UTF8) | libc.Int32FromInt32(m_SQLITE_DETERMINISTIC)),
-		FxFunc:    uintptr(0),
 	},
 	17: {
 		FzName:    __ccgo_ts + 16400,
 		FnArg:     int8(1),
 		FeTextRep: uint32(m_SQLITE_UTF8),
-		FxFunc:    uintptr(0),
 	},
 	18: {
 		FzName:    __ccgo_ts + 16416,
 		FnArg:     int8(2),
 		FeTextRep: uint32(m_SQLITE_UTF8),
-		FxFunc:    uintptr(0),
 	},
 	19: {
 		FzName:    __ccgo_ts + 16432,
 		FnArg:     int8(-int32(1)),
 		FeTextRep: uint32(m_SQLITE_UTF8),
-		FxFunc:    uintptr(0),
 	},
 }
 
@@ -25301,15 +24530,12 @@ var _aObjCmd6 = [3]struct {
 }{
 	0: {
 		FzName: __ccgo_ts + 17122,
-		FxProc: uintptr(0),
 	},
 	1: {
 		FzName: __ccgo_ts + 17149,
-		FxProc: uintptr(0),
 	},
 	2: {
 		FzName: __ccgo_ts + 17171,
-		FxProc: uintptr(0),
 	},
 }
 
@@ -25370,54 +24596,6 @@ func x_sqlite3TestHexToBin(tls *libc.TLS, zIn uintptr, N int32, aOut uintptr) (r
 	var p3 uintptr
 	_, _, _, _, _, _, _, _ = aMap, c, hi, i, j, v2, v4, p3
 	aMap = [256]uint8{
-		0:   uint8(0),
-		1:   uint8(0),
-		2:   uint8(0),
-		3:   uint8(0),
-		4:   uint8(0),
-		5:   uint8(0),
-		6:   uint8(0),
-		7:   uint8(0),
-		8:   uint8(0),
-		9:   uint8(0),
-		10:  uint8(0),
-		11:  uint8(0),
-		12:  uint8(0),
-		13:  uint8(0),
-		14:  uint8(0),
-		15:  uint8(0),
-		16:  uint8(0),
-		17:  uint8(0),
-		18:  uint8(0),
-		19:  uint8(0),
-		20:  uint8(0),
-		21:  uint8(0),
-		22:  uint8(0),
-		23:  uint8(0),
-		24:  uint8(0),
-		25:  uint8(0),
-		26:  uint8(0),
-		27:  uint8(0),
-		28:  uint8(0),
-		29:  uint8(0),
-		30:  uint8(0),
-		31:  uint8(0),
-		32:  uint8(0),
-		33:  uint8(0),
-		34:  uint8(0),
-		35:  uint8(0),
-		36:  uint8(0),
-		37:  uint8(0),
-		38:  uint8(0),
-		39:  uint8(0),
-		40:  uint8(0),
-		41:  uint8(0),
-		42:  uint8(0),
-		43:  uint8(0),
-		44:  uint8(0),
-		45:  uint8(0),
-		46:  uint8(0),
-		47:  uint8(0),
 		48:  uint8(1),
 		49:  uint8(2),
 		50:  uint8(3),
@@ -25428,204 +24606,18 @@ func x_sqlite3TestHexToBin(tls *libc.TLS, zIn uintptr, N int32, aOut uintptr) (r
 		55:  uint8(8),
 		56:  uint8(9),
 		57:  uint8(10),
-		58:  uint8(0),
-		59:  uint8(0),
-		60:  uint8(0),
-		61:  uint8(0),
-		62:  uint8(0),
-		63:  uint8(0),
-		64:  uint8(0),
 		65:  uint8(11),
 		66:  uint8(12),
 		67:  uint8(13),
 		68:  uint8(14),
 		69:  uint8(15),
 		70:  uint8(16),
-		71:  uint8(0),
-		72:  uint8(0),
-		73:  uint8(0),
-		74:  uint8(0),
-		75:  uint8(0),
-		76:  uint8(0),
-		77:  uint8(0),
-		78:  uint8(0),
-		79:  uint8(0),
-		80:  uint8(0),
-		81:  uint8(0),
-		82:  uint8(0),
-		83:  uint8(0),
-		84:  uint8(0),
-		85:  uint8(0),
-		86:  uint8(0),
-		87:  uint8(0),
-		88:  uint8(0),
-		89:  uint8(0),
-		90:  uint8(0),
-		91:  uint8(0),
-		92:  uint8(0),
-		93:  uint8(0),
-		94:  uint8(0),
-		95:  uint8(0),
-		96:  uint8(0),
 		97:  uint8(11),
 		98:  uint8(12),
 		99:  uint8(13),
 		100: uint8(14),
 		101: uint8(15),
 		102: uint8(16),
-		103: uint8(0),
-		104: uint8(0),
-		105: uint8(0),
-		106: uint8(0),
-		107: uint8(0),
-		108: uint8(0),
-		109: uint8(0),
-		110: uint8(0),
-		111: uint8(0),
-		112: uint8(0),
-		113: uint8(0),
-		114: uint8(0),
-		115: uint8(0),
-		116: uint8(0),
-		117: uint8(0),
-		118: uint8(0),
-		119: uint8(0),
-		120: uint8(0),
-		121: uint8(0),
-		122: uint8(0),
-		123: uint8(0),
-		124: uint8(0),
-		125: uint8(0),
-		126: uint8(0),
-		127: uint8(0),
-		128: uint8(0),
-		129: uint8(0),
-		130: uint8(0),
-		131: uint8(0),
-		132: uint8(0),
-		133: uint8(0),
-		134: uint8(0),
-		135: uint8(0),
-		136: uint8(0),
-		137: uint8(0),
-		138: uint8(0),
-		139: uint8(0),
-		140: uint8(0),
-		141: uint8(0),
-		142: uint8(0),
-		143: uint8(0),
-		144: uint8(0),
-		145: uint8(0),
-		146: uint8(0),
-		147: uint8(0),
-		148: uint8(0),
-		149: uint8(0),
-		150: uint8(0),
-		151: uint8(0),
-		152: uint8(0),
-		153: uint8(0),
-		154: uint8(0),
-		155: uint8(0),
-		156: uint8(0),
-		157: uint8(0),
-		158: uint8(0),
-		159: uint8(0),
-		160: uint8(0),
-		161: uint8(0),
-		162: uint8(0),
-		163: uint8(0),
-		164: uint8(0),
-		165: uint8(0),
-		166: uint8(0),
-		167: uint8(0),
-		168: uint8(0),
-		169: uint8(0),
-		170: uint8(0),
-		171: uint8(0),
-		172: uint8(0),
-		173: uint8(0),
-		174: uint8(0),
-		175: uint8(0),
-		176: uint8(0),
-		177: uint8(0),
-		178: uint8(0),
-		179: uint8(0),
-		180: uint8(0),
-		181: uint8(0),
-		182: uint8(0),
-		183: uint8(0),
-		184: uint8(0),
-		185: uint8(0),
-		186: uint8(0),
-		187: uint8(0),
-		188: uint8(0),
-		189: uint8(0),
-		190: uint8(0),
-		191: uint8(0),
-		192: uint8(0),
-		193: uint8(0),
-		194: uint8(0),
-		195: uint8(0),
-		196: uint8(0),
-		197: uint8(0),
-		198: uint8(0),
-		199: uint8(0),
-		200: uint8(0),
-		201: uint8(0),
-		202: uint8(0),
-		203: uint8(0),
-		204: uint8(0),
-		205: uint8(0),
-		206: uint8(0),
-		207: uint8(0),
-		208: uint8(0),
-		209: uint8(0),
-		210: uint8(0),
-		211: uint8(0),
-		212: uint8(0),
-		213: uint8(0),
-		214: uint8(0),
-		215: uint8(0),
-		216: uint8(0),
-		217: uint8(0),
-		218: uint8(0),
-		219: uint8(0),
-		220: uint8(0),
-		221: uint8(0),
-		222: uint8(0),
-		223: uint8(0),
-		224: uint8(0),
-		225: uint8(0),
-		226: uint8(0),
-		227: uint8(0),
-		228: uint8(0),
-		229: uint8(0),
-		230: uint8(0),
-		231: uint8(0),
-		232: uint8(0),
-		233: uint8(0),
-		234: uint8(0),
-		235: uint8(0),
-		236: uint8(0),
-		237: uint8(0),
-		238: uint8(0),
-		239: uint8(0),
-		240: uint8(0),
-		241: uint8(0),
-		242: uint8(0),
-		243: uint8(0),
-		244: uint8(0),
-		245: uint8(0),
-		246: uint8(0),
-		247: uint8(0),
-		248: uint8(0),
-		249: uint8(0),
-		250: uint8(0),
-		251: uint8(0),
-		252: uint8(0),
-		253: uint8(0),
-		254: uint8(0),
-		255: uint8(0),
 	}
 	hi = int32(1)
 	v2 = libc.Int32FromInt32(0)
@@ -26033,35 +25025,27 @@ var _aObjCmd7 = [8]struct {
 }{
 	0: {
 		FzName: __ccgo_ts + 17383,
-		FxProc: uintptr(0),
 	},
 	1: {
 		FzName: __ccgo_ts + 17394,
-		FxProc: uintptr(0),
 	},
 	2: {
 		FzName: __ccgo_ts + 17406,
-		FxProc: uintptr(0),
 	},
 	3: {
 		FzName: __ccgo_ts + 17420,
-		FxProc: uintptr(0),
 	},
 	4: {
 		FzName: __ccgo_ts + 17439,
-		FxProc: uintptr(0),
 	},
 	5: {
 		FzName: __ccgo_ts + 17458,
-		FxProc: uintptr(0),
 	},
 	6: {
 		FzName: __ccgo_ts + 17471,
-		FxProc: uintptr(0),
 	},
 	7: {
 		FzName: __ccgo_ts + 17487,
-		FxProc: uintptr(0),
 	},
 }
 
@@ -26279,7 +25263,6 @@ func _installInitWrappers(tls *libc.TLS) {
 	}
 	*(*Tsqlite3_pcache_methods2)(unsafe.Pointer(bp + 72)) = Tsqlite3_pcache_methods2{
 		FiVersion:   int32(1),
-		FpArg:       uintptr(0),
 		FxInit:      __ccgo_fp(_wrPCacheInit),
 		FxShutdown:  __ccgo_fp(_wrPCacheShutdown),
 		FxCreate:    __ccgo_fp(_wrPCacheCreate),
@@ -26299,7 +25282,6 @@ func _installInitWrappers(tls *libc.TLS) {
 		FxRoundup:  __ccgo_fp(_wrMemRoundup),
 		FxInit:     __ccgo_fp(_wrMemInit),
 		FxShutdown: __ccgo_fp(_wrMemShutdown),
-		FpAppData:  uintptr(0),
 	}
 	libc.Xmemset(tls, uintptr(unsafe.Pointer(&_wrapped)), 0, uint64(264))
 	x_sqlite3_shutdown(tls)
@@ -26413,19 +25395,15 @@ var _aObjCmd8 = [4]struct {
 }{
 	0: {
 		FzName: __ccgo_ts + 17534,
-		FxProc: uintptr(0),
 	},
 	1: {
 		FzName: __ccgo_ts + 17555,
-		FxProc: uintptr(0),
 	},
 	2: {
 		FzName: __ccgo_ts + 17574,
-		FxProc: uintptr(0),
 	},
 	3: {
 		FzName: __ccgo_ts + 17597,
-		FxProc: uintptr(0),
 	},
 }
 
@@ -26642,28 +25620,7 @@ func _intarrayBestIndex(tls *libc.TLS, tab uintptr, pIdxInfo uintptr) (r int32) 
 //	** A virtual table module that merely echos method calls into TCL
 //	** variables.
 //	*/
-var _intarrayModule = Tsqlite3_module{
-	FiVersion:      int32(0),
-	FxCreate:       uintptr(0),
-	FxConnect:      uintptr(0),
-	FxBestIndex:    uintptr(0),
-	FxDisconnect:   uintptr(0),
-	FxDestroy:      uintptr(0),
-	FxOpen:         uintptr(0),
-	FxClose:        uintptr(0),
-	FxFilter:       uintptr(0),
-	FxNext:         uintptr(0),
-	FxEof:          uintptr(0),
-	FxColumn:       uintptr(0),
-	FxRowid:        uintptr(0),
-	FxUpdate:       uintptr(0),
-	FxBegin:        uintptr(0),
-	FxSync:         uintptr(0),
-	FxCommit:       uintptr(0),
-	FxRollback:     uintptr(0),
-	FxFindFunction: uintptr(0),
-	FxRename:       uintptr(0),
-}
+var _intarrayModule = Tsqlite3_module{}
 
 func init() {
 	p := unsafe.Pointer(&_intarrayModule)
@@ -26679,13 +25636,6 @@ func init() {
 	*(*uintptr)(unsafe.Add(p, 80)) = __ccgo_fp(_intarrayEof)
 	*(*uintptr)(unsafe.Add(p, 88)) = __ccgo_fp(_intarrayColumn)
 	*(*uintptr)(unsafe.Add(p, 96)) = __ccgo_fp(_intarrayRowid)
-	*(*uintptr)(unsafe.Add(p, 104)) = uintptr(0)
-	*(*uintptr)(unsafe.Add(p, 112)) = uintptr(0)
-	*(*uintptr)(unsafe.Add(p, 120)) = uintptr(0)
-	*(*uintptr)(unsafe.Add(p, 128)) = uintptr(0)
-	*(*uintptr)(unsafe.Add(p, 136)) = uintptr(0)
-	*(*uintptr)(unsafe.Add(p, 144)) = uintptr(0)
-	*(*uintptr)(unsafe.Add(p, 152)) = uintptr(0)
 }
 
 // C documentation
@@ -26852,14 +25802,10 @@ var _aObjCmd9 = [2]struct {
 	FclientData uintptr
 }{
 	0: {
-		FzName:      __ccgo_ts + 17718,
-		FxProc:      uintptr(0),
-		FclientData: uintptr(0),
+		FzName: __ccgo_ts + 17718,
 	},
 	1: {
-		FzName:      __ccgo_ts + 17742,
-		FxProc:      uintptr(0),
-		FclientData: uintptr(0),
+		FzName: __ccgo_ts + 17742,
 	},
 }
 
@@ -26912,25 +25858,10 @@ type Tjt_file1 = struct {
 }
 
 var _jt_vfs = Tsqlite3_vfs{
-	FiVersion:          int32(2),
-	FszOsFile:          int32(80),
-	FmxPathname:        int32(m_JT_MAX_PATHNAME),
-	FpNext:             uintptr(0),
-	FzName:             __ccgo_ts + 17764,
-	FpAppData:          uintptr(0),
-	FxOpen:             uintptr(0),
-	FxDelete:           uintptr(0),
-	FxAccess:           uintptr(0),
-	FxFullPathname:     uintptr(0),
-	FxDlOpen:           uintptr(0),
-	FxDlError:          uintptr(0),
-	FxDlSym:            uintptr(0),
-	FxDlClose:          uintptr(0),
-	FxRandomness:       uintptr(0),
-	FxSleep:            uintptr(0),
-	FxCurrentTime:      uintptr(0),
-	FxGetLastError:     uintptr(0),
-	FxCurrentTimeInt64: uintptr(0),
+	FiVersion:   int32(2),
+	FszOsFile:   int32(80),
+	FmxPathname: int32(m_JT_MAX_PATHNAME),
+	FzName:      __ccgo_ts + 17764,
 }
 
 func init() {
@@ -26951,19 +25882,7 @@ func init() {
 }
 
 var _jt_io_methods = Tsqlite3_io_methods{
-	FiVersion:               int32(1),
-	FxClose:                 uintptr(0),
-	FxRead:                  uintptr(0),
-	FxWrite:                 uintptr(0),
-	FxTruncate:              uintptr(0),
-	FxSync:                  uintptr(0),
-	FxFileSize:              uintptr(0),
-	FxLock:                  uintptr(0),
-	FxUnlock:                uintptr(0),
-	FxCheckReservedLock:     uintptr(0),
-	FxFileControl:           uintptr(0),
-	FxSectorSize:            uintptr(0),
-	FxDeviceCharacteristics: uintptr(0),
+	FiVersion: int32(1),
 }
 
 func init() {
@@ -29117,7 +28036,6 @@ var _aOp1 = [10]struct {
 }{
 	0: {
 		FzName: __ccgo_ts + 18307,
-		Fop:    m_SQLITE_STATUS_MEMORY_USED,
 	},
 	1: {
 		FzName: __ccgo_ts + 18333,
@@ -29230,7 +28148,6 @@ var _aOp2 = [13]struct {
 }{
 	0: {
 		FzName: __ccgo_ts + 18609,
-		Fop:    m_SQLITE_DBSTATUS_LOOKASIDE_USED,
 	},
 	1: {
 		FzName: __ccgo_ts + 18624,
@@ -29367,164 +28284,102 @@ var _aObjCmd10 = [32]struct {
 	F__ccgo_pad3 [4]byte
 }{
 	0: {
-		FzName:      __ccgo_ts + 12879,
-		FxProc:      uintptr(0),
-		FclientData: 0,
+		FzName: __ccgo_ts + 12879,
 	},
 	1: {
-		FzName:      __ccgo_ts + 12894,
-		FxProc:      uintptr(0),
-		FclientData: 0,
+		FzName: __ccgo_ts + 12894,
 	},
 	2: {
-		FzName:      __ccgo_ts + 18838,
-		FxProc:      uintptr(0),
-		FclientData: 0,
+		FzName: __ccgo_ts + 18838,
 	},
 	3: {
-		FzName:      __ccgo_ts + 18851,
-		FxProc:      uintptr(0),
-		FclientData: 0,
+		FzName: __ccgo_ts + 18851,
 	},
 	4: {
-		FzName:      __ccgo_ts + 18858,
-		FxProc:      uintptr(0),
-		FclientData: 0,
+		FzName: __ccgo_ts + 18858,
 	},
 	5: {
-		FzName:      __ccgo_ts + 18865,
-		FxProc:      uintptr(0),
-		FclientData: 0,
+		FzName: __ccgo_ts + 18865,
 	},
 	6: {
-		FzName:      __ccgo_ts + 18885,
-		FxProc:      uintptr(0),
-		FclientData: 0,
+		FzName: __ccgo_ts + 18885,
 	},
 	7: {
-		FzName:      __ccgo_ts + 18910,
-		FxProc:      uintptr(0),
-		FclientData: 0,
+		FzName: __ccgo_ts + 18910,
 	},
 	8: {
-		FzName:      __ccgo_ts + 18937,
-		FxProc:      uintptr(0),
-		FclientData: 0,
+		FzName: __ccgo_ts + 18937,
 	},
 	9: {
-		FzName:      __ccgo_ts + 18959,
-		FxProc:      uintptr(0),
-		FclientData: 0,
+		FzName: __ccgo_ts + 18959,
 	},
 	10: {
-		FzName:      __ccgo_ts + 18981,
-		FxProc:      uintptr(0),
-		FclientData: 0,
+		FzName: __ccgo_ts + 18981,
 	},
 	11: {
-		FzName:      __ccgo_ts + 19006,
-		FxProc:      uintptr(0),
-		FclientData: 0,
+		FzName: __ccgo_ts + 19006,
 	},
 	12: {
-		FzName:      __ccgo_ts + 19032,
-		FxProc:      uintptr(0),
-		FclientData: 0,
+		FzName: __ccgo_ts + 19032,
 	},
 	13: {
-		FzName:      __ccgo_ts + 19062,
-		FxProc:      uintptr(0),
-		FclientData: 0,
+		FzName: __ccgo_ts + 19062,
 	},
 	14: {
-		FzName:      __ccgo_ts + 19083,
-		FxProc:      uintptr(0),
-		FclientData: 0,
+		FzName: __ccgo_ts + 19083,
 	},
 	15: {
-		FzName:      __ccgo_ts + 19108,
-		FxProc:      uintptr(0),
-		FclientData: 0,
+		FzName: __ccgo_ts + 19108,
 	},
 	16: {
-		FzName:      __ccgo_ts + 19134,
-		FxProc:      uintptr(0),
-		FclientData: 0,
+		FzName: __ccgo_ts + 19134,
 	},
 	17: {
-		FzName:      __ccgo_ts + 19149,
-		FxProc:      uintptr(0),
-		FclientData: 0,
+		FzName: __ccgo_ts + 19149,
 	},
 	18: {
-		FzName:      __ccgo_ts + 19167,
-		FxProc:      uintptr(0),
-		FclientData: 0,
+		FzName: __ccgo_ts + 19167,
 	},
 	19: {
-		FzName:      __ccgo_ts + 19191,
-		FxProc:      uintptr(0),
-		FclientData: 0,
+		FzName: __ccgo_ts + 19191,
 	},
 	20: {
-		FzName:      __ccgo_ts + 19211,
-		FxProc:      uintptr(0),
-		FclientData: 0,
+		FzName: __ccgo_ts + 19211,
 	},
 	21: {
-		FzName:      __ccgo_ts + 19236,
-		FxProc:      uintptr(0),
-		FclientData: 0,
+		FzName: __ccgo_ts + 19236,
 	},
 	22: {
-		FzName:      __ccgo_ts + 19261,
-		FxProc:      uintptr(0),
-		FclientData: 0,
+		FzName: __ccgo_ts + 19261,
 	},
 	23: {
-		FzName:      __ccgo_ts + 19286,
-		FxProc:      uintptr(0),
-		FclientData: 0,
+		FzName: __ccgo_ts + 19286,
 	},
 	24: {
-		FzName:      __ccgo_ts + 19307,
-		FxProc:      uintptr(0),
-		FclientData: 0,
+		FzName: __ccgo_ts + 19307,
 	},
 	25: {
-		FzName:      __ccgo_ts + 19326,
-		FxProc:      uintptr(0),
-		FclientData: 0,
+		FzName: __ccgo_ts + 19326,
 	},
 	26: {
-		FzName:      __ccgo_ts + 19345,
-		FxProc:      uintptr(0),
-		FclientData: 0,
+		FzName: __ccgo_ts + 19345,
 	},
 	27: {
-		FzName:      __ccgo_ts + 19366,
-		FxProc:      uintptr(0),
-		FclientData: 0,
+		FzName: __ccgo_ts + 19366,
 	},
 	28: {
 		FzName:      __ccgo_ts + 19394,
-		FxProc:      uintptr(0),
 		FclientData: int32(3),
 	},
 	29: {
 		FzName:      __ccgo_ts + 19415,
-		FxProc:      uintptr(0),
 		FclientData: int32(5),
 	},
 	30: {
-		FzName:      __ccgo_ts + 19436,
-		FxProc:      uintptr(0),
-		FclientData: 0,
+		FzName: __ccgo_ts + 19436,
 	},
 	31: {
-		FzName:      __ccgo_ts + 19460,
-		FxProc:      uintptr(0),
-		FclientData: 0,
+		FzName: __ccgo_ts + 19460,
 	},
 }
 
@@ -31574,7 +30429,6 @@ func _test_multiplex_control(tls *libc.TLS, cd TClientData, interp uintptr, objc
 			Fop:      int32(m_MULTIPLEX_CTRL_SET_MAX_CHUNKS),
 			Fargtype: int32(1),
 		},
-		3: {},
 	}
 	if objc != int32(5) {
 		libtcl8_6.XTcl_WrongNumArgs(tls, interp, int32(1), objv, __ccgo_ts+19875)
@@ -31648,15 +30502,12 @@ var _aCmd4 = [3]struct {
 }{
 	0: {
 		FzName: __ccgo_ts + 19943,
-		FxProc: uintptr(0),
 	},
 	1: {
 		FzName: __ccgo_ts + 19972,
-		FxProc: uintptr(0),
 	},
 	2: {
 		FzName: __ccgo_ts + 19999,
-		FxProc: uintptr(0),
 	},
 }
 
@@ -31699,7 +30550,6 @@ var _aName = [15]uintptr{
 	11: __ccgo_ts + 20146,
 	12: __ccgo_ts + 20158,
 	13: __ccgo_ts + 20170,
-	14: uintptr(0),
 }
 
 /* A countable mutex */
@@ -32048,7 +30898,6 @@ func _test_config(tls *libc.TLS, clientData uintptr, interp uintptr, objc int32,
 			FzName:  __ccgo_ts + 20259,
 			FiValue: int32(m_SQLITE_CONFIG_SERIALIZED),
 		},
-		3: {},
 	}
 	s = int32(16)
 	if objc != int32(2) {
@@ -32176,47 +31025,36 @@ var _aCmd5 = [11]struct {
 }{
 	0: {
 		FzName: __ccgo_ts + 20286,
-		FxProc: uintptr(0),
 	},
 	1: {
 		FzName: __ccgo_ts + 20303,
-		FxProc: uintptr(0),
 	},
 	2: {
 		FzName: __ccgo_ts + 20322,
-		FxProc: uintptr(0),
 	},
 	3: {
 		FzName: __ccgo_ts + 20337,
-		FxProc: uintptr(0),
 	},
 	4: {
 		FzName: __ccgo_ts + 20356,
-		FxProc: uintptr(0),
 	},
 	5: {
 		FzName: __ccgo_ts + 20375,
-		FxProc: uintptr(0),
 	},
 	6: {
 		FzName: __ccgo_ts + 20390,
-		FxProc: uintptr(0),
 	},
 	7: {
 		FzName: __ccgo_ts + 20405,
-		FxProc: uintptr(0),
 	},
 	8: {
 		FzName: __ccgo_ts + 20425,
-		FxProc: uintptr(0),
 	},
 	9: {
 		FzName: __ccgo_ts + 20448,
-		FxProc: uintptr(0),
 	},
 	10: {
 		FzName: __ccgo_ts + 20468,
-		FxProc: uintptr(0),
 	},
 }
 
@@ -32313,27 +31151,9 @@ type Tfs_vfs_t1 = struct {
 
 var _fs_vfs = Tfs_vfs_t{
 	Fbase: Tsqlite3_vfs{
-		FiVersion:      int32(1),
-		FszOsFile:      int32(0),
-		FmxPathname:    int32(0),
-		FpNext:         uintptr(0),
-		FzName:         __ccgo_ts + 16096,
-		FpAppData:      uintptr(0),
-		FxOpen:         uintptr(0),
-		FxDelete:       uintptr(0),
-		FxAccess:       uintptr(0),
-		FxFullPathname: uintptr(0),
-		FxDlOpen:       uintptr(0),
-		FxDlError:      uintptr(0),
-		FxDlSym:        uintptr(0),
-		FxDlClose:      uintptr(0),
-		FxRandomness:   uintptr(0),
-		FxSleep:        uintptr(0),
-		FxCurrentTime:  uintptr(0),
-		FxGetLastError: uintptr(0),
+		FiVersion: int32(1),
+		FzName:    __ccgo_ts + 16096,
 	},
-	FpFileList: uintptr(0),
-	FpParent:   uintptr(0),
 }
 
 func init() {
@@ -32349,27 +31169,10 @@ func init() {
 	*(*uintptr)(unsafe.Add(p, 104)) = __ccgo_fp(_fsRandomness)
 	*(*uintptr)(unsafe.Add(p, 112)) = __ccgo_fp(_fsSleep)
 	*(*uintptr)(unsafe.Add(p, 120)) = __ccgo_fp(_fsCurrentTime)
-	*(*uintptr)(unsafe.Add(p, 128)) = uintptr(0)
 }
 
 var _fs_io_methods = Tsqlite3_io_methods{
-	FiVersion:               int32(1),
-	FxClose:                 uintptr(0),
-	FxRead:                  uintptr(0),
-	FxWrite:                 uintptr(0),
-	FxTruncate:              uintptr(0),
-	FxSync:                  uintptr(0),
-	FxFileSize:              uintptr(0),
-	FxLock:                  uintptr(0),
-	FxUnlock:                uintptr(0),
-	FxCheckReservedLock:     uintptr(0),
-	FxFileControl:           uintptr(0),
-	FxSectorSize:            uintptr(0),
-	FxDeviceCharacteristics: uintptr(0),
-	FxShmMap:                uintptr(0),
-	FxShmLock:               uintptr(0),
-	FxShmBarrier:            uintptr(0),
-	FxShmUnmap:              uintptr(0),
+	FiVersion: int32(1),
 }
 
 func init() {
@@ -32386,30 +31189,10 @@ func init() {
 	*(*uintptr)(unsafe.Add(p, 80)) = __ccgo_fp(_fsFileControl)
 	*(*uintptr)(unsafe.Add(p, 88)) = __ccgo_fp(_fsSectorSize)
 	*(*uintptr)(unsafe.Add(p, 96)) = __ccgo_fp(_fsDeviceCharacteristics)
-	*(*uintptr)(unsafe.Add(p, 104)) = uintptr(0)
-	*(*uintptr)(unsafe.Add(p, 112)) = uintptr(0)
-	*(*uintptr)(unsafe.Add(p, 120)) = uintptr(0)
-	*(*uintptr)(unsafe.Add(p, 128)) = uintptr(0)
 }
 
 var _tmp_io_methods = Tsqlite3_io_methods{
-	FiVersion:               int32(1),
-	FxClose:                 uintptr(0),
-	FxRead:                  uintptr(0),
-	FxWrite:                 uintptr(0),
-	FxTruncate:              uintptr(0),
-	FxSync:                  uintptr(0),
-	FxFileSize:              uintptr(0),
-	FxLock:                  uintptr(0),
-	FxUnlock:                uintptr(0),
-	FxCheckReservedLock:     uintptr(0),
-	FxFileControl:           uintptr(0),
-	FxSectorSize:            uintptr(0),
-	FxDeviceCharacteristics: uintptr(0),
-	FxShmMap:                uintptr(0),
-	FxShmLock:               uintptr(0),
-	FxShmBarrier:            uintptr(0),
-	FxShmUnmap:              uintptr(0),
+	FiVersion: int32(1),
 }
 
 func init() {
@@ -32426,10 +31209,6 @@ func init() {
 	*(*uintptr)(unsafe.Add(p, 80)) = __ccgo_fp(_tmpFileControl)
 	*(*uintptr)(unsafe.Add(p, 88)) = __ccgo_fp(_tmpSectorSize)
 	*(*uintptr)(unsafe.Add(p, 96)) = __ccgo_fp(_tmpDeviceCharacteristics)
-	*(*uintptr)(unsafe.Add(p, 104)) = uintptr(0)
-	*(*uintptr)(unsafe.Add(p, 112)) = uintptr(0)
-	*(*uintptr)(unsafe.Add(p, 120)) = uintptr(0)
-	*(*uintptr)(unsafe.Add(p, 128)) = uintptr(0)
 }
 
 /* Useful macros used in several places */
@@ -33214,25 +31993,9 @@ type TVfslogFile1 = struct {
 }
 
 var _vfslog_vfs = Tsqlite3_vfs{
-	FiVersion:          int32(1),
-	FszOsFile:          int32(32),
-	FmxPathname:        int32(m_INST_MAX_PATHNAME),
-	FpNext:             uintptr(0),
-	FzName:             uintptr(0),
-	FpAppData:          uintptr(0),
-	FxOpen:             uintptr(0),
-	FxDelete:           uintptr(0),
-	FxAccess:           uintptr(0),
-	FxFullPathname:     uintptr(0),
-	FxDlOpen:           uintptr(0),
-	FxDlError:          uintptr(0),
-	FxDlSym:            uintptr(0),
-	FxDlClose:          uintptr(0),
-	FxRandomness:       uintptr(0),
-	FxSleep:            uintptr(0),
-	FxCurrentTime:      uintptr(0),
-	FxGetLastError:     uintptr(0),
-	FxCurrentTimeInt64: uintptr(0),
+	FiVersion:   int32(1),
+	FszOsFile:   int32(32),
+	FmxPathname: int32(m_INST_MAX_PATHNAME),
 }
 
 func init() {
@@ -33253,23 +32016,7 @@ func init() {
 }
 
 var _vfslog_io_methods = Tsqlite3_io_methods{
-	FiVersion:               int32(2),
-	FxClose:                 uintptr(0),
-	FxRead:                  uintptr(0),
-	FxWrite:                 uintptr(0),
-	FxTruncate:              uintptr(0),
-	FxSync:                  uintptr(0),
-	FxFileSize:              uintptr(0),
-	FxLock:                  uintptr(0),
-	FxUnlock:                uintptr(0),
-	FxCheckReservedLock:     uintptr(0),
-	FxFileControl:           uintptr(0),
-	FxSectorSize:            uintptr(0),
-	FxDeviceCharacteristics: uintptr(0),
-	FxShmMap:                uintptr(0),
-	FxShmLock:               uintptr(0),
-	FxShmBarrier:            uintptr(0),
-	FxShmUnmap:              uintptr(0),
+	FiVersion: int32(2),
 }
 
 func init() {
@@ -34213,28 +32960,7 @@ func x_sqlite3_vfslog_register(tls *libc.TLS, db uintptr) (r int32) {
 	return m_SQLITE_OK
 }
 
-var _vfslog_module = Tsqlite3_module{
-	FiVersion:      0,
-	FxCreate:       uintptr(0),
-	FxConnect:      uintptr(0),
-	FxBestIndex:    uintptr(0),
-	FxDisconnect:   uintptr(0),
-	FxDestroy:      uintptr(0),
-	FxOpen:         uintptr(0),
-	FxClose:        uintptr(0),
-	FxFilter:       uintptr(0),
-	FxNext:         uintptr(0),
-	FxEof:          uintptr(0),
-	FxColumn:       uintptr(0),
-	FxRowid:        uintptr(0),
-	FxUpdate:       uintptr(0),
-	FxBegin:        uintptr(0),
-	FxSync:         uintptr(0),
-	FxCommit:       uintptr(0),
-	FxRollback:     uintptr(0),
-	FxFindFunction: uintptr(0),
-	FxRename:       uintptr(0),
-}
+var _vfslog_module = Tsqlite3_module{}
 
 func init() {
 	p := unsafe.Pointer(&_vfslog_module)
@@ -34250,13 +32976,6 @@ func init() {
 	*(*uintptr)(unsafe.Add(p, 80)) = __ccgo_fp(_vlogEof)
 	*(*uintptr)(unsafe.Add(p, 88)) = __ccgo_fp(_vlogColumn)
 	*(*uintptr)(unsafe.Add(p, 96)) = __ccgo_fp(_vlogRowid)
-	*(*uintptr)(unsafe.Add(p, 104)) = uintptr(0)
-	*(*uintptr)(unsafe.Add(p, 112)) = uintptr(0)
-	*(*uintptr)(unsafe.Add(p, 120)) = uintptr(0)
-	*(*uintptr)(unsafe.Add(p, 128)) = uintptr(0)
-	*(*uintptr)(unsafe.Add(p, 136)) = uintptr(0)
-	*(*uintptr)(unsafe.Add(p, 144)) = uintptr(0)
-	*(*uintptr)(unsafe.Add(p, 152)) = uintptr(0)
 }
 
 /*
@@ -34353,7 +33072,6 @@ var _strs = [5]uintptr{
 	1: __ccgo_ts + 20852,
 	2: __ccgo_ts + 20861,
 	3: __ccgo_ts + 20865,
-	4: uintptr(0),
 }
 
 func x_SqlitetestOsinst_Init(tls *libc.TLS, interp uintptr) (r int32) {
@@ -34824,18 +33542,8 @@ func x_installTestPCache(tls *libc.TLS, installFlag int32, discardChance uint32,
 }
 
 var _testPcache = Tsqlite3_pcache_methods2{
-	FiVersion:   int32(1),
-	FpArg:       uintptr(unsafe.Pointer(&_testpcacheGlobal)),
-	FxInit:      uintptr(0),
-	FxShutdown:  uintptr(0),
-	FxCreate:    uintptr(0),
-	FxCachesize: uintptr(0),
-	FxPagecount: uintptr(0),
-	FxFetch:     uintptr(0),
-	FxUnpin:     uintptr(0),
-	FxRekey:     uintptr(0),
-	FxTruncate:  uintptr(0),
-	FxDestroy:   uintptr(0),
+	FiVersion: int32(1),
+	FpArg:     uintptr(unsafe.Pointer(&_testpcacheGlobal)),
 }
 
 func init() {
@@ -36950,87 +35658,66 @@ var _aCmd6 = [21]struct {
 }{
 	0: {
 		FzName: __ccgo_ts + 21170,
-		FxProc: uintptr(0),
 	},
 	1: {
 		FzName: __ccgo_ts + 21195,
-		FxProc: uintptr(0),
 	},
 	2: {
 		FzName: __ccgo_ts + 21218,
-		FxProc: uintptr(0),
 	},
 	3: {
 		FzName: __ccgo_ts + 21236,
-		FxProc: uintptr(0),
 	},
 	4: {
 		FzName: __ccgo_ts + 21255,
-		FxProc: uintptr(0),
 	},
 	5: {
 		FzName: __ccgo_ts + 21274,
-		FxProc: uintptr(0),
 	},
 	6: {
 		FzName: __ccgo_ts + 21294,
-		FxProc: uintptr(0),
 	},
 	7: {
 		FzName: __ccgo_ts + 21314,
-		FxProc: uintptr(0),
 	},
 	8: {
 		FzName: __ccgo_ts + 21335,
-		FxProc: uintptr(0),
 	},
 	9: {
 		FzName: __ccgo_ts + 21356,
-		FxProc: uintptr(0),
 	},
 	10: {
 		FzName: __ccgo_ts + 21377,
-		FxProc: uintptr(0),
 	},
 	11: {
 		FzName: __ccgo_ts + 21397,
-		FxProc: uintptr(0),
 	},
 	12: {
 		FzName: __ccgo_ts + 21418,
-		FxProc: uintptr(0),
 	},
 	13: {
 		FzName: __ccgo_ts + 21438,
-		FxProc: uintptr(0),
 	},
 	14: {
 		FzName: __ccgo_ts + 21462,
-		FxProc: uintptr(0),
 	},
 	15: {
 		FzName: __ccgo_ts + 21486,
-		FxProc: uintptr(0),
 	},
 	16: {
 		FzName: __ccgo_ts + 21514,
-		FxProc: uintptr(0),
 	},
 	17: {
 		FzName: __ccgo_ts + 21539,
-		FxProc: uintptr(0),
 	},
 	18: {
 		FzName: __ccgo_ts + 21560,
-		FxProc: uintptr(0),
 	},
 	19: {
 		FzName: __ccgo_ts + 21579,
-		FxProc: uintptr(0),
 	},
 	20: {
 		FzName: __ccgo_ts + 21608,
-		FxProc: uintptr(0),
 	},
 }
 
@@ -37883,28 +36570,7 @@ func _schemaBestIndex(tls *libc.TLS, tab uintptr, pIdxInfo uintptr) (r int32) {
 //	** A virtual table module that merely echos method calls into TCL
 //	** variables.
 //	*/
-var _schemaModule = Tsqlite3_module{
-	FiVersion:      int32(0),
-	FxCreate:       uintptr(0),
-	FxConnect:      uintptr(0),
-	FxBestIndex:    uintptr(0),
-	FxDisconnect:   uintptr(0),
-	FxDestroy:      uintptr(0),
-	FxOpen:         uintptr(0),
-	FxClose:        uintptr(0),
-	FxFilter:       uintptr(0),
-	FxNext:         uintptr(0),
-	FxEof:          uintptr(0),
-	FxColumn:       uintptr(0),
-	FxRowid:        uintptr(0),
-	FxUpdate:       uintptr(0),
-	FxBegin:        uintptr(0),
-	FxSync:         uintptr(0),
-	FxCommit:       uintptr(0),
-	FxRollback:     uintptr(0),
-	FxFindFunction: uintptr(0),
-	FxRename:       uintptr(0),
-}
+var _schemaModule = Tsqlite3_module{}
 
 func init() {
 	p := unsafe.Pointer(&_schemaModule)
@@ -37920,13 +36586,6 @@ func init() {
 	*(*uintptr)(unsafe.Add(p, 80)) = __ccgo_fp(_schemaEof)
 	*(*uintptr)(unsafe.Add(p, 88)) = __ccgo_fp(_schemaColumn)
 	*(*uintptr)(unsafe.Add(p, 96)) = __ccgo_fp(_schemaRowid)
-	*(*uintptr)(unsafe.Add(p, 104)) = uintptr(0)
-	*(*uintptr)(unsafe.Add(p, 112)) = uintptr(0)
-	*(*uintptr)(unsafe.Add(p, 120)) = uintptr(0)
-	*(*uintptr)(unsafe.Add(p, 128)) = uintptr(0)
-	*(*uintptr)(unsafe.Add(p, 136)) = uintptr(0)
-	*(*uintptr)(unsafe.Add(p, 144)) = uintptr(0)
-	*(*uintptr)(unsafe.Add(p, 152)) = uintptr(0)
 }
 
 // C documentation
@@ -37976,9 +36635,7 @@ var _aObjCmd11 = [1]struct {
 	FclientData uintptr
 }{
 	0: {
-		FzName:      __ccgo_ts + 21941,
-		FxProc:      uintptr(0),
-		FclientData: uintptr(0),
+		FzName: __ccgo_ts + 21941,
 	},
 }
 
@@ -38394,41 +37051,23 @@ type TTestSyscallArray = struct {
 func init() {
 	p := unsafe.Pointer(&x_aSyscall)
 	*(*uintptr)(unsafe.Add(p, 8)) = __ccgo_fp(_ts_open)
-	*(*uintptr)(unsafe.Add(p, 16)) = uintptr(0)
 	*(*uintptr)(unsafe.Add(p, 40)) = __ccgo_fp(_ts_close)
-	*(*uintptr)(unsafe.Add(p, 48)) = uintptr(0)
 	*(*uintptr)(unsafe.Add(p, 72)) = __ccgo_fp(_ts_access)
-	*(*uintptr)(unsafe.Add(p, 80)) = uintptr(0)
 	*(*uintptr)(unsafe.Add(p, 104)) = __ccgo_fp(_ts_getcwd)
-	*(*uintptr)(unsafe.Add(p, 112)) = uintptr(0)
 	*(*uintptr)(unsafe.Add(p, 136)) = __ccgo_fp(_ts_stat)
-	*(*uintptr)(unsafe.Add(p, 144)) = uintptr(0)
 	*(*uintptr)(unsafe.Add(p, 168)) = __ccgo_fp(_ts_fstat)
-	*(*uintptr)(unsafe.Add(p, 176)) = uintptr(0)
 	*(*uintptr)(unsafe.Add(p, 200)) = __ccgo_fp(_ts_ftruncate)
-	*(*uintptr)(unsafe.Add(p, 208)) = uintptr(0)
 	*(*uintptr)(unsafe.Add(p, 232)) = __ccgo_fp(_ts_fcntl)
-	*(*uintptr)(unsafe.Add(p, 240)) = uintptr(0)
 	*(*uintptr)(unsafe.Add(p, 264)) = __ccgo_fp(_ts_read)
-	*(*uintptr)(unsafe.Add(p, 272)) = uintptr(0)
 	*(*uintptr)(unsafe.Add(p, 296)) = __ccgo_fp(_ts_pread)
-	*(*uintptr)(unsafe.Add(p, 304)) = uintptr(0)
 	*(*uintptr)(unsafe.Add(p, 328)) = __ccgo_fp(_ts_pread64)
-	*(*uintptr)(unsafe.Add(p, 336)) = uintptr(0)
 	*(*uintptr)(unsafe.Add(p, 360)) = __ccgo_fp(_ts_write)
-	*(*uintptr)(unsafe.Add(p, 368)) = uintptr(0)
 	*(*uintptr)(unsafe.Add(p, 392)) = __ccgo_fp(_ts_pwrite)
-	*(*uintptr)(unsafe.Add(p, 400)) = uintptr(0)
 	*(*uintptr)(unsafe.Add(p, 424)) = __ccgo_fp(_ts_pwrite64)
-	*(*uintptr)(unsafe.Add(p, 432)) = uintptr(0)
 	*(*uintptr)(unsafe.Add(p, 456)) = __ccgo_fp(_ts_fchmod)
-	*(*uintptr)(unsafe.Add(p, 464)) = uintptr(0)
 	*(*uintptr)(unsafe.Add(p, 488)) = __ccgo_fp(_ts_fallocate)
-	*(*uintptr)(unsafe.Add(p, 496)) = uintptr(0)
 	*(*uintptr)(unsafe.Add(p, 520)) = __ccgo_fp(_ts_mmap)
-	*(*uintptr)(unsafe.Add(p, 528)) = uintptr(0)
 	*(*uintptr)(unsafe.Add(p, 552)) = __ccgo_fp(_ts_mremap)
-	*(*uintptr)(unsafe.Add(p, 560)) = uintptr(0)
 }
 
 // C documentation
@@ -38946,7 +37585,6 @@ func _test_syscall_errno(tls *libc.TLS, clientData uintptr, interp uintptr, objc
 			Fz: __ccgo_ts + 22293,
 			Fi: int32(m_ENOLCK),
 		},
-		11: {},
 	}
 	if objc != int32(4) {
 		libtcl8_6.XTcl_WrongNumArgs(tls, interp, int32(2), objv, __ccgo_ts+22300)
@@ -39100,7 +37738,6 @@ func _test_syscall(tls *libc.TLS, clientData uintptr, interp uintptr, objc int32
 			FzName: __ccgo_ts + 22408,
 			FxCmd:  __ccgo_fp(_test_syscall_pagesize),
 		},
-		9: {},
 	}
 	pVfs = x_sqlite3_vfs_find(tls, uintptr(0))
 	if objc < int32(2) {
@@ -39769,28 +38406,7 @@ func _tclvarUpdate(tls *libc.TLS, tab uintptr, argc int32, argv uintptr, pRowid 
 //	** A virtual table module that provides read-only access to a
 //	** Tcl global variable namespace.
 //	*/
-var _tclvarModule = Tsqlite3_module{
-	FiVersion:      int32(0),
-	FxCreate:       uintptr(0),
-	FxConnect:      uintptr(0),
-	FxBestIndex:    uintptr(0),
-	FxDisconnect:   uintptr(0),
-	FxDestroy:      uintptr(0),
-	FxOpen:         uintptr(0),
-	FxClose:        uintptr(0),
-	FxFilter:       uintptr(0),
-	FxNext:         uintptr(0),
-	FxEof:          uintptr(0),
-	FxColumn:       uintptr(0),
-	FxRowid:        uintptr(0),
-	FxUpdate:       uintptr(0),
-	FxBegin:        uintptr(0),
-	FxSync:         uintptr(0),
-	FxCommit:       uintptr(0),
-	FxRollback:     uintptr(0),
-	FxFindFunction: uintptr(0),
-	FxRename:       uintptr(0),
-}
+var _tclvarModule = Tsqlite3_module{}
 
 func init() {
 	p := unsafe.Pointer(&_tclvarModule)
@@ -39807,12 +38423,6 @@ func init() {
 	*(*uintptr)(unsafe.Add(p, 88)) = __ccgo_fp(_tclvarColumn)
 	*(*uintptr)(unsafe.Add(p, 96)) = __ccgo_fp(_tclvarRowid)
 	*(*uintptr)(unsafe.Add(p, 104)) = __ccgo_fp(_tclvarUpdate)
-	*(*uintptr)(unsafe.Add(p, 112)) = uintptr(0)
-	*(*uintptr)(unsafe.Add(p, 120)) = uintptr(0)
-	*(*uintptr)(unsafe.Add(p, 128)) = uintptr(0)
-	*(*uintptr)(unsafe.Add(p, 136)) = uintptr(0)
-	*(*uintptr)(unsafe.Add(p, 144)) = uintptr(0)
-	*(*uintptr)(unsafe.Add(p, 152)) = uintptr(0)
 }
 
 // C documentation
@@ -39866,9 +38476,7 @@ var _aObjCmd12 = [1]struct {
 	FclientData uintptr
 }{
 	0: {
-		FzName:      __ccgo_ts + 23208,
-		FxProc:      uintptr(0),
-		FclientData: uintptr(0),
+		FzName: __ccgo_ts + 23208,
 	},
 }
 
@@ -40071,25 +38679,7 @@ type TTestvfsBuffer1 = struct {
 }
 
 var _tvfs_io_methods = Tsqlite3_io_methods{
-	FiVersion:               int32(3),
-	FxClose:                 uintptr(0),
-	FxRead:                  uintptr(0),
-	FxWrite:                 uintptr(0),
-	FxTruncate:              uintptr(0),
-	FxSync:                  uintptr(0),
-	FxFileSize:              uintptr(0),
-	FxLock:                  uintptr(0),
-	FxUnlock:                uintptr(0),
-	FxCheckReservedLock:     uintptr(0),
-	FxFileControl:           uintptr(0),
-	FxSectorSize:            uintptr(0),
-	FxDeviceCharacteristics: uintptr(0),
-	FxShmMap:                uintptr(0),
-	FxShmLock:               uintptr(0),
-	FxShmBarrier:            uintptr(0),
-	FxShmUnmap:              uintptr(0),
-	FxFetch:                 uintptr(0),
-	FxUnfetch:               uintptr(0),
+	FiVersion: int32(3),
 }
 
 func init() {
@@ -40127,7 +38717,6 @@ func _tvfsResultCode(tls *libc.TLS, p uintptr, pRc uintptr) (r int32) {
 		FzCode uintptr
 	}{
 		0: {
-			FeCode: m_SQLITE_OK,
 			FzCode: __ccgo_ts + 23231,
 		},
 		1: {
@@ -41129,7 +39718,6 @@ func _testvfs_obj_cmd(tls *libc.TLS, cd TClientData, interp uintptr, objc int32,
 	}{
 		0: {
 			FzName: __ccgo_ts + 23583,
-			FeCmd:  0,
 		},
 		1: {
 			FzName: __ccgo_ts + 23587,
@@ -41163,7 +39751,6 @@ func _testvfs_obj_cmd(tls *libc.TLS, cd TClientData, interp uintptr, objc int32,
 			FzName: __ccgo_ts + 23642,
 			FeCmd:  6,
 		},
-		9: {},
 	}
 	if objc < int32(2) {
 		libtcl8_6.XTcl_WrongNumArgs(tls, interp, int32(1), objv, __ccgo_ts+23653)
@@ -41446,7 +40033,6 @@ func _testvfs_obj_cmd(tls *libc.TLS, cd TClientData, interp uintptr, objc int32,
 				FzName:  __ccgo_ts + 23803,
 				FiValue: int32(m_SQLITE_IOCAP_IMMUTABLE),
 			},
-			15: {},
 		}
 		if objc > int32(3) {
 			libtcl8_6.XTcl_WrongNumArgs(tls, interp, int32(2), objv, __ccgo_ts+23813)
@@ -41781,28 +40367,7 @@ bad_args:
 }
 
 var _tvfs_vfs = Tsqlite3_vfs{
-	FiVersion:          int32(3),
-	FszOsFile:          0,
-	FmxPathname:        0,
-	FpNext:             uintptr(0),
-	FzName:             uintptr(0),
-	FpAppData:          uintptr(0),
-	FxOpen:             uintptr(0),
-	FxDelete:           uintptr(0),
-	FxAccess:           uintptr(0),
-	FxFullPathname:     uintptr(0),
-	FxDlOpen:           uintptr(0),
-	FxDlError:          uintptr(0),
-	FxDlSym:            uintptr(0),
-	FxDlClose:          uintptr(0),
-	FxRandomness:       uintptr(0),
-	FxSleep:            uintptr(0),
-	FxCurrentTime:      uintptr(0),
-	FxGetLastError:     uintptr(0),
-	FxCurrentTimeInt64: uintptr(0),
-	FxSetSystemCall:    uintptr(0),
-	FxGetSystemCall:    uintptr(0),
-	FxNextSystemCall:   uintptr(0),
+	FiVersion: int32(3),
 }
 
 func init() {
@@ -41811,18 +40376,9 @@ func init() {
 	*(*uintptr)(unsafe.Add(p, 48)) = __ccgo_fp(_tvfsDelete)
 	*(*uintptr)(unsafe.Add(p, 56)) = __ccgo_fp(_tvfsAccess)
 	*(*uintptr)(unsafe.Add(p, 64)) = __ccgo_fp(_tvfsFullPathname)
-	*(*uintptr)(unsafe.Add(p, 72)) = uintptr(0)
-	*(*uintptr)(unsafe.Add(p, 80)) = uintptr(0)
-	*(*uintptr)(unsafe.Add(p, 88)) = uintptr(0)
-	*(*uintptr)(unsafe.Add(p, 96)) = uintptr(0)
 	*(*uintptr)(unsafe.Add(p, 104)) = __ccgo_fp(_tvfsRandomness)
 	*(*uintptr)(unsafe.Add(p, 112)) = __ccgo_fp(_tvfsSleep)
 	*(*uintptr)(unsafe.Add(p, 120)) = __ccgo_fp(_tvfsCurrentTime)
-	*(*uintptr)(unsafe.Add(p, 128)) = uintptr(0)
-	*(*uintptr)(unsafe.Add(p, 136)) = uintptr(0)
-	*(*uintptr)(unsafe.Add(p, 144)) = uintptr(0)
-	*(*uintptr)(unsafe.Add(p, 152)) = uintptr(0)
-	*(*uintptr)(unsafe.Add(p, 160)) = uintptr(0)
 }
 
 // C documentation
@@ -41847,12 +40403,10 @@ func _test_vfs_shmlock(tls *libc.TLS, clientData uintptr, interp uintptr, objc i
 	*(*[3]uintptr)(unsafe.Pointer(bp)) = [3]uintptr{
 		0: __ccgo_ts + 23997,
 		1: __ccgo_ts + 24004,
-		2: uintptr(0),
 	}
 	*(*[3]uintptr)(unsafe.Pointer(bp + 24)) = [3]uintptr{
 		0: __ccgo_ts + 24014,
 		1: __ccgo_ts + 24019,
-		2: uintptr(0),
 	}
 	*(*uintptr)(unsafe.Pointer(bp + 48)) = uintptr(0)
 	rc = m_SQLITE_OK
@@ -42296,24 +40850,16 @@ var _aObjCmd13 = [4]struct {
 	F__ccgo_pad3 [4]byte
 }{
 	0: {
-		FzName:      __ccgo_ts + 24253,
-		FxProc:      uintptr(0),
-		FclientData: 0,
+		FzName: __ccgo_ts + 24253,
 	},
 	1: {
-		FzName:      __ccgo_ts + 24284,
-		FxProc:      uintptr(0),
-		FclientData: 0,
+		FzName: __ccgo_ts + 24284,
 	},
 	2: {
-		FzName:      __ccgo_ts + 24319,
-		FxProc:      uintptr(0),
-		FclientData: 0,
+		FzName: __ccgo_ts + 24319,
 	},
 	3: {
-		FzName:      __ccgo_ts + 24338,
-		FxProc:      uintptr(0),
-		FclientData: 0,
+		FzName: __ccgo_ts + 24338,
 	},
 }
 
@@ -42719,12 +41265,10 @@ var _aSub = [13]struct {
 	},
 	1: {
 		FzSub: __ccgo_ts + 24409,
-		FnArg: 0,
 		FzMsg: __ccgo_ts + 1095,
 	},
 	2: {
 		FzSub: __ccgo_ts + 23587,
-		FnArg: 0,
 		FzMsg: __ccgo_ts + 1095,
 	},
 	3: {
@@ -42739,7 +41283,6 @@ var _aSub = [13]struct {
 	},
 	5: {
 		FzSub: __ccgo_ts + 24428,
-		FnArg: 0,
 		FzMsg: __ccgo_ts + 1095,
 	},
 	6: {
@@ -42749,7 +41292,6 @@ var _aSub = [13]struct {
 	},
 	7: {
 		FzSub: __ccgo_ts + 24449,
-		FnArg: 0,
 		FzMsg: __ccgo_ts + 1095,
 	},
 	8: {
@@ -42759,12 +41301,10 @@ var _aSub = [13]struct {
 	},
 	9: {
 		FzSub: __ccgo_ts + 24474,
-		FnArg: 0,
 		FzMsg: __ccgo_ts + 1095,
 	},
 	10: {
 		FzSub: __ccgo_ts + 24486,
-		FnArg: 0,
 		FzMsg: __ccgo_ts + 1095,
 	},
 	11: {
@@ -42772,7 +41312,6 @@ var _aSub = [13]struct {
 		FnArg: int32(1),
 		FzMsg: __ccgo_ts + 2922,
 	},
-	12: {},
 }
 
 func _test_session_del(tls *libc.TLS, clientData uintptr) {
@@ -43633,7 +42172,6 @@ var _aSub1 = [4]struct {
 	},
 	1: {
 		FzSub: __ccgo_ts + 23587,
-		FnArg: 0,
 		FzMsg: __ccgo_ts + 1095,
 	},
 	2: {
@@ -43641,7 +42179,6 @@ var _aSub1 = [4]struct {
 		FnArg: int32(1),
 		FzMsg: __ccgo_ts + 24811,
 	},
-	3: {},
 }
 
 func _test_rebaser_del(tls *libc.TLS, clientData uintptr) {
@@ -43839,9 +42376,7 @@ var _aSub2 = [3]struct {
 	},
 	1: {
 		FzSub: __ccgo_ts + 24991,
-		Fop:   0,
 	},
-	2: {},
 }
 
 func x_TestSession_Init(tls *libc.TLS, interp uintptr) (r int32) {
@@ -46329,25 +44864,7 @@ func _recoverIsValidPage(tls *libc.TLS, aTmp uintptr, a uintptr, n int32) (r int
 }
 
 var _recover_methods = Tsqlite3_io_methods{
-	FiVersion:               int32(2),
-	FxClose:                 uintptr(0),
-	FxRead:                  uintptr(0),
-	FxWrite:                 uintptr(0),
-	FxTruncate:              uintptr(0),
-	FxSync:                  uintptr(0),
-	FxFileSize:              uintptr(0),
-	FxLock:                  uintptr(0),
-	FxUnlock:                uintptr(0),
-	FxCheckReservedLock:     uintptr(0),
-	FxFileControl:           uintptr(0),
-	FxSectorSize:            uintptr(0),
-	FxDeviceCharacteristics: uintptr(0),
-	FxShmMap:                uintptr(0),
-	FxShmLock:               uintptr(0),
-	FxShmBarrier:            uintptr(0),
-	FxShmUnmap:              uintptr(0),
-	FxFetch:                 uintptr(0),
-	FxUnfetch:               uintptr(0),
+	FiVersion: int32(2),
 }
 
 func init() {
@@ -46568,19 +45085,13 @@ func _recoverVfsRead(tls *libc.TLS, pFd uintptr, aBuf uintptr, nByte int32, iOff
 					12:  uint8(0x74),
 					13:  uint8(0x20),
 					14:  uint8(0x33),
-					15:  uint8(0x00),
 					16:  uint8(0xFF),
 					17:  uint8(0xFF),
 					18:  uint8(0x01),
 					19:  uint8(0x01),
-					20:  uint8(0x00),
 					21:  uint8(0x40),
 					22:  uint8(0x20),
 					23:  uint8(0x20),
-					24:  uint8(0x00),
-					25:  uint8(0x00),
-					26:  uint8(0x00),
-					27:  uint8(0x00),
 					28:  uint8(0xFF),
 					29:  uint8(0xFF),
 					30:  uint8(0xFF),
@@ -46593,18 +45104,8 @@ func _recoverVfsRead(tls *libc.TLS, pFd uintptr, aBuf uintptr, nByte int32, iOff
 					37:  uint8(0xFF),
 					38:  uint8(0xFF),
 					39:  uint8(0xFF),
-					40:  uint8(0x00),
-					41:  uint8(0x00),
-					42:  uint8(0x00),
-					43:  uint8(0x00),
-					44:  uint8(0x00),
-					45:  uint8(0x00),
-					46:  uint8(0x00),
 					47:  uint8(0x04),
-					48:  uint8(0x00),
-					49:  uint8(0x00),
 					50:  uint8(0x10),
-					51:  uint8(0x00),
 					52:  uint8(0xFF),
 					53:  uint8(0xFF),
 					54:  uint8(0xFF),
@@ -46625,42 +45126,12 @@ func _recoverVfsRead(tls *libc.TLS, pFd uintptr, aBuf uintptr, nByte int32, iOff
 					69:  uint8(0xFF),
 					70:  uint8(0xFF),
 					71:  uint8(0xFF),
-					72:  uint8(0x00),
-					73:  uint8(0x00),
-					74:  uint8(0x00),
-					75:  uint8(0x00),
-					76:  uint8(0x00),
-					77:  uint8(0x00),
-					78:  uint8(0x00),
-					79:  uint8(0x00),
-					80:  uint8(0x00),
-					81:  uint8(0x00),
-					82:  uint8(0x00),
-					83:  uint8(0x00),
-					84:  uint8(0x00),
-					85:  uint8(0x00),
-					86:  uint8(0x00),
-					87:  uint8(0x00),
-					88:  uint8(0x00),
-					89:  uint8(0x00),
-					90:  uint8(0x00),
-					91:  uint8(0x00),
-					92:  uint8(0x00),
-					93:  uint8(0x00),
-					94:  uint8(0x00),
-					95:  uint8(0x00),
-					96:  uint8(0x00),
 					97:  uint8(0x2e),
 					98:  uint8(0x5b),
 					99:  uint8(0x30),
 					100: uint8(0x0D),
-					101: uint8(0x00),
-					102: uint8(0x00),
-					103: uint8(0x00),
-					104: uint8(0x00),
 					105: uint8(0xFF),
 					106: uint8(0xFF),
-					107: uint8(0x00),
 				}
 				a = aBuf
 				pgsz = _recoverGetU16(tls, a+16)
@@ -48291,40 +46762,13 @@ func _sqlite3DbdataRegister(tls *libc.TLS, db uintptr) (r int32) {
 	return rc
 }
 
-var _dbdata_module = Tsqlite3_module{
-	FiVersion:      0,
-	FxCreate:       uintptr(0),
-	FxConnect:      uintptr(0),
-	FxBestIndex:    uintptr(0),
-	FxDisconnect:   uintptr(0),
-	FxDestroy:      uintptr(0),
-	FxOpen:         uintptr(0),
-	FxClose:        uintptr(0),
-	FxFilter:       uintptr(0),
-	FxNext:         uintptr(0),
-	FxEof:          uintptr(0),
-	FxColumn:       uintptr(0),
-	FxRowid:        uintptr(0),
-	FxUpdate:       uintptr(0),
-	FxBegin:        uintptr(0),
-	FxSync:         uintptr(0),
-	FxCommit:       uintptr(0),
-	FxRollback:     uintptr(0),
-	FxFindFunction: uintptr(0),
-	FxRename:       uintptr(0),
-	FxSavepoint:    uintptr(0),
-	FxRelease:      uintptr(0),
-	FxRollbackTo:   uintptr(0),
-	FxShadowName:   uintptr(0),
-}
+var _dbdata_module = Tsqlite3_module{}
 
 func init() {
 	p := unsafe.Pointer(&_dbdata_module)
-	*(*uintptr)(unsafe.Add(p, 8)) = uintptr(0)
 	*(*uintptr)(unsafe.Add(p, 16)) = __ccgo_fp(_dbdataConnect)
 	*(*uintptr)(unsafe.Add(p, 24)) = __ccgo_fp(_dbdataBestIndex)
 	*(*uintptr)(unsafe.Add(p, 32)) = __ccgo_fp(_dbdataDisconnect)
-	*(*uintptr)(unsafe.Add(p, 40)) = uintptr(0)
 	*(*uintptr)(unsafe.Add(p, 48)) = __ccgo_fp(_dbdataOpen)
 	*(*uintptr)(unsafe.Add(p, 56)) = __ccgo_fp(_dbdataClose)
 	*(*uintptr)(unsafe.Add(p, 64)) = __ccgo_fp(_dbdataFilter)
@@ -48332,17 +46776,6 @@ func init() {
 	*(*uintptr)(unsafe.Add(p, 80)) = __ccgo_fp(_dbdataEof)
 	*(*uintptr)(unsafe.Add(p, 88)) = __ccgo_fp(_dbdataColumn)
 	*(*uintptr)(unsafe.Add(p, 96)) = __ccgo_fp(_dbdataRowid)
-	*(*uintptr)(unsafe.Add(p, 104)) = uintptr(0)
-	*(*uintptr)(unsafe.Add(p, 112)) = uintptr(0)
-	*(*uintptr)(unsafe.Add(p, 120)) = uintptr(0)
-	*(*uintptr)(unsafe.Add(p, 128)) = uintptr(0)
-	*(*uintptr)(unsafe.Add(p, 136)) = uintptr(0)
-	*(*uintptr)(unsafe.Add(p, 144)) = uintptr(0)
-	*(*uintptr)(unsafe.Add(p, 152)) = uintptr(0)
-	*(*uintptr)(unsafe.Add(p, 160)) = uintptr(0)
-	*(*uintptr)(unsafe.Add(p, 168)) = uintptr(0)
-	*(*uintptr)(unsafe.Add(p, 176)) = uintptr(0)
-	*(*uintptr)(unsafe.Add(p, 184)) = uintptr(0)
 }
 
 func x_sqlite3_dbdata_init(tls *libc.TLS, db uintptr, pzErrMsg uintptr, pApi uintptr) (r int32) {
@@ -48462,7 +46895,6 @@ func _testRecoverCmd(tls *libc.TLS, clientData uintptr, interp uintptr, objc int
 			3: __ccgo_ts + 29636,
 			4: __ccgo_ts + 29643,
 			5: __ccgo_ts + 24991,
-			6: uintptr(0),
 		}
 		*(*int32)(unsafe.Pointer(bp + 64)) = 0
 		res = 0
@@ -48542,30 +46974,24 @@ var _aSub3 = [7]struct {
 	},
 	1: {
 		FzSub: __ccgo_ts + 29581,
-		FnArg: 0,
 		FzMsg: __ccgo_ts + 1095,
 	},
 	2: {
 		FzSub: __ccgo_ts + 29585,
-		FnArg: 0,
 		FzMsg: __ccgo_ts + 1095,
 	},
 	3: {
 		FzSub: __ccgo_ts + 29592,
-		FnArg: 0,
 		FzMsg: __ccgo_ts + 1095,
 	},
 	4: {
 		FzSub: __ccgo_ts + 12996,
-		FnArg: 0,
 		FzMsg: __ccgo_ts + 1095,
 	},
 	5: {
 		FzSub: __ccgo_ts + 12985,
-		FnArg: 0,
 		FzMsg: __ccgo_ts + 1095,
 	},
-	6: {},
 }
 
 // C documentation
@@ -48673,7 +47099,6 @@ func x_TestRecover_Init(tls *libc.TLS, interp uintptr) (r int32) {
 		0: {
 			FzCmd:  __ccgo_ts + 29703,
 			FxProc: __ccgo_fp(_test_sqlite3_recover_init),
-			FpArg:  uintptr(0),
 		},
 		1: {
 			FzCmd:  __ccgo_ts + 29724,
@@ -49496,30 +47921,7 @@ func _idxRegisterVtab(tls *libc.TLS, p uintptr) (r int32) {
 }
 
 var _expertModule = Tsqlite3_module{
-	FiVersion:      int32(2),
-	FxCreate:       uintptr(0),
-	FxConnect:      uintptr(0),
-	FxBestIndex:    uintptr(0),
-	FxDisconnect:   uintptr(0),
-	FxDestroy:      uintptr(0),
-	FxOpen:         uintptr(0),
-	FxClose:        uintptr(0),
-	FxFilter:       uintptr(0),
-	FxNext:         uintptr(0),
-	FxEof:          uintptr(0),
-	FxColumn:       uintptr(0),
-	FxRowid:        uintptr(0),
-	FxUpdate:       uintptr(0),
-	FxBegin:        uintptr(0),
-	FxSync:         uintptr(0),
-	FxCommit:       uintptr(0),
-	FxRollback:     uintptr(0),
-	FxFindFunction: uintptr(0),
-	FxRename:       uintptr(0),
-	FxSavepoint:    uintptr(0),
-	FxRelease:      uintptr(0),
-	FxRollbackTo:   uintptr(0),
-	FxShadowName:   uintptr(0),
+	FiVersion: int32(2),
 }
 
 func init() {
@@ -49537,16 +47939,6 @@ func init() {
 	*(*uintptr)(unsafe.Add(p, 88)) = __ccgo_fp(_expertColumn)
 	*(*uintptr)(unsafe.Add(p, 96)) = __ccgo_fp(_expertRowid)
 	*(*uintptr)(unsafe.Add(p, 104)) = __ccgo_fp(_expertUpdate)
-	*(*uintptr)(unsafe.Add(p, 112)) = uintptr(0)
-	*(*uintptr)(unsafe.Add(p, 120)) = uintptr(0)
-	*(*uintptr)(unsafe.Add(p, 128)) = uintptr(0)
-	*(*uintptr)(unsafe.Add(p, 136)) = uintptr(0)
-	*(*uintptr)(unsafe.Add(p, 144)) = uintptr(0)
-	*(*uintptr)(unsafe.Add(p, 152)) = uintptr(0)
-	*(*uintptr)(unsafe.Add(p, 160)) = uintptr(0)
-	*(*uintptr)(unsafe.Add(p, 168)) = uintptr(0)
-	*(*uintptr)(unsafe.Add(p, 176)) = uintptr(0)
-	*(*uintptr)(unsafe.Add(p, 184)) = uintptr(0)
 }
 
 // C documentation
@@ -51263,12 +49655,10 @@ func _testExpertCmd(tls *libc.TLS, clientData uintptr, interp uintptr, objc int3
 		},
 		1: {
 			FzSub: __ccgo_ts + 14056,
-			FnArg: 0,
 			FzMsg: __ccgo_ts + 1095,
 		},
 		2: {
 			FzSub: __ccgo_ts + 31647,
-			FnArg: 0,
 			FzMsg: __ccgo_ts + 1095,
 		},
 		3: {
@@ -51278,10 +49668,8 @@ func _testExpertCmd(tls *libc.TLS, clientData uintptr, interp uintptr, objc int3
 		},
 		4: {
 			FzSub: __ccgo_ts + 31673,
-			FnArg: 0,
 			FzMsg: __ccgo_ts + 1095,
 		},
-		5: {},
 	}
 	rc = m_TCL_OK
 	*(*uintptr)(unsafe.Pointer(bp + 152)) = uintptr(0)
@@ -51320,7 +49708,6 @@ func _testExpertCmd(tls *libc.TLS, clientData uintptr, interp uintptr, objc int3
 			1: __ccgo_ts + 31681,
 			2: __ccgo_ts + 31689,
 			3: __ccgo_ts + 31694,
-			4: uintptr(0),
 		}
 		if libtcl8_6.XTcl_GetIntFromObj(tls, interp, *(*uintptr)(unsafe.Pointer(objv + 2*8)), bp+204) != 0 || libtcl8_6.XTcl_GetIndexFromObjStruct(tls, interp, *(*uintptr)(unsafe.Pointer(objv + 3*8)), bp+160, int32(8), __ccgo_ts+31653, 0, bp+200) != 0 {
 			return int32(m_TCL_ERROR)
@@ -52975,32 +51362,7 @@ func _amatchUpdate(tls *libc.TLS, pVTab uintptr, argc int32, argv uintptr, pRowi
 //	/*
 //	** A virtual table module that implements the "approximate_match".
 //	*/
-var _amatchModule = Tsqlite3_module{
-	FiVersion:      int32(0),
-	FxCreate:       uintptr(0),
-	FxConnect:      uintptr(0),
-	FxBestIndex:    uintptr(0),
-	FxDisconnect:   uintptr(0),
-	FxDestroy:      uintptr(0),
-	FxOpen:         uintptr(0),
-	FxClose:        uintptr(0),
-	FxFilter:       uintptr(0),
-	FxNext:         uintptr(0),
-	FxEof:          uintptr(0),
-	FxColumn:       uintptr(0),
-	FxRowid:        uintptr(0),
-	FxUpdate:       uintptr(0),
-	FxBegin:        uintptr(0),
-	FxSync:         uintptr(0),
-	FxCommit:       uintptr(0),
-	FxRollback:     uintptr(0),
-	FxFindFunction: uintptr(0),
-	FxRename:       uintptr(0),
-	FxSavepoint:    uintptr(0),
-	FxRelease:      uintptr(0),
-	FxRollbackTo:   uintptr(0),
-	FxShadowName:   uintptr(0),
-}
+var _amatchModule = Tsqlite3_module{}
 
 func init() {
 	p := unsafe.Pointer(&_amatchModule)
@@ -53017,16 +51379,6 @@ func init() {
 	*(*uintptr)(unsafe.Add(p, 88)) = __ccgo_fp(_amatchColumn)
 	*(*uintptr)(unsafe.Add(p, 96)) = __ccgo_fp(_amatchRowid)
 	*(*uintptr)(unsafe.Add(p, 104)) = __ccgo_fp(_amatchUpdate)
-	*(*uintptr)(unsafe.Add(p, 112)) = uintptr(0)
-	*(*uintptr)(unsafe.Add(p, 120)) = uintptr(0)
-	*(*uintptr)(unsafe.Add(p, 128)) = uintptr(0)
-	*(*uintptr)(unsafe.Add(p, 136)) = uintptr(0)
-	*(*uintptr)(unsafe.Add(p, 144)) = uintptr(0)
-	*(*uintptr)(unsafe.Add(p, 152)) = uintptr(0)
-	*(*uintptr)(unsafe.Add(p, 160)) = uintptr(0)
-	*(*uintptr)(unsafe.Add(p, 168)) = uintptr(0)
-	*(*uintptr)(unsafe.Add(p, 176)) = uintptr(0)
-	*(*uintptr)(unsafe.Add(p, 184)) = uintptr(0)
 }
 
 // C documentation
@@ -53149,28 +51501,9 @@ type TApndFile1 = struct {
 }
 
 var _apnd_vfs = Tsqlite3_vfs{
-	FiVersion:          int32(3),
-	FszOsFile:          int32(0),
-	FmxPathname:        int32(1024),
-	FpNext:             uintptr(0),
-	FzName:             __ccgo_ts + 32316,
-	FpAppData:          uintptr(0),
-	FxOpen:             uintptr(0),
-	FxDelete:           uintptr(0),
-	FxAccess:           uintptr(0),
-	FxFullPathname:     uintptr(0),
-	FxDlOpen:           uintptr(0),
-	FxDlError:          uintptr(0),
-	FxDlSym:            uintptr(0),
-	FxDlClose:          uintptr(0),
-	FxRandomness:       uintptr(0),
-	FxSleep:            uintptr(0),
-	FxCurrentTime:      uintptr(0),
-	FxGetLastError:     uintptr(0),
-	FxCurrentTimeInt64: uintptr(0),
-	FxSetSystemCall:    uintptr(0),
-	FxGetSystemCall:    uintptr(0),
-	FxNextSystemCall:   uintptr(0),
+	FiVersion:   int32(3),
+	FmxPathname: int32(1024),
+	FzName:      __ccgo_ts + 32316,
 }
 
 func init() {
@@ -53194,25 +51527,7 @@ func init() {
 }
 
 var _apnd_io_methods = Tsqlite3_io_methods{
-	FiVersion:               int32(3),
-	FxClose:                 uintptr(0),
-	FxRead:                  uintptr(0),
-	FxWrite:                 uintptr(0),
-	FxTruncate:              uintptr(0),
-	FxSync:                  uintptr(0),
-	FxFileSize:              uintptr(0),
-	FxLock:                  uintptr(0),
-	FxUnlock:                uintptr(0),
-	FxCheckReservedLock:     uintptr(0),
-	FxFileControl:           uintptr(0),
-	FxSectorSize:            uintptr(0),
-	FxDeviceCharacteristics: uintptr(0),
-	FxShmMap:                uintptr(0),
-	FxShmLock:               uintptr(0),
-	FxShmBarrier:            uintptr(0),
-	FxShmUnmap:              uintptr(0),
-	FxFetch:                 uintptr(0),
-	FxUnfetch:               uintptr(0),
+	FiVersion: int32(3),
 }
 
 func init() {
@@ -53840,7 +52155,6 @@ var _b64DigitValues = [128]Tu8{
 	62:  uint8(m_ND),
 	63:  uint8(m_ND),
 	64:  uint8(m_ND),
-	65:  uint8(0),
 	66:  uint8(1),
 	67:  uint8(2),
 	68:  uint8(3),
@@ -54095,8 +52409,6 @@ func _fromBase64(tls *libc.TLS, pIn uintptr, ncIn int32, pOut uintptr) (r uintpt
 }
 
 var _nboi = [5]int8{
-	0: 0,
-	1: 0,
 	2: int8(1),
 	3: int8(2),
 	4: int8(3),
@@ -54173,11 +52485,8 @@ func x_sqlite3_base64_init(tls *libc.TLS, db uintptr, pzErr uintptr, pApi uintpt
 //
 //	/* Provide digitValue to b85Numeral offset as a function of above class. */
 var _b85_cOffset = [5]Tu8{
-	0: uint8(0),
 	1: uint8('#'),
-	2: uint8(0),
 	3: uint8(libc.Int32FromUint8('*') - libc.Int32FromInt32(4)),
-	4: uint8(0),
 }
 
 /* Say whether c is a base85 numeral. */
@@ -54371,8 +52680,6 @@ func _fromBase85(tls *libc.TLS, pIn uintptr, ncIn int32, pOut uintptr) (r uintpt
 }
 
 var _nboi1 = [6]int8{
-	0: 0,
-	1: 0,
 	2: int8(1),
 	3: int8(2),
 	4: int8(3),
@@ -54895,36 +53202,13 @@ func _carrayBestIndex(tls *libc.TLS, tab uintptr, pIdxInfo uintptr) (r int32) {
 //	** This following structure defines all the methods for the
 //	** carray virtual table.
 //	*/
-var _carrayModule = Tsqlite3_module{
-	FiVersion:      int32(0),
-	FxCreate:       uintptr(0),
-	FxConnect:      uintptr(0),
-	FxBestIndex:    uintptr(0),
-	FxDisconnect:   uintptr(0),
-	FxDestroy:      uintptr(0),
-	FxOpen:         uintptr(0),
-	FxClose:        uintptr(0),
-	FxFilter:       uintptr(0),
-	FxNext:         uintptr(0),
-	FxEof:          uintptr(0),
-	FxColumn:       uintptr(0),
-	FxRowid:        uintptr(0),
-	FxUpdate:       uintptr(0),
-	FxBegin:        uintptr(0),
-	FxSync:         uintptr(0),
-	FxCommit:       uintptr(0),
-	FxRollback:     uintptr(0),
-	FxFindFunction: uintptr(0),
-	FxRename:       uintptr(0),
-}
+var _carrayModule = Tsqlite3_module{}
 
 func init() {
 	p := unsafe.Pointer(&_carrayModule)
-	*(*uintptr)(unsafe.Add(p, 8)) = uintptr(0)
 	*(*uintptr)(unsafe.Add(p, 16)) = __ccgo_fp(_carrayConnect)
 	*(*uintptr)(unsafe.Add(p, 24)) = __ccgo_fp(_carrayBestIndex)
 	*(*uintptr)(unsafe.Add(p, 32)) = __ccgo_fp(_carrayDisconnect)
-	*(*uintptr)(unsafe.Add(p, 40)) = uintptr(0)
 	*(*uintptr)(unsafe.Add(p, 48)) = __ccgo_fp(_carrayOpen)
 	*(*uintptr)(unsafe.Add(p, 56)) = __ccgo_fp(_carrayClose)
 	*(*uintptr)(unsafe.Add(p, 64)) = __ccgo_fp(_carrayFilter)
@@ -54932,13 +53216,6 @@ func init() {
 	*(*uintptr)(unsafe.Add(p, 80)) = __ccgo_fp(_carrayEof)
 	*(*uintptr)(unsafe.Add(p, 88)) = __ccgo_fp(_carrayColumn)
 	*(*uintptr)(unsafe.Add(p, 96)) = __ccgo_fp(_carrayRowid)
-	*(*uintptr)(unsafe.Add(p, 104)) = uintptr(0)
-	*(*uintptr)(unsafe.Add(p, 112)) = uintptr(0)
-	*(*uintptr)(unsafe.Add(p, 120)) = uintptr(0)
-	*(*uintptr)(unsafe.Add(p, 128)) = uintptr(0)
-	*(*uintptr)(unsafe.Add(p, 136)) = uintptr(0)
-	*(*uintptr)(unsafe.Add(p, 144)) = uintptr(0)
-	*(*uintptr)(unsafe.Add(p, 152)) = uintptr(0)
 }
 
 // C documentation
@@ -55175,28 +53452,9 @@ type TCksmFile1 = struct {
 }
 
 var _cksm_vfs = Tsqlite3_vfs{
-	FiVersion:          int32(3),
-	FszOsFile:          int32(0),
-	FmxPathname:        int32(1024),
-	FpNext:             uintptr(0),
-	FzName:             __ccgo_ts + 32765,
-	FpAppData:          uintptr(0),
-	FxOpen:             uintptr(0),
-	FxDelete:           uintptr(0),
-	FxAccess:           uintptr(0),
-	FxFullPathname:     uintptr(0),
-	FxDlOpen:           uintptr(0),
-	FxDlError:          uintptr(0),
-	FxDlSym:            uintptr(0),
-	FxDlClose:          uintptr(0),
-	FxRandomness:       uintptr(0),
-	FxSleep:            uintptr(0),
-	FxCurrentTime:      uintptr(0),
-	FxGetLastError:     uintptr(0),
-	FxCurrentTimeInt64: uintptr(0),
-	FxSetSystemCall:    uintptr(0),
-	FxGetSystemCall:    uintptr(0),
-	FxNextSystemCall:   uintptr(0),
+	FiVersion:   int32(3),
+	FmxPathname: int32(1024),
+	FzName:      __ccgo_ts + 32765,
 }
 
 func init() {
@@ -55220,25 +53478,7 @@ func init() {
 }
 
 var _cksm_io_methods = Tsqlite3_io_methods{
-	FiVersion:               int32(3),
-	FxClose:                 uintptr(0),
-	FxRead:                  uintptr(0),
-	FxWrite:                 uintptr(0),
-	FxTruncate:              uintptr(0),
-	FxSync:                  uintptr(0),
-	FxFileSize:              uintptr(0),
-	FxLock:                  uintptr(0),
-	FxUnlock:                uintptr(0),
-	FxCheckReservedLock:     uintptr(0),
-	FxFileControl:           uintptr(0),
-	FxSectorSize:            uintptr(0),
-	FxDeviceCharacteristics: uintptr(0),
-	FxShmMap:                uintptr(0),
-	FxShmLock:               uintptr(0),
-	FxShmBarrier:            uintptr(0),
-	FxShmUnmap:              uintptr(0),
-	FxFetch:                 uintptr(0),
-	FxUnfetch:               uintptr(0),
+	FiVersion: int32(3),
 }
 
 func init() {
@@ -56816,32 +55056,7 @@ func _closureBestIndex(tls *libc.TLS, pTab uintptr, pIdxInfo uintptr) (r int32) 
 //	/*
 //	** A virtual table module that implements the "transitive_closure".
 //	*/
-var _closureModule = Tsqlite3_module{
-	FiVersion:      int32(0),
-	FxCreate:       uintptr(0),
-	FxConnect:      uintptr(0),
-	FxBestIndex:    uintptr(0),
-	FxDisconnect:   uintptr(0),
-	FxDestroy:      uintptr(0),
-	FxOpen:         uintptr(0),
-	FxClose:        uintptr(0),
-	FxFilter:       uintptr(0),
-	FxNext:         uintptr(0),
-	FxEof:          uintptr(0),
-	FxColumn:       uintptr(0),
-	FxRowid:        uintptr(0),
-	FxUpdate:       uintptr(0),
-	FxBegin:        uintptr(0),
-	FxSync:         uintptr(0),
-	FxCommit:       uintptr(0),
-	FxRollback:     uintptr(0),
-	FxFindFunction: uintptr(0),
-	FxRename:       uintptr(0),
-	FxSavepoint:    uintptr(0),
-	FxRelease:      uintptr(0),
-	FxRollbackTo:   uintptr(0),
-	FxShadowName:   uintptr(0),
-}
+var _closureModule = Tsqlite3_module{}
 
 func init() {
 	p := unsafe.Pointer(&_closureModule)
@@ -56857,17 +55072,6 @@ func init() {
 	*(*uintptr)(unsafe.Add(p, 80)) = __ccgo_fp(_closureEof)
 	*(*uintptr)(unsafe.Add(p, 88)) = __ccgo_fp(_closureColumn)
 	*(*uintptr)(unsafe.Add(p, 96)) = __ccgo_fp(_closureRowid)
-	*(*uintptr)(unsafe.Add(p, 104)) = uintptr(0)
-	*(*uintptr)(unsafe.Add(p, 112)) = uintptr(0)
-	*(*uintptr)(unsafe.Add(p, 120)) = uintptr(0)
-	*(*uintptr)(unsafe.Add(p, 128)) = uintptr(0)
-	*(*uintptr)(unsafe.Add(p, 136)) = uintptr(0)
-	*(*uintptr)(unsafe.Add(p, 144)) = uintptr(0)
-	*(*uintptr)(unsafe.Add(p, 152)) = uintptr(0)
-	*(*uintptr)(unsafe.Add(p, 160)) = uintptr(0)
-	*(*uintptr)(unsafe.Add(p, 168)) = uintptr(0)
-	*(*uintptr)(unsafe.Add(p, 176)) = uintptr(0)
-	*(*uintptr)(unsafe.Add(p, 184)) = uintptr(0)
 }
 
 // C documentation
@@ -57877,28 +56081,7 @@ func _csvtabBestIndex(tls *libc.TLS, tab uintptr, pIdxInfo uintptr) (r int32) {
 	return m_SQLITE_OK
 }
 
-var _CsvModule = Tsqlite3_module{
-	FiVersion:      int32(0),
-	FxCreate:       uintptr(0),
-	FxConnect:      uintptr(0),
-	FxBestIndex:    uintptr(0),
-	FxDisconnect:   uintptr(0),
-	FxDestroy:      uintptr(0),
-	FxOpen:         uintptr(0),
-	FxClose:        uintptr(0),
-	FxFilter:       uintptr(0),
-	FxNext:         uintptr(0),
-	FxEof:          uintptr(0),
-	FxColumn:       uintptr(0),
-	FxRowid:        uintptr(0),
-	FxUpdate:       uintptr(0),
-	FxBegin:        uintptr(0),
-	FxSync:         uintptr(0),
-	FxCommit:       uintptr(0),
-	FxRollback:     uintptr(0),
-	FxFindFunction: uintptr(0),
-	FxRename:       uintptr(0),
-}
+var _CsvModule = Tsqlite3_module{}
 
 func init() {
 	p := unsafe.Pointer(&_CsvModule)
@@ -57914,13 +56097,6 @@ func init() {
 	*(*uintptr)(unsafe.Add(p, 80)) = __ccgo_fp(_csvtabEof)
 	*(*uintptr)(unsafe.Add(p, 88)) = __ccgo_fp(_csvtabColumn)
 	*(*uintptr)(unsafe.Add(p, 96)) = __ccgo_fp(_csvtabRowid)
-	*(*uintptr)(unsafe.Add(p, 104)) = uintptr(0)
-	*(*uintptr)(unsafe.Add(p, 112)) = uintptr(0)
-	*(*uintptr)(unsafe.Add(p, 120)) = uintptr(0)
-	*(*uintptr)(unsafe.Add(p, 128)) = uintptr(0)
-	*(*uintptr)(unsafe.Add(p, 136)) = uintptr(0)
-	*(*uintptr)(unsafe.Add(p, 144)) = uintptr(0)
-	*(*uintptr)(unsafe.Add(p, 152)) = uintptr(0)
 }
 
 // C documentation
@@ -57934,28 +56110,7 @@ func _csvtabUpdate(tls *libc.TLS, p uintptr, n int32, v uintptr, x uintptr) (r i
 	return int32(m_SQLITE_READONLY)
 }
 
-var _CsvModuleFauxWrite = Tsqlite3_module{
-	FiVersion:      int32(0),
-	FxCreate:       uintptr(0),
-	FxConnect:      uintptr(0),
-	FxBestIndex:    uintptr(0),
-	FxDisconnect:   uintptr(0),
-	FxDestroy:      uintptr(0),
-	FxOpen:         uintptr(0),
-	FxClose:        uintptr(0),
-	FxFilter:       uintptr(0),
-	FxNext:         uintptr(0),
-	FxEof:          uintptr(0),
-	FxColumn:       uintptr(0),
-	FxRowid:        uintptr(0),
-	FxUpdate:       uintptr(0),
-	FxBegin:        uintptr(0),
-	FxSync:         uintptr(0),
-	FxCommit:       uintptr(0),
-	FxRollback:     uintptr(0),
-	FxFindFunction: uintptr(0),
-	FxRename:       uintptr(0),
-}
+var _CsvModuleFauxWrite = Tsqlite3_module{}
 
 func init() {
 	p := unsafe.Pointer(&_CsvModuleFauxWrite)
@@ -57972,12 +56127,6 @@ func init() {
 	*(*uintptr)(unsafe.Add(p, 88)) = __ccgo_fp(_csvtabColumn)
 	*(*uintptr)(unsafe.Add(p, 96)) = __ccgo_fp(_csvtabRowid)
 	*(*uintptr)(unsafe.Add(p, 104)) = __ccgo_fp(_csvtabUpdate)
-	*(*uintptr)(unsafe.Add(p, 112)) = uintptr(0)
-	*(*uintptr)(unsafe.Add(p, 120)) = uintptr(0)
-	*(*uintptr)(unsafe.Add(p, 128)) = uintptr(0)
-	*(*uintptr)(unsafe.Add(p, 136)) = uintptr(0)
-	*(*uintptr)(unsafe.Add(p, 144)) = uintptr(0)
-	*(*uintptr)(unsafe.Add(p, 152)) = uintptr(0)
 }
 
 // C documentation
@@ -58736,27 +56885,22 @@ var _aFunc = [5]struct {
 	0: {
 		FzFuncName: __ccgo_ts + 4244,
 		FnArg:      int32(1),
-		FxFunc:     uintptr(0),
 	},
 	1: {
 		FzFuncName: __ccgo_ts + 33468,
 		FnArg:      int32(2),
-		FxFunc:     uintptr(0),
 	},
 	2: {
 		FzFuncName: __ccgo_ts + 33480,
 		FnArg:      int32(2),
-		FxFunc:     uintptr(0),
 	},
 	3: {
 		FzFuncName: __ccgo_ts + 33492,
 		FnArg:      int32(2),
-		FxFunc:     uintptr(0),
 	},
 	4: {
 		FzFuncName: __ccgo_ts + 33504,
 		FnArg:      int32(2),
-		FxFunc:     uintptr(0),
 	},
 }
 
@@ -59182,40 +57326,13 @@ func _explainBestIndex(tls *libc.TLS, tab uintptr, pIdxInfo uintptr) (r int32) {
 //	** This following structure defines all the methods for the
 //	** explain virtual table.
 //	*/
-var _explainModule = Tsqlite3_module{
-	FiVersion:      int32(0),
-	FxCreate:       uintptr(0),
-	FxConnect:      uintptr(0),
-	FxBestIndex:    uintptr(0),
-	FxDisconnect:   uintptr(0),
-	FxDestroy:      uintptr(0),
-	FxOpen:         uintptr(0),
-	FxClose:        uintptr(0),
-	FxFilter:       uintptr(0),
-	FxNext:         uintptr(0),
-	FxEof:          uintptr(0),
-	FxColumn:       uintptr(0),
-	FxRowid:        uintptr(0),
-	FxUpdate:       uintptr(0),
-	FxBegin:        uintptr(0),
-	FxSync:         uintptr(0),
-	FxCommit:       uintptr(0),
-	FxRollback:     uintptr(0),
-	FxFindFunction: uintptr(0),
-	FxRename:       uintptr(0),
-	FxSavepoint:    uintptr(0),
-	FxRelease:      uintptr(0),
-	FxRollbackTo:   uintptr(0),
-	FxShadowName:   uintptr(0),
-}
+var _explainModule = Tsqlite3_module{}
 
 func init() {
 	p := unsafe.Pointer(&_explainModule)
-	*(*uintptr)(unsafe.Add(p, 8)) = uintptr(0)
 	*(*uintptr)(unsafe.Add(p, 16)) = __ccgo_fp(_explainConnect)
 	*(*uintptr)(unsafe.Add(p, 24)) = __ccgo_fp(_explainBestIndex)
 	*(*uintptr)(unsafe.Add(p, 32)) = __ccgo_fp(_explainDisconnect)
-	*(*uintptr)(unsafe.Add(p, 40)) = uintptr(0)
 	*(*uintptr)(unsafe.Add(p, 48)) = __ccgo_fp(_explainOpen)
 	*(*uintptr)(unsafe.Add(p, 56)) = __ccgo_fp(_explainClose)
 	*(*uintptr)(unsafe.Add(p, 64)) = __ccgo_fp(_explainFilter)
@@ -59223,17 +57340,6 @@ func init() {
 	*(*uintptr)(unsafe.Add(p, 80)) = __ccgo_fp(_explainEof)
 	*(*uintptr)(unsafe.Add(p, 88)) = __ccgo_fp(_explainColumn)
 	*(*uintptr)(unsafe.Add(p, 96)) = __ccgo_fp(_explainRowid)
-	*(*uintptr)(unsafe.Add(p, 104)) = uintptr(0)
-	*(*uintptr)(unsafe.Add(p, 112)) = uintptr(0)
-	*(*uintptr)(unsafe.Add(p, 120)) = uintptr(0)
-	*(*uintptr)(unsafe.Add(p, 128)) = uintptr(0)
-	*(*uintptr)(unsafe.Add(p, 136)) = uintptr(0)
-	*(*uintptr)(unsafe.Add(p, 144)) = uintptr(0)
-	*(*uintptr)(unsafe.Add(p, 152)) = uintptr(0)
-	*(*uintptr)(unsafe.Add(p, 160)) = uintptr(0)
-	*(*uintptr)(unsafe.Add(p, 168)) = uintptr(0)
-	*(*uintptr)(unsafe.Add(p, 176)) = uintptr(0)
-	*(*uintptr)(unsafe.Add(p, 184)) = uintptr(0)
 }
 
 func x_sqlite3ExplainVtabInit(tls *libc.TLS, db uintptr) (r int32) {
@@ -60101,40 +58207,13 @@ func _fsdirRegister(tls *libc.TLS, db uintptr) (r int32) {
 	return rc
 }
 
-var _fsdirModule1 = Tsqlite3_module{
-	FiVersion:      0,
-	FxCreate:       uintptr(0),
-	FxConnect:      uintptr(0),
-	FxBestIndex:    uintptr(0),
-	FxDisconnect:   uintptr(0),
-	FxDestroy:      uintptr(0),
-	FxOpen:         uintptr(0),
-	FxClose:        uintptr(0),
-	FxFilter:       uintptr(0),
-	FxNext:         uintptr(0),
-	FxEof:          uintptr(0),
-	FxColumn:       uintptr(0),
-	FxRowid:        uintptr(0),
-	FxUpdate:       uintptr(0),
-	FxBegin:        uintptr(0),
-	FxSync:         uintptr(0),
-	FxCommit:       uintptr(0),
-	FxRollback:     uintptr(0),
-	FxFindFunction: uintptr(0),
-	FxRename:       uintptr(0),
-	FxSavepoint:    uintptr(0),
-	FxRelease:      uintptr(0),
-	FxRollbackTo:   uintptr(0),
-	FxShadowName:   uintptr(0),
-}
+var _fsdirModule1 = Tsqlite3_module{}
 
 func init() {
 	p := unsafe.Pointer(&_fsdirModule1)
-	*(*uintptr)(unsafe.Add(p, 8)) = uintptr(0)
 	*(*uintptr)(unsafe.Add(p, 16)) = __ccgo_fp(_fsdirConnect1)
 	*(*uintptr)(unsafe.Add(p, 24)) = __ccgo_fp(_fsdirBestIndex1)
 	*(*uintptr)(unsafe.Add(p, 32)) = __ccgo_fp(_fsdirDisconnect1)
-	*(*uintptr)(unsafe.Add(p, 40)) = uintptr(0)
 	*(*uintptr)(unsafe.Add(p, 48)) = __ccgo_fp(_fsdirOpen1)
 	*(*uintptr)(unsafe.Add(p, 56)) = __ccgo_fp(_fsdirClose1)
 	*(*uintptr)(unsafe.Add(p, 64)) = __ccgo_fp(_fsdirFilter1)
@@ -60142,17 +58221,6 @@ func init() {
 	*(*uintptr)(unsafe.Add(p, 80)) = __ccgo_fp(_fsdirEof1)
 	*(*uintptr)(unsafe.Add(p, 88)) = __ccgo_fp(_fsdirColumn1)
 	*(*uintptr)(unsafe.Add(p, 96)) = __ccgo_fp(_fsdirRowid1)
-	*(*uintptr)(unsafe.Add(p, 104)) = uintptr(0)
-	*(*uintptr)(unsafe.Add(p, 112)) = uintptr(0)
-	*(*uintptr)(unsafe.Add(p, 120)) = uintptr(0)
-	*(*uintptr)(unsafe.Add(p, 128)) = uintptr(0)
-	*(*uintptr)(unsafe.Add(p, 136)) = uintptr(0)
-	*(*uintptr)(unsafe.Add(p, 144)) = uintptr(0)
-	*(*uintptr)(unsafe.Add(p, 152)) = uintptr(0)
-	*(*uintptr)(unsafe.Add(p, 160)) = uintptr(0)
-	*(*uintptr)(unsafe.Add(p, 168)) = uintptr(0)
-	*(*uintptr)(unsafe.Add(p, 176)) = uintptr(0)
-	*(*uintptr)(unsafe.Add(p, 184)) = uintptr(0)
 }
 
 func x_sqlite3_fileio_init(tls *libc.TLS, db uintptr, pzErrMsg uintptr, pApi uintptr) (r int32) {
@@ -61314,28 +59382,7 @@ func _fuzzerBestIndex(tls *libc.TLS, tab uintptr, pIdxInfo uintptr) (r int32) {
 //	/*
 //	** A virtual table module that implements the "fuzzer".
 //	*/
-var _fuzzerModule = Tsqlite3_module{
-	FiVersion:      int32(0),
-	FxCreate:       uintptr(0),
-	FxConnect:      uintptr(0),
-	FxBestIndex:    uintptr(0),
-	FxDisconnect:   uintptr(0),
-	FxDestroy:      uintptr(0),
-	FxOpen:         uintptr(0),
-	FxClose:        uintptr(0),
-	FxFilter:       uintptr(0),
-	FxNext:         uintptr(0),
-	FxEof:          uintptr(0),
-	FxColumn:       uintptr(0),
-	FxRowid:        uintptr(0),
-	FxUpdate:       uintptr(0),
-	FxBegin:        uintptr(0),
-	FxSync:         uintptr(0),
-	FxCommit:       uintptr(0),
-	FxRollback:     uintptr(0),
-	FxFindFunction: uintptr(0),
-	FxRename:       uintptr(0),
-}
+var _fuzzerModule = Tsqlite3_module{}
 
 func init() {
 	p := unsafe.Pointer(&_fuzzerModule)
@@ -61351,13 +59398,6 @@ func init() {
 	*(*uintptr)(unsafe.Add(p, 80)) = __ccgo_fp(_fuzzerEof)
 	*(*uintptr)(unsafe.Add(p, 88)) = __ccgo_fp(_fuzzerColumn)
 	*(*uintptr)(unsafe.Add(p, 96)) = __ccgo_fp(_fuzzerRowid)
-	*(*uintptr)(unsafe.Add(p, 104)) = uintptr(0)
-	*(*uintptr)(unsafe.Add(p, 112)) = uintptr(0)
-	*(*uintptr)(unsafe.Add(p, 120)) = uintptr(0)
-	*(*uintptr)(unsafe.Add(p, 128)) = uintptr(0)
-	*(*uintptr)(unsafe.Add(p, 136)) = uintptr(0)
-	*(*uintptr)(unsafe.Add(p, 144)) = uintptr(0)
-	*(*uintptr)(unsafe.Add(p, 152)) = uintptr(0)
 }
 
 func x_sqlite3_fuzzer_init(tls *libc.TLS, db uintptr, pzErrMsg uintptr, pApi uintptr) (r int32) {
@@ -61418,11 +59458,9 @@ func _f5tResultToErrorCode(tls *libc.TLS, zRes uintptr) (r int32) {
 			FzError: __ccgo_ts + 23241,
 		},
 		2: {
-			Frc:     m_SQLITE_OK,
 			FzError: __ccgo_ts + 23231,
 		},
 		3: {
-			Frc:     m_SQLITE_OK,
 			FzError: __ccgo_ts + 1095,
 		},
 	}
@@ -61645,12 +59683,10 @@ func _xF5tApi(tls *libc.TLS, clientData uintptr, interp uintptr, objc int32, obj
 	}{
 		0: {
 			FzName: __ccgo_ts + 34150,
-			FnArg:  0,
 			FzMsg:  __ccgo_ts + 1095,
 		},
 		1: {
 			FzName: __ccgo_ts + 34163,
-			FnArg:  0,
 			FzMsg:  __ccgo_ts + 1095,
 		},
 		2: {
@@ -61665,7 +59701,6 @@ func _xF5tApi(tls *libc.TLS, clientData uintptr, interp uintptr, objc int32, obj
 		},
 		4: {
 			FzName: __ccgo_ts + 34216,
-			FnArg:  0,
 			FzMsg:  __ccgo_ts + 1095,
 		},
 		5: {
@@ -61675,7 +59710,6 @@ func _xF5tApi(tls *libc.TLS, clientData uintptr, interp uintptr, objc int32, obj
 		},
 		6: {
 			FzName: __ccgo_ts + 34248,
-			FnArg:  0,
 			FzMsg:  __ccgo_ts + 1095,
 		},
 		7: {
@@ -61685,7 +59719,6 @@ func _xF5tApi(tls *libc.TLS, clientData uintptr, interp uintptr, objc int32, obj
 		},
 		8: {
 			FzName: __ccgo_ts + 12169,
-			FnArg:  0,
 			FzMsg:  __ccgo_ts + 1095,
 		},
 		9: {
@@ -61733,7 +59766,6 @@ func _xF5tApi(tls *libc.TLS, clientData uintptr, interp uintptr, objc int32, obj
 			FnArg:  int32(3),
 			FzMsg:  __ccgo_ts + 34451,
 		},
-		18: {},
 	}
 	*(*int32)(unsafe.Pointer(bp + 456)) = 0
 	p = clientData
@@ -62632,43 +60664,29 @@ var _aCmd7 = [8]struct {
 }{
 	0: {
 		FzName:        __ccgo_ts + 34831,
-		FxProc:        uintptr(0),
 		FbTokenizeCtx: int32(1),
 	},
 	1: {
 		FzName:        __ccgo_ts + 34861,
-		FxProc:        uintptr(0),
 		FbTokenizeCtx: int32(1),
 	},
 	2: {
-		FzName:        __ccgo_ts + 34880,
-		FxProc:        uintptr(0),
-		FbTokenizeCtx: 0,
+		FzName: __ccgo_ts + 34880,
 	},
 	3: {
-		FzName:        __ccgo_ts + 34902,
-		FxProc:        uintptr(0),
-		FbTokenizeCtx: 0,
+		FzName: __ccgo_ts + 34902,
 	},
 	4: {
-		FzName:        __ccgo_ts + 34931,
-		FxProc:        uintptr(0),
-		FbTokenizeCtx: 0,
+		FzName: __ccgo_ts + 34931,
 	},
 	5: {
-		FzName:        __ccgo_ts + 34959,
-		FxProc:        uintptr(0),
-		FbTokenizeCtx: 0,
+		FzName: __ccgo_ts + 34959,
 	},
 	6: {
-		FzName:        __ccgo_ts + 34983,
-		FxProc:        uintptr(0),
-		FbTokenizeCtx: 0,
+		FzName: __ccgo_ts + 34983,
 	},
 	7: {
-		FzName:        __ccgo_ts + 35015,
-		FxProc:        uintptr(0),
-		FbTokenizeCtx: 0,
+		FzName: __ccgo_ts + 35015,
 	},
 }
 
@@ -63597,32 +61615,7 @@ func x_sqlite3Fts5TestRegisterTok(tls *libc.TLS, db uintptr, pApi uintptr) (r in
 	return rc
 }
 
-var _fts5tok_module = Tsqlite3_module{
-	FiVersion:      0,
-	FxCreate:       uintptr(0),
-	FxConnect:      uintptr(0),
-	FxBestIndex:    uintptr(0),
-	FxDisconnect:   uintptr(0),
-	FxDestroy:      uintptr(0),
-	FxOpen:         uintptr(0),
-	FxClose:        uintptr(0),
-	FxFilter:       uintptr(0),
-	FxNext:         uintptr(0),
-	FxEof:          uintptr(0),
-	FxColumn:       uintptr(0),
-	FxRowid:        uintptr(0),
-	FxUpdate:       uintptr(0),
-	FxBegin:        uintptr(0),
-	FxSync:         uintptr(0),
-	FxCommit:       uintptr(0),
-	FxRollback:     uintptr(0),
-	FxFindFunction: uintptr(0),
-	FxRename:       uintptr(0),
-	FxSavepoint:    uintptr(0),
-	FxRelease:      uintptr(0),
-	FxRollbackTo:   uintptr(0),
-	FxShadowName:   uintptr(0),
-}
+var _fts5tok_module = Tsqlite3_module{}
 
 func init() {
 	p := unsafe.Pointer(&_fts5tok_module)
@@ -63638,17 +61631,6 @@ func init() {
 	*(*uintptr)(unsafe.Add(p, 80)) = __ccgo_fp(_fts5tokEofMethod)
 	*(*uintptr)(unsafe.Add(p, 88)) = __ccgo_fp(_fts5tokColumnMethod)
 	*(*uintptr)(unsafe.Add(p, 96)) = __ccgo_fp(_fts5tokRowidMethod)
-	*(*uintptr)(unsafe.Add(p, 104)) = uintptr(0)
-	*(*uintptr)(unsafe.Add(p, 112)) = uintptr(0)
-	*(*uintptr)(unsafe.Add(p, 120)) = uintptr(0)
-	*(*uintptr)(unsafe.Add(p, 128)) = uintptr(0)
-	*(*uintptr)(unsafe.Add(p, 136)) = uintptr(0)
-	*(*uintptr)(unsafe.Add(p, 144)) = uintptr(0)
-	*(*uintptr)(unsafe.Add(p, 152)) = uintptr(0)
-	*(*uintptr)(unsafe.Add(p, 160)) = uintptr(0)
-	*(*uintptr)(unsafe.Add(p, 168)) = uintptr(0)
-	*(*uintptr)(unsafe.Add(p, 176)) = uintptr(0)
-	*(*uintptr)(unsafe.Add(p, 184)) = uintptr(0)
 }
 
 /* Mark a function parameter as unused, to suppress nuisance compiler
@@ -63871,38 +61853,28 @@ var _aFunc1 = [6]struct {
 	0: {
 		FzFName: __ccgo_ts + 4279,
 		FnArg:   int32(1),
-		FiAux:   0,
-		FxFunc:  uintptr(0),
 	},
 	1: {
 		FzFName: __ccgo_ts + 4279,
 		FnArg:   int32(2),
-		FiAux:   0,
-		FxFunc:  uintptr(0),
 	},
 	2: {
 		FzFName: __ccgo_ts + 35184,
 		FnArg:   int32(1),
 		FiAux:   int32(1),
-		FxFunc:  uintptr(0),
 	},
 	3: {
 		FzFName: __ccgo_ts + 35201,
 		FnArg:   int32(1),
 		FiAux:   int32(2),
-		FxFunc:  uintptr(0),
 	},
 	4: {
 		FzFName: __ccgo_ts + 35218,
 		FnArg:   int32(1),
-		FiAux:   0,
-		FxFunc:  uintptr(0),
 	},
 	5: {
 		FzFName: __ccgo_ts + 35234,
 		FnArg:   int32(1),
-		FiAux:   0,
-		FxFunc:  uintptr(0),
 	},
 }
 
@@ -64183,7 +62155,6 @@ func _readUtf8(tls *libc.TLS, z uintptr, pOut uintptr) (r int32) {
 }
 
 var _validBits = [64]uint8{
-	0:  uint8(0x00),
 	1:  uint8(0x01),
 	2:  uint8(0x02),
 	3:  uint8(0x03),
@@ -64215,7 +62186,6 @@ var _validBits = [64]uint8{
 	29: uint8(0x1d),
 	30: uint8(0x1e),
 	31: uint8(0x1f),
-	32: uint8(0x00),
 	33: uint8(0x01),
 	34: uint8(0x02),
 	35: uint8(0x03),
@@ -64231,7 +62201,6 @@ var _validBits = [64]uint8{
 	45: uint8(0x0d),
 	46: uint8(0x0e),
 	47: uint8(0x0f),
-	48: uint8(0x00),
 	49: uint8(0x01),
 	50: uint8(0x02),
 	51: uint8(0x03),
@@ -64239,14 +62208,10 @@ var _validBits = [64]uint8{
 	53: uint8(0x05),
 	54: uint8(0x06),
 	55: uint8(0x07),
-	56: uint8(0x00),
 	57: uint8(0x01),
 	58: uint8(0x02),
 	59: uint8(0x03),
-	60: uint8(0x00),
 	61: uint8(0x01),
-	62: uint8(0x00),
-	63: uint8(0x00),
 }
 
 // C documentation
@@ -64554,7 +62519,6 @@ var _aiClass = [256]uint8{
 	85:  uint8(1),
 	86:  uint8(1),
 	87:  uint8(1),
-	88:  uint8(0),
 	89:  uint8(1),
 	90:  uint8(1),
 	91:  uint8(9),
@@ -64586,7 +62550,6 @@ var _aiClass = [256]uint8{
 	117: uint8(1),
 	118: uint8(1),
 	119: uint8(1),
-	120: uint8(0),
 	121: uint8(1),
 	122: uint8(1),
 	123: uint8(27),
@@ -64734,7 +62697,6 @@ var _aiClass = [256]uint8{
 //	** involved are nearly as big or bigger than SQLite itself.
 //	*/
 var _sqlite3UpperToLower = [256]uint8{
-	0:   uint8(0),
 	1:   uint8(1),
 	2:   uint8(2),
 	3:   uint8(3),
@@ -65023,54 +62985,15 @@ var _sqlite3UpperToLower = [256]uint8{
 //	** part of an identifier is 0x46.
 //	*/
 var _sqlite3CtypeMap = [256]uint8{
-	0:   uint8(0x00),
-	1:   uint8(0x00),
-	2:   uint8(0x00),
-	3:   uint8(0x00),
-	4:   uint8(0x00),
-	5:   uint8(0x00),
-	6:   uint8(0x00),
-	7:   uint8(0x00),
-	8:   uint8(0x00),
 	9:   uint8(0x01),
 	10:  uint8(0x01),
 	11:  uint8(0x01),
 	12:  uint8(0x01),
 	13:  uint8(0x01),
-	14:  uint8(0x00),
-	15:  uint8(0x00),
-	16:  uint8(0x00),
-	17:  uint8(0x00),
-	18:  uint8(0x00),
-	19:  uint8(0x00),
-	20:  uint8(0x00),
-	21:  uint8(0x00),
-	22:  uint8(0x00),
-	23:  uint8(0x00),
-	24:  uint8(0x00),
-	25:  uint8(0x00),
-	26:  uint8(0x00),
-	27:  uint8(0x00),
-	28:  uint8(0x00),
-	29:  uint8(0x00),
-	30:  uint8(0x00),
-	31:  uint8(0x00),
 	32:  uint8(0x01),
-	33:  uint8(0x00),
 	34:  uint8(0x80),
-	35:  uint8(0x00),
 	36:  uint8(0x40),
-	37:  uint8(0x00),
-	38:  uint8(0x00),
 	39:  uint8(0x80),
-	40:  uint8(0x00),
-	41:  uint8(0x00),
-	42:  uint8(0x00),
-	43:  uint8(0x00),
-	44:  uint8(0x00),
-	45:  uint8(0x00),
-	46:  uint8(0x00),
-	47:  uint8(0x00),
 	48:  uint8(0x0c),
 	49:  uint8(0x0c),
 	50:  uint8(0x0c),
@@ -65081,13 +63004,6 @@ var _sqlite3CtypeMap = [256]uint8{
 	55:  uint8(0x0c),
 	56:  uint8(0x0c),
 	57:  uint8(0x0c),
-	58:  uint8(0x00),
-	59:  uint8(0x00),
-	60:  uint8(0x00),
-	61:  uint8(0x00),
-	62:  uint8(0x00),
-	63:  uint8(0x00),
-	64:  uint8(0x00),
 	65:  uint8(0x0a),
 	66:  uint8(0x0a),
 	67:  uint8(0x0a),
@@ -65115,9 +63031,6 @@ var _sqlite3CtypeMap = [256]uint8{
 	89:  uint8(0x02),
 	90:  uint8(0x02),
 	91:  uint8(0x80),
-	92:  uint8(0x00),
-	93:  uint8(0x00),
-	94:  uint8(0x00),
 	95:  uint8(0x40),
 	96:  uint8(0x80),
 	97:  uint8(0x2a),
@@ -65146,11 +63059,6 @@ var _sqlite3CtypeMap = [256]uint8{
 	120: uint8(0x22),
 	121: uint8(0x22),
 	122: uint8(0x22),
-	123: uint8(0x00),
-	124: uint8(0x00),
-	125: uint8(0x00),
-	126: uint8(0x00),
-	127: uint8(0x00),
 	128: uint8(0x40),
 	129: uint8(0x40),
 	130: uint8(0x40),
@@ -66252,40 +64160,13 @@ func _prefixesBestIndex(tls *libc.TLS, tab uintptr, pIdxInfo uintptr) (r int32) 
 //	** This following structure defines all the methods for the
 //	** virtual table.
 //	*/
-var _prefixesModule = Tsqlite3_module{
-	FiVersion:      int32(0),
-	FxCreate:       uintptr(0),
-	FxConnect:      uintptr(0),
-	FxBestIndex:    uintptr(0),
-	FxDisconnect:   uintptr(0),
-	FxDestroy:      uintptr(0),
-	FxOpen:         uintptr(0),
-	FxClose:        uintptr(0),
-	FxFilter:       uintptr(0),
-	FxNext:         uintptr(0),
-	FxEof:          uintptr(0),
-	FxColumn:       uintptr(0),
-	FxRowid:        uintptr(0),
-	FxUpdate:       uintptr(0),
-	FxBegin:        uintptr(0),
-	FxSync:         uintptr(0),
-	FxCommit:       uintptr(0),
-	FxRollback:     uintptr(0),
-	FxFindFunction: uintptr(0),
-	FxRename:       uintptr(0),
-	FxSavepoint:    uintptr(0),
-	FxRelease:      uintptr(0),
-	FxRollbackTo:   uintptr(0),
-	FxShadowName:   uintptr(0),
-}
+var _prefixesModule = Tsqlite3_module{}
 
 func init() {
 	p := unsafe.Pointer(&_prefixesModule)
-	*(*uintptr)(unsafe.Add(p, 8)) = uintptr(0)
 	*(*uintptr)(unsafe.Add(p, 16)) = __ccgo_fp(_prefixesConnect)
 	*(*uintptr)(unsafe.Add(p, 24)) = __ccgo_fp(_prefixesBestIndex)
 	*(*uintptr)(unsafe.Add(p, 32)) = __ccgo_fp(_prefixesDisconnect)
-	*(*uintptr)(unsafe.Add(p, 40)) = uintptr(0)
 	*(*uintptr)(unsafe.Add(p, 48)) = __ccgo_fp(_prefixesOpen)
 	*(*uintptr)(unsafe.Add(p, 56)) = __ccgo_fp(_prefixesClose)
 	*(*uintptr)(unsafe.Add(p, 64)) = __ccgo_fp(_prefixesFilter)
@@ -66293,17 +64174,6 @@ func init() {
 	*(*uintptr)(unsafe.Add(p, 80)) = __ccgo_fp(_prefixesEof)
 	*(*uintptr)(unsafe.Add(p, 88)) = __ccgo_fp(_prefixesColumn)
 	*(*uintptr)(unsafe.Add(p, 96)) = __ccgo_fp(_prefixesRowid)
-	*(*uintptr)(unsafe.Add(p, 104)) = uintptr(0)
-	*(*uintptr)(unsafe.Add(p, 112)) = uintptr(0)
-	*(*uintptr)(unsafe.Add(p, 120)) = uintptr(0)
-	*(*uintptr)(unsafe.Add(p, 128)) = uintptr(0)
-	*(*uintptr)(unsafe.Add(p, 136)) = uintptr(0)
-	*(*uintptr)(unsafe.Add(p, 144)) = uintptr(0)
-	*(*uintptr)(unsafe.Add(p, 152)) = uintptr(0)
-	*(*uintptr)(unsafe.Add(p, 160)) = uintptr(0)
-	*(*uintptr)(unsafe.Add(p, 168)) = uintptr(0)
-	*(*uintptr)(unsafe.Add(p, 176)) = uintptr(0)
-	*(*uintptr)(unsafe.Add(p, 184)) = uintptr(0)
 }
 
 /*
@@ -66795,40 +64665,13 @@ func _qpvtabBestIndex(tls *libc.TLS, tab uintptr, pIdxInfo uintptr) (r int32) {
 //	** This following structure defines all the methods for the
 //	** virtual table.
 //	*/
-var _qpvtabModule = Tsqlite3_module{
-	FiVersion:      int32(0),
-	FxCreate:       uintptr(0),
-	FxConnect:      uintptr(0),
-	FxBestIndex:    uintptr(0),
-	FxDisconnect:   uintptr(0),
-	FxDestroy:      uintptr(0),
-	FxOpen:         uintptr(0),
-	FxClose:        uintptr(0),
-	FxFilter:       uintptr(0),
-	FxNext:         uintptr(0),
-	FxEof:          uintptr(0),
-	FxColumn:       uintptr(0),
-	FxRowid:        uintptr(0),
-	FxUpdate:       uintptr(0),
-	FxBegin:        uintptr(0),
-	FxSync:         uintptr(0),
-	FxCommit:       uintptr(0),
-	FxRollback:     uintptr(0),
-	FxFindFunction: uintptr(0),
-	FxRename:       uintptr(0),
-	FxSavepoint:    uintptr(0),
-	FxRelease:      uintptr(0),
-	FxRollbackTo:   uintptr(0),
-	FxShadowName:   uintptr(0),
-}
+var _qpvtabModule = Tsqlite3_module{}
 
 func init() {
 	p := unsafe.Pointer(&_qpvtabModule)
-	*(*uintptr)(unsafe.Add(p, 8)) = uintptr(0)
 	*(*uintptr)(unsafe.Add(p, 16)) = __ccgo_fp(_qpvtabConnect)
 	*(*uintptr)(unsafe.Add(p, 24)) = __ccgo_fp(_qpvtabBestIndex)
 	*(*uintptr)(unsafe.Add(p, 32)) = __ccgo_fp(_qpvtabDisconnect)
-	*(*uintptr)(unsafe.Add(p, 40)) = uintptr(0)
 	*(*uintptr)(unsafe.Add(p, 48)) = __ccgo_fp(_qpvtabOpen)
 	*(*uintptr)(unsafe.Add(p, 56)) = __ccgo_fp(_qpvtabClose)
 	*(*uintptr)(unsafe.Add(p, 64)) = __ccgo_fp(_qpvtabFilter)
@@ -66836,17 +64679,6 @@ func init() {
 	*(*uintptr)(unsafe.Add(p, 80)) = __ccgo_fp(_qpvtabEof)
 	*(*uintptr)(unsafe.Add(p, 88)) = __ccgo_fp(_qpvtabColumn)
 	*(*uintptr)(unsafe.Add(p, 96)) = __ccgo_fp(_qpvtabRowid)
-	*(*uintptr)(unsafe.Add(p, 104)) = uintptr(0)
-	*(*uintptr)(unsafe.Add(p, 112)) = uintptr(0)
-	*(*uintptr)(unsafe.Add(p, 120)) = uintptr(0)
-	*(*uintptr)(unsafe.Add(p, 128)) = uintptr(0)
-	*(*uintptr)(unsafe.Add(p, 136)) = uintptr(0)
-	*(*uintptr)(unsafe.Add(p, 144)) = uintptr(0)
-	*(*uintptr)(unsafe.Add(p, 152)) = uintptr(0)
-	*(*uintptr)(unsafe.Add(p, 160)) = uintptr(0)
-	*(*uintptr)(unsafe.Add(p, 168)) = uintptr(0)
-	*(*uintptr)(unsafe.Add(p, 176)) = uintptr(0)
-	*(*uintptr)(unsafe.Add(p, 184)) = uintptr(0)
 }
 
 func x_sqlite3_qpvtab_init(tls *libc.TLS, db uintptr, pzErrMsg uintptr, pApi uintptr) (r int32) {
@@ -68329,40 +66161,13 @@ func _seriesBestIndex(tls *libc.TLS, pVTab uintptr, pIdxInfo uintptr) (r int32) 
 //	** This following structure defines all the methods for the
 //	** generate_series virtual table.
 //	*/
-var _seriesModule = Tsqlite3_module{
-	FiVersion:      int32(0),
-	FxCreate:       uintptr(0),
-	FxConnect:      uintptr(0),
-	FxBestIndex:    uintptr(0),
-	FxDisconnect:   uintptr(0),
-	FxDestroy:      uintptr(0),
-	FxOpen:         uintptr(0),
-	FxClose:        uintptr(0),
-	FxFilter:       uintptr(0),
-	FxNext:         uintptr(0),
-	FxEof:          uintptr(0),
-	FxColumn:       uintptr(0),
-	FxRowid:        uintptr(0),
-	FxUpdate:       uintptr(0),
-	FxBegin:        uintptr(0),
-	FxSync:         uintptr(0),
-	FxCommit:       uintptr(0),
-	FxRollback:     uintptr(0),
-	FxFindFunction: uintptr(0),
-	FxRename:       uintptr(0),
-	FxSavepoint:    uintptr(0),
-	FxRelease:      uintptr(0),
-	FxRollbackTo:   uintptr(0),
-	FxShadowName:   uintptr(0),
-}
+var _seriesModule = Tsqlite3_module{}
 
 func init() {
 	p := unsafe.Pointer(&_seriesModule)
-	*(*uintptr)(unsafe.Add(p, 8)) = uintptr(0)
 	*(*uintptr)(unsafe.Add(p, 16)) = __ccgo_fp(_seriesConnect)
 	*(*uintptr)(unsafe.Add(p, 24)) = __ccgo_fp(_seriesBestIndex)
 	*(*uintptr)(unsafe.Add(p, 32)) = __ccgo_fp(_seriesDisconnect)
-	*(*uintptr)(unsafe.Add(p, 40)) = uintptr(0)
 	*(*uintptr)(unsafe.Add(p, 48)) = __ccgo_fp(_seriesOpen)
 	*(*uintptr)(unsafe.Add(p, 56)) = __ccgo_fp(_seriesClose)
 	*(*uintptr)(unsafe.Add(p, 64)) = __ccgo_fp(_seriesFilter)
@@ -68370,17 +66175,6 @@ func init() {
 	*(*uintptr)(unsafe.Add(p, 80)) = __ccgo_fp(_seriesEof)
 	*(*uintptr)(unsafe.Add(p, 88)) = __ccgo_fp(_seriesColumn)
 	*(*uintptr)(unsafe.Add(p, 96)) = __ccgo_fp(_seriesRowid)
-	*(*uintptr)(unsafe.Add(p, 104)) = uintptr(0)
-	*(*uintptr)(unsafe.Add(p, 112)) = uintptr(0)
-	*(*uintptr)(unsafe.Add(p, 120)) = uintptr(0)
-	*(*uintptr)(unsafe.Add(p, 128)) = uintptr(0)
-	*(*uintptr)(unsafe.Add(p, 136)) = uintptr(0)
-	*(*uintptr)(unsafe.Add(p, 144)) = uintptr(0)
-	*(*uintptr)(unsafe.Add(p, 152)) = uintptr(0)
-	*(*uintptr)(unsafe.Add(p, 160)) = uintptr(0)
-	*(*uintptr)(unsafe.Add(p, 168)) = uintptr(0)
-	*(*uintptr)(unsafe.Add(p, 176)) = uintptr(0)
-	*(*uintptr)(unsafe.Add(p, 184)) = uintptr(0)
 }
 
 func x_sqlite3_series_init(tls *libc.TLS, db uintptr, pzErrMsg uintptr, pApi uintptr) (r int32) {
@@ -68501,7 +66295,6 @@ var _midClass = [128]uint8{
 	36:  uint8(m_CCLASS_OTHER),
 	37:  uint8(m_CCLASS_OTHER),
 	38:  uint8(m_CCLASS_OTHER),
-	39:  uint8(m_CCLASS_SILENT),
 	40:  uint8(m_CCLASS_OTHER),
 	41:  uint8(m_CCLASS_OTHER),
 	42:  uint8(m_CCLASS_OTHER),
@@ -68534,7 +66327,6 @@ var _midClass = [128]uint8{
 	69:  uint8(m_CCLASS_VOWEL),
 	70:  uint8(m_CCLASS_B),
 	71:  uint8(m_CCLASS_C),
-	72:  uint8(m_CCLASS_SILENT),
 	73:  uint8(m_CCLASS_VOWEL),
 	74:  uint8(m_CCLASS_C),
 	75:  uint8(m_CCLASS_C),
@@ -68566,7 +66358,6 @@ var _midClass = [128]uint8{
 	101: uint8(m_CCLASS_VOWEL),
 	102: uint8(m_CCLASS_B),
 	103: uint8(m_CCLASS_C),
-	104: uint8(m_CCLASS_SILENT),
 	105: uint8(m_CCLASS_VOWEL),
 	106: uint8(m_CCLASS_C),
 	107: uint8(m_CCLASS_C),
@@ -68672,7 +66463,6 @@ var _initClass = [128]uint8{
 	69:  uint8(m_CCLASS_VOWEL),
 	70:  uint8(m_CCLASS_B),
 	71:  uint8(m_CCLASS_C),
-	72:  uint8(m_CCLASS_SILENT),
 	73:  uint8(m_CCLASS_VOWEL),
 	74:  uint8(m_CCLASS_C),
 	75:  uint8(m_CCLASS_C),
@@ -68704,7 +66494,6 @@ var _initClass = [128]uint8{
 	101: uint8(m_CCLASS_VOWEL),
 	102: uint8(m_CCLASS_B),
 	103: uint8(m_CCLASS_C),
-	104: uint8(m_CCLASS_SILENT),
 	105: uint8(m_CCLASS_VOWEL),
 	106: uint8(m_CCLASS_C),
 	107: uint8(m_CCLASS_C),
@@ -69291,11 +67080,9 @@ type TEditDist3Lang1 = struct {
 //	** The default EditDist3Lang object, with default costs.
 //	*/
 var _editDist3Lang = TEditDist3Lang{
-	FiLang:    int32(0),
 	FiInsCost: int32(100),
 	FiDelCost: int32(100),
 	FiSubCost: int32(150),
-	FpCost:    uintptr(0),
 }
 
 /*
@@ -70165,7 +67952,6 @@ func _editDist3Install(tls *libc.TLS, db uintptr) (r int32) {
 //	** a multi-byte UTF8 character.
 //	*/
 var _sqlite3Utf8Trans1 = [64]uint8{
-	0:  uint8(0x00),
 	1:  uint8(0x01),
 	2:  uint8(0x02),
 	3:  uint8(0x03),
@@ -70197,7 +67983,6 @@ var _sqlite3Utf8Trans1 = [64]uint8{
 	29: uint8(0x1d),
 	30: uint8(0x1e),
 	31: uint8(0x1f),
-	32: uint8(0x00),
 	33: uint8(0x01),
 	34: uint8(0x02),
 	35: uint8(0x03),
@@ -70213,7 +67998,6 @@ var _sqlite3Utf8Trans1 = [64]uint8{
 	45: uint8(0x0d),
 	46: uint8(0x0e),
 	47: uint8(0x0f),
-	48: uint8(0x00),
 	49: uint8(0x01),
 	50: uint8(0x02),
 	51: uint8(0x03),
@@ -70221,14 +68005,10 @@ var _sqlite3Utf8Trans1 = [64]uint8{
 	53: uint8(0x05),
 	54: uint8(0x06),
 	55: uint8(0x07),
-	56: uint8(0x00),
 	57: uint8(0x01),
 	58: uint8(0x02),
 	59: uint8(0x03),
-	60: uint8(0x00),
 	61: uint8(0x01),
-	62: uint8(0x00),
-	63: uint8(0x00),
 }
 
 // C documentation
@@ -70313,2151 +68093,1273 @@ var _translit = [389]TTransliteration{
 	0: {
 		FcFrom: uint16(0x00A0),
 		FcTo0:  uint8(0x20),
-		FcTo1:  uint8(0x00),
-		FcTo2:  uint8(0x00),
-		FcTo3:  uint8(0x00),
 	},
 	1: {
 		FcFrom: uint16(0x00B5),
 		FcTo0:  uint8(0x75),
-		FcTo1:  uint8(0x00),
-		FcTo2:  uint8(0x00),
-		FcTo3:  uint8(0x00),
 	},
 	2: {
 		FcFrom: uint16(0x00C0),
 		FcTo0:  uint8(0x41),
-		FcTo1:  uint8(0x00),
-		FcTo2:  uint8(0x00),
-		FcTo3:  uint8(0x00),
 	},
 	3: {
 		FcFrom: uint16(0x00C1),
 		FcTo0:  uint8(0x41),
-		FcTo1:  uint8(0x00),
-		FcTo2:  uint8(0x00),
-		FcTo3:  uint8(0x00),
 	},
 	4: {
 		FcFrom: uint16(0x00C2),
 		FcTo0:  uint8(0x41),
-		FcTo1:  uint8(0x00),
-		FcTo2:  uint8(0x00),
-		FcTo3:  uint8(0x00),
 	},
 	5: {
 		FcFrom: uint16(0x00C3),
 		FcTo0:  uint8(0x41),
-		FcTo1:  uint8(0x00),
-		FcTo2:  uint8(0x00),
-		FcTo3:  uint8(0x00),
 	},
 	6: {
 		FcFrom: uint16(0x00C4),
 		FcTo0:  uint8(0x41),
 		FcTo1:  uint8(0x65),
-		FcTo2:  uint8(0x00),
-		FcTo3:  uint8(0x00),
 	},
 	7: {
 		FcFrom: uint16(0x00C5),
 		FcTo0:  uint8(0x41),
 		FcTo1:  uint8(0x61),
-		FcTo2:  uint8(0x00),
-		FcTo3:  uint8(0x00),
 	},
 	8: {
 		FcFrom: uint16(0x00C6),
 		FcTo0:  uint8(0x41),
 		FcTo1:  uint8(0x45),
-		FcTo2:  uint8(0x00),
-		FcTo3:  uint8(0x00),
 	},
 	9: {
 		FcFrom: uint16(0x00C7),
 		FcTo0:  uint8(0x43),
-		FcTo1:  uint8(0x00),
-		FcTo2:  uint8(0x00),
-		FcTo3:  uint8(0x00),
 	},
 	10: {
 		FcFrom: uint16(0x00C8),
 		FcTo0:  uint8(0x45),
-		FcTo1:  uint8(0x00),
-		FcTo2:  uint8(0x00),
-		FcTo3:  uint8(0x00),
 	},
 	11: {
 		FcFrom: uint16(0x00C9),
 		FcTo0:  uint8(0x45),
-		FcTo1:  uint8(0x00),
-		FcTo2:  uint8(0x00),
-		FcTo3:  uint8(0x00),
 	},
 	12: {
 		FcFrom: uint16(0x00CA),
 		FcTo0:  uint8(0x45),
-		FcTo1:  uint8(0x00),
-		FcTo2:  uint8(0x00),
-		FcTo3:  uint8(0x00),
 	},
 	13: {
 		FcFrom: uint16(0x00CB),
 		FcTo0:  uint8(0x45),
-		FcTo1:  uint8(0x00),
-		FcTo2:  uint8(0x00),
-		FcTo3:  uint8(0x00),
 	},
 	14: {
 		FcFrom: uint16(0x00CC),
 		FcTo0:  uint8(0x49),
-		FcTo1:  uint8(0x00),
-		FcTo2:  uint8(0x00),
-		FcTo3:  uint8(0x00),
 	},
 	15: {
 		FcFrom: uint16(0x00CD),
 		FcTo0:  uint8(0x49),
-		FcTo1:  uint8(0x00),
-		FcTo2:  uint8(0x00),
-		FcTo3:  uint8(0x00),
 	},
 	16: {
 		FcFrom: uint16(0x00CE),
 		FcTo0:  uint8(0x49),
-		FcTo1:  uint8(0x00),
-		FcTo2:  uint8(0x00),
-		FcTo3:  uint8(0x00),
 	},
 	17: {
 		FcFrom: uint16(0x00CF),
 		FcTo0:  uint8(0x49),
-		FcTo1:  uint8(0x00),
-		FcTo2:  uint8(0x00),
-		FcTo3:  uint8(0x00),
 	},
 	18: {
 		FcFrom: uint16(0x00D0),
 		FcTo0:  uint8(0x44),
-		FcTo1:  uint8(0x00),
-		FcTo2:  uint8(0x00),
-		FcTo3:  uint8(0x00),
 	},
 	19: {
 		FcFrom: uint16(0x00D1),
 		FcTo0:  uint8(0x4E),
-		FcTo1:  uint8(0x00),
-		FcTo2:  uint8(0x00),
-		FcTo3:  uint8(0x00),
 	},
 	20: {
 		FcFrom: uint16(0x00D2),
 		FcTo0:  uint8(0x4F),
-		FcTo1:  uint8(0x00),
-		FcTo2:  uint8(0x00),
-		FcTo3:  uint8(0x00),
 	},
 	21: {
 		FcFrom: uint16(0x00D3),
 		FcTo0:  uint8(0x4F),
-		FcTo1:  uint8(0x00),
-		FcTo2:  uint8(0x00),
-		FcTo3:  uint8(0x00),
 	},
 	22: {
 		FcFrom: uint16(0x00D4),
 		FcTo0:  uint8(0x4F),
-		FcTo1:  uint8(0x00),
-		FcTo2:  uint8(0x00),
-		FcTo3:  uint8(0x00),
 	},
 	23: {
 		FcFrom: uint16(0x00D5),
 		FcTo0:  uint8(0x4F),
-		FcTo1:  uint8(0x00),
-		FcTo2:  uint8(0x00),
-		FcTo3:  uint8(0x00),
 	},
 	24: {
 		FcFrom: uint16(0x00D6),
 		FcTo0:  uint8(0x4F),
 		FcTo1:  uint8(0x65),
-		FcTo2:  uint8(0x00),
-		FcTo3:  uint8(0x00),
 	},
 	25: {
 		FcFrom: uint16(0x00D7),
 		FcTo0:  uint8(0x78),
-		FcTo1:  uint8(0x00),
-		FcTo2:  uint8(0x00),
-		FcTo3:  uint8(0x00),
 	},
 	26: {
 		FcFrom: uint16(0x00D8),
 		FcTo0:  uint8(0x4F),
-		FcTo1:  uint8(0x00),
-		FcTo2:  uint8(0x00),
-		FcTo3:  uint8(0x00),
 	},
 	27: {
 		FcFrom: uint16(0x00D9),
 		FcTo0:  uint8(0x55),
-		FcTo1:  uint8(0x00),
-		FcTo2:  uint8(0x00),
-		FcTo3:  uint8(0x00),
 	},
 	28: {
 		FcFrom: uint16(0x00DA),
 		FcTo0:  uint8(0x55),
-		FcTo1:  uint8(0x00),
-		FcTo2:  uint8(0x00),
-		FcTo3:  uint8(0x00),
 	},
 	29: {
 		FcFrom: uint16(0x00DB),
 		FcTo0:  uint8(0x55),
-		FcTo1:  uint8(0x00),
-		FcTo2:  uint8(0x00),
-		FcTo3:  uint8(0x00),
 	},
 	30: {
 		FcFrom: uint16(0x00DC),
 		FcTo0:  uint8(0x55),
 		FcTo1:  uint8(0x65),
-		FcTo2:  uint8(0x00),
-		FcTo3:  uint8(0x00),
 	},
 	31: {
 		FcFrom: uint16(0x00DD),
 		FcTo0:  uint8(0x59),
-		FcTo1:  uint8(0x00),
-		FcTo2:  uint8(0x00),
-		FcTo3:  uint8(0x00),
 	},
 	32: {
 		FcFrom: uint16(0x00DE),
 		FcTo0:  uint8(0x54),
 		FcTo1:  uint8(0x68),
-		FcTo2:  uint8(0x00),
-		FcTo3:  uint8(0x00),
 	},
 	33: {
 		FcFrom: uint16(0x00DF),
 		FcTo0:  uint8(0x73),
 		FcTo1:  uint8(0x73),
-		FcTo2:  uint8(0x00),
-		FcTo3:  uint8(0x00),
 	},
 	34: {
 		FcFrom: uint16(0x00E0),
 		FcTo0:  uint8(0x61),
-		FcTo1:  uint8(0x00),
-		FcTo2:  uint8(0x00),
-		FcTo3:  uint8(0x00),
 	},
 	35: {
 		FcFrom: uint16(0x00E1),
 		FcTo0:  uint8(0x61),
-		FcTo1:  uint8(0x00),
-		FcTo2:  uint8(0x00),
-		FcTo3:  uint8(0x00),
 	},
 	36: {
 		FcFrom: uint16(0x00E2),
 		FcTo0:  uint8(0x61),
-		FcTo1:  uint8(0x00),
-		FcTo2:  uint8(0x00),
-		FcTo3:  uint8(0x00),
 	},
 	37: {
 		FcFrom: uint16(0x00E3),
 		FcTo0:  uint8(0x61),
-		FcTo1:  uint8(0x00),
-		FcTo2:  uint8(0x00),
-		FcTo3:  uint8(0x00),
 	},
 	38: {
 		FcFrom: uint16(0x00E4),
 		FcTo0:  uint8(0x61),
 		FcTo1:  uint8(0x65),
-		FcTo2:  uint8(0x00),
-		FcTo3:  uint8(0x00),
 	},
 	39: {
 		FcFrom: uint16(0x00E5),
 		FcTo0:  uint8(0x61),
 		FcTo1:  uint8(0x61),
-		FcTo2:  uint8(0x00),
-		FcTo3:  uint8(0x00),
 	},
 	40: {
 		FcFrom: uint16(0x00E6),
 		FcTo0:  uint8(0x61),
 		FcTo1:  uint8(0x65),
-		FcTo2:  uint8(0x00),
-		FcTo3:  uint8(0x00),
 	},
 	41: {
 		FcFrom: uint16(0x00E7),
 		FcTo0:  uint8(0x63),
-		FcTo1:  uint8(0x00),
-		FcTo2:  uint8(0x00),
-		FcTo3:  uint8(0x00),
 	},
 	42: {
 		FcFrom: uint16(0x00E8),
 		FcTo0:  uint8(0x65),
-		FcTo1:  uint8(0x00),
-		FcTo2:  uint8(0x00),
-		FcTo3:  uint8(0x00),
 	},
 	43: {
 		FcFrom: uint16(0x00E9),
 		FcTo0:  uint8(0x65),
-		FcTo1:  uint8(0x00),
-		FcTo2:  uint8(0x00),
-		FcTo3:  uint8(0x00),
 	},
 	44: {
 		FcFrom: uint16(0x00EA),
 		FcTo0:  uint8(0x65),
-		FcTo1:  uint8(0x00),
-		FcTo2:  uint8(0x00),
-		FcTo3:  uint8(0x00),
 	},
 	45: {
 		FcFrom: uint16(0x00EB),
 		FcTo0:  uint8(0x65),
-		FcTo1:  uint8(0x00),
-		FcTo2:  uint8(0x00),
-		FcTo3:  uint8(0x00),
 	},
 	46: {
 		FcFrom: uint16(0x00EC),
 		FcTo0:  uint8(0x69),
-		FcTo1:  uint8(0x00),
-		FcTo2:  uint8(0x00),
-		FcTo3:  uint8(0x00),
 	},
 	47: {
 		FcFrom: uint16(0x00ED),
 		FcTo0:  uint8(0x69),
-		FcTo1:  uint8(0x00),
-		FcTo2:  uint8(0x00),
-		FcTo3:  uint8(0x00),
 	},
 	48: {
 		FcFrom: uint16(0x00EE),
 		FcTo0:  uint8(0x69),
-		FcTo1:  uint8(0x00),
-		FcTo2:  uint8(0x00),
-		FcTo3:  uint8(0x00),
 	},
 	49: {
 		FcFrom: uint16(0x00EF),
 		FcTo0:  uint8(0x69),
-		FcTo1:  uint8(0x00),
-		FcTo2:  uint8(0x00),
-		FcTo3:  uint8(0x00),
 	},
 	50: {
 		FcFrom: uint16(0x00F0),
 		FcTo0:  uint8(0x64),
-		FcTo1:  uint8(0x00),
-		FcTo2:  uint8(0x00),
-		FcTo3:  uint8(0x00),
 	},
 	51: {
 		FcFrom: uint16(0x00F1),
 		FcTo0:  uint8(0x6E),
-		FcTo1:  uint8(0x00),
-		FcTo2:  uint8(0x00),
-		FcTo3:  uint8(0x00),
 	},
 	52: {
 		FcFrom: uint16(0x00F2),
 		FcTo0:  uint8(0x6F),
-		FcTo1:  uint8(0x00),
-		FcTo2:  uint8(0x00),
-		FcTo3:  uint8(0x00),
 	},
 	53: {
 		FcFrom: uint16(0x00F3),
 		FcTo0:  uint8(0x6F),
-		FcTo1:  uint8(0x00),
-		FcTo2:  uint8(0x00),
-		FcTo3:  uint8(0x00),
 	},
 	54: {
 		FcFrom: uint16(0x00F4),
 		FcTo0:  uint8(0x6F),
-		FcTo1:  uint8(0x00),
-		FcTo2:  uint8(0x00),
-		FcTo3:  uint8(0x00),
 	},
 	55: {
 		FcFrom: uint16(0x00F5),
 		FcTo0:  uint8(0x6F),
-		FcTo1:  uint8(0x00),
-		FcTo2:  uint8(0x00),
-		FcTo3:  uint8(0x00),
 	},
 	56: {
 		FcFrom: uint16(0x00F6),
 		FcTo0:  uint8(0x6F),
 		FcTo1:  uint8(0x65),
-		FcTo2:  uint8(0x00),
-		FcTo3:  uint8(0x00),
 	},
 	57: {
 		FcFrom: uint16(0x00F7),
 		FcTo0:  uint8(0x3A),
-		FcTo1:  uint8(0x00),
-		FcTo2:  uint8(0x00),
-		FcTo3:  uint8(0x00),
 	},
 	58: {
 		FcFrom: uint16(0x00F8),
 		FcTo0:  uint8(0x6F),
-		FcTo1:  uint8(0x00),
-		FcTo2:  uint8(0x00),
-		FcTo3:  uint8(0x00),
 	},
 	59: {
 		FcFrom: uint16(0x00F9),
 		FcTo0:  uint8(0x75),
-		FcTo1:  uint8(0x00),
-		FcTo2:  uint8(0x00),
-		FcTo3:  uint8(0x00),
 	},
 	60: {
 		FcFrom: uint16(0x00FA),
 		FcTo0:  uint8(0x75),
-		FcTo1:  uint8(0x00),
-		FcTo2:  uint8(0x00),
-		FcTo3:  uint8(0x00),
 	},
 	61: {
 		FcFrom: uint16(0x00FB),
 		FcTo0:  uint8(0x75),
-		FcTo1:  uint8(0x00),
-		FcTo2:  uint8(0x00),
-		FcTo3:  uint8(0x00),
 	},
 	62: {
 		FcFrom: uint16(0x00FC),
 		FcTo0:  uint8(0x75),
 		FcTo1:  uint8(0x65),
-		FcTo2:  uint8(0x00),
-		FcTo3:  uint8(0x00),
 	},
 	63: {
 		FcFrom: uint16(0x00FD),
 		FcTo0:  uint8(0x79),
-		FcTo1:  uint8(0x00),
-		FcTo2:  uint8(0x00),
-		FcTo3:  uint8(0x00),
 	},
 	64: {
 		FcFrom: uint16(0x00FE),
 		FcTo0:  uint8(0x74),
 		FcTo1:  uint8(0x68),
-		FcTo2:  uint8(0x00),
-		FcTo3:  uint8(0x00),
 	},
 	65: {
 		FcFrom: uint16(0x00FF),
 		FcTo0:  uint8(0x79),
-		FcTo1:  uint8(0x00),
-		FcTo2:  uint8(0x00),
-		FcTo3:  uint8(0x00),
 	},
 	66: {
 		FcFrom: uint16(0x0100),
 		FcTo0:  uint8(0x41),
-		FcTo1:  uint8(0x00),
-		FcTo2:  uint8(0x00),
-		FcTo3:  uint8(0x00),
 	},
 	67: {
 		FcFrom: uint16(0x0101),
 		FcTo0:  uint8(0x61),
-		FcTo1:  uint8(0x00),
-		FcTo2:  uint8(0x00),
-		FcTo3:  uint8(0x00),
 	},
 	68: {
 		FcFrom: uint16(0x0102),
 		FcTo0:  uint8(0x41),
-		FcTo1:  uint8(0x00),
-		FcTo2:  uint8(0x00),
-		FcTo3:  uint8(0x00),
 	},
 	69: {
 		FcFrom: uint16(0x0103),
 		FcTo0:  uint8(0x61),
-		FcTo1:  uint8(0x00),
-		FcTo2:  uint8(0x00),
-		FcTo3:  uint8(0x00),
 	},
 	70: {
 		FcFrom: uint16(0x0104),
 		FcTo0:  uint8(0x41),
-		FcTo1:  uint8(0x00),
-		FcTo2:  uint8(0x00),
-		FcTo3:  uint8(0x00),
 	},
 	71: {
 		FcFrom: uint16(0x0105),
 		FcTo0:  uint8(0x61),
-		FcTo1:  uint8(0x00),
-		FcTo2:  uint8(0x00),
-		FcTo3:  uint8(0x00),
 	},
 	72: {
 		FcFrom: uint16(0x0106),
 		FcTo0:  uint8(0x43),
-		FcTo1:  uint8(0x00),
-		FcTo2:  uint8(0x00),
-		FcTo3:  uint8(0x00),
 	},
 	73: {
 		FcFrom: uint16(0x0107),
 		FcTo0:  uint8(0x63),
-		FcTo1:  uint8(0x00),
-		FcTo2:  uint8(0x00),
-		FcTo3:  uint8(0x00),
 	},
 	74: {
 		FcFrom: uint16(0x0108),
 		FcTo0:  uint8(0x43),
 		FcTo1:  uint8(0x68),
-		FcTo2:  uint8(0x00),
-		FcTo3:  uint8(0x00),
 	},
 	75: {
 		FcFrom: uint16(0x0109),
 		FcTo0:  uint8(0x63),
 		FcTo1:  uint8(0x68),
-		FcTo2:  uint8(0x00),
-		FcTo3:  uint8(0x00),
 	},
 	76: {
 		FcFrom: uint16(0x010A),
 		FcTo0:  uint8(0x43),
-		FcTo1:  uint8(0x00),
-		FcTo2:  uint8(0x00),
-		FcTo3:  uint8(0x00),
 	},
 	77: {
 		FcFrom: uint16(0x010B),
 		FcTo0:  uint8(0x63),
-		FcTo1:  uint8(0x00),
-		FcTo2:  uint8(0x00),
-		FcTo3:  uint8(0x00),
 	},
 	78: {
 		FcFrom: uint16(0x010C),
 		FcTo0:  uint8(0x43),
-		FcTo1:  uint8(0x00),
-		FcTo2:  uint8(0x00),
-		FcTo3:  uint8(0x00),
 	},
 	79: {
 		FcFrom: uint16(0x010D),
 		FcTo0:  uint8(0x63),
-		FcTo1:  uint8(0x00),
-		FcTo2:  uint8(0x00),
-		FcTo3:  uint8(0x00),
 	},
 	80: {
 		FcFrom: uint16(0x010E),
 		FcTo0:  uint8(0x44),
-		FcTo1:  uint8(0x00),
-		FcTo2:  uint8(0x00),
-		FcTo3:  uint8(0x00),
 	},
 	81: {
 		FcFrom: uint16(0x010F),
 		FcTo0:  uint8(0x64),
-		FcTo1:  uint8(0x00),
-		FcTo2:  uint8(0x00),
-		FcTo3:  uint8(0x00),
 	},
 	82: {
 		FcFrom: uint16(0x0110),
 		FcTo0:  uint8(0x44),
-		FcTo1:  uint8(0x00),
-		FcTo2:  uint8(0x00),
-		FcTo3:  uint8(0x00),
 	},
 	83: {
 		FcFrom: uint16(0x0111),
 		FcTo0:  uint8(0x64),
-		FcTo1:  uint8(0x00),
-		FcTo2:  uint8(0x00),
-		FcTo3:  uint8(0x00),
 	},
 	84: {
 		FcFrom: uint16(0x0112),
 		FcTo0:  uint8(0x45),
-		FcTo1:  uint8(0x00),
-		FcTo2:  uint8(0x00),
-		FcTo3:  uint8(0x00),
 	},
 	85: {
 		FcFrom: uint16(0x0113),
 		FcTo0:  uint8(0x65),
-		FcTo1:  uint8(0x00),
-		FcTo2:  uint8(0x00),
-		FcTo3:  uint8(0x00),
 	},
 	86: {
 		FcFrom: uint16(0x0114),
 		FcTo0:  uint8(0x45),
-		FcTo1:  uint8(0x00),
-		FcTo2:  uint8(0x00),
-		FcTo3:  uint8(0x00),
 	},
 	87: {
 		FcFrom: uint16(0x0115),
 		FcTo0:  uint8(0x65),
-		FcTo1:  uint8(0x00),
-		FcTo2:  uint8(0x00),
-		FcTo3:  uint8(0x00),
 	},
 	88: {
 		FcFrom: uint16(0x0116),
 		FcTo0:  uint8(0x45),
-		FcTo1:  uint8(0x00),
-		FcTo2:  uint8(0x00),
-		FcTo3:  uint8(0x00),
 	},
 	89: {
 		FcFrom: uint16(0x0117),
 		FcTo0:  uint8(0x65),
-		FcTo1:  uint8(0x00),
-		FcTo2:  uint8(0x00),
-		FcTo3:  uint8(0x00),
 	},
 	90: {
 		FcFrom: uint16(0x0118),
 		FcTo0:  uint8(0x45),
-		FcTo1:  uint8(0x00),
-		FcTo2:  uint8(0x00),
-		FcTo3:  uint8(0x00),
 	},
 	91: {
 		FcFrom: uint16(0x0119),
 		FcTo0:  uint8(0x65),
-		FcTo1:  uint8(0x00),
-		FcTo2:  uint8(0x00),
-		FcTo3:  uint8(0x00),
 	},
 	92: {
 		FcFrom: uint16(0x011A),
 		FcTo0:  uint8(0x45),
-		FcTo1:  uint8(0x00),
-		FcTo2:  uint8(0x00),
-		FcTo3:  uint8(0x00),
 	},
 	93: {
 		FcFrom: uint16(0x011B),
 		FcTo0:  uint8(0x65),
-		FcTo1:  uint8(0x00),
-		FcTo2:  uint8(0x00),
-		FcTo3:  uint8(0x00),
 	},
 	94: {
 		FcFrom: uint16(0x011C),
 		FcTo0:  uint8(0x47),
 		FcTo1:  uint8(0x68),
-		FcTo2:  uint8(0x00),
-		FcTo3:  uint8(0x00),
 	},
 	95: {
 		FcFrom: uint16(0x011D),
 		FcTo0:  uint8(0x67),
 		FcTo1:  uint8(0x68),
-		FcTo2:  uint8(0x00),
-		FcTo3:  uint8(0x00),
 	},
 	96: {
 		FcFrom: uint16(0x011E),
 		FcTo0:  uint8(0x47),
-		FcTo1:  uint8(0x00),
-		FcTo2:  uint8(0x00),
-		FcTo3:  uint8(0x00),
 	},
 	97: {
 		FcFrom: uint16(0x011F),
 		FcTo0:  uint8(0x67),
-		FcTo1:  uint8(0x00),
-		FcTo2:  uint8(0x00),
-		FcTo3:  uint8(0x00),
 	},
 	98: {
 		FcFrom: uint16(0x0120),
 		FcTo0:  uint8(0x47),
-		FcTo1:  uint8(0x00),
-		FcTo2:  uint8(0x00),
-		FcTo3:  uint8(0x00),
 	},
 	99: {
 		FcFrom: uint16(0x0121),
 		FcTo0:  uint8(0x67),
-		FcTo1:  uint8(0x00),
-		FcTo2:  uint8(0x00),
-		FcTo3:  uint8(0x00),
 	},
 	100: {
 		FcFrom: uint16(0x0122),
 		FcTo0:  uint8(0x47),
-		FcTo1:  uint8(0x00),
-		FcTo2:  uint8(0x00),
-		FcTo3:  uint8(0x00),
 	},
 	101: {
 		FcFrom: uint16(0x0123),
 		FcTo0:  uint8(0x67),
-		FcTo1:  uint8(0x00),
-		FcTo2:  uint8(0x00),
-		FcTo3:  uint8(0x00),
 	},
 	102: {
 		FcFrom: uint16(0x0124),
 		FcTo0:  uint8(0x48),
 		FcTo1:  uint8(0x68),
-		FcTo2:  uint8(0x00),
-		FcTo3:  uint8(0x00),
 	},
 	103: {
 		FcFrom: uint16(0x0125),
 		FcTo0:  uint8(0x68),
 		FcTo1:  uint8(0x68),
-		FcTo2:  uint8(0x00),
-		FcTo3:  uint8(0x00),
 	},
 	104: {
 		FcFrom: uint16(0x0126),
 		FcTo0:  uint8(0x48),
-		FcTo1:  uint8(0x00),
-		FcTo2:  uint8(0x00),
-		FcTo3:  uint8(0x00),
 	},
 	105: {
 		FcFrom: uint16(0x0127),
 		FcTo0:  uint8(0x68),
-		FcTo1:  uint8(0x00),
-		FcTo2:  uint8(0x00),
-		FcTo3:  uint8(0x00),
 	},
 	106: {
 		FcFrom: uint16(0x0128),
 		FcTo0:  uint8(0x49),
-		FcTo1:  uint8(0x00),
-		FcTo2:  uint8(0x00),
-		FcTo3:  uint8(0x00),
 	},
 	107: {
 		FcFrom: uint16(0x0129),
 		FcTo0:  uint8(0x69),
-		FcTo1:  uint8(0x00),
-		FcTo2:  uint8(0x00),
-		FcTo3:  uint8(0x00),
 	},
 	108: {
 		FcFrom: uint16(0x012A),
 		FcTo0:  uint8(0x49),
-		FcTo1:  uint8(0x00),
-		FcTo2:  uint8(0x00),
-		FcTo3:  uint8(0x00),
 	},
 	109: {
 		FcFrom: uint16(0x012B),
 		FcTo0:  uint8(0x69),
-		FcTo1:  uint8(0x00),
-		FcTo2:  uint8(0x00),
-		FcTo3:  uint8(0x00),
 	},
 	110: {
 		FcFrom: uint16(0x012C),
 		FcTo0:  uint8(0x49),
-		FcTo1:  uint8(0x00),
-		FcTo2:  uint8(0x00),
-		FcTo3:  uint8(0x00),
 	},
 	111: {
 		FcFrom: uint16(0x012D),
 		FcTo0:  uint8(0x69),
-		FcTo1:  uint8(0x00),
-		FcTo2:  uint8(0x00),
-		FcTo3:  uint8(0x00),
 	},
 	112: {
 		FcFrom: uint16(0x012E),
 		FcTo0:  uint8(0x49),
-		FcTo1:  uint8(0x00),
-		FcTo2:  uint8(0x00),
-		FcTo3:  uint8(0x00),
 	},
 	113: {
 		FcFrom: uint16(0x012F),
 		FcTo0:  uint8(0x69),
-		FcTo1:  uint8(0x00),
-		FcTo2:  uint8(0x00),
-		FcTo3:  uint8(0x00),
 	},
 	114: {
 		FcFrom: uint16(0x0130),
 		FcTo0:  uint8(0x49),
-		FcTo1:  uint8(0x00),
-		FcTo2:  uint8(0x00),
-		FcTo3:  uint8(0x00),
 	},
 	115: {
 		FcFrom: uint16(0x0131),
 		FcTo0:  uint8(0x69),
-		FcTo1:  uint8(0x00),
-		FcTo2:  uint8(0x00),
-		FcTo3:  uint8(0x00),
 	},
 	116: {
 		FcFrom: uint16(0x0132),
 		FcTo0:  uint8(0x49),
 		FcTo1:  uint8(0x4A),
-		FcTo2:  uint8(0x00),
-		FcTo3:  uint8(0x00),
 	},
 	117: {
 		FcFrom: uint16(0x0133),
 		FcTo0:  uint8(0x69),
 		FcTo1:  uint8(0x6A),
-		FcTo2:  uint8(0x00),
-		FcTo3:  uint8(0x00),
 	},
 	118: {
 		FcFrom: uint16(0x0134),
 		FcTo0:  uint8(0x4A),
 		FcTo1:  uint8(0x68),
-		FcTo2:  uint8(0x00),
-		FcTo3:  uint8(0x00),
 	},
 	119: {
 		FcFrom: uint16(0x0135),
 		FcTo0:  uint8(0x6A),
 		FcTo1:  uint8(0x68),
-		FcTo2:  uint8(0x00),
-		FcTo3:  uint8(0x00),
 	},
 	120: {
 		FcFrom: uint16(0x0136),
 		FcTo0:  uint8(0x4B),
-		FcTo1:  uint8(0x00),
-		FcTo2:  uint8(0x00),
-		FcTo3:  uint8(0x00),
 	},
 	121: {
 		FcFrom: uint16(0x0137),
 		FcTo0:  uint8(0x6B),
-		FcTo1:  uint8(0x00),
-		FcTo2:  uint8(0x00),
-		FcTo3:  uint8(0x00),
 	},
 	122: {
 		FcFrom: uint16(0x0138),
 		FcTo0:  uint8(0x6B),
-		FcTo1:  uint8(0x00),
-		FcTo2:  uint8(0x00),
-		FcTo3:  uint8(0x00),
 	},
 	123: {
 		FcFrom: uint16(0x0139),
 		FcTo0:  uint8(0x4C),
-		FcTo1:  uint8(0x00),
-		FcTo2:  uint8(0x00),
-		FcTo3:  uint8(0x00),
 	},
 	124: {
 		FcFrom: uint16(0x013A),
 		FcTo0:  uint8(0x6C),
-		FcTo1:  uint8(0x00),
-		FcTo2:  uint8(0x00),
-		FcTo3:  uint8(0x00),
 	},
 	125: {
 		FcFrom: uint16(0x013B),
 		FcTo0:  uint8(0x4C),
-		FcTo1:  uint8(0x00),
-		FcTo2:  uint8(0x00),
-		FcTo3:  uint8(0x00),
 	},
 	126: {
 		FcFrom: uint16(0x013C),
 		FcTo0:  uint8(0x6C),
-		FcTo1:  uint8(0x00),
-		FcTo2:  uint8(0x00),
-		FcTo3:  uint8(0x00),
 	},
 	127: {
 		FcFrom: uint16(0x013D),
 		FcTo0:  uint8(0x4C),
-		FcTo1:  uint8(0x00),
-		FcTo2:  uint8(0x00),
-		FcTo3:  uint8(0x00),
 	},
 	128: {
 		FcFrom: uint16(0x013E),
 		FcTo0:  uint8(0x6C),
-		FcTo1:  uint8(0x00),
-		FcTo2:  uint8(0x00),
-		FcTo3:  uint8(0x00),
 	},
 	129: {
 		FcFrom: uint16(0x013F),
 		FcTo0:  uint8(0x4C),
 		FcTo1:  uint8(0x2E),
-		FcTo2:  uint8(0x00),
-		FcTo3:  uint8(0x00),
 	},
 	130: {
 		FcFrom: uint16(0x0140),
 		FcTo0:  uint8(0x6C),
 		FcTo1:  uint8(0x2E),
-		FcTo2:  uint8(0x00),
-		FcTo3:  uint8(0x00),
 	},
 	131: {
 		FcFrom: uint16(0x0141),
 		FcTo0:  uint8(0x4C),
-		FcTo1:  uint8(0x00),
-		FcTo2:  uint8(0x00),
-		FcTo3:  uint8(0x00),
 	},
 	132: {
 		FcFrom: uint16(0x0142),
 		FcTo0:  uint8(0x6C),
-		FcTo1:  uint8(0x00),
-		FcTo2:  uint8(0x00),
-		FcTo3:  uint8(0x00),
 	},
 	133: {
 		FcFrom: uint16(0x0143),
 		FcTo0:  uint8(0x4E),
-		FcTo1:  uint8(0x00),
-		FcTo2:  uint8(0x00),
-		FcTo3:  uint8(0x00),
 	},
 	134: {
 		FcFrom: uint16(0x0144),
 		FcTo0:  uint8(0x6E),
-		FcTo1:  uint8(0x00),
-		FcTo2:  uint8(0x00),
-		FcTo3:  uint8(0x00),
 	},
 	135: {
 		FcFrom: uint16(0x0145),
 		FcTo0:  uint8(0x4E),
-		FcTo1:  uint8(0x00),
-		FcTo2:  uint8(0x00),
-		FcTo3:  uint8(0x00),
 	},
 	136: {
 		FcFrom: uint16(0x0146),
 		FcTo0:  uint8(0x6E),
-		FcTo1:  uint8(0x00),
-		FcTo2:  uint8(0x00),
-		FcTo3:  uint8(0x00),
 	},
 	137: {
 		FcFrom: uint16(0x0147),
 		FcTo0:  uint8(0x4E),
-		FcTo1:  uint8(0x00),
-		FcTo2:  uint8(0x00),
-		FcTo3:  uint8(0x00),
 	},
 	138: {
 		FcFrom: uint16(0x0148),
 		FcTo0:  uint8(0x6E),
-		FcTo1:  uint8(0x00),
-		FcTo2:  uint8(0x00),
-		FcTo3:  uint8(0x00),
 	},
 	139: {
 		FcFrom: uint16(0x0149),
 		FcTo0:  uint8(0x27),
 		FcTo1:  uint8(0x6E),
-		FcTo2:  uint8(0x00),
-		FcTo3:  uint8(0x00),
 	},
 	140: {
 		FcFrom: uint16(0x014A),
 		FcTo0:  uint8(0x4E),
 		FcTo1:  uint8(0x47),
-		FcTo2:  uint8(0x00),
-		FcTo3:  uint8(0x00),
 	},
 	141: {
 		FcFrom: uint16(0x014B),
 		FcTo0:  uint8(0x6E),
 		FcTo1:  uint8(0x67),
-		FcTo2:  uint8(0x00),
-		FcTo3:  uint8(0x00),
 	},
 	142: {
 		FcFrom: uint16(0x014C),
 		FcTo0:  uint8(0x4F),
-		FcTo1:  uint8(0x00),
-		FcTo2:  uint8(0x00),
-		FcTo3:  uint8(0x00),
 	},
 	143: {
 		FcFrom: uint16(0x014D),
 		FcTo0:  uint8(0x6F),
-		FcTo1:  uint8(0x00),
-		FcTo2:  uint8(0x00),
-		FcTo3:  uint8(0x00),
 	},
 	144: {
 		FcFrom: uint16(0x014E),
 		FcTo0:  uint8(0x4F),
-		FcTo1:  uint8(0x00),
-		FcTo2:  uint8(0x00),
-		FcTo3:  uint8(0x00),
 	},
 	145: {
 		FcFrom: uint16(0x014F),
 		FcTo0:  uint8(0x6F),
-		FcTo1:  uint8(0x00),
-		FcTo2:  uint8(0x00),
-		FcTo3:  uint8(0x00),
 	},
 	146: {
 		FcFrom: uint16(0x0150),
 		FcTo0:  uint8(0x4F),
-		FcTo1:  uint8(0x00),
-		FcTo2:  uint8(0x00),
-		FcTo3:  uint8(0x00),
 	},
 	147: {
 		FcFrom: uint16(0x0151),
 		FcTo0:  uint8(0x6F),
-		FcTo1:  uint8(0x00),
-		FcTo2:  uint8(0x00),
-		FcTo3:  uint8(0x00),
 	},
 	148: {
 		FcFrom: uint16(0x0152),
 		FcTo0:  uint8(0x4F),
 		FcTo1:  uint8(0x45),
-		FcTo2:  uint8(0x00),
-		FcTo3:  uint8(0x00),
 	},
 	149: {
 		FcFrom: uint16(0x0153),
 		FcTo0:  uint8(0x6F),
 		FcTo1:  uint8(0x65),
-		FcTo2:  uint8(0x00),
-		FcTo3:  uint8(0x00),
 	},
 	150: {
 		FcFrom: uint16(0x0154),
 		FcTo0:  uint8(0x52),
-		FcTo1:  uint8(0x00),
-		FcTo2:  uint8(0x00),
-		FcTo3:  uint8(0x00),
 	},
 	151: {
 		FcFrom: uint16(0x0155),
 		FcTo0:  uint8(0x72),
-		FcTo1:  uint8(0x00),
-		FcTo2:  uint8(0x00),
-		FcTo3:  uint8(0x00),
 	},
 	152: {
 		FcFrom: uint16(0x0156),
 		FcTo0:  uint8(0x52),
-		FcTo1:  uint8(0x00),
-		FcTo2:  uint8(0x00),
-		FcTo3:  uint8(0x00),
 	},
 	153: {
 		FcFrom: uint16(0x0157),
 		FcTo0:  uint8(0x72),
-		FcTo1:  uint8(0x00),
-		FcTo2:  uint8(0x00),
-		FcTo3:  uint8(0x00),
 	},
 	154: {
 		FcFrom: uint16(0x0158),
 		FcTo0:  uint8(0x52),
-		FcTo1:  uint8(0x00),
-		FcTo2:  uint8(0x00),
-		FcTo3:  uint8(0x00),
 	},
 	155: {
 		FcFrom: uint16(0x0159),
 		FcTo0:  uint8(0x72),
-		FcTo1:  uint8(0x00),
-		FcTo2:  uint8(0x00),
-		FcTo3:  uint8(0x00),
 	},
 	156: {
 		FcFrom: uint16(0x015A),
 		FcTo0:  uint8(0x53),
-		FcTo1:  uint8(0x00),
-		FcTo2:  uint8(0x00),
-		FcTo3:  uint8(0x00),
 	},
 	157: {
 		FcFrom: uint16(0x015B),
 		FcTo0:  uint8(0x73),
-		FcTo1:  uint8(0x00),
-		FcTo2:  uint8(0x00),
-		FcTo3:  uint8(0x00),
 	},
 	158: {
 		FcFrom: uint16(0x015C),
 		FcTo0:  uint8(0x53),
 		FcTo1:  uint8(0x68),
-		FcTo2:  uint8(0x00),
-		FcTo3:  uint8(0x00),
 	},
 	159: {
 		FcFrom: uint16(0x015D),
 		FcTo0:  uint8(0x73),
 		FcTo1:  uint8(0x68),
-		FcTo2:  uint8(0x00),
-		FcTo3:  uint8(0x00),
 	},
 	160: {
 		FcFrom: uint16(0x015E),
 		FcTo0:  uint8(0x53),
-		FcTo1:  uint8(0x00),
-		FcTo2:  uint8(0x00),
-		FcTo3:  uint8(0x00),
 	},
 	161: {
 		FcFrom: uint16(0x015F),
 		FcTo0:  uint8(0x73),
-		FcTo1:  uint8(0x00),
-		FcTo2:  uint8(0x00),
-		FcTo3:  uint8(0x00),
 	},
 	162: {
 		FcFrom: uint16(0x0160),
 		FcTo0:  uint8(0x53),
-		FcTo1:  uint8(0x00),
-		FcTo2:  uint8(0x00),
-		FcTo3:  uint8(0x00),
 	},
 	163: {
 		FcFrom: uint16(0x0161),
 		FcTo0:  uint8(0x73),
-		FcTo1:  uint8(0x00),
-		FcTo2:  uint8(0x00),
-		FcTo3:  uint8(0x00),
 	},
 	164: {
 		FcFrom: uint16(0x0162),
 		FcTo0:  uint8(0x54),
-		FcTo1:  uint8(0x00),
-		FcTo2:  uint8(0x00),
-		FcTo3:  uint8(0x00),
 	},
 	165: {
 		FcFrom: uint16(0x0163),
 		FcTo0:  uint8(0x74),
-		FcTo1:  uint8(0x00),
-		FcTo2:  uint8(0x00),
-		FcTo3:  uint8(0x00),
 	},
 	166: {
 		FcFrom: uint16(0x0164),
 		FcTo0:  uint8(0x54),
-		FcTo1:  uint8(0x00),
-		FcTo2:  uint8(0x00),
-		FcTo3:  uint8(0x00),
 	},
 	167: {
 		FcFrom: uint16(0x0165),
 		FcTo0:  uint8(0x74),
-		FcTo1:  uint8(0x00),
-		FcTo2:  uint8(0x00),
-		FcTo3:  uint8(0x00),
 	},
 	168: {
 		FcFrom: uint16(0x0166),
 		FcTo0:  uint8(0x54),
-		FcTo1:  uint8(0x00),
-		FcTo2:  uint8(0x00),
-		FcTo3:  uint8(0x00),
 	},
 	169: {
 		FcFrom: uint16(0x0167),
 		FcTo0:  uint8(0x74),
-		FcTo1:  uint8(0x00),
-		FcTo2:  uint8(0x00),
-		FcTo3:  uint8(0x00),
 	},
 	170: {
 		FcFrom: uint16(0x0168),
 		FcTo0:  uint8(0x55),
-		FcTo1:  uint8(0x00),
-		FcTo2:  uint8(0x00),
-		FcTo3:  uint8(0x00),
 	},
 	171: {
 		FcFrom: uint16(0x0169),
 		FcTo0:  uint8(0x75),
-		FcTo1:  uint8(0x00),
-		FcTo2:  uint8(0x00),
-		FcTo3:  uint8(0x00),
 	},
 	172: {
 		FcFrom: uint16(0x016A),
 		FcTo0:  uint8(0x55),
-		FcTo1:  uint8(0x00),
-		FcTo2:  uint8(0x00),
-		FcTo3:  uint8(0x00),
 	},
 	173: {
 		FcFrom: uint16(0x016B),
 		FcTo0:  uint8(0x75),
-		FcTo1:  uint8(0x00),
-		FcTo2:  uint8(0x00),
-		FcTo3:  uint8(0x00),
 	},
 	174: {
 		FcFrom: uint16(0x016C),
 		FcTo0:  uint8(0x55),
-		FcTo1:  uint8(0x00),
-		FcTo2:  uint8(0x00),
-		FcTo3:  uint8(0x00),
 	},
 	175: {
 		FcFrom: uint16(0x016D),
 		FcTo0:  uint8(0x75),
-		FcTo1:  uint8(0x00),
-		FcTo2:  uint8(0x00),
-		FcTo3:  uint8(0x00),
 	},
 	176: {
 		FcFrom: uint16(0x016E),
 		FcTo0:  uint8(0x55),
-		FcTo1:  uint8(0x00),
-		FcTo2:  uint8(0x00),
-		FcTo3:  uint8(0x00),
 	},
 	177: {
 		FcFrom: uint16(0x016F),
 		FcTo0:  uint8(0x75),
-		FcTo1:  uint8(0x00),
-		FcTo2:  uint8(0x00),
-		FcTo3:  uint8(0x00),
 	},
 	178: {
 		FcFrom: uint16(0x0170),
 		FcTo0:  uint8(0x55),
-		FcTo1:  uint8(0x00),
-		FcTo2:  uint8(0x00),
-		FcTo3:  uint8(0x00),
 	},
 	179: {
 		FcFrom: uint16(0x0171),
 		FcTo0:  uint8(0x75),
-		FcTo1:  uint8(0x00),
-		FcTo2:  uint8(0x00),
-		FcTo3:  uint8(0x00),
 	},
 	180: {
 		FcFrom: uint16(0x0172),
 		FcTo0:  uint8(0x55),
-		FcTo1:  uint8(0x00),
-		FcTo2:  uint8(0x00),
-		FcTo3:  uint8(0x00),
 	},
 	181: {
 		FcFrom: uint16(0x0173),
 		FcTo0:  uint8(0x75),
-		FcTo1:  uint8(0x00),
-		FcTo2:  uint8(0x00),
-		FcTo3:  uint8(0x00),
 	},
 	182: {
 		FcFrom: uint16(0x0174),
 		FcTo0:  uint8(0x57),
-		FcTo1:  uint8(0x00),
-		FcTo2:  uint8(0x00),
-		FcTo3:  uint8(0x00),
 	},
 	183: {
 		FcFrom: uint16(0x0175),
 		FcTo0:  uint8(0x77),
-		FcTo1:  uint8(0x00),
-		FcTo2:  uint8(0x00),
-		FcTo3:  uint8(0x00),
 	},
 	184: {
 		FcFrom: uint16(0x0176),
 		FcTo0:  uint8(0x59),
-		FcTo1:  uint8(0x00),
-		FcTo2:  uint8(0x00),
-		FcTo3:  uint8(0x00),
 	},
 	185: {
 		FcFrom: uint16(0x0177),
 		FcTo0:  uint8(0x79),
-		FcTo1:  uint8(0x00),
-		FcTo2:  uint8(0x00),
-		FcTo3:  uint8(0x00),
 	},
 	186: {
 		FcFrom: uint16(0x0178),
 		FcTo0:  uint8(0x59),
-		FcTo1:  uint8(0x00),
-		FcTo2:  uint8(0x00),
-		FcTo3:  uint8(0x00),
 	},
 	187: {
 		FcFrom: uint16(0x0179),
 		FcTo0:  uint8(0x5A),
-		FcTo1:  uint8(0x00),
-		FcTo2:  uint8(0x00),
-		FcTo3:  uint8(0x00),
 	},
 	188: {
 		FcFrom: uint16(0x017A),
 		FcTo0:  uint8(0x7A),
-		FcTo1:  uint8(0x00),
-		FcTo2:  uint8(0x00),
-		FcTo3:  uint8(0x00),
 	},
 	189: {
 		FcFrom: uint16(0x017B),
 		FcTo0:  uint8(0x5A),
-		FcTo1:  uint8(0x00),
-		FcTo2:  uint8(0x00),
-		FcTo3:  uint8(0x00),
 	},
 	190: {
 		FcFrom: uint16(0x017C),
 		FcTo0:  uint8(0x7A),
-		FcTo1:  uint8(0x00),
-		FcTo2:  uint8(0x00),
-		FcTo3:  uint8(0x00),
 	},
 	191: {
 		FcFrom: uint16(0x017D),
 		FcTo0:  uint8(0x5A),
-		FcTo1:  uint8(0x00),
-		FcTo2:  uint8(0x00),
-		FcTo3:  uint8(0x00),
 	},
 	192: {
 		FcFrom: uint16(0x017E),
 		FcTo0:  uint8(0x7A),
-		FcTo1:  uint8(0x00),
-		FcTo2:  uint8(0x00),
-		FcTo3:  uint8(0x00),
 	},
 	193: {
 		FcFrom: uint16(0x017F),
 		FcTo0:  uint8(0x73),
-		FcTo1:  uint8(0x00),
-		FcTo2:  uint8(0x00),
-		FcTo3:  uint8(0x00),
 	},
 	194: {
 		FcFrom: uint16(0x0192),
 		FcTo0:  uint8(0x66),
-		FcTo1:  uint8(0x00),
-		FcTo2:  uint8(0x00),
-		FcTo3:  uint8(0x00),
 	},
 	195: {
 		FcFrom: uint16(0x0218),
 		FcTo0:  uint8(0x53),
-		FcTo1:  uint8(0x00),
-		FcTo2:  uint8(0x00),
-		FcTo3:  uint8(0x00),
 	},
 	196: {
 		FcFrom: uint16(0x0219),
 		FcTo0:  uint8(0x73),
-		FcTo1:  uint8(0x00),
-		FcTo2:  uint8(0x00),
-		FcTo3:  uint8(0x00),
 	},
 	197: {
 		FcFrom: uint16(0x021A),
 		FcTo0:  uint8(0x54),
-		FcTo1:  uint8(0x00),
-		FcTo2:  uint8(0x00),
-		FcTo3:  uint8(0x00),
 	},
 	198: {
 		FcFrom: uint16(0x021B),
 		FcTo0:  uint8(0x74),
-		FcTo1:  uint8(0x00),
-		FcTo2:  uint8(0x00),
-		FcTo3:  uint8(0x00),
 	},
 	199: {
 		FcFrom: uint16(0x0386),
 		FcTo0:  uint8(0x41),
-		FcTo1:  uint8(0x00),
-		FcTo2:  uint8(0x00),
-		FcTo3:  uint8(0x00),
 	},
 	200: {
 		FcFrom: uint16(0x0388),
 		FcTo0:  uint8(0x45),
-		FcTo1:  uint8(0x00),
-		FcTo2:  uint8(0x00),
-		FcTo3:  uint8(0x00),
 	},
 	201: {
 		FcFrom: uint16(0x0389),
 		FcTo0:  uint8(0x49),
-		FcTo1:  uint8(0x00),
-		FcTo2:  uint8(0x00),
-		FcTo3:  uint8(0x00),
 	},
 	202: {
 		FcFrom: uint16(0x038A),
 		FcTo0:  uint8(0x49),
-		FcTo1:  uint8(0x00),
-		FcTo2:  uint8(0x00),
-		FcTo3:  uint8(0x00),
 	},
 	203: {
 		FcFrom: uint16(0x038C),
 		FcTo0:  uint8(0x4f),
-		FcTo1:  uint8(0x00),
-		FcTo2:  uint8(0x00),
-		FcTo3:  uint8(0x00),
 	},
 	204: {
 		FcFrom: uint16(0x038E),
 		FcTo0:  uint8(0x59),
-		FcTo1:  uint8(0x00),
-		FcTo2:  uint8(0x00),
-		FcTo3:  uint8(0x00),
 	},
 	205: {
 		FcFrom: uint16(0x038F),
 		FcTo0:  uint8(0x4f),
-		FcTo1:  uint8(0x00),
-		FcTo2:  uint8(0x00),
-		FcTo3:  uint8(0x00),
 	},
 	206: {
 		FcFrom: uint16(0x0390),
 		FcTo0:  uint8(0x69),
-		FcTo1:  uint8(0x00),
-		FcTo2:  uint8(0x00),
-		FcTo3:  uint8(0x00),
 	},
 	207: {
 		FcFrom: uint16(0x0391),
 		FcTo0:  uint8(0x41),
-		FcTo1:  uint8(0x00),
-		FcTo2:  uint8(0x00),
-		FcTo3:  uint8(0x00),
 	},
 	208: {
 		FcFrom: uint16(0x0392),
 		FcTo0:  uint8(0x42),
-		FcTo1:  uint8(0x00),
-		FcTo2:  uint8(0x00),
-		FcTo3:  uint8(0x00),
 	},
 	209: {
 		FcFrom: uint16(0x0393),
 		FcTo0:  uint8(0x47),
-		FcTo1:  uint8(0x00),
-		FcTo2:  uint8(0x00),
-		FcTo3:  uint8(0x00),
 	},
 	210: {
 		FcFrom: uint16(0x0394),
 		FcTo0:  uint8(0x44),
-		FcTo1:  uint8(0x00),
-		FcTo2:  uint8(0x00),
-		FcTo3:  uint8(0x00),
 	},
 	211: {
 		FcFrom: uint16(0x0395),
 		FcTo0:  uint8(0x45),
-		FcTo1:  uint8(0x00),
-		FcTo2:  uint8(0x00),
-		FcTo3:  uint8(0x00),
 	},
 	212: {
 		FcFrom: uint16(0x0396),
 		FcTo0:  uint8(0x5a),
-		FcTo1:  uint8(0x00),
-		FcTo2:  uint8(0x00),
-		FcTo3:  uint8(0x00),
 	},
 	213: {
 		FcFrom: uint16(0x0397),
 		FcTo0:  uint8(0x49),
-		FcTo1:  uint8(0x00),
-		FcTo2:  uint8(0x00),
-		FcTo3:  uint8(0x00),
 	},
 	214: {
 		FcFrom: uint16(0x0398),
 		FcTo0:  uint8(0x54),
 		FcTo1:  uint8(0x68),
-		FcTo2:  uint8(0x00),
-		FcTo3:  uint8(0x00),
 	},
 	215: {
 		FcFrom: uint16(0x0399),
 		FcTo0:  uint8(0x49),
-		FcTo1:  uint8(0x00),
-		FcTo2:  uint8(0x00),
-		FcTo3:  uint8(0x00),
 	},
 	216: {
 		FcFrom: uint16(0x039A),
 		FcTo0:  uint8(0x4b),
-		FcTo1:  uint8(0x00),
-		FcTo2:  uint8(0x00),
-		FcTo3:  uint8(0x00),
 	},
 	217: {
 		FcFrom: uint16(0x039B),
 		FcTo0:  uint8(0x4c),
-		FcTo1:  uint8(0x00),
-		FcTo2:  uint8(0x00),
-		FcTo3:  uint8(0x00),
 	},
 	218: {
 		FcFrom: uint16(0x039C),
 		FcTo0:  uint8(0x4d),
-		FcTo1:  uint8(0x00),
-		FcTo2:  uint8(0x00),
-		FcTo3:  uint8(0x00),
 	},
 	219: {
 		FcFrom: uint16(0x039D),
 		FcTo0:  uint8(0x4e),
-		FcTo1:  uint8(0x00),
-		FcTo2:  uint8(0x00),
-		FcTo3:  uint8(0x00),
 	},
 	220: {
 		FcFrom: uint16(0x039E),
 		FcTo0:  uint8(0x58),
-		FcTo1:  uint8(0x00),
-		FcTo2:  uint8(0x00),
-		FcTo3:  uint8(0x00),
 	},
 	221: {
 		FcFrom: uint16(0x039F),
 		FcTo0:  uint8(0x4f),
-		FcTo1:  uint8(0x00),
-		FcTo2:  uint8(0x00),
-		FcTo3:  uint8(0x00),
 	},
 	222: {
 		FcFrom: uint16(0x03A0),
 		FcTo0:  uint8(0x50),
-		FcTo1:  uint8(0x00),
-		FcTo2:  uint8(0x00),
-		FcTo3:  uint8(0x00),
 	},
 	223: {
 		FcFrom: uint16(0x03A1),
 		FcTo0:  uint8(0x52),
-		FcTo1:  uint8(0x00),
-		FcTo2:  uint8(0x00),
-		FcTo3:  uint8(0x00),
 	},
 	224: {
 		FcFrom: uint16(0x03A3),
 		FcTo0:  uint8(0x53),
-		FcTo1:  uint8(0x00),
-		FcTo2:  uint8(0x00),
-		FcTo3:  uint8(0x00),
 	},
 	225: {
 		FcFrom: uint16(0x03A4),
 		FcTo0:  uint8(0x54),
-		FcTo1:  uint8(0x00),
-		FcTo2:  uint8(0x00),
-		FcTo3:  uint8(0x00),
 	},
 	226: {
 		FcFrom: uint16(0x03A5),
 		FcTo0:  uint8(0x59),
-		FcTo1:  uint8(0x00),
-		FcTo2:  uint8(0x00),
-		FcTo3:  uint8(0x00),
 	},
 	227: {
 		FcFrom: uint16(0x03A6),
 		FcTo0:  uint8(0x46),
-		FcTo1:  uint8(0x00),
-		FcTo2:  uint8(0x00),
-		FcTo3:  uint8(0x00),
 	},
 	228: {
 		FcFrom: uint16(0x03A7),
 		FcTo0:  uint8(0x43),
 		FcTo1:  uint8(0x68),
-		FcTo2:  uint8(0x00),
-		FcTo3:  uint8(0x00),
 	},
 	229: {
 		FcFrom: uint16(0x03A8),
 		FcTo0:  uint8(0x50),
 		FcTo1:  uint8(0x73),
-		FcTo2:  uint8(0x00),
-		FcTo3:  uint8(0x00),
 	},
 	230: {
 		FcFrom: uint16(0x03A9),
 		FcTo0:  uint8(0x4f),
-		FcTo1:  uint8(0x00),
-		FcTo2:  uint8(0x00),
-		FcTo3:  uint8(0x00),
 	},
 	231: {
 		FcFrom: uint16(0x03AA),
 		FcTo0:  uint8(0x49),
-		FcTo1:  uint8(0x00),
-		FcTo2:  uint8(0x00),
-		FcTo3:  uint8(0x00),
 	},
 	232: {
 		FcFrom: uint16(0x03AB),
 		FcTo0:  uint8(0x59),
-		FcTo1:  uint8(0x00),
-		FcTo2:  uint8(0x00),
-		FcTo3:  uint8(0x00),
 	},
 	233: {
 		FcFrom: uint16(0x03AC),
 		FcTo0:  uint8(0x61),
-		FcTo1:  uint8(0x00),
-		FcTo2:  uint8(0x00),
-		FcTo3:  uint8(0x00),
 	},
 	234: {
 		FcFrom: uint16(0x03AD),
 		FcTo0:  uint8(0x65),
-		FcTo1:  uint8(0x00),
-		FcTo2:  uint8(0x00),
-		FcTo3:  uint8(0x00),
 	},
 	235: {
 		FcFrom: uint16(0x03AE),
 		FcTo0:  uint8(0x69),
-		FcTo1:  uint8(0x00),
-		FcTo2:  uint8(0x00),
-		FcTo3:  uint8(0x00),
 	},
 	236: {
 		FcFrom: uint16(0x03AF),
 		FcTo0:  uint8(0x69),
-		FcTo1:  uint8(0x00),
-		FcTo2:  uint8(0x00),
-		FcTo3:  uint8(0x00),
 	},
 	237: {
 		FcFrom: uint16(0x03B1),
 		FcTo0:  uint8(0x61),
-		FcTo1:  uint8(0x00),
-		FcTo2:  uint8(0x00),
-		FcTo3:  uint8(0x00),
 	},
 	238: {
 		FcFrom: uint16(0x03B2),
 		FcTo0:  uint8(0x62),
-		FcTo1:  uint8(0x00),
-		FcTo2:  uint8(0x00),
-		FcTo3:  uint8(0x00),
 	},
 	239: {
 		FcFrom: uint16(0x03B3),
 		FcTo0:  uint8(0x67),
-		FcTo1:  uint8(0x00),
-		FcTo2:  uint8(0x00),
-		FcTo3:  uint8(0x00),
 	},
 	240: {
 		FcFrom: uint16(0x03B4),
 		FcTo0:  uint8(0x64),
-		FcTo1:  uint8(0x00),
-		FcTo2:  uint8(0x00),
-		FcTo3:  uint8(0x00),
 	},
 	241: {
 		FcFrom: uint16(0x03B5),
 		FcTo0:  uint8(0x65),
-		FcTo1:  uint8(0x00),
-		FcTo2:  uint8(0x00),
-		FcTo3:  uint8(0x00),
 	},
 	242: {
 		FcFrom: uint16(0x03B6),
 		FcTo0:  uint8(0x7a),
-		FcTo1:  uint8(0x00),
-		FcTo2:  uint8(0x00),
-		FcTo3:  uint8(0x00),
 	},
 	243: {
 		FcFrom: uint16(0x03B7),
 		FcTo0:  uint8(0x69),
-		FcTo1:  uint8(0x00),
-		FcTo2:  uint8(0x00),
-		FcTo3:  uint8(0x00),
 	},
 	244: {
 		FcFrom: uint16(0x03B8),
 		FcTo0:  uint8(0x74),
 		FcTo1:  uint8(0x68),
-		FcTo2:  uint8(0x00),
-		FcTo3:  uint8(0x00),
 	},
 	245: {
 		FcFrom: uint16(0x03B9),
 		FcTo0:  uint8(0x69),
-		FcTo1:  uint8(0x00),
-		FcTo2:  uint8(0x00),
-		FcTo3:  uint8(0x00),
 	},
 	246: {
 		FcFrom: uint16(0x03BA),
 		FcTo0:  uint8(0x6b),
-		FcTo1:  uint8(0x00),
-		FcTo2:  uint8(0x00),
-		FcTo3:  uint8(0x00),
 	},
 	247: {
 		FcFrom: uint16(0x03BB),
 		FcTo0:  uint8(0x6c),
-		FcTo1:  uint8(0x00),
-		FcTo2:  uint8(0x00),
-		FcTo3:  uint8(0x00),
 	},
 	248: {
 		FcFrom: uint16(0x03BC),
 		FcTo0:  uint8(0x6d),
-		FcTo1:  uint8(0x00),
-		FcTo2:  uint8(0x00),
-		FcTo3:  uint8(0x00),
 	},
 	249: {
 		FcFrom: uint16(0x03BD),
 		FcTo0:  uint8(0x6e),
-		FcTo1:  uint8(0x00),
-		FcTo2:  uint8(0x00),
-		FcTo3:  uint8(0x00),
 	},
 	250: {
 		FcFrom: uint16(0x03BE),
 		FcTo0:  uint8(0x78),
-		FcTo1:  uint8(0x00),
-		FcTo2:  uint8(0x00),
-		FcTo3:  uint8(0x00),
 	},
 	251: {
 		FcFrom: uint16(0x03BF),
 		FcTo0:  uint8(0x6f),
-		FcTo1:  uint8(0x00),
-		FcTo2:  uint8(0x00),
-		FcTo3:  uint8(0x00),
 	},
 	252: {
 		FcFrom: uint16(0x03C0),
 		FcTo0:  uint8(0x70),
-		FcTo1:  uint8(0x00),
-		FcTo2:  uint8(0x00),
-		FcTo3:  uint8(0x00),
 	},
 	253: {
 		FcFrom: uint16(0x03C1),
 		FcTo0:  uint8(0x72),
-		FcTo1:  uint8(0x00),
-		FcTo2:  uint8(0x00),
-		FcTo3:  uint8(0x00),
 	},
 	254: {
 		FcFrom: uint16(0x03C3),
 		FcTo0:  uint8(0x73),
-		FcTo1:  uint8(0x00),
-		FcTo2:  uint8(0x00),
-		FcTo3:  uint8(0x00),
 	},
 	255: {
 		FcFrom: uint16(0x03C4),
 		FcTo0:  uint8(0x74),
-		FcTo1:  uint8(0x00),
-		FcTo2:  uint8(0x00),
-		FcTo3:  uint8(0x00),
 	},
 	256: {
 		FcFrom: uint16(0x03C5),
 		FcTo0:  uint8(0x79),
-		FcTo1:  uint8(0x00),
-		FcTo2:  uint8(0x00),
-		FcTo3:  uint8(0x00),
 	},
 	257: {
 		FcFrom: uint16(0x03C6),
 		FcTo0:  uint8(0x66),
-		FcTo1:  uint8(0x00),
-		FcTo2:  uint8(0x00),
-		FcTo3:  uint8(0x00),
 	},
 	258: {
 		FcFrom: uint16(0x03C7),
 		FcTo0:  uint8(0x63),
 		FcTo1:  uint8(0x68),
-		FcTo2:  uint8(0x00),
-		FcTo3:  uint8(0x00),
 	},
 	259: {
 		FcFrom: uint16(0x03C8),
 		FcTo0:  uint8(0x70),
 		FcTo1:  uint8(0x73),
-		FcTo2:  uint8(0x00),
-		FcTo3:  uint8(0x00),
 	},
 	260: {
 		FcFrom: uint16(0x03C9),
 		FcTo0:  uint8(0x6f),
-		FcTo1:  uint8(0x00),
-		FcTo2:  uint8(0x00),
-		FcTo3:  uint8(0x00),
 	},
 	261: {
 		FcFrom: uint16(0x03CA),
 		FcTo0:  uint8(0x69),
-		FcTo1:  uint8(0x00),
-		FcTo2:  uint8(0x00),
-		FcTo3:  uint8(0x00),
 	},
 	262: {
 		FcFrom: uint16(0x03CB),
 		FcTo0:  uint8(0x79),
-		FcTo1:  uint8(0x00),
-		FcTo2:  uint8(0x00),
-		FcTo3:  uint8(0x00),
 	},
 	263: {
 		FcFrom: uint16(0x03CC),
 		FcTo0:  uint8(0x6f),
-		FcTo1:  uint8(0x00),
-		FcTo2:  uint8(0x00),
-		FcTo3:  uint8(0x00),
 	},
 	264: {
 		FcFrom: uint16(0x03CD),
 		FcTo0:  uint8(0x79),
-		FcTo1:  uint8(0x00),
-		FcTo2:  uint8(0x00),
-		FcTo3:  uint8(0x00),
 	},
 	265: {
 		FcFrom: uint16(0x03CE),
 		FcTo0:  uint8(0x69),
-		FcTo1:  uint8(0x00),
-		FcTo2:  uint8(0x00),
-		FcTo3:  uint8(0x00),
 	},
 	266: {
 		FcFrom: uint16(0x0400),
 		FcTo0:  uint8(0x45),
-		FcTo1:  uint8(0x00),
-		FcTo2:  uint8(0x00),
-		FcTo3:  uint8(0x00),
 	},
 	267: {
 		FcFrom: uint16(0x0401),
 		FcTo0:  uint8(0x45),
-		FcTo1:  uint8(0x00),
-		FcTo2:  uint8(0x00),
-		FcTo3:  uint8(0x00),
 	},
 	268: {
 		FcFrom: uint16(0x0402),
 		FcTo0:  uint8(0x44),
-		FcTo1:  uint8(0x00),
-		FcTo2:  uint8(0x00),
-		FcTo3:  uint8(0x00),
 	},
 	269: {
 		FcFrom: uint16(0x0403),
 		FcTo0:  uint8(0x47),
-		FcTo1:  uint8(0x00),
-		FcTo2:  uint8(0x00),
-		FcTo3:  uint8(0x00),
 	},
 	270: {
 		FcFrom: uint16(0x0404),
 		FcTo0:  uint8(0x45),
-		FcTo1:  uint8(0x00),
-		FcTo2:  uint8(0x00),
-		FcTo3:  uint8(0x00),
 	},
 	271: {
 		FcFrom: uint16(0x0405),
 		FcTo0:  uint8(0x5a),
-		FcTo1:  uint8(0x00),
-		FcTo2:  uint8(0x00),
-		FcTo3:  uint8(0x00),
 	},
 	272: {
 		FcFrom: uint16(0x0406),
 		FcTo0:  uint8(0x49),
-		FcTo1:  uint8(0x00),
-		FcTo2:  uint8(0x00),
-		FcTo3:  uint8(0x00),
 	},
 	273: {
 		FcFrom: uint16(0x0407),
 		FcTo0:  uint8(0x49),
-		FcTo1:  uint8(0x00),
-		FcTo2:  uint8(0x00),
-		FcTo3:  uint8(0x00),
 	},
 	274: {
 		FcFrom: uint16(0x0408),
 		FcTo0:  uint8(0x4a),
-		FcTo1:  uint8(0x00),
-		FcTo2:  uint8(0x00),
-		FcTo3:  uint8(0x00),
 	},
 	275: {
 		FcFrom: uint16(0x0409),
 		FcTo0:  uint8(0x49),
-		FcTo1:  uint8(0x00),
-		FcTo2:  uint8(0x00),
-		FcTo3:  uint8(0x00),
 	},
 	276: {
 		FcFrom: uint16(0x040A),
 		FcTo0:  uint8(0x4e),
-		FcTo1:  uint8(0x00),
-		FcTo2:  uint8(0x00),
-		FcTo3:  uint8(0x00),
 	},
 	277: {
 		FcFrom: uint16(0x040B),
 		FcTo0:  uint8(0x44),
-		FcTo1:  uint8(0x00),
-		FcTo2:  uint8(0x00),
-		FcTo3:  uint8(0x00),
 	},
 	278: {
 		FcFrom: uint16(0x040C),
 		FcTo0:  uint8(0x4b),
-		FcTo1:  uint8(0x00),
-		FcTo2:  uint8(0x00),
-		FcTo3:  uint8(0x00),
 	},
 	279: {
 		FcFrom: uint16(0x040D),
 		FcTo0:  uint8(0x49),
-		FcTo1:  uint8(0x00),
-		FcTo2:  uint8(0x00),
-		FcTo3:  uint8(0x00),
 	},
 	280: {
 		FcFrom: uint16(0x040E),
 		FcTo0:  uint8(0x55),
-		FcTo1:  uint8(0x00),
-		FcTo2:  uint8(0x00),
-		FcTo3:  uint8(0x00),
 	},
 	281: {
 		FcFrom: uint16(0x040F),
 		FcTo0:  uint8(0x44),
-		FcTo1:  uint8(0x00),
-		FcTo2:  uint8(0x00),
-		FcTo3:  uint8(0x00),
 	},
 	282: {
 		FcFrom: uint16(0x0410),
 		FcTo0:  uint8(0x41),
-		FcTo1:  uint8(0x00),
-		FcTo2:  uint8(0x00),
-		FcTo3:  uint8(0x00),
 	},
 	283: {
 		FcFrom: uint16(0x0411),
 		FcTo0:  uint8(0x42),
-		FcTo1:  uint8(0x00),
-		FcTo2:  uint8(0x00),
-		FcTo3:  uint8(0x00),
 	},
 	284: {
 		FcFrom: uint16(0x0412),
 		FcTo0:  uint8(0x56),
-		FcTo1:  uint8(0x00),
-		FcTo2:  uint8(0x00),
-		FcTo3:  uint8(0x00),
 	},
 	285: {
 		FcFrom: uint16(0x0413),
 		FcTo0:  uint8(0x47),
-		FcTo1:  uint8(0x00),
-		FcTo2:  uint8(0x00),
-		FcTo3:  uint8(0x00),
 	},
 	286: {
 		FcFrom: uint16(0x0414),
 		FcTo0:  uint8(0x44),
-		FcTo1:  uint8(0x00),
-		FcTo2:  uint8(0x00),
-		FcTo3:  uint8(0x00),
 	},
 	287: {
 		FcFrom: uint16(0x0415),
 		FcTo0:  uint8(0x45),
-		FcTo1:  uint8(0x00),
-		FcTo2:  uint8(0x00),
-		FcTo3:  uint8(0x00),
 	},
 	288: {
 		FcFrom: uint16(0x0416),
 		FcTo0:  uint8(0x5a),
 		FcTo1:  uint8(0x68),
-		FcTo2:  uint8(0x00),
-		FcTo3:  uint8(0x00),
 	},
 	289: {
 		FcFrom: uint16(0x0417),
 		FcTo0:  uint8(0x5a),
-		FcTo1:  uint8(0x00),
-		FcTo2:  uint8(0x00),
-		FcTo3:  uint8(0x00),
 	},
 	290: {
 		FcFrom: uint16(0x0418),
 		FcTo0:  uint8(0x49),
-		FcTo1:  uint8(0x00),
-		FcTo2:  uint8(0x00),
-		FcTo3:  uint8(0x00),
 	},
 	291: {
 		FcFrom: uint16(0x0419),
 		FcTo0:  uint8(0x49),
-		FcTo1:  uint8(0x00),
-		FcTo2:  uint8(0x00),
-		FcTo3:  uint8(0x00),
 	},
 	292: {
 		FcFrom: uint16(0x041A),
 		FcTo0:  uint8(0x4b),
-		FcTo1:  uint8(0x00),
-		FcTo2:  uint8(0x00),
-		FcTo3:  uint8(0x00),
 	},
 	293: {
 		FcFrom: uint16(0x041B),
 		FcTo0:  uint8(0x4c),
-		FcTo1:  uint8(0x00),
-		FcTo2:  uint8(0x00),
-		FcTo3:  uint8(0x00),
 	},
 	294: {
 		FcFrom: uint16(0x041C),
 		FcTo0:  uint8(0x4d),
-		FcTo1:  uint8(0x00),
-		FcTo2:  uint8(0x00),
-		FcTo3:  uint8(0x00),
 	},
 	295: {
 		FcFrom: uint16(0x041D),
 		FcTo0:  uint8(0x4e),
-		FcTo1:  uint8(0x00),
-		FcTo2:  uint8(0x00),
-		FcTo3:  uint8(0x00),
 	},
 	296: {
 		FcFrom: uint16(0x041E),
 		FcTo0:  uint8(0x4f),
-		FcTo1:  uint8(0x00),
-		FcTo2:  uint8(0x00),
-		FcTo3:  uint8(0x00),
 	},
 	297: {
 		FcFrom: uint16(0x041F),
 		FcTo0:  uint8(0x50),
-		FcTo1:  uint8(0x00),
-		FcTo2:  uint8(0x00),
-		FcTo3:  uint8(0x00),
 	},
 	298: {
 		FcFrom: uint16(0x0420),
 		FcTo0:  uint8(0x52),
-		FcTo1:  uint8(0x00),
-		FcTo2:  uint8(0x00),
-		FcTo3:  uint8(0x00),
 	},
 	299: {
 		FcFrom: uint16(0x0421),
 		FcTo0:  uint8(0x53),
-		FcTo1:  uint8(0x00),
-		FcTo2:  uint8(0x00),
-		FcTo3:  uint8(0x00),
 	},
 	300: {
 		FcFrom: uint16(0x0422),
 		FcTo0:  uint8(0x54),
-		FcTo1:  uint8(0x00),
-		FcTo2:  uint8(0x00),
-		FcTo3:  uint8(0x00),
 	},
 	301: {
 		FcFrom: uint16(0x0423),
 		FcTo0:  uint8(0x55),
-		FcTo1:  uint8(0x00),
-		FcTo2:  uint8(0x00),
-		FcTo3:  uint8(0x00),
 	},
 	302: {
 		FcFrom: uint16(0x0424),
 		FcTo0:  uint8(0x46),
-		FcTo1:  uint8(0x00),
-		FcTo2:  uint8(0x00),
-		FcTo3:  uint8(0x00),
 	},
 	303: {
 		FcFrom: uint16(0x0425),
 		FcTo0:  uint8(0x4b),
 		FcTo1:  uint8(0x68),
-		FcTo2:  uint8(0x00),
-		FcTo3:  uint8(0x00),
 	},
 	304: {
 		FcFrom: uint16(0x0426),
 		FcTo0:  uint8(0x54),
 		FcTo1:  uint8(0x63),
-		FcTo2:  uint8(0x00),
-		FcTo3:  uint8(0x00),
 	},
 	305: {
 		FcFrom: uint16(0x0427),
 		FcTo0:  uint8(0x43),
 		FcTo1:  uint8(0x68),
-		FcTo2:  uint8(0x00),
-		FcTo3:  uint8(0x00),
 	},
 	306: {
 		FcFrom: uint16(0x0428),
 		FcTo0:  uint8(0x53),
 		FcTo1:  uint8(0x68),
-		FcTo2:  uint8(0x00),
-		FcTo3:  uint8(0x00),
 	},
 	307: {
 		FcFrom: uint16(0x0429),
@@ -72469,219 +69371,133 @@ var _translit = [389]TTransliteration{
 	308: {
 		FcFrom: uint16(0x042A),
 		FcTo0:  uint8(0x61),
-		FcTo1:  uint8(0x00),
-		FcTo2:  uint8(0x00),
-		FcTo3:  uint8(0x00),
 	},
 	309: {
 		FcFrom: uint16(0x042B),
 		FcTo0:  uint8(0x59),
-		FcTo1:  uint8(0x00),
-		FcTo2:  uint8(0x00),
-		FcTo3:  uint8(0x00),
 	},
 	310: {
 		FcFrom: uint16(0x042C),
 		FcTo0:  uint8(0x59),
-		FcTo1:  uint8(0x00),
-		FcTo2:  uint8(0x00),
-		FcTo3:  uint8(0x00),
 	},
 	311: {
 		FcFrom: uint16(0x042D),
 		FcTo0:  uint8(0x45),
-		FcTo1:  uint8(0x00),
-		FcTo2:  uint8(0x00),
-		FcTo3:  uint8(0x00),
 	},
 	312: {
 		FcFrom: uint16(0x042E),
 		FcTo0:  uint8(0x49),
 		FcTo1:  uint8(0x75),
-		FcTo2:  uint8(0x00),
-		FcTo3:  uint8(0x00),
 	},
 	313: {
 		FcFrom: uint16(0x042F),
 		FcTo0:  uint8(0x49),
 		FcTo1:  uint8(0x61),
-		FcTo2:  uint8(0x00),
-		FcTo3:  uint8(0x00),
 	},
 	314: {
 		FcFrom: uint16(0x0430),
 		FcTo0:  uint8(0x61),
-		FcTo1:  uint8(0x00),
-		FcTo2:  uint8(0x00),
-		FcTo3:  uint8(0x00),
 	},
 	315: {
 		FcFrom: uint16(0x0431),
 		FcTo0:  uint8(0x62),
-		FcTo1:  uint8(0x00),
-		FcTo2:  uint8(0x00),
-		FcTo3:  uint8(0x00),
 	},
 	316: {
 		FcFrom: uint16(0x0432),
 		FcTo0:  uint8(0x76),
-		FcTo1:  uint8(0x00),
-		FcTo2:  uint8(0x00),
-		FcTo3:  uint8(0x00),
 	},
 	317: {
 		FcFrom: uint16(0x0433),
 		FcTo0:  uint8(0x67),
-		FcTo1:  uint8(0x00),
-		FcTo2:  uint8(0x00),
-		FcTo3:  uint8(0x00),
 	},
 	318: {
 		FcFrom: uint16(0x0434),
 		FcTo0:  uint8(0x64),
-		FcTo1:  uint8(0x00),
-		FcTo2:  uint8(0x00),
-		FcTo3:  uint8(0x00),
 	},
 	319: {
 		FcFrom: uint16(0x0435),
 		FcTo0:  uint8(0x65),
-		FcTo1:  uint8(0x00),
-		FcTo2:  uint8(0x00),
-		FcTo3:  uint8(0x00),
 	},
 	320: {
 		FcFrom: uint16(0x0436),
 		FcTo0:  uint8(0x7a),
 		FcTo1:  uint8(0x68),
-		FcTo2:  uint8(0x00),
-		FcTo3:  uint8(0x00),
 	},
 	321: {
 		FcFrom: uint16(0x0437),
 		FcTo0:  uint8(0x7a),
-		FcTo1:  uint8(0x00),
-		FcTo2:  uint8(0x00),
-		FcTo3:  uint8(0x00),
 	},
 	322: {
 		FcFrom: uint16(0x0438),
 		FcTo0:  uint8(0x69),
-		FcTo1:  uint8(0x00),
-		FcTo2:  uint8(0x00),
-		FcTo3:  uint8(0x00),
 	},
 	323: {
 		FcFrom: uint16(0x0439),
 		FcTo0:  uint8(0x69),
-		FcTo1:  uint8(0x00),
-		FcTo2:  uint8(0x00),
-		FcTo3:  uint8(0x00),
 	},
 	324: {
 		FcFrom: uint16(0x043A),
 		FcTo0:  uint8(0x6b),
-		FcTo1:  uint8(0x00),
-		FcTo2:  uint8(0x00),
-		FcTo3:  uint8(0x00),
 	},
 	325: {
 		FcFrom: uint16(0x043B),
 		FcTo0:  uint8(0x6c),
-		FcTo1:  uint8(0x00),
-		FcTo2:  uint8(0x00),
-		FcTo3:  uint8(0x00),
 	},
 	326: {
 		FcFrom: uint16(0x043C),
 		FcTo0:  uint8(0x6d),
-		FcTo1:  uint8(0x00),
-		FcTo2:  uint8(0x00),
-		FcTo3:  uint8(0x00),
 	},
 	327: {
 		FcFrom: uint16(0x043D),
 		FcTo0:  uint8(0x6e),
-		FcTo1:  uint8(0x00),
-		FcTo2:  uint8(0x00),
-		FcTo3:  uint8(0x00),
 	},
 	328: {
 		FcFrom: uint16(0x043E),
 		FcTo0:  uint8(0x6f),
-		FcTo1:  uint8(0x00),
-		FcTo2:  uint8(0x00),
-		FcTo3:  uint8(0x00),
 	},
 	329: {
 		FcFrom: uint16(0x043F),
 		FcTo0:  uint8(0x70),
-		FcTo1:  uint8(0x00),
-		FcTo2:  uint8(0x00),
-		FcTo3:  uint8(0x00),
 	},
 	330: {
 		FcFrom: uint16(0x0440),
 		FcTo0:  uint8(0x72),
-		FcTo1:  uint8(0x00),
-		FcTo2:  uint8(0x00),
-		FcTo3:  uint8(0x00),
 	},
 	331: {
 		FcFrom: uint16(0x0441),
 		FcTo0:  uint8(0x73),
-		FcTo1:  uint8(0x00),
-		FcTo2:  uint8(0x00),
-		FcTo3:  uint8(0x00),
 	},
 	332: {
 		FcFrom: uint16(0x0442),
 		FcTo0:  uint8(0x74),
-		FcTo1:  uint8(0x00),
-		FcTo2:  uint8(0x00),
-		FcTo3:  uint8(0x00),
 	},
 	333: {
 		FcFrom: uint16(0x0443),
 		FcTo0:  uint8(0x75),
-		FcTo1:  uint8(0x00),
-		FcTo2:  uint8(0x00),
-		FcTo3:  uint8(0x00),
 	},
 	334: {
 		FcFrom: uint16(0x0444),
 		FcTo0:  uint8(0x66),
-		FcTo1:  uint8(0x00),
-		FcTo2:  uint8(0x00),
-		FcTo3:  uint8(0x00),
 	},
 	335: {
 		FcFrom: uint16(0x0445),
 		FcTo0:  uint8(0x6b),
 		FcTo1:  uint8(0x68),
-		FcTo2:  uint8(0x00),
-		FcTo3:  uint8(0x00),
 	},
 	336: {
 		FcFrom: uint16(0x0446),
 		FcTo0:  uint8(0x74),
 		FcTo1:  uint8(0x63),
-		FcTo2:  uint8(0x00),
-		FcTo3:  uint8(0x00),
 	},
 	337: {
 		FcFrom: uint16(0x0447),
 		FcTo0:  uint8(0x63),
 		FcTo1:  uint8(0x68),
-		FcTo2:  uint8(0x00),
-		FcTo3:  uint8(0x00),
 	},
 	338: {
 		FcFrom: uint16(0x0448),
 		FcTo0:  uint8(0x73),
 		FcTo1:  uint8(0x68),
-		FcTo2:  uint8(0x00),
-		FcTo3:  uint8(0x00),
 	},
 	339: {
 		FcFrom: uint16(0x0449),
@@ -72693,345 +69509,205 @@ var _translit = [389]TTransliteration{
 	340: {
 		FcFrom: uint16(0x044A),
 		FcTo0:  uint8(0x61),
-		FcTo1:  uint8(0x00),
-		FcTo2:  uint8(0x00),
-		FcTo3:  uint8(0x00),
 	},
 	341: {
 		FcFrom: uint16(0x044B),
 		FcTo0:  uint8(0x79),
-		FcTo1:  uint8(0x00),
-		FcTo2:  uint8(0x00),
-		FcTo3:  uint8(0x00),
 	},
 	342: {
 		FcFrom: uint16(0x044C),
 		FcTo0:  uint8(0x79),
-		FcTo1:  uint8(0x00),
-		FcTo2:  uint8(0x00),
-		FcTo3:  uint8(0x00),
 	},
 	343: {
 		FcFrom: uint16(0x044D),
 		FcTo0:  uint8(0x65),
-		FcTo1:  uint8(0x00),
-		FcTo2:  uint8(0x00),
-		FcTo3:  uint8(0x00),
 	},
 	344: {
 		FcFrom: uint16(0x044E),
 		FcTo0:  uint8(0x69),
 		FcTo1:  uint8(0x75),
-		FcTo2:  uint8(0x00),
-		FcTo3:  uint8(0x00),
 	},
 	345: {
 		FcFrom: uint16(0x044F),
 		FcTo0:  uint8(0x69),
 		FcTo1:  uint8(0x61),
-		FcTo2:  uint8(0x00),
-		FcTo3:  uint8(0x00),
 	},
 	346: {
 		FcFrom: uint16(0x0450),
 		FcTo0:  uint8(0x65),
-		FcTo1:  uint8(0x00),
-		FcTo2:  uint8(0x00),
-		FcTo3:  uint8(0x00),
 	},
 	347: {
 		FcFrom: uint16(0x0451),
 		FcTo0:  uint8(0x65),
-		FcTo1:  uint8(0x00),
-		FcTo2:  uint8(0x00),
-		FcTo3:  uint8(0x00),
 	},
 	348: {
 		FcFrom: uint16(0x0452),
 		FcTo0:  uint8(0x64),
-		FcTo1:  uint8(0x00),
-		FcTo2:  uint8(0x00),
-		FcTo3:  uint8(0x00),
 	},
 	349: {
 		FcFrom: uint16(0x0453),
 		FcTo0:  uint8(0x67),
-		FcTo1:  uint8(0x00),
-		FcTo2:  uint8(0x00),
-		FcTo3:  uint8(0x00),
 	},
 	350: {
 		FcFrom: uint16(0x0454),
 		FcTo0:  uint8(0x65),
-		FcTo1:  uint8(0x00),
-		FcTo2:  uint8(0x00),
-		FcTo3:  uint8(0x00),
 	},
 	351: {
 		FcFrom: uint16(0x0455),
 		FcTo0:  uint8(0x7a),
-		FcTo1:  uint8(0x00),
-		FcTo2:  uint8(0x00),
-		FcTo3:  uint8(0x00),
 	},
 	352: {
 		FcFrom: uint16(0x0456),
 		FcTo0:  uint8(0x69),
-		FcTo1:  uint8(0x00),
-		FcTo2:  uint8(0x00),
-		FcTo3:  uint8(0x00),
 	},
 	353: {
 		FcFrom: uint16(0x0457),
 		FcTo0:  uint8(0x69),
-		FcTo1:  uint8(0x00),
-		FcTo2:  uint8(0x00),
-		FcTo3:  uint8(0x00),
 	},
 	354: {
 		FcFrom: uint16(0x0458),
 		FcTo0:  uint8(0x6a),
-		FcTo1:  uint8(0x00),
-		FcTo2:  uint8(0x00),
-		FcTo3:  uint8(0x00),
 	},
 	355: {
 		FcFrom: uint16(0x0459),
 		FcTo0:  uint8(0x69),
-		FcTo1:  uint8(0x00),
-		FcTo2:  uint8(0x00),
-		FcTo3:  uint8(0x00),
 	},
 	356: {
 		FcFrom: uint16(0x045A),
 		FcTo0:  uint8(0x6e),
-		FcTo1:  uint8(0x00),
-		FcTo2:  uint8(0x00),
-		FcTo3:  uint8(0x00),
 	},
 	357: {
 		FcFrom: uint16(0x045B),
 		FcTo0:  uint8(0x64),
-		FcTo1:  uint8(0x00),
-		FcTo2:  uint8(0x00),
-		FcTo3:  uint8(0x00),
 	},
 	358: {
 		FcFrom: uint16(0x045C),
 		FcTo0:  uint8(0x6b),
-		FcTo1:  uint8(0x00),
-		FcTo2:  uint8(0x00),
-		FcTo3:  uint8(0x00),
 	},
 	359: {
 		FcFrom: uint16(0x045D),
 		FcTo0:  uint8(0x69),
-		FcTo1:  uint8(0x00),
-		FcTo2:  uint8(0x00),
-		FcTo3:  uint8(0x00),
 	},
 	360: {
 		FcFrom: uint16(0x045E),
 		FcTo0:  uint8(0x75),
-		FcTo1:  uint8(0x00),
-		FcTo2:  uint8(0x00),
-		FcTo3:  uint8(0x00),
 	},
 	361: {
 		FcFrom: uint16(0x045F),
 		FcTo0:  uint8(0x64),
-		FcTo1:  uint8(0x00),
-		FcTo2:  uint8(0x00),
-		FcTo3:  uint8(0x00),
 	},
 	362: {
 		FcFrom: uint16(0x1E02),
 		FcTo0:  uint8(0x42),
-		FcTo1:  uint8(0x00),
-		FcTo2:  uint8(0x00),
-		FcTo3:  uint8(0x00),
 	},
 	363: {
 		FcFrom: uint16(0x1E03),
 		FcTo0:  uint8(0x62),
-		FcTo1:  uint8(0x00),
-		FcTo2:  uint8(0x00),
-		FcTo3:  uint8(0x00),
 	},
 	364: {
 		FcFrom: uint16(0x1E0A),
 		FcTo0:  uint8(0x44),
-		FcTo1:  uint8(0x00),
-		FcTo2:  uint8(0x00),
-		FcTo3:  uint8(0x00),
 	},
 	365: {
 		FcFrom: uint16(0x1E0B),
 		FcTo0:  uint8(0x64),
-		FcTo1:  uint8(0x00),
-		FcTo2:  uint8(0x00),
-		FcTo3:  uint8(0x00),
 	},
 	366: {
 		FcFrom: uint16(0x1E1E),
 		FcTo0:  uint8(0x46),
-		FcTo1:  uint8(0x00),
-		FcTo2:  uint8(0x00),
-		FcTo3:  uint8(0x00),
 	},
 	367: {
 		FcFrom: uint16(0x1E1F),
 		FcTo0:  uint8(0x66),
-		FcTo1:  uint8(0x00),
-		FcTo2:  uint8(0x00),
-		FcTo3:  uint8(0x00),
 	},
 	368: {
 		FcFrom: uint16(0x1E40),
 		FcTo0:  uint8(0x4D),
-		FcTo1:  uint8(0x00),
-		FcTo2:  uint8(0x00),
-		FcTo3:  uint8(0x00),
 	},
 	369: {
 		FcFrom: uint16(0x1E41),
 		FcTo0:  uint8(0x6D),
-		FcTo1:  uint8(0x00),
-		FcTo2:  uint8(0x00),
-		FcTo3:  uint8(0x00),
 	},
 	370: {
 		FcFrom: uint16(0x1E56),
 		FcTo0:  uint8(0x50),
-		FcTo1:  uint8(0x00),
-		FcTo2:  uint8(0x00),
-		FcTo3:  uint8(0x00),
 	},
 	371: {
 		FcFrom: uint16(0x1E57),
 		FcTo0:  uint8(0x70),
-		FcTo1:  uint8(0x00),
-		FcTo2:  uint8(0x00),
-		FcTo3:  uint8(0x00),
 	},
 	372: {
 		FcFrom: uint16(0x1E60),
 		FcTo0:  uint8(0x53),
-		FcTo1:  uint8(0x00),
-		FcTo2:  uint8(0x00),
-		FcTo3:  uint8(0x00),
 	},
 	373: {
 		FcFrom: uint16(0x1E61),
 		FcTo0:  uint8(0x73),
-		FcTo1:  uint8(0x00),
-		FcTo2:  uint8(0x00),
-		FcTo3:  uint8(0x00),
 	},
 	374: {
 		FcFrom: uint16(0x1E6A),
 		FcTo0:  uint8(0x54),
-		FcTo1:  uint8(0x00),
-		FcTo2:  uint8(0x00),
-		FcTo3:  uint8(0x00),
 	},
 	375: {
 		FcFrom: uint16(0x1E6B),
 		FcTo0:  uint8(0x74),
-		FcTo1:  uint8(0x00),
-		FcTo2:  uint8(0x00),
-		FcTo3:  uint8(0x00),
 	},
 	376: {
 		FcFrom: uint16(0x1E80),
 		FcTo0:  uint8(0x57),
-		FcTo1:  uint8(0x00),
-		FcTo2:  uint8(0x00),
-		FcTo3:  uint8(0x00),
 	},
 	377: {
 		FcFrom: uint16(0x1E81),
 		FcTo0:  uint8(0x77),
-		FcTo1:  uint8(0x00),
-		FcTo2:  uint8(0x00),
-		FcTo3:  uint8(0x00),
 	},
 	378: {
 		FcFrom: uint16(0x1E82),
 		FcTo0:  uint8(0x57),
-		FcTo1:  uint8(0x00),
-		FcTo2:  uint8(0x00),
-		FcTo3:  uint8(0x00),
 	},
 	379: {
 		FcFrom: uint16(0x1E83),
 		FcTo0:  uint8(0x77),
-		FcTo1:  uint8(0x00),
-		FcTo2:  uint8(0x00),
-		FcTo3:  uint8(0x00),
 	},
 	380: {
 		FcFrom: uint16(0x1E84),
 		FcTo0:  uint8(0x57),
-		FcTo1:  uint8(0x00),
-		FcTo2:  uint8(0x00),
-		FcTo3:  uint8(0x00),
 	},
 	381: {
 		FcFrom: uint16(0x1E85),
 		FcTo0:  uint8(0x77),
-		FcTo1:  uint8(0x00),
-		FcTo2:  uint8(0x00),
-		FcTo3:  uint8(0x00),
 	},
 	382: {
 		FcFrom: uint16(0x1EF2),
 		FcTo0:  uint8(0x59),
-		FcTo1:  uint8(0x00),
-		FcTo2:  uint8(0x00),
-		FcTo3:  uint8(0x00),
 	},
 	383: {
 		FcFrom: uint16(0x1EF3),
 		FcTo0:  uint8(0x79),
-		FcTo1:  uint8(0x00),
-		FcTo2:  uint8(0x00),
-		FcTo3:  uint8(0x00),
 	},
 	384: {
 		FcFrom: uint16(0xFB00),
 		FcTo0:  uint8(0x66),
 		FcTo1:  uint8(0x66),
-		FcTo2:  uint8(0x00),
-		FcTo3:  uint8(0x00),
 	},
 	385: {
 		FcFrom: uint16(0xFB01),
 		FcTo0:  uint8(0x66),
 		FcTo1:  uint8(0x69),
-		FcTo2:  uint8(0x00),
-		FcTo3:  uint8(0x00),
 	},
 	386: {
 		FcFrom: uint16(0xFB02),
 		FcTo0:  uint8(0x66),
 		FcTo1:  uint8(0x6C),
-		FcTo2:  uint8(0x00),
-		FcTo3:  uint8(0x00),
 	},
 	387: {
 		FcFrom: uint16(0xFB05),
 		FcTo0:  uint8(0x73),
 		FcTo1:  uint8(0x74),
-		FcTo2:  uint8(0x00),
-		FcTo3:  uint8(0x00),
 	},
 	388: {
 		FcFrom: uint16(0xFB06),
 		FcTo0:  uint8(0x73),
 		FcTo1:  uint8(0x74),
-		FcTo2:  uint8(0x00),
-		FcTo3:  uint8(0x00),
 	},
 }
 
@@ -74435,28 +71111,7 @@ func _spellfix1Rename(tls *libc.TLS, pVTab uintptr, zNew uintptr) (r int32) {
 //	/*
 //	** A virtual table module that provides fuzzy search.
 //	*/
-var _spellfix1Module = Tsqlite3_module{
-	FiVersion:      int32(0),
-	FxCreate:       uintptr(0),
-	FxConnect:      uintptr(0),
-	FxBestIndex:    uintptr(0),
-	FxDisconnect:   uintptr(0),
-	FxDestroy:      uintptr(0),
-	FxOpen:         uintptr(0),
-	FxClose:        uintptr(0),
-	FxFilter:       uintptr(0),
-	FxNext:         uintptr(0),
-	FxEof:          uintptr(0),
-	FxColumn:       uintptr(0),
-	FxRowid:        uintptr(0),
-	FxUpdate:       uintptr(0),
-	FxBegin:        uintptr(0),
-	FxSync:         uintptr(0),
-	FxCommit:       uintptr(0),
-	FxRollback:     uintptr(0),
-	FxFindFunction: uintptr(0),
-	FxRename:       uintptr(0),
-}
+var _spellfix1Module = Tsqlite3_module{}
 
 func init() {
 	p := unsafe.Pointer(&_spellfix1Module)
@@ -74473,11 +71128,6 @@ func init() {
 	*(*uintptr)(unsafe.Add(p, 88)) = __ccgo_fp(_spellfix1Column)
 	*(*uintptr)(unsafe.Add(p, 96)) = __ccgo_fp(_spellfix1Rowid)
 	*(*uintptr)(unsafe.Add(p, 104)) = __ccgo_fp(_spellfix1Update)
-	*(*uintptr)(unsafe.Add(p, 112)) = uintptr(0)
-	*(*uintptr)(unsafe.Add(p, 120)) = uintptr(0)
-	*(*uintptr)(unsafe.Add(p, 128)) = uintptr(0)
-	*(*uintptr)(unsafe.Add(p, 136)) = uintptr(0)
-	*(*uintptr)(unsafe.Add(p, 144)) = uintptr(0)
 	*(*uintptr)(unsafe.Add(p, 152)) = __ccgo_fp(_spellfix1Rename)
 }
 
@@ -76433,32 +73083,7 @@ func _createUnionVtab(tls *libc.TLS, db uintptr) (r int32) {
 	return rc
 }
 
-var _unionModule = Tsqlite3_module{
-	FiVersion:      0,
-	FxCreate:       uintptr(0),
-	FxConnect:      uintptr(0),
-	FxBestIndex:    uintptr(0),
-	FxDisconnect:   uintptr(0),
-	FxDestroy:      uintptr(0),
-	FxOpen:         uintptr(0),
-	FxClose:        uintptr(0),
-	FxFilter:       uintptr(0),
-	FxNext:         uintptr(0),
-	FxEof:          uintptr(0),
-	FxColumn:       uintptr(0),
-	FxRowid:        uintptr(0),
-	FxUpdate:       uintptr(0),
-	FxBegin:        uintptr(0),
-	FxSync:         uintptr(0),
-	FxCommit:       uintptr(0),
-	FxRollback:     uintptr(0),
-	FxFindFunction: uintptr(0),
-	FxRename:       uintptr(0),
-	FxSavepoint:    uintptr(0),
-	FxRelease:      uintptr(0),
-	FxRollbackTo:   uintptr(0),
-	FxShadowName:   uintptr(0),
-}
+var _unionModule = Tsqlite3_module{}
 
 func init() {
 	p := unsafe.Pointer(&_unionModule)
@@ -76474,17 +73099,6 @@ func init() {
 	*(*uintptr)(unsafe.Add(p, 80)) = __ccgo_fp(_unionEof)
 	*(*uintptr)(unsafe.Add(p, 88)) = __ccgo_fp(_unionColumn)
 	*(*uintptr)(unsafe.Add(p, 96)) = __ccgo_fp(_unionRowid)
-	*(*uintptr)(unsafe.Add(p, 104)) = uintptr(0)
-	*(*uintptr)(unsafe.Add(p, 112)) = uintptr(0)
-	*(*uintptr)(unsafe.Add(p, 120)) = uintptr(0)
-	*(*uintptr)(unsafe.Add(p, 128)) = uintptr(0)
-	*(*uintptr)(unsafe.Add(p, 136)) = uintptr(0)
-	*(*uintptr)(unsafe.Add(p, 144)) = uintptr(0)
-	*(*uintptr)(unsafe.Add(p, 152)) = uintptr(0)
-	*(*uintptr)(unsafe.Add(p, 160)) = uintptr(0)
-	*(*uintptr)(unsafe.Add(p, 168)) = uintptr(0)
-	*(*uintptr)(unsafe.Add(p, 176)) = uintptr(0)
-	*(*uintptr)(unsafe.Add(p, 184)) = uintptr(0)
 }
 
 func x_sqlite3_unionvtab_init(tls *libc.TLS, db uintptr, pzErrMsg uintptr, pApi uintptr) (r int32) {
@@ -76746,28 +73360,7 @@ func _wholenumberBestIndex(tls *libc.TLS, tab uintptr, pIdxInfo uintptr) (r int3
 //	** A virtual table module that provides read-only access to a
 //	** Tcl global variable namespace.
 //	*/
-var _wholenumberModule = Tsqlite3_module{
-	FiVersion:      int32(0),
-	FxCreate:       uintptr(0),
-	FxConnect:      uintptr(0),
-	FxBestIndex:    uintptr(0),
-	FxDisconnect:   uintptr(0),
-	FxDestroy:      uintptr(0),
-	FxOpen:         uintptr(0),
-	FxClose:        uintptr(0),
-	FxFilter:       uintptr(0),
-	FxNext:         uintptr(0),
-	FxEof:          uintptr(0),
-	FxColumn:       uintptr(0),
-	FxRowid:        uintptr(0),
-	FxUpdate:       uintptr(0),
-	FxBegin:        uintptr(0),
-	FxSync:         uintptr(0),
-	FxCommit:       uintptr(0),
-	FxRollback:     uintptr(0),
-	FxFindFunction: uintptr(0),
-	FxRename:       uintptr(0),
-}
+var _wholenumberModule = Tsqlite3_module{}
 
 func init() {
 	p := unsafe.Pointer(&_wholenumberModule)
@@ -76783,13 +73376,6 @@ func init() {
 	*(*uintptr)(unsafe.Add(p, 80)) = __ccgo_fp(_wholenumberEof)
 	*(*uintptr)(unsafe.Add(p, 88)) = __ccgo_fp(_wholenumberColumn)
 	*(*uintptr)(unsafe.Add(p, 96)) = __ccgo_fp(_wholenumberRowid)
-	*(*uintptr)(unsafe.Add(p, 104)) = uintptr(0)
-	*(*uintptr)(unsafe.Add(p, 112)) = uintptr(0)
-	*(*uintptr)(unsafe.Add(p, 120)) = uintptr(0)
-	*(*uintptr)(unsafe.Add(p, 128)) = uintptr(0)
-	*(*uintptr)(unsafe.Add(p, 136)) = uintptr(0)
-	*(*uintptr)(unsafe.Add(p, 144)) = uintptr(0)
-	*(*uintptr)(unsafe.Add(p, 152)) = uintptr(0)
 }
 
 func x_sqlite3_wholenumber_init(tls *libc.TLS, db uintptr, pzErrMsg uintptr, pApi uintptr) (r int32) {
@@ -79321,30 +75907,7 @@ func _zipfileRegister(tls *libc.TLS, db uintptr) (r int32) {
 }
 
 var _zipfileModule = Tsqlite3_module{
-	FiVersion:      int32(1),
-	FxCreate:       uintptr(0),
-	FxConnect:      uintptr(0),
-	FxBestIndex:    uintptr(0),
-	FxDisconnect:   uintptr(0),
-	FxDestroy:      uintptr(0),
-	FxOpen:         uintptr(0),
-	FxClose:        uintptr(0),
-	FxFilter:       uintptr(0),
-	FxNext:         uintptr(0),
-	FxEof:          uintptr(0),
-	FxColumn:       uintptr(0),
-	FxRowid:        uintptr(0),
-	FxUpdate:       uintptr(0),
-	FxBegin:        uintptr(0),
-	FxSync:         uintptr(0),
-	FxCommit:       uintptr(0),
-	FxRollback:     uintptr(0),
-	FxFindFunction: uintptr(0),
-	FxRename:       uintptr(0),
-	FxSavepoint:    uintptr(0),
-	FxRelease:      uintptr(0),
-	FxRollbackTo:   uintptr(0),
-	FxShadowName:   uintptr(0),
+	FiVersion: int32(1),
 }
 
 func init() {
@@ -79360,18 +75923,11 @@ func init() {
 	*(*uintptr)(unsafe.Add(p, 72)) = __ccgo_fp(_zipfileNext)
 	*(*uintptr)(unsafe.Add(p, 80)) = __ccgo_fp(_zipfileEof)
 	*(*uintptr)(unsafe.Add(p, 88)) = __ccgo_fp(_zipfileColumn)
-	*(*uintptr)(unsafe.Add(p, 96)) = uintptr(0)
 	*(*uintptr)(unsafe.Add(p, 104)) = __ccgo_fp(_zipfileUpdate)
 	*(*uintptr)(unsafe.Add(p, 112)) = __ccgo_fp(_zipfileBegin)
-	*(*uintptr)(unsafe.Add(p, 120)) = uintptr(0)
 	*(*uintptr)(unsafe.Add(p, 128)) = __ccgo_fp(_zipfileCommit)
 	*(*uintptr)(unsafe.Add(p, 136)) = __ccgo_fp(_zipfileRollback)
 	*(*uintptr)(unsafe.Add(p, 144)) = __ccgo_fp(_zipfileFindFunction)
-	*(*uintptr)(unsafe.Add(p, 152)) = uintptr(0)
-	*(*uintptr)(unsafe.Add(p, 160)) = uintptr(0)
-	*(*uintptr)(unsafe.Add(p, 168)) = uintptr(0)
-	*(*uintptr)(unsafe.Add(p, 176)) = uintptr(0)
-	*(*uintptr)(unsafe.Add(p, 184)) = uintptr(0)
 }
 
 func x_sqlite3_zipfile_init(tls *libc.TLS, db uintptr, pzErrMsg uintptr, pApi uintptr) (r int32) {
@@ -79594,7 +76150,6 @@ func _box_query(tls *libc.TLS, pInfo uintptr) (r int32) {
 		0: __ccgo_ts + 35509,
 		1: __ccgo_ts + 40065,
 		2: __ccgo_ts + 40072,
-		3: uintptr(0),
 	}
 	pCtx = (*Tsqlite3_rtree_query_info)(unsafe.Pointer(pInfo)).FpContext
 	interp = (*TBoxQueryCtx)(unsafe.Pointer(pCtx)).Finterp
@@ -80361,21 +76916,8 @@ func _incrblobHandle(tls *libc.TLS, instanceData TClientData, dir int32, hPtr ui
 }
 
 var _IncrblobChannelType = TTcl_ChannelType{
-	FtypeName:      __ccgo_ts + 14473,
-	Fversion:       libc.UintptrFromInt32(0x2),
-	FcloseProc:     uintptr(0),
-	FinputProc:     uintptr(0),
-	FoutputProc:    uintptr(0),
-	FseekProc:      uintptr(0),
-	FsetOptionProc: uintptr(0),
-	FgetOptionProc: uintptr(0),
-	FwatchProc:     uintptr(0),
-	FgetHandleProc: uintptr(0),
-	Fclose2Proc:    uintptr(0),
-	FblockModeProc: uintptr(0),
-	FflushProc:     uintptr(0),
-	FhandlerProc:   uintptr(0),
-	FwideSeekProc:  uintptr(0),
+	FtypeName: __ccgo_ts + 14473,
+	Fversion:  libc.UintptrFromInt32(0x2),
 }
 
 func init() {
@@ -80384,15 +76926,8 @@ func init() {
 	*(*uintptr)(unsafe.Add(p, 24)) = __ccgo_fp(_incrblobInput)
 	*(*uintptr)(unsafe.Add(p, 32)) = __ccgo_fp(_incrblobOutput)
 	*(*uintptr)(unsafe.Add(p, 40)) = __ccgo_fp(_incrblobSeek)
-	*(*uintptr)(unsafe.Add(p, 48)) = uintptr(0)
-	*(*uintptr)(unsafe.Add(p, 56)) = uintptr(0)
 	*(*uintptr)(unsafe.Add(p, 64)) = __ccgo_fp(_incrblobWatch)
 	*(*uintptr)(unsafe.Add(p, 72)) = __ccgo_fp(_incrblobHandle)
-	*(*uintptr)(unsafe.Add(p, 80)) = uintptr(0)
-	*(*uintptr)(unsafe.Add(p, 88)) = uintptr(0)
-	*(*uintptr)(unsafe.Add(p, 96)) = uintptr(0)
-	*(*uintptr)(unsafe.Add(p, 104)) = uintptr(0)
-	*(*uintptr)(unsafe.Add(p, 112)) = uintptr(0)
 }
 
 // C documentation
@@ -83245,7 +79780,6 @@ _21:
 								2: __ccgo_ts + 303,
 								3: __ccgo_ts + 315,
 								4: __ccgo_ts + 952,
-								5: uintptr(0),
 							}
 							if i3 == objc-int32(2) {
 								libtcl8_6.XTcl_AppendResult(tls, interp, libc.VaList(bp+584, __ccgo_ts+17924, z2, libc.UintptrFromInt32(0)))
@@ -84003,7 +80537,6 @@ var _DB_strs = [43]uintptr{
 	39: __ccgo_ts + 41271,
 	40: __ccgo_ts + 41283,
 	41: __ccgo_ts + 41291,
-	42: uintptr(0),
 }
 
 var _aDbConfig = [16]struct {
@@ -84082,14 +80615,12 @@ var _TTYPE_strs = [5]uintptr{
 	1: __ccgo_ts + 41175,
 	2: __ccgo_ts + 42870,
 	3: __ccgo_ts + 22080,
-	4: uintptr(0),
 }
 
 var _TTYPE_strs1 = [4]uintptr{
 	0: __ccgo_ts + 42926,
 	1: __ccgo_ts + 24004,
 	2: __ccgo_ts + 42935,
-	3: uintptr(0),
 }
 
 var _azSub = [6]uintptr{
@@ -84098,7 +80629,6 @@ var _azSub = [6]uintptr{
 	2: __ccgo_ts + 42984,
 	3: __ccgo_ts + 20861,
 	4: __ccgo_ts + 42989,
-	5: uintptr(0),
 }
 
 // C documentation
@@ -86452,13 +82982,6 @@ func x_sqlite3CompileOptions(tls *libc.TLS, pnOpt uintptr) (r uintptr) {
 	return uintptr(unsafe.Pointer(&_sqlite3azCompileOpt))
 }
 
-func init() {
-	p := unsafe.Pointer(&x_sqlite3Config)
-	*(*uintptr)(unsafe.Add(p, 376)) = uintptr(0)
-	*(*uintptr)(unsafe.Add(p, 400)) = uintptr(0)
-	*(*uintptr)(unsafe.Add(p, 416)) = uintptr(0)
-}
-
 // C documentation
 //
 //	/* Opaque type used by code in vdbesort.c */
@@ -86512,16 +83035,9 @@ var _sqlite3Stat = Tsqlite3StatType1{}
 //	** mutex, or by the pcache1 mutex.  The following array determines which.
 //	*/
 var _statMutex = [10]int8{
-	0: int8(0),
 	1: int8(1),
 	2: int8(1),
-	3: int8(0),
-	4: int8(0),
-	5: int8(0),
-	6: int8(0),
 	7: int8(1),
-	8: int8(0),
-	9: int8(0),
 }
 
 /* The "wsdStat" macro will resolve to the status information
@@ -88281,177 +84797,63 @@ var _aDateTimeFuncs = [9]TFuncDef{
 		FnArg:      int8(-int32(1)),
 		FfuncFlags: uint32(libc.Int32FromInt32(m_SQLITE_FUNC_BUILTIN) | libc.Int32FromInt32(m_SQLITE_FUNC_SLOCHNG) | libc.Int32FromInt32(m_SQLITE_UTF8) | libc.Int32FromInt32(m_SQLITE_FUNC_CONSTANT)),
 		FpUserData: uintptr(unsafe.Pointer(&x_sqlite3Config)),
-		FpNext:     uintptr(0),
-		FxSFunc:    uintptr(0),
-		FxFinalize: uintptr(0),
-		FxValue:    uintptr(0),
-		FxInverse:  uintptr(0),
 		FzName:     __ccgo_ts + 44748,
-		Fu: struct {
-			FpDestructor [0]uintptr
-			FpHash       uintptr
-		}{},
 	},
 	1: {
 		FnArg:      int8(-int32(1)),
 		FfuncFlags: uint32(libc.Int32FromInt32(m_SQLITE_FUNC_BUILTIN) | libc.Int32FromInt32(m_SQLITE_FUNC_SLOCHNG) | libc.Int32FromInt32(m_SQLITE_UTF8) | libc.Int32FromInt32(m_SQLITE_FUNC_CONSTANT)),
 		FpUserData: uintptr(unsafe.Pointer(&x_sqlite3Config)),
-		FpNext:     uintptr(0),
-		FxSFunc:    uintptr(0),
-		FxFinalize: uintptr(0),
-		FxValue:    uintptr(0),
-		FxInverse:  uintptr(0),
 		FzName:     __ccgo_ts + 44758,
-		Fu: struct {
-			FpDestructor [0]uintptr
-			FpHash       uintptr
-		}{},
 	},
 	2: {
 		FnArg:      int8(-int32(1)),
 		FfuncFlags: uint32(libc.Int32FromInt32(m_SQLITE_FUNC_BUILTIN) | libc.Int32FromInt32(m_SQLITE_FUNC_SLOCHNG) | libc.Int32FromInt32(m_SQLITE_UTF8) | libc.Int32FromInt32(m_SQLITE_FUNC_CONSTANT)),
 		FpUserData: uintptr(unsafe.Pointer(&x_sqlite3Config)),
-		FpNext:     uintptr(0),
-		FxSFunc:    uintptr(0),
-		FxFinalize: uintptr(0),
-		FxValue:    uintptr(0),
-		FxInverse:  uintptr(0),
 		FzName:     __ccgo_ts + 44829,
-		Fu: struct {
-			FpDestructor [0]uintptr
-			FpHash       uintptr
-		}{},
 	},
 	3: {
 		FnArg:      int8(-int32(1)),
 		FfuncFlags: uint32(libc.Int32FromInt32(m_SQLITE_FUNC_BUILTIN) | libc.Int32FromInt32(m_SQLITE_FUNC_SLOCHNG) | libc.Int32FromInt32(m_SQLITE_UTF8) | libc.Int32FromInt32(m_SQLITE_FUNC_CONSTANT)),
 		FpUserData: uintptr(unsafe.Pointer(&x_sqlite3Config)),
-		FpNext:     uintptr(0),
-		FxSFunc:    uintptr(0),
-		FxFinalize: uintptr(0),
-		FxValue:    uintptr(0),
-		FxInverse:  uintptr(0),
 		FzName:     __ccgo_ts + 44834,
-		Fu: struct {
-			FpDestructor [0]uintptr
-			FpHash       uintptr
-		}{},
 	},
 	4: {
 		FnArg:      int8(-int32(1)),
 		FfuncFlags: uint32(libc.Int32FromInt32(m_SQLITE_FUNC_BUILTIN) | libc.Int32FromInt32(m_SQLITE_FUNC_SLOCHNG) | libc.Int32FromInt32(m_SQLITE_UTF8) | libc.Int32FromInt32(m_SQLITE_FUNC_CONSTANT)),
 		FpUserData: uintptr(unsafe.Pointer(&x_sqlite3Config)),
-		FpNext:     uintptr(0),
-		FxSFunc:    uintptr(0),
-		FxFinalize: uintptr(0),
-		FxValue:    uintptr(0),
-		FxInverse:  uintptr(0),
 		FzName:     __ccgo_ts + 14337,
-		Fu: struct {
-			FpDestructor [0]uintptr
-			FpHash       uintptr
-		}{},
 	},
 	5: {
 		FnArg:      int8(-int32(1)),
 		FfuncFlags: uint32(libc.Int32FromInt32(m_SQLITE_FUNC_BUILTIN) | libc.Int32FromInt32(m_SQLITE_FUNC_SLOCHNG) | libc.Int32FromInt32(m_SQLITE_UTF8) | libc.Int32FromInt32(m_SQLITE_FUNC_CONSTANT)),
 		FpUserData: uintptr(unsafe.Pointer(&x_sqlite3Config)),
-		FpNext:     uintptr(0),
-		FxSFunc:    uintptr(0),
-		FxFinalize: uintptr(0),
-		FxValue:    uintptr(0),
-		FxInverse:  uintptr(0),
 		FzName:     __ccgo_ts + 44839,
-		Fu: struct {
-			FpDestructor [0]uintptr
-			FpHash       uintptr
-		}{},
 	},
 	6: {
-		FnArg:      0,
 		FfuncFlags: uint32(libc.Int32FromInt32(m_SQLITE_FUNC_BUILTIN) | libc.Int32FromInt32(m_SQLITE_FUNC_SLOCHNG) | libc.Int32FromInt32(m_SQLITE_UTF8)),
-		FpUserData: uintptr(0),
-		FpNext:     uintptr(0),
-		FxSFunc:    uintptr(0),
-		FxFinalize: uintptr(0),
-		FxValue:    uintptr(0),
-		FxInverse:  uintptr(0),
 		FzName:     __ccgo_ts + 44848,
-		Fu: struct {
-			FpDestructor [0]uintptr
-			FpHash       uintptr
-		}{},
 	},
 	7: {
-		FnArg:      0,
 		FfuncFlags: uint32(libc.Int32FromInt32(m_SQLITE_FUNC_BUILTIN) | libc.Int32FromInt32(m_SQLITE_FUNC_SLOCHNG) | libc.Int32FromInt32(m_SQLITE_UTF8)),
-		FpUserData: uintptr(0),
-		FpNext:     uintptr(0),
-		FxSFunc:    uintptr(0),
-		FxFinalize: uintptr(0),
-		FxValue:    uintptr(0),
-		FxInverse:  uintptr(0),
 		FzName:     __ccgo_ts + 44861,
-		Fu: struct {
-			FpDestructor [0]uintptr
-			FpHash       uintptr
-		}{},
 	},
 	8: {
-		FnArg:      0,
 		FfuncFlags: uint32(libc.Int32FromInt32(m_SQLITE_FUNC_BUILTIN) | libc.Int32FromInt32(m_SQLITE_FUNC_SLOCHNG) | libc.Int32FromInt32(m_SQLITE_UTF8)),
-		FpUserData: uintptr(0),
-		FpNext:     uintptr(0),
-		FxSFunc:    uintptr(0),
-		FxFinalize: uintptr(0),
-		FxValue:    uintptr(0),
-		FxInverse:  uintptr(0),
 		FzName:     __ccgo_ts + 44879,
-		Fu: struct {
-			FpDestructor [0]uintptr
-			FpHash       uintptr
-		}{},
 	},
 }
 
 func init() {
 	p := unsafe.Pointer(&_aDateTimeFuncs)
 	*(*uintptr)(unsafe.Add(p, 24)) = __ccgo_fp(_juliandayFunc)
-	*(*uintptr)(unsafe.Add(p, 32)) = uintptr(0)
-	*(*uintptr)(unsafe.Add(p, 40)) = uintptr(0)
-	*(*uintptr)(unsafe.Add(p, 48)) = uintptr(0)
 	*(*uintptr)(unsafe.Add(p, 96)) = __ccgo_fp(_unixepochFunc)
-	*(*uintptr)(unsafe.Add(p, 104)) = uintptr(0)
-	*(*uintptr)(unsafe.Add(p, 112)) = uintptr(0)
-	*(*uintptr)(unsafe.Add(p, 120)) = uintptr(0)
 	*(*uintptr)(unsafe.Add(p, 168)) = __ccgo_fp(_dateFunc)
-	*(*uintptr)(unsafe.Add(p, 176)) = uintptr(0)
-	*(*uintptr)(unsafe.Add(p, 184)) = uintptr(0)
-	*(*uintptr)(unsafe.Add(p, 192)) = uintptr(0)
 	*(*uintptr)(unsafe.Add(p, 240)) = __ccgo_fp(_timeFunc)
-	*(*uintptr)(unsafe.Add(p, 248)) = uintptr(0)
-	*(*uintptr)(unsafe.Add(p, 256)) = uintptr(0)
-	*(*uintptr)(unsafe.Add(p, 264)) = uintptr(0)
 	*(*uintptr)(unsafe.Add(p, 312)) = __ccgo_fp(_datetimeFunc)
-	*(*uintptr)(unsafe.Add(p, 320)) = uintptr(0)
-	*(*uintptr)(unsafe.Add(p, 328)) = uintptr(0)
-	*(*uintptr)(unsafe.Add(p, 336)) = uintptr(0)
 	*(*uintptr)(unsafe.Add(p, 384)) = __ccgo_fp(_strftimeFunc)
-	*(*uintptr)(unsafe.Add(p, 392)) = uintptr(0)
-	*(*uintptr)(unsafe.Add(p, 400)) = uintptr(0)
-	*(*uintptr)(unsafe.Add(p, 408)) = uintptr(0)
 	*(*uintptr)(unsafe.Add(p, 456)) = __ccgo_fp(_ctimeFunc)
-	*(*uintptr)(unsafe.Add(p, 464)) = uintptr(0)
-	*(*uintptr)(unsafe.Add(p, 472)) = uintptr(0)
-	*(*uintptr)(unsafe.Add(p, 480)) = uintptr(0)
 	*(*uintptr)(unsafe.Add(p, 528)) = __ccgo_fp(_ctimestampFunc)
-	*(*uintptr)(unsafe.Add(p, 536)) = uintptr(0)
-	*(*uintptr)(unsafe.Add(p, 544)) = uintptr(0)
-	*(*uintptr)(unsafe.Add(p, 552)) = uintptr(0)
 	*(*uintptr)(unsafe.Add(p, 600)) = __ccgo_fp(_cdateFunc)
-	*(*uintptr)(unsafe.Add(p, 608)) = uintptr(0)
-	*(*uintptr)(unsafe.Add(p, 616)) = uintptr(0)
-	*(*uintptr)(unsafe.Add(p, 624)) = uintptr(0)
 }
 
 // C documentation
@@ -89145,16 +85547,7 @@ func x_sqlite3MemSetDefault(tls *libc.TLS) {
 	x_sqlite3_config(tls, int32(m_SQLITE_CONFIG_MALLOC), libc.VaList(bp+8, uintptr(unsafe.Pointer(&_defaultMethods))))
 }
 
-var _defaultMethods = Tsqlite3_mem_methods{
-	FxMalloc:   uintptr(0),
-	FxFree:     uintptr(0),
-	FxRealloc:  uintptr(0),
-	FxSize:     uintptr(0),
-	FxRoundup:  uintptr(0),
-	FxInit:     uintptr(0),
-	FxShutdown: uintptr(0),
-	FpAppData:  uintptr(0),
-}
+var _defaultMethods = Tsqlite3_mem_methods{}
 
 func init() {
 	p := unsafe.Pointer(&_defaultMethods)
@@ -90413,184 +86806,119 @@ var _fmtinfo = [23]Tet_info{
 		Fbase:    uint8(10),
 		Fflags:   uint8(1),
 		Ftype1:   uint8(m_etDECIMAL),
-		Fcharset: uint8(0),
-		Fprefix:  uint8(0),
 	},
 	1: {
 		Ffmttype: int8('s'),
-		Fbase:    uint8(0),
 		Fflags:   uint8(4),
 		Ftype1:   uint8(m_etSTRING),
-		Fcharset: uint8(0),
-		Fprefix:  uint8(0),
 	},
 	2: {
 		Ffmttype: int8('g'),
-		Fbase:    uint8(0),
 		Fflags:   uint8(1),
 		Ftype1:   uint8(m_etGENERIC),
 		Fcharset: uint8(30),
-		Fprefix:  uint8(0),
 	},
 	3: {
 		Ffmttype: int8('z'),
-		Fbase:    uint8(0),
 		Fflags:   uint8(4),
 		Ftype1:   uint8(m_etDYNSTRING),
-		Fcharset: uint8(0),
-		Fprefix:  uint8(0),
 	},
 	4: {
 		Ffmttype: int8('q'),
-		Fbase:    uint8(0),
 		Fflags:   uint8(4),
 		Ftype1:   uint8(m_etSQLESCAPE),
-		Fcharset: uint8(0),
-		Fprefix:  uint8(0),
 	},
 	5: {
 		Ffmttype: int8('Q'),
-		Fbase:    uint8(0),
 		Fflags:   uint8(4),
 		Ftype1:   uint8(m_etSQLESCAPE2),
-		Fcharset: uint8(0),
-		Fprefix:  uint8(0),
 	},
 	6: {
 		Ffmttype: int8('w'),
-		Fbase:    uint8(0),
 		Fflags:   uint8(4),
 		Ftype1:   uint8(m_etSQLESCAPE3),
-		Fcharset: uint8(0),
-		Fprefix:  uint8(0),
 	},
 	7: {
 		Ffmttype: int8('c'),
-		Fbase:    uint8(0),
-		Fflags:   uint8(0),
 		Ftype1:   uint8(m_etCHARX),
-		Fcharset: uint8(0),
-		Fprefix:  uint8(0),
 	},
 	8: {
 		Ffmttype: int8('o'),
 		Fbase:    uint8(8),
-		Fflags:   uint8(0),
-		Ftype1:   uint8(m_etRADIX),
-		Fcharset: uint8(0),
 		Fprefix:  uint8(2),
 	},
 	9: {
 		Ffmttype: int8('u'),
 		Fbase:    uint8(10),
-		Fflags:   uint8(0),
 		Ftype1:   uint8(m_etDECIMAL),
-		Fcharset: uint8(0),
-		Fprefix:  uint8(0),
 	},
 	10: {
 		Ffmttype: int8('x'),
 		Fbase:    uint8(16),
-		Fflags:   uint8(0),
-		Ftype1:   uint8(m_etRADIX),
 		Fcharset: uint8(16),
 		Fprefix:  uint8(1),
 	},
 	11: {
 		Ffmttype: int8('X'),
 		Fbase:    uint8(16),
-		Fflags:   uint8(0),
-		Ftype1:   uint8(m_etRADIX),
-		Fcharset: uint8(0),
 		Fprefix:  uint8(4),
 	},
 	12: {
 		Ffmttype: int8('f'),
-		Fbase:    uint8(0),
 		Fflags:   uint8(1),
 		Ftype1:   uint8(m_etFLOAT),
-		Fcharset: uint8(0),
-		Fprefix:  uint8(0),
 	},
 	13: {
 		Ffmttype: int8('e'),
-		Fbase:    uint8(0),
 		Fflags:   uint8(1),
 		Ftype1:   uint8(m_etEXP),
 		Fcharset: uint8(30),
-		Fprefix:  uint8(0),
 	},
 	14: {
 		Ffmttype: int8('E'),
-		Fbase:    uint8(0),
 		Fflags:   uint8(1),
 		Ftype1:   uint8(m_etEXP),
 		Fcharset: uint8(14),
-		Fprefix:  uint8(0),
 	},
 	15: {
 		Ffmttype: int8('G'),
-		Fbase:    uint8(0),
 		Fflags:   uint8(1),
 		Ftype1:   uint8(m_etGENERIC),
 		Fcharset: uint8(14),
-		Fprefix:  uint8(0),
 	},
 	16: {
 		Ffmttype: int8('i'),
 		Fbase:    uint8(10),
 		Fflags:   uint8(1),
 		Ftype1:   uint8(m_etDECIMAL),
-		Fcharset: uint8(0),
-		Fprefix:  uint8(0),
 	},
 	17: {
 		Ffmttype: int8('n'),
-		Fbase:    uint8(0),
-		Fflags:   uint8(0),
 		Ftype1:   uint8(m_etSIZE),
-		Fcharset: uint8(0),
-		Fprefix:  uint8(0),
 	},
 	18: {
 		Ffmttype: int8('%'),
-		Fbase:    uint8(0),
-		Fflags:   uint8(0),
 		Ftype1:   uint8(m_etPERCENT),
-		Fcharset: uint8(0),
-		Fprefix:  uint8(0),
 	},
 	19: {
 		Ffmttype: int8('p'),
 		Fbase:    uint8(16),
-		Fflags:   uint8(0),
 		Ftype1:   uint8(m_etPOINTER),
-		Fcharset: uint8(0),
 		Fprefix:  uint8(1),
 	},
 	20: {
 		Ffmttype: int8('T'),
-		Fbase:    uint8(0),
-		Fflags:   uint8(0),
 		Ftype1:   uint8(m_etTOKEN),
-		Fcharset: uint8(0),
-		Fprefix:  uint8(0),
 	},
 	21: {
 		Ffmttype: int8('S'),
-		Fbase:    uint8(0),
-		Fflags:   uint8(0),
 		Ftype1:   uint8(m_etSRCITEM),
-		Fcharset: uint8(0),
-		Fprefix:  uint8(0),
 	},
 	22: {
 		Ffmttype: int8('r'),
 		Fbase:    uint8(10),
 		Fflags:   uint8(1),
 		Ftype1:   uint8(m_etORDINAL),
-		Fcharset: uint8(0),
-		Fprefix:  uint8(0),
 	},
 }
 
@@ -92034,13 +88362,7 @@ func x_sqlite3ResultStrAccum(tls *libc.TLS, pCtx uintptr, p uintptr) {
 //	** an SQLITE_NOMEM error.
 //	*/
 var _sqlite3OomStr = Tsqlite3_str{
-	Fdb:          uintptr(0),
-	FzText:       uintptr(0),
-	FnAlloc:      uint32(0),
-	FmxAlloc:     uint32(0),
-	FnChar:       uint32(0),
-	FaccError:    uint8(m_SQLITE_NOMEM),
-	FprintfFlags: uint8(0),
+	FaccError: uint8(m_SQLITE_NOMEM),
 }
 
 // C documentation
@@ -92756,7 +89078,6 @@ func x_sqlite3PrngRestoreState(tls *libc.TLS) {
 //	** a multi-byte UTF8 character.
 //	*/
 var _sqlite3Utf8Trans11 = [64]uint8{
-	0:  uint8(0x00),
 	1:  uint8(0x01),
 	2:  uint8(0x02),
 	3:  uint8(0x03),
@@ -92788,7 +89109,6 @@ var _sqlite3Utf8Trans11 = [64]uint8{
 	29: uint8(0x1d),
 	30: uint8(0x1e),
 	31: uint8(0x1f),
-	32: uint8(0x00),
 	33: uint8(0x01),
 	34: uint8(0x02),
 	35: uint8(0x03),
@@ -92804,7 +89124,6 @@ var _sqlite3Utf8Trans11 = [64]uint8{
 	45: uint8(0x0d),
 	46: uint8(0x0e),
 	47: uint8(0x0f),
-	48: uint8(0x00),
 	49: uint8(0x01),
 	50: uint8(0x02),
 	51: uint8(0x03),
@@ -92812,14 +89131,10 @@ var _sqlite3Utf8Trans11 = [64]uint8{
 	53: uint8(0x05),
 	54: uint8(0x06),
 	55: uint8(0x07),
-	56: uint8(0x00),
 	57: uint8(0x01),
 	58: uint8(0x02),
 	59: uint8(0x03),
-	60: uint8(0x00),
 	61: uint8(0x01),
-	62: uint8(0x00),
-	63: uint8(0x00),
 }
 
 // C documentation
@@ -95187,7 +91502,6 @@ func x_sqlite3LogEst(tls *libc.TLS, x Tu64) (r TLogEst) {
 }
 
 var _a1 = [8]TLogEst{
-	0: 0,
 	1: int16(2),
 	2: int16(3),
 	3: int16(5),
@@ -96125,212 +92439,121 @@ type Tunix_syscall = struct {
 //	*/
 var _aSyscall = [29]Tunix_syscall{
 	0: {
-		FzName:    __ccgo_ts + 22075,
-		FpCurrent: uintptr(0),
-		FpDefault: uintptr(0),
+		FzName: __ccgo_ts + 22075,
 	},
 	1: {
-		FzName:    __ccgo_ts + 22080,
-		FpCurrent: uintptr(0),
-		FpDefault: uintptr(0),
+		FzName: __ccgo_ts + 22080,
 	},
 	2: {
-		FzName:    __ccgo_ts + 22086,
-		FpCurrent: uintptr(0),
-		FpDefault: uintptr(0),
+		FzName: __ccgo_ts + 22086,
 	},
 	3: {
-		FzName:    __ccgo_ts + 22093,
-		FpCurrent: uintptr(0),
-		FpDefault: uintptr(0),
+		FzName: __ccgo_ts + 22093,
 	},
 	4: {
-		FzName:    __ccgo_ts + 22100,
-		FpCurrent: uintptr(0),
-		FpDefault: uintptr(0),
+		FzName: __ccgo_ts + 22100,
 	},
 	5: {
-		FzName:    __ccgo_ts + 22105,
-		FpCurrent: uintptr(0),
-		FpDefault: uintptr(0),
+		FzName: __ccgo_ts + 22105,
 	},
 	6: {
-		FzName:    __ccgo_ts + 22111,
-		FpCurrent: uintptr(0),
-		FpDefault: uintptr(0),
+		FzName: __ccgo_ts + 22111,
 	},
 	7: {
-		FzName:    __ccgo_ts + 22121,
-		FpCurrent: uintptr(0),
-		FpDefault: uintptr(0),
+		FzName: __ccgo_ts + 22121,
 	},
 	8: {
-		FzName:    __ccgo_ts + 10452,
-		FpCurrent: uintptr(0),
-		FpDefault: uintptr(0),
+		FzName: __ccgo_ts + 10452,
 	},
 	9: {
-		FzName:    __ccgo_ts + 22127,
-		FpCurrent: uintptr(0),
-		FpDefault: uintptr(0),
+		FzName: __ccgo_ts + 22127,
 	},
 	10: {
-		FzName:    __ccgo_ts + 22133,
-		FpCurrent: uintptr(0),
-		FpDefault: uintptr(0),
+		FzName: __ccgo_ts + 22133,
 	},
 	11: {
-		FzName:    __ccgo_ts + 10457,
-		FpCurrent: uintptr(0),
-		FpDefault: uintptr(0),
+		FzName: __ccgo_ts + 10457,
 	},
 	12: {
-		FzName:    __ccgo_ts + 22141,
-		FpCurrent: uintptr(0),
-		FpDefault: uintptr(0),
+		FzName: __ccgo_ts + 22141,
 	},
 	13: {
-		FzName:    __ccgo_ts + 22148,
-		FpCurrent: uintptr(0),
-		FpDefault: uintptr(0),
+		FzName: __ccgo_ts + 22148,
 	},
 	14: {
-		FzName:    __ccgo_ts + 22157,
-		FpCurrent: uintptr(0),
-		FpDefault: uintptr(0),
+		FzName: __ccgo_ts + 22157,
 	},
 	15: {
-		FzName:    __ccgo_ts + 22164,
-		FpCurrent: uintptr(0),
-		FpDefault: uintptr(0),
+		FzName: __ccgo_ts + 22164,
 	},
 	16: {
-		FzName:    __ccgo_ts + 48912,
-		FpCurrent: uintptr(0),
-		FpDefault: uintptr(0),
+		FzName: __ccgo_ts + 48912,
 	},
 	17: {
-		FzName:    __ccgo_ts + 48919,
-		FpCurrent: uintptr(0),
-		FpDefault: uintptr(0),
+		FzName: __ccgo_ts + 48919,
 	},
 	18: {
-		FzName:    __ccgo_ts + 48933,
-		FpCurrent: uintptr(0),
-		FpDefault: uintptr(0),
+		FzName: __ccgo_ts + 48933,
 	},
 	19: {
-		FzName:    __ccgo_ts + 48939,
-		FpCurrent: uintptr(0),
-		FpDefault: uintptr(0),
+		FzName: __ccgo_ts + 48939,
 	},
 	20: {
-		FzName:    __ccgo_ts + 48945,
-		FpCurrent: uintptr(0),
-		FpDefault: uintptr(0),
+		FzName: __ccgo_ts + 48945,
 	},
 	21: {
-		FzName:    __ccgo_ts + 48952,
-		FpCurrent: uintptr(0),
-		FpDefault: uintptr(0),
+		FzName: __ccgo_ts + 48952,
 	},
 	22: {
-		FzName:    __ccgo_ts + 13898,
-		FpCurrent: uintptr(0),
-		FpDefault: uintptr(0),
+		FzName: __ccgo_ts + 13898,
 	},
 	23: {
-		FzName:    __ccgo_ts + 48960,
-		FpCurrent: uintptr(0),
-		FpDefault: uintptr(0),
+		FzName: __ccgo_ts + 48960,
 	},
 	24: {
-		FzName:    __ccgo_ts + 22174,
-		FpCurrent: uintptr(0),
-		FpDefault: uintptr(0),
+		FzName: __ccgo_ts + 22174,
 	},
 	25: {
-		FzName:    __ccgo_ts + 22325,
-		FpCurrent: uintptr(0),
-		FpDefault: uintptr(0),
+		FzName: __ccgo_ts + 22325,
 	},
 	26: {
-		FzName:    __ccgo_ts + 48967,
-		FpCurrent: uintptr(0),
-		FpDefault: uintptr(0),
+		FzName: __ccgo_ts + 48967,
 	},
 	27: {
-		FzName:    __ccgo_ts + 48976,
-		FpCurrent: uintptr(0),
-		FpDefault: uintptr(0),
+		FzName: __ccgo_ts + 48976,
 	},
 	28: {
-		FzName:    __ccgo_ts + 48982,
-		FpCurrent: uintptr(0),
-		FpDefault: uintptr(0),
+		FzName: __ccgo_ts + 48982,
 	},
 }
 
 func init() {
 	p := unsafe.Pointer(&_aSyscall)
 	*(*uintptr)(unsafe.Add(p, 8)) = __ccgo_fp(_posixOpen)
-	*(*uintptr)(unsafe.Add(p, 16)) = uintptr(0)
 	*(*uintptr)(unsafe.Add(p, 32)) = __ccgo_fp(libc.Xclose)
-	*(*uintptr)(unsafe.Add(p, 40)) = uintptr(0)
 	*(*uintptr)(unsafe.Add(p, 56)) = __ccgo_fp(libc.Xaccess)
-	*(*uintptr)(unsafe.Add(p, 64)) = uintptr(0)
 	*(*uintptr)(unsafe.Add(p, 80)) = __ccgo_fp(libc.Xgetcwd)
-	*(*uintptr)(unsafe.Add(p, 88)) = uintptr(0)
 	*(*uintptr)(unsafe.Add(p, 104)) = __ccgo_fp(libc.Xstat)
-	*(*uintptr)(unsafe.Add(p, 112)) = uintptr(0)
 	*(*uintptr)(unsafe.Add(p, 128)) = __ccgo_fp(libc.Xfstat)
-	*(*uintptr)(unsafe.Add(p, 136)) = uintptr(0)
 	*(*uintptr)(unsafe.Add(p, 152)) = __ccgo_fp(libc.Xftruncate)
-	*(*uintptr)(unsafe.Add(p, 160)) = uintptr(0)
 	*(*uintptr)(unsafe.Add(p, 176)) = __ccgo_fp(libc.Xfcntl)
-	*(*uintptr)(unsafe.Add(p, 184)) = uintptr(0)
 	*(*uintptr)(unsafe.Add(p, 200)) = __ccgo_fp(libc.Xread)
-	*(*uintptr)(unsafe.Add(p, 208)) = uintptr(0)
-	*(*uintptr)(unsafe.Add(p, 224)) = libc.UintptrFromInt32(0)
-	*(*uintptr)(unsafe.Add(p, 232)) = uintptr(0)
 	*(*uintptr)(unsafe.Add(p, 248)) = __ccgo_fp(libc.Xpread)
-	*(*uintptr)(unsafe.Add(p, 256)) = uintptr(0)
 	*(*uintptr)(unsafe.Add(p, 272)) = __ccgo_fp(libc.Xwrite)
-	*(*uintptr)(unsafe.Add(p, 280)) = uintptr(0)
-	*(*uintptr)(unsafe.Add(p, 296)) = libc.UintptrFromInt32(0)
-	*(*uintptr)(unsafe.Add(p, 304)) = uintptr(0)
 	*(*uintptr)(unsafe.Add(p, 320)) = __ccgo_fp(libc.Xpwrite)
-	*(*uintptr)(unsafe.Add(p, 328)) = uintptr(0)
 	*(*uintptr)(unsafe.Add(p, 344)) = __ccgo_fp(libc.Xfchmod)
-	*(*uintptr)(unsafe.Add(p, 352)) = uintptr(0)
-	*(*uintptr)(unsafe.Add(p, 368)) = libc.UintptrFromInt32(0)
-	*(*uintptr)(unsafe.Add(p, 376)) = uintptr(0)
 	*(*uintptr)(unsafe.Add(p, 392)) = __ccgo_fp(libc.Xunlink)
-	*(*uintptr)(unsafe.Add(p, 400)) = uintptr(0)
 	*(*uintptr)(unsafe.Add(p, 416)) = __ccgo_fp(_openDirectory)
-	*(*uintptr)(unsafe.Add(p, 424)) = uintptr(0)
 	*(*uintptr)(unsafe.Add(p, 440)) = __ccgo_fp(libc.Xmkdir)
-	*(*uintptr)(unsafe.Add(p, 448)) = uintptr(0)
 	*(*uintptr)(unsafe.Add(p, 464)) = __ccgo_fp(libc.Xrmdir)
-	*(*uintptr)(unsafe.Add(p, 472)) = uintptr(0)
 	*(*uintptr)(unsafe.Add(p, 488)) = __ccgo_fp(libc.Xfchown)
-	*(*uintptr)(unsafe.Add(p, 496)) = uintptr(0)
 	*(*uintptr)(unsafe.Add(p, 512)) = __ccgo_fp(libc.Xgeteuid)
-	*(*uintptr)(unsafe.Add(p, 520)) = uintptr(0)
 	*(*uintptr)(unsafe.Add(p, 536)) = __ccgo_fp(libc.Xmmap)
-	*(*uintptr)(unsafe.Add(p, 544)) = uintptr(0)
 	*(*uintptr)(unsafe.Add(p, 560)) = __ccgo_fp(libc.Xmunmap)
-	*(*uintptr)(unsafe.Add(p, 568)) = uintptr(0)
 	*(*uintptr)(unsafe.Add(p, 584)) = __ccgo_fp(libc.Xmremap)
-	*(*uintptr)(unsafe.Add(p, 592)) = uintptr(0)
 	*(*uintptr)(unsafe.Add(p, 608)) = __ccgo_fp(_unixGetpagesize)
-	*(*uintptr)(unsafe.Add(p, 616)) = uintptr(0)
 	*(*uintptr)(unsafe.Add(p, 632)) = __ccgo_fp(libc.Xreadlink)
-	*(*uintptr)(unsafe.Add(p, 640)) = uintptr(0)
 	*(*uintptr)(unsafe.Add(p, 656)) = __ccgo_fp(libc.Xlstat)
-	*(*uintptr)(unsafe.Add(p, 664)) = uintptr(0)
-	*(*uintptr)(unsafe.Add(p, 680)) = libc.UintptrFromInt32(0)
-	*(*uintptr)(unsafe.Add(p, 688)) = uintptr(0)
 }
 
 /* End of the overrideable system calls */
@@ -99673,25 +95896,7 @@ func _unixUnfetch(tls *libc.TLS, fd uintptr, iOff Ti64, p uintptr) (r int32) {
 //	** are also created.
 //	*/
 var _posixIoMethods = Tsqlite3_io_methods{
-	FiVersion:               int32(3),
-	FxClose:                 uintptr(0),
-	FxRead:                  uintptr(0),
-	FxWrite:                 uintptr(0),
-	FxTruncate:              uintptr(0),
-	FxSync:                  uintptr(0),
-	FxFileSize:              uintptr(0),
-	FxLock:                  uintptr(0),
-	FxUnlock:                uintptr(0),
-	FxCheckReservedLock:     uintptr(0),
-	FxFileControl:           uintptr(0),
-	FxSectorSize:            uintptr(0),
-	FxDeviceCharacteristics: uintptr(0),
-	FxShmMap:                uintptr(0),
-	FxShmLock:               uintptr(0),
-	FxShmBarrier:            uintptr(0),
-	FxShmUnmap:              uintptr(0),
-	FxFetch:                 uintptr(0),
-	FxUnfetch:               uintptr(0),
+	FiVersion: int32(3),
 }
 
 func init() {
@@ -99730,25 +95935,7 @@ func init() {
 }
 
 var _nolockIoMethods = Tsqlite3_io_methods{
-	FiVersion:               int32(3),
-	FxClose:                 uintptr(0),
-	FxRead:                  uintptr(0),
-	FxWrite:                 uintptr(0),
-	FxTruncate:              uintptr(0),
-	FxSync:                  uintptr(0),
-	FxFileSize:              uintptr(0),
-	FxLock:                  uintptr(0),
-	FxUnlock:                uintptr(0),
-	FxCheckReservedLock:     uintptr(0),
-	FxFileControl:           uintptr(0),
-	FxSectorSize:            uintptr(0),
-	FxDeviceCharacteristics: uintptr(0),
-	FxShmMap:                uintptr(0),
-	FxShmLock:               uintptr(0),
-	FxShmBarrier:            uintptr(0),
-	FxShmUnmap:              uintptr(0),
-	FxFetch:                 uintptr(0),
-	FxUnfetch:               uintptr(0),
+	FiVersion: int32(3),
 }
 
 func init() {
@@ -99765,7 +95952,6 @@ func init() {
 	*(*uintptr)(unsafe.Add(p, 80)) = __ccgo_fp(_unixFileControl)
 	*(*uintptr)(unsafe.Add(p, 88)) = __ccgo_fp(_unixSectorSize)
 	*(*uintptr)(unsafe.Add(p, 96)) = __ccgo_fp(_unixDeviceCharacteristics)
-	*(*uintptr)(unsafe.Add(p, 104)) = uintptr(0)
 	*(*uintptr)(unsafe.Add(p, 112)) = __ccgo_fp(_unixShmLock)
 	*(*uintptr)(unsafe.Add(p, 120)) = __ccgo_fp(_unixShmBarrier)
 	*(*uintptr)(unsafe.Add(p, 128)) = __ccgo_fp(_unixShmUnmap)
@@ -99787,25 +95973,7 @@ func init() {
 }
 
 var _dotlockIoMethods = Tsqlite3_io_methods{
-	FiVersion:               int32(1),
-	FxClose:                 uintptr(0),
-	FxRead:                  uintptr(0),
-	FxWrite:                 uintptr(0),
-	FxTruncate:              uintptr(0),
-	FxSync:                  uintptr(0),
-	FxFileSize:              uintptr(0),
-	FxLock:                  uintptr(0),
-	FxUnlock:                uintptr(0),
-	FxCheckReservedLock:     uintptr(0),
-	FxFileControl:           uintptr(0),
-	FxSectorSize:            uintptr(0),
-	FxDeviceCharacteristics: uintptr(0),
-	FxShmMap:                uintptr(0),
-	FxShmLock:               uintptr(0),
-	FxShmBarrier:            uintptr(0),
-	FxShmUnmap:              uintptr(0),
-	FxFetch:                 uintptr(0),
-	FxUnfetch:               uintptr(0),
+	FiVersion: int32(1),
 }
 
 func init() {
@@ -99822,7 +95990,6 @@ func init() {
 	*(*uintptr)(unsafe.Add(p, 80)) = __ccgo_fp(_unixFileControl)
 	*(*uintptr)(unsafe.Add(p, 88)) = __ccgo_fp(_unixSectorSize)
 	*(*uintptr)(unsafe.Add(p, 96)) = __ccgo_fp(_unixDeviceCharacteristics)
-	*(*uintptr)(unsafe.Add(p, 104)) = uintptr(0)
 	*(*uintptr)(unsafe.Add(p, 112)) = __ccgo_fp(_unixShmLock)
 	*(*uintptr)(unsafe.Add(p, 120)) = __ccgo_fp(_unixShmBarrier)
 	*(*uintptr)(unsafe.Add(p, 128)) = __ccgo_fp(_unixShmUnmap)
@@ -99966,8 +96133,6 @@ func _fillInUnixFile(tls *libc.TLS, pVfs uintptr, h int32, pId uintptr, zFilenam
 //	** Directories to consider for temp files.
 //	*/
 var _azTempDirs = [6]uintptr{
-	0: uintptr(0),
-	1: uintptr(0),
 	2: __ccgo_ts + 49733,
 	3: __ccgo_ts + 49742,
 	4: __ccgo_ts + 49751,
@@ -101030,100 +97195,28 @@ func x_sqlite3_os_init(tls *libc.TLS) (r int32) {
  */
 var _aVfs = [4]Tsqlite3_vfs{
 	0: {
-		FiVersion:          int32(3),
-		FszOsFile:          int32(152),
-		FmxPathname:        int32(m_MAX_PATHNAME),
-		FpNext:             uintptr(0),
-		FzName:             __ccgo_ts + 49828,
-		FpAppData:          uintptr(0),
-		FxOpen:             uintptr(0),
-		FxDelete:           uintptr(0),
-		FxAccess:           uintptr(0),
-		FxFullPathname:     uintptr(0),
-		FxDlOpen:           uintptr(0),
-		FxDlError:          uintptr(0),
-		FxDlSym:            uintptr(0),
-		FxDlClose:          uintptr(0),
-		FxRandomness:       uintptr(0),
-		FxSleep:            uintptr(0),
-		FxCurrentTime:      uintptr(0),
-		FxGetLastError:     uintptr(0),
-		FxCurrentTimeInt64: uintptr(0),
-		FxSetSystemCall:    uintptr(0),
-		FxGetSystemCall:    uintptr(0),
-		FxNextSystemCall:   uintptr(0),
+		FiVersion:   int32(3),
+		FszOsFile:   int32(152),
+		FmxPathname: int32(m_MAX_PATHNAME),
+		FzName:      __ccgo_ts + 49828,
 	},
 	1: {
-		FiVersion:          int32(3),
-		FszOsFile:          int32(152),
-		FmxPathname:        int32(m_MAX_PATHNAME),
-		FpNext:             uintptr(0),
-		FzName:             __ccgo_ts + 49833,
-		FpAppData:          uintptr(0),
-		FxOpen:             uintptr(0),
-		FxDelete:           uintptr(0),
-		FxAccess:           uintptr(0),
-		FxFullPathname:     uintptr(0),
-		FxDlOpen:           uintptr(0),
-		FxDlError:          uintptr(0),
-		FxDlSym:            uintptr(0),
-		FxDlClose:          uintptr(0),
-		FxRandomness:       uintptr(0),
-		FxSleep:            uintptr(0),
-		FxCurrentTime:      uintptr(0),
-		FxGetLastError:     uintptr(0),
-		FxCurrentTimeInt64: uintptr(0),
-		FxSetSystemCall:    uintptr(0),
-		FxGetSystemCall:    uintptr(0),
-		FxNextSystemCall:   uintptr(0),
+		FiVersion:   int32(3),
+		FszOsFile:   int32(152),
+		FmxPathname: int32(m_MAX_PATHNAME),
+		FzName:      __ccgo_ts + 49833,
 	},
 	2: {
-		FiVersion:          int32(3),
-		FszOsFile:          int32(152),
-		FmxPathname:        int32(m_MAX_PATHNAME),
-		FpNext:             uintptr(0),
-		FzName:             __ccgo_ts + 49843,
-		FpAppData:          uintptr(0),
-		FxOpen:             uintptr(0),
-		FxDelete:           uintptr(0),
-		FxAccess:           uintptr(0),
-		FxFullPathname:     uintptr(0),
-		FxDlOpen:           uintptr(0),
-		FxDlError:          uintptr(0),
-		FxDlSym:            uintptr(0),
-		FxDlClose:          uintptr(0),
-		FxRandomness:       uintptr(0),
-		FxSleep:            uintptr(0),
-		FxCurrentTime:      uintptr(0),
-		FxGetLastError:     uintptr(0),
-		FxCurrentTimeInt64: uintptr(0),
-		FxSetSystemCall:    uintptr(0),
-		FxGetSystemCall:    uintptr(0),
-		FxNextSystemCall:   uintptr(0),
+		FiVersion:   int32(3),
+		FszOsFile:   int32(152),
+		FmxPathname: int32(m_MAX_PATHNAME),
+		FzName:      __ccgo_ts + 49843,
 	},
 	3: {
-		FiVersion:          int32(3),
-		FszOsFile:          int32(152),
-		FmxPathname:        int32(m_MAX_PATHNAME),
-		FpNext:             uintptr(0),
-		FzName:             __ccgo_ts + 49715,
-		FpAppData:          uintptr(0),
-		FxOpen:             uintptr(0),
-		FxDelete:           uintptr(0),
-		FxAccess:           uintptr(0),
-		FxFullPathname:     uintptr(0),
-		FxDlOpen:           uintptr(0),
-		FxDlError:          uintptr(0),
-		FxDlSym:            uintptr(0),
-		FxDlClose:          uintptr(0),
-		FxRandomness:       uintptr(0),
-		FxSleep:            uintptr(0),
-		FxCurrentTime:      uintptr(0),
-		FxGetLastError:     uintptr(0),
-		FxCurrentTimeInt64: uintptr(0),
-		FxSetSystemCall:    uintptr(0),
-		FxGetSystemCall:    uintptr(0),
-		FxNextSystemCall:   uintptr(0),
+		FiVersion:   int32(3),
+		FszOsFile:   int32(152),
+		FmxPathname: int32(m_MAX_PATHNAME),
+		FzName:      __ccgo_ts + 49715,
 	},
 }
 
@@ -101134,10 +97227,6 @@ func init() {
 	*(*uintptr)(unsafe.Add(p, 48)) = __ccgo_fp(_unixDelete)
 	*(*uintptr)(unsafe.Add(p, 56)) = __ccgo_fp(_unixAccess)
 	*(*uintptr)(unsafe.Add(p, 64)) = __ccgo_fp(_unixFullPathname)
-	*(*uintptr)(unsafe.Add(p, 72)) = uintptr(m_unixDlOpen)
-	*(*uintptr)(unsafe.Add(p, 80)) = uintptr(m_unixDlError)
-	*(*uintptr)(unsafe.Add(p, 88)) = uintptr(m_unixDlSym)
-	*(*uintptr)(unsafe.Add(p, 96)) = uintptr(m_unixDlClose)
 	*(*uintptr)(unsafe.Add(p, 104)) = __ccgo_fp(_unixRandomness)
 	*(*uintptr)(unsafe.Add(p, 112)) = __ccgo_fp(_unixSleep)
 	*(*uintptr)(unsafe.Add(p, 120)) = __ccgo_fp(_unixCurrentTime)
@@ -101151,10 +97240,6 @@ func init() {
 	*(*uintptr)(unsafe.Add(p, 216)) = __ccgo_fp(_unixDelete)
 	*(*uintptr)(unsafe.Add(p, 224)) = __ccgo_fp(_unixAccess)
 	*(*uintptr)(unsafe.Add(p, 232)) = __ccgo_fp(_unixFullPathname)
-	*(*uintptr)(unsafe.Add(p, 240)) = uintptr(m_unixDlOpen)
-	*(*uintptr)(unsafe.Add(p, 248)) = uintptr(m_unixDlError)
-	*(*uintptr)(unsafe.Add(p, 256)) = uintptr(m_unixDlSym)
-	*(*uintptr)(unsafe.Add(p, 264)) = uintptr(m_unixDlClose)
 	*(*uintptr)(unsafe.Add(p, 272)) = __ccgo_fp(_unixRandomness)
 	*(*uintptr)(unsafe.Add(p, 280)) = __ccgo_fp(_unixSleep)
 	*(*uintptr)(unsafe.Add(p, 288)) = __ccgo_fp(_unixCurrentTime)
@@ -101168,10 +97253,6 @@ func init() {
 	*(*uintptr)(unsafe.Add(p, 384)) = __ccgo_fp(_unixDelete)
 	*(*uintptr)(unsafe.Add(p, 392)) = __ccgo_fp(_unixAccess)
 	*(*uintptr)(unsafe.Add(p, 400)) = __ccgo_fp(_unixFullPathname)
-	*(*uintptr)(unsafe.Add(p, 408)) = uintptr(m_unixDlOpen)
-	*(*uintptr)(unsafe.Add(p, 416)) = uintptr(m_unixDlError)
-	*(*uintptr)(unsafe.Add(p, 424)) = uintptr(m_unixDlSym)
-	*(*uintptr)(unsafe.Add(p, 432)) = uintptr(m_unixDlClose)
 	*(*uintptr)(unsafe.Add(p, 440)) = __ccgo_fp(_unixRandomness)
 	*(*uintptr)(unsafe.Add(p, 448)) = __ccgo_fp(_unixSleep)
 	*(*uintptr)(unsafe.Add(p, 456)) = __ccgo_fp(_unixCurrentTime)
@@ -101185,10 +97266,6 @@ func init() {
 	*(*uintptr)(unsafe.Add(p, 552)) = __ccgo_fp(_unixDelete)
 	*(*uintptr)(unsafe.Add(p, 560)) = __ccgo_fp(_unixAccess)
 	*(*uintptr)(unsafe.Add(p, 568)) = __ccgo_fp(_unixFullPathname)
-	*(*uintptr)(unsafe.Add(p, 576)) = uintptr(m_unixDlOpen)
-	*(*uintptr)(unsafe.Add(p, 584)) = uintptr(m_unixDlError)
-	*(*uintptr)(unsafe.Add(p, 592)) = uintptr(m_unixDlSym)
-	*(*uintptr)(unsafe.Add(p, 600)) = uintptr(m_unixDlClose)
 	*(*uintptr)(unsafe.Add(p, 608)) = __ccgo_fp(_unixRandomness)
 	*(*uintptr)(unsafe.Add(p, 616)) = __ccgo_fp(_unixSleep)
 	*(*uintptr)(unsafe.Add(p, 624)) = __ccgo_fp(_unixCurrentTime)
@@ -101389,34 +97466,14 @@ type TMemFS = struct {
 var _memdb_g TMemFS
 
 var _memdb_vfs = Tsqlite3_vfs{
-	FiVersion:          int32(2),
-	FszOsFile:          int32(0),
-	FmxPathname:        int32(1024),
-	FpNext:             uintptr(0),
-	FzName:             __ccgo_ts + 49856,
-	FpAppData:          uintptr(0),
-	FxOpen:             uintptr(0),
-	FxDelete:           uintptr(0),
-	FxAccess:           uintptr(0),
-	FxFullPathname:     uintptr(0),
-	FxDlOpen:           uintptr(0),
-	FxDlError:          uintptr(0),
-	FxDlSym:            uintptr(0),
-	FxDlClose:          uintptr(0),
-	FxRandomness:       uintptr(0),
-	FxSleep:            uintptr(0),
-	FxCurrentTime:      uintptr(0),
-	FxGetLastError:     uintptr(0),
-	FxCurrentTimeInt64: uintptr(0),
-	FxSetSystemCall:    uintptr(0),
-	FxGetSystemCall:    uintptr(0),
-	FxNextSystemCall:   uintptr(0),
+	FiVersion:   int32(2),
+	FmxPathname: int32(1024),
+	FzName:      __ccgo_ts + 49856,
 }
 
 func init() {
 	p := unsafe.Pointer(&_memdb_vfs)
 	*(*uintptr)(unsafe.Add(p, 40)) = __ccgo_fp(_memdbOpen)
-	*(*uintptr)(unsafe.Add(p, 48)) = uintptr(0)
 	*(*uintptr)(unsafe.Add(p, 56)) = __ccgo_fp(_memdbAccess)
 	*(*uintptr)(unsafe.Add(p, 64)) = __ccgo_fp(_memdbFullPathname)
 	*(*uintptr)(unsafe.Add(p, 72)) = __ccgo_fp(_memdbDlOpen)
@@ -101425,34 +97482,12 @@ func init() {
 	*(*uintptr)(unsafe.Add(p, 96)) = __ccgo_fp(_memdbDlClose)
 	*(*uintptr)(unsafe.Add(p, 104)) = __ccgo_fp(_memdbRandomness)
 	*(*uintptr)(unsafe.Add(p, 112)) = __ccgo_fp(_memdbSleep)
-	*(*uintptr)(unsafe.Add(p, 120)) = uintptr(0)
 	*(*uintptr)(unsafe.Add(p, 128)) = __ccgo_fp(_memdbGetLastError)
 	*(*uintptr)(unsafe.Add(p, 136)) = __ccgo_fp(_memdbCurrentTimeInt64)
-	*(*uintptr)(unsafe.Add(p, 144)) = uintptr(0)
-	*(*uintptr)(unsafe.Add(p, 152)) = uintptr(0)
-	*(*uintptr)(unsafe.Add(p, 160)) = uintptr(0)
 }
 
 var _memdb_io_methods = Tsqlite3_io_methods{
-	FiVersion:               int32(3),
-	FxClose:                 uintptr(0),
-	FxRead:                  uintptr(0),
-	FxWrite:                 uintptr(0),
-	FxTruncate:              uintptr(0),
-	FxSync:                  uintptr(0),
-	FxFileSize:              uintptr(0),
-	FxLock:                  uintptr(0),
-	FxUnlock:                uintptr(0),
-	FxCheckReservedLock:     uintptr(0),
-	FxFileControl:           uintptr(0),
-	FxSectorSize:            uintptr(0),
-	FxDeviceCharacteristics: uintptr(0),
-	FxShmMap:                uintptr(0),
-	FxShmLock:               uintptr(0),
-	FxShmBarrier:            uintptr(0),
-	FxShmUnmap:              uintptr(0),
-	FxFetch:                 uintptr(0),
-	FxUnfetch:               uintptr(0),
+	FiVersion: int32(3),
 }
 
 func init() {
@@ -101465,14 +97500,8 @@ func init() {
 	*(*uintptr)(unsafe.Add(p, 48)) = __ccgo_fp(_memdbFileSize)
 	*(*uintptr)(unsafe.Add(p, 56)) = __ccgo_fp(_memdbLock)
 	*(*uintptr)(unsafe.Add(p, 64)) = __ccgo_fp(_memdbUnlock)
-	*(*uintptr)(unsafe.Add(p, 72)) = uintptr(0)
 	*(*uintptr)(unsafe.Add(p, 80)) = __ccgo_fp(_memdbFileControl)
-	*(*uintptr)(unsafe.Add(p, 88)) = uintptr(0)
 	*(*uintptr)(unsafe.Add(p, 96)) = __ccgo_fp(_memdbDeviceCharacteristics)
-	*(*uintptr)(unsafe.Add(p, 104)) = uintptr(0)
-	*(*uintptr)(unsafe.Add(p, 112)) = uintptr(0)
-	*(*uintptr)(unsafe.Add(p, 120)) = uintptr(0)
-	*(*uintptr)(unsafe.Add(p, 128)) = uintptr(0)
 	*(*uintptr)(unsafe.Add(p, 136)) = __ccgo_fp(_memdbFetch)
 	*(*uintptr)(unsafe.Add(p, 144)) = __ccgo_fp(_memdbUnfetch)
 }
@@ -104833,19 +100862,7 @@ func x_sqlite3PCacheSetDefault(tls *libc.TLS) {
 }
 
 var _defaultMethods1 = Tsqlite3_pcache_methods2{
-	FiVersion:   int32(1),
-	FpArg:       uintptr(0),
-	FxInit:      uintptr(0),
-	FxShutdown:  uintptr(0),
-	FxCreate:    uintptr(0),
-	FxCachesize: uintptr(0),
-	FxPagecount: uintptr(0),
-	FxFetch:     uintptr(0),
-	FxUnpin:     uintptr(0),
-	FxRekey:     uintptr(0),
-	FxTruncate:  uintptr(0),
-	FxDestroy:   uintptr(0),
-	FxShrink:    uintptr(0),
+	FiVersion: int32(1),
 }
 
 func init() {
@@ -132178,10 +128195,7 @@ func _vdbeCommit(tls *libc.TLS, db uintptr, p uintptr) (r int32) {
 var _aMJNeeded = [6]Tu8{
 	0: uint8(1),
 	1: uint8(1),
-	2: uint8(0),
 	3: uint8(1),
-	4: uint8(0),
-	5: uint8(0),
 } /* Pager associated with pBt */
 
 /*
@@ -135373,22 +131387,7 @@ func _columnNullValue(tls *libc.TLS) (r uintptr) {
  ** using gcc, we force nullMem to be 8-byte aligned using the magical
  ** __attribute__((aligned(8))) macro.  */
 var _nullMem = TMem{
-	Fu:        TMemValue{},
-	Fz:        libc.UintptrFromInt32(0),
-	Fn:        libc.Int32FromInt32(0),
-	Fflags:    libc.Uint16FromInt32(m_MEM_Null),
-	Fenc:      libc.Uint8FromInt32(0),
-	FeSubtype: libc.Uint8FromInt32(0),
-	Fdb:       libc.UintptrFromInt32(0),
-	FszMalloc: libc.Int32FromInt32(0),
-	FuTemp:    libc.Uint32FromInt32(0),
-	FzMalloc:  libc.UintptrFromInt32(0),
-	FxDel:     uintptr(0),
-}
-
-func init() {
-	p := unsafe.Pointer(&_nullMem)
-	*(*uintptr)(unsafe.Add(p, 48)) = libc.UintptrFromInt32(0)
+	Fflags: libc.Uint16FromInt32(m_MEM_Null),
 }
 
 // C documentation
@@ -144018,19 +140017,13 @@ var _azType1 = [4]uintptr{
 }
 
 var _and_logic = [9]uint8{
-	0: uint8(0),
-	1: uint8(0),
-	2: uint8(0),
-	3: uint8(0),
 	4: uint8(1),
 	5: uint8(2),
-	6: uint8(0),
 	7: uint8(2),
 	8: uint8(2),
 }
 
 var _or_logic = [9]uint8{
-	0: uint8(0),
 	1: uint8(1),
 	2: uint8(2),
 	3: uint8(1),
@@ -144432,39 +140425,25 @@ var _iLn int32
 var _openBlob = [6]TVdbeOpList{
 	0: {
 		Fopcode: uint8(m_OP_TableLock),
-		Fp1:     0,
-		Fp2:     0,
-		Fp3:     0,
 	},
 	1: {
 		Fopcode: uint8(m_OP_OpenRead),
-		Fp1:     0,
-		Fp2:     0,
-		Fp3:     0,
 	},
 	2: {
 		Fopcode: uint8(m_OP_NotExists),
-		Fp1:     0,
 		Fp2:     int8(5),
 		Fp3:     int8(1),
 	},
 	3: {
 		Fopcode: uint8(m_OP_Column),
-		Fp1:     0,
-		Fp2:     0,
 		Fp3:     int8(1),
 	},
 	4: {
 		Fopcode: uint8(m_OP_ResultRow),
 		Fp1:     int8(1),
-		Fp2:     0,
-		Fp3:     0,
 	},
 	5: {
 		Fopcode: uint8(m_OP_Halt),
-		Fp1:     0,
-		Fp2:     0,
-		Fp3:     0,
 	},
 }
 
@@ -145601,16 +141580,12 @@ func _vdbeSorterCompareInt(tls *libc.TLS, pTask uintptr, pbKey2Cached uintptr, p
 
 /* The two values have the same sign. Compare using memcmp(). */
 var _aLen = [10]Tu8{
-	0: uint8(0),
 	1: uint8(1),
 	2: uint8(2),
 	3: uint8(3),
 	4: uint8(4),
 	5: uint8(6),
 	6: uint8(8),
-	7: uint8(0),
-	8: uint8(0),
-	9: uint8(0),
 }
 
 // C documentation
@@ -147627,40 +143602,13 @@ func _bytecodevtabBestIndex(tls *libc.TLS, tab uintptr, pIdxInfo uintptr) (r int
 //	** This following structure defines all the methods for the
 //	** virtual table.
 //	*/
-var _bytecodevtabModule = Tsqlite3_module{
-	FiVersion:      int32(0),
-	FxCreate:       uintptr(0),
-	FxConnect:      uintptr(0),
-	FxBestIndex:    uintptr(0),
-	FxDisconnect:   uintptr(0),
-	FxDestroy:      uintptr(0),
-	FxOpen:         uintptr(0),
-	FxClose:        uintptr(0),
-	FxFilter:       uintptr(0),
-	FxNext:         uintptr(0),
-	FxEof:          uintptr(0),
-	FxColumn:       uintptr(0),
-	FxRowid:        uintptr(0),
-	FxUpdate:       uintptr(0),
-	FxBegin:        uintptr(0),
-	FxSync:         uintptr(0),
-	FxCommit:       uintptr(0),
-	FxRollback:     uintptr(0),
-	FxFindFunction: uintptr(0),
-	FxRename:       uintptr(0),
-	FxSavepoint:    uintptr(0),
-	FxRelease:      uintptr(0),
-	FxRollbackTo:   uintptr(0),
-	FxShadowName:   uintptr(0),
-}
+var _bytecodevtabModule = Tsqlite3_module{}
 
 func init() {
 	p := unsafe.Pointer(&_bytecodevtabModule)
-	*(*uintptr)(unsafe.Add(p, 8)) = uintptr(0)
 	*(*uintptr)(unsafe.Add(p, 16)) = __ccgo_fp(_bytecodevtabConnect)
 	*(*uintptr)(unsafe.Add(p, 24)) = __ccgo_fp(_bytecodevtabBestIndex)
 	*(*uintptr)(unsafe.Add(p, 32)) = __ccgo_fp(_bytecodevtabDisconnect)
-	*(*uintptr)(unsafe.Add(p, 40)) = uintptr(0)
 	*(*uintptr)(unsafe.Add(p, 48)) = __ccgo_fp(_bytecodevtabOpen)
 	*(*uintptr)(unsafe.Add(p, 56)) = __ccgo_fp(_bytecodevtabClose)
 	*(*uintptr)(unsafe.Add(p, 64)) = __ccgo_fp(_bytecodevtabFilter)
@@ -147668,17 +143616,6 @@ func init() {
 	*(*uintptr)(unsafe.Add(p, 80)) = __ccgo_fp(_bytecodevtabEof)
 	*(*uintptr)(unsafe.Add(p, 88)) = __ccgo_fp(_bytecodevtabColumn)
 	*(*uintptr)(unsafe.Add(p, 96)) = __ccgo_fp(_bytecodevtabRowid)
-	*(*uintptr)(unsafe.Add(p, 104)) = uintptr(0)
-	*(*uintptr)(unsafe.Add(p, 112)) = uintptr(0)
-	*(*uintptr)(unsafe.Add(p, 120)) = uintptr(0)
-	*(*uintptr)(unsafe.Add(p, 128)) = uintptr(0)
-	*(*uintptr)(unsafe.Add(p, 136)) = uintptr(0)
-	*(*uintptr)(unsafe.Add(p, 144)) = uintptr(0)
-	*(*uintptr)(unsafe.Add(p, 152)) = uintptr(0)
-	*(*uintptr)(unsafe.Add(p, 160)) = uintptr(0)
-	*(*uintptr)(unsafe.Add(p, 168)) = uintptr(0)
-	*(*uintptr)(unsafe.Add(p, 176)) = uintptr(0)
-	*(*uintptr)(unsafe.Add(p, 184)) = uintptr(0)
 }
 
 func x_sqlite3VdbeBytecodeVtabInit(tls *libc.TLS, _db uintptr) (r int32) {
@@ -148085,25 +144022,7 @@ func _memjrnlFileSize(tls *libc.TLS, pJfd uintptr, pSize uintptr) (r int32) {
 //	** Table of methods for MemJournal sqlite3_file object.
 //	*/
 var _MemJournalMethods = Tsqlite3_io_methods1{
-	FiVersion:               int32(1),
-	FxClose:                 uintptr(0),
-	FxRead:                  uintptr(0),
-	FxWrite:                 uintptr(0),
-	FxTruncate:              uintptr(0),
-	FxSync:                  uintptr(0),
-	FxFileSize:              uintptr(0),
-	FxLock:                  uintptr(0),
-	FxUnlock:                uintptr(0),
-	FxCheckReservedLock:     uintptr(0),
-	FxFileControl:           uintptr(0),
-	FxSectorSize:            uintptr(0),
-	FxDeviceCharacteristics: uintptr(0),
-	FxShmMap:                uintptr(0),
-	FxShmLock:               uintptr(0),
-	FxShmBarrier:            uintptr(0),
-	FxShmUnmap:              uintptr(0),
-	FxFetch:                 uintptr(0),
-	FxUnfetch:               uintptr(0),
+	FiVersion: int32(1),
 }
 
 func init() {
@@ -148114,18 +144033,6 @@ func init() {
 	*(*uintptr)(unsafe.Add(p, 32)) = __ccgo_fp(_memjrnlTruncate)
 	*(*uintptr)(unsafe.Add(p, 40)) = __ccgo_fp(_memjrnlSync)
 	*(*uintptr)(unsafe.Add(p, 48)) = __ccgo_fp(_memjrnlFileSize)
-	*(*uintptr)(unsafe.Add(p, 56)) = uintptr(0)
-	*(*uintptr)(unsafe.Add(p, 64)) = uintptr(0)
-	*(*uintptr)(unsafe.Add(p, 72)) = uintptr(0)
-	*(*uintptr)(unsafe.Add(p, 80)) = uintptr(0)
-	*(*uintptr)(unsafe.Add(p, 88)) = uintptr(0)
-	*(*uintptr)(unsafe.Add(p, 96)) = uintptr(0)
-	*(*uintptr)(unsafe.Add(p, 104)) = uintptr(0)
-	*(*uintptr)(unsafe.Add(p, 112)) = uintptr(0)
-	*(*uintptr)(unsafe.Add(p, 120)) = uintptr(0)
-	*(*uintptr)(unsafe.Add(p, 128)) = uintptr(0)
-	*(*uintptr)(unsafe.Add(p, 136)) = uintptr(0)
-	*(*uintptr)(unsafe.Add(p, 144)) = uintptr(0)
 }
 
 // C documentation
@@ -160055,102 +155962,37 @@ var _aAlterTableFuncs = [5]TFuncDef{
 	0: {
 		FnArg:      int8(9),
 		FfuncFlags: uint32(libc.Int32FromInt32(m_SQLITE_FUNC_BUILTIN) | libc.Int32FromInt32(m_SQLITE_FUNC_INTERNAL) | libc.Int32FromInt32(m_SQLITE_UTF8) | libc.Int32FromInt32(m_SQLITE_FUNC_CONSTANT)),
-		FpUserData: uintptr(0),
-		FpNext:     uintptr(0),
-		FxSFunc:    uintptr(0),
-		FxFinalize: uintptr(0),
-		FxValue:    uintptr(0),
-		FxInverse:  uintptr(0),
 		FzName:     __ccgo_ts + 57521,
-		Fu: struct {
-			FpDestructor [0]uintptr
-			FpHash       uintptr
-		}{},
 	},
 	1: {
 		FnArg:      int8(7),
 		FfuncFlags: uint32(libc.Int32FromInt32(m_SQLITE_FUNC_BUILTIN) | libc.Int32FromInt32(m_SQLITE_FUNC_INTERNAL) | libc.Int32FromInt32(m_SQLITE_UTF8) | libc.Int32FromInt32(m_SQLITE_FUNC_CONSTANT)),
-		FpUserData: uintptr(0),
-		FpNext:     uintptr(0),
-		FxSFunc:    uintptr(0),
-		FxFinalize: uintptr(0),
-		FxValue:    uintptr(0),
-		FxInverse:  uintptr(0),
 		FzName:     __ccgo_ts + 57542,
-		Fu: struct {
-			FpDestructor [0]uintptr
-			FpHash       uintptr
-		}{},
 	},
 	2: {
 		FnArg:      int8(7),
 		FfuncFlags: uint32(libc.Int32FromInt32(m_SQLITE_FUNC_BUILTIN) | libc.Int32FromInt32(m_SQLITE_FUNC_INTERNAL) | libc.Int32FromInt32(m_SQLITE_UTF8) | libc.Int32FromInt32(m_SQLITE_FUNC_CONSTANT)),
-		FpUserData: uintptr(0),
-		FpNext:     uintptr(0),
-		FxSFunc:    uintptr(0),
-		FxFinalize: uintptr(0),
-		FxValue:    uintptr(0),
-		FxInverse:  uintptr(0),
 		FzName:     __ccgo_ts + 57562,
-		Fu: struct {
-			FpDestructor [0]uintptr
-			FpHash       uintptr
-		}{},
 	},
 	3: {
 		FnArg:      int8(3),
 		FfuncFlags: uint32(libc.Int32FromInt32(m_SQLITE_FUNC_BUILTIN) | libc.Int32FromInt32(m_SQLITE_FUNC_INTERNAL) | libc.Int32FromInt32(m_SQLITE_UTF8) | libc.Int32FromInt32(m_SQLITE_FUNC_CONSTANT)),
-		FpUserData: uintptr(0),
-		FpNext:     uintptr(0),
-		FxSFunc:    uintptr(0),
-		FxFinalize: uintptr(0),
-		FxValue:    uintptr(0),
-		FxInverse:  uintptr(0),
 		FzName:     __ccgo_ts + 57581,
-		Fu: struct {
-			FpDestructor [0]uintptr
-			FpHash       uintptr
-		}{},
 	},
 	4: {
 		FnArg:      int8(2),
 		FfuncFlags: uint32(libc.Int32FromInt32(m_SQLITE_FUNC_BUILTIN) | libc.Int32FromInt32(m_SQLITE_FUNC_INTERNAL) | libc.Int32FromInt32(m_SQLITE_UTF8) | libc.Int32FromInt32(m_SQLITE_FUNC_CONSTANT)),
-		FpUserData: uintptr(0),
-		FpNext:     uintptr(0),
-		FxSFunc:    uintptr(0),
-		FxFinalize: uintptr(0),
-		FxValue:    uintptr(0),
-		FxInverse:  uintptr(0),
 		FzName:     __ccgo_ts + 57600,
-		Fu: struct {
-			FpDestructor [0]uintptr
-			FpHash       uintptr
-		}{},
 	},
 }
 
 func init() {
 	p := unsafe.Pointer(&_aAlterTableFuncs)
 	*(*uintptr)(unsafe.Add(p, 24)) = __ccgo_fp(_renameColumnFunc)
-	*(*uintptr)(unsafe.Add(p, 32)) = uintptr(0)
-	*(*uintptr)(unsafe.Add(p, 40)) = uintptr(0)
-	*(*uintptr)(unsafe.Add(p, 48)) = uintptr(0)
 	*(*uintptr)(unsafe.Add(p, 96)) = __ccgo_fp(_renameTableFunc)
-	*(*uintptr)(unsafe.Add(p, 104)) = uintptr(0)
-	*(*uintptr)(unsafe.Add(p, 112)) = uintptr(0)
-	*(*uintptr)(unsafe.Add(p, 120)) = uintptr(0)
 	*(*uintptr)(unsafe.Add(p, 168)) = __ccgo_fp(_renameTableTest)
-	*(*uintptr)(unsafe.Add(p, 176)) = uintptr(0)
-	*(*uintptr)(unsafe.Add(p, 184)) = uintptr(0)
-	*(*uintptr)(unsafe.Add(p, 192)) = uintptr(0)
 	*(*uintptr)(unsafe.Add(p, 240)) = __ccgo_fp(_dropColumnFunc)
-	*(*uintptr)(unsafe.Add(p, 248)) = uintptr(0)
-	*(*uintptr)(unsafe.Add(p, 256)) = uintptr(0)
-	*(*uintptr)(unsafe.Add(p, 264)) = uintptr(0)
 	*(*uintptr)(unsafe.Add(p, 312)) = __ccgo_fp(_renameQuotefixFunc)
-	*(*uintptr)(unsafe.Add(p, 320)) = uintptr(0)
-	*(*uintptr)(unsafe.Add(p, 328)) = uintptr(0)
-	*(*uintptr)(unsafe.Add(p, 336)) = uintptr(0)
 }
 
 /************** End of alter.c ***********************************************/
@@ -160405,7 +156247,6 @@ var _aTable = [3]struct {
 	},
 	2: {
 		FzName: __ccgo_ts + 57690,
-		FzCols: uintptr(0),
 	},
 }
 
@@ -160694,25 +156535,12 @@ func _statInit(tls *libc.TLS, context uintptr, argc int32, argv uintptr) {
 var _statInitFuncdef = TFuncDef{
 	FnArg:      int8(4),
 	FfuncFlags: uint32(m_SQLITE_UTF8),
-	FpUserData: uintptr(0),
-	FpNext:     uintptr(0),
-	FxSFunc:    uintptr(0),
-	FxFinalize: uintptr(0),
-	FxValue:    uintptr(0),
-	FxInverse:  uintptr(0),
 	FzName:     __ccgo_ts + 57774,
-	Fu: struct {
-		FpDestructor [0]uintptr
-		FpHash       uintptr
-	}{},
 }
 
 func init() {
 	p := unsafe.Pointer(&_statInitFuncdef)
 	*(*uintptr)(unsafe.Add(p, 24)) = __ccgo_fp(_statInit)
-	*(*uintptr)(unsafe.Add(p, 32)) = uintptr(0)
-	*(*uintptr)(unsafe.Add(p, 40)) = uintptr(0)
-	*(*uintptr)(unsafe.Add(p, 48)) = uintptr(0)
 }
 
 // C documentation
@@ -161067,25 +156895,12 @@ func _statPush(tls *libc.TLS, context uintptr, argc int32, argv uintptr) {
 var _statPushFuncdef = TFuncDef{
 	FnArg:      int8(libc.Int32FromInt32(2) + libc.Int32FromInt32(m_IsStat4)),
 	FfuncFlags: uint32(m_SQLITE_UTF8),
-	FpUserData: uintptr(0),
-	FpNext:     uintptr(0),
-	FxSFunc:    uintptr(0),
-	FxFinalize: uintptr(0),
-	FxValue:    uintptr(0),
-	FxInverse:  uintptr(0),
 	FzName:     __ccgo_ts + 57784,
-	Fu: struct {
-		FpDestructor [0]uintptr
-		FpHash       uintptr
-	}{},
 }
 
 func init() {
 	p := unsafe.Pointer(&_statPushFuncdef)
 	*(*uintptr)(unsafe.Add(p, 24)) = __ccgo_fp(_statPush)
-	*(*uintptr)(unsafe.Add(p, 32)) = uintptr(0)
-	*(*uintptr)(unsafe.Add(p, 40)) = uintptr(0)
-	*(*uintptr)(unsafe.Add(p, 48)) = uintptr(0)
 }
 
 // C documentation
@@ -161196,25 +157011,12 @@ func _statGet(tls *libc.TLS, context uintptr, argc int32, argv uintptr) {
 var _statGetFuncdef = TFuncDef{
 	FnArg:      int8(libc.Int32FromInt32(1) + libc.Int32FromInt32(m_IsStat4)),
 	FfuncFlags: uint32(m_SQLITE_UTF8),
-	FpUserData: uintptr(0),
-	FpNext:     uintptr(0),
-	FxSFunc:    uintptr(0),
-	FxFinalize: uintptr(0),
-	FxValue:    uintptr(0),
-	FxInverse:  uintptr(0),
 	FzName:     __ccgo_ts + 57811,
-	Fu: struct {
-		FpDestructor [0]uintptr
-		FpHash       uintptr
-	}{},
 }
 
 func init() {
 	p := unsafe.Pointer(&_statGetFuncdef)
 	*(*uintptr)(unsafe.Add(p, 24)) = __ccgo_fp(_statGet)
-	*(*uintptr)(unsafe.Add(p, 32)) = uintptr(0)
-	*(*uintptr)(unsafe.Add(p, 40)) = uintptr(0)
-	*(*uintptr)(unsafe.Add(p, 48)) = uintptr(0)
 }
 
 func _callStatGet(tls *libc.TLS, pParse uintptr, regStat int32, iParam int32, regOut int32) {
@@ -162739,25 +158541,12 @@ func x_sqlite3Detach(tls *libc.TLS, pParse uintptr, pDbname uintptr) {
 var _detach_func = TFuncDef{
 	FnArg:      int8(1),
 	FfuncFlags: uint32(m_SQLITE_UTF8),
-	FpUserData: uintptr(0),
-	FpNext:     uintptr(0),
-	FxSFunc:    uintptr(0),
-	FxFinalize: uintptr(0),
-	FxValue:    uintptr(0),
-	FxInverse:  uintptr(0),
 	FzName:     __ccgo_ts + 58317,
-	Fu: struct {
-		FpDestructor [0]uintptr
-		FpHash       uintptr
-	}{},
 }
 
 func init() {
 	p := unsafe.Pointer(&_detach_func)
 	*(*uintptr)(unsafe.Add(p, 24)) = __ccgo_fp(_detachFunc)
-	*(*uintptr)(unsafe.Add(p, 32)) = uintptr(0)
-	*(*uintptr)(unsafe.Add(p, 40)) = uintptr(0)
-	*(*uintptr)(unsafe.Add(p, 48)) = uintptr(0)
 }
 
 // C documentation
@@ -162774,25 +158563,12 @@ func x_sqlite3Attach(tls *libc.TLS, pParse uintptr, p uintptr, pDbname uintptr, 
 var _attach_func = TFuncDef{
 	FnArg:      int8(3),
 	FfuncFlags: uint32(m_SQLITE_UTF8),
-	FpUserData: uintptr(0),
-	FpNext:     uintptr(0),
-	FxSFunc:    uintptr(0),
-	FxFinalize: uintptr(0),
-	FxValue:    uintptr(0),
-	FxInverse:  uintptr(0),
 	FzName:     __ccgo_ts + 58331,
-	Fu: struct {
-		FpDestructor [0]uintptr
-		FpHash       uintptr
-	}{},
 }
 
 func init() {
 	p := unsafe.Pointer(&_attach_func)
 	*(*uintptr)(unsafe.Add(p, 24)) = __ccgo_fp(_attachFunc)
-	*(*uintptr)(unsafe.Add(p, 32)) = uintptr(0)
-	*(*uintptr)(unsafe.Add(p, 40)) = uintptr(0)
-	*(*uintptr)(unsafe.Add(p, 48)) = uintptr(0)
 }
 
 // C documentation
@@ -164810,11 +160586,6 @@ var _aCode = [4]Tu8{
 /* nullRow[] is an OP_Record encoding of a row containing 5 NULLs */
 var _nullRow = [6]int8{
 	0: int8(6),
-	1: 0,
-	2: 0,
-	3: 0,
-	4: 0,
-	5: 0,
 }
 
 /* Set properties of a table column based on the (magical)
@@ -171751,7 +167522,6 @@ var _globInfo = TcompareInfo{
 	FmatchAll: uint8('*'),
 	FmatchOne: uint8('?'),
 	FmatchSet: uint8('['),
-	FnoCase:   uint8(0),
 }
 
 // C documentation
@@ -171761,7 +167531,6 @@ var _globInfo = TcompareInfo{
 var _likeInfoNorm = TcompareInfo{
 	FmatchAll: uint8('%'),
 	FmatchOne: uint8('_'),
-	FmatchSet: uint8(0),
 	FnoCase:   uint8(1),
 }
 
@@ -171772,8 +167541,6 @@ var _likeInfoNorm = TcompareInfo{
 var _likeInfoAlt = TcompareInfo{
 	FmatchAll: uint8('%'),
 	FmatchOne: uint8('_'),
-	FmatchSet: uint8(0),
-	FnoCase:   uint8(0),
 }
 
 /*
@@ -172934,134 +168701,42 @@ func _soundexFunc(tls *libc.TLS, context uintptr, argc int32, argv uintptr) {
 }
 
 var _iCode = [128]uint8{
-	0:   uint8(0),
-	1:   uint8(0),
-	2:   uint8(0),
-	3:   uint8(0),
-	4:   uint8(0),
-	5:   uint8(0),
-	6:   uint8(0),
-	7:   uint8(0),
-	8:   uint8(0),
-	9:   uint8(0),
-	10:  uint8(0),
-	11:  uint8(0),
-	12:  uint8(0),
-	13:  uint8(0),
-	14:  uint8(0),
-	15:  uint8(0),
-	16:  uint8(0),
-	17:  uint8(0),
-	18:  uint8(0),
-	19:  uint8(0),
-	20:  uint8(0),
-	21:  uint8(0),
-	22:  uint8(0),
-	23:  uint8(0),
-	24:  uint8(0),
-	25:  uint8(0),
-	26:  uint8(0),
-	27:  uint8(0),
-	28:  uint8(0),
-	29:  uint8(0),
-	30:  uint8(0),
-	31:  uint8(0),
-	32:  uint8(0),
-	33:  uint8(0),
-	34:  uint8(0),
-	35:  uint8(0),
-	36:  uint8(0),
-	37:  uint8(0),
-	38:  uint8(0),
-	39:  uint8(0),
-	40:  uint8(0),
-	41:  uint8(0),
-	42:  uint8(0),
-	43:  uint8(0),
-	44:  uint8(0),
-	45:  uint8(0),
-	46:  uint8(0),
-	47:  uint8(0),
-	48:  uint8(0),
-	49:  uint8(0),
-	50:  uint8(0),
-	51:  uint8(0),
-	52:  uint8(0),
-	53:  uint8(0),
-	54:  uint8(0),
-	55:  uint8(0),
-	56:  uint8(0),
-	57:  uint8(0),
-	58:  uint8(0),
-	59:  uint8(0),
-	60:  uint8(0),
-	61:  uint8(0),
-	62:  uint8(0),
-	63:  uint8(0),
-	64:  uint8(0),
-	65:  uint8(0),
 	66:  uint8(1),
 	67:  uint8(2),
 	68:  uint8(3),
-	69:  uint8(0),
 	70:  uint8(1),
 	71:  uint8(2),
-	72:  uint8(0),
-	73:  uint8(0),
 	74:  uint8(2),
 	75:  uint8(2),
 	76:  uint8(4),
 	77:  uint8(5),
 	78:  uint8(5),
-	79:  uint8(0),
 	80:  uint8(1),
 	81:  uint8(2),
 	82:  uint8(6),
 	83:  uint8(2),
 	84:  uint8(3),
-	85:  uint8(0),
 	86:  uint8(1),
-	87:  uint8(0),
 	88:  uint8(2),
-	89:  uint8(0),
 	90:  uint8(2),
-	91:  uint8(0),
-	92:  uint8(0),
-	93:  uint8(0),
-	94:  uint8(0),
-	95:  uint8(0),
-	96:  uint8(0),
-	97:  uint8(0),
 	98:  uint8(1),
 	99:  uint8(2),
 	100: uint8(3),
-	101: uint8(0),
 	102: uint8(1),
 	103: uint8(2),
-	104: uint8(0),
-	105: uint8(0),
 	106: uint8(2),
 	107: uint8(2),
 	108: uint8(4),
 	109: uint8(5),
 	110: uint8(5),
-	111: uint8(0),
 	112: uint8(1),
 	113: uint8(2),
 	114: uint8(6),
 	115: uint8(2),
 	116: uint8(3),
-	117: uint8(0),
 	118: uint8(1),
-	119: uint8(0),
 	120: uint8(2),
-	121: uint8(0),
 	122: uint8(2),
-	123: uint8(0),
-	124: uint8(0),
-	125: uint8(0),
-	126: uint8(0),
-	127: uint8(0),
 }
 
 // C documentation
@@ -173797,1745 +169472,582 @@ var _aBuiltinFunc = [101]TFuncDef{
 		FnArg:      int8(2),
 		FfuncFlags: uint32(libc.Int32FromInt32(m_SQLITE_FUNC_BUILTIN) | libc.Int32FromInt32(m_SQLITE_UTF8) | libc.Int32FromInt32(m_SQLITE_FUNC_INTERNAL) | libc.Int32FromInt32(m_SQLITE_FUNC_TEST) | libc.Int32FromInt32(m_SQLITE_FUNC_INLINE) | libc.Int32FromInt32(m_SQLITE_FUNC_CONSTANT) | libc.Int32FromInt32(0)),
 		FpUserData: uintptr(int64(libc.Int32FromInt32(m_INLINEFUNC_implies_nonnull_row))),
-		FpNext:     uintptr(0),
-		FxSFunc:    uintptr(0),
-		FxFinalize: uintptr(0),
-		FxValue:    uintptr(0),
-		FxInverse:  uintptr(0),
 		FzName:     __ccgo_ts + 61306,
-		Fu: struct {
-			FpDestructor [0]uintptr
-			FpHash       uintptr
-		}{},
 	},
 	1: {
 		FnArg:      int8(2),
 		FfuncFlags: uint32(libc.Int32FromInt32(m_SQLITE_FUNC_BUILTIN) | libc.Int32FromInt32(m_SQLITE_UTF8) | libc.Int32FromInt32(m_SQLITE_FUNC_INTERNAL) | libc.Int32FromInt32(m_SQLITE_FUNC_TEST) | libc.Int32FromInt32(m_SQLITE_FUNC_INLINE) | libc.Int32FromInt32(m_SQLITE_FUNC_CONSTANT) | libc.Int32FromInt32(0)),
 		FpUserData: uintptr(int64(libc.Int32FromInt32(m_INLINEFUNC_expr_compare))),
-		FpNext:     uintptr(0),
-		FxSFunc:    uintptr(0),
-		FxFinalize: uintptr(0),
-		FxValue:    uintptr(0),
-		FxInverse:  uintptr(0),
 		FzName:     __ccgo_ts + 61326,
-		Fu: struct {
-			FpDestructor [0]uintptr
-			FpHash       uintptr
-		}{},
 	},
 	2: {
 		FnArg:      int8(2),
 		FfuncFlags: uint32(libc.Int32FromInt32(m_SQLITE_FUNC_BUILTIN) | libc.Int32FromInt32(m_SQLITE_UTF8) | libc.Int32FromInt32(m_SQLITE_FUNC_INTERNAL) | libc.Int32FromInt32(m_SQLITE_FUNC_TEST) | libc.Int32FromInt32(m_SQLITE_FUNC_INLINE) | libc.Int32FromInt32(m_SQLITE_FUNC_CONSTANT) | libc.Int32FromInt32(0)),
 		FpUserData: uintptr(int64(libc.Int32FromInt32(m_INLINEFUNC_expr_implies_expr))),
-		FpNext:     uintptr(0),
-		FxSFunc:    uintptr(0),
-		FxFinalize: uintptr(0),
-		FxValue:    uintptr(0),
-		FxInverse:  uintptr(0),
 		FzName:     __ccgo_ts + 61339,
-		Fu: struct {
-			FpDestructor [0]uintptr
-			FpHash       uintptr
-		}{},
 	},
 	3: {
 		FnArg:      int8(1),
 		FfuncFlags: uint32(libc.Int32FromInt32(m_SQLITE_FUNC_BUILTIN) | libc.Int32FromInt32(m_SQLITE_UTF8) | libc.Int32FromInt32(m_SQLITE_FUNC_INTERNAL) | libc.Int32FromInt32(m_SQLITE_FUNC_TEST) | libc.Int32FromInt32(m_SQLITE_FUNC_INLINE) | libc.Int32FromInt32(m_SQLITE_FUNC_CONSTANT) | libc.Int32FromInt32(0)),
 		FpUserData: uintptr(int64(libc.Int32FromInt32(m_INLINEFUNC_affinity))),
-		FpNext:     uintptr(0),
-		FxSFunc:    uintptr(0),
-		FxFinalize: uintptr(0),
-		FxValue:    uintptr(0),
-		FxInverse:  uintptr(0),
 		FzName:     __ccgo_ts + 61357,
-		Fu: struct {
-			FpDestructor [0]uintptr
-			FpHash       uintptr
-		}{},
 	},
 	4: {
 		FnArg:      int8(1),
 		FfuncFlags: uint32(libc.Int32FromInt32(m_SQLITE_FUNC_BUILTIN) | libc.Int32FromInt32(m_SQLITE_FUNC_CONSTANT) | libc.Int32FromInt32(m_SQLITE_UTF8) | libc.Int32FromInt32(0)*libc.Int32FromInt32(m_SQLITE_FUNC_NEEDCOLL)),
-		FpUserData: uintptr(int64(libc.Int32FromInt32(0))),
-		FpNext:     uintptr(0),
-		FxSFunc:    uintptr(0),
-		FxFinalize: uintptr(0),
-		FxValue:    uintptr(0),
-		FxInverse:  uintptr(0),
 		FzName:     __ccgo_ts + 61366,
-		Fu: struct {
-			FpDestructor [0]uintptr
-			FpHash       uintptr
-		}{},
 	},
 	5: {
 		FnArg:      int8(1),
 		FfuncFlags: uint32(libc.Int32FromInt32(m_SQLITE_FUNC_BUILTIN) | libc.Int32FromInt32(m_SQLITE_FUNC_SLOCHNG) | libc.Int32FromInt32(m_SQLITE_UTF8)),
-		FpUserData: uintptr(0),
-		FpNext:     uintptr(0),
-		FxSFunc:    uintptr(0),
-		FxFinalize: uintptr(0),
-		FxValue:    uintptr(0),
-		FxInverse:  uintptr(0),
 		FzName:     __ccgo_ts + 61374,
-		Fu: struct {
-			FpDestructor [0]uintptr
-			FpHash       uintptr
-		}{},
 	},
 	6: {
 		FnArg:      int8(1),
 		FfuncFlags: uint32(libc.Int32FromInt32(m_SQLITE_FUNC_BUILTIN) | libc.Int32FromInt32(m_SQLITE_FUNC_SLOCHNG) | libc.Int32FromInt32(m_SQLITE_UTF8)),
-		FpUserData: uintptr(0),
-		FpNext:     uintptr(0),
-		FxSFunc:    uintptr(0),
-		FxFinalize: uintptr(0),
-		FxValue:    uintptr(0),
-		FxInverse:  uintptr(0),
 		FzName:     __ccgo_ts + 61400,
-		Fu: struct {
-			FpDestructor [0]uintptr
-			FpHash       uintptr
-		}{},
 	},
 	7: {
 		FnArg:      int8(1),
 		FfuncFlags: uint32(libc.Int32FromInt32(m_SQLITE_FUNC_BUILTIN) | libc.Int32FromInt32(m_SQLITE_UTF8) | libc.Int32FromInt32(m_SQLITE_FUNC_INLINE) | libc.Int32FromInt32(m_SQLITE_FUNC_CONSTANT) | libc.Int32FromInt32(m_SQLITE_FUNC_UNLIKELY)),
 		FpUserData: uintptr(int64(libc.Int32FromInt32(m_INLINEFUNC_unlikely))),
-		FpNext:     uintptr(0),
-		FxSFunc:    uintptr(0),
-		FxFinalize: uintptr(0),
-		FxValue:    uintptr(0),
-		FxInverse:  uintptr(0),
 		FzName:     __ccgo_ts + 61425,
-		Fu: struct {
-			FpDestructor [0]uintptr
-			FpHash       uintptr
-		}{},
 	},
 	8: {
 		FnArg:      int8(2),
 		FfuncFlags: uint32(libc.Int32FromInt32(m_SQLITE_FUNC_BUILTIN) | libc.Int32FromInt32(m_SQLITE_UTF8) | libc.Int32FromInt32(m_SQLITE_FUNC_INLINE) | libc.Int32FromInt32(m_SQLITE_FUNC_CONSTANT) | libc.Int32FromInt32(m_SQLITE_FUNC_UNLIKELY)),
 		FpUserData: uintptr(int64(libc.Int32FromInt32(m_INLINEFUNC_unlikely))),
-		FpNext:     uintptr(0),
-		FxSFunc:    uintptr(0),
-		FxFinalize: uintptr(0),
-		FxValue:    uintptr(0),
-		FxInverse:  uintptr(0),
 		FzName:     __ccgo_ts + 61434,
-		Fu: struct {
-			FpDestructor [0]uintptr
-			FpHash       uintptr
-		}{},
 	},
 	9: {
 		FnArg:      int8(1),
 		FfuncFlags: uint32(libc.Int32FromInt32(m_SQLITE_FUNC_BUILTIN) | libc.Int32FromInt32(m_SQLITE_UTF8) | libc.Int32FromInt32(m_SQLITE_FUNC_INLINE) | libc.Int32FromInt32(m_SQLITE_FUNC_CONSTANT) | libc.Int32FromInt32(m_SQLITE_FUNC_UNLIKELY)),
 		FpUserData: uintptr(int64(libc.Int32FromInt32(m_INLINEFUNC_unlikely))),
-		FpNext:     uintptr(0),
-		FxSFunc:    uintptr(0),
-		FxFinalize: uintptr(0),
-		FxValue:    uintptr(0),
-		FxInverse:  uintptr(0),
 		FzName:     __ccgo_ts + 61445,
-		Fu: struct {
-			FpDestructor [0]uintptr
-			FpHash       uintptr
-		}{},
 	},
 	10: {
 		FnArg:      int8(1),
 		FfuncFlags: uint32(libc.Int32FromInt32(m_SQLITE_FUNC_BUILTIN) | libc.Int32FromInt32(m_SQLITE_UTF8) | libc.Int32FromInt32(m_SQLITE_FUNC_INLINE) | libc.Int32FromInt32(m_SQLITE_FUNC_CONSTANT) | libc.Int32FromInt32(0)),
 		FpUserData: uintptr(int64(libc.Int32FromInt32(m_INLINEFUNC_sqlite_offset))),
-		FpNext:     uintptr(0),
-		FxSFunc:    uintptr(0),
-		FxFinalize: uintptr(0),
-		FxValue:    uintptr(0),
-		FxInverse:  uintptr(0),
 		FzName:     __ccgo_ts + 61452,
-		Fu: struct {
-			FpDestructor [0]uintptr
-			FpHash       uintptr
-		}{},
 	},
 	11: {
 		FnArg:      int8(1),
 		FfuncFlags: uint32(libc.Int32FromInt32(m_SQLITE_FUNC_BUILTIN) | libc.Int32FromInt32(m_SQLITE_FUNC_CONSTANT) | libc.Int32FromInt32(m_SQLITE_UTF8) | libc.Int32FromInt32(0)*libc.Int32FromInt32(m_SQLITE_FUNC_NEEDCOLL)),
 		FpUserData: uintptr(int64(libc.Int32FromInt32(1))),
-		FpNext:     uintptr(0),
-		FxSFunc:    uintptr(0),
-		FxFinalize: uintptr(0),
-		FxValue:    uintptr(0),
-		FxInverse:  uintptr(0),
 		FzName:     __ccgo_ts + 61466,
-		Fu: struct {
-			FpDestructor [0]uintptr
-			FpHash       uintptr
-		}{},
 	},
 	12: {
 		FnArg:      int8(2),
 		FfuncFlags: uint32(libc.Int32FromInt32(m_SQLITE_FUNC_BUILTIN) | libc.Int32FromInt32(m_SQLITE_FUNC_CONSTANT) | libc.Int32FromInt32(m_SQLITE_UTF8) | libc.Int32FromInt32(0)*libc.Int32FromInt32(m_SQLITE_FUNC_NEEDCOLL)),
 		FpUserData: uintptr(int64(libc.Int32FromInt32(1))),
-		FpNext:     uintptr(0),
-		FxSFunc:    uintptr(0),
-		FxFinalize: uintptr(0),
-		FxValue:    uintptr(0),
-		FxInverse:  uintptr(0),
 		FzName:     __ccgo_ts + 61466,
-		Fu: struct {
-			FpDestructor [0]uintptr
-			FpHash       uintptr
-		}{},
 	},
 	13: {
 		FnArg:      int8(1),
 		FfuncFlags: uint32(libc.Int32FromInt32(m_SQLITE_FUNC_BUILTIN) | libc.Int32FromInt32(m_SQLITE_FUNC_CONSTANT) | libc.Int32FromInt32(m_SQLITE_UTF8) | libc.Int32FromInt32(0)*libc.Int32FromInt32(m_SQLITE_FUNC_NEEDCOLL)),
 		FpUserData: uintptr(int64(libc.Int32FromInt32(2))),
-		FpNext:     uintptr(0),
-		FxSFunc:    uintptr(0),
-		FxFinalize: uintptr(0),
-		FxValue:    uintptr(0),
-		FxInverse:  uintptr(0),
 		FzName:     __ccgo_ts + 61472,
-		Fu: struct {
-			FpDestructor [0]uintptr
-			FpHash       uintptr
-		}{},
 	},
 	14: {
 		FnArg:      int8(2),
 		FfuncFlags: uint32(libc.Int32FromInt32(m_SQLITE_FUNC_BUILTIN) | libc.Int32FromInt32(m_SQLITE_FUNC_CONSTANT) | libc.Int32FromInt32(m_SQLITE_UTF8) | libc.Int32FromInt32(0)*libc.Int32FromInt32(m_SQLITE_FUNC_NEEDCOLL)),
 		FpUserData: uintptr(int64(libc.Int32FromInt32(2))),
-		FpNext:     uintptr(0),
-		FxSFunc:    uintptr(0),
-		FxFinalize: uintptr(0),
-		FxValue:    uintptr(0),
-		FxInverse:  uintptr(0),
 		FzName:     __ccgo_ts + 61472,
-		Fu: struct {
-			FpDestructor [0]uintptr
-			FpHash       uintptr
-		}{},
 	},
 	15: {
 		FnArg:      int8(1),
 		FfuncFlags: uint32(libc.Int32FromInt32(m_SQLITE_FUNC_BUILTIN) | libc.Int32FromInt32(m_SQLITE_FUNC_CONSTANT) | libc.Int32FromInt32(m_SQLITE_UTF8) | libc.Int32FromInt32(0)*libc.Int32FromInt32(m_SQLITE_FUNC_NEEDCOLL)),
 		FpUserData: uintptr(int64(libc.Int32FromInt32(3))),
-		FpNext:     uintptr(0),
-		FxSFunc:    uintptr(0),
-		FxFinalize: uintptr(0),
-		FxValue:    uintptr(0),
-		FxInverse:  uintptr(0),
 		FzName:     __ccgo_ts + 61478,
-		Fu: struct {
-			FpDestructor [0]uintptr
-			FpHash       uintptr
-		}{},
 	},
 	16: {
 		FnArg:      int8(2),
 		FfuncFlags: uint32(libc.Int32FromInt32(m_SQLITE_FUNC_BUILTIN) | libc.Int32FromInt32(m_SQLITE_FUNC_CONSTANT) | libc.Int32FromInt32(m_SQLITE_UTF8) | libc.Int32FromInt32(0)*libc.Int32FromInt32(m_SQLITE_FUNC_NEEDCOLL)),
 		FpUserData: uintptr(int64(libc.Int32FromInt32(3))),
-		FpNext:     uintptr(0),
-		FxSFunc:    uintptr(0),
-		FxFinalize: uintptr(0),
-		FxValue:    uintptr(0),
-		FxInverse:  uintptr(0),
 		FzName:     __ccgo_ts + 61478,
-		Fu: struct {
-			FpDestructor [0]uintptr
-			FpHash       uintptr
-		}{},
 	},
 	17: {
 		FnArg:      int8(-int32(1)),
 		FfuncFlags: uint32(libc.Int32FromInt32(m_SQLITE_FUNC_BUILTIN) | libc.Int32FromInt32(m_SQLITE_FUNC_CONSTANT) | libc.Int32FromInt32(m_SQLITE_UTF8) | libc.Int32FromInt32(1)*libc.Int32FromInt32(m_SQLITE_FUNC_NEEDCOLL)),
-		FpUserData: uintptr(int64(libc.Int32FromInt32(0))),
-		FpNext:     uintptr(0),
-		FxSFunc:    uintptr(0),
-		FxFinalize: uintptr(0),
-		FxValue:    uintptr(0),
-		FxInverse:  uintptr(0),
 		FzName:     __ccgo_ts + 3545,
-		Fu: struct {
-			FpDestructor [0]uintptr
-			FpHash       uintptr
-		}{},
 	},
 	18: {
-		FnArg:      0,
 		FfuncFlags: uint32(libc.Int32FromInt32(m_SQLITE_FUNC_BUILTIN) | libc.Int32FromInt32(m_SQLITE_FUNC_CONSTANT) | libc.Int32FromInt32(m_SQLITE_UTF8) | libc.Int32FromInt32(1)*libc.Int32FromInt32(m_SQLITE_FUNC_NEEDCOLL)),
-		FpUserData: uintptr(int64(libc.Int32FromInt32(0))),
-		FpNext:     uintptr(0),
-		FxSFunc:    uintptr(0),
-		FxFinalize: uintptr(0),
-		FxValue:    uintptr(0),
-		FxInverse:  uintptr(0),
 		FzName:     __ccgo_ts + 3545,
-		Fu: struct {
-			FpDestructor [0]uintptr
-			FpHash       uintptr
-		}{},
 	},
 	19: {
 		FnArg:      int8(1),
 		FfuncFlags: uint32(libc.Int32FromInt32(m_SQLITE_FUNC_BUILTIN) | libc.Int32FromInt32(m_SQLITE_UTF8) | libc.Int32FromInt32(1)*libc.Int32FromInt32(m_SQLITE_FUNC_NEEDCOLL) | libc.Int32FromInt32(m_SQLITE_FUNC_MINMAX) | libc.Int32FromInt32(m_SQLITE_FUNC_ANYORDER)),
-		FpUserData: uintptr(int64(libc.Int32FromInt32(0))),
-		FpNext:     uintptr(0),
-		FxSFunc:    uintptr(0),
-		FxFinalize: uintptr(0),
-		FxValue:    uintptr(0),
-		FxInverse:  uintptr(0),
 		FzName:     __ccgo_ts + 3545,
-		Fu: struct {
-			FpDestructor [0]uintptr
-			FpHash       uintptr
-		}{},
 	},
 	20: {
 		FnArg:      int8(-int32(1)),
 		FfuncFlags: uint32(libc.Int32FromInt32(m_SQLITE_FUNC_BUILTIN) | libc.Int32FromInt32(m_SQLITE_FUNC_CONSTANT) | libc.Int32FromInt32(m_SQLITE_UTF8) | libc.Int32FromInt32(1)*libc.Int32FromInt32(m_SQLITE_FUNC_NEEDCOLL)),
 		FpUserData: uintptr(int64(libc.Int32FromInt32(1))),
-		FpNext:     uintptr(0),
-		FxSFunc:    uintptr(0),
-		FxFinalize: uintptr(0),
-		FxValue:    uintptr(0),
-		FxInverse:  uintptr(0),
 		FzName:     __ccgo_ts + 3541,
-		Fu: struct {
-			FpDestructor [0]uintptr
-			FpHash       uintptr
-		}{},
 	},
 	21: {
-		FnArg:      0,
 		FfuncFlags: uint32(libc.Int32FromInt32(m_SQLITE_FUNC_BUILTIN) | libc.Int32FromInt32(m_SQLITE_FUNC_CONSTANT) | libc.Int32FromInt32(m_SQLITE_UTF8) | libc.Int32FromInt32(1)*libc.Int32FromInt32(m_SQLITE_FUNC_NEEDCOLL)),
 		FpUserData: uintptr(int64(libc.Int32FromInt32(1))),
-		FpNext:     uintptr(0),
-		FxSFunc:    uintptr(0),
-		FxFinalize: uintptr(0),
-		FxValue:    uintptr(0),
-		FxInverse:  uintptr(0),
 		FzName:     __ccgo_ts + 3541,
-		Fu: struct {
-			FpDestructor [0]uintptr
-			FpHash       uintptr
-		}{},
 	},
 	22: {
 		FnArg:      int8(1),
 		FfuncFlags: uint32(libc.Int32FromInt32(m_SQLITE_FUNC_BUILTIN) | libc.Int32FromInt32(m_SQLITE_UTF8) | libc.Int32FromInt32(1)*libc.Int32FromInt32(m_SQLITE_FUNC_NEEDCOLL) | libc.Int32FromInt32(m_SQLITE_FUNC_MINMAX) | libc.Int32FromInt32(m_SQLITE_FUNC_ANYORDER)),
 		FpUserData: uintptr(int64(libc.Int32FromInt32(1))),
-		FpNext:     uintptr(0),
-		FxSFunc:    uintptr(0),
-		FxFinalize: uintptr(0),
-		FxValue:    uintptr(0),
-		FxInverse:  uintptr(0),
 		FzName:     __ccgo_ts + 3541,
-		Fu: struct {
-			FpDestructor [0]uintptr
-			FpHash       uintptr
-		}{},
 	},
 	23: {
 		FnArg:      int8(1),
 		FfuncFlags: uint32(libc.Int32FromInt32(m_SQLITE_FUNC_BUILTIN) | libc.Int32FromInt32(m_SQLITE_FUNC_CONSTANT) | libc.Int32FromInt32(m_SQLITE_UTF8) | libc.Int32FromInt32(0)*libc.Int32FromInt32(m_SQLITE_FUNC_NEEDCOLL) | libc.Int32FromInt32(m_SQLITE_FUNC_TYPEOF)),
-		FpUserData: uintptr(int64(libc.Int32FromInt32(0))),
-		FpNext:     uintptr(0),
-		FxSFunc:    uintptr(0),
-		FxFinalize: uintptr(0),
-		FxValue:    uintptr(0),
-		FxInverse:  uintptr(0),
 		FzName:     __ccgo_ts + 61483,
-		Fu: struct {
-			FpDestructor [0]uintptr
-			FpHash       uintptr
-		}{},
 	},
 	24: {
 		FnArg:      int8(1),
 		FfuncFlags: uint32(libc.Int32FromInt32(m_SQLITE_FUNC_BUILTIN) | libc.Int32FromInt32(m_SQLITE_FUNC_CONSTANT) | libc.Int32FromInt32(m_SQLITE_UTF8) | libc.Int32FromInt32(0)*libc.Int32FromInt32(m_SQLITE_FUNC_NEEDCOLL) | libc.Int32FromInt32(m_SQLITE_FUNC_TYPEOF)),
-		FpUserData: uintptr(int64(libc.Int32FromInt32(0))),
-		FpNext:     uintptr(0),
-		FxSFunc:    uintptr(0),
-		FxFinalize: uintptr(0),
-		FxValue:    uintptr(0),
-		FxInverse:  uintptr(0),
 		FzName:     __ccgo_ts + 61490,
-		Fu: struct {
-			FpDestructor [0]uintptr
-			FpHash       uintptr
-		}{},
 	},
 	25: {
 		FnArg:      int8(1),
 		FfuncFlags: uint32(libc.Int32FromInt32(m_SQLITE_FUNC_BUILTIN) | libc.Int32FromInt32(m_SQLITE_FUNC_CONSTANT) | libc.Int32FromInt32(m_SQLITE_UTF8) | libc.Int32FromInt32(0)*libc.Int32FromInt32(m_SQLITE_FUNC_NEEDCOLL) | libc.Int32FromInt32(m_SQLITE_FUNC_LENGTH)),
-		FpUserData: uintptr(int64(libc.Int32FromInt32(0))),
-		FpNext:     uintptr(0),
-		FxSFunc:    uintptr(0),
-		FxFinalize: uintptr(0),
-		FxValue:    uintptr(0),
-		FxInverse:  uintptr(0),
 		FzName:     __ccgo_ts + 61498,
-		Fu: struct {
-			FpDestructor [0]uintptr
-			FpHash       uintptr
-		}{},
 	},
 	26: {
 		FnArg:      int8(2),
 		FfuncFlags: uint32(libc.Int32FromInt32(m_SQLITE_FUNC_BUILTIN) | libc.Int32FromInt32(m_SQLITE_FUNC_CONSTANT) | libc.Int32FromInt32(m_SQLITE_UTF8) | libc.Int32FromInt32(0)*libc.Int32FromInt32(m_SQLITE_FUNC_NEEDCOLL)),
-		FpUserData: uintptr(int64(libc.Int32FromInt32(0))),
-		FpNext:     uintptr(0),
-		FxSFunc:    uintptr(0),
-		FxFinalize: uintptr(0),
-		FxValue:    uintptr(0),
-		FxInverse:  uintptr(0),
 		FzName:     __ccgo_ts + 61505,
-		Fu: struct {
-			FpDestructor [0]uintptr
-			FpHash       uintptr
-		}{},
 	},
 	27: {
 		FnArg:      int8(-int32(1)),
 		FfuncFlags: uint32(libc.Int32FromInt32(m_SQLITE_FUNC_BUILTIN) | libc.Int32FromInt32(m_SQLITE_FUNC_CONSTANT) | libc.Int32FromInt32(m_SQLITE_UTF8) | libc.Int32FromInt32(0)*libc.Int32FromInt32(m_SQLITE_FUNC_NEEDCOLL)),
-		FpUserData: uintptr(int64(libc.Int32FromInt32(0))),
-		FpNext:     uintptr(0),
-		FxSFunc:    uintptr(0),
-		FxFinalize: uintptr(0),
-		FxValue:    uintptr(0),
-		FxInverse:  uintptr(0),
 		FzName:     __ccgo_ts + 5760,
-		Fu: struct {
-			FpDestructor [0]uintptr
-			FpHash       uintptr
-		}{},
 	},
 	28: {
 		FnArg:      int8(-int32(1)),
 		FfuncFlags: uint32(libc.Int32FromInt32(m_SQLITE_FUNC_BUILTIN) | libc.Int32FromInt32(m_SQLITE_FUNC_CONSTANT) | libc.Int32FromInt32(m_SQLITE_UTF8) | libc.Int32FromInt32(0)*libc.Int32FromInt32(m_SQLITE_FUNC_NEEDCOLL)),
-		FpUserData: uintptr(int64(libc.Int32FromInt32(0))),
-		FpNext:     uintptr(0),
-		FxSFunc:    uintptr(0),
-		FxFinalize: uintptr(0),
-		FxValue:    uintptr(0),
-		FxInverse:  uintptr(0),
 		FzName:     __ccgo_ts + 61511,
-		Fu: struct {
-			FpDestructor [0]uintptr
-			FpHash       uintptr
-		}{},
 	},
 	29: {
 		FnArg:      int8(1),
 		FfuncFlags: uint32(libc.Int32FromInt32(m_SQLITE_FUNC_BUILTIN) | libc.Int32FromInt32(m_SQLITE_FUNC_CONSTANT) | libc.Int32FromInt32(m_SQLITE_UTF8) | libc.Int32FromInt32(0)*libc.Int32FromInt32(m_SQLITE_FUNC_NEEDCOLL)),
-		FpUserData: uintptr(int64(libc.Int32FromInt32(0))),
-		FpNext:     uintptr(0),
-		FxSFunc:    uintptr(0),
-		FxFinalize: uintptr(0),
-		FxValue:    uintptr(0),
-		FxInverse:  uintptr(0),
 		FzName:     __ccgo_ts + 61518,
-		Fu: struct {
-			FpDestructor [0]uintptr
-			FpHash       uintptr
-		}{},
 	},
 	30: {
 		FnArg:      int8(-int32(1)),
 		FfuncFlags: uint32(libc.Int32FromInt32(m_SQLITE_FUNC_BUILTIN) | libc.Int32FromInt32(m_SQLITE_FUNC_CONSTANT) | libc.Int32FromInt32(m_SQLITE_UTF8) | libc.Int32FromInt32(0)*libc.Int32FromInt32(m_SQLITE_FUNC_NEEDCOLL)),
-		FpUserData: uintptr(int64(libc.Int32FromInt32(0))),
-		FpNext:     uintptr(0),
-		FxSFunc:    uintptr(0),
-		FxFinalize: uintptr(0),
-		FxValue:    uintptr(0),
-		FxInverse:  uintptr(0),
 		FzName:     __ccgo_ts + 61526,
-		Fu: struct {
-			FpDestructor [0]uintptr
-			FpHash       uintptr
-		}{},
 	},
 	31: {
 		FnArg:      int8(1),
 		FfuncFlags: uint32(libc.Int32FromInt32(m_SQLITE_FUNC_BUILTIN) | libc.Int32FromInt32(m_SQLITE_FUNC_CONSTANT) | libc.Int32FromInt32(m_SQLITE_UTF8) | libc.Int32FromInt32(0)*libc.Int32FromInt32(m_SQLITE_FUNC_NEEDCOLL)),
-		FpUserData: uintptr(int64(libc.Int32FromInt32(0))),
-		FpNext:     uintptr(0),
-		FxSFunc:    uintptr(0),
-		FxFinalize: uintptr(0),
-		FxValue:    uintptr(0),
-		FxInverse:  uintptr(0),
 		FzName:     __ccgo_ts + 61531,
-		Fu: struct {
-			FpDestructor [0]uintptr
-			FpHash       uintptr
-		}{},
 	},
 	32: {
 		FnArg:      int8(1),
 		FfuncFlags: uint32(libc.Int32FromInt32(m_SQLITE_FUNC_BUILTIN) | libc.Int32FromInt32(m_SQLITE_FUNC_CONSTANT) | libc.Int32FromInt32(m_SQLITE_UTF8) | libc.Int32FromInt32(0)*libc.Int32FromInt32(m_SQLITE_FUNC_NEEDCOLL)),
-		FpUserData: uintptr(int64(libc.Int32FromInt32(0))),
-		FpNext:     uintptr(0),
-		FxSFunc:    uintptr(0),
-		FxFinalize: uintptr(0),
-		FxValue:    uintptr(0),
-		FxInverse:  uintptr(0),
 		FzName:     __ccgo_ts + 61535,
-		Fu: struct {
-			FpDestructor [0]uintptr
-			FpHash       uintptr
-		}{},
 	},
 	33: {
 		FnArg:      int8(2),
 		FfuncFlags: uint32(libc.Int32FromInt32(m_SQLITE_FUNC_BUILTIN) | libc.Int32FromInt32(m_SQLITE_FUNC_CONSTANT) | libc.Int32FromInt32(m_SQLITE_UTF8) | libc.Int32FromInt32(0)*libc.Int32FromInt32(m_SQLITE_FUNC_NEEDCOLL)),
-		FpUserData: uintptr(int64(libc.Int32FromInt32(0))),
-		FpNext:     uintptr(0),
-		FxSFunc:    uintptr(0),
-		FxFinalize: uintptr(0),
-		FxValue:    uintptr(0),
-		FxInverse:  uintptr(0),
 		FzName:     __ccgo_ts + 61535,
-		Fu: struct {
-			FpDestructor [0]uintptr
-			FpHash       uintptr
-		}{},
 	},
 	34: {
 		FnArg:      int8(1),
 		FfuncFlags: uint32(libc.Int32FromInt32(m_SQLITE_FUNC_BUILTIN) | libc.Int32FromInt32(m_SQLITE_FUNC_CONSTANT) | libc.Int32FromInt32(m_SQLITE_UTF8) | libc.Int32FromInt32(0)*libc.Int32FromInt32(m_SQLITE_FUNC_NEEDCOLL)),
-		FpUserData: uintptr(int64(libc.Int32FromInt32(0))),
-		FpNext:     uintptr(0),
-		FxSFunc:    uintptr(0),
-		FxFinalize: uintptr(0),
-		FxValue:    uintptr(0),
-		FxInverse:  uintptr(0),
 		FzName:     __ccgo_ts + 61541,
-		Fu: struct {
-			FpDestructor [0]uintptr
-			FpHash       uintptr
-		}{},
 	},
 	35: {
 		FnArg:      int8(1),
 		FfuncFlags: uint32(libc.Int32FromInt32(m_SQLITE_FUNC_BUILTIN) | libc.Int32FromInt32(m_SQLITE_FUNC_CONSTANT) | libc.Int32FromInt32(m_SQLITE_UTF8) | libc.Int32FromInt32(0)*libc.Int32FromInt32(m_SQLITE_FUNC_NEEDCOLL)),
-		FpUserData: uintptr(int64(libc.Int32FromInt32(0))),
-		FpNext:     uintptr(0),
-		FxSFunc:    uintptr(0),
-		FxFinalize: uintptr(0),
-		FxValue:    uintptr(0),
-		FxInverse:  uintptr(0),
 		FzName:     __ccgo_ts + 61547,
-		Fu: struct {
-			FpDestructor [0]uintptr
-			FpHash       uintptr
-		}{},
 	},
 	36: {
 		FnArg:      int8(1),
 		FfuncFlags: uint32(libc.Int32FromInt32(m_SQLITE_FUNC_BUILTIN) | libc.Int32FromInt32(m_SQLITE_FUNC_CONSTANT) | libc.Int32FromInt32(m_SQLITE_UTF8) | libc.Int32FromInt32(0)*libc.Int32FromInt32(m_SQLITE_FUNC_NEEDCOLL)),
-		FpUserData: uintptr(int64(libc.Int32FromInt32(0))),
-		FpNext:     uintptr(0),
-		FxSFunc:    uintptr(0),
-		FxFinalize: uintptr(0),
-		FxValue:    uintptr(0),
-		FxInverse:  uintptr(0),
 		FzName:     __ccgo_ts + 61553,
-		Fu: struct {
-			FpDestructor [0]uintptr
-			FpHash       uintptr
-		}{},
 	},
 	37: {
 		FnArg:      int8(1),
 		FfuncFlags: uint32(libc.Int32FromInt32(m_SQLITE_FUNC_BUILTIN) | libc.Int32FromInt32(m_SQLITE_FUNC_CONSTANT) | libc.Int32FromInt32(m_SQLITE_UTF8) | libc.Int32FromInt32(0)*libc.Int32FromInt32(m_SQLITE_FUNC_NEEDCOLL)),
-		FpUserData: uintptr(int64(libc.Int32FromInt32(0))),
-		FpNext:     uintptr(0),
-		FxSFunc:    uintptr(0),
-		FxFinalize: uintptr(0),
-		FxValue:    uintptr(0),
-		FxInverse:  uintptr(0),
 		FzName:     __ccgo_ts + 61557,
-		Fu: struct {
-			FpDestructor [0]uintptr
-			FpHash       uintptr
-		}{},
 	},
 	38: {
 		FnArg:      int8(2),
 		FfuncFlags: uint32(libc.Int32FromInt32(m_SQLITE_FUNC_BUILTIN) | libc.Int32FromInt32(m_SQLITE_FUNC_CONSTANT) | libc.Int32FromInt32(m_SQLITE_UTF8) | libc.Int32FromInt32(0)*libc.Int32FromInt32(m_SQLITE_FUNC_NEEDCOLL)),
-		FpUserData: uintptr(int64(libc.Int32FromInt32(0))),
-		FpNext:     uintptr(0),
-		FxSFunc:    uintptr(0),
-		FxFinalize: uintptr(0),
-		FxValue:    uintptr(0),
-		FxInverse:  uintptr(0),
 		FzName:     __ccgo_ts + 61557,
-		Fu: struct {
-			FpDestructor [0]uintptr
-			FpHash       uintptr
-		}{},
 	},
 	39: {
 		FnArg:      int8(2),
 		FfuncFlags: uint32(libc.Int32FromInt32(m_SQLITE_FUNC_BUILTIN) | libc.Int32FromInt32(m_SQLITE_UTF8) | libc.Int32FromInt32(m_SQLITE_FUNC_INLINE) | libc.Int32FromInt32(m_SQLITE_FUNC_CONSTANT) | libc.Int32FromInt32(0)),
-		FpUserData: uintptr(int64(libc.Int32FromInt32(m_INLINEFUNC_coalesce))),
-		FpNext:     uintptr(0),
-		FxSFunc:    uintptr(0),
-		FxFinalize: uintptr(0),
-		FxValue:    uintptr(0),
-		FxInverse:  uintptr(0),
 		FzName:     __ccgo_ts + 61563,
-		Fu: struct {
-			FpDestructor [0]uintptr
-			FpHash       uintptr
-		}{},
 	},
 	40: {
-		FnArg:      0,
 		FfuncFlags: uint32(libc.Int32FromInt32(m_SQLITE_FUNC_BUILTIN) | libc.Int32FromInt32(m_SQLITE_UTF8) | libc.Int32FromInt32(0)*libc.Int32FromInt32(m_SQLITE_FUNC_NEEDCOLL)),
-		FpUserData: uintptr(int64(libc.Int32FromInt32(0))),
-		FpNext:     uintptr(0),
-		FxSFunc:    uintptr(0),
-		FxFinalize: uintptr(0),
-		FxValue:    uintptr(0),
-		FxInverse:  uintptr(0),
 		FzName:     __ccgo_ts + 61570,
-		Fu: struct {
-			FpDestructor [0]uintptr
-			FpHash       uintptr
-		}{},
 	},
 	41: {
 		FnArg:      int8(1),
 		FfuncFlags: uint32(libc.Int32FromInt32(m_SQLITE_FUNC_BUILTIN) | libc.Int32FromInt32(m_SQLITE_UTF8) | libc.Int32FromInt32(0)*libc.Int32FromInt32(m_SQLITE_FUNC_NEEDCOLL)),
-		FpUserData: uintptr(int64(libc.Int32FromInt32(0))),
-		FpNext:     uintptr(0),
-		FxSFunc:    uintptr(0),
-		FxFinalize: uintptr(0),
-		FxValue:    uintptr(0),
-		FxInverse:  uintptr(0),
 		FzName:     __ccgo_ts + 61577,
-		Fu: struct {
-			FpDestructor [0]uintptr
-			FpHash       uintptr
-		}{},
 	},
 	42: {
 		FnArg:      int8(2),
 		FfuncFlags: uint32(libc.Int32FromInt32(m_SQLITE_FUNC_BUILTIN) | libc.Int32FromInt32(m_SQLITE_FUNC_CONSTANT) | libc.Int32FromInt32(m_SQLITE_UTF8) | libc.Int32FromInt32(1)*libc.Int32FromInt32(m_SQLITE_FUNC_NEEDCOLL)),
-		FpUserData: uintptr(int64(libc.Int32FromInt32(0))),
-		FpNext:     uintptr(0),
-		FxSFunc:    uintptr(0),
-		FxFinalize: uintptr(0),
-		FxValue:    uintptr(0),
-		FxInverse:  uintptr(0),
 		FzName:     __ccgo_ts + 61588,
-		Fu: struct {
-			FpDestructor [0]uintptr
-			FpHash       uintptr
-		}{},
 	},
 	43: {
-		FnArg:      0,
 		FfuncFlags: uint32(libc.Int32FromInt32(m_SQLITE_FUNC_BUILTIN) | libc.Int32FromInt32(m_SQLITE_FUNC_SLOCHNG) | libc.Int32FromInt32(m_SQLITE_UTF8)),
-		FpUserData: uintptr(0),
-		FpNext:     uintptr(0),
-		FxSFunc:    uintptr(0),
-		FxFinalize: uintptr(0),
-		FxValue:    uintptr(0),
-		FxInverse:  uintptr(0),
 		FzName:     __ccgo_ts + 61595,
-		Fu: struct {
-			FpDestructor [0]uintptr
-			FpHash       uintptr
-		}{},
 	},
 	44: {
-		FnArg:      0,
 		FfuncFlags: uint32(libc.Int32FromInt32(m_SQLITE_FUNC_BUILTIN) | libc.Int32FromInt32(m_SQLITE_FUNC_SLOCHNG) | libc.Int32FromInt32(m_SQLITE_UTF8)),
-		FpUserData: uintptr(0),
-		FpNext:     uintptr(0),
-		FxSFunc:    uintptr(0),
-		FxFinalize: uintptr(0),
-		FxValue:    uintptr(0),
-		FxInverse:  uintptr(0),
 		FzName:     __ccgo_ts + 61610,
-		Fu: struct {
-			FpDestructor [0]uintptr
-			FpHash       uintptr
-		}{},
 	},
 	45: {
 		FnArg:      int8(2),
 		FfuncFlags: uint32(libc.Int32FromInt32(m_SQLITE_FUNC_BUILTIN) | libc.Int32FromInt32(m_SQLITE_FUNC_CONSTANT) | libc.Int32FromInt32(m_SQLITE_UTF8) | libc.Int32FromInt32(0)*libc.Int32FromInt32(m_SQLITE_FUNC_NEEDCOLL)),
-		FpUserData: uintptr(int64(libc.Int32FromInt32(0))),
-		FpNext:     uintptr(0),
-		FxSFunc:    uintptr(0),
-		FxFinalize: uintptr(0),
-		FxValue:    uintptr(0),
-		FxInverse:  uintptr(0),
 		FzName:     __ccgo_ts + 61627,
-		Fu: struct {
-			FpDestructor [0]uintptr
-			FpHash       uintptr
-		}{},
 	},
 	46: {
 		FnArg:      int8(1),
 		FfuncFlags: uint32(libc.Int32FromInt32(m_SQLITE_FUNC_BUILTIN) | libc.Int32FromInt32(m_SQLITE_FUNC_CONSTANT) | libc.Int32FromInt32(m_SQLITE_UTF8) | libc.Int32FromInt32(0)*libc.Int32FromInt32(m_SQLITE_FUNC_NEEDCOLL)),
-		FpUserData: uintptr(int64(libc.Int32FromInt32(0))),
-		FpNext:     uintptr(0),
-		FxSFunc:    uintptr(0),
-		FxFinalize: uintptr(0),
-		FxValue:    uintptr(0),
-		FxInverse:  uintptr(0),
 		FzName:     __ccgo_ts + 61638,
-		Fu: struct {
-			FpDestructor [0]uintptr
-			FpHash       uintptr
-		}{},
 	},
 	47: {
-		FnArg:      0,
 		FfuncFlags: uint32(libc.Int32FromInt32(m_SQLITE_FUNC_BUILTIN) | libc.Int32FromInt32(m_SQLITE_UTF8) | libc.Int32FromInt32(0)*libc.Int32FromInt32(m_SQLITE_FUNC_NEEDCOLL)),
-		FpUserData: uintptr(int64(libc.Int32FromInt32(0))),
-		FpNext:     uintptr(0),
-		FxSFunc:    uintptr(0),
-		FxFinalize: uintptr(0),
-		FxValue:    uintptr(0),
-		FxInverse:  uintptr(0),
 		FzName:     __ccgo_ts + 41137,
-		Fu: struct {
-			FpDestructor [0]uintptr
-			FpHash       uintptr
-		}{},
 	},
 	48: {
-		FnArg:      0,
 		FfuncFlags: uint32(libc.Int32FromInt32(m_SQLITE_FUNC_BUILTIN) | libc.Int32FromInt32(m_SQLITE_UTF8) | libc.Int32FromInt32(0)*libc.Int32FromInt32(m_SQLITE_FUNC_NEEDCOLL)),
-		FpUserData: uintptr(int64(libc.Int32FromInt32(0))),
-		FpNext:     uintptr(0),
-		FxSFunc:    uintptr(0),
-		FxFinalize: uintptr(0),
-		FxValue:    uintptr(0),
-		FxInverse:  uintptr(0),
 		FzName:     __ccgo_ts + 41041,
-		Fu: struct {
-			FpDestructor [0]uintptr
-			FpHash       uintptr
-		}{},
 	},
 	49: {
-		FnArg:      0,
 		FfuncFlags: uint32(libc.Int32FromInt32(m_SQLITE_FUNC_BUILTIN) | libc.Int32FromInt32(m_SQLITE_UTF8) | libc.Int32FromInt32(0)*libc.Int32FromInt32(m_SQLITE_FUNC_NEEDCOLL)),
-		FpUserData: uintptr(int64(libc.Int32FromInt32(0))),
-		FpNext:     uintptr(0),
-		FxSFunc:    uintptr(0),
-		FxFinalize: uintptr(0),
-		FxValue:    uintptr(0),
-		FxInverse:  uintptr(0),
 		FzName:     __ccgo_ts + 41236,
-		Fu: struct {
-			FpDestructor [0]uintptr
-			FpHash       uintptr
-		}{},
 	},
 	50: {
 		FnArg:      int8(3),
 		FfuncFlags: uint32(libc.Int32FromInt32(m_SQLITE_FUNC_BUILTIN) | libc.Int32FromInt32(m_SQLITE_FUNC_CONSTANT) | libc.Int32FromInt32(m_SQLITE_UTF8) | libc.Int32FromInt32(0)*libc.Int32FromInt32(m_SQLITE_FUNC_NEEDCOLL)),
-		FpUserData: uintptr(int64(libc.Int32FromInt32(0))),
-		FpNext:     uintptr(0),
-		FxSFunc:    uintptr(0),
-		FxFinalize: uintptr(0),
-		FxValue:    uintptr(0),
-		FxInverse:  uintptr(0),
 		FzName:     __ccgo_ts + 41884,
-		Fu: struct {
-			FpDestructor [0]uintptr
-			FpHash       uintptr
-		}{},
 	},
 	51: {
 		FnArg:      int8(1),
 		FfuncFlags: uint32(libc.Int32FromInt32(m_SQLITE_FUNC_BUILTIN) | libc.Int32FromInt32(m_SQLITE_FUNC_CONSTANT) | libc.Int32FromInt32(m_SQLITE_UTF8) | libc.Int32FromInt32(0)*libc.Int32FromInt32(m_SQLITE_FUNC_NEEDCOLL)),
-		FpUserData: uintptr(int64(libc.Int32FromInt32(0))),
-		FpNext:     uintptr(0),
-		FxSFunc:    uintptr(0),
-		FxFinalize: uintptr(0),
-		FxValue:    uintptr(0),
-		FxInverse:  uintptr(0),
 		FzName:     __ccgo_ts + 61644,
-		Fu: struct {
-			FpDestructor [0]uintptr
-			FpHash       uintptr
-		}{},
 	},
 	52: {
 		FnArg:      int8(2),
 		FfuncFlags: uint32(libc.Int32FromInt32(m_SQLITE_FUNC_BUILTIN) | libc.Int32FromInt32(m_SQLITE_FUNC_CONSTANT) | libc.Int32FromInt32(m_SQLITE_UTF8) | libc.Int32FromInt32(0)*libc.Int32FromInt32(m_SQLITE_FUNC_NEEDCOLL)),
-		FpUserData: uintptr(int64(libc.Int32FromInt32(0))),
-		FpNext:     uintptr(0),
-		FxSFunc:    uintptr(0),
-		FxFinalize: uintptr(0),
-		FxValue:    uintptr(0),
-		FxInverse:  uintptr(0),
 		FzName:     __ccgo_ts + 61653,
-		Fu: struct {
-			FpDestructor [0]uintptr
-			FpHash       uintptr
-		}{},
 	},
 	53: {
 		FnArg:      int8(3),
 		FfuncFlags: uint32(libc.Int32FromInt32(m_SQLITE_FUNC_BUILTIN) | libc.Int32FromInt32(m_SQLITE_FUNC_CONSTANT) | libc.Int32FromInt32(m_SQLITE_UTF8) | libc.Int32FromInt32(0)*libc.Int32FromInt32(m_SQLITE_FUNC_NEEDCOLL)),
-		FpUserData: uintptr(int64(libc.Int32FromInt32(0))),
-		FpNext:     uintptr(0),
-		FxSFunc:    uintptr(0),
-		FxFinalize: uintptr(0),
-		FxValue:    uintptr(0),
-		FxInverse:  uintptr(0),
 		FzName:     __ccgo_ts + 61653,
-		Fu: struct {
-			FpDestructor [0]uintptr
-			FpHash       uintptr
-		}{},
 	},
 	54: {
 		FnArg:      int8(2),
 		FfuncFlags: uint32(libc.Int32FromInt32(m_SQLITE_FUNC_BUILTIN) | libc.Int32FromInt32(m_SQLITE_FUNC_CONSTANT) | libc.Int32FromInt32(m_SQLITE_UTF8) | libc.Int32FromInt32(0)*libc.Int32FromInt32(m_SQLITE_FUNC_NEEDCOLL)),
-		FpUserData: uintptr(int64(libc.Int32FromInt32(0))),
-		FpNext:     uintptr(0),
-		FxSFunc:    uintptr(0),
-		FxFinalize: uintptr(0),
-		FxValue:    uintptr(0),
-		FxInverse:  uintptr(0),
 		FzName:     __ccgo_ts + 61660,
-		Fu: struct {
-			FpDestructor [0]uintptr
-			FpHash       uintptr
-		}{},
 	},
 	55: {
 		FnArg:      int8(3),
 		FfuncFlags: uint32(libc.Int32FromInt32(m_SQLITE_FUNC_BUILTIN) | libc.Int32FromInt32(m_SQLITE_FUNC_CONSTANT) | libc.Int32FromInt32(m_SQLITE_UTF8) | libc.Int32FromInt32(0)*libc.Int32FromInt32(m_SQLITE_FUNC_NEEDCOLL)),
-		FpUserData: uintptr(int64(libc.Int32FromInt32(0))),
-		FpNext:     uintptr(0),
-		FxSFunc:    uintptr(0),
-		FxFinalize: uintptr(0),
-		FxValue:    uintptr(0),
-		FxInverse:  uintptr(0),
 		FzName:     __ccgo_ts + 61660,
-		Fu: struct {
-			FpDestructor [0]uintptr
-			FpHash       uintptr
-		}{},
 	},
 	56: {
 		FnArg:      int8(1),
 		FfuncFlags: uint32(libc.Int32FromInt32(m_SQLITE_FUNC_BUILTIN) | libc.Int32FromInt32(m_SQLITE_UTF8) | libc.Int32FromInt32(0)*libc.Int32FromInt32(m_SQLITE_FUNC_NEEDCOLL) | libc.Int32FromInt32(0)),
-		FpUserData: uintptr(int64(libc.Int32FromInt32(0))),
-		FpNext:     uintptr(0),
-		FxSFunc:    uintptr(0),
-		FxFinalize: uintptr(0),
-		FxValue:    uintptr(0),
-		FxInverse:  uintptr(0),
 		FzName:     __ccgo_ts + 24249,
-		Fu: struct {
-			FpDestructor [0]uintptr
-			FpHash       uintptr
-		}{},
 	},
 	57: {
 		FnArg:      int8(1),
 		FfuncFlags: uint32(libc.Int32FromInt32(m_SQLITE_FUNC_BUILTIN) | libc.Int32FromInt32(m_SQLITE_UTF8) | libc.Int32FromInt32(0)*libc.Int32FromInt32(m_SQLITE_FUNC_NEEDCOLL) | libc.Int32FromInt32(0)),
-		FpUserData: uintptr(int64(libc.Int32FromInt32(0))),
-		FpNext:     uintptr(0),
-		FxSFunc:    uintptr(0),
-		FxFinalize: uintptr(0),
-		FxValue:    uintptr(0),
-		FxInverse:  uintptr(0),
 		FzName:     __ccgo_ts + 61670,
-		Fu: struct {
-			FpDestructor [0]uintptr
-			FpHash       uintptr
-		}{},
 	},
 	58: {
 		FnArg:      int8(1),
 		FfuncFlags: uint32(libc.Int32FromInt32(m_SQLITE_FUNC_BUILTIN) | libc.Int32FromInt32(m_SQLITE_UTF8) | libc.Int32FromInt32(0)*libc.Int32FromInt32(m_SQLITE_FUNC_NEEDCOLL) | libc.Int32FromInt32(0)),
-		FpUserData: uintptr(int64(libc.Int32FromInt32(0))),
-		FpNext:     uintptr(0),
-		FxSFunc:    uintptr(0),
-		FxFinalize: uintptr(0),
-		FxValue:    uintptr(0),
-		FxInverse:  uintptr(0),
 		FzName:     __ccgo_ts + 61676,
-		Fu: struct {
-			FpDestructor [0]uintptr
-			FpHash       uintptr
-		}{},
 	},
 	59: {
-		FnArg:      0,
 		FfuncFlags: uint32(libc.Int32FromInt32(m_SQLITE_FUNC_BUILTIN) | libc.Int32FromInt32(m_SQLITE_UTF8) | libc.Int32FromInt32(0)*libc.Int32FromInt32(m_SQLITE_FUNC_NEEDCOLL) | libc.Int32FromInt32(m_SQLITE_FUNC_COUNT) | libc.Int32FromInt32(m_SQLITE_FUNC_ANYORDER)),
-		FpUserData: uintptr(int64(libc.Int32FromInt32(0))),
-		FpNext:     uintptr(0),
-		FxSFunc:    uintptr(0),
-		FxFinalize: uintptr(0),
-		FxValue:    uintptr(0),
-		FxInverse:  uintptr(0),
 		FzName:     __ccgo_ts + 31647,
-		Fu: struct {
-			FpDestructor [0]uintptr
-			FpHash       uintptr
-		}{},
 	},
 	60: {
 		FnArg:      int8(1),
 		FfuncFlags: uint32(libc.Int32FromInt32(m_SQLITE_FUNC_BUILTIN) | libc.Int32FromInt32(m_SQLITE_UTF8) | libc.Int32FromInt32(0)*libc.Int32FromInt32(m_SQLITE_FUNC_NEEDCOLL) | libc.Int32FromInt32(m_SQLITE_FUNC_ANYORDER)),
-		FpUserData: uintptr(int64(libc.Int32FromInt32(0))),
-		FpNext:     uintptr(0),
-		FxSFunc:    uintptr(0),
-		FxFinalize: uintptr(0),
-		FxValue:    uintptr(0),
-		FxInverse:  uintptr(0),
 		FzName:     __ccgo_ts + 31647,
-		Fu: struct {
-			FpDestructor [0]uintptr
-			FpHash       uintptr
-		}{},
 	},
 	61: {
 		FnArg:      int8(1),
 		FfuncFlags: uint32(libc.Int32FromInt32(m_SQLITE_FUNC_BUILTIN) | libc.Int32FromInt32(m_SQLITE_UTF8) | libc.Int32FromInt32(0)*libc.Int32FromInt32(m_SQLITE_FUNC_NEEDCOLL) | libc.Int32FromInt32(0)),
-		FpUserData: uintptr(int64(libc.Int32FromInt32(0))),
-		FpNext:     uintptr(0),
-		FxSFunc:    uintptr(0),
-		FxFinalize: uintptr(0),
-		FxValue:    uintptr(0),
-		FxInverse:  uintptr(0),
 		FzName:     __ccgo_ts + 61680,
-		Fu: struct {
-			FpDestructor [0]uintptr
-			FpHash       uintptr
-		}{},
 	},
 	62: {
 		FnArg:      int8(2),
 		FfuncFlags: uint32(libc.Int32FromInt32(m_SQLITE_FUNC_BUILTIN) | libc.Int32FromInt32(m_SQLITE_UTF8) | libc.Int32FromInt32(0)*libc.Int32FromInt32(m_SQLITE_FUNC_NEEDCOLL) | libc.Int32FromInt32(0)),
-		FpUserData: uintptr(int64(libc.Int32FromInt32(0))),
-		FpNext:     uintptr(0),
-		FxSFunc:    uintptr(0),
-		FxFinalize: uintptr(0),
-		FxValue:    uintptr(0),
-		FxInverse:  uintptr(0),
 		FzName:     __ccgo_ts + 61680,
-		Fu: struct {
-			FpDestructor [0]uintptr
-			FpHash       uintptr
-		}{},
 	},
 	63: {
 		FnArg:      int8(2),
 		FfuncFlags: uint32(libc.Int32FromInt32(m_SQLITE_FUNC_BUILTIN) | libc.Int32FromInt32(m_SQLITE_FUNC_CONSTANT) | libc.Int32FromInt32(m_SQLITE_UTF8) | libc.Int32FromInt32(m_SQLITE_FUNC_LIKE) | libc.Int32FromInt32(m_SQLITE_FUNC_CASE)),
 		FpUserData: uintptr(unsafe.Pointer(&_globInfo)),
-		FpNext:     uintptr(0),
-		FxSFunc:    uintptr(0),
-		FxFinalize: uintptr(0),
-		FxValue:    uintptr(0),
-		FxInverse:  uintptr(0),
 		FzName:     __ccgo_ts + 12339,
-		Fu: struct {
-			FpDestructor [0]uintptr
-			FpHash       uintptr
-		}{},
 	},
 	64: {
 		FnArg:      int8(2),
 		FfuncFlags: uint32(libc.Int32FromInt32(m_SQLITE_FUNC_BUILTIN) | libc.Int32FromInt32(m_SQLITE_FUNC_CONSTANT) | libc.Int32FromInt32(m_SQLITE_UTF8) | libc.Int32FromInt32(m_SQLITE_FUNC_LIKE)),
 		FpUserData: uintptr(unsafe.Pointer(&_likeInfoNorm)),
-		FpNext:     uintptr(0),
-		FxSFunc:    uintptr(0),
-		FxFinalize: uintptr(0),
-		FxValue:    uintptr(0),
-		FxInverse:  uintptr(0),
 		FzName:     __ccgo_ts + 12334,
-		Fu: struct {
-			FpDestructor [0]uintptr
-			FpHash       uintptr
-		}{},
 	},
 	65: {
 		FnArg:      int8(3),
 		FfuncFlags: uint32(libc.Int32FromInt32(m_SQLITE_FUNC_BUILTIN) | libc.Int32FromInt32(m_SQLITE_FUNC_CONSTANT) | libc.Int32FromInt32(m_SQLITE_UTF8) | libc.Int32FromInt32(m_SQLITE_FUNC_LIKE)),
 		FpUserData: uintptr(unsafe.Pointer(&_likeInfoNorm)),
-		FpNext:     uintptr(0),
-		FxSFunc:    uintptr(0),
-		FxFinalize: uintptr(0),
-		FxValue:    uintptr(0),
-		FxInverse:  uintptr(0),
 		FzName:     __ccgo_ts + 12334,
-		Fu: struct {
-			FpDestructor [0]uintptr
-			FpHash       uintptr
-		}{},
 	},
 	66: {
 		FnArg:      int8(1),
 		FfuncFlags: uint32(libc.Int32FromInt32(m_SQLITE_FUNC_BUILTIN) | libc.Int32FromInt32(m_SQLITE_FUNC_CONSTANT) | libc.Int32FromInt32(m_SQLITE_UTF8) | libc.Int32FromInt32(0)*libc.Int32FromInt32(m_SQLITE_FUNC_NEEDCOLL)),
-		FpUserData: uintptr(int64(libc.Int32FromInt32(0))),
-		FpNext:     uintptr(0),
-		FxSFunc:    uintptr(0),
-		FxFinalize: uintptr(0),
-		FxValue:    uintptr(0),
-		FxInverse:  uintptr(0),
 		FzName:     __ccgo_ts + 52839,
-		Fu: struct {
-			FpDestructor [0]uintptr
-			FpHash       uintptr
-		}{},
 	},
 	67: {
-		FnArg:      0,
 		FfuncFlags: uint32(libc.Int32FromInt32(m_SQLITE_FUNC_BUILTIN) | libc.Int32FromInt32(m_SQLITE_FUNC_CONSTANT) | libc.Int32FromInt32(m_SQLITE_UTF8) | libc.Int32FromInt32(0)*libc.Int32FromInt32(m_SQLITE_FUNC_NEEDCOLL)),
-		FpUserData: uintptr(int64(libc.Int32FromInt32(0))),
-		FpNext:     uintptr(0),
-		FxSFunc:    uintptr(0),
-		FxFinalize: uintptr(0),
-		FxValue:    uintptr(0),
-		FxInverse:  uintptr(0),
 		FzName:     __ccgo_ts + 52839,
-		Fu: struct {
-			FpDestructor [0]uintptr
-			FpHash       uintptr
-		}{},
 	},
 	68: {
 		FnArg:      int8(1),
 		FfuncFlags: uint32(libc.Int32FromInt32(m_SQLITE_FUNC_BUILTIN) | libc.Int32FromInt32(m_SQLITE_FUNC_CONSTANT) | libc.Int32FromInt32(m_SQLITE_UTF8)),
-		FpUserData: uintptr(0),
-		FpNext:     uintptr(0),
-		FxSFunc:    uintptr(0),
-		FxFinalize: uintptr(0),
-		FxValue:    uintptr(0),
-		FxInverse:  uintptr(0),
 		FzName:     __ccgo_ts + 61693,
-		Fu: struct {
-			FpDestructor [0]uintptr
-			FpHash       uintptr
-		}{},
 	},
 	69: {
 		FnArg:      int8(1),
 		FfuncFlags: uint32(libc.Int32FromInt32(m_SQLITE_FUNC_BUILTIN) | libc.Int32FromInt32(m_SQLITE_FUNC_CONSTANT) | libc.Int32FromInt32(m_SQLITE_UTF8)),
-		FpUserData: uintptr(0),
-		FpNext:     uintptr(0),
-		FxSFunc:    uintptr(0),
-		FxFinalize: uintptr(0),
-		FxValue:    uintptr(0),
-		FxInverse:  uintptr(0),
 		FzName:     __ccgo_ts + 61698,
-		Fu: struct {
-			FpDestructor [0]uintptr
-			FpHash       uintptr
-		}{},
 	},
 	70: {
 		FnArg:      int8(1),
 		FfuncFlags: uint32(libc.Int32FromInt32(m_SQLITE_FUNC_BUILTIN) | libc.Int32FromInt32(m_SQLITE_FUNC_CONSTANT) | libc.Int32FromInt32(m_SQLITE_UTF8)),
-		FpUserData: uintptr(0),
-		FpNext:     uintptr(0),
-		FxSFunc:    uintptr(0),
-		FxFinalize: uintptr(0),
-		FxValue:    uintptr(0),
-		FxInverse:  uintptr(0),
 		FzName:     __ccgo_ts + 61706,
-		Fu: struct {
-			FpDestructor [0]uintptr
-			FpHash       uintptr
-		}{},
 	},
 	71: {
 		FnArg:      int8(1),
 		FfuncFlags: uint32(libc.Int32FromInt32(m_SQLITE_FUNC_BUILTIN) | libc.Int32FromInt32(m_SQLITE_FUNC_CONSTANT) | libc.Int32FromInt32(m_SQLITE_UTF8)),
-		FpUserData: uintptr(0),
-		FpNext:     uintptr(0),
-		FxSFunc:    uintptr(0),
-		FxFinalize: uintptr(0),
-		FxValue:    uintptr(0),
-		FxInverse:  uintptr(0),
 		FzName:     __ccgo_ts + 61712,
-		Fu: struct {
-			FpDestructor [0]uintptr
-			FpHash       uintptr
-		}{},
 	},
 	72: {
 		FnArg:      int8(1),
 		FfuncFlags: uint32(libc.Int32FromInt32(m_SQLITE_FUNC_BUILTIN) | libc.Int32FromInt32(m_SQLITE_FUNC_CONSTANT) | libc.Int32FromInt32(m_SQLITE_UTF8) | libc.Int32FromInt32(0)*libc.Int32FromInt32(m_SQLITE_FUNC_NEEDCOLL)),
-		FpUserData: uintptr(int64(libc.Int32FromInt32(0))),
-		FpNext:     uintptr(0),
-		FxSFunc:    uintptr(0),
-		FxFinalize: uintptr(0),
-		FxValue:    uintptr(0),
-		FxInverse:  uintptr(0),
 		FzName:     __ccgo_ts + 61718,
-		Fu: struct {
-			FpDestructor [0]uintptr
-			FpHash       uintptr
-		}{},
 	},
 	73: {
 		FnArg:      int8(1),
 		FfuncFlags: uint32(libc.Int32FromInt32(m_SQLITE_FUNC_BUILTIN) | libc.Int32FromInt32(m_SQLITE_FUNC_CONSTANT) | libc.Int32FromInt32(m_SQLITE_UTF8) | libc.Int32FromInt32(0)*libc.Int32FromInt32(m_SQLITE_FUNC_NEEDCOLL)),
 		FpUserData: uintptr(int64(libc.Int32FromInt32(1))),
-		FpNext:     uintptr(0),
-		FxSFunc:    uintptr(0),
-		FxFinalize: uintptr(0),
-		FxValue:    uintptr(0),
-		FxInverse:  uintptr(0),
 		FzName:     __ccgo_ts + 61721,
-		Fu: struct {
-			FpDestructor [0]uintptr
-			FpHash       uintptr
-		}{},
 	},
 	74: {
 		FnArg:      int8(1),
 		FfuncFlags: uint32(libc.Int32FromInt32(m_SQLITE_FUNC_BUILTIN) | libc.Int32FromInt32(m_SQLITE_FUNC_CONSTANT) | libc.Int32FromInt32(m_SQLITE_UTF8) | libc.Int32FromInt32(0)*libc.Int32FromInt32(m_SQLITE_FUNC_NEEDCOLL)),
 		FpUserData: uintptr(int64(libc.Int32FromInt32(1))),
-		FpNext:     uintptr(0),
-		FxSFunc:    uintptr(0),
-		FxFinalize: uintptr(0),
-		FxValue:    uintptr(0),
-		FxInverse:  uintptr(0),
 		FzName:     __ccgo_ts + 61725,
-		Fu: struct {
-			FpDestructor [0]uintptr
-			FpHash       uintptr
-		}{},
 	},
 	75: {
 		FnArg:      int8(1),
 		FfuncFlags: uint32(libc.Int32FromInt32(m_SQLITE_FUNC_BUILTIN) | libc.Int32FromInt32(m_SQLITE_FUNC_CONSTANT) | libc.Int32FromInt32(m_SQLITE_UTF8) | libc.Int32FromInt32(0)*libc.Int32FromInt32(m_SQLITE_FUNC_NEEDCOLL)),
 		FpUserData: uintptr(int64(libc.Int32FromInt32(2))),
-		FpNext:     uintptr(0),
-		FxSFunc:    uintptr(0),
-		FxFinalize: uintptr(0),
-		FxValue:    uintptr(0),
-		FxInverse:  uintptr(0),
 		FzName:     __ccgo_ts + 61731,
-		Fu: struct {
-			FpDestructor [0]uintptr
-			FpHash       uintptr
-		}{},
 	},
 	76: {
 		FnArg:      int8(2),
 		FfuncFlags: uint32(libc.Int32FromInt32(m_SQLITE_FUNC_BUILTIN) | libc.Int32FromInt32(m_SQLITE_FUNC_CONSTANT) | libc.Int32FromInt32(m_SQLITE_UTF8) | libc.Int32FromInt32(0)*libc.Int32FromInt32(m_SQLITE_FUNC_NEEDCOLL)),
-		FpUserData: uintptr(int64(libc.Int32FromInt32(0))),
-		FpNext:     uintptr(0),
-		FxSFunc:    uintptr(0),
-		FxFinalize: uintptr(0),
-		FxValue:    uintptr(0),
-		FxInverse:  uintptr(0),
 		FzName:     __ccgo_ts + 61721,
-		Fu: struct {
-			FpDestructor [0]uintptr
-			FpHash       uintptr
-		}{},
 	},
 	77: {
 		FnArg:      int8(1),
 		FfuncFlags: uint32(libc.Int32FromInt32(m_SQLITE_FUNC_BUILTIN) | libc.Int32FromInt32(m_SQLITE_FUNC_CONSTANT) | libc.Int32FromInt32(m_SQLITE_UTF8)),
-		FpUserData: uintptr(0),
-		FpNext:     uintptr(0),
-		FxSFunc:    uintptr(0),
-		FxFinalize: uintptr(0),
-		FxValue:    uintptr(0),
-		FxInverse:  uintptr(0),
 		FzName:     __ccgo_ts + 61736,
-		Fu: struct {
-			FpDestructor [0]uintptr
-			FpHash       uintptr
-		}{},
 	},
 	78: {
 		FnArg:      int8(2),
 		FfuncFlags: uint32(libc.Int32FromInt32(m_SQLITE_FUNC_BUILTIN) | libc.Int32FromInt32(m_SQLITE_FUNC_CONSTANT) | libc.Int32FromInt32(m_SQLITE_UTF8)),
-		FpUserData: uintptr(0),
-		FpNext:     uintptr(0),
-		FxSFunc:    uintptr(0),
-		FxFinalize: uintptr(0),
-		FxValue:    uintptr(0),
-		FxInverse:  uintptr(0),
 		FzName:     __ccgo_ts + 61740,
-		Fu: struct {
-			FpDestructor [0]uintptr
-			FpHash       uintptr
-		}{},
 	},
 	79: {
 		FnArg:      int8(2),
 		FfuncFlags: uint32(libc.Int32FromInt32(m_SQLITE_FUNC_BUILTIN) | libc.Int32FromInt32(m_SQLITE_FUNC_CONSTANT) | libc.Int32FromInt32(m_SQLITE_UTF8)),
-		FpUserData: uintptr(0),
-		FpNext:     uintptr(0),
-		FxSFunc:    uintptr(0),
-		FxFinalize: uintptr(0),
-		FxValue:    uintptr(0),
-		FxInverse:  uintptr(0),
 		FzName:     __ccgo_ts + 61744,
-		Fu: struct {
-			FpDestructor [0]uintptr
-			FpHash       uintptr
-		}{},
 	},
 	80: {
 		FnArg:      int8(2),
 		FfuncFlags: uint32(libc.Int32FromInt32(m_SQLITE_FUNC_BUILTIN) | libc.Int32FromInt32(m_SQLITE_FUNC_CONSTANT) | libc.Int32FromInt32(m_SQLITE_UTF8)),
-		FpUserData: uintptr(0),
-		FpNext:     uintptr(0),
-		FxSFunc:    uintptr(0),
-		FxFinalize: uintptr(0),
-		FxValue:    uintptr(0),
-		FxInverse:  uintptr(0),
 		FzName:     __ccgo_ts + 61750,
-		Fu: struct {
-			FpDestructor [0]uintptr
-			FpHash       uintptr
-		}{},
 	},
 	81: {
 		FnArg:      int8(1),
 		FfuncFlags: uint32(libc.Int32FromInt32(m_SQLITE_FUNC_BUILTIN) | libc.Int32FromInt32(m_SQLITE_FUNC_CONSTANT) | libc.Int32FromInt32(m_SQLITE_UTF8)),
-		FpUserData: uintptr(0),
-		FpNext:     uintptr(0),
-		FxSFunc:    uintptr(0),
-		FxFinalize: uintptr(0),
-		FxValue:    uintptr(0),
-		FxInverse:  uintptr(0),
 		FzName:     __ccgo_ts + 61754,
-		Fu: struct {
-			FpDestructor [0]uintptr
-			FpHash       uintptr
-		}{},
 	},
 	82: {
 		FnArg:      int8(1),
 		FfuncFlags: uint32(libc.Int32FromInt32(m_SQLITE_FUNC_BUILTIN) | libc.Int32FromInt32(m_SQLITE_FUNC_CONSTANT) | libc.Int32FromInt32(m_SQLITE_UTF8)),
-		FpUserData: uintptr(0),
-		FpNext:     uintptr(0),
-		FxSFunc:    uintptr(0),
-		FxFinalize: uintptr(0),
-		FxValue:    uintptr(0),
-		FxInverse:  uintptr(0),
 		FzName:     __ccgo_ts + 61759,
-		Fu: struct {
-			FpDestructor [0]uintptr
-			FpHash       uintptr
-		}{},
 	},
 	83: {
 		FnArg:      int8(1),
 		FfuncFlags: uint32(libc.Int32FromInt32(m_SQLITE_FUNC_BUILTIN) | libc.Int32FromInt32(m_SQLITE_FUNC_CONSTANT) | libc.Int32FromInt32(m_SQLITE_UTF8)),
-		FpUserData: uintptr(0),
-		FpNext:     uintptr(0),
-		FxSFunc:    uintptr(0),
-		FxFinalize: uintptr(0),
-		FxValue:    uintptr(0),
-		FxInverse:  uintptr(0),
 		FzName:     __ccgo_ts + 61764,
-		Fu: struct {
-			FpDestructor [0]uintptr
-			FpHash       uintptr
-		}{},
 	},
 	84: {
 		FnArg:      int8(2),
 		FfuncFlags: uint32(libc.Int32FromInt32(m_SQLITE_FUNC_BUILTIN) | libc.Int32FromInt32(m_SQLITE_FUNC_CONSTANT) | libc.Int32FromInt32(m_SQLITE_UTF8)),
-		FpUserData: uintptr(0),
-		FpNext:     uintptr(0),
-		FxSFunc:    uintptr(0),
-		FxFinalize: uintptr(0),
-		FxValue:    uintptr(0),
-		FxInverse:  uintptr(0),
 		FzName:     __ccgo_ts + 61769,
-		Fu: struct {
-			FpDestructor [0]uintptr
-			FpHash       uintptr
-		}{},
 	},
 	85: {
 		FnArg:      int8(1),
 		FfuncFlags: uint32(libc.Int32FromInt32(m_SQLITE_FUNC_BUILTIN) | libc.Int32FromInt32(m_SQLITE_FUNC_CONSTANT) | libc.Int32FromInt32(m_SQLITE_UTF8)),
-		FpUserData: uintptr(0),
-		FpNext:     uintptr(0),
-		FxSFunc:    uintptr(0),
-		FxFinalize: uintptr(0),
-		FxValue:    uintptr(0),
-		FxInverse:  uintptr(0),
 		FzName:     __ccgo_ts + 61775,
-		Fu: struct {
-			FpDestructor [0]uintptr
-			FpHash       uintptr
-		}{},
 	},
 	86: {
 		FnArg:      int8(1),
 		FfuncFlags: uint32(libc.Int32FromInt32(m_SQLITE_FUNC_BUILTIN) | libc.Int32FromInt32(m_SQLITE_FUNC_CONSTANT) | libc.Int32FromInt32(m_SQLITE_UTF8)),
-		FpUserData: uintptr(0),
-		FpNext:     uintptr(0),
-		FxSFunc:    uintptr(0),
-		FxFinalize: uintptr(0),
-		FxValue:    uintptr(0),
-		FxInverse:  uintptr(0),
 		FzName:     __ccgo_ts + 61779,
-		Fu: struct {
-			FpDestructor [0]uintptr
-			FpHash       uintptr
-		}{},
 	},
 	87: {
 		FnArg:      int8(1),
 		FfuncFlags: uint32(libc.Int32FromInt32(m_SQLITE_FUNC_BUILTIN) | libc.Int32FromInt32(m_SQLITE_FUNC_CONSTANT) | libc.Int32FromInt32(m_SQLITE_UTF8)),
-		FpUserData: uintptr(0),
-		FpNext:     uintptr(0),
-		FxSFunc:    uintptr(0),
-		FxFinalize: uintptr(0),
-		FxValue:    uintptr(0),
-		FxInverse:  uintptr(0),
 		FzName:     __ccgo_ts + 61783,
-		Fu: struct {
-			FpDestructor [0]uintptr
-			FpHash       uintptr
-		}{},
 	},
 	88: {
 		FnArg:      int8(1),
 		FfuncFlags: uint32(libc.Int32FromInt32(m_SQLITE_FUNC_BUILTIN) | libc.Int32FromInt32(m_SQLITE_FUNC_CONSTANT) | libc.Int32FromInt32(m_SQLITE_UTF8)),
-		FpUserData: uintptr(0),
-		FpNext:     uintptr(0),
-		FxSFunc:    uintptr(0),
-		FxFinalize: uintptr(0),
-		FxValue:    uintptr(0),
-		FxInverse:  uintptr(0),
 		FzName:     __ccgo_ts + 61787,
-		Fu: struct {
-			FpDestructor [0]uintptr
-			FpHash       uintptr
-		}{},
 	},
 	89: {
 		FnArg:      int8(1),
 		FfuncFlags: uint32(libc.Int32FromInt32(m_SQLITE_FUNC_BUILTIN) | libc.Int32FromInt32(m_SQLITE_FUNC_CONSTANT) | libc.Int32FromInt32(m_SQLITE_UTF8)),
-		FpUserData: uintptr(0),
-		FpNext:     uintptr(0),
-		FxSFunc:    uintptr(0),
-		FxFinalize: uintptr(0),
-		FxValue:    uintptr(0),
-		FxInverse:  uintptr(0),
 		FzName:     __ccgo_ts + 61792,
-		Fu: struct {
-			FpDestructor [0]uintptr
-			FpHash       uintptr
-		}{},
 	},
 	90: {
 		FnArg:      int8(1),
 		FfuncFlags: uint32(libc.Int32FromInt32(m_SQLITE_FUNC_BUILTIN) | libc.Int32FromInt32(m_SQLITE_FUNC_CONSTANT) | libc.Int32FromInt32(m_SQLITE_UTF8)),
-		FpUserData: uintptr(0),
-		FpNext:     uintptr(0),
-		FxSFunc:    uintptr(0),
-		FxFinalize: uintptr(0),
-		FxValue:    uintptr(0),
-		FxInverse:  uintptr(0),
 		FzName:     __ccgo_ts + 61797,
-		Fu: struct {
-			FpDestructor [0]uintptr
-			FpHash       uintptr
-		}{},
 	},
 	91: {
 		FnArg:      int8(1),
 		FfuncFlags: uint32(libc.Int32FromInt32(m_SQLITE_FUNC_BUILTIN) | libc.Int32FromInt32(m_SQLITE_FUNC_CONSTANT) | libc.Int32FromInt32(m_SQLITE_UTF8)),
-		FpUserData: uintptr(0),
-		FpNext:     uintptr(0),
-		FxSFunc:    uintptr(0),
-		FxFinalize: uintptr(0),
-		FxValue:    uintptr(0),
-		FxInverse:  uintptr(0),
 		FzName:     __ccgo_ts + 61802,
-		Fu: struct {
-			FpDestructor [0]uintptr
-			FpHash       uintptr
-		}{},
 	},
 	92: {
 		FnArg:      int8(1),
 		FfuncFlags: uint32(libc.Int32FromInt32(m_SQLITE_FUNC_BUILTIN) | libc.Int32FromInt32(m_SQLITE_FUNC_CONSTANT) | libc.Int32FromInt32(m_SQLITE_UTF8)),
-		FpUserData: uintptr(0),
-		FpNext:     uintptr(0),
-		FxSFunc:    uintptr(0),
-		FxFinalize: uintptr(0),
-		FxValue:    uintptr(0),
-		FxInverse:  uintptr(0),
 		FzName:     __ccgo_ts + 61808,
-		Fu: struct {
-			FpDestructor [0]uintptr
-			FpHash       uintptr
-		}{},
 	},
 	93: {
 		FnArg:      int8(1),
 		FfuncFlags: uint32(libc.Int32FromInt32(m_SQLITE_FUNC_BUILTIN) | libc.Int32FromInt32(m_SQLITE_FUNC_CONSTANT) | libc.Int32FromInt32(m_SQLITE_UTF8)),
-		FpUserData: uintptr(0),
-		FpNext:     uintptr(0),
-		FxSFunc:    uintptr(0),
-		FxFinalize: uintptr(0),
-		FxValue:    uintptr(0),
-		FxInverse:  uintptr(0),
 		FzName:     __ccgo_ts + 61814,
-		Fu: struct {
-			FpDestructor [0]uintptr
-			FpHash       uintptr
-		}{},
 	},
 	94: {
 		FnArg:      int8(1),
 		FfuncFlags: uint32(libc.Int32FromInt32(m_SQLITE_FUNC_BUILTIN) | libc.Int32FromInt32(m_SQLITE_FUNC_CONSTANT) | libc.Int32FromInt32(m_SQLITE_UTF8)),
-		FpUserData: uintptr(0),
-		FpNext:     uintptr(0),
-		FxSFunc:    uintptr(0),
-		FxFinalize: uintptr(0),
-		FxValue:    uintptr(0),
-		FxInverse:  uintptr(0),
 		FzName:     __ccgo_ts + 61820,
-		Fu: struct {
-			FpDestructor [0]uintptr
-			FpHash       uintptr
-		}{},
 	},
 	95: {
 		FnArg:      int8(1),
 		FfuncFlags: uint32(libc.Int32FromInt32(m_SQLITE_FUNC_BUILTIN) | libc.Int32FromInt32(m_SQLITE_FUNC_CONSTANT) | libc.Int32FromInt32(m_SQLITE_UTF8)),
-		FpUserData: uintptr(0),
-		FpNext:     uintptr(0),
-		FxSFunc:    uintptr(0),
-		FxFinalize: uintptr(0),
-		FxValue:    uintptr(0),
-		FxInverse:  uintptr(0),
 		FzName:     __ccgo_ts + 61825,
-		Fu: struct {
-			FpDestructor [0]uintptr
-			FpHash       uintptr
-		}{},
 	},
 	96: {
 		FnArg:      int8(1),
 		FfuncFlags: uint32(libc.Int32FromInt32(m_SQLITE_FUNC_BUILTIN) | libc.Int32FromInt32(m_SQLITE_FUNC_CONSTANT) | libc.Int32FromInt32(m_SQLITE_UTF8)),
-		FpUserData: uintptr(0),
-		FpNext:     uintptr(0),
-		FxSFunc:    uintptr(0),
-		FxFinalize: uintptr(0),
-		FxValue:    uintptr(0),
-		FxInverse:  uintptr(0),
 		FzName:     __ccgo_ts + 61833,
-		Fu: struct {
-			FpDestructor [0]uintptr
-			FpHash       uintptr
-		}{},
 	},
 	97: {
-		FnArg:      0,
 		FfuncFlags: uint32(libc.Int32FromInt32(m_SQLITE_FUNC_BUILTIN) | libc.Int32FromInt32(m_SQLITE_FUNC_CONSTANT) | libc.Int32FromInt32(m_SQLITE_UTF8) | libc.Int32FromInt32(0)*libc.Int32FromInt32(m_SQLITE_FUNC_NEEDCOLL)),
-		FpUserData: uintptr(int64(libc.Int32FromInt32(0))),
-		FpNext:     uintptr(0),
-		FxSFunc:    uintptr(0),
-		FxFinalize: uintptr(0),
-		FxValue:    uintptr(0),
-		FxInverse:  uintptr(0),
 		FzName:     __ccgo_ts + 61841,
-		Fu: struct {
-			FpDestructor [0]uintptr
-			FpHash       uintptr
-		}{},
 	},
 	98: {
 		FnArg:      int8(1),
 		FfuncFlags: uint32(libc.Int32FromInt32(m_SQLITE_FUNC_BUILTIN) | libc.Int32FromInt32(m_SQLITE_FUNC_CONSTANT) | libc.Int32FromInt32(m_SQLITE_UTF8) | libc.Int32FromInt32(0)*libc.Int32FromInt32(m_SQLITE_FUNC_NEEDCOLL)),
-		FpUserData: uintptr(int64(libc.Int32FromInt32(0))),
-		FpNext:     uintptr(0),
-		FxSFunc:    uintptr(0),
-		FxFinalize: uintptr(0),
-		FxValue:    uintptr(0),
-		FxInverse:  uintptr(0),
 		FzName:     __ccgo_ts + 61844,
-		Fu: struct {
-			FpDestructor [0]uintptr
-			FpHash       uintptr
-		}{},
 	},
 	99: {
 		FnArg:      int8(-int32(1)),
 		FfuncFlags: uint32(libc.Int32FromInt32(m_SQLITE_FUNC_BUILTIN) | libc.Int32FromInt32(m_SQLITE_UTF8) | libc.Int32FromInt32(m_SQLITE_FUNC_INLINE) | libc.Int32FromInt32(m_SQLITE_FUNC_CONSTANT) | libc.Int32FromInt32(0)),
-		FpUserData: uintptr(int64(libc.Int32FromInt32(m_INLINEFUNC_coalesce))),
-		FpNext:     uintptr(0),
-		FxSFunc:    uintptr(0),
-		FxFinalize: uintptr(0),
-		FxValue:    uintptr(0),
-		FxInverse:  uintptr(0),
 		FzName:     __ccgo_ts + 52839,
-		Fu: struct {
-			FpDestructor [0]uintptr
-			FpHash       uintptr
-		}{},
 	},
 	100: {
 		FnArg:      int8(3),
 		FfuncFlags: uint32(libc.Int32FromInt32(m_SQLITE_FUNC_BUILTIN) | libc.Int32FromInt32(m_SQLITE_UTF8) | libc.Int32FromInt32(m_SQLITE_FUNC_INLINE) | libc.Int32FromInt32(m_SQLITE_FUNC_CONSTANT) | libc.Int32FromInt32(0)),
 		FpUserData: uintptr(int64(libc.Int32FromInt32(m_INLINEFUNC_iif))),
-		FpNext:     uintptr(0),
-		FxSFunc:    uintptr(0),
-		FxFinalize: uintptr(0),
-		FxValue:    uintptr(0),
-		FxInverse:  uintptr(0),
 		FzName:     __ccgo_ts + 61849,
-		Fu: struct {
-			FpDestructor [0]uintptr
-			FpHash       uintptr
-		}{},
 	},
 }
 
 func init() {
 	p := unsafe.Pointer(&_aBuiltinFunc)
 	*(*uintptr)(unsafe.Add(p, 24)) = __ccgo_fp(_versionFunc)
-	*(*uintptr)(unsafe.Add(p, 32)) = uintptr(0)
-	*(*uintptr)(unsafe.Add(p, 40)) = uintptr(0)
-	*(*uintptr)(unsafe.Add(p, 48)) = uintptr(0)
 	*(*uintptr)(unsafe.Add(p, 96)) = __ccgo_fp(_versionFunc)
-	*(*uintptr)(unsafe.Add(p, 104)) = uintptr(0)
-	*(*uintptr)(unsafe.Add(p, 112)) = uintptr(0)
-	*(*uintptr)(unsafe.Add(p, 120)) = uintptr(0)
 	*(*uintptr)(unsafe.Add(p, 168)) = __ccgo_fp(_versionFunc)
-	*(*uintptr)(unsafe.Add(p, 176)) = uintptr(0)
-	*(*uintptr)(unsafe.Add(p, 184)) = uintptr(0)
-	*(*uintptr)(unsafe.Add(p, 192)) = uintptr(0)
 	*(*uintptr)(unsafe.Add(p, 240)) = __ccgo_fp(_versionFunc)
-	*(*uintptr)(unsafe.Add(p, 248)) = uintptr(0)
-	*(*uintptr)(unsafe.Add(p, 256)) = uintptr(0)
-	*(*uintptr)(unsafe.Add(p, 264)) = uintptr(0)
 	*(*uintptr)(unsafe.Add(p, 312)) = __ccgo_fp(_soundexFunc)
-	*(*uintptr)(unsafe.Add(p, 320)) = uintptr(0)
-	*(*uintptr)(unsafe.Add(p, 328)) = uintptr(0)
-	*(*uintptr)(unsafe.Add(p, 336)) = uintptr(0)
 	*(*uintptr)(unsafe.Add(p, 384)) = __ccgo_fp(_compileoptionusedFunc)
-	*(*uintptr)(unsafe.Add(p, 392)) = uintptr(0)
-	*(*uintptr)(unsafe.Add(p, 400)) = uintptr(0)
-	*(*uintptr)(unsafe.Add(p, 408)) = uintptr(0)
 	*(*uintptr)(unsafe.Add(p, 456)) = __ccgo_fp(_compileoptiongetFunc)
-	*(*uintptr)(unsafe.Add(p, 464)) = uintptr(0)
-	*(*uintptr)(unsafe.Add(p, 472)) = uintptr(0)
-	*(*uintptr)(unsafe.Add(p, 480)) = uintptr(0)
 	*(*uintptr)(unsafe.Add(p, 528)) = __ccgo_fp(_versionFunc)
-	*(*uintptr)(unsafe.Add(p, 536)) = uintptr(0)
-	*(*uintptr)(unsafe.Add(p, 544)) = uintptr(0)
-	*(*uintptr)(unsafe.Add(p, 552)) = uintptr(0)
 	*(*uintptr)(unsafe.Add(p, 600)) = __ccgo_fp(_versionFunc)
-	*(*uintptr)(unsafe.Add(p, 608)) = uintptr(0)
-	*(*uintptr)(unsafe.Add(p, 616)) = uintptr(0)
-	*(*uintptr)(unsafe.Add(p, 624)) = uintptr(0)
 	*(*uintptr)(unsafe.Add(p, 672)) = __ccgo_fp(_versionFunc)
-	*(*uintptr)(unsafe.Add(p, 680)) = uintptr(0)
-	*(*uintptr)(unsafe.Add(p, 688)) = uintptr(0)
-	*(*uintptr)(unsafe.Add(p, 696)) = uintptr(0)
 	*(*uintptr)(unsafe.Add(p, 744)) = __ccgo_fp(_versionFunc)
-	*(*uintptr)(unsafe.Add(p, 752)) = uintptr(0)
-	*(*uintptr)(unsafe.Add(p, 760)) = uintptr(0)
-	*(*uintptr)(unsafe.Add(p, 768)) = uintptr(0)
 	*(*uintptr)(unsafe.Add(p, 816)) = __ccgo_fp(_trimFunc)
-	*(*uintptr)(unsafe.Add(p, 824)) = uintptr(0)
-	*(*uintptr)(unsafe.Add(p, 832)) = uintptr(0)
-	*(*uintptr)(unsafe.Add(p, 840)) = uintptr(0)
 	*(*uintptr)(unsafe.Add(p, 888)) = __ccgo_fp(_trimFunc)
-	*(*uintptr)(unsafe.Add(p, 896)) = uintptr(0)
-	*(*uintptr)(unsafe.Add(p, 904)) = uintptr(0)
-	*(*uintptr)(unsafe.Add(p, 912)) = uintptr(0)
 	*(*uintptr)(unsafe.Add(p, 960)) = __ccgo_fp(_trimFunc)
-	*(*uintptr)(unsafe.Add(p, 968)) = uintptr(0)
-	*(*uintptr)(unsafe.Add(p, 976)) = uintptr(0)
-	*(*uintptr)(unsafe.Add(p, 984)) = uintptr(0)
 	*(*uintptr)(unsafe.Add(p, 1032)) = __ccgo_fp(_trimFunc)
-	*(*uintptr)(unsafe.Add(p, 1040)) = uintptr(0)
-	*(*uintptr)(unsafe.Add(p, 1048)) = uintptr(0)
-	*(*uintptr)(unsafe.Add(p, 1056)) = uintptr(0)
 	*(*uintptr)(unsafe.Add(p, 1104)) = __ccgo_fp(_trimFunc)
-	*(*uintptr)(unsafe.Add(p, 1112)) = uintptr(0)
-	*(*uintptr)(unsafe.Add(p, 1120)) = uintptr(0)
-	*(*uintptr)(unsafe.Add(p, 1128)) = uintptr(0)
 	*(*uintptr)(unsafe.Add(p, 1176)) = __ccgo_fp(_trimFunc)
-	*(*uintptr)(unsafe.Add(p, 1184)) = uintptr(0)
-	*(*uintptr)(unsafe.Add(p, 1192)) = uintptr(0)
-	*(*uintptr)(unsafe.Add(p, 1200)) = uintptr(0)
 	*(*uintptr)(unsafe.Add(p, 1248)) = __ccgo_fp(_minmaxFunc)
-	*(*uintptr)(unsafe.Add(p, 1256)) = uintptr(0)
-	*(*uintptr)(unsafe.Add(p, 1264)) = uintptr(0)
-	*(*uintptr)(unsafe.Add(p, 1272)) = uintptr(0)
-	*(*uintptr)(unsafe.Add(p, 1320)) = uintptr(0)
-	*(*uintptr)(unsafe.Add(p, 1328)) = uintptr(0)
-	*(*uintptr)(unsafe.Add(p, 1336)) = uintptr(0)
-	*(*uintptr)(unsafe.Add(p, 1344)) = uintptr(0)
 	*(*uintptr)(unsafe.Add(p, 1392)) = __ccgo_fp(_minmaxStep)
 	*(*uintptr)(unsafe.Add(p, 1400)) = __ccgo_fp(_minMaxFinalize)
 	*(*uintptr)(unsafe.Add(p, 1408)) = __ccgo_fp(_minMaxValue)
-	*(*uintptr)(unsafe.Add(p, 1416)) = uintptr(0)
 	*(*uintptr)(unsafe.Add(p, 1464)) = __ccgo_fp(_minmaxFunc)
-	*(*uintptr)(unsafe.Add(p, 1472)) = uintptr(0)
-	*(*uintptr)(unsafe.Add(p, 1480)) = uintptr(0)
-	*(*uintptr)(unsafe.Add(p, 1488)) = uintptr(0)
-	*(*uintptr)(unsafe.Add(p, 1536)) = uintptr(0)
-	*(*uintptr)(unsafe.Add(p, 1544)) = uintptr(0)
-	*(*uintptr)(unsafe.Add(p, 1552)) = uintptr(0)
-	*(*uintptr)(unsafe.Add(p, 1560)) = uintptr(0)
 	*(*uintptr)(unsafe.Add(p, 1608)) = __ccgo_fp(_minmaxStep)
 	*(*uintptr)(unsafe.Add(p, 1616)) = __ccgo_fp(_minMaxFinalize)
 	*(*uintptr)(unsafe.Add(p, 1624)) = __ccgo_fp(_minMaxValue)
-	*(*uintptr)(unsafe.Add(p, 1632)) = uintptr(0)
 	*(*uintptr)(unsafe.Add(p, 1680)) = __ccgo_fp(_typeofFunc)
-	*(*uintptr)(unsafe.Add(p, 1688)) = uintptr(0)
-	*(*uintptr)(unsafe.Add(p, 1696)) = uintptr(0)
-	*(*uintptr)(unsafe.Add(p, 1704)) = uintptr(0)
 	*(*uintptr)(unsafe.Add(p, 1752)) = __ccgo_fp(_subtypeFunc)
-	*(*uintptr)(unsafe.Add(p, 1760)) = uintptr(0)
-	*(*uintptr)(unsafe.Add(p, 1768)) = uintptr(0)
-	*(*uintptr)(unsafe.Add(p, 1776)) = uintptr(0)
 	*(*uintptr)(unsafe.Add(p, 1824)) = __ccgo_fp(_lengthFunc)
-	*(*uintptr)(unsafe.Add(p, 1832)) = uintptr(0)
-	*(*uintptr)(unsafe.Add(p, 1840)) = uintptr(0)
-	*(*uintptr)(unsafe.Add(p, 1848)) = uintptr(0)
 	*(*uintptr)(unsafe.Add(p, 1896)) = __ccgo_fp(_instrFunc)
-	*(*uintptr)(unsafe.Add(p, 1904)) = uintptr(0)
-	*(*uintptr)(unsafe.Add(p, 1912)) = uintptr(0)
-	*(*uintptr)(unsafe.Add(p, 1920)) = uintptr(0)
 	*(*uintptr)(unsafe.Add(p, 1968)) = __ccgo_fp(_printfFunc)
-	*(*uintptr)(unsafe.Add(p, 1976)) = uintptr(0)
-	*(*uintptr)(unsafe.Add(p, 1984)) = uintptr(0)
-	*(*uintptr)(unsafe.Add(p, 1992)) = uintptr(0)
 	*(*uintptr)(unsafe.Add(p, 2040)) = __ccgo_fp(_printfFunc)
-	*(*uintptr)(unsafe.Add(p, 2048)) = uintptr(0)
-	*(*uintptr)(unsafe.Add(p, 2056)) = uintptr(0)
-	*(*uintptr)(unsafe.Add(p, 2064)) = uintptr(0)
 	*(*uintptr)(unsafe.Add(p, 2112)) = __ccgo_fp(_unicodeFunc)
-	*(*uintptr)(unsafe.Add(p, 2120)) = uintptr(0)
-	*(*uintptr)(unsafe.Add(p, 2128)) = uintptr(0)
-	*(*uintptr)(unsafe.Add(p, 2136)) = uintptr(0)
 	*(*uintptr)(unsafe.Add(p, 2184)) = __ccgo_fp(_charFunc)
-	*(*uintptr)(unsafe.Add(p, 2192)) = uintptr(0)
-	*(*uintptr)(unsafe.Add(p, 2200)) = uintptr(0)
-	*(*uintptr)(unsafe.Add(p, 2208)) = uintptr(0)
 	*(*uintptr)(unsafe.Add(p, 2256)) = __ccgo_fp(_absFunc)
-	*(*uintptr)(unsafe.Add(p, 2264)) = uintptr(0)
-	*(*uintptr)(unsafe.Add(p, 2272)) = uintptr(0)
-	*(*uintptr)(unsafe.Add(p, 2280)) = uintptr(0)
 	*(*uintptr)(unsafe.Add(p, 2328)) = __ccgo_fp(_roundFunc)
-	*(*uintptr)(unsafe.Add(p, 2336)) = uintptr(0)
-	*(*uintptr)(unsafe.Add(p, 2344)) = uintptr(0)
-	*(*uintptr)(unsafe.Add(p, 2352)) = uintptr(0)
 	*(*uintptr)(unsafe.Add(p, 2400)) = __ccgo_fp(_roundFunc)
-	*(*uintptr)(unsafe.Add(p, 2408)) = uintptr(0)
-	*(*uintptr)(unsafe.Add(p, 2416)) = uintptr(0)
-	*(*uintptr)(unsafe.Add(p, 2424)) = uintptr(0)
 	*(*uintptr)(unsafe.Add(p, 2472)) = __ccgo_fp(_upperFunc)
-	*(*uintptr)(unsafe.Add(p, 2480)) = uintptr(0)
-	*(*uintptr)(unsafe.Add(p, 2488)) = uintptr(0)
-	*(*uintptr)(unsafe.Add(p, 2496)) = uintptr(0)
 	*(*uintptr)(unsafe.Add(p, 2544)) = __ccgo_fp(_lowerFunc)
-	*(*uintptr)(unsafe.Add(p, 2552)) = uintptr(0)
-	*(*uintptr)(unsafe.Add(p, 2560)) = uintptr(0)
-	*(*uintptr)(unsafe.Add(p, 2568)) = uintptr(0)
 	*(*uintptr)(unsafe.Add(p, 2616)) = __ccgo_fp(_hexFunc)
-	*(*uintptr)(unsafe.Add(p, 2624)) = uintptr(0)
-	*(*uintptr)(unsafe.Add(p, 2632)) = uintptr(0)
-	*(*uintptr)(unsafe.Add(p, 2640)) = uintptr(0)
 	*(*uintptr)(unsafe.Add(p, 2688)) = __ccgo_fp(_unhexFunc)
-	*(*uintptr)(unsafe.Add(p, 2696)) = uintptr(0)
-	*(*uintptr)(unsafe.Add(p, 2704)) = uintptr(0)
-	*(*uintptr)(unsafe.Add(p, 2712)) = uintptr(0)
 	*(*uintptr)(unsafe.Add(p, 2760)) = __ccgo_fp(_unhexFunc)
-	*(*uintptr)(unsafe.Add(p, 2768)) = uintptr(0)
-	*(*uintptr)(unsafe.Add(p, 2776)) = uintptr(0)
-	*(*uintptr)(unsafe.Add(p, 2784)) = uintptr(0)
 	*(*uintptr)(unsafe.Add(p, 2832)) = __ccgo_fp(_versionFunc)
-	*(*uintptr)(unsafe.Add(p, 2840)) = uintptr(0)
-	*(*uintptr)(unsafe.Add(p, 2848)) = uintptr(0)
-	*(*uintptr)(unsafe.Add(p, 2856)) = uintptr(0)
 	*(*uintptr)(unsafe.Add(p, 2904)) = __ccgo_fp(_randomFunc)
-	*(*uintptr)(unsafe.Add(p, 2912)) = uintptr(0)
-	*(*uintptr)(unsafe.Add(p, 2920)) = uintptr(0)
-	*(*uintptr)(unsafe.Add(p, 2928)) = uintptr(0)
 	*(*uintptr)(unsafe.Add(p, 2976)) = __ccgo_fp(_randomBlob)
-	*(*uintptr)(unsafe.Add(p, 2984)) = uintptr(0)
-	*(*uintptr)(unsafe.Add(p, 2992)) = uintptr(0)
-	*(*uintptr)(unsafe.Add(p, 3000)) = uintptr(0)
 	*(*uintptr)(unsafe.Add(p, 3048)) = __ccgo_fp(_nullifFunc)
-	*(*uintptr)(unsafe.Add(p, 3056)) = uintptr(0)
-	*(*uintptr)(unsafe.Add(p, 3064)) = uintptr(0)
-	*(*uintptr)(unsafe.Add(p, 3072)) = uintptr(0)
 	*(*uintptr)(unsafe.Add(p, 3120)) = __ccgo_fp(_versionFunc)
-	*(*uintptr)(unsafe.Add(p, 3128)) = uintptr(0)
-	*(*uintptr)(unsafe.Add(p, 3136)) = uintptr(0)
-	*(*uintptr)(unsafe.Add(p, 3144)) = uintptr(0)
 	*(*uintptr)(unsafe.Add(p, 3192)) = __ccgo_fp(_sourceidFunc)
-	*(*uintptr)(unsafe.Add(p, 3200)) = uintptr(0)
-	*(*uintptr)(unsafe.Add(p, 3208)) = uintptr(0)
-	*(*uintptr)(unsafe.Add(p, 3216)) = uintptr(0)
 	*(*uintptr)(unsafe.Add(p, 3264)) = __ccgo_fp(_errlogFunc)
-	*(*uintptr)(unsafe.Add(p, 3272)) = uintptr(0)
-	*(*uintptr)(unsafe.Add(p, 3280)) = uintptr(0)
-	*(*uintptr)(unsafe.Add(p, 3288)) = uintptr(0)
 	*(*uintptr)(unsafe.Add(p, 3336)) = __ccgo_fp(_quoteFunc)
-	*(*uintptr)(unsafe.Add(p, 3344)) = uintptr(0)
-	*(*uintptr)(unsafe.Add(p, 3352)) = uintptr(0)
-	*(*uintptr)(unsafe.Add(p, 3360)) = uintptr(0)
 	*(*uintptr)(unsafe.Add(p, 3408)) = __ccgo_fp(_last_insert_rowid)
-	*(*uintptr)(unsafe.Add(p, 3416)) = uintptr(0)
-	*(*uintptr)(unsafe.Add(p, 3424)) = uintptr(0)
-	*(*uintptr)(unsafe.Add(p, 3432)) = uintptr(0)
 	*(*uintptr)(unsafe.Add(p, 3480)) = __ccgo_fp(_changes)
-	*(*uintptr)(unsafe.Add(p, 3488)) = uintptr(0)
-	*(*uintptr)(unsafe.Add(p, 3496)) = uintptr(0)
-	*(*uintptr)(unsafe.Add(p, 3504)) = uintptr(0)
 	*(*uintptr)(unsafe.Add(p, 3552)) = __ccgo_fp(_total_changes)
-	*(*uintptr)(unsafe.Add(p, 3560)) = uintptr(0)
-	*(*uintptr)(unsafe.Add(p, 3568)) = uintptr(0)
-	*(*uintptr)(unsafe.Add(p, 3576)) = uintptr(0)
 	*(*uintptr)(unsafe.Add(p, 3624)) = __ccgo_fp(_replaceFunc)
-	*(*uintptr)(unsafe.Add(p, 3632)) = uintptr(0)
-	*(*uintptr)(unsafe.Add(p, 3640)) = uintptr(0)
-	*(*uintptr)(unsafe.Add(p, 3648)) = uintptr(0)
 	*(*uintptr)(unsafe.Add(p, 3696)) = __ccgo_fp(_zeroblobFunc)
-	*(*uintptr)(unsafe.Add(p, 3704)) = uintptr(0)
-	*(*uintptr)(unsafe.Add(p, 3712)) = uintptr(0)
-	*(*uintptr)(unsafe.Add(p, 3720)) = uintptr(0)
 	*(*uintptr)(unsafe.Add(p, 3768)) = __ccgo_fp(_substrFunc)
-	*(*uintptr)(unsafe.Add(p, 3776)) = uintptr(0)
-	*(*uintptr)(unsafe.Add(p, 3784)) = uintptr(0)
-	*(*uintptr)(unsafe.Add(p, 3792)) = uintptr(0)
 	*(*uintptr)(unsafe.Add(p, 3840)) = __ccgo_fp(_substrFunc)
-	*(*uintptr)(unsafe.Add(p, 3848)) = uintptr(0)
-	*(*uintptr)(unsafe.Add(p, 3856)) = uintptr(0)
-	*(*uintptr)(unsafe.Add(p, 3864)) = uintptr(0)
 	*(*uintptr)(unsafe.Add(p, 3912)) = __ccgo_fp(_substrFunc)
-	*(*uintptr)(unsafe.Add(p, 3920)) = uintptr(0)
-	*(*uintptr)(unsafe.Add(p, 3928)) = uintptr(0)
-	*(*uintptr)(unsafe.Add(p, 3936)) = uintptr(0)
 	*(*uintptr)(unsafe.Add(p, 3984)) = __ccgo_fp(_substrFunc)
-	*(*uintptr)(unsafe.Add(p, 3992)) = uintptr(0)
-	*(*uintptr)(unsafe.Add(p, 4000)) = uintptr(0)
-	*(*uintptr)(unsafe.Add(p, 4008)) = uintptr(0)
 	*(*uintptr)(unsafe.Add(p, 4056)) = __ccgo_fp(_sumStep)
 	*(*uintptr)(unsafe.Add(p, 4064)) = __ccgo_fp(_sumFinalize)
 	*(*uintptr)(unsafe.Add(p, 4072)) = __ccgo_fp(_sumFinalize)
@@ -175565,181 +170077,65 @@ func init() {
 	*(*uintptr)(unsafe.Add(p, 4504)) = __ccgo_fp(_groupConcatValue)
 	*(*uintptr)(unsafe.Add(p, 4512)) = __ccgo_fp(_groupConcatInverse)
 	*(*uintptr)(unsafe.Add(p, 4560)) = __ccgo_fp(_likeFunc)
-	*(*uintptr)(unsafe.Add(p, 4568)) = uintptr(0)
-	*(*uintptr)(unsafe.Add(p, 4576)) = uintptr(0)
-	*(*uintptr)(unsafe.Add(p, 4584)) = uintptr(0)
 	*(*uintptr)(unsafe.Add(p, 4632)) = __ccgo_fp(_likeFunc)
-	*(*uintptr)(unsafe.Add(p, 4640)) = uintptr(0)
-	*(*uintptr)(unsafe.Add(p, 4648)) = uintptr(0)
-	*(*uintptr)(unsafe.Add(p, 4656)) = uintptr(0)
 	*(*uintptr)(unsafe.Add(p, 4704)) = __ccgo_fp(_likeFunc)
-	*(*uintptr)(unsafe.Add(p, 4712)) = uintptr(0)
-	*(*uintptr)(unsafe.Add(p, 4720)) = uintptr(0)
-	*(*uintptr)(unsafe.Add(p, 4728)) = uintptr(0)
-	*(*uintptr)(unsafe.Add(p, 4776)) = uintptr(0)
-	*(*uintptr)(unsafe.Add(p, 4784)) = uintptr(0)
-	*(*uintptr)(unsafe.Add(p, 4792)) = uintptr(0)
-	*(*uintptr)(unsafe.Add(p, 4800)) = uintptr(0)
-	*(*uintptr)(unsafe.Add(p, 4848)) = uintptr(0)
-	*(*uintptr)(unsafe.Add(p, 4856)) = uintptr(0)
-	*(*uintptr)(unsafe.Add(p, 4864)) = uintptr(0)
-	*(*uintptr)(unsafe.Add(p, 4872)) = uintptr(0)
 	*(*uintptr)(unsafe.Add(p, 4904)) = __ccgo_fp(_xCeil)
 	*(*uintptr)(unsafe.Add(p, 4920)) = __ccgo_fp(_ceilingFunc)
-	*(*uintptr)(unsafe.Add(p, 4928)) = uintptr(0)
-	*(*uintptr)(unsafe.Add(p, 4936)) = uintptr(0)
-	*(*uintptr)(unsafe.Add(p, 4944)) = uintptr(0)
 	*(*uintptr)(unsafe.Add(p, 4976)) = __ccgo_fp(_xCeil)
 	*(*uintptr)(unsafe.Add(p, 4992)) = __ccgo_fp(_ceilingFunc)
-	*(*uintptr)(unsafe.Add(p, 5000)) = uintptr(0)
-	*(*uintptr)(unsafe.Add(p, 5008)) = uintptr(0)
-	*(*uintptr)(unsafe.Add(p, 5016)) = uintptr(0)
 	*(*uintptr)(unsafe.Add(p, 5048)) = __ccgo_fp(_xFloor)
 	*(*uintptr)(unsafe.Add(p, 5064)) = __ccgo_fp(_ceilingFunc)
-	*(*uintptr)(unsafe.Add(p, 5072)) = uintptr(0)
-	*(*uintptr)(unsafe.Add(p, 5080)) = uintptr(0)
-	*(*uintptr)(unsafe.Add(p, 5088)) = uintptr(0)
 	*(*uintptr)(unsafe.Add(p, 5120)) = __ccgo_fp(libc.Xtrunc)
 	*(*uintptr)(unsafe.Add(p, 5136)) = __ccgo_fp(_ceilingFunc)
-	*(*uintptr)(unsafe.Add(p, 5144)) = uintptr(0)
-	*(*uintptr)(unsafe.Add(p, 5152)) = uintptr(0)
-	*(*uintptr)(unsafe.Add(p, 5160)) = uintptr(0)
 	*(*uintptr)(unsafe.Add(p, 5208)) = __ccgo_fp(_logFunc)
-	*(*uintptr)(unsafe.Add(p, 5216)) = uintptr(0)
-	*(*uintptr)(unsafe.Add(p, 5224)) = uintptr(0)
-	*(*uintptr)(unsafe.Add(p, 5232)) = uintptr(0)
 	*(*uintptr)(unsafe.Add(p, 5280)) = __ccgo_fp(_logFunc)
-	*(*uintptr)(unsafe.Add(p, 5288)) = uintptr(0)
-	*(*uintptr)(unsafe.Add(p, 5296)) = uintptr(0)
-	*(*uintptr)(unsafe.Add(p, 5304)) = uintptr(0)
 	*(*uintptr)(unsafe.Add(p, 5352)) = __ccgo_fp(_logFunc)
-	*(*uintptr)(unsafe.Add(p, 5360)) = uintptr(0)
-	*(*uintptr)(unsafe.Add(p, 5368)) = uintptr(0)
-	*(*uintptr)(unsafe.Add(p, 5376)) = uintptr(0)
 	*(*uintptr)(unsafe.Add(p, 5424)) = __ccgo_fp(_logFunc)
-	*(*uintptr)(unsafe.Add(p, 5432)) = uintptr(0)
-	*(*uintptr)(unsafe.Add(p, 5440)) = uintptr(0)
-	*(*uintptr)(unsafe.Add(p, 5448)) = uintptr(0)
 	*(*uintptr)(unsafe.Add(p, 5496)) = __ccgo_fp(_logFunc)
-	*(*uintptr)(unsafe.Add(p, 5504)) = uintptr(0)
-	*(*uintptr)(unsafe.Add(p, 5512)) = uintptr(0)
-	*(*uintptr)(unsafe.Add(p, 5520)) = uintptr(0)
 	*(*uintptr)(unsafe.Add(p, 5552)) = __ccgo_fp(libc.Xexp)
 	*(*uintptr)(unsafe.Add(p, 5568)) = __ccgo_fp(_math1Func)
-	*(*uintptr)(unsafe.Add(p, 5576)) = uintptr(0)
-	*(*uintptr)(unsafe.Add(p, 5584)) = uintptr(0)
-	*(*uintptr)(unsafe.Add(p, 5592)) = uintptr(0)
 	*(*uintptr)(unsafe.Add(p, 5624)) = __ccgo_fp(libc.Xpow)
 	*(*uintptr)(unsafe.Add(p, 5640)) = __ccgo_fp(_math2Func)
-	*(*uintptr)(unsafe.Add(p, 5648)) = uintptr(0)
-	*(*uintptr)(unsafe.Add(p, 5656)) = uintptr(0)
-	*(*uintptr)(unsafe.Add(p, 5664)) = uintptr(0)
 	*(*uintptr)(unsafe.Add(p, 5696)) = __ccgo_fp(libc.Xpow)
 	*(*uintptr)(unsafe.Add(p, 5712)) = __ccgo_fp(_math2Func)
-	*(*uintptr)(unsafe.Add(p, 5720)) = uintptr(0)
-	*(*uintptr)(unsafe.Add(p, 5728)) = uintptr(0)
-	*(*uintptr)(unsafe.Add(p, 5736)) = uintptr(0)
 	*(*uintptr)(unsafe.Add(p, 5768)) = __ccgo_fp(libc.Xfmod)
 	*(*uintptr)(unsafe.Add(p, 5784)) = __ccgo_fp(_math2Func)
-	*(*uintptr)(unsafe.Add(p, 5792)) = uintptr(0)
-	*(*uintptr)(unsafe.Add(p, 5800)) = uintptr(0)
-	*(*uintptr)(unsafe.Add(p, 5808)) = uintptr(0)
 	*(*uintptr)(unsafe.Add(p, 5840)) = __ccgo_fp(libc.Xacos)
 	*(*uintptr)(unsafe.Add(p, 5856)) = __ccgo_fp(_math1Func)
-	*(*uintptr)(unsafe.Add(p, 5864)) = uintptr(0)
-	*(*uintptr)(unsafe.Add(p, 5872)) = uintptr(0)
-	*(*uintptr)(unsafe.Add(p, 5880)) = uintptr(0)
 	*(*uintptr)(unsafe.Add(p, 5912)) = __ccgo_fp(libc.Xasin)
 	*(*uintptr)(unsafe.Add(p, 5928)) = __ccgo_fp(_math1Func)
-	*(*uintptr)(unsafe.Add(p, 5936)) = uintptr(0)
-	*(*uintptr)(unsafe.Add(p, 5944)) = uintptr(0)
-	*(*uintptr)(unsafe.Add(p, 5952)) = uintptr(0)
 	*(*uintptr)(unsafe.Add(p, 5984)) = __ccgo_fp(libc.Xatan)
 	*(*uintptr)(unsafe.Add(p, 6000)) = __ccgo_fp(_math1Func)
-	*(*uintptr)(unsafe.Add(p, 6008)) = uintptr(0)
-	*(*uintptr)(unsafe.Add(p, 6016)) = uintptr(0)
-	*(*uintptr)(unsafe.Add(p, 6024)) = uintptr(0)
 	*(*uintptr)(unsafe.Add(p, 6056)) = __ccgo_fp(libc.Xatan2)
 	*(*uintptr)(unsafe.Add(p, 6072)) = __ccgo_fp(_math2Func)
-	*(*uintptr)(unsafe.Add(p, 6080)) = uintptr(0)
-	*(*uintptr)(unsafe.Add(p, 6088)) = uintptr(0)
-	*(*uintptr)(unsafe.Add(p, 6096)) = uintptr(0)
 	*(*uintptr)(unsafe.Add(p, 6128)) = __ccgo_fp(libc.Xcos)
 	*(*uintptr)(unsafe.Add(p, 6144)) = __ccgo_fp(_math1Func)
-	*(*uintptr)(unsafe.Add(p, 6152)) = uintptr(0)
-	*(*uintptr)(unsafe.Add(p, 6160)) = uintptr(0)
-	*(*uintptr)(unsafe.Add(p, 6168)) = uintptr(0)
 	*(*uintptr)(unsafe.Add(p, 6200)) = __ccgo_fp(libc.Xsin)
 	*(*uintptr)(unsafe.Add(p, 6216)) = __ccgo_fp(_math1Func)
-	*(*uintptr)(unsafe.Add(p, 6224)) = uintptr(0)
-	*(*uintptr)(unsafe.Add(p, 6232)) = uintptr(0)
-	*(*uintptr)(unsafe.Add(p, 6240)) = uintptr(0)
 	*(*uintptr)(unsafe.Add(p, 6272)) = __ccgo_fp(libc.Xtan)
 	*(*uintptr)(unsafe.Add(p, 6288)) = __ccgo_fp(_math1Func)
-	*(*uintptr)(unsafe.Add(p, 6296)) = uintptr(0)
-	*(*uintptr)(unsafe.Add(p, 6304)) = uintptr(0)
-	*(*uintptr)(unsafe.Add(p, 6312)) = uintptr(0)
 	*(*uintptr)(unsafe.Add(p, 6344)) = __ccgo_fp(libc.Xcosh)
 	*(*uintptr)(unsafe.Add(p, 6360)) = __ccgo_fp(_math1Func)
-	*(*uintptr)(unsafe.Add(p, 6368)) = uintptr(0)
-	*(*uintptr)(unsafe.Add(p, 6376)) = uintptr(0)
-	*(*uintptr)(unsafe.Add(p, 6384)) = uintptr(0)
 	*(*uintptr)(unsafe.Add(p, 6416)) = __ccgo_fp(libc.Xsinh)
 	*(*uintptr)(unsafe.Add(p, 6432)) = __ccgo_fp(_math1Func)
-	*(*uintptr)(unsafe.Add(p, 6440)) = uintptr(0)
-	*(*uintptr)(unsafe.Add(p, 6448)) = uintptr(0)
-	*(*uintptr)(unsafe.Add(p, 6456)) = uintptr(0)
 	*(*uintptr)(unsafe.Add(p, 6488)) = __ccgo_fp(libc.Xtanh)
 	*(*uintptr)(unsafe.Add(p, 6504)) = __ccgo_fp(_math1Func)
-	*(*uintptr)(unsafe.Add(p, 6512)) = uintptr(0)
-	*(*uintptr)(unsafe.Add(p, 6520)) = uintptr(0)
-	*(*uintptr)(unsafe.Add(p, 6528)) = uintptr(0)
 	*(*uintptr)(unsafe.Add(p, 6560)) = __ccgo_fp(libc.Xacosh)
 	*(*uintptr)(unsafe.Add(p, 6576)) = __ccgo_fp(_math1Func)
-	*(*uintptr)(unsafe.Add(p, 6584)) = uintptr(0)
-	*(*uintptr)(unsafe.Add(p, 6592)) = uintptr(0)
-	*(*uintptr)(unsafe.Add(p, 6600)) = uintptr(0)
 	*(*uintptr)(unsafe.Add(p, 6632)) = __ccgo_fp(libc.Xasinh)
 	*(*uintptr)(unsafe.Add(p, 6648)) = __ccgo_fp(_math1Func)
-	*(*uintptr)(unsafe.Add(p, 6656)) = uintptr(0)
-	*(*uintptr)(unsafe.Add(p, 6664)) = uintptr(0)
-	*(*uintptr)(unsafe.Add(p, 6672)) = uintptr(0)
 	*(*uintptr)(unsafe.Add(p, 6704)) = __ccgo_fp(libc.Xatanh)
 	*(*uintptr)(unsafe.Add(p, 6720)) = __ccgo_fp(_math1Func)
-	*(*uintptr)(unsafe.Add(p, 6728)) = uintptr(0)
-	*(*uintptr)(unsafe.Add(p, 6736)) = uintptr(0)
-	*(*uintptr)(unsafe.Add(p, 6744)) = uintptr(0)
 	*(*uintptr)(unsafe.Add(p, 6776)) = __ccgo_fp(libc.Xsqrt)
 	*(*uintptr)(unsafe.Add(p, 6792)) = __ccgo_fp(_math1Func)
-	*(*uintptr)(unsafe.Add(p, 6800)) = uintptr(0)
-	*(*uintptr)(unsafe.Add(p, 6808)) = uintptr(0)
-	*(*uintptr)(unsafe.Add(p, 6816)) = uintptr(0)
 	*(*uintptr)(unsafe.Add(p, 6848)) = __ccgo_fp(_degToRad)
 	*(*uintptr)(unsafe.Add(p, 6864)) = __ccgo_fp(_math1Func)
-	*(*uintptr)(unsafe.Add(p, 6872)) = uintptr(0)
-	*(*uintptr)(unsafe.Add(p, 6880)) = uintptr(0)
-	*(*uintptr)(unsafe.Add(p, 6888)) = uintptr(0)
 	*(*uintptr)(unsafe.Add(p, 6920)) = __ccgo_fp(_radToDeg)
 	*(*uintptr)(unsafe.Add(p, 6936)) = __ccgo_fp(_math1Func)
-	*(*uintptr)(unsafe.Add(p, 6944)) = uintptr(0)
-	*(*uintptr)(unsafe.Add(p, 6952)) = uintptr(0)
-	*(*uintptr)(unsafe.Add(p, 6960)) = uintptr(0)
 	*(*uintptr)(unsafe.Add(p, 7008)) = __ccgo_fp(_piFunc)
-	*(*uintptr)(unsafe.Add(p, 7016)) = uintptr(0)
-	*(*uintptr)(unsafe.Add(p, 7024)) = uintptr(0)
-	*(*uintptr)(unsafe.Add(p, 7032)) = uintptr(0)
 	*(*uintptr)(unsafe.Add(p, 7080)) = __ccgo_fp(_signFunc)
-	*(*uintptr)(unsafe.Add(p, 7088)) = uintptr(0)
-	*(*uintptr)(unsafe.Add(p, 7096)) = uintptr(0)
-	*(*uintptr)(unsafe.Add(p, 7104)) = uintptr(0)
 	*(*uintptr)(unsafe.Add(p, 7152)) = __ccgo_fp(_versionFunc)
-	*(*uintptr)(unsafe.Add(p, 7160)) = uintptr(0)
-	*(*uintptr)(unsafe.Add(p, 7168)) = uintptr(0)
-	*(*uintptr)(unsafe.Add(p, 7176)) = uintptr(0)
 	*(*uintptr)(unsafe.Add(p, 7224)) = __ccgo_fp(_versionFunc)
-	*(*uintptr)(unsafe.Add(p, 7232)) = uintptr(0)
-	*(*uintptr)(unsafe.Add(p, 7240)) = uintptr(0)
-	*(*uintptr)(unsafe.Add(p, 7248)) = uintptr(0)
 }
 
 /************** End of func.c ************************************************/
@@ -177905,75 +172301,44 @@ var _iLn1 int32
 var _autoInc = [12]TVdbeOpList{
 	0: {
 		Fopcode: uint8(m_OP_Null),
-		Fp1:     0,
-		Fp2:     0,
-		Fp3:     0,
 	},
 	1: {
 		Fopcode: uint8(m_OP_Rewind),
-		Fp1:     0,
 		Fp2:     int8(10),
-		Fp3:     0,
 	},
 	2: {
 		Fopcode: uint8(m_OP_Column),
-		Fp1:     0,
-		Fp2:     0,
-		Fp3:     0,
 	},
 	3: {
 		Fopcode: uint8(m_OP_Ne),
-		Fp1:     0,
 		Fp2:     int8(9),
-		Fp3:     0,
 	},
 	4: {
 		Fopcode: uint8(m_OP_Rowid),
-		Fp1:     0,
-		Fp2:     0,
-		Fp3:     0,
 	},
 	5: {
 		Fopcode: uint8(m_OP_Column),
-		Fp1:     0,
 		Fp2:     int8(1),
-		Fp3:     0,
 	},
 	6: {
 		Fopcode: uint8(m_OP_AddImm),
-		Fp1:     0,
-		Fp2:     0,
-		Fp3:     0,
 	},
 	7: {
 		Fopcode: uint8(m_OP_Copy),
-		Fp1:     0,
-		Fp2:     0,
-		Fp3:     0,
 	},
 	8: {
 		Fopcode: uint8(m_OP_Goto),
-		Fp1:     0,
 		Fp2:     int8(11),
-		Fp3:     0,
 	},
 	9: {
 		Fopcode: uint8(m_OP_Next),
-		Fp1:     0,
 		Fp2:     int8(2),
-		Fp3:     0,
 	},
 	10: {
 		Fopcode: uint8(m_OP_Integer),
-		Fp1:     0,
-		Fp2:     0,
-		Fp3:     0,
 	},
 	11: {
 		Fopcode: uint8(m_OP_Close),
-		Fp1:     0,
-		Fp2:     0,
-		Fp3:     0,
 	},
 }
 
@@ -178041,33 +172406,20 @@ var _iLn2 int32
 var _autoIncEnd = [5]TVdbeOpList{
 	0: {
 		Fopcode: uint8(m_OP_NotNull),
-		Fp1:     0,
 		Fp2:     int8(2),
-		Fp3:     0,
 	},
 	1: {
 		Fopcode: uint8(m_OP_NewRowid),
-		Fp1:     0,
-		Fp2:     0,
-		Fp3:     0,
 	},
 	2: {
 		Fopcode: uint8(m_OP_MakeRecord),
-		Fp1:     0,
 		Fp2:     int8(2),
-		Fp3:     0,
 	},
 	3: {
 		Fopcode: uint8(m_OP_Insert),
-		Fp1:     0,
-		Fp2:     0,
-		Fp3:     0,
 	},
 	4: {
 		Fopcode: uint8(m_OP_Close),
-		Fp1:     0,
-		Fp2:     0,
-		Fp3:     0,
 	},
 }
 
@@ -180995,36 +175347,26 @@ type TPragmaName = struct {
 
 var _aPragmaName = [67]TPragmaName{
 	0: {
-		FzName:      __ccgo_ts + 62499,
-		FePragTyp:   uint8(m_PragTyp_ANALYSIS_LIMIT),
-		FmPragFlg:   uint8(m_PragFlg_Result0),
-		FiPragCName: uint8(0),
-		FnPragCName: uint8(0),
-		FiArg:       uint64(0),
+		FzName:    __ccgo_ts + 62499,
+		FePragTyp: uint8(m_PragTyp_ANALYSIS_LIMIT),
+		FmPragFlg: uint8(m_PragFlg_Result0),
 	},
 	1: {
-		FzName:      __ccgo_ts + 25956,
-		FePragTyp:   uint8(m_PragTyp_HEADER_VALUE),
-		FmPragFlg:   uint8(libc.Int32FromInt32(m_PragFlg_NoColumns1) | libc.Int32FromInt32(m_PragFlg_Result0)),
-		FiPragCName: uint8(0),
-		FnPragCName: uint8(0),
-		FiArg:       uint64(m_BTREE_APPLICATION_ID),
+		FzName:    __ccgo_ts + 25956,
+		FePragTyp: uint8(m_PragTyp_HEADER_VALUE),
+		FmPragFlg: uint8(libc.Int32FromInt32(m_PragFlg_NoColumns1) | libc.Int32FromInt32(m_PragFlg_Result0)),
+		FiArg:     uint64(m_BTREE_APPLICATION_ID),
 	},
 	2: {
-		FzName:      __ccgo_ts + 25931,
-		FePragTyp:   uint8(m_PragTyp_AUTO_VACUUM),
-		FmPragFlg:   uint8(libc.Int32FromInt32(m_PragFlg_NeedSchema) | libc.Int32FromInt32(m_PragFlg_Result0) | libc.Int32FromInt32(m_PragFlg_SchemaReq) | libc.Int32FromInt32(m_PragFlg_NoColumns1)),
-		FiPragCName: uint8(0),
-		FnPragCName: uint8(0),
-		FiArg:       uint64(0),
+		FzName:    __ccgo_ts + 25931,
+		FePragTyp: uint8(m_PragTyp_AUTO_VACUUM),
+		FmPragFlg: uint8(libc.Int32FromInt32(m_PragFlg_NeedSchema) | libc.Int32FromInt32(m_PragFlg_Result0) | libc.Int32FromInt32(m_PragFlg_SchemaReq) | libc.Int32FromInt32(m_PragFlg_NoColumns1)),
 	},
 	3: {
-		FzName:      __ccgo_ts + 62514,
-		FePragTyp:   uint8(m_PragTyp_FLAG),
-		FmPragFlg:   uint8(libc.Int32FromInt32(m_PragFlg_Result0) | libc.Int32FromInt32(m_PragFlg_NoColumns1)),
-		FiPragCName: uint8(0),
-		FnPragCName: uint8(0),
-		FiArg:       uint64(m_SQLITE_AutoIndex),
+		FzName:    __ccgo_ts + 62514,
+		FePragTyp: uint8(m_PragTyp_FLAG),
+		FmPragFlg: uint8(libc.Int32FromInt32(m_PragFlg_Result0) | libc.Int32FromInt32(m_PragFlg_NoColumns1)),
+		FiArg:     uint64(m_SQLITE_AutoIndex),
 	},
 	4: {
 		FzName:      __ccgo_ts + 62530,
@@ -181032,47 +175374,33 @@ var _aPragmaName = [67]TPragmaName{
 		FmPragFlg:   uint8(m_PragFlg_Result0),
 		FiPragCName: uint8(56),
 		FnPragCName: uint8(1),
-		FiArg:       uint64(0),
 	},
 	5: {
-		FzName:      __ccgo_ts + 62488,
-		FePragTyp:   uint8(m_PragTyp_CACHE_SIZE),
-		FmPragFlg:   uint8(libc.Int32FromInt32(m_PragFlg_NeedSchema) | libc.Int32FromInt32(m_PragFlg_Result0) | libc.Int32FromInt32(m_PragFlg_SchemaReq) | libc.Int32FromInt32(m_PragFlg_NoColumns1)),
-		FiPragCName: uint8(0),
-		FnPragCName: uint8(0),
-		FiArg:       uint64(0),
+		FzName:    __ccgo_ts + 62488,
+		FePragTyp: uint8(m_PragTyp_CACHE_SIZE),
+		FmPragFlg: uint8(libc.Int32FromInt32(m_PragFlg_NeedSchema) | libc.Int32FromInt32(m_PragFlg_Result0) | libc.Int32FromInt32(m_PragFlg_SchemaReq) | libc.Int32FromInt32(m_PragFlg_NoColumns1)),
 	},
 	6: {
-		FzName:      __ccgo_ts + 62543,
-		FePragTyp:   uint8(m_PragTyp_CACHE_SPILL),
-		FmPragFlg:   uint8(libc.Int32FromInt32(m_PragFlg_Result0) | libc.Int32FromInt32(m_PragFlg_SchemaReq) | libc.Int32FromInt32(m_PragFlg_NoColumns1)),
-		FiPragCName: uint8(0),
-		FnPragCName: uint8(0),
-		FiArg:       uint64(0),
+		FzName:    __ccgo_ts + 62543,
+		FePragTyp: uint8(m_PragTyp_CACHE_SPILL),
+		FmPragFlg: uint8(libc.Int32FromInt32(m_PragFlg_Result0) | libc.Int32FromInt32(m_PragFlg_SchemaReq) | libc.Int32FromInt32(m_PragFlg_NoColumns1)),
 	},
 	7: {
-		FzName:      __ccgo_ts + 62555,
-		FePragTyp:   uint8(m_PragTyp_CASE_SENSITIVE_LIKE),
-		FmPragFlg:   uint8(m_PragFlg_NoColumns),
-		FiPragCName: uint8(0),
-		FnPragCName: uint8(0),
-		FiArg:       uint64(0),
+		FzName:    __ccgo_ts + 62555,
+		FePragTyp: uint8(m_PragTyp_CASE_SENSITIVE_LIKE),
+		FmPragFlg: uint8(m_PragFlg_NoColumns),
 	},
 	8: {
-		FzName:      __ccgo_ts + 62575,
-		FePragTyp:   uint8(m_PragTyp_FLAG),
-		FmPragFlg:   uint8(libc.Int32FromInt32(m_PragFlg_Result0) | libc.Int32FromInt32(m_PragFlg_NoColumns1)),
-		FiPragCName: uint8(0),
-		FnPragCName: uint8(0),
-		FiArg:       uint64(m_SQLITE_CellSizeCk),
+		FzName:    __ccgo_ts + 62575,
+		FePragTyp: uint8(m_PragTyp_FLAG),
+		FmPragFlg: uint8(libc.Int32FromInt32(m_PragFlg_Result0) | libc.Int32FromInt32(m_PragFlg_NoColumns1)),
+		FiArg:     uint64(m_SQLITE_CellSizeCk),
 	},
 	9: {
-		FzName:      __ccgo_ts + 62591,
-		FePragTyp:   uint8(m_PragTyp_FLAG),
-		FmPragFlg:   uint8(libc.Int32FromInt32(m_PragFlg_Result0) | libc.Int32FromInt32(m_PragFlg_NoColumns1)),
-		FiPragCName: uint8(0),
-		FnPragCName: uint8(0),
-		FiArg:       uint64(m_SQLITE_CkptFullFSync),
+		FzName:    __ccgo_ts + 62591,
+		FePragTyp: uint8(m_PragTyp_FLAG),
+		FmPragFlg: uint8(libc.Int32FromInt32(m_PragFlg_Result0) | libc.Int32FromInt32(m_PragFlg_NoColumns1)),
+		FiArg:     uint64(m_SQLITE_CkptFullFSync),
 	},
 	10: {
 		FzName:      __ccgo_ts + 62612,
@@ -181080,31 +175408,23 @@ var _aPragmaName = [67]TPragmaName{
 		FmPragFlg:   uint8(m_PragFlg_Result0),
 		FiPragCName: uint8(38),
 		FnPragCName: uint8(2),
-		FiArg:       uint64(0),
 	},
 	11: {
-		FzName:      __ccgo_ts + 62627,
-		FePragTyp:   uint8(m_PragTyp_COMPILE_OPTIONS),
-		FmPragFlg:   uint8(m_PragFlg_Result0),
-		FiPragCName: uint8(0),
-		FnPragCName: uint8(0),
-		FiArg:       uint64(0),
+		FzName:    __ccgo_ts + 62627,
+		FePragTyp: uint8(m_PragTyp_COMPILE_OPTIONS),
+		FmPragFlg: uint8(m_PragFlg_Result0),
 	},
 	12: {
-		FzName:      __ccgo_ts + 62643,
-		FePragTyp:   uint8(m_PragTyp_FLAG),
-		FmPragFlg:   uint8(libc.Int32FromInt32(m_PragFlg_Result0) | libc.Int32FromInt32(m_PragFlg_NoColumns1)),
-		FiPragCName: uint8(0),
-		FnPragCName: uint8(0),
-		FiArg:       uint64(libc.Int32FromInt32(0x00001)) << libc.Int32FromInt32(32),
+		FzName:    __ccgo_ts + 62643,
+		FePragTyp: uint8(m_PragTyp_FLAG),
+		FmPragFlg: uint8(libc.Int32FromInt32(m_PragFlg_Result0) | libc.Int32FromInt32(m_PragFlg_NoColumns1)),
+		FiArg:     uint64(libc.Int32FromInt32(0x00001)) << libc.Int32FromInt32(32),
 	},
 	13: {
-		FzName:      __ccgo_ts + 62657,
-		FePragTyp:   uint8(m_PragTyp_HEADER_VALUE),
-		FmPragFlg:   uint8(libc.Int32FromInt32(m_PragFlg_ReadOnly) | libc.Int32FromInt32(m_PragFlg_Result0)),
-		FiPragCName: uint8(0),
-		FnPragCName: uint8(0),
-		FiArg:       uint64(m_BTREE_DATA_VERSION),
+		FzName:    __ccgo_ts + 62657,
+		FePragTyp: uint8(m_PragTyp_HEADER_VALUE),
+		FmPragFlg: uint8(libc.Int32FromInt32(m_PragFlg_ReadOnly) | libc.Int32FromInt32(m_PragFlg_Result0)),
+		FiArg:     uint64(m_BTREE_DATA_VERSION),
 	},
 	14: {
 		FzName:      __ccgo_ts + 62670,
@@ -181112,7 +175432,6 @@ var _aPragmaName = [67]TPragmaName{
 		FmPragFlg:   uint8(m_PragFlg_Result0),
 		FiPragCName: uint8(47),
 		FnPragCName: uint8(3),
-		FiArg:       uint64(0),
 	},
 	15: {
 		FzName:      __ccgo_ts + 62684,
@@ -181120,31 +175439,23 @@ var _aPragmaName = [67]TPragmaName{
 		FmPragFlg:   uint8(libc.Int32FromInt32(m_PragFlg_NeedSchema) | libc.Int32FromInt32(m_PragFlg_Result0) | libc.Int32FromInt32(m_PragFlg_SchemaReq) | libc.Int32FromInt32(m_PragFlg_NoColumns1)),
 		FiPragCName: uint8(55),
 		FnPragCName: uint8(1),
-		FiArg:       uint64(0),
 	},
 	16: {
-		FzName:      __ccgo_ts + 62703,
-		FePragTyp:   uint8(m_PragTyp_FLAG),
-		FmPragFlg:   uint8(libc.Int32FromInt32(m_PragFlg_Result0) | libc.Int32FromInt32(m_PragFlg_NoColumns1)),
-		FiPragCName: uint8(0),
-		FnPragCName: uint8(0),
-		FiArg:       uint64(m_SQLITE_DeferFKs),
+		FzName:    __ccgo_ts + 62703,
+		FePragTyp: uint8(m_PragTyp_FLAG),
+		FmPragFlg: uint8(libc.Int32FromInt32(m_PragFlg_Result0) | libc.Int32FromInt32(m_PragFlg_NoColumns1)),
+		FiArg:     uint64(m_SQLITE_DeferFKs),
 	},
 	17: {
-		FzName:      __ccgo_ts + 62722,
-		FePragTyp:   uint8(m_PragTyp_FLAG),
-		FmPragFlg:   uint8(libc.Int32FromInt32(m_PragFlg_Result0) | libc.Int32FromInt32(m_PragFlg_NoColumns1)),
-		FiPragCName: uint8(0),
-		FnPragCName: uint8(0),
-		FiArg:       uint64(m_SQLITE_NullCallback),
+		FzName:    __ccgo_ts + 62722,
+		FePragTyp: uint8(m_PragTyp_FLAG),
+		FmPragFlg: uint8(libc.Int32FromInt32(m_PragFlg_Result0) | libc.Int32FromInt32(m_PragFlg_NoColumns1)),
+		FiArg:     uint64(m_SQLITE_NullCallback),
 	},
 	18: {
-		FzName:      __ccgo_ts + 987,
-		FePragTyp:   uint8(m_PragTyp_ENCODING),
-		FmPragFlg:   uint8(libc.Int32FromInt32(m_PragFlg_Result0) | libc.Int32FromInt32(m_PragFlg_NoColumns1)),
-		FiPragCName: uint8(0),
-		FnPragCName: uint8(0),
-		FiArg:       uint64(0),
+		FzName:    __ccgo_ts + 987,
+		FePragTyp: uint8(m_PragTyp_ENCODING),
+		FmPragFlg: uint8(libc.Int32FromInt32(m_PragFlg_Result0) | libc.Int32FromInt32(m_PragFlg_NoColumns1)),
 	},
 	19: {
 		FzName:      __ccgo_ts + 62745,
@@ -181152,47 +175463,35 @@ var _aPragmaName = [67]TPragmaName{
 		FmPragFlg:   uint8(libc.Int32FromInt32(m_PragFlg_NeedSchema) | libc.Int32FromInt32(m_PragFlg_Result0) | libc.Int32FromInt32(m_PragFlg_Result1) | libc.Int32FromInt32(m_PragFlg_SchemaOpt)),
 		FiPragCName: uint8(43),
 		FnPragCName: uint8(4),
-		FiArg:       uint64(0),
 	},
 	20: {
 		FzName:      __ccgo_ts + 62763,
 		FePragTyp:   uint8(m_PragTyp_FOREIGN_KEY_LIST),
 		FmPragFlg:   uint8(libc.Int32FromInt32(m_PragFlg_NeedSchema) | libc.Int32FromInt32(m_PragFlg_Result1) | libc.Int32FromInt32(m_PragFlg_SchemaOpt)),
-		FiPragCName: uint8(0),
 		FnPragCName: uint8(8),
-		FiArg:       uint64(0),
 	},
 	21: {
-		FzName:      __ccgo_ts + 62780,
-		FePragTyp:   uint8(m_PragTyp_FLAG),
-		FmPragFlg:   uint8(libc.Int32FromInt32(m_PragFlg_Result0) | libc.Int32FromInt32(m_PragFlg_NoColumns1)),
-		FiPragCName: uint8(0),
-		FnPragCName: uint8(0),
-		FiArg:       uint64(m_SQLITE_ForeignKeys),
+		FzName:    __ccgo_ts + 62780,
+		FePragTyp: uint8(m_PragTyp_FLAG),
+		FmPragFlg: uint8(libc.Int32FromInt32(m_PragFlg_Result0) | libc.Int32FromInt32(m_PragFlg_NoColumns1)),
+		FiArg:     uint64(m_SQLITE_ForeignKeys),
 	},
 	22: {
-		FzName:      __ccgo_ts + 62793,
-		FePragTyp:   uint8(m_PragTyp_HEADER_VALUE),
-		FmPragFlg:   uint8(libc.Int32FromInt32(m_PragFlg_ReadOnly) | libc.Int32FromInt32(m_PragFlg_Result0)),
-		FiPragCName: uint8(0),
-		FnPragCName: uint8(0),
-		FiArg:       uint64(m_BTREE_FREE_PAGE_COUNT),
+		FzName:    __ccgo_ts + 62793,
+		FePragTyp: uint8(m_PragTyp_HEADER_VALUE),
+		FmPragFlg: uint8(libc.Int32FromInt32(m_PragFlg_ReadOnly) | libc.Int32FromInt32(m_PragFlg_Result0)),
 	},
 	23: {
-		FzName:      __ccgo_ts + 62808,
-		FePragTyp:   uint8(m_PragTyp_FLAG),
-		FmPragFlg:   uint8(libc.Int32FromInt32(m_PragFlg_Result0) | libc.Int32FromInt32(m_PragFlg_NoColumns1)),
-		FiPragCName: uint8(0),
-		FnPragCName: uint8(0),
-		FiArg:       uint64(m_SQLITE_FullColNames),
+		FzName:    __ccgo_ts + 62808,
+		FePragTyp: uint8(m_PragTyp_FLAG),
+		FmPragFlg: uint8(libc.Int32FromInt32(m_PragFlg_Result0) | libc.Int32FromInt32(m_PragFlg_NoColumns1)),
+		FiArg:     uint64(m_SQLITE_FullColNames),
 	},
 	24: {
-		FzName:      __ccgo_ts + 62826,
-		FePragTyp:   uint8(m_PragTyp_FLAG),
-		FmPragFlg:   uint8(libc.Int32FromInt32(m_PragFlg_Result0) | libc.Int32FromInt32(m_PragFlg_NoColumns1)),
-		FiPragCName: uint8(0),
-		FnPragCName: uint8(0),
-		FiArg:       uint64(m_SQLITE_FullFSync),
+		FzName:    __ccgo_ts + 62826,
+		FePragTyp: uint8(m_PragTyp_FLAG),
+		FmPragFlg: uint8(libc.Int32FromInt32(m_PragFlg_Result0) | libc.Int32FromInt32(m_PragFlg_NoColumns1)),
+		FiArg:     uint64(m_SQLITE_FullFSync),
 	},
 	25: {
 		FzName:      __ccgo_ts + 62836,
@@ -181200,31 +175499,22 @@ var _aPragmaName = [67]TPragmaName{
 		FmPragFlg:   uint8(m_PragFlg_Result0),
 		FiPragCName: uint8(27),
 		FnPragCName: uint8(6),
-		FiArg:       uint64(0),
 	},
 	26: {
-		FzName:      __ccgo_ts + 62850,
-		FePragTyp:   uint8(m_PragTyp_HARD_HEAP_LIMIT),
-		FmPragFlg:   uint8(m_PragFlg_Result0),
-		FiPragCName: uint8(0),
-		FnPragCName: uint8(0),
-		FiArg:       uint64(0),
+		FzName:    __ccgo_ts + 62850,
+		FePragTyp: uint8(m_PragTyp_HARD_HEAP_LIMIT),
+		FmPragFlg: uint8(m_PragFlg_Result0),
 	},
 	27: {
-		FzName:      __ccgo_ts + 62866,
-		FePragTyp:   uint8(m_PragTyp_FLAG),
-		FmPragFlg:   uint8(libc.Int32FromInt32(m_PragFlg_Result0) | libc.Int32FromInt32(m_PragFlg_NoColumns1)),
-		FiPragCName: uint8(0),
-		FnPragCName: uint8(0),
-		FiArg:       uint64(m_SQLITE_IgnoreChecks),
+		FzName:    __ccgo_ts + 62866,
+		FePragTyp: uint8(m_PragTyp_FLAG),
+		FmPragFlg: uint8(libc.Int32FromInt32(m_PragFlg_Result0) | libc.Int32FromInt32(m_PragFlg_NoColumns1)),
+		FiArg:     uint64(m_SQLITE_IgnoreChecks),
 	},
 	28: {
-		FzName:      __ccgo_ts + 62891,
-		FePragTyp:   uint8(m_PragTyp_INCREMENTAL_VACUUM),
-		FmPragFlg:   uint8(libc.Int32FromInt32(m_PragFlg_NeedSchema) | libc.Int32FromInt32(m_PragFlg_NoColumns)),
-		FiPragCName: uint8(0),
-		FnPragCName: uint8(0),
-		FiArg:       uint64(0),
+		FzName:    __ccgo_ts + 62891,
+		FePragTyp: uint8(m_PragTyp_INCREMENTAL_VACUUM),
+		FmPragFlg: uint8(libc.Int32FromInt32(m_PragFlg_NeedSchema) | libc.Int32FromInt32(m_PragFlg_NoColumns)),
 	},
 	29: {
 		FzName:      __ccgo_ts + 62910,
@@ -181232,7 +175522,6 @@ var _aPragmaName = [67]TPragmaName{
 		FmPragFlg:   uint8(libc.Int32FromInt32(m_PragFlg_NeedSchema) | libc.Int32FromInt32(m_PragFlg_Result1) | libc.Int32FromInt32(m_PragFlg_SchemaOpt)),
 		FiPragCName: uint8(21),
 		FnPragCName: uint8(3),
-		FiArg:       uint64(0),
 	},
 	30: {
 		FzName:      __ccgo_ts + 62921,
@@ -181240,7 +175529,6 @@ var _aPragmaName = [67]TPragmaName{
 		FmPragFlg:   uint8(libc.Int32FromInt32(m_PragFlg_NeedSchema) | libc.Int32FromInt32(m_PragFlg_Result1) | libc.Int32FromInt32(m_PragFlg_SchemaOpt)),
 		FiPragCName: uint8(38),
 		FnPragCName: uint8(5),
-		FiArg:       uint64(0),
 	},
 	31: {
 		FzName:      __ccgo_ts + 62932,
@@ -181251,36 +175539,25 @@ var _aPragmaName = [67]TPragmaName{
 		FiArg:       uint64(1),
 	},
 	32: {
-		FzName:      __ccgo_ts + 62944,
-		FePragTyp:   uint8(m_PragTyp_INTEGRITY_CHECK),
-		FmPragFlg:   uint8(libc.Int32FromInt32(m_PragFlg_NeedSchema) | libc.Int32FromInt32(m_PragFlg_Result0) | libc.Int32FromInt32(m_PragFlg_Result1) | libc.Int32FromInt32(m_PragFlg_SchemaOpt)),
-		FiPragCName: uint8(0),
-		FnPragCName: uint8(0),
-		FiArg:       uint64(0),
+		FzName:    __ccgo_ts + 62944,
+		FePragTyp: uint8(m_PragTyp_INTEGRITY_CHECK),
+		FmPragFlg: uint8(libc.Int32FromInt32(m_PragFlg_NeedSchema) | libc.Int32FromInt32(m_PragFlg_Result0) | libc.Int32FromInt32(m_PragFlg_Result1) | libc.Int32FromInt32(m_PragFlg_SchemaOpt)),
 	},
 	33: {
-		FzName:      __ccgo_ts + 62960,
-		FePragTyp:   uint8(m_PragTyp_JOURNAL_MODE),
-		FmPragFlg:   uint8(libc.Int32FromInt32(m_PragFlg_NeedSchema) | libc.Int32FromInt32(m_PragFlg_Result0) | libc.Int32FromInt32(m_PragFlg_SchemaReq)),
-		FiPragCName: uint8(0),
-		FnPragCName: uint8(0),
-		FiArg:       uint64(0),
+		FzName:    __ccgo_ts + 62960,
+		FePragTyp: uint8(m_PragTyp_JOURNAL_MODE),
+		FmPragFlg: uint8(libc.Int32FromInt32(m_PragFlg_NeedSchema) | libc.Int32FromInt32(m_PragFlg_Result0) | libc.Int32FromInt32(m_PragFlg_SchemaReq)),
 	},
 	34: {
-		FzName:      __ccgo_ts + 62973,
-		FePragTyp:   uint8(m_PragTyp_JOURNAL_SIZE_LIMIT),
-		FmPragFlg:   uint8(libc.Int32FromInt32(m_PragFlg_Result0) | libc.Int32FromInt32(m_PragFlg_SchemaReq)),
-		FiPragCName: uint8(0),
-		FnPragCName: uint8(0),
-		FiArg:       uint64(0),
+		FzName:    __ccgo_ts + 62973,
+		FePragTyp: uint8(m_PragTyp_JOURNAL_SIZE_LIMIT),
+		FmPragFlg: uint8(libc.Int32FromInt32(m_PragFlg_Result0) | libc.Int32FromInt32(m_PragFlg_SchemaReq)),
 	},
 	35: {
-		FzName:      __ccgo_ts + 41577,
-		FePragTyp:   uint8(m_PragTyp_FLAG),
-		FmPragFlg:   uint8(libc.Int32FromInt32(m_PragFlg_Result0) | libc.Int32FromInt32(m_PragFlg_NoColumns1)),
-		FiPragCName: uint8(0),
-		FnPragCName: uint8(0),
-		FiArg:       uint64(m_SQLITE_LegacyAlter),
+		FzName:    __ccgo_ts + 41577,
+		FePragTyp: uint8(m_PragTyp_FLAG),
+		FmPragFlg: uint8(libc.Int32FromInt32(m_PragFlg_Result0) | libc.Int32FromInt32(m_PragFlg_NoColumns1)),
+		FiArg:     uint64(m_SQLITE_LegacyAlter),
 	},
 	36: {
 		FzName:      __ccgo_ts + 62992,
@@ -181288,31 +175565,20 @@ var _aPragmaName = [67]TPragmaName{
 		FmPragFlg:   uint8(m_PragFlg_Result0),
 		FiPragCName: uint8(53),
 		FnPragCName: uint8(2),
-		FiArg:       uint64(0),
 	},
 	37: {
-		FzName:      __ccgo_ts + 63004,
-		FePragTyp:   uint8(m_PragTyp_LOCKING_MODE),
-		FmPragFlg:   uint8(libc.Int32FromInt32(m_PragFlg_Result0) | libc.Int32FromInt32(m_PragFlg_SchemaReq)),
-		FiPragCName: uint8(0),
-		FnPragCName: uint8(0),
-		FiArg:       uint64(0),
+		FzName:    __ccgo_ts + 63004,
+		FePragTyp: uint8(m_PragTyp_LOCKING_MODE),
+		FmPragFlg: uint8(libc.Int32FromInt32(m_PragFlg_Result0) | libc.Int32FromInt32(m_PragFlg_SchemaReq)),
 	},
 	38: {
-		FzName:      __ccgo_ts + 63017,
-		FePragTyp:   uint8(m_PragTyp_PAGE_COUNT),
-		FmPragFlg:   uint8(libc.Int32FromInt32(m_PragFlg_NeedSchema) | libc.Int32FromInt32(m_PragFlg_Result0) | libc.Int32FromInt32(m_PragFlg_SchemaReq)),
-		FiPragCName: uint8(0),
-		FnPragCName: uint8(0),
-		FiArg:       uint64(0),
+		FzName:    __ccgo_ts + 63017,
+		FePragTyp: uint8(m_PragTyp_PAGE_COUNT),
+		FmPragFlg: uint8(libc.Int32FromInt32(m_PragFlg_NeedSchema) | libc.Int32FromInt32(m_PragFlg_Result0) | libc.Int32FromInt32(m_PragFlg_SchemaReq)),
 	},
 	39: {
-		FzName:      __ccgo_ts + 63032,
-		FePragTyp:   uint8(m_PragTyp_MMAP_SIZE),
-		FmPragFlg:   uint8(0),
-		FiPragCName: uint8(0),
-		FnPragCName: uint8(0),
-		FiArg:       uint64(0),
+		FzName:    __ccgo_ts + 63032,
+		FePragTyp: uint8(m_PragTyp_MMAP_SIZE),
 	},
 	40: {
 		FzName:      __ccgo_ts + 63042,
@@ -181320,31 +175586,21 @@ var _aPragmaName = [67]TPragmaName{
 		FmPragFlg:   uint8(m_PragFlg_Result0),
 		FiPragCName: uint8(9),
 		FnPragCName: uint8(1),
-		FiArg:       uint64(0),
 	},
 	41: {
-		FzName:      __ccgo_ts + 63054,
-		FePragTyp:   uint8(m_PragTyp_OPTIMIZE),
-		FmPragFlg:   uint8(libc.Int32FromInt32(m_PragFlg_Result1) | libc.Int32FromInt32(m_PragFlg_NeedSchema)),
-		FiPragCName: uint8(0),
-		FnPragCName: uint8(0),
-		FiArg:       uint64(0),
+		FzName:    __ccgo_ts + 63054,
+		FePragTyp: uint8(m_PragTyp_OPTIMIZE),
+		FmPragFlg: uint8(libc.Int32FromInt32(m_PragFlg_Result1) | libc.Int32FromInt32(m_PragFlg_NeedSchema)),
 	},
 	42: {
-		FzName:      __ccgo_ts + 63063,
-		FePragTyp:   uint8(m_PragTyp_PAGE_COUNT),
-		FmPragFlg:   uint8(libc.Int32FromInt32(m_PragFlg_NeedSchema) | libc.Int32FromInt32(m_PragFlg_Result0) | libc.Int32FromInt32(m_PragFlg_SchemaReq)),
-		FiPragCName: uint8(0),
-		FnPragCName: uint8(0),
-		FiArg:       uint64(0),
+		FzName:    __ccgo_ts + 63063,
+		FePragTyp: uint8(m_PragTyp_PAGE_COUNT),
+		FmPragFlg: uint8(libc.Int32FromInt32(m_PragFlg_NeedSchema) | libc.Int32FromInt32(m_PragFlg_Result0) | libc.Int32FromInt32(m_PragFlg_SchemaReq)),
 	},
 	43: {
-		FzName:      __ccgo_ts + 25921,
-		FePragTyp:   uint8(m_PragTyp_PAGE_SIZE),
-		FmPragFlg:   uint8(libc.Int32FromInt32(m_PragFlg_Result0) | libc.Int32FromInt32(m_PragFlg_SchemaReq) | libc.Int32FromInt32(m_PragFlg_NoColumns1)),
-		FiPragCName: uint8(0),
-		FnPragCName: uint8(0),
-		FiArg:       uint64(0),
+		FzName:    __ccgo_ts + 25921,
+		FePragTyp: uint8(m_PragTyp_PAGE_SIZE),
+		FmPragFlg: uint8(libc.Int32FromInt32(m_PragFlg_Result0) | libc.Int32FromInt32(m_PragFlg_SchemaReq) | libc.Int32FromInt32(m_PragFlg_NoColumns1)),
 	},
 	44: {
 		FzName:      __ccgo_ts + 63074,
@@ -181352,95 +175608,67 @@ var _aPragmaName = [67]TPragmaName{
 		FmPragFlg:   uint8(m_PragFlg_Result0),
 		FiPragCName: uint8(9),
 		FnPragCName: uint8(1),
-		FiArg:       uint64(0),
 	},
 	45: {
-		FzName:      __ccgo_ts + 63086,
-		FePragTyp:   uint8(m_PragTyp_FLAG),
-		FmPragFlg:   uint8(libc.Int32FromInt32(m_PragFlg_Result0) | libc.Int32FromInt32(m_PragFlg_NoColumns1)),
-		FiPragCName: uint8(0),
-		FnPragCName: uint8(0),
-		FiArg:       uint64(m_SQLITE_QueryOnly),
+		FzName:    __ccgo_ts + 63086,
+		FePragTyp: uint8(m_PragTyp_FLAG),
+		FmPragFlg: uint8(libc.Int32FromInt32(m_PragFlg_Result0) | libc.Int32FromInt32(m_PragFlg_NoColumns1)),
+		FiArg:     uint64(m_SQLITE_QueryOnly),
 	},
 	46: {
-		FzName:      __ccgo_ts + 63097,
-		FePragTyp:   uint8(m_PragTyp_INTEGRITY_CHECK),
-		FmPragFlg:   uint8(libc.Int32FromInt32(m_PragFlg_NeedSchema) | libc.Int32FromInt32(m_PragFlg_Result0) | libc.Int32FromInt32(m_PragFlg_Result1) | libc.Int32FromInt32(m_PragFlg_SchemaOpt)),
-		FiPragCName: uint8(0),
-		FnPragCName: uint8(0),
-		FiArg:       uint64(0),
+		FzName:    __ccgo_ts + 63097,
+		FePragTyp: uint8(m_PragTyp_INTEGRITY_CHECK),
+		FmPragFlg: uint8(libc.Int32FromInt32(m_PragFlg_NeedSchema) | libc.Int32FromInt32(m_PragFlg_Result0) | libc.Int32FromInt32(m_PragFlg_Result1) | libc.Int32FromInt32(m_PragFlg_SchemaOpt)),
 	},
 	47: {
-		FzName:      __ccgo_ts + 63109,
-		FePragTyp:   uint8(m_PragTyp_FLAG),
-		FmPragFlg:   uint8(libc.Int32FromInt32(m_PragFlg_Result0) | libc.Int32FromInt32(m_PragFlg_NoColumns1)),
-		FiPragCName: uint8(0),
-		FnPragCName: uint8(0),
-		FiArg:       uint64(m_SQLITE_ReadUncommit),
+		FzName:    __ccgo_ts + 63109,
+		FePragTyp: uint8(m_PragTyp_FLAG),
+		FmPragFlg: uint8(libc.Int32FromInt32(m_PragFlg_Result0) | libc.Int32FromInt32(m_PragFlg_NoColumns1)),
+		FiArg:     uint64(m_SQLITE_ReadUncommit),
 	},
 	48: {
-		FzName:      __ccgo_ts + 63126,
-		FePragTyp:   uint8(m_PragTyp_FLAG),
-		FmPragFlg:   uint8(libc.Int32FromInt32(m_PragFlg_Result0) | libc.Int32FromInt32(m_PragFlg_NoColumns1)),
-		FiPragCName: uint8(0),
-		FnPragCName: uint8(0),
-		FiArg:       uint64(m_SQLITE_RecTriggers),
+		FzName:    __ccgo_ts + 63126,
+		FePragTyp: uint8(m_PragTyp_FLAG),
+		FmPragFlg: uint8(libc.Int32FromInt32(m_PragFlg_Result0) | libc.Int32FromInt32(m_PragFlg_NoColumns1)),
+		FiArg:     uint64(m_SQLITE_RecTriggers),
 	},
 	49: {
-		FzName:      __ccgo_ts + 63145,
-		FePragTyp:   uint8(m_PragTyp_FLAG),
-		FmPragFlg:   uint8(libc.Int32FromInt32(m_PragFlg_Result0) | libc.Int32FromInt32(m_PragFlg_NoColumns1)),
-		FiPragCName: uint8(0),
-		FnPragCName: uint8(0),
-		FiArg:       uint64(m_SQLITE_ReverseOrder),
+		FzName:    __ccgo_ts + 63145,
+		FePragTyp: uint8(m_PragTyp_FLAG),
+		FmPragFlg: uint8(libc.Int32FromInt32(m_PragFlg_Result0) | libc.Int32FromInt32(m_PragFlg_NoColumns1)),
+		FiArg:     uint64(m_SQLITE_ReverseOrder),
 	},
 	50: {
-		FzName:      __ccgo_ts + 14684,
-		FePragTyp:   uint8(m_PragTyp_HEADER_VALUE),
-		FmPragFlg:   uint8(libc.Int32FromInt32(m_PragFlg_NoColumns1) | libc.Int32FromInt32(m_PragFlg_Result0)),
-		FiPragCName: uint8(0),
-		FnPragCName: uint8(0),
-		FiArg:       uint64(m_BTREE_SCHEMA_VERSION),
+		FzName:    __ccgo_ts + 14684,
+		FePragTyp: uint8(m_PragTyp_HEADER_VALUE),
+		FmPragFlg: uint8(libc.Int32FromInt32(m_PragFlg_NoColumns1) | libc.Int32FromInt32(m_PragFlg_Result0)),
+		FiArg:     uint64(m_BTREE_SCHEMA_VERSION),
 	},
 	51: {
-		FzName:      __ccgo_ts + 14929,
-		FePragTyp:   uint8(m_PragTyp_SECURE_DELETE),
-		FmPragFlg:   uint8(m_PragFlg_Result0),
-		FiPragCName: uint8(0),
-		FnPragCName: uint8(0),
-		FiArg:       uint64(0),
+		FzName:    __ccgo_ts + 14929,
+		FePragTyp: uint8(m_PragTyp_SECURE_DELETE),
+		FmPragFlg: uint8(m_PragFlg_Result0),
 	},
 	52: {
-		FzName:      __ccgo_ts + 63171,
-		FePragTyp:   uint8(m_PragTyp_FLAG),
-		FmPragFlg:   uint8(libc.Int32FromInt32(m_PragFlg_Result0) | libc.Int32FromInt32(m_PragFlg_NoColumns1)),
-		FiPragCName: uint8(0),
-		FnPragCName: uint8(0),
-		FiArg:       uint64(m_SQLITE_ShortColNames),
+		FzName:    __ccgo_ts + 63171,
+		FePragTyp: uint8(m_PragTyp_FLAG),
+		FmPragFlg: uint8(libc.Int32FromInt32(m_PragFlg_Result0) | libc.Int32FromInt32(m_PragFlg_NoColumns1)),
+		FiArg:     uint64(m_SQLITE_ShortColNames),
 	},
 	53: {
-		FzName:      __ccgo_ts + 63190,
-		FePragTyp:   uint8(m_PragTyp_SHRINK_MEMORY),
-		FmPragFlg:   uint8(m_PragFlg_NoColumns),
-		FiPragCName: uint8(0),
-		FnPragCName: uint8(0),
-		FiArg:       uint64(0),
+		FzName:    __ccgo_ts + 63190,
+		FePragTyp: uint8(m_PragTyp_SHRINK_MEMORY),
+		FmPragFlg: uint8(m_PragFlg_NoColumns),
 	},
 	54: {
-		FzName:      __ccgo_ts + 63204,
-		FePragTyp:   uint8(m_PragTyp_SOFT_HEAP_LIMIT),
-		FmPragFlg:   uint8(m_PragFlg_Result0),
-		FiPragCName: uint8(0),
-		FnPragCName: uint8(0),
-		FiArg:       uint64(0),
+		FzName:    __ccgo_ts + 63204,
+		FePragTyp: uint8(m_PragTyp_SOFT_HEAP_LIMIT),
+		FmPragFlg: uint8(m_PragFlg_Result0),
 	},
 	55: {
-		FzName:      __ccgo_ts + 63220,
-		FePragTyp:   uint8(m_PragTyp_SYNCHRONOUS),
-		FmPragFlg:   uint8(libc.Int32FromInt32(m_PragFlg_NeedSchema) | libc.Int32FromInt32(m_PragFlg_Result0) | libc.Int32FromInt32(m_PragFlg_SchemaReq) | libc.Int32FromInt32(m_PragFlg_NoColumns1)),
-		FiPragCName: uint8(0),
-		FnPragCName: uint8(0),
-		FiArg:       uint64(0),
+		FzName:    __ccgo_ts + 63220,
+		FePragTyp: uint8(m_PragTyp_SYNCHRONOUS),
+		FmPragFlg: uint8(libc.Int32FromInt32(m_PragFlg_NeedSchema) | libc.Int32FromInt32(m_PragFlg_Result0) | libc.Int32FromInt32(m_PragFlg_SchemaReq) | libc.Int32FromInt32(m_PragFlg_NoColumns1)),
 	},
 	56: {
 		FzName:      __ccgo_ts + 63232,
@@ -181448,7 +175676,6 @@ var _aPragmaName = [67]TPragmaName{
 		FmPragFlg:   uint8(libc.Int32FromInt32(m_PragFlg_NeedSchema) | libc.Int32FromInt32(m_PragFlg_Result1) | libc.Int32FromInt32(m_PragFlg_SchemaOpt)),
 		FiPragCName: uint8(8),
 		FnPragCName: uint8(6),
-		FiArg:       uint64(0),
 	},
 	57: {
 		FzName:      __ccgo_ts + 63243,
@@ -181456,7 +175683,6 @@ var _aPragmaName = [67]TPragmaName{
 		FmPragFlg:   uint8(libc.Int32FromInt32(m_PragFlg_NeedSchema) | libc.Int32FromInt32(m_PragFlg_Result1)),
 		FiPragCName: uint8(15),
 		FnPragCName: uint8(6),
-		FiArg:       uint64(0),
 	},
 	58: {
 		FzName:      __ccgo_ts + 63254,
@@ -181467,52 +175693,35 @@ var _aPragmaName = [67]TPragmaName{
 		FiArg:       uint64(1),
 	},
 	59: {
-		FzName:      __ccgo_ts + 63266,
-		FePragTyp:   uint8(m_PragTyp_TEMP_STORE),
-		FmPragFlg:   uint8(libc.Int32FromInt32(m_PragFlg_Result0) | libc.Int32FromInt32(m_PragFlg_NoColumns1)),
-		FiPragCName: uint8(0),
-		FnPragCName: uint8(0),
-		FiArg:       uint64(0),
+		FzName:    __ccgo_ts + 63266,
+		FePragTyp: uint8(m_PragTyp_TEMP_STORE),
+		FmPragFlg: uint8(libc.Int32FromInt32(m_PragFlg_Result0) | libc.Int32FromInt32(m_PragFlg_NoColumns1)),
 	},
 	60: {
-		FzName:      __ccgo_ts + 63277,
-		FePragTyp:   uint8(m_PragTyp_TEMP_STORE_DIRECTORY),
-		FmPragFlg:   uint8(m_PragFlg_NoColumns1),
-		FiPragCName: uint8(0),
-		FnPragCName: uint8(0),
-		FiArg:       uint64(0),
+		FzName:    __ccgo_ts + 63277,
+		FePragTyp: uint8(m_PragTyp_TEMP_STORE_DIRECTORY),
+		FmPragFlg: uint8(m_PragFlg_NoColumns1),
 	},
 	61: {
-		FzName:      __ccgo_ts + 63298,
-		FePragTyp:   uint8(m_PragTyp_THREADS),
-		FmPragFlg:   uint8(m_PragFlg_Result0),
-		FiPragCName: uint8(0),
-		FnPragCName: uint8(0),
-		FiArg:       uint64(0),
+		FzName:    __ccgo_ts + 63298,
+		FePragTyp: uint8(m_PragTyp_THREADS),
+		FmPragFlg: uint8(m_PragFlg_Result0),
 	},
 	62: {
-		FzName:      __ccgo_ts + 41674,
-		FePragTyp:   uint8(m_PragTyp_FLAG),
-		FmPragFlg:   uint8(libc.Int32FromInt32(m_PragFlg_Result0) | libc.Int32FromInt32(m_PragFlg_NoColumns1)),
-		FiPragCName: uint8(0),
-		FnPragCName: uint8(0),
-		FiArg:       uint64(m_SQLITE_TrustedSchema),
+		FzName:    __ccgo_ts + 41674,
+		FePragTyp: uint8(m_PragTyp_FLAG),
+		FmPragFlg: uint8(libc.Int32FromInt32(m_PragFlg_Result0) | libc.Int32FromInt32(m_PragFlg_NoColumns1)),
+		FiArg:     uint64(m_SQLITE_TrustedSchema),
 	},
 	63: {
-		FzName:      __ccgo_ts + 25943,
-		FePragTyp:   uint8(m_PragTyp_HEADER_VALUE),
-		FmPragFlg:   uint8(libc.Int32FromInt32(m_PragFlg_NoColumns1) | libc.Int32FromInt32(m_PragFlg_Result0)),
-		FiPragCName: uint8(0),
-		FnPragCName: uint8(0),
-		FiArg:       uint64(m_BTREE_USER_VERSION),
+		FzName:    __ccgo_ts + 25943,
+		FePragTyp: uint8(m_PragTyp_HEADER_VALUE),
+		FmPragFlg: uint8(libc.Int32FromInt32(m_PragFlg_NoColumns1) | libc.Int32FromInt32(m_PragFlg_Result0)),
+		FiArg:     uint64(m_BTREE_USER_VERSION),
 	},
 	64: {
-		FzName:      __ccgo_ts + 63306,
-		FePragTyp:   uint8(m_PragTyp_WAL_AUTOCHECKPOINT),
-		FmPragFlg:   uint8(0),
-		FiPragCName: uint8(0),
-		FnPragCName: uint8(0),
-		FiArg:       uint64(0),
+		FzName:    __ccgo_ts + 63306,
+		FePragTyp: uint8(m_PragTyp_WAL_AUTOCHECKPOINT),
 	},
 	65: {
 		FzName:      __ccgo_ts + 63325,
@@ -181520,15 +175729,12 @@ var _aPragmaName = [67]TPragmaName{
 		FmPragFlg:   uint8(m_PragFlg_NeedSchema),
 		FiPragCName: uint8(50),
 		FnPragCName: uint8(3),
-		FiArg:       uint64(0),
 	},
 	66: {
-		FzName:      __ccgo_ts + 41689,
-		FePragTyp:   uint8(m_PragTyp_FLAG),
-		FmPragFlg:   uint8(libc.Int32FromInt32(m_PragFlg_Result0) | libc.Int32FromInt32(m_PragFlg_NoColumns1)),
-		FiPragCName: uint8(0),
-		FnPragCName: uint8(0),
-		FiArg:       uint64(libc.Int32FromInt32(m_SQLITE_WriteSchema) | libc.Int32FromInt32(m_SQLITE_NoSchemaError)),
+		FzName:    __ccgo_ts + 41689,
+		FePragTyp: uint8(m_PragTyp_FLAG),
+		FmPragFlg: uint8(libc.Int32FromInt32(m_PragFlg_Result0) | libc.Int32FromInt32(m_PragFlg_NoColumns1)),
+		FiArg:     uint64(libc.Int32FromInt32(m_SQLITE_WriteSchema) | libc.Int32FromInt32(m_SQLITE_NoSchemaError)),
 	},
 }
 
@@ -181576,7 +175782,6 @@ func _getSafetyLevel(tls *libc.TLS, z uintptr, omitFull int32, dflt Tu8) (r Tu8)
 var _zText = [25]int8{'o', 'n', 'o', 'f', 'f', 'a', 'l', 's', 'e', 'y', 'e', 's', 't', 'r', 'u', 'e', 'x', 't', 'r', 'a', 'f', 'u', 'l', 'l'}
 
 var _iOffset = [8]Tu8{
-	0: uint8(0),
 	1: uint8(1),
 	2: uint8(2),
 	3: uint8(4),
@@ -181599,9 +175804,6 @@ var _iLength = [8]Tu8{
 
 var _iValue = [8]Tu8{
 	0: uint8(1),
-	1: uint8(0),
-	2: uint8(0),
-	3: uint8(0),
 	4: uint8(1),
 	5: uint8(1),
 	6: uint8(3),
@@ -181945,7 +176147,6 @@ func _pragmaFunclistLine(tls *libc.TLS, v uintptr, p uintptr, isBuiltin int32, s
 }
 
 var _azEnc = [4]uintptr{
-	0: uintptr(0),
 	1: __ccgo_ts + 925,
 	2: __ccgo_ts + 936,
 	3: __ccgo_ts + 944,
@@ -184230,13 +178431,9 @@ var _iLn3 int32
 var _getCacheSize = [9]TVdbeOpList{
 	0: {
 		Fopcode: uint8(m_OP_Transaction),
-		Fp1:     0,
-		Fp2:     0,
-		Fp3:     0,
 	},
 	1: {
 		Fopcode: uint8(m_OP_ReadCookie),
-		Fp1:     0,
 		Fp2:     int8(1),
 		Fp3:     int8(m_BTREE_DEFAULT_CACHE_SIZE),
 	},
@@ -184244,13 +178441,10 @@ var _getCacheSize = [9]TVdbeOpList{
 		Fopcode: uint8(m_OP_IfPos),
 		Fp1:     int8(1),
 		Fp2:     int8(8),
-		Fp3:     0,
 	},
 	3: {
 		Fopcode: uint8(m_OP_Integer),
-		Fp1:     0,
 		Fp2:     int8(2),
-		Fp3:     0,
 	},
 	4: {
 		Fopcode: uint8(m_OP_Subtract),
@@ -184262,25 +178456,18 @@ var _getCacheSize = [9]TVdbeOpList{
 		Fopcode: uint8(m_OP_IfPos),
 		Fp1:     int8(1),
 		Fp2:     int8(8),
-		Fp3:     0,
 	},
 	6: {
 		Fopcode: uint8(m_OP_Integer),
-		Fp1:     0,
 		Fp2:     int8(1),
-		Fp3:     0,
 	},
 	7: {
 		Fopcode: uint8(m_OP_Noop),
-		Fp1:     0,
-		Fp2:     0,
-		Fp3:     0,
 	},
 	8: {
 		Fopcode: uint8(m_OP_ResultRow),
 		Fp1:     int8(1),
 		Fp2:     int8(1),
-		Fp3:     0,
 	},
 }
 
@@ -184294,33 +178481,24 @@ var _iLn11 int32
 var _setMeta6 = [5]TVdbeOpList{
 	0: {
 		Fopcode: uint8(m_OP_Transaction),
-		Fp1:     0,
 		Fp2:     int8(1),
-		Fp3:     0,
 	},
 	1: {
 		Fopcode: uint8(m_OP_ReadCookie),
-		Fp1:     0,
 		Fp2:     int8(1),
 		Fp3:     int8(m_BTREE_LARGEST_ROOT_PAGE),
 	},
 	2: {
 		Fopcode: uint8(m_OP_If),
 		Fp1:     int8(1),
-		Fp2:     0,
-		Fp3:     0,
 	},
 	3: {
 		Fopcode: uint8(m_OP_Halt),
-		Fp1:     m_SQLITE_OK,
 		Fp2:     int8(m_OE_Abort),
-		Fp3:     0,
 	},
 	4: {
 		Fopcode: uint8(m_OP_SetCookie),
-		Fp1:     0,
 		Fp2:     int8(m_BTREE_INCR_VACUUM),
-		Fp3:     0,
 	},
 }
 
@@ -184340,44 +178518,31 @@ var _endCode = [7]TVdbeOpList{
 	0: {
 		Fopcode: uint8(m_OP_AddImm),
 		Fp1:     int8(1),
-		Fp2:     0,
-		Fp3:     0,
 	},
 	1: {
 		Fopcode: uint8(m_OP_IfNotZero),
 		Fp1:     int8(1),
 		Fp2:     int8(4),
-		Fp3:     0,
 	},
 	2: {
 		Fopcode: uint8(m_OP_String8),
-		Fp1:     0,
 		Fp2:     int8(3),
-		Fp3:     0,
 	},
 	3: {
 		Fopcode: uint8(m_OP_ResultRow),
 		Fp1:     int8(3),
 		Fp2:     int8(1),
-		Fp3:     0,
 	},
 	4: {
 		Fopcode: uint8(m_OP_Halt),
-		Fp1:     0,
-		Fp2:     0,
-		Fp3:     0,
 	},
 	5: {
 		Fopcode: uint8(m_OP_String8),
-		Fp1:     0,
 		Fp2:     int8(3),
-		Fp3:     0,
 	},
 	6: {
 		Fopcode: uint8(m_OP_Goto),
-		Fp1:     0,
 		Fp2:     int8(3),
-		Fp3:     0,
 	},
 }
 
@@ -184412,28 +178577,20 @@ var _encnames1 = [9]struct {
 	},
 	6: {
 		FzName: __ccgo_ts + 64015,
-		Fenc:   uint8(0),
 	},
 	7: {
 		FzName: __ccgo_ts + 11129,
-		Fenc:   uint8(0),
 	},
-	8: {},
 }
 
 /* Write the specified cookie value */
 var _setCookie = [2]TVdbeOpList{
 	0: {
 		Fopcode: uint8(m_OP_Transaction),
-		Fp1:     0,
 		Fp2:     int8(1),
-		Fp3:     0,
 	},
 	1: {
 		Fopcode: uint8(m_OP_SetCookie),
-		Fp1:     0,
-		Fp2:     0,
-		Fp3:     0,
 	},
 }
 
@@ -184441,21 +178598,15 @@ var _setCookie = [2]TVdbeOpList{
 var _readCookie = [3]TVdbeOpList{
 	0: {
 		Fopcode: uint8(m_OP_Transaction),
-		Fp1:     0,
-		Fp2:     0,
-		Fp3:     0,
 	},
 	1: {
 		Fopcode: uint8(m_OP_ReadCookie),
-		Fp1:     0,
 		Fp2:     int8(1),
-		Fp3:     0,
 	},
 	2: {
 		Fopcode: uint8(m_OP_ResultRow),
 		Fp1:     int8(1),
 		Fp2:     int8(1),
-		Fp3:     0,
 	},
 }
 
@@ -184823,40 +178974,13 @@ func _pragmaVtabRowid(tls *libc.TLS, pVtabCursor uintptr, p uintptr) (r int32) {
 // C documentation
 //
 //	/* The pragma virtual table object */
-var _pragmaVtabModule = Tsqlite3_module{
-	FiVersion:      int32(0),
-	FxCreate:       uintptr(0),
-	FxConnect:      uintptr(0),
-	FxBestIndex:    uintptr(0),
-	FxDisconnect:   uintptr(0),
-	FxDestroy:      uintptr(0),
-	FxOpen:         uintptr(0),
-	FxClose:        uintptr(0),
-	FxFilter:       uintptr(0),
-	FxNext:         uintptr(0),
-	FxEof:          uintptr(0),
-	FxColumn:       uintptr(0),
-	FxRowid:        uintptr(0),
-	FxUpdate:       uintptr(0),
-	FxBegin:        uintptr(0),
-	FxSync:         uintptr(0),
-	FxCommit:       uintptr(0),
-	FxRollback:     uintptr(0),
-	FxFindFunction: uintptr(0),
-	FxRename:       uintptr(0),
-	FxSavepoint:    uintptr(0),
-	FxRelease:      uintptr(0),
-	FxRollbackTo:   uintptr(0),
-	FxShadowName:   uintptr(0),
-}
+var _pragmaVtabModule = Tsqlite3_module{}
 
 func init() {
 	p := unsafe.Pointer(&_pragmaVtabModule)
-	*(*uintptr)(unsafe.Add(p, 8)) = uintptr(0)
 	*(*uintptr)(unsafe.Add(p, 16)) = __ccgo_fp(_pragmaVtabConnect)
 	*(*uintptr)(unsafe.Add(p, 24)) = __ccgo_fp(_pragmaVtabBestIndex)
 	*(*uintptr)(unsafe.Add(p, 32)) = __ccgo_fp(_pragmaVtabDisconnect)
-	*(*uintptr)(unsafe.Add(p, 40)) = uintptr(0)
 	*(*uintptr)(unsafe.Add(p, 48)) = __ccgo_fp(_pragmaVtabOpen)
 	*(*uintptr)(unsafe.Add(p, 56)) = __ccgo_fp(_pragmaVtabClose)
 	*(*uintptr)(unsafe.Add(p, 64)) = __ccgo_fp(_pragmaVtabFilter)
@@ -184864,17 +178988,6 @@ func init() {
 	*(*uintptr)(unsafe.Add(p, 80)) = __ccgo_fp(_pragmaVtabEof)
 	*(*uintptr)(unsafe.Add(p, 88)) = __ccgo_fp(_pragmaVtabColumn)
 	*(*uintptr)(unsafe.Add(p, 96)) = __ccgo_fp(_pragmaVtabRowid)
-	*(*uintptr)(unsafe.Add(p, 104)) = uintptr(0)
-	*(*uintptr)(unsafe.Add(p, 112)) = uintptr(0)
-	*(*uintptr)(unsafe.Add(p, 120)) = uintptr(0)
-	*(*uintptr)(unsafe.Add(p, 128)) = uintptr(0)
-	*(*uintptr)(unsafe.Add(p, 136)) = uintptr(0)
-	*(*uintptr)(unsafe.Add(p, 144)) = uintptr(0)
-	*(*uintptr)(unsafe.Add(p, 152)) = uintptr(0)
-	*(*uintptr)(unsafe.Add(p, 160)) = uintptr(0)
-	*(*uintptr)(unsafe.Add(p, 168)) = uintptr(0)
-	*(*uintptr)(unsafe.Add(p, 176)) = uintptr(0)
-	*(*uintptr)(unsafe.Add(p, 184)) = uintptr(0)
 }
 
 // C documentation
@@ -186269,7 +180382,6 @@ var _aKeyword = [7]struct {
 	Fcode  Tu8
 }{
 	0: {
-		Fi:     uint8(0),
 		FnChar: uint8(7),
 		Fcode:  uint8(m_JT_NATURAL),
 	},
@@ -197729,13 +191841,9 @@ var _aCopy = [10]uint8{
 	0: uint8(m_BTREE_SCHEMA_VERSION),
 	1: uint8(1),
 	2: uint8(m_BTREE_DEFAULT_CACHE_SIZE),
-	3: uint8(0),
 	4: uint8(m_BTREE_TEXT_ENCODING),
-	5: uint8(0),
 	6: uint8(m_BTREE_USER_VERSION),
-	7: uint8(0),
 	8: uint8(m_BTREE_APPLICATION_ID),
-	9: uint8(0),
 }
 
 /************** End of vacuum.c **********************************************/
@@ -202373,8 +196481,6 @@ _66:
  **         to force the output order to conform to an ORDER BY.
  */
 var _aStartOp = [8]Tu8{
-	0: uint8(0),
-	1: uint8(0),
 	2: uint8(m_OP_Rewind),
 	3: uint8(m_OP_Last),
 	4: uint8(m_OP_SeekGT),
@@ -211756,229 +205862,74 @@ func x_sqlite3WindowFunctions(tls *libc.TLS) {
 
 var _aWindowFuncs = [15]TFuncDef{
 	0: {
-		FnArg:      0,
 		FfuncFlags: uint32(libc.Int32FromInt32(m_SQLITE_FUNC_BUILTIN) | libc.Int32FromInt32(m_SQLITE_UTF8) | libc.Int32FromInt32(m_SQLITE_FUNC_WINDOW) | libc.Int32FromInt32(0)),
-		FpUserData: uintptr(0),
-		FpNext:     uintptr(0),
-		FxSFunc:    uintptr(0),
-		FxFinalize: uintptr(0),
-		FxValue:    uintptr(0),
-		FxInverse:  uintptr(0),
 		FzName:     uintptr(unsafe.Pointer(&_row_numberName)),
-		Fu: struct {
-			FpDestructor [0]uintptr
-			FpHash       uintptr
-		}{},
 	},
 	1: {
-		FnArg:      0,
 		FfuncFlags: uint32(libc.Int32FromInt32(m_SQLITE_FUNC_BUILTIN) | libc.Int32FromInt32(m_SQLITE_UTF8) | libc.Int32FromInt32(m_SQLITE_FUNC_WINDOW) | libc.Int32FromInt32(0)),
-		FpUserData: uintptr(0),
-		FpNext:     uintptr(0),
-		FxSFunc:    uintptr(0),
-		FxFinalize: uintptr(0),
-		FxValue:    uintptr(0),
-		FxInverse:  uintptr(0),
 		FzName:     uintptr(unsafe.Pointer(&_dense_rankName)),
-		Fu: struct {
-			FpDestructor [0]uintptr
-			FpHash       uintptr
-		}{},
 	},
 	2: {
-		FnArg:      0,
 		FfuncFlags: uint32(libc.Int32FromInt32(m_SQLITE_FUNC_BUILTIN) | libc.Int32FromInt32(m_SQLITE_UTF8) | libc.Int32FromInt32(m_SQLITE_FUNC_WINDOW) | libc.Int32FromInt32(0)),
-		FpUserData: uintptr(0),
-		FpNext:     uintptr(0),
-		FxSFunc:    uintptr(0),
-		FxFinalize: uintptr(0),
-		FxValue:    uintptr(0),
-		FxInverse:  uintptr(0),
 		FzName:     uintptr(unsafe.Pointer(&_rankName)),
-		Fu: struct {
-			FpDestructor [0]uintptr
-			FpHash       uintptr
-		}{},
 	},
 	3: {
-		FnArg:      0,
 		FfuncFlags: uint32(libc.Int32FromInt32(m_SQLITE_FUNC_BUILTIN) | libc.Int32FromInt32(m_SQLITE_UTF8) | libc.Int32FromInt32(m_SQLITE_FUNC_WINDOW) | libc.Int32FromInt32(0)),
-		FpUserData: uintptr(0),
-		FpNext:     uintptr(0),
-		FxSFunc:    uintptr(0),
-		FxFinalize: uintptr(0),
-		FxValue:    uintptr(0),
-		FxInverse:  uintptr(0),
 		FzName:     uintptr(unsafe.Pointer(&_percent_rankName)),
-		Fu: struct {
-			FpDestructor [0]uintptr
-			FpHash       uintptr
-		}{},
 	},
 	4: {
-		FnArg:      0,
 		FfuncFlags: uint32(libc.Int32FromInt32(m_SQLITE_FUNC_BUILTIN) | libc.Int32FromInt32(m_SQLITE_UTF8) | libc.Int32FromInt32(m_SQLITE_FUNC_WINDOW) | libc.Int32FromInt32(0)),
-		FpUserData: uintptr(0),
-		FpNext:     uintptr(0),
-		FxSFunc:    uintptr(0),
-		FxFinalize: uintptr(0),
-		FxValue:    uintptr(0),
-		FxInverse:  uintptr(0),
 		FzName:     uintptr(unsafe.Pointer(&_cume_distName)),
-		Fu: struct {
-			FpDestructor [0]uintptr
-			FpHash       uintptr
-		}{},
 	},
 	5: {
 		FnArg:      int8(1),
 		FfuncFlags: uint32(libc.Int32FromInt32(m_SQLITE_FUNC_BUILTIN) | libc.Int32FromInt32(m_SQLITE_UTF8) | libc.Int32FromInt32(m_SQLITE_FUNC_WINDOW) | libc.Int32FromInt32(0)),
-		FpUserData: uintptr(0),
-		FpNext:     uintptr(0),
-		FxSFunc:    uintptr(0),
-		FxFinalize: uintptr(0),
-		FxValue:    uintptr(0),
-		FxInverse:  uintptr(0),
 		FzName:     uintptr(unsafe.Pointer(&_ntileName)),
-		Fu: struct {
-			FpDestructor [0]uintptr
-			FpHash       uintptr
-		}{},
 	},
 	6: {
 		FnArg:      int8(1),
 		FfuncFlags: uint32(libc.Int32FromInt32(m_SQLITE_FUNC_BUILTIN) | libc.Int32FromInt32(m_SQLITE_UTF8) | libc.Int32FromInt32(m_SQLITE_FUNC_WINDOW) | libc.Int32FromInt32(0)),
-		FpUserData: uintptr(0),
-		FpNext:     uintptr(0),
-		FxSFunc:    uintptr(0),
-		FxFinalize: uintptr(0),
-		FxValue:    uintptr(0),
-		FxInverse:  uintptr(0),
 		FzName:     uintptr(unsafe.Pointer(&_last_valueName)),
-		Fu: struct {
-			FpDestructor [0]uintptr
-			FpHash       uintptr
-		}{},
 	},
 	7: {
 		FnArg:      int8(2),
 		FfuncFlags: uint32(libc.Int32FromInt32(m_SQLITE_FUNC_BUILTIN) | libc.Int32FromInt32(m_SQLITE_UTF8) | libc.Int32FromInt32(m_SQLITE_FUNC_WINDOW) | libc.Int32FromInt32(0)),
-		FpUserData: uintptr(0),
-		FpNext:     uintptr(0),
-		FxSFunc:    uintptr(0),
-		FxFinalize: uintptr(0),
-		FxValue:    uintptr(0),
-		FxInverse:  uintptr(0),
 		FzName:     uintptr(unsafe.Pointer(&_nth_valueName)),
-		Fu: struct {
-			FpDestructor [0]uintptr
-			FpHash       uintptr
-		}{},
 	},
 	8: {
 		FnArg:      int8(1),
 		FfuncFlags: uint32(libc.Int32FromInt32(m_SQLITE_FUNC_BUILTIN) | libc.Int32FromInt32(m_SQLITE_UTF8) | libc.Int32FromInt32(m_SQLITE_FUNC_WINDOW) | libc.Int32FromInt32(0)),
-		FpUserData: uintptr(0),
-		FpNext:     uintptr(0),
-		FxSFunc:    uintptr(0),
-		FxFinalize: uintptr(0),
-		FxValue:    uintptr(0),
-		FxInverse:  uintptr(0),
 		FzName:     uintptr(unsafe.Pointer(&_first_valueName)),
-		Fu: struct {
-			FpDestructor [0]uintptr
-			FpHash       uintptr
-		}{},
 	},
 	9: {
 		FnArg:      int8(1),
 		FfuncFlags: uint32(libc.Int32FromInt32(m_SQLITE_FUNC_BUILTIN) | libc.Int32FromInt32(m_SQLITE_UTF8) | libc.Int32FromInt32(m_SQLITE_FUNC_WINDOW) | libc.Int32FromInt32(0)),
-		FpUserData: uintptr(0),
-		FpNext:     uintptr(0),
-		FxSFunc:    uintptr(0),
-		FxFinalize: uintptr(0),
-		FxValue:    uintptr(0),
-		FxInverse:  uintptr(0),
 		FzName:     uintptr(unsafe.Pointer(&_leadName)),
-		Fu: struct {
-			FpDestructor [0]uintptr
-			FpHash       uintptr
-		}{},
 	},
 	10: {
 		FnArg:      int8(2),
 		FfuncFlags: uint32(libc.Int32FromInt32(m_SQLITE_FUNC_BUILTIN) | libc.Int32FromInt32(m_SQLITE_UTF8) | libc.Int32FromInt32(m_SQLITE_FUNC_WINDOW) | libc.Int32FromInt32(0)),
-		FpUserData: uintptr(0),
-		FpNext:     uintptr(0),
-		FxSFunc:    uintptr(0),
-		FxFinalize: uintptr(0),
-		FxValue:    uintptr(0),
-		FxInverse:  uintptr(0),
 		FzName:     uintptr(unsafe.Pointer(&_leadName)),
-		Fu: struct {
-			FpDestructor [0]uintptr
-			FpHash       uintptr
-		}{},
 	},
 	11: {
 		FnArg:      int8(3),
 		FfuncFlags: uint32(libc.Int32FromInt32(m_SQLITE_FUNC_BUILTIN) | libc.Int32FromInt32(m_SQLITE_UTF8) | libc.Int32FromInt32(m_SQLITE_FUNC_WINDOW) | libc.Int32FromInt32(0)),
-		FpUserData: uintptr(0),
-		FpNext:     uintptr(0),
-		FxSFunc:    uintptr(0),
-		FxFinalize: uintptr(0),
-		FxValue:    uintptr(0),
-		FxInverse:  uintptr(0),
 		FzName:     uintptr(unsafe.Pointer(&_leadName)),
-		Fu: struct {
-			FpDestructor [0]uintptr
-			FpHash       uintptr
-		}{},
 	},
 	12: {
 		FnArg:      int8(1),
 		FfuncFlags: uint32(libc.Int32FromInt32(m_SQLITE_FUNC_BUILTIN) | libc.Int32FromInt32(m_SQLITE_UTF8) | libc.Int32FromInt32(m_SQLITE_FUNC_WINDOW) | libc.Int32FromInt32(0)),
-		FpUserData: uintptr(0),
-		FpNext:     uintptr(0),
-		FxSFunc:    uintptr(0),
-		FxFinalize: uintptr(0),
-		FxValue:    uintptr(0),
-		FxInverse:  uintptr(0),
 		FzName:     uintptr(unsafe.Pointer(&_lagName)),
-		Fu: struct {
-			FpDestructor [0]uintptr
-			FpHash       uintptr
-		}{},
 	},
 	13: {
 		FnArg:      int8(2),
 		FfuncFlags: uint32(libc.Int32FromInt32(m_SQLITE_FUNC_BUILTIN) | libc.Int32FromInt32(m_SQLITE_UTF8) | libc.Int32FromInt32(m_SQLITE_FUNC_WINDOW) | libc.Int32FromInt32(0)),
-		FpUserData: uintptr(0),
-		FpNext:     uintptr(0),
-		FxSFunc:    uintptr(0),
-		FxFinalize: uintptr(0),
-		FxValue:    uintptr(0),
-		FxInverse:  uintptr(0),
 		FzName:     uintptr(unsafe.Pointer(&_lagName)),
-		Fu: struct {
-			FpDestructor [0]uintptr
-			FpHash       uintptr
-		}{},
 	},
 	14: {
 		FnArg:      int8(3),
 		FfuncFlags: uint32(libc.Int32FromInt32(m_SQLITE_FUNC_BUILTIN) | libc.Int32FromInt32(m_SQLITE_UTF8) | libc.Int32FromInt32(m_SQLITE_FUNC_WINDOW) | libc.Int32FromInt32(0)),
-		FpUserData: uintptr(0),
-		FpNext:     uintptr(0),
-		FxSFunc:    uintptr(0),
-		FxFinalize: uintptr(0),
-		FxValue:    uintptr(0),
-		FxInverse:  uintptr(0),
 		FzName:     uintptr(unsafe.Pointer(&_lagName)),
-		Fu: struct {
-			FpDestructor [0]uintptr
-			FpHash       uintptr
-		}{},
 	},
 }
 
@@ -218666,7 +212617,6 @@ var _yy_lookahead = [2283]uint16{
 	1474: uint16(155),
 	1475: uint16(156),
 	1476: uint16(157),
-	1477: uint16(0),
 	1478: uint16(1),
 	1479: uint16(2),
 	1480: uint16(216),
@@ -219487,8 +213437,6 @@ var _yy_shift_ofst = [576]uint16{
 	10:  uint16(1837),
 	11:  uint16(1837),
 	12:  uint16(471),
-	13:  uint16(0),
-	14:  uint16(0),
 	15:  uint16(214),
 	16:  uint16(1093),
 	17:  uint16(1837),
@@ -221060,32 +215008,19 @@ var _yy_default = [576]uint16{
 //	** it appears.
 //	*/
 var _yyFallback = [185]uint16{
-	0:   uint16(0),
-	1:   uint16(0),
 	2:   uint16(59),
 	3:   uint16(59),
 	4:   uint16(59),
 	5:   uint16(59),
-	6:   uint16(0),
 	7:   uint16(59),
 	8:   uint16(59),
 	9:   uint16(59),
-	10:  uint16(0),
 	11:  uint16(59),
 	12:  uint16(59),
 	13:  uint16(59),
 	14:  uint16(59),
-	15:  uint16(0),
-	16:  uint16(0),
-	17:  uint16(0),
 	18:  uint16(59),
-	19:  uint16(0),
-	20:  uint16(0),
 	21:  uint16(59),
-	22:  uint16(0),
-	23:  uint16(0),
-	24:  uint16(0),
-	25:  uint16(0),
 	26:  uint16(59),
 	27:  uint16(59),
 	28:  uint16(59),
@@ -221103,23 +215038,8 @@ var _yyFallback = [185]uint16{
 	40:  uint16(59),
 	41:  uint16(59),
 	42:  uint16(59),
-	43:  uint16(0),
-	44:  uint16(0),
-	45:  uint16(0),
 	46:  uint16(59),
 	47:  uint16(59),
-	48:  uint16(0),
-	49:  uint16(0),
-	50:  uint16(0),
-	51:  uint16(0),
-	52:  uint16(0),
-	53:  uint16(0),
-	54:  uint16(0),
-	55:  uint16(0),
-	56:  uint16(0),
-	57:  uint16(0),
-	58:  uint16(0),
-	59:  uint16(0),
 	60:  uint16(59),
 	61:  uint16(59),
 	62:  uint16(59),
@@ -221161,90 +215081,6 @@ var _yyFallback = [185]uint16{
 	98:  uint16(59),
 	99:  uint16(59),
 	100: uint16(59),
-	101: uint16(0),
-	102: uint16(0),
-	103: uint16(0),
-	104: uint16(0),
-	105: uint16(0),
-	106: uint16(0),
-	107: uint16(0),
-	108: uint16(0),
-	109: uint16(0),
-	110: uint16(0),
-	111: uint16(0),
-	112: uint16(0),
-	113: uint16(0),
-	114: uint16(0),
-	115: uint16(0),
-	116: uint16(0),
-	117: uint16(0),
-	118: uint16(0),
-	119: uint16(0),
-	120: uint16(0),
-	121: uint16(0),
-	122: uint16(0),
-	123: uint16(0),
-	124: uint16(0),
-	125: uint16(0),
-	126: uint16(0),
-	127: uint16(0),
-	128: uint16(0),
-	129: uint16(0),
-	130: uint16(0),
-	131: uint16(0),
-	132: uint16(0),
-	133: uint16(0),
-	134: uint16(0),
-	135: uint16(0),
-	136: uint16(0),
-	137: uint16(0),
-	138: uint16(0),
-	139: uint16(0),
-	140: uint16(0),
-	141: uint16(0),
-	142: uint16(0),
-	143: uint16(0),
-	144: uint16(0),
-	145: uint16(0),
-	146: uint16(0),
-	147: uint16(0),
-	148: uint16(0),
-	149: uint16(0),
-	150: uint16(0),
-	151: uint16(0),
-	152: uint16(0),
-	153: uint16(0),
-	154: uint16(0),
-	155: uint16(0),
-	156: uint16(0),
-	157: uint16(0),
-	158: uint16(0),
-	159: uint16(0),
-	160: uint16(0),
-	161: uint16(0),
-	162: uint16(0),
-	163: uint16(0),
-	164: uint16(0),
-	165: uint16(0),
-	166: uint16(0),
-	167: uint16(0),
-	168: uint16(0),
-	169: uint16(0),
-	170: uint16(0),
-	171: uint16(0),
-	172: uint16(0),
-	173: uint16(0),
-	174: uint16(0),
-	175: uint16(0),
-	176: uint16(0),
-	177: uint16(0),
-	178: uint16(0),
-	179: uint16(0),
-	180: uint16(0),
-	181: uint16(0),
-	182: uint16(0),
-	183: uint16(0),
-	184: uint16(0),
 }
 
 /* The following structure represents a single element of the
@@ -222014,7 +215850,6 @@ var _yyRuleInfoNRhs = [405]int8{
 	1:   int8(-int32(3)),
 	2:   int8(-int32(1)),
 	3:   int8(-int32(3)),
-	4:   int8(0),
 	5:   int8(-int32(1)),
 	6:   int8(-int32(1)),
 	7:   int8(-int32(1)),
@@ -222025,23 +215860,17 @@ var _yyRuleInfoNRhs = [405]int8{
 	12:  int8(-int32(5)),
 	13:  int8(-int32(6)),
 	14:  int8(-int32(1)),
-	15:  int8(0),
 	16:  int8(-int32(3)),
 	17:  int8(-int32(1)),
-	18:  int8(0),
 	19:  int8(-int32(5)),
 	20:  int8(-int32(2)),
-	21:  int8(0),
 	22:  int8(-int32(3)),
 	23:  int8(-int32(2)),
 	24:  int8(-int32(1)),
 	25:  int8(-int32(2)),
-	26:  int8(0),
 	27:  int8(-int32(4)),
 	28:  int8(-int32(6)),
 	29:  int8(-int32(2)),
-	30:  int8(0),
-	31:  int8(0),
 	32:  int8(-int32(2)),
 	33:  int8(-int32(3)),
 	34:  int8(-int32(4)),
@@ -222057,9 +215886,7 @@ var _yyRuleInfoNRhs = [405]int8{
 	44:  int8(-int32(2)),
 	45:  int8(-int32(3)),
 	46:  int8(-int32(4)),
-	47:  int8(0),
 	48:  int8(-int32(1)),
-	49:  int8(0),
 	50:  int8(-int32(2)),
 	51:  int8(-int32(2)),
 	52:  int8(-int32(3)),
@@ -222072,26 +215899,20 @@ var _yyRuleInfoNRhs = [405]int8{
 	59:  int8(-int32(2)),
 	60:  int8(-int32(3)),
 	61:  int8(-int32(2)),
-	62:  int8(0),
 	63:  int8(-int32(2)),
 	64:  int8(-int32(2)),
-	65:  int8(0),
 	66:  int8(-int32(1)),
 	67:  int8(-int32(2)),
 	68:  int8(-int32(7)),
 	69:  int8(-int32(5)),
 	70:  int8(-int32(5)),
 	71:  int8(-int32(10)),
-	72:  int8(0),
-	73:  int8(0),
 	74:  int8(-int32(3)),
-	75:  int8(0),
 	76:  int8(-int32(2)),
 	77:  int8(-int32(1)),
 	78:  int8(-int32(1)),
 	79:  int8(-int32(4)),
 	80:  int8(-int32(2)),
-	81:  int8(0),
 	82:  int8(-int32(9)),
 	83:  int8(-int32(4)),
 	84:  int8(-int32(1)),
@@ -222108,23 +215929,17 @@ var _yyRuleInfoNRhs = [405]int8{
 	95:  int8(-int32(5)),
 	96:  int8(-int32(1)),
 	97:  int8(-int32(1)),
-	98:  int8(0),
-	99:  int8(0),
 	100: int8(-int32(5)),
 	101: int8(-int32(3)),
 	102: int8(-int32(5)),
 	103: int8(-int32(2)),
-	104: int8(0),
-	105: int8(0),
 	106: int8(-int32(2)),
 	107: int8(-int32(2)),
-	108: int8(0),
 	109: int8(-int32(5)),
 	110: int8(-int32(6)),
 	111: int8(-int32(8)),
 	112: int8(-int32(6)),
 	113: int8(-int32(6)),
-	114: int8(0),
 	115: int8(-int32(2)),
 	116: int8(-int32(1)),
 	117: int8(-int32(3)),
@@ -222138,32 +215953,22 @@ var _yyRuleInfoNRhs = [405]int8{
 	125: int8(-int32(4)),
 	126: int8(-int32(2)),
 	127: int8(-int32(4)),
-	128: int8(0),
-	129: int8(0),
 	130: int8(-int32(3)),
 	131: int8(-int32(2)),
-	132: int8(0),
 	133: int8(-int32(3)),
 	134: int8(-int32(5)),
 	135: int8(-int32(3)),
 	136: int8(-int32(1)),
 	137: int8(-int32(1)),
-	138: int8(0),
 	139: int8(-int32(2)),
 	140: int8(-int32(2)),
-	141: int8(0),
-	142: int8(0),
 	143: int8(-int32(3)),
-	144: int8(0),
 	145: int8(-int32(2)),
-	146: int8(0),
 	147: int8(-int32(2)),
 	148: int8(-int32(4)),
 	149: int8(-int32(4)),
 	150: int8(-int32(6)),
-	151: int8(0),
 	152: int8(-int32(2)),
-	153: int8(0),
 	154: int8(-int32(2)),
 	155: int8(-int32(2)),
 	156: int8(-int32(4)),
@@ -222174,7 +215979,6 @@ var _yyRuleInfoNRhs = [405]int8{
 	161: int8(-int32(5)),
 	162: int8(-int32(7)),
 	163: int8(-int32(8)),
-	164: int8(0),
 	165: int8(-int32(2)),
 	166: int8(-int32(12)),
 	167: int8(-int32(9)),
@@ -222183,7 +215987,6 @@ var _yyRuleInfoNRhs = [405]int8{
 	170: int8(-int32(2)),
 	171: int8(-int32(2)),
 	172: int8(-int32(1)),
-	173: int8(0),
 	174: int8(-int32(3)),
 	175: int8(-int32(3)),
 	176: int8(-int32(1)),
@@ -222239,28 +216042,20 @@ var _yyRuleInfoNRhs = [405]int8{
 	226: int8(-int32(5)),
 	227: int8(-int32(4)),
 	228: int8(-int32(2)),
-	229: int8(0),
 	230: int8(-int32(1)),
-	231: int8(0),
-	232: int8(0),
 	233: int8(-int32(3)),
 	234: int8(-int32(1)),
-	235: int8(0),
 	236: int8(-int32(3)),
 	237: int8(-int32(12)),
 	238: int8(-int32(1)),
-	239: int8(0),
-	240: int8(0),
 	241: int8(-int32(3)),
 	242: int8(-int32(5)),
 	243: int8(-int32(3)),
-	244: int8(0),
 	245: int8(-int32(2)),
 	246: int8(-int32(4)),
 	247: int8(-int32(2)),
 	248: int8(-int32(3)),
 	249: int8(-int32(2)),
-	250: int8(0),
 	251: int8(-int32(3)),
 	252: int8(-int32(5)),
 	253: int8(-int32(6)),
@@ -222272,11 +216067,9 @@ var _yyRuleInfoNRhs = [405]int8{
 	259: int8(-int32(11)),
 	260: int8(-int32(1)),
 	261: int8(-int32(2)),
-	262: int8(0),
 	263: int8(-int32(1)),
 	264: int8(-int32(1)),
 	265: int8(-int32(3)),
-	266: int8(0),
 	267: int8(-int32(2)),
 	268: int8(-int32(3)),
 	269: int8(-int32(2)),
@@ -222295,7 +216088,6 @@ var _yyRuleInfoNRhs = [405]int8{
 	282: int8(-int32(4)),
 	283: int8(-int32(6)),
 	284: int8(-int32(3)),
-	285: int8(0),
 	286: int8(-int32(2)),
 	287: int8(-int32(1)),
 	288: int8(-int32(3)),
@@ -222309,7 +216101,6 @@ var _yyRuleInfoNRhs = [405]int8{
 	296: int8(-int32(1)),
 	297: int8(-int32(4)),
 	298: int8(-int32(8)),
-	299: int8(0),
 	300: int8(-int32(1)),
 	301: int8(-int32(3)),
 	302: int8(-int32(1)),
@@ -222330,7 +216121,6 @@ var _yyRuleInfoNRhs = [405]int8{
 	317: int8(-int32(5)),
 	318: int8(-int32(1)),
 	319: int8(-int32(2)),
-	320: int8(0),
 	321: int8(-int32(3)),
 	322: int8(-int32(6)),
 	323: int8(-int32(1)),
@@ -222340,7 +216130,6 @@ var _yyRuleInfoNRhs = [405]int8{
 	327: int8(-int32(2)),
 	328: int8(-int32(2)),
 	329: int8(-int32(2)),
-	330: int8(0),
 	331: int8(-int32(2)),
 	332: int8(-int32(2)),
 	333: int8(-int32(2)),
@@ -222358,11 +216147,9 @@ var _yyRuleInfoNRhs = [405]int8{
 	345: int8(-int32(1)),
 	346: int8(-int32(2)),
 	347: int8(-int32(3)),
-	348: int8(0),
 	349: int8(-int32(1)),
 	350: int8(-int32(2)),
 	351: int8(-int32(1)),
-	352: int8(0),
 	353: int8(-int32(2)),
 	354: int8(-int32(1)),
 	355: int8(-int32(4)),
@@ -222375,14 +216162,12 @@ var _yyRuleInfoNRhs = [405]int8{
 	362: int8(-int32(1)),
 	363: int8(-int32(1)),
 	364: int8(-int32(2)),
-	365: int8(0),
 	366: int8(-int32(2)),
 	367: int8(-int32(4)),
 	368: int8(-int32(2)),
 	369: int8(-int32(2)),
 	370: int8(-int32(3)),
 	371: int8(-int32(1)),
-	372: int8(0),
 	373: int8(-int32(1)),
 	374: int8(-int32(1)),
 	375: int8(-int32(1)),
@@ -222390,7 +216175,6 @@ var _yyRuleInfoNRhs = [405]int8{
 	377: int8(-int32(2)),
 	378: int8(-int32(1)),
 	379: int8(-int32(1)),
-	380: int8(0),
 	381: int8(-int32(1)),
 	382: int8(-int32(1)),
 	383: int8(-int32(1)),
@@ -222400,21 +216184,15 @@ var _yyRuleInfoNRhs = [405]int8{
 	387: int8(-int32(1)),
 	388: int8(-int32(1)),
 	389: int8(-int32(1)),
-	390: int8(0),
 	391: int8(-int32(3)),
 	392: int8(-int32(1)),
-	393: int8(0),
 	394: int8(-int32(1)),
-	395: int8(0),
-	396: int8(0),
 	397: int8(-int32(1)),
 	398: int8(-int32(1)),
 	399: int8(-int32(3)),
 	400: int8(-int32(2)),
-	401: int8(0),
 	402: int8(-int32(4)),
 	403: int8(-int32(2)),
-	404: int8(0),
 } /* Forward Declaration */
 
 // C documentation
@@ -223397,13 +217175,7 @@ _93: /* cmd ::= DROP VIEW ifexists fullname */
 	goto _344
 _94: /* cmd ::= select */
 	*(*TSelectDest)(unsafe.Pointer(bp + 16)) = TSelectDest{
-		FeDest:    uint8(m_SRT_Output),
-		FiSDParm:  0,
-		FiSDParm2: 0,
-		FiSdst:    0,
-		FnSdst:    0,
-		FzAffSdst: uintptr(0),
-		FpOrderBy: uintptr(0),
+		FeDest: uint8(m_SRT_Output),
 	}
 	x_sqlite3Select(tls, pParse, *(*uintptr)(unsafe.Pointer(yymsp + 8)), bp+16)
 	x_sqlite3SelectDelete(tls, (*TParse)(unsafe.Pointer(pParse)).Fdb, *(*uintptr)(unsafe.Pointer(yymsp + 8)))
@@ -224698,7 +218470,6 @@ var _aiClass1 = [256]uint8{
 	85:  uint8(1),
 	86:  uint8(1),
 	87:  uint8(1),
-	88:  uint8(0),
 	89:  uint8(2),
 	90:  uint8(2),
 	91:  uint8(9),
@@ -224730,7 +218501,6 @@ var _aiClass1 = [256]uint8{
 	117: uint8(1),
 	118: uint8(1),
 	119: uint8(1),
-	120: uint8(0),
 	121: uint8(2),
 	122: uint8(2),
 	123: uint8(28),
@@ -225599,58 +219369,38 @@ var _aKWHash = [127]uint8{
 	3:   uint8(82),
 	4:   uint8(105),
 	5:   uint8(29),
-	6:   uint8(0),
-	7:   uint8(0),
 	8:   uint8(94),
-	9:   uint8(0),
 	10:  uint8(85),
 	11:  uint8(72),
-	12:  uint8(0),
 	13:  uint8(53),
 	14:  uint8(35),
 	15:  uint8(86),
 	16:  uint8(15),
-	17:  uint8(0),
 	18:  uint8(42),
 	19:  uint8(97),
 	20:  uint8(54),
 	21:  uint8(89),
 	22:  uint8(135),
 	23:  uint8(19),
-	24:  uint8(0),
-	25:  uint8(0),
 	26:  uint8(140),
-	27:  uint8(0),
 	28:  uint8(40),
 	29:  uint8(129),
-	30:  uint8(0),
 	31:  uint8(22),
 	32:  uint8(107),
-	33:  uint8(0),
 	34:  uint8(9),
-	35:  uint8(0),
-	36:  uint8(0),
 	37:  uint8(123),
 	38:  uint8(80),
-	39:  uint8(0),
 	40:  uint8(78),
 	41:  uint8(6),
-	42:  uint8(0),
 	43:  uint8(65),
 	44:  uint8(103),
 	45:  uint8(147),
-	46:  uint8(0),
 	47:  uint8(136),
 	48:  uint8(115),
-	49:  uint8(0),
-	50:  uint8(0),
 	51:  uint8(48),
-	52:  uint8(0),
 	53:  uint8(90),
 	54:  uint8(24),
-	55:  uint8(0),
 	56:  uint8(17),
-	57:  uint8(0),
 	58:  uint8(27),
 	59:  uint8(70),
 	60:  uint8(23),
@@ -225660,7 +219410,6 @@ var _aKWHash = [127]uint8{
 	64:  uint8(142),
 	65:  uint8(110),
 	66:  uint8(122),
-	67:  uint8(0),
 	68:  uint8(73),
 	69:  uint8(91),
 	70:  uint8(71),
@@ -225668,16 +219417,10 @@ var _aKWHash = [127]uint8{
 	72:  uint8(61),
 	73:  uint8(120),
 	74:  uint8(74),
-	75:  uint8(0),
 	76:  uint8(49),
-	77:  uint8(0),
 	78:  uint8(11),
 	79:  uint8(41),
-	80:  uint8(0),
 	81:  uint8(113),
-	82:  uint8(0),
-	83:  uint8(0),
-	84:  uint8(0),
 	85:  uint8(109),
 	86:  uint8(10),
 	87:  uint8(111),
@@ -225686,9 +219429,7 @@ var _aKWHash = [127]uint8{
 	90:  uint8(14),
 	91:  uint8(50),
 	92:  uint8(124),
-	93:  uint8(0),
 	94:  uint8(100),
-	95:  uint8(0),
 	96:  uint8(18),
 	97:  uint8(121),
 	98:  uint8(144),
@@ -225700,22 +219441,15 @@ var _aKWHash = [127]uint8{
 	104: uint8(37),
 	105: uint8(30),
 	106: uint8(126),
-	107: uint8(0),
-	108: uint8(0),
 	109: uint8(108),
 	110: uint8(51),
 	111: uint8(131),
 	112: uint8(128),
-	113: uint8(0),
 	114: uint8(34),
-	115: uint8(0),
-	116: uint8(0),
 	117: uint8(132),
-	118: uint8(0),
 	119: uint8(98),
 	120: uint8(38),
 	121: uint8(39),
-	122: uint8(0),
 	123: uint8(20),
 	124: uint8(45),
 	125: uint8(117),
@@ -225728,152 +219462,61 @@ var _aKWHash = [127]uint8{
 //	** then the i-th keyword has no more hash collisions.  Otherwise,
 //	** the next keyword with the same hash is aKWHash[i]-1. */
 var _aKWNext = [147]uint8{
-	0:   uint8(0),
-	1:   uint8(0),
-	2:   uint8(0),
-	3:   uint8(0),
 	4:   uint8(4),
-	5:   uint8(0),
 	6:   uint8(43),
-	7:   uint8(0),
-	8:   uint8(0),
 	9:   uint8(106),
 	10:  uint8(114),
-	11:  uint8(0),
-	12:  uint8(0),
-	13:  uint8(0),
 	14:  uint8(2),
-	15:  uint8(0),
-	16:  uint8(0),
 	17:  uint8(143),
-	18:  uint8(0),
-	19:  uint8(0),
-	20:  uint8(0),
 	21:  uint8(13),
-	22:  uint8(0),
-	23:  uint8(0),
-	24:  uint8(0),
-	25:  uint8(0),
 	26:  uint8(141),
-	27:  uint8(0),
-	28:  uint8(0),
 	29:  uint8(119),
 	30:  uint8(52),
-	31:  uint8(0),
-	32:  uint8(0),
 	33:  uint8(137),
 	34:  uint8(12),
-	35:  uint8(0),
-	36:  uint8(0),
 	37:  uint8(62),
-	38:  uint8(0),
 	39:  uint8(138),
-	40:  uint8(0),
 	41:  uint8(133),
-	42:  uint8(0),
-	43:  uint8(0),
 	44:  uint8(36),
-	45:  uint8(0),
-	46:  uint8(0),
 	47:  uint8(28),
 	48:  uint8(77),
-	49:  uint8(0),
-	50:  uint8(0),
-	51:  uint8(0),
-	52:  uint8(0),
 	53:  uint8(59),
-	54:  uint8(0),
 	55:  uint8(47),
-	56:  uint8(0),
-	57:  uint8(0),
-	58:  uint8(0),
-	59:  uint8(0),
-	60:  uint8(0),
-	61:  uint8(0),
-	62:  uint8(0),
-	63:  uint8(0),
-	64:  uint8(0),
-	65:  uint8(0),
 	66:  uint8(69),
-	67:  uint8(0),
-	68:  uint8(0),
-	69:  uint8(0),
-	70:  uint8(0),
-	71:  uint8(0),
 	72:  uint8(146),
 	73:  uint8(3),
-	74:  uint8(0),
 	75:  uint8(58),
-	76:  uint8(0),
 	77:  uint8(1),
 	78:  uint8(75),
-	79:  uint8(0),
-	80:  uint8(0),
-	81:  uint8(0),
 	82:  uint8(31),
-	83:  uint8(0),
-	84:  uint8(0),
-	85:  uint8(0),
-	86:  uint8(0),
-	87:  uint8(0),
 	88:  uint8(127),
-	89:  uint8(0),
 	90:  uint8(104),
-	91:  uint8(0),
 	92:  uint8(64),
 	93:  uint8(66),
 	94:  uint8(63),
-	95:  uint8(0),
-	96:  uint8(0),
-	97:  uint8(0),
-	98:  uint8(0),
-	99:  uint8(0),
 	100: uint8(46),
-	101: uint8(0),
 	102: uint8(16),
 	103: uint8(8),
-	104: uint8(0),
-	105: uint8(0),
-	106: uint8(0),
-	107: uint8(0),
-	108: uint8(0),
-	109: uint8(0),
-	110: uint8(0),
-	111: uint8(0),
-	112: uint8(0),
-	113: uint8(0),
 	114: uint8(81),
 	115: uint8(101),
-	116: uint8(0),
 	117: uint8(112),
 	118: uint8(21),
 	119: uint8(7),
 	120: uint8(67),
-	121: uint8(0),
 	122: uint8(79),
 	123: uint8(96),
 	124: uint8(118),
-	125: uint8(0),
-	126: uint8(0),
 	127: uint8(68),
-	128: uint8(0),
-	129: uint8(0),
 	130: uint8(99),
 	131: uint8(44),
-	132: uint8(0),
 	133: uint8(55),
-	134: uint8(0),
 	135: uint8(76),
-	136: uint8(0),
 	137: uint8(95),
 	138: uint8(32),
 	139: uint8(33),
 	140: uint8(57),
 	141: uint8(25),
-	142: uint8(0),
 	143: uint8(102),
-	144: uint8(0),
-	145: uint8(0),
 	146: uint8(87),
 }
 
@@ -226035,7 +219678,6 @@ var _aKWLen = [147]uint8{
 //	/* aKWOffset[i] is the index into zKWText[] of the start of
 //	** the text for the i-th keyword. */
 var _aKWOffset = [147]uint16{
-	0:   uint16(0),
 	1:   uint16(2),
 	2:   uint16(2),
 	3:   uint16(8),
@@ -227536,7 +221178,6 @@ func x_sqlite3_complete(tls *libc.TLS, zSql uintptr) (r int32) {
 var _trans = [8][8]Tu8{
 	0: {
 		0: uint8(1),
-		1: uint8(0),
 		2: uint8(2),
 		3: uint8(3),
 		4: uint8(4),
@@ -227664,16 +221305,7 @@ func _sqlite3TestExtInit(tls *libc.TLS, db uintptr) (r int32) {
 //	** An array of pointers to extension initializer functions for
 //	** built-in extensions.
 //	*/
-var _sqlite3BuiltinExtensions = [8]uintptr{
-	0: uintptr(0),
-	1: uintptr(0),
-	2: uintptr(0),
-	3: uintptr(0),
-	4: uintptr(0),
-	5: uintptr(0),
-	6: uintptr(0),
-	7: uintptr(0),
-}
+var _sqlite3BuiltinExtensions = [8]uintptr{}
 
 func init() {
 	p := unsafe.Pointer(&_sqlite3BuiltinExtensions)
@@ -229178,7 +222810,6 @@ func x_sqlite3ErrStr(tls *libc.TLS, rc int32) (r uintptr) {
 var _aMsg = [29]uintptr{
 	0:  __ccgo_ts + 71697,
 	1:  __ccgo_ts + 71710,
-	2:  uintptr(0),
 	3:  __ccgo_ts + 71726,
 	4:  __ccgo_ts + 71751,
 	5:  __ccgo_ts + 71765,
@@ -229192,15 +222823,12 @@ var _aMsg = [29]uintptr{
 	13: __ccgo_ts + 71924,
 	14: __ccgo_ts + 71949,
 	15: __ccgo_ts + 71978,
-	16: uintptr(0),
 	17: __ccgo_ts + 51868,
 	18: __ccgo_ts + 51344,
 	19: __ccgo_ts + 71995,
 	20: __ccgo_ts + 72013,
 	21: __ccgo_ts + 72031,
-	22: uintptr(0),
 	23: __ccgo_ts + 72065,
-	24: uintptr(0),
 	25: __ccgo_ts + 72086,
 	26: __ccgo_ts + 72112,
 	27: __ccgo_ts + 72135,
@@ -229259,7 +222887,6 @@ var _delays = [12]Tu8{
 }
 
 var _totals = [12]Tu8{
-	0:  uint8(0),
 	1:  uint8(1),
 	2:  uint8(3),
 	3:  uint8(8),
@@ -230007,7 +223634,6 @@ var _outOfMem = [14]Tu16{
 	10: uint16('o'),
 	11: uint16('r'),
 	12: uint16('y'),
-	13: uint16(0),
 }
 
 var _misuse = [34]Tu16{
@@ -230044,7 +223670,6 @@ var _misuse = [34]Tu16{
 	30: uint16('u'),
 	31: uint16('s'),
 	32: uint16('e'),
-	33: uint16(0),
 }
 
 // C documentation
@@ -230184,7 +223809,6 @@ var _aHardLimit = [12]int32{
 	8:  int32(m_SQLITE_MAX_LIKE_PATTERN_LENGTH),
 	9:  int32(m_SQLITE_MAX_VARIABLE_NUMBER),
 	10: int32(m_SQLITE_MAX_TRIGGER_DEPTH),
-	11: int32(m_SQLITE_MAX_WORKER_THREADS1),
 }
 
 /*
@@ -230491,7 +224115,6 @@ var _aCacheMode = [3]struct {
 		Fz:    __ccgo_ts + 72504,
 		Fmode: int32(m_SQLITE_OPEN_PRIVATECACHE),
 	},
-	2: {},
 }
 
 var _aOpenMode = [5]struct {
@@ -230515,7 +224138,6 @@ var _aOpenMode = [5]struct {
 		Fz:    __ccgo_ts + 63352,
 		Fmode: int32(m_SQLITE_OPEN_MEMORY),
 	},
-	4: {},
 }
 
 // C documentation
@@ -232895,262 +226517,10 @@ func x_sqlite3ConnectionClosed(tls *libc.TLS, db uintptr) {
 //	** increase for the parser.  (Ubuntu14.10 gcc 4.8.4 x64 with -Os).
 //	*/
 var _jsonIsSpace = [256]int8{
-	0:   int8(0),
-	1:   int8(0),
-	2:   int8(0),
-	3:   int8(0),
-	4:   int8(0),
-	5:   int8(0),
-	6:   int8(0),
-	7:   int8(0),
-	8:   int8(0),
-	9:   int8(1),
-	10:  int8(1),
-	11:  int8(0),
-	12:  int8(0),
-	13:  int8(1),
-	14:  int8(0),
-	15:  int8(0),
-	16:  int8(0),
-	17:  int8(0),
-	18:  int8(0),
-	19:  int8(0),
-	20:  int8(0),
-	21:  int8(0),
-	22:  int8(0),
-	23:  int8(0),
-	24:  int8(0),
-	25:  int8(0),
-	26:  int8(0),
-	27:  int8(0),
-	28:  int8(0),
-	29:  int8(0),
-	30:  int8(0),
-	31:  int8(0),
-	32:  int8(1),
-	33:  int8(0),
-	34:  int8(0),
-	35:  int8(0),
-	36:  int8(0),
-	37:  int8(0),
-	38:  int8(0),
-	39:  int8(0),
-	40:  int8(0),
-	41:  int8(0),
-	42:  int8(0),
-	43:  int8(0),
-	44:  int8(0),
-	45:  int8(0),
-	46:  int8(0),
-	47:  int8(0),
-	48:  int8(0),
-	49:  int8(0),
-	50:  int8(0),
-	51:  int8(0),
-	52:  int8(0),
-	53:  int8(0),
-	54:  int8(0),
-	55:  int8(0),
-	56:  int8(0),
-	57:  int8(0),
-	58:  int8(0),
-	59:  int8(0),
-	60:  int8(0),
-	61:  int8(0),
-	62:  int8(0),
-	63:  int8(0),
-	64:  int8(0),
-	65:  int8(0),
-	66:  int8(0),
-	67:  int8(0),
-	68:  int8(0),
-	69:  int8(0),
-	70:  int8(0),
-	71:  int8(0),
-	72:  int8(0),
-	73:  int8(0),
-	74:  int8(0),
-	75:  int8(0),
-	76:  int8(0),
-	77:  int8(0),
-	78:  int8(0),
-	79:  int8(0),
-	80:  int8(0),
-	81:  int8(0),
-	82:  int8(0),
-	83:  int8(0),
-	84:  int8(0),
-	85:  int8(0),
-	86:  int8(0),
-	87:  int8(0),
-	88:  int8(0),
-	89:  int8(0),
-	90:  int8(0),
-	91:  int8(0),
-	92:  int8(0),
-	93:  int8(0),
-	94:  int8(0),
-	95:  int8(0),
-	96:  int8(0),
-	97:  int8(0),
-	98:  int8(0),
-	99:  int8(0),
-	100: int8(0),
-	101: int8(0),
-	102: int8(0),
-	103: int8(0),
-	104: int8(0),
-	105: int8(0),
-	106: int8(0),
-	107: int8(0),
-	108: int8(0),
-	109: int8(0),
-	110: int8(0),
-	111: int8(0),
-	112: int8(0),
-	113: int8(0),
-	114: int8(0),
-	115: int8(0),
-	116: int8(0),
-	117: int8(0),
-	118: int8(0),
-	119: int8(0),
-	120: int8(0),
-	121: int8(0),
-	122: int8(0),
-	123: int8(0),
-	124: int8(0),
-	125: int8(0),
-	126: int8(0),
-	127: int8(0),
-	128: int8(0),
-	129: int8(0),
-	130: int8(0),
-	131: int8(0),
-	132: int8(0),
-	133: int8(0),
-	134: int8(0),
-	135: int8(0),
-	136: int8(0),
-	137: int8(0),
-	138: int8(0),
-	139: int8(0),
-	140: int8(0),
-	141: int8(0),
-	142: int8(0),
-	143: int8(0),
-	144: int8(0),
-	145: int8(0),
-	146: int8(0),
-	147: int8(0),
-	148: int8(0),
-	149: int8(0),
-	150: int8(0),
-	151: int8(0),
-	152: int8(0),
-	153: int8(0),
-	154: int8(0),
-	155: int8(0),
-	156: int8(0),
-	157: int8(0),
-	158: int8(0),
-	159: int8(0),
-	160: int8(0),
-	161: int8(0),
-	162: int8(0),
-	163: int8(0),
-	164: int8(0),
-	165: int8(0),
-	166: int8(0),
-	167: int8(0),
-	168: int8(0),
-	169: int8(0),
-	170: int8(0),
-	171: int8(0),
-	172: int8(0),
-	173: int8(0),
-	174: int8(0),
-	175: int8(0),
-	176: int8(0),
-	177: int8(0),
-	178: int8(0),
-	179: int8(0),
-	180: int8(0),
-	181: int8(0),
-	182: int8(0),
-	183: int8(0),
-	184: int8(0),
-	185: int8(0),
-	186: int8(0),
-	187: int8(0),
-	188: int8(0),
-	189: int8(0),
-	190: int8(0),
-	191: int8(0),
-	192: int8(0),
-	193: int8(0),
-	194: int8(0),
-	195: int8(0),
-	196: int8(0),
-	197: int8(0),
-	198: int8(0),
-	199: int8(0),
-	200: int8(0),
-	201: int8(0),
-	202: int8(0),
-	203: int8(0),
-	204: int8(0),
-	205: int8(0),
-	206: int8(0),
-	207: int8(0),
-	208: int8(0),
-	209: int8(0),
-	210: int8(0),
-	211: int8(0),
-	212: int8(0),
-	213: int8(0),
-	214: int8(0),
-	215: int8(0),
-	216: int8(0),
-	217: int8(0),
-	218: int8(0),
-	219: int8(0),
-	220: int8(0),
-	221: int8(0),
-	222: int8(0),
-	223: int8(0),
-	224: int8(0),
-	225: int8(0),
-	226: int8(0),
-	227: int8(0),
-	228: int8(0),
-	229: int8(0),
-	230: int8(0),
-	231: int8(0),
-	232: int8(0),
-	233: int8(0),
-	234: int8(0),
-	235: int8(0),
-	236: int8(0),
-	237: int8(0),
-	238: int8(0),
-	239: int8(0),
-	240: int8(0),
-	241: int8(0),
-	242: int8(0),
-	243: int8(0),
-	244: int8(0),
-	245: int8(0),
-	246: int8(0),
-	247: int8(0),
-	248: int8(0),
-	249: int8(0),
-	250: int8(0),
-	251: int8(0),
-	252: int8(0),
-	253: int8(0),
-	254: int8(0),
-	255: int8(0),
+	9:  int8(1),
+	10: int8(1),
+	13: int8(1),
+	32: int8(1),
 }
 
 // C documentation
@@ -233509,38 +226879,11 @@ func _jsonAppendString(tls *libc.TLS, p uintptr, zIn uintptr, N Tu32) {
 }
 
 var _aSpecial = [32]int8{
-	0:  0,
-	1:  0,
-	2:  0,
-	3:  0,
-	4:  0,
-	5:  0,
-	6:  0,
-	7:  0,
 	8:  int8('b'),
 	9:  int8('t'),
 	10: int8('n'),
-	11: 0,
 	12: int8('f'),
 	13: int8('r'),
-	14: 0,
-	15: 0,
-	16: 0,
-	17: 0,
-	18: 0,
-	19: 0,
-	20: 0,
-	21: 0,
-	22: 0,
-	23: 0,
-	24: 0,
-	25: 0,
-	26: 0,
-	27: 0,
-	28: 0,
-	29: 0,
-	30: 0,
-	31: 0,
 }
 
 // C documentation
@@ -236183,40 +229526,13 @@ func _jsonEachFilter(tls *libc.TLS, cur uintptr, idxNum int32, idxStr uintptr, a
 // C documentation
 //
 //	/* The methods of the json_each virtual table */
-var _jsonEachModule = Tsqlite3_module{
-	FiVersion:      int32(0),
-	FxCreate:       uintptr(0),
-	FxConnect:      uintptr(0),
-	FxBestIndex:    uintptr(0),
-	FxDisconnect:   uintptr(0),
-	FxDestroy:      uintptr(0),
-	FxOpen:         uintptr(0),
-	FxClose:        uintptr(0),
-	FxFilter:       uintptr(0),
-	FxNext:         uintptr(0),
-	FxEof:          uintptr(0),
-	FxColumn:       uintptr(0),
-	FxRowid:        uintptr(0),
-	FxUpdate:       uintptr(0),
-	FxBegin:        uintptr(0),
-	FxSync:         uintptr(0),
-	FxCommit:       uintptr(0),
-	FxRollback:     uintptr(0),
-	FxFindFunction: uintptr(0),
-	FxRename:       uintptr(0),
-	FxSavepoint:    uintptr(0),
-	FxRelease:      uintptr(0),
-	FxRollbackTo:   uintptr(0),
-	FxShadowName:   uintptr(0),
-}
+var _jsonEachModule = Tsqlite3_module{}
 
 func init() {
 	p := unsafe.Pointer(&_jsonEachModule)
-	*(*uintptr)(unsafe.Add(p, 8)) = uintptr(0)
 	*(*uintptr)(unsafe.Add(p, 16)) = __ccgo_fp(_jsonEachConnect)
 	*(*uintptr)(unsafe.Add(p, 24)) = __ccgo_fp(_jsonEachBestIndex)
 	*(*uintptr)(unsafe.Add(p, 32)) = __ccgo_fp(_jsonEachDisconnect)
-	*(*uintptr)(unsafe.Add(p, 40)) = uintptr(0)
 	*(*uintptr)(unsafe.Add(p, 48)) = __ccgo_fp(_jsonEachOpenEach)
 	*(*uintptr)(unsafe.Add(p, 56)) = __ccgo_fp(_jsonEachClose)
 	*(*uintptr)(unsafe.Add(p, 64)) = __ccgo_fp(_jsonEachFilter)
@@ -236224,56 +229540,18 @@ func init() {
 	*(*uintptr)(unsafe.Add(p, 80)) = __ccgo_fp(_jsonEachEof)
 	*(*uintptr)(unsafe.Add(p, 88)) = __ccgo_fp(_jsonEachColumn)
 	*(*uintptr)(unsafe.Add(p, 96)) = __ccgo_fp(_jsonEachRowid)
-	*(*uintptr)(unsafe.Add(p, 104)) = uintptr(0)
-	*(*uintptr)(unsafe.Add(p, 112)) = uintptr(0)
-	*(*uintptr)(unsafe.Add(p, 120)) = uintptr(0)
-	*(*uintptr)(unsafe.Add(p, 128)) = uintptr(0)
-	*(*uintptr)(unsafe.Add(p, 136)) = uintptr(0)
-	*(*uintptr)(unsafe.Add(p, 144)) = uintptr(0)
-	*(*uintptr)(unsafe.Add(p, 152)) = uintptr(0)
-	*(*uintptr)(unsafe.Add(p, 160)) = uintptr(0)
-	*(*uintptr)(unsafe.Add(p, 168)) = uintptr(0)
-	*(*uintptr)(unsafe.Add(p, 176)) = uintptr(0)
-	*(*uintptr)(unsafe.Add(p, 184)) = uintptr(0)
 }
 
 // C documentation
 //
 //	/* The methods of the json_tree virtual table. */
-var _jsonTreeModule = Tsqlite3_module{
-	FiVersion:      int32(0),
-	FxCreate:       uintptr(0),
-	FxConnect:      uintptr(0),
-	FxBestIndex:    uintptr(0),
-	FxDisconnect:   uintptr(0),
-	FxDestroy:      uintptr(0),
-	FxOpen:         uintptr(0),
-	FxClose:        uintptr(0),
-	FxFilter:       uintptr(0),
-	FxNext:         uintptr(0),
-	FxEof:          uintptr(0),
-	FxColumn:       uintptr(0),
-	FxRowid:        uintptr(0),
-	FxUpdate:       uintptr(0),
-	FxBegin:        uintptr(0),
-	FxSync:         uintptr(0),
-	FxCommit:       uintptr(0),
-	FxRollback:     uintptr(0),
-	FxFindFunction: uintptr(0),
-	FxRename:       uintptr(0),
-	FxSavepoint:    uintptr(0),
-	FxRelease:      uintptr(0),
-	FxRollbackTo:   uintptr(0),
-	FxShadowName:   uintptr(0),
-}
+var _jsonTreeModule = Tsqlite3_module{}
 
 func init() {
 	p := unsafe.Pointer(&_jsonTreeModule)
-	*(*uintptr)(unsafe.Add(p, 8)) = uintptr(0)
 	*(*uintptr)(unsafe.Add(p, 16)) = __ccgo_fp(_jsonEachConnect)
 	*(*uintptr)(unsafe.Add(p, 24)) = __ccgo_fp(_jsonEachBestIndex)
 	*(*uintptr)(unsafe.Add(p, 32)) = __ccgo_fp(_jsonEachDisconnect)
-	*(*uintptr)(unsafe.Add(p, 40)) = uintptr(0)
 	*(*uintptr)(unsafe.Add(p, 48)) = __ccgo_fp(_jsonEachOpenTree)
 	*(*uintptr)(unsafe.Add(p, 56)) = __ccgo_fp(_jsonEachClose)
 	*(*uintptr)(unsafe.Add(p, 64)) = __ccgo_fp(_jsonEachFilter)
@@ -236281,17 +229559,6 @@ func init() {
 	*(*uintptr)(unsafe.Add(p, 80)) = __ccgo_fp(_jsonEachEof)
 	*(*uintptr)(unsafe.Add(p, 88)) = __ccgo_fp(_jsonEachColumn)
 	*(*uintptr)(unsafe.Add(p, 96)) = __ccgo_fp(_jsonEachRowid)
-	*(*uintptr)(unsafe.Add(p, 104)) = uintptr(0)
-	*(*uintptr)(unsafe.Add(p, 112)) = uintptr(0)
-	*(*uintptr)(unsafe.Add(p, 120)) = uintptr(0)
-	*(*uintptr)(unsafe.Add(p, 128)) = uintptr(0)
-	*(*uintptr)(unsafe.Add(p, 136)) = uintptr(0)
-	*(*uintptr)(unsafe.Add(p, 144)) = uintptr(0)
-	*(*uintptr)(unsafe.Add(p, 152)) = uintptr(0)
-	*(*uintptr)(unsafe.Add(p, 160)) = uintptr(0)
-	*(*uintptr)(unsafe.Add(p, 168)) = uintptr(0)
-	*(*uintptr)(unsafe.Add(p, 176)) = uintptr(0)
-	*(*uintptr)(unsafe.Add(p, 184)) = uintptr(0)
 }
 
 // C documentation
@@ -236307,360 +229574,122 @@ var _aJsonFunc = [19]TFuncDef{
 	0: {
 		FnArg:      int8(1),
 		FfuncFlags: uint32(libc.Int32FromInt32(m_SQLITE_FUNC_BUILTIN) | libc.Int32FromInt32(m_SQLITE_DETERMINISTIC) | libc.Int32FromInt32(m_SQLITE_FUNC_CONSTANT) | libc.Int32FromInt32(m_SQLITE_UTF8)),
-		FpUserData: uintptr(int64(libc.Int32FromInt32(0))),
-		FpNext:     uintptr(0),
-		FxSFunc:    uintptr(0),
-		FxFinalize: uintptr(0),
-		FxValue:    uintptr(0),
-		FxInverse:  uintptr(0),
 		FzName:     __ccgo_ts + 73045,
-		Fu: struct {
-			FpDestructor [0]uintptr
-			FpHash       uintptr
-		}{},
 	},
 	1: {
 		FnArg:      int8(-int32(1)),
 		FfuncFlags: uint32(libc.Int32FromInt32(m_SQLITE_FUNC_BUILTIN) | libc.Int32FromInt32(m_SQLITE_DETERMINISTIC) | libc.Int32FromInt32(m_SQLITE_FUNC_CONSTANT) | libc.Int32FromInt32(m_SQLITE_UTF8)),
-		FpUserData: uintptr(int64(libc.Int32FromInt32(0))),
-		FpNext:     uintptr(0),
-		FxSFunc:    uintptr(0),
-		FxFinalize: uintptr(0),
-		FxValue:    uintptr(0),
-		FxInverse:  uintptr(0),
 		FzName:     __ccgo_ts + 73050,
-		Fu: struct {
-			FpDestructor [0]uintptr
-			FpHash       uintptr
-		}{},
 	},
 	2: {
 		FnArg:      int8(1),
 		FfuncFlags: uint32(libc.Int32FromInt32(m_SQLITE_FUNC_BUILTIN) | libc.Int32FromInt32(m_SQLITE_DETERMINISTIC) | libc.Int32FromInt32(m_SQLITE_FUNC_CONSTANT) | libc.Int32FromInt32(m_SQLITE_UTF8)),
-		FpUserData: uintptr(int64(libc.Int32FromInt32(0))),
-		FpNext:     uintptr(0),
-		FxSFunc:    uintptr(0),
-		FxFinalize: uintptr(0),
-		FxValue:    uintptr(0),
-		FxInverse:  uintptr(0),
 		FzName:     __ccgo_ts + 73061,
-		Fu: struct {
-			FpDestructor [0]uintptr
-			FpHash       uintptr
-		}{},
 	},
 	3: {
 		FnArg:      int8(2),
 		FfuncFlags: uint32(libc.Int32FromInt32(m_SQLITE_FUNC_BUILTIN) | libc.Int32FromInt32(m_SQLITE_DETERMINISTIC) | libc.Int32FromInt32(m_SQLITE_FUNC_CONSTANT) | libc.Int32FromInt32(m_SQLITE_UTF8)),
-		FpUserData: uintptr(int64(libc.Int32FromInt32(0))),
-		FpNext:     uintptr(0),
-		FxSFunc:    uintptr(0),
-		FxFinalize: uintptr(0),
-		FxValue:    uintptr(0),
-		FxInverse:  uintptr(0),
 		FzName:     __ccgo_ts + 73061,
-		Fu: struct {
-			FpDestructor [0]uintptr
-			FpHash       uintptr
-		}{},
 	},
 	4: {
 		FnArg:      int8(-int32(1)),
 		FfuncFlags: uint32(libc.Int32FromInt32(m_SQLITE_FUNC_BUILTIN) | libc.Int32FromInt32(m_SQLITE_DETERMINISTIC) | libc.Int32FromInt32(m_SQLITE_FUNC_CONSTANT) | libc.Int32FromInt32(m_SQLITE_UTF8)),
-		FpUserData: uintptr(int64(libc.Int32FromInt32(0))),
-		FpNext:     uintptr(0),
-		FxSFunc:    uintptr(0),
-		FxFinalize: uintptr(0),
-		FxValue:    uintptr(0),
-		FxInverse:  uintptr(0),
 		FzName:     __ccgo_ts + 73079,
-		Fu: struct {
-			FpDestructor [0]uintptr
-			FpHash       uintptr
-		}{},
 	},
 	5: {
 		FnArg:      int8(2),
 		FfuncFlags: uint32(libc.Int32FromInt32(m_SQLITE_FUNC_BUILTIN) | libc.Int32FromInt32(m_SQLITE_DETERMINISTIC) | libc.Int32FromInt32(m_SQLITE_FUNC_CONSTANT) | libc.Int32FromInt32(m_SQLITE_UTF8)),
 		FpUserData: uintptr(int64(libc.Int32FromInt32(m_JSON_JSON))),
-		FpNext:     uintptr(0),
-		FxSFunc:    uintptr(0),
-		FxFinalize: uintptr(0),
-		FxValue:    uintptr(0),
-		FxInverse:  uintptr(0),
 		FzName:     __ccgo_ts + 73092,
-		Fu: struct {
-			FpDestructor [0]uintptr
-			FpHash       uintptr
-		}{},
 	},
 	6: {
 		FnArg:      int8(2),
 		FfuncFlags: uint32(libc.Int32FromInt32(m_SQLITE_FUNC_BUILTIN) | libc.Int32FromInt32(m_SQLITE_DETERMINISTIC) | libc.Int32FromInt32(m_SQLITE_FUNC_CONSTANT) | libc.Int32FromInt32(m_SQLITE_UTF8)),
 		FpUserData: uintptr(int64(libc.Int32FromInt32(m_JSON_SQL))),
-		FpNext:     uintptr(0),
-		FxSFunc:    uintptr(0),
-		FxFinalize: uintptr(0),
-		FxValue:    uintptr(0),
-		FxInverse:  uintptr(0),
 		FzName:     __ccgo_ts + 73095,
-		Fu: struct {
-			FpDestructor [0]uintptr
-			FpHash       uintptr
-		}{},
 	},
 	7: {
 		FnArg:      int8(-int32(1)),
 		FfuncFlags: uint32(libc.Int32FromInt32(m_SQLITE_FUNC_BUILTIN) | libc.Int32FromInt32(m_SQLITE_DETERMINISTIC) | libc.Int32FromInt32(m_SQLITE_FUNC_CONSTANT) | libc.Int32FromInt32(m_SQLITE_UTF8)),
-		FpUserData: uintptr(int64(libc.Int32FromInt32(0))),
-		FpNext:     uintptr(0),
-		FxSFunc:    uintptr(0),
-		FxFinalize: uintptr(0),
-		FxValue:    uintptr(0),
-		FxInverse:  uintptr(0),
 		FzName:     __ccgo_ts + 73099,
-		Fu: struct {
-			FpDestructor [0]uintptr
-			FpHash       uintptr
-		}{},
 	},
 	8: {
 		FnArg:      int8(-int32(1)),
 		FfuncFlags: uint32(libc.Int32FromInt32(m_SQLITE_FUNC_BUILTIN) | libc.Int32FromInt32(m_SQLITE_DETERMINISTIC) | libc.Int32FromInt32(m_SQLITE_FUNC_CONSTANT) | libc.Int32FromInt32(m_SQLITE_UTF8)),
-		FpUserData: uintptr(int64(libc.Int32FromInt32(0))),
-		FpNext:     uintptr(0),
-		FxSFunc:    uintptr(0),
-		FxFinalize: uintptr(0),
-		FxValue:    uintptr(0),
-		FxInverse:  uintptr(0),
 		FzName:     __ccgo_ts + 73111,
-		Fu: struct {
-			FpDestructor [0]uintptr
-			FpHash       uintptr
-		}{},
 	},
 	9: {
 		FnArg:      int8(2),
 		FfuncFlags: uint32(libc.Int32FromInt32(m_SQLITE_FUNC_BUILTIN) | libc.Int32FromInt32(m_SQLITE_DETERMINISTIC) | libc.Int32FromInt32(m_SQLITE_FUNC_CONSTANT) | libc.Int32FromInt32(m_SQLITE_UTF8)),
-		FpUserData: uintptr(int64(libc.Int32FromInt32(0))),
-		FpNext:     uintptr(0),
-		FxSFunc:    uintptr(0),
-		FxFinalize: uintptr(0),
-		FxValue:    uintptr(0),
-		FxInverse:  uintptr(0),
 		FzName:     __ccgo_ts + 73123,
-		Fu: struct {
-			FpDestructor [0]uintptr
-			FpHash       uintptr
-		}{},
 	},
 	10: {
 		FnArg:      int8(1),
 		FfuncFlags: uint32(libc.Int32FromInt32(m_SQLITE_FUNC_BUILTIN) | libc.Int32FromInt32(m_SQLITE_DETERMINISTIC) | libc.Int32FromInt32(m_SQLITE_FUNC_CONSTANT) | libc.Int32FromInt32(m_SQLITE_UTF8)),
-		FpUserData: uintptr(int64(libc.Int32FromInt32(0))),
-		FpNext:     uintptr(0),
-		FxSFunc:    uintptr(0),
-		FxFinalize: uintptr(0),
-		FxValue:    uintptr(0),
-		FxInverse:  uintptr(0),
 		FzName:     __ccgo_ts + 73134,
-		Fu: struct {
-			FpDestructor [0]uintptr
-			FpHash       uintptr
-		}{},
 	},
 	11: {
 		FnArg:      int8(-int32(1)),
 		FfuncFlags: uint32(libc.Int32FromInt32(m_SQLITE_FUNC_BUILTIN) | libc.Int32FromInt32(m_SQLITE_DETERMINISTIC) | libc.Int32FromInt32(m_SQLITE_FUNC_CONSTANT) | libc.Int32FromInt32(m_SQLITE_UTF8)),
-		FpUserData: uintptr(int64(libc.Int32FromInt32(0))),
-		FpNext:     uintptr(0),
-		FxSFunc:    uintptr(0),
-		FxFinalize: uintptr(0),
-		FxValue:    uintptr(0),
-		FxInverse:  uintptr(0),
 		FzName:     __ccgo_ts + 73145,
-		Fu: struct {
-			FpDestructor [0]uintptr
-			FpHash       uintptr
-		}{},
 	},
 	12: {
 		FnArg:      int8(-int32(1)),
 		FfuncFlags: uint32(libc.Int32FromInt32(m_SQLITE_FUNC_BUILTIN) | libc.Int32FromInt32(m_SQLITE_DETERMINISTIC) | libc.Int32FromInt32(m_SQLITE_FUNC_CONSTANT) | libc.Int32FromInt32(m_SQLITE_UTF8)),
-		FpUserData: uintptr(int64(libc.Int32FromInt32(0))),
-		FpNext:     uintptr(0),
-		FxSFunc:    uintptr(0),
-		FxFinalize: uintptr(0),
-		FxValue:    uintptr(0),
-		FxInverse:  uintptr(0),
 		FzName:     __ccgo_ts + 73157,
-		Fu: struct {
-			FpDestructor [0]uintptr
-			FpHash       uintptr
-		}{},
 	},
 	13: {
 		FnArg:      int8(-int32(1)),
 		FfuncFlags: uint32(libc.Int32FromInt32(m_SQLITE_FUNC_BUILTIN) | libc.Int32FromInt32(m_SQLITE_DETERMINISTIC) | libc.Int32FromInt32(m_SQLITE_FUNC_CONSTANT) | libc.Int32FromInt32(m_SQLITE_UTF8)),
 		FpUserData: uintptr(int64(libc.Int32FromInt32(m_JSON_ISSET))),
-		FpNext:     uintptr(0),
-		FxSFunc:    uintptr(0),
-		FxFinalize: uintptr(0),
-		FxValue:    uintptr(0),
-		FxInverse:  uintptr(0),
 		FzName:     __ccgo_ts + 73170,
-		Fu: struct {
-			FpDestructor [0]uintptr
-			FpHash       uintptr
-		}{},
 	},
 	14: {
 		FnArg:      int8(1),
 		FfuncFlags: uint32(libc.Int32FromInt32(m_SQLITE_FUNC_BUILTIN) | libc.Int32FromInt32(m_SQLITE_DETERMINISTIC) | libc.Int32FromInt32(m_SQLITE_FUNC_CONSTANT) | libc.Int32FromInt32(m_SQLITE_UTF8)),
-		FpUserData: uintptr(int64(libc.Int32FromInt32(0))),
-		FpNext:     uintptr(0),
-		FxSFunc:    uintptr(0),
-		FxFinalize: uintptr(0),
-		FxValue:    uintptr(0),
-		FxInverse:  uintptr(0),
 		FzName:     __ccgo_ts + 73179,
-		Fu: struct {
-			FpDestructor [0]uintptr
-			FpHash       uintptr
-		}{},
 	},
 	15: {
 		FnArg:      int8(2),
 		FfuncFlags: uint32(libc.Int32FromInt32(m_SQLITE_FUNC_BUILTIN) | libc.Int32FromInt32(m_SQLITE_DETERMINISTIC) | libc.Int32FromInt32(m_SQLITE_FUNC_CONSTANT) | libc.Int32FromInt32(m_SQLITE_UTF8)),
-		FpUserData: uintptr(int64(libc.Int32FromInt32(0))),
-		FpNext:     uintptr(0),
-		FxSFunc:    uintptr(0),
-		FxFinalize: uintptr(0),
-		FxValue:    uintptr(0),
-		FxInverse:  uintptr(0),
 		FzName:     __ccgo_ts + 73179,
-		Fu: struct {
-			FpDestructor [0]uintptr
-			FpHash       uintptr
-		}{},
 	},
 	16: {
 		FnArg:      int8(1),
 		FfuncFlags: uint32(libc.Int32FromInt32(m_SQLITE_FUNC_BUILTIN) | libc.Int32FromInt32(m_SQLITE_DETERMINISTIC) | libc.Int32FromInt32(m_SQLITE_FUNC_CONSTANT) | libc.Int32FromInt32(m_SQLITE_UTF8)),
-		FpUserData: uintptr(int64(libc.Int32FromInt32(0))),
-		FpNext:     uintptr(0),
-		FxSFunc:    uintptr(0),
-		FxFinalize: uintptr(0),
-		FxValue:    uintptr(0),
-		FxInverse:  uintptr(0),
 		FzName:     __ccgo_ts + 73189,
-		Fu: struct {
-			FpDestructor [0]uintptr
-			FpHash       uintptr
-		}{},
 	},
 	17: {
 		FnArg:      int8(1),
 		FfuncFlags: uint32(libc.Int32FromInt32(m_SQLITE_FUNC_BUILTIN) | libc.Int32FromInt32(m_SQLITE_UTF8) | libc.Int32FromInt32(0)*libc.Int32FromInt32(m_SQLITE_FUNC_NEEDCOLL) | libc.Int32FromInt32(m_SQLITE_SUBTYPE) | libc.Int32FromInt32(m_SQLITE_UTF8) | libc.Int32FromInt32(m_SQLITE_DETERMINISTIC)),
-		FpUserData: uintptr(int64(libc.Int32FromInt32(0))),
-		FpNext:     uintptr(0),
-		FxSFunc:    uintptr(0),
-		FxFinalize: uintptr(0),
-		FxValue:    uintptr(0),
-		FxInverse:  uintptr(0),
 		FzName:     __ccgo_ts + 73200,
-		Fu: struct {
-			FpDestructor [0]uintptr
-			FpHash       uintptr
-		}{},
 	},
 	18: {
 		FnArg:      int8(2),
 		FfuncFlags: uint32(libc.Int32FromInt32(m_SQLITE_FUNC_BUILTIN) | libc.Int32FromInt32(m_SQLITE_UTF8) | libc.Int32FromInt32(0)*libc.Int32FromInt32(m_SQLITE_FUNC_NEEDCOLL) | libc.Int32FromInt32(m_SQLITE_SUBTYPE) | libc.Int32FromInt32(m_SQLITE_UTF8) | libc.Int32FromInt32(m_SQLITE_DETERMINISTIC)),
-		FpUserData: uintptr(int64(libc.Int32FromInt32(0))),
-		FpNext:     uintptr(0),
-		FxSFunc:    uintptr(0),
-		FxFinalize: uintptr(0),
-		FxValue:    uintptr(0),
-		FxInverse:  uintptr(0),
 		FzName:     __ccgo_ts + 73217,
-		Fu: struct {
-			FpDestructor [0]uintptr
-			FpHash       uintptr
-		}{},
 	},
 }
 
 func init() {
 	p := unsafe.Pointer(&_aJsonFunc)
 	*(*uintptr)(unsafe.Add(p, 24)) = __ccgo_fp(_jsonRemoveFunc)
-	*(*uintptr)(unsafe.Add(p, 32)) = uintptr(0)
-	*(*uintptr)(unsafe.Add(p, 40)) = uintptr(0)
-	*(*uintptr)(unsafe.Add(p, 48)) = uintptr(0)
 	*(*uintptr)(unsafe.Add(p, 96)) = __ccgo_fp(_jsonArrayFunc)
-	*(*uintptr)(unsafe.Add(p, 104)) = uintptr(0)
-	*(*uintptr)(unsafe.Add(p, 112)) = uintptr(0)
-	*(*uintptr)(unsafe.Add(p, 120)) = uintptr(0)
 	*(*uintptr)(unsafe.Add(p, 168)) = __ccgo_fp(_jsonArrayLengthFunc)
-	*(*uintptr)(unsafe.Add(p, 176)) = uintptr(0)
-	*(*uintptr)(unsafe.Add(p, 184)) = uintptr(0)
-	*(*uintptr)(unsafe.Add(p, 192)) = uintptr(0)
 	*(*uintptr)(unsafe.Add(p, 240)) = __ccgo_fp(_jsonArrayLengthFunc)
-	*(*uintptr)(unsafe.Add(p, 248)) = uintptr(0)
-	*(*uintptr)(unsafe.Add(p, 256)) = uintptr(0)
-	*(*uintptr)(unsafe.Add(p, 264)) = uintptr(0)
 	*(*uintptr)(unsafe.Add(p, 312)) = __ccgo_fp(_jsonExtractFunc)
-	*(*uintptr)(unsafe.Add(p, 320)) = uintptr(0)
-	*(*uintptr)(unsafe.Add(p, 328)) = uintptr(0)
-	*(*uintptr)(unsafe.Add(p, 336)) = uintptr(0)
 	*(*uintptr)(unsafe.Add(p, 384)) = __ccgo_fp(_jsonExtractFunc)
-	*(*uintptr)(unsafe.Add(p, 392)) = uintptr(0)
-	*(*uintptr)(unsafe.Add(p, 400)) = uintptr(0)
-	*(*uintptr)(unsafe.Add(p, 408)) = uintptr(0)
 	*(*uintptr)(unsafe.Add(p, 456)) = __ccgo_fp(_jsonExtractFunc)
-	*(*uintptr)(unsafe.Add(p, 464)) = uintptr(0)
-	*(*uintptr)(unsafe.Add(p, 472)) = uintptr(0)
-	*(*uintptr)(unsafe.Add(p, 480)) = uintptr(0)
 	*(*uintptr)(unsafe.Add(p, 528)) = __ccgo_fp(_jsonSetFunc)
-	*(*uintptr)(unsafe.Add(p, 536)) = uintptr(0)
-	*(*uintptr)(unsafe.Add(p, 544)) = uintptr(0)
-	*(*uintptr)(unsafe.Add(p, 552)) = uintptr(0)
 	*(*uintptr)(unsafe.Add(p, 600)) = __ccgo_fp(_jsonObjectFunc)
-	*(*uintptr)(unsafe.Add(p, 608)) = uintptr(0)
-	*(*uintptr)(unsafe.Add(p, 616)) = uintptr(0)
-	*(*uintptr)(unsafe.Add(p, 624)) = uintptr(0)
 	*(*uintptr)(unsafe.Add(p, 672)) = __ccgo_fp(_jsonPatchFunc)
-	*(*uintptr)(unsafe.Add(p, 680)) = uintptr(0)
-	*(*uintptr)(unsafe.Add(p, 688)) = uintptr(0)
-	*(*uintptr)(unsafe.Add(p, 696)) = uintptr(0)
 	*(*uintptr)(unsafe.Add(p, 744)) = __ccgo_fp(_jsonQuoteFunc)
-	*(*uintptr)(unsafe.Add(p, 752)) = uintptr(0)
-	*(*uintptr)(unsafe.Add(p, 760)) = uintptr(0)
-	*(*uintptr)(unsafe.Add(p, 768)) = uintptr(0)
 	*(*uintptr)(unsafe.Add(p, 816)) = __ccgo_fp(_jsonRemoveFunc)
-	*(*uintptr)(unsafe.Add(p, 824)) = uintptr(0)
-	*(*uintptr)(unsafe.Add(p, 832)) = uintptr(0)
-	*(*uintptr)(unsafe.Add(p, 840)) = uintptr(0)
 	*(*uintptr)(unsafe.Add(p, 888)) = __ccgo_fp(_jsonReplaceFunc)
-	*(*uintptr)(unsafe.Add(p, 896)) = uintptr(0)
-	*(*uintptr)(unsafe.Add(p, 904)) = uintptr(0)
-	*(*uintptr)(unsafe.Add(p, 912)) = uintptr(0)
 	*(*uintptr)(unsafe.Add(p, 960)) = __ccgo_fp(_jsonSetFunc)
-	*(*uintptr)(unsafe.Add(p, 968)) = uintptr(0)
-	*(*uintptr)(unsafe.Add(p, 976)) = uintptr(0)
-	*(*uintptr)(unsafe.Add(p, 984)) = uintptr(0)
 	*(*uintptr)(unsafe.Add(p, 1032)) = __ccgo_fp(_jsonTypeFunc)
-	*(*uintptr)(unsafe.Add(p, 1040)) = uintptr(0)
-	*(*uintptr)(unsafe.Add(p, 1048)) = uintptr(0)
-	*(*uintptr)(unsafe.Add(p, 1056)) = uintptr(0)
 	*(*uintptr)(unsafe.Add(p, 1104)) = __ccgo_fp(_jsonTypeFunc)
-	*(*uintptr)(unsafe.Add(p, 1112)) = uintptr(0)
-	*(*uintptr)(unsafe.Add(p, 1120)) = uintptr(0)
-	*(*uintptr)(unsafe.Add(p, 1128)) = uintptr(0)
 	*(*uintptr)(unsafe.Add(p, 1176)) = __ccgo_fp(_jsonValidFunc)
-	*(*uintptr)(unsafe.Add(p, 1184)) = uintptr(0)
-	*(*uintptr)(unsafe.Add(p, 1192)) = uintptr(0)
-	*(*uintptr)(unsafe.Add(p, 1200)) = uintptr(0)
 	*(*uintptr)(unsafe.Add(p, 1248)) = __ccgo_fp(_jsonArrayStep)
 	*(*uintptr)(unsafe.Add(p, 1256)) = __ccgo_fp(_jsonArrayFinal)
 	*(*uintptr)(unsafe.Add(p, 1264)) = __ccgo_fp(_jsonArrayValue)
@@ -240547,30 +233576,7 @@ var _azName1 = [3]uintptr{
 }
 
 var _rtreeModule = Tsqlite3_module{
-	FiVersion:      int32(3),
-	FxCreate:       uintptr(0),
-	FxConnect:      uintptr(0),
-	FxBestIndex:    uintptr(0),
-	FxDisconnect:   uintptr(0),
-	FxDestroy:      uintptr(0),
-	FxOpen:         uintptr(0),
-	FxClose:        uintptr(0),
-	FxFilter:       uintptr(0),
-	FxNext:         uintptr(0),
-	FxEof:          uintptr(0),
-	FxColumn:       uintptr(0),
-	FxRowid:        uintptr(0),
-	FxUpdate:       uintptr(0),
-	FxBegin:        uintptr(0),
-	FxSync:         uintptr(0),
-	FxCommit:       uintptr(0),
-	FxRollback:     uintptr(0),
-	FxFindFunction: uintptr(0),
-	FxRename:       uintptr(0),
-	FxSavepoint:    uintptr(0),
-	FxRelease:      uintptr(0),
-	FxRollbackTo:   uintptr(0),
-	FxShadowName:   uintptr(0),
+	FiVersion: int32(3),
 }
 
 func init() {
@@ -240592,11 +233598,8 @@ func init() {
 	*(*uintptr)(unsafe.Add(p, 120)) = __ccgo_fp(_rtreeEndTransaction)
 	*(*uintptr)(unsafe.Add(p, 128)) = __ccgo_fp(_rtreeEndTransaction)
 	*(*uintptr)(unsafe.Add(p, 136)) = __ccgo_fp(_rtreeEndTransaction)
-	*(*uintptr)(unsafe.Add(p, 144)) = uintptr(0)
 	*(*uintptr)(unsafe.Add(p, 152)) = __ccgo_fp(_rtreeRename)
 	*(*uintptr)(unsafe.Add(p, 160)) = __ccgo_fp(_rtreeSavepoint)
-	*(*uintptr)(unsafe.Add(p, 168)) = uintptr(0)
-	*(*uintptr)(unsafe.Add(p, 176)) = uintptr(0)
 	*(*uintptr)(unsafe.Add(p, 184)) = __ccgo_fp(_rtreeShadowName)
 }
 
@@ -240837,7 +233840,6 @@ func _rtreeInit(tls *libc.TLS, db uintptr, pAux uintptr, argc int32, argv uintpt
 	eCoordType = v1
 	ii = int32(4)
 	aErrMsg = [5]uintptr{
-		0: uintptr(0),
 		1: __ccgo_ts + 74631,
 		2: __ccgo_ts + 74674,
 		3: __ccgo_ts + 74709,
@@ -243672,30 +236674,7 @@ func _geopolyFindFunction(tls *libc.TLS, pVtab uintptr, nArg int32, zName uintpt
 }
 
 var _geopolyModule = Tsqlite3_module{
-	FiVersion:      int32(3),
-	FxCreate:       uintptr(0),
-	FxConnect:      uintptr(0),
-	FxBestIndex:    uintptr(0),
-	FxDisconnect:   uintptr(0),
-	FxDestroy:      uintptr(0),
-	FxOpen:         uintptr(0),
-	FxClose:        uintptr(0),
-	FxFilter:       uintptr(0),
-	FxNext:         uintptr(0),
-	FxEof:          uintptr(0),
-	FxColumn:       uintptr(0),
-	FxRowid:        uintptr(0),
-	FxUpdate:       uintptr(0),
-	FxBegin:        uintptr(0),
-	FxSync:         uintptr(0),
-	FxCommit:       uintptr(0),
-	FxRollback:     uintptr(0),
-	FxFindFunction: uintptr(0),
-	FxRename:       uintptr(0),
-	FxSavepoint:    uintptr(0),
-	FxRelease:      uintptr(0),
-	FxRollbackTo:   uintptr(0),
-	FxShadowName:   uintptr(0),
+	FiVersion: int32(3),
 }
 
 func init() {
@@ -243720,8 +236699,6 @@ func init() {
 	*(*uintptr)(unsafe.Add(p, 144)) = __ccgo_fp(_geopolyFindFunction)
 	*(*uintptr)(unsafe.Add(p, 152)) = __ccgo_fp(_rtreeRename)
 	*(*uintptr)(unsafe.Add(p, 160)) = __ccgo_fp(_rtreeSavepoint)
-	*(*uintptr)(unsafe.Add(p, 168)) = uintptr(0)
-	*(*uintptr)(unsafe.Add(p, 176)) = uintptr(0)
 	*(*uintptr)(unsafe.Add(p, 184)) = __ccgo_fp(_rtreeShadowName)
 }
 
@@ -243768,73 +236745,60 @@ var _aFunc2 = [12]struct {
 	FzName uintptr
 }{
 	0: {
-		FxFunc: uintptr(0),
 		FnArg:  int8(1),
 		FbPure: uint8(1),
 		FzName: __ccgo_ts + 75825,
 	},
 	1: {
-		FxFunc: uintptr(0),
 		FnArg:  int8(1),
 		FbPure: uint8(1),
 		FzName: __ccgo_ts + 75838,
 	},
 	2: {
-		FxFunc: uintptr(0),
 		FnArg:  int8(1),
 		FbPure: uint8(1),
 		FzName: __ccgo_ts + 75851,
 	},
 	3: {
-		FxFunc: uintptr(0),
 		FnArg:  int8(-int32(1)),
 		FbPure: uint8(1),
 		FzName: __ccgo_ts + 75864,
 	},
 	4: {
-		FxFunc: uintptr(0),
 		FnArg:  int8(2),
 		FbPure: uint8(1),
 		FzName: __ccgo_ts + 75810,
 	},
 	5: {
-		FxFunc: uintptr(0),
 		FnArg:  int8(3),
 		FbPure: uint8(1),
 		FzName: __ccgo_ts + 75876,
 	},
 	6: {
-		FxFunc: uintptr(0),
 		FnArg:  int8(2),
 		FbPure: uint8(1),
 		FzName: __ccgo_ts + 75794,
 	},
 	7: {
-		FxFunc: uintptr(0),
 		FnArg:  int8(1),
-		FbPure: uint8(0),
 		FzName: __ccgo_ts + 75899,
 	},
 	8: {
-		FxFunc: uintptr(0),
 		FnArg:  int8(1),
 		FbPure: uint8(1),
 		FzName: __ccgo_ts + 75913,
 	},
 	9: {
-		FxFunc: uintptr(0),
 		FnArg:  int8(7),
 		FbPure: uint8(1),
 		FzName: __ccgo_ts + 75926,
 	},
 	10: {
-		FxFunc: uintptr(0),
 		FnArg:  int8(4),
 		FbPure: uint8(1),
 		FzName: __ccgo_ts + 75940,
 	},
 	11: {
-		FxFunc: uintptr(0),
 		FnArg:  int8(1),
 		FbPure: uint8(1),
 		FzName: __ccgo_ts + 75956,
@@ -243863,9 +236827,7 @@ var _aAgg = [1]struct {
 	FzName  uintptr
 }{
 	0: {
-		FxStep:  uintptr(0),
-		FxFinal: uintptr(0),
-		FzName:  __ccgo_ts + 75968,
+		FzName: __ccgo_ts + 75968,
 	},
 }
 
@@ -245164,32 +238126,7 @@ func x_sqlite3DbstatRegister(tls *libc.TLS, db uintptr) (r int32) {
 	return x_sqlite3_create_module(tls, db, __ccgo_ts+76266, uintptr(unsafe.Pointer(&_dbstat_module)), uintptr(0))
 }
 
-var _dbstat_module = Tsqlite3_module{
-	FiVersion:      0,
-	FxCreate:       uintptr(0),
-	FxConnect:      uintptr(0),
-	FxBestIndex:    uintptr(0),
-	FxDisconnect:   uintptr(0),
-	FxDestroy:      uintptr(0),
-	FxOpen:         uintptr(0),
-	FxClose:        uintptr(0),
-	FxFilter:       uintptr(0),
-	FxNext:         uintptr(0),
-	FxEof:          uintptr(0),
-	FxColumn:       uintptr(0),
-	FxRowid:        uintptr(0),
-	FxUpdate:       uintptr(0),
-	FxBegin:        uintptr(0),
-	FxSync:         uintptr(0),
-	FxCommit:       uintptr(0),
-	FxRollback:     uintptr(0),
-	FxFindFunction: uintptr(0),
-	FxRename:       uintptr(0),
-	FxSavepoint:    uintptr(0),
-	FxRelease:      uintptr(0),
-	FxRollbackTo:   uintptr(0),
-	FxShadowName:   uintptr(0),
-}
+var _dbstat_module = Tsqlite3_module{}
 
 func init() {
 	p := unsafe.Pointer(&_dbstat_module)
@@ -245205,17 +238142,6 @@ func init() {
 	*(*uintptr)(unsafe.Add(p, 80)) = __ccgo_fp(_statEof)
 	*(*uintptr)(unsafe.Add(p, 88)) = __ccgo_fp(_statColumn)
 	*(*uintptr)(unsafe.Add(p, 96)) = __ccgo_fp(_statRowid)
-	*(*uintptr)(unsafe.Add(p, 104)) = uintptr(0)
-	*(*uintptr)(unsafe.Add(p, 112)) = uintptr(0)
-	*(*uintptr)(unsafe.Add(p, 120)) = uintptr(0)
-	*(*uintptr)(unsafe.Add(p, 128)) = uintptr(0)
-	*(*uintptr)(unsafe.Add(p, 136)) = uintptr(0)
-	*(*uintptr)(unsafe.Add(p, 144)) = uintptr(0)
-	*(*uintptr)(unsafe.Add(p, 152)) = uintptr(0)
-	*(*uintptr)(unsafe.Add(p, 160)) = uintptr(0)
-	*(*uintptr)(unsafe.Add(p, 168)) = uintptr(0)
-	*(*uintptr)(unsafe.Add(p, 176)) = uintptr(0)
-	*(*uintptr)(unsafe.Add(p, 184)) = uintptr(0)
 }
 
 /************** End of dbstat.c **********************************************/
@@ -245670,32 +238596,7 @@ func x_sqlite3DbpageRegister(tls *libc.TLS, db uintptr) (r int32) {
 	return x_sqlite3_create_module(tls, db, __ccgo_ts+76424, uintptr(unsafe.Pointer(&_dbpage_module)), uintptr(0))
 }
 
-var _dbpage_module = Tsqlite3_module{
-	FiVersion:      0,
-	FxCreate:       uintptr(0),
-	FxConnect:      uintptr(0),
-	FxBestIndex:    uintptr(0),
-	FxDisconnect:   uintptr(0),
-	FxDestroy:      uintptr(0),
-	FxOpen:         uintptr(0),
-	FxClose:        uintptr(0),
-	FxFilter:       uintptr(0),
-	FxNext:         uintptr(0),
-	FxEof:          uintptr(0),
-	FxColumn:       uintptr(0),
-	FxRowid:        uintptr(0),
-	FxUpdate:       uintptr(0),
-	FxBegin:        uintptr(0),
-	FxSync:         uintptr(0),
-	FxCommit:       uintptr(0),
-	FxRollback:     uintptr(0),
-	FxFindFunction: uintptr(0),
-	FxRename:       uintptr(0),
-	FxSavepoint:    uintptr(0),
-	FxRelease:      uintptr(0),
-	FxRollbackTo:   uintptr(0),
-	FxShadowName:   uintptr(0),
-}
+var _dbpage_module = Tsqlite3_module{}
 
 func init() {
 	p := unsafe.Pointer(&_dbpage_module)
@@ -245713,15 +238614,6 @@ func init() {
 	*(*uintptr)(unsafe.Add(p, 96)) = __ccgo_fp(_dbpageRowid)
 	*(*uintptr)(unsafe.Add(p, 104)) = __ccgo_fp(_dbpageUpdate)
 	*(*uintptr)(unsafe.Add(p, 112)) = __ccgo_fp(_dbpageBegin)
-	*(*uintptr)(unsafe.Add(p, 120)) = uintptr(0)
-	*(*uintptr)(unsafe.Add(p, 128)) = uintptr(0)
-	*(*uintptr)(unsafe.Add(p, 136)) = uintptr(0)
-	*(*uintptr)(unsafe.Add(p, 144)) = uintptr(0)
-	*(*uintptr)(unsafe.Add(p, 152)) = uintptr(0)
-	*(*uintptr)(unsafe.Add(p, 160)) = uintptr(0)
-	*(*uintptr)(unsafe.Add(p, 168)) = uintptr(0)
-	*(*uintptr)(unsafe.Add(p, 176)) = uintptr(0)
-	*(*uintptr)(unsafe.Add(p, 184)) = uintptr(0)
 }
 
 /************** End of dbpage.c **********************************************/
@@ -252858,7 +245750,6 @@ var _fts5yy_lookahead = [121]uint8{
 	75:  uint8(1),
 	76:  uint8(2),
 	77:  uint8(3),
-	78:  uint8(0),
 	79:  uint8(1),
 	80:  uint8(2),
 	81:  uint8(3),
@@ -252942,7 +245833,6 @@ var _fts5yy_shift_ofst = [35]uint8{
 var _fts5yy_reduce_ofst = [18]int8{
 	0:  int8(-int32(16)),
 	1:  int8(-int32(8)),
-	2:  int8(0),
 	3:  int8(9),
 	4:  int8(17),
 	5:  int8(25),
@@ -253371,12 +246261,10 @@ var _fts5yyRuleInfoNRhs = [28]int8{
 	19: int8(-int32(5)),
 	20: int8(-int32(1)),
 	21: int8(-int32(2)),
-	22: int8(0),
 	23: int8(-int32(2)),
 	24: int8(-int32(4)),
 	25: int8(-int32(2)),
 	26: int8(-int32(1)),
-	27: int8(0),
 } /* Forward Declaration */
 
 // C documentation
@@ -254550,22 +247438,16 @@ func _sqlite3Fts5AuxInit(tls *libc.TLS, pApi uintptr) (r int32) {
 		FxDestroy  uintptr
 	}{
 		0: {
-			FzFunc:     __ccgo_ts + 77940,
-			FpUserData: uintptr(0),
-			FxFunc:     __ccgo_fp(_fts5SnippetFunction),
-			FxDestroy:  uintptr(0),
+			FzFunc: __ccgo_ts + 77940,
+			FxFunc: __ccgo_fp(_fts5SnippetFunction),
 		},
 		1: {
-			FzFunc:     __ccgo_ts + 77948,
-			FpUserData: uintptr(0),
-			FxFunc:     __ccgo_fp(_fts5HighlightFunction),
-			FxDestroy:  uintptr(0),
+			FzFunc: __ccgo_ts + 77948,
+			FxFunc: __ccgo_fp(_fts5HighlightFunction),
 		},
 		2: {
-			FzFunc:     __ccgo_ts + 77958,
-			FpUserData: uintptr(0),
-			FxFunc:     __ccgo_fp(_fts5Bm25Function),
-			FxDestroy:  uintptr(0),
+			FzFunc: __ccgo_ts + 77958,
+			FxFunc: __ccgo_fp(_fts5Bm25Function),
 		},
 	}
 	rc = m_SQLITE_OK /* To iterate through builtin functions */
@@ -254957,54 +247839,7 @@ func _sqlite3Fts5IsBareword(tls *libc.TLS, t int8) (r int32) {
 	var aBareword [128]Tu8
 	_ = aBareword
 	aBareword = [128]Tu8{
-		0:   uint8(0),
-		1:   uint8(0),
-		2:   uint8(0),
-		3:   uint8(0),
-		4:   uint8(0),
-		5:   uint8(0),
-		6:   uint8(0),
-		7:   uint8(0),
-		8:   uint8(0),
-		9:   uint8(0),
-		10:  uint8(0),
-		11:  uint8(0),
-		12:  uint8(0),
-		13:  uint8(0),
-		14:  uint8(0),
-		15:  uint8(0),
-		16:  uint8(0),
-		17:  uint8(0),
-		18:  uint8(0),
-		19:  uint8(0),
-		20:  uint8(0),
-		21:  uint8(0),
-		22:  uint8(0),
-		23:  uint8(0),
-		24:  uint8(0),
-		25:  uint8(0),
 		26:  uint8(1),
-		27:  uint8(0),
-		28:  uint8(0),
-		29:  uint8(0),
-		30:  uint8(0),
-		31:  uint8(0),
-		32:  uint8(0),
-		33:  uint8(0),
-		34:  uint8(0),
-		35:  uint8(0),
-		36:  uint8(0),
-		37:  uint8(0),
-		38:  uint8(0),
-		39:  uint8(0),
-		40:  uint8(0),
-		41:  uint8(0),
-		42:  uint8(0),
-		43:  uint8(0),
-		44:  uint8(0),
-		45:  uint8(0),
-		46:  uint8(0),
-		47:  uint8(0),
 		48:  uint8(1),
 		49:  uint8(1),
 		50:  uint8(1),
@@ -255015,13 +247850,6 @@ func _sqlite3Fts5IsBareword(tls *libc.TLS, t int8) (r int32) {
 		55:  uint8(1),
 		56:  uint8(1),
 		57:  uint8(1),
-		58:  uint8(0),
-		59:  uint8(0),
-		60:  uint8(0),
-		61:  uint8(0),
-		62:  uint8(0),
-		63:  uint8(0),
-		64:  uint8(0),
 		65:  uint8(1),
 		66:  uint8(1),
 		67:  uint8(1),
@@ -255048,12 +247876,7 @@ func _sqlite3Fts5IsBareword(tls *libc.TLS, t int8) (r int32) {
 		88:  uint8(1),
 		89:  uint8(1),
 		90:  uint8(1),
-		91:  uint8(0),
-		92:  uint8(0),
-		93:  uint8(0),
-		94:  uint8(0),
 		95:  uint8(1),
-		96:  uint8(0),
 		97:  uint8(1),
 		98:  uint8(1),
 		99:  uint8(1),
@@ -255080,11 +247903,6 @@ func _sqlite3Fts5IsBareword(tls *libc.TLS, t int8) (r int32) {
 		120: uint8(1),
 		121: uint8(1),
 		122: uint8(1),
-		123: uint8(0),
-		124: uint8(0),
-		125: uint8(0),
-		126: uint8(0),
-		127: uint8(0),
 	}
 	return libc.BoolInt32(int32(int32(t))&int32(0x80) != 0 || aBareword[int32(int32(t))] != 0)
 }
@@ -255614,13 +248432,11 @@ func _fts5ConfigParseSpecial(tls *libc.TLS, pGlobal uintptr, pConfig uintptr, zC
 			},
 			1: {
 				FzName: __ccgo_ts + 3592,
-				FeVal:  m_FTS5_DETAIL_FULL,
 			},
 			2: {
 				FzName: __ccgo_ts + 33271,
 				FeVal:  int32(m_FTS5_DETAIL_COLUMNS),
 			},
-			3: {},
 		}
 		v2 = _fts5ConfigSetEnum(tls, bp+8, zArg, pConfig+92)
 		*(*int32)(unsafe.Pointer(bp)) = v2
@@ -269929,26 +262745,7 @@ func _fts5ApiPhraseFirstColumn(tls *libc.TLS, pCtx uintptr, iPhrase int32, pIter
 }
 
 var _sFts5Api = TFts5ExtensionApi{
-	FiVersion:           int32(2),
-	FxUserData:          uintptr(0),
-	FxColumnCount:       uintptr(0),
-	FxRowCount:          uintptr(0),
-	FxColumnTotalSize:   uintptr(0),
-	FxTokenize:          uintptr(0),
-	FxPhraseCount:       uintptr(0),
-	FxPhraseSize:        uintptr(0),
-	FxInstCount:         uintptr(0),
-	FxInst:              uintptr(0),
-	FxRowid:             uintptr(0),
-	FxColumnText:        uintptr(0),
-	FxColumnSize:        uintptr(0),
-	FxQueryPhrase:       uintptr(0),
-	FxSetAuxdata:        uintptr(0),
-	FxGetAuxdata:        uintptr(0),
-	FxPhraseFirst:       uintptr(0),
-	FxPhraseNext:        uintptr(0),
-	FxPhraseFirstColumn: uintptr(0),
-	FxPhraseNextColumn:  uintptr(0),
+	FiVersion: int32(2),
 }
 
 func init() {
@@ -270606,30 +263403,7 @@ func _fts5Init(tls *libc.TLS, db uintptr) (r int32) {
 }
 
 var _fts5Mod = Tsqlite3_module{
-	FiVersion:      int32(3),
-	FxCreate:       uintptr(0),
-	FxConnect:      uintptr(0),
-	FxBestIndex:    uintptr(0),
-	FxDisconnect:   uintptr(0),
-	FxDestroy:      uintptr(0),
-	FxOpen:         uintptr(0),
-	FxClose:        uintptr(0),
-	FxFilter:       uintptr(0),
-	FxNext:         uintptr(0),
-	FxEof:          uintptr(0),
-	FxColumn:       uintptr(0),
-	FxRowid:        uintptr(0),
-	FxUpdate:       uintptr(0),
-	FxBegin:        uintptr(0),
-	FxSync:         uintptr(0),
-	FxCommit:       uintptr(0),
-	FxRollback:     uintptr(0),
-	FxFindFunction: uintptr(0),
-	FxRename:       uintptr(0),
-	FxSavepoint:    uintptr(0),
-	FxRelease:      uintptr(0),
-	FxRollbackTo:   uintptr(0),
-	FxShadowName:   uintptr(0),
+	FiVersion: int32(3),
 }
 
 func init() {
@@ -271892,54 +264666,6 @@ func _sqlite3Fts5StorageConfigValue(tls *libc.TLS, p uintptr, z uintptr, pVal ui
 //	** is the same as the set of ASCII range alphanumeric characters.
 //	*/
 var _aAsciiTokenChar = [128]uint8{
-	0:   uint8(0),
-	1:   uint8(0),
-	2:   uint8(0),
-	3:   uint8(0),
-	4:   uint8(0),
-	5:   uint8(0),
-	6:   uint8(0),
-	7:   uint8(0),
-	8:   uint8(0),
-	9:   uint8(0),
-	10:  uint8(0),
-	11:  uint8(0),
-	12:  uint8(0),
-	13:  uint8(0),
-	14:  uint8(0),
-	15:  uint8(0),
-	16:  uint8(0),
-	17:  uint8(0),
-	18:  uint8(0),
-	19:  uint8(0),
-	20:  uint8(0),
-	21:  uint8(0),
-	22:  uint8(0),
-	23:  uint8(0),
-	24:  uint8(0),
-	25:  uint8(0),
-	26:  uint8(0),
-	27:  uint8(0),
-	28:  uint8(0),
-	29:  uint8(0),
-	30:  uint8(0),
-	31:  uint8(0),
-	32:  uint8(0),
-	33:  uint8(0),
-	34:  uint8(0),
-	35:  uint8(0),
-	36:  uint8(0),
-	37:  uint8(0),
-	38:  uint8(0),
-	39:  uint8(0),
-	40:  uint8(0),
-	41:  uint8(0),
-	42:  uint8(0),
-	43:  uint8(0),
-	44:  uint8(0),
-	45:  uint8(0),
-	46:  uint8(0),
-	47:  uint8(0),
 	48:  uint8(1),
 	49:  uint8(1),
 	50:  uint8(1),
@@ -271950,13 +264676,6 @@ var _aAsciiTokenChar = [128]uint8{
 	55:  uint8(1),
 	56:  uint8(1),
 	57:  uint8(1),
-	58:  uint8(0),
-	59:  uint8(0),
-	60:  uint8(0),
-	61:  uint8(0),
-	62:  uint8(0),
-	63:  uint8(0),
-	64:  uint8(0),
 	65:  uint8(1),
 	66:  uint8(1),
 	67:  uint8(1),
@@ -271983,12 +264702,6 @@ var _aAsciiTokenChar = [128]uint8{
 	88:  uint8(1),
 	89:  uint8(1),
 	90:  uint8(1),
-	91:  uint8(0),
-	92:  uint8(0),
-	93:  uint8(0),
-	94:  uint8(0),
-	95:  uint8(0),
-	96:  uint8(0),
 	97:  uint8(1),
 	98:  uint8(1),
 	99:  uint8(1),
@@ -272015,11 +264728,6 @@ var _aAsciiTokenChar = [128]uint8{
 	120: uint8(1),
 	121: uint8(1),
 	122: uint8(1),
-	123: uint8(0),
-	124: uint8(0),
-	125: uint8(0),
-	126: uint8(0),
-	127: uint8(0),
 }
 
 type TAsciiTokenizer = struct {
@@ -273785,7 +266493,6 @@ func _fts5_remove_diacritic(tls *libc.TLS, c int32, bComplex int32) (r int32) {
 	var key uint32
 	_, _, _, _, _, _, _, _ = aChar, aDia, iHi, iLo, iRes, iTest, key, v1
 	aDia = [126]uint16{
-		0:   uint16(0),
 		1:   uint16(1797),
 		2:   uint16(1848),
 		3:   uint16(1859),
@@ -273913,7 +266620,6 @@ func _fts5_remove_diacritic(tls *libc.TLS, c int32, bComplex int32) (r int32) {
 		125: uint16(63390),
 	}
 	aChar = [126]uint8{
-		0:   uint8('\000'),
 		1:   uint8('a'),
 		2:   uint8('c'),
 		3:   uint8('e'),
@@ -273975,14 +266681,6 @@ func _fts5_remove_diacritic(tls *libc.TLS, c int32, bComplex int32) (r int32) {
 		59:  uint8('o'),
 		60:  uint8(libc.Int32FromUint8('o') | int32(libc.Uint8FromInt32(0x80))),
 		61:  uint8('y'),
-		62:  uint8('\000'),
-		63:  uint8('\000'),
-		64:  uint8('\000'),
-		65:  uint8('\000'),
-		66:  uint8('\000'),
-		67:  uint8('\000'),
-		68:  uint8('\000'),
-		69:  uint8('\000'),
 		70:  uint8('a'),
 		71:  uint8('b'),
 		72:  uint8(libc.Int32FromUint8('c') | int32(libc.Uint8FromInt32(0x80))),
@@ -274251,7 +266949,6 @@ var _aEntry = [163]struct {
 	},
 	14: {
 		FiCode:  uint16(391),
-		Fflags:  uint8(0),
 		FnRange: uint8(1),
 	},
 	15: {
@@ -274261,7 +266958,6 @@ var _aEntry = [163]struct {
 	},
 	16: {
 		FiCode:  uint16(395),
-		Fflags:  uint8(0),
 		FnRange: uint8(1),
 	},
 	17: {
@@ -274281,7 +266977,6 @@ var _aEntry = [163]struct {
 	},
 	20: {
 		FiCode:  uint16(401),
-		Fflags:  uint8(0),
 		FnRange: uint8(1),
 	},
 	21: {
@@ -274306,7 +267001,6 @@ var _aEntry = [163]struct {
 	},
 	25: {
 		FiCode:  uint16(408),
-		Fflags:  uint8(0),
 		FnRange: uint8(1),
 	},
 	26: {
@@ -274336,7 +267030,6 @@ var _aEntry = [163]struct {
 	},
 	31: {
 		FiCode:  uint16(423),
-		Fflags:  uint8(0),
 		FnRange: uint8(1),
 	},
 	32: {
@@ -274346,7 +267039,6 @@ var _aEntry = [163]struct {
 	},
 	33: {
 		FiCode:  uint16(428),
-		Fflags:  uint8(0),
 		FnRange: uint8(1),
 	},
 	34: {
@@ -274356,7 +267048,6 @@ var _aEntry = [163]struct {
 	},
 	35: {
 		FiCode:  uint16(431),
-		Fflags:  uint8(0),
 		FnRange: uint8(1),
 	},
 	36: {
@@ -274376,12 +267067,10 @@ var _aEntry = [163]struct {
 	},
 	39: {
 		FiCode:  uint16(440),
-		Fflags:  uint8(0),
 		FnRange: uint8(1),
 	},
 	40: {
 		FiCode:  uint16(444),
-		Fflags:  uint8(0),
 		FnRange: uint8(1),
 	},
 	41: {
@@ -274391,7 +267080,6 @@ var _aEntry = [163]struct {
 	},
 	42: {
 		FiCode:  uint16(453),
-		Fflags:  uint8(0),
 		FnRange: uint8(1),
 	},
 	43: {
@@ -274401,7 +267089,6 @@ var _aEntry = [163]struct {
 	},
 	44: {
 		FiCode:  uint16(456),
-		Fflags:  uint8(0),
 		FnRange: uint8(1),
 	},
 	45: {
@@ -274461,7 +267148,6 @@ var _aEntry = [163]struct {
 	},
 	56: {
 		FiCode:  uint16(571),
-		Fflags:  uint8(0),
 		FnRange: uint8(1),
 	},
 	57: {
@@ -274476,7 +267162,6 @@ var _aEntry = [163]struct {
 	},
 	59: {
 		FiCode:  uint16(577),
-		Fflags:  uint8(0),
 		FnRange: uint8(1),
 	},
 	60: {
@@ -274511,7 +267196,6 @@ var _aEntry = [163]struct {
 	},
 	66: {
 		FiCode:  uint16(886),
-		Fflags:  uint8(0),
 		FnRange: uint8(1),
 	},
 	67: {
@@ -274546,7 +267230,6 @@ var _aEntry = [163]struct {
 	},
 	73: {
 		FiCode:  uint16(962),
-		Fflags:  uint8(0),
 		FnRange: uint8(1),
 	},
 	74: {
@@ -274601,7 +267284,6 @@ var _aEntry = [163]struct {
 	},
 	84: {
 		FiCode:  uint16(1015),
-		Fflags:  uint8(0),
 		FnRange: uint8(1),
 	},
 	85: {
@@ -274611,7 +267293,6 @@ var _aEntry = [163]struct {
 	},
 	86: {
 		FiCode:  uint16(1018),
-		Fflags:  uint8(0),
 		FnRange: uint8(1),
 	},
 	87: {
@@ -274841,7 +267522,6 @@ var _aEntry = [163]struct {
 	},
 	132: {
 		FiCode:  uint16(8579),
-		Fflags:  uint8(0),
 		FnRange: uint8(1),
 	},
 	133: {
@@ -274856,7 +267536,6 @@ var _aEntry = [163]struct {
 	},
 	135: {
 		FiCode:  uint16(11360),
-		Fflags:  uint8(0),
 		FnRange: uint8(1),
 	},
 	136: {
@@ -274901,12 +267580,10 @@ var _aEntry = [163]struct {
 	},
 	144: {
 		FiCode:  uint16(11378),
-		Fflags:  uint8(0),
 		FnRange: uint8(1),
 	},
 	145: {
 		FiCode:  uint16(11381),
-		Fflags:  uint8(0),
 		FnRange: uint8(1),
 	},
 	146: {
@@ -274926,7 +267603,6 @@ var _aEntry = [163]struct {
 	},
 	149: {
 		FiCode:  uint16(11506),
-		Fflags:  uint8(0),
 		FnRange: uint8(1),
 	},
 	150: {
@@ -274966,7 +267642,6 @@ var _aEntry = [163]struct {
 	},
 	157: {
 		FiCode:  uint16(42891),
-		Fflags:  uint8(0),
 		FnRange: uint8(1),
 	},
 	158: {
@@ -275220,7 +267895,6 @@ func _sqlite3Fts5UnicodeCatParse(tls *libc.TLS, zCat uintptr, aArray uintptr) (r
 }
 
 var _aFts5UnicodeBlock = [17]Tu16{
-	0:  uint16(0),
 	1:  uint16(1471),
 	2:  uint16(1753),
 	3:  uint16(1760),
@@ -275239,7 +267913,6 @@ var _aFts5UnicodeBlock = [17]Tu16{
 	16: uint16(1765),
 }
 var _aFts5UnicodeMap = [1765]Tu16{
-	0:    uint16(0),
 	1:    uint16(32),
 	2:    uint16(33),
 	3:    uint16(36),
@@ -276710,7 +269383,6 @@ var _aFts5UnicodeMap = [1765]Tu16{
 	1468: uint16(65517),
 	1469: uint16(65529),
 	1470: uint16(65532),
-	1471: uint16(0),
 	1472: uint16(13),
 	1473: uint16(40),
 	1474: uint16(60),
@@ -276992,7 +269664,6 @@ var _aFts5UnicodeMap = [1765]Tu16{
 	1750: uint16(63045),
 	1751: uint16(63104),
 	1752: uint16(63232),
-	1753: uint16(0),
 	1754: uint16(42710),
 	1755: uint16(42752),
 	1756: uint16(46900),
@@ -277002,7 +269673,6 @@ var _aFts5UnicodeMap = [1765]Tu16{
 	1760: uint16(1),
 	1761: uint16(32),
 	1762: uint16(256),
-	1763: uint16(0),
 	1764: uint16(65533),
 }
 var _aFts5UnicodeData = [1765]Tu16{
@@ -279990,30 +272660,7 @@ func _sqlite3Fts5VocabInit(tls *libc.TLS, pGlobal uintptr, db uintptr) (r int32)
 }
 
 var _fts5Vocab = Tsqlite3_module{
-	FiVersion:      int32(2),
-	FxCreate:       uintptr(0),
-	FxConnect:      uintptr(0),
-	FxBestIndex:    uintptr(0),
-	FxDisconnect:   uintptr(0),
-	FxDestroy:      uintptr(0),
-	FxOpen:         uintptr(0),
-	FxClose:        uintptr(0),
-	FxFilter:       uintptr(0),
-	FxNext:         uintptr(0),
-	FxEof:          uintptr(0),
-	FxColumn:       uintptr(0),
-	FxRowid:        uintptr(0),
-	FxUpdate:       uintptr(0),
-	FxBegin:        uintptr(0),
-	FxSync:         uintptr(0),
-	FxCommit:       uintptr(0),
-	FxRollback:     uintptr(0),
-	FxFindFunction: uintptr(0),
-	FxRename:       uintptr(0),
-	FxSavepoint:    uintptr(0),
-	FxRelease:      uintptr(0),
-	FxRollbackTo:   uintptr(0),
-	FxShadowName:   uintptr(0),
+	FiVersion: int32(2),
 }
 
 func init() {
@@ -280030,17 +272677,6 @@ func init() {
 	*(*uintptr)(unsafe.Add(p, 80)) = __ccgo_fp(_fts5VocabEofMethod)
 	*(*uintptr)(unsafe.Add(p, 88)) = __ccgo_fp(_fts5VocabColumnMethod)
 	*(*uintptr)(unsafe.Add(p, 96)) = __ccgo_fp(_fts5VocabRowidMethod)
-	*(*uintptr)(unsafe.Add(p, 104)) = uintptr(0)
-	*(*uintptr)(unsafe.Add(p, 112)) = uintptr(0)
-	*(*uintptr)(unsafe.Add(p, 120)) = uintptr(0)
-	*(*uintptr)(unsafe.Add(p, 128)) = uintptr(0)
-	*(*uintptr)(unsafe.Add(p, 136)) = uintptr(0)
-	*(*uintptr)(unsafe.Add(p, 144)) = uintptr(0)
-	*(*uintptr)(unsafe.Add(p, 152)) = uintptr(0)
-	*(*uintptr)(unsafe.Add(p, 160)) = uintptr(0)
-	*(*uintptr)(unsafe.Add(p, 168)) = uintptr(0)
-	*(*uintptr)(unsafe.Add(p, 176)) = uintptr(0)
-	*(*uintptr)(unsafe.Add(p, 184)) = uintptr(0)
 }
 
 /************** End of fts5.c ************************************************/
@@ -280361,40 +272997,13 @@ func _stmtBestIndex(tls *libc.TLS, tab uintptr, pIdxInfo uintptr) (r int32) {
 //	** This following structure defines all the methods for the
 //	** stmt virtual table.
 //	*/
-var _stmtModule = Tsqlite3_module{
-	FiVersion:      int32(0),
-	FxCreate:       uintptr(0),
-	FxConnect:      uintptr(0),
-	FxBestIndex:    uintptr(0),
-	FxDisconnect:   uintptr(0),
-	FxDestroy:      uintptr(0),
-	FxOpen:         uintptr(0),
-	FxClose:        uintptr(0),
-	FxFilter:       uintptr(0),
-	FxNext:         uintptr(0),
-	FxEof:          uintptr(0),
-	FxColumn:       uintptr(0),
-	FxRowid:        uintptr(0),
-	FxUpdate:       uintptr(0),
-	FxBegin:        uintptr(0),
-	FxSync:         uintptr(0),
-	FxCommit:       uintptr(0),
-	FxRollback:     uintptr(0),
-	FxFindFunction: uintptr(0),
-	FxRename:       uintptr(0),
-	FxSavepoint:    uintptr(0),
-	FxRelease:      uintptr(0),
-	FxRollbackTo:   uintptr(0),
-	FxShadowName:   uintptr(0),
-}
+var _stmtModule = Tsqlite3_module{}
 
 func init() {
 	p := unsafe.Pointer(&_stmtModule)
-	*(*uintptr)(unsafe.Add(p, 8)) = uintptr(0)
 	*(*uintptr)(unsafe.Add(p, 16)) = __ccgo_fp(_stmtConnect)
 	*(*uintptr)(unsafe.Add(p, 24)) = __ccgo_fp(_stmtBestIndex)
 	*(*uintptr)(unsafe.Add(p, 32)) = __ccgo_fp(_stmtDisconnect)
-	*(*uintptr)(unsafe.Add(p, 40)) = uintptr(0)
 	*(*uintptr)(unsafe.Add(p, 48)) = __ccgo_fp(_stmtOpen)
 	*(*uintptr)(unsafe.Add(p, 56)) = __ccgo_fp(_stmtClose)
 	*(*uintptr)(unsafe.Add(p, 64)) = __ccgo_fp(_stmtFilter)
@@ -280402,17 +273011,6 @@ func init() {
 	*(*uintptr)(unsafe.Add(p, 80)) = __ccgo_fp(_stmtEof)
 	*(*uintptr)(unsafe.Add(p, 88)) = __ccgo_fp(_stmtColumn)
 	*(*uintptr)(unsafe.Add(p, 96)) = __ccgo_fp(_stmtRowid)
-	*(*uintptr)(unsafe.Add(p, 104)) = uintptr(0)
-	*(*uintptr)(unsafe.Add(p, 112)) = uintptr(0)
-	*(*uintptr)(unsafe.Add(p, 120)) = uintptr(0)
-	*(*uintptr)(unsafe.Add(p, 128)) = uintptr(0)
-	*(*uintptr)(unsafe.Add(p, 136)) = uintptr(0)
-	*(*uintptr)(unsafe.Add(p, 144)) = uintptr(0)
-	*(*uintptr)(unsafe.Add(p, 152)) = uintptr(0)
-	*(*uintptr)(unsafe.Add(p, 160)) = uintptr(0)
-	*(*uintptr)(unsafe.Add(p, 168)) = uintptr(0)
-	*(*uintptr)(unsafe.Add(p, 176)) = uintptr(0)
-	*(*uintptr)(unsafe.Add(p, 184)) = uintptr(0)
 }
 
 func x_sqlite3StmtVtabInit(tls *libc.TLS, db uintptr) (r int32) {
@@ -280431,17 +273029,19 @@ func x_sqlite3_sourceid(tls *libc.TLS) (r uintptr) {
 	return __ccgo_ts + 82385
 }
 
+type TAggInfo_func = struct {
+	FpFExpr    uintptr
+	FpFunc     uintptr
+	FiDistinct int32
+	FiDistAddr int32
+}
+
 type TWalSegment = struct {
 	FiNext  int32
 	FaIndex uintptr
 	FaPgno  uintptr
 	FnEntry int32
 	FiZero  int32
-}
-
-type T_ht = struct {
-	Fcount uint32
-	Fchain uintptr
 }
 
 type TInLoop = struct {
@@ -280453,11 +273053,9 @@ type TInLoop = struct {
 	F__ccgo_pad5 [3]byte
 }
 
-type TAggInfo_func = struct {
-	FpFExpr    uintptr
-	FpFunc     uintptr
-	FiDistinct int32
-	FiDistAddr int32
+type T_ht = struct {
+	Fcount uint32
+	Fchain uintptr
 }
 
 type TAggInfo_col = struct {
@@ -280476,138 +273074,65 @@ func __ccgo_fp(f interface{}) uintptr {
 var x_aSyscall = [19]TTestSyscallArray{
 	0: {
 		FzName:         __ccgo_ts + 22075,
-		FxTest:         uintptr(0),
-		FxOrig:         uintptr(0),
 		Fdefault_errno: int32(m_EACCES),
-		Fcustom_errno:  int32(0),
 	},
 	1: {
-		FzName:         __ccgo_ts + 22080,
-		FxTest:         uintptr(0),
-		FxOrig:         uintptr(0),
-		Fdefault_errno: int32(0),
-		Fcustom_errno:  int32(0),
+		FzName: __ccgo_ts + 22080,
 	},
 	2: {
-		FzName:         __ccgo_ts + 22086,
-		FxTest:         uintptr(0),
-		FxOrig:         uintptr(0),
-		Fdefault_errno: int32(0),
-		Fcustom_errno:  int32(0),
+		FzName: __ccgo_ts + 22086,
 	},
 	3: {
-		FzName:         __ccgo_ts + 22093,
-		FxTest:         uintptr(0),
-		FxOrig:         uintptr(0),
-		Fdefault_errno: int32(0),
-		Fcustom_errno:  int32(0),
+		FzName: __ccgo_ts + 22093,
 	},
 	4: {
-		FzName:         __ccgo_ts + 22100,
-		FxTest:         uintptr(0),
-		FxOrig:         uintptr(0),
-		Fdefault_errno: int32(0),
-		Fcustom_errno:  int32(0),
+		FzName: __ccgo_ts + 22100,
 	},
 	5: {
-		FzName:         __ccgo_ts + 22105,
-		FxTest:         uintptr(0),
-		FxOrig:         uintptr(0),
-		Fdefault_errno: int32(0),
-		Fcustom_errno:  int32(0),
+		FzName: __ccgo_ts + 22105,
 	},
 	6: {
 		FzName:         __ccgo_ts + 22111,
-		FxTest:         uintptr(0),
-		FxOrig:         uintptr(0),
 		Fdefault_errno: int32(m_EIO),
-		Fcustom_errno:  int32(0),
 	},
 	7: {
 		FzName:         __ccgo_ts + 22121,
-		FxTest:         uintptr(0),
-		FxOrig:         uintptr(0),
 		Fdefault_errno: int32(m_EACCES),
-		Fcustom_errno:  int32(0),
 	},
 	8: {
-		FzName:         __ccgo_ts + 10452,
-		FxTest:         uintptr(0),
-		FxOrig:         uintptr(0),
-		Fdefault_errno: int32(0),
-		Fcustom_errno:  int32(0),
+		FzName: __ccgo_ts + 10452,
 	},
 	9: {
-		FzName:         __ccgo_ts + 22127,
-		FxTest:         uintptr(0),
-		FxOrig:         uintptr(0),
-		Fdefault_errno: int32(0),
-		Fcustom_errno:  int32(0),
+		FzName: __ccgo_ts + 22127,
 	},
 	10: {
-		FzName:         __ccgo_ts + 22133,
-		FxTest:         uintptr(0),
-		FxOrig:         uintptr(0),
-		Fdefault_errno: int32(0),
-		Fcustom_errno:  int32(0),
+		FzName: __ccgo_ts + 22133,
 	},
 	11: {
-		FzName:         __ccgo_ts + 10457,
-		FxTest:         uintptr(0),
-		FxOrig:         uintptr(0),
-		Fdefault_errno: int32(0),
-		Fcustom_errno:  int32(0),
+		FzName: __ccgo_ts + 10457,
 	},
 	12: {
-		FzName:         __ccgo_ts + 22141,
-		FxTest:         uintptr(0),
-		FxOrig:         uintptr(0),
-		Fdefault_errno: int32(0),
-		Fcustom_errno:  int32(0),
+		FzName: __ccgo_ts + 22141,
 	},
 	13: {
-		FzName:         __ccgo_ts + 22148,
-		FxTest:         uintptr(0),
-		FxOrig:         uintptr(0),
-		Fdefault_errno: int32(0),
-		Fcustom_errno:  int32(0),
+		FzName: __ccgo_ts + 22148,
 	},
 	14: {
-		FzName:         __ccgo_ts + 22157,
-		FxTest:         uintptr(0),
-		FxOrig:         uintptr(0),
-		Fdefault_errno: int32(0),
-		Fcustom_errno:  int32(0),
+		FzName: __ccgo_ts + 22157,
 	},
 	15: {
-		FzName:         __ccgo_ts + 22164,
-		FxTest:         uintptr(0),
-		FxOrig:         uintptr(0),
-		Fdefault_errno: int32(0),
-		Fcustom_errno:  int32(0),
+		FzName: __ccgo_ts + 22164,
 	},
 	16: {
-		FzName:         __ccgo_ts + 13898,
-		FxTest:         uintptr(0),
-		FxOrig:         uintptr(0),
-		Fdefault_errno: int32(0),
-		Fcustom_errno:  int32(0),
+		FzName: __ccgo_ts + 13898,
 	},
 	17: {
-		FzName:         __ccgo_ts + 22174,
-		FxTest:         uintptr(0),
-		FxOrig:         uintptr(0),
-		Fdefault_errno: int32(0),
-		Fcustom_errno:  int32(0),
+		FzName: __ccgo_ts + 22174,
 	},
-	18: {},
 }
 
 var x_g = TDevsymGlobal{
-	FpVfs:        uintptr(0),
-	FiDeviceChar: int32(0),
 	FiSectorSize: int32(512),
-	FnWriteCrash: int32(0),
 }
 
 // C documentation
@@ -280676,47 +273201,18 @@ var x_sqlite3BuiltinFunctions TFuncDefHash
 var x_sqlite3Config = TSqlite3Config{
 	FbMemstat:            int32(m_SQLITE_DEFAULT_MEMSTATUS),
 	FbCoreMutex:          uint8(1),
-	FbFullMutex:          libc.BoolUint8(false),
-	FbOpenUri:            uint8(m_SQLITE_USE_URI),
 	FbUseCis:             uint8(m_SQLITE_ALLOW_COVERING_INDEX_SCAN),
-	FbSmallMalloc:        uint8(0),
 	FbExtraSchemaChecks:  uint8(1),
 	FmxStrlen:            int32(0x7ffffffe),
-	FneverCorrupt:        int32(0),
 	FszLookaside:         int32(1200),
 	FnLookaside:          int32(40),
 	FnStmtSpill:          libc.Int32FromInt32(64) * libc.Int32FromInt32(1024),
-	Fm:                   Tsqlite3_mem_methods{},
-	Fmutex:               Tsqlite3_mutex_methods{},
-	Fpcache2:             Tsqlite3_pcache_methods2{},
-	FpHeap:               libc.UintptrFromInt32(0),
-	FnHeap:               int32(0),
-	FmnReq:               int32(0),
-	FmxReq:               int32(0),
-	FszMmap:              int64(m_SQLITE_DEFAULT_MMAP_SIZE),
 	FmxMmap:              int64(m_SQLITE_MAX_MMAP_SIZE),
-	FpPage:               libc.UintptrFromInt32(0),
-	FszPage:              int32(0),
 	FnPage:               int32(m_SQLITE_DEFAULT_PCACHE_INITSZ),
-	FmxParserStack:       int32(0),
-	FsharedCacheEnabled:  int32(0),
 	FszPma:               uint32(m_SQLITE_SORTER_PMASZ),
-	FisInit:              int32(0),
-	FinProgress:          int32(0),
-	FisMutexInit:         int32(0),
-	FisMallocInit:        int32(0),
-	FisPCacheInit:        int32(0),
-	FnRefInitMutex:       int32(0),
-	FpInitMutex:          uintptr(0),
-	FxLog:                uintptr(0),
-	FpLogArg:             uintptr(0),
 	FmxMemdbSize:         int64(m_SQLITE_MEMDB_DEFAULT_MAXSIZE),
-	FxTestCallback:       uintptr(0),
-	FbLocaltimeFault:     int32(0),
-	FxAltLocaltime:       uintptr(0),
 	FiOnceResetThreshold: int32(0x7ffffffe),
 	FszSorterRef:         uint32(m_SQLITE_DEFAULT_SORTERREF_SIZE),
-	FiPrngSeed:           uint32(0),
 }
 
 // C documentation
@@ -280750,54 +273246,15 @@ var x_sqlite3Config = TSqlite3Config{
 //	** part of an identifier is 0x46.
 //	*/
 var x_sqlite3CtypeMap = [256]uint8{
-	0:   uint8(0x00),
-	1:   uint8(0x00),
-	2:   uint8(0x00),
-	3:   uint8(0x00),
-	4:   uint8(0x00),
-	5:   uint8(0x00),
-	6:   uint8(0x00),
-	7:   uint8(0x00),
-	8:   uint8(0x00),
 	9:   uint8(0x01),
 	10:  uint8(0x01),
 	11:  uint8(0x01),
 	12:  uint8(0x01),
 	13:  uint8(0x01),
-	14:  uint8(0x00),
-	15:  uint8(0x00),
-	16:  uint8(0x00),
-	17:  uint8(0x00),
-	18:  uint8(0x00),
-	19:  uint8(0x00),
-	20:  uint8(0x00),
-	21:  uint8(0x00),
-	22:  uint8(0x00),
-	23:  uint8(0x00),
-	24:  uint8(0x00),
-	25:  uint8(0x00),
-	26:  uint8(0x00),
-	27:  uint8(0x00),
-	28:  uint8(0x00),
-	29:  uint8(0x00),
-	30:  uint8(0x00),
-	31:  uint8(0x00),
 	32:  uint8(0x01),
-	33:  uint8(0x00),
 	34:  uint8(0x80),
-	35:  uint8(0x00),
 	36:  uint8(0x40),
-	37:  uint8(0x00),
-	38:  uint8(0x00),
 	39:  uint8(0x80),
-	40:  uint8(0x00),
-	41:  uint8(0x00),
-	42:  uint8(0x00),
-	43:  uint8(0x00),
-	44:  uint8(0x00),
-	45:  uint8(0x00),
-	46:  uint8(0x00),
-	47:  uint8(0x00),
 	48:  uint8(0x0c),
 	49:  uint8(0x0c),
 	50:  uint8(0x0c),
@@ -280808,13 +273265,6 @@ var x_sqlite3CtypeMap = [256]uint8{
 	55:  uint8(0x0c),
 	56:  uint8(0x0c),
 	57:  uint8(0x0c),
-	58:  uint8(0x00),
-	59:  uint8(0x00),
-	60:  uint8(0x00),
-	61:  uint8(0x00),
-	62:  uint8(0x00),
-	63:  uint8(0x00),
-	64:  uint8(0x00),
 	65:  uint8(0x0a),
 	66:  uint8(0x0a),
 	67:  uint8(0x0a),
@@ -280842,9 +273292,6 @@ var x_sqlite3CtypeMap = [256]uint8{
 	89:  uint8(0x02),
 	90:  uint8(0x02),
 	91:  uint8(0x80),
-	92:  uint8(0x00),
-	93:  uint8(0x00),
-	94:  uint8(0x00),
 	95:  uint8(0x40),
 	96:  uint8(0x80),
 	97:  uint8(0x2a),
@@ -280873,11 +273320,6 @@ var x_sqlite3CtypeMap = [256]uint8{
 	120: uint8(0x22),
 	121: uint8(0x22),
 	122: uint8(0x22),
-	123: uint8(0x00),
-	124: uint8(0x00),
-	125: uint8(0x00),
-	126: uint8(0x00),
-	127: uint8(0x00),
 	128: uint8(0x40),
 	129: uint8(0x40),
 	130: uint8(0x40),
@@ -281027,14 +273469,8 @@ var x_sqlite3OSTrace int32
 //	** the vdbe.c file.
 //	*/
 var x_sqlite3OpcodeProperty = [187]uint8{
-	0:   uint8(0x00),
-	1:   uint8(0x00),
-	2:   uint8(0x00),
-	3:   uint8(0x00),
 	4:   uint8(0x10),
-	5:   uint8(0x00),
 	6:   uint8(0x41),
-	7:   uint8(0x00),
 	8:   uint8(0x01),
 	9:   uint8(0x01),
 	10:  uint8(0x01),
@@ -281092,42 +273528,26 @@ var x_sqlite3OpcodeProperty = [187]uint8{
 	62:  uint8(0x01),
 	63:  uint8(0x41),
 	64:  uint8(0x01),
-	65:  uint8(0x00),
-	66:  uint8(0x00),
 	67:  uint8(0x02),
 	68:  uint8(0x02),
 	69:  uint8(0x08),
-	70:  uint8(0x00),
 	71:  uint8(0x10),
 	72:  uint8(0x10),
 	73:  uint8(0x10),
-	74:  uint8(0x00),
 	75:  uint8(0x10),
-	76:  uint8(0x00),
 	77:  uint8(0x10),
 	78:  uint8(0x10),
-	79:  uint8(0x00),
-	80:  uint8(0x00),
 	81:  uint8(0x10),
 	82:  uint8(0x10),
-	83:  uint8(0x00),
-	84:  uint8(0x00),
-	85:  uint8(0x00),
 	86:  uint8(0x02),
 	87:  uint8(0x02),
 	88:  uint8(0x02),
-	89:  uint8(0x00),
-	90:  uint8(0x00),
 	91:  uint8(0x12),
 	92:  uint8(0x1e),
 	93:  uint8(0x20),
 	94:  uint8(0x40),
-	95:  uint8(0x00),
-	96:  uint8(0x00),
-	97:  uint8(0x00),
 	98:  uint8(0x10),
 	99:  uint8(0x10),
-	100: uint8(0x00),
 	101: uint8(0x40),
 	102: uint8(0x26),
 	103: uint8(0x26),
@@ -281140,80 +273560,36 @@ var x_sqlite3OpcodeProperty = [187]uint8{
 	110: uint8(0x26),
 	111: uint8(0x26),
 	112: uint8(0x40),
-	113: uint8(0x00),
 	114: uint8(0x12),
 	115: uint8(0x40),
 	116: uint8(0x40),
 	117: uint8(0x10),
 	118: uint8(0x40),
-	119: uint8(0x00),
-	120: uint8(0x00),
-	121: uint8(0x00),
 	122: uint8(0x40),
-	123: uint8(0x00),
 	124: uint8(0x40),
 	125: uint8(0x40),
 	126: uint8(0x10),
 	127: uint8(0x10),
-	128: uint8(0x00),
-	129: uint8(0x00),
-	130: uint8(0x00),
-	131: uint8(0x00),
-	132: uint8(0x00),
-	133: uint8(0x00),
-	134: uint8(0x00),
 	135: uint8(0x50),
-	136: uint8(0x00),
 	137: uint8(0x40),
 	138: uint8(0x04),
 	139: uint8(0x04),
-	140: uint8(0x00),
 	141: uint8(0x40),
 	142: uint8(0x50),
 	143: uint8(0x40),
 	144: uint8(0x10),
-	145: uint8(0x00),
-	146: uint8(0x00),
 	147: uint8(0x10),
-	148: uint8(0x00),
-	149: uint8(0x00),
-	150: uint8(0x00),
-	151: uint8(0x00),
-	152: uint8(0x00),
 	153: uint8(0x10),
-	154: uint8(0x00),
-	155: uint8(0x00),
 	156: uint8(0x06),
 	157: uint8(0x10),
-	158: uint8(0x00),
 	159: uint8(0x04),
 	160: uint8(0x1a),
-	161: uint8(0x00),
-	162: uint8(0x00),
-	163: uint8(0x00),
-	164: uint8(0x00),
-	165: uint8(0x00),
-	166: uint8(0x00),
-	167: uint8(0x00),
-	168: uint8(0x00),
-	169: uint8(0x00),
-	170: uint8(0x00),
-	171: uint8(0x00),
-	172: uint8(0x00),
 	173: uint8(0x40),
 	174: uint8(0x50),
 	175: uint8(0x40),
-	176: uint8(0x00),
 	177: uint8(0x10),
 	178: uint8(0x10),
 	179: uint8(0x02),
-	180: uint8(0x00),
-	181: uint8(0x00),
-	182: uint8(0x00),
-	183: uint8(0x00),
-	184: uint8(0x00),
-	185: uint8(0x00),
-	186: uint8(0x00),
 }
 
 // C documentation
@@ -281324,7 +273700,6 @@ var x_sqlite3SharedCacheList uintptr
 //	** The sizes for serial types less than 128
 //	*/
 var x_sqlite3SmallTypeSizes = [128]Tu8{
-	0:   uint8(0),
 	1:   uint8(1),
 	2:   uint8(2),
 	3:   uint8(3),
@@ -281332,12 +273707,6 @@ var x_sqlite3SmallTypeSizes = [128]Tu8{
 	5:   uint8(6),
 	6:   uint8(8),
 	7:   uint8(8),
-	8:   uint8(0),
-	9:   uint8(0),
-	10:  uint8(0),
-	11:  uint8(0),
-	12:  uint8(0),
-	13:  uint8(0),
 	14:  uint8(1),
 	15:  uint8(1),
 	16:  uint8(2),
@@ -281537,7 +273906,6 @@ var x_sqlite3TreeTrace Tu32
 //	** involved are nearly as big or bigger than SQLite itself.
 //	*/
 var x_sqlite3UpperToLower = [274]uint8{
-	0:   uint8(0),
 	1:   uint8(1),
 	2:   uint8(2),
 	3:   uint8(3),
@@ -281794,22 +274162,13 @@ var x_sqlite3UpperToLower = [274]uint8{
 	254: uint8(254),
 	255: uint8(255),
 	256: uint8(1),
-	257: uint8(0),
-	258: uint8(0),
 	259: uint8(1),
 	260: uint8(1),
-	261: uint8(0),
-	262: uint8(0),
 	263: uint8(1),
-	264: uint8(0),
 	265: uint8(1),
-	266: uint8(0),
 	267: uint8(1),
 	268: uint8(1),
-	269: uint8(0),
 	270: uint8(1),
-	271: uint8(0),
-	272: uint8(0),
 	273: uint8(1),
 }
 
