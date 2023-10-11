@@ -5,7 +5,7 @@ go 1.20
 require (
 	github.com/otiai10/copy v1.12.0
 	modernc.org/ccgo/v3 v3.16.15
-	modernc.org/ccgo/v4 v4.0.25
+	modernc.org/ccgo/v4 v4.0.26
 	modernc.org/libc/v2 v2.1.19
 	modernc.org/libtcl8.6 v0.0.17
 	modernc.org/libz v0.0.15
