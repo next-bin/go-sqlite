@@ -5,7 +5,7 @@ go 1.20
 require (
 	modernc.org/ccgo/v4 v4.0.26
 	modernc.org/libc/v2 v2.1.20
-	modernc.org/libz v0.0.16
+	modernc.org/libz v0.0.17
 )
 
 require (
