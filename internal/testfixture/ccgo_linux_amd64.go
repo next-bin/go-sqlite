@@ -13971,29 +13971,6 @@ var _longdouble_size = int32(8)
 
 var _query_plan = __ccgo_ts + 9645
 
-type TsColMap = struct {
-	FiFrom int32
-	FzCol  uintptr
-}
-
-type Tsqlite3InitInfo = struct {
-	FnewTnum       TPgno
-	FiDb           Tu8
-	Fbusy          Tu8
-	F__ccgo_align3 [2]byte
-	F__ccgo8       uint8
-	FazInit        uintptr
-}
-
-type TIdList_item = struct {
-	FzName uintptr
-	Fu4    struct {
-		FpExpr       [0]uintptr
-		Fidx         int32
-		F__ccgo_pad2 [4]byte
-	}
-}
-
 type TExprList_item = struct {
 	FpExpr  uintptr
 	FzEName uintptr
@@ -14012,6 +13989,29 @@ type TExprList_item = struct {
 		}
 	}
 	F__ccgo_pad4 [4]byte
+}
+
+type TIdList_item = struct {
+	FzName uintptr
+	Fu4    struct {
+		FpExpr       [0]uintptr
+		Fidx         int32
+		F__ccgo_pad2 [4]byte
+	}
+}
+
+type TsColMap = struct {
+	FiFrom int32
+	FzCol  uintptr
+}
+
+type Tsqlite3InitInfo = struct {
+	FnewTnum       TPgno
+	FiDb           Tu8
+	Fbusy          Tu8
+	F__ccgo_align3 [2]byte
+	F__ccgo8       uint8
+	FazInit        uintptr
 }
 
 type TMemValue = struct {
@@ -279533,16 +279533,12 @@ func x_sqlite3_sourceid(tls *libc.TLS) (r uintptr) {
 	return __ccgo_ts + 83633
 }
 
-type T_ht = struct {
-	Fcount uint32
-	Fchain uintptr
-}
-
-type TAggInfo_func = struct {
-	FpFExpr    uintptr
-	FpFunc     uintptr
-	FiDistinct int32
-	FiDistAddr int32
+type TWalSegment = struct {
+	FiNext  int32
+	FaIndex uintptr
+	FaPgno  uintptr
+	FnEntry int32
+	FiZero  int32
 }
 
 type TInLoop = struct {
@@ -279554,6 +279550,11 @@ type TInLoop = struct {
 	F__ccgo_pad5 [3]byte
 }
 
+type T_ht = struct {
+	Fcount uint32
+	Fchain uintptr
+}
+
 type TAggInfo_col = struct {
 	FpTab          uintptr
 	FpCExpr        uintptr
@@ -279562,12 +279563,11 @@ type TAggInfo_col = struct {
 	FiSorterColumn Ti16
 }
 
-type TWalSegment = struct {
-	FiNext  int32
-	FaIndex uintptr
-	FaPgno  uintptr
-	FnEntry int32
-	FiZero  int32
+type TAggInfo_func = struct {
+	FpFExpr    uintptr
+	FpFunc     uintptr
+	FiDistinct int32
+	FiDistAddr int32
 }
 
 func __ccgo_fp(f interface{}) uintptr {
