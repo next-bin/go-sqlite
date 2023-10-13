@@ -10,7 +10,6 @@
 #***********************************************************************
 # Tests focused on the in-memory journal.
 #
-# TESTRUNNER: slow
 
 set testdir [file dirname $argv0]
 source $testdir/tester.tcl

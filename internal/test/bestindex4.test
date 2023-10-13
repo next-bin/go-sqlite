@@ -48,10 +48,7 @@ proc vtab_cmd {param method args} {
     }
 
     xBestIndex {
-      set hdl [lindex $args 0]
-      set clist [$hdl constraints]
-      set orderby [$hdl orderby]
-      set mask [$hdl mask]
+      foreach {clist orderby mask} $args {}
 
       set ret [list]
 
@@ -138,11 +135,7 @@ proc vtab_command {method args} {
     }
 
     xBestIndex {
-      set hdl [lindex $args 0]
-      set clist [$hdl constraints]
-      set orderby [$hdl orderby]
-      set mask [$hdl mask]
-      
+      set clist [lindex $args 0]
       if {[llength $clist]!=1} { error "unexpected constraint list" }
       catch { array unset C }
       array set C [lindex $clist 0]

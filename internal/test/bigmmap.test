@@ -52,11 +52,7 @@ do_execsql_test 1.0 {
 }
 
 for {set i 1} {$i < 8} {incr i} {
-  if {[catch {fake_big_file [expr $i*1024] [get_pwd]/test.db}]} {
-    puts "Cannot create ${i}MB sparse file"
-    finish_test
-    return
-  }
+  fake_big_file [expr $i*1024] [get_pwd]/test.db
   hexio_write test.db 28 [format %.8x [expr ($i*1024*1024*1024/4096) - 5]]
 
   do_execsql_test 1.$i "
