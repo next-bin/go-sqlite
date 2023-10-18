@@ -10,7 +10,7 @@ clean:
 
 edit:
 	@touch log
-	@if [ -f "Session.vim" ]; then gvim -S & else gvim -p Makefile *.go & fi
+	@if [ -f "Session.vim" ]; then gvim -S & else gvim -p Makefile *.go engine/*.go & fi
 
 editor:
 	gofmt -l -s -w .
