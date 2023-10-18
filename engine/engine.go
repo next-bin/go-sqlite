@@ -213,7 +213,7 @@ func (u *Updater) Run() error {
 			for _, v := range gomod.file.Require {
 				if m := u.moduleIndex[v.Mod.Path]; m != nil && m.isOutdated && !u.all {
 					if u.verbose {
-						fmt.Fprintf(u.stderr, "repo %q requires outdated %q and not -all", r.pth, v.Mod.Path)
+						fmt.Fprintf(u.stderr, "repo %q requires outdated %q and not -all\n", r.pth, v.Mod.Path)
 					}
 					continue next
 				}
@@ -223,7 +223,7 @@ func (u *Updater) Run() error {
 			for _, update := range gomod.updates {
 				if m := u.moduleIndex[update.module]; m != nil && m.isOutdated && !u.all {
 					if u.verbose {
-						fmt.Fprintf(u.stderr, "repo %q requires outdated %q and not -all", r.pth, update.module)
+						fmt.Fprintf(u.stderr, "repo %q requires outdated %q and not -all\n", r.pth, update.module)
 					}
 					continue next
 				}
