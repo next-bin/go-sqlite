@@ -208,6 +208,9 @@ func (u *Updater) Run() error {
 	}
 	var out []string
 	for _, r := range u.repos {
+		if u.verbose {
+			fmt.Fprintf(u.stderr, "repo %q\n", r.pth)
+		}
 	next:
 		for _, gomod := range r.gomods {
 			for _, v := range gomod.file.Require {
@@ -229,6 +232,9 @@ func (u *Updater) Run() error {
 				}
 
 				updates = append(updates, fmt.Sprintf("%s@%s", update.module, update.tag))
+				if u.verbose {
+					fmt.Fprintf(u.stderr, "repo %q, added update %q\n", r.pth, fmt.Sprintf("%s@%s", update.module, update.tag))
+				}
 				mp := gomod.file.Module.Mod.Path
 				u.Updates[mp] = append(u.Updates[mp], &Update{Module: update.module, Tag: update.tag})
 			}
