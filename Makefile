@@ -25,7 +25,7 @@ download:
 
 edit:
 	@touch log
-	@if [ -f "Session.vim" ]; then novim -S & else novim -p Makefile *.go & fi
+	@if [ -f "Session.vim" ]; then novim -S & else novim -p Makefile all_test.go generator.go libtcl.go & fi
 
 editor:
 	gofmt -l -s -w . 2>&1 | tee log-editor
@@ -73,5 +73,5 @@ work:
 	go work use ../cc/v4
 	go work use ../ccgo/v3
 	go work use ../ccgo/v4
-	go work use ../libc/v2
+	go work use ../libc
 	go work use ../libz

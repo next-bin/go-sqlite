@@ -14,8 +14,10 @@ import (
 	"testing"
 	"time"
 
+	_ "modernc.org/ccgo/v3/lib"
 	_ "modernc.org/ccgo/v4/lib"
-	"modernc.org/libc/v2"
+	"modernc.org/libc"
+	_ "modernc.org/libz"
 )
 
 var (
@@ -23,8 +25,6 @@ var (
 	skip     = []string{
 		//TODO fails
 		"iortrans-3.1",
-		"unixInit-3.1",
-		"unixInit-3.2",
 	}
 
 	// https://www.tcl.tk/man/tcl8.6/TclCmd/tcltest.html
@@ -45,7 +45,7 @@ func TestMain(m *testing.M) {
 }
 
 func mustCString(tls *libc.TLS, s string) (r uintptr) {
-	r, err := libc.CString(tls, s)
+	r, err := libc.CString(s)
 	if err != nil {
 		panic(err)
 	}

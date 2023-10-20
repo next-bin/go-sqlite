@@ -13,7 +13,7 @@ import (
 	"syscall"
 	"unsafe"
 
-	"modernc.org/libc/v2"
+	"modernc.org/libc"
 )
 
 /*
@@ -55,7 +55,7 @@ func _TclpCreateProcess(tls *libc.TLS, interp uintptr, argc int32, argv uintptr,
 	args0, err := exec.LookPath(args[0])
 	if err != nil {
 		*(*int32)(unsafe.Pointer(libc.X__errno_location(tls))) = libc.ENOENT
-		s, err := libc.CString(tls, fmt.Sprintf("couldn't execute \"%.150s\"", args[0]))
+		s, err := libc.CString(fmt.Sprintf("couldn't execute \"%.150s\"", args[0]))
 		if err != nil {
 			panic(todo(""))
 		}
@@ -92,3 +92,13 @@ func _TclpCreateProcess(tls *libc.TLS, interp uintptr, argc int32, argv uintptr,
 }
 
 var createProcessMsg = [...]byte{'%', 's', ':', ' ', '%', 's', 0}
+
+type in6_addr = struct {
+	F__in6_union struct {
+		F__s6_addr16 [0][8]uint16
+		F__s6_addr32 [0][4]uint32
+		F__s6_addr   [16]uint8
+	}
+}
+
+var _in6addr_any = in6_addr{}

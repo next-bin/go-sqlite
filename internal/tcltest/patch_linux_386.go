@@ -10,7 +10,7 @@ import (
 	"syscall"
 	"unsafe"
 
-	"modernc.org/libc/v2"
+	"modernc.org/libc"
 )
 
 /*
