@@ -90,9 +90,9 @@ func main() {
 		if s := cc.LongDouble64Flag(goos, goarch); s != "" {
 			cflags = append(cflags, s)
 		}
-		util.MustShell(true, "sh", "-c", "go mod init example.com/libz ; go get modernc.org/libc/v2@latest")
+		util.MustShell(true, "sh", "-c", "go mod init example.com/libz ; go get modernc.org/libc@latest")
 		if dev {
-			util.MustShell(true, "sh", "-c", "go work init ; go work use $GOPATH/src/modernc.org/libc/v2")
+			util.MustShell(true, "sh", "-c", "go work init ; go work use $GOPATH/src/modernc.org/libc")
 		}
 		util.MustShell(true, "sh", "-c", fmt.Sprintf("CFLAGS='%s' ./configure", strings.Join(cflags, " ")))
 		args := []string{os.Args[0]}
@@ -104,6 +104,7 @@ func main() {
 			)
 		}
 		args = append(args,
+			"--libc", "modernc.org/libc",
 			"--prefix-enumerator=_",
 			"--prefix-external=x_",
 			"--prefix-field=F",
