@@ -101,10 +101,10 @@ func main() {
 	util.MustShell(true, "unzip", archivePath, "-d", tempDir)
 	result := "sqlite3.go"
 	util.MustInDir(true, makeRoot, func() (err error) {
-		util.MustShell(true, "sh", "-c", "go mod init example.com/libsqlite3 ; go get modernc.org/libc/v2@latest modernc.org/libz@latest modernc.org/libtcl8.6@latest")
+		util.MustShell(true, "sh", "-c", "go mod init example.com/libsqlite3 ; go get modernc.org/libc@latest modernc.org/libz@latest modernc.org/libtcl8.6@latest")
 		var config []string
 		if dev {
-			util.MustShell(true, "sh", "-c", "go work init ; go work use $GOPATH/src/modernc.org/libc/v2 $GOPATH/src/modernc.org/libz $GOPATH/src/modernc.org/libtcl8.6")
+			util.MustShell(true, "sh", "-c", "go work init ; go work use $GOPATH/src/modernc.org/libc $GOPATH/src/modernc.org/libz $GOPATH/src/modernc.org/libtcl8.6")
 			config = append(config,
 				"-absolute-paths",
 				"-keep-object-files",
@@ -116,6 +116,7 @@ func main() {
 			config = append(config, m64Double)
 		}
 		config = append(config,
+			"--libc", "modernc.org/libc",
 			"--package-name", "libsqlite3",
 			"--prefix-enumerator=_",
 			"--prefix-external=x_",
@@ -210,15 +211,10 @@ func main() {
 	util.MustShell(true, "unzip", archive2Path, "-d", tempDir)
 	mustCopyFile("LICENSE-SQLITE.md", filepath.Join(libRoot, "LICENSE.md"), nil)
 	util.MustInDir(true, makeRoot, func() (err error) {
-		util.MustShell(true, "sh", "-c", "go mod init example.com/libsqlite3 ; go get modernc.org/libc/v2@latest modernc.org/libz@latest modernc.org/libtcl8.6@latest")
+		util.MustShell(true, "sh", "-c", "go mod init example.com/libsqlite3 ; go get modernc.org/libc@latest modernc.org/libz@latest modernc.org/libtcl8.6@latest")
 		var config []string
 		if dev {
-			util.MustShell(true, "sh", "-c", "go work init ; go work use $GOPATH/src/modernc.org/libc/v2 $GOPATH/src/modernc.org/libz $GOPATH/src/modernc.org/libtcl8.6")
-			config = append(config,
-				"-absolute-paths",
-				"-keep-object-files",
-				"-positions",
-			)
+			util.MustShell(true, "sh", "-c", "go work init ; go work use $GOPATH/src/modernc.org/libc $GOPATH/src/modernc.org/libz $GOPATH/src/modernc.org/libtcl8.6")
 		}
 		m64Double := cc.LongDouble64Flag(goos, goarch)
 		if m64Double != "" {
@@ -260,6 +256,12 @@ func main() {
 		//TODO threadsafe
 		util.MustShell(true, "sh", "-c", fmt.Sprintf("CFLAGS='%s' ./configure --disable-threadsafe --disable-shared --disable-load-extension", strings.Join(config, " ")))
 		config = append(config,
+			"-absolute-paths",
+			"-keep-object-files",
+			"-positions",
+		)
+		config = append(config,
+			"--libc", "modernc.org/libc",
 			"--prefix-enumerator=_",
 			"--prefix-external=x_",
 			"--prefix-field=F",

@@ -31,6 +31,7 @@ import (
 	cp "github.com/otiai10/copy"
 	util "modernc.org/ccgo/v3/lib"
 	_ "modernc.org/ccgo/v4/lib"
+	_ "modernc.org/libc"
 	"modernc.org/libtcl8.6/library"
 )
 
