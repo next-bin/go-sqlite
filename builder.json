@@ -4,8 +4,8 @@
 	"autoupdate": "$libs",
 	"download": [
 		{"re": "linux", "files": [
-			"https://www.sqlite.org/2023/sqlite-amalgamation-3430200.zip", 
-			"https://www.sqlite.org/2023/sqlite-src-3430200.zip"
+			"https://www.sqlite.org/2023/sqlite-amalgamation-3370200.zip", 
+			"https://www.sqlite.org/2023/sqlite-src-3370200.zip"
 		]}
 	],
 	"test": "$libs"
