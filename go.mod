@@ -6,7 +6,7 @@ require (
 	github.com/otiai10/copy v1.14.0
 	modernc.org/ccgo/v3 v3.16.15
 	modernc.org/ccgo/v4 v4.0.31
-	modernc.org/libc v1.27.0
+	modernc.org/libc v1.28.0
 	modernc.org/libtcl8.6 v0.1.3
 	modernc.org/libz v0.0.22
 )
