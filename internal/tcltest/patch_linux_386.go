@@ -52,7 +52,7 @@ func _TclpCreateProcess(tls *libc.TLS, interp uintptr, argc int32, argv uintptr,
 	args0, err := exec.LookPath(args[0])
 	if err != nil {
 		*(*int32)(unsafe.Pointer(libc.X__errno_location(tls))) = libc.ENOENT
-		s, err := libc.CString(tls, fmt.Sprintf("couldn't execute \"%.150s\"", args[0]))
+		s, err := libc.CString(fmt.Sprintf("couldn't execute \"%.150s\"", args[0]))
 		if err != nil {
 			panic("TODO")
 		}

@@ -10,6 +10,7 @@ import (
 	"os"
 	"os/exec"
 	"path/filepath"
+	"runtime"
 	"strings"
 	"testing"
 	"time"
@@ -40,6 +41,12 @@ var (
 )
 
 func TestMain(m *testing.M) {
+	switch runtime.GOARCH {
+	case "386", "arm":
+		// OOM
+		skip = append(skip, "cmdIL-5.7")
+	}
+	flag.Parse()
 	rc := m.Run()
 	os.Exit(rc)
 }
