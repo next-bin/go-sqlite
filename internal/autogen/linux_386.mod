@@ -4,8 +4,8 @@ go 1.20
 
 require (
 	modernc.org/ccgo/v3 v3.16.15
-	modernc.org/ccgo/v4 v4.0.27
-	modernc.org/libc/v2 v2.1.21
+	modernc.org/ccgo/v4 v4.0.31
+	modernc.org/libc v1.29.0
 )
 
 require (
@@ -21,7 +21,6 @@ require (
 	modernc.org/cc/v3 v3.41.0 // indirect
 	modernc.org/cc/v4 v4.14.12 // indirect
 	modernc.org/gc/v2 v2.3.0 // indirect
-	modernc.org/libc v1.24.1 // indirect
 	modernc.org/mathutil v1.6.0 // indirect
 	modernc.org/memory v1.7.2 // indirect
 	modernc.org/opt v0.1.3 // indirect
