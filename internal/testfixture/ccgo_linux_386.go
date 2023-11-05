@@ -10,6 +10,7 @@ import (
 	"unsafe"
 
 	"modernc.org/libc"
+	"modernc.org/libz"
 )
 
 var (
@@ -19391,12 +19392,6 @@ var _longdouble_size = int32(8)
 var _query_plan = __ccgo_ts + 8987
 
 // -:
-type TsColMap = struct {
-	FiFrom int32
-	FzCol  uintptr
-}
-
-// -:
 type Tsqlite3InitInfo = struct {
 	FnewTnum       TPgno
 	FiDb           Tu8
@@ -19420,6 +19415,12 @@ type TExprList_item = struct {
 			FiAlias      Tu16
 		}
 	}
+}
+
+// -:
+type TsColMap = struct {
+	FiFrom int32
+	FzCol  uintptr
 }
 
 // -:
@@ -26617,9 +26618,9 @@ func init() {
 }
 
 // -:
-type Tsqlite3_index_orderby = struct {
-	FiColumn     int32
-	Fdesc        uint8
+type Tsqlite3_index_constraint_usage = struct {
+	FargvIndex   int32
+	Fomit        uint8
 	F__ccgo_pad2 [3]byte
 }
 
@@ -26632,9 +26633,9 @@ type Tsqlite3_index_constraint = struct {
 }
 
 // -:
-type Tsqlite3_index_constraint_usage = struct {
-	FargvIndex   int32
-	Fomit        uint8
+type Tsqlite3_index_orderby = struct {
+	FiColumn     int32
+	Fdesc        uint8
 	F__ccgo_pad2 [3]byte
 }
 
@@ -95076,14 +95077,14 @@ func _zipfileInflate(tls *libc.TLS, pCtx uintptr, aIn uintptr, nIn int32, nOut i
 		// /tmp/libsqlite3/sqlite-src-3370200/ext/misc/zipfile.c:959:5:
 		(*(*Tz_stream)(unsafe.Pointer(bp))).Favail_out = uint32(nOut)
 		// /tmp/libsqlite3/sqlite-src-3370200/ext/misc/zipfile.c:961:5:
-		err = _inflateInit2_(tls, bp, -int32(15), __ccgo_ts+31399, libc.Int32FromInt64(56))
+		err = libz.XinflateInit2_(tls, bp, -int32(15), __ccgo_ts+31399, libc.Int32FromInt64(56))
 		// /tmp/libsqlite3/sqlite-src-3370200/ext/misc/zipfile.c:962:5:
 		if err != m_Z_OK {
 			// /tmp/libsqlite3/sqlite-src-3370200/ext/misc/zipfile.c:963:7:
 			_zipfileCtxErrorMsg(tls, pCtx, __ccgo_ts+31403, libc.VaList(bp+64, err))
 		} else {
 			// /tmp/libsqlite3/sqlite-src-3370200/ext/misc/zipfile.c:965:7:
-			err = _inflate(tls, bp, m_Z_NO_FLUSH)
+			err = libz.Xinflate(tls, bp, m_Z_NO_FLUSH)
 			// /tmp/libsqlite3/sqlite-src-3370200/ext/misc/zipfile.c:966:7:
 			if err != int32(m_Z_STREAM_END) {
 				// /tmp/libsqlite3/sqlite-src-3370200/ext/misc/zipfile.c:967:9:
@@ -95098,7 +95099,7 @@ func _zipfileInflate(tls *libc.TLS, pCtx uintptr, aIn uintptr, nIn int32, nOut i
 		// /tmp/libsqlite3/sqlite-src-3370200/ext/misc/zipfile.c:973:5:
 		x_sqlite3_free(tls, aRes)
 		// /tmp/libsqlite3/sqlite-src-3370200/ext/misc/zipfile.c:974:5:
-		_inflateEnd(tls, bp)
+		libz.XinflateEnd(tls, bp)
 	}
 }
 
@@ -95136,9 +95137,9 @@ func _zipfileDeflate(tls *libc.TLS, aIn uintptr, nIn int32, ppOut uintptr, pnOut
 	// /tmp/libsqlite3/sqlite-src-3370200/ext/misc/zipfile.c:1002:3:
 	(*(*Tz_stream)(unsafe.Pointer(bp))).Favail_in = uint32(nIn)
 	// /tmp/libsqlite3/sqlite-src-3370200/ext/misc/zipfile.c:1003:3:
-	_deflateInit2_(tls, bp, int32(9), int32(m_Z_DEFLATED), -int32(15), int32(8), m_Z_DEFAULT_STRATEGY, __ccgo_ts+31399, libc.Int32FromInt64(56))
+	libz.XdeflateInit2_(tls, bp, int32(9), int32(m_Z_DEFLATED), -int32(15), int32(8), m_Z_DEFAULT_STRATEGY, __ccgo_ts+31399, libc.Int32FromInt64(56))
 	// /tmp/libsqlite3/sqlite-src-3370200/ext/misc/zipfile.c:1005:3:
-	nAlloc = int64(_deflateBound(tls, bp, uint32(nIn)))
+	nAlloc = int64(libz.XdeflateBound(tls, bp, uint32(nIn)))
 	// /tmp/libsqlite3/sqlite-src-3370200/ext/misc/zipfile.c:1006:3:
 	aOut = x_sqlite3_malloc64(tls, uint64(nAlloc))
 	// /tmp/libsqlite3/sqlite-src-3370200/ext/misc/zipfile.c:1007:3:
@@ -95151,7 +95152,7 @@ func _zipfileDeflate(tls *libc.TLS, aIn uintptr, nIn int32, ppOut uintptr, pnOut
 		// /tmp/libsqlite3/sqlite-src-3370200/ext/misc/zipfile.c:1012:5:
 		(*(*Tz_stream)(unsafe.Pointer(bp))).Favail_out = uint32(nAlloc)
 		// /tmp/libsqlite3/sqlite-src-3370200/ext/misc/zipfile.c:1013:5:
-		res = _deflate(tls, bp, int32(m_Z_FINISH))
+		res = libz.Xdeflate(tls, bp, int32(m_Z_FINISH))
 		// /tmp/libsqlite3/sqlite-src-3370200/ext/misc/zipfile.c:1014:5:
 		if res == int32(m_Z_STREAM_END) {
 			// /tmp/libsqlite3/sqlite-src-3370200/ext/misc/zipfile.c:1015:7:
@@ -95167,7 +95168,7 @@ func _zipfileDeflate(tls *libc.TLS, aIn uintptr, nIn int32, ppOut uintptr, pnOut
 			rc = int32(m_SQLITE_ERROR)
 		}
 		// /tmp/libsqlite3/sqlite-src-3370200/ext/misc/zipfile.c:1022:5:
-		_deflateEnd(tls, bp)
+		libz.XdeflateEnd(tls, bp)
 	}
 	// /tmp/libsqlite3/sqlite-src-3370200/ext/misc/zipfile.c:1025:3:
 	return rc
@@ -96318,7 +96319,7 @@ func _zipfileUpdate(tls *libc.TLS, pVtab uintptr, nVal int32, apVal uintptr, pRo
 						}
 					}
 					// /tmp/libsqlite3/sqlite-src-3370200/ext/misc/zipfile.c:1626:11:
-					iCrc32 = uint32(_crc32(tls, uint32(0), aIn, uint32(nIn)))
+					iCrc32 = libz.Xcrc32(tls, uint32(0), aIn, uint32(nIn))
 				}
 			}
 		}
@@ -97057,7 +97058,7 @@ func x_zipfileStep(tls *libc.TLS, pCtx uintptr, nVal int32, apVal uintptr) {
 		nData = v1
 		szUncompressed = v1
 		// /tmp/libsqlite3/sqlite-src-3370200/ext/misc/zipfile.c:2020:5:
-		iCrc32 = uint32(_crc32(tls, uint32(0), aData, uint32(nData)))
+		iCrc32 = libz.Xcrc32(tls, uint32(0), aData, uint32(nData))
 		// /tmp/libsqlite3/sqlite-src-3370200/ext/misc/zipfile.c:2021:5:
 		if iMethod < 0 || iMethod == int32(8) {
 			// /tmp/libsqlite3/sqlite-src-3370200/ext/misc/zipfile.c:2022:11:
@@ -306407,6 +306408,31 @@ func x_sqlite3_sourceid(tls *libc.TLS) (r uintptr) {
 }
 
 // -:
+type TIdList_item = struct {
+	FzName uintptr
+	Fidx   int32
+}
+
+// -:
+type TAggInfo_func = struct {
+	FpFExpr    uintptr
+	FpFunc     uintptr
+	FiMem      int32
+	FiDistinct int32
+	FiDistAddr int32
+}
+
+// -:
+type TInLoop = struct {
+	FiCur        int32
+	FaddrInTop   int32
+	FiBase       int32
+	FnPrefix     int32
+	FeEndLoopOp  Tu8
+	F__ccgo_pad5 [3]byte
+}
+
+// -:
 type TAggInfo_col = struct {
 	FpTab          uintptr
 	FpCExpr        uintptr
@@ -306429,31 +306455,6 @@ type TWalSegment = struct {
 type T_ht = struct {
 	Fcount uint32
 	Fchain uintptr
-}
-
-// -:
-type TInLoop = struct {
-	FiCur        int32
-	FaddrInTop   int32
-	FiBase       int32
-	FnPrefix     int32
-	FeEndLoopOp  Tu8
-	F__ccgo_pad5 [3]byte
-}
-
-// -:
-type TIdList_item = struct {
-	FzName uintptr
-	Fidx   int32
-}
-
-// -:
-type TAggInfo_func = struct {
-	FpFExpr    uintptr
-	FpFunc     uintptr
-	FiMem      int32
-	FiDistinct int32
-	FiDistAddr int32
 }
 
 func __ccgo_fp(f interface{}) uintptr {
