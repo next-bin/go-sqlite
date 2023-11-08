@@ -71,7 +71,20 @@ func TestMain(m *testing.M) {
 	os.Exit(rc)
 }
 
+var blacklist = []string{}
+
 func TestTclTest(t *testing.T) {
+	blacklist := map[string]struct{}{}
+	switch runtime.GOOS {
+	case "windows":
+		// See https://gitlab.com/cznic/sqlite/-/issues/23#note_599920077 for details.
+		blacklist["symlink2.test"] = struct{}{}
+	}
+
+	if err := setMaxOpenFiles(1024); err != nil { // Avoid misc7.test hanging for a long time.
+		t.Fatal(err)
+	}
+
 	tmpDir := t.TempDir()
 	opts := cp.Options{
 		FS:                library.FS,
@@ -88,7 +101,23 @@ func TestTclTest(t *testing.T) {
 		t.Fatalf("%s\nFAIL: %v", out, err)
 	}
 
-	tests, err := filepath.Abs(filepath.Join("internal", "test"))
+	testsSrc := filepath.Join("internal", "test")
+	tests := filepath.Join(tmpDir, "test")
+	if err := os.Mkdir(tests, 0770); err != nil {
+		t.Fatal(err)
+	}
+
+	if _, _, err := util.CopyDir(tests, testsSrc, nil); err != nil {
+		t.Fatal(err)
+	}
+
+	for k := range blacklist {
+		if err := os.Remove(filepath.Join(tests, k)); err != nil {
+			t.Fatal(err)
+		}
+	}
+
+	tests, err := filepath.Abs(tests)
 	if err != nil {
 		t.Fatal(err)
 	}
