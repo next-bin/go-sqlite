@@ -4,11 +4,12 @@ go 1.20
 
 require (
 	github.com/otiai10/copy v1.14.0
+	golang.org/x/sys v0.14.0
 	modernc.org/ccgo/v3 v3.16.15
 	modernc.org/ccgo/v4 v4.0.31
-	modernc.org/libc v1.30.0
-	modernc.org/libtcl8.6 v0.1.11
-	modernc.org/libz v0.0.25
+	modernc.org/libc v1.31.0
+	modernc.org/libtcl8.6 v0.1.7
+	modernc.org/libz v0.0.24
 )
 
 require (
@@ -19,7 +20,6 @@ require (
 	github.com/remyoudompheng/bigfft v0.0.0-20230129092748-24d4a6f8daec // indirect
 	golang.org/x/mod v0.11.0 // indirect
 	golang.org/x/sync v0.3.0 // indirect
-	golang.org/x/sys v0.9.0 // indirect
 	golang.org/x/tools v0.10.0 // indirect
 	lukechampine.com/uint128 v1.2.0 // indirect
 	modernc.org/cc/v3 v3.41.0 // indirect
