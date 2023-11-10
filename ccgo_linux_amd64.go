@@ -151558,11 +151558,6 @@ func Xsqlite3_sourceid(tls *libc.TLS) (r uintptr) {
 	return __ccgo_ts + 23349
 }
 
-type TsColMap = struct {
-	FiFrom int32
-	FzCol  uintptr
-}
-
 type Tsqlite3_index_constraint = struct {
 	FiColumn     int32
 	Fop          uint8
@@ -151570,9 +151565,9 @@ type Tsqlite3_index_constraint = struct {
 	FiTermOffset int32
 }
 
-type T_ht = struct {
-	Fcount uint32
-	Fchain uintptr
+type TsColMap = struct {
+	FiFrom int32
+	FzCol  uintptr
 }
 
 type TAggInfo_func = struct {
@@ -151584,35 +151579,9 @@ type TAggInfo_func = struct {
 	F__ccgo_pad5 [4]byte
 }
 
-type TInLoop = struct {
-	FiCur        int32
-	FaddrInTop   int32
-	FiBase       int32
-	FnPrefix     int32
-	FeEndLoopOp  Tu8
-	F__ccgo_pad5 [3]byte
-}
-
-type TAggInfo_col = struct {
-	FpTab          uintptr
-	FpCExpr        uintptr
-	FiTable        int32
-	FiMem          int32
-	FiColumn       Ti16
-	FiSorterColumn Ti16
-	F__ccgo_pad6   [4]byte
-}
-
-type Tsqlite3_index_constraint_usage = struct {
-	FargvIndex   int32
-	Fomit        uint8
-	F__ccgo_pad2 [3]byte
-}
-
-type Tsqlite3_index_orderby = struct {
-	FiColumn     int32
-	Fdesc        uint8
-	F__ccgo_pad2 [3]byte
+type T_ht = struct {
+	Fcount uint32
+	Fchain uintptr
 }
 
 type Tsqlite3InitInfo = struct {
@@ -151630,12 +151599,43 @@ type TIdList_item = struct {
 	F__ccgo_pad2 [4]byte
 }
 
+type Tsqlite3_index_constraint_usage = struct {
+	FargvIndex   int32
+	Fomit        uint8
+	F__ccgo_pad2 [3]byte
+}
+
+type TAggInfo_col = struct {
+	FpTab          uintptr
+	FpCExpr        uintptr
+	FiTable        int32
+	FiMem          int32
+	FiColumn       Ti16
+	FiSorterColumn Ti16
+	F__ccgo_pad6   [4]byte
+}
+
 type TWalSegment = struct {
 	FiNext  int32
 	FaIndex uintptr
 	FaPgno  uintptr
 	FnEntry int32
 	FiZero  int32
+}
+
+type TInLoop = struct {
+	FiCur        int32
+	FaddrInTop   int32
+	FiBase       int32
+	FnPrefix     int32
+	FeEndLoopOp  Tu8
+	F__ccgo_pad5 [3]byte
+}
+
+type Tsqlite3_index_orderby = struct {
+	FiColumn     int32
+	Fdesc        uint8
+	F__ccgo_pad2 [3]byte
 }
 
 type TMemValue = struct {
