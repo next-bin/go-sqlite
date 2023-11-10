@@ -19393,22 +19393,6 @@ var _longdouble_size = int32(8)
 var _query_plan = __ccgo_ts + 8987
 
 // -:
-type TsColMap = struct {
-	FiFrom int32
-	FzCol  uintptr
-}
-
-// -:
-type Tsqlite3InitInfo = struct {
-	FnewTnum       TPgno
-	FiDb           Tu8
-	Fbusy          Tu8
-	F__ccgo_align3 [2]byte
-	F__ccgo8       uint8
-	FazInit        uintptr
-}
-
-// -:
 type TExprList_item = struct {
 	FpExpr         uintptr
 	FzEName        uintptr
@@ -19422,6 +19406,22 @@ type TExprList_item = struct {
 			FiAlias      Tu16
 		}
 	}
+}
+
+// -:
+type TsColMap = struct {
+	FiFrom int32
+	FzCol  uintptr
+}
+
+// -:
+type Tsqlite3InitInfo = struct {
+	FnewTnum       TPgno
+	FiDb           Tu8
+	Fbusy          Tu8
+	F__ccgo_align3 [2]byte
+	F__ccgo8       uint8
+	FazInit        uintptr
 }
 
 // -:
@@ -26627,16 +26627,16 @@ type Tsqlite3_index_constraint = struct {
 }
 
 // -:
-type Tsqlite3_index_orderby = struct {
-	FiColumn     int32
-	Fdesc        uint8
+type Tsqlite3_index_constraint_usage = struct {
+	FargvIndex   int32
+	Fomit        uint8
 	F__ccgo_pad2 [3]byte
 }
 
 // -:
-type Tsqlite3_index_constraint_usage = struct {
-	FargvIndex   int32
-	Fomit        uint8
+type Tsqlite3_index_orderby = struct {
+	FiColumn     int32
+	Fdesc        uint8
 	F__ccgo_pad2 [3]byte
 }
 
@@ -96320,7 +96320,7 @@ func _zipfileUpdate(tls *libc.TLS, pVtab uintptr, nVal int32, apVal uintptr, pRo
 						}
 					}
 					// /tmp/libsqlite3/sqlite-src-3370200/ext/misc/zipfile.c:1626:11:
-					iCrc32 = uint32(libz.Xcrc32(tls, uint32(0), aIn, uint32(nIn)))
+					iCrc32 = libz.Xcrc32(tls, uint32(0), aIn, uint32(nIn))
 				}
 			}
 		}
@@ -97059,7 +97059,7 @@ func x_zipfileStep(tls *libc.TLS, pCtx uintptr, nVal int32, apVal uintptr) {
 		nData = v1
 		szUncompressed = v1
 		// /tmp/libsqlite3/sqlite-src-3370200/ext/misc/zipfile.c:2020:5:
-		iCrc32 = uint32(libz.Xcrc32(tls, uint32(0), aData, uint32(nData)))
+		iCrc32 = libz.Xcrc32(tls, uint32(0), aData, uint32(nData))
 		// /tmp/libsqlite3/sqlite-src-3370200/ext/misc/zipfile.c:2021:5:
 		if iMethod < 0 || iMethod == int32(8) {
 			// /tmp/libsqlite3/sqlite-src-3370200/ext/misc/zipfile.c:2022:11:
@@ -306419,25 +306419,6 @@ type TAggInfo_col = struct {
 }
 
 // -:
-type TAggInfo_func = struct {
-	FpFExpr    uintptr
-	FpFunc     uintptr
-	FiMem      int32
-	FiDistinct int32
-	FiDistAddr int32
-}
-
-// -:
-type TInLoop = struct {
-	FiCur        int32
-	FaddrInTop   int32
-	FiBase       int32
-	FnPrefix     int32
-	FeEndLoopOp  Tu8
-	F__ccgo_pad5 [3]byte
-}
-
-// -:
 type TIdList_item = struct {
 	FzName uintptr
 	Fidx   int32
@@ -306456,6 +306437,25 @@ type TWalSegment = struct {
 	FaPgno  uintptr
 	FnEntry int32
 	FiZero  int32
+}
+
+// -:
+type TAggInfo_func = struct {
+	FpFExpr    uintptr
+	FpFunc     uintptr
+	FiMem      int32
+	FiDistinct int32
+	FiDistAddr int32
+}
+
+// -:
+type TInLoop = struct {
+	FiCur        int32
+	FaddrInTop   int32
+	FiBase       int32
+	FnPrefix     int32
+	FeEndLoopOp  Tu8
+	F__ccgo_pad5 [3]byte
 }
 
 func __ccgo_fp(f interface{}) uintptr {
