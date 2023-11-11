@@ -34,7 +34,7 @@ var (
 	oMatch      = flag.String("match", "", "pattern list")
 	oNotFile    = flag.String("notfile", strings.Join(notFiles, " "), "pattern list")
 	oSingleProc = flag.String("singleproc", "0", "0 or 1")
-	oSkip       = flag.String("skip", strings.Join(skip, " "), "pattern list")
+	oSkip       = flag.String("xskip", "", "comma separated pattern list")
 	oTmpdir     = flag.String("tmpdir", "", "directory")
 	oVerbose    = flag.String("verbose", "el", "any combination of letters b, p, s, t, e, l, m, u")
 	oXTags      = flag.String("xtags", "", "passed to go build of tcltest")
@@ -47,6 +47,9 @@ func TestMain(m *testing.M) {
 		skip = append(skip, "cmdIL-5.7")
 	}
 	flag.Parse()
+	if s := *oSkip; s != "" {
+		skip = append(skip, strings.Split(s, ",")...)
+	}
 	rc := m.Run()
 	os.Exit(rc)
 }
@@ -123,8 +126,8 @@ func Test2(t *testing.T) {
 	if s := *oNotFile; s != "" {
 		args = append(args, "-notfile", s)
 	}
-	if s := *oSkip; s != "" {
-		args = append(args, "-skip", s)
+	if len(skip) != 0 {
+		args = append(args, "-skip", strings.Join(skip, " "))
 	}
 	if s := *oTmpdir; s != "" {
 		args = append(args, "-tmpdir", s)
