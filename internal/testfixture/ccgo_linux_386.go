@@ -26627,16 +26627,16 @@ type Tsqlite3_index_constraint = struct {
 }
 
 // -:
-type Tsqlite3_index_constraint_usage = struct {
-	FargvIndex   int32
-	Fomit        uint8
+type Tsqlite3_index_orderby = struct {
+	FiColumn     int32
+	Fdesc        uint8
 	F__ccgo_pad2 [3]byte
 }
 
 // -:
-type Tsqlite3_index_orderby = struct {
-	FiColumn     int32
-	Fdesc        uint8
+type Tsqlite3_index_constraint_usage = struct {
+	FargvIndex   int32
+	Fomit        uint8
 	F__ccgo_pad2 [3]byte
 }
 
@@ -306409,25 +306409,12 @@ func x_sqlite3_sourceid(tls *libc.TLS) (r uintptr) {
 }
 
 // -:
-type TAggInfo_col = struct {
-	FpTab          uintptr
-	FpCExpr        uintptr
-	FiTable        int32
-	FiMem          int32
-	FiColumn       Ti16
-	FiSorterColumn Ti16
-}
-
-// -:
-type TIdList_item = struct {
-	FzName uintptr
-	Fidx   int32
-}
-
-// -:
-type T_ht = struct {
-	Fcount uint32
-	Fchain uintptr
+type TAggInfo_func = struct {
+	FpFExpr    uintptr
+	FpFunc     uintptr
+	FiMem      int32
+	FiDistinct int32
+	FiDistAddr int32
 }
 
 // -:
@@ -306440,12 +306427,25 @@ type TWalSegment = struct {
 }
 
 // -:
-type TAggInfo_func = struct {
-	FpFExpr    uintptr
-	FpFunc     uintptr
-	FiMem      int32
-	FiDistinct int32
-	FiDistAddr int32
+type TIdList_item = struct {
+	FzName uintptr
+	Fidx   int32
+}
+
+// -:
+type TAggInfo_col = struct {
+	FpTab          uintptr
+	FpCExpr        uintptr
+	FiTable        int32
+	FiMem          int32
+	FiColumn       Ti16
+	FiSorterColumn Ti16
+}
+
+// -:
+type T_ht = struct {
+	Fcount uint32
+	Fchain uintptr
 }
 
 // -:
