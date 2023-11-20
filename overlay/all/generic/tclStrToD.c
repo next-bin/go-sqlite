@@ -61,11 +61,11 @@ typedef unsigned int	fpu_control_t __attribute__ ((__mode__ (__HI__)));
 #  define TCL_IEEE_DOUBLE_ROUNDING_DECL \
     fpu_control_t roundTo53Bits = FPU_IEEE_ROUNDING;	\
     fpu_control_t oldRoundingMode;
-//ccgo #  define TCL_IEEE_DOUBLE_ROUNDING \
-//ccgo     _FPU_GETCW(oldRoundingMode);			\
+//ccgo #  define TCL_IEEE_DOUBLE_ROUNDING
+//ccgo     _FPU_GETCW(oldRoundingMode);
 //ccgo     _FPU_SETCW(roundTo53Bits)
 #  define TCL_IEEE_DOUBLE_ROUNDING
-//ccgo #  define TCL_DEFAULT_DOUBLE_ROUNDING \
+//ccgo #  define TCL_DEFAULT_DOUBLE_ROUNDING
 //ccgo     _FPU_SETCW(oldRoundingMode)
 #  define TCL_DEFAULT_DOUBLE_ROUNDING
 
