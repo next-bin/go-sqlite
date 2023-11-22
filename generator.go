@@ -37,10 +37,6 @@ func fail(rc int, msg string, args ...any) {
 }
 
 func main() {
-	if goos != "linux" {
-		return
-	}
-
 	if ccgo.IsExecEnv() {
 		if err := ccgo.NewTask(goos, goarch, os.Args, os.Stdout, os.Stderr, nil).Main(); err != nil {
 			fmt.Fprintln(os.Stderr, err)
@@ -130,8 +126,8 @@ func main() {
 
 	fn := fmt.Sprintf("ccgo_%s_%s.go", goos, goarch)
 	mustCopyFile(fn, filepath.Join(libRoot, result), nil)
-	util.MustShell(true, "sed", "-i", `s/\<T__\([a-zA-Z0-9][a-zA-Z0-9_]\+\)/t__\1/g`, fn)
-	util.MustShell(true, "sed", "-i", `s/\<x_\([a-zA-Z0-9][a-zA-Z0-9_]\+\)/X\1/g`, fn)
+	util.MustShell(true, "sed", "-i", "-e", `s/\<T__\([a-zA-Z0-9][a-zA-Z0-9_]\+\)/t__\1/g`, fn)
+	util.MustShell(true, "sed", "-i", "-e", `s/\<x_\([a-zA-Z0-9][a-zA-Z0-9_]\+\)/X\1/g`, fn)
 	util.MustShell(true, "cp", filepath.Join(libRoot, "example64.go"), filepath.Join("internal", "example", fn))
 	util.MustShell(true, "cp", filepath.Join(libRoot, "minigzip64.go"), filepath.Join("internal", "minigzip", fn))
 	util.Shell("sh", "-c", "./unconvert.sh")
