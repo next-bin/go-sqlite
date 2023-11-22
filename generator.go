@@ -126,8 +126,9 @@ func main() {
 
 	fn := fmt.Sprintf("ccgo_%s_%s.go", goos, goarch)
 	mustCopyFile(fn, filepath.Join(libRoot, result), nil)
-	util.MustShell(true, "sed", "-i", "-e", `s/\<T__\([a-zA-Z0-9][a-zA-Z0-9_]\+\)/t__\1/g`, fn)
-	util.MustShell(true, "sed", "-i", "-e", `s/\<x_\([a-zA-Z0-9][a-zA-Z0-9_]\+\)/X\1/g`, fn)
+	util.MustShell(true, "sed", "-i.bak", `s/\<T__\([a-zA-Z0-9][a-zA-Z0-9_]\+\)/t__\1/g`, fn)
+	util.MustShell(true, "sed", "-i.bak", `s/\<x_\([a-zA-Z0-9][a-zA-Z0-9_]\+\)/X\1/g`, fn)
+	util.MustShell(true, "sh", "-c", "rm *.bak")
 	util.MustShell(true, "cp", filepath.Join(libRoot, "example64.go"), filepath.Join("internal", "example", fn))
 	util.MustShell(true, "cp", filepath.Join(libRoot, "minigzip64.go"), filepath.Join("internal", "minigzip", fn))
 	util.Shell("sh", "-c", "./unconvert.sh")
