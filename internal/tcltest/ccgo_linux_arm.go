@@ -193986,6 +193986,17 @@ func _FreeChannelInternalRep(tls *libc.TLS, objPtr uintptr) {
 	x_TclpFree(tls, resPtr)
 }
 
+type TChannel1 = struct {
+	Fstate        uintptr
+	FinstanceData TClientData
+	FtypePtr      uintptr
+	FdownChanPtr  uintptr
+	FupChanPtr    uintptr
+	FinQueueHead  uintptr
+	FinQueueTail  uintptr
+	FrefCount     int32
+}
+
 type TChannelState1 = struct {
 	FchannelName         uintptr
 	Fflags               int32
@@ -194037,17 +194048,6 @@ type TCopyState1 = struct {
 	FbufSize      int32
 	Fbuffer       [1]uint8
 	F__ccgo_pad10 [3]byte
-}
-
-type TChannel1 = struct {
-	Fstate        uintptr
-	FinstanceData TClientData
-	FtypePtr      uintptr
-	FdownChanPtr  uintptr
-	FupChanPtr    uintptr
-	FinQueueHead  uintptr
-	FinQueueTail  uintptr
-	FrefCount     int32
 }
 
 const m_O_RDWR = 2
@@ -217395,6 +217395,14 @@ func x_Tcl_LogCommandInfo(tls *libc.TLS, interp uintptr, script uintptr, command
 	x_TclLogCommandInfo(tls, interp, script, command, length, libc.UintptrFromInt32(0), libc.UintptrFromInt32(0))
 }
 
+type TTcl_Namespace1 = struct {
+	Fname       uintptr
+	FfullName   uintptr
+	FclientData TClientData
+	FdeleteProc uintptr
+	FparentPtr  uintptr
+}
+
 type TNamespace1 = struct {
 	Fname                  uintptr
 	FfullName              uintptr
@@ -217424,14 +217432,6 @@ type TNamespace1 = struct {
 	FcommandPathArray      uintptr
 	FcommandPathSourceList uintptr
 	FearlyDeleteProc       uintptr
-}
-
-type TTcl_Namespace1 = struct {
-	Fname       uintptr
-	FfullName   uintptr
-	FclientData TClientData
-	FdeleteProc uintptr
-	FparentPtr  uintptr
 }
 
 /*
