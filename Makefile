@@ -54,13 +54,11 @@ dev: download
 	date 2>&1 | tee -a log-generate
 	GO_GENERATE_DIR=$(DIR) GO_GENERATE_DEV=1 go run -tags=ccgo.dmesg,ccgo.assert generator*.go 2>&1 | tee -a log-generate
 	date 2>&1 | tee -a log-generate
-	date 2>&1 | tee -a log-generate
 	go build -v ./...  | tee -a log-generate
 	git status
 	grep 'TRC\|TODO\|ERRORF\|FAIL' log-generate || true
 	grep 'TRC\|TODO\|ERRORF\|FAIL' log-generate-errors || true
 	grep 'TRC\|TODO\|ERRORF\|FAIL' /tmp/ccgo.log || true
-	grep $(shell date '+%B') log-generate
 
 test:
 	go test -v -timeout 24h -count=1 2>&1 | tee log-test
