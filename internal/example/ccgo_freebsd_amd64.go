@@ -1,4 +1,4 @@
-// Code generated for freebsd/amd64 by 'cc --libc modernc.org/libc --prefix-enumerator=_ --prefix-external=x_ --prefix-field=F --prefix-macro=m_ --prefix-static-internal=_ --prefix-static-none=_ --prefix-tagged-enum=_ --prefix-tagged-struct=T --prefix-tagged-union=T --prefix-typename=T --prefix-undefined=_ -extended-errors --package-name=main -DNDEBUG -mlong-double-64 -D_LARGEFILE64_SOURCE=1 -DHAVE_HIDDEN -o example64.go example64.o.go -L. libz.a', DO NOT EDIT.
+// Code generated for freebsd/amd64 by 'gcc --libc modernc.org/libc --prefix-enumerator=_ --prefix-external=x_ --prefix-field=F --prefix-macro=m_ --prefix-static-internal=_ --prefix-static-none=_ --prefix-tagged-enum=_ --prefix-tagged-struct=T --prefix-tagged-union=T --prefix-typename=T --prefix-undefined=_ -extended-errors --package-name=main -DNDEBUG -mlong-double-64 -D_LARGEFILE64_SOURCE=1 -DHAVE_HIDDEN -o example64.go example64.o.go -L. libz.a', DO NOT EDIT.
 
 //go:build freebsd && amd64
 // +build freebsd,amd64
