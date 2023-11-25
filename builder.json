@@ -3,7 +3,7 @@
 	"autotag": "$libs",
 	"autoupdate": "$libs",
 	"download": [
-		{"re": "linux", "files": ["http://prdownloads.sourceforge.net/tcl/tcl8.6.13-src.tar.gz"]}
+		{"re": ".", "files": ["http://prdownloads.sourceforge.net/tcl/tcl8.6.13-src.tar.gz"]}
 	],
 	"test": "$libs"
 }
