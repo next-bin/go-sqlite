@@ -98,6 +98,10 @@ func main() {
 		return
 	}
 
+	switch fmt.Sprintf("%s/%s", goos, goarch) {
+	case "freebds/amd64":
+		os.Setenv("CC", "gcc")
+	}
 	f, err := os.Open(archivePath)
 	if err != nil {
 		fail(1, "cannot open tar file: %v\n", err)
