@@ -1,4 +1,4 @@
-// Code generated for linux/amd64 by '-mlong-double-64 --libc modernc.org/libc --package-name libsqlite3 --prefix-enumerator=_ --prefix-external=x_ --prefix-field=F --prefix-macro=m_ --prefix-static-internal=_ --prefix-static-none=_ --prefix-tagged-enum=_ --prefix-tagged-struct=T --prefix-tagged-union=T --prefix-typename=T --prefix-undefined=_ -DLONGDOUBLE_TYPE=double -DSQLITE_THREADSAFE=0 -Dpread64=pread -Dpwrite64=pwrite -DNDEBUG -extended-errors -o sqlite3.go sqlite3.c -I/tmp/libsqlite3/sqlite-amalgamation-3370200/ccgo', DO NOT EDIT.
+// Code generated for linux/amd64 by 'generator -mlong-double-64 --libc modernc.org/libc --package-name libsqlite3 --prefix-enumerator=_ --prefix-external=x_ --prefix-field=F --prefix-macro=m_ --prefix-static-internal=_ --prefix-static-none=_ --prefix-tagged-enum=_ --prefix-tagged-struct=T --prefix-tagged-union=T --prefix-typename=T --prefix-undefined=_ -DLONGDOUBLE_TYPE=double -DSQLITE_THREADSAFE=0 -Dpread64=pread -Dpwrite64=pwrite -DNDEBUG -extended-errors -o sqlite3.go sqlite3.c -I/tmp/libsqlite3/sqlite-amalgamation-3370200/ccgo', DO NOT EDIT.
 
 //go:build linux && amd64
 // +build linux,amd64
@@ -37836,7 +37836,7 @@ func _walRestartHdr(tls *libc.TLS, pWal uintptr, _salt1 Tu32) {
 	_sqlite3Put4byte(tls, aSalt, uint32(1)+_sqlite3Get4byte(tls, aSalt))
 	libc.Xmemcpy(tls, pWal+72+32+1*4, bp, uint64(4))
 	_walIndexWriteHdr(tls, pWal)
-	libc.AtomicStoreNInt32(pInfo, libc.Int32FromInt32(0), libc.Int32FromInt32(m___ATOMIC_RELAXED))
+	libc.AtomicStoreNUint32(pInfo, uint32(libc.Int32FromInt32(0)), libc.Int32FromInt32(m___ATOMIC_RELAXED))
 	(*TWalCkptInfo)(unsafe.Pointer(pInfo)).FnBackfillAttempted = uint32(0)
 	*(*Tu32)(unsafe.Pointer(pInfo + 4 + 1*4)) = uint32(0)
 	i = int32(2)
@@ -105789,6 +105789,7 @@ var _encnames1 = [9]struct {
 	7: {
 		FzName: __ccgo_ts + 17104,
 	},
+	8: {},
 }
 
 /* Write the specified cookie value */
@@ -149210,6 +149211,7 @@ var _aCacheMode = [3]struct {
 		Fz:    __ccgo_ts + 23152,
 		Fmode: int32(m_SQLITE_OPEN_PRIVATECACHE),
 	},
+	2: {},
 }
 
 var _aOpenMode = [5]struct {
@@ -149233,6 +149235,7 @@ var _aOpenMode = [5]struct {
 		Fz:    __ccgo_ts + 16507,
 		Fmode: int32(m_SQLITE_OPEN_MEMORY),
 	},
+	4: {},
 }
 
 // C documentation
@@ -151558,6 +151561,44 @@ func Xsqlite3_sourceid(tls *libc.TLS) (r uintptr) {
 	return __ccgo_ts + 23349
 }
 
+type TIdList_item = struct {
+	FzName       uintptr
+	Fidx         int32
+	F__ccgo_pad2 [4]byte
+}
+
+type T_ht = struct {
+	Fcount uint32
+	Fchain uintptr
+}
+
+type Tsqlite3InitInfo = struct {
+	FnewTnum       TPgno
+	FiDb           Tu8
+	Fbusy          Tu8
+	F__ccgo_align3 [2]byte
+	F__ccgo8       uint8
+	FazInit        uintptr
+}
+
+type TAggInfo_func = struct {
+	FpFExpr      uintptr
+	FpFunc       uintptr
+	FiMem        int32
+	FiDistinct   int32
+	FiDistAddr   int32
+	F__ccgo_pad5 [4]byte
+}
+
+type TInLoop = struct {
+	FiCur        int32
+	FaddrInTop   int32
+	FiBase       int32
+	FnPrefix     int32
+	FeEndLoopOp  Tu8
+	F__ccgo_pad5 [3]byte
+}
+
 type Tsqlite3_index_constraint = struct {
 	FiColumn     int32
 	Fop          uint8
@@ -151571,9 +151612,15 @@ type Tsqlite3_index_constraint_usage = struct {
 	F__ccgo_pad2 [3]byte
 }
 
-type T_ht = struct {
-	Fcount uint32
-	Fchain uintptr
+type TsColMap = struct {
+	FiFrom int32
+	FzCol  uintptr
+}
+
+type Tsqlite3_index_orderby = struct {
+	FiColumn     int32
+	Fdesc        uint8
+	F__ccgo_pad2 [3]byte
 }
 
 type TWalSegment = struct {
@@ -151584,15 +151631,6 @@ type TWalSegment = struct {
 	FiZero  int32
 }
 
-type TAggInfo_func = struct {
-	FpFExpr      uintptr
-	FpFunc       uintptr
-	FiMem        int32
-	FiDistinct   int32
-	FiDistAddr   int32
-	F__ccgo_pad5 [4]byte
-}
-
 type TAggInfo_col = struct {
 	FpTab          uintptr
 	FpCExpr        uintptr
@@ -151601,41 +151639,6 @@ type TAggInfo_col = struct {
 	FiColumn       Ti16
 	FiSorterColumn Ti16
 	F__ccgo_pad6   [4]byte
-}
-
-type TInLoop = struct {
-	FiCur        int32
-	FaddrInTop   int32
-	FiBase       int32
-	FnPrefix     int32
-	FeEndLoopOp  Tu8
-	F__ccgo_pad5 [3]byte
-}
-
-type TIdList_item = struct {
-	FzName       uintptr
-	Fidx         int32
-	F__ccgo_pad2 [4]byte
-}
-
-type Tsqlite3InitInfo = struct {
-	FnewTnum       TPgno
-	FiDb           Tu8
-	Fbusy          Tu8
-	F__ccgo_align3 [2]byte
-	F__ccgo8       uint8
-	FazInit        uintptr
-}
-
-type Tsqlite3_index_orderby = struct {
-	FiColumn     int32
-	Fdesc        uint8
-	F__ccgo_pad2 [3]byte
-}
-
-type TsColMap = struct {
-	FiFrom int32
-	FzCol  uintptr
 }
 
 type TMemValue = struct {
