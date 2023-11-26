@@ -13817,6 +13817,7 @@ func _test_open_v2(tls *libc.TLS, clientData uintptr, interp uintptr, objc int32
 				FzFlag: __ccgo_ts + 2716,
 				Fflag:  int32(m_SQLITE_OPEN_EXRESCODE),
 			},
+			20: {},
 		}
 		// /tmp/libsqlite3/sqlite-src-3370200/src/test1.c:4856:5:
 		rc = libtcl8_6.XTcl_GetIndexFromObjStruct(tls, interp, *(*uintptr)(unsafe.Pointer(*(*uintptr)(unsafe.Pointer(bp + 108)) + uintptr(i)*4)), bp+116, int32(8), __ccgo_ts+2738, 0, bp+112)
@@ -19478,22 +19479,6 @@ var _longdouble_size = int32(8)
 var _query_plan = __ccgo_ts + 8987
 
 // -:
-type TExprList_item = struct {
-	FpExpr         uintptr
-	FzEName        uintptr
-	FsortFlags     Tu8
-	F__ccgo_align3 [3]byte
-	F__ccgo12      uint8
-	Fu             struct {
-		FiConstExprReg [0]int32
-		Fx             struct {
-			FiOrderByCol Tu16
-			FiAlias      Tu16
-		}
-	}
-}
-
-// -:
 type TsColMap = struct {
 	FiFrom int32
 	FzCol  uintptr
@@ -19507,6 +19492,22 @@ type Tsqlite3InitInfo = struct {
 	F__ccgo_align3 [2]byte
 	F__ccgo8       uint8
 	FazInit        uintptr
+}
+
+// -:
+type TExprList_item = struct {
+	FpExpr         uintptr
+	FzEName        uintptr
+	FsortFlags     Tu8
+	F__ccgo_align3 [3]byte
+	F__ccgo12      uint8
+	Fu             struct {
+		FiConstExprReg [0]int32
+		Fx             struct {
+			FiOrderByCol Tu16
+			FiAlias      Tu16
+		}
+	}
 }
 
 // -:
@@ -22306,6 +22307,7 @@ func _name_to_enc(tls *libc.TLS, interp uintptr, pObj uintptr) (r Tu8) {
 			FzName: __ccgo_ts + 10618,
 			Fenc:   uint8(m_SQLITE_UTF16),
 		},
+		4: {},
 	}
 	// /tmp/libsqlite3/sqlite-src-3370200/src/test5.c:106:8:
 	z = libtcl8_6.XTcl_GetString(tls, pObj)
@@ -23752,6 +23754,7 @@ func _processDevSymArgs(tls *libc.TLS, interp uintptr, objc int32, objv uintptr,
 			FzName:  __ccgo_ts + 10905,
 			FiValue: int32(m_SQLITE_IOCAP_BATCH_ATOMIC),
 		},
+		13: {},
 	}
 	// /tmp/libsqlite3/sqlite-src-3370200/src/test6.c:748:7:
 	iDc = 0
@@ -26717,18 +26720,18 @@ func init() {
 }
 
 // -:
-type Tsqlite3_index_constraint_usage = struct {
-	FargvIndex   int32
-	Fomit        uint8
-	F__ccgo_pad2 [3]byte
-}
-
-// -:
 type Tsqlite3_index_constraint = struct {
 	FiColumn     int32
 	Fop          uint8
 	Fusable      uint8
 	FiTermOffset int32
+}
+
+// -:
+type Tsqlite3_index_constraint_usage = struct {
+	FargvIndex   int32
+	Fomit        uint8
+	F__ccgo_pad2 [3]byte
 }
 
 // -:
@@ -27722,6 +27725,7 @@ func _backupTestCmd(tls *libc.TLS, clientData TClientData, interp uintptr, objc 
 			FeCmd: 3,
 			FzArg: __ccgo_ts + 1095,
 		},
+		4: {},
 	}
 	// /tmp/libsqlite3/sqlite-src-3370200/src/test_backup.c:55:18:
 	p = clientData
@@ -45109,6 +45113,7 @@ func _test_multiplex_control(tls *libc.TLS, cd TClientData, interp uintptr, objc
 			Fop:      int32(m_MULTIPLEX_CTRL_SET_MAX_CHUNKS),
 			Fargtype: int32(1),
 		},
+		3: {},
 	}
 	// /tmp/libsqlite3/sqlite-src-3370200/src/test_multiplex.c:1319:3:
 	if objc != int32(5) {
@@ -45804,6 +45809,7 @@ func _test_config(tls *libc.TLS, clientData uintptr, interp uintptr, objc int32,
 			FzName:  __ccgo_ts + 19647,
 			FiValue: int32(m_SQLITE_CONFIG_SERIALIZED),
 		},
+		3: {},
 	}
 	// /tmp/libsqlite3/sqlite-src-3370200/src/test_mutex.c:357:7:
 	s = int32(8)
@@ -55330,6 +55336,7 @@ func _test_syscall_errno(tls *libc.TLS, clientData uintptr, interp uintptr, objc
 			Fz: __ccgo_ts + 21642,
 			Fi: int32(m_ENOLCK),
 		},
+		11: {},
 	}
 	// /tmp/libsqlite3/sqlite-src-3370200/src/test_syscall.c:601:3:
 	if objc != int32(4) {
@@ -55541,6 +55548,7 @@ func _test_syscall(tls *libc.TLS, clientData uintptr, interp uintptr, objc int32
 			FzName: __ccgo_ts + 21757,
 			FxCmd:  __ccgo_fp(_test_syscall_pagesize),
 		},
+		9: {},
 	}
 	// /tmp/libsqlite3/sqlite-src-3370200/src/test_syscall.c:729:15:
 	pVfs = x_sqlite3_vfs_find(tls, uintptr(0))
@@ -58612,6 +58620,7 @@ func _testvfs_obj_cmd(tls *libc.TLS, cd TClientData, interp uintptr, objc int32,
 			FzName: __ccgo_ts + 22991,
 			FeCmd:  6,
 		},
+		9: {},
 	}
 	// /tmp/libsqlite3/sqlite-src-3370200/src/test_vfs.c:1109:3:
 	if objc < int32(2) {
@@ -59019,6 +59028,7 @@ func _testvfs_obj_cmd(tls *libc.TLS, cd TClientData, interp uintptr, objc int32,
 				FzName:  __ccgo_ts + 23152,
 				FiValue: int32(m_SQLITE_IOCAP_IMMUTABLE),
 			},
+			15: {},
 		}
 		// /tmp/libsqlite3/sqlite-src-3370200/src/test_vfs.c:1329:7:
 		if objc > int32(3) {
@@ -63912,6 +63922,7 @@ func _testExpertCmd(tls *libc.TLS, clientData uintptr, interp uintptr, objc int3
 			FzSub: __ccgo_ts + 25632,
 			FzMsg: __ccgo_ts + 1095,
 		},
+		5: {},
 	}
 	// /tmp/libsqlite3/sqlite-src-3370200/ext/expert/test_expert.c:75:7:
 	rc = m_TCL_OK
@@ -145831,7 +145842,7 @@ func _walRestartHdr(tls *libc.TLS, pWal uintptr, _salt1 Tu32) {
 	// /tmp/libsqlite3/sqlite-src-3370200/sqlite3.c:62370:3:
 	_walIndexWriteHdr(tls, pWal)
 	// /tmp/libsqlite3/sqlite-src-3370200/sqlite3.c:62371:3:
-	libc.AtomicStoreNInt32(pInfo, libc.Int32FromInt32(0), libc.Int32FromInt32(m___ATOMIC_RELAXED))
+	libc.AtomicStoreNUint32(pInfo, uint32(libc.Int32FromInt32(0)), libc.Int32FromInt32(m___ATOMIC_RELAXED))
 	// /tmp/libsqlite3/sqlite-src-3370200/sqlite3.c:62372:3:
 	(*TWalCkptInfo)(unsafe.Pointer(pInfo)).FnBackfillAttempted = uint32(0)
 	// /tmp/libsqlite3/sqlite-src-3370200/sqlite3.c:62373:3:
@@ -241597,6 +241608,7 @@ var _encnames1 = [9]struct {
 	7: {
 		FzName: __ccgo_ts + 10618,
 	},
+	8: {},
 }
 
 /* Write the specified cookie value */
@@ -301227,6 +301239,7 @@ var _aCacheMode = [3]struct {
 		Fz:    __ccgo_ts + 60496,
 		Fmode: int32(m_SQLITE_OPEN_PRIVATECACHE),
 	},
+	2: {},
 }
 
 // /tmp/libsqlite3/sqlite-src-3370200/sqlite3.c:169645:34:
@@ -301250,6 +301263,7 @@ var _aOpenMode = [5]struct {
 		Fz:    __ccgo_ts + 52418,
 		Fmode: int32(m_SQLITE_OPEN_MEMORY),
 	},
+	4: {},
 }
 
 // C documentation
@@ -306675,6 +306689,15 @@ type TIdList_item = struct {
 }
 
 // -:
+type TWalSegment = struct {
+	FiNext  int32
+	FaIndex uintptr
+	FaPgno  uintptr
+	FnEntry int32
+	FiZero  int32
+}
+
+// -:
 type TAggInfo_col = struct {
 	FpTab          uintptr
 	FpCExpr        uintptr
@@ -306682,24 +306705,6 @@ type TAggInfo_col = struct {
 	FiMem          int32
 	FiColumn       Ti16
 	FiSorterColumn Ti16
-}
-
-// -:
-type TAggInfo_func = struct {
-	FpFExpr    uintptr
-	FpFunc     uintptr
-	FiMem      int32
-	FiDistinct int32
-	FiDistAddr int32
-}
-
-// -:
-type TWalSegment = struct {
-	FiNext  int32
-	FaIndex uintptr
-	FaPgno  uintptr
-	FnEntry int32
-	FiZero  int32
 }
 
 // -:
@@ -306716,6 +306721,15 @@ type TInLoop = struct {
 	FnPrefix     int32
 	FeEndLoopOp  Tu8
 	F__ccgo_pad5 [3]byte
+}
+
+// -:
+type TAggInfo_func = struct {
+	FpFExpr    uintptr
+	FpFunc     uintptr
+	FiMem      int32
+	FiDistinct int32
+	FiDistAddr int32
 }
 
 func __ccgo_fp(f interface{}) uintptr {
@@ -306785,6 +306799,7 @@ var x_aSyscall = [19]TTestSyscallArray{
 	17: {
 		FzName: __ccgo_ts + 21523,
 	},
+	18: {},
 }
 
 //
