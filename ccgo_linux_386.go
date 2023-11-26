@@ -37822,7 +37822,7 @@ func _walRestartHdr(tls *libc.TLS, pWal uintptr, _salt1 Tu32) {
 	_sqlite3Put4byte(tls, aSalt, uint32(1)+_sqlite3Get4byte(tls, aSalt))
 	libc.Xmemcpy(tls, pWal+52+32+1*4, bp, uint32(4))
 	_walIndexWriteHdr(tls, pWal)
-	libc.AtomicStoreNInt32(pInfo, libc.Int32FromInt32(0), libc.Int32FromInt32(m___ATOMIC_RELAXED))
+	libc.AtomicStoreNUint32(pInfo, uint32(libc.Int32FromInt32(0)), libc.Int32FromInt32(m___ATOMIC_RELAXED))
 	(*TWalCkptInfo)(unsafe.Pointer(pInfo)).FnBackfillAttempted = uint32(0)
 	*(*Tu32)(unsafe.Pointer(pInfo + 4 + 1*4)) = uint32(0)
 	i = int32(2)
@@ -105769,6 +105769,7 @@ var _encnames1 = [9]struct {
 	7: {
 		FzName: __ccgo_ts + 17104,
 	},
+	8: {},
 }
 
 /* Write the specified cookie value */
@@ -149179,6 +149180,7 @@ var _aCacheMode = [3]struct {
 		Fz:    __ccgo_ts + 23152,
 		Fmode: int32(m_SQLITE_OPEN_PRIVATECACHE),
 	},
+	2: {},
 }
 
 var _aOpenMode = [5]struct {
@@ -149201,6 +149203,7 @@ var _aOpenMode = [5]struct {
 		Fz:    __ccgo_ts + 16507,
 		Fmode: int32(m_SQLITE_OPEN_MEMORY),
 	},
+	4: {},
 }
 
 // C documentation
@@ -151526,25 +151529,24 @@ func Xsqlite3_sourceid(tls *libc.TLS) (r uintptr) {
 	return __ccgo_ts + 23349
 }
 
-type TAggInfo_func = struct {
-	FpFExpr    uintptr
-	FpFunc     uintptr
-	FiMem      int32
-	FiDistinct int32
-	FiDistAddr int32
+type TsColMap = struct {
+	FiFrom int32
+	FzCol  uintptr
 }
 
-type TWalSegment = struct {
-	FiNext  int32
-	FaIndex uintptr
-	FaPgno  uintptr
-	FnEntry int32
-	FiZero  int32
+type TAggInfo_col = struct {
+	FpTab          uintptr
+	FpCExpr        uintptr
+	FiTable        int32
+	FiMem          int32
+	FiColumn       Ti16
+	FiSorterColumn Ti16
 }
 
-type T_ht = struct {
-	Fcount uint32
-	Fchain uintptr
+type Tsqlite3_index_orderby = struct {
+	FiColumn     int32
+	Fdesc        uint8
+	F__ccgo_pad2 [3]byte
 }
 
 type Tsqlite3InitInfo = struct {
@@ -151561,10 +151563,24 @@ type TIdList_item = struct {
 	Fidx   int32
 }
 
-type Tsqlite3_index_orderby = struct {
+type T_ht = struct {
+	Fcount uint32
+	Fchain uintptr
+}
+
+type TAggInfo_func = struct {
+	FpFExpr    uintptr
+	FpFunc     uintptr
+	FiMem      int32
+	FiDistinct int32
+	FiDistAddr int32
+}
+
+type Tsqlite3_index_constraint = struct {
 	FiColumn     int32
-	Fdesc        uint8
-	F__ccgo_pad2 [3]byte
+	Fop          uint8
+	Fusable      uint8
+	FiTermOffset int32
 }
 
 type TInLoop = struct {
@@ -151576,31 +151592,18 @@ type TInLoop = struct {
 	F__ccgo_pad5 [3]byte
 }
 
-type TAggInfo_col = struct {
-	FpTab          uintptr
-	FpCExpr        uintptr
-	FiTable        int32
-	FiMem          int32
-	FiColumn       Ti16
-	FiSorterColumn Ti16
-}
-
-type Tsqlite3_index_constraint = struct {
-	FiColumn     int32
-	Fop          uint8
-	Fusable      uint8
-	FiTermOffset int32
-}
-
-type TsColMap = struct {
-	FiFrom int32
-	FzCol  uintptr
-}
-
 type Tsqlite3_index_constraint_usage = struct {
 	FargvIndex   int32
 	Fomit        uint8
 	F__ccgo_pad2 [3]byte
+}
+
+type TWalSegment = struct {
+	FiNext  int32
+	FaIndex uintptr
+	FaPgno  uintptr
+	FnEntry int32
+	FiZero  int32
 }
 
 type TMemValue = struct {
