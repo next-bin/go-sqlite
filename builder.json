@@ -3,7 +3,7 @@
 	"autotag": "$libs",
 	"autoupdate": "$libs",
 	"download": [
-		{"re": "linux", "files": [
+		{"re": ".", "files": [
 			"https://www.sqlite.org/2022/sqlite-amalgamation-3370200.zip", 
 			"https://www.sqlite.org/2022/sqlite-src-3370200.zip"
 		]}
