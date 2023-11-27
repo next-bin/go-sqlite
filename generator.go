@@ -28,6 +28,8 @@ const (
 var (
 	goos   = runtime.GOOS
 	goarch = runtime.GOARCH
+	target = fmt.Sprintf("%s/%s", goos, goarch)
+	sed    = "sed"
 	j      = fmt.Sprint(runtime.GOMAXPROCS(-1))
 )
 
@@ -98,9 +100,10 @@ func main() {
 		return
 	}
 
-	switch fmt.Sprintf("%s/%s", goos, goarch) {
-	case "freebds/amd64":
+	switch target {
+	case "freebsd/amd64":
 		os.Setenv("CC", "gcc")
+		sed = "gsed"
 	}
 	f, err := os.Open(archivePath)
 	if err != nil {
@@ -161,6 +164,12 @@ func main() {
 		if s := cc.LongDouble64Flag(goos, goarch); s != "" {
 			cflags = append(cflags, s)
 		}
+		switch target {
+		case "freebsd/amd64":
+			cflags = append(cflags,
+				"-fPIC",
+			)
+		}
 		util.MustShell(true, "sh", "-c", "go mod init example.com/libtcl8.6 ; go get modernc.org/libc@latest modernc.org/libz@latest")
 		if dev {
 			util.MustShell(true, "sh", "-c", "go work init ; go work use $GOPATH/src/modernc.org/libc $GOPATH/src/modernc.org/libz")
@@ -172,6 +181,12 @@ func main() {
 				args,
 				"-absolute-paths",
 				"-positions",
+			)
+		}
+		switch target {
+		case "freebsd/amd64":
+			args = append(args,
+				"-hide", "__fpgetround,__fpsetround,__fpsetprec,__fpsetmask,__fpgetsticky",
 			)
 		}
 		args = append(args,
@@ -203,8 +218,8 @@ func main() {
 
 	fn := fmt.Sprintf("ccgo_%s_%s.go", goos, goarch)
 	mustCopyFile(fn, filepath.Join(makeRoot, result), nil)
-	util.MustShell(true, "sed", "-i", `s/\<T__\([a-zA-Z0-9][a-zA-Z0-9_]\+\)/t__\1/g`, fn)
-	util.MustShell(true, "sed", "-i", `s/\<x_\([a-zA-Z0-9][a-zA-Z0-9_]\+\)/X\1/g`, fn)
+	util.MustShell(true, sed, "-i", `s/\<T__\([a-zA-Z0-9][a-zA-Z0-9_]\+\)/t__\1/g`, fn)
+	util.MustShell(true, sed, "-i", `s/\<x_\([a-zA-Z0-9][a-zA-Z0-9_]\+\)/X\1/g`, fn)
 	mustCopyFile(filepath.Join("internal", "tcltest", fn), filepath.Join(makeRoot, "tcltest.go"), nil)
 	util.Shell("sh", "-c", "./unconvert.sh")
 	util.MustShell(true, "go", "test", "-run", "@")
