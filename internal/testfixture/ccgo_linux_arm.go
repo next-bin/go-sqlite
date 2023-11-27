@@ -19479,22 +19479,6 @@ var _longdouble_size = int32(8)
 var _query_plan = __ccgo_ts + 8987
 
 // -:
-type TExprList_item = struct {
-	FpExpr         uintptr
-	FzEName        uintptr
-	FsortFlags     Tu8
-	F__ccgo_align3 [3]byte
-	F__ccgo12      uint8
-	Fu             struct {
-		FiConstExprReg [0]int32
-		Fx             struct {
-			FiOrderByCol Tu16
-			FiAlias      Tu16
-		}
-	}
-}
-
-// -:
 type TsColMap = struct {
 	FiFrom int32
 	FzCol  uintptr
@@ -19511,13 +19495,19 @@ type Tsqlite3InitInfo = struct {
 }
 
 // -:
-type TMemValue = struct {
-	F__ccgo_align [0]uint32
-	Fi            [0]Ti64
-	FnZero        [0]int32
-	FzPType       [0]uintptr
-	FpDef         [0]uintptr
-	Fr            float64
+type TExprList_item = struct {
+	FpExpr         uintptr
+	FzEName        uintptr
+	FsortFlags     Tu8
+	F__ccgo_align3 [3]byte
+	F__ccgo12      uint8
+	Fu             struct {
+		FiConstExprReg [0]int32
+		Fx             struct {
+			FiOrderByCol Tu16
+			FiAlias      Tu16
+		}
+	}
 }
 
 // -:
@@ -19537,6 +19527,16 @@ type Tp4union = struct {
 	FpTab     [0]uintptr
 	FxAdvance [0]uintptr
 	Fi        int32
+}
+
+// -:
+type TMemValue = struct {
+	F__ccgo_align [0]uint32
+	Fi            [0]Ti64
+	FnZero        [0]int32
+	FzPType       [0]uintptr
+	FpDef         [0]uintptr
+	Fr            float64
 }
 
 // /tmp/libsqlite3/sqlite-src-3370200/src/sqliteInt.h:2018:9:
@@ -306683,19 +306683,15 @@ func x_sqlite3_sourceid(tls *libc.TLS) (r uintptr) {
 }
 
 // -:
-type TInLoop = struct {
-	FiCur        int32
-	FaddrInTop   int32
-	FiBase       int32
-	FnPrefix     int32
-	FeEndLoopOp  Tu8
-	F__ccgo_pad5 [3]byte
-}
-
-// -:
 type T_ht = struct {
 	Fcount uint32
 	Fchain uintptr
+}
+
+// -:
+type TIdList_item = struct {
+	FzName uintptr
+	Fidx   int32
 }
 
 // -:
@@ -306708,9 +306704,13 @@ type TWalSegment = struct {
 }
 
 // -:
-type TIdList_item = struct {
-	FzName uintptr
-	Fidx   int32
+type TInLoop = struct {
+	FiCur        int32
+	FaddrInTop   int32
+	FiBase       int32
+	FnPrefix     int32
+	FeEndLoopOp  Tu8
+	F__ccgo_pad5 [3]byte
 }
 
 // -:
