@@ -112,6 +112,10 @@ func TestMain(m *testing.M) {
 			"http11.test",
 			"socket.test",
 		)
+	case "linux/riscv64":
+		skip = append(skip,
+			"binary-40.3",
+		)
 	}
 	flag.Parse()
 	if s := *oSkip; s != "" {
