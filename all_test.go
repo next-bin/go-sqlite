@@ -116,7 +116,7 @@ func TestMain(m *testing.M) {
 		skip = append(skip,
 			"binary-40.3",
 		)
-	case "linux/s390x"::
+	case "linux/s390x":
 		skip = append(skip,
 			"string-2.20.1",
 		)
