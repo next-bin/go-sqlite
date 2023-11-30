@@ -98,3 +98,9 @@ type in6_addr = struct {
 }
 
 var _in6addr_any = in6_addr{}
+
+func _fpsetround(...any) {
+}
+
+func _fpsetmask(...any) {
+}

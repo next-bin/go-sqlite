@@ -104,6 +104,8 @@ func main() {
 	case "freebsd/amd64":
 		os.Setenv("CC", "gcc")
 		sed = "gsed"
+	case "freebsd/arm64":
+		sed = "gsed"
 	}
 	f, err := os.Open(archivePath)
 	if err != nil {
@@ -190,7 +192,6 @@ func main() {
 			)
 		}
 		args = append(args,
-			"--libc", "modernc.org/libc",
 			"--prefix-enumerator=_",
 			"--prefix-external=x_",
 			"--prefix-field=F",
@@ -204,6 +205,7 @@ func main() {
 			"--prefix-undefined=_",
 			"-extended-errors",
 			"-hide", "TclpCreateProcess",
+			"-ignore-unsupported-alignment",
 			fmt.Sprintf("-I%s", ccgoInc),
 		)
 		ccgo.NewTask(goos, goarch, append(args, "-exec", "make", "-j", j, "test"), os.Stdout, os.Stderr, nil).Exec()

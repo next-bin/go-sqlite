@@ -108,3 +108,9 @@ func ___fpsetround(...any) {
 
 func ___fpsetmask(...any) {
 }
+
+func _fpsetround(...any) {
+}
+
+func _fpsetmask(...any) {
+}
