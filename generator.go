@@ -121,7 +121,6 @@ func main() {
 			config = append(config, m64Double)
 		}
 		config = append(config,
-			"--libc", "modernc.org/libc",
 			"--package-name", "libsqlite3",
 			"--prefix-enumerator=_",
 			"--prefix-external=x_",
@@ -134,6 +133,7 @@ func main() {
 			"--prefix-tagged-union=T",
 			"--prefix-typename=T",
 			"--prefix-undefined=_",
+			"-ignore-unsupported-alignment",
 
 			"-DLONGDOUBLE_TYPE=double",
 			// "-DSQLITE_DEBUG",
@@ -279,6 +279,7 @@ func main() {
 			"--prefix-typename=T",
 			"--prefix-undefined=_",
 			"-extended-errors",
+			"-ignore-unsupported-alignment",
 			fmt.Sprintf("-I%s", ccgoInc),
 
 			"-exec", "make", "-j", j, "testfixture",
