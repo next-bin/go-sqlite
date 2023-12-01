@@ -172,7 +172,7 @@ func main() {
 			fmt.Sprintf("-I%s", ccgoInc),
 		)
 		switch target {
-		case "freebsd/amd64":
+		case "freebsd/amd64", "freebsd/arm64":
 			config = append(config, "-ltcl8.6")
 		}
 		if err := ccgo.NewTask(goos, goarch, config, os.Stdout, os.Stderr, nil).Main(); err != nil {
@@ -287,7 +287,7 @@ func main() {
 			fmt.Sprintf("-I%s", ccgoInc),
 		)
 		switch target {
-		case "freebsd/amd64":
+		case "freebsd/amd64", "freebsd/arm64":
 			config = append(config, "-ltcl8.6")
 		}
 		config = append(config, "-exec", "make", "-j", j, "testfixture")
