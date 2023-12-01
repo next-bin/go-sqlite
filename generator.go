@@ -29,6 +29,7 @@ const (
 var (
 	goos   = runtime.GOOS
 	goarch = runtime.GOARCH
+	sed    = "sed"
 	j      = fmt.Sprint(runtime.GOMAXPROCS(-1))
 )
 
@@ -43,6 +44,13 @@ func main() {
 			fmt.Fprintln(os.Stderr, err)
 		}
 		return
+	}
+
+	switch target {
+	case "freebsd/amd64":
+		sed = "gsed"
+	case "freebsd/arm64":
+		sed = "gsed"
 	}
 
 	f, err := os.Open(archivePath)
