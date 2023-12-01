@@ -29,6 +29,7 @@ const (
 var (
 	goos   = runtime.GOOS
 	goarch = runtime.GOARCH
+	target = fmt.Sprintf("%s/%s", goos, goarch)
 	sed    = "sed"
 	j      = fmt.Sprint(runtime.GOMAXPROCS(-1))
 )
