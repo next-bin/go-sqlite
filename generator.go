@@ -171,6 +171,10 @@ func main() {
 			"sqlite3.c",
 			fmt.Sprintf("-I%s", ccgoInc),
 		)
+		switch target {
+		case "freebsd/amd64":
+			config = append(config, "-ltcl8.6")
+		}
 		if err := ccgo.NewTask(goos, goarch, config, os.Stdout, os.Stderr, nil).Main(); err != nil {
 			return err
 		}
@@ -281,9 +285,12 @@ func main() {
 			"-extended-errors",
 			"-ignore-unsupported-alignment",
 			fmt.Sprintf("-I%s", ccgoInc),
-
-			"-exec", "make", "-j", j, "testfixture",
 		)
+		switch target {
+		case "freebsd/amd64":
+			config = append(config, "-ltcl8.6")
+		}
+		config = append(config, "-exec", "make", "-j", j, "testfixture")
 		return ccgo.NewTask(goos, goarch, config, os.Stdout, os.Stderr, nil).Exec()
 	})
 
