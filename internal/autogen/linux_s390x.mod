@@ -7,7 +7,7 @@ require (
 	golang.org/x/sys v0.14.0
 	modernc.org/ccgo/v3 v3.16.15
 	modernc.org/ccgo/v4 v4.3.6
-	modernc.org/libc v1.34.11
+	modernc.org/libc v1.35.0
 	modernc.org/libtcl8.6 v0.2.0
 	modernc.org/libz v0.0.35
 )
