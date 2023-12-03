@@ -11,6 +11,7 @@ import (
 
 	"modernc.org/libc"
 	"modernc.org/libtcl8.6"
+	"modernc.org/libz"
 )
 
 var (
@@ -19420,6 +19421,16 @@ var _longdouble_size = int32(8)
 var _query_plan = __ccgo_ts + 8987
 
 // -:
+type Tsqlite3InitInfo = struct {
+	FnewTnum       TPgno
+	FiDb           Tu8
+	Fbusy          Tu8
+	F__ccgo_align3 [2]byte
+	F__ccgo8       uint8
+	FazInit        uintptr
+}
+
+// -:
 type TExprList_item = struct {
 	FpExpr         uintptr
 	FzEName        uintptr
@@ -19440,16 +19451,6 @@ type TExprList_item = struct {
 type TsColMap = struct {
 	FiFrom int32
 	FzCol  uintptr
-}
-
-// -:
-type Tsqlite3InitInfo = struct {
-	FnewTnum       TPgno
-	FiDb           Tu8
-	Fbusy          Tu8
-	F__ccgo_align3 [2]byte
-	F__ccgo8       uint8
-	FazInit        uintptr
 }
 
 // -:
@@ -26655,6 +26656,13 @@ func init() {
 }
 
 // -:
+type Tsqlite3_index_orderby = struct {
+	FiColumn     int32
+	Fdesc        uint8
+	F__ccgo_pad2 [3]byte
+}
+
+// -:
 type Tsqlite3_index_constraint = struct {
 	FiColumn     int32
 	Fop          uint8
@@ -26666,13 +26674,6 @@ type Tsqlite3_index_constraint = struct {
 type Tsqlite3_index_constraint_usage = struct {
 	FargvIndex   int32
 	Fomit        uint8
-	F__ccgo_pad2 [3]byte
-}
-
-// -:
-type Tsqlite3_index_orderby = struct {
-	FiColumn     int32
-	Fdesc        uint8
 	F__ccgo_pad2 [3]byte
 }
 
@@ -95698,14 +95699,14 @@ func _zipfileInflate(tls *libc.TLS, pCtx uintptr, aIn uintptr, nIn int32, nOut i
 		// /tmp/libsqlite3/sqlite-src-3370200/ext/misc/zipfile.c:959:5:
 		(*(*Tz_stream)(unsafe.Pointer(bp))).Favail_out = uint32(nOut)
 		// /tmp/libsqlite3/sqlite-src-3370200/ext/misc/zipfile.c:961:5:
-		err = libtcl8_6.XinflateInit2_(tls, bp, -int32(15), __ccgo_ts+31399, libc.Int32FromInt64(112))
+		err = libz.XinflateInit2_(tls, bp, -int32(15), __ccgo_ts+31399, libc.Int32FromInt64(112))
 		// /tmp/libsqlite3/sqlite-src-3370200/ext/misc/zipfile.c:962:5:
 		if err != m_Z_OK {
 			// /tmp/libsqlite3/sqlite-src-3370200/ext/misc/zipfile.c:963:7:
 			_zipfileCtxErrorMsg(tls, pCtx, __ccgo_ts+31403, libc.VaList(bp+120, err))
 		} else {
 			// /tmp/libsqlite3/sqlite-src-3370200/ext/misc/zipfile.c:965:7:
-			err = libtcl8_6.Xinflate(tls, bp, m_Z_NO_FLUSH)
+			err = libz.Xinflate(tls, bp, m_Z_NO_FLUSH)
 			// /tmp/libsqlite3/sqlite-src-3370200/ext/misc/zipfile.c:966:7:
 			if err != int32(m_Z_STREAM_END) {
 				// /tmp/libsqlite3/sqlite-src-3370200/ext/misc/zipfile.c:967:9:
@@ -95720,7 +95721,7 @@ func _zipfileInflate(tls *libc.TLS, pCtx uintptr, aIn uintptr, nIn int32, nOut i
 		// /tmp/libsqlite3/sqlite-src-3370200/ext/misc/zipfile.c:973:5:
 		x_sqlite3_free(tls, aRes)
 		// /tmp/libsqlite3/sqlite-src-3370200/ext/misc/zipfile.c:974:5:
-		libtcl8_6.XinflateEnd(tls, bp)
+		libz.XinflateEnd(tls, bp)
 	}
 }
 
@@ -95758,9 +95759,9 @@ func _zipfileDeflate(tls *libc.TLS, aIn uintptr, nIn int32, ppOut uintptr, pnOut
 	// /tmp/libsqlite3/sqlite-src-3370200/ext/misc/zipfile.c:1002:3:
 	(*(*Tz_stream)(unsafe.Pointer(bp))).Favail_in = uint32(nIn)
 	// /tmp/libsqlite3/sqlite-src-3370200/ext/misc/zipfile.c:1003:3:
-	libtcl8_6.XdeflateInit2_(tls, bp, int32(9), int32(m_Z_DEFLATED), -int32(15), int32(8), m_Z_DEFAULT_STRATEGY, __ccgo_ts+31399, libc.Int32FromInt64(112))
+	libz.XdeflateInit2_(tls, bp, int32(9), int32(m_Z_DEFLATED), -int32(15), int32(8), m_Z_DEFAULT_STRATEGY, __ccgo_ts+31399, libc.Int32FromInt64(112))
 	// /tmp/libsqlite3/sqlite-src-3370200/ext/misc/zipfile.c:1005:3:
-	nAlloc = int64(libtcl8_6.XdeflateBound(tls, bp, uint64(nIn)))
+	nAlloc = int64(libz.XdeflateBound(tls, bp, uint64(nIn)))
 	// /tmp/libsqlite3/sqlite-src-3370200/ext/misc/zipfile.c:1006:3:
 	aOut = x_sqlite3_malloc64(tls, uint64(nAlloc))
 	// /tmp/libsqlite3/sqlite-src-3370200/ext/misc/zipfile.c:1007:3:
@@ -95773,7 +95774,7 @@ func _zipfileDeflate(tls *libc.TLS, aIn uintptr, nIn int32, ppOut uintptr, pnOut
 		// /tmp/libsqlite3/sqlite-src-3370200/ext/misc/zipfile.c:1012:5:
 		(*(*Tz_stream)(unsafe.Pointer(bp))).Favail_out = uint32(nAlloc)
 		// /tmp/libsqlite3/sqlite-src-3370200/ext/misc/zipfile.c:1013:5:
-		res = libtcl8_6.Xdeflate(tls, bp, int32(m_Z_FINISH))
+		res = libz.Xdeflate(tls, bp, int32(m_Z_FINISH))
 		// /tmp/libsqlite3/sqlite-src-3370200/ext/misc/zipfile.c:1014:5:
 		if res == int32(m_Z_STREAM_END) {
 			// /tmp/libsqlite3/sqlite-src-3370200/ext/misc/zipfile.c:1015:7:
@@ -95789,7 +95790,7 @@ func _zipfileDeflate(tls *libc.TLS, aIn uintptr, nIn int32, ppOut uintptr, pnOut
 			rc = int32(m_SQLITE_ERROR)
 		}
 		// /tmp/libsqlite3/sqlite-src-3370200/ext/misc/zipfile.c:1022:5:
-		libtcl8_6.XdeflateEnd(tls, bp)
+		libz.XdeflateEnd(tls, bp)
 	}
 	// /tmp/libsqlite3/sqlite-src-3370200/ext/misc/zipfile.c:1025:3:
 	return rc
@@ -96940,7 +96941,7 @@ func _zipfileUpdate(tls *libc.TLS, pVtab uintptr, nVal int32, apVal uintptr, pRo
 						}
 					}
 					// /tmp/libsqlite3/sqlite-src-3370200/ext/misc/zipfile.c:1626:11:
-					iCrc32 = uint32(libtcl8_6.Xcrc32(tls, uint64(0), aIn, uint32(nIn)))
+					iCrc32 = uint32(libz.Xcrc32(tls, uint64(0), aIn, uint32(nIn)))
 				}
 			}
 		}
@@ -97679,7 +97680,7 @@ func x_zipfileStep(tls *libc.TLS, pCtx uintptr, nVal int32, apVal uintptr) {
 		nData = v1
 		szUncompressed = v1
 		// /tmp/libsqlite3/sqlite-src-3370200/ext/misc/zipfile.c:2020:5:
-		iCrc32 = uint32(libtcl8_6.Xcrc32(tls, uint64(0), aData, uint32(nData)))
+		iCrc32 = uint32(libz.Xcrc32(tls, uint64(0), aData, uint32(nData)))
 		// /tmp/libsqlite3/sqlite-src-3370200/ext/misc/zipfile.c:2021:5:
 		if iMethod < 0 || iMethod == int32(8) {
 			// /tmp/libsqlite3/sqlite-src-3370200/ext/misc/zipfile.c:2022:11:
@@ -307104,12 +307105,23 @@ func x_sqlite3_sourceid(tls *libc.TLS) (r uintptr) {
 }
 
 // -:
-type TWalSegment = struct {
-	FiNext  int32
-	FaIndex uintptr
-	FaPgno  uintptr
-	FnEntry int32
-	FiZero  int32
+type TAggInfo_func = struct {
+	FpFExpr      uintptr
+	FpFunc       uintptr
+	FiMem        int32
+	FiDistinct   int32
+	FiDistAddr   int32
+	F__ccgo_pad5 [4]byte
+}
+
+// -:
+type TInLoop = struct {
+	FiCur        int32
+	FaddrInTop   int32
+	FiBase       int32
+	FnPrefix     int32
+	FeEndLoopOp  Tu8
+	F__ccgo_pad5 [3]byte
 }
 
 // -:
@@ -307124,29 +307136,12 @@ type TAggInfo_col = struct {
 }
 
 // -:
-type TAggInfo_func = struct {
-	FpFExpr      uintptr
-	FpFunc       uintptr
-	FiMem        int32
-	FiDistinct   int32
-	FiDistAddr   int32
-	F__ccgo_pad5 [4]byte
-}
-
-// -:
-type T_ht = struct {
-	Fcount uint32
-	Fchain uintptr
-}
-
-// -:
-type TInLoop = struct {
-	FiCur        int32
-	FaddrInTop   int32
-	FiBase       int32
-	FnPrefix     int32
-	FeEndLoopOp  Tu8
-	F__ccgo_pad5 [3]byte
+type TWalSegment = struct {
+	FiNext  int32
+	FaIndex uintptr
+	FaPgno  uintptr
+	FnEntry int32
+	FiZero  int32
 }
 
 // -:
@@ -307154,6 +307149,12 @@ type TIdList_item = struct {
 	FzName       uintptr
 	Fidx         int32
 	F__ccgo_pad2 [4]byte
+}
+
+// -:
+type T_ht = struct {
+	Fcount uint32
+	Fchain uintptr
 }
 
 func __ccgo_fp(f interface{}) uintptr {
