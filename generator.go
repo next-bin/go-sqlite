@@ -93,6 +93,10 @@ func main() {
 		if s := cc.LongDouble64Flag(goos, goarch); s != "" {
 			cflags = append(cflags, s)
 		}
+		switch target {
+		case "darwin/arm64":
+			cflags = append(cflags, "-U__ARM_FEATURE_CRC32")
+		}
 		util.MustShell(true, "sh", "-c", "go mod init example.com/libz ; go get modernc.org/libc@latest")
 		if dev {
 			util.MustShell(true, "sh", "-c", "go work init ; go work use $GOPATH/src/modernc.org/libc")
@@ -107,7 +111,6 @@ func main() {
 			)
 		}
 		args = append(args,
-			"--libc", "modernc.org/libc",
 			"--prefix-enumerator=_",
 			"--prefix-external=x_",
 			"--prefix-field=F",
@@ -120,6 +123,7 @@ func main() {
 			"--prefix-typename=T",
 			"--prefix-undefined=_",
 			"-extended-errors",
+			"-ignore-unsupported-alignment",
 		)
 		if err := ccgo.NewTask(goos, goarch, append(args, "--package-name=main", "-exec", "make", "-j", j, "libz.a", "example64", "minigzip64"), os.Stdout, os.Stderr, nil).Exec(); err != nil {
 			fail(1, "%v", err)
