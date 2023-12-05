@@ -1,4 +1,4 @@
-// Code generated for linux/386 by 'gcc --libc modernc.org/libc --prefix-enumerator=_ --prefix-external=x_ --prefix-field=F --prefix-macro=m_ --prefix-static-internal=_ --prefix-static-none=_ --prefix-tagged-enum=_ --prefix-tagged-struct=T --prefix-tagged-union=T --prefix-typename=T --prefix-undefined=_ -extended-errors --package-name=main -DNDEBUG -mlong-double-64 -D_LARGEFILE64_SOURCE=1 -DHAVE_HIDDEN -o minigzip64.go minigzip64.o.go -L. libz.a', DO NOT EDIT.
+// Code generated for linux/386 by 'gcc --prefix-enumerator=_ --prefix-external=x_ --prefix-field=F --prefix-macro=m_ --prefix-static-internal=_ --prefix-static-none=_ --prefix-tagged-enum=_ --prefix-tagged-struct=T --prefix-tagged-union=T --prefix-typename=T --prefix-undefined=_ -extended-errors -ignore-unsupported-alignment --package-name=main -DNDEBUG -mlong-double-64 -D_LARGEFILE64_SOURCE=1 -DHAVE_HIDDEN -o minigzip64.go minigzip64.o.go -L. libz.a', DO NOT EDIT.
 
 //go:build linux && 386
 // +build linux,386
@@ -48,6 +48,13 @@ type Tptrdiff_t = int32
 type Tsize_t = uint32
 
 type Twchar_t = int32
+
+type Tmax_align_t = struct {
+	F__ccgo_align     [0]uint32
+	F__max_align_ll   int64
+	F__max_align_ld   float64
+	F__max_align_f128 [2]uint64
+}
 
 type Tz_size_t = uint32
 
