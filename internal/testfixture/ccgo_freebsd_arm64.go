@@ -300058,6 +300058,23 @@ func x_sqlite3_sourceid(tls *libc.TLS) (r uintptr) {
 }
 
 // -:
+type TIdList_item = struct {
+	FzName       uintptr
+	Fidx         int32
+	F__ccgo_pad2 [4]byte
+}
+
+// -:
+type TAggInfo_func = struct {
+	FpFExpr      uintptr
+	FpFunc       uintptr
+	FiMem        int32
+	FiDistinct   int32
+	FiDistAddr   int32
+	F__ccgo_pad5 [4]byte
+}
+
+// -:
 type TAggInfo_col = struct {
 	FpTab          uintptr
 	FpCExpr        uintptr
@@ -300079,29 +300096,12 @@ type TInLoop = struct {
 }
 
 // -:
-type TAggInfo_func = struct {
-	FpFExpr      uintptr
-	FpFunc       uintptr
-	FiMem        int32
-	FiDistinct   int32
-	FiDistAddr   int32
-	F__ccgo_pad5 [4]byte
-}
-
-// -:
 type TWalSegment = struct {
 	FiNext  int32
 	FaIndex uintptr
 	FaPgno  uintptr
 	FnEntry int32
 	FiZero  int32
-}
-
-// -:
-type TIdList_item = struct {
-	FzName       uintptr
-	Fidx         int32
-	F__ccgo_pad2 [4]byte
 }
 
 // -:
