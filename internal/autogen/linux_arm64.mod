@@ -4,7 +4,7 @@ go 1.20
 
 require (
 	modernc.org/ccgo/v3 v3.16.15
-	modernc.org/ccgo/v4 v4.3.6
+	modernc.org/ccgo/v4 v4.4.0
 	modernc.org/libc v1.36.0
 	modernc.org/libz v0.0.35
 )
@@ -20,7 +20,7 @@ require (
 	golang.org/x/tools v0.15.0 // indirect
 	lukechampine.com/uint128 v1.2.0 // indirect
 	modernc.org/cc/v3 v3.41.0 // indirect
-	modernc.org/cc/v4 v4.15.1 // indirect
+	modernc.org/cc/v4 v4.16.0 // indirect
 	modernc.org/gc/v2 v2.3.0 // indirect
 	modernc.org/mathutil v1.6.0 // indirect
 	modernc.org/memory v1.7.2 // indirect
