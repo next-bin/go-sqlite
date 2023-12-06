@@ -183797,17 +183797,6 @@ func _FreeChannelInternalRep(tls *libc.TLS, objPtr uintptr) {
 	XTclpFree(tls, resPtr)
 }
 
-type TChannel1 = struct {
-	Fstate        uintptr
-	FinstanceData TClientData
-	FtypePtr      uintptr
-	FdownChanPtr  uintptr
-	FupChanPtr    uintptr
-	FinQueueHead  uintptr
-	FinQueueTail  uintptr
-	FrefCount     int32
-}
-
 type TChannelState1 = struct {
 	FchannelName         uintptr
 	Fflags               int32
@@ -183857,6 +183846,17 @@ type TCopyState1 = struct {
 	FcmdPtr     uintptr
 	FbufSize    int32
 	Fbuffer     [1]int8
+}
+
+type TChannel1 = struct {
+	Fstate        uintptr
+	FinstanceData TClientData
+	FtypePtr      uintptr
+	FdownChanPtr  uintptr
+	FupChanPtr    uintptr
+	FinQueueHead  uintptr
+	FinQueueTail  uintptr
+	FrefCount     int32
 }
 
 const m_O_RDONLY = 0
