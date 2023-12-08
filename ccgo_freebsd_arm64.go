@@ -1,4 +1,4 @@
-// Code generated for freebsd/arm64 by 'generator --libc modernc.org/libc --prefix-enumerator=_ --prefix-external=x_ --prefix-field=F --prefix-macro=m_ --prefix-static-internal=_ --prefix-static-none=_ --prefix-tagged-enum=_ --prefix-tagged-struct=T --prefix-tagged-union=T --prefix-typename=T --prefix-undefined=_ -extended-errors --package-name=libz -o libz.a.go libz.a', DO NOT EDIT.
+// Code generated for freebsd/arm64 by 'generator --prefix-enumerator=_ --prefix-external=x_ --prefix-field=F --prefix-macro=m_ --prefix-static-internal=_ --prefix-static-none=_ --prefix-tagged-enum=_ --prefix-tagged-struct=T --prefix-tagged-union=T --prefix-typename=T --prefix-undefined=_ -extended-errors -ignore-unsupported-alignment --package-name=libz -o libz.a.go libz.a', DO NOT EDIT.
 
 //go:build freebsd && arm64
 // +build freebsd,arm64
@@ -47,28 +47,6 @@ type t__int64_t = int64
 
 type t__uint64_t = uint64
 
-type t__clock_t = int32
-
-type t__critical_t = int64
-
-type t__double_t = float64
-
-type t__float_t = float32
-
-type t__intfptr_t = int64
-
-type t__intmax_t = int64
-
-type t__intptr_t = int64
-
-type t__int_fast8_t = int32
-
-type t__int_fast16_t = int32
-
-type t__int_fast32_t = int32
-
-type t__int_fast64_t = int64
-
 type t__int_least8_t = int8
 
 type t__int_least16_t = int16
@@ -77,31 +55,7 @@ type t__int_least32_t = int32
 
 type t__int_least64_t = int64
 
-type t__ptrdiff_t = int64
-
-type t__register_t = int64
-
-type t__segsz_t = int64
-
-type t__size_t = uint64
-
-type t__ssize_t = int64
-
-type t__time_t = int64
-
-type t__uintfptr_t = uint64
-
-type t__uintmax_t = uint64
-
-type t__uintptr_t = uint64
-
-type t__uint_fast8_t = uint32
-
-type t__uint_fast16_t = uint32
-
-type t__uint_fast32_t = uint32
-
-type t__uint_fast64_t = uint64
+type t__intmax_t = int64
 
 type t__uint_least8_t = uint8
 
@@ -111,13 +65,59 @@ type t__uint_least32_t = uint32
 
 type t__uint_least64_t = uint64
 
-type t__u_register_t = uint64
+type t__uintmax_t = uint64
+
+type t__intptr_t = int64
+
+type t__intfptr_t = int64
+
+type t__uintptr_t = uint64
+
+type t__uintfptr_t = uint64
 
 type t__vm_offset_t = uint64
 
-type t__vm_paddr_t = uint64
-
 type t__vm_size_t = uint64
+
+type t__size_t = uint64
+
+type t__ssize_t = int64
+
+type t__ptrdiff_t = int64
+
+type t__clock_t = int32
+
+type t__critical_t = int64
+
+type t__double_t = float64
+
+type t__float_t = float32
+
+type t__int_fast8_t = int32
+
+type t__int_fast16_t = int32
+
+type t__int_fast32_t = int32
+
+type t__int_fast64_t = int64
+
+type t__register_t = int64
+
+type t__segsz_t = int64
+
+type t__time_t = int64
+
+type t__uint_fast8_t = uint32
+
+type t__uint_fast16_t = uint32
+
+type t__uint_fast32_t = uint32
+
+type t__uint_fast64_t = uint64
+
+type t__u_register_t = uint64
+
+type t__vm_paddr_t = uint64
 
 type T___wchar_t = uint32
 
@@ -156,6 +156,8 @@ type t__off_t = int64
 type t__off64_t = int64
 
 type t__pid_t = int32
+
+type t__sbintime_t = int64
 
 type t__rlim_t = int64
 
@@ -443,6 +445,8 @@ type Tvm_pindex_t = uint64
 type Tvm_size_t = uint64
 
 type Trman_res_t = uint64
+
+type Tsyscallarg_t = int64
 
 type t__sigset_t = struct {
 	F__bits [4]t__uint32_t
@@ -21771,6 +21775,11 @@ type t__oflock = struct {
 	Fl_whence int16
 }
 
+type Tspacectl_range = struct {
+	Fr_offset Toff_t
+	Fr_len    Toff_t
+}
+
 type Tgz_state = struct {
 	Fx        TgzFile_s
 	Fmode     int32
@@ -23747,8 +23756,6 @@ func Xgzputs(tls *libc.TLS, file TgzFile, s uintptr) (r int32) {
  * LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY
  * OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF
  * SUCH DAMAGE.
- *
- * $FreeBSD$
  */
 
 // C documentation
