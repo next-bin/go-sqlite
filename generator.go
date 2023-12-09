@@ -47,7 +47,7 @@ func main() {
 	}
 
 	switch goos {
-	case "freebsd":
+	case "darwin", "freebsd", "openbsd":
 		sed = "gsed"
 	}
 
