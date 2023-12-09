@@ -9,7 +9,7 @@ require (
 	modernc.org/ccgo/v4 v4.6.0
 	modernc.org/libc v1.37.0
 	modernc.org/libtcl8.6 v0.2.1
-	modernc.org/libz v0.0.35
+	modernc.org/libz v0.1.1
 )
 
 require (
