@@ -179,6 +179,9 @@ func TestMain(m *testing.M) {
 		skip = append(skip,
 			"string-2.20.1",
 		)
+		notFiles = append(notFiles,
+			"socket.test",
+		)
 	case "openbsd/amd64":
 		skip = append(skip,
 			"Tcl_Main-1.3",
