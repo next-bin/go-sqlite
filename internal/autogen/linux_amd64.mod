@@ -6,8 +6,8 @@ require (
 	github.com/otiai10/copy v1.14.0
 	golang.org/x/sys v0.14.0
 	modernc.org/ccgo/v3 v3.16.15
-	modernc.org/ccgo/v4 v4.6.0
-	modernc.org/libc v1.37.0
+	modernc.org/ccgo/v4 v4.6.1
+	modernc.org/libc v1.37.1
 	modernc.org/libtcl8.6 v0.2.2
 	modernc.org/libz v0.1.1
 )
