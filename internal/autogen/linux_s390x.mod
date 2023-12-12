@@ -6,10 +6,10 @@ require (
 	github.com/otiai10/copy v1.14.0
 	golang.org/x/sys v0.14.0
 	modernc.org/ccgo/v3 v3.16.15
-	modernc.org/ccgo/v4 v4.3.6
-	modernc.org/libc v1.35.0
-	modernc.org/libtcl8.6 v0.2.1
-	modernc.org/libz v0.0.35
+	modernc.org/ccgo/v4 v4.6.1
+	modernc.org/libc v1.37.1
+	modernc.org/libtcl8.6 v0.2.2
+	modernc.org/libz v0.1.1
 )
 
 require (
@@ -23,7 +23,7 @@ require (
 	golang.org/x/tools v0.15.0 // indirect
 	lukechampine.com/uint128 v1.2.0 // indirect
 	modernc.org/cc/v3 v3.41.0 // indirect
-	modernc.org/cc/v4 v4.15.1 // indirect
+	modernc.org/cc/v4 v4.16.0 // indirect
 	modernc.org/gc/v2 v2.3.0 // indirect
 	modernc.org/mathutil v1.6.0 // indirect
 	modernc.org/memory v1.7.2 // indirect
