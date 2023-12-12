@@ -1,11 +1,8 @@
-// Copyright 2023 The libtcl-go Authors. All rights reserved.
+// Copyright 2023 The Tcl Authors. All rights reserved.
 // Use of the source code is governed by a BSD-style
 // license that can be found in the LICENSE file.
 
-//go:generate go run generator.go
-
-// Package libtcl8.6 is a ccgo/v4 version the Tool Command Language (Tcl).
-package libtcl8_6 // import "modernc.org/libtcl8_6"
+package main
 
 import (
 	"fmt"
@@ -49,7 +46,7 @@ func _TclpCreateProcess(tls *libc.TLS, interp uintptr, argc int32, argv uintptr,
 		args = append(args, libc.GoString(p))
 	}
 	if len(args) == 0 {
-		panic(todo(""))
+		panic("TODO")
 	}
 
 	args0, err := exec.LookPath(args[0])
@@ -57,12 +54,12 @@ func _TclpCreateProcess(tls *libc.TLS, interp uintptr, argc int32, argv uintptr,
 		*(*int32)(unsafe.Pointer(libc.X__errno_location(tls))) = libc.ENOENT
 		s, err := libc.CString(fmt.Sprintf("couldn't execute \"%.150s\"", args[0]))
 		if err != nil {
-			panic(todo(""))
+			panic("TODO")
 		}
 
 		defer libc.Xfree(tls, s)
 
-		XTcl_SetObjResult(tls, interp, XTcl_ObjPrintf(tls, uintptr(unsafe.Pointer(&createProcessMsg[0])), libc.VaList(bp, s, XTcl_PosixError(tls, interp))))
+		x_Tcl_SetObjResult(tls, interp, x_Tcl_ObjPrintf(tls, uintptr(unsafe.Pointer(&createProcessMsg[0])), libc.VaList(bp, s, x_Tcl_PosixError(tls, interp))))
 		return m_TCL_ERROR
 	}
 
@@ -83,8 +80,7 @@ func _TclpCreateProcess(tls *libc.TLS, interp uintptr, argc int32, argv uintptr,
 	}
 	pid, err := syscall.ForkExec(args0, args, attr)
 	if err != nil {
-		trc("TclpCreateProcess(%#x, %d, %q, %v, %v, %v, %#x): %v", interp, len(args), args, inputFile, outputFile, errorFile, pidPtr, err)
-		panic(todo(""))
+		panic("TODO")
 	}
 
 	*(*uintptr)(unsafe.Pointer(pidPtr)) = uintptr(pid)
@@ -103,42 +99,13 @@ type in6_addr = struct {
 
 var _in6addr_any = in6_addr{}
 
+
 func ___fpsetround(...any) {
-}
+} 
 
 func ___fpsetmask(...any) {
-}
-
-func _fpsetround(...any) {
-}
-
-func _fpsetmask(...any) {
-}
+} 
 
 func ___swap16md(t *libc.TLS, x uint16) uint16 {
-	return libc.X__builtin_bswap16(t, x)
-}
-
-// __header_always_inline int
-// __darwin_check_fd_set(int _a, const void *_b)
-// {
-// #ifdef __clang__
-// #pragma clang diagnostic push
-// #pragma clang diagnostic ignored "-Wunguarded-availability-new"
-// #endif
-// 	if ((uintptr_t)&__darwin_check_fd_set_overflow != (uintptr_t) 0) {
-// #if defined(_DARWIN_UNLIMITED_SELECT) || defined(_DARWIN_C_SOURCE)
-// 		return __darwin_check_fd_set_overflow(_a, _b, 1);
-// #else
-// 		return __darwin_check_fd_set_overflow(_a, _b, 0);
-// #endif
-// 	} else {
-// 		return 1;
-// 	}
-// #ifdef __clang__
-// #pragma clang diagnostic pop
-// #endif
-// }
-func ___darwin_check_fd_set(t *libc.TLS, a int32, b uintptr) int32 {
-	return 1
+	return libc.X__swap16md(t, x)
 }

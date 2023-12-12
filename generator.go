@@ -104,7 +104,7 @@ func main() {
 	case "freebsd/amd64":
 		os.Setenv("CC", "gcc")
 		sed = "gsed"
-	case "freebsd/arm64":
+	case "freebsd/arm64", "openbsd/amd64", "darwin/amd64", "darwin/arm64":
 		sed = "gsed"
 	}
 	f, err := os.Open(archivePath)
@@ -159,9 +159,11 @@ func main() {
 	util.MustInDir(true, makeRoot, func() (err error) {
 		cflags := []string{
 			// "-DTCL_MEM_DEBUG", //TODO-
+			"-DNDEBUG",
+			"-UHAVE_COPYFILE",
 			"-UHAVE_CPUID",
 			"-UHAVE_FTS",
-			"-DNDEBUG",
+			"-UHAVE_TERMIOS_H",
 		}
 		if s := cc.LongDouble64Flag(goos, goarch); s != "" {
 			cflags = append(cflags, s)
@@ -176,7 +178,7 @@ func main() {
 		if dev {
 			util.MustShell(true, "sh", "-c", "go work init ; go work use $GOPATH/src/modernc.org/libc $GOPATH/src/modernc.org/libz")
 		}
-		util.MustShell(true, "sh", "-c", fmt.Sprintf("CFLAGS='%s' ./configure --disable-threads --disable-shared --disable-load", strings.Join(cflags, " ")))
+		util.MustShell(true, "sh", "-c", fmt.Sprintf("CFLAGS='%s' ./configure --disable-threads --disable-shared --disable-load --disable-corefoundation", strings.Join(cflags, " ")))
 		args := []string{os.Args[0]}
 		if dev {
 			args = append(
@@ -189,6 +191,14 @@ func main() {
 		case "freebsd/amd64":
 			args = append(args,
 				"-hide", "__fpgetround,__fpsetround,__fpsetprec,__fpsetmask,__fpgetsticky",
+			)
+		case "openbsd/amd64":
+			args = append(args,
+				"-hide", "__swap16md,__swap32md,__swap64md",
+			)
+		case "darwin/amd64", "darwin/arm64":
+			args = append(args,
+				"-hide", "__darwin_check_fd_set",
 			)
 		}
 		args = append(args,
@@ -209,7 +219,12 @@ func main() {
 			fmt.Sprintf("-I%s", ccgoInc),
 		)
 		ccgo.NewTask(goos, goarch, append(args, "-exec", "make", "-j", j, "test"), os.Stdout, os.Stderr, nil).Exec()
-		return ccgo.NewTask(goos, goarch, append(args, "-o", result, "--package-name", "libtcl8_6", "-ignore-link-errors", "libtcl8.6.a", "-lz"), os.Stdout, os.Stderr, nil).Main()
+		switch target {
+		case "openbsd/amd64":
+			return ccgo.NewTask(goos, goarch, append(args, "-o", result, "--package-name", "libtcl8_6", "-ignore-link-errors", "libtcl86.a", "-lz"), os.Stdout, os.Stderr, nil).Main()
+		default:
+			return ccgo.NewTask(goos, goarch, append(args, "-o", result, "--package-name", "libtcl8_6", "-ignore-link-errors", "libtcl8.6.a", "-lz"), os.Stdout, os.Stderr, nil).Main()
+		}
 	})
 
 	mustCopyFile(filepath.Join("include", goos, goarch, "tcl.h"), filepath.Join(libRoot, "generic", "tcl.h"), nil)
