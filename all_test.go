@@ -147,7 +147,7 @@ func TestTclTest(t *testing.T) {
 	var out []byte
 	util.InDir(tmpDir, func() error {
 		if out, err = util.Shell("testfixture", args...); err != nil {
-			t.Logf("fail: %v", err)
+			t.Errorf("fail: %v", err)
 		}
 		return nil
 	})
