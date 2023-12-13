@@ -29938,7 +29938,7 @@ func _writeJournalHdr(tls *libc.TLS, pPager uintptr) (r int32) {
 	rc = m_SQLITE_OK                                              /* Return code */
 	zHeader = (*TPager)(unsafe.Pointer(pPager)).FpTmpSpace        /* Temporary space used to build header */
 	nHeader = uint32((*TPager)(unsafe.Pointer(pPager)).FpageSize) /* Loop counter */
-	_ = libc.Int32FromInt32(0) /* Journal file must be open. */
+	_ = libc.Int32FromInt32(0)                                    /* Journal file must be open. */
 	if nHeader > (*TPager)(unsafe.Pointer(pPager)).FsectorSize {
 		nHeader = (*TPager)(unsafe.Pointer(pPager)).FsectorSize
 	}
@@ -30064,7 +30064,7 @@ func _readJournalHdr(tls *libc.TLS, pPager uintptr, isHot int32, journalSize Ti6
 	var _ /* iPageSize at bp+8 */ Tu32
 	var _ /* iSectorSize at bp+12 */ Tu32
 	_, _, _, _, _, _, _, _, _, _ = iHdrOff, rc, v1, v2, v3, v4, v5, v6, v7, v8 /* Offset of journal header being read */
-	_ = libc.Int32FromInt32(0) /* Journal file must be open. */
+	_ = libc.Int32FromInt32(0)                                                 /* Journal file must be open. */
 	/* Advance Pager.journalOff to the start of the next sector. If the
 	 ** journal file is too small for there to be a header stored at this
 	 ** point, return SQLITE_DONE.
@@ -30788,10 +30788,10 @@ func _pager_playback_one_page(tls *libc.TLS, pPager uintptr, pOffset uintptr, pD
 	var _ /* pPg at bp+0 */ uintptr
 	var _ /* pgno at bp+8 */ TPgno
 	_, _, _, _, _, _, _, _, _, _, _ = aData, isSynced, jfd, ofst, pData, rc, v1, v2, v3, p4, p5 /* True if journal page is synced */
-	_ = libc.Int32FromInt32(0) /* isMainJrnl is 0 or 1 */
-	_ = libc.Int32FromInt32(0) /* isSavepnt is 0 or 1 */
-	_ = libc.Int32FromInt32(0) /* pDone always used on sub-journals */
-	_ = libc.Int32FromInt32(0) /* pDone never used on non-savepoint */
+	_ = libc.Int32FromInt32(0)                                                                  /* isMainJrnl is 0 or 1 */
+	_ = libc.Int32FromInt32(0)                                                                  /* isSavepnt is 0 or 1 */
+	_ = libc.Int32FromInt32(0)                                                                  /* pDone always used on sub-journals */
+	_ = libc.Int32FromInt32(0)                                                                  /* pDone never used on non-savepoint */
 	aData = (*TPager)(unsafe.Pointer(pPager)).FpTmpSpace
 	_ = libc.Int32FromInt32(0) /* Temp storage must have already been allocated */
 	_ = libc.Int32FromInt32(0)
@@ -31505,7 +31505,7 @@ func _readDbPage(tls *libc.TLS, pPg uintptr) (r int32) {
 	_, _, _, _ = dbFileVers, iOffset, pPager, rc
 	pPager = (*TPgHdr)(unsafe.Pointer(pPg)).FpPager /* Pager object associated with page pPg */
 	rc = m_SQLITE_OK                                /* Return code */
-	*(*Tu32)(unsafe.Pointer(bp)) = uint32(0) /* Frame of WAL containing pgno */
+	*(*Tu32)(unsafe.Pointer(bp)) = uint32(0)        /* Frame of WAL containing pgno */
 	_ = libc.Int32FromInt32(0)
 	_ = libc.Int32FromInt32(0)
 	if (*TPager)(unsafe.Pointer(pPager)).FpWal != uintptr(0) {
@@ -38608,7 +38608,7 @@ func _walTryBeginRead(tls *libc.TLS, pWal uintptr, pChanged uintptr, useWal int3
 	var pInfo uintptr
 	_, _, _, _, _, _, _, _, _, _, _ = i, mxFrame, mxI, mxReadMark, nDelay, pInfo, rc, thisMark, v1, v4, v5 /* Loop counter */
 	rc = m_SQLITE_OK                                                                                       /* Wal frame to lock to */
-	_ = libc.Int32FromInt32(0) /* Not currently locked */
+	_ = libc.Int32FromInt32(0)                                                                             /* Not currently locked */
 	/* useWal may only be set for read/write connections */
 	_ = libc.Int32FromInt32(0)
 	/* Take steps to avoid spinning forever if there is a protocol error.
@@ -72639,8 +72639,8 @@ func _lookupName(tls *libc.TLS, pParse uintptr, zDb uintptr, zTab uintptr, zCol 
 	pSchema = uintptr(0)                                                                                                                                                                                                                                                                        /* Schema of the expression */
 	eNewExprOp = int32(m_TK_COLUMN)                                                                                                                                                                                                                                                             /* New value for pExpr->op on success */
 	pTab = uintptr(0)                                                                                                                                                                                                                                                                           /* A column of pTab */
-	_ = libc.Int32FromInt32(0) /* the name context cannot be NULL. */
-	_ = libc.Int32FromInt32(0) /* The Z in X.Y.Z cannot be NULL */
+	_ = libc.Int32FromInt32(0)                                                                                                                                                                                                                                                                  /* the name context cannot be NULL. */
+	_ = libc.Int32FromInt32(0)                                                                                                                                                                                                                                                                  /* The Z in X.Y.Z cannot be NULL */
 	_ = libc.Int32FromInt32(0)
 	/* Initialize the node to no-match */
 	(*TExpr)(unsafe.Pointer(pExpr)).FiTable = -int32(1)
@@ -84165,7 +84165,7 @@ func _statInit(tls *libc.TLS, context uintptr, argc int32, argv uintptr) {
 	var db, p uintptr
 	var n, nCol, nColUp, nKeyCol int32
 	_, _, _, _, _, _ = db, n, nCol, nColUp, nKeyCol, p /* Bytes of space to allocate */
-	db = Xsqlite3_context_db_handle(tls, context)     /* Database connection */
+	db = Xsqlite3_context_db_handle(tls, context)      /* Database connection */
 	/* Decode the three function arguments */
 	_ = argc
 	nCol = Xsqlite3_value_int(tls, *(*uintptr)(unsafe.Pointer(argv)))
@@ -90294,7 +90294,7 @@ func _sqlite3RefillIndex(tls *libc.TLS, pParse uintptr, pIndex uintptr, memRootP
 func _sqlite3AllocateIndexObject(tls *libc.TLS, db uintptr, nCol Ti16, nExtra int32, ppExtra uintptr) (r uintptr) {
 	var nByte int32
 	var p, pExtra uintptr
-	_, _, _ = nByte, p, pExtra /* Bytes of space for Index object + arrays */
+	_, _, _ = nByte, p, pExtra                                                                                                                                                                                                                                                                                                                              /* Bytes of space for Index object + arrays */
 	nByte = int32((libc.Uint64FromInt64(112)+libc.Uint64FromInt32(7))&uint64(^libc.Int32FromInt32(7)) + (uint64(8)*uint64(uint64(nCol))+uint64(7))&uint64(^libc.Int32FromInt32(7)) + (uint64(2)*uint64(int32(int32(nCol))+libc.Int32FromInt32(1))+uint64(2)*uint64(uint64(nCol))+uint64(1)*uint64(uint64(nCol))+uint64(7))&uint64(^libc.Int32FromInt32(7))) /* Index.aSortOrder */
 	p = _sqlite3DbMallocZero(tls, db, uint64(nByte+nExtra))
 	if p != 0 {
@@ -92091,7 +92091,7 @@ func _reindexDatabases(tls *libc.TLS, pParse uintptr, zColl uintptr) {
 	var iDb int32
 	_, _, _, _, _ = db, iDb, k, pDb, pTab      /* The database index number */
 	db = (*TParse)(unsafe.Pointer(pParse)).Fdb /* A table in the database */
-	_ = libc.Int32FromInt32(0) /* Needed for schema access */
+	_ = libc.Int32FromInt32(0)                 /* Needed for schema access */
 	iDb = 0
 	pDb = (*Tsqlite3)(unsafe.Pointer(db)).FaDb
 	for {
@@ -98758,7 +98758,7 @@ func _autoIncBegin(tls *libc.TLS, pParse uintptr, iDb int32, pTab uintptr) (r in
 			v3 = pToplevel + 56
 			*(*int32)(unsafe.Pointer(v3))++
 			v2 = *(*int32)(unsafe.Pointer(v3))
-			(*TAutoincInfo)(unsafe.Pointer(pInfo)).FregCtr = v2 /* Max rowid register */
+			(*TAutoincInfo)(unsafe.Pointer(pInfo)).FregCtr = v2   /* Max rowid register */
 			*(*int32)(unsafe.Pointer(pToplevel + 56)) += int32(2) /* Rowid in sqlite_sequence + orig max val */
 		}
 		memId = (*TAutoincInfo)(unsafe.Pointer(pInfo)).FregCtr
@@ -107619,7 +107619,7 @@ func _sqlite3ColumnIndex(tls *libc.TLS, pTab uintptr, zCol uintptr) (r int32) {
 //	*/
 func _tableAndColumnIndex(tls *libc.TLS, pSrc uintptr, N int32, zCol uintptr, piTab uintptr, piCol uintptr, bIgnoreHidden int32) (r int32) {
 	var i, iCol int32
-	_, _ = i, iCol /* Index of column matching zCol */
+	_, _ = i, iCol             /* Index of column matching zCol */
 	_ = libc.Int32FromInt32(0) /* Both or neither are NULL */
 	i = 0
 	for {
@@ -115043,7 +115043,7 @@ func _sqlite3BeginTrigger(tls *libc.TLS, pParse uintptr, pName1 uintptr, pName2 
 	pTrigger = uintptr(0)                      /* Table that the trigger fires off of */
 	zName = uintptr(0)                         /* Name of the trigger */
 	db = (*TParse)(unsafe.Pointer(pParse)).Fdb /* State vector for the DB fixer */
-	_ = libc.Int32FromInt32(0) /* pName1->z might be NULL, but not pName1 itself */
+	_ = libc.Int32FromInt32(0)                 /* pName1->z might be NULL, but not pName1 itself */
 	_ = libc.Int32FromInt32(0)
 	_ = libc.Int32FromInt32(0)
 	_ = libc.Int32FromInt32(0)
@@ -122695,7 +122695,7 @@ func _sqlite3WhereCodeOneLoopStart(tls *libc.TLS, pParse uintptr, v uintptr, pWI
 							iCovCur = v38
 							v41 = pParse + 56
 							*(*int32)(unsafe.Pointer(v41))++
-							v40 = *(*int32)(unsafe.Pointer(v41)) /* Cursor used for index scans (if any) */
+							v40 = *(*int32)(unsafe.Pointer(v41))           /* Cursor used for index scans (if any) */
 							regReturn = v40                                /* Register used with OP_Gosub */
 							regRowset = 0                                  /* Register for RowSet object */
 							regRowid = 0                                   /* Register holding rowid */

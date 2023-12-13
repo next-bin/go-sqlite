@@ -141,20 +141,35 @@ func TestTclTest(t *testing.T) {
 	if *oVerbose != "" {
 		args = append(args, fmt.Sprintf("-verbose=%s", *oVerbose))
 	}
-	if *oQuiet {
-		args = append(args, "-q")
+	if *oVerbose == "" {
+		if *oQuiet {
+			args = append(args, "-q")
+		}
 	}
 	var out []byte
 	util.InDir(tmpDir, func() error {
 		if out, err = util.Shell("testfixture", args...); err != nil {
-			t.Errorf("fail: %v", err)
+			switch err.Error() {
+			case "exit status 1":
+				t.Logf("fail: %v", err)
+			default:
+				t.Errorf("fail: %v", err)
+			}
 		}
 		return nil
 	})
 	s := string(out)
-	const tag = "!Failures on these tests: "
-	x := strings.Index(s, tag)
+	const (
+		tag0 = "Current memory usage: "
+		tag  = "!Failures on these tests: "
+	)
+	x := strings.Index(s, tag0)
 	if x < 0 {
+		t.Errorf("final summary not detected (test crashed?)")
+		return
+	}
+
+	if x = strings.Index(s, tag); x < 0 {
 		return
 	}
 
