@@ -48,9 +48,7 @@ func main() {
 	}
 
 	switch target {
-	case "freebsd/amd64":
-		sed = "gsed"
-	case "freebsd/arm64":
+	case "freebsd/amd64", "freebsd/arm64", "openbsd/amd64", "darwin/amd64", "darwin/arm64":
 		sed = "gsed"
 	}
 
@@ -136,6 +134,7 @@ func main() {
 			"-ignore-unsupported-alignment",
 
 			"-DLONGDOUBLE_TYPE=double",
+			"-DSQLITE_WITHOUT_ZONEMALLOC",
 			// "-DSQLITE_DEBUG",
 			// "-DSQLITE_MEM_DEBUG",
 			"-DSQLITE_THREADSAFE=0",
@@ -172,7 +171,7 @@ func main() {
 			fmt.Sprintf("-I%s", ccgoInc),
 		)
 		switch target {
-		case "freebsd/amd64", "freebsd/arm64":
+		case "freebsd/amd64", "freebsd/arm64", "openbsd/amd64":
 			config = append(config, "-ltcl8.6")
 		}
 		if err := ccgo.NewTask(goos, goarch, config, os.Stdout, os.Stderr, nil).Main(); err != nil {
@@ -231,6 +230,7 @@ func main() {
 		}
 		config = append(config,
 			"-DLONGDOUBLE_TYPE=double",
+			"-DSQLITE_WITHOUT_ZONEMALLOC",
 			// "-DSQLITE_DEBUG",
 			// "-DSQLITE_MEM_DEBUG",
 			"-DSQLITE_THREADSAFE=0",
@@ -287,7 +287,7 @@ func main() {
 			fmt.Sprintf("-I%s", ccgoInc),
 		)
 		switch target {
-		case "freebsd/amd64", "freebsd/arm64":
+		case "freebsd/amd64", "freebsd/arm64", "openbsd/amd64":
 			config = append(config, "-ltcl8.6")
 		}
 		config = append(config, "-exec", "make", "-j", j, "testfixture")
