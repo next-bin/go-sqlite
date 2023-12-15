@@ -264,6 +264,11 @@ func main() {
 		)
 		//TODO threadsafe
 		util.MustShell(true, "sh", "-c", fmt.Sprintf("CFLAGS='%s' ./configure --disable-threadsafe --disable-shared --disable-load-extension", strings.Join(config, " ")))
+		switch target {
+		case "darwin/amd64", "darwin/arm64":
+			util.MustShell(true, "sh", "-c", "echo '#define HAVE_MALLOC_USABLE_SIZE 1' >> config.h")
+			util.MustShell(true, "sh", "-c", "echo '#define HAVE_MEMORY_H 1' >> config.h")
+		}
 		config = append(config,
 			"-absolute-paths",
 			"-keep-object-files",
