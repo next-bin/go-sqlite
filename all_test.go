@@ -160,20 +160,26 @@ func TestTclTest(t *testing.T) {
 	})
 	s := string(out)
 	const (
-		tag0 = "Current memory usage: "
-		tag  = "!Failures on these tests: "
+		tagFailures    = "!Failures on these tests: "
+		tagMemoryUsage = "Current memory usage: "
+		tagSIGABRT     = "SIGABRT"
 	)
-	x := strings.Index(s, tag0)
-	if x < 0 {
+	if strings.Contains(s, tagSIGABRT) {
+		t.Errorf("SIGABRT: test crashed")
+		return
+	}
+
+	if !strings.Contains(s, tagMemoryUsage) {
 		t.Errorf("final summary not detected (test crashed?)")
 		return
 	}
 
-	if x = strings.Index(s, tag); x < 0 {
+	x := strings.Index(s, tagFailures)
+	if x < 0 {
 		return
 	}
 
-	s = s[x+len(tag):]
+	s = s[x+len(tagFailures):]
 	s = strings.TrimSpace(s[:strings.IndexByte(s, '\n')])
 	a := strings.Fields(s)
 	for _, v := range a {
