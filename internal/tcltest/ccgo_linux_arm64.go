@@ -216667,14 +216667,6 @@ func x_Tcl_LogCommandInfo(tls *libc.TLS, interp uintptr, script uintptr, command
 	x_TclLogCommandInfo(tls, interp, script, command, length, libc.UintptrFromInt32(0), libc.UintptrFromInt32(0))
 }
 
-type TTcl_Namespace1 = struct {
-	Fname       uintptr
-	FfullName   uintptr
-	FclientData TClientData
-	FdeleteProc uintptr
-	FparentPtr  uintptr
-}
-
 type TNamespace1 = struct {
 	Fname                  uintptr
 	FfullName              uintptr
@@ -216704,6 +216696,14 @@ type TNamespace1 = struct {
 	FcommandPathArray      uintptr
 	FcommandPathSourceList uintptr
 	FearlyDeleteProc       uintptr
+}
+
+type TTcl_Namespace1 = struct {
+	Fname       uintptr
+	FfullName   uintptr
+	FclientData TClientData
+	FdeleteProc uintptr
+	FparentPtr  uintptr
 }
 
 /*
