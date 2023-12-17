@@ -64,6 +64,10 @@ var (
 		"sort4-init002": {},
 		"zeroblob-12.4": {},
 	}
+
+	goos   = runtime.GOOS
+	goarch = runtime.GOARCH
+	target = fmt.Sprintf("%s/%s", goos, goarch)
 )
 
 func TestMain(m *testing.M) {
@@ -79,6 +83,12 @@ func TestTclTest(t *testing.T) {
 	case "windows":
 		// See https://gitlab.com/cznic/sqlite/-/issues/23#note_599920077 for details.
 		blacklist["symlink2.test"] = struct{}{}
+	}
+	switch target {
+	case "linux/s390x":
+		// See https://gitlab.com/cznic/sqlite/-/issues/120#note_1362306424
+		// TODO Fixed in SQLite 3.42.0
+		blacklist["sysfault.test"] = struct{}{}
 	}
 
 	if err := setMaxOpenFiles(1024); err != nil { // Avoid misc7.test hanging for a long time.
