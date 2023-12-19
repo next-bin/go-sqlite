@@ -16,11 +16,20 @@ import (
 	_ "modernc.org/ccgo/v4/lib"
 )
 
+var (
+	goos   = runtime.GOOS
+	goarch = runtime.GOARCH
+)
+
 func TestMain(m *testing.M) {
 	os.Exit(m.Run())
 }
 
 func Test(t *testing.T) {
+	if goos == "windows" {
+		t.Skip("windows")
+	}
+
 	defer os.Remove("foo.gz")
 
 	out, err := exec.Command("go", "run", filepath.Join("internal", "example", fmt.Sprintf("ccgo_%s_%s.go", runtime.GOOS, runtime.GOARCH))).CombinedOutput()
@@ -37,8 +46,6 @@ func Test2(t *testing.T) {
 		t.Fatal(err)
 	}
 
-	goos := runtime.GOOS
-	goarch := runtime.GOARCH
 	mg := filepath.Join(wd, "internal", "minigzip", fmt.Sprintf("ccgo_%s_%s.go", goos, goarch))
 	ex := filepath.Join(wd, "internal", "example", fmt.Sprintf("ccgo_%s_%s.go", goos, goarch))
 	mgBin := "minigzip"
