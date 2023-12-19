@@ -338,7 +338,7 @@ func win() {
 	// dev = true //TODO-
 	switch {
 	case tempDir != "":
-		util.MustShell(true, "rm", "-rf", filepath.Join(tempDir, extractedArchivePath))
+		os.RemoveAll(filepath.Join(tempDir, extractedArchivePath))
 	default:
 		var err error
 		if tempDir, err = os.MkdirTemp("", "z-generate"); err != nil {
