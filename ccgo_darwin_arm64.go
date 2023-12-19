@@ -1,4 +1,4 @@
-// Code generated for darwin/arm64 by 'generator --prefix-enumerator=_ --prefix-external=x_ --prefix-field=F --prefix-macro=m_ --prefix-static-internal=_ --prefix-static-none=_ --prefix-tagged-enum=_ --prefix-tagged-struct=T --prefix-tagged-union=T --prefix-typename=T --prefix-undefined=_ -extended-errors -ignore-unsupported-alignment --package-name=libz -o libz.a.go libz.a', DO NOT EDIT.
+// Code generated for darwin/arm64 by 'generator --prefix-enumerator=_ --prefix-external=x_ --prefix-field=F --prefix-macro=m_ --prefix-static-internal=_ --prefix-static-none=_ --prefix-tagged-enum=_ --prefix-tagged-struct=T --prefix-tagged-union=T --prefix-typename=T --prefix-undefined=_ -extended-errors --package-name=libz -o libz.a.go libz.a', DO NOT EDIT.
 
 //go:build darwin && arm64
 // +build darwin,arm64
@@ -614,21 +614,9 @@ type t__darwin_arm_vfp_state = struct {
 	F__fpscr t__uint32_t
 }
 
-type t__darwin_arm_neon_state64 = struct {
-	F__ccgo_align [0]uint64
-	F__v          [32][2]uint64
-	F__fpsr       t__uint32_t
-	F__fpcr       t__uint32_t
-	F__ccgo_pad3  [8]byte
-}
+type t__darwin_arm_neon_state64 = int32
 
-type t__darwin_arm_neon_state = struct {
-	F__ccgo_align [0]uint64
-	F__v          [16][2]uint64
-	F__fpsr       t__uint32_t
-	F__fpcr       t__uint32_t
-	F__ccgo_pad3  [8]byte
-}
+type t__darwin_arm_neon_state = int32
 
 type t__arm_pagein_state = struct {
 	F__pagein_error int32
@@ -667,12 +655,7 @@ type t__darwin_mcontext32 = struct {
 	F__fs t__darwin_arm_vfp_state
 }
 
-type t__darwin_mcontext64 = struct {
-	F__ccgo_align [0]uint64
-	F__es         t__darwin_arm_exception_state64
-	F__ss         t__darwin_arm_thread_state64
-	F__ns         t__darwin_arm_neon_state64
-}
+type t__darwin_mcontext64 = int32
 
 type Tmcontext_t = uintptr
 
@@ -11766,7 +11749,7 @@ func XinflateBack(tls *libc.TLS, strm Tz_streamp, in Tin_func, in_desc uintptr, 
 	var hold uint64
 	var ret int32
 	var _ /* next at bp+0 */ uintptr
-	_, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _ = bits, copy1, from, have, here, hold, last, left, len1, put, ret, state, v1, v11, v15, v16, v17, v18, v19, v20, v21, v23, v24, v25, v26, v27, v28, v29, v30, v31, v33, v35, v36, v37, v39, v41, v42, v43, v44, v46, v47 /* return code */
+	_, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _ = bits, copy1, from, have, here, hold, last, left, len1, put, ret, state, v1, v11, v15, v16, v17, v18, v19, v20, v21, v23, v24, v25, v26, v27, v28, v29, v30, v31, v33, v35, v36, v37, v39, v41, v42, v43, v44, v46, v47
 	/* Check that the strm exists and that the state was initialized */
 	if strm == uintptr(m_Z_NULL) || (*Tz_stream)(unsafe.Pointer(strm)).Fstate == uintptr(m_Z_NULL) {
 		return -int32(2)
@@ -12423,6 +12406,7 @@ inf_leave:
 	return ret
 }
 
+/* return code */
 var _order = [19]uint16{
 	0:  uint16(16),
 	1:  uint16(17),
@@ -15472,7 +15456,7 @@ func Xinflate(tls *libc.TLS, strm Tz_streamp, flush int32) (r int32) {
 	var ret, v103, v104, v105, v38 int32
 	var v47, v99 bool
 	var _ /* hbuf at bp+0 */ [4]uint8
-	_, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _ = bits, copy1, from, have, here, hold, in, last, left, len1, next, out, put, ret, state, v100, v101, v102, v103, v104, v105, v36, v37, v38, v42, v43, v44, v45, v46, v47, v48, v49, v50, v51, v52, v53, v54, v55, v56, v57, v58, v59, v60, v61, v62, v63, v64, v65, v66, v67, v69, v70, v71, v72, v73, v74, v75, v76, v77, v79, v81, v82, v85, v87, v88, v90, v92, v93, v94, v95, v96, v97, v98, v99, p83, p89 /* buffer for gzip header crc calculation */
+	_, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _ = bits, copy1, from, have, here, hold, in, last, left, len1, next, out, put, ret, state, v100, v101, v102, v103, v104, v105, v36, v37, v38, v42, v43, v44, v45, v46, v47, v48, v49, v50, v51, v52, v53, v54, v55, v56, v57, v58, v59, v60, v61, v62, v63, v64, v65, v66, v67, v69, v70, v71, v72, v73, v74, v75, v76, v77, v79, v81, v82, v85, v87, v88, v90, v92, v93, v94, v95, v96, v97, v98, v99, p83, p89
 	if _inflateStateCheck(tls, strm) != 0 || (*Tz_stream)(unsafe.Pointer(strm)).Fnext_out == uintptr(m_Z_NULL) || (*Tz_stream)(unsafe.Pointer(strm)).Fnext_in == uintptr(m_Z_NULL) && (*Tz_stream)(unsafe.Pointer(strm)).Favail_in != uint32(0) {
 		return -int32(2)
 	}
@@ -16577,6 +16561,7 @@ inf_leave:
 	return ret
 }
 
+/* buffer for gzip header crc calculation */
 var _order1 = [19]uint16{
 	0:  uint16(16),
 	1:  uint16(17),
@@ -16930,7 +16915,7 @@ func Xinflate_table(tls *libc.TLS, type1 Tcodetype, lens uintptr, codes uint32, 
 	var v12, v16 uint16
 	var _ /* count at bp+0 */ [16]uint16
 	var _ /* offs at bp+32 */ [16]uint16
-	_, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _ = base, curr, drop, extra, fill, here, huff, incr, left, len1, low, mask, match, max, min, next, root, sym, used, v12, v13, v14, v16, v17, v4, v5, v6, v7 /* offsets in table for each length */
+	_, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _ = base, curr, drop, extra, fill, here, huff, incr, left, len1, low, mask, match, max, min, next, root, sym, used, v12, v13, v14, v16, v17, v4, v5, v6, v7
 	/*
 	   Process a set of code lengths to create a canonical Huffman code.  The
 	   code lengths are lens[0..codes-1].  Each length corresponds to the
@@ -17223,6 +17208,7 @@ func Xinflate_table(tls *libc.TLS, type1 Tcodetype, lens uintptr, codes uint32, 
 	return 0
 }
 
+/* offsets in table for each length */
 var _lbase = [31]uint16{
 	0:  uint16(3),
 	1:  uint16(4),
