@@ -182493,19 +182493,6 @@ func _FreeChannelInternalRep(tls *libc.TLS, objPtr uintptr) {
 	XTclpFree(tls, resPtr)
 }
 
-type TCopyState1 = struct {
-	FreadPtr    uintptr
-	FwritePtr   uintptr
-	FreadFlags  int32
-	FwriteFlags int32
-	FtoRead     TTcl_WideInt
-	Ftotal      TTcl_WideInt
-	Finterp     uintptr
-	FcmdPtr     uintptr
-	FbufSize    int32
-	Fbuffer     [1]uint8
-}
-
 type TChannelState1 = struct {
 	FchannelName         uintptr
 	Fflags               int32
@@ -182554,6 +182541,19 @@ type TChannel1 = struct {
 	FinQueueTail  uintptr
 	FrefCount     int32
 	F__ccgo_pad8  [4]byte
+}
+
+type TCopyState1 = struct {
+	FreadPtr    uintptr
+	FwritePtr   uintptr
+	FreadFlags  int32
+	FwriteFlags int32
+	FtoRead     TTcl_WideInt
+	Ftotal      TTcl_WideInt
+	Finterp     uintptr
+	FcmdPtr     uintptr
+	FbufSize    int32
+	Fbuffer     [1]uint8
 }
 
 const m_O_RDONLY = 0
@@ -205952,6 +205952,14 @@ func XTcl_LogCommandInfo(tls *libc.TLS, interp uintptr, script uintptr, command 
 	XTclLogCommandInfo(tls, interp, script, command, length, libc.UintptrFromInt32(0), libc.UintptrFromInt32(0))
 }
 
+type TTcl_Namespace1 = struct {
+	Fname       uintptr
+	FfullName   uintptr
+	FclientData TClientData
+	FdeleteProc uintptr
+	FparentPtr  uintptr
+}
+
 type TNamespace1 = struct {
 	Fname                  uintptr
 	FfullName              uintptr
@@ -205981,14 +205989,6 @@ type TNamespace1 = struct {
 	FcommandPathArray      uintptr
 	FcommandPathSourceList uintptr
 	FearlyDeleteProc       uintptr
-}
-
-type TTcl_Namespace1 = struct {
-	Fname       uintptr
-	FfullName   uintptr
-	FclientData TClientData
-	FdeleteProc uintptr
-	FparentPtr  uintptr
 }
 
 const m_TCL_SERVICE_ALL = 1
