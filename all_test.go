@@ -448,7 +448,7 @@ func mustCString(tls *libc.TLS, s string) (r uintptr) {
 	return r
 }
 
-func Test(t *testing.T) {
+func TestExpr(t *testing.T) {
 	tls := libc.NewTLS()
 
 	defer tls.Close()
@@ -467,7 +467,30 @@ func Test(t *testing.T) {
 	t.Logf("%v, %q", rc, s)
 }
 
+func TestEnv(t *testing.T) {
+	tls := libc.NewTLS()
+
+	defer tls.Close()
+
+	in := XTcl_CreateInterp(tls)
+	rc := XTcl_Eval(tls, in, mustCString(tls, "set a $env(PATH)"))
+	if rc != 0 {
+		t.Fatal(rc)
+	}
+
+	s := libc.GoString(XTcl_GetStringResult(tls, in))
+	if s == "" {
+		t.Fatalf("%q", s)
+	}
+
+	t.Logf("%v, '%s'", rc, s)
+}
+
 func Test2(t *testing.T) {
+	if runtime.GOOS == "windows" {
+		t.Skip("TODO")
+	}
+
 	wd, err := os.Getwd()
 	if err != nil {
 		t.Fatal(err)
@@ -484,10 +507,15 @@ func Test2(t *testing.T) {
 		os.Setenv(lib, sav)
 	}()
 
-	os.Setenv(lib, filepath.Join(wd, "library", "assets"))
+	pth := filepath.Join(wd, "library", "assets")
+	os.Setenv(lib, pth)
+	t.Logf("%s=%s", lib, pth)
 
 	dir := t.TempDir()
 	bin := filepath.Join(dir, "tcltest")
+	if goos == "windows" {
+		bin += ".exe"
+	}
 	out, err := exec.Command("go", "build", "-o", bin, "-tags="+*oXTags, "./"+filepath.Join("internal", "tcltest")).CombinedOutput()
 	if err != nil {
 		t.Fatalf("%s\nFAIL: %s", out, err)

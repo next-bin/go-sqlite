@@ -118,7 +118,7 @@ func main() {
 	dev := os.Getenv("GO_GENERATE_DEV") != ""
 	switch {
 	case tempDir != "":
-		util.MustShell(true, "sh", "-c", fmt.Sprintf("rm -rf %s", filepath.Join(tempDir, extractedArchivePath)))
+		util.MustShell(true, "sh", "-c", fmt.Sprintf("rm -rf %s/*", tempDir))
 	default:
 		var err error
 		if tempDir, err = os.MkdirTemp("", "libtcl-generate"); err != nil {
@@ -135,7 +135,12 @@ func main() {
 		}()
 	}
 	libRoot := filepath.Join(tempDir, extractedArchivePath)
+	os.RemoveAll(filepath.Join(libRoot))
 	makeRoot := filepath.Join(libRoot, "unix")
+	if goos == "windows" {
+		j = "1"
+		makeRoot = filepath.Join(libRoot, "win")
+	}
 	fmt.Fprintf(os.Stderr, "archivePath %s\n", archivePath)
 	fmt.Fprintf(os.Stderr, "extractedArchivePath %s\n", extractedArchivePath)
 	fmt.Fprintf(os.Stderr, "tempDir %s\n", tempDir)
@@ -146,6 +151,7 @@ func main() {
 	os.RemoveAll(filepath.Join("include", goos, goarch))
 	os.Remove(filepath.Join("internal/tests"))
 	util.MustUntar(true, tempDir, f, nil)
+	os.RemoveAll(filepath.Join(libRoot, "pkgs"))
 	mustCopyDir(libRoot, filepath.Join("overlay", "all"), nil, true)
 	mustCopyDir(libRoot, filepath.Join("overlay", goos, goarch), nil, true)
 	mustCopyFile("LICENSE-TCL", filepath.Join(libRoot, "license.terms"), nil)
@@ -157,9 +163,11 @@ func main() {
 	mustCopyDir(ccgoInc, filepath.Join("..", "libz", "include", goos, goarch), nil, false)
 	result := "libtcl.a.go"
 	util.MustInDir(true, makeRoot, func() (err error) {
+		os.RemoveAll("pkgs")
 		cflags := []string{
 			// "-DTCL_MEM_DEBUG", //TODO-
 			"-DNDEBUG",
+			"-UHAVE_CAST_TO_UNION",
 			"-UHAVE_COPYFILE",
 			"-UHAVE_CPUID",
 			"-UHAVE_FTS",
@@ -191,14 +199,17 @@ func main() {
 		case "freebsd/amd64":
 			args = append(args,
 				"-hide", "__fpgetround,__fpsetround,__fpsetprec,__fpsetmask,__fpgetsticky",
+				"-hide", "TclpCreateProcess",
 			)
 		case "openbsd/amd64":
 			args = append(args,
 				"-hide", "__swap16md,__swap32md,__swap64md",
+				"-hide", "TclpCreateProcess",
 			)
 		case "darwin/amd64", "darwin/arm64":
 			args = append(args,
 				"-hide", "__darwin_check_fd_set",
+				"-hide", "TclpCreateProcess",
 			)
 		}
 		args = append(args,
@@ -214,14 +225,14 @@ func main() {
 			"--prefix-typename=T",
 			"--prefix-undefined=_",
 			"-extended-errors",
-			"-hide", "TclpCreateProcess",
-			"-ignore-unsupported-alignment",
 			fmt.Sprintf("-I%s", ccgoInc),
 		)
 		ccgo.NewTask(goos, goarch, append(args, "-exec", "make", "-j", j, "test"), os.Stdout, os.Stderr, nil).Exec()
 		switch target {
 		case "openbsd/amd64":
 			return ccgo.NewTask(goos, goarch, append(args, "-o", result, "--package-name", "libtcl8_6", "-ignore-link-errors", "libtcl86.a", "-lz"), os.Stdout, os.Stderr, nil).Main()
+		case "windows/amd64":
+			return ccgo.NewTask(goos, goarch, append(args, "-o", result, "--package-name", "libtcl8_6", "-ignore-link-errors", "libtcl86.a", "libtclstub86.a", "-lz"), os.Stdout, os.Stderr, nil).Main()
 		default:
 			return ccgo.NewTask(goos, goarch, append(args, "-o", result, "--package-name", "libtcl8_6", "-ignore-link-errors", "libtcl8.6.a", "-lz"), os.Stdout, os.Stderr, nil).Main()
 		}
@@ -235,9 +246,16 @@ func main() {
 
 	fn := fmt.Sprintf("ccgo_%s_%s.go", goos, goarch)
 	mustCopyFile(fn, filepath.Join(makeRoot, result), nil)
-	util.MustShell(true, sed, "-i", `s/\<T__\([a-zA-Z0-9][a-zA-Z0-9_]\+\)/t__\1/g`, fn)
-	util.MustShell(true, sed, "-i", `s/\<x_\([a-zA-Z0-9][a-zA-Z0-9_]\+\)/X\1/g`, fn)
-	mustCopyFile(filepath.Join("internal", "tcltest", fn), filepath.Join(makeRoot, "tcltest.go"), nil)
+	switch target {
+	case "windows/amd64":
+		util.MustShell(true, "sh", "-c", `sed -i 's/\<T__\([a-zA-Z0-9][a-zA-Z0-9_]\+\)/t__\1/g' `+ fn)
+		util.MustShell(true, "sh", "-c", `sed -i 's/\<x_\([a-zA-Z0-9][a-zA-Z0-9_]\+\)/X\1/g' ` + fn)
+		mustCopyFile(filepath.Join("internal", "tcltest", fn), filepath.Join(makeRoot, "tcltests.exe.go"), nil)
+	default:
+		util.MustShell(true, sed, "-i", `s/\<T__\([a-zA-Z0-9][a-zA-Z0-9_]\+\)/t__\1/g`, fn)
+		util.MustShell(true, sed, "-i", `s/\<x_\([a-zA-Z0-9][a-zA-Z0-9_]\+\)/X\1/g`, fn)
+		mustCopyFile(filepath.Join("internal", "tcltest", fn), filepath.Join(makeRoot, "tcltest.go"), nil)
+	}
 	util.Shell("sh", "-c", "./unconvert.sh")
 	util.MustShell(true, "go", "test", "-run", "@")
 	util.Shell("git", "status")
