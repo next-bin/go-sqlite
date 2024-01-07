@@ -1,7 +1,7 @@
-// Code generated for windows/amd64 by 'gcc --prefix-enumerator=_ --prefix-external=x_ --prefix-field=F --prefix-macro=m_ --prefix-static-internal=_ --prefix-static-none=_ --prefix-tagged-enum=_ --prefix-tagged-struct=T --prefix-tagged-union=T --prefix-typename=T --prefix-undefined=_ -extended-errors -IC:\Users\0xjnml\AppData\Local\Temp\libtcl8.6\tcl8.6.13\ccgo -DNDEBUG -UHAVE_CAST_TO_UNION -UHAVE_COPYFILE -UHAVE_CPUID -UHAVE_FTS -UHAVE_TERMIOS_H -mlong-double-64 -O2 -D_ATL_XP_TARGETING=1 -D__USE_MINGW_ANSI_STDIO=0 -DMP_FIXED_CUTOFFS -DMP_NO_STDINT tclTest.o.go tclTestObj.o.go tclTestProcBodyObj.o.go tclThreadTest.o.go tclWinTest.o.go tclTestMain.o.go libtcl86.a libtclstub86.a -lnetapi32 -lkernel32 -luser32 -ladvapi32 -luserenv -lws2_32 -o tcltests.exe.go -mconsole -static-libgcc -municode', DO NOT EDIT.
+// Code generated for windows/arm64 by 'gcc --prefix-enumerator=_ --prefix-external=x_ --prefix-field=F --prefix-macro=m_ --prefix-static-internal=_ --prefix-static-none=_ --prefix-tagged-enum=_ --prefix-tagged-struct=T --prefix-tagged-union=T --prefix-typename=T --prefix-undefined=_ -extended-errors -IC:\Users\0xjnml\AppData\Local\Temp\libtcl8.6\tcl8.6.13\ccgo -DNDEBUG -UHAVE_CAST_TO_UNION -UHAVE_COPYFILE -UHAVE_CPUID -UHAVE_FTS -UHAVE_TERMIOS_H -mlong-double-64 -O2 -D_ATL_XP_TARGETING=1 -D__USE_MINGW_ANSI_STDIO=0 -DMP_FIXED_CUTOFFS -DMP_NO_STDINT tclTest.o.go tclTestObj.o.go tclTestProcBodyObj.o.go tclThreadTest.o.go tclWinTest.o.go tclTestMain.o.go libtcl86.a libtclstub86.a -lnetapi32 -lkernel32 -luser32 -ladvapi32 -luserenv -lws2_32 -o tcltests.exe.go -mconsole -static-libgcc -municode', DO NOT EDIT.
 
-//go:build windows && amd64
-// +build windows,amd64
+//go:build windows && arm64
+// +build windows,arm64
 
 package main
 

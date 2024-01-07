@@ -1,7 +1,7 @@
-// Code generated for windows/amd64 by 'generator.exe --prefix-enumerator=_ --prefix-external=x_ --prefix-field=F --prefix-macro=m_ --prefix-static-internal=_ --prefix-static-none=_ --prefix-tagged-enum=_ --prefix-tagged-struct=T --prefix-tagged-union=T --prefix-typename=T --prefix-undefined=_ -extended-errors -IC:\Users\0xjnml\AppData\Local\Temp\libtcl8.6\tcl8.6.13\ccgo -o libtcl.a.go --package-name libtcl8_6 -ignore-link-errors libtcl86.a libtclstub86.a -lz', DO NOT EDIT.
+// Code generated for windows/arm64 by 'generator.exe --prefix-enumerator=_ --prefix-external=x_ --prefix-field=F --prefix-macro=m_ --prefix-static-internal=_ --prefix-static-none=_ --prefix-tagged-enum=_ --prefix-tagged-struct=T --prefix-tagged-union=T --prefix-typename=T --prefix-undefined=_ -extended-errors -IC:\Users\0xjnml\AppData\Local\Temp\libtcl8.6\tcl8.6.13\ccgo -o libtcl.a.go --package-name libtcl8_6 -ignore-link-errors libtcl86.a libtclstub86.a -lz', DO NOT EDIT.
 
-//go:build windows && amd64
-// +build windows,amd64
+//go:build windows && arm64
+// +build windows,arm64
 
 package libtcl8_6
 
