@@ -11,14 +11,15 @@ import (
 
 var (
 	byteOrders = map[string]binary.ByteOrder{
-		"386":     binary.LittleEndian,
-		"amd64":   binary.LittleEndian,
-		"arm":     binary.LittleEndian,
-		"arm64":   binary.LittleEndian,
-		"loong64": binary.LittleEndian,
-		"ppc64le": binary.LittleEndian,
-		"riscv64": binary.LittleEndian,
-		"s390x":   binary.BigEndian,
+		"386":      binary.LittleEndian,
+		"amd64":    binary.LittleEndian,
+		"arm":      binary.LittleEndian,
+		"arm64":    binary.LittleEndian,
+		"loong64":  binary.LittleEndian,
+		"ppc64le":  binary.LittleEndian,
+		"mips64le": binary.LittleEndian,
+		"riscv64":  binary.LittleEndian,
+		"s390x":    binary.BigEndian,
 	}
 
 	abiTypes = map[[2]string]map[Kind]AbiType{
