@@ -22102,7 +22102,7 @@ func _unixDeviceCharacteristics(tls *libc.TLS, id uintptr) (r int32) {
 //	** Instead, it should be called via macro osGetpagesize().
 //	*/
 func _unixGetpagesize(tls *libc.TLS) (r int32) {
-	return libc.Xsysconf(tls, int32(__SC_PAGESIZE))
+	return libc.Xsysconf(tls, __SC_PAGESIZE)
 }
 
 /*
@@ -151795,35 +151795,12 @@ func Xsqlite3_sourceid(tls *libc.TLS) (r uintptr) {
 	return __ccgo_ts + 23358
 }
 
-type Tsqlite3InitInfo = struct {
-	FnewTnum       TPgno
-	FiDb           Tu8
-	Fbusy          Tu8
-	F__ccgo_align3 [2]byte
-	F__ccgo8       uint8
-	FazInit        uintptr
-}
-
 type TWalSegment = struct {
 	FiNext  int32
 	FaIndex uintptr
 	FaPgno  uintptr
 	FnEntry int32
 	FiZero  int32
-}
-
-type TIdList_item = struct {
-	FzName uintptr
-	Fidx   int32
-}
-
-type TAggInfo_col = struct {
-	FpTab          uintptr
-	FpCExpr        uintptr
-	FiTable        int32
-	FiMem          int32
-	FiColumn       Ti16
-	FiSorterColumn Ti16
 }
 
 type TAggInfo_func = struct {
@@ -151843,15 +151820,18 @@ type TInLoop = struct {
 	F__ccgo_pad5 [3]byte
 }
 
-type Tsqlite3_index_orderby = struct {
-	FiColumn     int32
-	Fdesc        uint8
-	F__ccgo_pad2 [3]byte
+type TAggInfo_col = struct {
+	FpTab          uintptr
+	FpCExpr        uintptr
+	FiTable        int32
+	FiMem          int32
+	FiColumn       Ti16
+	FiSorterColumn Ti16
 }
 
-type TsColMap = struct {
-	FiFrom int32
-	FzCol  uintptr
+type TIdList_item = struct {
+	FzName uintptr
+	Fidx   int32
 }
 
 type T_ht = struct {
@@ -151866,15 +151846,35 @@ type Tsqlite3_index_constraint = struct {
 	FiTermOffset int32
 }
 
+type Tsqlite3InitInfo = struct {
+	FnewTnum       TPgno
+	FiDb           Tu8
+	Fbusy          Tu8
+	F__ccgo_align3 [2]byte
+	F__ccgo8       uint8
+	FazInit        uintptr
+}
+
 type Tsqlite3_index_constraint_usage = struct {
 	FargvIndex   int32
 	Fomit        uint8
 	F__ccgo_pad2 [3]byte
 }
 
+type Tsqlite3_index_orderby = struct {
+	FiColumn     int32
+	Fdesc        uint8
+	F__ccgo_pad2 [3]byte
+}
+
+type TsColMap = struct {
+	FiFrom int32
+	FzCol  uintptr
+}
+
 type TMemValue = struct {
 	F__ccgo_align [0]uint32
-	Fi            [0]Ti64
+	Fi            [0]int64
 	FnZero        [0]int32
 	FzPType       [0]uintptr
 	FpDef         [0]uintptr

@@ -17244,7 +17244,7 @@ func _test_getrusage(tls *libc.TLS, clientData uintptr, interp uintptr, objc int
 	// /tmp/libsqlite3/sqlite-src-3370200/src/test1.c:7187:3:
 	libc.Xmemset(tls, bp+1024, 0, uint32(72))
 	// /tmp/libsqlite3/sqlite-src-3370200/src/test1.c:7188:3:
-	libc.Xgetrusage(tls, int32(_RUSAGE_SELF), bp+1024)
+	libc.Xgetrusage(tls, _RUSAGE_SELF, bp+1024)
 	// /tmp/libsqlite3/sqlite-src-3370200/src/test1.c:7190:3:
 	x_sqlite3_snprintf(tls, int32(1024), bp, __ccgo_ts+3735, libc.VaList(bp+1104, (*(*Trusage)(unsafe.Pointer(bp + 1024))).Fru_utime.Ftv_sec, (*(*Trusage)(unsafe.Pointer(bp + 1024))).Fru_utime.Ftv_usec, (*(*Trusage)(unsafe.Pointer(bp + 1024))).Fru_stime.Ftv_sec, (*(*Trusage)(unsafe.Pointer(bp + 1024))).Fru_stime.Ftv_usec, (*(*Trusage)(unsafe.Pointer(bp + 1024))).F__ccgo6_32.Fru_minflt, (*(*Trusage)(unsafe.Pointer(bp + 1024))).F__ccgo7_36.Fru_majflt))
 	// /tmp/libsqlite3/sqlite-src-3370200/src/test1.c:7196:3:
@@ -19479,22 +19479,6 @@ var _longdouble_size = int32(8)
 var _query_plan = __ccgo_ts + 8987
 
 // -:
-type TsColMap = struct {
-	FiFrom int32
-	FzCol  uintptr
-}
-
-// -:
-type Tsqlite3InitInfo = struct {
-	FnewTnum       TPgno
-	FiDb           Tu8
-	Fbusy          Tu8
-	F__ccgo_align3 [2]byte
-	F__ccgo8       uint8
-	FazInit        uintptr
-}
-
-// -:
 type TExprList_item = struct {
 	FpExpr         uintptr
 	FzEName        uintptr
@@ -19508,6 +19492,22 @@ type TExprList_item = struct {
 			FiAlias      Tu16
 		}
 	}
+}
+
+// -:
+type Tsqlite3InitInfo = struct {
+	FnewTnum       TPgno
+	FiDb           Tu8
+	Fbusy          Tu8
+	F__ccgo_align3 [2]byte
+	F__ccgo8       uint8
+	FazInit        uintptr
+}
+
+// -:
+type TsColMap = struct {
+	FiFrom int32
+	FzCol  uintptr
 }
 
 // -:
@@ -26720,6 +26720,14 @@ func init() {
 }
 
 // -:
+type Tsqlite3_index_constraint = struct {
+	FiColumn     int32
+	Fop          uint8
+	Fusable      uint8
+	FiTermOffset int32
+}
+
+// -:
 type Tsqlite3_index_constraint_usage = struct {
 	FargvIndex   int32
 	Fomit        uint8
@@ -26731,14 +26739,6 @@ type Tsqlite3_index_orderby = struct {
 	FiColumn     int32
 	Fdesc        uint8
 	F__ccgo_pad2 [3]byte
-}
-
-// -:
-type Tsqlite3_index_constraint = struct {
-	FiColumn     int32
-	Fop          uint8
-	Fusable      uint8
-	FiTermOffset int32
 }
 
 /*
@@ -55645,11 +55645,11 @@ func x_sqlite3TestInit(tls *libc.TLS, interp uintptr) (r uintptr) {
 	/* Since the primary use case for this binary is testing of SQLite,
 	 ** be sure to generate core files if we crash */
 	// /tmp/libsqlite3/sqlite-src-3370200/src/test_tclsh.c:118:5:
-	libc.Xgetrlimit(tls, int32(_RLIMIT_CORE), bp+32)
+	libc.Xgetrlimit(tls, _RLIMIT_CORE, bp+32)
 	// /tmp/libsqlite3/sqlite-src-3370200/src/test_tclsh.c:119:5:
 	(*(*Trlimit)(unsafe.Pointer(bp + 32))).Frlim_cur = (*(*Trlimit)(unsafe.Pointer(bp + 32))).Frlim_max
 	// /tmp/libsqlite3/sqlite-src-3370200/src/test_tclsh.c:120:5:
-	libc.Xsetrlimit(tls, int32(_RLIMIT_CORE), bp+32)
+	libc.Xsetrlimit(tls, _RLIMIT_CORE, bp+32)
 	// /tmp/libsqlite3/sqlite-src-3370200/src/test_tclsh.c:124:3:
 	if libtcl8_6.XTcl_GetCommandInfo(tls, interp, __ccgo_ts+21815, bp) == 0 {
 		// /tmp/libsqlite3/sqlite-src-3370200/src/test_tclsh.c:125:5:
@@ -124407,7 +124407,7 @@ func _unixDeviceCharacteristics(tls *libc.TLS, id uintptr) (r int32) {
 func _unixGetpagesize(tls *libc.TLS) (r int32) {
 	// /tmp/libsqlite3/sqlite-src-3370200/sqlite3.c:38472:33:
 	// /tmp/libsqlite3/sqlite-src-3370200/sqlite3.c:38478:3:
-	return libc.Xsysconf(tls, int32(__SC_PAGESIZE))
+	return libc.Xsysconf(tls, __SC_PAGESIZE)
 }
 
 /*
@@ -306683,24 +306683,13 @@ func x_sqlite3_sourceid(tls *libc.TLS) (r uintptr) {
 }
 
 // -:
-type T_ht = struct {
-	Fcount uint32
-	Fchain uintptr
-}
-
-// -:
-type TAggInfo_func = struct {
-	FpFExpr    uintptr
-	FpFunc     uintptr
-	FiMem      int32
-	FiDistinct int32
-	FiDistAddr int32
-}
-
-// -:
-type TIdList_item = struct {
-	FzName uintptr
-	Fidx   int32
+type TInLoop = struct {
+	FiCur        int32
+	FaddrInTop   int32
+	FiBase       int32
+	FnPrefix     int32
+	FeEndLoopOp  Tu8
+	F__ccgo_pad5 [3]byte
 }
 
 // -:
@@ -306710,6 +306699,12 @@ type TWalSegment = struct {
 	FaPgno  uintptr
 	FnEntry int32
 	FiZero  int32
+}
+
+// -:
+type T_ht = struct {
+	Fcount uint32
+	Fchain uintptr
 }
 
 // -:
@@ -306723,13 +306718,18 @@ type TAggInfo_col = struct {
 }
 
 // -:
-type TInLoop = struct {
-	FiCur        int32
-	FaddrInTop   int32
-	FiBase       int32
-	FnPrefix     int32
-	FeEndLoopOp  Tu8
-	F__ccgo_pad5 [3]byte
+type TIdList_item = struct {
+	FzName uintptr
+	Fidx   int32
+}
+
+// -:
+type TAggInfo_func = struct {
+	FpFExpr    uintptr
+	FpFunc     uintptr
+	FiMem      int32
+	FiDistinct int32
+	FiDistAddr int32
 }
 
 func __ccgo_fp(f interface{}) uintptr {
