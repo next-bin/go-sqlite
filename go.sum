@@ -33,8 +33,8 @@ modernc.org/ccgo/v4 v4.7.1/go.mod h1:+NmwtThVv5kjBpNypHJK8bz7gnaYp7ViNWC1ghOksiY
 modernc.org/ccorpus v1.11.6 h1:J16RXiiqiCgua6+ZvQot4yUuUy8zxgqbqEEUuGPlISk=
 modernc.org/ccorpus2 v1.5.1 h1:y/aCOKCHsBy2cAemkZnsuQq/a0eXuf4TTLBNKaiZKso=
 modernc.org/fileutil v1.2.0 h1:c7fsfzHf9WfUFXvv/RY9sStAr+VAKXYGKiAhBQQNoT4=
-modernc.org/gc/v2 v2.3.0 h1:DubPTNRbXOG5xXPyULfM0XNJH/HCWdl+cLM3fJf0MXg=
-modernc.org/gc/v2 v2.3.0/go.mod h1:wzN5dK1AzVGoH6XOzc3YZ+ey/jPgYHLuVckd62P0GYU=
+modernc.org/gc/v2 v2.4.1 h1:9cNzOqPyMJBvrUipmynX0ZohMhcxPtMccYgGOJdOiBw=
+modernc.org/gc/v2 v2.4.1/go.mod h1:wzN5dK1AzVGoH6XOzc3YZ+ey/jPgYHLuVckd62P0GYU=
 modernc.org/httpfs v1.0.6 h1:AAgIpFZRXuYnkjftxTAZwMIiwEqAfk8aVB2/oA6nAeM=
 modernc.org/lex v1.1.1 h1:prSCNTLw1R4rn7M/RzwsuMtAuOytfyR3cnyM07P+Pas=
 modernc.org/lexer v1.0.4 h1:hU7xVbZsqwPphyzChc7nMSGrsuaD2PDNOmzrzkS5AlE=
