@@ -21534,7 +21534,7 @@ func init() {
 var _TalInstructionTable = [148]TTalInstDesc{
 	0: {
 		Fname:             __ccgo_ts + 1969,
-		FinstType:         int32(_ASSEM_PUSH),
+		FinstType:         _ASSEM_PUSH,
 		FtclInstCode:      libc.Int32FromInt32(m_INST_PUSH1)<<libc.Int32FromInt32(8) | libc.Int32FromInt32(m_INST_PUSH4),
 		FoperandsProduced: int32(1),
 	},
@@ -21546,14 +21546,14 @@ var _TalInstructionTable = [148]TTalInstDesc{
 	},
 	2: {
 		Fname:             __ccgo_ts + 1978,
-		FinstType:         int32(_ASSEM_LVT),
+		FinstType:         _ASSEM_LVT,
 		FtclInstCode:      libc.Int32FromInt32(m_INST_APPEND_SCALAR1)<<libc.Int32FromInt32(8) | libc.Int32FromInt32(m_INST_APPEND_SCALAR4),
 		FoperandsConsumed: int32(1),
 		FoperandsProduced: int32(1),
 	},
 	3: {
 		Fname:             __ccgo_ts + 1985,
-		FinstType:         int32(_ASSEM_LVT),
+		FinstType:         _ASSEM_LVT,
 		FtclInstCode:      libc.Int32FromInt32(m_INST_APPEND_ARRAY1)<<libc.Int32FromInt32(8) | libc.Int32FromInt32(m_INST_APPEND_ARRAY4),
 		FoperandsConsumed: int32(2),
 		FoperandsProduced: int32(1),
@@ -21572,7 +21572,7 @@ var _TalInstructionTable = [148]TTalInstDesc{
 	},
 	6: {
 		Fname:             __ccgo_ts + 2022,
-		FinstType:         int32(_ASSEM_LVT4),
+		FinstType:         _ASSEM_LVT4,
 		FtclInstCode:      int32(m_INST_ARRAY_EXISTS_IMM),
 		FoperandsProduced: int32(1),
 	},
@@ -21584,7 +21584,7 @@ var _TalInstructionTable = [148]TTalInstDesc{
 	},
 	8: {
 		Fname:        __ccgo_ts + 2052,
-		FinstType:    int32(_ASSEM_LVT4),
+		FinstType:    _ASSEM_LVT4,
 		FtclInstCode: int32(m_INST_ARRAY_MAKE_IMM),
 	},
 	9: {
@@ -21594,7 +21594,7 @@ var _TalInstructionTable = [148]TTalInstDesc{
 	},
 	10: {
 		Fname:        __ccgo_ts + 2078,
-		FinstType:    int32(_ASSEM_BEGIN_CATCH),
+		FinstType:    _ASSEM_BEGIN_CATCH,
 		FtclInstCode: int32(m_INST_BEGIN_CATCH4),
 	},
 	11: {
@@ -21623,20 +21623,20 @@ var _TalInstructionTable = [148]TTalInstDesc{
 	},
 	15: {
 		Fname:             __ccgo_ts + 2116,
-		FinstType:         int32(_ASSEM_CLOCK_READ),
+		FinstType:         _ASSEM_CLOCK_READ,
 		FtclInstCode:      int32(m_INST_CLOCK_READ),
 		FoperandsProduced: int32(1),
 	},
 	16: {
 		Fname:             __ccgo_ts + 2126,
-		FinstType:         int32(_ASSEM_CONCAT1),
+		FinstType:         _ASSEM_CONCAT1,
 		FtclInstCode:      int32(m_INST_STR_CONCAT1),
 		FoperandsConsumed: -libc.Int32FromInt32(m___INT_MAX__) - libc.Int32FromInt32(1),
 		FoperandsProduced: int32(1),
 	},
 	17: {
 		Fname:             __ccgo_ts + 2133,
-		FinstType:         int32(_ASSEM_LIST),
+		FinstType:         _ASSEM_LIST,
 		FtclInstCode:      int32(m_INST_CONCAT_STK),
 		FoperandsConsumed: -libc.Int32FromInt32(m___INT_MAX__) - libc.Int32FromInt32(1),
 		FoperandsProduced: int32(1),
@@ -21653,14 +21653,14 @@ var _TalInstructionTable = [148]TTalInstDesc{
 	},
 	20: {
 		Fname:             __ccgo_ts + 2169,
-		FinstType:         int32(_ASSEM_LVT4),
+		FinstType:         _ASSEM_LVT4,
 		FtclInstCode:      int32(m_INST_DICT_APPEND),
 		FoperandsConsumed: int32(2),
 		FoperandsProduced: int32(1),
 	},
 	21: {
 		Fname:             __ccgo_ts + 2180,
-		FinstType:         int32(_ASSEM_DICT_GET),
+		FinstType:         _ASSEM_DICT_GET,
 		FtclInstCode:      int32(m_INST_DICT_EXISTS),
 		FoperandsConsumed: -libc.Int32FromInt32(m___INT_MAX__) - libc.Int32FromInt32(1),
 		FoperandsProduced: int32(1),
@@ -21673,21 +21673,21 @@ var _TalInstructionTable = [148]TTalInstDesc{
 	},
 	23: {
 		Fname:             __ccgo_ts + 2202,
-		FinstType:         int32(_ASSEM_DICT_GET),
+		FinstType:         _ASSEM_DICT_GET,
 		FtclInstCode:      int32(m_INST_DICT_GET),
 		FoperandsConsumed: -libc.Int32FromInt32(m___INT_MAX__) - libc.Int32FromInt32(1),
 		FoperandsProduced: int32(1),
 	},
 	24: {
 		Fname:             __ccgo_ts + 2210,
-		FinstType:         int32(_ASSEM_SINT4_LVT4),
+		FinstType:         _ASSEM_SINT4_LVT4,
 		FtclInstCode:      int32(m_INST_DICT_INCR_IMM),
 		FoperandsConsumed: int32(1),
 		FoperandsProduced: int32(1),
 	},
 	25: {
 		Fname:             __ccgo_ts + 2222,
-		FinstType:         int32(_ASSEM_LVT4),
+		FinstType:         _ASSEM_LVT4,
 		FtclInstCode:      int32(m_INST_DICT_LAPPEND),
 		FoperandsConsumed: int32(2),
 		FoperandsProduced: int32(1),
@@ -21699,20 +21699,20 @@ var _TalInstructionTable = [148]TTalInstDesc{
 	},
 	27: {
 		Fname:             __ccgo_ts + 2251,
-		FinstType:         int32(_ASSEM_LVT4),
+		FinstType:         _ASSEM_LVT4,
 		FtclInstCode:      int32(m_INST_DICT_RECOMBINE_IMM),
 		FoperandsConsumed: int32(2),
 	},
 	28: {
 		Fname:             __ccgo_ts + 2268,
-		FinstType:         int32(_ASSEM_DICT_SET),
+		FinstType:         _ASSEM_DICT_SET,
 		FtclInstCode:      int32(m_INST_DICT_SET),
 		FoperandsConsumed: -libc.Int32FromInt32(m___INT_MAX__) - libc.Int32FromInt32(1),
 		FoperandsProduced: int32(1),
 	},
 	29: {
 		Fname:             __ccgo_ts + 2276,
-		FinstType:         int32(_ASSEM_DICT_UNSET),
+		FinstType:         _ASSEM_DICT_UNSET,
 		FtclInstCode:      int32(m_INST_DICT_UNSET),
 		FoperandsConsumed: -libc.Int32FromInt32(m___INT_MAX__) - libc.Int32FromInt32(1),
 		FoperandsProduced: int32(1),
@@ -21731,7 +21731,7 @@ var _TalInstructionTable = [148]TTalInstDesc{
 	},
 	32: {
 		Fname:        __ccgo_ts + 2294,
-		FinstType:    int32(_ASSEM_END_CATCH),
+		FinstType:    _ASSEM_END_CATCH,
 		FtclInstCode: int32(m_INST_END_CATCH),
 	},
 	33: {
@@ -21742,7 +21742,7 @@ var _TalInstructionTable = [148]TTalInstDesc{
 	},
 	34: {
 		Fname:             __ccgo_ts + 2306,
-		FinstType:         int32(_ASSEM_EVAL),
+		FinstType:         _ASSEM_EVAL,
 		FtclInstCode:      int32(m_INST_EVAL_STK),
 		FoperandsConsumed: int32(1),
 		FoperandsProduced: int32(1),
@@ -21755,13 +21755,13 @@ var _TalInstructionTable = [148]TTalInstDesc{
 	},
 	36: {
 		Fname:             __ccgo_ts + 2319,
-		FinstType:         int32(_ASSEM_LVT4),
+		FinstType:         _ASSEM_LVT4,
 		FtclInstCode:      int32(m_INST_EXIST_SCALAR),
 		FoperandsProduced: int32(1),
 	},
 	37: {
 		Fname:             __ccgo_ts + 2325,
-		FinstType:         int32(_ASSEM_LVT4),
+		FinstType:         _ASSEM_LVT4,
 		FtclInstCode:      int32(m_INST_EXIST_ARRAY),
 		FoperandsConsumed: int32(1),
 		FoperandsProduced: int32(1),
@@ -21786,7 +21786,7 @@ var _TalInstructionTable = [148]TTalInstDesc{
 	},
 	41: {
 		Fname:             __ccgo_ts + 2365,
-		FinstType:         int32(_ASSEM_EVAL),
+		FinstType:         _ASSEM_EVAL,
 		FtclInstCode:      int32(m_INST_EXPR_STK),
 		FoperandsConsumed: int32(1),
 		FoperandsProduced: int32(1),
@@ -21811,21 +21811,21 @@ var _TalInstructionTable = [148]TTalInstDesc{
 	},
 	45: {
 		Fname:             __ccgo_ts + 2384,
-		FinstType:         int32(_ASSEM_LVT1),
+		FinstType:         _ASSEM_LVT1,
 		FtclInstCode:      int32(m_INST_INCR_SCALAR1),
 		FoperandsConsumed: int32(1),
 		FoperandsProduced: int32(1),
 	},
 	46: {
 		Fname:             __ccgo_ts + 2389,
-		FinstType:         int32(_ASSEM_LVT1),
+		FinstType:         _ASSEM_LVT1,
 		FtclInstCode:      int32(m_INST_INCR_ARRAY1),
 		FoperandsConsumed: int32(2),
 		FoperandsProduced: int32(1),
 	},
 	47: {
 		Fname:             __ccgo_ts + 2399,
-		FinstType:         int32(_ASSEM_LVT1_SINT1),
+		FinstType:         _ASSEM_LVT1_SINT1,
 		FtclInstCode:      int32(m_INST_INCR_ARRAY1_IMM),
 		FoperandsConsumed: int32(1),
 		FoperandsProduced: int32(1),
@@ -21838,14 +21838,14 @@ var _TalInstructionTable = [148]TTalInstDesc{
 	},
 	49: {
 		Fname:             __ccgo_ts + 2425,
-		FinstType:         int32(_ASSEM_SINT1),
+		FinstType:         _ASSEM_SINT1,
 		FtclInstCode:      int32(m_INST_INCR_ARRAY_STK_IMM),
 		FoperandsConsumed: int32(2),
 		FoperandsProduced: int32(1),
 	},
 	50: {
 		Fname:             __ccgo_ts + 2441,
-		FinstType:         int32(_ASSEM_LVT1_SINT1),
+		FinstType:         _ASSEM_LVT1_SINT1,
 		FtclInstCode:      int32(m_INST_INCR_SCALAR1_IMM),
 		FoperandsProduced: int32(1),
 	},
@@ -21857,7 +21857,7 @@ var _TalInstructionTable = [148]TTalInstDesc{
 	},
 	52: {
 		Fname:             __ccgo_ts + 2457,
-		FinstType:         int32(_ASSEM_SINT1),
+		FinstType:         _ASSEM_SINT1,
 		FtclInstCode:      int32(m_INST_INCR_STK_IMM),
 		FoperandsConsumed: int32(1),
 		FoperandsProduced: int32(1),
@@ -21875,54 +21875,54 @@ var _TalInstructionTable = [148]TTalInstDesc{
 	},
 	55: {
 		Fname:             __ccgo_ts + 2498,
-		FinstType:         int32(_ASSEM_INVOKE),
+		FinstType:         _ASSEM_INVOKE,
 		FtclInstCode:      libc.Int32FromInt32(m_INST_INVOKE_STK1)<<libc.Int32FromInt32(8) | libc.Int32FromInt32(m_INST_INVOKE_STK4),
 		FoperandsConsumed: -libc.Int32FromInt32(m___INT_MAX__) - libc.Int32FromInt32(1),
 		FoperandsProduced: int32(1),
 	},
 	56: {
 		Fname:        __ccgo_ts + 2508,
-		FinstType:    int32(_ASSEM_JUMP),
+		FinstType:    _ASSEM_JUMP,
 		FtclInstCode: int32(m_INST_JUMP1),
 	},
 	57: {
 		Fname:        __ccgo_ts + 2513,
-		FinstType:    int32(_ASSEM_JUMP4),
+		FinstType:    _ASSEM_JUMP4,
 		FtclInstCode: int32(m_INST_JUMP4),
 	},
 	58: {
 		Fname:             __ccgo_ts + 2519,
-		FinstType:         int32(_ASSEM_JUMP),
+		FinstType:         _ASSEM_JUMP,
 		FtclInstCode:      int32(m_INST_JUMP_FALSE1),
 		FoperandsConsumed: int32(1),
 	},
 	59: {
 		Fname:             __ccgo_ts + 2529,
-		FinstType:         int32(_ASSEM_JUMP4),
+		FinstType:         _ASSEM_JUMP4,
 		FtclInstCode:      int32(m_INST_JUMP_FALSE4),
 		FoperandsConsumed: int32(1),
 	},
 	60: {
 		Fname:             __ccgo_ts + 2540,
-		FinstType:         int32(_ASSEM_JUMPTABLE),
+		FinstType:         _ASSEM_JUMPTABLE,
 		FtclInstCode:      int32(m_INST_JUMP_TABLE),
 		FoperandsConsumed: int32(1),
 	},
 	61: {
 		Fname:             __ccgo_ts + 2550,
-		FinstType:         int32(_ASSEM_JUMP),
+		FinstType:         _ASSEM_JUMP,
 		FtclInstCode:      int32(m_INST_JUMP_TRUE1),
 		FoperandsConsumed: int32(1),
 	},
 	62: {
 		Fname:             __ccgo_ts + 2559,
-		FinstType:         int32(_ASSEM_JUMP4),
+		FinstType:         _ASSEM_JUMP4,
 		FtclInstCode:      int32(m_INST_JUMP_TRUE4),
 		FoperandsConsumed: int32(1),
 	},
 	63: {
 		Fname:     __ccgo_ts + 2569,
-		FinstType: int32(_ASSEM_LABEL),
+		FinstType: _ASSEM_LABEL,
 	},
 	64: {
 		Fname:             __ccgo_ts + 2575,
@@ -21932,14 +21932,14 @@ var _TalInstructionTable = [148]TTalInstDesc{
 	},
 	65: {
 		Fname:             __ccgo_ts + 2580,
-		FinstType:         int32(_ASSEM_LVT),
+		FinstType:         _ASSEM_LVT,
 		FtclInstCode:      libc.Int32FromInt32(m_INST_LAPPEND_SCALAR1)<<libc.Int32FromInt32(8) | libc.Int32FromInt32(m_INST_LAPPEND_SCALAR4),
 		FoperandsConsumed: int32(1),
 		FoperandsProduced: int32(1),
 	},
 	66: {
 		Fname:             __ccgo_ts + 2588,
-		FinstType:         int32(_ASSEM_LVT),
+		FinstType:         _ASSEM_LVT,
 		FtclInstCode:      libc.Int32FromInt32(m_INST_LAPPEND_ARRAY1)<<libc.Int32FromInt32(8) | libc.Int32FromInt32(m_INST_LAPPEND_ARRAY4),
 		FoperandsConsumed: int32(2),
 		FoperandsProduced: int32(1),
@@ -21952,14 +21952,14 @@ var _TalInstructionTable = [148]TTalInstDesc{
 	},
 	68: {
 		Fname:             __ccgo_ts + 2617,
-		FinstType:         int32(_ASSEM_LVT4),
+		FinstType:         _ASSEM_LVT4,
 		FtclInstCode:      int32(m_INST_LAPPEND_LIST),
 		FoperandsConsumed: int32(1),
 		FoperandsProduced: int32(1),
 	},
 	69: {
 		Fname:             __ccgo_ts + 2629,
-		FinstType:         int32(_ASSEM_LVT4),
+		FinstType:         _ASSEM_LVT4,
 		FtclInstCode:      int32(m_INST_LAPPEND_LIST_ARRAY),
 		FoperandsConsumed: int32(2),
 		FoperandsProduced: int32(1),
@@ -21990,14 +21990,14 @@ var _TalInstructionTable = [148]TTalInstDesc{
 	},
 	74: {
 		Fname:             __ccgo_ts + 2695,
-		FinstType:         int32(_ASSEM_LINDEX_MULTI),
+		FinstType:         _ASSEM_LINDEX_MULTI,
 		FtclInstCode:      int32(m_INST_LIST_INDEX_MULTI),
 		FoperandsConsumed: -libc.Int32FromInt32(m___INT_MAX__) - libc.Int32FromInt32(1),
 		FoperandsProduced: int32(1),
 	},
 	75: {
 		Fname:             __ccgo_ts + 2707,
-		FinstType:         int32(_ASSEM_LIST),
+		FinstType:         _ASSEM_LIST,
 		FtclInstCode:      int32(m_INST_LIST),
 		FoperandsConsumed: -libc.Int32FromInt32(m___INT_MAX__) - libc.Int32FromInt32(1),
 		FoperandsProduced: int32(1),
@@ -22022,7 +22022,7 @@ var _TalInstructionTable = [148]TTalInstDesc{
 	},
 	79: {
 		Fname:             __ccgo_ts + 2740,
-		FinstType:         int32(_ASSEM_INDEX),
+		FinstType:         _ASSEM_INDEX,
 		FtclInstCode:      int32(m_INST_LIST_INDEX_IMM),
 		FoperandsConsumed: int32(1),
 		FoperandsProduced: int32(1),
@@ -22041,13 +22041,13 @@ var _TalInstructionTable = [148]TTalInstDesc{
 	},
 	82: {
 		Fname:             __ccgo_ts + 2774,
-		FinstType:         int32(_ASSEM_LVT),
+		FinstType:         _ASSEM_LVT,
 		FtclInstCode:      libc.Int32FromInt32(m_INST_LOAD_SCALAR1)<<libc.Int32FromInt32(8) | libc.Int32FromInt32(m_INST_LOAD_SCALAR4),
 		FoperandsProduced: int32(1),
 	},
 	83: {
 		Fname:             __ccgo_ts + 2779,
-		FinstType:         int32(_ASSEM_LVT),
+		FinstType:         _ASSEM_LVT,
 		FtclInstCode:      libc.Int32FromInt32(m_INST_LOAD_ARRAY1)<<libc.Int32FromInt32(8) | libc.Int32FromInt32(m_INST_LOAD_ARRAY4),
 		FoperandsConsumed: int32(1),
 		FoperandsProduced: int32(1),
@@ -22072,7 +22072,7 @@ var _TalInstructionTable = [148]TTalInstDesc{
 	},
 	87: {
 		Fname:             __ccgo_ts + 2814,
-		FinstType:         int32(_ASSEM_LSET_FLAT),
+		FinstType:         _ASSEM_LSET_FLAT,
 		FtclInstCode:      int32(m_INST_LSET_FLAT),
 		FoperandsConsumed: -libc.Int32FromInt32(m___INT_MAX__) - libc.Int32FromInt32(1),
 		FoperandsProduced: int32(1),
@@ -22125,7 +22125,7 @@ var _TalInstructionTable = [148]TTalInstDesc{
 	},
 	96: {
 		Fname:             __ccgo_ts + 2863,
-		FinstType:         int32(_ASSEM_LVT4),
+		FinstType:         _ASSEM_LVT4,
 		FtclInstCode:      int32(m_INST_NSUPVAR),
 		FoperandsConsumed: int32(2),
 		FoperandsProduced: int32(1),
@@ -22144,7 +22144,7 @@ var _TalInstructionTable = [148]TTalInstDesc{
 	},
 	99: {
 		Fname:             __ccgo_ts + 2893,
-		FinstType:         int32(_ASSEM_OVER),
+		FinstType:         _ASSEM_OVER,
 		FtclInstCode:      int32(m_INST_OVER),
 		FoperandsConsumed: -libc.Int32FromInt32(m___INT_MAX__) - libc.Int32FromInt32(1),
 		FoperandsProduced: -libc.Int32FromInt32(1) - libc.Int32FromInt32(1),
@@ -22171,7 +22171,7 @@ var _TalInstructionTable = [148]TTalInstDesc{
 	},
 	104: {
 		Fname:             __ccgo_ts + 2943,
-		FinstType:         int32(_ASSEM_REGEXP),
+		FinstType:         _ASSEM_REGEXP,
 		FtclInstCode:      int32(m_INST_REGEXP),
 		FoperandsConsumed: int32(2),
 		FoperandsProduced: int32(1),
@@ -22184,7 +22184,7 @@ var _TalInstructionTable = [148]TTalInstDesc{
 	},
 	106: {
 		Fname:             __ccgo_ts + 2961,
-		FinstType:         int32(_ASSEM_REVERSE),
+		FinstType:         _ASSEM_REVERSE,
 		FtclInstCode:      int32(m_INST_REVERSE),
 		FoperandsConsumed: -libc.Int32FromInt32(m___INT_MAX__) - libc.Int32FromInt32(1),
 		FoperandsProduced: -libc.Int32FromInt32(1) - libc.Int32FromInt32(0),
@@ -22197,14 +22197,14 @@ var _TalInstructionTable = [148]TTalInstDesc{
 	},
 	108: {
 		Fname:             __ccgo_ts + 2976,
-		FinstType:         int32(_ASSEM_LVT),
+		FinstType:         _ASSEM_LVT,
 		FtclInstCode:      libc.Int32FromInt32(m_INST_STORE_SCALAR1)<<libc.Int32FromInt32(8) | libc.Int32FromInt32(m_INST_STORE_SCALAR4),
 		FoperandsConsumed: int32(1),
 		FoperandsProduced: int32(1),
 	},
 	109: {
 		Fname:             __ccgo_ts + 2982,
-		FinstType:         int32(_ASSEM_LVT),
+		FinstType:         _ASSEM_LVT,
 		FtclInstCode:      libc.Int32FromInt32(m_INST_STORE_ARRAY1)<<libc.Int32FromInt32(8) | libc.Int32FromInt32(m_INST_STORE_ARRAY4),
 		FoperandsConsumed: int32(2),
 		FoperandsProduced: int32(1),
@@ -22247,7 +22247,7 @@ var _TalInstructionTable = [148]TTalInstDesc{
 	},
 	116: {
 		Fname:             __ccgo_ts + 3062,
-		FinstType:         int32(_ASSEM_CONCAT1),
+		FinstType:         _ASSEM_CONCAT1,
 		FtclInstCode:      int32(m_INST_STR_CONCAT1),
 		FoperandsConsumed: -libc.Int32FromInt32(m___INT_MAX__) - libc.Int32FromInt32(1),
 		FoperandsProduced: int32(1),
@@ -22284,7 +22284,7 @@ var _TalInstructionTable = [148]TTalInstDesc{
 	},
 	122: {
 		Fname:             __ccgo_ts + 3106,
-		FinstType:         int32(_ASSEM_BOOL),
+		FinstType:         _ASSEM_BOOL,
 		FtclInstCode:      int32(m_INST_STR_MATCH),
 		FoperandsConsumed: int32(2),
 		FoperandsProduced: int32(1),
@@ -22380,24 +22380,24 @@ var _TalInstructionTable = [148]TTalInstDesc{
 	},
 	138: {
 		Fname:        __ccgo_ts + 3277,
-		FinstType:    int32(_ASSEM_BOOL_LVT4),
+		FinstType:    _ASSEM_BOOL_LVT4,
 		FtclInstCode: int32(m_INST_UNSET_SCALAR),
 	},
 	139: {
 		Fname:             __ccgo_ts + 3283,
-		FinstType:         int32(_ASSEM_BOOL_LVT4),
+		FinstType:         _ASSEM_BOOL_LVT4,
 		FtclInstCode:      int32(m_INST_UNSET_ARRAY),
 		FoperandsConsumed: int32(1),
 	},
 	140: {
 		Fname:             __ccgo_ts + 3294,
-		FinstType:         int32(_ASSEM_BOOL),
+		FinstType:         _ASSEM_BOOL,
 		FtclInstCode:      int32(m_INST_UNSET_ARRAY_STK),
 		FoperandsConsumed: int32(2),
 	},
 	141: {
 		Fname:             __ccgo_ts + 3308,
-		FinstType:         int32(_ASSEM_BOOL),
+		FinstType:         _ASSEM_BOOL,
 		FtclInstCode:      int32(m_INST_UNSET_STK),
 		FoperandsConsumed: int32(1),
 	},
@@ -22409,14 +22409,14 @@ var _TalInstructionTable = [148]TTalInstDesc{
 	},
 	143: {
 		Fname:             __ccgo_ts + 3323,
-		FinstType:         int32(_ASSEM_LVT4),
+		FinstType:         _ASSEM_LVT4,
 		FtclInstCode:      int32(m_INST_UPVAR),
 		FoperandsConsumed: int32(2),
 		FoperandsProduced: int32(1),
 	},
 	144: {
 		Fname:             __ccgo_ts + 3329,
-		FinstType:         int32(_ASSEM_LVT4),
+		FinstType:         _ASSEM_LVT4,
 		FtclInstCode:      int32(m_INST_VARIABLE),
 		FoperandsConsumed: int32(1),
 	},
@@ -23215,7 +23215,7 @@ func _AssembleOneLine(tls *libc.TLS, assemEnvPtr uintptr) (r int32) {
 	 */
 	instType = _TalInstructionTable[*(*int32)(unsafe.Pointer(bp + 8))].FinstType
 	switch instType {
-	case int32(_ASSEM_PUSH):
+	case _ASSEM_PUSH:
 		if (*TTcl_Parse)(unsafe.Pointer(parsePtr)).FnumWords != int32(2) {
 			XTcl_WrongNumArgs(tls, interp, int32(1), bp+4, __ccgo_ts+3432)
 			goto cleanup
@@ -23226,13 +23226,13 @@ func _AssembleOneLine(tls *libc.TLS, assemEnvPtr uintptr) (r int32) {
 		operand1 = XTcl_GetStringFromObj(tls, *(*uintptr)(unsafe.Pointer(bp + 12)), bp+16)
 		litIndex = XTclRegisterLiteral(tls, envPtr, operand1, *(*int32)(unsafe.Pointer(bp + 16)), 0)
 		_BBEmitInst1or4(tls, assemEnvPtr, *(*int32)(unsafe.Pointer(bp + 8)), litIndex, 0)
-	case int32(_ASSEM_1BYTE):
+	case _ASSEM_1BYTE:
 		if (*TTcl_Parse)(unsafe.Pointer(parsePtr)).FnumWords != int32(1) {
 			XTcl_WrongNumArgs(tls, interp, int32(1), bp+4, __ccgo_ts+1943)
 			goto cleanup
 		}
 		_BBEmitOpcode(tls, assemEnvPtr, *(*int32)(unsafe.Pointer(bp + 8)), 0)
-	case int32(_ASSEM_BEGIN_CATCH):
+	case _ASSEM_BEGIN_CATCH:
 		if (*TTcl_Parse)(unsafe.Pointer(parsePtr)).FnumWords != int32(2) {
 			XTcl_WrongNumArgs(tls, interp, int32(1), bp+4, __ccgo_ts+2569)
 			goto cleanup
@@ -23243,9 +23243,9 @@ func _AssembleOneLine(tls *libc.TLS, assemEnvPtr uintptr) (r int32) {
 		(*TBasicBlock)(unsafe.Pointer((*TAssemblyEnv)(unsafe.Pointer(assemEnvPtr)).Fcurr_bb)).FjumpLine = (*TAssemblyEnv)(unsafe.Pointer(assemEnvPtr)).FcmdLine
 		(*TBasicBlock)(unsafe.Pointer((*TAssemblyEnv)(unsafe.Pointer(assemEnvPtr)).Fcurr_bb)).FjumpOffset = int32((*TCompileEnv)(unsafe.Pointer(envPtr)).FcodeNext) - int32((*TCompileEnv)(unsafe.Pointer(envPtr)).FcodeStart)
 		_BBEmitInstInt4(tls, assemEnvPtr, *(*int32)(unsafe.Pointer(bp + 8)), 0, 0)
-		*(*int32)(unsafe.Pointer((*TAssemblyEnv)(unsafe.Pointer(assemEnvPtr)).Fcurr_bb + 80)) |= int32(_BB_BEGINCATCH)
-		_StartBasicBlock(tls, assemEnvPtr, int32(_BB_FALLTHRU), *(*uintptr)(unsafe.Pointer(bp + 12)))
-	case int32(_ASSEM_BOOL):
+		*(*int32)(unsafe.Pointer((*TAssemblyEnv)(unsafe.Pointer(assemEnvPtr)).Fcurr_bb + 80)) |= _BB_BEGINCATCH
+		_StartBasicBlock(tls, assemEnvPtr, _BB_FALLTHRU, *(*uintptr)(unsafe.Pointer(bp + 12)))
+	case _ASSEM_BOOL:
 		if (*TTcl_Parse)(unsafe.Pointer(parsePtr)).FnumWords != int32(2) {
 			XTcl_WrongNumArgs(tls, interp, int32(1), bp+4, __ccgo_ts+3438)
 			goto cleanup
@@ -23254,7 +23254,7 @@ func _AssembleOneLine(tls *libc.TLS, assemEnvPtr uintptr) (r int32) {
 			goto cleanup
 		}
 		_BBEmitInstInt1(tls, assemEnvPtr, *(*int32)(unsafe.Pointer(bp + 8)), *(*int32)(unsafe.Pointer(bp + 20)), 0)
-	case int32(_ASSEM_BOOL_LVT4):
+	case _ASSEM_BOOL_LVT4:
 		if (*TTcl_Parse)(unsafe.Pointer(parsePtr)).FnumWords != int32(3) {
 			XTcl_WrongNumArgs(tls, interp, int32(1), bp+4, __ccgo_ts+3446)
 			goto cleanup
@@ -23286,7 +23286,7 @@ func _AssembleOneLine(tls *libc.TLS, assemEnvPtr uintptr) (r int32) {
 		v7 = *(*uintptr)(unsafe.Pointer(v8))
 		*(*uintptr)(unsafe.Pointer(v8))++
 		*(*uint8)(unsafe.Pointer(v7)) = uint8(uint32(localVar))
-	case int32(_ASSEM_CLOCK_READ):
+	case _ASSEM_CLOCK_READ:
 		if (*TTcl_Parse)(unsafe.Pointer(parsePtr)).FnumWords != int32(2) {
 			XTcl_WrongNumArgs(tls, interp, int32(1), bp+4, __ccgo_ts+3462)
 			goto cleanup
@@ -23300,7 +23300,7 @@ func _AssembleOneLine(tls *libc.TLS, assemEnvPtr uintptr) (r int32) {
 			goto cleanup
 		}
 		_BBEmitInstInt1(tls, assemEnvPtr, *(*int32)(unsafe.Pointer(bp + 8)), *(*int32)(unsafe.Pointer(bp + 20)), *(*int32)(unsafe.Pointer(bp + 20)))
-	case int32(_ASSEM_CONCAT1):
+	case _ASSEM_CONCAT1:
 		if (*TTcl_Parse)(unsafe.Pointer(parsePtr)).FnumWords != int32(2) {
 			XTcl_WrongNumArgs(tls, interp, int32(1), bp+4, __ccgo_ts+3462)
 			goto cleanup
@@ -23309,7 +23309,7 @@ func _AssembleOneLine(tls *libc.TLS, assemEnvPtr uintptr) (r int32) {
 			goto cleanup
 		}
 		_BBEmitInstInt1(tls, assemEnvPtr, *(*int32)(unsafe.Pointer(bp + 8)), *(*int32)(unsafe.Pointer(bp + 20)), *(*int32)(unsafe.Pointer(bp + 20)))
-	case int32(_ASSEM_DICT_GET):
+	case _ASSEM_DICT_GET:
 		if (*TTcl_Parse)(unsafe.Pointer(parsePtr)).FnumWords != int32(2) {
 			XTcl_WrongNumArgs(tls, interp, int32(1), bp+4, __ccgo_ts+3513)
 			goto cleanup
@@ -23318,7 +23318,7 @@ func _AssembleOneLine(tls *libc.TLS, assemEnvPtr uintptr) (r int32) {
 			goto cleanup
 		}
 		_BBEmitInstInt4(tls, assemEnvPtr, *(*int32)(unsafe.Pointer(bp + 8)), *(*int32)(unsafe.Pointer(bp + 20)), *(*int32)(unsafe.Pointer(bp + 20))+int32(1))
-	case int32(_ASSEM_DICT_SET):
+	case _ASSEM_DICT_SET:
 		if (*TTcl_Parse)(unsafe.Pointer(parsePtr)).FnumWords != int32(3) {
 			XTcl_WrongNumArgs(tls, interp, int32(1), bp+4, __ccgo_ts+3519)
 			goto cleanup
@@ -23350,7 +23350,7 @@ func _AssembleOneLine(tls *libc.TLS, assemEnvPtr uintptr) (r int32) {
 		v15 = *(*uintptr)(unsafe.Pointer(v16))
 		*(*uintptr)(unsafe.Pointer(v16))++
 		*(*uint8)(unsafe.Pointer(v15)) = uint8(uint32(localVar))
-	case int32(_ASSEM_DICT_UNSET):
+	case _ASSEM_DICT_UNSET:
 		if (*TTcl_Parse)(unsafe.Pointer(parsePtr)).FnumWords != int32(3) {
 			XTcl_WrongNumArgs(tls, interp, int32(1), bp+4, __ccgo_ts+3519)
 			goto cleanup
@@ -23382,15 +23382,15 @@ func _AssembleOneLine(tls *libc.TLS, assemEnvPtr uintptr) (r int32) {
 		v23 = *(*uintptr)(unsafe.Pointer(v24))
 		*(*uintptr)(unsafe.Pointer(v24))++
 		*(*uint8)(unsafe.Pointer(v23)) = uint8(uint32(localVar))
-	case int32(_ASSEM_END_CATCH):
+	case _ASSEM_END_CATCH:
 		if (*TTcl_Parse)(unsafe.Pointer(parsePtr)).FnumWords != int32(1) {
 			XTcl_WrongNumArgs(tls, interp, int32(1), bp+4, __ccgo_ts+1943)
 			goto cleanup
 		}
-		*(*int32)(unsafe.Pointer((*TAssemblyEnv)(unsafe.Pointer(assemEnvPtr)).Fcurr_bb + 80)) |= int32(_BB_ENDCATCH)
+		*(*int32)(unsafe.Pointer((*TAssemblyEnv)(unsafe.Pointer(assemEnvPtr)).Fcurr_bb + 80)) |= _BB_ENDCATCH
 		_BBEmitOpcode(tls, assemEnvPtr, *(*int32)(unsafe.Pointer(bp + 8)), 0)
-		_StartBasicBlock(tls, assemEnvPtr, int32(_BB_FALLTHRU), libc.UintptrFromInt32(0))
-	case int32(_ASSEM_EVAL):
+		_StartBasicBlock(tls, assemEnvPtr, _BB_FALLTHRU, libc.UintptrFromInt32(0))
+	case _ASSEM_EVAL:
 		if (*TTcl_Parse)(unsafe.Pointer(parsePtr)).FnumWords != int32(2) {
 			if _TalInstructionTable[*(*int32)(unsafe.Pointer(bp + 8))].FtclInstCode == int32(m_INST_EVAL_STK) {
 				v25 = __ccgo_ts + 3533
@@ -23415,7 +23415,7 @@ func _AssembleOneLine(tls *libc.TLS, assemEnvPtr uintptr) (r int32) {
 				_BBEmitOpcode(tls, assemEnvPtr, *(*int32)(unsafe.Pointer(bp + 8)), 0)
 			}
 		}
-	case int32(_ASSEM_INVOKE):
+	case _ASSEM_INVOKE:
 		if (*TTcl_Parse)(unsafe.Pointer(parsePtr)).FnumWords != int32(2) {
 			XTcl_WrongNumArgs(tls, interp, int32(1), bp+4, __ccgo_ts+3513)
 			goto cleanup
@@ -23424,9 +23424,9 @@ func _AssembleOneLine(tls *libc.TLS, assemEnvPtr uintptr) (r int32) {
 			goto cleanup
 		}
 		_BBEmitInst1or4(tls, assemEnvPtr, *(*int32)(unsafe.Pointer(bp + 8)), *(*int32)(unsafe.Pointer(bp + 20)), *(*int32)(unsafe.Pointer(bp + 20)))
-	case int32(_ASSEM_JUMP):
+	case _ASSEM_JUMP:
 		fallthrough
-	case int32(_ASSEM_JUMP4):
+	case _ASSEM_JUMP4:
 		if (*TTcl_Parse)(unsafe.Pointer(parsePtr)).FnumWords != int32(2) {
 			XTcl_WrongNumArgs(tls, interp, int32(1), bp+4, __ccgo_ts+2569)
 			goto cleanup
@@ -23435,8 +23435,8 @@ func _AssembleOneLine(tls *libc.TLS, assemEnvPtr uintptr) (r int32) {
 			goto cleanup
 		}
 		(*TBasicBlock)(unsafe.Pointer((*TAssemblyEnv)(unsafe.Pointer(assemEnvPtr)).Fcurr_bb)).FjumpOffset = int32((*TCompileEnv)(unsafe.Pointer(envPtr)).FcodeNext) - int32((*TCompileEnv)(unsafe.Pointer(envPtr)).FcodeStart)
-		if instType == int32(_ASSEM_JUMP) {
-			flags = int32(_BB_JUMP1)
+		if instType == _ASSEM_JUMP {
+			flags = _BB_JUMP1
 			_BBEmitInstInt1(tls, assemEnvPtr, *(*int32)(unsafe.Pointer(bp + 8)), 0, 0)
 		} else {
 			flags = 0
@@ -23447,10 +23447,10 @@ func _AssembleOneLine(tls *libc.TLS, assemEnvPtr uintptr) (r int32) {
 		 */
 		(*TBasicBlock)(unsafe.Pointer((*TAssemblyEnv)(unsafe.Pointer(assemEnvPtr)).Fcurr_bb)).FjumpLine = (*TAssemblyEnv)(unsafe.Pointer(assemEnvPtr)).FcmdLine
 		if _TalInstructionTable[*(*int32)(unsafe.Pointer(bp + 8))].FoperandsConsumed != 0 {
-			flags |= int32(_BB_FALLTHRU)
+			flags |= _BB_FALLTHRU
 		}
 		_StartBasicBlock(tls, assemEnvPtr, flags, *(*uintptr)(unsafe.Pointer(bp + 12)))
-	case int32(_ASSEM_JUMPTABLE):
+	case _ASSEM_JUMPTABLE:
 		if (*TTcl_Parse)(unsafe.Pointer(parsePtr)).FnumWords != int32(2) {
 			XTcl_WrongNumArgs(tls, interp, int32(1), bp+4, __ccgo_ts+3551)
 			goto cleanup
@@ -23468,7 +23468,7 @@ func _AssembleOneLine(tls *libc.TLS, assemEnvPtr uintptr) (r int32) {
 			goto cleanup
 		}
 		_StartBasicBlock(tls, assemEnvPtr, int32(_BB_JUMPTABLE)|int32(_BB_FALLTHRU), libc.UintptrFromInt32(0))
-	case int32(_ASSEM_LABEL):
+	case _ASSEM_LABEL:
 		if (*TTcl_Parse)(unsafe.Pointer(parsePtr)).FnumWords != int32(2) {
 			XTcl_WrongNumArgs(tls, interp, int32(1), bp+4, __ccgo_ts+3557)
 			goto cleanup
@@ -23482,7 +23482,7 @@ func _AssembleOneLine(tls *libc.TLS, assemEnvPtr uintptr) (r int32) {
 		if _DefineLabel(tls, assemEnvPtr, XTcl_GetString(tls, *(*uintptr)(unsafe.Pointer(bp + 12)))) != m_TCL_OK {
 			goto cleanup
 		}
-	case int32(_ASSEM_LINDEX_MULTI):
+	case _ASSEM_LINDEX_MULTI:
 		if (*TTcl_Parse)(unsafe.Pointer(parsePtr)).FnumWords != int32(2) {
 			XTcl_WrongNumArgs(tls, interp, int32(1), bp+4, __ccgo_ts+3513)
 			goto cleanup
@@ -23491,7 +23491,7 @@ func _AssembleOneLine(tls *libc.TLS, assemEnvPtr uintptr) (r int32) {
 			goto cleanup
 		}
 		_BBEmitInstInt4(tls, assemEnvPtr, *(*int32)(unsafe.Pointer(bp + 8)), *(*int32)(unsafe.Pointer(bp + 20)), *(*int32)(unsafe.Pointer(bp + 20)))
-	case int32(_ASSEM_LIST):
+	case _ASSEM_LIST:
 		if (*TTcl_Parse)(unsafe.Pointer(parsePtr)).FnumWords != int32(2) {
 			XTcl_WrongNumArgs(tls, interp, int32(1), bp+4, __ccgo_ts+3513)
 			goto cleanup
@@ -23500,7 +23500,7 @@ func _AssembleOneLine(tls *libc.TLS, assemEnvPtr uintptr) (r int32) {
 			goto cleanup
 		}
 		_BBEmitInstInt4(tls, assemEnvPtr, *(*int32)(unsafe.Pointer(bp + 8)), *(*int32)(unsafe.Pointer(bp + 20)), *(*int32)(unsafe.Pointer(bp + 20)))
-	case int32(_ASSEM_INDEX):
+	case _ASSEM_INDEX:
 		if (*TTcl_Parse)(unsafe.Pointer(parsePtr)).FnumWords != int32(2) {
 			XTcl_WrongNumArgs(tls, interp, int32(1), bp+4, __ccgo_ts+3513)
 			goto cleanup
@@ -23509,7 +23509,7 @@ func _AssembleOneLine(tls *libc.TLS, assemEnvPtr uintptr) (r int32) {
 			goto cleanup
 		}
 		_BBEmitInstInt4(tls, assemEnvPtr, *(*int32)(unsafe.Pointer(bp + 8)), *(*int32)(unsafe.Pointer(bp + 20)), *(*int32)(unsafe.Pointer(bp + 20)))
-	case int32(_ASSEM_LSET_FLAT):
+	case _ASSEM_LSET_FLAT:
 		if (*TTcl_Parse)(unsafe.Pointer(parsePtr)).FnumWords != int32(2) {
 			XTcl_WrongNumArgs(tls, interp, int32(1), bp+4, __ccgo_ts+3513)
 			goto cleanup
@@ -23525,7 +23525,7 @@ func _AssembleOneLine(tls *libc.TLS, assemEnvPtr uintptr) (r int32) {
 			goto cleanup
 		}
 		_BBEmitInstInt4(tls, assemEnvPtr, *(*int32)(unsafe.Pointer(bp + 8)), *(*int32)(unsafe.Pointer(bp + 20)), *(*int32)(unsafe.Pointer(bp + 20)))
-	case int32(_ASSEM_LVT):
+	case _ASSEM_LVT:
 		if (*TTcl_Parse)(unsafe.Pointer(parsePtr)).FnumWords != int32(2) {
 			XTcl_WrongNumArgs(tls, interp, int32(1), bp+4, __ccgo_ts+3593)
 			goto cleanup
@@ -23535,7 +23535,7 @@ func _AssembleOneLine(tls *libc.TLS, assemEnvPtr uintptr) (r int32) {
 			goto cleanup
 		}
 		_BBEmitInst1or4(tls, assemEnvPtr, *(*int32)(unsafe.Pointer(bp + 8)), localVar, 0)
-	case int32(_ASSEM_LVT1):
+	case _ASSEM_LVT1:
 		if (*TTcl_Parse)(unsafe.Pointer(parsePtr)).FnumWords != int32(2) {
 			XTcl_WrongNumArgs(tls, interp, int32(1), bp+4, __ccgo_ts+3593)
 			goto cleanup
@@ -23545,7 +23545,7 @@ func _AssembleOneLine(tls *libc.TLS, assemEnvPtr uintptr) (r int32) {
 			goto cleanup
 		}
 		_BBEmitInstInt1(tls, assemEnvPtr, *(*int32)(unsafe.Pointer(bp + 8)), localVar, 0)
-	case int32(_ASSEM_LVT1_SINT1):
+	case _ASSEM_LVT1_SINT1:
 		if (*TTcl_Parse)(unsafe.Pointer(parsePtr)).FnumWords != int32(3) {
 			XTcl_WrongNumArgs(tls, interp, int32(1), bp+4, __ccgo_ts+3601)
 			goto cleanup
@@ -23562,7 +23562,7 @@ func _AssembleOneLine(tls *libc.TLS, assemEnvPtr uintptr) (r int32) {
 		v26 = *(*uintptr)(unsafe.Pointer(v27))
 		*(*uintptr)(unsafe.Pointer(v27))++
 		*(*uint8)(unsafe.Pointer(v26)) = uint8(uint32(*(*int32)(unsafe.Pointer(bp + 20))))
-	case int32(_ASSEM_LVT4):
+	case _ASSEM_LVT4:
 		if (*TTcl_Parse)(unsafe.Pointer(parsePtr)).FnumWords != int32(2) {
 			XTcl_WrongNumArgs(tls, interp, int32(1), bp+4, __ccgo_ts+3593)
 			goto cleanup
@@ -23572,7 +23572,7 @@ func _AssembleOneLine(tls *libc.TLS, assemEnvPtr uintptr) (r int32) {
 			goto cleanup
 		}
 		_BBEmitInstInt4(tls, assemEnvPtr, *(*int32)(unsafe.Pointer(bp + 8)), localVar, 0)
-	case int32(_ASSEM_OVER):
+	case _ASSEM_OVER:
 		if (*TTcl_Parse)(unsafe.Pointer(parsePtr)).FnumWords != int32(2) {
 			XTcl_WrongNumArgs(tls, interp, int32(1), bp+4, __ccgo_ts+3513)
 			goto cleanup
@@ -23581,7 +23581,7 @@ func _AssembleOneLine(tls *libc.TLS, assemEnvPtr uintptr) (r int32) {
 			goto cleanup
 		}
 		_BBEmitInstInt4(tls, assemEnvPtr, *(*int32)(unsafe.Pointer(bp + 8)), *(*int32)(unsafe.Pointer(bp + 20)), *(*int32)(unsafe.Pointer(bp + 20))+int32(1))
-	case int32(_ASSEM_REGEXP):
+	case _ASSEM_REGEXP:
 		if (*TTcl_Parse)(unsafe.Pointer(parsePtr)).FnumWords != int32(2) {
 			XTcl_WrongNumArgs(tls, interp, int32(1), bp+4, __ccgo_ts+3438)
 			goto cleanup
@@ -23595,7 +23595,7 @@ func _AssembleOneLine(tls *libc.TLS, assemEnvPtr uintptr) (r int32) {
 			v28 = 0
 		}
 		_BBEmitInstInt1(tls, assemEnvPtr, *(*int32)(unsafe.Pointer(bp + 8)), int32(m_TCL_REG_ADVANCED)|v28, 0)
-	case int32(_ASSEM_REVERSE):
+	case _ASSEM_REVERSE:
 		if (*TTcl_Parse)(unsafe.Pointer(parsePtr)).FnumWords != int32(2) {
 			XTcl_WrongNumArgs(tls, interp, int32(1), bp+4, __ccgo_ts+3513)
 			goto cleanup
@@ -23604,7 +23604,7 @@ func _AssembleOneLine(tls *libc.TLS, assemEnvPtr uintptr) (r int32) {
 			goto cleanup
 		}
 		_BBEmitInstInt4(tls, assemEnvPtr, *(*int32)(unsafe.Pointer(bp + 8)), *(*int32)(unsafe.Pointer(bp + 20)), *(*int32)(unsafe.Pointer(bp + 20)))
-	case int32(_ASSEM_SINT1):
+	case _ASSEM_SINT1:
 		if (*TTcl_Parse)(unsafe.Pointer(parsePtr)).FnumWords != int32(2) {
 			XTcl_WrongNumArgs(tls, interp, int32(1), bp+4, __ccgo_ts+3462)
 			goto cleanup
@@ -23613,7 +23613,7 @@ func _AssembleOneLine(tls *libc.TLS, assemEnvPtr uintptr) (r int32) {
 			goto cleanup
 		}
 		_BBEmitInstInt1(tls, assemEnvPtr, *(*int32)(unsafe.Pointer(bp + 8)), *(*int32)(unsafe.Pointer(bp + 20)), 0)
-	case int32(_ASSEM_SINT4_LVT4):
+	case _ASSEM_SINT4_LVT4:
 		if (*TTcl_Parse)(unsafe.Pointer(parsePtr)).FnumWords != int32(3) {
 			XTcl_WrongNumArgs(tls, interp, int32(1), bp+4, __ccgo_ts+3519)
 			goto cleanup
@@ -23721,7 +23721,7 @@ func _CompileEmbeddedScript(tls *libc.TLS, assemEnvPtr uintptr, tokenPtr uintptr
 	savedExceptArrayNext = (*TCompileEnv)(unsafe.Pointer(envPtr)).FexceptArrayNext
 	(*TCompileEnv)(unsafe.Pointer(envPtr)).FcurrStackDepth = 0
 	(*TCompileEnv)(unsafe.Pointer(envPtr)).FmaxStackDepth = 0
-	_StartBasicBlock(tls, assemEnvPtr, int32(_BB_FALLTHRU), libc.UintptrFromInt32(0))
+	_StartBasicBlock(tls, assemEnvPtr, _BB_FALLTHRU, libc.UintptrFromInt32(0))
 	switch (*TTalInstDesc)(unsafe.Pointer(instPtr)).FtclInstCode {
 	case int32(m_INST_EVAL_STK):
 		XTclCompileScript(tls, interp, (*TTcl_Token)(unsafe.Pointer(tokenPtr)).Fstart, (*TTcl_Token)(unsafe.Pointer(tokenPtr)).Fsize, envPtr)
@@ -23745,7 +23745,7 @@ func _CompileEmbeddedScript(tls *libc.TLS, assemEnvPtr uintptr, tokenPtr uintptr
 	/*
 	 * Flush the current basic block.
 	 */
-	_StartBasicBlock(tls, assemEnvPtr, int32(_BB_FALLTHRU), libc.UintptrFromInt32(0))
+	_StartBasicBlock(tls, assemEnvPtr, _BB_FALLTHRU, libc.UintptrFromInt32(0))
 }
 
 /*
@@ -24441,7 +24441,7 @@ func _DefineLabel(tls *libc.TLS, assemEnvPtr uintptr, labelName uintptr) (r int3
 	interp = (*TCompileEnv)(unsafe.Pointer(envPtr)).FiPtr /* Flag == 1 iff the label was previously
 	 * undefined */
 	/* TODO - This can now be simplified! */
-	_StartBasicBlock(tls, assemEnvPtr, int32(_BB_FALLTHRU), libc.UintptrFromInt32(0))
+	_StartBasicBlock(tls, assemEnvPtr, _BB_FALLTHRU, libc.UintptrFromInt32(0))
 	/*
 	 * Look up the newly-defined label in the symbol table.
 	 */
@@ -24696,7 +24696,7 @@ func _CalculateJumpRelocations(tls *libc.TLS, assemEnvPtr uintptr, mustMove uint
 				 * target is out of range.
 				 */
 				jumpTarget = (*TTcl_HashEntry)(unsafe.Pointer(entry)).FclientData
-				if (*TBasicBlock)(unsafe.Pointer(bbPtr)).Fflags&int32(_BB_JUMP1) != 0 {
+				if (*TBasicBlock)(unsafe.Pointer(bbPtr)).Fflags&_BB_JUMP1 != 0 {
 					offset = (*TBasicBlock)(unsafe.Pointer(jumpTarget)).FstartOffset - ((*TBasicBlock)(unsafe.Pointer(bbPtr)).FjumpOffset + motion)
 					if offset < -int32(0x80) || offset > int32(0x7F) {
 						opcode = uint32(*(*uint8)(unsafe.Pointer((*TCompileEnv)(unsafe.Pointer(envPtr)).FcodeStart + uintptr((*TBasicBlock)(unsafe.Pointer(bbPtr)).FjumpOffset))))
@@ -24712,7 +24712,7 @@ func _CalculateJumpRelocations(tls *libc.TLS, assemEnvPtr uintptr, mustMove uint
 			 * the code locations, but resolve the labels now, and store basic
 			 * block pointers in the jumptable hash.
 			 */
-			if (*TBasicBlock)(unsafe.Pointer(bbPtr)).Fflags&int32(_BB_JUMPTABLE) != 0 {
+			if (*TBasicBlock)(unsafe.Pointer(bbPtr)).Fflags&_BB_JUMPTABLE != 0 {
 				if _CheckJumpTableLabels(tls, assemEnvPtr, bbPtr) != m_TCL_OK {
 					return int32(m_TCL_ERROR)
 				}
@@ -24870,7 +24870,7 @@ func _FillInJumpOffsets(tls *libc.TLS, assemEnvPtr uintptr) {
 			jumpTarget = (*TTcl_HashEntry)(unsafe.Pointer(entry)).FclientData
 			fromOffset = (*TBasicBlock)(unsafe.Pointer(bbPtr)).FjumpOffset
 			targetOffset = (*TBasicBlock)(unsafe.Pointer(jumpTarget)).FstartOffset
-			if (*TBasicBlock)(unsafe.Pointer(bbPtr)).Fflags&int32(_BB_JUMP1) != 0 {
+			if (*TBasicBlock)(unsafe.Pointer(bbPtr)).Fflags&_BB_JUMP1 != 0 {
 				*(*uint8)(unsafe.Pointer((*TCompileEnv)(unsafe.Pointer(envPtr)).FcodeStart + uintptr(fromOffset) + libc.UintptrFromInt32(1))) = uint8(uint32(targetOffset - fromOffset))
 			} else {
 				*(*uint8)(unsafe.Pointer((*TCompileEnv)(unsafe.Pointer(envPtr)).FcodeStart + uintptr(fromOffset) + libc.UintptrFromInt32(1))) = uint8(uint32(targetOffset-fromOffset) >> libc.Int32FromInt32(24))
@@ -24879,7 +24879,7 @@ func _FillInJumpOffsets(tls *libc.TLS, assemEnvPtr uintptr) {
 				*(*uint8)(unsafe.Pointer((*TCompileEnv)(unsafe.Pointer(envPtr)).FcodeStart + uintptr(fromOffset) + libc.UintptrFromInt32(1) + libc.UintptrFromInt32(3))) = uint8(uint32(targetOffset - fromOffset))
 			}
 		}
-		if (*TBasicBlock)(unsafe.Pointer(bbPtr)).Fflags&int32(_BB_JUMPTABLE) != 0 {
+		if (*TBasicBlock)(unsafe.Pointer(bbPtr)).Fflags&_BB_JUMPTABLE != 0 {
 			_ResolveJumpTableTargets(tls, assemEnvPtr, bbPtr)
 		}
 		goto _1
@@ -24971,7 +24971,7 @@ func _CheckForThrowInWrongContext(tls *libc.TLS, assemEnvPtr uintptr) (r int32) 
 		if !(blockPtr != libc.UintptrFromInt32(0)) {
 			break
 		}
-		if (*TBasicBlock)(unsafe.Pointer(blockPtr)).FcatchState == int32(_BBCS_CAUGHT) {
+		if (*TBasicBlock)(unsafe.Pointer(blockPtr)).FcatchState == _BBCS_CAUGHT {
 			/*
 			 * Walk through the instructions in the basic block.
 			 */
@@ -25174,7 +25174,7 @@ func _StackCheckBasicBlock(tls *libc.TLS, assemEnvPtr uintptr, blockPtr uintptr,
 	envPtr = (*TAssemblyEnv)(unsafe.Pointer(assemEnvPtr)).FenvPtr
 	/* Compilation environment */
 	interp = (*TCompileEnv)(unsafe.Pointer(envPtr)).FiPtr /* Hash entry in the label table */
-	if (*TBasicBlock)(unsafe.Pointer(blockPtr)).Fflags&int32(_BB_VISITED) != 0 {
+	if (*TBasicBlock)(unsafe.Pointer(blockPtr)).Fflags&_BB_VISITED != 0 {
 		/*
 		 * If the block is already visited, check stack depth for consistency
 		 * among the paths that reach it.
@@ -25197,7 +25197,7 @@ func _StackCheckBasicBlock(tls *libc.TLS, assemEnvPtr uintptr, blockPtr uintptr,
 	 * indicate how control got to it. Set the initial stack depth to the
 	 * current stack depth in the flow of control.
 	 */
-	*(*int32)(unsafe.Pointer(blockPtr + 80)) |= int32(_BB_VISITED)
+	*(*int32)(unsafe.Pointer(blockPtr + 80)) |= _BB_VISITED
 	(*TBasicBlock)(unsafe.Pointer(blockPtr)).Fpredecessor = predecessor
 	(*TBasicBlock)(unsafe.Pointer(blockPtr)).FinitialStackDepth = initialStackDepth
 	/*
@@ -25239,7 +25239,7 @@ func _StackCheckBasicBlock(tls *libc.TLS, assemEnvPtr uintptr, blockPtr uintptr,
 	 */
 	stackDepth = initialStackDepth + (*TBasicBlock)(unsafe.Pointer(blockPtr)).FfinalStackDepth
 	result = m_TCL_OK
-	if (*TBasicBlock)(unsafe.Pointer(blockPtr)).Fflags&int32(_BB_FALLTHRU) != 0 {
+	if (*TBasicBlock)(unsafe.Pointer(blockPtr)).Fflags&_BB_FALLTHRU != 0 {
 		result = _StackCheckBasicBlock(tls, assemEnvPtr, (*TBasicBlock)(unsafe.Pointer(blockPtr)).Fsuccessor1, blockPtr, stackDepth)
 	}
 	if result == m_TCL_OK && (*TBasicBlock)(unsafe.Pointer(blockPtr)).FjumpTarget != libc.UintptrFromInt32(0) {
@@ -25250,7 +25250,7 @@ func _StackCheckBasicBlock(tls *libc.TLS, assemEnvPtr uintptr, blockPtr uintptr,
 	/*
 	 * All blocks referenced in a jump table are successors.
 	 */
-	if (*TBasicBlock)(unsafe.Pointer(blockPtr)).Fflags&int32(_BB_JUMPTABLE) != 0 {
+	if (*TBasicBlock)(unsafe.Pointer(blockPtr)).Fflags&_BB_JUMPTABLE != 0 {
 		jtEntry = XTcl_FirstHashEntry(tls, (*TBasicBlock)(unsafe.Pointer(blockPtr)).FjtPtr, bp)
 		for {
 			if !(result == m_TCL_OK && jtEntry != libc.UintptrFromInt32(0)) {
@@ -25306,7 +25306,7 @@ func _StackCheckExit(tls *libc.TLS, assemEnvPtr uintptr) (r int32) {
 	 * because of an infinite loop or because the only return is from the
 	 * middle.
 	 */
-	if (*TBasicBlock)(unsafe.Pointer(curr_bb)).Fflags&int32(_BB_VISITED) != 0 {
+	if (*TBasicBlock)(unsafe.Pointer(curr_bb)).Fflags&_BB_VISITED != 0 {
 		/*
 		 * Exit with no operands; push an empty one.
 		 */
@@ -25369,7 +25369,7 @@ func _ProcessCatches(tls *libc.TLS, assemEnvPtr uintptr) (r int32) {
 		if !(blockPtr != libc.UintptrFromInt32(0)) {
 			break
 		}
-		(*TBasicBlock)(unsafe.Pointer(blockPtr)).FcatchState = int32(_BBCS_UNKNOWN)
+		(*TBasicBlock)(unsafe.Pointer(blockPtr)).FcatchState = _BBCS_UNKNOWN
 		(*TBasicBlock)(unsafe.Pointer(blockPtr)).FenclosingCatch = libc.UintptrFromInt32(0)
 		goto _1
 	_1:
@@ -25379,7 +25379,7 @@ func _ProcessCatches(tls *libc.TLS, assemEnvPtr uintptr) (r int32) {
 	 * Start the check recursively from the first basic block, which is
 	 * outside any exception context
 	 */
-	if _ProcessCatchesInBasicBlock(tls, assemEnvPtr, (*TAssemblyEnv)(unsafe.Pointer(assemEnvPtr)).Fhead_bb, libc.UintptrFromInt32(0), int32(_BBCS_NONE), 0) != m_TCL_OK {
+	if _ProcessCatchesInBasicBlock(tls, assemEnvPtr, (*TAssemblyEnv)(unsafe.Pointer(assemEnvPtr)).Fhead_bb, libc.UintptrFromInt32(0), _BBCS_NONE, 0) != m_TCL_OK {
 		return int32(m_TCL_ERROR)
 	}
 	/*
@@ -25436,7 +25436,7 @@ func _ProcessCatchesInBasicBlock(tls *libc.TLS, assemEnvPtr uintptr, bbPtr uintp
 	 * 'changed' to 1 if the state changes and successor blocks need to be
 	 * rechecked.
 	 */
-	if (*TBasicBlock)(unsafe.Pointer(bbPtr)).FcatchState == int32(_BBCS_UNKNOWN) {
+	if (*TBasicBlock)(unsafe.Pointer(bbPtr)).FcatchState == _BBCS_UNKNOWN {
 		(*TBasicBlock)(unsafe.Pointer(bbPtr)).FenclosingCatch = enclosing
 	} else {
 		if (*TBasicBlock)(unsafe.Pointer(bbPtr)).FenclosingCatch != enclosing {
@@ -25472,19 +25472,19 @@ func _ProcessCatchesInBasicBlock(tls *libc.TLS, assemEnvPtr uintptr, bbPtr uintp
 	 * TODO: Make sure that the test cases include validating that a natural
 	 * loop can't include 'beginCatch' or 'endCatch'
 	 */
-	if (*TBasicBlock)(unsafe.Pointer(bbPtr)).Fflags&int32(_BB_BEGINCATCH) != 0 {
+	if (*TBasicBlock)(unsafe.Pointer(bbPtr)).Fflags&_BB_BEGINCATCH != 0 {
 		/*
 		 * If the block begins a catch, the state for the successor is 'in
 		 * catch'. The jump target is the exception exit, and the state of the
 		 * jump target is 'caught.'
 		 */
 		fallThruEnclosing = bbPtr
-		fallThruState = int32(_BBCS_INCATCH)
+		fallThruState = _BBCS_INCATCH
 		jumpEnclosing = bbPtr
-		jumpState = int32(_BBCS_CAUGHT)
+		jumpState = _BBCS_CAUGHT
 		catchDepth++
 	}
-	if (*TBasicBlock)(unsafe.Pointer(bbPtr)).Fflags&int32(_BB_ENDCATCH) != 0 {
+	if (*TBasicBlock)(unsafe.Pointer(bbPtr)).Fflags&_BB_ENDCATCH != 0 {
 		/*
 		 * If the block ends a catch, the state for the successor is whatever
 		 * the state was on entry to the catch.
@@ -25505,7 +25505,7 @@ func _ProcessCatchesInBasicBlock(tls *libc.TLS, assemEnvPtr uintptr, bbPtr uintp
 	 * Visit any successor blocks with the appropriate exception context
 	 */
 	result = m_TCL_OK
-	if (*TBasicBlock)(unsafe.Pointer(bbPtr)).Fflags&int32(_BB_FALLTHRU) != 0 {
+	if (*TBasicBlock)(unsafe.Pointer(bbPtr)).Fflags&_BB_FALLTHRU != 0 {
 		result = _ProcessCatchesInBasicBlock(tls, assemEnvPtr, (*TBasicBlock)(unsafe.Pointer(bbPtr)).Fsuccessor1, fallThruEnclosing, fallThruState, catchDepth)
 	}
 	if result == m_TCL_OK && (*TBasicBlock)(unsafe.Pointer(bbPtr)).FjumpTarget != libc.UintptrFromInt32(0) {
@@ -25516,7 +25516,7 @@ func _ProcessCatchesInBasicBlock(tls *libc.TLS, assemEnvPtr uintptr, bbPtr uintp
 	/*
 	 * All blocks referenced in a jump table are successors.
 	 */
-	if (*TBasicBlock)(unsafe.Pointer(bbPtr)).Fflags&int32(_BB_JUMPTABLE) != 0 {
+	if (*TBasicBlock)(unsafe.Pointer(bbPtr)).Fflags&_BB_JUMPTABLE != 0 {
 		jtEntry = XTcl_FirstHashEntry(tls, (*TBasicBlock)(unsafe.Pointer(bbPtr)).FjtPtr, bp)
 		for {
 			if !(result == m_TCL_OK && jtEntry != libc.UintptrFromInt32(0)) {
@@ -25558,7 +25558,7 @@ func _CheckForUnclosedCatches(tls *libc.TLS, assemEnvPtr uintptr) (r int32) {
 	/* Compilation environment */
 	interp = (*TCompileEnv)(unsafe.Pointer(envPtr)).FiPtr
 	/* Tcl interpreter */
-	if (*TBasicBlock)(unsafe.Pointer((*TAssemblyEnv)(unsafe.Pointer(assemEnvPtr)).Fcurr_bb)).FcatchState >= int32(_BBCS_INCATCH) {
+	if (*TBasicBlock)(unsafe.Pointer((*TAssemblyEnv)(unsafe.Pointer(assemEnvPtr)).Fcurr_bb)).FcatchState >= _BBCS_INCATCH {
 		if (*TAssemblyEnv)(unsafe.Pointer(assemEnvPtr)).Fflags&int32(m_TCL_EVAL_DIRECT) != 0 {
 			XTcl_SetObjResult(tls, interp, XTcl_NewStringObj(tls, __ccgo_ts+4615, -int32(1)))
 			XTcl_SetErrorLine(tls, interp, (*TBasicBlock1)(unsafe.Pointer((*TBasicBlock)(unsafe.Pointer((*TAssemblyEnv)(unsafe.Pointer(assemEnvPtr)).Fcurr_bb)).FenclosingCatch)).FstartLine)
@@ -25648,7 +25648,7 @@ func _BuildExceptionRanges(tls *libc.TLS, assemEnvPtr uintptr) (r int32) {
 		 * If the last block was a 'begin catch', fill in the exception range.
 		 */
 		catchDepth = (*TBasicBlock)(unsafe.Pointer(bbPtr)).FcatchDepth
-		if prevPtr != libc.UintptrFromInt32(0) && (*TBasicBlock)(unsafe.Pointer(prevPtr)).Fflags&int32(_BB_BEGINCATCH) != 0 {
+		if prevPtr != libc.UintptrFromInt32(0) && (*TBasicBlock)(unsafe.Pointer(prevPtr)).Fflags&_BB_BEGINCATCH != 0 {
 			*(*uint8)(unsafe.Pointer((*TCompileEnv)(unsafe.Pointer(envPtr)).FcodeStart + uintptr((*TBasicBlock)(unsafe.Pointer(bbPtr)).FstartOffset) - libc.UintptrFromInt32(4))) = uint8(uint32(*(*int32)(unsafe.Pointer(catchIndices + uintptr(catchDepth-int32(1))*4))) >> libc.Int32FromInt32(24))
 			*(*uint8)(unsafe.Pointer((*TCompileEnv)(unsafe.Pointer(envPtr)).FcodeStart + uintptr((*TBasicBlock)(unsafe.Pointer(bbPtr)).FstartOffset) - libc.UintptrFromInt32(4) + libc.UintptrFromInt32(1))) = uint8(uint32(*(*int32)(unsafe.Pointer(catchIndices + uintptr(catchDepth-int32(1))*4))) >> libc.Int32FromInt32(16))
 			*(*uint8)(unsafe.Pointer((*TCompileEnv)(unsafe.Pointer(envPtr)).FcodeStart + uintptr((*TBasicBlock)(unsafe.Pointer(bbPtr)).FstartOffset) - libc.UintptrFromInt32(4) + libc.UintptrFromInt32(2))) = uint8(uint32(*(*int32)(unsafe.Pointer(catchIndices + uintptr(catchDepth-int32(1))*4))) >> libc.Int32FromInt32(8))
@@ -25713,7 +25713,7 @@ func _UnstackExpiredCatches(tls *libc.TLS, envPtr uintptr, bbPtr uintptr, catchD
 	for catchDepth > 0 {
 		catchDepth--
 		if *(*uintptr)(unsafe.Pointer(catches + uintptr(catchDepth)*4)) != libc.UintptrFromInt32(0) {
-			if *(*uintptr)(unsafe.Pointer(catches + uintptr(catchDepth)*4)) != block || catchState >= int32(_BBCS_CAUGHT) {
+			if *(*uintptr)(unsafe.Pointer(catches + uintptr(catchDepth)*4)) != block || catchState >= _BBCS_CAUGHT {
 				range1 = (*TCompileEnv)(unsafe.Pointer(envPtr)).FexceptArrayPtr + uintptr(*(*int32)(unsafe.Pointer(catchIndices + uintptr(catchDepth)*4)))*28
 				(*TExceptionRange)(unsafe.Pointer(range1)).FnumCodeBytes = (*TBasicBlock)(unsafe.Pointer(bbPtr)).FstartOffset - (*TExceptionRange)(unsafe.Pointer(range1)).FcodeOffset
 				*(*uintptr)(unsafe.Pointer(catches + uintptr(catchDepth)*4)) = libc.UintptrFromInt32(0)
@@ -25752,7 +25752,7 @@ func _LookForFreshCatches(tls *libc.TLS, bbPtr uintptr, catches uintptr) {
 	catchDepth = (*TBasicBlock)(unsafe.Pointer(bbPtr)).FcatchDepth
 	for catchDepth > 0 {
 		catchDepth--
-		if *(*uintptr)(unsafe.Pointer(catches + uintptr(catchDepth)*4)) != block && catchState < int32(_BBCS_CAUGHT) {
+		if *(*uintptr)(unsafe.Pointer(catches + uintptr(catchDepth)*4)) != block && catchState < _BBCS_CAUGHT {
 			*(*uintptr)(unsafe.Pointer(catches + uintptr(catchDepth)*4)) = block
 		}
 		catchState = (*TBasicBlock)(unsafe.Pointer(block)).FcatchState
@@ -25793,7 +25793,7 @@ func _StackFreshCatches(tls *libc.TLS, assemEnvPtr uintptr, bbPtr uintptr, catch
 			 * Create an exception range for a block that needs one.
 			 */
 			block = *(*uintptr)(unsafe.Pointer(catches + uintptr(catchDepth)*4))
-			*(*int32)(unsafe.Pointer(catchIndices + uintptr(catchDepth)*4)) = XTclCreateExceptRange(tls, int32(_CATCH_EXCEPTION_RANGE), envPtr)
+			*(*int32)(unsafe.Pointer(catchIndices + uintptr(catchDepth)*4)) = XTclCreateExceptRange(tls, _CATCH_EXCEPTION_RANGE, envPtr)
 			range1 = (*TCompileEnv)(unsafe.Pointer(envPtr)).FexceptArrayPtr + uintptr(*(*int32)(unsafe.Pointer(catchIndices + uintptr(catchDepth)*4)))*28
 			(*TExceptionRange)(unsafe.Pointer(range1)).FnestingLevel = (*TCompileEnv)(unsafe.Pointer(envPtr)).FexceptDepth + catchDepth
 			if (*TExceptionRange)(unsafe.Pointer(range1)).FnestingLevel+int32(1) > (*TCompileEnv)(unsafe.Pointer(envPtr)).FmaxExceptDepth {
@@ -27651,9 +27651,9 @@ func XTcl_CreateInterp(tls *libc.TLS) (r uintptr) {
 	(*TInterp)(unsafe.Pointer(iPtr)).FpackageUnknown = libc.UintptrFromInt32(0)
 	/* TIP #268 */
 	if libc.Xgetenv(tls, __ccgo_ts+5791) == libc.UintptrFromInt32(0) {
-		(*TInterp)(unsafe.Pointer(iPtr)).FpackagePrefer = int32(_PKG_PREFER_STABLE)
+		(*TInterp)(unsafe.Pointer(iPtr)).FpackagePrefer = _PKG_PREFER_STABLE
 	} else {
-		(*TInterp)(unsafe.Pointer(iPtr)).FpackagePrefer = int32(_PKG_PREFER_LATEST)
+		(*TInterp)(unsafe.Pointer(iPtr)).FpackagePrefer = _PKG_PREFER_LATEST
 	}
 	(*TInterp)(unsafe.Pointer(iPtr)).FcmdCount = 0
 	XTclInitLiteralTable(tls, iPtr+204)
@@ -30526,9 +30526,9 @@ func _OldMathFuncProc(tls *libc.TLS, clientData TClientData, interp uintptr, obj
 		 */
 		(*(*TTcl_Value)(unsafe.Pointer(args + uintptr(k)*24))).Ftype1 = *(*TTcl_ValueType)(unsafe.Pointer((*TOldMathFuncData)(unsafe.Pointer(dataPtr)).FargTypes + uintptr(k)*4))
 		switch (*(*TTcl_Value)(unsafe.Pointer(args + uintptr(k)*24))).Ftype1 {
-		case int32(_TCL_EITHER):
+		case _TCL_EITHER:
 			if XTcl_GetLongFromObj(tls, libc.UintptrFromInt32(0), valuePtr, args+uintptr(k)*24+4) == m_TCL_OK {
-				(*(*TTcl_Value)(unsafe.Pointer(args + uintptr(k)*24))).Ftype1 = int32(_TCL_INT)
+				(*(*TTcl_Value)(unsafe.Pointer(args + uintptr(k)*24))).Ftype1 = _TCL_INT
 				break
 			}
 			if (*TTcl_Obj)(unsafe.Pointer(valuePtr)).FtypePtr == uintptr(unsafe.Pointer(&XtclWideIntType)) {
@@ -30544,15 +30544,15 @@ func _OldMathFuncProc(tls *libc.TLS, clientData TClientData, interp uintptr, obj
 				v2 = v3
 			}
 			if v2 == m_TCL_OK {
-				(*(*TTcl_Value)(unsafe.Pointer(args + uintptr(k)*24))).Ftype1 = int32(_TCL_WIDE_INT)
+				(*(*TTcl_Value)(unsafe.Pointer(args + uintptr(k)*24))).Ftype1 = _TCL_WIDE_INT
 				break
 			}
-			(*(*TTcl_Value)(unsafe.Pointer(args + uintptr(k)*24))).Ftype1 = int32(_TCL_DOUBLE)
+			(*(*TTcl_Value)(unsafe.Pointer(args + uintptr(k)*24))).Ftype1 = _TCL_DOUBLE
 			/* FALLTHROUGH */
 			fallthrough
-		case int32(_TCL_DOUBLE):
+		case _TCL_DOUBLE:
 			(*(*TTcl_Value)(unsafe.Pointer(args + uintptr(k)*24))).FdoubleValue = *(*float64)(unsafe.Pointer(bp + 24))
-		case int32(_TCL_INT):
+		case _TCL_INT:
 			if _ExprIntFunc(tls, libc.UintptrFromInt32(0), interp, int32(2), objv+uintptr(j-int32(1))*4) != m_TCL_OK {
 				XTclpFree(tls, args)
 				return int32(m_TCL_ERROR)
@@ -30560,7 +30560,7 @@ func _OldMathFuncProc(tls *libc.TLS, clientData TClientData, interp uintptr, obj
 			valuePtr = XTcl_GetObjResult(tls, interp)
 			XTcl_GetLongFromObj(tls, libc.UintptrFromInt32(0), valuePtr, args+uintptr(k)*24+4)
 			XTcl_ResetResult(tls, interp)
-		case int32(_TCL_WIDE_INT):
+		case _TCL_WIDE_INT:
 			if _ExprWideFunc(tls, libc.UintptrFromInt32(0), interp, int32(2), objv+uintptr(j-int32(1))*4) != m_TCL_OK {
 				XTclpFree(tls, args)
 				return int32(m_TCL_ERROR)
@@ -30597,7 +30597,7 @@ func _OldMathFuncProc(tls *libc.TLS, clientData TClientData, interp uintptr, obj
 	/*
 	 * Return the result of the call.
 	 */
-	if (*(*TTcl_Value)(unsafe.Pointer(bp))).Ftype1 == int32(_TCL_INT) {
+	if (*(*TTcl_Value)(unsafe.Pointer(bp))).Ftype1 == _TCL_INT {
 		if XtclFreeObjList == libc.UintptrFromInt32(0) {
 			XTclAllocateFreeObjects(tls)
 		}
@@ -30611,7 +30611,7 @@ func _OldMathFuncProc(tls *libc.TLS, clientData TClientData, interp uintptr, obj
 		(*TTcl_Obj)(unsafe.Pointer(valuePtr)).FinternalRep.FlongValue = (*(*TTcl_Value)(unsafe.Pointer(bp))).FintValue
 		(*TTcl_Obj)(unsafe.Pointer(valuePtr)).FtypePtr = uintptr(unsafe.Pointer(&XtclIntType))
 	} else {
-		if (*(*TTcl_Value)(unsafe.Pointer(bp))).Ftype1 == int32(_TCL_WIDE_INT) {
+		if (*(*TTcl_Value)(unsafe.Pointer(bp))).Ftype1 == _TCL_WIDE_INT {
 			valuePtr = XTcl_NewWideIntObj(tls, (*(*TTcl_Value)(unsafe.Pointer(bp))).FwideValue)
 		} else {
 			return _CheckDoubleResult(tls, interp, (*(*TTcl_Value)(unsafe.Pointer(bp))).FdoubleValue)
@@ -40565,7 +40565,7 @@ func XTclClockInit(tls *libc.TLS, interp uintptr) {
 	(*TClockClientData)(unsafe.Pointer(data)).Fliterals = XTcl_Alloc(tls, uint32(_LIT__END)*libc.Uint32FromInt64(4))
 	i = 0
 	for {
-		if !(i < int32(_LIT__END)) {
+		if !(i < _LIT__END) {
 			break
 		}
 		*(*uintptr)(unsafe.Pointer((*TClockClientData)(unsafe.Pointer(data)).Fliterals + uintptr(i)*4)) = XTcl_NewStringObj(tls, _literals[i], -int32(1))
@@ -40688,7 +40688,7 @@ func _ClockConvertlocaltoutcObjCmd(tls *libc.TLS, clientData TClientData, interp
 		return int32(m_TCL_ERROR)
 	}
 	dict = *(*uintptr)(unsafe.Pointer(objv + 1*4))
-	if XTcl_DictObjGet(tls, interp, dict, *(*uintptr)(unsafe.Pointer(lit + uintptr(_LIT_LOCALSECONDS)*4)), bp) != m_TCL_OK {
+	if XTcl_DictObjGet(tls, interp, dict, *(*uintptr)(unsafe.Pointer(lit + _LIT_LOCALSECONDS*4)), bp) != m_TCL_OK {
 		return int32(m_TCL_ERROR)
 	}
 	if *(*uintptr)(unsafe.Pointer(bp)) == libc.UintptrFromInt32(0) {
@@ -40727,7 +40727,7 @@ func _ClockConvertlocaltoutcObjCmd(tls *libc.TLS, clientData TClientData, interp
 		created = int32(1)
 		(*TTcl_Obj)(unsafe.Pointer(dict)).FrefCount++
 	}
-	status = XTcl_DictObjPut(tls, interp, dict, *(*uintptr)(unsafe.Pointer(lit + uintptr(_LIT_SECONDS)*4)), XTcl_NewWideIntObj(tls, (*(*TTclDateFields)(unsafe.Pointer(bp + 8))).Fseconds))
+	status = XTcl_DictObjPut(tls, interp, dict, *(*uintptr)(unsafe.Pointer(lit + _LIT_SECONDS*4)), XTcl_NewWideIntObj(tls, (*(*TTclDateFields)(unsafe.Pointer(bp + 8))).Fseconds))
 	if status == m_TCL_OK {
 		XTcl_SetObjResult(tls, interp, dict)
 	}
@@ -40819,7 +40819,7 @@ func _ClockGetdatefieldsObjCmd(tls *libc.TLS, clientData TClientData, interp uin
 	 * that it isn't.
 	 */
 	if (*TTcl_Obj)(unsafe.Pointer(*(*uintptr)(unsafe.Pointer(objv + 1*4)))).FtypePtr == uintptr(unsafe.Pointer(&XtclBignumType)) {
-		XTcl_SetObjResult(tls, interp, *(*uintptr)(unsafe.Pointer(lit + uintptr(_LIT_INTEGER_VALUE_TOO_LARGE)*4)))
+		XTcl_SetObjResult(tls, interp, *(*uintptr)(unsafe.Pointer(lit + _LIT_INTEGER_VALUE_TOO_LARGE*4)))
 		return int32(m_TCL_ERROR)
 	}
 	/*
@@ -40839,9 +40839,9 @@ func _ClockGetdatefieldsObjCmd(tls *libc.TLS, clientData TClientData, interp uin
 	_GetMonthDay(tls, bp)
 	_GetYearWeekDay(tls, bp, *(*int32)(unsafe.Pointer(bp + 64)))
 	dict = XTcl_NewDictObj(tls)
-	XTcl_DictObjPut(tls, libc.UintptrFromInt32(0), dict, *(*uintptr)(unsafe.Pointer(lit + uintptr(_LIT_LOCALSECONDS)*4)), XTcl_NewWideIntObj(tls, (*(*TTclDateFields)(unsafe.Pointer(bp))).FlocalSeconds))
-	XTcl_DictObjPut(tls, libc.UintptrFromInt32(0), dict, *(*uintptr)(unsafe.Pointer(lit + uintptr(_LIT_SECONDS)*4)), XTcl_NewWideIntObj(tls, (*(*TTclDateFields)(unsafe.Pointer(bp))).Fseconds))
-	XTcl_DictObjPut(tls, libc.UintptrFromInt32(0), dict, *(*uintptr)(unsafe.Pointer(lit + uintptr(_LIT_TZNAME)*4)), (*(*TTclDateFields)(unsafe.Pointer(bp))).FtzName)
+	XTcl_DictObjPut(tls, libc.UintptrFromInt32(0), dict, *(*uintptr)(unsafe.Pointer(lit + _LIT_LOCALSECONDS*4)), XTcl_NewWideIntObj(tls, (*(*TTclDateFields)(unsafe.Pointer(bp))).FlocalSeconds))
+	XTcl_DictObjPut(tls, libc.UintptrFromInt32(0), dict, *(*uintptr)(unsafe.Pointer(lit + _LIT_SECONDS*4)), XTcl_NewWideIntObj(tls, (*(*TTclDateFields)(unsafe.Pointer(bp))).Fseconds))
+	XTcl_DictObjPut(tls, libc.UintptrFromInt32(0), dict, *(*uintptr)(unsafe.Pointer(lit + _LIT_TZNAME*4)), (*(*TTclDateFields)(unsafe.Pointer(bp))).FtzName)
 	_objPtr = (*(*TTclDateFields)(unsafe.Pointer(bp))).FtzName
 	v6 = _objPtr
 	v5 = *(*int32)(unsafe.Pointer(v6))
@@ -40849,22 +40849,22 @@ func _ClockGetdatefieldsObjCmd(tls *libc.TLS, clientData TClientData, interp uin
 	if v5 <= int32(1) {
 		XTclFreeObj(tls, _objPtr)
 	}
-	XTcl_DictObjPut(tls, libc.UintptrFromInt32(0), dict, *(*uintptr)(unsafe.Pointer(lit + uintptr(_LIT_TZOFFSET)*4)), XTcl_NewIntObj(tls, (*(*TTclDateFields)(unsafe.Pointer(bp))).FtzOffset))
-	XTcl_DictObjPut(tls, libc.UintptrFromInt32(0), dict, *(*uintptr)(unsafe.Pointer(lit + uintptr(_LIT_JULIANDAY)*4)), XTcl_NewIntObj(tls, (*(*TTclDateFields)(unsafe.Pointer(bp))).FjulianDay))
-	XTcl_DictObjPut(tls, libc.UintptrFromInt32(0), dict, *(*uintptr)(unsafe.Pointer(lit + uintptr(_LIT_GREGORIAN)*4)), XTcl_NewIntObj(tls, (*(*TTclDateFields)(unsafe.Pointer(bp))).Fgregorian))
+	XTcl_DictObjPut(tls, libc.UintptrFromInt32(0), dict, *(*uintptr)(unsafe.Pointer(lit + _LIT_TZOFFSET*4)), XTcl_NewIntObj(tls, (*(*TTclDateFields)(unsafe.Pointer(bp))).FtzOffset))
+	XTcl_DictObjPut(tls, libc.UintptrFromInt32(0), dict, *(*uintptr)(unsafe.Pointer(lit + _LIT_JULIANDAY*4)), XTcl_NewIntObj(tls, (*(*TTclDateFields)(unsafe.Pointer(bp))).FjulianDay))
+	XTcl_DictObjPut(tls, libc.UintptrFromInt32(0), dict, *(*uintptr)(unsafe.Pointer(lit + _LIT_GREGORIAN*4)), XTcl_NewIntObj(tls, (*(*TTclDateFields)(unsafe.Pointer(bp))).Fgregorian))
 	if (*(*TTclDateFields)(unsafe.Pointer(bp))).Fera != 0 {
-		v7 = int32(_LIT_BCE)
+		v7 = _LIT_BCE
 	} else {
-		v7 = int32(_LIT_CE)
+		v7 = _LIT_CE
 	}
-	XTcl_DictObjPut(tls, libc.UintptrFromInt32(0), dict, *(*uintptr)(unsafe.Pointer(lit + uintptr(_LIT_ERA)*4)), *(*uintptr)(unsafe.Pointer(lit + uintptr(v7)*4)))
-	XTcl_DictObjPut(tls, libc.UintptrFromInt32(0), dict, *(*uintptr)(unsafe.Pointer(lit + uintptr(_LIT_YEAR)*4)), XTcl_NewIntObj(tls, (*(*TTclDateFields)(unsafe.Pointer(bp))).Fyear))
-	XTcl_DictObjPut(tls, libc.UintptrFromInt32(0), dict, *(*uintptr)(unsafe.Pointer(lit + uintptr(_LIT_DAYOFYEAR)*4)), XTcl_NewIntObj(tls, (*(*TTclDateFields)(unsafe.Pointer(bp))).FdayOfYear))
-	XTcl_DictObjPut(tls, libc.UintptrFromInt32(0), dict, *(*uintptr)(unsafe.Pointer(lit + uintptr(_LIT_MONTH)*4)), XTcl_NewIntObj(tls, (*(*TTclDateFields)(unsafe.Pointer(bp))).Fmonth))
-	XTcl_DictObjPut(tls, libc.UintptrFromInt32(0), dict, *(*uintptr)(unsafe.Pointer(lit + uintptr(_LIT_DAYOFMONTH)*4)), XTcl_NewIntObj(tls, (*(*TTclDateFields)(unsafe.Pointer(bp))).FdayOfMonth))
-	XTcl_DictObjPut(tls, libc.UintptrFromInt32(0), dict, *(*uintptr)(unsafe.Pointer(lit + uintptr(_LIT_ISO8601YEAR)*4)), XTcl_NewIntObj(tls, (*(*TTclDateFields)(unsafe.Pointer(bp))).Fiso8601Year))
-	XTcl_DictObjPut(tls, libc.UintptrFromInt32(0), dict, *(*uintptr)(unsafe.Pointer(lit + uintptr(_LIT_ISO8601WEEK)*4)), XTcl_NewIntObj(tls, (*(*TTclDateFields)(unsafe.Pointer(bp))).Fiso8601Week))
-	XTcl_DictObjPut(tls, libc.UintptrFromInt32(0), dict, *(*uintptr)(unsafe.Pointer(lit + uintptr(_LIT_DAYOFWEEK)*4)), XTcl_NewIntObj(tls, (*(*TTclDateFields)(unsafe.Pointer(bp))).FdayOfWeek))
+	XTcl_DictObjPut(tls, libc.UintptrFromInt32(0), dict, *(*uintptr)(unsafe.Pointer(lit + _LIT_ERA*4)), *(*uintptr)(unsafe.Pointer(lit + uintptr(v7)*4)))
+	XTcl_DictObjPut(tls, libc.UintptrFromInt32(0), dict, *(*uintptr)(unsafe.Pointer(lit + _LIT_YEAR*4)), XTcl_NewIntObj(tls, (*(*TTclDateFields)(unsafe.Pointer(bp))).Fyear))
+	XTcl_DictObjPut(tls, libc.UintptrFromInt32(0), dict, *(*uintptr)(unsafe.Pointer(lit + _LIT_DAYOFYEAR*4)), XTcl_NewIntObj(tls, (*(*TTclDateFields)(unsafe.Pointer(bp))).FdayOfYear))
+	XTcl_DictObjPut(tls, libc.UintptrFromInt32(0), dict, *(*uintptr)(unsafe.Pointer(lit + _LIT_MONTH*4)), XTcl_NewIntObj(tls, (*(*TTclDateFields)(unsafe.Pointer(bp))).Fmonth))
+	XTcl_DictObjPut(tls, libc.UintptrFromInt32(0), dict, *(*uintptr)(unsafe.Pointer(lit + _LIT_DAYOFMONTH*4)), XTcl_NewIntObj(tls, (*(*TTclDateFields)(unsafe.Pointer(bp))).FdayOfMonth))
+	XTcl_DictObjPut(tls, libc.UintptrFromInt32(0), dict, *(*uintptr)(unsafe.Pointer(lit + _LIT_ISO8601YEAR*4)), XTcl_NewIntObj(tls, (*(*TTclDateFields)(unsafe.Pointer(bp))).Fiso8601Year))
+	XTcl_DictObjPut(tls, libc.UintptrFromInt32(0), dict, *(*uintptr)(unsafe.Pointer(lit + _LIT_ISO8601WEEK*4)), XTcl_NewIntObj(tls, (*(*TTclDateFields)(unsafe.Pointer(bp))).Fiso8601Week))
+	XTcl_DictObjPut(tls, libc.UintptrFromInt32(0), dict, *(*uintptr)(unsafe.Pointer(lit + _LIT_DAYOFWEEK*4)), XTcl_NewIntObj(tls, (*(*TTclDateFields)(unsafe.Pointer(bp))).FdayOfWeek))
 	XTcl_SetObjResult(tls, interp, dict)
 	return m_TCL_OK
 }
@@ -40950,7 +40950,7 @@ func _ClockGetjuliandayfromerayearmonthdayObjCmd(tls *libc.TLS, clientData TClie
 		return int32(m_TCL_ERROR)
 	}
 	dict = *(*uintptr)(unsafe.Pointer(objv + 1*4))
-	if v2 = _FetchEraField(tls, interp, dict, *(*uintptr)(unsafe.Pointer(lit + uintptr(_LIT_ERA)*4)), bp+68) != m_TCL_OK || _FetchIntField(tls, interp, dict, *(*uintptr)(unsafe.Pointer(lit + uintptr(_LIT_YEAR)*4)), bp+36) != m_TCL_OK || _FetchIntField(tls, interp, dict, *(*uintptr)(unsafe.Pointer(lit + uintptr(_LIT_MONTH)*4)), bp+44) != m_TCL_OK || _FetchIntField(tls, interp, dict, *(*uintptr)(unsafe.Pointer(lit + uintptr(_LIT_DAYOFMONTH)*4)), bp+48) != m_TCL_OK; !v2 {
+	if v2 = _FetchEraField(tls, interp, dict, *(*uintptr)(unsafe.Pointer(lit + _LIT_ERA*4)), bp+68) != m_TCL_OK || _FetchIntField(tls, interp, dict, *(*uintptr)(unsafe.Pointer(lit + _LIT_YEAR*4)), bp+36) != m_TCL_OK || _FetchIntField(tls, interp, dict, *(*uintptr)(unsafe.Pointer(lit + _LIT_MONTH*4)), bp+44) != m_TCL_OK || _FetchIntField(tls, interp, dict, *(*uintptr)(unsafe.Pointer(lit + _LIT_DAYOFMONTH*4)), bp+48) != m_TCL_OK; !v2 {
 		if (*TTcl_Obj)(unsafe.Pointer(*(*uintptr)(unsafe.Pointer(objv + 2*4)))).FtypePtr == uintptr(unsafe.Pointer(&XtclIntType)) {
 			*(*int32)(unsafe.Pointer(bp + 64)) = (*TTcl_Obj)(unsafe.Pointer(*(*uintptr)(unsafe.Pointer(objv + 2*4)))).FinternalRep.FlongValue
 			v1 = libc.Int32FromInt32(m_TCL_OK)
@@ -40974,7 +40974,7 @@ func _ClockGetjuliandayfromerayearmonthdayObjCmd(tls *libc.TLS, clientData TClie
 		(*TTcl_Obj)(unsafe.Pointer(dict)).FrefCount++
 		copied = int32(1)
 	}
-	status = XTcl_DictObjPut(tls, interp, dict, *(*uintptr)(unsafe.Pointer(lit + uintptr(_LIT_JULIANDAY)*4)), XTcl_NewIntObj(tls, (*(*TTclDateFields)(unsafe.Pointer(bp))).FjulianDay))
+	status = XTcl_DictObjPut(tls, interp, dict, *(*uintptr)(unsafe.Pointer(lit + _LIT_JULIANDAY*4)), XTcl_NewIntObj(tls, (*(*TTclDateFields)(unsafe.Pointer(bp))).FjulianDay))
 	if status == m_TCL_OK {
 		XTcl_SetObjResult(tls, interp, dict)
 	}
@@ -41033,7 +41033,7 @@ func _ClockGetjuliandayfromerayearweekdayObjCmd(tls *libc.TLS, clientData TClien
 		return int32(m_TCL_ERROR)
 	}
 	dict = *(*uintptr)(unsafe.Pointer(objv + 1*4))
-	if v2 = _FetchEraField(tls, interp, dict, *(*uintptr)(unsafe.Pointer(lit + uintptr(_LIT_ERA)*4)), bp+68) != m_TCL_OK || _FetchIntField(tls, interp, dict, *(*uintptr)(unsafe.Pointer(lit + uintptr(_LIT_ISO8601YEAR)*4)), bp+52) != m_TCL_OK || _FetchIntField(tls, interp, dict, *(*uintptr)(unsafe.Pointer(lit + uintptr(_LIT_ISO8601WEEK)*4)), bp+56) != m_TCL_OK || _FetchIntField(tls, interp, dict, *(*uintptr)(unsafe.Pointer(lit + uintptr(_LIT_DAYOFWEEK)*4)), bp+60) != m_TCL_OK; !v2 {
+	if v2 = _FetchEraField(tls, interp, dict, *(*uintptr)(unsafe.Pointer(lit + _LIT_ERA*4)), bp+68) != m_TCL_OK || _FetchIntField(tls, interp, dict, *(*uintptr)(unsafe.Pointer(lit + _LIT_ISO8601YEAR*4)), bp+52) != m_TCL_OK || _FetchIntField(tls, interp, dict, *(*uintptr)(unsafe.Pointer(lit + _LIT_ISO8601WEEK*4)), bp+56) != m_TCL_OK || _FetchIntField(tls, interp, dict, *(*uintptr)(unsafe.Pointer(lit + _LIT_DAYOFWEEK*4)), bp+60) != m_TCL_OK; !v2 {
 		if (*TTcl_Obj)(unsafe.Pointer(*(*uintptr)(unsafe.Pointer(objv + 2*4)))).FtypePtr == uintptr(unsafe.Pointer(&XtclIntType)) {
 			*(*int32)(unsafe.Pointer(bp + 64)) = (*TTcl_Obj)(unsafe.Pointer(*(*uintptr)(unsafe.Pointer(objv + 2*4)))).FinternalRep.FlongValue
 			v1 = libc.Int32FromInt32(m_TCL_OK)
@@ -41057,7 +41057,7 @@ func _ClockGetjuliandayfromerayearweekdayObjCmd(tls *libc.TLS, clientData TClien
 		(*TTcl_Obj)(unsafe.Pointer(dict)).FrefCount++
 		copied = int32(1)
 	}
-	status = XTcl_DictObjPut(tls, interp, dict, *(*uintptr)(unsafe.Pointer(lit + uintptr(_LIT_JULIANDAY)*4)), XTcl_NewIntObj(tls, (*(*TTclDateFields)(unsafe.Pointer(bp))).FjulianDay))
+	status = XTcl_DictObjPut(tls, interp, dict, *(*uintptr)(unsafe.Pointer(lit + _LIT_JULIANDAY*4)), XTcl_NewIntObj(tls, (*(*TTclDateFields)(unsafe.Pointer(bp))).FjulianDay))
 	if status == m_TCL_OK {
 		XTcl_SetObjResult(tls, interp, dict)
 	}
@@ -41460,7 +41460,7 @@ func _ConvertUTCToLocalUsingC(tls *libc.TLS, interp uintptr, fields uintptr, cha
 	/*
 	 * Fill in the date in 'fields' and use it to derive Julian Day.
 	 */
-	(*TTclDateFields)(unsafe.Pointer(fields)).Fera = int32(_CE)
+	(*TTclDateFields)(unsafe.Pointer(fields)).Fera = _CE
 	(*TTclDateFields)(unsafe.Pointer(fields)).Fyear = (*Ttm)(unsafe.Pointer(timeVal)).Ftm_year + int32(1900)
 	(*TTclDateFields)(unsafe.Pointer(fields)).Fmonth = (*Ttm)(unsafe.Pointer(timeVal)).Ftm_mon + int32(1)
 	(*TTclDateFields)(unsafe.Pointer(fields)).FdayOfMonth = (*Ttm)(unsafe.Pointer(timeVal)).Ftm_mday
@@ -41605,7 +41605,7 @@ func _GetYearWeekDay(tls *libc.TLS, fields uintptr, changeover int32) {
 	 */
 	(*(*TTclDateFields)(unsafe.Pointer(bp))).FjulianDay = (*TTclDateFields)(unsafe.Pointer(fields)).FjulianDay - int32(3)
 	_GetGregorianEraYearDay(tls, bp, changeover)
-	if (*(*TTclDateFields)(unsafe.Pointer(bp))).Fera == int32(_BCE) {
+	if (*(*TTclDateFields)(unsafe.Pointer(bp))).Fera == _BCE {
 		(*(*TTclDateFields)(unsafe.Pointer(bp))).Fiso8601Year = (*(*TTclDateFields)(unsafe.Pointer(bp))).Fyear - int32(1)
 	} else {
 		(*(*TTclDateFields)(unsafe.Pointer(bp))).Fiso8601Year = (*(*TTclDateFields)(unsafe.Pointer(bp))).Fyear + int32(1)
@@ -41619,7 +41619,7 @@ func _GetYearWeekDay(tls *libc.TLS, fields uintptr, changeover int32) {
 	 * move one year earlier
 	 */
 	if (*TTclDateFields)(unsafe.Pointer(fields)).FjulianDay < (*(*TTclDateFields)(unsafe.Pointer(bp))).FjulianDay {
-		if (*(*TTclDateFields)(unsafe.Pointer(bp))).Fera == int32(_BCE) {
+		if (*(*TTclDateFields)(unsafe.Pointer(bp))).Fera == _BCE {
 			(*(*TTclDateFields)(unsafe.Pointer(bp))).Fiso8601Year += int32(1)
 		} else {
 			(*(*TTclDateFields)(unsafe.Pointer(bp))).Fiso8601Year -= int32(1)
@@ -41725,10 +41725,10 @@ func _GetGregorianEraYearDay(tls *libc.TLS, fields uintptr, changeover int32) {
 	 * store era/year/day back into fields.
 	 */
 	if year <= 0 {
-		(*TTclDateFields)(unsafe.Pointer(fields)).Fera = int32(_BCE)
+		(*TTclDateFields)(unsafe.Pointer(fields)).Fera = _BCE
 		(*TTclDateFields)(unsafe.Pointer(fields)).Fyear = int32(1) - year
 	} else {
-		(*TTclDateFields)(unsafe.Pointer(fields)).Fera = int32(_CE)
+		(*TTclDateFields)(unsafe.Pointer(fields)).Fera = _CE
 		(*TTclDateFields)(unsafe.Pointer(fields)).Fyear = year
 	}
 	(*TTclDateFields)(unsafe.Pointer(fields)).FdayOfYear = day + int32(1)
@@ -41834,7 +41834,7 @@ func _GetJulianDayFromEraYearMonthDay(tls *libc.TLS, fields uintptr, changeover 
 	/* Gregorian transition date as a Julian Day */
 	var mm1, month, q, r, year, ym1, ym1o100, ym1o4, ym1o400 int32
 	_, _, _, _, _, _, _, _, _ = mm1, month, q, r, year, ym1, ym1o100, ym1o4, ym1o400
-	if (*TTclDateFields)(unsafe.Pointer(fields)).Fera == int32(_BCE) {
+	if (*TTclDateFields)(unsafe.Pointer(fields)).Fera == _BCE {
 		year = int32(1) - (*TTclDateFields)(unsafe.Pointer(fields)).Fyear
 	} else {
 		year = (*TTclDateFields)(unsafe.Pointer(fields)).Fyear
@@ -41858,10 +41858,10 @@ func _GetJulianDayFromEraYearMonthDay(tls *libc.TLS, fields uintptr, changeover 
 	 */
 	(*TTclDateFields)(unsafe.Pointer(fields)).Fgregorian = int32(1)
 	if year < int32(1) {
-		(*TTclDateFields)(unsafe.Pointer(fields)).Fera = int32(_BCE)
+		(*TTclDateFields)(unsafe.Pointer(fields)).Fera = _BCE
 		(*TTclDateFields)(unsafe.Pointer(fields)).Fyear = int32(1) - year
 	} else {
-		(*TTclDateFields)(unsafe.Pointer(fields)).Fera = int32(_CE)
+		(*TTclDateFields)(unsafe.Pointer(fields)).Fera = _CE
 		(*TTclDateFields)(unsafe.Pointer(fields)).Fyear = year
 	}
 	/*
@@ -41917,7 +41917,7 @@ func _IsGregorianLeapYear(tls *libc.TLS, fields uintptr) (r int32) {
 	var year int32
 	_ = year
 	year = (*TTclDateFields)(unsafe.Pointer(fields)).Fyear
-	if (*TTclDateFields)(unsafe.Pointer(fields)).Fera == int32(_BCE) {
+	if (*TTclDateFields)(unsafe.Pointer(fields)).Fera == _BCE {
 		year = int32(1) - year
 	}
 	if year%int32(4) != 0 {
@@ -42200,9 +42200,9 @@ func _ClockParseformatargsObjCmd(tls *libc.TLS, clientData TClientData, interp u
 	/*
 	 * Extract values for the keywords.
 	 */
-	(*(*[3]uintptr)(unsafe.Pointer(bp)))[0] = *(*uintptr)(unsafe.Pointer(litPtr + uintptr(_LIT__DEFAULT_FORMAT)*4))
-	(*(*[3]uintptr)(unsafe.Pointer(bp)))[int32(1)] = *(*uintptr)(unsafe.Pointer(litPtr + uintptr(_LIT_C)*4))
-	(*(*[3]uintptr)(unsafe.Pointer(bp)))[int32(2)] = *(*uintptr)(unsafe.Pointer(litPtr + uintptr(_LIT__NIL)*4))
+	(*(*[3]uintptr)(unsafe.Pointer(bp)))[0] = *(*uintptr)(unsafe.Pointer(litPtr + _LIT__DEFAULT_FORMAT*4))
+	(*(*[3]uintptr)(unsafe.Pointer(bp)))[int32(1)] = *(*uintptr)(unsafe.Pointer(litPtr + _LIT_C*4))
+	(*(*[3]uintptr)(unsafe.Pointer(bp)))[int32(2)] = *(*uintptr)(unsafe.Pointer(litPtr + _LIT__NIL*4))
 	i = int32(2)
 	for {
 		if !(i < objc) {
@@ -42249,12 +42249,12 @@ func _ClockParseformatargsObjCmd(tls *libc.TLS, clientData TClientData, interp u
 		return int32(m_TCL_ERROR)
 	}
 	if saw&(libc.Int32FromInt32(1)<<1) != 0 && saw&(libc.Int32FromInt32(1)<<3) != 0 {
-		XTcl_SetObjResult(tls, interp, *(*uintptr)(unsafe.Pointer(litPtr + uintptr(_LIT_CANNOT_USE_GMT_AND_TIMEZONE)*4)))
+		XTcl_SetObjResult(tls, interp, *(*uintptr)(unsafe.Pointer(litPtr + _LIT_CANNOT_USE_GMT_AND_TIMEZONE*4)))
 		XTcl_SetErrorCode(tls, interp, libc.VaList(bp+40, __ccgo_ts+10985, __ccgo_ts+11271, libc.UintptrFromInt32(0)))
 		return int32(m_TCL_ERROR)
 	}
 	if *(*int32)(unsafe.Pointer(bp + 12)) != 0 {
-		(*(*[3]uintptr)(unsafe.Pointer(bp)))[int32(2)] = *(*uintptr)(unsafe.Pointer(litPtr + uintptr(_LIT_GMT)*4))
+		(*(*[3]uintptr)(unsafe.Pointer(bp)))[int32(2)] = *(*uintptr)(unsafe.Pointer(litPtr + _LIT_GMT*4))
 	}
 	/*
 	 * Return options as a list.
@@ -42385,7 +42385,7 @@ func _ClockDeleteCmdProc(tls *libc.TLS, clientData TClientData) {
 	if v1 <= uint32(1) {
 		i = 0
 		for {
-			if !(i < int32(_LIT__END)) {
+			if !(i < _LIT__END) {
 				break
 			}
 			_objPtr = *(*uintptr)(unsafe.Pointer((*TClockClientData)(unsafe.Pointer(data)).Fliterals + uintptr(i)*4))
@@ -44550,7 +44550,7 @@ func _PathDirNameCmd(tls *libc.TLS, clientData TClientData, interp uintptr, objc
 		XTcl_WrongNumArgs(tls, interp, int32(1), objv, __ccgo_ts+3557)
 		return int32(m_TCL_ERROR)
 	}
-	dirPtr = XTclPathPart(tls, interp, *(*uintptr)(unsafe.Pointer(objv + 1*4)), int32(_TCL_PATH_DIRNAME))
+	dirPtr = XTclPathPart(tls, interp, *(*uintptr)(unsafe.Pointer(objv + 1*4)), _TCL_PATH_DIRNAME)
 	if dirPtr == libc.UintptrFromInt32(0) {
 		return int32(m_TCL_ERROR)
 	}
@@ -44590,7 +44590,7 @@ func _PathExtensionCmd(tls *libc.TLS, clientData TClientData, interp uintptr, ob
 		XTcl_WrongNumArgs(tls, interp, int32(1), objv, __ccgo_ts+3557)
 		return int32(m_TCL_ERROR)
 	}
-	dirPtr = XTclPathPart(tls, interp, *(*uintptr)(unsafe.Pointer(objv + 1*4)), int32(_TCL_PATH_EXTENSION))
+	dirPtr = XTclPathPart(tls, interp, *(*uintptr)(unsafe.Pointer(objv + 1*4)), _TCL_PATH_EXTENSION)
 	if dirPtr == libc.UintptrFromInt32(0) {
 		return int32(m_TCL_ERROR)
 	}
@@ -44630,7 +44630,7 @@ func _PathRootNameCmd(tls *libc.TLS, clientData TClientData, interp uintptr, obj
 		XTcl_WrongNumArgs(tls, interp, int32(1), objv, __ccgo_ts+3557)
 		return int32(m_TCL_ERROR)
 	}
-	dirPtr = XTclPathPart(tls, interp, *(*uintptr)(unsafe.Pointer(objv + 1*4)), int32(_TCL_PATH_ROOT))
+	dirPtr = XTclPathPart(tls, interp, *(*uintptr)(unsafe.Pointer(objv + 1*4)), _TCL_PATH_ROOT)
 	if dirPtr == libc.UintptrFromInt32(0) {
 		return int32(m_TCL_ERROR)
 	}
@@ -44670,7 +44670,7 @@ func _PathTailCmd(tls *libc.TLS, clientData TClientData, interp uintptr, objc in
 		XTcl_WrongNumArgs(tls, interp, int32(1), objv, __ccgo_ts+3557)
 		return int32(m_TCL_ERROR)
 	}
-	dirPtr = XTclPathPart(tls, interp, *(*uintptr)(unsafe.Pointer(objv + 1*4)), int32(_TCL_PATH_TAIL))
+	dirPtr = XTclPathPart(tls, interp, *(*uintptr)(unsafe.Pointer(objv + 1*4)), _TCL_PATH_TAIL)
 	if dirPtr == libc.UintptrFromInt32(0) {
 		return int32(m_TCL_ERROR)
 	}
@@ -44884,11 +44884,11 @@ func _PathTypeCmd(tls *libc.TLS, clientData TClientData, interp uintptr, objc in
 		return int32(m_TCL_ERROR)
 	}
 	switch XTcl_FSGetPathType(tls, *(*uintptr)(unsafe.Pointer(objv + 1*4))) {
-	case int32(_TCL_PATH_ABSOLUTE):
+	case _TCL_PATH_ABSOLUTE:
 		goto _1
-	case int32(_TCL_PATH_RELATIVE):
+	case _TCL_PATH_RELATIVE:
 		goto _2
-	case int32(_TCL_PATH_VOLUME_RELATIVE):
+	case _TCL_PATH_VOLUME_RELATIVE:
 		goto _3
 	default:
 		goto _4
@@ -45002,9 +45002,9 @@ func _FilesystemSeparatorCmd(tls *libc.TLS, clientData TClientData, interp uintp
 	if objc == int32(1) {
 		separator = libc.UintptrFromInt32(0) /* lint */
 		switch XtclPlatform {
-		case int32(_TCL_PLATFORM_UNIX):
+		case _TCL_PLATFORM_UNIX:
 			separator = __ccgo_ts + 5689
-		case int32(_TCL_PLATFORM_WINDOWS):
+		case _TCL_PLATFORM_WINDOWS:
 			separator = __ccgo_ts + 12607
 			break
 		}
@@ -61682,7 +61682,7 @@ func XTclCompileBreakCmd(tls *libc.TLS, interp uintptr, parsePtr uintptr, cmdPtr
 	 * Find the innermost exception range that contains this command.
 	 */
 	rangePtr = XTclGetInnermostExceptionRange(tls, envPtr, int32(m_TCL_BREAK), bp)
-	if rangePtr != 0 && (*TExceptionRange)(unsafe.Pointer(rangePtr)).Ftype1 == int32(_LOOP_EXCEPTION_RANGE) {
+	if rangePtr != 0 && (*TExceptionRange)(unsafe.Pointer(rangePtr)).Ftype1 == _LOOP_EXCEPTION_RANGE {
 		/*
 		 * Found the target! No need for a nasty INST_BREAK here.
 		 */
@@ -61804,7 +61804,7 @@ func XTclCompileCatchCmd(tls *libc.TLS, interp uintptr, parsePtr uintptr, cmdPtr
 	 * The reason for duplicating the script is that EVAL_STK would otherwise
 	 * begin by undeflowing the stack below the mark set by BEGIN_CATCH4.
 	 */
-	range1 = XTclCreateExceptRange(tls, int32(_CATCH_EXCEPTION_RANGE), envPtr)
+	range1 = XTclCreateExceptRange(tls, _CATCH_EXCEPTION_RANGE, envPtr)
 	if (*TTcl_Token)(unsafe.Pointer(cmdTokenPtr)).Ftype1 == int32(m_TCL_TOKEN_SIMPLE_WORD) {
 		if (*TCompileEnv)(unsafe.Pointer(envPtr)).FcodeNext+uintptr(5) > (*TCompileEnv)(unsafe.Pointer(envPtr)).FcodeEnd {
 			XTclExpandCodeArray(tls, envPtr)
@@ -62069,7 +62069,7 @@ func XTclCompileCatchCmd(tls *libc.TLS, interp uintptr, parsePtr uintptr, cmdPtr
 			*(*int32)(unsafe.Pointer(envPtr + 32)) += _delta6
 		}
 	}
-	XTclEmitForwardJump(tls, envPtr, int32(_TCL_UNCONDITIONAL_JUMP), bp)
+	XTclEmitForwardJump(tls, envPtr, _TCL_UNCONDITIONAL_JUMP, bp)
 	/*
 	 * Emit the "error case" epilogue. Push the interpreter result and the
 	 * return code.
@@ -63066,7 +63066,7 @@ func XTclCompileContinueCmd(tls *libc.TLS, interp uintptr, parsePtr uintptr, cmd
 	 * innermost containing exception range.
 	 */
 	rangePtr = XTclGetInnermostExceptionRange(tls, envPtr, int32(m_TCL_CONTINUE), bp)
-	if rangePtr != 0 && (*TExceptionRange)(unsafe.Pointer(rangePtr)).Ftype1 == int32(_LOOP_EXCEPTION_RANGE) {
+	if rangePtr != 0 && (*TExceptionRange)(unsafe.Pointer(rangePtr)).Ftype1 == _LOOP_EXCEPTION_RANGE {
 		/*
 		 * Found the target! No need for a nasty INST_CONTINUE here.
 		 */
@@ -65191,7 +65191,7 @@ func XTclCompileDictMergeCmd(tls *libc.TLS, interp uintptr, parsePtr uintptr, cm
 	/*
 	 * For each of the remaining dictionaries...
 	 */
-	outLoop = XTclCreateExceptRange(tls, int32(_CATCH_EXCEPTION_RANGE), envPtr)
+	outLoop = XTclCreateExceptRange(tls, _CATCH_EXCEPTION_RANGE, envPtr)
 	if (*TCompileEnv)(unsafe.Pointer(envPtr)).FcodeNext+uintptr(5) > (*TCompileEnv)(unsafe.Pointer(envPtr)).FcodeEnd {
 		XTclExpandCodeArray(tls, envPtr)
 	}
@@ -66349,7 +66349,7 @@ func _CompileDictEachCmd(tls *libc.TLS, interp uintptr, parsePtr uintptr, cmdPtr
 	 * Now we catch errors from here on so that we can finalize the search
 	 * started by Tcl_DictObjFirst above.
 	 */
-	catchRange = XTclCreateExceptRange(tls, int32(_CATCH_EXCEPTION_RANGE), envPtr)
+	catchRange = XTclCreateExceptRange(tls, _CATCH_EXCEPTION_RANGE, envPtr)
 	if (*TCompileEnv)(unsafe.Pointer(envPtr)).FcodeNext+uintptr(5) > (*TCompileEnv)(unsafe.Pointer(envPtr)).FcodeEnd {
 		XTclExpandCodeArray(tls, envPtr)
 	}
@@ -66658,7 +66658,7 @@ func _CompileDictEachCmd(tls *libc.TLS, interp uintptr, parsePtr uintptr, cmdPtr
 	/*
 	 * Set up the loop exception targets.
 	 */
-	loopRange = XTclCreateExceptRange(tls, int32(_LOOP_EXCEPTION_RANGE), envPtr)
+	loopRange = XTclCreateExceptRange(tls, _LOOP_EXCEPTION_RANGE, envPtr)
 	(*TCompileEnv)(unsafe.Pointer(envPtr)).FexceptDepth++
 	if (*TCompileEnv)(unsafe.Pointer(envPtr)).FexceptDepth > (*TCompileEnv)(unsafe.Pointer(envPtr)).FmaxExceptDepth {
 		v108 = (*TCompileEnv)(unsafe.Pointer(envPtr)).FexceptDepth
@@ -67765,7 +67765,7 @@ func XTclCompileDictUpdateCmd(tls *libc.TLS, interp uintptr, parsePtr uintptr, c
 	v43 = *(*uintptr)(unsafe.Pointer(v44))
 	*(*uintptr)(unsafe.Pointer(v44))++
 	*(*uint8)(unsafe.Pointer(v43)) = uint8(uint32(infoIndex))
-	range1 = XTclCreateExceptRange(tls, int32(_CATCH_EXCEPTION_RANGE), envPtr)
+	range1 = XTclCreateExceptRange(tls, _CATCH_EXCEPTION_RANGE, envPtr)
 	if (*TCompileEnv)(unsafe.Pointer(envPtr)).FcodeNext+uintptr(5) > (*TCompileEnv)(unsafe.Pointer(envPtr)).FcodeEnd {
 		XTclExpandCodeArray(tls, envPtr)
 	}
@@ -67941,7 +67941,7 @@ func XTclCompileDictUpdateCmd(tls *libc.TLS, interp uintptr, parsePtr uintptr, c
 	/*
 	 * Jump around the exceptional termination code.
 	 */
-	XTclEmitForwardJump(tls, envPtr, int32(_TCL_UNCONDITIONAL_JUMP), bp)
+	XTclEmitForwardJump(tls, envPtr, _TCL_UNCONDITIONAL_JUMP, bp)
 	/*
 	 * Termination code for non-ok returns: stash the result and return
 	 * options in the stack, bring up the key list, finish the update code,
@@ -70561,7 +70561,7 @@ func XTclCompileDictWithCmd(tls *libc.TLS, interp uintptr, parsePtr uintptr, cmd
 	/*
 	 * Now the body of the [dict with].
 	 */
-	range1 = XTclCreateExceptRange(tls, int32(_CATCH_EXCEPTION_RANGE), envPtr)
+	range1 = XTclCreateExceptRange(tls, _CATCH_EXCEPTION_RANGE, envPtr)
 	if (*TCompileEnv)(unsafe.Pointer(envPtr)).FcodeNext+uintptr(5) > (*TCompileEnv)(unsafe.Pointer(envPtr)).FcodeEnd {
 		XTclExpandCodeArray(tls, envPtr)
 	}
@@ -70975,7 +70975,7 @@ func XTclCompileDictWithCmd(tls *libc.TLS, interp uintptr, parsePtr uintptr, cmd
 			*(*int32)(unsafe.Pointer(envPtr + 32)) += _delta69
 		}
 	}
-	XTclEmitForwardJump(tls, envPtr, int32(_TCL_UNCONDITIONAL_JUMP), bp)
+	XTclEmitForwardJump(tls, envPtr, _TCL_UNCONDITIONAL_JUMP, bp)
 	/*
 	 * Now fold the results back into the dictionary in the exception case.
 	 */
@@ -72222,11 +72222,11 @@ func XTclCompileForCmd(tls *libc.TLS, interp uintptr, parsePtr uintptr, cmdPtr u
 	 *    A: cond -> result      : testCodeOffset
 	 *       if (result) goto B
 	 */
-	XTclEmitForwardJump(tls, envPtr, int32(_TCL_UNCONDITIONAL_JUMP), bp)
+	XTclEmitForwardJump(tls, envPtr, _TCL_UNCONDITIONAL_JUMP, bp)
 	/*
 	 * Compile the loop body.
 	 */
-	bodyRange = XTclCreateExceptRange(tls, int32(_LOOP_EXCEPTION_RANGE), envPtr)
+	bodyRange = XTclCreateExceptRange(tls, _LOOP_EXCEPTION_RANGE, envPtr)
 	(*TCompileEnv)(unsafe.Pointer(envPtr)).FexceptDepth++
 	if (*TCompileEnv)(unsafe.Pointer(envPtr)).FexceptDepth > (*TCompileEnv)(unsafe.Pointer(envPtr)).FmaxExceptDepth {
 		v3 = (*TCompileEnv)(unsafe.Pointer(envPtr)).FexceptDepth
@@ -72269,7 +72269,7 @@ func XTclCompileForCmd(tls *libc.TLS, interp uintptr, parsePtr uintptr, cmdPtr u
 	 * have a continueOffset (other than -1) connected to it; it won't trap
 	 * TCL_CONTINUE but rather just TCL_BREAK.
 	 */
-	nextRange = XTclCreateExceptRange(tls, int32(_LOOP_EXCEPTION_RANGE), envPtr)
+	nextRange = XTclCreateExceptRange(tls, _LOOP_EXCEPTION_RANGE, envPtr)
 	(*(*TExceptionAux)(unsafe.Pointer((*TCompileEnv)(unsafe.Pointer(envPtr)).FexceptAuxArrayPtr + uintptr(nextRange)*40))).FsupportsContinue = 0
 	(*TCompileEnv)(unsafe.Pointer(envPtr)).FexceptDepth++
 	if (*TCompileEnv)(unsafe.Pointer(envPtr)).FexceptDepth > (*TCompileEnv)(unsafe.Pointer(envPtr)).FmaxExceptDepth {
@@ -72842,7 +72842,7 @@ func _CompileEachloopCmd(tls *libc.TLS, interp uintptr, parsePtr uintptr, cmdPtr
 	/*
 	 * Inline compile the loop body.
 	 */
-	range1 = XTclCreateExceptRange(tls, int32(_LOOP_EXCEPTION_RANGE), envPtr)
+	range1 = XTclCreateExceptRange(tls, _LOOP_EXCEPTION_RANGE, envPtr)
 	(*TCompileEnv)(unsafe.Pointer(envPtr)).FexceptDepth++
 	if (*TCompileEnv)(unsafe.Pointer(envPtr)).FexceptDepth > (*TCompileEnv)(unsafe.Pointer(envPtr)).FmaxExceptDepth {
 		v41 = (*TCompileEnv)(unsafe.Pointer(envPtr)).FexceptDepth
@@ -74961,7 +74961,7 @@ func XTclCompileIfCmd(tls *libc.TLS, interp uintptr, parsePtr uintptr, cmdPtr ui
 				}
 				jumpIndex = (*(*TJumpFixupArray)(unsafe.Pointer(bp))).Fnext
 				(*(*TJumpFixupArray)(unsafe.Pointer(bp))).Fnext++
-				XTclEmitForwardJump(tls, envPtr, int32(_TCL_FALSE_JUMP), (*(*TJumpFixupArray)(unsafe.Pointer(bp))).Ffixup+uintptr(jumpIndex)*16)
+				XTclEmitForwardJump(tls, envPtr, _TCL_FALSE_JUMP, (*(*TJumpFixupArray)(unsafe.Pointer(bp))).Ffixup+uintptr(jumpIndex)*16)
 			}
 			code = m_TCL_OK
 		}
@@ -75003,7 +75003,7 @@ func XTclCompileIfCmd(tls *libc.TLS, interp uintptr, parsePtr uintptr, cmdPtr ui
 				XTclExpandJumpFixupArray(tls, bp+176)
 			}
 			(*(*TJumpFixupArray)(unsafe.Pointer(bp + 176))).Fnext++
-			XTclEmitForwardJump(tls, envPtr, int32(_TCL_UNCONDITIONAL_JUMP), (*(*TJumpFixupArray)(unsafe.Pointer(bp + 176))).Ffixup+uintptr(jumpIndex)*16)
+			XTclEmitForwardJump(tls, envPtr, _TCL_UNCONDITIONAL_JUMP, (*(*TJumpFixupArray)(unsafe.Pointer(bp + 176))).Ffixup+uintptr(jumpIndex)*16)
 			/*
 			 * Fix the target of the jumpFalse after the test. Generate a 4
 			 * byte jump if the distance is > 120 bytes. This is conservative,
@@ -82594,7 +82594,7 @@ func XTclCompileNamespaceTailCmd(tls *libc.TLS, interp uintptr, parsePtr uintptr
 		}
 		*(*int32)(unsafe.Pointer(envPtr + 32)) += _delta9
 	}
-	XTclEmitForwardJump(tls, envPtr, int32(_TCL_FALSE_JUMP), bp)
+	XTclEmitForwardJump(tls, envPtr, _TCL_FALSE_JUMP, bp)
 	_objIndexCopy3 = XTclRegisterLiteral(tls, envPtr, __ccgo_ts+18553, int32(libc.Uint32FromInt64(2)-libc.Uint32FromInt32(1)), 0)
 	if _objIndexCopy3 <= int32(255) {
 		if (*TCompileEnv)(unsafe.Pointer(envPtr)).FcodeNext+uintptr(2) > (*TCompileEnv)(unsafe.Pointer(envPtr)).FcodeEnd {
@@ -84654,7 +84654,7 @@ func XTclCompileReturnCmd(tls *libc.TLS, interp uintptr, parsePtr uintptr, cmdPt
 		enclosingCatch = 0
 		for index >= 0 {
 			range1 = *(*TExceptionRange)(unsafe.Pointer((*TCompileEnv)(unsafe.Pointer(envPtr)).FexceptArrayPtr + uintptr(index)*28))
-			if range1.Ftype1 == int32(_CATCH_EXCEPTION_RANGE) && range1.FcatchOffset == -int32(1) {
+			if range1.Ftype1 == _CATCH_EXCEPTION_RANGE && range1.FcatchOffset == -int32(1) {
 				enclosingCatch = int32(1)
 				break
 			}
@@ -85012,7 +85012,7 @@ func _CompileReturnInternal(tls *libc.TLS, envPtr uintptr, op uint8, code int32,
 	_, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _ = _delta, _delta1, _delta2, _objIndexCopy, _objPtr, rangePtr, v1, v10, v11, v12, v13, v14, v15, v16, v17, v18, v19, v2, v20, v21, v22, v23, v24, v25, v26, v27, v28, v29, v3, v30, v31, v32, v33, v34, v35, v4, v5, v6, v7, v8, v9
 	if level == 0 && (code == int32(m_TCL_BREAK) || code == int32(m_TCL_CONTINUE)) {
 		rangePtr = XTclGetInnermostExceptionRange(tls, envPtr, code, bp)
-		if rangePtr != 0 && (*TExceptionRange)(unsafe.Pointer(rangePtr)).Ftype1 == int32(_LOOP_EXCEPTION_RANGE) {
+		if rangePtr != 0 && (*TExceptionRange)(unsafe.Pointer(rangePtr)).Ftype1 == _LOOP_EXCEPTION_RANGE {
 			XTclCleanupStackForBreakContinue(tls, envPtr, *(*uintptr)(unsafe.Pointer(bp)))
 			if code == int32(m_TCL_BREAK) {
 				XTclAddLoopBreakFixup(tls, envPtr, *(*uintptr)(unsafe.Pointer(bp)))
@@ -88702,43 +88702,43 @@ func XTclCompileStringIsCmd(tls *libc.TLS, interp uintptr, parsePtr uintptr, cmd
 	}
 	goto _42
 _21:
-	strClassType = int32(_STR_CLASS_ALNUM)
+	strClassType = _STR_CLASS_ALNUM
 	goto compileStrClass
 _22:
-	strClassType = int32(_STR_CLASS_ALPHA)
+	strClassType = _STR_CLASS_ALPHA
 	goto compileStrClass
 _23:
-	strClassType = int32(_STR_CLASS_ASCII)
+	strClassType = _STR_CLASS_ASCII
 	goto compileStrClass
 _24:
-	strClassType = int32(_STR_CLASS_CONTROL)
+	strClassType = _STR_CLASS_CONTROL
 	goto compileStrClass
 _25:
-	strClassType = int32(_STR_CLASS_DIGIT)
+	strClassType = _STR_CLASS_DIGIT
 	goto compileStrClass
 _26:
-	strClassType = int32(_STR_CLASS_GRAPH)
+	strClassType = _STR_CLASS_GRAPH
 	goto compileStrClass
 _27:
-	strClassType = int32(_STR_CLASS_LOWER)
+	strClassType = _STR_CLASS_LOWER
 	goto compileStrClass
 _28:
-	strClassType = int32(_STR_CLASS_PRINT)
+	strClassType = _STR_CLASS_PRINT
 	goto compileStrClass
 _29:
-	strClassType = int32(_STR_CLASS_PUNCT)
+	strClassType = _STR_CLASS_PUNCT
 	goto compileStrClass
 _30:
-	strClassType = int32(_STR_CLASS_SPACE)
+	strClassType = _STR_CLASS_SPACE
 	goto compileStrClass
 _31:
-	strClassType = int32(_STR_CLASS_UPPER)
+	strClassType = _STR_CLASS_UPPER
 	goto compileStrClass
 _32:
-	strClassType = int32(_STR_CLASS_WORD)
+	strClassType = _STR_CLASS_WORD
 	goto compileStrClass
 _33:
-	strClassType = int32(_STR_CLASS_XDIGIT)
+	strClassType = _STR_CLASS_XDIGIT
 compileStrClass:
 	if allowEmpty != 0 {
 		if (*TCompileEnv)(unsafe.Pointer(envPtr)).FcodeNext+uintptr(2) > (*TCompileEnv)(unsafe.Pointer(envPtr)).FcodeEnd {
@@ -91088,7 +91088,7 @@ _370:
 	*(*uint8)(unsafe.Pointer((*TCompileEnv)(unsafe.Pointer(envPtr)).FcodeStart + uintptr(end) + libc.UintptrFromInt32(1))) = uint8(uint32(int32((*TCompileEnv)(unsafe.Pointer(envPtr)).FcodeNext) - int32((*TCompileEnv)(unsafe.Pointer(envPtr)).FcodeStart) - end))
 	return m_TCL_OK
 _41:
-	range1 = XTclCreateExceptRange(tls, int32(_CATCH_EXCEPTION_RANGE), envPtr)
+	range1 = XTclCreateExceptRange(tls, _CATCH_EXCEPTION_RANGE, envPtr)
 	if (*TCompileEnv)(unsafe.Pointer(envPtr)).FcodeNext+uintptr(5) > (*TCompileEnv)(unsafe.Pointer(envPtr)).FcodeEnd {
 		XTclExpandCodeArray(tls, envPtr)
 	}
@@ -95597,7 +95597,7 @@ func XTclSubstCompile(tls *libc.TLS, interp uintptr, bytes uintptr, numBytes int
 		}
 		if breakOffset == 0 {
 			/* Jump to the start (jump over the jump to end) */
-			XTclEmitForwardJump(tls, envPtr, int32(_TCL_UNCONDITIONAL_JUMP), bp+388)
+			XTclEmitForwardJump(tls, envPtr, _TCL_UNCONDITIONAL_JUMP, bp+388)
 			/* Jump to the end (all BREAKs land here) */
 			breakOffset = int32((*TCompileEnv)(unsafe.Pointer(envPtr)).FcodeNext) - int32((*TCompileEnv)(unsafe.Pointer(envPtr)).FcodeStart)
 			if (*TCompileEnv)(unsafe.Pointer(envPtr)).FcodeNext+uintptr(5) > (*TCompileEnv)(unsafe.Pointer(envPtr)).FcodeEnd {
@@ -95644,7 +95644,7 @@ func XTclSubstCompile(tls *libc.TLS, interp uintptr, bytes uintptr, numBytes int
 			}
 		}
 		(*TCompileEnv)(unsafe.Pointer(envPtr)).Fline = *(*int32)(unsafe.Pointer(bp))
-		catchRange = XTclCreateExceptRange(tls, int32(_CATCH_EXCEPTION_RANGE), envPtr)
+		catchRange = XTclCreateExceptRange(tls, _CATCH_EXCEPTION_RANGE, envPtr)
 		if (*TCompileEnv)(unsafe.Pointer(envPtr)).FcodeNext+uintptr(5) > (*TCompileEnv)(unsafe.Pointer(envPtr)).FcodeEnd {
 			XTclExpandCodeArray(tls, envPtr)
 		}
@@ -95726,7 +95726,7 @@ func XTclSubstCompile(tls *libc.TLS, interp uintptr, bytes uintptr, numBytes int
 			}
 			*(*int32)(unsafe.Pointer(envPtr + 32)) += _delta10
 		}
-		XTclEmitForwardJump(tls, envPtr, int32(_TCL_UNCONDITIONAL_JUMP), bp+404)
+		XTclEmitForwardJump(tls, envPtr, _TCL_UNCONDITIONAL_JUMP, bp+404)
 		if -int32(1) < 0 {
 			if (*TCompileEnv)(unsafe.Pointer(envPtr)).FmaxStackDepth < (*TCompileEnv)(unsafe.Pointer(envPtr)).FcurrStackDepth {
 				(*TCompileEnv)(unsafe.Pointer(envPtr)).FmaxStackDepth = (*TCompileEnv)(unsafe.Pointer(envPtr)).FcurrStackDepth
@@ -95891,13 +95891,13 @@ func XTclSubstCompile(tls *libc.TLS, interp uintptr, bytes uintptr, numBytes int
 			*(*int32)(unsafe.Pointer(envPtr + 32)) += _delta17
 		}
 		/* RETURN */
-		XTclEmitForwardJump(tls, envPtr, int32(_TCL_UNCONDITIONAL_JUMP), bp+420)
+		XTclEmitForwardJump(tls, envPtr, _TCL_UNCONDITIONAL_JUMP, bp+420)
 		/* BREAK */
-		XTclEmitForwardJump(tls, envPtr, int32(_TCL_UNCONDITIONAL_JUMP), bp+436)
+		XTclEmitForwardJump(tls, envPtr, _TCL_UNCONDITIONAL_JUMP, bp+436)
 		/* CONTINUE */
-		XTclEmitForwardJump(tls, envPtr, int32(_TCL_UNCONDITIONAL_JUMP), bp+452)
+		XTclEmitForwardJump(tls, envPtr, _TCL_UNCONDITIONAL_JUMP, bp+452)
 		/* OTHER */
-		XTclEmitForwardJump(tls, envPtr, int32(_TCL_UNCONDITIONAL_JUMP), bp+468)
+		XTclEmitForwardJump(tls, envPtr, _TCL_UNCONDITIONAL_JUMP, bp+468)
 		if int32(1) < 0 {
 			if (*TCompileEnv)(unsafe.Pointer(envPtr)).FmaxStackDepth < (*TCompileEnv)(unsafe.Pointer(envPtr)).FcurrStackDepth {
 				(*TCompileEnv)(unsafe.Pointer(envPtr)).FmaxStackDepth = (*TCompileEnv)(unsafe.Pointer(envPtr)).FcurrStackDepth
@@ -96074,7 +96074,7 @@ func XTclSubstCompile(tls *libc.TLS, interp uintptr, bytes uintptr, numBytes int
 			}
 			*(*int32)(unsafe.Pointer(envPtr + 32)) += _delta23
 		}
-		XTclEmitForwardJump(tls, envPtr, int32(_TCL_UNCONDITIONAL_JUMP), bp+484)
+		XTclEmitForwardJump(tls, envPtr, _TCL_UNCONDITIONAL_JUMP, bp+484)
 		if int32(2) < 0 {
 			if (*TCompileEnv)(unsafe.Pointer(envPtr)).FmaxStackDepth < (*TCompileEnv)(unsafe.Pointer(envPtr)).FcurrStackDepth {
 				(*TCompileEnv)(unsafe.Pointer(envPtr)).FmaxStackDepth = (*TCompileEnv)(unsafe.Pointer(envPtr)).FcurrStackDepth
@@ -97131,12 +97131,12 @@ func _IssueSwitchChainedTests(tls *libc.TLS, interp uintptr, envPtr uintptr, mod
 					contFixIndex = fixupCount
 					contFixCount = 0
 				}
-				XTclEmitForwardJump(tls, envPtr, int32(_TCL_TRUE_JUMP), fixupArray+uintptr(contFixIndex+contFixCount)*16)
+				XTclEmitForwardJump(tls, envPtr, _TCL_TRUE_JUMP, fixupArray+uintptr(contFixIndex+contFixCount)*16)
 				fixupCount++
 				contFixCount++
 				goto _1
 			}
-			XTclEmitForwardJump(tls, envPtr, int32(_TCL_FALSE_JUMP), fixupArray+uintptr(fixupCount)*16)
+			XTclEmitForwardJump(tls, envPtr, _TCL_FALSE_JUMP, fixupArray+uintptr(fixupCount)*16)
 			nextArmFixupIndex = fixupCount
 			fixupCount++
 		} else {
@@ -97201,7 +97201,7 @@ func _IssueSwitchChainedTests(tls *libc.TLS, interp uintptr, envPtr uintptr, mod
 		(*TCompileEnv)(unsafe.Pointer(envPtr)).FclNext = *(*uintptr)(unsafe.Pointer(bodyContLines + uintptr(i+int32(1))*4)) /* TIP #280 */
 		XTclCompileCmdWord(tls, interp, *(*uintptr)(unsafe.Pointer(bodyToken + uintptr(i+int32(1))*4)), int32(1), envPtr)
 		if !(foundDefault != 0) {
-			XTclEmitForwardJump(tls, envPtr, int32(_TCL_UNCONDITIONAL_JUMP), fixupArray+uintptr(fixupCount)*16)
+			XTclEmitForwardJump(tls, envPtr, _TCL_UNCONDITIONAL_JUMP, fixupArray+uintptr(fixupCount)*16)
 			fixupCount++
 			*(*uint32)(unsafe.Pointer(fixupTargetArray + uintptr(nextArmFixupIndex)*4)) = uint32(int32((*TCompileEnv)(unsafe.Pointer(envPtr)).FcodeNext) - int32((*TCompileEnv)(unsafe.Pointer(envPtr)).FcodeStart))
 		}
@@ -99482,7 +99482,7 @@ func _IssueTryClausesInstructions(tls *libc.TLS, interp uintptr, envPtr uintptr,
 	 * on/trap clause; when none is present, this whole function is not called
 	 * (and it's never called when there's a finally clause).
 	 */
-	range1 = XTclCreateExceptRange(tls, int32(_CATCH_EXCEPTION_RANGE), envPtr)
+	range1 = XTclCreateExceptRange(tls, _CATCH_EXCEPTION_RANGE, envPtr)
 	if (*TCompileEnv)(unsafe.Pointer(envPtr)).FcodeNext+uintptr(5) > (*TCompileEnv)(unsafe.Pointer(envPtr)).FcodeEnd {
 		XTclExpandCodeArray(tls, envPtr)
 	}
@@ -100970,7 +100970,7 @@ func _IssueTryClausesInstructions(tls *libc.TLS, interp uintptr, envPtr uintptr,
 					j++
 				}
 			}
-			range1 = XTclCreateExceptRange(tls, int32(_CATCH_EXCEPTION_RANGE), envPtr)
+			range1 = XTclCreateExceptRange(tls, _CATCH_EXCEPTION_RANGE, envPtr)
 			if (*TCompileEnv)(unsafe.Pointer(envPtr)).FcodeNext+uintptr(5) > (*TCompileEnv)(unsafe.Pointer(envPtr)).FcodeEnd {
 				XTclExpandCodeArray(tls, envPtr)
 			}
@@ -101988,7 +101988,7 @@ func _IssueTryClausesFinallyInstructions(tls *libc.TLS, interp uintptr, envPtr u
 	 * Compile the body, trapping any error in it so that we can trap on it
 	 * (if any trap matches) and run a finally clause.
 	 */
-	range1 = XTclCreateExceptRange(tls, int32(_CATCH_EXCEPTION_RANGE), envPtr)
+	range1 = XTclCreateExceptRange(tls, _CATCH_EXCEPTION_RANGE, envPtr)
 	if (*TCompileEnv)(unsafe.Pointer(envPtr)).FcodeNext+uintptr(5) > (*TCompileEnv)(unsafe.Pointer(envPtr)).FcodeEnd {
 		XTclExpandCodeArray(tls, envPtr)
 	}
@@ -103330,7 +103330,7 @@ func _IssueTryClausesFinallyInstructions(tls *libc.TLS, interp uintptr, envPtr u
 		 * failed trap for the result from the main script.
 		 */
 		if *(*int32)(unsafe.Pointer(resultVars + uintptr(i)*4)) >= 0 || *(*uintptr)(unsafe.Pointer(handlerTokens + uintptr(i)*4)) != 0 {
-			range1 = XTclCreateExceptRange(tls, int32(_CATCH_EXCEPTION_RANGE), envPtr)
+			range1 = XTclCreateExceptRange(tls, _CATCH_EXCEPTION_RANGE, envPtr)
 			if (*TCompileEnv)(unsafe.Pointer(envPtr)).FcodeNext+uintptr(5) > (*TCompileEnv)(unsafe.Pointer(envPtr)).FcodeEnd {
 				XTclExpandCodeArray(tls, envPtr)
 			}
@@ -104934,7 +104934,7 @@ func _IssueTryClausesFinallyInstructions(tls *libc.TLS, interp uintptr, envPtr u
 		*(*uint8)(unsafe.Pointer((*TCompileEnv)(unsafe.Pointer(envPtr)).FcodeStart + uintptr(afterBody) + libc.UintptrFromInt32(1) + libc.UintptrFromInt32(2))) = uint8(uint32(int32((*TCompileEnv)(unsafe.Pointer(envPtr)).FcodeNext)-int32((*TCompileEnv)(unsafe.Pointer(envPtr)).FcodeStart)-afterBody) >> libc.Int32FromInt32(8))
 		*(*uint8)(unsafe.Pointer((*TCompileEnv)(unsafe.Pointer(envPtr)).FcodeStart + uintptr(afterBody) + libc.UintptrFromInt32(1) + libc.UintptrFromInt32(3))) = uint8(uint32(int32((*TCompileEnv)(unsafe.Pointer(envPtr)).FcodeNext) - int32((*TCompileEnv)(unsafe.Pointer(envPtr)).FcodeStart) - afterBody))
 	}
-	range1 = XTclCreateExceptRange(tls, int32(_CATCH_EXCEPTION_RANGE), envPtr)
+	range1 = XTclCreateExceptRange(tls, _CATCH_EXCEPTION_RANGE, envPtr)
 	if (*TCompileEnv)(unsafe.Pointer(envPtr)).FcodeNext+uintptr(5) > (*TCompileEnv)(unsafe.Pointer(envPtr)).FcodeEnd {
 		XTclExpandCodeArray(tls, envPtr)
 	}
@@ -105972,7 +105972,7 @@ func _IssueTryFinallyInstructions(tls *libc.TLS, interp uintptr, envPtr uintptr,
 	 * Note that this one is simple enough that we can issue it without
 	 * needing a local variable table, making it a universal compilation.
 	 */
-	range1 = XTclCreateExceptRange(tls, int32(_CATCH_EXCEPTION_RANGE), envPtr)
+	range1 = XTclCreateExceptRange(tls, _CATCH_EXCEPTION_RANGE, envPtr)
 	if (*TCompileEnv)(unsafe.Pointer(envPtr)).FcodeNext+uintptr(5) > (*TCompileEnv)(unsafe.Pointer(envPtr)).FcodeEnd {
 		XTclExpandCodeArray(tls, envPtr)
 	}
@@ -106123,7 +106123,7 @@ func _IssueTryFinallyInstructions(tls *libc.TLS, interp uintptr, envPtr uintptr,
 		}
 		*(*int32)(unsafe.Pointer(envPtr + 32)) += _delta4
 	}
-	range1 = XTclCreateExceptRange(tls, int32(_CATCH_EXCEPTION_RANGE), envPtr)
+	range1 = XTclCreateExceptRange(tls, _CATCH_EXCEPTION_RANGE, envPtr)
 	if (*TCompileEnv)(unsafe.Pointer(envPtr)).FcodeNext+uintptr(5) > (*TCompileEnv)(unsafe.Pointer(envPtr)).FcodeEnd {
 		XTclExpandCodeArray(tls, envPtr)
 	}
@@ -107253,7 +107253,7 @@ func XTclCompileWhileCmd(tls *libc.TLS, interp uintptr, parsePtr uintptr, cmdPtr
 	 * Create a ExceptionRange record for the loop body. This is used to
 	 * implement break and continue.
 	 */
-	range1 = XTclCreateExceptRange(tls, int32(_LOOP_EXCEPTION_RANGE), envPtr)
+	range1 = XTclCreateExceptRange(tls, _LOOP_EXCEPTION_RANGE, envPtr)
 	/*
 	 * Jump to the evaluation of the condition. This code uses the "loop
 	 * rotation" optimisation (which eliminates one branch from the loop).
@@ -107268,7 +107268,7 @@ func XTclCompileWhileCmd(tls *libc.TLS, interp uintptr, parsePtr uintptr, cmdPtr
 	 *       goto B
 	 */
 	if loopMayEnd != 0 {
-		XTclEmitForwardJump(tls, envPtr, int32(_TCL_UNCONDITIONAL_JUMP), bp)
+		XTclEmitForwardJump(tls, envPtr, _TCL_UNCONDITIONAL_JUMP, bp)
 		testCodeOffset = 0 /* Avoid compiler warning. */
 	} else {
 		/*
@@ -110638,41 +110638,41 @@ _PREC_UNARY = 18
  */
 
 var _prec = [136]uint8{
-	65:  uint8(_PREC_ADD),
-	66:  uint8(_PREC_ADD),
-	67:  uint8(_PREC_COMMA),
-	68:  uint8(_PREC_MULT),
-	69:  uint8(_PREC_MULT),
-	70:  uint8(_PREC_MULT),
-	71:  uint8(_PREC_COMPARE),
-	72:  uint8(_PREC_COMPARE),
-	73:  uint8(_PREC_BIT_AND),
-	74:  uint8(_PREC_BIT_XOR),
-	75:  uint8(_PREC_BIT_OR),
-	76:  uint8(_PREC_CONDITIONAL),
-	77:  uint8(_PREC_CONDITIONAL),
-	78:  uint8(_PREC_SHIFT),
-	79:  uint8(_PREC_SHIFT),
-	80:  uint8(_PREC_COMPARE),
-	81:  uint8(_PREC_COMPARE),
-	82:  uint8(_PREC_EQUAL),
-	83:  uint8(_PREC_EQUAL),
-	84:  uint8(_PREC_AND),
-	85:  uint8(_PREC_OR),
-	86:  uint8(_PREC_EQUAL),
-	87:  uint8(_PREC_EQUAL),
-	88:  uint8(_PREC_EXPON),
-	89:  uint8(_PREC_EQUAL),
-	90:  uint8(_PREC_EQUAL),
-	91:  uint8(_PREC_CLOSE_PAREN),
-	92:  uint8(_PREC_END),
-	129: uint8(_PREC_UNARY),
-	130: uint8(_PREC_UNARY),
-	131: uint8(_PREC_UNARY),
-	132: uint8(_PREC_START),
-	133: uint8(_PREC_OPEN_PAREN),
-	134: uint8(_PREC_UNARY),
-	135: uint8(_PREC_UNARY),
+	65:  _PREC_ADD,
+	66:  _PREC_ADD,
+	67:  _PREC_COMMA,
+	68:  _PREC_MULT,
+	69:  _PREC_MULT,
+	70:  _PREC_MULT,
+	71:  _PREC_COMPARE,
+	72:  _PREC_COMPARE,
+	73:  _PREC_BIT_AND,
+	74:  _PREC_BIT_XOR,
+	75:  _PREC_BIT_OR,
+	76:  _PREC_CONDITIONAL,
+	77:  _PREC_CONDITIONAL,
+	78:  _PREC_SHIFT,
+	79:  _PREC_SHIFT,
+	80:  _PREC_COMPARE,
+	81:  _PREC_COMPARE,
+	82:  _PREC_EQUAL,
+	83:  _PREC_EQUAL,
+	84:  _PREC_AND,
+	85:  _PREC_OR,
+	86:  _PREC_EQUAL,
+	87:  _PREC_EQUAL,
+	88:  _PREC_EXPON,
+	89:  _PREC_EQUAL,
+	90:  _PREC_EQUAL,
+	91:  _PREC_CLOSE_PAREN,
+	92:  _PREC_END,
+	129: _PREC_UNARY,
+	130: _PREC_UNARY,
+	131: _PREC_UNARY,
+	132: _PREC_START,
+	133: _PREC_OPEN_PAREN,
+	134: _PREC_UNARY,
+	135: _PREC_UNARY,
 }
 
 /*
@@ -110846,7 +110846,7 @@ func _ParseExpr(tls *libc.TLS, interp uintptr, start uintptr, numBytes int32, op
 	scanned = 0           /* Index of the most recent incomplete tree in
 	 * the OpNode array. Heads a stack of
 	 * incomplete trees linked by p.prev. */
-	complete = int32(_OT_EMPTY) /* "Index" of the complete tree (that is, a
+	complete = _OT_EMPTY /* "Index" of the complete tree (that is, a
 	 * complete subexpression) determined at the
 	 * moment. OT_EMPTY is a nonsense value used
 	 * only to silence compiler warnings. During a
@@ -110911,7 +110911,7 @@ func _ParseExpr(tls *libc.TLS, interp uintptr, start uintptr, numBytes int32, op
 	 */
 	(*TOpNode)(unsafe.Pointer(nodes)).Flexeme = uint8(libc.Int32FromInt32(m_UNARY) | libc.Int32FromInt32(4))
 	(*TOpNode)(unsafe.Pointer(nodes)).Fprecedence = _prec[libc.Int32FromInt32(m_UNARY)|libc.Int32FromInt32(4)]
-	(*TOpNode)(unsafe.Pointer(nodes)).Fmark = uint8(_MARK_RIGHT)
+	(*TOpNode)(unsafe.Pointer(nodes)).Fmark = _MARK_RIGHT
 	(*TOpNode)(unsafe.Pointer(nodes)).Fconstant = uint8(1)
 	v1 = int32(nodesUsed)
 	lastParsed = v1
@@ -111376,7 +111376,7 @@ func _ParseExpr(tls *libc.TLS, interp uintptr, start uintptr, numBytes int32, op
 			 */
 			(*TOpNode)(unsafe.Pointer(nodePtr)).Flexeme = *(*uint8)(unsafe.Pointer(bp))
 			(*TOpNode)(unsafe.Pointer(nodePtr)).Fprecedence = _prec[*(*uint8)(unsafe.Pointer(bp))]
-			(*TOpNode)(unsafe.Pointer(nodePtr)).Fmark = uint8(_MARK_RIGHT)
+			(*TOpNode)(unsafe.Pointer(nodePtr)).Fmark = _MARK_RIGHT
 			/*
 			 * A FUNCTION cannot be a constant expression, because Tcl allows
 			 * functions to return variable results with the same arguments;
@@ -111639,7 +111639,7 @@ func _ParseExpr(tls *libc.TLS, interp uintptr, start uintptr, numBytes int32, op
 					*(*int32)(unsafe.Pointer(nodes + uintptr(complete)*16 + 8)) = incomplete
 					(*TOpNode)(unsafe.Pointer(incompletePtr)).Fconstant = libc.BoolUint8((*TOpNode)(unsafe.Pointer(incompletePtr)).Fconstant != 0 && (*(*TOpNode)(unsafe.Pointer(nodes + uintptr(complete)*16))).Fconstant != 0)
 				} else {
-					(*TOpNode)(unsafe.Pointer(incompletePtr)).Fconstant = libc.BoolUint8((*TOpNode)(unsafe.Pointer(incompletePtr)).Fconstant != 0 && complete == int32(_OT_LITERAL))
+					(*TOpNode)(unsafe.Pointer(incompletePtr)).Fconstant = libc.BoolUint8((*TOpNode)(unsafe.Pointer(incompletePtr)).Fconstant != 0 && complete == _OT_LITERAL)
 				}
 				/*
 				 * The QUESTION/COLON and FUNCTION/OPEN_PAREN combinations
@@ -111759,7 +111759,7 @@ func _ParseExpr(tls *libc.TLS, interp uintptr, start uintptr, numBytes int32, op
 			 */
 			(*TOpNode)(unsafe.Pointer(nodePtr)).Flexeme = *(*uint8)(unsafe.Pointer(bp))
 			(*TOpNode)(unsafe.Pointer(nodePtr)).Fprecedence = precedence
-			(*TOpNode)(unsafe.Pointer(nodePtr)).Fmark = uint8(_MARK_LEFT)
+			(*TOpNode)(unsafe.Pointer(nodePtr)).Fmark = _MARK_LEFT
 			(*TOpNode)(unsafe.Pointer(nodePtr)).Fleft = complete
 			/*
 			 * The COMMA operator cannot be optimized, since the function
@@ -111772,7 +111772,7 @@ func _ParseExpr(tls *libc.TLS, interp uintptr, start uintptr, numBytes int32, op
 				*(*int32)(unsafe.Pointer(nodes + uintptr(complete)*16 + 8)) = int32(nodesUsed)
 				(*TOpNode)(unsafe.Pointer(nodePtr)).Fconstant = libc.BoolUint8((*TOpNode)(unsafe.Pointer(nodePtr)).Fconstant != 0 && (*(*TOpNode)(unsafe.Pointer(nodes + uintptr(complete)*16))).Fconstant != 0)
 			} else {
-				(*TOpNode)(unsafe.Pointer(nodePtr)).Fconstant = libc.BoolUint8((*TOpNode)(unsafe.Pointer(nodePtr)).Fconstant != 0 && complete == int32(_OT_LITERAL))
+				(*TOpNode)(unsafe.Pointer(nodePtr)).Fconstant = libc.BoolUint8((*TOpNode)(unsafe.Pointer(nodePtr)).Fconstant != 0 && complete == _OT_LITERAL)
 			}
 			/*
 			 * With a left operand attached and a right operand missing, the
@@ -111951,9 +111951,9 @@ func _ConvertTreeToTokens(tls *libc.TLS, start uintptr, numBytes int32, nodes ui
 		 * Handle next child node or leaf.
 		 */
 		switch next {
-		case int32(_OT_EMPTY):
+		case _OT_EMPTY:
 			/* No tokens and no characters for the OT_EMPTY leaf. */
-		case int32(_OT_LITERAL):
+		case _OT_LITERAL:
 			/*
 			 * Skip any white space that comes before the literal.
 			 */
@@ -112003,7 +112003,7 @@ func _ConvertTreeToTokens(tls *libc.TLS, start uintptr, numBytes int32, nodes ui
 			*(*int32)(unsafe.Pointer(parsePtr + 24)) += int32(2)
 			start += uintptr(scanned)
 			numBytes -= scanned
-		case int32(_OT_TOKENS):
+		case _OT_TOKENS:
 			toCopy = (*TTcl_Token)(unsafe.Pointer(tokenPtr)).FnumComponents + int32(1)
 			if (*TTcl_Token)(unsafe.Pointer(tokenPtr)).FnumComponents == (*(*TTcl_Token)(unsafe.Pointer(tokenPtr + 1*16))).FnumComponents+int32(1) {
 				/*
@@ -112173,9 +112173,9 @@ func _ConvertTreeToTokens(tls *libc.TLS, start uintptr, numBytes int32, nodes ui
 		/* Determine which way to exit the node on this pass. */
 	router:
 		switch int32((*TOpNode)(unsafe.Pointer(nodePtr)).Fmark) {
-		case int32(_MARK_LEFT):
+		case _MARK_LEFT:
 			next = (*TOpNode)(unsafe.Pointer(nodePtr)).Fleft
-		case int32(_MARK_RIGHT):
+		case _MARK_RIGHT:
 			next = (*TOpNode)(unsafe.Pointer(nodePtr)).Fright
 			/*
 			 * Skip any white space that comes before the operator.
@@ -112209,7 +112209,7 @@ func _ConvertTreeToTokens(tls *libc.TLS, start uintptr, numBytes int32, nodes ui
 			}
 			start += uintptr(scanned)
 			numBytes -= scanned
-		case int32(_MARK_PARENT):
+		case _MARK_PARENT:
 			switch int32((*TOpNode)(unsafe.Pointer(nodePtr)).Flexeme) {
 			case libc.Int32FromInt32(m_UNARY) | libc.Int32FromInt32(4):
 				/* When we get back to the START node, we're done. */
@@ -112854,13 +112854,13 @@ func _CompileExprTree(tls *libc.TLS, interp uintptr, nodes uintptr, index int32,
 	jumpPtr = libc.UintptrFromInt32(0)
 	convert = int32(1)
 	for int32(1) != 0 {
-		if int32((*TOpNode)(unsafe.Pointer(nodePtr)).Fmark) == int32(_MARK_LEFT) {
+		if int32((*TOpNode)(unsafe.Pointer(nodePtr)).Fmark) == _MARK_LEFT {
 			next = (*TOpNode)(unsafe.Pointer(nodePtr)).Fleft
 			if int32((*TOpNode)(unsafe.Pointer(nodePtr)).Flexeme) == libc.Int32FromInt32(m_BINARY)|libc.Int32FromInt32(12) {
 				convert = int32(1)
 			}
 		} else {
-			if int32((*TOpNode)(unsafe.Pointer(nodePtr)).Fmark) == int32(_MARK_RIGHT) {
+			if int32((*TOpNode)(unsafe.Pointer(nodePtr)).Fmark) == _MARK_RIGHT {
 				next = (*TOpNode)(unsafe.Pointer(nodePtr)).Fright
 				switch int32((*TOpNode)(unsafe.Pointer(nodePtr)).Flexeme) {
 				case libc.Int32FromInt32(m_UNARY) | libc.Int32FromInt32(m_BAREWORD):
@@ -112956,12 +112956,12 @@ func _CompileExprTree(tls *libc.TLS, interp uintptr, nodes uintptr, index int32,
 					newJump = XTclStackAlloc(tls, interp, int32(20))
 					(*TJumpList)(unsafe.Pointer(newJump)).Fnext = jumpPtr
 					jumpPtr = newJump
-					XTclEmitForwardJump(tls, envPtr, int32(_TCL_FALSE_JUMP), jumpPtr)
+					XTclEmitForwardJump(tls, envPtr, _TCL_FALSE_JUMP, jumpPtr)
 				case libc.Int32FromInt32(m_BINARY) | libc.Int32FromInt32(13):
 					newJump = XTclStackAlloc(tls, interp, int32(20))
 					(*TJumpList)(unsafe.Pointer(newJump)).Fnext = jumpPtr
 					jumpPtr = newJump
-					XTclEmitForwardJump(tls, envPtr, int32(_TCL_UNCONDITIONAL_JUMP), jumpPtr)
+					XTclEmitForwardJump(tls, envPtr, _TCL_UNCONDITIONAL_JUMP, jumpPtr)
 					if -int32(1) < 0 {
 						if (*TCompileEnv)(unsafe.Pointer(envPtr)).FmaxStackDepth < (*TCompileEnv)(unsafe.Pointer(envPtr)).FcurrStackDepth {
 							(*TCompileEnv)(unsafe.Pointer(envPtr)).FmaxStackDepth = (*TCompileEnv)(unsafe.Pointer(envPtr)).FcurrStackDepth
@@ -112969,7 +112969,7 @@ func _CompileExprTree(tls *libc.TLS, interp uintptr, nodes uintptr, index int32,
 					}
 					*(*int32)(unsafe.Pointer(envPtr + 32)) += -int32(1)
 					if convert != 0 {
-						(*TJumpList)(unsafe.Pointer(jumpPtr)).Fjump.FjumpType = int32(_TCL_TRUE_JUMP)
+						(*TJumpList)(unsafe.Pointer(jumpPtr)).Fjump.FjumpType = _TCL_TRUE_JUMP
 					}
 					convert = int32(1)
 				case libc.Int32FromInt32(m_BINARY) | libc.Int32FromInt32(20):
@@ -112979,9 +112979,9 @@ func _CompileExprTree(tls *libc.TLS, interp uintptr, nodes uintptr, index int32,
 					(*TJumpList)(unsafe.Pointer(newJump)).Fnext = jumpPtr
 					jumpPtr = newJump
 					if int32((*TOpNode)(unsafe.Pointer(nodePtr)).Flexeme) == libc.Int32FromInt32(m_BINARY)|libc.Int32FromInt32(20) {
-						v16 = int32(_TCL_FALSE_JUMP)
+						v16 = _TCL_FALSE_JUMP
 					} else {
-						v16 = int32(_TCL_TRUE_JUMP)
+						v16 = _TCL_TRUE_JUMP
 					}
 					XTclEmitForwardJump(tls, envPtr, v16, jumpPtr)
 					break
@@ -113061,8 +113061,8 @@ func _CompileExprTree(tls *libc.TLS, interp uintptr, nodes uintptr, index int32,
 				numWords++
 				goto _26
 			_22:
-				if (*TJumpList)(unsafe.Pointer(jumpPtr)).Fjump.FjumpType == int32(_TCL_TRUE_JUMP) {
-					(*TJumpList)(unsafe.Pointer(jumpPtr)).Fjump.FjumpType = int32(_TCL_UNCONDITIONAL_JUMP)
+				if (*TJumpList)(unsafe.Pointer(jumpPtr)).Fjump.FjumpType == _TCL_TRUE_JUMP {
+					(*TJumpList)(unsafe.Pointer(jumpPtr)).Fjump.FjumpType = _TCL_UNCONDITIONAL_JUMP
 					convert = int32(1)
 				}
 				target = int32((*TJumpList)(unsafe.Pointer(jumpPtr)).Fjump.FcodeOffset + uint32(2))
@@ -113364,9 +113364,9 @@ func _CompileExprTree(tls *libc.TLS, interp uintptr, nodes uintptr, index int32,
 		}
 		(*TOpNode)(unsafe.Pointer(nodePtr)).Fmark++
 		switch next {
-		case int32(_OT_EMPTY):
+		case _OT_EMPTY:
 			numWords = int32(1) /* No arguments, so just the command */
-		case int32(_OT_LITERAL):
+		case _OT_LITERAL:
 			litObjv = *(*uintptr)(unsafe.Pointer(litObjvPtr))
 			literal = *(*uintptr)(unsafe.Pointer(litObjv))
 			if optimize != 0 {
@@ -113543,7 +113543,7 @@ func _CompileExprTree(tls *libc.TLS, interp uintptr, nodes uintptr, index int32,
 				}
 			}
 			*(*uintptr)(unsafe.Pointer(litObjvPtr)) += 4
-		case int32(_OT_TOKENS):
+		case _OT_TOKENS:
 			XTclCompileTokens(tls, interp, tokenPtr+uintptr(1)*16, (*TTcl_Token)(unsafe.Pointer(tokenPtr)).FnumComponents, envPtr)
 			tokenPtr += uintptr((*TTcl_Token)(unsafe.Pointer(tokenPtr)).FnumComponents+int32(1)) * 16
 		default:
@@ -113684,16 +113684,16 @@ func XTclSingleOpCmd(tls *libc.TLS, clientData TClientData, interp uintptr, objc
 	}
 	_ParseLexeme(tls, (*TTclOpCmdClientData)(unsafe.Pointer(occdPtr)).Fop, int32(libc.Xstrlen(tls, (*TTclOpCmdClientData)(unsafe.Pointer(occdPtr)).Fop)), bp, libc.UintptrFromInt32(0))
 	(*(*[2]TOpNode)(unsafe.Pointer(bp + 4)))[0].Flexeme = uint8(libc.Int32FromInt32(m_UNARY) | libc.Int32FromInt32(4))
-	(*(*[2]TOpNode)(unsafe.Pointer(bp + 4)))[0].Fmark = uint8(_MARK_RIGHT)
+	(*(*[2]TOpNode)(unsafe.Pointer(bp + 4)))[0].Fmark = _MARK_RIGHT
 	(*(*[2]TOpNode)(unsafe.Pointer(bp + 4)))[0].Fright = int32(1)
 	(*(*[2]TOpNode)(unsafe.Pointer(bp + 4)))[int32(1)].Flexeme = *(*uint8)(unsafe.Pointer(bp))
 	if objc == int32(2) {
-		(*(*[2]TOpNode)(unsafe.Pointer(bp + 4)))[int32(1)].Fmark = uint8(_MARK_RIGHT)
+		(*(*[2]TOpNode)(unsafe.Pointer(bp + 4)))[int32(1)].Fmark = _MARK_RIGHT
 	} else {
-		(*(*[2]TOpNode)(unsafe.Pointer(bp + 4)))[int32(1)].Fmark = uint8(_MARK_LEFT)
-		(*(*[2]TOpNode)(unsafe.Pointer(bp + 4)))[int32(1)].Fleft = int32(_OT_LITERAL)
+		(*(*[2]TOpNode)(unsafe.Pointer(bp + 4)))[int32(1)].Fmark = _MARK_LEFT
+		(*(*[2]TOpNode)(unsafe.Pointer(bp + 4)))[int32(1)].Fleft = _OT_LITERAL
 	}
-	(*(*[2]TOpNode)(unsafe.Pointer(bp + 4)))[int32(1)].Fright = int32(_OT_LITERAL)
+	(*(*[2]TOpNode)(unsafe.Pointer(bp + 4)))[int32(1)].Fright = _OT_LITERAL
 	*(*int32)(unsafe.Pointer(bp + 4 + 1*16 + 8)) = 0
 	return _ExecConstantExprTree(tls, interp, bp+4, 0, bp+36)
 }
@@ -113737,7 +113737,7 @@ func XTclSortingOpCmd(tls *libc.TLS, clientData TClientData, interp uintptr, obj
 		_ParseLexeme(tls, (*TTclOpCmdClientData)(unsafe.Pointer(occdPtr)).Fop, int32(libc.Xstrlen(tls, (*TTclOpCmdClientData)(unsafe.Pointer(occdPtr)).Fop)), bp, libc.UintptrFromInt32(0))
 		*(*uintptr)(unsafe.Pointer(litObjv)) = *(*uintptr)(unsafe.Pointer(objv + 1*4))
 		(*(*TOpNode)(unsafe.Pointer(nodes))).Flexeme = uint8(libc.Int32FromInt32(m_UNARY) | libc.Int32FromInt32(4))
-		(*(*TOpNode)(unsafe.Pointer(nodes))).Fmark = uint8(_MARK_RIGHT)
+		(*(*TOpNode)(unsafe.Pointer(nodes))).Fmark = _MARK_RIGHT
 		i = int32(2)
 		for {
 			if !(i < objc-int32(1)) {
@@ -113745,12 +113745,12 @@ func XTclSortingOpCmd(tls *libc.TLS, clientData TClientData, interp uintptr, obj
 			}
 			*(*uintptr)(unsafe.Pointer(litObjv + uintptr(int32(2)*(i-int32(1))-int32(1))*4)) = *(*uintptr)(unsafe.Pointer(objv + uintptr(i)*4))
 			(*(*TOpNode)(unsafe.Pointer(nodes + uintptr(int32(2)*(i-int32(1))-int32(1))*16))).Flexeme = *(*uint8)(unsafe.Pointer(bp))
-			(*(*TOpNode)(unsafe.Pointer(nodes + uintptr(int32(2)*(i-int32(1))-int32(1))*16))).Fmark = uint8(_MARK_LEFT)
-			(*(*TOpNode)(unsafe.Pointer(nodes + uintptr(int32(2)*(i-int32(1))-int32(1))*16))).Fleft = int32(_OT_LITERAL)
-			(*(*TOpNode)(unsafe.Pointer(nodes + uintptr(int32(2)*(i-int32(1))-int32(1))*16))).Fright = int32(_OT_LITERAL)
+			(*(*TOpNode)(unsafe.Pointer(nodes + uintptr(int32(2)*(i-int32(1))-int32(1))*16))).Fmark = _MARK_LEFT
+			(*(*TOpNode)(unsafe.Pointer(nodes + uintptr(int32(2)*(i-int32(1))-int32(1))*16))).Fleft = _OT_LITERAL
+			(*(*TOpNode)(unsafe.Pointer(nodes + uintptr(int32(2)*(i-int32(1))-int32(1))*16))).Fright = _OT_LITERAL
 			*(*uintptr)(unsafe.Pointer(litObjv + uintptr(int32(2)*(i-int32(1)))*4)) = *(*uintptr)(unsafe.Pointer(objv + uintptr(i)*4))
 			(*(*TOpNode)(unsafe.Pointer(nodes + uintptr(int32(2)*(i-int32(1)))*16))).Flexeme = uint8(libc.Int32FromInt32(m_BINARY) | libc.Int32FromInt32(20))
-			(*(*TOpNode)(unsafe.Pointer(nodes + uintptr(int32(2)*(i-int32(1)))*16))).Fmark = uint8(_MARK_LEFT)
+			(*(*TOpNode)(unsafe.Pointer(nodes + uintptr(int32(2)*(i-int32(1)))*16))).Fmark = _MARK_LEFT
 			(*(*TOpNode)(unsafe.Pointer(nodes + uintptr(int32(2)*(i-int32(1)))*16))).Fleft = lastAnd
 			*(*int32)(unsafe.Pointer(nodes + uintptr(lastAnd)*16 + 8)) = int32(2) * (i - int32(1))
 			(*(*TOpNode)(unsafe.Pointer(nodes + uintptr(int32(2)*(i-int32(1)))*16))).Fright = int32(2)*(i-int32(1)) + int32(1)
@@ -113762,9 +113762,9 @@ func XTclSortingOpCmd(tls *libc.TLS, clientData TClientData, interp uintptr, obj
 		}
 		*(*uintptr)(unsafe.Pointer(litObjv + uintptr(int32(2)*(objc-int32(2))-int32(1))*4)) = *(*uintptr)(unsafe.Pointer(objv + uintptr(objc-int32(1))*4))
 		(*(*TOpNode)(unsafe.Pointer(nodes + uintptr(int32(2)*(objc-int32(2))-int32(1))*16))).Flexeme = *(*uint8)(unsafe.Pointer(bp))
-		(*(*TOpNode)(unsafe.Pointer(nodes + uintptr(int32(2)*(objc-int32(2))-int32(1))*16))).Fmark = uint8(_MARK_LEFT)
-		(*(*TOpNode)(unsafe.Pointer(nodes + uintptr(int32(2)*(objc-int32(2))-int32(1))*16))).Fleft = int32(_OT_LITERAL)
-		(*(*TOpNode)(unsafe.Pointer(nodes + uintptr(int32(2)*(objc-int32(2))-int32(1))*16))).Fright = int32(_OT_LITERAL)
+		(*(*TOpNode)(unsafe.Pointer(nodes + uintptr(int32(2)*(objc-int32(2))-int32(1))*16))).Fmark = _MARK_LEFT
+		(*(*TOpNode)(unsafe.Pointer(nodes + uintptr(int32(2)*(objc-int32(2))-int32(1))*16))).Fleft = _OT_LITERAL
+		(*(*TOpNode)(unsafe.Pointer(nodes + uintptr(int32(2)*(objc-int32(2))-int32(1))*16))).Fright = _OT_LITERAL
 		(*(*TOpNode)(unsafe.Pointer(nodes))).Fright = lastAnd
 		*(*int32)(unsafe.Pointer(nodes + uintptr(lastAnd)*16 + 8)) = 0
 		code = _ExecConstantExprTree(tls, interp, nodes, 0, bp+4)
@@ -113831,12 +113831,12 @@ func XTclVariadicOpCmd(tls *libc.TLS, clientData TClientData, interp uintptr, ob
 			decrMe = int32(1)
 			(*(*[2]uintptr)(unsafe.Pointer(bp + 8)))[0] = *(*uintptr)(unsafe.Pointer(objv + 1*4))
 			(*(*[2]TOpNode)(unsafe.Pointer(bp + 16)))[0].Flexeme = uint8(libc.Int32FromInt32(m_UNARY) | libc.Int32FromInt32(4))
-			(*(*[2]TOpNode)(unsafe.Pointer(bp + 16)))[0].Fmark = uint8(_MARK_RIGHT)
+			(*(*[2]TOpNode)(unsafe.Pointer(bp + 16)))[0].Fmark = _MARK_RIGHT
 			(*(*[2]TOpNode)(unsafe.Pointer(bp + 16)))[0].Fright = int32(1)
 			(*(*[2]TOpNode)(unsafe.Pointer(bp + 16)))[int32(1)].Flexeme = *(*uint8)(unsafe.Pointer(bp))
-			(*(*[2]TOpNode)(unsafe.Pointer(bp + 16)))[int32(1)].Fmark = uint8(_MARK_LEFT)
-			(*(*[2]TOpNode)(unsafe.Pointer(bp + 16)))[int32(1)].Fleft = int32(_OT_LITERAL)
-			(*(*[2]TOpNode)(unsafe.Pointer(bp + 16)))[int32(1)].Fright = int32(_OT_LITERAL)
+			(*(*[2]TOpNode)(unsafe.Pointer(bp + 16)))[int32(1)].Fmark = _MARK_LEFT
+			(*(*[2]TOpNode)(unsafe.Pointer(bp + 16)))[int32(1)].Fleft = _OT_LITERAL
+			(*(*[2]TOpNode)(unsafe.Pointer(bp + 16)))[int32(1)].Fright = _OT_LITERAL
 			*(*int32)(unsafe.Pointer(bp + 16 + 1*16 + 8)) = 0
 		} else {
 			if int32(*(*uint8)(unsafe.Pointer(bp))) == libc.Int32FromInt32(m_BINARY)|libc.Int32FromInt32(5) {
@@ -113858,12 +113858,12 @@ func XTclVariadicOpCmd(tls *libc.TLS, clientData TClientData, interp uintptr, ob
 			(*TTcl_Obj)(unsafe.Pointer((*(*[2]uintptr)(unsafe.Pointer(bp + 8)))[0])).FrefCount++
 			(*(*[2]uintptr)(unsafe.Pointer(bp + 8)))[int32(1)] = *(*uintptr)(unsafe.Pointer(objv + 1*4))
 			(*(*[2]TOpNode)(unsafe.Pointer(bp + 16)))[0].Flexeme = uint8(libc.Int32FromInt32(m_UNARY) | libc.Int32FromInt32(4))
-			(*(*[2]TOpNode)(unsafe.Pointer(bp + 16)))[0].Fmark = uint8(_MARK_RIGHT)
+			(*(*[2]TOpNode)(unsafe.Pointer(bp + 16)))[0].Fmark = _MARK_RIGHT
 			(*(*[2]TOpNode)(unsafe.Pointer(bp + 16)))[0].Fright = int32(1)
 			(*(*[2]TOpNode)(unsafe.Pointer(bp + 16)))[int32(1)].Flexeme = *(*uint8)(unsafe.Pointer(bp))
-			(*(*[2]TOpNode)(unsafe.Pointer(bp + 16)))[int32(1)].Fmark = uint8(_MARK_LEFT)
-			(*(*[2]TOpNode)(unsafe.Pointer(bp + 16)))[int32(1)].Fleft = int32(_OT_LITERAL)
-			(*(*[2]TOpNode)(unsafe.Pointer(bp + 16)))[int32(1)].Fright = int32(_OT_LITERAL)
+			(*(*[2]TOpNode)(unsafe.Pointer(bp + 16)))[int32(1)].Fmark = _MARK_LEFT
+			(*(*[2]TOpNode)(unsafe.Pointer(bp + 16)))[int32(1)].Fleft = _OT_LITERAL
+			(*(*[2]TOpNode)(unsafe.Pointer(bp + 16)))[int32(1)].Fright = _OT_LITERAL
 			*(*int32)(unsafe.Pointer(bp + 16 + 1*16 + 8)) = 0
 		}
 		code = _ExecConstantExprTree(tls, interp, bp+16, 0, bp+48)
@@ -113878,9 +113878,9 @@ func XTclVariadicOpCmd(tls *libc.TLS, clientData TClientData, interp uintptr, ob
 	} else {
 		*(*uintptr)(unsafe.Pointer(bp + 52)) = objv + uintptr(1)*4
 		nodes1 = XTclStackAlloc(tls, interp, int32(uint32(objc-libc.Int32FromInt32(1))*uint32(16)))
-		lastOp = int32(_OT_LITERAL)
+		lastOp = _OT_LITERAL
 		(*(*TOpNode)(unsafe.Pointer(nodes1))).Flexeme = uint8(libc.Int32FromInt32(m_UNARY) | libc.Int32FromInt32(4))
-		(*(*TOpNode)(unsafe.Pointer(nodes1))).Fmark = uint8(_MARK_RIGHT)
+		(*(*TOpNode)(unsafe.Pointer(nodes1))).Fmark = _MARK_RIGHT
 		if int32(*(*uint8)(unsafe.Pointer(bp))) == libc.Int32FromInt32(m_BINARY)|libc.Int32FromInt32(24) {
 			i = objc - int32(2)
 			for {
@@ -113888,8 +113888,8 @@ func XTclVariadicOpCmd(tls *libc.TLS, clientData TClientData, interp uintptr, ob
 					break
 				}
 				(*(*TOpNode)(unsafe.Pointer(nodes1 + uintptr(i)*16))).Flexeme = *(*uint8)(unsafe.Pointer(bp))
-				(*(*TOpNode)(unsafe.Pointer(nodes1 + uintptr(i)*16))).Fmark = uint8(_MARK_LEFT)
-				(*(*TOpNode)(unsafe.Pointer(nodes1 + uintptr(i)*16))).Fleft = int32(_OT_LITERAL)
+				(*(*TOpNode)(unsafe.Pointer(nodes1 + uintptr(i)*16))).Fmark = _MARK_LEFT
+				(*(*TOpNode)(unsafe.Pointer(nodes1 + uintptr(i)*16))).Fleft = _OT_LITERAL
 				(*(*TOpNode)(unsafe.Pointer(nodes1 + uintptr(i)*16))).Fright = lastOp
 				if lastOp >= 0 {
 					*(*int32)(unsafe.Pointer(nodes1 + uintptr(lastOp)*16 + 8)) = i
@@ -113906,12 +113906,12 @@ func XTclVariadicOpCmd(tls *libc.TLS, clientData TClientData, interp uintptr, ob
 					break
 				}
 				(*(*TOpNode)(unsafe.Pointer(nodes1 + uintptr(i)*16))).Flexeme = *(*uint8)(unsafe.Pointer(bp))
-				(*(*TOpNode)(unsafe.Pointer(nodes1 + uintptr(i)*16))).Fmark = uint8(_MARK_LEFT)
+				(*(*TOpNode)(unsafe.Pointer(nodes1 + uintptr(i)*16))).Fmark = _MARK_LEFT
 				(*(*TOpNode)(unsafe.Pointer(nodes1 + uintptr(i)*16))).Fleft = lastOp
 				if lastOp >= 0 {
 					*(*int32)(unsafe.Pointer(nodes1 + uintptr(lastOp)*16 + 8)) = i
 				}
-				(*(*TOpNode)(unsafe.Pointer(nodes1 + uintptr(i)*16))).Fright = int32(_OT_LITERAL)
+				(*(*TOpNode)(unsafe.Pointer(nodes1 + uintptr(i)*16))).Fright = _OT_LITERAL
 				lastOp = i
 				goto _4
 			_4:
@@ -117743,7 +117743,7 @@ func XTclAddLoopBreakFixup(tls *libc.TLS, envPtr uintptr, auxPtr uintptr) {
 	var v10, v11, v12, v2, v3, v4, v5, v6, v7, v8, v9 uintptr
 	_, _, _, _, _, _, _, _, _, _, _, _, _, _ = _delta, range1, v1, v10, v11, v12, v2, v3, v4, v5, v6, v7, v8, v9
 	range1 = (int32(auxPtr) - int32((*TCompileEnv)(unsafe.Pointer(envPtr)).FexceptAuxArrayPtr)) / 40
-	if (*(*TExceptionRange)(unsafe.Pointer((*TCompileEnv)(unsafe.Pointer(envPtr)).FexceptArrayPtr + uintptr(range1)*28))).Ftype1 != int32(_LOOP_EXCEPTION_RANGE) {
+	if (*(*TExceptionRange)(unsafe.Pointer((*TCompileEnv)(unsafe.Pointer(envPtr)).FexceptArrayPtr + uintptr(range1)*28))).Ftype1 != _LOOP_EXCEPTION_RANGE {
 		XTcl_Panic(tls, __ccgo_ts+21069, 0)
 	}
 	v2 = auxPtr + 16
@@ -117804,7 +117804,7 @@ func XTclAddLoopContinueFixup(tls *libc.TLS, envPtr uintptr, auxPtr uintptr) {
 	var v10, v11, v12, v2, v3, v4, v5, v6, v7, v8, v9 uintptr
 	_, _, _, _, _, _, _, _, _, _, _, _, _, _ = _delta, range1, v1, v10, v11, v12, v2, v3, v4, v5, v6, v7, v8, v9
 	range1 = (int32(auxPtr) - int32((*TCompileEnv)(unsafe.Pointer(envPtr)).FexceptAuxArrayPtr)) / 40
-	if (*(*TExceptionRange)(unsafe.Pointer((*TCompileEnv)(unsafe.Pointer(envPtr)).FexceptArrayPtr + uintptr(range1)*28))).Ftype1 != int32(_LOOP_EXCEPTION_RANGE) {
+	if (*(*TExceptionRange)(unsafe.Pointer((*TCompileEnv)(unsafe.Pointer(envPtr)).FexceptArrayPtr + uintptr(range1)*28))).Ftype1 != _LOOP_EXCEPTION_RANGE {
 		XTcl_Panic(tls, __ccgo_ts+21121, 0)
 	}
 	v2 = auxPtr + 28
@@ -118043,7 +118043,7 @@ func XTclFinalizeLoopExceptionRange(tls *libc.TLS, envPtr uintptr, range1 int32)
 	_, _, _, _, _, _, _ = auxPtr, i, j, offset, rangePtr, site, v4
 	rangePtr = (*TCompileEnv)(unsafe.Pointer(envPtr)).FexceptArrayPtr + uintptr(range1)*28
 	auxPtr = (*TCompileEnv)(unsafe.Pointer(envPtr)).FexceptAuxArrayPtr + uintptr(range1)*40
-	if (*TExceptionRange)(unsafe.Pointer(rangePtr)).Ftype1 != int32(_LOOP_EXCEPTION_RANGE) {
+	if (*TExceptionRange)(unsafe.Pointer(rangePtr)).Ftype1 != _LOOP_EXCEPTION_RANGE {
 		XTcl_Panic(tls, __ccgo_ts+21176, 0)
 	}
 	/*
@@ -118320,9 +118320,9 @@ func XTclEmitForwardJump(tls *libc.TLS, envPtr uintptr, jumpType TTclJumpType, j
 	(*TJumpFixup)(unsafe.Pointer(jumpFixupPtr)).FcmdIndex = (*TCompileEnv)(unsafe.Pointer(envPtr)).FnumCommands
 	(*TJumpFixup)(unsafe.Pointer(jumpFixupPtr)).FexceptIndex = (*TCompileEnv)(unsafe.Pointer(envPtr)).FexceptArrayNext
 	switch jumpType {
-	case int32(_TCL_UNCONDITIONAL_JUMP):
+	case _TCL_UNCONDITIONAL_JUMP:
 		goto _1
-	case int32(_TCL_TRUE_JUMP):
+	case _TCL_TRUE_JUMP:
 		goto _2
 	default:
 		goto _3
@@ -118460,9 +118460,9 @@ func XTclFixupForwardJump(tls *libc.TLS, envPtr uintptr, jumpFixupPtr uintptr, j
 	if jumpDist <= distThreshold {
 		jumpPc = (*TCompileEnv)(unsafe.Pointer(envPtr)).FcodeStart + uintptr((*TJumpFixup)(unsafe.Pointer(jumpFixupPtr)).FcodeOffset)
 		switch (*TJumpFixup)(unsafe.Pointer(jumpFixupPtr)).FjumpType {
-		case int32(_TCL_UNCONDITIONAL_JUMP):
+		case _TCL_UNCONDITIONAL_JUMP:
 			goto _1
-		case int32(_TCL_TRUE_JUMP):
+		case _TCL_TRUE_JUMP:
 			goto _2
 		default:
 			goto _3
@@ -118507,9 +118507,9 @@ func XTclFixupForwardJump(tls *libc.TLS, envPtr uintptr, jumpFixupPtr uintptr, j
 	*(*uintptr)(unsafe.Pointer(envPtr + 76)) += uintptr(3)
 	jumpDist += int32(3)
 	switch (*TJumpFixup)(unsafe.Pointer(jumpFixupPtr)).FjumpType {
-	case int32(_TCL_UNCONDITIONAL_JUMP):
+	case _TCL_UNCONDITIONAL_JUMP:
 		goto _8
-	case int32(_TCL_TRUE_JUMP):
+	case _TCL_TRUE_JUMP:
 		goto _9
 	default:
 		goto _10
@@ -118573,12 +118573,12 @@ _11:
 		rangePtr = (*TCompileEnv)(unsafe.Pointer(envPtr)).FexceptArrayPtr + uintptr(k)*28
 		*(*int32)(unsafe.Pointer(rangePtr + 8)) += int32(3)
 		switch (*TExceptionRange)(unsafe.Pointer(rangePtr)).Ftype1 {
-		case int32(_LOOP_EXCEPTION_RANGE):
+		case _LOOP_EXCEPTION_RANGE:
 			*(*int32)(unsafe.Pointer(rangePtr + 16)) += int32(3)
 			if (*TExceptionRange)(unsafe.Pointer(rangePtr)).FcontinueOffset != -int32(1) {
 				*(*int32)(unsafe.Pointer(rangePtr + 20)) += int32(3)
 			}
-		case int32(_CATCH_EXCEPTION_RANGE):
+		case _CATCH_EXCEPTION_RANGE:
 			*(*int32)(unsafe.Pointer(rangePtr + 24)) += int32(3)
 		default:
 			XTcl_Panic(tls, __ccgo_ts+21218, libc.VaList(bp+8, (*TExceptionRange)(unsafe.Pointer(rangePtr)).Ftype1))
@@ -118722,7 +118722,7 @@ func XTclEmitInvoke(tls *libc.TLS, envPtr uintptr, opcode int32, va uintptr) {
 	 * calls from inside a [for] increment clause).
 	 */
 	rangePtr = XTclGetInnermostExceptionRange(tls, envPtr, int32(m_TCL_CONTINUE), bp+4)
-	if rangePtr == libc.UintptrFromInt32(0) || (*TExceptionRange)(unsafe.Pointer(rangePtr)).Ftype1 != int32(_LOOP_EXCEPTION_RANGE) {
+	if rangePtr == libc.UintptrFromInt32(0) || (*TExceptionRange)(unsafe.Pointer(rangePtr)).Ftype1 != _LOOP_EXCEPTION_RANGE {
 		*(*uintptr)(unsafe.Pointer(bp + 4)) = libc.UintptrFromInt32(0)
 	} else {
 		if (*TExceptionAux)(unsafe.Pointer(*(*uintptr)(unsafe.Pointer(bp + 4)))).FstackDepth == (*TCompileEnv)(unsafe.Pointer(envPtr)).FcurrStackDepth-wordCount && (*TExceptionAux)(unsafe.Pointer(*(*uintptr)(unsafe.Pointer(bp + 4)))).FexpandTarget == (*TCompileEnv)(unsafe.Pointer(envPtr)).FexpandCount-expandCount {
@@ -118732,7 +118732,7 @@ func XTclEmitInvoke(tls *libc.TLS, envPtr uintptr, opcode int32, va uintptr) {
 		}
 	}
 	rangePtr = XTclGetInnermostExceptionRange(tls, envPtr, int32(m_TCL_BREAK), bp)
-	if rangePtr == libc.UintptrFromInt32(0) || (*TExceptionRange)(unsafe.Pointer(rangePtr)).Ftype1 != int32(_LOOP_EXCEPTION_RANGE) {
+	if rangePtr == libc.UintptrFromInt32(0) || (*TExceptionRange)(unsafe.Pointer(rangePtr)).Ftype1 != _LOOP_EXCEPTION_RANGE {
 		*(*uintptr)(unsafe.Pointer(bp)) = libc.UintptrFromInt32(0)
 	} else {
 		if *(*uintptr)(unsafe.Pointer(bp + 4)) == libc.UintptrFromInt32(0) && (*TExceptionAux)(unsafe.Pointer(*(*uintptr)(unsafe.Pointer(bp)))).FstackDepth == (*TCompileEnv)(unsafe.Pointer(envPtr)).FcurrStackDepth-wordCount && (*TExceptionAux)(unsafe.Pointer(*(*uintptr)(unsafe.Pointer(bp)))).FexpandTarget == (*TCompileEnv)(unsafe.Pointer(envPtr)).FexpandCount-expandCount {
@@ -118742,7 +118742,7 @@ func XTclEmitInvoke(tls *libc.TLS, envPtr uintptr, opcode int32, va uintptr) {
 		}
 	}
 	if *(*uintptr)(unsafe.Pointer(bp)) != libc.UintptrFromInt32(0) || *(*uintptr)(unsafe.Pointer(bp + 4)) != libc.UintptrFromInt32(0) {
-		loopRange = XTclCreateExceptRange(tls, int32(_LOOP_EXCEPTION_RANGE), envPtr)
+		loopRange = XTclCreateExceptRange(tls, _LOOP_EXCEPTION_RANGE, envPtr)
 		(*TCompileEnv)(unsafe.Pointer(envPtr)).FexceptDepth++
 		if (*TCompileEnv)(unsafe.Pointer(envPtr)).FexceptDepth > (*TCompileEnv)(unsafe.Pointer(envPtr)).FmaxExceptDepth {
 			v11 = (*TCompileEnv)(unsafe.Pointer(envPtr)).FexceptDepth
@@ -118994,7 +118994,7 @@ _18:
 		}
 		(*TCompileEnv)(unsafe.Pointer(envPtr)).FexceptDepth--
 		(*(*TExceptionRange)(unsafe.Pointer((*TCompileEnv)(unsafe.Pointer(envPtr)).FexceptArrayPtr + uintptr(loopRange)*28))).FnumCodeBytes = int32((*TCompileEnv)(unsafe.Pointer(envPtr)).FcodeNext) - int32((*TCompileEnv)(unsafe.Pointer(envPtr)).FcodeStart) - (*(*TExceptionRange)(unsafe.Pointer((*TCompileEnv)(unsafe.Pointer(envPtr)).FexceptArrayPtr + uintptr(loopRange)*28))).FcodeOffset
-		XTclEmitForwardJump(tls, envPtr, int32(_TCL_UNCONDITIONAL_JUMP), bp+8)
+		XTclEmitForwardJump(tls, envPtr, _TCL_UNCONDITIONAL_JUMP, bp+8)
 		/*
 		 * Careful! When generating these stack unwinding sequences, the depth
 		 * of stack in the cases where they are taken is not the same as if
@@ -121036,19 +121036,19 @@ yyreduce:
 		if (*TDateInfo)(unsafe.Pointer(info)).FdateTimezone > libc.Int32FromInt32(60)*libc.Int32FromInt32(12) {
 			*(*Ttime_t)(unsafe.Pointer(info + 44)) -= libc.Int32FromInt32(60) * libc.Int32FromInt32(100)
 		}
-		(*TDateInfo)(unsafe.Pointer(info)).FdateDSTmode = int32(_DSTon)
+		(*TDateInfo)(unsafe.Pointer(info)).FdateDSTmode = _DSTon
 	case int32(17):
 		(*TDateInfo)(unsafe.Pointer(info)).FdateTimezone = *(*Ttime_t)(unsafe.Pointer(yyvsp))
 		if (*TDateInfo)(unsafe.Pointer(info)).FdateTimezone > libc.Int32FromInt32(60)*libc.Int32FromInt32(12) {
 			*(*Ttime_t)(unsafe.Pointer(info + 44)) -= libc.Int32FromInt32(60) * libc.Int32FromInt32(100)
 		}
-		(*TDateInfo)(unsafe.Pointer(info)).FdateDSTmode = int32(_DSToff)
+		(*TDateInfo)(unsafe.Pointer(info)).FdateDSTmode = _DSToff
 	case int32(18):
 		(*TDateInfo)(unsafe.Pointer(info)).FdateTimezone = *(*Ttime_t)(unsafe.Pointer(yyvsp))
-		(*TDateInfo)(unsafe.Pointer(info)).FdateDSTmode = int32(_DSTon)
+		(*TDateInfo)(unsafe.Pointer(info)).FdateDSTmode = _DSTon
 	case int32(19):
 		(*TDateInfo)(unsafe.Pointer(info)).FdateTimezone = -*(*Ttime_t)(unsafe.Pointer(yyvsp + uintptr(-libc.Int32FromInt32(1))*4)) * (*(*Ttime_t)(unsafe.Pointer(yyvsp))%int32(100) + *(*Ttime_t)(unsafe.Pointer(yyvsp))/int32(100)*int32(60))
-		(*TDateInfo)(unsafe.Pointer(info)).FdateDSTmode = int32(_DSToff)
+		(*TDateInfo)(unsafe.Pointer(info)).FdateDSTmode = _DSToff
 	case int32(20):
 		(*TDateInfo)(unsafe.Pointer(info)).FdateDayOrdinal = int32(1)
 		(*TDateInfo)(unsafe.Pointer(info)).FdateDayNumber = *(*Ttime_t)(unsafe.Pointer(yyvsp))
@@ -121194,10 +121194,10 @@ yyreduce:
 				(*TDateInfo)(unsafe.Pointer(info)).FdateMinutes = *(*Ttime_t)(unsafe.Pointer(yyvsp)) % int32(100)
 			}
 			(*TDateInfo)(unsafe.Pointer(info)).FdateSeconds = 0
-			(*TDateInfo)(unsafe.Pointer(info)).FdateMeridian = int32(_MER24)
+			(*TDateInfo)(unsafe.Pointer(info)).FdateMeridian = _MER24
 		}
 	case int32(55):
-		*(*__MERIDIAN)(unsafe.Pointer(bp + 4420)) = int32(_MER24)
+		*(*__MERIDIAN)(unsafe.Pointer(bp + 4420)) = _MER24
 	case int32(56):
 		*(*__MERIDIAN)(unsafe.Pointer(bp + 4420)) = *(*__MERIDIAN)(unsafe.Pointer(yyvsp))
 	default:
@@ -121421,121 +121421,121 @@ var _yyloc_default = TYYLTYPE{
 var _MonthDayTable = [25]TTABLE{
 	0: {
 		Fname:  __ccgo_ts + 22003,
-		Ftype1: int32(_tMONTH),
+		Ftype1: _tMONTH,
 		Fvalue: int32(1),
 	},
 	1: {
 		Fname:  __ccgo_ts + 22011,
-		Ftype1: int32(_tMONTH),
+		Ftype1: _tMONTH,
 		Fvalue: int32(2),
 	},
 	2: {
 		Fname:  __ccgo_ts + 22020,
-		Ftype1: int32(_tMONTH),
+		Ftype1: _tMONTH,
 		Fvalue: int32(3),
 	},
 	3: {
 		Fname:  __ccgo_ts + 22026,
-		Ftype1: int32(_tMONTH),
+		Ftype1: _tMONTH,
 		Fvalue: int32(4),
 	},
 	4: {
 		Fname:  __ccgo_ts + 22032,
-		Ftype1: int32(_tMONTH),
+		Ftype1: _tMONTH,
 		Fvalue: int32(5),
 	},
 	5: {
 		Fname:  __ccgo_ts + 22036,
-		Ftype1: int32(_tMONTH),
+		Ftype1: _tMONTH,
 		Fvalue: int32(6),
 	},
 	6: {
 		Fname:  __ccgo_ts + 22041,
-		Ftype1: int32(_tMONTH),
+		Ftype1: _tMONTH,
 		Fvalue: int32(7),
 	},
 	7: {
 		Fname:  __ccgo_ts + 22046,
-		Ftype1: int32(_tMONTH),
+		Ftype1: _tMONTH,
 		Fvalue: int32(8),
 	},
 	8: {
 		Fname:  __ccgo_ts + 22053,
-		Ftype1: int32(_tMONTH),
+		Ftype1: _tMONTH,
 		Fvalue: int32(9),
 	},
 	9: {
 		Fname:  __ccgo_ts + 22063,
-		Ftype1: int32(_tMONTH),
+		Ftype1: _tMONTH,
 		Fvalue: int32(9),
 	},
 	10: {
 		Fname:  __ccgo_ts + 22068,
-		Ftype1: int32(_tMONTH),
+		Ftype1: _tMONTH,
 		Fvalue: int32(10),
 	},
 	11: {
 		Fname:  __ccgo_ts + 22076,
-		Ftype1: int32(_tMONTH),
+		Ftype1: _tMONTH,
 		Fvalue: int32(11),
 	},
 	12: {
 		Fname:  __ccgo_ts + 22085,
-		Ftype1: int32(_tMONTH),
+		Ftype1: _tMONTH,
 		Fvalue: int32(12),
 	},
 	13: {
 		Fname:  __ccgo_ts + 22094,
-		Ftype1: int32(_tDAY),
+		Ftype1: _tDAY,
 	},
 	14: {
 		Fname:  __ccgo_ts + 22101,
-		Ftype1: int32(_tDAY),
+		Ftype1: _tDAY,
 		Fvalue: int32(1),
 	},
 	15: {
 		Fname:  __ccgo_ts + 22108,
-		Ftype1: int32(_tDAY),
+		Ftype1: _tDAY,
 		Fvalue: int32(2),
 	},
 	16: {
 		Fname:  __ccgo_ts + 22116,
-		Ftype1: int32(_tDAY),
+		Ftype1: _tDAY,
 		Fvalue: int32(2),
 	},
 	17: {
 		Fname:  __ccgo_ts + 22121,
-		Ftype1: int32(_tDAY),
+		Ftype1: _tDAY,
 		Fvalue: int32(3),
 	},
 	18: {
 		Fname:  __ccgo_ts + 22131,
-		Ftype1: int32(_tDAY),
+		Ftype1: _tDAY,
 		Fvalue: int32(3),
 	},
 	19: {
 		Fname:  __ccgo_ts + 22138,
-		Ftype1: int32(_tDAY),
+		Ftype1: _tDAY,
 		Fvalue: int32(4),
 	},
 	20: {
 		Fname:  __ccgo_ts + 22147,
-		Ftype1: int32(_tDAY),
+		Ftype1: _tDAY,
 		Fvalue: int32(4),
 	},
 	21: {
 		Fname:  __ccgo_ts + 22152,
-		Ftype1: int32(_tDAY),
+		Ftype1: _tDAY,
 		Fvalue: int32(4),
 	},
 	22: {
 		Fname:  __ccgo_ts + 22158,
-		Ftype1: int32(_tDAY),
+		Ftype1: _tDAY,
 		Fvalue: int32(5),
 	},
 	23: {
 		Fname:  __ccgo_ts + 22165,
-		Ftype1: int32(_tDAY),
+		Ftype1: _tDAY,
 		Fvalue: int32(6),
 	},
 	24: {},
@@ -121548,52 +121548,52 @@ var _MonthDayTable = [25]TTABLE{
 var _UnitsTable = [11]TTABLE{
 	0: {
 		Fname:  __ccgo_ts + 10530,
-		Ftype1: int32(_tMONTH_UNIT),
+		Ftype1: _tMONTH_UNIT,
 		Fvalue: int32(12),
 	},
 	1: {
 		Fname:  __ccgo_ts + 10500,
-		Ftype1: int32(_tMONTH_UNIT),
+		Ftype1: _tMONTH_UNIT,
 		Fvalue: int32(1),
 	},
 	2: {
 		Fname:  __ccgo_ts + 22174,
-		Ftype1: int32(_tDAY_UNIT),
+		Ftype1: _tDAY_UNIT,
 		Fvalue: int32(14),
 	},
 	3: {
 		Fname:  __ccgo_ts + 22184,
-		Ftype1: int32(_tDAY_UNIT),
+		Ftype1: _tDAY_UNIT,
 		Fvalue: int32(7),
 	},
 	4: {
 		Fname:  __ccgo_ts + 22189,
-		Ftype1: int32(_tDAY_UNIT),
+		Ftype1: _tDAY_UNIT,
 		Fvalue: int32(1),
 	},
 	5: {
 		Fname:  __ccgo_ts + 22193,
-		Ftype1: int32(_tSEC_UNIT),
+		Ftype1: _tSEC_UNIT,
 		Fvalue: libc.Int32FromInt32(60) * libc.Int32FromInt32(60),
 	},
 	6: {
 		Fname:  __ccgo_ts + 22198,
-		Ftype1: int32(_tSEC_UNIT),
+		Ftype1: _tSEC_UNIT,
 		Fvalue: int32(60),
 	},
 	7: {
 		Fname:  __ccgo_ts + 22205,
-		Ftype1: int32(_tSEC_UNIT),
+		Ftype1: _tSEC_UNIT,
 		Fvalue: int32(60),
 	},
 	8: {
 		Fname:  __ccgo_ts + 22209,
-		Ftype1: int32(_tSEC_UNIT),
+		Ftype1: _tSEC_UNIT,
 		Fvalue: int32(1),
 	},
 	9: {
 		Fname:  __ccgo_ts + 22216,
-		Ftype1: int32(_tSEC_UNIT),
+		Ftype1: _tSEC_UNIT,
 		Fvalue: int32(1),
 	},
 	10: {},
@@ -121606,48 +121606,48 @@ var _UnitsTable = [11]TTABLE{
 var _OtherTable = [11]TTABLE{
 	0: {
 		Fname:  __ccgo_ts + 22220,
-		Ftype1: int32(_tDAY_UNIT),
+		Ftype1: _tDAY_UNIT,
 		Fvalue: int32(1),
 	},
 	1: {
 		Fname:  __ccgo_ts + 22229,
-		Ftype1: int32(_tDAY_UNIT),
+		Ftype1: _tDAY_UNIT,
 		Fvalue: -int32(1),
 	},
 	2: {
 		Fname:  __ccgo_ts + 22239,
-		Ftype1: int32(_tDAY_UNIT),
+		Ftype1: _tDAY_UNIT,
 	},
 	3: {
 		Fname:  __ccgo_ts + 22245,
-		Ftype1: int32(_tSEC_UNIT),
+		Ftype1: _tSEC_UNIT,
 	},
 	4: {
 		Fname:  __ccgo_ts + 16424,
-		Ftype1: int32(_tUNUMBER),
+		Ftype1: _tUNUMBER,
 		Fvalue: -int32(1),
 	},
 	5: {
 		Fname:  __ccgo_ts + 22249,
-		Ftype1: int32(_tSEC_UNIT),
+		Ftype1: _tSEC_UNIT,
 	},
 	6: {
 		Fname:  __ccgo_ts + 22254,
-		Ftype1: int32(_tNEXT),
+		Ftype1: _tNEXT,
 		Fvalue: int32(1),
 	},
 	7: {
 		Fname:  __ccgo_ts + 22259,
-		Ftype1: int32(_tAGO),
+		Ftype1: _tAGO,
 		Fvalue: int32(1),
 	},
 	8: {
 		Fname:  __ccgo_ts + 22263,
-		Ftype1: int32(_tEPOCH),
+		Ftype1: _tEPOCH,
 	},
 	9: {
 		Fname:  __ccgo_ts + 22269,
-		Ftype1: int32(_tSTARDATE),
+		Ftype1: _tSTARDATE,
 	},
 	10: {},
 }
@@ -121660,311 +121660,311 @@ var _OtherTable = [11]TTABLE{
 var _TimezoneTable = [64]TTABLE{
 	0: {
 		Fname:  __ccgo_ts + 22278,
-		Ftype1: int32(_tZONE),
+		Ftype1: _tZONE,
 	},
 	1: {
 		Fname:  __ccgo_ts + 22282,
-		Ftype1: int32(_tZONE),
+		Ftype1: _tZONE,
 	},
 	2: {
 		Fname:  __ccgo_ts + 22285,
-		Ftype1: int32(_tZONE),
+		Ftype1: _tZONE,
 	},
 	3: {
 		Fname:  __ccgo_ts + 22289,
-		Ftype1: int32(_tZONE),
+		Ftype1: _tZONE,
 	},
 	4: {
 		Fname:  __ccgo_ts + 22293,
-		Ftype1: int32(_tZONE),
+		Ftype1: _tZONE,
 	},
 	5: {
 		Fname:  __ccgo_ts + 22297,
-		Ftype1: int32(_tDAYZONE),
+		Ftype1: _tDAYZONE,
 	},
 	6: {
 		Fname:  __ccgo_ts + 22301,
-		Ftype1: int32(_tZONE),
+		Ftype1: _tZONE,
 		Fvalue: libc.Int32FromInt32(60) * libc.Int32FromInt32(1),
 	},
 	7: {
 		Fname:  __ccgo_ts + 22305,
-		Ftype1: int32(_tZONE),
+		Ftype1: _tZONE,
 		Fvalue: libc.Int32FromInt32(60) * libc.Int32FromInt32(2),
 	},
 	8: {
 		Fname:  __ccgo_ts + 22308,
-		Ftype1: int32(_tZONE),
+		Ftype1: _tZONE,
 		Fvalue: libc.Int32FromInt32(60) * (libc.Int32FromInt32(7) / libc.Int32FromInt32(2)),
 	},
 	9: {
 		Fname:  __ccgo_ts + 22312,
-		Ftype1: int32(_tZONE),
+		Ftype1: _tZONE,
 		Fvalue: libc.Int32FromInt32(60) * (libc.Int32FromInt32(7) / libc.Int32FromInt32(2)),
 	},
 	10: {
 		Fname:  __ccgo_ts + 22316,
-		Ftype1: int32(_tDAYZONE),
+		Ftype1: _tDAYZONE,
 		Fvalue: libc.Int32FromInt32(60) * (libc.Int32FromInt32(7) / libc.Int32FromInt32(2)),
 	},
 	11: {
 		Fname:  __ccgo_ts + 22320,
-		Ftype1: int32(_tZONE),
+		Ftype1: _tZONE,
 		Fvalue: libc.Int32FromInt32(60) * libc.Int32FromInt32(4),
 	},
 	12: {
 		Fname:  __ccgo_ts + 22324,
-		Ftype1: int32(_tDAYZONE),
+		Ftype1: _tDAYZONE,
 		Fvalue: libc.Int32FromInt32(60) * libc.Int32FromInt32(4),
 	},
 	13: {
 		Fname:  __ccgo_ts + 22328,
-		Ftype1: int32(_tZONE),
+		Ftype1: _tZONE,
 		Fvalue: libc.Int32FromInt32(60) * libc.Int32FromInt32(5),
 	},
 	14: {
 		Fname:  __ccgo_ts + 22332,
-		Ftype1: int32(_tDAYZONE),
+		Ftype1: _tDAYZONE,
 		Fvalue: libc.Int32FromInt32(60) * libc.Int32FromInt32(5),
 	},
 	15: {
 		Fname:  __ccgo_ts + 22336,
-		Ftype1: int32(_tZONE),
+		Ftype1: _tZONE,
 		Fvalue: libc.Int32FromInt32(60) * libc.Int32FromInt32(6),
 	},
 	16: {
 		Fname:  __ccgo_ts + 22340,
-		Ftype1: int32(_tDAYZONE),
+		Ftype1: _tDAYZONE,
 		Fvalue: libc.Int32FromInt32(60) * libc.Int32FromInt32(6),
 	},
 	17: {
 		Fname:  __ccgo_ts + 22344,
-		Ftype1: int32(_tZONE),
+		Ftype1: _tZONE,
 		Fvalue: libc.Int32FromInt32(60) * libc.Int32FromInt32(7),
 	},
 	18: {
 		Fname:  __ccgo_ts + 22348,
-		Ftype1: int32(_tDAYZONE),
+		Ftype1: _tDAYZONE,
 		Fvalue: libc.Int32FromInt32(60) * libc.Int32FromInt32(7),
 	},
 	19: {
 		Fname:  __ccgo_ts + 22352,
-		Ftype1: int32(_tZONE),
+		Ftype1: _tZONE,
 		Fvalue: libc.Int32FromInt32(60) * libc.Int32FromInt32(8),
 	},
 	20: {
 		Fname:  __ccgo_ts + 22356,
-		Ftype1: int32(_tDAYZONE),
+		Ftype1: _tDAYZONE,
 		Fvalue: libc.Int32FromInt32(60) * libc.Int32FromInt32(8),
 	},
 	21: {
 		Fname:  __ccgo_ts + 22360,
-		Ftype1: int32(_tZONE),
+		Ftype1: _tZONE,
 		Fvalue: libc.Int32FromInt32(60) * libc.Int32FromInt32(9),
 	},
 	22: {
 		Fname:  __ccgo_ts + 22364,
-		Ftype1: int32(_tDAYZONE),
+		Ftype1: _tDAYZONE,
 		Fvalue: libc.Int32FromInt32(60) * libc.Int32FromInt32(9),
 	},
 	23: {
 		Fname:  __ccgo_ts + 22368,
-		Ftype1: int32(_tZONE),
+		Ftype1: _tZONE,
 		Fvalue: libc.Int32FromInt32(60) * libc.Int32FromInt32(10),
 	},
 	24: {
 		Fname:  __ccgo_ts + 22372,
-		Ftype1: int32(_tDAYZONE),
+		Ftype1: _tDAYZONE,
 		Fvalue: libc.Int32FromInt32(60) * libc.Int32FromInt32(10),
 	},
 	25: {
 		Fname:  __ccgo_ts + 16391,
-		Ftype1: int32(_tZONE),
+		Ftype1: _tZONE,
 		Fvalue: libc.Int32FromInt32(60) * libc.Int32FromInt32(10),
 	},
 	26: {
 		Fname:  __ccgo_ts + 22376,
-		Ftype1: int32(_tZONE),
+		Ftype1: _tZONE,
 		Fvalue: libc.Int32FromInt32(60) * libc.Int32FromInt32(10),
 	},
 	27: {
 		Fname:  __ccgo_ts + 22381,
-		Ftype1: int32(_tZONE),
+		Ftype1: _tZONE,
 		Fvalue: libc.Int32FromInt32(60) * libc.Int32FromInt32(11),
 	},
 	28: {
 		Fname:  __ccgo_ts + 22384,
-		Ftype1: int32(_tZONE),
+		Ftype1: _tZONE,
 		Fvalue: libc.Int32FromInt32(60) * libc.Int32FromInt32(12),
 	},
 	29: {
 		Fname:  __ccgo_ts + 22389,
-		Ftype1: int32(_tZONE),
+		Ftype1: _tZONE,
 		Fvalue: -(libc.Int32FromInt32(60) * libc.Int32FromInt32(1)),
 	},
 	30: {
 		Fname:  __ccgo_ts + 22393,
-		Ftype1: int32(_tDAYZONE),
+		Ftype1: _tDAYZONE,
 		Fvalue: -(libc.Int32FromInt32(60) * libc.Int32FromInt32(1)),
 	},
 	31: {
 		Fname:  __ccgo_ts + 22398,
-		Ftype1: int32(_tZONE),
+		Ftype1: _tZONE,
 		Fvalue: -(libc.Int32FromInt32(60) * libc.Int32FromInt32(1)),
 	},
 	32: {
 		Fname:  __ccgo_ts + 22402,
-		Ftype1: int32(_tZONE),
+		Ftype1: _tZONE,
 		Fvalue: -(libc.Int32FromInt32(60) * libc.Int32FromInt32(1)),
 	},
 	33: {
 		Fname:  __ccgo_ts + 22407,
-		Ftype1: int32(_tDAYZONE),
+		Ftype1: _tDAYZONE,
 		Fvalue: -(libc.Int32FromInt32(60) * libc.Int32FromInt32(1)),
 	},
 	34: {
 		Fname:  __ccgo_ts + 22412,
-		Ftype1: int32(_tZONE),
+		Ftype1: _tZONE,
 		Fvalue: -(libc.Int32FromInt32(60) * libc.Int32FromInt32(1)),
 	},
 	35: {
 		Fname:  __ccgo_ts + 22416,
-		Ftype1: int32(_tDAYZONE),
+		Ftype1: _tDAYZONE,
 		Fvalue: -(libc.Int32FromInt32(60) * libc.Int32FromInt32(1)),
 	},
 	36: {
 		Fname:  __ccgo_ts + 22420,
-		Ftype1: int32(_tZONE),
+		Ftype1: _tZONE,
 		Fvalue: -(libc.Int32FromInt32(60) * libc.Int32FromInt32(1)),
 	},
 	37: {
 		Fname:  __ccgo_ts + 22424,
-		Ftype1: int32(_tDAYZONE),
+		Ftype1: _tDAYZONE,
 		Fvalue: -(libc.Int32FromInt32(60) * libc.Int32FromInt32(1)),
 	},
 	38: {
 		Fname:  __ccgo_ts + 22428,
-		Ftype1: int32(_tZONE),
+		Ftype1: _tZONE,
 		Fvalue: -(libc.Int32FromInt32(60) * libc.Int32FromInt32(2)),
 	},
 	39: {
 		Fname:  __ccgo_ts + 22432,
-		Ftype1: int32(_tZONE),
+		Ftype1: _tZONE,
 		Fvalue: -(libc.Int32FromInt32(60) * libc.Int32FromInt32(3)),
 	},
 	40: {
 		Fname:  __ccgo_ts + 22435,
-		Ftype1: int32(_tZONE),
+		Ftype1: _tZONE,
 		Fvalue: -(libc.Int32FromInt32(60) * (libc.Int32FromInt32(7) / libc.Int32FromInt32(2))),
 	},
 	41: {
 		Fname:  __ccgo_ts + 22438,
-		Ftype1: int32(_tZONE),
+		Ftype1: _tZONE,
 		Fvalue: -(libc.Int32FromInt32(60) * libc.Int32FromInt32(4)),
 	},
 	42: {
 		Fname:  __ccgo_ts + 22442,
-		Ftype1: int32(_tZONE),
+		Ftype1: _tZONE,
 		Fvalue: -(libc.Int32FromInt32(60) * libc.Int32FromInt32(5)),
 	},
 	43: {
 		Fname:  __ccgo_ts + 22446,
-		Ftype1: int32(_tZONE),
+		Ftype1: _tZONE,
 		Fvalue: -(libc.Int32FromInt32(60) * (libc.Int32FromInt32(11) / libc.Int32FromInt32(2))),
 	},
 	44: {
 		Fname:  __ccgo_ts + 22450,
-		Ftype1: int32(_tZONE),
+		Ftype1: _tZONE,
 		Fvalue: -(libc.Int32FromInt32(60) * libc.Int32FromInt32(6)),
 	},
 	45: {
 		Fname:  __ccgo_ts + 22454,
-		Ftype1: int32(_tZONE),
+		Ftype1: _tZONE,
 		Fvalue: -(libc.Int32FromInt32(60) * libc.Int32FromInt32(7)),
 	},
 	46: {
 		Fname:  __ccgo_ts + 22459,
-		Ftype1: int32(_tDAYZONE),
+		Ftype1: _tDAYZONE,
 		Fvalue: -(libc.Int32FromInt32(60) * libc.Int32FromInt32(7)),
 	},
 	47: {
 		Fname:  __ccgo_ts + 22464,
-		Ftype1: int32(_tZONE),
+		Ftype1: _tZONE,
 		Fvalue: -(libc.Int32FromInt32(60) * (libc.Int32FromInt32(15) / libc.Int32FromInt32(2))),
 	},
 	48: {
 		Fname:  __ccgo_ts + 22467,
-		Ftype1: int32(_tZONE),
+		Ftype1: _tZONE,
 		Fvalue: -(libc.Int32FromInt32(60) * libc.Int32FromInt32(8)),
 	},
 	49: {
 		Fname:  __ccgo_ts + 22471,
-		Ftype1: int32(_tZONE),
+		Ftype1: _tZONE,
 		Fvalue: -(libc.Int32FromInt32(60) * libc.Int32FromInt32(9)),
 	},
 	50: {
 		Fname:  __ccgo_ts + 22475,
-		Ftype1: int32(_tDAYZONE),
+		Ftype1: _tDAYZONE,
 		Fvalue: -(libc.Int32FromInt32(60) * libc.Int32FromInt32(9)),
 	},
 	51: {
 		Fname:  __ccgo_ts + 22479,
-		Ftype1: int32(_tZONE),
+		Ftype1: _tZONE,
 		Fvalue: -(libc.Int32FromInt32(60) * libc.Int32FromInt32(9)),
 	},
 	52: {
 		Fname:  __ccgo_ts + 22483,
-		Ftype1: int32(_tDAYZONE),
+		Ftype1: _tDAYZONE,
 		Fvalue: -(libc.Int32FromInt32(60) * libc.Int32FromInt32(9)),
 	},
 	53: {
 		Fname:  __ccgo_ts + 22487,
-		Ftype1: int32(_tZONE),
+		Ftype1: _tZONE,
 		Fvalue: -(libc.Int32FromInt32(60) * (libc.Int32FromInt32(19) / libc.Int32FromInt32(2))),
 	},
 	54: {
 		Fname:  __ccgo_ts + 22492,
-		Ftype1: int32(_tDAYZONE),
+		Ftype1: _tDAYZONE,
 		Fvalue: -(libc.Int32FromInt32(60) * (libc.Int32FromInt32(19) / libc.Int32FromInt32(2))),
 	},
 	55: {
 		Fname:  __ccgo_ts + 22497,
-		Ftype1: int32(_tZONE),
+		Ftype1: _tZONE,
 		Fvalue: -(libc.Int32FromInt32(60) * libc.Int32FromInt32(10)),
 	},
 	56: {
 		Fname:  __ccgo_ts + 22502,
-		Ftype1: int32(_tDAYZONE),
+		Ftype1: _tDAYZONE,
 		Fvalue: -(libc.Int32FromInt32(60) * libc.Int32FromInt32(10)),
 	},
 	57: {
 		Fname:  __ccgo_ts + 22507,
-		Ftype1: int32(_tZONE),
+		Ftype1: _tZONE,
 		Fvalue: -(libc.Int32FromInt32(60) * libc.Int32FromInt32(10)),
 	},
 	58: {
 		Fname:  __ccgo_ts + 22511,
-		Ftype1: int32(_tZONE),
+		Ftype1: _tZONE,
 		Fvalue: -(libc.Int32FromInt32(60) * libc.Int32FromInt32(12)),
 	},
 	59: {
 		Fname:  __ccgo_ts + 22515,
-		Ftype1: int32(_tZONE),
+		Ftype1: _tZONE,
 		Fvalue: -(libc.Int32FromInt32(60) * libc.Int32FromInt32(12)),
 	},
 	60: {
 		Fname:  __ccgo_ts + 22520,
-		Ftype1: int32(_tDAYZONE),
+		Ftype1: _tDAYZONE,
 		Fvalue: -(libc.Int32FromInt32(60) * libc.Int32FromInt32(12)),
 	},
 	61: {
 		Fname:  __ccgo_ts + 22525,
-		Ftype1: int32(_tZONE),
+		Ftype1: _tZONE,
 		Fvalue: -(libc.Int32FromInt32(60) * libc.Int32FromInt32(12)),
 	},
 	62: {
 		Fname:  __ccgo_ts + 22530,
-		Ftype1: int32(_tDST),
+		Ftype1: _tDST,
 	},
 	63: {},
 }
@@ -121976,127 +121976,127 @@ var _TimezoneTable = [64]TTABLE{
 var _MilitaryTable = [26]TTABLE{
 	0: {
 		Fname:  __ccgo_ts + 22534,
-		Ftype1: int32(_tZONE),
+		Ftype1: _tZONE,
 		Fvalue: -(libc.Int32FromInt32(60) * libc.Int32FromInt32(1)) + libc.Int32FromInt32(60)*libc.Int32FromInt32(100),
 	},
 	1: {
 		Fname:  __ccgo_ts + 22536,
-		Ftype1: int32(_tZONE),
+		Ftype1: _tZONE,
 		Fvalue: -(libc.Int32FromInt32(60) * libc.Int32FromInt32(2)) + libc.Int32FromInt32(60)*libc.Int32FromInt32(100),
 	},
 	2: {
 		Fname:  __ccgo_ts + 22538,
-		Ftype1: int32(_tZONE),
+		Ftype1: _tZONE,
 		Fvalue: -(libc.Int32FromInt32(60) * libc.Int32FromInt32(3)) + libc.Int32FromInt32(60)*libc.Int32FromInt32(100),
 	},
 	3: {
 		Fname:  __ccgo_ts + 22540,
-		Ftype1: int32(_tZONE),
+		Ftype1: _tZONE,
 		Fvalue: -(libc.Int32FromInt32(60) * libc.Int32FromInt32(4)) + libc.Int32FromInt32(60)*libc.Int32FromInt32(100),
 	},
 	4: {
 		Fname:  __ccgo_ts + 22542,
-		Ftype1: int32(_tZONE),
+		Ftype1: _tZONE,
 		Fvalue: -(libc.Int32FromInt32(60) * libc.Int32FromInt32(5)) + libc.Int32FromInt32(60)*libc.Int32FromInt32(100),
 	},
 	5: {
 		Fname:  __ccgo_ts + 22544,
-		Ftype1: int32(_tZONE),
+		Ftype1: _tZONE,
 		Fvalue: -(libc.Int32FromInt32(60) * libc.Int32FromInt32(6)) + libc.Int32FromInt32(60)*libc.Int32FromInt32(100),
 	},
 	6: {
 		Fname:  __ccgo_ts + 22546,
-		Ftype1: int32(_tZONE),
+		Ftype1: _tZONE,
 		Fvalue: -(libc.Int32FromInt32(60) * libc.Int32FromInt32(7)) + libc.Int32FromInt32(60)*libc.Int32FromInt32(100),
 	},
 	7: {
 		Fname:  __ccgo_ts + 22548,
-		Ftype1: int32(_tZONE),
+		Ftype1: _tZONE,
 		Fvalue: -(libc.Int32FromInt32(60) * libc.Int32FromInt32(8)) + libc.Int32FromInt32(60)*libc.Int32FromInt32(100),
 	},
 	8: {
 		Fname:  __ccgo_ts + 22550,
-		Ftype1: int32(_tZONE),
+		Ftype1: _tZONE,
 		Fvalue: -(libc.Int32FromInt32(60) * libc.Int32FromInt32(9)) + libc.Int32FromInt32(60)*libc.Int32FromInt32(100),
 	},
 	9: {
 		Fname:  __ccgo_ts + 22552,
-		Ftype1: int32(_tZONE),
+		Ftype1: _tZONE,
 		Fvalue: -(libc.Int32FromInt32(60) * libc.Int32FromInt32(10)) + libc.Int32FromInt32(60)*libc.Int32FromInt32(100),
 	},
 	10: {
 		Fname:  __ccgo_ts + 22554,
-		Ftype1: int32(_tZONE),
+		Ftype1: _tZONE,
 		Fvalue: -(libc.Int32FromInt32(60) * libc.Int32FromInt32(11)) + libc.Int32FromInt32(60)*libc.Int32FromInt32(100),
 	},
 	11: {
 		Fname:  __ccgo_ts + 22556,
-		Ftype1: int32(_tZONE),
+		Ftype1: _tZONE,
 		Fvalue: -(libc.Int32FromInt32(60) * libc.Int32FromInt32(12)) + libc.Int32FromInt32(60)*libc.Int32FromInt32(100),
 	},
 	12: {
 		Fname:  __ccgo_ts + 22558,
-		Ftype1: int32(_tZONE),
+		Ftype1: _tZONE,
 		Fvalue: libc.Int32FromInt32(60)*libc.Int32FromInt32(1) + libc.Int32FromInt32(60)*libc.Int32FromInt32(100),
 	},
 	13: {
 		Fname:  __ccgo_ts + 22560,
-		Ftype1: int32(_tZONE),
+		Ftype1: _tZONE,
 		Fvalue: libc.Int32FromInt32(60)*libc.Int32FromInt32(2) + libc.Int32FromInt32(60)*libc.Int32FromInt32(100),
 	},
 	14: {
 		Fname:  __ccgo_ts + 22562,
-		Ftype1: int32(_tZONE),
+		Ftype1: _tZONE,
 		Fvalue: libc.Int32FromInt32(60)*libc.Int32FromInt32(3) + libc.Int32FromInt32(60)*libc.Int32FromInt32(100),
 	},
 	15: {
 		Fname:  __ccgo_ts + 22564,
-		Ftype1: int32(_tZONE),
+		Ftype1: _tZONE,
 		Fvalue: libc.Int32FromInt32(60)*libc.Int32FromInt32(4) + libc.Int32FromInt32(60)*libc.Int32FromInt32(100),
 	},
 	16: {
 		Fname:  __ccgo_ts + 22566,
-		Ftype1: int32(_tZONE),
+		Ftype1: _tZONE,
 		Fvalue: libc.Int32FromInt32(60)*libc.Int32FromInt32(5) + libc.Int32FromInt32(60)*libc.Int32FromInt32(100),
 	},
 	17: {
 		Fname:  __ccgo_ts + 22568,
-		Ftype1: int32(_tZONE),
+		Ftype1: _tZONE,
 		Fvalue: libc.Int32FromInt32(60)*libc.Int32FromInt32(6) + libc.Int32FromInt32(60)*libc.Int32FromInt32(100),
 	},
 	18: {
 		Fname:  __ccgo_ts + 22570,
-		Ftype1: int32(_tZONE),
+		Ftype1: _tZONE,
 		Fvalue: libc.Int32FromInt32(60)*libc.Int32FromInt32(7) + libc.Int32FromInt32(60)*libc.Int32FromInt32(100),
 	},
 	19: {
 		Fname:  __ccgo_ts + 22572,
-		Ftype1: int32(_tZONE),
+		Ftype1: _tZONE,
 		Fvalue: libc.Int32FromInt32(60)*libc.Int32FromInt32(8) + libc.Int32FromInt32(60)*libc.Int32FromInt32(100),
 	},
 	20: {
 		Fname:  __ccgo_ts + 22574,
-		Ftype1: int32(_tZONE),
+		Ftype1: _tZONE,
 		Fvalue: libc.Int32FromInt32(60)*libc.Int32FromInt32(9) + libc.Int32FromInt32(60)*libc.Int32FromInt32(100),
 	},
 	21: {
 		Fname:  __ccgo_ts + 22576,
-		Ftype1: int32(_tZONE),
+		Ftype1: _tZONE,
 		Fvalue: libc.Int32FromInt32(60)*libc.Int32FromInt32(10) + libc.Int32FromInt32(60)*libc.Int32FromInt32(100),
 	},
 	22: {
 		Fname:  __ccgo_ts + 22578,
-		Ftype1: int32(_tZONE),
+		Ftype1: _tZONE,
 		Fvalue: libc.Int32FromInt32(60)*libc.Int32FromInt32(11) + libc.Int32FromInt32(60)*libc.Int32FromInt32(100),
 	},
 	23: {
 		Fname:  __ccgo_ts + 22580,
-		Ftype1: int32(_tZONE),
+		Ftype1: _tZONE,
 		Fvalue: libc.Int32FromInt32(60)*libc.Int32FromInt32(12) + libc.Int32FromInt32(60)*libc.Int32FromInt32(100),
 	},
 	24: {
 		Fname:  __ccgo_ts + 22582,
-		Ftype1: int32(_tZONE),
+		Ftype1: _tZONE,
 		Fvalue: libc.Int32FromInt32(60)*libc.Int32FromInt32(0) + libc.Int32FromInt32(60)*libc.Int32FromInt32(100),
 	},
 	25: {},
@@ -122165,17 +122165,17 @@ func _ToSeconds(tls *libc.TLS, Hours Ttime_t, Minutes Ttime_t, Seconds Ttime_t, 
 		return -int32(1)
 	}
 	switch Meridian {
-	case int32(_MER24):
+	case _MER24:
 		if Hours < 0 || Hours > int32(23) {
 			return -int32(1)
 		}
 		return (Hours*int32(60)+Minutes)*int32(60) + Seconds
-	case int32(_MERam):
+	case _MERam:
 		if Hours < int32(1) || Hours > int32(12) {
 			return -int32(1)
 		}
 		return (Hours%int32(12)*int32(60)+Minutes)*int32(60) + Seconds
-	case int32(_MERpm):
+	case _MERpm:
 		if Hours < int32(1) || Hours > int32(12) {
 			return -int32(1)
 		}
@@ -122193,12 +122193,12 @@ func _LookupWord(tls *libc.TLS, yylvalPtr uintptr, buff uintptr) (r int32) {
 	 */
 	XTcl_UtfToLower(tls, buff)
 	if libc.Xstrcmp(tls, buff, __ccgo_ts+22598) == 0 || libc.Xstrcmp(tls, buff, __ccgo_ts+22601) == 0 {
-		*(*__MERIDIAN)(unsafe.Pointer(yylvalPtr)) = int32(_MERam)
-		return int32(_tMERIDIAN)
+		*(*__MERIDIAN)(unsafe.Pointer(yylvalPtr)) = _MERam
+		return _tMERIDIAN
 	}
 	if libc.Xstrcmp(tls, buff, __ccgo_ts+22606) == 0 || libc.Xstrcmp(tls, buff, __ccgo_ts+22609) == 0 {
-		*(*__MERIDIAN)(unsafe.Pointer(yylvalPtr)) = int32(_MERpm)
-		return int32(_tMERIDIAN)
+		*(*__MERIDIAN)(unsafe.Pointer(yylvalPtr)) = _MERpm
+		return _tMERIDIAN
 	}
 	/*
 	 * See if we have an abbreviation for a month.
@@ -122348,7 +122348,7 @@ func _LookupWord(tls *libc.TLS, yylvalPtr uintptr, buff uintptr) (r int32) {
 			tp += 12
 		}
 	}
-	return int32(_tID)
+	return _tID
 }
 
 func _TclDatelex(tls *libc.TLS, yylvalPtr uintptr, location uintptr, info uintptr) (r int32) {
@@ -122401,10 +122401,10 @@ func _TclDatelex(tls *libc.TLS, yylvalPtr uintptr, location uintptr, info uintpt
 			 */
 			if Count >= int32(6) {
 				(*TYYLTYPE)(unsafe.Pointer(location)).Flast_column = int32((*TDateInfo)(unsafe.Pointer(info)).FdateInput) - int32((*TDateInfo)(unsafe.Pointer(info)).FdateStart) - int32(1)
-				return int32(_tISOBASE)
+				return _tISOBASE
 			} else {
 				(*TYYLTYPE)(unsafe.Pointer(location)).Flast_column = int32((*TDateInfo)(unsafe.Pointer(info)).FdateInput) - int32((*TDateInfo)(unsafe.Pointer(info)).FdateStart) - int32(1)
-				return int32(_tUNUMBER)
+				return _tUNUMBER
 			}
 		}
 		if !(int32(c)&libc.Int32FromInt32(0x80) != 0) && int32(*(*uint16)(unsafe.Pointer(*(*uintptr)(unsafe.Pointer(libc.X__ctype_b_loc(tls))) + uintptr(int32(c))*2)))&int32(uint16(__ISalpha)) != 0 { /* INTL: ISO only. */
@@ -122492,10 +122492,10 @@ func XTclClockOldscanObjCmd(tls *libc.TLS, dummy uintptr, interp uintptr, objc i
 	(*TDateInfo)(unsafe.Pointer(info)).FdateHour = 0
 	(*TDateInfo)(unsafe.Pointer(info)).FdateMinutes = 0
 	(*TDateInfo)(unsafe.Pointer(info)).FdateSeconds = 0
-	(*TDateInfo)(unsafe.Pointer(info)).FdateMeridian = int32(_MER24)
+	(*TDateInfo)(unsafe.Pointer(info)).FdateMeridian = _MER24
 	(*TDateInfo)(unsafe.Pointer(info)).FdateHaveZone = 0
 	(*TDateInfo)(unsafe.Pointer(info)).FdateTimezone = 0
-	(*TDateInfo)(unsafe.Pointer(info)).FdateDSTmode = int32(_DSTmaybe)
+	(*TDateInfo)(unsafe.Pointer(info)).FdateDSTmode = _DSTmaybe
 	(*TDateInfo)(unsafe.Pointer(info)).FdateHaveOrdinalMonth = 0
 	(*TDateInfo)(unsafe.Pointer(info)).FdateMonthOrdinal = 0
 	(*TDateInfo)(unsafe.Pointer(info)).FdateHaveDay = 0
@@ -128200,16 +128200,16 @@ func _DisassembleByteCodeObj(tls *libc.TLS, interp uintptr, objPtr uintptr) (r u
 				break
 			}
 			rangePtr = (*TByteCode)(unsafe.Pointer(codePtr)).FexceptArrayPtr + uintptr(i)*28
-			if (*TExceptionRange)(unsafe.Pointer(rangePtr)).Ftype1 == int32(_LOOP_EXCEPTION_RANGE) {
+			if (*TExceptionRange)(unsafe.Pointer(rangePtr)).Ftype1 == _LOOP_EXCEPTION_RANGE {
 				v10 = __ccgo_ts + 18418
 			} else {
 				v10 = __ccgo_ts + 5008
 			}
 			XTcl_AppendPrintfToObj(tls, bufferObj, __ccgo_ts+24331, libc.VaList(bp+56, i, (*TExceptionRange)(unsafe.Pointer(rangePtr)).FnestingLevel, v10, (*TExceptionRange)(unsafe.Pointer(rangePtr)).FcodeOffset, (*TExceptionRange)(unsafe.Pointer(rangePtr)).FcodeOffset+(*TExceptionRange)(unsafe.Pointer(rangePtr)).FnumCodeBytes-int32(1)))
 			switch (*TExceptionRange)(unsafe.Pointer(rangePtr)).Ftype1 {
-			case int32(_LOOP_EXCEPTION_RANGE):
+			case _LOOP_EXCEPTION_RANGE:
 				XTcl_AppendPrintfToObj(tls, bufferObj, __ccgo_ts+24366, libc.VaList(bp+56, (*TExceptionRange)(unsafe.Pointer(rangePtr)).FcontinueOffset, (*TExceptionRange)(unsafe.Pointer(rangePtr)).FbreakOffset))
-			case int32(_CATCH_EXCEPTION_RANGE):
+			case _CATCH_EXCEPTION_RANGE:
 				XTcl_AppendPrintfToObj(tls, bufferObj, __ccgo_ts+24389, libc.VaList(bp+56, (*TExceptionRange)(unsafe.Pointer(rangePtr)).FcatchOffset))
 			default:
 				XTcl_Panic(tls, __ccgo_ts+24399, libc.VaList(bp+56, (*TExceptionRange)(unsafe.Pointer(rangePtr)).Ftype1))
@@ -128420,35 +128420,35 @@ func _FormatInstruction(tls *libc.TLS, codePtr uintptr, pc uintptr, bufferObj ui
 			break
 		}
 		switch *(*TInstOperandType)(unsafe.Pointer(instDesc + 16 + uintptr(i)*4)) {
-		case int32(_OPERAND_INT1):
+		case _OPERAND_INT1:
 			goto _4
-		case int32(_OPERAND_INT4):
+		case _OPERAND_INT4:
 			goto _5
-		case int32(_OPERAND_UINT1):
+		case _OPERAND_UINT1:
 			goto _6
-		case int32(_OPERAND_UINT4):
+		case _OPERAND_UINT4:
 			goto _7
-		case int32(_OPERAND_OFFSET1):
+		case _OPERAND_OFFSET1:
 			goto _8
-		case int32(_OPERAND_OFFSET4):
+		case _OPERAND_OFFSET4:
 			goto _9
-		case int32(_OPERAND_LIT1):
+		case _OPERAND_LIT1:
 			goto _10
-		case int32(_OPERAND_LIT4):
+		case _OPERAND_LIT4:
 			goto _11
-		case int32(_OPERAND_AUX4):
+		case _OPERAND_AUX4:
 			goto _12
-		case int32(_OPERAND_IDX4):
+		case _OPERAND_IDX4:
 			goto _13
-		case int32(_OPERAND_LVT1):
+		case _OPERAND_LVT1:
 			goto _14
-		case int32(_OPERAND_LVT4):
+		case _OPERAND_LVT4:
 			goto _15
-		case int32(_OPERAND_SCLS1):
+		case _OPERAND_SCLS1:
 			goto _16
 		default:
 			goto _17
-		case int32(_OPERAND_NONE):
+		case _OPERAND_NONE:
 			goto _18
 		}
 		goto _19
@@ -129040,33 +129040,33 @@ func _DisassembleByteCodeAsDicts(tls *libc.TLS, interp uintptr, objPtr uintptr) 
 				break
 			}
 			switch *(*TInstOperandType)(unsafe.Pointer(instDesc + 16 + uintptr(i)*4)) {
-			case int32(_OPERAND_INT1):
+			case _OPERAND_INT1:
 				goto _5
-			case int32(_OPERAND_UINT1):
+			case _OPERAND_UINT1:
 				goto _6
-			case int32(_OPERAND_INT4):
+			case _OPERAND_INT4:
 				goto _7
-			case int32(_OPERAND_UINT4):
+			case _OPERAND_UINT4:
 				goto _8
-			case int32(_OPERAND_OFFSET1):
+			case _OPERAND_OFFSET1:
 				goto _9
-			case int32(_OPERAND_OFFSET4):
+			case _OPERAND_OFFSET4:
 				goto _10
-			case int32(_OPERAND_LIT1):
+			case _OPERAND_LIT1:
 				goto _11
-			case int32(_OPERAND_LIT4):
+			case _OPERAND_LIT4:
 				goto _12
-			case int32(_OPERAND_LVT1):
+			case _OPERAND_LVT1:
 				goto _13
-			case int32(_OPERAND_LVT4):
+			case _OPERAND_LVT4:
 				goto _14
-			case int32(_OPERAND_IDX4):
+			case _OPERAND_IDX4:
 				goto _15
-			case int32(_OPERAND_AUX4):
+			case _OPERAND_AUX4:
 				goto _16
-			case int32(_OPERAND_SCLS1):
+			case _OPERAND_SCLS1:
 				goto _17
-			case int32(_OPERAND_NONE):
+			case _OPERAND_NONE:
 				goto _18
 			}
 			goto _19
@@ -129236,9 +129236,9 @@ func _DisassembleByteCodeAsDicts(tls *libc.TLS, interp uintptr, objPtr uintptr) 
 		}
 		rangePtr = (*TByteCode)(unsafe.Pointer(codePtr)).FexceptArrayPtr + uintptr(i)*28
 		switch (*TExceptionRange)(unsafe.Pointer(rangePtr)).Ftype1 {
-		case int32(_LOOP_EXCEPTION_RANGE):
+		case _LOOP_EXCEPTION_RANGE:
 			XTcl_ListObjAppendElement(tls, libc.UintptrFromInt32(0), exn, XTcl_ObjPrintf(tls, __ccgo_ts+24963, libc.VaList(bp+24, __ccgo_ts+18418, (*TExceptionRange)(unsafe.Pointer(rangePtr)).FnestingLevel, (*TExceptionRange)(unsafe.Pointer(rangePtr)).FcodeOffset, (*TExceptionRange)(unsafe.Pointer(rangePtr)).FcodeOffset+(*TExceptionRange)(unsafe.Pointer(rangePtr)).FnumCodeBytes-int32(1), (*TExceptionRange)(unsafe.Pointer(rangePtr)).FbreakOffset, (*TExceptionRange)(unsafe.Pointer(rangePtr)).FcontinueOffset)))
-		case int32(_CATCH_EXCEPTION_RANGE):
+		case _CATCH_EXCEPTION_RANGE:
 			XTcl_ListObjAppendElement(tls, libc.UintptrFromInt32(0), exn, XTcl_ObjPrintf(tls, __ccgo_ts+25015, libc.VaList(bp+24, __ccgo_ts+5008, (*TExceptionRange)(unsafe.Pointer(rangePtr)).FnestingLevel, (*TExceptionRange)(unsafe.Pointer(rangePtr)).FcodeOffset, (*TExceptionRange)(unsafe.Pointer(rangePtr)).FcodeOffset+(*TExceptionRange)(unsafe.Pointer(rangePtr)).FnumCodeBytes-int32(1), (*TExceptionRange)(unsafe.Pointer(rangePtr)).FcatchOffset)))
 			break
 		}
@@ -130198,8 +130198,8 @@ func _FillEncodingFileMap(tls *libc.TLS) {
 			if !(j < *(*int32)(unsafe.Pointer(bp + 4))) {
 				break
 			}
-			fileObj = XTclPathPart(tls, libc.UintptrFromInt32(0), *(*uintptr)(unsafe.Pointer(*(*uintptr)(unsafe.Pointer(bp + 12)) + uintptr(j)*4)), int32(_TCL_PATH_TAIL))
-			encodingName = XTclPathPart(tls, libc.UintptrFromInt32(0), fileObj, int32(_TCL_PATH_ROOT))
+			fileObj = XTclPathPart(tls, libc.UintptrFromInt32(0), *(*uintptr)(unsafe.Pointer(*(*uintptr)(unsafe.Pointer(bp + 12)) + uintptr(j)*4)), _TCL_PATH_TAIL)
+			encodingName = XTclPathPart(tls, libc.UintptrFromInt32(0), fileObj, _TCL_PATH_ROOT)
 			XTcl_DictObjPut(tls, libc.UintptrFromInt32(0), map1, encodingName, *(*uintptr)(unsafe.Pointer(bp + 8)))
 			_objPtr = fileObj
 			v6 = _objPtr
@@ -133488,11 +133488,11 @@ func XTclNamespaceEnsembleCmd(tls *libc.TLS, dummy TClientData, interp uintptr, 
 		return int32(m_TCL_ERROR)
 	}
 	switch *(*int32)(unsafe.Pointer(bp + 36)) {
-	case int32(_ENS_CREATE):
+	case _ENS_CREATE:
 		goto _1
-	case int32(_ENS_EXISTS):
+	case _ENS_EXISTS:
 		goto _2
-	case int32(_ENS_CONFIG):
+	case _ENS_CONFIG:
 		goto _3
 	default:
 		goto _4
@@ -133542,7 +133542,7 @@ _1:
 			return int32(m_TCL_ERROR)
 		}
 		switch *(*int32)(unsafe.Pointer(bp + 36)) {
-		case int32(_CRT_CMD):
+		case _CRT_CMD:
 			if (*TTcl_Obj)(unsafe.Pointer(*(*uintptr)(unsafe.Pointer(objv + 1*4)))).Fbytes != 0 {
 				v9 = (*TTcl_Obj)(unsafe.Pointer(*(*uintptr)(unsafe.Pointer(objv + 1*4)))).Fbytes
 			} else {
@@ -133551,7 +133551,7 @@ _1:
 			name = v9
 			cxtPtr = nsPtr
 			goto _6
-		case int32(_CRT_SUBCMDS):
+		case _CRT_SUBCMDS:
 			if (*TTcl_Obj)(unsafe.Pointer(*(*uintptr)(unsafe.Pointer(objv + 1*4)))).FtypePtr == uintptr(unsafe.Pointer(&XtclListType)) {
 				*(*int32)(unsafe.Pointer(bp + 44)) = (*TList)(unsafe.Pointer((*(*struct {
 					Fptr1 uintptr
@@ -133580,7 +133580,7 @@ _1:
 			}
 			subcmdObj = v13
 			goto _6
-		case int32(_CRT_PARAM):
+		case _CRT_PARAM:
 			if (*TTcl_Obj)(unsafe.Pointer(*(*uintptr)(unsafe.Pointer(objv + 1*4)))).FtypePtr == uintptr(unsafe.Pointer(&XtclListType)) {
 				*(*int32)(unsafe.Pointer(bp + 44)) = (*TList)(unsafe.Pointer((*(*struct {
 					Fptr1 uintptr
@@ -133609,7 +133609,7 @@ _1:
 			}
 			paramObj = v17
 			goto _6
-		case int32(_CRT_MAP):
+		case _CRT_MAP:
 			patchedDict = libc.UintptrFromInt32(0)
 			/*
 			 * Verify that the map is sensible.
@@ -133730,7 +133730,7 @@ _1:
 				allocatedMapFlag = int32(1)
 			}
 			goto _6
-		case int32(_CRT_PREFIX):
+		case _CRT_PREFIX:
 			if XTcl_GetBooleanFromObj(tls, interp, *(*uintptr)(unsafe.Pointer(objv + 1*4)), bp+48) != m_TCL_OK {
 				if allocatedMapFlag != 0 {
 					_objPtr9 = mapObj
@@ -133744,7 +133744,7 @@ _1:
 				return int32(m_TCL_ERROR)
 			}
 			goto _6
-		case int32(_CRT_UNKNOWN):
+		case _CRT_UNKNOWN:
 			if (*TTcl_Obj)(unsafe.Pointer(*(*uintptr)(unsafe.Pointer(objv + 1*4)))).FtypePtr == uintptr(unsafe.Pointer(&XtclListType)) {
 				*(*int32)(unsafe.Pointer(bp + 44)) = (*TList)(unsafe.Pointer((*(*struct {
 					Fptr1 uintptr
@@ -133826,30 +133826,30 @@ _3:
 			return int32(m_TCL_ERROR)
 		}
 		switch *(*int32)(unsafe.Pointer(bp + 36)) {
-		case int32(_CONF_SUBCMDS):
+		case _CONF_SUBCMDS:
 			XTcl_GetEnsembleSubcommandList(tls, libc.UintptrFromInt32(0), token, bp+64)
 			if *(*uintptr)(unsafe.Pointer(bp + 64)) != libc.UintptrFromInt32(0) {
 				XTcl_SetObjResult(tls, interp, *(*uintptr)(unsafe.Pointer(bp + 64)))
 			}
-		case int32(_CONF_PARAM):
+		case _CONF_PARAM:
 			XTcl_GetEnsembleParameterList(tls, libc.UintptrFromInt32(0), token, bp+64)
 			if *(*uintptr)(unsafe.Pointer(bp + 64)) != libc.UintptrFromInt32(0) {
 				XTcl_SetObjResult(tls, interp, *(*uintptr)(unsafe.Pointer(bp + 64)))
 			}
-		case int32(_CONF_MAP):
+		case _CONF_MAP:
 			XTcl_GetEnsembleMappingDict(tls, libc.UintptrFromInt32(0), token, bp+64)
 			if *(*uintptr)(unsafe.Pointer(bp + 64)) != libc.UintptrFromInt32(0) {
 				XTcl_SetObjResult(tls, interp, *(*uintptr)(unsafe.Pointer(bp + 64)))
 			}
-		case int32(_CONF_NAMESPACE):
+		case _CONF_NAMESPACE:
 			*(*uintptr)(unsafe.Pointer(bp)) = libc.UintptrFromInt32(0) /* silence gcc 4 warning */
 			XTcl_GetEnsembleNamespace(tls, libc.UintptrFromInt32(0), token, bp)
 			XTcl_SetObjResult(tls, interp, _NewNsObj(tls, *(*uintptr)(unsafe.Pointer(bp))))
-		case int32(_CONF_PREFIX):
+		case _CONF_PREFIX:
 			*(*int32)(unsafe.Pointer(bp + 68)) = 0 /* silence gcc 4 warning */
 			XTcl_GetEnsembleFlags(tls, libc.UintptrFromInt32(0), token, bp+68)
 			XTcl_SetObjResult(tls, interp, XTcl_NewIntObj(tls, libc.BoolInt32(*(*int32)(unsafe.Pointer(bp + 68))&int32(m_TCL_ENSEMBLE_PREFIX) != 0)))
-		case int32(_CONF_UNKNOWN):
+		case _CONF_UNKNOWN:
 			XTcl_GetEnsembleUnknownHandler(tls, libc.UintptrFromInt32(0), token, bp+64)
 			if *(*uintptr)(unsafe.Pointer(bp + 64)) != libc.UintptrFromInt32(0) {
 				XTcl_SetObjResult(tls, interp, *(*uintptr)(unsafe.Pointer(bp + 64)))
@@ -133873,7 +133873,7 @@ _3:
 			(*TTcl_Obj)(unsafe.Pointer(resultObj1)).Flength = 0
 			(*TTcl_Obj)(unsafe.Pointer(resultObj1)).FtypePtr = libc.UintptrFromInt32(0)
 			/* -map option */
-			XTcl_ListObjAppendElement(tls, libc.UintptrFromInt32(0), resultObj1, XTcl_NewStringObj(tls, _ensembleConfigOptions[int32(_CONF_MAP)], -int32(1)))
+			XTcl_ListObjAppendElement(tls, libc.UintptrFromInt32(0), resultObj1, XTcl_NewStringObj(tls, _ensembleConfigOptions[_CONF_MAP], -int32(1)))
 			XTcl_GetEnsembleMappingDict(tls, libc.UintptrFromInt32(0), token, bp+72)
 			if *(*uintptr)(unsafe.Pointer(bp + 72)) != libc.UintptrFromInt32(0) {
 				v40 = *(*uintptr)(unsafe.Pointer(bp + 72))
@@ -133882,12 +133882,12 @@ _3:
 			}
 			XTcl_ListObjAppendElement(tls, libc.UintptrFromInt32(0), resultObj1, v40)
 			/* -namespace option */
-			XTcl_ListObjAppendElement(tls, libc.UintptrFromInt32(0), resultObj1, XTcl_NewStringObj(tls, _ensembleConfigOptions[int32(_CONF_NAMESPACE)], -int32(1)))
+			XTcl_ListObjAppendElement(tls, libc.UintptrFromInt32(0), resultObj1, XTcl_NewStringObj(tls, _ensembleConfigOptions[_CONF_NAMESPACE], -int32(1)))
 			*(*uintptr)(unsafe.Pointer(bp)) = libc.UintptrFromInt32(0) /* silence gcc 4 warning */
 			XTcl_GetEnsembleNamespace(tls, libc.UintptrFromInt32(0), token, bp)
 			XTcl_ListObjAppendElement(tls, libc.UintptrFromInt32(0), resultObj1, _NewNsObj(tls, *(*uintptr)(unsafe.Pointer(bp))))
 			/* -parameters option */
-			XTcl_ListObjAppendElement(tls, libc.UintptrFromInt32(0), resultObj1, XTcl_NewStringObj(tls, _ensembleConfigOptions[int32(_CONF_PARAM)], -int32(1)))
+			XTcl_ListObjAppendElement(tls, libc.UintptrFromInt32(0), resultObj1, XTcl_NewStringObj(tls, _ensembleConfigOptions[_CONF_PARAM], -int32(1)))
 			XTcl_GetEnsembleParameterList(tls, libc.UintptrFromInt32(0), token, bp+72)
 			if *(*uintptr)(unsafe.Pointer(bp + 72)) != libc.UintptrFromInt32(0) {
 				v41 = *(*uintptr)(unsafe.Pointer(bp + 72))
@@ -133896,11 +133896,11 @@ _3:
 			}
 			XTcl_ListObjAppendElement(tls, libc.UintptrFromInt32(0), resultObj1, v41)
 			/* -prefix option */
-			XTcl_ListObjAppendElement(tls, libc.UintptrFromInt32(0), resultObj1, XTcl_NewStringObj(tls, _ensembleConfigOptions[int32(_CONF_PREFIX)], -int32(1)))
+			XTcl_ListObjAppendElement(tls, libc.UintptrFromInt32(0), resultObj1, XTcl_NewStringObj(tls, _ensembleConfigOptions[_CONF_PREFIX], -int32(1)))
 			XTcl_GetEnsembleFlags(tls, libc.UintptrFromInt32(0), token, bp+76)
 			XTcl_ListObjAppendElement(tls, libc.UintptrFromInt32(0), resultObj1, XTcl_NewIntObj(tls, libc.BoolInt32(*(*int32)(unsafe.Pointer(bp + 76))&int32(m_TCL_ENSEMBLE_PREFIX) != 0)))
 			/* -subcommands option */
-			XTcl_ListObjAppendElement(tls, libc.UintptrFromInt32(0), resultObj1, XTcl_NewStringObj(tls, _ensembleConfigOptions[int32(_CONF_SUBCMDS)], -int32(1)))
+			XTcl_ListObjAppendElement(tls, libc.UintptrFromInt32(0), resultObj1, XTcl_NewStringObj(tls, _ensembleConfigOptions[_CONF_SUBCMDS], -int32(1)))
 			XTcl_GetEnsembleSubcommandList(tls, libc.UintptrFromInt32(0), token, bp+72)
 			if *(*uintptr)(unsafe.Pointer(bp + 72)) != libc.UintptrFromInt32(0) {
 				v42 = *(*uintptr)(unsafe.Pointer(bp + 72))
@@ -133909,7 +133909,7 @@ _3:
 			}
 			XTcl_ListObjAppendElement(tls, libc.UintptrFromInt32(0), resultObj1, v42)
 			/* -unknown option */
-			XTcl_ListObjAppendElement(tls, libc.UintptrFromInt32(0), resultObj1, XTcl_NewStringObj(tls, _ensembleConfigOptions[int32(_CONF_UNKNOWN)], -int32(1)))
+			XTcl_ListObjAppendElement(tls, libc.UintptrFromInt32(0), resultObj1, XTcl_NewStringObj(tls, _ensembleConfigOptions[_CONF_UNKNOWN], -int32(1)))
 			XTcl_GetEnsembleUnknownHandler(tls, libc.UintptrFromInt32(0), token, bp+72)
 			if *(*uintptr)(unsafe.Pointer(bp + 72)) != libc.UintptrFromInt32(0) {
 				v43 = *(*uintptr)(unsafe.Pointer(bp + 72))
@@ -133959,7 +133959,7 @@ _3:
 			return int32(m_TCL_ERROR)
 		_47:
 			switch *(*int32)(unsafe.Pointer(bp + 36)) {
-			case int32(_CONF_SUBCMDS):
+			case _CONF_SUBCMDS:
 				if (*TTcl_Obj)(unsafe.Pointer(*(*uintptr)(unsafe.Pointer(objv + 1*4)))).FtypePtr == uintptr(unsafe.Pointer(&XtclListType)) {
 					*(*int32)(unsafe.Pointer(bp + 80)) = (*TList)(unsafe.Pointer((*(*struct {
 						Fptr1 uintptr
@@ -133979,7 +133979,7 @@ _3:
 				}
 				*(*uintptr)(unsafe.Pointer(bp + 84)) = v51
 				goto _45
-			case int32(_CONF_PARAM):
+			case _CONF_PARAM:
 				if (*TTcl_Obj)(unsafe.Pointer(*(*uintptr)(unsafe.Pointer(objv + 1*4)))).FtypePtr == uintptr(unsafe.Pointer(&XtclListType)) {
 					*(*int32)(unsafe.Pointer(bp + 80)) = (*TList)(unsafe.Pointer((*(*struct {
 						Fptr1 uintptr
@@ -133999,7 +133999,7 @@ _3:
 				}
 				*(*uintptr)(unsafe.Pointer(bp + 92)) = v53
 				goto _45
-			case int32(_CONF_MAP):
+			case _CONF_MAP:
 				patchedDict1 = libc.UintptrFromInt32(0)
 				/*
 				 * Verify that the map is sensible.
@@ -134093,16 +134093,16 @@ _3:
 					allocatedMapFlag1 = int32(1)
 				}
 				goto _45
-			case int32(_CONF_NAMESPACE):
+			case _CONF_NAMESPACE:
 				XTcl_SetObjResult(tls, interp, XTcl_NewStringObj(tls, __ccgo_ts+26201, -int32(1)))
 				XTcl_SetErrorCode(tls, interp, libc.VaList(bp+128, __ccgo_ts+3490, __ccgo_ts+26028, __ccgo_ts+26232, libc.UintptrFromInt32(0)))
 				goto freeMapAndError
-			case int32(_CONF_PREFIX):
+			case _CONF_PREFIX:
 				if XTcl_GetBooleanFromObj(tls, interp, *(*uintptr)(unsafe.Pointer(objv + 1*4)), bp+100) != m_TCL_OK {
 					goto freeMapAndError
 				}
 				goto _45
-			case int32(_CONF_UNKNOWN):
+			case _CONF_UNKNOWN:
 				if (*TTcl_Obj)(unsafe.Pointer(*(*uintptr)(unsafe.Pointer(objv + 1*4)))).FtypePtr == uintptr(unsafe.Pointer(&XtclListType)) {
 					*(*int32)(unsafe.Pointer(bp + 80)) = (*TList)(unsafe.Pointer((*(*struct {
 						Fptr1 uintptr
@@ -158134,7 +158134,7 @@ processExceptionReturn:
 		if rangePtr == libc.UintptrFromInt32(0) {
 			goto abnormalReturn
 		}
-		if (*TExceptionRange)(unsafe.Pointer(rangePtr)).Ftype1 == int32(_CATCH_EXCEPTION_RANGE) {
+		if (*TExceptionRange)(unsafe.Pointer(rangePtr)).Ftype1 == _CATCH_EXCEPTION_RANGE {
 			goto processCatch
 		}
 		for {
@@ -160672,7 +160672,7 @@ func _GetExceptRangeForPc(tls *libc.TLS, pc uintptr, searchMode int32, codePtr u
 		}
 		start = (*TExceptionRange)(unsafe.Pointer(rangePtr)).FcodeOffset
 		if start <= pcOffset && pcOffset < start+(*TExceptionRange)(unsafe.Pointer(rangePtr)).FnumCodeBytes {
-			if (*TExceptionRange)(unsafe.Pointer(rangePtr)).Ftype1 == int32(_CATCH_EXCEPTION_RANGE) {
+			if (*TExceptionRange)(unsafe.Pointer(rangePtr)).Ftype1 == _CATCH_EXCEPTION_RANGE {
 				return rangePtr
 			}
 			if searchMode == int32(m_TCL_BREAK) {
@@ -161739,7 +161739,7 @@ func _FileBasename(tls *libc.TLS, interp uintptr, pathPtr uintptr) (r uintptr) {
 		 */
 		if *(*int32)(unsafe.Pointer(bp)) > 0 {
 			XTcl_ListObjIndex(tls, libc.UintptrFromInt32(0), splitPtr, *(*int32)(unsafe.Pointer(bp))-int32(1), bp+4)
-			if *(*int32)(unsafe.Pointer(bp)) == int32(1) && XTcl_FSGetPathType(tls, *(*uintptr)(unsafe.Pointer(bp + 4))) != int32(_TCL_PATH_RELATIVE) {
+			if *(*int32)(unsafe.Pointer(bp)) == int32(1) && XTcl_FSGetPathType(tls, *(*uintptr)(unsafe.Pointer(bp + 4))) != _TCL_PATH_RELATIVE {
 				*(*uintptr)(unsafe.Pointer(bp + 4)) = libc.UintptrFromInt32(0)
 			}
 		}
@@ -162104,7 +162104,7 @@ func XTclFileLinkCmd(tls *libc.TLS, clientData TClientData, interp uintptr, objc
 				XTcl_PosixError(tls, interp)
 			} else {
 				if *(*int32)(unsafe.Pointer(libc.X__errno_location(tls))) == int32(m_ENOENT) {
-					dirPtr = XTclPathPart(tls, interp, *(*uintptr)(unsafe.Pointer(objv + uintptr(index)*4)), int32(_TCL_PATH_DIRNAME))
+					dirPtr = XTclPathPart(tls, interp, *(*uintptr)(unsafe.Pointer(objv + uintptr(index)*4)), _TCL_PATH_DIRNAME)
 					if dirPtr == libc.UintptrFromInt32(0) {
 						return int32(m_TCL_ERROR)
 					}
@@ -162329,8 +162329,8 @@ func XTclFileTemporaryCmd(tls *libc.TLS, clientData TClientData, interp uintptr,
 		 * The template only gives a directory if there is a directory
 		 * separator in it.
 		 */
-		if libc.Xstrchr(tls, string1, int32('/')) != libc.UintptrFromInt32(0) || XtclPlatform == int32(_TCL_PLATFORM_WINDOWS) && libc.Xstrchr(tls, string1, int32('\\')) != libc.UintptrFromInt32(0) {
-			tempDirObj = XTclPathPart(tls, interp, templateObj, int32(_TCL_PATH_DIRNAME))
+		if libc.Xstrchr(tls, string1, int32('/')) != libc.UintptrFromInt32(0) || XtclPlatform == _TCL_PLATFORM_WINDOWS && libc.Xstrchr(tls, string1, int32('\\')) != libc.UintptrFromInt32(0) {
+			tempDirObj = XTclPathPart(tls, interp, templateObj, _TCL_PATH_DIRNAME)
 			/*
 			 * Only allow creation of temporary files in the native filesystem
 			 * since they are frequently used for integration with external
@@ -162362,11 +162362,11 @@ func XTclFileTemporaryCmd(tls *libc.TLS, clientData TClientData, interp uintptr,
 		 * The template only gives the filename if the last character isn't a
 		 * directory separator.
 		 */
-		if int32(*(*uint8)(unsafe.Pointer(string1 + uintptr(*(*int32)(unsafe.Pointer(bp))-int32(1))))) != int32('/') && (XtclPlatform != int32(_TCL_PLATFORM_WINDOWS) || int32(*(*uint8)(unsafe.Pointer(string1 + uintptr(*(*int32)(unsafe.Pointer(bp))-int32(1))))) != int32('\\')) {
-			tailObj = XTclPathPart(tls, interp, templateObj, int32(_TCL_PATH_TAIL))
+		if int32(*(*uint8)(unsafe.Pointer(string1 + uintptr(*(*int32)(unsafe.Pointer(bp))-int32(1))))) != int32('/') && (XtclPlatform != _TCL_PLATFORM_WINDOWS || int32(*(*uint8)(unsafe.Pointer(string1 + uintptr(*(*int32)(unsafe.Pointer(bp))-int32(1))))) != int32('\\')) {
+			tailObj = XTclPathPart(tls, interp, templateObj, _TCL_PATH_TAIL)
 			if tailObj != libc.UintptrFromInt32(0) {
-				tempBaseObj = XTclPathPart(tls, interp, tailObj, int32(_TCL_PATH_ROOT))
-				tempExtObj = XTclPathPart(tls, interp, tailObj, int32(_TCL_PATH_EXTENSION))
+				tempBaseObj = XTclPathPart(tls, interp, tailObj, _TCL_PATH_ROOT)
+				tempExtObj = XTclPathPart(tls, interp, tailObj, _TCL_PATH_EXTENSION)
 				v5 = tailObj
 				v4 = *(*int32)(unsafe.Pointer(v5))
 				*(*int32)(unsafe.Pointer(v5))--
@@ -162654,7 +162654,7 @@ func _ExtractWinRoot(tls *libc.TLS, path uintptr, resultPtr uintptr, offset int3
 	if int32(*(*uint8)(unsafe.Pointer(path))) == int32('/') || int32(*(*uint8)(unsafe.Pointer(path))) == int32('\\') {
 		if int32(*(*uint8)(unsafe.Pointer(path + 1))) != int32('/') && int32(*(*uint8)(unsafe.Pointer(path + 1))) != int32('\\') {
 			_SetResultLength(tls, resultPtr, offset, extended)
-			*(*TTcl_PathType)(unsafe.Pointer(typePtr)) = int32(_TCL_PATH_VOLUME_RELATIVE)
+			*(*TTcl_PathType)(unsafe.Pointer(typePtr)) = _TCL_PATH_VOLUME_RELATIVE
 			XTcl_DStringAppend(tls, resultPtr, __ccgo_ts+5689, int32(libc.Uint32FromInt64(2)-libc.Uint32FromInt32(1)))
 			return path + 1
 		}
@@ -162687,7 +162687,7 @@ func _ExtractWinRoot(tls *libc.TLS, path uintptr, resultPtr uintptr, offset int3
 			 * interpretation would be that it is a host name, but we have
 			 * been documented that that is not the case).
 			 */
-			*(*TTcl_PathType)(unsafe.Pointer(typePtr)) = int32(_TCL_PATH_VOLUME_RELATIVE)
+			*(*TTcl_PathType)(unsafe.Pointer(typePtr)) = _TCL_PATH_VOLUME_RELATIVE
 			XTcl_DStringAppend(tls, resultPtr, __ccgo_ts+5689, int32(libc.Uint32FromInt64(2)-libc.Uint32FromInt32(1)))
 			return path + 2
 		}
@@ -162722,7 +162722,7 @@ func _ExtractWinRoot(tls *libc.TLS, path uintptr, resultPtr uintptr, offset int3
 		for int32(*(*uint8)(unsafe.Pointer(tail))) == int32('/') || int32(*(*uint8)(unsafe.Pointer(tail))) == int32('\\') {
 			tail++
 		}
-		*(*TTcl_PathType)(unsafe.Pointer(typePtr)) = int32(_TCL_PATH_ABSOLUTE)
+		*(*TTcl_PathType)(unsafe.Pointer(typePtr)) = _TCL_PATH_ABSOLUTE
 		return tail
 	} else {
 		if *(*uint8)(unsafe.Pointer(path)) != 0 && int32(*(*uint8)(unsafe.Pointer(path + 1))) == int32(':') {
@@ -162731,7 +162731,7 @@ func _ExtractWinRoot(tls *libc.TLS, path uintptr, resultPtr uintptr, offset int3
 			 */
 			_SetResultLength(tls, resultPtr, offset, extended)
 			if int32(*(*uint8)(unsafe.Pointer(path + 2))) != int32('/') && int32(*(*uint8)(unsafe.Pointer(path + 2))) != int32('\\') {
-				*(*TTcl_PathType)(unsafe.Pointer(typePtr)) = int32(_TCL_PATH_VOLUME_RELATIVE)
+				*(*TTcl_PathType)(unsafe.Pointer(typePtr)) = _TCL_PATH_VOLUME_RELATIVE
 				XTcl_DStringAppend(tls, resultPtr, path, int32(2))
 				return path + 2
 			} else {
@@ -162742,7 +162742,7 @@ func _ExtractWinRoot(tls *libc.TLS, path uintptr, resultPtr uintptr, offset int3
 				for *(*uint8)(unsafe.Pointer(tail1)) != 0 && (int32(*(*uint8)(unsafe.Pointer(tail1))) == int32('/') || int32(*(*uint8)(unsafe.Pointer(tail1))) == int32('\\')) {
 					tail1++
 				}
-				*(*TTcl_PathType)(unsafe.Pointer(typePtr)) = int32(_TCL_PATH_ABSOLUTE)
+				*(*TTcl_PathType)(unsafe.Pointer(typePtr)) = _TCL_PATH_ABSOLUTE
 				XTcl_DStringAppend(tls, resultPtr, path, int32(2))
 				XTcl_DStringAppend(tls, resultPtr, __ccgo_ts+5689, int32(libc.Uint32FromInt64(2)-libc.Uint32FromInt32(1)))
 				return tail1
@@ -162810,7 +162810,7 @@ func _ExtractWinRoot(tls *libc.TLS, path uintptr, resultPtr uintptr, offset int3
 				}
 			}
 			if abs != 0 {
-				*(*TTcl_PathType)(unsafe.Pointer(typePtr)) = int32(_TCL_PATH_ABSOLUTE)
+				*(*TTcl_PathType)(unsafe.Pointer(typePtr)) = _TCL_PATH_ABSOLUTE
 				_SetResultLength(tls, resultPtr, offset, extended)
 				XTcl_DStringAppend(tls, resultPtr, path, abs)
 				return path + uintptr(abs)
@@ -162820,7 +162820,7 @@ func _ExtractWinRoot(tls *libc.TLS, path uintptr, resultPtr uintptr, offset int3
 	/*
 	 * Anything else is treated as relative.
 	 */
-	*(*TTcl_PathType)(unsafe.Pointer(typePtr)) = int32(_TCL_PATH_RELATIVE)
+	*(*TTcl_PathType)(unsafe.Pointer(typePtr)) = _TCL_PATH_RELATIVE
 	return path
 }
 
@@ -162900,7 +162900,7 @@ func XTclpGetNativePathType(tls *libc.TLS, pathPtr uintptr, driveNameLengthPtr u
 	var _ /* pathLen at bp+4 */ int32
 	var _ /* type at bp+0 */ TTcl_PathType
 	_, _, _, _ = end, origPath, path, rootEnd
-	*(*TTcl_PathType)(unsafe.Pointer(bp)) = int32(_TCL_PATH_ABSOLUTE)
+	*(*TTcl_PathType)(unsafe.Pointer(bp)) = _TCL_PATH_ABSOLUTE
 	path = XTcl_GetStringFromObj(tls, pathPtr, bp+4)
 	if int32(*(*uint8)(unsafe.Pointer(path))) == int32('~') {
 		/*
@@ -162916,7 +162916,7 @@ func XTclpGetNativePathType(tls *libc.TLS, pathPtr uintptr, driveNameLengthPtr u
 		}
 	} else {
 		switch XtclPlatform {
-		case int32(_TCL_PLATFORM_UNIX):
+		case _TCL_PLATFORM_UNIX:
 			origPath = path
 			/*
 			 * Paths that begin with / are absolute.
@@ -162930,9 +162930,9 @@ func XTclpGetNativePathType(tls *libc.TLS, pathPtr uintptr, driveNameLengthPtr u
 					*(*int32)(unsafe.Pointer(driveNameLengthPtr)) = int32(path) - int32(origPath)
 				}
 			} else {
-				*(*TTcl_PathType)(unsafe.Pointer(bp)) = int32(_TCL_PATH_RELATIVE)
+				*(*TTcl_PathType)(unsafe.Pointer(bp)) = _TCL_PATH_RELATIVE
 			}
-		case int32(_TCL_PLATFORM_WINDOWS):
+		case _TCL_PLATFORM_WINDOWS:
 			XTcl_DStringInit(tls, bp+8)
 			rootEnd = _ExtractWinRoot(tls, path, bp+8, 0, bp)
 			if rootEnd != path && driveNameLengthPtr != libc.UintptrFromInt32(0) {
@@ -162981,9 +162981,9 @@ func XTclpNativeSplitPath(tls *libc.TLS, pathPtr uintptr, lenPtr uintptr) (r uin
 	 * Perform platform specific splitting.
 	 */
 	switch XtclPlatform {
-	case int32(_TCL_PLATFORM_UNIX):
+	case _TCL_PLATFORM_UNIX:
 		resultPtr = _SplitUnixPath(tls, XTcl_GetString(tls, pathPtr))
-	case int32(_TCL_PLATFORM_WINDOWS):
+	case _TCL_PLATFORM_WINDOWS:
 		resultPtr = _SplitWinPath(tls, XTcl_GetString(tls, pathPtr))
 		break
 	}
@@ -163247,7 +163247,7 @@ func _SplitWinPath(tls *libc.TLS, path uintptr) (r uintptr) {
 	var _ /* buf at bp+4 */ TTcl_DString
 	var _ /* type at bp+0 */ TTcl_PathType
 	_, _, _, _, _, _ = elementStart, length, nextElt, p, result, v1
-	*(*TTcl_PathType)(unsafe.Pointer(bp)) = int32(_TCL_PATH_ABSOLUTE)
+	*(*TTcl_PathType)(unsafe.Pointer(bp)) = _TCL_PATH_ABSOLUTE
 	XTcl_DStringInit(tls, bp+4)
 	if XtclFreeObjList == libc.UintptrFromInt32(0) {
 		XTclAllocateFreeObjects(tls)
@@ -163401,7 +163401,7 @@ func XTclpNativeJoinPath(tls *libc.TLS, prefix uintptr, joining uintptr) {
 	 */
 	p = joining
 	if *(*int32)(unsafe.Pointer(bp)) != 0 {
-		if int32(*(*uint8)(unsafe.Pointer(p))) == int32('.') && int32(*(*uint8)(unsafe.Pointer(p + 1))) == int32('/') && (int32(*(*uint8)(unsafe.Pointer(p + 2))) == int32('~') || XtclPlatform == int32(_TCL_PLATFORM_WINDOWS) && int32(*(*uint16)(unsafe.Pointer(*(*uintptr)(unsafe.Pointer(libc.X__ctype_b_loc(tls))) + uintptr(int32(*(*uint8)(unsafe.Pointer(p + 2))))*2)))&int32(uint16(__ISalpha)) != 0 && int32(*(*uint8)(unsafe.Pointer(p + 3))) == int32(':')) {
+		if int32(*(*uint8)(unsafe.Pointer(p))) == int32('.') && int32(*(*uint8)(unsafe.Pointer(p + 1))) == int32('/') && (int32(*(*uint8)(unsafe.Pointer(p + 2))) == int32('~') || XtclPlatform == _TCL_PLATFORM_WINDOWS && int32(*(*uint16)(unsafe.Pointer(*(*uintptr)(unsafe.Pointer(libc.X__ctype_b_loc(tls))) + uintptr(int32(*(*uint8)(unsafe.Pointer(p + 2))))*2)))&int32(uint16(__ISalpha)) != 0 && int32(*(*uint8)(unsafe.Pointer(p + 3))) == int32(':')) {
 			p += uintptr(2)
 		}
 	}
@@ -163409,7 +163409,7 @@ func XTclpNativeJoinPath(tls *libc.TLS, prefix uintptr, joining uintptr) {
 		return
 	}
 	switch XtclPlatform {
-	case int32(_TCL_PLATFORM_UNIX):
+	case _TCL_PLATFORM_UNIX:
 		if *(*int32)(unsafe.Pointer(bp)) > 0 && int32(*(*uint8)(unsafe.Pointer(start + uintptr(*(*int32)(unsafe.Pointer(bp))-int32(1))))) != int32('/') {
 			XTcl_AppendToObj(tls, prefix, __ccgo_ts+5689, int32(1))
 			XTcl_GetStringFromObj(tls, prefix, bp)
@@ -163445,7 +163445,7 @@ func XTclpNativeJoinPath(tls *libc.TLS, prefix uintptr, joining uintptr) {
 		}
 		*(*int32)(unsafe.Pointer(bp)) = int32(dest) - int32(XTcl_GetString(tls, prefix))
 		XTcl_SetObjLength(tls, prefix, *(*int32)(unsafe.Pointer(bp)))
-	case int32(_TCL_PLATFORM_WINDOWS):
+	case _TCL_PLATFORM_WINDOWS:
 		if *(*int32)(unsafe.Pointer(bp)) > 0 && int32(*(*uint8)(unsafe.Pointer(start + uintptr(*(*int32)(unsafe.Pointer(bp))-int32(1))))) != int32('/') && int32(*(*uint8)(unsafe.Pointer(start + uintptr(*(*int32)(unsafe.Pointer(bp))-int32(1))))) != int32(':') {
 			XTcl_AppendToObj(tls, prefix, __ccgo_ts+5689, int32(1))
 			XTcl_GetStringFromObj(tls, prefix, bp)
@@ -163633,7 +163633,7 @@ func XTcl_TranslateFileName(tls *libc.TLS, interp uintptr, name uintptr, bufferP
 	 * Convert forward slashes to backslashes in Windows paths because some
 	 * system interfaces don't accept forward slashes.
 	 */
-	if XtclPlatform == int32(_TCL_PLATFORM_WINDOWS) {
+	if XtclPlatform == _TCL_PLATFORM_WINDOWS {
 		p = (*TTcl_DString)(unsafe.Pointer(bufferPtr)).Fstring1
 		for {
 			if !(int32(*(*uint8)(unsafe.Pointer(p))) != int32('\000')) {
@@ -163677,9 +163677,9 @@ func XTclGetExtension(tls *libc.TLS, name uintptr) (r uintptr) {
 	 */
 	lastSep = libc.UintptrFromInt32(0) /* Needed only to prevent gcc warnings. */
 	switch XtclPlatform {
-	case int32(_TCL_PLATFORM_UNIX):
+	case _TCL_PLATFORM_UNIX:
 		lastSep = libc.Xstrrchr(tls, name, int32('/'))
-	case int32(_TCL_PLATFORM_WINDOWS):
+	case _TCL_PLATFORM_WINDOWS:
 		lastSep = libc.UintptrFromInt32(0)
 		p = name
 		for {
@@ -163902,9 +163902,9 @@ endOfForLoop:
 	}
 	separators = libc.UintptrFromInt32(0)
 	switch XtclPlatform {
-	case int32(_TCL_PLATFORM_UNIX):
+	case _TCL_PLATFORM_UNIX:
 		separators = __ccgo_ts + 5689
-	case int32(_TCL_PLATFORM_WINDOWS):
+	case _TCL_PLATFORM_WINDOWS:
 		separators = __ccgo_ts + 30549
 		break
 	}
@@ -164335,9 +164335,9 @@ func XTclGlob(tls *libc.TLS, interp uintptr, pattern uintptr, pathPrefix uintptr
 	_, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _ = _objPtr, _objPtr1, _objPtr2, _objPtr3, _objPtr4, c, cwd, filenamesObj, head, i, oldStr, p, pre, result, savedResultObj, separators, start, tail, temp, v10, v11, v12, v13, v16, v17, v18, v19, v2, v20, v21, v22, v23, v3, v4, v5, v6, v7, v8, v9
 	separators = libc.UintptrFromInt32(0)
 	switch XtclPlatform {
-	case int32(_TCL_PLATFORM_UNIX):
+	case _TCL_PLATFORM_UNIX:
 		separators = __ccgo_ts + 5689
-	case int32(_TCL_PLATFORM_WINDOWS):
+	case _TCL_PLATFORM_WINDOWS:
 		separators = __ccgo_ts + 30549
 		break
 	}
@@ -164405,7 +164405,7 @@ func XTclGlob(tls *libc.TLS, interp uintptr, pattern uintptr, pathPrefix uintptr
 	 * Similarly on Unix with '/' at the head of the pattern -- it just
 	 * indicates the root volume, so we treat it as such.
 	 */
-	if XtclPlatform == int32(_TCL_PLATFORM_WINDOWS) {
+	if XtclPlatform == _TCL_PLATFORM_WINDOWS {
 		if pathPrefix == libc.UintptrFromInt32(0) && int32(*(*uint8)(unsafe.Pointer(tail))) != int32('\000') && int32(*(*uint8)(unsafe.Pointer(tail + 1))) == int32(':') {
 			p = tail + uintptr(1)
 			pathPrefix = XTcl_NewStringObj(tls, tail, int32(1))
@@ -164437,7 +164437,7 @@ func XTclGlob(tls *libc.TLS, interp uintptr, pattern uintptr, pathPrefix uintptr
 				temp = XTcl_NewStringObj(tls, tail, -int32(1))
 				(*TTcl_Obj)(unsafe.Pointer(temp)).FrefCount++
 				switch XTclGetPathType(tls, temp, libc.UintptrFromInt32(0), bp+216, bp+220) {
-				case int32(_TCL_PATH_VOLUME_RELATIVE):
+				case _TCL_PATH_VOLUME_RELATIVE:
 					cwd = XTcl_FSGetCwd(tls, interp)
 					if cwd == libc.UintptrFromInt32(0) {
 						_objPtr = temp
@@ -164463,10 +164463,10 @@ func XTclGlob(tls *libc.TLS, interp uintptr, pattern uintptr, pathPrefix uintptr
 						tail += uintptr(2)
 					}
 					(*TTcl_Obj)(unsafe.Pointer(pathPrefix)).FrefCount++
-				case int32(_TCL_PATH_ABSOLUTE):
+				case _TCL_PATH_ABSOLUTE:
 					pathPrefix = *(*uintptr)(unsafe.Pointer(bp + 220))
 					tail += uintptr(*(*int32)(unsafe.Pointer(bp + 216)))
-				case int32(_TCL_PATH_RELATIVE):
+				case _TCL_PATH_RELATIVE:
 					/* Do nothing */
 					break
 				}
@@ -164485,7 +164485,7 @@ func XTclGlob(tls *libc.TLS, interp uintptr, pattern uintptr, pathPrefix uintptr
 		 */
 		separators = __ccgo_ts + 31198
 	} else {
-		if XtclPlatform == int32(_TCL_PLATFORM_UNIX) {
+		if XtclPlatform == _TCL_PLATFORM_UNIX {
 			if pathPrefix == libc.UintptrFromInt32(0) && int32(*(*uint8)(unsafe.Pointer(tail))) == int32('/') {
 				pathPrefix = XTcl_NewStringObj(tls, tail, int32(1))
 				tail++
@@ -164498,7 +164498,7 @@ func XTclGlob(tls *libc.TLS, interp uintptr, pattern uintptr, pathPrefix uintptr
 	 * the path starts with a current volume.
 	 */
 	if pathPrefix == libc.UintptrFromInt32(0) {
-		if XTclFSNonnativePathType(tls, tail, int32(libc.Xstrlen(tls, tail)), libc.UintptrFromInt32(0), bp+224, bp+228) == int32(_TCL_PATH_ABSOLUTE) {
+		if XTclFSNonnativePathType(tls, tail, int32(libc.Xstrlen(tls, tail)), libc.UintptrFromInt32(0), bp+224, bp+228) == _TCL_PATH_ABSOLUTE {
 			pathPrefix = *(*uintptr)(unsafe.Pointer(bp + 228))
 			tail += uintptr(*(*int32)(unsafe.Pointer(bp + 224)))
 		}
@@ -164631,7 +164631,7 @@ func XTclGlob(tls *libc.TLS, interp uintptr, pattern uintptr, pathPrefix uintptr
 			 * like 'C:', then there won't be a path separator in between, so
 			 * no need to skip it here.
 			 */
-			if XtclPlatform != int32(_TCL_PLATFORM_WINDOWS) || *(*int32)(unsafe.Pointer(bp + 240)) != int32(2) || int32(*(*uint8)(unsafe.Pointer(pre + 1))) != int32(':') {
+			if XtclPlatform != _TCL_PLATFORM_WINDOWS || *(*int32)(unsafe.Pointer(bp + 240)) != int32(2) || int32(*(*uint8)(unsafe.Pointer(pre + 1))) != int32(':') {
 				*(*int32)(unsafe.Pointer(bp + 240))++
 			}
 		}
@@ -165185,7 +165185,7 @@ func _DoGlob(tls *libc.TLS, interp uintptr, matchesObj uintptr, separators uintp
 			*(*int32)(unsafe.Pointer(bp + 244)) = 0
 		}
 		switch XtclPlatform {
-		case int32(_TCL_PLATFORM_WINDOWS):
+		case _TCL_PLATFORM_WINDOWS:
 			if *(*int32)(unsafe.Pointer(bp + 244)) == 0 && (*TTcl_DString)(unsafe.Pointer(bp+248)).Flength == 0 {
 				if int32(*(*uint8)(unsafe.Pointer(name))) == int32('\\') && (int32(*(*uint8)(unsafe.Pointer(name + 1))) == int32('/') || int32(*(*uint8)(unsafe.Pointer(name + 1))) == int32('\\')) || int32(*(*uint8)(unsafe.Pointer(name))) == int32('/') {
 					XTcl_DStringAppend(tls, bp+248, __ccgo_ts+5689, int32(libc.Uint32FromInt64(2)-libc.Uint32FromInt32(1)))
@@ -165193,7 +165193,7 @@ func _DoGlob(tls *libc.TLS, interp uintptr, matchesObj uintptr, separators uintp
 					XTcl_DStringAppend(tls, bp+248, __ccgo_ts+31261, int32(libc.Uint32FromInt64(2)-libc.Uint32FromInt32(1)))
 				}
 			}
-		case int32(_TCL_PLATFORM_UNIX):
+		case _TCL_PLATFORM_UNIX:
 			if *(*int32)(unsafe.Pointer(bp + 244)) == 0 && (*TTcl_DString)(unsafe.Pointer(bp+248)).Flength == 0 {
 				if int32(*(*uint8)(unsafe.Pointer(name))) == int32('\\') && int32(*(*uint8)(unsafe.Pointer(name + 1))) == int32('/') || int32(*(*uint8)(unsafe.Pointer(name))) == int32('/') {
 					XTcl_DStringAppend(tls, bp+248, __ccgo_ts+5689, int32(libc.Uint32FromInt64(2)-libc.Uint32FromInt32(1)))
@@ -165247,7 +165247,7 @@ func _DoGlob(tls *libc.TLS, interp uintptr, matchesObj uintptr, separators uintp
 			if libc.Xstrchr(tls, separators, int32(*(*uint8)(unsafe.Pointer(pattern)))) == libc.UintptrFromInt32(0) {
 				joined1 = XTcl_GetStringFromObj(tls, joinedPtr, bp+464)
 				if *(*int32)(unsafe.Pointer(bp + 464)) > 0 && libc.Xstrchr(tls, separators, int32(*(*uint8)(unsafe.Pointer(joined1 + uintptr(*(*int32)(unsafe.Pointer(bp + 464))-int32(1)))))) == libc.UintptrFromInt32(0) {
-					if XTcl_FSGetPathType(tls, pathPtr) != int32(_TCL_PATH_VOLUME_RELATIVE) {
+					if XTcl_FSGetPathType(tls, pathPtr) != _TCL_PATH_VOLUME_RELATIVE {
 						XTcl_AppendToObj(tls, joinedPtr, __ccgo_ts+5689, int32(1))
 					}
 				}
@@ -174523,8 +174523,8 @@ func XTcl_CreateChannel(tls *libc.TLS, typePtr uintptr, chanName uintptr, instan
 	 * output, so that Tcl does not look for an in-file EOF indicator (e.g.,
 	 * ^Z) and does not append an EOF indicator to files.
 	 */
-	(*TChannelState)(unsafe.Pointer(statePtr)).FinputTranslation = int32(_TCL_TRANSLATE_AUTO)
-	(*TChannelState)(unsafe.Pointer(statePtr)).FoutputTranslation = int32(_TCL_TRANSLATE_LF)
+	(*TChannelState)(unsafe.Pointer(statePtr)).FinputTranslation = _TCL_TRANSLATE_AUTO
+	(*TChannelState)(unsafe.Pointer(statePtr)).FoutputTranslation = _TCL_TRANSLATE_LF
 	(*TChannelState)(unsafe.Pointer(statePtr)).FinEofChar = 0
 	(*TChannelState)(unsafe.Pointer(statePtr)).FoutEofChar = 0
 	(*TChannelState)(unsafe.Pointer(statePtr)).FunreportedError = 0
@@ -176930,7 +176930,7 @@ func _Write(tls *libc.TLS, chanPtr uintptr, src uintptr, srcLen int32, encoding 
 	 * Write the terminated escape sequence even if srcLen is 0.
 	 */
 	endEncoding = libc.BoolInt32((*TChannelState)(unsafe.Pointer(statePtr)).FoutputEncodingFlags&int32(m_TCL_ENCODING_END) != 0)
-	if (*TChannelState)(unsafe.Pointer(statePtr)).Fflags&(libc.Int32FromInt32(1)<<libc.Int32FromInt32(4)) != 0 || (*TChannelState)(unsafe.Pointer(statePtr)).FoutputTranslation != int32(_TCL_TRANSLATE_LF) {
+	if (*TChannelState)(unsafe.Pointer(statePtr)).Fflags&(libc.Int32FromInt32(1)<<libc.Int32FromInt32(4)) != 0 || (*TChannelState)(unsafe.Pointer(statePtr)).FoutputTranslation != _TCL_TRANSLATE_LF {
 		nextNewLine = libc.Xmemchr(tls, src, int32('\n'), uint32(srcLen))
 	}
 	for srcLen+saved+endEncoding > 0 && !(encodingError != 0) {
@@ -176975,13 +176975,13 @@ func _Write(tls *libc.TLS, chanPtr uintptr, src uintptr, srcLen int32, encoding 
 			nl = libc.UintptrFromInt32(0)
 			nlLen = 0
 			switch (*TChannelState)(unsafe.Pointer(statePtr)).FoutputTranslation {
-			case int32(_TCL_TRANSLATE_LF):
+			case _TCL_TRANSLATE_LF:
 				nl = uintptr(unsafe.Pointer(&_crln)) + uintptr(1)
 				nlLen = int32(1)
-			case int32(_TCL_TRANSLATE_CR):
+			case _TCL_TRANSLATE_CR:
 				nl = uintptr(unsafe.Pointer(&_crln))
 				nlLen = int32(1)
-			case int32(_TCL_TRANSLATE_CRLF):
+			case _TCL_TRANSLATE_CRLF:
 				nl = uintptr(unsafe.Pointer(&_crln))
 				nlLen = int32(2)
 			default:
@@ -177174,7 +177174,7 @@ func XTcl_GetsObj(tls *libc.TLS, chan1 TTcl_Channel, objPtr uintptr) (r int32) {
 	 * are ascii-7 pure (iso8859, utf-8, ...) with a final encoding conversion
 	 * done on objPtr.
 	 */
-	if (*TChannelState)(unsafe.Pointer(statePtr)).Fencoding == libc.UintptrFromInt32(0) && ((*TChannelState)(unsafe.Pointer(statePtr)).FinputTranslation == int32(_TCL_TRANSLATE_LF) || (*TChannelState)(unsafe.Pointer(statePtr)).FinputTranslation == int32(_TCL_TRANSLATE_CR)) {
+	if (*TChannelState)(unsafe.Pointer(statePtr)).Fencoding == libc.UintptrFromInt32(0) && ((*TChannelState)(unsafe.Pointer(statePtr)).FinputTranslation == _TCL_TRANSLATE_LF || (*TChannelState)(unsafe.Pointer(statePtr)).FinputTranslation == _TCL_TRANSLATE_CR) {
 		return _TclGetsObjBinary(tls, chan1, objPtr)
 	}
 	/*
@@ -177258,13 +177258,13 @@ func XTcl_GetsObj(tls *libc.TLS, chan1 TTcl_Channel, objPtr uintptr) (r int32) {
 		 * don't store the EOL in the output string.
 		 */
 		switch (*TChannelState)(unsafe.Pointer(statePtr)).FinputTranslation {
-		case int32(_TCL_TRANSLATE_LF):
+		case _TCL_TRANSLATE_LF:
 			goto _3
-		case int32(_TCL_TRANSLATE_CR):
+		case _TCL_TRANSLATE_CR:
 			goto _4
-		case int32(_TCL_TRANSLATE_CRLF):
+		case _TCL_TRANSLATE_CRLF:
 			goto _5
-		case int32(_TCL_TRANSLATE_AUTO):
+		case _TCL_TRANSLATE_AUTO:
 			goto _6
 		}
 		goto _7
@@ -177583,7 +177583,7 @@ func _TclGetsObjBinary(tls *libc.TLS, chan1 TTcl_Channel, objPtr uintptr) (r int
 	/*
 	 * Only handle TCL_TRANSLATE_LF and TCL_TRANSLATE_CR.
 	 */
-	if (*TChannelState)(unsafe.Pointer(statePtr)).FinputTranslation == int32(_TCL_TRANSLATE_LF) {
+	if (*TChannelState)(unsafe.Pointer(statePtr)).FinputTranslation == _TCL_TRANSLATE_LF {
 		v1 = int32('\n')
 	} else {
 		v1 = int32('\r')
@@ -178350,7 +178350,7 @@ func _DoReadChars(tls *libc.TLS, chanPtr uintptr, objPtr uintptr, toRead int32, 
 	statePtr = (*TChannel)(unsafe.Pointer(chanPtr)).Fstate
 	encoding = (*TChannelState)(unsafe.Pointer(statePtr)).Fencoding
 	*(*int32)(unsafe.Pointer(bp)) = int32(m_UTF_EXPANSION_FACTOR)
-	binaryMode = libc.BoolInt32(encoding == libc.UintptrFromInt32(0) && (*TChannelState)(unsafe.Pointer(statePtr)).FinputTranslation == int32(_TCL_TRANSLATE_LF) && (*TChannelState)(unsafe.Pointer(statePtr)).FinEofChar == int32('\000'))
+	binaryMode = libc.BoolInt32(encoding == libc.UintptrFromInt32(0) && (*TChannelState)(unsafe.Pointer(statePtr)).FinputTranslation == _TCL_TRANSLATE_LF && (*TChannelState)(unsafe.Pointer(statePtr)).FinEofChar == int32('\000'))
 	if appendFlag == 0 {
 		if binaryMode != 0 {
 			XTcl_SetByteArrayLength(tls, objPtr, 0)
@@ -178920,9 +178920,9 @@ func _TranslateInputEOL(tls *libc.TLS, statePtr uintptr, dstStart uintptr, srcSt
 	 * This keeps the scan for eof char below from being pointlessly long.
 	 */
 	switch (*TChannelState)(unsafe.Pointer(statePtr)).FinputTranslation {
-	case int32(_TCL_TRANSLATE_LF):
+	case _TCL_TRANSLATE_LF:
 		fallthrough
-	case int32(_TCL_TRANSLATE_CR):
+	case _TCL_TRANSLATE_CR:
 		if srcLen > dstLen {
 			/*
 			 * In these modes, each src byte become a dst byte.
@@ -178950,13 +178950,13 @@ func _TranslateInputEOL(tls *libc.TLS, statePtr uintptr, dstStart uintptr, srcSt
 		}
 	}
 	switch (*TChannelState)(unsafe.Pointer(statePtr)).FinputTranslation {
-	case int32(_TCL_TRANSLATE_LF):
+	case _TCL_TRANSLATE_LF:
 		fallthrough
-	case int32(_TCL_TRANSLATE_CR):
+	case _TCL_TRANSLATE_CR:
 		if dstStart != srcStart {
 			libc.Xmemcpy(tls, dstStart, srcStart, uint32(srcLen))
 		}
-		if (*TChannelState)(unsafe.Pointer(statePtr)).FinputTranslation == int32(_TCL_TRANSLATE_CR) {
+		if (*TChannelState)(unsafe.Pointer(statePtr)).FinputTranslation == _TCL_TRANSLATE_CR {
 			dst = dstStart
 			dstEnd = dstStart + uintptr(srcLen)
 			for {
@@ -178971,7 +178971,7 @@ func _TranslateInputEOL(tls *libc.TLS, statePtr uintptr, dstStart uintptr, srcSt
 			}
 		}
 		dstLen = srcLen
-	case int32(_TCL_TRANSLATE_CRLF):
+	case _TCL_TRANSLATE_CRLF:
 		src = srcStart
 		dst1 = dstStart
 		if dstLen < srcLen {
@@ -179030,7 +179030,7 @@ func _TranslateInputEOL(tls *libc.TLS, statePtr uintptr, dstStart uintptr, srcSt
 		libc.Xmemmove(tls, dst1, src, uint32(lesser))
 		srcLen = int32(src+uintptr(lesser)) - int32(srcStart)
 		dstLen = int32(dst1+uintptr(lesser)) - int32(dstStart)
-	case int32(_TCL_TRANSLATE_AUTO):
+	case _TCL_TRANSLATE_AUTO:
 		src1 = srcStart
 		dst2 = dstStart
 		if (*TChannelState)(unsafe.Pointer(statePtr)).Fflags&(libc.Int32FromInt32(1)<<libc.Int32FromInt32(12)) != 0 && srcLen != 0 {
@@ -180295,13 +180295,13 @@ func XTcl_GetChannelOption(tls *libc.TLS, interp uintptr, chan1 TTcl_Channel, op
 			XTcl_DStringStartSublist(tls, dsPtr)
 		}
 		if flags&(libc.Int32FromInt32(1)<<libc.Int32FromInt32(1)) != 0 {
-			if (*TChannelState)(unsafe.Pointer(statePtr)).FinputTranslation == int32(_TCL_TRANSLATE_AUTO) {
+			if (*TChannelState)(unsafe.Pointer(statePtr)).FinputTranslation == _TCL_TRANSLATE_AUTO {
 				XTcl_DStringAppendElement(tls, dsPtr, __ccgo_ts+38685)
 			} else {
-				if (*TChannelState)(unsafe.Pointer(statePtr)).FinputTranslation == int32(_TCL_TRANSLATE_CR) {
+				if (*TChannelState)(unsafe.Pointer(statePtr)).FinputTranslation == _TCL_TRANSLATE_CR {
 					XTcl_DStringAppendElement(tls, dsPtr, __ccgo_ts+38690)
 				} else {
-					if (*TChannelState)(unsafe.Pointer(statePtr)).FinputTranslation == int32(_TCL_TRANSLATE_CRLF) {
+					if (*TChannelState)(unsafe.Pointer(statePtr)).FinputTranslation == _TCL_TRANSLATE_CRLF {
 						XTcl_DStringAppendElement(tls, dsPtr, __ccgo_ts+38693)
 					} else {
 						XTcl_DStringAppendElement(tls, dsPtr, __ccgo_ts+38698)
@@ -180310,13 +180310,13 @@ func XTcl_GetChannelOption(tls *libc.TLS, interp uintptr, chan1 TTcl_Channel, op
 			}
 		}
 		if flags&(libc.Int32FromInt32(1)<<libc.Int32FromInt32(2)) != 0 {
-			if (*TChannelState)(unsafe.Pointer(statePtr)).FoutputTranslation == int32(_TCL_TRANSLATE_AUTO) {
+			if (*TChannelState)(unsafe.Pointer(statePtr)).FoutputTranslation == _TCL_TRANSLATE_AUTO {
 				XTcl_DStringAppendElement(tls, dsPtr, __ccgo_ts+38685)
 			} else {
-				if (*TChannelState)(unsafe.Pointer(statePtr)).FoutputTranslation == int32(_TCL_TRANSLATE_CR) {
+				if (*TChannelState)(unsafe.Pointer(statePtr)).FoutputTranslation == _TCL_TRANSLATE_CR {
 					XTcl_DStringAppendElement(tls, dsPtr, __ccgo_ts+38690)
 				} else {
-					if (*TChannelState)(unsafe.Pointer(statePtr)).FoutputTranslation == int32(_TCL_TRANSLATE_CRLF) {
+					if (*TChannelState)(unsafe.Pointer(statePtr)).FoutputTranslation == _TCL_TRANSLATE_CRLF {
 						XTcl_DStringAppendElement(tls, dsPtr, __ccgo_ts+38693)
 					} else {
 						XTcl_DStringAppendElement(tls, dsPtr, __ccgo_ts+38698)
@@ -180570,25 +180570,25 @@ func XTcl_SetChannelOption(tls *libc.TLS, interp uintptr, chan1 TTcl_Channel, op
 									translation = (*TChannelState)(unsafe.Pointer(statePtr)).FinputTranslation
 								} else {
 									if libc.Xstrcmp(tls, readMode, __ccgo_ts+38685) == 0 {
-										translation = int32(_TCL_TRANSLATE_AUTO)
+										translation = _TCL_TRANSLATE_AUTO
 									} else {
 										if libc.Xstrcmp(tls, readMode, __ccgo_ts+9420) == 0 {
-											translation = int32(_TCL_TRANSLATE_LF)
+											translation = _TCL_TRANSLATE_LF
 											(*TChannelState)(unsafe.Pointer(statePtr)).FinEofChar = 0
 											XTcl_FreeEncoding(tls, (*TChannelState)(unsafe.Pointer(statePtr)).Fencoding)
 											(*TChannelState)(unsafe.Pointer(statePtr)).Fencoding = libc.UintptrFromInt32(0)
 										} else {
 											if libc.Xstrcmp(tls, readMode, __ccgo_ts+38698) == 0 {
-												translation = int32(_TCL_TRANSLATE_LF)
+												translation = _TCL_TRANSLATE_LF
 											} else {
 												if libc.Xstrcmp(tls, readMode, __ccgo_ts+38690) == 0 {
-													translation = int32(_TCL_TRANSLATE_CR)
+													translation = _TCL_TRANSLATE_CR
 												} else {
 													if libc.Xstrcmp(tls, readMode, __ccgo_ts+38693) == 0 {
-														translation = int32(_TCL_TRANSLATE_CRLF)
+														translation = _TCL_TRANSLATE_CRLF
 													} else {
 														if libc.Xstrcmp(tls, readMode, __ccgo_ts+39010) == 0 {
-															translation = int32(_TCL_TRANSLATE_LF)
+															translation = _TCL_TRANSLATE_LF
 														} else {
 															if interp != 0 {
 																XTcl_SetObjResult(tls, interp, XTcl_NewStringObj(tls, __ccgo_ts+39019, -int32(1)))
@@ -180624,28 +180624,28 @@ func XTcl_SetChannelOption(tls *libc.TLS, interp uintptr, chan1 TTcl_Channel, op
 										 * solution for achieving this effect will be coded later.
 										 */
 										if libc.Xstrcmp(tls, XTcl_ChannelName(tls, (*TChannel)(unsafe.Pointer(chanPtr)).FtypePtr), __ccgo_ts+39102) == 0 {
-											(*TChannelState)(unsafe.Pointer(statePtr)).FoutputTranslation = int32(_TCL_TRANSLATE_CRLF)
+											(*TChannelState)(unsafe.Pointer(statePtr)).FoutputTranslation = _TCL_TRANSLATE_CRLF
 										} else {
-											(*TChannelState)(unsafe.Pointer(statePtr)).FoutputTranslation = int32(_TCL_TRANSLATE_LF)
+											(*TChannelState)(unsafe.Pointer(statePtr)).FoutputTranslation = _TCL_TRANSLATE_LF
 										}
 									} else {
 										if libc.Xstrcmp(tls, writeMode, __ccgo_ts+9420) == 0 {
 											(*TChannelState)(unsafe.Pointer(statePtr)).FoutEofChar = 0
-											(*TChannelState)(unsafe.Pointer(statePtr)).FoutputTranslation = int32(_TCL_TRANSLATE_LF)
+											(*TChannelState)(unsafe.Pointer(statePtr)).FoutputTranslation = _TCL_TRANSLATE_LF
 											XTcl_FreeEncoding(tls, (*TChannelState)(unsafe.Pointer(statePtr)).Fencoding)
 											(*TChannelState)(unsafe.Pointer(statePtr)).Fencoding = libc.UintptrFromInt32(0)
 										} else {
 											if libc.Xstrcmp(tls, writeMode, __ccgo_ts+38698) == 0 {
-												(*TChannelState)(unsafe.Pointer(statePtr)).FoutputTranslation = int32(_TCL_TRANSLATE_LF)
+												(*TChannelState)(unsafe.Pointer(statePtr)).FoutputTranslation = _TCL_TRANSLATE_LF
 											} else {
 												if libc.Xstrcmp(tls, writeMode, __ccgo_ts+38690) == 0 {
-													(*TChannelState)(unsafe.Pointer(statePtr)).FoutputTranslation = int32(_TCL_TRANSLATE_CR)
+													(*TChannelState)(unsafe.Pointer(statePtr)).FoutputTranslation = _TCL_TRANSLATE_CR
 												} else {
 													if libc.Xstrcmp(tls, writeMode, __ccgo_ts+38693) == 0 {
-														(*TChannelState)(unsafe.Pointer(statePtr)).FoutputTranslation = int32(_TCL_TRANSLATE_CRLF)
+														(*TChannelState)(unsafe.Pointer(statePtr)).FoutputTranslation = _TCL_TRANSLATE_CRLF
 													} else {
 														if libc.Xstrcmp(tls, writeMode, __ccgo_ts+39010) == 0 {
-															(*TChannelState)(unsafe.Pointer(statePtr)).FoutputTranslation = int32(_TCL_TRANSLATE_LF)
+															(*TChannelState)(unsafe.Pointer(statePtr)).FoutputTranslation = _TCL_TRANSLATE_LF
 														} else {
 															if interp != 0 {
 																XTcl_SetObjResult(tls, interp, XTcl_NewStringObj(tls, __ccgo_ts+39019, -int32(1)))
@@ -181612,7 +181612,7 @@ func XTclCopyChannel(tls *libc.TLS, interp uintptr, inChan TTcl_Channel, outChan
 	 * channel to output channel with no transformation or even examination
 	 * of the bytes themselves.
 	 */
-	moveBytes = libc.BoolInt32((*TChannelState)(unsafe.Pointer(inStatePtr)).FinEofChar == int32('\000') && (*TChannelState)(unsafe.Pointer(inStatePtr)).FinputTranslation == int32(_TCL_TRANSLATE_LF) && (*TChannelState)(unsafe.Pointer(outStatePtr)).FoutputTranslation == int32(_TCL_TRANSLATE_LF) && (*TChannelState)(unsafe.Pointer(inStatePtr)).Fencoding == (*TChannelState)(unsafe.Pointer(outStatePtr)).Fencoding)
+	moveBytes = libc.BoolInt32((*TChannelState)(unsafe.Pointer(inStatePtr)).FinEofChar == int32('\000') && (*TChannelState)(unsafe.Pointer(inStatePtr)).FinputTranslation == _TCL_TRANSLATE_LF && (*TChannelState)(unsafe.Pointer(outStatePtr)).FoutputTranslation == _TCL_TRANSLATE_LF && (*TChannelState)(unsafe.Pointer(inStatePtr)).Fencoding == (*TChannelState)(unsafe.Pointer(outStatePtr)).Fencoding)
 	/*
 	 * Allocate a new CopyState to maintain info about the current copy in
 	 * progress. This structure will be deallocated when the copy is
@@ -183822,6 +183822,17 @@ func _FreeChannelInternalRep(tls *libc.TLS, objPtr uintptr) {
 	XTclpFree(tls, resPtr)
 }
 
+type TChannel1 = struct {
+	Fstate        uintptr
+	FinstanceData TClientData
+	FtypePtr      uintptr
+	FdownChanPtr  uintptr
+	FupChanPtr    uintptr
+	FinQueueHead  uintptr
+	FinQueueTail  uintptr
+	FrefCount     int32
+}
+
 type TChannelState1 = struct {
 	FchannelName         uintptr
 	Fflags               int32
@@ -183873,17 +183884,6 @@ type TCopyState1 = struct {
 	FbufSize      int32
 	Fbuffer       [1]uint8
 	F__ccgo_pad10 [3]byte
-}
-
-type TChannel1 = struct {
-	Fstate        uintptr
-	FinstanceData TClientData
-	FtypePtr      uintptr
-	FdownChanPtr  uintptr
-	FupChanPtr    uintptr
-	FinQueueHead  uintptr
-	FinQueueTail  uintptr
-	FrefCount     int32
 }
 
 const m_O_RDONLY = 0
@@ -186333,7 +186333,7 @@ func XTclChanCreateObjCmd(tls *libc.TLS, dummy TClientData, interp uintptr, objc
 	 */
 	modeObj = _DecodeEventMask(tls, *(*int32)(unsafe.Pointer(bp)))
 	/* assert modeObj.refCount == 1 */
-	result = _InvokeTclMethod(tls, rcPtr, int32(_METH_INIT), modeObj, libc.UintptrFromInt32(0), bp+20)
+	result = _InvokeTclMethod(tls, rcPtr, _METH_INIT, modeObj, libc.UintptrFromInt32(0), bp+20)
 	_objPtr = modeObj
 	v2 = _objPtr
 	v1 = *(*int32)(unsafe.Pointer(v2))
@@ -186822,7 +186822,7 @@ func _ReflectClose(tls *libc.TLS, clientData TClientData, interp uintptr) (r int
 	/*
 	 * Are we in the correct thread?
 	 */
-	result = _InvokeTclMethod(tls, rcPtr, int32(_METH_FINAL), libc.UintptrFromInt32(0), libc.UintptrFromInt32(0), bp)
+	result = _InvokeTclMethod(tls, rcPtr, _METH_FINAL, libc.UintptrFromInt32(0), libc.UintptrFromInt32(0), bp)
 	if result != m_TCL_OK && interp != libc.UintptrFromInt32(0) {
 		XTcl_SetChannelErrorInterp(tls, interp, *(*uintptr)(unsafe.Pointer(bp)))
 	}
@@ -186918,7 +186918,7 @@ func _ReflectInput(tls *libc.TLS, clientData TClientData, buf uintptr, toRead in
 	(*TTcl_Obj)(unsafe.Pointer(toReadObj)).FinternalRep.FlongValue = toRead
 	(*TTcl_Obj)(unsafe.Pointer(toReadObj)).FtypePtr = uintptr(unsafe.Pointer(&XtclIntType))
 	(*TTcl_Obj)(unsafe.Pointer(toReadObj)).FrefCount++
-	if _InvokeTclMethod(tls, rcPtr, int32(_METH_READ), toReadObj, libc.UintptrFromInt32(0), bp+4) != m_TCL_OK {
+	if _InvokeTclMethod(tls, rcPtr, _METH_READ, toReadObj, libc.UintptrFromInt32(0), bp+4) != m_TCL_OK {
 		code = _ErrnoReturn(tls, rcPtr, *(*uintptr)(unsafe.Pointer(bp + 4)))
 		if code < 0 {
 			*(*int32)(unsafe.Pointer(errorCodePtr)) = -code
@@ -186995,7 +186995,7 @@ func _ReflectOutput(tls *libc.TLS, clientData TClientData, buf uintptr, toWrite 
 	XTcl_Preserve(tls, (*TReflectedChannel)(unsafe.Pointer(rcPtr)).Finterp)
 	bufObj = XTcl_NewByteArrayObj(tls, buf, toWrite)
 	(*TTcl_Obj)(unsafe.Pointer(bufObj)).FrefCount++
-	if _InvokeTclMethod(tls, rcPtr, int32(_METH_WRITE), bufObj, libc.UintptrFromInt32(0), bp) != m_TCL_OK {
+	if _InvokeTclMethod(tls, rcPtr, _METH_WRITE, bufObj, libc.UintptrFromInt32(0), bp) != m_TCL_OK {
 		code = _ErrnoReturn(tls, rcPtr, *(*uintptr)(unsafe.Pointer(bp)))
 		if code < 0 {
 			*(*int32)(unsafe.Pointer(errorCodePtr)) = -code
@@ -187103,7 +187103,7 @@ func _ReflectSeekWide(tls *libc.TLS, clientData TClientData, offset TTcl_WideInt
 	baseObj = XTcl_NewStringObj(tls, v1, -int32(1))
 	(*TTcl_Obj)(unsafe.Pointer(offObj)).FrefCount++
 	(*TTcl_Obj)(unsafe.Pointer(baseObj)).FrefCount++
-	if _InvokeTclMethod(tls, rcPtr, int32(_METH_SEEK), offObj, baseObj, bp) != m_TCL_OK {
+	if _InvokeTclMethod(tls, rcPtr, _METH_SEEK, offObj, baseObj, bp) != m_TCL_OK {
 		XTcl_SetChannelError(tls, (*TReflectedChannel)(unsafe.Pointer(rcPtr)).Fchan1, *(*uintptr)(unsafe.Pointer(bp)))
 		goto invalid
 	}
@@ -187198,7 +187198,7 @@ func _ReflectWatch(tls *libc.TLS, clientData TClientData, mask int32) {
 	(*TReflectedChannel)(unsafe.Pointer(rcPtr)).Finterest = mask
 	maskObj = _DecodeEventMask(tls, mask)
 	/* assert maskObj.refCount == 1 */
-	_InvokeTclMethod(tls, rcPtr, int32(_METH_WATCH), maskObj, libc.UintptrFromInt32(0), libc.UintptrFromInt32(0))
+	_InvokeTclMethod(tls, rcPtr, _METH_WATCH, maskObj, libc.UintptrFromInt32(0), libc.UintptrFromInt32(0))
 	_objPtr = maskObj
 	v2 = _objPtr
 	v1 = *(*int32)(unsafe.Pointer(v2))
@@ -187240,7 +187240,7 @@ func _ReflectBlock(tls *libc.TLS, clientData TClientData, nonblocking int32) (r 
 	blockObj = XTcl_NewIntObj(tls, libc.BoolInt32(libc.BoolInt32(!(nonblocking != 0)) != 0))
 	(*TTcl_Obj)(unsafe.Pointer(blockObj)).FrefCount++
 	XTcl_Preserve(tls, rcPtr)
-	if _InvokeTclMethod(tls, rcPtr, int32(_METH_BLOCKING), blockObj, libc.UintptrFromInt32(0), bp) != m_TCL_OK {
+	if _InvokeTclMethod(tls, rcPtr, _METH_BLOCKING, blockObj, libc.UintptrFromInt32(0), bp) != m_TCL_OK {
 		XTcl_SetChannelError(tls, (*TReflectedChannel)(unsafe.Pointer(rcPtr)).Fchan1, *(*uintptr)(unsafe.Pointer(bp)))
 		errorNum = int32(m_EINVAL)
 	} else {
@@ -187296,7 +187296,7 @@ func _ReflectSetOption(tls *libc.TLS, clientData TClientData, interp uintptr, op
 	valueObj = XTcl_NewStringObj(tls, newValue, -int32(1))
 	(*TTcl_Obj)(unsafe.Pointer(optionObj)).FrefCount++
 	(*TTcl_Obj)(unsafe.Pointer(valueObj)).FrefCount++
-	result = _InvokeTclMethod(tls, rcPtr, int32(_METH_CONFIGURE), optionObj, valueObj, bp)
+	result = _InvokeTclMethod(tls, rcPtr, _METH_CONFIGURE, optionObj, valueObj, bp)
 	if result != m_TCL_OK {
 		_UnmarshallErrorResult(tls, interp, *(*uintptr)(unsafe.Pointer(bp)))
 	}
@@ -187365,13 +187365,13 @@ func _ReflectGetOption(tls *libc.TLS, clientData TClientData, interp uintptr, op
 		/*
 		 * Retrieve all options.
 		 */
-		method = int32(_METH_CGETALL)
+		method = _METH_CGETALL
 		optionObj = libc.UintptrFromInt32(0)
 	} else {
 		/*
 		 * Retrieve the value of one option.
 		 */
-		method = int32(_METH_CGET)
+		method = _METH_CGET
 		optionObj = XTcl_NewStringObj(tls, optionName, -int32(1))
 		(*TTcl_Obj)(unsafe.Pointer(optionObj)).FrefCount++
 	}
@@ -187521,9 +187521,9 @@ func _EncodeEventMask(tls *libc.TLS, interp uintptr, objName uintptr, obj uintpt
 			return int32(m_TCL_ERROR)
 		}
 		switch *(*int32)(unsafe.Pointer(bp + 8)) {
-		case int32(_EVENT_READ):
+		case _EVENT_READ:
 			events |= libc.Int32FromInt32(1) << libc.Int32FromInt32(1)
-		case int32(_EVENT_WRITE):
+		case _EVENT_WRITE:
 			events |= libc.Int32FromInt32(1) << libc.Int32FromInt32(2)
 			break
 		}
@@ -187592,7 +187592,7 @@ func _NewReflectedChannel(tls *libc.TLS, interp uintptr, cmdpfxObj uintptr, mode
 	var mn, v1 TMethodName
 	var rcPtr uintptr
 	_, _, _ = mn, rcPtr, v1
-	mn = int32(_METH_BLOCKING)
+	mn = _METH_BLOCKING
 	rcPtr = XTcl_Alloc(tls, libc.Uint32FromInt64(32))
 	/* rcPtr->chan: Assigned by caller. Dummy data here. */
 	(*TReflectedChannel)(unsafe.Pointer(rcPtr)).Fchan1 = libc.UintptrFromInt32(0)
@@ -187604,7 +187604,7 @@ func _NewReflectedChannel(tls *libc.TLS, interp uintptr, cmdpfxObj uintptr, mode
 	(*TReflectedChannel)(unsafe.Pointer(rcPtr)).Fcmd = XTclListObjCopy(tls, libc.UintptrFromInt32(0), cmdpfxObj)
 	(*TTcl_Obj)(unsafe.Pointer((*TReflectedChannel)(unsafe.Pointer(rcPtr)).Fcmd)).FrefCount++
 	(*TReflectedChannel)(unsafe.Pointer(rcPtr)).Fmethods = XTcl_NewListObj(tls, int32(_METH_WRITE)+libc.Int32FromInt32(1), libc.UintptrFromInt32(0))
-	for mn <= int32(_METH_WRITE) {
+	for mn <= _METH_WRITE {
 		v1 = mn
 		mn++
 		XTcl_ListObjAppendElement(tls, libc.UintptrFromInt32(0), (*TReflectedChannel)(unsafe.Pointer(rcPtr)).Fmethods, XTcl_NewStringObj(tls, _methodNames[v1], -int32(1)))
@@ -191419,7 +191419,7 @@ func XTclCreateSocketAddress(tls *libc.TLS, interp uintptr, addrlist uintptr, ho
 			}
 		}
 	}
-	(*(*Taddrinfo)(unsafe.Pointer(bp))).Fai_socktype = int32(_SOCK_STREAM)
+	(*(*Taddrinfo)(unsafe.Pointer(bp))).Fai_socktype = _SOCK_STREAM
 	if willBind != 0 {
 		(*(*Taddrinfo)(unsafe.Pointer(bp))).Fai_flags |= int32(m_AI_PASSIVE)
 	}
@@ -195265,7 +195265,7 @@ func XTcl_FSSplitPath(tls *libc.TLS, pathPtr uintptr, lenPtr uintptr) (r uintptr
 	/*
 	 * Perform platform specific splitting.
 	 */
-	if XTclFSGetPathType(tls, pathPtr, bp, bp+4) == int32(_TCL_PATH_ABSOLUTE) {
+	if XTclFSGetPathType(tls, pathPtr, bp, bp+4) == _TCL_PATH_ABSOLUTE {
 		if *(*uintptr)(unsafe.Pointer(bp)) == uintptr(unsafe.Pointer(&XtclNativeFilesystem)) {
 			return XTclpNativeSplitPath(tls, pathPtr, lenPtr)
 		}
@@ -195402,9 +195402,9 @@ func XTclGetPathType(tls *libc.TLS, pathPtr uintptr, filesystemPtrPtr uintptr, d
 	_, _ = path, type1
 	path = XTcl_GetStringFromObj(tls, pathPtr, bp)
 	type1 = XTclFSNonnativePathType(tls, path, *(*int32)(unsafe.Pointer(bp)), filesystemPtrPtr, driveNameLengthPtr, driveNameRef)
-	if type1 != int32(_TCL_PATH_ABSOLUTE) {
+	if type1 != _TCL_PATH_ABSOLUTE {
 		type1 = XTclpGetNativePathType(tls, pathPtr, driveNameLengthPtr, driveNameRef)
-		if type1 == int32(_TCL_PATH_ABSOLUTE) && filesystemPtrPtr != libc.UintptrFromInt32(0) {
+		if type1 == _TCL_PATH_ABSOLUTE && filesystemPtrPtr != libc.UintptrFromInt32(0) {
 			*(*uintptr)(unsafe.Pointer(filesystemPtrPtr)) = uintptr(unsafe.Pointer(&XtclNativeFilesystem))
 		}
 	}
@@ -195447,7 +195447,7 @@ func XTclFSNonnativePathType(tls *libc.TLS, path uintptr, pathLen int32, filesys
 	var _ /* numVolumes at bp+0 */ int32
 	var _ /* vol at bp+4 */ uintptr
 	_, _, _, _, _, _, _, _ = _objPtr, fsRecPtr, strVol, thisFsVolumes, type1, v1, v2, v3
-	type1 = int32(_TCL_PATH_RELATIVE)
+	type1 = _TCL_PATH_RELATIVE
 	/*
 	 * Call each of the "listVolumes" function in succession, checking whether
 	 * the given path is an absolute path on any of the volumes returned (this
@@ -195505,7 +195505,7 @@ func XTclFSNonnativePathType(tls *libc.TLS, path uintptr, pathLen int32, filesys
 						continue
 					}
 					if libc.Xstrncmp(tls, strVol, path, uint32(*(*int32)(unsafe.Pointer(bp + 8)))) == 0 {
-						type1 = int32(_TCL_PATH_ABSOLUTE)
+						type1 = _TCL_PATH_ABSOLUTE
 						if filesystemPtrPtr != libc.UintptrFromInt32(0) {
 							*(*uintptr)(unsafe.Pointer(filesystemPtrPtr)) = (*TFilesystemRecord)(unsafe.Pointer(fsRecPtr)).FfsPtr
 						}
@@ -195526,7 +195526,7 @@ func XTclFSNonnativePathType(tls *libc.TLS, path uintptr, pathLen int32, filesys
 				if v2 <= int32(1) {
 					XTclFreeObj(tls, _objPtr)
 				}
-				if type1 == int32(_TCL_PATH_ABSOLUTE) {
+				if type1 == _TCL_PATH_ABSOLUTE {
 					/*
 					 * We don't need to examine any more filesystems.
 					 */
@@ -195826,7 +195826,7 @@ func XTcl_FSRemoveDirectory(tls *libc.TLS, pathPtr uintptr, recursive int32, err
 					 * The cwd is inside the directory, so we perform a 'cd
 					 * [file dirname $path]'.
 					 */
-					dirPtr = XTclPathPart(tls, libc.UintptrFromInt32(0), pathPtr, int32(_TCL_PATH_DIRNAME))
+					dirPtr = XTclPathPart(tls, libc.UintptrFromInt32(0), pathPtr, _TCL_PATH_DIRNAME)
 					XTcl_FSChdir(tls, dirPtr)
 					_objPtr = dirPtr
 					v2 = _objPtr
@@ -196102,9 +196102,9 @@ func _NativeFilesystemSeparator(tls *libc.TLS, pathPtr uintptr) (r uintptr) {
 	_ = separator
 	separator = libc.UintptrFromInt32(0) /* lint */
 	switch XtclPlatform {
-	case int32(_TCL_PLATFORM_UNIX):
+	case _TCL_PLATFORM_UNIX:
 		separator = __ccgo_ts + 5689
-	case int32(_TCL_PLATFORM_WINDOWS):
+	case _TCL_PLATFORM_WINDOWS:
 		separator = __ccgo_ts + 12607
 		break
 	}
@@ -201351,7 +201351,7 @@ func XTcl_MainEx(tls *libc.TLS, argc int32, argv uintptr, appInitProc uintptr, i
 	XTclpSetInitialEncodings(tls)
 	XTclpFindExecutable(tls, *(*uintptr)(unsafe.Pointer(argv)))
 	(*(*TInteractiveState)(unsafe.Pointer(bp + 4))).Finterp = interp
-	(*(*TInteractiveState)(unsafe.Pointer(bp + 4))).Fprompt = int32(_PROMPT_START)
+	(*(*TInteractiveState)(unsafe.Pointer(bp + 4))).Fprompt = _PROMPT_START
 	if XtclFreeObjList == libc.UintptrFromInt32(0) {
 		XTclAllocateFreeObjects(tls)
 	}
@@ -201585,10 +201585,10 @@ func XTcl_MainEx(tls *libc.TLS, argc int32, argv uintptr, appInitProc uintptr, i
 			}
 			XTcl_AppendToObj(tls, (*(*TInteractiveState)(unsafe.Pointer(bp + 4))).FcommandPtr, __ccgo_ts+285, int32(1))
 			if !(XTclObjCommandComplete(tls, (*(*TInteractiveState)(unsafe.Pointer(bp + 4))).FcommandPtr) != 0) {
-				(*(*TInteractiveState)(unsafe.Pointer(bp + 4))).Fprompt = int32(_PROMPT_CONTINUE)
+				(*(*TInteractiveState)(unsafe.Pointer(bp + 4))).Fprompt = _PROMPT_CONTINUE
 				continue
 			}
-			(*(*TInteractiveState)(unsafe.Pointer(bp + 4))).Fprompt = int32(_PROMPT_START)
+			(*(*TInteractiveState)(unsafe.Pointer(bp + 4))).Fprompt = _PROMPT_START
 			/*
 			 * The final newline is syntactically redundant, and causes some
 			 * error messages troubles deeper in, so lop it back off.
@@ -201876,10 +201876,10 @@ func _StdinProc(tls *libc.TLS, clientData TClientData, mask int32) {
 	}
 	XTcl_AppendToObj(tls, commandPtr, __ccgo_ts+285, int32(1))
 	if !(XTclObjCommandComplete(tls, commandPtr) != 0) {
-		(*TInteractiveState)(unsafe.Pointer(isPtr)).Fprompt = int32(_PROMPT_CONTINUE)
+		(*TInteractiveState)(unsafe.Pointer(isPtr)).Fprompt = _PROMPT_CONTINUE
 		goto prompt
 	}
-	(*TInteractiveState)(unsafe.Pointer(isPtr)).Fprompt = int32(_PROMPT_START)
+	(*TInteractiveState)(unsafe.Pointer(isPtr)).Fprompt = _PROMPT_START
 	XTcl_GetStringFromObj(tls, commandPtr, bp)
 	*(*int32)(unsafe.Pointer(bp))--
 	v5 = *(*int32)(unsafe.Pointer(bp))
@@ -201978,10 +201978,10 @@ func _Prompt(tls *libc.TLS, interp uintptr, isPtr uintptr) {
 	var code int32
 	var promptCmdPtr, v1 uintptr
 	_, _, _, _ = chan1, code, promptCmdPtr, v1
-	if (*TInteractiveState)(unsafe.Pointer(isPtr)).Fprompt == int32(_PROMPT_NONE) {
+	if (*TInteractiveState)(unsafe.Pointer(isPtr)).Fprompt == _PROMPT_NONE {
 		return
 	}
-	if (*TInteractiveState)(unsafe.Pointer(isPtr)).Fprompt == int32(_PROMPT_CONTINUE) {
+	if (*TInteractiveState)(unsafe.Pointer(isPtr)).Fprompt == _PROMPT_CONTINUE {
 		v1 = __ccgo_ts + 45163
 	} else {
 		v1 = __ccgo_ts + 45175
@@ -201994,7 +201994,7 @@ func _Prompt(tls *libc.TLS, interp uintptr, isPtr uintptr) {
 		goto _2
 	}
 defaultPrompt:
-	if (*TInteractiveState)(unsafe.Pointer(isPtr)).Fprompt == int32(_PROMPT_START) {
+	if (*TInteractiveState)(unsafe.Pointer(isPtr)).Fprompt == _PROMPT_START {
 		chan1 = XTcl_GetStdChannel(tls, libc.Int32FromInt32(1)<<libc.Int32FromInt32(2))
 		if chan1 != libc.UintptrFromInt32(0) {
 			XTcl_WriteChars(tls, chan1, uintptr(unsafe.Pointer(&_DEFAULT_PRIMARY_PROMPT)), int32(libc.Uint32FromInt64(3)-libc.Uint32FromInt32(1)))
@@ -202017,7 +202017,7 @@ _3:
 	if chan1 != libc.UintptrFromInt32(0) {
 		XTcl_Flush(tls, chan1)
 	}
-	(*TInteractiveState)(unsafe.Pointer(isPtr)).Fprompt = int32(_PROMPT_NONE)
+	(*TInteractiveState)(unsafe.Pointer(isPtr)).Fprompt = _PROMPT_NONE
 }
 
 /*
@@ -207248,14 +207248,6 @@ func XTcl_LogCommandInfo(tls *libc.TLS, interp uintptr, script uintptr, command 
 	XTclLogCommandInfo(tls, interp, script, command, length, libc.UintptrFromInt32(0), libc.UintptrFromInt32(0))
 }
 
-type TTcl_Namespace1 = struct {
-	Fname       uintptr
-	FfullName   uintptr
-	FclientData TClientData
-	FdeleteProc uintptr
-	FparentPtr  uintptr
-}
-
 type TNamespace1 = struct {
 	Fname                  uintptr
 	FfullName              uintptr
@@ -207285,6 +207277,14 @@ type TNamespace1 = struct {
 	FcommandPathArray      uintptr
 	FcommandPathSourceList uintptr
 	FearlyDeleteProc       uintptr
+}
+
+type TTcl_Namespace1 = struct {
+	Fname       uintptr
+	FfullName   uintptr
+	FclientData TClientData
+	FdeleteProc uintptr
+	FparentPtr  uintptr
 }
 
 const m_TCL_SERVICE_ALL = 1
@@ -207660,7 +207660,7 @@ func XTcl_ThreadQueueEvent(tls *libc.TLS, threadId TTcl_ThreadId, evPtr uintptr,
 func _QueueEvent(tls *libc.TLS, tsdPtr uintptr, evPtr uintptr, position TTcl_QueuePosition) {
 	/* One of TCL_QUEUE_TAIL, TCL_QUEUE_HEAD,
 	 * TCL_QUEUE_MARK. */
-	if position == int32(_TCL_QUEUE_TAIL) {
+	if position == _TCL_QUEUE_TAIL {
 		/*
 		 * Append the event on the end of the queue.
 		 */
@@ -207672,7 +207672,7 @@ func _QueueEvent(tls *libc.TLS, tsdPtr uintptr, evPtr uintptr, position TTcl_Que
 		}
 		(*TThreadSpecificData8)(unsafe.Pointer(tsdPtr)).FlastEventPtr = evPtr
 	} else {
-		if position == int32(_TCL_QUEUE_HEAD) {
+		if position == _TCL_QUEUE_HEAD {
 			/*
 			 * Push the event on the head of the queue.
 			 */
@@ -207682,7 +207682,7 @@ func _QueueEvent(tls *libc.TLS, tsdPtr uintptr, evPtr uintptr, position TTcl_Que
 			}
 			(*TThreadSpecificData8)(unsafe.Pointer(tsdPtr)).FfirstEventPtr = evPtr
 		} else {
-			if position == int32(_TCL_QUEUE_MARK) {
+			if position == _TCL_QUEUE_MARK {
 				/*
 				 * Insert the event after the current marker event and advance the
 				 * marker to the new event.
@@ -212737,7 +212737,7 @@ func _LocateTargetAddresses(tls *libc.TLS, envPtr uintptr, tablePtr uintptr) {
 			break
 		}
 		rangePtr = (*TCompileEnv)(unsafe.Pointer(envPtr)).FexceptArrayPtr + uintptr(i)*28
-		if (*TExceptionRange)(unsafe.Pointer(rangePtr)).Ftype1 == int32(_CATCH_EXCEPTION_RANGE) {
+		if (*TExceptionRange)(unsafe.Pointer(rangePtr)).Ftype1 == _CATCH_EXCEPTION_RANGE {
 			targetInstPtr = (*TCompileEnv)(unsafe.Pointer(envPtr)).FcodeStart + uintptr((*TExceptionRange)(unsafe.Pointer(rangePtr)).FcatchOffset)
 			(*(*func(*libc.TLS, uintptr, uintptr, uintptr) uintptr)(unsafe.Pointer(&struct{ uintptr }{(*TTcl_HashTable)(unsafe.Pointer(tablePtr)).FcreateProc})))(tls, tablePtr, targetInstPtr, bp)
 		} else {
@@ -215689,7 +215689,7 @@ func XTclFSNormalizeAbsolutePath(tls *libc.TLS, interp uintptr, pathPtr uintptr)
 		v1 = XTcl_GetString(tls, pathPtr)
 	}
 	dirSep = v1
-	if XtclPlatform == int32(_TCL_PLATFORM_WINDOWS) {
+	if XtclPlatform == _TCL_PLATFORM_WINDOWS {
 		if (int32(*(*uint8)(unsafe.Pointer(dirSep))) == int32('/') || int32(*(*uint8)(unsafe.Pointer(dirSep))) == int32('\\')) && (int32(*(*uint8)(unsafe.Pointer(dirSep + 1))) == int32('/') || int32(*(*uint8)(unsafe.Pointer(dirSep + 1))) == int32('\\')) && int32(*(*uint8)(unsafe.Pointer(dirSep + 2))) == int32('?') && (int32(*(*uint8)(unsafe.Pointer(dirSep + 3))) == int32('/') || int32(*(*uint8)(unsafe.Pointer(dirSep + 3))) == int32('\\')) {
 			/* NT extended path */
 			dirSep += uintptr(4)
@@ -215778,7 +215778,7 @@ func XTclFSNormalizeAbsolutePath(tls *libc.TLS, interp uintptr, pathPtr uintptr)
 				if *(*int32)(unsafe.Pointer(bp + 4)) == 0 {
 					XTcl_AppendToObj(tls, retVal, dirSep, int32(1))
 				}
-				if !(first != 0) || XtclPlatform == int32(_TCL_PLATFORM_UNIX) {
+				if !(first != 0) || XtclPlatform == _TCL_PLATFORM_UNIX {
 					linkObj = XTcl_FSLink(tls, retVal, libc.UintptrFromInt32(0), 0)
 					/* Safety check in case driver caused sharing */
 					if (*TTcl_Obj)(unsafe.Pointer(retVal)).FrefCount > int32(1) {
@@ -215809,7 +215809,7 @@ func XTclFSNormalizeAbsolutePath(tls *libc.TLS, interp uintptr, pathPtr uintptr)
 						 * or absolute, for those platforms where relative
 						 * links exist.
 						 */
-						if XtclPlatform != int32(_TCL_PLATFORM_WINDOWS) && XTcl_FSGetPathType(tls, linkObj) == int32(_TCL_PATH_RELATIVE) {
+						if XtclPlatform != _TCL_PLATFORM_WINDOWS && XTcl_FSGetPathType(tls, linkObj) == _TCL_PATH_RELATIVE {
 							/*
 							 * We need to follow this link which is relative
 							 * to retVal's directory. This means concatenating
@@ -215899,7 +215899,7 @@ func XTclFSNormalizeAbsolutePath(tls *libc.TLS, interp uintptr, pathPtr uintptr)
 							/*
 							 * Convert to forward-slashes on windows.
 							 */
-							if XtclPlatform == int32(_TCL_PLATFORM_WINDOWS) {
+							if XtclPlatform == _TCL_PLATFORM_WINDOWS {
 								i = 0
 								for {
 									if !(i < *(*int32)(unsafe.Pointer(bp + 4))) {
@@ -215996,7 +215996,7 @@ func XTclFSNormalizeAbsolutePath(tls *libc.TLS, interp uintptr, pathPtr uintptr)
 	/*
 	 * Ensure a windows drive like C:/ has a trailing separator.
 	 */
-	if XtclPlatform == int32(_TCL_PLATFORM_WINDOWS) {
+	if XtclPlatform == _TCL_PLATFORM_WINDOWS {
 		path3 = XTcl_GetStringFromObj(tls, retVal, bp+8)
 		if *(*int32)(unsafe.Pointer(bp + 8)) == int32(2) && int32(*(*uint8)(unsafe.Pointer(path3))) != 0 && int32(*(*uint8)(unsafe.Pointer(path3 + 1))) == int32(':') {
 			if (*TTcl_Obj)(unsafe.Pointer(retVal)).FrefCount > int32(1) {
@@ -216110,7 +216110,7 @@ func XTclFSGetPathType(tls *libc.TLS, pathPtr uintptr, filesystemPtrPtr uintptr,
 	})(unsafe.Pointer(pathPtr + 16))).Fptr1)).Fflags == 0 {
 		/* The path is not absolute... */
 		/* On other systems, quickly deduce !absolute -> relative */
-		return int32(_TCL_PATH_RELATIVE)
+		return _TCL_PATH_RELATIVE
 	}
 	return XTclFSGetPathType(tls, (*TFsPath)(unsafe.Pointer(fsPathPtr)).FcwdPtr, filesystemPtrPtr, driveNameLengthPtr)
 }
@@ -216171,7 +216171,7 @@ func XTclPathPart(tls *libc.TLS, interp uintptr, pathPtr uintptr, portion TTcl_P
 		Fptr2 uintptr
 	})(unsafe.Pointer(pathPtr + 16))).Fptr1)).Fflags != 0 {
 		switch portion {
-		case int32(_TCL_PATH_DIRNAME):
+		case _TCL_PATH_DIRNAME:
 			rest = XTcl_GetStringFromObj(tls, (*TFsPath)(unsafe.Pointer(fsPathPtr)).FnormPathPtr, bp)
 			if libc.Xstrchr(tls, rest, int32('/')) != libc.UintptrFromInt32(0) {
 				goto standardPath
@@ -216187,7 +216187,7 @@ func XTclPathPart(tls *libc.TLS, interp uintptr, pathPtr uintptr, portion TTcl_P
 			if *(*int32)(unsafe.Pointer(bp)) == 0 {
 				goto standardPath
 			}
-			if XtclPlatform == int32(_TCL_PLATFORM_WINDOWS) && libc.Xstrchr(tls, rest, int32('\\')) != libc.UintptrFromInt32(0) {
+			if XtclPlatform == _TCL_PLATFORM_WINDOWS && libc.Xstrchr(tls, rest, int32('\\')) != libc.UintptrFromInt32(0) {
 				goto standardPath
 			}
 			/*
@@ -216195,7 +216195,7 @@ func XTclPathPart(tls *libc.TLS, interp uintptr, pathPtr uintptr, portion TTcl_P
 			 */
 			(*TTcl_Obj)(unsafe.Pointer((*TFsPath)(unsafe.Pointer(fsPathPtr)).FcwdPtr)).FrefCount++
 			return (*TFsPath)(unsafe.Pointer(fsPathPtr)).FcwdPtr
-		case int32(_TCL_PATH_TAIL):
+		case _TCL_PATH_TAIL:
 			rest1 = XTcl_GetStringFromObj(tls, (*TFsPath)(unsafe.Pointer(fsPathPtr)).FnormPathPtr, bp+4)
 			if libc.Xstrchr(tls, rest1, int32('/')) != libc.UintptrFromInt32(0) {
 				goto standardPath
@@ -216211,14 +216211,14 @@ func XTclPathPart(tls *libc.TLS, interp uintptr, pathPtr uintptr, portion TTcl_P
 			if *(*int32)(unsafe.Pointer(bp + 4)) == 0 {
 				goto standardPath
 			}
-			if XtclPlatform == int32(_TCL_PLATFORM_WINDOWS) && libc.Xstrchr(tls, rest1, int32('\\')) != libc.UintptrFromInt32(0) {
+			if XtclPlatform == _TCL_PLATFORM_WINDOWS && libc.Xstrchr(tls, rest1, int32('\\')) != libc.UintptrFromInt32(0) {
 				goto standardPath
 			}
 			(*TTcl_Obj)(unsafe.Pointer((*TFsPath)(unsafe.Pointer(fsPathPtr)).FnormPathPtr)).FrefCount++
 			return (*TFsPath)(unsafe.Pointer(fsPathPtr)).FnormPathPtr
-		case int32(_TCL_PATH_EXTENSION):
+		case _TCL_PATH_EXTENSION:
 			return _GetExtension(tls, (*TFsPath)(unsafe.Pointer(fsPathPtr)).FnormPathPtr)
-		case int32(_TCL_PATH_ROOT):
+		case _TCL_PATH_ROOT:
 			fileName = XTcl_GetStringFromObj(tls, (*TFsPath)(unsafe.Pointer(fsPathPtr)).FnormPathPtr, bp+8)
 			extension = XTclGetExtension(tls, fileName)
 			if extension == libc.UintptrFromInt32(0) {
@@ -216259,10 +216259,10 @@ func XTclPathPart(tls *libc.TLS, interp uintptr, pathPtr uintptr, portion TTcl_P
 _1:
 standardPath:
 	*(*uintptr)(unsafe.Pointer(bp + 16)) = libc.UintptrFromInt32(0)
-	if portion == int32(_TCL_PATH_EXTENSION) {
+	if portion == _TCL_PATH_EXTENSION {
 		return _GetExtension(tls, pathPtr)
 	} else {
-		if portion == int32(_TCL_PATH_ROOT) {
+		if portion == _TCL_PATH_ROOT {
 			fileName1 = XTcl_GetStringFromObj(tls, pathPtr, bp+20)
 			extension1 = XTclGetExtension(tls, fileName1)
 			if extension1 == libc.UintptrFromInt32(0) {
@@ -216316,12 +216316,12 @@ standardPath:
 		splitPtr = XTcl_FSSplitPath(tls, norm, bp+12)
 		(*TTcl_Obj)(unsafe.Pointer(splitPtr)).FrefCount++
 	}
-	if portion == int32(_TCL_PATH_TAIL) {
+	if portion == _TCL_PATH_TAIL {
 		/*
 		 * Return the last component, unless it is the only component, and
 		 * it is the root of an absolute path.
 		 */
-		if *(*int32)(unsafe.Pointer(bp + 12)) > 0 && (*(*int32)(unsafe.Pointer(bp + 12)) > int32(1) || XTcl_FSGetPathType(tls, pathPtr) == int32(_TCL_PATH_RELATIVE)) {
+		if *(*int32)(unsafe.Pointer(bp + 12)) > 0 && (*(*int32)(unsafe.Pointer(bp + 12)) > int32(1) || XTcl_FSGetPathType(tls, pathPtr) == _TCL_PATH_RELATIVE) {
 			XTcl_ListObjIndex(tls, libc.UintptrFromInt32(0), splitPtr, *(*int32)(unsafe.Pointer(bp + 12))-int32(1), bp+16)
 		} else {
 			if XtclFreeObjList == libc.UintptrFromInt32(0) {
@@ -216346,7 +216346,7 @@ standardPath:
 		if *(*int32)(unsafe.Pointer(bp + 12)) > int32(1) {
 			*(*uintptr)(unsafe.Pointer(bp + 16)) = XTcl_FSJoinPath(tls, splitPtr, *(*int32)(unsafe.Pointer(bp + 12))-int32(1))
 		} else {
-			if *(*int32)(unsafe.Pointer(bp + 12)) == 0 || XTcl_FSGetPathType(tls, pathPtr) == int32(_TCL_PATH_RELATIVE) {
+			if *(*int32)(unsafe.Pointer(bp + 12)) == 0 || XTcl_FSGetPathType(tls, pathPtr) == _TCL_PATH_RELATIVE {
 				if XtclFreeObjList == libc.UintptrFromInt32(0) {
 					XTclAllocateFreeObjects(tls)
 				}
@@ -216553,16 +216553,16 @@ func XTclJoinPath(tls *libc.TLS, elements int32, objv uintptr, forceRelative int
 		 * Bugfix [a47641a0]. TclNewFSPathObj requires first argument
 		 * to be an absolute path. Added a check for that elt is absolute.
 		 */
-		if (*TTcl_Obj)(unsafe.Pointer(elt)).FtypePtr == uintptr(unsafe.Pointer(&_tclFsPathType)) && !((*TTcl_Obj)(unsafe.Pointer(elt)).Fbytes != libc.UintptrFromInt32(0) && int32(*(*uint8)(unsafe.Pointer((*TTcl_Obj)(unsafe.Pointer(elt)).Fbytes))) == int32('\000')) && XTclGetPathType(tls, elt, libc.UintptrFromInt32(0), libc.UintptrFromInt32(0), libc.UintptrFromInt32(0)) == int32(_TCL_PATH_ABSOLUTE) {
+		if (*TTcl_Obj)(unsafe.Pointer(elt)).FtypePtr == uintptr(unsafe.Pointer(&_tclFsPathType)) && !((*TTcl_Obj)(unsafe.Pointer(elt)).Fbytes != libc.UintptrFromInt32(0) && int32(*(*uint8)(unsafe.Pointer((*TTcl_Obj)(unsafe.Pointer(elt)).Fbytes))) == int32('\000')) && XTclGetPathType(tls, elt, libc.UintptrFromInt32(0), libc.UintptrFromInt32(0), libc.UintptrFromInt32(0)) == _TCL_PATH_ABSOLUTE {
 			tailObj = *(*uintptr)(unsafe.Pointer(objv + 1*4))
 			/* if forceRelative - second path is relative */
 			if forceRelative != 0 {
-				v1 = int32(_TCL_PATH_RELATIVE)
+				v1 = _TCL_PATH_RELATIVE
 			} else {
 				v1 = XTclGetPathType(tls, tailObj, libc.UintptrFromInt32(0), libc.UintptrFromInt32(0), libc.UintptrFromInt32(0))
 			}
 			type1 = v1
-			if type1 == int32(_TCL_PATH_RELATIVE) {
+			if type1 == _TCL_PATH_RELATIVE {
 				str = XTcl_GetStringFromObj(tls, tailObj, bp+4)
 				if *(*int32)(unsafe.Pointer(bp + 4)) == 0 {
 					/*
@@ -216580,20 +216580,20 @@ func XTclJoinPath(tls *libc.TLS, elements int32, objv uintptr, forceRelative int
 				 * would not have forward slashes only, and this would
 				 * therefore contradict our 'file join' documentation).
 				 */
-				if int32(*(*uint8)(unsafe.Pointer(str))) != int32('.') && (XtclPlatform != int32(_TCL_PLATFORM_WINDOWS) || libc.Xstrchr(tls, str, int32('\\')) == libc.UintptrFromInt32(0)) {
+				if int32(*(*uint8)(unsafe.Pointer(str))) != int32('.') && (XtclPlatform != _TCL_PLATFORM_WINDOWS || libc.Xstrchr(tls, str, int32('\\')) == libc.UintptrFromInt32(0)) {
 					/*
 					 * Finally, on Windows, 'file join' is defined to convert
 					 * all backslashes to forward slashes, so the base part
 					 * cannot have backslashes either.
 					 */
-					if XtclPlatform != int32(_TCL_PLATFORM_WINDOWS) || libc.Xstrchr(tls, XTcl_GetString(tls, elt), int32('\\')) == libc.UintptrFromInt32(0) {
+					if XtclPlatform != _TCL_PLATFORM_WINDOWS || libc.Xstrchr(tls, XTcl_GetString(tls, elt), int32('\\')) == libc.UintptrFromInt32(0) {
 						if (*TFsPath)(unsafe.Pointer((*(*struct {
 							Fptr1 uintptr
 							Fptr2 uintptr
 						})(unsafe.Pointer(elt + 16))).Fptr1)).Fflags != 0 {
 							return XTclNewFSPathObj(tls, elt, str, *(*int32)(unsafe.Pointer(bp + 4)))
 						}
-						if int32(_TCL_PATH_ABSOLUTE) != XTcl_FSGetPathType(tls, elt) {
+						if _TCL_PATH_ABSOLUTE != XTcl_FSGetPathType(tls, elt) {
 							return XTclNewFSPathObj(tls, elt, str, *(*int32)(unsafe.Pointer(bp + 4)))
 						}
 						XTcl_FSGetNormalizedPath(tls, libc.UintptrFromInt32(0), elt)
@@ -216610,7 +216610,7 @@ func XTclJoinPath(tls *libc.TLS, elements int32, objv uintptr, forceRelative int
 				 * more general code below handle things.
 				 */
 			} else {
-				if XtclPlatform == int32(_TCL_PLATFORM_UNIX) {
+				if XtclPlatform == _TCL_PLATFORM_UNIX {
 					return tailObj
 				} else {
 					if (*TTcl_Obj)(unsafe.Pointer(tailObj)).Fbytes != 0 {
@@ -216619,7 +216619,7 @@ func XTclJoinPath(tls *libc.TLS, elements int32, objv uintptr, forceRelative int
 						v2 = XTcl_GetString(tls, tailObj)
 					}
 					str1 = v2
-					if XtclPlatform == int32(_TCL_PLATFORM_WINDOWS) {
+					if XtclPlatform == _TCL_PLATFORM_WINDOWS {
 						if libc.Xstrchr(tls, str1, int32('\\')) == libc.UintptrFromInt32(0) {
 							return tailObj
 						}
@@ -216640,12 +216640,12 @@ func XTclJoinPath(tls *libc.TLS, elements int32, objv uintptr, forceRelative int
 		*(*int32)(unsafe.Pointer(bp + 8)) = 0
 		/* if forceRelative - all paths excepting first one are relative */
 		if forceRelative != 0 && i > 0 {
-			v4 = int32(_TCL_PATH_RELATIVE)
+			v4 = _TCL_PATH_RELATIVE
 		} else {
 			v4 = XTclGetPathType(tls, elt1, bp, bp+8, bp+20)
 		}
 		type11 = v4
-		if type11 != int32(_TCL_PATH_RELATIVE) {
+		if type11 != _TCL_PATH_RELATIVE {
 			/*
 			 * Zero out the current result.
 			 */
@@ -216722,12 +216722,12 @@ func XTclJoinPath(tls *libc.TLS, elements int32, objv uintptr, forceRelative int
 		 * form to be returned. Then we can short-cut the rest of this
 		 * function.
 		 */
-		if *(*uintptr)(unsafe.Pointer(bp + 20)) == libc.UintptrFromInt32(0) && i == elements-int32(1) && (type11 != int32(_TCL_PATH_RELATIVE) || res == libc.UintptrFromInt32(0)) {
+		if *(*uintptr)(unsafe.Pointer(bp + 20)) == libc.UintptrFromInt32(0) && i == elements-int32(1) && (type11 != _TCL_PATH_RELATIVE || res == libc.UintptrFromInt32(0)) {
 			/*
 			 * It's the last path segment. Perform a quick check if the path
 			 * is already in a suitable form.
 			 */
-			if XtclPlatform == int32(_TCL_PLATFORM_WINDOWS) {
+			if XtclPlatform == _TCL_PLATFORM_WINDOWS {
 				if libc.Xstrchr(tls, strElt, int32('\\')) != libc.UintptrFromInt32(0) {
 					goto noQuickReturn
 				}
@@ -216989,14 +216989,14 @@ func _IsSeparatorOrNull(tls *libc.TLS, ch int32) (r int32) {
 		return int32(1)
 	}
 	switch XtclPlatform {
-	case int32(_TCL_PLATFORM_UNIX):
+	case _TCL_PLATFORM_UNIX:
 		if ch == int32('/') {
 			v1 = int32(1)
 		} else {
 			v1 = 0
 		}
 		return v1
-	case int32(_TCL_PLATFORM_WINDOWS):
+	case _TCL_PLATFORM_WINDOWS:
 		if ch == int32('/') || ch == int32('\\') {
 			v2 = int32(1)
 		} else {
@@ -217018,9 +217018,9 @@ func _FindSplitPos(tls *libc.TLS, path uintptr, separator int32) (r int32) {
 	_ = count
 	count = 0
 	switch XtclPlatform {
-	case int32(_TCL_PLATFORM_UNIX):
+	case _TCL_PLATFORM_UNIX:
 		goto _1
-	case int32(_TCL_PLATFORM_WINDOWS):
+	case _TCL_PLATFORM_WINDOWS:
 		goto _2
 	}
 	goto _3
@@ -217278,11 +217278,11 @@ func XTclFSMakePathRelative(tls *libc.TLS, interp uintptr, pathPtr uintptr, cwdP
 	 * volume.
 	 */
 	switch XtclPlatform {
-	case int32(_TCL_PLATFORM_UNIX):
+	case _TCL_PLATFORM_UNIX:
 		if int32(*(*uint8)(unsafe.Pointer(tempStr + uintptr(*(*int32)(unsafe.Pointer(bp))-int32(1))))) != int32('/') {
 			*(*int32)(unsafe.Pointer(bp))++
 		}
-	case int32(_TCL_PLATFORM_WINDOWS):
+	case _TCL_PLATFORM_WINDOWS:
 		if int32(*(*uint8)(unsafe.Pointer(tempStr + uintptr(*(*int32)(unsafe.Pointer(bp))-int32(1))))) != int32('/') && int32(*(*uint8)(unsafe.Pointer(tempStr + uintptr(*(*int32)(unsafe.Pointer(bp))-int32(1))))) != int32('\\') {
 			*(*int32)(unsafe.Pointer(bp))++
 		}
@@ -217674,7 +217674,7 @@ func XTcl_FSGetNormalizedPath(tls *libc.TLS, interp uintptr, pathPtr uintptr) (r
 			XTclFSNormalizeToUniquePath(tls, interp, copy1, *(*int32)(unsafe.Pointer(bp + 4)))
 		}
 		/* Now we need to construct the new path object. */
-		if pathType == int32(_TCL_PATH_RELATIVE) {
+		if pathType == _TCL_PATH_RELATIVE {
 			origDir = (*TFsPath)(unsafe.Pointer(fsPathPtr)).FcwdPtr
 			/*
 			 * NOTE: here we are (dangerously?) assuming that origDir points
@@ -217887,7 +217887,7 @@ func XTcl_FSGetNormalizedPath(tls *libc.TLS, interp uintptr, pathPtr uintptr) (r
 			 * depending on how env(HOME) is set.
 			 */
 			type1 = XTcl_FSGetPathType(tls, *(*uintptr)(unsafe.Pointer(bp + 12)))
-			if type1 == int32(_TCL_PATH_RELATIVE) {
+			if type1 == _TCL_PATH_RELATIVE {
 				useThisCwd = XTcl_FSGetCwd(tls, interp)
 				if useThisCwd == libc.UintptrFromInt32(0) {
 					return libc.UintptrFromInt32(0)
@@ -220349,7 +220349,7 @@ func _SelectPackage(tls *libc.TLS, data uintptr, interp uintptr, result int32) (
 	 * take (actually keep) the best. For 'stable' we take the best
 	 * stable, if there is any, or the best if there is nothing stable.
 	 */
-	if (*TInterp)(unsafe.Pointer(iPtr)).FpackagePrefer == int32(_PKG_PREFER_STABLE) && bestStablePtr != libc.UintptrFromInt32(0) {
+	if (*TInterp)(unsafe.Pointer(iPtr)).FpackagePrefer == _PKG_PREFER_STABLE && bestStablePtr != libc.UintptrFromInt32(0) {
 		bestPtr = bestStablePtr
 	}
 	if bestPtr == libc.UintptrFromInt32(0) {
@@ -229228,139 +229228,139 @@ func _GetKeys(tls *libc.TLS) (r uintptr) {
 		if XtclFreeObjList == libc.UintptrFromInt32(0) {
 			XTclAllocateFreeObjects(tls)
 		}
-		*(*uintptr)(unsafe.Pointer(keys + uintptr(_KEY_CODE)*4)) = XtclFreeObjList
+		*(*uintptr)(unsafe.Pointer(keys + _KEY_CODE*4)) = XtclFreeObjList
 		XtclFreeObjList = (*(*struct {
 			Fptr1 uintptr
 			Fptr2 uintptr
 		})(unsafe.Pointer(XtclFreeObjList + 16))).Fptr1
-		(*TTcl_Obj)(unsafe.Pointer(*(*uintptr)(unsafe.Pointer(keys + uintptr(_KEY_CODE)*4)))).FrefCount = 0
+		(*TTcl_Obj)(unsafe.Pointer(*(*uintptr)(unsafe.Pointer(keys + _KEY_CODE*4)))).FrefCount = 0
 		if int32(libc.Uint32FromInt64(6)-libc.Uint32FromInt32(1)) == 0 {
-			(*TTcl_Obj)(unsafe.Pointer(*(*uintptr)(unsafe.Pointer(keys + uintptr(_KEY_CODE)*4)))).Fbytes = XtclEmptyStringRep
-			(*TTcl_Obj)(unsafe.Pointer(*(*uintptr)(unsafe.Pointer(keys + uintptr(_KEY_CODE)*4)))).Flength = 0
+			(*TTcl_Obj)(unsafe.Pointer(*(*uintptr)(unsafe.Pointer(keys + _KEY_CODE*4)))).Fbytes = XtclEmptyStringRep
+			(*TTcl_Obj)(unsafe.Pointer(*(*uintptr)(unsafe.Pointer(keys + _KEY_CODE*4)))).Flength = 0
 		} else {
-			(*TTcl_Obj)(unsafe.Pointer(*(*uintptr)(unsafe.Pointer(keys + uintptr(_KEY_CODE)*4)))).Fbytes = XTcl_Alloc(tls, uint32(int32(libc.Uint32FromInt64(6)-libc.Uint32FromInt32(1)))+libc.Uint32FromUint32(1))
-			libc.Xmemcpy(tls, (*TTcl_Obj)(unsafe.Pointer(*(*uintptr)(unsafe.Pointer(keys + uintptr(_KEY_CODE)*4)))).Fbytes, __ccgo_ts+27138, uint32(int32(libc.Uint32FromInt64(6)-libc.Uint32FromInt32(1))))
-			*(*uint8)(unsafe.Pointer((*TTcl_Obj)(unsafe.Pointer(*(*uintptr)(unsafe.Pointer(keys + uintptr(_KEY_CODE)*4)))).Fbytes + uintptr(int32(libc.Uint32FromInt64(6)-libc.Uint32FromInt32(1))))) = uint8('\000')
-			(*TTcl_Obj)(unsafe.Pointer(*(*uintptr)(unsafe.Pointer(keys + uintptr(_KEY_CODE)*4)))).Flength = int32(libc.Uint32FromInt64(6) - libc.Uint32FromInt32(1))
+			(*TTcl_Obj)(unsafe.Pointer(*(*uintptr)(unsafe.Pointer(keys + _KEY_CODE*4)))).Fbytes = XTcl_Alloc(tls, uint32(int32(libc.Uint32FromInt64(6)-libc.Uint32FromInt32(1)))+libc.Uint32FromUint32(1))
+			libc.Xmemcpy(tls, (*TTcl_Obj)(unsafe.Pointer(*(*uintptr)(unsafe.Pointer(keys + _KEY_CODE*4)))).Fbytes, __ccgo_ts+27138, uint32(int32(libc.Uint32FromInt64(6)-libc.Uint32FromInt32(1))))
+			*(*uint8)(unsafe.Pointer((*TTcl_Obj)(unsafe.Pointer(*(*uintptr)(unsafe.Pointer(keys + _KEY_CODE*4)))).Fbytes + uintptr(int32(libc.Uint32FromInt64(6)-libc.Uint32FromInt32(1))))) = uint8('\000')
+			(*TTcl_Obj)(unsafe.Pointer(*(*uintptr)(unsafe.Pointer(keys + _KEY_CODE*4)))).Flength = int32(libc.Uint32FromInt64(6) - libc.Uint32FromInt32(1))
 		}
-		(*TTcl_Obj)(unsafe.Pointer(*(*uintptr)(unsafe.Pointer(keys + uintptr(_KEY_CODE)*4)))).FtypePtr = libc.UintptrFromInt32(0)
+		(*TTcl_Obj)(unsafe.Pointer(*(*uintptr)(unsafe.Pointer(keys + _KEY_CODE*4)))).FtypePtr = libc.UintptrFromInt32(0)
 		if XtclFreeObjList == libc.UintptrFromInt32(0) {
 			XTclAllocateFreeObjects(tls)
 		}
-		*(*uintptr)(unsafe.Pointer(keys + uintptr(_KEY_ERRORCODE)*4)) = XtclFreeObjList
+		*(*uintptr)(unsafe.Pointer(keys + _KEY_ERRORCODE*4)) = XtclFreeObjList
 		XtclFreeObjList = (*(*struct {
 			Fptr1 uintptr
 			Fptr2 uintptr
 		})(unsafe.Pointer(XtclFreeObjList + 16))).Fptr1
-		(*TTcl_Obj)(unsafe.Pointer(*(*uintptr)(unsafe.Pointer(keys + uintptr(_KEY_ERRORCODE)*4)))).FrefCount = 0
+		(*TTcl_Obj)(unsafe.Pointer(*(*uintptr)(unsafe.Pointer(keys + _KEY_ERRORCODE*4)))).FrefCount = 0
 		if int32(libc.Uint32FromInt64(11)-libc.Uint32FromInt32(1)) == 0 {
-			(*TTcl_Obj)(unsafe.Pointer(*(*uintptr)(unsafe.Pointer(keys + uintptr(_KEY_ERRORCODE)*4)))).Fbytes = XtclEmptyStringRep
-			(*TTcl_Obj)(unsafe.Pointer(*(*uintptr)(unsafe.Pointer(keys + uintptr(_KEY_ERRORCODE)*4)))).Flength = 0
+			(*TTcl_Obj)(unsafe.Pointer(*(*uintptr)(unsafe.Pointer(keys + _KEY_ERRORCODE*4)))).Fbytes = XtclEmptyStringRep
+			(*TTcl_Obj)(unsafe.Pointer(*(*uintptr)(unsafe.Pointer(keys + _KEY_ERRORCODE*4)))).Flength = 0
 		} else {
-			(*TTcl_Obj)(unsafe.Pointer(*(*uintptr)(unsafe.Pointer(keys + uintptr(_KEY_ERRORCODE)*4)))).Fbytes = XTcl_Alloc(tls, uint32(int32(libc.Uint32FromInt64(11)-libc.Uint32FromInt32(1)))+libc.Uint32FromUint32(1))
-			libc.Xmemcpy(tls, (*TTcl_Obj)(unsafe.Pointer(*(*uintptr)(unsafe.Pointer(keys + uintptr(_KEY_ERRORCODE)*4)))).Fbytes, __ccgo_ts+11906, uint32(int32(libc.Uint32FromInt64(11)-libc.Uint32FromInt32(1))))
-			*(*uint8)(unsafe.Pointer((*TTcl_Obj)(unsafe.Pointer(*(*uintptr)(unsafe.Pointer(keys + uintptr(_KEY_ERRORCODE)*4)))).Fbytes + uintptr(int32(libc.Uint32FromInt64(11)-libc.Uint32FromInt32(1))))) = uint8('\000')
-			(*TTcl_Obj)(unsafe.Pointer(*(*uintptr)(unsafe.Pointer(keys + uintptr(_KEY_ERRORCODE)*4)))).Flength = int32(libc.Uint32FromInt64(11) - libc.Uint32FromInt32(1))
+			(*TTcl_Obj)(unsafe.Pointer(*(*uintptr)(unsafe.Pointer(keys + _KEY_ERRORCODE*4)))).Fbytes = XTcl_Alloc(tls, uint32(int32(libc.Uint32FromInt64(11)-libc.Uint32FromInt32(1)))+libc.Uint32FromUint32(1))
+			libc.Xmemcpy(tls, (*TTcl_Obj)(unsafe.Pointer(*(*uintptr)(unsafe.Pointer(keys + _KEY_ERRORCODE*4)))).Fbytes, __ccgo_ts+11906, uint32(int32(libc.Uint32FromInt64(11)-libc.Uint32FromInt32(1))))
+			*(*uint8)(unsafe.Pointer((*TTcl_Obj)(unsafe.Pointer(*(*uintptr)(unsafe.Pointer(keys + _KEY_ERRORCODE*4)))).Fbytes + uintptr(int32(libc.Uint32FromInt64(11)-libc.Uint32FromInt32(1))))) = uint8('\000')
+			(*TTcl_Obj)(unsafe.Pointer(*(*uintptr)(unsafe.Pointer(keys + _KEY_ERRORCODE*4)))).Flength = int32(libc.Uint32FromInt64(11) - libc.Uint32FromInt32(1))
 		}
-		(*TTcl_Obj)(unsafe.Pointer(*(*uintptr)(unsafe.Pointer(keys + uintptr(_KEY_ERRORCODE)*4)))).FtypePtr = libc.UintptrFromInt32(0)
+		(*TTcl_Obj)(unsafe.Pointer(*(*uintptr)(unsafe.Pointer(keys + _KEY_ERRORCODE*4)))).FtypePtr = libc.UintptrFromInt32(0)
 		if XtclFreeObjList == libc.UintptrFromInt32(0) {
 			XTclAllocateFreeObjects(tls)
 		}
-		*(*uintptr)(unsafe.Pointer(keys + uintptr(_KEY_ERRORINFO)*4)) = XtclFreeObjList
+		*(*uintptr)(unsafe.Pointer(keys + _KEY_ERRORINFO*4)) = XtclFreeObjList
 		XtclFreeObjList = (*(*struct {
 			Fptr1 uintptr
 			Fptr2 uintptr
 		})(unsafe.Pointer(XtclFreeObjList + 16))).Fptr1
-		(*TTcl_Obj)(unsafe.Pointer(*(*uintptr)(unsafe.Pointer(keys + uintptr(_KEY_ERRORINFO)*4)))).FrefCount = 0
+		(*TTcl_Obj)(unsafe.Pointer(*(*uintptr)(unsafe.Pointer(keys + _KEY_ERRORINFO*4)))).FrefCount = 0
 		if int32(libc.Uint32FromInt64(11)-libc.Uint32FromInt32(1)) == 0 {
-			(*TTcl_Obj)(unsafe.Pointer(*(*uintptr)(unsafe.Pointer(keys + uintptr(_KEY_ERRORINFO)*4)))).Fbytes = XtclEmptyStringRep
-			(*TTcl_Obj)(unsafe.Pointer(*(*uintptr)(unsafe.Pointer(keys + uintptr(_KEY_ERRORINFO)*4)))).Flength = 0
+			(*TTcl_Obj)(unsafe.Pointer(*(*uintptr)(unsafe.Pointer(keys + _KEY_ERRORINFO*4)))).Fbytes = XtclEmptyStringRep
+			(*TTcl_Obj)(unsafe.Pointer(*(*uintptr)(unsafe.Pointer(keys + _KEY_ERRORINFO*4)))).Flength = 0
 		} else {
-			(*TTcl_Obj)(unsafe.Pointer(*(*uintptr)(unsafe.Pointer(keys + uintptr(_KEY_ERRORINFO)*4)))).Fbytes = XTcl_Alloc(tls, uint32(int32(libc.Uint32FromInt64(11)-libc.Uint32FromInt32(1)))+libc.Uint32FromUint32(1))
-			libc.Xmemcpy(tls, (*TTcl_Obj)(unsafe.Pointer(*(*uintptr)(unsafe.Pointer(keys + uintptr(_KEY_ERRORINFO)*4)))).Fbytes, __ccgo_ts+11895, uint32(int32(libc.Uint32FromInt64(11)-libc.Uint32FromInt32(1))))
-			*(*uint8)(unsafe.Pointer((*TTcl_Obj)(unsafe.Pointer(*(*uintptr)(unsafe.Pointer(keys + uintptr(_KEY_ERRORINFO)*4)))).Fbytes + uintptr(int32(libc.Uint32FromInt64(11)-libc.Uint32FromInt32(1))))) = uint8('\000')
-			(*TTcl_Obj)(unsafe.Pointer(*(*uintptr)(unsafe.Pointer(keys + uintptr(_KEY_ERRORINFO)*4)))).Flength = int32(libc.Uint32FromInt64(11) - libc.Uint32FromInt32(1))
+			(*TTcl_Obj)(unsafe.Pointer(*(*uintptr)(unsafe.Pointer(keys + _KEY_ERRORINFO*4)))).Fbytes = XTcl_Alloc(tls, uint32(int32(libc.Uint32FromInt64(11)-libc.Uint32FromInt32(1)))+libc.Uint32FromUint32(1))
+			libc.Xmemcpy(tls, (*TTcl_Obj)(unsafe.Pointer(*(*uintptr)(unsafe.Pointer(keys + _KEY_ERRORINFO*4)))).Fbytes, __ccgo_ts+11895, uint32(int32(libc.Uint32FromInt64(11)-libc.Uint32FromInt32(1))))
+			*(*uint8)(unsafe.Pointer((*TTcl_Obj)(unsafe.Pointer(*(*uintptr)(unsafe.Pointer(keys + _KEY_ERRORINFO*4)))).Fbytes + uintptr(int32(libc.Uint32FromInt64(11)-libc.Uint32FromInt32(1))))) = uint8('\000')
+			(*TTcl_Obj)(unsafe.Pointer(*(*uintptr)(unsafe.Pointer(keys + _KEY_ERRORINFO*4)))).Flength = int32(libc.Uint32FromInt64(11) - libc.Uint32FromInt32(1))
 		}
-		(*TTcl_Obj)(unsafe.Pointer(*(*uintptr)(unsafe.Pointer(keys + uintptr(_KEY_ERRORINFO)*4)))).FtypePtr = libc.UintptrFromInt32(0)
+		(*TTcl_Obj)(unsafe.Pointer(*(*uintptr)(unsafe.Pointer(keys + _KEY_ERRORINFO*4)))).FtypePtr = libc.UintptrFromInt32(0)
 		if XtclFreeObjList == libc.UintptrFromInt32(0) {
 			XTclAllocateFreeObjects(tls)
 		}
-		*(*uintptr)(unsafe.Pointer(keys + uintptr(_KEY_ERRORLINE)*4)) = XtclFreeObjList
+		*(*uintptr)(unsafe.Pointer(keys + _KEY_ERRORLINE*4)) = XtclFreeObjList
 		XtclFreeObjList = (*(*struct {
 			Fptr1 uintptr
 			Fptr2 uintptr
 		})(unsafe.Pointer(XtclFreeObjList + 16))).Fptr1
-		(*TTcl_Obj)(unsafe.Pointer(*(*uintptr)(unsafe.Pointer(keys + uintptr(_KEY_ERRORLINE)*4)))).FrefCount = 0
+		(*TTcl_Obj)(unsafe.Pointer(*(*uintptr)(unsafe.Pointer(keys + _KEY_ERRORLINE*4)))).FrefCount = 0
 		if int32(libc.Uint32FromInt64(11)-libc.Uint32FromInt32(1)) == 0 {
-			(*TTcl_Obj)(unsafe.Pointer(*(*uintptr)(unsafe.Pointer(keys + uintptr(_KEY_ERRORLINE)*4)))).Fbytes = XtclEmptyStringRep
-			(*TTcl_Obj)(unsafe.Pointer(*(*uintptr)(unsafe.Pointer(keys + uintptr(_KEY_ERRORLINE)*4)))).Flength = 0
+			(*TTcl_Obj)(unsafe.Pointer(*(*uintptr)(unsafe.Pointer(keys + _KEY_ERRORLINE*4)))).Fbytes = XtclEmptyStringRep
+			(*TTcl_Obj)(unsafe.Pointer(*(*uintptr)(unsafe.Pointer(keys + _KEY_ERRORLINE*4)))).Flength = 0
 		} else {
-			(*TTcl_Obj)(unsafe.Pointer(*(*uintptr)(unsafe.Pointer(keys + uintptr(_KEY_ERRORLINE)*4)))).Fbytes = XTcl_Alloc(tls, uint32(int32(libc.Uint32FromInt64(11)-libc.Uint32FromInt32(1)))+libc.Uint32FromUint32(1))
-			libc.Xmemcpy(tls, (*TTcl_Obj)(unsafe.Pointer(*(*uintptr)(unsafe.Pointer(keys + uintptr(_KEY_ERRORLINE)*4)))).Fbytes, __ccgo_ts+56244, uint32(int32(libc.Uint32FromInt64(11)-libc.Uint32FromInt32(1))))
-			*(*uint8)(unsafe.Pointer((*TTcl_Obj)(unsafe.Pointer(*(*uintptr)(unsafe.Pointer(keys + uintptr(_KEY_ERRORLINE)*4)))).Fbytes + uintptr(int32(libc.Uint32FromInt64(11)-libc.Uint32FromInt32(1))))) = uint8('\000')
-			(*TTcl_Obj)(unsafe.Pointer(*(*uintptr)(unsafe.Pointer(keys + uintptr(_KEY_ERRORLINE)*4)))).Flength = int32(libc.Uint32FromInt64(11) - libc.Uint32FromInt32(1))
+			(*TTcl_Obj)(unsafe.Pointer(*(*uintptr)(unsafe.Pointer(keys + _KEY_ERRORLINE*4)))).Fbytes = XTcl_Alloc(tls, uint32(int32(libc.Uint32FromInt64(11)-libc.Uint32FromInt32(1)))+libc.Uint32FromUint32(1))
+			libc.Xmemcpy(tls, (*TTcl_Obj)(unsafe.Pointer(*(*uintptr)(unsafe.Pointer(keys + _KEY_ERRORLINE*4)))).Fbytes, __ccgo_ts+56244, uint32(int32(libc.Uint32FromInt64(11)-libc.Uint32FromInt32(1))))
+			*(*uint8)(unsafe.Pointer((*TTcl_Obj)(unsafe.Pointer(*(*uintptr)(unsafe.Pointer(keys + _KEY_ERRORLINE*4)))).Fbytes + uintptr(int32(libc.Uint32FromInt64(11)-libc.Uint32FromInt32(1))))) = uint8('\000')
+			(*TTcl_Obj)(unsafe.Pointer(*(*uintptr)(unsafe.Pointer(keys + _KEY_ERRORLINE*4)))).Flength = int32(libc.Uint32FromInt64(11) - libc.Uint32FromInt32(1))
 		}
-		(*TTcl_Obj)(unsafe.Pointer(*(*uintptr)(unsafe.Pointer(keys + uintptr(_KEY_ERRORLINE)*4)))).FtypePtr = libc.UintptrFromInt32(0)
+		(*TTcl_Obj)(unsafe.Pointer(*(*uintptr)(unsafe.Pointer(keys + _KEY_ERRORLINE*4)))).FtypePtr = libc.UintptrFromInt32(0)
 		if XtclFreeObjList == libc.UintptrFromInt32(0) {
 			XTclAllocateFreeObjects(tls)
 		}
-		*(*uintptr)(unsafe.Pointer(keys + uintptr(_KEY_ERRORSTACK)*4)) = XtclFreeObjList
+		*(*uintptr)(unsafe.Pointer(keys + _KEY_ERRORSTACK*4)) = XtclFreeObjList
 		XtclFreeObjList = (*(*struct {
 			Fptr1 uintptr
 			Fptr2 uintptr
 		})(unsafe.Pointer(XtclFreeObjList + 16))).Fptr1
-		(*TTcl_Obj)(unsafe.Pointer(*(*uintptr)(unsafe.Pointer(keys + uintptr(_KEY_ERRORSTACK)*4)))).FrefCount = 0
+		(*TTcl_Obj)(unsafe.Pointer(*(*uintptr)(unsafe.Pointer(keys + _KEY_ERRORSTACK*4)))).FrefCount = 0
 		if int32(libc.Uint32FromInt64(12)-libc.Uint32FromInt32(1)) == 0 {
-			(*TTcl_Obj)(unsafe.Pointer(*(*uintptr)(unsafe.Pointer(keys + uintptr(_KEY_ERRORSTACK)*4)))).Fbytes = XtclEmptyStringRep
-			(*TTcl_Obj)(unsafe.Pointer(*(*uintptr)(unsafe.Pointer(keys + uintptr(_KEY_ERRORSTACK)*4)))).Flength = 0
+			(*TTcl_Obj)(unsafe.Pointer(*(*uintptr)(unsafe.Pointer(keys + _KEY_ERRORSTACK*4)))).Fbytes = XtclEmptyStringRep
+			(*TTcl_Obj)(unsafe.Pointer(*(*uintptr)(unsafe.Pointer(keys + _KEY_ERRORSTACK*4)))).Flength = 0
 		} else {
-			(*TTcl_Obj)(unsafe.Pointer(*(*uintptr)(unsafe.Pointer(keys + uintptr(_KEY_ERRORSTACK)*4)))).Fbytes = XTcl_Alloc(tls, uint32(int32(libc.Uint32FromInt64(12)-libc.Uint32FromInt32(1)))+libc.Uint32FromUint32(1))
-			libc.Xmemcpy(tls, (*TTcl_Obj)(unsafe.Pointer(*(*uintptr)(unsafe.Pointer(keys + uintptr(_KEY_ERRORSTACK)*4)))).Fbytes, __ccgo_ts+56255, uint32(int32(libc.Uint32FromInt64(12)-libc.Uint32FromInt32(1))))
-			*(*uint8)(unsafe.Pointer((*TTcl_Obj)(unsafe.Pointer(*(*uintptr)(unsafe.Pointer(keys + uintptr(_KEY_ERRORSTACK)*4)))).Fbytes + uintptr(int32(libc.Uint32FromInt64(12)-libc.Uint32FromInt32(1))))) = uint8('\000')
-			(*TTcl_Obj)(unsafe.Pointer(*(*uintptr)(unsafe.Pointer(keys + uintptr(_KEY_ERRORSTACK)*4)))).Flength = int32(libc.Uint32FromInt64(12) - libc.Uint32FromInt32(1))
+			(*TTcl_Obj)(unsafe.Pointer(*(*uintptr)(unsafe.Pointer(keys + _KEY_ERRORSTACK*4)))).Fbytes = XTcl_Alloc(tls, uint32(int32(libc.Uint32FromInt64(12)-libc.Uint32FromInt32(1)))+libc.Uint32FromUint32(1))
+			libc.Xmemcpy(tls, (*TTcl_Obj)(unsafe.Pointer(*(*uintptr)(unsafe.Pointer(keys + _KEY_ERRORSTACK*4)))).Fbytes, __ccgo_ts+56255, uint32(int32(libc.Uint32FromInt64(12)-libc.Uint32FromInt32(1))))
+			*(*uint8)(unsafe.Pointer((*TTcl_Obj)(unsafe.Pointer(*(*uintptr)(unsafe.Pointer(keys + _KEY_ERRORSTACK*4)))).Fbytes + uintptr(int32(libc.Uint32FromInt64(12)-libc.Uint32FromInt32(1))))) = uint8('\000')
+			(*TTcl_Obj)(unsafe.Pointer(*(*uintptr)(unsafe.Pointer(keys + _KEY_ERRORSTACK*4)))).Flength = int32(libc.Uint32FromInt64(12) - libc.Uint32FromInt32(1))
 		}
-		(*TTcl_Obj)(unsafe.Pointer(*(*uintptr)(unsafe.Pointer(keys + uintptr(_KEY_ERRORSTACK)*4)))).FtypePtr = libc.UintptrFromInt32(0)
+		(*TTcl_Obj)(unsafe.Pointer(*(*uintptr)(unsafe.Pointer(keys + _KEY_ERRORSTACK*4)))).FtypePtr = libc.UintptrFromInt32(0)
 		if XtclFreeObjList == libc.UintptrFromInt32(0) {
 			XTclAllocateFreeObjects(tls)
 		}
-		*(*uintptr)(unsafe.Pointer(keys + uintptr(_KEY_LEVEL)*4)) = XtclFreeObjList
+		*(*uintptr)(unsafe.Pointer(keys + _KEY_LEVEL*4)) = XtclFreeObjList
 		XtclFreeObjList = (*(*struct {
 			Fptr1 uintptr
 			Fptr2 uintptr
 		})(unsafe.Pointer(XtclFreeObjList + 16))).Fptr1
-		(*TTcl_Obj)(unsafe.Pointer(*(*uintptr)(unsafe.Pointer(keys + uintptr(_KEY_LEVEL)*4)))).FrefCount = 0
+		(*TTcl_Obj)(unsafe.Pointer(*(*uintptr)(unsafe.Pointer(keys + _KEY_LEVEL*4)))).FrefCount = 0
 		if int32(libc.Uint32FromInt64(7)-libc.Uint32FromInt32(1)) == 0 {
-			(*TTcl_Obj)(unsafe.Pointer(*(*uintptr)(unsafe.Pointer(keys + uintptr(_KEY_LEVEL)*4)))).Fbytes = XtclEmptyStringRep
-			(*TTcl_Obj)(unsafe.Pointer(*(*uintptr)(unsafe.Pointer(keys + uintptr(_KEY_LEVEL)*4)))).Flength = 0
+			(*TTcl_Obj)(unsafe.Pointer(*(*uintptr)(unsafe.Pointer(keys + _KEY_LEVEL*4)))).Fbytes = XtclEmptyStringRep
+			(*TTcl_Obj)(unsafe.Pointer(*(*uintptr)(unsafe.Pointer(keys + _KEY_LEVEL*4)))).Flength = 0
 		} else {
-			(*TTcl_Obj)(unsafe.Pointer(*(*uintptr)(unsafe.Pointer(keys + uintptr(_KEY_LEVEL)*4)))).Fbytes = XTcl_Alloc(tls, uint32(int32(libc.Uint32FromInt64(7)-libc.Uint32FromInt32(1)))+libc.Uint32FromUint32(1))
-			libc.Xmemcpy(tls, (*TTcl_Obj)(unsafe.Pointer(*(*uintptr)(unsafe.Pointer(keys + uintptr(_KEY_LEVEL)*4)))).Fbytes, __ccgo_ts+27100, uint32(int32(libc.Uint32FromInt64(7)-libc.Uint32FromInt32(1))))
-			*(*uint8)(unsafe.Pointer((*TTcl_Obj)(unsafe.Pointer(*(*uintptr)(unsafe.Pointer(keys + uintptr(_KEY_LEVEL)*4)))).Fbytes + uintptr(int32(libc.Uint32FromInt64(7)-libc.Uint32FromInt32(1))))) = uint8('\000')
-			(*TTcl_Obj)(unsafe.Pointer(*(*uintptr)(unsafe.Pointer(keys + uintptr(_KEY_LEVEL)*4)))).Flength = int32(libc.Uint32FromInt64(7) - libc.Uint32FromInt32(1))
+			(*TTcl_Obj)(unsafe.Pointer(*(*uintptr)(unsafe.Pointer(keys + _KEY_LEVEL*4)))).Fbytes = XTcl_Alloc(tls, uint32(int32(libc.Uint32FromInt64(7)-libc.Uint32FromInt32(1)))+libc.Uint32FromUint32(1))
+			libc.Xmemcpy(tls, (*TTcl_Obj)(unsafe.Pointer(*(*uintptr)(unsafe.Pointer(keys + _KEY_LEVEL*4)))).Fbytes, __ccgo_ts+27100, uint32(int32(libc.Uint32FromInt64(7)-libc.Uint32FromInt32(1))))
+			*(*uint8)(unsafe.Pointer((*TTcl_Obj)(unsafe.Pointer(*(*uintptr)(unsafe.Pointer(keys + _KEY_LEVEL*4)))).Fbytes + uintptr(int32(libc.Uint32FromInt64(7)-libc.Uint32FromInt32(1))))) = uint8('\000')
+			(*TTcl_Obj)(unsafe.Pointer(*(*uintptr)(unsafe.Pointer(keys + _KEY_LEVEL*4)))).Flength = int32(libc.Uint32FromInt64(7) - libc.Uint32FromInt32(1))
 		}
-		(*TTcl_Obj)(unsafe.Pointer(*(*uintptr)(unsafe.Pointer(keys + uintptr(_KEY_LEVEL)*4)))).FtypePtr = libc.UintptrFromInt32(0)
+		(*TTcl_Obj)(unsafe.Pointer(*(*uintptr)(unsafe.Pointer(keys + _KEY_LEVEL*4)))).FtypePtr = libc.UintptrFromInt32(0)
 		if XtclFreeObjList == libc.UintptrFromInt32(0) {
 			XTclAllocateFreeObjects(tls)
 		}
-		*(*uintptr)(unsafe.Pointer(keys + uintptr(_KEY_OPTIONS)*4)) = XtclFreeObjList
+		*(*uintptr)(unsafe.Pointer(keys + _KEY_OPTIONS*4)) = XtclFreeObjList
 		XtclFreeObjList = (*(*struct {
 			Fptr1 uintptr
 			Fptr2 uintptr
 		})(unsafe.Pointer(XtclFreeObjList + 16))).Fptr1
-		(*TTcl_Obj)(unsafe.Pointer(*(*uintptr)(unsafe.Pointer(keys + uintptr(_KEY_OPTIONS)*4)))).FrefCount = 0
+		(*TTcl_Obj)(unsafe.Pointer(*(*uintptr)(unsafe.Pointer(keys + _KEY_OPTIONS*4)))).FrefCount = 0
 		if int32(libc.Uint32FromInt64(9)-libc.Uint32FromInt32(1)) == 0 {
-			(*TTcl_Obj)(unsafe.Pointer(*(*uintptr)(unsafe.Pointer(keys + uintptr(_KEY_OPTIONS)*4)))).Fbytes = XtclEmptyStringRep
-			(*TTcl_Obj)(unsafe.Pointer(*(*uintptr)(unsafe.Pointer(keys + uintptr(_KEY_OPTIONS)*4)))).Flength = 0
+			(*TTcl_Obj)(unsafe.Pointer(*(*uintptr)(unsafe.Pointer(keys + _KEY_OPTIONS*4)))).Fbytes = XtclEmptyStringRep
+			(*TTcl_Obj)(unsafe.Pointer(*(*uintptr)(unsafe.Pointer(keys + _KEY_OPTIONS*4)))).Flength = 0
 		} else {
-			(*TTcl_Obj)(unsafe.Pointer(*(*uintptr)(unsafe.Pointer(keys + uintptr(_KEY_OPTIONS)*4)))).Fbytes = XTcl_Alloc(tls, uint32(int32(libc.Uint32FromInt64(9)-libc.Uint32FromInt32(1)))+libc.Uint32FromUint32(1))
-			libc.Xmemcpy(tls, (*TTcl_Obj)(unsafe.Pointer(*(*uintptr)(unsafe.Pointer(keys + uintptr(_KEY_OPTIONS)*4)))).Fbytes, __ccgo_ts+18559, uint32(int32(libc.Uint32FromInt64(9)-libc.Uint32FromInt32(1))))
-			*(*uint8)(unsafe.Pointer((*TTcl_Obj)(unsafe.Pointer(*(*uintptr)(unsafe.Pointer(keys + uintptr(_KEY_OPTIONS)*4)))).Fbytes + uintptr(int32(libc.Uint32FromInt64(9)-libc.Uint32FromInt32(1))))) = uint8('\000')
-			(*TTcl_Obj)(unsafe.Pointer(*(*uintptr)(unsafe.Pointer(keys + uintptr(_KEY_OPTIONS)*4)))).Flength = int32(libc.Uint32FromInt64(9) - libc.Uint32FromInt32(1))
+			(*TTcl_Obj)(unsafe.Pointer(*(*uintptr)(unsafe.Pointer(keys + _KEY_OPTIONS*4)))).Fbytes = XTcl_Alloc(tls, uint32(int32(libc.Uint32FromInt64(9)-libc.Uint32FromInt32(1)))+libc.Uint32FromUint32(1))
+			libc.Xmemcpy(tls, (*TTcl_Obj)(unsafe.Pointer(*(*uintptr)(unsafe.Pointer(keys + _KEY_OPTIONS*4)))).Fbytes, __ccgo_ts+18559, uint32(int32(libc.Uint32FromInt64(9)-libc.Uint32FromInt32(1))))
+			*(*uint8)(unsafe.Pointer((*TTcl_Obj)(unsafe.Pointer(*(*uintptr)(unsafe.Pointer(keys + _KEY_OPTIONS*4)))).Fbytes + uintptr(int32(libc.Uint32FromInt64(9)-libc.Uint32FromInt32(1))))) = uint8('\000')
+			(*TTcl_Obj)(unsafe.Pointer(*(*uintptr)(unsafe.Pointer(keys + _KEY_OPTIONS*4)))).Flength = int32(libc.Uint32FromInt64(9) - libc.Uint32FromInt32(1))
 		}
-		(*TTcl_Obj)(unsafe.Pointer(*(*uintptr)(unsafe.Pointer(keys + uintptr(_KEY_OPTIONS)*4)))).FtypePtr = libc.UintptrFromInt32(0)
-		i = int32(_KEY_CODE)
+		(*TTcl_Obj)(unsafe.Pointer(*(*uintptr)(unsafe.Pointer(keys + _KEY_OPTIONS*4)))).FtypePtr = libc.UintptrFromInt32(0)
+		i = _KEY_CODE
 		for {
-			if !(i < int32(_KEY_LAST)) {
+			if !(i < _KEY_LAST) {
 				break
 			}
 			(*TTcl_Obj)(unsafe.Pointer(*(*uintptr)(unsafe.Pointer(keys + uintptr(i)*4)))).FrefCount++
@@ -229400,9 +229400,9 @@ func _ReleaseKeys(tls *libc.TLS, clientData TClientData) {
 	var i, v2 int32
 	_, _, _, _, _ = _objPtr, i, keys, v2, v3
 	keys = clientData
-	i = int32(_KEY_CODE)
+	i = _KEY_CODE
 	for {
-		if !(i < int32(_KEY_LAST)) {
+		if !(i < _KEY_LAST) {
 			break
 		}
 		_objPtr = *(*uintptr)(unsafe.Pointer(keys + uintptr(i)*4))
@@ -229479,7 +229479,7 @@ func XTclProcessReturn(tls *libc.TLS, interp uintptr, code int32, level int32, r
 			}
 			(*TInterp)(unsafe.Pointer(iPtr)).FerrorInfo = libc.UintptrFromInt32(0)
 		}
-		XTcl_DictObjGet(tls, libc.UintptrFromInt32(0), (*TInterp)(unsafe.Pointer(iPtr)).FreturnOpts, *(*uintptr)(unsafe.Pointer(keys + uintptr(_KEY_ERRORINFO)*4)), bp)
+		XTcl_DictObjGet(tls, libc.UintptrFromInt32(0), (*TInterp)(unsafe.Pointer(iPtr)).FreturnOpts, *(*uintptr)(unsafe.Pointer(keys + _KEY_ERRORINFO*4)), bp)
 		if *(*uintptr)(unsafe.Pointer(bp)) != libc.UintptrFromInt32(0) {
 			if (*TTcl_Obj)(unsafe.Pointer(*(*uintptr)(unsafe.Pointer(bp)))).Fbytes != 0 {
 				*(*int32)(unsafe.Pointer(bp + 4)) = (*TTcl_Obj)(unsafe.Pointer(*(*uintptr)(unsafe.Pointer(bp)))).Flength
@@ -229493,7 +229493,7 @@ func XTclProcessReturn(tls *libc.TLS, interp uintptr, code int32, level int32, r
 				*(*int32)(unsafe.Pointer(iPtr + 256)) |= int32(m_ERR_ALREADY_LOGGED)
 			}
 		}
-		XTcl_DictObjGet(tls, libc.UintptrFromInt32(0), (*TInterp)(unsafe.Pointer(iPtr)).FreturnOpts, *(*uintptr)(unsafe.Pointer(keys + uintptr(_KEY_ERRORSTACK)*4)), bp)
+		XTcl_DictObjGet(tls, libc.UintptrFromInt32(0), (*TInterp)(unsafe.Pointer(iPtr)).FreturnOpts, *(*uintptr)(unsafe.Pointer(keys + _KEY_ERRORSTACK*4)), bp)
 		if *(*uintptr)(unsafe.Pointer(bp)) != libc.UintptrFromInt32(0) {
 			if (*TTcl_Obj)(unsafe.Pointer((*TInterp)(unsafe.Pointer(iPtr)).FerrorStack)).FrefCount > int32(1) {
 				newObj = XTcl_DuplicateObj(tls, (*TInterp)(unsafe.Pointer(iPtr)).FerrorStack)
@@ -229542,13 +229542,13 @@ func XTclProcessReturn(tls *libc.TLS, interp uintptr, code int32, level int32, r
 			 */
 			XTcl_ListObjReplace(tls, interp, (*TInterp)(unsafe.Pointer(iPtr)).FerrorStack, 0, *(*int32)(unsafe.Pointer(bp + 8)), *(*int32)(unsafe.Pointer(bp + 12)), *(*uintptr)(unsafe.Pointer(bp + 16)))
 		}
-		XTcl_DictObjGet(tls, libc.UintptrFromInt32(0), (*TInterp)(unsafe.Pointer(iPtr)).FreturnOpts, *(*uintptr)(unsafe.Pointer(keys + uintptr(_KEY_ERRORCODE)*4)), bp)
+		XTcl_DictObjGet(tls, libc.UintptrFromInt32(0), (*TInterp)(unsafe.Pointer(iPtr)).FreturnOpts, *(*uintptr)(unsafe.Pointer(keys + _KEY_ERRORCODE*4)), bp)
 		if *(*uintptr)(unsafe.Pointer(bp)) != libc.UintptrFromInt32(0) {
 			XTcl_SetObjErrorCode(tls, interp, *(*uintptr)(unsafe.Pointer(bp)))
 		} else {
 			XTcl_SetErrorCode(tls, interp, libc.VaList(bp+32, __ccgo_ts+8097, libc.UintptrFromInt32(0)))
 		}
-		XTcl_DictObjGet(tls, libc.UintptrFromInt32(0), (*TInterp)(unsafe.Pointer(iPtr)).FreturnOpts, *(*uintptr)(unsafe.Pointer(keys + uintptr(_KEY_ERRORLINE)*4)), bp)
+		XTcl_DictObjGet(tls, libc.UintptrFromInt32(0), (*TInterp)(unsafe.Pointer(iPtr)).FreturnOpts, *(*uintptr)(unsafe.Pointer(keys + _KEY_ERRORLINE*4)), bp)
 		if *(*uintptr)(unsafe.Pointer(bp)) != libc.UintptrFromInt32(0) {
 			if (*TTcl_Obj)(unsafe.Pointer(*(*uintptr)(unsafe.Pointer(bp)))).FtypePtr == uintptr(unsafe.Pointer(&XtclIntType)) {
 				*(*int32)(unsafe.Pointer(iPtr + 8)) = (*TTcl_Obj)(unsafe.Pointer(*(*uintptr)(unsafe.Pointer(bp)))).FinternalRep.FlongValue
@@ -229630,11 +229630,11 @@ func XTclMergeReturnOptions(tls *libc.TLS, interp uintptr, objc int32, objv uint
 			v2 = XTcl_GetStringFromObj(tls, *(*uintptr)(unsafe.Pointer(objv)), bp+12)
 		}
 		opt = v2
-		if (*TTcl_Obj)(unsafe.Pointer(*(*uintptr)(unsafe.Pointer(keys + uintptr(_KEY_OPTIONS)*4)))).Fbytes != 0 {
-			*(*int32)(unsafe.Pointer(bp + 16)) = (*TTcl_Obj)(unsafe.Pointer(*(*uintptr)(unsafe.Pointer(keys + uintptr(_KEY_OPTIONS)*4)))).Flength
-			v3 = (*TTcl_Obj)(unsafe.Pointer(*(*uintptr)(unsafe.Pointer(keys + uintptr(_KEY_OPTIONS)*4)))).Fbytes
+		if (*TTcl_Obj)(unsafe.Pointer(*(*uintptr)(unsafe.Pointer(keys + _KEY_OPTIONS*4)))).Fbytes != 0 {
+			*(*int32)(unsafe.Pointer(bp + 16)) = (*TTcl_Obj)(unsafe.Pointer(*(*uintptr)(unsafe.Pointer(keys + _KEY_OPTIONS*4)))).Flength
+			v3 = (*TTcl_Obj)(unsafe.Pointer(*(*uintptr)(unsafe.Pointer(keys + _KEY_OPTIONS*4)))).Fbytes
 		} else {
-			v3 = XTcl_GetStringFromObj(tls, *(*uintptr)(unsafe.Pointer(keys + uintptr(_KEY_OPTIONS)*4)), bp+16)
+			v3 = XTcl_GetStringFromObj(tls, *(*uintptr)(unsafe.Pointer(keys + _KEY_OPTIONS*4)), bp+16)
 		}
 		compare = v3
 		if *(*int32)(unsafe.Pointer(bp + 12)) == *(*int32)(unsafe.Pointer(bp + 16)) && libc.Xmemcmp(tls, opt, compare, uint32(*(*int32)(unsafe.Pointer(bp + 12)))) == 0 {
@@ -229658,10 +229658,10 @@ func XTclMergeReturnOptions(tls *libc.TLS, interp uintptr, objc int32, objv uint
 				XTcl_DictObjPut(tls, libc.UintptrFromInt32(0), returnOpts, *(*uintptr)(unsafe.Pointer(bp + 36)), *(*uintptr)(unsafe.Pointer(bp + 8)))
 				XTcl_DictObjNext(tls, bp+20, bp+36, bp+8, bp+32)
 			}
-			XTcl_DictObjGet(tls, libc.UintptrFromInt32(0), returnOpts, *(*uintptr)(unsafe.Pointer(keys + uintptr(_KEY_OPTIONS)*4)), bp+8)
+			XTcl_DictObjGet(tls, libc.UintptrFromInt32(0), returnOpts, *(*uintptr)(unsafe.Pointer(keys + _KEY_OPTIONS*4)), bp+8)
 			if *(*uintptr)(unsafe.Pointer(bp + 8)) != libc.UintptrFromInt32(0) {
 				dict = *(*uintptr)(unsafe.Pointer(bp + 8))
-				XTcl_DictObjRemove(tls, libc.UintptrFromInt32(0), returnOpts, *(*uintptr)(unsafe.Pointer(keys + uintptr(_KEY_OPTIONS)*4)))
+				XTcl_DictObjRemove(tls, libc.UintptrFromInt32(0), returnOpts, *(*uintptr)(unsafe.Pointer(keys + _KEY_OPTIONS*4)))
 				goto nestedOptions
 			}
 		} else {
@@ -229675,17 +229675,17 @@ func XTclMergeReturnOptions(tls *libc.TLS, interp uintptr, objc int32, objv uint
 	/*
 	 * Check for bogus -code value.
 	 */
-	XTcl_DictObjGet(tls, libc.UintptrFromInt32(0), returnOpts, *(*uintptr)(unsafe.Pointer(keys + uintptr(_KEY_CODE)*4)), bp+8)
+	XTcl_DictObjGet(tls, libc.UintptrFromInt32(0), returnOpts, *(*uintptr)(unsafe.Pointer(keys + _KEY_CODE*4)), bp+8)
 	if *(*uintptr)(unsafe.Pointer(bp + 8)) != libc.UintptrFromInt32(0) {
 		if XTclGetCompletionCodeFromObj(tls, interp, *(*uintptr)(unsafe.Pointer(bp + 8)), bp) == int32(m_TCL_ERROR) {
 			goto error
 		}
-		XTcl_DictObjRemove(tls, libc.UintptrFromInt32(0), returnOpts, *(*uintptr)(unsafe.Pointer(keys + uintptr(_KEY_CODE)*4)))
+		XTcl_DictObjRemove(tls, libc.UintptrFromInt32(0), returnOpts, *(*uintptr)(unsafe.Pointer(keys + _KEY_CODE*4)))
 	}
 	/*
 	 * Check for bogus -level value.
 	 */
-	XTcl_DictObjGet(tls, libc.UintptrFromInt32(0), returnOpts, *(*uintptr)(unsafe.Pointer(keys + uintptr(_KEY_LEVEL)*4)), bp+8)
+	XTcl_DictObjGet(tls, libc.UintptrFromInt32(0), returnOpts, *(*uintptr)(unsafe.Pointer(keys + _KEY_LEVEL*4)), bp+8)
 	if *(*uintptr)(unsafe.Pointer(bp + 8)) != libc.UintptrFromInt32(0) {
 		if (*TTcl_Obj)(unsafe.Pointer(*(*uintptr)(unsafe.Pointer(bp + 8)))).FtypePtr == uintptr(unsafe.Pointer(&XtclIntType)) {
 			*(*int32)(unsafe.Pointer(bp + 4)) = (*TTcl_Obj)(unsafe.Pointer(*(*uintptr)(unsafe.Pointer(bp + 8)))).FinternalRep.FlongValue
@@ -229706,12 +229706,12 @@ func XTclMergeReturnOptions(tls *libc.TLS, interp uintptr, objc int32, objv uint
 			XTcl_SetErrorCode(tls, interp, libc.VaList(bp+56, __ccgo_ts+3490, __ccgo_ts+32386, __ccgo_ts+56391, libc.UintptrFromInt32(0)))
 			goto error
 		}
-		XTcl_DictObjRemove(tls, libc.UintptrFromInt32(0), returnOpts, *(*uintptr)(unsafe.Pointer(keys + uintptr(_KEY_LEVEL)*4)))
+		XTcl_DictObjRemove(tls, libc.UintptrFromInt32(0), returnOpts, *(*uintptr)(unsafe.Pointer(keys + _KEY_LEVEL*4)))
 	}
 	/*
 	 * Check for bogus -errorcode value.
 	 */
-	XTcl_DictObjGet(tls, libc.UintptrFromInt32(0), returnOpts, *(*uintptr)(unsafe.Pointer(keys + uintptr(_KEY_ERRORCODE)*4)), bp+8)
+	XTcl_DictObjGet(tls, libc.UintptrFromInt32(0), returnOpts, *(*uintptr)(unsafe.Pointer(keys + _KEY_ERRORCODE*4)), bp+8)
 	if *(*uintptr)(unsafe.Pointer(bp + 8)) != libc.UintptrFromInt32(0) {
 		if (*TTcl_Obj)(unsafe.Pointer(*(*uintptr)(unsafe.Pointer(bp + 8)))).FtypePtr == uintptr(unsafe.Pointer(&XtclListType)) {
 			*(*int32)(unsafe.Pointer(bp + 40)) = (*TList)(unsafe.Pointer((*(*struct {
@@ -229739,7 +229739,7 @@ func XTclMergeReturnOptions(tls *libc.TLS, interp uintptr, objc int32, objv uint
 	/*
 	 * Check for bogus -errorstack value.
 	 */
-	XTcl_DictObjGet(tls, libc.UintptrFromInt32(0), returnOpts, *(*uintptr)(unsafe.Pointer(keys + uintptr(_KEY_ERRORSTACK)*4)), bp+8)
+	XTcl_DictObjGet(tls, libc.UintptrFromInt32(0), returnOpts, *(*uintptr)(unsafe.Pointer(keys + _KEY_ERRORSTACK*4)), bp+8)
 	if *(*uintptr)(unsafe.Pointer(bp + 8)) != libc.UintptrFromInt32(0) {
 		if (*TTcl_Obj)(unsafe.Pointer(*(*uintptr)(unsafe.Pointer(bp + 8)))).FtypePtr == uintptr(unsafe.Pointer(&XtclListType)) {
 			*(*int32)(unsafe.Pointer(bp + 44)) = (*TList)(unsafe.Pointer((*(*struct {
@@ -229854,22 +229854,22 @@ func XTcl_GetReturnOptions(tls *libc.TLS, interp uintptr, result int32) (r uintp
 		(*TTcl_Obj)(unsafe.Pointer(options)).FtypePtr = libc.UintptrFromInt32(0)
 	}
 	if result == int32(m_TCL_RETURN) {
-		XTcl_DictObjPut(tls, libc.UintptrFromInt32(0), options, *(*uintptr)(unsafe.Pointer(keys + uintptr(_KEY_CODE)*4)), XTcl_NewIntObj(tls, (*TInterp)(unsafe.Pointer(iPtr)).FreturnCode))
-		XTcl_DictObjPut(tls, libc.UintptrFromInt32(0), options, *(*uintptr)(unsafe.Pointer(keys + uintptr(_KEY_LEVEL)*4)), XTcl_NewIntObj(tls, (*TInterp)(unsafe.Pointer(iPtr)).FreturnLevel))
+		XTcl_DictObjPut(tls, libc.UintptrFromInt32(0), options, *(*uintptr)(unsafe.Pointer(keys + _KEY_CODE*4)), XTcl_NewIntObj(tls, (*TInterp)(unsafe.Pointer(iPtr)).FreturnCode))
+		XTcl_DictObjPut(tls, libc.UintptrFromInt32(0), options, *(*uintptr)(unsafe.Pointer(keys + _KEY_LEVEL*4)), XTcl_NewIntObj(tls, (*TInterp)(unsafe.Pointer(iPtr)).FreturnLevel))
 	} else {
-		XTcl_DictObjPut(tls, libc.UintptrFromInt32(0), options, *(*uintptr)(unsafe.Pointer(keys + uintptr(_KEY_CODE)*4)), XTcl_NewIntObj(tls, result))
-		XTcl_DictObjPut(tls, libc.UintptrFromInt32(0), options, *(*uintptr)(unsafe.Pointer(keys + uintptr(_KEY_LEVEL)*4)), XTcl_NewIntObj(tls, 0))
+		XTcl_DictObjPut(tls, libc.UintptrFromInt32(0), options, *(*uintptr)(unsafe.Pointer(keys + _KEY_CODE*4)), XTcl_NewIntObj(tls, result))
+		XTcl_DictObjPut(tls, libc.UintptrFromInt32(0), options, *(*uintptr)(unsafe.Pointer(keys + _KEY_LEVEL*4)), XTcl_NewIntObj(tls, 0))
 	}
 	if result == int32(m_TCL_ERROR) {
 		XTcl_AddErrorInfo(tls, interp, __ccgo_ts+1943)
-		XTcl_DictObjPut(tls, libc.UintptrFromInt32(0), options, *(*uintptr)(unsafe.Pointer(keys + uintptr(_KEY_ERRORSTACK)*4)), (*TInterp)(unsafe.Pointer(iPtr)).FerrorStack)
+		XTcl_DictObjPut(tls, libc.UintptrFromInt32(0), options, *(*uintptr)(unsafe.Pointer(keys + _KEY_ERRORSTACK*4)), (*TInterp)(unsafe.Pointer(iPtr)).FerrorStack)
 	}
 	if (*TInterp)(unsafe.Pointer(iPtr)).FerrorCode != 0 {
-		XTcl_DictObjPut(tls, libc.UintptrFromInt32(0), options, *(*uintptr)(unsafe.Pointer(keys + uintptr(_KEY_ERRORCODE)*4)), (*TInterp)(unsafe.Pointer(iPtr)).FerrorCode)
+		XTcl_DictObjPut(tls, libc.UintptrFromInt32(0), options, *(*uintptr)(unsafe.Pointer(keys + _KEY_ERRORCODE*4)), (*TInterp)(unsafe.Pointer(iPtr)).FerrorCode)
 	}
 	if (*TInterp)(unsafe.Pointer(iPtr)).FerrorInfo != 0 {
-		XTcl_DictObjPut(tls, libc.UintptrFromInt32(0), options, *(*uintptr)(unsafe.Pointer(keys + uintptr(_KEY_ERRORINFO)*4)), (*TInterp)(unsafe.Pointer(iPtr)).FerrorInfo)
-		XTcl_DictObjPut(tls, libc.UintptrFromInt32(0), options, *(*uintptr)(unsafe.Pointer(keys + uintptr(_KEY_ERRORLINE)*4)), XTcl_NewIntObj(tls, (*TInterp)(unsafe.Pointer(iPtr)).FerrorLine))
+		XTcl_DictObjPut(tls, libc.UintptrFromInt32(0), options, *(*uintptr)(unsafe.Pointer(keys + _KEY_ERRORINFO*4)), (*TInterp)(unsafe.Pointer(iPtr)).FerrorInfo)
+		XTcl_DictObjPut(tls, libc.UintptrFromInt32(0), options, *(*uintptr)(unsafe.Pointer(keys + _KEY_ERRORLINE*4)), XTcl_NewIntObj(tls, (*TInterp)(unsafe.Pointer(iPtr)).FerrorLine))
 	}
 	return options
 }
@@ -229892,7 +229892,7 @@ func XTclNoErrorStack(tls *libc.TLS, interp uintptr, options uintptr) (r uintptr
 	var keys uintptr
 	_ = keys
 	keys = _GetKeys(tls)
-	XTcl_DictObjRemove(tls, interp, options, *(*uintptr)(unsafe.Pointer(keys + uintptr(_KEY_ERRORSTACK)*4)))
+	XTcl_DictObjRemove(tls, interp, options, *(*uintptr)(unsafe.Pointer(keys + _KEY_ERRORSTACK*4)))
 	return options
 }
 
@@ -231895,7 +231895,7 @@ func XTclCheckEmptyString(tls *libc.TLS, objPtr uintptr) (r int32) {
 	var _ /* length at bp+0 */ int32
 	*(*int32)(unsafe.Pointer(bp)) = -int32(1)
 	if (*TTcl_Obj)(unsafe.Pointer(objPtr)).Fbytes == XtclEmptyStringRep {
-		return int32(_TCL_EMPTYSTRING_YES)
+		return _TCL_EMPTYSTRING_YES
 	}
 	if (*TTcl_Obj)(unsafe.Pointer(objPtr)).Fbytes == libc.UintptrFromInt32(0) && (*TTcl_Obj)(unsafe.Pointer(objPtr)).FtypePtr == uintptr(unsafe.Pointer(&XtclListType)) {
 		if (*TTcl_Obj)(unsafe.Pointer(objPtr)).FtypePtr == uintptr(unsafe.Pointer(&XtclListType)) {
@@ -231914,7 +231914,7 @@ func XTclCheckEmptyString(tls *libc.TLS, objPtr uintptr) (r int32) {
 		return libc.BoolInt32(*(*int32)(unsafe.Pointer(bp)) == 0)
 	}
 	if (*TTcl_Obj)(unsafe.Pointer(objPtr)).Fbytes == libc.UintptrFromInt32(0) {
-		return int32(_TCL_EMPTYSTRING_UNKNOWN)
+		return _TCL_EMPTYSTRING_UNKNOWN
 	}
 	return libc.BoolInt32((*TTcl_Obj)(unsafe.Pointer(objPtr)).Flength == 0)
 }
@@ -242038,7 +242038,7 @@ func _TimerCheckProc(tls *libc.TLS, data TClientData, flags int32) {
 			(*TThreadSpecificData11)(unsafe.Pointer(tsdPtr)).FtimerPending = int32(1)
 			timerEvPtr = XTcl_Alloc(tls, libc.Uint32FromInt64(8))
 			(*TTcl_Event)(unsafe.Pointer(timerEvPtr)).Fproc = __ccgo_fp(_TimerHandlerEventProc)
-			XTcl_QueueEvent(tls, timerEvPtr, int32(_TCL_QUEUE_TAIL))
+			XTcl_QueueEvent(tls, timerEvPtr, _TCL_QUEUE_TAIL)
 		}
 	}
 }
@@ -259989,7 +259989,7 @@ func XTcl_UniCharIsControl(tls *libc.TLS, ch int32) (r int32) {
 
 func XTcl_UniCharIsDigit(tls *libc.TLS, ch int32) (r int32) {
 	/* Unicode character to test. */
-	return libc.BoolInt32(_groups[_groupMap[int32(_pageMap[ch&int32(0xFFFF)>>int32(m_OFFSET_BITS)])|ch&(libc.Int32FromInt32(1)<<libc.Int32FromInt32(m_OFFSET_BITS)-libc.Int32FromInt32(1))]]&int32(0x1F) == int32(_DECIMAL_DIGIT_NUMBER))
+	return libc.BoolInt32(_groups[_groupMap[int32(_pageMap[ch&int32(0xFFFF)>>int32(m_OFFSET_BITS)])|ch&(libc.Int32FromInt32(1)<<libc.Int32FromInt32(m_OFFSET_BITS)-libc.Int32FromInt32(1))]]&int32(0x1F) == _DECIMAL_DIGIT_NUMBER)
 }
 
 /*
@@ -260031,7 +260031,7 @@ func XTcl_UniCharIsGraph(tls *libc.TLS, ch int32) (r int32) {
 
 func XTcl_UniCharIsLower(tls *libc.TLS, ch int32) (r int32) {
 	/* Unicode character to test. */
-	return libc.BoolInt32(_groups[_groupMap[int32(_pageMap[ch&int32(0xFFFF)>>int32(m_OFFSET_BITS)])|ch&(libc.Int32FromInt32(1)<<libc.Int32FromInt32(m_OFFSET_BITS)-libc.Int32FromInt32(1))]]&int32(0x1F) == int32(_LOWERCASE_LETTER))
+	return libc.BoolInt32(_groups[_groupMap[int32(_pageMap[ch&int32(0xFFFF)>>int32(m_OFFSET_BITS)])|ch&(libc.Int32FromInt32(1)<<libc.Int32FromInt32(m_OFFSET_BITS)-libc.Int32FromInt32(1))]]&int32(0x1F) == _LOWERCASE_LETTER)
 }
 
 /*
@@ -260137,7 +260137,7 @@ func XTcl_UniCharIsSpace(tls *libc.TLS, ch int32) (r int32) {
 
 func XTcl_UniCharIsUpper(tls *libc.TLS, ch int32) (r int32) {
 	/* Unicode character to test. */
-	return libc.BoolInt32(_groups[_groupMap[int32(_pageMap[ch&int32(0xFFFF)>>int32(m_OFFSET_BITS)])|ch&(libc.Int32FromInt32(1)<<libc.Int32FromInt32(m_OFFSET_BITS)-libc.Int32FromInt32(1))]]&int32(0x1F) == int32(_UPPERCASE_LETTER))
+	return libc.BoolInt32(_groups[_groupMap[int32(_pageMap[ch&int32(0xFFFF)>>int32(m_OFFSET_BITS)])|ch&(libc.Int32FromInt32(1)<<libc.Int32FromInt32(m_OFFSET_BITS)-libc.Int32FromInt32(1))]]&int32(0x1F) == _UPPERCASE_LETTER)
 }
 
 /*
@@ -279404,7 +279404,7 @@ func XTclpMatchInDirectory(tls *libc.TLS, interp uintptr, resultPtr uintptr, pat
 	}
 	if pattern == libc.UintptrFromInt32(0) || int32(*(*uint8)(unsafe.Pointer(pattern))) == int32('\000') {
 		native = XTcl_FSGetNativePath(tls, pathPtr)
-		tailPtr = XTclPathPart(tls, interp, pathPtr, int32(_TCL_PATH_TAIL))
+		tailPtr = XTclPathPart(tls, interp, pathPtr, _TCL_PATH_TAIL)
 		nativeTail = XTcl_FSGetNativePath(tls, tailPtr)
 		matchResult = _NativeMatchType(tls, interp, native, nativeTail, types)
 		if matchResult == int32(1) {
@@ -279920,8 +279920,8 @@ func XTclpObjLink(tls *libc.TLS, pathPtr uintptr, _toPtr uintptr, linkAction int
 		 * If we're making a hard link, then a relative path is just converted
 		 * to absolute relative to the cwd.
 		 */
-		if linkAction&int32(m_TCL_CREATE_SYMBOLIC_LINK) != 0 && XTcl_FSGetPathType(tls, *(*uintptr)(unsafe.Pointer(bp))) == int32(_TCL_PATH_RELATIVE) {
-			dirPtr = XTclPathPart(tls, libc.UintptrFromInt32(0), pathPtr, int32(_TCL_PATH_DIRNAME))
+		if linkAction&int32(m_TCL_CREATE_SYMBOLIC_LINK) != 0 && XTcl_FSGetPathType(tls, *(*uintptr)(unsafe.Pointer(bp))) == _TCL_PATH_RELATIVE {
+			dirPtr = XTclPathPart(tls, libc.UintptrFromInt32(0), pathPtr, _TCL_PATH_DIRNAME)
 			if dirPtr == libc.UintptrFromInt32(0) {
 				return libc.UintptrFromInt32(0)
 			}
@@ -281743,10 +281743,10 @@ func _TcpClose2Proc(tls *libc.TLS, instanceData uintptr, dummy uintptr, flags in
 	if flags&(libc.Int32FromInt32(1)<<libc.Int32FromInt32(1)|libc.Int32FromInt32(1)<<libc.Int32FromInt32(2)) == 0 {
 		return _TcpCloseProc(tls, instanceData, libc.UintptrFromInt32(0))
 	}
-	if flags&(libc.Int32FromInt32(1)<<libc.Int32FromInt32(1)) != 0 && libc.Xshutdown(tls, (*TTcpState)(unsafe.Pointer(statePtr)).Ffds.Ffd, int32(_SHUT_RD)) < 0 {
+	if flags&(libc.Int32FromInt32(1)<<libc.Int32FromInt32(1)) != 0 && libc.Xshutdown(tls, (*TTcpState)(unsafe.Pointer(statePtr)).Ffds.Ffd, _SHUT_RD) < 0 {
 		readError = *(*int32)(unsafe.Pointer(libc.X__errno_location(tls)))
 	}
-	if flags&(libc.Int32FromInt32(1)<<libc.Int32FromInt32(2)) != 0 && libc.Xshutdown(tls, (*TTcpState)(unsafe.Pointer(statePtr)).Ffds.Ffd, int32(_SHUT_WR)) < 0 {
+	if flags&(libc.Int32FromInt32(1)<<libc.Int32FromInt32(2)) != 0 && libc.Xshutdown(tls, (*TTcpState)(unsafe.Pointer(statePtr)).Ffds.Ffd, _SHUT_WR) < 0 {
 		writeError = *(*int32)(unsafe.Pointer(libc.X__errno_location(tls)))
 	}
 	if readError != 0 {
@@ -282268,7 +282268,7 @@ _6:
 		(*TTcpState)(unsafe.Pointer(statePtr)).Ffds.Ffd = -int32(1)
 		*(*int32)(unsafe.Pointer(libc.X__errno_location(tls))) = 0
 	}
-	(*TTcpState)(unsafe.Pointer(statePtr)).Ffds.Ffd = libc.Xsocket(tls, (*Taddrinfo)(unsafe.Pointer((*TTcpState)(unsafe.Pointer(statePtr)).Faddr)).Fai_family, int32(_SOCK_STREAM), 0)
+	(*TTcpState)(unsafe.Pointer(statePtr)).Ffds.Ffd = libc.Xsocket(tls, (*Taddrinfo)(unsafe.Pointer((*TTcpState)(unsafe.Pointer(statePtr)).Faddr)).Fai_family, _SOCK_STREAM, 0)
 	if (*TTcpState)(unsafe.Pointer(statePtr)).Ffds.Ffd < 0 {
 		goto _5
 	}
@@ -282609,7 +282609,7 @@ func XTcl_OpenTcpServer(tls *libc.TLS, interp uintptr, port int32, myHost uintpt
 		 */
 		if (*Taddrinfo)(unsafe.Pointer(addrPtr)).Fai_family == int32(m_PF_INET6) {
 			*(*int32)(unsafe.Pointer(bp + 28)) = int32(1)
-			libc.Xsetsockopt(tls, sock, int32(_IPPROTO_IPV6), int32(m_IPV6_V6ONLY), bp+28, uint32(4))
+			libc.Xsetsockopt(tls, sock, _IPPROTO_IPV6, int32(m_IPV6_V6ONLY), bp+28, uint32(4))
 		}
 		status = libc.Xbind(tls, sock, (*Taddrinfo)(unsafe.Pointer(addrPtr)).Fai_addr, (*Taddrinfo)(unsafe.Pointer(addrPtr)).Fai_addrlen)
 		if status == -int32(1) {
@@ -284409,7 +284409,7 @@ var _localeTable = [174]TLocaleTable{
  */
 
 func XTclpInitPlatform(tls *libc.TLS) {
-	XtclPlatform = int32(_TCL_PLATFORM_UNIX)
+	XtclPlatform = _TCL_PLATFORM_UNIX
 	/*
 	 * Make sure, that the standard FDs exist. [Bug 772288]
 	 */
@@ -284622,7 +284622,7 @@ func XTcl_GetEncodingNameFromEnvironment(tls *libc.TLS, bufPtr uintptr) (r uintp
 		 * Use a DString so we can modify case.
 		 */
 		XTcl_DStringInit(tls, bp)
-		encoding = XTcl_DStringAppend(tls, bp, libc.Xnl_langinfo(tls, int32(_CODESET)), -int32(1))
+		encoding = XTcl_DStringAppend(tls, bp, libc.Xnl_langinfo(tls, _CODESET), -int32(1))
 		XTcl_UtfToLower(tls, (*TTcl_DString)(unsafe.Pointer(bp)).Fstring1)
 		knownEncoding = _SearchKnownEncodings(tls, encoding)
 		if knownEncoding != libc.UintptrFromInt32(0) {
@@ -286080,7 +286080,7 @@ func XTcl_WaitForEvent(tls *libc.TLS, timePtr uintptr) (r int32) {
 				fileEvPtr = XTcl_Alloc(tls, libc.Uint32FromInt64(12))
 				(*TFileHandlerEvent)(unsafe.Pointer(fileEvPtr)).Fheader.Fproc = __ccgo_fp(_FileHandlerEventProc)
 				(*TFileHandlerEvent)(unsafe.Pointer(fileEvPtr)).Ffd = (*TFileHandler)(unsafe.Pointer(filePtr)).Ffd
-				XTcl_QueueEvent(tls, fileEvPtr, int32(_TCL_QUEUE_TAIL))
+				XTcl_QueueEvent(tls, fileEvPtr, _TCL_QUEUE_TAIL)
 			}
 			(*TFileHandler)(unsafe.Pointer(filePtr)).FreadyMask = mask
 			goto _4
@@ -304870,7 +304870,7 @@ var XtclArraySearchType = TTcl_ObjType{
 }
 
 var XtclBignumType = TTcl_ObjType{
-	Fname: __ccgo_ts + 46524,
+	Fname: __ccgo_ts + 46532,
 }
 
 var XtclBooleanType = TTcl_ObjType{
@@ -305033,7 +305033,7 @@ var XtclCharTypeTable = [384]uint8{
  */
 
 var XtclCmdNameType = TTcl_ObjType{
-	Fname: __ccgo_ts + 46531,
+	Fname: __ccgo_ts + 46539,
 }
 
 /*
@@ -305447,7 +305447,7 @@ var XtclInstructionTable = [191]TInstructionDesc{
 		FstackEffect: +libc.Int32FromInt32(1),
 		FnumOperands: int32(1),
 		FopTypes: [2]TInstOperandType{
-			0: int32(_OPERAND_LIT1),
+			0: _OPERAND_LIT1,
 		},
 	},
 	2: {
@@ -305456,7 +305456,7 @@ var XtclInstructionTable = [191]TInstructionDesc{
 		FstackEffect: +libc.Int32FromInt32(1),
 		FnumOperands: int32(1),
 		FopTypes: [2]TInstOperandType{
-			0: int32(_OPERAND_LIT4),
+			0: _OPERAND_LIT4,
 		},
 	},
 	3: {
@@ -305475,7 +305475,7 @@ var XtclInstructionTable = [191]TInstructionDesc{
 		FstackEffect: -libc.Int32FromInt32(m___INT_MAX__) - libc.Int32FromInt32(1),
 		FnumOperands: int32(1),
 		FopTypes: [2]TInstOperandType{
-			0: int32(_OPERAND_UINT1),
+			0: _OPERAND_UINT1,
 		},
 	},
 	6: {
@@ -305484,7 +305484,7 @@ var XtclInstructionTable = [191]TInstructionDesc{
 		FstackEffect: -libc.Int32FromInt32(m___INT_MAX__) - libc.Int32FromInt32(1),
 		FnumOperands: int32(1),
 		FopTypes: [2]TInstOperandType{
-			0: int32(_OPERAND_UINT1),
+			0: _OPERAND_UINT1,
 		},
 	},
 	7: {
@@ -305493,7 +305493,7 @@ var XtclInstructionTable = [191]TInstructionDesc{
 		FstackEffect: -libc.Int32FromInt32(m___INT_MAX__) - libc.Int32FromInt32(1),
 		FnumOperands: int32(1),
 		FopTypes: [2]TInstOperandType{
-			0: int32(_OPERAND_UINT4),
+			0: _OPERAND_UINT4,
 		},
 	},
 	8: {
@@ -305510,7 +305510,7 @@ var XtclInstructionTable = [191]TInstructionDesc{
 		FstackEffect: int32(1),
 		FnumOperands: int32(1),
 		FopTypes: [2]TInstOperandType{
-			0: int32(_OPERAND_LVT1),
+			0: _OPERAND_LVT1,
 		},
 	},
 	11: {
@@ -305519,7 +305519,7 @@ var XtclInstructionTable = [191]TInstructionDesc{
 		FstackEffect: int32(1),
 		FnumOperands: int32(1),
 		FopTypes: [2]TInstOperandType{
-			0: int32(_OPERAND_LVT4),
+			0: _OPERAND_LVT4,
 		},
 	},
 	12: {
@@ -305531,7 +305531,7 @@ var XtclInstructionTable = [191]TInstructionDesc{
 		FnumBytes:    int32(2),
 		FnumOperands: int32(1),
 		FopTypes: [2]TInstOperandType{
-			0: int32(_OPERAND_LVT1),
+			0: _OPERAND_LVT1,
 		},
 	},
 	14: {
@@ -305539,7 +305539,7 @@ var XtclInstructionTable = [191]TInstructionDesc{
 		FnumBytes:    int32(5),
 		FnumOperands: int32(1),
 		FopTypes: [2]TInstOperandType{
-			0: int32(_OPERAND_LVT4),
+			0: _OPERAND_LVT4,
 		},
 	},
 	15: {
@@ -305556,7 +305556,7 @@ var XtclInstructionTable = [191]TInstructionDesc{
 		FnumBytes:    int32(2),
 		FnumOperands: int32(1),
 		FopTypes: [2]TInstOperandType{
-			0: int32(_OPERAND_LVT1),
+			0: _OPERAND_LVT1,
 		},
 	},
 	18: {
@@ -305564,7 +305564,7 @@ var XtclInstructionTable = [191]TInstructionDesc{
 		FnumBytes:    int32(5),
 		FnumOperands: int32(1),
 		FopTypes: [2]TInstOperandType{
-			0: int32(_OPERAND_LVT4),
+			0: _OPERAND_LVT4,
 		},
 	},
 	19: {
@@ -305578,7 +305578,7 @@ var XtclInstructionTable = [191]TInstructionDesc{
 		FstackEffect: -int32(1),
 		FnumOperands: int32(1),
 		FopTypes: [2]TInstOperandType{
-			0: int32(_OPERAND_LVT1),
+			0: _OPERAND_LVT1,
 		},
 	},
 	21: {
@@ -305587,7 +305587,7 @@ var XtclInstructionTable = [191]TInstructionDesc{
 		FstackEffect: -int32(1),
 		FnumOperands: int32(1),
 		FopTypes: [2]TInstOperandType{
-			0: int32(_OPERAND_LVT4),
+			0: _OPERAND_LVT4,
 		},
 	},
 	22: {
@@ -305605,7 +305605,7 @@ var XtclInstructionTable = [191]TInstructionDesc{
 		FnumBytes:    int32(2),
 		FnumOperands: int32(1),
 		FopTypes: [2]TInstOperandType{
-			0: int32(_OPERAND_LVT1),
+			0: _OPERAND_LVT1,
 		},
 	},
 	25: {
@@ -305619,7 +305619,7 @@ var XtclInstructionTable = [191]TInstructionDesc{
 		FstackEffect: -int32(1),
 		FnumOperands: int32(1),
 		FopTypes: [2]TInstOperandType{
-			0: int32(_OPERAND_LVT1),
+			0: _OPERAND_LVT1,
 		},
 	},
 	27: {
@@ -305638,8 +305638,8 @@ var XtclInstructionTable = [191]TInstructionDesc{
 		FstackEffect: +libc.Int32FromInt32(1),
 		FnumOperands: int32(2),
 		FopTypes: [2]TInstOperandType{
-			0: int32(_OPERAND_LVT1),
-			1: int32(_OPERAND_INT1),
+			0: _OPERAND_LVT1,
+			1: _OPERAND_INT1,
 		},
 	},
 	30: {
@@ -305647,7 +305647,7 @@ var XtclInstructionTable = [191]TInstructionDesc{
 		FnumBytes:    int32(2),
 		FnumOperands: int32(1),
 		FopTypes: [2]TInstOperandType{
-			0: int32(_OPERAND_INT1),
+			0: _OPERAND_INT1,
 		},
 	},
 	31: {
@@ -305655,8 +305655,8 @@ var XtclInstructionTable = [191]TInstructionDesc{
 		FnumBytes:    int32(3),
 		FnumOperands: int32(2),
 		FopTypes: [2]TInstOperandType{
-			0: int32(_OPERAND_LVT1),
-			1: int32(_OPERAND_INT1),
+			0: _OPERAND_LVT1,
+			1: _OPERAND_INT1,
 		},
 	},
 	32: {
@@ -305665,7 +305665,7 @@ var XtclInstructionTable = [191]TInstructionDesc{
 		FstackEffect: -int32(1),
 		FnumOperands: int32(1),
 		FopTypes: [2]TInstOperandType{
-			0: int32(_OPERAND_INT1),
+			0: _OPERAND_INT1,
 		},
 	},
 	33: {
@@ -305673,7 +305673,7 @@ var XtclInstructionTable = [191]TInstructionDesc{
 		FnumBytes:    int32(2),
 		FnumOperands: int32(1),
 		FopTypes: [2]TInstOperandType{
-			0: int32(_OPERAND_INT1),
+			0: _OPERAND_INT1,
 		},
 	},
 	34: {
@@ -305681,7 +305681,7 @@ var XtclInstructionTable = [191]TInstructionDesc{
 		FnumBytes:    int32(2),
 		FnumOperands: int32(1),
 		FopTypes: [2]TInstOperandType{
-			0: int32(_OPERAND_OFFSET1),
+			0: _OPERAND_OFFSET1,
 		},
 	},
 	35: {
@@ -305689,7 +305689,7 @@ var XtclInstructionTable = [191]TInstructionDesc{
 		FnumBytes:    int32(5),
 		FnumOperands: int32(1),
 		FopTypes: [2]TInstOperandType{
-			0: int32(_OPERAND_OFFSET4),
+			0: _OPERAND_OFFSET4,
 		},
 	},
 	36: {
@@ -305698,7 +305698,7 @@ var XtclInstructionTable = [191]TInstructionDesc{
 		FstackEffect: -int32(1),
 		FnumOperands: int32(1),
 		FopTypes: [2]TInstOperandType{
-			0: int32(_OPERAND_OFFSET1),
+			0: _OPERAND_OFFSET1,
 		},
 	},
 	37: {
@@ -305707,7 +305707,7 @@ var XtclInstructionTable = [191]TInstructionDesc{
 		FstackEffect: -int32(1),
 		FnumOperands: int32(1),
 		FopTypes: [2]TInstOperandType{
-			0: int32(_OPERAND_OFFSET4),
+			0: _OPERAND_OFFSET4,
 		},
 	},
 	38: {
@@ -305716,7 +305716,7 @@ var XtclInstructionTable = [191]TInstructionDesc{
 		FstackEffect: -int32(1),
 		FnumOperands: int32(1),
 		FopTypes: [2]TInstOperandType{
-			0: int32(_OPERAND_OFFSET1),
+			0: _OPERAND_OFFSET1,
 		},
 	},
 	39: {
@@ -305725,7 +305725,7 @@ var XtclInstructionTable = [191]TInstructionDesc{
 		FstackEffect: -int32(1),
 		FnumOperands: int32(1),
 		FopTypes: [2]TInstOperandType{
-			0: int32(_OPERAND_OFFSET4),
+			0: _OPERAND_OFFSET4,
 		},
 	},
 	40: {
@@ -305840,7 +305840,7 @@ var XtclInstructionTable = [191]TInstructionDesc{
 		FstackEffect: int32(1),
 		FnumOperands: int32(1),
 		FopTypes: [2]TInstOperandType{
-			0: int32(_OPERAND_UINT1),
+			0: _OPERAND_UINT1,
 		},
 	},
 	63: {
@@ -305849,7 +305849,7 @@ var XtclInstructionTable = [191]TInstructionDesc{
 		FstackEffect: -libc.Int32FromInt32(m___INT_MAX__) - libc.Int32FromInt32(1),
 		FnumOperands: int32(1),
 		FopTypes: [2]TInstOperandType{
-			0: int32(_OPERAND_UINT1),
+			0: _OPERAND_UINT1,
 		},
 	},
 	64: {
@@ -305869,7 +305869,7 @@ var XtclInstructionTable = [191]TInstructionDesc{
 		FnumBytes:    int32(5),
 		FnumOperands: int32(1),
 		FopTypes: [2]TInstOperandType{
-			0: int32(_OPERAND_AUX4),
+			0: _OPERAND_AUX4,
 		},
 	},
 	68: {
@@ -305878,7 +305878,7 @@ var XtclInstructionTable = [191]TInstructionDesc{
 		FstackEffect: +libc.Int32FromInt32(1),
 		FnumOperands: int32(1),
 		FopTypes: [2]TInstOperandType{
-			0: int32(_OPERAND_AUX4),
+			0: _OPERAND_AUX4,
 		},
 	},
 	69: {
@@ -305886,7 +305886,7 @@ var XtclInstructionTable = [191]TInstructionDesc{
 		FnumBytes:    int32(5),
 		FnumOperands: int32(1),
 		FopTypes: [2]TInstOperandType{
-			0: int32(_OPERAND_UINT4),
+			0: _OPERAND_UINT4,
 		},
 	},
 	70: {
@@ -305933,7 +305933,7 @@ var XtclInstructionTable = [191]TInstructionDesc{
 		FstackEffect: -int32(1),
 		FnumOperands: int32(1),
 		FopTypes: [2]TInstOperandType{
-			0: int32(_OPERAND_INT1),
+			0: _OPERAND_INT1,
 		},
 	},
 	79: {
@@ -305942,7 +305942,7 @@ var XtclInstructionTable = [191]TInstructionDesc{
 		FstackEffect: -libc.Int32FromInt32(m___INT_MAX__) - libc.Int32FromInt32(1),
 		FnumOperands: int32(1),
 		FopTypes: [2]TInstOperandType{
-			0: int32(_OPERAND_UINT4),
+			0: _OPERAND_UINT4,
 		},
 	},
 	80: {
@@ -305959,7 +305959,7 @@ var XtclInstructionTable = [191]TInstructionDesc{
 		FnumBytes:    int32(2),
 		FnumOperands: int32(1),
 		FopTypes: [2]TInstOperandType{
-			0: int32(_OPERAND_LVT1),
+			0: _OPERAND_LVT1,
 		},
 	},
 	83: {
@@ -305967,7 +305967,7 @@ var XtclInstructionTable = [191]TInstructionDesc{
 		FnumBytes:    int32(5),
 		FnumOperands: int32(1),
 		FopTypes: [2]TInstOperandType{
-			0: int32(_OPERAND_LVT4),
+			0: _OPERAND_LVT4,
 		},
 	},
 	84: {
@@ -305976,7 +305976,7 @@ var XtclInstructionTable = [191]TInstructionDesc{
 		FstackEffect: -int32(1),
 		FnumOperands: int32(1),
 		FopTypes: [2]TInstOperandType{
-			0: int32(_OPERAND_LVT1),
+			0: _OPERAND_LVT1,
 		},
 	},
 	85: {
@@ -305985,7 +305985,7 @@ var XtclInstructionTable = [191]TInstructionDesc{
 		FstackEffect: -int32(1),
 		FnumOperands: int32(1),
 		FopTypes: [2]TInstOperandType{
-			0: int32(_OPERAND_LVT4),
+			0: _OPERAND_LVT4,
 		},
 	},
 	86: {
@@ -306003,7 +306003,7 @@ var XtclInstructionTable = [191]TInstructionDesc{
 		FnumBytes:    int32(2),
 		FnumOperands: int32(1),
 		FopTypes: [2]TInstOperandType{
-			0: int32(_OPERAND_LVT1),
+			0: _OPERAND_LVT1,
 		},
 	},
 	89: {
@@ -306011,7 +306011,7 @@ var XtclInstructionTable = [191]TInstructionDesc{
 		FnumBytes:    int32(5),
 		FnumOperands: int32(1),
 		FopTypes: [2]TInstOperandType{
-			0: int32(_OPERAND_LVT4),
+			0: _OPERAND_LVT4,
 		},
 	},
 	90: {
@@ -306020,7 +306020,7 @@ var XtclInstructionTable = [191]TInstructionDesc{
 		FstackEffect: -int32(1),
 		FnumOperands: int32(1),
 		FopTypes: [2]TInstOperandType{
-			0: int32(_OPERAND_LVT1),
+			0: _OPERAND_LVT1,
 		},
 	},
 	91: {
@@ -306029,7 +306029,7 @@ var XtclInstructionTable = [191]TInstructionDesc{
 		FstackEffect: -int32(1),
 		FnumOperands: int32(1),
 		FopTypes: [2]TInstOperandType{
-			0: int32(_OPERAND_LVT4),
+			0: _OPERAND_LVT4,
 		},
 	},
 	92: {
@@ -306048,7 +306048,7 @@ var XtclInstructionTable = [191]TInstructionDesc{
 		FstackEffect: -libc.Int32FromInt32(m___INT_MAX__) - libc.Int32FromInt32(1),
 		FnumOperands: int32(1),
 		FopTypes: [2]TInstOperandType{
-			0: int32(_OPERAND_UINT4),
+			0: _OPERAND_UINT4,
 		},
 	},
 	95: {
@@ -306057,7 +306057,7 @@ var XtclInstructionTable = [191]TInstructionDesc{
 		FstackEffect: +libc.Int32FromInt32(1),
 		FnumOperands: int32(1),
 		FopTypes: [2]TInstOperandType{
-			0: int32(_OPERAND_UINT4),
+			0: _OPERAND_UINT4,
 		},
 	},
 	96: {
@@ -306071,7 +306071,7 @@ var XtclInstructionTable = [191]TInstructionDesc{
 		FstackEffect: -libc.Int32FromInt32(m___INT_MAX__) - libc.Int32FromInt32(1),
 		FnumOperands: int32(1),
 		FopTypes: [2]TInstOperandType{
-			0: int32(_OPERAND_UINT4),
+			0: _OPERAND_UINT4,
 		},
 	},
 	98: {
@@ -306080,8 +306080,8 @@ var XtclInstructionTable = [191]TInstructionDesc{
 		FstackEffect: -int32(1),
 		FnumOperands: int32(2),
 		FopTypes: [2]TInstOperandType{
-			0: int32(_OPERAND_INT4),
-			1: int32(_OPERAND_UINT4),
+			0: _OPERAND_INT4,
+			1: _OPERAND_UINT4,
 		},
 	},
 	99: {
@@ -306098,7 +306098,7 @@ var XtclInstructionTable = [191]TInstructionDesc{
 		FnumBytes:    int32(5),
 		FnumOperands: int32(1),
 		FopTypes: [2]TInstOperandType{
-			0: int32(_OPERAND_UINT4),
+			0: _OPERAND_UINT4,
 		},
 	},
 	102: {
@@ -306110,7 +306110,7 @@ var XtclInstructionTable = [191]TInstructionDesc{
 		FnumBytes:    int32(5),
 		FnumOperands: int32(1),
 		FopTypes: [2]TInstOperandType{
-			0: int32(_OPERAND_IDX4),
+			0: _OPERAND_IDX4,
 		},
 	},
 	104: {
@@ -306118,8 +306118,8 @@ var XtclInstructionTable = [191]TInstructionDesc{
 		FnumBytes:    int32(9),
 		FnumOperands: int32(2),
 		FopTypes: [2]TInstOperandType{
-			0: int32(_OPERAND_IDX4),
-			1: int32(_OPERAND_IDX4),
+			0: _OPERAND_IDX4,
+			1: _OPERAND_IDX4,
 		},
 	},
 	105: {
@@ -306127,8 +306127,8 @@ var XtclInstructionTable = [191]TInstructionDesc{
 		FnumBytes:    int32(9),
 		FnumOperands: int32(2),
 		FopTypes: [2]TInstOperandType{
-			0: int32(_OPERAND_OFFSET4),
-			1: int32(_OPERAND_UINT4),
+			0: _OPERAND_OFFSET4,
+			1: _OPERAND_UINT4,
 		},
 	},
 	106: {
@@ -306157,7 +306157,7 @@ var XtclInstructionTable = [191]TInstructionDesc{
 		FstackEffect: -libc.Int32FromInt32(m___INT_MAX__) - libc.Int32FromInt32(1),
 		FnumOperands: int32(1),
 		FopTypes: [2]TInstOperandType{
-			0: int32(_OPERAND_UINT4),
+			0: _OPERAND_UINT4,
 		},
 	},
 	111: {
@@ -306166,8 +306166,8 @@ var XtclInstructionTable = [191]TInstructionDesc{
 		FstackEffect: -libc.Int32FromInt32(m___INT_MAX__) - libc.Int32FromInt32(1),
 		FnumOperands: int32(2),
 		FopTypes: [2]TInstOperandType{
-			0: int32(_OPERAND_UINT4),
-			1: int32(_OPERAND_LVT4),
+			0: _OPERAND_UINT4,
+			1: _OPERAND_LVT4,
 		},
 	},
 	112: {
@@ -306176,8 +306176,8 @@ var XtclInstructionTable = [191]TInstructionDesc{
 		FstackEffect: -libc.Int32FromInt32(m___INT_MAX__) - libc.Int32FromInt32(1),
 		FnumOperands: int32(2),
 		FopTypes: [2]TInstOperandType{
-			0: int32(_OPERAND_UINT4),
-			1: int32(_OPERAND_LVT4),
+			0: _OPERAND_UINT4,
+			1: _OPERAND_LVT4,
 		},
 	},
 	113: {
@@ -306185,8 +306185,8 @@ var XtclInstructionTable = [191]TInstructionDesc{
 		FnumBytes:    int32(9),
 		FnumOperands: int32(2),
 		FopTypes: [2]TInstOperandType{
-			0: int32(_OPERAND_INT4),
-			1: int32(_OPERAND_LVT4),
+			0: _OPERAND_INT4,
+			1: _OPERAND_LVT4,
 		},
 	},
 	114: {
@@ -306195,7 +306195,7 @@ var XtclInstructionTable = [191]TInstructionDesc{
 		FstackEffect: -int32(1),
 		FnumOperands: int32(1),
 		FopTypes: [2]TInstOperandType{
-			0: int32(_OPERAND_LVT4),
+			0: _OPERAND_LVT4,
 		},
 	},
 	115: {
@@ -306204,7 +306204,7 @@ var XtclInstructionTable = [191]TInstructionDesc{
 		FstackEffect: -int32(1),
 		FnumOperands: int32(1),
 		FopTypes: [2]TInstOperandType{
-			0: int32(_OPERAND_LVT4),
+			0: _OPERAND_LVT4,
 		},
 	},
 	116: {
@@ -306213,7 +306213,7 @@ var XtclInstructionTable = [191]TInstructionDesc{
 		FstackEffect: +libc.Int32FromInt32(2),
 		FnumOperands: int32(1),
 		FopTypes: [2]TInstOperandType{
-			0: int32(_OPERAND_LVT4),
+			0: _OPERAND_LVT4,
 		},
 	},
 	117: {
@@ -306222,7 +306222,7 @@ var XtclInstructionTable = [191]TInstructionDesc{
 		FstackEffect: +libc.Int32FromInt32(3),
 		FnumOperands: int32(1),
 		FopTypes: [2]TInstOperandType{
-			0: int32(_OPERAND_LVT4),
+			0: _OPERAND_LVT4,
 		},
 	},
 	118: {
@@ -306230,7 +306230,7 @@ var XtclInstructionTable = [191]TInstructionDesc{
 		FnumBytes:    int32(5),
 		FnumOperands: int32(1),
 		FopTypes: [2]TInstOperandType{
-			0: int32(_OPERAND_LVT4),
+			0: _OPERAND_LVT4,
 		},
 	},
 	119: {
@@ -306238,8 +306238,8 @@ var XtclInstructionTable = [191]TInstructionDesc{
 		FnumBytes:    int32(9),
 		FnumOperands: int32(2),
 		FopTypes: [2]TInstOperandType{
-			0: int32(_OPERAND_LVT4),
-			1: int32(_OPERAND_AUX4),
+			0: _OPERAND_LVT4,
+			1: _OPERAND_AUX4,
 		},
 	},
 	120: {
@@ -306248,8 +306248,8 @@ var XtclInstructionTable = [191]TInstructionDesc{
 		FstackEffect: -int32(1),
 		FnumOperands: int32(2),
 		FopTypes: [2]TInstOperandType{
-			0: int32(_OPERAND_LVT4),
-			1: int32(_OPERAND_AUX4),
+			0: _OPERAND_LVT4,
+			1: _OPERAND_AUX4,
 		},
 	},
 	121: {
@@ -306258,7 +306258,7 @@ var XtclInstructionTable = [191]TInstructionDesc{
 		FstackEffect: -int32(1),
 		FnumOperands: int32(1),
 		FopTypes: [2]TInstOperandType{
-			0: int32(_OPERAND_AUX4),
+			0: _OPERAND_AUX4,
 		},
 	},
 	122: {
@@ -306267,7 +306267,7 @@ var XtclInstructionTable = [191]TInstructionDesc{
 		FstackEffect: -int32(1),
 		FnumOperands: int32(1),
 		FopTypes: [2]TInstOperandType{
-			0: int32(_OPERAND_LVT4),
+			0: _OPERAND_LVT4,
 		},
 	},
 	123: {
@@ -306276,7 +306276,7 @@ var XtclInstructionTable = [191]TInstructionDesc{
 		FstackEffect: -int32(1),
 		FnumOperands: int32(1),
 		FopTypes: [2]TInstOperandType{
-			0: int32(_OPERAND_LVT4),
+			0: _OPERAND_LVT4,
 		},
 	},
 	124: {
@@ -306285,7 +306285,7 @@ var XtclInstructionTable = [191]TInstructionDesc{
 		FstackEffect: -int32(1),
 		FnumOperands: int32(1),
 		FopTypes: [2]TInstOperandType{
-			0: int32(_OPERAND_LVT4),
+			0: _OPERAND_LVT4,
 		},
 	},
 	125: {
@@ -306294,8 +306294,8 @@ var XtclInstructionTable = [191]TInstructionDesc{
 		FstackEffect: -int32(1),
 		FnumOperands: int32(2),
 		FopTypes: [2]TInstOperandType{
-			0: int32(_OPERAND_INT4),
-			1: int32(_OPERAND_UINT4),
+			0: _OPERAND_INT4,
+			1: _OPERAND_UINT4,
 		},
 	},
 	126: {
@@ -306303,7 +306303,7 @@ var XtclInstructionTable = [191]TInstructionDesc{
 		FnumBytes:    int32(5),
 		FnumOperands: int32(1),
 		FopTypes: [2]TInstOperandType{
-			0: int32(_OPERAND_UINT4),
+			0: _OPERAND_UINT4,
 		},
 	},
 	127: {
@@ -306312,7 +306312,7 @@ var XtclInstructionTable = [191]TInstructionDesc{
 		FstackEffect: -int32(1),
 		FnumOperands: int32(1),
 		FopTypes: [2]TInstOperandType{
-			0: int32(_OPERAND_INT1),
+			0: _OPERAND_INT1,
 		},
 	},
 	128: {
@@ -306321,7 +306321,7 @@ var XtclInstructionTable = [191]TInstructionDesc{
 		FstackEffect: int32(1),
 		FnumOperands: int32(1),
 		FopTypes: [2]TInstOperandType{
-			0: int32(_OPERAND_LVT4),
+			0: _OPERAND_LVT4,
 		},
 	},
 	129: {
@@ -306329,7 +306329,7 @@ var XtclInstructionTable = [191]TInstructionDesc{
 		FnumBytes:    int32(5),
 		FnumOperands: int32(1),
 		FopTypes: [2]TInstOperandType{
-			0: int32(_OPERAND_LVT4),
+			0: _OPERAND_LVT4,
 		},
 	},
 	130: {
@@ -306355,8 +306355,8 @@ var XtclInstructionTable = [191]TInstructionDesc{
 		FnumBytes:    int32(6),
 		FnumOperands: int32(2),
 		FopTypes: [2]TInstOperandType{
-			0: int32(_OPERAND_UINT1),
-			1: int32(_OPERAND_LVT4),
+			0: _OPERAND_UINT1,
+			1: _OPERAND_LVT4,
 		},
 	},
 	135: {
@@ -306365,8 +306365,8 @@ var XtclInstructionTable = [191]TInstructionDesc{
 		FstackEffect: -int32(1),
 		FnumOperands: int32(2),
 		FopTypes: [2]TInstOperandType{
-			0: int32(_OPERAND_UINT1),
-			1: int32(_OPERAND_LVT4),
+			0: _OPERAND_UINT1,
+			1: _OPERAND_LVT4,
 		},
 	},
 	136: {
@@ -306375,7 +306375,7 @@ var XtclInstructionTable = [191]TInstructionDesc{
 		FstackEffect: -int32(2),
 		FnumOperands: int32(1),
 		FopTypes: [2]TInstOperandType{
-			0: int32(_OPERAND_UINT1),
+			0: _OPERAND_UINT1,
 		},
 	},
 	137: {
@@ -306384,7 +306384,7 @@ var XtclInstructionTable = [191]TInstructionDesc{
 		FstackEffect: -int32(1),
 		FnumOperands: int32(1),
 		FopTypes: [2]TInstOperandType{
-			0: int32(_OPERAND_UINT1),
+			0: _OPERAND_UINT1,
 		},
 	},
 	138: {
@@ -306403,7 +306403,7 @@ var XtclInstructionTable = [191]TInstructionDesc{
 		FstackEffect: -int32(2),
 		FnumOperands: int32(1),
 		FopTypes: [2]TInstOperandType{
-			0: int32(_OPERAND_LVT4),
+			0: _OPERAND_LVT4,
 		},
 	},
 	141: {
@@ -306412,7 +306412,7 @@ var XtclInstructionTable = [191]TInstructionDesc{
 		FstackEffect: -libc.Int32FromInt32(m___INT_MAX__) - libc.Int32FromInt32(1),
 		FnumOperands: int32(1),
 		FopTypes: [2]TInstOperandType{
-			0: int32(_OPERAND_UINT4),
+			0: _OPERAND_UINT4,
 		},
 	},
 	142: {
@@ -306440,8 +306440,8 @@ var XtclInstructionTable = [191]TInstructionDesc{
 		FnumBytes:    int32(9),
 		FnumOperands: int32(2),
 		FopTypes: [2]TInstOperandType{
-			0: int32(_OPERAND_IDX4),
-			1: int32(_OPERAND_IDX4),
+			0: _OPERAND_IDX4,
+			1: _OPERAND_IDX4,
 		},
 	},
 	147: {
@@ -306464,7 +306464,7 @@ var XtclInstructionTable = [191]TInstructionDesc{
 		FstackEffect: -libc.Int32FromInt32(m___INT_MAX__) - libc.Int32FromInt32(1),
 		FnumOperands: int32(1),
 		FopTypes: [2]TInstOperandType{
-			0: int32(_OPERAND_UINT1),
+			0: _OPERAND_UINT1,
 		},
 	},
 	151: {
@@ -306512,7 +306512,7 @@ var XtclInstructionTable = [191]TInstructionDesc{
 		FstackEffect: +libc.Int32FromInt32(1),
 		FnumOperands: int32(1),
 		FopTypes: [2]TInstOperandType{
-			0: int32(_OPERAND_LVT4),
+			0: _OPERAND_LVT4,
 		},
 	},
 	161: {
@@ -306525,7 +306525,7 @@ var XtclInstructionTable = [191]TInstructionDesc{
 		FnumBytes:    int32(5),
 		FnumOperands: int32(1),
 		FopTypes: [2]TInstOperandType{
-			0: int32(_OPERAND_LVT4),
+			0: _OPERAND_LVT4,
 		},
 	},
 	163: {
@@ -306534,8 +306534,8 @@ var XtclInstructionTable = [191]TInstructionDesc{
 		FstackEffect: -libc.Int32FromInt32(m___INT_MAX__) - libc.Int32FromInt32(1),
 		FnumOperands: int32(2),
 		FopTypes: [2]TInstOperandType{
-			0: int32(_OPERAND_UINT4),
-			1: int32(_OPERAND_UINT1),
+			0: _OPERAND_UINT4,
+			1: _OPERAND_UINT1,
 		},
 	},
 	164: {
@@ -306553,7 +306553,7 @@ var XtclInstructionTable = [191]TInstructionDesc{
 		FstackEffect: +libc.Int32FromInt32(2),
 		FnumOperands: int32(1),
 		FopTypes: [2]TInstOperandType{
-			0: int32(_OPERAND_AUX4),
+			0: _OPERAND_AUX4,
 		},
 	},
 	167: {
@@ -306590,7 +306590,7 @@ var XtclInstructionTable = [191]TInstructionDesc{
 		FstackEffect: -libc.Int32FromInt32(m___INT_MAX__) - libc.Int32FromInt32(1),
 		FnumOperands: int32(1),
 		FopTypes: [2]TInstOperandType{
-			0: int32(_OPERAND_UINT4),
+			0: _OPERAND_UINT4,
 		},
 	},
 	174: {
@@ -306620,7 +306620,7 @@ var XtclInstructionTable = [191]TInstructionDesc{
 		FstackEffect: -libc.Int32FromInt32(m___INT_MAX__) - libc.Int32FromInt32(1),
 		FnumOperands: int32(1),
 		FopTypes: [2]TInstOperandType{
-			0: int32(_OPERAND_UINT1),
+			0: _OPERAND_UINT1,
 		},
 	},
 	180: {
@@ -306629,7 +306629,7 @@ var XtclInstructionTable = [191]TInstructionDesc{
 		FstackEffect: -libc.Int32FromInt32(m___INT_MAX__) - libc.Int32FromInt32(1),
 		FnumOperands: int32(1),
 		FopTypes: [2]TInstOperandType{
-			0: int32(_OPERAND_UINT1),
+			0: _OPERAND_UINT1,
 		},
 	},
 	181: {
@@ -306650,7 +306650,7 @@ var XtclInstructionTable = [191]TInstructionDesc{
 		FnumBytes:    int32(2),
 		FnumOperands: int32(1),
 		FopTypes: [2]TInstOperandType{
-			0: int32(_OPERAND_SCLS1),
+			0: _OPERAND_SCLS1,
 		},
 	},
 	185: {
@@ -306658,7 +306658,7 @@ var XtclInstructionTable = [191]TInstructionDesc{
 		FnumBytes:    int32(5),
 		FnumOperands: int32(1),
 		FopTypes: [2]TInstOperandType{
-			0: int32(_OPERAND_LVT4),
+			0: _OPERAND_LVT4,
 		},
 	},
 	186: {
@@ -306667,7 +306667,7 @@ var XtclInstructionTable = [191]TInstructionDesc{
 		FstackEffect: -int32(1),
 		FnumOperands: int32(1),
 		FopTypes: [2]TInstOperandType{
-			0: int32(_OPERAND_LVT4),
+			0: _OPERAND_LVT4,
 		},
 	},
 	187: {
@@ -306686,7 +306686,7 @@ var XtclInstructionTable = [191]TInstructionDesc{
 		FstackEffect: +libc.Int32FromInt32(1),
 		FnumOperands: int32(1),
 		FopTypes: [2]TInstOperandType{
-			0: int32(_OPERAND_UINT1),
+			0: _OPERAND_UINT1,
 		},
 	},
 	190: {},
@@ -306882,7 +306882,7 @@ var XtclTomMathStubs = TTclTomMathStubs{
 }
 
 var XtclWideIntType = TTcl_ObjType{
-	Fname: __ccgo_ts + 46539,
+	Fname: __ccgo_ts + 46524,
 }
 
 var XtclpFileAttrProcs = [3]TTclFileAttrProcs{
@@ -306900,4 +306900,4 @@ var XtclpFileAttrStrings = [4]uintptr{
 
 var __ccgo_ts = (*reflect.StringHeader)(unsafe.Pointer(&__ccgo_ts1)).Data
 
-var __ccgo_ts1 = "\n\n\n========= RAW ==========\n\x00\n\n\n========= TREE FIXED ==========\n\x00\n\n\n========= LA%d ==========\n\x00\n\n\n========= SEARCH ==========\n\x00\n\n\n========= TREE NODE %s ==========\n\x00null tree\n\x00%s. `%c'\x00 longest\x00 shortest\x00 hasmixed\x00 hascapture\x00 hasbackref\x00 UNUSED\x00 (#%d)\x00 {%d,\x00%d\x00}\x00 %ld-%ld\x00 L:%s\x00 R:%s\x00\n\x00unable\x00%p\x00\ninitial cleanup:\n\x00\nempties:\n\x00\nconstraints:\n\x00\nfinal cleanup:\n\x00NUL\x00SOH\x00STX\x00ETX\x00EOT\x00ENQ\x00ACK\x00BEL\x00alert\x00BS\x00backspace\x00HT\x00tab\x00LF\x00newline\x00VT\x00vertical-tab\x00FF\x00form-feed\x00CR\x00carriage-return\x00SO\x00SI\x00DLE\x00DC1\x00DC2\x00DC3\x00DC4\x00NAK\x00SYN\x00ETB\x00CAN\x00EM\x00SUB\x00ESC\x00IS4\x00FS\x00IS3\x00GS\x00IS2\x00RS\x00IS1\x00US\x00space\x00exclamation-mark\x00quotation-mark\x00number-sign\x00dollar-sign\x00percent-sign\x00ampersand\x00apostrophe\x00left-parenthesis\x00right-parenthesis\x00asterisk\x00plus-sign\x00comma\x00hyphen\x00hyphen-minus\x00period\x00full-stop\x00slash\x00solidus\x00zero\x00one\x00two\x00three\x00four\x00five\x00six\x00seven\x00eight\x00nine\x00colon\x00semicolon\x00less-than-sign\x00equals-sign\x00greater-than-sign\x00question-mark\x00commercial-at\x00left-square-bracket\x00backslash\x00reverse-solidus\x00right-square-bracket\x00circumflex\x00circumflex-accent\x00underscore\x00low-line\x00grave-accent\x00left-brace\x00left-curly-bracket\x00vertical-line\x00right-brace\x00right-curly-bracket\x00tilde\x00DEL\x00alnum\x00alpha\x00ascii\x00blank\x00cntrl\x00digit\x00graph\x00lower\x00print\x00punct\x00upper\x00xdigit\x00REG_OKAY\x00no errors detected\x00REG_NOMATCH\x00failed to match\x00REG_BADPAT\x00invalid regexp (reg version 0.8)\x00REG_ECOLLATE\x00invalid collating element\x00REG_ECTYPE\x00invalid character class\x00REG_EESCAPE\x00invalid escape \\ sequence\x00REG_ESUBREG\x00invalid backreference number\x00REG_EBRACK\x00brackets [] not balanced\x00REG_EPAREN\x00parentheses () not balanced\x00REG_EBRACE\x00braces {} not balanced\x00REG_BADBR\x00invalid repetition count(s)\x00REG_ERANGE\x00invalid character range\x00REG_ESPACE\x00out of memory\x00REG_BADRPT\x00quantifier operand invalid\x00REG_ASSERT\x00\"can't happen\" -- you found a bug\x00REG_INVARG\x00invalid argument to regex function\x00REG_MIXED\x00character widths of regex and string differ\x00REG_BADOPT\x00invalid embedded option\x00REG_ETOOBIG\x00regular expression is too complex\x00REG_ECOLORS\x00too many colors\x00\x00oops\x00REG_%u\x00assemblecode\x00push\x00add\x00append\x00appendArray\x00appendArrayStk\x00appendStk\x00arrayExistsImm\x00arrayExistsStk\x00arrayMakeImm\x00arrayMakeStk\x00beginCatch\x00bitand\x00bitnot\x00bitor\x00bitxor\x00clockRead\x00concat\x00concatStk\x00coroName\x00currentNamespace\x00dictAppend\x00dictExists\x00dictExpand\x00dictGet\x00dictIncrImm\x00dictLappend\x00dictRecombineStk\x00dictRecombineImm\x00dictSet\x00dictUnset\x00div\x00dup\x00endCatch\x00eq\x00eval\x00evalStk\x00exist\x00existArray\x00existArrayStk\x00existStk\x00expon\x00expr\x00exprStk\x00ge\x00gt\x00incr\x00incrArray\x00incrArrayImm\x00incrArrayStk\x00incrArrayStkImm\x00incrImm\x00incrStk\x00incrStkImm\x00infoLevelArgs\x00infoLevelNumber\x00invokeStk\x00jump\x00jump4\x00jumpFalse\x00jumpFalse4\x00jumpTable\x00jumpTrue\x00jumpTrue4\x00label\x00land\x00lappend\x00lappendArray\x00lappendArrayStk\x00lappendList\x00lappendListArray\x00lappendListArrayStk\x00lappendListStk\x00lappendStk\x00le\x00lindexMulti\x00list\x00listConcat\x00listIn\x00listIndex\x00listIndexImm\x00listLength\x00listNotIn\x00load\x00loadArray\x00loadArrayStk\x00loadStk\x00lor\x00lsetFlat\x00lsetList\x00lshift\x00lt\x00mod\x00mult\x00neq\x00nop\x00not\x00nsupvar\x00numericType\x00originCmd\x00over\x00pop\x00pushReturnCode\x00pushReturnOpts\x00pushResult\x00regexp\x00resolveCmd\x00reverse\x00rshift\x00store\x00storeArray\x00storeArrayStk\x00storeStk\x00strcaseLower\x00strcaseTitle\x00strcaseUpper\x00strcmp\x00strcat\x00streq\x00strfind\x00strindex\x00strlen\x00strmap\x00strmatch\x00strneq\x00strrange\x00strreplace\x00strrfind\x00strtrim\x00strtrimLeft\x00strtrimRight\x00sub\x00tclooClass\x00tclooIsObject\x00tclooNamespace\x00tclooSelf\x00tryCvtToBoolean\x00tryCvtToNumeric\x00uminus\x00unset\x00unsetArray\x00unsetArrayStk\x00unsetStk\x00uplus\x00upvar\x00variable\x00verifyDict\x00yield\x00bytecodeList\x00\n    (\"\x00\" body, line \x00)\x00\n    (\"%.*s\" body, line %d)\x00instruction\x00value\x00boolean\x00boolean varName\x00imm8\x00operand must be [0..3]\x00TCL\x00ASSEM\x00OPERAND<0,>3\x00count\x00count varName\x00script\x00expression\x00table\x00name\x00operand must be >=2\x00OPERAND>=2\x00varname\x00varName imm8\x00Instruction \"%s\" could not be found, can't happen\n\x00no ASSEM_EVAL case for %s (%d), can't happen\x00jump table must have an even number of list elements\x00BADJUMPTABLE\x00duplicate entry in jump table for \"%s\"\x00DUPJUMPTABLEENTRY\x00assembly code may not contain substitutions\x00NOSUBST\x00cannot use this instruction to create a variable in a non-proc context\x00LVT\x00variable \"%s\" is not local\x00NONLOCAL\x00operand does not fit in one byte\x001BYTE\x00operand must be nonnegative\x00NONNEGATIVE\x00operand must be positive\x00POSITIVE\x00duplicate definition of label \"%s\"\x00DUPLABEL\x00undefined label \"%s\"\x00NOLABEL\x00\"%s\" instruction may not appear in a context where an exception has been caught and not disposed of.\x00BADTHROW\x00inconsistent stack depths on two execution paths\x00BADSTACK\x00stack underflow\x00code pops stack below level of enclosing catch\x00BADSTACKINCATCH\x00stack is unbalanced on exit from the code (depth=%d)\x00execution reaches an instruction in inconsistent exception contexts\x00BADCATCH\x00endCatch without a corresponding beginCatch\x00BADENDCATCH\x00catch still active on exit from assembly code\x00UNCLOSEDCATCH\x00unclosed catch at end of code in tclAssembly.c:BuildExceptionRanges, can't happen\x00undefined label in tclAssembly.c:BuildExceptionRanges, can't happen\x00\n    in assembly code between lines \x00 and \x00end of assembly code\x00Tcl_AsyncDelete: async handler deleted by the wrong thread\x00Tcl_AsyncDelete: cannot find async handler\x00apply\x00break\x00case\x00catch\x00continue\x00coroutine\x00error\x00for\x00foreach\x00format\x00global\x00if\x00join\x00lassign\x00lindex\x00linsert\x00llength\x00lmap\x00lrange\x00lrepeat\x00lreplace\x00lreverse\x00lsearch\x00lset\x00lsort\x00package\x00proc\x00regsub\x00rename\x00return\x00scan\x00set\x00split\x00subst\x00switch\x00tailcall\x00throw\x00trace\x00try\x00uplevel\x00while\x00yieldto\x00after\x00cd\x00close\x00eof\x00exec\x00exit\x00fblocked\x00fconfigure\x00fcopy\x00fileevent\x00flush\x00gets\x00glob\x00open\x00pid\x00puts\x00pwd\x00read\x00seek\x00socket\x00source\x00tell\x00time\x00unload\x00update\x00vwait\x00abs\x00acos\x00asin\x00atan\x00atan2\x00bool\x00ceil\x00cos\x00cosh\x00double\x00entier\x00exp\x00floor\x00fmod\x00hypot\x00int\x00isqrt\x00log\x00log10\x00pow\x00rand\x00round\x00sin\x00sinh\x00sqrt\x00srand\x00tan\x00tanh\x00wide\x00~\x00integer\x00!\x00+\x00*\x00&\x00|\x00^\x00**\x00<<\x00integer shift\x00>>\x00%\x00integer integer\x00!=\x00value value\x00ne\x00in\x00value list\x00ni\x00-\x00value ?value ...?\x00/\x00<\x00<=\x00>\x00>=\x00==\x00Tcl_CallFrame must not be smaller than CallFrame\x00::errorInfo\x00UP\x00CALL\x00INNER\x00::errorCode\x00TCL_PKG_PREFER_LATEST\x00TCL_INTERP_DEBUG_FRAME\x00Tcl_CreateInterp: can't create global namespace\x00builtin command with NULL object command proc and a NULL compile proc\x00::tcl::Bgerror\x00::tcl::unsupported::disassemble\x00::tcl::unsupported::getbytecode\x00::tcl::unsupported::representation\x00::tcl::unsupported::assemble\x00::tcl::unsupported::inject\x00::tcl::unsupported::corotype\x00::tcl::unsupported::timerate\x00::tcl::unsupported\x00::tcl::mathfunc\x00Can't create math function namespace\x00::tcl::mathfunc::\x00::tcl::mathop\x00can't create math operator namespace\x00::tcl::mathop::\x00failed to create math operator %s\x00tcl_platform\x00engine\x00Tcl\x00littleEndian\x00bigEndian\x00byteOrder\x00wordSize\x00pointerSize\x00tcl_patchLevel\x008.6.13\x00tcl_version\x008.6\x00tcl_precision\x00%s\x00Assoc Data Key #%d\x00DeleteInterpProc called with active evals\x00DeleteInterpProc called on interpreter not marked deleted\x00DeleteInterpProc: popping rootCallFrame with other frames on top\x00Argument location tracking table not empty\x00::\x00cannot use namespace qualifiers in hidden command token (rename)\x00VALUE\x00HIDDENTOKEN\x00can only hide global namespace commands (use rename then hide)\x00HIDE\x00NON_GLOBAL\x00hidden command named \"%s\" already exists\x00ALREADY_HIDDEN\x00cannot expose to a namespace (use expose to toplevel, then rename)\x00EXPOSE\x00unknown hidden command \"%s\"\x00LOOKUP\x00trying to expose a non-global command namespace command\x00exposed command \"%s\" already exists\x00COMMAND_EXISTS\x00delete\x00can't %s \"%s\": command doesn't exist\x00COMMAND\x00can't rename to \"%s\": bad command name\x00can't rename to \"%s\": command already exists\x00OPERATION\x00RENAME\x00TARGET_EXISTS\x00argument to math function didn't have numeric value\x00tcl::mathfunc::\x00unknown math function \"%s\"\x00MATHFUNC\x00::info functions \x00attempt to call eval in deleted interpreter\x00IDELETE\x00too many nested evaluations (infinite loop?)\x00LIMIT\x00STACK\x00IUNWIND\x00eval unwound\x00ICANCEL\x00eval canceled\x00CANCEL\x00attempt to invoke a deleted command\x00EVAL\x00DELETEDCOMMAND\x00Tcl_EvalObjv: NULL global namespace pointer\x00::unknown\x00invalid command name \"%s\"\x00\n    (enter trace on \"\x00...\x00\")\x00\n    (leave trace on \"\x00\n    (expanding word %d)\x00TclArgumentBC Enter/Release Mismatch\x00invoked \"break\" outside of a loop\x00invoked \"continue\" outside of a loop\x00command returned bad code: %d\x00UNEXPECTED_RESULT_CODE\x00illegal argument vector\x00TclObjInvoke: called without TCL_INVOKE_HIDDEN\x00invalid hidden command name \"%s\"\x00NONE\x00square root of negative argument\x00ARITH\x00DOMAIN\x00domain error: argument not in valid range\x00not enough\x00too many\x00%s arguments for math function \"%s\"\x00WRONGARGS\x00tailcall cannot find the right splicing spot: should not happen!\x00?command? ?arg ...?\x00tailcall can only be called from a proc, lambda or method\x00TAILCALL\x00ILLEGAL\x00Adding a callback without an objProc?!\x00?returnValue?\x00yield can only be called in a coroutine\x00COROUTINE\x00ILLEGAL_YIELD\x00command ?arg ...?\x00yieldto can only be called in a coroutine\x00yieldto called in deleted namespace\x00YIELDTO_IN_DELETED\x00cannot yield: C stack busy\x00CANT_YIELD\x00Yield received an option which is not implemented\x00can only get coroutine type of a coroutine\x00active\x00unknown coroutine type\x00BAD_TYPE\x00coroName cmd ?arg1 arg2 ...?\x00can only inject a command into a coroutine\x00can only inject a command into a suspended coroutine\x00ACTIVE\x00coroutine \"%s\" is already running\x00BUSY\x00?arg?\x00wrong coro nargs; how did we get here? not implemented!\x00name cmd ?arg ...?\x00can't create procedure \"%s\": unknown namespace\x00NAMESPACE\x00can't create procedure \"%s\": bad procedure name\x00bytearray\x00encode\x00decode\x00hex\x00uuencode\x00base64\x00%s called with shared object\x00Tcl_SetByteArrayObj\x00Tcl_SetByteArrayLength\x00max size for a Tcl value (%d bytes) exceeded\x00TclAppendBytesToByteArray\x00%s must be called with definite number of bytes to append\x00binary\x00binary encode\x00binary decode\x00formatString ?arg ...?\x00number of elements in list does not match count\x00cannot use \"*\" in format string with \"x\"\x00hexadecimal\x00expected %s string but got \"%s\" instead\x00missing count for \"@\" field specifier\x00not enough arguments for all format specifiers\x00bad field specifier \"%s\"\x00value formatString ?varName ...?\x00unexpected fallthrough\x00data\x00-strict\x00?options? data\x00option\x00invalid hexadecimal digit \"%c\" at position %d\x00BINARY\x00DECODE\x00INVALID\x00-maxlen\x00-wrapchar\x00?-maxlen len? ?-wrapchar char? data\x00line length out of range\x00ENCODE\x00LINE_LENGTH\x00limit hit\x00invalid wrapchar; will defeat decoding\x00WRAPCHAR\x00short uuencode data\x00SHORT\x00invalid uuencode character \"%c\" at position %d\x00invalid base64 character \"%c\" at position %d\x00unable to alloc %u bytes\x00unable to alloc %u bytes, %s line %d\x00unable to realloc %u bytes\x00unable to realloc %u bytes, %s line %d\x00%a %b %d %H:%M:%S %Z %Y\x00BCE\x00C\x00cannot use -gmt and -timezone in same call\x00CE\x00dayOfMonth\x00dayOfWeek\x00dayOfYear\x00era\x00:GMT\x00gregorian\x00integer value too large to represent\x00iso8601Week\x00iso8601Year\x00julianDay\x00localSeconds\x00month\x00seconds\x00tzName\x00tzOffset\x00year\x00getenv\x00Oldscan\x00ConvertLocalToUTC\x00GetDateFields\x00GetJulianDayFromEraYearMonthDay\x00GetJulianDayFromEraYearWeekDay\x00ParseFormatArgs\x00clicks\x00microseconds\x00milliseconds\x00::tcl::clock::\x00clock\x00dict tzdata changeover\x00key \"localseconds\" not found in dictionary\x00seconds tzdata changeover\x00expected key(s) not found in dictionary\x00dict changeover\x00loop in ConvertLocalToUTCUsingTable\x00time value too large/small to represent\x00number too large to represent as a Posix time\x00CLOCK\x00argTooLarge\x00localtime failed (clock value may be too large/small to represent)\x00localtimeFailed\x00%02d\x00-milliseconds\x00-microseconds\x00?-switch?\x00-format\x00-gmt\x00-locale\x00-timezone\x00clock format clockval ?-format string? ?-gmt boolean? ?-locale LOCALE? ?-timezone ZONE?\x00wrongNumArgs\x00badOption\x00gmtWithTimezone\x00TZ\x00string ?in? ?pattern body ...? ?default body?\x00extra case pattern with no body\x00default\x00\n    (\"%.50s\" arm line %d)\x00script ?resultVarName? ?optionVarName?\x00\n    (\"catch\" body line %d)\x00?dirName?\x00couldn't change working directory to \"%s\": %s\x00convertfrom\x00convertto\x00dirs\x00names\x00system\x00encoding\x00::tcl::encoding::\x00tcl:encoding:\x00___tmp\x00problem making 'encoding %s' safe: %s\x00problem making 'encoding' safe: %s\x00not allowed to invoke subcommand %s of encoding\x00SAFE\x00SUBCOMMAND\x00?encoding? data\x00?dirList?\x00expected directory list but got \"%s\"\x00ENCODING\x00BADPATH\x00?encoding?\x00message ?errorInfo? ?errorCode?\x00-code error -level 0\x00-errorinfo\x00-errorcode\x00\n    (\"eval\" body line %d)\x00arg ?arg ...?\x00?returnCode?\x00atime\x00attributes\x00channels\x00copy\x00dirname\x00executable\x00exists\x00extension\x00isdirectory\x00isfile\x00link\x00lstat\x00mtime\x00mkdir\x00nativename\x00normalize\x00owned\x00pathtype\x00readable\x00readlink\x00rootname\x00separator\x00size\x00stat\x00tail\x00tempfile\x00type\x00volumes\x00writable\x00file\x00::tcl::file::\x00tcl:file:\x00problem making 'file %s' safe: %s\x00problem making 'file' safe: %s\x00not allowed to invoke subcommand %s of file\x00name ?time?\x00could not set access time for file \"%s\": %s\x00could not set modification time for file \"%s\": %s\x00name varName\x00unrecognised path\x00FILESYSTEM\x00name ?name ...?\x00could not read \"%s\": no such file or directory\x00PATHSPLIT\x00NONESUCH\x00absolute\x00relative\x00volumerelative\x00?name?\x00\\\x00could not read \"%s\": %s\x00dev\x00ino\x00nlink\x00uid\x00gid\x00blocks\x00blksize\x00ctime\x00mode\x00directory\x00characterSpecial\x00blockSpecial\x00fifo\x00unknown\x00start test next command\x00\n    (\"for\" body line %d)\x00\n    (\"for\" initial command)\x00\n    (\"for\" loop-end command)\x00varList list ?varList list ...? command\x00%s varlist is empty\x00LMAP\x00FOREACH\x00NEEDVARS\x00\n    (\"%s\" body line %d)\x00\n    (setting %s loop variable \"%s\")\x00args\x00body\x00cmdcount\x00commands\x00complete\x00errorstack\x00frame\x00functions\x00globals\x00hostname\x00level\x00library\x00loaded\x00locals\x00nameofexecutable\x00patchlevel\x00procs\x00sharedlibextension\x00tclversion\x00vars\x00wrong # args: no expression after \"%s\" argument\x00then\x00elseif\x00else\x00wrong # args: extra words after \"else\" clause in \"if\" command\x00wrong # args: no script following \"%s\" argument\x00varName ?increment?\x00info\x00procname\x00\"%s\" isn't a procedure\x00PROCEDURE\x00?pattern?\x00*[?\\\x00command\x00procname arg varname\x00procedure \"%s\" doesn't have an argument \"%s\"\x00ARGUMENT\x00?interp?\x00varName\x00?number?\x00Broken frame level calculation\x00bad level \"%s\"\x00LEVEL\x00precompiled\x00line\x00cmd\x00TCL_LOCATION_PROC found in standard frame\x00\t    ::apply [::list {{pattern *}} {\n\t\t::set cmds {}\n\t\t::foreach cmd [::info commands ::tcl::mathfunc::$pattern] {\n\t\t    ::lappend cmds [::namespace tail $cmd]\n\t\t}\n\t\t::foreach cmd [::info commands tcl::mathfunc::$pattern] {\n\t\t    ::set cmd [::namespace tail $cmd]\n\t\t    ::if {$cmd ni $cmds} {\n\t\t\t::lappend cmds $cmd\n\t\t    }\n\t\t}\n\t\t::return $cmds\n\t    } [::namespace current]] \x00unable to determine name of host\x00HOSTNAME\x00UNKNOWN\x00tcl_library\x00no library has been specified for Tcl\x00VARIABLE\x00?filename?\x00list ?joinString?\x00 \x00list ?varName ...?\x00list ?index ...?\x00list index ?element ...?\x00list first last\x00count ?value ...?\x00bad count \"%d\": must be integer >= 0\x00LREPEAT\x00NEGARG\x00max length of a Tcl list (%d elements) exceeded\x00MEMORY\x00list first last ?element ...?\x00-all\x00-ascii\x00-bisect\x00-decreasing\x00-dictionary\x00-exact\x00-glob\x00-increasing\x00-index\x00-inline\x00-integer\x00-nocase\x00-not\x00-real\x00-regexp\x00-sorted\x00-start\x00-subindices\x00?-option value ...? list pattern\x00missing starting index\x00MISSING\x00\"-index\" option must be followed by list index\x00index \"%s\" cannot select an element from any list\x00INDEXOUTOFRANGE\x00\n    (-index option item number %d)\x00-subindices cannot be used without -index option\x00LSEARCH\x00BAD_OPTION_MIX\x00-bisect is not compatible with -all or -not\x00listVar ?index? ?index ...? value\x00-command\x00-indices\x00-stride\x00-unique\x00?-option value ...? list\x00\"-command\" option must be followed by comparison command\x00\"-stride\" option must be followed by stride length\x00stride length must be at least 2\x00LSORT\x00BADSTRIDE\x00list size must be a multiple of the stride length\x00when used with \"-stride\", the leading \"-index\" value must be within the group\x00BADINDEX\x00no enough memory to proccess sort of %d items\x00\n    (-compare command)\x00-compare command returned non-integer result\x00COMPARISONFAILED\x00element %d missing from sublist \"%s\"\x00INDEXFAILED\x00-about\x00-expanded\x00-line\x00-linestop\x00-lineanchor\x00--\x00?-option ...? exp string ?matchVar? ?subMatchVar ...?\x00regexp match variables not allowed when using -inline\x00REGEXP\x00MIX_VAR_INLINE\x00?-option ...? exp string subSpec ?varName?\x00&\\\x00*+?{}()[].\\|^$\x00oldName newName\x00?-encoding name? fileName\x00-encoding\x00 \n\t\r\x00string ?splitChars?\x00needleString haystackString ?startIndex?\x00string charIndex\x00control\x00false\x00true\x00wideinteger\x00wordchar\x00-failindex\x00class ?-strict? ?-failindex var? str\x00class\x00?-strict? ?-failindex var? str\x00?-nocase? charMap string\x00bad option \"%s\": must be -nocase\x00INDEX\x00char map list unbalanced\x00MAP\x00UNBALANCED\x00?-nocase? pattern string\x00string first last\x00string count\x00result exceeds max size for a Tcl value (%d bytes)\x00string size overflow, out of memory allocating %u bytes\x00string first last ?string?\x00string\x00string index\x00?-nocase? ?-length int? string1 string2\x00-length\x00bad option \"%s\": must be -nocase or -length\x00string ?first? ?last?\x00string ?chars?\x00bytelength\x00cat\x00compare\x00equal\x00first\x00index\x00is\x00last\x00length\x00map\x00match\x00range\x00repeat\x00replace\x00tolower\x00toupper\x00totitle\x00trim\x00trimleft\x00trimright\x00wordend\x00wordstart\x00-nobackslashes\x00-nocommands\x00-novariables\x00Tcl_SubstObjCmd: bad option index to SubstOptions\x00?-nobackslashes? ?-nocommands? ?-novariables? string\x00-indexvar\x00-matchvar\x00bad option \"%s\": %s option already found\x00SWITCH\x00DOUBLEOPT\x00missing variable name argument to %s option\x00NOVAR\x00?-option ...? string ?pattern body ...? ?default body?\x00%s option requires -regexp option\x00MODERESTRICTION\x00?-option ...? string {?pattern body ...? ?default body?}\x00extra switch pattern with no body\x00BADARM\x00, this may be due to a comment incorrectly placed outside of a switch body - see the \"switch\" documentation\x00COMMENT?\x00no body specified for pattern \"%s\"\x00FALLTHROUGH\x00fall-out when searching for body to match pattern\x00\n    (\"%.*s%s\" arm line %d)\x00type message\x00type must be non-empty list\x00THROW\x00BADEXCEPTION\x00-code error -level 0 -errorcode\x00command ?count?\x00per\x00iteration\x00-direct\x00-overhead\x00-calibrate\x00?-direct? ?-calibrate? ?-overhead double? command ?time ?max-count??\x00µs/#-overhead\x00%.*f\x00%.3f\x00net-ms\x00µs/#\x00#\x00#/sec\x00finally\x00on\x00trap\x00body ?handler ...? ?finally script?\x00handler type\x00finally clause must be last\x00TRY\x00FINALLY\x00NONTERMINAL\x00wrong # args to finally clause: must be \"... finally script\"\x00wrong # args to on clause: must be \"... on code variableList script\"\x00ON\x00wrong # args to trap clause: must be \"... trap pattern variableList script\"\x00TRAP\x00bad prefix '%s': must be a list\x00EXNFORMAT\x00last non-finally clause must not have a body of \"-\"\x00BADFALLTHROUGH\x00-during\x00\n    (\"%s ... %s\" handler line %d)\x00\n    (\"%s ... finally\" body line %d)\x00test command\x00\n    (\"while\" body line %d)\x00ForeachInfo\x00NewForeachInfo\x00DictUpdateInfo\x000\x001\x00list must have an even number of elements\x00-errorcode {TCL ARGUMENT FORMAT}\x00bad stack depth computations: is %i, should be %i\x00TclCompileCatchCmd: bad jump distance %d\x00TclCompileDictCmd(update): bad jump distance %d\x00, \x00%%v%u\x00variables\x00data=[\x00], loop=%%v%u\x00,\x00\n\t\t it%%v%u\t[\x00]\x00jumpOffset=%+d, vars=\x00[\x00loop\x00assign\x00jumpOffset\x00TclCompileIfCmd: unexpected opcode \"%d\" updating ifFalse jump\x00object\x00::namespace inscope \x00::namespace\x00inscope\x00:\x002\x00end\x00-options\x00namespace\x00JumptableInfo\x00word\x003\x00TclCompileSubstCmd: bad start jump distance %d\x00unexpected token type in TclCompileSubstCmd: %d\x00TclCompileSubstCmd: bad break jump distance %d\x00TclCompileSubstCmd: bad continue jump distance %d\x00TclCompileSubstCmd: bad return jump distance %d\x00TclCompileSubstCmd: bad other jump distance %d\x00TclCompileSubstCmd: bad ok jump distance %d\x00TclCompileSubstCmd: bad end jump distance %d\x00unknown switch mode: %d\x00\n\t\t\x00\"%s\"->pc %d\x00mapping\x00-errorcode {TCL OPERATION THROW BADEXCEPTION}\x00-level 0 -code 0\x00-nocomplain\x00-1\x001.0\x00_@_\x00not enough memory to parse expression\x00NOMEM\x00invalid character \"%.*s\"\x00BADCHAR\x00incomplete operator \"%.*s\"\x00PARTOP\x00invalid bareword \"%.*s%s\"\x00should be \"$%.*s%s\" or \"{%.*s%s}\"\x00 or \"%.*s%s(...)\" or ...\x00BAREWORD\x00 (invalid binary number?)\x00BADNUMBER\x00 (invalid octal number?)\x00OCTAL\x00missing operator at %s\x00max # of tokens for a Tcl parse (%d) exceeded\x00invalid character \"$\"\x00missing close-bracket\x00empty subexpression at %s\x00EMPTY\x00unbalanced open paren\x00missing function argument at %s\x00empty expression\x00unbalanced close paren\x00missing operand at %s\x00missing operator \":\" at %s\x00unexpected operator \":\" without preceding \"?\"\x00SURPRISE\x00unexpected \",\" outside function argument list\x00\nin expression \"%s%.*s%.*s%s%s%.*s%s\"\x00;\n\x00\n    (parsing expression \"%.*s%s\")\x00PARSE\x00EXPR\x00done\x00push1\x00push4\x00invokeStk1\x00invokeStk4\x00loadScalar1\x00loadScalar4\x00loadScalarStk\x00loadArray1\x00loadArray4\x00storeScalar1\x00storeScalar4\x00storeScalarStk\x00storeArray1\x00storeArray4\x00incrScalar1\x00incrScalarStk\x00incrArray1\x00incrScalar1Imm\x00incrScalarStkImm\x00incrArray1Imm\x00jump1\x00jumpTrue1\x00jumpFalse1\x00callBuiltinFunc1\x00callFunc1\x00foreach_start4\x00foreach_step4\x00beginCatch4\x00appendScalar1\x00appendScalar4\x00appendArray1\x00appendArray4\x00lappendScalar1\x00lappendScalar4\x00lappendArray1\x00lappendArray4\x00returnImm\x00expandStart\x00expandStkTop\x00invokeExpanded\x00listRangeImm\x00startCommand\x00returnStk\x00dictFirst\x00dictNext\x00dictDone\x00dictUpdateStart\x00dictUpdateEnd\x00syntax\x00existScalar\x00returnCodeBranch\x00unsetScalar\x00strrangeImm\x00invokeReplace\x00expandDrop\x00foreach_start\x00foreach_step\x00foreach_end\x00lmap_collect\x00tclooNext\x00tclooNextClass\x00yieldToInvoke\x00strclass\x00bytecode\x00substcode\x00::tcl\x00::tcl::\x00TclCompileScript() called on uninitialized CompileEnv\x00too many nested compilations (infinite loop?)\x00Unexpected token type in TclCompileTokens: %d; %.*s\x00TclInitByteCodeObj() called on uninitialized CompileEnv\x00EnterCmdStartData: bad command index %d\x00EnterCmdStartData: cmd map not sorted by code offset\x00EnterCmdExtentData: bad command index %d\x00EnterCmdExtentData: missing start data for command %d\x00trying to add 'break' fixup to full exception range\x00trying to add 'continue' fixup to full exception range\x00trying to finalize a loop exception range\x00TclFixupForwardJump: bad ExceptionRange type %d\x00unexpected opcode\x00GetCmdLocEncodingSize: bad code offset\x00GetCmdLocEncodingSize: bad code length\x00GetCmdLocEncodingSize: bad source length\x00EncodeCmdLocMap: bad code offset\x00EncodeCmdLocMap: bad code length\x00EncodeCmdLocMap: bad source length\x00%s.\n%s: %s\x00Tcl_RegisterConfig\x00Unable to create namespace for package configuration.\x00::pkgconfig\x00%s: %s\x00Unable to create query command for package configuration\x00get\x00subcommand ?arg?\x00subcommand\x00package not known\x00FATAL\x00PKGCFG_BASE\x00key\x00key not known\x00CONFIG\x00insufficient memory to create list\x00QueryConfigObjCmd: Unknown subcommand to 'pkgconfig'. This can't happen\x00tclPackageAboutDict\x00Deleting\x00syntax error\x00Error: discarding\x00Error: popping\x00memory exhausted\x00Cleanup: discarding lookahead\x00Cleanup: popping\x00january\x00february\x00march\x00april\x00may\x00june\x00july\x00august\x00september\x00sept\x00october\x00november\x00december\x00sunday\x00monday\x00tuesday\x00tues\x00wednesday\x00wednes\x00thursday\x00thur\x00thurs\x00friday\x00saturday\x00fortnight\x00week\x00day\x00hour\x00minute\x00min\x00second\x00sec\x00tomorrow\x00yesterday\x00today\x00now\x00this\x00next\x00ago\x00epoch\x00stardate\x00gmt\x00ut\x00utc\x00uct\x00wet\x00bst\x00wat\x00at\x00nft\x00nst\x00ndt\x00ast\x00adt\x00est\x00edt\x00cst\x00cdt\x00mst\x00mdt\x00pst\x00pdt\x00yst\x00ydt\x00hst\x00hdt\x00ahst\x00nt\x00idlw\x00cet\x00cest\x00met\x00mewt\x00mest\x00swt\x00sst\x00fwt\x00fst\x00eet\x00bt\x00it\x00zp4\x00zp5\x00ist\x00zp6\x00wast\x00wadt\x00jt\x00cct\x00jst\x00jdt\x00kst\x00kdt\x00cast\x00cadt\x00east\x00eadt\x00gst\x00nzt\x00nzst\x00nzdt\x00idle\x00dst\x00a\x00b\x00c\x00d\x00e\x00f\x00g\x00h\x00i\x00k\x00l\x00m\x00n\x00o\x00p\x00q\x00r\x00s\x00t\x00u\x00v\x00w\x00x\x00y\x00z\x00 (characters \x00am\x00a.m.\x00pm\x00p.m.\x00stringToParse baseYear baseMonth baseDay\x00DATE\x00Unknown status returned from date parser. Please report this error as a bug in Tcl.\x00BUG\x00more than one date in string\x00MULTIPLE\x00more than one time of day in string\x00more than one time zone in string\x00more than one weekday in string\x00more than one ordinal month in string\x00dict\x00create\x00filter\x00keys\x00merge\x00remove\x00values\x00with\x00missing value to go with key\x00DICTIONARY\x00key \"%s\" not known in dictionary\x00DICT\x00Tcl_DictObjPut\x00Tcl_DictObjRemove\x00concurrent dictionary modification and search\x00Tcl_DictObjPutKeyList\x00%s called with empty key list\x00Tcl_DictObjRemoveKeyList\x00?key value ...?\x00dictionary ?key ...?\x00dictionary ?key value ...?\x00dictionary ?pattern?\x00dictionary\x00dictionary key ?key ...?\x00dictVarName key ?increment?\x00\n    (reading increment)\x00dictVarName key ?value ...?\x00{keyVarName valueVarName} dictionary script\x00must have exactly two variable names\x00SYNTAX\x00\n    (\"dict for\" body line %d)\x00\n    (\"dict map\" body line %d)\x00dictVarName key ?key ...? value\x00dictVarName key ?key ...?\x00dictionary filterType ?arg ...?\x00filterType\x00dictionary script {keyVarName valueVarName} filterScript\x00\n    (\"dict filter\" filter script key variable)\x00\n    (\"dict filter\" filter script value variable)\x00\n    (\"dict filter\" script line %d)\x00dictVarName key varName ?key varName ...? script\x00\n    (body of \"dict update\")\x00dictVarName ?key ...? script\x00\n    (body of \"dict with\")\x00instname\x00ByteCode 0x%s, refCt %u, epoch %u, interp 0x%s (epoch %u)\n\x00  Source \x00\n  File \"%s\" Line %d\x00\n  Cmds %d, src %d, inst %d, litObjs %u, aux %d, stkDepth %u, code/src %.2f\n\x00  Proc 0x%s, refCt %d, args %d, compiled locals %d\n\x00, scalar\x00, array\x00, link\x00, arg\x00, temp\x00, resolved\x00      slot %d%s%s%s%s%s%s\x00, \"%s\"\n\x00  Exception ranges %d, depth %d:\n\x00      %d: level %d, %s, pc %d-%d, \x00continue %d, break %d\n\x00catch %d\n\x00DisassembleByteCodeObj: bad ExceptionRange type %d\x00    \x00  Commands %d:\x00     \x00\n   \x00%s%4d: pc %d-%d, src %d-%d\x00  Command %d: \x00(%u) %s \x00%+d \x00%u \x00, %u cmds start here\x00pc %u\x00next cmd at pc %u\x00%d \x00end \x00end-%d \x00FormatInstruction: bad local var index %u (%u locals)\x00temp var %u\x00var \x00%%v%u \x00%s \x00\t# \x00\t# %s\x00\t\t[\x00]\n\x00InnerContext: bad tos -- appending null object\x00InnerContext: bad tos -- appending freed object %p\x00inst_%d\x00\"\"\x00\"\x00\\\"\x00\\f\x00\\n\x00\\r\x00\\t\x00\\v\x00\\U%08x\x00\\u%04x\x00%c\x00scalar\x00array\x00arg\x00temp\x00resolved\x00pc %d\x00@%d\x00%%%d\x00.%d\x00.end\x00.end-%d\x00?%d\x00=%s\x00opcode %d with more than zero 'no' operands\x00type %s level %d from %d to %d break %d continue %d\x00type %s level %d from %d to %d catch %d\x00codefrom\x00codeto\x00scriptfrom\x00scriptto\x00literals\x00exception\x00instructions\x00auxiliary\x00stackdepth\x00exceptdepth\x00initiallinenumber\x00sourcefile\x00constructor\x00destructor\x00lambda\x00method\x00objmethod\x00type ...\x00lambdaTerm\x00procName\x00PROC\x00className\x00\"%s\" is not a class\x00CLASS\x00\"%s\" has no defined constructor\x00DISASSEMBLE\x00CONSRUCTOR\x00body not available for this kind of constructor\x00METHODTYPE\x00body of constructor\x00\"%s\" has no defined destructor\x00DESRUCTOR\x00body not available for this kind of destructor\x00body of destructor\x00className methodName\x00objectName methodName\x00unknown method \"%s\"\x00METHOD\x00body not available for this kind of method\x00body of method\x00may not disassemble prebuilt bytecode\x00BYTECODE\x00*.enc\x00identity\x00utf-8\x00unicode\x00iso8859-1\x00FreeEncoding: refcount problem !!!\x00.enc\x00unknown encoding \"%s\"\x00invalid encoding file \"%s\"\x00init\x00final\x00EscapeToUtfProc: invalid sub table\x00configure\x00-map\x00-parameters\x00-prefixes\x00-subcommands\x00-unknown\x00-namespace\x00ensembleCommand\x00tried to manipulate ensemble of deleted namespace\x00ENSEMBLE\x00DEAD\x00subcommand ?arg ...?\x00?option value ...?\x00ensemble subcommand implementations must be non-empty lists\x00EMPTY_TARGET\x00cmdname\x00cmdname ?-option value ...? ?arg ...?\x00option -namespace is read-only\x00READ_ONLY\x00unexpected ensemble command\x00command is not an ensemble\x00NOT_ENSEMBLE\x00ensemble target is not a fully-qualified command\x00UNQUALIFIED_TARGET\x00\"%s\" is not an ensemble command\x00tcl:\x00invalid ensemble name '%s'\x00unable to find or create %s namespace!\x00ensemble activated for deleted namespace\x00full name %s not found in supposedly synchronized hash\x00unknown subcommand \"%s\": namespace %s does not export any commands\x00 or ambiguous\x00unknown%s subcommand \"%s\": must be \x00or %s\x00SpellFix: programming error\x00unknown subcommand handler deleted its ensemble\x00UNKNOWN_DELETED\x00\n    while parsing result of ensemble unknown subcommand handler\x00unknown subcommand handler returned bad code: \x00\n    result of ensemble unknown subcommand handler: \x00UNKNOWN_RESULT\x00\n    (ensemble unknown subcommand handler)\x00env\x00HOME\x00no such variable\x00tclBgError\x00error in background error handler:\n\x00msg options\x00-level\x00missing return option \"-level\"\x00-code\x00missing return option \"-code\"\x00bgerror\x00errorInfo\x00bgerror failed to handle background error.\n\x00    Original error: \x00    Error in bgerror: \x00TclSetBgErrorHandler: NULL cmdPrefix argument\x00OS exit failed!\x00TclInitSubsystems called while exiting\x00exit handlers were created during Tcl_Finalize\x00limit exceeded\x00can't wait for variable \"%s\": would wait forever\x00EVENT\x00NO_SOURCES\x00idletasks\x00Tcl_UpdateObjCmd: bad option index to UpdateOptions\x00?idletasks?\x00||\x00&&\x00exprcode\x00dictIterator\x00freeing an execStack which is still in use\x00Deleting execEnv with pending TEOV callbacks!\x00Deleting execEnv with existing coroutine\x00STACK: Reallocating with no previous alloc\x00STACK: Stack after current is in use\x00STACK: Stack after current is not last\x00TclStackFree: incorrect freePtr (%p != %p). Call out of sequence?\x00TclStackRealloc: incorrect ptr. Call out of sequence?\x00Tcl_EvalObj: compiled script jumped interps\x00TclIncrObj\x00tailcall can only be called from a proc or lambda\x00TclNRExecuteByteCode: unrecognized builtin function code %d\x00\n    (reading value of variable to increment)\x00access\x00array set\x00variable isn't array\x00WRITE\x00ARRAY\x00STACK_LEVEL\x00self may only be called from inside a method\x00OO\x00CONTEXT_REQUIRED\x00nextto may only be called from inside a method\x00CLASS_REQUIRED\x00%s implementation by \"%s\" not reachable from here\x00CLASS_NOT_REACHABLE\x00%s has no non-filter implementation by \"%s\"\x00CLASS_NOT_THERE\x00next may only be called from inside a method\x00no next %s implementation\x00NOTHING_NEXT\x00negative shift argument\x00INST_RETURN_CODE_BRANCH: TOS not a return code!\x00INST_RETURN_CODE_BRANCH: TOS is TCL_OK!\x00Should not happen!\x00mis-issued dictFirst!\x00mis-issued dictNext!\x00dictUpdateStart argument length mismatch\x00clockRead instruction with unknown clock#\x00TclNRExecuteByteCode: unrecognized opCode %u\x00divide by zero\x00DIVZERO\x00exponentiation of zero by negative power\x00\nTclNRExecuteByteCode: abnormal return at pc %u: stack top %d < entry stack top %d\n\x00TclNRExecuteByteCode execution failure: end stack top < start stack top\x00exponent too large\x00unexpected number type\x00empty string\x00invalid octal number\x00non-numeric string\x00non-numeric floating-point value\x00floating-point value\x00(big) integer\x00can't use %s as operand of \"%s\"\x00LocSearch failure\x00floating-point value too small to represent\x00UNDERFLOW\x00floating-point value too large to represent\x00OVERFLOW\x00unknown floating-point error, errno = %d\x00?-option value ...? source ?source ...? target\x00copying\x00renaming\x00error %s: target \"%s\" is not a directory\x00can't create directory \"%s\": %s\x00error deleting \"%s\": directory not empty\x00error deleting unknown file: %s\x00error deleting \"%s\": %s\x00can't overwrite file \"%s\" with directory \"%s\"\x00can't overwrite directory \"%s\" with file \"%s\"\x00u+w\x00-permissions\x00error renaming \"%s\" to \"%s\": trying to rename a volume or move a directory into itself\x00::tcl::CopyDirectory\x00can't unlink \"%s\": %s\x00error %s \"%s\"\x00 to \"%s\"\x00: \"%s\"\x00: %s\x00-force\x00name ?-option value ...?\x00must not update objPtrRef's variable and return non-NULL\x00bad option \"%s\", there are no file attributes in this filesystem\x00FATTR\x00value for \"%s\" missing\x00NOVALUE\x00?-linktype? linkname ?target?\x00-symbolic\x00-hard\x00could not create new link \"%s\": that path already exists\x00could not create new link \"%s\": no such file or directory\x00could not create new link \"%s\": target \"%s\" doesn't exist\x00could not create new link \"%s\" pointing to \"%s\": %s\x00could not read link \"%s\": %s\x00?nameVar? ?template?\x00can't create temporary file: %s\x00//?/UNC/\x00//?/\x00//\x00./\x00/\\:\x00couldn't find HOME environment variable to expand path\x00FILENAME\x00NO_HOME\x00user \"%s\" doesn't exist\x00USER\x00-directory\x00-join\x00-path\x00-tails\x00-types\x00missing argument to \"-directory\"\x00\"-directory\" may only be used once\x00\"-directory\" cannot be used with \"-path\"\x00GLOB\x00BADOPTIONCOMBINATION\x00missing argument to \"-path\"\x00\"-path\" may only be used once\x00\"-path\" cannot be used with \"-dictionary\"\x00missing argument to \"-types\"\x00\"-tails\" must be used with either \"-directory\" or \"-path\"\x00\\/\x00\\[]*?{}\x00readonly\x00hidden\x00macintosh\x00creator\x00bad argument to \"-types\": %s\x00BAD\x00only one MacOS type or creator argument to \"-types\" allowed\x00no files matched glob pattern%s \"\x00%s%s\x00NOMATCH\x00/\\\x00Called TclGlob with TCL_GLOBMODE_TAILS and pathPrefix==NULL\x00.\x00unmatched open-brace in file name\x00BALANCE\x00unmatched close-brace in file name\x00*[]?\\\x00invalid sharing of Tcl_Obj on C stack\x00malformed bucket chain in Tcl_DeleteHashEntry\x00%d entries in table, %d buckets\n\x00number of buckets with %d entries: %d\n\x00number of buckets with %d or more entries: %d\n\x00average search distance for entry: %.1f\x00called %s on deleted table\x00Tcl_FindHashEntry\x00Tcl_CreateHashEntry\x00::tcl::HistoryObjs\x00::history\x00ambiguous \x00bad \x00 \"\x00\": no valid options\x00\": must be \x00 or \x00all\x00longest\x00::tcl::prefix\x00prefix\x00-error\x00-message\x00?options? table string\x00missing value for -message\x00NOARG\x00missing value for -error\x00error options must have an even number of elements\x00table string\x00 or \"\x00wrong # args: should be \"\x00ambiguous option \"%s\"\x00unrecognized argument \"%s\"\x00expected integer argument for \"%s\" but got \"%s\"\x00expected floating-point argument for \"%s\" but got \"%s\"\x00bad argument type %d in Tcl_ArgvInfo\x00\"%s\" option requires an additional argument\x00Command-specific options:\x00\n%s\x00\n %s:\x00\n\t\tDefault value: %d\x00\n\t\tDefault value: %g\x00\n\t\tDefault value: \"%s\"\x00ok\x00bad completion code \"%s\": must be ok, error, return, break, continue, or an integer\x00RESULT\x00ILLEGAL_CODE\x00if {[namespace which -command tclInit] eq \"\"} {\n  proc tclInit {} {\n    global tcl_libPath tcl_library env tclDefaultLibrary\n    rename tclInit {}\n    if {[info exists tcl_library]} {\n\tset scripts {{set tcl_library}}\n    } else {\n\tset scripts {}\n\tif {[info exists env(TCL_LIBRARY)] && ($env(TCL_LIBRARY) ne {})} {\n\t    lappend scripts {set env(TCL_LIBRARY)}\n\t    lappend scripts {\nif {[regexp ^tcl(.*)$ [file tail $env(TCL_LIBRARY)] -> tail] == 0} continue\nif {$tail eq [info tclversion]} continue\nfile join [file dirname $env(TCL_LIBRARY)] tcl[info tclversion]}\n\t}\n\tif {[info exists tclDefaultLibrary]} {\n\t    lappend scripts {set tclDefaultLibrary}\n\t} else {\n\t    lappend scripts {::tcl::pkgconfig get scriptdir,runtime}\n\t}\n\tlappend scripts {\nset parentDir [file dirname [file dirname [info nameofexecutable]]]\nset grandParentDir [file dirname $parentDir]\nfile join $parentDir lib tcl[info tclversion]} \\\n\t{file join $grandParentDir lib tcl[info tclversion]} \\\n\t{file join $parentDir library} \\\n\t{file join $grandParentDir library} \\\n\t{file join $grandParentDir tcl[info patchlevel] library} \\\n\t{\nfile join [file dirname $grandParentDir] tcl[info patchlevel] library}\n\tif {[info exists tcl_libPath]\n\t\t&& [catch {llength $tcl_libPath} len] == 0} {\n\t    for {set i 0} {$i < $len} {incr i} {\n\t\tlappend scripts [list lindex \\$tcl_libPath $i]\n\t    }\n\t}\n    }\n    set dirs {}\n    set errors {}\n    foreach script $scripts {\n\tlappend dirs [eval $script]\n\tset tcl_library [lindex $dirs end]\n\tset tclfile [file join $tcl_library init.tcl]\n\tif {[file exists $tclfile]} {\n\t    if {[catch {uplevel #0 [list source $tclfile]} msg opts]} {\n\t\tappend errors \"$tclfile: $msg\n\"\n\t\tappend errors \"[dict get $opts -errorinfo]\n\"\n\t\tcontinue\n\t    }\n\t    unset -nocomplain tclDefaultLibrary\n\t    return\n\t}\n    }\n    unset -nocomplain tclDefaultLibrary\n    set msg \"Can't find a usable init.tcl in the following directories: \n\"\n    append msg \"    $dirs\n\n\"\n    append msg \"$errors\n\n\"\n    append msg \"This probably means that Tcl wasn't installed properly.\n\"\n    error $msg\n  }\n}\ntclInit\x00interp\x00InterpInfoDeleteProc: still exist commands\x00InterpInfoDeleteProc: still exist aliases\x00alias\x00aliases\x00cancel\x00children\x00debug\x00expose\x00hide\x00issafe\x00invokehidden\x00limit\x00marktrusted\x00recursionlimit\x00slaves\x00share\x00target\x00transfer\x00cmd ?arg ...?\x00slavePath slaveCmd ?masterPath masterCmd? ?arg ...?\x00path ?cmdPrefix?\x00-unwind\x00?-unwind? ?--? ?path? ?result?\x00-safe\x00?-safe? ?--? ?path?\x00interp%d\x00path ?-frame ?bool??\x00cannot delete the current interpreter\x00INTERP\x00DELETESELF\x00path arg ?arg ...?\x00path hiddenCmdName ?cmdName?\x00path cmdName ?hiddenCmdName?\x00-global\x00path ?-namespace ns? ?-global? ?--? cmd ?arg ..?\x00path limitType ?-option value ...?\x00limit type\x00path\x00path ?newlimit?\x00srcPath channelId destPath\x00path alias\x00alias \"%s\" in path \"%s\" not found\x00ALIAS\x00target interpreter for alias \"%s\" in path \"%s\" is not my descendant\x00TARGETSHROUDED\x00?path?\x00alias \"%s\" not found\x00cannot define or rename alias \"%s\": interpreter deleted\x00cannot define or rename alias \"%s\": would create a loop\x00ALIASLOOP\x00could not find interpreter \"%s\"\x00cmdPrefix must be list of length >= 1\x00BGERRORFORMAT\x00interpreter named \"%s\" already exists, cannot create\x00tcl_interactive\x00ChildObjCmd: interpreter has been deleted\x00aliasName ?targetName? ?arg ...?\x00?cmdPrefix?\x00?-frame ?bool??\x00hiddenCmdName ?cmdName?\x00cmdName ?hiddenCmdName?\x00?-namespace ns? ?-global? ?--? cmd ?arg ..?\x00limitType ?-option value ...?\x00?newlimit?\x00-frame\x00debug option\x00permission denied: safe interpreter cannot expose commands\x00UNSAFE\x00permission denied: safe interpreters cannot change recursion limit\x00recursion limit must be > 0\x00BADLIMIT\x00falling back due to new recursion limit\x00RECURSION\x00permission denied: safe interpreter cannot hide commands\x00not allowed to invoke hidden commands from safe interpreter\x00permission denied: safe interpreter cannot mark trusted\x00namespace eval ::tcl {namespace eval mathfunc {}}\x00::tcl::mathfunc::min\x00::tcl::mathfunc::max\x00os\x00osVersion\x00machine\x00user\x00tclDefaultLibrary\x00tcl_pkgPath\x00command count limit exceeded\x00COMMANDS\x00time limit exceeded\x00TIME\x00unknown type of resource limit\x00\n    (while waiting for event)\x00limit granularity must be positive\x00installing limit callback to the limited interpreter\x00-granularity\x00-value\x00limits on current interpreter inaccessible\x00SELF\x00?-option value ...?\x00granularity must be at least 1\x00BADVALUE\x00command limit value must be at least 0\x00-seconds\x00milliseconds must be at least 0\x00seconds must be at least 0\x00may only set -milliseconds if -seconds is not also being reset\x00BADUSAGE\x00may only reset -milliseconds if -seconds is also being reset\x00channel\x00TCL_FLUSH_NONBLOCKING_ON_EXIT\x00-blocking\x00tclIO\x00Tcl_RegisterChannel: channel without name\x00Tcl_RegisterChannel: duplicate channel names\x00illegal recursive call to close through close-handler of channel\x00stdin\x00stdout\x00stderr\x00can not find channel named \"%s\"\x00CHANNEL\x00channel type %s must define closeProc\x00channel type %s must define inputProc when used for reader channel\x00channel type %s must define outputProc when used for writer channel\x00channel type %s must define watchProc\x00channel type %s must define seekProc if defining wideSeekProc\x00couldn't find state for channel \"%s\"\x00reading and writing both disallowed for channel \"%s\"\x00could not flush channel \"%s\"\x00Channel released more than preserved\x00channel \"%s\" does not support OS handles\x00Reuse of ChannelBuffer! %p\x00unable to access channel: invalid channel\x00TclFlush, closed channel: queued output left\x00FlushChannel: damaged channel list\x00SpliceChannel: trying to add channel used in different list\x00called Tcl_Close on channel with refCount > 0\x00double-close of channels not supported by %ss\x00half-close of channels not supported by %ss\x00half-close not applicable to stack of transformations\x00write\x00Half-close of %s-side not possible, side not opened or already closed\x00ClosechanHalf, closed write-side of channel: queued output left\x00unknown output translation requested\x00Tcl_GetsObj: gotEOL reached with bufPtr==NULL\x00TclGetsObjBinary: gotEOL reached with bufPtr==NULL\x00binary encoding is not available\x00Buffer Underflow, BUFFER_PADDING not enough\x00unknown input translation %d\x00blocking buffering buffersize encoding eofchar translation\x00malformed option list in channel driver\x00bad option \"%s\": should be one of \x00-%s, \x00or -%s\x00-buffering\x00none\x00full\x00-buffersize\x00-eofchar\x00-translation\x00auto\x00cr\x00crlf\x00lf\x00unable to set channel options: background copy in progress\x00bad value for -buffering: must be one of full, line, or none\x00bad value for -eofchar: must be non-NUL ASCII character\x00bad value for -eofchar: should be a list of zero, one, or two elements\x00bad value for -translation: must be a one or two element list\x00platform\x00bad value for -translation: must be one of auto, binary, cr, lf, crlf, or platform\x00tcp\x00channelId event ?script?\x00event name\x00channel is not %s\x00channel \"%s\" is busy\x00writ\x00error %sing \"%s\": %s\x00error reading \"\x00\": \x00error writing \"\x00error setting blocking mode: %s\x00Tcl_SetChannelError: bad syntax of message\x00Defined newlevel not used in rewrite\x00Defined newcode not used in rewrite\x00-nonewline\x00nonewline\x00?-nonewline? ?channelId? string\x00channel \"%s\" wasn't opened for writing\x00error writing \"%s\": %s\x00channelId\x00error flushing \"%s\": %s\x00channelId ?varName?\x00channel \"%s\" wasn't opened for reading\x00error reading \"%s\": %s\x00channelId ?numChars?\x00?-nonewline? channelId\x00expected non-negative integer but got \"%s\"\x00NUMBER\x00start\x00current\x00channelId offset ?origin?\x00origin\x00error during seek on \"%s\": %s\x00channelId ?direction?\x00direction\x00channelId ?-option value ...?\x00-ignorestderr\x00-keepnewline\x00?-option ...? arg ?arg ...?\x00error reading output from command: %s\x00fileName ?access? ?permissions?\x000o\x00Tcl_OpenCmd: invalid mode value\x00tclTCPAcceptCallbacks\x00RegisterTcpServerCleanup: damaged accept record table\x00-async\x00-myaddr\x00-myport\x00-server\x00cannot set -async option for server sockets\x00no argument given for -myaddr option\x00no argument given for -myport option\x00no argument given for -server option\x00Tcl_SocketObjCmd: bad option index to SocketOptions\x00option -myport is not valid for servers\x00?-myaddr addr? ?-myport myport? ?-async? host port\x00-server command ?-myaddr addr? port\x00-size\x00input output ?-size size? ?-command callback?\x00input\x00output\x00mode channelId\x00channelId ?length?\x00cannot truncate to negative length of file\x00could not determine current location in \"%s\": %s\x00error during truncate on \"%s\": %s\x00blocked\x00event\x00pending\x00pipe\x00postevent\x00truncate\x00::fconfigure\x00chan\x00tclrchannel\x00blocking\x00cget\x00cgetall\x00finalize\x00initialize\x00watch\x00{read delivered more than requested}\x00{write wrote more than requested}\x00{write wrote nothing}\x00{Tried to seek before origin}\x00{Owner lost}\x00-code 1 -level 0 -errorcode NONE -errorinfo {} -errorline 1 {Owner lost}\x00mode cmdprefix\x00chan handler \"%s initialize\" returned non-list: %s\x00chan handler \"\x00 initialize\" returned \x00chan handler \"%s\" does not support all required methods\x00chan handler \"%s\" lacks a \"read\" method\x00chan handler \"%s\" lacks a \"write\" method\x00chan handler \"%s\" supports \"cget\" but not \"cgetall\"\x00chan handler \"%s\" supports \"cgetall\" but not \"cget\"\x00TclChanCreateObjCmd: duplicate channel names\x00channel eventspec\x00can not find reflected channel named \"%s\"\x00TclChanPostEventObjCmd: channel is not a reflected channel\x00TclChanPostEventObjCmd: postevent accepted for call from outside interpreter\x00tried to post events channel \"%s\" is not interested in\x00TclChanCaughtErrorBypass: Bad syntax of caught result\x00Expected list with even number of elements, got %d element%s instead\x00bad %s list: is empty\x00read write\x00rc%lu\x00chan handler returned bad code: %d\x00\n    (chan handler subcommand \"%s\")\x00EAGAIN\x00ReflectedChannelMap\x00tclrtransform\x00clear\x00drain\x00limit?\x00{read not supported by Tcl driver}\x00{write not supported by Tcl driver}\x00channel cmdprefix\x00chan handler \"%s initialize\" returned %s\x00chan handler \"%s\" makes the channel inaccessible\x00chan handler \"%s\" supports \"drain\" but not \"read\"\x00chan handler \"%s\" supports \"flush\" but not \"write\"\x00TclChanPushObjCmd: duplicate transformation handle\x00rt%lu\x00ReflectedTransformMap\x00transform\x00-command value is not a list\x00\nfailed to stack channel \"%s\"\x00create/write\x00create/read\x00delete/write\x00flush/write\x00flush/read\x00delete/read\x00query/maxRead\x00clear/read\x00couldn't open socket: port number too high\x00::tcl::unsupported::socketAF\x00inet\x00inet6\x00native\x00glob couldn't determine the current working directory\x00illegal access mode \"%s\"\x00\n    while processing open access modes \"\x00RDONLY\x00WRONLY\x00RDWR\x00APPEND\x00CREAT\x00EXCL\x00NOCTTY\x00NONBLOCK\x00TRUNC\x00invalid access mode \"%s\": must be RDONLY, WRONLY, RDWR, APPEND, BINARY, CREAT, EXCL, NOCTTY, NONBLOCK, or TRUNC\x00access mode must include either RDONLY, WRONLY, or RDWR\x00couldn't read file \"%s\": %s\x00\x1a {}\x00\ufeff\x00\n    (file \"%.*s%s\" line %d)\x00POSIX\x00could not seek to end of file while opening \"%s\": %s\x00couldn't open \"%s\": %s\x00error getting working directory name: %s\x00TCL_TEMPLOAD_NO_UNLINK\x00couldn't load library \"%s\": %s\x00couldn't load from current filesystem\x000700\x00cannot unload: filesystem does not support unloading\x00wb\x00rb\x00Tcl_FSGetFileSystemForPath called with NULL object\x00Tcl_FSGetFileSystemForPath called with object with refCount == 0\x00variable '%s' is already linked\x00internal error: bad linked variable type\x00linked variable is read-only\x00internal error: linked variable couldn't be read\x00variable must have integer value\x00variable must have real value\x00variable must have boolean value\x00variable must have char value\x00variable must have unsigned char value\x00variable must have short value\x00variable must have unsigned short value\x00variable must have unsigned int value\x00variable must have long value\x00variable must have unsigned long value\x00variable must have unsigned wide int value\x00variable must have float value\x00NULL\x00??\x00invalidReal\x00xXbBoO\x00+-\x00NewListInternalRep: expects postive element count\x00list creation failed: unable to alloc %u bytes\x00Tcl_SetListObj\x00Tcl_ListObjAppendList\x00Tcl_ListObjAppendElement\x00Tcl_ListObjReplace\x00list index out of range\x00LSET\x00TclListObjSetElement\x00max size of Tcl literal array (%d literals) exceeded\x00-lazy\x00?-global? ?-lazy? ?--? fileName ?packageName? ?interp?\x00must specify either file name or package name\x00LOAD\x00NOLIBRARY\x00file \"%s\" is already loaded for package \"%s\"\x00SPLITPERSONALITY\x00tclLoad\x00package \"%s\" isn't loaded statically\x00NOTSTATIC\x00couldn't figure out package name for %s\x00WHATPACKAGE\x00_Init\x00_SafeInit\x00_Unload\x00_SafeUnload\x00can't use package in a safe interpreter: no %s_SafeInit procedure\x00can't attach package to interpreter: no %s_Init procedure\x00ENTRYPOINT\x00-keeplibrary\x00?-switch ...? fileName ?packageName? ?interp?\x00UNLOAD\x00package \"%s\" is loaded statically and cannot be unloaded\x00STATIC\x00file \"%s\" has never been loaded\x00NEVERLOADED\x00file \"%s\" has never been loaded in this interpreter\x00file \"%s\" cannot be unloaded under a safe interpreter\x00CANNOT\x00file \"%s\" cannot be unloaded under a trusted interpreter\x00tcl_rcFileName\x00argv0\x00argc\x00argv\x00application-specific initialization failed: \x00exit %d\x00TCL_FINALIZE_ON_EXIT\x00tcl_prompt2\x00tcl_prompt1\x00\n    (script that generates prompt)\x00nsName\x00code\x00ensemble\x00export\x00forget\x00import\x00parent\x00qualifiers\x00which\x00Trying to push call frame for dead namespace\x00errorCode\x00can't create namespace \"\": only global namespace can have empty name\x00CREATEGLOBAL\x00can't create namespace \"%s\": already exists\x00CREATEEXISTING\x00invalid export pattern \"%s\": pattern can't specify a namespace\x00EXPORT\x00auto_import\x00empty import pattern\x00IMPORT\x00unknown namespace in import pattern \"%s\"\x00no namespace specified in import pattern \"%s\"\x00ORIGIN\x00import pattern \"%s\" tries to import from namespace \"%s\" into itself\x00import pattern \"%s\" would create a loop containing command \"%s\"\x00LOOP\x00can't import command \"%s\": already exists\x00OVERWRITE\x00unknown namespace in namespace forget pattern \"%s\"\x00DeleteImportedCmd: did not find cmd in real cmd's list of import references\x00Could not create namespace '%s'\x00unknown namespace \"%s\"\x00unknown command \"%s\"\x00namespace \"%s\" not found\x00namespace \"%s\" not found in \"%s\"\x00?name? ?pattern?\x00?name name...?\x00unknown namespace \"%s\" in namespace delete command\x00name arg ?arg...?\x00\n    (in namespace %s \"%.*s%s\" script line %d)\x00?-clear? ?pattern pattern...?\x00-clear\x00?pattern pattern...?\x00?-force? ?pattern pattern...?\x00?pathList?\x00?script?\x00ns ?otherVar myVar ...?\x00-variable\x00?-command? ?-variable? name\x00while executing\x00invoked from within\x00\n    %s\n\"%.*s%s\"\x00booleanString\x00bignum\x00cmdName\x00wideInt\x00Derived ICL data for object using offsets from before the script\x00can't convert value to type %s\x00API_ABUSE\x00TclSetDuplicateObj\x00UpdateStringProc should not be invoked for type %s\x00UpdateStringProc for type '%s' failed to create a valid string rep\x00Tcl_SetBooleanObj\x00boolean value\x00expected boolean value but got \"\x00BOOLEAN\x00yes\x00no\x00off\x00Tcl_SetDoubleObj\x00floating point value is Not a Number\x00DOUBLE\x00NAN\x00floating-point number\x00Tcl_SetIntObj\x00Tcl_SetLongObj\x00expected integer but got \"%s\"\x00INTEGER\x00IOVERFLOW\x00%lld\x00Tcl_SetWideIntObj\x00initialization failure in DupBignum\x00radix size failure in UpdateStringOfBignum\x00UpdateStringOfBignum: string length limit exceeded\x00conversion failure in UpdateStringOfBignum\x00insufficient memory to unpack bignum\x00Tcl_SetBignumObj\x00number\x00pure string\x00value is a %s with a refcount of %d, object pointer at %s\x00%p:%p\x00, internal representation %s\x00, string representation \"\x00, no string representation\x00can't parse a NULL pointer\x00extra characters after close-quote\x00extra characters after close-brace\x00ParseTokens encountered unknown character\x00missing close-brace for variable name\x00missing )\x00$\x00missing close-brace\x00: possible unbalanced brace in comment\x00missing \"\x00TclSubstParse: programming error\x00bad parse in TclSubstParse: %c\x00unexpected token type in TclSubstTokens: %d\x00Bad portion to TclPathPart\x00can't find object string representation\x00PATH\x00WTF\x00HOMELESS\x00NOUSER\x00Called UpdateStringOfFsPath with invalid object\x00writing\x00reading\x00channel \"%s\" wasn't opened for %s\x00EXEC\x00BADCHAN\x00couldn't %s file \"%s\": %s\x00can't specify \"%s\" as last word in command\x00child process lost (is SIGCHLD ignored or trapped?)\x00error waiting for process to exit: %s\x00%lu\x00%u\x00CHILDSTATUS\x00CHILDKILLED\x00child killed: %s\n\x00CHILDSUSP\x00child suspended: %s\n\x00child wait status didn't make sense\n\x00ODDWAITRESULT\x00error reading stderr output file: %s\x00child process exited abnormally\x00illegal use of | or |& in command\x00PIPESYNTAX\x00must specify \"%s\" as last word in command\x00couldn't create input file for command: %s\x00couldn't create input pipe for command: %s\x00couldn't create output pipe for command: %s\x00couldn't create error file for command: %s\x00couldn't create pipe: %s\x00can't read output from command: standard output was redirected\x00BADREDIRECT\x00can't write input to command: standard input was redirected\x00pipe for command could not be created\x00NOPIPE\x00conflicting versions provided for package \"%s\": %s, then %s\x00PACKAGE\x00VERSIONCONFLICT\x00Cannot load package \"%s\" in standalone executable: This package is not compiled with stub support\x00UNSTUBBED\x00bad return code: %d\x00BADRESULT\x00\n    (\"package unknown\" script)\x00can't find package %s\x00UNFOUND\x00version conflict for package \"%s\": have %s, need\x00circular package dependency: attempt to provide %s %s requires %s\x00CIRCULARITY\x00attempt to provide package %s %s failed: no version of package %s provided\x00UNPROVIDED\x00attempt to provide package %s %s failed: package %s %s provided instead\x00WRONGPROVIDE\x00attempt to provide package %s %s failed: bad return code: %s\x00\n    (\"package ifneeded %s %s\" script)\x00package %s %s is not present\x00package %s is not present\x00ifneeded\x00prefer\x00present\x00provide\x00require\x00vcompare\x00versions\x00vsatisfies\x00option ?arg ...?\x00package version ?script?\x00package ?version?\x00?-exact? package ?requirement ...?\x00?command?\x00latest\x00stable\x00?latest|stable?\x00preference\x00version1 version2\x00version ?requirement ...?\x00Tcl_PackageObjCmd: bad option index to pkgOptions\x00expected version number but got \"%s\"\x00VERSION\x00expected versionMin-versionMax but got \"%s\"\x00VERSIONRANGE\x00 exactly %s\x00 %s\x00 0-\x00 -2\x00threaded\x00profiled\x0064bit\x00optimized\x00mem_debug\x00compile_debug\x00compile_stats\x00libdir,runtime\x00/usr/local/lib\x00bindir,runtime\x00/usr/local/bin\x00scriptdir,runtime\x00/usr/local/lib/tcl8.6\x00includedir,runtime\x00/usr/local/include\x00docdir,runtime\x00/usr/local/man\x00libdir,install\x00bindir,install\x00scriptdir,install\x00includedir,install\x00docdir,install\x00tcl\x00E2BIG\x00EACCES\x00EADDRINUSE\x00EADDRNOTAVAIL\x00EADV\x00EAFNOSUPPORT\x00EALREADY\x00EBADE\x00EBADF\x00EBADFD\x00EBADMSG\x00ECANCELED\x00EBADR\x00EBADRQC\x00EBADSLT\x00EBFONT\x00EBUSY\x00ECHILD\x00ECHRNG\x00ECOMM\x00ECONNABORTED\x00ECONNREFUSED\x00ECONNRESET\x00EDEADLK\x00EDESTADDRREQ\x00EDOM\x00EDOTDOT\x00EDQUOT\x00EEXIST\x00EFAULT\x00EFBIG\x00EHOSTDOWN\x00EHOSTUNREACH\x00EIDRM\x00EILSEQ\x00EINPROGRESS\x00EINTR\x00EINVAL\x00EIO\x00EISCONN\x00EISDIR\x00EL2HLT\x00EL2NSYNC\x00EL3HLT\x00EL3RST\x00ELIBACC\x00ELIBBAD\x00ELIBEXEC\x00ELIBMAX\x00ELIBSCN\x00ELNRNG\x00ELOOP\x00EMFILE\x00EMLINK\x00EMSGSIZE\x00EMULTIHOP\x00ENAMETOOLONG\x00ENAVAIL\x00ENETDOWN\x00ENETRESET\x00ENETUNREACH\x00ENFILE\x00ENOANO\x00ENOBUFS\x00ENOCSI\x00ENODATA\x00ENODEV\x00ENOENT\x00ENOEXEC\x00ENOLCK\x00ENOLINK\x00ENOMEM\x00ENOMSG\x00ENONET\x00ENOPKG\x00ENOPROTOOPT\x00ENOSPC\x00ENOSR\x00ENOSTR\x00ENOSYS\x00ENOTBLK\x00ENOTCONN\x00ENOTRECOVERABLE\x00ENOTDIR\x00ENOTEMPTY\x00ENOTNAM\x00ENOTSOCK\x00ENOTSUP\x00ENOTTY\x00ENOTUNIQ\x00ENXIO\x00EOVERFLOW\x00EOWNERDEAD\x00EPERM\x00EPFNOSUPPORT\x00EPIPE\x00EPROTO\x00EPROTONOSUPPORT\x00EPROTOTYPE\x00ERANGE\x00EREMCHG\x00EREMOTE\x00EREMOTEIO\x00EROFS\x00ESHUTDOWN\x00ESOCKTNOSUPPORT\x00ESPIPE\x00ESRCH\x00ESRMNT\x00ESTALE\x00ETIME\x00ETIMEDOUT\x00ETOOMANYREFS\x00ETXTBSY\x00EUCLEAN\x00EUNATCH\x00EUSERS\x00EXDEV\x00EXFULL\x00unknown error\x00argument list too long\x00permission denied\x00address already in use\x00cannot assign requested address\x00advertise error\x00address family not supported by protocol\x00resource temporarily unavailable\x00operation already in progress\x00bad exchange descriptor\x00bad file number\x00file descriptor in bad state\x00not a data message\x00operation canceled\x00bad request descriptor\x00bad request code\x00invalid slot\x00bad font file format\x00file busy\x00no children\x00channel number out of range\x00communication error on send\x00software caused connection abort\x00connection refused\x00connection reset by peer\x00resource deadlock avoided\x00destination address required\x00math argument out of range\x00cross mount point\x00disk quota exceeded\x00file already exists\x00bad address in system call argument\x00file too large\x00host is down\x00host is unreachable\x00identifier removed\x00illegal byte sequence\x00operation now in progress\x00interrupted system call\x00invalid argument\x00I/O error\x00socket is already connected\x00illegal operation on a directory\x00level 2 halted\x00level 2 not synchronized\x00level 3 halted\x00level 3 reset\x00cannot access a needed shared library\x00accessing a corrupted shared library\x00cannot exec a shared library directly\x00attempting to link in more shared libraries than system limit\x00.lib section in a.out corrupted\x00link number out of range\x00too many levels of symbolic links\x00too many open files\x00too many links\x00message too long\x00multihop attempted\x00file name too long\x00not available\x00network is down\x00network dropped connection on reset\x00network is unreachable\x00file table overflow\x00anode table overflow\x00no buffer space available\x00no CSI structure available\x00no data available\x00no such device\x00no such file or directory\x00exec format error\x00no locks available\x00link has been severed\x00not enough memory\x00no message of desired type\x00machine is not on the network\x00package not installed\x00bad protocol option\x00no space left on device\x00out of stream resources\x00not a stream device\x00function not implemented\x00block device required\x00socket is not connected\x00state not recoverable\x00not a directory\x00directory not empty\x00not a name file\x00socket operation on non-socket\x00operation not supported\x00inappropriate device for ioctl\x00name not unique on network\x00no such device or address\x00file too big\x00owner died\x00not owner\x00protocol family not supported\x00broken pipe\x00protocol error\x00protocol not supported\x00protocol wrong type for socket\x00math result unrepresentable\x00remote address changed\x00pathname hit remote file system\x00remote i/o error\x00read-only file system\x00cannot send after socket shutdown\x00socket type not supported\x00invalid seek\x00no such process\x00srmount error\x00stale remote file handle\x00timer expired\x00connection timed out\x00too many references: cannot splice\x00text file or pseudo-device busy\x00structure needs cleaning\x00protocol driver not attached\x00too many users\x00cross-domain link\x00message tables full\x00SIGABRT\x00SIGALRM\x00SIGBUS\x00SIGCHLD\x00SIGCONT\x00SIGFPE\x00SIGHUP\x00SIGILL\x00SIGINT\x00SIGIO\x00SIGKILL\x00SIGPIPE\x00SIGPROF\x00SIGPWR\x00SIGQUIT\x00SIGSEGV\x00SIGSTOP\x00SIGSYS\x00SIGTERM\x00SIGTRAP\x00SIGTSTP\x00SIGTTIN\x00SIGTTOU\x00SIGURG\x00SIGUSR1\x00SIGUSR2\x00SIGVTALRM\x00SIGWINCH\x00SIGXCPU\x00SIGXFSZ\x00unknown signal\x00alarm clock\x00bus error\x00child status changed\x00continue after stop\x00floating-point exception\x00hangup\x00illegal instruction\x00interrupt\x00input/output possible on file\x00kill signal\x00write on pipe with no readers\x00profiling alarm\x00power-fail restart\x00quit signal\x00segmentation violation\x00stop\x00bad argument to system call\x00software termination signal\x00trace trap\x00stop signal from tty\x00background tty read\x00background tty write\x00urgent I/O condition\x00user-defined signal 1\x00user-defined signal 2\x00virtual time alarm\x00window changed\x00exceeded CPU time limit\x00exceeded file size limit\x00Tcl_Release couldn't find reference for %p\x00Tcl_EventuallyFree called twice for %p\x00lambdaExpr\x00procbody\x00levelReference\x00name args body\x00\n    (creating proc \"\x00procedure \"%s\": arg list contains %d entries, precompiled header expects %d\x00BYTECODELIES\x00too many fields in argument specifier \"\x00FORMALARGUMENTFORMAT\x00argument with no name\x00formal parameter \"%s\" is an array element\x00formal parameter \"\x00\" is not a simple name\x00procedure \"%s\": formal parameter %d is inconsistent with precompiled body\x00procedure \"%s\": formal parameter \"\x00\" has default value inconsistent with precompiled body\x00STACKLEVEL\x00\n    (\"uplevel\" body line %d)\x00?level? command ?arg ...?\x00?\x00?arg ...?\x00body object for proc attached to frame is not a byte code type\x00body of lambda term\x00body of proc\x00invoked \"%s\" outside of a loop\x00UNEXPECTED\x00a precompiled script jumped interps\x00CROSSINTERPBYTECODE\x00\n    (procedure \"%.*s%s\" line %d)\x00TclUpdateReturnInfo: negative return level\x00can't interpret \"%s\" as a lambda expression\x00LAMBDA\x00\n    (parsing lambda expression \"%s\")\x00lambdaExpr ?arg ...?\x00\n    (lambda term \"%.*s%s\" line %d)\x00error while matching regular expression: \x00REG_UBACKREF\x00REG_ULOOKAHEAD\x00REG_UBOUNDS\x00REG_UBRACES\x00REG_UBSALNUM\x00REG_UPBOTCH\x00REG_UBBS\x00REG_UNONPOSIX\x00REG_UUNSPEC\x00REG_UUNPORT\x00REG_ULOCALE\x00REG_UEMPTYMATCH\x00REG_UIMPOSSIBLE\x00REG_USHORTEST\x00%s%s%s\x00couldn't compile regular expression pattern: \x00-errorline\x00-errorstack\x00bad %s value: expected dictionary but got \"%s\"\x00ILLEGAL_OPTIONS\x00bad -level value: expected non-negative integer but got \"%s\"\x00ILLEGAL_LEVEL\x00bad -errorcode value: expected a list but got \"%s\"\x00ILLEGAL_ERRORCODE\x00bad -errorstack value: expected a list but got \"%s\"\x00NONLIST_ERRORSTACK\x00forbidden odd-sized list for -errorstack: \"%s\"\x00ODDSIZEDLIST_ERRORSTACK\x00expected dict but got \"%s\"\x00cannot mix \"%\" and \"%n$\" conversion specifiers\x00FORMAT\x00MIXEDSPECTYPES\x00field width may not be specified in %c conversion\x00BADWIDTH\x00field size modifier may not be specified in %\x00 conversion\x00BADSIZE\x00unsigned bignum scans are invalid\x00BADUNSIGNED\x00unmatched [ in format string\x00BRACKET\x00bad scan conversion character \"\x00BADTYPE\x00variable is assigned by multiple \"%n$\" conversion specifiers\x00POLYASSIGNED\x00variable is not assigned by any conversion specifiers\x00UNASSIGNED\x00\"%n$\" argument index out of range\x00INDEXRANGE\x00different numbers of variable names and field specifiers\x00FIELDVARMISMATCH\x00string format ?varName ...?\x00Tcl_SetStringObj\x00Tcl_SetObjLength: negative length requested: %d (integer overflow?)\x00Tcl_SetObjLength\x00max length for a Tcl unicode value (%d chars) exceeded\x00Tcl_AttemptSetObjLength\x00Tcl_SetUnicodeObj\x00Tcl_AppendLimitedToObj\x00Tcl_AppendUnicodeToObj\x00Tcl_AppendStringsToObj\x00max size for a Tcl value exceeded\x00Tcl_AppendFormatToObj\x00format string ended in middle of field specifier\x00INCOMPLETE\x00unsigned bignum format is invalid\x000X\x000x\x000b\x00bad field specifier \"%c\"\x00Unable to format \"%s\" with supplied arguments: %s\x00TclParseNumber: bad acceptState %d parsing '%s'\x00TclParseNumber: state INITIAL can't happen here\x00expected %s but got \"\x00 (looks like invalid octal number)\x00Infinity\x00NaN\x00impossible conversion type in TclDoubleDigits\x00wrong digit!\x00in ShouldBankerRoundUp, trichotomy fails!\x00in ShouldBankerRoundUpToNext, trichotomy fails!\x00This code doesn't work on a decimal machine!\x00unknown floating point word order on this machine\x00(%llx)\x00Tcl_GetMemoryInfo called when threaded memory allocator not in use\x00TclFinalizeThreadAlloc called when threaded memory allocator not in use\x00tclAfter\x00bad argument \"%s\": must be cancel, idle, info, or an integer\x00argument\x00after#%d\x00id|command\x00script ?script ...?\x00?id?\x00event \"%s\" doesn't exist\x00timer\x00Tcl_AfterObjCmd: bad subcommand index to afterSubCmds\x00after#\x00\n    (\"after\" script)\x00execution\x00vdelete\x00vinfo\x00type ?arg ...?\x00type name\x00name ops command\x00bad operations \"%s\": should be one or more of rwua\x00TRACE\x00BADOPS\x00enter\x00leave\x00enterstep\x00leavestep\x00name opList command\x00bad operation list \"\": must be one or more of enter, leave, enterstep, or leavestep\x00NOOPS\x00operation\x00bad operation list \"\": must be one or more of delete or rename\x00bad operation list \"\": must be one or more of array, read, unset, or write\x00 rename\x00 delete\x00TraceExecutionProc: bad flag combination\x00 a\x00 r\x00 w\x00 u\x00 array\x00 read\x00 write\x00 unset\x00Cannot trace a variable with no name\x00trace array\x00(\x00\n    (%s trace on \"%s%s%s%s\")\x00bad result flag combination\x00end-offset\x00LIST\x00%s element in braces followed by \"%.*s\" instead of space\x00JUNK\x00%s element in quotes followed by \"%.*s\" instead of space\x00unmatched open brace in %s\x00BRACE\x00unmatched open quote in %s\x00QUOTE\x00internal error in Tcl_SplitList\x00INTERNAL\x00Tcl_SplitList\x00TclScanElement: string length overflow\x00Tcl_Merge called with negative argc (%d)\x00Tcl_Concat: max size of Tcl value exceeded\x00 \f\v\r\t\n\x00 {\x00{\x00-Inf\x00Inf\x00e%+d\x00e%+03d\x00can't modify precision from a safe interpreter\x00improper value for precision\x00bad index \"%s\": must be integer?[+-]integer? or end?[+-]integer?\x00end-\x00bad index \"%s\": must be end?[+-]integer?\x00PGV Initializer did not initialize\x00***=\x00invalid escape sequence\x00BADESCAPE\x00$ not anchor\x00NONANCHOR\x00unhandled RE special char\x00UNHANDLED\x00excessive recursive glob backtrack potential\x00OVERCOMPLEX\x00RE2GLOB\x00array search\x00localVarName\x00parsedVarName\x00\"%s\" isn't an array\x00VARNAME\x00ELEMENT\x00varPtr must not be NULL\x00part1Ptr must not be NULL\x00READ\x00varName ?newValue?\x00newValuePtr must not be NULL\x00UNSET\x00varName ?value ...?\x00arrayName\x00s-%d-%s\x00arrayName searchId\x00arrayName ?pattern?\x00arrayName ?mode? ?pattern?\x00exact matching shouldn't get here\x00arrayName list\x00error reading array statistics\x00anymore\x00donesearch\x00nextelement\x00startsearch\x00statistics\x00bad variable name \"%s\": can't create namespace variable that refers to procedure variable\x00UPVAR\x00INVERTED\x00ObjMakeUpvar called with an index outside from a proc\x00bad variable name \"%s\": can't create a scalar variable that looks like an array element\x00LOCAL_ELEMENT\x00can't upvar from variable to itself\x00variable \"%s\" has traces: can't use for upvar\x00TRACED\x00variable \"%s\" already exists\x00EXISTS\x00define\x00?level? otherVar localVar ?otherVar localVar ...?\x00illegal search identifier \"%s\"\x00ARRAYSEARCH\x00search identifier \"%s\" isn't for variable \"%s\"\x00couldn't find search \"%s\"\x00invalid part1Ptr and invalid index together\x00can't %s \"%s%s%s%s\": %s\x00%s of type %s should not be called\x00updateStringProc\x00setFromAnyProc\x00scalar parsedVarName without a string rep\x00unknown variable \"%s\"\x00zlib\x00STREAM\x00DATA\x00MEM\x00BUF\x00NEED_DICT\x00unexpected zlib result in error handler: Z_OK\x00unexpected zlib result in error handler: Z_STREAM_END\x00ZLIB\x00text\x00no latin-1 encoding\x00comment\x00crc\x00filename\x00incorrect zlib data format, must be TCL_ZLIB_FORMAT_ZLIB, TCL_ZLIB_FORMAT_GZIP or TCL_ZLIB_FORMAT_RAW\x00compression level should be between 0 (no compression) and 9 (best compression) or -1 for default compression level\x00incorrect zlib data format, must be TCL_ZLIB_FORMAT_ZLIB, TCL_ZLIB_FORMAT_GZIP, TCL_ZLIB_FORMAT_RAW or TCL_ZLIB_FORMAT_AUTO\x00bad mode, must be TCL_ZLIB_STREAM_DEFLATE or TCL_ZLIB_STREAM_INFLATE\x001.3\x00::incr ::tcl::zlib::cmdcounter\x00::tcl::zlib::streamcmd_\x00BUG: Stream command name already exists\x00EXISTING_CMD\x00already past compressed stream end\x00ZIP\x00CLOSED\x00unexpected zlib internal state during decompression\x00STATE\x00incorrect zlib data format, must be TCL_ZLIB_FORMAT_ZLIB, TCL_ZLIB_FORMAT_GZIP or TCL_ZLIB_FORMAT_ZLIB\x00compression level should be between 0 (uncompressed) and 9 (best compression) or -1 for default compression level\x00adler32\x00compress\x00crc32\x00decompress\x00deflate\x00gunzip\x00gzip\x00inflate\x00stream\x00command arg ?...?\x00data ?startValue?\x00data ?level?\x00\n    (in -level option)\x00data ?-level level? ?-header header?\x00-header\x00data ?bufferSize?\x00data ?-headerVar varName?\x00-headerVar\x00level must be 0 to 9\x00COMPRESSIONLEVEL\x00buffer size must be %d to %d\x00BUFFERSIZE\x00mode ?-option value...?\x00should be unreachable\x00-limit\x00mode channel ?options...?\x00compression may only be applied to writable channels\x00UNWRITABLE\x00decompression may only be applied to readable channels\x00UNREADABLE\x00value missing for %s option\x00NOVAL\x00read ahead limit must be 1 to %d\x00a compression dictionary may not be set in the gzip format\x00BADOPT\x00\n    (in \x00 option)\x00checksum\x00fullflush\x00header\x00put\x00reset\x00option data ?...?\x00?count?\x00-buffer\x00-finalize\x00-flush\x00-fullflush\x00\"-buffer\" option must be followed by integer decompression buffersize\x00buffer size must be 1 to %d\x00\"-dictionary\" option must be followed by compression dictionary bytes\x00\"-flush\", \"-fullflush\" and \"-finalize\" options are mutually exclusive\x00EXCLUSIVE\x00only gunzip streams can produce header information\x00BADOP\x00error while finalizing file: %s\x00problem flushing channel: %s\x00dictionary flush\x00dictionary limit\x00flush limit\x00sync\x00unknown -flush type \"%s\": must be full or sync\x00FLUSH\x00-limit must be between 1 and 65536\x00READLIMIT\x00checksum dictionary\x00checksum dictionary limit\x00checksum header limit\x00-checksum\x00unknown mode: %d\x00bad format: %d\x00namespace eval ::tcl::zlib {variable cmdcounter 0}\x00zlibVersion\x002.0.1\x00tcl::tommath\x00initialization failure in TclBNInitBignumFromLong\x00initialization failure in TclBNInitBignumFromWideUInt\x00TclpOpenFileChannel: invalid mode value\x00couldn't open \"\x00\": filename is invalid on this platform\x00file%d\x00TclGetDefaultStdChannel: Unexpected channel type\x00auto crlf\x00\"%s\" wasn't opened for writing\x00NOT_WRITABLE\x00\"%s\" wasn't opened for reading\x00NOT_READABLE\x00cannot get a FILE * for \"%s\"\x00FILE_FAILURE\x00\"%s\" cannot be used to get a FILE *\x00NO_DESCRIPTOR\x00TclUnixWaitForFile can't handle file id %d\x00-group\x00-owner\x00..\x00%0#5lo\x00could not set group for file \"%s\": group \"%s\" does not exist\x00SETGRP\x00NO_GROUP\x00could not set group for file \"%s\": %s\x00could not set owner for file \"%s\": user \"%s\" does not exist\x00SETOWN\x00NO_USER\x00could not set owner for file \"%s\": %s\x00unknown permission string format \"%s\"\x00PERMISSION\x00could not set permissions for file \"%s\": %s\x00_XXXXXX\x00TMPDIR\x00/tmp\x00:/bin:/usr/bin\x00couldn't read directory \"%s\": %s\x00couldn't create temporary file: %s\x00pipe creation failed: %s\x00?channelId?\x00::tcl::unsupported::noReverseDNS\x00-connecting\x00-peername\x00can't get peername: %s\x00-sockname\x00can't get sockname: %s\x00connecting peername sockname\x00couldn't open socket: %s\x00sock%lx\x00couldn't open socket: \x00ansi-1251\x00cp1251\x00ansi_x3.4-1968\x00big5\x00cp1250\x00cp1252\x00cp1253\x00cp1254\x00cp1255\x00cp1256\x00cp1257\x00cp1258\x00cp437\x00cp737\x00cp775\x00cp850\x00cp852\x00cp855\x00cp857\x00cp860\x00cp861\x00cp862\x00cp863\x00cp864\x00cp865\x00cp866\x00cp869\x00cp874\x00cp932\x00cp936\x00cp949\x00cp950\x00dingbats\x00ebcdic\x00euc-cn\x00euc-jp\x00euc-kr\x00eucjp\x00euckr\x00euctw\x00gb12345\x00gb1988\x00gb2312\x00gb2312-1980\x00gb2312-raw\x00greek8\x00ibm1250\x00ibm1251\x00ibm1252\x00ibm1253\x00ibm1254\x00ibm1255\x00ibm1256\x00ibm1257\x00ibm1258\x00ibm437\x00ibm737\x00ibm775\x00ibm850\x00ibm852\x00ibm855\x00ibm857\x00ibm860\x00ibm861\x00ibm862\x00ibm863\x00ibm864\x00ibm865\x00ibm866\x00ibm869\x00ibm874\x00ibm932\x00ibm936\x00ibm949\x00ibm950\x00iso-2022\x00iso2022\x00iso-2022-jp\x00iso2022-jp\x00iso-2022-kr\x00iso2022-kr\x00iso-8859-1\x00iso-8859-10\x00iso8859-10\x00iso-8859-13\x00iso8859-13\x00iso-8859-14\x00iso8859-14\x00iso-8859-15\x00iso8859-15\x00iso-8859-16\x00iso8859-16\x00iso-8859-2\x00iso8859-2\x00iso-8859-3\x00iso8859-3\x00iso-8859-4\x00iso8859-4\x00iso-8859-5\x00iso8859-5\x00iso-8859-6\x00iso8859-6\x00iso-8859-7\x00iso8859-7\x00iso-8859-8\x00iso8859-8\x00iso-8859-9\x00iso8859-9\x00iso88591\x00iso885915\x00iso88592\x00iso88595\x00iso88596\x00iso88597\x00iso88598\x00iso88599\x00ja\x00ja_jp\x00ja_jp.euc\x00ja_jp.eucjp\x00ja_jp.jis\x00ja_jp.mscode\x00shiftjis\x00ja_jp.sjis\x00ja_jp.ujis\x00japan\x00japanese\x00japanese-sjis\x00japanese-ujis\x00japanese.euc\x00japanese.sjis\x00jis0201\x00jis0208\x00jis0212\x00jp_jp\x00ko\x00ko_kr\x00ko_kr.euc\x00ko_kw.euckw\x00koi8-r\x00koi8-u\x00korean\x00ksc5601\x00maccenteuro\x00macCentEuro\x00maccroatian\x00macCroatian\x00maccyrillic\x00macCyrillic\x00macdingbats\x00macDingbats\x00macgreek\x00macGreek\x00maciceland\x00macIceland\x00macjapan\x00macJapan\x00macroman\x00macRoman\x00macromania\x00macRomania\x00macthai\x00macThai\x00macturkish\x00macTurkish\x00macukraine\x00macUkraine\x00roman8\x00ru\x00ru_ru\x00ru_su\x00sjis\x00symbol\x00tis-620\x00tis620\x00turkish8\x00utf8\x00zh\x00zh_cn.gb2312\x00zh_cn.gbk\x00zh_cz.gb2312\x00zh_tw\x00euc-tw\x00zh_tw.big5\x00/dev/null\x00TCL_LIBRARY\x00lib/tcl%s\x00LC_ALL\x00LC_CTYPE\x00LANG\x00unix\x00pathSeparator\x00deletemethod\x00forward\x00renamemethod\x00self\x00unexport\x00destroy\x00core method: \"destroy\"\x00core method: \"eval\"\x00core method: \"unknown\"\x00core method: \"variable\"\x00core method: \"varname\"\x00core method: \"create\"\x00new\x00core method: \"new\"\x00createWithNamespace\x00core method: \"createWithNamespace\"\x00oo::class constructor\x00::oo::define ::oo::Slot {\n    method Get {} {error unimplemented}\n    method Set list {error unimplemented}\n    method -set args {\n        uplevel 1 [list [namespace which my] Set $args]\n    }\n    method -append args {\n        uplevel 1 [list [namespace which my] Set [list                {*}[uplevel 1 [list [namespace which my] Get]] {*}$args]]\n    }\n    method -clear {} {uplevel 1 [list [namespace which my] Set {}]}\n    forward --default-operation my -append\n    method unknown {args} {\n        set def --default-operation\n        if {[llength $args] == 0} {\n            return [uplevel 1 [list [namespace which my] $def]]\n        } elseif {![string match -* [lindex $args 0]]} {\n            return [uplevel 1 [list [namespace which my] $def {*}$args]]\n        }\n        next {*}$args\n    }\n    export -set -append -clear\n    unexport unknown destroy\n}\n::oo::objdefine ::oo::define::superclass forward --default-operation my -set\n::oo::objdefine ::oo::define::mixin forward --default-operation my -set\n::oo::objdefine ::oo::objdefine::mixin forward --default-operation my -set\n\x00foreach p [info procs [info object namespace $originObject]::*] {    set args [info args $p];    set idx -1;    foreach a $args {        lset args [incr idx]             [if {[info default $p $a d]} {list $a $d} {list $a}]    };    set b [info body $p];    set p [namespace tail $p];    proc $p $args $b;};foreach v [info vars [info object namespace $originObject]::*] {    upvar 0 $v vOrigin;    namespace upvar [namespace current] [namespace tail $v] vNew;    if {[info exists vOrigin]} {        if {[array exists vOrigin]} {            array set vNew [array get vOrigin];        } else {            set vNew $vOrigin;        }    }}\x00TclOO\x001.1.0\x00::oo\x00[a-z]*\x00::oo::define\x00::oo::objdefine\x00::oo::Helpers\x00<constructor>\x00<destructor>\x00<cloned>\x00::oo::UnknownDefinition\x00::oo::define::\x00::oo::objdefine::\x00originObject\x00::oo::Helpers::next\x00::oo::Helpers::nextto\x00::oo::Helpers::self\x00::oo::copy\x00::oo::Obj%d\x00my\x00deleting class structure for non-deleted %s\x00::oo::class\x00::oo::object\x00can't create object \"%s\": command already exists with that name\x00OVERWRITE_OBJECT\x00object deleted in constructor\x00STILLBORN\x00may not clone the class of classes\x00CLONING_CLASS\x00\n    (while performing post-copy callback)\x00\n    (while mapping method name)\x00impossible to invoke method \"%s\": no defined method or unknown method\x00METHOD_MAPPED\x00no valid method implementation\x00%s does not refer to an object\x00OBJECT\x00?definitionScript?\x00object \"%s\" is not a class\x00INSTANTIATE_NONCLASS\x00objectName ?arg ...?\x00object name must not be empty\x00EMPTY_NAME\x00objectName namespaceName ?arg ...?\x00namespace name must not be empty\x00\n    (in \"%s eval\" script line %d)\x00method ?arg ...?\x00visible methods\x00methods\x00object \"%s\" has no %s\x00unknown method \"%s\": must be \x00?varName ...?\x00variable name \"%s\" illegal: must not contain namespace separator\x00name refers to an element in an array\x00refer to\x00%s may only be called from inside a method\x00class ?arg...?\x00call\x00caller\x00method not defined by a class\x00UNMATCHED_CONTEXT\x00not inside a filtering context\x00caller is not an object\x00method without declarer!\x00filtering call chain without terminal non-filter\x00sourceName ?targetName? ?targetNamespace?\x00%s refers to an existing namespace\x00TclOO method name\x00::oo::define::filter\x00core method: define::filter Getter\x00core method: define::filter Setter\x00::oo::define::mixin\x00core method: define::mixin Getter\x00core method: define::mixin Setter\x00::oo::define::superclass\x00core method: define::superclass Getter\x00core method: define::superclass Setter\x00::oo::define::variable\x00core method: define::variable Getter\x00core method: define::variable Setter\x00::oo::objdefine::filter\x00core method: objdefine::filter Getter\x00core method: objdefine::filter Setter\x00::oo::objdefine::mixin\x00core method: objdefine::mixin Getter\x00core method: objdefine::mixin Setter\x00::oo::objdefine::variable\x00core method: objdefine::variable Getter\x00core method: objdefine::variable Setter\x00method %s does not exist\x00cannot rename method to itself\x00RENAME_TO_SELF\x00method called %s already exists\x00RENAME_OVER\x00bad call of unknown handler\x00BAD_UNKNOWN\x00cannot process definitions; support namespace deleted\x00MONKEY_BUSINESS\x00this command may only be called from within the context of an ::oo::define or ::oo::objdefine command\x00this command cannot be called when the object has been deleted\x00getting outer context when already in global context\x00\n    (in definition script for %s \"%.*s%s\" line %d)\x00className arg ?arg ...?\x00%s does not refer to a class\x00objectName arg ?arg ...?\x00class object\x00may not modify the class of the root object class\x00may not modify the class of the class of classes\x00the class of an object must be a class\x00may not change classes into an instance of themselves\x00arguments body\x00attempt to misuse API\x00name cmdName ?arg ...?\x00Get\x00Set\x00::oo::Slot\x00filterList\x00mixinList\x00may only mix in classes\x00may not mix a class into itself\x00SELF_MIXIN\x00superclassList\x00may not modify the superclass of the root object\x00only a class can be a superclass\x00class should only be a direct superclass once\x00REPETITIOUS\x00attempt to form circular dependency graph\x00invalid declared variable name \"%s\": must not %s\x00contain namespace separators\x00BAD_DECLVAR\x00*(*)\x00refer to an array element\x00variableList\x00definition\x00filters\x00isa\x00methodtype\x00mixins\x00instances\x00subclasses\x00superclasses\x00::oo::InfoObject\x00::oo::InfoClass\x00objName ?className?\x00objName methodName\x00definition not available for this kind of method\x00objName\x00prefix argument list not available for this kind of method\x00metaclass\x00mixin\x00typeof\x00category objName ?arg ...?\x00category\x00objName className\x00-localprivate\x00-private\x00objName ?-option value ...?\x00objName ?pattern?\x00METHOD_TYPE\x00className ?pattern?\x00className ?-option value ...?\x00cannot construct any call chain\x00method not declared in class or object\x00\n    (%s \"%.*s%s\" method \"%.*s%s\" line %d)\x00\n    (%s \"%.*s%s\" constructor line %d)\x00\n    (%s \"%.*s%s\" destructor line %d)\x00method forward prefix must be non-empty\x00BAD_FORWARD\x00dynamic loading is not currently available on this system\x000123456789ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz+/\x00"
+var __ccgo_ts1 = "\n\n\n========= RAW ==========\n\x00\n\n\n========= TREE FIXED ==========\n\x00\n\n\n========= LA%d ==========\n\x00\n\n\n========= SEARCH ==========\n\x00\n\n\n========= TREE NODE %s ==========\n\x00null tree\n\x00%s. `%c'\x00 longest\x00 shortest\x00 hasmixed\x00 hascapture\x00 hasbackref\x00 UNUSED\x00 (#%d)\x00 {%d,\x00%d\x00}\x00 %ld-%ld\x00 L:%s\x00 R:%s\x00\n\x00unable\x00%p\x00\ninitial cleanup:\n\x00\nempties:\n\x00\nconstraints:\n\x00\nfinal cleanup:\n\x00NUL\x00SOH\x00STX\x00ETX\x00EOT\x00ENQ\x00ACK\x00BEL\x00alert\x00BS\x00backspace\x00HT\x00tab\x00LF\x00newline\x00VT\x00vertical-tab\x00FF\x00form-feed\x00CR\x00carriage-return\x00SO\x00SI\x00DLE\x00DC1\x00DC2\x00DC3\x00DC4\x00NAK\x00SYN\x00ETB\x00CAN\x00EM\x00SUB\x00ESC\x00IS4\x00FS\x00IS3\x00GS\x00IS2\x00RS\x00IS1\x00US\x00space\x00exclamation-mark\x00quotation-mark\x00number-sign\x00dollar-sign\x00percent-sign\x00ampersand\x00apostrophe\x00left-parenthesis\x00right-parenthesis\x00asterisk\x00plus-sign\x00comma\x00hyphen\x00hyphen-minus\x00period\x00full-stop\x00slash\x00solidus\x00zero\x00one\x00two\x00three\x00four\x00five\x00six\x00seven\x00eight\x00nine\x00colon\x00semicolon\x00less-than-sign\x00equals-sign\x00greater-than-sign\x00question-mark\x00commercial-at\x00left-square-bracket\x00backslash\x00reverse-solidus\x00right-square-bracket\x00circumflex\x00circumflex-accent\x00underscore\x00low-line\x00grave-accent\x00left-brace\x00left-curly-bracket\x00vertical-line\x00right-brace\x00right-curly-bracket\x00tilde\x00DEL\x00alnum\x00alpha\x00ascii\x00blank\x00cntrl\x00digit\x00graph\x00lower\x00print\x00punct\x00upper\x00xdigit\x00REG_OKAY\x00no errors detected\x00REG_NOMATCH\x00failed to match\x00REG_BADPAT\x00invalid regexp (reg version 0.8)\x00REG_ECOLLATE\x00invalid collating element\x00REG_ECTYPE\x00invalid character class\x00REG_EESCAPE\x00invalid escape \\ sequence\x00REG_ESUBREG\x00invalid backreference number\x00REG_EBRACK\x00brackets [] not balanced\x00REG_EPAREN\x00parentheses () not balanced\x00REG_EBRACE\x00braces {} not balanced\x00REG_BADBR\x00invalid repetition count(s)\x00REG_ERANGE\x00invalid character range\x00REG_ESPACE\x00out of memory\x00REG_BADRPT\x00quantifier operand invalid\x00REG_ASSERT\x00\"can't happen\" -- you found a bug\x00REG_INVARG\x00invalid argument to regex function\x00REG_MIXED\x00character widths of regex and string differ\x00REG_BADOPT\x00invalid embedded option\x00REG_ETOOBIG\x00regular expression is too complex\x00REG_ECOLORS\x00too many colors\x00\x00oops\x00REG_%u\x00assemblecode\x00push\x00add\x00append\x00appendArray\x00appendArrayStk\x00appendStk\x00arrayExistsImm\x00arrayExistsStk\x00arrayMakeImm\x00arrayMakeStk\x00beginCatch\x00bitand\x00bitnot\x00bitor\x00bitxor\x00clockRead\x00concat\x00concatStk\x00coroName\x00currentNamespace\x00dictAppend\x00dictExists\x00dictExpand\x00dictGet\x00dictIncrImm\x00dictLappend\x00dictRecombineStk\x00dictRecombineImm\x00dictSet\x00dictUnset\x00div\x00dup\x00endCatch\x00eq\x00eval\x00evalStk\x00exist\x00existArray\x00existArrayStk\x00existStk\x00expon\x00expr\x00exprStk\x00ge\x00gt\x00incr\x00incrArray\x00incrArrayImm\x00incrArrayStk\x00incrArrayStkImm\x00incrImm\x00incrStk\x00incrStkImm\x00infoLevelArgs\x00infoLevelNumber\x00invokeStk\x00jump\x00jump4\x00jumpFalse\x00jumpFalse4\x00jumpTable\x00jumpTrue\x00jumpTrue4\x00label\x00land\x00lappend\x00lappendArray\x00lappendArrayStk\x00lappendList\x00lappendListArray\x00lappendListArrayStk\x00lappendListStk\x00lappendStk\x00le\x00lindexMulti\x00list\x00listConcat\x00listIn\x00listIndex\x00listIndexImm\x00listLength\x00listNotIn\x00load\x00loadArray\x00loadArrayStk\x00loadStk\x00lor\x00lsetFlat\x00lsetList\x00lshift\x00lt\x00mod\x00mult\x00neq\x00nop\x00not\x00nsupvar\x00numericType\x00originCmd\x00over\x00pop\x00pushReturnCode\x00pushReturnOpts\x00pushResult\x00regexp\x00resolveCmd\x00reverse\x00rshift\x00store\x00storeArray\x00storeArrayStk\x00storeStk\x00strcaseLower\x00strcaseTitle\x00strcaseUpper\x00strcmp\x00strcat\x00streq\x00strfind\x00strindex\x00strlen\x00strmap\x00strmatch\x00strneq\x00strrange\x00strreplace\x00strrfind\x00strtrim\x00strtrimLeft\x00strtrimRight\x00sub\x00tclooClass\x00tclooIsObject\x00tclooNamespace\x00tclooSelf\x00tryCvtToBoolean\x00tryCvtToNumeric\x00uminus\x00unset\x00unsetArray\x00unsetArrayStk\x00unsetStk\x00uplus\x00upvar\x00variable\x00verifyDict\x00yield\x00bytecodeList\x00\n    (\"\x00\" body, line \x00)\x00\n    (\"%.*s\" body, line %d)\x00instruction\x00value\x00boolean\x00boolean varName\x00imm8\x00operand must be [0..3]\x00TCL\x00ASSEM\x00OPERAND<0,>3\x00count\x00count varName\x00script\x00expression\x00table\x00name\x00operand must be >=2\x00OPERAND>=2\x00varname\x00varName imm8\x00Instruction \"%s\" could not be found, can't happen\n\x00no ASSEM_EVAL case for %s (%d), can't happen\x00jump table must have an even number of list elements\x00BADJUMPTABLE\x00duplicate entry in jump table for \"%s\"\x00DUPJUMPTABLEENTRY\x00assembly code may not contain substitutions\x00NOSUBST\x00cannot use this instruction to create a variable in a non-proc context\x00LVT\x00variable \"%s\" is not local\x00NONLOCAL\x00operand does not fit in one byte\x001BYTE\x00operand must be nonnegative\x00NONNEGATIVE\x00operand must be positive\x00POSITIVE\x00duplicate definition of label \"%s\"\x00DUPLABEL\x00undefined label \"%s\"\x00NOLABEL\x00\"%s\" instruction may not appear in a context where an exception has been caught and not disposed of.\x00BADTHROW\x00inconsistent stack depths on two execution paths\x00BADSTACK\x00stack underflow\x00code pops stack below level of enclosing catch\x00BADSTACKINCATCH\x00stack is unbalanced on exit from the code (depth=%d)\x00execution reaches an instruction in inconsistent exception contexts\x00BADCATCH\x00endCatch without a corresponding beginCatch\x00BADENDCATCH\x00catch still active on exit from assembly code\x00UNCLOSEDCATCH\x00unclosed catch at end of code in tclAssembly.c:BuildExceptionRanges, can't happen\x00undefined label in tclAssembly.c:BuildExceptionRanges, can't happen\x00\n    in assembly code between lines \x00 and \x00end of assembly code\x00Tcl_AsyncDelete: async handler deleted by the wrong thread\x00Tcl_AsyncDelete: cannot find async handler\x00apply\x00break\x00case\x00catch\x00continue\x00coroutine\x00error\x00for\x00foreach\x00format\x00global\x00if\x00join\x00lassign\x00lindex\x00linsert\x00llength\x00lmap\x00lrange\x00lrepeat\x00lreplace\x00lreverse\x00lsearch\x00lset\x00lsort\x00package\x00proc\x00regsub\x00rename\x00return\x00scan\x00set\x00split\x00subst\x00switch\x00tailcall\x00throw\x00trace\x00try\x00uplevel\x00while\x00yieldto\x00after\x00cd\x00close\x00eof\x00exec\x00exit\x00fblocked\x00fconfigure\x00fcopy\x00fileevent\x00flush\x00gets\x00glob\x00open\x00pid\x00puts\x00pwd\x00read\x00seek\x00socket\x00source\x00tell\x00time\x00unload\x00update\x00vwait\x00abs\x00acos\x00asin\x00atan\x00atan2\x00bool\x00ceil\x00cos\x00cosh\x00double\x00entier\x00exp\x00floor\x00fmod\x00hypot\x00int\x00isqrt\x00log\x00log10\x00pow\x00rand\x00round\x00sin\x00sinh\x00sqrt\x00srand\x00tan\x00tanh\x00wide\x00~\x00integer\x00!\x00+\x00*\x00&\x00|\x00^\x00**\x00<<\x00integer shift\x00>>\x00%\x00integer integer\x00!=\x00value value\x00ne\x00in\x00value list\x00ni\x00-\x00value ?value ...?\x00/\x00<\x00<=\x00>\x00>=\x00==\x00Tcl_CallFrame must not be smaller than CallFrame\x00::errorInfo\x00UP\x00CALL\x00INNER\x00::errorCode\x00TCL_PKG_PREFER_LATEST\x00TCL_INTERP_DEBUG_FRAME\x00Tcl_CreateInterp: can't create global namespace\x00builtin command with NULL object command proc and a NULL compile proc\x00::tcl::Bgerror\x00::tcl::unsupported::disassemble\x00::tcl::unsupported::getbytecode\x00::tcl::unsupported::representation\x00::tcl::unsupported::assemble\x00::tcl::unsupported::inject\x00::tcl::unsupported::corotype\x00::tcl::unsupported::timerate\x00::tcl::unsupported\x00::tcl::mathfunc\x00Can't create math function namespace\x00::tcl::mathfunc::\x00::tcl::mathop\x00can't create math operator namespace\x00::tcl::mathop::\x00failed to create math operator %s\x00tcl_platform\x00engine\x00Tcl\x00littleEndian\x00bigEndian\x00byteOrder\x00wordSize\x00pointerSize\x00tcl_patchLevel\x008.6.13\x00tcl_version\x008.6\x00tcl_precision\x00%s\x00Assoc Data Key #%d\x00DeleteInterpProc called with active evals\x00DeleteInterpProc called on interpreter not marked deleted\x00DeleteInterpProc: popping rootCallFrame with other frames on top\x00Argument location tracking table not empty\x00::\x00cannot use namespace qualifiers in hidden command token (rename)\x00VALUE\x00HIDDENTOKEN\x00can only hide global namespace commands (use rename then hide)\x00HIDE\x00NON_GLOBAL\x00hidden command named \"%s\" already exists\x00ALREADY_HIDDEN\x00cannot expose to a namespace (use expose to toplevel, then rename)\x00EXPOSE\x00unknown hidden command \"%s\"\x00LOOKUP\x00trying to expose a non-global command namespace command\x00exposed command \"%s\" already exists\x00COMMAND_EXISTS\x00delete\x00can't %s \"%s\": command doesn't exist\x00COMMAND\x00can't rename to \"%s\": bad command name\x00can't rename to \"%s\": command already exists\x00OPERATION\x00RENAME\x00TARGET_EXISTS\x00argument to math function didn't have numeric value\x00tcl::mathfunc::\x00unknown math function \"%s\"\x00MATHFUNC\x00::info functions \x00attempt to call eval in deleted interpreter\x00IDELETE\x00too many nested evaluations (infinite loop?)\x00LIMIT\x00STACK\x00IUNWIND\x00eval unwound\x00ICANCEL\x00eval canceled\x00CANCEL\x00attempt to invoke a deleted command\x00EVAL\x00DELETEDCOMMAND\x00Tcl_EvalObjv: NULL global namespace pointer\x00::unknown\x00invalid command name \"%s\"\x00\n    (enter trace on \"\x00...\x00\")\x00\n    (leave trace on \"\x00\n    (expanding word %d)\x00TclArgumentBC Enter/Release Mismatch\x00invoked \"break\" outside of a loop\x00invoked \"continue\" outside of a loop\x00command returned bad code: %d\x00UNEXPECTED_RESULT_CODE\x00illegal argument vector\x00TclObjInvoke: called without TCL_INVOKE_HIDDEN\x00invalid hidden command name \"%s\"\x00NONE\x00square root of negative argument\x00ARITH\x00DOMAIN\x00domain error: argument not in valid range\x00not enough\x00too many\x00%s arguments for math function \"%s\"\x00WRONGARGS\x00tailcall cannot find the right splicing spot: should not happen!\x00?command? ?arg ...?\x00tailcall can only be called from a proc, lambda or method\x00TAILCALL\x00ILLEGAL\x00Adding a callback without an objProc?!\x00?returnValue?\x00yield can only be called in a coroutine\x00COROUTINE\x00ILLEGAL_YIELD\x00command ?arg ...?\x00yieldto can only be called in a coroutine\x00yieldto called in deleted namespace\x00YIELDTO_IN_DELETED\x00cannot yield: C stack busy\x00CANT_YIELD\x00Yield received an option which is not implemented\x00can only get coroutine type of a coroutine\x00active\x00unknown coroutine type\x00BAD_TYPE\x00coroName cmd ?arg1 arg2 ...?\x00can only inject a command into a coroutine\x00can only inject a command into a suspended coroutine\x00ACTIVE\x00coroutine \"%s\" is already running\x00BUSY\x00?arg?\x00wrong coro nargs; how did we get here? not implemented!\x00name cmd ?arg ...?\x00can't create procedure \"%s\": unknown namespace\x00NAMESPACE\x00can't create procedure \"%s\": bad procedure name\x00bytearray\x00encode\x00decode\x00hex\x00uuencode\x00base64\x00%s called with shared object\x00Tcl_SetByteArrayObj\x00Tcl_SetByteArrayLength\x00max size for a Tcl value (%d bytes) exceeded\x00TclAppendBytesToByteArray\x00%s must be called with definite number of bytes to append\x00binary\x00binary encode\x00binary decode\x00formatString ?arg ...?\x00number of elements in list does not match count\x00cannot use \"*\" in format string with \"x\"\x00hexadecimal\x00expected %s string but got \"%s\" instead\x00missing count for \"@\" field specifier\x00not enough arguments for all format specifiers\x00bad field specifier \"%s\"\x00value formatString ?varName ...?\x00unexpected fallthrough\x00data\x00-strict\x00?options? data\x00option\x00invalid hexadecimal digit \"%c\" at position %d\x00BINARY\x00DECODE\x00INVALID\x00-maxlen\x00-wrapchar\x00?-maxlen len? ?-wrapchar char? data\x00line length out of range\x00ENCODE\x00LINE_LENGTH\x00limit hit\x00invalid wrapchar; will defeat decoding\x00WRAPCHAR\x00short uuencode data\x00SHORT\x00invalid uuencode character \"%c\" at position %d\x00invalid base64 character \"%c\" at position %d\x00unable to alloc %u bytes\x00unable to alloc %u bytes, %s line %d\x00unable to realloc %u bytes\x00unable to realloc %u bytes, %s line %d\x00%a %b %d %H:%M:%S %Z %Y\x00BCE\x00C\x00cannot use -gmt and -timezone in same call\x00CE\x00dayOfMonth\x00dayOfWeek\x00dayOfYear\x00era\x00:GMT\x00gregorian\x00integer value too large to represent\x00iso8601Week\x00iso8601Year\x00julianDay\x00localSeconds\x00month\x00seconds\x00tzName\x00tzOffset\x00year\x00getenv\x00Oldscan\x00ConvertLocalToUTC\x00GetDateFields\x00GetJulianDayFromEraYearMonthDay\x00GetJulianDayFromEraYearWeekDay\x00ParseFormatArgs\x00clicks\x00microseconds\x00milliseconds\x00::tcl::clock::\x00clock\x00dict tzdata changeover\x00key \"localseconds\" not found in dictionary\x00seconds tzdata changeover\x00expected key(s) not found in dictionary\x00dict changeover\x00loop in ConvertLocalToUTCUsingTable\x00time value too large/small to represent\x00number too large to represent as a Posix time\x00CLOCK\x00argTooLarge\x00localtime failed (clock value may be too large/small to represent)\x00localtimeFailed\x00%02d\x00-milliseconds\x00-microseconds\x00?-switch?\x00-format\x00-gmt\x00-locale\x00-timezone\x00clock format clockval ?-format string? ?-gmt boolean? ?-locale LOCALE? ?-timezone ZONE?\x00wrongNumArgs\x00badOption\x00gmtWithTimezone\x00TZ\x00string ?in? ?pattern body ...? ?default body?\x00extra case pattern with no body\x00default\x00\n    (\"%.50s\" arm line %d)\x00script ?resultVarName? ?optionVarName?\x00\n    (\"catch\" body line %d)\x00?dirName?\x00couldn't change working directory to \"%s\": %s\x00convertfrom\x00convertto\x00dirs\x00names\x00system\x00encoding\x00::tcl::encoding::\x00tcl:encoding:\x00___tmp\x00problem making 'encoding %s' safe: %s\x00problem making 'encoding' safe: %s\x00not allowed to invoke subcommand %s of encoding\x00SAFE\x00SUBCOMMAND\x00?encoding? data\x00?dirList?\x00expected directory list but got \"%s\"\x00ENCODING\x00BADPATH\x00?encoding?\x00message ?errorInfo? ?errorCode?\x00-code error -level 0\x00-errorinfo\x00-errorcode\x00\n    (\"eval\" body line %d)\x00arg ?arg ...?\x00?returnCode?\x00atime\x00attributes\x00channels\x00copy\x00dirname\x00executable\x00exists\x00extension\x00isdirectory\x00isfile\x00link\x00lstat\x00mtime\x00mkdir\x00nativename\x00normalize\x00owned\x00pathtype\x00readable\x00readlink\x00rootname\x00separator\x00size\x00stat\x00tail\x00tempfile\x00type\x00volumes\x00writable\x00file\x00::tcl::file::\x00tcl:file:\x00problem making 'file %s' safe: %s\x00problem making 'file' safe: %s\x00not allowed to invoke subcommand %s of file\x00name ?time?\x00could not set access time for file \"%s\": %s\x00could not set modification time for file \"%s\": %s\x00name varName\x00unrecognised path\x00FILESYSTEM\x00name ?name ...?\x00could not read \"%s\": no such file or directory\x00PATHSPLIT\x00NONESUCH\x00absolute\x00relative\x00volumerelative\x00?name?\x00\\\x00could not read \"%s\": %s\x00dev\x00ino\x00nlink\x00uid\x00gid\x00blocks\x00blksize\x00ctime\x00mode\x00directory\x00characterSpecial\x00blockSpecial\x00fifo\x00unknown\x00start test next command\x00\n    (\"for\" body line %d)\x00\n    (\"for\" initial command)\x00\n    (\"for\" loop-end command)\x00varList list ?varList list ...? command\x00%s varlist is empty\x00LMAP\x00FOREACH\x00NEEDVARS\x00\n    (\"%s\" body line %d)\x00\n    (setting %s loop variable \"%s\")\x00args\x00body\x00cmdcount\x00commands\x00complete\x00errorstack\x00frame\x00functions\x00globals\x00hostname\x00level\x00library\x00loaded\x00locals\x00nameofexecutable\x00patchlevel\x00procs\x00sharedlibextension\x00tclversion\x00vars\x00wrong # args: no expression after \"%s\" argument\x00then\x00elseif\x00else\x00wrong # args: extra words after \"else\" clause in \"if\" command\x00wrong # args: no script following \"%s\" argument\x00varName ?increment?\x00info\x00procname\x00\"%s\" isn't a procedure\x00PROCEDURE\x00?pattern?\x00*[?\\\x00command\x00procname arg varname\x00procedure \"%s\" doesn't have an argument \"%s\"\x00ARGUMENT\x00?interp?\x00varName\x00?number?\x00Broken frame level calculation\x00bad level \"%s\"\x00LEVEL\x00precompiled\x00line\x00cmd\x00TCL_LOCATION_PROC found in standard frame\x00\t    ::apply [::list {{pattern *}} {\n\t\t::set cmds {}\n\t\t::foreach cmd [::info commands ::tcl::mathfunc::$pattern] {\n\t\t    ::lappend cmds [::namespace tail $cmd]\n\t\t}\n\t\t::foreach cmd [::info commands tcl::mathfunc::$pattern] {\n\t\t    ::set cmd [::namespace tail $cmd]\n\t\t    ::if {$cmd ni $cmds} {\n\t\t\t::lappend cmds $cmd\n\t\t    }\n\t\t}\n\t\t::return $cmds\n\t    } [::namespace current]] \x00unable to determine name of host\x00HOSTNAME\x00UNKNOWN\x00tcl_library\x00no library has been specified for Tcl\x00VARIABLE\x00?filename?\x00list ?joinString?\x00 \x00list ?varName ...?\x00list ?index ...?\x00list index ?element ...?\x00list first last\x00count ?value ...?\x00bad count \"%d\": must be integer >= 0\x00LREPEAT\x00NEGARG\x00max length of a Tcl list (%d elements) exceeded\x00MEMORY\x00list first last ?element ...?\x00-all\x00-ascii\x00-bisect\x00-decreasing\x00-dictionary\x00-exact\x00-glob\x00-increasing\x00-index\x00-inline\x00-integer\x00-nocase\x00-not\x00-real\x00-regexp\x00-sorted\x00-start\x00-subindices\x00?-option value ...? list pattern\x00missing starting index\x00MISSING\x00\"-index\" option must be followed by list index\x00index \"%s\" cannot select an element from any list\x00INDEXOUTOFRANGE\x00\n    (-index option item number %d)\x00-subindices cannot be used without -index option\x00LSEARCH\x00BAD_OPTION_MIX\x00-bisect is not compatible with -all or -not\x00listVar ?index? ?index ...? value\x00-command\x00-indices\x00-stride\x00-unique\x00?-option value ...? list\x00\"-command\" option must be followed by comparison command\x00\"-stride\" option must be followed by stride length\x00stride length must be at least 2\x00LSORT\x00BADSTRIDE\x00list size must be a multiple of the stride length\x00when used with \"-stride\", the leading \"-index\" value must be within the group\x00BADINDEX\x00no enough memory to proccess sort of %d items\x00\n    (-compare command)\x00-compare command returned non-integer result\x00COMPARISONFAILED\x00element %d missing from sublist \"%s\"\x00INDEXFAILED\x00-about\x00-expanded\x00-line\x00-linestop\x00-lineanchor\x00--\x00?-option ...? exp string ?matchVar? ?subMatchVar ...?\x00regexp match variables not allowed when using -inline\x00REGEXP\x00MIX_VAR_INLINE\x00?-option ...? exp string subSpec ?varName?\x00&\\\x00*+?{}()[].\\|^$\x00oldName newName\x00?-encoding name? fileName\x00-encoding\x00 \n\t\r\x00string ?splitChars?\x00needleString haystackString ?startIndex?\x00string charIndex\x00control\x00false\x00true\x00wideinteger\x00wordchar\x00-failindex\x00class ?-strict? ?-failindex var? str\x00class\x00?-strict? ?-failindex var? str\x00?-nocase? charMap string\x00bad option \"%s\": must be -nocase\x00INDEX\x00char map list unbalanced\x00MAP\x00UNBALANCED\x00?-nocase? pattern string\x00string first last\x00string count\x00result exceeds max size for a Tcl value (%d bytes)\x00string size overflow, out of memory allocating %u bytes\x00string first last ?string?\x00string\x00string index\x00?-nocase? ?-length int? string1 string2\x00-length\x00bad option \"%s\": must be -nocase or -length\x00string ?first? ?last?\x00string ?chars?\x00bytelength\x00cat\x00compare\x00equal\x00first\x00index\x00is\x00last\x00length\x00map\x00match\x00range\x00repeat\x00replace\x00tolower\x00toupper\x00totitle\x00trim\x00trimleft\x00trimright\x00wordend\x00wordstart\x00-nobackslashes\x00-nocommands\x00-novariables\x00Tcl_SubstObjCmd: bad option index to SubstOptions\x00?-nobackslashes? ?-nocommands? ?-novariables? string\x00-indexvar\x00-matchvar\x00bad option \"%s\": %s option already found\x00SWITCH\x00DOUBLEOPT\x00missing variable name argument to %s option\x00NOVAR\x00?-option ...? string ?pattern body ...? ?default body?\x00%s option requires -regexp option\x00MODERESTRICTION\x00?-option ...? string {?pattern body ...? ?default body?}\x00extra switch pattern with no body\x00BADARM\x00, this may be due to a comment incorrectly placed outside of a switch body - see the \"switch\" documentation\x00COMMENT?\x00no body specified for pattern \"%s\"\x00FALLTHROUGH\x00fall-out when searching for body to match pattern\x00\n    (\"%.*s%s\" arm line %d)\x00type message\x00type must be non-empty list\x00THROW\x00BADEXCEPTION\x00-code error -level 0 -errorcode\x00command ?count?\x00per\x00iteration\x00-direct\x00-overhead\x00-calibrate\x00?-direct? ?-calibrate? ?-overhead double? command ?time ?max-count??\x00µs/#-overhead\x00%.*f\x00%.3f\x00net-ms\x00µs/#\x00#\x00#/sec\x00finally\x00on\x00trap\x00body ?handler ...? ?finally script?\x00handler type\x00finally clause must be last\x00TRY\x00FINALLY\x00NONTERMINAL\x00wrong # args to finally clause: must be \"... finally script\"\x00wrong # args to on clause: must be \"... on code variableList script\"\x00ON\x00wrong # args to trap clause: must be \"... trap pattern variableList script\"\x00TRAP\x00bad prefix '%s': must be a list\x00EXNFORMAT\x00last non-finally clause must not have a body of \"-\"\x00BADFALLTHROUGH\x00-during\x00\n    (\"%s ... %s\" handler line %d)\x00\n    (\"%s ... finally\" body line %d)\x00test command\x00\n    (\"while\" body line %d)\x00ForeachInfo\x00NewForeachInfo\x00DictUpdateInfo\x000\x001\x00list must have an even number of elements\x00-errorcode {TCL ARGUMENT FORMAT}\x00bad stack depth computations: is %i, should be %i\x00TclCompileCatchCmd: bad jump distance %d\x00TclCompileDictCmd(update): bad jump distance %d\x00, \x00%%v%u\x00variables\x00data=[\x00], loop=%%v%u\x00,\x00\n\t\t it%%v%u\t[\x00]\x00jumpOffset=%+d, vars=\x00[\x00loop\x00assign\x00jumpOffset\x00TclCompileIfCmd: unexpected opcode \"%d\" updating ifFalse jump\x00object\x00::namespace inscope \x00::namespace\x00inscope\x00:\x002\x00end\x00-options\x00namespace\x00JumptableInfo\x00word\x003\x00TclCompileSubstCmd: bad start jump distance %d\x00unexpected token type in TclCompileSubstCmd: %d\x00TclCompileSubstCmd: bad break jump distance %d\x00TclCompileSubstCmd: bad continue jump distance %d\x00TclCompileSubstCmd: bad return jump distance %d\x00TclCompileSubstCmd: bad other jump distance %d\x00TclCompileSubstCmd: bad ok jump distance %d\x00TclCompileSubstCmd: bad end jump distance %d\x00unknown switch mode: %d\x00\n\t\t\x00\"%s\"->pc %d\x00mapping\x00-errorcode {TCL OPERATION THROW BADEXCEPTION}\x00-level 0 -code 0\x00-nocomplain\x00-1\x001.0\x00_@_\x00not enough memory to parse expression\x00NOMEM\x00invalid character \"%.*s\"\x00BADCHAR\x00incomplete operator \"%.*s\"\x00PARTOP\x00invalid bareword \"%.*s%s\"\x00should be \"$%.*s%s\" or \"{%.*s%s}\"\x00 or \"%.*s%s(...)\" or ...\x00BAREWORD\x00 (invalid binary number?)\x00BADNUMBER\x00 (invalid octal number?)\x00OCTAL\x00missing operator at %s\x00max # of tokens for a Tcl parse (%d) exceeded\x00invalid character \"$\"\x00missing close-bracket\x00empty subexpression at %s\x00EMPTY\x00unbalanced open paren\x00missing function argument at %s\x00empty expression\x00unbalanced close paren\x00missing operand at %s\x00missing operator \":\" at %s\x00unexpected operator \":\" without preceding \"?\"\x00SURPRISE\x00unexpected \",\" outside function argument list\x00\nin expression \"%s%.*s%.*s%s%s%.*s%s\"\x00;\n\x00\n    (parsing expression \"%.*s%s\")\x00PARSE\x00EXPR\x00done\x00push1\x00push4\x00invokeStk1\x00invokeStk4\x00loadScalar1\x00loadScalar4\x00loadScalarStk\x00loadArray1\x00loadArray4\x00storeScalar1\x00storeScalar4\x00storeScalarStk\x00storeArray1\x00storeArray4\x00incrScalar1\x00incrScalarStk\x00incrArray1\x00incrScalar1Imm\x00incrScalarStkImm\x00incrArray1Imm\x00jump1\x00jumpTrue1\x00jumpFalse1\x00callBuiltinFunc1\x00callFunc1\x00foreach_start4\x00foreach_step4\x00beginCatch4\x00appendScalar1\x00appendScalar4\x00appendArray1\x00appendArray4\x00lappendScalar1\x00lappendScalar4\x00lappendArray1\x00lappendArray4\x00returnImm\x00expandStart\x00expandStkTop\x00invokeExpanded\x00listRangeImm\x00startCommand\x00returnStk\x00dictFirst\x00dictNext\x00dictDone\x00dictUpdateStart\x00dictUpdateEnd\x00syntax\x00existScalar\x00returnCodeBranch\x00unsetScalar\x00strrangeImm\x00invokeReplace\x00expandDrop\x00foreach_start\x00foreach_step\x00foreach_end\x00lmap_collect\x00tclooNext\x00tclooNextClass\x00yieldToInvoke\x00strclass\x00bytecode\x00substcode\x00::tcl\x00::tcl::\x00TclCompileScript() called on uninitialized CompileEnv\x00too many nested compilations (infinite loop?)\x00Unexpected token type in TclCompileTokens: %d; %.*s\x00TclInitByteCodeObj() called on uninitialized CompileEnv\x00EnterCmdStartData: bad command index %d\x00EnterCmdStartData: cmd map not sorted by code offset\x00EnterCmdExtentData: bad command index %d\x00EnterCmdExtentData: missing start data for command %d\x00trying to add 'break' fixup to full exception range\x00trying to add 'continue' fixup to full exception range\x00trying to finalize a loop exception range\x00TclFixupForwardJump: bad ExceptionRange type %d\x00unexpected opcode\x00GetCmdLocEncodingSize: bad code offset\x00GetCmdLocEncodingSize: bad code length\x00GetCmdLocEncodingSize: bad source length\x00EncodeCmdLocMap: bad code offset\x00EncodeCmdLocMap: bad code length\x00EncodeCmdLocMap: bad source length\x00%s.\n%s: %s\x00Tcl_RegisterConfig\x00Unable to create namespace for package configuration.\x00::pkgconfig\x00%s: %s\x00Unable to create query command for package configuration\x00get\x00subcommand ?arg?\x00subcommand\x00package not known\x00FATAL\x00PKGCFG_BASE\x00key\x00key not known\x00CONFIG\x00insufficient memory to create list\x00QueryConfigObjCmd: Unknown subcommand to 'pkgconfig'. This can't happen\x00tclPackageAboutDict\x00Deleting\x00syntax error\x00Error: discarding\x00Error: popping\x00memory exhausted\x00Cleanup: discarding lookahead\x00Cleanup: popping\x00january\x00february\x00march\x00april\x00may\x00june\x00july\x00august\x00september\x00sept\x00october\x00november\x00december\x00sunday\x00monday\x00tuesday\x00tues\x00wednesday\x00wednes\x00thursday\x00thur\x00thurs\x00friday\x00saturday\x00fortnight\x00week\x00day\x00hour\x00minute\x00min\x00second\x00sec\x00tomorrow\x00yesterday\x00today\x00now\x00this\x00next\x00ago\x00epoch\x00stardate\x00gmt\x00ut\x00utc\x00uct\x00wet\x00bst\x00wat\x00at\x00nft\x00nst\x00ndt\x00ast\x00adt\x00est\x00edt\x00cst\x00cdt\x00mst\x00mdt\x00pst\x00pdt\x00yst\x00ydt\x00hst\x00hdt\x00ahst\x00nt\x00idlw\x00cet\x00cest\x00met\x00mewt\x00mest\x00swt\x00sst\x00fwt\x00fst\x00eet\x00bt\x00it\x00zp4\x00zp5\x00ist\x00zp6\x00wast\x00wadt\x00jt\x00cct\x00jst\x00jdt\x00kst\x00kdt\x00cast\x00cadt\x00east\x00eadt\x00gst\x00nzt\x00nzst\x00nzdt\x00idle\x00dst\x00a\x00b\x00c\x00d\x00e\x00f\x00g\x00h\x00i\x00k\x00l\x00m\x00n\x00o\x00p\x00q\x00r\x00s\x00t\x00u\x00v\x00w\x00x\x00y\x00z\x00 (characters \x00am\x00a.m.\x00pm\x00p.m.\x00stringToParse baseYear baseMonth baseDay\x00DATE\x00Unknown status returned from date parser. Please report this error as a bug in Tcl.\x00BUG\x00more than one date in string\x00MULTIPLE\x00more than one time of day in string\x00more than one time zone in string\x00more than one weekday in string\x00more than one ordinal month in string\x00dict\x00create\x00filter\x00keys\x00merge\x00remove\x00values\x00with\x00missing value to go with key\x00DICTIONARY\x00key \"%s\" not known in dictionary\x00DICT\x00Tcl_DictObjPut\x00Tcl_DictObjRemove\x00concurrent dictionary modification and search\x00Tcl_DictObjPutKeyList\x00%s called with empty key list\x00Tcl_DictObjRemoveKeyList\x00?key value ...?\x00dictionary ?key ...?\x00dictionary ?key value ...?\x00dictionary ?pattern?\x00dictionary\x00dictionary key ?key ...?\x00dictVarName key ?increment?\x00\n    (reading increment)\x00dictVarName key ?value ...?\x00{keyVarName valueVarName} dictionary script\x00must have exactly two variable names\x00SYNTAX\x00\n    (\"dict for\" body line %d)\x00\n    (\"dict map\" body line %d)\x00dictVarName key ?key ...? value\x00dictVarName key ?key ...?\x00dictionary filterType ?arg ...?\x00filterType\x00dictionary script {keyVarName valueVarName} filterScript\x00\n    (\"dict filter\" filter script key variable)\x00\n    (\"dict filter\" filter script value variable)\x00\n    (\"dict filter\" script line %d)\x00dictVarName key varName ?key varName ...? script\x00\n    (body of \"dict update\")\x00dictVarName ?key ...? script\x00\n    (body of \"dict with\")\x00instname\x00ByteCode 0x%s, refCt %u, epoch %u, interp 0x%s (epoch %u)\n\x00  Source \x00\n  File \"%s\" Line %d\x00\n  Cmds %d, src %d, inst %d, litObjs %u, aux %d, stkDepth %u, code/src %.2f\n\x00  Proc 0x%s, refCt %d, args %d, compiled locals %d\n\x00, scalar\x00, array\x00, link\x00, arg\x00, temp\x00, resolved\x00      slot %d%s%s%s%s%s%s\x00, \"%s\"\n\x00  Exception ranges %d, depth %d:\n\x00      %d: level %d, %s, pc %d-%d, \x00continue %d, break %d\n\x00catch %d\n\x00DisassembleByteCodeObj: bad ExceptionRange type %d\x00    \x00  Commands %d:\x00     \x00\n   \x00%s%4d: pc %d-%d, src %d-%d\x00  Command %d: \x00(%u) %s \x00%+d \x00%u \x00, %u cmds start here\x00pc %u\x00next cmd at pc %u\x00%d \x00end \x00end-%d \x00FormatInstruction: bad local var index %u (%u locals)\x00temp var %u\x00var \x00%%v%u \x00%s \x00\t# \x00\t# %s\x00\t\t[\x00]\n\x00InnerContext: bad tos -- appending null object\x00InnerContext: bad tos -- appending freed object %p\x00inst_%d\x00\"\"\x00\"\x00\\\"\x00\\f\x00\\n\x00\\r\x00\\t\x00\\v\x00\\U%08x\x00\\u%04x\x00%c\x00scalar\x00array\x00arg\x00temp\x00resolved\x00pc %d\x00@%d\x00%%%d\x00.%d\x00.end\x00.end-%d\x00?%d\x00=%s\x00opcode %d with more than zero 'no' operands\x00type %s level %d from %d to %d break %d continue %d\x00type %s level %d from %d to %d catch %d\x00codefrom\x00codeto\x00scriptfrom\x00scriptto\x00literals\x00exception\x00instructions\x00auxiliary\x00stackdepth\x00exceptdepth\x00initiallinenumber\x00sourcefile\x00constructor\x00destructor\x00lambda\x00method\x00objmethod\x00type ...\x00lambdaTerm\x00procName\x00PROC\x00className\x00\"%s\" is not a class\x00CLASS\x00\"%s\" has no defined constructor\x00DISASSEMBLE\x00CONSRUCTOR\x00body not available for this kind of constructor\x00METHODTYPE\x00body of constructor\x00\"%s\" has no defined destructor\x00DESRUCTOR\x00body not available for this kind of destructor\x00body of destructor\x00className methodName\x00objectName methodName\x00unknown method \"%s\"\x00METHOD\x00body not available for this kind of method\x00body of method\x00may not disassemble prebuilt bytecode\x00BYTECODE\x00*.enc\x00identity\x00utf-8\x00unicode\x00iso8859-1\x00FreeEncoding: refcount problem !!!\x00.enc\x00unknown encoding \"%s\"\x00invalid encoding file \"%s\"\x00init\x00final\x00EscapeToUtfProc: invalid sub table\x00configure\x00-map\x00-parameters\x00-prefixes\x00-subcommands\x00-unknown\x00-namespace\x00ensembleCommand\x00tried to manipulate ensemble of deleted namespace\x00ENSEMBLE\x00DEAD\x00subcommand ?arg ...?\x00?option value ...?\x00ensemble subcommand implementations must be non-empty lists\x00EMPTY_TARGET\x00cmdname\x00cmdname ?-option value ...? ?arg ...?\x00option -namespace is read-only\x00READ_ONLY\x00unexpected ensemble command\x00command is not an ensemble\x00NOT_ENSEMBLE\x00ensemble target is not a fully-qualified command\x00UNQUALIFIED_TARGET\x00\"%s\" is not an ensemble command\x00tcl:\x00invalid ensemble name '%s'\x00unable to find or create %s namespace!\x00ensemble activated for deleted namespace\x00full name %s not found in supposedly synchronized hash\x00unknown subcommand \"%s\": namespace %s does not export any commands\x00 or ambiguous\x00unknown%s subcommand \"%s\": must be \x00or %s\x00SpellFix: programming error\x00unknown subcommand handler deleted its ensemble\x00UNKNOWN_DELETED\x00\n    while parsing result of ensemble unknown subcommand handler\x00unknown subcommand handler returned bad code: \x00\n    result of ensemble unknown subcommand handler: \x00UNKNOWN_RESULT\x00\n    (ensemble unknown subcommand handler)\x00env\x00HOME\x00no such variable\x00tclBgError\x00error in background error handler:\n\x00msg options\x00-level\x00missing return option \"-level\"\x00-code\x00missing return option \"-code\"\x00bgerror\x00errorInfo\x00bgerror failed to handle background error.\n\x00    Original error: \x00    Error in bgerror: \x00TclSetBgErrorHandler: NULL cmdPrefix argument\x00OS exit failed!\x00TclInitSubsystems called while exiting\x00exit handlers were created during Tcl_Finalize\x00limit exceeded\x00can't wait for variable \"%s\": would wait forever\x00EVENT\x00NO_SOURCES\x00idletasks\x00Tcl_UpdateObjCmd: bad option index to UpdateOptions\x00?idletasks?\x00||\x00&&\x00exprcode\x00dictIterator\x00freeing an execStack which is still in use\x00Deleting execEnv with pending TEOV callbacks!\x00Deleting execEnv with existing coroutine\x00STACK: Reallocating with no previous alloc\x00STACK: Stack after current is in use\x00STACK: Stack after current is not last\x00TclStackFree: incorrect freePtr (%p != %p). Call out of sequence?\x00TclStackRealloc: incorrect ptr. Call out of sequence?\x00Tcl_EvalObj: compiled script jumped interps\x00TclIncrObj\x00tailcall can only be called from a proc or lambda\x00TclNRExecuteByteCode: unrecognized builtin function code %d\x00\n    (reading value of variable to increment)\x00access\x00array set\x00variable isn't array\x00WRITE\x00ARRAY\x00STACK_LEVEL\x00self may only be called from inside a method\x00OO\x00CONTEXT_REQUIRED\x00nextto may only be called from inside a method\x00CLASS_REQUIRED\x00%s implementation by \"%s\" not reachable from here\x00CLASS_NOT_REACHABLE\x00%s has no non-filter implementation by \"%s\"\x00CLASS_NOT_THERE\x00next may only be called from inside a method\x00no next %s implementation\x00NOTHING_NEXT\x00negative shift argument\x00INST_RETURN_CODE_BRANCH: TOS not a return code!\x00INST_RETURN_CODE_BRANCH: TOS is TCL_OK!\x00Should not happen!\x00mis-issued dictFirst!\x00mis-issued dictNext!\x00dictUpdateStart argument length mismatch\x00clockRead instruction with unknown clock#\x00TclNRExecuteByteCode: unrecognized opCode %u\x00divide by zero\x00DIVZERO\x00exponentiation of zero by negative power\x00\nTclNRExecuteByteCode: abnormal return at pc %u: stack top %d < entry stack top %d\n\x00TclNRExecuteByteCode execution failure: end stack top < start stack top\x00exponent too large\x00unexpected number type\x00empty string\x00invalid octal number\x00non-numeric string\x00non-numeric floating-point value\x00floating-point value\x00(big) integer\x00can't use %s as operand of \"%s\"\x00LocSearch failure\x00floating-point value too small to represent\x00UNDERFLOW\x00floating-point value too large to represent\x00OVERFLOW\x00unknown floating-point error, errno = %d\x00?-option value ...? source ?source ...? target\x00copying\x00renaming\x00error %s: target \"%s\" is not a directory\x00can't create directory \"%s\": %s\x00error deleting \"%s\": directory not empty\x00error deleting unknown file: %s\x00error deleting \"%s\": %s\x00can't overwrite file \"%s\" with directory \"%s\"\x00can't overwrite directory \"%s\" with file \"%s\"\x00u+w\x00-permissions\x00error renaming \"%s\" to \"%s\": trying to rename a volume or move a directory into itself\x00::tcl::CopyDirectory\x00can't unlink \"%s\": %s\x00error %s \"%s\"\x00 to \"%s\"\x00: \"%s\"\x00: %s\x00-force\x00name ?-option value ...?\x00must not update objPtrRef's variable and return non-NULL\x00bad option \"%s\", there are no file attributes in this filesystem\x00FATTR\x00value for \"%s\" missing\x00NOVALUE\x00?-linktype? linkname ?target?\x00-symbolic\x00-hard\x00could not create new link \"%s\": that path already exists\x00could not create new link \"%s\": no such file or directory\x00could not create new link \"%s\": target \"%s\" doesn't exist\x00could not create new link \"%s\" pointing to \"%s\": %s\x00could not read link \"%s\": %s\x00?nameVar? ?template?\x00can't create temporary file: %s\x00//?/UNC/\x00//?/\x00//\x00./\x00/\\:\x00couldn't find HOME environment variable to expand path\x00FILENAME\x00NO_HOME\x00user \"%s\" doesn't exist\x00USER\x00-directory\x00-join\x00-path\x00-tails\x00-types\x00missing argument to \"-directory\"\x00\"-directory\" may only be used once\x00\"-directory\" cannot be used with \"-path\"\x00GLOB\x00BADOPTIONCOMBINATION\x00missing argument to \"-path\"\x00\"-path\" may only be used once\x00\"-path\" cannot be used with \"-dictionary\"\x00missing argument to \"-types\"\x00\"-tails\" must be used with either \"-directory\" or \"-path\"\x00\\/\x00\\[]*?{}\x00readonly\x00hidden\x00macintosh\x00creator\x00bad argument to \"-types\": %s\x00BAD\x00only one MacOS type or creator argument to \"-types\" allowed\x00no files matched glob pattern%s \"\x00%s%s\x00NOMATCH\x00/\\\x00Called TclGlob with TCL_GLOBMODE_TAILS and pathPrefix==NULL\x00.\x00unmatched open-brace in file name\x00BALANCE\x00unmatched close-brace in file name\x00*[]?\\\x00invalid sharing of Tcl_Obj on C stack\x00malformed bucket chain in Tcl_DeleteHashEntry\x00%d entries in table, %d buckets\n\x00number of buckets with %d entries: %d\n\x00number of buckets with %d or more entries: %d\n\x00average search distance for entry: %.1f\x00called %s on deleted table\x00Tcl_FindHashEntry\x00Tcl_CreateHashEntry\x00::tcl::HistoryObjs\x00::history\x00ambiguous \x00bad \x00 \"\x00\": no valid options\x00\": must be \x00 or \x00all\x00longest\x00::tcl::prefix\x00prefix\x00-error\x00-message\x00?options? table string\x00missing value for -message\x00NOARG\x00missing value for -error\x00error options must have an even number of elements\x00table string\x00 or \"\x00wrong # args: should be \"\x00ambiguous option \"%s\"\x00unrecognized argument \"%s\"\x00expected integer argument for \"%s\" but got \"%s\"\x00expected floating-point argument for \"%s\" but got \"%s\"\x00bad argument type %d in Tcl_ArgvInfo\x00\"%s\" option requires an additional argument\x00Command-specific options:\x00\n%s\x00\n %s:\x00\n\t\tDefault value: %d\x00\n\t\tDefault value: %g\x00\n\t\tDefault value: \"%s\"\x00ok\x00bad completion code \"%s\": must be ok, error, return, break, continue, or an integer\x00RESULT\x00ILLEGAL_CODE\x00if {[namespace which -command tclInit] eq \"\"} {\n  proc tclInit {} {\n    global tcl_libPath tcl_library env tclDefaultLibrary\n    rename tclInit {}\n    if {[info exists tcl_library]} {\n\tset scripts {{set tcl_library}}\n    } else {\n\tset scripts {}\n\tif {[info exists env(TCL_LIBRARY)] && ($env(TCL_LIBRARY) ne {})} {\n\t    lappend scripts {set env(TCL_LIBRARY)}\n\t    lappend scripts {\nif {[regexp ^tcl(.*)$ [file tail $env(TCL_LIBRARY)] -> tail] == 0} continue\nif {$tail eq [info tclversion]} continue\nfile join [file dirname $env(TCL_LIBRARY)] tcl[info tclversion]}\n\t}\n\tif {[info exists tclDefaultLibrary]} {\n\t    lappend scripts {set tclDefaultLibrary}\n\t} else {\n\t    lappend scripts {::tcl::pkgconfig get scriptdir,runtime}\n\t}\n\tlappend scripts {\nset parentDir [file dirname [file dirname [info nameofexecutable]]]\nset grandParentDir [file dirname $parentDir]\nfile join $parentDir lib tcl[info tclversion]} \\\n\t{file join $grandParentDir lib tcl[info tclversion]} \\\n\t{file join $parentDir library} \\\n\t{file join $grandParentDir library} \\\n\t{file join $grandParentDir tcl[info patchlevel] library} \\\n\t{\nfile join [file dirname $grandParentDir] tcl[info patchlevel] library}\n\tif {[info exists tcl_libPath]\n\t\t&& [catch {llength $tcl_libPath} len] == 0} {\n\t    for {set i 0} {$i < $len} {incr i} {\n\t\tlappend scripts [list lindex \\$tcl_libPath $i]\n\t    }\n\t}\n    }\n    set dirs {}\n    set errors {}\n    foreach script $scripts {\n\tlappend dirs [eval $script]\n\tset tcl_library [lindex $dirs end]\n\tset tclfile [file join $tcl_library init.tcl]\n\tif {[file exists $tclfile]} {\n\t    if {[catch {uplevel #0 [list source $tclfile]} msg opts]} {\n\t\tappend errors \"$tclfile: $msg\n\"\n\t\tappend errors \"[dict get $opts -errorinfo]\n\"\n\t\tcontinue\n\t    }\n\t    unset -nocomplain tclDefaultLibrary\n\t    return\n\t}\n    }\n    unset -nocomplain tclDefaultLibrary\n    set msg \"Can't find a usable init.tcl in the following directories: \n\"\n    append msg \"    $dirs\n\n\"\n    append msg \"$errors\n\n\"\n    append msg \"This probably means that Tcl wasn't installed properly.\n\"\n    error $msg\n  }\n}\ntclInit\x00interp\x00InterpInfoDeleteProc: still exist commands\x00InterpInfoDeleteProc: still exist aliases\x00alias\x00aliases\x00cancel\x00children\x00debug\x00expose\x00hide\x00issafe\x00invokehidden\x00limit\x00marktrusted\x00recursionlimit\x00slaves\x00share\x00target\x00transfer\x00cmd ?arg ...?\x00slavePath slaveCmd ?masterPath masterCmd? ?arg ...?\x00path ?cmdPrefix?\x00-unwind\x00?-unwind? ?--? ?path? ?result?\x00-safe\x00?-safe? ?--? ?path?\x00interp%d\x00path ?-frame ?bool??\x00cannot delete the current interpreter\x00INTERP\x00DELETESELF\x00path arg ?arg ...?\x00path hiddenCmdName ?cmdName?\x00path cmdName ?hiddenCmdName?\x00-global\x00path ?-namespace ns? ?-global? ?--? cmd ?arg ..?\x00path limitType ?-option value ...?\x00limit type\x00path\x00path ?newlimit?\x00srcPath channelId destPath\x00path alias\x00alias \"%s\" in path \"%s\" not found\x00ALIAS\x00target interpreter for alias \"%s\" in path \"%s\" is not my descendant\x00TARGETSHROUDED\x00?path?\x00alias \"%s\" not found\x00cannot define or rename alias \"%s\": interpreter deleted\x00cannot define or rename alias \"%s\": would create a loop\x00ALIASLOOP\x00could not find interpreter \"%s\"\x00cmdPrefix must be list of length >= 1\x00BGERRORFORMAT\x00interpreter named \"%s\" already exists, cannot create\x00tcl_interactive\x00ChildObjCmd: interpreter has been deleted\x00aliasName ?targetName? ?arg ...?\x00?cmdPrefix?\x00?-frame ?bool??\x00hiddenCmdName ?cmdName?\x00cmdName ?hiddenCmdName?\x00?-namespace ns? ?-global? ?--? cmd ?arg ..?\x00limitType ?-option value ...?\x00?newlimit?\x00-frame\x00debug option\x00permission denied: safe interpreter cannot expose commands\x00UNSAFE\x00permission denied: safe interpreters cannot change recursion limit\x00recursion limit must be > 0\x00BADLIMIT\x00falling back due to new recursion limit\x00RECURSION\x00permission denied: safe interpreter cannot hide commands\x00not allowed to invoke hidden commands from safe interpreter\x00permission denied: safe interpreter cannot mark trusted\x00namespace eval ::tcl {namespace eval mathfunc {}}\x00::tcl::mathfunc::min\x00::tcl::mathfunc::max\x00os\x00osVersion\x00machine\x00user\x00tclDefaultLibrary\x00tcl_pkgPath\x00command count limit exceeded\x00COMMANDS\x00time limit exceeded\x00TIME\x00unknown type of resource limit\x00\n    (while waiting for event)\x00limit granularity must be positive\x00installing limit callback to the limited interpreter\x00-granularity\x00-value\x00limits on current interpreter inaccessible\x00SELF\x00?-option value ...?\x00granularity must be at least 1\x00BADVALUE\x00command limit value must be at least 0\x00-seconds\x00milliseconds must be at least 0\x00seconds must be at least 0\x00may only set -milliseconds if -seconds is not also being reset\x00BADUSAGE\x00may only reset -milliseconds if -seconds is also being reset\x00channel\x00TCL_FLUSH_NONBLOCKING_ON_EXIT\x00-blocking\x00tclIO\x00Tcl_RegisterChannel: channel without name\x00Tcl_RegisterChannel: duplicate channel names\x00illegal recursive call to close through close-handler of channel\x00stdin\x00stdout\x00stderr\x00can not find channel named \"%s\"\x00CHANNEL\x00channel type %s must define closeProc\x00channel type %s must define inputProc when used for reader channel\x00channel type %s must define outputProc when used for writer channel\x00channel type %s must define watchProc\x00channel type %s must define seekProc if defining wideSeekProc\x00couldn't find state for channel \"%s\"\x00reading and writing both disallowed for channel \"%s\"\x00could not flush channel \"%s\"\x00Channel released more than preserved\x00channel \"%s\" does not support OS handles\x00Reuse of ChannelBuffer! %p\x00unable to access channel: invalid channel\x00TclFlush, closed channel: queued output left\x00FlushChannel: damaged channel list\x00SpliceChannel: trying to add channel used in different list\x00called Tcl_Close on channel with refCount > 0\x00double-close of channels not supported by %ss\x00half-close of channels not supported by %ss\x00half-close not applicable to stack of transformations\x00write\x00Half-close of %s-side not possible, side not opened or already closed\x00ClosechanHalf, closed write-side of channel: queued output left\x00unknown output translation requested\x00Tcl_GetsObj: gotEOL reached with bufPtr==NULL\x00TclGetsObjBinary: gotEOL reached with bufPtr==NULL\x00binary encoding is not available\x00Buffer Underflow, BUFFER_PADDING not enough\x00unknown input translation %d\x00blocking buffering buffersize encoding eofchar translation\x00malformed option list in channel driver\x00bad option \"%s\": should be one of \x00-%s, \x00or -%s\x00-buffering\x00none\x00full\x00-buffersize\x00-eofchar\x00-translation\x00auto\x00cr\x00crlf\x00lf\x00unable to set channel options: background copy in progress\x00bad value for -buffering: must be one of full, line, or none\x00bad value for -eofchar: must be non-NUL ASCII character\x00bad value for -eofchar: should be a list of zero, one, or two elements\x00bad value for -translation: must be a one or two element list\x00platform\x00bad value for -translation: must be one of auto, binary, cr, lf, crlf, or platform\x00tcp\x00channelId event ?script?\x00event name\x00channel is not %s\x00channel \"%s\" is busy\x00writ\x00error %sing \"%s\": %s\x00error reading \"\x00\": \x00error writing \"\x00error setting blocking mode: %s\x00Tcl_SetChannelError: bad syntax of message\x00Defined newlevel not used in rewrite\x00Defined newcode not used in rewrite\x00-nonewline\x00nonewline\x00?-nonewline? ?channelId? string\x00channel \"%s\" wasn't opened for writing\x00error writing \"%s\": %s\x00channelId\x00error flushing \"%s\": %s\x00channelId ?varName?\x00channel \"%s\" wasn't opened for reading\x00error reading \"%s\": %s\x00channelId ?numChars?\x00?-nonewline? channelId\x00expected non-negative integer but got \"%s\"\x00NUMBER\x00start\x00current\x00channelId offset ?origin?\x00origin\x00error during seek on \"%s\": %s\x00channelId ?direction?\x00direction\x00channelId ?-option value ...?\x00-ignorestderr\x00-keepnewline\x00?-option ...? arg ?arg ...?\x00error reading output from command: %s\x00fileName ?access? ?permissions?\x000o\x00Tcl_OpenCmd: invalid mode value\x00tclTCPAcceptCallbacks\x00RegisterTcpServerCleanup: damaged accept record table\x00-async\x00-myaddr\x00-myport\x00-server\x00cannot set -async option for server sockets\x00no argument given for -myaddr option\x00no argument given for -myport option\x00no argument given for -server option\x00Tcl_SocketObjCmd: bad option index to SocketOptions\x00option -myport is not valid for servers\x00?-myaddr addr? ?-myport myport? ?-async? host port\x00-server command ?-myaddr addr? port\x00-size\x00input output ?-size size? ?-command callback?\x00input\x00output\x00mode channelId\x00channelId ?length?\x00cannot truncate to negative length of file\x00could not determine current location in \"%s\": %s\x00error during truncate on \"%s\": %s\x00blocked\x00event\x00pending\x00pipe\x00postevent\x00truncate\x00::fconfigure\x00chan\x00tclrchannel\x00blocking\x00cget\x00cgetall\x00finalize\x00initialize\x00watch\x00{read delivered more than requested}\x00{write wrote more than requested}\x00{write wrote nothing}\x00{Tried to seek before origin}\x00{Owner lost}\x00-code 1 -level 0 -errorcode NONE -errorinfo {} -errorline 1 {Owner lost}\x00mode cmdprefix\x00chan handler \"%s initialize\" returned non-list: %s\x00chan handler \"\x00 initialize\" returned \x00chan handler \"%s\" does not support all required methods\x00chan handler \"%s\" lacks a \"read\" method\x00chan handler \"%s\" lacks a \"write\" method\x00chan handler \"%s\" supports \"cget\" but not \"cgetall\"\x00chan handler \"%s\" supports \"cgetall\" but not \"cget\"\x00TclChanCreateObjCmd: duplicate channel names\x00channel eventspec\x00can not find reflected channel named \"%s\"\x00TclChanPostEventObjCmd: channel is not a reflected channel\x00TclChanPostEventObjCmd: postevent accepted for call from outside interpreter\x00tried to post events channel \"%s\" is not interested in\x00TclChanCaughtErrorBypass: Bad syntax of caught result\x00Expected list with even number of elements, got %d element%s instead\x00bad %s list: is empty\x00read write\x00rc%lu\x00chan handler returned bad code: %d\x00\n    (chan handler subcommand \"%s\")\x00EAGAIN\x00ReflectedChannelMap\x00tclrtransform\x00clear\x00drain\x00limit?\x00{read not supported by Tcl driver}\x00{write not supported by Tcl driver}\x00channel cmdprefix\x00chan handler \"%s initialize\" returned %s\x00chan handler \"%s\" makes the channel inaccessible\x00chan handler \"%s\" supports \"drain\" but not \"read\"\x00chan handler \"%s\" supports \"flush\" but not \"write\"\x00TclChanPushObjCmd: duplicate transformation handle\x00rt%lu\x00ReflectedTransformMap\x00transform\x00-command value is not a list\x00\nfailed to stack channel \"%s\"\x00create/write\x00create/read\x00delete/write\x00flush/write\x00flush/read\x00delete/read\x00query/maxRead\x00clear/read\x00couldn't open socket: port number too high\x00::tcl::unsupported::socketAF\x00inet\x00inet6\x00native\x00glob couldn't determine the current working directory\x00illegal access mode \"%s\"\x00\n    while processing open access modes \"\x00RDONLY\x00WRONLY\x00RDWR\x00APPEND\x00CREAT\x00EXCL\x00NOCTTY\x00NONBLOCK\x00TRUNC\x00invalid access mode \"%s\": must be RDONLY, WRONLY, RDWR, APPEND, BINARY, CREAT, EXCL, NOCTTY, NONBLOCK, or TRUNC\x00access mode must include either RDONLY, WRONLY, or RDWR\x00couldn't read file \"%s\": %s\x00\x1a {}\x00\ufeff\x00\n    (file \"%.*s%s\" line %d)\x00POSIX\x00could not seek to end of file while opening \"%s\": %s\x00couldn't open \"%s\": %s\x00error getting working directory name: %s\x00TCL_TEMPLOAD_NO_UNLINK\x00couldn't load library \"%s\": %s\x00couldn't load from current filesystem\x000700\x00cannot unload: filesystem does not support unloading\x00wb\x00rb\x00Tcl_FSGetFileSystemForPath called with NULL object\x00Tcl_FSGetFileSystemForPath called with object with refCount == 0\x00variable '%s' is already linked\x00internal error: bad linked variable type\x00linked variable is read-only\x00internal error: linked variable couldn't be read\x00variable must have integer value\x00variable must have real value\x00variable must have boolean value\x00variable must have char value\x00variable must have unsigned char value\x00variable must have short value\x00variable must have unsigned short value\x00variable must have unsigned int value\x00variable must have long value\x00variable must have unsigned long value\x00variable must have unsigned wide int value\x00variable must have float value\x00NULL\x00??\x00invalidReal\x00xXbBoO\x00+-\x00NewListInternalRep: expects postive element count\x00list creation failed: unable to alloc %u bytes\x00Tcl_SetListObj\x00Tcl_ListObjAppendList\x00Tcl_ListObjAppendElement\x00Tcl_ListObjReplace\x00list index out of range\x00LSET\x00TclListObjSetElement\x00max size of Tcl literal array (%d literals) exceeded\x00-lazy\x00?-global? ?-lazy? ?--? fileName ?packageName? ?interp?\x00must specify either file name or package name\x00LOAD\x00NOLIBRARY\x00file \"%s\" is already loaded for package \"%s\"\x00SPLITPERSONALITY\x00tclLoad\x00package \"%s\" isn't loaded statically\x00NOTSTATIC\x00couldn't figure out package name for %s\x00WHATPACKAGE\x00_Init\x00_SafeInit\x00_Unload\x00_SafeUnload\x00can't use package in a safe interpreter: no %s_SafeInit procedure\x00can't attach package to interpreter: no %s_Init procedure\x00ENTRYPOINT\x00-keeplibrary\x00?-switch ...? fileName ?packageName? ?interp?\x00UNLOAD\x00package \"%s\" is loaded statically and cannot be unloaded\x00STATIC\x00file \"%s\" has never been loaded\x00NEVERLOADED\x00file \"%s\" has never been loaded in this interpreter\x00file \"%s\" cannot be unloaded under a safe interpreter\x00CANNOT\x00file \"%s\" cannot be unloaded under a trusted interpreter\x00tcl_rcFileName\x00argv0\x00argc\x00argv\x00application-specific initialization failed: \x00exit %d\x00TCL_FINALIZE_ON_EXIT\x00tcl_prompt2\x00tcl_prompt1\x00\n    (script that generates prompt)\x00nsName\x00code\x00ensemble\x00export\x00forget\x00import\x00parent\x00qualifiers\x00which\x00Trying to push call frame for dead namespace\x00errorCode\x00can't create namespace \"\": only global namespace can have empty name\x00CREATEGLOBAL\x00can't create namespace \"%s\": already exists\x00CREATEEXISTING\x00invalid export pattern \"%s\": pattern can't specify a namespace\x00EXPORT\x00auto_import\x00empty import pattern\x00IMPORT\x00unknown namespace in import pattern \"%s\"\x00no namespace specified in import pattern \"%s\"\x00ORIGIN\x00import pattern \"%s\" tries to import from namespace \"%s\" into itself\x00import pattern \"%s\" would create a loop containing command \"%s\"\x00LOOP\x00can't import command \"%s\": already exists\x00OVERWRITE\x00unknown namespace in namespace forget pattern \"%s\"\x00DeleteImportedCmd: did not find cmd in real cmd's list of import references\x00Could not create namespace '%s'\x00unknown namespace \"%s\"\x00unknown command \"%s\"\x00namespace \"%s\" not found\x00namespace \"%s\" not found in \"%s\"\x00?name? ?pattern?\x00?name name...?\x00unknown namespace \"%s\" in namespace delete command\x00name arg ?arg...?\x00\n    (in namespace %s \"%.*s%s\" script line %d)\x00?-clear? ?pattern pattern...?\x00-clear\x00?pattern pattern...?\x00?-force? ?pattern pattern...?\x00?pathList?\x00?script?\x00ns ?otherVar myVar ...?\x00-variable\x00?-command? ?-variable? name\x00while executing\x00invoked from within\x00\n    %s\n\"%.*s%s\"\x00booleanString\x00wideInt\x00bignum\x00cmdName\x00Derived ICL data for object using offsets from before the script\x00can't convert value to type %s\x00API_ABUSE\x00TclSetDuplicateObj\x00UpdateStringProc should not be invoked for type %s\x00UpdateStringProc for type '%s' failed to create a valid string rep\x00Tcl_SetBooleanObj\x00boolean value\x00expected boolean value but got \"\x00BOOLEAN\x00yes\x00no\x00off\x00Tcl_SetDoubleObj\x00floating point value is Not a Number\x00DOUBLE\x00NAN\x00floating-point number\x00Tcl_SetIntObj\x00Tcl_SetLongObj\x00expected integer but got \"%s\"\x00INTEGER\x00IOVERFLOW\x00%lld\x00Tcl_SetWideIntObj\x00initialization failure in DupBignum\x00radix size failure in UpdateStringOfBignum\x00UpdateStringOfBignum: string length limit exceeded\x00conversion failure in UpdateStringOfBignum\x00insufficient memory to unpack bignum\x00Tcl_SetBignumObj\x00number\x00pure string\x00value is a %s with a refcount of %d, object pointer at %s\x00%p:%p\x00, internal representation %s\x00, string representation \"\x00, no string representation\x00can't parse a NULL pointer\x00extra characters after close-quote\x00extra characters after close-brace\x00ParseTokens encountered unknown character\x00missing close-brace for variable name\x00missing )\x00$\x00missing close-brace\x00: possible unbalanced brace in comment\x00missing \"\x00TclSubstParse: programming error\x00bad parse in TclSubstParse: %c\x00unexpected token type in TclSubstTokens: %d\x00Bad portion to TclPathPart\x00can't find object string representation\x00PATH\x00WTF\x00HOMELESS\x00NOUSER\x00Called UpdateStringOfFsPath with invalid object\x00writing\x00reading\x00channel \"%s\" wasn't opened for %s\x00EXEC\x00BADCHAN\x00couldn't %s file \"%s\": %s\x00can't specify \"%s\" as last word in command\x00child process lost (is SIGCHLD ignored or trapped?)\x00error waiting for process to exit: %s\x00%lu\x00%u\x00CHILDSTATUS\x00CHILDKILLED\x00child killed: %s\n\x00CHILDSUSP\x00child suspended: %s\n\x00child wait status didn't make sense\n\x00ODDWAITRESULT\x00error reading stderr output file: %s\x00child process exited abnormally\x00illegal use of | or |& in command\x00PIPESYNTAX\x00must specify \"%s\" as last word in command\x00couldn't create input file for command: %s\x00couldn't create input pipe for command: %s\x00couldn't create output pipe for command: %s\x00couldn't create error file for command: %s\x00couldn't create pipe: %s\x00can't read output from command: standard output was redirected\x00BADREDIRECT\x00can't write input to command: standard input was redirected\x00pipe for command could not be created\x00NOPIPE\x00conflicting versions provided for package \"%s\": %s, then %s\x00PACKAGE\x00VERSIONCONFLICT\x00Cannot load package \"%s\" in standalone executable: This package is not compiled with stub support\x00UNSTUBBED\x00bad return code: %d\x00BADRESULT\x00\n    (\"package unknown\" script)\x00can't find package %s\x00UNFOUND\x00version conflict for package \"%s\": have %s, need\x00circular package dependency: attempt to provide %s %s requires %s\x00CIRCULARITY\x00attempt to provide package %s %s failed: no version of package %s provided\x00UNPROVIDED\x00attempt to provide package %s %s failed: package %s %s provided instead\x00WRONGPROVIDE\x00attempt to provide package %s %s failed: bad return code: %s\x00\n    (\"package ifneeded %s %s\" script)\x00package %s %s is not present\x00package %s is not present\x00ifneeded\x00prefer\x00present\x00provide\x00require\x00vcompare\x00versions\x00vsatisfies\x00option ?arg ...?\x00package version ?script?\x00package ?version?\x00?-exact? package ?requirement ...?\x00?command?\x00latest\x00stable\x00?latest|stable?\x00preference\x00version1 version2\x00version ?requirement ...?\x00Tcl_PackageObjCmd: bad option index to pkgOptions\x00expected version number but got \"%s\"\x00VERSION\x00expected versionMin-versionMax but got \"%s\"\x00VERSIONRANGE\x00 exactly %s\x00 %s\x00 0-\x00 -2\x00threaded\x00profiled\x0064bit\x00optimized\x00mem_debug\x00compile_debug\x00compile_stats\x00libdir,runtime\x00/usr/local/lib\x00bindir,runtime\x00/usr/local/bin\x00scriptdir,runtime\x00/usr/local/lib/tcl8.6\x00includedir,runtime\x00/usr/local/include\x00docdir,runtime\x00/usr/local/man\x00libdir,install\x00bindir,install\x00scriptdir,install\x00includedir,install\x00docdir,install\x00tcl\x00E2BIG\x00EACCES\x00EADDRINUSE\x00EADDRNOTAVAIL\x00EADV\x00EAFNOSUPPORT\x00EALREADY\x00EBADE\x00EBADF\x00EBADFD\x00EBADMSG\x00ECANCELED\x00EBADR\x00EBADRQC\x00EBADSLT\x00EBFONT\x00EBUSY\x00ECHILD\x00ECHRNG\x00ECOMM\x00ECONNABORTED\x00ECONNREFUSED\x00ECONNRESET\x00EDEADLK\x00EDESTADDRREQ\x00EDOM\x00EDOTDOT\x00EDQUOT\x00EEXIST\x00EFAULT\x00EFBIG\x00EHOSTDOWN\x00EHOSTUNREACH\x00EIDRM\x00EILSEQ\x00EINPROGRESS\x00EINTR\x00EINVAL\x00EIO\x00EISCONN\x00EISDIR\x00EL2HLT\x00EL2NSYNC\x00EL3HLT\x00EL3RST\x00ELIBACC\x00ELIBBAD\x00ELIBEXEC\x00ELIBMAX\x00ELIBSCN\x00ELNRNG\x00ELOOP\x00EMFILE\x00EMLINK\x00EMSGSIZE\x00EMULTIHOP\x00ENAMETOOLONG\x00ENAVAIL\x00ENETDOWN\x00ENETRESET\x00ENETUNREACH\x00ENFILE\x00ENOANO\x00ENOBUFS\x00ENOCSI\x00ENODATA\x00ENODEV\x00ENOENT\x00ENOEXEC\x00ENOLCK\x00ENOLINK\x00ENOMEM\x00ENOMSG\x00ENONET\x00ENOPKG\x00ENOPROTOOPT\x00ENOSPC\x00ENOSR\x00ENOSTR\x00ENOSYS\x00ENOTBLK\x00ENOTCONN\x00ENOTRECOVERABLE\x00ENOTDIR\x00ENOTEMPTY\x00ENOTNAM\x00ENOTSOCK\x00ENOTSUP\x00ENOTTY\x00ENOTUNIQ\x00ENXIO\x00EOVERFLOW\x00EOWNERDEAD\x00EPERM\x00EPFNOSUPPORT\x00EPIPE\x00EPROTO\x00EPROTONOSUPPORT\x00EPROTOTYPE\x00ERANGE\x00EREMCHG\x00EREMOTE\x00EREMOTEIO\x00EROFS\x00ESHUTDOWN\x00ESOCKTNOSUPPORT\x00ESPIPE\x00ESRCH\x00ESRMNT\x00ESTALE\x00ETIME\x00ETIMEDOUT\x00ETOOMANYREFS\x00ETXTBSY\x00EUCLEAN\x00EUNATCH\x00EUSERS\x00EXDEV\x00EXFULL\x00unknown error\x00argument list too long\x00permission denied\x00address already in use\x00cannot assign requested address\x00advertise error\x00address family not supported by protocol\x00resource temporarily unavailable\x00operation already in progress\x00bad exchange descriptor\x00bad file number\x00file descriptor in bad state\x00not a data message\x00operation canceled\x00bad request descriptor\x00bad request code\x00invalid slot\x00bad font file format\x00file busy\x00no children\x00channel number out of range\x00communication error on send\x00software caused connection abort\x00connection refused\x00connection reset by peer\x00resource deadlock avoided\x00destination address required\x00math argument out of range\x00cross mount point\x00disk quota exceeded\x00file already exists\x00bad address in system call argument\x00file too large\x00host is down\x00host is unreachable\x00identifier removed\x00illegal byte sequence\x00operation now in progress\x00interrupted system call\x00invalid argument\x00I/O error\x00socket is already connected\x00illegal operation on a directory\x00level 2 halted\x00level 2 not synchronized\x00level 3 halted\x00level 3 reset\x00cannot access a needed shared library\x00accessing a corrupted shared library\x00cannot exec a shared library directly\x00attempting to link in more shared libraries than system limit\x00.lib section in a.out corrupted\x00link number out of range\x00too many levels of symbolic links\x00too many open files\x00too many links\x00message too long\x00multihop attempted\x00file name too long\x00not available\x00network is down\x00network dropped connection on reset\x00network is unreachable\x00file table overflow\x00anode table overflow\x00no buffer space available\x00no CSI structure available\x00no data available\x00no such device\x00no such file or directory\x00exec format error\x00no locks available\x00link has been severed\x00not enough memory\x00no message of desired type\x00machine is not on the network\x00package not installed\x00bad protocol option\x00no space left on device\x00out of stream resources\x00not a stream device\x00function not implemented\x00block device required\x00socket is not connected\x00state not recoverable\x00not a directory\x00directory not empty\x00not a name file\x00socket operation on non-socket\x00operation not supported\x00inappropriate device for ioctl\x00name not unique on network\x00no such device or address\x00file too big\x00owner died\x00not owner\x00protocol family not supported\x00broken pipe\x00protocol error\x00protocol not supported\x00protocol wrong type for socket\x00math result unrepresentable\x00remote address changed\x00pathname hit remote file system\x00remote i/o error\x00read-only file system\x00cannot send after socket shutdown\x00socket type not supported\x00invalid seek\x00no such process\x00srmount error\x00stale remote file handle\x00timer expired\x00connection timed out\x00too many references: cannot splice\x00text file or pseudo-device busy\x00structure needs cleaning\x00protocol driver not attached\x00too many users\x00cross-domain link\x00message tables full\x00SIGABRT\x00SIGALRM\x00SIGBUS\x00SIGCHLD\x00SIGCONT\x00SIGFPE\x00SIGHUP\x00SIGILL\x00SIGINT\x00SIGIO\x00SIGKILL\x00SIGPIPE\x00SIGPROF\x00SIGPWR\x00SIGQUIT\x00SIGSEGV\x00SIGSTOP\x00SIGSYS\x00SIGTERM\x00SIGTRAP\x00SIGTSTP\x00SIGTTIN\x00SIGTTOU\x00SIGURG\x00SIGUSR1\x00SIGUSR2\x00SIGVTALRM\x00SIGWINCH\x00SIGXCPU\x00SIGXFSZ\x00unknown signal\x00alarm clock\x00bus error\x00child status changed\x00continue after stop\x00floating-point exception\x00hangup\x00illegal instruction\x00interrupt\x00input/output possible on file\x00kill signal\x00write on pipe with no readers\x00profiling alarm\x00power-fail restart\x00quit signal\x00segmentation violation\x00stop\x00bad argument to system call\x00software termination signal\x00trace trap\x00stop signal from tty\x00background tty read\x00background tty write\x00urgent I/O condition\x00user-defined signal 1\x00user-defined signal 2\x00virtual time alarm\x00window changed\x00exceeded CPU time limit\x00exceeded file size limit\x00Tcl_Release couldn't find reference for %p\x00Tcl_EventuallyFree called twice for %p\x00lambdaExpr\x00procbody\x00levelReference\x00name args body\x00\n    (creating proc \"\x00procedure \"%s\": arg list contains %d entries, precompiled header expects %d\x00BYTECODELIES\x00too many fields in argument specifier \"\x00FORMALARGUMENTFORMAT\x00argument with no name\x00formal parameter \"%s\" is an array element\x00formal parameter \"\x00\" is not a simple name\x00procedure \"%s\": formal parameter %d is inconsistent with precompiled body\x00procedure \"%s\": formal parameter \"\x00\" has default value inconsistent with precompiled body\x00STACKLEVEL\x00\n    (\"uplevel\" body line %d)\x00?level? command ?arg ...?\x00?\x00?arg ...?\x00body object for proc attached to frame is not a byte code type\x00body of lambda term\x00body of proc\x00invoked \"%s\" outside of a loop\x00UNEXPECTED\x00a precompiled script jumped interps\x00CROSSINTERPBYTECODE\x00\n    (procedure \"%.*s%s\" line %d)\x00TclUpdateReturnInfo: negative return level\x00can't interpret \"%s\" as a lambda expression\x00LAMBDA\x00\n    (parsing lambda expression \"%s\")\x00lambdaExpr ?arg ...?\x00\n    (lambda term \"%.*s%s\" line %d)\x00error while matching regular expression: \x00REG_UBACKREF\x00REG_ULOOKAHEAD\x00REG_UBOUNDS\x00REG_UBRACES\x00REG_UBSALNUM\x00REG_UPBOTCH\x00REG_UBBS\x00REG_UNONPOSIX\x00REG_UUNSPEC\x00REG_UUNPORT\x00REG_ULOCALE\x00REG_UEMPTYMATCH\x00REG_UIMPOSSIBLE\x00REG_USHORTEST\x00%s%s%s\x00couldn't compile regular expression pattern: \x00-errorline\x00-errorstack\x00bad %s value: expected dictionary but got \"%s\"\x00ILLEGAL_OPTIONS\x00bad -level value: expected non-negative integer but got \"%s\"\x00ILLEGAL_LEVEL\x00bad -errorcode value: expected a list but got \"%s\"\x00ILLEGAL_ERRORCODE\x00bad -errorstack value: expected a list but got \"%s\"\x00NONLIST_ERRORSTACK\x00forbidden odd-sized list for -errorstack: \"%s\"\x00ODDSIZEDLIST_ERRORSTACK\x00expected dict but got \"%s\"\x00cannot mix \"%\" and \"%n$\" conversion specifiers\x00FORMAT\x00MIXEDSPECTYPES\x00field width may not be specified in %c conversion\x00BADWIDTH\x00field size modifier may not be specified in %\x00 conversion\x00BADSIZE\x00unsigned bignum scans are invalid\x00BADUNSIGNED\x00unmatched [ in format string\x00BRACKET\x00bad scan conversion character \"\x00BADTYPE\x00variable is assigned by multiple \"%n$\" conversion specifiers\x00POLYASSIGNED\x00variable is not assigned by any conversion specifiers\x00UNASSIGNED\x00\"%n$\" argument index out of range\x00INDEXRANGE\x00different numbers of variable names and field specifiers\x00FIELDVARMISMATCH\x00string format ?varName ...?\x00Tcl_SetStringObj\x00Tcl_SetObjLength: negative length requested: %d (integer overflow?)\x00Tcl_SetObjLength\x00max length for a Tcl unicode value (%d chars) exceeded\x00Tcl_AttemptSetObjLength\x00Tcl_SetUnicodeObj\x00Tcl_AppendLimitedToObj\x00Tcl_AppendUnicodeToObj\x00Tcl_AppendStringsToObj\x00max size for a Tcl value exceeded\x00Tcl_AppendFormatToObj\x00format string ended in middle of field specifier\x00INCOMPLETE\x00unsigned bignum format is invalid\x000X\x000x\x000b\x00bad field specifier \"%c\"\x00Unable to format \"%s\" with supplied arguments: %s\x00TclParseNumber: bad acceptState %d parsing '%s'\x00TclParseNumber: state INITIAL can't happen here\x00expected %s but got \"\x00 (looks like invalid octal number)\x00Infinity\x00NaN\x00impossible conversion type in TclDoubleDigits\x00wrong digit!\x00in ShouldBankerRoundUp, trichotomy fails!\x00in ShouldBankerRoundUpToNext, trichotomy fails!\x00This code doesn't work on a decimal machine!\x00unknown floating point word order on this machine\x00(%llx)\x00Tcl_GetMemoryInfo called when threaded memory allocator not in use\x00TclFinalizeThreadAlloc called when threaded memory allocator not in use\x00tclAfter\x00bad argument \"%s\": must be cancel, idle, info, or an integer\x00argument\x00after#%d\x00id|command\x00script ?script ...?\x00?id?\x00event \"%s\" doesn't exist\x00timer\x00Tcl_AfterObjCmd: bad subcommand index to afterSubCmds\x00after#\x00\n    (\"after\" script)\x00execution\x00vdelete\x00vinfo\x00type ?arg ...?\x00type name\x00name ops command\x00bad operations \"%s\": should be one or more of rwua\x00TRACE\x00BADOPS\x00enter\x00leave\x00enterstep\x00leavestep\x00name opList command\x00bad operation list \"\": must be one or more of enter, leave, enterstep, or leavestep\x00NOOPS\x00operation\x00bad operation list \"\": must be one or more of delete or rename\x00bad operation list \"\": must be one or more of array, read, unset, or write\x00 rename\x00 delete\x00TraceExecutionProc: bad flag combination\x00 a\x00 r\x00 w\x00 u\x00 array\x00 read\x00 write\x00 unset\x00Cannot trace a variable with no name\x00trace array\x00(\x00\n    (%s trace on \"%s%s%s%s\")\x00bad result flag combination\x00end-offset\x00LIST\x00%s element in braces followed by \"%.*s\" instead of space\x00JUNK\x00%s element in quotes followed by \"%.*s\" instead of space\x00unmatched open brace in %s\x00BRACE\x00unmatched open quote in %s\x00QUOTE\x00internal error in Tcl_SplitList\x00INTERNAL\x00Tcl_SplitList\x00TclScanElement: string length overflow\x00Tcl_Merge called with negative argc (%d)\x00Tcl_Concat: max size of Tcl value exceeded\x00 \f\v\r\t\n\x00 {\x00{\x00-Inf\x00Inf\x00e%+d\x00e%+03d\x00can't modify precision from a safe interpreter\x00improper value for precision\x00bad index \"%s\": must be integer?[+-]integer? or end?[+-]integer?\x00end-\x00bad index \"%s\": must be end?[+-]integer?\x00PGV Initializer did not initialize\x00***=\x00invalid escape sequence\x00BADESCAPE\x00$ not anchor\x00NONANCHOR\x00unhandled RE special char\x00UNHANDLED\x00excessive recursive glob backtrack potential\x00OVERCOMPLEX\x00RE2GLOB\x00array search\x00localVarName\x00parsedVarName\x00\"%s\" isn't an array\x00VARNAME\x00ELEMENT\x00varPtr must not be NULL\x00part1Ptr must not be NULL\x00READ\x00varName ?newValue?\x00newValuePtr must not be NULL\x00UNSET\x00varName ?value ...?\x00arrayName\x00s-%d-%s\x00arrayName searchId\x00arrayName ?pattern?\x00arrayName ?mode? ?pattern?\x00exact matching shouldn't get here\x00arrayName list\x00error reading array statistics\x00anymore\x00donesearch\x00nextelement\x00startsearch\x00statistics\x00bad variable name \"%s\": can't create namespace variable that refers to procedure variable\x00UPVAR\x00INVERTED\x00ObjMakeUpvar called with an index outside from a proc\x00bad variable name \"%s\": can't create a scalar variable that looks like an array element\x00LOCAL_ELEMENT\x00can't upvar from variable to itself\x00variable \"%s\" has traces: can't use for upvar\x00TRACED\x00variable \"%s\" already exists\x00EXISTS\x00define\x00?level? otherVar localVar ?otherVar localVar ...?\x00illegal search identifier \"%s\"\x00ARRAYSEARCH\x00search identifier \"%s\" isn't for variable \"%s\"\x00couldn't find search \"%s\"\x00invalid part1Ptr and invalid index together\x00can't %s \"%s%s%s%s\": %s\x00%s of type %s should not be called\x00updateStringProc\x00setFromAnyProc\x00scalar parsedVarName without a string rep\x00unknown variable \"%s\"\x00zlib\x00STREAM\x00DATA\x00MEM\x00BUF\x00NEED_DICT\x00unexpected zlib result in error handler: Z_OK\x00unexpected zlib result in error handler: Z_STREAM_END\x00ZLIB\x00text\x00no latin-1 encoding\x00comment\x00crc\x00filename\x00incorrect zlib data format, must be TCL_ZLIB_FORMAT_ZLIB, TCL_ZLIB_FORMAT_GZIP or TCL_ZLIB_FORMAT_RAW\x00compression level should be between 0 (no compression) and 9 (best compression) or -1 for default compression level\x00incorrect zlib data format, must be TCL_ZLIB_FORMAT_ZLIB, TCL_ZLIB_FORMAT_GZIP, TCL_ZLIB_FORMAT_RAW or TCL_ZLIB_FORMAT_AUTO\x00bad mode, must be TCL_ZLIB_STREAM_DEFLATE or TCL_ZLIB_STREAM_INFLATE\x001.3\x00::incr ::tcl::zlib::cmdcounter\x00::tcl::zlib::streamcmd_\x00BUG: Stream command name already exists\x00EXISTING_CMD\x00already past compressed stream end\x00ZIP\x00CLOSED\x00unexpected zlib internal state during decompression\x00STATE\x00incorrect zlib data format, must be TCL_ZLIB_FORMAT_ZLIB, TCL_ZLIB_FORMAT_GZIP or TCL_ZLIB_FORMAT_ZLIB\x00compression level should be between 0 (uncompressed) and 9 (best compression) or -1 for default compression level\x00adler32\x00compress\x00crc32\x00decompress\x00deflate\x00gunzip\x00gzip\x00inflate\x00stream\x00command arg ?...?\x00data ?startValue?\x00data ?level?\x00\n    (in -level option)\x00data ?-level level? ?-header header?\x00-header\x00data ?bufferSize?\x00data ?-headerVar varName?\x00-headerVar\x00level must be 0 to 9\x00COMPRESSIONLEVEL\x00buffer size must be %d to %d\x00BUFFERSIZE\x00mode ?-option value...?\x00should be unreachable\x00-limit\x00mode channel ?options...?\x00compression may only be applied to writable channels\x00UNWRITABLE\x00decompression may only be applied to readable channels\x00UNREADABLE\x00value missing for %s option\x00NOVAL\x00read ahead limit must be 1 to %d\x00a compression dictionary may not be set in the gzip format\x00BADOPT\x00\n    (in \x00 option)\x00checksum\x00fullflush\x00header\x00put\x00reset\x00option data ?...?\x00?count?\x00-buffer\x00-finalize\x00-flush\x00-fullflush\x00\"-buffer\" option must be followed by integer decompression buffersize\x00buffer size must be 1 to %d\x00\"-dictionary\" option must be followed by compression dictionary bytes\x00\"-flush\", \"-fullflush\" and \"-finalize\" options are mutually exclusive\x00EXCLUSIVE\x00only gunzip streams can produce header information\x00BADOP\x00error while finalizing file: %s\x00problem flushing channel: %s\x00dictionary flush\x00dictionary limit\x00flush limit\x00sync\x00unknown -flush type \"%s\": must be full or sync\x00FLUSH\x00-limit must be between 1 and 65536\x00READLIMIT\x00checksum dictionary\x00checksum dictionary limit\x00checksum header limit\x00-checksum\x00unknown mode: %d\x00bad format: %d\x00namespace eval ::tcl::zlib {variable cmdcounter 0}\x00zlibVersion\x002.0.1\x00tcl::tommath\x00initialization failure in TclBNInitBignumFromLong\x00initialization failure in TclBNInitBignumFromWideUInt\x00TclpOpenFileChannel: invalid mode value\x00couldn't open \"\x00\": filename is invalid on this platform\x00file%d\x00TclGetDefaultStdChannel: Unexpected channel type\x00auto crlf\x00\"%s\" wasn't opened for writing\x00NOT_WRITABLE\x00\"%s\" wasn't opened for reading\x00NOT_READABLE\x00cannot get a FILE * for \"%s\"\x00FILE_FAILURE\x00\"%s\" cannot be used to get a FILE *\x00NO_DESCRIPTOR\x00TclUnixWaitForFile can't handle file id %d\x00-group\x00-owner\x00..\x00%0#5lo\x00could not set group for file \"%s\": group \"%s\" does not exist\x00SETGRP\x00NO_GROUP\x00could not set group for file \"%s\": %s\x00could not set owner for file \"%s\": user \"%s\" does not exist\x00SETOWN\x00NO_USER\x00could not set owner for file \"%s\": %s\x00unknown permission string format \"%s\"\x00PERMISSION\x00could not set permissions for file \"%s\": %s\x00_XXXXXX\x00TMPDIR\x00/tmp\x00:/bin:/usr/bin\x00couldn't read directory \"%s\": %s\x00couldn't create temporary file: %s\x00pipe creation failed: %s\x00?channelId?\x00::tcl::unsupported::noReverseDNS\x00-connecting\x00-peername\x00can't get peername: %s\x00-sockname\x00can't get sockname: %s\x00connecting peername sockname\x00couldn't open socket: %s\x00sock%lx\x00couldn't open socket: \x00ansi-1251\x00cp1251\x00ansi_x3.4-1968\x00big5\x00cp1250\x00cp1252\x00cp1253\x00cp1254\x00cp1255\x00cp1256\x00cp1257\x00cp1258\x00cp437\x00cp737\x00cp775\x00cp850\x00cp852\x00cp855\x00cp857\x00cp860\x00cp861\x00cp862\x00cp863\x00cp864\x00cp865\x00cp866\x00cp869\x00cp874\x00cp932\x00cp936\x00cp949\x00cp950\x00dingbats\x00ebcdic\x00euc-cn\x00euc-jp\x00euc-kr\x00eucjp\x00euckr\x00euctw\x00gb12345\x00gb1988\x00gb2312\x00gb2312-1980\x00gb2312-raw\x00greek8\x00ibm1250\x00ibm1251\x00ibm1252\x00ibm1253\x00ibm1254\x00ibm1255\x00ibm1256\x00ibm1257\x00ibm1258\x00ibm437\x00ibm737\x00ibm775\x00ibm850\x00ibm852\x00ibm855\x00ibm857\x00ibm860\x00ibm861\x00ibm862\x00ibm863\x00ibm864\x00ibm865\x00ibm866\x00ibm869\x00ibm874\x00ibm932\x00ibm936\x00ibm949\x00ibm950\x00iso-2022\x00iso2022\x00iso-2022-jp\x00iso2022-jp\x00iso-2022-kr\x00iso2022-kr\x00iso-8859-1\x00iso-8859-10\x00iso8859-10\x00iso-8859-13\x00iso8859-13\x00iso-8859-14\x00iso8859-14\x00iso-8859-15\x00iso8859-15\x00iso-8859-16\x00iso8859-16\x00iso-8859-2\x00iso8859-2\x00iso-8859-3\x00iso8859-3\x00iso-8859-4\x00iso8859-4\x00iso-8859-5\x00iso8859-5\x00iso-8859-6\x00iso8859-6\x00iso-8859-7\x00iso8859-7\x00iso-8859-8\x00iso8859-8\x00iso-8859-9\x00iso8859-9\x00iso88591\x00iso885915\x00iso88592\x00iso88595\x00iso88596\x00iso88597\x00iso88598\x00iso88599\x00ja\x00ja_jp\x00ja_jp.euc\x00ja_jp.eucjp\x00ja_jp.jis\x00ja_jp.mscode\x00shiftjis\x00ja_jp.sjis\x00ja_jp.ujis\x00japan\x00japanese\x00japanese-sjis\x00japanese-ujis\x00japanese.euc\x00japanese.sjis\x00jis0201\x00jis0208\x00jis0212\x00jp_jp\x00ko\x00ko_kr\x00ko_kr.euc\x00ko_kw.euckw\x00koi8-r\x00koi8-u\x00korean\x00ksc5601\x00maccenteuro\x00macCentEuro\x00maccroatian\x00macCroatian\x00maccyrillic\x00macCyrillic\x00macdingbats\x00macDingbats\x00macgreek\x00macGreek\x00maciceland\x00macIceland\x00macjapan\x00macJapan\x00macroman\x00macRoman\x00macromania\x00macRomania\x00macthai\x00macThai\x00macturkish\x00macTurkish\x00macukraine\x00macUkraine\x00roman8\x00ru\x00ru_ru\x00ru_su\x00sjis\x00symbol\x00tis-620\x00tis620\x00turkish8\x00utf8\x00zh\x00zh_cn.gb2312\x00zh_cn.gbk\x00zh_cz.gb2312\x00zh_tw\x00euc-tw\x00zh_tw.big5\x00/dev/null\x00TCL_LIBRARY\x00lib/tcl%s\x00LC_ALL\x00LC_CTYPE\x00LANG\x00unix\x00pathSeparator\x00deletemethod\x00forward\x00renamemethod\x00self\x00unexport\x00destroy\x00core method: \"destroy\"\x00core method: \"eval\"\x00core method: \"unknown\"\x00core method: \"variable\"\x00core method: \"varname\"\x00core method: \"create\"\x00new\x00core method: \"new\"\x00createWithNamespace\x00core method: \"createWithNamespace\"\x00oo::class constructor\x00::oo::define ::oo::Slot {\n    method Get {} {error unimplemented}\n    method Set list {error unimplemented}\n    method -set args {\n        uplevel 1 [list [namespace which my] Set $args]\n    }\n    method -append args {\n        uplevel 1 [list [namespace which my] Set [list                {*}[uplevel 1 [list [namespace which my] Get]] {*}$args]]\n    }\n    method -clear {} {uplevel 1 [list [namespace which my] Set {}]}\n    forward --default-operation my -append\n    method unknown {args} {\n        set def --default-operation\n        if {[llength $args] == 0} {\n            return [uplevel 1 [list [namespace which my] $def]]\n        } elseif {![string match -* [lindex $args 0]]} {\n            return [uplevel 1 [list [namespace which my] $def {*}$args]]\n        }\n        next {*}$args\n    }\n    export -set -append -clear\n    unexport unknown destroy\n}\n::oo::objdefine ::oo::define::superclass forward --default-operation my -set\n::oo::objdefine ::oo::define::mixin forward --default-operation my -set\n::oo::objdefine ::oo::objdefine::mixin forward --default-operation my -set\n\x00foreach p [info procs [info object namespace $originObject]::*] {    set args [info args $p];    set idx -1;    foreach a $args {        lset args [incr idx]             [if {[info default $p $a d]} {list $a $d} {list $a}]    };    set b [info body $p];    set p [namespace tail $p];    proc $p $args $b;};foreach v [info vars [info object namespace $originObject]::*] {    upvar 0 $v vOrigin;    namespace upvar [namespace current] [namespace tail $v] vNew;    if {[info exists vOrigin]} {        if {[array exists vOrigin]} {            array set vNew [array get vOrigin];        } else {            set vNew $vOrigin;        }    }}\x00TclOO\x001.1.0\x00::oo\x00[a-z]*\x00::oo::define\x00::oo::objdefine\x00::oo::Helpers\x00<constructor>\x00<destructor>\x00<cloned>\x00::oo::UnknownDefinition\x00::oo::define::\x00::oo::objdefine::\x00originObject\x00::oo::Helpers::next\x00::oo::Helpers::nextto\x00::oo::Helpers::self\x00::oo::copy\x00::oo::Obj%d\x00my\x00deleting class structure for non-deleted %s\x00::oo::class\x00::oo::object\x00can't create object \"%s\": command already exists with that name\x00OVERWRITE_OBJECT\x00object deleted in constructor\x00STILLBORN\x00may not clone the class of classes\x00CLONING_CLASS\x00\n    (while performing post-copy callback)\x00\n    (while mapping method name)\x00impossible to invoke method \"%s\": no defined method or unknown method\x00METHOD_MAPPED\x00no valid method implementation\x00%s does not refer to an object\x00OBJECT\x00?definitionScript?\x00object \"%s\" is not a class\x00INSTANTIATE_NONCLASS\x00objectName ?arg ...?\x00object name must not be empty\x00EMPTY_NAME\x00objectName namespaceName ?arg ...?\x00namespace name must not be empty\x00\n    (in \"%s eval\" script line %d)\x00method ?arg ...?\x00visible methods\x00methods\x00object \"%s\" has no %s\x00unknown method \"%s\": must be \x00?varName ...?\x00variable name \"%s\" illegal: must not contain namespace separator\x00name refers to an element in an array\x00refer to\x00%s may only be called from inside a method\x00class ?arg...?\x00call\x00caller\x00method not defined by a class\x00UNMATCHED_CONTEXT\x00not inside a filtering context\x00caller is not an object\x00method without declarer!\x00filtering call chain without terminal non-filter\x00sourceName ?targetName? ?targetNamespace?\x00%s refers to an existing namespace\x00TclOO method name\x00::oo::define::filter\x00core method: define::filter Getter\x00core method: define::filter Setter\x00::oo::define::mixin\x00core method: define::mixin Getter\x00core method: define::mixin Setter\x00::oo::define::superclass\x00core method: define::superclass Getter\x00core method: define::superclass Setter\x00::oo::define::variable\x00core method: define::variable Getter\x00core method: define::variable Setter\x00::oo::objdefine::filter\x00core method: objdefine::filter Getter\x00core method: objdefine::filter Setter\x00::oo::objdefine::mixin\x00core method: objdefine::mixin Getter\x00core method: objdefine::mixin Setter\x00::oo::objdefine::variable\x00core method: objdefine::variable Getter\x00core method: objdefine::variable Setter\x00method %s does not exist\x00cannot rename method to itself\x00RENAME_TO_SELF\x00method called %s already exists\x00RENAME_OVER\x00bad call of unknown handler\x00BAD_UNKNOWN\x00cannot process definitions; support namespace deleted\x00MONKEY_BUSINESS\x00this command may only be called from within the context of an ::oo::define or ::oo::objdefine command\x00this command cannot be called when the object has been deleted\x00getting outer context when already in global context\x00\n    (in definition script for %s \"%.*s%s\" line %d)\x00className arg ?arg ...?\x00%s does not refer to a class\x00objectName arg ?arg ...?\x00class object\x00may not modify the class of the root object class\x00may not modify the class of the class of classes\x00the class of an object must be a class\x00may not change classes into an instance of themselves\x00arguments body\x00attempt to misuse API\x00name cmdName ?arg ...?\x00Get\x00Set\x00::oo::Slot\x00filterList\x00mixinList\x00may only mix in classes\x00may not mix a class into itself\x00SELF_MIXIN\x00superclassList\x00may not modify the superclass of the root object\x00only a class can be a superclass\x00class should only be a direct superclass once\x00REPETITIOUS\x00attempt to form circular dependency graph\x00invalid declared variable name \"%s\": must not %s\x00contain namespace separators\x00BAD_DECLVAR\x00*(*)\x00refer to an array element\x00variableList\x00definition\x00filters\x00isa\x00methodtype\x00mixins\x00instances\x00subclasses\x00superclasses\x00::oo::InfoObject\x00::oo::InfoClass\x00objName ?className?\x00objName methodName\x00definition not available for this kind of method\x00objName\x00prefix argument list not available for this kind of method\x00metaclass\x00mixin\x00typeof\x00category objName ?arg ...?\x00category\x00objName className\x00-localprivate\x00-private\x00objName ?-option value ...?\x00objName ?pattern?\x00METHOD_TYPE\x00className ?pattern?\x00className ?-option value ...?\x00cannot construct any call chain\x00method not declared in class or object\x00\n    (%s \"%.*s%s\" method \"%.*s%s\" line %d)\x00\n    (%s \"%.*s%s\" constructor line %d)\x00\n    (%s \"%.*s%s\" destructor line %d)\x00method forward prefix must be non-empty\x00BAD_FORWARD\x00dynamic loading is not currently available on this system\x000123456789ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz+/\x00"
