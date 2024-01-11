@@ -1,7 +1,7 @@
 {
 	"autogen": "$libs",
 	"autotag": "$libs",
-	"autoupdate": "$libs",
+	"autoupdate": "<none>",
 	"download": [
 		{"re": ".", "files": ["http://prdownloads.sourceforge.net/tcl/tcl8.6.13-src.tar.gz"]}
 	],
