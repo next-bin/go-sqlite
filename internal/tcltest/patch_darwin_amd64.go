@@ -99,11 +99,12 @@ type in6_addr = struct {
 
 var _in6addr_any = in6_addr{}
 
+
 func ___fpsetround(...any) {
-}
+} 
 
 func ___fpsetmask(...any) {
-}
+} 
 
 // __header_always_inline int
 // __darwin_check_fd_set(int _a, const void *_b)
@@ -112,23 +113,15 @@ func ___fpsetmask(...any) {
 // #pragma clang diagnostic push
 // #pragma clang diagnostic ignored "-Wunguarded-availability-new"
 // #endif
-//
-//	if ((uintptr_t)&__darwin_check_fd_set_overflow != (uintptr_t) 0) {
-//
+// 	if ((uintptr_t)&__darwin_check_fd_set_overflow != (uintptr_t) 0) {
 // #if defined(_DARWIN_UNLIMITED_SELECT) || defined(_DARWIN_C_SOURCE)
-//
-//	return __darwin_check_fd_set_overflow(_a, _b, 1);
-//
+// 		return __darwin_check_fd_set_overflow(_a, _b, 1);
 // #else
-//
-//	return __darwin_check_fd_set_overflow(_a, _b, 0);
-//
+// 		return __darwin_check_fd_set_overflow(_a, _b, 0);
 // #endif
-//
-//	} else {
-//		return 1;
-//	}
-//
+// 	} else {
+// 		return 1;
+// 	}
 // #ifdef __clang__
 // #pragma clang diagnostic pop
 // #endif

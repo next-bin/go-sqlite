@@ -1,9 +1,9 @@
 {
-	"autogen": "$sqlite",
-	"autotag": "$sqlite",
-	"autoupdate": "$sqlite",
+	"autogen": "$libs",
+	"autotag": "$libs",
+	"autoupdate": "$libs",
 	"download": [
-		{"re": "$sqlite", "files": ["http://prdownloads.sourceforge.net/tcl/tcl8.6.13-src.tar.gz"]}
+		{"re": ".", "files": ["http://prdownloads.sourceforge.net/tcl/tcl8.6.13-src.tar.gz"]}
 	],
-	"test": "$sqlite"
+	"test": "$libs"
 }

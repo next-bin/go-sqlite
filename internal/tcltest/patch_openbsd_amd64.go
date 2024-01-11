@@ -99,11 +99,12 @@ type in6_addr = struct {
 
 var _in6addr_any = in6_addr{}
 
+
 func ___fpsetround(...any) {
-}
+} 
 
 func ___fpsetmask(...any) {
-}
+} 
 
 func ___swap16md(t *libc.TLS, x uint16) uint16 {
 	return libc.X__swap16md(t, x)
