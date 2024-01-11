@@ -556,13 +556,23 @@ func Test2(t *testing.T) {
 	}
 	stdout.WriteString("\n")
 	stdout.WriteString(stderr.String())
-	all := strings.Split(stdout.String(), "\n")
+	alls := stdout.String()
+	all := strings.Split(alls, "\n")
+	if !strings.Contains(alls, "Total") ||
+		!strings.Contains(alls, "Passed") ||
+		!strings.Contains(alls, "Skipped") ||
+		!strings.Contains(alls, "Failed") {
+		t.Errorf("final summary not detected (test crashed?)")
+		return
+	}
 out:
 	for i, v := range all {
 		switch {
 		case
-			strings.HasPrefix(v, "====") && strings.Contains(v, "FAILED"),
-			strings.Contains(v, "panic:"):
+			strings.Contains(v, "Test file error"),
+			strings.Contains(v, "panic:"),
+			strings.HasPrefix(v, "====") && strings.Contains(v, "FAILED"):
+
 			t.Error(v)
 		case strings.HasPrefix(v, "all.tcl:"):
 			t.Logf("\n%s", strings.Join(all[i:], "\n"))

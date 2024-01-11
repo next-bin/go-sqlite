@@ -248,8 +248,8 @@ func main() {
 	mustCopyFile(fn, filepath.Join(makeRoot, result), nil)
 	switch target {
 	case "windows/amd64":
-		util.MustShell(true, "sh", "-c", `sed -i 's/\<T__\([a-zA-Z0-9][a-zA-Z0-9_]\+\)/t__\1/g' `+ fn)
-		util.MustShell(true, "sh", "-c", `sed -i 's/\<x_\([a-zA-Z0-9][a-zA-Z0-9_]\+\)/X\1/g' ` + fn)
+		util.MustShell(true, "sh", "-c", `sed -i 's/\<T__\([a-zA-Z0-9][a-zA-Z0-9_]\+\)/t__\1/g' `+fn)
+		util.MustShell(true, "sh", "-c", `sed -i 's/\<x_\([a-zA-Z0-9][a-zA-Z0-9_]\+\)/X\1/g' `+fn)
 		mustCopyFile(filepath.Join("internal", "tcltest", fn), filepath.Join(makeRoot, "tcltests.exe.go"), nil)
 	default:
 		util.MustShell(true, sed, "-i", `s/\<T__\([a-zA-Z0-9][a-zA-Z0-9_]\+\)/t__\1/g`, fn)

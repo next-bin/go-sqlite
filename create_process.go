@@ -124,15 +124,23 @@ func ___swap16md(t *libc.TLS, x uint16) uint16 {
 // #pragma clang diagnostic push
 // #pragma clang diagnostic ignored "-Wunguarded-availability-new"
 // #endif
-// 	if ((uintptr_t)&__darwin_check_fd_set_overflow != (uintptr_t) 0) {
+//
+//	if ((uintptr_t)&__darwin_check_fd_set_overflow != (uintptr_t) 0) {
+//
 // #if defined(_DARWIN_UNLIMITED_SELECT) || defined(_DARWIN_C_SOURCE)
-// 		return __darwin_check_fd_set_overflow(_a, _b, 1);
+//
+//	return __darwin_check_fd_set_overflow(_a, _b, 1);
+//
 // #else
-// 		return __darwin_check_fd_set_overflow(_a, _b, 0);
+//
+//	return __darwin_check_fd_set_overflow(_a, _b, 0);
+//
 // #endif
-// 	} else {
-// 		return 1;
-// 	}
+//
+//	} else {
+//		return 1;
+//	}
+//
 // #ifdef __clang__
 // #pragma clang diagnostic pop
 // #endif
