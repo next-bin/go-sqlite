@@ -146,6 +146,7 @@ func main() {
 	os.RemoveAll(filepath.Join("include", goos, goarch))
 	os.Remove(filepath.Join("internal/tests"))
 	util.MustUntar(true, tempDir, f, nil)
+	os.RemoveAll(filepath.Join(libRoot, "pkgs"))
 	mustCopyDir(libRoot, filepath.Join("overlay", "all"), nil, true)
 	mustCopyDir(libRoot, filepath.Join("overlay", goos, goarch), nil, true)
 	mustCopyFile("LICENSE-TCL", filepath.Join(libRoot, "license.terms"), nil)
@@ -157,6 +158,7 @@ func main() {
 	mustCopyDir(ccgoInc, filepath.Join("..", "libz", "include", goos, goarch), nil, false)
 	result := "libtcl.a.go"
 	util.MustInDir(true, makeRoot, func() (err error) {
+		os.RemoveAll("pkgs")
 		cflags := []string{
 			// "-DTCL_MEM_DEBUG", //TODO-
 			"-DNDEBUG",
