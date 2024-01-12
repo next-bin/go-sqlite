@@ -19530,12 +19530,6 @@ var _longdouble_size = int32(8)
 var _query_plan = __ccgo_ts + 9091
 
 // -:
-type TsColMap = struct {
-	FiFrom int32
-	FzCol  uintptr
-}
-
-// -:
 type Tsqlite3InitInfo = struct {
 	FnewTnum       TPgno
 	FiDb           Tu8
@@ -19560,6 +19554,12 @@ type TExprList_item = struct {
 		}
 	}
 	F__ccgo_pad9 [4]byte
+}
+
+// -:
+type TsColMap = struct {
+	FiFrom int32
+	FzCol  uintptr
 }
 
 // -:
@@ -312795,6 +312795,13 @@ func x_sqlite3_sourceid(tls *libc.TLS) (r uintptr) {
 }
 
 // -:
+type TIdList_item = struct {
+	FzName       uintptr
+	Fidx         int32
+	F__ccgo_pad2 [4]byte
+}
+
+// -:
 type TAggInfo_func = struct {
 	FpFExpr      uintptr
 	FpFunc       uintptr
@@ -312802,12 +312809,6 @@ type TAggInfo_func = struct {
 	FiDistinct   int32
 	FiDistAddr   int32
 	F__ccgo_pad5 [4]byte
-}
-
-// -:
-type T_ht = struct {
-	Fcount uint32
-	Fchain uintptr
 }
 
 // -:
@@ -312822,10 +312823,13 @@ type TAggInfo_col = struct {
 }
 
 // -:
-type TIdList_item = struct {
-	FzName       uintptr
-	Fidx         int32
-	F__ccgo_pad2 [4]byte
+type TInLoop = struct {
+	FiCur        int32
+	FaddrInTop   int32
+	FiBase       int32
+	FnPrefix     int32
+	FeEndLoopOp  Tu8
+	F__ccgo_pad5 [3]byte
 }
 
 // -:
@@ -312838,13 +312842,9 @@ type TWalSegment = struct {
 }
 
 // -:
-type TInLoop = struct {
-	FiCur        int32
-	FaddrInTop   int32
-	FiBase       int32
-	FnPrefix     int32
-	FeEndLoopOp  Tu8
-	F__ccgo_pad5 [3]byte
+type T_ht = struct {
+	Fcount uint32
+	Fchain uintptr
 }
 
 func __ccgo_fp(f interface{}) uintptr {
