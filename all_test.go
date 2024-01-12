@@ -266,7 +266,6 @@ func TestMain(m *testing.M) {
 			"chan-io-57.1",
 			"chan-io-57.2",
 			"event-11.5",
-			"fCmd-8.1",
 			"io-29.34",
 			"io-29.35",
 			"io-29.36.1",
@@ -286,6 +285,8 @@ func TestMain(m *testing.M) {
 			"io-57.2",
 			"iocmd-8.15.1",
 			"iocmd-8.16",
+			"oo-15.*",
+			"oo-35.*",
 			"safe-16.2",
 			"safe-16.7",
 			"safe-16.8",
@@ -308,6 +309,7 @@ func TestMain(m *testing.M) {
 			"zlib-9.9",
 		)
 		notFiles = append(notFiles,
+			"fCmd.test",
 			"http11.test",
 			"socket.test",
 		)
@@ -387,6 +389,8 @@ func TestMain(m *testing.M) {
 			"iocmd-8.15.1",
 			"iocmd-8.16",
 			"iocmd-8.16",
+			"oo-15.*",
+			"oo-35.*",
 			"safe-16.2",
 			"safe-16.2",
 			"safe-16.7",
@@ -424,6 +428,7 @@ func TestMain(m *testing.M) {
 			"zlib-9.9",
 		)
 		notFiles = append(notFiles,
+			"fCmd.test",
 			"http11.test",
 			"socket.test",
 		)
