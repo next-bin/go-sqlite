@@ -19415,13 +19415,9 @@ var _longdouble_size = int32(8)
 var _query_plan = __ccgo_ts + 8987
 
 // -:
-type Tsqlite3InitInfo = struct {
-	FnewTnum       TPgno
-	FiDb           Tu8
-	Fbusy          Tu8
-	F__ccgo_align3 [2]byte
-	F__ccgo8       uint8
-	FazInit        uintptr
+type TsColMap = struct {
+	FiFrom int32
+	FzCol  uintptr
 }
 
 // -:
@@ -19442,9 +19438,13 @@ type TExprList_item = struct {
 }
 
 // -:
-type TsColMap = struct {
-	FiFrom int32
-	FzCol  uintptr
+type Tsqlite3InitInfo = struct {
+	FnewTnum       TPgno
+	FiDb           Tu8
+	Fbusy          Tu8
+	F__ccgo_align3 [2]byte
+	F__ccgo8       uint8
+	FazInit        uintptr
 }
 
 // -:
@@ -26661,18 +26661,18 @@ type Tsqlite3_index_constraint_usage = struct {
 }
 
 // -:
+type Tsqlite3_index_orderby = struct {
+	FiColumn     int32
+	Fdesc        uint8
+	F__ccgo_pad2 [3]byte
+}
+
+// -:
 type Tsqlite3_index_constraint = struct {
 	FiColumn     int32
 	Fop          uint8
 	Fusable      uint8
 	FiTermOffset int32
-}
-
-// -:
-type Tsqlite3_index_orderby = struct {
-	FiColumn     int32
-	Fdesc        uint8
-	F__ccgo_pad2 [3]byte
 }
 
 /*
@@ -306833,13 +306833,14 @@ func x_sqlite3_sourceid(tls *libc.TLS) (r uintptr) {
 }
 
 // -:
-type TAggInfo_func = struct {
-	FpFExpr      uintptr
-	FpFunc       uintptr
-	FiMem        int32
-	FiDistinct   int32
-	FiDistAddr   int32
-	F__ccgo_pad5 [4]byte
+type TAggInfo_col = struct {
+	FpTab          uintptr
+	FpCExpr        uintptr
+	FiTable        int32
+	FiMem          int32
+	FiColumn       Ti16
+	FiSorterColumn Ti16
+	F__ccgo_pad6   [4]byte
 }
 
 // -:
@@ -306875,14 +306876,13 @@ type TInLoop = struct {
 }
 
 // -:
-type TAggInfo_col = struct {
-	FpTab          uintptr
-	FpCExpr        uintptr
-	FiTable        int32
-	FiMem          int32
-	FiColumn       Ti16
-	FiSorterColumn Ti16
-	F__ccgo_pad6   [4]byte
+type TAggInfo_func = struct {
+	FpFExpr      uintptr
+	FpFunc       uintptr
+	FiMem        int32
+	FiDistinct   int32
+	FiDistAddr   int32
+	F__ccgo_pad5 [4]byte
 }
 
 func __ccgo_fp(f interface{}) uintptr {
