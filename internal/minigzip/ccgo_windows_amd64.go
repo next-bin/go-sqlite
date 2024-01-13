@@ -164,9 +164,8 @@ type Toff_t = int32
 type Tuseconds_t = uint32
 
 type Ttimespec = struct {
-	Ftv_sec      Ttime_t
-	Ftv_nsec     int32
-	F__ccgo_pad2 [4]byte
+	Ftv_sec  Ttime_t
+	Ftv_nsec int32
 }
 
 type Titimerspec = struct {
@@ -181,21 +180,20 @@ type Talloc_func = uintptr
 type Tfree_func = uintptr
 
 type Tz_stream = struct {
-	Fnext_in      uintptr
-	Favail_in     TuInt
-	Ftotal_in     TuLong
-	Fnext_out     uintptr
-	Favail_out    TuInt
-	Ftotal_out    TuLong
-	Fmsg          uintptr
-	Fstate        uintptr
-	Fzalloc       Talloc_func
-	Fzfree        Tfree_func
-	Fopaque       Tvoidpf
-	Fdata_type    int32
-	Fadler        TuLong
-	Freserved     TuLong
-	F__ccgo_pad14 [4]byte
+	Fnext_in   uintptr
+	Favail_in  TuInt
+	Ftotal_in  TuLong
+	Fnext_out  uintptr
+	Favail_out TuInt
+	Ftotal_out TuLong
+	Fmsg       uintptr
+	Fstate     uintptr
+	Fzalloc    Talloc_func
+	Fzfree     Tfree_func
+	Fopaque    Tvoidpf
+	Fdata_type int32
+	Fadler     TuLong
+	Freserved  TuLong
 }
 
 type Tz_stream_s = Tz_stream
@@ -203,20 +201,19 @@ type Tz_stream_s = Tz_stream
 type Tz_streamp = uintptr
 
 type Tgz_header = struct {
-	Ftext         int32
-	Ftime         TuLong
-	Fxflags       int32
-	Fos           int32
-	Fextra        uintptr
-	Fextra_len    TuInt
-	Fextra_max    TuInt
-	Fname         uintptr
-	Fname_max     TuInt
-	Fcomment      uintptr
-	Fcomm_max     TuInt
-	Fhcrc         int32
-	Fdone         int32
-	F__ccgo_pad13 [4]byte
+	Ftext      int32
+	Ftime      TuLong
+	Fxflags    int32
+	Fos        int32
+	Fextra     uintptr
+	Fextra_len TuInt
+	Fextra_max TuInt
+	Fname      uintptr
+	Fname_max  TuInt
+	Fcomment   uintptr
+	Fcomm_max  TuInt
+	Fhcrc      int32
+	Fdone      int32
 }
 
 type Tgz_header_s = Tgz_header
@@ -327,10 +324,9 @@ type Tlldiv_t = struct {
 }
 
 type T_HEAPINFO = struct {
-	F_pentry     uintptr
-	F_size       Tsize_t
-	F_useflag    int32
-	F__ccgo_pad3 [4]byte
+	F_pentry  uintptr
+	F_size    Tsize_t
+	F_useflag int32
 }
 
 type T_heapinfo = T_HEAPINFO
@@ -353,7 +349,6 @@ type T_finddata32i64_t = struct {
 	Ftime_write  T__time32_t
 	Fsize        int64
 	Fname        [260]int8
-	F__ccgo_pad6 [4]byte
 }
 
 type T_finddata64i32_t = struct {
@@ -372,7 +367,6 @@ type T__finddata64_t = struct {
 	Ftime_write  T__time64_t
 	Fsize        int64
 	Fname        [260]int8
-	F__ccgo_pad6 [4]byte
 }
 
 type T_wfinddata32_t = struct {
@@ -400,7 +394,6 @@ type T_wfinddata64i32_t = struct {
 	Ftime_write  T__time64_t
 	Fsize        T_fsize_t
 	Fname        [260]Twchar_t
-	F__ccgo_pad6 [4]byte
 }
 
 type T_wfinddata64_t = struct {
@@ -11104,42 +11097,41 @@ const _MEM = 16210
 const _SYNC = 16211
 
 type Tinflate_state = struct {
-	Fstrm         Tz_streamp
-	Fmode         Tinflate_mode
-	Flast         int32
-	Fwrap         int32
-	Fhavedict     int32
-	Fflags        int32
-	Fdmax         uint32
-	Fcheck        uint32
-	Ftotal        uint32
-	Fhead         Tgz_headerp
-	Fwbits        uint32
-	Fwsize        uint32
-	Fwhave        uint32
-	Fwnext        uint32
-	Fwindow       uintptr
-	Fhold         uint32
-	Fbits         uint32
-	Flength       uint32
-	Foffset       uint32
-	Fextra        uint32
-	Flencode      uintptr
-	Fdistcode     uintptr
-	Flenbits      uint32
-	Fdistbits     uint32
-	Fncode        uint32
-	Fnlen         uint32
-	Fndist        uint32
-	Fhave         uint32
-	Fnext         uintptr
-	Flens         [320]uint16
-	Fwork         [288]uint16
-	Fcodes        [1444]Tcode
-	Fsane         int32
-	Fback         int32
-	Fwas          uint32
-	F__ccgo_pad35 [4]byte
+	Fstrm     Tz_streamp
+	Fmode     Tinflate_mode
+	Flast     int32
+	Fwrap     int32
+	Fhavedict int32
+	Fflags    int32
+	Fdmax     uint32
+	Fcheck    uint32
+	Ftotal    uint32
+	Fhead     Tgz_headerp
+	Fwbits    uint32
+	Fwsize    uint32
+	Fwhave    uint32
+	Fwnext    uint32
+	Fwindow   uintptr
+	Fhold     uint32
+	Fbits     uint32
+	Flength   uint32
+	Foffset   uint32
+	Fextra    uint32
+	Flencode  uintptr
+	Fdistcode uintptr
+	Flenbits  uint32
+	Fdistbits uint32
+	Fncode    uint32
+	Fnlen     uint32
+	Fndist    uint32
+	Fhave     uint32
+	Fnext     uintptr
+	Flens     [320]uint16
+	Fwork     [288]uint16
+	Fcodes    [1444]Tcode
+	Fsane     int32
+	Fback     int32
+	Fwas      uint32
 }
 
 // C documentation
