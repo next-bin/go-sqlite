@@ -17,6 +17,7 @@ var (
 	_ unsafe.Pointer
 )
 
+const m_EINVAL = 22
 const m_SEEK_CUR = 1
 const m_TESTFILE = "foo.gz"
 const m_ZLIB_VERNUM = 4864
@@ -49,46 +50,11 @@ type T__predefined_wchar_t = uint16
 
 type T__predefined_ptrdiff_t = int64
 
-type Tptrdiff_t = int64
-
-type Tsize_t = uint64
-
-type Twchar_t = uint16
-
-type Tmax_align_t = struct {
-	F__clang_max_align_nonce1 int64
-	F__clang_max_align_nonce2 float64
-}
-
-type Tz_size_t = uint64
-
-type TByte = uint8
-
-type TuInt = uint32
-
-type TuLong = uint32
-
-type TBytef = uint8
-
-type Tcharf = int8
-
-type Tintf = int32
-
-type TuIntf = uint32
-
-type TuLongf = uint32
-
-type Tvoidpc = uintptr
-
-type Tvoidpf = uintptr
-
-type Tvoidp = uintptr
-
-type Tz_crc_t = uint32
-
 type T__gnuc_va_list = uintptr
 
 type Tva_list = uintptr
+
+type Tsize_t = uint64
 
 type Tssize_t = int64
 
@@ -97,6 +63,10 @@ type Trsize_t = uint64
 type Tintptr_t = int64
 
 type Tuintptr_t = uint64
+
+type Tptrdiff_t = int64
+
+type Twchar_t = uint16
 
 type Twint_t = uint16
 
@@ -144,6 +114,37 @@ type Tthreadlocinfo = struct {
 	F_locale_mb_cur_max  int32
 	F_locale_lc_codepage uint32
 }
+
+type Tmax_align_t = struct {
+	F__max_align_ll int64
+	F__max_align_ld float64
+}
+
+type Tz_size_t = uint64
+
+type TByte = uint8
+
+type TuInt = uint32
+
+type TuLong = uint32
+
+type TBytef = uint8
+
+type Tcharf = int8
+
+type Tintf = int32
+
+type TuIntf = uint32
+
+type TuLongf = uint32
+
+type Tvoidpc = uintptr
+
+type Tvoidpf = uintptr
+
+type Tvoidp = uintptr
+
+type Tz_crc_t = uint32
 
 type T_ino_t = uint16
 
@@ -261,16 +262,6 @@ type Tfpos_t = int64
  * No warranty is given; refer to the file DISCLAIMER.PD within this package.
  */
 
-/* ===-------- vadefs.h ---------------------------------------------------===
- *
- * Part of the LLVM Project, under the Apache License v2.0 with LLVM Exceptions.
- * See https://llvm.org/LICENSE.txt for license information.
- * SPDX-License-Identifier: Apache-2.0 WITH LLVM-exception
- *
- *===-----------------------------------------------------------------------===
- */
-
-/* Only include this if we are aiming for MSVC compatibility. */
 /**
  * This file has no copyright assigned and is placed in the Public Domain.
  * This file is part of the mingw-w64 runtime package.
@@ -9200,16 +9191,6 @@ const m_GZ_READ = 7247
  * No warranty is given; refer to the file DISCLAIMER.PD within this package.
  */
 
-/* ===-------- vadefs.h ---------------------------------------------------===
- *
- * Part of the LLVM Project, under the Apache License v2.0 with LLVM Exceptions.
- * See https://llvm.org/LICENSE.txt for license information.
- * SPDX-License-Identifier: Apache-2.0 WITH LLVM-exception
- *
- *===-----------------------------------------------------------------------===
- */
-
-/* Only include this if we are aiming for MSVC compatibility. */
 /**
  * This file has no copyright assigned and is placed in the Public Domain.
  * This file is part of the mingw-w64 runtime package.
@@ -9391,16 +9372,6 @@ const m___INT_MAX__ = 2147483647
  * No warranty is given; refer to the file DISCLAIMER.PD within this package.
  */
 
-/* ===-------- vadefs.h ---------------------------------------------------===
- *
- * Part of the LLVM Project, under the Apache License v2.0 with LLVM Exceptions.
- * See https://llvm.org/LICENSE.txt for license information.
- * SPDX-License-Identifier: Apache-2.0 WITH LLVM-exception
- *
- *===-----------------------------------------------------------------------===
- */
-
-/* Only include this if we are aiming for MSVC compatibility. */
 /**
  * This file has no copyright assigned and is placed in the Public Domain.
  * This file is part of the mingw-w64 runtime package.
@@ -10004,16 +9975,6 @@ const m_GZIP = 2
  * No warranty is given; refer to the file DISCLAIMER.PD within this package.
  */
 
-/* ===-------- vadefs.h ---------------------------------------------------===
- *
- * Part of the LLVM Project, under the Apache License v2.0 with LLVM Exceptions.
- * See https://llvm.org/LICENSE.txt for license information.
- * SPDX-License-Identifier: Apache-2.0 WITH LLVM-exception
- *
- *===-----------------------------------------------------------------------===
- */
-
-/* Only include this if we are aiming for MSVC compatibility. */
 /**
  * This file has no copyright assigned and is placed in the Public Domain.
  * This file is part of the mingw-w64 runtime package.
@@ -10731,16 +10692,6 @@ func x_gzclose_r(tls *libc.TLS, file TgzFile) (r int32) {
  * No warranty is given; refer to the file DISCLAIMER.PD within this package.
  */
 
-/* ===-------- vadefs.h ---------------------------------------------------===
- *
- * Part of the LLVM Project, under the Apache License v2.0 with LLVM Exceptions.
- * See https://llvm.org/LICENSE.txt for license information.
- * SPDX-License-Identifier: Apache-2.0 WITH LLVM-exception
- *
- *===-----------------------------------------------------------------------===
- */
-
-/* Only include this if we are aiming for MSVC compatibility. */
 /**
  * This file has no copyright assigned and is placed in the Public Domain.
  * This file is part of the mingw-w64 runtime package.
@@ -11165,13 +11116,68 @@ func x_gzputs(tls *libc.TLS, file TgzFile, s uintptr) (r int32) {
 	return v1
 }
 
-/*===---- stdarg.h - Variable argument handling ----------------------------===
- *
- * Part of the LLVM Project, under the Apache License v2.0 with LLVM Exceptions.
- * See https://llvm.org/LICENSE.txt for license information.
- * SPDX-License-Identifier: Apache-2.0 WITH LLVM-exception
- *
- *===-----------------------------------------------------------------------===
+/* Copyright (C) 1989, 1997, 1998, 1999, 2000 Free Software Foundation, Inc.
+
+This file is part of GCC.
+
+GCC is free software; you can redistribute it and/or modify
+it under the terms of the GNU General Public License as published by
+the Free Software Foundation; either version 2, or (at your option)
+any later version.
+
+GCC is distributed in the hope that it will be useful,
+but WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+GNU General Public License for more details.
+
+You should have received a copy of the GNU General Public License
+along with GCC; see the file COPYING.  If not, write to
+the Free Software Foundation, 51 Franklin Street, Fifth Floor,
+Boston, MA 02110-1301, USA.  */
+
+/* As a special exception, if you include this header file into source
+   files compiled by GCC, this header file does not by itself cause
+   the resulting executable to be covered by the GNU General Public
+   License.  This exception does not however invalidate any other
+   reasons why the executable file might be covered by the GNU General
+   Public License.  */
+
+/*
+ * ISO C Standard:  7.15  Variable arguments  <stdarg.h>
+ */
+
+/* include mingw stuff */
+/**
+ * This file has no copyright assigned and is placed in the Public Domain.
+ * This file is part of the mingw-w64 runtime package.
+ * No warranty is given; refer to the file DISCLAIMER.PD within this package.
+ */
+
+/* Copyright (C) 1989-2023 Free Software Foundation, Inc.
+
+This file is part of GCC.
+
+GCC is free software; you can redistribute it and/or modify
+it under the terms of the GNU General Public License as published by
+the Free Software Foundation; either version 3, or (at your option)
+any later version.
+
+GCC is distributed in the hope that it will be useful,
+but WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+GNU General Public License for more details.
+
+Under Section 7 of GPL version 3, you are granted additional
+permissions described in the GCC Runtime Library Exception, version
+3.1, as published by the Free Software Foundation.
+
+You should have received a copy of the GNU General Public License and
+a copy of the GCC Runtime Library Exception along with this program;
+see the files COPYING3 and COPYING.RUNTIME respectively.  If not, see
+<http://www.gnu.org/licenses/>.  */
+
+/*
+ * ISO C Standard:  7.15  Variable arguments  <stdarg.h>
  */
 
 // C documentation
@@ -24436,16 +24442,6 @@ func x_uncompress(tls *libc.TLS, dest uintptr, destLen uintptr, source uintptr, 
  * No warranty is given; refer to the file DISCLAIMER.PD within this package.
  */
 
-/* ===-------- vadefs.h ---------------------------------------------------===
- *
- * Part of the LLVM Project, under the Apache License v2.0 with LLVM Exceptions.
- * See https://llvm.org/LICENSE.txt for license information.
- * SPDX-License-Identifier: Apache-2.0 WITH LLVM-exception
- *
- *===-----------------------------------------------------------------------===
- */
-
-/* Only include this if we are aiming for MSVC compatibility. */
 /**
  * This file has no copyright assigned and is placed in the Public Domain.
  * This file is part of the mingw-w64 runtime package.
