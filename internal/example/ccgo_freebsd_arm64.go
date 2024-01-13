@@ -527,20 +527,19 @@ type Tz_stream_s = Tz_stream
 type Tz_streamp = uintptr
 
 type Tgz_header = struct {
-	Ftext         int32
-	Ftime         TuLong
-	Fxflags       int32
-	Fos           int32
-	Fextra        uintptr
-	Fextra_len    TuInt
-	Fextra_max    TuInt
-	Fname         uintptr
-	Fname_max     TuInt
-	Fcomment      uintptr
-	Fcomm_max     TuInt
-	Fhcrc         int32
-	Fdone         int32
-	F__ccgo_pad13 [4]byte
+	Ftext      int32
+	Ftime      TuLong
+	Fxflags    int32
+	Fos        int32
+	Fextra     uintptr
+	Fextra_len TuInt
+	Fextra_max TuInt
+	Fname      uintptr
+	Fname_max  TuInt
+	Fcomment   uintptr
+	Fcomm_max  TuInt
+	Fhcrc      int32
+	Fdone      int32
 }
 
 type Tgz_header_s = Tgz_header
@@ -562,9 +561,8 @@ type TgzFile_s = struct {
 type Tfpos_t = int64
 
 type T__sbuf = struct {
-	F_base       uintptr
-	F_size       int32
-	F__ccgo_pad2 [4]byte
+	F_base uintptr
+	F_size int32
 }
 
 type T__sFILE = struct {
@@ -594,7 +592,6 @@ type T__sFILE = struct {
 	F_orientation int32
 	F_mbstate     T__mbstate_t
 	F_flags2      int32
-	F__ccgo_pad26 [4]byte
 }
 
 type TFILE = struct {
@@ -624,7 +621,6 @@ type TFILE = struct {
 	F_orientation int32
 	F_mbstate     T__mbstate_t
 	F_flags2      int32
-	F__ccgo_pad26 [4]byte
 }
 
 type Tcookie_io_functions_t = struct {
@@ -9453,42 +9449,41 @@ const _MEM = 16210
 const _SYNC = 16211
 
 type Tinflate_state = struct {
-	Fstrm         Tz_streamp
-	Fmode         Tinflate_mode
-	Flast         int32
-	Fwrap         int32
-	Fhavedict     int32
-	Fflags        int32
-	Fdmax         uint32
-	Fcheck        uint64
-	Ftotal        uint64
-	Fhead         Tgz_headerp
-	Fwbits        uint32
-	Fwsize        uint32
-	Fwhave        uint32
-	Fwnext        uint32
-	Fwindow       uintptr
-	Fhold         uint64
-	Fbits         uint32
-	Flength       uint32
-	Foffset       uint32
-	Fextra        uint32
-	Flencode      uintptr
-	Fdistcode     uintptr
-	Flenbits      uint32
-	Fdistbits     uint32
-	Fncode        uint32
-	Fnlen         uint32
-	Fndist        uint32
-	Fhave         uint32
-	Fnext         uintptr
-	Flens         [320]uint16
-	Fwork         [288]uint16
-	Fcodes        [1444]Tcode
-	Fsane         int32
-	Fback         int32
-	Fwas          uint32
-	F__ccgo_pad35 [4]byte
+	Fstrm     Tz_streamp
+	Fmode     Tinflate_mode
+	Flast     int32
+	Fwrap     int32
+	Fhavedict int32
+	Fflags    int32
+	Fdmax     uint32
+	Fcheck    uint64
+	Ftotal    uint64
+	Fhead     Tgz_headerp
+	Fwbits    uint32
+	Fwsize    uint32
+	Fwhave    uint32
+	Fwnext    uint32
+	Fwindow   uintptr
+	Fhold     uint64
+	Fbits     uint32
+	Flength   uint32
+	Foffset   uint32
+	Fextra    uint32
+	Flencode  uintptr
+	Fdistcode uintptr
+	Flenbits  uint32
+	Fdistbits uint32
+	Fncode    uint32
+	Fnlen     uint32
+	Fndist    uint32
+	Fhave     uint32
+	Fnext     uintptr
+	Flens     [320]uint16
+	Fwork     [288]uint16
+	Fcodes    [1444]Tcode
+	Fsane     int32
+	Fback     int32
+	Fwas      uint32
 }
 
 // C documentation
@@ -22374,13 +22369,12 @@ func x__tr_tally(tls *libc.TLS, s uintptr, dist uint32, lc uint32) (r int32) {
 }
 
 type Tflock = struct {
-	Fl_start     Toff_t
-	Fl_len       Toff_t
-	Fl_pid       Tpid_t
-	Fl_type      int16
-	Fl_whence    int16
-	Fl_sysid     int32
-	F__ccgo_pad6 [4]byte
+	Fl_start  Toff_t
+	Fl_len    Toff_t
+	Fl_pid    Tpid_t
+	Fl_type   int16
+	Fl_whence int16
+	Fl_sysid  int32
 }
 
 type T__oflock = struct {
