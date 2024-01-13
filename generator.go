@@ -40,7 +40,11 @@ func fail(rc int, msg string, args ...any) {
 
 func main() {
 	if goos == "windows" {
-		win()
+		switch target {
+		case "windows/amd64":
+			win()
+		}
+		util.MustShell(true, "sh", "-c", "./windows_arm64.sh")
 		return
 	}
 
