@@ -7,6 +7,8 @@
 
 package main
 
+// https://unix.stackexchange.com/questions/159193/unable-to-find-an-interpreter-when-running-a-windows-executable
+
 import (
 	"bufio"
 	"fmt"
