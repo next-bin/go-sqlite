@@ -39,6 +39,13 @@ func fail(rc int, msg string, args ...any) {
 }
 
 func main() {
+	if ccgo.IsExecEnv() {
+		if err := ccgo.NewTask(goos, goarch, os.Args, os.Stdout, os.Stderr, nil).Main(); err != nil {
+			fmt.Fprintln(os.Stderr, err)
+		}
+		return
+	}
+
 	if goos == "windows" {
 		switch target {
 		case "windows/amd64":
@@ -48,12 +55,6 @@ func main() {
 		return
 	}
 
-	if ccgo.IsExecEnv() {
-		if err := ccgo.NewTask(goos, goarch, os.Args, os.Stdout, os.Stderr, nil).Main(); err != nil {
-			fmt.Fprintln(os.Stderr, err)
-		}
-		return
-	}
 
 	switch goos {
 	case "darwin", "freebsd", "openbsd":
