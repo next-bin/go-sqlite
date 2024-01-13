@@ -348,13 +348,12 @@ type Toff_t = int64
 type Tpid_t = int32
 
 type Tflock = struct {
-	Fl_start     Toff_t
-	Fl_len       Toff_t
-	Fl_pid       Tpid_t
-	Fl_type      int16
-	Fl_whence    int16
-	Fl_sysid     int32
-	F__ccgo_pad6 [4]byte
+	Fl_start  Toff_t
+	Fl_len    Toff_t
+	Fl_pid    Tpid_t
+	Fl_type   int16
+	Fl_whence int16
+	Fl_sysid  int32
 }
 
 type t__oflock = struct {
@@ -379,18 +378,17 @@ type Tuid_t = uint32
 type Tsize_t = uint64
 
 type Tpasswd = struct {
-	Fpw_name      uintptr
-	Fpw_passwd    uintptr
-	Fpw_uid       Tuid_t
-	Fpw_gid       Tgid_t
-	Fpw_change    Ttime_t
-	Fpw_class     uintptr
-	Fpw_gecos     uintptr
-	Fpw_dir       uintptr
-	Fpw_shell     uintptr
-	Fpw_expire    Ttime_t
-	Fpw_fields    int32
-	F__ccgo_pad11 [4]byte
+	Fpw_name   uintptr
+	Fpw_passwd uintptr
+	Fpw_uid    Tuid_t
+	Fpw_gid    Tgid_t
+	Fpw_change Ttime_t
+	Fpw_class  uintptr
+	Fpw_gecos  uintptr
+	Fpw_dir    uintptr
+	Fpw_shell  uintptr
+	Fpw_expire Ttime_t
+	Fpw_fields int32
 }
 
 type t__sigset_t = struct {
@@ -538,9 +536,8 @@ type Tsiginfo_t = struct {
 			F_syscall int32
 		}
 		F__spare__ [0]struct {
-			F__spare1__  int64
-			F__spare2__  [7]int32
-			F__ccgo_pad2 [4]byte
+			F__spare1__ int64
+			F__spare2__ [7]int32
 		}
 		F_fault struct {
 			F_trapno int32
@@ -556,9 +553,8 @@ type Tsigaction = struct {
 		F__sa_sigaction [0]uintptr
 		F__sa_handler   uintptr
 	}
-	Fsa_flags    int32
-	Fsa_mask     Tsigset_t
-	F__ccgo_pad3 [4]byte
+	Fsa_flags int32
+	Fsa_mask  Tsigset_t
 }
 
 type Tsig_t = uintptr
@@ -578,9 +574,8 @@ type Tsigvec = struct {
 }
 
 type Tsigstack = struct {
-	Fss_sp       uintptr
-	Fss_onstack  int32
-	F__ccgo_pad2 [4]byte
+	Fss_sp      uintptr
+	Fss_onstack int32
 }
 
 type Tmcontext_t = struct {
@@ -633,7 +628,6 @@ type Tucontext_t = struct {
 	Fuc_stack    Tsigaltstack
 	Fuc_flags    int32
 	F__spare__   [4]int32
-	F__ccgo_pad6 [4]byte
 }
 
 type t__ucontext = Tucontext_t
@@ -1078,15 +1072,13 @@ type Tomsghdr = struct {
 	Fmsg_iovlen       int32
 	Fmsg_accrights    uintptr
 	Fmsg_accrightslen int32
-	F__ccgo_pad6      [4]byte
 }
 
 type Tsf_hdtr = struct {
-	Fheaders     uintptr
-	Fhdr_cnt     int32
-	Ftrailers    uintptr
-	Ftrl_cnt     int32
-	F__ccgo_pad4 [4]byte
+	Fheaders  uintptr
+	Fhdr_cnt  int32
+	Ftrailers uintptr
+	Ftrl_cnt  int32
 }
 
 type Tmmsghdr = struct {
@@ -1168,15 +1160,14 @@ type Tsockaddr_in6 = struct {
 }
 
 type Troute_in6 = struct {
-	Fro_nh       uintptr
-	Fro_lle      uintptr
-	Fro_prepend  uintptr
-	Fro_plen     Tuint16_t
-	Fro_flags    Tuint16_t
-	Fro_mtu      Tuint16_t
-	Fspare       Tuint16_t
-	Fro_dst      Tsockaddr_in6
-	F__ccgo_pad8 [4]byte
+	Fro_nh      uintptr
+	Fro_lle     uintptr
+	Fro_prepend uintptr
+	Fro_plen    Tuint16_t
+	Fro_flags   Tuint16_t
+	Fro_mtu     Tuint16_t
+	Fspare      Tuint16_t
+	Fro_dst     Tsockaddr_in6
 }
 
 type Tipv6_mreq = struct {
@@ -1217,10 +1208,9 @@ type Tservent = struct {
 }
 
 type Tprotoent = struct {
-	Fp_name      uintptr
-	Fp_aliases   uintptr
-	Fp_proto     int32
-	F__ccgo_pad3 [4]byte
+	Fp_name    uintptr
+	Fp_aliases uintptr
+	Fp_proto   int32
 }
 
 type Taddrinfo = struct {
@@ -1248,9 +1238,8 @@ type Trsize_t = uint64
 type Tva_list = uintptr
 
 type t__sbuf = struct {
-	F_base       uintptr
-	F_size       int32
-	F__ccgo_pad2 [4]byte
+	F_base uintptr
+	F_size int32
 }
 
 type t__sFILE = struct {
@@ -1280,7 +1269,6 @@ type t__sFILE = struct {
 	F_orientation int32
 	F_mbstate     t__mbstate_t
 	F_flags2      int32
-	F__ccgo_pad26 [4]byte
 }
 
 type TFILE = struct {
@@ -1310,7 +1298,6 @@ type TFILE = struct {
 	F_orientation int32
 	F_mbstate     t__mbstate_t
 	F_flags2      int32
-	F__ccgo_pad26 [4]byte
 }
 
 type Tcookie_io_functions_t = struct {
@@ -1352,7 +1339,6 @@ type TTcl_Interp = struct {
 	FresultDontUse    uintptr
 	FfreeProcDontUse  uintptr
 	FerrorLineDontUse int32
-	F__ccgo_pad3      [4]byte
 }
 
 type TTcl_AsyncHandler = uintptr
@@ -1494,7 +1480,6 @@ type TTcl_SavedResult = struct {
 	FappendAvl    int32
 	FappendUsed   int32
 	FresultSpace  [201]int8
-	F__ccgo_pad7  [7]byte
 }
 
 type TTcl_Namespace = struct {
@@ -1754,7 +1739,6 @@ type TTcl_EncodingType = struct {
 	FfreeProc     uintptr
 	FclientData   TClientData
 	FnullSize     int32
-	F__ccgo_pad6  [4]byte
 }
 
 type TTcl_UniChar = uint16
@@ -2508,7 +2492,6 @@ type T_RuneLocale = struct {
 	F__mapupper_ext T_RuneRange
 	F__variable     uintptr
 	F__variable_len int32
-	F__ccgo_pad13   [4]byte
 }
 
 type Trune_t = int32
@@ -2616,7 +2599,6 @@ type TEnsembleConfig = struct {
 	FunknownHandler     uintptr
 	FparameterList      uintptr
 	FnumParameters      int32
-	F__ccgo_pad12       [4]byte
 }
 
 type TVarTrace = struct {
@@ -2627,12 +2609,11 @@ type TVarTrace = struct {
 }
 
 type TCommandTrace = struct {
-	FtraceProc   uintptr
-	FclientData  TClientData
-	Fflags       int32
-	FnextPtr     uintptr
-	FrefCount    int32
-	F__ccgo_pad5 [4]byte
+	FtraceProc  uintptr
+	FclientData TClientData
+	Fflags      int32
+	FnextPtr    uintptr
+	FrefCount   int32
 }
 
 type TActiveCommandTrace = struct {
@@ -2640,7 +2621,6 @@ type TActiveCommandTrace = struct {
 	FnextPtr      uintptr
 	FnextTracePtr uintptr
 	FreverseScan  int32
-	F__ccgo_pad4  [4]byte
 }
 
 type TActiveVarTrace = struct {
@@ -2715,7 +2695,6 @@ type TActiveInterpTrace = struct {
 	FnextPtr      uintptr
 	FnextTracePtr uintptr
 	FreverseScan  int32
-	F__ccgo_pad3  [4]byte
 }
 
 type TAssocData = struct {
@@ -2835,7 +2814,6 @@ type TExecEnv = struct {
 	FcallbackPtr  uintptr
 	FcorPtr       uintptr
 	Frewind       int32
-	F__ccgo_pad6  [4]byte
 }
 
 type TLiteralEntry = struct {
@@ -2861,7 +2839,6 @@ type TEnsembleImplMap = struct {
 	FnreProc     uintptr
 	FclientData  TClientData
 	Funsafe      int32
-	F__ccgo_pad6 [4]byte
 }
 
 type TImportRef = struct {
@@ -2910,7 +2887,6 @@ type TAllocCache = struct {
 	Fowner       TTcl_ThreadId
 	FfirstObjPtr uintptr
 	FnumObjects  int32
-	F__ccgo_pad4 [4]byte
 }
 
 type TInterp = struct {
@@ -3009,7 +2985,6 @@ type TInterp = struct {
 	FinnerLiteral      uintptr
 	FinnerContext      uintptr
 	FresetErrorStack   int32
-	F__ccgo_pad75      [4]byte
 }
 
 type TTclPlatformType = int32
@@ -3071,12 +3046,11 @@ const _TCL_EMPTYSTRING_NO = 0
 const _TCL_EMPTYSTRING_YES = 1
 
 type TForIterData = struct {
-	Fcond        uintptr
-	Fbody        uintptr
-	Fnext        uintptr
-	Fmsg         uintptr
-	Fword        int32
-	F__ccgo_pad5 [4]byte
+	Fcond uintptr
+	Fbody uintptr
+	Fnext uintptr
+	Fmsg  uintptr
+	Fword int32
 }
 
 type TmemCmpFn_t = uintptr
@@ -3659,18 +3633,17 @@ type Tfns = struct {
 }
 
 type Tguts = struct {
-	Fmagic        int32
-	Fcflags       int32
-	Finfo         int64
-	Fnsub         Tsize_t
-	Ftree         uintptr
-	Fsearch       Tcnfa
-	Fntree        int32
-	Fcmap         Tcolormap
-	Fcompare      uintptr
-	Flacons       uintptr
-	Fnlacons      int32
-	F__ccgo_pad11 [4]byte
+	Fmagic   int32
+	Fcflags  int32
+	Finfo    int64
+	Fnsub    Tsize_t
+	Ftree    uintptr
+	Fsearch  Tcnfa
+	Fntree   int32
+	Fcmap    Tcolormap
+	Fcompare uintptr
+	Flacons  uintptr
+	Fnlacons int32
 }
 
 /* automatically gathered by fwd; do not hand-edit */
@@ -11654,9 +11627,8 @@ func _freecvec(tls *libc.TLS, cv uintptr) {
 /* ASCII character-name table */
 
 type Tcname = struct {
-	Fname        uintptr
-	Fcode        int8
-	F__ccgo_pad2 [7]byte
+	Fname uintptr
+	Fcode int8
 }
 
 /*
@@ -17333,9 +17305,8 @@ const m_WORK = 1
  */
 
 type Tarcp = struct {
-	Fss          uintptr
-	Fco          Tcolor
-	F__ccgo_pad2 [6]byte
+	Fss uintptr
+	Fco Tcolor
 }
 
 type Tsset = struct {
@@ -19953,7 +19924,6 @@ type TExceptionAux = struct {
 	FnumContinueTargets   int32
 	FcontinueTargets      uintptr
 	FallocContinueTargets int32
-	F__ccgo_pad10         [4]byte
 }
 
 type TCmdLocation = struct {
@@ -20091,7 +20061,6 @@ type TInstructionDesc = struct {
 	FstackEffect int32
 	FnumOperands int32
 	FopTypes     [2]TInstOperandType
-	F__ccgo_pad5 [4]byte
 }
 
 type TInstStringClassType = int32
@@ -20136,7 +20105,6 @@ type TJumpFixupArray = struct {
 	Fend              int32
 	FmallocedArray    int32
 	FstaticFixupSpace [10]TJumpFixup
-	F__ccgo_pad5      [4]byte
 }
 
 type TForeachVarList = struct {
@@ -20165,7 +20133,6 @@ type TTclOpCmdClientData = struct {
 		Fidentity [0]int32
 		FnumArgs  int32
 	}
-	F__ccgo_pad3 [4]byte
 }
 
 type TTcl_Class = uintptr
@@ -20344,7 +20311,6 @@ type TMethod = struct {
 	FdeclaringObjectPtr uintptr
 	FdeclaringClassPtr  uintptr
 	Fflags              int32
-	F__ccgo_pad7        [4]byte
 }
 
 type TProcedureMethod = struct {
@@ -20599,7 +20565,6 @@ type TBasicBlock = struct {
 	FforeignExceptions     uintptr
 	FjtPtr                 uintptr
 	Fflags                 int32
-	F__ccgo_pad21          [4]byte
 }
 
 /*
@@ -25301,7 +25266,6 @@ type TBasicBlock1 = struct {
 	FforeignExceptions     uintptr
 	FjtPtr                 uintptr
 	Fflags                 int32
-	F__ccgo_pad21          [4]byte
 }
 
 /* Epoch of the tcl environment
@@ -25704,13 +25668,12 @@ type TOldMathFuncData = struct {
  */
 
 type TCancelInfo = struct {
-	Finterp      uintptr
-	Fasync       TTcl_AsyncHandler
-	Fresult      uintptr
-	Flength      int32
-	FclientData  TClientData
-	Fflags       int32
-	F__ccgo_pad6 [4]byte
+	Finterp     uintptr
+	Fasync      TTcl_AsyncHandler
+	Fresult     uintptr
+	Flength     int32
+	FclientData TClientData
+	Fflags      int32
 }
 
 var _cancelTable TTcl_HashTable
@@ -25731,7 +25694,6 @@ type TCmdInfo = struct {
 	FcompileProc uintptr
 	FnreProc     uintptr
 	Fflags       int32
-	F__ccgo_pad5 [4]byte
 }
 
 /* CMD_COMPILES_EXPANDED - Whether the compiler for this command can handle
@@ -35223,7 +35185,6 @@ type TExecEnv1 = struct {
 	FcallbackPtr  uintptr
 	FcorPtr       uintptr
 	Frewind       int32
-	F__ccgo_pad6  [4]byte
 }
 
 const m_BINARY_SCAN_MAX_CACHE = 260
@@ -41573,7 +41534,6 @@ type Tlconv = struct {
 	Fint_n_sep_by_space int8
 	Fint_p_sign_posn    int8
 	Fint_n_sign_posn    int8
-	F__ccgo_pad24       [2]byte
 }
 
 /*
@@ -42159,9 +42119,8 @@ func XTclMakeEncodingCommandSafe(tls *libc.TLS, interp uintptr) (r int32) {
 }
 
 var _unsafeInfo = [6]struct {
-	FcmdName     uintptr
-	Funsafe      int32
-	F__ccgo_pad2 [4]byte
+	FcmdName uintptr
+	Funsafe  int32
 }{
 	0: {
 		FcmdName: __ccgo_ts + 11526,
@@ -43036,9 +42995,8 @@ func XTclMakeFileCommandSafe(tls *libc.TLS, interp uintptr) (r int32) {
 }
 
 var _unsafeInfo1 = [35]struct {
-	FcmdName     uintptr
-	Funsafe      int32
-	F__ccgo_pad2 [4]byte
+	FcmdName uintptr
+	Funsafe  int32
 }{
 	0: {
 		FcmdName: __ccgo_ts + 11971,
@@ -45950,15 +45908,14 @@ const m_TCL_SHLIB_EXT = ""
 const m_VAR_ARGUMENT = 256
 
 type TTclRegexp = struct {
-	Fflags       int32
-	Fre          Tregex_t
-	Fstring1     uintptr
-	FobjPtr      uintptr
-	FglobObjPtr  uintptr
-	Fmatches     uintptr
-	Fdetails     Trm_detail_t
-	FrefCount    int32
-	F__ccgo_pad8 [4]byte
+	Fflags      int32
+	Fre         Tregex_t
+	Fstring1    uintptr
+	FobjPtr     uintptr
+	FglobObjPtr uintptr
+	Fmatches    uintptr
+	Fdetails    Trm_detail_t
+	FrefCount   int32
 }
 
 /*
@@ -46016,7 +45973,6 @@ type TSortInfo = struct {
 	FnumElements   int32
 	Finterp        uintptr
 	FresultCode    int32
-	F__ccgo_pad10  [4]byte
 }
 
 /*
@@ -47216,7 +47172,7 @@ func _InfoFrameCmd(tls *libc.TLS, dummy TClientData, interp uintptr, objc int32,
 	iPtr = interp
 	code = m_TCL_OK
 	cmdFramePtrPtr = iPtr + 952
-	corPtr = (*TExecEnv2)(unsafe.Pointer((*TInterp)(unsafe.Pointer(iPtr)).FexecEnvPtr)).FcorPtr
+	corPtr = (*TExecEnv1)(unsafe.Pointer((*TInterp)(unsafe.Pointer(iPtr)).FexecEnvPtr)).FcorPtr
 	topLevel = 0
 	if objc > int32(2) {
 		XTcl_WrongNumArgs(tls, interp, int32(1), objv, __ccgo_ts+13522)
@@ -47230,7 +47186,7 @@ func _InfoFrameCmd(tls *libc.TLS, dummy TClientData, interp uintptr, objc int32,
 		if (*TCoroutineData)(unsafe.Pointer(corPtr)).Fcaller.FcmdFramePtr != 0 {
 			*(*uintptr)(unsafe.Pointer(cmdFramePtrPtr)) = (*TCoroutineData)(unsafe.Pointer(corPtr)).Fcaller.FcmdFramePtr
 		}
-		corPtr = (*TExecEnv2)(unsafe.Pointer((*TCoroutineData)(unsafe.Pointer(corPtr)).FcallerEEPtr)).FcorPtr
+		corPtr = (*TExecEnv1)(unsafe.Pointer((*TCoroutineData)(unsafe.Pointer(corPtr)).FcallerEEPtr)).FcorPtr
 	}
 	topLevel += (*TCmdFrame)(unsafe.Pointer(*(*uintptr)(unsafe.Pointer(cmdFramePtrPtr)))).Flevel
 	if topLevel != (*TCmdFrame)(unsafe.Pointer((*TInterp)(unsafe.Pointer(iPtr)).FcmdFramePtr)).Flevel {
@@ -47306,7 +47262,7 @@ _3:
 	XTcl_SetObjResult(tls, interp, XTclInfoFrame(tls, interp, framePtr))
 done:
 	cmdFramePtrPtr = iPtr + 952
-	corPtr = (*TExecEnv2)(unsafe.Pointer((*TInterp)(unsafe.Pointer(iPtr)).FexecEnvPtr)).FcorPtr
+	corPtr = (*TExecEnv1)(unsafe.Pointer((*TInterp)(unsafe.Pointer(iPtr)).FexecEnvPtr)).FcorPtr
 	for corPtr != 0 {
 		endPtr = (*TCoroutineData)(unsafe.Pointer(corPtr)).Fcaller.FcmdFramePtr
 		if endPtr != 0 {
@@ -47323,7 +47279,7 @@ done:
 			}
 			cmdFramePtrPtr = corPtr + 24 + 16
 		}
-		corPtr = (*TExecEnv2)(unsafe.Pointer((*TCoroutineData)(unsafe.Pointer(corPtr)).FcallerEEPtr)).FcorPtr
+		corPtr = (*TExecEnv1)(unsafe.Pointer((*TCoroutineData)(unsafe.Pointer(corPtr)).FcallerEEPtr)).FcorPtr
 	}
 	return code
 }
@@ -51596,15 +51552,6 @@ func _SelectObjFromSublist(tls *libc.TLS, objPtr uintptr, infoPtr uintptr) (r ui
 		i++
 	}
 	return objPtr
-}
-
-type TExecEnv2 = struct {
-	FexecStackPtr uintptr
-	Fconstants    [2]uintptr
-	Finterp       uintptr
-	FcallbackPtr  uintptr
-	FcorPtr       uintptr
-	Frewind       int32
 }
 
 const m_TCL_EVAL_DISCARD_RESULT = 64
@@ -119174,7 +119121,6 @@ type TDateInfo = struct {
 	FdateInput            uintptr
 	FdateRelPointer       uintptr
 	FdateDigitCount       int32
-	F__ccgo_pad27         [4]byte
 }
 
 /*
@@ -137176,7 +137122,6 @@ var _env struct {
 	Fcache          uintptr
 	FourEnviron     uintptr
 	FourEnvironSize int32
-	F__ccgo_pad4    [4]byte
 }
 
 /*
@@ -137867,7 +137812,6 @@ func init() {
 type TThreadSpecificData2 = struct {
 	FfirstExitPtr uintptr
 	FinExit       int32
-	F__ccgo_pad2  [4]byte
 }
 
 var _dataKey1 TTcl_ThreadDataKey
@@ -139553,9 +139497,8 @@ var _operatorStrings = [22]uintptr{
  */
 
 type TBuiltinFunc = struct {
-	Fname        uintptr
-	FnumArgs     int32
-	F__ccgo_pad2 [4]byte
+	Fname    uintptr
+	FnumArgs int32
 }
 
 /*
@@ -171842,7 +171785,6 @@ type TChannel = struct {
 	FinQueueHead  uintptr
 	FinQueueTail  uintptr
 	FrefCount     int32
-	F__ccgo_pad8  [4]byte
 }
 
 type TChannelState = struct {
@@ -171881,7 +171823,6 @@ type TChannelState = struct {
 	FchanMsg             uintptr
 	FunreportedMsg       uintptr
 	Fepoch               int32
-	F__ccgo_pad35        [4]byte
 }
 
 /*
@@ -171944,17 +171885,16 @@ type TGetsState = struct {
  */
 
 type TCopyState = struct {
-	FreadPtr      uintptr
-	FwritePtr     uintptr
-	FreadFlags    int32
-	FwriteFlags   int32
-	FtoRead       TTcl_WideInt
-	Ftotal        TTcl_WideInt
-	Finterp       uintptr
-	FcmdPtr       uintptr
-	FbufSize      int32
-	Fbuffer       [1]int8
-	F__ccgo_pad10 [3]byte
+	FreadPtr    uintptr
+	FwritePtr   uintptr
+	FreadFlags  int32
+	FwriteFlags int32
+	FtoRead     TTcl_WideInt
+	Ftotal      TTcl_WideInt
+	Finterp     uintptr
+	FcmdPtr     uintptr
+	FbufSize    int32
+	Fbuffer     [1]int8
 }
 
 /*
@@ -182574,6 +182514,17 @@ type TChannelState1 = struct {
 	Fepoch               int32
 }
 
+type TChannel1 = struct {
+	Fstate        uintptr
+	FinstanceData TClientData
+	FtypePtr      uintptr
+	FdownChanPtr  uintptr
+	FupChanPtr    uintptr
+	FinQueueHead  uintptr
+	FinQueueTail  uintptr
+	FrefCount     int32
+}
+
 type TCopyState1 = struct {
 	FreadPtr    uintptr
 	FwritePtr   uintptr
@@ -182585,18 +182536,6 @@ type TCopyState1 = struct {
 	FcmdPtr     uintptr
 	FbufSize    int32
 	Fbuffer     [1]int8
-}
-
-type TChannel1 = struct {
-	Fstate        uintptr
-	FinstanceData TClientData
-	FtypePtr      uintptr
-	FdownChanPtr  uintptr
-	FupChanPtr    uintptr
-	FinQueueHead  uintptr
-	FinQueueTail  uintptr
-	FrefCount     int32
-	F__ccgo_pad8  [4]byte
 }
 
 const m_O_RDONLY = 0
@@ -184873,15 +184812,14 @@ func init() {
  */
 
 type TReflectedChannel = struct {
-	Fchan1       TTcl_Channel
-	Finterp      uintptr
-	Fcmd         uintptr
-	Fmethods     uintptr
-	Fname        uintptr
-	Fmode        int32
-	Finterest    int32
-	Fdead        int32
-	F__ccgo_pad8 [4]byte
+	Fchan1    TTcl_Channel
+	Finterp   uintptr
+	Fcmd      uintptr
+	Fmethods  uintptr
+	Fname     uintptr
+	Fmode     int32
+	Finterest int32
+	Fdead     int32
 }
 
 /*
@@ -188907,7 +188845,6 @@ type TTransformChannelData1 = struct {
 	Fcommand       uintptr
 	Fresult        TResultBuffer
 	FrefCount      int32
-	F__ccgo_pad12  [4]byte
 }
 
 func _PreserveData(tls *libc.TLS, dataPtr uintptr) {
@@ -194896,8 +194833,7 @@ type TLink = struct {
 		Fc            int8
 		F__ccgo_pad12 [7]byte
 	}
-	Fflags       int32
-	F__ccgo_pad7 [4]byte
+	Fflags int32
 }
 
 /*
@@ -201076,10 +201012,9 @@ var _dataKey5 TTcl_ThreadDataKey
  */
 
 type TResolvedNsName = struct {
-	FnsPtr       uintptr
-	FrefNsPtr    uintptr
-	FrefCount    int32
-	F__ccgo_pad3 [4]byte
+	FnsPtr    uintptr
+	FrefNsPtr uintptr
+	FrefCount int32
 }
 
 /*
@@ -205996,6 +205931,14 @@ func XTcl_LogCommandInfo(tls *libc.TLS, interp uintptr, script uintptr, command 
 	XTclLogCommandInfo(tls, interp, script, command, length, libc.UintptrFromInt32(0), libc.UintptrFromInt32(0))
 }
 
+type TTcl_Namespace1 = struct {
+	Fname       uintptr
+	FfullName   uintptr
+	FclientData TClientData
+	FdeleteProc uintptr
+	FparentPtr  uintptr
+}
+
 type TNamespace1 = struct {
 	Fname                  uintptr
 	FfullName              uintptr
@@ -206025,14 +205968,6 @@ type TNamespace1 = struct {
 	FcommandPathArray      uintptr
 	FcommandPathSourceList uintptr
 	FearlyDeleteProc       uintptr
-}
-
-type TTcl_Namespace1 = struct {
-	Fname       uintptr
-	FfullName   uintptr
-	FclientData TClientData
-	FdeleteProc uintptr
-	FparentPtr  uintptr
 }
 
 const m_TCL_SERVICE_ALL = 1
@@ -207168,7 +207103,6 @@ type TResolvedCmdName = struct {
 	FrefNsCmdEpoch int32
 	FcmdEpoch      int32
 	FrefCount      int32
-	F__ccgo_pad6   [4]byte
 }
 
 /*
@@ -221495,9 +221429,8 @@ var _inUse = int32(0)
  */
 
 type THandleStruct = struct {
-	Fptr         uintptr
-	FrefCount    int32
-	F__ccgo_pad2 [4]byte
+	Fptr      uintptr
+	FrefCount int32
 }
 
 /*
@@ -226140,15 +226073,14 @@ func _FinalizeRegexp(tls *libc.TLS, clientData TClientData) {
 }
 
 type TTclRegexp1 = struct {
-	Fflags       int32
-	Fre          Tregex_t
-	Fstring1     uintptr
-	FobjPtr      uintptr
-	FglobObjPtr  uintptr
-	Fmatches     uintptr
-	Fdetails     Trm_detail_t
-	FrefCount    int32
-	F__ccgo_pad8 [4]byte
+	Fflags      int32
+	Fre         Tregex_t
+	Fstring1    uintptr
+	FobjPtr     uintptr
+	FglobObjPtr uintptr
+	Fmatches    uintptr
+	Fdetails    Trm_detail_t
+	FrefCount   int32
 }
 
 /*
@@ -226555,7 +226487,6 @@ type TInterpState = struct {
 	FobjResult       uintptr
 	FerrorStack      uintptr
 	FresetErrorStack int32
-	F__ccgo_pad10    [4]byte
 }
 
 /*
@@ -241619,10 +241550,9 @@ const m_VAR_TRACE_ACTIVE = 8192
  */
 
 type TTraceVarInfo = struct {
-	Fflags       int32
-	Flength      Tsize_t
-	Fcommand     [1]int8
-	F__ccgo_pad3 [7]byte
+	Fflags   int32
+	Flength  Tsize_t
+	Fcommand [1]int8
 }
 
 type TCombinedTraceVarInfo = struct {
@@ -241635,16 +241565,15 @@ type TCombinedTraceVarInfo = struct {
  */
 
 type TTraceCommandInfo = struct {
-	Fflags       int32
-	Flength      Tsize_t
-	FstepTrace   TTcl_Trace
-	FstartLevel  int32
-	FstartCmd    uintptr
-	FcurFlags    int32
-	FcurCode     int32
-	FrefCount    int32
-	Fcommand     [1]int8
-	F__ccgo_pad9 [3]byte
+	Fflags      int32
+	Flength     Tsize_t
+	FstepTrace  TTcl_Trace
+	FstartLevel int32
+	FstartCmd   uintptr
+	FcurFlags   int32
+	FcurCode    int32
+	FrefCount   int32
+	Fcommand    [1]int8
 }
 
 /*
@@ -270892,20 +270821,19 @@ type Tz_stream_s = Tz_stream
 type Tz_streamp = uintptr
 
 type Tgz_header = struct {
-	Ftext         int32
-	Ftime         TuLong
-	Fxflags       int32
-	Fos           int32
-	Fextra        uintptr
-	Fextra_len    TuInt
-	Fextra_max    TuInt
-	Fname         uintptr
-	Fname_max     TuInt
-	Fcomment      uintptr
-	Fcomm_max     TuInt
-	Fhcrc         int32
-	Fdone         int32
-	F__ccgo_pad13 [4]byte
+	Ftext      int32
+	Ftime      TuLong
+	Fxflags    int32
+	Fos        int32
+	Fextra     uintptr
+	Fextra_len TuInt
+	Fextra_max TuInt
+	Fname      uintptr
+	Fname_max  TuInt
+	Fcomment   uintptr
+	Fcomm_max  TuInt
+	Fhcrc      int32
+	Fdone      int32
 }
 
 type Tgz_header_s = Tgz_header
@@ -273263,9 +273191,8 @@ func _ZlibStreamSubcmd(tls *libc.TLS, interp uintptr, objc int32, objv uintptr) 
 			return int32(m_TCL_ERROR)
 		}
 		obj[(*(*struct {
-			Fname        uintptr
-			Foffset      int32
-			F__ccgo_pad2 [4]byte
+			Fname   uintptr
+			Foffset int32
 		})(unsafe.Pointer(desc + uintptr(*(*int32)(unsafe.Pointer(bp + 4)))*16))).Foffset] = *(*uintptr)(unsafe.Pointer(objv + uintptr(i+int32(1))*8))
 		goto _1
 	_1:
@@ -273313,9 +273240,8 @@ var _stream_formats = [7]uintptr{
 }
 
 var _compressionOpts = [3]struct {
-	Fname        uintptr
-	Foffset      int32
-	F__ccgo_pad2 [4]byte
+	Fname   uintptr
+	Foffset int32
 }{
 	0: {
 		Fname: __ccgo_ts + 14426,
@@ -273330,9 +273256,8 @@ var _compressionOpts = [3]struct {
 }
 
 var _gzipOpts = [3]struct {
-	Fname        uintptr
-	Foffset      int32
-	F__ccgo_pad2 [4]byte
+	Fname   uintptr
+	Foffset int32
 }{
 	0: {
 		Fname:   __ccgo_ts + 61417,
@@ -273348,9 +273273,8 @@ var _gzipOpts = [3]struct {
 }
 
 var _expansionOpts = [2]struct {
-	Fname        uintptr
-	Foffset      int32
-	F__ccgo_pad2 [4]byte
+	Fname   uintptr
+	Foffset int32
 }{
 	0: {
 		Fname: __ccgo_ts + 14426,
@@ -273361,9 +273285,8 @@ var _expansionOpts = [2]struct {
 }
 
 var _gunzipOpts = [1]struct {
-	Fname        uintptr
-	Foffset      int32
-	F__ccgo_pad2 [4]byte
+	Fname   uintptr
+	Foffset int32
 }{
 	0: {
 		Foffset: -1,
@@ -279055,7 +278978,6 @@ type TPipeState = struct {
 	FnumPids       int32
 	FpidPtr        uintptr
 	FisNonBlocking int32
-	F__ccgo_pad7   [4]byte
 }
 
 /*
@@ -280095,7 +280017,6 @@ type TTcpState1 = struct {
 	Ffilehandlers   int32
 	FconnectError   int32
 	FcachedBlocking int32
-	F__ccgo_pad13   [4]byte
 }
 
 /*
@@ -283981,9 +283902,8 @@ type TFileHandler = struct {
  */
 
 type TFileHandlerEvent = struct {
-	Fheader      TTcl_Event
-	Ffd          int32
-	F__ccgo_pad2 [4]byte
+	Fheader TTcl_Event
+	Ffd     int32
 }
 
 /*
@@ -284008,7 +283928,6 @@ type TThreadSpecificData13 = struct {
 	FcheckMasks          TSelectMasks
 	FreadyMasks          TSelectMasks
 	FnumFdBits           int32
-	F__ccgo_pad4         [4]byte
 }
 
 var _dataKey10 TTcl_ThreadDataKey
@@ -284572,10 +284491,9 @@ const m_USE_CLASS_CACHE = 16384
  */
 
 var _defineCmds = [10]struct {
-	Fname        uintptr
-	FobjProc     uintptr
-	Fflag        int32
-	F__ccgo_pad3 [4]byte
+	Fname    uintptr
+	FobjProc uintptr
+	Fflag    int32
 }{
 	0: {
 		Fname: __ccgo_ts + 25185,
@@ -284621,10 +284539,9 @@ func init() {
 }
 
 var _objdefCmds = [8]struct {
-	Fname        uintptr
-	FobjProc     uintptr
-	Fflag        int32
-	F__ccgo_pad3 [4]byte
+	Fname    uintptr
+	FobjProc uintptr
+	Fflag    int32
 }{
 	0: {
 		Fname: __ccgo_ts + 15900,
