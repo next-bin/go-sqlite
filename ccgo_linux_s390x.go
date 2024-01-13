@@ -362,7 +362,6 @@ type t__pthread_rwlock_arch_t = struct {
 	F__pad1          uint64
 	F__pad2          uint64
 	F__flags         uint32
-	F__ccgo_pad11    [4]byte
 }
 
 type t__pthread_cond_s = struct {
@@ -785,20 +784,19 @@ type Tz_stream_s = Tz_stream
 type Tz_streamp = uintptr
 
 type Tgz_header = struct {
-	Ftext         int32
-	Ftime         TuLong
-	Fxflags       int32
-	Fos           int32
-	Fextra        uintptr
-	Fextra_len    TuInt
-	Fextra_max    TuInt
-	Fname         uintptr
-	Fname_max     TuInt
-	Fcomment      uintptr
-	Fcomm_max     TuInt
-	Fhcrc         int32
-	Fdone         int32
-	F__ccgo_pad13 [4]byte
+	Ftext      int32
+	Ftime      TuLong
+	Fxflags    int32
+	Fos        int32
+	Fextra     uintptr
+	Fextra_len TuInt
+	Fextra_max TuInt
+	Fname      uintptr
+	Fname_max  TuInt
+	Fcomment   uintptr
+	Fcomm_max  TuInt
+	Fhcrc      int32
+	Fdone      int32
 }
 
 type Tgz_header_s = Tgz_header
@@ -7009,42 +7007,41 @@ const _MEM = 16210
 const _SYNC = 16211
 
 type Tinflate_state = struct {
-	Fstrm         Tz_streamp
-	Fmode         Tinflate_mode
-	Flast         int32
-	Fwrap         int32
-	Fhavedict     int32
-	Fflags        int32
-	Fdmax         uint32
-	Fcheck        uint64
-	Ftotal        uint64
-	Fhead         Tgz_headerp
-	Fwbits        uint32
-	Fwsize        uint32
-	Fwhave        uint32
-	Fwnext        uint32
-	Fwindow       uintptr
-	Fhold         uint64
-	Fbits         uint32
-	Flength       uint32
-	Foffset       uint32
-	Fextra        uint32
-	Flencode      uintptr
-	Fdistcode     uintptr
-	Flenbits      uint32
-	Fdistbits     uint32
-	Fncode        uint32
-	Fnlen         uint32
-	Fndist        uint32
-	Fhave         uint32
-	Fnext         uintptr
-	Flens         [320]uint16
-	Fwork         [288]uint16
-	Fcodes        [1444]Tcode
-	Fsane         int32
-	Fback         int32
-	Fwas          uint32
-	F__ccgo_pad35 [4]byte
+	Fstrm     Tz_streamp
+	Fmode     Tinflate_mode
+	Flast     int32
+	Fwrap     int32
+	Fhavedict int32
+	Fflags    int32
+	Fdmax     uint32
+	Fcheck    uint64
+	Ftotal    uint64
+	Fhead     Tgz_headerp
+	Fwbits    uint32
+	Fwsize    uint32
+	Fwhave    uint32
+	Fwnext    uint32
+	Fwindow   uintptr
+	Fhold     uint64
+	Fbits     uint32
+	Flength   uint32
+	Foffset   uint32
+	Fextra    uint32
+	Flencode  uintptr
+	Fdistcode uintptr
+	Flenbits  uint32
+	Fdistbits uint32
+	Fncode    uint32
+	Fnlen     uint32
+	Fndist    uint32
+	Fhave     uint32
+	Fnext     uintptr
+	Flens     [320]uint16
+	Fwork     [288]uint16
+	Fcodes    [1444]Tcode
+	Fsane     int32
+	Fback     int32
+	Fwas      uint32
 }
 
 // C documentation
@@ -20060,21 +20057,19 @@ type Tfpos64_t = struct {
 }
 
 type Tflock = struct {
-	Fl_type      int16
-	Fl_whence    int16
-	Fl_start     t__off_t
-	Fl_len       t__off_t
-	Fl_pid       t__pid_t
-	F__ccgo_pad5 [4]byte
+	Fl_type   int16
+	Fl_whence int16
+	Fl_start  t__off_t
+	Fl_len    t__off_t
+	Fl_pid    t__pid_t
 }
 
 type Tflock64 = struct {
-	Fl_type      int16
-	Fl_whence    int16
-	Fl_start     t__off64_t
-	Fl_len       t__off64_t
-	Fl_pid       t__pid_t
-	F__ccgo_pad5 [4]byte
+	Fl_type   int16
+	Fl_whence int16
+	Fl_start  t__off64_t
+	Fl_len    t__off64_t
+	Fl_pid    t__pid_t
 }
 
 type Tstat = struct {
