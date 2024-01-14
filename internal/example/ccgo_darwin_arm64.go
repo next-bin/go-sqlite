@@ -518,9 +518,8 @@ type Ttimespec = struct {
 }
 
 type Ttimeval = struct {
-	Ftv_sec      T__darwin_time_t
-	Ftv_usec     T__darwin_suseconds_t
-	F__ccgo_pad2 [4]byte
+	Ftv_sec  T__darwin_time_t
+	Ftv_usec T__darwin_suseconds_t
 }
 
 type Tsigset_t = uint32
@@ -553,20 +552,19 @@ type Tz_stream_s = Tz_stream
 type Tz_streamp = uintptr
 
 type Tgz_header = struct {
-	Ftext         int32
-	Ftime         TuLong
-	Fxflags       int32
-	Fos           int32
-	Fextra        uintptr
-	Fextra_len    TuInt
-	Fextra_max    TuInt
-	Fname         uintptr
-	Fname_max     TuInt
-	Fcomment      uintptr
-	Fcomm_max     TuInt
-	Fhcrc         int32
-	Fdone         int32
-	F__ccgo_pad13 [4]byte
+	Ftext      int32
+	Ftime      TuLong
+	Fxflags    int32
+	Fos        int32
+	Fextra     uintptr
+	Fextra_len TuInt
+	Fextra_max TuInt
+	Fname      uintptr
+	Fname_max  TuInt
+	Fcomment   uintptr
+	Fcomm_max  TuInt
+	Fhcrc      int32
+	Fdone      int32
 }
 
 type Tgz_header_s = Tgz_header
@@ -588,9 +586,8 @@ type TgzFile_s = struct {
 type Tfpos_t = int64
 
 type T__sbuf = struct {
-	F_base       uintptr
-	F_size       int32
-	F__ccgo_pad2 [4]byte
+	F_base uintptr
+	F_size int32
 }
 
 type TFILE = struct {
@@ -707,17 +704,15 @@ type T__darwin_mcontext64 = int32
 type Tmcontext_t = uintptr
 
 type T__darwin_sigaltstack = struct {
-	Fss_sp       uintptr
-	Fss_size     T__darwin_size_t
-	Fss_flags    int32
-	F__ccgo_pad3 [4]byte
+	Fss_sp    uintptr
+	Fss_size  T__darwin_size_t
+	Fss_flags int32
 }
 
 type Tstack_t = struct {
-	Fss_sp       uintptr
-	Fss_size     T__darwin_size_t
-	Fss_flags    int32
-	F__ccgo_pad3 [4]byte
+	Fss_sp    uintptr
+	Fss_size  T__darwin_size_t
+	Fss_flags int32
 }
 
 type T__darwin_ucontext = struct {
@@ -794,9 +789,8 @@ type Tsigvec = struct {
 }
 
 type Tsigstack = struct {
-	Fss_sp       uintptr
-	Fss_onstack  int32
-	F__ccgo_pad2 [4]byte
+	Fss_sp      uintptr
+	Fss_onstack int32
 }
 
 type Trlim_t = uint64
@@ -9924,42 +9918,41 @@ const _MEM = 16210
 const _SYNC = 16211
 
 type Tinflate_state = struct {
-	Fstrm         Tz_streamp
-	Fmode         Tinflate_mode
-	Flast         int32
-	Fwrap         int32
-	Fhavedict     int32
-	Fflags        int32
-	Fdmax         uint32
-	Fcheck        uint64
-	Ftotal        uint64
-	Fhead         Tgz_headerp
-	Fwbits        uint32
-	Fwsize        uint32
-	Fwhave        uint32
-	Fwnext        uint32
-	Fwindow       uintptr
-	Fhold         uint64
-	Fbits         uint32
-	Flength       uint32
-	Foffset       uint32
-	Fextra        uint32
-	Flencode      uintptr
-	Fdistcode     uintptr
-	Flenbits      uint32
-	Fdistbits     uint32
-	Fncode        uint32
-	Fnlen         uint32
-	Fndist        uint32
-	Fhave         uint32
-	Fnext         uintptr
-	Flens         [320]uint16
-	Fwork         [288]uint16
-	Fcodes        [1444]Tcode
-	Fsane         int32
-	Fback         int32
-	Fwas          uint32
-	F__ccgo_pad35 [4]byte
+	Fstrm     Tz_streamp
+	Fmode     Tinflate_mode
+	Flast     int32
+	Fwrap     int32
+	Fhavedict int32
+	Fflags    int32
+	Fdmax     uint32
+	Fcheck    uint64
+	Ftotal    uint64
+	Fhead     Tgz_headerp
+	Fwbits    uint32
+	Fwsize    uint32
+	Fwhave    uint32
+	Fwnext    uint32
+	Fwindow   uintptr
+	Fhold     uint64
+	Fbits     uint32
+	Flength   uint32
+	Foffset   uint32
+	Fextra    uint32
+	Flencode  uintptr
+	Fdistcode uintptr
+	Flenbits  uint32
+	Fdistbits uint32
+	Fncode    uint32
+	Fnlen     uint32
+	Fndist    uint32
+	Fhave     uint32
+	Fnext     uintptr
+	Flens     [320]uint16
+	Fwork     [288]uint16
+	Fcodes    [1444]Tcode
+	Fsane     int32
+	Fback     int32
+	Fwas      uint32
 }
 
 // C documentation
@@ -22864,9 +22857,8 @@ type Tflocktimeout = struct {
 }
 
 type Tradvisory = struct {
-	Fra_offset   Toff_t
-	Fra_count    int32
-	F__ccgo_pad2 [4]byte
+	Fra_offset Toff_t
+	Fra_count  int32
 }
 
 type Tfsignatures_t = struct {
@@ -22885,7 +22877,6 @@ type Tfsupplement_t = struct {
 	Ffs_blob_start Toff_t
 	Ffs_blob_size  Tsize_t
 	Ffs_orig_fd    int32
-	F__ccgo_pad4   [4]byte
 }
 
 type Tfsupplement = Tfsupplement_t
@@ -22945,7 +22936,6 @@ type Tfattributiontag_t = struct {
 	Fft_flags            uint32
 	Fft_hash             uint64
 	Fft_attribution_name [255]int8
-	F__ccgo_pad3         [1]byte
 }
 
 type Tfattributiontag = Tfattributiontag_t
