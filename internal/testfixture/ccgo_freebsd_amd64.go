@@ -19252,12 +19252,6 @@ type TExprList_item = struct {
 }
 
 // -:
-type TsColMap = struct {
-	FiFrom int32
-	FzCol  uintptr
-}
-
-// -:
 type Tsqlite3InitInfo = struct {
 	FnewTnum       TPgno
 	FiDb           Tu8
@@ -19268,12 +19262,9 @@ type Tsqlite3InitInfo = struct {
 }
 
 // -:
-type TMemValue = struct {
-	Fi      [0]Ti64
-	FnZero  [0]int32
-	FzPType [0]uintptr
-	FpDef   [0]uintptr
-	Fr      float64
+type TsColMap = struct {
+	FiFrom int32
+	FzCol  uintptr
 }
 
 // -:
@@ -19294,6 +19285,15 @@ type Tp4union = struct {
 	FxAdvance     [0]uintptr
 	Fi            int32
 	F__ccgo_pad15 [4]byte
+}
+
+// -:
+type TMemValue = struct {
+	Fi      [0]Ti64
+	FnZero  [0]int32
+	FzPType [0]uintptr
+	FpDef   [0]uintptr
+	Fr      float64
 }
 
 // /tmp/libsqlite3/sqlite-src-3370200/src/sqliteInt.h:2018:9:
@@ -299966,12 +299966,6 @@ func x_sqlite3_sourceid(tls *libc.TLS) (r uintptr) {
 }
 
 // -:
-type T_ht = struct {
-	Fcount uint32
-	Fchain uintptr
-}
-
-// -:
 type TIdList_item = struct {
 	FzName uintptr
 	Fidx   int32
@@ -299987,13 +299981,12 @@ type TWalSegment = struct {
 }
 
 // -:
-type TAggInfo_col = struct {
-	FpTab          uintptr
-	FpCExpr        uintptr
-	FiTable        int32
-	FiMem          int32
-	FiColumn       Ti16
-	FiSorterColumn Ti16
+type TInLoop = struct {
+	FiCur       int32
+	FaddrInTop  int32
+	FiBase      int32
+	FnPrefix    int32
+	FeEndLoopOp Tu8
 }
 
 // -:
@@ -300006,12 +299999,19 @@ type TAggInfo_func = struct {
 }
 
 // -:
-type TInLoop = struct {
-	FiCur       int32
-	FaddrInTop  int32
-	FiBase      int32
-	FnPrefix    int32
-	FeEndLoopOp Tu8
+type TAggInfo_col = struct {
+	FpTab          uintptr
+	FpCExpr        uintptr
+	FiTable        int32
+	FiMem          int32
+	FiColumn       Ti16
+	FiSorterColumn Ti16
+}
+
+// -:
+type T_ht = struct {
+	Fcount uint32
+	Fchain uintptr
 }
 
 func __ccgo_fp(f interface{}) uintptr {
