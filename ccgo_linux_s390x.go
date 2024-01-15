@@ -4698,7 +4698,6 @@ type t__pthread_rwlock_arch_t = struct {
 	F__pad1          uint64
 	F__pad2          uint64
 	F__flags         uint32
-	F__ccgo_pad11    [4]byte
 }
 
 type t__pthread_cond_s = struct {
@@ -5003,7 +5002,6 @@ type TBusyHandler1 = struct {
 	FxBusyHandler uintptr
 	FpBusyArg     uintptr
 	FnBusy        int32
-	F__ccgo_pad3  [4]byte
 }
 
 /*
@@ -5546,7 +5544,6 @@ type TSrcItem = struct {
 		Fjointype      Tu8
 		F__ccgo_align1 [2]byte
 		F__ccgo4       uint16
-		F__ccgo_pad10  [2]byte
 	}
 	FiCursor int32
 	FpOn     uintptr
@@ -6119,14 +6116,13 @@ type TBtreePayload = struct {
 ** run a little faster by using fewer registers for parameter passing.
  */
 type TBtreePayload1 = struct {
-	FpKey        uintptr
-	FnKey        Tsqlite3_int64
-	FpData       uintptr
-	FaMem        uintptr
-	FnMem        Tu16
-	FnData       int32
-	FnZero       int32
-	F__ccgo_pad7 [4]byte
+	FpKey  uintptr
+	FnKey  Tsqlite3_int64
+	FpData uintptr
+	FaMem  uintptr
+	FnMem  Tu16
+	FnData int32
+	FnZero int32
 }
 
 /************** End of btree.h ***********************************************/
@@ -7315,15 +7311,14 @@ type TKeyInfo1 = struct {
 ** b-tree.
  */
 type TUnpackedRecord1 = struct {
-	FpKeyInfo    uintptr
-	FaMem        uintptr
-	FnField      Tu16
-	Fdefault_rc  Ti8
-	FerrCode     Tu8
-	Fr1          Ti8
-	Fr2          Ti8
-	FeqSeen      Tu8
-	F__ccgo_pad8 [1]byte
+	FpKeyInfo   uintptr
+	FaMem       uintptr
+	FnField     Tu16
+	Fdefault_rc Ti8
+	FerrCode    Tu8
+	Fr1         Ti8
+	Fr2         Ti8
+	FeqSeen     Tu8
 }
 
 /*
@@ -7421,9 +7416,8 @@ type TIndexSample1 = struct {
 ** static string.
  */
 type TToken1 = struct {
-	Fz           uintptr
-	Fn           uint32
-	F__ccgo_pad2 [4]byte
+	Fz uintptr
+	Fn uint32
 }
 
 /*
@@ -7657,9 +7651,8 @@ type TExprList1 = struct {
 ** If "a" is the k-th column of table "t", then IdList.a[0].idx==k.
  */
 type TIdList1 = struct {
-	Fa           uintptr
-	FnId         int32
-	F__ccgo_pad2 [4]byte
+	Fa   uintptr
+	FnId int32
 }
 
 /*
@@ -7688,7 +7681,6 @@ type TSrcItem1 = struct {
 		Fjointype      Tu8
 		F__ccgo_align1 [2]byte
 		F__ccgo4       uint16
-		F__ccgo_pad10  [2]byte
 	}
 	FiCursor int32
 	FpOn     uintptr
@@ -7822,7 +7814,6 @@ type TUpsert1 = struct {
 	FregData            int32
 	FiDataCur           int32
 	FiIdxCur            int32
-	F__ccgo_pad12       [4]byte
 }
 
 /*
@@ -7999,12 +7990,11 @@ type TAutoincInfo1 = struct {
 ** a mask of new.* columns used by the program.
  */
 type TTriggerPrg1 = struct {
-	FpTrigger    uintptr
-	FpNext       uintptr
-	FpProgram    uintptr
-	Forconf      int32
-	FaColmask    [2]Tu32
-	F__ccgo_pad5 [4]byte
+	FpTrigger uintptr
+	FpNext    uintptr
+	FpProgram uintptr
+	Forconf   int32
+	FaColmask [2]Tu32
 }
 
 // C documentation
@@ -8245,14 +8235,13 @@ type TTriggerStep1 = struct {
 ** Information about a RETURNING clause
  */
 type TReturning1 = struct {
-	FpParse      uintptr
-	FpReturnEL   uintptr
-	FretTrig     TTrigger
-	FretTStep    TTriggerStep
-	FiRetCur     int32
-	FnRetCol     int32
-	FiRetReg     int32
-	F__ccgo_pad7 [4]byte
+	FpParse    uintptr
+	FpReturnEL uintptr
+	FretTrig   TTrigger
+	FretTStep  TTriggerStep
+	FiRetCur   int32
+	FnRetCol   int32
+	FiRetReg   int32
 }
 
 // C documentation
@@ -8262,14 +8251,13 @@ type TReturning1 = struct {
 //	** from sqlite3Init and OP_ParseSchema into the sqlite3InitCallback.
 //	*/
 type TInitData = struct {
-	Fdb          uintptr
-	FpzErrMsg    uintptr
-	FiDb         int32
-	Frc          int32
-	FmInitFlags  Tu32
-	FnInitRow    Tu32
-	FmxPage      TPgno
-	F__ccgo_pad7 [4]byte
+	Fdb         uintptr
+	FpzErrMsg   uintptr
+	FiDb        int32
+	Frc         int32
+	FmInitFlags Tu32
+	FnInitRow   Tu32
+	FmxPage     TPgno
 }
 
 /*
@@ -8408,13 +8396,12 @@ type TDbFixer1 = struct {
 ** A single common table expression
  */
 type TCte1 = struct {
-	FzName       uintptr
-	FpCols       uintptr
-	FpSelect     uintptr
-	FzCteErr     uintptr
-	FpUse        uintptr
-	FeM10d       Tu8
-	F__ccgo_pad6 [7]byte
+	FzName   uintptr
+	FpCols   uintptr
+	FpSelect uintptr
+	FzCteErr uintptr
+	FpUse    uintptr
+	FeM10d   Tu8
 }
 
 /*
@@ -8444,13 +8431,12 @@ type TWith1 = struct {
 ** until the end of code generation.
  */
 type TCteUse1 = struct {
-	FnUse        int32
-	FaddrM9e     int32
-	FregRtn      int32
-	FiCur        int32
-	FnRowEst     TLogEst
-	FeM10d       Tu8
-	F__ccgo_pad6 [1]byte
+	FnUse    int32
+	FaddrM9e int32
+	FregRtn  int32
+	FiCur    int32
+	FnRowEst TLogEst
+	FeM10d   Tu8
 }
 
 /*
@@ -8505,7 +8491,6 @@ type TWindow1 = struct {
 	FregStartRowid  int32
 	FregEndRowid    int32
 	FbExprArgs      Tu8
-	F__ccgo_pad28   [3]byte
 }
 
 /*
@@ -9653,7 +9638,6 @@ type TVdbeCursor1 = struct {
 	FpayloadSize  Tu32
 	FszRow        Tu32
 	FaType        [1]Tu32
-	F__ccgo_pad28 [4]byte
 }
 
 /*
@@ -10412,22 +10396,21 @@ type TDateTime = struct {
 }
 
 type TDateTime1 = struct {
-	FiJD          Tsqlite3_int64
-	FY            int32
-	FM            int32
-	FD            int32
-	Fh            int32
-	Fm            int32
-	Ftz           int32
-	Fs            float64
-	FvalidJD      uint8
-	FrawS         uint8
-	FvalidYMD     uint8
-	FvalidHMS     uint8
-	FvalidTZ      uint8
-	FtzSet        uint8
-	FisError      uint8
-	F__ccgo_pad15 [1]byte
+	FiJD      Tsqlite3_int64
+	FY        int32
+	FM        int32
+	FD        int32
+	Fh        int32
+	Fm        int32
+	Ftz       int32
+	Fs        float64
+	FvalidJD  uint8
+	FrawS     uint8
+	FvalidYMD uint8
+	FvalidHMS uint8
+	FvalidTZ  uint8
+	FtzSet    uint8
+	FisError  uint8
 }
 
 // C documentation
@@ -12762,7 +12745,6 @@ type TMem0Global = struct {
 	FalarmThreshold Tsqlite3_int64
 	FhardLimit      Tsqlite3_int64
 	FnearlyFull     int32
-	F__ccgo_pad4    [4]byte
 }
 
 /*
@@ -19005,21 +18987,19 @@ type Tstatx = struct {
 }
 
 type Tflock = struct {
-	Fl_type      int16
-	Fl_whence    int16
-	Fl_start     t__off_t
-	Fl_len       t__off_t
-	Fl_pid       t__pid_t
-	F__ccgo_pad5 [4]byte
+	Fl_type   int16
+	Fl_whence int16
+	Fl_start  t__off_t
+	Fl_len    t__off_t
+	Fl_pid    t__pid_t
 }
 
 type Tflock64 = struct {
-	Fl_type      int16
-	Fl_whence    int16
-	Fl_start     t__off64_t
-	Fl_len       t__off64_t
-	Fl_pid       t__pid_t
-	F__ccgo_pad5 [4]byte
+	Fl_type   int16
+	Fl_whence int16
+	Fl_start  t__off64_t
+	Fl_len    t__off64_t
+	Fl_pid    t__pid_t
 }
 
 type Tiovec = struct {
@@ -19052,13 +19032,12 @@ type Twinsize = struct {
 }
 
 type Ttermio = struct {
-	Fc_iflag     uint16
-	Fc_oflag     uint16
-	Fc_cflag     uint16
-	Fc_lflag     uint16
-	Fc_line      uint8
-	Fc_cc        [8]uint8
-	F__ccgo_pad6 [1]byte
+	Fc_iflag uint16
+	Fc_oflag uint16
+	Fc_cflag uint16
+	Fc_lflag uint16
+	Fc_line  uint8
+	Fc_cc    [8]uint8
 }
 
 type Tintptr_t = int64
@@ -22048,13 +22027,12 @@ type TunixShmNode1 = struct {
 ** be held while accessing any read/write fields.
  */
 type TunixShm1 = struct {
-	FpShmNode    uintptr
-	FpNext       uintptr
-	FhasMutex    Tu8
-	Fid          Tu8
-	FsharedMask  Tu16
-	FexclMask    Tu16
-	F__ccgo_pad6 [2]byte
+	FpShmNode   uintptr
+	FpNext      uintptr
+	FhasMutex   Tu8
+	Fid         Tu8
+	FsharedMask Tu16
+	FexclMask   Tu16
 }
 
 /*
@@ -24024,9 +24002,8 @@ const _RTLD_DI_TLS_DATA = 10
 const _RTLD_DI_MAX = 10
 
 type TDl_serpath = struct {
-	Fdls_name    uintptr
-	Fdls_flags   uint32
-	F__ccgo_pad2 [4]byte
+	Fdls_name  uintptr
+	Fdls_flags uint32
 }
 
 type TDl_serinfo = struct {
@@ -24714,10 +24691,9 @@ type TMemStore1 = struct {
 
 /* An open file */
 type TMemFile1 = struct {
-	Fbase        Tsqlite3_file
-	FpStore      uintptr
-	FeLock       int32
-	F__ccgo_pad3 [4]byte
+	Fbase   Tsqlite3_file
+	FpStore uintptr
+	FeLock  int32
 }
 
 // C documentation
@@ -29289,7 +29265,6 @@ type TPagerSavepoint1 = struct {
 	FiSubRec            TPgno
 	FbTruncateOnRelease int32
 	FaWalData           [4]Tu32
-	F__ccgo_pad7        [4]byte
 }
 
 /*
@@ -36528,7 +36503,6 @@ type TWal1 = struct {
 	FiReCksum            Tu32
 	FzWalName            uintptr
 	FnCkpt               Tu32
-	F__ccgo_pad24        [4]byte
 }
 
 /*
@@ -36940,10 +36914,9 @@ type TWalHashLoc = struct {
 }
 
 type TWalHashLoc1 = struct {
-	FaHash       uintptr
-	FaPgno       uintptr
-	FiZero       Tu32
-	F__ccgo_pad3 [4]byte
+	FaHash uintptr
+	FaPgno uintptr
+	FiZero Tu32
 }
 
 // C documentation
@@ -40324,7 +40297,6 @@ type TBtShared1 = struct {
 	FpWriter         uintptr
 	FpTmpSpace       uintptr
 	FnPreformatSize  int32
-	F__ccgo_pad30    [4]byte
 }
 
 /*
@@ -53785,11 +53757,10 @@ func _sqlite3ValueNew(tls *libc.TLS, db uintptr) (r uintptr) {
 ** valueNew(). See comments above valueNew() for details.
  */
 type TValueNewStat4Ctx = struct {
-	FpParse      uintptr
-	FpIdx        uintptr
-	FppRec       uintptr
-	FiVal        int32
-	F__ccgo_pad4 [4]byte
+	FpParse uintptr
+	FpIdx   uintptr
+	FppRec  uintptr
+	FiVal   int32
 }
 
 // C documentation
@@ -69220,10 +69191,9 @@ type TSorterFile1 = struct {
 ** are connected using SorterRecord.u.iNext.
  */
 type TSorterList1 = struct {
-	FpList       uintptr
-	FaMemory     uintptr
-	FszPMA       int32
-	F__ccgo_pad3 [4]byte
+	FpList   uintptr
+	FaMemory uintptr
+	FszPMA   int32
 }
 
 /*
@@ -76630,7 +76600,6 @@ type TExprList_item = struct {
 			FiAlias      Tu16
 		}
 	}
-	F__ccgo_pad9 [4]byte
 }
 
 // C documentation
@@ -80938,9 +80907,8 @@ func _sqlite3ExprImpliesNonNullRow(tls *libc.TLS, p uintptr, iTab int32) (r int3
 ** is the cursor for the table.
  */
 type TIdxCover = struct {
-	FpIdx        uintptr
-	FiCur        int32
-	F__ccgo_pad2 [4]byte
+	FpIdx uintptr
+	FiCur int32
 }
 
 // C documentation
@@ -95720,12 +95688,11 @@ type TSumCtx = struct {
 }
 
 type TSumCtx1 = struct {
-	FrSum        float64
-	FiSum        Ti64
-	Fcnt         Ti64
-	Foverflow    Tu8
-	Fapprox      Tu8
-	F__ccgo_pad5 [6]byte
+	FrSum     float64
+	FiSum     Ti64
+	Fcnt      Ti64
+	Foverflow Tu8
+	Fapprox   Tu8
 }
 
 // C documentation
@@ -99954,9 +99921,8 @@ type TIndexIterator1 = struct {
 ** of the following object
  */
 type TIndexListTerm1 = struct {
-	Fp           uintptr
-	Fix          int32
-	F__ccgo_pad2 [4]byte
+	Fp  uintptr
+	Fix int32
 }
 
 // C documentation
@@ -105324,26 +105290,22 @@ func _sqlite3Pragma(tls *libc.TLS, pParse uintptr, pId1 uintptr, pId2 uintptr, p
 				pEnc = uintptr(unsafe.Pointer(&_encnames1))
 				for {
 					if !((*struct {
-						FzName       uintptr
-						Fenc         Tu8
-						F__ccgo_pad2 [7]byte
+						FzName uintptr
+						Fenc   Tu8
 					})(unsafe.Pointer(pEnc)).FzName != 0) {
 						break
 					}
 					if 0 == _sqlite3StrICmp(tls, zRight, (*struct {
-						FzName       uintptr
-						Fenc         Tu8
-						F__ccgo_pad2 [7]byte
+						FzName uintptr
+						Fenc   Tu8
 					})(unsafe.Pointer(pEnc)).FzName) {
 						if (*struct {
-							FzName       uintptr
-							Fenc         Tu8
-							F__ccgo_pad2 [7]byte
+							FzName uintptr
+							Fenc   Tu8
 						})(unsafe.Pointer(pEnc)).Fenc != 0 {
 							v61 = int32((*struct {
-								FzName       uintptr
-								Fenc         Tu8
-								F__ccgo_pad2 [7]byte
+								FzName uintptr
+								Fenc   Tu8
 							})(unsafe.Pointer(pEnc)).Fenc)
 						} else {
 							if int32(*(*uint8)(unsafe.Pointer(uintptr(unsafe.Pointer(&Xsqlite3one))))) == 0 {
@@ -105363,9 +105325,8 @@ func _sqlite3Pragma(tls *libc.TLS, pParse uintptr, pId1 uintptr, pId2 uintptr, p
 					pEnc += 16
 				}
 				if !((*struct {
-					FzName       uintptr
-					Fenc         Tu8
-					F__ccgo_pad2 [7]byte
+					FzName uintptr
+					Fenc   Tu8
 				})(unsafe.Pointer(pEnc)).FzName != 0) {
 					_sqlite3ErrorMsg(tls, pParse, __ccgo_ts+17119, libc.VaList(bp+160, zRight))
 				}
@@ -105856,9 +105817,8 @@ var _endCode = [7]TVdbeOpList{
 }
 
 var _encnames1 = [9]struct {
-	FzName       uintptr
-	Fenc         Tu8
-	F__ccgo_pad2 [7]byte
+	FzName uintptr
+	Fenc   Tu8
 }{
 	0: {
 		FzName: __ccgo_ts + 17061,
@@ -105942,12 +105902,11 @@ type TPragmaVtabCursor = struct {
 }
 
 type TPragmaVtab1 = struct {
-	Fbase        Tsqlite3_vtab
-	Fdb          uintptr
-	FpName       uintptr
-	FnHidden     Tu8
-	FiHidden     Tu8
-	F__ccgo_pad5 [6]byte
+	Fbase    Tsqlite3_vtab
+	Fdb      uintptr
+	FpName   uintptr
+	FnHidden Tu8
+	FiHidden Tu8
 }
 
 type TPragmaVtabCursor1 = struct {
@@ -108002,9 +107961,8 @@ type TRowLoadInfo = struct {
 }
 
 type TRowLoadInfo1 = struct {
-	FregResult   int32
-	FecelFlags   Tu8
-	F__ccgo_pad2 [3]byte
+	FregResult int32
+	FecelFlags Tu8
 }
 
 // C documentation
@@ -114832,14 +114790,13 @@ select_end:
 //	** to the callback function is uses to build the result.
 //	*/
 type TTabResult = struct {
-	FazResult    uintptr
-	FzErrMsg     uintptr
-	FnAlloc      Tu32
-	FnRow        Tu32
-	FnColumn     Tu32
-	FnData       Tu32
-	Frc          int32
-	F__ccgo_pad7 [4]byte
+	FazResult uintptr
+	FzErrMsg  uintptr
+	FnAlloc   Tu32
+	FnRow     Tu32
+	FnColumn  Tu32
+	FnData    Tu32
+	Frc       int32
 }
 
 // C documentation
@@ -118593,11 +118550,10 @@ var _aCopy = [10]uint8{
 ** are invoked only from within xCreate and xConnect methods.
  */
 type TVtabCtx1 = struct {
-	FpVTable     uintptr
-	FpTab        uintptr
-	FpPrior      uintptr
-	FbDeclared   int32
-	F__ccgo_pad4 [4]byte
+	FpVTable   uintptr
+	FpTab      uintptr
+	FpPrior    uintptr
+	FbDeclared int32
 }
 
 // C documentation
@@ -120450,10 +120406,9 @@ type TWhereLoop1 = struct {
 ** See WhereOrSet for additional information
  */
 type TWhereOrCost1 = struct {
-	Fprereq      TBitmask
-	FrRun        TLogEst
-	FnOut        TLogEst
-	F__ccgo_pad3 [4]byte
+	Fprereq TBitmask
+	FrRun   TLogEst
+	FnOut   TLogEst
 }
 
 /* The WhereOrSet object holds a set of possible WhereOrCosts that
@@ -120575,18 +120530,17 @@ type TWhereTerm1 = struct {
 ** terms in the WHERE clause that are useful to the query planner.
  */
 type TWhereScan1 = struct {
-	FpOrigWC      uintptr
-	FpWC          uintptr
-	FzCollName    uintptr
-	FpIdxExpr     uintptr
-	Fidxaff       uint8
-	FnEquiv       uint8
-	FiEquiv       uint8
-	FopMask       Tu32
-	Fk            int32
-	FaiCur        [11]int32
-	FaiColumn     [11]Ti16
-	F__ccgo_pad11 [2]byte
+	FpOrigWC   uintptr
+	FpWC       uintptr
+	FzCollName uintptr
+	FpIdxExpr  uintptr
+	Fidxaff    uint8
+	FnEquiv    uint8
+	FiEquiv    uint8
+	FopMask    Tu32
+	Fk         int32
+	FaiCur     [11]int32
+	FaiColumn  [11]Ti16
 }
 
 /*
@@ -123790,9 +123744,8 @@ func _isAuxiliaryVtabOperator(tls *libc.TLS, db uintptr, pExpr uintptr, peOp2 ui
 }
 
 var _aOp = [4]struct {
-	FzOp         uintptr
-	FeOp2        uint8
-	F__ccgo_pad2 [7]byte
+	FzOp  uintptr
+	FeOp2 uint8
 }{
 	0: {
 		FzOp:  __ccgo_ts + 15291,
@@ -131230,9 +131183,8 @@ func _ntileValueFunc(tls *libc.TLS, pCtx uintptr) {
 ** Context object for last_value() window function.
  */
 type TLastValueCtx = struct {
-	FpVal        uintptr
-	FnVal        int32
-	F__ccgo_pad2 [4]byte
+	FpVal uintptr
+	FnVal int32
 }
 
 // C documentation
@@ -131537,11 +131489,10 @@ func _windowFind(tls *libc.TLS, pParse uintptr, pList uintptr, zName uintptr) (r
 //	*/
 func _sqlite3WindowUpdate(tls *libc.TLS, pParse uintptr, pList uintptr, pWin uintptr, pFunc uintptr) {
 	var aUp [8]struct {
-		FzFunc       uintptr
-		FeFrmType    int32
-		FeStart      int32
-		FeEnd        int32
-		F__ccgo_pad4 [4]byte
+		FzFunc    uintptr
+		FeFrmType int32
+		FeStart   int32
+		FeEnd     int32
 	}
 	var db, p, v2 uintptr
 	var i int32
@@ -131571,11 +131522,10 @@ func _sqlite3WindowUpdate(tls *libc.TLS, pParse uintptr, pList uintptr, pWin uin
 				_sqlite3ErrorMsg(tls, pParse, __ccgo_ts+21284, 0)
 			} else {
 				aUp = [8]struct {
-					FzFunc       uintptr
-					FeFrmType    int32
-					FeStart      int32
-					FeEnd        int32
-					F__ccgo_pad4 [4]byte
+					FzFunc    uintptr
+					FeFrmType int32
+					FeStart   int32
+					FeEnd     int32
 				}{
 					0: {
 						FzFunc:    uintptr(unsafe.Pointer(&_row_numberName)),
@@ -132660,18 +132610,17 @@ type TWindowCsrAndReg1 = struct {
 **   0.
  */
 type TWindowCodeArg1 = struct {
-	FpParse       uintptr
-	FpMWin        uintptr
-	FpVdbe        uintptr
-	FaddrGosub    int32
-	FregGosub     int32
-	FregArg       int32
-	FeDelete      int32
-	FregRowid     int32
-	Fstart        TWindowCsrAndReg
-	Fcurrent      TWindowCsrAndReg
-	Fend          TWindowCsrAndReg
-	F__ccgo_pad11 [4]byte
+	FpParse    uintptr
+	FpMWin     uintptr
+	FpVdbe     uintptr
+	FaddrGosub int32
+	FregGosub  int32
+	FregArg    int32
+	FeDelete   int32
+	FregRowid  int32
+	Fstart     TWindowCsrAndReg
+	Fcurrent   TWindowCsrAndReg
+	Fend       TWindowCsrAndReg
 }
 
 // C documentation
@@ -149258,22 +149207,19 @@ func _sqlite3ParseUri(tls *libc.TLS, zDefaultVfs uintptr, zUri uintptr, pFlags u
 					i = 0
 					for {
 						if !((*(*struct {
-							Fz           uintptr
-							Fmode        int32
-							F__ccgo_pad2 [4]byte
+							Fz    uintptr
+							Fmode int32
 						})(unsafe.Pointer(aMode + uintptr(i)*16))).Fz != 0) {
 							break
 						}
 						z = (*(*struct {
-							Fz           uintptr
-							Fmode        int32
-							F__ccgo_pad2 [4]byte
+							Fz    uintptr
+							Fmode int32
 						})(unsafe.Pointer(aMode + uintptr(i)*16))).Fz
 						if nVal == _sqlite3Strlen30(tls, z) && 0 == libc.Xmemcmp(tls, zVal, z, uint64(nVal)) {
 							mode = (*(*struct {
-								Fz           uintptr
-								Fmode        int32
-								F__ccgo_pad2 [4]byte
+								Fz    uintptr
+								Fmode int32
 							})(unsafe.Pointer(aMode + uintptr(i)*16))).Fmode
 							break
 						}
@@ -149325,9 +149271,8 @@ parse_uri_out:
 }
 
 var _aCacheMode = [3]struct {
-	Fz           uintptr
-	Fmode        int32
-	F__ccgo_pad2 [4]byte
+	Fz    uintptr
+	Fmode int32
 }{
 	0: {
 		Fz:    __ccgo_ts + 23154,
@@ -149341,9 +149286,8 @@ var _aCacheMode = [3]struct {
 }
 
 var _aOpenMode = [5]struct {
-	Fz           uintptr
-	Fmode        int32
-	F__ccgo_pad2 [4]byte
+	Fz    uintptr
+	Fmode int32
 }{
 	0: {
 		Fz:    __ccgo_ts + 23174,
@@ -151702,49 +151646,22 @@ func Xsqlite3_sourceid(tls *libc.TLS) (r uintptr) {
 	return __ccgo_ts + 23358
 }
 
-type TIdList_item = struct {
-	FzName       uintptr
-	Fidx         int32
-	F__ccgo_pad2 [4]byte
-}
-
 type TsColMap = struct {
 	FiFrom int32
 	FzCol  uintptr
 }
 
-type Tsqlite3_index_constraint = struct {
-	FiColumn     int32
-	Fop          uint8
-	Fusable      uint8
-	FiTermOffset int32
+type Tsqlite3_index_constraint_usage = struct {
+	FargvIndex int32
+	Fomit      uint8
 }
 
 type TInLoop = struct {
-	FiCur        int32
-	FaddrInTop   int32
-	FiBase       int32
-	FnPrefix     int32
-	FeEndLoopOp  Tu8
-	F__ccgo_pad5 [3]byte
-}
-
-type Tsqlite3InitInfo = struct {
-	FnewTnum       TPgno
-	FiDb           Tu8
-	Fbusy          Tu8
-	F__ccgo_align3 [2]byte
-	F__ccgo8       uint8
-	FazInit        uintptr
-}
-
-type TAggInfo_func = struct {
-	FpFExpr      uintptr
-	FpFunc       uintptr
-	FiMem        int32
-	FiDistinct   int32
-	FiDistAddr   int32
-	F__ccgo_pad5 [4]byte
+	FiCur       int32
+	FaddrInTop  int32
+	FiBase      int32
+	FnPrefix    int32
+	FeEndLoopOp Tu8
 }
 
 type TWalSegment = struct {
@@ -151755,11 +151672,6 @@ type TWalSegment = struct {
 	FiZero  int32
 }
 
-type T_ht = struct {
-	Fcount uint32
-	Fchain uintptr
-}
-
 type TAggInfo_col = struct {
 	FpTab          uintptr
 	FpCExpr        uintptr
@@ -151767,19 +151679,45 @@ type TAggInfo_col = struct {
 	FiMem          int32
 	FiColumn       Ti16
 	FiSorterColumn Ti16
-	F__ccgo_pad6   [4]byte
 }
 
-type Tsqlite3_index_constraint_usage = struct {
-	FargvIndex   int32
-	Fomit        uint8
-	F__ccgo_pad2 [3]byte
+type T_ht = struct {
+	Fcount uint32
+	Fchain uintptr
 }
 
 type Tsqlite3_index_orderby = struct {
+	FiColumn int32
+	Fdesc    uint8
+}
+
+type TAggInfo_func = struct {
+	FpFExpr    uintptr
+	FpFunc     uintptr
+	FiMem      int32
+	FiDistinct int32
+	FiDistAddr int32
+}
+
+type TIdList_item = struct {
+	FzName uintptr
+	Fidx   int32
+}
+
+type Tsqlite3_index_constraint = struct {
 	FiColumn     int32
-	Fdesc        uint8
-	F__ccgo_pad2 [3]byte
+	Fop          uint8
+	Fusable      uint8
+	FiTermOffset int32
+}
+
+type Tsqlite3InitInfo = struct {
+	FnewTnum       TPgno
+	FiDb           Tu8
+	Fbusy          Tu8
+	F__ccgo_align3 [2]byte
+	F__ccgo8       uint8
+	FazInit        uintptr
 }
 
 type TMemValue = struct {
