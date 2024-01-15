@@ -31,6 +31,7 @@ var (
 	target = fmt.Sprintf("%s/%s", goos, goarch)
 	sed    = "sed"
 	j      = fmt.Sprint(runtime.GOMAXPROCS(-1))
+	win    = os.Getenv("GO_GENERATE_WIN") == "1"
 )
 
 func fail(rc int, msg string, args ...any) {
@@ -46,19 +47,31 @@ func main() {
 		return
 	}
 
-	if goos == "windows" {
-		switch target {
-		case "windows/amd64":
-			win()
-		}
-		util.MustShell(true, "sh", "-c", "./windows_arm64.sh")
-		return
-	}
-
-
 	switch goos {
 	case "darwin", "freebsd", "openbsd":
 		sed = "gsed"
+	case "windows":
+		fail(1, "windows targest must be generated on linux/amd64 (+Wine)")
+	}
+
+	if target == "linux/amd64" {
+		defer func() {
+			util.MustShell(true, "make", "windows")
+			util.MustCopyFile(true, "internal/autogen/windows_amd64.mod", "go.mod", nil)
+			util.MustCopyFile(true, "internal/autogen/windows_arm64.mod", "go.mod", nil)
+		}()
+	}
+
+	if win {
+		if target != "linux/amd64" {
+			fail(1, "cross compiling for windows supported only on linux/amd64 (+Wine)")
+		}
+
+		os.Setenv("CC", "x86_64-w64-mingw32-gcc")
+		os.Setenv("AR", "x86_64-w64-mingw32-gcc-ar")
+		os.Setenv("RC", "x86_64-w64-mingw32-windres")
+		goos = "windows"
+		goarch = "amd64"
 	}
 
 	f, err := os.Open(archivePath)
@@ -111,7 +124,9 @@ func main() {
 		if dev {
 			util.MustShell(true, "sh", "-c", "go work init ; go work use . $GOPATH/src/modernc.org/libc")
 		}
-		util.MustShell(true, "sh", "-c", fmt.Sprintf("CFLAGS='%s' ./configure", strings.Join(cflags, " ")))
+		if !win {
+			util.MustShell(true, "sh", "-c", fmt.Sprintf("CFLAGS='%s' ./configure", strings.Join(cflags, " ")))
+		}
 		args := []string{os.Args[0]}
 		if dev {
 			args = append(
@@ -134,8 +149,29 @@ func main() {
 			"--prefix-undefined=_",
 			"-extended-errors",
 		)
-		if err := ccgo.NewTask(goos, goarch, append(args, "--package-name=main", "-exec", "make", "-j", j, "libz.a", "example64", "minigzip64"), os.Stdout, os.Stderr, nil).Exec(); err != nil {
-			fail(1, "%v", err)
+		switch {
+		case win:
+			if err = ccgo.NewTask(
+				goos, goarch,
+				append(args,
+					"--package-name=main",
+					"-build-lines", "//go:build windows && (amd64 || arm64)\n// +build windows\n// +build amd64 arm64",
+					"-target-ar", "x86_64-w64-mingw32-ar",
+					"-target-cc", "x86_64-w64-mingw32-gcc",
+					"-target-goarch", "amd64",
+					"-target-goos", "windows",
+					"-exec", "sh", "-c",
+					fmt.Sprintf("make -j%s AR=x86_64-w64-mingw32-ar CC=x86_64-w64-mingw32-gcc RC=x86_64-w64-mingw32-windres -fwin32/Makefile.gcc", j),
+				),
+				os.Stdout, os.Stderr,
+				nil,
+			).Exec(); err != nil {
+				fail(1, "%v", err)
+			}
+		default:
+			if err = ccgo.NewTask(goos, goarch, append(args, "--package-name=main", "-exec", "make", "-j", j, "libz.a", "example64", "minigzip64"), os.Stdout, os.Stderr, nil).Exec(); err != nil {
+				fail(1, "%v", err)
+			}
 		}
 
 		return ccgo.NewTask(goos, goarch, append(args, "--package-name=libz", "-o", result, "libz.a"), os.Stdout, os.Stderr, nil).Main()
@@ -143,16 +179,31 @@ func main() {
 
 	mustCopyFile(filepath.Join("include", goos, goarch, "zconf.h"), filepath.Join(libRoot, "zconf.h"), nil)
 	mustCopyFile(filepath.Join("include", goos, goarch, "zlib.h"), filepath.Join(libRoot, "zlib.h"), nil)
+	if win {
+		mustCopyFile(filepath.Join("include", "windows", "arm64", "zconf.h"), filepath.Join(libRoot, "zconf.h"), nil)
+		mustCopyFile(filepath.Join("include", "windows", "arm64", "zlib.h"), filepath.Join(libRoot, "zlib.h"), nil)
+	}
 
 	fn := fmt.Sprintf("ccgo_%s_%s.go", goos, goarch)
+	if win {
+		fn = fmt.Sprintf("ccgo_%s.go", goos)
+	}
 	mustCopyFile(fn, filepath.Join(libRoot, result), nil)
 	util.MustShell(true, sed, "-i.bak", `s/\<T__\([a-zA-Z0-9][a-zA-Z0-9_]\+\)/t__\1/g`, fn)
 	util.MustShell(true, sed, "-i.bak", `s/\<x_\([a-zA-Z0-9][a-zA-Z0-9_]\+\)/X\1/g`, fn)
 	util.MustShell(true, "sh", "-c", "rm *.bak")
-	util.MustShell(true, "cp", filepath.Join(libRoot, "example64.go"), filepath.Join("internal", "example", fn))
-	util.MustShell(true, "cp", filepath.Join(libRoot, "minigzip64.go"), filepath.Join("internal", "minigzip", fn))
+	switch {
+	case win:
+		util.MustShell(true, "cp", filepath.Join(libRoot, "example.exe.go"), filepath.Join("internal", "example", fn))
+		util.MustShell(true, "cp", filepath.Join(libRoot, "minigzip.exe.go"), filepath.Join("internal", "minigzip", fn))
+	default:
+		util.MustShell(true, "cp", filepath.Join(libRoot, "example64.go"), filepath.Join("internal", "example", fn))
+		util.MustShell(true, "cp", filepath.Join(libRoot, "minigzip64.go"), filepath.Join("internal", "minigzip", fn))
+	}
 	util.Shell("sh", "-c", "./unconvert.sh")
-	util.MustShell(true, "go", "test", "-run", "@")
+	if !win {
+		util.MustShell(true, "go", "test", "-run", "@")
+	}
 	util.Shell("git", "status")
 }
 
@@ -327,180 +378,4 @@ func copyFile(dst, src string, canOverwrite func(fn string, fi os.FileInfo) bool
 	}()
 
 	return io.Copy(w, r)
-}
-
-func win() {
-	f, err := os.Open(archivePath)
-	if err != nil {
-		fail(1, "cannot open tar file: %v\n", err)
-	}
-
-	_, extractedArchivePath := filepath.Split(archivePath)
-	extractedArchivePath = extractedArchivePath[:len(extractedArchivePath)-len(".tar.gz")]
-	tempDir := os.Getenv("GO_GENERATE_DIR")
-	// tempDir = "c:\\tmp" //TODO-
-	dev := os.Getenv("GO_GENERATE_DEV") != ""
-	// dev = true //TODO-
-	switch {
-	case tempDir != "":
-		os.RemoveAll(filepath.Join(tempDir, extractedArchivePath))
-	default:
-		var err error
-		if tempDir, err = os.MkdirTemp("", "z-generate"); err != nil {
-			fail(1, "creating temp dir: %v\n", err)
-		}
-
-		defer func() {
-			switch os.Getenv("GO_GENERATE_KEEP") {
-			case "":
-				os.RemoveAll(tempDir)
-			default:
-				fmt.Printf("%s: temporary directory kept\n", tempDir)
-			}
-		}()
-	}
-	fmt.Fprintf(os.Stderr, "archivePath %s\n", archivePath)
-	fmt.Fprintf(os.Stderr, "extractedArchivePath %s\n", extractedArchivePath)
-	fmt.Fprintf(os.Stderr, "tempDir %s\n", tempDir)
-
-	util.MustUntar(true, tempDir, f, nil)
-	libRoot := filepath.Join(tempDir, extractedArchivePath)
-	mustCopyFile("LICENSE-ZLIB", filepath.Join(libRoot, "README"), nil)
-	result := "libz.a.go"
-	util.MustInDir(true, libRoot, func() (err error) {
-		util.MustShell(true, "go", "mod", "init", "example.com/libz")
-		util.MustShell(true, "go", "get", "modernc.org/libc@latest")
-		if dev {
-			util.MustShell(true, "go", "work", "init")
-			util.MustShell(true, "go", "work", "use", ".", fmt.Sprintf("%s\\src\\modernc.org\\libc", os.Getenv("GOPATH")))
-		}
-		args := []string{os.Args[0]}
-		if dev {
-			args = append(
-				args,
-				"-absolute-paths",
-				"-positions",
-			)
-		}
-		args = append(args,
-			"--prefix-enumerator=_",
-			"--prefix-external=x_",
-			"--prefix-field=F",
-			"--prefix-macro=m_",
-			"--prefix-static-internal=_",
-			"--prefix-static-none=_",
-			"--prefix-tagged-enum=_",
-			"--prefix-tagged-struct=T",
-			"--prefix-tagged-union=T",
-			"--prefix-typename=T",
-			"--prefix-undefined=_",
-			"-DNDEBUG",
-			"-extended-errors",
-		)
-		if err := ccgo.NewTask(goos, goarch,
-			append(args,
-				"-c",
-				"adler32.c",
-				"compress.c",
-				"crc32.c",
-				"deflate.c",
-				"gzclose.c",
-				"gzlib.c",
-				"gzread.c",
-				"gzwrite.c",
-				"infback.c",
-				"inffast.c",
-				"inflate.c",
-				"inftrees.c",
-				"trees.c",
-				"uncompr.c",
-				"zutil.c",
-			),
-			os.Stdout, os.Stderr, nil,
-		).Exec(); err != nil {
-			fail(1, "%v", err)
-		}
-		if ccgo.NewTask(goos, goarch,
-			append(args,
-				"--package-name=libz",
-				"-o", result,
-				"adler32.o.go",
-				"compress.o.go",
-				"crc32.o.go",
-				"deflate.o.go",
-				"gzclose.o.go",
-				"gzlib.o.go",
-				"gzread.o.go",
-				"gzwrite.o.go",
-				"infback.o.go",
-				"inffast.o.go",
-				"inflate.o.go",
-				"inftrees.o.go",
-				"trees.o.go",
-				"uncompr.o.go",
-				"zutil.o.go",
-			), os.Stdout, os.Stderr, nil,
-		).Main(); err != nil {
-			fail(1, "%v", err)
-		}
-		if ccgo.NewTask(goos, goarch,
-			append(args,
-				"-I", ".",
-				"-o", "example.go",
-				"test\\example.c",
-				"adler32.o.go",
-				"compress.o.go",
-				"crc32.o.go",
-				"deflate.o.go",
-				"gzclose.o.go",
-				"gzlib.o.go",
-				"gzread.o.go",
-				"gzwrite.o.go",
-				"infback.o.go",
-				"inffast.o.go",
-				"inflate.o.go",
-				"inftrees.o.go",
-				"trees.o.go",
-				"uncompr.o.go",
-				"zutil.o.go",
-			), os.Stdout, os.Stderr, nil,
-		).Main(); err != nil {
-			fail(1, "%v", err)
-		}
-		if ccgo.NewTask(goos, goarch,
-			append(args,
-				"-I", ".",
-				"-o", "minigzip.go",
-				"test\\minigzip.c",
-				"adler32.o.go",
-				"compress.o.go",
-				"crc32.o.go",
-				"deflate.o.go",
-				"gzclose.o.go",
-				"gzlib.o.go",
-				"gzread.o.go",
-				"gzwrite.o.go",
-				"infback.o.go",
-				"inffast.o.go",
-				"inflate.o.go",
-				"inftrees.o.go",
-				"trees.o.go",
-				"uncompr.o.go",
-				"zutil.o.go",
-			), os.Stdout, os.Stderr, nil,
-		).Main(); err != nil {
-			fail(1, "%v", err)
-		}
-		return nil
-	})
-	mustCopyFile(filepath.Join("include", goos, goarch, "zconf.h"), filepath.Join(libRoot, "zconf.h"), nil)
-	mustCopyFile(filepath.Join("include", goos, goarch, "zlib.h"), filepath.Join(libRoot, "zlib.h"), nil)
-	fn := fmt.Sprintf("ccgo_%s_%s.go", goos, goarch)
-	mustCopyFile(fn, filepath.Join(libRoot, result), nil)
-	util.MustShell(true, sed, "-i.bak", `s/\<T__\([a-zA-Z0-9][a-zA-Z0-9_]\+\)/t__\1/g`, fn)
-	util.MustShell(true, sed, "-i.bak", `s/\<x_\([a-zA-Z0-9][a-zA-Z0-9_]\+\)/X\1/g`, fn)
-	util.MustShell(true, "cp", filepath.Join(libRoot, "example.go"), filepath.Join("internal", "example", fn))
-	util.MustShell(true, "cp", filepath.Join(libRoot, "minigzip.go"), filepath.Join("internal", "minigzip", fn))
-	util.MustShell(true, "go", "test", "-run", "@")
-	util.Shell("git", "status")
 }

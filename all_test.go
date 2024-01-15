@@ -19,6 +19,7 @@ import (
 var (
 	goos   = runtime.GOOS
 	goarch = runtime.GOARCH
+	win    = goos == "windows"
 )
 
 func TestMain(m *testing.M) {
@@ -26,7 +27,7 @@ func TestMain(m *testing.M) {
 }
 
 func Test(t *testing.T) {
-	if goos == "windows" {
+	if win {
 		t.Skip("windows")
 	}
 
@@ -50,7 +51,9 @@ func Test2(t *testing.T) {
 	ex := filepath.Join(wd, "internal", "example", fmt.Sprintf("ccgo_%s_%s.go", goos, goarch))
 	mgBin := "minigzip"
 	exBin := "example"
-	if goos == "windows" {
+	if win {
+		mg = filepath.Join(wd, "internal", "minigzip", fmt.Sprintf("ccgo_%s.go", goos))
+		ex = filepath.Join(wd, "internal", "example", fmt.Sprintf("ccgo_%s.go", goos))
 		mgBin += ".exe"
 		exBin += ".exe"
 	}
@@ -63,8 +66,8 @@ func Test2(t *testing.T) {
 	}
 
 	if err := util.InDir(tmpDir, func() error {
-		switch goos {
-		case "windows":
+		switch {
+		case win:
 			if err := util.InDir(tmpDir, func() error {
 				out, err := util.Shell("cmd.exe", "/c", fmt.Sprintf("echo hello world | %s | %[1]s -d", mgBin, exBin))
 				if err != nil {
