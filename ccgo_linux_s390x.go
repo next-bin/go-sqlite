@@ -151646,14 +151646,11 @@ func Xsqlite3_sourceid(tls *libc.TLS) (r uintptr) {
 	return __ccgo_ts + 23358
 }
 
-type TsColMap = struct {
-	FiFrom int32
-	FzCol  uintptr
-}
-
-type Tsqlite3_index_constraint_usage = struct {
-	FargvIndex int32
-	Fomit      uint8
+type Tsqlite3_index_constraint = struct {
+	FiColumn     int32
+	Fop          uint8
+	Fusable      uint8
+	FiTermOffset int32
 }
 
 type TInLoop = struct {
@@ -151664,12 +151661,9 @@ type TInLoop = struct {
 	FeEndLoopOp Tu8
 }
 
-type TWalSegment = struct {
-	FiNext  int32
-	FaIndex uintptr
-	FaPgno  uintptr
-	FnEntry int32
-	FiZero  int32
+type T_ht = struct {
+	Fcount uint32
+	Fchain uintptr
 }
 
 type TAggInfo_col = struct {
@@ -151681,14 +151675,17 @@ type TAggInfo_col = struct {
 	FiSorterColumn Ti16
 }
 
-type T_ht = struct {
-	Fcount uint32
-	Fchain uintptr
+type TWalSegment = struct {
+	FiNext  int32
+	FaIndex uintptr
+	FaPgno  uintptr
+	FnEntry int32
+	FiZero  int32
 }
 
-type Tsqlite3_index_orderby = struct {
-	FiColumn int32
-	Fdesc    uint8
+type TIdList_item = struct {
+	FzName uintptr
+	Fidx   int32
 }
 
 type TAggInfo_func = struct {
@@ -151697,18 +151694,6 @@ type TAggInfo_func = struct {
 	FiMem      int32
 	FiDistinct int32
 	FiDistAddr int32
-}
-
-type TIdList_item = struct {
-	FzName uintptr
-	Fidx   int32
-}
-
-type Tsqlite3_index_constraint = struct {
-	FiColumn     int32
-	Fop          uint8
-	Fusable      uint8
-	FiTermOffset int32
 }
 
 type Tsqlite3InitInfo = struct {
@@ -151720,12 +151705,19 @@ type Tsqlite3InitInfo = struct {
 	FazInit        uintptr
 }
 
-type TMemValue = struct {
-	Fi      [0]int64
-	FnZero  [0]int32
-	FzPType [0]uintptr
-	FpDef   [0]uintptr
-	Fr      float64
+type TsColMap = struct {
+	FiFrom int32
+	FzCol  uintptr
+}
+
+type Tsqlite3_index_orderby = struct {
+	FiColumn int32
+	Fdesc    uint8
+}
+
+type Tsqlite3_index_constraint_usage = struct {
+	FargvIndex int32
+	Fomit      uint8
 }
 
 type Tp4union = struct {
@@ -151745,6 +151737,14 @@ type Tp4union = struct {
 	FxAdvance     [0]uintptr
 	Fi            int32
 	F__ccgo_pad15 [4]byte
+}
+
+type TMemValue = struct {
+	Fi      [0]int64
+	FnZero  [0]int32
+	FzPType [0]uintptr
+	FpDef   [0]uintptr
+	Fr      float64
 }
 
 func __ccgo_fp(f interface{}) uintptr {
