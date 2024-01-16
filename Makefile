@@ -64,6 +64,37 @@ test:
 	go test -v -timeout 24h -count=1 2>&1 | tee log-test
 	grep -a 'TRC\|TODO\|ERRORF\|FAIL' log-test || true 2>&1 | tee -a log-test
 
+windows: download
+	mkdir -p $(DIR) || true
+	rm -rf $(DIR)/*
+	echo -n > /tmp/ccgo.log
+	echo -n > log-generate
+	echo -n > log-generate-errors
+	GO_GENERATE_WIN=1 GO_GENERATE_DIR=$(DIR) go run -tags=ccgo.dmesg,ccgo.assert generator*.go 2>&1 | tee log-generate
+	GOOS=windows GOARCH=amd64 go build -v ./...  | tee -a log-generate
+	GOOS=windows GOARCH=amd64 go test -v -c -o /dev/null 2>&1 | tee -a log-generate
+	GOOS=windows GOARCH=arm64 go build -v ./...  | tee -a log-generate
+	GOOS=windows GOARCH=arm64 go test -v -c -o /dev/null 2>&1 | tee -a log-generate
+	git status
+	grep 'TRC\|TODO\|ERRORF\|FAIL' log-generate || true
+	grep 'TRC\|TODO\|ERRORF\|FAIL' log-generate-errors || true
+
+windows-dev: download
+	mkdir -p $(DIR) || true
+	rm -rf $(DIR)/*
+	echo -n > /tmp/ccgo.log
+	echo -n > log-generate
+	echo -n > log-generate-errors
+	GO_GENERATE_WIN=1 GO_GENERATE_DIR=$(DIR) GO_GENERATE_DEV=1 go run -tags=ccgo.dmesg,ccgo.assert generator*.go 2>&1 | tee log-generate
+	GOOS=windows GOARCH=amd64 go build -v ./...  | tee -a log-generate
+	GOOS=windows GOARCH=amd64 go test -v -c -o /dev/null 2>&1 | tee -a log-generate
+	GOOS=windows GOARCH=arm64 go build -v ./...  | tee -a log-generate
+	GOOS=windows GOARCH=arm64 go test -v -c -o /dev/null 2>&1 | tee -a log-generate
+	git status
+	grep 'TRC\|TODO\|ERRORF\|FAIL' log-generate || true
+	grep 'TRC\|TODO\|ERRORF\|FAIL' log-generate-errors || true
+	grep 'TRC\|TODO\|ERRORF\|FAIL' /tmp/ccgo.log || true
+
 work:
 	rm -f go.work*
 	go work init

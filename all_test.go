@@ -433,6 +433,73 @@ func TestMain(m *testing.M) {
 			"http11.test",
 			"socket.test",
 		)
+	case "windows/amd64":
+		skip = append(skip,
+			"Tcl_Main-5.10",
+			"clock-38.2",
+			"clock-40.1",
+			"clock-42.1",
+			"clock-49.2",
+			"env-2.1",
+			"env-2.2",
+			"env-2.3",
+			"env-2.4",
+			"env-2.5",
+			"env-3.1",
+			"env-4.1",
+			"env-4.3",
+			"env-4.4",
+			"env-4.5",
+			"env-5.1",
+			"env-5.3",
+			"env-5.5",
+			"env-9.0",
+			"fCmd-6.17",
+			"filename-10.7",
+			"filename-11.12",
+			"filesystem-1.38",
+			"interp-34.11",
+			"package-15.1",
+			"package-15.2",
+			"package-15.3",
+			"package-15.4",
+			"regexp-22.5",
+			"safe-8.5",
+			"safe-8.6",
+			"safe-8.7",
+			"safe-stock-7.4",
+			"winFCmd-1.11",
+			"winFCmd-1.20",
+			"winFCmd-1.23",
+			"winFCmd-1.3",
+			"winFCmd-1.4",
+			"winTime-1.2",
+			"winTime-2.1",
+			"winpipe-4.2",
+			"winpipe-4.3",
+			"winpipe-4.4",
+			"winpipe-4.5",
+		)
+		notFiles = append(notFiles,
+			"http11.test",
+			"basic.test",
+			"chan.test",
+			"chanio.test",
+			"cmdAH.test",
+			"cmdInfo.test",
+			"event.test",
+			"fCmd.test",
+			"fileSystem.test",
+			"http.test",
+			"httpold.test",
+			"io.test",
+			"ioCmd.test",
+			"socket.test",
+			"tcltest.test",
+			"winFCmd.test",
+			"winNotify.test",
+			"zlib.test",
+		)
 	}
 	flag.Parse()
 	if s := *oSkip; s != "" {
@@ -493,10 +560,6 @@ func TestEnv(t *testing.T) {
 }
 
 func Test2(t *testing.T) {
-	if runtime.GOOS == "windows" {
-		t.Skip("TODO")
-	}
-
 	wd, err := os.Getwd()
 	if err != nil {
 		t.Fatal(err)
