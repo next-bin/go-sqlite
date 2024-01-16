@@ -54,7 +54,7 @@ func main() {
 		fail(1, "windows targest must be generated on linux/amd64 (+Wine)")
 	}
 
-	if target == "linux/amd64" {
+	if !win && target == "linux/amd64" {
 		defer func() {
 			util.MustShell(true, "make", "windows")
 			util.MustCopyFile(true, "internal/autogen/windows_amd64.mod", "go.mod", nil)
