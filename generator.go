@@ -266,7 +266,7 @@ func main() {
 					"-target-cc", "x86_64-w64-mingw32-gcc",
 					"-target-goarch", "amd64",
 					"-target-goos", "windows",
-					"-exec", "make", "-j", j, "test", "TESTFLAGS=-notfile \"socket.test winFCmd.test winPipe.test\"",
+					"-exec", "make", "-j", j, "test", "TESTFLAGS=-notfile \"http11.test socket.test winFCmd.test winPipe.test\"",
 				),
 				os.Stdout, os.Stderr, nil,
 			).Exec()
