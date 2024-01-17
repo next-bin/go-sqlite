@@ -199248,6 +199248,17 @@ type TChannelState1 = struct {
 	Fepoch               int32
 }
 
+type TChannel1 = struct {
+	Fstate        uintptr
+	FinstanceData TClientData
+	FtypePtr      uintptr
+	FdownChanPtr  uintptr
+	FupChanPtr    uintptr
+	FinQueueHead  uintptr
+	FinQueueTail  uintptr
+	FrefCount     int32
+}
+
 type TCopyState1 = struct {
 	FreadPtr    uintptr
 	FwritePtr   uintptr
@@ -199259,17 +199270,6 @@ type TCopyState1 = struct {
 	FcmdPtr     uintptr
 	FbufSize    int32
 	Fbuffer     [1]int8
-}
-
-type TChannel1 = struct {
-	Fstate        uintptr
-	FinstanceData TClientData
-	FtypePtr      uintptr
-	FdownChanPtr  uintptr
-	FupChanPtr    uintptr
-	FinQueueHead  uintptr
-	FinQueueTail  uintptr
-	FrefCount     int32
 }
 
 const m_SEEK_END = 2
@@ -224459,6 +224459,14 @@ func XTcl_LogCommandInfo(tls *libc.TLS, interp uintptr, script uintptr, command 
 	XTclLogCommandInfo(tls, interp, script, command, length, libc.UintptrFromInt32(0), libc.UintptrFromInt32(0))
 }
 
+type TTcl_Namespace1 = struct {
+	Fname       uintptr
+	FfullName   uintptr
+	FclientData TClientData
+	FdeleteProc uintptr
+	FparentPtr  uintptr
+}
+
 type TNamespace1 = struct {
 	Fname                  uintptr
 	FfullName              uintptr
@@ -224488,14 +224496,6 @@ type TNamespace1 = struct {
 	FcommandPathArray      uintptr
 	FcommandPathSourceList uintptr
 	FearlyDeleteProc       uintptr
-}
-
-type TTcl_Namespace1 = struct {
-	Fname       uintptr
-	FfullName   uintptr
-	FclientData TClientData
-	FdeleteProc uintptr
-	FparentPtr  uintptr
 }
 
 const m_TCL_SERVICE_ALL = 1
@@ -350881,9 +350881,36 @@ type T_STGMEDIUM_UNION = struct {
 	Fu     t__WIDL_objidl_generated_name_0000000D
 }
 
+type t__WIDL_oaidl_generated_name_0000000E = struct {
+	FUnknownStr   [0]TSAFEARR_UNKNOWN
+	FDispatchStr  [0]TSAFEARR_DISPATCH
+	FVariantStr   [0]TSAFEARR_VARIANT
+	FRecordStr    [0]TSAFEARR_BRECORD
+	FHaveIidStr   [0]TSAFEARR_HAVEIID
+	FByteStr      [0]TBYTE_SIZEDARR
+	FWordStr      [0]TWORD_SIZEDARR
+	FLongStr      [0]TDWORD_SIZEDARR
+	FHyperStr     [0]THYPER_SIZEDARR
+	FBstrStr      TSAFEARR_BSTR
+	F__ccgo_pad10 [16]byte
+}
+
+type t__WIDL_wtypes_generated_name_00000002 = struct {
+	FhRemote     [0]uintptr
+	FhInproc     TLONG
+	F__ccgo_pad2 [4]byte
+}
+
 type t__WIDL_wtypes_generated_name_00000009 = struct {
 	FhRemote [0]TLONG
 	FhInproc TLONG
+}
+
+type t__WIDL_wtypes_generated_name_00000008 = struct {
+	FhRemote     [0]uintptr
+	FhInproc64   [0]TINT64
+	FhInproc     TLONG
+	F__ccgo_pad3 [4]byte
 }
 
 type t__WIDL_wtypes_generated_name_0000000A = struct {
@@ -350903,27 +350930,10 @@ type t__WIDL_wtypes_generated_name_0000000A = struct {
 	F__ccgo_pad7 [16]byte
 }
 
-type t__WIDL_objidl_generated_name_0000000C = struct {
-	FhPalette [0]TwireHPALETTE
-	FhGeneric [0]TwireHGLOBAL
-	FhBitmap  TwireHBITMAP
-}
-
-type t__WIDL_objidl_generated_name_0000000D = struct {
-	FhHEnhMetaFile [0]TwireHENHMETAFILE
-	FhGdiHandle    [0]uintptr
-	FhGlobal       [0]TwireHGLOBAL
-	FlpszFileName  [0]TLPOLESTR
-	Fpstm          [0]uintptr
-	Fpstg          [0]uintptr
-	FhMetaFilePict TwireHMETAFILEPICT
-}
-
-type t__WIDL_wtypes_generated_name_00000003 = struct {
-	FhRemote     [0]uintptr
-	FhInproc64   [0]TINT64
-	FhInproc     TLONG
-	F__ccgo_pad3 [4]byte
+type t__WIDL_wtypes_generated_name_00000001 = struct {
+	FpwszName    [0]uintptr
+	FdwValue     TDWORD
+	F__ccgo_pad2 [4]byte
 }
 
 type t__WIDL_wtypes_generated_name_00000005 = struct {
@@ -350940,37 +350950,14 @@ type t__WIDL_wtypes_generated_name_00000006 = struct {
 	F__ccgo_pad3 [4]byte
 }
 
-type t__WIDL_wtypes_generated_name_00000002 = struct {
-	FhRemote     [0]uintptr
-	FhInproc     TLONG
-	F__ccgo_pad2 [4]byte
-}
-
-type t__WIDL_oaidl_generated_name_0000000E = struct {
-	FUnknownStr   [0]TSAFEARR_UNKNOWN
-	FDispatchStr  [0]TSAFEARR_DISPATCH
-	FVariantStr   [0]TSAFEARR_VARIANT
-	FRecordStr    [0]TSAFEARR_BRECORD
-	FHaveIidStr   [0]TSAFEARR_HAVEIID
-	FByteStr      [0]TBYTE_SIZEDARR
-	FWordStr      [0]TWORD_SIZEDARR
-	FLongStr      [0]TDWORD_SIZEDARR
-	FHyperStr     [0]THYPER_SIZEDARR
-	FBstrStr      TSAFEARR_BSTR
-	F__ccgo_pad10 [16]byte
-}
-
-type t__WIDL_wtypes_generated_name_00000001 = struct {
-	FpwszName    [0]uintptr
-	FdwValue     TDWORD
-	F__ccgo_pad2 [4]byte
-}
-
-type t__WIDL_wtypes_generated_name_00000004 = struct {
-	FhRemote     [0]uintptr
-	FhInproc64   [0]TINT64
-	FhInproc     TLONG
-	F__ccgo_pad3 [4]byte
+type t__WIDL_objidl_generated_name_0000000D = struct {
+	FhHEnhMetaFile [0]TwireHENHMETAFILE
+	FhGdiHandle    [0]uintptr
+	FhGlobal       [0]TwireHGLOBAL
+	FlpszFileName  [0]TLPOLESTR
+	Fpstm          [0]uintptr
+	Fpstg          [0]uintptr
+	FhMetaFilePict TwireHMETAFILEPICT
 }
 
 type t__WIDL_wtypes_generated_name_00000007 = struct {
@@ -350980,7 +350967,20 @@ type t__WIDL_wtypes_generated_name_00000007 = struct {
 	F__ccgo_pad3 [4]byte
 }
 
-type t__WIDL_wtypes_generated_name_00000008 = struct {
+type t__WIDL_objidl_generated_name_0000000C = struct {
+	FhPalette [0]TwireHPALETTE
+	FhGeneric [0]TwireHGLOBAL
+	FhBitmap  TwireHBITMAP
+}
+
+type t__WIDL_wtypes_generated_name_00000003 = struct {
+	FhRemote     [0]uintptr
+	FhInproc64   [0]TINT64
+	FhInproc     TLONG
+	F__ccgo_pad3 [4]byte
+}
+
+type t__WIDL_wtypes_generated_name_00000004 = struct {
 	FhRemote     [0]uintptr
 	FhInproc64   [0]TINT64
 	FhInproc     TLONG
