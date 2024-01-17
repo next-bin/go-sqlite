@@ -33,7 +33,7 @@ var (
 	target = fmt.Sprintf("%s/%s", goos, goarch)
 	sed    = "sed"
 	j      = fmt.Sprint(runtime.GOMAXPROCS(-1))
-	win    = os.Getenv("GO_GENERATE_WIN") == "1"
+	win    = false //TODO hangs on nuc64: os.Getenv("GO_GENERATE_WIN") == "1"
 )
 
 // origin returns caller's short position, skipping skip frames.
