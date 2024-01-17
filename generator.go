@@ -309,7 +309,6 @@ func main() {
 	}
 	util.Shell("sh", "-c", "./unconvert.sh")
 	util.MustShell(true, "go", "test", "-run", "@")
-	util.Shell("git", "add", ".")
 	util.Shell("git", "status")
 }
 
