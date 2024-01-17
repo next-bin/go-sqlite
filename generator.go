@@ -33,7 +33,7 @@ var (
 	target = fmt.Sprintf("%s/%s", goos, goarch)
 	sed    = "sed"
 	j      = fmt.Sprint(runtime.GOMAXPROCS(-1))
-	win    = false //TODO hangs on nuc64: os.Getenv("GO_GENERATE_WIN") == "1"
+	win    = os.Getenv("GO_GENERATE_WIN") == "1"
 )
 
 // origin returns caller's short position, skipping skip frames.
@@ -266,7 +266,7 @@ func main() {
 					"-target-cc", "x86_64-w64-mingw32-gcc",
 					"-target-goarch", "amd64",
 					"-target-goos", "windows",
-					"-exec", "make", "-j", j, "test", "TESTFLAGS=-notfile \"http11.test socket.test winFCmd.test winPipe.test\"",
+					"-exec", "make", "-j", j, "tcltest", "TESTFLAGS=-notfile \"http11.test socket.test winFCmd.test winPipe.test\"",
 				),
 				os.Stdout, os.Stderr, nil,
 			).Exec()
