@@ -24,6 +24,12 @@ clean:
 	rm -f log-* cpu.test mem.test *.out go.work*
 	go clean
 
+clean-dev:
+	rm -rf include/linux/amd64/ include/windows/*
+	rm -f internal/autogen/windows*.mod
+	rm -f ccgo_linux_amd64.go internal/example/ccgo_linux_amd64.go internal/minigzip/ccgo_linux_amd64.go
+	rm -f ccgo_windows.go internal/example/ccgo_windows.go internal/minigzip/ccgo_windows.go
+
 edit:
 	@touch log
 	@if [ -f "Session.vim" ]; then novim -S & else novim -p Makefile all_test.go generator.go & fi
