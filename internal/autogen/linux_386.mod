@@ -8,7 +8,7 @@ require (
 	modernc.org/ccgo/v3 v3.16.15
 	modernc.org/ccgo/v4 v4.7.2
 	modernc.org/libc v1.40.2
-	modernc.org/libtcl8.6 v0.5.0
+	modernc.org/libtcl8.6 v0.5.1
 	modernc.org/libz v0.5.1
 )
 

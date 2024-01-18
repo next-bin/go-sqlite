@@ -26618,14 +26618,6 @@ func init() {
 }
 
 // -:
-type Tsqlite3_index_constraint = struct {
-	FiColumn     int32
-	Fop          uint8
-	Fusable      uint8
-	FiTermOffset int32
-}
-
-// -:
 type Tsqlite3_index_constraint_usage = struct {
 	FargvIndex int32
 	Fomit      uint8
@@ -26635,6 +26627,14 @@ type Tsqlite3_index_constraint_usage = struct {
 type Tsqlite3_index_orderby = struct {
 	FiColumn int32
 	Fdesc    uint8
+}
+
+// -:
+type Tsqlite3_index_constraint = struct {
+	FiColumn     int32
+	Fop          uint8
+	Fusable      uint8
+	FiTermOffset int32
 }
 
 /*
@@ -306403,6 +306403,16 @@ type TIdList_item = struct {
 }
 
 // -:
+type TAggInfo_col = struct {
+	FpTab          uintptr
+	FpCExpr        uintptr
+	FiTable        int32
+	FiMem          int32
+	FiColumn       Ti16
+	FiSorterColumn Ti16
+}
+
+// -:
 type TWalSegment = struct {
 	FiNext  int32
 	FaIndex uintptr
@@ -306412,9 +306422,12 @@ type TWalSegment = struct {
 }
 
 // -:
-type T_ht = struct {
-	Fcount uint32
-	Fchain uintptr
+type TInLoop = struct {
+	FiCur       int32
+	FaddrInTop  int32
+	FiBase      int32
+	FnPrefix    int32
+	FeEndLoopOp Tu8
 }
 
 // -:
@@ -306427,22 +306440,9 @@ type TAggInfo_func = struct {
 }
 
 // -:
-type TAggInfo_col = struct {
-	FpTab          uintptr
-	FpCExpr        uintptr
-	FiTable        int32
-	FiMem          int32
-	FiColumn       Ti16
-	FiSorterColumn Ti16
-}
-
-// -:
-type TInLoop = struct {
-	FiCur       int32
-	FaddrInTop  int32
-	FiBase      int32
-	FnPrefix    int32
-	FeEndLoopOp Tu8
+type T_ht = struct {
+	Fcount uint32
+	Fchain uintptr
 }
 
 func __ccgo_fp(f interface{}) uintptr {
