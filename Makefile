@@ -20,6 +20,13 @@ clean:
 	rm -f log-* cpu.test mem.test *.out go.work*
 	go clean
 
+clean-dev:
+	rm -rf include/linux/amd64/
+	rm -f ccgo_linux_amd64.go internal/tcltest/ccgo_linux_amd64.go
+	rm -f internal/autogen/windows*.mod
+	rm -rf include/windows/*
+	rm -f ccgo_windows.go.go internal/tcltest/ccgo_windows.go
+
 download:
 	@if [ ! -f $(TAR) ]; then wget $(URL) ; fi
 

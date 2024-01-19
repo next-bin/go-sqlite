@@ -28,67 +28,13 @@ const (
 )
 
 var (
-	goos   = runtime.GOOS
-	goarch = runtime.GOARCH
+	goarch = env("TARGET_GOARCH", env("GOARCH", runtime.GOARCH))
+	goos   = env("TARGET_GOOS", env("GOOS", runtime.GOOS))
 	target = fmt.Sprintf("%s/%s", goos, goarch)
 	sed    = "sed"
 	j      = fmt.Sprint(runtime.GOMAXPROCS(-1))
 	win    = os.Getenv("GO_GENERATE_WIN") == "1"
 )
-
-// origin returns caller's short position, skipping skip frames.
-func origin(skip int) string {
-	pc, fn, fl, _ := runtime.Caller(skip)
-	f := runtime.FuncForPC(pc)
-	var fns string
-	if f != nil {
-		fns = f.Name()
-		if x := strings.LastIndex(fns, "."); x > 0 {
-			fns = fns[x+1:]
-		}
-		if strings.HasPrefix(fns, "func") {
-			num := true
-			for _, c := range fns[len("func"):] {
-				if c < '0' || c > '9' {
-					num = false
-					break
-				}
-			}
-			if num {
-				return origin(skip + 2)
-			}
-		}
-	}
-	return fmt.Sprintf("%s:%d:%s", filepath.Base(fn), fl, fns)
-}
-
-// todo prints and return caller's position and an optional message tagged with TODO. Output goes to stderr.
-func todo(s string, args ...interface{}) string {
-	switch {
-	case s == "":
-		s = fmt.Sprintf(strings.Repeat("%v ", len(args)), args...)
-	default:
-		s = fmt.Sprintf(s, args...)
-	}
-	r := fmt.Sprintf("%s\n\tTODO %s", origin(2), s)
-	// fmt.Fprintf(os.Stderr, "%s\n", r)
-	// os.Stdout.Sync()
-	return r
-}
-
-// trc prints and return caller's position and an optional message tagged with TRC. Output goes to stderr.
-func trc(s string, args ...interface{}) string {
-	switch {
-	case s == "":
-		s = fmt.Sprintf(strings.Repeat("%v ", len(args)), args...)
-	default:
-		s = fmt.Sprintf(s, args...)
-	}
-	r := fmt.Sprintf("%s: TRC %s", origin(2), s)
-	fmt.Fprintf(os.Stderr, "%s\n", r)
-	os.Stderr.Sync()
-	return r
-}
 
 func fail(rc int, msg string, args ...any) {
 	fmt.Fprintln(os.Stderr, strings.TrimSpace(fmt.Sprintf(msg, args...)))
@@ -164,7 +110,6 @@ func main() {
 	fmt.Fprintf(os.Stderr, "tempDir %s\n", tempDir)
 	fmt.Fprintf(os.Stderr, "libRoot %s\n", libRoot)
 	fmt.Fprintf(os.Stderr, "makeRoot %s\n", makeRoot)
-
 	os.RemoveAll(filepath.Join("library", "assets"))
 	os.RemoveAll(filepath.Join("include", goos, goarch))
 	os.Remove(filepath.Join("internal/tests"))
@@ -205,7 +150,7 @@ func main() {
 		}
 		switch {
 		case win:
-			util.MustShell(true, "sh", "-c", fmt.Sprintf("CFLAGS='%s' ./configure --enable-64bit --disable-threads --disable-shared --disable-load", strings.Join(cflags, " ")))
+			util.MustShell(true, "sh", "-c", fmt.Sprintf("CFLAGS='%s' ./configure --build=x86-64_linux --host=x86_64-w64-mingw32 --enable-64bit --disable-threads --disable-shared --disable-load", strings.Join(cflags, " ")))
 		default:
 			util.MustShell(true, "sh", "-c", fmt.Sprintf("CFLAGS='%s' ./configure --disable-threads --disable-shared --disable-load --disable-corefoundation", strings.Join(cflags, " ")))
 		}
@@ -259,17 +204,20 @@ func main() {
 		)
 		switch {
 		case win:
-			ccgo.NewTask(
+			out := util.MustShell(true, "which", "x86_64-w64-mingw32-gcc")
+			os.Setenv("CCGO_CPP", strings.TrimSpace(string(out)))
+			os.Setenv("TARGET_GOOS", goos)
+			os.Setenv("TARGET_GOARCH", goarch)
+			if err := ccgo.NewTask(
 				goos, goarch,
 				append(args,
-					"-target-ar", "x86_64-w64-mingw32-ar",
-					"-target-cc", "x86_64-w64-mingw32-gcc",
-					"-target-goarch", "amd64",
-					"-target-goos", "windows",
-					"-exec", "make", "-j", j, "tcltest", "TESTFLAGS=-notfile \"http11.test socket.test winFCmd.test winPipe.test\"",
+					"-map", "ar=x86_64-w64-mingw32-ar,gcc=x86_64-w64-mingw32-gcc",
+					"-exec", "make", "-j", j, "binaries", "tcltests.exe",
 				),
 				os.Stdout, os.Stderr, nil,
-			).Exec()
+			).Exec(); err != nil {
+				return err
+			}
 		default:
 			ccgo.NewTask(goos, goarch, append(args, "-exec", "make", "-j", j, "test"), os.Stdout, os.Stderr, nil).Exec()
 		}
@@ -308,7 +256,6 @@ func main() {
 		mustCopyFile(filepath.Join("internal", "tcltest", fn), filepath.Join(makeRoot, "tcltest.go"), nil)
 	}
 	util.Shell("sh", "-c", "./unconvert.sh")
-	util.MustShell(true, "go", "test", "-run", "@")
 	util.Shell("git", "status")
 }
 
@@ -483,4 +430,12 @@ func copyFile(dst, src string, canOverwrite func(fn string, fi os.FileInfo) bool
 	}()
 
 	return io.Copy(w, r)
+}
+
+func env(name, deflt string) (r string) {
+	r = deflt
+	if s := os.Getenv(name); s != "" {
+		r = s
+	}
+	return r
 }
