@@ -1,4 +1,4 @@
-// Code generated for linux/arm64 by 'generator --prefix-enumerator=_ --prefix-external=x_ --prefix-field=F --prefix-macro=m_ --prefix-static-internal=_ --prefix-static-none=_ --prefix-tagged-enum=_ --prefix-tagged-struct=T --prefix-tagged-union=T --prefix-typename=T --prefix-undefined=_ -extended-errors -hide TclpCreateProcess -ignore-unsupported-alignment -I/tmp/libtcl8.6/tcl8.6.13/ccgo -o libtcl.a.go --package-name libtcl8_6 -ignore-link-errors libtcl8.6.a -lz', DO NOT EDIT.
+// Code generated for linux/arm64 by 'generator -hide TclpCreateProcess --prefix-enumerator=_ --prefix-external=x_ --prefix-field=F --prefix-macro=m_ --prefix-static-internal=_ --prefix-static-none=_ --prefix-tagged-enum=_ --prefix-tagged-struct=T --prefix-tagged-union=T --prefix-typename=T --prefix-undefined=_ -extended-errors -ignore-unsupported-alignment -I/tmp/libtcl8.6/tcl8.6.13/ccgo -o libtcl.a.go --package-name libtcl8_6 -ignore-link-errors libtcl8.6.a -lz', DO NOT EDIT.
 
 //go:build linux && arm64
 // +build linux,arm64
@@ -183042,17 +183042,15 @@ func _FreeChannelInternalRep(tls *libc.TLS, objPtr uintptr) {
 	XTclpFree(tls, resPtr)
 }
 
-type TCopyState1 = struct {
-	FreadPtr    uintptr
-	FwritePtr   uintptr
-	FreadFlags  int32
-	FwriteFlags int32
-	FtoRead     TTcl_WideInt
-	Ftotal      TTcl_WideInt
-	Finterp     uintptr
-	FcmdPtr     uintptr
-	FbufSize    int32
-	Fbuffer     [1]uint8
+type TChannel1 = struct {
+	Fstate        uintptr
+	FinstanceData TClientData
+	FtypePtr      uintptr
+	FdownChanPtr  uintptr
+	FupChanPtr    uintptr
+	FinQueueHead  uintptr
+	FinQueueTail  uintptr
+	FrefCount     int32
 }
 
 type TChannelState1 = struct {
@@ -183093,15 +183091,17 @@ type TChannelState1 = struct {
 	Fepoch               int32
 }
 
-type TChannel1 = struct {
-	Fstate        uintptr
-	FinstanceData TClientData
-	FtypePtr      uintptr
-	FdownChanPtr  uintptr
-	FupChanPtr    uintptr
-	FinQueueHead  uintptr
-	FinQueueTail  uintptr
-	FrefCount     int32
+type TCopyState1 = struct {
+	FreadPtr    uintptr
+	FwritePtr   uintptr
+	FreadFlags  int32
+	FwriteFlags int32
+	FtoRead     TTcl_WideInt
+	Ftotal      TTcl_WideInt
+	Finterp     uintptr
+	FcmdPtr     uintptr
+	FbufSize    int32
+	Fbuffer     [1]uint8
 }
 
 const m_O_RDONLY = 0
