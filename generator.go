@@ -48,8 +48,6 @@ func main() {
 	switch goos {
 	case "darwin", "freebsd", "openbsd":
 		sed = "gsed"
-	case "windows":
-		fail(1, "windows targets must be generated on linux/amd64 (+Wine)")
 	}
 
 	if !win && target == "linux/amd64" {
@@ -156,7 +154,7 @@ func main() {
 					"-build-lines", "//go:build windows && (amd64 || arm64)\n// +build windows\n// +build amd64 arm64",
 					"-map", "ar=x86_64-w64-mingw32-ar,gcc=x86_64-w64-mingw32-gcc",
 					"-exec", "sh", "-c",
-					fmt.Sprintf("make -j%s RC=x86_64-w64-mingw32-windres -fwin32/Makefile.gcc libz.a example.exe minigzip.exe", j),
+					fmt.Sprintf("make -j%s PREFIX=x86_64-w64-mingw32- -fwin32/Makefile.gcc libz.a example.exe minigzip.exe", j),
 				),
 				os.Stdout, os.Stderr,
 				nil,
