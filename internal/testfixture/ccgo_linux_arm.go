@@ -19488,6 +19488,12 @@ type TExprList_item = struct {
 }
 
 // -:
+type TsColMap = struct {
+	FiFrom int32
+	FzCol  uintptr
+}
+
+// -:
 type Tsqlite3InitInfo = struct {
 	FnewTnum       TPgno
 	FiDb           Tu8
@@ -19495,12 +19501,6 @@ type Tsqlite3InitInfo = struct {
 	F__ccgo_align3 [2]byte
 	F__ccgo8       uint8
 	FazInit        uintptr
-}
-
-// -:
-type TsColMap = struct {
-	FiFrom int32
-	FzCol  uintptr
 }
 
 // -:
@@ -26705,14 +26705,6 @@ func init() {
 }
 
 // -:
-type Tsqlite3_index_constraint = struct {
-	FiColumn     int32
-	Fop          uint8
-	Fusable      uint8
-	FiTermOffset int32
-}
-
-// -:
 type Tsqlite3_index_constraint_usage = struct {
 	FargvIndex int32
 	Fomit      uint8
@@ -26722,6 +26714,14 @@ type Tsqlite3_index_constraint_usage = struct {
 type Tsqlite3_index_orderby = struct {
 	FiColumn int32
 	Fdesc    uint8
+}
+
+// -:
+type Tsqlite3_index_constraint = struct {
+	FiColumn     int32
+	Fop          uint8
+	Fusable      uint8
+	FiTermOffset int32
 }
 
 /*
@@ -29408,7 +29408,7 @@ const m_SQLITE_DEFAULT_AUTOVACUUM = "0"
 // /tmp/libsqlite3/sqlite-src-3370200/src/sqliteInt.h:653:10:
 const m_SQLITE_DEFAULT_FILE_FORMAT = 4
 
-// /tmp/libsqlite3/sqlite-src-3370200/<command-line>:31:9:
+// /tmp/libsqlite3/sqlite-src-3370200/<command-line>:30:9:
 const m_SQLITE_DEFAULT_PAGE_SIZE = 1024
 
 // /tmp/libsqlite3/sqlite-src-3370200/src/sqliteInt.h:1284:10:
@@ -29459,10 +29459,10 @@ const m_SQLITE_MAX_VDBE_OP = 250000000
 // /tmp/libsqlite3/sqlite-src-3370200/src/sqliteInt.h:679:10:
 const m_SQLITE_MAX_WORKER_THREADS = "0"
 
-// /tmp/libsqlite3/sqlite-src-3370200/<command-line>:22:9:
+// /tmp/libsqlite3/sqlite-src-3370200/<command-line>:21:9:
 const m_SQLITE_TEMP_STORE = 1
 
-// /tmp/libsqlite3/sqlite-src-3370200/<command-line>:17:9:
+// /tmp/libsqlite3/sqlite-src-3370200/<command-line>:16:9:
 const m_SQLITE_THREADSAFE = 0
 
 /*
@@ -83076,7 +83076,7 @@ const m_SERIES_COLUMN_STEP = 3
 // /tmp/libsqlite3/sqlite-src-3370200/ext/misc/series.c:120:9:
 const m_SERIES_COLUMN_STOP = 2
 
-// /tmp/libsqlite3/sqlite-src-3370200/<command-line>:30:9:
+// /tmp/libsqlite3/sqlite-src-3370200/<command-line>:29:9:
 const m_SQLITE_SERIES_CONSTRAINT_VERIFY = 1
 
 // C documentation
@@ -306651,21 +306651,6 @@ func x_sqlite3_sourceid(tls *libc.TLS) (r uintptr) {
 }
 
 // -:
-type TAggInfo_func = struct {
-	FpFExpr    uintptr
-	FpFunc     uintptr
-	FiMem      int32
-	FiDistinct int32
-	FiDistAddr int32
-}
-
-// -:
-type T_ht = struct {
-	Fcount uint32
-	Fchain uintptr
-}
-
-// -:
 type TAggInfo_col = struct {
 	FpTab          uintptr
 	FpCExpr        uintptr
@@ -306673,15 +306658,6 @@ type TAggInfo_col = struct {
 	FiMem          int32
 	FiColumn       Ti16
 	FiSorterColumn Ti16
-}
-
-// -:
-type TInLoop = struct {
-	FiCur       int32
-	FaddrInTop  int32
-	FiBase      int32
-	FnPrefix    int32
-	FeEndLoopOp Tu8
 }
 
 // -:
@@ -306697,6 +306673,30 @@ type TWalSegment = struct {
 type TIdList_item = struct {
 	FzName uintptr
 	Fidx   int32
+}
+
+// -:
+type T_ht = struct {
+	Fcount uint32
+	Fchain uintptr
+}
+
+// -:
+type TAggInfo_func = struct {
+	FpFExpr    uintptr
+	FpFunc     uintptr
+	FiMem      int32
+	FiDistinct int32
+	FiDistAddr int32
+}
+
+// -:
+type TInLoop = struct {
+	FiCur       int32
+	FaddrInTop  int32
+	FiBase      int32
+	FnPrefix    int32
+	FeEndLoopOp Tu8
 }
 
 func __ccgo_fp(f interface{}) uintptr {
