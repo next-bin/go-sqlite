@@ -77,7 +77,7 @@ windows: download
 	echo -n > /tmp/ccgo.log
 	echo -n > log-generate
 	echo -n > log-generate-errors
-	GO_GENERATE_WIN=1 GO_GENERATE_DIR=$(DIR) go run -tags=ccgo.dmesg,ccgo.assert generator*.go 2>&1 | tee log-generate
+	GO_GENERATE_WIN=1 GO_GENERATE_DIR=$(DIR) go run generator*.go 2>&1 | tee log-generate
 	GOOS=windows GOARCH=amd64 go build -v ./...  | tee -a log-generate
 	GOOS=windows GOARCH=amd64 go test -v -c -o /dev/null 2>&1 | tee -a log-generate
 	GOOS=windows GOARCH=arm64 go build -v ./...  | tee -a log-generate
