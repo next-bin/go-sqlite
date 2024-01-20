@@ -1,4 +1,4 @@
-// Code generated for darwin/arm64 by 'gcc -hide __darwin_check_fd_set -hide TclpCreateProcess --prefix-enumerator=_ --prefix-external=x_ --prefix-field=F --prefix-macro=m_ --prefix-static-internal=_ --prefix-static-none=_ --prefix-tagged-enum=_ --prefix-tagged-struct=T --prefix-tagged-union=T --prefix-typename=T --prefix-undefined=_ -extended-errors -ignore-unsupported-alignment -I/tmp/libtcl8.6/tcl8.6.13/ccgo -O2 -DNDEBUG -UHAVE_COPYFILE -UHAVE_CPUID -UHAVE_FTS -UHAVE_TERMIOS_H tclTestInit.o.go tclTest.o.go tclTestObj.o.go tclTestProcBodyObj.o.go tclThreadTest.o.go tclUnixTest.o.go -L/private/tmp/libtcl8.6/tcl8.6.13/unix -ltcl8.6 libtclstub8.6.a -lz -o tcltest.go', DO NOT EDIT.
+// Code generated for darwin/arm64 by 'gcc -hide __darwin_check_fd_set -hide TclpCreateProcess --prefix-enumerator=_ --prefix-external=x_ --prefix-field=F --prefix-macro=m_ --prefix-static-internal=_ --prefix-static-none=_ --prefix-tagged-enum=_ --prefix-tagged-struct=T --prefix-tagged-union=T --prefix-typename=T --prefix-undefined=_ -extended-errors -ignore-unsupported-alignment -I/var/folders/4f/mc8mts295pqf7gmnfcwh6g8w0000gn/T/libtcl8.6/tcl8.6.13/ccgo -O2 -DNDEBUG -UHAVE_COPYFILE -UHAVE_CPUID -UHAVE_FTS -UHAVE_TERMIOS_H tclTestInit.o.go tclTest.o.go tclTestObj.o.go tclTestProcBodyObj.o.go tclThreadTest.o.go tclUnixTest.o.go -L/private/var/folders/4f/mc8mts295pqf7gmnfcwh6g8w0000gn/T/libtcl8.6/tcl8.6.13/unix -ltcl8.6 libtclstub8.6.a -lz -o tcltest.go', DO NOT EDIT.
 
 //go:build darwin && arm64
 // +build darwin,arm64
@@ -216813,6 +216813,14 @@ func x_Tcl_LogCommandInfo(tls *libc.TLS, interp uintptr, script uintptr, command
 	x_TclLogCommandInfo(tls, interp, script, command, length, libc.UintptrFromInt32(0), libc.UintptrFromInt32(0))
 }
 
+type TTcl_Namespace1 = struct {
+	Fname       uintptr
+	FfullName   uintptr
+	FclientData TClientData
+	FdeleteProc uintptr
+	FparentPtr  uintptr
+}
+
 type TNamespace1 = struct {
 	Fname                  uintptr
 	FfullName              uintptr
@@ -216842,14 +216850,6 @@ type TNamespace1 = struct {
 	FcommandPathArray      uintptr
 	FcommandPathSourceList uintptr
 	FearlyDeleteProc       uintptr
-}
-
-type TTcl_Namespace1 = struct {
-	Fname       uintptr
-	FfullName   uintptr
-	FclientData TClientData
-	FdeleteProc uintptr
-	FparentPtr  uintptr
 }
 
 var _UUID_NULL53 = Tuuid_t{}
@@ -292373,6 +292373,7 @@ const _kGUARD_EXC_MOD_REFS = 2
 const _kGUARD_EXC_INVALID_OPTIONS = 3
 const _kGUARD_EXC_SET_CONTEXT = 4
 const _kGUARD_EXC_THREAD_SET_STATE = 5
+const _kGUARD_EXC_EXCEPTION_BEHAVIOR_ENFORCE = 6
 const _kGUARD_EXC_UNGUARDED = 8
 const _kGUARD_EXC_INCORRECT_GUARD = 16
 const _kGUARD_EXC_IMMOVABLE = 32
@@ -292394,7 +292395,6 @@ const _kGUARD_EXC_RCV_GUARDED_DESC = 1048576
 const _kGUARD_EXC_MOD_REFS_NON_FATAL = 2097152
 const _kGUARD_EXC_IMMOVABLE_NON_FATAL = 4194304
 const _kGUARD_EXC_REQUIRE_REPLY_PORT_SEMANTICS = 8388608
-const _kGUARD_EXC_EXCEPTION_BEHAVIOR_ENFORCE = 16777216
 
 type Tkern_return_t = int32
 
