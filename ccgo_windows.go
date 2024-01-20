@@ -199210,6 +199210,17 @@ func _FreeChannelInternalRep(tls *libc.TLS, objPtr uintptr) {
 	XTclpFree(tls, resPtr)
 }
 
+type TChannel1 = struct {
+	Fstate        uintptr
+	FinstanceData TClientData
+	FtypePtr      uintptr
+	FdownChanPtr  uintptr
+	FupChanPtr    uintptr
+	FinQueueHead  uintptr
+	FinQueueTail  uintptr
+	FrefCount     int32
+}
+
 type TChannelState1 = struct {
 	FchannelName         uintptr
 	Fflags               int32
@@ -199259,17 +199270,6 @@ type TCopyState1 = struct {
 	FcmdPtr     uintptr
 	FbufSize    int32
 	Fbuffer     [1]int8
-}
-
-type TChannel1 = struct {
-	Fstate        uintptr
-	FinstanceData TClientData
-	FtypePtr      uintptr
-	FdownChanPtr  uintptr
-	FupChanPtr    uintptr
-	FinQueueHead  uintptr
-	FinQueueTail  uintptr
-	FrefCount     int32
 }
 
 const m_SEEK_END = 2
@@ -350931,6 +350931,42 @@ type t__WIDL_wtypes_generated_name_00000008 = struct {
 	F__ccgo_pad3 [4]byte
 }
 
+type t__WIDL_objidl_generated_name_0000000C = struct {
+	FhPalette [0]TwireHPALETTE
+	FhGeneric [0]TwireHGLOBAL
+	FhBitmap  TwireHBITMAP
+}
+
+type t__WIDL_objidl_generated_name_0000000D = struct {
+	FhHEnhMetaFile [0]TwireHENHMETAFILE
+	FhGdiHandle    [0]uintptr
+	FhGlobal       [0]TwireHGLOBAL
+	FlpszFileName  [0]TLPOLESTR
+	Fpstm          [0]uintptr
+	Fpstg          [0]uintptr
+	FhMetaFilePict TwireHMETAFILEPICT
+}
+
+type t__WIDL_wtypes_generated_name_00000001 = struct {
+	FpwszName    [0]uintptr
+	FdwValue     TDWORD
+	F__ccgo_pad2 [4]byte
+}
+
+type t__WIDL_wtypes_generated_name_00000003 = struct {
+	FhRemote     [0]uintptr
+	FhInproc64   [0]TINT64
+	FhInproc     TLONG
+	F__ccgo_pad3 [4]byte
+}
+
+type t__WIDL_wtypes_generated_name_00000007 = struct {
+	FhRemote     [0]uintptr
+	FhInproc64   [0]TINT64
+	FhInproc     TLONG
+	F__ccgo_pad3 [4]byte
+}
+
 type t__WIDL_oaidl_generated_name_0000000E = struct {
 	FUnknownStr   [0]TSAFEARR_UNKNOWN
 	FDispatchStr  [0]TSAFEARR_DISPATCH
@@ -350945,23 +350981,6 @@ type t__WIDL_oaidl_generated_name_0000000E = struct {
 	F__ccgo_pad10 [16]byte
 }
 
-type t__WIDL_objidl_generated_name_0000000D = struct {
-	FhHEnhMetaFile [0]TwireHENHMETAFILE
-	FhGdiHandle    [0]uintptr
-	FhGlobal       [0]TwireHGLOBAL
-	FlpszFileName  [0]TLPOLESTR
-	Fpstm          [0]uintptr
-	Fpstg          [0]uintptr
-	FhMetaFilePict TwireHMETAFILEPICT
-}
-
-type t__WIDL_wtypes_generated_name_00000003 = struct {
-	FhRemote     [0]uintptr
-	FhInproc64   [0]TINT64
-	FhInproc     TLONG
-	F__ccgo_pad3 [4]byte
-}
-
 type t__WIDL_wtypes_generated_name_00000005 = struct {
 	FhRemote     [0]uintptr
 	FhInproc64   [0]TINT64
@@ -350969,18 +350988,9 @@ type t__WIDL_wtypes_generated_name_00000005 = struct {
 	F__ccgo_pad3 [4]byte
 }
 
-type t__WIDL_wtypes_generated_name_00000006 = struct {
-	FhRemote     [0]uintptr
-	FhInproc64   [0]TINT64
-	FhInproc     TLONG
-	F__ccgo_pad3 [4]byte
-}
-
-type t__WIDL_wtypes_generated_name_00000007 = struct {
-	FhRemote     [0]uintptr
-	FhInproc64   [0]TINT64
-	FhInproc     TLONG
-	F__ccgo_pad3 [4]byte
+type t__WIDL_wtypes_generated_name_00000009 = struct {
+	FhRemote [0]TLONG
+	FhInproc TLONG
 }
 
 type t__WIDL_wtypes_generated_name_00000002 = struct {
@@ -350996,15 +351006,11 @@ type t__WIDL_wtypes_generated_name_00000004 = struct {
 	F__ccgo_pad3 [4]byte
 }
 
-type t__WIDL_wtypes_generated_name_00000001 = struct {
-	FpwszName    [0]uintptr
-	FdwValue     TDWORD
-	F__ccgo_pad2 [4]byte
-}
-
-type t__WIDL_wtypes_generated_name_00000009 = struct {
-	FhRemote [0]TLONG
-	FhInproc TLONG
+type t__WIDL_wtypes_generated_name_00000006 = struct {
+	FhRemote     [0]uintptr
+	FhInproc64   [0]TINT64
+	FhInproc     TLONG
+	F__ccgo_pad3 [4]byte
 }
 
 type t__WIDL_wtypes_generated_name_0000000A = struct {
@@ -351022,12 +351028,6 @@ type t__WIDL_wtypes_generated_name_0000000A = struct {
 	}
 	Fclsid       TCLSID
 	F__ccgo_pad7 [16]byte
-}
-
-type t__WIDL_objidl_generated_name_0000000C = struct {
-	FhPalette [0]TwireHPALETTE
-	FhGeneric [0]TwireHGLOBAL
-	FhBitmap  TwireHBITMAP
 }
 
 const m_LIBRARY_SIZE = 64
