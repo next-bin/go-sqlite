@@ -205,13 +205,12 @@ func main() {
 		)
 		switch {
 		case win:
-			out := util.MustShell(true, "which", "x86_64-w64-mingw32-gcc")
-			os.Setenv("CCGO_CPP", strings.TrimSpace(string(out)))
-			os.Setenv("TARGET_GOOS", goos)
-			os.Setenv("TARGET_GOARCH", goarch)
 			if err := ccgo.NewTask(
 				goos, goarch,
 				append(args,
+					"--cpp", strings.TrimSpace(string(util.MustShell(true, "which", "x86_64-w64-mingw32-gcc"))),
+					"--goarch", goarch,
+					"--goos", goos,
 					"-map", "ar=x86_64-w64-mingw32-ar,gcc=x86_64-w64-mingw32-gcc",
 					"-exec", "make", "-j", j, "binaries", "tcltests.exe",
 				),
