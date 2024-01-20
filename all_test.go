@@ -433,7 +433,7 @@ func TestMain(m *testing.M) {
 			"http11.test",
 			"socket.test",
 		)
-	case "windows/amd64":
+	case "windows/amd64", "windows/arm64":
 		skip = append(skip,
 			"Tcl_Main-5.10",
 			"clock-38.2",
