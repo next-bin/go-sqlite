@@ -7,6 +7,8 @@
 
 package main
 
+//	./configure --build=x86-64_gnu-linux --host=x86_64-w64-mingw32 --disable-shared
+
 import (
 	"bufio"
 	"fmt"
@@ -27,11 +29,12 @@ const (
 )
 
 var (
-	goos   = runtime.GOOS
-	goarch = runtime.GOARCH
+	goarch = env("TARGET_GOARCH", env("GOARCH", runtime.GOARCH))
+	goos   = env("TARGET_GOOS", env("GOOS", runtime.GOOS))
 	target = fmt.Sprintf("%s/%s", goos, goarch)
 	sed    = "sed"
 	j      = fmt.Sprint(runtime.GOMAXPROCS(-1))
+	win    = os.Getenv("GO_GENERATE_WIN") == "1"
 )
 
 func fail(rc int, msg string, args ...any) {
@@ -45,6 +48,23 @@ func main() {
 			fmt.Fprintln(os.Stderr, err)
 		}
 		return
+	}
+
+	if !win && target == "linux/amd64" {
+		defer func() {
+			util.MustShell(true, "make", "windows")
+			util.MustCopyFile(true, "internal/autogen/windows_amd64.mod", "go.mod", nil)
+			util.MustCopyFile(true, "internal/autogen/windows_arm64.mod", "go.mod", nil)
+		}()
+	}
+
+	if win {
+		if target != "linux/amd64" {
+			fail(1, "cross compiling for windows is supported only on linux/amd64 (+Wine)")
+		}
+
+		goos = "windows"
+		goarch = "amd64"
 	}
 
 	switch target {
@@ -170,6 +190,19 @@ func main() {
 			"sqlite3.c",
 			fmt.Sprintf("-I%s", ccgoInc),
 		)
+		switch {
+		case win:
+			config = append(config,
+				"--cpp", strings.TrimSpace(string(util.MustShell(true, "which", "x86_64-w64-mingw32-gcc"))),
+				"--goarch", goarch,
+				"--goos", goos,
+				"-DSQLITE_OS_WIN=1",
+				"-build-lines", "//go:build windows && (amd64 || arm64)\n// +build windows\n// +build amd64 arm64",
+				"-map", "gcc=x86_64-w64-mingw32-gcc",
+			)
+		default:
+			config = append(config, "-DSQLITE_OS_UNIX=1")
+		}
 		switch target {
 		case "freebsd/amd64", "freebsd/arm64", "openbsd/amd64":
 			config = append(config, "-ltcl8.6")
@@ -185,6 +218,9 @@ func main() {
 	})
 
 	fn := fmt.Sprintf("ccgo_%s_%s.go", goos, goarch)
+	if win {
+		fn = fmt.Sprintf("ccgo_%s.go", goos)
+	}
 	mustCopyFile(fn, filepath.Join(makeRoot, result), nil)
 
 	_, extractedArchivePath = filepath.Split(archive2Path)
@@ -215,7 +251,6 @@ func main() {
 	fmt.Fprintf(os.Stderr, "tempDir %s\n", tempDir)
 	fmt.Fprintf(os.Stderr, "libRoot %s\n", libRoot)
 	fmt.Fprintf(os.Stderr, "makeRoot %s\n", makeRoot)
-
 	util.MustShell(true, "unzip", archive2Path, "-d", tempDir)
 	mustCopyFile("LICENSE-SQLITE.md", filepath.Join(libRoot, "LICENSE.md"), nil)
 	util.MustInDir(true, makeRoot, func() (err error) {
@@ -262,8 +297,19 @@ func main() {
 			// "-DSQLITE_SOUNDEX",
 			// "-DSQLITE_TEMP_STORE=1",
 		)
+		switch {
+		case win:
+			config = append(config, "-DSQLITE_OS_WIN=1")
+		default:
+			config = append(config, "-DSQLITE_OS_UNIX=1")
+		}
 		//TODO threadsafe
-		util.MustShell(true, "sh", "-c", fmt.Sprintf("CFLAGS='%s' ./configure --disable-threadsafe --disable-shared --disable-load-extension", strings.Join(config, " ")))
+		switch {
+		case win:
+			util.MustShell(true, "sh", "-c", fmt.Sprintf("CFLAGS='%s' ./configure --build=x86-64_gnu-linux --host=x86_64-w64-mingw32 --disable-threadsafe --disable-shared --disable-load-extension", strings.Join(config, " ")))
+		default:
+			util.MustShell(true, "sh", "-c", fmt.Sprintf("CFLAGS='%s' ./configure --disable-threadsafe --disable-shared --disable-load-extension", strings.Join(config, " ")))
+		}
 		switch target {
 		case "darwin/amd64", "darwin/arm64":
 			util.MustShell(true, "sh", "-c", "echo '#define HAVE_MALLOC_USABLE_SIZE 1' >> config.h")
@@ -295,13 +341,42 @@ func main() {
 		case "freebsd/amd64", "freebsd/arm64", "openbsd/amd64":
 			config = append(config, "-ltcl8.6")
 		}
-		config = append(config, "-exec", "make", "-j", j, "testfixture")
-		return ccgo.NewTask(goos, goarch, config, os.Stdout, os.Stderr, nil).Exec()
+		switch {
+		case win:
+			ccgo.NewTask(
+				goos, goarch,
+				append(config,
+					"--cpp", strings.TrimSpace(string(util.MustShell(true, "which", "x86_64-w64-mingw32-gcc"))),
+					"--goarch", goarch,
+					"--goos", goos,
+					"-D__mingw_strtod=strtod",
+					"-build-lines", "//go:build windows && (amd64 || arm64)\n// +build windows\n// +build amd64 arm64",
+					"-map", "gcc=x86_64-w64-mingw32-gcc",
+					"-exec", "make", "-j", j,
+					"BEXE=",
+
+					"CFLAGS=-mlong-double-64 -DLONGDOUBLE_TYPE=double -DSQLITE_WITHOUT_ZONEMALLOC -DSQLITE_THREADSAFE=0 -DNDEBUG -DSQLITE_OS_WIN=1 -DSQLITE_OS_UNIX=0 -D_MSC_VER=1",
+					"TOP=../sqlite-src-3370200",
+					"TEXE=.exe",
+					"testfixture.exe",
+				),
+				os.Stdout, os.Stderr, nil,
+			).Exec()
+			return nil
+		default:
+			config = append(config, "-exec", "make", "-j", j, "testfixture")
+			return ccgo.NewTask(goos, goarch, config, os.Stdout, os.Stderr, nil).Exec()
+		}
 	})
 
 	os.RemoveAll(filepath.Join("internal", "test"))
 	util.MustMkdirs(true, "internal/testfixture", "internal/test")
-	mustCopyFile(filepath.Join("internal", "testfixture", fn), filepath.Join(makeRoot, "testfixture.go"), nil)
+	switch {
+	case win:
+		mustCopyFile(filepath.Join("internal", "testfixture", fn), filepath.Join(makeRoot, "testfixture.exe.go"), nil)
+	default:
+		mustCopyFile(filepath.Join("internal", "testfixture", fn), filepath.Join(makeRoot, "testfixture.go"), nil)
+	}
 	mustCopyDir(filepath.Join("internal", "test"), filepath.Join(makeRoot, "test"), nil, false)
 	util.Shell("sh", "-c", "./unconvert.sh")
 	util.MustShell(true, "go", "test", "-run", "@")
@@ -479,4 +554,12 @@ func copyFile(dst, src string, canOverwrite func(fn string, fi os.FileInfo) bool
 	}()
 
 	return io.Copy(w, r)
+}
+
+func env(name, deflt string) (r string) {
+	r = deflt
+	if s := os.Getenv(name); s != "" {
+		r = s
+	}
+	return r
 }

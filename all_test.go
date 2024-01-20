@@ -20,15 +20,16 @@ package libsqlite3 // import "modernc.org/libsqlite3"
 //	!Failures on these tests: pcache-1.2 pcache-1.3 pcache-1.4 pcache-1.5 pcache-1.6.1 pcache-1.6.2 pcache-1.7 pcache-1.8 pcache-1.9 pcache-1.10 pcache-1.11 pcache-1.12 pcache-1.13 pcache-1.14 pcache-1.15 sort4-init001 sort4-init002 zeroblob-12.4
 
 import (
+	"embed"
 	"flag"
 	"fmt"
+	"io/fs"
 	"os"
 	"path/filepath"
 	"runtime"
 	"strings"
 	"testing"
 
-	cp "github.com/otiai10/copy"
 	util "modernc.org/ccgo/v3/lib"
 	_ "modernc.org/ccgo/v4/lib"
 	_ "modernc.org/libc"
@@ -96,18 +97,28 @@ func TestTclTest(t *testing.T) {
 	}
 
 	tmpDir := t.TempDir()
-	opts := cp.Options{
-		FS:                library.FS,
-		PermissionControl: cp.AddPermission(0222),
-	}
+	fmt.Printf("tmpDir=%v\n", tmpDir)
 	tclLibrary := filepath.Join(tmpDir, "tcllib")
-	if err := cp.Copy("assets", tclLibrary, opts); err != nil {
+	if err := os.MkdirAll(tclLibrary, 0770); err != nil {
 		t.Fatal(err)
 	}
+
+	if err := cp(library.FS, "assets", tclLibrary); err != nil {
+		t.Fatal(err)
+	}
+
 	os.Setenv("TCL_LIBRARY", tclLibrary)
 	os.Setenv("PATH", fmt.Sprintf("%s%c%s", tmpDir, os.PathListSeparator, os.Getenv("PATH")))
 	bin := filepath.Join(tmpDir, "testfixture")
-	if out, err := util.Shell("go", "build", "-o", bin, "-tags="+*oXTags, filepath.Join("internal", "testfixture", fmt.Sprintf("ccgo_%s_%s.go", runtime.GOOS, runtime.GOARCH))); err != nil {
+	var src string
+	switch {
+	case goos == "windows":
+		bin += ".exe"
+		src = filepath.Join("internal", "testfixture", "ccgo_windows.go")
+	default:
+		src = filepath.Join("internal", "testfixture", fmt.Sprintf("ccgo_%s_%s.go", runtime.GOOS, runtime.GOARCH))
+	}
+	if out, err := util.Shell("go", "build", "-o", bin, "-tags="+*oXTags, src); err != nil {
 		t.Fatalf("%s\nFAIL: %v", out, err)
 	}
 
@@ -158,7 +169,8 @@ func TestTclTest(t *testing.T) {
 	}
 	var out []byte
 	util.InDir(tmpDir, func() error {
-		if out, err = util.Shell("testfixture", args...); err != nil {
+		bin := filepath.Base(bin)
+		if out, err = util.Shell(bin, args...); err != nil {
 			switch err.Error() {
 			case "exit status 1":
 				t.Logf("fail: %v", err)
@@ -200,4 +212,29 @@ func TestTclTest(t *testing.T) {
 			t.Errorf("%s FAIL", v)
 		}
 	}
+}
+
+func cp(fsys embed.FS, rootDir, destDir string) (err error) {
+	return fs.WalkDir(fsys, rootDir, func(path string, d fs.DirEntry, err error) error {
+		if err != nil {
+			return err
+		}
+
+		if d.IsDir() {
+			if path = path[len(rootDir):]; path != "" {
+				path = filepath.Join(destDir, path)
+				err = os.MkdirAll(path, 0770)
+			}
+			return err
+		}
+
+		b, err := fs.ReadFile(fsys, path)
+		if err != nil {
+			return err
+		}
+
+		path = filepath.Join(destDir, path[len(rootDir)+1:])
+		err = os.WriteFile(path, b, 0660)
+		return err
+	})
 }
