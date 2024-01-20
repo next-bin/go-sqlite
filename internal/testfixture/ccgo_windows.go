@@ -1,4 +1,4 @@
-// Code generated for windows/amd64 by 'x86_64-w64-mingw32-gcc -DLONGDOUBLE_TYPE=double -DSQLITE_WITHOUT_ZONEMALLOC -DSQLITE_THREADSAFE=0 -Dpread64=pread -Dpwrite64=pwrite -DNDEBUG -DSQLITE_OS_WIN=1 -absolute-paths -keep-object-files -positions --libc modernc.org/libc --prefix-enumerator=_ --prefix-external=x_ --prefix-field=F --prefix-macro=m_ --prefix-static-internal=_ --prefix-static-none=_ --prefix-tagged-enum=_ --prefix-tagged-struct=T --prefix-tagged-union=T --prefix-typename=T --prefix-undefined=_ -extended-errors -ignore-unsupported-alignment -I/tmp/libsqlite3/sqlite-amalgamation-3370200/ccgo --cpp /usr/bin/x86_64-w64-mingw32-gcc --goarch amd64 --goos windows -D__mingw_strtod=strtod -build-lines \/\/go:build windows && (amd64 || arm64)\n\/\/ \x2bbuild windows\n\/\/ \x2bbuild amd64 arm64 -map gcc=x86_64-w64-mingw32-gcc -mlong-double-64 -DLONGDOUBLE_TYPE=double -DSQLITE_WITHOUT_ZONEMALLOC -DSQLITE_THREADSAFE=0 -DNDEBUG -DSQLITE_OS_WIN=1 -DSQLITE_OS_UNIX=0 -D_MSC_VER=1 -I. -I../sqlite-src-3370200/src -I../sqlite-src-3370200/ext/rtree -I../sqlite-src-3370200/ext/icu -I../sqlite-src-3370200/ext/fts3 -I../sqlite-src-3370200/ext/async -I../sqlite-src-3370200/ext/session -I../sqlite-src-3370200/ext/userauth -D_HAVE_SQLITE_CONFIG_H -DBUILD_sqlite -DNDEBUG -I/usr/include/tcl8.6 -DSQLITE_THREADSAFE=0 -DSQLITE_OMIT_LOAD_EXTENSION=1 -DSQLITE_ENABLE_MATH_FUNCTIONS -DSQLITE_HAVE_ZLIB=1 -DSQLITE_NO_SYNC=1 -DSQLITE_TEMP_STORE=1 -DSQLITE_TEST=1 -DSQLITE_CRASH_TEST=1 -DTCLSH_INIT_PROC=sqlite3TestInit -DSQLITE_SERVER=1 -DSQLITE_PRIVATE= -DSQLITE_CORE -DBUILD_sqlite -DSQLITE_SERIES_CONSTRAINT_VERIFY=1 -DSQLITE_DEFAULT_PAGE_SIZE=1024 -DSQLITE_ENABLE_STMTVTAB -DSQLITE_ENABLE_DBPAGE_VTAB -DSQLITE_ENABLE_BYTECODE_VTAB -DSQLITE_CKSUMVFS_STATIC -o testfixture.exe.go ../sqlite-src-3370200/src/test1.c ../sqlite-src-3370200/src/test2.c ../sqlite-src-3370200/src/test3.c ../sqlite-src-3370200/src/test4.c ../sqlite-src-3370200/src/test5.c ../sqlite-src-3370200/src/test6.c ../sqlite-src-3370200/src/test7.c ../sqlite-src-3370200/src/test8.c ../sqlite-src-3370200/src/test9.c ../sqlite-src-3370200/src/test_autoext.c ../sqlite-src-3370200/src/test_async.c ../sqlite-src-3370200/src/test_backup.c ../sqlite-src-3370200/src/test_bestindex.c ../sqlite-src-3370200/src/test_blob.c ../sqlite-src-3370200/src/test_btree.c ../sqlite-src-3370200/src/test_config.c ../sqlite-src-3370200/src/test_delete.c ../sqlite-src-3370200/src/test_demovfs.c ../sqlite-src-3370200/src/test_devsym.c ../sqlite-src-3370200/src/test_fs.c ../sqlite-src-3370200/src/test_func.c ../sqlite-src-3370200/src/test_hexio.c ../sqlite-src-3370200/src/test_init.c ../sqlite-src-3370200/src/test_intarray.c ../sqlite-src-3370200/src/test_journal.c ../sqlite-src-3370200/src/test_malloc.c ../sqlite-src-3370200/src/test_md5.c ../sqlite-src-3370200/src/test_multiplex.c ../sqlite-src-3370200/src/test_mutex.c ../sqlite-src-3370200/src/test_onefile.c ../sqlite-src-3370200/src/test_osinst.c ../sqlite-src-3370200/src/test_pcache.c ../sqlite-src-3370200/src/test_quota.c ../sqlite-src-3370200/src/test_rtree.c ../sqlite-src-3370200/src/test_schema.c ../sqlite-src-3370200/src/test_server.c ../sqlite-src-3370200/src/test_superlock.c ../sqlite-src-3370200/src/test_syscall.c ../sqlite-src-3370200/src/test_tclsh.c ../sqlite-src-3370200/src/test_tclvar.c ../sqlite-src-3370200/src/test_thread.c ../sqlite-src-3370200/src/test_vdbecov.c ../sqlite-src-3370200/src/test_vfs.c ../sqlite-src-3370200/src/test_windirent.c ../sqlite-src-3370200/src/test_window.c ../sqlite-src-3370200/src/test_wsd.c ../sqlite-src-3370200/ext/fts3/fts3_term.c ../sqlite-src-3370200/ext/fts3/fts3_test.c ../sqlite-src-3370200/ext/session/test_session.c ../sqlite-src-3370200/ext/rbu/test_rbu.c ../sqlite-src-3370200/ext/expert/sqlite3expert.c ../sqlite-src-3370200/ext/expert/test_expert.c ../sqlite-src-3370200/ext/misc/amatch.c ../sqlite-src-3370200/ext/misc/appendvfs.c ../sqlite-src-3370200/ext/misc/carray.c ../sqlite-src-3370200/ext/misc/cksumvfs.c ../sqlite-src-3370200/ext/misc/closure.c ../sqlite-src-3370200/ext/misc/csv.c ../sqlite-src-3370200/ext/misc/decimal.c ../sqlite-src-3370200/ext/misc/eval.c ../sqlite-src-3370200/ext/misc/explain.c ../sqlite-src-3370200/ext/misc/fileio.c ../sqlite-src-3370200/ext/misc/fuzzer.c ../sqlite-src-3370200/ext/fts5/fts5_tcl.c ../sqlite-src-3370200/ext/fts5/fts5_test_mi.c ../sqlite-src-3370200/ext/fts5/fts5_test_tok.c ../sqlite-src-3370200/ext/misc/ieee754.c ../sqlite-src-3370200/ext/misc/mmapwarm.c ../sqlite-src-3370200/ext/misc/nextchar.c ../sqlite-src-3370200/ext/misc/normalize.c ../sqlite-src-3370200/ext/misc/percentile.c ../sqlite-src-3370200/ext/misc/prefixes.c ../sqlite-src-3370200/ext/misc/regexp.c ../sqlite-src-3370200/ext/misc/remember.c ../sqlite-src-3370200/ext/misc/series.c ../sqlite-src-3370200/ext/misc/spellfix.c ../sqlite-src-3370200/ext/misc/totype.c ../sqlite-src-3370200/ext/misc/unionvtab.c ../sqlite-src-3370200/ext/misc/wholenumber.c ../sqlite-src-3370200/ext/misc/zipfile.c ../sqlite-src-3370200/ext/userauth/userauth.c ../sqlite-src-3370200/ext/rtree/test_rtreedoc.c ../sqlite-src-3370200/src/tclsqlite.c sqlite3.c -L/usr/lib/x86_64-linux-gnu -ltcl8.6 -lz', DO NOT EDIT.
+// Code generated for windows/amd64 by 'x86_64-w64-mingw32-gcc -DLONGDOUBLE_TYPE=double -DSQLITE_WITHOUT_ZONEMALLOC -DSQLITE_THREADSAFE=0 -Dpread64=pread -Dpwrite64=pwrite -DNDEBUG -DSQLITE_OS_WIN=1 -absolute-paths -keep-object-files -positions --libc modernc.org/libc --prefix-enumerator=_ --prefix-external=x_ --prefix-field=F --prefix-macro=m_ --prefix-static-internal=_ --prefix-static-none=_ --prefix-tagged-enum=_ --prefix-tagged-struct=T --prefix-tagged-union=T --prefix-typename=T --prefix-undefined=_ -extended-errors -ignore-unsupported-alignment -I/tmp/libsqlite3/sqlite-amalgamation-3370200/ccgo --cpp /usr/bin/x86_64-w64-mingw32-gcc --goarch amd64 --goos windows -D__mingw_strtod=strtod -build-lines \/\/go:build windows && (amd64 || arm64)\n\/\/ \x2bbuild windows\n\/\/ \x2bbuild amd64 arm64 -map gcc=x86_64-w64-mingw32-gcc -mlong-double-64 -DLONGDOUBLE_TYPE=double -DSQLITE_WITHOUT_ZONEMALLOC -DSQLITE_THREADSAFE=0 -DNDEBUG -DSQLITE_OS_WIN=1 -DSQLITE_OS_UNIX=0 -D_MSC_VER=1 -I. -I../sqlite-src-3370200/src -I../sqlite-src-3370200/ext/rtree -I../sqlite-src-3370200/ext/icu -I../sqlite-src-3370200/ext/fts3 -I../sqlite-src-3370200/ext/async -I../sqlite-src-3370200/ext/session -I../sqlite-src-3370200/ext/userauth -D_HAVE_SQLITE_CONFIG_H -DBUILD_sqlite -DNDEBUG -I/usr/include/tcl8.6 -DSQLITE_THREADSAFE=0 -DSQLITE_OMIT_LOAD_EXTENSION=1 -DSQLITE_ENABLE_MATH_FUNCTIONS -DSQLITE_NO_SYNC=1 -DSQLITE_TEMP_STORE=1 -DSQLITE_TEST=1 -DSQLITE_CRASH_TEST=1 -DTCLSH_INIT_PROC=sqlite3TestInit -DSQLITE_SERVER=1 -DSQLITE_PRIVATE= -DSQLITE_CORE -DBUILD_sqlite -DSQLITE_SERIES_CONSTRAINT_VERIFY=1 -DSQLITE_DEFAULT_PAGE_SIZE=1024 -DSQLITE_ENABLE_STMTVTAB -DSQLITE_ENABLE_DBPAGE_VTAB -DSQLITE_ENABLE_BYTECODE_VTAB -DSQLITE_CKSUMVFS_STATIC -o testfixture.exe.go ../sqlite-src-3370200/src/test1.c ../sqlite-src-3370200/src/test2.c ../sqlite-src-3370200/src/test3.c ../sqlite-src-3370200/src/test4.c ../sqlite-src-3370200/src/test5.c ../sqlite-src-3370200/src/test6.c ../sqlite-src-3370200/src/test7.c ../sqlite-src-3370200/src/test8.c ../sqlite-src-3370200/src/test9.c ../sqlite-src-3370200/src/test_autoext.c ../sqlite-src-3370200/src/test_async.c ../sqlite-src-3370200/src/test_backup.c ../sqlite-src-3370200/src/test_bestindex.c ../sqlite-src-3370200/src/test_blob.c ../sqlite-src-3370200/src/test_btree.c ../sqlite-src-3370200/src/test_config.c ../sqlite-src-3370200/src/test_delete.c ../sqlite-src-3370200/src/test_demovfs.c ../sqlite-src-3370200/src/test_devsym.c ../sqlite-src-3370200/src/test_fs.c ../sqlite-src-3370200/src/test_func.c ../sqlite-src-3370200/src/test_hexio.c ../sqlite-src-3370200/src/test_init.c ../sqlite-src-3370200/src/test_intarray.c ../sqlite-src-3370200/src/test_journal.c ../sqlite-src-3370200/src/test_malloc.c ../sqlite-src-3370200/src/test_md5.c ../sqlite-src-3370200/src/test_multiplex.c ../sqlite-src-3370200/src/test_mutex.c ../sqlite-src-3370200/src/test_onefile.c ../sqlite-src-3370200/src/test_osinst.c ../sqlite-src-3370200/src/test_pcache.c ../sqlite-src-3370200/src/test_quota.c ../sqlite-src-3370200/src/test_rtree.c ../sqlite-src-3370200/src/test_schema.c ../sqlite-src-3370200/src/test_server.c ../sqlite-src-3370200/src/test_superlock.c ../sqlite-src-3370200/src/test_syscall.c ../sqlite-src-3370200/src/test_tclsh.c ../sqlite-src-3370200/src/test_tclvar.c ../sqlite-src-3370200/src/test_thread.c ../sqlite-src-3370200/src/test_vdbecov.c ../sqlite-src-3370200/src/test_vfs.c ../sqlite-src-3370200/src/test_windirent.c ../sqlite-src-3370200/src/test_window.c ../sqlite-src-3370200/src/test_wsd.c ../sqlite-src-3370200/ext/fts3/fts3_term.c ../sqlite-src-3370200/ext/fts3/fts3_test.c ../sqlite-src-3370200/ext/session/test_session.c ../sqlite-src-3370200/ext/rbu/test_rbu.c ../sqlite-src-3370200/ext/expert/sqlite3expert.c ../sqlite-src-3370200/ext/expert/test_expert.c ../sqlite-src-3370200/ext/misc/amatch.c ../sqlite-src-3370200/ext/misc/appendvfs.c ../sqlite-src-3370200/ext/misc/carray.c ../sqlite-src-3370200/ext/misc/cksumvfs.c ../sqlite-src-3370200/ext/misc/closure.c ../sqlite-src-3370200/ext/misc/csv.c ../sqlite-src-3370200/ext/misc/decimal.c ../sqlite-src-3370200/ext/misc/eval.c ../sqlite-src-3370200/ext/misc/explain.c ../sqlite-src-3370200/ext/misc/fileio.c ../sqlite-src-3370200/ext/misc/fuzzer.c ../sqlite-src-3370200/ext/fts5/fts5_tcl.c ../sqlite-src-3370200/ext/fts5/fts5_test_mi.c ../sqlite-src-3370200/ext/fts5/fts5_test_tok.c ../sqlite-src-3370200/ext/misc/ieee754.c ../sqlite-src-3370200/ext/misc/mmapwarm.c ../sqlite-src-3370200/ext/misc/nextchar.c ../sqlite-src-3370200/ext/misc/normalize.c ../sqlite-src-3370200/ext/misc/percentile.c ../sqlite-src-3370200/ext/misc/prefixes.c ../sqlite-src-3370200/ext/misc/regexp.c ../sqlite-src-3370200/ext/misc/remember.c ../sqlite-src-3370200/ext/misc/series.c ../sqlite-src-3370200/ext/misc/spellfix.c ../sqlite-src-3370200/ext/misc/totype.c ../sqlite-src-3370200/ext/misc/unionvtab.c ../sqlite-src-3370200/ext/misc/wholenumber.c ../sqlite-src-3370200/ext/misc/zipfile.c ../sqlite-src-3370200/ext/userauth/userauth.c ../sqlite-src-3370200/ext/rtree/test_rtreedoc.c ../sqlite-src-3370200/src/tclsqlite.c sqlite3.c -L/usr/lib/x86_64-linux-gnu -ltcl8.6', DO NOT EDIT.
 
 //go:build windows && (amd64 || arm64)
 // +build windows
@@ -727,10 +727,10 @@ const m__MM_MASK_MASK = 8064
 // /usr/lib/gcc/x86_64-w64-mingw32/12-win32/include/xmmintrin.h:98:9:
 const m__MM_ROUND_MASK = 24576
 
-// /tmp/libsqlite3/sqlite-src-3370200/<predefined>:284:9:
+// /tmp/libsqlite3/sqlite-src-3370200/<predefined>:283:9:
 const m___INT_MAX__ = 2147483647
 
-// /tmp/libsqlite3/sqlite-src-3370200/<predefined>:145:9:
+// /tmp/libsqlite3/sqlite-src-3370200/<predefined>:144:9:
 const m___LONG_LONG_MAX__ = 9223372036854775807
 
 //
@@ -89266,7 +89266,7 @@ func _tclLoadStaticExtensionCmd(tls *libc.TLS, clientData uintptr, interp uintpt
 	// /tmp/libsqlite3/sqlite-src-3370200/src/test1.c:7587:3:
 	if objc < int32(3) {
 		// /tmp/libsqlite3/sqlite-src-3370200/src/test1.c:7588:5:
-		libtcl8_6.XTcl_WrongNumArgs(tls, interp, int32(1), objv, __ccgo_ts+4311)
+		libtcl8_6.XTcl_WrongNumArgs(tls, interp, int32(1), objv, __ccgo_ts+4303)
 		// /tmp/libsqlite3/sqlite-src-3370200/src/test1.c:7589:5:
 		return int32(m_TCL_ERROR)
 	}
@@ -89286,7 +89286,7 @@ func _tclLoadStaticExtensionCmd(tls *libc.TLS, clientData uintptr, interp uintpt
 		// /tmp/libsqlite3/sqlite-src-3370200/src/test1.c:7594:5:
 		i = 0
 		for {
-			if !(i < int32(libc.Uint64FromInt64(352)/libc.Uint64FromInt64(16))) {
+			if !(i < int32(libc.Uint64FromInt64(336)/libc.Uint64FromInt64(16))) {
 				break
 			}
 			// /tmp/libsqlite3/sqlite-src-3370200/src/test1.c:7595:7:
@@ -89299,9 +89299,9 @@ func _tclLoadStaticExtensionCmd(tls *libc.TLS, clientData uintptr, interp uintpt
 			i++
 		}
 		// /tmp/libsqlite3/sqlite-src-3370200/src/test1.c:7597:5:
-		if i >= int32(libc.Uint64FromInt64(352)/libc.Uint64FromInt64(16)) {
+		if i >= int32(libc.Uint64FromInt64(336)/libc.Uint64FromInt64(16)) {
 			// /tmp/libsqlite3/sqlite-src-3370200/src/test1.c:7598:7:
-			libtcl8_6.XTcl_AppendResult(tls, interp, libc.VaList(bp+24, __ccgo_ts+4323, zName, libc.UintptrFromInt32(0)))
+			libtcl8_6.XTcl_AppendResult(tls, interp, libc.VaList(bp+24, __ccgo_ts+4315, zName, libc.UintptrFromInt32(0)))
 			// /tmp/libsqlite3/sqlite-src-3370200/src/test1.c:7599:7:
 			return int32(m_TCL_ERROR)
 		}
@@ -89316,7 +89316,7 @@ func _tclLoadStaticExtensionCmd(tls *libc.TLS, clientData uintptr, interp uintpt
 		// /tmp/libsqlite3/sqlite-src-3370200/src/test1.c:7606:5:
 		if rc != m_SQLITE_OK && rc != libc.Int32FromInt32(m_SQLITE_OK)|libc.Int32FromInt32(1)<<libc.Int32FromInt32(8) || *(*uintptr)(unsafe.Pointer(bp + 8)) != 0 {
 			// /tmp/libsqlite3/sqlite-src-3370200/src/test1.c:7607:7:
-			libtcl8_6.XTcl_AppendResult(tls, interp, libc.VaList(bp+24, __ccgo_ts+4343, zName, __ccgo_ts+4362, *(*uintptr)(unsafe.Pointer(bp + 8)), libc.UintptrFromInt32(0)))
+			libtcl8_6.XTcl_AppendResult(tls, interp, libc.VaList(bp+24, __ccgo_ts+4335, zName, __ccgo_ts+4354, *(*uintptr)(unsafe.Pointer(bp + 8)), libc.UintptrFromInt32(0)))
 			// /tmp/libsqlite3/sqlite-src-3370200/src/test1.c:7609:7:
 			x_sqlite3_free(tls, *(*uintptr)(unsafe.Pointer(bp + 8)))
 			// /tmp/libsqlite3/sqlite-src-3370200/src/test1.c:7610:7:
@@ -89331,7 +89331,7 @@ func _tclLoadStaticExtensionCmd(tls *libc.TLS, clientData uintptr, interp uintpt
 }
 
 // /tmp/libsqlite3/sqlite-src-3370200/src/test1.c:7555:5:
-var _aExtension = [22]struct {
+var _aExtension = [21]struct {
 	FzExtName uintptr
 	FpInit    uintptr
 }{
@@ -89398,9 +89398,6 @@ var _aExtension = [22]struct {
 	20: {
 		FzExtName: __ccgo_ts + 4291,
 	},
-	21: {
-		FzExtName: __ccgo_ts + 4303,
-	},
 }
 
 func init() {
@@ -89426,7 +89423,6 @@ func init() {
 	*(*uintptr)(unsafe.Add(p, 296)) = __ccgo_fp(x_sqlite3_totype_init)
 	*(*uintptr)(unsafe.Add(p, 312)) = __ccgo_fp(x_sqlite3_unionvtab_init)
 	*(*uintptr)(unsafe.Add(p, 328)) = __ccgo_fp(x_sqlite3_wholenumber_init)
-	*(*uintptr)(unsafe.Add(p, 344)) = __ccgo_fp(x_sqlite3_zipfile_init)
 }
 
 // C documentation
@@ -89445,7 +89441,7 @@ func _sorter_test_fakeheap(tls *libc.TLS, clientData uintptr, interp uintptr, ob
 	// /tmp/libsqlite3/sqlite-src-3370200/src/test1.c:7627:3:
 	if objc != int32(2) {
 		// /tmp/libsqlite3/sqlite-src-3370200/src/test1.c:7628:5:
-		libtcl8_6.XTcl_WrongNumArgs(tls, interp, int32(1), objv, __ccgo_ts+4372)
+		libtcl8_6.XTcl_WrongNumArgs(tls, interp, int32(1), objv, __ccgo_ts+4364)
 		// /tmp/libsqlite3/sqlite-src-3370200/src/test1.c:7629:5:
 		return int32(m_TCL_ERROR)
 	}
@@ -89506,7 +89502,7 @@ func _sorter_test_sort4_helper(tls *libc.TLS, clientData uintptr, interp uintptr
 	// /tmp/libsqlite3/sqlite-src-3370200/src/test1.c:7677:3:
 	if objc != int32(5) {
 		// /tmp/libsqlite3/sqlite-src-3370200/src/test1.c:7678:5:
-		libtcl8_6.XTcl_WrongNumArgs(tls, interp, int32(1), objv, __ccgo_ts+4377)
+		libtcl8_6.XTcl_WrongNumArgs(tls, interp, int32(1), objv, __ccgo_ts+4369)
 		// /tmp/libsqlite3/sqlite-src-3370200/src/test1.c:7679:5:
 		return int32(m_TCL_ERROR)
 	}
@@ -89544,7 +89540,7 @@ func _sorter_test_sort4_helper(tls *libc.TLS, clientData uintptr, interp uintptr
 		// /tmp/libsqlite3/sqlite-src-3370200/src/test1.c:7693:5:
 		if a != x_sqlite3_column_int(tls, *(*uintptr)(unsafe.Pointer(bp + 16)), iB) {
 			// /tmp/libsqlite3/sqlite-src-3370200/src/test1.c:7694:7:
-			libtcl8_6.XTcl_AppendResult(tls, interp, libc.VaList(bp+32, __ccgo_ts+4396, 0))
+			libtcl8_6.XTcl_AppendResult(tls, interp, libc.VaList(bp+32, __ccgo_ts+4388, 0))
 			// /tmp/libsqlite3/sqlite-src-3370200/src/test1.c:7695:7:
 			return int32(m_TCL_ERROR)
 		}
@@ -89592,7 +89588,7 @@ func _sorter_test_sort4_helper(tls *libc.TLS, clientData uintptr, interp uintptr
 	// /tmp/libsqlite3/sqlite-src-3370200/src/test1.c:7712:3:
 	if iCksum1 != iCksum2 {
 		// /tmp/libsqlite3/sqlite-src-3370200/src/test1.c:7713:5:
-		libtcl8_6.XTcl_AppendResult(tls, interp, libc.VaList(bp+32, __ccgo_ts+4415, 0))
+		libtcl8_6.XTcl_AppendResult(tls, interp, libc.VaList(bp+32, __ccgo_ts+4407, 0))
 		// /tmp/libsqlite3/sqlite-src-3370200/src/test1.c:7714:5:
 		return int32(m_TCL_ERROR)
 	}
@@ -89601,7 +89597,7 @@ func _sorter_test_sort4_helper(tls *libc.TLS, clientData uintptr, interp uintptr
 	// /tmp/libsqlite3/sqlite-src-3370200/src/test1.c:7718:2:
 sql_error:
 	// /tmp/libsqlite3/sqlite-src-3370200/src/test1.c:7719:3:
-	libtcl8_6.XTcl_AppendResult(tls, interp, libc.VaList(bp+32, __ccgo_ts+4433, x_sqlite3_errmsg(tls, *(*uintptr)(unsafe.Pointer(bp + 8))), 0))
+	libtcl8_6.XTcl_AppendResult(tls, interp, libc.VaList(bp+32, __ccgo_ts+4425, x_sqlite3_errmsg(tls, *(*uintptr)(unsafe.Pointer(bp + 8))), 0))
 	// /tmp/libsqlite3/sqlite-src-3370200/src/test1.c:7720:3:
 	return int32(m_TCL_ERROR)
 }
@@ -89637,7 +89633,7 @@ func _test_bad_behavior(tls *libc.TLS, clientData TClientData, interp uintptr, o
 	// /tmp/libsqlite3/sqlite-src-3370200/src/test1.c:7875:3:
 	if objc != int32(2) {
 		// /tmp/libsqlite3/sqlite-src-3370200/src/test1.c:7876:5:
-		libtcl8_6.XTcl_WrongNumArgs(tls, interp, int32(1), objv, __ccgo_ts+4445)
+		libtcl8_6.XTcl_WrongNumArgs(tls, interp, int32(1), objv, __ccgo_ts+4437)
 		// /tmp/libsqlite3/sqlite-src-3370200/src/test1.c:7877:5:
 		return int32(m_TCL_ERROR)
 	}
@@ -89699,7 +89695,7 @@ func _test_bad_behavior(tls *libc.TLS, clientData TClientData, interp uintptr, o
 		fallthrough
 	case int32(4):
 		// /tmp/libsqlite3/sqlite-src-3370200/src/test1.c:7901:7:
-		libtcl8_6.XTcl_Panic(tls, __ccgo_ts+4450, 0)
+		libtcl8_6.XTcl_Panic(tls, __ccgo_ts+4442, 0)
 		// /tmp/libsqlite3/sqlite-src-3370200/src/test1.c:7902:7:
 		break
 	}
@@ -89768,7 +89764,7 @@ func _test_sqlite3_db_config(tls *libc.TLS, clientData uintptr, interp uintptr, 
 	// /tmp/libsqlite3/sqlite-src-3370200/src/test1.c:7977:3:
 	if objc != int32(4) && objc != int32(3) {
 		// /tmp/libsqlite3/sqlite-src-3370200/src/test1.c:7978:5:
-		libtcl8_6.XTcl_WrongNumArgs(tls, interp, int32(1), objv, __ccgo_ts+4633)
+		libtcl8_6.XTcl_WrongNumArgs(tls, interp, int32(1), objv, __ccgo_ts+4625)
 		// /tmp/libsqlite3/sqlite-src-3370200/src/test1.c:7979:5:
 		return int32(m_TCL_ERROR)
 	}
@@ -89780,17 +89776,17 @@ func _test_sqlite3_db_config(tls *libc.TLS, clientData uintptr, interp uintptr, 
 	// /tmp/libsqlite3/sqlite-src-3370200/src/test1.c:7982:3:
 	zSetting = libtcl8_6.XTcl_GetString(tls, *(*uintptr)(unsafe.Pointer(objv + 2*8)))
 	// /tmp/libsqlite3/sqlite-src-3370200/src/test1.c:7983:3:
-	if x_sqlite3_strglob(tls, __ccgo_ts+4652, zSetting) == 0 {
+	if x_sqlite3_strglob(tls, __ccgo_ts+4644, zSetting) == 0 {
 		// /tmp/libsqlite3/sqlite-src-3370200/src/test1.c:7983:50:
 		zSetting += uintptr(7)
 	}
 	// /tmp/libsqlite3/sqlite-src-3370200/src/test1.c:7984:3:
-	if x_sqlite3_strglob(tls, __ccgo_ts+4661, zSetting) == 0 {
+	if x_sqlite3_strglob(tls, __ccgo_ts+4653, zSetting) == 0 {
 		// /tmp/libsqlite3/sqlite-src-3370200/src/test1.c:7984:52:
 		zSetting += uintptr(9)
 	}
 	// /tmp/libsqlite3/sqlite-src-3370200/src/test1.c:7985:3:
-	if x_sqlite3_strglob(tls, __ccgo_ts+4672, zSetting) == 0 {
+	if x_sqlite3_strglob(tls, __ccgo_ts+4664, zSetting) == 0 {
 		// /tmp/libsqlite3/sqlite-src-3370200/src/test1.c:7985:50:
 		zSetting += uintptr(7)
 	}
@@ -89812,7 +89808,7 @@ func _test_sqlite3_db_config(tls *libc.TLS, clientData uintptr, interp uintptr, 
 	// /tmp/libsqlite3/sqlite-src-3370200/src/test1.c:7989:3:
 	if i >= int32(libc.Uint64FromInt64(224)/libc.Uint64FromInt64(16)) {
 		// /tmp/libsqlite3/sqlite-src-3370200/src/test1.c:7990:5:
-		libtcl8_6.XTcl_SetObjResult(tls, interp, libtcl8_6.XTcl_NewStringObj(tls, __ccgo_ts+4681, -int32(1)))
+		libtcl8_6.XTcl_SetObjResult(tls, interp, libtcl8_6.XTcl_NewStringObj(tls, __ccgo_ts+4673, -int32(1)))
 		// /tmp/libsqlite3/sqlite-src-3370200/src/test1.c:7992:5:
 		return int32(m_TCL_ERROR)
 	}
@@ -89841,59 +89837,59 @@ var _aSetting = [14]struct {
 	FeVal  int32
 }{
 	0: {
-		FzName: __ccgo_ts + 4467,
+		FzName: __ccgo_ts + 4459,
 		FeVal:  int32(m_SQLITE_DBCONFIG_ENABLE_FKEY),
 	},
 	1: {
-		FzName: __ccgo_ts + 4472,
+		FzName: __ccgo_ts + 4464,
 		FeVal:  int32(m_SQLITE_DBCONFIG_ENABLE_TRIGGER),
 	},
 	2: {
-		FzName: __ccgo_ts + 4480,
+		FzName: __ccgo_ts + 4472,
 		FeVal:  int32(m_SQLITE_DBCONFIG_ENABLE_FTS3_TOKENIZER),
 	},
 	3: {
-		FzName: __ccgo_ts + 4495,
+		FzName: __ccgo_ts + 4487,
 		FeVal:  int32(m_SQLITE_DBCONFIG_ENABLE_LOAD_EXTENSION),
 	},
 	4: {
-		FzName: __ccgo_ts + 4510,
+		FzName: __ccgo_ts + 4502,
 		FeVal:  int32(m_SQLITE_DBCONFIG_NO_CKPT_ON_CLOSE),
 	},
 	5: {
-		FzName: __ccgo_ts + 4527,
+		FzName: __ccgo_ts + 4519,
 		FeVal:  int32(m_SQLITE_DBCONFIG_ENABLE_QPSG),
 	},
 	6: {
-		FzName: __ccgo_ts + 4532,
+		FzName: __ccgo_ts + 4524,
 		FeVal:  int32(m_SQLITE_DBCONFIG_TRIGGER_EQP),
 	},
 	7: {
-		FzName: __ccgo_ts + 4544,
+		FzName: __ccgo_ts + 4536,
 		FeVal:  int32(m_SQLITE_DBCONFIG_RESET_DATABASE),
 	},
 	8: {
-		FzName: __ccgo_ts + 4553,
+		FzName: __ccgo_ts + 4545,
 		FeVal:  int32(m_SQLITE_DBCONFIG_DEFENSIVE),
 	},
 	9: {
-		FzName: __ccgo_ts + 4563,
+		FzName: __ccgo_ts + 4555,
 		FeVal:  int32(m_SQLITE_DBCONFIG_WRITABLE_SCHEMA),
 	},
 	10: {
-		FzName: __ccgo_ts + 4579,
+		FzName: __ccgo_ts + 4571,
 		FeVal:  int32(m_SQLITE_DBCONFIG_LEGACY_ALTER_TABLE),
 	},
 	11: {
-		FzName: __ccgo_ts + 4598,
+		FzName: __ccgo_ts + 4590,
 		FeVal:  int32(m_SQLITE_DBCONFIG_DQS_DML),
 	},
 	12: {
-		FzName: __ccgo_ts + 4606,
+		FzName: __ccgo_ts + 4598,
 		FeVal:  int32(m_SQLITE_DBCONFIG_DQS_DDL),
 	},
 	13: {
-		FzName: __ccgo_ts + 4614,
+		FzName: __ccgo_ts + 4606,
 		FeVal:  int32(m_SQLITE_DBCONFIG_LEGACY_FILE_FORMAT),
 	},
 }
@@ -89920,7 +89916,7 @@ func _test_sqlite3_txn_state(tls *libc.TLS, clientData uintptr, interp uintptr, 
 	// /tmp/libsqlite3/sqlite-src-3370200/src/test1.c:8020:3:
 	if objc != int32(2) && objc != int32(3) {
 		// /tmp/libsqlite3/sqlite-src-3370200/src/test1.c:8021:5:
-		libtcl8_6.XTcl_WrongNumArgs(tls, interp, int32(1), objv, __ccgo_ts+4715)
+		libtcl8_6.XTcl_WrongNumArgs(tls, interp, int32(1), objv, __ccgo_ts+4707)
 		// /tmp/libsqlite3/sqlite-src-3370200/src/test1.c:8022:5:
 		return int32(m_TCL_ERROR)
 	}
@@ -89971,7 +89967,7 @@ func _test_dbconfig_maindbname_icecube(tls *libc.TLS, clientData uintptr, interp
 			return int32(m_TCL_ERROR)
 		}
 		// /tmp/libsqlite3/sqlite-src-3370200/src/test1.c:8048:5:
-		rc = x_sqlite3_db_config(tls, *(*uintptr)(unsafe.Pointer(bp)), int32(m_SQLITE_DBCONFIG_MAINDBNAME), libc.VaList(bp+16, __ccgo_ts+4727))
+		rc = x_sqlite3_db_config(tls, *(*uintptr)(unsafe.Pointer(bp)), int32(m_SQLITE_DBCONFIG_MAINDBNAME), libc.VaList(bp+16, __ccgo_ts+4719))
 		// /tmp/libsqlite3/sqlite-src-3370200/src/test1.c:8049:5:
 		libtcl8_6.XTcl_SetObjResult(tls, interp, libtcl8_6.XTcl_NewIntObj(tls, rc))
 		// /tmp/libsqlite3/sqlite-src-3370200/src/test1.c:8050:5:
@@ -89998,7 +89994,7 @@ func _test_mmap_warm(tls *libc.TLS, clientData uintptr, interp uintptr, objc int
 	// /tmp/libsqlite3/sqlite-src-3370200/src/test1.c:8066:3:
 	if objc != int32(2) && objc != int32(3) {
 		// /tmp/libsqlite3/sqlite-src-3370200/src/test1.c:8067:5:
-		libtcl8_6.XTcl_WrongNumArgs(tls, interp, int32(1), objv, __ccgo_ts+4735)
+		libtcl8_6.XTcl_WrongNumArgs(tls, interp, int32(1), objv, __ccgo_ts+4727)
 		// /tmp/libsqlite3/sqlite-src-3370200/src/test1.c:8068:5:
 		return int32(m_TCL_ERROR)
 	} else {
@@ -90059,7 +90055,7 @@ func _test_write_db(tls *libc.TLS, clientData uintptr, interp uintptr, objc int3
 	// /tmp/libsqlite3/sqlite-src-3370200/src/test1.c:8103:3:
 	if objc != int32(4) {
 		// /tmp/libsqlite3/sqlite-src-3370200/src/test1.c:8104:5:
-		libtcl8_6.XTcl_WrongNumArgs(tls, interp, int32(1), objv, __ccgo_ts+4747)
+		libtcl8_6.XTcl_WrongNumArgs(tls, interp, int32(1), objv, __ccgo_ts+4739)
 		// /tmp/libsqlite3/sqlite-src-3370200/src/test1.c:8105:5:
 		return int32(m_TCL_ERROR)
 	}
@@ -90180,7 +90176,7 @@ func _test_decode_hexdb(tls *libc.TLS, clientData uintptr, interp uintptr, objc 
 	// /tmp/libsqlite3/sqlite-src-3370200/src/test1.c:8184:3:
 	if objc != int32(2) {
 		// /tmp/libsqlite3/sqlite-src-3370200/src/test1.c:8185:5:
-		libtcl8_6.XTcl_WrongNumArgs(tls, interp, int32(1), objv, __ccgo_ts+4762)
+		libtcl8_6.XTcl_WrongNumArgs(tls, interp, int32(1), objv, __ccgo_ts+4754)
 		// /tmp/libsqlite3/sqlite-src-3370200/src/test1.c:8186:5:
 		return int32(m_TCL_ERROR)
 	}
@@ -90217,7 +90213,7 @@ func _test_decode_hexdb(tls *libc.TLS, clientData uintptr, interp uintptr, objc 
 		// /tmp/libsqlite3/sqlite-src-3370200/src/test1.c:8194:5:
 		if a == uintptr(0) {
 			// /tmp/libsqlite3/sqlite-src-3370200/src/test1.c:8196:7:
-			v3 = __ccgo_ts + 4768
+			v3 = __ccgo_ts + 4760
 			libc.VaList(bp, bp+216, bp+292)
 			// /usr/x86_64-w64-mingw32/include/stdio.h:293:35:
 			__local_argv = bp
@@ -90238,7 +90234,7 @@ func _test_decode_hexdb(tls *libc.TLS, clientData uintptr, interp uintptr, objc 
 			// /tmp/libsqlite3/sqlite-src-3370200/src/test1.c:8198:7:
 			if *(*int32)(unsafe.Pointer(bp + 292)) < int32(512) || *(*int32)(unsafe.Pointer(bp + 292)) > int32(65536) || *(*int32)(unsafe.Pointer(bp + 292))&(*(*int32)(unsafe.Pointer(bp + 292))-int32(1)) != 0 {
 				// /tmp/libsqlite3/sqlite-src-3370200/src/test1.c:8199:9:
-				libtcl8_6.XTcl_AppendResult(tls, interp, libc.VaList(bp+304, __ccgo_ts+4790, libc.UintptrFromInt32(0)))
+				libtcl8_6.XTcl_AppendResult(tls, interp, libc.VaList(bp+304, __ccgo_ts+4782, libc.UintptrFromInt32(0)))
 				// /tmp/libsqlite3/sqlite-src-3370200/src/test1.c:8200:9:
 				return int32(m_TCL_ERROR)
 			}
@@ -90247,7 +90243,7 @@ func _test_decode_hexdb(tls *libc.TLS, clientData uintptr, interp uintptr, objc 
 			// /tmp/libsqlite3/sqlite-src-3370200/src/test1.c:8203:7:
 			if *(*int32)(unsafe.Pointer(bp + 216)) < int32(512) {
 				// /tmp/libsqlite3/sqlite-src-3370200/src/test1.c:8204:9:
-				libtcl8_6.XTcl_AppendResult(tls, interp, libc.VaList(bp+304, __ccgo_ts+4811, libc.UintptrFromInt32(0)))
+				libtcl8_6.XTcl_AppendResult(tls, interp, libc.VaList(bp+304, __ccgo_ts+4803, libc.UintptrFromInt32(0)))
 				// /tmp/libsqlite3/sqlite-src-3370200/src/test1.c:8205:9:
 				return int32(m_TCL_ERROR)
 			}
@@ -90266,7 +90262,7 @@ func _test_decode_hexdb(tls *libc.TLS, clientData uintptr, interp uintptr, objc 
 			goto _1
 		}
 		// /tmp/libsqlite3/sqlite-src-3370200/src/test1.c:8215:5:
-		v6 = __ccgo_ts + 4828
+		v6 = __ccgo_ts + 4820
 		libc.VaList(bp, bp+220, bp+224)
 		// /usr/x86_64-w64-mingw32/include/stdio.h:293:35:
 		__local_argv = bp
@@ -90287,7 +90283,7 @@ func _test_decode_hexdb(tls *libc.TLS, clientData uintptr, interp uintptr, objc 
 			goto _1
 		}
 		// /tmp/libsqlite3/sqlite-src-3370200/src/test1.c:8220:5:
-		v9 = __ccgo_ts + 4848
+		v9 = __ccgo_ts + 4840
 		libc.VaList(bp, bp+220, bp+228, bp+228+1*4, bp+228+2*4, bp+228+3*4, bp+228+4*4, bp+228+5*4, bp+228+6*4, bp+228+7*4, bp+228+8*4, bp+228+9*4, bp+228+10*4, bp+228+11*4, bp+228+12*4, bp+228+13*4, bp+228+14*4, bp+228+15*4)
 		// /usr/x86_64-w64-mingw32/include/stdio.h:293:35:
 		__local_argv = bp
@@ -90429,7 +90425,7 @@ func _test_autovacuum_pages(tls *libc.TLS, clientData uintptr, interp uintptr, o
 	// /tmp/libsqlite3/sqlite-src-3370200/src/test1.c:8296:3:
 	if objc != int32(2) && objc != int32(3) {
 		// /tmp/libsqlite3/sqlite-src-3370200/src/test1.c:8297:5:
-		libtcl8_6.XTcl_WrongNumArgs(tls, interp, int32(1), objv, __ccgo_ts+4902)
+		libtcl8_6.XTcl_WrongNumArgs(tls, interp, int32(1), objv, __ccgo_ts+4894)
 		// /tmp/libsqlite3/sqlite-src-3370200/src/test1.c:8298:5:
 		return int32(m_TCL_ERROR)
 	}
@@ -90473,7 +90469,7 @@ func _test_autovacuum_pages(tls *libc.TLS, clientData uintptr, interp uintptr, o
 	// /tmp/libsqlite3/sqlite-src-3370200/src/test1.c:8317:3:
 	if rc != 0 {
 		// /tmp/libsqlite3/sqlite-src-3370200/src/test1.c:8319:5:
-		x_sqlite3_snprintf(tls, int32(1000), bp+8, __ccgo_ts+4914, libc.VaList(bp+1016, rc))
+		x_sqlite3_snprintf(tls, int32(1000), bp+8, __ccgo_ts+4906, libc.VaList(bp+1016, rc))
 		// /tmp/libsqlite3/sqlite-src-3370200/src/test1.c:8321:5:
 		libtcl8_6.XTcl_AppendResult(tls, interp, libc.VaList(bp+1016, bp+8, libc.UintptrFromInt32(0)))
 		// /tmp/libsqlite3/sqlite-src-3370200/src/test1.c:8322:5:
@@ -90519,55 +90515,55 @@ func x_Sqlitetest1_Init(tls *libc.TLS, interp uintptr) (r int32) {
 		i++
 	}
 	// /tmp/libsqlite3/sqlite-src-3370200/src/test1.c:8655:3:
-	libtcl8_6.XTcl_LinkVar(tls, interp, __ccgo_ts+8974, uintptr(unsafe.Pointer(&x_sqlite3_search_count)), int32(m_TCL_LINK_INT))
+	libtcl8_6.XTcl_LinkVar(tls, interp, __ccgo_ts+8966, uintptr(unsafe.Pointer(&x_sqlite3_search_count)), int32(m_TCL_LINK_INT))
 	// /tmp/libsqlite3/sqlite-src-3370200/src/test1.c:8657:3:
-	libtcl8_6.XTcl_LinkVar(tls, interp, __ccgo_ts+8994, uintptr(unsafe.Pointer(&x_sqlite3_found_count)), int32(m_TCL_LINK_INT))
+	libtcl8_6.XTcl_LinkVar(tls, interp, __ccgo_ts+8986, uintptr(unsafe.Pointer(&x_sqlite3_found_count)), int32(m_TCL_LINK_INT))
 	// /tmp/libsqlite3/sqlite-src-3370200/src/test1.c:8659:3:
-	libtcl8_6.XTcl_LinkVar(tls, interp, __ccgo_ts+9013, uintptr(unsafe.Pointer(&x_sqlite3_sort_count)), int32(m_TCL_LINK_INT))
+	libtcl8_6.XTcl_LinkVar(tls, interp, __ccgo_ts+9005, uintptr(unsafe.Pointer(&x_sqlite3_sort_count)), int32(m_TCL_LINK_INT))
 	// /tmp/libsqlite3/sqlite-src-3370200/src/test1.c:8661:3:
-	libtcl8_6.XTcl_LinkVar(tls, interp, __ccgo_ts+9031, uintptr(unsafe.Pointer(&x_sqlite3_max_blobsize)), int32(m_TCL_LINK_INT))
+	libtcl8_6.XTcl_LinkVar(tls, interp, __ccgo_ts+9023, uintptr(unsafe.Pointer(&x_sqlite3_max_blobsize)), int32(m_TCL_LINK_INT))
 	// /tmp/libsqlite3/sqlite-src-3370200/src/test1.c:8663:3:
-	libtcl8_6.XTcl_LinkVar(tls, interp, __ccgo_ts+9052, uintptr(unsafe.Pointer(&x_sqlite3_like_count)), int32(m_TCL_LINK_INT))
+	libtcl8_6.XTcl_LinkVar(tls, interp, __ccgo_ts+9044, uintptr(unsafe.Pointer(&x_sqlite3_like_count)), int32(m_TCL_LINK_INT))
 	// /tmp/libsqlite3/sqlite-src-3370200/src/test1.c:8665:3:
-	libtcl8_6.XTcl_LinkVar(tls, interp, __ccgo_ts+9070, uintptr(unsafe.Pointer(&x_sqlite3_interrupt_count)), int32(m_TCL_LINK_INT))
+	libtcl8_6.XTcl_LinkVar(tls, interp, __ccgo_ts+9062, uintptr(unsafe.Pointer(&x_sqlite3_interrupt_count)), int32(m_TCL_LINK_INT))
 	// /tmp/libsqlite3/sqlite-src-3370200/src/test1.c:8667:3:
-	libtcl8_6.XTcl_LinkVar(tls, interp, __ccgo_ts+9093, uintptr(unsafe.Pointer(&x_sqlite3_open_file_count)), int32(m_TCL_LINK_INT))
+	libtcl8_6.XTcl_LinkVar(tls, interp, __ccgo_ts+9085, uintptr(unsafe.Pointer(&x_sqlite3_open_file_count)), int32(m_TCL_LINK_INT))
 	// /tmp/libsqlite3/sqlite-src-3370200/src/test1.c:8669:3:
-	libtcl8_6.XTcl_LinkVar(tls, interp, __ccgo_ts+9116, uintptr(unsafe.Pointer(&x_sqlite3_current_time)), int32(m_TCL_LINK_INT))
+	libtcl8_6.XTcl_LinkVar(tls, interp, __ccgo_ts+9108, uintptr(unsafe.Pointer(&x_sqlite3_current_time)), int32(m_TCL_LINK_INT))
 	// /tmp/libsqlite3/sqlite-src-3370200/src/test1.c:8675:3:
-	libtcl8_6.XTcl_LinkVar(tls, interp, __ccgo_ts+9136, uintptr(unsafe.Pointer(&x_sqlite3_xferopt_count)), int32(m_TCL_LINK_INT))
+	libtcl8_6.XTcl_LinkVar(tls, interp, __ccgo_ts+9128, uintptr(unsafe.Pointer(&x_sqlite3_xferopt_count)), int32(m_TCL_LINK_INT))
 	// /tmp/libsqlite3/sqlite-src-3370200/src/test1.c:8677:3:
-	libtcl8_6.XTcl_LinkVar(tls, interp, __ccgo_ts+9158, uintptr(unsafe.Pointer(&x_sqlite3_pager_readdb_count)), int32(m_TCL_LINK_INT))
+	libtcl8_6.XTcl_LinkVar(tls, interp, __ccgo_ts+9150, uintptr(unsafe.Pointer(&x_sqlite3_pager_readdb_count)), int32(m_TCL_LINK_INT))
 	// /tmp/libsqlite3/sqlite-src-3370200/src/test1.c:8679:3:
-	libtcl8_6.XTcl_LinkVar(tls, interp, __ccgo_ts+9185, uintptr(unsafe.Pointer(&x_sqlite3_pager_writedb_count)), int32(m_TCL_LINK_INT))
+	libtcl8_6.XTcl_LinkVar(tls, interp, __ccgo_ts+9177, uintptr(unsafe.Pointer(&x_sqlite3_pager_writedb_count)), int32(m_TCL_LINK_INT))
 	// /tmp/libsqlite3/sqlite-src-3370200/src/test1.c:8681:3:
-	libtcl8_6.XTcl_LinkVar(tls, interp, __ccgo_ts+9213, uintptr(unsafe.Pointer(&x_sqlite3_pager_writej_count)), int32(m_TCL_LINK_INT))
+	libtcl8_6.XTcl_LinkVar(tls, interp, __ccgo_ts+9205, uintptr(unsafe.Pointer(&x_sqlite3_pager_writej_count)), int32(m_TCL_LINK_INT))
 	// /tmp/libsqlite3/sqlite-src-3370200/src/test1.c:8684:3:
-	libtcl8_6.XTcl_LinkVar(tls, interp, __ccgo_ts+9240, uintptr(unsafe.Pointer(&_unaligned_string_counter)), int32(m_TCL_LINK_INT))
+	libtcl8_6.XTcl_LinkVar(tls, interp, __ccgo_ts+9232, uintptr(unsafe.Pointer(&_unaligned_string_counter)), int32(m_TCL_LINK_INT))
 	// /tmp/libsqlite3/sqlite-src-3370200/src/test1.c:8688:3:
-	libtcl8_6.XTcl_LinkVar(tls, interp, __ccgo_ts+9265, uintptr(unsafe.Pointer(&_pzNeededCollation)), libc.Int32FromInt32(m_TCL_LINK_STRING)|libc.Int32FromInt32(m_TCL_LINK_READ_ONLY))
+	libtcl8_6.XTcl_LinkVar(tls, interp, __ccgo_ts+9257, uintptr(unsafe.Pointer(&_pzNeededCollation)), libc.Int32FromInt32(m_TCL_LINK_STRING)|libc.Int32FromInt32(m_TCL_LINK_READ_ONLY))
 	// /tmp/libsqlite3/sqlite-src-3370200/src/test1.c:8692:3:
-	libtcl8_6.XTcl_LinkVar(tls, interp, __ccgo_ts+9294, uintptr(unsafe.Pointer(&x_sqlite3_os_type)), int32(m_TCL_LINK_LONG))
+	libtcl8_6.XTcl_LinkVar(tls, interp, __ccgo_ts+9286, uintptr(unsafe.Pointer(&x_sqlite3_os_type)), int32(m_TCL_LINK_LONG))
 	// /tmp/libsqlite3/sqlite-src-3370200/src/test1.c:8698:5:
-	libtcl8_6.XTcl_LinkVar(tls, interp, __ccgo_ts+9335, uintptr(unsafe.Pointer(&_query_plan)), libc.Int32FromInt32(m_TCL_LINK_STRING)|libc.Int32FromInt32(m_TCL_LINK_READ_ONLY))
+	libtcl8_6.XTcl_LinkVar(tls, interp, __ccgo_ts+9327, uintptr(unsafe.Pointer(&_query_plan)), libc.Int32FromInt32(m_TCL_LINK_STRING)|libc.Int32FromInt32(m_TCL_LINK_READ_ONLY))
 	// /tmp/libsqlite3/sqlite-src-3370200/src/test1.c:8713:3:
-	libtcl8_6.XTcl_LinkVar(tls, interp, __ccgo_ts+9353, uintptr(unsafe.Pointer(&x_sqlite3_opentemp_count)), int32(m_TCL_LINK_INT))
+	libtcl8_6.XTcl_LinkVar(tls, interp, __ccgo_ts+9345, uintptr(unsafe.Pointer(&x_sqlite3_opentemp_count)), int32(m_TCL_LINK_INT))
 	// /tmp/libsqlite3/sqlite-src-3370200/src/test1.c:8716:3:
-	libtcl8_6.XTcl_LinkVar(tls, interp, __ccgo_ts+9375, uintptr(unsafe.Pointer(&_sqlite_static_bind_value)), int32(m_TCL_LINK_STRING))
+	libtcl8_6.XTcl_LinkVar(tls, interp, __ccgo_ts+9367, uintptr(unsafe.Pointer(&_sqlite_static_bind_value)), int32(m_TCL_LINK_STRING))
 	// /tmp/libsqlite3/sqlite-src-3370200/src/test1.c:8718:3:
-	libtcl8_6.XTcl_LinkVar(tls, interp, __ccgo_ts+9400, uintptr(unsafe.Pointer(&_sqlite_static_bind_nbyte)), int32(m_TCL_LINK_INT))
+	libtcl8_6.XTcl_LinkVar(tls, interp, __ccgo_ts+9392, uintptr(unsafe.Pointer(&_sqlite_static_bind_nbyte)), int32(m_TCL_LINK_INT))
 	// /tmp/libsqlite3/sqlite-src-3370200/src/test1.c:8720:3:
-	libtcl8_6.XTcl_LinkVar(tls, interp, __ccgo_ts+9425, uintptr(unsafe.Pointer(&x_sqlite3_temp_directory)), int32(m_TCL_LINK_STRING))
+	libtcl8_6.XTcl_LinkVar(tls, interp, __ccgo_ts+9417, uintptr(unsafe.Pointer(&x_sqlite3_temp_directory)), int32(m_TCL_LINK_STRING))
 	// /tmp/libsqlite3/sqlite-src-3370200/src/test1.c:8722:3:
-	libtcl8_6.XTcl_LinkVar(tls, interp, __ccgo_ts+9447, uintptr(unsafe.Pointer(&x_sqlite3_data_directory)), int32(m_TCL_LINK_STRING))
+	libtcl8_6.XTcl_LinkVar(tls, interp, __ccgo_ts+9439, uintptr(unsafe.Pointer(&x_sqlite3_data_directory)), int32(m_TCL_LINK_STRING))
 	// /tmp/libsqlite3/sqlite-src-3370200/src/test1.c:8724:3:
-	libtcl8_6.XTcl_LinkVar(tls, interp, __ccgo_ts+9469, uintptr(unsafe.Pointer(&_bitmask_size)), libc.Int32FromInt32(m_TCL_LINK_INT)|libc.Int32FromInt32(m_TCL_LINK_READ_ONLY))
+	libtcl8_6.XTcl_LinkVar(tls, interp, __ccgo_ts+9461, uintptr(unsafe.Pointer(&_bitmask_size)), libc.Int32FromInt32(m_TCL_LINK_INT)|libc.Int32FromInt32(m_TCL_LINK_READ_ONLY))
 	// /tmp/libsqlite3/sqlite-src-3370200/src/test1.c:8726:3:
-	libtcl8_6.XTcl_LinkVar(tls, interp, __ccgo_ts+9482, uintptr(unsafe.Pointer(&_longdouble_size)), libc.Int32FromInt32(m_TCL_LINK_INT)|libc.Int32FromInt32(m_TCL_LINK_READ_ONLY))
+	libtcl8_6.XTcl_LinkVar(tls, interp, __ccgo_ts+9474, uintptr(unsafe.Pointer(&_longdouble_size)), libc.Int32FromInt32(m_TCL_LINK_INT)|libc.Int32FromInt32(m_TCL_LINK_READ_ONLY))
 	// /tmp/libsqlite3/sqlite-src-3370200/src/test1.c:8728:3:
-	libtcl8_6.XTcl_LinkVar(tls, interp, __ccgo_ts+9498, uintptr(unsafe.Pointer(&x_sqlite3_sync_count)), int32(m_TCL_LINK_INT))
+	libtcl8_6.XTcl_LinkVar(tls, interp, __ccgo_ts+9490, uintptr(unsafe.Pointer(&x_sqlite3_sync_count)), int32(m_TCL_LINK_INT))
 	// /tmp/libsqlite3/sqlite-src-3370200/src/test1.c:8730:3:
-	libtcl8_6.XTcl_LinkVar(tls, interp, __ccgo_ts+9516, uintptr(unsafe.Pointer(&x_sqlite3_fullsync_count)), int32(m_TCL_LINK_INT))
+	libtcl8_6.XTcl_LinkVar(tls, interp, __ccgo_ts+9508, uintptr(unsafe.Pointer(&x_sqlite3_fullsync_count)), int32(m_TCL_LINK_INT))
 	// /tmp/libsqlite3/sqlite-src-3370200/src/test1.c:8740:3:
 	return m_TCL_OK
 }
@@ -90581,121 +90577,121 @@ var _aCmd = [39]struct {
 	FxProc uintptr
 }{
 	0: {
-		FzName: __ccgo_ts + 4952,
+		FzName: __ccgo_ts + 4944,
 	},
 	1: {
-		FzName: __ccgo_ts + 4961,
+		FzName: __ccgo_ts + 4953,
 	},
 	2: {
-		FzName: __ccgo_ts + 4970,
+		FzName: __ccgo_ts + 4962,
 	},
 	3: {
-		FzName: __ccgo_ts + 4990,
+		FzName: __ccgo_ts + 4982,
 	},
 	4: {
-		FzName: __ccgo_ts + 5012,
+		FzName: __ccgo_ts + 5004,
 	},
 	5: {
-		FzName: __ccgo_ts + 5033,
+		FzName: __ccgo_ts + 5025,
 	},
 	6: {
-		FzName: __ccgo_ts + 5053,
+		FzName: __ccgo_ts + 5045,
 	},
 	7: {
-		FzName: __ccgo_ts + 5074,
+		FzName: __ccgo_ts + 5066,
 	},
 	8: {
-		FzName: __ccgo_ts + 5098,
+		FzName: __ccgo_ts + 5090,
 	},
 	9: {
-		FzName: __ccgo_ts + 5121,
+		FzName: __ccgo_ts + 5113,
 	},
 	10: {
-		FzName: __ccgo_ts + 5144,
+		FzName: __ccgo_ts + 5136,
 	},
 	11: {
-		FzName: __ccgo_ts + 5170,
+		FzName: __ccgo_ts + 5162,
 	},
 	12: {
-		FzName: __ccgo_ts + 5193,
+		FzName: __ccgo_ts + 5185,
 	},
 	13: {
-		FzName: __ccgo_ts + 5216,
+		FzName: __ccgo_ts + 5208,
 	},
 	14: {
-		FzName: __ccgo_ts + 5237,
+		FzName: __ccgo_ts + 5229,
 	},
 	15: {
-		FzName: __ccgo_ts + 5263,
+		FzName: __ccgo_ts + 5255,
 	},
 	16: {
-		FzName: __ccgo_ts + 5283,
+		FzName: __ccgo_ts + 5275,
 	},
 	17: {
-		FzName: __ccgo_ts + 5300,
+		FzName: __ccgo_ts + 5292,
 	},
 	18: {
-		FzName: __ccgo_ts + 5313,
+		FzName: __ccgo_ts + 5305,
 	},
 	19: {
-		FzName: __ccgo_ts + 5329,
+		FzName: __ccgo_ts + 5321,
 	},
 	20: {
-		FzName: __ccgo_ts + 5354,
+		FzName: __ccgo_ts + 5346,
 	},
 	21: {
-		FzName: __ccgo_ts + 5368,
+		FzName: __ccgo_ts + 5360,
 	},
 	22: {
-		FzName: __ccgo_ts + 5385,
+		FzName: __ccgo_ts + 5377,
 	},
 	23: {
-		FzName: __ccgo_ts + 5409,
+		FzName: __ccgo_ts + 5401,
 	},
 	24: {
-		FzName: __ccgo_ts + 5434,
+		FzName: __ccgo_ts + 5426,
 	},
 	25: {
-		FzName: __ccgo_ts + 5455,
+		FzName: __ccgo_ts + 5447,
 	},
 	26: {
-		FzName: __ccgo_ts + 5485,
+		FzName: __ccgo_ts + 5477,
 	},
 	27: {
-		FzName: __ccgo_ts + 5498,
+		FzName: __ccgo_ts + 5490,
 	},
 	28: {
-		FzName: __ccgo_ts + 5510,
+		FzName: __ccgo_ts + 5502,
 	},
 	29: {
-		FzName: __ccgo_ts + 5521,
+		FzName: __ccgo_ts + 5513,
 	},
 	30: {
-		FzName: __ccgo_ts + 5533,
+		FzName: __ccgo_ts + 5525,
 	},
 	31: {
-		FzName: __ccgo_ts + 5547,
+		FzName: __ccgo_ts + 5539,
 	},
 	32: {
-		FzName: __ccgo_ts + 5565,
+		FzName: __ccgo_ts + 5557,
 	},
 	33: {
-		FzName: __ccgo_ts + 5588,
+		FzName: __ccgo_ts + 5580,
 	},
 	34: {
-		FzName: __ccgo_ts + 5612,
+		FzName: __ccgo_ts + 5604,
 	},
 	35: {
-		FzName: __ccgo_ts + 5635,
+		FzName: __ccgo_ts + 5627,
 	},
 	36: {
-		FzName: __ccgo_ts + 5656,
+		FzName: __ccgo_ts + 5648,
 	},
 	37: {
-		FzName: __ccgo_ts + 5663,
+		FzName: __ccgo_ts + 5655,
 	},
 	38: {
-		FzName: __ccgo_ts + 5678,
+		FzName: __ccgo_ts + 5670,
 	},
 }
 
@@ -90749,470 +90745,470 @@ var _aObjCmd = [155]struct {
 	FclientData uintptr
 }{
 	0: {
-		FzName: __ccgo_ts + 5701,
+		FzName: __ccgo_ts + 5693,
 	},
 	1: {
-		FzName: __ccgo_ts + 5719,
+		FzName: __ccgo_ts + 5711,
 	},
 	2: {
-		FzName:      __ccgo_ts + 5737,
+		FzName:      __ccgo_ts + 5729,
 		FclientData: uintptr(unsafe.Pointer(&_iZero)),
 	},
 	3: {
-		FzName: __ccgo_ts + 5750,
+		FzName: __ccgo_ts + 5742,
 	},
 	4: {
-		FzName: __ccgo_ts + 5771,
+		FzName: __ccgo_ts + 5763,
 	},
 	5: {
-		FzName: __ccgo_ts + 5798,
+		FzName: __ccgo_ts + 5790,
 	},
 	6: {
-		FzName: __ccgo_ts + 5812,
+		FzName: __ccgo_ts + 5804,
 	},
 	7: {
-		FzName: __ccgo_ts + 5828,
+		FzName: __ccgo_ts + 5820,
 	},
 	8: {
-		FzName: __ccgo_ts + 5845,
+		FzName: __ccgo_ts + 5837,
 	},
 	9: {
-		FzName: __ccgo_ts + 5860,
+		FzName: __ccgo_ts + 5852,
 	},
 	10: {
-		FzName: __ccgo_ts + 5877,
+		FzName: __ccgo_ts + 5869,
 	},
 	11: {
-		FzName: __ccgo_ts + 5899,
+		FzName: __ccgo_ts + 5891,
 	},
 	12: {
-		FzName: __ccgo_ts + 5923,
+		FzName: __ccgo_ts + 5915,
 	},
 	13: {
-		FzName: __ccgo_ts + 5942,
+		FzName: __ccgo_ts + 5934,
 	},
 	14: {
-		FzName: __ccgo_ts + 5962,
+		FzName: __ccgo_ts + 5954,
 	},
 	15: {
-		FzName: __ccgo_ts + 5980,
+		FzName: __ccgo_ts + 5972,
 	},
 	16: {
-		FzName: __ccgo_ts + 5998,
+		FzName: __ccgo_ts + 5990,
 	},
 	17: {
-		FzName: __ccgo_ts + 6018,
+		FzName: __ccgo_ts + 6010,
 	},
 	18: {
-		FzName: __ccgo_ts + 6036,
+		FzName: __ccgo_ts + 6028,
 	},
 	19: {
-		FzName: __ccgo_ts + 6056,
+		FzName: __ccgo_ts + 6048,
 	},
 	20: {
-		FzName: __ccgo_ts + 6085,
+		FzName: __ccgo_ts + 6077,
 	},
 	21: {
-		FzName: __ccgo_ts + 6113,
+		FzName: __ccgo_ts + 6105,
 	},
 	22: {
-		FzName: __ccgo_ts + 6142,
+		FzName: __ccgo_ts + 6134,
 	},
 	23: {
-		FzName: __ccgo_ts + 6165,
+		FzName: __ccgo_ts + 6157,
 	},
 	24: {
-		FzName: __ccgo_ts + 6179,
+		FzName: __ccgo_ts + 6171,
 	},
 	25: {
-		FzName: __ccgo_ts + 6195,
+		FzName: __ccgo_ts + 6187,
 	},
 	26: {
-		FzName: __ccgo_ts + 6220,
+		FzName: __ccgo_ts + 6212,
 	},
 	27: {
-		FzName: __ccgo_ts + 6235,
+		FzName: __ccgo_ts + 6227,
 	},
 	28: {
-		FzName: __ccgo_ts + 6252,
+		FzName: __ccgo_ts + 6244,
 	},
 	29: {
-		FzName: __ccgo_ts + 6265,
+		FzName: __ccgo_ts + 6257,
 	},
 	30: {
-		FzName: __ccgo_ts + 6280,
+		FzName: __ccgo_ts + 6272,
 	},
 	31: {
-		FzName: __ccgo_ts + 6296,
+		FzName: __ccgo_ts + 6288,
 	},
 	32: {
-		FzName: __ccgo_ts + 6315,
+		FzName: __ccgo_ts + 6307,
 	},
 	33: {
-		FzName: __ccgo_ts + 6333,
+		FzName: __ccgo_ts + 6325,
 	},
 	34: {
-		FzName: __ccgo_ts + 6349,
+		FzName: __ccgo_ts + 6341,
 	},
 	35: {
-		FzName: __ccgo_ts + 6367,
+		FzName: __ccgo_ts + 6359,
 	},
 	36: {
-		FzName: __ccgo_ts + 6386,
+		FzName: __ccgo_ts + 6378,
 	},
 	37: {
-		FzName: __ccgo_ts + 6405,
+		FzName: __ccgo_ts + 6397,
 	},
 	38: {
-		FzName: __ccgo_ts + 6429,
+		FzName: __ccgo_ts + 6421,
 	},
 	39: {
-		FzName: __ccgo_ts + 6450,
+		FzName: __ccgo_ts + 6442,
 	},
 	40: {
-		FzName: __ccgo_ts + 6467,
+		FzName: __ccgo_ts + 6459,
 	},
 	41: {
-		FzName: __ccgo_ts + 6487,
+		FzName: __ccgo_ts + 6479,
 	},
 	42: {
-		FzName: __ccgo_ts + 6501,
+		FzName: __ccgo_ts + 6493,
 	},
 	43: {
-		FzName: __ccgo_ts + 6517,
+		FzName: __ccgo_ts + 6509,
 	},
 	44: {
-		FzName: __ccgo_ts + 6543,
+		FzName: __ccgo_ts + 6535,
 	},
 	45: {
-		FzName: __ccgo_ts + 6559,
+		FzName: __ccgo_ts + 6551,
 	},
 	46: {
-		FzName: __ccgo_ts + 6572,
+		FzName: __ccgo_ts + 6564,
 	},
 	47: {
-		FzName: __ccgo_ts + 6584,
+		FzName: __ccgo_ts + 6576,
 	},
 	48: {
-		FzName: __ccgo_ts + 6605,
+		FzName: __ccgo_ts + 6597,
 	},
 	49: {
-		FzName: __ccgo_ts + 6623,
+		FzName: __ccgo_ts + 6615,
 	},
 	50: {
-		FzName: __ccgo_ts + 6645,
+		FzName: __ccgo_ts + 6637,
 	},
 	51: {
-		FzName: __ccgo_ts + 6668,
+		FzName: __ccgo_ts + 6660,
 	},
 	52: {
-		FzName: __ccgo_ts + 6686,
+		FzName: __ccgo_ts + 6678,
 	},
 	53: {
-		FzName: __ccgo_ts + 6704,
+		FzName: __ccgo_ts + 6696,
 	},
 	54: {
-		FzName: __ccgo_ts + 6727,
+		FzName: __ccgo_ts + 6719,
 	},
 	55: {
-		FzName: __ccgo_ts + 6753,
+		FzName: __ccgo_ts + 6745,
 	},
 	56: {
-		FzName: __ccgo_ts + 6775,
+		FzName: __ccgo_ts + 6767,
 	},
 	57: {
-		FzName: __ccgo_ts + 6796,
+		FzName: __ccgo_ts + 6788,
 	},
 	58: {
-		FzName: __ccgo_ts + 6816,
+		FzName: __ccgo_ts + 6808,
 	},
 	59: {
-		FzName: __ccgo_ts + 6836,
+		FzName: __ccgo_ts + 6828,
 	},
 	60: {
-		FzName: __ccgo_ts + 6860,
+		FzName: __ccgo_ts + 6852,
 	},
 	61: {
-		FzName: __ccgo_ts + 6886,
+		FzName: __ccgo_ts + 6878,
 	},
 	62: {
-		FzName: __ccgo_ts + 6912,
+		FzName: __ccgo_ts + 6904,
 	},
 	63: {
-		FzName: __ccgo_ts + 6935,
+		FzName: __ccgo_ts + 6927,
 	},
 	64: {
-		FzName: __ccgo_ts + 6959,
+		FzName: __ccgo_ts + 6951,
 	},
 	65: {
-		FzName: __ccgo_ts + 6982,
+		FzName: __ccgo_ts + 6974,
 	},
 	66: {
-		FzName: __ccgo_ts + 7012,
+		FzName: __ccgo_ts + 7004,
 	},
 	67: {
-		FzName: __ccgo_ts + 7042,
+		FzName: __ccgo_ts + 7034,
 	},
 	68: {
-		FzName: __ccgo_ts + 7056,
+		FzName: __ccgo_ts + 7048,
 	},
 	69: {
-		FzName: __ccgo_ts + 7084,
+		FzName: __ccgo_ts + 7076,
 	},
 	70: {
-		FzName: __ccgo_ts + 7100,
+		FzName: __ccgo_ts + 7092,
 	},
 	71: {
-		FzName: __ccgo_ts + 7119,
+		FzName: __ccgo_ts + 7111,
 	},
 	72: {
-		FzName: __ccgo_ts + 7136,
+		FzName: __ccgo_ts + 7128,
 	},
 	73: {
-		FzName: __ccgo_ts + 7146,
+		FzName: __ccgo_ts + 7138,
 	},
 	74: {
-		FzName: __ccgo_ts + 7166,
+		FzName: __ccgo_ts + 7158,
 	},
 	75: {
-		FzName: __ccgo_ts + 7189,
+		FzName: __ccgo_ts + 7181,
 	},
 	76: {
-		FzName: __ccgo_ts + 7213,
+		FzName: __ccgo_ts + 7205,
 	},
 	77: {
-		FzName: __ccgo_ts + 7234,
+		FzName: __ccgo_ts + 7226,
 	},
 	78: {
-		FzName: __ccgo_ts + 7250,
+		FzName: __ccgo_ts + 7242,
 	},
 	79: {
-		FzName: __ccgo_ts + 7268,
+		FzName: __ccgo_ts + 7260,
 	},
 	80: {
-		FzName: __ccgo_ts + 7284,
+		FzName: __ccgo_ts + 7276,
 	},
 	81: {
-		FzName: __ccgo_ts + 7302,
+		FzName: __ccgo_ts + 7294,
 	},
 	82: {
-		FzName: __ccgo_ts + 7317,
+		FzName: __ccgo_ts + 7309,
 	},
 	83: {
-		FzName: __ccgo_ts + 7334,
+		FzName: __ccgo_ts + 7326,
 	},
 	84: {
-		FzName: __ccgo_ts + 7346,
+		FzName: __ccgo_ts + 7338,
 	},
 	85: {
-		FzName: __ccgo_ts + 7367,
+		FzName: __ccgo_ts + 7359,
 	},
 	86: {
-		FzName: __ccgo_ts + 7386,
+		FzName: __ccgo_ts + 7378,
 	},
 	87: {
-		FzName: __ccgo_ts + 7406,
+		FzName: __ccgo_ts + 7398,
 	},
 	88: {
-		FzName: __ccgo_ts + 7426,
+		FzName: __ccgo_ts + 7418,
 	},
 	89: {
-		FzName: __ccgo_ts + 7448,
+		FzName: __ccgo_ts + 7440,
 	},
 	90: {
-		FzName: __ccgo_ts + 7469,
+		FzName: __ccgo_ts + 7461,
 	},
 	91: {
-		FzName: __ccgo_ts + 7489,
+		FzName: __ccgo_ts + 7481,
 	},
 	92: {
-		FzName: __ccgo_ts + 7509,
+		FzName: __ccgo_ts + 7501,
 	},
 	93: {
-		FzName: __ccgo_ts + 7528,
+		FzName: __ccgo_ts + 7520,
 	},
 	94: {
-		FzName: __ccgo_ts + 7549,
+		FzName: __ccgo_ts + 7541,
 	},
 	95: {
-		FzName: __ccgo_ts + 7573,
+		FzName: __ccgo_ts + 7565,
 	},
 	96: {
-		FzName: __ccgo_ts + 7596,
+		FzName: __ccgo_ts + 7588,
 	},
 	97: {
-		FzName: __ccgo_ts + 7618,
+		FzName: __ccgo_ts + 7610,
 	},
 	98: {
-		FzName: __ccgo_ts + 7640,
+		FzName: __ccgo_ts + 7632,
 	},
 	99: {
-		FzName: __ccgo_ts + 7670,
+		FzName: __ccgo_ts + 7662,
 	},
 	100: {
-		FzName: __ccgo_ts + 7696,
+		FzName: __ccgo_ts + 7688,
 	},
 	101: {
-		FzName: __ccgo_ts + 7724,
+		FzName: __ccgo_ts + 7716,
 	},
 	102: {
-		FzName: __ccgo_ts + 7747,
+		FzName: __ccgo_ts + 7739,
 	},
 	103: {
-		FzName: __ccgo_ts + 7765,
+		FzName: __ccgo_ts + 7757,
 	},
 	104: {
-		FzName: __ccgo_ts + 7781,
+		FzName: __ccgo_ts + 7773,
 	},
 	105: {
-		FzName: __ccgo_ts + 7799,
+		FzName: __ccgo_ts + 7791,
 	},
 	106: {
-		FzName: __ccgo_ts + 7818,
+		FzName: __ccgo_ts + 7810,
 	},
 	107: {
-		FzName: __ccgo_ts + 7837,
+		FzName: __ccgo_ts + 7829,
 	},
 	108: {
-		FzName: __ccgo_ts + 7855,
+		FzName: __ccgo_ts + 7847,
 	},
 	109: {
-		FzName: __ccgo_ts + 7883,
+		FzName: __ccgo_ts + 7875,
 	},
 	110: {
-		FzName: __ccgo_ts + 7911,
+		FzName: __ccgo_ts + 7903,
 	},
 	111: {
-		FzName: __ccgo_ts + 7939,
+		FzName: __ccgo_ts + 7931,
 	},
 	112: {
-		FzName: __ccgo_ts + 7966,
+		FzName: __ccgo_ts + 7958,
 	},
 	113: {
-		FzName: __ccgo_ts + 7992,
+		FzName: __ccgo_ts + 7984,
 	},
 	114: {
-		FzName: __ccgo_ts + 8020,
+		FzName: __ccgo_ts + 8012,
 	},
 	115: {
-		FzName: __ccgo_ts + 8050,
+		FzName: __ccgo_ts + 8042,
 	},
 	116: {
-		FzName: __ccgo_ts + 8080,
+		FzName: __ccgo_ts + 8072,
 	},
 	117: {
-		FzName: __ccgo_ts + 8105,
+		FzName: __ccgo_ts + 8097,
 	},
 	118: {
-		FzName: __ccgo_ts + 8138,
+		FzName: __ccgo_ts + 8130,
 	},
 	119: {
-		FzName: __ccgo_ts + 8159,
+		FzName: __ccgo_ts + 8151,
 	},
 	120: {
-		FzName: __ccgo_ts + 8185,
+		FzName: __ccgo_ts + 8177,
 	},
 	121: {
-		FzName: __ccgo_ts + 8211,
+		FzName: __ccgo_ts + 8203,
 	},
 	122: {
-		FzName: __ccgo_ts + 8240,
+		FzName: __ccgo_ts + 8232,
 	},
 	123: {
-		FzName: __ccgo_ts + 8257,
+		FzName: __ccgo_ts + 8249,
 	},
 	124: {
-		FzName: __ccgo_ts + 8284,
+		FzName: __ccgo_ts + 8276,
 	},
 	125: {
-		FzName: __ccgo_ts + 8301,
+		FzName: __ccgo_ts + 8293,
 	},
 	126: {
-		FzName: __ccgo_ts + 8325,
+		FzName: __ccgo_ts + 8317,
 	},
 	127: {
-		FzName: __ccgo_ts + 8343,
+		FzName: __ccgo_ts + 8335,
 	},
 	128: {
-		FzName: __ccgo_ts + 8369,
+		FzName: __ccgo_ts + 8361,
 	},
 	129: {
-		FzName: __ccgo_ts + 8389,
+		FzName: __ccgo_ts + 8381,
 	},
 	130: {
-		FzName: __ccgo_ts + 8407,
+		FzName: __ccgo_ts + 8399,
 	},
 	131: {
-		FzName: __ccgo_ts + 8435,
+		FzName: __ccgo_ts + 8427,
 	},
 	132: {
-		FzName: __ccgo_ts + 8463,
+		FzName: __ccgo_ts + 8455,
 	},
 	133: {
-		FzName: __ccgo_ts + 8489,
+		FzName: __ccgo_ts + 8481,
 	},
 	134: {
-		FzName: __ccgo_ts + 8519,
+		FzName: __ccgo_ts + 8511,
 	},
 	135: {
-		FzName: __ccgo_ts + 8539,
+		FzName: __ccgo_ts + 8531,
 	},
 	136: {
-		FzName: __ccgo_ts + 8552,
+		FzName: __ccgo_ts + 8544,
 	},
 	137: {
-		FzName: __ccgo_ts + 8575,
+		FzName: __ccgo_ts + 8567,
 	},
 	138: {
-		FzName: __ccgo_ts + 8601,
+		FzName: __ccgo_ts + 8593,
 	},
 	139: {
-		FzName: __ccgo_ts + 8628,
+		FzName: __ccgo_ts + 8620,
 	},
 	140: {
-		FzName: __ccgo_ts + 8645,
+		FzName: __ccgo_ts + 8637,
 	},
 	141: {
-		FzName: __ccgo_ts + 8670,
+		FzName: __ccgo_ts + 8662,
 	},
 	142: {
-		FzName: __ccgo_ts + 8691,
+		FzName: __ccgo_ts + 8683,
 	},
 	143: {
-		FzName: __ccgo_ts + 8713,
+		FzName: __ccgo_ts + 8705,
 	},
 	144: {
-		FzName: __ccgo_ts + 8734,
+		FzName: __ccgo_ts + 8726,
 	},
 	145: {
-		FzName: __ccgo_ts + 8759,
+		FzName: __ccgo_ts + 8751,
 	},
 	146: {
-		FzName: __ccgo_ts + 8782,
+		FzName: __ccgo_ts + 8774,
 	},
 	147: {
-		FzName: __ccgo_ts + 8806,
+		FzName: __ccgo_ts + 8798,
 	},
 	148: {
-		FzName: __ccgo_ts + 8825,
+		FzName: __ccgo_ts + 8817,
 	},
 	149: {
-		FzName: __ccgo_ts + 8843,
+		FzName: __ccgo_ts + 8835,
 	},
 	150: {
-		FzName: __ccgo_ts + 8868,
+		FzName: __ccgo_ts + 8860,
 	},
 	151: {
-		FzName: __ccgo_ts + 8893,
+		FzName: __ccgo_ts + 8885,
 	},
 	152: {
-		FzName: __ccgo_ts + 8906,
+		FzName: __ccgo_ts + 8898,
 	},
 	153: {
-		FzName: __ccgo_ts + 8920,
+		FzName: __ccgo_ts + 8912,
 	},
 	154: {
-		FzName: __ccgo_ts + 8946,
+		FzName: __ccgo_ts + 8938,
 	},
 }
 
@@ -91391,7 +91387,39 @@ var _bitmask_size = int32(libc.Uint64FromInt64(8) * libc.Uint64FromInt32(8))
 var _longdouble_size = int32(8)
 
 // /tmp/libsqlite3/sqlite-src-3370200/src/test1.c:8697:23:
-var _query_plan = __ccgo_ts + 9309
+var _query_plan = __ccgo_ts + 9301
+
+// -:
+type TExprList_item = struct {
+	FpExpr         uintptr
+	FzEName        uintptr
+	FsortFlags     Tu8
+	F__ccgo_align3 [3]byte
+	F__ccgo20      uint8
+	Fu             struct {
+		FiConstExprReg [0]int32
+		Fx             struct {
+			FiOrderByCol Tu16
+			FiAlias      Tu16
+		}
+	}
+}
+
+// -:
+type Tsqlite3InitInfo = struct {
+	FnewTnum       TPgno
+	FiDb           Tu8
+	Fbusy          Tu8
+	F__ccgo_align3 [2]byte
+	F__ccgo8       uint8
+	FazInit        uintptr
+}
+
+// -:
+type T_STGMEDIUM_UNION = struct {
+	Ftymed TDWORD
+	Fu     T__WIDL_objidl_generated_name_0000000D
+}
 
 // -:
 type T__tagVARIANT = struct {
@@ -91449,41 +91477,9 @@ type T__tagVARIANT = struct {
 }
 
 // -:
-type Tsqlite3InitInfo = struct {
-	FnewTnum       TPgno
-	FiDb           Tu8
-	Fbusy          Tu8
-	F__ccgo_align3 [2]byte
-	F__ccgo8       uint8
-	FazInit        uintptr
-}
-
-// -:
 type TsColMap = struct {
 	FiFrom int32
 	FzCol  uintptr
-}
-
-// -:
-type TExprList_item = struct {
-	FpExpr         uintptr
-	FzEName        uintptr
-	FsortFlags     Tu8
-	F__ccgo_align3 [3]byte
-	F__ccgo20      uint8
-	Fu             struct {
-		FiConstExprReg [0]int32
-		Fx             struct {
-			FiOrderByCol Tu16
-			FiAlias      Tu16
-		}
-	}
-}
-
-// -:
-type T_STGMEDIUM_UNION = struct {
-	Ftymed TDWORD
-	Fu     T__WIDL_objidl_generated_name_0000000D
 }
 
 // -:
@@ -91493,10 +91489,51 @@ type T__tagBRECORD = struct {
 }
 
 // -:
+type T__WIDL_objidl_generated_name_0000000D = struct {
+	FhHEnhMetaFile [0]TwireHENHMETAFILE
+	FhGdiHandle    [0]uintptr
+	FhGlobal       [0]TwireHGLOBAL
+	FlpszFileName  [0]TLPOLESTR
+	Fpstm          [0]uintptr
+	Fpstg          [0]uintptr
+	FhMetaFilePict TwireHMETAFILEPICT
+}
+
+// -:
+type TMemValue = struct {
+	Fi      [0]Ti64
+	FnZero  [0]int32
+	FzPType [0]uintptr
+	FpDef   [0]uintptr
+	Fr      float64
+}
+
+// -:
 type T__WIDL_wtypes_generated_name_00000001 = struct {
 	FpwszName    [0]uintptr
 	FdwValue     TDWORD
 	F__ccgo_pad2 [4]byte
+}
+
+// -:
+type T__WIDL_wtypes_generated_name_00000002 = struct {
+	FhRemote     [0]uintptr
+	FhInproc     TLONG
+	F__ccgo_pad2 [4]byte
+}
+
+// -:
+type T__WIDL_wtypes_generated_name_00000005 = struct {
+	FhRemote     [0]uintptr
+	FhInproc64   [0]TINT64
+	FhInproc     TLONG
+	F__ccgo_pad3 [4]byte
+}
+
+// -:
+type T__WIDL_wtypes_generated_name_00000009 = struct {
+	FhRemote [0]TLONG
+	FhInproc TLONG
 }
 
 // -:
@@ -91518,51 +91555,18 @@ type T__WIDL_wtypes_generated_name_0000000A = struct {
 }
 
 // -:
-type TMemValue = struct {
-	Fi      [0]Ti64
-	FnZero  [0]int32
-	FzPType [0]uintptr
-	FpDef   [0]uintptr
-	Fr      float64
-}
-
-// -:
-type T__WIDL_wtypes_generated_name_00000004 = struct {
-	FhRemote     [0]uintptr
-	FhInproc64   [0]TINT64
-	FhInproc     TLONG
-	F__ccgo_pad3 [4]byte
-}
-
-// -:
-type T__WIDL_wtypes_generated_name_00000005 = struct {
-	FhRemote     [0]uintptr
-	FhInproc64   [0]TINT64
-	FhInproc     TLONG
-	F__ccgo_pad3 [4]byte
-}
-
-// -:
-type T__WIDL_wtypes_generated_name_00000006 = struct {
-	FhRemote     [0]uintptr
-	FhInproc64   [0]TINT64
-	FhInproc     TLONG
-	F__ccgo_pad3 [4]byte
-}
-
-// -:
-type T__WIDL_wtypes_generated_name_00000007 = struct {
-	FhRemote     [0]uintptr
-	FhInproc64   [0]TINT64
-	FhInproc     TLONG
-	F__ccgo_pad3 [4]byte
-}
-
-// -:
-type T__WIDL_objidl_generated_name_0000000C = struct {
-	FhPalette [0]TwireHPALETTE
-	FhGeneric [0]TwireHGLOBAL
-	FhBitmap  TwireHBITMAP
+type T__WIDL_oaidl_generated_name_0000000E = struct {
+	FUnknownStr   [0]TSAFEARR_UNKNOWN
+	FDispatchStr  [0]TSAFEARR_DISPATCH
+	FVariantStr   [0]TSAFEARR_VARIANT
+	FRecordStr    [0]TSAFEARR_BRECORD
+	FHaveIidStr   [0]TSAFEARR_HAVEIID
+	FByteStr      [0]TBYTE_SIZEDARR
+	FWordStr      [0]TWORD_SIZEDARR
+	FLongStr      [0]TDWORD_SIZEDARR
+	FHyperStr     [0]THYPER_SIZEDARR
+	FBstrStr      TSAFEARR_BSTR
+	F__ccgo_pad10 [16]byte
 }
 
 // -:
@@ -91586,7 +91590,15 @@ type Tp4union = struct {
 }
 
 // -:
-type T__WIDL_wtypes_generated_name_00000003 = struct {
+type T__WIDL_wtypes_generated_name_00000004 = struct {
+	FhRemote     [0]uintptr
+	FhInproc64   [0]TINT64
+	FhInproc     TLONG
+	F__ccgo_pad3 [4]byte
+}
+
+// -:
+type T__WIDL_wtypes_generated_name_00000007 = struct {
 	FhRemote     [0]uintptr
 	FhInproc64   [0]TINT64
 	FhInproc     TLONG
@@ -91602,42 +91614,26 @@ type T__WIDL_wtypes_generated_name_00000008 = struct {
 }
 
 // -:
-type T__WIDL_wtypes_generated_name_00000009 = struct {
-	FhRemote [0]TLONG
-	FhInproc TLONG
+type T__WIDL_objidl_generated_name_0000000C = struct {
+	FhPalette [0]TwireHPALETTE
+	FhGeneric [0]TwireHGLOBAL
+	FhBitmap  TwireHBITMAP
 }
 
 // -:
-type T__WIDL_wtypes_generated_name_00000002 = struct {
+type T__WIDL_wtypes_generated_name_00000003 = struct {
 	FhRemote     [0]uintptr
+	FhInproc64   [0]TINT64
 	FhInproc     TLONG
-	F__ccgo_pad2 [4]byte
+	F__ccgo_pad3 [4]byte
 }
 
 // -:
-type T__WIDL_oaidl_generated_name_0000000E = struct {
-	FUnknownStr   [0]TSAFEARR_UNKNOWN
-	FDispatchStr  [0]TSAFEARR_DISPATCH
-	FVariantStr   [0]TSAFEARR_VARIANT
-	FRecordStr    [0]TSAFEARR_BRECORD
-	FHaveIidStr   [0]TSAFEARR_HAVEIID
-	FByteStr      [0]TBYTE_SIZEDARR
-	FWordStr      [0]TWORD_SIZEDARR
-	FLongStr      [0]TDWORD_SIZEDARR
-	FHyperStr     [0]THYPER_SIZEDARR
-	FBstrStr      TSAFEARR_BSTR
-	F__ccgo_pad10 [16]byte
-}
-
-// -:
-type T__WIDL_objidl_generated_name_0000000D = struct {
-	FhHEnhMetaFile [0]TwireHENHMETAFILE
-	FhGdiHandle    [0]uintptr
-	FhGlobal       [0]TwireHGLOBAL
-	FlpszFileName  [0]TLPOLESTR
-	Fpstm          [0]uintptr
-	Fpstg          [0]uintptr
-	FhMetaFilePict TwireHMETAFILEPICT
+type T__WIDL_wtypes_generated_name_00000006 = struct {
+	FhRemote     [0]uintptr
+	FhInproc64   [0]TINT64
+	FhInproc     TLONG
+	F__ccgo_pad3 [4]byte
 }
 
 // /tmp/libsqlite3/sqlite-src-3370200/src/sqliteInt.h:2018:9:
@@ -91742,7 +91738,7 @@ func _pager_open(tls *libc.TLS, NotUsed uintptr, interp uintptr, argc int32, arg
 	// /tmp/libsqlite3/sqlite-src-3370200/src/test2.c:56:3:
 	if argc != int32(3) {
 		// /tmp/libsqlite3/sqlite-src-3370200/src/test2.c:57:5:
-		libtcl8_6.XTcl_AppendResult(tls, interp, libc.VaList(bp+128, __ccgo_ts+116, *(*uintptr)(unsafe.Pointer(argv)), __ccgo_ts+9538, 0))
+		libtcl8_6.XTcl_AppendResult(tls, interp, libc.VaList(bp+128, __ccgo_ts+116, *(*uintptr)(unsafe.Pointer(argv)), __ccgo_ts+9530, 0))
 		// /tmp/libsqlite3/sqlite-src-3370200/src/test2.c:59:5:
 		return int32(m_TCL_ERROR)
 	}
@@ -91793,7 +91789,7 @@ func _pager_close(tls *libc.TLS, NotUsed uintptr, interp uintptr, argc int32, ar
 	// /tmp/libsqlite3/sqlite-src-3370200/src/test2.c:90:3:
 	if argc != int32(2) {
 		// /tmp/libsqlite3/sqlite-src-3370200/src/test2.c:91:5:
-		libtcl8_6.XTcl_AppendResult(tls, interp, libc.VaList(bp+8, __ccgo_ts+116, *(*uintptr)(unsafe.Pointer(argv)), __ccgo_ts+9556, 0))
+		libtcl8_6.XTcl_AppendResult(tls, interp, libc.VaList(bp+8, __ccgo_ts+116, *(*uintptr)(unsafe.Pointer(argv)), __ccgo_ts+9548, 0))
 		// /tmp/libsqlite3/sqlite-src-3370200/src/test2.c:93:5:
 		return int32(m_TCL_ERROR)
 	}
@@ -91831,7 +91827,7 @@ func _pager_rollback(tls *libc.TLS, NotUsed uintptr, interp uintptr, argc int32,
 	// /tmp/libsqlite3/sqlite-src-3370200/src/test2.c:117:3:
 	if argc != int32(2) {
 		// /tmp/libsqlite3/sqlite-src-3370200/src/test2.c:118:5:
-		libtcl8_6.XTcl_AppendResult(tls, interp, libc.VaList(bp+8, __ccgo_ts+116, *(*uintptr)(unsafe.Pointer(argv)), __ccgo_ts+9556, 0))
+		libtcl8_6.XTcl_AppendResult(tls, interp, libc.VaList(bp+8, __ccgo_ts+116, *(*uintptr)(unsafe.Pointer(argv)), __ccgo_ts+9548, 0))
 		// /tmp/libsqlite3/sqlite-src-3370200/src/test2.c:120:5:
 		return int32(m_TCL_ERROR)
 	}
@@ -91869,7 +91865,7 @@ func _pager_commit(tls *libc.TLS, NotUsed uintptr, interp uintptr, argc int32, a
 	// /tmp/libsqlite3/sqlite-src-3370200/src/test2.c:144:3:
 	if argc != int32(2) {
 		// /tmp/libsqlite3/sqlite-src-3370200/src/test2.c:145:5:
-		libtcl8_6.XTcl_AppendResult(tls, interp, libc.VaList(bp+8, __ccgo_ts+116, *(*uintptr)(unsafe.Pointer(argv)), __ccgo_ts+9556, 0))
+		libtcl8_6.XTcl_AppendResult(tls, interp, libc.VaList(bp+8, __ccgo_ts+116, *(*uintptr)(unsafe.Pointer(argv)), __ccgo_ts+9548, 0))
 		// /tmp/libsqlite3/sqlite-src-3370200/src/test2.c:147:5:
 		return int32(m_TCL_ERROR)
 	}
@@ -91916,7 +91912,7 @@ func _pager_stmt_begin(tls *libc.TLS, NotUsed uintptr, interp uintptr, argc int3
 	// /tmp/libsqlite3/sqlite-src-3370200/src/test2.c:176:3:
 	if argc != int32(2) {
 		// /tmp/libsqlite3/sqlite-src-3370200/src/test2.c:177:5:
-		libtcl8_6.XTcl_AppendResult(tls, interp, libc.VaList(bp+8, __ccgo_ts+116, *(*uintptr)(unsafe.Pointer(argv)), __ccgo_ts+9556, 0))
+		libtcl8_6.XTcl_AppendResult(tls, interp, libc.VaList(bp+8, __ccgo_ts+116, *(*uintptr)(unsafe.Pointer(argv)), __ccgo_ts+9548, 0))
 		// /tmp/libsqlite3/sqlite-src-3370200/src/test2.c:179:5:
 		return int32(m_TCL_ERROR)
 	}
@@ -91954,7 +91950,7 @@ func _pager_stmt_rollback(tls *libc.TLS, NotUsed uintptr, interp uintptr, argc i
 	// /tmp/libsqlite3/sqlite-src-3370200/src/test2.c:203:3:
 	if argc != int32(2) {
 		// /tmp/libsqlite3/sqlite-src-3370200/src/test2.c:204:5:
-		libtcl8_6.XTcl_AppendResult(tls, interp, libc.VaList(bp+8, __ccgo_ts+116, *(*uintptr)(unsafe.Pointer(argv)), __ccgo_ts+9556, 0))
+		libtcl8_6.XTcl_AppendResult(tls, interp, libc.VaList(bp+8, __ccgo_ts+116, *(*uintptr)(unsafe.Pointer(argv)), __ccgo_ts+9548, 0))
 		// /tmp/libsqlite3/sqlite-src-3370200/src/test2.c:206:5:
 		return int32(m_TCL_ERROR)
 	}
@@ -91994,7 +91990,7 @@ func _pager_stmt_commit(tls *libc.TLS, NotUsed uintptr, interp uintptr, argc int
 	// /tmp/libsqlite3/sqlite-src-3370200/src/test2.c:231:3:
 	if argc != int32(2) {
 		// /tmp/libsqlite3/sqlite-src-3370200/src/test2.c:232:5:
-		libtcl8_6.XTcl_AppendResult(tls, interp, libc.VaList(bp+8, __ccgo_ts+116, *(*uintptr)(unsafe.Pointer(argv)), __ccgo_ts+9556, 0))
+		libtcl8_6.XTcl_AppendResult(tls, interp, libc.VaList(bp+8, __ccgo_ts+116, *(*uintptr)(unsafe.Pointer(argv)), __ccgo_ts+9548, 0))
 		// /tmp/libsqlite3/sqlite-src-3370200/src/test2.c:234:5:
 		return int32(m_TCL_ERROR)
 	}
@@ -92033,7 +92029,7 @@ func _pager_stats(tls *libc.TLS, NotUsed uintptr, interp uintptr, argc int32, ar
 	// /tmp/libsqlite3/sqlite-src-3370200/src/test2.c:258:3:
 	if argc != int32(2) {
 		// /tmp/libsqlite3/sqlite-src-3370200/src/test2.c:259:5:
-		libtcl8_6.XTcl_AppendResult(tls, interp, libc.VaList(bp+112, __ccgo_ts+116, *(*uintptr)(unsafe.Pointer(argv)), __ccgo_ts+9556, 0))
+		libtcl8_6.XTcl_AppendResult(tls, interp, libc.VaList(bp+112, __ccgo_ts+116, *(*uintptr)(unsafe.Pointer(argv)), __ccgo_ts+9548, 0))
 		// /tmp/libsqlite3/sqlite-src-3370200/src/test2.c:261:5:
 		return int32(m_TCL_ERROR)
 	}
@@ -92063,15 +92059,15 @@ func _pager_stats(tls *libc.TLS, NotUsed uintptr, interp uintptr, argc int32, ar
 
 // /tmp/libsqlite3/sqlite-src-3370200/src/test2.c:266:17:
 var _zName = [9]uintptr{
-	0: __ccgo_ts + 9561,
-	1: __ccgo_ts + 9565,
+	0: __ccgo_ts + 9553,
+	1: __ccgo_ts + 9557,
 	2: __ccgo_ts + 3433,
-	3: __ccgo_ts + 9570,
-	4: __ccgo_ts + 9575,
-	5: __ccgo_ts + 9581,
-	6: __ccgo_ts + 9585,
-	7: __ccgo_ts + 9589,
-	8: __ccgo_ts + 9594,
+	3: __ccgo_ts + 9562,
+	4: __ccgo_ts + 9567,
+	5: __ccgo_ts + 9573,
+	6: __ccgo_ts + 9577,
+	7: __ccgo_ts + 9581,
+	8: __ccgo_ts + 9586,
 }
 
 // C documentation
@@ -92094,7 +92090,7 @@ func _pager_pagecount(tls *libc.TLS, NotUsed uintptr, interp uintptr, argc int32
 	// /tmp/libsqlite3/sqlite-src-3370200/src/test2.c:292:3:
 	if argc != int32(2) {
 		// /tmp/libsqlite3/sqlite-src-3370200/src/test2.c:293:5:
-		libtcl8_6.XTcl_AppendResult(tls, interp, libc.VaList(bp+112, __ccgo_ts+116, *(*uintptr)(unsafe.Pointer(argv)), __ccgo_ts+9556, 0))
+		libtcl8_6.XTcl_AppendResult(tls, interp, libc.VaList(bp+112, __ccgo_ts+116, *(*uintptr)(unsafe.Pointer(argv)), __ccgo_ts+9548, 0))
 		// /tmp/libsqlite3/sqlite-src-3370200/src/test2.c:295:5:
 		return int32(m_TCL_ERROR)
 	}
@@ -92134,7 +92130,7 @@ func _page_get(tls *libc.TLS, NotUsed uintptr, interp uintptr, argc int32, argv 
 	// /tmp/libsqlite3/sqlite-src-3370200/src/test2.c:320:3:
 	if argc != int32(3) {
 		// /tmp/libsqlite3/sqlite-src-3370200/src/test2.c:321:5:
-		libtcl8_6.XTcl_AppendResult(tls, interp, libc.VaList(bp+128, __ccgo_ts+116, *(*uintptr)(unsafe.Pointer(argv)), __ccgo_ts+9599, 0))
+		libtcl8_6.XTcl_AppendResult(tls, interp, libc.VaList(bp+128, __ccgo_ts+116, *(*uintptr)(unsafe.Pointer(argv)), __ccgo_ts+9591, 0))
 		// /tmp/libsqlite3/sqlite-src-3370200/src/test2.c:323:5:
 		return int32(m_TCL_ERROR)
 	}
@@ -92188,7 +92184,7 @@ func _page_lookup(tls *libc.TLS, NotUsed uintptr, interp uintptr, argc int32, ar
 	// /tmp/libsqlite3/sqlite-src-3370200/src/test2.c:356:3:
 	if argc != int32(3) {
 		// /tmp/libsqlite3/sqlite-src-3370200/src/test2.c:357:5:
-		libtcl8_6.XTcl_AppendResult(tls, interp, libc.VaList(bp+112, __ccgo_ts+116, *(*uintptr)(unsafe.Pointer(argv)), __ccgo_ts+9599, 0))
+		libtcl8_6.XTcl_AppendResult(tls, interp, libc.VaList(bp+112, __ccgo_ts+116, *(*uintptr)(unsafe.Pointer(argv)), __ccgo_ts+9591, 0))
 		// /tmp/libsqlite3/sqlite-src-3370200/src/test2.c:359:5:
 		return int32(m_TCL_ERROR)
 	}
@@ -92229,7 +92225,7 @@ func _pager_truncate(tls *libc.TLS, NotUsed uintptr, interp uintptr, argc int32,
 	// /tmp/libsqlite3/sqlite-src-3370200/src/test2.c:382:3:
 	if argc != int32(3) {
 		// /tmp/libsqlite3/sqlite-src-3370200/src/test2.c:383:5:
-		libtcl8_6.XTcl_AppendResult(tls, interp, libc.VaList(bp+16, __ccgo_ts+116, *(*uintptr)(unsafe.Pointer(argv)), __ccgo_ts+9599, 0))
+		libtcl8_6.XTcl_AppendResult(tls, interp, libc.VaList(bp+16, __ccgo_ts+116, *(*uintptr)(unsafe.Pointer(argv)), __ccgo_ts+9591, 0))
 		// /tmp/libsqlite3/sqlite-src-3370200/src/test2.c:385:5:
 		return int32(m_TCL_ERROR)
 	}
@@ -92264,7 +92260,7 @@ func _page_unref(tls *libc.TLS, NotUsed uintptr, interp uintptr, argc int32, arg
 	// /tmp/libsqlite3/sqlite-src-3370200/src/test2.c:406:3:
 	if argc != int32(2) {
 		// /tmp/libsqlite3/sqlite-src-3370200/src/test2.c:407:5:
-		libtcl8_6.XTcl_AppendResult(tls, interp, libc.VaList(bp+8, __ccgo_ts+116, *(*uintptr)(unsafe.Pointer(argv)), __ccgo_ts+9609, 0))
+		libtcl8_6.XTcl_AppendResult(tls, interp, libc.VaList(bp+8, __ccgo_ts+116, *(*uintptr)(unsafe.Pointer(argv)), __ccgo_ts+9601, 0))
 		// /tmp/libsqlite3/sqlite-src-3370200/src/test2.c:409:5:
 		return int32(m_TCL_ERROR)
 	}
@@ -92295,7 +92291,7 @@ func _page_read(tls *libc.TLS, NotUsed uintptr, interp uintptr, argc int32, argv
 	// /tmp/libsqlite3/sqlite-src-3370200/src/test2.c:429:3:
 	if argc != int32(2) {
 		// /tmp/libsqlite3/sqlite-src-3370200/src/test2.c:430:5:
-		libtcl8_6.XTcl_AppendResult(tls, interp, libc.VaList(bp+112, __ccgo_ts+116, *(*uintptr)(unsafe.Pointer(argv)), __ccgo_ts+9609, 0))
+		libtcl8_6.XTcl_AppendResult(tls, interp, libc.VaList(bp+112, __ccgo_ts+116, *(*uintptr)(unsafe.Pointer(argv)), __ccgo_ts+9601, 0))
 		// /tmp/libsqlite3/sqlite-src-3370200/src/test2.c:432:5:
 		return int32(m_TCL_ERROR)
 	}
@@ -92328,7 +92324,7 @@ func _page_number(tls *libc.TLS, NotUsed uintptr, interp uintptr, argc int32, ar
 	// /tmp/libsqlite3/sqlite-src-3370200/src/test2.c:453:3:
 	if argc != int32(2) {
 		// /tmp/libsqlite3/sqlite-src-3370200/src/test2.c:454:5:
-		libtcl8_6.XTcl_AppendResult(tls, interp, libc.VaList(bp+112, __ccgo_ts+116, *(*uintptr)(unsafe.Pointer(argv)), __ccgo_ts+9609, 0))
+		libtcl8_6.XTcl_AppendResult(tls, interp, libc.VaList(bp+112, __ccgo_ts+116, *(*uintptr)(unsafe.Pointer(argv)), __ccgo_ts+9601, 0))
 		// /tmp/libsqlite3/sqlite-src-3370200/src/test2.c:456:5:
 		return int32(m_TCL_ERROR)
 	}
@@ -92361,7 +92357,7 @@ func _page_write(tls *libc.TLS, NotUsed uintptr, interp uintptr, argc int32, arg
 	// /tmp/libsqlite3/sqlite-src-3370200/src/test2.c:478:3:
 	if argc != int32(3) {
 		// /tmp/libsqlite3/sqlite-src-3370200/src/test2.c:479:5:
-		libtcl8_6.XTcl_AppendResult(tls, interp, libc.VaList(bp+8, __ccgo_ts+116, *(*uintptr)(unsafe.Pointer(argv)), __ccgo_ts+9616, 0))
+		libtcl8_6.XTcl_AppendResult(tls, interp, libc.VaList(bp+8, __ccgo_ts+116, *(*uintptr)(unsafe.Pointer(argv)), __ccgo_ts+9608, 0))
 		// /tmp/libsqlite3/sqlite-src-3370200/src/test2.c:481:5:
 		return int32(m_TCL_ERROR)
 	}
@@ -92414,7 +92410,7 @@ func _fake_big_file(tls *libc.TLS, NotUsed uintptr, interp uintptr, argc int32, 
 	// /tmp/libsqlite3/sqlite-src-3370200/src/test2.c:518:3:
 	if argc != int32(3) {
 		// /tmp/libsqlite3/sqlite-src-3370200/src/test2.c:519:5:
-		libtcl8_6.XTcl_AppendResult(tls, interp, libc.VaList(bp+24, __ccgo_ts+116, *(*uintptr)(unsafe.Pointer(argv)), __ccgo_ts+9628, 0))
+		libtcl8_6.XTcl_AppendResult(tls, interp, libc.VaList(bp+24, __ccgo_ts+116, *(*uintptr)(unsafe.Pointer(argv)), __ccgo_ts+9620, 0))
 		// /tmp/libsqlite3/sqlite-src-3370200/src/test2.c:521:5:
 		return int32(m_TCL_ERROR)
 	}
@@ -92443,7 +92439,7 @@ func _fake_big_file(tls *libc.TLS, NotUsed uintptr, interp uintptr, argc int32, 
 	// /tmp/libsqlite3/sqlite-src-3370200/src/test2.c:534:3:
 	if rc != 0 {
 		// /tmp/libsqlite3/sqlite-src-3370200/src/test2.c:535:5:
-		libtcl8_6.XTcl_AppendResult(tls, interp, libc.VaList(bp+24, __ccgo_ts+9647, x_sqlite3ErrName(tls, rc), 0))
+		libtcl8_6.XTcl_AppendResult(tls, interp, libc.VaList(bp+24, __ccgo_ts+9639, x_sqlite3ErrName(tls, rc), 0))
 		// /tmp/libsqlite3/sqlite-src-3370200/src/test2.c:536:5:
 		x_sqlite3_free(tls, zFile)
 		// /tmp/libsqlite3/sqlite-src-3370200/src/test2.c:537:5:
@@ -92454,7 +92450,7 @@ func _fake_big_file(tls *libc.TLS, NotUsed uintptr, interp uintptr, argc int32, 
 	// /tmp/libsqlite3/sqlite-src-3370200/src/test2.c:540:3:
 	offset *= int64(libc.Int32FromInt32(1024) * libc.Int32FromInt32(1024))
 	// /tmp/libsqlite3/sqlite-src-3370200/src/test2.c:541:3:
-	rc = x_sqlite3OsWrite(tls, *(*uintptr)(unsafe.Pointer(bp)), __ccgo_ts+9661, int32(14), offset)
+	rc = x_sqlite3OsWrite(tls, *(*uintptr)(unsafe.Pointer(bp)), __ccgo_ts+9653, int32(14), offset)
 	// /tmp/libsqlite3/sqlite-src-3370200/src/test2.c:542:3:
 	x_sqlite3OsCloseFree(tls, *(*uintptr)(unsafe.Pointer(bp)))
 	// /tmp/libsqlite3/sqlite-src-3370200/src/test2.c:543:3:
@@ -92462,7 +92458,7 @@ func _fake_big_file(tls *libc.TLS, NotUsed uintptr, interp uintptr, argc int32, 
 	// /tmp/libsqlite3/sqlite-src-3370200/src/test2.c:544:3:
 	if rc != 0 {
 		// /tmp/libsqlite3/sqlite-src-3370200/src/test2.c:545:5:
-		libtcl8_6.XTcl_AppendResult(tls, interp, libc.VaList(bp+24, __ccgo_ts+9675, x_sqlite3ErrName(tls, rc), 0))
+		libtcl8_6.XTcl_AppendResult(tls, interp, libc.VaList(bp+24, __ccgo_ts+9667, x_sqlite3ErrName(tls, rc), 0))
 		// /tmp/libsqlite3/sqlite-src-3370200/src/test2.c:546:5:
 		return int32(m_TCL_ERROR)
 	}
@@ -92489,7 +92485,7 @@ func _testPendingByte(tls *libc.TLS, NotUsed uintptr, interp uintptr, argc int32
 	// /tmp/libsqlite3/sqlite-src-3370200/src/test2.c:566:3:
 	if argc != int32(2) {
 		// /tmp/libsqlite3/sqlite-src-3370200/src/test2.c:567:5:
-		libtcl8_6.XTcl_AppendResult(tls, interp, libc.VaList(bp+16, __ccgo_ts+116, *(*uintptr)(unsafe.Pointer(argv)), __ccgo_ts+9690, libc.UintptrFromInt32(0)))
+		libtcl8_6.XTcl_AppendResult(tls, interp, libc.VaList(bp+16, __ccgo_ts+116, *(*uintptr)(unsafe.Pointer(argv)), __ccgo_ts+9682, libc.UintptrFromInt32(0)))
 		// /tmp/libsqlite3/sqlite-src-3370200/src/test2.c:569:5:
 		return int32(m_TCL_ERROR)
 	}
@@ -92585,7 +92581,7 @@ func _faultSimCallback(tls *libc.TLS, x int32) (r int32) {
 	// /tmp/libsqlite3/sqlite-src-3370200/src/test2.c:606:3:
 	if rc != 0 {
 		// /tmp/libsqlite3/sqlite-src-3370200/src/test2.c:607:5:
-		v3 = __ccgo_ts + 9705
+		v3 = __ccgo_ts + 9697
 		libc.VaList(bp, _faultSimScript)
 		// /usr/x86_64-w64-mingw32/include/stdio.h:360:35:
 		__local_argv = bp
@@ -92630,7 +92626,7 @@ func _faultInstallCmd(tls *libc.TLS, NotUsed uintptr, interp uintptr, argc int32
 	// /tmp/libsqlite3/sqlite-src-3370200/src/test2.c:632:3:
 	if argc != int32(1) && argc != int32(2) {
 		// /tmp/libsqlite3/sqlite-src-3370200/src/test2.c:633:5:
-		libtcl8_6.XTcl_AppendResult(tls, interp, libc.VaList(bp+8, __ccgo_ts+116, *(*uintptr)(unsafe.Pointer(argv)), __ccgo_ts+9741, libc.UintptrFromInt32(0)))
+		libtcl8_6.XTcl_AppendResult(tls, interp, libc.VaList(bp+8, __ccgo_ts+116, *(*uintptr)(unsafe.Pointer(argv)), __ccgo_ts+9733, libc.UintptrFromInt32(0)))
 	}
 	// /tmp/libsqlite3/sqlite-src-3370200/src/test2.c:636:3:
 	if argc == int32(2) {
@@ -92703,7 +92699,7 @@ func _testBitvecBuiltinTest(tls *libc.TLS, NotUsed uintptr, interp uintptr, argc
 	// /tmp/libsqlite3/sqlite-src-3370200/src/test2.c:676:3:
 	if argc != int32(3) {
 		// /tmp/libsqlite3/sqlite-src-3370200/src/test2.c:677:5:
-		libtcl8_6.XTcl_AppendResult(tls, interp, libc.VaList(bp+416, __ccgo_ts+116, *(*uintptr)(unsafe.Pointer(argv)), __ccgo_ts+9750, libc.UintptrFromInt32(0)))
+		libtcl8_6.XTcl_AppendResult(tls, interp, libc.VaList(bp+416, __ccgo_ts+116, *(*uintptr)(unsafe.Pointer(argv)), __ccgo_ts+9742, libc.UintptrFromInt32(0)))
 	}
 	// /tmp/libsqlite3/sqlite-src-3370200/src/test2.c:680:3:
 	if libtcl8_6.XTcl_GetInt(tls, interp, *(*uintptr)(unsafe.Pointer(argv + 1*8)), bp) != 0 {
@@ -92768,19 +92764,19 @@ func x_Sqlitetest2_Init(tls *libc.TLS, interp uintptr) (r int32) {
 		i++
 	}
 	// /tmp/libsqlite3/sqlite-src-3370200/src/test2.c:735:3:
-	libtcl8_6.XTcl_LinkVar(tls, interp, __ccgo_ts+10087, uintptr(unsafe.Pointer(&x_sqlite3_io_error_pending)), int32(m_TCL_LINK_INT))
+	libtcl8_6.XTcl_LinkVar(tls, interp, __ccgo_ts+10079, uintptr(unsafe.Pointer(&x_sqlite3_io_error_pending)), int32(m_TCL_LINK_INT))
 	// /tmp/libsqlite3/sqlite-src-3370200/src/test2.c:737:3:
-	libtcl8_6.XTcl_LinkVar(tls, interp, __ccgo_ts+10111, uintptr(unsafe.Pointer(&x_sqlite3_io_error_persist)), int32(m_TCL_LINK_INT))
+	libtcl8_6.XTcl_LinkVar(tls, interp, __ccgo_ts+10103, uintptr(unsafe.Pointer(&x_sqlite3_io_error_persist)), int32(m_TCL_LINK_INT))
 	// /tmp/libsqlite3/sqlite-src-3370200/src/test2.c:739:3:
-	libtcl8_6.XTcl_LinkVar(tls, interp, __ccgo_ts+10135, uintptr(unsafe.Pointer(&x_sqlite3_io_error_hit)), int32(m_TCL_LINK_INT))
+	libtcl8_6.XTcl_LinkVar(tls, interp, __ccgo_ts+10127, uintptr(unsafe.Pointer(&x_sqlite3_io_error_hit)), int32(m_TCL_LINK_INT))
 	// /tmp/libsqlite3/sqlite-src-3370200/src/test2.c:741:3:
-	libtcl8_6.XTcl_LinkVar(tls, interp, __ccgo_ts+10155, uintptr(unsafe.Pointer(&x_sqlite3_io_error_hardhit)), int32(m_TCL_LINK_INT))
+	libtcl8_6.XTcl_LinkVar(tls, interp, __ccgo_ts+10147, uintptr(unsafe.Pointer(&x_sqlite3_io_error_hardhit)), int32(m_TCL_LINK_INT))
 	// /tmp/libsqlite3/sqlite-src-3370200/src/test2.c:743:3:
-	libtcl8_6.XTcl_LinkVar(tls, interp, __ccgo_ts+10179, uintptr(unsafe.Pointer(&x_sqlite3_diskfull_pending)), int32(m_TCL_LINK_INT))
+	libtcl8_6.XTcl_LinkVar(tls, interp, __ccgo_ts+10171, uintptr(unsafe.Pointer(&x_sqlite3_diskfull_pending)), int32(m_TCL_LINK_INT))
 	// /tmp/libsqlite3/sqlite-src-3370200/src/test2.c:745:3:
-	libtcl8_6.XTcl_LinkVar(tls, interp, __ccgo_ts+10203, uintptr(unsafe.Pointer(&x_sqlite3_diskfull)), int32(m_TCL_LINK_INT))
+	libtcl8_6.XTcl_LinkVar(tls, interp, __ccgo_ts+10195, uintptr(unsafe.Pointer(&x_sqlite3_diskfull)), int32(m_TCL_LINK_INT))
 	// /tmp/libsqlite3/sqlite-src-3370200/src/test2.c:748:3:
-	libtcl8_6.XTcl_LinkVar(tls, interp, __ccgo_ts+10219, uintptr(unsafe.Pointer(&x_sqlite3PendingByte)), libc.Int32FromInt32(m_TCL_LINK_INT)|libc.Int32FromInt32(m_TCL_LINK_READ_ONLY))
+	libtcl8_6.XTcl_LinkVar(tls, interp, __ccgo_ts+10211, uintptr(unsafe.Pointer(&x_sqlite3PendingByte)), libc.Int32FromInt32(m_TCL_LINK_INT)|libc.Int32FromInt32(m_TCL_LINK_READ_ONLY))
 	// /tmp/libsqlite3/sqlite-src-3370200/src/test2.c:751:3:
 	return m_TCL_OK
 }
@@ -92791,64 +92787,64 @@ var _aCmd1 = [20]struct {
 	FxProc uintptr
 }{
 	0: {
-		FzName: __ccgo_ts + 9765,
+		FzName: __ccgo_ts + 9757,
 	},
 	1: {
-		FzName: __ccgo_ts + 9776,
+		FzName: __ccgo_ts + 9768,
 	},
 	2: {
-		FzName: __ccgo_ts + 9788,
+		FzName: __ccgo_ts + 9780,
 	},
 	3: {
-		FzName: __ccgo_ts + 9801,
+		FzName: __ccgo_ts + 9793,
 	},
 	4: {
-		FzName: __ccgo_ts + 9816,
+		FzName: __ccgo_ts + 9808,
 	},
 	5: {
-		FzName: __ccgo_ts + 9833,
+		FzName: __ccgo_ts + 9825,
 	},
 	6: {
-		FzName: __ccgo_ts + 9851,
+		FzName: __ccgo_ts + 9843,
 	},
 	7: {
-		FzName: __ccgo_ts + 9871,
+		FzName: __ccgo_ts + 9863,
 	},
 	8: {
-		FzName: __ccgo_ts + 9883,
+		FzName: __ccgo_ts + 9875,
 	},
 	9: {
-		FzName: __ccgo_ts + 9899,
+		FzName: __ccgo_ts + 9891,
 	},
 	10: {
-		FzName: __ccgo_ts + 9908,
+		FzName: __ccgo_ts + 9900,
 	},
 	11: {
-		FzName: __ccgo_ts + 9920,
+		FzName: __ccgo_ts + 9912,
 	},
 	12: {
-		FzName: __ccgo_ts + 9931,
+		FzName: __ccgo_ts + 9923,
 	},
 	13: {
-		FzName: __ccgo_ts + 9941,
+		FzName: __ccgo_ts + 9933,
 	},
 	14: {
-		FzName: __ccgo_ts + 9952,
+		FzName: __ccgo_ts + 9944,
 	},
 	15: {
-		FzName: __ccgo_ts + 9964,
+		FzName: __ccgo_ts + 9956,
 	},
 	16: {
-		FzName: __ccgo_ts + 9979,
+		FzName: __ccgo_ts + 9971,
 	},
 	17: {
-		FzName: __ccgo_ts + 9993,
+		FzName: __ccgo_ts + 9985,
 	},
 	18: {
-		FzName: __ccgo_ts + 10018,
+		FzName: __ccgo_ts + 10010,
 	},
 	19: {
-		FzName: __ccgo_ts + 10052,
+		FzName: __ccgo_ts + 10044,
 	},
 }
 
@@ -93261,7 +93257,7 @@ func _btree_open(tls *libc.TLS, NotUsed uintptr, interp uintptr, argc int32, arg
 	// /tmp/libsqlite3/sqlite-src-3370200/src/test3.c:51:3:
 	if argc != int32(3) {
 		// /tmp/libsqlite3/sqlite-src-3370200/src/test3.c:52:5:
-		libtcl8_6.XTcl_AppendResult(tls, interp, libc.VaList(bp+120, __ccgo_ts+116, *(*uintptr)(unsafe.Pointer(argv)), __ccgo_ts+10239, 0))
+		libtcl8_6.XTcl_AppendResult(tls, interp, libc.VaList(bp+120, __ccgo_ts+116, *(*uintptr)(unsafe.Pointer(argv)), __ccgo_ts+10231, 0))
 		// /tmp/libsqlite3/sqlite-src-3370200/src/test3.c:54:5:
 		return int32(m_TCL_ERROR)
 	}
@@ -93333,7 +93329,7 @@ func _btree_close(tls *libc.TLS, NotUsed uintptr, interp uintptr, argc int32, ar
 	// /tmp/libsqlite3/sqlite-src-3370200/src/test3.c:94:3:
 	if argc != int32(2) {
 		// /tmp/libsqlite3/sqlite-src-3370200/src/test3.c:95:5:
-		libtcl8_6.XTcl_AppendResult(tls, interp, libc.VaList(bp+8, __ccgo_ts+116, *(*uintptr)(unsafe.Pointer(argv)), __ccgo_ts+9556, 0))
+		libtcl8_6.XTcl_AppendResult(tls, interp, libc.VaList(bp+8, __ccgo_ts+116, *(*uintptr)(unsafe.Pointer(argv)), __ccgo_ts+9548, 0))
 		// /tmp/libsqlite3/sqlite-src-3370200/src/test3.c:97:5:
 		return int32(m_TCL_ERROR)
 	}
@@ -93382,7 +93378,7 @@ func _btree_begin_transaction(tls *libc.TLS, NotUsed uintptr, interp uintptr, ar
 	// /tmp/libsqlite3/sqlite-src-3370200/src/test3.c:129:3:
 	if argc != int32(2) {
 		// /tmp/libsqlite3/sqlite-src-3370200/src/test3.c:130:5:
-		libtcl8_6.XTcl_AppendResult(tls, interp, libc.VaList(bp+8, __ccgo_ts+116, *(*uintptr)(unsafe.Pointer(argv)), __ccgo_ts+9556, 0))
+		libtcl8_6.XTcl_AppendResult(tls, interp, libc.VaList(bp+8, __ccgo_ts+116, *(*uintptr)(unsafe.Pointer(argv)), __ccgo_ts+9548, 0))
 		// /tmp/libsqlite3/sqlite-src-3370200/src/test3.c:132:5:
 		return int32(m_TCL_ERROR)
 	}
@@ -93424,7 +93420,7 @@ func _btree_pager_stats(tls *libc.TLS, NotUsed uintptr, interp uintptr, argc int
 	// /tmp/libsqlite3/sqlite-src-3370200/src/test3.c:160:3:
 	if argc != int32(2) {
 		// /tmp/libsqlite3/sqlite-src-3370200/src/test3.c:161:5:
-		libtcl8_6.XTcl_AppendResult(tls, interp, libc.VaList(bp+112, __ccgo_ts+116, *(*uintptr)(unsafe.Pointer(argv)), __ccgo_ts+9556, 0))
+		libtcl8_6.XTcl_AppendResult(tls, interp, libc.VaList(bp+112, __ccgo_ts+116, *(*uintptr)(unsafe.Pointer(argv)), __ccgo_ts+9548, 0))
 		// /tmp/libsqlite3/sqlite-src-3370200/src/test3.c:163:5:
 		return int32(m_TCL_ERROR)
 	}
@@ -93467,17 +93463,17 @@ func _btree_pager_stats(tls *libc.TLS, NotUsed uintptr, interp uintptr, argc int
 
 // /tmp/libsqlite3/sqlite-src-3370200/src/test3.c:179:17:
 var _zName1 = [11]uintptr{
-	0:  __ccgo_ts + 9561,
-	1:  __ccgo_ts + 9565,
+	0:  __ccgo_ts + 9553,
+	1:  __ccgo_ts + 9557,
 	2:  __ccgo_ts + 3433,
-	3:  __ccgo_ts + 9570,
-	4:  __ccgo_ts + 9575,
-	5:  __ccgo_ts + 9581,
-	6:  __ccgo_ts + 9585,
-	7:  __ccgo_ts + 9589,
-	8:  __ccgo_ts + 9594,
-	9:  __ccgo_ts + 10263,
-	10: __ccgo_ts + 10268,
+	3:  __ccgo_ts + 9562,
+	4:  __ccgo_ts + 9567,
+	5:  __ccgo_ts + 9573,
+	6:  __ccgo_ts + 9577,
+	7:  __ccgo_ts + 9581,
+	8:  __ccgo_ts + 9586,
+	9:  __ccgo_ts + 10255,
+	10: __ccgo_ts + 10260,
 }
 
 // C documentation
@@ -93504,7 +93500,7 @@ func _btree_cursor(tls *libc.TLS, NotUsed uintptr, interp uintptr, argc int32, a
 	// /tmp/libsqlite3/sqlite-src-3370200/src/test3.c:213:3:
 	if argc != int32(4) {
 		// /tmp/libsqlite3/sqlite-src-3370200/src/test3.c:214:5:
-		libtcl8_6.XTcl_AppendResult(tls, interp, libc.VaList(bp+48, __ccgo_ts+116, *(*uintptr)(unsafe.Pointer(argv)), __ccgo_ts+10274, 0))
+		libtcl8_6.XTcl_AppendResult(tls, interp, libc.VaList(bp+48, __ccgo_ts+116, *(*uintptr)(unsafe.Pointer(argv)), __ccgo_ts+10266, 0))
 		// /tmp/libsqlite3/sqlite-src-3370200/src/test3.c:216:5:
 		return int32(m_TCL_ERROR)
 	}
@@ -93577,7 +93573,7 @@ func _btree_close_cursor(tls *libc.TLS, NotUsed uintptr, interp uintptr, argc in
 	// /tmp/libsqlite3/sqlite-src-3370200/src/test3.c:258:3:
 	if argc != int32(2) {
 		// /tmp/libsqlite3/sqlite-src-3370200/src/test3.c:259:5:
-		libtcl8_6.XTcl_AppendResult(tls, interp, libc.VaList(bp+8, __ccgo_ts+116, *(*uintptr)(unsafe.Pointer(argv)), __ccgo_ts+9556, 0))
+		libtcl8_6.XTcl_AppendResult(tls, interp, libc.VaList(bp+8, __ccgo_ts+116, *(*uintptr)(unsafe.Pointer(argv)), __ccgo_ts+9548, 0))
 		// /tmp/libsqlite3/sqlite-src-3370200/src/test3.c:261:5:
 		return int32(m_TCL_ERROR)
 	}
@@ -93622,7 +93618,7 @@ func _btree_next(tls *libc.TLS, NotUsed uintptr, interp uintptr, argc int32, arg
 	// /tmp/libsqlite3/sqlite-src-3370200/src/test3.c:302:3:
 	if argc != int32(2) {
 		// /tmp/libsqlite3/sqlite-src-3370200/src/test3.c:303:5:
-		libtcl8_6.XTcl_AppendResult(tls, interp, libc.VaList(bp+112, __ccgo_ts+116, *(*uintptr)(unsafe.Pointer(argv)), __ccgo_ts+9556, 0))
+		libtcl8_6.XTcl_AppendResult(tls, interp, libc.VaList(bp+112, __ccgo_ts+116, *(*uintptr)(unsafe.Pointer(argv)), __ccgo_ts+9548, 0))
 		// /tmp/libsqlite3/sqlite-src-3370200/src/test3.c:305:5:
 		return int32(m_TCL_ERROR)
 	}
@@ -93679,7 +93675,7 @@ func _btree_first(tls *libc.TLS, NotUsed uintptr, interp uintptr, argc int32, ar
 	// /tmp/libsqlite3/sqlite-src-3370200/src/test3.c:341:3:
 	if argc != int32(2) {
 		// /tmp/libsqlite3/sqlite-src-3370200/src/test3.c:342:5:
-		libtcl8_6.XTcl_AppendResult(tls, interp, libc.VaList(bp+112, __ccgo_ts+116, *(*uintptr)(unsafe.Pointer(argv)), __ccgo_ts+9556, 0))
+		libtcl8_6.XTcl_AppendResult(tls, interp, libc.VaList(bp+112, __ccgo_ts+116, *(*uintptr)(unsafe.Pointer(argv)), __ccgo_ts+9548, 0))
 		// /tmp/libsqlite3/sqlite-src-3370200/src/test3.c:344:5:
 		return int32(m_TCL_ERROR)
 	}
@@ -93726,7 +93722,7 @@ func _btree_eof(tls *libc.TLS, NotUsed uintptr, interp uintptr, argc int32, argv
 	// /tmp/libsqlite3/sqlite-src-3370200/src/test3.c:375:3:
 	if argc != int32(2) {
 		// /tmp/libsqlite3/sqlite-src-3370200/src/test3.c:376:5:
-		libtcl8_6.XTcl_AppendResult(tls, interp, libc.VaList(bp+64, __ccgo_ts+116, *(*uintptr)(unsafe.Pointer(argv)), __ccgo_ts+9556, 0))
+		libtcl8_6.XTcl_AppendResult(tls, interp, libc.VaList(bp+64, __ccgo_ts+116, *(*uintptr)(unsafe.Pointer(argv)), __ccgo_ts+9548, 0))
 		// /tmp/libsqlite3/sqlite-src-3370200/src/test3.c:378:5:
 		return int32(m_TCL_ERROR)
 	}
@@ -93765,7 +93761,7 @@ func _btree_payload_size(tls *libc.TLS, NotUsed uintptr, interp uintptr, argc in
 	// /tmp/libsqlite3/sqlite-src-3370200/src/test3.c:404:3:
 	if argc != int32(2) {
 		// /tmp/libsqlite3/sqlite-src-3370200/src/test3.c:405:5:
-		libtcl8_6.XTcl_AppendResult(tls, interp, libc.VaList(bp+64, __ccgo_ts+116, *(*uintptr)(unsafe.Pointer(argv)), __ccgo_ts+9556, 0))
+		libtcl8_6.XTcl_AppendResult(tls, interp, libc.VaList(bp+64, __ccgo_ts+116, *(*uintptr)(unsafe.Pointer(argv)), __ccgo_ts+9548, 0))
 		// /tmp/libsqlite3/sqlite-src-3370200/src/test3.c:407:5:
 		return int32(m_TCL_ERROR)
 	}
@@ -93820,7 +93816,7 @@ func _btree_varint_test(tls *libc.TLS, NotUsed uintptr, interp uintptr, argc int
 	// /tmp/libsqlite3/sqlite-src-3370200/src/test3.c:442:3:
 	if argc != int32(5) {
 		// /tmp/libsqlite3/sqlite-src-3370200/src/test3.c:443:5:
-		libtcl8_6.XTcl_AppendResult(tls, interp, libc.VaList(bp+336, __ccgo_ts+116, *(*uintptr)(unsafe.Pointer(argv)), __ccgo_ts+10298, 0))
+		libtcl8_6.XTcl_AppendResult(tls, interp, libc.VaList(bp+336, __ccgo_ts+116, *(*uintptr)(unsafe.Pointer(argv)), __ccgo_ts+10290, 0))
 		// /tmp/libsqlite3/sqlite-src-3370200/src/test3.c:445:5:
 		return int32(m_TCL_ERROR)
 	}
@@ -93859,7 +93855,7 @@ func _btree_varint_test(tls *libc.TLS, NotUsed uintptr, interp uintptr, argc int
 		// /tmp/libsqlite3/sqlite-src-3370200/src/test3.c:456:5:
 		if n1 > int32(9) || n1 < int32(1) {
 			// /tmp/libsqlite3/sqlite-src-3370200/src/test3.c:457:7:
-			x_sqlite3_snprintf(tls, int32(200), bp+124, __ccgo_ts+10333, libc.VaList(bp+336, n1))
+			x_sqlite3_snprintf(tls, int32(200), bp+124, __ccgo_ts+10325, libc.VaList(bp+336, n1))
 			// /tmp/libsqlite3/sqlite-src-3370200/src/test3.c:459:7:
 			libtcl8_6.XTcl_AppendResult(tls, interp, libc.VaList(bp+336, bp+124, 0))
 			// /tmp/libsqlite3/sqlite-src-3370200/src/test3.c:460:7:
@@ -93870,7 +93866,7 @@ func _btree_varint_test(tls *libc.TLS, NotUsed uintptr, interp uintptr, argc int
 		// /tmp/libsqlite3/sqlite-src-3370200/src/test3.c:463:5:
 		if n1 != n2 {
 			// /tmp/libsqlite3/sqlite-src-3370200/src/test3.c:464:7:
-			x_sqlite3_snprintf(tls, int32(200), bp+124, __ccgo_ts+10383, libc.VaList(bp+336, n1, n2))
+			x_sqlite3_snprintf(tls, int32(200), bp+124, __ccgo_ts+10375, libc.VaList(bp+336, n1, n2))
 			// /tmp/libsqlite3/sqlite-src-3370200/src/test3.c:466:7:
 			libtcl8_6.XTcl_AppendResult(tls, interp, libc.VaList(bp+336, bp+124, 0))
 			// /tmp/libsqlite3/sqlite-src-3370200/src/test3.c:467:7:
@@ -93879,7 +93875,7 @@ func _btree_varint_test(tls *libc.TLS, NotUsed uintptr, interp uintptr, argc int
 		// /tmp/libsqlite3/sqlite-src-3370200/src/test3.c:469:5:
 		if in != *(*Tu64)(unsafe.Pointer(bp + 16)) {
 			// /tmp/libsqlite3/sqlite-src-3370200/src/test3.c:470:7:
-			x_sqlite3_snprintf(tls, int32(200), bp+124, __ccgo_ts+10431, libc.VaList(bp+336, in, *(*Tu64)(unsafe.Pointer(bp + 16))))
+			x_sqlite3_snprintf(tls, int32(200), bp+124, __ccgo_ts+10423, libc.VaList(bp+336, in, *(*Tu64)(unsafe.Pointer(bp + 16))))
 			// /tmp/libsqlite3/sqlite-src-3370200/src/test3.c:472:7:
 			libtcl8_6.XTcl_AppendResult(tls, interp, libc.VaList(bp+336, bp+124, 0))
 			// /tmp/libsqlite3/sqlite-src-3370200/src/test3.c:473:7:
@@ -93900,7 +93896,7 @@ func _btree_varint_test(tls *libc.TLS, NotUsed uintptr, interp uintptr, argc int
 			// /tmp/libsqlite3/sqlite-src-3370200/src/test3.c:479:7:
 			if n1 != n2 {
 				// /tmp/libsqlite3/sqlite-src-3370200/src/test3.c:480:9:
-				x_sqlite3_snprintf(tls, int32(200), bp+124, __ccgo_ts+10470, libc.VaList(bp+336, n1, n2))
+				x_sqlite3_snprintf(tls, int32(200), bp+124, __ccgo_ts+10462, libc.VaList(bp+336, n1, n2))
 				// /tmp/libsqlite3/sqlite-src-3370200/src/test3.c:483:9:
 				libtcl8_6.XTcl_AppendResult(tls, interp, libc.VaList(bp+336, bp+124, 0))
 				// /tmp/libsqlite3/sqlite-src-3370200/src/test3.c:484:9:
@@ -93909,7 +93905,7 @@ func _btree_varint_test(tls *libc.TLS, NotUsed uintptr, interp uintptr, argc int
 			// /tmp/libsqlite3/sqlite-src-3370200/src/test3.c:486:7:
 			if in != *(*Tu64)(unsafe.Pointer(bp + 16)) {
 				// /tmp/libsqlite3/sqlite-src-3370200/src/test3.c:487:9:
-				x_sqlite3_snprintf(tls, int32(200), bp+124, __ccgo_ts+10520, libc.VaList(bp+336, in, *(*Tu64)(unsafe.Pointer(bp + 16))))
+				x_sqlite3_snprintf(tls, int32(200), bp+124, __ccgo_ts+10512, libc.VaList(bp+336, in, *(*Tu64)(unsafe.Pointer(bp + 16))))
 				// /tmp/libsqlite3/sqlite-src-3370200/src/test3.c:490:9:
 				libtcl8_6.XTcl_AppendResult(tls, interp, libc.VaList(bp+336, bp+124, 0))
 				// /tmp/libsqlite3/sqlite-src-3370200/src/test3.c:491:9:
@@ -93969,14 +93965,14 @@ func _btree_from_db(tls *libc.TLS, NotUsed uintptr, interp uintptr, argc int32, 
 	// /tmp/libsqlite3/sqlite-src-3370200/src/test3.c:528:3:
 	if argc != int32(2) && argc != int32(3) {
 		// /tmp/libsqlite3/sqlite-src-3370200/src/test3.c:529:5:
-		libtcl8_6.XTcl_AppendResult(tls, interp, libc.VaList(bp+176, __ccgo_ts+116, *(*uintptr)(unsafe.Pointer(argv)), __ccgo_ts+10576, 0))
+		libtcl8_6.XTcl_AppendResult(tls, interp, libc.VaList(bp+176, __ccgo_ts+116, *(*uintptr)(unsafe.Pointer(argv)), __ccgo_ts+10568, 0))
 		// /tmp/libsqlite3/sqlite-src-3370200/src/test3.c:531:5:
 		return int32(m_TCL_ERROR)
 	}
 	// /tmp/libsqlite3/sqlite-src-3370200/src/test3.c:534:3:
 	if int32(1) != libtcl8_6.XTcl_GetCommandInfo(tls, interp, *(*uintptr)(unsafe.Pointer(argv + 1*8)), bp+104) {
 		// /tmp/libsqlite3/sqlite-src-3370200/src/test3.c:535:5:
-		libtcl8_6.XTcl_AppendResult(tls, interp, libc.VaList(bp+176, __ccgo_ts+10592, *(*uintptr)(unsafe.Pointer(argv + 1*8)), __ccgo_ts+10613, 0))
+		libtcl8_6.XTcl_AppendResult(tls, interp, libc.VaList(bp+176, __ccgo_ts+10584, *(*uintptr)(unsafe.Pointer(argv + 1*8)), __ccgo_ts+10605, 0))
 		// /tmp/libsqlite3/sqlite-src-3370200/src/test3.c:536:5:
 		return int32(m_TCL_ERROR)
 	}
@@ -94017,7 +94013,7 @@ func _btree_ismemdb(tls *libc.TLS, NotUsed uintptr, interp uintptr, argc int32, 
 	// /tmp/libsqlite3/sqlite-src-3370200/src/test3.c:566:3:
 	if argc != int32(2) {
 		// /tmp/libsqlite3/sqlite-src-3370200/src/test3.c:567:5:
-		libtcl8_6.XTcl_AppendResult(tls, interp, libc.VaList(bp+8, __ccgo_ts+116, *(*uintptr)(unsafe.Pointer(argv)), __ccgo_ts+9556, 0))
+		libtcl8_6.XTcl_AppendResult(tls, interp, libc.VaList(bp+8, __ccgo_ts+116, *(*uintptr)(unsafe.Pointer(argv)), __ccgo_ts+9548, 0))
 		// /tmp/libsqlite3/sqlite-src-3370200/src/test3.c:569:5:
 		return int32(m_TCL_ERROR)
 	}
@@ -94057,7 +94053,7 @@ func _btree_set_cache_size(tls *libc.TLS, NotUsed uintptr, interp uintptr, argc 
 	// /tmp/libsqlite3/sqlite-src-3370200/src/test3.c:596:3:
 	if argc != int32(3) {
 		// /tmp/libsqlite3/sqlite-src-3370200/src/test3.c:597:5:
-		libtcl8_6.XTcl_AppendResult(tls, interp, libc.VaList(bp+16, __ccgo_ts+116, *(*uintptr)(unsafe.Pointer(argv)), __ccgo_ts+10615, 0))
+		libtcl8_6.XTcl_AppendResult(tls, interp, libc.VaList(bp+16, __ccgo_ts+116, *(*uintptr)(unsafe.Pointer(argv)), __ccgo_ts+10607, 0))
 		// /tmp/libsqlite3/sqlite-src-3370200/src/test3.c:599:5:
 		return int32(m_TCL_ERROR)
 	}
@@ -94099,7 +94095,7 @@ func _btree_insert(tls *libc.TLS, clientData TClientData, interp uintptr, objc i
 	// /tmp/libsqlite3/sqlite-src-3370200/src/test3.c:627:3:
 	if objc != int32(4) && objc != int32(3) {
 		// /tmp/libsqlite3/sqlite-src-3370200/src/test3.c:628:5:
-		libtcl8_6.XTcl_WrongNumArgs(tls, interp, int32(1), objv, __ccgo_ts+10627)
+		libtcl8_6.XTcl_WrongNumArgs(tls, interp, int32(1), objv, __ccgo_ts+10619)
 		// /tmp/libsqlite3/sqlite-src-3370200/src/test3.c:629:5:
 		return int32(m_TCL_ERROR)
 	}
@@ -94168,7 +94164,7 @@ func x_Sqlitetest3_Init(tls *libc.TLS, interp uintptr) (r int32) {
 		i++
 	}
 	// /tmp/libsqlite3/sqlite-src-3370200/src/test3.c:687:3:
-	libtcl8_6.XTcl_CreateObjCommand(tls, interp, __ccgo_ts+10867, __ccgo_fp(_btree_insert), uintptr(0), uintptr(0))
+	libtcl8_6.XTcl_CreateObjCommand(tls, interp, __ccgo_ts+10859, __ccgo_fp(_btree_insert), uintptr(0), uintptr(0))
 	// /tmp/libsqlite3/sqlite-src-3370200/src/test3.c:689:3:
 	return m_TCL_OK
 }
@@ -94179,46 +94175,46 @@ var _aCmd2 = [14]struct {
 	FxProc uintptr
 }{
 	0: {
-		FzName: __ccgo_ts + 10651,
+		FzName: __ccgo_ts + 10643,
 	},
 	1: {
-		FzName: __ccgo_ts + 10662,
+		FzName: __ccgo_ts + 10654,
 	},
 	2: {
-		FzName: __ccgo_ts + 10674,
+		FzName: __ccgo_ts + 10666,
 	},
 	3: {
-		FzName: __ccgo_ts + 10698,
+		FzName: __ccgo_ts + 10690,
 	},
 	4: {
-		FzName: __ccgo_ts + 10716,
+		FzName: __ccgo_ts + 10708,
 	},
 	5: {
-		FzName: __ccgo_ts + 10729,
+		FzName: __ccgo_ts + 10721,
 	},
 	6: {
-		FzName: __ccgo_ts + 10748,
+		FzName: __ccgo_ts + 10740,
 	},
 	7: {
-		FzName: __ccgo_ts + 10759,
+		FzName: __ccgo_ts + 10751,
 	},
 	8: {
-		FzName: __ccgo_ts + 10769,
+		FzName: __ccgo_ts + 10761,
 	},
 	9: {
-		FzName: __ccgo_ts + 10788,
+		FzName: __ccgo_ts + 10780,
 	},
 	10: {
-		FzName: __ccgo_ts + 10800,
+		FzName: __ccgo_ts + 10792,
 	},
 	11: {
-		FzName: __ccgo_ts + 10818,
+		FzName: __ccgo_ts + 10810,
 	},
 	12: {
-		FzName: __ccgo_ts + 10832,
+		FzName: __ccgo_ts + 10824,
 	},
 	13: {
-		FzName: __ccgo_ts + 10846,
+		FzName: __ccgo_ts + 10838,
 	},
 }
 
@@ -94428,7 +94424,7 @@ func _test_value_overhead(tls *libc.TLS, clientData uintptr, interp uintptr, obj
 	// /tmp/libsqlite3/sqlite-src-3370200/src/test5.c:72:3:
 	if objc != int32(3) {
 		// /tmp/libsqlite3/sqlite-src-3370200/src/test5.c:73:5:
-		libtcl8_6.XTcl_AppendResult(tls, interp, libc.VaList(bp+72, __ccgo_ts+116, libtcl8_6.XTcl_GetStringFromObj(tls, *(*uintptr)(unsafe.Pointer(objv)), uintptr(0)), __ccgo_ts+10880, 0))
+		libtcl8_6.XTcl_AppendResult(tls, interp, libc.VaList(bp+72, __ccgo_ts+116, libtcl8_6.XTcl_GetStringFromObj(tls, *(*uintptr)(unsafe.Pointer(objv)), uintptr(0)), __ccgo_ts+10872, 0))
 		// /tmp/libsqlite3/sqlite-src-3370200/src/test5.c:75:5:
 		return int32(m_TCL_ERROR)
 	}
@@ -94445,7 +94441,7 @@ func _test_value_overhead(tls *libc.TLS, clientData uintptr, interp uintptr, obj
 	// /tmp/libsqlite3/sqlite-src-3370200/src/test5.c:81:3:
 	(*(*TMem)(unsafe.Pointer(bp + 8))).Fflags = uint16(libc.Int32FromInt32(m_MEM_Str) | libc.Int32FromInt32(m_MEM_Term) | libc.Int32FromInt32(m_MEM_Static))
 	// /tmp/libsqlite3/sqlite-src-3370200/src/test5.c:82:3:
-	(*(*TMem)(unsafe.Pointer(bp + 8))).Fz = __ccgo_ts + 10907
+	(*(*TMem)(unsafe.Pointer(bp + 8))).Fz = __ccgo_ts + 10899
 	// /tmp/libsqlite3/sqlite-src-3370200/src/test5.c:83:3:
 	(*(*TMem)(unsafe.Pointer(bp + 8))).Fenc = uint8(m_SQLITE_UTF8)
 	// /tmp/libsqlite3/sqlite-src-3370200/src/test5.c:85:3:
@@ -94487,19 +94483,19 @@ func _name_to_enc(tls *libc.TLS, interp uintptr, pObj uintptr) (r Tu8) {
 		Fenc   Tu8
 	}{
 		0: {
-			FzName: __ccgo_ts + 10919,
+			FzName: __ccgo_ts + 10911,
 			Fenc:   uint8(m_SQLITE_UTF8),
 		},
 		1: {
-			FzName: __ccgo_ts + 10924,
+			FzName: __ccgo_ts + 10916,
 			Fenc:   uint8(m_SQLITE_UTF16LE),
 		},
 		2: {
-			FzName: __ccgo_ts + 10932,
+			FzName: __ccgo_ts + 10924,
 			Fenc:   uint8(m_SQLITE_UTF16BE),
 		},
 		3: {
-			FzName: __ccgo_ts + 10940,
+			FzName: __ccgo_ts + 10932,
 			Fenc:   uint8(m_SQLITE_UTF16),
 		},
 		4: {},
@@ -94533,7 +94529,7 @@ func _name_to_enc(tls *libc.TLS, interp uintptr, pObj uintptr) (r Tu8) {
 		Fenc   Tu8
 	})(unsafe.Pointer(pEnc)).Fenc != 0) {
 		// /tmp/libsqlite3/sqlite-src-3370200/src/test5.c:113:5:
-		libtcl8_6.XTcl_AppendResult(tls, interp, libc.VaList(bp+88, __ccgo_ts+10946, z, 0))
+		libtcl8_6.XTcl_AppendResult(tls, interp, libc.VaList(bp+88, __ccgo_ts+10938, z, 0))
 	}
 	// /tmp/libsqlite3/sqlite-src-3370200/src/test5.c:115:3:
 	if int32((*struct {
@@ -94572,7 +94568,7 @@ func _test_translate(tls *libc.TLS, clientData uintptr, interp uintptr, objc int
 	// /tmp/libsqlite3/sqlite-src-3370200/src/test5.c:139:3:
 	if objc != int32(4) && objc != int32(5) {
 		// /tmp/libsqlite3/sqlite-src-3370200/src/test5.c:140:5:
-		libtcl8_6.XTcl_AppendResult(tls, interp, libc.VaList(bp+16, __ccgo_ts+116, libtcl8_6.XTcl_GetStringFromObj(tls, *(*uintptr)(unsafe.Pointer(objv)), uintptr(0)), __ccgo_ts+10965, 0))
+		libtcl8_6.XTcl_AppendResult(tls, interp, libc.VaList(bp+16, __ccgo_ts+116, libtcl8_6.XTcl_GetStringFromObj(tls, *(*uintptr)(unsafe.Pointer(objv)), uintptr(0)), __ccgo_ts+10957, 0))
 		// /tmp/libsqlite3/sqlite-src-3370200/src/test5.c:144:5:
 		return int32(m_TCL_ERROR)
 	}
@@ -94682,16 +94678,16 @@ var _aCmd3 = [4]struct {
 	FxProc uintptr
 }{
 	0: {
-		FzName: __ccgo_ts + 11000,
+		FzName: __ccgo_ts + 10992,
 	},
 	1: {
-		FzName: __ccgo_ts + 11009,
+		FzName: __ccgo_ts + 11001,
 	},
 	2: {
-		FzName: __ccgo_ts + 11029,
+		FzName: __ccgo_ts + 11021,
 	},
 	3: {
-		FzName: __ccgo_ts + 11044,
+		FzName: __ccgo_ts + 11036,
 	},
 }
 
@@ -95305,7 +95301,7 @@ func _writeListAppend(tls *libc.TLS, pFile uintptr, iOffset Tsqlite3_int64, zBuf
 	// /tmp/libsqlite3/sqlite-src-3370200/src/test6.c:373:3:
 	if pNew == uintptr(0) {
 		// /tmp/libsqlite3/sqlite-src-3370200/src/test6.c:374:5:
-		v1 = __ccgo_ts + 11063
+		v1 = __ccgo_ts + 11055
 		// /usr/x86_64-w64-mingw32/include/stdio.h:360:35:
 		__local_argv = bp
 		// /usr/x86_64-w64-mingw32/include/stdio.h:361:3:
@@ -95939,55 +95935,55 @@ func _processDevSymArgs(tls *libc.TLS, interp uintptr, objc int32, objv uintptr,
 		FiValue int32
 	}{
 		0: {
-			FzName:  __ccgo_ts + 11101,
+			FzName:  __ccgo_ts + 11093,
 			FiValue: int32(m_SQLITE_IOCAP_ATOMIC),
 		},
 		1: {
-			FzName:  __ccgo_ts + 11108,
+			FzName:  __ccgo_ts + 11100,
 			FiValue: int32(m_SQLITE_IOCAP_ATOMIC512),
 		},
 		2: {
-			FzName:  __ccgo_ts + 11118,
+			FzName:  __ccgo_ts + 11110,
 			FiValue: int32(m_SQLITE_IOCAP_ATOMIC1K),
 		},
 		3: {
-			FzName:  __ccgo_ts + 11127,
+			FzName:  __ccgo_ts + 11119,
 			FiValue: int32(m_SQLITE_IOCAP_ATOMIC2K),
 		},
 		4: {
-			FzName:  __ccgo_ts + 11136,
+			FzName:  __ccgo_ts + 11128,
 			FiValue: int32(m_SQLITE_IOCAP_ATOMIC4K),
 		},
 		5: {
-			FzName:  __ccgo_ts + 11145,
+			FzName:  __ccgo_ts + 11137,
 			FiValue: int32(m_SQLITE_IOCAP_ATOMIC8K),
 		},
 		6: {
-			FzName:  __ccgo_ts + 11154,
+			FzName:  __ccgo_ts + 11146,
 			FiValue: int32(m_SQLITE_IOCAP_ATOMIC16K),
 		},
 		7: {
-			FzName:  __ccgo_ts + 11164,
+			FzName:  __ccgo_ts + 11156,
 			FiValue: int32(m_SQLITE_IOCAP_ATOMIC32K),
 		},
 		8: {
-			FzName:  __ccgo_ts + 11174,
+			FzName:  __ccgo_ts + 11166,
 			FiValue: int32(m_SQLITE_IOCAP_ATOMIC64K),
 		},
 		9: {
-			FzName:  __ccgo_ts + 11184,
+			FzName:  __ccgo_ts + 11176,
 			FiValue: int32(m_SQLITE_IOCAP_SEQUENTIAL),
 		},
 		10: {
-			FzName:  __ccgo_ts + 11195,
+			FzName:  __ccgo_ts + 11187,
 			FiValue: int32(m_SQLITE_IOCAP_SAFE_APPEND),
 		},
 		11: {
-			FzName:  __ccgo_ts + 11207,
+			FzName:  __ccgo_ts + 11199,
 			FiValue: int32(m_SQLITE_IOCAP_POWERSAFE_OVERWRITE),
 		},
 		12: {
-			FzName:  __ccgo_ts + 11227,
+			FzName:  __ccgo_ts + 11219,
 			FiValue: int32(m_SQLITE_IOCAP_BATCH_ATOMIC),
 		},
 		13: {},
@@ -96009,16 +96005,16 @@ func _processDevSymArgs(tls *libc.TLS, interp uintptr, objc int32, objv uintptr,
 		// /tmp/libsqlite3/sqlite-src-3370200/src/test6.c:755:10:
 		zOpt = libtcl8_6.XTcl_GetStringFromObj(tls, *(*uintptr)(unsafe.Pointer(objv + uintptr(i)*8)), bp+228)
 		// /tmp/libsqlite3/sqlite-src-3370200/src/test6.c:757:5:
-		if (*(*int32)(unsafe.Pointer(bp + 228)) > int32(11) || *(*int32)(unsafe.Pointer(bp + 228)) < int32(2) || libc.Xstrncmp(tls, __ccgo_ts+11240, zOpt, uint64(*(*int32)(unsafe.Pointer(bp + 228)))) != 0) && (*(*int32)(unsafe.Pointer(bp + 228)) > int32(16) || *(*int32)(unsafe.Pointer(bp + 228)) < int32(2) || libc.Xstrncmp(tls, __ccgo_ts+11252, zOpt, uint64(*(*int32)(unsafe.Pointer(bp + 228)))) != 0) {
+		if (*(*int32)(unsafe.Pointer(bp + 228)) > int32(11) || *(*int32)(unsafe.Pointer(bp + 228)) < int32(2) || libc.Xstrncmp(tls, __ccgo_ts+11232, zOpt, uint64(*(*int32)(unsafe.Pointer(bp + 228)))) != 0) && (*(*int32)(unsafe.Pointer(bp + 228)) > int32(16) || *(*int32)(unsafe.Pointer(bp + 228)) < int32(2) || libc.Xstrncmp(tls, __ccgo_ts+11244, zOpt, uint64(*(*int32)(unsafe.Pointer(bp + 228)))) != 0) {
 			// /tmp/libsqlite3/sqlite-src-3370200/src/test6.c:760:7:
-			libtcl8_6.XTcl_AppendResult(tls, interp, libc.VaList(bp+256, __ccgo_ts+11269, zOpt, __ccgo_ts+11283, 0))
+			libtcl8_6.XTcl_AppendResult(tls, interp, libc.VaList(bp+256, __ccgo_ts+11261, zOpt, __ccgo_ts+11275, 0))
 			// /tmp/libsqlite3/sqlite-src-3370200/src/test6.c:764:7:
 			return int32(m_TCL_ERROR)
 		}
 		// /tmp/libsqlite3/sqlite-src-3370200/src/test6.c:766:5:
 		if i == objc-int32(1) {
 			// /tmp/libsqlite3/sqlite-src-3370200/src/test6.c:767:7:
-			libtcl8_6.XTcl_AppendResult(tls, interp, libc.VaList(bp+256, __ccgo_ts+11331, zOpt, __ccgo_ts+10613, 0))
+			libtcl8_6.XTcl_AppendResult(tls, interp, libc.VaList(bp+256, __ccgo_ts+11323, zOpt, __ccgo_ts+10605, 0))
 			// /tmp/libsqlite3/sqlite-src-3370200/src/test6.c:768:7:
 			return int32(m_TCL_ERROR)
 		}
@@ -96050,7 +96046,7 @@ func _processDevSymArgs(tls *libc.TLS, interp uintptr, objc int32, objv uintptr,
 				// /tmp/libsqlite3/sqlite-src-3370200/src/test6.c:788:9:
 				libtcl8_6.XTcl_UtfToLower(tls, libtcl8_6.XTcl_GetString(tls, pFlag))
 				// /tmp/libsqlite3/sqlite-src-3370200/src/test6.c:790:9:
-				rc = libtcl8_6.XTcl_GetIndexFromObjStruct(tls, interp, pFlag, bp, int32(16), __ccgo_ts+11362, 0, bp+244)
+				rc = libtcl8_6.XTcl_GetIndexFromObjStruct(tls, interp, pFlag, bp, int32(16), __ccgo_ts+11354, 0, bp+244)
 				// /tmp/libsqlite3/sqlite-src-3370200/src/test6.c:793:9:
 				// /tmp/libsqlite3/sqlite-src-3370200/src/test6.c:793:9:
 				_objPtr = pFlag
@@ -96146,7 +96142,7 @@ func _crashEnableCmd(tls *libc.TLS, clientData uintptr, interp uintptr, objc int
 	// /tmp/libsqlite3/sqlite-src-3370200/src/test6.c:872:3:
 	if objc != int32(2) && objc != int32(3) {
 		// /tmp/libsqlite3/sqlite-src-3370200/src/test6.c:873:5:
-		libtcl8_6.XTcl_WrongNumArgs(tls, interp, int32(1), objv, __ccgo_ts+11381)
+		libtcl8_6.XTcl_WrongNumArgs(tls, interp, int32(1), objv, __ccgo_ts+11373)
 		// /tmp/libsqlite3/sqlite-src-3370200/src/test6.c:874:5:
 		return int32(m_TCL_ERROR)
 	}
@@ -96190,7 +96186,7 @@ func _crashEnableCmd(tls *libc.TLS, clientData uintptr, interp uintptr, objc int
 // /tmp/libsqlite3/sqlite-src-3370200/src/test6.c:849:22:
 var _crashVfs = Tsqlite3_vfs{
 	FiVersion: int32(2),
-	FzName:    __ccgo_ts + 11375,
+	FzName:    __ccgo_ts + 11367,
 }
 
 func init() {
@@ -96248,7 +96244,7 @@ func _crashParamsObjCmd(tls *libc.TLS, clientData uintptr, interp uintptr, objc 
 	// /tmp/libsqlite3/sqlite-src-3370200/src/test6.c:933:3:
 	if objc < int32(3) {
 		// /tmp/libsqlite3/sqlite-src-3370200/src/test6.c:934:5:
-		libtcl8_6.XTcl_WrongNumArgs(tls, interp, int32(1), objv, __ccgo_ts+11398)
+		libtcl8_6.XTcl_WrongNumArgs(tls, interp, int32(1), objv, __ccgo_ts+11390)
 		// /tmp/libsqlite3/sqlite-src-3370200/src/test6.c:935:5:
 		goto error
 	}
@@ -96257,7 +96253,7 @@ func _crashParamsObjCmd(tls *libc.TLS, clientData uintptr, interp uintptr, objc 
 	// /tmp/libsqlite3/sqlite-src-3370200/src/test6.c:939:3:
 	if uint64(*(*int32)(unsafe.Pointer(bp + 4))) >= uint64(500) {
 		// /tmp/libsqlite3/sqlite-src-3370200/src/test6.c:940:5:
-		libtcl8_6.XTcl_AppendResult(tls, interp, libc.VaList(bp+24, __ccgo_ts+11424, zCrashFile, __ccgo_ts+10613, 0))
+		libtcl8_6.XTcl_AppendResult(tls, interp, libc.VaList(bp+24, __ccgo_ts+11416, zCrashFile, __ccgo_ts+10605, 0))
 		// /tmp/libsqlite3/sqlite-src-3370200/src/test6.c:941:5:
 		goto error
 	}
@@ -96335,7 +96331,7 @@ func _writeCrashObjCmd(tls *libc.TLS, clientData uintptr, interp uintptr, objc i
 	// /tmp/libsqlite3/sqlite-src-3370200/src/test6.c:998:3:
 	if objc != int32(2) {
 		// /tmp/libsqlite3/sqlite-src-3370200/src/test6.c:999:5:
-		libtcl8_6.XTcl_WrongNumArgs(tls, interp, int32(1), objv, __ccgo_ts+11448)
+		libtcl8_6.XTcl_WrongNumArgs(tls, interp, int32(1), objv, __ccgo_ts+11440)
 		// /tmp/libsqlite3/sqlite-src-3370200/src/test6.c:1000:5:
 		return int32(m_TCL_ERROR)
 	}
@@ -96390,7 +96386,7 @@ func _jtObjCmd(tls *libc.TLS, clientData uintptr, interp uintptr, objc int32, ob
 	// /tmp/libsqlite3/sqlite-src-3370200/src/test6.c:1042:3:
 	if objc != int32(2) && objc != int32(3) {
 		// /tmp/libsqlite3/sqlite-src-3370200/src/test6.c:1043:5:
-		libtcl8_6.XTcl_WrongNumArgs(tls, interp, int32(1), objv, __ccgo_ts+11455)
+		libtcl8_6.XTcl_WrongNumArgs(tls, interp, int32(1), objv, __ccgo_ts+11447)
 		// /tmp/libsqlite3/sqlite-src-3370200/src/test6.c:1044:5:
 		return int32(m_TCL_ERROR)
 	}
@@ -96399,9 +96395,9 @@ func _jtObjCmd(tls *libc.TLS, clientData uintptr, interp uintptr, objc int32, ob
 	// /tmp/libsqlite3/sqlite-src-3370200/src/test6.c:1047:3:
 	if objc == int32(3) {
 		// /tmp/libsqlite3/sqlite-src-3370200/src/test6.c:1048:5:
-		if libc.Xstrcmp(tls, zParent, __ccgo_ts+11477) != 0 {
+		if libc.Xstrcmp(tls, zParent, __ccgo_ts+11469) != 0 {
 			// /tmp/libsqlite3/sqlite-src-3370200/src/test6.c:1049:7:
-			libtcl8_6.XTcl_AppendResult(tls, interp, libc.VaList(bp+8, __ccgo_ts+11486, zParent, __ccgo_ts+11499, 0))
+			libtcl8_6.XTcl_AppendResult(tls, interp, libc.VaList(bp+8, __ccgo_ts+11478, zParent, __ccgo_ts+11491, 0))
 			// /tmp/libsqlite3/sqlite-src-3370200/src/test6.c:1052:7:
 			return int32(m_TCL_ERROR)
 		}
@@ -96416,7 +96412,7 @@ func _jtObjCmd(tls *libc.TLS, clientData uintptr, interp uintptr, objc int32, ob
 	// /tmp/libsqlite3/sqlite-src-3370200/src/test6.c:1060:3:
 	if x_jt_register(tls, zParent, libc.BoolInt32(objc == int32(3))) != 0 {
 		// /tmp/libsqlite3/sqlite-src-3370200/src/test6.c:1061:5:
-		libtcl8_6.XTcl_AppendResult(tls, interp, libc.VaList(bp+8, __ccgo_ts+11519, 0))
+		libtcl8_6.XTcl_AppendResult(tls, interp, libc.VaList(bp+8, __ccgo_ts+11511, 0))
 		// /tmp/libsqlite3/sqlite-src-3370200/src/test6.c:1062:5:
 		return int32(m_TCL_ERROR)
 	}
@@ -96456,21 +96452,21 @@ func _jtUnregisterObjCmd(tls *libc.TLS, clientData uintptr, interp uintptr, objc
 func x_Sqlitetest6_Init(tls *libc.TLS, interp uintptr) (r int32) {
 	// /tmp/libsqlite3/sqlite-src-3370200/src/test6.c:1093:41:
 	// /tmp/libsqlite3/sqlite-src-3370200/src/test6.c:1095:3:
-	libtcl8_6.XTcl_CreateObjCommand(tls, interp, __ccgo_ts+11540, __ccgo_fp(_crashEnableCmd), uintptr(0), uintptr(0))
+	libtcl8_6.XTcl_CreateObjCommand(tls, interp, __ccgo_ts+11532, __ccgo_fp(_crashEnableCmd), uintptr(0), uintptr(0))
 	// /tmp/libsqlite3/sqlite-src-3370200/src/test6.c:1096:3:
-	libtcl8_6.XTcl_CreateObjCommand(tls, interp, __ccgo_ts+11561, __ccgo_fp(_crashParamsObjCmd), uintptr(0), uintptr(0))
+	libtcl8_6.XTcl_CreateObjCommand(tls, interp, __ccgo_ts+11553, __ccgo_fp(_crashParamsObjCmd), uintptr(0), uintptr(0))
 	// /tmp/libsqlite3/sqlite-src-3370200/src/test6.c:1097:3:
-	libtcl8_6.XTcl_CreateObjCommand(tls, interp, __ccgo_ts+11581, __ccgo_fp(_crashNowCmd), uintptr(0), uintptr(0))
+	libtcl8_6.XTcl_CreateObjCommand(tls, interp, __ccgo_ts+11573, __ccgo_fp(_crashNowCmd), uintptr(0), uintptr(0))
 	// /tmp/libsqlite3/sqlite-src-3370200/src/test6.c:1098:3:
-	libtcl8_6.XTcl_CreateObjCommand(tls, interp, __ccgo_ts+11599, __ccgo_fp(_devSymObjCmd), uintptr(0), uintptr(0))
+	libtcl8_6.XTcl_CreateObjCommand(tls, interp, __ccgo_ts+11591, __ccgo_fp(_devSymObjCmd), uintptr(0), uintptr(0))
 	// /tmp/libsqlite3/sqlite-src-3370200/src/test6.c:1099:3:
-	libtcl8_6.XTcl_CreateObjCommand(tls, interp, __ccgo_ts+11623, __ccgo_fp(_writeCrashObjCmd), uintptr(0), uintptr(0))
+	libtcl8_6.XTcl_CreateObjCommand(tls, interp, __ccgo_ts+11615, __ccgo_fp(_writeCrashObjCmd), uintptr(0), uintptr(0))
 	// /tmp/libsqlite3/sqlite-src-3370200/src/test6.c:1100:3:
-	libtcl8_6.XTcl_CreateObjCommand(tls, interp, __ccgo_ts+11646, __ccgo_fp(_dsUnregisterObjCmd), uintptr(0), uintptr(0))
+	libtcl8_6.XTcl_CreateObjCommand(tls, interp, __ccgo_ts+11638, __ccgo_fp(_dsUnregisterObjCmd), uintptr(0), uintptr(0))
 	// /tmp/libsqlite3/sqlite-src-3370200/src/test6.c:1101:3:
-	libtcl8_6.XTcl_CreateObjCommand(tls, interp, __ccgo_ts+11664, __ccgo_fp(_jtObjCmd), uintptr(0), uintptr(0))
+	libtcl8_6.XTcl_CreateObjCommand(tls, interp, __ccgo_ts+11656, __ccgo_fp(_jtObjCmd), uintptr(0), uintptr(0))
 	// /tmp/libsqlite3/sqlite-src-3370200/src/test6.c:1102:3:
-	libtcl8_6.XTcl_CreateObjCommand(tls, interp, __ccgo_ts+11680, __ccgo_fp(_jtUnregisterObjCmd), uintptr(0), uintptr(0))
+	libtcl8_6.XTcl_CreateObjCommand(tls, interp, __ccgo_ts+11672, __ccgo_fp(_jtUnregisterObjCmd), uintptr(0), uintptr(0))
 	// /tmp/libsqlite3/sqlite-src-3370200/src/test6.c:1104:3:
 	return m_TCL_OK
 }
@@ -96749,13 +96745,13 @@ func _simulateVtabError(tls *libc.TLS, p uintptr, zMethod uintptr) (r int32) {
 	// /tmp/libsqlite3/sqlite-src-3370200/src/test8.c:100:3:
 	(*(*[128]int8)(unsafe.Pointer(bp)))[int32(127)] = int8('\000')
 	// /tmp/libsqlite3/sqlite-src-3370200/src/test8.c:101:3:
-	x_sqlite3_snprintf(tls, int32(127), bp, __ccgo_ts+11698, libc.VaList(bp+136, zMethod, (*Techo_vtab)(unsafe.Pointer(p)).FzTableName))
+	x_sqlite3_snprintf(tls, int32(127), bp, __ccgo_ts+11690, libc.VaList(bp+136, zMethod, (*Techo_vtab)(unsafe.Pointer(p)).FzTableName))
 	// /tmp/libsqlite3/sqlite-src-3370200/src/test8.c:102:3:
 	zErr = libtcl8_6.XTcl_GetVar2(tls, (*Techo_vtab)(unsafe.Pointer(p)).Finterp, bp, libc.UintptrFromInt32(0), int32(m_TCL_GLOBAL_ONLY))
 	// /tmp/libsqlite3/sqlite-src-3370200/src/test8.c:103:3:
 	if zErr != 0 {
 		// /tmp/libsqlite3/sqlite-src-3370200/src/test8.c:104:5:
-		(*Techo_vtab)(unsafe.Pointer(p)).Fbase.FzErrMsg = x_sqlite3_mprintf(tls, __ccgo_ts+11722, libc.VaList(bp+136, zErr))
+		(*Techo_vtab)(unsafe.Pointer(p)).Fbase.FzErrMsg = x_sqlite3_mprintf(tls, __ccgo_ts+11714, libc.VaList(bp+136, zErr))
 	}
 	// /tmp/libsqlite3/sqlite-src-3370200/src/test8.c:106:3:
 	return libc.BoolInt32(zErr != uintptr(0))
@@ -96890,7 +96886,7 @@ func _getColumnNames(tls *libc.TLS, db uintptr, zTab uintptr, paCol uintptr, pnC
 	 ** the column names of table <tbl>.
 	 */
 	// /tmp/libsqlite3/sqlite-src-3370200/src/test8.c:175:3:
-	zSql = x_sqlite3_mprintf(tls, __ccgo_ts+11742, libc.VaList(bp+16, zTab))
+	zSql = x_sqlite3_mprintf(tls, __ccgo_ts+11734, libc.VaList(bp+16, zTab))
 	// /tmp/libsqlite3/sqlite-src-3370200/src/test8.c:176:3:
 	if !(zSql != 0) {
 		// /tmp/libsqlite3/sqlite-src-3370200/src/test8.c:177:5:
@@ -97017,7 +97013,7 @@ func _getIndexArray(tls *libc.TLS, db uintptr, zTab uintptr, nCol int32, paIndex
 	}
 	/* Compile an sqlite pragma to loop through all indices on table zTab */
 	// /tmp/libsqlite3/sqlite-src-3370200/src/test8.c:258:3:
-	zSql = x_sqlite3_mprintf(tls, __ccgo_ts+11759, libc.VaList(bp+24, zTab))
+	zSql = x_sqlite3_mprintf(tls, __ccgo_ts+11751, libc.VaList(bp+24, zTab))
 	// /tmp/libsqlite3/sqlite-src-3370200/src/test8.c:259:3:
 	if !(zSql != 0) {
 		// /tmp/libsqlite3/sqlite-src-3370200/src/test8.c:260:5:
@@ -97044,7 +97040,7 @@ func _getIndexArray(tls *libc.TLS, db uintptr, zTab uintptr, nCol int32, paIndex
 			continue
 		}
 		// /tmp/libsqlite3/sqlite-src-3370200/src/test8.c:273:5:
-		zSql = x_sqlite3_mprintf(tls, __ccgo_ts+11781, libc.VaList(bp+24, zIdx))
+		zSql = x_sqlite3_mprintf(tls, __ccgo_ts+11773, libc.VaList(bp+24, zIdx))
 		// /tmp/libsqlite3/sqlite-src-3370200/src/test8.c:274:5:
 		if !(zSql != 0) {
 			// /tmp/libsqlite3/sqlite-src-3370200/src/test8.c:275:7:
@@ -97121,7 +97117,7 @@ func _appendToEchoModule(tls *libc.TLS, interp uintptr, zArg uintptr) {
 	} else {
 		v1 = __ccgo_ts + 1095
 	}
-	libtcl8_6.XTcl_SetVar2(tls, interp, __ccgo_ts+11803, libc.UintptrFromInt32(0), v1, flags)
+	libtcl8_6.XTcl_SetVar2(tls, interp, __ccgo_ts+11795, libc.UintptrFromInt32(0), v1, flags)
 }
 
 // C documentation
@@ -97160,7 +97156,7 @@ func _echoDeclareVtab(tls *libc.TLS, pVtab uintptr, db uintptr) (r int32) {
 		// /tmp/libsqlite3/sqlite-src-3370200/src/test8.c:342:18:
 		*(*uintptr)(unsafe.Pointer(bp)) = uintptr(0)
 		// /tmp/libsqlite3/sqlite-src-3370200/src/test8.c:343:5:
-		rc = x_sqlite3_prepare(tls, db, __ccgo_ts+11815, -int32(1), bp, uintptr(0))
+		rc = x_sqlite3_prepare(tls, db, __ccgo_ts+11807, -int32(1), bp, uintptr(0))
 		// /tmp/libsqlite3/sqlite-src-3370200/src/test8.c:346:5:
 		if rc == m_SQLITE_OK {
 			// /tmp/libsqlite3/sqlite-src-3370200/src/test8.c:347:7:
@@ -97296,7 +97292,7 @@ func _echoConstructor(tls *libc.TLS, db uintptr, pAux uintptr, argc int32, argv 
 		// /tmp/libsqlite3/sqlite-src-3370200/src/test8.c:430:5:
 		if (*Techo_vtab)(unsafe.Pointer(pVtab)).FzTableName != 0 && int32(*(*int8)(unsafe.Pointer((*Techo_vtab)(unsafe.Pointer(pVtab)).FzTableName))) == int32('*') {
 			// /tmp/libsqlite3/sqlite-src-3370200/src/test8.c:431:12:
-			z = x_sqlite3_mprintf(tls, __ccgo_ts+11879, libc.VaList(bp+8, *(*uintptr)(unsafe.Pointer(argv + 2*8)), (*Techo_vtab)(unsafe.Pointer(pVtab)).FzTableName+1))
+			z = x_sqlite3_mprintf(tls, __ccgo_ts+11871, libc.VaList(bp+8, *(*uintptr)(unsafe.Pointer(argv + 2*8)), (*Techo_vtab)(unsafe.Pointer(pVtab)).FzTableName+1))
 			// /tmp/libsqlite3/sqlite-src-3370200/src/test8.c:432:7:
 			x_sqlite3_free(tls, (*Techo_vtab)(unsafe.Pointer(pVtab)).FzTableName)
 			// /tmp/libsqlite3/sqlite-src-3370200/src/test8.c:433:7:
@@ -97362,7 +97358,7 @@ func _echoCreate(tls *libc.TLS, db uintptr, pAux uintptr, argc int32, argv uintp
 	// /tmp/libsqlite3/sqlite-src-3370200/src/test8.c:472:7:
 	rc = m_SQLITE_OK
 	// /tmp/libsqlite3/sqlite-src-3370200/src/test8.c:473:3:
-	_appendToEchoModule(tls, (*TEchoModule)(unsafe.Pointer(pAux)).Finterp, __ccgo_ts+11884)
+	_appendToEchoModule(tls, (*TEchoModule)(unsafe.Pointer(pAux)).Finterp, __ccgo_ts+11876)
 	// /tmp/libsqlite3/sqlite-src-3370200/src/test8.c:474:3:
 	rc = _echoConstructor(tls, db, pAux, argc, argv, ppVtab, pzErr)
 	/* If there were two arguments passed to the module at the SQL level
@@ -97382,7 +97378,7 @@ func _echoCreate(tls *libc.TLS, db uintptr, pAux uintptr, argc int32, argv uintp
 		// /tmp/libsqlite3/sqlite-src-3370200/src/test8.c:489:5:
 		(*Techo_vtab)(unsafe.Pointer(pVtab)).FzLogName = x_sqlite3_mprintf(tls, __ccgo_ts+183, libc.VaList(bp+8, *(*uintptr)(unsafe.Pointer(argv + 4*8))))
 		// /tmp/libsqlite3/sqlite-src-3370200/src/test8.c:490:5:
-		zSql = x_sqlite3_mprintf(tls, __ccgo_ts+11892, libc.VaList(bp+8, (*Techo_vtab)(unsafe.Pointer(pVtab)).FzLogName))
+		zSql = x_sqlite3_mprintf(tls, __ccgo_ts+11884, libc.VaList(bp+8, (*Techo_vtab)(unsafe.Pointer(pVtab)).FzLogName))
 		// /tmp/libsqlite3/sqlite-src-3370200/src/test8.c:491:5:
 		rc = x_sqlite3_exec(tls, db, zSql, uintptr(0), uintptr(0), uintptr(0))
 		// /tmp/libsqlite3/sqlite-src-3370200/src/test8.c:492:5:
@@ -97419,7 +97415,7 @@ func _echoCreate(tls *libc.TLS, db uintptr, pAux uintptr, argc int32, argv uintp
 func _echoConnect(tls *libc.TLS, db uintptr, pAux uintptr, argc int32, argv uintptr, ppVtab uintptr, pzErr uintptr) (r int32) {
 	// /tmp/libsqlite3/sqlite-src-3370200/src/test8.c:519:2:
 	// /tmp/libsqlite3/sqlite-src-3370200/src/test8.c:520:3:
-	_appendToEchoModule(tls, (*TEchoModule)(unsafe.Pointer(pAux)).Finterp, __ccgo_ts+11916)
+	_appendToEchoModule(tls, (*TEchoModule)(unsafe.Pointer(pAux)).Finterp, __ccgo_ts+11908)
 	// /tmp/libsqlite3/sqlite-src-3370200/src/test8.c:521:3:
 	return _echoConstructor(tls, db, pAux, argc, argv, ppVtab, pzErr)
 }
@@ -97434,7 +97430,7 @@ func _echoConnect(tls *libc.TLS, db uintptr, pAux uintptr, argc int32, argv uint
 func _echoDisconnect(tls *libc.TLS, pVtab uintptr) (r int32) {
 	// /tmp/libsqlite3/sqlite-src-3370200/src/test8.c:527:47:
 	// /tmp/libsqlite3/sqlite-src-3370200/src/test8.c:528:3:
-	_appendToEchoModule(tls, (*Techo_vtab)(unsafe.Pointer(pVtab)).Finterp, __ccgo_ts+11925)
+	_appendToEchoModule(tls, (*Techo_vtab)(unsafe.Pointer(pVtab)).Finterp, __ccgo_ts+11917)
 	// /tmp/libsqlite3/sqlite-src-3370200/src/test8.c:529:3:
 	return _echoDestructor(tls, pVtab)
 }
@@ -97458,12 +97454,12 @@ func _echoDestroy(tls *libc.TLS, pVtab uintptr) (r int32) {
 	// /tmp/libsqlite3/sqlite-src-3370200/src/test8.c:537:13:
 	p = pVtab
 	// /tmp/libsqlite3/sqlite-src-3370200/src/test8.c:538:3:
-	_appendToEchoModule(tls, (*Techo_vtab)(unsafe.Pointer(pVtab)).Finterp, __ccgo_ts+11937)
+	_appendToEchoModule(tls, (*Techo_vtab)(unsafe.Pointer(pVtab)).Finterp, __ccgo_ts+11929)
 	/* Drop the "log" table, if one exists (see echoCreate() for details) */
 	// /tmp/libsqlite3/sqlite-src-3370200/src/test8.c:541:3:
 	if p != 0 && (*Techo_vtab)(unsafe.Pointer(p)).FzLogName != 0 {
 		// /tmp/libsqlite3/sqlite-src-3370200/src/test8.c:543:5:
-		zSql = x_sqlite3_mprintf(tls, __ccgo_ts+11946, libc.VaList(bp+8, (*Techo_vtab)(unsafe.Pointer(p)).FzLogName))
+		zSql = x_sqlite3_mprintf(tls, __ccgo_ts+11938, libc.VaList(bp+8, (*Techo_vtab)(unsafe.Pointer(p)).FzLogName))
 		// /tmp/libsqlite3/sqlite-src-3370200/src/test8.c:544:5:
 		rc = x_sqlite3_exec(tls, (*Techo_vtab)(unsafe.Pointer(p)).Fdb, zSql, uintptr(0), uintptr(0), uintptr(0))
 		// /tmp/libsqlite3/sqlite-src-3370200/src/test8.c:545:5:
@@ -97491,7 +97487,7 @@ func _echoOpen(tls *libc.TLS, pVTab uintptr, ppCursor uintptr) (r int32) {
 	var v1 int32
 	_, _ = pCur, v1
 	// /tmp/libsqlite3/sqlite-src-3370200/src/test8.c:559:3:
-	if _simulateVtabError(tls, pVTab, __ccgo_ts+11960) != 0 {
+	if _simulateVtabError(tls, pVTab, __ccgo_ts+11952) != 0 {
 		// /tmp/libsqlite3/sqlite-src-3370200/src/test8.c:560:5:
 		return int32(m_SQLITE_ERROR)
 	}
@@ -97572,7 +97568,7 @@ func _echoNext(tls *libc.TLS, cur uintptr) (r int32) {
 	// /tmp/libsqlite3/sqlite-src-3370200/src/test8.c:593:15:
 	pCur = cur
 	// /tmp/libsqlite3/sqlite-src-3370200/src/test8.c:595:3:
-	if _simulateVtabError(tls, (*Tsqlite3_vtab_cursor)(unsafe.Pointer(cur)).FpVtab, __ccgo_ts+11966) != 0 {
+	if _simulateVtabError(tls, (*Tsqlite3_vtab_cursor)(unsafe.Pointer(cur)).FpVtab, __ccgo_ts+11958) != 0 {
 		// /tmp/libsqlite3/sqlite-src-3370200/src/test8.c:596:5:
 		return int32(m_SQLITE_ERROR)
 	}
@@ -97612,7 +97608,7 @@ func _echoColumn(tls *libc.TLS, cur uintptr, ctx uintptr, i int32) (r int32) {
 	// /tmp/libsqlite3/sqlite-src-3370200/src/test8.c:617:16:
 	pStmt = (*Techo_cursor)(unsafe.Pointer(cur)).FpStmt
 	// /tmp/libsqlite3/sqlite-src-3370200/src/test8.c:619:3:
-	if _simulateVtabError(tls, (*Tsqlite3_vtab_cursor)(unsafe.Pointer(cur)).FpVtab, __ccgo_ts+11972) != 0 {
+	if _simulateVtabError(tls, (*Tsqlite3_vtab_cursor)(unsafe.Pointer(cur)).FpVtab, __ccgo_ts+11964) != 0 {
 		// /tmp/libsqlite3/sqlite-src-3370200/src/test8.c:620:5:
 		return int32(m_SQLITE_ERROR)
 	}
@@ -97643,7 +97639,7 @@ func _echoRowid(tls *libc.TLS, cur uintptr, pRowid uintptr) (r int32) {
 	// /tmp/libsqlite3/sqlite-src-3370200/src/test8.c:636:16:
 	pStmt = (*Techo_cursor)(unsafe.Pointer(cur)).FpStmt
 	// /tmp/libsqlite3/sqlite-src-3370200/src/test8.c:638:3:
-	if _simulateVtabError(tls, (*Tsqlite3_vtab_cursor)(unsafe.Pointer(cur)).FpVtab, __ccgo_ts+11980) != 0 {
+	if _simulateVtabError(tls, (*Tsqlite3_vtab_cursor)(unsafe.Pointer(cur)).FpVtab, __ccgo_ts+11972) != 0 {
 		// /tmp/libsqlite3/sqlite-src-3370200/src/test8.c:639:5:
 		return int32(m_SQLITE_ERROR)
 	}
@@ -97708,7 +97704,7 @@ func _echoFilter(tls *libc.TLS, pVtabCursor uintptr, idxNum int32, idxStr uintpt
 	// /tmp/libsqlite3/sqlite-src-3370200/src/test8.c:677:11:
 	db = (*Techo_vtab)(unsafe.Pointer(pVtab)).Fdb
 	// /tmp/libsqlite3/sqlite-src-3370200/src/test8.c:679:3:
-	if _simulateVtabError(tls, pVtab, __ccgo_ts+11987) != 0 {
+	if _simulateVtabError(tls, pVtab, __ccgo_ts+11979) != 0 {
 		// /tmp/libsqlite3/sqlite-src-3370200/src/test8.c:680:5:
 		return int32(m_SQLITE_ERROR)
 	}
@@ -97716,7 +97712,7 @@ func _echoFilter(tls *libc.TLS, pVtabCursor uintptr, idxNum int32, idxStr uintpt
 	// /tmp/libsqlite3/sqlite-src-3370200/src/test8.c:684:3:
 	/* Log arguments to the ::echo_module Tcl variable */
 	// /tmp/libsqlite3/sqlite-src-3370200/src/test8.c:687:3:
-	_appendToEchoModule(tls, (*Techo_vtab)(unsafe.Pointer(pVtab)).Finterp, __ccgo_ts+11987)
+	_appendToEchoModule(tls, (*Techo_vtab)(unsafe.Pointer(pVtab)).Finterp, __ccgo_ts+11979)
 	// /tmp/libsqlite3/sqlite-src-3370200/src/test8.c:688:3:
 	_appendToEchoModule(tls, (*Techo_vtab)(unsafe.Pointer(pVtab)).Finterp, idxStr)
 	// /tmp/libsqlite3/sqlite-src-3370200/src/test8.c:689:3:
@@ -97805,7 +97801,7 @@ func _string_concat(tls *libc.TLS, pzStr uintptr, zAppend uintptr, doFree int32,
 			// /tmp/libsqlite3/sqlite-src-3370200/src/test8.c:737:12:
 			zTemp = zIn
 			// /tmp/libsqlite3/sqlite-src-3370200/src/test8.c:738:7:
-			zIn = x_sqlite3_mprintf(tls, __ccgo_ts+11879, libc.VaList(bp+8, zIn, zAppend))
+			zIn = x_sqlite3_mprintf(tls, __ccgo_ts+11871, libc.VaList(bp+8, zIn, zAppend))
 			// /tmp/libsqlite3/sqlite-src-3370200/src/test8.c:739:7:
 			x_sqlite3_free(tls, zTemp)
 		} else {
@@ -97853,7 +97849,7 @@ func _echoSelectList(tls *libc.TLS, pTab uintptr, pIdxInfo uintptr) (r uintptr) 
 	// /tmp/libsqlite3/sqlite-src-3370200/src/test8.c:765:3:
 	if x_sqlite3_libversion_number(tls) < int32(3010000) {
 		// /tmp/libsqlite3/sqlite-src-3370200/src/test8.c:766:5:
-		zRet = x_sqlite3_mprintf(tls, __ccgo_ts+11995, 0)
+		zRet = x_sqlite3_mprintf(tls, __ccgo_ts+11987, 0)
 	} else {
 		// /tmp/libsqlite3/sqlite-src-3370200/src/test8.c:769:5:
 		i = 0
@@ -97869,10 +97865,10 @@ func _echoSelectList(tls *libc.TLS, pTab uintptr, pIdxInfo uintptr) (r uintptr) 
 			}
 			if (*Tsqlite3_index_info)(unsafe.Pointer(pIdxInfo)).FcolUsed&(libc.Uint64FromInt32(1)<<v2) != 0 {
 				// /tmp/libsqlite3/sqlite-src-3370200/src/test8.c:771:9:
-				zRet = x_sqlite3_mprintf(tls, __ccgo_ts+11999, libc.VaList(bp+8, zRet, *(*uintptr)(unsafe.Pointer((*Techo_vtab)(unsafe.Pointer(pTab)).FaCol + uintptr(i)*8))))
+				zRet = x_sqlite3_mprintf(tls, __ccgo_ts+11991, libc.VaList(bp+8, zRet, *(*uintptr)(unsafe.Pointer((*Techo_vtab)(unsafe.Pointer(pTab)).FaCol + uintptr(i)*8))))
 			} else {
 				// /tmp/libsqlite3/sqlite-src-3370200/src/test8.c:773:9:
-				zRet = x_sqlite3_mprintf(tls, __ccgo_ts+12006, libc.VaList(bp+8, zRet))
+				zRet = x_sqlite3_mprintf(tls, __ccgo_ts+11998, libc.VaList(bp+8, zRet))
 			}
 			// /tmp/libsqlite3/sqlite-src-3370200/src/test8.c:775:7:
 			if !(zRet != 0) {
@@ -97932,7 +97928,7 @@ func _echoBestIndex(tls *libc.TLS, tab uintptr, pIdxInfo uintptr) (r int32) {
 	// /tmp/libsqlite3/sqlite-src-3370200/src/test8.c:808:7:
 	nArg = 0
 	// /tmp/libsqlite3/sqlite-src-3370200/src/test8.c:809:14:
-	zSep = __ccgo_ts + 12015
+	zSep = __ccgo_ts + 12007
 	// /tmp/libsqlite3/sqlite-src-3370200/src/test8.c:810:13:
 	pVtab = tab
 	// /tmp/libsqlite3/sqlite-src-3370200/src/test8.c:811:16:
@@ -97952,12 +97948,12 @@ func _echoBestIndex(tls *libc.TLS, tab uintptr, pIdxInfo uintptr) (r int32) {
 	// /tmp/libsqlite3/sqlite-src-3370200/src/test8.c:819:7:
 	isIgnoreUsable = 0
 	// /tmp/libsqlite3/sqlite-src-3370200/src/test8.c:820:3:
-	if libtcl8_6.XTcl_GetVar2(tls, interp, __ccgo_ts+12021, libc.UintptrFromInt32(0), int32(m_TCL_GLOBAL_ONLY)) != 0 {
+	if libtcl8_6.XTcl_GetVar2(tls, interp, __ccgo_ts+12013, libc.UintptrFromInt32(0), int32(m_TCL_GLOBAL_ONLY)) != 0 {
 		// /tmp/libsqlite3/sqlite-src-3370200/src/test8.c:821:5:
 		isIgnoreUsable = int32(1)
 	}
 	// /tmp/libsqlite3/sqlite-src-3370200/src/test8.c:824:3:
-	if _simulateVtabError(tls, pVtab, __ccgo_ts+12047) != 0 {
+	if _simulateVtabError(tls, pVtab, __ccgo_ts+12039) != 0 {
 		// /tmp/libsqlite3/sqlite-src-3370200/src/test8.c:825:5:
 		return int32(m_SQLITE_ERROR)
 	}
@@ -97967,14 +97963,14 @@ func _echoBestIndex(tls *libc.TLS, tab uintptr, pIdxInfo uintptr) (r int32) {
 	 ** number of rows if the proposed scan uses an index.
 	 */
 	// /tmp/libsqlite3/sqlite-src-3370200/src/test8.c:833:3:
-	if libtcl8_6.XTcl_GetVar2(tls, interp, __ccgo_ts+12058, libc.UintptrFromInt32(0), int32(m_TCL_GLOBAL_ONLY)) != 0 {
+	if libtcl8_6.XTcl_GetVar2(tls, interp, __ccgo_ts+12050, libc.UintptrFromInt32(0), int32(m_TCL_GLOBAL_ONLY)) != 0 {
 		// /tmp/libsqlite3/sqlite-src-3370200/src/test8.c:834:5:
-		cost = libc.Xatof(tls, libtcl8_6.XTcl_GetVar2(tls, interp, __ccgo_ts+12058, libc.UintptrFromInt32(0), int32(m_TCL_GLOBAL_ONLY)))
+		cost = libc.Xatof(tls, libtcl8_6.XTcl_GetVar2(tls, interp, __ccgo_ts+12050, libc.UintptrFromInt32(0), int32(m_TCL_GLOBAL_ONLY)))
 		// /tmp/libsqlite3/sqlite-src-3370200/src/test8.c:835:5:
 		useCost = int32(1)
 	} else {
 		// /tmp/libsqlite3/sqlite-src-3370200/src/test8.c:837:5:
-		*(*uintptr)(unsafe.Pointer(bp)) = x_sqlite3_mprintf(tls, __ccgo_ts+12075, libc.VaList(bp+32, (*Techo_vtab)(unsafe.Pointer(pVtab)).FzTableName))
+		*(*uintptr)(unsafe.Pointer(bp)) = x_sqlite3_mprintf(tls, __ccgo_ts+12067, libc.VaList(bp+32, (*Techo_vtab)(unsafe.Pointer(pVtab)).FzTableName))
 		// /tmp/libsqlite3/sqlite-src-3370200/src/test8.c:838:5:
 		if !(*(*uintptr)(unsafe.Pointer(bp)) != 0) {
 			// /tmp/libsqlite3/sqlite-src-3370200/src/test8.c:839:7:
@@ -98009,7 +98005,7 @@ func _echoBestIndex(tls *libc.TLS, tab uintptr, pIdxInfo uintptr) (r int32) {
 		return int32(m_SQLITE_NOMEM)
 	}
 	// /tmp/libsqlite3/sqlite-src-3370200/src/test8.c:856:3:
-	*(*uintptr)(unsafe.Pointer(bp)) = x_sqlite3_mprintf(tls, __ccgo_ts+12099, libc.VaList(bp+32, zCol, (*Techo_vtab)(unsafe.Pointer(pVtab)).FzTableName))
+	*(*uintptr)(unsafe.Pointer(bp)) = x_sqlite3_mprintf(tls, __ccgo_ts+12091, libc.VaList(bp+32, zCol, (*Techo_vtab)(unsafe.Pointer(pVtab)).FzTableName))
 	// /tmp/libsqlite3/sqlite-src-3370200/src/test8.c:857:3:
 	if !(*(*uintptr)(unsafe.Pointer(bp)) != 0) {
 		// /tmp/libsqlite3/sqlite-src-3370200/src/test8.c:857:17:
@@ -98037,7 +98033,7 @@ func _echoBestIndex(tls *libc.TLS, tab uintptr, pIdxInfo uintptr) (r int32) {
 			if iCol >= 0 {
 				v2 = *(*uintptr)(unsafe.Pointer((*Techo_vtab)(unsafe.Pointer(pVtab)).FaCol + uintptr(iCol)*8))
 			} else {
-				v2 = __ccgo_ts + 12122
+				v2 = __ccgo_ts + 12114
 			}
 			// /tmp/libsqlite3/sqlite-src-3370200/src/test8.c:871:12:
 			zNewCol = v2
@@ -98050,35 +98046,35 @@ func _echoBestIndex(tls *libc.TLS, tab uintptr, pIdxInfo uintptr) (r int32) {
 			// /tmp/libsqlite3/sqlite-src-3370200/src/test8.c:875:9:
 			case int32(m_SQLITE_INDEX_CONSTRAINT_EQ):
 				// /tmp/libsqlite3/sqlite-src-3370200/src/test8.c:876:11:
-				zOp = __ccgo_ts + 12128
+				zOp = __ccgo_ts + 12120
 				// /tmp/libsqlite3/sqlite-src-3370200/src/test8.c:876:22:
 				break
 				// /tmp/libsqlite3/sqlite-src-3370200/src/test8.c:877:9:
 				fallthrough
 			case int32(m_SQLITE_INDEX_CONSTRAINT_LT):
 				// /tmp/libsqlite3/sqlite-src-3370200/src/test8.c:878:11:
-				zOp = __ccgo_ts + 12130
+				zOp = __ccgo_ts + 12122
 				// /tmp/libsqlite3/sqlite-src-3370200/src/test8.c:878:22:
 				break
 				// /tmp/libsqlite3/sqlite-src-3370200/src/test8.c:879:9:
 				fallthrough
 			case int32(m_SQLITE_INDEX_CONSTRAINT_GT):
 				// /tmp/libsqlite3/sqlite-src-3370200/src/test8.c:880:11:
-				zOp = __ccgo_ts + 12132
+				zOp = __ccgo_ts + 12124
 				// /tmp/libsqlite3/sqlite-src-3370200/src/test8.c:880:22:
 				break
 				// /tmp/libsqlite3/sqlite-src-3370200/src/test8.c:881:9:
 				fallthrough
 			case int32(m_SQLITE_INDEX_CONSTRAINT_LE):
 				// /tmp/libsqlite3/sqlite-src-3370200/src/test8.c:882:11:
-				zOp = __ccgo_ts + 12134
+				zOp = __ccgo_ts + 12126
 				// /tmp/libsqlite3/sqlite-src-3370200/src/test8.c:882:23:
 				break
 				// /tmp/libsqlite3/sqlite-src-3370200/src/test8.c:883:9:
 				fallthrough
 			case int32(m_SQLITE_INDEX_CONSTRAINT_GE):
 				// /tmp/libsqlite3/sqlite-src-3370200/src/test8.c:884:11:
-				zOp = __ccgo_ts + 12137
+				zOp = __ccgo_ts + 12129
 				// /tmp/libsqlite3/sqlite-src-3370200/src/test8.c:884:23:
 				break
 				// /tmp/libsqlite3/sqlite-src-3370200/src/test8.c:885:9:
@@ -98092,21 +98088,21 @@ func _echoBestIndex(tls *libc.TLS, tab uintptr, pIdxInfo uintptr) (r int32) {
 				 ** wrapping the bound parameter with literal '%'s).
 				 */
 				// /tmp/libsqlite3/sqlite-src-3370200/src/test8.c:893:11:
-				zOp = __ccgo_ts + 12140
+				zOp = __ccgo_ts + 12132
 				// /tmp/libsqlite3/sqlite-src-3370200/src/test8.c:893:25:
 				break
 				// /tmp/libsqlite3/sqlite-src-3370200/src/test8.c:894:9:
 				fallthrough
 			case int32(m_SQLITE_INDEX_CONSTRAINT_LIKE):
 				// /tmp/libsqlite3/sqlite-src-3370200/src/test8.c:895:11:
-				zOp = __ccgo_ts + 12145
+				zOp = __ccgo_ts + 12137
 				// /tmp/libsqlite3/sqlite-src-3370200/src/test8.c:895:25:
 				break
 				// /tmp/libsqlite3/sqlite-src-3370200/src/test8.c:896:9:
 				fallthrough
 			case int32(m_SQLITE_INDEX_CONSTRAINT_GLOB):
 				// /tmp/libsqlite3/sqlite-src-3370200/src/test8.c:897:11:
-				zOp = __ccgo_ts + 12150
+				zOp = __ccgo_ts + 12142
 				// /tmp/libsqlite3/sqlite-src-3370200/src/test8.c:897:25:
 				break
 				// /tmp/libsqlite3/sqlite-src-3370200/src/test8.c:898:9:
@@ -98122,15 +98118,15 @@ func _echoBestIndex(tls *libc.TLS, tab uintptr, pIdxInfo uintptr) (r int32) {
 				// /tmp/libsqlite3/sqlite-src-3370200/src/test8.c:902:9:
 				if int32(*(*int8)(unsafe.Pointer(zOp))) == int32('L') {
 					// /tmp/libsqlite3/sqlite-src-3370200/src/test8.c:903:11:
-					zNew = x_sqlite3_mprintf(tls, __ccgo_ts+12155, libc.VaList(bp+32, zSep, zNewCol))
+					zNew = x_sqlite3_mprintf(tls, __ccgo_ts+12147, libc.VaList(bp+32, zSep, zNewCol))
 				} else {
 					// /tmp/libsqlite3/sqlite-src-3370200/src/test8.c:906:11:
-					zNew = x_sqlite3_mprintf(tls, __ccgo_ts+12190, libc.VaList(bp+32, zSep, zNewCol, zOp))
+					zNew = x_sqlite3_mprintf(tls, __ccgo_ts+12182, libc.VaList(bp+32, zSep, zNewCol, zOp))
 				}
 				// /tmp/libsqlite3/sqlite-src-3370200/src/test8.c:908:9:
 				_string_concat(tls, bp, zNew, int32(1), bp+16)
 				// /tmp/libsqlite3/sqlite-src-3370200/src/test8.c:909:9:
-				zSep = __ccgo_ts + 12202
+				zSep = __ccgo_ts + 12194
 				// /tmp/libsqlite3/sqlite-src-3370200/src/test8.c:910:9:
 				nArg++
 				v3 = nArg
@@ -98154,26 +98150,26 @@ func _echoBestIndex(tls *libc.TLS, tab uintptr, pIdxInfo uintptr) (r int32) {
 		if iCol1 >= 0 {
 			v4 = *(*uintptr)(unsafe.Pointer((*Techo_vtab)(unsafe.Pointer(pVtab)).FaCol + uintptr(iCol1)*8))
 		} else {
-			v4 = __ccgo_ts + 12122
+			v4 = __ccgo_ts + 12114
 		}
 		// /tmp/libsqlite3/sqlite-src-3370200/src/test8.c:924:10:
 		zNewCol1 = v4
 		if (*Tsqlite3_index_orderby)(unsafe.Pointer((*Tsqlite3_index_info)(unsafe.Pointer(pIdxInfo)).FaOrderBy)).Fdesc != 0 {
-			v5 = __ccgo_ts + 12206
+			v5 = __ccgo_ts + 12198
 		} else {
-			v5 = __ccgo_ts + 12211
+			v5 = __ccgo_ts + 12203
 		}
 		// /tmp/libsqlite3/sqlite-src-3370200/src/test8.c:925:10:
 		zDir = v5
 		// /tmp/libsqlite3/sqlite-src-3370200/src/test8.c:926:5:
-		zNew = x_sqlite3_mprintf(tls, __ccgo_ts+12215, libc.VaList(bp+32, zNewCol1, zDir))
+		zNew = x_sqlite3_mprintf(tls, __ccgo_ts+12207, libc.VaList(bp+32, zNewCol1, zDir))
 		// /tmp/libsqlite3/sqlite-src-3370200/src/test8.c:927:5:
 		_string_concat(tls, bp, zNew, int32(1), bp+16)
 		// /tmp/libsqlite3/sqlite-src-3370200/src/test8.c:928:5:
 		(*Tsqlite3_index_info)(unsafe.Pointer(pIdxInfo)).ForderByConsumed = int32(1)
 	}
 	// /tmp/libsqlite3/sqlite-src-3370200/src/test8.c:931:3:
-	_appendToEchoModule(tls, (*Techo_vtab)(unsafe.Pointer(pVtab)).Finterp, __ccgo_ts+12047)
+	_appendToEchoModule(tls, (*Techo_vtab)(unsafe.Pointer(pVtab)).Finterp, __ccgo_ts+12039)
 	// /tmp/libsqlite3/sqlite-src-3370200/src/test8.c:931:51:
 	// /tmp/libsqlite3/sqlite-src-3370200/src/test8.c:932:3:
 	_appendToEchoModule(tls, (*Techo_vtab)(unsafe.Pointer(pVtab)).Finterp, *(*uintptr)(unsafe.Pointer(bp)))
@@ -98269,7 +98265,7 @@ func x_echoUpdate(tls *libc.TLS, tab uintptr, nData int32, apData uintptr, pRowi
 	 ** making any changes to a virtual table */
 	// /tmp/libsqlite3/sqlite-src-3370200/src/test8.c:989:3:
 	// /tmp/libsqlite3/sqlite-src-3370200/src/test8.c:991:3:
-	if _simulateVtabError(tls, pVtab, __ccgo_ts+12231) != 0 {
+	if _simulateVtabError(tls, pVtab, __ccgo_ts+12223) != 0 {
 		// /tmp/libsqlite3/sqlite-src-3370200/src/test8.c:992:5:
 		return int32(m_SQLITE_ERROR)
 	}
@@ -98277,9 +98273,9 @@ func x_echoUpdate(tls *libc.TLS, tab uintptr, nData int32, apData uintptr, pRowi
 	// /tmp/libsqlite3/sqlite-src-3370200/src/test8.c:996:3:
 	if nData > int32(1) && x_sqlite3_value_type(tls, *(*uintptr)(unsafe.Pointer(apData))) == int32(m_SQLITE_INTEGER) {
 		// /tmp/libsqlite3/sqlite-src-3370200/src/test8.c:997:10:
-		zSep = __ccgo_ts + 12239
+		zSep = __ccgo_ts + 12231
 		// /tmp/libsqlite3/sqlite-src-3370200/src/test8.c:998:5:
-		*(*uintptr)(unsafe.Pointer(bp + 16)) = x_sqlite3_mprintf(tls, __ccgo_ts+12244, libc.VaList(bp+48, (*Techo_vtab)(unsafe.Pointer(pVtab)).FzTableName))
+		*(*uintptr)(unsafe.Pointer(bp + 16)) = x_sqlite3_mprintf(tls, __ccgo_ts+12236, libc.VaList(bp+48, (*Techo_vtab)(unsafe.Pointer(pVtab)).FzTableName))
 		// /tmp/libsqlite3/sqlite-src-3370200/src/test8.c:999:5:
 		if !(*(*uintptr)(unsafe.Pointer(bp + 16)) != 0) {
 			// /tmp/libsqlite3/sqlite-src-3370200/src/test8.c:1000:7:
@@ -98292,9 +98288,9 @@ func x_echoUpdate(tls *libc.TLS, tab uintptr, nData int32, apData uintptr, pRowi
 		// /tmp/libsqlite3/sqlite-src-3370200/src/test8.c:1006:5:
 		if bindArgOne != 0 {
 			// /tmp/libsqlite3/sqlite-src-3370200/src/test8.c:1007:8:
-			_string_concat(tls, bp+16, __ccgo_ts+12254, 0, bp)
+			_string_concat(tls, bp+16, __ccgo_ts+12246, 0, bp)
 			// /tmp/libsqlite3/sqlite-src-3370200/src/test8.c:1008:8:
-			zSep = __ccgo_ts + 12269
+			zSep = __ccgo_ts + 12261
 		}
 		// /tmp/libsqlite3/sqlite-src-3370200/src/test8.c:1010:5:
 		i = int32(2)
@@ -98308,20 +98304,20 @@ func x_echoUpdate(tls *libc.TLS, tab uintptr, nData int32, apData uintptr, pRowi
 				goto _1
 			}
 			// /tmp/libsqlite3/sqlite-src-3370200/src/test8.c:1012:7:
-			_string_concat(tls, bp+16, x_sqlite3_mprintf(tls, __ccgo_ts+12271, libc.VaList(bp+48, zSep, *(*uintptr)(unsafe.Pointer((*Techo_vtab)(unsafe.Pointer(pVtab)).FaCol + uintptr(i-int32(2))*8)), i)), int32(1), bp)
+			_string_concat(tls, bp+16, x_sqlite3_mprintf(tls, __ccgo_ts+12263, libc.VaList(bp+48, zSep, *(*uintptr)(unsafe.Pointer((*Techo_vtab)(unsafe.Pointer(pVtab)).FaCol + uintptr(i-int32(2))*8)), i)), int32(1), bp)
 			// /tmp/libsqlite3/sqlite-src-3370200/src/test8.c:1014:7:
-			zSep = __ccgo_ts + 12269
+			zSep = __ccgo_ts + 12261
 			goto _1
 		_1:
 			i++
 		}
 		// /tmp/libsqlite3/sqlite-src-3370200/src/test8.c:1016:5:
-		_string_concat(tls, bp+16, x_sqlite3_mprintf(tls, __ccgo_ts+12281, libc.VaList(bp+48, nData)), int32(1), bp)
+		_string_concat(tls, bp+16, x_sqlite3_mprintf(tls, __ccgo_ts+12273, libc.VaList(bp+48, nData)), int32(1), bp)
 	} else {
 		// /tmp/libsqlite3/sqlite-src-3370200/src/test8.c:1020:8:
 		if nData == int32(1) && x_sqlite3_value_type(tls, *(*uintptr)(unsafe.Pointer(apData))) == int32(m_SQLITE_INTEGER) {
 			// /tmp/libsqlite3/sqlite-src-3370200/src/test8.c:1021:5:
-			*(*uintptr)(unsafe.Pointer(bp + 16)) = x_sqlite3_mprintf(tls, __ccgo_ts+12298, libc.VaList(bp+48, (*Techo_vtab)(unsafe.Pointer(pVtab)).FzTableName))
+			*(*uintptr)(unsafe.Pointer(bp + 16)) = x_sqlite3_mprintf(tls, __ccgo_ts+12290, libc.VaList(bp+48, (*Techo_vtab)(unsafe.Pointer(pVtab)).FzTableName))
 			// /tmp/libsqlite3/sqlite-src-3370200/src/test8.c:1022:5:
 			if !(*(*uintptr)(unsafe.Pointer(bp + 16)) != 0) {
 				// /tmp/libsqlite3/sqlite-src-3370200/src/test8.c:1023:7:
@@ -98337,7 +98333,7 @@ func x_echoUpdate(tls *libc.TLS, tab uintptr, nData int32, apData uintptr, pRowi
 				// /tmp/libsqlite3/sqlite-src-3370200/src/test8.c:1032:10:
 				*(*uintptr)(unsafe.Pointer(bp + 32)) = uintptr(0)
 				// /tmp/libsqlite3/sqlite-src-3370200/src/test8.c:1034:5:
-				*(*uintptr)(unsafe.Pointer(bp + 24)) = x_sqlite3_mprintf(tls, __ccgo_ts+12330, libc.VaList(bp+48, (*Techo_vtab)(unsafe.Pointer(pVtab)).FzTableName))
+				*(*uintptr)(unsafe.Pointer(bp + 24)) = x_sqlite3_mprintf(tls, __ccgo_ts+12322, libc.VaList(bp+48, (*Techo_vtab)(unsafe.Pointer(pVtab)).FzTableName))
 				// /tmp/libsqlite3/sqlite-src-3370200/src/test8.c:1035:5:
 				if !(*(*uintptr)(unsafe.Pointer(bp + 24)) != 0) {
 					// /tmp/libsqlite3/sqlite-src-3370200/src/test8.c:1036:7:
@@ -98348,9 +98344,9 @@ func x_echoUpdate(tls *libc.TLS, tab uintptr, nData int32, apData uintptr, pRowi
 					// /tmp/libsqlite3/sqlite-src-3370200/src/test8.c:1039:7:
 					bindArgOne = int32(1)
 					// /tmp/libsqlite3/sqlite-src-3370200/src/test8.c:1040:7:
-					*(*uintptr)(unsafe.Pointer(bp + 32)) = x_sqlite3_mprintf(tls, __ccgo_ts+12347, 0)
+					*(*uintptr)(unsafe.Pointer(bp + 32)) = x_sqlite3_mprintf(tls, __ccgo_ts+12339, 0)
 					// /tmp/libsqlite3/sqlite-src-3370200/src/test8.c:1041:7:
-					_string_concat(tls, bp+24, __ccgo_ts+12122, 0, bp)
+					_string_concat(tls, bp+24, __ccgo_ts+12114, 0, bp)
 				}
 				// /tmp/libsqlite3/sqlite-src-3370200/src/test8.c:1044:5:
 				// /tmp/libsqlite3/sqlite-src-3370200/src/test8.c:1045:5:
@@ -98361,18 +98357,18 @@ func x_echoUpdate(tls *libc.TLS, tab uintptr, nData int32, apData uintptr, pRowi
 					}
 					// /tmp/libsqlite3/sqlite-src-3370200/src/test8.c:1046:7:
 					if *(*uintptr)(unsafe.Pointer(bp + 32)) != 0 {
-						v3 = __ccgo_ts + 12349
+						v3 = __ccgo_ts + 12341
 					} else {
 						v3 = __ccgo_ts + 1095
 					}
-					_string_concat(tls, bp+24, x_sqlite3_mprintf(tls, __ccgo_ts+12352, libc.VaList(bp+48, v3, *(*uintptr)(unsafe.Pointer((*Techo_vtab)(unsafe.Pointer(pVtab)).FaCol + uintptr(ii-int32(2))*8)))), int32(1), bp)
+					_string_concat(tls, bp+24, x_sqlite3_mprintf(tls, __ccgo_ts+12344, libc.VaList(bp+48, v3, *(*uintptr)(unsafe.Pointer((*Techo_vtab)(unsafe.Pointer(pVtab)).FaCol + uintptr(ii-int32(2))*8)))), int32(1), bp)
 					// /tmp/libsqlite3/sqlite-src-3370200/src/test8.c:1048:7:
 					if *(*uintptr)(unsafe.Pointer(bp + 32)) != 0 {
-						v4 = __ccgo_ts + 12349
+						v4 = __ccgo_ts + 12341
 					} else {
 						v4 = __ccgo_ts + 1095
 					}
-					_string_concat(tls, bp+32, x_sqlite3_mprintf(tls, __ccgo_ts+12357, libc.VaList(bp+48, v4, ii)), int32(1), bp)
+					_string_concat(tls, bp+32, x_sqlite3_mprintf(tls, __ccgo_ts+12349, libc.VaList(bp+48, v4, ii)), int32(1), bp)
 					goto _2
 				_2:
 					ii++
@@ -98380,11 +98376,11 @@ func x_echoUpdate(tls *libc.TLS, tab uintptr, nData int32, apData uintptr, pRowi
 				// /tmp/libsqlite3/sqlite-src-3370200/src/test8.c:1052:5:
 				_string_concat(tls, bp+16, *(*uintptr)(unsafe.Pointer(bp + 24)), int32(1), bp)
 				// /tmp/libsqlite3/sqlite-src-3370200/src/test8.c:1053:5:
-				_string_concat(tls, bp+16, __ccgo_ts+12363, 0, bp)
+				_string_concat(tls, bp+16, __ccgo_ts+12355, 0, bp)
 				// /tmp/libsqlite3/sqlite-src-3370200/src/test8.c:1054:5:
 				_string_concat(tls, bp+16, *(*uintptr)(unsafe.Pointer(bp + 32)), int32(1), bp)
 				// /tmp/libsqlite3/sqlite-src-3370200/src/test8.c:1055:5:
-				_string_concat(tls, bp+16, __ccgo_ts+12373, 0, bp)
+				_string_concat(tls, bp+16, __ccgo_ts+12365, 0, bp)
 			} else {
 				// /tmp/libsqlite3/sqlite-src-3370200/src/test8.c:1060:5:
 				// /tmp/libsqlite3/sqlite-src-3370200/src/test8.c:1061:5:
@@ -98446,7 +98442,7 @@ func x_echoUpdate(tls *libc.TLS, tab uintptr, nData int32, apData uintptr, pRowi
 	// /tmp/libsqlite3/sqlite-src-3370200/src/test8.c:1090:3:
 	if *(*int32)(unsafe.Pointer(bp)) != m_SQLITE_OK {
 		// /tmp/libsqlite3/sqlite-src-3370200/src/test8.c:1091:5:
-		(*Tsqlite3_vtab)(unsafe.Pointer(tab)).FzErrMsg = x_sqlite3_mprintf(tls, __ccgo_ts+11722, libc.VaList(bp+48, x_sqlite3_errmsg(tls, db)))
+		(*Tsqlite3_vtab)(unsafe.Pointer(tab)).FzErrMsg = x_sqlite3_mprintf(tls, __ccgo_ts+11714, libc.VaList(bp+48, x_sqlite3_errmsg(tls, db)))
 	}
 	// /tmp/libsqlite3/sqlite-src-3370200/src/test8.c:1094:3:
 	return *(*int32)(unsafe.Pointer(bp))
@@ -98470,7 +98466,7 @@ func _echoTransactionCall(tls *libc.TLS, tab uintptr, zCall uintptr) (r int32) {
 	// /tmp/libsqlite3/sqlite-src-3370200/src/test8.c:1104:13:
 	pVtab = tab
 	// /tmp/libsqlite3/sqlite-src-3370200/src/test8.c:1105:3:
-	z = x_sqlite3_mprintf(tls, __ccgo_ts+12375, libc.VaList(bp+8, (*Techo_vtab)(unsafe.Pointer(pVtab)).FzTableName))
+	z = x_sqlite3_mprintf(tls, __ccgo_ts+12367, libc.VaList(bp+8, (*Techo_vtab)(unsafe.Pointer(pVtab)).FzTableName))
 	// /tmp/libsqlite3/sqlite-src-3370200/src/test8.c:1106:3:
 	if z == uintptr(0) {
 		// /tmp/libsqlite3/sqlite-src-3370200/src/test8.c:1106:14:
@@ -98500,12 +98496,12 @@ func _echoBegin(tls *libc.TLS, tab uintptr) (r int32) {
 	 ** a transaction */
 	// /tmp/libsqlite3/sqlite-src-3370200/src/test8.c:1120:3:
 	// /tmp/libsqlite3/sqlite-src-3370200/src/test8.c:1122:3:
-	if _simulateVtabError(tls, pVtab, __ccgo_ts+12384) != 0 {
+	if _simulateVtabError(tls, pVtab, __ccgo_ts+12376) != 0 {
 		// /tmp/libsqlite3/sqlite-src-3370200/src/test8.c:1123:5:
 		return int32(m_SQLITE_ERROR)
 	}
 	// /tmp/libsqlite3/sqlite-src-3370200/src/test8.c:1126:3:
-	rc = _echoTransactionCall(tls, tab, __ccgo_ts+12384)
+	rc = _echoTransactionCall(tls, tab, __ccgo_ts+12376)
 	// /tmp/libsqlite3/sqlite-src-3370200/src/test8.c:1128:3:
 	if rc == m_SQLITE_OK {
 		/* Check if the $::echo_module_begin_fail variable is defined. If it is,
@@ -98513,7 +98509,7 @@ func _echoBegin(tls *libc.TLS, tab uintptr) (r int32) {
 		 ** echo module table, then cause this xSync operation to fail.
 		 */
 		// /tmp/libsqlite3/sqlite-src-3370200/src/test8.c:1133:5:
-		zVal = libtcl8_6.XTcl_GetVar2(tls, interp, __ccgo_ts+12391, libc.UintptrFromInt32(0), int32(m_TCL_GLOBAL_ONLY))
+		zVal = libtcl8_6.XTcl_GetVar2(tls, interp, __ccgo_ts+12383, libc.UintptrFromInt32(0), int32(m_TCL_GLOBAL_ONLY))
 		// /tmp/libsqlite3/sqlite-src-3370200/src/test8.c:1134:5:
 		if zVal != 0 && 0 == libc.Xstrcmp(tls, zVal, (*Techo_vtab)(unsafe.Pointer(pVtab)).FzTableName) {
 			// /tmp/libsqlite3/sqlite-src-3370200/src/test8.c:1135:7:
@@ -98543,12 +98539,12 @@ func _echoSync(tls *libc.TLS, tab uintptr) (r int32) {
 	 ** transaction */
 	// /tmp/libsqlite3/sqlite-src-3370200/src/test8.c:1151:3:
 	// /tmp/libsqlite3/sqlite-src-3370200/src/test8.c:1153:3:
-	if _simulateVtabError(tls, pVtab, __ccgo_ts+12414) != 0 {
+	if _simulateVtabError(tls, pVtab, __ccgo_ts+12406) != 0 {
 		// /tmp/libsqlite3/sqlite-src-3370200/src/test8.c:1154:5:
 		return int32(m_SQLITE_ERROR)
 	}
 	// /tmp/libsqlite3/sqlite-src-3370200/src/test8.c:1157:3:
-	rc = _echoTransactionCall(tls, tab, __ccgo_ts+12414)
+	rc = _echoTransactionCall(tls, tab, __ccgo_ts+12406)
 	// /tmp/libsqlite3/sqlite-src-3370200/src/test8.c:1159:3:
 	if rc == m_SQLITE_OK {
 		/* Check if the $::echo_module_sync_fail variable is defined. If it is,
@@ -98556,7 +98552,7 @@ func _echoSync(tls *libc.TLS, tab uintptr) (r int32) {
 		 ** echo module table, then cause this xSync operation to fail.
 		 */
 		// /tmp/libsqlite3/sqlite-src-3370200/src/test8.c:1164:5:
-		zVal = libtcl8_6.XTcl_GetVar2(tls, interp, __ccgo_ts+12420, libc.UintptrFromInt32(0), int32(m_TCL_GLOBAL_ONLY))
+		zVal = libtcl8_6.XTcl_GetVar2(tls, interp, __ccgo_ts+12412, libc.UintptrFromInt32(0), int32(m_TCL_GLOBAL_ONLY))
 		// /tmp/libsqlite3/sqlite-src-3370200/src/test8.c:1165:5:
 		if zVal != 0 && 0 == libc.Xstrcmp(tls, zVal, (*Techo_vtab)(unsafe.Pointer(pVtab)).FzTableName) {
 			// /tmp/libsqlite3/sqlite-src-3370200/src/test8.c:1166:7:
@@ -98579,14 +98575,14 @@ func _echoCommit(tls *libc.TLS, tab uintptr) (r int32) {
 	 ** a transaction */
 	// /tmp/libsqlite3/sqlite-src-3370200/src/test8.c:1177:3:
 	// /tmp/libsqlite3/sqlite-src-3370200/src/test8.c:1179:3:
-	if _simulateVtabError(tls, pVtab, __ccgo_ts+12442) != 0 {
+	if _simulateVtabError(tls, pVtab, __ccgo_ts+12434) != 0 {
 		// /tmp/libsqlite3/sqlite-src-3370200/src/test8.c:1180:5:
 		return int32(m_SQLITE_ERROR)
 	}
 	// /tmp/libsqlite3/sqlite-src-3370200/src/test8.c:1183:3:
 	x_sqlite3BeginBenignMalloc(tls)
 	// /tmp/libsqlite3/sqlite-src-3370200/src/test8.c:1184:3:
-	rc = _echoTransactionCall(tls, tab, __ccgo_ts+12442)
+	rc = _echoTransactionCall(tls, tab, __ccgo_ts+12434)
 	// /tmp/libsqlite3/sqlite-src-3370200/src/test8.c:1185:3:
 	x_sqlite3EndBenignMalloc(tls)
 	// /tmp/libsqlite3/sqlite-src-3370200/src/test8.c:1186:3:
@@ -98607,7 +98603,7 @@ func _echoRollback(tls *libc.TLS, tab uintptr) (r int32) {
 	 ** a transaction */
 	// /tmp/libsqlite3/sqlite-src-3370200/src/test8.c:1195:3:
 	// /tmp/libsqlite3/sqlite-src-3370200/src/test8.c:1197:3:
-	rc = _echoTransactionCall(tls, tab, __ccgo_ts+12450)
+	rc = _echoTransactionCall(tls, tab, __ccgo_ts+12442)
 	// /tmp/libsqlite3/sqlite-src-3370200/src/test8.c:1198:3:
 	(*Techo_vtab)(unsafe.Pointer(pVtab)).FinTransaction = 0
 	// /tmp/libsqlite3/sqlite-src-3370200/src/test8.c:1199:3:
@@ -98636,7 +98632,7 @@ func _overloadedGlobFunction(tls *libc.TLS, pContext uintptr, nArg int32, apArg 
 	// /tmp/libsqlite3/sqlite-src-3370200/src/test8.c:1216:3:
 	libtcl8_6.XTcl_DStringInit(tls, bp)
 	// /tmp/libsqlite3/sqlite-src-3370200/src/test8.c:1217:3:
-	libtcl8_6.XTcl_DStringAppendElement(tls, bp, __ccgo_ts+12460)
+	libtcl8_6.XTcl_DStringAppendElement(tls, bp, __ccgo_ts+12452)
 	// /tmp/libsqlite3/sqlite-src-3370200/src/test8.c:1218:3:
 	i = 0
 	for {
@@ -98689,12 +98685,12 @@ func _echoFindFunction(tls *libc.TLS, vtab uintptr, nArg int32, zFuncName uintpt
 	// /tmp/libsqlite3/sqlite-src-3370200/src/test8.c:1248:14:
 	interp = (*Techo_vtab)(unsafe.Pointer(pVtab)).Finterp
 	// /tmp/libsqlite3/sqlite-src-3370200/src/test8.c:1250:3:
-	if libc.Xstrcmp(tls, zFuncName, __ccgo_ts+12150) != 0 {
+	if libc.Xstrcmp(tls, zFuncName, __ccgo_ts+12142) != 0 {
 		// /tmp/libsqlite3/sqlite-src-3370200/src/test8.c:1251:5:
 		return 0
 	}
 	// /tmp/libsqlite3/sqlite-src-3370200/src/test8.c:1253:3:
-	if libtcl8_6.XTcl_GetCommandInfo(tls, interp, __ccgo_ts+12460, bp) == 0 {
+	if libtcl8_6.XTcl_GetCommandInfo(tls, interp, __ccgo_ts+12452, bp) == 0 {
 		// /tmp/libsqlite3/sqlite-src-3370200/src/test8.c:1254:5:
 		return 0
 	}
@@ -98719,7 +98715,7 @@ func _echoRename(tls *libc.TLS, vtab uintptr, zNewName uintptr) (r int32) {
 	// /tmp/libsqlite3/sqlite-src-3370200/src/test8.c:1263:13:
 	p = vtab
 	// /tmp/libsqlite3/sqlite-src-3370200/src/test8.c:1265:3:
-	if _simulateVtabError(tls, p, __ccgo_ts+12481) != 0 {
+	if _simulateVtabError(tls, p, __ccgo_ts+12473) != 0 {
 		// /tmp/libsqlite3/sqlite-src-3370200/src/test8.c:1266:5:
 		return int32(m_SQLITE_ERROR)
 	}
@@ -98728,7 +98724,7 @@ func _echoRename(tls *libc.TLS, vtab uintptr, zNewName uintptr) (r int32) {
 		// /tmp/libsqlite3/sqlite-src-3370200/src/test8.c:1270:9:
 		nThis = int32(libc.Xstrlen(tls, (*Techo_vtab)(unsafe.Pointer(p)).FzThis))
 		// /tmp/libsqlite3/sqlite-src-3370200/src/test8.c:1271:10:
-		zSql = x_sqlite3_mprintf(tls, __ccgo_ts+12489, libc.VaList(bp+8, (*Techo_vtab)(unsafe.Pointer(p)).FzTableName, zNewName, (*Techo_vtab)(unsafe.Pointer(p)).FzTableName+uintptr(nThis)))
+		zSql = x_sqlite3_mprintf(tls, __ccgo_ts+12481, libc.VaList(bp+8, (*Techo_vtab)(unsafe.Pointer(p)).FzTableName, zNewName, (*Techo_vtab)(unsafe.Pointer(p)).FzTableName+uintptr(nThis)))
 		// /tmp/libsqlite3/sqlite-src-3370200/src/test8.c:1274:5:
 		rc = x_sqlite3_exec(tls, (*Techo_vtab)(unsafe.Pointer(p)).Fdb, zSql, uintptr(0), uintptr(0), uintptr(0))
 		// /tmp/libsqlite3/sqlite-src-3370200/src/test8.c:1275:5:
@@ -98841,7 +98837,7 @@ func _moduleDestroy(tls *libc.TLS, p uintptr) {
 	// /tmp/libsqlite3/sqlite-src-3370200/src/test8.c:1356:14:
 	pMod = p
 	// /tmp/libsqlite3/sqlite-src-3370200/src/test8.c:1357:3:
-	x_sqlite3_create_function(tls, (*TEchoModule)(unsafe.Pointer(pMod)).Fdb, __ccgo_ts+12519, int32(m_SQLITE_ANY), int32(1), uintptr(0), uintptr(0), uintptr(0), uintptr(0))
+	x_sqlite3_create_function(tls, (*TEchoModule)(unsafe.Pointer(pMod)).Fdb, __ccgo_ts+12511, int32(m_SQLITE_ANY), int32(1), uintptr(0), uintptr(0), uintptr(0), uintptr(0))
 	// /tmp/libsqlite3/sqlite-src-3370200/src/test8.c:1359:3:
 	x_sqlite3_free(tls, p)
 }
@@ -98881,7 +98877,7 @@ func _register_echo_module(tls *libc.TLS, clientData TClientData, interp uintptr
 	// /tmp/libsqlite3/sqlite-src-3370200/src/test8.c:1383:3:
 	(*TEchoModule)(unsafe.Pointer(pMod)).Fdb = *(*uintptr)(unsafe.Pointer(bp))
 	// /tmp/libsqlite3/sqlite-src-3370200/src/test8.c:1384:3:
-	rc = x_sqlite3_create_module_v2(tls, *(*uintptr)(unsafe.Pointer(bp)), __ccgo_ts+12557, uintptr(unsafe.Pointer(&_echoModule)), pMod, __ccgo_fp(_moduleDestroy))
+	rc = x_sqlite3_create_module_v2(tls, *(*uintptr)(unsafe.Pointer(bp)), __ccgo_ts+12549, uintptr(unsafe.Pointer(&_echoModule)), pMod, __ccgo_fp(_moduleDestroy))
 	/* Virtual table module "echo_v2" */
 	// /tmp/libsqlite3/sqlite-src-3370200/src/test8.c:1389:3:
 	if rc == m_SQLITE_OK {
@@ -98892,7 +98888,7 @@ func _register_echo_module(tls *libc.TLS, clientData TClientData, interp uintptr
 		// /tmp/libsqlite3/sqlite-src-3370200/src/test8.c:1392:5:
 		(*TEchoModule)(unsafe.Pointer(pMod)).Fdb = *(*uintptr)(unsafe.Pointer(bp))
 		// /tmp/libsqlite3/sqlite-src-3370200/src/test8.c:1393:5:
-		rc = x_sqlite3_create_module_v2(tls, *(*uintptr)(unsafe.Pointer(bp)), __ccgo_ts+12562, uintptr(unsafe.Pointer(&_echoModuleV2)), pMod, __ccgo_fp(_moduleDestroy))
+		rc = x_sqlite3_create_module_v2(tls, *(*uintptr)(unsafe.Pointer(bp)), __ccgo_ts+12554, uintptr(unsafe.Pointer(&_echoModuleV2)), pMod, __ccgo_fp(_moduleDestroy))
 	}
 	// /tmp/libsqlite3/sqlite-src-3370200/src/test8.c:1398:3:
 	libtcl8_6.XTcl_SetResult(tls, interp, x_sqlite3ErrName(tls, rc), libc.UintptrFromInt32(0))
@@ -98919,7 +98915,7 @@ func _declare_vtab(tls *libc.TLS, clientData TClientData, interp uintptr, objc i
 	// /tmp/libsqlite3/sqlite-src-3370200/src/test8.c:1415:3:
 	if objc != int32(3) {
 		// /tmp/libsqlite3/sqlite-src-3370200/src/test8.c:1416:5:
-		libtcl8_6.XTcl_WrongNumArgs(tls, interp, int32(1), objv, __ccgo_ts+12570)
+		libtcl8_6.XTcl_WrongNumArgs(tls, interp, int32(1), objv, __ccgo_ts+12562)
 		// /tmp/libsqlite3/sqlite-src-3370200/src/test8.c:1417:5:
 		return int32(m_TCL_ERROR)
 	}
@@ -98975,10 +98971,10 @@ var _aObjCmd1 = [2]struct {
 	FclientData uintptr
 }{
 	0: {
-		FzName: __ccgo_ts + 12577,
+		FzName: __ccgo_ts + 12569,
 	},
 	1: {
-		FzName: __ccgo_ts + 12598,
+		FzName: __ccgo_ts + 12590,
 	},
 }
 
@@ -98986,14 +98982,6 @@ func init() {
 	p := unsafe.Pointer(&_aObjCmd1)
 	*(*uintptr)(unsafe.Add(p, 8)) = __ccgo_fp(_register_echo_module)
 	*(*uintptr)(unsafe.Add(p, 32)) = __ccgo_fp(_declare_vtab)
-}
-
-// -:
-type Tsqlite3_index_constraint = struct {
-	FiColumn     int32
-	Fop          uint8
-	Fusable      uint8
-	FiTermOffset int32
 }
 
 // -:
@@ -99006,6 +98994,14 @@ type Tsqlite3_index_constraint_usage = struct {
 type Tsqlite3_index_orderby = struct {
 	FiColumn int32
 	Fdesc    uint8
+}
+
+// -:
+type Tsqlite3_index_constraint = struct {
+	FiColumn     int32
+	Fop          uint8
+	Fusable      uint8
+	FiTermOffset int32
 }
 
 /**
@@ -99087,7 +99083,7 @@ func _c_collation_test(tls *libc.TLS, clientData TClientData, interp uintptr, ob
 	var _ /* db at bp+0 */ uintptr
 	_, _ = rc, zErrFunction
 	// /tmp/libsqlite3/sqlite-src-3370200/src/test9.c:35:14:
-	zErrFunction = __ccgo_ts + 12619
+	zErrFunction = __ccgo_ts + 12611
 	// /tmp/libsqlite3/sqlite-src-3370200/src/test9.c:39:3:
 	if objc != int32(1) {
 		// /tmp/libsqlite3/sqlite-src-3370200/src/test9.c:40:5:
@@ -99097,22 +99093,22 @@ func _c_collation_test(tls *libc.TLS, clientData TClientData, interp uintptr, ob
 	}
 	/* Open a database. */
 	// /tmp/libsqlite3/sqlite-src-3370200/src/test9.c:45:3:
-	rc = x_sqlite3_open(tls, __ccgo_ts+12623, bp)
+	rc = x_sqlite3_open(tls, __ccgo_ts+12615, bp)
 	// /tmp/libsqlite3/sqlite-src-3370200/src/test9.c:46:3:
 	if rc != m_SQLITE_OK {
 		// /tmp/libsqlite3/sqlite-src-3370200/src/test9.c:47:5:
-		zErrFunction = __ccgo_ts + 6252
+		zErrFunction = __ccgo_ts + 6244
 		// /tmp/libsqlite3/sqlite-src-3370200/src/test9.c:48:5:
 		goto error_out
 	}
 	// /tmp/libsqlite3/sqlite-src-3370200/src/test9.c:51:3:
-	rc = x_sqlite3_create_collation(tls, *(*uintptr)(unsafe.Pointer(bp)), __ccgo_ts+12632, int32(456), uintptr(0), uintptr(0))
+	rc = x_sqlite3_create_collation(tls, *(*uintptr)(unsafe.Pointer(bp)), __ccgo_ts+12624, int32(456), uintptr(0), uintptr(0))
 	// /tmp/libsqlite3/sqlite-src-3370200/src/test9.c:52:3:
 	if rc != int32(m_SQLITE_MISUSE) {
 		// /tmp/libsqlite3/sqlite-src-3370200/src/test9.c:53:5:
 		x_sqlite3_close(tls, *(*uintptr)(unsafe.Pointer(bp)))
 		// /tmp/libsqlite3/sqlite-src-3370200/src/test9.c:54:5:
-		zErrFunction = __ccgo_ts + 12640
+		zErrFunction = __ccgo_ts + 12632
 		// /tmp/libsqlite3/sqlite-src-3370200/src/test9.c:55:5:
 		goto error_out
 	}
@@ -99125,7 +99121,7 @@ error_out:
 	// /tmp/libsqlite3/sqlite-src-3370200/src/test9.c:62:3:
 	libtcl8_6.XTcl_ResetResult(tls, interp)
 	// /tmp/libsqlite3/sqlite-src-3370200/src/test9.c:63:3:
-	libtcl8_6.XTcl_AppendResult(tls, interp, libc.VaList(bp+16, __ccgo_ts+12665, zErrFunction, 0))
+	libtcl8_6.XTcl_AppendResult(tls, interp, libc.VaList(bp+16, __ccgo_ts+12657, zErrFunction, 0))
 	// /tmp/libsqlite3/sqlite-src-3370200/src/test9.c:64:3:
 	return int32(m_TCL_ERROR)
 }
@@ -99144,7 +99140,7 @@ func _c_realloc_test(tls *libc.TLS, clientData TClientData, interp uintptr, objc
 	var p, zErrFunction uintptr
 	_, _ = p, zErrFunction
 	// /tmp/libsqlite3/sqlite-src-3370200/src/test9.c:77:14:
-	zErrFunction = __ccgo_ts + 12619
+	zErrFunction = __ccgo_ts + 12611
 	// /tmp/libsqlite3/sqlite-src-3370200/src/test9.c:79:3:
 	if objc != int32(1) {
 		// /tmp/libsqlite3/sqlite-src-3370200/src/test9.c:80:5:
@@ -99157,7 +99153,7 @@ func _c_realloc_test(tls *libc.TLS, clientData TClientData, interp uintptr, objc
 	// /tmp/libsqlite3/sqlite-src-3370200/src/test9.c:85:3:
 	if !(p != 0) {
 		// /tmp/libsqlite3/sqlite-src-3370200/src/test9.c:86:5:
-		zErrFunction = __ccgo_ts + 12690
+		zErrFunction = __ccgo_ts + 12682
 		// /tmp/libsqlite3/sqlite-src-3370200/src/test9.c:87:5:
 		goto error_out
 	}
@@ -99169,7 +99165,7 @@ func _c_realloc_test(tls *libc.TLS, clientData TClientData, interp uintptr, objc
 	// /tmp/libsqlite3/sqlite-src-3370200/src/test9.c:94:3:
 	if p != 0 {
 		// /tmp/libsqlite3/sqlite-src-3370200/src/test9.c:95:5:
-		zErrFunction = __ccgo_ts + 12705
+		zErrFunction = __ccgo_ts + 12697
 		// /tmp/libsqlite3/sqlite-src-3370200/src/test9.c:96:5:
 		goto error_out
 	}
@@ -99180,7 +99176,7 @@ error_out:
 	// /tmp/libsqlite3/sqlite-src-3370200/src/test9.c:102:3:
 	libtcl8_6.XTcl_ResetResult(tls, interp)
 	// /tmp/libsqlite3/sqlite-src-3370200/src/test9.c:103:3:
-	libtcl8_6.XTcl_AppendResult(tls, interp, libc.VaList(bp+8, __ccgo_ts+12665, zErrFunction, 0))
+	libtcl8_6.XTcl_AppendResult(tls, interp, libc.VaList(bp+8, __ccgo_ts+12657, zErrFunction, 0))
 	// /tmp/libsqlite3/sqlite-src-3370200/src/test9.c:104:3:
 	return int32(m_TCL_ERROR)
 }
@@ -99202,7 +99198,7 @@ func _c_misuse_test(tls *libc.TLS, clientData TClientData, interp uintptr, objc 
 	var _ /* pStmt at bp+8 */ uintptr
 	_, _ = rc, zErrFunction
 	// /tmp/libsqlite3/sqlite-src-3370200/src/test9.c:117:14:
-	zErrFunction = __ccgo_ts + 12619
+	zErrFunction = __ccgo_ts + 12611
 	// /tmp/libsqlite3/sqlite-src-3370200/src/test9.c:118:11:
 	*(*uintptr)(unsafe.Pointer(bp)) = uintptr(0)
 	// /tmp/libsqlite3/sqlite-src-3370200/src/test9.c:122:3:
@@ -99216,11 +99212,11 @@ func _c_misuse_test(tls *libc.TLS, clientData TClientData, interp uintptr, objc 
 	 ** we have a "closed database handle" to pass to various API functions.
 	 */
 	// /tmp/libsqlite3/sqlite-src-3370200/src/test9.c:130:3:
-	rc = x_sqlite3_open(tls, __ccgo_ts+12623, bp)
+	rc = x_sqlite3_open(tls, __ccgo_ts+12615, bp)
 	// /tmp/libsqlite3/sqlite-src-3370200/src/test9.c:131:3:
 	if rc != m_SQLITE_OK {
 		// /tmp/libsqlite3/sqlite-src-3370200/src/test9.c:132:5:
-		zErrFunction = __ccgo_ts + 6252
+		zErrFunction = __ccgo_ts + 6244
 		// /tmp/libsqlite3/sqlite-src-3370200/src/test9.c:133:5:
 		goto error_out
 	}
@@ -99231,7 +99227,7 @@ func _c_misuse_test(tls *libc.TLS, clientData TClientData, interp uintptr, objc 
 	// /tmp/libsqlite3/sqlite-src-3370200/src/test9.c:139:3:
 	if rc != int32(m_SQLITE_MISUSE) {
 		// /tmp/libsqlite3/sqlite-src-3370200/src/test9.c:140:5:
-		zErrFunction = __ccgo_ts + 6179
+		zErrFunction = __ccgo_ts + 6171
 		// /tmp/libsqlite3/sqlite-src-3370200/src/test9.c:141:5:
 		goto error_out
 	}
@@ -99242,7 +99238,7 @@ func _c_misuse_test(tls *libc.TLS, clientData TClientData, interp uintptr, objc 
 	// /tmp/libsqlite3/sqlite-src-3370200/src/test9.c:146:3:
 	if rc != int32(m_SQLITE_MISUSE) {
 		// /tmp/libsqlite3/sqlite-src-3370200/src/test9.c:147:5:
-		zErrFunction = __ccgo_ts + 6333
+		zErrFunction = __ccgo_ts + 6325
 		// /tmp/libsqlite3/sqlite-src-3370200/src/test9.c:148:5:
 		goto error_out
 	}
@@ -99255,7 +99251,7 @@ func _c_misuse_test(tls *libc.TLS, clientData TClientData, interp uintptr, objc 
 	// /tmp/libsqlite3/sqlite-src-3370200/src/test9.c:154:3:
 	if rc != int32(m_SQLITE_MISUSE) {
 		// /tmp/libsqlite3/sqlite-src-3370200/src/test9.c:155:5:
-		zErrFunction = __ccgo_ts + 6367
+		zErrFunction = __ccgo_ts + 6359
 		// /tmp/libsqlite3/sqlite-src-3370200/src/test9.c:156:5:
 		goto error_out
 	}
@@ -99267,7 +99263,7 @@ func _c_misuse_test(tls *libc.TLS, clientData TClientData, interp uintptr, objc 
 	// /tmp/libsqlite3/sqlite-src-3370200/src/test9.c:163:3:
 	if rc != int32(m_SQLITE_MISUSE) {
 		// /tmp/libsqlite3/sqlite-src-3370200/src/test9.c:164:5:
-		zErrFunction = __ccgo_ts + 6349
+		zErrFunction = __ccgo_ts + 6341
 		// /tmp/libsqlite3/sqlite-src-3370200/src/test9.c:165:5:
 		goto error_out
 	}
@@ -99279,7 +99275,7 @@ func _c_misuse_test(tls *libc.TLS, clientData TClientData, interp uintptr, objc 
 	// /tmp/libsqlite3/sqlite-src-3370200/src/test9.c:170:3:
 	if rc != int32(m_SQLITE_MISUSE) {
 		// /tmp/libsqlite3/sqlite-src-3370200/src/test9.c:171:5:
-		zErrFunction = __ccgo_ts + 6429
+		zErrFunction = __ccgo_ts + 6421
 		// /tmp/libsqlite3/sqlite-src-3370200/src/test9.c:172:5:
 		goto error_out
 	}
@@ -99291,7 +99287,7 @@ error_out:
 	// /tmp/libsqlite3/sqlite-src-3370200/src/test9.c:180:3:
 	libtcl8_6.XTcl_ResetResult(tls, interp)
 	// /tmp/libsqlite3/sqlite-src-3370200/src/test9.c:181:3:
-	libtcl8_6.XTcl_AppendResult(tls, interp, libc.VaList(bp+24, __ccgo_ts+12665, zErrFunction, 0))
+	libtcl8_6.XTcl_AppendResult(tls, interp, libc.VaList(bp+24, __ccgo_ts+12657, zErrFunction, 0))
 	// /tmp/libsqlite3/sqlite-src-3370200/src/test9.c:182:3:
 	return int32(m_TCL_ERROR)
 }
@@ -99330,13 +99326,13 @@ var _aObjCmd2 = [3]struct {
 	FclientData uintptr
 }{
 	0: {
-		FzName: __ccgo_ts + 12721,
+		FzName: __ccgo_ts + 12713,
 	},
 	1: {
-		FzName: __ccgo_ts + 12735,
+		FzName: __ccgo_ts + 12727,
 	},
 	2: {
-		FzName: __ccgo_ts + 12750,
+		FzName: __ccgo_ts + 12742,
 	},
 }
 
@@ -99965,7 +99961,7 @@ func _resetAutoExtObjCmd(tls *libc.TLS, clientData uintptr, interp uintptr, objc
 func x_Sqlitetest_autoext_Init(tls *libc.TLS, interp uintptr) (r int32) {
 	// /tmp/libsqlite3/sqlite-src-3370200/src/test_autoext.c:210:48:
 	// /tmp/libsqlite3/sqlite-src-3370200/src/test_autoext.c:225:3:
-	libtcl8_6.XTcl_CreateObjCommand(tls, interp, __ccgo_ts+12767, __ccgo_fp(_resetAutoExtObjCmd), uintptr(0), uintptr(0))
+	libtcl8_6.XTcl_CreateObjCommand(tls, interp, __ccgo_ts+12759, __ccgo_fp(_resetAutoExtObjCmd), uintptr(0), uintptr(0))
 	// /tmp/libsqlite3/sqlite-src-3370200/src/test_autoext.c:227:3:
 	return m_TCL_OK
 }
@@ -100109,22 +100105,22 @@ func _backupTestCmd(tls *libc.TLS, clientData TClientData, interp uintptr, objc 
 		FzArg uintptr
 	}{
 		0: {
-			FzCmd: __ccgo_ts + 12796,
+			FzCmd: __ccgo_ts + 12788,
 			FnArg: int32(1),
-			FzArg: __ccgo_ts + 12801,
+			FzArg: __ccgo_ts + 12793,
 		},
 		1: {
-			FzCmd: __ccgo_ts + 12807,
+			FzCmd: __ccgo_ts + 12799,
 			FeCmd: 1,
 			FzArg: __ccgo_ts + 1095,
 		},
 		2: {
-			FzCmd: __ccgo_ts + 12814,
+			FzCmd: __ccgo_ts + 12806,
 			FeCmd: 2,
 			FzArg: __ccgo_ts + 1095,
 		},
 		3: {
-			FzCmd: __ccgo_ts + 12824,
+			FzCmd: __ccgo_ts + 12816,
 			FeCmd: 3,
 			FzArg: __ccgo_ts + 1095,
 		},
@@ -100133,7 +100129,7 @@ func _backupTestCmd(tls *libc.TLS, clientData TClientData, interp uintptr, objc 
 	// /tmp/libsqlite3/sqlite-src-3370200/src/test_backup.c:55:18:
 	p = clientData
 	// /tmp/libsqlite3/sqlite-src-3370200/src/test_backup.c:59:3:
-	rc = libtcl8_6.XTcl_GetIndexFromObjStruct(tls, interp, *(*uintptr)(unsafe.Pointer(objv + 1*8)), bp, int32(24), __ccgo_ts+12834, 0, bp+120)
+	rc = libtcl8_6.XTcl_GetIndexFromObjStruct(tls, interp, *(*uintptr)(unsafe.Pointer(objv + 1*8)), bp, int32(24), __ccgo_ts+12826, 0, bp+120)
 	// /tmp/libsqlite3/sqlite-src-3370200/src/test_backup.c:62:3:
 	if rc != m_TCL_OK {
 		// /tmp/libsqlite3/sqlite-src-3370200/src/test_backup.c:63:5:
@@ -100244,7 +100240,7 @@ func _backupTestInit(tls *libc.TLS, clientData TClientData, interp uintptr, objc
 	// /tmp/libsqlite3/sqlite-src-3370200/src/test_backup.c:130:3:
 	if objc != int32(6) {
 		// /tmp/libsqlite3/sqlite-src-3370200/src/test_backup.c:131:5:
-		libtcl8_6.XTcl_WrongNumArgs(tls, interp, int32(1), objv, __ccgo_ts+12841)
+		libtcl8_6.XTcl_WrongNumArgs(tls, interp, int32(1), objv, __ccgo_ts+12833)
 		// /tmp/libsqlite3/sqlite-src-3370200/src/test_backup.c:134:5:
 		return int32(m_TCL_ERROR)
 	}
@@ -100263,7 +100259,7 @@ func _backupTestInit(tls *libc.TLS, clientData TClientData, interp uintptr, objc
 	// /tmp/libsqlite3/sqlite-src-3370200/src/test_backup.c:144:3:
 	if !(pBackup != 0) {
 		// /tmp/libsqlite3/sqlite-src-3370200/src/test_backup.c:145:5:
-		libtcl8_6.XTcl_AppendResult(tls, interp, libc.VaList(bp+24, __ccgo_ts+12887, 0))
+		libtcl8_6.XTcl_AppendResult(tls, interp, libc.VaList(bp+24, __ccgo_ts+12879, 0))
 		// /tmp/libsqlite3/sqlite-src-3370200/src/test_backup.c:146:5:
 		return int32(m_TCL_ERROR)
 	}
@@ -100279,7 +100275,7 @@ func _backupTestInit(tls *libc.TLS, clientData TClientData, interp uintptr, objc
 func x_Sqlitetestbackup_Init(tls *libc.TLS, interp uintptr) (r int32) {
 	// /tmp/libsqlite3/sqlite-src-3370200/src/test_backup.c:154:46:
 	// /tmp/libsqlite3/sqlite-src-3370200/src/test_backup.c:155:3:
-	libtcl8_6.XTcl_CreateObjCommand(tls, interp, __ccgo_ts+12916, __ccgo_fp(_backupTestInit), uintptr(0), uintptr(0))
+	libtcl8_6.XTcl_CreateObjCommand(tls, interp, __ccgo_ts+12908, __ccgo_fp(_backupTestInit), uintptr(0), uintptr(0))
 	// /tmp/libsqlite3/sqlite-src-3370200/src/test_backup.c:156:3:
 	return m_TCL_OK
 }
@@ -100495,7 +100491,7 @@ func _tclConnect(tls *libc.TLS, db uintptr, pAux uintptr, argc int32, argv uintp
 	// /tmp/libsqlite3/sqlite-src-3370200/src/test_bestindex.c:181:3:
 	if argc != int32(4) {
 		// /tmp/libsqlite3/sqlite-src-3370200/src/test_bestindex.c:182:5:
-		*(*uintptr)(unsafe.Pointer(pzErr)) = x_sqlite3_mprintf(tls, __ccgo_ts+12931, 0)
+		*(*uintptr)(unsafe.Pointer(pzErr)) = x_sqlite3_mprintf(tls, __ccgo_ts+12923, 0)
 		// /tmp/libsqlite3/sqlite-src-3370200/src/test_bestindex.c:183:5:
 		return int32(m_SQLITE_ERROR)
 	}
@@ -100524,7 +100520,7 @@ func _tclConnect(tls *libc.TLS, db uintptr, pAux uintptr, argc int32, argv uintp
 		// /tmp/libsqlite3/sqlite-src-3370200/src/test_bestindex.c:199:5:
 		(*TTcl_Obj)(unsafe.Pointer(pScript)).FrefCount++
 		// /tmp/libsqlite3/sqlite-src-3370200/src/test_bestindex.c:200:5:
-		libtcl8_6.XTcl_ListObjAppendElement(tls, interp, pScript, libtcl8_6.XTcl_NewStringObj(tls, __ccgo_ts+11916, -int32(1)))
+		libtcl8_6.XTcl_ListObjAppendElement(tls, interp, pScript, libtcl8_6.XTcl_NewStringObj(tls, __ccgo_ts+11908, -int32(1)))
 		// /tmp/libsqlite3/sqlite-src-3370200/src/test_bestindex.c:202:5:
 		rc = libtcl8_6.XTcl_EvalObjEx(tls, interp, pScript, int32(m_TCL_EVAL_GLOBAL))
 		// /tmp/libsqlite3/sqlite-src-3370200/src/test_bestindex.c:203:5:
@@ -100691,7 +100687,7 @@ func _tclFilter(tls *libc.TLS, pVtabCursor uintptr, idxNum int32, idxStr uintptr
 	// /tmp/libsqlite3/sqlite-src-3370200/src/test_bestindex.c:287:3:
 	(*TTcl_Obj)(unsafe.Pointer(pScript)).FrefCount++
 	// /tmp/libsqlite3/sqlite-src-3370200/src/test_bestindex.c:288:3:
-	libtcl8_6.XTcl_ListObjAppendElement(tls, interp, pScript, libtcl8_6.XTcl_NewStringObj(tls, __ccgo_ts+11987, -int32(1)))
+	libtcl8_6.XTcl_ListObjAppendElement(tls, interp, pScript, libtcl8_6.XTcl_NewStringObj(tls, __ccgo_ts+11979, -int32(1)))
 	// /tmp/libsqlite3/sqlite-src-3370200/src/test_bestindex.c:289:3:
 	libtcl8_6.XTcl_ListObjAppendElement(tls, interp, pScript, libtcl8_6.XTcl_NewIntObj(tls, idxNum))
 	// /tmp/libsqlite3/sqlite-src-3370200/src/test_bestindex.c:290:3:
@@ -100784,7 +100780,7 @@ func _tclFilter(tls *libc.TLS, pVtabCursor uintptr, idxNum int32, idxStr uintptr
 				// /tmp/libsqlite3/sqlite-src-3370200/src/test_bestindex.c:334:17:
 				p = *(*uintptr)(unsafe.Pointer(*(*uintptr)(unsafe.Pointer(bp)) + uintptr(ii+int32(1))*8))
 				// /tmp/libsqlite3/sqlite-src-3370200/src/test_bestindex.c:335:9:
-				if x_sqlite3_stricmp(tls, __ccgo_ts+12957, zCmd) == 0 {
+				if x_sqlite3_stricmp(tls, __ccgo_ts+12949, zCmd) == 0 {
 					// /tmp/libsqlite3/sqlite-src-3370200/src/test_bestindex.c:336:22:
 					zSql = libtcl8_6.XTcl_GetString(tls, p)
 					// /tmp/libsqlite3/sqlite-src-3370200/src/test_bestindex.c:337:11:
@@ -100794,13 +100790,13 @@ func _tclFilter(tls *libc.TLS, pVtabCursor uintptr, idxNum int32, idxStr uintptr
 						// /tmp/libsqlite3/sqlite-src-3370200/src/test_bestindex.c:339:24:
 						zErr2 = x_sqlite3_errmsg(tls, (*Ttcl_vtab)(unsafe.Pointer(pTab)).Fdb)
 						// /tmp/libsqlite3/sqlite-src-3370200/src/test_bestindex.c:340:13:
-						(*Ttcl_vtab)(unsafe.Pointer(pTab)).Fbase.FzErrMsg = x_sqlite3_mprintf(tls, __ccgo_ts+12961, libc.VaList(bp+24, zErr2))
+						(*Ttcl_vtab)(unsafe.Pointer(pTab)).Fbase.FzErrMsg = x_sqlite3_mprintf(tls, __ccgo_ts+12953, libc.VaList(bp+24, zErr2))
 					}
 				} else {
 					// /tmp/libsqlite3/sqlite-src-3370200/src/test_bestindex.c:343:11:
 					rc = int32(m_SQLITE_ERROR)
 					// /tmp/libsqlite3/sqlite-src-3370200/src/test_bestindex.c:344:11:
-					(*Ttcl_vtab)(unsafe.Pointer(pTab)).Fbase.FzErrMsg = x_sqlite3_mprintf(tls, __ccgo_ts+12961, libc.VaList(bp+24, zCmd))
+					(*Ttcl_vtab)(unsafe.Pointer(pTab)).Fbase.FzErrMsg = x_sqlite3_mprintf(tls, __ccgo_ts+12953, libc.VaList(bp+24, zCmd))
 				}
 				goto _4
 			_4:
@@ -100877,7 +100873,7 @@ func _tclBestIndex(tls *libc.TLS, tab uintptr, pIdxInfo uintptr) (r int32) {
 	// /tmp/libsqlite3/sqlite-src-3370200/src/test_bestindex.c:386:3:
 	(*TTcl_Obj)(unsafe.Pointer(pScript)).FrefCount++
 	// /tmp/libsqlite3/sqlite-src-3370200/src/test_bestindex.c:387:3:
-	libtcl8_6.XTcl_ListObjAppendElement(tls, interp, pScript, libtcl8_6.XTcl_NewStringObj(tls, __ccgo_ts+12047, -int32(1)))
+	libtcl8_6.XTcl_ListObjAppendElement(tls, interp, pScript, libtcl8_6.XTcl_NewStringObj(tls, __ccgo_ts+12039, -int32(1)))
 	// /tmp/libsqlite3/sqlite-src-3370200/src/test_bestindex.c:389:3:
 	pArg = libtcl8_6.XTcl_NewObj(tls)
 	// /tmp/libsqlite3/sqlite-src-3370200/src/test_bestindex.c:390:3:
@@ -100893,7 +100889,7 @@ func _tclBestIndex(tls *libc.TLS, tab uintptr, pIdxInfo uintptr) (r int32) {
 		// /tmp/libsqlite3/sqlite-src-3370200/src/test_bestindex.c:393:13:
 		pElem = libtcl8_6.XTcl_NewObj(tls)
 		// /tmp/libsqlite3/sqlite-src-3370200/src/test_bestindex.c:394:16:
-		zOp = __ccgo_ts + 12347
+		zOp = __ccgo_ts + 12339
 		// /tmp/libsqlite3/sqlite-src-3370200/src/test_bestindex.c:396:5:
 		(*TTcl_Obj)(unsafe.Pointer(pElem)).FrefCount++
 		// /tmp/libsqlite3/sqlite-src-3370200/src/test_bestindex.c:398:5:
@@ -100901,56 +100897,56 @@ func _tclBestIndex(tls *libc.TLS, tab uintptr, pIdxInfo uintptr) (r int32) {
 		// /tmp/libsqlite3/sqlite-src-3370200/src/test_bestindex.c:399:7:
 		case int32(m_SQLITE_INDEX_CONSTRAINT_EQ):
 			// /tmp/libsqlite3/sqlite-src-3370200/src/test_bestindex.c:400:9:
-			zOp = __ccgo_ts + 12976
+			zOp = __ccgo_ts + 12968
 			// /tmp/libsqlite3/sqlite-src-3370200/src/test_bestindex.c:400:21:
 			break
 			// /tmp/libsqlite3/sqlite-src-3370200/src/test_bestindex.c:401:7:
 			fallthrough
 		case int32(m_SQLITE_INDEX_CONSTRAINT_GT):
 			// /tmp/libsqlite3/sqlite-src-3370200/src/test_bestindex.c:402:9:
-			zOp = __ccgo_ts + 12979
+			zOp = __ccgo_ts + 12971
 			// /tmp/libsqlite3/sqlite-src-3370200/src/test_bestindex.c:402:21:
 			break
 			// /tmp/libsqlite3/sqlite-src-3370200/src/test_bestindex.c:403:7:
 			fallthrough
 		case int32(m_SQLITE_INDEX_CONSTRAINT_LE):
 			// /tmp/libsqlite3/sqlite-src-3370200/src/test_bestindex.c:404:9:
-			zOp = __ccgo_ts + 12982
+			zOp = __ccgo_ts + 12974
 			// /tmp/libsqlite3/sqlite-src-3370200/src/test_bestindex.c:404:21:
 			break
 			// /tmp/libsqlite3/sqlite-src-3370200/src/test_bestindex.c:405:7:
 			fallthrough
 		case int32(m_SQLITE_INDEX_CONSTRAINT_LT):
 			// /tmp/libsqlite3/sqlite-src-3370200/src/test_bestindex.c:406:9:
-			zOp = __ccgo_ts + 12985
+			zOp = __ccgo_ts + 12977
 			// /tmp/libsqlite3/sqlite-src-3370200/src/test_bestindex.c:406:21:
 			break
 			// /tmp/libsqlite3/sqlite-src-3370200/src/test_bestindex.c:407:7:
 			fallthrough
 		case int32(m_SQLITE_INDEX_CONSTRAINT_GE):
 			// /tmp/libsqlite3/sqlite-src-3370200/src/test_bestindex.c:408:9:
-			zOp = __ccgo_ts + 12988
+			zOp = __ccgo_ts + 12980
 			// /tmp/libsqlite3/sqlite-src-3370200/src/test_bestindex.c:408:21:
 			break
 			// /tmp/libsqlite3/sqlite-src-3370200/src/test_bestindex.c:409:7:
 			fallthrough
 		case int32(m_SQLITE_INDEX_CONSTRAINT_MATCH):
 			// /tmp/libsqlite3/sqlite-src-3370200/src/test_bestindex.c:410:9:
-			zOp = __ccgo_ts + 12991
+			zOp = __ccgo_ts + 12983
 			// /tmp/libsqlite3/sqlite-src-3370200/src/test_bestindex.c:410:24:
 			break
 			// /tmp/libsqlite3/sqlite-src-3370200/src/test_bestindex.c:411:7:
 			fallthrough
 		case int32(m_SQLITE_INDEX_CONSTRAINT_LIKE):
 			// /tmp/libsqlite3/sqlite-src-3370200/src/test_bestindex.c:412:9:
-			zOp = __ccgo_ts + 12145
+			zOp = __ccgo_ts + 12137
 			// /tmp/libsqlite3/sqlite-src-3370200/src/test_bestindex.c:412:23:
 			break
 			// /tmp/libsqlite3/sqlite-src-3370200/src/test_bestindex.c:413:7:
 			fallthrough
 		case int32(m_SQLITE_INDEX_CONSTRAINT_GLOB):
 			// /tmp/libsqlite3/sqlite-src-3370200/src/test_bestindex.c:414:9:
-			zOp = __ccgo_ts + 12150
+			zOp = __ccgo_ts + 12142
 			// /tmp/libsqlite3/sqlite-src-3370200/src/test_bestindex.c:414:23:
 			break
 			// /tmp/libsqlite3/sqlite-src-3370200/src/test_bestindex.c:415:7:
@@ -100964,48 +100960,48 @@ func _tclBestIndex(tls *libc.TLS, tab uintptr, pIdxInfo uintptr) (r int32) {
 			fallthrough
 		case int32(m_SQLITE_INDEX_CONSTRAINT_NE):
 			// /tmp/libsqlite3/sqlite-src-3370200/src/test_bestindex.c:418:9:
-			zOp = __ccgo_ts + 12997
+			zOp = __ccgo_ts + 12989
 			// /tmp/libsqlite3/sqlite-src-3370200/src/test_bestindex.c:418:21:
 			break
 			// /tmp/libsqlite3/sqlite-src-3370200/src/test_bestindex.c:419:7:
 			fallthrough
 		case int32(m_SQLITE_INDEX_CONSTRAINT_ISNOT):
 			// /tmp/libsqlite3/sqlite-src-3370200/src/test_bestindex.c:420:9:
-			zOp = __ccgo_ts + 13000
+			zOp = __ccgo_ts + 12992
 			// /tmp/libsqlite3/sqlite-src-3370200/src/test_bestindex.c:420:24:
 			break
 			// /tmp/libsqlite3/sqlite-src-3370200/src/test_bestindex.c:421:7:
 			fallthrough
 		case int32(m_SQLITE_INDEX_CONSTRAINT_ISNOTNULL):
 			// /tmp/libsqlite3/sqlite-src-3370200/src/test_bestindex.c:422:9:
-			zOp = __ccgo_ts + 13006
+			zOp = __ccgo_ts + 12998
 			// /tmp/libsqlite3/sqlite-src-3370200/src/test_bestindex.c:422:28:
 			break
 			// /tmp/libsqlite3/sqlite-src-3370200/src/test_bestindex.c:423:7:
 			fallthrough
 		case int32(m_SQLITE_INDEX_CONSTRAINT_ISNULL):
 			// /tmp/libsqlite3/sqlite-src-3370200/src/test_bestindex.c:424:9:
-			zOp = __ccgo_ts + 13016
+			zOp = __ccgo_ts + 13008
 			// /tmp/libsqlite3/sqlite-src-3370200/src/test_bestindex.c:424:25:
 			break
 			// /tmp/libsqlite3/sqlite-src-3370200/src/test_bestindex.c:425:7:
 			fallthrough
 		case int32(m_SQLITE_INDEX_CONSTRAINT_IS):
 			// /tmp/libsqlite3/sqlite-src-3370200/src/test_bestindex.c:426:9:
-			zOp = __ccgo_ts + 13023
+			zOp = __ccgo_ts + 13015
 			// /tmp/libsqlite3/sqlite-src-3370200/src/test_bestindex.c:426:21:
 			break
 		}
 		// /tmp/libsqlite3/sqlite-src-3370200/src/test_bestindex.c:429:5:
-		libtcl8_6.XTcl_ListObjAppendElement(tls, uintptr(0), pElem, libtcl8_6.XTcl_NewStringObj(tls, __ccgo_ts+13026, -int32(1)))
+		libtcl8_6.XTcl_ListObjAppendElement(tls, uintptr(0), pElem, libtcl8_6.XTcl_NewStringObj(tls, __ccgo_ts+13018, -int32(1)))
 		// /tmp/libsqlite3/sqlite-src-3370200/src/test_bestindex.c:430:5:
 		libtcl8_6.XTcl_ListObjAppendElement(tls, uintptr(0), pElem, libtcl8_6.XTcl_NewStringObj(tls, zOp, -int32(1)))
 		// /tmp/libsqlite3/sqlite-src-3370200/src/test_bestindex.c:431:5:
-		libtcl8_6.XTcl_ListObjAppendElement(tls, uintptr(0), pElem, libtcl8_6.XTcl_NewStringObj(tls, __ccgo_ts+13029, -int32(1)))
+		libtcl8_6.XTcl_ListObjAppendElement(tls, uintptr(0), pElem, libtcl8_6.XTcl_NewStringObj(tls, __ccgo_ts+13021, -int32(1)))
 		// /tmp/libsqlite3/sqlite-src-3370200/src/test_bestindex.c:432:5:
 		libtcl8_6.XTcl_ListObjAppendElement(tls, uintptr(0), pElem, libtcl8_6.XTcl_NewIntObj(tls, (*Tsqlite3_index_constraint)(unsafe.Pointer(pCons)).FiColumn))
 		// /tmp/libsqlite3/sqlite-src-3370200/src/test_bestindex.c:433:5:
-		libtcl8_6.XTcl_ListObjAppendElement(tls, uintptr(0), pElem, libtcl8_6.XTcl_NewStringObj(tls, __ccgo_ts+13036, -int32(1)))
+		libtcl8_6.XTcl_ListObjAppendElement(tls, uintptr(0), pElem, libtcl8_6.XTcl_NewStringObj(tls, __ccgo_ts+13028, -int32(1)))
 		// /tmp/libsqlite3/sqlite-src-3370200/src/test_bestindex.c:434:5:
 		libtcl8_6.XTcl_ListObjAppendElement(tls, uintptr(0), pElem, libtcl8_6.XTcl_NewIntObj(tls, int32((*Tsqlite3_index_constraint)(unsafe.Pointer(pCons)).Fusable)))
 		// /tmp/libsqlite3/sqlite-src-3370200/src/test_bestindex.c:436:5:
@@ -101055,11 +101051,11 @@ func _tclBestIndex(tls *libc.TLS, tab uintptr, pIdxInfo uintptr) (r int32) {
 		// /tmp/libsqlite3/sqlite-src-3370200/src/test_bestindex.c:448:5:
 		(*TTcl_Obj)(unsafe.Pointer(pElem1)).FrefCount++
 		// /tmp/libsqlite3/sqlite-src-3370200/src/test_bestindex.c:450:5:
-		libtcl8_6.XTcl_ListObjAppendElement(tls, uintptr(0), pElem1, libtcl8_6.XTcl_NewStringObj(tls, __ccgo_ts+13029, -int32(1)))
+		libtcl8_6.XTcl_ListObjAppendElement(tls, uintptr(0), pElem1, libtcl8_6.XTcl_NewStringObj(tls, __ccgo_ts+13021, -int32(1)))
 		// /tmp/libsqlite3/sqlite-src-3370200/src/test_bestindex.c:451:5:
 		libtcl8_6.XTcl_ListObjAppendElement(tls, uintptr(0), pElem1, libtcl8_6.XTcl_NewIntObj(tls, (*Tsqlite3_index_orderby)(unsafe.Pointer(pOrder)).FiColumn))
 		// /tmp/libsqlite3/sqlite-src-3370200/src/test_bestindex.c:452:5:
-		libtcl8_6.XTcl_ListObjAppendElement(tls, uintptr(0), pElem1, libtcl8_6.XTcl_NewStringObj(tls, __ccgo_ts+13043, -int32(1)))
+		libtcl8_6.XTcl_ListObjAppendElement(tls, uintptr(0), pElem1, libtcl8_6.XTcl_NewStringObj(tls, __ccgo_ts+13035, -int32(1)))
 		// /tmp/libsqlite3/sqlite-src-3370200/src/test_bestindex.c:453:5:
 		libtcl8_6.XTcl_ListObjAppendElement(tls, uintptr(0), pElem1, libtcl8_6.XTcl_NewIntObj(tls, int32((*Tsqlite3_index_orderby)(unsafe.Pointer(pOrder)).Fdesc)))
 		// /tmp/libsqlite3/sqlite-src-3370200/src/test_bestindex.c:455:5:
@@ -101156,22 +101152,22 @@ func _tclBestIndex(tls *libc.TLS, tab uintptr, pIdxInfo uintptr) (r int32) {
 				// /tmp/libsqlite3/sqlite-src-3370200/src/test_bestindex.c:495:17:
 				p = *(*uintptr)(unsafe.Pointer(*(*uintptr)(unsafe.Pointer(bp)) + uintptr(ii+int32(1))*8))
 				// /tmp/libsqlite3/sqlite-src-3370200/src/test_bestindex.c:496:9:
-				if x_sqlite3_stricmp(tls, __ccgo_ts+13048, zCmd) == 0 {
+				if x_sqlite3_stricmp(tls, __ccgo_ts+13040, zCmd) == 0 {
 					// /tmp/libsqlite3/sqlite-src-3370200/src/test_bestindex.c:497:11:
 					rc = libtcl8_6.XTcl_GetDoubleFromObj(tls, interp, p, pIdxInfo+64)
 				} else {
 					// /tmp/libsqlite3/sqlite-src-3370200/src/test_bestindex.c:499:9:
-					if x_sqlite3_stricmp(tls, __ccgo_ts+13053, zCmd) == 0 {
+					if x_sqlite3_stricmp(tls, __ccgo_ts+13045, zCmd) == 0 {
 						// /tmp/libsqlite3/sqlite-src-3370200/src/test_bestindex.c:500:11:
 						rc = libtcl8_6.XTcl_GetIntFromObj(tls, interp, p, pIdxInfo+60)
 					} else {
 						// /tmp/libsqlite3/sqlite-src-3370200/src/test_bestindex.c:502:9:
-						if x_sqlite3_stricmp(tls, __ccgo_ts+13061, zCmd) == 0 {
+						if x_sqlite3_stricmp(tls, __ccgo_ts+13053, zCmd) == 0 {
 							// /tmp/libsqlite3/sqlite-src-3370200/src/test_bestindex.c:503:11:
 							rc = libtcl8_6.XTcl_GetIntFromObj(tls, interp, p, pIdxInfo+40)
 						} else {
 							// /tmp/libsqlite3/sqlite-src-3370200/src/test_bestindex.c:505:9:
-							if x_sqlite3_stricmp(tls, __ccgo_ts+13068, zCmd) == 0 {
+							if x_sqlite3_stricmp(tls, __ccgo_ts+13060, zCmd) == 0 {
 								// /tmp/libsqlite3/sqlite-src-3370200/src/test_bestindex.c:506:11:
 								x_sqlite3_free(tls, (*Tsqlite3_index_info)(unsafe.Pointer(pIdxInfo)).FidxStr)
 								// /tmp/libsqlite3/sqlite-src-3370200/src/test_bestindex.c:507:11:
@@ -101180,7 +101176,7 @@ func _tclBestIndex(tls *libc.TLS, tab uintptr, pIdxInfo uintptr) (r int32) {
 								(*Tsqlite3_index_info)(unsafe.Pointer(pIdxInfo)).FneedToFreeIdxStr = int32(1)
 							} else {
 								// /tmp/libsqlite3/sqlite-src-3370200/src/test_bestindex.c:510:9:
-								if x_sqlite3_stricmp(tls, __ccgo_ts+13075, zCmd) == 0 {
+								if x_sqlite3_stricmp(tls, __ccgo_ts+13067, zCmd) == 0 {
 									// /tmp/libsqlite3/sqlite-src-3370200/src/test_bestindex.c:511:23:
 									*(*TTcl_WideInt)(unsafe.Pointer(bp + 16)) = 0
 									// /tmp/libsqlite3/sqlite-src-3370200/src/test_bestindex.c:512:11:
@@ -101189,7 +101185,7 @@ func _tclBestIndex(tls *libc.TLS, tab uintptr, pIdxInfo uintptr) (r int32) {
 									(*Tsqlite3_index_info)(unsafe.Pointer(pIdxInfo)).FestimatedRows = int64(uint32(*(*TTcl_WideInt)(unsafe.Pointer(bp + 16))))
 								} else {
 									// /tmp/libsqlite3/sqlite-src-3370200/src/test_bestindex.c:515:9:
-									if x_sqlite3_stricmp(tls, __ccgo_ts+13080, zCmd) == 0 || x_sqlite3_stricmp(tls, __ccgo_ts+13084, zCmd) == 0 {
+									if x_sqlite3_stricmp(tls, __ccgo_ts+13072, zCmd) == 0 || x_sqlite3_stricmp(tls, __ccgo_ts+13076, zCmd) == 0 {
 										// /tmp/libsqlite3/sqlite-src-3370200/src/test_bestindex.c:519:11:
 										rc = libtcl8_6.XTcl_GetIntFromObj(tls, interp, p, bp+24)
 										// /tmp/libsqlite3/sqlite-src-3370200/src/test_bestindex.c:520:11:
@@ -101199,7 +101195,7 @@ func _tclBestIndex(tls *libc.TLS, tab uintptr, pIdxInfo uintptr) (r int32) {
 												// /tmp/libsqlite3/sqlite-src-3370200/src/test_bestindex.c:522:15:
 												rc = int32(m_SQLITE_ERROR)
 												// /tmp/libsqlite3/sqlite-src-3370200/src/test_bestindex.c:523:15:
-												(*Ttcl_vtab)(unsafe.Pointer(pTab)).Fbase.FzErrMsg = x_sqlite3_mprintf(tls, __ccgo_ts+13089, libc.VaList(bp+40, *(*int32)(unsafe.Pointer(bp + 24))))
+												(*Ttcl_vtab)(unsafe.Pointer(pTab)).Fbase.FzErrMsg = x_sqlite3_mprintf(tls, __ccgo_ts+13081, libc.VaList(bp+40, *(*int32)(unsafe.Pointer(bp + 24))))
 											} else {
 												// /tmp/libsqlite3/sqlite-src-3370200/src/test_bestindex.c:525:19:
 												bOmit = libc.BoolInt32(int32(*(*int8)(unsafe.Pointer(zCmd))) == int32('o') || int32(*(*int8)(unsafe.Pointer(zCmd))) == int32('O'))
@@ -101215,7 +101211,7 @@ func _tclBestIndex(tls *libc.TLS, tab uintptr, pIdxInfo uintptr) (r int32) {
 										// /tmp/libsqlite3/sqlite-src-3370200/src/test_bestindex.c:531:11:
 										rc = int32(m_SQLITE_ERROR)
 										// /tmp/libsqlite3/sqlite-src-3370200/src/test_bestindex.c:532:11:
-										(*Ttcl_vtab)(unsafe.Pointer(pTab)).Fbase.FzErrMsg = x_sqlite3_mprintf(tls, __ccgo_ts+12961, libc.VaList(bp+40, zCmd))
+										(*Ttcl_vtab)(unsafe.Pointer(pTab)).Fbase.FzErrMsg = x_sqlite3_mprintf(tls, __ccgo_ts+12953, libc.VaList(bp+40, zCmd))
 									}
 								}
 							}
@@ -101292,7 +101288,7 @@ func _register_tcl_module(tls *libc.TLS, clientData TClientData, interp uintptr,
 		return int32(m_TCL_ERROR)
 	}
 	// /tmp/libsqlite3/sqlite-src-3370200/src/test_bestindex.c:593:3:
-	x_sqlite3_create_module(tls, *(*uintptr)(unsafe.Pointer(bp)), __ccgo_ts+13104, uintptr(unsafe.Pointer(&_tclModule)), interp)
+	x_sqlite3_create_module(tls, *(*uintptr)(unsafe.Pointer(bp)), __ccgo_ts+13096, uintptr(unsafe.Pointer(&_tclModule)), interp)
 	// /tmp/libsqlite3/sqlite-src-3370200/src/test_bestindex.c:595:3:
 	return m_TCL_OK
 }
@@ -101331,7 +101327,7 @@ var _aObjCmd3 = [1]struct {
 	FclientData uintptr
 }{
 	0: {
-		FzName: __ccgo_ts + 13108,
+		FzName: __ccgo_ts + 13100,
 	},
 }
 
@@ -101438,7 +101434,7 @@ func _blobHandleFromObj1(tls *libc.TLS, interp uintptr, pObj uintptr, ppBlob uin
 		*(*uintptr)(unsafe.Pointer(ppBlob)) = uintptr(0)
 	} else {
 		// /tmp/libsqlite3/sqlite-src-3370200/src/test_blob.c:66:9:
-		if *(*int32)(unsafe.Pointer(bp)) > int32(9) && 0 == libc.Xmemcmp(tls, __ccgo_ts+13128, z, uint64(9)) {
+		if *(*int32)(unsafe.Pointer(bp)) > int32(9) && 0 == libc.Xmemcmp(tls, __ccgo_ts+13120, z, uint64(9)) {
 			// /tmp/libsqlite3/sqlite-src-3370200/src/test_blob.c:71:5:
 			channel = libtcl8_6.XTcl_GetChannel(tls, interp, z, bp+4)
 			// /tmp/libsqlite3/sqlite-src-3370200/src/test_blob.c:72:5:
@@ -101515,7 +101511,7 @@ func _test_blob_open(tls *libc.TLS, clientData TClientData, interp uintptr, objc
 	// /tmp/libsqlite3/sqlite-src-3370200/src/test_blob.c:120:3:
 	if objc != int32(8) {
 		// /tmp/libsqlite3/sqlite-src-3370200/src/test_blob.c:121:16:
-		zUsage = __ccgo_ts + 13138
+		zUsage = __ccgo_ts + 13130
 		// /tmp/libsqlite3/sqlite-src-3370200/src/test_blob.c:122:5:
 		libtcl8_6.XTcl_WrongNumArgs(tls, interp, int32(1), objv, zUsage)
 		// /tmp/libsqlite3/sqlite-src-3370200/src/test_blob.c:123:5:
@@ -101585,7 +101581,7 @@ func _test_blob_close(tls *libc.TLS, clientData TClientData, interp uintptr, obj
 	// /tmp/libsqlite3/sqlite-src-3370200/src/test_blob.c:162:3:
 	if objc != int32(2) {
 		// /tmp/libsqlite3/sqlite-src-3370200/src/test_blob.c:163:5:
-		libtcl8_6.XTcl_WrongNumArgs(tls, interp, int32(1), objv, __ccgo_ts+13183)
+		libtcl8_6.XTcl_WrongNumArgs(tls, interp, int32(1), objv, __ccgo_ts+13175)
 		// /tmp/libsqlite3/sqlite-src-3370200/src/test_blob.c:164:5:
 		return int32(m_TCL_ERROR)
 	}
@@ -101625,7 +101621,7 @@ func _test_blob_bytes(tls *libc.TLS, clientData TClientData, interp uintptr, obj
 	// /tmp/libsqlite3/sqlite-src-3370200/src/test_blob.c:190:3:
 	if objc != int32(2) {
 		// /tmp/libsqlite3/sqlite-src-3370200/src/test_blob.c:191:5:
-		libtcl8_6.XTcl_WrongNumArgs(tls, interp, int32(1), objv, __ccgo_ts+13183)
+		libtcl8_6.XTcl_WrongNumArgs(tls, interp, int32(1), objv, __ccgo_ts+13175)
 		// /tmp/libsqlite3/sqlite-src-3370200/src/test_blob.c:192:5:
 		return int32(m_TCL_ERROR)
 	}
@@ -101676,7 +101672,7 @@ func _test_blob_read(tls *libc.TLS, clientData TClientData, interp uintptr, objc
 	// /tmp/libsqlite3/sqlite-src-3370200/src/test_blob.c:229:3:
 	if objc != int32(4) {
 		// /tmp/libsqlite3/sqlite-src-3370200/src/test_blob.c:230:5:
-		libtcl8_6.XTcl_WrongNumArgs(tls, interp, int32(1), objv, __ccgo_ts+13190)
+		libtcl8_6.XTcl_WrongNumArgs(tls, interp, int32(1), objv, __ccgo_ts+13182)
 		// /tmp/libsqlite3/sqlite-src-3370200/src/test_blob.c:231:5:
 		return int32(m_TCL_ERROR)
 	}
@@ -101697,7 +101693,7 @@ func _test_blob_read(tls *libc.TLS, clientData TClientData, interp uintptr, objc
 		// /tmp/libsqlite3/sqlite-src-3370200/src/test_blob.c:243:5:
 		if zBuf == uintptr(0) {
 			// /tmp/libsqlite3/sqlite-src-3370200/src/test_blob.c:244:7:
-			libtcl8_6.XTcl_AppendResult(tls, interp, libc.VaList(bp+24, __ccgo_ts+13207, 0))
+			libtcl8_6.XTcl_AppendResult(tls, interp, libc.VaList(bp+24, __ccgo_ts+13199, 0))
 			// /tmp/libsqlite3/sqlite-src-3370200/src/test_blob.c:245:7:
 			return int32(m_TCL_ERROR)
 		}
@@ -101754,7 +101750,7 @@ func _test_blob_write(tls *libc.TLS, clientData TClientData, interp uintptr, obj
 	// /tmp/libsqlite3/sqlite-src-3370200/src/test_blob.c:286:3:
 	if objc != int32(4) && objc != int32(5) {
 		// /tmp/libsqlite3/sqlite-src-3370200/src/test_blob.c:287:5:
-		libtcl8_6.XTcl_WrongNumArgs(tls, interp, int32(1), objv, __ccgo_ts+13262)
+		libtcl8_6.XTcl_WrongNumArgs(tls, interp, int32(1), objv, __ccgo_ts+13254)
 		// /tmp/libsqlite3/sqlite-src-3370200/src/test_blob.c:288:5:
 		return int32(m_TCL_ERROR)
 	}
@@ -101824,19 +101820,19 @@ var _aObjCmd4 = [5]struct {
 	FxProc uintptr
 }{
 	0: {
-		FzName: __ccgo_ts + 13289,
+		FzName: __ccgo_ts + 13281,
 	},
 	1: {
-		FzName: __ccgo_ts + 13307,
+		FzName: __ccgo_ts + 13299,
 	},
 	2: {
-		FzName: __ccgo_ts + 13326,
+		FzName: __ccgo_ts + 13318,
 	},
 	3: {
-		FzName: __ccgo_ts + 13345,
+		FzName: __ccgo_ts + 13337,
 	},
 	4: {
-		FzName: __ccgo_ts + 13363,
+		FzName: __ccgo_ts + 13355,
 	},
 }
 
@@ -101957,7 +101953,7 @@ const m_SQLITE_DEFAULT_AUTOVACUUM = "0"
 // /tmp/libsqlite3/sqlite-src-3370200/src/sqliteInt.h:653:10:
 const m_SQLITE_DEFAULT_FILE_FORMAT = 4
 
-// /tmp/libsqlite3/sqlite-src-3370200/<command-line>:33:9:
+// /tmp/libsqlite3/sqlite-src-3370200/<command-line>:32:9:
 const m_SQLITE_DEFAULT_PAGE_SIZE = 1024
 
 // /tmp/libsqlite3/sqlite-src-3370200/src/sqliteInt.h:1284:10:
@@ -102008,7 +102004,7 @@ const m_SQLITE_MAX_VDBE_OP = 250000000
 // /tmp/libsqlite3/sqlite-src-3370200/src/sqliteInt.h:679:10:
 const m_SQLITE_MAX_WORKER_THREADS = "0"
 
-// /tmp/libsqlite3/sqlite-src-3370200/<command-line>:24:9:
+// /tmp/libsqlite3/sqlite-src-3370200/<command-line>:23:9:
 const m_SQLITE_TEMP_STORE = 1
 
 // /tmp/libsqlite3/sqlite-src-3370200/<command-line>:19:9:
@@ -102094,304 +102090,304 @@ func _swprintf15(tls *libc.TLS, __stream uintptr, __count Tsize_t, __format uint
 func _set_options(tls *libc.TLS, interp uintptr) {
 	// /tmp/libsqlite3/sqlite-src-3370200/src/test_config.c:47:44:
 	// /tmp/libsqlite3/sqlite-src-3370200/src/test_config.c:52:3:
-	libtcl8_6.XTcl_SetVar2(tls, interp, __ccgo_ts+13382, __ccgo_ts+13397, __ccgo_ts+956, int32(m_TCL_GLOBAL_ONLY))
+	libtcl8_6.XTcl_SetVar2(tls, interp, __ccgo_ts+13374, __ccgo_ts+13389, __ccgo_ts+956, int32(m_TCL_GLOBAL_ONLY))
 	// /tmp/libsqlite3/sqlite-src-3370200/src/test_config.c:59:3:
-	libtcl8_6.XTcl_SetVar2(tls, interp, __ccgo_ts+13382, __ccgo_ts+13416, __ccgo_ts+956, int32(m_TCL_GLOBAL_ONLY))
+	libtcl8_6.XTcl_SetVar2(tls, interp, __ccgo_ts+13374, __ccgo_ts+13408, __ccgo_ts+956, int32(m_TCL_GLOBAL_ONLY))
 	// /tmp/libsqlite3/sqlite-src-3370200/src/test_config.c:65:3:
-	libtcl8_6.XTcl_SetVar2(tls, interp, __ccgo_ts+13382, __ccgo_ts+13424, __ccgo_ts+956, int32(m_TCL_GLOBAL_ONLY))
+	libtcl8_6.XTcl_SetVar2(tls, interp, __ccgo_ts+13374, __ccgo_ts+13416, __ccgo_ts+956, int32(m_TCL_GLOBAL_ONLY))
 	// /tmp/libsqlite3/sqlite-src-3370200/src/test_config.c:72:3:
-	libtcl8_6.XTcl_SetVar2(tls, interp, __ccgo_ts+13382, __ccgo_ts+13442, __ccgo_ts+13455, int32(m_TCL_GLOBAL_ONLY))
+	libtcl8_6.XTcl_SetVar2(tls, interp, __ccgo_ts+13374, __ccgo_ts+13434, __ccgo_ts+13447, int32(m_TCL_GLOBAL_ONLY))
 	// /tmp/libsqlite3/sqlite-src-3370200/src/test_config.c:76:3:
-	libtcl8_6.XTcl_SetVar2(tls, interp, __ccgo_ts+13382, __ccgo_ts+13459, __ccgo_ts+13466, int32(m_TCL_GLOBAL_ONLY))
+	libtcl8_6.XTcl_SetVar2(tls, interp, __ccgo_ts+13374, __ccgo_ts+13451, __ccgo_ts+13458, int32(m_TCL_GLOBAL_ONLY))
 	// /tmp/libsqlite3/sqlite-src-3370200/src/test_config.c:84:3:
-	libtcl8_6.XTcl_SetVar2(tls, interp, __ccgo_ts+13382, __ccgo_ts+13468, __ccgo_ts+956, int32(m_TCL_GLOBAL_ONLY))
+	libtcl8_6.XTcl_SetVar2(tls, interp, __ccgo_ts+13374, __ccgo_ts+13460, __ccgo_ts+956, int32(m_TCL_GLOBAL_ONLY))
 	// /tmp/libsqlite3/sqlite-src-3370200/src/test_config.c:90:3:
-	libtcl8_6.XTcl_SetVar2(tls, interp, __ccgo_ts+13382, __ccgo_ts+13480, __ccgo_ts+956, int32(m_TCL_GLOBAL_ONLY))
+	libtcl8_6.XTcl_SetVar2(tls, interp, __ccgo_ts+13374, __ccgo_ts+13472, __ccgo_ts+956, int32(m_TCL_GLOBAL_ONLY))
 	// /tmp/libsqlite3/sqlite-src-3370200/src/test_config.c:97:3:
-	libtcl8_6.XTcl_SetVar2(tls, interp, __ccgo_ts+13382, __ccgo_ts+13486, __ccgo_ts+956, int32(m_TCL_GLOBAL_ONLY))
+	libtcl8_6.XTcl_SetVar2(tls, interp, __ccgo_ts+13374, __ccgo_ts+13478, __ccgo_ts+956, int32(m_TCL_GLOBAL_ONLY))
 	// /tmp/libsqlite3/sqlite-src-3370200/src/test_config.c:103:3:
-	libtcl8_6.XTcl_SetVar2(tls, interp, __ccgo_ts+13382, __ccgo_ts+13508, __ccgo_ts+956, int32(m_TCL_GLOBAL_ONLY))
+	libtcl8_6.XTcl_SetVar2(tls, interp, __ccgo_ts+13374, __ccgo_ts+13500, __ccgo_ts+956, int32(m_TCL_GLOBAL_ONLY))
 	// /tmp/libsqlite3/sqlite-src-3370200/src/test_config.c:109:3:
-	libtcl8_6.XTcl_SetVar2(tls, interp, __ccgo_ts+13382, __ccgo_ts+13520, __ccgo_ts+13466, int32(m_TCL_GLOBAL_ONLY))
+	libtcl8_6.XTcl_SetVar2(tls, interp, __ccgo_ts+13374, __ccgo_ts+13512, __ccgo_ts+13458, int32(m_TCL_GLOBAL_ONLY))
 	// /tmp/libsqlite3/sqlite-src-3370200/src/test_config.c:115:3:
-	libtcl8_6.XTcl_SetVar2(tls, interp, __ccgo_ts+13382, __ccgo_ts+13528, __ccgo_ts+13466, int32(m_TCL_GLOBAL_ONLY))
+	libtcl8_6.XTcl_SetVar2(tls, interp, __ccgo_ts+13374, __ccgo_ts+13520, __ccgo_ts+13458, int32(m_TCL_GLOBAL_ONLY))
 	// /tmp/libsqlite3/sqlite-src-3370200/src/test_config.c:121:3:
-	libtcl8_6.XTcl_SetVar2(tls, interp, __ccgo_ts+13382, __ccgo_ts+13532, __ccgo_ts+13466, int32(m_TCL_GLOBAL_ONLY))
+	libtcl8_6.XTcl_SetVar2(tls, interp, __ccgo_ts+13374, __ccgo_ts+13524, __ccgo_ts+13458, int32(m_TCL_GLOBAL_ONLY))
 	// /tmp/libsqlite3/sqlite-src-3370200/src/test_config.c:125:3:
-	libtcl8_6.XTcl_SetVar2(tls, interp, __ccgo_ts+13382, __ccgo_ts+13557, __ccgo_ts+13466, int32(m_TCL_GLOBAL_ONLY))
+	libtcl8_6.XTcl_SetVar2(tls, interp, __ccgo_ts+13374, __ccgo_ts+13549, __ccgo_ts+13458, int32(m_TCL_GLOBAL_ONLY))
 	// /tmp/libsqlite3/sqlite-src-3370200/src/test_config.c:130:3:
-	libtcl8_6.XTcl_SetVar2(tls, interp, __ccgo_ts+13382, __ccgo_ts+13562, __ccgo_ts+956, int32(m_TCL_GLOBAL_ONLY))
+	libtcl8_6.XTcl_SetVar2(tls, interp, __ccgo_ts+13374, __ccgo_ts+13554, __ccgo_ts+956, int32(m_TCL_GLOBAL_ONLY))
 	// /tmp/libsqlite3/sqlite-src-3370200/src/test_config.c:137:3:
-	libtcl8_6.XTcl_SetVar2(tls, interp, __ccgo_ts+13382, __ccgo_ts+13577, __ccgo_ts+956, int32(m_TCL_GLOBAL_ONLY))
+	libtcl8_6.XTcl_SetVar2(tls, interp, __ccgo_ts+13374, __ccgo_ts+13569, __ccgo_ts+956, int32(m_TCL_GLOBAL_ONLY))
 	// /tmp/libsqlite3/sqlite-src-3370200/src/test_config.c:143:3:
-	libtcl8_6.XTcl_SetVar2(tls, interp, __ccgo_ts+13382, __ccgo_ts+13586, __ccgo_ts+956, int32(m_TCL_GLOBAL_ONLY))
+	libtcl8_6.XTcl_SetVar2(tls, interp, __ccgo_ts+13374, __ccgo_ts+13578, __ccgo_ts+956, int32(m_TCL_GLOBAL_ONLY))
 	// /tmp/libsqlite3/sqlite-src-3370200/src/test_config.c:149:3:
-	libtcl8_6.XTcl_SetVar2(tls, interp, __ccgo_ts+13382, __ccgo_ts+13596, __ccgo_ts+956, int32(m_TCL_GLOBAL_ONLY))
+	libtcl8_6.XTcl_SetVar2(tls, interp, __ccgo_ts+13374, __ccgo_ts+13588, __ccgo_ts+956, int32(m_TCL_GLOBAL_ONLY))
 	// /tmp/libsqlite3/sqlite-src-3370200/src/test_config.c:155:3:
-	libtcl8_6.XTcl_SetVar2(tls, interp, __ccgo_ts+13382, __ccgo_ts+13608, __ccgo_ts+956, int32(m_TCL_GLOBAL_ONLY))
+	libtcl8_6.XTcl_SetVar2(tls, interp, __ccgo_ts+13374, __ccgo_ts+13600, __ccgo_ts+956, int32(m_TCL_GLOBAL_ONLY))
 	// /tmp/libsqlite3/sqlite-src-3370200/src/test_config.c:159:3:
-	libtcl8_6.XTcl_SetVar2(tls, interp, __ccgo_ts+13382, __ccgo_ts+13622, __ccgo_ts+13466, int32(m_TCL_GLOBAL_ONLY))
+	libtcl8_6.XTcl_SetVar2(tls, interp, __ccgo_ts+13374, __ccgo_ts+13614, __ccgo_ts+13458, int32(m_TCL_GLOBAL_ONLY))
 	// /tmp/libsqlite3/sqlite-src-3370200/src/test_config.c:165:3:
-	libtcl8_6.XTcl_SetVar2(tls, interp, __ccgo_ts+13382, __ccgo_ts+13634, __ccgo_ts+13466, int32(m_TCL_GLOBAL_ONLY))
+	libtcl8_6.XTcl_SetVar2(tls, interp, __ccgo_ts+13374, __ccgo_ts+13626, __ccgo_ts+13458, int32(m_TCL_GLOBAL_ONLY))
 	// /tmp/libsqlite3/sqlite-src-3370200/src/test_config.c:173:3:
-	libtcl8_6.XTcl_SetVar2(tls, interp, __ccgo_ts+13382, __ccgo_ts+13642, __ccgo_ts+956, int32(m_TCL_GLOBAL_ONLY))
+	libtcl8_6.XTcl_SetVar2(tls, interp, __ccgo_ts+13374, __ccgo_ts+13634, __ccgo_ts+956, int32(m_TCL_GLOBAL_ONLY))
 	// /tmp/libsqlite3/sqlite-src-3370200/src/test_config.c:179:3:
-	libtcl8_6.XTcl_SetVar2(tls, interp, __ccgo_ts+13382, __ccgo_ts+13647, __ccgo_ts+956, int32(m_TCL_GLOBAL_ONLY))
+	libtcl8_6.XTcl_SetVar2(tls, interp, __ccgo_ts+13374, __ccgo_ts+13639, __ccgo_ts+956, int32(m_TCL_GLOBAL_ONLY))
 	// /tmp/libsqlite3/sqlite-src-3370200/src/test_config.c:185:3:
-	libtcl8_6.XTcl_SetVar2(tls, interp, __ccgo_ts+13382, __ccgo_ts+13652, __ccgo_ts+956, int32(m_TCL_GLOBAL_ONLY))
+	libtcl8_6.XTcl_SetVar2(tls, interp, __ccgo_ts+13374, __ccgo_ts+13644, __ccgo_ts+956, int32(m_TCL_GLOBAL_ONLY))
 	// /tmp/libsqlite3/sqlite-src-3370200/src/test_config.c:191:3:
-	libtcl8_6.XTcl_SetVar2(tls, interp, __ccgo_ts+13382, __ccgo_ts+13668, __ccgo_ts+956, int32(m_TCL_GLOBAL_ONLY))
+	libtcl8_6.XTcl_SetVar2(tls, interp, __ccgo_ts+13374, __ccgo_ts+13660, __ccgo_ts+956, int32(m_TCL_GLOBAL_ONLY))
 	// /tmp/libsqlite3/sqlite-src-3370200/src/test_config.c:197:3:
-	libtcl8_6.XTcl_SetVar2(tls, interp, __ccgo_ts+13382, __ccgo_ts+13678, __ccgo_ts+956, int32(m_TCL_GLOBAL_ONLY))
+	libtcl8_6.XTcl_SetVar2(tls, interp, __ccgo_ts+13374, __ccgo_ts+13670, __ccgo_ts+956, int32(m_TCL_GLOBAL_ONLY))
 	// /tmp/libsqlite3/sqlite-src-3370200/src/test_config.c:201:3:
-	libtcl8_6.XTcl_SetVar2(tls, interp, __ccgo_ts+13382, __ccgo_ts+13687, __ccgo_ts+956, int32(m_TCL_GLOBAL_ONLY))
+	libtcl8_6.XTcl_SetVar2(tls, interp, __ccgo_ts+13374, __ccgo_ts+13679, __ccgo_ts+956, int32(m_TCL_GLOBAL_ONLY))
 	// /tmp/libsqlite3/sqlite-src-3370200/src/test_config.c:209:3:
-	libtcl8_6.XTcl_SetVar2(tls, interp, __ccgo_ts+13382, __ccgo_ts+13693, __ccgo_ts+956, int32(m_TCL_GLOBAL_ONLY))
+	libtcl8_6.XTcl_SetVar2(tls, interp, __ccgo_ts+13374, __ccgo_ts+13685, __ccgo_ts+956, int32(m_TCL_GLOBAL_ONLY))
 	// /tmp/libsqlite3/sqlite-src-3370200/src/test_config.c:215:3:
-	libtcl8_6.XTcl_SetVar2(tls, interp, __ccgo_ts+13382, __ccgo_ts+13704, __ccgo_ts+13466, int32(m_TCL_GLOBAL_ONLY))
+	libtcl8_6.XTcl_SetVar2(tls, interp, __ccgo_ts+13374, __ccgo_ts+13696, __ccgo_ts+13458, int32(m_TCL_GLOBAL_ONLY))
 	// /tmp/libsqlite3/sqlite-src-3370200/src/test_config.c:221:3:
-	libtcl8_6.XTcl_SetVar2(tls, interp, __ccgo_ts+13382, __ccgo_ts+13715, __ccgo_ts+13466, int32(m_TCL_GLOBAL_ONLY))
+	libtcl8_6.XTcl_SetVar2(tls, interp, __ccgo_ts+13374, __ccgo_ts+13707, __ccgo_ts+13458, int32(m_TCL_GLOBAL_ONLY))
 	// /tmp/libsqlite3/sqlite-src-3370200/src/test_config.c:227:3:
-	libtcl8_6.XTcl_SetVar2(tls, interp, __ccgo_ts+13382, __ccgo_ts+13723, __ccgo_ts+956, int32(m_TCL_GLOBAL_ONLY))
+	libtcl8_6.XTcl_SetVar2(tls, interp, __ccgo_ts+13374, __ccgo_ts+13715, __ccgo_ts+956, int32(m_TCL_GLOBAL_ONLY))
 	// /tmp/libsqlite3/sqlite-src-3370200/src/test_config.c:233:3:
-	libtcl8_6.XTcl_SetVar2(tls, interp, __ccgo_ts+13382, __ccgo_ts+13733, __ccgo_ts+956, int32(m_TCL_GLOBAL_ONLY))
+	libtcl8_6.XTcl_SetVar2(tls, interp, __ccgo_ts+13374, __ccgo_ts+13725, __ccgo_ts+956, int32(m_TCL_GLOBAL_ONLY))
 	// /tmp/libsqlite3/sqlite-src-3370200/src/test_config.c:239:3:
-	libtcl8_6.XTcl_SetVar2(tls, interp, __ccgo_ts+13382, __ccgo_ts+13745, __ccgo_ts+956, int32(m_TCL_GLOBAL_ONLY))
+	libtcl8_6.XTcl_SetVar2(tls, interp, __ccgo_ts+13374, __ccgo_ts+13737, __ccgo_ts+956, int32(m_TCL_GLOBAL_ONLY))
 	// /tmp/libsqlite3/sqlite-src-3370200/src/test_config.c:245:3:
-	libtcl8_6.XTcl_SetVar2(tls, interp, __ccgo_ts+13382, __ccgo_ts+13753, __ccgo_ts+956, int32(m_TCL_GLOBAL_ONLY))
+	libtcl8_6.XTcl_SetVar2(tls, interp, __ccgo_ts+13374, __ccgo_ts+13745, __ccgo_ts+956, int32(m_TCL_GLOBAL_ONLY))
 	// /tmp/libsqlite3/sqlite-src-3370200/src/test_config.c:248:3:
-	libtcl8_6.XTcl_SetVar2(tls, interp, __ccgo_ts+13382, __ccgo_ts+13759, __ccgo_ts+956, int32(m_TCL_GLOBAL_ONLY))
+	libtcl8_6.XTcl_SetVar2(tls, interp, __ccgo_ts+13374, __ccgo_ts+13751, __ccgo_ts+956, int32(m_TCL_GLOBAL_ONLY))
 	// /tmp/libsqlite3/sqlite-src-3370200/src/test_config.c:253:3:
-	libtcl8_6.XTcl_SetVar2(tls, interp, __ccgo_ts+13382, __ccgo_ts+13769, __ccgo_ts+13466, int32(m_TCL_GLOBAL_ONLY))
+	libtcl8_6.XTcl_SetVar2(tls, interp, __ccgo_ts+13374, __ccgo_ts+13761, __ccgo_ts+13458, int32(m_TCL_GLOBAL_ONLY))
 	// /tmp/libsqlite3/sqlite-src-3370200/src/test_config.c:259:3:
-	libtcl8_6.XTcl_SetVar2(tls, interp, __ccgo_ts+13382, __ccgo_ts+13786, __ccgo_ts+13466, int32(m_TCL_GLOBAL_ONLY))
+	libtcl8_6.XTcl_SetVar2(tls, interp, __ccgo_ts+13374, __ccgo_ts+13778, __ccgo_ts+13458, int32(m_TCL_GLOBAL_ONLY))
 	// /tmp/libsqlite3/sqlite-src-3370200/src/test_config.c:265:3:
-	libtcl8_6.XTcl_SetVar2(tls, interp, __ccgo_ts+13382, __ccgo_ts+13793, __ccgo_ts+13466, int32(m_TCL_GLOBAL_ONLY))
+	libtcl8_6.XTcl_SetVar2(tls, interp, __ccgo_ts+13374, __ccgo_ts+13785, __ccgo_ts+13458, int32(m_TCL_GLOBAL_ONLY))
 	// /tmp/libsqlite3/sqlite-src-3370200/src/test_config.c:271:3:
-	libtcl8_6.XTcl_SetVar2(tls, interp, __ccgo_ts+13382, __ccgo_ts+13798, __ccgo_ts+13466, int32(m_TCL_GLOBAL_ONLY))
+	libtcl8_6.XTcl_SetVar2(tls, interp, __ccgo_ts+13374, __ccgo_ts+13790, __ccgo_ts+13458, int32(m_TCL_GLOBAL_ONLY))
 	// /tmp/libsqlite3/sqlite-src-3370200/src/test_config.c:277:3:
-	libtcl8_6.XTcl_SetVar2(tls, interp, __ccgo_ts+13382, __ccgo_ts+13806, __ccgo_ts+13466, int32(m_TCL_GLOBAL_ONLY))
+	libtcl8_6.XTcl_SetVar2(tls, interp, __ccgo_ts+13374, __ccgo_ts+13798, __ccgo_ts+13458, int32(m_TCL_GLOBAL_ONLY))
 	// /tmp/libsqlite3/sqlite-src-3370200/src/test_config.c:283:3:
-	libtcl8_6.XTcl_SetVar2(tls, interp, __ccgo_ts+13382, __ccgo_ts+13816, __ccgo_ts+13466, int32(m_TCL_GLOBAL_ONLY))
+	libtcl8_6.XTcl_SetVar2(tls, interp, __ccgo_ts+13374, __ccgo_ts+13808, __ccgo_ts+13458, int32(m_TCL_GLOBAL_ONLY))
 	// /tmp/libsqlite3/sqlite-src-3370200/src/test_config.c:289:3:
-	libtcl8_6.XTcl_SetVar2(tls, interp, __ccgo_ts+13382, __ccgo_ts+13826, __ccgo_ts+13466, int32(m_TCL_GLOBAL_ONLY))
+	libtcl8_6.XTcl_SetVar2(tls, interp, __ccgo_ts+13374, __ccgo_ts+13818, __ccgo_ts+13458, int32(m_TCL_GLOBAL_ONLY))
 	// /tmp/libsqlite3/sqlite-src-3370200/src/test_config.c:294:3:
-	libtcl8_6.XTcl_SetVar2(tls, interp, __ccgo_ts+13382, __ccgo_ts+13837, __ccgo_ts+956, int32(m_TCL_GLOBAL_ONLY))
+	libtcl8_6.XTcl_SetVar2(tls, interp, __ccgo_ts+13374, __ccgo_ts+13829, __ccgo_ts+956, int32(m_TCL_GLOBAL_ONLY))
 	// /tmp/libsqlite3/sqlite-src-3370200/src/test_config.c:301:3:
-	libtcl8_6.XTcl_SetVar2(tls, interp, __ccgo_ts+13382, __ccgo_ts+13856, __ccgo_ts+13466, int32(m_TCL_GLOBAL_ONLY))
+	libtcl8_6.XTcl_SetVar2(tls, interp, __ccgo_ts+13374, __ccgo_ts+13848, __ccgo_ts+13458, int32(m_TCL_GLOBAL_ONLY))
 	// /tmp/libsqlite3/sqlite-src-3370200/src/test_config.c:307:3:
-	libtcl8_6.XTcl_SetVar2(tls, interp, __ccgo_ts+13382, __ccgo_ts+13868, __ccgo_ts+13466, int32(m_TCL_GLOBAL_ONLY))
+	libtcl8_6.XTcl_SetVar2(tls, interp, __ccgo_ts+13374, __ccgo_ts+13860, __ccgo_ts+13458, int32(m_TCL_GLOBAL_ONLY))
 	// /tmp/libsqlite3/sqlite-src-3370200/src/test_config.c:313:3:
-	libtcl8_6.XTcl_SetVar2(tls, interp, __ccgo_ts+13382, __ccgo_ts+13881, __ccgo_ts+13466, int32(m_TCL_GLOBAL_ONLY))
+	libtcl8_6.XTcl_SetVar2(tls, interp, __ccgo_ts+13374, __ccgo_ts+13873, __ccgo_ts+13458, int32(m_TCL_GLOBAL_ONLY))
 	// /tmp/libsqlite3/sqlite-src-3370200/src/test_config.c:319:3:
-	libtcl8_6.XTcl_SetVar2(tls, interp, __ccgo_ts+13382, __ccgo_ts+13889, __ccgo_ts+13466, int32(m_TCL_GLOBAL_ONLY))
+	libtcl8_6.XTcl_SetVar2(tls, interp, __ccgo_ts+13374, __ccgo_ts+13881, __ccgo_ts+13458, int32(m_TCL_GLOBAL_ONLY))
 	// /tmp/libsqlite3/sqlite-src-3370200/src/test_config.c:325:3:
-	libtcl8_6.XTcl_SetVar2(tls, interp, __ccgo_ts+13382, __ccgo_ts+13894, __ccgo_ts+13466, int32(m_TCL_GLOBAL_ONLY))
+	libtcl8_6.XTcl_SetVar2(tls, interp, __ccgo_ts+13374, __ccgo_ts+13886, __ccgo_ts+13458, int32(m_TCL_GLOBAL_ONLY))
 	// /tmp/libsqlite3/sqlite-src-3370200/src/test_config.c:331:3:
-	libtcl8_6.XTcl_SetVar2(tls, interp, __ccgo_ts+13382, __ccgo_ts+13900, __ccgo_ts+13466, int32(m_TCL_GLOBAL_ONLY))
+	libtcl8_6.XTcl_SetVar2(tls, interp, __ccgo_ts+13374, __ccgo_ts+13892, __ccgo_ts+13458, int32(m_TCL_GLOBAL_ONLY))
 	// /tmp/libsqlite3/sqlite-src-3370200/src/test_config.c:337:3:
-	libtcl8_6.XTcl_SetVar2(tls, interp, __ccgo_ts+13382, __ccgo_ts+13904, __ccgo_ts+956, int32(m_TCL_GLOBAL_ONLY))
+	libtcl8_6.XTcl_SetVar2(tls, interp, __ccgo_ts+13374, __ccgo_ts+13896, __ccgo_ts+956, int32(m_TCL_GLOBAL_ONLY))
 	// /tmp/libsqlite3/sqlite-src-3370200/src/test_config.c:344:3:
-	libtcl8_6.XTcl_SetVar2(tls, interp, __ccgo_ts+13382, __ccgo_ts+13919, __ccgo_ts+956, int32(m_TCL_GLOBAL_ONLY))
+	libtcl8_6.XTcl_SetVar2(tls, interp, __ccgo_ts+13374, __ccgo_ts+13911, __ccgo_ts+956, int32(m_TCL_GLOBAL_ONLY))
 	// /tmp/libsqlite3/sqlite-src-3370200/src/test_config.c:351:3:
-	libtcl8_6.XTcl_SetVar2(tls, interp, __ccgo_ts+13382, __ccgo_ts+13939, __ccgo_ts+13466, int32(m_TCL_GLOBAL_ONLY))
+	libtcl8_6.XTcl_SetVar2(tls, interp, __ccgo_ts+13374, __ccgo_ts+13931, __ccgo_ts+13458, int32(m_TCL_GLOBAL_ONLY))
 	// /tmp/libsqlite3/sqlite-src-3370200/src/test_config.c:357:3:
-	libtcl8_6.XTcl_SetVar2(tls, interp, __ccgo_ts+13382, __ccgo_ts+13959, __ccgo_ts+13466, int32(m_TCL_GLOBAL_ONLY))
+	libtcl8_6.XTcl_SetVar2(tls, interp, __ccgo_ts+13374, __ccgo_ts+13951, __ccgo_ts+13458, int32(m_TCL_GLOBAL_ONLY))
 	// /tmp/libsqlite3/sqlite-src-3370200/src/test_config.c:363:3:
-	libtcl8_6.XTcl_SetVar2(tls, interp, __ccgo_ts+13382, __ccgo_ts+13968, __ccgo_ts+13466, int32(m_TCL_GLOBAL_ONLY))
+	libtcl8_6.XTcl_SetVar2(tls, interp, __ccgo_ts+13374, __ccgo_ts+13960, __ccgo_ts+13458, int32(m_TCL_GLOBAL_ONLY))
 	// /tmp/libsqlite3/sqlite-src-3370200/src/test_config.c:366:3:
-	libtcl8_6.XTcl_SetVar2(tls, interp, __ccgo_ts+13382, __ccgo_ts+13977, __ccgo_ts+13466, int32(m_TCL_GLOBAL_ONLY))
+	libtcl8_6.XTcl_SetVar2(tls, interp, __ccgo_ts+13374, __ccgo_ts+13969, __ccgo_ts+13458, int32(m_TCL_GLOBAL_ONLY))
 	// /tmp/libsqlite3/sqlite-src-3370200/src/test_config.c:367:3:
-	libtcl8_6.XTcl_SetVar2(tls, interp, __ccgo_ts+13382, __ccgo_ts+13986, __ccgo_ts+13466, int32(m_TCL_GLOBAL_ONLY))
+	libtcl8_6.XTcl_SetVar2(tls, interp, __ccgo_ts+13374, __ccgo_ts+13978, __ccgo_ts+13458, int32(m_TCL_GLOBAL_ONLY))
 	// /tmp/libsqlite3/sqlite-src-3370200/src/test_config.c:372:3:
-	libtcl8_6.XTcl_SetVar2(tls, interp, __ccgo_ts+13382, __ccgo_ts+13996, __ccgo_ts+13466, int32(m_TCL_GLOBAL_ONLY))
+	libtcl8_6.XTcl_SetVar2(tls, interp, __ccgo_ts+13374, __ccgo_ts+13988, __ccgo_ts+13458, int32(m_TCL_GLOBAL_ONLY))
 	// /tmp/libsqlite3/sqlite-src-3370200/src/test_config.c:378:3:
-	libtcl8_6.XTcl_SetVar2(tls, interp, __ccgo_ts+13382, __ccgo_ts+14005, __ccgo_ts+13466, int32(m_TCL_GLOBAL_ONLY))
+	libtcl8_6.XTcl_SetVar2(tls, interp, __ccgo_ts+13374, __ccgo_ts+13997, __ccgo_ts+13458, int32(m_TCL_GLOBAL_ONLY))
 	// /tmp/libsqlite3/sqlite-src-3370200/src/test_config.c:384:3:
-	libtcl8_6.XTcl_SetVar2(tls, interp, __ccgo_ts+13382, __ccgo_ts+14014, __ccgo_ts+13466, int32(m_TCL_GLOBAL_ONLY))
+	libtcl8_6.XTcl_SetVar2(tls, interp, __ccgo_ts+13374, __ccgo_ts+14006, __ccgo_ts+13458, int32(m_TCL_GLOBAL_ONLY))
 	// /tmp/libsqlite3/sqlite-src-3370200/src/test_config.c:390:3:
-	libtcl8_6.XTcl_SetVar2(tls, interp, __ccgo_ts+13382, __ccgo_ts+14025, __ccgo_ts+13466, int32(m_TCL_GLOBAL_ONLY))
+	libtcl8_6.XTcl_SetVar2(tls, interp, __ccgo_ts+13374, __ccgo_ts+14017, __ccgo_ts+13458, int32(m_TCL_GLOBAL_ONLY))
 	// /tmp/libsqlite3/sqlite-src-3370200/src/test_config.c:396:3:
-	libtcl8_6.XTcl_SetVar2(tls, interp, __ccgo_ts+13382, __ccgo_ts+4183, __ccgo_ts+13466, int32(m_TCL_GLOBAL_ONLY))
+	libtcl8_6.XTcl_SetVar2(tls, interp, __ccgo_ts+13374, __ccgo_ts+4183, __ccgo_ts+13458, int32(m_TCL_GLOBAL_ONLY))
 	// /tmp/libsqlite3/sqlite-src-3370200/src/test_config.c:402:3:
-	libtcl8_6.XTcl_SetVar2(tls, interp, __ccgo_ts+13382, __ccgo_ts+14032, __ccgo_ts+13466, int32(m_TCL_GLOBAL_ONLY))
+	libtcl8_6.XTcl_SetVar2(tls, interp, __ccgo_ts+13374, __ccgo_ts+14024, __ccgo_ts+13458, int32(m_TCL_GLOBAL_ONLY))
 	// /tmp/libsqlite3/sqlite-src-3370200/src/test_config.c:408:3:
-	libtcl8_6.XTcl_SetVar2(tls, interp, __ccgo_ts+13382, __ccgo_ts+14046, __ccgo_ts+13466, int32(m_TCL_GLOBAL_ONLY))
+	libtcl8_6.XTcl_SetVar2(tls, interp, __ccgo_ts+13374, __ccgo_ts+14038, __ccgo_ts+13458, int32(m_TCL_GLOBAL_ONLY))
 	// /tmp/libsqlite3/sqlite-src-3370200/src/test_config.c:414:3:
-	libtcl8_6.XTcl_SetVar2(tls, interp, __ccgo_ts+13382, __ccgo_ts+14057, __ccgo_ts+956, int32(m_TCL_GLOBAL_ONLY))
+	libtcl8_6.XTcl_SetVar2(tls, interp, __ccgo_ts+13374, __ccgo_ts+14049, __ccgo_ts+956, int32(m_TCL_GLOBAL_ONLY))
 	// /tmp/libsqlite3/sqlite-src-3370200/src/test_config.c:420:3:
-	libtcl8_6.XTcl_SetVar2(tls, interp, __ccgo_ts+13382, __ccgo_ts+14062, __ccgo_ts+956, int32(m_TCL_GLOBAL_ONLY))
+	libtcl8_6.XTcl_SetVar2(tls, interp, __ccgo_ts+13374, __ccgo_ts+14054, __ccgo_ts+956, int32(m_TCL_GLOBAL_ONLY))
 	// /tmp/libsqlite3/sqlite-src-3370200/src/test_config.c:426:3:
-	libtcl8_6.XTcl_SetVar2(tls, interp, __ccgo_ts+13382, __ccgo_ts+14067, __ccgo_ts+956, int32(m_TCL_GLOBAL_ONLY))
+	libtcl8_6.XTcl_SetVar2(tls, interp, __ccgo_ts+13374, __ccgo_ts+14059, __ccgo_ts+956, int32(m_TCL_GLOBAL_ONLY))
 	// /tmp/libsqlite3/sqlite-src-3370200/src/test_config.c:432:3:
-	libtcl8_6.XTcl_SetVar2(tls, interp, __ccgo_ts+13382, __ccgo_ts+14072, __ccgo_ts+956, int32(m_TCL_GLOBAL_ONLY))
+	libtcl8_6.XTcl_SetVar2(tls, interp, __ccgo_ts+13374, __ccgo_ts+14064, __ccgo_ts+956, int32(m_TCL_GLOBAL_ONLY))
 	// /tmp/libsqlite3/sqlite-src-3370200/src/test_config.c:438:3:
-	libtcl8_6.XTcl_SetVar2(tls, interp, __ccgo_ts+13382, __ccgo_ts+14077, __ccgo_ts+956, int32(m_TCL_GLOBAL_ONLY))
+	libtcl8_6.XTcl_SetVar2(tls, interp, __ccgo_ts+13374, __ccgo_ts+14069, __ccgo_ts+956, int32(m_TCL_GLOBAL_ONLY))
 	// /tmp/libsqlite3/sqlite-src-3370200/src/test_config.c:444:3:
-	libtcl8_6.XTcl_SetVar2(tls, interp, __ccgo_ts+13382, __ccgo_ts+14090, __ccgo_ts+13466, int32(m_TCL_GLOBAL_ONLY))
+	libtcl8_6.XTcl_SetVar2(tls, interp, __ccgo_ts+13374, __ccgo_ts+14082, __ccgo_ts+13458, int32(m_TCL_GLOBAL_ONLY))
 	// /tmp/libsqlite3/sqlite-src-3370200/src/test_config.c:450:3:
-	libtcl8_6.XTcl_SetVar2(tls, interp, __ccgo_ts+13382, __ccgo_ts+14104, __ccgo_ts+13466, int32(m_TCL_GLOBAL_ONLY))
+	libtcl8_6.XTcl_SetVar2(tls, interp, __ccgo_ts+13374, __ccgo_ts+14096, __ccgo_ts+13458, int32(m_TCL_GLOBAL_ONLY))
 	// /tmp/libsqlite3/sqlite-src-3370200/src/test_config.c:456:3:
-	libtcl8_6.XTcl_SetVar2(tls, interp, __ccgo_ts+13382, __ccgo_ts+14113, __ccgo_ts+956, int32(m_TCL_GLOBAL_ONLY))
+	libtcl8_6.XTcl_SetVar2(tls, interp, __ccgo_ts+13374, __ccgo_ts+14105, __ccgo_ts+956, int32(m_TCL_GLOBAL_ONLY))
 	// /tmp/libsqlite3/sqlite-src-3370200/src/test_config.c:462:3:
-	libtcl8_6.XTcl_SetVar2(tls, interp, __ccgo_ts+13382, __ccgo_ts+14117, __ccgo_ts+956, int32(m_TCL_GLOBAL_ONLY))
+	libtcl8_6.XTcl_SetVar2(tls, interp, __ccgo_ts+13374, __ccgo_ts+14109, __ccgo_ts+956, int32(m_TCL_GLOBAL_ONLY))
 	// /tmp/libsqlite3/sqlite-src-3370200/src/test_config.c:468:3:
-	libtcl8_6.XTcl_SetVar2(tls, interp, __ccgo_ts+13382, __ccgo_ts+14132, __ccgo_ts+13466, int32(m_TCL_GLOBAL_ONLY))
+	libtcl8_6.XTcl_SetVar2(tls, interp, __ccgo_ts+13374, __ccgo_ts+14124, __ccgo_ts+13458, int32(m_TCL_GLOBAL_ONLY))
 	// /tmp/libsqlite3/sqlite-src-3370200/src/test_config.c:474:3:
-	libtcl8_6.XTcl_SetVar2(tls, interp, __ccgo_ts+13382, __ccgo_ts+14141, __ccgo_ts+13466, int32(m_TCL_GLOBAL_ONLY))
+	libtcl8_6.XTcl_SetVar2(tls, interp, __ccgo_ts+13374, __ccgo_ts+14133, __ccgo_ts+13458, int32(m_TCL_GLOBAL_ONLY))
 	// /tmp/libsqlite3/sqlite-src-3370200/src/test_config.c:480:3:
-	libtcl8_6.XTcl_SetVar2(tls, interp, __ccgo_ts+13382, __ccgo_ts+14153, __ccgo_ts+956, int32(m_TCL_GLOBAL_ONLY))
+	libtcl8_6.XTcl_SetVar2(tls, interp, __ccgo_ts+13374, __ccgo_ts+14145, __ccgo_ts+956, int32(m_TCL_GLOBAL_ONLY))
 	// /tmp/libsqlite3/sqlite-src-3370200/src/test_config.c:486:3:
-	libtcl8_6.XTcl_SetVar2(tls, interp, __ccgo_ts+13382, __ccgo_ts+14166, __ccgo_ts+13466, int32(m_TCL_GLOBAL_ONLY))
+	libtcl8_6.XTcl_SetVar2(tls, interp, __ccgo_ts+13374, __ccgo_ts+14158, __ccgo_ts+13458, int32(m_TCL_GLOBAL_ONLY))
 	// /tmp/libsqlite3/sqlite-src-3370200/src/test_config.c:490:3:
-	libtcl8_6.XTcl_SetVar2(tls, interp, __ccgo_ts+13382, __ccgo_ts+14175, __ccgo_ts+956, int32(m_TCL_GLOBAL_ONLY))
+	libtcl8_6.XTcl_SetVar2(tls, interp, __ccgo_ts+13374, __ccgo_ts+14167, __ccgo_ts+956, int32(m_TCL_GLOBAL_ONLY))
 	// /tmp/libsqlite3/sqlite-src-3370200/src/test_config.c:498:3:
-	libtcl8_6.XTcl_SetVar2(tls, interp, __ccgo_ts+13382, __ccgo_ts+14184, __ccgo_ts+13466, int32(m_TCL_GLOBAL_ONLY))
+	libtcl8_6.XTcl_SetVar2(tls, interp, __ccgo_ts+13374, __ccgo_ts+14176, __ccgo_ts+13458, int32(m_TCL_GLOBAL_ONLY))
 	// /tmp/libsqlite3/sqlite-src-3370200/src/test_config.c:504:3:
-	libtcl8_6.XTcl_SetVar2(tls, interp, __ccgo_ts+13382, __ccgo_ts+14194, __ccgo_ts+13466, int32(m_TCL_GLOBAL_ONLY))
+	libtcl8_6.XTcl_SetVar2(tls, interp, __ccgo_ts+13374, __ccgo_ts+14186, __ccgo_ts+13458, int32(m_TCL_GLOBAL_ONLY))
 	// /tmp/libsqlite3/sqlite-src-3370200/src/test_config.c:507:1:
-	libtcl8_6.XTcl_SetVar2(tls, interp, __ccgo_ts+13382, __ccgo_ts+14204, __ccgo_ts+956, int32(m_TCL_GLOBAL_ONLY))
+	libtcl8_6.XTcl_SetVar2(tls, interp, __ccgo_ts+13374, __ccgo_ts+14196, __ccgo_ts+956, int32(m_TCL_GLOBAL_ONLY))
 	// /tmp/libsqlite3/sqlite-src-3370200/src/test_config.c:514:3:
-	libtcl8_6.XTcl_SetVar2(tls, interp, __ccgo_ts+13382, __ccgo_ts+14216, __ccgo_ts+13466, int32(m_TCL_GLOBAL_ONLY))
+	libtcl8_6.XTcl_SetVar2(tls, interp, __ccgo_ts+13374, __ccgo_ts+14208, __ccgo_ts+13458, int32(m_TCL_GLOBAL_ONLY))
 	// /tmp/libsqlite3/sqlite-src-3370200/src/test_config.c:520:3:
-	libtcl8_6.XTcl_SetVar2(tls, interp, __ccgo_ts+13382, __ccgo_ts+14225, __ccgo_ts+956, int32(m_TCL_GLOBAL_ONLY))
+	libtcl8_6.XTcl_SetVar2(tls, interp, __ccgo_ts+13374, __ccgo_ts+14217, __ccgo_ts+956, int32(m_TCL_GLOBAL_ONLY))
 	// /tmp/libsqlite3/sqlite-src-3370200/src/test_config.c:523:1:
-	libtcl8_6.XTcl_SetVar2(tls, interp, __ccgo_ts+13382, __ccgo_ts+14238, __ccgo_ts+13466, int32(m_TCL_GLOBAL_ONLY))
+	libtcl8_6.XTcl_SetVar2(tls, interp, __ccgo_ts+13374, __ccgo_ts+14230, __ccgo_ts+13458, int32(m_TCL_GLOBAL_ONLY))
 	// /tmp/libsqlite3/sqlite-src-3370200/src/test_config.c:528:3:
-	libtcl8_6.XTcl_SetVar2(tls, interp, __ccgo_ts+13382, __ccgo_ts+14248, __ccgo_ts+956, int32(m_TCL_GLOBAL_ONLY))
+	libtcl8_6.XTcl_SetVar2(tls, interp, __ccgo_ts+13374, __ccgo_ts+14240, __ccgo_ts+956, int32(m_TCL_GLOBAL_ONLY))
 	// /tmp/libsqlite3/sqlite-src-3370200/src/test_config.c:534:3:
-	libtcl8_6.XTcl_SetVar2(tls, interp, __ccgo_ts+13382, __ccgo_ts+14258, __ccgo_ts+13466, int32(m_TCL_GLOBAL_ONLY))
+	libtcl8_6.XTcl_SetVar2(tls, interp, __ccgo_ts+13374, __ccgo_ts+14250, __ccgo_ts+13458, int32(m_TCL_GLOBAL_ONLY))
 	// /tmp/libsqlite3/sqlite-src-3370200/src/test_config.c:540:3:
-	libtcl8_6.XTcl_SetVar2(tls, interp, __ccgo_ts+13382, __ccgo_ts+14265, __ccgo_ts+956, int32(m_TCL_GLOBAL_ONLY))
+	libtcl8_6.XTcl_SetVar2(tls, interp, __ccgo_ts+13374, __ccgo_ts+14257, __ccgo_ts+956, int32(m_TCL_GLOBAL_ONLY))
 	// /tmp/libsqlite3/sqlite-src-3370200/src/test_config.c:546:3:
-	libtcl8_6.XTcl_SetVar2(tls, interp, __ccgo_ts+13382, __ccgo_ts+14269, __ccgo_ts+13466, int32(m_TCL_GLOBAL_ONLY))
+	libtcl8_6.XTcl_SetVar2(tls, interp, __ccgo_ts+13374, __ccgo_ts+14261, __ccgo_ts+13458, int32(m_TCL_GLOBAL_ONLY))
 	// /tmp/libsqlite3/sqlite-src-3370200/src/test_config.c:553:3:
-	libtcl8_6.XTcl_SetVar2(tls, interp, __ccgo_ts+13382, __ccgo_ts+14283, __ccgo_ts+13466, int32(m_TCL_GLOBAL_ONLY))
+	libtcl8_6.XTcl_SetVar2(tls, interp, __ccgo_ts+13374, __ccgo_ts+14275, __ccgo_ts+13458, int32(m_TCL_GLOBAL_ONLY))
 	// /tmp/libsqlite3/sqlite-src-3370200/src/test_config.c:559:3:
-	libtcl8_6.XTcl_SetVar2(tls, interp, __ccgo_ts+13382, __ccgo_ts+14290, __ccgo_ts+13466, int32(m_TCL_GLOBAL_ONLY))
+	libtcl8_6.XTcl_SetVar2(tls, interp, __ccgo_ts+13374, __ccgo_ts+14282, __ccgo_ts+13458, int32(m_TCL_GLOBAL_ONLY))
 	// /tmp/libsqlite3/sqlite-src-3370200/src/test_config.c:565:3:
-	libtcl8_6.XTcl_SetVar2(tls, interp, __ccgo_ts+13382, __ccgo_ts+14299, __ccgo_ts+13466, int32(m_TCL_GLOBAL_ONLY))
+	libtcl8_6.XTcl_SetVar2(tls, interp, __ccgo_ts+13374, __ccgo_ts+14291, __ccgo_ts+13458, int32(m_TCL_GLOBAL_ONLY))
 	// /tmp/libsqlite3/sqlite-src-3370200/src/test_config.c:571:3:
-	libtcl8_6.XTcl_SetVar2(tls, interp, __ccgo_ts+13382, __ccgo_ts+14307, __ccgo_ts+956, int32(m_TCL_GLOBAL_ONLY))
+	libtcl8_6.XTcl_SetVar2(tls, interp, __ccgo_ts+13374, __ccgo_ts+14299, __ccgo_ts+956, int32(m_TCL_GLOBAL_ONLY))
 	// /tmp/libsqlite3/sqlite-src-3370200/src/test_config.c:577:3:
-	libtcl8_6.XTcl_SetVar2(tls, interp, __ccgo_ts+13382, __ccgo_ts+14313, __ccgo_ts+956, int32(m_TCL_GLOBAL_ONLY))
+	libtcl8_6.XTcl_SetVar2(tls, interp, __ccgo_ts+13374, __ccgo_ts+14305, __ccgo_ts+956, int32(m_TCL_GLOBAL_ONLY))
 	// /tmp/libsqlite3/sqlite-src-3370200/src/test_config.c:583:3:
-	libtcl8_6.XTcl_SetVar2(tls, interp, __ccgo_ts+13382, __ccgo_ts+14328, __ccgo_ts+13466, int32(m_TCL_GLOBAL_ONLY))
+	libtcl8_6.XTcl_SetVar2(tls, interp, __ccgo_ts+13374, __ccgo_ts+14320, __ccgo_ts+13458, int32(m_TCL_GLOBAL_ONLY))
 	// /tmp/libsqlite3/sqlite-src-3370200/src/test_config.c:589:3:
-	libtcl8_6.XTcl_SetVar2(tls, interp, __ccgo_ts+13382, __ccgo_ts+14343, __ccgo_ts+13466, int32(m_TCL_GLOBAL_ONLY))
+	libtcl8_6.XTcl_SetVar2(tls, interp, __ccgo_ts+13374, __ccgo_ts+14335, __ccgo_ts+13458, int32(m_TCL_GLOBAL_ONLY))
 	// /tmp/libsqlite3/sqlite-src-3370200/src/test_config.c:595:3:
-	libtcl8_6.XTcl_SetVar2(tls, interp, __ccgo_ts+13382, __ccgo_ts+14358, __ccgo_ts+956, int32(m_TCL_GLOBAL_ONLY))
+	libtcl8_6.XTcl_SetVar2(tls, interp, __ccgo_ts+13374, __ccgo_ts+14350, __ccgo_ts+956, int32(m_TCL_GLOBAL_ONLY))
 	// /tmp/libsqlite3/sqlite-src-3370200/src/test_config.c:601:3:
-	libtcl8_6.XTcl_SetVar2(tls, interp, __ccgo_ts+13382, __ccgo_ts+4052, __ccgo_ts+956, int32(m_TCL_GLOBAL_ONLY))
+	libtcl8_6.XTcl_SetVar2(tls, interp, __ccgo_ts+13374, __ccgo_ts+4052, __ccgo_ts+956, int32(m_TCL_GLOBAL_ONLY))
 	// /tmp/libsqlite3/sqlite-src-3370200/src/test_config.c:604:3:
-	libtcl8_6.XTcl_SetVar2(tls, interp, __ccgo_ts+13382, __ccgo_ts+14366, __ccgo_ts+13466, int32(m_TCL_GLOBAL_ONLY))
+	libtcl8_6.XTcl_SetVar2(tls, interp, __ccgo_ts+13374, __ccgo_ts+14358, __ccgo_ts+13458, int32(m_TCL_GLOBAL_ONLY))
 	// /tmp/libsqlite3/sqlite-src-3370200/src/test_config.c:612:3:
-	libtcl8_6.XTcl_SetVar2(tls, interp, __ccgo_ts+13382, __ccgo_ts+14375, __ccgo_ts+956, int32(m_TCL_GLOBAL_ONLY))
+	libtcl8_6.XTcl_SetVar2(tls, interp, __ccgo_ts+13374, __ccgo_ts+14367, __ccgo_ts+956, int32(m_TCL_GLOBAL_ONLY))
 	// /tmp/libsqlite3/sqlite-src-3370200/src/test_config.c:625:3:
-	libtcl8_6.XTcl_SetVar2(tls, interp, __ccgo_ts+13382, __ccgo_ts+14386, __ccgo_ts+956, int32(m_TCL_GLOBAL_ONLY))
+	libtcl8_6.XTcl_SetVar2(tls, interp, __ccgo_ts+13374, __ccgo_ts+14378, __ccgo_ts+956, int32(m_TCL_GLOBAL_ONLY))
 	// /tmp/libsqlite3/sqlite-src-3370200/src/test_config.c:630:3:
-	libtcl8_6.XTcl_SetVar2(tls, interp, __ccgo_ts+13382, __ccgo_ts+14405, __ccgo_ts+956, int32(m_TCL_GLOBAL_ONLY))
+	libtcl8_6.XTcl_SetVar2(tls, interp, __ccgo_ts+13374, __ccgo_ts+14397, __ccgo_ts+956, int32(m_TCL_GLOBAL_ONLY))
 	// /tmp/libsqlite3/sqlite-src-3370200/src/test_config.c:637:3:
-	libtcl8_6.XTcl_SetVar2(tls, interp, __ccgo_ts+13382, __ccgo_ts+14426, __ccgo_ts+13466, int32(m_TCL_GLOBAL_ONLY))
+	libtcl8_6.XTcl_SetVar2(tls, interp, __ccgo_ts+13374, __ccgo_ts+14418, __ccgo_ts+13458, int32(m_TCL_GLOBAL_ONLY))
 	// /tmp/libsqlite3/sqlite-src-3370200/src/test_config.c:643:3:
-	libtcl8_6.XTcl_SetVar2(tls, interp, __ccgo_ts+13382, __ccgo_ts+14439, __ccgo_ts+13466, int32(m_TCL_GLOBAL_ONLY))
+	libtcl8_6.XTcl_SetVar2(tls, interp, __ccgo_ts+13374, __ccgo_ts+14431, __ccgo_ts+13458, int32(m_TCL_GLOBAL_ONLY))
 	// /tmp/libsqlite3/sqlite-src-3370200/src/test_config.c:649:3:
-	libtcl8_6.XTcl_SetVar2(tls, interp, __ccgo_ts+13382, __ccgo_ts+14448, __ccgo_ts+13466, int32(m_TCL_GLOBAL_ONLY))
+	libtcl8_6.XTcl_SetVar2(tls, interp, __ccgo_ts+13374, __ccgo_ts+14440, __ccgo_ts+13458, int32(m_TCL_GLOBAL_ONLY))
 	// /tmp/libsqlite3/sqlite-src-3370200/src/test_config.c:652:3:
-	libtcl8_6.XTcl_SetVar2(tls, interp, __ccgo_ts+13382, __ccgo_ts+14455, __ccgo_ts+956, int32(m_TCL_GLOBAL_ONLY))
+	libtcl8_6.XTcl_SetVar2(tls, interp, __ccgo_ts+13374, __ccgo_ts+14447, __ccgo_ts+956, int32(m_TCL_GLOBAL_ONLY))
 	// /tmp/libsqlite3/sqlite-src-3370200/src/test_config.c:654:3:
-	libtcl8_6.XTcl_SetVar2(tls, interp, __ccgo_ts+13382, __ccgo_ts+14466, __ccgo_ts+956, int32(m_TCL_GLOBAL_ONLY))
+	libtcl8_6.XTcl_SetVar2(tls, interp, __ccgo_ts+13374, __ccgo_ts+14458, __ccgo_ts+956, int32(m_TCL_GLOBAL_ONLY))
 	// /tmp/libsqlite3/sqlite-src-3370200/src/test_config.c:656:3:
-	libtcl8_6.XTcl_SetVar2(tls, interp, __ccgo_ts+13382, __ccgo_ts+14478, __ccgo_ts+956, int32(m_TCL_GLOBAL_ONLY))
+	libtcl8_6.XTcl_SetVar2(tls, interp, __ccgo_ts+13374, __ccgo_ts+14470, __ccgo_ts+956, int32(m_TCL_GLOBAL_ONLY))
 	// /tmp/libsqlite3/sqlite-src-3370200/src/test_config.c:658:3:
 	// /tmp/libsqlite3/sqlite-src-3370200/src/test_config.c:663:3:
-	libtcl8_6.XTcl_SetVar2(tls, interp, __ccgo_ts+13382, __ccgo_ts+14490, __ccgo_ts+13466, int32(m_TCL_GLOBAL_ONLY))
+	libtcl8_6.XTcl_SetVar2(tls, interp, __ccgo_ts+13374, __ccgo_ts+14482, __ccgo_ts+13458, int32(m_TCL_GLOBAL_ONLY))
 	// /tmp/libsqlite3/sqlite-src-3370200/src/test_config.c:669:3:
-	libtcl8_6.XTcl_SetVar2(tls, interp, __ccgo_ts+13382, __ccgo_ts+14497, __ccgo_ts+13466, int32(m_TCL_GLOBAL_ONLY))
+	libtcl8_6.XTcl_SetVar2(tls, interp, __ccgo_ts+13374, __ccgo_ts+14489, __ccgo_ts+13458, int32(m_TCL_GLOBAL_ONLY))
 	// /tmp/libsqlite3/sqlite-src-3370200/src/test_config.c:675:3:
-	libtcl8_6.XTcl_SetVar2(tls, interp, __ccgo_ts+13382, __ccgo_ts+14503, __ccgo_ts+13466, int32(m_TCL_GLOBAL_ONLY))
+	libtcl8_6.XTcl_SetVar2(tls, interp, __ccgo_ts+13374, __ccgo_ts+14495, __ccgo_ts+13458, int32(m_TCL_GLOBAL_ONLY))
 	// /tmp/libsqlite3/sqlite-src-3370200/src/test_config.c:681:3:
-	libtcl8_6.XTcl_SetVar2(tls, interp, __ccgo_ts+13382, __ccgo_ts+14511, __ccgo_ts+13466, int32(m_TCL_GLOBAL_ONLY))
+	libtcl8_6.XTcl_SetVar2(tls, interp, __ccgo_ts+13374, __ccgo_ts+14503, __ccgo_ts+13458, int32(m_TCL_GLOBAL_ONLY))
 	// /tmp/libsqlite3/sqlite-src-3370200/src/test_config.c:687:3:
-	libtcl8_6.XTcl_SetVar2(tls, interp, __ccgo_ts+13382, __ccgo_ts+930, __ccgo_ts+13466, int32(m_TCL_GLOBAL_ONLY))
+	libtcl8_6.XTcl_SetVar2(tls, interp, __ccgo_ts+13374, __ccgo_ts+930, __ccgo_ts+13458, int32(m_TCL_GLOBAL_ONLY))
 	// /tmp/libsqlite3/sqlite-src-3370200/src/test_config.c:693:3:
-	libtcl8_6.XTcl_SetVar2(tls, interp, __ccgo_ts+13382, __ccgo_ts+14524, __ccgo_ts+13466, int32(m_TCL_GLOBAL_ONLY))
+	libtcl8_6.XTcl_SetVar2(tls, interp, __ccgo_ts+13374, __ccgo_ts+14516, __ccgo_ts+13458, int32(m_TCL_GLOBAL_ONLY))
 	// /tmp/libsqlite3/sqlite-src-3370200/src/test_config.c:699:3:
-	libtcl8_6.XTcl_SetVar2(tls, interp, __ccgo_ts+13382, __ccgo_ts+14531, __ccgo_ts+13466, int32(m_TCL_GLOBAL_ONLY))
+	libtcl8_6.XTcl_SetVar2(tls, interp, __ccgo_ts+13374, __ccgo_ts+14523, __ccgo_ts+13458, int32(m_TCL_GLOBAL_ONLY))
 	// /tmp/libsqlite3/sqlite-src-3370200/src/test_config.c:705:3:
-	libtcl8_6.XTcl_SetVar2(tls, interp, __ccgo_ts+13382, __ccgo_ts+14536, __ccgo_ts+13466, int32(m_TCL_GLOBAL_ONLY))
+	libtcl8_6.XTcl_SetVar2(tls, interp, __ccgo_ts+13374, __ccgo_ts+14528, __ccgo_ts+13458, int32(m_TCL_GLOBAL_ONLY))
 	// /tmp/libsqlite3/sqlite-src-3370200/src/test_config.c:711:3:
-	libtcl8_6.XTcl_SetVar2(tls, interp, __ccgo_ts+13382, __ccgo_ts+14541, __ccgo_ts+13466, int32(m_TCL_GLOBAL_ONLY))
+	libtcl8_6.XTcl_SetVar2(tls, interp, __ccgo_ts+13374, __ccgo_ts+14533, __ccgo_ts+13458, int32(m_TCL_GLOBAL_ONLY))
 	// /tmp/libsqlite3/sqlite-src-3370200/src/test_config.c:717:3:
-	libtcl8_6.XTcl_SetVar2(tls, interp, __ccgo_ts+13382, __ccgo_ts+14545, __ccgo_ts+13466, int32(m_TCL_GLOBAL_ONLY))
+	libtcl8_6.XTcl_SetVar2(tls, interp, __ccgo_ts+13374, __ccgo_ts+14537, __ccgo_ts+13458, int32(m_TCL_GLOBAL_ONLY))
 	// /tmp/libsqlite3/sqlite-src-3370200/src/test_config.c:723:3:
-	libtcl8_6.XTcl_SetVar2(tls, interp, __ccgo_ts+13382, __ccgo_ts+14549, __ccgo_ts+956, int32(m_TCL_GLOBAL_ONLY))
+	libtcl8_6.XTcl_SetVar2(tls, interp, __ccgo_ts+13374, __ccgo_ts+14541, __ccgo_ts+956, int32(m_TCL_GLOBAL_ONLY))
 	// /tmp/libsqlite3/sqlite-src-3370200/src/test_config.c:729:3:
-	libtcl8_6.XTcl_SetVar2(tls, interp, __ccgo_ts+13382, __ccgo_ts+14569, __ccgo_ts+956, int32(m_TCL_GLOBAL_ONLY))
+	libtcl8_6.XTcl_SetVar2(tls, interp, __ccgo_ts+13374, __ccgo_ts+14561, __ccgo_ts+956, int32(m_TCL_GLOBAL_ONLY))
 	// /tmp/libsqlite3/sqlite-src-3370200/src/test_config.c:735:3:
-	libtcl8_6.XTcl_SetVar2(tls, interp, __ccgo_ts+13382, __ccgo_ts+14583, __ccgo_ts+956, int32(m_TCL_GLOBAL_ONLY))
+	libtcl8_6.XTcl_SetVar2(tls, interp, __ccgo_ts+13374, __ccgo_ts+14575, __ccgo_ts+956, int32(m_TCL_GLOBAL_ONLY))
 	// /tmp/libsqlite3/sqlite-src-3370200/src/test_config.c:741:3:
-	libtcl8_6.XTcl_SetVar2(tls, interp, __ccgo_ts+13382, __ccgo_ts+14602, __ccgo_ts+956, int32(m_TCL_GLOBAL_ONLY))
+	libtcl8_6.XTcl_SetVar2(tls, interp, __ccgo_ts+13374, __ccgo_ts+14594, __ccgo_ts+956, int32(m_TCL_GLOBAL_ONLY))
 	// /tmp/libsqlite3/sqlite-src-3370200/src/test_config.c:747:3:
-	libtcl8_6.XTcl_SetVar2(tls, interp, __ccgo_ts+13382, __ccgo_ts+14616, __ccgo_ts+956, int32(m_TCL_GLOBAL_ONLY))
+	libtcl8_6.XTcl_SetVar2(tls, interp, __ccgo_ts+13374, __ccgo_ts+14608, __ccgo_ts+956, int32(m_TCL_GLOBAL_ONLY))
 	// /tmp/libsqlite3/sqlite-src-3370200/src/test_config.c:753:3:
-	libtcl8_6.XTcl_SetVar2(tls, interp, __ccgo_ts+13382, __ccgo_ts+14625, __ccgo_ts+956, int32(m_TCL_GLOBAL_ONLY))
+	libtcl8_6.XTcl_SetVar2(tls, interp, __ccgo_ts+13374, __ccgo_ts+14617, __ccgo_ts+956, int32(m_TCL_GLOBAL_ONLY))
 	// /tmp/libsqlite3/sqlite-src-3370200/src/test_config.c:759:3:
-	libtcl8_6.XTcl_SetVar2(tls, interp, __ccgo_ts+13382, __ccgo_ts+14649, __ccgo_ts+956, int32(m_TCL_GLOBAL_ONLY))
+	libtcl8_6.XTcl_SetVar2(tls, interp, __ccgo_ts+13374, __ccgo_ts+14641, __ccgo_ts+956, int32(m_TCL_GLOBAL_ONLY))
 	// /tmp/libsqlite3/sqlite-src-3370200/src/test_config.c:765:3:
-	libtcl8_6.XTcl_SetVar2(tls, interp, __ccgo_ts+13382, __ccgo_ts+14670, __ccgo_ts+956, int32(m_TCL_GLOBAL_ONLY))
+	libtcl8_6.XTcl_SetVar2(tls, interp, __ccgo_ts+13374, __ccgo_ts+14662, __ccgo_ts+956, int32(m_TCL_GLOBAL_ONLY))
 	// /tmp/libsqlite3/sqlite-src-3370200/src/test_config.c:771:3:
-	libtcl8_6.XTcl_SetVar2(tls, interp, __ccgo_ts+13382, __ccgo_ts+14677, __ccgo_ts+956, int32(m_TCL_GLOBAL_ONLY))
+	libtcl8_6.XTcl_SetVar2(tls, interp, __ccgo_ts+13374, __ccgo_ts+14669, __ccgo_ts+956, int32(m_TCL_GLOBAL_ONLY))
 	// /tmp/libsqlite3/sqlite-src-3370200/src/test_config.c:777:3:
-	libtcl8_6.XTcl_SetVar2(tls, interp, __ccgo_ts+13382, __ccgo_ts+14690, __ccgo_ts+956, int32(m_TCL_GLOBAL_ONLY))
+	libtcl8_6.XTcl_SetVar2(tls, interp, __ccgo_ts+13374, __ccgo_ts+14682, __ccgo_ts+956, int32(m_TCL_GLOBAL_ONLY))
 	// /tmp/libsqlite3/sqlite-src-3370200/src/test_config.c:783:3:
-	libtcl8_6.XTcl_SetVar2(tls, interp, __ccgo_ts+13382, __ccgo_ts+14700, __ccgo_ts+13466, int32(m_TCL_GLOBAL_ONLY))
+	libtcl8_6.XTcl_SetVar2(tls, interp, __ccgo_ts+13374, __ccgo_ts+14692, __ccgo_ts+13458, int32(m_TCL_GLOBAL_ONLY))
 	// /tmp/libsqlite3/sqlite-src-3370200/src/test_config.c:791:3:
-	libtcl8_6.XTcl_LinkVar(tls, interp, __ccgo_ts+14711, uintptr(unsafe.Pointer(&_cv_MAX_LENGTH)), libc.Int32FromInt32(m_TCL_LINK_INT)|libc.Int32FromInt32(m_TCL_LINK_READ_ONLY))
+	libtcl8_6.XTcl_LinkVar(tls, interp, __ccgo_ts+14703, uintptr(unsafe.Pointer(&_cv_MAX_LENGTH)), libc.Int32FromInt32(m_TCL_LINK_INT)|libc.Int32FromInt32(m_TCL_LINK_READ_ONLY))
 	// /tmp/libsqlite3/sqlite-src-3370200/src/test_config.c:792:3:
-	libtcl8_6.XTcl_LinkVar(tls, interp, __ccgo_ts+14729, uintptr(unsafe.Pointer(&_cv_MAX_COLUMN)), libc.Int32FromInt32(m_TCL_LINK_INT)|libc.Int32FromInt32(m_TCL_LINK_READ_ONLY))
+	libtcl8_6.XTcl_LinkVar(tls, interp, __ccgo_ts+14721, uintptr(unsafe.Pointer(&_cv_MAX_COLUMN)), libc.Int32FromInt32(m_TCL_LINK_INT)|libc.Int32FromInt32(m_TCL_LINK_READ_ONLY))
 	// /tmp/libsqlite3/sqlite-src-3370200/src/test_config.c:793:3:
-	libtcl8_6.XTcl_LinkVar(tls, interp, __ccgo_ts+14747, uintptr(unsafe.Pointer(&_cv_MAX_SQL_LENGTH)), libc.Int32FromInt32(m_TCL_LINK_INT)|libc.Int32FromInt32(m_TCL_LINK_READ_ONLY))
+	libtcl8_6.XTcl_LinkVar(tls, interp, __ccgo_ts+14739, uintptr(unsafe.Pointer(&_cv_MAX_SQL_LENGTH)), libc.Int32FromInt32(m_TCL_LINK_INT)|libc.Int32FromInt32(m_TCL_LINK_READ_ONLY))
 	// /tmp/libsqlite3/sqlite-src-3370200/src/test_config.c:794:3:
-	libtcl8_6.XTcl_LinkVar(tls, interp, __ccgo_ts+14769, uintptr(unsafe.Pointer(&_cv_MAX_EXPR_DEPTH)), libc.Int32FromInt32(m_TCL_LINK_INT)|libc.Int32FromInt32(m_TCL_LINK_READ_ONLY))
+	libtcl8_6.XTcl_LinkVar(tls, interp, __ccgo_ts+14761, uintptr(unsafe.Pointer(&_cv_MAX_EXPR_DEPTH)), libc.Int32FromInt32(m_TCL_LINK_INT)|libc.Int32FromInt32(m_TCL_LINK_READ_ONLY))
 	// /tmp/libsqlite3/sqlite-src-3370200/src/test_config.c:795:3:
-	libtcl8_6.XTcl_LinkVar(tls, interp, __ccgo_ts+14791, uintptr(unsafe.Pointer(&_cv_MAX_COMPOUND_SELECT)), libc.Int32FromInt32(m_TCL_LINK_INT)|libc.Int32FromInt32(m_TCL_LINK_READ_ONLY))
+	libtcl8_6.XTcl_LinkVar(tls, interp, __ccgo_ts+14783, uintptr(unsafe.Pointer(&_cv_MAX_COMPOUND_SELECT)), libc.Int32FromInt32(m_TCL_LINK_INT)|libc.Int32FromInt32(m_TCL_LINK_READ_ONLY))
 	// /tmp/libsqlite3/sqlite-src-3370200/src/test_config.c:796:3:
-	libtcl8_6.XTcl_LinkVar(tls, interp, __ccgo_ts+14818, uintptr(unsafe.Pointer(&_cv_MAX_VDBE_OP)), libc.Int32FromInt32(m_TCL_LINK_INT)|libc.Int32FromInt32(m_TCL_LINK_READ_ONLY))
+	libtcl8_6.XTcl_LinkVar(tls, interp, __ccgo_ts+14810, uintptr(unsafe.Pointer(&_cv_MAX_VDBE_OP)), libc.Int32FromInt32(m_TCL_LINK_INT)|libc.Int32FromInt32(m_TCL_LINK_READ_ONLY))
 	// /tmp/libsqlite3/sqlite-src-3370200/src/test_config.c:797:3:
-	libtcl8_6.XTcl_LinkVar(tls, interp, __ccgo_ts+14837, uintptr(unsafe.Pointer(&_cv_MAX_FUNCTION_ARG)), libc.Int32FromInt32(m_TCL_LINK_INT)|libc.Int32FromInt32(m_TCL_LINK_READ_ONLY))
+	libtcl8_6.XTcl_LinkVar(tls, interp, __ccgo_ts+14829, uintptr(unsafe.Pointer(&_cv_MAX_FUNCTION_ARG)), libc.Int32FromInt32(m_TCL_LINK_INT)|libc.Int32FromInt32(m_TCL_LINK_READ_ONLY))
 	// /tmp/libsqlite3/sqlite-src-3370200/src/test_config.c:798:3:
-	libtcl8_6.XTcl_LinkVar(tls, interp, __ccgo_ts+14861, uintptr(unsafe.Pointer(&_cv_MAX_VARIABLE_NUMBER)), libc.Int32FromInt32(m_TCL_LINK_INT)|libc.Int32FromInt32(m_TCL_LINK_READ_ONLY))
+	libtcl8_6.XTcl_LinkVar(tls, interp, __ccgo_ts+14853, uintptr(unsafe.Pointer(&_cv_MAX_VARIABLE_NUMBER)), libc.Int32FromInt32(m_TCL_LINK_INT)|libc.Int32FromInt32(m_TCL_LINK_READ_ONLY))
 	// /tmp/libsqlite3/sqlite-src-3370200/src/test_config.c:799:3:
-	libtcl8_6.XTcl_LinkVar(tls, interp, __ccgo_ts+14888, uintptr(unsafe.Pointer(&_cv_MAX_PAGE_SIZE)), libc.Int32FromInt32(m_TCL_LINK_INT)|libc.Int32FromInt32(m_TCL_LINK_READ_ONLY))
+	libtcl8_6.XTcl_LinkVar(tls, interp, __ccgo_ts+14880, uintptr(unsafe.Pointer(&_cv_MAX_PAGE_SIZE)), libc.Int32FromInt32(m_TCL_LINK_INT)|libc.Int32FromInt32(m_TCL_LINK_READ_ONLY))
 	// /tmp/libsqlite3/sqlite-src-3370200/src/test_config.c:800:3:
-	libtcl8_6.XTcl_LinkVar(tls, interp, __ccgo_ts+14909, uintptr(unsafe.Pointer(&_cv_MAX_PAGE_COUNT)), libc.Int32FromInt32(m_TCL_LINK_INT)|libc.Int32FromInt32(m_TCL_LINK_READ_ONLY))
+	libtcl8_6.XTcl_LinkVar(tls, interp, __ccgo_ts+14901, uintptr(unsafe.Pointer(&_cv_MAX_PAGE_COUNT)), libc.Int32FromInt32(m_TCL_LINK_INT)|libc.Int32FromInt32(m_TCL_LINK_READ_ONLY))
 	// /tmp/libsqlite3/sqlite-src-3370200/src/test_config.c:801:3:
-	libtcl8_6.XTcl_LinkVar(tls, interp, __ccgo_ts+14931, uintptr(unsafe.Pointer(&_cv_MAX_LIKE_PATTERN_LENGTH)), libc.Int32FromInt32(m_TCL_LINK_INT)|libc.Int32FromInt32(m_TCL_LINK_READ_ONLY))
+	libtcl8_6.XTcl_LinkVar(tls, interp, __ccgo_ts+14923, uintptr(unsafe.Pointer(&_cv_MAX_LIKE_PATTERN_LENGTH)), libc.Int32FromInt32(m_TCL_LINK_INT)|libc.Int32FromInt32(m_TCL_LINK_READ_ONLY))
 	// /tmp/libsqlite3/sqlite-src-3370200/src/test_config.c:802:3:
-	libtcl8_6.XTcl_LinkVar(tls, interp, __ccgo_ts+14962, uintptr(unsafe.Pointer(&_cv_MAX_TRIGGER_DEPTH)), libc.Int32FromInt32(m_TCL_LINK_INT)|libc.Int32FromInt32(m_TCL_LINK_READ_ONLY))
+	libtcl8_6.XTcl_LinkVar(tls, interp, __ccgo_ts+14954, uintptr(unsafe.Pointer(&_cv_MAX_TRIGGER_DEPTH)), libc.Int32FromInt32(m_TCL_LINK_INT)|libc.Int32FromInt32(m_TCL_LINK_READ_ONLY))
 	// /tmp/libsqlite3/sqlite-src-3370200/src/test_config.c:803:3:
-	libtcl8_6.XTcl_LinkVar(tls, interp, __ccgo_ts+14987, uintptr(unsafe.Pointer(&_cv_DEFAULT_CACHE_SIZE)), libc.Int32FromInt32(m_TCL_LINK_INT)|libc.Int32FromInt32(m_TCL_LINK_READ_ONLY))
+	libtcl8_6.XTcl_LinkVar(tls, interp, __ccgo_ts+14979, uintptr(unsafe.Pointer(&_cv_DEFAULT_CACHE_SIZE)), libc.Int32FromInt32(m_TCL_LINK_INT)|libc.Int32FromInt32(m_TCL_LINK_READ_ONLY))
 	// /tmp/libsqlite3/sqlite-src-3370200/src/test_config.c:804:3:
-	libtcl8_6.XTcl_LinkVar(tls, interp, __ccgo_ts+15013, uintptr(unsafe.Pointer(&_cv_DEFAULT_PAGE_SIZE)), libc.Int32FromInt32(m_TCL_LINK_INT)|libc.Int32FromInt32(m_TCL_LINK_READ_ONLY))
+	libtcl8_6.XTcl_LinkVar(tls, interp, __ccgo_ts+15005, uintptr(unsafe.Pointer(&_cv_DEFAULT_PAGE_SIZE)), libc.Int32FromInt32(m_TCL_LINK_INT)|libc.Int32FromInt32(m_TCL_LINK_READ_ONLY))
 	// /tmp/libsqlite3/sqlite-src-3370200/src/test_config.c:805:3:
-	libtcl8_6.XTcl_LinkVar(tls, interp, __ccgo_ts+15038, uintptr(unsafe.Pointer(&_cv_DEFAULT_FILE_FORMAT)), libc.Int32FromInt32(m_TCL_LINK_INT)|libc.Int32FromInt32(m_TCL_LINK_READ_ONLY))
+	libtcl8_6.XTcl_LinkVar(tls, interp, __ccgo_ts+15030, uintptr(unsafe.Pointer(&_cv_DEFAULT_FILE_FORMAT)), libc.Int32FromInt32(m_TCL_LINK_INT)|libc.Int32FromInt32(m_TCL_LINK_READ_ONLY))
 	// /tmp/libsqlite3/sqlite-src-3370200/src/test_config.c:806:3:
-	libtcl8_6.XTcl_LinkVar(tls, interp, __ccgo_ts+15065, uintptr(unsafe.Pointer(&_cv_DEFAULT_SYNCHRONOUS)), libc.Int32FromInt32(m_TCL_LINK_INT)|libc.Int32FromInt32(m_TCL_LINK_READ_ONLY))
+	libtcl8_6.XTcl_LinkVar(tls, interp, __ccgo_ts+15057, uintptr(unsafe.Pointer(&_cv_DEFAULT_SYNCHRONOUS)), libc.Int32FromInt32(m_TCL_LINK_INT)|libc.Int32FromInt32(m_TCL_LINK_READ_ONLY))
 	// /tmp/libsqlite3/sqlite-src-3370200/src/test_config.c:807:3:
-	libtcl8_6.XTcl_LinkVar(tls, interp, __ccgo_ts+15092, uintptr(unsafe.Pointer(&_cv_DEFAULT_WAL_SYNCHRONOUS)), libc.Int32FromInt32(m_TCL_LINK_INT)|libc.Int32FromInt32(m_TCL_LINK_READ_ONLY))
+	libtcl8_6.XTcl_LinkVar(tls, interp, __ccgo_ts+15084, uintptr(unsafe.Pointer(&_cv_DEFAULT_WAL_SYNCHRONOUS)), libc.Int32FromInt32(m_TCL_LINK_INT)|libc.Int32FromInt32(m_TCL_LINK_READ_ONLY))
 	// /tmp/libsqlite3/sqlite-src-3370200/src/test_config.c:808:3:
-	libtcl8_6.XTcl_LinkVar(tls, interp, __ccgo_ts+15123, uintptr(unsafe.Pointer(&_cv_MAX_ATTACHED)), libc.Int32FromInt32(m_TCL_LINK_INT)|libc.Int32FromInt32(m_TCL_LINK_READ_ONLY))
+	libtcl8_6.XTcl_LinkVar(tls, interp, __ccgo_ts+15115, uintptr(unsafe.Pointer(&_cv_MAX_ATTACHED)), libc.Int32FromInt32(m_TCL_LINK_INT)|libc.Int32FromInt32(m_TCL_LINK_READ_ONLY))
 	// /tmp/libsqlite3/sqlite-src-3370200/src/test_config.c:809:3:
-	libtcl8_6.XTcl_LinkVar(tls, interp, __ccgo_ts+15143, uintptr(unsafe.Pointer(&_cv_MAX_DEFAULT_PAGE_SIZE)), libc.Int32FromInt32(m_TCL_LINK_INT)|libc.Int32FromInt32(m_TCL_LINK_READ_ONLY))
+	libtcl8_6.XTcl_LinkVar(tls, interp, __ccgo_ts+15135, uintptr(unsafe.Pointer(&_cv_MAX_DEFAULT_PAGE_SIZE)), libc.Int32FromInt32(m_TCL_LINK_INT)|libc.Int32FromInt32(m_TCL_LINK_READ_ONLY))
 	// /tmp/libsqlite3/sqlite-src-3370200/src/test_config.c:810:3:
-	libtcl8_6.XTcl_LinkVar(tls, interp, __ccgo_ts+15172, uintptr(unsafe.Pointer(&_cv_MAX_WORKER_THREADS)), libc.Int32FromInt32(m_TCL_LINK_INT)|libc.Int32FromInt32(m_TCL_LINK_READ_ONLY))
+	libtcl8_6.XTcl_LinkVar(tls, interp, __ccgo_ts+15164, uintptr(unsafe.Pointer(&_cv_MAX_WORKER_THREADS)), libc.Int32FromInt32(m_TCL_LINK_INT)|libc.Int32FromInt32(m_TCL_LINK_READ_ONLY))
 	// /tmp/libsqlite3/sqlite-src-3370200/src/test_config.c:814:5:
-	libtcl8_6.XTcl_LinkVar(tls, interp, __ccgo_ts+15198, uintptr(unsafe.Pointer(&_cv_TEMP_STORE)), libc.Int32FromInt32(m_TCL_LINK_INT)|libc.Int32FromInt32(m_TCL_LINK_READ_ONLY))
+	libtcl8_6.XTcl_LinkVar(tls, interp, __ccgo_ts+15190, uintptr(unsafe.Pointer(&_cv_TEMP_STORE)), libc.Int32FromInt32(m_TCL_LINK_INT)|libc.Int32FromInt32(m_TCL_LINK_READ_ONLY))
 	// /tmp/libsqlite3/sqlite-src-3370200/src/test_config.c:821:5:
-	libtcl8_6.XTcl_LinkVar(tls, interp, __ccgo_ts+15209, uintptr(unsafe.Pointer(&_cv__MSC_VER)), libc.Int32FromInt32(m_TCL_LINK_INT)|libc.Int32FromInt32(m_TCL_LINK_READ_ONLY))
+	libtcl8_6.XTcl_LinkVar(tls, interp, __ccgo_ts+15201, uintptr(unsafe.Pointer(&_cv__MSC_VER)), libc.Int32FromInt32(m_TCL_LINK_INT)|libc.Int32FromInt32(m_TCL_LINK_READ_ONLY))
 	// /tmp/libsqlite3/sqlite-src-3370200/src/test_config.c:828:5:
-	libtcl8_6.XTcl_LinkVar(tls, interp, __ccgo_ts+15218, uintptr(unsafe.Pointer(&_cv___GNUC__)), libc.Int32FromInt32(m_TCL_LINK_INT)|libc.Int32FromInt32(m_TCL_LINK_READ_ONLY))
+	libtcl8_6.XTcl_LinkVar(tls, interp, __ccgo_ts+15210, uintptr(unsafe.Pointer(&_cv___GNUC__)), libc.Int32FromInt32(m_TCL_LINK_INT)|libc.Int32FromInt32(m_TCL_LINK_READ_ONLY))
 }
 
 // /tmp/libsqlite3/sqlite-src-3370200/src/test_config.c:791:3:
@@ -102635,9 +102631,9 @@ func x_sqlite3_delete_database(tls *libc.TLS, zFile uintptr) (r int32) {
 	// /tmp/libsqlite3/sqlite-src-3370200/src/test_delete.c:103:14:
 	azFmt = [4]uintptr{
 		0: __ccgo_ts + 183,
-		1: __ccgo_ts + 15227,
-		2: __ccgo_ts + 15238,
-		3: __ccgo_ts + 15245,
+		1: __ccgo_ts + 15219,
+		2: __ccgo_ts + 15230,
+		3: __ccgo_ts + 15237,
 	}
 	// /tmp/libsqlite3/sqlite-src-3370200/src/test_delete.c:109:5:
 	*(*[6]struct {
@@ -102650,31 +102646,31 @@ func x_sqlite3_delete_database(tls *libc.TLS, zFile uintptr) (r int32) {
 		Fb83     int32
 	}{
 		0: {
-			FzFmt: __ccgo_ts + 15252,
+			FzFmt: __ccgo_ts + 15244,
 		},
 		1: {
-			FzFmt: __ccgo_ts + 15259,
+			FzFmt: __ccgo_ts + 15251,
 		},
 		2: {
-			FzFmt: __ccgo_ts + 15274,
+			FzFmt: __ccgo_ts + 15266,
 		},
 		3: {
-			FzFmt: __ccgo_ts + 15252,
+			FzFmt: __ccgo_ts + 15244,
 			Fb83:  int32(1),
 		},
 		4: {
-			FzFmt:    __ccgo_ts + 15259,
+			FzFmt:    __ccgo_ts + 15251,
 			FiOffset: int32(m_SQLITE_MULTIPLEX_JOURNAL_8_3_OFFSET),
 			Fb83:     int32(1),
 		},
 		5: {
-			FzFmt:    __ccgo_ts + 15274,
+			FzFmt:    __ccgo_ts + 15266,
 			FiOffset: int32(m_SQLITE_MULTIPLEX_WAL_8_3_OFFSET),
 			Fb83:     int32(1),
 		},
 	}
 	// /tmp/libsqlite3/sqlite-src-3370200/src/test_delete.c:119:15:
-	pVfs = x_sqlite3_vfs_find(tls, __ccgo_ts+15285)
+	pVfs = x_sqlite3_vfs_find(tls, __ccgo_ts+15277)
 	/* Allocate a buffer large enough for any of the files that need to be
 	 ** deleted.  */
 	// /tmp/libsqlite3/sqlite-src-3370200/src/test_delete.c:126:3:
@@ -103428,7 +103424,7 @@ var _devsym_vfs = Tsqlite3_vfs{
 	FiVersion:   int32(2),
 	FszOsFile:   int32(16),
 	FmxPathname: int32(m_DEVSYM_MAX_PATHNAME),
-	FzName:      __ccgo_ts + 15291,
+	FzName:      __ccgo_ts + 15283,
 }
 
 func init() {
@@ -103450,7 +103446,7 @@ var _writecrash_vfs = Tsqlite3_vfs{
 	FiVersion:   int32(2),
 	FszOsFile:   int32(16),
 	FmxPathname: int32(m_DEVSYM_MAX_PATHNAME),
-	FzName:      __ccgo_ts + 15298,
+	FzName:      __ccgo_ts + 15290,
 }
 
 func init() {
@@ -103911,7 +103907,7 @@ func _fsdirConnect(tls *libc.TLS, db uintptr, pAux uintptr, argc int32, argv uin
 	// /tmp/libsqlite3/sqlite-src-3370200/src/test_fs.c:155:3:
 	if argc != int32(3) {
 		// /tmp/libsqlite3/sqlite-src-3370200/src/test_fs.c:156:5:
-		*(*uintptr)(unsafe.Pointer(pzErr)) = x_sqlite3_mprintf(tls, __ccgo_ts+12931, 0)
+		*(*uintptr)(unsafe.Pointer(pzErr)) = x_sqlite3_mprintf(tls, __ccgo_ts+12923, 0)
 		// /tmp/libsqlite3/sqlite-src-3370200/src/test_fs.c:157:5:
 		return int32(m_SQLITE_ERROR)
 	}
@@ -103927,7 +103923,7 @@ func _fsdirConnect(tls *libc.TLS, db uintptr, pAux uintptr, argc int32, argv uin
 	// /tmp/libsqlite3/sqlite-src-3370200/src/test_fs.c:164:3:
 	*(*uintptr)(unsafe.Pointer(ppVtab)) = pTab
 	// /tmp/libsqlite3/sqlite-src-3370200/src/test_fs.c:165:3:
-	x_sqlite3_declare_vtab(tls, db, __ccgo_ts+15309)
+	x_sqlite3_declare_vtab(tls, db, __ccgo_ts+15301)
 	// /tmp/libsqlite3/sqlite-src-3370200/src/test_fs.c:167:3:
 	return m_SQLITE_OK
 }
@@ -104267,7 +104263,7 @@ func _fstreeConnect(tls *libc.TLS, db uintptr, pAux uintptr, argc int32, argv ui
 	// /tmp/libsqlite3/sqlite-src-3370200/src/test_fs.c:361:3:
 	if argc != int32(3) {
 		// /tmp/libsqlite3/sqlite-src-3370200/src/test_fs.c:362:5:
-		*(*uintptr)(unsafe.Pointer(pzErr)) = x_sqlite3_mprintf(tls, __ccgo_ts+12931, 0)
+		*(*uintptr)(unsafe.Pointer(pzErr)) = x_sqlite3_mprintf(tls, __ccgo_ts+12923, 0)
 		// /tmp/libsqlite3/sqlite-src-3370200/src/test_fs.c:363:5:
 		return int32(m_SQLITE_ERROR)
 	}
@@ -104285,7 +104281,7 @@ func _fstreeConnect(tls *libc.TLS, db uintptr, pAux uintptr, argc int32, argv ui
 	// /tmp/libsqlite3/sqlite-src-3370200/src/test_fs.c:371:3:
 	*(*uintptr)(unsafe.Pointer(ppVtab)) = pTab
 	// /tmp/libsqlite3/sqlite-src-3370200/src/test_fs.c:372:3:
-	x_sqlite3_declare_vtab(tls, db, __ccgo_ts+15338)
+	x_sqlite3_declare_vtab(tls, db, __ccgo_ts+15330)
 	// /tmp/libsqlite3/sqlite-src-3370200/src/test_fs.c:374:3:
 	return m_SQLITE_OK
 }
@@ -104469,18 +104465,18 @@ func _fstreeFilter(tls *libc.TLS, pVtabCursor uintptr, idxNum int32, idxStr uint
 	// /tmp/libsqlite3/sqlite-src-3370200/src/test_fs.c:475:14:
 	pTab = (*TFstreeCsr)(unsafe.Pointer(pCsr)).Fbase.FpVtab
 	// /tmp/libsqlite3/sqlite-src-3370200/src/test_fs.c:477:14:
-	zSql = __ccgo_ts + 15374
+	zSql = __ccgo_ts + 15366
 	// /tmp/libsqlite3/sqlite-src-3370200/src/test_fs.c:491:8:
 	aWild = [2]int8{}
 	// /tmp/libsqlite3/sqlite-src-3370200/src/test_fs.c:494:14:
-	zDrive = x_windirent_getenv(tls, __ccgo_ts+15606)
+	zDrive = x_windirent_getenv(tls, __ccgo_ts+15598)
 	// /tmp/libsqlite3/sqlite-src-3370200/src/test_fs.c:495:3:
 	if zDrive == uintptr(0) {
 		// /tmp/libsqlite3/sqlite-src-3370200/src/test_fs.c:496:5:
-		zDrive = x_windirent_getenv(tls, __ccgo_ts+15618)
+		zDrive = x_windirent_getenv(tls, __ccgo_ts+15610)
 	}
 	// /tmp/libsqlite3/sqlite-src-3370200/src/test_fs.c:498:3:
-	zRoot = x_sqlite3_mprintf(tls, __ccgo_ts+15630, libc.VaList(bp+8, zDrive, int32('/')))
+	zRoot = x_sqlite3_mprintf(tls, __ccgo_ts+15622, libc.VaList(bp+8, zDrive, int32('/')))
 	// /tmp/libsqlite3/sqlite-src-3370200/src/test_fs.c:499:3:
 	nRoot = x_sqlite3Strlen30(tls, zRoot)
 	// /tmp/libsqlite3/sqlite-src-3370200/src/test_fs.c:500:3:
@@ -104690,7 +104686,7 @@ func _fsConnect(tls *libc.TLS, db uintptr, pAux uintptr, argc int32, argv uintpt
 	// /tmp/libsqlite3/sqlite-src-3370200/src/test_fs.c:630:3:
 	if argc != int32(4) {
 		// /tmp/libsqlite3/sqlite-src-3370200/src/test_fs.c:631:5:
-		*(*uintptr)(unsafe.Pointer(pzErr)) = x_sqlite3_mprintf(tls, __ccgo_ts+12931, 0)
+		*(*uintptr)(unsafe.Pointer(pzErr)) = x_sqlite3_mprintf(tls, __ccgo_ts+12923, 0)
 		// /tmp/libsqlite3/sqlite-src-3370200/src/test_fs.c:632:5:
 		return int32(m_SQLITE_ERROR)
 	}
@@ -104718,7 +104714,7 @@ func _fsConnect(tls *libc.TLS, db uintptr, pAux uintptr, argc int32, argv uintpt
 	// /tmp/libsqlite3/sqlite-src-3370200/src/test_fs.c:645:3:
 	*(*uintptr)(unsafe.Pointer(ppVtab)) = pVtab
 	// /tmp/libsqlite3/sqlite-src-3370200/src/test_fs.c:646:3:
-	x_sqlite3_declare_vtab(tls, db, __ccgo_ts+15635)
+	x_sqlite3_declare_vtab(tls, db, __ccgo_ts+15627)
 	// /tmp/libsqlite3/sqlite-src-3370200/src/test_fs.c:648:3:
 	return m_SQLITE_OK
 }
@@ -104814,7 +104810,7 @@ func _fsFilter(tls *libc.TLS, pVtabCursor uintptr, idxNum int32, idxStr uintptr,
 	// /tmp/libsqlite3/sqlite-src-3370200/src/test_fs.c:700:3:
 	if idxNum == int32(1) {
 		// /tmp/libsqlite3/sqlite-src-3370200/src/test_fs.c:701:10:
-		zStmt = x_sqlite3_mprintf(tls, __ccgo_ts+15672, libc.VaList(bp+8, (*Tfs_vtab)(unsafe.Pointer(p)).FzDb, (*Tfs_vtab)(unsafe.Pointer(p)).FzTbl))
+		zStmt = x_sqlite3_mprintf(tls, __ccgo_ts+15664, libc.VaList(bp+8, (*Tfs_vtab)(unsafe.Pointer(p)).FzDb, (*Tfs_vtab)(unsafe.Pointer(p)).FzTbl))
 		// /tmp/libsqlite3/sqlite-src-3370200/src/test_fs.c:703:5:
 		if !(zStmt != 0) {
 			// /tmp/libsqlite3/sqlite-src-3370200/src/test_fs.c:703:18:
@@ -104831,7 +104827,7 @@ func _fsFilter(tls *libc.TLS, pVtabCursor uintptr, idxNum int32, idxStr uintptr,
 		}
 	} else {
 		// /tmp/libsqlite3/sqlite-src-3370200/src/test_fs.c:710:10:
-		zStmt1 = x_sqlite3_mprintf(tls, __ccgo_ts+15706, libc.VaList(bp+8, (*Tfs_vtab)(unsafe.Pointer(p)).FzDb, (*Tfs_vtab)(unsafe.Pointer(p)).FzTbl))
+		zStmt1 = x_sqlite3_mprintf(tls, __ccgo_ts+15698, libc.VaList(bp+8, (*Tfs_vtab)(unsafe.Pointer(p)).FzDb, (*Tfs_vtab)(unsafe.Pointer(p)).FzTbl))
 		// /tmp/libsqlite3/sqlite-src-3370200/src/test_fs.c:711:5:
 		if !(zStmt1 != 0) {
 			// /tmp/libsqlite3/sqlite-src-3370200/src/test_fs.c:711:18:
@@ -105081,11 +105077,11 @@ func _register_fs_module(tls *libc.TLS, clientData TClientData, interp uintptr, 
 		return int32(m_TCL_ERROR)
 	}
 	// /tmp/libsqlite3/sqlite-src-3370200/src/test_fs.c:888:3:
-	x_sqlite3_create_module(tls, *(*uintptr)(unsafe.Pointer(bp)), __ccgo_ts+15726, uintptr(unsafe.Pointer(&_fsModule)), interp)
+	x_sqlite3_create_module(tls, *(*uintptr)(unsafe.Pointer(bp)), __ccgo_ts+15718, uintptr(unsafe.Pointer(&_fsModule)), interp)
 	// /tmp/libsqlite3/sqlite-src-3370200/src/test_fs.c:889:3:
-	x_sqlite3_create_module(tls, *(*uintptr)(unsafe.Pointer(bp)), __ccgo_ts+15729, uintptr(unsafe.Pointer(&_fsdirModule)), uintptr(0))
+	x_sqlite3_create_module(tls, *(*uintptr)(unsafe.Pointer(bp)), __ccgo_ts+15721, uintptr(unsafe.Pointer(&_fsdirModule)), uintptr(0))
 	// /tmp/libsqlite3/sqlite-src-3370200/src/test_fs.c:890:3:
-	x_sqlite3_create_module(tls, *(*uintptr)(unsafe.Pointer(bp)), __ccgo_ts+15735, uintptr(unsafe.Pointer(&_fstreeModule)), uintptr(0))
+	x_sqlite3_create_module(tls, *(*uintptr)(unsafe.Pointer(bp)), __ccgo_ts+15727, uintptr(unsafe.Pointer(&_fstreeModule)), uintptr(0))
 	// /tmp/libsqlite3/sqlite-src-3370200/src/test_fs.c:892:3:
 	return m_TCL_OK
 }
@@ -105124,7 +105120,7 @@ var _aObjCmd5 = [1]struct {
 	FclientData uintptr
 }{
 	0: {
-		FzName: __ccgo_ts + 15742,
+		FzName: __ccgo_ts + 15734,
 	},
 }
 
@@ -105621,7 +105617,7 @@ func _test_eval(tls *libc.TLS, pCtx uintptr, nArg int32, argv uintptr) {
 	if rc != 0 {
 		// /tmp/libsqlite3/sqlite-src-3370200/src/test_func.c:315:5:
 		// /tmp/libsqlite3/sqlite-src-3370200/src/test_func.c:316:5:
-		zErr = x_sqlite3_mprintf(tls, __ccgo_ts+15761, libc.VaList(bp+16, x_sqlite3_errmsg(tls, db)))
+		zErr = x_sqlite3_mprintf(tls, __ccgo_ts+15753, libc.VaList(bp+16, x_sqlite3_errmsg(tls, db)))
 		// /tmp/libsqlite3/sqlite-src-3370200/src/test_func.c:317:5:
 		x_sqlite3_result_text(tls, pCtx, zErr, -int32(1), __ccgo_fp(x_sqlite3_free))
 		// /tmp/libsqlite3/sqlite-src-3370200/src/test_func.c:318:5:
@@ -105821,14 +105817,14 @@ func _real2hex(tls *libc.TLS, context uintptr, argc int32, argv uintptr) {
 		// /tmp/libsqlite3/sqlite-src-3370200/src/test_func.c:453:5:
 		if bigEndian != 0 {
 			// /tmp/libsqlite3/sqlite-src-3370200/src/test_func.c:454:7:
-			(*(*[20]int8)(unsafe.Pointer(bp + 8)))[i*int32(2)] = *(*int8)(unsafe.Pointer(__ccgo_ts + 15792 + uintptr(int32(*(*uint8)(unsafe.Pointer(bp + uintptr(i))))>>int32(4))))
+			(*(*[20]int8)(unsafe.Pointer(bp + 8)))[i*int32(2)] = *(*int8)(unsafe.Pointer(__ccgo_ts + 15784 + uintptr(int32(*(*uint8)(unsafe.Pointer(bp + uintptr(i))))>>int32(4))))
 			// /tmp/libsqlite3/sqlite-src-3370200/src/test_func.c:455:7:
-			(*(*[20]int8)(unsafe.Pointer(bp + 8)))[i*int32(2)+int32(1)] = *(*int8)(unsafe.Pointer(__ccgo_ts + 15792 + uintptr(int32(*(*uint8)(unsafe.Pointer(bp + uintptr(i))))&int32(0xf))))
+			(*(*[20]int8)(unsafe.Pointer(bp + 8)))[i*int32(2)+int32(1)] = *(*int8)(unsafe.Pointer(__ccgo_ts + 15784 + uintptr(int32(*(*uint8)(unsafe.Pointer(bp + uintptr(i))))&int32(0xf))))
 		} else {
 			// /tmp/libsqlite3/sqlite-src-3370200/src/test_func.c:457:7:
-			(*(*[20]int8)(unsafe.Pointer(bp + 8)))[int32(14)-i*int32(2)] = *(*int8)(unsafe.Pointer(__ccgo_ts + 15792 + uintptr(int32(*(*uint8)(unsafe.Pointer(bp + uintptr(i))))>>int32(4))))
+			(*(*[20]int8)(unsafe.Pointer(bp + 8)))[int32(14)-i*int32(2)] = *(*int8)(unsafe.Pointer(__ccgo_ts + 15784 + uintptr(int32(*(*uint8)(unsafe.Pointer(bp + uintptr(i))))>>int32(4))))
 			// /tmp/libsqlite3/sqlite-src-3370200/src/test_func.c:458:7:
-			(*(*[20]int8)(unsafe.Pointer(bp + 8)))[int32(14)-i*int32(2)+int32(1)] = *(*int8)(unsafe.Pointer(__ccgo_ts + 15792 + uintptr(int32(*(*uint8)(unsafe.Pointer(bp + uintptr(i))))&int32(0xf))))
+			(*(*[20]int8)(unsafe.Pointer(bp + 8)))[int32(14)-i*int32(2)+int32(1)] = *(*int8)(unsafe.Pointer(__ccgo_ts + 15784 + uintptr(int32(*(*uint8)(unsafe.Pointer(bp + uintptr(i))))&int32(0xf))))
 		}
 		goto _1
 	_1:
@@ -105997,7 +105993,7 @@ func _test_decode(tls *libc.TLS, context uintptr, argc int32, argv uintptr) {
 			// /tmp/libsqlite3/sqlite-src-3370200/src/test_func.c:563:12:
 			z = x_sqlite3_value_blob(tls, bp+16)
 			// /tmp/libsqlite3/sqlite-src-3370200/src/test_func.c:565:9:
-			pVal = libtcl8_6.XTcl_NewStringObj(tls, __ccgo_ts+15809, -int32(1))
+			pVal = libtcl8_6.XTcl_NewStringObj(tls, __ccgo_ts+15801, -int32(1))
 			// /tmp/libsqlite3/sqlite-src-3370200/src/test_func.c:566:9:
 			i = 0
 			for {
@@ -106017,7 +106013,7 @@ func _test_decode(tls *libc.TLS, context uintptr, argc int32, argv uintptr) {
 				i++
 			}
 			// /tmp/libsqlite3/sqlite-src-3370200/src/test_func.c:573:9:
-			libtcl8_6.XTcl_AppendStringsToObj(tls, pVal, libc.VaList(bp+88, __ccgo_ts+15812, 0))
+			libtcl8_6.XTcl_AppendStringsToObj(tls, pVal, libc.VaList(bp+88, __ccgo_ts+15804, 0))
 			// /tmp/libsqlite3/sqlite-src-3370200/src/test_func.c:574:9:
 			break
 			// /tmp/libsqlite3/sqlite-src-3370200/src/test_func.c:577:7:
@@ -106174,7 +106170,7 @@ func _registerTestFunctions(tls *libc.TLS, db uintptr, pzErrMsg uintptr, pThunk 
 		i++
 	}
 	// /tmp/libsqlite3/sqlite-src-3370200/src/test_func.c:705:3:
-	x_sqlite3_create_function(tls, db, __ccgo_ts+16076, 0, int32(m_SQLITE_ANY), uintptr(0), uintptr(0), __ccgo_fp(_test_agg_errmsg16_step), __ccgo_fp(_test_agg_errmsg16_final))
+	x_sqlite3_create_function(tls, db, __ccgo_ts+16068, 0, int32(m_SQLITE_ANY), uintptr(0), uintptr(0), __ccgo_fp(_test_agg_errmsg16_step), __ccgo_fp(_test_agg_errmsg16_final))
 	// /tmp/libsqlite3/sqlite-src-3370200/src/test_func.c:708:3:
 	return m_SQLITE_OK
 }
@@ -106187,101 +106183,101 @@ var _aFuncs = [20]struct {
 	FxFunc    uintptr
 }{
 	0: {
-		FzName:    __ccgo_ts + 15814,
+		FzName:    __ccgo_ts + 15806,
 		FnArg:     int8(2),
 		FeTextRep: uint32(m_SQLITE_UTF8),
 	},
 	1: {
-		FzName:    __ccgo_ts + 15822,
+		FzName:    __ccgo_ts + 15814,
 		FnArg:     int8(1),
 		FeTextRep: uint32(m_SQLITE_UTF8),
 	},
 	2: {
-		FzName:    __ccgo_ts + 15838,
+		FzName:    __ccgo_ts + 15830,
 		FnArg:     int8(1),
 		FeTextRep: uint32(m_SQLITE_UTF8),
 	},
 	3: {
-		FzName:    __ccgo_ts + 15856,
+		FzName:    __ccgo_ts + 15848,
 		FnArg:     int8(1),
 		FeTextRep: uint32(m_SQLITE_UTF8),
 	},
 	4: {
-		FzName:    __ccgo_ts + 15871,
+		FzName:    __ccgo_ts + 15863,
 		FnArg:     int8(1),
 		FeTextRep: uint32(m_SQLITE_UTF8),
 	},
 	5: {
-		FzName:    __ccgo_ts + 15886,
+		FzName:    __ccgo_ts + 15878,
 		FnArg:     int8(1),
 		FeTextRep: uint32(m_SQLITE_UTF8),
 	},
 	6: {
-		FzName:    __ccgo_ts + 15898,
+		FzName:    __ccgo_ts + 15890,
 		FeTextRep: uint32(m_SQLITE_UTF8),
 	},
 	7: {
-		FzName:    __ccgo_ts + 15920,
+		FzName:    __ccgo_ts + 15912,
 		FnArg:     int8(-int32(1)),
 		FeTextRep: uint32(m_SQLITE_UTF8),
 	},
 	8: {
-		FzName:    __ccgo_ts + 15933,
+		FzName:    __ccgo_ts + 15925,
 		FnArg:     int8(1),
 		FeTextRep: uint32(m_SQLITE_UTF8),
 	},
 	9: {
-		FzName:    __ccgo_ts + 15933,
+		FzName:    __ccgo_ts + 15925,
 		FnArg:     int8(2),
 		FeTextRep: uint32(m_SQLITE_UTF8),
 	},
 	10: {
-		FzName:    __ccgo_ts + 15944,
+		FzName:    __ccgo_ts + 15936,
 		FnArg:     int8(1),
 		FeTextRep: uint32(m_SQLITE_UTF8),
 	},
 	11: {
-		FzName:    __ccgo_ts + 15954,
+		FzName:    __ccgo_ts + 15946,
 		FnArg:     int8(2),
 		FeTextRep: uint32(m_SQLITE_UTF8),
 	},
 	12: {
-		FzName:    __ccgo_ts + 15969,
+		FzName:    __ccgo_ts + 15961,
 		FnArg:     int8(1),
 		FeTextRep: uint32(m_SQLITE_UTF8),
 	},
 	13: {
-		FzName:    __ccgo_ts + 15982,
+		FzName:    __ccgo_ts + 15974,
 		FnArg:     int8(1),
 		FeTextRep: uint32(m_SQLITE_UTF8),
 	},
 	14: {
-		FzName:    __ccgo_ts + 15991,
+		FzName:    __ccgo_ts + 15983,
 		FnArg:     int8(1),
 		FeTextRep: uint32(m_SQLITE_UTF8),
 	},
 	15: {
-		FzName:    __ccgo_ts + 16003,
+		FzName:    __ccgo_ts + 15995,
 		FnArg:     int8(2),
 		FeTextRep: uint32(m_SQLITE_UTF8),
 	},
 	16: {
-		FzName:    __ccgo_ts + 16016,
+		FzName:    __ccgo_ts + 16008,
 		FnArg:     int8(1),
 		FeTextRep: uint32(libc.Int32FromInt32(m_SQLITE_UTF8) | libc.Int32FromInt32(m_SQLITE_DETERMINISTIC)),
 	},
 	17: {
-		FzName:    __ccgo_ts + 16030,
+		FzName:    __ccgo_ts + 16022,
 		FnArg:     int8(1),
 		FeTextRep: uint32(m_SQLITE_UTF8),
 	},
 	18: {
-		FzName:    __ccgo_ts + 16046,
+		FzName:    __ccgo_ts + 16038,
 		FnArg:     int8(2),
 		FeTextRep: uint32(m_SQLITE_UTF8),
 	},
 	19: {
-		FzName:    __ccgo_ts + 16062,
+		FzName:    __ccgo_ts + 16054,
 		FnArg:     int8(-int32(1)),
 		FeTextRep: uint32(m_SQLITE_UTF8),
 	},
@@ -106378,56 +106374,56 @@ func _abuse_create_function(tls *libc.TLS, clientData uintptr, interp uintptr, o
 		return int32(m_TCL_ERROR)
 	}
 	// /tmp/libsqlite3/sqlite-src-3370200/src/test_func.c:759:3:
-	rc = x_sqlite3_create_function(tls, *(*uintptr)(unsafe.Pointer(bp)), __ccgo_ts+16094, int32(1), int32(m_SQLITE_UTF8), uintptr(0), __ccgo_fp(_tStep), __ccgo_fp(_tStep), __ccgo_fp(_tFinal))
+	rc = x_sqlite3_create_function(tls, *(*uintptr)(unsafe.Pointer(bp)), __ccgo_ts+16086, int32(1), int32(m_SQLITE_UTF8), uintptr(0), __ccgo_fp(_tStep), __ccgo_fp(_tStep), __ccgo_fp(_tFinal))
 	// /tmp/libsqlite3/sqlite-src-3370200/src/test_func.c:760:3:
 	if rc != int32(m_SQLITE_MISUSE) {
 		// /tmp/libsqlite3/sqlite-src-3370200/src/test_func.c:760:27:
 		goto abuse_err
 	}
 	// /tmp/libsqlite3/sqlite-src-3370200/src/test_func.c:762:3:
-	rc = x_sqlite3_create_function(tls, *(*uintptr)(unsafe.Pointer(bp)), __ccgo_ts+16094, int32(1), int32(m_SQLITE_UTF8), uintptr(0), __ccgo_fp(_tStep), __ccgo_fp(_tStep), uintptr(0))
+	rc = x_sqlite3_create_function(tls, *(*uintptr)(unsafe.Pointer(bp)), __ccgo_ts+16086, int32(1), int32(m_SQLITE_UTF8), uintptr(0), __ccgo_fp(_tStep), __ccgo_fp(_tStep), uintptr(0))
 	// /tmp/libsqlite3/sqlite-src-3370200/src/test_func.c:763:3:
 	if rc != int32(m_SQLITE_MISUSE) {
 		// /tmp/libsqlite3/sqlite-src-3370200/src/test_func.c:763:27:
 		goto abuse_err
 	}
 	// /tmp/libsqlite3/sqlite-src-3370200/src/test_func.c:765:3:
-	rc = x_sqlite3_create_function(tls, *(*uintptr)(unsafe.Pointer(bp)), __ccgo_ts+16094, int32(1), int32(m_SQLITE_UTF8), uintptr(0), __ccgo_fp(_tStep), uintptr(0), __ccgo_fp(_tFinal))
+	rc = x_sqlite3_create_function(tls, *(*uintptr)(unsafe.Pointer(bp)), __ccgo_ts+16086, int32(1), int32(m_SQLITE_UTF8), uintptr(0), __ccgo_fp(_tStep), uintptr(0), __ccgo_fp(_tFinal))
 	// /tmp/libsqlite3/sqlite-src-3370200/src/test_func.c:766:3:
 	if rc != int32(m_SQLITE_MISUSE) {
 		// /tmp/libsqlite3/sqlite-src-3370200/src/test_func.c:766:26:
 		goto abuse_err
 	}
 	// /tmp/libsqlite3/sqlite-src-3370200/src/test_func.c:768:3:
-	rc = x_sqlite3_create_function(tls, *(*uintptr)(unsafe.Pointer(bp)), __ccgo_ts+16094, int32(1), int32(m_SQLITE_UTF8), uintptr(0), uintptr(0), uintptr(0), __ccgo_fp(_tFinal))
+	rc = x_sqlite3_create_function(tls, *(*uintptr)(unsafe.Pointer(bp)), __ccgo_ts+16086, int32(1), int32(m_SQLITE_UTF8), uintptr(0), uintptr(0), uintptr(0), __ccgo_fp(_tFinal))
 	// /tmp/libsqlite3/sqlite-src-3370200/src/test_func.c:769:3:
 	if rc != int32(m_SQLITE_MISUSE) {
 		// /tmp/libsqlite3/sqlite-src-3370200/src/test_func.c:769:27:
 		goto abuse_err
 	}
 	// /tmp/libsqlite3/sqlite-src-3370200/src/test_func.c:771:3:
-	rc = x_sqlite3_create_function(tls, *(*uintptr)(unsafe.Pointer(bp)), __ccgo_ts+16094, int32(1), int32(m_SQLITE_UTF8), uintptr(0), uintptr(0), __ccgo_fp(_tStep), uintptr(0))
+	rc = x_sqlite3_create_function(tls, *(*uintptr)(unsafe.Pointer(bp)), __ccgo_ts+16086, int32(1), int32(m_SQLITE_UTF8), uintptr(0), uintptr(0), __ccgo_fp(_tStep), uintptr(0))
 	// /tmp/libsqlite3/sqlite-src-3370200/src/test_func.c:772:3:
 	if rc != int32(m_SQLITE_MISUSE) {
 		// /tmp/libsqlite3/sqlite-src-3370200/src/test_func.c:772:27:
 		goto abuse_err
 	}
 	// /tmp/libsqlite3/sqlite-src-3370200/src/test_func.c:774:3:
-	rc = x_sqlite3_create_function(tls, *(*uintptr)(unsafe.Pointer(bp)), __ccgo_ts+16094, -int32(2), int32(m_SQLITE_UTF8), uintptr(0), __ccgo_fp(_tStep), uintptr(0), uintptr(0))
+	rc = x_sqlite3_create_function(tls, *(*uintptr)(unsafe.Pointer(bp)), __ccgo_ts+16086, -int32(2), int32(m_SQLITE_UTF8), uintptr(0), __ccgo_fp(_tStep), uintptr(0), uintptr(0))
 	// /tmp/libsqlite3/sqlite-src-3370200/src/test_func.c:775:3:
 	if rc != int32(m_SQLITE_MISUSE) {
 		// /tmp/libsqlite3/sqlite-src-3370200/src/test_func.c:775:27:
 		goto abuse_err
 	}
 	// /tmp/libsqlite3/sqlite-src-3370200/src/test_func.c:777:3:
-	rc = x_sqlite3_create_function(tls, *(*uintptr)(unsafe.Pointer(bp)), __ccgo_ts+16094, int32(128), int32(m_SQLITE_UTF8), uintptr(0), __ccgo_fp(_tStep), uintptr(0), uintptr(0))
+	rc = x_sqlite3_create_function(tls, *(*uintptr)(unsafe.Pointer(bp)), __ccgo_ts+16086, int32(128), int32(m_SQLITE_UTF8), uintptr(0), __ccgo_fp(_tStep), uintptr(0), uintptr(0))
 	// /tmp/libsqlite3/sqlite-src-3370200/src/test_func.c:778:3:
 	if rc != int32(m_SQLITE_MISUSE) {
 		// /tmp/libsqlite3/sqlite-src-3370200/src/test_func.c:778:27:
 		goto abuse_err
 	}
 	// /tmp/libsqlite3/sqlite-src-3370200/src/test_func.c:780:3:
-	rc = x_sqlite3_create_function(tls, *(*uintptr)(unsafe.Pointer(bp)), __ccgo_ts+16097, int32(1), int32(m_SQLITE_UTF8), uintptr(0), __ccgo_fp(_tStep), uintptr(0), uintptr(0))
+	rc = x_sqlite3_create_function(tls, *(*uintptr)(unsafe.Pointer(bp)), __ccgo_ts+16089, int32(1), int32(m_SQLITE_UTF8), uintptr(0), __ccgo_fp(_tStep), uintptr(0), uintptr(0))
 	// /tmp/libsqlite3/sqlite-src-3370200/src/test_func.c:787:3:
 	if rc != int32(m_SQLITE_MISUSE) {
 		// /tmp/libsqlite3/sqlite-src-3370200/src/test_func.c:787:27:
@@ -106442,7 +106438,7 @@ func _abuse_create_function(tls *libc.TLS, clientData uintptr, interp uintptr, o
 	// /tmp/libsqlite3/sqlite-src-3370200/src/test_func.c:794:3:
 	mxArg = x_sqlite3_limit(tls, *(*uintptr)(unsafe.Pointer(bp)), int32(m_SQLITE_LIMIT_FUNCTION_ARG), -int32(1))
 	// /tmp/libsqlite3/sqlite-src-3370200/src/test_func.c:795:3:
-	rc = x_sqlite3_create_function(tls, *(*uintptr)(unsafe.Pointer(bp)), __ccgo_ts+16354, mxArg, int32(m_SQLITE_UTF8), uintptr(0), __ccgo_fp(_tStep), uintptr(0), uintptr(0))
+	rc = x_sqlite3_create_function(tls, *(*uintptr)(unsafe.Pointer(bp)), __ccgo_ts+16346, mxArg, int32(m_SQLITE_UTF8), uintptr(0), __ccgo_fp(_tStep), uintptr(0), uintptr(0))
 	// /tmp/libsqlite3/sqlite-src-3370200/src/test_func.c:802:3:
 	if rc != m_SQLITE_OK {
 		// /tmp/libsqlite3/sqlite-src-3370200/src/test_func.c:802:23:
@@ -106453,7 +106449,7 @@ func _abuse_create_function(tls *libc.TLS, clientData uintptr, interp uintptr, o
 	// /tmp/libsqlite3/sqlite-src-3370200/src/test_func.c:806:1:
 abuse_err:
 	// /tmp/libsqlite3/sqlite-src-3370200/src/test_func.c:807:3:
-	libtcl8_6.XTcl_AppendResult(tls, interp, libc.VaList(bp+16, __ccgo_ts+16610, libc.UintptrFromInt32(0)))
+	libtcl8_6.XTcl_AppendResult(tls, interp, libc.VaList(bp+16, __ccgo_ts+16602, libc.UintptrFromInt32(0)))
 	// /tmp/libsqlite3/sqlite-src-3370200/src/test_func.c:809:3:
 	return int32(m_TCL_ERROR)
 }
@@ -106535,7 +106531,7 @@ func _rankfunc(tls *libc.TLS, pCtx uintptr, nVal int32, apVal uintptr) {
 	// /tmp/libsqlite3/sqlite-src-3370200/src/test_func.c:871:3:
 	if nMatchinfo != int32(2)+int32(3)*nCol*nPhrase {
 		// /tmp/libsqlite3/sqlite-src-3370200/src/test_func.c:872:5:
-		x_sqlite3_result_error(tls, pCtx, __ccgo_ts+16653, -int32(1))
+		x_sqlite3_result_error(tls, pCtx, __ccgo_ts+16645, -int32(1))
 		// /tmp/libsqlite3/sqlite-src-3370200/src/test_func.c:874:5:
 		return
 	}
@@ -106595,7 +106591,7 @@ func _rankfunc(tls *libc.TLS, pCtx uintptr, nVal int32, apVal uintptr) {
 	// /tmp/libsqlite3/sqlite-src-3370200/src/test_func.c:906:1:
 wrong_number_args:
 	// /tmp/libsqlite3/sqlite-src-3370200/src/test_func.c:907:3:
-	x_sqlite3_result_error(tls, pCtx, __ccgo_ts+16702, -int32(1))
+	x_sqlite3_result_error(tls, pCtx, __ccgo_ts+16694, -int32(1))
 }
 
 // /tmp/libsqlite3/sqlite-src-3370200/src/test_func.c:910:26:
@@ -106617,7 +106613,7 @@ func _install_fts3_rank_function(tls *libc.TLS, clientData uintptr, interp uintp
 		return int32(m_TCL_ERROR)
 	}
 	// /tmp/libsqlite3/sqlite-src-3370200/src/test_func.c:925:3:
-	x_sqlite3_create_function(tls, *(*uintptr)(unsafe.Pointer(bp)), __ccgo_ts+16747, -int32(1), int32(m_SQLITE_UTF8), uintptr(0), __ccgo_fp(_rankfunc), uintptr(0), uintptr(0))
+	x_sqlite3_create_function(tls, *(*uintptr)(unsafe.Pointer(bp)), __ccgo_ts+16739, -int32(1), int32(m_SQLITE_UTF8), uintptr(0), __ccgo_fp(_rankfunc), uintptr(0), uintptr(0))
 	// /tmp/libsqlite3/sqlite-src-3370200/src/test_func.c:926:3:
 	return m_TCL_OK
 }
@@ -106661,13 +106657,13 @@ var _aObjCmd6 = [3]struct {
 	FxProc uintptr
 }{
 	0: {
-		FzName: __ccgo_ts + 16752,
+		FzName: __ccgo_ts + 16744,
 	},
 	1: {
-		FzName: __ccgo_ts + 16779,
+		FzName: __ccgo_ts + 16771,
 	},
 	2: {
-		FzName: __ccgo_ts + 16801,
+		FzName: __ccgo_ts + 16793,
 	},
 }
 
@@ -106909,7 +106905,7 @@ func _hexio_read(tls *libc.TLS, clientData uintptr, interp uintptr, objc int32, 
 	// /tmp/libsqlite3/sqlite-src-3370200/src/test_hexio.c:113:3:
 	if objc != int32(4) {
 		// /tmp/libsqlite3/sqlite-src-3370200/src/test_hexio.c:114:5:
-		libtcl8_6.XTcl_WrongNumArgs(tls, interp, int32(1), objv, __ccgo_ts+16828)
+		libtcl8_6.XTcl_WrongNumArgs(tls, interp, int32(1), objv, __ccgo_ts+16820)
 		// /tmp/libsqlite3/sqlite-src-3370200/src/test_hexio.c:115:5:
 		return int32(m_TCL_ERROR)
 	}
@@ -106933,16 +106929,16 @@ func _hexio_read(tls *libc.TLS, clientData uintptr, interp uintptr, objc int32, 
 		return int32(m_TCL_ERROR)
 	}
 	// /tmp/libsqlite3/sqlite-src-3370200/src/test_hexio.c:124:3:
-	in = libc.Xfopen(tls, zFile, __ccgo_ts+16848)
+	in = libc.Xfopen(tls, zFile, __ccgo_ts+16840)
 	// /tmp/libsqlite3/sqlite-src-3370200/src/test_hexio.c:125:3:
 	if in == uintptr(0) {
 		// /tmp/libsqlite3/sqlite-src-3370200/src/test_hexio.c:126:5:
-		in = libc.Xfopen(tls, zFile, __ccgo_ts+16851)
+		in = libc.Xfopen(tls, zFile, __ccgo_ts+16843)
 	}
 	// /tmp/libsqlite3/sqlite-src-3370200/src/test_hexio.c:128:3:
 	if in == uintptr(0) {
 		// /tmp/libsqlite3/sqlite-src-3370200/src/test_hexio.c:129:5:
-		libtcl8_6.XTcl_AppendResult(tls, interp, libc.VaList(bp+16, __ccgo_ts+16853, zFile, 0))
+		libtcl8_6.XTcl_AppendResult(tls, interp, libc.VaList(bp+16, __ccgo_ts+16845, zFile, 0))
 		// /tmp/libsqlite3/sqlite-src-3370200/src/test_hexio.c:130:5:
 		return int32(m_TCL_ERROR)
 	}
@@ -106989,7 +106985,7 @@ func _hexio_write(tls *libc.TLS, clientData uintptr, interp uintptr, objc int32,
 	// /tmp/libsqlite3/sqlite-src-3370200/src/test_hexio.c:164:3:
 	if objc != int32(4) {
 		// /tmp/libsqlite3/sqlite-src-3370200/src/test_hexio.c:165:5:
-		libtcl8_6.XTcl_WrongNumArgs(tls, interp, int32(1), objv, __ccgo_ts+16877)
+		libtcl8_6.XTcl_WrongNumArgs(tls, interp, int32(1), objv, __ccgo_ts+16869)
 		// /tmp/libsqlite3/sqlite-src-3370200/src/test_hexio.c:166:5:
 		return int32(m_TCL_ERROR)
 	}
@@ -107012,16 +107008,16 @@ func _hexio_write(tls *libc.TLS, clientData uintptr, interp uintptr, objc int32,
 	// /tmp/libsqlite3/sqlite-src-3370200/src/test_hexio.c:175:3:
 	nOut = x_sqlite3TestHexToBin(tls, zIn, *(*int32)(unsafe.Pointer(bp + 4)), aOut)
 	// /tmp/libsqlite3/sqlite-src-3370200/src/test_hexio.c:176:3:
-	out = libc.Xfopen(tls, zFile, __ccgo_ts+16901)
+	out = libc.Xfopen(tls, zFile, __ccgo_ts+16893)
 	// /tmp/libsqlite3/sqlite-src-3370200/src/test_hexio.c:177:3:
 	if out == uintptr(0) {
 		// /tmp/libsqlite3/sqlite-src-3370200/src/test_hexio.c:178:5:
-		out = libc.Xfopen(tls, zFile, __ccgo_ts+16905)
+		out = libc.Xfopen(tls, zFile, __ccgo_ts+16897)
 	}
 	// /tmp/libsqlite3/sqlite-src-3370200/src/test_hexio.c:180:3:
 	if out == uintptr(0) {
 		// /tmp/libsqlite3/sqlite-src-3370200/src/test_hexio.c:181:5:
-		libtcl8_6.XTcl_AppendResult(tls, interp, libc.VaList(bp+16, __ccgo_ts+16908, zFile, 0))
+		libtcl8_6.XTcl_AppendResult(tls, interp, libc.VaList(bp+16, __ccgo_ts+16900, zFile, 0))
 		// /tmp/libsqlite3/sqlite-src-3370200/src/test_hexio.c:182:5:
 		return int32(m_TCL_ERROR)
 	}
@@ -107062,7 +107058,7 @@ func _hexio_get_int(tls *libc.TLS, clientData uintptr, interp uintptr, objc int3
 	// /tmp/libsqlite3/sqlite-src-3370200/src/test_hexio.c:211:3:
 	if objc != int32(2) {
 		// /tmp/libsqlite3/sqlite-src-3370200/src/test_hexio.c:212:5:
-		libtcl8_6.XTcl_WrongNumArgs(tls, interp, int32(1), objv, __ccgo_ts+16933)
+		libtcl8_6.XTcl_WrongNumArgs(tls, interp, int32(1), objv, __ccgo_ts+16925)
 		// /tmp/libsqlite3/sqlite-src-3370200/src/test_hexio.c:213:5:
 		return int32(m_TCL_ERROR)
 	}
@@ -107195,7 +107191,7 @@ func _utf8_to_utf8(tls *libc.TLS, clientData uintptr, interp uintptr, objc int32
 	defer tls.Free(32)
 	// /tmp/libsqlite3/sqlite-src-3370200/src/test_hexio.c:301:2:
 	// /tmp/libsqlite3/sqlite-src-3370200/src/test_hexio.c:321:3:
-	libtcl8_6.XTcl_AppendResult(tls, interp, libc.VaList(bp+8, __ccgo_ts+16941, 0))
+	libtcl8_6.XTcl_AppendResult(tls, interp, libc.VaList(bp+8, __ccgo_ts+16933, 0))
 	// /tmp/libsqlite3/sqlite-src-3370200/src/test_hexio.c:324:3:
 	return int32(m_TCL_ERROR)
 }
@@ -107280,7 +107276,7 @@ func _read_fts3varint(tls *libc.TLS, clientData uintptr, interp uintptr, objc in
 	// /tmp/libsqlite3/sqlite-src-3370200/src/test_hexio.c:369:3:
 	if objc != int32(3) {
 		// /tmp/libsqlite3/sqlite-src-3370200/src/test_hexio.c:370:5:
-		libtcl8_6.XTcl_WrongNumArgs(tls, interp, int32(1), objv, __ccgo_ts+16995)
+		libtcl8_6.XTcl_WrongNumArgs(tls, interp, int32(1), objv, __ccgo_ts+16987)
 		// /tmp/libsqlite3/sqlite-src-3370200/src/test_hexio.c:371:5:
 		return int32(m_TCL_ERROR)
 	}
@@ -107327,7 +107323,7 @@ func _make_fts3record(tls *libc.TLS, clientData uintptr, interp uintptr, objc in
 	// /tmp/libsqlite3/sqlite-src-3370200/src/test_hexio.c:397:3:
 	if objc != int32(2) {
 		// /tmp/libsqlite3/sqlite-src-3370200/src/test_hexio.c:398:5:
-		libtcl8_6.XTcl_WrongNumArgs(tls, interp, int32(1), objv, __ccgo_ts+17008)
+		libtcl8_6.XTcl_WrongNumArgs(tls, interp, int32(1), objv, __ccgo_ts+17000)
 		// /tmp/libsqlite3/sqlite-src-3370200/src/test_hexio.c:399:5:
 		return int32(m_TCL_ERROR)
 	}
@@ -107447,28 +107443,28 @@ var _aObjCmd7 = [8]struct {
 	FxProc uintptr
 }{
 	0: {
-		FzName: __ccgo_ts + 17013,
+		FzName: __ccgo_ts + 17005,
 	},
 	1: {
-		FzName: __ccgo_ts + 17024,
+		FzName: __ccgo_ts + 17016,
 	},
 	2: {
-		FzName: __ccgo_ts + 17036,
+		FzName: __ccgo_ts + 17028,
 	},
 	3: {
-		FzName: __ccgo_ts + 17050,
+		FzName: __ccgo_ts + 17042,
 	},
 	4: {
-		FzName: __ccgo_ts + 17069,
+		FzName: __ccgo_ts + 17061,
 	},
 	5: {
-		FzName: __ccgo_ts + 17088,
+		FzName: __ccgo_ts + 17080,
 	},
 	6: {
-		FzName: __ccgo_ts + 17101,
+		FzName: __ccgo_ts + 17093,
 	},
 	7: {
-		FzName: __ccgo_ts + 17117,
+		FzName: __ccgo_ts + 17109,
 	},
 }
 
@@ -107905,22 +107901,22 @@ func _init_wrapper_install(tls *libc.TLS, clientData TClientData, interp uintptr
 		// /tmp/libsqlite3/sqlite-src-3370200/src/test_init.c:200:10:
 		z = libtcl8_6.XTcl_GetString(tls, *(*uintptr)(unsafe.Pointer(objv + uintptr(i)*8)))
 		// /tmp/libsqlite3/sqlite-src-3370200/src/test_init.c:201:5:
-		if libc.Xstrcmp(tls, z, __ccgo_ts+17133) == 0 {
+		if libc.Xstrcmp(tls, z, __ccgo_ts+17125) == 0 {
 			// /tmp/libsqlite3/sqlite-src-3370200/src/test_init.c:202:7:
 			_wrapped.Fmem_fail = int32(1)
 		} else {
 			// /tmp/libsqlite3/sqlite-src-3370200/src/test_init.c:203:11:
-			if libc.Xstrcmp(tls, z, __ccgo_ts+13687) == 0 {
+			if libc.Xstrcmp(tls, z, __ccgo_ts+13679) == 0 {
 				// /tmp/libsqlite3/sqlite-src-3370200/src/test_init.c:204:7:
 				_wrapped.Fmutex_fail = int32(1)
 			} else {
 				// /tmp/libsqlite3/sqlite-src-3370200/src/test_init.c:205:11:
-				if libc.Xstrcmp(tls, z, __ccgo_ts+17137) == 0 {
+				if libc.Xstrcmp(tls, z, __ccgo_ts+17129) == 0 {
 					// /tmp/libsqlite3/sqlite-src-3370200/src/test_init.c:206:7:
 					_wrapped.Fpcache_fail = int32(1)
 				} else {
 					// /tmp/libsqlite3/sqlite-src-3370200/src/test_init.c:208:7:
-					libtcl8_6.XTcl_AppendResult(tls, interp, libc.VaList(bp+8, __ccgo_ts+17144, z, __ccgo_ts+10613))
+					libtcl8_6.XTcl_AppendResult(tls, interp, libc.VaList(bp+8, __ccgo_ts+17136, z, __ccgo_ts+10605))
 					// /tmp/libsqlite3/sqlite-src-3370200/src/test_init.c:209:7:
 					return int32(m_TCL_ERROR)
 				}
@@ -107995,17 +107991,17 @@ func _init_wrapper_query(tls *libc.TLS, clientData TClientData, interp uintptr, 
 	// /tmp/libsqlite3/sqlite-src-3370200/src/test_init.c:264:3:
 	if _wrapped.Fmutex_init != 0 {
 		// /tmp/libsqlite3/sqlite-src-3370200/src/test_init.c:265:5:
-		libtcl8_6.XTcl_ListObjAppendElement(tls, interp, pRet, libtcl8_6.XTcl_NewStringObj(tls, __ccgo_ts+13687, -int32(1)))
+		libtcl8_6.XTcl_ListObjAppendElement(tls, interp, pRet, libtcl8_6.XTcl_NewStringObj(tls, __ccgo_ts+13679, -int32(1)))
 	}
 	// /tmp/libsqlite3/sqlite-src-3370200/src/test_init.c:267:3:
 	if _wrapped.Fmem_init != 0 {
 		// /tmp/libsqlite3/sqlite-src-3370200/src/test_init.c:268:5:
-		libtcl8_6.XTcl_ListObjAppendElement(tls, interp, pRet, libtcl8_6.XTcl_NewStringObj(tls, __ccgo_ts+17133, -int32(1)))
+		libtcl8_6.XTcl_ListObjAppendElement(tls, interp, pRet, libtcl8_6.XTcl_NewStringObj(tls, __ccgo_ts+17125, -int32(1)))
 	}
 	// /tmp/libsqlite3/sqlite-src-3370200/src/test_init.c:270:3:
 	if _wrapped.Fpcache_init != 0 {
 		// /tmp/libsqlite3/sqlite-src-3370200/src/test_init.c:271:5:
-		libtcl8_6.XTcl_ListObjAppendElement(tls, interp, pRet, libtcl8_6.XTcl_NewStringObj(tls, __ccgo_ts+17137, -int32(1)))
+		libtcl8_6.XTcl_ListObjAppendElement(tls, interp, pRet, libtcl8_6.XTcl_NewStringObj(tls, __ccgo_ts+17129, -int32(1)))
 	}
 	// /tmp/libsqlite3/sqlite-src-3370200/src/test_init.c:274:3:
 	libtcl8_6.XTcl_SetObjResult(tls, interp, pRet)
@@ -108040,16 +108036,16 @@ var _aObjCmd8 = [4]struct {
 	FxProc uintptr
 }{
 	0: {
-		FzName: __ccgo_ts + 17164,
+		FzName: __ccgo_ts + 17156,
 	},
 	1: {
-		FzName: __ccgo_ts + 17185,
+		FzName: __ccgo_ts + 17177,
 	},
 	2: {
-		FzName: __ccgo_ts + 17204,
+		FzName: __ccgo_ts + 17196,
 	},
 	3: {
-		FzName: __ccgo_ts + 17227,
+		FzName: __ccgo_ts + 17219,
 	},
 }
 
@@ -108190,7 +108186,7 @@ func _intarrayCreate(tls *libc.TLS, db uintptr, pAux uintptr, argc int32, argv u
 		// /tmp/libsqlite3/sqlite-src-3370200/src/test_intarray.c:96:5:
 		(*Tintarray_vtab)(unsafe.Pointer(pVtab)).FpContent = pAux
 		// /tmp/libsqlite3/sqlite-src-3370200/src/test_intarray.c:97:5:
-		rc = x_sqlite3_declare_vtab(tls, db, __ccgo_ts+17246)
+		rc = x_sqlite3_declare_vtab(tls, db, __ccgo_ts+17238)
 	}
 	// /tmp/libsqlite3/sqlite-src-3370200/src/test_intarray.c:99:3:
 	*(*uintptr)(unsafe.Pointer(ppVtab)) = pVtab
@@ -108421,7 +108417,7 @@ func x_sqlite3_intarray_create(tls *libc.TLS, db uintptr, zName uintptr, ppRetur
 	// /tmp/libsqlite3/sqlite-src-3370200/src/test_intarray.c:239:3:
 	if rc == m_SQLITE_OK {
 		// /tmp/libsqlite3/sqlite-src-3370200/src/test_intarray.c:241:5:
-		zSql = x_sqlite3_mprintf(tls, __ccgo_ts+17288, libc.VaList(bp+8, zName, zName))
+		zSql = x_sqlite3_mprintf(tls, __ccgo_ts+17280, libc.VaList(bp+8, zName, zName))
 		// /tmp/libsqlite3/sqlite-src-3370200/src/test_intarray.c:243:5:
 		rc = x_sqlite3_exec(tls, db, zSql, uintptr(0), uintptr(0), uintptr(0))
 		// /tmp/libsqlite3/sqlite-src-3370200/src/test_intarray.c:244:5:
@@ -108581,7 +108577,7 @@ func _test_intarray_bind(tls *libc.TLS, clientData TClientData, interp uintptr, 
 	// /tmp/libsqlite3/sqlite-src-3370200/src/test_intarray.c:346:3:
 	if objc < int32(2) {
 		// /tmp/libsqlite3/sqlite-src-3370200/src/test_intarray.c:347:5:
-		libtcl8_6.XTcl_WrongNumArgs(tls, interp, int32(1), objv, __ccgo_ts+17326)
+		libtcl8_6.XTcl_WrongNumArgs(tls, interp, int32(1), objv, __ccgo_ts+17318)
 		// /tmp/libsqlite3/sqlite-src-3370200/src/test_intarray.c:348:5:
 		return int32(m_TCL_ERROR)
 	}
@@ -108594,7 +108590,7 @@ func _test_intarray_bind(tls *libc.TLS, clientData TClientData, interp uintptr, 
 	// /tmp/libsqlite3/sqlite-src-3370200/src/test_intarray.c:354:3:
 	if a == uintptr(0) {
 		// /tmp/libsqlite3/sqlite-src-3370200/src/test_intarray.c:355:5:
-		libtcl8_6.XTcl_AppendResult(tls, interp, libc.VaList(bp+16, __ccgo_ts+17335, libc.UintptrFromInt32(0)))
+		libtcl8_6.XTcl_AppendResult(tls, interp, libc.VaList(bp+16, __ccgo_ts+17327, libc.UintptrFromInt32(0)))
 		// /tmp/libsqlite3/sqlite-src-3370200/src/test_intarray.c:356:5:
 		return int32(m_TCL_ERROR)
 	}
@@ -108661,10 +108657,10 @@ var _aObjCmd9 = [2]struct {
 	FclientData uintptr
 }{
 	0: {
-		FzName: __ccgo_ts + 17348,
+		FzName: __ccgo_ts + 17340,
 	},
 	1: {
-		FzName: __ccgo_ts + 17372,
+		FzName: __ccgo_ts + 17364,
 	},
 }
 
@@ -108781,7 +108777,7 @@ var _jt_vfs = Tsqlite3_vfs{
 	FiVersion:   int32(2),
 	FszOsFile:   int32(80),
 	FmxPathname: int32(m_JT_MAX_PATHNAME),
-	FzName:      __ccgo_ts + 17394,
+	FzName:      __ccgo_ts + 17386,
 }
 
 func init() {
@@ -108994,7 +108990,7 @@ func _locateDatabaseHandle(tls *libc.TLS, zJournal uintptr, noLock int32) (r uin
 			break
 		}
 		// /tmp/libsqlite3/sqlite-src-3370200/src/test_journal.c:296:9:
-		nName = int32(libc.Xstrlen(tls, zJournal) - libc.Xstrlen(tls, __ccgo_ts+17397))
+		nName = int32(libc.Xstrlen(tls, zJournal) - libc.Xstrlen(tls, __ccgo_ts+17389))
 		// /tmp/libsqlite3/sqlite-src-3370200/src/test_journal.c:297:5:
 		if (*Tjt_file)(unsafe.Pointer(pMain)).Fflags&int32(m_SQLITE_OPEN_MAIN_DB) != 0 && int32(libc.Xstrlen(tls, (*Tjt_file)(unsafe.Pointer(pMain)).FzName)) == nName && 0 == libc.Xmemcmp(tls, (*Tjt_file)(unsafe.Pointer(pMain)).FzName, zJournal, uint64(uint64(nName))) && ((*Tjt_file)(unsafe.Pointer(pMain)).FeLock >= int32(m_SQLITE_LOCK_RESERVED) || noLock != 0) {
 			// /tmp/libsqlite3/sqlite-src-3370200/src/test_journal.c:302:7:
@@ -109759,7 +109755,7 @@ func _jtDelete(tls *libc.TLS, pVfs uintptr, zPath uintptr, dirSync int32) (r int
 	// /tmp/libsqlite3/sqlite-src-3370200/src/test_journal.c:734:7:
 	nPath = int32(libc.Xstrlen(tls, zPath))
 	// /tmp/libsqlite3/sqlite-src-3370200/src/test_journal.c:735:3:
-	if nPath > int32(8) && 0 == libc.Xstrcmp(tls, __ccgo_ts+17397, zPath+uintptr(nPath-int32(8))) {
+	if nPath > int32(8) && 0 == libc.Xstrcmp(tls, __ccgo_ts+17389, zPath+uintptr(nPath-int32(8))) {
 		/* Deleting a journal file. The end of a transaction. */
 		// /tmp/libsqlite3/sqlite-src-3370200/src/test_journal.c:737:13:
 		pMain = _locateDatabaseHandle(tls, zPath, 0)
@@ -110683,7 +110679,7 @@ func _test_malloc(tls *libc.TLS, clientData uintptr, interp uintptr, objc int32,
 	// /tmp/libsqlite3/sqlite-src-3370200/src/test_malloc.c:307:3:
 	if objc != int32(2) {
 		// /tmp/libsqlite3/sqlite-src-3370200/src/test_malloc.c:308:5:
-		libtcl8_6.XTcl_WrongNumArgs(tls, interp, int32(1), objv, __ccgo_ts+17406)
+		libtcl8_6.XTcl_WrongNumArgs(tls, interp, int32(1), objv, __ccgo_ts+17398)
 		// /tmp/libsqlite3/sqlite-src-3370200/src/test_malloc.c:309:5:
 		return int32(m_TCL_ERROR)
 	}
@@ -110723,7 +110719,7 @@ func _test_realloc(tls *libc.TLS, clientData uintptr, interp uintptr, objc int32
 	// /tmp/libsqlite3/sqlite-src-3370200/src/test_malloc.c:332:3:
 	if objc != int32(3) {
 		// /tmp/libsqlite3/sqlite-src-3370200/src/test_malloc.c:333:5:
-		libtcl8_6.XTcl_WrongNumArgs(tls, interp, int32(1), objv, __ccgo_ts+17413)
+		libtcl8_6.XTcl_WrongNumArgs(tls, interp, int32(1), objv, __ccgo_ts+17405)
 		// /tmp/libsqlite3/sqlite-src-3370200/src/test_malloc.c:334:5:
 		return int32(m_TCL_ERROR)
 	}
@@ -110735,7 +110731,7 @@ func _test_realloc(tls *libc.TLS, clientData uintptr, interp uintptr, objc int32
 	// /tmp/libsqlite3/sqlite-src-3370200/src/test_malloc.c:337:3:
 	if _textToPointer(tls, libtcl8_6.XTcl_GetString(tls, *(*uintptr)(unsafe.Pointer(objv + 1*8))), bp+8) != 0 {
 		// /tmp/libsqlite3/sqlite-src-3370200/src/test_malloc.c:338:5:
-		libtcl8_6.XTcl_AppendResult(tls, interp, libc.VaList(bp+128, __ccgo_ts+17426, libtcl8_6.XTcl_GetString(tls, *(*uintptr)(unsafe.Pointer(objv + 1*8))), libc.UintptrFromInt32(0)))
+		libtcl8_6.XTcl_AppendResult(tls, interp, libc.VaList(bp+128, __ccgo_ts+17418, libtcl8_6.XTcl_GetString(tls, *(*uintptr)(unsafe.Pointer(objv + 1*8))), libc.UintptrFromInt32(0)))
 		// /tmp/libsqlite3/sqlite-src-3370200/src/test_malloc.c:339:5:
 		return int32(m_TCL_ERROR)
 	}
@@ -110766,14 +110762,14 @@ func _test_free(tls *libc.TLS, clientData uintptr, interp uintptr, objc int32, o
 	// /tmp/libsqlite3/sqlite-src-3370200/src/test_malloc.c:359:3:
 	if objc != int32(2) {
 		// /tmp/libsqlite3/sqlite-src-3370200/src/test_malloc.c:360:5:
-		libtcl8_6.XTcl_WrongNumArgs(tls, interp, int32(1), objv, __ccgo_ts+17440)
+		libtcl8_6.XTcl_WrongNumArgs(tls, interp, int32(1), objv, __ccgo_ts+17432)
 		// /tmp/libsqlite3/sqlite-src-3370200/src/test_malloc.c:361:5:
 		return int32(m_TCL_ERROR)
 	}
 	// /tmp/libsqlite3/sqlite-src-3370200/src/test_malloc.c:363:3:
 	if _textToPointer(tls, libtcl8_6.XTcl_GetString(tls, *(*uintptr)(unsafe.Pointer(objv + 1*8))), bp) != 0 {
 		// /tmp/libsqlite3/sqlite-src-3370200/src/test_malloc.c:364:5:
-		libtcl8_6.XTcl_AppendResult(tls, interp, libc.VaList(bp+16, __ccgo_ts+17426, libtcl8_6.XTcl_GetString(tls, *(*uintptr)(unsafe.Pointer(objv + 1*8))), libc.UintptrFromInt32(0)))
+		libtcl8_6.XTcl_AppendResult(tls, interp, libc.VaList(bp+16, __ccgo_ts+17418, libtcl8_6.XTcl_GetString(tls, *(*uintptr)(unsafe.Pointer(objv + 1*8))), libc.UintptrFromInt32(0)))
 		// /tmp/libsqlite3/sqlite-src-3370200/src/test_malloc.c:365:5:
 		return int32(m_TCL_ERROR)
 	}
@@ -110807,14 +110803,14 @@ func _test_memset(tls *libc.TLS, clientData uintptr, interp uintptr, objc int32,
 	// /tmp/libsqlite3/sqlite-src-3370200/src/test_malloc.c:395:3:
 	if objc != int32(4) {
 		// /tmp/libsqlite3/sqlite-src-3370200/src/test_malloc.c:396:5:
-		libtcl8_6.XTcl_WrongNumArgs(tls, interp, int32(1), objv, __ccgo_ts+17446)
+		libtcl8_6.XTcl_WrongNumArgs(tls, interp, int32(1), objv, __ccgo_ts+17438)
 		// /tmp/libsqlite3/sqlite-src-3370200/src/test_malloc.c:397:5:
 		return int32(m_TCL_ERROR)
 	}
 	// /tmp/libsqlite3/sqlite-src-3370200/src/test_malloc.c:399:3:
 	if _textToPointer(tls, libtcl8_6.XTcl_GetString(tls, *(*uintptr)(unsafe.Pointer(objv + 1*8))), bp) != 0 {
 		// /tmp/libsqlite3/sqlite-src-3370200/src/test_malloc.c:400:5:
-		libtcl8_6.XTcl_AppendResult(tls, interp, libc.VaList(bp+128, __ccgo_ts+17426, libtcl8_6.XTcl_GetString(tls, *(*uintptr)(unsafe.Pointer(objv + 1*8))), libc.UintptrFromInt32(0)))
+		libtcl8_6.XTcl_AppendResult(tls, interp, libc.VaList(bp+128, __ccgo_ts+17418, libtcl8_6.XTcl_GetString(tls, *(*uintptr)(unsafe.Pointer(objv + 1*8))), libc.UintptrFromInt32(0)))
 		// /tmp/libsqlite3/sqlite-src-3370200/src/test_malloc.c:401:5:
 		return int32(m_TCL_ERROR)
 	}
@@ -110826,7 +110822,7 @@ func _test_memset(tls *libc.TLS, clientData uintptr, interp uintptr, objc int32,
 	// /tmp/libsqlite3/sqlite-src-3370200/src/test_malloc.c:406:3:
 	if *(*int32)(unsafe.Pointer(bp + 8)) <= 0 {
 		// /tmp/libsqlite3/sqlite-src-3370200/src/test_malloc.c:407:5:
-		libtcl8_6.XTcl_AppendResult(tls, interp, libc.VaList(bp+128, __ccgo_ts+17463, libc.UintptrFromInt32(0)))
+		libtcl8_6.XTcl_AppendResult(tls, interp, libc.VaList(bp+128, __ccgo_ts+17455, libc.UintptrFromInt32(0)))
 		// /tmp/libsqlite3/sqlite-src-3370200/src/test_malloc.c:408:5:
 		return int32(m_TCL_ERROR)
 	}
@@ -110842,7 +110838,7 @@ func _test_memset(tls *libc.TLS, clientData uintptr, interp uintptr, objc int32,
 	// /tmp/libsqlite3/sqlite-src-3370200/src/test_malloc.c:413:3:
 	if *(*int32)(unsafe.Pointer(bp + 12)) == 0 {
 		// /tmp/libsqlite3/sqlite-src-3370200/src/test_malloc.c:414:5:
-		libtcl8_6.XTcl_AppendResult(tls, interp, libc.VaList(bp+128, __ccgo_ts+17485, libc.UintptrFromInt32(0)))
+		libtcl8_6.XTcl_AppendResult(tls, interp, libc.VaList(bp+128, __ccgo_ts+17477, libc.UintptrFromInt32(0)))
 		// /tmp/libsqlite3/sqlite-src-3370200/src/test_malloc.c:415:5:
 		return int32(m_TCL_ERROR)
 	}
@@ -110886,14 +110882,14 @@ func _test_memget(tls *libc.TLS, clientData uintptr, interp uintptr, objc int32,
 	// /tmp/libsqlite3/sqlite-src-3370200/src/test_malloc.c:440:3:
 	if objc != int32(3) {
 		// /tmp/libsqlite3/sqlite-src-3370200/src/test_malloc.c:441:5:
-		libtcl8_6.XTcl_WrongNumArgs(tls, interp, int32(1), objv, __ccgo_ts+17493)
+		libtcl8_6.XTcl_WrongNumArgs(tls, interp, int32(1), objv, __ccgo_ts+17485)
 		// /tmp/libsqlite3/sqlite-src-3370200/src/test_malloc.c:442:5:
 		return int32(m_TCL_ERROR)
 	}
 	// /tmp/libsqlite3/sqlite-src-3370200/src/test_malloc.c:444:3:
 	if _textToPointer(tls, libtcl8_6.XTcl_GetString(tls, *(*uintptr)(unsafe.Pointer(objv + 1*8))), bp) != 0 {
 		// /tmp/libsqlite3/sqlite-src-3370200/src/test_malloc.c:445:5:
-		libtcl8_6.XTcl_AppendResult(tls, interp, libc.VaList(bp+120, __ccgo_ts+17426, libtcl8_6.XTcl_GetString(tls, *(*uintptr)(unsafe.Pointer(objv + 1*8))), libc.UintptrFromInt32(0)))
+		libtcl8_6.XTcl_AppendResult(tls, interp, libc.VaList(bp+120, __ccgo_ts+17418, libtcl8_6.XTcl_GetString(tls, *(*uintptr)(unsafe.Pointer(objv + 1*8))), libc.UintptrFromInt32(0)))
 		// /tmp/libsqlite3/sqlite-src-3370200/src/test_malloc.c:446:5:
 		return int32(m_TCL_ERROR)
 	}
@@ -110905,7 +110901,7 @@ func _test_memget(tls *libc.TLS, clientData uintptr, interp uintptr, objc int32,
 	// /tmp/libsqlite3/sqlite-src-3370200/src/test_malloc.c:451:3:
 	if *(*int32)(unsafe.Pointer(bp + 8)) <= 0 {
 		// /tmp/libsqlite3/sqlite-src-3370200/src/test_malloc.c:452:5:
-		libtcl8_6.XTcl_AppendResult(tls, interp, libc.VaList(bp+120, __ccgo_ts+17463, libc.UintptrFromInt32(0)))
+		libtcl8_6.XTcl_AppendResult(tls, interp, libc.VaList(bp+120, __ccgo_ts+17455, libc.UintptrFromInt32(0)))
 		// /tmp/libsqlite3/sqlite-src-3370200/src/test_malloc.c:453:5:
 		return int32(m_TCL_ERROR)
 	}
@@ -110972,7 +110968,7 @@ func _test_memory_highwater(tls *libc.TLS, clientData uintptr, interp uintptr, o
 	// /tmp/libsqlite3/sqlite-src-3370200/src/test_malloc.c:498:3:
 	if objc != int32(1) && objc != int32(2) {
 		// /tmp/libsqlite3/sqlite-src-3370200/src/test_malloc.c:499:5:
-		libtcl8_6.XTcl_WrongNumArgs(tls, interp, int32(1), objv, __ccgo_ts+17506)
+		libtcl8_6.XTcl_WrongNumArgs(tls, interp, int32(1), objv, __ccgo_ts+17498)
 		// /tmp/libsqlite3/sqlite-src-3370200/src/test_malloc.c:500:5:
 		return int32(m_TCL_ERROR)
 	}
@@ -111008,7 +111004,7 @@ func _test_memdebug_backtrace(tls *libc.TLS, clientData uintptr, interp uintptr,
 	// /tmp/libsqlite3/sqlite-src-3370200/src/test_malloc.c:523:3:
 	if objc != int32(2) {
 		// /tmp/libsqlite3/sqlite-src-3370200/src/test_malloc.c:524:5:
-		libtcl8_6.XTcl_WrongNumArgs(tls, interp, int32(1), objv, __ccgo_ts+17514)
+		libtcl8_6.XTcl_WrongNumArgs(tls, interp, int32(1), objv, __ccgo_ts+17506)
 		// /tmp/libsqlite3/sqlite-src-3370200/src/test_malloc.c:525:5:
 		return int32(m_TCL_ERROR)
 	}
@@ -111112,7 +111108,7 @@ func _test_memdebug_fail(tls *libc.TLS, clientData uintptr, interp uintptr, objc
 	// /tmp/libsqlite3/sqlite-src-3370200/src/test_malloc.c:620:3:
 	if objc < int32(2) {
 		// /tmp/libsqlite3/sqlite-src-3370200/src/test_malloc.c:621:5:
-		libtcl8_6.XTcl_WrongNumArgs(tls, interp, int32(1), objv, __ccgo_ts+17519)
+		libtcl8_6.XTcl_WrongNumArgs(tls, interp, int32(1), objv, __ccgo_ts+17511)
 		// /tmp/libsqlite3/sqlite-src-3370200/src/test_malloc.c:622:5:
 		return int32(m_TCL_ERROR)
 	}
@@ -111132,11 +111128,11 @@ func _test_memdebug_fail(tls *libc.TLS, clientData uintptr, interp uintptr, objc
 		// /tmp/libsqlite3/sqlite-src-3370200/src/test_malloc.c:629:10:
 		zErr = uintptr(0)
 		// /tmp/libsqlite3/sqlite-src-3370200/src/test_malloc.c:631:5:
-		if *(*int32)(unsafe.Pointer(bp + 8)) > int32(1) && libc.Xstrncmp(tls, zOption, __ccgo_ts+17537, uint64(*(*int32)(unsafe.Pointer(bp + 8)))) == 0 {
+		if *(*int32)(unsafe.Pointer(bp + 8)) > int32(1) && libc.Xstrncmp(tls, zOption, __ccgo_ts+17529, uint64(*(*int32)(unsafe.Pointer(bp + 8)))) == 0 {
 			// /tmp/libsqlite3/sqlite-src-3370200/src/test_malloc.c:632:7:
 			if ii == objc-int32(1) {
 				// /tmp/libsqlite3/sqlite-src-3370200/src/test_malloc.c:633:9:
-				zErr = __ccgo_ts + 17545
+				zErr = __ccgo_ts + 17537
 			} else {
 				// /tmp/libsqlite3/sqlite-src-3370200/src/test_malloc.c:635:9:
 				if libtcl8_6.XTcl_GetIntFromObj(tls, interp, *(*uintptr)(unsafe.Pointer(objv + uintptr(ii+int32(1))*8)), bp+4) != 0 {
@@ -111146,11 +111142,11 @@ func _test_memdebug_fail(tls *libc.TLS, clientData uintptr, interp uintptr, objc
 			}
 		} else {
 			// /tmp/libsqlite3/sqlite-src-3370200/src/test_malloc.c:639:11:
-			if *(*int32)(unsafe.Pointer(bp + 8)) > int32(1) && libc.Xstrncmp(tls, zOption, __ccgo_ts+17575, uint64(*(*int32)(unsafe.Pointer(bp + 8)))) == 0 {
+			if *(*int32)(unsafe.Pointer(bp + 8)) > int32(1) && libc.Xstrncmp(tls, zOption, __ccgo_ts+17567, uint64(*(*int32)(unsafe.Pointer(bp + 8)))) == 0 {
 				// /tmp/libsqlite3/sqlite-src-3370200/src/test_malloc.c:640:7:
 				if ii == objc-int32(1) {
 					// /tmp/libsqlite3/sqlite-src-3370200/src/test_malloc.c:641:9:
-					zErr = __ccgo_ts + 17545
+					zErr = __ccgo_ts + 17537
 				} else {
 					// /tmp/libsqlite3/sqlite-src-3370200/src/test_malloc.c:643:9:
 					pBenignCnt = *(*uintptr)(unsafe.Pointer(objv + uintptr(ii+int32(1))*8))
@@ -111252,7 +111248,7 @@ func _test_memdebug_settitle(tls *libc.TLS, clientData uintptr, interp uintptr, 
 	// /tmp/libsqlite3/sqlite-src-3370200/src/test_malloc.c:713:3:
 	if objc != int32(2) {
 		// /tmp/libsqlite3/sqlite-src-3370200/src/test_malloc.c:714:5:
-		libtcl8_6.XTcl_WrongNumArgs(tls, interp, int32(1), objv, __ccgo_ts+17586)
+		libtcl8_6.XTcl_WrongNumArgs(tls, interp, int32(1), objv, __ccgo_ts+17578)
 		// /tmp/libsqlite3/sqlite-src-3370200/src/test_malloc.c:715:5:
 		return int32(m_TCL_ERROR)
 	}
@@ -111336,10 +111332,10 @@ func _test_memdebug_log(tls *libc.TLS, clientData uintptr, interp uintptr, objc 
 	// /tmp/libsqlite3/sqlite-src-3370200/src/test_malloc.c:811:3:
 	if objc < int32(2) {
 		// /tmp/libsqlite3/sqlite-src-3370200/src/test_malloc.c:812:5:
-		libtcl8_6.XTcl_WrongNumArgs(tls, interp, int32(1), objv, __ccgo_ts+17619)
+		libtcl8_6.XTcl_WrongNumArgs(tls, interp, int32(1), objv, __ccgo_ts+17611)
 	}
 	// /tmp/libsqlite3/sqlite-src-3370200/src/test_malloc.c:814:3:
-	if libtcl8_6.XTcl_GetIndexFromObjStruct(tls, interp, *(*uintptr)(unsafe.Pointer(objv + 1*8)), uintptr(unsafe.Pointer(&_MB_strs)), int32(8), __ccgo_ts+17635, 0, bp) != 0 {
+	if libtcl8_6.XTcl_GetIndexFromObjStruct(tls, interp, *(*uintptr)(unsafe.Pointer(objv + 1*8)), uintptr(unsafe.Pointer(&_MB_strs)), int32(8), __ccgo_ts+17627, 0, bp) != 0 {
 		// /tmp/libsqlite3/sqlite-src-3370200/src/test_malloc.c:815:5:
 		return int32(m_TCL_ERROR)
 	}
@@ -111427,11 +111423,11 @@ var _isInit int32
 
 // /tmp/libsqlite3/sqlite-src-3370200/src/test_malloc.c:796:21:
 var _MB_strs = [5]uintptr{
-	0: __ccgo_ts + 17592,
-	1: __ccgo_ts + 17598,
-	2: __ccgo_ts + 17603,
-	3: __ccgo_ts + 17608,
-	4: __ccgo_ts + 17614,
+	0: __ccgo_ts + 17584,
+	1: __ccgo_ts + 17590,
+	2: __ccgo_ts + 17595,
+	3: __ccgo_ts + 17600,
+	4: __ccgo_ts + 17606,
 }
 
 // C documentation
@@ -111459,7 +111455,7 @@ func _test_config_pagecache(tls *libc.TLS, clientData uintptr, interp uintptr, o
 	// /tmp/libsqlite3/sqlite-src-3370200/src/test_malloc.c:894:3:
 	if objc != int32(3) {
 		// /tmp/libsqlite3/sqlite-src-3370200/src/test_malloc.c:895:5:
-		libtcl8_6.XTcl_WrongNumArgs(tls, interp, int32(1), objv, __ccgo_ts+17647)
+		libtcl8_6.XTcl_WrongNumArgs(tls, interp, int32(1), objv, __ccgo_ts+17639)
 		// /tmp/libsqlite3/sqlite-src-3370200/src/test_malloc.c:896:5:
 		return int32(m_TCL_ERROR)
 	}
@@ -111534,7 +111530,7 @@ func _test_alt_pcache(tls *libc.TLS, clientData uintptr, interp uintptr, objc in
 	// /tmp/libsqlite3/sqlite-src-3370200/src/test_malloc.c:939:3:
 	if objc < int32(2) || objc > int32(5) {
 		// /tmp/libsqlite3/sqlite-src-3370200/src/test_malloc.c:940:5:
-		libtcl8_6.XTcl_WrongNumArgs(tls, interp, int32(1), objv, __ccgo_ts+17654)
+		libtcl8_6.XTcl_WrongNumArgs(tls, interp, int32(1), objv, __ccgo_ts+17646)
 		// /tmp/libsqlite3/sqlite-src-3370200/src/test_malloc.c:942:5:
 		return int32(m_TCL_ERROR)
 	}
@@ -111561,7 +111557,7 @@ func _test_alt_pcache(tls *libc.TLS, clientData uintptr, interp uintptr, objc in
 	// /tmp/libsqlite3/sqlite-src-3370200/src/test_malloc.c:954:3:
 	if *(*int32)(unsafe.Pointer(bp + 4)) < 0 || *(*int32)(unsafe.Pointer(bp + 4)) > int32(100) {
 		// /tmp/libsqlite3/sqlite-src-3370200/src/test_malloc.c:955:5:
-		libtcl8_6.XTcl_AppendResult(tls, interp, libc.VaList(bp+24, __ccgo_ts+17701, libc.UintptrFromInt32(0)))
+		libtcl8_6.XTcl_AppendResult(tls, interp, libc.VaList(bp+24, __ccgo_ts+17693, libc.UintptrFromInt32(0)))
 		// /tmp/libsqlite3/sqlite-src-3370200/src/test_malloc.c:957:5:
 		return int32(m_TCL_ERROR)
 	}
@@ -111626,7 +111622,7 @@ func _test_config_lookaside(tls *libc.TLS, clientData uintptr, interp uintptr, o
 	// /tmp/libsqlite3/sqlite-src-3370200/src/test_malloc.c:998:3:
 	if objc != int32(3) {
 		// /tmp/libsqlite3/sqlite-src-3370200/src/test_malloc.c:999:5:
-		libtcl8_6.XTcl_WrongNumArgs(tls, interp, int32(1), objv, __ccgo_ts+17744)
+		libtcl8_6.XTcl_WrongNumArgs(tls, interp, int32(1), objv, __ccgo_ts+17736)
 		// /tmp/libsqlite3/sqlite-src-3370200/src/test_malloc.c:1000:5:
 		return int32(m_TCL_ERROR)
 	}
@@ -111678,7 +111674,7 @@ func _test_db_config_lookaside(tls *libc.TLS, clientData uintptr, interp uintptr
 	// /tmp/libsqlite3/sqlite-src-3370200/src/test_malloc.c:1036:3:
 	if objc != int32(5) {
 		// /tmp/libsqlite3/sqlite-src-3370200/src/test_malloc.c:1037:5:
-		libtcl8_6.XTcl_WrongNumArgs(tls, interp, int32(1), objv, __ccgo_ts+17755)
+		libtcl8_6.XTcl_WrongNumArgs(tls, interp, int32(1), objv, __ccgo_ts+17747)
 		// /tmp/libsqlite3/sqlite-src-3370200/src/test_malloc.c:1038:5:
 		return int32(m_TCL_ERROR)
 	}
@@ -111713,7 +111709,7 @@ func _test_db_config_lookaside(tls *libc.TLS, clientData uintptr, interp uintptr
 			rc = x_sqlite3_db_config(tls, *(*uintptr)(unsafe.Pointer(bp + 8)), int32(m_SQLITE_DBCONFIG_LOOKASIDE), libc.VaList(bp+32, uintptr(unsafe.Pointer(&_azBuf))+uintptr(*(*int32)(unsafe.Pointer(bp + 16)))*10000, *(*int32)(unsafe.Pointer(bp)), *(*int32)(unsafe.Pointer(bp + 4))))
 		} else {
 			// /tmp/libsqlite3/sqlite-src-3370200/src/test_malloc.c:1049:5:
-			libtcl8_6.XTcl_AppendResult(tls, interp, libc.VaList(bp+32, __ccgo_ts+17772, libc.UintptrFromInt32(0)))
+			libtcl8_6.XTcl_AppendResult(tls, interp, libc.VaList(bp+32, __ccgo_ts+17764, libc.UintptrFromInt32(0)))
 			// /tmp/libsqlite3/sqlite-src-3370200/src/test_malloc.c:1050:5:
 			return int32(m_TCL_ERROR)
 		}
@@ -111750,7 +111746,7 @@ func _test_config_heap(tls *libc.TLS, clientData uintptr, interp uintptr, objc i
 	// /tmp/libsqlite3/sqlite-src-3370200/src/test_malloc.c:1073:3:
 	if nArg != int32(2) {
 		// /tmp/libsqlite3/sqlite-src-3370200/src/test_malloc.c:1074:5:
-		libtcl8_6.XTcl_WrongNumArgs(tls, interp, int32(1), objv, __ccgo_ts+17810)
+		libtcl8_6.XTcl_WrongNumArgs(tls, interp, int32(1), objv, __ccgo_ts+17802)
 		// /tmp/libsqlite3/sqlite-src-3370200/src/test_malloc.c:1075:5:
 		return int32(m_TCL_ERROR)
 	}
@@ -111844,7 +111840,7 @@ func _test_config_error(tls *libc.TLS, clientData uintptr, interp uintptr, objc 
 	// /tmp/libsqlite3/sqlite-src-3370200/src/test_malloc.c:1135:3:
 	if objc != int32(2) && objc != int32(1) {
 		// /tmp/libsqlite3/sqlite-src-3370200/src/test_malloc.c:1136:5:
-		libtcl8_6.XTcl_WrongNumArgs(tls, interp, int32(1), objv, __ccgo_ts+17826)
+		libtcl8_6.XTcl_WrongNumArgs(tls, interp, int32(1), objv, __ccgo_ts+17818)
 		// /tmp/libsqlite3/sqlite-src-3370200/src/test_malloc.c:1137:5:
 		return int32(m_TCL_ERROR)
 	}
@@ -111858,7 +111854,7 @@ func _test_config_error(tls *libc.TLS, clientData uintptr, interp uintptr, objc 
 		// /tmp/libsqlite3/sqlite-src-3370200/src/test_malloc.c:1141:5:
 		if x_sqlite3_db_config(tls, *(*uintptr)(unsafe.Pointer(bp)), int32(99999), 0) != int32(m_SQLITE_ERROR) {
 			// /tmp/libsqlite3/sqlite-src-3370200/src/test_malloc.c:1142:7:
-			libtcl8_6.XTcl_AppendResult(tls, interp, libc.VaList(bp+16, __ccgo_ts+17831, libc.UintptrFromInt32(0)))
+			libtcl8_6.XTcl_AppendResult(tls, interp, libc.VaList(bp+16, __ccgo_ts+17823, libc.UintptrFromInt32(0)))
 			// /tmp/libsqlite3/sqlite-src-3370200/src/test_malloc.c:1145:7:
 			return int32(m_TCL_ERROR)
 		}
@@ -111866,7 +111862,7 @@ func _test_config_error(tls *libc.TLS, clientData uintptr, interp uintptr, objc 
 		// /tmp/libsqlite3/sqlite-src-3370200/src/test_malloc.c:1148:5:
 		if x_sqlite3_config(tls, int32(99999), 0) != int32(m_SQLITE_ERROR) {
 			// /tmp/libsqlite3/sqlite-src-3370200/src/test_malloc.c:1149:7:
-			libtcl8_6.XTcl_AppendResult(tls, interp, libc.VaList(bp+16, __ccgo_ts+17889, libc.UintptrFromInt32(0)))
+			libtcl8_6.XTcl_AppendResult(tls, interp, libc.VaList(bp+16, __ccgo_ts+17881, libc.UintptrFromInt32(0)))
 			// /tmp/libsqlite3/sqlite-src-3370200/src/test_malloc.c:1152:7:
 			return int32(m_TCL_ERROR)
 		}
@@ -111895,7 +111891,7 @@ func _test_config_uri(tls *libc.TLS, clientData uintptr, interp uintptr, objc in
 	// /tmp/libsqlite3/sqlite-src-3370200/src/test_malloc.c:1173:3:
 	if objc != int32(2) {
 		// /tmp/libsqlite3/sqlite-src-3370200/src/test_malloc.c:1174:5:
-		libtcl8_6.XTcl_WrongNumArgs(tls, interp, int32(1), objv, __ccgo_ts+4372)
+		libtcl8_6.XTcl_WrongNumArgs(tls, interp, int32(1), objv, __ccgo_ts+4364)
 		// /tmp/libsqlite3/sqlite-src-3370200/src/test_malloc.c:1175:5:
 		return int32(m_TCL_ERROR)
 	}
@@ -111932,7 +111928,7 @@ func _test_config_cis(tls *libc.TLS, clientData uintptr, interp uintptr, objc in
 	// /tmp/libsqlite3/sqlite-src-3370200/src/test_malloc.c:1202:3:
 	if objc != int32(2) {
 		// /tmp/libsqlite3/sqlite-src-3370200/src/test_malloc.c:1203:5:
-		libtcl8_6.XTcl_WrongNumArgs(tls, interp, int32(1), objv, __ccgo_ts+4372)
+		libtcl8_6.XTcl_WrongNumArgs(tls, interp, int32(1), objv, __ccgo_ts+4364)
 		// /tmp/libsqlite3/sqlite-src-3370200/src/test_malloc.c:1204:5:
 		return int32(m_TCL_ERROR)
 	}
@@ -111968,7 +111964,7 @@ func _test_config_pmasz(tls *libc.TLS, clientData uintptr, interp uintptr, objc 
 	// /tmp/libsqlite3/sqlite-src-3370200/src/test_malloc.c:1230:3:
 	if objc != int32(2) {
 		// /tmp/libsqlite3/sqlite-src-3370200/src/test_malloc.c:1231:5:
-		libtcl8_6.XTcl_WrongNumArgs(tls, interp, int32(1), objv, __ccgo_ts+4372)
+		libtcl8_6.XTcl_WrongNumArgs(tls, interp, int32(1), objv, __ccgo_ts+4364)
 		// /tmp/libsqlite3/sqlite-src-3370200/src/test_malloc.c:1232:5:
 		return int32(m_TCL_ERROR)
 	}
@@ -112042,7 +112038,7 @@ func _test_status(tls *libc.TLS, clientData uintptr, interp uintptr, objc int32,
 	// /tmp/libsqlite3/sqlite-src-3370200/src/test_malloc.c:1312:3:
 	if objc != int32(3) {
 		// /tmp/libsqlite3/sqlite-src-3370200/src/test_malloc.c:1313:5:
-		libtcl8_6.XTcl_WrongNumArgs(tls, interp, int32(1), objv, __ccgo_ts+18222)
+		libtcl8_6.XTcl_WrongNumArgs(tls, interp, int32(1), objv, __ccgo_ts+18214)
 		// /tmp/libsqlite3/sqlite-src-3370200/src/test_malloc.c:1314:5:
 		return int32(m_TCL_ERROR)
 	}
@@ -112104,42 +112100,42 @@ var _aOp1 = [10]struct {
 	Fop    int32
 }{
 	0: {
-		FzName: __ccgo_ts + 17940,
+		FzName: __ccgo_ts + 17932,
 	},
 	1: {
-		FzName: __ccgo_ts + 17966,
+		FzName: __ccgo_ts + 17958,
 		Fop:    int32(m_SQLITE_STATUS_MALLOC_SIZE),
 	},
 	2: {
-		FzName: __ccgo_ts + 17992,
+		FzName: __ccgo_ts + 17984,
 		Fop:    int32(m_SQLITE_STATUS_PAGECACHE_USED),
 	},
 	3: {
-		FzName: __ccgo_ts + 18021,
+		FzName: __ccgo_ts + 18013,
 		Fop:    int32(m_SQLITE_STATUS_PAGECACHE_OVERFLOW),
 	},
 	4: {
-		FzName: __ccgo_ts + 18054,
+		FzName: __ccgo_ts + 18046,
 		Fop:    int32(m_SQLITE_STATUS_PAGECACHE_SIZE),
 	},
 	5: {
-		FzName: __ccgo_ts + 18083,
+		FzName: __ccgo_ts + 18075,
 		Fop:    int32(m_SQLITE_STATUS_SCRATCH_USED),
 	},
 	6: {
-		FzName: __ccgo_ts + 18110,
+		FzName: __ccgo_ts + 18102,
 		Fop:    int32(m_SQLITE_STATUS_SCRATCH_OVERFLOW),
 	},
 	7: {
-		FzName: __ccgo_ts + 18141,
+		FzName: __ccgo_ts + 18133,
 		Fop:    int32(m_SQLITE_STATUS_SCRATCH_SIZE),
 	},
 	8: {
-		FzName: __ccgo_ts + 18168,
+		FzName: __ccgo_ts + 18160,
 		Fop:    int32(m_SQLITE_STATUS_PARSER_STACK),
 	},
 	9: {
-		FzName: __ccgo_ts + 18195,
+		FzName: __ccgo_ts + 18187,
 		Fop:    int32(m_SQLITE_STATUS_MALLOC_COUNT),
 	},
 }
@@ -112171,7 +112167,7 @@ func _test_db_status(tls *libc.TLS, clientData uintptr, interp uintptr, objc int
 	// /tmp/libsqlite3/sqlite-src-3370200/src/test_malloc.c:1374:3:
 	if objc != int32(4) {
 		// /tmp/libsqlite3/sqlite-src-3370200/src/test_malloc.c:1375:5:
-		libtcl8_6.XTcl_WrongNumArgs(tls, interp, int32(1), objv, __ccgo_ts+18420)
+		libtcl8_6.XTcl_WrongNumArgs(tls, interp, int32(1), objv, __ccgo_ts+18412)
 		// /tmp/libsqlite3/sqlite-src-3370200/src/test_malloc.c:1376:5:
 		return int32(m_TCL_ERROR)
 	}
@@ -112183,12 +112179,12 @@ func _test_db_status(tls *libc.TLS, clientData uintptr, interp uintptr, objc int
 	// /tmp/libsqlite3/sqlite-src-3370200/src/test_malloc.c:1379:3:
 	zOpName = libtcl8_6.XTcl_GetString(tls, *(*uintptr)(unsafe.Pointer(objv + 2*8)))
 	// /tmp/libsqlite3/sqlite-src-3370200/src/test_malloc.c:1380:3:
-	if libc.Xmemcmp(tls, zOpName, __ccgo_ts+18443, uint64(7)) == 0 {
+	if libc.Xmemcmp(tls, zOpName, __ccgo_ts+18435, uint64(7)) == 0 {
 		// /tmp/libsqlite3/sqlite-src-3370200/src/test_malloc.c:1380:42:
 		zOpName += uintptr(7)
 	}
 	// /tmp/libsqlite3/sqlite-src-3370200/src/test_malloc.c:1381:3:
-	if libc.Xmemcmp(tls, zOpName, __ccgo_ts+18451, uint64(9)) == 0 {
+	if libc.Xmemcmp(tls, zOpName, __ccgo_ts+18443, uint64(9)) == 0 {
 		// /tmp/libsqlite3/sqlite-src-3370200/src/test_malloc.c:1381:44:
 		zOpName += uintptr(9)
 	}
@@ -112248,54 +112244,54 @@ var _aOp2 = [13]struct {
 	Fop    int32
 }{
 	0: {
-		FzName: __ccgo_ts + 18242,
+		FzName: __ccgo_ts + 18234,
 	},
 	1: {
-		FzName: __ccgo_ts + 18257,
+		FzName: __ccgo_ts + 18249,
 		Fop:    int32(m_SQLITE_DBSTATUS_CACHE_USED),
 	},
 	2: {
-		FzName: __ccgo_ts + 18268,
+		FzName: __ccgo_ts + 18260,
 		Fop:    int32(m_SQLITE_DBSTATUS_SCHEMA_USED),
 	},
 	3: {
-		FzName: __ccgo_ts + 18280,
+		FzName: __ccgo_ts + 18272,
 		Fop:    int32(m_SQLITE_DBSTATUS_STMT_USED),
 	},
 	4: {
-		FzName: __ccgo_ts + 18290,
+		FzName: __ccgo_ts + 18282,
 		Fop:    int32(m_SQLITE_DBSTATUS_LOOKASIDE_HIT),
 	},
 	5: {
-		FzName: __ccgo_ts + 18304,
+		FzName: __ccgo_ts + 18296,
 		Fop:    int32(m_SQLITE_DBSTATUS_LOOKASIDE_MISS_SIZE),
 	},
 	6: {
-		FzName: __ccgo_ts + 18324,
+		FzName: __ccgo_ts + 18316,
 		Fop:    int32(m_SQLITE_DBSTATUS_LOOKASIDE_MISS_FULL),
 	},
 	7: {
-		FzName: __ccgo_ts + 18344,
+		FzName: __ccgo_ts + 18336,
 		Fop:    int32(m_SQLITE_DBSTATUS_CACHE_HIT),
 	},
 	8: {
-		FzName: __ccgo_ts + 18354,
+		FzName: __ccgo_ts + 18346,
 		Fop:    int32(m_SQLITE_DBSTATUS_CACHE_MISS),
 	},
 	9: {
-		FzName: __ccgo_ts + 18365,
+		FzName: __ccgo_ts + 18357,
 		Fop:    int32(m_SQLITE_DBSTATUS_CACHE_WRITE),
 	},
 	10: {
-		FzName: __ccgo_ts + 18377,
+		FzName: __ccgo_ts + 18369,
 		Fop:    int32(m_SQLITE_DBSTATUS_DEFERRED_FKS),
 	},
 	11: {
-		FzName: __ccgo_ts + 18390,
+		FzName: __ccgo_ts + 18382,
 		Fop:    int32(m_SQLITE_DBSTATUS_CACHE_USED_SHARED),
 	},
 	12: {
-		FzName: __ccgo_ts + 18408,
+		FzName: __ccgo_ts + 18400,
 		Fop:    int32(m_SQLITE_DBSTATUS_CACHE_SPILL),
 	},
 }
@@ -112362,7 +112358,7 @@ func _test_vfs_oom_test(tls *libc.TLS, clientData uintptr, interp uintptr, objc 
 	// /tmp/libsqlite3/sqlite-src-3370200/src/test_malloc.c:1452:3:
 	if objc > int32(2) {
 		// /tmp/libsqlite3/sqlite-src-3370200/src/test_malloc.c:1453:5:
-		libtcl8_6.XTcl_WrongNumArgs(tls, interp, int32(1), objv, __ccgo_ts+18461)
+		libtcl8_6.XTcl_WrongNumArgs(tls, interp, int32(1), objv, __ccgo_ts+18453)
 		// /tmp/libsqlite3/sqlite-src-3370200/src/test_malloc.c:1454:5:
 		return int32(m_TCL_ERROR)
 	} else {
@@ -112420,102 +112416,102 @@ var _aObjCmd10 = [32]struct {
 	FclientData int32
 }{
 	0: {
-		FzName: __ccgo_ts + 12690,
+		FzName: __ccgo_ts + 12682,
 	},
 	1: {
-		FzName: __ccgo_ts + 12705,
+		FzName: __ccgo_ts + 12697,
 	},
 	2: {
-		FzName: __ccgo_ts + 18471,
+		FzName: __ccgo_ts + 18463,
 	},
 	3: {
-		FzName: __ccgo_ts + 18484,
+		FzName: __ccgo_ts + 18476,
 	},
 	4: {
-		FzName: __ccgo_ts + 18491,
+		FzName: __ccgo_ts + 18483,
 	},
 	5: {
-		FzName: __ccgo_ts + 18498,
+		FzName: __ccgo_ts + 18490,
 	},
 	6: {
-		FzName: __ccgo_ts + 18518,
+		FzName: __ccgo_ts + 18510,
 	},
 	7: {
-		FzName: __ccgo_ts + 18543,
+		FzName: __ccgo_ts + 18535,
 	},
 	8: {
-		FzName: __ccgo_ts + 18570,
+		FzName: __ccgo_ts + 18562,
 	},
 	9: {
-		FzName: __ccgo_ts + 18592,
+		FzName: __ccgo_ts + 18584,
 	},
 	10: {
-		FzName: __ccgo_ts + 18614,
+		FzName: __ccgo_ts + 18606,
 	},
 	11: {
-		FzName: __ccgo_ts + 18639,
+		FzName: __ccgo_ts + 18631,
 	},
 	12: {
-		FzName: __ccgo_ts + 18665,
+		FzName: __ccgo_ts + 18657,
 	},
 	13: {
-		FzName: __ccgo_ts + 18695,
+		FzName: __ccgo_ts + 18687,
 	},
 	14: {
-		FzName: __ccgo_ts + 18716,
+		FzName: __ccgo_ts + 18708,
 	},
 	15: {
-		FzName: __ccgo_ts + 18741,
+		FzName: __ccgo_ts + 18733,
 	},
 	16: {
-		FzName: __ccgo_ts + 18767,
+		FzName: __ccgo_ts + 18759,
 	},
 	17: {
-		FzName: __ccgo_ts + 18782,
+		FzName: __ccgo_ts + 18774,
 	},
 	18: {
-		FzName: __ccgo_ts + 18800,
+		FzName: __ccgo_ts + 18792,
 	},
 	19: {
-		FzName: __ccgo_ts + 18824,
+		FzName: __ccgo_ts + 18816,
 	},
 	20: {
-		FzName: __ccgo_ts + 18844,
+		FzName: __ccgo_ts + 18836,
 	},
 	21: {
-		FzName: __ccgo_ts + 18869,
+		FzName: __ccgo_ts + 18861,
 	},
 	22: {
-		FzName: __ccgo_ts + 18894,
+		FzName: __ccgo_ts + 18886,
 	},
 	23: {
-		FzName: __ccgo_ts + 18919,
+		FzName: __ccgo_ts + 18911,
 	},
 	24: {
-		FzName: __ccgo_ts + 18940,
+		FzName: __ccgo_ts + 18932,
 	},
 	25: {
-		FzName: __ccgo_ts + 18959,
+		FzName: __ccgo_ts + 18951,
 	},
 	26: {
-		FzName: __ccgo_ts + 18978,
+		FzName: __ccgo_ts + 18970,
 	},
 	27: {
-		FzName: __ccgo_ts + 18999,
+		FzName: __ccgo_ts + 18991,
 	},
 	28: {
-		FzName:      __ccgo_ts + 19027,
+		FzName:      __ccgo_ts + 19019,
 		FclientData: int32(3),
 	},
 	29: {
-		FzName:      __ccgo_ts + 19048,
+		FzName:      __ccgo_ts + 19040,
 		FclientData: int32(5),
 	},
 	30: {
-		FzName: __ccgo_ts + 19069,
+		FzName: __ccgo_ts + 19061,
 	},
 	31: {
-		FzName: __ccgo_ts + 19093,
+		FzName: __ccgo_ts + 19085,
 	},
 }
 
@@ -113210,7 +113206,7 @@ func _MD5DigestToBase10x8(tls *libc.TLS, digest uintptr, zDigest uintptr) {
 			*(*int8)(unsafe.Pointer(zDigest + uintptr(v3))) = int8('-')
 		}
 		// /tmp/libsqlite3/sqlite-src-3370200/src/test_md5.c:308:5:
-		x_sqlite3_snprintf(tls, int32(50)-j, zDigest+uintptr(j), __ccgo_ts+19123, libc.VaList(bp+8, x))
+		x_sqlite3_snprintf(tls, int32(50)-j, zDigest+uintptr(j), __ccgo_ts+19115, libc.VaList(bp+8, x))
 		// /tmp/libsqlite3/sqlite-src-3370200/src/test_md5.c:309:5:
 		j += int32(5)
 		goto _1
@@ -113283,7 +113279,7 @@ func _md5file_cmd(tls *libc.TLS, cd uintptr, interp uintptr, argc int32, argv ui
 	// /tmp/libsqlite3/sqlite-src-3370200/src/test_md5.c:361:3:
 	if argc != int32(2) && argc != int32(4) {
 		// /tmp/libsqlite3/sqlite-src-3370200/src/test_md5.c:362:5:
-		libtcl8_6.XTcl_AppendResult(tls, interp, libc.VaList(bp+10360, __ccgo_ts+116, *(*uintptr)(unsafe.Pointer(argv)), __ccgo_ts+19128, libc.UintptrFromInt32(0)))
+		libtcl8_6.XTcl_AppendResult(tls, interp, libc.VaList(bp+10360, __ccgo_ts+116, *(*uintptr)(unsafe.Pointer(argv)), __ccgo_ts+19120, libc.UintptrFromInt32(0)))
 		// /tmp/libsqlite3/sqlite-src-3370200/src/test_md5.c:364:5:
 		return int32(m_TCL_ERROR)
 	}
@@ -113300,11 +113296,11 @@ func _md5file_cmd(tls *libc.TLS, cd uintptr, interp uintptr, argc int32, argv ui
 		amt = int32(2147483647)
 	}
 	// /tmp/libsqlite3/sqlite-src-3370200/src/test_md5.c:373:3:
-	in = libc.Xfopen(tls, *(*uintptr)(unsafe.Pointer(argv + 1*8)), __ccgo_ts+16848)
+	in = libc.Xfopen(tls, *(*uintptr)(unsafe.Pointer(argv + 1*8)), __ccgo_ts+16840)
 	// /tmp/libsqlite3/sqlite-src-3370200/src/test_md5.c:374:3:
 	if in == uintptr(0) {
 		// /tmp/libsqlite3/sqlite-src-3370200/src/test_md5.c:375:5:
-		libtcl8_6.XTcl_AppendResult(tls, interp, libc.VaList(bp+10360, __ccgo_ts+19152, *(*uintptr)(unsafe.Pointer(argv + 1*8)), __ccgo_ts+19174, libc.UintptrFromInt32(0)))
+		libtcl8_6.XTcl_AppendResult(tls, interp, libc.VaList(bp+10360, __ccgo_ts+19144, *(*uintptr)(unsafe.Pointer(argv + 1*8)), __ccgo_ts+19166, libc.UintptrFromInt32(0)))
 		// /tmp/libsqlite3/sqlite-src-3370200/src/test_md5.c:377:5:
 		return int32(m_TCL_ERROR)
 	}
@@ -113356,13 +113352,13 @@ func _md5file_cmd(tls *libc.TLS, cd uintptr, interp uintptr, argc int32, argv ui
 func x_Md5_Init(tls *libc.TLS, interp uintptr) (r int32) {
 	// /tmp/libsqlite3/sqlite-src-3370200/src/test_md5.c:400:33:
 	// /tmp/libsqlite3/sqlite-src-3370200/src/test_md5.c:401:3:
-	libtcl8_6.XTcl_CreateCommand(tls, interp, __ccgo_ts+19188, __ccgo_fp(_md5_cmd), __ccgo_fp(_MD5DigestToBase16), uintptr(0))
+	libtcl8_6.XTcl_CreateCommand(tls, interp, __ccgo_ts+19180, __ccgo_fp(_md5_cmd), __ccgo_fp(_MD5DigestToBase16), uintptr(0))
 	// /tmp/libsqlite3/sqlite-src-3370200/src/test_md5.c:403:3:
-	libtcl8_6.XTcl_CreateCommand(tls, interp, __ccgo_ts+19192, __ccgo_fp(_md5_cmd), __ccgo_fp(_MD5DigestToBase10x8), uintptr(0))
+	libtcl8_6.XTcl_CreateCommand(tls, interp, __ccgo_ts+19184, __ccgo_fp(_md5_cmd), __ccgo_fp(_MD5DigestToBase10x8), uintptr(0))
 	// /tmp/libsqlite3/sqlite-src-3370200/src/test_md5.c:405:3:
-	libtcl8_6.XTcl_CreateCommand(tls, interp, __ccgo_ts+19201, __ccgo_fp(_md5file_cmd), __ccgo_fp(_MD5DigestToBase16), uintptr(0))
+	libtcl8_6.XTcl_CreateCommand(tls, interp, __ccgo_ts+19193, __ccgo_fp(_md5file_cmd), __ccgo_fp(_MD5DigestToBase16), uintptr(0))
 	// /tmp/libsqlite3/sqlite-src-3370200/src/test_md5.c:407:3:
-	libtcl8_6.XTcl_CreateCommand(tls, interp, __ccgo_ts+19209, __ccgo_fp(_md5file_cmd), __ccgo_fp(_MD5DigestToBase10x8), uintptr(0))
+	libtcl8_6.XTcl_CreateCommand(tls, interp, __ccgo_ts+19201, __ccgo_fp(_md5file_cmd), __ccgo_fp(_MD5DigestToBase10x8), uintptr(0))
 	// /tmp/libsqlite3/sqlite-src-3370200/src/test_md5.c:409:3:
 	return m_TCL_OK
 }
@@ -113441,9 +113437,9 @@ func x_Md5_Register(tls *libc.TLS, db uintptr, pzErrMsg uintptr, pThunk uintptr)
 	var rc int32
 	_ = rc
 	// /tmp/libsqlite3/sqlite-src-3370200/src/test_md5.c:446:7:
-	rc = x_sqlite3_create_function(tls, db, __ccgo_ts+19222, -int32(1), int32(m_SQLITE_UTF8), uintptr(0), uintptr(0), __ccgo_fp(_md5step), __ccgo_fp(_md5finalize))
+	rc = x_sqlite3_create_function(tls, db, __ccgo_ts+19214, -int32(1), int32(m_SQLITE_UTF8), uintptr(0), uintptr(0), __ccgo_fp(_md5step), __ccgo_fp(_md5finalize))
 	// /tmp/libsqlite3/sqlite-src-3370200/src/test_md5.c:448:3:
-	x_sqlite3_overload_function(tls, db, __ccgo_ts+19222, -int32(1)) /* To exercise this API */
+	x_sqlite3_overload_function(tls, db, __ccgo_ts+19214, -int32(1)) /* To exercise this API */
 	// /tmp/libsqlite3/sqlite-src-3370200/src/test_md5.c:449:3:
 	return rc
 }
@@ -113678,7 +113674,7 @@ func _multiplexFilename(tls *libc.TLS, zBase uintptr, nBase int32, flags int32, 
 	// /tmp/libsqlite3/sqlite-src-3370200/src/test_multiplex.c:228:3:
 	if iChunk != 0 && iChunk <= int32(m_MX_CHUNK_NUMBER) {
 		// /tmp/libsqlite3/sqlite-src-3370200/src/test_multiplex.c:246:5:
-		x_sqlite3_snprintf(tls, int32(4), zOut+uintptr(n), __ccgo_ts+19229, libc.VaList(bp+8, iChunk))
+		x_sqlite3_snprintf(tls, int32(4), zOut+uintptr(n), __ccgo_ts+19221, libc.VaList(bp+8, iChunk))
 		// /tmp/libsqlite3/sqlite-src-3370200/src/test_multiplex.c:247:5:
 		n += int32(3)
 	}
@@ -113796,7 +113792,7 @@ func _multiplexSubOpen(tls *libc.TLS, pGroup uintptr, iChunk int32, rc uintptr, 
 						// /tmp/libsqlite3/sqlite-src-3370200/src/test_multiplex.c:325:9:
 						if *(*int32)(unsafe.Pointer(rc)) != 0 {
 							// /tmp/libsqlite3/sqlite-src-3370200/src/test_multiplex.c:326:11:
-							x_sqlite3_log(tls, *(*int32)(unsafe.Pointer(rc)), __ccgo_ts+19234, libc.VaList(bp+16, (*(*TmultiplexReal)(unsafe.Pointer((*TmultiplexGroup)(unsafe.Pointer(pGroup)).FaReal + uintptr(iChunk)*16))).Fz))
+							x_sqlite3_log(tls, *(*int32)(unsafe.Pointer(rc)), __ccgo_ts+19226, libc.VaList(bp+16, (*(*TmultiplexReal)(unsafe.Pointer((*TmultiplexGroup)(unsafe.Pointer(pGroup)).FaReal + uintptr(iChunk)*16))).Fz))
 						}
 						// /tmp/libsqlite3/sqlite-src-3370200/src/test_multiplex.c:329:9:
 						return uintptr(0)
@@ -113822,7 +113818,7 @@ func _multiplexSubOpen(tls *libc.TLS, pGroup uintptr, iChunk int32, rc uintptr, 
 		// /tmp/libsqlite3/sqlite-src-3370200/src/test_multiplex.c:341:5:
 		if *(*int32)(unsafe.Pointer(rc)) != m_SQLITE_OK {
 			// /tmp/libsqlite3/sqlite-src-3370200/src/test_multiplex.c:342:7:
-			x_sqlite3_log(tls, *(*int32)(unsafe.Pointer(rc)), __ccgo_ts+19268, libc.VaList(bp+16, (*(*TmultiplexReal)(unsafe.Pointer((*TmultiplexGroup)(unsafe.Pointer(pGroup)).FaReal + uintptr(iChunk)*16))).Fz))
+			x_sqlite3_log(tls, *(*int32)(unsafe.Pointer(rc)), __ccgo_ts+19260, libc.VaList(bp+16, (*(*TmultiplexReal)(unsafe.Pointer((*TmultiplexGroup)(unsafe.Pointer(pGroup)).FaReal + uintptr(iChunk)*16))).Fz))
 			// /tmp/libsqlite3/sqlite-src-3370200/src/test_multiplex.c:344:7:
 			x_sqlite3_free(tls, pSubOpen)
 			// /tmp/libsqlite3/sqlite-src-3370200/src/test_multiplex.c:345:7:
@@ -113956,7 +113952,7 @@ func _multiplexFuncInit(tls *libc.TLS, db uintptr, pzErrMsg uintptr, pApi uintpt
 	var rc int32
 	_ = rc
 	// /tmp/libsqlite3/sqlite-src-3370200/src/test_multiplex.c:423:3:
-	rc = x_sqlite3_create_function(tls, db, __ccgo_ts+19300, int32(2), int32(m_SQLITE_ANY), uintptr(0), __ccgo_fp(_multiplexControlFunc), uintptr(0), uintptr(0))
+	rc = x_sqlite3_create_function(tls, db, __ccgo_ts+19292, int32(2), int32(m_SQLITE_ANY), uintptr(0), __ccgo_fp(_multiplexControlFunc), uintptr(0), uintptr(0))
 	// /tmp/libsqlite3/sqlite-src-3370200/src/test_multiplex.c:425:3:
 	return rc
 }
@@ -114109,7 +114105,7 @@ func _multiplexOpen(tls *libc.TLS, pVfs uintptr, zName uintptr, pConn uintptr, f
 		// /tmp/libsqlite3/sqlite-src-3370200/src/test_multiplex.c:511:5:
 		(*TmultiplexGroup)(unsafe.Pointer(pGroup)).FbTruncate = uint8(x_sqlite3_uri_boolean(tls, zUri, __ccgo_ts+3483, libc.BoolInt32(flags&int32(m_SQLITE_OPEN_MAIN_DB) == 0)))
 		// /tmp/libsqlite3/sqlite-src-3370200/src/test_multiplex.c:513:5:
-		(*TmultiplexGroup)(unsafe.Pointer(pGroup)).FszChunk = uint32(int32(x_sqlite3_uri_int64(tls, zUri, __ccgo_ts+19318, int64(m_SQLITE_MULTIPLEX_CHUNK_SIZE))))
+		(*TmultiplexGroup)(unsafe.Pointer(pGroup)).FszChunk = uint32(int32(x_sqlite3_uri_int64(tls, zUri, __ccgo_ts+19310, int64(m_SQLITE_MULTIPLEX_CHUNK_SIZE))))
 		// /tmp/libsqlite3/sqlite-src-3370200/src/test_multiplex.c:515:5:
 		(*TmultiplexGroup)(unsafe.Pointer(pGroup)).FszChunk = ((*TmultiplexGroup)(unsafe.Pointer(pGroup)).FszChunk + uint32(0xffff)) & uint32(^libc.Int32FromInt32(0xffff))
 		// /tmp/libsqlite3/sqlite-src-3370200/src/test_multiplex.c:516:5:
@@ -114942,7 +114938,7 @@ func _multiplexFileControl(tls *libc.TLS, pConn uintptr, op int32, pArg uintptr)
 		 ** argument.
 		 */
 		// /tmp/libsqlite3/sqlite-src-3370200/src/test_multiplex.c:965:7:
-		if *(*uintptr)(unsafe.Pointer(aFcntl + 1*8)) != 0 && x_sqlite3_strnicmp(tls, *(*uintptr)(unsafe.Pointer(aFcntl + 1*8)), __ccgo_ts+19328, int32(10)) == 0 {
+		if *(*uintptr)(unsafe.Pointer(aFcntl + 1*8)) != 0 && x_sqlite3_strnicmp(tls, *(*uintptr)(unsafe.Pointer(aFcntl + 1*8)), __ccgo_ts+19320, int32(10)) == 0 {
 			// /tmp/libsqlite3/sqlite-src-3370200/src/test_multiplex.c:966:23:
 			*(*Tsqlite3_int64)(unsafe.Pointer(bp + 8)) = 0
 			// /tmp/libsqlite3/sqlite-src-3370200/src/test_multiplex.c:967:9:
@@ -114956,16 +114952,16 @@ func _multiplexFileControl(tls *libc.TLS, pConn uintptr, op int32, pArg uintptr)
 			 ** is omitted, just return the current value for the truncate setting.
 			 */
 			// /tmp/libsqlite3/sqlite-src-3370200/src/test_multiplex.c:976:9:
-			if x_sqlite3_stricmp(tls, *(*uintptr)(unsafe.Pointer(aFcntl + 1*8)), __ccgo_ts+19339) == 0 {
+			if x_sqlite3_stricmp(tls, *(*uintptr)(unsafe.Pointer(aFcntl + 1*8)), __ccgo_ts+19331) == 0 {
 				// /tmp/libsqlite3/sqlite-src-3370200/src/test_multiplex.c:977:11:
 				if *(*uintptr)(unsafe.Pointer(aFcntl + 2*8)) != 0 && *(*int8)(unsafe.Pointer(*(*uintptr)(unsafe.Pointer(aFcntl + 2*8)))) != 0 {
 					// /tmp/libsqlite3/sqlite-src-3370200/src/test_multiplex.c:978:13:
-					if x_sqlite3_stricmp(tls, *(*uintptr)(unsafe.Pointer(aFcntl + 2*8)), __ccgo_ts+19358) == 0 || x_sqlite3_stricmp(tls, *(*uintptr)(unsafe.Pointer(aFcntl + 2*8)), __ccgo_ts+13466) == 0 {
+					if x_sqlite3_stricmp(tls, *(*uintptr)(unsafe.Pointer(aFcntl + 2*8)), __ccgo_ts+19350) == 0 || x_sqlite3_stricmp(tls, *(*uintptr)(unsafe.Pointer(aFcntl + 2*8)), __ccgo_ts+13458) == 0 {
 						// /tmp/libsqlite3/sqlite-src-3370200/src/test_multiplex.c:980:15:
 						(*TmultiplexGroup)(unsafe.Pointer(pGroup)).FbTruncate = uint8(1)
 					} else {
 						// /tmp/libsqlite3/sqlite-src-3370200/src/test_multiplex.c:982:13:
-						if x_sqlite3_stricmp(tls, *(*uintptr)(unsafe.Pointer(aFcntl + 2*8)), __ccgo_ts+19361) == 0 || x_sqlite3_stricmp(tls, *(*uintptr)(unsafe.Pointer(aFcntl + 2*8)), __ccgo_ts+956) == 0 {
+						if x_sqlite3_stricmp(tls, *(*uintptr)(unsafe.Pointer(aFcntl + 2*8)), __ccgo_ts+19353) == 0 || x_sqlite3_stricmp(tls, *(*uintptr)(unsafe.Pointer(aFcntl + 2*8)), __ccgo_ts+956) == 0 {
 							// /tmp/libsqlite3/sqlite-src-3370200/src/test_multiplex.c:984:15:
 							(*TmultiplexGroup)(unsafe.Pointer(pGroup)).FbTruncate = uint8(0)
 						}
@@ -114979,9 +114975,9 @@ func _multiplexFileControl(tls *libc.TLS, pConn uintptr, op int32, pArg uintptr)
 				 */
 				// /tmp/libsqlite3/sqlite-src-3370200/src/test_multiplex.c:993:11:
 				if (*TmultiplexGroup)(unsafe.Pointer(pGroup)).FbTruncate != 0 {
-					v1 = __ccgo_ts + 19358
+					v1 = __ccgo_ts + 19350
 				} else {
-					v1 = __ccgo_ts + 19361
+					v1 = __ccgo_ts + 19353
 				}
 				*(*uintptr)(unsafe.Pointer(aFcntl)) = x_sqlite3_mprintf(tls, v1, 0)
 				// /tmp/libsqlite3/sqlite-src-3370200/src/test_multiplex.c:994:11:
@@ -114996,7 +114992,7 @@ func _multiplexFileControl(tls *libc.TLS, pConn uintptr, op int32, pArg uintptr)
 			 ** disabled, respectively.
 			 */
 			// /tmp/libsqlite3/sqlite-src-3370200/src/test_multiplex.c:1003:9:
-			if x_sqlite3_stricmp(tls, *(*uintptr)(unsafe.Pointer(aFcntl + 1*8)), __ccgo_ts+19365) == 0 {
+			if x_sqlite3_stricmp(tls, *(*uintptr)(unsafe.Pointer(aFcntl + 1*8)), __ccgo_ts+19357) == 0 {
 				// /tmp/libsqlite3/sqlite-src-3370200/src/test_multiplex.c:1004:11:
 				*(*uintptr)(unsafe.Pointer(aFcntl)) = x_sqlite3_mprintf(tls, __ccgo_ts+160, libc.VaList(bp+24, libc.BoolInt32(int32((*TmultiplexGroup)(unsafe.Pointer(pGroup)).FbEnabled) != 0)))
 				// /tmp/libsqlite3/sqlite-src-3370200/src/test_multiplex.c:1005:11:
@@ -115011,7 +115007,7 @@ func _multiplexFileControl(tls *libc.TLS, pConn uintptr, op int32, pArg uintptr)
 			 ** multiplexor is not active.
 			 */
 			// /tmp/libsqlite3/sqlite-src-3370200/src/test_multiplex.c:1014:9:
-			if x_sqlite3_stricmp(tls, *(*uintptr)(unsafe.Pointer(aFcntl + 1*8)), __ccgo_ts+19383) == 0 && (*TmultiplexGroup)(unsafe.Pointer(pGroup)).FbEnabled != 0 {
+			if x_sqlite3_stricmp(tls, *(*uintptr)(unsafe.Pointer(aFcntl + 1*8)), __ccgo_ts+19375) == 0 && (*TmultiplexGroup)(unsafe.Pointer(pGroup)).FbEnabled != 0 {
 				// /tmp/libsqlite3/sqlite-src-3370200/src/test_multiplex.c:1017:11:
 				*(*uintptr)(unsafe.Pointer(aFcntl)) = x_sqlite3_mprintf(tls, __ccgo_ts+2927, libc.VaList(bp+24, (*TmultiplexGroup)(unsafe.Pointer(pGroup)).FszChunk))
 				// /tmp/libsqlite3/sqlite-src-3370200/src/test_multiplex.c:1018:11:
@@ -115027,7 +115023,7 @@ func _multiplexFileControl(tls *libc.TLS, pConn uintptr, op int32, pArg uintptr)
 			 ** divided by the chunksize and rounded up.
 			 */
 			// /tmp/libsqlite3/sqlite-src-3370200/src/test_multiplex.c:1028:9:
-			if x_sqlite3_stricmp(tls, *(*uintptr)(unsafe.Pointer(aFcntl + 1*8)), __ccgo_ts+19403) == 0 {
+			if x_sqlite3_stricmp(tls, *(*uintptr)(unsafe.Pointer(aFcntl + 1*8)), __ccgo_ts+19395) == 0 {
 				// /tmp/libsqlite3/sqlite-src-3370200/src/test_multiplex.c:1029:15:
 				n = 0
 				// /tmp/libsqlite3/sqlite-src-3370200/src/test_multiplex.c:1031:11:
@@ -115067,7 +115063,7 @@ func _multiplexFileControl(tls *libc.TLS, pConn uintptr, op int32, pArg uintptr)
 			// /tmp/libsqlite3/sqlite-src-3370200/src/test_multiplex.c:1046:9:
 			if op == int32(m_SQLITE_FCNTL_VFSNAME) && *(*int32)(unsafe.Pointer(bp)) == m_SQLITE_OK {
 				// /tmp/libsqlite3/sqlite-src-3370200/src/test_multiplex.c:1047:10:
-				*(*uintptr)(unsafe.Pointer(pArg)) = x_sqlite3_mprintf(tls, __ccgo_ts+19423, libc.VaList(bp+24, *(*uintptr)(unsafe.Pointer(pArg))))
+				*(*uintptr)(unsafe.Pointer(pArg)) = x_sqlite3_mprintf(tls, __ccgo_ts+19415, libc.VaList(bp+24, *(*uintptr)(unsafe.Pointer(pArg))))
 			}
 		}
 		// /tmp/libsqlite3/sqlite-src-3370200/src/test_multiplex.c:1050:7:
@@ -115275,7 +115271,7 @@ func x_sqlite3_multiplex_initialize(tls *libc.TLS, zOrigVfsName uintptr, makeDef
 	p1 = uintptr(unsafe.Pointer(&_gMultiplex)) + 8 + 4
 	*(*int32)(unsafe.Pointer(p1)) = int32(uint64(*(*int32)(unsafe.Pointer(p1))) + libc.Uint64FromInt64(16))
 	// /tmp/libsqlite3/sqlite-src-3370200/src/test_multiplex.c:1160:3:
-	_gMultiplex.FsThisVfs.FzName = __ccgo_ts + 19436
+	_gMultiplex.FsThisVfs.FzName = __ccgo_ts + 19428
 	// /tmp/libsqlite3/sqlite-src-3370200/src/test_multiplex.c:1161:3:
 	_gMultiplex.FsThisVfs.FxOpen = __ccgo_fp(_multiplexOpen)
 	// /tmp/libsqlite3/sqlite-src-3370200/src/test_multiplex.c:1162:3:
@@ -115444,7 +115440,7 @@ func _test_multiplex_initialize(tls *libc.TLS, clientData uintptr, interp uintpt
 	// /tmp/libsqlite3/sqlite-src-3370200/src/test_multiplex.c:1249:3:
 	if objc != int32(3) {
 		// /tmp/libsqlite3/sqlite-src-3370200/src/test_multiplex.c:1250:5:
-		libtcl8_6.XTcl_WrongNumArgs(tls, interp, int32(1), objv, __ccgo_ts+19446)
+		libtcl8_6.XTcl_WrongNumArgs(tls, interp, int32(1), objv, __ccgo_ts+19438)
 		// /tmp/libsqlite3/sqlite-src-3370200/src/test_multiplex.c:1251:5:
 		return int32(m_TCL_ERROR)
 	}
@@ -115483,14 +115479,14 @@ func _test_multiplex_shutdown(tls *libc.TLS, clientData uintptr, interp uintptr,
 	// /tmp/libsqlite3/sqlite-src-3370200/src/test_multiplex.c:1275:3:
 	_ = clientData
 	// /tmp/libsqlite3/sqlite-src-3370200/src/test_multiplex.c:1277:3:
-	if objc == int32(2) && libc.Xstrcmp(tls, libtcl8_6.XTcl_GetString(tls, *(*uintptr)(unsafe.Pointer(objv + 1*8))), __ccgo_ts+19463) != 0 {
+	if objc == int32(2) && libc.Xstrcmp(tls, libtcl8_6.XTcl_GetString(tls, *(*uintptr)(unsafe.Pointer(objv + 1*8))), __ccgo_ts+19455) != 0 {
 		// /tmp/libsqlite3/sqlite-src-3370200/src/test_multiplex.c:1278:5:
 		objc = int32(3)
 	}
 	// /tmp/libsqlite3/sqlite-src-3370200/src/test_multiplex.c:1280:3:
 	if objc != int32(1) && objc != int32(2) {
 		// /tmp/libsqlite3/sqlite-src-3370200/src/test_multiplex.c:1281:5:
-		libtcl8_6.XTcl_WrongNumArgs(tls, interp, int32(1), objv, __ccgo_ts+19470)
+		libtcl8_6.XTcl_WrongNumArgs(tls, interp, int32(1), objv, __ccgo_ts+19462)
 		// /tmp/libsqlite3/sqlite-src-3370200/src/test_multiplex.c:1282:5:
 		return int32(m_TCL_ERROR)
 	}
@@ -115540,17 +115536,17 @@ func _test_multiplex_control(tls *libc.TLS, cd TClientData, interp uintptr, objc
 		Fargtype int32
 	}{
 		0: {
-			FzName:   __ccgo_ts + 19479,
+			FzName:   __ccgo_ts + 19471,
 			Fop:      int32(m_MULTIPLEX_CTRL_ENABLE),
 			Fargtype: int32(1),
 		},
 		1: {
-			FzName:   __ccgo_ts + 19486,
+			FzName:   __ccgo_ts + 19478,
 			Fop:      int32(m_MULTIPLEX_CTRL_SET_CHUNK_SIZE),
 			Fargtype: int32(1),
 		},
 		2: {
-			FzName:   __ccgo_ts + 19497,
+			FzName:   __ccgo_ts + 19489,
 			Fop:      int32(m_MULTIPLEX_CTRL_SET_MAX_CHUNKS),
 			Fargtype: int32(1),
 		},
@@ -115559,16 +115555,16 @@ func _test_multiplex_control(tls *libc.TLS, cd TClientData, interp uintptr, objc
 	// /tmp/libsqlite3/sqlite-src-3370200/src/test_multiplex.c:1319:3:
 	if objc != int32(5) {
 		// /tmp/libsqlite3/sqlite-src-3370200/src/test_multiplex.c:1320:5:
-		libtcl8_6.XTcl_WrongNumArgs(tls, interp, int32(1), objv, __ccgo_ts+19508)
+		libtcl8_6.XTcl_WrongNumArgs(tls, interp, int32(1), objv, __ccgo_ts+19500)
 		// /tmp/libsqlite3/sqlite-src-3370200/src/test_multiplex.c:1321:5:
 		return int32(m_TCL_ERROR)
 	}
 	// /tmp/libsqlite3/sqlite-src-3370200/src/test_multiplex.c:1324:3:
 	if 0 == libtcl8_6.XTcl_GetCommandInfo(tls, interp, libtcl8_6.XTcl_GetString(tls, *(*uintptr)(unsafe.Pointer(objv + 1*8))), bp+8) {
 		// /tmp/libsqlite3/sqlite-src-3370200/src/test_multiplex.c:1325:5:
-		libtcl8_6.XTcl_AppendResult(tls, interp, libc.VaList(bp+152, __ccgo_ts+19544, 0))
+		libtcl8_6.XTcl_AppendResult(tls, interp, libc.VaList(bp+152, __ccgo_ts+19536, 0))
 		// /tmp/libsqlite3/sqlite-src-3370200/src/test_multiplex.c:1326:5:
-		libtcl8_6.XTcl_AppendResult(tls, interp, libc.VaList(bp+152, libtcl8_6.XTcl_GetString(tls, *(*uintptr)(unsafe.Pointer(objv + 1*8))), __ccgo_ts+10613, 0))
+		libtcl8_6.XTcl_AppendResult(tls, interp, libc.VaList(bp+152, libtcl8_6.XTcl_GetString(tls, *(*uintptr)(unsafe.Pointer(objv + 1*8))), __ccgo_ts+10605, 0))
 		// /tmp/libsqlite3/sqlite-src-3370200/src/test_multiplex.c:1327:5:
 		return int32(m_TCL_ERROR)
 	} else {
@@ -115576,7 +115572,7 @@ func _test_multiplex_control(tls *libc.TLS, cd TClientData, interp uintptr, objc
 		db = *(*uintptr)(unsafe.Pointer((*(*TTcl_CmdInfo)(unsafe.Pointer(bp + 8))).FobjClientData))
 	}
 	// /tmp/libsqlite3/sqlite-src-3370200/src/test_multiplex.c:1332:3:
-	rc = libtcl8_6.XTcl_GetIndexFromObjStruct(tls, interp, *(*uintptr)(unsafe.Pointer(objv + 3*8)), bp+80, int32(16), __ccgo_ts+17635, 0, bp)
+	rc = libtcl8_6.XTcl_GetIndexFromObjStruct(tls, interp, *(*uintptr)(unsafe.Pointer(objv + 3*8)), bp+80, int32(16), __ccgo_ts+17627, 0, bp)
 	// /tmp/libsqlite3/sqlite-src-3370200/src/test_multiplex.c:1335:3:
 	if rc != m_TCL_OK {
 		// /tmp/libsqlite3/sqlite-src-3370200/src/test_multiplex.c:1335:20:
@@ -115603,7 +115599,7 @@ func _test_multiplex_control(tls *libc.TLS, cd TClientData, interp uintptr, objc
 		fallthrough
 	default:
 		// /tmp/libsqlite3/sqlite-src-3370200/src/test_multiplex.c:1345:7:
-		libtcl8_6.XTcl_WrongNumArgs(tls, interp, int32(4), objv, __ccgo_ts+19576)
+		libtcl8_6.XTcl_WrongNumArgs(tls, interp, int32(4), objv, __ccgo_ts+19568)
 		// /tmp/libsqlite3/sqlite-src-3370200/src/test_multiplex.c:1346:7:
 		return int32(m_TCL_ERROR)
 	}
@@ -115659,13 +115655,13 @@ var _aCmd4 = [3]struct {
 	FxProc uintptr
 }{
 	0: {
-		FzName: __ccgo_ts + 19588,
+		FzName: __ccgo_ts + 19580,
 	},
 	1: {
-		FzName: __ccgo_ts + 19617,
+		FzName: __ccgo_ts + 19609,
 	},
 	2: {
-		FzName: __ccgo_ts + 19644,
+		FzName: __ccgo_ts + 19636,
 	},
 }
 
@@ -115755,20 +115751,20 @@ type Tsqlite3_mutex = struct {
 
 // /tmp/libsqlite3/sqlite-src-3370200/src/test_mutex.c:32:19:
 var _aName = [15]uintptr{
-	0:  __ccgo_ts + 19670,
-	1:  __ccgo_ts + 19675,
-	2:  __ccgo_ts + 19685,
-	3:  __ccgo_ts + 19697,
-	4:  __ccgo_ts + 19708,
-	5:  __ccgo_ts + 19720,
-	6:  __ccgo_ts + 19732,
-	7:  __ccgo_ts + 19743,
-	8:  __ccgo_ts + 19755,
-	9:  __ccgo_ts + 19767,
-	10: __ccgo_ts + 19779,
-	11: __ccgo_ts + 19791,
-	12: __ccgo_ts + 19803,
-	13: __ccgo_ts + 19815,
+	0:  __ccgo_ts + 19662,
+	1:  __ccgo_ts + 19667,
+	2:  __ccgo_ts + 19677,
+	3:  __ccgo_ts + 19689,
+	4:  __ccgo_ts + 19700,
+	5:  __ccgo_ts + 19712,
+	6:  __ccgo_ts + 19724,
+	7:  __ccgo_ts + 19735,
+	8:  __ccgo_ts + 19747,
+	9:  __ccgo_ts + 19759,
+	10: __ccgo_ts + 19771,
+	11: __ccgo_ts + 19783,
+	12: __ccgo_ts + 19795,
+	13: __ccgo_ts + 19807,
 }
 
 /* A countable mutex */
@@ -116084,12 +116080,12 @@ func _test_install_mutex_counters(tls *libc.TLS, clientData uintptr, interp uint
 	// /tmp/libsqlite3/sqlite-src-3370200/src/test_mutex.c:232:3:
 	if *(*int32)(unsafe.Pointer(bp)) == _g2.FisInstalled {
 		// /tmp/libsqlite3/sqlite-src-3370200/src/test_mutex.c:233:5:
-		libtcl8_6.XTcl_AppendResult(tls, interp, libc.VaList(bp+88, __ccgo_ts+19827, 0))
+		libtcl8_6.XTcl_AppendResult(tls, interp, libc.VaList(bp+88, __ccgo_ts+19819, 0))
 		// /tmp/libsqlite3/sqlite-src-3370200/src/test_mutex.c:234:5:
 		if *(*int32)(unsafe.Pointer(bp)) != 0 {
-			v1 = __ccgo_ts + 19847
+			v1 = __ccgo_ts + 19839
 		} else {
-			v1 = __ccgo_ts + 19865
+			v1 = __ccgo_ts + 19857
 		}
 		libtcl8_6.XTcl_AppendResult(tls, interp, libc.VaList(bp+88, v1, 0))
 		// /tmp/libsqlite3/sqlite-src-3370200/src/test_mutex.c:235:5:
@@ -116263,15 +116259,15 @@ func _test_config(tls *libc.TLS, clientData uintptr, interp uintptr, objc int32,
 		FiValue int32
 	}{
 		0: {
-			FzName:  __ccgo_ts + 19879,
+			FzName:  __ccgo_ts + 19871,
 			FiValue: int32(m_SQLITE_CONFIG_SINGLETHREAD),
 		},
 		1: {
-			FzName:  __ccgo_ts + 19892,
+			FzName:  __ccgo_ts + 19884,
 			FiValue: int32(m_SQLITE_CONFIG_MULTITHREAD),
 		},
 		2: {
-			FzName:  __ccgo_ts + 19904,
+			FzName:  __ccgo_ts + 19896,
 			FiValue: int32(m_SQLITE_CONFIG_SERIALIZED),
 		},
 		3: {},
@@ -116337,7 +116333,7 @@ func _getStaticMutexPointer(tls *libc.TLS, pInterp uintptr, pObj uintptr) (r uin
 	// /tmp/libsqlite3/sqlite-src-3370200/src/test_mutex.c:395:2:
 	var _ /* iMutex at bp+0 */ int32
 	// /tmp/libsqlite3/sqlite-src-3370200/src/test_mutex.c:397:3:
-	if libtcl8_6.XTcl_GetIndexFromObjStruct(tls, pInterp, pObj, uintptr(unsafe.Pointer(&_aName)), int32(8), __ccgo_ts+19915, 0, bp) != 0 {
+	if libtcl8_6.XTcl_GetIndexFromObjStruct(tls, pInterp, pObj, uintptr(unsafe.Pointer(&_aName)), int32(8), __ccgo_ts+19907, 0, bp) != 0 {
 		// /tmp/libsqlite3/sqlite-src-3370200/src/test_mutex.c:398:5:
 		return uintptr(0)
 	}
@@ -116354,7 +116350,7 @@ func _test_enter_static_mutex(tls *libc.TLS, clientData uintptr, interp uintptr,
 	// /tmp/libsqlite3/sqlite-src-3370200/src/test_mutex.c:411:3:
 	if objc != int32(2) {
 		// /tmp/libsqlite3/sqlite-src-3370200/src/test_mutex.c:412:5:
-		libtcl8_6.XTcl_WrongNumArgs(tls, interp, int32(1), objv, __ccgo_ts+19926)
+		libtcl8_6.XTcl_WrongNumArgs(tls, interp, int32(1), objv, __ccgo_ts+19918)
 		// /tmp/libsqlite3/sqlite-src-3370200/src/test_mutex.c:413:5:
 		return int32(m_TCL_ERROR)
 	}
@@ -116378,7 +116374,7 @@ func _test_leave_static_mutex(tls *libc.TLS, clientData uintptr, interp uintptr,
 	// /tmp/libsqlite3/sqlite-src-3370200/src/test_mutex.c:430:3:
 	if objc != int32(2) {
 		// /tmp/libsqlite3/sqlite-src-3370200/src/test_mutex.c:431:5:
-		libtcl8_6.XTcl_WrongNumArgs(tls, interp, int32(1), objv, __ccgo_ts+19926)
+		libtcl8_6.XTcl_WrongNumArgs(tls, interp, int32(1), objv, __ccgo_ts+19918)
 		// /tmp/libsqlite3/sqlite-src-3370200/src/test_mutex.c:432:5:
 		return int32(m_TCL_ERROR)
 	}
@@ -116460,9 +116456,9 @@ func x_Sqlitetest_mutex_Init(tls *libc.TLS, interp uintptr) (r int32) {
 		i++
 	}
 	// /tmp/libsqlite3/sqlite-src-3370200/src/test_mutex.c:505:3:
-	libtcl8_6.XTcl_LinkVar(tls, interp, __ccgo_ts+20134, uintptr(unsafe.Pointer(&_g2))+4, int32(m_TCL_LINK_INT))
+	libtcl8_6.XTcl_LinkVar(tls, interp, __ccgo_ts+20126, uintptr(unsafe.Pointer(&_g2))+4, int32(m_TCL_LINK_INT))
 	// /tmp/libsqlite3/sqlite-src-3370200/src/test_mutex.c:507:3:
-	libtcl8_6.XTcl_LinkVar(tls, interp, __ccgo_ts+20153, uintptr(unsafe.Pointer(&_g2))+8, int32(m_TCL_LINK_INT))
+	libtcl8_6.XTcl_LinkVar(tls, interp, __ccgo_ts+20145, uintptr(unsafe.Pointer(&_g2))+8, int32(m_TCL_LINK_INT))
 	// /tmp/libsqlite3/sqlite-src-3370200/src/test_mutex.c:509:3:
 	return m_SQLITE_OK
 }
@@ -116473,37 +116469,37 @@ var _aCmd5 = [11]struct {
 	FxProc uintptr
 }{
 	0: {
-		FzName: __ccgo_ts + 19931,
+		FzName: __ccgo_ts + 19923,
 	},
 	1: {
-		FzName: __ccgo_ts + 19948,
+		FzName: __ccgo_ts + 19940,
 	},
 	2: {
-		FzName: __ccgo_ts + 19967,
+		FzName: __ccgo_ts + 19959,
 	},
 	3: {
-		FzName: __ccgo_ts + 19982,
+		FzName: __ccgo_ts + 19974,
 	},
 	4: {
-		FzName: __ccgo_ts + 20001,
+		FzName: __ccgo_ts + 19993,
 	},
 	5: {
-		FzName: __ccgo_ts + 20020,
+		FzName: __ccgo_ts + 20012,
 	},
 	6: {
-		FzName: __ccgo_ts + 20035,
+		FzName: __ccgo_ts + 20027,
 	},
 	7: {
-		FzName: __ccgo_ts + 20050,
+		FzName: __ccgo_ts + 20042,
 	},
 	8: {
-		FzName: __ccgo_ts + 20070,
+		FzName: __ccgo_ts + 20062,
 	},
 	9: {
-		FzName: __ccgo_ts + 20093,
+		FzName: __ccgo_ts + 20085,
 	},
 	10: {
-		FzName: __ccgo_ts + 20113,
+		FzName: __ccgo_ts + 20105,
 	},
 }
 
@@ -116638,7 +116634,7 @@ type Tfs_vfs_t1 = struct {
 var _fs_vfs = Tfs_vfs_t{
 	Fbase: Tsqlite3_vfs{
 		FiVersion: int32(1),
-		FzName:    __ccgo_ts + 15726,
+		FzName:    __ccgo_ts + 15718,
 	},
 }
 
@@ -117427,7 +117423,7 @@ func _fsOpen1(tls *libc.TLS, pVfs uintptr, zName uintptr, pFile uintptr, flags i
 		// /tmp/libsqlite3/sqlite-src-3370200/src/test_onefile.c:640:5:
 		if *(*Tsqlite3_int64)(unsafe.Pointer(bp)) == 0 {
 			// /tmp/libsqlite3/sqlite-src-3370200/src/test_onefile.c:641:7:
-			rc = (*(*func(*libc.TLS, uintptr, uintptr, int32, Tsqlite3_int64) int32)(unsafe.Pointer(&struct{ uintptr }{(*Tsqlite3_io_methods1)(unsafe.Pointer((*Tsqlite3_file)(unsafe.Pointer(pRealFile)).FpMethods)).FxWrite})))(tls, pRealFile, __ccgo_ts+20171, int32(1), int64(libc.Int32FromInt32(m_BLOBSIZE)-libc.Int32FromInt32(1)))
+			rc = (*(*func(*libc.TLS, uintptr, uintptr, int32, Tsqlite3_int64) int32)(unsafe.Pointer(&struct{ uintptr }{(*Tsqlite3_io_methods1)(unsafe.Pointer((*Tsqlite3_file)(unsafe.Pointer(pRealFile)).FpMethods)).FxWrite})))(tls, pRealFile, __ccgo_ts+20163, int32(1), int64(libc.Int32FromInt32(m_BLOBSIZE)-libc.Int32FromInt32(1)))
 			// /tmp/libsqlite3/sqlite-src-3370200/src/test_onefile.c:642:7:
 			(*Tfs_real_file)(unsafe.Pointer(pReal)).FnBlob = int32(m_BLOBSIZE)
 		} else {
@@ -117526,7 +117522,7 @@ func _fsDelete(tls *libc.TLS, pVfs uintptr, zPath uintptr, dirSync int32) (r int
 		// /tmp/libsqlite3/sqlite-src-3370200/src/test_onefile.c:699:5:
 		pF = (*Tfs_real_file)(unsafe.Pointer(pReal)).FpFile
 		// /tmp/libsqlite3/sqlite-src-3370200/src/test_onefile.c:700:5:
-		rc = (*(*func(*libc.TLS, uintptr, uintptr, int32, Tsqlite3_int64) int32)(unsafe.Pointer(&struct{ uintptr }{(*Tsqlite3_io_methods1)(unsafe.Pointer((*Tsqlite3_file)(unsafe.Pointer(pF)).FpMethods)).FxWrite})))(tls, pF, __ccgo_ts+20173, int32(4), int64((*Tfs_real_file)(unsafe.Pointer(pReal)).FnBlob-int32(m_BLOCKSIZE)))
+		rc = (*(*func(*libc.TLS, uintptr, uintptr, int32, Tsqlite3_int64) int32)(unsafe.Pointer(&struct{ uintptr }{(*Tsqlite3_io_methods1)(unsafe.Pointer((*Tsqlite3_file)(unsafe.Pointer(pF)).FpMethods)).FxWrite})))(tls, pF, __ccgo_ts+20165, int32(4), int64((*Tfs_real_file)(unsafe.Pointer(pReal)).FnBlob-int32(m_BLOCKSIZE)))
 		// /tmp/libsqlite3/sqlite-src-3370200/src/test_onefile.c:701:5:
 		if rc == m_SQLITE_OK {
 			// /tmp/libsqlite3/sqlite-src-3370200/src/test_onefile.c:702:7:
@@ -117565,7 +117561,7 @@ func _fsAccess(tls *libc.TLS, pVfs uintptr, zPath uintptr, flags int32, pResOut 
 	}
 	// /tmp/libsqlite3/sqlite-src-3370200/src/test_onefile.c:728:3:
 	// /tmp/libsqlite3/sqlite-src-3370200/src/test_onefile.c:729:3:
-	if nName > int32(8) && libc.Xstrcmp(tls, __ccgo_ts+17397, zPath+uintptr(nName-int32(8))) == 0 {
+	if nName > int32(8) && libc.Xstrcmp(tls, __ccgo_ts+17389, zPath+uintptr(nName-int32(8))) == 0 {
 		// /tmp/libsqlite3/sqlite-src-3370200/src/test_onefile.c:730:5:
 		nName -= int32(8)
 		// /tmp/libsqlite3/sqlite-src-3370200/src/test_onefile.c:731:5:
@@ -118306,7 +118302,7 @@ func _vfslogFileControl(tls *libc.TLS, pFile uintptr, op int32, pArg uintptr) (r
 	// /tmp/libsqlite3/sqlite-src-3370200/src/test_osinst.c:398:3:
 	if op == int32(m_SQLITE_FCNTL_VFSNAME) && rc == m_SQLITE_OK {
 		// /tmp/libsqlite3/sqlite-src-3370200/src/test_osinst.c:399:5:
-		*(*uintptr)(unsafe.Pointer(pArg)) = x_sqlite3_mprintf(tls, __ccgo_ts+20178, libc.VaList(bp+8, *(*uintptr)(unsafe.Pointer(pArg))))
+		*(*uintptr)(unsafe.Pointer(pArg)) = x_sqlite3_mprintf(tls, __ccgo_ts+20170, libc.VaList(bp+8, *(*uintptr)(unsafe.Pointer(pArg))))
 	}
 	// /tmp/libsqlite3/sqlite-src-3370200/src/test_osinst.c:401:3:
 	return rc
@@ -118861,7 +118857,7 @@ func x_sqlite3_vfslog_new(tls *libc.TLS, zVfs uintptr, zParentVfs uintptr, zLog 
 	// /tmp/libsqlite3/sqlite-src-3370200/src/test_osinst.c:746:3:
 	if rc == m_SQLITE_OK {
 		// /tmp/libsqlite3/sqlite-src-3370200/src/test_osinst.c:747:5:
-		libc.Xmemcpy(tls, p+204, __ccgo_ts+20188, uint64(20))
+		libc.Xmemcpy(tls, p+204, __ccgo_ts+20180, uint64(20))
 		// /tmp/libsqlite3/sqlite-src-3370200/src/test_osinst.c:748:5:
 		(*TVfslogVfs)(unsafe.Pointer(p)).FiOffset = 0
 		// /tmp/libsqlite3/sqlite-src-3370200/src/test_osinst.c:749:5:
@@ -118910,168 +118906,168 @@ func _vfslog_eventname(tls *libc.TLS, eEvent int32) (r uintptr) {
 	// /tmp/libsqlite3/sqlite-src-3370200/src/test_osinst.c:773:5:
 	case int32(m_OS_CLOSE):
 		// /tmp/libsqlite3/sqlite-src-3370200/src/test_osinst.c:773:32:
-		zEvent = __ccgo_ts + 20209
+		zEvent = __ccgo_ts + 20201
 		// /tmp/libsqlite3/sqlite-src-3370200/src/test_osinst.c:773:51:
 		break
 		// /tmp/libsqlite3/sqlite-src-3370200/src/test_osinst.c:774:5:
 		fallthrough
 	case int32(m_OS_READ):
 		// /tmp/libsqlite3/sqlite-src-3370200/src/test_osinst.c:774:32:
-		zEvent = __ccgo_ts + 20216
+		zEvent = __ccgo_ts + 20208
 		// /tmp/libsqlite3/sqlite-src-3370200/src/test_osinst.c:774:50:
 		break
 		// /tmp/libsqlite3/sqlite-src-3370200/src/test_osinst.c:775:5:
 		fallthrough
 	case int32(m_OS_WRITE):
 		// /tmp/libsqlite3/sqlite-src-3370200/src/test_osinst.c:775:32:
-		zEvent = __ccgo_ts + 20222
+		zEvent = __ccgo_ts + 20214
 		// /tmp/libsqlite3/sqlite-src-3370200/src/test_osinst.c:775:51:
 		break
 		// /tmp/libsqlite3/sqlite-src-3370200/src/test_osinst.c:776:5:
 		fallthrough
 	case int32(m_OS_TRUNCATE):
 		// /tmp/libsqlite3/sqlite-src-3370200/src/test_osinst.c:776:32:
-		zEvent = __ccgo_ts + 20229
+		zEvent = __ccgo_ts + 20221
 		// /tmp/libsqlite3/sqlite-src-3370200/src/test_osinst.c:776:54:
 		break
 		// /tmp/libsqlite3/sqlite-src-3370200/src/test_osinst.c:777:5:
 		fallthrough
 	case int32(m_OS_SYNC):
 		// /tmp/libsqlite3/sqlite-src-3370200/src/test_osinst.c:777:32:
-		zEvent = __ccgo_ts + 12414
+		zEvent = __ccgo_ts + 12406
 		// /tmp/libsqlite3/sqlite-src-3370200/src/test_osinst.c:777:50:
 		break
 		// /tmp/libsqlite3/sqlite-src-3370200/src/test_osinst.c:778:5:
 		fallthrough
 	case int32(m_OS_FILESIZE):
 		// /tmp/libsqlite3/sqlite-src-3370200/src/test_osinst.c:778:32:
-		zEvent = __ccgo_ts + 20239
+		zEvent = __ccgo_ts + 20231
 		// /tmp/libsqlite3/sqlite-src-3370200/src/test_osinst.c:778:54:
 		break
 		// /tmp/libsqlite3/sqlite-src-3370200/src/test_osinst.c:779:5:
 		fallthrough
 	case int32(m_OS_LOCK):
 		// /tmp/libsqlite3/sqlite-src-3370200/src/test_osinst.c:779:32:
-		zEvent = __ccgo_ts + 20249
+		zEvent = __ccgo_ts + 20241
 		// /tmp/libsqlite3/sqlite-src-3370200/src/test_osinst.c:779:50:
 		break
 		// /tmp/libsqlite3/sqlite-src-3370200/src/test_osinst.c:780:5:
 		fallthrough
 	case int32(m_OS_UNLOCK):
 		// /tmp/libsqlite3/sqlite-src-3370200/src/test_osinst.c:780:32:
-		zEvent = __ccgo_ts + 20255
+		zEvent = __ccgo_ts + 20247
 		// /tmp/libsqlite3/sqlite-src-3370200/src/test_osinst.c:780:52:
 		break
 		// /tmp/libsqlite3/sqlite-src-3370200/src/test_osinst.c:781:5:
 		fallthrough
 	case int32(m_OS_CHECKRESERVEDLOCK):
 		// /tmp/libsqlite3/sqlite-src-3370200/src/test_osinst.c:781:32:
-		zEvent = __ccgo_ts + 20263
+		zEvent = __ccgo_ts + 20255
 		// /tmp/libsqlite3/sqlite-src-3370200/src/test_osinst.c:781:58:
 		break
 		// /tmp/libsqlite3/sqlite-src-3370200/src/test_osinst.c:782:5:
 		fallthrough
 	case int32(m_OS_FILECONTROL):
 		// /tmp/libsqlite3/sqlite-src-3370200/src/test_osinst.c:782:32:
-		zEvent = __ccgo_ts + 20277
+		zEvent = __ccgo_ts + 20269
 		// /tmp/libsqlite3/sqlite-src-3370200/src/test_osinst.c:782:57:
 		break
 		// /tmp/libsqlite3/sqlite-src-3370200/src/test_osinst.c:783:5:
 		fallthrough
 	case int32(m_OS_SECTORSIZE):
 		// /tmp/libsqlite3/sqlite-src-3370200/src/test_osinst.c:783:32:
-		zEvent = __ccgo_ts + 20290
+		zEvent = __ccgo_ts + 20282
 		// /tmp/libsqlite3/sqlite-src-3370200/src/test_osinst.c:783:56:
 		break
 		// /tmp/libsqlite3/sqlite-src-3370200/src/test_osinst.c:784:5:
 		fallthrough
 	case int32(m_OS_DEVCHAR):
 		// /tmp/libsqlite3/sqlite-src-3370200/src/test_osinst.c:784:32:
-		zEvent = __ccgo_ts + 20302
+		zEvent = __ccgo_ts + 20294
 		// /tmp/libsqlite3/sqlite-src-3370200/src/test_osinst.c:784:56:
 		break
 		// /tmp/libsqlite3/sqlite-src-3370200/src/test_osinst.c:785:5:
 		fallthrough
 	case int32(m_OS_OPEN):
 		// /tmp/libsqlite3/sqlite-src-3370200/src/test_osinst.c:785:32:
-		zEvent = __ccgo_ts + 11960
+		zEvent = __ccgo_ts + 11952
 		// /tmp/libsqlite3/sqlite-src-3370200/src/test_osinst.c:785:50:
 		break
 		// /tmp/libsqlite3/sqlite-src-3370200/src/test_osinst.c:786:5:
 		fallthrough
 	case int32(m_OS_DELETE):
 		// /tmp/libsqlite3/sqlite-src-3370200/src/test_osinst.c:786:32:
-		zEvent = __ccgo_ts + 20314
+		zEvent = __ccgo_ts + 20306
 		// /tmp/libsqlite3/sqlite-src-3370200/src/test_osinst.c:786:52:
 		break
 		// /tmp/libsqlite3/sqlite-src-3370200/src/test_osinst.c:787:5:
 		fallthrough
 	case int32(m_OS_ACCESS):
 		// /tmp/libsqlite3/sqlite-src-3370200/src/test_osinst.c:787:32:
-		zEvent = __ccgo_ts + 20322
+		zEvent = __ccgo_ts + 20314
 		// /tmp/libsqlite3/sqlite-src-3370200/src/test_osinst.c:787:52:
 		break
 		// /tmp/libsqlite3/sqlite-src-3370200/src/test_osinst.c:788:5:
 		fallthrough
 	case int32(m_OS_FULLPATHNAME):
 		// /tmp/libsqlite3/sqlite-src-3370200/src/test_osinst.c:788:32:
-		zEvent = __ccgo_ts + 20330
+		zEvent = __ccgo_ts + 20322
 		// /tmp/libsqlite3/sqlite-src-3370200/src/test_osinst.c:788:58:
 		break
 		// /tmp/libsqlite3/sqlite-src-3370200/src/test_osinst.c:789:5:
 		fallthrough
 	case int32(m_OS_RANDOMNESS):
 		// /tmp/libsqlite3/sqlite-src-3370200/src/test_osinst.c:789:32:
-		zEvent = __ccgo_ts + 20344
+		zEvent = __ccgo_ts + 20336
 		// /tmp/libsqlite3/sqlite-src-3370200/src/test_osinst.c:789:56:
 		break
 		// /tmp/libsqlite3/sqlite-src-3370200/src/test_osinst.c:790:5:
 		fallthrough
 	case int32(m_OS_SLEEP):
 		// /tmp/libsqlite3/sqlite-src-3370200/src/test_osinst.c:790:32:
-		zEvent = __ccgo_ts + 20356
+		zEvent = __ccgo_ts + 20348
 		// /tmp/libsqlite3/sqlite-src-3370200/src/test_osinst.c:790:51:
 		break
 		// /tmp/libsqlite3/sqlite-src-3370200/src/test_osinst.c:791:5:
 		fallthrough
 	case int32(m_OS_CURRENTTIME):
 		// /tmp/libsqlite3/sqlite-src-3370200/src/test_osinst.c:791:32:
-		zEvent = __ccgo_ts + 20363
+		zEvent = __ccgo_ts + 20355
 		// /tmp/libsqlite3/sqlite-src-3370200/src/test_osinst.c:791:57:
 		break
 		// /tmp/libsqlite3/sqlite-src-3370200/src/test_osinst.c:793:5:
 		fallthrough
 	case int32(m_OS_SHMUNMAP):
 		// /tmp/libsqlite3/sqlite-src-3370200/src/test_osinst.c:793:32:
-		zEvent = __ccgo_ts + 20376
+		zEvent = __ccgo_ts + 20368
 		// /tmp/libsqlite3/sqlite-src-3370200/src/test_osinst.c:793:54:
 		break
 		// /tmp/libsqlite3/sqlite-src-3370200/src/test_osinst.c:794:5:
 		fallthrough
 	case int32(m_OS_SHMLOCK):
 		// /tmp/libsqlite3/sqlite-src-3370200/src/test_osinst.c:794:32:
-		zEvent = __ccgo_ts + 20386
+		zEvent = __ccgo_ts + 20378
 		// /tmp/libsqlite3/sqlite-src-3370200/src/test_osinst.c:794:53:
 		break
 		// /tmp/libsqlite3/sqlite-src-3370200/src/test_osinst.c:795:5:
 		fallthrough
 	case int32(m_OS_SHMBARRIER):
 		// /tmp/libsqlite3/sqlite-src-3370200/src/test_osinst.c:795:32:
-		zEvent = __ccgo_ts + 20395
+		zEvent = __ccgo_ts + 20387
 		// /tmp/libsqlite3/sqlite-src-3370200/src/test_osinst.c:795:56:
 		break
 		// /tmp/libsqlite3/sqlite-src-3370200/src/test_osinst.c:796:5:
 		fallthrough
 	case int32(m_OS_SHMMAP):
 		// /tmp/libsqlite3/sqlite-src-3370200/src/test_osinst.c:796:32:
-		zEvent = __ccgo_ts + 20407
+		zEvent = __ccgo_ts + 20399
 		// /tmp/libsqlite3/sqlite-src-3370200/src/test_osinst.c:796:52:
 		break
 		// /tmp/libsqlite3/sqlite-src-3370200/src/test_osinst.c:798:5:
 		fallthrough
 	case int32(m_OS_ANNOTATE):
 		// /tmp/libsqlite3/sqlite-src-3370200/src/test_osinst.c:798:32:
-		zEvent = __ccgo_ts + 20415
+		zEvent = __ccgo_ts + 20407
 		// /tmp/libsqlite3/sqlite-src-3370200/src/test_osinst.c:798:55:
 		break
 	}
@@ -119252,7 +119248,7 @@ func _vlogConnect(tls *libc.TLS, db uintptr, pAux uintptr, argc int32, argv uint
 		// /tmp/libsqlite3/sqlite-src-3370200/src/test_osinst.c:900:5:
 		(*(*func(*libc.TLS, uintptr, uintptr) int32)(unsafe.Pointer(&struct{ uintptr }{(*Tsqlite3_io_methods1)(unsafe.Pointer((*Tsqlite3_file)(unsafe.Pointer((*TVfslogVtab)(unsafe.Pointer(p)).FpFd)).FpMethods)).FxFileSize})))(tls, (*TVfslogVtab)(unsafe.Pointer(p)).FpFd, p+32)
 		// /tmp/libsqlite3/sqlite-src-3370200/src/test_osinst.c:901:5:
-		x_sqlite3_declare_vtab(tls, db, __ccgo_ts+20426)
+		x_sqlite3_declare_vtab(tls, db, __ccgo_ts+20418)
 		// /tmp/libsqlite3/sqlite-src-3370200/src/test_osinst.c:904:5:
 		*(*uintptr)(unsafe.Pointer(ppVtab)) = p
 	} else {
@@ -119542,7 +119538,7 @@ func _vlogRowid(tls *libc.TLS, pCursor uintptr, pRowid uintptr) (r int32) {
 
 // /tmp/libsqlite3/sqlite-src-3370200/src/test_osinst.c:1071:5:
 func x_sqlite3_vfslog_register(tls *libc.TLS, db uintptr) (r int32) { // /tmp/libsqlite3/sqlite-src-3370200/src/test_osinst.c:1095:3:
-	x_sqlite3_create_module(tls, db, __ccgo_ts+20481, uintptr(unsafe.Pointer(&_vfslog_module)), uintptr(0))
+	x_sqlite3_create_module(tls, db, __ccgo_ts+20473, uintptr(unsafe.Pointer(&_vfslog_module)), uintptr(0))
 	// /tmp/libsqlite3/sqlite-src-3370200/src/test_osinst.c:1096:3:
 	return m_SQLITE_OK
 }
@@ -119636,12 +119632,12 @@ func _test_vfslog(tls *libc.TLS, clientData uintptr, interp uintptr, objc int32,
 	// /tmp/libsqlite3/sqlite-src-3370200/src/test_osinst.c:1131:3:
 	if objc < int32(2) {
 		// /tmp/libsqlite3/sqlite-src-3370200/src/test_osinst.c:1132:5:
-		libtcl8_6.XTcl_WrongNumArgs(tls, interp, int32(1), objv, __ccgo_ts+17619)
+		libtcl8_6.XTcl_WrongNumArgs(tls, interp, int32(1), objv, __ccgo_ts+17611)
 		// /tmp/libsqlite3/sqlite-src-3370200/src/test_osinst.c:1133:5:
 		return int32(m_TCL_ERROR)
 	}
 	// /tmp/libsqlite3/sqlite-src-3370200/src/test_osinst.c:1135:3:
-	if libtcl8_6.XTcl_GetIndexFromObjStruct(tls, interp, *(*uintptr)(unsafe.Pointer(objv + 1*8)), uintptr(unsafe.Pointer(&_strs)), int32(8), __ccgo_ts+17635, 0, bp+64) != 0 {
+	if libtcl8_6.XTcl_GetIndexFromObjStruct(tls, interp, *(*uintptr)(unsafe.Pointer(objv + 1*8)), uintptr(unsafe.Pointer(&_strs)), int32(8), __ccgo_ts+17627, 0, bp+64) != 0 {
 		// /tmp/libsqlite3/sqlite-src-3370200/src/test_osinst.c:1136:5:
 		return int32(m_TCL_ERROR)
 	}
@@ -119652,7 +119648,7 @@ func _test_vfslog(tls *libc.TLS, clientData uintptr, interp uintptr, objc int32,
 		// /tmp/libsqlite3/sqlite-src-3370200/src/test_osinst.c:1143:7:
 		if objc != int32(4) {
 			// /tmp/libsqlite3/sqlite-src-3370200/src/test_osinst.c:1144:9:
-			libtcl8_6.XTcl_WrongNumArgs(tls, interp, int32(3), objv, __ccgo_ts+20519)
+			libtcl8_6.XTcl_WrongNumArgs(tls, interp, int32(3), objv, __ccgo_ts+20511)
 			// /tmp/libsqlite3/sqlite-src-3370200/src/test_osinst.c:1145:9:
 			return int32(m_TCL_ERROR)
 		}
@@ -119665,7 +119661,7 @@ func _test_vfslog(tls *libc.TLS, clientData uintptr, interp uintptr, objc int32,
 		// /tmp/libsqlite3/sqlite-src-3370200/src/test_osinst.c:1150:7:
 		if rc != m_SQLITE_OK {
 			// /tmp/libsqlite3/sqlite-src-3370200/src/test_osinst.c:1151:9:
-			libtcl8_6.XTcl_AppendResult(tls, interp, libc.VaList(bp+80, __ccgo_ts+20523, 0))
+			libtcl8_6.XTcl_AppendResult(tls, interp, libc.VaList(bp+80, __ccgo_ts+20515, 0))
 			// /tmp/libsqlite3/sqlite-src-3370200/src/test_osinst.c:1152:9:
 			return int32(m_TCL_ERROR)
 		}
@@ -119677,7 +119673,7 @@ func _test_vfslog(tls *libc.TLS, clientData uintptr, interp uintptr, objc int32,
 		// /tmp/libsqlite3/sqlite-src-3370200/src/test_osinst.c:1158:7:
 		if objc != int32(3) {
 			// /tmp/libsqlite3/sqlite-src-3370200/src/test_osinst.c:1159:9:
-			libtcl8_6.XTcl_WrongNumArgs(tls, interp, int32(2), objv, __ccgo_ts+20519)
+			libtcl8_6.XTcl_WrongNumArgs(tls, interp, int32(2), objv, __ccgo_ts+20511)
 			// /tmp/libsqlite3/sqlite-src-3370200/src/test_osinst.c:1160:9:
 			return int32(m_TCL_ERROR)
 		}
@@ -119688,7 +119684,7 @@ func _test_vfslog(tls *libc.TLS, clientData uintptr, interp uintptr, objc int32,
 		// /tmp/libsqlite3/sqlite-src-3370200/src/test_osinst.c:1164:7:
 		if rc != m_SQLITE_OK {
 			// /tmp/libsqlite3/sqlite-src-3370200/src/test_osinst.c:1165:9:
-			libtcl8_6.XTcl_AppendResult(tls, interp, libc.VaList(bp+80, __ccgo_ts+20523, 0))
+			libtcl8_6.XTcl_AppendResult(tls, interp, libc.VaList(bp+80, __ccgo_ts+20515, 0))
 			// /tmp/libsqlite3/sqlite-src-3370200/src/test_osinst.c:1166:9:
 			return int32(m_TCL_ERROR)
 		}
@@ -119701,7 +119697,7 @@ func _test_vfslog(tls *libc.TLS, clientData uintptr, interp uintptr, objc int32,
 		// /tmp/libsqlite3/sqlite-src-3370200/src/test_osinst.c:1175:7:
 		if objc != int32(5) {
 			// /tmp/libsqlite3/sqlite-src-3370200/src/test_osinst.c:1176:9:
-			libtcl8_6.XTcl_WrongNumArgs(tls, interp, int32(2), objv, __ccgo_ts+20530)
+			libtcl8_6.XTcl_WrongNumArgs(tls, interp, int32(2), objv, __ccgo_ts+20522)
 			// /tmp/libsqlite3/sqlite-src-3370200/src/test_osinst.c:1177:9:
 			return int32(m_TCL_ERROR)
 		}
@@ -119721,7 +119717,7 @@ func _test_vfslog(tls *libc.TLS, clientData uintptr, interp uintptr, objc int32,
 		// /tmp/libsqlite3/sqlite-src-3370200/src/test_osinst.c:1184:7:
 		if rc != m_SQLITE_OK {
 			// /tmp/libsqlite3/sqlite-src-3370200/src/test_osinst.c:1185:9:
-			libtcl8_6.XTcl_AppendResult(tls, interp, libc.VaList(bp+80, __ccgo_ts+20523, 0))
+			libtcl8_6.XTcl_AppendResult(tls, interp, libc.VaList(bp+80, __ccgo_ts+20515, 0))
 			// /tmp/libsqlite3/sqlite-src-3370200/src/test_osinst.c:1186:9:
 			return int32(m_TCL_ERROR)
 		}
@@ -119752,7 +119748,7 @@ func _test_vfslog(tls *libc.TLS, clientData uintptr, interp uintptr, objc int32,
 		// /tmp/libsqlite3/sqlite-src-3370200/src/test_osinst.c:1207:7:
 		if rc != m_SQLITE_OK {
 			// /tmp/libsqlite3/sqlite-src-3370200/src/test_osinst.c:1208:9:
-			libtcl8_6.XTcl_AppendResult(tls, interp, libc.VaList(bp+80, __ccgo_ts+20549, zDb, libc.UintptrFromInt32(0)))
+			libtcl8_6.XTcl_AppendResult(tls, interp, libc.VaList(bp+80, __ccgo_ts+20541, zDb, libc.UintptrFromInt32(0)))
 			// /tmp/libsqlite3/sqlite-src-3370200/src/test_osinst.c:1209:9:
 			return int32(m_TCL_ERROR)
 		}
@@ -119765,17 +119761,17 @@ func _test_vfslog(tls *libc.TLS, clientData uintptr, interp uintptr, objc int32,
 
 // /tmp/libsqlite3/sqlite-src-3370200/src/test_osinst.c:1127:21:
 var _strs = [5]uintptr{
-	0: __ccgo_ts + 20488,
-	1: __ccgo_ts + 20497,
-	2: __ccgo_ts + 20506,
-	3: __ccgo_ts + 20510,
+	0: __ccgo_ts + 20480,
+	1: __ccgo_ts + 20489,
+	2: __ccgo_ts + 20498,
+	3: __ccgo_ts + 20502,
 }
 
 // /tmp/libsqlite3/sqlite-src-3370200/src/test_osinst.c:1219:5:
 func x_SqlitetestOsinst_Init(tls *libc.TLS, interp uintptr) (r int32) {
 	// /tmp/libsqlite3/sqlite-src-3370200/src/test_osinst.c:1219:46:
 	// /tmp/libsqlite3/sqlite-src-3370200/src/test_osinst.c:1220:3:
-	libtcl8_6.XTcl_CreateObjCommand(tls, interp, __ccgo_ts+20481, __ccgo_fp(_test_vfslog), uintptr(0), uintptr(0))
+	libtcl8_6.XTcl_CreateObjCommand(tls, interp, __ccgo_ts+20473, __ccgo_fp(_test_vfslog), uintptr(0), uintptr(0))
 	// /tmp/libsqlite3/sqlite-src-3370200/src/test_osinst.c:1221:3:
 	return m_TCL_OK
 }
@@ -121684,7 +121680,7 @@ func _quotaFileControl(tls *libc.TLS, pConn uintptr, op int32, pArg uintptr) (r 
 	// /tmp/libsqlite3/sqlite-src-3370200/src/test_quota.c:677:3:
 	if op == int32(m_SQLITE_FCNTL_VFSNAME) && rc == m_SQLITE_OK {
 		// /tmp/libsqlite3/sqlite-src-3370200/src/test_quota.c:678:5:
-		*(*uintptr)(unsafe.Pointer(pArg)) = x_sqlite3_mprintf(tls, __ccgo_ts+20570, libc.VaList(bp+8, *(*uintptr)(unsafe.Pointer(pArg))))
+		*(*uintptr)(unsafe.Pointer(pArg)) = x_sqlite3_mprintf(tls, __ccgo_ts+20562, libc.VaList(bp+8, *(*uintptr)(unsafe.Pointer(pArg))))
 	}
 	// /tmp/libsqlite3/sqlite-src-3370200/src/test_quota.c:681:3:
 	return rc
@@ -121840,7 +121836,7 @@ func x_sqlite3_quota_initialize(tls *libc.TLS, zOrigVfsName uintptr, makeDefault
 	p1 = uintptr(unsafe.Pointer(&_gQuota)) + 8 + 4
 	*(*int32)(unsafe.Pointer(p1)) = int32(uint64(*(*int32)(unsafe.Pointer(p1))) + libc.Uint64FromInt64(16))
 	// /tmp/libsqlite3/sqlite-src-3370200/src/test_quota.c:765:3:
-	_gQuota.FsThisVfs.FzName = __ccgo_ts + 20579
+	_gQuota.FsThisVfs.FzName = __ccgo_ts + 20571
 	// /tmp/libsqlite3/sqlite-src-3370200/src/test_quota.c:766:3:
 	_gQuota.FsIoMethodsV1.FiVersion = int32(1)
 	// /tmp/libsqlite3/sqlite-src-3370200/src/test_quota.c:767:3:
@@ -122778,7 +122774,7 @@ func _tclQuotaCallback(tls *libc.TLS, zFilename uintptr, piLimit uintptr, iSize 
 		return
 	}
 	// /tmp/libsqlite3/sqlite-src-3370200/src/test_quota.c:1320:3:
-	pVarname = libtcl8_6.XTcl_NewStringObj(tls, __ccgo_ts+20585, -int32(1))
+	pVarname = libtcl8_6.XTcl_NewStringObj(tls, __ccgo_ts+20577, -int32(1))
 	// /tmp/libsqlite3/sqlite-src-3370200/src/test_quota.c:1321:3:
 	(*TTcl_Obj)(unsafe.Pointer(pVarname)).FrefCount++
 	// /tmp/libsqlite3/sqlite-src-3370200/src/test_quota.c:1322:3:
@@ -122890,7 +122886,7 @@ func _test_quota_initialize(tls *libc.TLS, clientData uintptr, interp uintptr, o
 	// /tmp/libsqlite3/sqlite-src-3370200/src/test_quota.c:1371:3:
 	if objc != int32(3) {
 		// /tmp/libsqlite3/sqlite-src-3370200/src/test_quota.c:1372:5:
-		libtcl8_6.XTcl_WrongNumArgs(tls, interp, int32(1), objv, __ccgo_ts+19446)
+		libtcl8_6.XTcl_WrongNumArgs(tls, interp, int32(1), objv, __ccgo_ts+19438)
 		// /tmp/libsqlite3/sqlite-src-3370200/src/test_quota.c:1373:5:
 		return int32(m_TCL_ERROR)
 	}
@@ -122962,7 +122958,7 @@ func _test_quota_set(tls *libc.TLS, clientData uintptr, interp uintptr, objc int
 	// /tmp/libsqlite3/sqlite-src-3370200/src/test_quota.c:1428:3:
 	if objc != int32(4) {
 		// /tmp/libsqlite3/sqlite-src-3370200/src/test_quota.c:1429:5:
-		libtcl8_6.XTcl_WrongNumArgs(tls, interp, int32(1), objv, __ccgo_ts+20596)
+		libtcl8_6.XTcl_WrongNumArgs(tls, interp, int32(1), objv, __ccgo_ts+20588)
 		// /tmp/libsqlite3/sqlite-src-3370200/src/test_quota.c:1430:5:
 		return int32(m_TCL_ERROR)
 	}
@@ -122985,7 +122981,7 @@ func _test_quota_set(tls *libc.TLS, clientData uintptr, interp uintptr, objc int
 		// /tmp/libsqlite3/sqlite-src-3370200/src/test_quota.c:1440:5:
 		if !(p != 0) {
 			// /tmp/libsqlite3/sqlite-src-3370200/src/test_quota.c:1441:7:
-			libtcl8_6.XTcl_SetResult(tls, interp, __ccgo_ts+17335, libc.UintptrFromInt32(0))
+			libtcl8_6.XTcl_SetResult(tls, interp, __ccgo_ts+17327, libc.UintptrFromInt32(0))
 			// /tmp/libsqlite3/sqlite-src-3370200/src/test_quota.c:1442:7:
 			return m_TCL_OK
 		}
@@ -123153,7 +123149,7 @@ func _test_quota_fopen(tls *libc.TLS, clientData uintptr, interp uintptr, objc i
 	// /tmp/libsqlite3/sqlite-src-3370200/src/test_quota.c:1552:3:
 	if objc != int32(3) {
 		// /tmp/libsqlite3/sqlite-src-3370200/src/test_quota.c:1553:5:
-		libtcl8_6.XTcl_WrongNumArgs(tls, interp, int32(1), objv, __ccgo_ts+20617)
+		libtcl8_6.XTcl_WrongNumArgs(tls, interp, int32(1), objv, __ccgo_ts+20609)
 		// /tmp/libsqlite3/sqlite-src-3370200/src/test_quota.c:1554:5:
 		return int32(m_TCL_ERROR)
 	}
@@ -123190,7 +123186,7 @@ func _test_quota_fread(tls *libc.TLS, clientData uintptr, interp uintptr, objc i
 	// /tmp/libsqlite3/sqlite-src-3370200/src/test_quota.c:1582:3:
 	if objc != int32(4) {
 		// /tmp/libsqlite3/sqlite-src-3370200/src/test_quota.c:1583:5:
-		libtcl8_6.XTcl_WrongNumArgs(tls, interp, int32(1), objv, __ccgo_ts+20631)
+		libtcl8_6.XTcl_WrongNumArgs(tls, interp, int32(1), objv, __ccgo_ts+20623)
 		// /tmp/libsqlite3/sqlite-src-3370200/src/test_quota.c:1584:5:
 		return int32(m_TCL_ERROR)
 	}
@@ -123246,7 +123242,7 @@ func _test_quota_fwrite(tls *libc.TLS, clientData uintptr, interp uintptr, objc 
 	// /tmp/libsqlite3/sqlite-src-3370200/src/test_quota.c:1616:3:
 	if objc != int32(5) {
 		// /tmp/libsqlite3/sqlite-src-3370200/src/test_quota.c:1617:5:
-		libtcl8_6.XTcl_WrongNumArgs(tls, interp, int32(1), objv, __ccgo_ts+20649)
+		libtcl8_6.XTcl_WrongNumArgs(tls, interp, int32(1), objv, __ccgo_ts+20641)
 		// /tmp/libsqlite3/sqlite-src-3370200/src/test_quota.c:1618:5:
 		return int32(m_TCL_ERROR)
 	}
@@ -123287,7 +123283,7 @@ func _test_quota_fclose(tls *libc.TLS, clientData uintptr, interp uintptr, objc 
 	// /tmp/libsqlite3/sqlite-src-3370200/src/test_quota.c:1641:3:
 	if objc != int32(2) {
 		// /tmp/libsqlite3/sqlite-src-3370200/src/test_quota.c:1642:5:
-		libtcl8_6.XTcl_WrongNumArgs(tls, interp, int32(1), objv, __ccgo_ts+13183)
+		libtcl8_6.XTcl_WrongNumArgs(tls, interp, int32(1), objv, __ccgo_ts+13175)
 		// /tmp/libsqlite3/sqlite-src-3370200/src/test_quota.c:1643:5:
 		return int32(m_TCL_ERROR)
 	}
@@ -123321,7 +123317,7 @@ func _test_quota_fflush(tls *libc.TLS, clientData uintptr, interp uintptr, objc 
 	// /tmp/libsqlite3/sqlite-src-3370200/src/test_quota.c:1664:3:
 	if objc != int32(2) && objc != int32(3) {
 		// /tmp/libsqlite3/sqlite-src-3370200/src/test_quota.c:1665:5:
-		libtcl8_6.XTcl_WrongNumArgs(tls, interp, int32(1), objv, __ccgo_ts+20675)
+		libtcl8_6.XTcl_WrongNumArgs(tls, interp, int32(1), objv, __ccgo_ts+20667)
 		// /tmp/libsqlite3/sqlite-src-3370200/src/test_quota.c:1666:5:
 		return int32(m_TCL_ERROR)
 	}
@@ -123361,7 +123357,7 @@ func _test_quota_fseek(tls *libc.TLS, clientData uintptr, interp uintptr, objc i
 	// /tmp/libsqlite3/sqlite-src-3370200/src/test_quota.c:1692:3:
 	if objc != int32(4) {
 		// /tmp/libsqlite3/sqlite-src-3370200/src/test_quota.c:1693:5:
-		libtcl8_6.XTcl_WrongNumArgs(tls, interp, int32(1), objv, __ccgo_ts+20693)
+		libtcl8_6.XTcl_WrongNumArgs(tls, interp, int32(1), objv, __ccgo_ts+20685)
 		// /tmp/libsqlite3/sqlite-src-3370200/src/test_quota.c:1694:5:
 		return int32(m_TCL_ERROR)
 	}
@@ -123375,22 +123371,22 @@ func _test_quota_fseek(tls *libc.TLS, clientData uintptr, interp uintptr, objc i
 	// /tmp/libsqlite3/sqlite-src-3370200/src/test_quota.c:1698:3:
 	zWhence = libtcl8_6.XTcl_GetString(tls, *(*uintptr)(unsafe.Pointer(objv + 3*8)))
 	// /tmp/libsqlite3/sqlite-src-3370200/src/test_quota.c:1699:3:
-	if libc.Xstrcmp(tls, zWhence, __ccgo_ts+20714) == 0 {
+	if libc.Xstrcmp(tls, zWhence, __ccgo_ts+20706) == 0 {
 		// /tmp/libsqlite3/sqlite-src-3370200/src/test_quota.c:1700:5:
 		whence = m_SEEK_SET
 	} else {
 		// /tmp/libsqlite3/sqlite-src-3370200/src/test_quota.c:1701:9:
-		if libc.Xstrcmp(tls, zWhence, __ccgo_ts+20723) == 0 {
+		if libc.Xstrcmp(tls, zWhence, __ccgo_ts+20715) == 0 {
 			// /tmp/libsqlite3/sqlite-src-3370200/src/test_quota.c:1702:5:
 			whence = int32(m_SEEK_CUR)
 		} else {
 			// /tmp/libsqlite3/sqlite-src-3370200/src/test_quota.c:1703:9:
-			if libc.Xstrcmp(tls, zWhence, __ccgo_ts+20732) == 0 {
+			if libc.Xstrcmp(tls, zWhence, __ccgo_ts+20724) == 0 {
 				// /tmp/libsqlite3/sqlite-src-3370200/src/test_quota.c:1704:5:
 				whence = int32(m_SEEK_END)
 			} else {
 				// /tmp/libsqlite3/sqlite-src-3370200/src/test_quota.c:1706:5:
-				libtcl8_6.XTcl_AppendResult(tls, interp, libc.VaList(bp+16, __ccgo_ts+20741, libc.UintptrFromInt32(0)))
+				libtcl8_6.XTcl_AppendResult(tls, interp, libc.VaList(bp+16, __ccgo_ts+20733, libc.UintptrFromInt32(0)))
 				// /tmp/libsqlite3/sqlite-src-3370200/src/test_quota.c:1708:5:
 				return int32(m_TCL_ERROR)
 			}
@@ -123418,7 +123414,7 @@ func _test_quota_rewind(tls *libc.TLS, clientData uintptr, interp uintptr, objc 
 	// /tmp/libsqlite3/sqlite-src-3370200/src/test_quota.c:1725:3:
 	if objc != int32(2) {
 		// /tmp/libsqlite3/sqlite-src-3370200/src/test_quota.c:1726:5:
-		libtcl8_6.XTcl_WrongNumArgs(tls, interp, int32(1), objv, __ccgo_ts+13183)
+		libtcl8_6.XTcl_WrongNumArgs(tls, interp, int32(1), objv, __ccgo_ts+13175)
 		// /tmp/libsqlite3/sqlite-src-3370200/src/test_quota.c:1727:5:
 		return int32(m_TCL_ERROR)
 	}
@@ -123445,7 +123441,7 @@ func _test_quota_ftell(tls *libc.TLS, clientData uintptr, interp uintptr, objc i
 	// /tmp/libsqlite3/sqlite-src-3370200/src/test_quota.c:1745:3:
 	if objc != int32(2) {
 		// /tmp/libsqlite3/sqlite-src-3370200/src/test_quota.c:1746:5:
-		libtcl8_6.XTcl_WrongNumArgs(tls, interp, int32(1), objv, __ccgo_ts+13183)
+		libtcl8_6.XTcl_WrongNumArgs(tls, interp, int32(1), objv, __ccgo_ts+13175)
 		// /tmp/libsqlite3/sqlite-src-3370200/src/test_quota.c:1747:5:
 		return int32(m_TCL_ERROR)
 	}
@@ -123478,7 +123474,7 @@ func _test_quota_ftruncate(tls *libc.TLS, clientData uintptr, interp uintptr, ob
 	// /tmp/libsqlite3/sqlite-src-3370200/src/test_quota.c:1768:3:
 	if objc != int32(3) {
 		// /tmp/libsqlite3/sqlite-src-3370200/src/test_quota.c:1769:5:
-		libtcl8_6.XTcl_WrongNumArgs(tls, interp, int32(1), objv, __ccgo_ts+20790)
+		libtcl8_6.XTcl_WrongNumArgs(tls, interp, int32(1), objv, __ccgo_ts+20782)
 		// /tmp/libsqlite3/sqlite-src-3370200/src/test_quota.c:1770:5:
 		return int32(m_TCL_ERROR)
 	}
@@ -123514,7 +123510,7 @@ func _test_quota_file_size(tls *libc.TLS, clientData uintptr, interp uintptr, ob
 	// /tmp/libsqlite3/sqlite-src-3370200/src/test_quota.c:1791:3:
 	if objc != int32(2) {
 		// /tmp/libsqlite3/sqlite-src-3370200/src/test_quota.c:1792:5:
-		libtcl8_6.XTcl_WrongNumArgs(tls, interp, int32(1), objv, __ccgo_ts+13183)
+		libtcl8_6.XTcl_WrongNumArgs(tls, interp, int32(1), objv, __ccgo_ts+13175)
 		// /tmp/libsqlite3/sqlite-src-3370200/src/test_quota.c:1793:5:
 		return int32(m_TCL_ERROR)
 	}
@@ -123543,7 +123539,7 @@ func _test_quota_file_truesize(tls *libc.TLS, clientData uintptr, interp uintptr
 	// /tmp/libsqlite3/sqlite-src-3370200/src/test_quota.c:1812:3:
 	if objc != int32(2) {
 		// /tmp/libsqlite3/sqlite-src-3370200/src/test_quota.c:1813:5:
-		libtcl8_6.XTcl_WrongNumArgs(tls, interp, int32(1), objv, __ccgo_ts+13183)
+		libtcl8_6.XTcl_WrongNumArgs(tls, interp, int32(1), objv, __ccgo_ts+13175)
 		// /tmp/libsqlite3/sqlite-src-3370200/src/test_quota.c:1814:5:
 		return int32(m_TCL_ERROR)
 	}
@@ -123574,7 +123570,7 @@ func _test_quota_file_mtime(tls *libc.TLS, clientData uintptr, interp uintptr, o
 	// /tmp/libsqlite3/sqlite-src-3370200/src/test_quota.c:1833:3:
 	if objc != int32(2) {
 		// /tmp/libsqlite3/sqlite-src-3370200/src/test_quota.c:1834:5:
-		libtcl8_6.XTcl_WrongNumArgs(tls, interp, int32(1), objv, __ccgo_ts+13183)
+		libtcl8_6.XTcl_WrongNumArgs(tls, interp, int32(1), objv, __ccgo_ts+13175)
 		// /tmp/libsqlite3/sqlite-src-3370200/src/test_quota.c:1835:5:
 		return int32(m_TCL_ERROR)
 	}
@@ -123637,7 +123633,7 @@ func _test_quota_glob(tls *libc.TLS, clientData uintptr, interp uintptr, objc in
 	// /tmp/libsqlite3/sqlite-src-3370200/src/test_quota.c:1881:3:
 	if objc != int32(3) {
 		// /tmp/libsqlite3/sqlite-src-3370200/src/test_quota.c:1882:5:
-		libtcl8_6.XTcl_WrongNumArgs(tls, interp, int32(1), objv, __ccgo_ts+20802)
+		libtcl8_6.XTcl_WrongNumArgs(tls, interp, int32(1), objv, __ccgo_ts+20794)
 		// /tmp/libsqlite3/sqlite-src-3370200/src/test_quota.c:1883:5:
 		return int32(m_TCL_ERROR)
 	}
@@ -123671,7 +123667,7 @@ func _test_quota_file_available(tls *libc.TLS, clientData uintptr, interp uintpt
 	// /tmp/libsqlite3/sqlite-src-3370200/src/test_quota.c:1906:3:
 	if objc != int32(2) {
 		// /tmp/libsqlite3/sqlite-src-3370200/src/test_quota.c:1907:5:
-		libtcl8_6.XTcl_WrongNumArgs(tls, interp, int32(1), objv, __ccgo_ts+13183)
+		libtcl8_6.XTcl_WrongNumArgs(tls, interp, int32(1), objv, __ccgo_ts+13175)
 		// /tmp/libsqlite3/sqlite-src-3370200/src/test_quota.c:1908:5:
 		return int32(m_TCL_ERROR)
 	}
@@ -123702,7 +123698,7 @@ func _test_quota_ferror(tls *libc.TLS, clientData uintptr, interp uintptr, objc 
 	// /tmp/libsqlite3/sqlite-src-3370200/src/test_quota.c:1929:3:
 	if objc != int32(2) {
 		// /tmp/libsqlite3/sqlite-src-3370200/src/test_quota.c:1930:5:
-		libtcl8_6.XTcl_WrongNumArgs(tls, interp, int32(1), objv, __ccgo_ts+13183)
+		libtcl8_6.XTcl_WrongNumArgs(tls, interp, int32(1), objv, __ccgo_ts+13175)
 		// /tmp/libsqlite3/sqlite-src-3370200/src/test_quota.c:1931:5:
 		return int32(m_TCL_ERROR)
 	}
@@ -123751,67 +123747,67 @@ var _aCmd6 = [21]struct {
 	FxProc uintptr
 }{
 	0: {
-		FzName: __ccgo_ts + 20815,
+		FzName: __ccgo_ts + 20807,
 	},
 	1: {
-		FzName: __ccgo_ts + 20840,
+		FzName: __ccgo_ts + 20832,
 	},
 	2: {
-		FzName: __ccgo_ts + 20863,
+		FzName: __ccgo_ts + 20855,
 	},
 	3: {
-		FzName: __ccgo_ts + 20881,
+		FzName: __ccgo_ts + 20873,
 	},
 	4: {
-		FzName: __ccgo_ts + 20900,
+		FzName: __ccgo_ts + 20892,
 	},
 	5: {
-		FzName: __ccgo_ts + 20919,
+		FzName: __ccgo_ts + 20911,
 	},
 	6: {
-		FzName: __ccgo_ts + 20939,
+		FzName: __ccgo_ts + 20931,
 	},
 	7: {
-		FzName: __ccgo_ts + 20959,
+		FzName: __ccgo_ts + 20951,
 	},
 	8: {
-		FzName: __ccgo_ts + 20980,
+		FzName: __ccgo_ts + 20972,
 	},
 	9: {
-		FzName: __ccgo_ts + 21001,
+		FzName: __ccgo_ts + 20993,
 	},
 	10: {
-		FzName: __ccgo_ts + 21022,
+		FzName: __ccgo_ts + 21014,
 	},
 	11: {
-		FzName: __ccgo_ts + 21042,
+		FzName: __ccgo_ts + 21034,
 	},
 	12: {
-		FzName: __ccgo_ts + 21063,
+		FzName: __ccgo_ts + 21055,
 	},
 	13: {
-		FzName: __ccgo_ts + 21083,
+		FzName: __ccgo_ts + 21075,
 	},
 	14: {
-		FzName: __ccgo_ts + 21107,
+		FzName: __ccgo_ts + 21099,
 	},
 	15: {
-		FzName: __ccgo_ts + 21131,
+		FzName: __ccgo_ts + 21123,
 	},
 	16: {
-		FzName: __ccgo_ts + 21159,
+		FzName: __ccgo_ts + 21151,
 	},
 	17: {
-		FzName: __ccgo_ts + 21184,
+		FzName: __ccgo_ts + 21176,
 	},
 	18: {
-		FzName: __ccgo_ts + 21205,
+		FzName: __ccgo_ts + 21197,
 	},
 	19: {
-		FzName: __ccgo_ts + 21224,
+		FzName: __ccgo_ts + 21216,
 	},
 	20: {
-		FzName: __ccgo_ts + 21253,
+		FzName: __ccgo_ts + 21245,
 	},
 }
 
@@ -123915,9 +123911,9 @@ func _register_circle_geom(tls *libc.TLS, clientData uintptr, interp uintptr, ob
 func x_Sqlitetestrtree_Init(tls *libc.TLS, interp uintptr) (r int32) {
 	// /tmp/libsqlite3/sqlite-src-3370200/src/test_rtree.c:507:45:
 	// /tmp/libsqlite3/sqlite-src-3370200/src/test_rtree.c:508:3:
-	libtcl8_6.XTcl_CreateObjCommand(tls, interp, __ccgo_ts+21274, __ccgo_fp(_register_cube_geom), uintptr(0), uintptr(0))
+	libtcl8_6.XTcl_CreateObjCommand(tls, interp, __ccgo_ts+21266, __ccgo_fp(_register_cube_geom), uintptr(0), uintptr(0))
 	// /tmp/libsqlite3/sqlite-src-3370200/src/test_rtree.c:509:3:
-	libtcl8_6.XTcl_CreateObjCommand(tls, interp, __ccgo_ts+21293, __ccgo_fp(_register_circle_geom), uintptr(0), uintptr(0))
+	libtcl8_6.XTcl_CreateObjCommand(tls, interp, __ccgo_ts+21285, __ccgo_fp(_register_circle_geom), uintptr(0), uintptr(0))
 	// /tmp/libsqlite3/sqlite-src-3370200/src/test_rtree.c:510:3:
 	return m_TCL_OK
 }
@@ -124085,7 +124081,7 @@ func _schemaCreate(tls *libc.TLS, db uintptr, pAux uintptr, argc int32, argv uin
 		// /tmp/libsqlite3/sqlite-src-3370200/src/test_schema.c:98:5:
 		(*Tschema_vtab)(unsafe.Pointer(pVtab)).Fdb = db
 		// /tmp/libsqlite3/sqlite-src-3370200/src/test_schema.c:100:5:
-		rc = x_sqlite3_declare_vtab(tls, db, __ccgo_ts+21314)
+		rc = x_sqlite3_declare_vtab(tls, db, __ccgo_ts+21306)
 	}
 	// /tmp/libsqlite3/sqlite-src-3370200/src/test_schema.c:103:3:
 	*(*uintptr)(unsafe.Pointer(ppVtab)) = pVtab
@@ -124292,12 +124288,12 @@ func _schemaNext(tls *libc.TLS, cur uintptr) (r int32) {
 			// /tmp/libsqlite3/sqlite-src-3370200/src/test_schema.c:199:7:
 			if x_sqlite3_column_int(tls, (*Tschema_cursor)(unsafe.Pointer(pCur)).FpDbList, 0) == int32(1) {
 				// /tmp/libsqlite3/sqlite-src-3370200/src/test_schema.c:200:9:
-				zSql = x_sqlite3_mprintf(tls, __ccgo_ts+21386, 0)
+				zSql = x_sqlite3_mprintf(tls, __ccgo_ts+21378, 0)
 			} else {
 				// /tmp/libsqlite3/sqlite-src-3370200/src/test_schema.c:204:22:
 				pDbList = (*Tschema_cursor)(unsafe.Pointer(pCur)).FpDbList
 				// /tmp/libsqlite3/sqlite-src-3370200/src/test_schema.c:205:9:
-				zSql = x_sqlite3_mprintf(tls, __ccgo_ts+21441, libc.VaList(bp+8, x_sqlite3_column_text(tls, pDbList, int32(1))))
+				zSql = x_sqlite3_mprintf(tls, __ccgo_ts+21433, libc.VaList(bp+8, x_sqlite3_column_text(tls, pDbList, int32(1))))
 			}
 			// /tmp/libsqlite3/sqlite-src-3370200/src/test_schema.c:210:7:
 			if !(zSql != 0) {
@@ -124321,7 +124317,7 @@ func _schemaNext(tls *libc.TLS, cur uintptr) (r int32) {
 		 ** pCur->pTableList.
 		 */
 		// /tmp/libsqlite3/sqlite-src-3370200/src/test_schema.c:224:5:
-		zSql = x_sqlite3_mprintf(tls, __ccgo_ts+21494, libc.VaList(bp+8, x_sqlite3_column_text(tls, (*Tschema_cursor)(unsafe.Pointer(pCur)).FpDbList, int32(1)), x_sqlite3_column_text(tls, (*Tschema_cursor)(unsafe.Pointer(pCur)).FpTableList, 0)))
+		zSql = x_sqlite3_mprintf(tls, __ccgo_ts+21486, libc.VaList(bp+8, x_sqlite3_column_text(tls, (*Tschema_cursor)(unsafe.Pointer(pCur)).FpDbList, int32(1)), x_sqlite3_column_text(tls, (*Tschema_cursor)(unsafe.Pointer(pCur)).FpTableList, 0)))
 		// /tmp/libsqlite3/sqlite-src-3370200/src/test_schema.c:229:5:
 		if !(zSql != 0) {
 			// /tmp/libsqlite3/sqlite-src-3370200/src/test_schema.c:230:7:
@@ -124374,7 +124370,7 @@ func _schemaFilter(tls *libc.TLS, pVtabCursor uintptr, idxNum int32, idxStr uint
 	// /tmp/libsqlite3/sqlite-src-3370200/src/test_schema.c:258:3:
 	_finalize(tls, pCur+8)
 	// /tmp/libsqlite3/sqlite-src-3370200/src/test_schema.c:259:3:
-	rc = x_sqlite3_prepare(tls, (*Tschema_vtab)(unsafe.Pointer(pVtab)).Fdb, __ccgo_ts+21519, -int32(1), pCur+8, uintptr(0))
+	rc = x_sqlite3_prepare(tls, (*Tschema_vtab)(unsafe.Pointer(pVtab)).Fdb, __ccgo_ts+21511, -int32(1), pCur+8, uintptr(0))
 	// /tmp/libsqlite3/sqlite-src-3370200/src/test_schema.c:260:3:
 	if rc == m_SQLITE_OK {
 		v1 = _schemaNext(tls, pVtabCursor)
@@ -124450,7 +124446,7 @@ func _register_schema_module(tls *libc.TLS, clientData TClientData, interp uintp
 		return int32(m_TCL_ERROR)
 	}
 	// /tmp/libsqlite3/sqlite-src-3370200/src/test_schema.c:322:3:
-	x_sqlite3_create_module(tls, *(*uintptr)(unsafe.Pointer(bp)), __ccgo_ts+21540, uintptr(unsafe.Pointer(&_schemaModule)), uintptr(0))
+	x_sqlite3_create_module(tls, *(*uintptr)(unsafe.Pointer(bp)), __ccgo_ts+21532, uintptr(unsafe.Pointer(&_schemaModule)), uintptr(0))
 	// /tmp/libsqlite3/sqlite-src-3370200/src/test_schema.c:324:3:
 	return m_TCL_OK
 }
@@ -124489,7 +124485,7 @@ var _aObjCmd11 = [1]struct {
 	FclientData uintptr
 }{
 	0: {
-		FzName: __ccgo_ts + 21547,
+		FzName: __ccgo_ts + 21539,
 	},
 }
 
@@ -124646,7 +124642,7 @@ func _superlockIsWal(tls *libc.TLS, pLock uintptr) (r int32) {
 	var _ /* pStmt at bp+0 */ uintptr
 	_, _ = rc, zMode /* Compiled PRAGMA journal_mode statement */
 	// /tmp/libsqlite3/sqlite-src-3370200/src/test_superlock.c:71:3:
-	rc = x_sqlite3_prepare(tls, (*TSuperlock)(unsafe.Pointer(pLock)).Fdb, __ccgo_ts+21570, -int32(1), bp, uintptr(0))
+	rc = x_sqlite3_prepare(tls, (*TSuperlock)(unsafe.Pointer(pLock)).Fdb, __ccgo_ts+21562, -int32(1), bp, uintptr(0))
 	// /tmp/libsqlite3/sqlite-src-3370200/src/test_superlock.c:72:3:
 	if rc != m_SQLITE_OK {
 		// /tmp/libsqlite3/sqlite-src-3370200/src/test_superlock.c:72:23:
@@ -124659,7 +124655,7 @@ func _superlockIsWal(tls *libc.TLS, pLock uintptr) (r int32) {
 		// /tmp/libsqlite3/sqlite-src-3370200/src/test_superlock.c:76:16:
 		zMode = x_sqlite3_column_text(tls, *(*uintptr)(unsafe.Pointer(bp)), 0)
 		// /tmp/libsqlite3/sqlite-src-3370200/src/test_superlock.c:77:5:
-		if zMode != 0 && libc.Xstrlen(tls, zMode) == uint64(3) && x_sqlite3_strnicmp(tls, __ccgo_ts+14541, zMode, int32(3)) == 0 {
+		if zMode != 0 && libc.Xstrlen(tls, zMode) == uint64(3) && x_sqlite3_strnicmp(tls, __ccgo_ts+14533, zMode, int32(3)) == 0 {
 			// /tmp/libsqlite3/sqlite-src-3370200/src/test_superlock.c:78:7:
 			(*TSuperlock)(unsafe.Pointer(pLock)).FbWal = int32(1)
 		}
@@ -124862,7 +124858,7 @@ func x_sqlite3demo_superlock(tls *libc.TLS, zPath uintptr, zVfs uintptr, xBusy u
 		// /tmp/libsqlite3/sqlite-src-3370200/src/test_superlock.c:218:5:
 		x_sqlite3_busy_handler(tls, (*TSuperlock)(unsafe.Pointer(pLock)).Fdb, __ccgo_fp(_superlockBusyHandler), bp)
 		// /tmp/libsqlite3/sqlite-src-3370200/src/test_superlock.c:219:5:
-		rc = x_sqlite3_exec(tls, (*TSuperlock)(unsafe.Pointer(pLock)).Fdb, __ccgo_ts+21595, uintptr(0), uintptr(0), uintptr(0))
+		rc = x_sqlite3_exec(tls, (*TSuperlock)(unsafe.Pointer(pLock)).Fdb, __ccgo_ts+21587, uintptr(0), uintptr(0), uintptr(0))
 	}
 	/* If the BEGIN EXCLUSIVE was executed successfully and this is a WAL
 	 ** database, call superlockWalLock() to obtain the extra locks required
@@ -124880,7 +124876,7 @@ func x_sqlite3demo_superlock(tls *libc.TLS, zPath uintptr, zVfs uintptr, xBusy u
 		rc = v1
 		if m_SQLITE_OK == v1 && (*TSuperlock)(unsafe.Pointer(pLock)).FbWal != 0 {
 			// /tmp/libsqlite3/sqlite-src-3370200/src/test_superlock.c:233:7:
-			rc = x_sqlite3_exec(tls, (*TSuperlock)(unsafe.Pointer(pLock)).Fdb, __ccgo_ts+21611, uintptr(0), uintptr(0), uintptr(0))
+			rc = x_sqlite3_exec(tls, (*TSuperlock)(unsafe.Pointer(pLock)).Fdb, __ccgo_ts+21603, uintptr(0), uintptr(0), uintptr(0))
 			// /tmp/libsqlite3/sqlite-src-3370200/src/test_superlock.c:234:7:
 			if rc == m_SQLITE_OK {
 				// /tmp/libsqlite3/sqlite-src-3370200/src/test_superlock.c:235:9:
@@ -125062,7 +125058,7 @@ func _superlock_cmd(tls *libc.TLS, cd TClientData, interp uintptr, objc int32, o
 	// /tmp/libsqlite3/sqlite-src-3370200/src/test_superlock.c:323:3:
 	if objc < int32(3) || objc > int32(5) {
 		// /tmp/libsqlite3/sqlite-src-3370200/src/test_superlock.c:324:5:
-		libtcl8_6.XTcl_WrongNumArgs(tls, interp, int32(1), objv, __ccgo_ts+21618)
+		libtcl8_6.XTcl_WrongNumArgs(tls, interp, int32(1), objv, __ccgo_ts+21610)
 		// /tmp/libsqlite3/sqlite-src-3370200/src/test_superlock.c:326:5:
 		return int32(m_TCL_ERROR)
 	}
@@ -125112,7 +125108,7 @@ func _superlock_cmd(tls *libc.TLS, cd TClientData, interp uintptr, objc int32, o
 func x_SqliteSuperlock_Init(tls *libc.TLS, interp uintptr) (r int32) {
 	// /tmp/libsqlite3/sqlite-src-3370200/src/test_superlock.c:359:45:
 	// /tmp/libsqlite3/sqlite-src-3370200/src/test_superlock.c:360:3:
-	libtcl8_6.XTcl_CreateObjCommand(tls, interp, __ccgo_ts+21659, __ccgo_fp(_superlock_cmd), uintptr(0), uintptr(0))
+	libtcl8_6.XTcl_CreateObjCommand(tls, interp, __ccgo_ts+21651, __ccgo_fp(_superlock_cmd), uintptr(0), uintptr(0))
 	// /tmp/libsqlite3/sqlite-src-3370200/src/test_superlock.c:361:3:
 	return m_TCL_OK
 }
@@ -125276,7 +125272,7 @@ func x_sqlite3TestInit(tls *libc.TLS, interp uintptr) (r uintptr) {
 	/* Since the primary use case for this binary is testing of SQLite,
 	 ** be sure to generate core files if we crash */
 	// /tmp/libsqlite3/sqlite-src-3370200/src/test_tclsh.c:124:3:
-	if libtcl8_6.XTcl_GetCommandInfo(tls, interp, __ccgo_ts+21681, bp) == 0 {
+	if libtcl8_6.XTcl_GetCommandInfo(tls, interp, __ccgo_ts+21673, bp) == 0 {
 		// /tmp/libsqlite3/sqlite-src-3370200/src/test_tclsh.c:125:5:
 		x_Sqlite3_Init(tls, interp)
 	}
@@ -125363,7 +125359,7 @@ func x_sqlite3TestInit(tls *libc.TLS, interp uintptr) (r uintptr) {
 	// /tmp/libsqlite3/sqlite-src-3370200/src/test_tclsh.c:177:3:
 	x_Sqlitetestvdbecov_Init(tls, interp)
 	// /tmp/libsqlite3/sqlite-src-3370200/src/test_tclsh.c:179:3:
-	libtcl8_6.XTcl_CreateObjCommand(tls, interp, __ccgo_ts+21689, __ccgo_fp(_load_testfixture_extensions), uintptr(0), uintptr(0))
+	libtcl8_6.XTcl_CreateObjCommand(tls, interp, __ccgo_ts+21681, __ccgo_fp(_load_testfixture_extensions), uintptr(0), uintptr(0))
 	// /tmp/libsqlite3/sqlite-src-3370200/src/test_tclsh.c:182:3:
 	return uintptr(0)
 }
@@ -125381,7 +125377,7 @@ func _load_testfixture_extensions(tls *libc.TLS, cd TClientData, interp uintptr,
 	// /tmp/libsqlite3/sqlite-src-3370200/src/test_tclsh.c:195:3:
 	if objc != int32(2) {
 		// /tmp/libsqlite3/sqlite-src-3370200/src/test_tclsh.c:196:5:
-		libtcl8_6.XTcl_WrongNumArgs(tls, interp, int32(1), objv, __ccgo_ts+21717)
+		libtcl8_6.XTcl_WrongNumArgs(tls, interp, int32(1), objv, __ccgo_ts+21709)
 		// /tmp/libsqlite3/sqlite-src-3370200/src/test_tclsh.c:197:5:
 		return int32(m_TCL_ERROR)
 	}
@@ -125658,7 +125654,7 @@ func _next2(tls *libc.TLS, interp uintptr, pCur uintptr, pObj uintptr) (r int32)
 		// /tmp/libsqlite3/sqlite-src-3370200/src/test_tclvar.c:143:5:
 		if !((*Ttclvar_cursor)(unsafe.Pointer(pCur)).FpList2 != 0) {
 			// /tmp/libsqlite3/sqlite-src-3370200/src/test_tclvar.c:144:7:
-			p = libtcl8_6.XTcl_NewStringObj(tls, __ccgo_ts+21723, -int32(1))
+			p = libtcl8_6.XTcl_NewStringObj(tls, __ccgo_ts+21715, -int32(1))
 			// /tmp/libsqlite3/sqlite-src-3370200/src/test_tclvar.c:145:7:
 			(*TTcl_Obj)(unsafe.Pointer(p)).FrefCount++
 			// /tmp/libsqlite3/sqlite-src-3370200/src/test_tclvar.c:146:7:
@@ -125761,7 +125757,7 @@ func _tclvarFilter(tls *libc.TLS, pVtabCursor uintptr, idxNum int32, idxStr uint
 	// /tmp/libsqlite3/sqlite-src-3370200/src/test_tclvar.c:194:14:
 	interp = (*Ttclvar_vtab)(unsafe.Pointer((*Tsqlite3_vtab_cursor)(unsafe.Pointer(pVtabCursor)).FpVtab)).Finterp
 	// /tmp/libsqlite3/sqlite-src-3370200/src/test_tclvar.c:195:11:
-	p = libtcl8_6.XTcl_NewStringObj(tls, __ccgo_ts+21735, -int32(1))
+	p = libtcl8_6.XTcl_NewStringObj(tls, __ccgo_ts+21727, -int32(1))
 	// /tmp/libsqlite3/sqlite-src-3370200/src/test_tclvar.c:197:14:
 	zEq = __ccgo_ts + 1095
 	// /tmp/libsqlite3/sqlite-src-3370200/src/test_tclvar.c:198:14:
@@ -125951,7 +125947,7 @@ func _tclvarColumn(tls *libc.TLS, cur uintptr, ctx uintptr, i int32) (r int32) {
 		// /tmp/libsqlite3/sqlite-src-3370200/src/test_tclvar.c:280:7:
 		if *(*uintptr)(unsafe.Pointer(bp + 8)) != 0 {
 			// /tmp/libsqlite3/sqlite-src-3370200/src/test_tclvar.c:281:9:
-			z3 = x_sqlite3_mprintf(tls, __ccgo_ts+21753, libc.VaList(bp+24, z1, z2))
+			z3 = x_sqlite3_mprintf(tls, __ccgo_ts+21745, libc.VaList(bp+24, z1, z2))
 			// /tmp/libsqlite3/sqlite-src-3370200/src/test_tclvar.c:282:9:
 			x_sqlite3_result_text(tls, ctx, z3, -int32(1), __ccgo_fp(x_sqlite3_free))
 		} else {
@@ -126049,7 +126045,7 @@ func _tclvarSetOmit(tls *libc.TLS, interp uintptr) (r int32) {
 	// /tmp/libsqlite3/sqlite-src-3370200/src/test_tclvar.c:326:7:
 	*(*int32)(unsafe.Pointer(bp)) = 0
 	// /tmp/libsqlite3/sqlite-src-3370200/src/test_tclvar.c:328:3:
-	rc = libtcl8_6.XTcl_Eval(tls, interp, __ccgo_ts+21760)
+	rc = libtcl8_6.XTcl_Eval(tls, interp, __ccgo_ts+21752)
 	// /tmp/libsqlite3/sqlite-src-3370200/src/test_tclvar.c:331:3:
 	if rc == m_TCL_OK {
 		// /tmp/libsqlite3/sqlite-src-3370200/src/test_tclvar.c:332:5:
@@ -126217,7 +126213,7 @@ func _tclvarUpdate(tls *libc.TLS, tab uintptr, argc int32, argv uintptr, pRowid 
 		// /tmp/libsqlite3/sqlite-src-3370200/src/test_tclvar.c:433:5:
 		if x_sqlite3_value_type(tls, *(*uintptr)(unsafe.Pointer(argv + 5*8))) != int32(m_SQLITE_TEXT) {
 			// /tmp/libsqlite3/sqlite-src-3370200/src/test_tclvar.c:434:7:
-			(*Tsqlite3_vtab)(unsafe.Pointer(tab)).FzErrMsg = x_sqlite3_mprintf(tls, __ccgo_ts+21821, 0)
+			(*Tsqlite3_vtab)(unsafe.Pointer(tab)).FzErrMsg = x_sqlite3_mprintf(tls, __ccgo_ts+21813, 0)
 			// /tmp/libsqlite3/sqlite-src-3370200/src/test_tclvar.c:435:7:
 			return int32(m_SQLITE_ERROR)
 		}
@@ -126257,7 +126253,7 @@ func _tclvarUpdate(tls *libc.TLS, tab uintptr, argc int32, argv uintptr, pRowid 
 		return m_SQLITE_OK
 	}
 	// /tmp/libsqlite3/sqlite-src-3370200/src/test_tclvar.c:461:3:
-	(*Tsqlite3_vtab)(unsafe.Pointer(tab)).FzErrMsg = x_sqlite3_mprintf(tls, __ccgo_ts+21856, 0)
+	(*Tsqlite3_vtab)(unsafe.Pointer(tab)).FzErrMsg = x_sqlite3_mprintf(tls, __ccgo_ts+21848, 0)
 	// /tmp/libsqlite3/sqlite-src-3370200/src/test_tclvar.c:462:3:
 	return int32(m_SQLITE_ERROR)
 }
@@ -126320,9 +126316,9 @@ func _register_tclvar_module(tls *libc.TLS, clientData TClientData, interp uintp
 		return int32(m_TCL_ERROR)
 	}
 	// /tmp/libsqlite3/sqlite-src-3370200/src/test_tclvar.c:514:3:
-	x_sqlite3_create_module(tls, *(*uintptr)(unsafe.Pointer(bp)), __ccgo_ts+14448, uintptr(unsafe.Pointer(&_tclvarModule)), interp)
+	x_sqlite3_create_module(tls, *(*uintptr)(unsafe.Pointer(bp)), __ccgo_ts+14440, uintptr(unsafe.Pointer(&_tclvarModule)), interp)
 	// /tmp/libsqlite3/sqlite-src-3370200/src/test_tclvar.c:515:3:
-	rc = libtcl8_6.XTcl_Eval(tls, interp, __ccgo_ts+21887)
+	rc = libtcl8_6.XTcl_Eval(tls, interp, __ccgo_ts+21879)
 	// /tmp/libsqlite3/sqlite-src-3370200/src/test_tclvar.c:537:3:
 	return rc
 }
@@ -126361,7 +126357,7 @@ var _aObjCmd12 = [1]struct {
 	FclientData uintptr
 }{
 	0: {
-		FzName: __ccgo_ts + 22423,
+		FzName: __ccgo_ts + 22415,
 	},
 }
 
@@ -126835,39 +126831,39 @@ func _tvfsResultCode(tls *libc.TLS, p uintptr, pRc uintptr) (r int32) {
 		FzCode uintptr
 	}{
 		0: {
-			FzCode: __ccgo_ts + 22446,
+			FzCode: __ccgo_ts + 22438,
 		},
 		1: {
 			FeCode: int32(m_SQLITE_ERROR),
-			FzCode: __ccgo_ts + 22456,
+			FzCode: __ccgo_ts + 22448,
 		},
 		2: {
 			FeCode: int32(m_SQLITE_IOERR),
-			FzCode: __ccgo_ts + 22469,
+			FzCode: __ccgo_ts + 22461,
 		},
 		3: {
 			FeCode: int32(m_SQLITE_LOCKED),
-			FzCode: __ccgo_ts + 22482,
+			FzCode: __ccgo_ts + 22474,
 		},
 		4: {
 			FeCode: int32(m_SQLITE_BUSY),
-			FzCode: __ccgo_ts + 22496,
+			FzCode: __ccgo_ts + 22488,
 		},
 		5: {
 			FeCode: int32(m_SQLITE_READONLY),
-			FzCode: __ccgo_ts + 22508,
+			FzCode: __ccgo_ts + 22500,
 		},
 		6: {
 			FeCode: libc.Int32FromInt32(m_SQLITE_READONLY) | libc.Int32FromInt32(5)<<libc.Int32FromInt32(8),
-			FzCode: __ccgo_ts + 22524,
+			FzCode: __ccgo_ts + 22516,
 		},
 		7: {
 			FeCode: int32(m_SQLITE_NOTFOUND),
-			FzCode: __ccgo_ts + 22549,
+			FzCode: __ccgo_ts + 22541,
 		},
 		8: {
 			FeCode: -int32(1),
-			FzCode: __ccgo_ts + 22565,
+			FzCode: __ccgo_ts + 22557,
 		},
 	}
 	// /tmp/libsqlite3/sqlite-src-3370200/src/test_vfs.c:245:3:
@@ -127006,7 +127002,7 @@ func _tvfsClose(tls *libc.TLS, pFile uintptr) (r int32) {
 	// /tmp/libsqlite3/sqlite-src-3370200/src/test_vfs.c:322:3:
 	if (*TTestvfs)(unsafe.Pointer(p)).FpScript != 0 && (*TTestvfs)(unsafe.Pointer(p)).Fmask&int32(m_TESTVFS_CLOSE_MASK) != 0 {
 		// /tmp/libsqlite3/sqlite-src-3370200/src/test_vfs.c:323:5:
-		_tvfsExecTcl(tls, p, __ccgo_ts+20209, libtcl8_6.XTcl_NewStringObj(tls, (*TTestvfsFd)(unsafe.Pointer(pFd)).FzFilename, -int32(1)), (*TTestvfsFd)(unsafe.Pointer(pFd)).FpShmId, uintptr(0), uintptr(0))
+		_tvfsExecTcl(tls, p, __ccgo_ts+20201, libtcl8_6.XTcl_NewStringObj(tls, (*TTestvfsFd)(unsafe.Pointer(pFd)).FzFilename, -int32(1)), (*TTestvfsFd)(unsafe.Pointer(pFd)).FpShmId, uintptr(0), uintptr(0))
 	}
 	// /tmp/libsqlite3/sqlite-src-3370200/src/test_vfs.c:328:3:
 	if (*TTestvfsFd)(unsafe.Pointer(pFd)).FpShmId != 0 {
@@ -127062,7 +127058,7 @@ func _tvfsRead(tls *libc.TLS, pFile uintptr, zBuf uintptr, iAmt int32, iOfst Tsq
 	// /tmp/libsqlite3/sqlite-src-3370200/src/test_vfs.c:353:3:
 	if (*TTestvfs)(unsafe.Pointer(p)).FpScript != 0 && (*TTestvfs)(unsafe.Pointer(p)).Fmask&int32(m_TESTVFS_READ_MASK) != 0 {
 		// /tmp/libsqlite3/sqlite-src-3370200/src/test_vfs.c:354:5:
-		_tvfsExecTcl(tls, p, __ccgo_ts+20216, libtcl8_6.XTcl_NewStringObj(tls, (*TTestvfsFd)(unsafe.Pointer(pFd)).FzFilename, -int32(1)), (*TTestvfsFd)(unsafe.Pointer(pFd)).FpShmId, uintptr(0), uintptr(0))
+		_tvfsExecTcl(tls, p, __ccgo_ts+20208, libtcl8_6.XTcl_NewStringObj(tls, (*TTestvfsFd)(unsafe.Pointer(pFd)).FzFilename, -int32(1)), (*TTestvfsFd)(unsafe.Pointer(pFd)).FpShmId, uintptr(0), uintptr(0))
 		// /tmp/libsqlite3/sqlite-src-3370200/src/test_vfs.c:357:5:
 		_tvfsResultCode(tls, p, bp)
 	}
@@ -127103,7 +127099,7 @@ func _tvfsWrite(tls *libc.TLS, pFile uintptr, zBuf uintptr, iAmt int32, iOfst Ts
 	// /tmp/libsqlite3/sqlite-src-3370200/src/test_vfs.c:381:3:
 	if (*TTestvfs)(unsafe.Pointer(p)).FpScript != 0 && (*TTestvfs)(unsafe.Pointer(p)).Fmask&int32(m_TESTVFS_WRITE_MASK) != 0 {
 		// /tmp/libsqlite3/sqlite-src-3370200/src/test_vfs.c:382:5:
-		_tvfsExecTcl(tls, p, __ccgo_ts+20222, libtcl8_6.XTcl_NewStringObj(tls, (*TTestvfsFd)(unsafe.Pointer(pFd)).FzFilename, -int32(1)), (*TTestvfsFd)(unsafe.Pointer(pFd)).FpShmId, libtcl8_6.XTcl_NewWideIntObj(tls, iOfst), libtcl8_6.XTcl_NewIntObj(tls, iAmt))
+		_tvfsExecTcl(tls, p, __ccgo_ts+20214, libtcl8_6.XTcl_NewStringObj(tls, (*TTestvfsFd)(unsafe.Pointer(pFd)).FzFilename, -int32(1)), (*TTestvfsFd)(unsafe.Pointer(pFd)).FpShmId, libtcl8_6.XTcl_NewWideIntObj(tls, iOfst), libtcl8_6.XTcl_NewIntObj(tls, iAmt))
 		// /tmp/libsqlite3/sqlite-src-3370200/src/test_vfs.c:386:5:
 		_tvfsResultCode(tls, p, bp)
 		// /tmp/libsqlite3/sqlite-src-3370200/src/test_vfs.c:387:5:
@@ -127154,7 +127150,7 @@ func _tvfsTruncate(tls *libc.TLS, pFile uintptr, size Tsqlite_int64) (r int32) {
 	// /tmp/libsqlite3/sqlite-src-3370200/src/test_vfs.c:411:3:
 	if (*TTestvfs)(unsafe.Pointer(p)).FpScript != 0 && (*TTestvfs)(unsafe.Pointer(p)).Fmask&int32(m_TESTVFS_TRUNCATE_MASK) != 0 {
 		// /tmp/libsqlite3/sqlite-src-3370200/src/test_vfs.c:412:5:
-		_tvfsExecTcl(tls, p, __ccgo_ts+20229, libtcl8_6.XTcl_NewStringObj(tls, (*TTestvfsFd)(unsafe.Pointer(pFd)).FzFilename, -int32(1)), (*TTestvfsFd)(unsafe.Pointer(pFd)).FpShmId, uintptr(0), uintptr(0))
+		_tvfsExecTcl(tls, p, __ccgo_ts+20221, libtcl8_6.XTcl_NewStringObj(tls, (*TTestvfsFd)(unsafe.Pointer(pFd)).FzFilename, -int32(1)), (*TTestvfsFd)(unsafe.Pointer(pFd)).FpShmId, uintptr(0), uintptr(0))
 		// /tmp/libsqlite3/sqlite-src-3370200/src/test_vfs.c:415:5:
 		_tvfsResultCode(tls, p, bp)
 	}
@@ -127210,14 +127206,14 @@ func _tvfsSync(tls *libc.TLS, pFile uintptr, flags int32) (r int32) {
 			fallthrough
 		case libc.Int32FromInt32(m_SQLITE_SYNC_NORMAL) | libc.Int32FromInt32(m_SQLITE_SYNC_DATAONLY):
 			// /tmp/libsqlite3/sqlite-src-3370200/src/test_vfs.c:443:9:
-			zFlags = __ccgo_ts + 22577
+			zFlags = __ccgo_ts + 22569
 			// /tmp/libsqlite3/sqlite-src-3370200/src/test_vfs.c:444:9:
 			break
 			// /tmp/libsqlite3/sqlite-src-3370200/src/test_vfs.c:445:7:
 			fallthrough
 		case libc.Int32FromInt32(m_SQLITE_SYNC_FULL) | libc.Int32FromInt32(m_SQLITE_SYNC_DATAONLY):
 			// /tmp/libsqlite3/sqlite-src-3370200/src/test_vfs.c:446:9:
-			zFlags = __ccgo_ts + 22593
+			zFlags = __ccgo_ts + 22585
 			// /tmp/libsqlite3/sqlite-src-3370200/src/test_vfs.c:447:9:
 			break
 			// /tmp/libsqlite3/sqlite-src-3370200/src/test_vfs.c:448:7:
@@ -127226,7 +127222,7 @@ func _tvfsSync(tls *libc.TLS, pFile uintptr, flags int32) (r int32) {
 			// /tmp/libsqlite3/sqlite-src-3370200/src/test_vfs.c:449:9:
 		}
 		// /tmp/libsqlite3/sqlite-src-3370200/src/test_vfs.c:452:5:
-		_tvfsExecTcl(tls, p, __ccgo_ts+12414, libtcl8_6.XTcl_NewStringObj(tls, (*TTestvfsFd)(unsafe.Pointer(pFd)).FzFilename, -int32(1)), (*TTestvfsFd)(unsafe.Pointer(pFd)).FpShmId, libtcl8_6.XTcl_NewStringObj(tls, zFlags, -int32(1)), uintptr(0))
+		_tvfsExecTcl(tls, p, __ccgo_ts+12406, libtcl8_6.XTcl_NewStringObj(tls, (*TTestvfsFd)(unsafe.Pointer(pFd)).FzFilename, -int32(1)), (*TTestvfsFd)(unsafe.Pointer(pFd)).FpShmId, libtcl8_6.XTcl_NewStringObj(tls, zFlags, -int32(1)), uintptr(0))
 		// /tmp/libsqlite3/sqlite-src-3370200/src/test_vfs.c:456:5:
 		_tvfsResultCode(tls, p, bp)
 	}
@@ -127284,7 +127280,7 @@ func _tvfsLock(tls *libc.TLS, pFile uintptr, eLock int32) (r int32) {
 		// /tmp/libsqlite3/sqlite-src-3370200/src/test_vfs.c:484:5:
 		x_sqlite3_snprintf(tls, int32(30), bp, __ccgo_ts+160, libc.VaList(bp+40, eLock))
 		// /tmp/libsqlite3/sqlite-src-3370200/src/test_vfs.c:485:5:
-		_tvfsExecTcl(tls, p, __ccgo_ts+20249, libtcl8_6.XTcl_NewStringObj(tls, (*TTestvfsFd)(unsafe.Pointer(pFd)).FzFilename, -int32(1)), libtcl8_6.XTcl_NewStringObj(tls, bp, -int32(1)), uintptr(0), uintptr(0))
+		_tvfsExecTcl(tls, p, __ccgo_ts+20241, libtcl8_6.XTcl_NewStringObj(tls, (*TTestvfsFd)(unsafe.Pointer(pFd)).FzFilename, -int32(1)), libtcl8_6.XTcl_NewStringObj(tls, bp, -int32(1)), uintptr(0), uintptr(0))
 	}
 	// /tmp/libsqlite3/sqlite-src-3370200/src/test_vfs.c:488:3:
 	return x_sqlite3OsLock(tls, (*TTestvfsFd)(unsafe.Pointer(pFd)).FpReal, eLock)
@@ -127313,7 +127309,7 @@ func _tvfsUnlock(tls *libc.TLS, pFile uintptr, eLock int32) (r int32) {
 		// /tmp/libsqlite3/sqlite-src-3370200/src/test_vfs.c:499:5:
 		x_sqlite3_snprintf(tls, int32(30), bp, __ccgo_ts+160, libc.VaList(bp+40, eLock))
 		// /tmp/libsqlite3/sqlite-src-3370200/src/test_vfs.c:500:5:
-		_tvfsExecTcl(tls, p, __ccgo_ts+20255, libtcl8_6.XTcl_NewStringObj(tls, (*TTestvfsFd)(unsafe.Pointer(pFd)).FzFilename, -int32(1)), libtcl8_6.XTcl_NewStringObj(tls, bp, -int32(1)), uintptr(0), uintptr(0))
+		_tvfsExecTcl(tls, p, __ccgo_ts+20247, libtcl8_6.XTcl_NewStringObj(tls, (*TTestvfsFd)(unsafe.Pointer(pFd)).FzFilename, -int32(1)), libtcl8_6.XTcl_NewStringObj(tls, bp, -int32(1)), uintptr(0), uintptr(0))
 	}
 	// /tmp/libsqlite3/sqlite-src-3370200/src/test_vfs.c:503:3:
 	if (*TTestvfs)(unsafe.Pointer(p)).Fmask&int32(m_TESTVFS_WRITE_MASK) != 0 && _tvfsInjectIoerr(tls, p) != 0 {
@@ -127342,7 +127338,7 @@ func _tvfsCheckReservedLock(tls *libc.TLS, pFile uintptr, pResOut uintptr) (r in
 	// /tmp/libsqlite3/sqlite-src-3370200/src/test_vfs.c:515:3:
 	if (*TTestvfs)(unsafe.Pointer(p)).FpScript != 0 && (*TTestvfs)(unsafe.Pointer(p)).Fmask&int32(m_TESTVFS_CKLOCK_MASK) != 0 {
 		// /tmp/libsqlite3/sqlite-src-3370200/src/test_vfs.c:516:5:
-		_tvfsExecTcl(tls, p, __ccgo_ts+22607, libtcl8_6.XTcl_NewStringObj(tls, (*TTestvfsFd)(unsafe.Pointer(pFd)).FzFilename, -int32(1)), uintptr(0), uintptr(0), uintptr(0))
+		_tvfsExecTcl(tls, p, __ccgo_ts+22599, libtcl8_6.XTcl_NewStringObj(tls, (*TTestvfsFd)(unsafe.Pointer(pFd)).FzFilename, -int32(1)), uintptr(0), uintptr(0), uintptr(0))
 	}
 	// /tmp/libsqlite3/sqlite-src-3370200/src/test_vfs.c:519:3:
 	return x_sqlite3OsCheckReservedLock(tls, (*TTestvfsFd)(unsafe.Pointer(pFd)).FpReal, pResOut)
@@ -127376,7 +127372,7 @@ func _tvfsFileControl(tls *libc.TLS, pFile uintptr, op int32, pArg uintptr) (r i
 		// /tmp/libsqlite3/sqlite-src-3370200/src/test_vfs.c:529:10:
 		argv = pArg
 		// /tmp/libsqlite3/sqlite-src-3370200/src/test_vfs.c:530:5:
-		if x_sqlite3_stricmp(tls, *(*uintptr)(unsafe.Pointer(argv + 1*8)), __ccgo_ts+22626) == 0 {
+		if x_sqlite3_stricmp(tls, *(*uintptr)(unsafe.Pointer(argv + 1*8)), __ccgo_ts+22618) == 0 {
 			// /tmp/libsqlite3/sqlite-src-3370200/src/test_vfs.c:531:11:
 			rc = int32(m_SQLITE_ERROR)
 			// /tmp/libsqlite3/sqlite-src-3370200/src/test_vfs.c:532:7:
@@ -127410,7 +127406,7 @@ func _tvfsFileControl(tls *libc.TLS, pFile uintptr, op int32, pArg uintptr) (r i
 			return rc
 		}
 		// /tmp/libsqlite3/sqlite-src-3370200/src/test_vfs.c:544:5:
-		if x_sqlite3_stricmp(tls, *(*uintptr)(unsafe.Pointer(argv + 1*8)), __ccgo_ts+22632) == 0 {
+		if x_sqlite3_stricmp(tls, *(*uintptr)(unsafe.Pointer(argv + 1*8)), __ccgo_ts+22624) == 0 {
 			// /tmp/libsqlite3/sqlite-src-3370200/src/test_vfs.c:545:7:
 			*(*uintptr)(unsafe.Pointer(argv)) = x_sqlite3_mprintf(tls, __ccgo_ts+183, libc.VaList(bp+16, (*TTestvfsFd)(unsafe.Pointer(pFd)).FzFilename))
 			// /tmp/libsqlite3/sqlite-src-3370200/src/test_vfs.c:546:7:
@@ -127426,15 +127422,15 @@ func _tvfsFileControl(tls *libc.TLS, pFile uintptr, op int32, pArg uintptr) (r i
 		}{
 			0: {
 				FiFnctl: int32(m_SQLITE_FCNTL_BEGIN_ATOMIC_WRITE),
-				FzFnctl: __ccgo_ts + 22641,
+				FzFnctl: __ccgo_ts + 22633,
 			},
 			1: {
 				FiFnctl: int32(m_SQLITE_FCNTL_COMMIT_ATOMIC_WRITE),
-				FzFnctl: __ccgo_ts + 22660,
+				FzFnctl: __ccgo_ts + 22652,
 			},
 			2: {
 				FiFnctl: int32(m_SQLITE_FCNTL_ZIPVFS),
-				FzFnctl: __ccgo_ts + 22680,
+				FzFnctl: __ccgo_ts + 22672,
 			},
 		}
 		// /tmp/libsqlite3/sqlite-src-3370200/src/test_vfs.c:559:5:
@@ -127457,7 +127453,7 @@ func _tvfsFileControl(tls *libc.TLS, pFile uintptr, op int32, pArg uintptr) (r i
 			// /tmp/libsqlite3/sqlite-src-3370200/src/test_vfs.c:563:11:
 			*(*int32)(unsafe.Pointer(bp)) = 0
 			// /tmp/libsqlite3/sqlite-src-3370200/src/test_vfs.c:564:7:
-			_tvfsExecTcl(tls, p, __ccgo_ts+20277, libtcl8_6.XTcl_NewStringObj(tls, (*TTestvfsFd)(unsafe.Pointer(pFd)).FzFilename, -int32(1)), libtcl8_6.XTcl_NewStringObj(tls, aF[i].FzFnctl, -int32(1)), uintptr(0), uintptr(0))
+			_tvfsExecTcl(tls, p, __ccgo_ts+20269, libtcl8_6.XTcl_NewStringObj(tls, (*TTestvfsFd)(unsafe.Pointer(pFd)).FzFilename, -int32(1)), libtcl8_6.XTcl_NewStringObj(tls, aF[i].FzFnctl, -int32(1)), uintptr(0), uintptr(0))
 			// /tmp/libsqlite3/sqlite-src-3370200/src/test_vfs.c:569:7:
 			_tvfsResultCode(tls, p, bp)
 			// /tmp/libsqlite3/sqlite-src-3370200/src/test_vfs.c:570:7:
@@ -127597,7 +127593,7 @@ func _tvfsOpen(tls *libc.TLS, pVfs uintptr, zName uintptr, pFile uintptr, flags 
 			}
 		}
 		// /tmp/libsqlite3/sqlite-src-3370200/src/test_vfs.c:648:5:
-		_tvfsExecTcl(tls, p, __ccgo_ts+11960, libtcl8_6.XTcl_NewStringObj(tls, (*TTestvfsFd)(unsafe.Pointer(pFd)).FzFilename, -int32(1)), pArg, uintptr(0), uintptr(0))
+		_tvfsExecTcl(tls, p, __ccgo_ts+11952, libtcl8_6.XTcl_NewStringObj(tls, (*TTestvfsFd)(unsafe.Pointer(pFd)).FzFilename, -int32(1)), pArg, uintptr(0), uintptr(0))
 		// /tmp/libsqlite3/sqlite-src-3370200/src/test_vfs.c:649:5:
 		// /tmp/libsqlite3/sqlite-src-3370200/src/test_vfs.c:649:5:
 		_objPtr = pArg
@@ -127639,7 +127635,7 @@ func _tvfsOpen(tls *libc.TLS, pVfs uintptr, zName uintptr, pFile uintptr, flags 
 	// /tmp/libsqlite3/sqlite-src-3370200/src/test_vfs.c:661:3:
 	if !(pId != 0) {
 		// /tmp/libsqlite3/sqlite-src-3370200/src/test_vfs.c:662:5:
-		pId = libtcl8_6.XTcl_NewStringObj(tls, __ccgo_ts+22687, -int32(1))
+		pId = libtcl8_6.XTcl_NewStringObj(tls, __ccgo_ts+22679, -int32(1))
 	}
 	// /tmp/libsqlite3/sqlite-src-3370200/src/test_vfs.c:664:3:
 	(*TTcl_Obj)(unsafe.Pointer(pId)).FrefCount++
@@ -127711,7 +127707,7 @@ func _tvfsDelete(tls *libc.TLS, pVfs uintptr, zPath uintptr, dirSync int32) (r i
 	// /tmp/libsqlite3/sqlite-src-3370200/src/test_vfs.c:706:3:
 	if (*TTestvfs)(unsafe.Pointer(p)).FpScript != 0 && (*TTestvfs)(unsafe.Pointer(p)).Fmask&int32(m_TESTVFS_DELETE_MASK) != 0 {
 		// /tmp/libsqlite3/sqlite-src-3370200/src/test_vfs.c:707:5:
-		_tvfsExecTcl(tls, p, __ccgo_ts+20314, libtcl8_6.XTcl_NewStringObj(tls, zPath, -int32(1)), libtcl8_6.XTcl_NewIntObj(tls, dirSync), uintptr(0), uintptr(0))
+		_tvfsExecTcl(tls, p, __ccgo_ts+20306, libtcl8_6.XTcl_NewStringObj(tls, zPath, -int32(1)), libtcl8_6.XTcl_NewIntObj(tls, dirSync), uintptr(0), uintptr(0))
 		// /tmp/libsqlite3/sqlite-src-3370200/src/test_vfs.c:710:5:
 		_tvfsResultCode(tls, p, bp)
 	}
@@ -127748,20 +127744,20 @@ func _tvfsAccess(tls *libc.TLS, pVfs uintptr, zPath uintptr, flags int32, pResOu
 		// /tmp/libsqlite3/sqlite-src-3370200/src/test_vfs.c:732:5:
 		if flags == m_SQLITE_ACCESS_EXISTS {
 			// /tmp/libsqlite3/sqlite-src-3370200/src/test_vfs.c:732:39:
-			zArg = __ccgo_ts + 22692
+			zArg = __ccgo_ts + 22684
 		}
 		// /tmp/libsqlite3/sqlite-src-3370200/src/test_vfs.c:733:5:
 		if flags == int32(m_SQLITE_ACCESS_READWRITE) {
 			// /tmp/libsqlite3/sqlite-src-3370200/src/test_vfs.c:733:42:
-			zArg = __ccgo_ts + 22713
+			zArg = __ccgo_ts + 22705
 		}
 		// /tmp/libsqlite3/sqlite-src-3370200/src/test_vfs.c:734:5:
 		if flags == int32(m_SQLITE_ACCESS_READ) {
 			// /tmp/libsqlite3/sqlite-src-3370200/src/test_vfs.c:734:37:
-			zArg = __ccgo_ts + 22737
+			zArg = __ccgo_ts + 22729
 		}
 		// /tmp/libsqlite3/sqlite-src-3370200/src/test_vfs.c:735:5:
-		_tvfsExecTcl(tls, p, __ccgo_ts+20322, libtcl8_6.XTcl_NewStringObj(tls, zPath, -int32(1)), libtcl8_6.XTcl_NewStringObj(tls, zArg, -int32(1)), uintptr(0), uintptr(0))
+		_tvfsExecTcl(tls, p, __ccgo_ts+20314, libtcl8_6.XTcl_NewStringObj(tls, zPath, -int32(1)), libtcl8_6.XTcl_NewStringObj(tls, zArg, -int32(1)), uintptr(0), uintptr(0))
 		// /tmp/libsqlite3/sqlite-src-3370200/src/test_vfs.c:738:5:
 		if _tvfsResultCode(tls, p, bp) != 0 {
 			// /tmp/libsqlite3/sqlite-src-3370200/src/test_vfs.c:739:7:
@@ -127804,7 +127800,7 @@ func _tvfsFullPathname(tls *libc.TLS, pVfs uintptr, zPath uintptr, nOut int32, z
 	// /tmp/libsqlite3/sqlite-src-3370200/src/test_vfs.c:762:3:
 	if (*TTestvfs)(unsafe.Pointer(p)).FpScript != 0 && (*TTestvfs)(unsafe.Pointer(p)).Fmask&int32(m_TESTVFS_FULLPATHNAME_MASK) != 0 {
 		// /tmp/libsqlite3/sqlite-src-3370200/src/test_vfs.c:764:5:
-		_tvfsExecTcl(tls, p, __ccgo_ts+20330, libtcl8_6.XTcl_NewStringObj(tls, zPath, -int32(1)), uintptr(0), uintptr(0), uintptr(0))
+		_tvfsExecTcl(tls, p, __ccgo_ts+20322, libtcl8_6.XTcl_NewStringObj(tls, zPath, -int32(1)), uintptr(0), uintptr(0), uintptr(0))
 		// /tmp/libsqlite3/sqlite-src-3370200/src/test_vfs.c:765:5:
 		if _tvfsResultCode(tls, p, bp) != 0 {
 			// /tmp/libsqlite3/sqlite-src-3370200/src/test_vfs.c:766:7:
@@ -127885,7 +127881,7 @@ func _tvfsShmOpen(tls *libc.TLS, pFile uintptr) (r int32) {
 	// /tmp/libsqlite3/sqlite-src-3370200/src/test_vfs.c:843:3:
 	if (*TTestvfs)(unsafe.Pointer(p)).FpScript != 0 && (*TTestvfs)(unsafe.Pointer(p)).Fmask&int32(m_TESTVFS_SHMOPEN_MASK) != 0 {
 		// /tmp/libsqlite3/sqlite-src-3370200/src/test_vfs.c:844:5:
-		_tvfsExecTcl(tls, p, __ccgo_ts+22756, libtcl8_6.XTcl_NewStringObj(tls, (*TTestvfsFd)(unsafe.Pointer(pFd)).FzFilename, -int32(1)), uintptr(0), uintptr(0), uintptr(0))
+		_tvfsExecTcl(tls, p, __ccgo_ts+22748, libtcl8_6.XTcl_NewStringObj(tls, (*TTestvfsFd)(unsafe.Pointer(pFd)).FzFilename, -int32(1)), uintptr(0), uintptr(0), uintptr(0))
 		// /tmp/libsqlite3/sqlite-src-3370200/src/test_vfs.c:845:5:
 		if _tvfsResultCode(tls, p, bp) != 0 {
 			// /tmp/libsqlite3/sqlite-src-3370200/src/test_vfs.c:846:7:
@@ -128007,7 +128003,7 @@ func _tvfsShmMap(tls *libc.TLS, pFile uintptr, iPage int32, pgsz int32, isWrite 
 		// /tmp/libsqlite3/sqlite-src-3370200/src/test_vfs.c:914:5:
 		libtcl8_6.XTcl_ListObjAppendElement(tls, (*TTestvfs)(unsafe.Pointer(p)).Finterp, pArg, libtcl8_6.XTcl_NewIntObj(tls, isWrite))
 		// /tmp/libsqlite3/sqlite-src-3370200/src/test_vfs.c:915:5:
-		_tvfsExecTcl(tls, p, __ccgo_ts+20407, libtcl8_6.XTcl_NewStringObj(tls, (*TTestvfsBuffer)(unsafe.Pointer((*TTestvfsFd)(unsafe.Pointer(pFd)).FpShm)).FzFile, -int32(1)), (*TTestvfsFd)(unsafe.Pointer(pFd)).FpShmId, pArg, uintptr(0))
+		_tvfsExecTcl(tls, p, __ccgo_ts+20399, libtcl8_6.XTcl_NewStringObj(tls, (*TTestvfsBuffer)(unsafe.Pointer((*TTestvfsFd)(unsafe.Pointer(pFd)).FpShm)).FzFile, -int32(1)), (*TTestvfsFd)(unsafe.Pointer(pFd)).FpShmId, pArg, uintptr(0))
 		// /tmp/libsqlite3/sqlite-src-3370200/src/test_vfs.c:918:5:
 		_tvfsResultCode(tls, p, bp)
 		// /tmp/libsqlite3/sqlite-src-3370200/src/test_vfs.c:919:5:
@@ -128074,23 +128070,23 @@ func _tvfsShmLock(tls *libc.TLS, pFile uintptr, ofst int32, n int32, flags int32
 		// /tmp/libsqlite3/sqlite-src-3370200/src/test_vfs.c:956:5:
 		if flags&int32(m_SQLITE_SHM_LOCK) != 0 {
 			// /tmp/libsqlite3/sqlite-src-3370200/src/test_vfs.c:957:7:
-			libc.Xstrcpy(tls, bp+4+uintptr(nLock), __ccgo_ts+22765)
+			libc.Xstrcpy(tls, bp+4+uintptr(nLock), __ccgo_ts+22757)
 		} else {
 			// /tmp/libsqlite3/sqlite-src-3370200/src/test_vfs.c:959:7:
-			libc.Xstrcpy(tls, bp+4+uintptr(nLock), __ccgo_ts+22771)
+			libc.Xstrcpy(tls, bp+4+uintptr(nLock), __ccgo_ts+22763)
 		}
 		// /tmp/libsqlite3/sqlite-src-3370200/src/test_vfs.c:961:5:
 		nLock += int32(libc.Xstrlen(tls, bp+4+uintptr(nLock)))
 		// /tmp/libsqlite3/sqlite-src-3370200/src/test_vfs.c:962:5:
 		if flags&int32(m_SQLITE_SHM_SHARED) != 0 {
 			// /tmp/libsqlite3/sqlite-src-3370200/src/test_vfs.c:963:7:
-			libc.Xstrcpy(tls, bp+4+uintptr(nLock), __ccgo_ts+22779)
+			libc.Xstrcpy(tls, bp+4+uintptr(nLock), __ccgo_ts+22771)
 		} else {
 			// /tmp/libsqlite3/sqlite-src-3370200/src/test_vfs.c:965:7:
-			libc.Xstrcpy(tls, bp+4+uintptr(nLock), __ccgo_ts+22787)
+			libc.Xstrcpy(tls, bp+4+uintptr(nLock), __ccgo_ts+22779)
 		}
 		// /tmp/libsqlite3/sqlite-src-3370200/src/test_vfs.c:967:5:
-		_tvfsExecTcl(tls, p, __ccgo_ts+20386, libtcl8_6.XTcl_NewStringObj(tls, (*TTestvfsBuffer)(unsafe.Pointer((*TTestvfsFd)(unsafe.Pointer(pFd)).FpShm)).FzFile, -int32(1)), (*TTestvfsFd)(unsafe.Pointer(pFd)).FpShmId, libtcl8_6.XTcl_NewStringObj(tls, bp+4, -int32(1)), uintptr(0))
+		_tvfsExecTcl(tls, p, __ccgo_ts+20378, libtcl8_6.XTcl_NewStringObj(tls, (*TTestvfsBuffer)(unsafe.Pointer((*TTestvfsFd)(unsafe.Pointer(pFd)).FpShm)).FzFile, -int32(1)), (*TTestvfsFd)(unsafe.Pointer(pFd)).FpShmId, libtcl8_6.XTcl_NewStringObj(tls, bp+4, -int32(1)), uintptr(0))
 		// /tmp/libsqlite3/sqlite-src-3370200/src/test_vfs.c:971:5:
 		_tvfsResultCode(tls, p, bp)
 	}
@@ -128180,7 +128176,7 @@ func _tvfsShmBarrier(tls *libc.TLS, pFile uintptr) {
 		// /tmp/libsqlite3/sqlite-src-3370200/src/test_vfs.c:1009:16:
 		z = v1
 		// /tmp/libsqlite3/sqlite-src-3370200/src/test_vfs.c:1010:5:
-		_tvfsExecTcl(tls, p, __ccgo_ts+20395, libtcl8_6.XTcl_NewStringObj(tls, z, -int32(1)), (*TTestvfsFd)(unsafe.Pointer(pFd)).FpShmId, uintptr(0), uintptr(0))
+		_tvfsExecTcl(tls, p, __ccgo_ts+20387, libtcl8_6.XTcl_NewStringObj(tls, z, -int32(1)), (*TTestvfsFd)(unsafe.Pointer(pFd)).FpShmId, uintptr(0), uintptr(0))
 	}
 	// /tmp/libsqlite3/sqlite-src-3370200/src/test_vfs.c:1013:3:
 	if (*TTestvfs)(unsafe.Pointer(p)).FisFullshm != 0 {
@@ -128226,7 +128222,7 @@ func _tvfsShmUnmap(tls *libc.TLS, pFile uintptr, deleteFlag int32) (r int32) {
 	// /tmp/libsqlite3/sqlite-src-3370200/src/test_vfs.c:1038:3:
 	if (*TTestvfs)(unsafe.Pointer(p)).FpScript != 0 && (*TTestvfs)(unsafe.Pointer(p)).Fmask&int32(m_TESTVFS_SHMCLOSE_MASK) != 0 {
 		// /tmp/libsqlite3/sqlite-src-3370200/src/test_vfs.c:1039:5:
-		_tvfsExecTcl(tls, p, __ccgo_ts+20376, libtcl8_6.XTcl_NewStringObj(tls, (*TTestvfsBuffer)(unsafe.Pointer((*TTestvfsFd)(unsafe.Pointer(pFd)).FpShm)).FzFile, -int32(1)), (*TTestvfsFd)(unsafe.Pointer(pFd)).FpShmId, uintptr(0), uintptr(0))
+		_tvfsExecTcl(tls, p, __ccgo_ts+20368, libtcl8_6.XTcl_NewStringObj(tls, (*TTestvfsBuffer)(unsafe.Pointer((*TTestvfsFd)(unsafe.Pointer(pFd)).FpShm)).FzFile, -int32(1)), (*TTestvfsFd)(unsafe.Pointer(pFd)).FpShmId, uintptr(0), uintptr(0))
 		// /tmp/libsqlite3/sqlite-src-3370200/src/test_vfs.c:1042:5:
 		_tvfsResultCode(tls, p, bp)
 	}
@@ -128342,38 +128338,38 @@ func _testvfs_obj_cmd(tls *libc.TLS, cd TClientData, interp uintptr, objc int32,
 		FeCmd  int32
 	}{
 		0: {
-			FzName: __ccgo_ts + 22798,
+			FzName: __ccgo_ts + 22790,
 		},
 		1: {
-			FzName: __ccgo_ts + 22802,
+			FzName: __ccgo_ts + 22794,
 			FeCmd:  1,
 		},
 		2: {
-			FzName: __ccgo_ts + 22809,
+			FzName: __ccgo_ts + 22801,
 			FeCmd:  2,
 		},
 		3: {
-			FzName: __ccgo_ts + 22816,
+			FzName: __ccgo_ts + 22808,
 			FeCmd:  3,
 		},
 		4: {
-			FzName: __ccgo_ts + 22822,
+			FzName: __ccgo_ts + 22814,
 			FeCmd:  7,
 		},
 		5: {
-			FzName: __ccgo_ts + 22830,
+			FzName: __ccgo_ts + 22822,
 			FeCmd:  8,
 		},
 		6: {
-			FzName: __ccgo_ts + 22842,
+			FzName: __ccgo_ts + 22834,
 			FeCmd:  4,
 		},
 		7: {
-			FzName: __ccgo_ts + 22849,
+			FzName: __ccgo_ts + 22841,
 			FeCmd:  5,
 		},
 		8: {
-			FzName: __ccgo_ts + 22857,
+			FzName: __ccgo_ts + 22849,
 			FeCmd:  6,
 		},
 		9: {},
@@ -128381,12 +128377,12 @@ func _testvfs_obj_cmd(tls *libc.TLS, cd TClientData, interp uintptr, objc int32,
 	// /tmp/libsqlite3/sqlite-src-3370200/src/test_vfs.c:1109:3:
 	if objc < int32(2) {
 		// /tmp/libsqlite3/sqlite-src-3370200/src/test_vfs.c:1110:5:
-		libtcl8_6.XTcl_WrongNumArgs(tls, interp, int32(1), objv, __ccgo_ts+22868)
+		libtcl8_6.XTcl_WrongNumArgs(tls, interp, int32(1), objv, __ccgo_ts+22860)
 		// /tmp/libsqlite3/sqlite-src-3370200/src/test_vfs.c:1111:5:
 		return int32(m_TCL_ERROR)
 	}
 	// /tmp/libsqlite3/sqlite-src-3370200/src/test_vfs.c:1113:3:
-	if libtcl8_6.XTcl_GetIndexFromObjStruct(tls, interp, *(*uintptr)(unsafe.Pointer(objv + 1*8)), bp, int32(16), __ccgo_ts+22883, 0, bp+160) != 0 {
+	if libtcl8_6.XTcl_GetIndexFromObjStruct(tls, interp, *(*uintptr)(unsafe.Pointer(objv + 1*8)), bp, int32(16), __ccgo_ts+22875, 0, bp+160) != 0 {
 		// /tmp/libsqlite3/sqlite-src-3370200/src/test_vfs.c:1116:5:
 		return int32(m_TCL_ERROR)
 	}
@@ -128402,7 +128398,7 @@ func _testvfs_obj_cmd(tls *libc.TLS, cd TClientData, interp uintptr, objc int32,
 		// /tmp/libsqlite3/sqlite-src-3370200/src/test_vfs.c:1126:7:
 		if objc != int32(3) && objc != int32(4) {
 			// /tmp/libsqlite3/sqlite-src-3370200/src/test_vfs.c:1127:9:
-			libtcl8_6.XTcl_WrongNumArgs(tls, interp, int32(2), objv, __ccgo_ts+22894)
+			libtcl8_6.XTcl_WrongNumArgs(tls, interp, int32(2), objv, __ccgo_ts+22886)
 			// /tmp/libsqlite3/sqlite-src-3370200/src/test_vfs.c:1128:9:
 			return int32(m_TCL_ERROR)
 		}
@@ -128413,7 +128409,7 @@ func _testvfs_obj_cmd(tls *libc.TLS, cd TClientData, interp uintptr, objc int32,
 		// /tmp/libsqlite3/sqlite-src-3370200/src/test_vfs.c:1135:7:
 		if rc != m_SQLITE_OK {
 			// /tmp/libsqlite3/sqlite-src-3370200/src/test_vfs.c:1136:9:
-			libtcl8_6.XTcl_AppendResult(tls, interp, libc.VaList(bp+480, __ccgo_ts+22907, libtcl8_6.XTcl_GetString(tls, *(*uintptr)(unsafe.Pointer(objv + 2*8))), 0))
+			libtcl8_6.XTcl_AppendResult(tls, interp, libc.VaList(bp+480, __ccgo_ts+22899, libtcl8_6.XTcl_GetString(tls, *(*uintptr)(unsafe.Pointer(objv + 2*8))), 0))
 			// /tmp/libsqlite3/sqlite-src-3370200/src/test_vfs.c:1138:9:
 			libtcl8_6.XTcl_Free(tls, zName)
 			// /tmp/libsqlite3/sqlite-src-3370200/src/test_vfs.c:1139:9:
@@ -128439,7 +128435,7 @@ func _testvfs_obj_cmd(tls *libc.TLS, cd TClientData, interp uintptr, objc int32,
 		// /tmp/libsqlite3/sqlite-src-3370200/src/test_vfs.c:1145:7:
 		if !(pBuffer != 0) {
 			// /tmp/libsqlite3/sqlite-src-3370200/src/test_vfs.c:1146:9:
-			libtcl8_6.XTcl_AppendResult(tls, interp, libc.VaList(bp+480, __ccgo_ts+22933, libtcl8_6.XTcl_GetString(tls, *(*uintptr)(unsafe.Pointer(objv + 2*8))), 0))
+			libtcl8_6.XTcl_AppendResult(tls, interp, libc.VaList(bp+480, __ccgo_ts+22925, libtcl8_6.XTcl_GetString(tls, *(*uintptr)(unsafe.Pointer(objv + 2*8))), 0))
 			// /tmp/libsqlite3/sqlite-src-3370200/src/test_vfs.c:1147:9:
 			return int32(m_TCL_ERROR)
 		}
@@ -128517,7 +128513,7 @@ func _testvfs_obj_cmd(tls *libc.TLS, cd TClientData, interp uintptr, objc int32,
 		// /tmp/libsqlite3/sqlite-src-3370200/src/test_vfs.c:1205:7:
 		if objc != int32(3) {
 			// /tmp/libsqlite3/sqlite-src-3370200/src/test_vfs.c:1206:9:
-			libtcl8_6.XTcl_WrongNumArgs(tls, interp, int32(2), objv, __ccgo_ts+17008)
+			libtcl8_6.XTcl_WrongNumArgs(tls, interp, int32(2), objv, __ccgo_ts+17000)
 			// /tmp/libsqlite3/sqlite-src-3370200/src/test_vfs.c:1207:9:
 			return int32(m_TCL_ERROR)
 		}
@@ -128556,7 +128552,7 @@ func _testvfs_obj_cmd(tls *libc.TLS, cd TClientData, interp uintptr, objc int32,
 			// /tmp/libsqlite3/sqlite-src-3370200/src/test_vfs.c:1222:9:
 			if iMethod == int32(libc.Uint64FromInt64(288)/libc.Uint64FromInt64(16)) {
 				// /tmp/libsqlite3/sqlite-src-3370200/src/test_vfs.c:1223:11:
-				libtcl8_6.XTcl_AppendResult(tls, interp, libc.VaList(bp+480, __ccgo_ts+22948, zElem, 0))
+				libtcl8_6.XTcl_AppendResult(tls, interp, libc.VaList(bp+480, __ccgo_ts+22940, zElem, 0))
 				// /tmp/libsqlite3/sqlite-src-3370200/src/test_vfs.c:1224:11:
 				return int32(m_TCL_ERROR)
 			}
@@ -128608,7 +128604,7 @@ func _testvfs_obj_cmd(tls *libc.TLS, cd TClientData, interp uintptr, objc int32,
 			// /tmp/libsqlite3/sqlite-src-3370200/src/test_vfs.c:1249:13:
 			if objc != int32(2) {
 				// /tmp/libsqlite3/sqlite-src-3370200/src/test_vfs.c:1250:9:
-				libtcl8_6.XTcl_WrongNumArgs(tls, interp, int32(2), objv, __ccgo_ts+22965)
+				libtcl8_6.XTcl_WrongNumArgs(tls, interp, int32(2), objv, __ccgo_ts+22957)
 				// /tmp/libsqlite3/sqlite-src-3370200/src/test_vfs.c:1251:9:
 				return int32(m_TCL_ERROR)
 			}
@@ -128696,7 +128692,7 @@ func _testvfs_obj_cmd(tls *libc.TLS, cd TClientData, interp uintptr, objc int32,
 			// /tmp/libsqlite3/sqlite-src-3370200/src/test_vfs.c:1291:13:
 			if objc != int32(2) {
 				// /tmp/libsqlite3/sqlite-src-3370200/src/test_vfs.c:1292:9:
-				libtcl8_6.XTcl_WrongNumArgs(tls, interp, int32(2), objv, __ccgo_ts+22974)
+				libtcl8_6.XTcl_WrongNumArgs(tls, interp, int32(2), objv, __ccgo_ts+22966)
 				// /tmp/libsqlite3/sqlite-src-3370200/src/test_vfs.c:1293:9:
 				return int32(m_TCL_ERROR)
 			}
@@ -128724,63 +128720,63 @@ func _testvfs_obj_cmd(tls *libc.TLS, cd TClientData, interp uintptr, objc int32,
 			FiValue int32
 		}{
 			0: {
-				FzName:  __ccgo_ts + 22988,
+				FzName:  __ccgo_ts + 22980,
 				FiValue: -int32(1),
 			},
 			1: {
-				FzName:  __ccgo_ts + 11101,
+				FzName:  __ccgo_ts + 11093,
 				FiValue: int32(m_SQLITE_IOCAP_ATOMIC),
 			},
 			2: {
-				FzName:  __ccgo_ts + 11108,
+				FzName:  __ccgo_ts + 11100,
 				FiValue: int32(m_SQLITE_IOCAP_ATOMIC512),
 			},
 			3: {
-				FzName:  __ccgo_ts + 11118,
+				FzName:  __ccgo_ts + 11110,
 				FiValue: int32(m_SQLITE_IOCAP_ATOMIC1K),
 			},
 			4: {
-				FzName:  __ccgo_ts + 11127,
+				FzName:  __ccgo_ts + 11119,
 				FiValue: int32(m_SQLITE_IOCAP_ATOMIC2K),
 			},
 			5: {
-				FzName:  __ccgo_ts + 11136,
+				FzName:  __ccgo_ts + 11128,
 				FiValue: int32(m_SQLITE_IOCAP_ATOMIC4K),
 			},
 			6: {
-				FzName:  __ccgo_ts + 11145,
+				FzName:  __ccgo_ts + 11137,
 				FiValue: int32(m_SQLITE_IOCAP_ATOMIC8K),
 			},
 			7: {
-				FzName:  __ccgo_ts + 11154,
+				FzName:  __ccgo_ts + 11146,
 				FiValue: int32(m_SQLITE_IOCAP_ATOMIC16K),
 			},
 			8: {
-				FzName:  __ccgo_ts + 11164,
+				FzName:  __ccgo_ts + 11156,
 				FiValue: int32(m_SQLITE_IOCAP_ATOMIC32K),
 			},
 			9: {
-				FzName:  __ccgo_ts + 11174,
+				FzName:  __ccgo_ts + 11166,
 				FiValue: int32(m_SQLITE_IOCAP_ATOMIC64K),
 			},
 			10: {
-				FzName:  __ccgo_ts + 11184,
+				FzName:  __ccgo_ts + 11176,
 				FiValue: int32(m_SQLITE_IOCAP_SEQUENTIAL),
 			},
 			11: {
-				FzName:  __ccgo_ts + 11195,
+				FzName:  __ccgo_ts + 11187,
 				FiValue: int32(m_SQLITE_IOCAP_SAFE_APPEND),
 			},
 			12: {
-				FzName:  __ccgo_ts + 22996,
+				FzName:  __ccgo_ts + 22988,
 				FiValue: int32(m_SQLITE_IOCAP_UNDELETABLE_WHEN_OPEN),
 			},
 			13: {
-				FzName:  __ccgo_ts + 11207,
+				FzName:  __ccgo_ts + 11199,
 				FiValue: int32(m_SQLITE_IOCAP_POWERSAFE_OVERWRITE),
 			},
 			14: {
-				FzName:  __ccgo_ts + 23018,
+				FzName:  __ccgo_ts + 23010,
 				FiValue: int32(m_SQLITE_IOCAP_IMMUTABLE),
 			},
 			15: {},
@@ -128788,7 +128784,7 @@ func _testvfs_obj_cmd(tls *libc.TLS, cd TClientData, interp uintptr, objc int32,
 		// /tmp/libsqlite3/sqlite-src-3370200/src/test_vfs.c:1329:7:
 		if objc > int32(3) {
 			// /tmp/libsqlite3/sqlite-src-3370200/src/test_vfs.c:1330:9:
-			libtcl8_6.XTcl_WrongNumArgs(tls, interp, int32(2), objv, __ccgo_ts+23028)
+			libtcl8_6.XTcl_WrongNumArgs(tls, interp, int32(2), objv, __ccgo_ts+23020)
 			// /tmp/libsqlite3/sqlite-src-3370200/src/test_vfs.c:1331:9:
 			return int32(m_TCL_ERROR)
 		}
@@ -128824,7 +128820,7 @@ func _testvfs_obj_cmd(tls *libc.TLS, cd TClientData, interp uintptr, objc int32,
 					FiValue int32
 				})(unsafe.Pointer(bp + 192)))[*(*int32)(unsafe.Pointer(bp + 460))].FiValue < 0 && *(*int32)(unsafe.Pointer(bp + 456)) > int32(1) {
 					// /tmp/libsqlite3/sqlite-src-3370200/src/test_vfs.c:1351:13:
-					libtcl8_6.XTcl_AppendResult(tls, interp, libc.VaList(bp+480, __ccgo_ts+23040, libtcl8_6.XTcl_GetString(tls, *(*uintptr)(unsafe.Pointer(objv + 2*8))), 0))
+					libtcl8_6.XTcl_AppendResult(tls, interp, libc.VaList(bp+480, __ccgo_ts+23032, libtcl8_6.XTcl_GetString(tls, *(*uintptr)(unsafe.Pointer(objv + 2*8))), 0))
 					// /tmp/libsqlite3/sqlite-src-3370200/src/test_vfs.c:1352:13:
 					return int32(m_TCL_ERROR)
 				}
@@ -128873,7 +128869,7 @@ func _testvfs_obj_cmd(tls *libc.TLS, cd TClientData, interp uintptr, objc int32,
 		// /tmp/libsqlite3/sqlite-src-3370200/src/test_vfs.c:1374:7:
 		if objc > int32(3) {
 			// /tmp/libsqlite3/sqlite-src-3370200/src/test_vfs.c:1375:9:
-			libtcl8_6.XTcl_WrongNumArgs(tls, interp, int32(2), objv, __ccgo_ts+23052)
+			libtcl8_6.XTcl_WrongNumArgs(tls, interp, int32(2), objv, __ccgo_ts+23044)
 			// /tmp/libsqlite3/sqlite-src-3370200/src/test_vfs.c:1376:9:
 			return int32(m_TCL_ERROR)
 		}
@@ -128904,75 +128900,75 @@ var _vfsmethod = [18]struct {
 	Fmask  int32
 }{
 	0: {
-		FzName: __ccgo_ts + 22756,
+		FzName: __ccgo_ts + 22748,
 		Fmask:  int32(m_TESTVFS_SHMOPEN_MASK),
 	},
 	1: {
-		FzName: __ccgo_ts + 20386,
+		FzName: __ccgo_ts + 20378,
 		Fmask:  int32(m_TESTVFS_SHMLOCK_MASK),
 	},
 	2: {
-		FzName: __ccgo_ts + 20395,
+		FzName: __ccgo_ts + 20387,
 		Fmask:  int32(m_TESTVFS_SHMBARRIER_MASK),
 	},
 	3: {
-		FzName: __ccgo_ts + 20376,
+		FzName: __ccgo_ts + 20368,
 		Fmask:  int32(m_TESTVFS_SHMCLOSE_MASK),
 	},
 	4: {
-		FzName: __ccgo_ts + 20407,
+		FzName: __ccgo_ts + 20399,
 		Fmask:  int32(m_TESTVFS_SHMMAP_MASK),
 	},
 	5: {
-		FzName: __ccgo_ts + 12414,
+		FzName: __ccgo_ts + 12406,
 		Fmask:  int32(m_TESTVFS_SYNC_MASK),
 	},
 	6: {
-		FzName: __ccgo_ts + 20314,
+		FzName: __ccgo_ts + 20306,
 		Fmask:  int32(m_TESTVFS_DELETE_MASK),
 	},
 	7: {
-		FzName: __ccgo_ts + 20222,
+		FzName: __ccgo_ts + 20214,
 		Fmask:  int32(m_TESTVFS_WRITE_MASK),
 	},
 	8: {
-		FzName: __ccgo_ts + 20216,
+		FzName: __ccgo_ts + 20208,
 		Fmask:  int32(m_TESTVFS_READ_MASK),
 	},
 	9: {
-		FzName: __ccgo_ts + 20229,
+		FzName: __ccgo_ts + 20221,
 		Fmask:  int32(m_TESTVFS_TRUNCATE_MASK),
 	},
 	10: {
-		FzName: __ccgo_ts + 11960,
+		FzName: __ccgo_ts + 11952,
 		Fmask:  int32(m_TESTVFS_OPEN_MASK),
 	},
 	11: {
-		FzName: __ccgo_ts + 20209,
+		FzName: __ccgo_ts + 20201,
 		Fmask:  int32(m_TESTVFS_CLOSE_MASK),
 	},
 	12: {
-		FzName: __ccgo_ts + 20322,
+		FzName: __ccgo_ts + 20314,
 		Fmask:  int32(m_TESTVFS_ACCESS_MASK),
 	},
 	13: {
-		FzName: __ccgo_ts + 20330,
+		FzName: __ccgo_ts + 20322,
 		Fmask:  int32(m_TESTVFS_FULLPATHNAME_MASK),
 	},
 	14: {
-		FzName: __ccgo_ts + 20255,
+		FzName: __ccgo_ts + 20247,
 		Fmask:  int32(m_TESTVFS_UNLOCK_MASK),
 	},
 	15: {
-		FzName: __ccgo_ts + 20249,
+		FzName: __ccgo_ts + 20241,
 		Fmask:  int32(m_TESTVFS_LOCK_MASK),
 	},
 	16: {
-		FzName: __ccgo_ts + 22607,
+		FzName: __ccgo_ts + 22599,
 		Fmask:  int32(m_TESTVFS_CKLOCK_MASK),
 	},
 	17: {
-		FzName: __ccgo_ts + 20277,
+		FzName: __ccgo_ts + 20269,
 		Fmask:  int32(m_TESTVFS_FCNTL_MASK),
 	},
 }
@@ -129090,7 +129086,7 @@ func _testvfs_cmd(tls *libc.TLS, cd TClientData, interp uintptr, objc int32, obj
 		// /tmp/libsqlite3/sqlite-src-3370200/src/test_vfs.c:1493:5:
 		zSwitch = libtcl8_6.XTcl_GetStringFromObj(tls, *(*uintptr)(unsafe.Pointer(objv + uintptr(i)*8)), bp+24)
 		// /tmp/libsqlite3/sqlite-src-3370200/src/test_vfs.c:1495:5:
-		if *(*int32)(unsafe.Pointer(bp + 24)) > int32(2) && 0 == libc.Xstrncmp(tls, __ccgo_ts+23060, zSwitch, uint64(*(*int32)(unsafe.Pointer(bp + 24)))) {
+		if *(*int32)(unsafe.Pointer(bp + 24)) > int32(2) && 0 == libc.Xstrncmp(tls, __ccgo_ts+23052, zSwitch, uint64(*(*int32)(unsafe.Pointer(bp + 24)))) {
 			// /tmp/libsqlite3/sqlite-src-3370200/src/test_vfs.c:1496:7:
 			if libtcl8_6.XTcl_GetBooleanFromObj(tls, interp, *(*uintptr)(unsafe.Pointer(objv + uintptr(i+int32(1))*8)), bp) != 0 {
 				// /tmp/libsqlite3/sqlite-src-3370200/src/test_vfs.c:1497:9:
@@ -129103,7 +129099,7 @@ func _testvfs_cmd(tls *libc.TLS, cd TClientData, interp uintptr, objc int32, obj
 			}
 		} else {
 			// /tmp/libsqlite3/sqlite-src-3370200/src/test_vfs.c:1501:10:
-			if *(*int32)(unsafe.Pointer(bp + 24)) > int32(2) && 0 == libc.Xstrncmp(tls, __ccgo_ts+11477, zSwitch, uint64(*(*int32)(unsafe.Pointer(bp + 24)))) {
+			if *(*int32)(unsafe.Pointer(bp + 24)) > int32(2) && 0 == libc.Xstrncmp(tls, __ccgo_ts+11469, zSwitch, uint64(*(*int32)(unsafe.Pointer(bp + 24)))) {
 				// /tmp/libsqlite3/sqlite-src-3370200/src/test_vfs.c:1502:7:
 				if libtcl8_6.XTcl_GetBooleanFromObj(tls, interp, *(*uintptr)(unsafe.Pointer(objv + uintptr(i+int32(1))*8)), bp+8) != 0 {
 					// /tmp/libsqlite3/sqlite-src-3370200/src/test_vfs.c:1503:9:
@@ -129111,7 +129107,7 @@ func _testvfs_cmd(tls *libc.TLS, cd TClientData, interp uintptr, objc int32, obj
 				}
 			} else {
 				// /tmp/libsqlite3/sqlite-src-3370200/src/test_vfs.c:1506:10:
-				if *(*int32)(unsafe.Pointer(bp + 24)) > int32(2) && 0 == libc.Xstrncmp(tls, __ccgo_ts+23067, zSwitch, uint64(*(*int32)(unsafe.Pointer(bp + 24)))) {
+				if *(*int32)(unsafe.Pointer(bp + 24)) > int32(2) && 0 == libc.Xstrncmp(tls, __ccgo_ts+23059, zSwitch, uint64(*(*int32)(unsafe.Pointer(bp + 24)))) {
 					// /tmp/libsqlite3/sqlite-src-3370200/src/test_vfs.c:1507:7:
 					if libtcl8_6.XTcl_GetIntFromObj(tls, interp, *(*uintptr)(unsafe.Pointer(objv + uintptr(i+int32(1))*8)), bp+12) != 0 {
 						// /tmp/libsqlite3/sqlite-src-3370200/src/test_vfs.c:1508:9:
@@ -129119,7 +129115,7 @@ func _testvfs_cmd(tls *libc.TLS, cd TClientData, interp uintptr, objc int32, obj
 					}
 				} else {
 					// /tmp/libsqlite3/sqlite-src-3370200/src/test_vfs.c:1511:10:
-					if *(*int32)(unsafe.Pointer(bp + 24)) > int32(2) && 0 == libc.Xstrncmp(tls, __ccgo_ts+23077, zSwitch, uint64(*(*int32)(unsafe.Pointer(bp + 24)))) {
+					if *(*int32)(unsafe.Pointer(bp + 24)) > int32(2) && 0 == libc.Xstrncmp(tls, __ccgo_ts+23069, zSwitch, uint64(*(*int32)(unsafe.Pointer(bp + 24)))) {
 						// /tmp/libsqlite3/sqlite-src-3370200/src/test_vfs.c:1512:7:
 						if libtcl8_6.XTcl_GetIntFromObj(tls, interp, *(*uintptr)(unsafe.Pointer(objv + uintptr(i+int32(1))*8)), bp+16) != 0 {
 							// /tmp/libsqlite3/sqlite-src-3370200/src/test_vfs.c:1513:9:
@@ -129127,7 +129123,7 @@ func _testvfs_cmd(tls *libc.TLS, cd TClientData, interp uintptr, objc int32, obj
 						}
 					} else {
 						// /tmp/libsqlite3/sqlite-src-3370200/src/test_vfs.c:1516:10:
-						if *(*int32)(unsafe.Pointer(bp + 24)) > int32(2) && 0 == libc.Xstrncmp(tls, __ccgo_ts+23089, zSwitch, uint64(*(*int32)(unsafe.Pointer(bp + 24)))) {
+						if *(*int32)(unsafe.Pointer(bp + 24)) > int32(2) && 0 == libc.Xstrncmp(tls, __ccgo_ts+23081, zSwitch, uint64(*(*int32)(unsafe.Pointer(bp + 24)))) {
 							// /tmp/libsqlite3/sqlite-src-3370200/src/test_vfs.c:1517:7:
 							if libtcl8_6.XTcl_GetIntFromObj(tls, interp, *(*uintptr)(unsafe.Pointer(objv + uintptr(i+int32(1))*8)), bp+20) != 0 {
 								// /tmp/libsqlite3/sqlite-src-3370200/src/test_vfs.c:1518:9:
@@ -129135,7 +129131,7 @@ func _testvfs_cmd(tls *libc.TLS, cd TClientData, interp uintptr, objc int32, obj
 							}
 						} else {
 							// /tmp/libsqlite3/sqlite-src-3370200/src/test_vfs.c:1521:10:
-							if *(*int32)(unsafe.Pointer(bp + 24)) > int32(2) && 0 == libc.Xstrncmp(tls, __ccgo_ts+23099, zSwitch, uint64(*(*int32)(unsafe.Pointer(bp + 24)))) {
+							if *(*int32)(unsafe.Pointer(bp + 24)) > int32(2) && 0 == libc.Xstrncmp(tls, __ccgo_ts+23091, zSwitch, uint64(*(*int32)(unsafe.Pointer(bp + 24)))) {
 								// /tmp/libsqlite3/sqlite-src-3370200/src/test_vfs.c:1522:7:
 								if libtcl8_6.XTcl_GetBooleanFromObj(tls, interp, *(*uintptr)(unsafe.Pointer(objv + uintptr(i+int32(1))*8)), bp+4) != 0 {
 									// /tmp/libsqlite3/sqlite-src-3370200/src/test_vfs.c:1523:9:
@@ -129226,7 +129222,7 @@ func _testvfs_cmd(tls *libc.TLS, cd TClientData, interp uintptr, objc int32, obj
 	// /tmp/libsqlite3/sqlite-src-3370200/src/test_vfs.c:1575:2:
 bad_args:
 	// /tmp/libsqlite3/sqlite-src-3370200/src/test_vfs.c:1576:3:
-	libtcl8_6.XTcl_WrongNumArgs(tls, interp, int32(1), objv, __ccgo_ts+23108)
+	libtcl8_6.XTcl_WrongNumArgs(tls, interp, int32(1), objv, __ccgo_ts+23100)
 	// /tmp/libsqlite3/sqlite-src-3370200/src/test_vfs.c:1577:3:
 	return int32(m_TCL_ERROR)
 }
@@ -129271,13 +129267,13 @@ func _test_vfs_shmlock(tls *libc.TLS, clientData uintptr, interp uintptr, objc i
 	_, _, _, _ = rc, zDbname, v1, v2
 	// /tmp/libsqlite3/sqlite-src-3370200/src/test_vfs.c:1592:14:
 	*(*[3]uintptr)(unsafe.Pointer(bp)) = [3]uintptr{
-		0: __ccgo_ts + 23212,
-		1: __ccgo_ts + 23219,
+		0: __ccgo_ts + 23204,
+		1: __ccgo_ts + 23211,
 	}
 	// /tmp/libsqlite3/sqlite-src-3370200/src/test_vfs.c:1593:14:
 	*(*[3]uintptr)(unsafe.Pointer(bp + 24)) = [3]uintptr{
-		0: __ccgo_ts + 23229,
-		1: __ccgo_ts + 23234,
+		0: __ccgo_ts + 23221,
+		1: __ccgo_ts + 23226,
 	}
 	// /tmp/libsqlite3/sqlite-src-3370200/src/test_vfs.c:1594:11:
 	*(*uintptr)(unsafe.Pointer(bp + 48)) = uintptr(0)
@@ -129296,14 +129292,14 @@ func _test_vfs_shmlock(tls *libc.TLS, clientData uintptr, interp uintptr, objc i
 	// /tmp/libsqlite3/sqlite-src-3370200/src/test_vfs.c:1603:3:
 	if objc != int32(7) {
 		// /tmp/libsqlite3/sqlite-src-3370200/src/test_vfs.c:1604:5:
-		libtcl8_6.XTcl_WrongNumArgs(tls, interp, int32(1), objv, __ccgo_ts+23241)
+		libtcl8_6.XTcl_WrongNumArgs(tls, interp, int32(1), objv, __ccgo_ts+23233)
 		// /tmp/libsqlite3/sqlite-src-3370200/src/test_vfs.c:1607:5:
 		return int32(m_TCL_ERROR)
 	}
 	// /tmp/libsqlite3/sqlite-src-3370200/src/test_vfs.c:1610:3:
 	zDbname = libtcl8_6.XTcl_GetString(tls, *(*uintptr)(unsafe.Pointer(objv + 2*8)))
 	// /tmp/libsqlite3/sqlite-src-3370200/src/test_vfs.c:1611:3:
-	if x_getDbPointer(tls, interp, libtcl8_6.XTcl_GetString(tls, *(*uintptr)(unsafe.Pointer(objv + 1*8))), bp+48) != 0 || libtcl8_6.XTcl_GetIndexFromObjStruct(tls, interp, *(*uintptr)(unsafe.Pointer(objv + 3*8)), bp, int32(8), __ccgo_ts+23293, 0, bp+56) != 0 || libtcl8_6.XTcl_GetIndexFromObjStruct(tls, interp, *(*uintptr)(unsafe.Pointer(objv + 4*8)), bp+24, int32(8), __ccgo_ts+23293, 0, bp+60) != 0 || libtcl8_6.XTcl_GetIntFromObj(tls, interp, *(*uintptr)(unsafe.Pointer(objv + 5*8)), bp+64) != 0 || libtcl8_6.XTcl_GetIntFromObj(tls, interp, *(*uintptr)(unsafe.Pointer(objv + 6*8)), bp+68) != 0 {
+	if x_getDbPointer(tls, interp, libtcl8_6.XTcl_GetString(tls, *(*uintptr)(unsafe.Pointer(objv + 1*8))), bp+48) != 0 || libtcl8_6.XTcl_GetIndexFromObjStruct(tls, interp, *(*uintptr)(unsafe.Pointer(objv + 3*8)), bp, int32(8), __ccgo_ts+23285, 0, bp+56) != 0 || libtcl8_6.XTcl_GetIndexFromObjStruct(tls, interp, *(*uintptr)(unsafe.Pointer(objv + 4*8)), bp+24, int32(8), __ccgo_ts+23285, 0, bp+60) != 0 || libtcl8_6.XTcl_GetIntFromObj(tls, interp, *(*uintptr)(unsafe.Pointer(objv + 5*8)), bp+64) != 0 || libtcl8_6.XTcl_GetIntFromObj(tls, interp, *(*uintptr)(unsafe.Pointer(objv + 6*8)), bp+68) != 0 {
 		// /tmp/libsqlite3/sqlite-src-3370200/src/test_vfs.c:1617:5:
 		return int32(m_TCL_ERROR)
 	}
@@ -129360,7 +129356,7 @@ func _test_vfs_set_readmark(tls *libc.TLS, clientData uintptr, interp uintptr, o
 	// /tmp/libsqlite3/sqlite-src-3370200/src/test_vfs.c:1648:3:
 	if objc != int32(4) && objc != int32(5) {
 		// /tmp/libsqlite3/sqlite-src-3370200/src/test_vfs.c:1649:5:
-		libtcl8_6.XTcl_WrongNumArgs(tls, interp, int32(1), objv, __ccgo_ts+23297)
+		libtcl8_6.XTcl_WrongNumArgs(tls, interp, int32(1), objv, __ccgo_ts+23289)
 		// /tmp/libsqlite3/sqlite-src-3370200/src/test_vfs.c:1650:5:
 		return int32(m_TCL_ERROR)
 	}
@@ -129390,7 +129386,7 @@ func _test_vfs_set_readmark(tls *libc.TLS, clientData uintptr, interp uintptr, o
 	// /tmp/libsqlite3/sqlite-src-3370200/src/test_vfs.c:1670:3:
 	if *(*uintptr)(unsafe.Pointer(bp + 24)) == uintptr(0) {
 		// /tmp/libsqlite3/sqlite-src-3370200/src/test_vfs.c:1671:5:
-		libtcl8_6.XTcl_AppendResult(tls, interp, libc.VaList(bp+40, __ccgo_ts+23320, 0))
+		libtcl8_6.XTcl_AppendResult(tls, interp, libc.VaList(bp+40, __ccgo_ts+23312, 0))
 		// /tmp/libsqlite3/sqlite-src-3370200/src/test_vfs.c:1672:5:
 		return int32(m_TCL_ERROR)
 	}
@@ -129413,11 +129409,11 @@ func _test_vfs_set_readmark(tls *libc.TLS, clientData uintptr, interp uintptr, o
 func x_Sqlitetestvfs_Init(tls *libc.TLS, interp uintptr) (r int32) {
 	// /tmp/libsqlite3/sqlite-src-3370200/src/test_vfs.c:1685:43:
 	// /tmp/libsqlite3/sqlite-src-3370200/src/test_vfs.c:1686:3:
-	libtcl8_6.XTcl_CreateObjCommand(tls, interp, __ccgo_ts+23344, __ccgo_fp(_testvfs_cmd), uintptr(0), uintptr(0))
+	libtcl8_6.XTcl_CreateObjCommand(tls, interp, __ccgo_ts+23336, __ccgo_fp(_testvfs_cmd), uintptr(0), uintptr(0))
 	// /tmp/libsqlite3/sqlite-src-3370200/src/test_vfs.c:1687:3:
-	libtcl8_6.XTcl_CreateObjCommand(tls, interp, __ccgo_ts+23352, __ccgo_fp(_test_vfs_shmlock), uintptr(0), uintptr(0))
+	libtcl8_6.XTcl_CreateObjCommand(tls, interp, __ccgo_ts+23344, __ccgo_fp(_test_vfs_shmlock), uintptr(0), uintptr(0))
 	// /tmp/libsqlite3/sqlite-src-3370200/src/test_vfs.c:1688:3:
-	libtcl8_6.XTcl_CreateObjCommand(tls, interp, __ccgo_ts+23364, __ccgo_fp(_test_vfs_set_readmark), uintptr(0), uintptr(0))
+	libtcl8_6.XTcl_CreateObjCommand(tls, interp, __ccgo_ts+23356, __ccgo_fp(_test_vfs_set_readmark), uintptr(0), uintptr(0))
 	// /tmp/libsqlite3/sqlite-src-3370200/src/test_vfs.c:1689:3:
 	return m_TCL_OK
 }
@@ -129549,14 +129545,14 @@ func x_opendir(tls *libc.TLS, dirname uintptr) (r TLPDIR) {
 	libc.Xmemset(tls, dirp, 0, uint64(552))
 	/* TODO: Remove this if Unix-style root paths are not used. */
 	// /tmp/libsqlite3/sqlite-src-3370200/src/test_windirent.c:61:3:
-	if x_sqlite3_stricmp(tls, dirname, __ccgo_ts+23381) == 0 {
+	if x_sqlite3_stricmp(tls, dirname, __ccgo_ts+23373) == 0 {
 		// /tmp/libsqlite3/sqlite-src-3370200/src/test_windirent.c:62:5:
-		dirname = x_windirent_getenv(tls, __ccgo_ts+15618)
+		dirname = x_windirent_getenv(tls, __ccgo_ts+15610)
 	}
 	// /tmp/libsqlite3/sqlite-src-3370200/src/test_windirent.c:65:3:
 	libc.Xmemset(tls, bp, 0, uint64(296))
 	// /tmp/libsqlite3/sqlite-src-3370200/src/test_windirent.c:66:3:
-	libc.X_snprintf(tls, bp+36, namesize, __ccgo_ts+23383, libc.VaList(bp+304, dirname))
+	libc.X_snprintf(tls, bp+36, namesize, __ccgo_ts+23375, libc.VaList(bp+304, dirname))
 	// /tmp/libsqlite3/sqlite-src-3370200/src/test_windirent.c:67:3:
 	(*TDIR)(unsafe.Pointer(dirp)).Fd_handle = libc.X_findfirst64i32(tls, bp+36, bp)
 	// /tmp/libsqlite3/sqlite-src-3370200/src/test_windirent.c:69:3:
@@ -130039,7 +130035,7 @@ func _test_create_window(tls *libc.TLS, clientData uintptr, interp uintptr, objc
 	// /tmp/libsqlite3/sqlite-src-3370200/src/test_window.c:147:3:
 	if objc != int32(7) {
 		// /tmp/libsqlite3/sqlite-src-3370200/src/test_window.c:148:5:
-		libtcl8_6.XTcl_WrongNumArgs(tls, interp, int32(1), objv, __ccgo_ts+23388)
+		libtcl8_6.XTcl_WrongNumArgs(tls, interp, int32(1), objv, __ccgo_ts+23380)
 		// /tmp/libsqlite3/sqlite-src-3370200/src/test_window.c:149:5:
 		return int32(m_TCL_ERROR)
 	}
@@ -130106,28 +130102,28 @@ func _test_create_window_misuse(tls *libc.TLS, clientData uintptr, interp uintpt
 		return int32(m_TCL_ERROR)
 	}
 	// /tmp/libsqlite3/sqlite-src-3370200/src/test_window.c:194:3:
-	rc = x_sqlite3_create_window_function(tls, *(*uintptr)(unsafe.Pointer(bp)), __ccgo_ts+23425, -int32(1), int32(m_SQLITE_UTF8), uintptr(0), uintptr(0), __ccgo_fp(_testWindowFinal), __ccgo_fp(_testWindowValue), __ccgo_fp(_testWindowInverse), uintptr(0))
+	rc = x_sqlite3_create_window_function(tls, *(*uintptr)(unsafe.Pointer(bp)), __ccgo_ts+23417, -int32(1), int32(m_SQLITE_UTF8), uintptr(0), uintptr(0), __ccgo_fp(_testWindowFinal), __ccgo_fp(_testWindowValue), __ccgo_fp(_testWindowInverse), uintptr(0))
 	// /tmp/libsqlite3/sqlite-src-3370200/src/test_window.c:198:3:
 	if rc != int32(m_SQLITE_MISUSE) {
 		// /tmp/libsqlite3/sqlite-src-3370200/src/test_window.c:198:27:
 		goto error
 	}
 	// /tmp/libsqlite3/sqlite-src-3370200/src/test_window.c:199:3:
-	rc = x_sqlite3_create_window_function(tls, *(*uintptr)(unsafe.Pointer(bp)), __ccgo_ts+23425, -int32(1), int32(m_SQLITE_UTF8), uintptr(0), __ccgo_fp(_testWindowStep), uintptr(0), __ccgo_fp(_testWindowValue), __ccgo_fp(_testWindowInverse), uintptr(0))
+	rc = x_sqlite3_create_window_function(tls, *(*uintptr)(unsafe.Pointer(bp)), __ccgo_ts+23417, -int32(1), int32(m_SQLITE_UTF8), uintptr(0), __ccgo_fp(_testWindowStep), uintptr(0), __ccgo_fp(_testWindowValue), __ccgo_fp(_testWindowInverse), uintptr(0))
 	// /tmp/libsqlite3/sqlite-src-3370200/src/test_window.c:203:3:
 	if rc != int32(m_SQLITE_MISUSE) {
 		// /tmp/libsqlite3/sqlite-src-3370200/src/test_window.c:203:27:
 		goto error
 	}
 	// /tmp/libsqlite3/sqlite-src-3370200/src/test_window.c:204:3:
-	rc = x_sqlite3_create_window_function(tls, *(*uintptr)(unsafe.Pointer(bp)), __ccgo_ts+23425, -int32(1), int32(m_SQLITE_UTF8), uintptr(0), __ccgo_fp(_testWindowStep), __ccgo_fp(_testWindowFinal), uintptr(0), __ccgo_fp(_testWindowInverse), uintptr(0))
+	rc = x_sqlite3_create_window_function(tls, *(*uintptr)(unsafe.Pointer(bp)), __ccgo_ts+23417, -int32(1), int32(m_SQLITE_UTF8), uintptr(0), __ccgo_fp(_testWindowStep), __ccgo_fp(_testWindowFinal), uintptr(0), __ccgo_fp(_testWindowInverse), uintptr(0))
 	// /tmp/libsqlite3/sqlite-src-3370200/src/test_window.c:208:3:
 	if rc != int32(m_SQLITE_MISUSE) {
 		// /tmp/libsqlite3/sqlite-src-3370200/src/test_window.c:208:27:
 		goto error
 	}
 	// /tmp/libsqlite3/sqlite-src-3370200/src/test_window.c:209:3:
-	rc = x_sqlite3_create_window_function(tls, *(*uintptr)(unsafe.Pointer(bp)), __ccgo_ts+23425, -int32(1), int32(m_SQLITE_UTF8), uintptr(0), __ccgo_fp(_testWindowStep), __ccgo_fp(_testWindowFinal), __ccgo_fp(_testWindowValue), uintptr(0), uintptr(0))
+	rc = x_sqlite3_create_window_function(tls, *(*uintptr)(unsafe.Pointer(bp)), __ccgo_ts+23417, -int32(1), int32(m_SQLITE_UTF8), uintptr(0), __ccgo_fp(_testWindowStep), __ccgo_fp(_testWindowFinal), __ccgo_fp(_testWindowValue), uintptr(0), uintptr(0))
 	// /tmp/libsqlite3/sqlite-src-3370200/src/test_window.c:213:3:
 	if rc != int32(m_SQLITE_MISUSE) {
 		// /tmp/libsqlite3/sqlite-src-3370200/src/test_window.c:213:27:
@@ -130138,7 +130134,7 @@ func _test_create_window_misuse(tls *libc.TLS, clientData uintptr, interp uintpt
 	// /tmp/libsqlite3/sqlite-src-3370200/src/test_window.c:217:2:
 error:
 	// /tmp/libsqlite3/sqlite-src-3370200/src/test_window.c:218:3:
-	libtcl8_6.XTcl_SetObjResult(tls, interp, libtcl8_6.XTcl_NewStringObj(tls, __ccgo_ts+23429, -int32(1)))
+	libtcl8_6.XTcl_SetObjResult(tls, interp, libtcl8_6.XTcl_NewStringObj(tls, __ccgo_ts+23421, -int32(1)))
 	// /tmp/libsqlite3/sqlite-src-3370200/src/test_window.c:219:3:
 	return int32(m_TCL_ERROR)
 }
@@ -130158,7 +130154,7 @@ func _sumintStep(tls *libc.TLS, ctx uintptr, nArg int32, apArg uintptr) {
 	// /tmp/libsqlite3/sqlite-src-3370200/src/test_window.c:233:3:
 	if x_sqlite3_value_type(tls, *(*uintptr)(unsafe.Pointer(apArg))) != int32(m_SQLITE_INTEGER) {
 		// /tmp/libsqlite3/sqlite-src-3370200/src/test_window.c:234:5:
-		x_sqlite3_result_error(tls, ctx, __ccgo_ts+23447, -int32(1))
+		x_sqlite3_result_error(tls, ctx, __ccgo_ts+23439, -int32(1))
 		// /tmp/libsqlite3/sqlite-src-3370200/src/test_window.c:235:5:
 		return
 	}
@@ -130259,7 +130255,7 @@ func _test_create_sumint(tls *libc.TLS, clientData uintptr, interp uintptr, objc
 		return int32(m_TCL_ERROR)
 	}
 	// /tmp/libsqlite3/sqlite-src-3370200/src/test_window.c:293:3:
-	rc = x_sqlite3_create_window_function(tls, *(*uintptr)(unsafe.Pointer(bp)), __ccgo_ts+23464, int32(1), int32(m_SQLITE_UTF8), uintptr(0), __ccgo_fp(_sumintStep), __ccgo_fp(_sumintFinal), __ccgo_fp(_sumintValue), __ccgo_fp(_sumintInverse), uintptr(0))
+	rc = x_sqlite3_create_window_function(tls, *(*uintptr)(unsafe.Pointer(bp)), __ccgo_ts+23456, int32(1), int32(m_SQLITE_UTF8), uintptr(0), __ccgo_fp(_sumintStep), __ccgo_fp(_sumintFinal), __ccgo_fp(_sumintValue), __ccgo_fp(_sumintInverse), uintptr(0))
 	// /tmp/libsqlite3/sqlite-src-3370200/src/test_window.c:298:3:
 	if rc != m_SQLITE_OK {
 		// /tmp/libsqlite3/sqlite-src-3370200/src/test_window.c:299:5:
@@ -130292,7 +130288,7 @@ func _test_override_sum(tls *libc.TLS, clientData uintptr, interp uintptr, objc 
 		return int32(m_TCL_ERROR)
 	}
 	// /tmp/libsqlite3/sqlite-src-3370200/src/test_window.c:320:3:
-	rc = x_sqlite3_create_function(tls, *(*uintptr)(unsafe.Pointer(bp)), __ccgo_ts+23471, -int32(1), int32(m_SQLITE_UTF8), uintptr(0), uintptr(0), __ccgo_fp(_sumintStep), __ccgo_fp(_sumintFinal))
+	rc = x_sqlite3_create_function(tls, *(*uintptr)(unsafe.Pointer(bp)), __ccgo_ts+23463, -int32(1), int32(m_SQLITE_UTF8), uintptr(0), uintptr(0), __ccgo_fp(_sumintStep), __ccgo_fp(_sumintFinal))
 	// /tmp/libsqlite3/sqlite-src-3370200/src/test_window.c:324:3:
 	if rc != m_SQLITE_OK {
 		// /tmp/libsqlite3/sqlite-src-3370200/src/test_window.c:325:5:
@@ -130335,16 +130331,16 @@ var _aObjCmd13 = [4]struct {
 	FclientData int32
 }{
 	0: {
-		FzName: __ccgo_ts + 23475,
+		FzName: __ccgo_ts + 23467,
 	},
 	1: {
-		FzName: __ccgo_ts + 23506,
+		FzName: __ccgo_ts + 23498,
 	},
 	2: {
-		FzName: __ccgo_ts + 23541,
+		FzName: __ccgo_ts + 23533,
 	},
 	3: {
-		FzName: __ccgo_ts + 23560,
+		FzName: __ccgo_ts + 23552,
 	},
 }
 
@@ -131242,7 +131238,7 @@ func _expertConnect(tls *libc.TLS, db uintptr, pAux uintptr, argc int32, argv ui
 	// /tmp/libsqlite3/sqlite-src-3370200/ext/expert/sqlite3expert.c:423:3:
 	if argc != int32(4) {
 		// /tmp/libsqlite3/sqlite-src-3370200/ext/expert/sqlite3expert.c:424:5:
-		*(*uintptr)(unsafe.Pointer(pzErr)) = x_sqlite3_mprintf(tls, __ccgo_ts+23578, 0)
+		*(*uintptr)(unsafe.Pointer(pzErr)) = x_sqlite3_mprintf(tls, __ccgo_ts+23570, 0)
 		// /tmp/libsqlite3/sqlite-src-3370200/ext/expert/sqlite3expert.c:425:5:
 		*(*int32)(unsafe.Pointer(bp)) = int32(m_SQLITE_ERROR)
 	} else {
@@ -131593,7 +131589,7 @@ func _expertFilter(tls *libc.TLS, cur uintptr, idxNum int32, idxStr uintptr, arg
 	// /tmp/libsqlite3/sqlite-src-3370200/ext/expert/sqlite3expert.c:627:3:
 	if rc == m_SQLITE_OK {
 		// /tmp/libsqlite3/sqlite-src-3370200/ext/expert/sqlite3expert.c:628:5:
-		rc = _idxPrintfPrepareStmt(tls, (*Tsqlite3expert)(unsafe.Pointer(pExpert)).Fdb, pCsr+8, pVtab+16, __ccgo_ts+23594, libc.VaList(bp+8, (*TIdxTable)(unsafe.Pointer((*TExpertVtab)(unsafe.Pointer(pVtab)).FpTab)).FzName))
+		rc = _idxPrintfPrepareStmt(tls, (*Tsqlite3expert)(unsafe.Pointer(pExpert)).Fdb, pCsr+8, pVtab+16, __ccgo_ts+23586, libc.VaList(bp+8, (*TIdxTable)(unsafe.Pointer((*TExpertVtab)(unsafe.Pointer(pVtab)).FpTab)).FzName))
 	}
 	// /tmp/libsqlite3/sqlite-src-3370200/ext/expert/sqlite3expert.c:633:3:
 	if rc == m_SQLITE_OK {
@@ -131606,7 +131602,7 @@ func _expertFilter(tls *libc.TLS, cur uintptr, idxNum int32, idxStr uintptr, arg
 
 // /tmp/libsqlite3/sqlite-src-3370200/ext/expert/sqlite3expert.c:639:12:
 func _idxRegisterVtab(tls *libc.TLS, p uintptr) (r int32) { // /tmp/libsqlite3/sqlite-src-3370200/ext/expert/sqlite3expert.c:667:3:
-	return x_sqlite3_create_module(tls, (*Tsqlite3expert)(unsafe.Pointer(p)).Fdbv, __ccgo_ts+23631, uintptr(unsafe.Pointer(&_expertModule)), p)
+	return x_sqlite3_create_module(tls, (*Tsqlite3expert)(unsafe.Pointer(p)).Fdbv, __ccgo_ts+23623, uintptr(unsafe.Pointer(&_expertModule)), p)
 }
 
 // /tmp/libsqlite3/sqlite-src-3370200/ext/expert/sqlite3expert.c:639:45:
@@ -131698,7 +131694,7 @@ func _idxGetTableInfo(tls *libc.TLS, db uintptr, zTab uintptr, ppOut uintptr, pz
 	// /tmp/libsqlite3/sqlite-src-3370200/ext/expert/sqlite3expert.c:705:7:
 	nPk = 0
 	// /tmp/libsqlite3/sqlite-src-3370200/ext/expert/sqlite3expert.c:707:3:
-	*(*int32)(unsafe.Pointer(bp + 8)) = _idxPrintfPrepareStmt(tls, db, bp, pzErrmsg, __ccgo_ts+23638, libc.VaList(bp+40, zTab))
+	*(*int32)(unsafe.Pointer(bp + 8)) = _idxPrintfPrepareStmt(tls, db, bp, pzErrmsg, __ccgo_ts+23630, libc.VaList(bp+40, zTab))
 	// /tmp/libsqlite3/sqlite-src-3370200/ext/expert/sqlite3expert.c:708:3:
 	for *(*int32)(unsafe.Pointer(bp + 8)) == m_SQLITE_OK && int32(m_SQLITE_ROW) == x_sqlite3_step(tls, *(*uintptr)(unsafe.Pointer(bp))) {
 		// /tmp/libsqlite3/sqlite-src-3370200/ext/expert/sqlite3expert.c:709:16:
@@ -131712,7 +131708,7 @@ func _idxGetTableInfo(tls *libc.TLS, db uintptr, zTab uintptr, ppOut uintptr, pz
 		// /tmp/libsqlite3/sqlite-src-3370200/ext/expert/sqlite3expert.c:715:5:
 		if *(*uintptr)(unsafe.Pointer(bp + 16)) == uintptr(0) {
 			// /tmp/libsqlite3/sqlite-src-3370200/ext/expert/sqlite3expert.c:715:22:
-			*(*uintptr)(unsafe.Pointer(bp + 16)) = __ccgo_ts + 23660
+			*(*uintptr)(unsafe.Pointer(bp + 16)) = __ccgo_ts + 23652
 		}
 		// /tmp/libsqlite3/sqlite-src-3370200/ext/expert/sqlite3expert.c:716:5:
 		nByte += int32(1) + int32(libc.Xstrlen(tls, *(*uintptr)(unsafe.Pointer(bp + 16))))
@@ -131769,7 +131765,7 @@ func _idxGetTableInfo(tls *libc.TLS, db uintptr, zTab uintptr, ppOut uintptr, pz
 			// /tmp/libsqlite3/sqlite-src-3370200/ext/expert/sqlite3expert.c:747:7:
 			if *(*uintptr)(unsafe.Pointer(bp + 24)) == uintptr(0) {
 				// /tmp/libsqlite3/sqlite-src-3370200/ext/expert/sqlite3expert.c:747:24:
-				*(*uintptr)(unsafe.Pointer(bp + 24)) = __ccgo_ts + 23660
+				*(*uintptr)(unsafe.Pointer(bp + 24)) = __ccgo_ts + 23652
 			}
 			// /tmp/libsqlite3/sqlite-src-3370200/ext/expert/sqlite3expert.c:748:7:
 			nCopy = int32(libc.Xstrlen(tls, *(*uintptr)(unsafe.Pointer(bp + 24)))) + int32(1)
@@ -131934,12 +131930,12 @@ func _idxAppendColDefn(tls *libc.TLS, pRc uintptr, zIn uintptr, pTab uintptr, pC
 	// /tmp/libsqlite3/sqlite-src-3370200/ext/expert/sqlite3expert.c:837:3:
 	if zRet != 0 {
 		// /tmp/libsqlite3/sqlite-src-3370200/ext/expert/sqlite3expert.c:837:14:
-		zRet = _idxAppendText(tls, pRc, zRet, __ccgo_ts+12349, 0)
+		zRet = _idxAppendText(tls, pRc, zRet, __ccgo_ts+12341, 0)
 	}
 	// /tmp/libsqlite3/sqlite-src-3370200/ext/expert/sqlite3expert.c:839:3:
 	if _idxIdentifierRequiresQuotes(tls, (*TIdxColumn)(unsafe.Pointer(p)).FzName) != 0 {
 		// /tmp/libsqlite3/sqlite-src-3370200/ext/expert/sqlite3expert.c:840:5:
-		zRet = _idxAppendText(tls, pRc, zRet, __ccgo_ts+23667, libc.VaList(bp+8, (*TIdxColumn)(unsafe.Pointer(p)).FzName))
+		zRet = _idxAppendText(tls, pRc, zRet, __ccgo_ts+23659, libc.VaList(bp+8, (*TIdxColumn)(unsafe.Pointer(p)).FzName))
 	} else {
 		// /tmp/libsqlite3/sqlite-src-3370200/ext/expert/sqlite3expert.c:842:5:
 		zRet = _idxAppendText(tls, pRc, zRet, __ccgo_ts+183, libc.VaList(bp+8, (*TIdxColumn)(unsafe.Pointer(p)).FzName))
@@ -131949,16 +131945,16 @@ func _idxAppendColDefn(tls *libc.TLS, pRc uintptr, zIn uintptr, pTab uintptr, pC
 		// /tmp/libsqlite3/sqlite-src-3370200/ext/expert/sqlite3expert.c:846:5:
 		if _idxIdentifierRequiresQuotes(tls, (*TIdxConstraint)(unsafe.Pointer(pCons)).FzColl) != 0 {
 			// /tmp/libsqlite3/sqlite-src-3370200/ext/expert/sqlite3expert.c:847:7:
-			zRet = _idxAppendText(tls, pRc, zRet, __ccgo_ts+23670, libc.VaList(bp+8, (*TIdxConstraint)(unsafe.Pointer(pCons)).FzColl))
+			zRet = _idxAppendText(tls, pRc, zRet, __ccgo_ts+23662, libc.VaList(bp+8, (*TIdxConstraint)(unsafe.Pointer(pCons)).FzColl))
 		} else {
 			// /tmp/libsqlite3/sqlite-src-3370200/ext/expert/sqlite3expert.c:849:7:
-			zRet = _idxAppendText(tls, pRc, zRet, __ccgo_ts+23682, libc.VaList(bp+8, (*TIdxConstraint)(unsafe.Pointer(pCons)).FzColl))
+			zRet = _idxAppendText(tls, pRc, zRet, __ccgo_ts+23674, libc.VaList(bp+8, (*TIdxConstraint)(unsafe.Pointer(pCons)).FzColl))
 		}
 	}
 	// /tmp/libsqlite3/sqlite-src-3370200/ext/expert/sqlite3expert.c:853:3:
 	if (*TIdxConstraint)(unsafe.Pointer(pCons)).FbDesc != 0 {
 		// /tmp/libsqlite3/sqlite-src-3370200/ext/expert/sqlite3expert.c:854:5:
-		zRet = _idxAppendText(tls, pRc, zRet, __ccgo_ts+23694, 0)
+		zRet = _idxAppendText(tls, pRc, zRet, __ccgo_ts+23686, 0)
 	}
 	// /tmp/libsqlite3/sqlite-src-3370200/ext/expert/sqlite3expert.c:856:3:
 	return zRet
@@ -132006,7 +132002,7 @@ func _idxFindCompatible(tls *libc.TLS, pRc uintptr, dbm uintptr, pScan uintptr, 
 		pIter = (*TIdxConstraint)(unsafe.Pointer(pIter)).FpLink
 	}
 	// /tmp/libsqlite3/sqlite-src-3370200/ext/expert/sqlite3expert.c:883:3:
-	*(*int32)(unsafe.Pointer(bp + 8)) = _idxPrintfPrepareStmt(tls, dbm, bp, uintptr(0), __ccgo_ts+23700, libc.VaList(bp+32, zTbl))
+	*(*int32)(unsafe.Pointer(bp + 8)) = _idxPrintfPrepareStmt(tls, dbm, bp, uintptr(0), __ccgo_ts+23692, libc.VaList(bp+32, zTbl))
 	// /tmp/libsqlite3/sqlite-src-3370200/ext/expert/sqlite3expert.c:884:3:
 	for *(*int32)(unsafe.Pointer(bp + 8)) == m_SQLITE_OK && x_sqlite3_step(tls, *(*uintptr)(unsafe.Pointer(bp))) == int32(m_SQLITE_ROW) {
 		// /tmp/libsqlite3/sqlite-src-3370200/ext/expert/sqlite3expert.c:885:9:
@@ -132031,7 +132027,7 @@ func _idxFindCompatible(tls *libc.TLS, pRc uintptr, dbm uintptr, pScan uintptr, 
 			pIter = (*TIdxConstraint)(unsafe.Pointer(pIter)).FpLink
 		}
 		// /tmp/libsqlite3/sqlite-src-3370200/ext/expert/sqlite3expert.c:893:5:
-		*(*int32)(unsafe.Pointer(bp + 8)) = _idxPrintfPrepareStmt(tls, dbm, bp+16, uintptr(0), __ccgo_ts+23721, libc.VaList(bp+32, zIdx))
+		*(*int32)(unsafe.Pointer(bp + 8)) = _idxPrintfPrepareStmt(tls, dbm, bp+16, uintptr(0), __ccgo_ts+23713, libc.VaList(bp+32, zIdx))
 		// /tmp/libsqlite3/sqlite-src-3370200/ext/expert/sqlite3expert.c:894:5:
 		for *(*int32)(unsafe.Pointer(bp + 8)) == m_SQLITE_OK && x_sqlite3_step(tls, *(*uintptr)(unsafe.Pointer(bp + 16))) == int32(m_SQLITE_ROW) {
 			// /tmp/libsqlite3/sqlite-src-3370200/ext/expert/sqlite3expert.c:895:11:
@@ -132209,7 +132205,7 @@ func _idxCreateFromCons(tls *libc.TLS, p uintptr, pScan uintptr, pEq uintptr, pT
 				// /tmp/libsqlite3/sqlite-src-3370200/ext/expert/sqlite3expert.c:982:9:
 				x_sqlite3_free(tls, zName)
 				// /tmp/libsqlite3/sqlite-src-3370200/ext/expert/sqlite3expert.c:983:9:
-				zName = x_sqlite3_mprintf(tls, __ccgo_ts+23743, libc.VaList(bp+16, zTable, h))
+				zName = x_sqlite3_mprintf(tls, __ccgo_ts+23735, libc.VaList(bp+16, zTable, h))
 				// /tmp/libsqlite3/sqlite-src-3370200/ext/expert/sqlite3expert.c:984:9:
 				if zName == uintptr(0) {
 					// /tmp/libsqlite3/sqlite-src-3370200/ext/expert/sqlite3expert.c:984:24:
@@ -132217,7 +132213,7 @@ func _idxCreateFromCons(tls *libc.TLS, p uintptr, pScan uintptr, pEq uintptr, pT
 				}
 				/* Is is unique among table, view and index names? */
 				// /tmp/libsqlite3/sqlite-src-3370200/ext/expert/sqlite3expert.c:986:9:
-				zFmt = __ccgo_ts + 23755
+				zFmt = __ccgo_ts + 23747
 				// /tmp/libsqlite3/sqlite-src-3370200/ext/expert/sqlite3expert.c:988:9:
 				zFind = x_sqlite3_mprintf(tls, zFmt, libc.VaList(bp+16, zName))
 				// /tmp/libsqlite3/sqlite-src-3370200/ext/expert/sqlite3expert.c:989:9:
@@ -132251,10 +132247,10 @@ func _idxCreateFromCons(tls *libc.TLS, p uintptr, pScan uintptr, pEq uintptr, pT
 					// /tmp/libsqlite3/sqlite-src-3370200/ext/expert/sqlite3expert.c:1005:9:
 					if quoteTable != 0 {
 						// /tmp/libsqlite3/sqlite-src-3370200/ext/expert/sqlite3expert.c:1006:11:
-						zFmt = __ccgo_ts + 23841
+						zFmt = __ccgo_ts + 23833
 					} else {
 						// /tmp/libsqlite3/sqlite-src-3370200/ext/expert/sqlite3expert.c:1008:11:
-						zFmt = __ccgo_ts + 23871
+						zFmt = __ccgo_ts + 23863
 					}
 					// /tmp/libsqlite3/sqlite-src-3370200/ext/expert/sqlite3expert.c:1010:9:
 					zIdx = x_sqlite3_mprintf(tls, zFmt, libc.VaList(bp+16, zName, zTable, zCols))
@@ -132617,12 +132613,12 @@ func x_idxFindIndexes(tls *libc.TLS, p uintptr, pzErr uintptr) (r int32) {
 				// /tmp/libsqlite3/sqlite-src-3370200/ext/expert/sqlite3expert.c:1201:20:
 				zIdx = uintptr(0)
 				// /tmp/libsqlite3/sqlite-src-3370200/ext/expert/sqlite3expert.c:1202:9:
-				if i+int32(13) < nDetail && libc.Xmemcmp(tls, zDetail+uintptr(i), __ccgo_ts+23897, uint64(13)) == 0 {
+				if i+int32(13) < nDetail && libc.Xmemcmp(tls, zDetail+uintptr(i), __ccgo_ts+23889, uint64(13)) == 0 {
 					// /tmp/libsqlite3/sqlite-src-3370200/ext/expert/sqlite3expert.c:1203:11:
 					zIdx = zDetail + uintptr(i+int32(13))
 				} else {
 					// /tmp/libsqlite3/sqlite-src-3370200/ext/expert/sqlite3expert.c:1204:15:
-					if i+int32(22) < nDetail && libc.Xmemcmp(tls, zDetail+uintptr(i), __ccgo_ts+23911, uint64(22)) == 0 {
+					if i+int32(22) < nDetail && libc.Xmemcmp(tls, zDetail+uintptr(i), __ccgo_ts+23903, uint64(22)) == 0 {
 						// /tmp/libsqlite3/sqlite-src-3370200/ext/expert/sqlite3expert.c:1207:11:
 						zIdx = zDetail + uintptr(i+int32(22))
 					}
@@ -132668,7 +132664,7 @@ func x_idxFindIndexes(tls *libc.TLS, p uintptr, pzErr uintptr) (r int32) {
 				break
 			}
 			// /tmp/libsqlite3/sqlite-src-3370200/ext/expert/sqlite3expert.c:1230:7:
-			(*TIdxStatement)(unsafe.Pointer(pStmt)).FzIdx = _idxAppendText(tls, bp, (*TIdxStatement)(unsafe.Pointer(pStmt)).FzIdx, __ccgo_ts+23934, libc.VaList(bp+8216, (*TIdxHashEntry)(unsafe.Pointer(pEntry)).FzKey))
+			(*TIdxStatement)(unsafe.Pointer(pStmt)).FzIdx = _idxAppendText(tls, bp, (*TIdxStatement)(unsafe.Pointer(pStmt)).FzIdx, __ccgo_ts+23926, libc.VaList(bp+8216, (*TIdxHashEntry)(unsafe.Pointer(pEntry)).FzKey))
 			goto _3
 		_3:
 			pEntry = (*TIdxHashEntry)(unsafe.Pointer(pEntry)).FpNext
@@ -132778,7 +132774,7 @@ func _idxProcessOneTrigger(tls *libc.TLS, p uintptr, pWrite uintptr, pzErr uintp
 	// /tmp/libsqlite3/sqlite-src-3370200/ext/expert/sqlite3expert.c:1287:14:
 	zTab = (*TIdxTable)(unsafe.Pointer(pTab)).FzName
 	// /tmp/libsqlite3/sqlite-src-3370200/ext/expert/sqlite3expert.c:1288:14:
-	zSql = __ccgo_ts + 24026
+	zSql = __ccgo_ts + 24018
 	// /tmp/libsqlite3/sqlite-src-3370200/ext/expert/sqlite3expert.c:1292:16:
 	*(*uintptr)(unsafe.Pointer(bp)) = uintptr(0)
 	// /tmp/libsqlite3/sqlite-src-3370200/ext/expert/sqlite3expert.c:1293:7:
@@ -132801,7 +132797,7 @@ func _idxProcessOneTrigger(tls *libc.TLS, p uintptr, pWrite uintptr, pzErr uintp
 	// /tmp/libsqlite3/sqlite-src-3370200/ext/expert/sqlite3expert.c:1305:3:
 	if *(*int32)(unsafe.Pointer(bp + 8)) == m_SQLITE_OK {
 		// /tmp/libsqlite3/sqlite-src-3370200/ext/expert/sqlite3expert.c:1306:10:
-		z = x_sqlite3_mprintf(tls, __ccgo_ts+24152, libc.VaList(bp+32, zTab, _zInt))
+		z = x_sqlite3_mprintf(tls, __ccgo_ts+24144, libc.VaList(bp+32, zTab, _zInt))
 		// /tmp/libsqlite3/sqlite-src-3370200/ext/expert/sqlite3expert.c:1307:5:
 		if z == uintptr(0) {
 			// /tmp/libsqlite3/sqlite-src-3370200/ext/expert/sqlite3expert.c:1308:7:
@@ -132818,7 +132814,7 @@ func _idxProcessOneTrigger(tls *libc.TLS, p uintptr, pWrite uintptr, pzErr uintp
 	// /tmp/libsqlite3/sqlite-src-3370200/ext/expert/sqlite3expert.c:1316:5:
 	case int32(m_SQLITE_INSERT):
 		// /tmp/libsqlite3/sqlite-src-3370200/ext/expert/sqlite3expert.c:1318:7:
-		zWrite = _idxAppendText(tls, bp+8, zWrite, __ccgo_ts+24185, libc.VaList(bp+32, _zInt))
+		zWrite = _idxAppendText(tls, bp+8, zWrite, __ccgo_ts+24177, libc.VaList(bp+32, _zInt))
 		// /tmp/libsqlite3/sqlite-src-3370200/ext/expert/sqlite3expert.c:1319:7:
 		i = 0
 		for {
@@ -132829,22 +132825,22 @@ func _idxProcessOneTrigger(tls *libc.TLS, p uintptr, pWrite uintptr, pzErr uintp
 			if i == 0 {
 				v2 = __ccgo_ts + 1095
 			} else {
-				v2 = __ccgo_ts + 12349
+				v2 = __ccgo_ts + 12341
 			}
-			zWrite = _idxAppendText(tls, bp+8, zWrite, __ccgo_ts+24208, libc.VaList(bp+32, v2))
+			zWrite = _idxAppendText(tls, bp+8, zWrite, __ccgo_ts+24200, libc.VaList(bp+32, v2))
 			goto _1
 		_1:
 			i++
 		}
 		// /tmp/libsqlite3/sqlite-src-3370200/ext/expert/sqlite3expert.c:1322:7:
-		zWrite = _idxAppendText(tls, bp+8, zWrite, __ccgo_ts+12373, 0)
+		zWrite = _idxAppendText(tls, bp+8, zWrite, __ccgo_ts+12365, 0)
 		// /tmp/libsqlite3/sqlite-src-3370200/ext/expert/sqlite3expert.c:1323:7:
 		break
 		// /tmp/libsqlite3/sqlite-src-3370200/ext/expert/sqlite3expert.c:1325:5:
 		fallthrough
 	case int32(m_SQLITE_UPDATE):
 		// /tmp/libsqlite3/sqlite-src-3370200/ext/expert/sqlite3expert.c:1327:7:
-		zWrite = _idxAppendText(tls, bp+8, zWrite, __ccgo_ts+24212, libc.VaList(bp+32, _zInt))
+		zWrite = _idxAppendText(tls, bp+8, zWrite, __ccgo_ts+24204, libc.VaList(bp+32, _zInt))
 		// /tmp/libsqlite3/sqlite-src-3370200/ext/expert/sqlite3expert.c:1328:7:
 		i1 = 0
 		for {
@@ -132855,9 +132851,9 @@ func _idxProcessOneTrigger(tls *libc.TLS, p uintptr, pWrite uintptr, pzErr uintp
 			if i1 == 0 {
 				v4 = __ccgo_ts + 1095
 			} else {
-				v4 = __ccgo_ts + 12349
+				v4 = __ccgo_ts + 12341
 			}
-			zWrite = _idxAppendText(tls, bp+8, zWrite, __ccgo_ts+24227, libc.VaList(bp+32, v4, (*(*TIdxColumn)(unsafe.Pointer((*TIdxTable)(unsafe.Pointer(pTab)).FaCol + uintptr(i1)*24))).FzName))
+			zWrite = _idxAppendText(tls, bp+8, zWrite, __ccgo_ts+24219, libc.VaList(bp+32, v4, (*(*TIdxColumn)(unsafe.Pointer((*TIdxTable)(unsafe.Pointer(pTab)).FaCol + uintptr(i1)*24))).FzName))
 			goto _3
 		_3:
 			i1++
@@ -132871,7 +132867,7 @@ func _idxProcessOneTrigger(tls *libc.TLS, p uintptr, pWrite uintptr, pzErr uintp
 		// /tmp/libsqlite3/sqlite-src-3370200/ext/expert/sqlite3expert.c:1337:7:
 		if *(*int32)(unsafe.Pointer(bp + 8)) == m_SQLITE_OK {
 			// /tmp/libsqlite3/sqlite-src-3370200/ext/expert/sqlite3expert.c:1338:9:
-			zWrite = x_sqlite3_mprintf(tls, __ccgo_ts+24234, libc.VaList(bp+32, _zInt))
+			zWrite = x_sqlite3_mprintf(tls, __ccgo_ts+24226, libc.VaList(bp+32, _zInt))
 			// /tmp/libsqlite3/sqlite-src-3370200/ext/expert/sqlite3expert.c:1339:9:
 			if zWrite == uintptr(0) {
 				// /tmp/libsqlite3/sqlite-src-3370200/ext/expert/sqlite3expert.c:1339:25:
@@ -132905,10 +132901,10 @@ func _idxProcessOneTrigger(tls *libc.TLS, p uintptr, pWrite uintptr, pzErr uintp
 }
 
 // /tmp/libsqlite3/sqlite-src-3370200/ext/expert/sqlite3expert.c:1284:21:
-var _zInt = __ccgo_ts + 23939
+var _zInt = __ccgo_ts + 23931
 
 // /tmp/libsqlite3/sqlite-src-3370200/ext/expert/sqlite3expert.c:1285:21:
-var _zDrop = __ccgo_ts + 23977
+var _zDrop = __ccgo_ts + 23969
 
 // /tmp/libsqlite3/sqlite-src-3370200/ext/expert/sqlite3expert.c:1361:12:
 func _idxProcessTriggers(tls *libc.TLS, p uintptr, pzErr uintptr) (r int32) {
@@ -132966,7 +132962,7 @@ func _idxCreateVtabSchema(tls *libc.TLS, p uintptr, pzErrmsg uintptr) (r int32) 
 	 **   2) Create the equivalent virtual table in dbv.
 	 */
 	// /tmp/libsqlite3/sqlite-src-3370200/ext/expert/sqlite3expert.c:1388:3:
-	*(*int32)(unsafe.Pointer(bp)) = _idxPrepareStmt(tls, (*Tsqlite3expert)(unsafe.Pointer(p)).Fdb, bp+8, pzErrmsg, __ccgo_ts+24249)
+	*(*int32)(unsafe.Pointer(bp)) = _idxPrepareStmt(tls, (*Tsqlite3expert)(unsafe.Pointer(p)).Fdb, bp+8, pzErrmsg, __ccgo_ts+24241)
 	// /tmp/libsqlite3/sqlite-src-3370200/ext/expert/sqlite3expert.c:1397:3:
 	for *(*int32)(unsafe.Pointer(bp)) == m_SQLITE_OK && int32(m_SQLITE_ROW) == x_sqlite3_step(tls, *(*uintptr)(unsafe.Pointer(bp + 8))) {
 		// /tmp/libsqlite3/sqlite-src-3370200/ext/expert/sqlite3expert.c:1398:16:
@@ -132994,7 +132990,7 @@ func _idxCreateVtabSchema(tls *libc.TLS, p uintptr, pzErrmsg uintptr) (r int32) 
 				(*Tsqlite3expert)(unsafe.Pointer(p)).FpTable = *(*uintptr)(unsafe.Pointer(bp + 16))
 				/* The statement the vtab will pass to sqlite3_declare_vtab() */
 				// /tmp/libsqlite3/sqlite-src-3370200/ext/expert/sqlite3expert.c:1415:9:
-				zInner = _idxAppendText(tls, bp, uintptr(0), __ccgo_ts+24517, 0)
+				zInner = _idxAppendText(tls, bp, uintptr(0), __ccgo_ts+24509, 0)
 				// /tmp/libsqlite3/sqlite-src-3370200/ext/expert/sqlite3expert.c:1416:9:
 				i = 0
 				for {
@@ -133005,18 +133001,18 @@ func _idxCreateVtabSchema(tls *libc.TLS, p uintptr, pzErrmsg uintptr) (r int32) 
 					if i == 0 {
 						v2 = __ccgo_ts + 1095
 					} else {
-						v2 = __ccgo_ts + 12349
+						v2 = __ccgo_ts + 12341
 					}
-					zInner = _idxAppendText(tls, bp, zInner, __ccgo_ts+24533, libc.VaList(bp+32, v2, (*(*TIdxColumn)(unsafe.Pointer((*TIdxTable)(unsafe.Pointer(*(*uintptr)(unsafe.Pointer(bp + 16)))).FaCol + uintptr(i)*24))).FzName, (*(*TIdxColumn)(unsafe.Pointer((*TIdxTable)(unsafe.Pointer(*(*uintptr)(unsafe.Pointer(bp + 16)))).FaCol + uintptr(i)*24))).FzColl))
+					zInner = _idxAppendText(tls, bp, zInner, __ccgo_ts+24525, libc.VaList(bp+32, v2, (*(*TIdxColumn)(unsafe.Pointer((*TIdxTable)(unsafe.Pointer(*(*uintptr)(unsafe.Pointer(bp + 16)))).FaCol + uintptr(i)*24))).FzName, (*(*TIdxColumn)(unsafe.Pointer((*TIdxTable)(unsafe.Pointer(*(*uintptr)(unsafe.Pointer(bp + 16)))).FaCol + uintptr(i)*24))).FzColl))
 					goto _1
 				_1:
 					i++
 				}
 				// /tmp/libsqlite3/sqlite-src-3370200/ext/expert/sqlite3expert.c:1421:9:
-				zInner = _idxAppendText(tls, bp, zInner, __ccgo_ts+12373, 0)
+				zInner = _idxAppendText(tls, bp, zInner, __ccgo_ts+12365, 0)
 				/* The CVT statement to create the vtab */
 				// /tmp/libsqlite3/sqlite-src-3370200/ext/expert/sqlite3expert.c:1424:9:
-				zOuter = _idxAppendText(tls, bp, uintptr(0), __ccgo_ts+24549, libc.VaList(bp+32, zName, zInner))
+				zOuter = _idxAppendText(tls, bp, uintptr(0), __ccgo_ts+24541, libc.VaList(bp+32, zName, zInner))
 				// /tmp/libsqlite3/sqlite-src-3370200/ext/expert/sqlite3expert.c:1427:9:
 				if *(*int32)(unsafe.Pointer(bp)) == m_SQLITE_OK {
 					// /tmp/libsqlite3/sqlite-src-3370200/ext/expert/sqlite3expert.c:1428:11:
@@ -133216,7 +133212,7 @@ func _idxLargestIndex(tls *libc.TLS, db uintptr, pnMax uintptr, pzErr uintptr) (
 	// /tmp/libsqlite3/sqlite-src-3370200/ext/expert/sqlite3expert.c:1561:7:
 	*(*int32)(unsafe.Pointer(bp)) = m_SQLITE_OK
 	// /tmp/libsqlite3/sqlite-src-3370200/ext/expert/sqlite3expert.c:1562:14:
-	zMax = __ccgo_ts + 24590
+	zMax = __ccgo_ts + 24582
 	// /tmp/libsqlite3/sqlite-src-3370200/ext/expert/sqlite3expert.c:1568:16:
 	*(*uintptr)(unsafe.Pointer(bp + 8)) = uintptr(0)
 	// /tmp/libsqlite3/sqlite-src-3370200/ext/expert/sqlite3expert.c:1570:3:
@@ -133267,7 +133263,7 @@ func _idxPopulateOneStat1(tls *libc.TLS, p uintptr, pIndexXInfo uintptr, pWriteS
 		if zCols == uintptr(0) {
 			v1 = __ccgo_ts + 1095
 		} else {
-			v1 = __ccgo_ts + 12349
+			v1 = __ccgo_ts + 12341
 		}
 		// /tmp/libsqlite3/sqlite-src-3370200/ext/expert/sqlite3expert.c:1602:16:
 		zComma = v1
@@ -133276,11 +133272,11 @@ func _idxPopulateOneStat1(tls *libc.TLS, p uintptr, pIndexXInfo uintptr, pWriteS
 		// /tmp/libsqlite3/sqlite-src-3370200/ext/expert/sqlite3expert.c:1604:16:
 		zColl = x_sqlite3_column_text(tls, pIndexXInfo, int32(1))
 		// /tmp/libsqlite3/sqlite-src-3370200/ext/expert/sqlite3expert.c:1605:5:
-		zCols = _idxAppendText(tls, bp+8, zCols, __ccgo_ts+24727, libc.VaList(bp+24, zComma, zName, nCol, zName, zColl))
+		zCols = _idxAppendText(tls, bp+8, zCols, __ccgo_ts+24719, libc.VaList(bp+24, zComma, zName, nCol, zName, zColl))
 		// /tmp/libsqlite3/sqlite-src-3370200/ext/expert/sqlite3expert.c:1608:5:
 		nCol++
 		v2 = nCol
-		zOrder = _idxAppendText(tls, bp+8, zOrder, __ccgo_ts+24762, libc.VaList(bp+24, zComma, v2))
+		zOrder = _idxAppendText(tls, bp+8, zOrder, __ccgo_ts+24754, libc.VaList(bp+24, zComma, v2))
 	}
 	// /tmp/libsqlite3/sqlite-src-3370200/ext/expert/sqlite3expert.c:1610:3:
 	x_sqlite3_reset(tls, pIndexXInfo)
@@ -133289,10 +133285,10 @@ func _idxPopulateOneStat1(tls *libc.TLS, p uintptr, pIndexXInfo uintptr, pWriteS
 		// /tmp/libsqlite3/sqlite-src-3370200/ext/expert/sqlite3expert.c:1612:5:
 		if (*Tsqlite3expert)(unsafe.Pointer(p)).FiSample == int32(100) {
 			// /tmp/libsqlite3/sqlite-src-3370200/ext/expert/sqlite3expert.c:1613:7:
-			zQuery = x_sqlite3_mprintf(tls, __ccgo_ts+24767, libc.VaList(bp+24, zCols, zTab, zOrder))
+			zQuery = x_sqlite3_mprintf(tls, __ccgo_ts+24759, libc.VaList(bp+24, zCols, zTab, zOrder))
 		} else {
 			// /tmp/libsqlite3/sqlite-src-3370200/ext/expert/sqlite3expert.c:1617:7:
-			zQuery = x_sqlite3_mprintf(tls, __ccgo_ts+24799, libc.VaList(bp+24, zCols, zOrder))
+			zQuery = x_sqlite3_mprintf(tls, __ccgo_ts+24791, libc.VaList(bp+24, zCols, zOrder))
 		}
 	}
 	// /tmp/libsqlite3/sqlite-src-3370200/ext/expert/sqlite3expert.c:1622:3:
@@ -133384,7 +133380,7 @@ func _idxPopulateOneStat1(tls *libc.TLS, p uintptr, pIndexXInfo uintptr, pWriteS
 					break
 				}
 				// /tmp/libsqlite3/sqlite-src-3370200/ext/expert/sqlite3expert.c:1654:9:
-				zStat = _idxAppendText(tls, bp+8, zStat, __ccgo_ts+24871, libc.VaList(bp+24, (s0+*(*int32)(unsafe.Pointer(aStat + uintptr(i)*4))/int32(2)) / *(*int32)(unsafe.Pointer(aStat + uintptr(i)*4))))
+				zStat = _idxAppendText(tls, bp+8, zStat, __ccgo_ts+24863, libc.VaList(bp+24, (s0+*(*int32)(unsafe.Pointer(aStat + uintptr(i)*4))/int32(2)) / *(*int32)(unsafe.Pointer(aStat + uintptr(i)*4))))
 				goto _7
 			_7:
 				i++
@@ -133432,14 +133428,14 @@ func _idxBuildSampleTable(tls *libc.TLS, p uintptr, zTab uintptr) (r int32) {
 	var zSql uintptr
 	_, _ = rc, zSql
 	// /tmp/libsqlite3/sqlite-src-3370200/ext/expert/sqlite3expert.c:1684:3:
-	rc = x_sqlite3_exec(tls, (*Tsqlite3expert)(unsafe.Pointer(p)).Fdbv, __ccgo_ts+24875, uintptr(0), uintptr(0), uintptr(0))
+	rc = x_sqlite3_exec(tls, (*Tsqlite3expert)(unsafe.Pointer(p)).Fdbv, __ccgo_ts+24867, uintptr(0), uintptr(0), uintptr(0))
 	// /tmp/libsqlite3/sqlite-src-3370200/ext/expert/sqlite3expert.c:1685:3:
 	if rc != m_SQLITE_OK {
 		// /tmp/libsqlite3/sqlite-src-3370200/ext/expert/sqlite3expert.c:1685:23:
 		return rc
 	}
 	// /tmp/libsqlite3/sqlite-src-3370200/ext/expert/sqlite3expert.c:1687:3:
-	zSql = x_sqlite3_mprintf(tls, __ccgo_ts+24939, libc.VaList(bp+8, zTab))
+	zSql = x_sqlite3_mprintf(tls, __ccgo_ts+24931, libc.VaList(bp+8, zTab))
 	// /tmp/libsqlite3/sqlite-src-3370200/ext/expert/sqlite3expert.c:1690:3:
 	if zSql == uintptr(0) {
 		// /tmp/libsqlite3/sqlite-src-3370200/ext/expert/sqlite3expert.c:1690:17:
@@ -133493,11 +133489,11 @@ func _idxPopulateStat1(tls *libc.TLS, p uintptr, pzErr uintptr) (r int32) {
 	// /tmp/libsqlite3/sqlite-src-3370200/ext/expert/sqlite3expert.c:1713:16:
 	*(*uintptr)(unsafe.Pointer(bp + 56)) = uintptr(0)
 	// /tmp/libsqlite3/sqlite-src-3370200/ext/expert/sqlite3expert.c:1715:14:
-	zAllIndex = __ccgo_ts + 25015
+	zAllIndex = __ccgo_ts + 25007
 	// /tmp/libsqlite3/sqlite-src-3370200/ext/expert/sqlite3expert.c:1720:14:
-	zIndexXInfo = __ccgo_ts + 25129
+	zIndexXInfo = __ccgo_ts + 25121
 	// /tmp/libsqlite3/sqlite-src-3370200/ext/expert/sqlite3expert.c:1722:14:
-	zWrite = __ccgo_ts + 25184
+	zWrite = __ccgo_ts + 25176
 	/* If iSample==0, no sqlite_stat1 data is required. */
 	// /tmp/libsqlite3/sqlite-src-3370200/ext/expert/sqlite3expert.c:1725:3:
 	if (*Tsqlite3expert)(unsafe.Pointer(p)).FiSample == 0 {
@@ -133512,7 +133508,7 @@ func _idxPopulateStat1(tls *libc.TLS, p uintptr, pzErr uintptr) (r int32) {
 		return *(*int32)(unsafe.Pointer(bp))
 	}
 	// /tmp/libsqlite3/sqlite-src-3370200/ext/expert/sqlite3expert.c:1730:3:
-	*(*int32)(unsafe.Pointer(bp)) = x_sqlite3_exec(tls, (*Tsqlite3expert)(unsafe.Pointer(p)).Fdbm, __ccgo_ts+25225, uintptr(0), uintptr(0), uintptr(0))
+	*(*int32)(unsafe.Pointer(bp)) = x_sqlite3_exec(tls, (*Tsqlite3expert)(unsafe.Pointer(p)).Fdbm, __ccgo_ts+25217, uintptr(0), uintptr(0), uintptr(0))
 	// /tmp/libsqlite3/sqlite-src-3370200/ext/expert/sqlite3expert.c:1732:3:
 	if *(*int32)(unsafe.Pointer(bp)) == m_SQLITE_OK {
 		// /tmp/libsqlite3/sqlite-src-3370200/ext/expert/sqlite3expert.c:1733:9:
@@ -133530,12 +133526,12 @@ func _idxPopulateStat1(tls *libc.TLS, p uintptr, pzErr uintptr) (r int32) {
 		// /tmp/libsqlite3/sqlite-src-3370200/ext/expert/sqlite3expert.c:1738:13:
 		dbrem = v1
 		// /tmp/libsqlite3/sqlite-src-3370200/ext/expert/sqlite3expert.c:1739:5:
-		*(*int32)(unsafe.Pointer(bp)) = x_sqlite3_create_function(tls, dbrem, __ccgo_ts+25259, int32(2), int32(m_SQLITE_UTF8), pCtx, __ccgo_fp(_idxRemFunc), uintptr(0), uintptr(0))
+		*(*int32)(unsafe.Pointer(bp)) = x_sqlite3_create_function(tls, dbrem, __ccgo_ts+25251, int32(2), int32(m_SQLITE_UTF8), pCtx, __ccgo_fp(_idxRemFunc), uintptr(0), uintptr(0))
 	}
 	// /tmp/libsqlite3/sqlite-src-3370200/ext/expert/sqlite3expert.c:1743:3:
 	if *(*int32)(unsafe.Pointer(bp)) == m_SQLITE_OK {
 		// /tmp/libsqlite3/sqlite-src-3370200/ext/expert/sqlite3expert.c:1744:5:
-		*(*int32)(unsafe.Pointer(bp)) = x_sqlite3_create_function(tls, (*Tsqlite3expert)(unsafe.Pointer(p)).Fdb, __ccgo_ts+25263, 0, int32(m_SQLITE_UTF8), bp+8, __ccgo_fp(_idxSampleFunc), uintptr(0), uintptr(0))
+		*(*int32)(unsafe.Pointer(bp)) = x_sqlite3_create_function(tls, (*Tsqlite3expert)(unsafe.Pointer(p)).Fdb, __ccgo_ts+25255, 0, int32(m_SQLITE_UTF8), bp+8, __ccgo_fp(_idxSampleFunc), uintptr(0), uintptr(0))
 	}
 	// /tmp/libsqlite3/sqlite-src-3370200/ext/expert/sqlite3expert.c:1749:3:
 	if *(*int32)(unsafe.Pointer(bp)) == m_SQLITE_OK {
@@ -133588,7 +133584,7 @@ func _idxPopulateStat1(tls *libc.TLS, p uintptr, pzErr uintptr) (r int32) {
 	// /tmp/libsqlite3/sqlite-src-3370200/ext/expert/sqlite3expert.c:1775:3:
 	if *(*int32)(unsafe.Pointer(bp)) == m_SQLITE_OK && (*Tsqlite3expert)(unsafe.Pointer(p)).FiSample < int32(100) {
 		// /tmp/libsqlite3/sqlite-src-3370200/ext/expert/sqlite3expert.c:1776:5:
-		*(*int32)(unsafe.Pointer(bp)) = x_sqlite3_exec(tls, (*Tsqlite3expert)(unsafe.Pointer(p)).Fdbv, __ccgo_ts+24875, uintptr(0), uintptr(0), uintptr(0))
+		*(*int32)(unsafe.Pointer(bp)) = x_sqlite3_exec(tls, (*Tsqlite3expert)(unsafe.Pointer(p)).Fdbv, __ccgo_ts+24867, uintptr(0), uintptr(0), uintptr(0))
 	}
 	// /tmp/libsqlite3/sqlite-src-3370200/ext/expert/sqlite3expert.c:1781:3:
 	_idxFinalize(tls, bp, *(*uintptr)(unsafe.Pointer(bp + 40)))
@@ -133616,10 +133612,10 @@ func _idxPopulateStat1(tls *libc.TLS, p uintptr, pzErr uintptr) (r int32) {
 	// /tmp/libsqlite3/sqlite-src-3370200/ext/expert/sqlite3expert.c:1792:3:
 	if *(*int32)(unsafe.Pointer(bp)) == m_SQLITE_OK {
 		// /tmp/libsqlite3/sqlite-src-3370200/ext/expert/sqlite3expert.c:1793:5:
-		*(*int32)(unsafe.Pointer(bp)) = x_sqlite3_exec(tls, (*Tsqlite3expert)(unsafe.Pointer(p)).Fdbm, __ccgo_ts+25270, uintptr(0), uintptr(0), uintptr(0))
+		*(*int32)(unsafe.Pointer(bp)) = x_sqlite3_exec(tls, (*Tsqlite3expert)(unsafe.Pointer(p)).Fdbm, __ccgo_ts+25262, uintptr(0), uintptr(0), uintptr(0))
 	}
 	// /tmp/libsqlite3/sqlite-src-3370200/ext/expert/sqlite3expert.c:1796:3:
-	x_sqlite3_exec(tls, (*Tsqlite3expert)(unsafe.Pointer(p)).Fdb, __ccgo_ts+24875, uintptr(0), uintptr(0), uintptr(0))
+	x_sqlite3_exec(tls, (*Tsqlite3expert)(unsafe.Pointer(p)).Fdb, __ccgo_ts+24867, uintptr(0), uintptr(0), uintptr(0))
 	// /tmp/libsqlite3/sqlite-src-3370200/ext/expert/sqlite3expert.c:1797:3:
 	return *(*int32)(unsafe.Pointer(bp))
 }
@@ -133656,12 +133652,12 @@ func x_sqlite3_expert_new(tls *libc.TLS, db uintptr, pzErrmsg uintptr) (r uintpt
 		// /tmp/libsqlite3/sqlite-src-3370200/ext/expert/sqlite3expert.c:1817:5:
 		(*Tsqlite3expert)(unsafe.Pointer(pNew)).FiSample = int32(100)
 		// /tmp/libsqlite3/sqlite-src-3370200/ext/expert/sqlite3expert.c:1818:5:
-		*(*int32)(unsafe.Pointer(bp)) = x_sqlite3_open(tls, __ccgo_ts+12623, pNew+24)
+		*(*int32)(unsafe.Pointer(bp)) = x_sqlite3_open(tls, __ccgo_ts+12615, pNew+24)
 	}
 	// /tmp/libsqlite3/sqlite-src-3370200/ext/expert/sqlite3expert.c:1820:3:
 	if *(*int32)(unsafe.Pointer(bp)) == m_SQLITE_OK {
 		// /tmp/libsqlite3/sqlite-src-3370200/ext/expert/sqlite3expert.c:1821:5:
-		*(*int32)(unsafe.Pointer(bp)) = x_sqlite3_open(tls, __ccgo_ts+12623, pNew+16)
+		*(*int32)(unsafe.Pointer(bp)) = x_sqlite3_open(tls, __ccgo_ts+12615, pNew+16)
 		// /tmp/libsqlite3/sqlite-src-3370200/ext/expert/sqlite3expert.c:1822:5:
 		if *(*int32)(unsafe.Pointer(bp)) == m_SQLITE_OK {
 			// /tmp/libsqlite3/sqlite-src-3370200/ext/expert/sqlite3expert.c:1823:7:
@@ -133672,7 +133668,7 @@ func x_sqlite3_expert_new(tls *libc.TLS, db uintptr, pzErrmsg uintptr) (r uintpt
 	// /tmp/libsqlite3/sqlite-src-3370200/ext/expert/sqlite3expert.c:1829:3:
 	if *(*int32)(unsafe.Pointer(bp)) == m_SQLITE_OK {
 		// /tmp/libsqlite3/sqlite-src-3370200/ext/expert/sqlite3expert.c:1831:5:
-		*(*int32)(unsafe.Pointer(bp)) = _idxPrintfPrepareStmt(tls, (*Tsqlite3expert)(unsafe.Pointer(pNew)).Fdb, bp+8, pzErrmsg, __ccgo_ts+25292, 0)
+		*(*int32)(unsafe.Pointer(bp)) = _idxPrintfPrepareStmt(tls, (*Tsqlite3expert)(unsafe.Pointer(pNew)).Fdb, bp+8, pzErrmsg, __ccgo_ts+25284, 0)
 		// /tmp/libsqlite3/sqlite-src-3370200/ext/expert/sqlite3expert.c:1835:5:
 		for *(*int32)(unsafe.Pointer(bp)) == m_SQLITE_OK && int32(m_SQLITE_ROW) == x_sqlite3_step(tls, *(*uintptr)(unsafe.Pointer(bp + 8))) {
 			// /tmp/libsqlite3/sqlite-src-3370200/ext/expert/sqlite3expert.c:1836:18:
@@ -133865,7 +133861,7 @@ func x_sqlite3_expert_analyze(tls *libc.TLS, p uintptr, pzErr uintptr) (r int32)
 			// /tmp/libsqlite3/sqlite-src-3370200/ext/expert/sqlite3expert.c:1944:5:
 			if pzErr != 0 {
 				// /tmp/libsqlite3/sqlite-src-3370200/ext/expert/sqlite3expert.c:1945:7:
-				*(*uintptr)(unsafe.Pointer(pzErr)) = x_sqlite3_mprintf(tls, __ccgo_ts+25391, 0)
+				*(*uintptr)(unsafe.Pointer(pzErr)) = x_sqlite3_mprintf(tls, __ccgo_ts+25383, 0)
 			}
 			// /tmp/libsqlite3/sqlite-src-3370200/ext/expert/sqlite3expert.c:1946:5:
 			return *(*int32)(unsafe.Pointer(bp))
@@ -133886,11 +133882,11 @@ func x_sqlite3_expert_analyze(tls *libc.TLS, p uintptr, pzErr uintptr) (r int32)
 		}
 		// /tmp/libsqlite3/sqlite-src-3370200/ext/expert/sqlite3expert.c:1956:5:
 		if (*TIdxHashEntry)(unsafe.Pointer(pEntry)).FzVal2 != 0 {
-			v2 = __ccgo_ts + 25435
+			v2 = __ccgo_ts + 25427
 		} else {
 			v2 = __ccgo_ts + 1095
 		}
-		(*Tsqlite3expert)(unsafe.Pointer(p)).FzCandidates = _idxAppendText(tls, bp, (*Tsqlite3expert)(unsafe.Pointer(p)).FzCandidates, __ccgo_ts+25447, libc.VaList(bp+16, (*TIdxHashEntry)(unsafe.Pointer(pEntry)).FzVal, v2, (*TIdxHashEntry)(unsafe.Pointer(pEntry)).FzVal2))
+		(*Tsqlite3expert)(unsafe.Pointer(p)).FzCandidates = _idxAppendText(tls, bp, (*Tsqlite3expert)(unsafe.Pointer(p)).FzCandidates, __ccgo_ts+25439, libc.VaList(bp+16, (*TIdxHashEntry)(unsafe.Pointer(pEntry)).FzVal, v2, (*TIdxHashEntry)(unsafe.Pointer(pEntry)).FzVal2))
 		goto _1
 	_1:
 		pEntry = (*TIdxHashEntry)(unsafe.Pointer(pEntry)).FpNext
@@ -134118,7 +134114,7 @@ func _dbHandleFromObj(tls *libc.TLS, interp uintptr, pObj uintptr, pDb uintptr) 
 	// /tmp/libsqlite3/sqlite-src-3370200/ext/expert/test_expert.c:38:3:
 	if 0 == libtcl8_6.XTcl_GetCommandInfo(tls, interp, libtcl8_6.XTcl_GetString(tls, pObj), bp) {
 		// /tmp/libsqlite3/sqlite-src-3370200/ext/expert/test_expert.c:39:5:
-		libtcl8_6.XTcl_AppendResult(tls, interp, libc.VaList(bp+72, __ccgo_ts+25456, libtcl8_6.XTcl_GetString(tls, pObj), 0))
+		libtcl8_6.XTcl_AppendResult(tls, interp, libc.VaList(bp+72, __ccgo_ts+25448, libtcl8_6.XTcl_GetString(tls, pObj), 0))
 		// /tmp/libsqlite3/sqlite-src-3370200/ext/expert/test_expert.c:40:5:
 		return int32(m_TCL_ERROR)
 	}
@@ -134169,25 +134165,25 @@ func _testExpertCmd(tls *libc.TLS, clientData uintptr, interp uintptr, objc int3
 		FzMsg uintptr
 	}{
 		0: {
-			FzSub: __ccgo_ts + 12957,
+			FzSub: __ccgo_ts + 12949,
 			FnArg: int32(1),
-			FzMsg: __ccgo_ts + 25473,
+			FzMsg: __ccgo_ts + 25465,
 		},
 		1: {
-			FzSub: __ccgo_ts + 13715,
+			FzSub: __ccgo_ts + 13707,
 			FzMsg: __ccgo_ts + 1095,
 		},
 		2: {
-			FzSub: __ccgo_ts + 25479,
+			FzSub: __ccgo_ts + 25471,
 			FzMsg: __ccgo_ts + 1095,
 		},
 		3: {
-			FzSub: __ccgo_ts + 25485,
+			FzSub: __ccgo_ts + 25477,
 			FnArg: int32(2),
-			FzMsg: __ccgo_ts + 25492,
+			FzMsg: __ccgo_ts + 25484,
 		},
 		4: {
-			FzSub: __ccgo_ts + 25505,
+			FzSub: __ccgo_ts + 25497,
 			FzMsg: __ccgo_ts + 1095,
 		},
 		5: {},
@@ -134199,12 +134195,12 @@ func _testExpertCmd(tls *libc.TLS, clientData uintptr, interp uintptr, objc int3
 	// /tmp/libsqlite3/sqlite-src-3370200/ext/expert/test_expert.c:78:3:
 	if objc < int32(2) {
 		// /tmp/libsqlite3/sqlite-src-3370200/ext/expert/test_expert.c:79:5:
-		libtcl8_6.XTcl_WrongNumArgs(tls, interp, int32(1), objv, __ccgo_ts+22868)
+		libtcl8_6.XTcl_WrongNumArgs(tls, interp, int32(1), objv, __ccgo_ts+22860)
 		// /tmp/libsqlite3/sqlite-src-3370200/ext/expert/test_expert.c:80:5:
 		return int32(m_TCL_ERROR)
 	}
 	// /tmp/libsqlite3/sqlite-src-3370200/ext/expert/test_expert.c:82:3:
-	rc = libtcl8_6.XTcl_GetIndexFromObjStruct(tls, interp, *(*uintptr)(unsafe.Pointer(objv + 1*8)), bp, int32(24), __ccgo_ts+17635, 0, bp+144)
+	rc = libtcl8_6.XTcl_GetIndexFromObjStruct(tls, interp, *(*uintptr)(unsafe.Pointer(objv + 1*8)), bp, int32(24), __ccgo_ts+17627, 0, bp+144)
 	// /tmp/libsqlite3/sqlite-src-3370200/ext/expert/test_expert.c:85:3:
 	if rc != m_TCL_OK {
 		// /tmp/libsqlite3/sqlite-src-3370200/ext/expert/test_expert.c:85:20:
@@ -134256,13 +134252,13 @@ func _testExpertCmd(tls *libc.TLS, clientData uintptr, interp uintptr, objc int3
 	case int32(3):
 		// /tmp/libsqlite3/sqlite-src-3370200/ext/expert/test_expert.c:110:18:
 		*(*[5]uintptr)(unsafe.Pointer(bp + 160)) = [5]uintptr{
-			0: __ccgo_ts + 12957,
-			1: __ccgo_ts + 25513,
-			2: __ccgo_ts + 25521,
-			3: __ccgo_ts + 25526,
+			0: __ccgo_ts + 12949,
+			1: __ccgo_ts + 25505,
+			2: __ccgo_ts + 25513,
+			3: __ccgo_ts + 25518,
 		}
 		// /tmp/libsqlite3/sqlite-src-3370200/ext/expert/test_expert.c:117:7:
-		if libtcl8_6.XTcl_GetIntFromObj(tls, interp, *(*uintptr)(unsafe.Pointer(objv + 2*8)), bp+204) != 0 || libtcl8_6.XTcl_GetIndexFromObjStruct(tls, interp, *(*uintptr)(unsafe.Pointer(objv + 3*8)), bp+160, int32(8), __ccgo_ts+25485, 0, bp+200) != 0 {
+		if libtcl8_6.XTcl_GetIntFromObj(tls, interp, *(*uintptr)(unsafe.Pointer(objv + 2*8)), bp+204) != 0 || libtcl8_6.XTcl_GetIndexFromObjStruct(tls, interp, *(*uintptr)(unsafe.Pointer(objv + 3*8)), bp+160, int32(8), __ccgo_ts+25477, 0, bp+200) != 0 {
 			// /tmp/libsqlite3/sqlite-src-3370200/ext/expert/test_expert.c:120:9:
 			return int32(m_TCL_ERROR)
 		}
@@ -134350,7 +134346,7 @@ func _test_sqlite3_expert_new(tls *libc.TLS, clientData uintptr, interp uintptr,
 	// /tmp/libsqlite3/sqlite-src-3370200/ext/expert/test_expert.c:179:3:
 	_iCmd++
 	v1 = _iCmd
-	zCmd = x_sqlite3_mprintf(tls, __ccgo_ts+25537, libc.VaList(bp+24, v1))
+	zCmd = x_sqlite3_mprintf(tls, __ccgo_ts+25529, libc.VaList(bp+24, v1))
 	// /tmp/libsqlite3/sqlite-src-3370200/ext/expert/test_expert.c:180:3:
 	if zCmd == uintptr(0) {
 		// /tmp/libsqlite3/sqlite-src-3370200/ext/expert/test_expert.c:181:5:
@@ -134406,7 +134402,7 @@ func x_TestExpert_Init(tls *libc.TLS, interp uintptr) (r int32) {
 		FxProc uintptr
 	}{
 		0: {
-			FzCmd:  __ccgo_ts + 25553,
+			FzCmd:  __ccgo_ts + 25545,
 			FxProc: __ccgo_fp(_test_sqlite3_expert_new),
 		},
 	}
@@ -135272,26 +135268,26 @@ func _amatchLoadOneRule(tls *libc.TLS, p uintptr, pStmt uintptr, ppRule uintptr,
 	// /tmp/libsqlite3/sqlite-src-3370200/ext/misc/amatch.c:597:3:
 	if rCost <= 0 || rCost > int32(m_AMATCH_MX_COST) {
 		// /tmp/libsqlite3/sqlite-src-3370200/ext/misc/amatch.c:598:5:
-		*(*uintptr)(unsafe.Pointer(pzErr)) = x_sqlite3_mprintf(tls, __ccgo_ts+25572, libc.VaList(bp+8, (*Tamatch_vtab)(unsafe.Pointer(p)).FzClassName, int32(m_AMATCH_MX_COST)))
+		*(*uintptr)(unsafe.Pointer(pzErr)) = x_sqlite3_mprintf(tls, __ccgo_ts+25564, libc.VaList(bp+8, (*Tamatch_vtab)(unsafe.Pointer(p)).FzClassName, int32(m_AMATCH_MX_COST)))
 		// /tmp/libsqlite3/sqlite-src-3370200/ext/misc/amatch.c:601:5:
 		rc = int32(m_SQLITE_ERROR)
 	} else {
 		// /tmp/libsqlite3/sqlite-src-3370200/ext/misc/amatch.c:603:3:
 		if nFrom > int32(m_AMATCH_MX_LENGTH) || nTo > int32(m_AMATCH_MX_LENGTH) {
 			// /tmp/libsqlite3/sqlite-src-3370200/ext/misc/amatch.c:604:5:
-			*(*uintptr)(unsafe.Pointer(pzErr)) = x_sqlite3_mprintf(tls, __ccgo_ts+25606, libc.VaList(bp+8, (*Tamatch_vtab)(unsafe.Pointer(p)).FzClassName, int32(m_AMATCH_MX_LENGTH)))
+			*(*uintptr)(unsafe.Pointer(pzErr)) = x_sqlite3_mprintf(tls, __ccgo_ts+25598, libc.VaList(bp+8, (*Tamatch_vtab)(unsafe.Pointer(p)).FzClassName, int32(m_AMATCH_MX_LENGTH)))
 			// /tmp/libsqlite3/sqlite-src-3370200/ext/misc/amatch.c:607:5:
 			rc = int32(m_SQLITE_ERROR)
 		} else {
 			// /tmp/libsqlite3/sqlite-src-3370200/ext/misc/amatch.c:609:3:
 			if iLang < 0 || iLang > int64(m_AMATCH_MX_LANGID) {
 				// /tmp/libsqlite3/sqlite-src-3370200/ext/misc/amatch.c:610:5:
-				*(*uintptr)(unsafe.Pointer(pzErr)) = x_sqlite3_mprintf(tls, __ccgo_ts+25638, libc.VaList(bp+8, (*Tamatch_vtab)(unsafe.Pointer(p)).FzClassName, int32(m_AMATCH_MX_LANGID)))
+				*(*uintptr)(unsafe.Pointer(pzErr)) = x_sqlite3_mprintf(tls, __ccgo_ts+25630, libc.VaList(bp+8, (*Tamatch_vtab)(unsafe.Pointer(p)).FzClassName, int32(m_AMATCH_MX_LANGID)))
 				// /tmp/libsqlite3/sqlite-src-3370200/ext/misc/amatch.c:613:5:
 				rc = int32(m_SQLITE_ERROR)
 			} else {
 				// /tmp/libsqlite3/sqlite-src-3370200/ext/misc/amatch.c:615:3:
-				if libc.Xstrcmp(tls, zFrom, __ccgo_ts+1095) == 0 && libc.Xstrcmp(tls, zTo, __ccgo_ts+12347) == 0 {
+				if libc.Xstrcmp(tls, zFrom, __ccgo_ts+1095) == 0 && libc.Xstrcmp(tls, zTo, __ccgo_ts+12339) == 0 {
 					// /tmp/libsqlite3/sqlite-src-3370200/ext/misc/amatch.c:616:5:
 					if (*Tamatch_vtab)(unsafe.Pointer(p)).FrIns == 0 || (*Tamatch_vtab)(unsafe.Pointer(p)).FrIns > rCost {
 						// /tmp/libsqlite3/sqlite-src-3370200/ext/misc/amatch.c:616:39:
@@ -135299,7 +135295,7 @@ func _amatchLoadOneRule(tls *libc.TLS, p uintptr, pStmt uintptr, ppRule uintptr,
 					}
 				} else {
 					// /tmp/libsqlite3/sqlite-src-3370200/ext/misc/amatch.c:618:3:
-					if libc.Xstrcmp(tls, zFrom, __ccgo_ts+12347) == 0 && libc.Xstrcmp(tls, zTo, __ccgo_ts+1095) == 0 {
+					if libc.Xstrcmp(tls, zFrom, __ccgo_ts+12339) == 0 && libc.Xstrcmp(tls, zTo, __ccgo_ts+1095) == 0 {
 						// /tmp/libsqlite3/sqlite-src-3370200/ext/misc/amatch.c:619:5:
 						if (*Tamatch_vtab)(unsafe.Pointer(p)).FrDel == 0 || (*Tamatch_vtab)(unsafe.Pointer(p)).FrDel > rCost {
 							// /tmp/libsqlite3/sqlite-src-3370200/ext/misc/amatch.c:619:39:
@@ -135388,7 +135384,7 @@ func _amatchLoadRules(tls *libc.TLS, db uintptr, p uintptr, pzErr uintptr) (r in
 	// /tmp/libsqlite3/sqlite-src-3370200/ext/misc/amatch.c:663:15:
 	pHead = uintptr(0)
 	// /tmp/libsqlite3/sqlite-src-3370200/ext/misc/amatch.c:665:3:
-	zSql = x_sqlite3_mprintf(tls, __ccgo_ts+15706, libc.VaList(bp+24, (*Tamatch_vtab)(unsafe.Pointer(p)).FzDb, (*Tamatch_vtab)(unsafe.Pointer(p)).FzCostTab))
+	zSql = x_sqlite3_mprintf(tls, __ccgo_ts+15698, libc.VaList(bp+24, (*Tamatch_vtab)(unsafe.Pointer(p)).FzDb, (*Tamatch_vtab)(unsafe.Pointer(p)).FzCostTab))
 	// /tmp/libsqlite3/sqlite-src-3370200/ext/misc/amatch.c:666:3:
 	if zSql == uintptr(0) {
 		// /tmp/libsqlite3/sqlite-src-3370200/ext/misc/amatch.c:667:5:
@@ -135401,12 +135397,12 @@ func _amatchLoadRules(tls *libc.TLS, db uintptr, p uintptr, pzErr uintptr) (r in
 		// /tmp/libsqlite3/sqlite-src-3370200/ext/misc/amatch.c:672:5:
 		if rc != m_SQLITE_OK {
 			// /tmp/libsqlite3/sqlite-src-3370200/ext/misc/amatch.c:673:7:
-			*(*uintptr)(unsafe.Pointer(pzErr)) = x_sqlite3_mprintf(tls, __ccgo_ts+25673, libc.VaList(bp+24, (*Tamatch_vtab)(unsafe.Pointer(p)).FzClassName, x_sqlite3_errmsg(tls, db)))
+			*(*uintptr)(unsafe.Pointer(pzErr)) = x_sqlite3_mprintf(tls, __ccgo_ts+25665, libc.VaList(bp+24, (*Tamatch_vtab)(unsafe.Pointer(p)).FzClassName, x_sqlite3_errmsg(tls, db)))
 		} else {
 			// /tmp/libsqlite3/sqlite-src-3370200/ext/misc/amatch.c:674:11:
 			if x_sqlite3_column_count(tls, *(*uintptr)(unsafe.Pointer(bp))) != int32(4) {
 				// /tmp/libsqlite3/sqlite-src-3370200/ext/misc/amatch.c:675:7:
-				*(*uintptr)(unsafe.Pointer(pzErr)) = x_sqlite3_mprintf(tls, __ccgo_ts+25680, libc.VaList(bp+24, (*Tamatch_vtab)(unsafe.Pointer(p)).FzClassName, (*Tamatch_vtab)(unsafe.Pointer(p)).FzCostTab, x_sqlite3_column_count(tls, *(*uintptr)(unsafe.Pointer(bp)))))
+				*(*uintptr)(unsafe.Pointer(pzErr)) = x_sqlite3_mprintf(tls, __ccgo_ts+25672, libc.VaList(bp+24, (*Tamatch_vtab)(unsafe.Pointer(p)).FzClassName, (*Tamatch_vtab)(unsafe.Pointer(p)).FzCostTab, x_sqlite3_column_count(tls, *(*uintptr)(unsafe.Pointer(bp)))))
 				// /tmp/libsqlite3/sqlite-src-3370200/ext/misc/amatch.c:678:7:
 				rc = int32(m_SQLITE_ERROR)
 			} else {
@@ -135781,7 +135777,7 @@ func _amatchConnect(tls *libc.TLS, db uintptr, pAux uintptr, argc int32, argv ui
 			break
 		}
 		// /tmp/libsqlite3/sqlite-src-3370200/ext/misc/amatch.c:862:5:
-		zVal = _amatchValueOfKey(tls, __ccgo_ts+25714, *(*uintptr)(unsafe.Pointer(argv + uintptr(i)*8)))
+		zVal = _amatchValueOfKey(tls, __ccgo_ts+25706, *(*uintptr)(unsafe.Pointer(argv + uintptr(i)*8)))
 		// /tmp/libsqlite3/sqlite-src-3370200/ext/misc/amatch.c:863:5:
 		if zVal != 0 {
 			// /tmp/libsqlite3/sqlite-src-3370200/ext/misc/amatch.c:864:7:
@@ -135797,7 +135793,7 @@ func _amatchConnect(tls *libc.TLS, db uintptr, pAux uintptr, argc int32, argv ui
 			goto _1
 		}
 		// /tmp/libsqlite3/sqlite-src-3370200/ext/misc/amatch.c:869:5:
-		zVal = _amatchValueOfKey(tls, __ccgo_ts+25731, *(*uintptr)(unsafe.Pointer(argv + uintptr(i)*8)))
+		zVal = _amatchValueOfKey(tls, __ccgo_ts+25723, *(*uintptr)(unsafe.Pointer(argv + uintptr(i)*8)))
 		// /tmp/libsqlite3/sqlite-src-3370200/ext/misc/amatch.c:870:5:
 		if zVal != 0 {
 			// /tmp/libsqlite3/sqlite-src-3370200/ext/misc/amatch.c:871:7:
@@ -135813,7 +135809,7 @@ func _amatchConnect(tls *libc.TLS, db uintptr, pAux uintptr, argc int32, argv ui
 			goto _1
 		}
 		// /tmp/libsqlite3/sqlite-src-3370200/ext/misc/amatch.c:876:5:
-		zVal = _amatchValueOfKey(tls, __ccgo_ts+25747, *(*uintptr)(unsafe.Pointer(argv + uintptr(i)*8)))
+		zVal = _amatchValueOfKey(tls, __ccgo_ts+25739, *(*uintptr)(unsafe.Pointer(argv + uintptr(i)*8)))
 		// /tmp/libsqlite3/sqlite-src-3370200/ext/misc/amatch.c:877:5:
 		if zVal != 0 {
 			// /tmp/libsqlite3/sqlite-src-3370200/ext/misc/amatch.c:878:7:
@@ -135829,7 +135825,7 @@ func _amatchConnect(tls *libc.TLS, db uintptr, pAux uintptr, argc int32, argv ui
 			goto _1
 		}
 		// /tmp/libsqlite3/sqlite-src-3370200/ext/misc/amatch.c:883:5:
-		zVal = _amatchValueOfKey(tls, __ccgo_ts+25767, *(*uintptr)(unsafe.Pointer(argv + uintptr(i)*8)))
+		zVal = _amatchValueOfKey(tls, __ccgo_ts+25759, *(*uintptr)(unsafe.Pointer(argv + uintptr(i)*8)))
 		// /tmp/libsqlite3/sqlite-src-3370200/ext/misc/amatch.c:884:5:
 		if zVal != 0 {
 			// /tmp/libsqlite3/sqlite-src-3370200/ext/misc/amatch.c:885:7:
@@ -135845,7 +135841,7 @@ func _amatchConnect(tls *libc.TLS, db uintptr, pAux uintptr, argc int32, argv ui
 			goto _1
 		}
 		// /tmp/libsqlite3/sqlite-src-3370200/ext/misc/amatch.c:890:5:
-		*(*uintptr)(unsafe.Pointer(pzErr)) = x_sqlite3_mprintf(tls, __ccgo_ts+25782, libc.VaList(bp+8, *(*uintptr)(unsafe.Pointer(argv + uintptr(i)*8))))
+		*(*uintptr)(unsafe.Pointer(pzErr)) = x_sqlite3_mprintf(tls, __ccgo_ts+25774, libc.VaList(bp+8, *(*uintptr)(unsafe.Pointer(argv + uintptr(i)*8))))
 		// /tmp/libsqlite3/sqlite-src-3370200/ext/misc/amatch.c:891:5:
 		_amatchFree(tls, pNew)
 		// /tmp/libsqlite3/sqlite-src-3370200/ext/misc/amatch.c:892:5:
@@ -135861,7 +135857,7 @@ func _amatchConnect(tls *libc.TLS, db uintptr, pAux uintptr, argc int32, argv ui
 	// /tmp/libsqlite3/sqlite-src-3370200/ext/misc/amatch.c:896:3:
 	if (*Tamatch_vtab)(unsafe.Pointer(pNew)).FzCostTab == uintptr(0) {
 		// /tmp/libsqlite3/sqlite-src-3370200/ext/misc/amatch.c:897:5:
-		*(*uintptr)(unsafe.Pointer(pzErr)) = x_sqlite3_mprintf(tls, __ccgo_ts+25811, 0)
+		*(*uintptr)(unsafe.Pointer(pzErr)) = x_sqlite3_mprintf(tls, __ccgo_ts+25803, 0)
 		// /tmp/libsqlite3/sqlite-src-3370200/ext/misc/amatch.c:898:5:
 		rc = int32(m_SQLITE_ERROR)
 	} else {
@@ -135873,7 +135869,7 @@ func _amatchConnect(tls *libc.TLS, db uintptr, pAux uintptr, argc int32, argv ui
 		// /tmp/libsqlite3/sqlite-src-3370200/ext/misc/amatch.c:903:5:
 		x_sqlite3_vtab_config(tls, db, int32(m_SQLITE_VTAB_INNOCUOUS), 0)
 		// /tmp/libsqlite3/sqlite-src-3370200/ext/misc/amatch.c:904:5:
-		rc = x_sqlite3_declare_vtab(tls, db, __ccgo_ts+25845)
+		rc = x_sqlite3_declare_vtab(tls, db, __ccgo_ts+25837)
 	}
 	// /tmp/libsqlite3/sqlite-src-3370200/ext/misc/amatch.c:914:3:
 	if rc != m_SQLITE_OK {
@@ -136231,10 +136227,10 @@ func _amatchNext(tls *libc.TLS, cur uintptr) (r int32) {
 		// /tmp/libsqlite3/sqlite-src-3370200/ext/misc/amatch.c:1121:5:
 		if (*Tamatch_vtab)(unsafe.Pointer(p)).FzVocabLang != 0 && *(*int8)(unsafe.Pointer((*Tamatch_vtab)(unsafe.Pointer(p)).FzVocabLang)) != 0 {
 			// /tmp/libsqlite3/sqlite-src-3370200/ext/misc/amatch.c:1122:7:
-			zSql = x_sqlite3_mprintf(tls, __ccgo_ts+25912, libc.VaList(bp+24, __ccgo_ts+25934, (*Tamatch_vtab)(unsafe.Pointer(p)).FzVocabWord, (*Tamatch_vtab)(unsafe.Pointer(p)).FzVocabTab, (*Tamatch_vtab)(unsafe.Pointer(p)).FzVocabWord, (*Tamatch_vtab)(unsafe.Pointer(p)).FzVocabLang))
+			zSql = x_sqlite3_mprintf(tls, __ccgo_ts+25904, libc.VaList(bp+24, __ccgo_ts+25926, (*Tamatch_vtab)(unsafe.Pointer(p)).FzVocabWord, (*Tamatch_vtab)(unsafe.Pointer(p)).FzVocabTab, (*Tamatch_vtab)(unsafe.Pointer(p)).FzVocabWord, (*Tamatch_vtab)(unsafe.Pointer(p)).FzVocabLang))
 		} else {
 			// /tmp/libsqlite3/sqlite-src-3370200/ext/misc/amatch.c:1130:7:
-			zSql = x_sqlite3_mprintf(tls, __ccgo_ts+25973, libc.VaList(bp+24, (*Tamatch_vtab)(unsafe.Pointer(p)).FzVocabWord, (*Tamatch_vtab)(unsafe.Pointer(p)).FzVocabTab, (*Tamatch_vtab)(unsafe.Pointer(p)).FzVocabWord))
+			zSql = x_sqlite3_mprintf(tls, __ccgo_ts+25965, libc.VaList(bp+24, (*Tamatch_vtab)(unsafe.Pointer(p)).FzVocabWord, (*Tamatch_vtab)(unsafe.Pointer(p)).FzVocabTab, (*Tamatch_vtab)(unsafe.Pointer(p)).FzVocabWord))
 		}
 		// /tmp/libsqlite3/sqlite-src-3370200/ext/misc/amatch.c:1138:5:
 		rc = x_sqlite3_prepare_v2(tls, (*Tamatch_vtab)(unsafe.Pointer(p)).Fdb, zSql, -int32(1), p+112, uintptr(0))
@@ -136456,7 +136452,7 @@ func _amatchFilter(tls *libc.TLS, pVtabCursor uintptr, idxNum int32, idxStr uint
 	// /tmp/libsqlite3/sqlite-src-3370200/ext/misc/amatch.c:1256:17:
 	pCur = pVtabCursor
 	// /tmp/libsqlite3/sqlite-src-3370200/ext/misc/amatch.c:1257:14:
-	zWord = __ccgo_ts + 26021
+	zWord = __ccgo_ts + 26013
 	// /tmp/libsqlite3/sqlite-src-3370200/ext/misc/amatch.c:1260:3:
 	_amatchClearCursor(tls, pCur)
 	// /tmp/libsqlite3/sqlite-src-3370200/ext/misc/amatch.c:1261:3:
@@ -136728,21 +136724,21 @@ func _amatchUpdate(tls *libc.TLS, pVTab uintptr, argc int32, argv uintptr, pRowi
 	// /tmp/libsqlite3/sqlite-src-3370200/ext/misc/amatch.c:1427:3:
 	if argc == int32(1) {
 		// /tmp/libsqlite3/sqlite-src-3370200/ext/misc/amatch.c:1428:5:
-		(*Tsqlite3_vtab)(unsafe.Pointer(pVTab)).FzErrMsg = x_sqlite3_mprintf(tls, __ccgo_ts+26023, libc.VaList(bp+8, (*Tamatch_vtab)(unsafe.Pointer(p)).FzSelf))
+		(*Tsqlite3_vtab)(unsafe.Pointer(pVTab)).FzErrMsg = x_sqlite3_mprintf(tls, __ccgo_ts+26015, libc.VaList(bp+8, (*Tamatch_vtab)(unsafe.Pointer(p)).FzSelf))
 		// /tmp/libsqlite3/sqlite-src-3370200/ext/misc/amatch.c:1430:5:
 		return int32(m_SQLITE_ERROR)
 	}
 	// /tmp/libsqlite3/sqlite-src-3370200/ext/misc/amatch.c:1432:3:
 	if x_sqlite3_value_type(tls, *(*uintptr)(unsafe.Pointer(argv))) != int32(m_SQLITE_NULL) {
 		// /tmp/libsqlite3/sqlite-src-3370200/ext/misc/amatch.c:1433:5:
-		(*Tsqlite3_vtab)(unsafe.Pointer(pVTab)).FzErrMsg = x_sqlite3_mprintf(tls, __ccgo_ts+26053, libc.VaList(bp+8, (*Tamatch_vtab)(unsafe.Pointer(p)).FzSelf))
+		(*Tsqlite3_vtab)(unsafe.Pointer(pVTab)).FzErrMsg = x_sqlite3_mprintf(tls, __ccgo_ts+26045, libc.VaList(bp+8, (*Tamatch_vtab)(unsafe.Pointer(p)).FzSelf))
 		// /tmp/libsqlite3/sqlite-src-3370200/ext/misc/amatch.c:1435:5:
 		return int32(m_SQLITE_ERROR)
 	}
 	// /tmp/libsqlite3/sqlite-src-3370200/ext/misc/amatch.c:1437:3:
 	if x_sqlite3_value_type(tls, *(*uintptr)(unsafe.Pointer(argv + uintptr(libc.Int32FromInt32(2)+libc.Int32FromInt32(m_AMATCH_COL_WORD))*8))) != int32(m_SQLITE_NULL) || x_sqlite3_value_type(tls, *(*uintptr)(unsafe.Pointer(argv + uintptr(libc.Int32FromInt32(2)+libc.Int32FromInt32(m_AMATCH_COL_DISTANCE))*8))) != int32(m_SQLITE_NULL) || x_sqlite3_value_type(tls, *(*uintptr)(unsafe.Pointer(argv + uintptr(libc.Int32FromInt32(2)+libc.Int32FromInt32(m_AMATCH_COL_LANGUAGE))*8))) != int32(m_SQLITE_NULL) {
 		// /tmp/libsqlite3/sqlite-src-3370200/ext/misc/amatch.c:1441:5:
-		(*Tsqlite3_vtab)(unsafe.Pointer(pVTab)).FzErrMsg = x_sqlite3_mprintf(tls, __ccgo_ts+26081, libc.VaList(bp+8, (*Tamatch_vtab)(unsafe.Pointer(p)).FzSelf))
+		(*Tsqlite3_vtab)(unsafe.Pointer(pVTab)).FzErrMsg = x_sqlite3_mprintf(tls, __ccgo_ts+26073, libc.VaList(bp+8, (*Tamatch_vtab)(unsafe.Pointer(p)).FzSelf))
 		// /tmp/libsqlite3/sqlite-src-3370200/ext/misc/amatch.c:1443:5:
 		return int32(m_SQLITE_ERROR)
 	}
@@ -136804,7 +136800,7 @@ func x_sqlite3_amatch_init(tls *libc.TLS, db uintptr, pzErrMsg uintptr, pApi uin
 	// /tmp/libsqlite3/sqlite-src-3370200/ext/misc/amatch.c:1496:3:
 	_ = pzErrMsg /* Not used */
 	// /tmp/libsqlite3/sqlite-src-3370200/ext/misc/amatch.c:1498:3:
-	rc = x_sqlite3_create_module(tls, db, __ccgo_ts+26130, uintptr(unsafe.Pointer(&_amatchModule)), uintptr(0))
+	rc = x_sqlite3_create_module(tls, db, __ccgo_ts+26122, uintptr(unsafe.Pointer(&_amatchModule)), uintptr(0))
 	// /tmp/libsqlite3/sqlite-src-3370200/ext/misc/amatch.c:1500:3:
 	return rc
 }
@@ -136941,7 +136937,7 @@ type TApndFile1 = struct {
 var _apnd_vfs = Tsqlite3_vfs{
 	FiVersion:   int32(3),
 	FmxPathname: int32(1024),
-	FzName:      __ccgo_ts + 26148,
+	FzName:      __ccgo_ts + 26140,
 }
 
 func init() {
@@ -137051,7 +137047,7 @@ func _apndWriteMark(tls *libc.TLS, paf uintptr, pFile uintptr, iWriteEnd Tsqlite
 	i = int32(m_APND_MARK_FOS_SZ)
 	// /tmp/libsqlite3/sqlite-src-3370200/ext/misc/appendvfs.c:260:3:
 	// /tmp/libsqlite3/sqlite-src-3370200/ext/misc/appendvfs.c:261:3:
-	libc.Xmemcpy(tls, bp, __ccgo_ts+26156, uint64(m_APND_MARK_PREFIX_SZ))
+	libc.Xmemcpy(tls, bp, __ccgo_ts+26148, uint64(m_APND_MARK_PREFIX_SZ))
 	// /tmp/libsqlite3/sqlite-src-3370200/ext/misc/appendvfs.c:262:3:
 	for {
 		i--
@@ -137256,7 +137252,7 @@ func _apndFileControl(tls *libc.TLS, pFile uintptr, op int32, pArg uintptr) (r i
 	// /tmp/libsqlite3/sqlite-src-3370200/ext/misc/appendvfs.c:358:3:
 	if rc == m_SQLITE_OK && op == int32(m_SQLITE_FCNTL_VFSNAME) {
 		// /tmp/libsqlite3/sqlite-src-3370200/ext/misc/appendvfs.c:359:5:
-		*(*uintptr)(unsafe.Pointer(pArg)) = x_sqlite3_mprintf(tls, __ccgo_ts+26174, libc.VaList(bp+8, (*TApndFile)(unsafe.Pointer(paf)).FiPgOne, *(*uintptr)(unsafe.Pointer(pArg))))
+		*(*uintptr)(unsafe.Pointer(pArg)) = x_sqlite3_mprintf(tls, __ccgo_ts+26166, libc.VaList(bp+8, (*TApndFile)(unsafe.Pointer(paf)).FiPgOne, *(*uintptr)(unsafe.Pointer(pArg))))
 	}
 	// /tmp/libsqlite3/sqlite-src-3370200/ext/misc/appendvfs.c:361:3:
 	return rc
@@ -137419,7 +137415,7 @@ func _apndReadMark(tls *libc.TLS, sz Tsqlite3_int64, pFile uintptr) (r Tsqlite3_
 		return int64(-int32(1))
 	}
 	// /tmp/libsqlite3/sqlite-src-3370200/ext/misc/appendvfs.c:450:3:
-	if libc.Xmemcmp(tls, bp, __ccgo_ts+26156, uint64(m_APND_MARK_PREFIX_SZ)) != 0 {
+	if libc.Xmemcmp(tls, bp, __ccgo_ts+26148, uint64(m_APND_MARK_PREFIX_SZ)) != 0 {
 		// /tmp/libsqlite3/sqlite-src-3370200/ext/misc/appendvfs.c:450:61:
 		return int64(-int32(1))
 	}
@@ -137810,10 +137806,10 @@ const m_CARRAY_TEXT = 3
 
 // /tmp/libsqlite3/sqlite-src-3370200/ext/misc/carray.c:83:19:
 var _azType = [4]uintptr{
-	0: __ccgo_ts + 26188,
+	0: __ccgo_ts + 26180,
 	1: __ccgo_ts + 1116,
 	2: __ccgo_ts + 1129,
-	3: __ccgo_ts + 26194,
+	3: __ccgo_ts + 26186,
 }
 
 // C documentation
@@ -137891,7 +137887,7 @@ func _carrayConnect(tls *libc.TLS, db uintptr, pAux uintptr, argc int32, argv ui
 	_, _, _ = pNew, rc, v1
 	/* Column numbers */
 	// /tmp/libsqlite3/sqlite-src-3370200/ext/misc/carray.c:139:3:
-	rc = x_sqlite3_declare_vtab(tls, db, __ccgo_ts+26200)
+	rc = x_sqlite3_declare_vtab(tls, db, __ccgo_ts+26192)
 	// /tmp/libsqlite3/sqlite-src-3370200/ext/misc/carray.c:141:3:
 	if rc == m_SQLITE_OK {
 		// /tmp/libsqlite3/sqlite-src-3370200/ext/misc/carray.c:142:5:
@@ -138135,7 +138131,7 @@ func _carrayFilter(tls *libc.TLS, pVtabCursor uintptr, idxNum int32, idxStr uint
 	// /tmp/libsqlite3/sqlite-src-3370200/ext/misc/carray.c:266:5:
 	case int32(1):
 		// /tmp/libsqlite3/sqlite-src-3370200/ext/misc/carray.c:267:19:
-		pBind = x_sqlite3_value_pointer(tls, *(*uintptr)(unsafe.Pointer(argv)), __ccgo_ts+26263)
+		pBind = x_sqlite3_value_pointer(tls, *(*uintptr)(unsafe.Pointer(argv)), __ccgo_ts+26255)
 		// /tmp/libsqlite3/sqlite-src-3370200/ext/misc/carray.c:268:7:
 		if pBind == uintptr(0) {
 			// /tmp/libsqlite3/sqlite-src-3370200/ext/misc/carray.c:268:22:
@@ -138189,7 +138185,7 @@ func _carrayFilter(tls *libc.TLS, pVtabCursor uintptr, idxNum int32, idxStr uint
 			// /tmp/libsqlite3/sqlite-src-3370200/ext/misc/carray.c:286:9:
 			if uint64(uint64(i)) >= libc.Uint64FromInt64(32)/libc.Uint64FromInt64(8) {
 				// /tmp/libsqlite3/sqlite-src-3370200/ext/misc/carray.c:287:11:
-				(*Tsqlite3_vtab)(unsafe.Pointer((*Tsqlite3_vtab_cursor)(unsafe.Pointer(pVtabCursor)).FpVtab)).FzErrMsg = x_sqlite3_mprintf(tls, __ccgo_ts+26275, libc.VaList(bp+8, zType))
+				(*Tsqlite3_vtab)(unsafe.Pointer((*Tsqlite3_vtab_cursor)(unsafe.Pointer(pVtabCursor)).FpVtab)).FzErrMsg = x_sqlite3_mprintf(tls, __ccgo_ts+26267, libc.VaList(bp+8, zType))
 				// /tmp/libsqlite3/sqlite-src-3370200/ext/misc/carray.c:289:11:
 				return int32(m_SQLITE_ERROR)
 			} else {
@@ -138512,7 +138508,7 @@ func x_sqlite3_carray_bind(tls *libc.TLS, pStmt uintptr, idx int32, aData uintpt
 		(*Tcarray_bind)(unsafe.Pointer(pNew)).FxDel = xDestroy
 	}
 	// /tmp/libsqlite3/sqlite-src-3370200/ext/misc/carray.c:474:3:
-	return x_sqlite3_bind_pointer(tls, pStmt, idx, pNew, __ccgo_ts+26263, __ccgo_fp(_carrayBindDel))
+	return x_sqlite3_bind_pointer(tls, pStmt, idx, pNew, __ccgo_ts+26255, __ccgo_fp(_carrayBindDel))
 }
 
 // C documentation
@@ -138566,7 +138562,7 @@ func x_sqlite3_carray_init(tls *libc.TLS, db uintptr, pzErrMsg uintptr, pApi uin
 	// /tmp/libsqlite3/sqlite-src-3370200/ext/misc/carray.c:518:3:
 	if rc == m_SQLITE_OK {
 		// /tmp/libsqlite3/sqlite-src-3370200/ext/misc/carray.c:519:5:
-		rc = x_sqlite3_create_function(tls, db, __ccgo_ts+26296, int32(1), int32(m_SQLITE_UTF8), uintptr(0), __ccgo_fp(_inttoptrFunc), uintptr(0), uintptr(0))
+		rc = x_sqlite3_create_function(tls, db, __ccgo_ts+26288, int32(1), int32(m_SQLITE_UTF8), uintptr(0), __ccgo_fp(_inttoptrFunc), uintptr(0), uintptr(0))
 	}
 	// /tmp/libsqlite3/sqlite-src-3370200/ext/misc/carray.c:524:3:
 	return rc
@@ -138658,7 +138654,7 @@ type TCksmFile1 = struct {
 var _cksm_vfs = Tsqlite3_vfs{
 	FiVersion:   int32(3),
 	FmxPathname: int32(1024),
-	FzName:      __ccgo_ts + 26305,
+	FzName:      __ccgo_ts + 26297,
 }
 
 func init() {
@@ -138900,7 +138896,7 @@ func _cksmRead(tls *libc.TLS, pFile uintptr, zBuf uintptr, iAmt int32, iOfst Tsq
 	// /tmp/libsqlite3/sqlite-src-3370200/ext/misc/cksumvfs.c:435:3:
 	if rc == m_SQLITE_OK {
 		// /tmp/libsqlite3/sqlite-src-3370200/ext/misc/cksumvfs.c:436:5:
-		if iOfst == 0 && iAmt >= int32(100) && (libc.Xmemcmp(tls, zBuf, __ccgo_ts+26313, uint64(16)) == 0 || libc.Xmemcmp(tls, zBuf, __ccgo_ts+26329, uint64(3)) == 0) {
+		if iOfst == 0 && iAmt >= int32(100) && (libc.Xmemcmp(tls, zBuf, __ccgo_ts+26305, uint64(16)) == 0 || libc.Xmemcmp(tls, zBuf, __ccgo_ts+26321, uint64(3)) == 0) {
 			// /tmp/libsqlite3/sqlite-src-3370200/ext/misc/cksumvfs.c:439:10:
 			d = zBuf
 			// /tmp/libsqlite3/sqlite-src-3370200/ext/misc/cksumvfs.c:440:12:
@@ -138921,7 +138917,7 @@ func _cksmRead(tls *libc.TLS, pFile uintptr, zBuf uintptr, iAmt int32, iOfst Tsq
 			// /tmp/libsqlite3/sqlite-src-3370200/ext/misc/cksumvfs.c:455:7:
 			if libc.Xmemcmp(tls, zBuf+uintptr(iAmt)-uintptr(8), bp, uint64(8)) != 0 {
 				// /tmp/libsqlite3/sqlite-src-3370200/ext/misc/cksumvfs.c:456:9:
-				x_sqlite3_log(tls, libc.Int32FromInt32(m_SQLITE_IOERR)|libc.Int32FromInt32(32)<<libc.Int32FromInt32(8), __ccgo_ts+26333, libc.VaList(bp+16, iOfst, (*TCksmFile)(unsafe.Pointer(p)).FzFName))
+				x_sqlite3_log(tls, libc.Int32FromInt32(m_SQLITE_IOERR)|libc.Int32FromInt32(32)<<libc.Int32FromInt32(8), __ccgo_ts+26325, libc.VaList(bp+16, iOfst, (*TCksmFile)(unsafe.Pointer(p)).FzFName))
 				// /tmp/libsqlite3/sqlite-src-3370200/ext/misc/cksumvfs.c:459:9:
 				rc = libc.Int32FromInt32(m_SQLITE_IOERR) | libc.Int32FromInt32(32)<<libc.Int32FromInt32(8)
 			}
@@ -138948,7 +138944,7 @@ func _cksmWrite(tls *libc.TLS, pFile uintptr, zBuf uintptr, iAmt int32, iOfst Ts
 	// /tmp/libsqlite3/sqlite-src-3370200/ext/misc/cksumvfs.c:476:3:
 	pFile = pFile + libc.UintptrFromInt32(1)*32
 	// /tmp/libsqlite3/sqlite-src-3370200/ext/misc/cksumvfs.c:477:3:
-	if iOfst == 0 && iAmt >= int32(100) && (libc.Xmemcmp(tls, zBuf, __ccgo_ts+26313, uint64(16)) == 0 || libc.Xmemcmp(tls, zBuf, __ccgo_ts+26329, uint64(3)) == 0) {
+	if iOfst == 0 && iAmt >= int32(100) && (libc.Xmemcmp(tls, zBuf, __ccgo_ts+26305, uint64(16)) == 0 || libc.Xmemcmp(tls, zBuf, __ccgo_ts+26321, uint64(3)) == 0) {
 		// /tmp/libsqlite3/sqlite-src-3370200/ext/misc/cksumvfs.c:480:8:
 		d = zBuf
 		// /tmp/libsqlite3/sqlite-src-3370200/ext/misc/cksumvfs.c:481:10:
@@ -139089,13 +139085,13 @@ func _cksmFileControl(tls *libc.TLS, pFile uintptr, op int32, pArg uintptr) (r i
 		azArg = pArg
 		// /tmp/libsqlite3/sqlite-src-3370200/ext/misc/cksumvfs.c:557:5:
 		// /tmp/libsqlite3/sqlite-src-3370200/ext/misc/cksumvfs.c:558:5:
-		if x_sqlite3_stricmp(tls, *(*uintptr)(unsafe.Pointer(azArg + 1*8)), __ccgo_ts+26368) == 0 {
+		if x_sqlite3_stricmp(tls, *(*uintptr)(unsafe.Pointer(azArg + 1*8)), __ccgo_ts+26360) == 0 {
 			// /tmp/libsqlite3/sqlite-src-3370200/ext/misc/cksumvfs.c:559:12:
 			zArg = *(*uintptr)(unsafe.Pointer(azArg + 2*8))
 			// /tmp/libsqlite3/sqlite-src-3370200/ext/misc/cksumvfs.c:560:7:
 			if zArg != uintptr(0) {
 				// /tmp/libsqlite3/sqlite-src-3370200/ext/misc/cksumvfs.c:561:9:
-				if int32(*(*int8)(unsafe.Pointer(zArg))) >= int32('1') && int32(*(*int8)(unsafe.Pointer(zArg))) <= int32('9') || x_sqlite3_strlike(tls, __ccgo_ts+26390, zArg, uint32(0)) == 0 || x_sqlite3_stricmp(tls, __ccgo_ts+26398, zArg) == 0 || x_sqlite3_stricmp(tls, __ccgo_ts+19358, zArg) == 0 {
+				if int32(*(*int8)(unsafe.Pointer(zArg))) >= int32('1') && int32(*(*int8)(unsafe.Pointer(zArg))) <= int32('9') || x_sqlite3_strlike(tls, __ccgo_ts+26382, zArg, uint32(0)) == 0 || x_sqlite3_stricmp(tls, __ccgo_ts+26390, zArg) == 0 || x_sqlite3_stricmp(tls, __ccgo_ts+19350, zArg) == 0 {
 					// /tmp/libsqlite3/sqlite-src-3370200/ext/misc/cksumvfs.c:566:11:
 					(*TCksmFile)(unsafe.Pointer(p)).FverifyCksm = (*TCksmFile)(unsafe.Pointer(p)).FcomputeCksm
 				} else {
@@ -139114,7 +139110,7 @@ func _cksmFileControl(tls *libc.TLS, pFile uintptr, op int32, pArg uintptr) (r i
 			return m_SQLITE_OK
 		} else {
 			// /tmp/libsqlite3/sqlite-src-3370200/ext/misc/cksumvfs.c:574:11:
-			if (*TCksmFile)(unsafe.Pointer(p)).FcomputeCksm != 0 && *(*uintptr)(unsafe.Pointer(azArg + 2*8)) != uintptr(0) && x_sqlite3_stricmp(tls, *(*uintptr)(unsafe.Pointer(azArg + 1*8)), __ccgo_ts+26402) == 0 {
+			if (*TCksmFile)(unsafe.Pointer(p)).FcomputeCksm != 0 && *(*uintptr)(unsafe.Pointer(azArg + 2*8)) != uintptr(0) && x_sqlite3_stricmp(tls, *(*uintptr)(unsafe.Pointer(azArg + 1*8)), __ccgo_ts+26394) == 0 {
 				/* Do not allow page size changes on a checksum database */
 				// /tmp/libsqlite3/sqlite-src-3370200/ext/misc/cksumvfs.c:577:7:
 				return m_SQLITE_OK
@@ -139155,7 +139151,7 @@ func _cksmFileControl(tls *libc.TLS, pFile uintptr, op int32, pArg uintptr) (r i
 	// /tmp/libsqlite3/sqlite-src-3370200/ext/misc/cksumvfs.c:596:3:
 	if rc == m_SQLITE_OK && op == int32(m_SQLITE_FCNTL_VFSNAME) {
 		// /tmp/libsqlite3/sqlite-src-3370200/ext/misc/cksumvfs.c:597:5:
-		*(*uintptr)(unsafe.Pointer(pArg)) = x_sqlite3_mprintf(tls, __ccgo_ts+26412, libc.VaList(bp+8, *(*uintptr)(unsafe.Pointer(pArg))))
+		*(*uintptr)(unsafe.Pointer(pArg)) = x_sqlite3_mprintf(tls, __ccgo_ts+26404, libc.VaList(bp+8, *(*uintptr)(unsafe.Pointer(pArg))))
 	}
 	// /tmp/libsqlite3/sqlite-src-3370200/ext/misc/cksumvfs.c:599:3:
 	return rc
@@ -139510,7 +139506,7 @@ func _cksmRegisterFunc(tls *libc.TLS, db uintptr, pzErrMsg uintptr, pApi uintptr
 		return m_SQLITE_OK
 	}
 	// /tmp/libsqlite3/sqlite-src-3370200/ext/misc/cksumvfs.c:805:3:
-	rc = x_sqlite3_create_function(tls, db, __ccgo_ts+26420, int32(1), libc.Int32FromInt32(m_SQLITE_UTF8)|libc.Int32FromInt32(m_SQLITE_INNOCUOUS)|libc.Int32FromInt32(m_SQLITE_DETERMINISTIC), uintptr(0), __ccgo_fp(_cksmVerifyFunc), uintptr(0), uintptr(0))
+	rc = x_sqlite3_create_function(tls, db, __ccgo_ts+26412, int32(1), libc.Int32FromInt32(m_SQLITE_UTF8)|libc.Int32FromInt32(m_SQLITE_INNOCUOUS)|libc.Int32FromInt32(m_SQLITE_DETERMINISTIC), uintptr(0), __ccgo_fp(_cksmVerifyFunc), uintptr(0), uintptr(0))
 	// /tmp/libsqlite3/sqlite-src-3370200/ext/misc/cksumvfs.c:813:3:
 	return rc
 }
@@ -139532,7 +139528,7 @@ func _cksmRegisterVfs(tls *libc.TLS) (r int32) {
 	// /tmp/libsqlite3/sqlite-src-3370200/ext/misc/cksumvfs.c:822:7:
 	rc = m_SQLITE_OK
 	// /tmp/libsqlite3/sqlite-src-3370200/ext/misc/cksumvfs.c:824:3:
-	if x_sqlite3_vfs_find(tls, __ccgo_ts+26305) != uintptr(0) {
+	if x_sqlite3_vfs_find(tls, __ccgo_ts+26297) != uintptr(0) {
 		// /tmp/libsqlite3/sqlite-src-3370200/ext/misc/cksumvfs.c:824:40:
 		return m_SQLITE_OK
 	}
@@ -139579,7 +139575,7 @@ func x_sqlite3_register_cksumvfs(tls *libc.TLS, NotUsed uintptr) (r int32) {
 func x_sqlite3_unregister_cksumvfs(tls *libc.TLS) (r int32) {
 	// /tmp/libsqlite3/sqlite-src-3370200/ext/misc/cksumvfs.c:845:38:
 	// /tmp/libsqlite3/sqlite-src-3370200/ext/misc/cksumvfs.c:846:3:
-	if x_sqlite3_vfs_find(tls, __ccgo_ts+26305) != 0 {
+	if x_sqlite3_vfs_find(tls, __ccgo_ts+26297) != 0 {
 		// /tmp/libsqlite3/sqlite-src-3370200/ext/misc/cksumvfs.c:847:5:
 		x_sqlite3_vfs_unregister(tls, uintptr(unsafe.Pointer(&_cksm_vfs)))
 		// /tmp/libsqlite3/sqlite-src-3370200/ext/misc/cksumvfs.c:848:5:
@@ -140425,7 +140421,7 @@ func _closureConnect(tls *libc.TLS, db uintptr, pAux uintptr, argc int32, argv u
 			break
 		}
 		// /tmp/libsqlite3/sqlite-src-3370200/ext/misc/closure.c:529:5:
-		zVal = _closureValueOfKey(tls, __ccgo_ts+26436, *(*uintptr)(unsafe.Pointer(argv + uintptr(i)*8)))
+		zVal = _closureValueOfKey(tls, __ccgo_ts+26428, *(*uintptr)(unsafe.Pointer(argv + uintptr(i)*8)))
 		// /tmp/libsqlite3/sqlite-src-3370200/ext/misc/closure.c:530:5:
 		if zVal != 0 {
 			// /tmp/libsqlite3/sqlite-src-3370200/ext/misc/closure.c:531:7:
@@ -140441,7 +140437,7 @@ func _closureConnect(tls *libc.TLS, db uintptr, pAux uintptr, argc int32, argv u
 			goto _1
 		}
 		// /tmp/libsqlite3/sqlite-src-3370200/ext/misc/closure.c:536:5:
-		zVal = _closureValueOfKey(tls, __ccgo_ts+26446, *(*uintptr)(unsafe.Pointer(argv + uintptr(i)*8)))
+		zVal = _closureValueOfKey(tls, __ccgo_ts+26438, *(*uintptr)(unsafe.Pointer(argv + uintptr(i)*8)))
 		// /tmp/libsqlite3/sqlite-src-3370200/ext/misc/closure.c:537:5:
 		if zVal != 0 {
 			// /tmp/libsqlite3/sqlite-src-3370200/ext/misc/closure.c:538:7:
@@ -140457,7 +140453,7 @@ func _closureConnect(tls *libc.TLS, db uintptr, pAux uintptr, argc int32, argv u
 			goto _1
 		}
 		// /tmp/libsqlite3/sqlite-src-3370200/ext/misc/closure.c:543:5:
-		zVal = _closureValueOfKey(tls, __ccgo_ts+26455, *(*uintptr)(unsafe.Pointer(argv + uintptr(i)*8)))
+		zVal = _closureValueOfKey(tls, __ccgo_ts+26447, *(*uintptr)(unsafe.Pointer(argv + uintptr(i)*8)))
 		// /tmp/libsqlite3/sqlite-src-3370200/ext/misc/closure.c:544:5:
 		if zVal != 0 {
 			// /tmp/libsqlite3/sqlite-src-3370200/ext/misc/closure.c:545:7:
@@ -140473,7 +140469,7 @@ func _closureConnect(tls *libc.TLS, db uintptr, pAux uintptr, argc int32, argv u
 			goto _1
 		}
 		// /tmp/libsqlite3/sqlite-src-3370200/ext/misc/closure.c:550:5:
-		*(*uintptr)(unsafe.Pointer(pzErr)) = x_sqlite3_mprintf(tls, __ccgo_ts+25782, libc.VaList(bp+8, *(*uintptr)(unsafe.Pointer(argv + uintptr(i)*8))))
+		*(*uintptr)(unsafe.Pointer(pzErr)) = x_sqlite3_mprintf(tls, __ccgo_ts+25774, libc.VaList(bp+8, *(*uintptr)(unsafe.Pointer(argv + uintptr(i)*8))))
 		// /tmp/libsqlite3/sqlite-src-3370200/ext/misc/closure.c:551:5:
 		_closureFree(tls, pNew)
 		// /tmp/libsqlite3/sqlite-src-3370200/ext/misc/closure.c:552:5:
@@ -140485,7 +140481,7 @@ func _closureConnect(tls *libc.TLS, db uintptr, pAux uintptr, argc int32, argv u
 		i++
 	}
 	// /tmp/libsqlite3/sqlite-src-3370200/ext/misc/closure.c:555:3:
-	rc = x_sqlite3_declare_vtab(tls, db, __ccgo_ts+26468)
+	rc = x_sqlite3_declare_vtab(tls, db, __ccgo_ts+26460)
 	// /tmp/libsqlite3/sqlite-src-3370200/ext/misc/closure.c:565:3:
 	if rc != m_SQLITE_OK {
 		// /tmp/libsqlite3/sqlite-src-3370200/ext/misc/closure.c:566:5:
@@ -140726,7 +140722,7 @@ func _closureFilter(tls *libc.TLS, pVtabCursor uintptr, idxNum int32, idxStr uin
 		(*Tclosure_cursor)(unsafe.Pointer(pCur)).FzParentColumn = x_sqlite3_mprintf(tls, __ccgo_ts+183, libc.VaList(bp+32, zParentColumn))
 	}
 	// /tmp/libsqlite3/sqlite-src-3370200/ext/misc/closure.c:701:3:
-	zSql = x_sqlite3_mprintf(tls, __ccgo_ts+26558, libc.VaList(bp+32, zTableName, zIdColumn, zTableName, zTableName, zParentColumn))
+	zSql = x_sqlite3_mprintf(tls, __ccgo_ts+26550, libc.VaList(bp+32, zTableName, zIdColumn, zTableName, zTableName, zParentColumn))
 	// /tmp/libsqlite3/sqlite-src-3370200/ext/misc/closure.c:704:3:
 	if zSql == uintptr(0) {
 		// /tmp/libsqlite3/sqlite-src-3370200/ext/misc/closure.c:705:5:
@@ -141120,7 +141116,7 @@ func x_sqlite3_closure_init(tls *libc.TLS, db uintptr, pzErrMsg uintptr, pApi ui
 	// /tmp/libsqlite3/sqlite-src-3370200/ext/misc/closure.c:960:3:
 	_ = pzErrMsg
 	// /tmp/libsqlite3/sqlite-src-3370200/ext/misc/closure.c:962:3:
-	rc = x_sqlite3_create_module(tls, db, __ccgo_ts+26604, uintptr(unsafe.Pointer(&_closureModule)), uintptr(0))
+	rc = x_sqlite3_create_module(tls, db, __ccgo_ts+26596, uintptr(unsafe.Pointer(&_closureModule)), uintptr(0))
 	// /tmp/libsqlite3/sqlite-src-3370200/ext/misc/closure.c:964:3:
 	return rc
 }
@@ -141310,7 +141306,7 @@ func _csv_reader_open(tls *libc.TLS, p uintptr, zFilename uintptr, zData uintptr
 			return int32(1)
 		}
 		// /tmp/libsqlite3/sqlite-src-3370200/ext/misc/csv.c:133:5:
-		(*TCsvReader)(unsafe.Pointer(p)).Fin = libc.Xfopen(tls, zFilename, __ccgo_ts+16848)
+		(*TCsvReader)(unsafe.Pointer(p)).Fin = libc.Xfopen(tls, zFilename, __ccgo_ts+16840)
 		// /tmp/libsqlite3/sqlite-src-3370200/ext/misc/csv.c:134:5:
 		if (*TCsvReader)(unsafe.Pointer(p)).Fin == uintptr(0) {
 			// /tmp/libsqlite3/sqlite-src-3370200/ext/misc/csv.c:135:7:
@@ -141318,7 +141314,7 @@ func _csv_reader_open(tls *libc.TLS, p uintptr, zFilename uintptr, zData uintptr
 			// /tmp/libsqlite3/sqlite-src-3370200/ext/misc/csv.c:136:7:
 			_csv_reader_reset(tls, p)
 			// /tmp/libsqlite3/sqlite-src-3370200/ext/misc/csv.c:137:7:
-			_csv_errmsg(tls, p, __ccgo_ts+26623, libc.VaList(bp+8, zFilename))
+			_csv_errmsg(tls, p, __ccgo_ts+26615, libc.VaList(bp+8, zFilename))
 			// /tmp/libsqlite3/sqlite-src-3370200/ext/misc/csv.c:138:7:
 			return int32(1)
 		}
@@ -141530,14 +141526,14 @@ func _csv_read_one_field(tls *libc.TLS, p uintptr) (r uintptr) {
 				// /tmp/libsqlite3/sqlite-src-3370200/ext/misc/csv.c:242:9:
 				if pc == int32('"') && c != int32('\r') {
 					// /tmp/libsqlite3/sqlite-src-3370200/ext/misc/csv.c:243:11:
-					_csv_errmsg(tls, p, __ccgo_ts+26652, libc.VaList(bp+8, (*TCsvReader)(unsafe.Pointer(p)).FnLine, int32('"')))
+					_csv_errmsg(tls, p, __ccgo_ts+26644, libc.VaList(bp+8, (*TCsvReader)(unsafe.Pointer(p)).FnLine, int32('"')))
 					// /tmp/libsqlite3/sqlite-src-3370200/ext/misc/csv.c:244:11:
 					break
 				}
 				// /tmp/libsqlite3/sqlite-src-3370200/ext/misc/csv.c:246:9:
 				if c == -int32(1) {
 					// /tmp/libsqlite3/sqlite-src-3370200/ext/misc/csv.c:247:11:
-					_csv_errmsg(tls, p, __ccgo_ts+26684, libc.VaList(bp+8, startLine, int32('"')))
+					_csv_errmsg(tls, p, __ccgo_ts+26676, libc.VaList(bp+8, startLine, int32('"')))
 					// /tmp/libsqlite3/sqlite-src-3370200/ext/misc/csv.c:249:11:
 					(*TCsvReader)(unsafe.Pointer(p)).FcTerm = int32(int8(int8(c)))
 					// /tmp/libsqlite3/sqlite-src-3370200/ext/misc/csv.c:250:11:
@@ -141827,7 +141823,7 @@ func _csv_string_parameter(tls *libc.TLS, p uintptr, zParam uintptr, zArg uintpt
 	// /tmp/libsqlite3/sqlite-src-3370200/ext/misc/csv.c:403:3:
 	if *(*uintptr)(unsafe.Pointer(pzVal)) != 0 {
 		// /tmp/libsqlite3/sqlite-src-3370200/ext/misc/csv.c:404:5:
-		_csv_errmsg(tls, p, __ccgo_ts+26723, libc.VaList(bp+8, zParam))
+		_csv_errmsg(tls, p, __ccgo_ts+26715, libc.VaList(bp+8, zParam))
 		// /tmp/libsqlite3/sqlite-src-3370200/ext/misc/csv.c:405:5:
 		return int32(1)
 	}
@@ -141858,12 +141854,12 @@ func _csv_string_parameter(tls *libc.TLS, p uintptr, zParam uintptr, zArg uintpt
 func _csv_boolean(tls *libc.TLS, z uintptr) (r int32) {
 	// /tmp/libsqlite3/sqlite-src-3370200/ext/misc/csv.c:421:38:
 	// /tmp/libsqlite3/sqlite-src-3370200/ext/misc/csv.c:422:3:
-	if x_sqlite3_stricmp(tls, __ccgo_ts+26398, z) == 0 || x_sqlite3_stricmp(tls, __ccgo_ts+19358, z) == 0 || x_sqlite3_stricmp(tls, __ccgo_ts+26752, z) == 0 || int32(*(*int8)(unsafe.Pointer(z))) == int32('1') && int32(*(*int8)(unsafe.Pointer(z + 1))) == 0 {
+	if x_sqlite3_stricmp(tls, __ccgo_ts+26390, z) == 0 || x_sqlite3_stricmp(tls, __ccgo_ts+19350, z) == 0 || x_sqlite3_stricmp(tls, __ccgo_ts+26744, z) == 0 || int32(*(*int8)(unsafe.Pointer(z))) == int32('1') && int32(*(*int8)(unsafe.Pointer(z + 1))) == 0 {
 		// /tmp/libsqlite3/sqlite-src-3370200/ext/misc/csv.c:427:5:
 		return int32(1)
 	}
 	// /tmp/libsqlite3/sqlite-src-3370200/ext/misc/csv.c:429:3:
-	if x_sqlite3_stricmp(tls, __ccgo_ts+26757, z) == 0 || x_sqlite3_stricmp(tls, __ccgo_ts+19361, z) == 0 || x_sqlite3_stricmp(tls, __ccgo_ts+26760, z) == 0 || int32(*(*int8)(unsafe.Pointer(z))) == int32('0') && int32(*(*int8)(unsafe.Pointer(z + 1))) == 0 {
+	if x_sqlite3_stricmp(tls, __ccgo_ts+26749, z) == 0 || x_sqlite3_stricmp(tls, __ccgo_ts+19353, z) == 0 || x_sqlite3_stricmp(tls, __ccgo_ts+26752, z) == 0 || int32(*(*int8)(unsafe.Pointer(z))) == int32('0') && int32(*(*int8)(unsafe.Pointer(z + 1))) == 0 {
 		// /tmp/libsqlite3/sqlite-src-3370200/ext/misc/csv.c:434:5:
 		return 0
 	}
@@ -142000,11 +141996,11 @@ func _csvtabConnect(tls *libc.TLS, db uintptr, pAux uintptr, argc int32, argv ui
 			}
 		} else {
 			// /tmp/libsqlite3/sqlite-src-3370200/ext/misc/csv.c:525:5:
-			if _csv_boolean_parameter(tls, __ccgo_ts+26771, int32(6), z, bp) != 0 {
+			if _csv_boolean_parameter(tls, __ccgo_ts+26763, int32(6), z, bp) != 0 {
 				// /tmp/libsqlite3/sqlite-src-3370200/ext/misc/csv.c:526:7:
 				if bHeader >= 0 {
 					// /tmp/libsqlite3/sqlite-src-3370200/ext/misc/csv.c:527:9:
-					_csv_errmsg(tls, bp+8, __ccgo_ts+26778, 0)
+					_csv_errmsg(tls, bp+8, __ccgo_ts+26770, 0)
 					// /tmp/libsqlite3/sqlite-src-3370200/ext/misc/csv.c:528:9:
 					goto csvtab_connect_error
 				}
@@ -142012,20 +142008,20 @@ func _csvtabConnect(tls *libc.TLS, db uintptr, pAux uintptr, argc int32, argv ui
 				bHeader = *(*int32)(unsafe.Pointer(bp))
 			} else {
 				// /tmp/libsqlite3/sqlite-src-3370200/ext/misc/csv.c:533:5:
-				v3 = _csv_parameter(tls, __ccgo_ts+26811, int32(9), z)
+				v3 = _csv_parameter(tls, __ccgo_ts+26803, int32(9), z)
 				zValue = v3
 				if v3 != uintptr(0) {
 					// /tmp/libsqlite3/sqlite-src-3370200/ext/misc/csv.c:534:7:
 					tstFlags = int32(uint32(libc.Xatoi(tls, zValue)))
 				} else {
 					// /tmp/libsqlite3/sqlite-src-3370200/ext/misc/csv.c:537:5:
-					v4 = _csv_parameter(tls, __ccgo_ts+26821, int32(7), z)
+					v4 = _csv_parameter(tls, __ccgo_ts+26813, int32(7), z)
 					zValue = v4
 					if v4 != uintptr(0) {
 						// /tmp/libsqlite3/sqlite-src-3370200/ext/misc/csv.c:538:7:
 						if nCol > 0 {
 							// /tmp/libsqlite3/sqlite-src-3370200/ext/misc/csv.c:539:9:
-							_csv_errmsg(tls, bp+8, __ccgo_ts+26829, 0)
+							_csv_errmsg(tls, bp+8, __ccgo_ts+26821, 0)
 							// /tmp/libsqlite3/sqlite-src-3370200/ext/misc/csv.c:540:9:
 							goto csvtab_connect_error
 						}
@@ -142034,13 +142030,13 @@ func _csvtabConnect(tls *libc.TLS, db uintptr, pAux uintptr, argc int32, argv ui
 						// /tmp/libsqlite3/sqlite-src-3370200/ext/misc/csv.c:543:7:
 						if nCol <= 0 {
 							// /tmp/libsqlite3/sqlite-src-3370200/ext/misc/csv.c:544:9:
-							_csv_errmsg(tls, bp+8, __ccgo_ts+26863, 0)
+							_csv_errmsg(tls, bp+8, __ccgo_ts+26855, 0)
 							// /tmp/libsqlite3/sqlite-src-3370200/ext/misc/csv.c:545:9:
 							goto csvtab_connect_error
 						}
 					} else {
 						// /tmp/libsqlite3/sqlite-src-3370200/ext/misc/csv.c:549:7:
-						_csv_errmsg(tls, bp+8, __ccgo_ts+26894, libc.VaList(bp+304, z))
+						_csv_errmsg(tls, bp+8, __ccgo_ts+26886, libc.VaList(bp+304, z))
 						// /tmp/libsqlite3/sqlite-src-3370200/ext/misc/csv.c:550:7:
 						goto csvtab_connect_error
 					}
@@ -142054,7 +142050,7 @@ func _csvtabConnect(tls *libc.TLS, db uintptr, pAux uintptr, argc int32, argv ui
 	// /tmp/libsqlite3/sqlite-src-3370200/ext/misc/csv.c:553:3:
 	if libc.BoolInt32((*(*[3]uintptr)(unsafe.Pointer(bp + 272)))[0] == uintptr(0)) == libc.BoolInt32((*(*[3]uintptr)(unsafe.Pointer(bp + 272)))[int32(1)] == uintptr(0)) {
 		// /tmp/libsqlite3/sqlite-src-3370200/ext/misc/csv.c:554:5:
-		_csv_errmsg(tls, bp+8, __ccgo_ts+26914, 0)
+		_csv_errmsg(tls, bp+8, __ccgo_ts+26906, 0)
 		// /tmp/libsqlite3/sqlite-src-3370200/ext/misc/csv.c:555:5:
 		goto csvtab_connect_error
 	}
@@ -142083,7 +142079,7 @@ func _csvtabConnect(tls *libc.TLS, db uintptr, pAux uintptr, argc int32, argv ui
 		// /tmp/libsqlite3/sqlite-src-3370200/ext/misc/csv.c:570:9:
 		iCol = 0
 		// /tmp/libsqlite3/sqlite-src-3370200/ext/misc/csv.c:571:5:
-		x_sqlite3_str_appendf(tls, pStr, __ccgo_ts+24517, 0)
+		x_sqlite3_str_appendf(tls, pStr, __ccgo_ts+24509, 0)
 		// /tmp/libsqlite3/sqlite-src-3370200/ext/misc/csv.c:572:5:
 		if nCol < 0 && bHeader < int32(1) {
 			// /tmp/libsqlite3/sqlite-src-3370200/ext/misc/csv.c:573:7:
@@ -142105,9 +142101,9 @@ func _csvtabConnect(tls *libc.TLS, db uintptr, pAux uintptr, argc int32, argv ui
 					break
 				}
 				// /tmp/libsqlite3/sqlite-src-3370200/ext/misc/csv.c:581:9:
-				x_sqlite3_str_appendf(tls, pStr, __ccgo_ts+26966, libc.VaList(bp+304, zSep, iCol))
+				x_sqlite3_str_appendf(tls, pStr, __ccgo_ts+26958, libc.VaList(bp+304, zSep, iCol))
 				// /tmp/libsqlite3/sqlite-src-3370200/ext/misc/csv.c:582:9:
-				zSep = __ccgo_ts + 12269
+				zSep = __ccgo_ts + 12261
 				goto _5
 			_5:
 				iCol++
@@ -142120,9 +142116,9 @@ func _csvtabConnect(tls *libc.TLS, db uintptr, pAux uintptr, argc int32, argv ui
 				// /tmp/libsqlite3/sqlite-src-3370200/ext/misc/csv.c:587:9:
 				if nCol > 0 && iCol < nCol || nCol < 0 && bHeader != 0 {
 					// /tmp/libsqlite3/sqlite-src-3370200/ext/misc/csv.c:588:11:
-					x_sqlite3_str_appendf(tls, pStr, __ccgo_ts+26977, libc.VaList(bp+304, zSep, z1))
+					x_sqlite3_str_appendf(tls, pStr, __ccgo_ts+26969, libc.VaList(bp+304, zSep, z1))
 					// /tmp/libsqlite3/sqlite-src-3370200/ext/misc/csv.c:589:11:
-					zSep = __ccgo_ts + 12269
+					zSep = __ccgo_ts + 12261
 					// /tmp/libsqlite3/sqlite-src-3370200/ext/misc/csv.c:590:11:
 					iCol++
 				}
@@ -142137,16 +142133,16 @@ func _csvtabConnect(tls *libc.TLS, db uintptr, pAux uintptr, argc int32, argv ui
 					// /tmp/libsqlite3/sqlite-src-3370200/ext/misc/csv.c:597:11:
 					iCol++
 					v6 = iCol
-					x_sqlite3_str_appendf(tls, pStr, __ccgo_ts+26966, libc.VaList(bp+304, zSep, v6))
+					x_sqlite3_str_appendf(tls, pStr, __ccgo_ts+26958, libc.VaList(bp+304, zSep, v6))
 					// /tmp/libsqlite3/sqlite-src-3370200/ext/misc/csv.c:598:11:
-					zSep = __ccgo_ts + 12269
+					zSep = __ccgo_ts + 12261
 				}
 			}
 		}
 		// /tmp/libsqlite3/sqlite-src-3370200/ext/misc/csv.c:602:5:
 		(*TCsvTable)(unsafe.Pointer(pNew)).FnCol = nCol
 		// /tmp/libsqlite3/sqlite-src-3370200/ext/misc/csv.c:603:5:
-		x_sqlite3_str_appendf(tls, pStr, __ccgo_ts+12373, 0)
+		x_sqlite3_str_appendf(tls, pStr, __ccgo_ts+12365, 0)
 		// /tmp/libsqlite3/sqlite-src-3370200/ext/misc/csv.c:604:5:
 		(*(*[3]uintptr)(unsafe.Pointer(bp + 272)))[int32(2)] = x_sqlite3_str_finish(tls, pStr)
 		// /tmp/libsqlite3/sqlite-src-3370200/ext/misc/csv.c:605:5:
@@ -142200,7 +142196,7 @@ func _csvtabConnect(tls *libc.TLS, db uintptr, pAux uintptr, argc int32, argv ui
 	// /tmp/libsqlite3/sqlite-src-3370200/ext/misc/csv.c:628:3:
 	if rc != 0 {
 		// /tmp/libsqlite3/sqlite-src-3370200/ext/misc/csv.c:629:5:
-		_csv_errmsg(tls, bp+8, __ccgo_ts+26989, libc.VaList(bp+304, (*(*[3]uintptr)(unsafe.Pointer(bp + 272)))[int32(2)], x_sqlite3_errmsg(tls, db)))
+		_csv_errmsg(tls, bp+8, __ccgo_ts+26981, libc.VaList(bp+304, (*(*[3]uintptr)(unsafe.Pointer(bp + 272)))[int32(2)], x_sqlite3_errmsg(tls, db)))
 		// /tmp/libsqlite3/sqlite-src-3370200/ext/misc/csv.c:630:5:
 		goto csvtab_connect_error
 	}
@@ -142273,9 +142269,9 @@ csvtab_connect_error:
 
 // /tmp/libsqlite3/sqlite-src-3370200/ext/misc/csv.c:504:21:
 var _azParam = [3]uintptr{
-	0: __ccgo_ts + 22632,
-	1: __ccgo_ts + 26766,
-	2: __ccgo_ts + 21540,
+	0: __ccgo_ts + 22624,
+	1: __ccgo_ts + 26758,
+	2: __ccgo_ts + 21532,
 } /* Parameter values */
 
 // C documentation
@@ -142690,7 +142686,7 @@ func x_sqlite3_csv_init(tls *libc.TLS, db uintptr, pzErrMsg uintptr, pApi uintpt
 	// /tmp/libsqlite3/sqlite-src-3370200/ext/misc/csv.c:949:3:
 	if rc == m_SQLITE_OK {
 		// /tmp/libsqlite3/sqlite-src-3370200/ext/misc/csv.c:950:5:
-		rc = x_sqlite3_create_module(tls, db, __ccgo_ts+27011, uintptr(unsafe.Pointer(&_CsvModuleFauxWrite)), uintptr(0))
+		rc = x_sqlite3_create_module(tls, db, __ccgo_ts+27003, uintptr(unsafe.Pointer(&_CsvModuleFauxWrite)), uintptr(0))
 	}
 	// /tmp/libsqlite3/sqlite-src-3370200/ext/misc/csv.c:953:3:
 	return rc
@@ -143809,7 +143805,7 @@ func x_sqlite3_decimal_init(tls *libc.TLS, db uintptr, pzErrMsg uintptr, pApi ui
 	// /tmp/libsqlite3/sqlite-src-3370200/ext/misc/decimal.c:624:3:
 	if rc == m_SQLITE_OK {
 		// /tmp/libsqlite3/sqlite-src-3370200/ext/misc/decimal.c:625:5:
-		rc = x_sqlite3_create_window_function(tls, db, __ccgo_ts+27066, int32(1), libc.Int32FromInt32(m_SQLITE_UTF8)|libc.Int32FromInt32(m_SQLITE_INNOCUOUS)|libc.Int32FromInt32(m_SQLITE_DETERMINISTIC), uintptr(0), __ccgo_fp(_decimalSumStep), __ccgo_fp(_decimalSumFinalize), __ccgo_fp(_decimalSumValue), __ccgo_fp(_decimalSumInverse), uintptr(0))
+		rc = x_sqlite3_create_window_function(tls, db, __ccgo_ts+27058, int32(1), libc.Int32FromInt32(m_SQLITE_UTF8)|libc.Int32FromInt32(m_SQLITE_INNOCUOUS)|libc.Int32FromInt32(m_SQLITE_DETERMINISTIC), uintptr(0), __ccgo_fp(_decimalSumStep), __ccgo_fp(_decimalSumFinalize), __ccgo_fp(_decimalSumValue), __ccgo_fp(_decimalSumInverse), uintptr(0))
 	}
 	// /tmp/libsqlite3/sqlite-src-3370200/ext/misc/decimal.c:630:3:
 	if rc == m_SQLITE_OK {
@@ -143831,19 +143827,19 @@ var _aFunc = [5]struct {
 		FnArg:      int32(1),
 	},
 	1: {
-		FzFuncName: __ccgo_ts + 27018,
+		FzFuncName: __ccgo_ts + 27010,
 		FnArg:      int32(2),
 	},
 	2: {
-		FzFuncName: __ccgo_ts + 27030,
+		FzFuncName: __ccgo_ts + 27022,
 		FnArg:      int32(2),
 	},
 	3: {
-		FzFuncName: __ccgo_ts + 27042,
+		FzFuncName: __ccgo_ts + 27034,
 		FnArg:      int32(2),
 	},
 	4: {
-		FzFuncName: __ccgo_ts + 27054,
+		FzFuncName: __ccgo_ts + 27046,
 		FnArg:      int32(2),
 	},
 }
@@ -144122,7 +144118,7 @@ func _explainConnect(tls *libc.TLS, db uintptr, pAux uintptr, argc int32, argv u
 	_, _ = pNew, rc
 	/* Column numbers */
 	// /tmp/libsqlite3/sqlite-src-3370200/ext/misc/explain.c:92:3:
-	rc = x_sqlite3_declare_vtab(tls, db, __ccgo_ts+27078)
+	rc = x_sqlite3_declare_vtab(tls, db, __ccgo_ts+27070)
 	// /tmp/libsqlite3/sqlite-src-3370200/ext/misc/explain.c:94:3:
 	if rc == m_SQLITE_OK {
 		// /tmp/libsqlite3/sqlite-src-3370200/ext/misc/explain.c:95:5:
@@ -144338,7 +144334,7 @@ func _explainFilter(tls *libc.TLS, pVtabCursor uintptr, idxNum int32, idxStr uin
 	// /tmp/libsqlite3/sqlite-src-3370200/ext/misc/explain.c:208:3:
 	if (*Texplain_cursor)(unsafe.Pointer(pCur)).FzSql != 0 {
 		// /tmp/libsqlite3/sqlite-src-3370200/ext/misc/explain.c:209:5:
-		zSql = x_sqlite3_mprintf(tls, __ccgo_ts+27140, libc.VaList(bp+8, (*Texplain_cursor)(unsafe.Pointer(pCur)).FzSql))
+		zSql = x_sqlite3_mprintf(tls, __ccgo_ts+27132, libc.VaList(bp+8, (*Texplain_cursor)(unsafe.Pointer(pCur)).FzSql))
 	}
 	// /tmp/libsqlite3/sqlite-src-3370200/ext/misc/explain.c:211:3:
 	if zSql == uintptr(0) {
@@ -144622,7 +144618,7 @@ func _readFileContents(tls *libc.TLS, ctx uintptr, zName uintptr) {
 	var v1 int64
 	_, _, _, _, _, _ = db, in, mxBlob, nIn, pBuf, v1
 	// /tmp/libsqlite3/sqlite-src-3370200/ext/misc/fileio.c:145:3:
-	in = libc.Xfopen(tls, zName, __ccgo_ts+16848)
+	in = libc.Xfopen(tls, zName, __ccgo_ts+16840)
 	// /tmp/libsqlite3/sqlite-src-3370200/ext/misc/fileio.c:146:3:
 	if in == uintptr(0) {
 		/* File does not exist or is unreadable. Leave the result set to NULL. */
@@ -144981,7 +144977,7 @@ func _writeFile(tls *libc.TLS, pCtx uintptr, zFile uintptr, pData uintptr, mode 
 		// /tmp/libsqlite3/sqlite-src-3370200/ext/misc/fileio.c:396:11:
 		rc = 0
 		// /tmp/libsqlite3/sqlite-src-3370200/ext/misc/fileio.c:397:12:
-		out = libc.Xfopen(tls, zFile, __ccgo_ts+27151)
+		out = libc.Xfopen(tls, zFile, __ccgo_ts+27143)
 		// /tmp/libsqlite3/sqlite-src-3370200/ext/misc/fileio.c:398:7:
 		if out == uintptr(0) {
 			// /tmp/libsqlite3/sqlite-src-3370200/ext/misc/fileio.c:398:20:
@@ -145080,7 +145076,7 @@ func _writefileFunc(tls *libc.TLS, context uintptr, argc int32, argv uintptr) {
 	// /tmp/libsqlite3/sqlite-src-3370200/ext/misc/fileio.c:488:3:
 	if argc < int32(2) || argc > int32(4) {
 		// /tmp/libsqlite3/sqlite-src-3370200/ext/misc/fileio.c:489:5:
-		x_sqlite3_result_error(tls, context, __ccgo_ts+27154, -int32(1))
+		x_sqlite3_result_error(tls, context, __ccgo_ts+27146, -int32(1))
 		// /tmp/libsqlite3/sqlite-src-3370200/ext/misc/fileio.c:492:5:
 		return
 	}
@@ -145116,15 +145112,15 @@ func _writefileFunc(tls *libc.TLS, context uintptr, argc int32, argv uintptr) {
 		// /tmp/libsqlite3/sqlite-src-3370200/ext/misc/fileio.c:512:5:
 		if 0 != 0 {
 			// /tmp/libsqlite3/sqlite-src-3370200/ext/misc/fileio.c:513:7:
-			_ctxErrorMsg(tls, context, __ccgo_ts+27204, libc.VaList(bp+8, zFile))
+			_ctxErrorMsg(tls, context, __ccgo_ts+27196, libc.VaList(bp+8, zFile))
 		} else {
 			// /tmp/libsqlite3/sqlite-src-3370200/ext/misc/fileio.c:514:11:
 			if int32(mode)&int32(m__S_IFMT) == int32(m__S_IFDIR) {
 				// /tmp/libsqlite3/sqlite-src-3370200/ext/misc/fileio.c:515:7:
-				_ctxErrorMsg(tls, context, __ccgo_ts+27233, libc.VaList(bp+8, zFile))
+				_ctxErrorMsg(tls, context, __ccgo_ts+27225, libc.VaList(bp+8, zFile))
 			} else {
 				// /tmp/libsqlite3/sqlite-src-3370200/ext/misc/fileio.c:517:7:
-				_ctxErrorMsg(tls, context, __ccgo_ts+27264, libc.VaList(bp+8, zFile))
+				_ctxErrorMsg(tls, context, __ccgo_ts+27256, libc.VaList(bp+8, zFile))
 			}
 		}
 	}
@@ -145298,7 +145294,7 @@ func _fsdirConnect1(tls *libc.TLS, db uintptr, pAux uintptr, argc int32, argv ui
 	// /tmp/libsqlite3/sqlite-src-3370200/ext/misc/fileio.c:605:3:
 	_ = pzErr
 	// /tmp/libsqlite3/sqlite-src-3370200/ext/misc/fileio.c:606:3:
-	rc = x_sqlite3_declare_vtab(tls, db, __ccgo_ts+27289)
+	rc = x_sqlite3_declare_vtab(tls, db, __ccgo_ts+27281)
 	// /tmp/libsqlite3/sqlite-src-3370200/ext/misc/fileio.c:607:3:
 	if rc == m_SQLITE_OK {
 		// /tmp/libsqlite3/sqlite-src-3370200/ext/misc/fileio.c:608:5:
@@ -145517,7 +145513,7 @@ func _fsdirNext1(tls *libc.TLS, cur uintptr) (r int32) {
 		// /tmp/libsqlite3/sqlite-src-3370200/ext/misc/fileio.c:711:5:
 		if (*TFsdirLevel)(unsafe.Pointer(pLvl)).FpDir == uintptr(0) {
 			// /tmp/libsqlite3/sqlite-src-3370200/ext/misc/fileio.c:712:7:
-			_fsdirSetErrmsg(tls, pCur, __ccgo_ts+27349, libc.VaList(bp+8, (*Tfsdir_cursor)(unsafe.Pointer(pCur)).FzPath))
+			_fsdirSetErrmsg(tls, pCur, __ccgo_ts+27341, libc.VaList(bp+8, (*Tfsdir_cursor)(unsafe.Pointer(pCur)).FzPath))
 			// /tmp/libsqlite3/sqlite-src-3370200/ext/misc/fileio.c:713:7:
 			return int32(m_SQLITE_ERROR)
 		}
@@ -145546,7 +145542,7 @@ func _fsdirNext1(tls *libc.TLS, cur uintptr) (r int32) {
 			// /tmp/libsqlite3/sqlite-src-3370200/ext/misc/fileio.c:725:7:
 			x_sqlite3_free(tls, (*Tfsdir_cursor)(unsafe.Pointer(pCur)).FzPath)
 			// /tmp/libsqlite3/sqlite-src-3370200/ext/misc/fileio.c:726:7:
-			(*Tfsdir_cursor)(unsafe.Pointer(pCur)).FzPath = x_sqlite3_mprintf(tls, __ccgo_ts+27375, libc.VaList(bp+8, (*TFsdirLevel)(unsafe.Pointer(pLvl1)).FzDir, pEntry+8))
+			(*Tfsdir_cursor)(unsafe.Pointer(pCur)).FzPath = x_sqlite3_mprintf(tls, __ccgo_ts+27367, libc.VaList(bp+8, (*TFsdirLevel)(unsafe.Pointer(pLvl1)).FzDir, pEntry+8))
 			// /tmp/libsqlite3/sqlite-src-3370200/ext/misc/fileio.c:727:7:
 			if (*Tfsdir_cursor)(unsafe.Pointer(pCur)).FzPath == uintptr(0) {
 				// /tmp/libsqlite3/sqlite-src-3370200/ext/misc/fileio.c:727:28:
@@ -145555,7 +145551,7 @@ func _fsdirNext1(tls *libc.TLS, cur uintptr) (r int32) {
 			// /tmp/libsqlite3/sqlite-src-3370200/ext/misc/fileio.c:728:7:
 			if _fileLinkStat(tls, (*Tfsdir_cursor)(unsafe.Pointer(pCur)).FzPath, pCur+40) != 0 {
 				// /tmp/libsqlite3/sqlite-src-3370200/ext/misc/fileio.c:729:9:
-				_fsdirSetErrmsg(tls, pCur, __ccgo_ts+27381, libc.VaList(bp+8, (*Tfsdir_cursor)(unsafe.Pointer(pCur)).FzPath))
+				_fsdirSetErrmsg(tls, pCur, __ccgo_ts+27373, libc.VaList(bp+8, (*Tfsdir_cursor)(unsafe.Pointer(pCur)).FzPath))
 				// /tmp/libsqlite3/sqlite-src-3370200/ext/misc/fileio.c:730:9:
 				return int32(m_SQLITE_ERROR)
 			}
@@ -145713,7 +145709,7 @@ func _fsdirFilter1(tls *libc.TLS, cur uintptr, idxNum int32, idxStr uintptr, arg
 	// /tmp/libsqlite3/sqlite-src-3370200/ext/misc/fileio.c:847:3:
 	if idxNum == 0 {
 		// /tmp/libsqlite3/sqlite-src-3370200/ext/misc/fileio.c:848:5:
-		_fsdirSetErrmsg(tls, pCur, __ccgo_ts+27402, 0)
+		_fsdirSetErrmsg(tls, pCur, __ccgo_ts+27394, 0)
 		// /tmp/libsqlite3/sqlite-src-3370200/ext/misc/fileio.c:849:5:
 		return int32(m_SQLITE_ERROR)
 	}
@@ -145723,7 +145719,7 @@ func _fsdirFilter1(tls *libc.TLS, cur uintptr, idxNum int32, idxStr uintptr, arg
 	// /tmp/libsqlite3/sqlite-src-3370200/ext/misc/fileio.c:854:3:
 	if zDir == uintptr(0) {
 		// /tmp/libsqlite3/sqlite-src-3370200/ext/misc/fileio.c:855:5:
-		_fsdirSetErrmsg(tls, pCur, __ccgo_ts+27444, 0)
+		_fsdirSetErrmsg(tls, pCur, __ccgo_ts+27436, 0)
 		// /tmp/libsqlite3/sqlite-src-3370200/ext/misc/fileio.c:856:5:
 		return int32(m_SQLITE_ERROR)
 	}
@@ -145737,7 +145733,7 @@ func _fsdirFilter1(tls *libc.TLS, cur uintptr, idxNum int32, idxStr uintptr, arg
 		// /tmp/libsqlite3/sqlite-src-3370200/ext/misc/fileio.c:862:5:
 		(*Tfsdir_cursor)(unsafe.Pointer(pCur)).FnBase = int32(libc.Xstrlen(tls, (*Tfsdir_cursor)(unsafe.Pointer(pCur)).FzBase)) + int32(1)
 		// /tmp/libsqlite3/sqlite-src-3370200/ext/misc/fileio.c:863:5:
-		(*Tfsdir_cursor)(unsafe.Pointer(pCur)).FzPath = x_sqlite3_mprintf(tls, __ccgo_ts+27375, libc.VaList(bp+8, (*Tfsdir_cursor)(unsafe.Pointer(pCur)).FzBase, zDir))
+		(*Tfsdir_cursor)(unsafe.Pointer(pCur)).FzPath = x_sqlite3_mprintf(tls, __ccgo_ts+27367, libc.VaList(bp+8, (*Tfsdir_cursor)(unsafe.Pointer(pCur)).FzBase, zDir))
 	} else {
 		// /tmp/libsqlite3/sqlite-src-3370200/ext/misc/fileio.c:865:5:
 		(*Tfsdir_cursor)(unsafe.Pointer(pCur)).FzPath = x_sqlite3_mprintf(tls, __ccgo_ts+183, libc.VaList(bp+8, zDir))
@@ -145750,7 +145746,7 @@ func _fsdirFilter1(tls *libc.TLS, cur uintptr, idxNum int32, idxStr uintptr, arg
 	// /tmp/libsqlite3/sqlite-src-3370200/ext/misc/fileio.c:871:3:
 	if _fileLinkStat(tls, (*Tfsdir_cursor)(unsafe.Pointer(pCur)).FzPath, pCur+40) != 0 {
 		// /tmp/libsqlite3/sqlite-src-3370200/ext/misc/fileio.c:872:5:
-		_fsdirSetErrmsg(tls, pCur, __ccgo_ts+27381, libc.VaList(bp+8, (*Tfsdir_cursor)(unsafe.Pointer(pCur)).FzPath))
+		_fsdirSetErrmsg(tls, pCur, __ccgo_ts+27373, libc.VaList(bp+8, (*Tfsdir_cursor)(unsafe.Pointer(pCur)).FzPath))
 		// /tmp/libsqlite3/sqlite-src-3370200/ext/misc/fileio.c:873:5:
 		return int32(m_SQLITE_ERROR)
 	}
@@ -145899,7 +145895,7 @@ func _fsdirRegister(tls *libc.TLS, db uintptr) (r int32) {
 	var rc int32
 	_ = rc
 	// /tmp/libsqlite3/sqlite-src-3370200/ext/misc/fileio.c:987:7:
-	rc = x_sqlite3_create_module(tls, db, __ccgo_ts+15729, uintptr(unsafe.Pointer(&_fsdirModule1)), uintptr(0))
+	rc = x_sqlite3_create_module(tls, db, __ccgo_ts+15721, uintptr(unsafe.Pointer(&_fsdirModule1)), uintptr(0))
 	// /tmp/libsqlite3/sqlite-src-3370200/ext/misc/fileio.c:988:3:
 	return rc
 }
@@ -145934,16 +145930,16 @@ func x_sqlite3_fileio_init(tls *libc.TLS, db uintptr, pzErrMsg uintptr, pApi uin
 	// /tmp/libsqlite3/sqlite-src-3370200/ext/misc/fileio.c:1004:3:
 	_ = pzErrMsg /* Unused parameter */
 	// /tmp/libsqlite3/sqlite-src-3370200/ext/misc/fileio.c:1005:3:
-	rc = x_sqlite3_create_function(tls, db, __ccgo_ts+27494, int32(1), libc.Int32FromInt32(m_SQLITE_UTF8)|libc.Int32FromInt32(m_SQLITE_DIRECTONLY), uintptr(0), __ccgo_fp(_readfileFunc), uintptr(0), uintptr(0))
+	rc = x_sqlite3_create_function(tls, db, __ccgo_ts+27486, int32(1), libc.Int32FromInt32(m_SQLITE_UTF8)|libc.Int32FromInt32(m_SQLITE_DIRECTONLY), uintptr(0), __ccgo_fp(_readfileFunc), uintptr(0), uintptr(0))
 	// /tmp/libsqlite3/sqlite-src-3370200/ext/misc/fileio.c:1008:3:
 	if rc == m_SQLITE_OK {
 		// /tmp/libsqlite3/sqlite-src-3370200/ext/misc/fileio.c:1009:5:
-		rc = x_sqlite3_create_function(tls, db, __ccgo_ts+27503, -int32(1), libc.Int32FromInt32(m_SQLITE_UTF8)|libc.Int32FromInt32(m_SQLITE_DIRECTONLY), uintptr(0), __ccgo_fp(_writefileFunc), uintptr(0), uintptr(0))
+		rc = x_sqlite3_create_function(tls, db, __ccgo_ts+27495, -int32(1), libc.Int32FromInt32(m_SQLITE_UTF8)|libc.Int32FromInt32(m_SQLITE_DIRECTONLY), uintptr(0), __ccgo_fp(_writefileFunc), uintptr(0), uintptr(0))
 	}
 	// /tmp/libsqlite3/sqlite-src-3370200/ext/misc/fileio.c:1013:3:
 	if rc == m_SQLITE_OK {
 		// /tmp/libsqlite3/sqlite-src-3370200/ext/misc/fileio.c:1014:5:
-		rc = x_sqlite3_create_function(tls, db, __ccgo_ts+27513, int32(1), int32(m_SQLITE_UTF8), uintptr(0), __ccgo_fp(_lsModeFunc), uintptr(0), uintptr(0))
+		rc = x_sqlite3_create_function(tls, db, __ccgo_ts+27505, int32(1), int32(m_SQLITE_UTF8), uintptr(0), __ccgo_fp(_lsModeFunc), uintptr(0), uintptr(0))
 	}
 	// /tmp/libsqlite3/sqlite-src-3370200/ext/misc/fileio.c:1017:3:
 	if rc == m_SQLITE_OK {
@@ -146291,21 +146287,21 @@ func _fuzzerLoadOneRule(tls *libc.TLS, p uintptr, pStmt uintptr, ppRule uintptr,
 	// /tmp/libsqlite3/sqlite-src-3370200/ext/misc/fuzzer.c:321:3:
 	if nCost <= 0 || nCost > int32(m_FUZZER_MX_COST) {
 		// /tmp/libsqlite3/sqlite-src-3370200/ext/misc/fuzzer.c:322:5:
-		*(*uintptr)(unsafe.Pointer(pzErr)) = x_sqlite3_mprintf(tls, __ccgo_ts+25572, libc.VaList(bp+8, (*Tfuzzer_vtab)(unsafe.Pointer(p)).FzClassName, int32(m_FUZZER_MX_COST)))
+		*(*uintptr)(unsafe.Pointer(pzErr)) = x_sqlite3_mprintf(tls, __ccgo_ts+25564, libc.VaList(bp+8, (*Tfuzzer_vtab)(unsafe.Pointer(p)).FzClassName, int32(m_FUZZER_MX_COST)))
 		// /tmp/libsqlite3/sqlite-src-3370200/ext/misc/fuzzer.c:325:5:
 		rc = int32(m_SQLITE_ERROR)
 	} else {
 		// /tmp/libsqlite3/sqlite-src-3370200/ext/misc/fuzzer.c:327:3:
 		if nFrom > int32(m_FUZZER_MX_LENGTH) || nTo > int32(m_FUZZER_MX_LENGTH) {
 			// /tmp/libsqlite3/sqlite-src-3370200/ext/misc/fuzzer.c:328:5:
-			*(*uintptr)(unsafe.Pointer(pzErr)) = x_sqlite3_mprintf(tls, __ccgo_ts+25606, libc.VaList(bp+8, (*Tfuzzer_vtab)(unsafe.Pointer(p)).FzClassName, int32(m_FUZZER_MX_LENGTH)))
+			*(*uintptr)(unsafe.Pointer(pzErr)) = x_sqlite3_mprintf(tls, __ccgo_ts+25598, libc.VaList(bp+8, (*Tfuzzer_vtab)(unsafe.Pointer(p)).FzClassName, int32(m_FUZZER_MX_LENGTH)))
 			// /tmp/libsqlite3/sqlite-src-3370200/ext/misc/fuzzer.c:331:5:
 			rc = int32(m_SQLITE_ERROR)
 		} else {
 			// /tmp/libsqlite3/sqlite-src-3370200/ext/misc/fuzzer.c:333:3:
 			if iRuleset < 0 || iRuleset > int64(m_FUZZER_MX_RULEID) {
 				// /tmp/libsqlite3/sqlite-src-3370200/ext/misc/fuzzer.c:334:5:
-				*(*uintptr)(unsafe.Pointer(pzErr)) = x_sqlite3_mprintf(tls, __ccgo_ts+27520, libc.VaList(bp+8, (*Tfuzzer_vtab)(unsafe.Pointer(p)).FzClassName, int32(m_FUZZER_MX_RULEID)))
+				*(*uintptr)(unsafe.Pointer(pzErr)) = x_sqlite3_mprintf(tls, __ccgo_ts+27512, libc.VaList(bp+8, (*Tfuzzer_vtab)(unsafe.Pointer(p)).FzClassName, int32(m_FUZZER_MX_RULEID)))
 				// /tmp/libsqlite3/sqlite-src-3370200/ext/misc/fuzzer.c:337:5:
 				rc = int32(m_SQLITE_ERROR)
 			} else {
@@ -146367,7 +146363,7 @@ func _fuzzerLoadRules(tls *libc.TLS, db uintptr, p uintptr, zDb uintptr, zData u
 	// /tmp/libsqlite3/sqlite-src-3370200/ext/misc/fuzzer.c:372:15:
 	pHead = uintptr(0)
 	// /tmp/libsqlite3/sqlite-src-3370200/ext/misc/fuzzer.c:374:3:
-	zSql = x_sqlite3_mprintf(tls, __ccgo_ts+15706, libc.VaList(bp+24, zDb, zData))
+	zSql = x_sqlite3_mprintf(tls, __ccgo_ts+15698, libc.VaList(bp+24, zDb, zData))
 	// /tmp/libsqlite3/sqlite-src-3370200/ext/misc/fuzzer.c:375:3:
 	if zSql == uintptr(0) {
 		// /tmp/libsqlite3/sqlite-src-3370200/ext/misc/fuzzer.c:376:5:
@@ -146380,12 +146376,12 @@ func _fuzzerLoadRules(tls *libc.TLS, db uintptr, p uintptr, zDb uintptr, zData u
 		// /tmp/libsqlite3/sqlite-src-3370200/ext/misc/fuzzer.c:381:5:
 		if rc != m_SQLITE_OK {
 			// /tmp/libsqlite3/sqlite-src-3370200/ext/misc/fuzzer.c:382:7:
-			*(*uintptr)(unsafe.Pointer(pzErr)) = x_sqlite3_mprintf(tls, __ccgo_ts+25673, libc.VaList(bp+24, (*Tfuzzer_vtab)(unsafe.Pointer(p)).FzClassName, x_sqlite3_errmsg(tls, db)))
+			*(*uintptr)(unsafe.Pointer(pzErr)) = x_sqlite3_mprintf(tls, __ccgo_ts+25665, libc.VaList(bp+24, (*Tfuzzer_vtab)(unsafe.Pointer(p)).FzClassName, x_sqlite3_errmsg(tls, db)))
 		} else {
 			// /tmp/libsqlite3/sqlite-src-3370200/ext/misc/fuzzer.c:383:11:
 			if x_sqlite3_column_count(tls, *(*uintptr)(unsafe.Pointer(bp))) != int32(4) {
 				// /tmp/libsqlite3/sqlite-src-3370200/ext/misc/fuzzer.c:384:7:
-				*(*uintptr)(unsafe.Pointer(pzErr)) = x_sqlite3_mprintf(tls, __ccgo_ts+25680, libc.VaList(bp+24, (*Tfuzzer_vtab)(unsafe.Pointer(p)).FzClassName, zData, x_sqlite3_column_count(tls, *(*uintptr)(unsafe.Pointer(bp)))))
+				*(*uintptr)(unsafe.Pointer(pzErr)) = x_sqlite3_mprintf(tls, __ccgo_ts+25672, libc.VaList(bp+24, (*Tfuzzer_vtab)(unsafe.Pointer(p)).FzClassName, zData, x_sqlite3_column_count(tls, *(*uintptr)(unsafe.Pointer(bp)))))
 				// /tmp/libsqlite3/sqlite-src-3370200/ext/misc/fuzzer.c:387:7:
 				rc = int32(m_SQLITE_ERROR)
 			} else {
@@ -146618,7 +146614,7 @@ func _fuzzerConnect(tls *libc.TLS, db uintptr, pAux uintptr, argc int32, argv ui
 	// /tmp/libsqlite3/sqlite-src-3370200/ext/misc/fuzzer.c:510:3:
 	if argc != int32(4) {
 		// /tmp/libsqlite3/sqlite-src-3370200/ext/misc/fuzzer.c:511:5:
-		*(*uintptr)(unsafe.Pointer(pzErr)) = x_sqlite3_mprintf(tls, __ccgo_ts+27557, libc.VaList(bp+8, zModule))
+		*(*uintptr)(unsafe.Pointer(pzErr)) = x_sqlite3_mprintf(tls, __ccgo_ts+27549, libc.VaList(bp+8, zModule))
 		// /tmp/libsqlite3/sqlite-src-3370200/ext/misc/fuzzer.c:514:5:
 		rc = int32(m_SQLITE_ERROR)
 	} else { /* Length of zModule, in bytes */
@@ -146652,7 +146648,7 @@ func _fuzzerConnect(tls *libc.TLS, db uintptr, pAux uintptr, argc int32, argv ui
 			// /tmp/libsqlite3/sqlite-src-3370200/ext/misc/fuzzer.c:537:7:
 			if rc == m_SQLITE_OK {
 				// /tmp/libsqlite3/sqlite-src-3370200/ext/misc/fuzzer.c:538:9:
-				rc = x_sqlite3_declare_vtab(tls, db, __ccgo_ts+27608)
+				rc = x_sqlite3_declare_vtab(tls, db, __ccgo_ts+27600)
 			}
 			// /tmp/libsqlite3/sqlite-src-3370200/ext/misc/fuzzer.c:540:7:
 			if rc != m_SQLITE_OK {
@@ -147862,7 +147858,7 @@ func _ieee754func(tls *libc.TLS, context uintptr, argc int32, argv uintptr) {
 		// /tmp/libsqlite3/sqlite-src-3370200/ext/misc/ieee754.c:152:7:
 		case 0:
 			// /tmp/libsqlite3/sqlite-src-3370200/ext/misc/ieee754.c:153:9:
-			x_sqlite3_snprintf(tls, int32(100), bp+16, __ccgo_ts+27646, libc.VaList(bp+152, m, e-int32(1075)))
+			x_sqlite3_snprintf(tls, int32(100), bp+16, __ccgo_ts+27638, libc.VaList(bp+152, m, e-int32(1075)))
 			// /tmp/libsqlite3/sqlite-src-3370200/ext/misc/ieee754.c:155:9:
 			x_sqlite3_result_text(tls, context, bp+16, -int32(1), uintptr(-libc.Int32FromInt32(1)))
 			// /tmp/libsqlite3/sqlite-src-3370200/ext/misc/ieee754.c:156:9:
@@ -148098,21 +148094,21 @@ var _aFunc1 = [6]struct {
 		FnArg:   int32(2),
 	},
 	2: {
-		FzFName: __ccgo_ts + 27663,
+		FzFName: __ccgo_ts + 27655,
 		FnArg:   int32(1),
 		FiAux:   int32(1),
 	},
 	3: {
-		FzFName: __ccgo_ts + 27680,
+		FzFName: __ccgo_ts + 27672,
 		FnArg:   int32(1),
 		FiAux:   int32(2),
 	},
 	4: {
-		FzFName: __ccgo_ts + 27697,
+		FzFName: __ccgo_ts + 27689,
 		FnArg:   int32(1),
 	},
 	5: {
-		FzFName: __ccgo_ts + 27713,
+		FzFName: __ccgo_ts + 27705,
 		FnArg:   int32(1),
 	},
 }
@@ -148184,7 +148180,7 @@ func x_sqlite3_mmap_warm(tls *libc.TLS, db uintptr, zDb uintptr) (r int32) {
 	/* Open a read-only transaction on the file in question */
 	// /tmp/libsqlite3/sqlite-src-3370200/ext/misc/mmapwarm.c:46:3:
 	if zDb != 0 {
-		v1 = __ccgo_ts + 15812
+		v1 = __ccgo_ts + 15804
 	} else {
 		v1 = __ccgo_ts + 1095
 	}
@@ -148194,11 +148190,11 @@ func x_sqlite3_mmap_warm(tls *libc.TLS, db uintptr, zDb uintptr) (r int32) {
 		v2 = __ccgo_ts + 1095
 	}
 	if zDb != 0 {
-		v3 = __ccgo_ts + 27731
+		v3 = __ccgo_ts + 27723
 	} else {
 		v3 = __ccgo_ts + 1095
 	}
-	zSql = x_sqlite3_mprintf(tls, __ccgo_ts+27734, libc.VaList(bp+32, v1, v2, v3))
+	zSql = x_sqlite3_mprintf(tls, __ccgo_ts+27726, libc.VaList(bp+32, v1, v2, v3))
 	// /tmp/libsqlite3/sqlite-src-3370200/ext/misc/mmapwarm.c:49:3:
 	if zSql == uintptr(0) {
 		// /tmp/libsqlite3/sqlite-src-3370200/ext/misc/mmapwarm.c:49:17:
@@ -148213,7 +148209,7 @@ func x_sqlite3_mmap_warm(tls *libc.TLS, db uintptr, zDb uintptr) (r int32) {
 	if rc == m_SQLITE_OK {
 		// /tmp/libsqlite3/sqlite-src-3370200/ext/misc/mmapwarm.c:55:5:
 		if zDb != 0 {
-			v4 = __ccgo_ts + 15812
+			v4 = __ccgo_ts + 15804
 		} else {
 			v4 = __ccgo_ts + 1095
 		}
@@ -148223,11 +148219,11 @@ func x_sqlite3_mmap_warm(tls *libc.TLS, db uintptr, zDb uintptr) (r int32) {
 			v5 = __ccgo_ts + 1095
 		}
 		if zDb != 0 {
-			v6 = __ccgo_ts + 27731
+			v6 = __ccgo_ts + 27723
 		} else {
 			v6 = __ccgo_ts + 1095
 		}
-		zSql = x_sqlite3_mprintf(tls, __ccgo_ts+27775, libc.VaList(bp+32, v4, v5, v6))
+		zSql = x_sqlite3_mprintf(tls, __ccgo_ts+27767, libc.VaList(bp+32, v4, v5, v6))
 		// /tmp/libsqlite3/sqlite-src-3370200/ext/misc/mmapwarm.c:58:5:
 		if zSql == uintptr(0) {
 			// /tmp/libsqlite3/sqlite-src-3370200/ext/misc/mmapwarm.c:59:7:
@@ -148298,10 +148294,10 @@ func x_sqlite3_mmap_warm(tls *libc.TLS, db uintptr, zDb uintptr) (r int32) {
 			} else {
 				v7 = iPg
 			}
-			x_sqlite3_log(tls, m_SQLITE_OK, __ccgo_ts+27798, libc.VaList(bp+32, v7, x_sqlite3_db_filename(tls, db, zDb)))
+			x_sqlite3_log(tls, m_SQLITE_OK, __ccgo_ts+27790, libc.VaList(bp+32, v7, x_sqlite3_db_filename(tls, db, zDb)))
 		}
 		// /tmp/libsqlite3/sqlite-src-3370200/ext/misc/mmapwarm.c:102:5:
-		rc2 = x_sqlite3_exec(tls, db, __ccgo_ts+27848, uintptr(0), uintptr(0), uintptr(0))
+		rc2 = x_sqlite3_exec(tls, db, __ccgo_ts+27840, uintptr(0), uintptr(0), uintptr(0))
 		// /tmp/libsqlite3/sqlite-src-3370200/ext/misc/mmapwarm.c:103:5:
 		if rc == m_SQLITE_OK {
 			// /tmp/libsqlite3/sqlite-src-3370200/ext/misc/mmapwarm.c:103:25:
@@ -148671,7 +148667,7 @@ func _nextCharFunc(tls *libc.TLS, context uintptr, argc int32, argv uintptr) {
 	}
 	if v2 && v1 != uintptr(0) && int32(*(*uint8)(unsafe.Pointer(zWhere))) != 0 {
 		// /tmp/libsqlite3/sqlite-src-3370200/ext/misc/nextchar.c:225:5:
-		zWhereClause = x_sqlite3_mprintf(tls, __ccgo_ts+27852, libc.VaList(bp+64, zWhere))
+		zWhereClause = x_sqlite3_mprintf(tls, __ccgo_ts+27844, libc.VaList(bp+64, zWhere))
 		// /tmp/libsqlite3/sqlite-src-3370200/ext/misc/nextchar.c:226:5:
 		if zWhereClause == uintptr(0) {
 			// /tmp/libsqlite3/sqlite-src-3370200/ext/misc/nextchar.c:227:7:
@@ -148690,7 +148686,7 @@ func _nextCharFunc(tls *libc.TLS, context uintptr, argc int32, argv uintptr) {
 	}
 	if v4 && v3 != uintptr(0) && int32(*(*uint8)(unsafe.Pointer(zCollName))) != 0 {
 		// /tmp/libsqlite3/sqlite-src-3370200/ext/misc/nextchar.c:237:5:
-		zColl = x_sqlite3_mprintf(tls, __ccgo_ts+27861, libc.VaList(bp+64, zCollName))
+		zColl = x_sqlite3_mprintf(tls, __ccgo_ts+27853, libc.VaList(bp+64, zCollName))
 		// /tmp/libsqlite3/sqlite-src-3370200/ext/misc/nextchar.c:238:5:
 		if zColl == uintptr(0) {
 			// /tmp/libsqlite3/sqlite-src-3370200/ext/misc/nextchar.c:239:7:
@@ -148708,7 +148704,7 @@ func _nextCharFunc(tls *libc.TLS, context uintptr, argc int32, argv uintptr) {
 		zColl = __ccgo_ts + 1095
 	}
 	// /tmp/libsqlite3/sqlite-src-3370200/ext/misc/nextchar.c:246:3:
-	zSql = x_sqlite3_mprintf(tls, __ccgo_ts+27874, libc.VaList(bp+64, zField, zTable, zField, zColl, zField, zColl, zWhereClause, zColl))
+	zSql = x_sqlite3_mprintf(tls, __ccgo_ts+27866, libc.VaList(bp+64, zField, zTable, zField, zColl, zField, zColl, zWhereClause, zColl))
 	// /tmp/libsqlite3/sqlite-src-3370200/ext/misc/nextchar.c:254:3:
 	if *(*int8)(unsafe.Pointer(zWhereClause)) != 0 {
 		// /tmp/libsqlite3/sqlite-src-3370200/ext/misc/nextchar.c:254:25:
@@ -148790,16 +148786,16 @@ func x_sqlite3_nextchar_init(tls *libc.TLS, db uintptr, pzErrMsg uintptr, pApi u
 	// /tmp/libsqlite3/sqlite-src-3370200/ext/misc/nextchar.c:299:3:
 	_ = pzErrMsg /* Unused parameter */
 	// /tmp/libsqlite3/sqlite-src-3370200/ext/misc/nextchar.c:300:3:
-	rc = x_sqlite3_create_function(tls, db, __ccgo_ts+27982, int32(3), libc.Int32FromInt32(m_SQLITE_UTF8)|libc.Int32FromInt32(m_SQLITE_INNOCUOUS), uintptr(0), __ccgo_fp(_nextCharFunc), uintptr(0), uintptr(0))
+	rc = x_sqlite3_create_function(tls, db, __ccgo_ts+27974, int32(3), libc.Int32FromInt32(m_SQLITE_UTF8)|libc.Int32FromInt32(m_SQLITE_INNOCUOUS), uintptr(0), __ccgo_fp(_nextCharFunc), uintptr(0), uintptr(0))
 	// /tmp/libsqlite3/sqlite-src-3370200/ext/misc/nextchar.c:303:3:
 	if rc == m_SQLITE_OK {
 		// /tmp/libsqlite3/sqlite-src-3370200/ext/misc/nextchar.c:304:5:
-		rc = x_sqlite3_create_function(tls, db, __ccgo_ts+27982, int32(4), libc.Int32FromInt32(m_SQLITE_UTF8)|libc.Int32FromInt32(m_SQLITE_INNOCUOUS), uintptr(0), __ccgo_fp(_nextCharFunc), uintptr(0), uintptr(0))
+		rc = x_sqlite3_create_function(tls, db, __ccgo_ts+27974, int32(4), libc.Int32FromInt32(m_SQLITE_UTF8)|libc.Int32FromInt32(m_SQLITE_INNOCUOUS), uintptr(0), __ccgo_fp(_nextCharFunc), uintptr(0), uintptr(0))
 	}
 	// /tmp/libsqlite3/sqlite-src-3370200/ext/misc/nextchar.c:308:3:
 	if rc == m_SQLITE_OK {
 		// /tmp/libsqlite3/sqlite-src-3370200/ext/misc/nextchar.c:309:5:
-		rc = x_sqlite3_create_function(tls, db, __ccgo_ts+27982, int32(5), libc.Int32FromInt32(m_SQLITE_UTF8)|libc.Int32FromInt32(m_SQLITE_INNOCUOUS), uintptr(0), __ccgo_fp(_nextCharFunc), uintptr(0), uintptr(0))
+		rc = x_sqlite3_create_function(tls, db, __ccgo_ts+27974, int32(5), libc.Int32FromInt32(m_SQLITE_UTF8)|libc.Int32FromInt32(m_SQLITE_INNOCUOUS), uintptr(0), __ccgo_fp(_nextCharFunc), uintptr(0), uintptr(0))
 	}
 	// /tmp/libsqlite3/sqlite-src-3370200/ext/misc/nextchar.c:313:3:
 	return rc
@@ -150368,7 +150364,7 @@ func x_sqlite3_normalize(tls *libc.TLS, zSql uintptr) (r uintptr) {
 			// /tmp/libsqlite3/sqlite-src-3370200/ext/misc/normalize.c:585:9:
 			if n == int32(4) && x_sqlite3_strnicmp(tls, zSql+uintptr(i), __ccgo_ts+99, int32(4)) == 0 {
 				// /tmp/libsqlite3/sqlite-src-3370200/ext/misc/normalize.c:586:11:
-				if j >= int32(3) && libc.Xstrncmp(tls, z+uintptr(j)-uintptr(2), __ccgo_ts+13023, uint64(2)) == 0 && !(int32(_sqlite3CtypeMap[uint8(*(*int8)(unsafe.Pointer(z + uintptr(j-int32(3)))))])&libc.Int32FromInt32(0x46) != libc.Int32FromInt32(0)) || j >= int32(4) && libc.Xstrncmp(tls, z+uintptr(j)-uintptr(3), __ccgo_ts+27992, uint64(3)) == 0 && !(int32(_sqlite3CtypeMap[uint8(*(*int8)(unsafe.Pointer(z + uintptr(j-int32(4)))))])&libc.Int32FromInt32(0x46) != libc.Int32FromInt32(0)) {
+				if j >= int32(3) && libc.Xstrncmp(tls, z+uintptr(j)-uintptr(2), __ccgo_ts+13015, uint64(2)) == 0 && !(int32(_sqlite3CtypeMap[uint8(*(*int8)(unsafe.Pointer(z + uintptr(j-int32(3)))))])&libc.Int32FromInt32(0x46) != libc.Int32FromInt32(0)) || j >= int32(4) && libc.Xstrncmp(tls, z+uintptr(j)-uintptr(3), __ccgo_ts+27984, uint64(3)) == 0 && !(int32(_sqlite3CtypeMap[uint8(*(*int8)(unsafe.Pointer(z + uintptr(j-int32(4)))))])&libc.Int32FromInt32(0x46) != libc.Int32FromInt32(0)) {
 					/* NULL is a keyword in this case, not a literal value */
 				} else {
 					/* Here the NULL is a literal value */
@@ -150431,7 +150427,7 @@ func x_sqlite3_normalize(tls *libc.TLS, zSql uintptr) (r uintptr) {
 			break
 		}
 		// /tmp/libsqlite3/sqlite-src-3370200/ext/misc/normalize.c:611:10:
-		zIn = libc.Xstrstr(tls, z+uintptr(i), __ccgo_ts+27996)
+		zIn = libc.Xstrstr(tls, z+uintptr(i), __ccgo_ts+27988)
 		// /tmp/libsqlite3/sqlite-src-3370200/ext/misc/normalize.c:613:5:
 		if zIn == uintptr(0) {
 			// /tmp/libsqlite3/sqlite-src-3370200/ext/misc/normalize.c:613:18:
@@ -150445,12 +150441,12 @@ func x_sqlite3_normalize(tls *libc.TLS, zSql uintptr) (r uintptr) {
 			goto _9
 		}
 		// /tmp/libsqlite3/sqlite-src-3370200/ext/misc/normalize.c:616:5:
-		if libc.Xstrncmp(tls, zIn, __ccgo_ts+28000, uint64(9)) == 0 && !(int32(_sqlite3CtypeMap[uint8(*(*int8)(unsafe.Pointer(zIn + 9)))])&libc.Int32FromInt32(0x46) != libc.Int32FromInt32(0)) {
+		if libc.Xstrncmp(tls, zIn, __ccgo_ts+27992, uint64(9)) == 0 && !(int32(_sqlite3CtypeMap[uint8(*(*int8)(unsafe.Pointer(zIn + 9)))])&libc.Int32FromInt32(0x46) != libc.Int32FromInt32(0)) {
 			// /tmp/libsqlite3/sqlite-src-3370200/ext/misc/normalize.c:616:61:
 			goto _9
 		}
 		// /tmp/libsqlite3/sqlite-src-3370200/ext/misc/normalize.c:617:5:
-		if libc.Xstrncmp(tls, zIn, __ccgo_ts+28010, uint64(7)) == 0 && !(int32(_sqlite3CtypeMap[uint8(*(*int8)(unsafe.Pointer(zIn + 7)))])&libc.Int32FromInt32(0x46) != libc.Int32FromInt32(0)) {
+		if libc.Xstrncmp(tls, zIn, __ccgo_ts+28002, uint64(7)) == 0 && !(int32(_sqlite3CtypeMap[uint8(*(*int8)(unsafe.Pointer(zIn + 7)))])&libc.Int32FromInt32(0x46) != libc.Int32FromInt32(0)) {
 			// /tmp/libsqlite3/sqlite-src-3370200/ext/misc/normalize.c:617:59:
 			goto _9
 		}
@@ -150504,7 +150500,7 @@ func x_sqlite3_normalize(tls *libc.TLS, zSql uintptr) (r uintptr) {
 		// /tmp/libsqlite3/sqlite-src-3370200/ext/misc/normalize.c:634:5:
 		*(*int8)(unsafe.Pointer(z + uintptr(j))) = 0
 		// /tmp/libsqlite3/sqlite-src-3370200/ext/misc/normalize.c:635:5:
-		libc.Xmemcpy(tls, z+uintptr(n), __ccgo_ts+28018, uint64(5))
+		libc.Xmemcpy(tls, z+uintptr(n), __ccgo_ts+28010, uint64(5))
 		goto _9
 	_9:
 		i = n
@@ -150597,7 +150593,7 @@ func _percentStep(tls *libc.TLS, pCtx uintptr, argc int32, argv uintptr) {
 	// /tmp/libsqlite3/sqlite-src-3370200/ext/misc/percentile.c:111:3:
 	if eType != int32(m_SQLITE_INTEGER) && eType != int32(m_SQLITE_FLOAT) || rPct < float64(0) || rPct > float64(100) {
 		// /tmp/libsqlite3/sqlite-src-3370200/ext/misc/percentile.c:113:5:
-		x_sqlite3_result_error(tls, pCtx, __ccgo_ts+28024, -int32(1))
+		x_sqlite3_result_error(tls, pCtx, __ccgo_ts+28016, -int32(1))
 		// /tmp/libsqlite3/sqlite-src-3370200/ext/misc/percentile.c:115:5:
 		return
 	}
@@ -150619,7 +150615,7 @@ func _percentStep(tls *libc.TLS, pCtx uintptr, argc int32, argv uintptr) {
 		// /tmp/libsqlite3/sqlite-src-3370200/ext/misc/percentile.c:126:9:
 		if !(_sameValue(tls, (*TPercentile)(unsafe.Pointer(p)).FrPct, rPct+float64(1)) != 0) {
 			// /tmp/libsqlite3/sqlite-src-3370200/ext/misc/percentile.c:127:5:
-			x_sqlite3_result_error(tls, pCtx, __ccgo_ts+28091, -int32(1))
+			x_sqlite3_result_error(tls, pCtx, __ccgo_ts+28083, -int32(1))
 			// /tmp/libsqlite3/sqlite-src-3370200/ext/misc/percentile.c:129:5:
 			return
 		}
@@ -150637,7 +150633,7 @@ func _percentStep(tls *libc.TLS, pCtx uintptr, argc int32, argv uintptr) {
 	// /tmp/libsqlite3/sqlite-src-3370200/ext/misc/percentile.c:138:3:
 	if eType != int32(m_SQLITE_INTEGER) && eType != int32(m_SQLITE_FLOAT) {
 		// /tmp/libsqlite3/sqlite-src-3370200/ext/misc/percentile.c:139:5:
-		x_sqlite3_result_error(tls, pCtx, __ccgo_ts+28155, -int32(1))
+		x_sqlite3_result_error(tls, pCtx, __ccgo_ts+28147, -int32(1))
 		// /tmp/libsqlite3/sqlite-src-3370200/ext/misc/percentile.c:141:5:
 		return
 	}
@@ -150647,7 +150643,7 @@ func _percentStep(tls *libc.TLS, pCtx uintptr, argc int32, argv uintptr) {
 	// /tmp/libsqlite3/sqlite-src-3370200/ext/misc/percentile.c:146:3:
 	if _isInfinity(tls, y) != 0 {
 		// /tmp/libsqlite3/sqlite-src-3370200/ext/misc/percentile.c:147:5:
-		x_sqlite3_result_error(tls, pCtx, __ccgo_ts+28199, -int32(1))
+		x_sqlite3_result_error(tls, pCtx, __ccgo_ts+28191, -int32(1))
 		// /tmp/libsqlite3/sqlite-src-3370200/ext/misc/percentile.c:148:5:
 		return
 	}
@@ -150852,7 +150848,7 @@ func _prefixesConnect(tls *libc.TLS, db uintptr, pAux uintptr, argc int32, argv 
 	var rc int32
 	_, _ = pNew, rc
 	// /tmp/libsqlite3/sqlite-src-3370200/ext/misc/prefixes.c:74:3:
-	rc = x_sqlite3_declare_vtab(tls, db, __ccgo_ts+28225)
+	rc = x_sqlite3_declare_vtab(tls, db, __ccgo_ts+28217)
 	// /tmp/libsqlite3/sqlite-src-3370200/ext/misc/prefixes.c:77:3:
 	if rc == m_SQLITE_OK {
 		// /tmp/libsqlite3/sqlite-src-3370200/ext/misc/prefixes.c:78:5:
@@ -151250,7 +151246,7 @@ func x_sqlite3_prefixes_init(tls *libc.TLS, db uintptr, pzErrMsg uintptr, pApi u
 	// /tmp/libsqlite3/sqlite-src-3370200/ext/misc/prefixes.c:313:3:
 	if rc == m_SQLITE_OK {
 		// /tmp/libsqlite3/sqlite-src-3370200/ext/misc/prefixes.c:314:5:
-		rc = x_sqlite3_create_function(tls, db, __ccgo_ts+28289, int32(2), int32(m_SQLITE_UTF8), uintptr(0), __ccgo_fp(_prefixLengthFunc), uintptr(0), uintptr(0))
+		rc = x_sqlite3_create_function(tls, db, __ccgo_ts+28281, int32(2), int32(m_SQLITE_UTF8), uintptr(0), __ccgo_fp(_prefixLengthFunc), uintptr(0), uintptr(0))
 	}
 	// /tmp/libsqlite3/sqlite-src-3370200/ext/misc/prefixes.c:318:3:
 	return rc
@@ -152126,7 +152122,7 @@ func _re_esc_char(tls *libc.TLS, p uintptr) (r uint32) {
 		(*TReCompiled)(unsafe.Pointer(p)).FsIn.Fi++
 	} else {
 		// /tmp/libsqlite3/sqlite-src-3370200/ext/misc/regexp.c:438:5:
-		(*TReCompiled)(unsafe.Pointer(p)).FzErr = __ccgo_ts + 28303
+		(*TReCompiled)(unsafe.Pointer(p)).FzErr = __ccgo_ts + 28295
 	}
 	// /tmp/libsqlite3/sqlite-src-3370200/ext/misc/regexp.c:440:3:
 	return uint32(uint32(c))
@@ -152254,7 +152250,7 @@ func _re_subcompile_string(tls *libc.TLS, p uintptr) (r uintptr) {
 			// /tmp/libsqlite3/sqlite-src-3370200/ext/misc/regexp.c:494:9:
 			if int32(_rePeek(tls, p)) != int32(')') {
 				// /tmp/libsqlite3/sqlite-src-3370200/ext/misc/regexp.c:494:30:
-				return __ccgo_ts + 28320
+				return __ccgo_ts + 28312
 			}
 			// /tmp/libsqlite3/sqlite-src-3370200/ext/misc/regexp.c:495:9:
 			(*TReCompiled)(unsafe.Pointer(p)).FsIn.Fi++
@@ -152281,7 +152277,7 @@ func _re_subcompile_string(tls *libc.TLS, p uintptr) (r uintptr) {
 			// /tmp/libsqlite3/sqlite-src-3370200/ext/misc/regexp.c:508:9:
 			if iPrev < 0 {
 				// /tmp/libsqlite3/sqlite-src-3370200/ext/misc/regexp.c:508:23:
-				return __ccgo_ts + 28334
+				return __ccgo_ts + 28326
 			}
 			// /tmp/libsqlite3/sqlite-src-3370200/ext/misc/regexp.c:509:9:
 			_re_insert(tls, p, iPrev, int32(m_RE_OP_GOTO), int32((*TReCompiled)(unsafe.Pointer(p)).FnState-uint32(uint32(iPrev))+uint32(1)))
@@ -152295,7 +152291,7 @@ func _re_subcompile_string(tls *libc.TLS, p uintptr) (r uintptr) {
 			// /tmp/libsqlite3/sqlite-src-3370200/ext/misc/regexp.c:514:9:
 			if iPrev < 0 {
 				// /tmp/libsqlite3/sqlite-src-3370200/ext/misc/regexp.c:514:23:
-				return __ccgo_ts + 28354
+				return __ccgo_ts + 28346
 			}
 			// /tmp/libsqlite3/sqlite-src-3370200/ext/misc/regexp.c:515:9:
 			_re_append(tls, p, int32(m_RE_OP_FORK), int32(uint32(uint32(iPrev))-(*TReCompiled)(unsafe.Pointer(p)).FnState))
@@ -152307,7 +152303,7 @@ func _re_subcompile_string(tls *libc.TLS, p uintptr) (r uintptr) {
 			// /tmp/libsqlite3/sqlite-src-3370200/ext/misc/regexp.c:519:9:
 			if iPrev < 0 {
 				// /tmp/libsqlite3/sqlite-src-3370200/ext/misc/regexp.c:519:23:
-				return __ccgo_ts + 28374
+				return __ccgo_ts + 28366
 			}
 			// /tmp/libsqlite3/sqlite-src-3370200/ext/misc/regexp.c:520:9:
 			_re_insert(tls, p, iPrev, int32(m_RE_OP_FORK), int32((*TReCompiled)(unsafe.Pointer(p)).FnState-uint32(uint32(iPrev))+uint32(1)))
@@ -152323,7 +152319,7 @@ func _re_subcompile_string(tls *libc.TLS, p uintptr) (r uintptr) {
 			// /tmp/libsqlite3/sqlite-src-3370200/ext/misc/regexp.c:526:9:
 			if iPrev < 0 {
 				// /tmp/libsqlite3/sqlite-src-3370200/ext/misc/regexp.c:526:23:
-				return __ccgo_ts + 28394
+				return __ccgo_ts + 28386
 			}
 			// /tmp/libsqlite3/sqlite-src-3370200/ext/misc/regexp.c:527:9:
 			for {
@@ -152361,12 +152357,12 @@ func _re_subcompile_string(tls *libc.TLS, p uintptr) (r uintptr) {
 			// /tmp/libsqlite3/sqlite-src-3370200/ext/misc/regexp.c:534:9:
 			if c != uint32('}') {
 				// /tmp/libsqlite3/sqlite-src-3370200/ext/misc/regexp.c:534:22:
-				return __ccgo_ts + 28418
+				return __ccgo_ts + 28410
 			}
 			// /tmp/libsqlite3/sqlite-src-3370200/ext/misc/regexp.c:535:9:
 			if n > 0 && n < m {
 				// /tmp/libsqlite3/sqlite-src-3370200/ext/misc/regexp.c:535:26:
-				return __ccgo_ts + 28432
+				return __ccgo_ts + 28424
 			}
 			// /tmp/libsqlite3/sqlite-src-3370200/ext/misc/regexp.c:536:9:
 			(*TReCompiled)(unsafe.Pointer(p)).FsIn.Fi++
@@ -152377,7 +152373,7 @@ func _re_subcompile_string(tls *libc.TLS, p uintptr) (r uintptr) {
 				// /tmp/libsqlite3/sqlite-src-3370200/ext/misc/regexp.c:539:11:
 				if n == 0 {
 					// /tmp/libsqlite3/sqlite-src-3370200/ext/misc/regexp.c:539:22:
-					return __ccgo_ts + 28457
+					return __ccgo_ts + 28449
 				}
 				// /tmp/libsqlite3/sqlite-src-3370200/ext/misc/regexp.c:540:11:
 				_re_insert(tls, p, iPrev, int32(m_RE_OP_FORK), sz+int32(1))
@@ -152443,7 +152439,7 @@ func _re_subcompile_string(tls *libc.TLS, p uintptr) (r uintptr) {
 				// /tmp/libsqlite3/sqlite-src-3370200/ext/misc/regexp.c:563:11:
 				if c == uint32('[') && int32(_rePeek(tls, p)) == int32(':') {
 					// /tmp/libsqlite3/sqlite-src-3370200/ext/misc/regexp.c:564:13:
-					return __ccgo_ts + 28490
+					return __ccgo_ts + 28482
 				}
 				// /tmp/libsqlite3/sqlite-src-3370200/ext/misc/regexp.c:566:11:
 				if c == uint32('\\') {
@@ -152480,7 +152476,7 @@ func _re_subcompile_string(tls *libc.TLS, p uintptr) (r uintptr) {
 			// /tmp/libsqlite3/sqlite-src-3370200/ext/misc/regexp.c:578:9:
 			if c == uint32(0) {
 				// /tmp/libsqlite3/sqlite-src-3370200/ext/misc/regexp.c:578:20:
-				return __ccgo_ts + 28528
+				return __ccgo_ts + 28520
 			}
 			// /tmp/libsqlite3/sqlite-src-3370200/ext/misc/regexp.c:579:9:
 			*(*int32)(unsafe.Pointer((*TReCompiled)(unsafe.Pointer(p)).FaArg + uintptr(iFirst)*4)) = int32((*TReCompiled)(unsafe.Pointer(p)).FnState - uint32(uint32(iFirst)))
@@ -152675,7 +152671,7 @@ func _sqlite3re_compile(tls *libc.TLS, ppRe uintptr, zIn uintptr, noCase int32) 
 			// /tmp/libsqlite3/sqlite-src-3370200/ext/misc/regexp.c:667:5:
 			_sqlite3re_free(tls, pRe)
 			// /tmp/libsqlite3/sqlite-src-3370200/ext/misc/regexp.c:668:5:
-			return __ccgo_ts + 28541
+			return __ccgo_ts + 28533
 		}
 	}
 	/* The following is a performance optimization.  If the regex begins with
@@ -152848,7 +152844,7 @@ func x_sqlite3_regexp_init(tls *libc.TLS, db uintptr, pzErrMsg uintptr, pApi uin
 		/* The regexpi(PATTERN,STRING) function is a case-insensitive version
 		 ** of regexp(PATTERN,STRING). */
 		// /tmp/libsqlite3/sqlite-src-3370200/ext/misc/regexp.c:767:5:
-		rc = x_sqlite3_create_function(tls, db, __ccgo_ts+28564, int32(2), libc.Int32FromInt32(m_SQLITE_UTF8)|libc.Int32FromInt32(m_SQLITE_INNOCUOUS), db, __ccgo_fp(_re_sql_func), uintptr(0), uintptr(0))
+		rc = x_sqlite3_create_function(tls, db, __ccgo_ts+28556, int32(2), libc.Int32FromInt32(m_SQLITE_UTF8)|libc.Int32FromInt32(m_SQLITE_INNOCUOUS), db, __ccgo_fp(_re_sql_func), uintptr(0), uintptr(0))
 	}
 	// /tmp/libsqlite3/sqlite-src-3370200/ext/misc/regexp.c:770:3:
 	return rc
@@ -152910,7 +152906,7 @@ const m_SERIES_COLUMN_STEP = 3
 // /tmp/libsqlite3/sqlite-src-3370200/ext/misc/series.c:120:9:
 const m_SERIES_COLUMN_STOP = 2
 
-// /tmp/libsqlite3/sqlite-src-3370200/<command-line>:32:9:
+// /tmp/libsqlite3/sqlite-src-3370200/<command-line>:31:9:
 const m_SQLITE_SERIES_CONSTRAINT_VERIFY = 1
 
 // C documentation
@@ -152976,7 +152972,7 @@ func _seriesConnect(tls *libc.TLS, db uintptr, pUnused uintptr, argcUnused int32
 	// /tmp/libsqlite3/sqlite-src-3370200/ext/misc/series.c:126:3:
 	_ = pzErrUnused
 	// /tmp/libsqlite3/sqlite-src-3370200/ext/misc/series.c:127:3:
-	rc = x_sqlite3_declare_vtab(tls, db, __ccgo_ts+28572)
+	rc = x_sqlite3_declare_vtab(tls, db, __ccgo_ts+28564)
 	// /tmp/libsqlite3/sqlite-src-3370200/ext/misc/series.c:129:3:
 	if rc == m_SQLITE_OK {
 		// /tmp/libsqlite3/sqlite-src-3370200/ext/misc/series.c:130:5:
@@ -153430,7 +153426,7 @@ func _seriesBestIndex(tls *libc.TLS, pVTab uintptr, pIdxInfo uintptr) (r int32) 
 		// /tmp/libsqlite3/sqlite-src-3370200/ext/misc/series.c:372:5:
 		x_sqlite3_free(tls, (*Tsqlite3_vtab)(unsafe.Pointer(pVTab)).FzErrMsg)
 		// /tmp/libsqlite3/sqlite-src-3370200/ext/misc/series.c:373:5:
-		(*Tsqlite3_vtab)(unsafe.Pointer(pVTab)).FzErrMsg = x_sqlite3_mprintf(tls, __ccgo_ts+28631, 0)
+		(*Tsqlite3_vtab)(unsafe.Pointer(pVTab)).FzErrMsg = x_sqlite3_mprintf(tls, __ccgo_ts+28623, 0)
 		// /tmp/libsqlite3/sqlite-src-3370200/ext/misc/series.c:375:5:
 		return int32(m_SQLITE_ERROR)
 	}
@@ -153515,12 +153511,12 @@ func x_sqlite3_series_init(tls *libc.TLS, db uintptr, pzErrMsg uintptr, pApi uin
 	// /tmp/libsqlite3/sqlite-src-3370200/ext/misc/series.c:451:3:
 	if x_sqlite3_libversion_number(tls) < int32(3008012) && pzErrMsg != uintptr(0) {
 		// /tmp/libsqlite3/sqlite-src-3370200/ext/misc/series.c:452:5:
-		*(*uintptr)(unsafe.Pointer(pzErrMsg)) = x_sqlite3_mprintf(tls, __ccgo_ts+28689, 0)
+		*(*uintptr)(unsafe.Pointer(pzErrMsg)) = x_sqlite3_mprintf(tls, __ccgo_ts+28681, 0)
 		// /tmp/libsqlite3/sqlite-src-3370200/ext/misc/series.c:454:5:
 		return int32(m_SQLITE_ERROR)
 	}
 	// /tmp/libsqlite3/sqlite-src-3370200/ext/misc/series.c:456:3:
-	rc = x_sqlite3_create_module(tls, db, __ccgo_ts+28739, uintptr(unsafe.Pointer(&_seriesModule)), uintptr(0))
+	rc = x_sqlite3_create_module(tls, db, __ccgo_ts+28731, uintptr(unsafe.Pointer(&_seriesModule)), uintptr(0))
 	// /tmp/libsqlite3/sqlite-src-3370200/ext/misc/series.c:458:3:
 	return rc
 }
@@ -154650,10 +154646,10 @@ func _editdistSqlFunc(tls *libc.TLS, context uintptr, argc int32, argv uintptr) 
 			// /tmp/libsqlite3/sqlite-src-3370200/ext/misc/spellfix.c:530:11:
 			if res == -int32(2) {
 				// /tmp/libsqlite3/sqlite-src-3370200/ext/misc/spellfix.c:531:7:
-				x_sqlite3_result_error(tls, context, __ccgo_ts+28755, -int32(1))
+				x_sqlite3_result_error(tls, context, __ccgo_ts+28747, -int32(1))
 			} else {
 				// /tmp/libsqlite3/sqlite-src-3370200/ext/misc/spellfix.c:533:7:
-				x_sqlite3_result_error(tls, context, __ccgo_ts+28785, -int32(1))
+				x_sqlite3_result_error(tls, context, __ccgo_ts+28777, -int32(1))
 			}
 		}
 	} else {
@@ -155078,7 +155074,7 @@ func _editDist3ConfigLoad(tls *libc.TLS, p uintptr, db uintptr, zTable uintptr) 
 	// /tmp/libsqlite3/sqlite-src-3370200/ext/misc/spellfix.c:746:17:
 	pLang = uintptr(0)
 	// /tmp/libsqlite3/sqlite-src-3370200/ext/misc/spellfix.c:748:3:
-	zSql = x_sqlite3_mprintf(tls, __ccgo_ts+28810, libc.VaList(bp+16, zTable))
+	zSql = x_sqlite3_mprintf(tls, __ccgo_ts+28802, libc.VaList(bp+16, zTable))
 	// /tmp/libsqlite3/sqlite-src-3370200/ext/misc/spellfix.c:750:3:
 	if zSql == uintptr(0) {
 		// /tmp/libsqlite3/sqlite-src-3370200/ext/misc/spellfix.c:750:17:
@@ -156010,16 +156006,16 @@ func _editDist3Install(tls *libc.TLS, db uintptr) (r int32) {
 	// /tmp/libsqlite3/sqlite-src-3370200/ext/misc/spellfix.c:1214:3:
 	libc.Xmemset(tls, pConfig, 0, uint64(16))
 	// /tmp/libsqlite3/sqlite-src-3370200/ext/misc/spellfix.c:1215:3:
-	rc = x_sqlite3_create_function_v2(tls, db, __ccgo_ts+28882, int32(2), libc.Int32FromInt32(m_SQLITE_UTF8)|libc.Int32FromInt32(m_SQLITE_DETERMINISTIC), pConfig, __ccgo_fp(_editDist3SqlFunc), uintptr(0), uintptr(0), uintptr(0))
+	rc = x_sqlite3_create_function_v2(tls, db, __ccgo_ts+28874, int32(2), libc.Int32FromInt32(m_SQLITE_UTF8)|libc.Int32FromInt32(m_SQLITE_DETERMINISTIC), pConfig, __ccgo_fp(_editDist3SqlFunc), uintptr(0), uintptr(0), uintptr(0))
 	// /tmp/libsqlite3/sqlite-src-3370200/ext/misc/spellfix.c:1218:3:
 	if rc == m_SQLITE_OK {
 		// /tmp/libsqlite3/sqlite-src-3370200/ext/misc/spellfix.c:1219:5:
-		rc = x_sqlite3_create_function_v2(tls, db, __ccgo_ts+28882, int32(3), libc.Int32FromInt32(m_SQLITE_UTF8)|libc.Int32FromInt32(m_SQLITE_DETERMINISTIC), pConfig, __ccgo_fp(_editDist3SqlFunc), uintptr(0), uintptr(0), uintptr(0))
+		rc = x_sqlite3_create_function_v2(tls, db, __ccgo_ts+28874, int32(3), libc.Int32FromInt32(m_SQLITE_UTF8)|libc.Int32FromInt32(m_SQLITE_DETERMINISTIC), pConfig, __ccgo_fp(_editDist3SqlFunc), uintptr(0), uintptr(0), uintptr(0))
 	}
 	// /tmp/libsqlite3/sqlite-src-3370200/ext/misc/spellfix.c:1223:3:
 	if rc == m_SQLITE_OK {
 		// /tmp/libsqlite3/sqlite-src-3370200/ext/misc/spellfix.c:1224:5:
-		rc = x_sqlite3_create_function_v2(tls, db, __ccgo_ts+28882, int32(1), libc.Int32FromInt32(m_SQLITE_UTF8)|libc.Int32FromInt32(m_SQLITE_DETERMINISTIC), pConfig, __ccgo_fp(_editDist3SqlFunc), uintptr(0), uintptr(0), __ccgo_fp(_editDist3ConfigDelete))
+		rc = x_sqlite3_create_function_v2(tls, db, __ccgo_ts+28874, int32(1), libc.Int32FromInt32(m_SQLITE_UTF8)|libc.Int32FromInt32(m_SQLITE_DETERMINISTIC), pConfig, __ccgo_fp(_editDist3SqlFunc), uintptr(0), uintptr(0), __ccgo_fp(_editDist3ConfigDelete))
 	} else {
 		// /tmp/libsqlite3/sqlite-src-3370200/ext/misc/spellfix.c:1228:5:
 		x_sqlite3_free(tls, pConfig)
@@ -158349,7 +158345,7 @@ func _spellfix1Uninit(tls *libc.TLS, isDestroy int32, pVTab uintptr) (r int32) {
 		// /tmp/libsqlite3/sqlite-src-3370200/ext/misc/spellfix.c:1982:13:
 		db = (*Tspellfix1_vtab)(unsafe.Pointer(p)).Fdb
 		// /tmp/libsqlite3/sqlite-src-3370200/ext/misc/spellfix.c:1983:5:
-		_spellfix1DbExec(tls, bp, db, __ccgo_ts+28892, libc.VaList(bp+16, (*Tspellfix1_vtab)(unsafe.Pointer(p)).FzDbName, (*Tspellfix1_vtab)(unsafe.Pointer(p)).FzTableName))
+		_spellfix1DbExec(tls, bp, db, __ccgo_ts+28884, libc.VaList(bp+16, (*Tspellfix1_vtab)(unsafe.Pointer(p)).FzDbName, (*Tspellfix1_vtab)(unsafe.Pointer(p)).FzTableName))
 	}
 	// /tmp/libsqlite3/sqlite-src-3370200/ext/misc/spellfix.c:1986:3:
 	if *(*int32)(unsafe.Pointer(bp)) == m_SQLITE_OK {
@@ -158505,14 +158501,14 @@ func _spellfix1Init(tls *libc.TLS, isCreate int32, db uintptr, pAux uintptr, arg
 			// /tmp/libsqlite3/sqlite-src-3370200/ext/misc/spellfix.c:2072:7:
 			x_sqlite3_vtab_config(tls, db, int32(m_SQLITE_VTAB_INNOCUOUS), 0)
 			// /tmp/libsqlite3/sqlite-src-3370200/ext/misc/spellfix.c:2073:7:
-			*(*int32)(unsafe.Pointer(bp)) = x_sqlite3_declare_vtab(tls, db, __ccgo_ts+28929)
+			*(*int32)(unsafe.Pointer(bp)) = x_sqlite3_declare_vtab(tls, db, __ccgo_ts+28921)
 		}
 		// /tmp/libsqlite3/sqlite-src-3370200/ext/misc/spellfix.c:2092:5:
 		if *(*int32)(unsafe.Pointer(bp)) == m_SQLITE_OK && isCreate != 0 {
 			// /tmp/libsqlite3/sqlite-src-3370200/ext/misc/spellfix.c:2093:7:
-			_spellfix1DbExec(tls, bp, db, __ccgo_ts+29083, libc.VaList(bp+16, zDbName, zTableName))
+			_spellfix1DbExec(tls, bp, db, __ccgo_ts+29075, libc.VaList(bp+16, zDbName, zTableName))
 			// /tmp/libsqlite3/sqlite-src-3370200/ext/misc/spellfix.c:2104:7:
-			_spellfix1DbExec(tls, bp, db, __ccgo_ts+29217, libc.VaList(bp+16, zDbName, zTableName, zTableName))
+			_spellfix1DbExec(tls, bp, db, __ccgo_ts+29209, libc.VaList(bp+16, zDbName, zTableName, zTableName))
 		}
 		// /tmp/libsqlite3/sqlite-src-3370200/ext/misc/spellfix.c:2110:5:
 		i = int32(3)
@@ -158521,7 +158517,7 @@ func _spellfix1Init(tls *libc.TLS, isCreate int32, db uintptr, pAux uintptr, arg
 				break
 			}
 			// /tmp/libsqlite3/sqlite-src-3370200/ext/misc/spellfix.c:2111:7:
-			if libc.Xstrncmp(tls, *(*uintptr)(unsafe.Pointer(argv + uintptr(i)*8)), __ccgo_ts+29302, uint64(16)) == 0 && (*Tspellfix1_vtab)(unsafe.Pointer(pNew)).FzCostTable == uintptr(0) {
+			if libc.Xstrncmp(tls, *(*uintptr)(unsafe.Pointer(argv + uintptr(i)*8)), __ccgo_ts+29294, uint64(16)) == 0 && (*Tspellfix1_vtab)(unsafe.Pointer(pNew)).FzCostTable == uintptr(0) {
 				// /tmp/libsqlite3/sqlite-src-3370200/ext/misc/spellfix.c:2112:9:
 				(*Tspellfix1_vtab)(unsafe.Pointer(pNew)).FzCostTable = _spellfix1Dequote(tls, *(*uintptr)(unsafe.Pointer(argv + uintptr(i)*8))+16)
 				// /tmp/libsqlite3/sqlite-src-3370200/ext/misc/spellfix.c:2113:9:
@@ -158533,7 +158529,7 @@ func _spellfix1Init(tls *libc.TLS, isCreate int32, db uintptr, pAux uintptr, arg
 				goto _1
 			}
 			// /tmp/libsqlite3/sqlite-src-3370200/ext/misc/spellfix.c:2116:7:
-			*(*uintptr)(unsafe.Pointer(pzErr)) = x_sqlite3_mprintf(tls, __ccgo_ts+29319, libc.VaList(bp+16, *(*uintptr)(unsafe.Pointer(argv + uintptr(i)*8))))
+			*(*uintptr)(unsafe.Pointer(pzErr)) = x_sqlite3_mprintf(tls, __ccgo_ts+29311, libc.VaList(bp+16, *(*uintptr)(unsafe.Pointer(argv + uintptr(i)*8))))
 			// /tmp/libsqlite3/sqlite-src-3370200/ext/misc/spellfix.c:2117:7:
 			*(*int32)(unsafe.Pointer(bp)) = int32(m_SQLITE_ERROR)
 			goto _1
@@ -159335,7 +159331,7 @@ func _spellfix1FilterForMatch(tls *libc.TLS, pCur uintptr, argc int32, argv uint
 		nPattern--
 	}
 	// /tmp/libsqlite3/sqlite-src-3370200/ext/misc/spellfix.c:2598:3:
-	zSql = x_sqlite3_mprintf(tls, __ccgo_ts+29353, libc.VaList(bp+160, (*Tspellfix1_vtab)(unsafe.Pointer(p)).FzDbName, (*Tspellfix1_vtab)(unsafe.Pointer(p)).FzTableName, iLang))
+	zSql = x_sqlite3_mprintf(tls, __ccgo_ts+29345, libc.VaList(bp+160, (*Tspellfix1_vtab)(unsafe.Pointer(p)).FzDbName, (*Tspellfix1_vtab)(unsafe.Pointer(p)).FzTableName, iLang))
 	// /tmp/libsqlite3/sqlite-src-3370200/ext/misc/spellfix.c:2604:3:
 	if zSql == uintptr(0) {
 		// /tmp/libsqlite3/sqlite-src-3370200/ext/misc/spellfix.c:2605:5:
@@ -159419,11 +159415,11 @@ func _spellfix1FilterForFullScan(tls *libc.TLS, pCur uintptr, argc int32, argv u
 	// /tmp/libsqlite3/sqlite-src-3370200/ext/misc/spellfix.c:2651:3:
 	// /tmp/libsqlite3/sqlite-src-3370200/ext/misc/spellfix.c:2652:3:
 	if idxNum&int32(64) != 0 {
-		v1 = __ccgo_ts + 29453
+		v1 = __ccgo_ts + 29445
 	} else {
 		v1 = __ccgo_ts + 1095
 	}
-	zSql = x_sqlite3_mprintf(tls, __ccgo_ts+29468, libc.VaList(bp+8, (*Tspellfix1_vtab)(unsafe.Pointer(pVTab)).FzDbName, (*Tspellfix1_vtab)(unsafe.Pointer(pVTab)).FzTableName, v1))
+	zSql = x_sqlite3_mprintf(tls, __ccgo_ts+29460, libc.VaList(bp+8, (*Tspellfix1_vtab)(unsafe.Pointer(pVTab)).FzDbName, (*Tspellfix1_vtab)(unsafe.Pointer(pVTab)).FzTableName, v1))
 	// /tmp/libsqlite3/sqlite-src-3370200/ext/misc/spellfix.c:2657:3:
 	if zSql == uintptr(0) {
 		// /tmp/libsqlite3/sqlite-src-3370200/ext/misc/spellfix.c:2657:17:
@@ -159755,11 +159751,11 @@ func _spellfix1GetConflict(tls *libc.TLS, db uintptr) (r uintptr) {
 
 // /tmp/libsqlite3/sqlite-src-3370200/ext/misc/spellfix.c:2829:21:
 var _azConflict = [5]uintptr{
-	0: __ccgo_ts + 29527,
-	1: __ccgo_ts + 29536,
-	2: __ccgo_ts + 29543,
-	3: __ccgo_ts + 29543,
-	4: __ccgo_ts + 29549,
+	0: __ccgo_ts + 29519,
+	1: __ccgo_ts + 29528,
+	2: __ccgo_ts + 29535,
+	3: __ccgo_ts + 29535,
+	4: __ccgo_ts + 29541,
 }
 
 // C documentation
@@ -159794,7 +159790,7 @@ func _spellfix1Update(tls *libc.TLS, pVTab uintptr, argc int32, argv uintptr, pR
 		*(*Tsqlite_int64)(unsafe.Pointer(pRowid)) = v1
 		rowid = v1
 		// /tmp/libsqlite3/sqlite-src-3370200/ext/misc/spellfix.c:2865:5:
-		_spellfix1DbExec(tls, bp, db, __ccgo_ts+29557, libc.VaList(bp+16, (*Tspellfix1_vtab)(unsafe.Pointer(p)).FzDbName, (*Tspellfix1_vtab)(unsafe.Pointer(p)).FzTableName, rowid))
+		_spellfix1DbExec(tls, bp, db, __ccgo_ts+29549, libc.VaList(bp+16, (*Tspellfix1_vtab)(unsafe.Pointer(p)).FzDbName, (*Tspellfix1_vtab)(unsafe.Pointer(p)).FzTableName, rowid))
 	} else {
 		// /tmp/libsqlite3/sqlite-src-3370200/ext/misc/spellfix.c:2869:25:
 		zWord = x_sqlite3_value_text(tls, *(*uintptr)(unsafe.Pointer(argv + uintptr(libc.Int32FromInt32(m_SPELLFIX_COL_WORD)+libc.Int32FromInt32(2))*8)))
@@ -159820,12 +159816,12 @@ func _spellfix1Update(tls *libc.TLS, pVTab uintptr, argc int32, argv uintptr, pR
 			// /tmp/libsqlite3/sqlite-src-3370200/ext/misc/spellfix.c:2887:7:
 			if zCmd == uintptr(0) {
 				// /tmp/libsqlite3/sqlite-src-3370200/ext/misc/spellfix.c:2888:9:
-				(*Tsqlite3_vtab)(unsafe.Pointer(pVTab)).FzErrMsg = x_sqlite3_mprintf(tls, __ccgo_ts+29600, libc.VaList(bp+16, (*Tspellfix1_vtab)(unsafe.Pointer(p)).FzTableName))
+				(*Tsqlite3_vtab)(unsafe.Pointer(pVTab)).FzErrMsg = x_sqlite3_mprintf(tls, __ccgo_ts+29592, libc.VaList(bp+16, (*Tspellfix1_vtab)(unsafe.Pointer(p)).FzTableName))
 				// /tmp/libsqlite3/sqlite-src-3370200/ext/misc/spellfix.c:2890:9:
 				return libc.Int32FromInt32(m_SQLITE_CONSTRAINT) | libc.Int32FromInt32(5)<<libc.Int32FromInt32(8)
 			}
 			// /tmp/libsqlite3/sqlite-src-3370200/ext/misc/spellfix.c:2892:7:
-			if libc.Xstrcmp(tls, zCmd, __ccgo_ts+29636) == 0 {
+			if libc.Xstrcmp(tls, zCmd, __ccgo_ts+29628) == 0 {
 				/* Reset the  edit cost table (if there is one). */
 				// /tmp/libsqlite3/sqlite-src-3370200/ext/misc/spellfix.c:2894:9:
 				_editDist3ConfigDelete(tls, (*Tspellfix1_vtab)(unsafe.Pointer(p)).FpConfig3)
@@ -159835,7 +159831,7 @@ func _spellfix1Update(tls *libc.TLS, pVTab uintptr, argc int32, argv uintptr, pR
 				return m_SQLITE_OK
 			}
 			// /tmp/libsqlite3/sqlite-src-3370200/ext/misc/spellfix.c:2898:7:
-			if libc.Xstrncmp(tls, zCmd, __ccgo_ts+29302, uint64(16)) == 0 {
+			if libc.Xstrncmp(tls, zCmd, __ccgo_ts+29294, uint64(16)) == 0 {
 				// /tmp/libsqlite3/sqlite-src-3370200/ext/misc/spellfix.c:2899:9:
 				_editDist3ConfigDelete(tls, (*Tspellfix1_vtab)(unsafe.Pointer(p)).FpConfig3)
 				// /tmp/libsqlite3/sqlite-src-3370200/ext/misc/spellfix.c:2900:9:
@@ -159860,7 +159856,7 @@ func _spellfix1Update(tls *libc.TLS, pVTab uintptr, argc int32, argv uintptr, pR
 				return m_SQLITE_OK
 			}
 			// /tmp/libsqlite3/sqlite-src-3370200/ext/misc/spellfix.c:2910:7:
-			(*Tsqlite3_vtab)(unsafe.Pointer(pVTab)).FzErrMsg = x_sqlite3_mprintf(tls, __ccgo_ts+29642, libc.VaList(bp+16, (*Tspellfix1_vtab)(unsafe.Pointer(p)).FzTableName, zCmd))
+			(*Tsqlite3_vtab)(unsafe.Pointer(pVTab)).FzErrMsg = x_sqlite3_mprintf(tls, __ccgo_ts+29634, libc.VaList(bp+16, (*Tspellfix1_vtab)(unsafe.Pointer(p)).FzTableName, zCmd))
 			// /tmp/libsqlite3/sqlite-src-3370200/ext/misc/spellfix.c:2912:7:
 			return int32(m_SQLITE_ERROR)
 		}
@@ -159914,12 +159910,12 @@ func _spellfix1Update(tls *libc.TLS, pVTab uintptr, argc int32, argv uintptr, pR
 			// /tmp/libsqlite3/sqlite-src-3370200/ext/misc/spellfix.c:2930:7:
 			if x_sqlite3_value_type(tls, *(*uintptr)(unsafe.Pointer(argv + 1*8))) == int32(m_SQLITE_NULL) {
 				// /tmp/libsqlite3/sqlite-src-3370200/ext/misc/spellfix.c:2931:9:
-				_spellfix1DbExec(tls, bp, db, __ccgo_ts+29677, libc.VaList(bp+16, (*Tspellfix1_vtab)(unsafe.Pointer(p)).FzDbName, (*Tspellfix1_vtab)(unsafe.Pointer(p)).FzTableName, iRank, iLang, zWord, zK1, zWord, zK2))
+				_spellfix1DbExec(tls, bp, db, __ccgo_ts+29669, libc.VaList(bp+16, (*Tspellfix1_vtab)(unsafe.Pointer(p)).FzDbName, (*Tspellfix1_vtab)(unsafe.Pointer(p)).FzTableName, iRank, iLang, zWord, zK1, zWord, zK2))
 			} else {
 				// /tmp/libsqlite3/sqlite-src-3370200/ext/misc/spellfix.c:2938:9:
 				newRowid = x_sqlite3_value_int64(tls, *(*uintptr)(unsafe.Pointer(argv + 1*8)))
 				// /tmp/libsqlite3/sqlite-src-3370200/ext/misc/spellfix.c:2939:9:
-				_spellfix1DbExec(tls, bp, db, __ccgo_ts+29763, libc.VaList(bp+16, zConflict, (*Tspellfix1_vtab)(unsafe.Pointer(p)).FzDbName, (*Tspellfix1_vtab)(unsafe.Pointer(p)).FzTableName, newRowid, iRank, iLang, zWord, zK1, zWord, zK2))
+				_spellfix1DbExec(tls, bp, db, __ccgo_ts+29755, libc.VaList(bp+16, zConflict, (*Tspellfix1_vtab)(unsafe.Pointer(p)).FzDbName, (*Tspellfix1_vtab)(unsafe.Pointer(p)).FzTableName, newRowid, iRank, iLang, zWord, zK1, zWord, zK2))
 			}
 			// /tmp/libsqlite3/sqlite-src-3370200/ext/misc/spellfix.c:2946:7:
 			*(*Tsqlite_int64)(unsafe.Pointer(pRowid)) = x_sqlite3_last_insert_rowid(tls, db)
@@ -159931,7 +159927,7 @@ func _spellfix1Update(tls *libc.TLS, pVTab uintptr, argc int32, argv uintptr, pR
 			*(*Tsqlite_int64)(unsafe.Pointer(pRowid)) = v5
 			newRowid = v5
 			// /tmp/libsqlite3/sqlite-src-3370200/ext/misc/spellfix.c:2950:7:
-			_spellfix1DbExec(tls, bp, db, __ccgo_ts+29863, libc.VaList(bp+16, zConflict, (*Tspellfix1_vtab)(unsafe.Pointer(p)).FzDbName, (*Tspellfix1_vtab)(unsafe.Pointer(p)).FzTableName, newRowid, iRank, iLang, zWord, zK1, zWord, zK2, rowid))
+			_spellfix1DbExec(tls, bp, db, __ccgo_ts+29855, libc.VaList(bp+16, zConflict, (*Tspellfix1_vtab)(unsafe.Pointer(p)).FzDbName, (*Tspellfix1_vtab)(unsafe.Pointer(p)).FzTableName, newRowid, iRank, iLang, zWord, zK1, zWord, zK2, rowid))
 		}
 		// /tmp/libsqlite3/sqlite-src-3370200/ext/misc/spellfix.c:2957:5:
 		x_sqlite3_free(tls, zK1)
@@ -159970,7 +159966,7 @@ func _spellfix1Rename(tls *libc.TLS, pVTab uintptr, zNew uintptr) (r int32) {
 		return int32(m_SQLITE_NOMEM)
 	}
 	// /tmp/libsqlite3/sqlite-src-3370200/ext/misc/spellfix.c:2974:3:
-	_spellfix1DbExec(tls, bp, db, __ccgo_ts+29972, libc.VaList(bp+16, (*Tspellfix1_vtab)(unsafe.Pointer(p)).FzDbName, (*Tspellfix1_vtab)(unsafe.Pointer(p)).FzTableName, zNewName))
+	_spellfix1DbExec(tls, bp, db, __ccgo_ts+29964, libc.VaList(bp+16, (*Tspellfix1_vtab)(unsafe.Pointer(p)).FzDbName, (*Tspellfix1_vtab)(unsafe.Pointer(p)).FzTableName, zNewName))
 	// /tmp/libsqlite3/sqlite-src-3370200/ext/misc/spellfix.c:2978:3:
 	if *(*int32)(unsafe.Pointer(bp)) == m_SQLITE_OK {
 		// /tmp/libsqlite3/sqlite-src-3370200/ext/misc/spellfix.c:2979:5:
@@ -160028,26 +160024,26 @@ func _spellfix1Register(tls *libc.TLS, db uintptr) (r int32) {
 	// /tmp/libsqlite3/sqlite-src-3370200/ext/misc/spellfix.c:3018:7:
 	rc = m_SQLITE_OK
 	// /tmp/libsqlite3/sqlite-src-3370200/ext/misc/spellfix.c:3020:3:
-	rc = x_sqlite3_create_function(tls, db, __ccgo_ts+30021, int32(1), libc.Int32FromInt32(m_SQLITE_UTF8)|libc.Int32FromInt32(m_SQLITE_DETERMINISTIC), uintptr(0), __ccgo_fp(_transliterateSqlFunc), uintptr(0), uintptr(0))
+	rc = x_sqlite3_create_function(tls, db, __ccgo_ts+30013, int32(1), libc.Int32FromInt32(m_SQLITE_UTF8)|libc.Int32FromInt32(m_SQLITE_DETERMINISTIC), uintptr(0), __ccgo_fp(_transliterateSqlFunc), uintptr(0), uintptr(0))
 	// /tmp/libsqlite3/sqlite-src-3370200/ext/misc/spellfix.c:3023:3:
 	if rc == m_SQLITE_OK {
 		// /tmp/libsqlite3/sqlite-src-3370200/ext/misc/spellfix.c:3024:5:
-		rc = x_sqlite3_create_function(tls, db, __ccgo_ts+30040, int32(2), libc.Int32FromInt32(m_SQLITE_UTF8)|libc.Int32FromInt32(m_SQLITE_DETERMINISTIC), uintptr(0), __ccgo_fp(_editdistSqlFunc), uintptr(0), uintptr(0))
+		rc = x_sqlite3_create_function(tls, db, __ccgo_ts+30032, int32(2), libc.Int32FromInt32(m_SQLITE_UTF8)|libc.Int32FromInt32(m_SQLITE_DETERMINISTIC), uintptr(0), __ccgo_fp(_editdistSqlFunc), uintptr(0), uintptr(0))
 	}
 	// /tmp/libsqlite3/sqlite-src-3370200/ext/misc/spellfix.c:3028:3:
 	if rc == m_SQLITE_OK {
 		// /tmp/libsqlite3/sqlite-src-3370200/ext/misc/spellfix.c:3029:5:
-		rc = x_sqlite3_create_function(tls, db, __ccgo_ts+30059, int32(1), libc.Int32FromInt32(m_SQLITE_UTF8)|libc.Int32FromInt32(m_SQLITE_DETERMINISTIC), uintptr(0), __ccgo_fp(_phoneticHashSqlFunc), uintptr(0), uintptr(0))
+		rc = x_sqlite3_create_function(tls, db, __ccgo_ts+30051, int32(1), libc.Int32FromInt32(m_SQLITE_UTF8)|libc.Int32FromInt32(m_SQLITE_DETERMINISTIC), uintptr(0), __ccgo_fp(_phoneticHashSqlFunc), uintptr(0), uintptr(0))
 	}
 	// /tmp/libsqlite3/sqlite-src-3370200/ext/misc/spellfix.c:3033:3:
 	if rc == m_SQLITE_OK {
 		// /tmp/libsqlite3/sqlite-src-3370200/ext/misc/spellfix.c:3034:5:
-		rc = x_sqlite3_create_function(tls, db, __ccgo_ts+30079, int32(1), libc.Int32FromInt32(m_SQLITE_UTF8)|libc.Int32FromInt32(m_SQLITE_DETERMINISTIC), uintptr(0), __ccgo_fp(_scriptCodeSqlFunc), uintptr(0), uintptr(0))
+		rc = x_sqlite3_create_function(tls, db, __ccgo_ts+30071, int32(1), libc.Int32FromInt32(m_SQLITE_UTF8)|libc.Int32FromInt32(m_SQLITE_DETERMINISTIC), uintptr(0), __ccgo_fp(_scriptCodeSqlFunc), uintptr(0), uintptr(0))
 	}
 	// /tmp/libsqlite3/sqlite-src-3370200/ext/misc/spellfix.c:3038:3:
 	if rc == m_SQLITE_OK {
 		// /tmp/libsqlite3/sqlite-src-3370200/ext/misc/spellfix.c:3039:5:
-		rc = x_sqlite3_create_module(tls, db, __ccgo_ts+30100, uintptr(unsafe.Pointer(&_spellfix1Module)), uintptr(0))
+		rc = x_sqlite3_create_module(tls, db, __ccgo_ts+30092, uintptr(unsafe.Pointer(&_spellfix1Module)), uintptr(0))
 	}
 	// /tmp/libsqlite3/sqlite-src-3370200/ext/misc/spellfix.c:3041:3:
 	if rc == m_SQLITE_OK {
@@ -160169,7 +160165,7 @@ func _totypeCompare2pow63(tls *libc.TLS, zNum uintptr) (r int32) {
 	c = 0
 	/* 012345678901234567 */
 	// /tmp/libsqlite3/sqlite-src-3370200/ext/misc/totype.c:99:14:
-	pow63 = __ccgo_ts + 30110
+	pow63 = __ccgo_ts + 30102
 	// /tmp/libsqlite3/sqlite-src-3370200/ext/misc/totype.c:100:3:
 	i = 0
 	for {
@@ -160894,11 +160890,11 @@ func x_sqlite3_totype_init(tls *libc.TLS, db uintptr, pzErrMsg uintptr, pApi uin
 	// /tmp/libsqlite3/sqlite-src-3370200/ext/misc/totype.c:504:3:
 	_ = pzErrMsg /* Unused parameter */
 	// /tmp/libsqlite3/sqlite-src-3370200/ext/misc/totype.c:505:3:
-	rc = x_sqlite3_create_function(tls, db, __ccgo_ts+30129, int32(1), libc.Int32FromInt32(m_SQLITE_UTF8)|libc.Int32FromInt32(m_SQLITE_DETERMINISTIC)|libc.Int32FromInt32(m_SQLITE_INNOCUOUS), uintptr(0), __ccgo_fp(_tointegerFunc), uintptr(0), uintptr(0))
+	rc = x_sqlite3_create_function(tls, db, __ccgo_ts+30121, int32(1), libc.Int32FromInt32(m_SQLITE_UTF8)|libc.Int32FromInt32(m_SQLITE_DETERMINISTIC)|libc.Int32FromInt32(m_SQLITE_INNOCUOUS), uintptr(0), __ccgo_fp(_tointegerFunc), uintptr(0), uintptr(0))
 	// /tmp/libsqlite3/sqlite-src-3370200/ext/misc/totype.c:508:3:
 	if rc == m_SQLITE_OK {
 		// /tmp/libsqlite3/sqlite-src-3370200/ext/misc/totype.c:509:5:
-		rc = x_sqlite3_create_function(tls, db, __ccgo_ts+30139, int32(1), libc.Int32FromInt32(m_SQLITE_UTF8)|libc.Int32FromInt32(m_SQLITE_DETERMINISTIC)|libc.Int32FromInt32(m_SQLITE_INNOCUOUS), uintptr(0), __ccgo_fp(_torealFunc), uintptr(0), uintptr(0))
+		rc = x_sqlite3_create_function(tls, db, __ccgo_ts+30131, int32(1), libc.Int32FromInt32(m_SQLITE_UTF8)|libc.Int32FromInt32(m_SQLITE_DETERMINISTIC)|libc.Int32FromInt32(m_SQLITE_INNOCUOUS), uintptr(0), __ccgo_fp(_torealFunc), uintptr(0), uintptr(0))
 	}
 	// /tmp/libsqlite3/sqlite-src-3370200/ext/misc/totype.c:513:3:
 	return rc
@@ -161207,7 +161203,7 @@ func _unionPrepare(tls *libc.TLS, pRc uintptr, db uintptr, zSql uintptr, pzErr u
 		// /tmp/libsqlite3/sqlite-src-3370200/ext/misc/unionvtab.c:351:5:
 		if rc != m_SQLITE_OK {
 			// /tmp/libsqlite3/sqlite-src-3370200/ext/misc/unionvtab.c:352:7:
-			*(*uintptr)(unsafe.Pointer(pzErr)) = x_sqlite3_mprintf(tls, __ccgo_ts+30146, libc.VaList(bp+16, x_sqlite3_errmsg(tls, db)))
+			*(*uintptr)(unsafe.Pointer(pzErr)) = x_sqlite3_mprintf(tls, __ccgo_ts+30138, libc.VaList(bp+16, x_sqlite3_errmsg(tls, db)))
 			// /tmp/libsqlite3/sqlite-src-3370200/ext/misc/unionvtab.c:353:7:
 			*(*int32)(unsafe.Pointer(pRc)) = rc
 		}
@@ -161470,11 +161466,11 @@ func _unionIsIntkeyTable(tls *libc.TLS, db uintptr, pSrc uintptr, pzErr uintptr)
 	// /tmp/libsqlite3/sqlite-src-3370200/ext/misc/unionvtab.c:518:14:
 	*(*uintptr)(unsafe.Pointer(bp + 8)) = uintptr(0)
 	// /tmp/libsqlite3/sqlite-src-3370200/ext/misc/unionvtab.c:521:3:
-	x_sqlite3_table_column_metadata(tls, db, (*TUnionSrc)(unsafe.Pointer(pSrc)).FzDb, (*TUnionSrc)(unsafe.Pointer(pSrc)).FzTab, __ccgo_ts+30160, bp+8, uintptr(0), uintptr(0), bp, uintptr(0))
+	x_sqlite3_table_column_metadata(tls, db, (*TUnionSrc)(unsafe.Pointer(pSrc)).FzDb, (*TUnionSrc)(unsafe.Pointer(pSrc)).FzTab, __ccgo_ts+30152, bp+8, uintptr(0), uintptr(0), bp, uintptr(0))
 	// /tmp/libsqlite3/sqlite-src-3370200/ext/misc/unionvtab.c:524:3:
 	rc = x_sqlite3_errcode(tls, db)
 	// /tmp/libsqlite3/sqlite-src-3370200/ext/misc/unionvtab.c:525:3:
-	if rc == int32(m_SQLITE_ERROR) || rc == m_SQLITE_OK && (!(*(*int32)(unsafe.Pointer(bp)) != 0) || x_sqlite3_stricmp(tls, __ccgo_ts+30168, *(*uintptr)(unsafe.Pointer(bp + 8))) != 0) {
+	if rc == int32(m_SQLITE_ERROR) || rc == m_SQLITE_OK && (!(*(*int32)(unsafe.Pointer(bp)) != 0) || x_sqlite3_stricmp(tls, __ccgo_ts+30160, *(*uintptr)(unsafe.Pointer(bp + 8))) != 0) {
 		// /tmp/libsqlite3/sqlite-src-3370200/ext/misc/unionvtab.c:528:5:
 		rc = int32(m_SQLITE_ERROR)
 		// /tmp/libsqlite3/sqlite-src-3370200/ext/misc/unionvtab.c:529:5:
@@ -161484,11 +161480,11 @@ func _unionIsIntkeyTable(tls *libc.TLS, db uintptr, pSrc uintptr, pzErr uintptr)
 			v1 = __ccgo_ts + 1095
 		}
 		if (*TUnionSrc)(unsafe.Pointer(pSrc)).FzDb != 0 {
-			v2 = __ccgo_ts + 30176
+			v2 = __ccgo_ts + 30168
 		} else {
 			v2 = __ccgo_ts + 1095
 		}
-		*(*uintptr)(unsafe.Pointer(pzErr)) = x_sqlite3_mprintf(tls, __ccgo_ts+30178, libc.VaList(bp+24, v1, v2, (*TUnionSrc)(unsafe.Pointer(pSrc)).FzTab))
+		*(*uintptr)(unsafe.Pointer(pzErr)) = x_sqlite3_mprintf(tls, __ccgo_ts+30170, libc.VaList(bp+24, v1, v2, (*TUnionSrc)(unsafe.Pointer(pSrc)).FzTab))
 	}
 	// /tmp/libsqlite3/sqlite-src-3370200/ext/misc/unionvtab.c:535:3:
 	return rc
@@ -161536,7 +161532,7 @@ func _unionSourceToStr(tls *libc.TLS, pRc uintptr, pTab uintptr, pSrc uintptr, p
 		// /tmp/libsqlite3/sqlite-src-3370200/ext/misc/unionvtab.c:564:9:
 		*(*int32)(unsafe.Pointer(bp)) = _unionIsIntkeyTable(tls, db, pSrc, pzErr)
 		// /tmp/libsqlite3/sqlite-src-3370200/ext/misc/unionvtab.c:565:18:
-		pStmt = _unionPrepare(tls, bp, db, __ccgo_ts+30206, pzErr)
+		pStmt = _unionPrepare(tls, bp, db, __ccgo_ts+30198, pzErr)
 		// /tmp/libsqlite3/sqlite-src-3370200/ext/misc/unionvtab.c:569:5:
 		if *(*int32)(unsafe.Pointer(bp)) == m_SQLITE_OK {
 			// /tmp/libsqlite3/sqlite-src-3370200/ext/misc/unionvtab.c:570:7:
@@ -161598,7 +161594,7 @@ func _unionSourceCheck(tls *libc.TLS, pTab uintptr, pzErr uintptr) (r int32) {
 		// /tmp/libsqlite3/sqlite-src-3370200/ext/misc/unionvtab.c:601:5:
 		if *(*int32)(unsafe.Pointer(bp)) == m_SQLITE_OK && x_sqlite3_stricmp(tls, z, z0) != 0 {
 			// /tmp/libsqlite3/sqlite-src-3370200/ext/misc/unionvtab.c:602:7:
-			*(*uintptr)(unsafe.Pointer(pzErr)) = x_sqlite3_mprintf(tls, __ccgo_ts+30290, 0)
+			*(*uintptr)(unsafe.Pointer(pzErr)) = x_sqlite3_mprintf(tls, __ccgo_ts+30282, 0)
 			// /tmp/libsqlite3/sqlite-src-3370200/ext/misc/unionvtab.c:603:7:
 			*(*int32)(unsafe.Pointer(bp)) = int32(m_SQLITE_ERROR)
 		}
@@ -161732,7 +161728,7 @@ func _unionOpenDatabase(tls *libc.TLS, pTab uintptr, iSrc int32, pzErr uintptr) 
 					// /tmp/libsqlite3/sqlite-src-3370200/ext/misc/unionvtab.c:674:11:
 					if x_sqlite3_stricmp(tls, z, (*TUnionTab)(unsafe.Pointer(pTab)).FzSourceStr) != 0 {
 						// /tmp/libsqlite3/sqlite-src-3370200/ext/misc/unionvtab.c:675:13:
-						*(*uintptr)(unsafe.Pointer(pzErr)) = x_sqlite3_mprintf(tls, __ccgo_ts+30290, 0)
+						*(*uintptr)(unsafe.Pointer(pzErr)) = x_sqlite3_mprintf(tls, __ccgo_ts+30282, 0)
 						// /tmp/libsqlite3/sqlite-src-3370200/ext/misc/unionvtab.c:676:13:
 						*(*int32)(unsafe.Pointer(bp)) = int32(m_SQLITE_ERROR)
 					}
@@ -161980,7 +161976,7 @@ func _unionConfigureVtab(tls *libc.TLS, pRc uintptr, pTab uintptr, pStmt uintptr
 						// /tmp/libsqlite3/sqlite-src-3370200/ext/misc/unionvtab.c:816:13:
 						if iParam == 0 {
 							// /tmp/libsqlite3/sqlite-src-3370200/ext/misc/unionvtab.c:817:15:
-							*(*uintptr)(unsafe.Pointer(pzErr)) = x_sqlite3_mprintf(tls, __ccgo_ts+30319, libc.VaList(bp+16, zOpt))
+							*(*uintptr)(unsafe.Pointer(pzErr)) = x_sqlite3_mprintf(tls, __ccgo_ts+30311, libc.VaList(bp+16, zOpt))
 							// /tmp/libsqlite3/sqlite-src-3370200/ext/misc/unionvtab.c:820:15:
 							*(*int32)(unsafe.Pointer(bp)) = int32(m_SQLITE_ERROR)
 						} else {
@@ -161989,55 +161985,55 @@ func _unionConfigureVtab(tls *libc.TLS, pRc uintptr, pTab uintptr, pStmt uintptr
 						}
 					} else {
 						// /tmp/libsqlite3/sqlite-src-3370200/ext/misc/unionvtab.c:824:17:
-						if nOpt == int32(7) && 0 == x_sqlite3_strnicmp(tls, zOpt, __ccgo_ts+30356, int32(7)) {
+						if nOpt == int32(7) && 0 == x_sqlite3_strnicmp(tls, zOpt, __ccgo_ts+30348, int32(7)) {
 							// /tmp/libsqlite3/sqlite-src-3370200/ext/misc/unionvtab.c:825:13:
 							(*TUnionTab)(unsafe.Pointer(pTab)).FnMaxOpen = libc.Xatoi(tls, zVal)
 							// /tmp/libsqlite3/sqlite-src-3370200/ext/misc/unionvtab.c:826:13:
 							if (*TUnionTab)(unsafe.Pointer(pTab)).FnMaxOpen <= 0 {
 								// /tmp/libsqlite3/sqlite-src-3370200/ext/misc/unionvtab.c:827:15:
-								*(*uintptr)(unsafe.Pointer(pzErr)) = x_sqlite3_mprintf(tls, __ccgo_ts+30364, 0)
+								*(*uintptr)(unsafe.Pointer(pzErr)) = x_sqlite3_mprintf(tls, __ccgo_ts+30356, 0)
 								// /tmp/libsqlite3/sqlite-src-3370200/ext/misc/unionvtab.c:828:15:
 								*(*int32)(unsafe.Pointer(bp)) = int32(m_SQLITE_ERROR)
 							}
 						} else {
 							// /tmp/libsqlite3/sqlite-src-3370200/ext/misc/unionvtab.c:830:17:
-							if nOpt == int32(7) && 0 == x_sqlite3_strnicmp(tls, zOpt, __ccgo_ts+30397, int32(7)) {
+							if nOpt == int32(7) && 0 == x_sqlite3_strnicmp(tls, zOpt, __ccgo_ts+30389, int32(7)) {
 								// /tmp/libsqlite3/sqlite-src-3370200/ext/misc/unionvtab.c:831:13:
 								if (*TUnionTab)(unsafe.Pointer(pTab)).FpNotFound != 0 {
 									// /tmp/libsqlite3/sqlite-src-3370200/ext/misc/unionvtab.c:832:15:
-									*(*uintptr)(unsafe.Pointer(pzErr)) = x_sqlite3_mprintf(tls, __ccgo_ts+30405, 0)
+									*(*uintptr)(unsafe.Pointer(pzErr)) = x_sqlite3_mprintf(tls, __ccgo_ts+30397, 0)
 									// /tmp/libsqlite3/sqlite-src-3370200/ext/misc/unionvtab.c:834:15:
 									*(*int32)(unsafe.Pointer(bp)) = int32(m_SQLITE_ERROR)
 								} else {
 									// /tmp/libsqlite3/sqlite-src-3370200/ext/misc/unionvtab.c:836:15:
 									if (*TUnionTab)(unsafe.Pointer(pTab)).FbHasContext != 0 {
-										v2 = __ccgo_ts + 30443
+										v2 = __ccgo_ts + 30435
 									} else {
 										v2 = __ccgo_ts + 1095
 									}
-									(*TUnionTab)(unsafe.Pointer(pTab)).FpNotFound = _unionPreparePrintf(tls, bp, pzErr, (*TUnionTab)(unsafe.Pointer(pTab)).Fdb, __ccgo_ts+30446, libc.VaList(bp+16, zVal, v2))
+									(*TUnionTab)(unsafe.Pointer(pTab)).FpNotFound = _unionPreparePrintf(tls, bp, pzErr, (*TUnionTab)(unsafe.Pointer(pTab)).Fdb, __ccgo_ts+30438, libc.VaList(bp+16, zVal, v2))
 								}
 							} else {
 								// /tmp/libsqlite3/sqlite-src-3370200/ext/misc/unionvtab.c:840:17:
-								if nOpt == int32(9) && 0 == x_sqlite3_strnicmp(tls, zOpt, __ccgo_ts+30463, int32(9)) {
+								if nOpt == int32(9) && 0 == x_sqlite3_strnicmp(tls, zOpt, __ccgo_ts+30455, int32(9)) {
 									// /tmp/libsqlite3/sqlite-src-3370200/ext/misc/unionvtab.c:841:13:
 									if (*TUnionTab)(unsafe.Pointer(pTab)).FpOpenClose != 0 {
 										// /tmp/libsqlite3/sqlite-src-3370200/ext/misc/unionvtab.c:842:15:
-										*(*uintptr)(unsafe.Pointer(pzErr)) = x_sqlite3_mprintf(tls, __ccgo_ts+30473, 0)
+										*(*uintptr)(unsafe.Pointer(pzErr)) = x_sqlite3_mprintf(tls, __ccgo_ts+30465, 0)
 										// /tmp/libsqlite3/sqlite-src-3370200/ext/misc/unionvtab.c:844:15:
 										*(*int32)(unsafe.Pointer(bp)) = int32(m_SQLITE_ERROR)
 									} else {
 										// /tmp/libsqlite3/sqlite-src-3370200/ext/misc/unionvtab.c:846:15:
 										if (*TUnionTab)(unsafe.Pointer(pTab)).FbHasContext != 0 {
-											v3 = __ccgo_ts + 30443
+											v3 = __ccgo_ts + 30435
 										} else {
 											v3 = __ccgo_ts + 1095
 										}
-										(*TUnionTab)(unsafe.Pointer(pTab)).FpOpenClose = _unionPreparePrintf(tls, bp, pzErr, (*TUnionTab)(unsafe.Pointer(pTab)).Fdb, __ccgo_ts+30513, libc.VaList(bp+16, zVal, v3))
+										(*TUnionTab)(unsafe.Pointer(pTab)).FpOpenClose = _unionPreparePrintf(tls, bp, pzErr, (*TUnionTab)(unsafe.Pointer(pTab)).Fdb, __ccgo_ts+30505, libc.VaList(bp+16, zVal, v3))
 									}
 								} else {
 									// /tmp/libsqlite3/sqlite-src-3370200/ext/misc/unionvtab.c:851:13:
-									*(*uintptr)(unsafe.Pointer(pzErr)) = x_sqlite3_mprintf(tls, __ccgo_ts+30532, libc.VaList(bp+16, zOpt))
+									*(*uintptr)(unsafe.Pointer(pzErr)) = x_sqlite3_mprintf(tls, __ccgo_ts+30524, libc.VaList(bp+16, zOpt))
 									// /tmp/libsqlite3/sqlite-src-3370200/ext/misc/unionvtab.c:852:13:
 									*(*int32)(unsafe.Pointer(bp)) = int32(m_SQLITE_ERROR)
 								}
@@ -162051,10 +162047,10 @@ func _unionConfigureVtab(tls *libc.TLS, pRc uintptr, pTab uintptr, pStmt uintptr
 				// /tmp/libsqlite3/sqlite-src-3370200/ext/misc/unionvtab.c:857:9:
 				if i == 0 && nArg == int32(1) {
 					// /tmp/libsqlite3/sqlite-src-3370200/ext/misc/unionvtab.c:858:11:
-					(*TUnionTab)(unsafe.Pointer(pTab)).FpNotFound = _unionPreparePrintf(tls, bp, pzErr, (*TUnionTab)(unsafe.Pointer(pTab)).Fdb, __ccgo_ts+30567, libc.VaList(bp+16, zArg))
+					(*TUnionTab)(unsafe.Pointer(pTab)).FpNotFound = _unionPreparePrintf(tls, bp, pzErr, (*TUnionTab)(unsafe.Pointer(pTab)).Fdb, __ccgo_ts+30559, libc.VaList(bp+16, zArg))
 				} else {
 					// /tmp/libsqlite3/sqlite-src-3370200/ext/misc/unionvtab.c:862:11:
-					*(*uintptr)(unsafe.Pointer(pzErr)) = x_sqlite3_mprintf(tls, __ccgo_ts+30582, libc.VaList(bp+16, *(*uintptr)(unsafe.Pointer(azArg + uintptr(i)*8))))
+					*(*uintptr)(unsafe.Pointer(pzErr)) = x_sqlite3_mprintf(tls, __ccgo_ts+30574, libc.VaList(bp+16, *(*uintptr)(unsafe.Pointer(azArg + uintptr(i)*8))))
 					// /tmp/libsqlite3/sqlite-src-3370200/ext/misc/unionvtab.c:863:11:
 					*(*int32)(unsafe.Pointer(bp)) = int32(m_SQLITE_ERROR)
 				}
@@ -162106,7 +162102,7 @@ func _unionConnect(tls *libc.TLS, db uintptr, pAux uintptr, argc int32, argv uin
 	// /tmp/libsqlite3/sqlite-src-3370200/ext/misc/unionvtab.c:892:7:
 	bSwarm = v1
 	if bSwarm != 0 {
-		v2 = __ccgo_ts + 30609
+		v2 = __ccgo_ts + 30601
 	} else {
 		v2 = __ccgo_ts + 4281
 	}
@@ -162116,14 +162112,14 @@ func _unionConnect(tls *libc.TLS, db uintptr, pAux uintptr, argc int32, argv uin
 	if x_sqlite3_stricmp(tls, __ccgo_ts+2880, *(*uintptr)(unsafe.Pointer(argv + 1*8))) != 0 {
 		/* unionvtab tables may only be created in the temp schema */
 		// /tmp/libsqlite3/sqlite-src-3370200/ext/misc/unionvtab.c:897:5:
-		*(*uintptr)(unsafe.Pointer(pzErr)) = x_sqlite3_mprintf(tls, __ccgo_ts+30619, libc.VaList(bp+16, zVtab))
+		*(*uintptr)(unsafe.Pointer(pzErr)) = x_sqlite3_mprintf(tls, __ccgo_ts+30611, libc.VaList(bp+16, zVtab))
 		// /tmp/libsqlite3/sqlite-src-3370200/ext/misc/unionvtab.c:898:5:
 		*(*int32)(unsafe.Pointer(bp)) = int32(m_SQLITE_ERROR)
 	} else {
 		// /tmp/libsqlite3/sqlite-src-3370200/ext/misc/unionvtab.c:899:9:
 		if argc < int32(4) || argc > int32(4) && bSwarm == 0 {
 			// /tmp/libsqlite3/sqlite-src-3370200/ext/misc/unionvtab.c:900:5:
-			*(*uintptr)(unsafe.Pointer(pzErr)) = x_sqlite3_mprintf(tls, __ccgo_ts+30660, libc.VaList(bp+16, zVtab))
+			*(*uintptr)(unsafe.Pointer(pzErr)) = x_sqlite3_mprintf(tls, __ccgo_ts+30652, libc.VaList(bp+16, zVtab))
 			// /tmp/libsqlite3/sqlite-src-3370200/ext/misc/unionvtab.c:901:5:
 			*(*int32)(unsafe.Pointer(bp)) = int32(m_SQLITE_ERROR)
 		} else {
@@ -162140,7 +162136,7 @@ func _unionConnect(tls *libc.TLS, db uintptr, pAux uintptr, argc int32, argv uin
 			// /tmp/libsqlite3/sqlite-src-3370200/ext/misc/unionvtab.c:911:5:
 			_unionDequote(tls, zArg)
 			// /tmp/libsqlite3/sqlite-src-3370200/ext/misc/unionvtab.c:912:5:
-			pStmt = _unionPreparePrintf(tls, bp, pzErr, db, __ccgo_ts+30693, libc.VaList(bp+16, zArg))
+			pStmt = _unionPreparePrintf(tls, bp, pzErr, db, __ccgo_ts+30685, libc.VaList(bp+16, zArg))
 			/* Allocate the UnionTab structure */
 			// /tmp/libsqlite3/sqlite-src-3370200/ext/misc/unionvtab.c:917:5:
 			pTab = _unionMalloc(tls, bp, int64(104))
@@ -162203,7 +162199,7 @@ func _unionConnect(tls *libc.TLS, db uintptr, pAux uintptr, argc int32, argv uin
 				// /tmp/libsqlite3/sqlite-src-3370200/ext/misc/unionvtab.c:956:7:
 				if iMax < iMin || (*TUnionTab)(unsafe.Pointer(pTab)).FnSrc > 0 && iMin <= (*(*TUnionSrc)(unsafe.Pointer((*TUnionTab)(unsafe.Pointer(pTab)).FaSrc + uintptr((*TUnionTab)(unsafe.Pointer(pTab)).FnSrc-int32(1))*72))).FiMax {
 					// /tmp/libsqlite3/sqlite-src-3370200/ext/misc/unionvtab.c:957:9:
-					*(*uintptr)(unsafe.Pointer(pzErr)) = x_sqlite3_mprintf(tls, __ccgo_ts+30723, 0)
+					*(*uintptr)(unsafe.Pointer(pzErr)) = x_sqlite3_mprintf(tls, __ccgo_ts+30715, 0)
 					// /tmp/libsqlite3/sqlite-src-3370200/ext/misc/unionvtab.c:958:9:
 					*(*int32)(unsafe.Pointer(bp)) = int32(m_SQLITE_ERROR)
 				}
@@ -162247,7 +162243,7 @@ func _unionConnect(tls *libc.TLS, db uintptr, pAux uintptr, argc int32, argv uin
 			// /tmp/libsqlite3/sqlite-src-3370200/ext/misc/unionvtab.c:983:5:
 			if *(*int32)(unsafe.Pointer(bp)) == m_SQLITE_OK && (*TUnionTab)(unsafe.Pointer(pTab)).FnSrc == 0 {
 				// /tmp/libsqlite3/sqlite-src-3370200/ext/misc/unionvtab.c:984:7:
-				*(*uintptr)(unsafe.Pointer(pzErr)) = x_sqlite3_mprintf(tls, __ccgo_ts+30750, 0)
+				*(*uintptr)(unsafe.Pointer(pzErr)) = x_sqlite3_mprintf(tls, __ccgo_ts+30742, 0)
 				// /tmp/libsqlite3/sqlite-src-3370200/ext/misc/unionvtab.c:985:7:
 				*(*int32)(unsafe.Pointer(bp)) = int32(m_SQLITE_ERROR)
 			}
@@ -162278,7 +162274,7 @@ func _unionConnect(tls *libc.TLS, db uintptr, pAux uintptr, argc int32, argv uin
 				// /tmp/libsqlite3/sqlite-src-3370200/ext/misc/unionvtab.c:1002:15:
 				tdb = v6
 				// /tmp/libsqlite3/sqlite-src-3370200/ext/misc/unionvtab.c:1003:7:
-				pStmt = _unionPreparePrintf(tls, bp, pzErr, tdb, __ccgo_ts+30778, libc.VaList(bp+16, (*TUnionSrc)(unsafe.Pointer(pSrc1)).FzTab, (*TUnionSrc)(unsafe.Pointer(pSrc1)).FzDb))
+				pStmt = _unionPreparePrintf(tls, bp, pzErr, tdb, __ccgo_ts+30770, libc.VaList(bp+16, (*TUnionSrc)(unsafe.Pointer(pSrc1)).FzTab, (*TUnionSrc)(unsafe.Pointer(pSrc1)).FzDb))
 			}
 			// /tmp/libsqlite3/sqlite-src-3370200/ext/misc/unionvtab.c:1012:5:
 			if *(*int32)(unsafe.Pointer(bp)) == m_SQLITE_OK && int32(m_SQLITE_ROW) == x_sqlite3_step(tls, pStmt) {
@@ -162393,11 +162389,11 @@ func _doUnionNext(tls *libc.TLS, pCsr uintptr) (r int32) {
 					*(*int32)(unsafe.Pointer(bp)) = _unionOpenDatabase(tls, pTab, (*TUnionCsr)(unsafe.Pointer(pCsr)).FiTab, pTab+16)
 					// /tmp/libsqlite3/sqlite-src-3370200/ext/misc/unionvtab.c:1070:11:
 					if (*TUnionSrc)(unsafe.Pointer(pSrc)).FiMax > (*TUnionCsr)(unsafe.Pointer(pCsr)).FiMaxRowid {
-						v1 = __ccgo_ts + 30956
+						v1 = __ccgo_ts + 30948
 					} else {
-						v1 = __ccgo_ts + 30973
+						v1 = __ccgo_ts + 30965
 					}
-					(*TUnionCsr)(unsafe.Pointer(pCsr)).FpStmt = _unionPreparePrintf(tls, bp, pTab+16, (*TUnionSrc)(unsafe.Pointer(pSrc)).Fdb, __ccgo_ts+30977, libc.VaList(bp+16, (*TUnionSrc)(unsafe.Pointer(pSrc)).FzTab, v1, (*TUnionCsr)(unsafe.Pointer(pCsr)).FiMaxRowid))
+					(*TUnionCsr)(unsafe.Pointer(pCsr)).FpStmt = _unionPreparePrintf(tls, bp, pTab+16, (*TUnionSrc)(unsafe.Pointer(pSrc)).Fdb, __ccgo_ts+30969, libc.VaList(bp+16, (*TUnionSrc)(unsafe.Pointer(pSrc)).FzTab, v1, (*TUnionCsr)(unsafe.Pointer(pCsr)).FiMaxRowid))
 					// /tmp/libsqlite3/sqlite-src-3370200/ext/misc/unionvtab.c:1076:11:
 					if *(*int32)(unsafe.Pointer(bp)) == m_SQLITE_OK {
 						// /tmp/libsqlite3/sqlite-src-3370200/ext/misc/unionvtab.c:1077:13:
@@ -162587,12 +162583,12 @@ func _unionFilter(tls *libc.TLS, pVtabCursor uintptr, idxNum int32, idxStr uintp
 		}
 		// /tmp/libsqlite3/sqlite-src-3370200/ext/misc/unionvtab.c:1200:5:
 		if zSql != 0 {
-			v3 = __ccgo_ts + 31009
+			v3 = __ccgo_ts + 31001
 		} else {
 			v3 = __ccgo_ts + 1095
 		}
 		if (*TUnionSrc)(unsafe.Pointer(pSrc)).FzDb != 0 {
-			v4 = __ccgo_ts + 15812
+			v4 = __ccgo_ts + 15804
 		} else {
 			v4 = __ccgo_ts + 1095
 		}
@@ -162602,11 +162598,11 @@ func _unionFilter(tls *libc.TLS, pVtabCursor uintptr, idxNum int32, idxStr uintp
 			v5 = __ccgo_ts + 1095
 		}
 		if (*TUnionSrc)(unsafe.Pointer(pSrc)).FzDb != 0 {
-			v6 = __ccgo_ts + 27731
+			v6 = __ccgo_ts + 27723
 		} else {
 			v6 = __ccgo_ts + 1095
 		}
-		zSql = x_sqlite3_mprintf(tls, __ccgo_ts+31021, libc.VaList(bp+16, zSql, v3, v4, v5, v6, (*TUnionSrc)(unsafe.Pointer(pSrc)).FzTab))
+		zSql = x_sqlite3_mprintf(tls, __ccgo_ts+31013, libc.VaList(bp+16, zSql, v3, v4, v5, v6, (*TUnionSrc)(unsafe.Pointer(pSrc)).FzTab))
 		// /tmp/libsqlite3/sqlite-src-3370200/ext/misc/unionvtab.c:1208:5:
 		if zSql == uintptr(0) {
 			// /tmp/libsqlite3/sqlite-src-3370200/ext/misc/unionvtab.c:1209:7:
@@ -162617,21 +162613,21 @@ func _unionFilter(tls *libc.TLS, pVtabCursor uintptr, idxNum int32, idxStr uintp
 		// /tmp/libsqlite3/sqlite-src-3370200/ext/misc/unionvtab.c:1213:5:
 		if iMin == iMax {
 			// /tmp/libsqlite3/sqlite-src-3370200/ext/misc/unionvtab.c:1214:7:
-			zSql = x_sqlite3_mprintf(tls, __ccgo_ts+31055, libc.VaList(bp+16, zSql, iMin))
+			zSql = x_sqlite3_mprintf(tls, __ccgo_ts+31047, libc.VaList(bp+16, zSql, iMin))
 		} else {
 			// /tmp/libsqlite3/sqlite-src-3370200/ext/misc/unionvtab.c:1216:18:
-			zWhere = __ccgo_ts + 12015
+			zWhere = __ccgo_ts + 12007
 			// /tmp/libsqlite3/sqlite-src-3370200/ext/misc/unionvtab.c:1217:7:
 			if iMin != int64(-libc.Int32FromInt32(1))-(libc.Int64FromUint32(0xffffffff)|libc.Int64FromInt32(0x7fffffff)<<libc.Int32FromInt32(32)) && iMin > (*TUnionSrc)(unsafe.Pointer(pSrc)).FiMin {
 				// /tmp/libsqlite3/sqlite-src-3370200/ext/misc/unionvtab.c:1218:9:
-				zSql = x_sqlite3_mprintf(tls, __ccgo_ts+31075, libc.VaList(bp+16, zSql, iMin))
+				zSql = x_sqlite3_mprintf(tls, __ccgo_ts+31067, libc.VaList(bp+16, zSql, iMin))
 				// /tmp/libsqlite3/sqlite-src-3370200/ext/misc/unionvtab.c:1219:9:
-				zWhere = __ccgo_ts + 12202
+				zWhere = __ccgo_ts + 12194
 			}
 			// /tmp/libsqlite3/sqlite-src-3370200/ext/misc/unionvtab.c:1221:7:
 			if iMax != libc.Int64FromUint32(0xffffffff)|libc.Int64FromInt32(0x7fffffff)<<libc.Int32FromInt32(32) && iMax < (*TUnionSrc)(unsafe.Pointer(pSrc)).FiMax {
 				// /tmp/libsqlite3/sqlite-src-3370200/ext/misc/unionvtab.c:1222:9:
-				zSql = x_sqlite3_mprintf(tls, __ccgo_ts+31096, libc.VaList(bp+16, zSql, zWhere, iMax))
+				zSql = x_sqlite3_mprintf(tls, __ccgo_ts+31088, libc.VaList(bp+16, zSql, zWhere, iMax))
 			}
 		}
 		// /tmp/libsqlite3/sqlite-src-3370200/ext/misc/unionvtab.c:1226:5:
@@ -162834,7 +162830,7 @@ func _createUnionVtab(tls *libc.TLS, db uintptr) (r int32) {
 	// /tmp/libsqlite3/sqlite-src-3370200/ext/misc/unionvtab.c:1359:3:
 	if rc == m_SQLITE_OK {
 		// /tmp/libsqlite3/sqlite-src-3370200/ext/misc/unionvtab.c:1360:5:
-		rc = x_sqlite3_create_module(tls, db, __ccgo_ts+30609, uintptr(unsafe.Pointer(&_unionModule)), db)
+		rc = x_sqlite3_create_module(tls, db, __ccgo_ts+30601, uintptr(unsafe.Pointer(&_unionModule)), db)
 	}
 	// /tmp/libsqlite3/sqlite-src-3370200/ext/misc/unionvtab.c:1362:3:
 	return rc
@@ -162916,7 +162912,7 @@ func _wholenumberConnect(tls *libc.TLS, db uintptr, pAux uintptr, argc int32, ar
 		return int32(m_SQLITE_NOMEM)
 	}
 	// /tmp/libsqlite3/sqlite-src-3370200/ext/misc/wholenumber.c:52:3:
-	x_sqlite3_declare_vtab(tls, db, __ccgo_ts+31114)
+	x_sqlite3_declare_vtab(tls, db, __ccgo_ts+31106)
 	// /tmp/libsqlite3/sqlite-src-3370200/ext/misc/wholenumber.c:53:3:
 	x_sqlite3_vtab_config(tls, db, int32(m_SQLITE_VTAB_INNOCUOUS), 0)
 	// /tmp/libsqlite3/sqlite-src-3370200/ext/misc/wholenumber.c:54:3:
@@ -163988,7 +163984,7 @@ func _zipfileConnect(tls *libc.TLS, db uintptr, pAux uintptr, argc int32, argv u
 	 */
 	// /tmp/libsqlite3/sqlite-src-3370200/ext/misc/zipfile.c:365:3:
 	// /tmp/libsqlite3/sqlite-src-3370200/ext/misc/zipfile.c:366:3:
-	if 0 != x_sqlite3_stricmp(tls, *(*uintptr)(unsafe.Pointer(argv + 2*8)), __ccgo_ts+4303) && argc < int32(4) || argc > int32(4) {
+	if 0 != x_sqlite3_stricmp(tls, *(*uintptr)(unsafe.Pointer(argv + 2*8)), __ccgo_ts+31128) && argc < int32(4) || argc > int32(4) {
 		// /tmp/libsqlite3/sqlite-src-3370200/ext/misc/zipfile.c:367:5:
 		*(*uintptr)(unsafe.Pointer(pzErr)) = x_sqlite3_mprintf(tls, __ccgo_ts+31136, 0)
 		// /tmp/libsqlite3/sqlite-src-3370200/ext/misc/zipfile.c:368:5:
@@ -165520,7 +165516,7 @@ func _zipfileFilter(tls *libc.TLS, cur uintptr, idxNum int32, idxStr uintptr, ar
 	// /tmp/libsqlite3/sqlite-src-3370200/ext/misc/zipfile.c:1277:3:
 	if uintptr(0) == (*TZipfileTab)(unsafe.Pointer(pTab)).FpWriteFd && 0 == bInMemory {
 		// /tmp/libsqlite3/sqlite-src-3370200/ext/misc/zipfile.c:1278:5:
-		(*TZipfileCsr)(unsafe.Pointer(pCsr)).FpFile = libc.Xfopen(tls, zFile, __ccgo_ts+16848)
+		(*TZipfileCsr)(unsafe.Pointer(pCsr)).FpFile = libc.Xfopen(tls, zFile, __ccgo_ts+16840)
 		// /tmp/libsqlite3/sqlite-src-3370200/ext/misc/zipfile.c:1279:5:
 		if (*TZipfileCsr)(unsafe.Pointer(pCsr)).FpFile == uintptr(0) {
 			// /tmp/libsqlite3/sqlite-src-3370200/ext/misc/zipfile.c:1280:7:
@@ -167191,7 +167187,7 @@ func _zipfileRegister(tls *libc.TLS, db uintptr) (r int32) {
 	var rc int32
 	_ = rc
 	// /tmp/libsqlite3/sqlite-src-3370200/ext/misc/zipfile.c:2175:7:
-	rc = x_sqlite3_create_module(tls, db, __ccgo_ts+4303, uintptr(unsafe.Pointer(&_zipfileModule)), uintptr(0))
+	rc = x_sqlite3_create_module(tls, db, __ccgo_ts+31128, uintptr(unsafe.Pointer(&_zipfileModule)), uintptr(0))
 	// /tmp/libsqlite3/sqlite-src-3370200/ext/misc/zipfile.c:2176:3:
 	if rc == m_SQLITE_OK {
 		// /tmp/libsqlite3/sqlite-src-3370200/ext/misc/zipfile.c:2176:23:
@@ -167200,7 +167196,7 @@ func _zipfileRegister(tls *libc.TLS, db uintptr) (r int32) {
 	// /tmp/libsqlite3/sqlite-src-3370200/ext/misc/zipfile.c:2177:3:
 	if rc == m_SQLITE_OK {
 		// /tmp/libsqlite3/sqlite-src-3370200/ext/misc/zipfile.c:2178:5:
-		rc = x_sqlite3_create_function(tls, db, __ccgo_ts+4303, -int32(1), int32(m_SQLITE_UTF8), uintptr(0), uintptr(0), __ccgo_fp(x_zipfileStep), __ccgo_fp(x_zipfileFinal))
+		rc = x_sqlite3_create_function(tls, db, __ccgo_ts+31128, -int32(1), int32(m_SQLITE_UTF8), uintptr(0), uintptr(0), __ccgo_fp(x_zipfileStep), __ccgo_fp(x_zipfileFinal))
 	}
 	// /tmp/libsqlite3/sqlite-src-3370200/ext/misc/zipfile.c:2182:3:
 	// /tmp/libsqlite3/sqlite-src-3370200/ext/misc/zipfile.c:2183:3:
@@ -167967,7 +167963,7 @@ func _incrblobHandle(tls *libc.TLS, instanceData TClientData, dir int32, hPtr ui
 
 // /tmp/libsqlite3/sqlite-src-3370200/src/tclsqlite.c:370:24:
 var _IncrblobChannelType = TTcl_ChannelType{
-	FtypeName: __ccgo_ts + 14132,
+	FtypeName: __ccgo_ts + 14124,
 	Fversion:  libc.UintptrFromInt32(0x2),
 }
 
@@ -169460,7 +169456,7 @@ func _auth_callback(tls *libc.TLS, pArg uintptr, code int32, zArg1 uintptr, zArg
 	}
 	zReply = v5
 	// /tmp/libsqlite3/sqlite-src-3370200/src/tclsqlite.c:1165:3:
-	if libc.Xstrcmp(tls, zReply, __ccgo_ts+22446) == 0 {
+	if libc.Xstrcmp(tls, zReply, __ccgo_ts+22438) == 0 {
 		// /tmp/libsqlite3/sqlite-src-3370200/src/tclsqlite.c:1166:5:
 		rc = m_SQLITE_OK
 	} else {
@@ -169612,7 +169608,7 @@ func _DbTransPostCmd(tls *libc.TLS, data uintptr, interp uintptr, result int32) 
 			rc = int32(m_TCL_ERROR)
 		}
 		// /tmp/libsqlite3/sqlite-src-3370200/src/tclsqlite.c:1266:5:
-		x_sqlite3_exec(tls, (*TSqliteDb1)(unsafe.Pointer(pDb)).Fdb, __ccgo_ts+29527, uintptr(0), uintptr(0), uintptr(0))
+		x_sqlite3_exec(tls, (*TSqliteDb1)(unsafe.Pointer(pDb)).Fdb, __ccgo_ts+29519, uintptr(0), uintptr(0), uintptr(0))
 	}
 	// /tmp/libsqlite3/sqlite-src-3370200/src/tclsqlite.c:1268:3:
 	(*TSqliteDb1)(unsafe.Pointer(pDb)).FdisableAuth--
@@ -169625,9 +169621,9 @@ func _DbTransPostCmd(tls *libc.TLS, data uintptr, interp uintptr, result int32) 
 // /tmp/libsqlite3/sqlite-src-3370200/src/tclsqlite.c:1237:21:
 var _azEnd = [4]uintptr{
 	0: __ccgo_ts + 32930,
-	1: __ccgo_ts + 21611,
+	1: __ccgo_ts + 21603,
 	2: __ccgo_ts + 32955,
-	3: __ccgo_ts + 29527,
+	3: __ccgo_ts + 29519,
 }
 
 // C documentation
@@ -170243,7 +170239,7 @@ func _dbEvalRowInfo(tls *libc.TLS, p uintptr, pnCol uintptr, papColName uintptr)
 			// /tmp/libsqlite3/sqlite-src-3370200/src/tclsqlite.c:1638:15:
 			pColList = libtcl8_6.XTcl_NewObj(tls)
 			// /tmp/libsqlite3/sqlite-src-3370200/src/tclsqlite.c:1639:15:
-			pStar = libtcl8_6.XTcl_NewStringObj(tls, __ccgo_ts+26021, -int32(1))
+			pStar = libtcl8_6.XTcl_NewStringObj(tls, __ccgo_ts+26013, -int32(1))
 			// /tmp/libsqlite3/sqlite-src-3370200/src/tclsqlite.c:1641:7:
 			i = 0
 			for {
@@ -170791,12 +170787,12 @@ func _DbObjCmd(tls *libc.TLS, _cd uintptr, interp uintptr, objc int32, objv uint
 	// /tmp/libsqlite3/sqlite-src-3370200/src/tclsqlite.c:1974:3:
 	if objc < int32(2) {
 		// /tmp/libsqlite3/sqlite-src-3370200/src/tclsqlite.c:1975:5:
-		libtcl8_6.XTcl_WrongNumArgs(tls, interp, int32(1), objv, __ccgo_ts+22868)
+		libtcl8_6.XTcl_WrongNumArgs(tls, interp, int32(1), objv, __ccgo_ts+22860)
 		// /tmp/libsqlite3/sqlite-src-3370200/src/tclsqlite.c:1976:5:
 		return int32(m_TCL_ERROR)
 	}
 	// /tmp/libsqlite3/sqlite-src-3370200/src/tclsqlite.c:1978:3:
-	if libtcl8_6.XTcl_GetIndexFromObjStruct(tls, interp, *(*uintptr)(unsafe.Pointer(objv + 1*8)), uintptr(unsafe.Pointer(&_DB_strs)), int32(8), __ccgo_ts+12834, 0, bp+8) != 0 {
+	if libtcl8_6.XTcl_GetIndexFromObjStruct(tls, interp, *(*uintptr)(unsafe.Pointer(objv + 1*8)), uintptr(unsafe.Pointer(&_DB_strs)), int32(8), __ccgo_ts+12826, 0, bp+8) != 0 {
 		// /tmp/libsqlite3/sqlite-src-3370200/src/tclsqlite.c:1979:5:
 		return int32(m_TCL_ERROR)
 	}
@@ -171166,7 +171162,7 @@ _5:
 		}
 	} else {
 		// /tmp/libsqlite3/sqlite-src-3370200/src/tclsqlite.c:2193:11:
-		if int32(*(*int8)(unsafe.Pointer(subCmd))) == int32('s') && libc.Xstrcmp(tls, subCmd, __ccgo_ts+9570) == 0 {
+		if int32(*(*int8)(unsafe.Pointer(subCmd))) == int32('s') && libc.Xstrcmp(tls, subCmd, __ccgo_ts+9562) == 0 {
 			// /tmp/libsqlite3/sqlite-src-3370200/src/tclsqlite.c:2194:7:
 			if objc != int32(4) {
 				// /tmp/libsqlite3/sqlite-src-3370200/src/tclsqlite.c:2195:9:
@@ -171200,7 +171196,7 @@ _5:
 			}
 		} else {
 			// /tmp/libsqlite3/sqlite-src-3370200/src/tclsqlite.c:2213:7:
-			libtcl8_6.XTcl_AppendResult(tls, interp, libc.VaList(bp+560, __ccgo_ts+11486, libtcl8_6.XTcl_GetStringFromObj(tls, *(*uintptr)(unsafe.Pointer(objv + 2*8)), uintptr(0)), __ccgo_ts+33473, libc.UintptrFromInt32(0)))
+			libtcl8_6.XTcl_AppendResult(tls, interp, libc.VaList(bp+560, __ccgo_ts+11478, libtcl8_6.XTcl_GetStringFromObj(tls, *(*uintptr)(unsafe.Pointer(objv + 2*8)), uintptr(0)), __ccgo_ts+33473, libc.UintptrFromInt32(0)))
 			// /tmp/libsqlite3/sqlite-src-3370200/src/tclsqlite.c:2216:7:
 			return int32(m_TCL_ERROR)
 		}
@@ -171465,7 +171461,7 @@ _12: // /tmp/libsqlite3/sqlite-src-3370200/src/tclsqlite.c:2387:5:
 		// /tmp/libsqlite3/sqlite-src-3370200/src/tclsqlite.c:2411:7:
 		if uint64(uint64(ii)) >= libc.Uint64FromInt64(256)/libc.Uint64FromInt64(16) {
 			// /tmp/libsqlite3/sqlite-src-3370200/src/tclsqlite.c:2412:9:
-			libtcl8_6.XTcl_AppendResult(tls, interp, libc.VaList(bp+560, __ccgo_ts+33749, zOpt, __ccgo_ts+10613, libc.UintptrFromInt32(0)))
+			libtcl8_6.XTcl_AppendResult(tls, interp, libc.VaList(bp+560, __ccgo_ts+33749, zOpt, __ccgo_ts+10605, libc.UintptrFromInt32(0)))
 			// /tmp/libsqlite3/sqlite-src-3370200/src/tclsqlite.c:2414:9:
 			return int32(m_TCL_ERROR)
 		}
@@ -171637,7 +171633,7 @@ _13: /* The input file */
 		return int32(m_TCL_ERROR)
 	}
 	// /tmp/libsqlite3/sqlite-src-3370200/src/tclsqlite.c:2540:5:
-	in = libc.Xfopen(tls, zFile, __ccgo_ts+16848)
+	in = libc.Xfopen(tls, zFile, __ccgo_ts+16840)
 	// /tmp/libsqlite3/sqlite-src-3370200/src/tclsqlite.c:2541:5:
 	if in == uintptr(0) {
 		// /tmp/libsqlite3/sqlite-src-3370200/src/tclsqlite.c:2542:7:
@@ -171661,7 +171657,7 @@ _13: /* The input file */
 	// /tmp/libsqlite3/sqlite-src-3370200/src/tclsqlite.c:2552:5:
 	x_sqlite3_exec(tls, (*TSqliteDb1)(unsafe.Pointer(pDb)).Fdb, __ccgo_ts+34136, uintptr(0), uintptr(0), uintptr(0))
 	// /tmp/libsqlite3/sqlite-src-3370200/src/tclsqlite.c:2553:5:
-	zCommit1 = __ccgo_ts + 21611
+	zCommit1 = __ccgo_ts + 21603
 	// /tmp/libsqlite3/sqlite-src-3370200/src/tclsqlite.c:2554:5:
 	for {
 		v52 = _local_getline(tls, uintptr(0), in)
@@ -171714,7 +171710,7 @@ _13: /* The input file */
 				libc.Xfree(tls, zErr)
 			}
 			// /tmp/libsqlite3/sqlite-src-3370200/src/tclsqlite.c:2579:9:
-			zCommit1 = __ccgo_ts + 29527
+			zCommit1 = __ccgo_ts + 29519
 			// /tmp/libsqlite3/sqlite-src-3370200/src/tclsqlite.c:2580:9:
 			break
 		}
@@ -171748,7 +171744,7 @@ _13: /* The input file */
 			// /tmp/libsqlite3/sqlite-src-3370200/src/tclsqlite.c:2596:9:
 			libtcl8_6.XTcl_AppendResult(tls, interp, libc.VaList(bp+560, __ccgo_ts+34048, x_sqlite3_errmsg(tls, (*TSqliteDb1)(unsafe.Pointer(pDb)).Fdb), libc.UintptrFromInt32(0)))
 			// /tmp/libsqlite3/sqlite-src-3370200/src/tclsqlite.c:2597:9:
-			zCommit1 = __ccgo_ts + 29527
+			zCommit1 = __ccgo_ts + 29519
 			// /tmp/libsqlite3/sqlite-src-3370200/src/tclsqlite.c:2598:9:
 			break
 		}
@@ -172015,7 +172011,7 @@ _19:
 			evalFlags |= int32(m_SQLITE_EVAL_WITHOUTNULLS)
 		} else {
 			// /tmp/libsqlite3/sqlite-src-3370200/src/tclsqlite.c:2786:9:
-			libtcl8_6.XTcl_AppendResult(tls, interp, libc.VaList(bp+560, __ccgo_ts+34361, zOpt1, __ccgo_ts+10613, libc.UintptrFromInt32(0)))
+			libtcl8_6.XTcl_AppendResult(tls, interp, libc.VaList(bp+560, __ccgo_ts+34361, zOpt1, __ccgo_ts+10605, libc.UintptrFromInt32(0)))
 			// /tmp/libsqlite3/sqlite-src-3370200/src/tclsqlite.c:2787:9:
 			return int32(m_TCL_ERROR)
 		}
@@ -172149,7 +172145,7 @@ _20:
 			// /tmp/libsqlite3/sqlite-src-3370200/src/tclsqlite.c:2868:9:
 			if i3 == objc-int32(2) {
 				// /tmp/libsqlite3/sqlite-src-3370200/src/tclsqlite.c:2869:11:
-				libtcl8_6.XTcl_AppendResult(tls, interp, libc.VaList(bp+560, __ccgo_ts+17545, z2, libc.UintptrFromInt32(0)))
+				libtcl8_6.XTcl_AppendResult(tls, interp, libc.VaList(bp+560, __ccgo_ts+17537, z2, libc.UintptrFromInt32(0)))
 				// /tmp/libsqlite3/sqlite-src-3370200/src/tclsqlite.c:2870:11:
 				return int32(m_TCL_ERROR)
 			}
@@ -172187,7 +172183,7 @@ _20:
 						if n1 > int32(1) && libc.Xstrncmp(tls, z2, __ccgo_ts+34527, uint64(uint64(n1))) == 0 {
 							// /tmp/libsqlite3/sqlite-src-3370200/src/tclsqlite.c:2890:20:
 							*(*[6]uintptr)(unsafe.Pointer(bp + 320)) = [6]uintptr{
-								0: __ccgo_ts + 30168,
+								0: __ccgo_ts + 30160,
 								1: __ccgo_ts + 34539,
 								2: __ccgo_ts + 303,
 								3: __ccgo_ts + 315,
@@ -172198,7 +172194,7 @@ _20:
 							// /tmp/libsqlite3/sqlite-src-3370200/src/tclsqlite.c:2893:9:
 							if i3 == objc-int32(2) {
 								// /tmp/libsqlite3/sqlite-src-3370200/src/tclsqlite.c:2894:11:
-								libtcl8_6.XTcl_AppendResult(tls, interp, libc.VaList(bp+560, __ccgo_ts+17545, z2, libc.UintptrFromInt32(0)))
+								libtcl8_6.XTcl_AppendResult(tls, interp, libc.VaList(bp+560, __ccgo_ts+17537, z2, libc.UintptrFromInt32(0)))
 								// /tmp/libsqlite3/sqlite-src-3370200/src/tclsqlite.c:2895:11:
 								return int32(m_TCL_ERROR)
 							}
@@ -172213,7 +172209,7 @@ _20:
 							*(*int32)(unsafe.Pointer(bp + 316))++
 						} else {
 							// /tmp/libsqlite3/sqlite-src-3370200/src/tclsqlite.c:2903:9:
-							libtcl8_6.XTcl_AppendResult(tls, interp, libc.VaList(bp+560, __ccgo_ts+11486, z2, __ccgo_ts+34549, libc.UintptrFromInt32(0)))
+							libtcl8_6.XTcl_AppendResult(tls, interp, libc.VaList(bp+560, __ccgo_ts+11478, z2, __ccgo_ts+34549, libc.UintptrFromInt32(0)))
 							// /tmp/libsqlite3/sqlite-src-3370200/src/tclsqlite.c:2907:9:
 							return int32(m_TCL_ERROR)
 						}
@@ -172676,7 +172672,7 @@ _30:
 	// /tmp/libsqlite3/sqlite-src-3370200/src/tclsqlite.c:3236:5:
 	zOp = libtcl8_6.XTcl_GetString(tls, *(*uintptr)(unsafe.Pointer(objv + 2*8)))
 	// /tmp/libsqlite3/sqlite-src-3370200/src/tclsqlite.c:3237:5:
-	if libc.Xstrcmp(tls, zOp, __ccgo_ts+12796) == 0 {
+	if libc.Xstrcmp(tls, zOp, __ccgo_ts+12788) == 0 {
 		// /tmp/libsqlite3/sqlite-src-3370200/src/tclsqlite.c:3238:7:
 		v2 = (*TSqliteDb1)(unsafe.Pointer(pDb)).FnStep
 	} else {
@@ -172686,7 +172682,7 @@ _30:
 			v2 = (*TSqliteDb1)(unsafe.Pointer(pDb)).FnSort
 		} else {
 			// /tmp/libsqlite3/sqlite-src-3370200/src/tclsqlite.c:3241:11:
-			if libc.Xstrcmp(tls, zOp, __ccgo_ts+13806) == 0 {
+			if libc.Xstrcmp(tls, zOp, __ccgo_ts+13798) == 0 {
 				// /tmp/libsqlite3/sqlite-src-3370200/src/tclsqlite.c:3242:7:
 				v2 = (*TSqliteDb1)(unsafe.Pointer(pDb)).FnIndex
 			} else {
@@ -172995,7 +172991,7 @@ _35:
 			fallthrough
 		case 1:
 			// /tmp/libsqlite3/sqlite-src-3370200/src/tclsqlite.c:3443:33:
-			zBegin = __ccgo_ts + 21595
+			zBegin = __ccgo_ts + 21587
 			// /tmp/libsqlite3/sqlite-src-3370200/src/tclsqlite.c:3443:62:
 			break
 			// /tmp/libsqlite3/sqlite-src-3370200/src/tclsqlite.c:3444:9:
@@ -173103,7 +173099,7 @@ _38:
 	// /tmp/libsqlite3/sqlite-src-3370200/src/tclsqlite.c:3611:5:
 	if objc > int32(3) {
 		// /tmp/libsqlite3/sqlite-src-3370200/src/tclsqlite.c:3612:8:
-		libtcl8_6.XTcl_WrongNumArgs(tls, interp, int32(2), objv, __ccgo_ts+22965)
+		libtcl8_6.XTcl_WrongNumArgs(tls, interp, int32(2), objv, __ccgo_ts+22957)
 		// /tmp/libsqlite3/sqlite-src-3370200/src/tclsqlite.c:3613:8:
 		return int32(m_TCL_ERROR)
 	}
@@ -173193,26 +173189,26 @@ var _DB_strs = [42]uintptr{
 	4:  __ccgo_ts + 33043,
 	5:  __ccgo_ts + 33049,
 	6:  __ccgo_ts + 33057,
-	7:  __ccgo_ts + 12632,
+	7:  __ccgo_ts + 12624,
 	8:  __ccgo_ts + 33063,
 	9:  __ccgo_ts + 33080,
-	10: __ccgo_ts + 13959,
+	10: __ccgo_ts + 13951,
 	11: __ccgo_ts + 33092,
 	12: __ccgo_ts + 33099,
-	13: __ccgo_ts + 13622,
+	13: __ccgo_ts + 13614,
 	14: __ccgo_ts + 33104,
 	15: __ccgo_ts + 33126,
 	16: __ccgo_ts + 4178,
 	17: __ccgo_ts + 33136,
 	18: __ccgo_ts + 33143,
-	19: __ccgo_ts + 14132,
+	19: __ccgo_ts + 14124,
 	20: __ccgo_ts + 33152,
 	21: __ccgo_ts + 33162,
 	22: __ccgo_ts + 33180,
 	23: __ccgo_ts + 33190,
-	24: __ccgo_ts + 13668,
+	24: __ccgo_ts + 13660,
 	25: __ccgo_ts + 33200,
-	26: __ccgo_ts + 14290,
+	26: __ccgo_ts + 14282,
 	27: __ccgo_ts + 33208,
 	28: __ccgo_ts + 33214,
 	29: __ccgo_ts + 33222,
@@ -173220,10 +173216,10 @@ var _DB_strs = [42]uintptr{
 	31: __ccgo_ts + 33246,
 	32: __ccgo_ts + 33253,
 	33: __ccgo_ts + 33261,
-	34: __ccgo_ts + 14497,
+	34: __ccgo_ts + 14489,
 	35: __ccgo_ts + 33275,
 	36: __ccgo_ts + 33284,
-	37: __ccgo_ts + 14569,
+	37: __ccgo_ts + 14561,
 	38: __ccgo_ts + 33296,
 	39: __ccgo_ts + 33308,
 	40: __ccgo_ts + 33316,
@@ -173311,7 +173307,7 @@ var _TTYPE_strs = [5]uintptr{
 // /tmp/libsqlite3/sqlite-src-3370200/src/tclsqlite.c:3430:25:
 var _TTYPE_strs1 = [4]uintptr{
 	0: __ccgo_ts + 34957,
-	1: __ccgo_ts + 23219,
+	1: __ccgo_ts + 23211,
 	2: __ccgo_ts + 34966,
 }
 
@@ -173701,14 +173697,14 @@ func x_Sqlite3_Init(tls *libc.TLS, interp uintptr) (r int32) {
 	// /tmp/libsqlite3/sqlite-src-3370200/src/tclsqlite.c:3907:3:
 	if rc == m_TCL_OK {
 		// /tmp/libsqlite3/sqlite-src-3370200/src/tclsqlite.c:3908:5:
-		libtcl8_6.XTcl_CreateObjCommand(tls, interp, __ccgo_ts+21681, __ccgo_fp(_DbMain), uintptr(0), uintptr(0))
+		libtcl8_6.XTcl_CreateObjCommand(tls, interp, __ccgo_ts+21673, __ccgo_fp(_DbMain), uintptr(0), uintptr(0))
 		/* The "sqlite" alias is undocumented.  It is here only to support
 		 ** legacy scripts.  All new scripts should use only the "sqlite3"
 		 ** command. */
 		// /tmp/libsqlite3/sqlite-src-3370200/src/tclsqlite.c:3913:5:
 		libtcl8_6.XTcl_CreateObjCommand(tls, interp, __ccgo_ts+35396, __ccgo_fp(_DbMain), uintptr(0), uintptr(0))
 		// /tmp/libsqlite3/sqlite-src-3370200/src/tclsqlite.c:3915:5:
-		rc = libtcl8_6.XTcl_PkgProvideEx(tls, interp, __ccgo_ts+21681, __ccgo_ts+35403, libc.UintptrFromInt32(0))
+		rc = libtcl8_6.XTcl_PkgProvideEx(tls, interp, __ccgo_ts+21673, __ccgo_ts+35403, libc.UintptrFromInt32(0))
 	}
 	// /tmp/libsqlite3/sqlite-src-3370200/src/tclsqlite.c:3917:3:
 	return rc
@@ -177319,7 +177315,7 @@ const m_YY_MIN_REDUCE = 1233
 // /tmp/libsqlite3/sqlite-src-3370200/sqlite3.c:159983:9:
 const m_YY_MIN_SHIFTREDUCE = 829
 
-// /tmp/libsqlite3/sqlite-src-3370200/<predefined>:314:9:
+// /tmp/libsqlite3/sqlite-src-3370200/<predefined>:313:9:
 const m___ATOMIC_RELAXED = 0
 
 // /tmp/libsqlite3/sqlite-src-3370200/sqlite3.c:59103:14:
@@ -179468,7 +179464,7 @@ func _parseModifier(tls *libc.TLS, pCtx uintptr, z uintptr, n int32, p uintptr) 
 		 ** show local time.
 		 */
 		// /tmp/libsqlite3/sqlite-src-3370200/sqlite3.c:23365:7:
-		if x_sqlite3_stricmp(tls, z, __ccgo_ts+14184) == 0 && x_sqlite3NotPureFunc(tls, pCtx) != 0 {
+		if x_sqlite3_stricmp(tls, z, __ccgo_ts+14176) == 0 && x_sqlite3NotPureFunc(tls, pCtx) != 0 {
 			// /tmp/libsqlite3/sqlite-src-3370200/sqlite3.c:23366:9:
 			_computeJD(tls, p)
 			// /tmp/libsqlite3/sqlite-src-3370200/sqlite3.c:23367:9:
@@ -180146,7 +180142,7 @@ func _strftimeFunc(tls *libc.TLS, context uintptr, argc int32, argv uintptr) {
 				x_sqlite3_str_appendf(tls, bp+48, __ccgo_ts+36662, libc.VaList(bp+136, (nDay+int32(7)-wd)/int32(7)))
 			} else {
 				// /tmp/libsqlite3/sqlite-src-3370200/sqlite3.c:23753:11:
-				x_sqlite3_str_appendf(tls, bp+48, __ccgo_ts+19229, libc.VaList(bp+136, nDay+int32(1)))
+				x_sqlite3_str_appendf(tls, bp+48, __ccgo_ts+19221, libc.VaList(bp+136, nDay+int32(1)))
 			}
 			// /tmp/libsqlite3/sqlite-src-3370200/sqlite3.c:23755:9:
 			break
@@ -180322,7 +180318,7 @@ var _aDateTimeFuncs = [8]TFuncDef{
 		FnArg:      int8(-int32(1)),
 		FfuncFlags: uint32(libc.Int32FromInt32(m_SQLITE_FUNC_BUILTIN) | libc.Int32FromInt32(m_SQLITE_FUNC_SLOCHNG) | libc.Int32FromInt32(m_SQLITE_UTF8) | libc.Int32FromInt32(m_SQLITE_FUNC_CONSTANT)),
 		FpUserData: uintptr(unsafe.Pointer(&x_sqlite3Config)),
-		FzName:     __ccgo_ts + 13996,
+		FzName:     __ccgo_ts + 13988,
 	},
 	4: {
 		FnArg:      int8(-int32(1)),
@@ -184763,7 +184759,7 @@ func x_sqlite3_str_vappendf(tls *libc.TLS, pAccum uintptr, fmt uintptr, ap Tva_l
 					// /tmp/libsqlite3/sqlite-src-3370200/sqlite3.c:29782:13:
 					x_sqlite3_str_appendall(tls, pAccum, (*TSrcItem)(unsafe.Pointer(pItem)).FzDatabase)
 					// /tmp/libsqlite3/sqlite-src-3370200/sqlite3.c:29783:13:
-					x_sqlite3_str_append(tls, pAccum, __ccgo_ts+30176, int32(1))
+					x_sqlite3_str_append(tls, pAccum, __ccgo_ts+30168, int32(1))
 				}
 				// /tmp/libsqlite3/sqlite-src-3370200/sqlite3.c:29785:11:
 				x_sqlite3_str_appendall(tls, pAccum, (*TSrcItem)(unsafe.Pointer(pItem)).FzName)
@@ -188039,7 +188035,7 @@ func _compare2pow63(tls *libc.TLS, zNum uintptr, incr int32) (r int32) {
 	c = 0
 	/* 012345678901234567 */
 	// /tmp/libsqlite3/sqlite-src-3370200/sqlite3.c:32705:14:
-	pow63 = __ccgo_ts + 30110
+	pow63 = __ccgo_ts + 30102
 	// /tmp/libsqlite3/sqlite-src-3370200/sqlite3.c:32706:3:
 	i = 0
 	for {
@@ -192010,7 +192006,7 @@ func _winClose(tls *libc.TLS, id uintptr) (r int32) {
 		if rc != 0 {
 			v5 = __ccgo_ts + 39938
 		} else {
-			v5 = __ccgo_ts + 20523
+			v5 = __ccgo_ts + 20515
 		}
 		x_sqlite3DebugPrintf(tls, __ccgo_ts+39941, libc.VaList(bp+8, (*(*func(*libc.TLS) TDWORD)(unsafe.Pointer(&struct{ uintptr }{_aSyscall[int32(17)].FpCurrent})))(tls), pFile, (*TwinFile)(unsafe.Pointer(pFile)).Fh, v5))
 	}
@@ -193683,7 +193679,7 @@ func _winShmPurge(tls *libc.TLS, pVfs uintptr, deleteFlag int32) {
 					if bRc != 0 {
 						v3 = __ccgo_ts + 39938
 					} else {
-						v3 = __ccgo_ts + 20523
+						v3 = __ccgo_ts + 20515
 					}
 					x_sqlite3DebugPrintf(tls, __ccgo_ts+41796, libc.VaList(bp+8, (*(*func(*libc.TLS) TDWORD)(unsafe.Pointer(&struct{ uintptr }{_aSyscall[int32(17)].FpCurrent})))(tls), i, v3))
 				}
@@ -193697,7 +193693,7 @@ func _winShmPurge(tls *libc.TLS, pVfs uintptr, deleteFlag int32) {
 					if bRc != 0 {
 						v4 = __ccgo_ts + 39938
 					} else {
-						v4 = __ccgo_ts + 20523
+						v4 = __ccgo_ts + 20515
 					}
 					x_sqlite3DebugPrintf(tls, __ccgo_ts+41839, libc.VaList(bp+8, (*(*func(*libc.TLS) TDWORD)(unsafe.Pointer(&struct{ uintptr }{_aSyscall[int32(17)].FpCurrent})))(tls), i, v4))
 				}
@@ -193840,7 +193836,7 @@ func _winOpenSharedMemory(tls *libc.TLS, pDbFd uintptr) (r int32) {
 	// /tmp/libsqlite3/sqlite-src-3370200/sqlite3.c:46302:3:
 	(*TwinShmNode)(unsafe.Pointer(pNew)).FzFilename = pNew + 1*168
 	// /tmp/libsqlite3/sqlite-src-3370200/sqlite3.c:46303:3:
-	x_sqlite3_snprintf(tls, nName+int32(15), (*TwinShmNode)(unsafe.Pointer(pNew)).FzFilename, __ccgo_ts+15245, libc.VaList(bp+16, (*TwinFile)(unsafe.Pointer(pDbFd)).FzPath))
+	x_sqlite3_snprintf(tls, nName+int32(15), (*TwinShmNode)(unsafe.Pointer(pNew)).FzFilename, __ccgo_ts+15237, libc.VaList(bp+16, (*TwinFile)(unsafe.Pointer(pDbFd)).FzPath))
 	// /tmp/libsqlite3/sqlite-src-3370200/sqlite3.c:46304:52:
 	/* Look to see if there is an existing winShmNode that can be used.
 	 ** If no matching winShmNode currently exists, create a new one.
@@ -194371,7 +194367,7 @@ func _winShmMap(tls *libc.TLS, fd uintptr, iRegion int32, szRegion int32, isWrit
 				if hMap != 0 {
 					v1 = __ccgo_ts + 39938
 				} else {
-					v1 = __ccgo_ts + 20523
+					v1 = __ccgo_ts + 20515
 				}
 				x_sqlite3DebugPrintf(tls, __ccgo_ts+42012, libc.VaList(bp+16, (*(*func(*libc.TLS) TDWORD)(unsafe.Pointer(&struct{ uintptr }{_aSyscall[int32(17)].FpCurrent})))(tls), (*TwinShmNode)(unsafe.Pointer(pShmNode)).FnRegion, nByte, v1))
 			}
@@ -194389,7 +194385,7 @@ func _winShmMap(tls *libc.TLS, fd uintptr, iRegion int32, szRegion int32, isWrit
 					if pMap != 0 {
 						v2 = __ccgo_ts + 39938
 					} else {
-						v2 = __ccgo_ts + 20523
+						v2 = __ccgo_ts + 20515
 					}
 					x_sqlite3DebugPrintf(tls, __ccgo_ts+42063, libc.VaList(bp+16, (*(*func(*libc.TLS) TDWORD)(unsafe.Pointer(&struct{ uintptr }{_aSyscall[int32(17)].FpCurrent})))(tls), (*TwinShmNode)(unsafe.Pointer(pShmNode)).FnRegion, iOffset, szRegion, v2))
 				}
@@ -195412,7 +195408,7 @@ func _winOpen(tls *libc.TLS, pVfs uintptr, zName uintptr, id uintptr, flags int3
 		}
 	}
 	// /tmp/libsqlite3/sqlite-src-3370200/sqlite3.c:47497:3:
-	if 0 == x_sqlite3_uri_boolean(tls, zName, __ccgo_ts+23219, 0) {
+	if 0 == x_sqlite3_uri_boolean(tls, zName, __ccgo_ts+23211, 0) {
 		// /tmp/libsqlite3/sqlite-src-3370200/sqlite3.c:47498:5:
 		dwShareMode = uint32(libc.Int32FromInt32(m_FILE_SHARE_READ) | libc.Int32FromInt32(m_FILE_SHARE_WRITE))
 	} else {
@@ -195491,7 +195487,7 @@ func _winOpen(tls *libc.TLS, pVfs uintptr, zName uintptr, id uintptr, flags int3
 	if x_sqlite3OSTrace != 0 {
 		// /tmp/libsqlite3/sqlite-src-3370200/sqlite3.c:47587:3:
 		if h == uintptr(int64(-libc.Int32FromInt32(1))) {
-			v1 = __ccgo_ts + 20523
+			v1 = __ccgo_ts + 20515
 		} else {
 			v1 = __ccgo_ts + 39938
 		}
@@ -195536,7 +195532,7 @@ func _winOpen(tls *libc.TLS, pVfs uintptr, zName uintptr, id uintptr, flags int3
 			v2 = 0
 		}
 		if h == uintptr(int64(-libc.Int32FromInt32(1))) {
-			v3 = __ccgo_ts + 20523
+			v3 = __ccgo_ts + 20515
 		} else {
 			v3 = __ccgo_ts + 39938
 		}
@@ -196350,7 +196346,7 @@ var _winVfs = Tsqlite3_vfs{
 	FiVersion:   int32(3),
 	FszOsFile:   int32(96),
 	FmxPathname: libc.Int32FromInt32(m_MAX_PATH) * libc.Int32FromInt32(4),
-	FzName:      __ccgo_ts + 15285,
+	FzName:      __ccgo_ts + 15277,
 	FpAppData:   uintptr(unsafe.Pointer(&_winAppData)),
 }
 
@@ -208043,7 +208039,7 @@ func x_sqlite3PagerOpen(tls *libc.TLS, pVfs uintptr, ppPager uintptr, zFilename 
 		// /tmp/libsqlite3/sqlite-src-3370200/sqlite3.c:57498:43:
 		pPtr += uintptr(nPathname)
 		// /tmp/libsqlite3/sqlite-src-3370200/sqlite3.c:57499:5:
-		libc.Xmemcpy(tls, pPtr, __ccgo_ts+17397, uint64(8))
+		libc.Xmemcpy(tls, pPtr, __ccgo_ts+17389, uint64(8))
 		// /tmp/libsqlite3/sqlite-src-3370200/sqlite3.c:57499:43:
 		pPtr += uintptr(libc.Int32FromInt32(8) + libc.Int32FromInt32(1))
 	} else {
@@ -208127,7 +208123,7 @@ func x_sqlite3PagerOpen(tls *libc.TLS, pVfs uintptr, ppPager uintptr, zFilename 
 		// /tmp/libsqlite3/sqlite-src-3370200/sqlite3.c:57573:7:
 		(*TPager)(unsafe.Pointer(*(*uintptr)(unsafe.Pointer(bp)))).FnoLock = uint8(x_sqlite3_uri_boolean(tls, (*TPager)(unsafe.Pointer(*(*uintptr)(unsafe.Pointer(bp)))).FzFilename, __ccgo_ts+43845, 0))
 		// /tmp/libsqlite3/sqlite-src-3370200/sqlite3.c:57574:7:
-		if iDc&int32(m_SQLITE_IOCAP_IMMUTABLE) != 0 || x_sqlite3_uri_boolean(tls, (*TPager)(unsafe.Pointer(*(*uintptr)(unsafe.Pointer(bp)))).FzFilename, __ccgo_ts+23018, 0) != 0 {
+		if iDc&int32(m_SQLITE_IOCAP_IMMUTABLE) != 0 || x_sqlite3_uri_boolean(tls, (*TPager)(unsafe.Pointer(*(*uintptr)(unsafe.Pointer(bp)))).FzFilename, __ccgo_ts+23010, 0) != 0 {
 			// /tmp/libsqlite3/sqlite-src-3370200/sqlite3.c:57576:11:
 			vfsFlags |= int32(m_SQLITE_OPEN_READONLY)
 			// /tmp/libsqlite3/sqlite-src-3370200/sqlite3.c:57577:11:
@@ -219786,7 +219782,7 @@ func x_sqlite3BtreeOpen(tls *libc.TLS, pVfs uintptr, zFilename uintptr, db uintp
 	 ** false for a file-based database.
 	 */
 	// /tmp/libsqlite3/sqlite-src-3370200/sqlite3.c:67957:13:
-	isMemdb = libc.BoolInt32(zFilename != 0 && libc.Xstrcmp(tls, zFilename, __ccgo_ts+12623) == 0 || isTempDb != 0 && x_sqlite3TempInMemory(tls, db) != 0 || vfsFlags&int32(m_SQLITE_OPEN_MEMORY) != 0)
+	isMemdb = libc.BoolInt32(zFilename != 0 && libc.Xstrcmp(tls, zFilename, __ccgo_ts+12615) == 0 || isTempDb != 0 && x_sqlite3TempInMemory(tls, db) != 0 || vfsFlags&int32(m_SQLITE_OPEN_MEMORY) != 0)
 	// /tmp/libsqlite3/sqlite-src-3370200/sqlite3.c:67962:3:
 	// /tmp/libsqlite3/sqlite-src-3370200/sqlite3.c:67963:3:
 	// /tmp/libsqlite3/sqlite-src-3370200/sqlite3.c:67964:3:
@@ -230814,7 +230810,7 @@ func _checkList(tls *libc.TLS, pCheck uintptr, isFreeList int32, iPage TPgno, N 
 	if N != 0 && nErrAtStart == (*TIntegrityCk)(unsafe.Pointer(pCheck)).FnErr {
 		// /tmp/libsqlite3/sqlite-src-3370200/sqlite3.c:75671:5:
 		if isFreeList != 0 {
-			v2 = __ccgo_ts + 9570
+			v2 = __ccgo_ts + 9562
 		} else {
 			v2 = __ccgo_ts + 44113
 		}
@@ -235064,7 +235060,7 @@ func _valueFromExpr(tls *libc.TLS, db uintptr, pExpr uintptr, enc Tu8, affinity 
 			x_sqlite3VdbeMemSetInt64(tls, *(*uintptr)(unsafe.Pointer(bp)), int64(*(*int32)(unsafe.Pointer(&(*TExpr)(unsafe.Pointer(pExpr)).Fu)))*int64(int64(negInt)))
 		} else {
 			// /tmp/libsqlite3/sqlite-src-3370200/sqlite3.c:78802:7:
-			zVal = x_sqlite3MPrintf(tls, db, __ccgo_ts+11879, libc.VaList(bp+16, zNeg, *(*uintptr)(unsafe.Pointer(pExpr + 8))))
+			zVal = x_sqlite3MPrintf(tls, db, __ccgo_ts+11871, libc.VaList(bp+16, zNeg, *(*uintptr)(unsafe.Pointer(pExpr + 8))))
 			// /tmp/libsqlite3/sqlite-src-3370200/sqlite3.c:78803:7:
 			if zVal == uintptr(0) {
 				// /tmp/libsqlite3/sqlite-src-3370200/sqlite3.c:78803:21:
@@ -237037,7 +237033,7 @@ func x_sqlite3VdbeDisplayP4(tls *libc.TLS, db uintptr, pOp uintptr) (r uintptr) 
 			j++
 		}
 		// /tmp/libsqlite3/sqlite-src-3370200/sqlite3.c:80830:7:
-		x_sqlite3_str_append(tls, bp, __ccgo_ts+12373, int32(1))
+		x_sqlite3_str_append(tls, bp, __ccgo_ts+12365, int32(1))
 		// /tmp/libsqlite3/sqlite-src-3370200/sqlite3.c:80831:7:
 		break
 		// /tmp/libsqlite3/sqlite-src-3370200/sqlite3.c:80839:5:
@@ -237205,7 +237201,7 @@ func x_sqlite3VdbeDisplayP4(tls *libc.TLS, db uintptr, pOp uintptr) (r uintptr) 
 
 // /tmp/libsqlite3/sqlite-src-3370200/sqlite3.c:80840:25:
 var _encnames = [4]uintptr{
-	0: __ccgo_ts + 12347,
+	0: __ccgo_ts + 12339,
 	1: __ccgo_ts + 44811,
 	2: __ccgo_ts + 44813,
 	3: __ccgo_ts + 44818,
@@ -244622,7 +244618,7 @@ func x_sqlite3VdbeExpandSql(tls *libc.TLS, p uintptr, zRawSql uintptr) (r uintpt
 				// /tmp/libsqlite3/sqlite-src-3370200/sqlite3.c:86605:46:
 			}
 			// /tmp/libsqlite3/sqlite-src-3370200/sqlite3.c:86606:7:
-			x_sqlite3_str_append(tls, bp+8, __ccgo_ts+30973, int32(3))
+			x_sqlite3_str_append(tls, bp+8, __ccgo_ts+30965, int32(3))
 			// /tmp/libsqlite3/sqlite-src-3370200/sqlite3.c:86607:7:
 			// /tmp/libsqlite3/sqlite-src-3370200/sqlite3.c:86608:7:
 			x_sqlite3_str_append(tls, bp+8, zStart, int32(int64(int64(zRawSql))-int64(int64(zStart))))
@@ -244735,7 +244731,7 @@ func x_sqlite3VdbeExpandSql(tls *libc.TLS, p uintptr, zRawSql uintptr) (r uintpt
 								} else { /* Number of bytes of the blob to include in output */
 									// /tmp/libsqlite3/sqlite-src-3370200/sqlite3.c:86682:9:
 									// /tmp/libsqlite3/sqlite-src-3370200/sqlite3.c:86683:9:
-									x_sqlite3_str_append(tls, bp+8, __ccgo_ts+15809, int32(2))
+									x_sqlite3_str_append(tls, bp+8, __ccgo_ts+15801, int32(2))
 									// /tmp/libsqlite3/sqlite-src-3370200/sqlite3.c:86684:9:
 									nOut1 = (*TMem)(unsafe.Pointer(pVar)).Fn
 									// /tmp/libsqlite3/sqlite-src-3370200/sqlite3.c:86688:9:
@@ -244751,7 +244747,7 @@ func x_sqlite3VdbeExpandSql(tls *libc.TLS, p uintptr, zRawSql uintptr) (r uintpt
 										i++
 									}
 									// /tmp/libsqlite3/sqlite-src-3370200/sqlite3.c:86691:9:
-									x_sqlite3_str_append(tls, bp+8, __ccgo_ts+15812, int32(1))
+									x_sqlite3_str_append(tls, bp+8, __ccgo_ts+15804, int32(1))
 								}
 							}
 						}
@@ -255276,7 +255272,7 @@ func _blobSeekToRow(tls *libc.TLS, p uintptr, iRow Tsqlite3_int64, pzErr uintptr
 				if type1 == uint32(7) {
 					v3 = __ccgo_ts + 34539
 				} else {
-					v3 = __ccgo_ts + 30168
+					v3 = __ccgo_ts + 30160
 				}
 				v2 = v3
 			}
@@ -261917,7 +261913,7 @@ func _lookupName(tls *libc.TLS, pParse uintptr, zDb uintptr, zTab uintptr, zCol 
 					}
 				} else {
 					// /tmp/libsqlite3/sqlite-src-3370200/sqlite3.c:99981:15:
-					if op != int32(m_TK_DELETE) && zTab != 0 && x_sqlite3StrICmp(tls, __ccgo_ts+20506, zTab) == 0 {
+					if op != int32(m_TK_DELETE) && zTab != 0 && x_sqlite3StrICmp(tls, __ccgo_ts+20498, zTab) == 0 {
 						// /tmp/libsqlite3/sqlite-src-3370200/sqlite3.c:99982:11:
 						(*TExpr)(unsafe.Pointer(pExpr)).FiTable = int32(1)
 						// /tmp/libsqlite3/sqlite-src-3370200/sqlite3.c:99983:11:
@@ -262225,7 +262221,7 @@ func _lookupName(tls *libc.TLS, pParse uintptr, zDb uintptr, zTab uintptr, zCol 
 				x_sqlite3ErrorMsg(tls, pParse, __ccgo_ts+46660, libc.VaList(bp+8, zErr, zTab, zCol))
 			} else {
 				// /tmp/libsqlite3/sqlite-src-3370200/sqlite3.c:100206:7:
-				x_sqlite3ErrorMsg(tls, pParse, __ccgo_ts+25673, libc.VaList(bp+8, zErr, zCol))
+				x_sqlite3ErrorMsg(tls, pParse, __ccgo_ts+25665, libc.VaList(bp+8, zErr, zCol))
 			}
 		}
 		// /tmp/libsqlite3/sqlite-src-3370200/sqlite3.c:100208:5:
@@ -262555,12 +262551,12 @@ func _resolveExprStep(tls *libc.TLS, pWalker uintptr, pExpr uintptr) (r int32) {
 			// /tmp/libsqlite3/sqlite-src-3370200/sqlite3.c:100424:9:
 			if int32((*TExpr)(unsafe.Pointer(pExpr)).Fop) == int32(m_TK_NOTNULL) {
 				// /tmp/libsqlite3/sqlite-src-3370200/sqlite3.c:100425:11:
-				*(*uintptr)(unsafe.Pointer(pExpr + 8)) = __ccgo_ts + 26752
+				*(*uintptr)(unsafe.Pointer(pExpr + 8)) = __ccgo_ts + 26744
 				// /tmp/libsqlite3/sqlite-src-3370200/sqlite3.c:100426:11:
 				*(*Tu32)(unsafe.Pointer(pExpr + 4)) |= uint32(libc.Int32FromInt32(m_EP_IsTrue))
 			} else {
 				// /tmp/libsqlite3/sqlite-src-3370200/sqlite3.c:100428:11:
-				*(*uintptr)(unsafe.Pointer(pExpr + 8)) = __ccgo_ts + 26760
+				*(*uintptr)(unsafe.Pointer(pExpr + 8)) = __ccgo_ts + 26752
 				// /tmp/libsqlite3/sqlite-src-3370200/sqlite3.c:100429:11:
 				*(*Tu32)(unsafe.Pointer(pExpr + 4)) |= uint32(libc.Int32FromInt32(m_EP_IsFalse))
 			}
@@ -267628,12 +267624,12 @@ func x_sqlite3SelectWalkFail(tls *libc.TLS, pWalker uintptr, NotUsed uintptr) (r
 func x_sqlite3IsTrueOrFalse(tls *libc.TLS, zIn uintptr) (r Tu32) {
 	// /tmp/libsqlite3/sqlite-src-3370200/sqlite3.c:103707:57:
 	// /tmp/libsqlite3/sqlite-src-3370200/sqlite3.c:103708:3:
-	if x_sqlite3StrICmp(tls, zIn, __ccgo_ts+26752) == 0 {
+	if x_sqlite3StrICmp(tls, zIn, __ccgo_ts+26744) == 0 {
 		// /tmp/libsqlite3/sqlite-src-3370200/sqlite3.c:103708:41:
 		return uint32(m_EP_IsTrue)
 	}
 	// /tmp/libsqlite3/sqlite-src-3370200/sqlite3.c:103709:3:
-	if x_sqlite3StrICmp(tls, zIn, __ccgo_ts+26760) == 0 {
+	if x_sqlite3StrICmp(tls, zIn, __ccgo_ts+26752) == 0 {
 		// /tmp/libsqlite3/sqlite-src-3370200/sqlite3.c:103709:41:
 		return uint32(m_EP_IsFalse)
 	}
@@ -269511,7 +269507,7 @@ func x_sqlite3CodeSubselect(tls *libc.TLS, pParse uintptr, pExpr uintptr) (r int
 	} else {
 		/* If there is no pre-existing limit add a limit of 1 */
 		// /tmp/libsqlite3/sqlite-src-3370200/sqlite3.c:104916:5:
-		pLimit = x_sqlite3Expr(tls, (*TParse)(unsafe.Pointer(pParse)).Fdb, int32(m_TK_INTEGER), __ccgo_ts+13466)
+		pLimit = x_sqlite3Expr(tls, (*TParse)(unsafe.Pointer(pParse)).Fdb, int32(m_TK_INTEGER), __ccgo_ts+13458)
 		// /tmp/libsqlite3/sqlite-src-3370200/sqlite3.c:104917:5:
 		(*TSelect)(unsafe.Pointer(pSel)).FpLimit = x_sqlite3PExpr(tls, pParse, int32(m_TK_LIMIT), pLimit, uintptr(0))
 	}
@@ -270527,7 +270523,7 @@ func _exprCodeInlineFunction(tls *libc.TLS, pParse uintptr, pFarg uintptr, iFunc
 			0: __ccgo_ts + 315,
 			1: __ccgo_ts + 303,
 			2: __ccgo_ts + 48007,
-			3: __ccgo_ts + 30168,
+			3: __ccgo_ts + 30160,
 			4: __ccgo_ts + 34539,
 		}
 		// /tmp/libsqlite3/sqlite-src-3370200/sqlite3.c:105595:7:
@@ -274986,7 +274982,7 @@ func _isRealTable(tls *libc.TLS, pParse uintptr, pTab uintptr, bDrop int32) (r i
 	// /tmp/libsqlite3/sqlite-src-3370200/sqlite3.c:108554:3:
 	if int32((*TTable)(unsafe.Pointer(pTab)).FeTabType) == int32(m_TABTYP_VIEW) {
 		// /tmp/libsqlite3/sqlite-src-3370200/sqlite3.c:108555:5:
-		zType = __ccgo_ts + 14531
+		zType = __ccgo_ts + 14523
 	}
 	// /tmp/libsqlite3/sqlite-src-3370200/sqlite3.c:108559:3:
 	if int32((*TTable)(unsafe.Pointer(pTab)).FeTabType) == int32(m_TABTYP_VTAB) {
@@ -281194,7 +281190,7 @@ func x_sqlite3LocateTable(tls *libc.TLS, pParse uintptr, flags Tu32, zName uintp
 			x_sqlite3ErrorMsg(tls, pParse, __ccgo_ts+46660, libc.VaList(bp+8, zMsg, zDbase, zName))
 		} else {
 			// /tmp/libsqlite3/sqlite-src-3370200/sqlite3.c:113516:7:
-			x_sqlite3ErrorMsg(tls, pParse, __ccgo_ts+25673, libc.VaList(bp+8, zMsg, zName))
+			x_sqlite3ErrorMsg(tls, pParse, __ccgo_ts+25665, libc.VaList(bp+8, zMsg, zName))
 		}
 	} else {
 		// /tmp/libsqlite3/sqlite-src-3370200/sqlite3.c:113519:5:
@@ -282491,7 +282487,7 @@ func x_sqlite3StartTable(tls *libc.TLS, pParse uintptr, pName1 uintptr, pName2 u
 	}
 	// /tmp/libsqlite3/sqlite-src-3370200/sqlite3.c:114285:3:
 	if isView != 0 {
-		v2 = __ccgo_ts + 14531
+		v2 = __ccgo_ts + 14523
 	} else {
 		v2 = __ccgo_ts + 46379
 	}
@@ -283908,9 +283904,9 @@ func _createTableStmt(tls *libc.TLS, db uintptr, p uintptr) (r uintptr) {
 		// /tmp/libsqlite3/sqlite-src-3370200/sqlite3.c:115153:5:
 		zSep = __ccgo_ts + 1095
 		// /tmp/libsqlite3/sqlite-src-3370200/sqlite3.c:115154:5:
-		zSep2 = __ccgo_ts + 12269
+		zSep2 = __ccgo_ts + 12261
 		// /tmp/libsqlite3/sqlite-src-3370200/sqlite3.c:115155:5:
-		zEnd = __ccgo_ts + 12373
+		zEnd = __ccgo_ts + 12365
 	} else {
 		// /tmp/libsqlite3/sqlite-src-3370200/sqlite3.c:115157:5:
 		zSep = __ccgo_ts + 52606
@@ -285010,11 +285006,11 @@ func x_sqlite3EndTable(tls *libc.TLS, pParse uintptr, pCons uintptr, pEnd uintpt
 			// /tmp/libsqlite3/sqlite-src-3370200/sqlite3.c:115822:7:
 			zType = __ccgo_ts + 46379
 			// /tmp/libsqlite3/sqlite-src-3370200/sqlite3.c:115823:7:
-			zType2 = __ccgo_ts + 25473
+			zType2 = __ccgo_ts + 25465
 		} else {
 			/* A view */
 			// /tmp/libsqlite3/sqlite-src-3370200/sqlite3.c:115827:7:
-			zType = __ccgo_ts + 14531
+			zType = __ccgo_ts + 14523
 			// /tmp/libsqlite3/sqlite-src-3370200/sqlite3.c:115828:7:
 			zType2 = __ccgo_ts + 52840
 		}
@@ -285268,7 +285264,7 @@ func x_sqlite3CreateView(tls *libc.TLS, pParse uintptr, pBegin uintptr, pName1 u
 	// /tmp/libsqlite3/sqlite-src-3370200/sqlite3.c:116021:3:
 	iDb = x_sqlite3SchemaToIndex(tls, db, (*TTable)(unsafe.Pointer(p)).FpSchema)
 	// /tmp/libsqlite3/sqlite-src-3370200/sqlite3.c:116022:3:
-	x_sqlite3FixInit(tls, bp+16, pParse, iDb, __ccgo_ts+14531, *(*uintptr)(unsafe.Pointer(bp + 112)))
+	x_sqlite3FixInit(tls, bp+16, pParse, iDb, __ccgo_ts+14523, *(*uintptr)(unsafe.Pointer(bp + 112)))
 	// /tmp/libsqlite3/sqlite-src-3370200/sqlite3.c:116023:3:
 	if x_sqlite3FixSelect(tls, bp+16, pSelect) != 0 {
 		// /tmp/libsqlite3/sqlite-src-3370200/sqlite3.c:116023:42:
@@ -288580,9 +288576,9 @@ func x_sqlite3EndTransaction(tls *libc.TLS, pParse uintptr, eType int32) {
 	isRollback = libc.BoolInt32(eType == int32(m_TK_ROLLBACK))
 	// /tmp/libsqlite3/sqlite-src-3370200/sqlite3.c:118136:3:
 	if isRollback != 0 {
-		v1 = __ccgo_ts + 29527
+		v1 = __ccgo_ts + 29519
 	} else {
-		v1 = __ccgo_ts + 21611
+		v1 = __ccgo_ts + 21603
 	}
 	if x_sqlite3AuthCheck(tls, pParse, int32(m_SQLITE_TRANSACTION), v1, uintptr(0), uintptr(0)) != 0 {
 		// /tmp/libsqlite3/sqlite-src-3370200/sqlite3.c:118138:5:
@@ -288632,7 +288628,7 @@ func x_sqlite3Savepoint(tls *libc.TLS, pParse uintptr, op int32, pName uintptr) 
 var _az = [3]uintptr{
 	0: __ccgo_ts + 34136,
 	1: __ccgo_ts + 54333,
-	2: __ccgo_ts + 29527,
+	2: __ccgo_ts + 29519,
 }
 
 // C documentation
@@ -288921,12 +288917,12 @@ func x_sqlite3UniqueConstraint(tls *libc.TLS, pParse uintptr, onError int32, pId
 			// /tmp/libsqlite3/sqlite-src-3370200/sqlite3.c:118336:7:
 			if j != 0 {
 				// /tmp/libsqlite3/sqlite-src-3370200/sqlite3.c:118336:15:
-				x_sqlite3_str_append(tls, bp, __ccgo_ts+12349, int32(2))
+				x_sqlite3_str_append(tls, bp, __ccgo_ts+12341, int32(2))
 			}
 			// /tmp/libsqlite3/sqlite-src-3370200/sqlite3.c:118337:7:
 			x_sqlite3_str_appendall(tls, bp, (*TTable)(unsafe.Pointer(pTab)).FzName)
 			// /tmp/libsqlite3/sqlite-src-3370200/sqlite3.c:118338:7:
-			x_sqlite3_str_append(tls, bp, __ccgo_ts+30176, int32(1))
+			x_sqlite3_str_append(tls, bp, __ccgo_ts+30168, int32(1))
 			// /tmp/libsqlite3/sqlite-src-3370200/sqlite3.c:118339:7:
 			x_sqlite3_str_appendall(tls, bp, zCol)
 			goto _1
@@ -291622,7 +291618,7 @@ func _typeofFunc(tls *libc.TLS, context uintptr, NotUsed int32, argv uintptr) {
 
 // /tmp/libsqlite3/sqlite-src-3370200/sqlite3.c:120263:21:
 var _azType3 = [5]uintptr{
-	0: __ccgo_ts + 30168,
+	0: __ccgo_ts + 30160,
 	1: __ccgo_ts + 34539,
 	2: __ccgo_ts + 303,
 	3: __ccgo_ts + 315,
@@ -294575,13 +294571,13 @@ func x_sqlite3RegisterLikeFunctions(tls *libc.TLS, db uintptr, caseSensitive int
 		flags = int32(m_SQLITE_FUNC_LIKE)
 	}
 	// /tmp/libsqlite3/sqlite-src-3370200/sqlite3.c:122093:3:
-	x_sqlite3CreateFunc(tls, db, __ccgo_ts+12145, int32(2), int32(m_SQLITE_UTF8), pInfo, __ccgo_fp(_likeFunc), uintptr(0), uintptr(0), uintptr(0), uintptr(0), uintptr(0))
+	x_sqlite3CreateFunc(tls, db, __ccgo_ts+12137, int32(2), int32(m_SQLITE_UTF8), pInfo, __ccgo_fp(_likeFunc), uintptr(0), uintptr(0), uintptr(0), uintptr(0), uintptr(0))
 	// /tmp/libsqlite3/sqlite-src-3370200/sqlite3.c:122094:3:
-	x_sqlite3CreateFunc(tls, db, __ccgo_ts+12145, int32(3), int32(m_SQLITE_UTF8), pInfo, __ccgo_fp(_likeFunc), uintptr(0), uintptr(0), uintptr(0), uintptr(0), uintptr(0))
+	x_sqlite3CreateFunc(tls, db, __ccgo_ts+12137, int32(3), int32(m_SQLITE_UTF8), pInfo, __ccgo_fp(_likeFunc), uintptr(0), uintptr(0), uintptr(0), uintptr(0), uintptr(0))
 	// /tmp/libsqlite3/sqlite-src-3370200/sqlite3.c:122095:3:
-	*(*Tu32)(unsafe.Pointer(x_sqlite3FindFunction(tls, db, __ccgo_ts+12145, int32(2), uint8(m_SQLITE_UTF8), uint8(0)) + 4)) |= uint32(uint32(flags))
+	*(*Tu32)(unsafe.Pointer(x_sqlite3FindFunction(tls, db, __ccgo_ts+12137, int32(2), uint8(m_SQLITE_UTF8), uint8(0)) + 4)) |= uint32(uint32(flags))
 	// /tmp/libsqlite3/sqlite-src-3370200/sqlite3.c:122096:3:
-	*(*Tu32)(unsafe.Pointer(x_sqlite3FindFunction(tls, db, __ccgo_ts+12145, int32(3), uint8(m_SQLITE_UTF8), uint8(0)) + 4)) |= uint32(uint32(flags))
+	*(*Tu32)(unsafe.Pointer(x_sqlite3FindFunction(tls, db, __ccgo_ts+12137, int32(3), uint8(m_SQLITE_UTF8), uint8(0)) + 4)) |= uint32(uint32(flags))
 }
 
 // C documentation
@@ -295165,7 +295161,7 @@ var _aBuiltinFunc = [91]TFuncDef{
 	24: {
 		FnArg:      int8(-int32(1)),
 		FfuncFlags: uint32(libc.Int32FromInt32(m_SQLITE_FUNC_BUILTIN) | libc.Int32FromInt32(m_SQLITE_FUNC_CONSTANT) | libc.Int32FromInt32(m_SQLITE_UTF8) | libc.Int32FromInt32(0)*libc.Int32FromInt32(m_SQLITE_FUNC_NEEDCOLL)),
-		FzName:     __ccgo_ts + 5656,
+		FzName:     __ccgo_ts + 5648,
 	},
 	25: {
 		FnArg:      int8(1),
@@ -295289,7 +295285,7 @@ var _aBuiltinFunc = [91]TFuncDef{
 	50: {
 		FnArg:      int8(1),
 		FfuncFlags: uint32(libc.Int32FromInt32(m_SQLITE_FUNC_BUILTIN) | libc.Int32FromInt32(m_SQLITE_UTF8) | libc.Int32FromInt32(0)*libc.Int32FromInt32(m_SQLITE_FUNC_NEEDCOLL) | libc.Int32FromInt32(0)),
-		FzName:     __ccgo_ts + 23471,
+		FzName:     __ccgo_ts + 23463,
 	},
 	51: {
 		FnArg:      int8(1),
@@ -295303,12 +295299,12 @@ var _aBuiltinFunc = [91]TFuncDef{
 	},
 	53: {
 		FfuncFlags: uint32(libc.Int32FromInt32(m_SQLITE_FUNC_BUILTIN) | libc.Int32FromInt32(m_SQLITE_UTF8) | libc.Int32FromInt32(0)*libc.Int32FromInt32(m_SQLITE_FUNC_NEEDCOLL) | libc.Int32FromInt32(m_SQLITE_FUNC_COUNT) | libc.Int32FromInt32(m_SQLITE_FUNC_ANYORDER)),
-		FzName:     __ccgo_ts + 25479,
+		FzName:     __ccgo_ts + 25471,
 	},
 	54: {
 		FnArg:      int8(1),
 		FfuncFlags: uint32(libc.Int32FromInt32(m_SQLITE_FUNC_BUILTIN) | libc.Int32FromInt32(m_SQLITE_UTF8) | libc.Int32FromInt32(0)*libc.Int32FromInt32(m_SQLITE_FUNC_NEEDCOLL) | libc.Int32FromInt32(m_SQLITE_FUNC_ANYORDER)),
-		FzName:     __ccgo_ts + 25479,
+		FzName:     __ccgo_ts + 25471,
 	},
 	55: {
 		FnArg:      int8(1),
@@ -295324,19 +295320,19 @@ var _aBuiltinFunc = [91]TFuncDef{
 		FnArg:      int8(2),
 		FfuncFlags: uint32(libc.Int32FromInt32(m_SQLITE_FUNC_BUILTIN) | libc.Int32FromInt32(m_SQLITE_FUNC_CONSTANT) | libc.Int32FromInt32(m_SQLITE_UTF8) | libc.Int32FromInt32(m_SQLITE_FUNC_LIKE) | libc.Int32FromInt32(m_SQLITE_FUNC_CASE)),
 		FpUserData: uintptr(unsafe.Pointer(&_globInfo)),
-		FzName:     __ccgo_ts + 12150,
+		FzName:     __ccgo_ts + 12142,
 	},
 	58: {
 		FnArg:      int8(2),
 		FfuncFlags: uint32(libc.Int32FromInt32(m_SQLITE_FUNC_BUILTIN) | libc.Int32FromInt32(m_SQLITE_FUNC_CONSTANT) | libc.Int32FromInt32(m_SQLITE_UTF8) | libc.Int32FromInt32(m_SQLITE_FUNC_LIKE)),
 		FpUserData: uintptr(unsafe.Pointer(&_likeInfoNorm)),
-		FzName:     __ccgo_ts + 12145,
+		FzName:     __ccgo_ts + 12137,
 	},
 	59: {
 		FnArg:      int8(3),
 		FfuncFlags: uint32(libc.Int32FromInt32(m_SQLITE_FUNC_BUILTIN) | libc.Int32FromInt32(m_SQLITE_FUNC_CONSTANT) | libc.Int32FromInt32(m_SQLITE_UTF8) | libc.Int32FromInt32(m_SQLITE_FUNC_LIKE)),
 		FpUserData: uintptr(unsafe.Pointer(&_likeInfoNorm)),
-		FzName:     __ccgo_ts + 12145,
+		FzName:     __ccgo_ts + 12137,
 	},
 	60: {
 		FnArg:      int8(1),
@@ -297468,7 +297464,7 @@ func _fkActionTrigger(tls *libc.TLS, pParse uintptr, pTab uintptr, pFKey uintptr
 			} /* Literal "old" token */
 			// /tmp/libsqlite3/sqlite-src-3370200/sqlite3.c:123790:13:
 			*(*TToken)(unsafe.Pointer(bp + 32)) = TToken{
-				Fz: __ccgo_ts + 20506,
+				Fz: __ccgo_ts + 20498,
 				Fn: uint32(3),
 			} /* tFromCol = OLD.tToCol */
 			// /tmp/libsqlite3/sqlite-src-3370200/sqlite3.c:123796:7:
@@ -302767,7 +302763,7 @@ var _pragCName = [57]uintptr{
 	4:  __ccgo_ts + 55544,
 	5:  __ccgo_ts + 55547,
 	6:  __ccgo_ts + 55557,
-	7:  __ccgo_ts + 12991,
+	7:  __ccgo_ts + 12983,
 	8:  __ccgo_ts + 55567,
 	9:  __ccgo_ts + 55571,
 	10: __ccgo_ts + 34544,
@@ -302775,7 +302771,7 @@ var _pragCName = [57]uintptr{
 	12: __ccgo_ts + 55584,
 	13: __ccgo_ts + 55595,
 	14: __ccgo_ts + 55598,
-	15: __ccgo_ts + 21540,
+	15: __ccgo_ts + 21532,
 	16: __ccgo_ts + 55571,
 	17: __ccgo_ts + 34544,
 	18: __ccgo_ts + 55605,
@@ -302784,7 +302780,7 @@ var _pragCName = [57]uintptr{
 	21: __ccgo_ts + 55620,
 	22: __ccgo_ts + 55567,
 	23: __ccgo_ts + 55571,
-	24: __ccgo_ts + 13043,
+	24: __ccgo_ts + 13035,
 	25: __ccgo_ts + 55626,
 	26: __ccgo_ts + 55631,
 	27: __ccgo_ts + 55571,
@@ -302804,7 +302800,7 @@ var _pragCName = [57]uintptr{
 	41: __ccgo_ts + 55680,
 	42: __ccgo_ts + 55687,
 	43: __ccgo_ts + 46379,
-	44: __ccgo_ts + 12122,
+	44: __ccgo_ts + 12114,
 	45: __ccgo_ts + 44907,
 	46: __ccgo_ts + 55695,
 	47: __ccgo_ts + 55535,
@@ -303097,7 +303093,7 @@ var _aPragmaName = [68]TPragmaName{
 		FmPragFlg: uint8(libc.Int32FromInt32(m_PragFlg_NeedSchema) | libc.Int32FromInt32(m_PragFlg_Result0) | libc.Int32FromInt32(m_PragFlg_SchemaReq)),
 	},
 	44: {
-		FzName:    __ccgo_ts + 26402,
+		FzName:    __ccgo_ts + 26394,
 		FePragTyp: uint8(m_PragTyp_PAGE_SIZE),
 		FmPragFlg: uint8(libc.Int32FromInt32(m_PragFlg_Result0) | libc.Int32FromInt32(m_PragFlg_SchemaReq) | libc.Int32FromInt32(m_PragFlg_NoColumns1)),
 	},
@@ -303138,13 +303134,13 @@ var _aPragmaName = [68]TPragmaName{
 		FiArg:     uint64(m_SQLITE_ReverseOrder),
 	},
 	51: {
-		FzName:    __ccgo_ts + 14343,
+		FzName:    __ccgo_ts + 14335,
 		FePragTyp: uint8(m_PragTyp_HEADER_VALUE),
 		FmPragFlg: uint8(libc.Int32FromInt32(m_PragFlg_NoColumns1) | libc.Int32FromInt32(m_PragFlg_Result0)),
 		FiArg:     uint64(m_BTREE_SCHEMA_VERSION),
 	},
 	52: {
-		FzName:    __ccgo_ts + 14602,
+		FzName:    __ccgo_ts + 14594,
 		FePragTyp: uint8(m_PragTyp_SECURE_DELETE),
 		FmPragFlg: uint8(m_PragFlg_Result0),
 	},
@@ -303354,7 +303350,7 @@ func _getLockingMode(tls *libc.TLS, z uintptr) (r int32) {
 	// /tmp/libsqlite3/sqlite-src-3370200/sqlite3.c:129592:3:
 	if z != 0 {
 		// /tmp/libsqlite3/sqlite-src-3370200/sqlite3.c:129593:5:
-		if 0 == x_sqlite3StrICmp(tls, z, __ccgo_ts+23219) {
+		if 0 == x_sqlite3StrICmp(tls, z, __ccgo_ts+23211) {
 			// /tmp/libsqlite3/sqlite-src-3370200/sqlite3.c:129593:45:
 			return int32(m_PAGER_LOCKINGMODE_EXCLUSIVE)
 		}
@@ -303713,12 +303709,12 @@ func x_sqlite3JournalModename(tls *libc.TLS, eMode int32) (r uintptr) { // /tmp/
 
 // /tmp/libsqlite3/sqlite-src-3370200/sqlite3.c:129771:15:
 var _azModeName = [6]uintptr{
-	0: __ccgo_ts + 22802,
+	0: __ccgo_ts + 22794,
 	1: __ccgo_ts + 56769,
-	2: __ccgo_ts + 19361,
+	2: __ccgo_ts + 19353,
 	3: __ccgo_ts + 3483,
 	4: __ccgo_ts + 56652,
-	5: __ccgo_ts + 14541,
+	5: __ccgo_ts + 14533,
 }
 
 // C documentation
@@ -304174,7 +304170,7 @@ func x_sqlite3Pragma(tls *libc.TLS, pParse uintptr, pId1 uintptr, pId2 uintptr, 
 		// /tmp/libsqlite3/sqlite-src-3370200/sqlite3.c:130092:5:
 		if zRight != 0 {
 			// /tmp/libsqlite3/sqlite-src-3370200/sqlite3.c:130093:7:
-			if x_sqlite3_stricmp(tls, zRight, __ccgo_ts+19670) == 0 {
+			if x_sqlite3_stricmp(tls, zRight, __ccgo_ts+19662) == 0 {
 				// /tmp/libsqlite3/sqlite-src-3370200/sqlite3.c:130094:9:
 				b = int32(2)
 			} else {
@@ -304310,7 +304306,7 @@ func x_sqlite3Pragma(tls *libc.TLS, pParse uintptr, pId1 uintptr, pId2 uintptr, 
 		// /tmp/libsqlite3/sqlite-src-3370200/sqlite3.c:130186:5:
 		if eMode == int32(m_PAGER_LOCKINGMODE_EXCLUSIVE) {
 			// /tmp/libsqlite3/sqlite-src-3370200/sqlite3.c:130187:7:
-			zRet = __ccgo_ts + 23219
+			zRet = __ccgo_ts + 23211
 		}
 		// /tmp/libsqlite3/sqlite-src-3370200/sqlite3.c:130189:5:
 		_returnSingleText(tls, v, zRet)
@@ -304856,7 +304852,7 @@ func x_sqlite3Pragma(tls *libc.TLS, pParse uintptr, pId1 uintptr, pId2 uintptr, 
 					(*Tsqlite3)(unsafe.Pointer(db)).FnDeferredImmCons = 0
 				}
 				// /tmp/libsqlite3/sqlite-src-3370200/sqlite3.c:130633:9:
-				if mask&uint64(m_SQLITE_WriteSchema) != uint64(0) && x_sqlite3_stricmp(tls, zRight, __ccgo_ts+29636) == 0 {
+				if mask&uint64(m_SQLITE_WriteSchema) != uint64(0) && x_sqlite3_stricmp(tls, zRight, __ccgo_ts+29628) == 0 {
 					/* IMP: R-60817-01178 If the argument is "RESET" then schema
 					 ** writing is disabled (as with "PRAGMA writable_schema=OFF") and,
 					 ** in addition, the schema is reloaded. */
@@ -305096,7 +305092,7 @@ func x_sqlite3Pragma(tls *libc.TLS, pParse uintptr, pId1 uintptr, pId2 uintptr, 
 				// /tmp/libsqlite3/sqlite-src-3370200/sqlite3.c:130772:9:
 				if int32((*TTable)(unsafe.Pointer(pTab2)).FeTabType) == int32(m_TABTYP_VIEW) {
 					// /tmp/libsqlite3/sqlite-src-3370200/sqlite3.c:130773:11:
-					zType = __ccgo_ts + 14531
+					zType = __ccgo_ts + 14523
 				} else {
 					// /tmp/libsqlite3/sqlite-src-3370200/sqlite3.c:130774:15:
 					if int32((*TTable)(unsafe.Pointer(pTab2)).FeTabType) == int32(m_TABTYP_VTAB) {
@@ -305280,7 +305276,7 @@ func x_sqlite3Pragma(tls *libc.TLS, pParse uintptr, pId1 uintptr, pId2 uintptr, 
 			// /tmp/libsqlite3/sqlite-src-3370200/sqlite3.c:130908:7:
 			v26 = i4
 			i4++
-			x_sqlite3VdbeMultiLoad(tls, v, int32(1), __ccgo_ts+13023, libc.VaList(bp+168, v26, (*TCollSeq)(unsafe.Pointer(pColl)).FzName))
+			x_sqlite3VdbeMultiLoad(tls, v, int32(1), __ccgo_ts+13015, libc.VaList(bp+168, v26, (*TCollSeq)(unsafe.Pointer(pColl)).FzName))
 			goto _25
 		_25:
 			p = (*THashElem)(unsafe.Pointer(p)).Fnext
@@ -307008,7 +307004,7 @@ var _encnames1 = [9]struct {
 	Fenc   Tu8
 }{
 	0: {
-		FzName: __ccgo_ts + 10919,
+		FzName: __ccgo_ts + 10911,
 		Fenc:   uint8(m_SQLITE_UTF8),
 	},
 	1: {
@@ -307035,7 +307031,7 @@ var _encnames1 = [9]struct {
 		FzName: __ccgo_ts + 57169,
 	},
 	7: {
-		FzName: __ccgo_ts + 10940,
+		FzName: __ccgo_ts + 10932,
 	},
 	8: {},
 }
@@ -307074,10 +307070,10 @@ var _readCookie = [3]TVdbeOpList{
 // /tmp/libsqlite3/sqlite-src-3370200/sqlite3.c:131866:23:
 var _azLockName = [5]uintptr{
 	0: __ccgo_ts + 57219,
-	1: __ccgo_ts + 23212,
+	1: __ccgo_ts + 23204,
 	2: __ccgo_ts + 57228,
 	3: __ccgo_ts + 57237,
-	4: __ccgo_ts + 23219,
+	4: __ccgo_ts + 23211,
 }
 
 // C documentation
@@ -307197,7 +307193,7 @@ func _pragmaVtabConnect(tls *libc.TLS, db uintptr, pAux uintptr, argc int32, arg
 		j++
 	}
 	// /tmp/libsqlite3/sqlite-src-3370200/sqlite3.c:131973:3:
-	x_sqlite3_str_append(tls, bp, __ccgo_ts+12373, int32(1))
+	x_sqlite3_str_append(tls, bp, __ccgo_ts+12365, int32(1))
 	// /tmp/libsqlite3/sqlite-src-3370200/sqlite3.c:131974:3:
 	x_sqlite3StrAccumFinish(tls, bp)
 	// /tmp/libsqlite3/sqlite-src-3370200/sqlite3.c:131975:3:
@@ -307724,7 +307720,7 @@ func _corruptSchema(tls *libc.TLS, pData uintptr, azObj uintptr, zExtra uintptr)
 					if *(*uintptr)(unsafe.Pointer(azObj + 1*8)) != 0 {
 						v1 = *(*uintptr)(unsafe.Pointer(azObj + 1*8))
 					} else {
-						v1 = __ccgo_ts + 12347
+						v1 = __ccgo_ts + 12339
 					}
 					// /tmp/libsqlite3/sqlite-src-3370200/sqlite3.c:132275:16:
 					zObj = v1
@@ -307986,7 +307982,7 @@ func x_sqlite3InitOne(tls *libc.TLS, db uintptr, iDb int32, pzErrMsg uintptr, mF
 	// /tmp/libsqlite3/sqlite-src-3370200/sqlite3.c:132454:3:
 	(*(*[6]uintptr)(unsafe.Pointer(bp)))[int32(2)] = (*(*[6]uintptr)(unsafe.Pointer(bp)))[int32(1)]
 	// /tmp/libsqlite3/sqlite-src-3370200/sqlite3.c:132455:3:
-	(*(*[6]uintptr)(unsafe.Pointer(bp)))[int32(3)] = __ccgo_ts + 13466
+	(*(*[6]uintptr)(unsafe.Pointer(bp)))[int32(3)] = __ccgo_ts + 13458
 	// /tmp/libsqlite3/sqlite-src-3370200/sqlite3.c:132456:3:
 	(*(*[6]uintptr)(unsafe.Pointer(bp)))[int32(4)] = __ccgo_ts + 57444
 	// /tmp/libsqlite3/sqlite-src-3370200/sqlite3.c:132458:3:
@@ -311731,7 +311727,7 @@ func x_sqlite3GenerateColumnNames(tls *libc.TLS, pParse uintptr, pSelect uintptr
 				// /tmp/libsqlite3/sqlite-src-3370200/sqlite3.c:135282:7:
 				if iCol < 0 {
 					// /tmp/libsqlite3/sqlite-src-3370200/sqlite3.c:135283:9:
-					zCol = __ccgo_ts + 12122
+					zCol = __ccgo_ts + 12114
 				} else {
 					// /tmp/libsqlite3/sqlite-src-3370200/sqlite3.c:135285:9:
 					zCol = (*(*TColumn)(unsafe.Pointer((*TTable)(unsafe.Pointer(pTab)).FaCol + uintptr(iCol)*16))).FzCnName
@@ -311875,7 +311871,7 @@ func x_sqlite3ColumnsFromExprList(tls *libc.TLS, pParse uintptr, pEList uintptr,
 				if iCol >= 0 {
 					v5 = (*(*TColumn)(unsafe.Pointer((*TTable)(unsafe.Pointer(pTab)).FaCol + uintptr(iCol)*16))).FzCnName
 				} else {
-					v5 = __ccgo_ts + 12122
+					v5 = __ccgo_ts + 12114
 				}
 				zName = v5
 			} else {
@@ -317158,7 +317154,7 @@ func _selectExpander(tls *libc.TLS, pWalker uintptr, p uintptr) (r int32) {
 						if iDb >= 0 {
 							v9 = (*(*TDb)(unsafe.Pointer((*Tsqlite3)(unsafe.Pointer(db)).FaDb + uintptr(iDb)*32))).FzDbSName
 						} else {
-							v9 = __ccgo_ts + 26021
+							v9 = __ccgo_ts + 26013
 						}
 						zSchemaName = v9
 					}
@@ -317811,7 +317807,7 @@ func _explainSimpleCount(tls *libc.TLS, pParse uintptr, pTab uintptr, pIdx uintp
 		bCover = libc.BoolInt32(pIdx != uintptr(0) && ((*TTable)(unsafe.Pointer(pTab)).FtabFlags&uint32(m_TF_WithoutRowid) == uint32(0) || !(int32(uint32(*(*uint16)(unsafe.Pointer(pIdx + 100))&0x3>>0)) == libc.Int32FromInt32(m_SQLITE_IDXTYPE_PRIMARYKEY))))
 		// /tmp/libsqlite3/sqlite-src-3370200/sqlite3.c:139321:5:
 		if bCover != 0 {
-			v1 = __ccgo_ts + 23911
+			v1 = __ccgo_ts + 23903
 		} else {
 			v1 = __ccgo_ts + 1095
 		}
@@ -317860,7 +317856,7 @@ func _havingToWhereExprCb(tls *libc.TLS, pWalker uintptr, pExpr uintptr) (r int3
 			// /tmp/libsqlite3/sqlite-src-3370200/sqlite3.c:139357:15:
 			db = (*TParse)(unsafe.Pointer((*TWalker)(unsafe.Pointer(pWalker)).FpParse)).Fdb
 			// /tmp/libsqlite3/sqlite-src-3370200/sqlite3.c:139358:12:
-			pNew = x_sqlite3Expr(tls, db, int32(m_TK_INTEGER), __ccgo_ts+13466)
+			pNew = x_sqlite3Expr(tls, db, int32(m_TK_INTEGER), __ccgo_ts+13458)
 			// /tmp/libsqlite3/sqlite-src-3370200/sqlite3.c:139359:7:
 			if pNew != 0 {
 				// /tmp/libsqlite3/sqlite-src-3370200/sqlite3.c:139360:14:
@@ -320129,7 +320125,7 @@ func x_sqlite3BeginTrigger(tls *libc.TLS, pParse uintptr, pName1 uintptr, pName2
 	}
 	// /tmp/libsqlite3/sqlite-src-3370200/sqlite3.c:141159:3:
 	// /tmp/libsqlite3/sqlite-src-3370200/sqlite3.c:141160:3:
-	x_sqlite3FixInit(tls, bp+8, pParse, iDb, __ccgo_ts+14503, *(*uintptr)(unsafe.Pointer(bp)))
+	x_sqlite3FixInit(tls, bp+8, pParse, iDb, __ccgo_ts+14495, *(*uintptr)(unsafe.Pointer(bp)))
 	// /tmp/libsqlite3/sqlite-src-3370200/sqlite3.c:141161:3:
 	if x_sqlite3FixSrcList(tls, bp+8, pTableName) != 0 {
 		// /tmp/libsqlite3/sqlite-src-3370200/sqlite3.c:141162:5:
@@ -320161,7 +320157,7 @@ func x_sqlite3BeginTrigger(tls *libc.TLS, pParse uintptr, pName1 uintptr, pName2
 		goto trigger_cleanup
 	}
 	// /tmp/libsqlite3/sqlite-src-3370200/sqlite3.c:141181:3:
-	if x_sqlite3CheckObjectName(tls, pParse, zName, __ccgo_ts+14503, (*TTable)(unsafe.Pointer(pTab)).FzName) != 0 {
+	if x_sqlite3CheckObjectName(tls, pParse, zName, __ccgo_ts+14495, (*TTable)(unsafe.Pointer(pTab)).FzName) != 0 {
 		// /tmp/libsqlite3/sqlite-src-3370200/sqlite3.c:141182:5:
 		goto trigger_cleanup
 	}
@@ -320389,7 +320385,7 @@ func x_sqlite3FinishTrigger(tls *libc.TLS, pParse uintptr, pStepList uintptr, pA
 	// /tmp/libsqlite3/sqlite-src-3370200/sqlite3.c:141318:3:
 	x_sqlite3TokenInit(tls, bp+96, (*TTrigger)(unsafe.Pointer(pTrig)).FzName)
 	// /tmp/libsqlite3/sqlite-src-3370200/sqlite3.c:141319:3:
-	x_sqlite3FixInit(tls, bp, pParse, iDb, __ccgo_ts+14503, bp+96)
+	x_sqlite3FixInit(tls, bp, pParse, iDb, __ccgo_ts+14495, bp+96)
 	// /tmp/libsqlite3/sqlite-src-3370200/sqlite3.c:141320:3:
 	if x_sqlite3FixTriggerStep(tls, bp, (*TTrigger)(unsafe.Pointer(pTrig)).Fstep_list) != 0 || x_sqlite3FixExpr(tls, bp, (*TTrigger)(unsafe.Pointer(pTrig)).FpWhen) != 0 {
 		// /tmp/libsqlite3/sqlite-src-3370200/sqlite3.c:141323:5:
@@ -327854,7 +327850,7 @@ func _explainIndexColumnName(tls *libc.TLS, pIdx uintptr, i int32) (r uintptr) {
 	// /tmp/libsqlite3/sqlite-src-3370200/sqlite3.c:146463:3:
 	if i == -int32(1) {
 		// /tmp/libsqlite3/sqlite-src-3370200/sqlite3.c:146463:21:
-		return __ccgo_ts + 12122
+		return __ccgo_ts + 12114
 	}
 	// /tmp/libsqlite3/sqlite-src-3370200/sqlite3.c:146464:3:
 	return (*(*TColumn)(unsafe.Pointer((*TTable)(unsafe.Pointer((*TIndex)(unsafe.Pointer(pIdx)).FpTable)).FaCol + uintptr(i)*16))).FzCnName
@@ -327896,7 +327892,7 @@ func _explainAppendTerm(tls *libc.TLS, pStr uintptr, pIdx uintptr, nTerm int32, 
 		// /tmp/libsqlite3/sqlite-src-3370200/sqlite3.c:146490:5:
 		if i != 0 {
 			// /tmp/libsqlite3/sqlite-src-3370200/sqlite3.c:146490:13:
-			x_sqlite3_str_append(tls, pStr, __ccgo_ts+12269, int32(1))
+			x_sqlite3_str_append(tls, pStr, __ccgo_ts+12261, int32(1))
 		}
 		// /tmp/libsqlite3/sqlite-src-3370200/sqlite3.c:146491:5:
 		x_sqlite3_str_appendall(tls, pStr, _explainIndexColumnName(tls, pIdx, iTerm+i))
@@ -327907,7 +327903,7 @@ func _explainAppendTerm(tls *libc.TLS, pStr uintptr, pIdx uintptr, nTerm int32, 
 	// /tmp/libsqlite3/sqlite-src-3370200/sqlite3.c:146493:3:
 	if nTerm > int32(1) {
 		// /tmp/libsqlite3/sqlite-src-3370200/sqlite3.c:146493:17:
-		x_sqlite3_str_append(tls, pStr, __ccgo_ts+12373, int32(1))
+		x_sqlite3_str_append(tls, pStr, __ccgo_ts+12365, int32(1))
 	}
 	// /tmp/libsqlite3/sqlite-src-3370200/sqlite3.c:146495:3:
 	x_sqlite3_str_append(tls, pStr, zOp, int32(1))
@@ -327925,10 +327921,10 @@ func _explainAppendTerm(tls *libc.TLS, pStr uintptr, pIdx uintptr, nTerm int32, 
 		// /tmp/libsqlite3/sqlite-src-3370200/sqlite3.c:146499:5:
 		if i != 0 {
 			// /tmp/libsqlite3/sqlite-src-3370200/sqlite3.c:146499:13:
-			x_sqlite3_str_append(tls, pStr, __ccgo_ts+12269, int32(1))
+			x_sqlite3_str_append(tls, pStr, __ccgo_ts+12261, int32(1))
 		}
 		// /tmp/libsqlite3/sqlite-src-3370200/sqlite3.c:146500:5:
-		x_sqlite3_str_append(tls, pStr, __ccgo_ts+12347, int32(1))
+		x_sqlite3_str_append(tls, pStr, __ccgo_ts+12339, int32(1))
 		goto _2
 	_2:
 		i++
@@ -327936,7 +327932,7 @@ func _explainAppendTerm(tls *libc.TLS, pStr uintptr, pIdx uintptr, nTerm int32, 
 	// /tmp/libsqlite3/sqlite-src-3370200/sqlite3.c:146502:3:
 	if nTerm > int32(1) {
 		// /tmp/libsqlite3/sqlite-src-3370200/sqlite3.c:146502:17:
-		x_sqlite3_str_append(tls, pStr, __ccgo_ts+12373, int32(1))
+		x_sqlite3_str_append(tls, pStr, __ccgo_ts+12365, int32(1))
 	}
 }
 
@@ -328026,7 +328022,7 @@ func _explainIndexRange(tls *libc.TLS, pStr uintptr, pLoop uintptr) {
 			FnTop         Tu16
 			FnDistinctCol Tu16
 			FpIndex       uintptr
-		})(unsafe.Pointer(pLoop + 24))).FnBtm), j, i, __ccgo_ts+12132)
+		})(unsafe.Pointer(pLoop + 24))).FnBtm), j, i, __ccgo_ts+12124)
 		// /tmp/libsqlite3/sqlite-src-3370200/sqlite3.c:146536:5:
 		i = int32(1)
 	}
@@ -328039,10 +328035,10 @@ func _explainIndexRange(tls *libc.TLS, pStr uintptr, pLoop uintptr) {
 			FnTop         Tu16
 			FnDistinctCol Tu16
 			FpIndex       uintptr
-		})(unsafe.Pointer(pLoop + 24))).FnTop), j, i, __ccgo_ts+12130)
+		})(unsafe.Pointer(pLoop + 24))).FnTop), j, i, __ccgo_ts+12122)
 	}
 	// /tmp/libsqlite3/sqlite-src-3370200/sqlite3.c:146541:3:
-	x_sqlite3_str_append(tls, pStr, __ccgo_ts+12373, int32(1))
+	x_sqlite3_str_append(tls, pStr, __ccgo_ts+12365, int32(1))
 }
 
 // C documentation
@@ -328169,7 +328165,7 @@ func x_sqlite3WhereExplainOneScan(tls *libc.TLS, pParse uintptr, pTabList uintpt
 				// /tmp/libsqlite3/sqlite-src-3370200/sqlite3.c:146612:7:
 				if flags&uint32(libc.Int32FromInt32(m_WHERE_COLUMN_EQ)|libc.Int32FromInt32(m_WHERE_COLUMN_IN)) != 0 {
 					// /tmp/libsqlite3/sqlite-src-3370200/sqlite3.c:146613:9:
-					zRangeOp = __ccgo_ts + 12128
+					zRangeOp = __ccgo_ts + 12120
 				} else {
 					// /tmp/libsqlite3/sqlite-src-3370200/sqlite3.c:146614:13:
 					if flags&uint32(m_WHERE_BOTH_LIMIT) == uint32(m_WHERE_BOTH_LIMIT) {
@@ -328179,11 +328175,11 @@ func x_sqlite3WhereExplainOneScan(tls *libc.TLS, pParse uintptr, pTabList uintpt
 						// /tmp/libsqlite3/sqlite-src-3370200/sqlite3.c:146616:13:
 						if flags&uint32(m_WHERE_BTM_LIMIT) != 0 {
 							// /tmp/libsqlite3/sqlite-src-3370200/sqlite3.c:146617:9:
-							zRangeOp = __ccgo_ts + 12132
+							zRangeOp = __ccgo_ts + 12124
 						} else {
 							// /tmp/libsqlite3/sqlite-src-3370200/sqlite3.c:146619:9:
 							// /tmp/libsqlite3/sqlite-src-3370200/sqlite3.c:146620:9:
-							zRangeOp = __ccgo_ts + 12130
+							zRangeOp = __ccgo_ts + 12122
 						}
 					}
 				}
@@ -332040,15 +332036,15 @@ var _aOp3 = [4]struct {
 	FeOp2 uint8
 }{
 	0: {
-		FzOp:  __ccgo_ts + 12991,
+		FzOp:  __ccgo_ts + 12983,
 		FeOp2: uint8(m_SQLITE_INDEX_CONSTRAINT_MATCH),
 	},
 	1: {
-		FzOp:  __ccgo_ts + 12150,
+		FzOp:  __ccgo_ts + 12142,
 		FeOp2: uint8(m_SQLITE_INDEX_CONSTRAINT_GLOB),
 	},
 	2: {
-		FzOp:  __ccgo_ts + 12145,
+		FzOp:  __ccgo_ts + 12137,
 		FeOp2: uint8(m_SQLITE_INDEX_CONSTRAINT_LIKE),
 	},
 	3: {
@@ -333235,7 +333231,7 @@ func _exprAnalyze(tls *libc.TLS, pSrc uintptr, pWC uintptr, idxTerm int32) {
 				// /tmp/libsqlite3/sqlite-src-3370200/sqlite3.c:150150:7:
 				(*TExpr)(unsafe.Pointer(pExpr)).Fop = uint8(m_TK_TRUEFALSE)
 				// /tmp/libsqlite3/sqlite-src-3370200/sqlite3.c:150151:7:
-				*(*uintptr)(unsafe.Pointer(pExpr + 8)) = __ccgo_ts + 26760
+				*(*uintptr)(unsafe.Pointer(pExpr + 8)) = __ccgo_ts + 26752
 				// /tmp/libsqlite3/sqlite-src-3370200/sqlite3.c:150152:7:
 				*(*Tu32)(unsafe.Pointer(pExpr + 4)) |= uint32(libc.Int32FromInt32(m_EP_IsFalse))
 				// /tmp/libsqlite3/sqlite-src-3370200/sqlite3.c:150153:7:
@@ -342825,7 +342821,7 @@ func x_sqlite3WindowUpdate(tls *libc.TLS, pParse uintptr, pList uintptr, pWin ui
 						// /tmp/libsqlite3/sqlite-src-3370200/sqlite3.c:157076:11:
 						if int32((*TWindow)(unsafe.Pointer(pWin)).FeStart) == int32(m_TK_FOLLOWING) {
 							// /tmp/libsqlite3/sqlite-src-3370200/sqlite3.c:157077:13:
-							(*TWindow)(unsafe.Pointer(pWin)).FpStart = x_sqlite3Expr(tls, db, int32(m_TK_INTEGER), __ccgo_ts+13466)
+							(*TWindow)(unsafe.Pointer(pWin)).FpStart = x_sqlite3Expr(tls, db, int32(m_TK_INTEGER), __ccgo_ts+13458)
 						}
 						// /tmp/libsqlite3/sqlite-src-3370200/sqlite3.c:157079:11:
 						break
@@ -355109,7 +355105,7 @@ _30: /* table_option_set ::= table_option_set COMMA table_option */
 	// /tmp/libsqlite3/sqlite-src-3370200/sqlite3.c:163111:7:
 _31: /* table_option ::= WITHOUT nm */
 	// /tmp/libsqlite3/sqlite-src-3370200/sqlite3.c:163113:3:
-	if *(*uint32)(unsafe.Pointer(yymsp + 8 + 8)) == uint32(5) && x_sqlite3_strnicmp(tls, *(*uintptr)(unsafe.Pointer(yymsp + 8)), __ccgo_ts+12122, int32(5)) == 0 {
+	if *(*uint32)(unsafe.Pointer(yymsp + 8 + 8)) == uint32(5) && x_sqlite3_strnicmp(tls, *(*uintptr)(unsafe.Pointer(yymsp + 8)), __ccgo_ts+12114, int32(5)) == 0 {
 		// /tmp/libsqlite3/sqlite-src-3370200/sqlite3.c:163114:5:
 		*(*Tu32)(unsafe.Pointer(yymsp + uintptr(-libc.Int32FromInt32(1))*24 + 8)) = uint32(libc.Int32FromInt32(m_TF_WithoutRowid) | libc.Int32FromInt32(m_TF_NoVisibleRowid))
 	} else {
@@ -356583,7 +356579,7 @@ _231: /* expr ::= expr in_op LP exprlist RP */
 		x_sqlite3ExprUnmapAndDelete(tls, pParse, *(*uintptr)(unsafe.Pointer(yymsp + uintptr(-libc.Int32FromInt32(4))*24 + 8)))
 		// /tmp/libsqlite3/sqlite-src-3370200/sqlite3.c:163936:7:
 		if *(*int32)(unsafe.Pointer(yymsp + uintptr(-libc.Int32FromInt32(3))*24 + 8)) != 0 {
-			v344 = __ccgo_ts + 13466
+			v344 = __ccgo_ts + 13458
 		} else {
 			v344 = __ccgo_ts + 956
 		}
@@ -361138,7 +361134,7 @@ func x_sqlite3_complete(tls *libc.TLS, zSql uintptr) (r int32) {
 					fallthrough
 				case int32('T'):
 					// /tmp/libsqlite3/sqlite-src-3370200/sqlite3.c:166419:15:
-					if nId == int32(7) && x_sqlite3_strnicmp(tls, zSql, __ccgo_ts+14503, int32(7)) == 0 {
+					if nId == int32(7) && x_sqlite3_strnicmp(tls, zSql, __ccgo_ts+14495, int32(7)) == 0 {
 						// /tmp/libsqlite3/sqlite-src-3370200/sqlite3.c:166420:17:
 						token = uint8(m_tkTRIGGER)
 					} else {
@@ -363237,14 +363233,14 @@ func x_sqlite3ErrName(tls *libc.TLS, rc int32) (r uintptr) {
 		// /tmp/libsqlite3/sqlite-src-3370200/sqlite3.c:168069:7:
 		case m_SQLITE_OK:
 			// /tmp/libsqlite3/sqlite-src-3370200/sqlite3.c:168069:39:
-			zName = __ccgo_ts + 22446
+			zName = __ccgo_ts + 22438
 			// /tmp/libsqlite3/sqlite-src-3370200/sqlite3.c:168069:75:
 			break
 			// /tmp/libsqlite3/sqlite-src-3370200/sqlite3.c:168070:7:
 			fallthrough
 		case int32(m_SQLITE_ERROR):
 			// /tmp/libsqlite3/sqlite-src-3370200/sqlite3.c:168070:39:
-			zName = __ccgo_ts + 22456
+			zName = __ccgo_ts + 22448
 			// /tmp/libsqlite3/sqlite-src-3370200/sqlite3.c:168070:75:
 			break
 			// /tmp/libsqlite3/sqlite-src-3370200/sqlite3.c:168071:7:
@@ -363286,7 +363282,7 @@ func x_sqlite3ErrName(tls *libc.TLS, rc int32) (r uintptr) {
 			fallthrough
 		case int32(m_SQLITE_BUSY):
 			// /tmp/libsqlite3/sqlite-src-3370200/sqlite3.c:168076:39:
-			zName = __ccgo_ts + 22496
+			zName = __ccgo_ts + 22488
 			// /tmp/libsqlite3/sqlite-src-3370200/sqlite3.c:168076:75:
 			break
 			// /tmp/libsqlite3/sqlite-src-3370200/sqlite3.c:168077:7:
@@ -363307,7 +363303,7 @@ func x_sqlite3ErrName(tls *libc.TLS, rc int32) (r uintptr) {
 			fallthrough
 		case int32(m_SQLITE_LOCKED):
 			// /tmp/libsqlite3/sqlite-src-3370200/sqlite3.c:168079:39:
-			zName = __ccgo_ts + 22482
+			zName = __ccgo_ts + 22474
 			// /tmp/libsqlite3/sqlite-src-3370200/sqlite3.c:168079:75:
 			break
 			// /tmp/libsqlite3/sqlite-src-3370200/sqlite3.c:168080:7:
@@ -363321,14 +363317,14 @@ func x_sqlite3ErrName(tls *libc.TLS, rc int32) (r uintptr) {
 			fallthrough
 		case int32(m_SQLITE_NOMEM):
 			// /tmp/libsqlite3/sqlite-src-3370200/sqlite3.c:168081:39:
-			zName = __ccgo_ts + 17335
+			zName = __ccgo_ts + 17327
 			// /tmp/libsqlite3/sqlite-src-3370200/sqlite3.c:168081:75:
 			break
 			// /tmp/libsqlite3/sqlite-src-3370200/sqlite3.c:168082:7:
 			fallthrough
 		case int32(m_SQLITE_READONLY):
 			// /tmp/libsqlite3/sqlite-src-3370200/sqlite3.c:168082:39:
-			zName = __ccgo_ts + 22508
+			zName = __ccgo_ts + 22500
 			// /tmp/libsqlite3/sqlite-src-3370200/sqlite3.c:168082:75:
 			break
 			// /tmp/libsqlite3/sqlite-src-3370200/sqlite3.c:168083:7:
@@ -363342,7 +363338,7 @@ func x_sqlite3ErrName(tls *libc.TLS, rc int32) (r uintptr) {
 			fallthrough
 		case libc.Int32FromInt32(m_SQLITE_READONLY) | libc.Int32FromInt32(5)<<libc.Int32FromInt32(8):
 			// /tmp/libsqlite3/sqlite-src-3370200/sqlite3.c:168084:39:
-			zName = __ccgo_ts + 22524
+			zName = __ccgo_ts + 22516
 			// /tmp/libsqlite3/sqlite-src-3370200/sqlite3.c:168084:75:
 			break
 			// /tmp/libsqlite3/sqlite-src-3370200/sqlite3.c:168085:7:
@@ -363377,7 +363373,7 @@ func x_sqlite3ErrName(tls *libc.TLS, rc int32) (r uintptr) {
 			fallthrough
 		case int32(m_SQLITE_IOERR):
 			// /tmp/libsqlite3/sqlite-src-3370200/sqlite3.c:168089:39:
-			zName = __ccgo_ts + 22469
+			zName = __ccgo_ts + 22461
 			// /tmp/libsqlite3/sqlite-src-3370200/sqlite3.c:168089:75:
 			break
 			// /tmp/libsqlite3/sqlite-src-3370200/sqlite3.c:168090:7:
@@ -363573,7 +363569,7 @@ func x_sqlite3ErrName(tls *libc.TLS, rc int32) (r uintptr) {
 			fallthrough
 		case int32(m_SQLITE_NOTFOUND):
 			// /tmp/libsqlite3/sqlite-src-3370200/sqlite3.c:168118:39:
-			zName = __ccgo_ts + 22549
+			zName = __ccgo_ts + 22541
 			// /tmp/libsqlite3/sqlite-src-3370200/sqlite3.c:168118:75:
 			break
 			// /tmp/libsqlite3/sqlite-src-3370200/sqlite3.c:168119:7:
@@ -365736,7 +365732,7 @@ var _aCacheMode = [3]struct {
 	Fmode int32
 }{
 	0: {
-		Fz:    __ccgo_ts + 23212,
+		Fz:    __ccgo_ts + 23204,
 		Fmode: int32(m_SQLITE_OPEN_SHAREDCACHE),
 	},
 	1: {
@@ -367686,7 +367682,7 @@ func x_sqlite3_compileoption_used(tls *libc.TLS, zOptName uintptr) (r int32) {
 	// /tmp/libsqlite3/sqlite-src-3370200/sqlite3.c:171333:3:
 	azCompileOpt = x_sqlite3CompileOptions(tls, bp)
 	// /tmp/libsqlite3/sqlite-src-3370200/sqlite3.c:171335:3:
-	if x_sqlite3_strnicmp(tls, zOptName, __ccgo_ts+18443, int32(7)) == 0 {
+	if x_sqlite3_strnicmp(tls, zOptName, __ccgo_ts+18435, int32(7)) == 0 {
 		// /tmp/libsqlite3/sqlite-src-3370200/sqlite3.c:171335:52:
 		zOptName += uintptr(7)
 	}
@@ -369559,7 +369555,7 @@ statNextRestart:
 			// /tmp/libsqlite3/sqlite-src-3370200/sqlite3.c:207726:7:
 			if !((*TStatCursor)(unsafe.Pointer(pCsr)).FisAgg != 0) {
 				// /tmp/libsqlite3/sqlite-src-3370200/sqlite3.c:207727:9:
-				v1 = x_sqlite3_mprintf(tls, __ccgo_ts+23381, 0)
+				v1 = x_sqlite3_mprintf(tls, __ccgo_ts+23373, 0)
 				z = v1
 				(*(*TStatPage)(unsafe.Pointer(pCsr + 24))).FzPath = v1
 				// /tmp/libsqlite3/sqlite-src-3370200/sqlite3.c:207728:9:
@@ -371163,6 +371159,28 @@ type TIdList_item = struct {
 }
 
 // -:
+type T_ht = struct {
+	Fcount uint32
+	Fchain uintptr
+}
+
+// -:
+type TAggInfo_col = struct {
+	FpTab          uintptr
+	FpCExpr        uintptr
+	FiTable        int32
+	FiMem          int32
+	FiColumn       Ti16
+	FiSorterColumn Ti16
+}
+
+// -:
+type TShmRegion = struct {
+	FhMap THANDLE
+	FpMap uintptr
+}
+
+// -:
 type TAggInfo_func = struct {
 	FpFExpr    uintptr
 	FpFunc     uintptr
@@ -371187,28 +371205,6 @@ type TInLoop = struct {
 	FiBase      int32
 	FnPrefix    int32
 	FeEndLoopOp Tu8
-}
-
-// -:
-type TShmRegion = struct {
-	FhMap THANDLE
-	FpMap uintptr
-}
-
-// -:
-type T_ht = struct {
-	Fcount uint32
-	Fchain uintptr
-}
-
-// -:
-type TAggInfo_col = struct {
-	FpTab          uintptr
-	FpCExpr        uintptr
-	FiTable        int32
-	FiMem          int32
-	FiColumn       Ti16
-	FiSorterColumn Ti16
 }
 
 func __ccgo_fp(f interface{}) uintptr {
@@ -372710,4 +372706,4 @@ var x_sqlite3aLTb = uintptr(unsafe.Pointer(&x_sqlite3UpperToLower)) + uintptr(li
 
 var __ccgo_ts = (*reflect.StringHeader)(unsafe.Pointer(&__ccgo_ts1)).Data
 
-var __ccgo_ts1 = "SQLITE-CONNECTION\x00command not found: \x00%p\x00error code %s (%d) does not match sqlite3_errcode %s (%d)\x00NULL\x00OMIT_MISUSE\x00wrong # args: should be \"\x00 DB FORMAT STRING\x00%d\x00 DB HEX\x00 DB\x00 DB SQL\x00%s\x00%z%s%s\x00%s%n\x00abcdefghijklmnopqrstuvwxyz\x00 DB FORMAT STRING ?COUNT?\x00 DB\"\x00%lld\x00 FILENAME\"\x00%02x\x00%04x\x00tkt2213 is not fixed\x00text\x00text16\x00blob\x00bytes\x00bytes16\x00noop\x00x_coalesce\x00hex8\x00hex16\x00tkt2213func\x00pointer_change\x00counter1\x00counter2\x00intreal\x00x_sqlite_exec\x00value of 40 handed to x_count\x00x_count totals to 42\x00x_count\x00legacy_count\x00 TEXT\"\x00%s\n\x00 FORMAT INT INT INT\"\x00argument is not a valid 64-bit integer\x00 FORMAT INT INT ?STRING?\"\x00 INT FORMAT INT INT ?STRING?\"\x00N must be non-negative\x00 FORMAT INT INT DOUBLE\"\x00 FORMAT DOUBLE DOUBLE\"\x00 FORMAT STRING\"\x00%08x%08x\x002nd argument should be 16-characters of hex\x00?BOOLEAN?\x00DB BOOLEAN\x00DB dbname tblname colname\x00CHANNEL ROWID\x00DB-HANDLE NAME CMP-PROC DEL-PROC\x00sqlite3_create_collate_v2() failed to detect an invalid encoding\x00utf8\x00utf16\x00utf16le\x00utf16be\x00any\x000\x00DB NAME NARG ENC SWITCHES...\x00encoding\x00-func\x00-step\x00-final\x00-destroy\x00switch\x00DB-HANDLE FILE ?PROC?\x00this build omits sqlite3_load_extension()\x00\x00DB-HANDLE ONOFF\x00int\x00int64\x00string\x00double\x00null\x00value\x00first argument should be one of: int int64 string double null value\x00 DB FUNCTION-NAME\x00 <STMT>\x00SQLITE_STMTSTATUS_FULLSCAN_STEP\x00SQLITE_STMTSTATUS_SORT\x00SQLITE_STMTSTATUS_AUTOINDEX\x00SQLITE_STMTSTATUS_VM_STEP\x00SQLITE_STMTSTATUS_REPREPARE\x00SQLITE_STMTSTATUS_RUN\x00SQLITE_STMTSTATUS_MEMUSED\x00STMT PARAMETER RESETFLAG\x00NBYTE\x00FILE\x00PATH\x00main\x00 DB STMT\x00 STMT\x00 FROM-STMT TO-STMT\x00 VM IDX VALUE (null|static|normal)\"\x00static\x00static-nbytes\x00normal\x00blob10\x00abc\x00xyz\x00pq\x004th argument should be \"null\" or \"static\" or \"normal\"\x00(%d) \x00test_collate\x00UTF-8\x00UTF-16LE\x00UTF-16BE\x00 <DB> <utf8> <utf16le> <utf16be>\x00utf16bin\x00DB\x00utf16_unaligned\x00utf16_aligned\x00test_function\x00<error code>\x00STMT IDX N\x00 STMT N VALUE\x00NaN\x00SNaN\x00-NaN\x00-SNaN\x00+Inf\x00-Inf\x00Epsilon\x00-Epsilon\x00NaN0\x00-NaN0\x00 STMT N\x00 STMT N VALUE BYTES\x00out of memory\x00 STMT N DATA BYTES\x00cannot use %d blob bytes, have %d\x00-transient\x00-static\x00-int32\x00-int64\x00-double\x00-text\x00--\x00unknown option: \x00text data must be either -static or -transient\x00cannot be both -static and -transient\x00[OPTIONS] STMT IDX VALUE ...\x00STMT\x00STMT N\x00STMT NAME\x00MILLISECONDS\x00 DB sql bytes ?tailvar?\x00 DB sql bytes tailvar\x00 DB sql bytes flags tailvar\x00 filename options-list\x00FILENAME FLAGS VFS\x00SQLITE_OPEN_READONLY\x00SQLITE_OPEN_READWRITE\x00SQLITE_OPEN_CREATE\x00SQLITE_OPEN_DELETEONCLOSE\x00SQLITE_OPEN_EXCLUSIVE\x00SQLITE_OPEN_AUTOPROXY\x00SQLITE_OPEN_MAIN_DB\x00SQLITE_OPEN_TEMP_DB\x00SQLITE_OPEN_TRANSIENT_DB\x00SQLITE_OPEN_MAIN_JOURNAL\x00SQLITE_OPEN_TEMP_JOURNAL\x00SQLITE_OPEN_SUBJOURNAL\x00SQLITE_OPEN_SUPER_JOURNAL\x00SQLITE_OPEN_NOMUTEX\x00SQLITE_OPEN_FULLMUTEX\x00SQLITE_OPEN_SHAREDCACHE\x00SQLITE_OPEN_PRIVATECACHE\x00SQLITE_OPEN_WAL\x00SQLITE_OPEN_URI\x00SQLITE_OPEN_EXRESCODE\x00flag\x00<utf-16 sql>\x00SQL\x00 STMT column\x00INTEGER\x00FLOAT\x00TEXT\x00BLOB\x00 DB function-name\x00VARIABLE\x00DB DBNAME\x00?N?\x001234567890000000\x00__one\x00__two\x00notadatabase\x00temp\x00Unexpected non-zero errno: \x00 \x00DB [DBNAME]\x00%u\x00DB DBNAME SIZE\x00 DB PWD\x00 DB NRETRY DELAY\x00%d %d %d\x00%d %p\x00 DB HANDLE\x00 DB FLAG\x00%d %d\x00 DB ?AUXDB?\x00DB N\x00SQLITE_LIMIT_LENGTH\x00SQLITE_LIMIT_SQL_LENGTH\x00SQLITE_LIMIT_COLUMN\x00SQLITE_LIMIT_EXPR_DEPTH\x00SQLITE_LIMIT_COMPOUND_SELECT\x00SQLITE_LIMIT_VDBE_OP\x00SQLITE_LIMIT_FUNCTION_ARG\x00SQLITE_LIMIT_ATTACHED\x00SQLITE_LIMIT_LIKE_PATTERN_LENGTH\x00SQLITE_LIMIT_VARIABLE_NUMBER\x00SQLITE_LIMIT_TRIGGER_DEPTH\x00SQLITE_LIMIT_WORKER_THREADS\x00SQLITE_LIMIT_TOOSMALL\x00SQLITE_LIMIT_TOOBIG\x00 DB ID VALUE\x00unknown limit type: \x00SEED ?DB?\x00BOOLEAN\x00current\x00max\x00min\x00recyclable\x00DB ?NAME?\x00passive\x00full\x00restart\x00truncate\x00DB MODE ?NAME?\x00mode\x00 - \x00DB VALUE\x00SCRIPT\x00COMMAND ...\x00command has no objProc: \x00EXPLAIN QUERY PLAN %s\x00%d %d %d %s\n\x00SQLITE_TESTCTRL_LOCALTIME_FAULT\x00SQLITE_TESTCTRL_SORTER_MMAP\x00SQLITE_TESTCTRL_IMPOSTER\x00SQLITE_TESTCTRL_INTERNAL_FUNCTIONS\x00VERB ARGS...\x00VERB\x00ONOFF\x00DB LIMIT\x00DB dbName onOff tnum\x00win32_file_lock\x00FILENAME DELAY1 DELAY2\x00%d %d %d %d %d\x00busy\x00cannot open file: \x00cannot create event: \x000x%x\x00wait failed: \x00PATTERN\x00FILENAME\x00DIRECTORY\x00all\x00none\x00query-flattener\x00groupby-order\x00factor-constants\x00distinct-opt\x00cover-idx-scan\x00order-by-idx-join\x00transitive\x00omit-noop-join\x00stat4\x00skip-scan\x00push-down\x00DB OPT BOOLEAN\x00unknown optimization - should be one of:\x00amatch\x00appendvfs\x00carray\x00closure\x00csv\x00decimal\x00eval\x00explain\x00fileio\x00fuzzer\x00ieee754\x00nextchar\x00percentile\x00prefixes\x00regexp\x00remember\x00series\x00spellfix\x00totype\x00unionvtab\x00wholenumber\x00zipfile\x00DB NAME ...\x00no such extension: \x00initialization of \x00 failed: \x00BOOL\x00DB SQL1 NSTEP SQL2\x00data error: (a!=b)\x00checksum mismatch\x00sql error: \x00TYPE\x00Deliberate panic\x00FKEY\x00TRIGGER\x00FTS3_TOKENIZER\x00LOAD_EXTENSION\x00NO_CKPT_ON_CLOSE\x00QPSG\x00TRIGGER_EQP\x00RESET_DB\x00DEFENSIVE\x00WRITABLE_SCHEMA\x00LEGACY_ALTER_TABLE\x00DQS_DML\x00DQS_DDL\x00LEGACY_FILE_FORMAT\x00DB SETTING [VALUE]\x00SQLITE_*\x00DBCONFIG_*\x00ENABLE_*\x00unknown sqlite3_db_config setting\x00DB ?SCHEMA?\x00icecube\x00DB ?DBNAME?\x00DB OFFSET DATA\x00HEXDB\x00| size %d pagesize %d\x00bad 'pagesize' field\x00bad 'size' field\x00| page %d offset %d\x00| %d: %x %x %x %x %x %x %x %x %x %x %x %x %x %x %x %x\x00DB ?SCRIPT?\x00sqlite3_autovacuum_pages() returns %d\x00db_enter\x00db_leave\x00sqlite3_mprintf_int\x00sqlite3_mprintf_int64\x00sqlite3_mprintf_long\x00sqlite3_mprintf_str\x00sqlite3_snprintf_str\x00sqlite3_mprintf_stronly\x00sqlite3_mprintf_double\x00sqlite3_mprintf_scaled\x00sqlite3_mprintf_hexdouble\x00sqlite3_mprintf_z_test\x00sqlite3_mprintf_n_test\x00sqlite3_snprintf_int\x00sqlite3_last_insert_rowid\x00sqlite3_exec_printf\x00sqlite3_exec_hex\x00sqlite3_exec\x00sqlite3_exec_nr\x00sqlite3_get_table_printf\x00sqlite3_close\x00sqlite3_close_v2\x00sqlite3_create_function\x00sqlite3_create_aggregate\x00sqlite3_drop_modules\x00sqlite_register_test_function\x00sqlite_abort\x00sqlite_bind\x00breakpoint\x00sqlite3_key\x00sqlite3_rekey\x00sqlite3_interrupt\x00sqlite_delete_function\x00sqlite_delete_collation\x00sqlite3_get_autocommit\x00sqlite3_busy_timeout\x00printf\x00sqlite3IoTrace\x00clang_sanitize_address\x00sqlite3_db_config\x00sqlite3_txn_state\x00bad_behavior\x00register_dbstat_vtab\x00sqlite3_connection_pointer\x00intarray_addr\x00int64array_addr\x00doublearray_addr\x00textarray_addr\x00sqlite3_bind_int\x00sqlite3_bind_zeroblob\x00sqlite3_bind_zeroblob64\x00sqlite3_bind_int64\x00sqlite3_bind_double\x00sqlite3_bind_null\x00sqlite3_bind_text\x00sqlite3_bind_text16\x00sqlite3_bind_blob\x00sqlite3_carray_bind\x00sqlite3_bind_parameter_count\x00sqlite3_bind_parameter_name\x00sqlite3_bind_parameter_index\x00sqlite3_clear_bindings\x00sqlite3_sleep\x00sqlite3_errcode\x00sqlite3_extended_errcode\x00sqlite3_errmsg\x00sqlite3_errmsg16\x00sqlite3_open\x00sqlite3_open16\x00sqlite3_open_v2\x00sqlite3_complete16\x00sqlite3_normalize\x00sqlite3_prepare\x00sqlite3_prepare16\x00sqlite3_prepare_v2\x00sqlite3_prepare_v3\x00sqlite3_prepare_tkt3134\x00sqlite3_prepare16_v2\x00sqlite3_finalize\x00sqlite3_stmt_status\x00sqlite3_reset\x00sqlite3_expired\x00sqlite3_transfer_bindings\x00sqlite3_changes\x00sqlite3_step\x00sqlite3_sql\x00sqlite3_expanded_sql\x00sqlite3_next_stmt\x00sqlite3_stmt_readonly\x00sqlite3_stmt_isexplain\x00sqlite3_stmt_busy\x00uses_stmt_journal\x00sqlite3_release_memory\x00sqlite3_db_release_memory\x00sqlite3_db_cacheflush\x00sqlite3_system_errno\x00sqlite3_db_filename\x00sqlite3_db_readonly\x00sqlite3_soft_heap_limit\x00sqlite3_soft_heap_limit64\x00sqlite3_hard_heap_limit64\x00sqlite3_thread_cleanup\x00sqlite3_pager_refcounts\x00sqlite3_load_extension\x00sqlite3_enable_load_extension\x00sqlite3_extended_result_codes\x00sqlite3_limit\x00dbconfig_maindbname_icecube\x00save_prng_state\x00restore_prng_state\x00reset_prng_state\x00prng_seed\x00extra_schema_checks\x00database_never_corrupt\x00database_may_be_corrupt\x00optimization_control\x00lock_win32_file\x00exists_win32_path\x00find_win32_file\x00delete_win32_file\x00make_win32_dir\x00remove_win32_dir\x00tcl_objproc\x00sqlite3_column_count\x00sqlite3_data_count\x00sqlite3_column_type\x00sqlite3_column_blob\x00sqlite3_column_double\x00sqlite3_column_int64\x00sqlite3_column_text\x00sqlite3_column_name\x00sqlite3_column_int\x00sqlite3_column_bytes\x00sqlite3_column_decltype\x00sqlite3_column_bytes16\x00sqlite3_column_text16\x00sqlite3_column_name16\x00add_alignment_test_collations\x00sqlite3_column_decltype16\x00sqlite3_create_collation_v2\x00sqlite3_global_recover\x00working_64bit_int\x00vfs_unlink_test\x00vfs_initfail_test\x00vfs_unregister_all\x00vfs_reregister_all\x00file_control_test\x00file_control_lasterrno_test\x00file_control_lockproxy_test\x00file_control_chunksize_test\x00file_control_sizehint_test\x00file_control_data_version\x00file_control_win32_av_retry\x00file_control_win32_get_handle\x00file_control_win32_set_handle\x00file_control_persist_wal\x00file_control_powersafe_overwrite\x00file_control_vfsname\x00file_control_reservebytes\x00file_control_tempfilename\x00file_control_external_reader\x00sqlite3_vfs_list\x00sqlite3_create_function_v2\x00add_test_collate\x00add_test_collate_needed\x00add_test_function\x00add_test_utf16bin_collate\x00sqlite3_test_errstr\x00tcl_variable_type\x00sqlite3_enable_shared_cache\x00sqlite3_shared_cache_report\x00sqlite3_libversion_number\x00sqlite3_table_column_metadata\x00sqlite3_blob_reopen\x00pcache_stats\x00sqlite3_wal_checkpoint\x00sqlite3_wal_checkpoint_v2\x00sqlite3_wal_autocheckpoint\x00test_sqlite3_log\x00print_explain_query_plan\x00sqlite3_test_control\x00load_static_extension\x00sorter_test_fakeheap\x00sorter_test_sort4_helper\x00vfs_current_time_int64\x00sqlite3_delete_database\x00atomic_batch_write\x00sqlite3_mmap_warm\x00sqlite3_config_sorterref\x00sqlite3_autovacuum_pages\x00decode_hexdb\x00test_write_db\x00sqlite3_register_cksumvfs\x00sqlite3_unregister_cksumvfs\x00sqlite_search_count\x00sqlite_found_count\x00sqlite_sort_count\x00sqlite3_max_blobsize\x00sqlite_like_count\x00sqlite_interrupt_count\x00sqlite_open_file_count\x00sqlite_current_time\x00sqlite3_xferopt_count\x00sqlite3_pager_readdb_count\x00sqlite3_pager_writedb_count\x00sqlite3_pager_writej_count\x00unaligned_string_counter\x00sqlite_last_needed_collation\x00sqlite_os_type\x00*** OBSOLETE VARIABLE ***\x00sqlite_query_plan\x00sqlite_opentemp_count\x00sqlite_static_bind_value\x00sqlite_static_bind_nbyte\x00sqlite_temp_directory\x00sqlite_data_directory\x00bitmask_size\x00longdouble_size\x00sqlite_sync_count\x00sqlite_fullsync_count\x00 FILENAME N-PAGE\"\x00 ID\"\x00ref\x00page\x00size\x00state\x00err\x00hit\x00miss\x00ovfl\x00 ID PGNO\"\x00 PAGE\"\x00 PAGE DATA\"\x00 N-MEGABYTES FILE\"\x00open failed: \x00Hello, World!\x00write failed: \x00 PENDING-BYTE\"\x00fault simulator script failed: [%s]\x00 SCRIPT\"\x00 SIZE PROGRAM\"\x00pager_open\x00pager_close\x00pager_commit\x00pager_rollback\x00pager_stmt_begin\x00pager_stmt_commit\x00pager_stmt_rollback\x00pager_stats\x00pager_pagecount\x00page_get\x00page_lookup\x00page_unref\x00page_read\x00page_write\x00page_number\x00pager_truncate\x00fake_big_file\x00sqlite3BitvecBuiltinTest\x00sqlite3_test_control_pending_byte\x00sqlite3_test_control_fault_install\x00sqlite_io_error_pending\x00sqlite_io_error_persist\x00sqlite_io_error_hit\x00sqlite_io_error_hardhit\x00sqlite_diskfull_pending\x00sqlite_diskfull\x00sqlite_pending_byte\x00 FILENAME NCACHE FLAGS\"\x00read\x00write\x00 ID TABLENUM WRITEABLE\"\x00 START MULTIPLIER COUNT INCREMENT\"\x00putVarint returned %d - should be between 1 and 9\x00putVarint returned %d and getVarint returned %d\x00Wrote 0x%016llx and got back 0x%016llx\x00putVarint returned %d and GetVarint32 returned %d\x00Wrote 0x%016llx and got back 0x%016llx from GetVarint32\x00 DB-HANDLE ?N?\"\x00No such db-handle: \"\x00\"\x00 BT NCACHE\"\x00?-intkey? CSR KEY VALUE\x00btree_open\x00btree_close\x00btree_begin_transaction\x00btree_pager_stats\x00btree_cursor\x00btree_close_cursor\x00btree_next\x00btree_eof\x00btree_payload_size\x00btree_first\x00btree_varint_test\x00btree_from_db\x00btree_ismemdb\x00btree_set_cache_size\x00btree_insert\x00 <repeat-count> <do-calls>\x00hello world\x00UTF8\x00UTF16LE\x00UTF16BE\x00UTF16\x00No such encoding: \x00 <string/blob> <from enc> <to enc>\x00binarize\x00test_value_overhead\x00test_translate\x00translate_selftest\x00out of memory in the crash simulator\n\x00atomic\x00atomic512\x00atomic1k\x00atomic2k\x00atomic4k\x00atomic8k\x00atomic16k\x00atomic32k\x00atomic64k\x00sequential\x00safe_append\x00powersafe_overwrite\x00batch-atomic\x00-sectorsize\x00-characteristics\x00Bad option: \"\x00\" - must be \"-characteristics\" or \"-sectorsize\"\x00Option requires an argument: \"\x00no such flag\x00crash\x00ENABLE ?DEFAULT?\x00?OPTIONS? DELAY CRASHFILE\x00Filename is too long: \"\x00NWRITE\x00?-default? PARENT-VFS\x00-default\x00bad option \"\x00\": must be -default\x00Error in jt_register\x00sqlite3_crash_enable\x00sqlite3_crashparams\x00sqlite3_crash_now\x00sqlite3_simulate_device\x00sqlite3_crash_on_write\x00unregister_devsim\x00register_jt_vfs\x00unregister_jt_vfs\x00echo_module_fail(%s,%s)\x00echo-vtab-error: %s\x00SELECT * FROM %Q\x00PRAGMA index_list(%s)\x00PRAGMA index_info(%s)\x00echo_module\x00SELECT sql FROM sqlite_schema WHERE type = 'table' AND name = ?\x00%s%s\x00xCreate\x00CREATE TABLE %Q(logmsg)\x00xConnect\x00xDisconnect\x00xDestroy\x00DROP TABLE %Q\x00xOpen\x00xNext\x00xColumn\x00xRowid\x00xFilter\x00, *\x00%z, %s\x00%z, NULL\x00WHERE\x00echo_module_ignore_usable\x00xBestIndex\x00echo_module_cost\x00SELECT count(*) FROM %Q\x00SELECT rowid%z FROM %Q\x00rowid\x00=\x00<\x00>\x00<=\x00>=\x00LIKE\x00like\x00glob\x00 %s %s LIKE (SELECT '%%'||?||'%%')\x00 %s %s %s ?\x00AND\x00DESC\x00ASC\x00 ORDER BY %s %s\x00xUpdate\x00 SET\x00UPDATE %Q\x00 SET rowid=?1 \x00,\x00%s %Q=?%d\x00 WHERE rowid=?%d\x00DELETE FROM %Q WHERE rowid = ?1\x00INSERT INTO %Q (\x00?\x00, \x00%s%Q\x00%s?%d\x00) VALUES(\x00)\x00echo(%s)\x00xBegin\x00echo_module_begin_fail\x00xSync\x00echo_module_sync_fail\x00xCommit\x00xRollback\x00::echo_glob_overload\x00xRename\x00ALTER TABLE %s RENAME TO %s%s\x00function_that_does_not_exist_0982ma98\x00echo\x00echo_v2\x00DB SQL\x00register_echo_module\x00sqlite3_declare_vtab\x00N/A\x00:memory:\x00collate\x00sqlite3_create_collation\x00Error testing function: \x00sqlite3_malloc\x00sqlite3_realloc\x00c_misuse_test\x00c_realloc_test\x00c_collation_test\x00sqlite3_reset_auto_extension\x00step\x00npage\x00finish\x00remaining\x00pagecount\x00option\x00CMDNAME DESTHANDLE DESTNAME SRCHANDLE SRCNAME\x00sqlite3_backup_init() failed\x00sqlite3_backup\x00wrong number of arguments\x00sql\x00unexpected: %s\x00eq\x00gt\x00le\x00lt\x00ge\x00match\x00ne\x00isnot\x00isnotnull\x00isnull\x00is\x00op\x00column\x00usable\x00desc\x00cost\x00orderby\x00idxnum\x00idxstr\x00rows\x00use\x00omit\x00unexpected: %d\x00tcl\x00register_tcl_module\x00incrblob_\x00DB DATABASE TABLE COLUMN ROWID FLAGS VARNAME\x00HANDLE\x00CHANNEL OFFSET N\x00out of memory in ../sqlite-src-3370200/src/test_blob.c\x00HANDLE OFFSET DATA ?NDATA?\x00sqlite3_blob_open\x00sqlite3_blob_close\x00sqlite3_blob_bytes\x00sqlite3_blob_read\x00sqlite3_blob_write\x00sqlite_options\x00malloc_usable_size\x00rowid32\x00casesensitivelike\x00configslower\x001.0\x00curdir\x001\x00win32malloc\x00debug\x00default_ckptfullfsync\x00direct_read\x00dirsync\x00lfs\x00pagecache_overflow_stats\x00mmap\x00worker_threads\x00memdebug\x008_3_names\x00cursorhints\x00hiddencolumns\x00deserialize\x00mathlib\x00mem3\x00mem5\x00offset_sql_func\x00preupdate\x00snapshot\x00mutex\x00mutex_noop\x00altertable\x00analyze\x00api_armor\x00atomicwrite\x00geopoly\x00json1\x00has_codec\x00like_match_blobs\x00attach\x00auth\x00autoinc\x00autoindex\x00autoreset\x00autovacuum\x00default_autovacuum\x00between_opt\x00builtin_test\x00bloblit\x00cast\x00check\x00cte\x00columnmetadata\x00oversize_cell_check\x00compileoption_diags\x00complete\x00compound\x00conflict\x00crashtest\x00datetime\x00decltype\x00deprecated\x00diskio\x00floatingpoint\x00foreignkey\x00fts1\x00fts2\x00fts3\x00fts5\x00fts3_unicode\x00fts4_deferred\x00gettable\x00icu\x00icu_collations\x00incrblob\x00integrityck\x00legacyformat\x00like_opt\x00load_ext\x00localtime\x00lookaside\x00long_double\x00memorydb\x00memorymanage\x00mergesort\x00null_trim\x00or_opt\x00rbu\x00pager_pragmas\x00pragma\x00progress\x00reindex\x00rtree\x00rtree_int_only\x00schema_pragmas\x00schema_version\x00session\x00stmtvtab\x00scanstatus\x00lock_proxy_pragmas\x00prefer_proxy_locking\x00shared_cache\x00subquery\x00tclvar\x00threadsafe\x00threadsafe1\x00threadsafe2\x00tempdb\x00trace\x00trigger\x00truncate_opt\x00vacuum\x00view\x00vtab\x00wal\x00wsd\x00update_delete_limit\x00unlock_notify\x00fast_secure_delete\x00secure_delete\x00userauth\x00multiplex_ext_overwrite\x00yytrackmaxstackdepth\x00sqllog\x00uri_00_error\x00normalize\x00windowfunc\x00SQLITE_MAX_LENGTH\x00SQLITE_MAX_COLUMN\x00SQLITE_MAX_SQL_LENGTH\x00SQLITE_MAX_EXPR_DEPTH\x00SQLITE_MAX_COMPOUND_SELECT\x00SQLITE_MAX_VDBE_OP\x00SQLITE_MAX_FUNCTION_ARG\x00SQLITE_MAX_VARIABLE_NUMBER\x00SQLITE_MAX_PAGE_SIZE\x00SQLITE_MAX_PAGE_COUNT\x00SQLITE_MAX_LIKE_PATTERN_LENGTH\x00SQLITE_MAX_TRIGGER_DEPTH\x00SQLITE_DEFAULT_CACHE_SIZE\x00SQLITE_DEFAULT_PAGE_SIZE\x00SQLITE_DEFAULT_FILE_FORMAT\x00SQLITE_DEFAULT_SYNCHRONOUS\x00SQLITE_DEFAULT_WAL_SYNCHRONOUS\x00SQLITE_MAX_ATTACHED\x00SQLITE_MAX_DEFAULT_PAGE_SIZE\x00SQLITE_MAX_WORKER_THREADS\x00TEMP_STORE\x00_MSC_VER\x00__GNUC__\x00%s-journal\x00%s-wal\x00%s-shm\x00%s%03d\x00%s-journal%03d\x00%s-wal%03d\x00win32\x00devsym\x00writecrash\x00CREATE TABLE xyz(dir, name);\x00CREATE TABLE xyz(path, size, data);\x00WITH r(d) AS (  SELECT CASE WHEN dir=?2 THEN ?3 ELSE dir END || '/' || name     FROM fsdir WHERE dir=?1 AND name NOT LIKE '.%'  UNION ALL  SELECT dir || '/' || name FROM r, fsdir WHERE dir=d AND name NOT LIKE '.%') SELECT d FROM r;\x00fstreeDrive\x00SystemDrive\x00%s%c\x00CREATE TABLE x(path TEXT, data TEXT)\x00SELECT * FROM %Q.%Q WHERE rowid=?\x00SELECT * FROM %Q.%Q\x00fs\x00fsdir\x00fstree\x00register_fs_module\x00sqlite3_prepare_v2() error: %s\x000123456789abcdef\x00x'\x00'\x00randstr\x00test_destructor\x00test_destructor16\x00hex_to_utf16be\x00hex_to_utf16le\x00hex_to_utf8\x00test_destructor_count\x00test_auxdata\x00test_error\x00test_eval\x00test_isolation\x00test_counter\x00real2hex\x00test_decode\x00test_extract\x00test_zeroblob\x00test_getsubtype\x00test_setsubtype\x00test_frombind\x00test_agg_errmsg16\x00tx\x00funcxx_123456789_123456789_123456789_123456789_123456789_123456789_123456789_123456789_123456789_123456789_123456789_123456789_123456789_123456789_123456789_123456789_123456789_123456789_123456789_123456789_123456789_123456789_123456789_123456789_123456789\x00nullx_123456789_123456789_123456789_123456789_123456789_123456789_123456789_123456789_123456789_123456789_123456789_123456789_123456789_123456789_123456789_123456789_123456789_123456789_123456789_123456789_123456789_123456789_123456789_123456789_123456789\x00sqlite3_create_function abused test failed\x00invalid matchinfo blob passed to function rank()\x00wrong number of arguments to function rank()\x00rank\x00autoinstall_test_functions\x00abuse_create_function\x00install_fts3_rank_function\x00FILENAME OFFSET AMT\x00rb\x00r\x00cannot open input file \x00FILENAME OFFSET HEXDATA\x00r+b\x00r+\x00cannot open output file \x00HEXDATA\x00[utf8_to_utf8] unavailable - SQLITE_DEBUG not defined\x00BLOB VARNAME\x00LIST\x00hexio_read\x00hexio_write\x00hexio_get_int\x00hexio_render_int16\x00hexio_render_int32\x00utf8_to_utf8\x00read_fts3varint\x00make_fts3record\x00mem\x00pcache\x00Unknown argument: \"\x00init_wrapper_install\x00init_wrapper_query\x00init_wrapper_uninstall\x00init_wrapper_clear\x00CREATE TABLE x(value INTEGER PRIMARY KEY)\x00CREATE VIRTUAL TABLE temp.%Q USING %Q\x00INTARRAY\x00SQLITE_NOMEM\x00sqlite3_intarray_create\x00sqlite3_intarray_bind\x00jt\x00-journal\x00NBYTES\x00PRIOR NBYTES\x00bad pointer: \x00PRIOR\x00ADDRESS SIZE HEX\x00size must be positive\x00no data\x00ADDRESS SIZE\x00?RESET?\x00DEPT\x00COUNTER ?OPTIONS?\x00-repeat\x00option requires an argument: \x00-benigncnt\x00TITLE\x00start\x00stop\x00dump\x00clear\x00sync\x00SUB-COMMAND ...\x00sub-command\x00SIZE N\x00INSTALLFLAG DISCARDCHANCE PRNGSEEED HIGHSTRESS\x00discard-chance should be between 0 and 100\x00SIZE COUNT\x00BUFID SIZE COUNT\x00illegal arguments - see documentation\x00NBYTE NMINALLOC\x00[DB]\x00sqlite3_db_config(db, 99999) does not return SQLITE_ERROR\x00sqlite3_config(99999) does not return SQLITE_ERROR\x00SQLITE_STATUS_MEMORY_USED\x00SQLITE_STATUS_MALLOC_SIZE\x00SQLITE_STATUS_PAGECACHE_USED\x00SQLITE_STATUS_PAGECACHE_OVERFLOW\x00SQLITE_STATUS_PAGECACHE_SIZE\x00SQLITE_STATUS_SCRATCH_USED\x00SQLITE_STATUS_SCRATCH_OVERFLOW\x00SQLITE_STATUS_SCRATCH_SIZE\x00SQLITE_STATUS_PARSER_STACK\x00SQLITE_STATUS_MALLOC_COUNT\x00PARAMETER RESETFLAG\x00LOOKASIDE_USED\x00CACHE_USED\x00SCHEMA_USED\x00STMT_USED\x00LOOKASIDE_HIT\x00LOOKASIDE_MISS_SIZE\x00LOOKASIDE_MISS_FULL\x00CACHE_HIT\x00CACHE_MISS\x00CACHE_WRITE\x00DEFERRED_FKS\x00CACHE_USED_SHARED\x00CACHE_SPILL\x00DB PARAMETER RESETFLAG\x00SQLITE_\x00DBSTATUS_\x00?INTEGER?\x00sqlite3_free\x00memset\x00memget\x00sqlite3_memory_used\x00sqlite3_memory_highwater\x00sqlite3_memdebug_backtrace\x00sqlite3_memdebug_dump\x00sqlite3_memdebug_fail\x00sqlite3_memdebug_pending\x00sqlite3_memdebug_settitle\x00sqlite3_memdebug_malloc_count\x00sqlite3_memdebug_log\x00sqlite3_config_pagecache\x00sqlite3_config_alt_pcache\x00sqlite3_status\x00sqlite3_db_status\x00install_malloc_faultsim\x00sqlite3_config_heap\x00sqlite3_config_heap_size\x00sqlite3_config_memstatus\x00sqlite3_config_lookaside\x00sqlite3_config_error\x00sqlite3_config_uri\x00sqlite3_config_cis\x00sqlite3_config_pmasz\x00sqlite3_db_config_lookaside\x00sqlite3_dump_memsys3\x00sqlite3_dump_memsys5\x00sqlite3_install_memsys3\x00sqlite3_memdebug_vfs_oom_test\x00%05u\x00 FILENAME [OFFSET AMT]\"\x00unable to open file \"\x00\" for reading\x00md5\x00md5-10x8\x00md5file\x00md5file-10x8\x00md5sum\x00%03d\x00multiplexor.xAccess failure on %s\x00multiplexor.xOpen failure on %s\x00multiplex_control\x00chunksize\x00multiplex_\x00multiplex_truncate\x00on\x00off\x00multiplex_enabled\x00multiplex_chunksize\x00multiplex_filecount\x00multiplex/%z\x00multiplex\x00NAME MAKEDEFAULT\x00-force\x00?-force?\x00enable\x00chunk_size\x00max_chunks\x00HANDLE DBNAME SUB-COMMAND INT-VALUE\x00expected database handle, got \"\x00SUB-COMMAND\x00sqlite3_multiplex_initialize\x00sqlite3_multiplex_shutdown\x00sqlite3_multiplex_control\x00fast\x00recursive\x00static_main\x00static_mem\x00static_open\x00static_prng\x00static_lru\x00static_pmem\x00static_app1\x00static_app2\x00static_app3\x00static_vfs1\x00static_vfs2\x00static_vfs3\x00mutex counters are \x00already installed\x00not installed\x00singlethread\x00multithread\x00serialized\x00mutex name\x00NAME\x00sqlite3_shutdown\x00sqlite3_initialize\x00sqlite3_config\x00enter_static_mutex\x00leave_static_mutex\x00enter_db_mutex\x00leave_db_mutex\x00alloc_dealloc_mutex\x00install_mutex_counters\x00read_mutex_counters\x00clear_mutex_counters\x00disable_mutex_init\x00disable_mutex_try\x00\x00\x00\x00\x00\x00\x00\x00vfslog/%z\x00sqlite_ostrace1.....\x00xClose\x00xRead\x00xWrite\x00xTruncate\x00xFilesize\x00xLock\x00xUnlock\x00xCheckResLock\x00xFileControl\x00xSectorSize\x00xDeviceChar\x00xDelete\x00xAccess\x00xFullPathname\x00xRandomness\x00xSleep\x00xCurrentTime\x00xShmUnmap\x00xShmLock\x00xShmBarrier\x00xShmMap\x00annotation\x00CREATE TABLE xxx(event, file, click, rc, size, offset)\x00vfslog\x00annotate\x00finalize\x00new\x00register\x00VFS\x00failed\x00VFS PARENT LOGFILE\x00bad sqlite3 handle: \x00quota/%z\x00quota\x00::piLimit_\x00PATTERN LIMIT SCRIPT\x00FILENAME MODE\x00HANDLE SIZE NELEM\x00HANDLE SIZE NELEM CONTENT\x00HANDLE ?HARDSYNC?\x00HANDLE OFFSET WHENCE\x00SEEK_SET\x00SEEK_CUR\x00SEEK_END\x00WHENCE should be SEEK_SET, SEEK_CUR, or SEEK_END\x00HANDLE SIZE\x00PATTERN TEXT\x00sqlite3_quota_initialize\x00sqlite3_quota_shutdown\x00sqlite3_quota_set\x00sqlite3_quota_file\x00sqlite3_quota_dump\x00sqlite3_quota_fopen\x00sqlite3_quota_fread\x00sqlite3_quota_fwrite\x00sqlite3_quota_fclose\x00sqlite3_quota_fflush\x00sqlite3_quota_fseek\x00sqlite3_quota_rewind\x00sqlite3_quota_ftell\x00sqlite3_quota_ftruncate\x00sqlite3_quota_file_size\x00sqlite3_quota_file_truesize\x00sqlite3_quota_file_mtime\x00sqlite3_quota_remove\x00sqlite3_quota_glob\x00sqlite3_quota_file_available\x00sqlite3_quota_ferror\x00register_cube_geom\x00register_circle_geom\x00CREATE TABLE x(database,tablename,cid,name,type,not_null,dflt_value,pk)\x00SELECT name FROM sqlite_temp_schema WHERE type='table'\x00SELECT name FROM %Q.sqlite_schema WHERE type='table'\x00PRAGMA %Q.table_info(%Q)\x00PRAGMA database_list\x00schema\x00register_schema_module\x00PRAGMA main.journal_mode\x00BEGIN EXCLUSIVE\x00COMMIT\x00CMDNAME PATH ?VFS? ?BUSY-HANDLER-SCRIPT?\x00sqlite3demo_superlock\x00sqlite3\x00load_testfixture_extensions\x00SLAVE\x00array names\x00tclvar_filter_cmd\x00%s(%s)\x00expr {[info exists ::tclvar_set_omit] && $::tclvar_set_omit}\x00the 'fullname' column must be TEXT\x00prohibited TCL variable change\x00proc like {pattern str} {\n  set p [string map {% * _ ?} $pattern]\n  string match $p $str\n}\nproc tclvar_filter_cmd {eq match glob regexp like} {\n  set res {}\n  set pattern $eq\n  if {$pattern=={}} { set pattern $match }\n  if {$pattern=={}} { set pattern * }\n  foreach v [uplevel #0 info vars $pattern] {\n    if {($glob=={} || [string match $glob [uplevel #0 set $v]])\n     && ($like=={} || [like $like [uplevel #0 set $v]])\n     && ($regexp=={} || [regexp $regexp [uplevel #0 set $v]])\n    } {\n      lappend res $v\n    }\n  }\n  set res\n}\n\x00register_tclvar_module\x00SQLITE_OK\x00SQLITE_ERROR\x00SQLITE_IOERR\x00SQLITE_LOCKED\x00SQLITE_BUSY\x00SQLITE_READONLY\x00SQLITE_READONLY_CANTINIT\x00SQLITE_NOTFOUND\x00SQLITE_OMIT\x00normal|dataonly\x00full|dataonly\x00xCheckReservedLock\x00error\x00filename\x00BEGIN_ATOMIC_WRITE\x00COMMIT_ATOMIC_WRITE\x00ZIPVFS\x00anon\x00SQLITE_ACCESS_EXISTS\x00SQLITE_ACCESS_READWRITE\x00SQLITE_ACCESS_READ\x00xShmOpen\x00 lock\x00 unlock\x00 shared\x00 exclusive\x00shm\x00delete\x00filter\x00ioerr\x00fullerr\x00cantopenerr\x00script\x00devchar\x00sectorsize\x00SUBCOMMAND ...\x00subcommand\x00FILE ?VALUE?\x00failed to get full path: \x00no such file: \x00unknown method: \x00?SCRIPT?\x00?CNT PERSIST?\x00default\x00undeletable_when_open\x00immutable\x00?ATTR-LIST?\x00bad flags: \x00?VALUE?\x00-noshm\x00-szosfile\x00-mxpathname\x00-iversion\x00-fullshm\x00VFSNAME ?-noshm BOOL? ?-fullshm BOOL? ?-default BOOL? ?-mxpathname INT? ?-szosfile INT? ?-iversion INT?\x00shared\x00exclusive\x00lock\x00unlock\x00DB DBNAME (shared|exclusive) (lock|unlock) OFFSET N\x00ARG\x00DB DBNAME SLOT ?VALUE?\x00*-shm is not yet mapped\x00testvfs\x00vfs_shmlock\x00vfs_set_readmark\x00/\x00%s\\*\x00DB NAME XSTEP XFINAL XVALUE XINVERSE\x00fff\x00misuse test error\x00invalid argument\x00sumint\x00sum\x00sqlite3_create_window_function\x00test_create_window_function_misuse\x00test_create_sumint\x00test_override_sum\x00internal error!\x00SELECT * FROM main.%Q WHERE sample()\x00expert\x00PRAGMA table_xinfo=%Q\x00binary\x00%Q\x00 COLLATE %Q\x00 COLLATE %s\x00 DESC\x00PRAGMA index_list=%Q\x00PRAGMA index_xInfo=%Q\x00%s_idx_%08x\x00SELECT count(*) FROM sqlite_schema WHERE name=%Q AND type in ('index','table','view')\x00CREATE INDEX \"%w\" ON \"%w\"(%s)\x00CREATE INDEX %s ON %s(%s)\x00 USING INDEX \x00 USING COVERING INDEX \x00%s;\n\x00t592690916721053953805701627921227776\x00DROP TABLE t592690916721053953805701627921227776\x00SELECT 'CREATE TEMP' || substr(sql, 7) FROM sqlite_schema WHERE tbl_name = %Q AND type IN ('table', 'trigger') ORDER BY type;\x00ALTER TABLE temp.%Q RENAME TO %Q\x00INSERT INTO %Q VALUES(\x00%s?\x00UPDATE %Q SET \x00%s%Q=?\x00DELETE FROM %Q\x00SELECT type, name, sql, 1 FROM sqlite_schema WHERE type IN ('table','view') AND name NOT LIKE 'sqlite_%%'  UNION ALL SELECT type, name, sql, 2 FROM sqlite_schema WHERE type = 'trigger'  AND tbl_name IN(SELECT name FROM sqlite_schema WHERE type = 'view') ORDER BY 4, 1\x00CREATE TABLE x(\x00%s%Q COLLATE %s\x00CREATE VIRTUAL TABLE %Q USING expert(%Q)\x00SELECT max(i.seqno) FROM   sqlite_schema AS s,   pragma_index_list(s.name) AS l,   pragma_index_info(l.name) AS i WHERE s.type = 'table'\x00%sx.%Q IS rem(%d, x.%Q) COLLATE %s\x00%s%d\x00SELECT %s FROM %Q x ORDER BY %s\x00SELECT %s FROM temp.t592690916721053953805701627921227776 x ORDER BY %s\x00 %d\x00DROP TABLE IF EXISTS temp.t592690916721053953805701627921227776\x00CREATE TABLE temp.t592690916721053953805701627921227776 AS SELECT * FROM %Q\x00SELECT s.rowid, s.name, l.name FROM   sqlite_schema AS s,   pragma_index_list(s.name) AS l WHERE s.type = 'table'\x00SELECT name, coll FROM pragma_index_xinfo(?) WHERE key\x00INSERT INTO sqlite_stat1 VALUES(?, ?, ?)\x00ANALYZE; PRAGMA writable_schema=1\x00rem\x00sample\x00ANALYZE sqlite_schema\x00SELECT sql FROM sqlite_schema WHERE name NOT LIKE 'sqlite_%%' AND sql NOT LIKE 'CREATE VIRTUAL %%'\x00Cannot find a unique index name to propose.\x00 -- stat1: \x00%s;%s%s\n\x00no such handle: \x00TABLE\x00count\x00report\x00STMT EREPORT\x00destroy\x00indexes\x00plan\x00candidates\x00sqlite3expert%d\x00sqlite3_expert_new\x00%s: cost must be between 1 and %d\x00%s: maximum string length is %d\x00%s: iLang must be between 0 and %d\x00%s: %s\x00%s: %s has %d columns, expected 4\x00vocabulary_table\x00vocabulary_word\x00vocabulary_language\x00edit_distances\x00unrecognized argument: [%s]\n\x00no edit_distances table specified\x00CREATE TABLE x(word,distance,language,command HIDDEN,nword HIDDEN)\x00SELECT \"%w\" FROM \"%w\"\x00 WHERE \"%w\">=?1 AND \"%w\"=?2 ORDER BY 1\x00SELECT \"%w\" FROM \"%w\" WHERE \"%w\">=?1 ORDER BY 1\x00*\x00DELETE from %s is not allowed\x00UPDATE of %s is not allowed\x00INSERT INTO %s allowed for column [command] only\x00approximate_match\x00apndvfs\x00Start-Of-SQLite3-\x00apnd(%lld)/%z\x00int32\x00char*\x00CREATE TABLE x(value,pointer hidden,count hidden,ctype hidden)\x00carray-bind\x00unknown datatype: %Q\x00inttoptr\x00cksmvfs\x00SQLite format 3\x00ZV-\x00checksum fault offset %lld of \"%s\"\x00checksum_verification\x00enable%\x00yes\x00page_size\x00cksm/%z\x00verify_checksum\x00tablename\x00idcolumn\x00parentcolumn\x00CREATE TABLE x(id,depth,root HIDDEN,tablename HIDDEN,idcolumn HIDDEN,parentcolumn HIDDEN)\x00SELECT \"%w\".\"%w\" FROM \"%w\" WHERE \"%w\".\"%w\"=?1\x00transitive_closure\x00cannot open '%s' for reading\x00line %d: unescaped %c character\x00line %d: unterminated %c-quoted field\n\x00more than one '%s' parameter\x00true\x00no\x00false\x00data\x00header\x00more than one 'header' parameter\x00testflags\x00columns\x00more than one 'columns' parameter\x00column= value must be positive\x00bad parameter: '%s'\x00must specify either filename= or data= but not both\x00%sc%d TEXT\x00%s\"%w\" TEXT\x00bad schema: '%s' - %s\x00csv_wr\x00decimal_cmp\x00decimal_add\x00decimal_sub\x00decimal_mul\x00decimal_sum\x00CREATE TABLE x(addr,opcode,p1,p2,p3,p4,p5,comment,sql HIDDEN)\x00EXPLAIN %s\x00wb\x00wrong number of arguments to function writefile()\x00failed to create symlink: %s\x00failed to create directory: %s\x00failed to write file: %s\x00CREATE TABLE x(name,mode,mtime,data,path HIDDEN,dir HIDDEN)\x00cannot read directory: %s\x00%s/%s\x00cannot stat file: %s\x00table function fsdir requires an argument\x00table function fsdir requires a non-NULL argument\x00readfile\x00writefile\x00lsmode\x00%s: ruleset must be between 0 and %d\x00%s: wrong number of CREATE VIRTUAL TABLE arguments\x00CREATE TABLE x(word,distance,ruleset)\x00ieee754(%lld,%d)\x00ieee754_mantissa\x00ieee754_exponent\x00ieee754_to_blob\x00ieee754_from_blob\x00'.\x00BEGIN; SELECT * FROM %s%q%ssqlite_schema\x00PRAGMA %s%q%spage_size\x00sqlite3_mmap_warm_cache: Warmed up %d pages of %s\x00END\x00AND (%s)\x00collate \"%w\"\x00SELECT %s FROM %s WHERE %s>=(?1 || ?2) %s   AND %s<=(?1 || char(1114111)) %s   %s ORDER BY 1 %s ASC LIMIT 1\x00next_char\x00not\x00in(\x00in(select\x00in(with\x00?,?,?\x002nd argument to percentile() is not a number between 0.0 and 100.0\x002nd argument to percentile() is not the same for all input rows\x001st argument to percentile() is not numeric\x00Inf input to percentile()\x00CREATE TABLE prefixes(prefix TEXT, original_string TEXT HIDDEN)\x00prefix_length\x00unknown \\ escape\x00unmatched '('\x00'*' without operand\x00'+' without operand\x00'?' without operand\x00'{m,n}' without operand\x00unmatched '{'\x00n less than m in '{m,n}'\x00both m and n are zero in '{m,n}'\x00POSIX character classes not supported\x00unclosed '['\x00unrecognized character\x00regexpi\x00CREATE TABLE x(value,start hidden,stop hidden,step hidden)\x00first argument to \"generate_series()\" missing or unusable\x00generate_series() requires SQLite 3.8.12 or later\x00generate_series\x00non-ASCII input to editdist()\x00NULL input to editdist()\x00SELECT iLang, cFrom, cTo, iCost FROM \"%w\" WHERE iLang>=0 ORDER BY iLang\x00editdist3\x00DROP TABLE IF EXISTS \"%w\".\"%w_vocab\"\x00CREATE TABLE x(word,rank,distance,langid, score, matchlen, phonehash HIDDEN, top HIDDEN, scope HIDDEN, srchcnt HIDDEN, soundslike HIDDEN, command HIDDEN)\x00CREATE TABLE IF NOT EXISTS \"%w\".\"%w_vocab\"(\n  id INTEGER PRIMARY KEY,\n  rank INT,\n  langid INT,\n  word TEXT,\n  k1 TEXT,\n  k2 TEXT\n);\n\x00CREATE INDEX IF NOT EXISTS \"%w\".\"%w_vocab_index_langid_k2\" ON \"%w_vocab\"(langid,k2);\x00edit_cost_table=\x00bad argument to spellfix1(): \"%s\"\x00SELECT id, word, rank, coalesce(k1,word)  FROM \"%w\".\"%w_vocab\" WHERE langid=%d AND k2>=?1 AND k2<?2\x00 WHERE rowid=?\x00SELECT word, rank, NULL, langid, id FROM \"%w\".\"%w_vocab\"%s\x00ROLLBACK\x00IGNORE\x00ABORT\x00REPLACE\x00DELETE FROM \"%w\".\"%w_vocab\"  WHERE id=%lld\x00NOT NULL constraint failed: %s.word\x00reset\x00unknown value for %s.command: \"%w\"\x00INSERT INTO \"%w\".\"%w_vocab\"(rank,langid,word,k1,k2) VALUES(%d,%d,%Q,nullif(%Q,%Q),%Q)\x00INSERT OR %s INTO \"%w\".\"%w_vocab\"(id,rank,langid,word,k1,k2) VALUES(%lld,%d,%d,%Q,nullif(%Q,%Q),%Q)\x00UPDATE OR %s \"%w\".\"%w_vocab\" SET id=%lld, rank=%d, langid=%d, word=%Q, k1=nullif(%Q,%Q), k2=%Q WHERE id=%lld\x00ALTER TABLE \"%w\".\"%w_vocab\" RENAME TO \"%w_vocab\"\x00spellfix1_translit\x00spellfix1_editdist\x00spellfix1_phonehash\x00spellfix1_scriptcode\x00spellfix1\x00922337203685477580\x00tointeger\x00toreal\x00sql error: %s\x00_rowid_\x00integer\x00.\x00no such rowid table: %s%s%s\x00SELECT group_concat(quote(name) || '.' || quote(type)) FROM pragma_table_info(?, ?)\x00source table schema mismatch\x00swarmvtab: no such SQL parameter: %s\x00maxopen\x00swarmvtab: illegal maxopen value\x00missing\x00swarmvtab: duplicate \"missing\" option\x00,?\x00SELECT \"%w\"(?%s)\x00openclose\x00swarmvtab: duplicate \"openclose\" option\x00SELECT \"%w\"(?,?%s)\x00swarmvtab: unrecognized option: %s\x00SELECT \"%w\"(?)\x00swarmvtab: parse error: %s\x00swarmvtab\x00%s tables must be created in TEMP schema\x00wrong number of arguments for %s\x00SELECT * FROM (%z) ORDER BY 3\x00rowid range mismatch error\x00no source tables configured\x00SELECT 'CREATE TABLE xyz('    || group_concat(quote(name) || ' ' || type, ', ')    || ')',max((cid+1) * (type='INTEGER' COLLATE nocase AND pk=1))-1 FROM pragma_table_info(%Q, ?)\x00WHERE _rowid_ <=\x00-- \x00SELECT rowid, * FROM %Q %s %lld\x00 UNION ALL \x00%z%sSELECT rowid, * FROM %s%q%s%Q\x00%z WHERE rowid=%lld\x00%z WHERE rowid>=%lld\x00%z %s rowid<=%lld\x00CREATE TABLE x(value)\x00zipfile constructor requires one argument\x00error in fread()\x00error in fwrite()\x00failed to read CDS at offset %lld\x00%.*s\x00failed to read LFH at offset %d\x001.3\x00inflateInit2() failed (%d)\x00inflate() failed (%d)\x00zipfile: deflate() error\x00cannot find end of central directory record\x00zipfile() function requires an argument\x00cannot open file: %s\x00zipfile: mode does not match data\x00zipfile: parse error in mode: %s\x00zipfile: missing filename\x00ab+\x00zipfile: failed to open file %s for writing\x00sz must be NULL\x00rawdata must be NULL\x00unknown compression method: %d\x00%s/\x00duplicate name: \"%s\"\x00{\"version-made-by\" : %u, \"version-to-extract\" : %u, \"flags\" : %u, \"compression\" : %u, \"time\" : %u, \"date\" : %u, \"crc32\" : %u, \"compressed-size\" : %u, \"uncompressed-size\" : %u, \"file-name-length\" : %u, \"extra-field-length\" : %u, \"file-comment-length\" : %u, \"disk-number-start\" : %u, \"internal-attr\" : %u, \"external-attr\" : %u, \"offset\" : %u }\x00zipfile_cds\x00wrong number of arguments to function zipfile()\x00first argument to zipfile() must be non-NULL\x00illegal method value: %d\x00non-directory name must not end with /\x00incrblob_%d\x00DELETE\x00INSERT\x00UPDATE\x00bytearray\x00boolean\x00wideInt\x00SQLITE_COPY\x00SQLITE_CREATE_INDEX\x00SQLITE_CREATE_TABLE\x00SQLITE_CREATE_TEMP_INDEX\x00SQLITE_CREATE_TEMP_TABLE\x00SQLITE_CREATE_TEMP_TRIGGER\x00SQLITE_CREATE_TEMP_VIEW\x00SQLITE_CREATE_TRIGGER\x00SQLITE_CREATE_VIEW\x00SQLITE_DELETE\x00SQLITE_DROP_INDEX\x00SQLITE_DROP_TABLE\x00SQLITE_DROP_TEMP_INDEX\x00SQLITE_DROP_TEMP_TABLE\x00SQLITE_DROP_TEMP_TRIGGER\x00SQLITE_DROP_TEMP_VIEW\x00SQLITE_DROP_TRIGGER\x00SQLITE_DROP_VIEW\x00SQLITE_INSERT\x00SQLITE_PRAGMA\x00SQLITE_READ\x00SQLITE_SELECT\x00SQLITE_TRANSACTION\x00SQLITE_UPDATE\x00SQLITE_ATTACH\x00SQLITE_DETACH\x00SQLITE_ALTER_TABLE\x00SQLITE_REINDEX\x00SQLITE_ANALYZE\x00SQLITE_CREATE_VTABLE\x00SQLITE_DROP_VTABLE\x00SQLITE_FUNCTION\x00SQLITE_SAVEPOINT\x00SQLITE_RECURSIVE\x00????\x00SQLITE_DENY\x00SQLITE_IGNORE\x00RELEASE _tcl_transaction\x00ROLLBACK TO _tcl_transaction ; RELEASE _tcl_transaction\x00authorizer\x00backup\x00bind_fallback\x00cache\x00changes\x00close\x00collation_needed\x00commit_hook\x00config\x00copy\x00enable_load_extension\x00errorcode\x00exists\x00function\x00interrupt\x00last_insert_rowid\x00nullvalue\x00onecolumn\x00profile\x00rekey\x00restore\x00rollback_hook\x00serialize\x00status\x00timeout\x00total_changes\x00trace_v2\x00transaction\x00update_hook\x00version\x00wal_hook\x00?CALLBACK?\x00?DATABASE? FILENAME\x00cannot open target database: \x00backup failed: \x00CALLBACK\x00cache option ?arg?\x00flush\x00size n\x00cannot convert \"\x00\" to integer\x00\": must be flush or size\x00NAME SCRIPT\x00defensive\x00dqs_ddl\x00dqs_dml\x00enable_fkey\x00enable_qpsg\x00enable_trigger\x00enable_view\x00fts3_tokenizer\x00legacy_alter_table\x00legacy_file_format\x00load_extension\x00no_ckpt_on_close\x00reset_database\x00trigger_eqp\x00trusted_schema\x00writable_schema\x00?OPTION? ?BOOLEAN?\x00unknown config option: \"\x00CONFLICT-ALGORITHM TABLE FILENAME ?SEPARATOR? ?NULLINDICATOR?\x00\t\x00Error: non-null separator required for copy\x00rollback\x00abort\x00fail\x00ignore\x00replace\x00Error: \"\x00\", conflict-algorithm must be one of: rollback, abort, fail, ignore, or replace\x00SELECT * FROM '%q'\x00Error: no such table: \x00Error: \x00Error: can't malloc()\x00INSERT OR %q INTO '%q' VALUES(?\x00Error: cannot open file: \x00BEGIN\x00Error: %s line %d: expected %d columns of data but found %d\x00, failed while processing line: \x00?DATABASE? VALUE\x00-maxsize\x00-readonly\x00unable to set MEMDB content\x00extension loading is turned off at compile-time\x00-withoutnulls\x00unknown option: \"\x00?OPTIONS? SQL ?ARRAY-NAME? ?SCRIPT?\x00NAME ?SWITCHES? SCRIPT\x00-argcount\x00number of arguments must be non-negative\x00-deterministic\x00-directonly\x00-innocuous\x00-returntype\x00real\x00type\x00\": must be -argcount, -deterministic, -directonly, -innocuous, or -returntype\x00?-readonly? ?DB? TABLE COLUMN ROWID\x00NULLVALUE\x00N CALLBACK\x00KEY\x00cannot open source database: \x00restore failed: \x00restore failed: source database busy\x00?DATABASE?\x00(step|sort|autoindex)\x00sort\x00vmstep\x00bad argument: should be autoindex, step, sort or vmstep\x00?CALLBACK? ?MASK?\x00statement\x00row\x00trace type\x00SAVEPOINT _tcl_transaction\x00[TYPE] SCRIPT\x00deferred\x00immediate\x00transaction type\x00BEGIN IMMEDIATE\x00unlock_notify not available in this build\x00preupdate_hook was omitted at compile-time\x00-use-legacy-prepare\x00-last-stmt-ptr\x00unknown argument: \x00HANDLE ?FILENAME? ?-vfs VFSNAME? ?-readonly BOOLEAN? ?-create BOOLEAN? ?-nofollow BOOLEAN? ?-nomutex BOOLEAN? ?-fullmutex BOOLEAN? ?-uri BOOLEAN?\x00-version\x00-sourceid\x00-has-codec\x00-key\x00-vfs\x00-create\x00-nofollow\x00-nomutex\x00-fullmutex\x00-uri\x00-translatefilename\x00sqlite\x003.37.2\x00SQLITE_DEBUG_BREAK\x00attach debugger to process %d and press any key to continue.\n\x00utf-8\x00argc\x00argv0\x00argv\x00errorInfo\x00%s: %s\n\x00ANY\x00INT\x00REAL\x00ATOMIC_INTRINSICS=1\x00COMPILER=msvc-1\x00DEFAULT_AUTOVACUUM\x00DEFAULT_CACHE_SIZE=-2000\x00DEFAULT_FILE_FORMAT=4\x00DEFAULT_JOURNAL_SIZE_LIMIT=-1\x00DEFAULT_MMAP_SIZE=0\x00DEFAULT_PAGE_SIZE=1024\x00DEFAULT_PCACHE_INITSZ=20\x00DEFAULT_RECURSIVE_TRIGGERS\x00DEFAULT_SECTOR_SIZE=4096\x00DEFAULT_SYNCHRONOUS=2\x00DEFAULT_WAL_AUTOCHECKPOINT=1000\x00DEFAULT_WAL_SYNCHRONOUS=2\x00DEFAULT_WORKER_THREADS=0\x00ENABLE_BYTECODE_VTAB\x00ENABLE_DBPAGE_VTAB\x00ENABLE_MATH_FUNCTIONS\x00ENABLE_STMTVTAB\x00HAVE_ISNAN\x00MALLOC_SOFT_LIMIT=1024\x00MAX_ATTACHED=10\x00MAX_COLUMN=2000\x00MAX_COMPOUND_SELECT=500\x00MAX_DEFAULT_PAGE_SIZE=8192\x00MAX_EXPR_DEPTH=1000\x00MAX_FUNCTION_ARG=127\x00MAX_LENGTH=1000000000\x00MAX_LIKE_PATTERN_LENGTH=50000\x00MAX_MMAP_SIZE=0x7fff0000\x00MAX_PAGE_COUNT=1073741823\x00MAX_PAGE_SIZE=65536\x00MAX_SQL_LENGTH=1000000000\x00MAX_TRIGGER_DEPTH=1000\x00MAX_VARIABLE_NUMBER=32766\x00MAX_VDBE_OP=250000000\x00MAX_WORKER_THREADS=0\x00MUTEX_OMIT\x00NEED_ERR_NAME\x00NO_SYNC\x00OMIT_LOAD_EXTENSION\x00SYSTEM_MALLOC\x00TEMP_STORE=1\x00TEST\x00THREADSAFE=0\x0020b:20e\x0020c:20e\x0020e\x0040f-21a-21d\x00now\x00local time unavailable\x00second\x00minute\x00hour\x00day\x00month\x00year\x00unixepoch\x00utc\x00weekday \x00start of \x00%04d-%02d-%02d %02d:%02d:%02d\x00%02d:%02d:%02d\x00%04d-%02d-%02d\x00%02d\x00%06.3f\x00%.16g\x00%04d\x00julianday\x00date\x00time\x00strftime\x00current_time\x00current_timestamp\x00current_date\x00failed to allocate %u bytes of memory\x00failed memory resize %u to %u bytes\x00%\x00Inf\x00(NULL)\x00SUBQUERY %u\x00API call with %s database connection pointer\x00unopened\x00invalid\x00Savepoint\x00AutoCommit\x00Transaction\x00SorterNext\x00Prev\x00Next\x00Checkpoint\x00JournalMode\x00Vacuum\x00VFilter\x00VUpdate\x00Goto\x00Gosub\x00InitCoroutine\x00Yield\x00MustBeInt\x00Jump\x00Once\x00If\x00Not\x00IfNot\x00IsNullOrType\x00IfNullRow\x00SeekLT\x00SeekLE\x00SeekGE\x00SeekGT\x00IfNotOpen\x00IfNoHope\x00NoConflict\x00NotFound\x00Found\x00SeekRowid\x00NotExists\x00Last\x00IfSmaller\x00SorterSort\x00Sort\x00Rewind\x00IdxLE\x00IdxGT\x00IdxLT\x00IdxGE\x00Or\x00And\x00RowSetRead\x00RowSetTest\x00Program\x00FkIfZero\x00IfPos\x00IsNull\x00NotNull\x00Ne\x00Eq\x00Gt\x00Le\x00Lt\x00Ge\x00ElseEq\x00IfNotZero\x00DecrJumpZero\x00IncrVacuum\x00VNext\x00Init\x00PureFunc\x00Function\x00Return\x00EndCoroutine\x00HaltIfNull\x00Halt\x00Integer\x00Int64\x00String\x00Null\x00SoftNull\x00Blob\x00Variable\x00Move\x00Copy\x00SCopy\x00IntCopy\x00ChngCntRow\x00ResultRow\x00CollSeq\x00AddImm\x00RealAffinity\x00Cast\x00Permutation\x00Compare\x00IsTrue\x00ZeroOrNull\x00Offset\x00Column\x00TypeCheck\x00Affinity\x00MakeRecord\x00Count\x00ReadCookie\x00SetCookie\x00ReopenIdx\x00OpenRead\x00OpenWrite\x00BitAnd\x00BitOr\x00ShiftLeft\x00ShiftRight\x00Add\x00Subtract\x00Multiply\x00Divide\x00Remainder\x00Concat\x00OpenDup\x00BitNot\x00OpenAutoindex\x00OpenEphemeral\x00String8\x00SorterOpen\x00SequenceTest\x00OpenPseudo\x00Close\x00ColumnsUsed\x00SeekScan\x00SeekHit\x00Sequence\x00NewRowid\x00Insert\x00RowCell\x00Delete\x00ResetCount\x00SorterCompare\x00SorterData\x00RowData\x00Rowid\x00NullRow\x00SeekEnd\x00IdxInsert\x00SorterInsert\x00IdxDelete\x00DeferredSeek\x00IdxRowid\x00FinishSeek\x00Destroy\x00Clear\x00ResetSorter\x00CreateBtree\x00SqlExec\x00ParseSchema\x00LoadAnalysis\x00DropTable\x00DropIndex\x00DropTrigger\x00Real\x00IntegrityCk\x00RowSetAdd\x00Param\x00FkCounter\x00MemMax\x00OffsetLimit\x00AggInverse\x00AggStep\x00AggStep1\x00AggValue\x00AggFinal\x00Expire\x00CursorLock\x00CursorUnlock\x00TableLock\x00VBegin\x00VCreate\x00VDestroy\x00VOpen\x00VColumn\x00VRename\x00Pagecount\x00MaxPgcnt\x00Trace\x00CursorHint\x00ReleaseReg\x00Noop\x00Explain\x00Abortable\x00AreFileApisANSI\x00CharLowerW\x00CharUpperW\x00CloseHandle\x00CreateFileA\x00CreateFileW\x00CreateFileMappingA\x00CreateFileMappingW\x00CreateMutexW\x00DeleteFileA\x00DeleteFileW\x00FileTimeToLocalFileTime\x00FileTimeToSystemTime\x00FlushFileBuffers\x00FormatMessageA\x00FormatMessageW\x00FreeLibrary\x00GetCurrentProcessId\x00GetDiskFreeSpaceA\x00GetDiskFreeSpaceW\x00GetFileAttributesA\x00GetFileAttributesW\x00GetFileAttributesExW\x00GetFileSize\x00GetFullPathNameA\x00GetFullPathNameW\x00GetLastError\x00GetProcAddressA\x00GetSystemInfo\x00GetSystemTime\x00GetSystemTimeAsFileTime\x00GetTempPathA\x00GetTempPathW\x00GetTickCount\x00GetVersionExA\x00GetVersionExW\x00HeapAlloc\x00HeapCreate\x00HeapDestroy\x00HeapFree\x00HeapReAlloc\x00HeapSize\x00HeapValidate\x00HeapCompact\x00LoadLibraryA\x00LoadLibraryW\x00LocalFree\x00LockFile\x00LockFileEx\x00MapViewOfFile\x00MultiByteToWideChar\x00QueryPerformanceCounter\x00ReadFile\x00SetEndOfFile\x00SetFilePointer\x00Sleep\x00SystemTimeToFileTime\x00UnlockFile\x00UnlockFileEx\x00UnmapViewOfFile\x00WideCharToMultiByte\x00WriteFile\x00CreateEventExW\x00WaitForSingleObject\x00WaitForSingleObjectEx\x00SetFilePointerEx\x00GetFileInformationByHandleEx\x00MapViewOfFileFromApp\x00CreateFile2\x00LoadPackagedLibrary\x00GetTickCount64\x00GetNativeSystemInfo\x00OutputDebugStringA\x00OutputDebugStringW\x00GetProcessHeap\x00CreateFileMappingFromApp\x00InterlockedCompareExchange\x00UuidCreate\x00UuidCreateSequential\x00FlushViewOfFile\x00OsError 0x%lx (%lu)\x00os_win.c:%d: (%lu) %s(%s) - %s\x00delayed %dms for lock/sharing conflict at line %d\x00SEEK file=%p, offset=%lld\n\x00winSeekFile\x00SEEK file=%p, rc=SQLITE_IOERR_SEEK\n\x00SEEK file=%p, rc=SQLITE_OK\n\x00CLOSE pid=%lu, pFile=%p, file=%p\n\x00ok\x00CLOSE pid=%lu, pFile=%p, file=%p, rc=%s\n\x00winClose\x00READ pid=%lu, pFile=%p, file=%p, buffer=%p, amount=%d, offset=%lld, lock=%d\n\x00READ-MMAP pid=%lu, pFile=%p, file=%p, rc=SQLITE_OK\n\x00READ pid=%lu, pFile=%p, file=%p, rc=SQLITE_IOERR_READ\n\x00winRead\x00READ pid=%lu, pFile=%p, file=%p, rc=SQLITE_IOERR_SHORT_READ\n\x00READ pid=%lu, pFile=%p, file=%p, rc=SQLITE_OK\n\x00WRITE pid=%lu, pFile=%p, file=%p, buffer=%p, amount=%d, offset=%lld, lock=%d\n\x00WRITE pid=%lu, pFile=%p, file=%p, rc=SQLITE_FULL\n\x00winWrite1\x00WRITE pid=%lu, pFile=%p, file=%p, rc=SQLITE_IOERR_WRITE\n\x00winWrite2\x00WRITE pid=%lu, pFile=%p, file=%p, rc=SQLITE_OK\n\x00TRUNCATE pid=%lu, pFile=%p, file=%p, size=%lld, lock=%d\n\x00winTruncate1\x00winTruncate2\x00TRUNCATE pid=%lu, pFile=%p, file=%p, rc=%s\n\x00SYNC pid=%lu, pFile=%p, file=%p, flags=%x, lock=%d\n\x00SYNC-NOP pid=%lu, pFile=%p, file=%p, rc=SQLITE_OK\n\x00SIZE file=%p, pSize=%p\n\x00winFileSize\x00SIZE file=%p, pSize=%p, *pSize=%lld, rc=%s\n\x00READ-LOCK file=%p, lock=%d\n\x00READ-LOCK file=%p, result=%d\n\x00READ-UNLOCK file=%p, lock=%d\n\x00winUnlockReadLock\x00READ-UNLOCK file=%p, result=%d\n\x00LOCK file=%p, oldLock=%d(%d), newLock=%d\n\x00LOCK-HELD file=%p, rc=SQLITE_OK\n\x00LOCK-PENDING-FAIL file=%p, count=%d, result=%d\n\x00LOCK-FAIL file=%p, count=%d, rc=%s\n\x00LOCK-FAIL file=%p, wanted=%d, got=%d\n\x00LOCK file=%p, lock=%d, rc=%s\n\x00TEST-WR-LOCK file=%p, pResOut=%p\n\x00TEST-WR-LOCK file=%p, result=%d (local)\n\x00TEST-WR-LOCK file=%p, result=%d (remote)\n\x00TEST-WR-LOCK file=%p, pResOut=%p, *pResOut=%d, rc=SQLITE_OK\n\x00UNLOCK file=%p, oldLock=%d(%d), newLock=%d\n\x00winUnlock\x00UNLOCK file=%p, lock=%d, rc=%s\n\x00FCNTL file=%p, op=%d, pArg=%p\n\x00FCNTL file=%p, rc=SQLITE_OK\n\x00FCNTL file=%p, rc=%s\n\x00FCNTL oldFile=%p, newFile=%p, rc=SQLITE_OK\n\x00FCNTL file=%p, rc=SQLITE_NOTFOUND\n\x00SHM-LOCK file=%p, lock=%d, offset=%d, size=%d\n\x00winUnlockFile\x00winLockFile\x00SHM-LOCK file=%p, func=%s, errno=%lu, rc=%s\n\x00SHM-PURGE pid=%lu, deleteFlag=%d\n\x00SHM-PURGE-UNMAP pid=%lu, region=%d, rc=%s\n\x00SHM-PURGE-CLOSE pid=%lu, region=%d, rc=%s\n\x00winLockSharedMemory\x00readonly_shm\x00winOpenShm\x00SHM-LOCK pid=%lu, id=%d, sharedMask=%03x, exclMask=%03x, rc=%s\n\x00winShmMap1\x00winShmMap2\x00SHM-MAP-CREATE pid=%lu, region=%d, size=%d, rc=%s\n\x00SHM-MAP-MAP pid=%lu, region=%d, offset=%d, size=%d, rc=%s\n\x00winShmMap3\x00UNMAP-FILE pid=%lu, pFile=%p, hMap=%p, pMapRegion=%p, mmapSize=%lld, mmapSizeMax=%lld\n\x00UNMAP-FILE pid=%lu, pFile=%p, pMapRegion=%p, rc=SQLITE_IOERR_MMAP\n\x00winUnmapfile1\x00UNMAP-FILE pid=%lu, pFile=%p, hMap=%p, rc=SQLITE_IOERR_MMAP\n\x00winUnmapfile2\x00UNMAP-FILE pid=%lu, pFile=%p, rc=SQLITE_OK\n\x00MAP-FILE pid=%lu, pFile=%p, size=%lld\n\x00MAP-FILE pid=%lu, pFile=%p, rc=SQLITE_IOERR_FSTAT\n\x00winMapfile1\x00MAP-FILE-CREATE pid=%lu, pFile=%p, rc=%s\n\x00winMapfile2\x00MAP-FILE-MAP pid=%lu, pFile=%p, rc=%s\n\x00MAP-FILE pid=%lu, pFile=%p, rc=SQLITE_OK\n\x00FETCH pid=%lu, pFile=%p, offset=%lld, amount=%d, pp=%p\n\x00FETCH pid=%lu, pFile=%p, rc=%s\n\x00FETCH pid=%lu, pFile=%p, pp=%p, *pp=%p, rc=SQLITE_OK\n\x00UNFETCH pid=%lu, pFile=%p, offset=%lld, p=%p\n\x00UNFETCH pid=%lu, pFile=%p, rc=SQLITE_OK\n\x00etilqs_\x00TEMP-FILENAME rc=SQLITE_IOERR_NOMEM\n\x00TEMP-FILENAME rc=SQLITE_ERROR\n\x00winGetTempname1\x00TEMP-FILENAME rc=SQLITE_IOERR_GETTEMPPATH\n\x00winGetTempname2\x00winGetTempname3\x00winGetTempname4\x00winGetTempname5\x00TEMP-FILENAME name=%s, rc=SQLITE_OK\n\x00OPEN name=%s, pFile=%p, flags=%x, pOutFlags=%p\n\x00OPEN name=%s, rc=%s\x00OPEN name=%s, rc=SQLITE_IOERR_NOMEM\x00OPEN name=%s, rc=SQLITE_CANTOPEN_ISDIR\x00OPEN file=%p, name=%s, access=%lx, rc=%s\n\x00winOpen\x00OPEN file=%p, name=%s, access=%lx, pOutFlags=%p, *pOutFlags=%d, rc=%s\n\x00psow\x00DELETE name=%s, syncDir=%d\n\x00DELETE name=%s, rc=SQLITE_IOERR_NOMEM\n\x00winDelete\x00DELETE name=%s, rc=%s\n\x00ACCESS name=%s, flags=%x, pResOut=%p\n\x00ACCESS name=%s, rc=SQLITE_IOERR_NOMEM\n\x00winAccess\x00ACCESS name=%s, pResOut=%p, *pResOut=%d, rc=SQLITE_OK\n\x00%s%c%s\x00winFullPathname1\x00winFullPathname2\x00winFullPathname3\x00winFullPathname4\x00win32-longpath\x00win32-none\x00win32-longpath-none\x00memdb\x00memdb(%p,%lld)\x00PRAGMA \"%w\".page_count\x00ATTACH x AS %Q\x00recovered %d pages from %s\x00-wal\x00nolock\x00recovered %d frames from WAL file %s\x00cannot limit WAL size: %s\x00@  \x00\n\x00invalid page number %d\x002nd reference to page %d\x00Failed to read ptrmap key=%d\x00Bad ptr map entry key=%d expected=(%d,%d) got=(%d,%d)\x00failed to get page %d\x00freelist leaf count too big on page %d\x00overflow list length\x00%s is %d but should be %d\x00Page %u: \x00unable to get the page. error code=%d\x00btreeInitPage() returns error code %d\x00free space corruption\x00On tree page %u cell %d: \x00On page %u at right child: \x00Offset %d out of range %d..%d\x00Extends off end of page\x00Rowid %lld out of order\x00Child page depth differs\x00Multiple uses for byte %u of page %u\x00Fragmentation of %d bytes reported as %d on page %u\x00Main freelist: \x00max rootpage (%d) disagrees with header (%d)\x00incremental_vacuum enabled with a max rootpage of zero\x00Page %d is never used\x00Pointer map page %d is referenced\x00unknown database %s\x00destination database is in use\x00source and destination must be distinct\x00%!.15g\x00-\x00k(%d\x00BINARY\x00B\x00N.\x00,%s%s%s\x008\x0016LE\x0016BE\x00%.18s-%s\x00%s(%d)\x00(blob)\x00vtab:%p\x00%c%u\x00]\x00program\x00addr\x00opcode\x00p1\x00p2\x00p3\x00p4\x00p5\x00comment\x00id\x00parent\x00notused\x00detail\x00%.4c%s%.16c\x00MJ delete: %s\x00MJ collide: %s\x00-mj%06X9%02X\x00FOREIGN KEY constraint failed\x00a CHECK constraint\x00a generated column\x00an index\x00non-deterministic use of %s() in %s\x00API called with finalized prepared statement\x00API called with NULL prepared statement\x00string or blob too big\x00bind on a busy prepared statement: [%s]\x00'%.*q'\x00zeroblob(%d)\x00NOT NULL\x00UNIQUE\x00CHECK\x00FOREIGN KEY\x00%s constraint failed\x00%z: %s\x00abort at %d in [%s]: %s\x00cannot store %s value in %s column %s.%s\x00cannot open savepoint - SQL statements in progress\x00no such savepoint: %s\x00cannot release savepoint - SQL statements in progress\x00cannot commit transaction - SQL statements in progress\x00cannot start a transaction within a transaction\x00cannot rollback - no transaction is active\x00cannot commit - no transaction is active\x00database schema has changed\x00index corruption\x00sqlite_master\x00SELECT*FROM\"%w\".%s WHERE %s ORDER BY rowid\x00too many levels of trigger recursion\x00into\x00out of\x00cannot change %s wal mode from within a transaction\x00database table is locked: %s\x00-- %s\x00statement aborts at %d: [%s] %s\x00cannot open value of type %s\x00no such rowid: %lld\x00cannot open virtual table: %s\x00cannot open table without rowid: %s\x00cannot open view: %s\x00no such column: \"%s\"\x00foreign key\x00indexed\x00cannot open %s column for writing\x00CREATE TABLE x(addr INT,opcode TEXT,p1 INT,p2 INT,p3 INT,p4 TEXT,p5 INT,comment TEXT,subprog TEXT,stmt HIDDEN);\x00CREATE TABLE x(type TEXT,schema TEXT,name TEXT,wr INT,subprog TEXT,stmt HIDDEN);\x00table\x00index\x00(FK)\x00stmt-pointer\x00tables_used\x00bytecode\x00argument to %s() is not a valid SQL statement\x00old\x00excluded\x00misuse of aliased aggregate %s\x00misuse of aliased window function %s\x00row value misused\x00double-quoted string literal: \"%w\"\x00no such column\x00ambiguous column name\x00%s: %s.%s.%s\x00%s: %s.%s\x00partial index WHERE clauses\x00index expressions\x00CHECK constraints\x00generated columns\x00%s prohibited in %s\x00the \".\" operator\x00second argument to likelihood() must be a constant between 0.0 and 1.0\x00not authorized to use function: %s\x00non-deterministic functions\x00%.*s() may not be used as a window function\x00window\x00aggregate\x00misuse of %s function %.*s()\x00no such function: %.*s\x00wrong number of arguments to function %.*s()\x00FILTER may not be used with non-aggregate %.*s()\x00subqueries\x00parameters\x00%r %s BY term out of range - should be between 1 and %d\x00too many terms in ORDER BY clause\x00ORDER\x00%r ORDER BY term does not match any column in the result set\x00too many terms in %s BY clause\x00a GROUP BY clause is required before HAVING\x00GROUP\x00aggregate functions are not allowed in the GROUP BY clause\x00Expression tree is too large (maximum depth %d)\x00s\x00IN(...) element has %d term%s - expected %d\x00too many arguments on function %T\x00unsafe use of %s()\x00variable number must be between ?1 and ?%d\x00too many SQL variables\x00%d columns assigned %d values\x00too many columns in %s\x00_ROWID_\x00ROWID\x00OID\x00USING ROWID SEARCH ON TABLE %s FOR IN-OPERATOR\x00USING INDEX %s FOR IN-OPERATOR\x00sub-select returns %d columns - expected %d\x00REUSE LIST SUBQUERY %d\x00CORRELATED \x00%sLIST SUBQUERY %d\x00REUSE SUBQUERY %d\x00%sSCALAR SUBQUERY %d\x000x\x00hex literal too big: %s%s\x00generated column loop on \"%s\"\x00numeric\x00misuse of aggregate: %s()\x00unknown function: %s()\x00RAISE() may only be used within a trigger-program\x00sqlite_\x00table %s may not be altered\x00SELECT 1 FROM \"%w\".sqlite_master WHERE name NOT LIKE 'sqliteX_%%' ESCAPE 'X' AND sql NOT LIKE 'create virtual%%' AND sqlite_rename_test(%Q, sql, type, name, %d, %Q, %d)=NULL \x00SELECT 1 FROM temp.sqlite_master WHERE name NOT LIKE 'sqliteX_%%' ESCAPE 'X' AND sql NOT LIKE 'create virtual%%' AND sqlite_rename_test(%Q, sql, type, name, 1, %Q, %d)=NULL \x00UPDATE \"%w\".sqlite_master SET sql = sqlite_rename_quotefix(%Q, sql)WHERE name NOT LIKE 'sqliteX_%%' ESCAPE 'X' AND sql NOT LIKE 'create virtual%%'\x00UPDATE temp.sqlite_master SET sql = sqlite_rename_quotefix('temp', sql)WHERE name NOT LIKE 'sqliteX_%%' ESCAPE 'X' AND sql NOT LIKE 'create virtual%%'\x00there is already another table or index with this name: %s\x00view %s may not be altered\x00UPDATE \"%w\".sqlite_master SET sql = sqlite_rename_table(%Q, type, name, sql, %Q, %Q, %d) WHERE (type!='index' OR tbl_name=%Q COLLATE nocase)AND   name NOT LIKE 'sqliteX_%%' ESCAPE 'X'\x00UPDATE %Q.sqlite_master SET tbl_name = %Q, name = CASE WHEN type='table' THEN %Q WHEN name LIKE 'sqliteX_autoindex%%' ESCAPE 'X'      AND type='index' THEN 'sqlite_autoindex_' || %Q || substr(name,%d+18) ELSE name END WHERE tbl_name=%Q COLLATE nocase AND (type='table' OR type='index' OR type='trigger');\x00sqlite_sequence\x00UPDATE \"%w\".sqlite_sequence set name = %Q WHERE name = %Q\x00UPDATE sqlite_temp_schema SET sql = sqlite_rename_table(%Q, type, name, sql, %Q, %Q, 1), tbl_name = CASE WHEN tbl_name=%Q COLLATE nocase AND   sqlite_rename_test(%Q, sql, type, name, 1, 'after rename', 0) THEN %Q ELSE tbl_name END WHERE type IN ('view', 'trigger')\x00after rename\x00SELECT raise(ABORT,%Q) FROM \"%w\".\"%w\"\x00Cannot add a PRIMARY KEY column\x00Cannot add a UNIQUE column\x00Cannot add a REFERENCES column with non-NULL default value\x00Cannot add a NOT NULL column with default value NULL\x00Cannot add a column with non-constant default\x00cannot add a STORED column\x00UPDATE \"%w\".sqlite_master SET sql = printf('%%.%ds, ',sql) || %Q || substr(sql,1+length(printf('%%.%ds',sql))) WHERE type = 'table' AND name = %Q\x00SELECT CASE WHEN quick_check GLOB 'CHECK*' THEN raise(ABORT,'CHECK constraint failed') ELSE raise(ABORT,'NOT NULL constraint failed') END  FROM pragma_quick_check(\"%w\",\"%w\") WHERE quick_check GLOB 'CHECK*' OR quick_check GLOB 'NULL*'\x00virtual tables may not be altered\x00Cannot add a column to a view\x00sqlite_altertab_%s\x00virtual table\x00drop column from\x00rename columns of\x00cannot %s %s \"%s\"\x00UPDATE \"%w\".sqlite_master SET sql = sqlite_rename_column(sql, type, name, %Q, %Q, %d, %Q, %d, %d) WHERE name NOT LIKE 'sqliteX_%%' ESCAPE 'X'  AND (type != 'index' OR tbl_name = %Q)\x00UPDATE temp.sqlite_master SET sql = sqlite_rename_column(sql, type, name, %Q, %Q, %d, %Q, %d, 1) WHERE type IN ('trigger', 'view')\x00error in %s %s%s%s: %s\x00\"%w\" \x00%Q%s\x00%.*s%s\x00PRIMARY KEY\x00cannot drop %s column: \"%s\"\x00cannot drop column \"%s\": no other columns exist\x00UPDATE \"%w\".sqlite_master SET sql = sqlite_drop_column(%d, sql, %d) WHERE (type=='table' AND tbl_name=%Q COLLATE nocase)\x00after drop column\x00sqlite_rename_column\x00sqlite_rename_table\x00sqlite_rename_test\x00sqlite_drop_column\x00sqlite_rename_quotefix\x00sqlite_stat1\x00tbl,idx,stat\x00sqlite_stat4\x00sqlite_stat3\x00CREATE TABLE %Q.%s(%s)\x00DELETE FROM %Q.%s WHERE %s=%Q\x00stat_init\x00stat_push\x00%llu\x00 %llu\x00stat_get\x00sqlite\\_%\x00BBB\x00idx\x00tbl\x00unordered*\x00sz=[0-9]*\x00noskipscan*\x00SELECT tbl,idx,stat FROM %Q.sqlite_stat1\x00x\x00\x00too many attached databases - max %d\x00database %s is already in use\x00database is already attached\x00attached databases must use the same text encoding as main database\x00unable to open database: %s\x00no such database: %s\x00cannot detach database %s\x00database %s is locked\x00sqlite_detach\x00sqlite_attach\x00%s cannot use variables\x00%s %T cannot reference objects in database %s\x00authorizer malfunction\x00%s.%s\x00%s.%z\x00access to %z is prohibited\x00not authorized\x00sqlite_temp_schema\x00sqlite_schema\x00sqlite_temp_master\x00pragma_\x00no such view\x00no such table\x00corrupt database\x00unknown database %T\x00object name reserved for internal use: %s\x00temporary table name must be unqualified\x00table %T already exists\x00there is already an index named %s\x00sqlite_returning\x00cannot use RETURNING in a trigger\x00too many columns on %s\x00always\x00generated\x00duplicate column name: %s\x00default value of column [%s] is not constant\x00cannot use DEFAULT on a generated column\x00generated columns cannot be part of the PRIMARY KEY\x00table \"%s\" has more than one primary key\x00AUTOINCREMENT is only allowed on an INTEGER PRIMARY KEY\x00virtual tables cannot use computed columns\x00virtual\x00stored\x00error in generated column \"%s\"\x00\n  \x00,\n  \x00\n)\x00CREATE TABLE \x00 TEXT\x00 NUM\x00 INT\x00 REAL\x00unknown datatype for %s.%s: \"%s\"\x00missing datatype for %s.%s\x00AUTOINCREMENT not allowed on WITHOUT ROWID tables\x00PRIMARY KEY missing on table %s\x00must have at least one non-generated column\x00VIEW\x00CREATE %s %.*s\x00UPDATE %Q.sqlite_master SET type='%s', name=%Q, tbl_name=%Q, rootpage=#%d, sql=%Q WHERE rowid=#%d\x00CREATE TABLE %Q.sqlite_sequence(name,seq)\x00tbl_name='%q' AND type!='trigger'\x00parameters are not allowed in views\x00view %s is circularly defined\x00corrupt schema\x00UPDATE %Q.sqlite_master SET rootpage=%d WHERE #%d AND rootpage=#%d\x00sqlite_stat%d\x00DELETE FROM %Q.sqlite_sequence WHERE name=%Q\x00DELETE FROM %Q.sqlite_master WHERE tbl_name=%Q and type!='trigger'\x00stat\x00table %s may not be dropped\x00use DROP TABLE to delete table %s\x00use DROP VIEW to delete view %s\x00foreign key on %s should reference only one column of table %T\x00number of columns in foreign key does not match the number of columns in the referenced table\x00unknown column \"%s\" in foreign key definition\x00FIRST\x00LAST\x00unsupported use of NULLS %s\x00cannot create a TEMP index on non-TEMP table \"%s\"\x00table %s may not be indexed\x00views may not be indexed\x00virtual tables may not be indexed\x00there is already a table named %s\x00index %s already exists\x00sqlite_autoindex_%s_%d\x00expressions prohibited in PRIMARY KEY and UNIQUE constraints\x00conflicting ON CONFLICT clauses specified\x00invalid rootpage\x00 UNIQUE\x00CREATE%s INDEX %.*s\x00INSERT INTO %Q.sqlite_master VALUES('index',%Q,%Q,#%d,%Q);\x00name='%q' AND type='index'\x00no such index: %S\x00index associated with UNIQUE or PRIMARY KEY constraint cannot be dropped\x00DELETE FROM %Q.sqlite_master WHERE name=%Q AND type='index'\x00too many FROM clause terms, max: %d\x00ON\x00USING\x00a JOIN clause is required before %s\x00RELEASE\x00unable to open a temporary database file for storing temporary tables\x00index '%q'\x00%s.rowid\x00unable to identify the object to be reindexed\x00duplicate WITH table name: %s\x00no such collation sequence: %s\x00table %s may not be modified\x00cannot modify %s because it is a view\x00rows deleted\x00integer overflow\x00%.*f\x00LIKE or GLOB pattern too complex\x00ESCAPE expression must be a single character\x00%!.20e\x00MATCH\x00implies_nonnull_row\x00expr_compare\x00expr_implies_expr\x00affinity\x00sqlite_compileoption_used\x00sqlite_compileoption_get\x00unlikely\x00likelihood\x00likely\x00ltrim\x00rtrim\x00trim\x00typeof\x00length\x00instr\x00unicode\x00char\x00abs\x00round\x00upper\x00lower\x00hex\x00ifnull\x00random\x00randomblob\x00nullif\x00sqlite_version\x00sqlite_source_id\x00sqlite_log\x00quote\x00zeroblob\x00substr\x00substring\x00total\x00avg\x00group_concat\x00coalesce\x00ceil\x00ceiling\x00floor\x00ln\x00log\x00log10\x00log2\x00exp\x00pow\x00power\x00mod\x00acos\x00asin\x00atan\x00atan2\x00cos\x00sin\x00tan\x00cosh\x00sinh\x00tanh\x00sqrt\x00radians\x00degrees\x00pi\x00sign\x00iif\x00foreign key mismatch - \"%w\" referencing \"%w\"\x00cannot INSERT into generated column \"%s\"\x00table %S has no column named %s\x00table %S has %d columns but %d values were supplied\x00%d values for %d columns\x00UPSERT not implemented for virtual table \"%s\"\x00cannot UPSERT a view\x00rows inserted\x00automatic extension loading failed: %s\x00seq\x00from\x00to\x00on_update\x00on_delete\x00cid\x00name\x00notnull\x00dflt_value\x00pk\x00hidden\x00ncol\x00wr\x00strict\x00seqno\x00coll\x00key\x00builtin\x00enc\x00narg\x00flags\x00wdth\x00hght\x00flgs\x00unique\x00origin\x00partial\x00fkid\x00file\x00checkpointed\x00database\x00cache_size\x00analysis_limit\x00application_id\x00auto_vacuum\x00automatic_index\x00busy_timeout\x00cache_spill\x00case_sensitive_like\x00cell_size_check\x00checkpoint_fullfsync\x00collation_list\x00compile_options\x00count_changes\x00data_store_directory\x00data_version\x00database_list\x00default_cache_size\x00defer_foreign_keys\x00empty_result_callbacks\x00foreign_key_check\x00foreign_key_list\x00foreign_keys\x00freelist_count\x00full_column_names\x00fullfsync\x00function_list\x00hard_heap_limit\x00ignore_check_constraints\x00incremental_vacuum\x00index_info\x00index_list\x00index_xinfo\x00integrity_check\x00journal_mode\x00journal_size_limit\x00lock_status\x00locking_mode\x00max_page_count\x00mmap_size\x00module_list\x00optimize\x00page_count\x00pragma_list\x00query_only\x00quick_check\x00read_uncommitted\x00recursive_triggers\x00reverse_unordered_selects\x00short_column_names\x00shrink_memory\x00soft_heap_limit\x00synchronous\x00table_info\x00table_list\x00table_xinfo\x00temp_store\x00temp_store_directory\x00threads\x00user_version\x00wal_autocheckpoint\x00wal_checkpoint\x00incremental\x00memory\x00temporary storage cannot be changed from within a transaction\x00SET NULL\x00SET DEFAULT\x00CASCADE\x00RESTRICT\x00NO ACTION\x00persist\x00w\x00a\x00sissii\x00-%T\x00not a writable directory\x00Safety level may not be changed inside a transaction\x00issisii\x00issisi\x00SELECT*FROM\"%w\"\x00shadow\x00sssiii\x00iisX\x00isiX\x00c\x00u\x00isisi\x00iss\x00iissssss\x00NONE\x00siX\x00*** in database %s ***\n\x00NULL value in %s.%s\x00non-%s value in %s.%s\x00CHECK constraint failed in %s\x00row \x00 missing from index \x00non-unique entry in index \x00wrong # of entries in index \x00UTF-16le\x00UTF-16be\x00UTF16le\x00UTF16be\x00UTF-16\x00unsupported encoding: %s\x00ANALYZE \"%w\".\"%w\"\x00unlocked\x00reserved\x00pending\x00unknown\x00closed\x00ss\x00CREATE TABLE x\x00%c\"%s\"\x00(\"%s\"\x00,arg HIDDEN\x00,schema HIDDEN\x00PRAGMA \x00%Q.\x00=%Q\x00rename\x00drop column\x00add column\x00error in %s %s after %s: %s\x00malformed database schema (%s)\x00%z - %s\x00orphan index\x00CREATE TABLE x(type text,name text,tbl_name text,rootpage int,sql text)\x00unsupported file format\x00SELECT*FROM\"%w\".%s ORDER BY rowid\x00database schema is locked: %s\x00statement too long\x00unknown or unsupported join type: %T %T%s%T\x00RIGHT and FULL OUTER JOINs are not currently supported\x00a NATURAL join may not have an ON or USING clause\x00cannot have both ON and USING clauses in the same join\x00cannot join using column %s - column not present in both tables\x00UNION ALL\x00INTERSECT\x00EXCEPT\x00UNION\x00USE TEMP B-TREE FOR %s\x00column%d\x00%.*z:%u\x00cannot use window functions in recursive queries\x00recursive aggregate queries not supported\x00SETUP\x00RECURSIVE STEP\x00S\x00SCAN %d CONSTANT ROW%s\x00COMPOUND QUERY\x00LEFT-MOST SUBQUERY\x00%s USING TEMP B-TREE\x00all VALUES must have the same number of terms\x00SELECTs to the left and right of %s do not have the same number of result columns\x00MERGE (%s)\x00LEFT\x00RIGHT\x00no such index: %s\x00'%s' is not a function\x00no such index: \"%s\"\x00multiple references to recursive table: %s\x00circular reference: %s\x00table %s has %d values for %d columns\x00multiple recursive references: %s\x00recursive reference in a subquery: %s\x00subquery_%u\x00too many references to \"%s\": max 65535\x00access to view \"%s\" prohibited\x00unsafe use of virtual table \"%s\"\x00%s.%s.%s\x00no such table: %s\x00no tables specified\x00too many columns in result set\x00DISTINCT aggregates must have exactly one argument\x00USE TEMP B-TREE FOR %s(DISTINCT)\x00SCAN %s%s%s\x00target object/alias may not appear in FROM clause: %s\x00expected %d columns for '%s' but got %d\x00CO-ROUTINE %!S\x00MATERIALIZE %!S\x00DISTINCT\x00GROUP BY\x00RIGHT PART OF ORDER BY\x00ORDER BY\x00sqlite3_get_table() called with two or more incompatible queries\x00temporary trigger may not have qualified name\x00cannot create triggers on virtual tables\x00trigger %T already exists\x00cannot create trigger on system table\x00BEFORE\x00AFTER\x00cannot create %s trigger on view: %S\x00cannot create INSTEAD OF trigger on table: %S\x00INSERT INTO %Q.sqlite_master VALUES('trigger',%Q,%Q,0,'CREATE TRIGGER %q')\x00type='trigger' AND name='%q'\x00no such trigger: %S\x00DELETE FROM %Q.sqlite_master WHERE name=%Q AND type='trigger'\x00%s RETURNING is not available on virtual tables\x00RETURNING may not use \"TABLE.*\" wildcards\x00-- TRIGGER %s\x00cannot UPDATE generated column \"%s\"\x00no such column: %s\x00rows updated\x00%r \x00%sON CONFLICT clause does not match any PRIMARY KEY or UNIQUE constraint\x00CRE\x00INS\x00cannot VACUUM from within a transaction\x00cannot VACUUM - SQL statements in progress\x00non-text filename\x00ATTACH %Q AS vacuum_db\x00output file already exists\x00SELECT sql FROM \"%w\".sqlite_schema WHERE type='table'AND name<>'sqlite_sequence' AND coalesce(rootpage,1)>0\x00SELECT sql FROM \"%w\".sqlite_schema WHERE type='index'\x00SELECT'INSERT INTO vacuum_db.'||quote(name)||' SELECT*FROM\"%w\".'||quote(name)FROM vacuum_db.sqlite_schema WHERE type='table'AND coalesce(rootpage,1)>0\x00INSERT INTO vacuum_db.sqlite_schema SELECT*FROM \"%w\".sqlite_schema WHERE type IN('view','trigger') OR(type='table'AND rootpage=0)\x00CREATE VIRTUAL TABLE %T\x00UPDATE %Q.sqlite_master SET type='table', name=%Q, tbl_name=%Q, rootpage=0, sql=%Q WHERE rowid=#%d\x00name=%Q AND sql=%Q\x00vtable constructor called recursively: %s\x00vtable constructor failed: %s\x00vtable constructor did not declare schema: %s\x00no such module: %s\x00<expr>\x00 AND \x00(\x00 (\x00%s=?\x00ANY(%s)\x00SEARCH\x00SCAN\x00%s %S\x00AUTOMATIC PARTIAL COVERING INDEX\x00AUTOMATIC COVERING INDEX\x00COVERING INDEX %s\x00INDEX %s\x00 USING \x00>? AND rowid<\x00 USING INTEGER PRIMARY KEY (rowid%s?)\x00 VIRTUAL TABLE INDEX %d:%s\x00MULTI-INDEX OR\x00INDEX %d\x00ON clause references tables to its right\x00NOCASE\x00too many arguments on %s() - max %d\x00automatic index on %s(%s)\x00auto-index\x00%s.xBestIndex malfunction\x00abbreviated query algorithm search\x00no query solution\x00at most %d tables in a join\x00SCAN CONSTANT ROW\x00second argument to nth_value must be a positive integer\x00argument of ntile must be a positive integer\x00no such window: %s\x00RANGE with offset PRECEDING/FOLLOWING requires one ORDER BY expression\x00FILTER clause may only be used with aggregate window functions\x00unsupported frame specification\x00PARTITION clause\x00ORDER BY clause\x00frame specification\x00cannot override %s of window: %s\x00DISTINCT is not supported for window functions\x00frame starting offset must be a non-negative integer\x00frame ending offset must be a non-negative integer\x00frame starting offset must be a non-negative number\x00frame ending offset must be a non-negative number\x00LIMIT\x00%s clause should come after %s not before\x00too many terms in compound SELECT\x00syntax error after column name \"%.*s\"\x00parser stack overflow\x00unknown table option: %.*s\x00set list\x00near \"%T\": syntax error\x00qualified table names are not allowed on INSERT, UPDATE, and DELETE statements within triggers\x00the INDEXED BY clause is not allowed on UPDATE or DELETE statements within triggers\x00the NOT INDEXED clause is not allowed on UPDATE or DELETE statements within triggers\x00incomplete input\x00unrecognized token: \"%.*s\"\x00%s in \"%s\"\x00create\x00temporary\x00end\x00unable to close due to unfinalized statements or unfinished backups\x00SQLITE_ERROR_SNAPSHOT\x00SQLITE_INTERNAL\x00SQLITE_PERM\x00SQLITE_ABORT\x00SQLITE_ABORT_ROLLBACK\x00SQLITE_BUSY_RECOVERY\x00SQLITE_BUSY_SNAPSHOT\x00SQLITE_LOCKED_SHAREDCACHE\x00SQLITE_READONLY_RECOVERY\x00SQLITE_READONLY_ROLLBACK\x00SQLITE_READONLY_DBMOVED\x00SQLITE_READONLY_DIRECTORY\x00SQLITE_INTERRUPT\x00SQLITE_IOERR_READ\x00SQLITE_IOERR_SHORT_READ\x00SQLITE_IOERR_WRITE\x00SQLITE_IOERR_FSYNC\x00SQLITE_IOERR_DIR_FSYNC\x00SQLITE_IOERR_TRUNCATE\x00SQLITE_IOERR_FSTAT\x00SQLITE_IOERR_UNLOCK\x00SQLITE_IOERR_RDLOCK\x00SQLITE_IOERR_DELETE\x00SQLITE_IOERR_NOMEM\x00SQLITE_IOERR_ACCESS\x00SQLITE_IOERR_CHECKRESERVEDLOCK\x00SQLITE_IOERR_LOCK\x00SQLITE_IOERR_CLOSE\x00SQLITE_IOERR_DIR_CLOSE\x00SQLITE_IOERR_SHMOPEN\x00SQLITE_IOERR_SHMSIZE\x00SQLITE_IOERR_SHMLOCK\x00SQLITE_IOERR_SHMMAP\x00SQLITE_IOERR_SEEK\x00SQLITE_IOERR_DELETE_NOENT\x00SQLITE_IOERR_MMAP\x00SQLITE_IOERR_GETTEMPPATH\x00SQLITE_IOERR_CONVPATH\x00SQLITE_CORRUPT\x00SQLITE_CORRUPT_VTAB\x00SQLITE_FULL\x00SQLITE_CANTOPEN\x00SQLITE_CANTOPEN_NOTEMPDIR\x00SQLITE_CANTOPEN_ISDIR\x00SQLITE_CANTOPEN_FULLPATH\x00SQLITE_CANTOPEN_CONVPATH\x00SQLITE_CANTOPEN_SYMLINK\x00SQLITE_PROTOCOL\x00SQLITE_EMPTY\x00SQLITE_SCHEMA\x00SQLITE_TOOBIG\x00SQLITE_CONSTRAINT\x00SQLITE_CONSTRAINT_UNIQUE\x00SQLITE_CONSTRAINT_TRIGGER\x00SQLITE_CONSTRAINT_FOREIGNKEY\x00SQLITE_CONSTRAINT_CHECK\x00SQLITE_CONSTRAINT_PRIMARYKEY\x00SQLITE_CONSTRAINT_NOTNULL\x00SQLITE_CONSTRAINT_COMMITHOOK\x00SQLITE_CONSTRAINT_VTAB\x00SQLITE_CONSTRAINT_FUNCTION\x00SQLITE_CONSTRAINT_ROWID\x00SQLITE_MISMATCH\x00SQLITE_MISUSE\x00SQLITE_NOLFS\x00SQLITE_AUTH\x00SQLITE_FORMAT\x00SQLITE_RANGE\x00SQLITE_NOTADB\x00SQLITE_ROW\x00SQLITE_NOTICE\x00SQLITE_NOTICE_RECOVER_WAL\x00SQLITE_NOTICE_RECOVER_ROLLBACK\x00SQLITE_WARNING\x00SQLITE_WARNING_AUTOINDEX\x00SQLITE_DONE\x00SQLITE_UNKNOWN(%d)\x00not an error\x00SQL logic error\x00access permission denied\x00query aborted\x00database is locked\x00database table is locked\x00attempt to write a readonly database\x00interrupted\x00disk I/O error\x00database disk image is malformed\x00unknown operation\x00database or disk is full\x00unable to open database file\x00locking protocol\x00constraint failed\x00datatype mismatch\x00bad parameter or other API misuse\x00authorization denied\x00column index out of range\x00file is not a database\x00notification message\x00warning message\x00unknown error\x00abort due to ROLLBACK\x00another row available\x00no more rows available\x00unable to delete/modify user-function due to active statements\x00unable to use function %s in the requested context\x00unknown database: %s\x00unable to delete/modify collation sequence due to active statements\x00file:\x00localhost\x00invalid uri authority: %.*s\x00vfs\x00private\x00ro\x00rw\x00rwc\x00access\x00no such %s mode: %s\x00%s mode not allowed: %s\x00no such vfs: %s\x00RTRIM\x00\x00\x00\x00%s at line %d of [%.10s]\x00database corruption\x00misuse\x00cannot open file\x00no such table column: %s.%s\x00overflow\x00%s%.3x+%.6x\x00%s%.3x/\x00internal\x00leaf\x00corrupted\x00SELECT * FROM (SELECT 'sqlite_schema' AS name,1 AS rootpage,'table' AS type UNION ALL SELECT name,rootpage,type FROM \"%w\".sqlite_schema WHERE rootpage!=0)\x00WHERE name=%Q\x00 ORDER BY name\x00dbstat\x00CREATE TABLE x(pgno INTEGER PRIMARY KEY, data BLOB, schema HIDDEN)\x00read-only\x00cannot delete\x00cannot insert\x00no such schema\x00bad page number\x00bad page value\x00sqlite_dbpage\x00CREATE TABLE x(sql,ncol,ro,busy,nscan,nsort,naidx,nstep,reprep,run,mem)\x00sqlite_stmt\x002022-01-06 13:25:41 872ba256cbf61d9290b571c0e6d82a20c224ca3ad82971edc46b29818d5d17a0\x00"
+var __ccgo_ts1 = "SQLITE-CONNECTION\x00command not found: \x00%p\x00error code %s (%d) does not match sqlite3_errcode %s (%d)\x00NULL\x00OMIT_MISUSE\x00wrong # args: should be \"\x00 DB FORMAT STRING\x00%d\x00 DB HEX\x00 DB\x00 DB SQL\x00%s\x00%z%s%s\x00%s%n\x00abcdefghijklmnopqrstuvwxyz\x00 DB FORMAT STRING ?COUNT?\x00 DB\"\x00%lld\x00 FILENAME\"\x00%02x\x00%04x\x00tkt2213 is not fixed\x00text\x00text16\x00blob\x00bytes\x00bytes16\x00noop\x00x_coalesce\x00hex8\x00hex16\x00tkt2213func\x00pointer_change\x00counter1\x00counter2\x00intreal\x00x_sqlite_exec\x00value of 40 handed to x_count\x00x_count totals to 42\x00x_count\x00legacy_count\x00 TEXT\"\x00%s\n\x00 FORMAT INT INT INT\"\x00argument is not a valid 64-bit integer\x00 FORMAT INT INT ?STRING?\"\x00 INT FORMAT INT INT ?STRING?\"\x00N must be non-negative\x00 FORMAT INT INT DOUBLE\"\x00 FORMAT DOUBLE DOUBLE\"\x00 FORMAT STRING\"\x00%08x%08x\x002nd argument should be 16-characters of hex\x00?BOOLEAN?\x00DB BOOLEAN\x00DB dbname tblname colname\x00CHANNEL ROWID\x00DB-HANDLE NAME CMP-PROC DEL-PROC\x00sqlite3_create_collate_v2() failed to detect an invalid encoding\x00utf8\x00utf16\x00utf16le\x00utf16be\x00any\x000\x00DB NAME NARG ENC SWITCHES...\x00encoding\x00-func\x00-step\x00-final\x00-destroy\x00switch\x00DB-HANDLE FILE ?PROC?\x00this build omits sqlite3_load_extension()\x00\x00DB-HANDLE ONOFF\x00int\x00int64\x00string\x00double\x00null\x00value\x00first argument should be one of: int int64 string double null value\x00 DB FUNCTION-NAME\x00 <STMT>\x00SQLITE_STMTSTATUS_FULLSCAN_STEP\x00SQLITE_STMTSTATUS_SORT\x00SQLITE_STMTSTATUS_AUTOINDEX\x00SQLITE_STMTSTATUS_VM_STEP\x00SQLITE_STMTSTATUS_REPREPARE\x00SQLITE_STMTSTATUS_RUN\x00SQLITE_STMTSTATUS_MEMUSED\x00STMT PARAMETER RESETFLAG\x00NBYTE\x00FILE\x00PATH\x00main\x00 DB STMT\x00 STMT\x00 FROM-STMT TO-STMT\x00 VM IDX VALUE (null|static|normal)\"\x00static\x00static-nbytes\x00normal\x00blob10\x00abc\x00xyz\x00pq\x004th argument should be \"null\" or \"static\" or \"normal\"\x00(%d) \x00test_collate\x00UTF-8\x00UTF-16LE\x00UTF-16BE\x00 <DB> <utf8> <utf16le> <utf16be>\x00utf16bin\x00DB\x00utf16_unaligned\x00utf16_aligned\x00test_function\x00<error code>\x00STMT IDX N\x00 STMT N VALUE\x00NaN\x00SNaN\x00-NaN\x00-SNaN\x00+Inf\x00-Inf\x00Epsilon\x00-Epsilon\x00NaN0\x00-NaN0\x00 STMT N\x00 STMT N VALUE BYTES\x00out of memory\x00 STMT N DATA BYTES\x00cannot use %d blob bytes, have %d\x00-transient\x00-static\x00-int32\x00-int64\x00-double\x00-text\x00--\x00unknown option: \x00text data must be either -static or -transient\x00cannot be both -static and -transient\x00[OPTIONS] STMT IDX VALUE ...\x00STMT\x00STMT N\x00STMT NAME\x00MILLISECONDS\x00 DB sql bytes ?tailvar?\x00 DB sql bytes tailvar\x00 DB sql bytes flags tailvar\x00 filename options-list\x00FILENAME FLAGS VFS\x00SQLITE_OPEN_READONLY\x00SQLITE_OPEN_READWRITE\x00SQLITE_OPEN_CREATE\x00SQLITE_OPEN_DELETEONCLOSE\x00SQLITE_OPEN_EXCLUSIVE\x00SQLITE_OPEN_AUTOPROXY\x00SQLITE_OPEN_MAIN_DB\x00SQLITE_OPEN_TEMP_DB\x00SQLITE_OPEN_TRANSIENT_DB\x00SQLITE_OPEN_MAIN_JOURNAL\x00SQLITE_OPEN_TEMP_JOURNAL\x00SQLITE_OPEN_SUBJOURNAL\x00SQLITE_OPEN_SUPER_JOURNAL\x00SQLITE_OPEN_NOMUTEX\x00SQLITE_OPEN_FULLMUTEX\x00SQLITE_OPEN_SHAREDCACHE\x00SQLITE_OPEN_PRIVATECACHE\x00SQLITE_OPEN_WAL\x00SQLITE_OPEN_URI\x00SQLITE_OPEN_EXRESCODE\x00flag\x00<utf-16 sql>\x00SQL\x00 STMT column\x00INTEGER\x00FLOAT\x00TEXT\x00BLOB\x00 DB function-name\x00VARIABLE\x00DB DBNAME\x00?N?\x001234567890000000\x00__one\x00__two\x00notadatabase\x00temp\x00Unexpected non-zero errno: \x00 \x00DB [DBNAME]\x00%u\x00DB DBNAME SIZE\x00 DB PWD\x00 DB NRETRY DELAY\x00%d %d %d\x00%d %p\x00 DB HANDLE\x00 DB FLAG\x00%d %d\x00 DB ?AUXDB?\x00DB N\x00SQLITE_LIMIT_LENGTH\x00SQLITE_LIMIT_SQL_LENGTH\x00SQLITE_LIMIT_COLUMN\x00SQLITE_LIMIT_EXPR_DEPTH\x00SQLITE_LIMIT_COMPOUND_SELECT\x00SQLITE_LIMIT_VDBE_OP\x00SQLITE_LIMIT_FUNCTION_ARG\x00SQLITE_LIMIT_ATTACHED\x00SQLITE_LIMIT_LIKE_PATTERN_LENGTH\x00SQLITE_LIMIT_VARIABLE_NUMBER\x00SQLITE_LIMIT_TRIGGER_DEPTH\x00SQLITE_LIMIT_WORKER_THREADS\x00SQLITE_LIMIT_TOOSMALL\x00SQLITE_LIMIT_TOOBIG\x00 DB ID VALUE\x00unknown limit type: \x00SEED ?DB?\x00BOOLEAN\x00current\x00max\x00min\x00recyclable\x00DB ?NAME?\x00passive\x00full\x00restart\x00truncate\x00DB MODE ?NAME?\x00mode\x00 - \x00DB VALUE\x00SCRIPT\x00COMMAND ...\x00command has no objProc: \x00EXPLAIN QUERY PLAN %s\x00%d %d %d %s\n\x00SQLITE_TESTCTRL_LOCALTIME_FAULT\x00SQLITE_TESTCTRL_SORTER_MMAP\x00SQLITE_TESTCTRL_IMPOSTER\x00SQLITE_TESTCTRL_INTERNAL_FUNCTIONS\x00VERB ARGS...\x00VERB\x00ONOFF\x00DB LIMIT\x00DB dbName onOff tnum\x00win32_file_lock\x00FILENAME DELAY1 DELAY2\x00%d %d %d %d %d\x00busy\x00cannot open file: \x00cannot create event: \x000x%x\x00wait failed: \x00PATTERN\x00FILENAME\x00DIRECTORY\x00all\x00none\x00query-flattener\x00groupby-order\x00factor-constants\x00distinct-opt\x00cover-idx-scan\x00order-by-idx-join\x00transitive\x00omit-noop-join\x00stat4\x00skip-scan\x00push-down\x00DB OPT BOOLEAN\x00unknown optimization - should be one of:\x00amatch\x00appendvfs\x00carray\x00closure\x00csv\x00decimal\x00eval\x00explain\x00fileio\x00fuzzer\x00ieee754\x00nextchar\x00percentile\x00prefixes\x00regexp\x00remember\x00series\x00spellfix\x00totype\x00unionvtab\x00wholenumber\x00DB NAME ...\x00no such extension: \x00initialization of \x00 failed: \x00BOOL\x00DB SQL1 NSTEP SQL2\x00data error: (a!=b)\x00checksum mismatch\x00sql error: \x00TYPE\x00Deliberate panic\x00FKEY\x00TRIGGER\x00FTS3_TOKENIZER\x00LOAD_EXTENSION\x00NO_CKPT_ON_CLOSE\x00QPSG\x00TRIGGER_EQP\x00RESET_DB\x00DEFENSIVE\x00WRITABLE_SCHEMA\x00LEGACY_ALTER_TABLE\x00DQS_DML\x00DQS_DDL\x00LEGACY_FILE_FORMAT\x00DB SETTING [VALUE]\x00SQLITE_*\x00DBCONFIG_*\x00ENABLE_*\x00unknown sqlite3_db_config setting\x00DB ?SCHEMA?\x00icecube\x00DB ?DBNAME?\x00DB OFFSET DATA\x00HEXDB\x00| size %d pagesize %d\x00bad 'pagesize' field\x00bad 'size' field\x00| page %d offset %d\x00| %d: %x %x %x %x %x %x %x %x %x %x %x %x %x %x %x %x\x00DB ?SCRIPT?\x00sqlite3_autovacuum_pages() returns %d\x00db_enter\x00db_leave\x00sqlite3_mprintf_int\x00sqlite3_mprintf_int64\x00sqlite3_mprintf_long\x00sqlite3_mprintf_str\x00sqlite3_snprintf_str\x00sqlite3_mprintf_stronly\x00sqlite3_mprintf_double\x00sqlite3_mprintf_scaled\x00sqlite3_mprintf_hexdouble\x00sqlite3_mprintf_z_test\x00sqlite3_mprintf_n_test\x00sqlite3_snprintf_int\x00sqlite3_last_insert_rowid\x00sqlite3_exec_printf\x00sqlite3_exec_hex\x00sqlite3_exec\x00sqlite3_exec_nr\x00sqlite3_get_table_printf\x00sqlite3_close\x00sqlite3_close_v2\x00sqlite3_create_function\x00sqlite3_create_aggregate\x00sqlite3_drop_modules\x00sqlite_register_test_function\x00sqlite_abort\x00sqlite_bind\x00breakpoint\x00sqlite3_key\x00sqlite3_rekey\x00sqlite3_interrupt\x00sqlite_delete_function\x00sqlite_delete_collation\x00sqlite3_get_autocommit\x00sqlite3_busy_timeout\x00printf\x00sqlite3IoTrace\x00clang_sanitize_address\x00sqlite3_db_config\x00sqlite3_txn_state\x00bad_behavior\x00register_dbstat_vtab\x00sqlite3_connection_pointer\x00intarray_addr\x00int64array_addr\x00doublearray_addr\x00textarray_addr\x00sqlite3_bind_int\x00sqlite3_bind_zeroblob\x00sqlite3_bind_zeroblob64\x00sqlite3_bind_int64\x00sqlite3_bind_double\x00sqlite3_bind_null\x00sqlite3_bind_text\x00sqlite3_bind_text16\x00sqlite3_bind_blob\x00sqlite3_carray_bind\x00sqlite3_bind_parameter_count\x00sqlite3_bind_parameter_name\x00sqlite3_bind_parameter_index\x00sqlite3_clear_bindings\x00sqlite3_sleep\x00sqlite3_errcode\x00sqlite3_extended_errcode\x00sqlite3_errmsg\x00sqlite3_errmsg16\x00sqlite3_open\x00sqlite3_open16\x00sqlite3_open_v2\x00sqlite3_complete16\x00sqlite3_normalize\x00sqlite3_prepare\x00sqlite3_prepare16\x00sqlite3_prepare_v2\x00sqlite3_prepare_v3\x00sqlite3_prepare_tkt3134\x00sqlite3_prepare16_v2\x00sqlite3_finalize\x00sqlite3_stmt_status\x00sqlite3_reset\x00sqlite3_expired\x00sqlite3_transfer_bindings\x00sqlite3_changes\x00sqlite3_step\x00sqlite3_sql\x00sqlite3_expanded_sql\x00sqlite3_next_stmt\x00sqlite3_stmt_readonly\x00sqlite3_stmt_isexplain\x00sqlite3_stmt_busy\x00uses_stmt_journal\x00sqlite3_release_memory\x00sqlite3_db_release_memory\x00sqlite3_db_cacheflush\x00sqlite3_system_errno\x00sqlite3_db_filename\x00sqlite3_db_readonly\x00sqlite3_soft_heap_limit\x00sqlite3_soft_heap_limit64\x00sqlite3_hard_heap_limit64\x00sqlite3_thread_cleanup\x00sqlite3_pager_refcounts\x00sqlite3_load_extension\x00sqlite3_enable_load_extension\x00sqlite3_extended_result_codes\x00sqlite3_limit\x00dbconfig_maindbname_icecube\x00save_prng_state\x00restore_prng_state\x00reset_prng_state\x00prng_seed\x00extra_schema_checks\x00database_never_corrupt\x00database_may_be_corrupt\x00optimization_control\x00lock_win32_file\x00exists_win32_path\x00find_win32_file\x00delete_win32_file\x00make_win32_dir\x00remove_win32_dir\x00tcl_objproc\x00sqlite3_column_count\x00sqlite3_data_count\x00sqlite3_column_type\x00sqlite3_column_blob\x00sqlite3_column_double\x00sqlite3_column_int64\x00sqlite3_column_text\x00sqlite3_column_name\x00sqlite3_column_int\x00sqlite3_column_bytes\x00sqlite3_column_decltype\x00sqlite3_column_bytes16\x00sqlite3_column_text16\x00sqlite3_column_name16\x00add_alignment_test_collations\x00sqlite3_column_decltype16\x00sqlite3_create_collation_v2\x00sqlite3_global_recover\x00working_64bit_int\x00vfs_unlink_test\x00vfs_initfail_test\x00vfs_unregister_all\x00vfs_reregister_all\x00file_control_test\x00file_control_lasterrno_test\x00file_control_lockproxy_test\x00file_control_chunksize_test\x00file_control_sizehint_test\x00file_control_data_version\x00file_control_win32_av_retry\x00file_control_win32_get_handle\x00file_control_win32_set_handle\x00file_control_persist_wal\x00file_control_powersafe_overwrite\x00file_control_vfsname\x00file_control_reservebytes\x00file_control_tempfilename\x00file_control_external_reader\x00sqlite3_vfs_list\x00sqlite3_create_function_v2\x00add_test_collate\x00add_test_collate_needed\x00add_test_function\x00add_test_utf16bin_collate\x00sqlite3_test_errstr\x00tcl_variable_type\x00sqlite3_enable_shared_cache\x00sqlite3_shared_cache_report\x00sqlite3_libversion_number\x00sqlite3_table_column_metadata\x00sqlite3_blob_reopen\x00pcache_stats\x00sqlite3_wal_checkpoint\x00sqlite3_wal_checkpoint_v2\x00sqlite3_wal_autocheckpoint\x00test_sqlite3_log\x00print_explain_query_plan\x00sqlite3_test_control\x00load_static_extension\x00sorter_test_fakeheap\x00sorter_test_sort4_helper\x00vfs_current_time_int64\x00sqlite3_delete_database\x00atomic_batch_write\x00sqlite3_mmap_warm\x00sqlite3_config_sorterref\x00sqlite3_autovacuum_pages\x00decode_hexdb\x00test_write_db\x00sqlite3_register_cksumvfs\x00sqlite3_unregister_cksumvfs\x00sqlite_search_count\x00sqlite_found_count\x00sqlite_sort_count\x00sqlite3_max_blobsize\x00sqlite_like_count\x00sqlite_interrupt_count\x00sqlite_open_file_count\x00sqlite_current_time\x00sqlite3_xferopt_count\x00sqlite3_pager_readdb_count\x00sqlite3_pager_writedb_count\x00sqlite3_pager_writej_count\x00unaligned_string_counter\x00sqlite_last_needed_collation\x00sqlite_os_type\x00*** OBSOLETE VARIABLE ***\x00sqlite_query_plan\x00sqlite_opentemp_count\x00sqlite_static_bind_value\x00sqlite_static_bind_nbyte\x00sqlite_temp_directory\x00sqlite_data_directory\x00bitmask_size\x00longdouble_size\x00sqlite_sync_count\x00sqlite_fullsync_count\x00 FILENAME N-PAGE\"\x00 ID\"\x00ref\x00page\x00size\x00state\x00err\x00hit\x00miss\x00ovfl\x00 ID PGNO\"\x00 PAGE\"\x00 PAGE DATA\"\x00 N-MEGABYTES FILE\"\x00open failed: \x00Hello, World!\x00write failed: \x00 PENDING-BYTE\"\x00fault simulator script failed: [%s]\x00 SCRIPT\"\x00 SIZE PROGRAM\"\x00pager_open\x00pager_close\x00pager_commit\x00pager_rollback\x00pager_stmt_begin\x00pager_stmt_commit\x00pager_stmt_rollback\x00pager_stats\x00pager_pagecount\x00page_get\x00page_lookup\x00page_unref\x00page_read\x00page_write\x00page_number\x00pager_truncate\x00fake_big_file\x00sqlite3BitvecBuiltinTest\x00sqlite3_test_control_pending_byte\x00sqlite3_test_control_fault_install\x00sqlite_io_error_pending\x00sqlite_io_error_persist\x00sqlite_io_error_hit\x00sqlite_io_error_hardhit\x00sqlite_diskfull_pending\x00sqlite_diskfull\x00sqlite_pending_byte\x00 FILENAME NCACHE FLAGS\"\x00read\x00write\x00 ID TABLENUM WRITEABLE\"\x00 START MULTIPLIER COUNT INCREMENT\"\x00putVarint returned %d - should be between 1 and 9\x00putVarint returned %d and getVarint returned %d\x00Wrote 0x%016llx and got back 0x%016llx\x00putVarint returned %d and GetVarint32 returned %d\x00Wrote 0x%016llx and got back 0x%016llx from GetVarint32\x00 DB-HANDLE ?N?\"\x00No such db-handle: \"\x00\"\x00 BT NCACHE\"\x00?-intkey? CSR KEY VALUE\x00btree_open\x00btree_close\x00btree_begin_transaction\x00btree_pager_stats\x00btree_cursor\x00btree_close_cursor\x00btree_next\x00btree_eof\x00btree_payload_size\x00btree_first\x00btree_varint_test\x00btree_from_db\x00btree_ismemdb\x00btree_set_cache_size\x00btree_insert\x00 <repeat-count> <do-calls>\x00hello world\x00UTF8\x00UTF16LE\x00UTF16BE\x00UTF16\x00No such encoding: \x00 <string/blob> <from enc> <to enc>\x00binarize\x00test_value_overhead\x00test_translate\x00translate_selftest\x00out of memory in the crash simulator\n\x00atomic\x00atomic512\x00atomic1k\x00atomic2k\x00atomic4k\x00atomic8k\x00atomic16k\x00atomic32k\x00atomic64k\x00sequential\x00safe_append\x00powersafe_overwrite\x00batch-atomic\x00-sectorsize\x00-characteristics\x00Bad option: \"\x00\" - must be \"-characteristics\" or \"-sectorsize\"\x00Option requires an argument: \"\x00no such flag\x00crash\x00ENABLE ?DEFAULT?\x00?OPTIONS? DELAY CRASHFILE\x00Filename is too long: \"\x00NWRITE\x00?-default? PARENT-VFS\x00-default\x00bad option \"\x00\": must be -default\x00Error in jt_register\x00sqlite3_crash_enable\x00sqlite3_crashparams\x00sqlite3_crash_now\x00sqlite3_simulate_device\x00sqlite3_crash_on_write\x00unregister_devsim\x00register_jt_vfs\x00unregister_jt_vfs\x00echo_module_fail(%s,%s)\x00echo-vtab-error: %s\x00SELECT * FROM %Q\x00PRAGMA index_list(%s)\x00PRAGMA index_info(%s)\x00echo_module\x00SELECT sql FROM sqlite_schema WHERE type = 'table' AND name = ?\x00%s%s\x00xCreate\x00CREATE TABLE %Q(logmsg)\x00xConnect\x00xDisconnect\x00xDestroy\x00DROP TABLE %Q\x00xOpen\x00xNext\x00xColumn\x00xRowid\x00xFilter\x00, *\x00%z, %s\x00%z, NULL\x00WHERE\x00echo_module_ignore_usable\x00xBestIndex\x00echo_module_cost\x00SELECT count(*) FROM %Q\x00SELECT rowid%z FROM %Q\x00rowid\x00=\x00<\x00>\x00<=\x00>=\x00LIKE\x00like\x00glob\x00 %s %s LIKE (SELECT '%%'||?||'%%')\x00 %s %s %s ?\x00AND\x00DESC\x00ASC\x00 ORDER BY %s %s\x00xUpdate\x00 SET\x00UPDATE %Q\x00 SET rowid=?1 \x00,\x00%s %Q=?%d\x00 WHERE rowid=?%d\x00DELETE FROM %Q WHERE rowid = ?1\x00INSERT INTO %Q (\x00?\x00, \x00%s%Q\x00%s?%d\x00) VALUES(\x00)\x00echo(%s)\x00xBegin\x00echo_module_begin_fail\x00xSync\x00echo_module_sync_fail\x00xCommit\x00xRollback\x00::echo_glob_overload\x00xRename\x00ALTER TABLE %s RENAME TO %s%s\x00function_that_does_not_exist_0982ma98\x00echo\x00echo_v2\x00DB SQL\x00register_echo_module\x00sqlite3_declare_vtab\x00N/A\x00:memory:\x00collate\x00sqlite3_create_collation\x00Error testing function: \x00sqlite3_malloc\x00sqlite3_realloc\x00c_misuse_test\x00c_realloc_test\x00c_collation_test\x00sqlite3_reset_auto_extension\x00step\x00npage\x00finish\x00remaining\x00pagecount\x00option\x00CMDNAME DESTHANDLE DESTNAME SRCHANDLE SRCNAME\x00sqlite3_backup_init() failed\x00sqlite3_backup\x00wrong number of arguments\x00sql\x00unexpected: %s\x00eq\x00gt\x00le\x00lt\x00ge\x00match\x00ne\x00isnot\x00isnotnull\x00isnull\x00is\x00op\x00column\x00usable\x00desc\x00cost\x00orderby\x00idxnum\x00idxstr\x00rows\x00use\x00omit\x00unexpected: %d\x00tcl\x00register_tcl_module\x00incrblob_\x00DB DATABASE TABLE COLUMN ROWID FLAGS VARNAME\x00HANDLE\x00CHANNEL OFFSET N\x00out of memory in ../sqlite-src-3370200/src/test_blob.c\x00HANDLE OFFSET DATA ?NDATA?\x00sqlite3_blob_open\x00sqlite3_blob_close\x00sqlite3_blob_bytes\x00sqlite3_blob_read\x00sqlite3_blob_write\x00sqlite_options\x00malloc_usable_size\x00rowid32\x00casesensitivelike\x00configslower\x001.0\x00curdir\x001\x00win32malloc\x00debug\x00default_ckptfullfsync\x00direct_read\x00dirsync\x00lfs\x00pagecache_overflow_stats\x00mmap\x00worker_threads\x00memdebug\x008_3_names\x00cursorhints\x00hiddencolumns\x00deserialize\x00mathlib\x00mem3\x00mem5\x00offset_sql_func\x00preupdate\x00snapshot\x00mutex\x00mutex_noop\x00altertable\x00analyze\x00api_armor\x00atomicwrite\x00geopoly\x00json1\x00has_codec\x00like_match_blobs\x00attach\x00auth\x00autoinc\x00autoindex\x00autoreset\x00autovacuum\x00default_autovacuum\x00between_opt\x00builtin_test\x00bloblit\x00cast\x00check\x00cte\x00columnmetadata\x00oversize_cell_check\x00compileoption_diags\x00complete\x00compound\x00conflict\x00crashtest\x00datetime\x00decltype\x00deprecated\x00diskio\x00floatingpoint\x00foreignkey\x00fts1\x00fts2\x00fts3\x00fts5\x00fts3_unicode\x00fts4_deferred\x00gettable\x00icu\x00icu_collations\x00incrblob\x00integrityck\x00legacyformat\x00like_opt\x00load_ext\x00localtime\x00lookaside\x00long_double\x00memorydb\x00memorymanage\x00mergesort\x00null_trim\x00or_opt\x00rbu\x00pager_pragmas\x00pragma\x00progress\x00reindex\x00rtree\x00rtree_int_only\x00schema_pragmas\x00schema_version\x00session\x00stmtvtab\x00scanstatus\x00lock_proxy_pragmas\x00prefer_proxy_locking\x00shared_cache\x00subquery\x00tclvar\x00threadsafe\x00threadsafe1\x00threadsafe2\x00tempdb\x00trace\x00trigger\x00truncate_opt\x00vacuum\x00view\x00vtab\x00wal\x00wsd\x00update_delete_limit\x00unlock_notify\x00fast_secure_delete\x00secure_delete\x00userauth\x00multiplex_ext_overwrite\x00yytrackmaxstackdepth\x00sqllog\x00uri_00_error\x00normalize\x00windowfunc\x00SQLITE_MAX_LENGTH\x00SQLITE_MAX_COLUMN\x00SQLITE_MAX_SQL_LENGTH\x00SQLITE_MAX_EXPR_DEPTH\x00SQLITE_MAX_COMPOUND_SELECT\x00SQLITE_MAX_VDBE_OP\x00SQLITE_MAX_FUNCTION_ARG\x00SQLITE_MAX_VARIABLE_NUMBER\x00SQLITE_MAX_PAGE_SIZE\x00SQLITE_MAX_PAGE_COUNT\x00SQLITE_MAX_LIKE_PATTERN_LENGTH\x00SQLITE_MAX_TRIGGER_DEPTH\x00SQLITE_DEFAULT_CACHE_SIZE\x00SQLITE_DEFAULT_PAGE_SIZE\x00SQLITE_DEFAULT_FILE_FORMAT\x00SQLITE_DEFAULT_SYNCHRONOUS\x00SQLITE_DEFAULT_WAL_SYNCHRONOUS\x00SQLITE_MAX_ATTACHED\x00SQLITE_MAX_DEFAULT_PAGE_SIZE\x00SQLITE_MAX_WORKER_THREADS\x00TEMP_STORE\x00_MSC_VER\x00__GNUC__\x00%s-journal\x00%s-wal\x00%s-shm\x00%s%03d\x00%s-journal%03d\x00%s-wal%03d\x00win32\x00devsym\x00writecrash\x00CREATE TABLE xyz(dir, name);\x00CREATE TABLE xyz(path, size, data);\x00WITH r(d) AS (  SELECT CASE WHEN dir=?2 THEN ?3 ELSE dir END || '/' || name     FROM fsdir WHERE dir=?1 AND name NOT LIKE '.%'  UNION ALL  SELECT dir || '/' || name FROM r, fsdir WHERE dir=d AND name NOT LIKE '.%') SELECT d FROM r;\x00fstreeDrive\x00SystemDrive\x00%s%c\x00CREATE TABLE x(path TEXT, data TEXT)\x00SELECT * FROM %Q.%Q WHERE rowid=?\x00SELECT * FROM %Q.%Q\x00fs\x00fsdir\x00fstree\x00register_fs_module\x00sqlite3_prepare_v2() error: %s\x000123456789abcdef\x00x'\x00'\x00randstr\x00test_destructor\x00test_destructor16\x00hex_to_utf16be\x00hex_to_utf16le\x00hex_to_utf8\x00test_destructor_count\x00test_auxdata\x00test_error\x00test_eval\x00test_isolation\x00test_counter\x00real2hex\x00test_decode\x00test_extract\x00test_zeroblob\x00test_getsubtype\x00test_setsubtype\x00test_frombind\x00test_agg_errmsg16\x00tx\x00funcxx_123456789_123456789_123456789_123456789_123456789_123456789_123456789_123456789_123456789_123456789_123456789_123456789_123456789_123456789_123456789_123456789_123456789_123456789_123456789_123456789_123456789_123456789_123456789_123456789_123456789\x00nullx_123456789_123456789_123456789_123456789_123456789_123456789_123456789_123456789_123456789_123456789_123456789_123456789_123456789_123456789_123456789_123456789_123456789_123456789_123456789_123456789_123456789_123456789_123456789_123456789_123456789\x00sqlite3_create_function abused test failed\x00invalid matchinfo blob passed to function rank()\x00wrong number of arguments to function rank()\x00rank\x00autoinstall_test_functions\x00abuse_create_function\x00install_fts3_rank_function\x00FILENAME OFFSET AMT\x00rb\x00r\x00cannot open input file \x00FILENAME OFFSET HEXDATA\x00r+b\x00r+\x00cannot open output file \x00HEXDATA\x00[utf8_to_utf8] unavailable - SQLITE_DEBUG not defined\x00BLOB VARNAME\x00LIST\x00hexio_read\x00hexio_write\x00hexio_get_int\x00hexio_render_int16\x00hexio_render_int32\x00utf8_to_utf8\x00read_fts3varint\x00make_fts3record\x00mem\x00pcache\x00Unknown argument: \"\x00init_wrapper_install\x00init_wrapper_query\x00init_wrapper_uninstall\x00init_wrapper_clear\x00CREATE TABLE x(value INTEGER PRIMARY KEY)\x00CREATE VIRTUAL TABLE temp.%Q USING %Q\x00INTARRAY\x00SQLITE_NOMEM\x00sqlite3_intarray_create\x00sqlite3_intarray_bind\x00jt\x00-journal\x00NBYTES\x00PRIOR NBYTES\x00bad pointer: \x00PRIOR\x00ADDRESS SIZE HEX\x00size must be positive\x00no data\x00ADDRESS SIZE\x00?RESET?\x00DEPT\x00COUNTER ?OPTIONS?\x00-repeat\x00option requires an argument: \x00-benigncnt\x00TITLE\x00start\x00stop\x00dump\x00clear\x00sync\x00SUB-COMMAND ...\x00sub-command\x00SIZE N\x00INSTALLFLAG DISCARDCHANCE PRNGSEEED HIGHSTRESS\x00discard-chance should be between 0 and 100\x00SIZE COUNT\x00BUFID SIZE COUNT\x00illegal arguments - see documentation\x00NBYTE NMINALLOC\x00[DB]\x00sqlite3_db_config(db, 99999) does not return SQLITE_ERROR\x00sqlite3_config(99999) does not return SQLITE_ERROR\x00SQLITE_STATUS_MEMORY_USED\x00SQLITE_STATUS_MALLOC_SIZE\x00SQLITE_STATUS_PAGECACHE_USED\x00SQLITE_STATUS_PAGECACHE_OVERFLOW\x00SQLITE_STATUS_PAGECACHE_SIZE\x00SQLITE_STATUS_SCRATCH_USED\x00SQLITE_STATUS_SCRATCH_OVERFLOW\x00SQLITE_STATUS_SCRATCH_SIZE\x00SQLITE_STATUS_PARSER_STACK\x00SQLITE_STATUS_MALLOC_COUNT\x00PARAMETER RESETFLAG\x00LOOKASIDE_USED\x00CACHE_USED\x00SCHEMA_USED\x00STMT_USED\x00LOOKASIDE_HIT\x00LOOKASIDE_MISS_SIZE\x00LOOKASIDE_MISS_FULL\x00CACHE_HIT\x00CACHE_MISS\x00CACHE_WRITE\x00DEFERRED_FKS\x00CACHE_USED_SHARED\x00CACHE_SPILL\x00DB PARAMETER RESETFLAG\x00SQLITE_\x00DBSTATUS_\x00?INTEGER?\x00sqlite3_free\x00memset\x00memget\x00sqlite3_memory_used\x00sqlite3_memory_highwater\x00sqlite3_memdebug_backtrace\x00sqlite3_memdebug_dump\x00sqlite3_memdebug_fail\x00sqlite3_memdebug_pending\x00sqlite3_memdebug_settitle\x00sqlite3_memdebug_malloc_count\x00sqlite3_memdebug_log\x00sqlite3_config_pagecache\x00sqlite3_config_alt_pcache\x00sqlite3_status\x00sqlite3_db_status\x00install_malloc_faultsim\x00sqlite3_config_heap\x00sqlite3_config_heap_size\x00sqlite3_config_memstatus\x00sqlite3_config_lookaside\x00sqlite3_config_error\x00sqlite3_config_uri\x00sqlite3_config_cis\x00sqlite3_config_pmasz\x00sqlite3_db_config_lookaside\x00sqlite3_dump_memsys3\x00sqlite3_dump_memsys5\x00sqlite3_install_memsys3\x00sqlite3_memdebug_vfs_oom_test\x00%05u\x00 FILENAME [OFFSET AMT]\"\x00unable to open file \"\x00\" for reading\x00md5\x00md5-10x8\x00md5file\x00md5file-10x8\x00md5sum\x00%03d\x00multiplexor.xAccess failure on %s\x00multiplexor.xOpen failure on %s\x00multiplex_control\x00chunksize\x00multiplex_\x00multiplex_truncate\x00on\x00off\x00multiplex_enabled\x00multiplex_chunksize\x00multiplex_filecount\x00multiplex/%z\x00multiplex\x00NAME MAKEDEFAULT\x00-force\x00?-force?\x00enable\x00chunk_size\x00max_chunks\x00HANDLE DBNAME SUB-COMMAND INT-VALUE\x00expected database handle, got \"\x00SUB-COMMAND\x00sqlite3_multiplex_initialize\x00sqlite3_multiplex_shutdown\x00sqlite3_multiplex_control\x00fast\x00recursive\x00static_main\x00static_mem\x00static_open\x00static_prng\x00static_lru\x00static_pmem\x00static_app1\x00static_app2\x00static_app3\x00static_vfs1\x00static_vfs2\x00static_vfs3\x00mutex counters are \x00already installed\x00not installed\x00singlethread\x00multithread\x00serialized\x00mutex name\x00NAME\x00sqlite3_shutdown\x00sqlite3_initialize\x00sqlite3_config\x00enter_static_mutex\x00leave_static_mutex\x00enter_db_mutex\x00leave_db_mutex\x00alloc_dealloc_mutex\x00install_mutex_counters\x00read_mutex_counters\x00clear_mutex_counters\x00disable_mutex_init\x00disable_mutex_try\x00\x00\x00\x00\x00\x00\x00\x00vfslog/%z\x00sqlite_ostrace1.....\x00xClose\x00xRead\x00xWrite\x00xTruncate\x00xFilesize\x00xLock\x00xUnlock\x00xCheckResLock\x00xFileControl\x00xSectorSize\x00xDeviceChar\x00xDelete\x00xAccess\x00xFullPathname\x00xRandomness\x00xSleep\x00xCurrentTime\x00xShmUnmap\x00xShmLock\x00xShmBarrier\x00xShmMap\x00annotation\x00CREATE TABLE xxx(event, file, click, rc, size, offset)\x00vfslog\x00annotate\x00finalize\x00new\x00register\x00VFS\x00failed\x00VFS PARENT LOGFILE\x00bad sqlite3 handle: \x00quota/%z\x00quota\x00::piLimit_\x00PATTERN LIMIT SCRIPT\x00FILENAME MODE\x00HANDLE SIZE NELEM\x00HANDLE SIZE NELEM CONTENT\x00HANDLE ?HARDSYNC?\x00HANDLE OFFSET WHENCE\x00SEEK_SET\x00SEEK_CUR\x00SEEK_END\x00WHENCE should be SEEK_SET, SEEK_CUR, or SEEK_END\x00HANDLE SIZE\x00PATTERN TEXT\x00sqlite3_quota_initialize\x00sqlite3_quota_shutdown\x00sqlite3_quota_set\x00sqlite3_quota_file\x00sqlite3_quota_dump\x00sqlite3_quota_fopen\x00sqlite3_quota_fread\x00sqlite3_quota_fwrite\x00sqlite3_quota_fclose\x00sqlite3_quota_fflush\x00sqlite3_quota_fseek\x00sqlite3_quota_rewind\x00sqlite3_quota_ftell\x00sqlite3_quota_ftruncate\x00sqlite3_quota_file_size\x00sqlite3_quota_file_truesize\x00sqlite3_quota_file_mtime\x00sqlite3_quota_remove\x00sqlite3_quota_glob\x00sqlite3_quota_file_available\x00sqlite3_quota_ferror\x00register_cube_geom\x00register_circle_geom\x00CREATE TABLE x(database,tablename,cid,name,type,not_null,dflt_value,pk)\x00SELECT name FROM sqlite_temp_schema WHERE type='table'\x00SELECT name FROM %Q.sqlite_schema WHERE type='table'\x00PRAGMA %Q.table_info(%Q)\x00PRAGMA database_list\x00schema\x00register_schema_module\x00PRAGMA main.journal_mode\x00BEGIN EXCLUSIVE\x00COMMIT\x00CMDNAME PATH ?VFS? ?BUSY-HANDLER-SCRIPT?\x00sqlite3demo_superlock\x00sqlite3\x00load_testfixture_extensions\x00SLAVE\x00array names\x00tclvar_filter_cmd\x00%s(%s)\x00expr {[info exists ::tclvar_set_omit] && $::tclvar_set_omit}\x00the 'fullname' column must be TEXT\x00prohibited TCL variable change\x00proc like {pattern str} {\n  set p [string map {% * _ ?} $pattern]\n  string match $p $str\n}\nproc tclvar_filter_cmd {eq match glob regexp like} {\n  set res {}\n  set pattern $eq\n  if {$pattern=={}} { set pattern $match }\n  if {$pattern=={}} { set pattern * }\n  foreach v [uplevel #0 info vars $pattern] {\n    if {($glob=={} || [string match $glob [uplevel #0 set $v]])\n     && ($like=={} || [like $like [uplevel #0 set $v]])\n     && ($regexp=={} || [regexp $regexp [uplevel #0 set $v]])\n    } {\n      lappend res $v\n    }\n  }\n  set res\n}\n\x00register_tclvar_module\x00SQLITE_OK\x00SQLITE_ERROR\x00SQLITE_IOERR\x00SQLITE_LOCKED\x00SQLITE_BUSY\x00SQLITE_READONLY\x00SQLITE_READONLY_CANTINIT\x00SQLITE_NOTFOUND\x00SQLITE_OMIT\x00normal|dataonly\x00full|dataonly\x00xCheckReservedLock\x00error\x00filename\x00BEGIN_ATOMIC_WRITE\x00COMMIT_ATOMIC_WRITE\x00ZIPVFS\x00anon\x00SQLITE_ACCESS_EXISTS\x00SQLITE_ACCESS_READWRITE\x00SQLITE_ACCESS_READ\x00xShmOpen\x00 lock\x00 unlock\x00 shared\x00 exclusive\x00shm\x00delete\x00filter\x00ioerr\x00fullerr\x00cantopenerr\x00script\x00devchar\x00sectorsize\x00SUBCOMMAND ...\x00subcommand\x00FILE ?VALUE?\x00failed to get full path: \x00no such file: \x00unknown method: \x00?SCRIPT?\x00?CNT PERSIST?\x00default\x00undeletable_when_open\x00immutable\x00?ATTR-LIST?\x00bad flags: \x00?VALUE?\x00-noshm\x00-szosfile\x00-mxpathname\x00-iversion\x00-fullshm\x00VFSNAME ?-noshm BOOL? ?-fullshm BOOL? ?-default BOOL? ?-mxpathname INT? ?-szosfile INT? ?-iversion INT?\x00shared\x00exclusive\x00lock\x00unlock\x00DB DBNAME (shared|exclusive) (lock|unlock) OFFSET N\x00ARG\x00DB DBNAME SLOT ?VALUE?\x00*-shm is not yet mapped\x00testvfs\x00vfs_shmlock\x00vfs_set_readmark\x00/\x00%s\\*\x00DB NAME XSTEP XFINAL XVALUE XINVERSE\x00fff\x00misuse test error\x00invalid argument\x00sumint\x00sum\x00sqlite3_create_window_function\x00test_create_window_function_misuse\x00test_create_sumint\x00test_override_sum\x00internal error!\x00SELECT * FROM main.%Q WHERE sample()\x00expert\x00PRAGMA table_xinfo=%Q\x00binary\x00%Q\x00 COLLATE %Q\x00 COLLATE %s\x00 DESC\x00PRAGMA index_list=%Q\x00PRAGMA index_xInfo=%Q\x00%s_idx_%08x\x00SELECT count(*) FROM sqlite_schema WHERE name=%Q AND type in ('index','table','view')\x00CREATE INDEX \"%w\" ON \"%w\"(%s)\x00CREATE INDEX %s ON %s(%s)\x00 USING INDEX \x00 USING COVERING INDEX \x00%s;\n\x00t592690916721053953805701627921227776\x00DROP TABLE t592690916721053953805701627921227776\x00SELECT 'CREATE TEMP' || substr(sql, 7) FROM sqlite_schema WHERE tbl_name = %Q AND type IN ('table', 'trigger') ORDER BY type;\x00ALTER TABLE temp.%Q RENAME TO %Q\x00INSERT INTO %Q VALUES(\x00%s?\x00UPDATE %Q SET \x00%s%Q=?\x00DELETE FROM %Q\x00SELECT type, name, sql, 1 FROM sqlite_schema WHERE type IN ('table','view') AND name NOT LIKE 'sqlite_%%'  UNION ALL SELECT type, name, sql, 2 FROM sqlite_schema WHERE type = 'trigger'  AND tbl_name IN(SELECT name FROM sqlite_schema WHERE type = 'view') ORDER BY 4, 1\x00CREATE TABLE x(\x00%s%Q COLLATE %s\x00CREATE VIRTUAL TABLE %Q USING expert(%Q)\x00SELECT max(i.seqno) FROM   sqlite_schema AS s,   pragma_index_list(s.name) AS l,   pragma_index_info(l.name) AS i WHERE s.type = 'table'\x00%sx.%Q IS rem(%d, x.%Q) COLLATE %s\x00%s%d\x00SELECT %s FROM %Q x ORDER BY %s\x00SELECT %s FROM temp.t592690916721053953805701627921227776 x ORDER BY %s\x00 %d\x00DROP TABLE IF EXISTS temp.t592690916721053953805701627921227776\x00CREATE TABLE temp.t592690916721053953805701627921227776 AS SELECT * FROM %Q\x00SELECT s.rowid, s.name, l.name FROM   sqlite_schema AS s,   pragma_index_list(s.name) AS l WHERE s.type = 'table'\x00SELECT name, coll FROM pragma_index_xinfo(?) WHERE key\x00INSERT INTO sqlite_stat1 VALUES(?, ?, ?)\x00ANALYZE; PRAGMA writable_schema=1\x00rem\x00sample\x00ANALYZE sqlite_schema\x00SELECT sql FROM sqlite_schema WHERE name NOT LIKE 'sqlite_%%' AND sql NOT LIKE 'CREATE VIRTUAL %%'\x00Cannot find a unique index name to propose.\x00 -- stat1: \x00%s;%s%s\n\x00no such handle: \x00TABLE\x00count\x00report\x00STMT EREPORT\x00destroy\x00indexes\x00plan\x00candidates\x00sqlite3expert%d\x00sqlite3_expert_new\x00%s: cost must be between 1 and %d\x00%s: maximum string length is %d\x00%s: iLang must be between 0 and %d\x00%s: %s\x00%s: %s has %d columns, expected 4\x00vocabulary_table\x00vocabulary_word\x00vocabulary_language\x00edit_distances\x00unrecognized argument: [%s]\n\x00no edit_distances table specified\x00CREATE TABLE x(word,distance,language,command HIDDEN,nword HIDDEN)\x00SELECT \"%w\" FROM \"%w\"\x00 WHERE \"%w\">=?1 AND \"%w\"=?2 ORDER BY 1\x00SELECT \"%w\" FROM \"%w\" WHERE \"%w\">=?1 ORDER BY 1\x00*\x00DELETE from %s is not allowed\x00UPDATE of %s is not allowed\x00INSERT INTO %s allowed for column [command] only\x00approximate_match\x00apndvfs\x00Start-Of-SQLite3-\x00apnd(%lld)/%z\x00int32\x00char*\x00CREATE TABLE x(value,pointer hidden,count hidden,ctype hidden)\x00carray-bind\x00unknown datatype: %Q\x00inttoptr\x00cksmvfs\x00SQLite format 3\x00ZV-\x00checksum fault offset %lld of \"%s\"\x00checksum_verification\x00enable%\x00yes\x00page_size\x00cksm/%z\x00verify_checksum\x00tablename\x00idcolumn\x00parentcolumn\x00CREATE TABLE x(id,depth,root HIDDEN,tablename HIDDEN,idcolumn HIDDEN,parentcolumn HIDDEN)\x00SELECT \"%w\".\"%w\" FROM \"%w\" WHERE \"%w\".\"%w\"=?1\x00transitive_closure\x00cannot open '%s' for reading\x00line %d: unescaped %c character\x00line %d: unterminated %c-quoted field\n\x00more than one '%s' parameter\x00true\x00no\x00false\x00data\x00header\x00more than one 'header' parameter\x00testflags\x00columns\x00more than one 'columns' parameter\x00column= value must be positive\x00bad parameter: '%s'\x00must specify either filename= or data= but not both\x00%sc%d TEXT\x00%s\"%w\" TEXT\x00bad schema: '%s' - %s\x00csv_wr\x00decimal_cmp\x00decimal_add\x00decimal_sub\x00decimal_mul\x00decimal_sum\x00CREATE TABLE x(addr,opcode,p1,p2,p3,p4,p5,comment,sql HIDDEN)\x00EXPLAIN %s\x00wb\x00wrong number of arguments to function writefile()\x00failed to create symlink: %s\x00failed to create directory: %s\x00failed to write file: %s\x00CREATE TABLE x(name,mode,mtime,data,path HIDDEN,dir HIDDEN)\x00cannot read directory: %s\x00%s/%s\x00cannot stat file: %s\x00table function fsdir requires an argument\x00table function fsdir requires a non-NULL argument\x00readfile\x00writefile\x00lsmode\x00%s: ruleset must be between 0 and %d\x00%s: wrong number of CREATE VIRTUAL TABLE arguments\x00CREATE TABLE x(word,distance,ruleset)\x00ieee754(%lld,%d)\x00ieee754_mantissa\x00ieee754_exponent\x00ieee754_to_blob\x00ieee754_from_blob\x00'.\x00BEGIN; SELECT * FROM %s%q%ssqlite_schema\x00PRAGMA %s%q%spage_size\x00sqlite3_mmap_warm_cache: Warmed up %d pages of %s\x00END\x00AND (%s)\x00collate \"%w\"\x00SELECT %s FROM %s WHERE %s>=(?1 || ?2) %s   AND %s<=(?1 || char(1114111)) %s   %s ORDER BY 1 %s ASC LIMIT 1\x00next_char\x00not\x00in(\x00in(select\x00in(with\x00?,?,?\x002nd argument to percentile() is not a number between 0.0 and 100.0\x002nd argument to percentile() is not the same for all input rows\x001st argument to percentile() is not numeric\x00Inf input to percentile()\x00CREATE TABLE prefixes(prefix TEXT, original_string TEXT HIDDEN)\x00prefix_length\x00unknown \\ escape\x00unmatched '('\x00'*' without operand\x00'+' without operand\x00'?' without operand\x00'{m,n}' without operand\x00unmatched '{'\x00n less than m in '{m,n}'\x00both m and n are zero in '{m,n}'\x00POSIX character classes not supported\x00unclosed '['\x00unrecognized character\x00regexpi\x00CREATE TABLE x(value,start hidden,stop hidden,step hidden)\x00first argument to \"generate_series()\" missing or unusable\x00generate_series() requires SQLite 3.8.12 or later\x00generate_series\x00non-ASCII input to editdist()\x00NULL input to editdist()\x00SELECT iLang, cFrom, cTo, iCost FROM \"%w\" WHERE iLang>=0 ORDER BY iLang\x00editdist3\x00DROP TABLE IF EXISTS \"%w\".\"%w_vocab\"\x00CREATE TABLE x(word,rank,distance,langid, score, matchlen, phonehash HIDDEN, top HIDDEN, scope HIDDEN, srchcnt HIDDEN, soundslike HIDDEN, command HIDDEN)\x00CREATE TABLE IF NOT EXISTS \"%w\".\"%w_vocab\"(\n  id INTEGER PRIMARY KEY,\n  rank INT,\n  langid INT,\n  word TEXT,\n  k1 TEXT,\n  k2 TEXT\n);\n\x00CREATE INDEX IF NOT EXISTS \"%w\".\"%w_vocab_index_langid_k2\" ON \"%w_vocab\"(langid,k2);\x00edit_cost_table=\x00bad argument to spellfix1(): \"%s\"\x00SELECT id, word, rank, coalesce(k1,word)  FROM \"%w\".\"%w_vocab\" WHERE langid=%d AND k2>=?1 AND k2<?2\x00 WHERE rowid=?\x00SELECT word, rank, NULL, langid, id FROM \"%w\".\"%w_vocab\"%s\x00ROLLBACK\x00IGNORE\x00ABORT\x00REPLACE\x00DELETE FROM \"%w\".\"%w_vocab\"  WHERE id=%lld\x00NOT NULL constraint failed: %s.word\x00reset\x00unknown value for %s.command: \"%w\"\x00INSERT INTO \"%w\".\"%w_vocab\"(rank,langid,word,k1,k2) VALUES(%d,%d,%Q,nullif(%Q,%Q),%Q)\x00INSERT OR %s INTO \"%w\".\"%w_vocab\"(id,rank,langid,word,k1,k2) VALUES(%lld,%d,%d,%Q,nullif(%Q,%Q),%Q)\x00UPDATE OR %s \"%w\".\"%w_vocab\" SET id=%lld, rank=%d, langid=%d, word=%Q, k1=nullif(%Q,%Q), k2=%Q WHERE id=%lld\x00ALTER TABLE \"%w\".\"%w_vocab\" RENAME TO \"%w_vocab\"\x00spellfix1_translit\x00spellfix1_editdist\x00spellfix1_phonehash\x00spellfix1_scriptcode\x00spellfix1\x00922337203685477580\x00tointeger\x00toreal\x00sql error: %s\x00_rowid_\x00integer\x00.\x00no such rowid table: %s%s%s\x00SELECT group_concat(quote(name) || '.' || quote(type)) FROM pragma_table_info(?, ?)\x00source table schema mismatch\x00swarmvtab: no such SQL parameter: %s\x00maxopen\x00swarmvtab: illegal maxopen value\x00missing\x00swarmvtab: duplicate \"missing\" option\x00,?\x00SELECT \"%w\"(?%s)\x00openclose\x00swarmvtab: duplicate \"openclose\" option\x00SELECT \"%w\"(?,?%s)\x00swarmvtab: unrecognized option: %s\x00SELECT \"%w\"(?)\x00swarmvtab: parse error: %s\x00swarmvtab\x00%s tables must be created in TEMP schema\x00wrong number of arguments for %s\x00SELECT * FROM (%z) ORDER BY 3\x00rowid range mismatch error\x00no source tables configured\x00SELECT 'CREATE TABLE xyz('    || group_concat(quote(name) || ' ' || type, ', ')    || ')',max((cid+1) * (type='INTEGER' COLLATE nocase AND pk=1))-1 FROM pragma_table_info(%Q, ?)\x00WHERE _rowid_ <=\x00-- \x00SELECT rowid, * FROM %Q %s %lld\x00 UNION ALL \x00%z%sSELECT rowid, * FROM %s%q%s%Q\x00%z WHERE rowid=%lld\x00%z WHERE rowid>=%lld\x00%z %s rowid<=%lld\x00CREATE TABLE x(value)\x00zipfile\x00zipfile constructor requires one argument\x00error in fread()\x00error in fwrite()\x00failed to read CDS at offset %lld\x00%.*s\x00failed to read LFH at offset %d\x001.3\x00inflateInit2() failed (%d)\x00inflate() failed (%d)\x00zipfile: deflate() error\x00cannot find end of central directory record\x00zipfile() function requires an argument\x00cannot open file: %s\x00zipfile: mode does not match data\x00zipfile: parse error in mode: %s\x00zipfile: missing filename\x00ab+\x00zipfile: failed to open file %s for writing\x00sz must be NULL\x00rawdata must be NULL\x00unknown compression method: %d\x00%s/\x00duplicate name: \"%s\"\x00{\"version-made-by\" : %u, \"version-to-extract\" : %u, \"flags\" : %u, \"compression\" : %u, \"time\" : %u, \"date\" : %u, \"crc32\" : %u, \"compressed-size\" : %u, \"uncompressed-size\" : %u, \"file-name-length\" : %u, \"extra-field-length\" : %u, \"file-comment-length\" : %u, \"disk-number-start\" : %u, \"internal-attr\" : %u, \"external-attr\" : %u, \"offset\" : %u }\x00zipfile_cds\x00wrong number of arguments to function zipfile()\x00first argument to zipfile() must be non-NULL\x00illegal method value: %d\x00non-directory name must not end with /\x00incrblob_%d\x00DELETE\x00INSERT\x00UPDATE\x00bytearray\x00boolean\x00wideInt\x00SQLITE_COPY\x00SQLITE_CREATE_INDEX\x00SQLITE_CREATE_TABLE\x00SQLITE_CREATE_TEMP_INDEX\x00SQLITE_CREATE_TEMP_TABLE\x00SQLITE_CREATE_TEMP_TRIGGER\x00SQLITE_CREATE_TEMP_VIEW\x00SQLITE_CREATE_TRIGGER\x00SQLITE_CREATE_VIEW\x00SQLITE_DELETE\x00SQLITE_DROP_INDEX\x00SQLITE_DROP_TABLE\x00SQLITE_DROP_TEMP_INDEX\x00SQLITE_DROP_TEMP_TABLE\x00SQLITE_DROP_TEMP_TRIGGER\x00SQLITE_DROP_TEMP_VIEW\x00SQLITE_DROP_TRIGGER\x00SQLITE_DROP_VIEW\x00SQLITE_INSERT\x00SQLITE_PRAGMA\x00SQLITE_READ\x00SQLITE_SELECT\x00SQLITE_TRANSACTION\x00SQLITE_UPDATE\x00SQLITE_ATTACH\x00SQLITE_DETACH\x00SQLITE_ALTER_TABLE\x00SQLITE_REINDEX\x00SQLITE_ANALYZE\x00SQLITE_CREATE_VTABLE\x00SQLITE_DROP_VTABLE\x00SQLITE_FUNCTION\x00SQLITE_SAVEPOINT\x00SQLITE_RECURSIVE\x00????\x00SQLITE_DENY\x00SQLITE_IGNORE\x00RELEASE _tcl_transaction\x00ROLLBACK TO _tcl_transaction ; RELEASE _tcl_transaction\x00authorizer\x00backup\x00bind_fallback\x00cache\x00changes\x00close\x00collation_needed\x00commit_hook\x00config\x00copy\x00enable_load_extension\x00errorcode\x00exists\x00function\x00interrupt\x00last_insert_rowid\x00nullvalue\x00onecolumn\x00profile\x00rekey\x00restore\x00rollback_hook\x00serialize\x00status\x00timeout\x00total_changes\x00trace_v2\x00transaction\x00update_hook\x00version\x00wal_hook\x00?CALLBACK?\x00?DATABASE? FILENAME\x00cannot open target database: \x00backup failed: \x00CALLBACK\x00cache option ?arg?\x00flush\x00size n\x00cannot convert \"\x00\" to integer\x00\": must be flush or size\x00NAME SCRIPT\x00defensive\x00dqs_ddl\x00dqs_dml\x00enable_fkey\x00enable_qpsg\x00enable_trigger\x00enable_view\x00fts3_tokenizer\x00legacy_alter_table\x00legacy_file_format\x00load_extension\x00no_ckpt_on_close\x00reset_database\x00trigger_eqp\x00trusted_schema\x00writable_schema\x00?OPTION? ?BOOLEAN?\x00unknown config option: \"\x00CONFLICT-ALGORITHM TABLE FILENAME ?SEPARATOR? ?NULLINDICATOR?\x00\t\x00Error: non-null separator required for copy\x00rollback\x00abort\x00fail\x00ignore\x00replace\x00Error: \"\x00\", conflict-algorithm must be one of: rollback, abort, fail, ignore, or replace\x00SELECT * FROM '%q'\x00Error: no such table: \x00Error: \x00Error: can't malloc()\x00INSERT OR %q INTO '%q' VALUES(?\x00Error: cannot open file: \x00BEGIN\x00Error: %s line %d: expected %d columns of data but found %d\x00, failed while processing line: \x00?DATABASE? VALUE\x00-maxsize\x00-readonly\x00unable to set MEMDB content\x00extension loading is turned off at compile-time\x00-withoutnulls\x00unknown option: \"\x00?OPTIONS? SQL ?ARRAY-NAME? ?SCRIPT?\x00NAME ?SWITCHES? SCRIPT\x00-argcount\x00number of arguments must be non-negative\x00-deterministic\x00-directonly\x00-innocuous\x00-returntype\x00real\x00type\x00\": must be -argcount, -deterministic, -directonly, -innocuous, or -returntype\x00?-readonly? ?DB? TABLE COLUMN ROWID\x00NULLVALUE\x00N CALLBACK\x00KEY\x00cannot open source database: \x00restore failed: \x00restore failed: source database busy\x00?DATABASE?\x00(step|sort|autoindex)\x00sort\x00vmstep\x00bad argument: should be autoindex, step, sort or vmstep\x00?CALLBACK? ?MASK?\x00statement\x00row\x00trace type\x00SAVEPOINT _tcl_transaction\x00[TYPE] SCRIPT\x00deferred\x00immediate\x00transaction type\x00BEGIN IMMEDIATE\x00unlock_notify not available in this build\x00preupdate_hook was omitted at compile-time\x00-use-legacy-prepare\x00-last-stmt-ptr\x00unknown argument: \x00HANDLE ?FILENAME? ?-vfs VFSNAME? ?-readonly BOOLEAN? ?-create BOOLEAN? ?-nofollow BOOLEAN? ?-nomutex BOOLEAN? ?-fullmutex BOOLEAN? ?-uri BOOLEAN?\x00-version\x00-sourceid\x00-has-codec\x00-key\x00-vfs\x00-create\x00-nofollow\x00-nomutex\x00-fullmutex\x00-uri\x00-translatefilename\x00sqlite\x003.37.2\x00SQLITE_DEBUG_BREAK\x00attach debugger to process %d and press any key to continue.\n\x00utf-8\x00argc\x00argv0\x00argv\x00errorInfo\x00%s: %s\n\x00ANY\x00INT\x00REAL\x00ATOMIC_INTRINSICS=1\x00COMPILER=msvc-1\x00DEFAULT_AUTOVACUUM\x00DEFAULT_CACHE_SIZE=-2000\x00DEFAULT_FILE_FORMAT=4\x00DEFAULT_JOURNAL_SIZE_LIMIT=-1\x00DEFAULT_MMAP_SIZE=0\x00DEFAULT_PAGE_SIZE=1024\x00DEFAULT_PCACHE_INITSZ=20\x00DEFAULT_RECURSIVE_TRIGGERS\x00DEFAULT_SECTOR_SIZE=4096\x00DEFAULT_SYNCHRONOUS=2\x00DEFAULT_WAL_AUTOCHECKPOINT=1000\x00DEFAULT_WAL_SYNCHRONOUS=2\x00DEFAULT_WORKER_THREADS=0\x00ENABLE_BYTECODE_VTAB\x00ENABLE_DBPAGE_VTAB\x00ENABLE_MATH_FUNCTIONS\x00ENABLE_STMTVTAB\x00HAVE_ISNAN\x00MALLOC_SOFT_LIMIT=1024\x00MAX_ATTACHED=10\x00MAX_COLUMN=2000\x00MAX_COMPOUND_SELECT=500\x00MAX_DEFAULT_PAGE_SIZE=8192\x00MAX_EXPR_DEPTH=1000\x00MAX_FUNCTION_ARG=127\x00MAX_LENGTH=1000000000\x00MAX_LIKE_PATTERN_LENGTH=50000\x00MAX_MMAP_SIZE=0x7fff0000\x00MAX_PAGE_COUNT=1073741823\x00MAX_PAGE_SIZE=65536\x00MAX_SQL_LENGTH=1000000000\x00MAX_TRIGGER_DEPTH=1000\x00MAX_VARIABLE_NUMBER=32766\x00MAX_VDBE_OP=250000000\x00MAX_WORKER_THREADS=0\x00MUTEX_OMIT\x00NEED_ERR_NAME\x00NO_SYNC\x00OMIT_LOAD_EXTENSION\x00SYSTEM_MALLOC\x00TEMP_STORE=1\x00TEST\x00THREADSAFE=0\x0020b:20e\x0020c:20e\x0020e\x0040f-21a-21d\x00now\x00local time unavailable\x00second\x00minute\x00hour\x00day\x00month\x00year\x00unixepoch\x00utc\x00weekday \x00start of \x00%04d-%02d-%02d %02d:%02d:%02d\x00%02d:%02d:%02d\x00%04d-%02d-%02d\x00%02d\x00%06.3f\x00%.16g\x00%04d\x00julianday\x00date\x00time\x00strftime\x00current_time\x00current_timestamp\x00current_date\x00failed to allocate %u bytes of memory\x00failed memory resize %u to %u bytes\x00%\x00Inf\x00(NULL)\x00SUBQUERY %u\x00API call with %s database connection pointer\x00unopened\x00invalid\x00Savepoint\x00AutoCommit\x00Transaction\x00SorterNext\x00Prev\x00Next\x00Checkpoint\x00JournalMode\x00Vacuum\x00VFilter\x00VUpdate\x00Goto\x00Gosub\x00InitCoroutine\x00Yield\x00MustBeInt\x00Jump\x00Once\x00If\x00Not\x00IfNot\x00IsNullOrType\x00IfNullRow\x00SeekLT\x00SeekLE\x00SeekGE\x00SeekGT\x00IfNotOpen\x00IfNoHope\x00NoConflict\x00NotFound\x00Found\x00SeekRowid\x00NotExists\x00Last\x00IfSmaller\x00SorterSort\x00Sort\x00Rewind\x00IdxLE\x00IdxGT\x00IdxLT\x00IdxGE\x00Or\x00And\x00RowSetRead\x00RowSetTest\x00Program\x00FkIfZero\x00IfPos\x00IsNull\x00NotNull\x00Ne\x00Eq\x00Gt\x00Le\x00Lt\x00Ge\x00ElseEq\x00IfNotZero\x00DecrJumpZero\x00IncrVacuum\x00VNext\x00Init\x00PureFunc\x00Function\x00Return\x00EndCoroutine\x00HaltIfNull\x00Halt\x00Integer\x00Int64\x00String\x00Null\x00SoftNull\x00Blob\x00Variable\x00Move\x00Copy\x00SCopy\x00IntCopy\x00ChngCntRow\x00ResultRow\x00CollSeq\x00AddImm\x00RealAffinity\x00Cast\x00Permutation\x00Compare\x00IsTrue\x00ZeroOrNull\x00Offset\x00Column\x00TypeCheck\x00Affinity\x00MakeRecord\x00Count\x00ReadCookie\x00SetCookie\x00ReopenIdx\x00OpenRead\x00OpenWrite\x00BitAnd\x00BitOr\x00ShiftLeft\x00ShiftRight\x00Add\x00Subtract\x00Multiply\x00Divide\x00Remainder\x00Concat\x00OpenDup\x00BitNot\x00OpenAutoindex\x00OpenEphemeral\x00String8\x00SorterOpen\x00SequenceTest\x00OpenPseudo\x00Close\x00ColumnsUsed\x00SeekScan\x00SeekHit\x00Sequence\x00NewRowid\x00Insert\x00RowCell\x00Delete\x00ResetCount\x00SorterCompare\x00SorterData\x00RowData\x00Rowid\x00NullRow\x00SeekEnd\x00IdxInsert\x00SorterInsert\x00IdxDelete\x00DeferredSeek\x00IdxRowid\x00FinishSeek\x00Destroy\x00Clear\x00ResetSorter\x00CreateBtree\x00SqlExec\x00ParseSchema\x00LoadAnalysis\x00DropTable\x00DropIndex\x00DropTrigger\x00Real\x00IntegrityCk\x00RowSetAdd\x00Param\x00FkCounter\x00MemMax\x00OffsetLimit\x00AggInverse\x00AggStep\x00AggStep1\x00AggValue\x00AggFinal\x00Expire\x00CursorLock\x00CursorUnlock\x00TableLock\x00VBegin\x00VCreate\x00VDestroy\x00VOpen\x00VColumn\x00VRename\x00Pagecount\x00MaxPgcnt\x00Trace\x00CursorHint\x00ReleaseReg\x00Noop\x00Explain\x00Abortable\x00AreFileApisANSI\x00CharLowerW\x00CharUpperW\x00CloseHandle\x00CreateFileA\x00CreateFileW\x00CreateFileMappingA\x00CreateFileMappingW\x00CreateMutexW\x00DeleteFileA\x00DeleteFileW\x00FileTimeToLocalFileTime\x00FileTimeToSystemTime\x00FlushFileBuffers\x00FormatMessageA\x00FormatMessageW\x00FreeLibrary\x00GetCurrentProcessId\x00GetDiskFreeSpaceA\x00GetDiskFreeSpaceW\x00GetFileAttributesA\x00GetFileAttributesW\x00GetFileAttributesExW\x00GetFileSize\x00GetFullPathNameA\x00GetFullPathNameW\x00GetLastError\x00GetProcAddressA\x00GetSystemInfo\x00GetSystemTime\x00GetSystemTimeAsFileTime\x00GetTempPathA\x00GetTempPathW\x00GetTickCount\x00GetVersionExA\x00GetVersionExW\x00HeapAlloc\x00HeapCreate\x00HeapDestroy\x00HeapFree\x00HeapReAlloc\x00HeapSize\x00HeapValidate\x00HeapCompact\x00LoadLibraryA\x00LoadLibraryW\x00LocalFree\x00LockFile\x00LockFileEx\x00MapViewOfFile\x00MultiByteToWideChar\x00QueryPerformanceCounter\x00ReadFile\x00SetEndOfFile\x00SetFilePointer\x00Sleep\x00SystemTimeToFileTime\x00UnlockFile\x00UnlockFileEx\x00UnmapViewOfFile\x00WideCharToMultiByte\x00WriteFile\x00CreateEventExW\x00WaitForSingleObject\x00WaitForSingleObjectEx\x00SetFilePointerEx\x00GetFileInformationByHandleEx\x00MapViewOfFileFromApp\x00CreateFile2\x00LoadPackagedLibrary\x00GetTickCount64\x00GetNativeSystemInfo\x00OutputDebugStringA\x00OutputDebugStringW\x00GetProcessHeap\x00CreateFileMappingFromApp\x00InterlockedCompareExchange\x00UuidCreate\x00UuidCreateSequential\x00FlushViewOfFile\x00OsError 0x%lx (%lu)\x00os_win.c:%d: (%lu) %s(%s) - %s\x00delayed %dms for lock/sharing conflict at line %d\x00SEEK file=%p, offset=%lld\n\x00winSeekFile\x00SEEK file=%p, rc=SQLITE_IOERR_SEEK\n\x00SEEK file=%p, rc=SQLITE_OK\n\x00CLOSE pid=%lu, pFile=%p, file=%p\n\x00ok\x00CLOSE pid=%lu, pFile=%p, file=%p, rc=%s\n\x00winClose\x00READ pid=%lu, pFile=%p, file=%p, buffer=%p, amount=%d, offset=%lld, lock=%d\n\x00READ-MMAP pid=%lu, pFile=%p, file=%p, rc=SQLITE_OK\n\x00READ pid=%lu, pFile=%p, file=%p, rc=SQLITE_IOERR_READ\n\x00winRead\x00READ pid=%lu, pFile=%p, file=%p, rc=SQLITE_IOERR_SHORT_READ\n\x00READ pid=%lu, pFile=%p, file=%p, rc=SQLITE_OK\n\x00WRITE pid=%lu, pFile=%p, file=%p, buffer=%p, amount=%d, offset=%lld, lock=%d\n\x00WRITE pid=%lu, pFile=%p, file=%p, rc=SQLITE_FULL\n\x00winWrite1\x00WRITE pid=%lu, pFile=%p, file=%p, rc=SQLITE_IOERR_WRITE\n\x00winWrite2\x00WRITE pid=%lu, pFile=%p, file=%p, rc=SQLITE_OK\n\x00TRUNCATE pid=%lu, pFile=%p, file=%p, size=%lld, lock=%d\n\x00winTruncate1\x00winTruncate2\x00TRUNCATE pid=%lu, pFile=%p, file=%p, rc=%s\n\x00SYNC pid=%lu, pFile=%p, file=%p, flags=%x, lock=%d\n\x00SYNC-NOP pid=%lu, pFile=%p, file=%p, rc=SQLITE_OK\n\x00SIZE file=%p, pSize=%p\n\x00winFileSize\x00SIZE file=%p, pSize=%p, *pSize=%lld, rc=%s\n\x00READ-LOCK file=%p, lock=%d\n\x00READ-LOCK file=%p, result=%d\n\x00READ-UNLOCK file=%p, lock=%d\n\x00winUnlockReadLock\x00READ-UNLOCK file=%p, result=%d\n\x00LOCK file=%p, oldLock=%d(%d), newLock=%d\n\x00LOCK-HELD file=%p, rc=SQLITE_OK\n\x00LOCK-PENDING-FAIL file=%p, count=%d, result=%d\n\x00LOCK-FAIL file=%p, count=%d, rc=%s\n\x00LOCK-FAIL file=%p, wanted=%d, got=%d\n\x00LOCK file=%p, lock=%d, rc=%s\n\x00TEST-WR-LOCK file=%p, pResOut=%p\n\x00TEST-WR-LOCK file=%p, result=%d (local)\n\x00TEST-WR-LOCK file=%p, result=%d (remote)\n\x00TEST-WR-LOCK file=%p, pResOut=%p, *pResOut=%d, rc=SQLITE_OK\n\x00UNLOCK file=%p, oldLock=%d(%d), newLock=%d\n\x00winUnlock\x00UNLOCK file=%p, lock=%d, rc=%s\n\x00FCNTL file=%p, op=%d, pArg=%p\n\x00FCNTL file=%p, rc=SQLITE_OK\n\x00FCNTL file=%p, rc=%s\n\x00FCNTL oldFile=%p, newFile=%p, rc=SQLITE_OK\n\x00FCNTL file=%p, rc=SQLITE_NOTFOUND\n\x00SHM-LOCK file=%p, lock=%d, offset=%d, size=%d\n\x00winUnlockFile\x00winLockFile\x00SHM-LOCK file=%p, func=%s, errno=%lu, rc=%s\n\x00SHM-PURGE pid=%lu, deleteFlag=%d\n\x00SHM-PURGE-UNMAP pid=%lu, region=%d, rc=%s\n\x00SHM-PURGE-CLOSE pid=%lu, region=%d, rc=%s\n\x00winLockSharedMemory\x00readonly_shm\x00winOpenShm\x00SHM-LOCK pid=%lu, id=%d, sharedMask=%03x, exclMask=%03x, rc=%s\n\x00winShmMap1\x00winShmMap2\x00SHM-MAP-CREATE pid=%lu, region=%d, size=%d, rc=%s\n\x00SHM-MAP-MAP pid=%lu, region=%d, offset=%d, size=%d, rc=%s\n\x00winShmMap3\x00UNMAP-FILE pid=%lu, pFile=%p, hMap=%p, pMapRegion=%p, mmapSize=%lld, mmapSizeMax=%lld\n\x00UNMAP-FILE pid=%lu, pFile=%p, pMapRegion=%p, rc=SQLITE_IOERR_MMAP\n\x00winUnmapfile1\x00UNMAP-FILE pid=%lu, pFile=%p, hMap=%p, rc=SQLITE_IOERR_MMAP\n\x00winUnmapfile2\x00UNMAP-FILE pid=%lu, pFile=%p, rc=SQLITE_OK\n\x00MAP-FILE pid=%lu, pFile=%p, size=%lld\n\x00MAP-FILE pid=%lu, pFile=%p, rc=SQLITE_IOERR_FSTAT\n\x00winMapfile1\x00MAP-FILE-CREATE pid=%lu, pFile=%p, rc=%s\n\x00winMapfile2\x00MAP-FILE-MAP pid=%lu, pFile=%p, rc=%s\n\x00MAP-FILE pid=%lu, pFile=%p, rc=SQLITE_OK\n\x00FETCH pid=%lu, pFile=%p, offset=%lld, amount=%d, pp=%p\n\x00FETCH pid=%lu, pFile=%p, rc=%s\n\x00FETCH pid=%lu, pFile=%p, pp=%p, *pp=%p, rc=SQLITE_OK\n\x00UNFETCH pid=%lu, pFile=%p, offset=%lld, p=%p\n\x00UNFETCH pid=%lu, pFile=%p, rc=SQLITE_OK\n\x00etilqs_\x00TEMP-FILENAME rc=SQLITE_IOERR_NOMEM\n\x00TEMP-FILENAME rc=SQLITE_ERROR\n\x00winGetTempname1\x00TEMP-FILENAME rc=SQLITE_IOERR_GETTEMPPATH\n\x00winGetTempname2\x00winGetTempname3\x00winGetTempname4\x00winGetTempname5\x00TEMP-FILENAME name=%s, rc=SQLITE_OK\n\x00OPEN name=%s, pFile=%p, flags=%x, pOutFlags=%p\n\x00OPEN name=%s, rc=%s\x00OPEN name=%s, rc=SQLITE_IOERR_NOMEM\x00OPEN name=%s, rc=SQLITE_CANTOPEN_ISDIR\x00OPEN file=%p, name=%s, access=%lx, rc=%s\n\x00winOpen\x00OPEN file=%p, name=%s, access=%lx, pOutFlags=%p, *pOutFlags=%d, rc=%s\n\x00psow\x00DELETE name=%s, syncDir=%d\n\x00DELETE name=%s, rc=SQLITE_IOERR_NOMEM\n\x00winDelete\x00DELETE name=%s, rc=%s\n\x00ACCESS name=%s, flags=%x, pResOut=%p\n\x00ACCESS name=%s, rc=SQLITE_IOERR_NOMEM\n\x00winAccess\x00ACCESS name=%s, pResOut=%p, *pResOut=%d, rc=SQLITE_OK\n\x00%s%c%s\x00winFullPathname1\x00winFullPathname2\x00winFullPathname3\x00winFullPathname4\x00win32-longpath\x00win32-none\x00win32-longpath-none\x00memdb\x00memdb(%p,%lld)\x00PRAGMA \"%w\".page_count\x00ATTACH x AS %Q\x00recovered %d pages from %s\x00-wal\x00nolock\x00recovered %d frames from WAL file %s\x00cannot limit WAL size: %s\x00@  \x00\n\x00invalid page number %d\x002nd reference to page %d\x00Failed to read ptrmap key=%d\x00Bad ptr map entry key=%d expected=(%d,%d) got=(%d,%d)\x00failed to get page %d\x00freelist leaf count too big on page %d\x00overflow list length\x00%s is %d but should be %d\x00Page %u: \x00unable to get the page. error code=%d\x00btreeInitPage() returns error code %d\x00free space corruption\x00On tree page %u cell %d: \x00On page %u at right child: \x00Offset %d out of range %d..%d\x00Extends off end of page\x00Rowid %lld out of order\x00Child page depth differs\x00Multiple uses for byte %u of page %u\x00Fragmentation of %d bytes reported as %d on page %u\x00Main freelist: \x00max rootpage (%d) disagrees with header (%d)\x00incremental_vacuum enabled with a max rootpage of zero\x00Page %d is never used\x00Pointer map page %d is referenced\x00unknown database %s\x00destination database is in use\x00source and destination must be distinct\x00%!.15g\x00-\x00k(%d\x00BINARY\x00B\x00N.\x00,%s%s%s\x008\x0016LE\x0016BE\x00%.18s-%s\x00%s(%d)\x00(blob)\x00vtab:%p\x00%c%u\x00]\x00program\x00addr\x00opcode\x00p1\x00p2\x00p3\x00p4\x00p5\x00comment\x00id\x00parent\x00notused\x00detail\x00%.4c%s%.16c\x00MJ delete: %s\x00MJ collide: %s\x00-mj%06X9%02X\x00FOREIGN KEY constraint failed\x00a CHECK constraint\x00a generated column\x00an index\x00non-deterministic use of %s() in %s\x00API called with finalized prepared statement\x00API called with NULL prepared statement\x00string or blob too big\x00bind on a busy prepared statement: [%s]\x00'%.*q'\x00zeroblob(%d)\x00NOT NULL\x00UNIQUE\x00CHECK\x00FOREIGN KEY\x00%s constraint failed\x00%z: %s\x00abort at %d in [%s]: %s\x00cannot store %s value in %s column %s.%s\x00cannot open savepoint - SQL statements in progress\x00no such savepoint: %s\x00cannot release savepoint - SQL statements in progress\x00cannot commit transaction - SQL statements in progress\x00cannot start a transaction within a transaction\x00cannot rollback - no transaction is active\x00cannot commit - no transaction is active\x00database schema has changed\x00index corruption\x00sqlite_master\x00SELECT*FROM\"%w\".%s WHERE %s ORDER BY rowid\x00too many levels of trigger recursion\x00into\x00out of\x00cannot change %s wal mode from within a transaction\x00database table is locked: %s\x00-- %s\x00statement aborts at %d: [%s] %s\x00cannot open value of type %s\x00no such rowid: %lld\x00cannot open virtual table: %s\x00cannot open table without rowid: %s\x00cannot open view: %s\x00no such column: \"%s\"\x00foreign key\x00indexed\x00cannot open %s column for writing\x00CREATE TABLE x(addr INT,opcode TEXT,p1 INT,p2 INT,p3 INT,p4 TEXT,p5 INT,comment TEXT,subprog TEXT,stmt HIDDEN);\x00CREATE TABLE x(type TEXT,schema TEXT,name TEXT,wr INT,subprog TEXT,stmt HIDDEN);\x00table\x00index\x00(FK)\x00stmt-pointer\x00tables_used\x00bytecode\x00argument to %s() is not a valid SQL statement\x00old\x00excluded\x00misuse of aliased aggregate %s\x00misuse of aliased window function %s\x00row value misused\x00double-quoted string literal: \"%w\"\x00no such column\x00ambiguous column name\x00%s: %s.%s.%s\x00%s: %s.%s\x00partial index WHERE clauses\x00index expressions\x00CHECK constraints\x00generated columns\x00%s prohibited in %s\x00the \".\" operator\x00second argument to likelihood() must be a constant between 0.0 and 1.0\x00not authorized to use function: %s\x00non-deterministic functions\x00%.*s() may not be used as a window function\x00window\x00aggregate\x00misuse of %s function %.*s()\x00no such function: %.*s\x00wrong number of arguments to function %.*s()\x00FILTER may not be used with non-aggregate %.*s()\x00subqueries\x00parameters\x00%r %s BY term out of range - should be between 1 and %d\x00too many terms in ORDER BY clause\x00ORDER\x00%r ORDER BY term does not match any column in the result set\x00too many terms in %s BY clause\x00a GROUP BY clause is required before HAVING\x00GROUP\x00aggregate functions are not allowed in the GROUP BY clause\x00Expression tree is too large (maximum depth %d)\x00s\x00IN(...) element has %d term%s - expected %d\x00too many arguments on function %T\x00unsafe use of %s()\x00variable number must be between ?1 and ?%d\x00too many SQL variables\x00%d columns assigned %d values\x00too many columns in %s\x00_ROWID_\x00ROWID\x00OID\x00USING ROWID SEARCH ON TABLE %s FOR IN-OPERATOR\x00USING INDEX %s FOR IN-OPERATOR\x00sub-select returns %d columns - expected %d\x00REUSE LIST SUBQUERY %d\x00CORRELATED \x00%sLIST SUBQUERY %d\x00REUSE SUBQUERY %d\x00%sSCALAR SUBQUERY %d\x000x\x00hex literal too big: %s%s\x00generated column loop on \"%s\"\x00numeric\x00misuse of aggregate: %s()\x00unknown function: %s()\x00RAISE() may only be used within a trigger-program\x00sqlite_\x00table %s may not be altered\x00SELECT 1 FROM \"%w\".sqlite_master WHERE name NOT LIKE 'sqliteX_%%' ESCAPE 'X' AND sql NOT LIKE 'create virtual%%' AND sqlite_rename_test(%Q, sql, type, name, %d, %Q, %d)=NULL \x00SELECT 1 FROM temp.sqlite_master WHERE name NOT LIKE 'sqliteX_%%' ESCAPE 'X' AND sql NOT LIKE 'create virtual%%' AND sqlite_rename_test(%Q, sql, type, name, 1, %Q, %d)=NULL \x00UPDATE \"%w\".sqlite_master SET sql = sqlite_rename_quotefix(%Q, sql)WHERE name NOT LIKE 'sqliteX_%%' ESCAPE 'X' AND sql NOT LIKE 'create virtual%%'\x00UPDATE temp.sqlite_master SET sql = sqlite_rename_quotefix('temp', sql)WHERE name NOT LIKE 'sqliteX_%%' ESCAPE 'X' AND sql NOT LIKE 'create virtual%%'\x00there is already another table or index with this name: %s\x00view %s may not be altered\x00UPDATE \"%w\".sqlite_master SET sql = sqlite_rename_table(%Q, type, name, sql, %Q, %Q, %d) WHERE (type!='index' OR tbl_name=%Q COLLATE nocase)AND   name NOT LIKE 'sqliteX_%%' ESCAPE 'X'\x00UPDATE %Q.sqlite_master SET tbl_name = %Q, name = CASE WHEN type='table' THEN %Q WHEN name LIKE 'sqliteX_autoindex%%' ESCAPE 'X'      AND type='index' THEN 'sqlite_autoindex_' || %Q || substr(name,%d+18) ELSE name END WHERE tbl_name=%Q COLLATE nocase AND (type='table' OR type='index' OR type='trigger');\x00sqlite_sequence\x00UPDATE \"%w\".sqlite_sequence set name = %Q WHERE name = %Q\x00UPDATE sqlite_temp_schema SET sql = sqlite_rename_table(%Q, type, name, sql, %Q, %Q, 1), tbl_name = CASE WHEN tbl_name=%Q COLLATE nocase AND   sqlite_rename_test(%Q, sql, type, name, 1, 'after rename', 0) THEN %Q ELSE tbl_name END WHERE type IN ('view', 'trigger')\x00after rename\x00SELECT raise(ABORT,%Q) FROM \"%w\".\"%w\"\x00Cannot add a PRIMARY KEY column\x00Cannot add a UNIQUE column\x00Cannot add a REFERENCES column with non-NULL default value\x00Cannot add a NOT NULL column with default value NULL\x00Cannot add a column with non-constant default\x00cannot add a STORED column\x00UPDATE \"%w\".sqlite_master SET sql = printf('%%.%ds, ',sql) || %Q || substr(sql,1+length(printf('%%.%ds',sql))) WHERE type = 'table' AND name = %Q\x00SELECT CASE WHEN quick_check GLOB 'CHECK*' THEN raise(ABORT,'CHECK constraint failed') ELSE raise(ABORT,'NOT NULL constraint failed') END  FROM pragma_quick_check(\"%w\",\"%w\") WHERE quick_check GLOB 'CHECK*' OR quick_check GLOB 'NULL*'\x00virtual tables may not be altered\x00Cannot add a column to a view\x00sqlite_altertab_%s\x00virtual table\x00drop column from\x00rename columns of\x00cannot %s %s \"%s\"\x00UPDATE \"%w\".sqlite_master SET sql = sqlite_rename_column(sql, type, name, %Q, %Q, %d, %Q, %d, %d) WHERE name NOT LIKE 'sqliteX_%%' ESCAPE 'X'  AND (type != 'index' OR tbl_name = %Q)\x00UPDATE temp.sqlite_master SET sql = sqlite_rename_column(sql, type, name, %Q, %Q, %d, %Q, %d, 1) WHERE type IN ('trigger', 'view')\x00error in %s %s%s%s: %s\x00\"%w\" \x00%Q%s\x00%.*s%s\x00PRIMARY KEY\x00cannot drop %s column: \"%s\"\x00cannot drop column \"%s\": no other columns exist\x00UPDATE \"%w\".sqlite_master SET sql = sqlite_drop_column(%d, sql, %d) WHERE (type=='table' AND tbl_name=%Q COLLATE nocase)\x00after drop column\x00sqlite_rename_column\x00sqlite_rename_table\x00sqlite_rename_test\x00sqlite_drop_column\x00sqlite_rename_quotefix\x00sqlite_stat1\x00tbl,idx,stat\x00sqlite_stat4\x00sqlite_stat3\x00CREATE TABLE %Q.%s(%s)\x00DELETE FROM %Q.%s WHERE %s=%Q\x00stat_init\x00stat_push\x00%llu\x00 %llu\x00stat_get\x00sqlite\\_%\x00BBB\x00idx\x00tbl\x00unordered*\x00sz=[0-9]*\x00noskipscan*\x00SELECT tbl,idx,stat FROM %Q.sqlite_stat1\x00x\x00\x00too many attached databases - max %d\x00database %s is already in use\x00database is already attached\x00attached databases must use the same text encoding as main database\x00unable to open database: %s\x00no such database: %s\x00cannot detach database %s\x00database %s is locked\x00sqlite_detach\x00sqlite_attach\x00%s cannot use variables\x00%s %T cannot reference objects in database %s\x00authorizer malfunction\x00%s.%s\x00%s.%z\x00access to %z is prohibited\x00not authorized\x00sqlite_temp_schema\x00sqlite_schema\x00sqlite_temp_master\x00pragma_\x00no such view\x00no such table\x00corrupt database\x00unknown database %T\x00object name reserved for internal use: %s\x00temporary table name must be unqualified\x00table %T already exists\x00there is already an index named %s\x00sqlite_returning\x00cannot use RETURNING in a trigger\x00too many columns on %s\x00always\x00generated\x00duplicate column name: %s\x00default value of column [%s] is not constant\x00cannot use DEFAULT on a generated column\x00generated columns cannot be part of the PRIMARY KEY\x00table \"%s\" has more than one primary key\x00AUTOINCREMENT is only allowed on an INTEGER PRIMARY KEY\x00virtual tables cannot use computed columns\x00virtual\x00stored\x00error in generated column \"%s\"\x00\n  \x00,\n  \x00\n)\x00CREATE TABLE \x00 TEXT\x00 NUM\x00 INT\x00 REAL\x00unknown datatype for %s.%s: \"%s\"\x00missing datatype for %s.%s\x00AUTOINCREMENT not allowed on WITHOUT ROWID tables\x00PRIMARY KEY missing on table %s\x00must have at least one non-generated column\x00VIEW\x00CREATE %s %.*s\x00UPDATE %Q.sqlite_master SET type='%s', name=%Q, tbl_name=%Q, rootpage=#%d, sql=%Q WHERE rowid=#%d\x00CREATE TABLE %Q.sqlite_sequence(name,seq)\x00tbl_name='%q' AND type!='trigger'\x00parameters are not allowed in views\x00view %s is circularly defined\x00corrupt schema\x00UPDATE %Q.sqlite_master SET rootpage=%d WHERE #%d AND rootpage=#%d\x00sqlite_stat%d\x00DELETE FROM %Q.sqlite_sequence WHERE name=%Q\x00DELETE FROM %Q.sqlite_master WHERE tbl_name=%Q and type!='trigger'\x00stat\x00table %s may not be dropped\x00use DROP TABLE to delete table %s\x00use DROP VIEW to delete view %s\x00foreign key on %s should reference only one column of table %T\x00number of columns in foreign key does not match the number of columns in the referenced table\x00unknown column \"%s\" in foreign key definition\x00FIRST\x00LAST\x00unsupported use of NULLS %s\x00cannot create a TEMP index on non-TEMP table \"%s\"\x00table %s may not be indexed\x00views may not be indexed\x00virtual tables may not be indexed\x00there is already a table named %s\x00index %s already exists\x00sqlite_autoindex_%s_%d\x00expressions prohibited in PRIMARY KEY and UNIQUE constraints\x00conflicting ON CONFLICT clauses specified\x00invalid rootpage\x00 UNIQUE\x00CREATE%s INDEX %.*s\x00INSERT INTO %Q.sqlite_master VALUES('index',%Q,%Q,#%d,%Q);\x00name='%q' AND type='index'\x00no such index: %S\x00index associated with UNIQUE or PRIMARY KEY constraint cannot be dropped\x00DELETE FROM %Q.sqlite_master WHERE name=%Q AND type='index'\x00too many FROM clause terms, max: %d\x00ON\x00USING\x00a JOIN clause is required before %s\x00RELEASE\x00unable to open a temporary database file for storing temporary tables\x00index '%q'\x00%s.rowid\x00unable to identify the object to be reindexed\x00duplicate WITH table name: %s\x00no such collation sequence: %s\x00table %s may not be modified\x00cannot modify %s because it is a view\x00rows deleted\x00integer overflow\x00%.*f\x00LIKE or GLOB pattern too complex\x00ESCAPE expression must be a single character\x00%!.20e\x00MATCH\x00implies_nonnull_row\x00expr_compare\x00expr_implies_expr\x00affinity\x00sqlite_compileoption_used\x00sqlite_compileoption_get\x00unlikely\x00likelihood\x00likely\x00ltrim\x00rtrim\x00trim\x00typeof\x00length\x00instr\x00unicode\x00char\x00abs\x00round\x00upper\x00lower\x00hex\x00ifnull\x00random\x00randomblob\x00nullif\x00sqlite_version\x00sqlite_source_id\x00sqlite_log\x00quote\x00zeroblob\x00substr\x00substring\x00total\x00avg\x00group_concat\x00coalesce\x00ceil\x00ceiling\x00floor\x00ln\x00log\x00log10\x00log2\x00exp\x00pow\x00power\x00mod\x00acos\x00asin\x00atan\x00atan2\x00cos\x00sin\x00tan\x00cosh\x00sinh\x00tanh\x00sqrt\x00radians\x00degrees\x00pi\x00sign\x00iif\x00foreign key mismatch - \"%w\" referencing \"%w\"\x00cannot INSERT into generated column \"%s\"\x00table %S has no column named %s\x00table %S has %d columns but %d values were supplied\x00%d values for %d columns\x00UPSERT not implemented for virtual table \"%s\"\x00cannot UPSERT a view\x00rows inserted\x00automatic extension loading failed: %s\x00seq\x00from\x00to\x00on_update\x00on_delete\x00cid\x00name\x00notnull\x00dflt_value\x00pk\x00hidden\x00ncol\x00wr\x00strict\x00seqno\x00coll\x00key\x00builtin\x00enc\x00narg\x00flags\x00wdth\x00hght\x00flgs\x00unique\x00origin\x00partial\x00fkid\x00file\x00checkpointed\x00database\x00cache_size\x00analysis_limit\x00application_id\x00auto_vacuum\x00automatic_index\x00busy_timeout\x00cache_spill\x00case_sensitive_like\x00cell_size_check\x00checkpoint_fullfsync\x00collation_list\x00compile_options\x00count_changes\x00data_store_directory\x00data_version\x00database_list\x00default_cache_size\x00defer_foreign_keys\x00empty_result_callbacks\x00foreign_key_check\x00foreign_key_list\x00foreign_keys\x00freelist_count\x00full_column_names\x00fullfsync\x00function_list\x00hard_heap_limit\x00ignore_check_constraints\x00incremental_vacuum\x00index_info\x00index_list\x00index_xinfo\x00integrity_check\x00journal_mode\x00journal_size_limit\x00lock_status\x00locking_mode\x00max_page_count\x00mmap_size\x00module_list\x00optimize\x00page_count\x00pragma_list\x00query_only\x00quick_check\x00read_uncommitted\x00recursive_triggers\x00reverse_unordered_selects\x00short_column_names\x00shrink_memory\x00soft_heap_limit\x00synchronous\x00table_info\x00table_list\x00table_xinfo\x00temp_store\x00temp_store_directory\x00threads\x00user_version\x00wal_autocheckpoint\x00wal_checkpoint\x00incremental\x00memory\x00temporary storage cannot be changed from within a transaction\x00SET NULL\x00SET DEFAULT\x00CASCADE\x00RESTRICT\x00NO ACTION\x00persist\x00w\x00a\x00sissii\x00-%T\x00not a writable directory\x00Safety level may not be changed inside a transaction\x00issisii\x00issisi\x00SELECT*FROM\"%w\"\x00shadow\x00sssiii\x00iisX\x00isiX\x00c\x00u\x00isisi\x00iss\x00iissssss\x00NONE\x00siX\x00*** in database %s ***\n\x00NULL value in %s.%s\x00non-%s value in %s.%s\x00CHECK constraint failed in %s\x00row \x00 missing from index \x00non-unique entry in index \x00wrong # of entries in index \x00UTF-16le\x00UTF-16be\x00UTF16le\x00UTF16be\x00UTF-16\x00unsupported encoding: %s\x00ANALYZE \"%w\".\"%w\"\x00unlocked\x00reserved\x00pending\x00unknown\x00closed\x00ss\x00CREATE TABLE x\x00%c\"%s\"\x00(\"%s\"\x00,arg HIDDEN\x00,schema HIDDEN\x00PRAGMA \x00%Q.\x00=%Q\x00rename\x00drop column\x00add column\x00error in %s %s after %s: %s\x00malformed database schema (%s)\x00%z - %s\x00orphan index\x00CREATE TABLE x(type text,name text,tbl_name text,rootpage int,sql text)\x00unsupported file format\x00SELECT*FROM\"%w\".%s ORDER BY rowid\x00database schema is locked: %s\x00statement too long\x00unknown or unsupported join type: %T %T%s%T\x00RIGHT and FULL OUTER JOINs are not currently supported\x00a NATURAL join may not have an ON or USING clause\x00cannot have both ON and USING clauses in the same join\x00cannot join using column %s - column not present in both tables\x00UNION ALL\x00INTERSECT\x00EXCEPT\x00UNION\x00USE TEMP B-TREE FOR %s\x00column%d\x00%.*z:%u\x00cannot use window functions in recursive queries\x00recursive aggregate queries not supported\x00SETUP\x00RECURSIVE STEP\x00S\x00SCAN %d CONSTANT ROW%s\x00COMPOUND QUERY\x00LEFT-MOST SUBQUERY\x00%s USING TEMP B-TREE\x00all VALUES must have the same number of terms\x00SELECTs to the left and right of %s do not have the same number of result columns\x00MERGE (%s)\x00LEFT\x00RIGHT\x00no such index: %s\x00'%s' is not a function\x00no such index: \"%s\"\x00multiple references to recursive table: %s\x00circular reference: %s\x00table %s has %d values for %d columns\x00multiple recursive references: %s\x00recursive reference in a subquery: %s\x00subquery_%u\x00too many references to \"%s\": max 65535\x00access to view \"%s\" prohibited\x00unsafe use of virtual table \"%s\"\x00%s.%s.%s\x00no such table: %s\x00no tables specified\x00too many columns in result set\x00DISTINCT aggregates must have exactly one argument\x00USE TEMP B-TREE FOR %s(DISTINCT)\x00SCAN %s%s%s\x00target object/alias may not appear in FROM clause: %s\x00expected %d columns for '%s' but got %d\x00CO-ROUTINE %!S\x00MATERIALIZE %!S\x00DISTINCT\x00GROUP BY\x00RIGHT PART OF ORDER BY\x00ORDER BY\x00sqlite3_get_table() called with two or more incompatible queries\x00temporary trigger may not have qualified name\x00cannot create triggers on virtual tables\x00trigger %T already exists\x00cannot create trigger on system table\x00BEFORE\x00AFTER\x00cannot create %s trigger on view: %S\x00cannot create INSTEAD OF trigger on table: %S\x00INSERT INTO %Q.sqlite_master VALUES('trigger',%Q,%Q,0,'CREATE TRIGGER %q')\x00type='trigger' AND name='%q'\x00no such trigger: %S\x00DELETE FROM %Q.sqlite_master WHERE name=%Q AND type='trigger'\x00%s RETURNING is not available on virtual tables\x00RETURNING may not use \"TABLE.*\" wildcards\x00-- TRIGGER %s\x00cannot UPDATE generated column \"%s\"\x00no such column: %s\x00rows updated\x00%r \x00%sON CONFLICT clause does not match any PRIMARY KEY or UNIQUE constraint\x00CRE\x00INS\x00cannot VACUUM from within a transaction\x00cannot VACUUM - SQL statements in progress\x00non-text filename\x00ATTACH %Q AS vacuum_db\x00output file already exists\x00SELECT sql FROM \"%w\".sqlite_schema WHERE type='table'AND name<>'sqlite_sequence' AND coalesce(rootpage,1)>0\x00SELECT sql FROM \"%w\".sqlite_schema WHERE type='index'\x00SELECT'INSERT INTO vacuum_db.'||quote(name)||' SELECT*FROM\"%w\".'||quote(name)FROM vacuum_db.sqlite_schema WHERE type='table'AND coalesce(rootpage,1)>0\x00INSERT INTO vacuum_db.sqlite_schema SELECT*FROM \"%w\".sqlite_schema WHERE type IN('view','trigger') OR(type='table'AND rootpage=0)\x00CREATE VIRTUAL TABLE %T\x00UPDATE %Q.sqlite_master SET type='table', name=%Q, tbl_name=%Q, rootpage=0, sql=%Q WHERE rowid=#%d\x00name=%Q AND sql=%Q\x00vtable constructor called recursively: %s\x00vtable constructor failed: %s\x00vtable constructor did not declare schema: %s\x00no such module: %s\x00<expr>\x00 AND \x00(\x00 (\x00%s=?\x00ANY(%s)\x00SEARCH\x00SCAN\x00%s %S\x00AUTOMATIC PARTIAL COVERING INDEX\x00AUTOMATIC COVERING INDEX\x00COVERING INDEX %s\x00INDEX %s\x00 USING \x00>? AND rowid<\x00 USING INTEGER PRIMARY KEY (rowid%s?)\x00 VIRTUAL TABLE INDEX %d:%s\x00MULTI-INDEX OR\x00INDEX %d\x00ON clause references tables to its right\x00NOCASE\x00too many arguments on %s() - max %d\x00automatic index on %s(%s)\x00auto-index\x00%s.xBestIndex malfunction\x00abbreviated query algorithm search\x00no query solution\x00at most %d tables in a join\x00SCAN CONSTANT ROW\x00second argument to nth_value must be a positive integer\x00argument of ntile must be a positive integer\x00no such window: %s\x00RANGE with offset PRECEDING/FOLLOWING requires one ORDER BY expression\x00FILTER clause may only be used with aggregate window functions\x00unsupported frame specification\x00PARTITION clause\x00ORDER BY clause\x00frame specification\x00cannot override %s of window: %s\x00DISTINCT is not supported for window functions\x00frame starting offset must be a non-negative integer\x00frame ending offset must be a non-negative integer\x00frame starting offset must be a non-negative number\x00frame ending offset must be a non-negative number\x00LIMIT\x00%s clause should come after %s not before\x00too many terms in compound SELECT\x00syntax error after column name \"%.*s\"\x00parser stack overflow\x00unknown table option: %.*s\x00set list\x00near \"%T\": syntax error\x00qualified table names are not allowed on INSERT, UPDATE, and DELETE statements within triggers\x00the INDEXED BY clause is not allowed on UPDATE or DELETE statements within triggers\x00the NOT INDEXED clause is not allowed on UPDATE or DELETE statements within triggers\x00incomplete input\x00unrecognized token: \"%.*s\"\x00%s in \"%s\"\x00create\x00temporary\x00end\x00unable to close due to unfinalized statements or unfinished backups\x00SQLITE_ERROR_SNAPSHOT\x00SQLITE_INTERNAL\x00SQLITE_PERM\x00SQLITE_ABORT\x00SQLITE_ABORT_ROLLBACK\x00SQLITE_BUSY_RECOVERY\x00SQLITE_BUSY_SNAPSHOT\x00SQLITE_LOCKED_SHAREDCACHE\x00SQLITE_READONLY_RECOVERY\x00SQLITE_READONLY_ROLLBACK\x00SQLITE_READONLY_DBMOVED\x00SQLITE_READONLY_DIRECTORY\x00SQLITE_INTERRUPT\x00SQLITE_IOERR_READ\x00SQLITE_IOERR_SHORT_READ\x00SQLITE_IOERR_WRITE\x00SQLITE_IOERR_FSYNC\x00SQLITE_IOERR_DIR_FSYNC\x00SQLITE_IOERR_TRUNCATE\x00SQLITE_IOERR_FSTAT\x00SQLITE_IOERR_UNLOCK\x00SQLITE_IOERR_RDLOCK\x00SQLITE_IOERR_DELETE\x00SQLITE_IOERR_NOMEM\x00SQLITE_IOERR_ACCESS\x00SQLITE_IOERR_CHECKRESERVEDLOCK\x00SQLITE_IOERR_LOCK\x00SQLITE_IOERR_CLOSE\x00SQLITE_IOERR_DIR_CLOSE\x00SQLITE_IOERR_SHMOPEN\x00SQLITE_IOERR_SHMSIZE\x00SQLITE_IOERR_SHMLOCK\x00SQLITE_IOERR_SHMMAP\x00SQLITE_IOERR_SEEK\x00SQLITE_IOERR_DELETE_NOENT\x00SQLITE_IOERR_MMAP\x00SQLITE_IOERR_GETTEMPPATH\x00SQLITE_IOERR_CONVPATH\x00SQLITE_CORRUPT\x00SQLITE_CORRUPT_VTAB\x00SQLITE_FULL\x00SQLITE_CANTOPEN\x00SQLITE_CANTOPEN_NOTEMPDIR\x00SQLITE_CANTOPEN_ISDIR\x00SQLITE_CANTOPEN_FULLPATH\x00SQLITE_CANTOPEN_CONVPATH\x00SQLITE_CANTOPEN_SYMLINK\x00SQLITE_PROTOCOL\x00SQLITE_EMPTY\x00SQLITE_SCHEMA\x00SQLITE_TOOBIG\x00SQLITE_CONSTRAINT\x00SQLITE_CONSTRAINT_UNIQUE\x00SQLITE_CONSTRAINT_TRIGGER\x00SQLITE_CONSTRAINT_FOREIGNKEY\x00SQLITE_CONSTRAINT_CHECK\x00SQLITE_CONSTRAINT_PRIMARYKEY\x00SQLITE_CONSTRAINT_NOTNULL\x00SQLITE_CONSTRAINT_COMMITHOOK\x00SQLITE_CONSTRAINT_VTAB\x00SQLITE_CONSTRAINT_FUNCTION\x00SQLITE_CONSTRAINT_ROWID\x00SQLITE_MISMATCH\x00SQLITE_MISUSE\x00SQLITE_NOLFS\x00SQLITE_AUTH\x00SQLITE_FORMAT\x00SQLITE_RANGE\x00SQLITE_NOTADB\x00SQLITE_ROW\x00SQLITE_NOTICE\x00SQLITE_NOTICE_RECOVER_WAL\x00SQLITE_NOTICE_RECOVER_ROLLBACK\x00SQLITE_WARNING\x00SQLITE_WARNING_AUTOINDEX\x00SQLITE_DONE\x00SQLITE_UNKNOWN(%d)\x00not an error\x00SQL logic error\x00access permission denied\x00query aborted\x00database is locked\x00database table is locked\x00attempt to write a readonly database\x00interrupted\x00disk I/O error\x00database disk image is malformed\x00unknown operation\x00database or disk is full\x00unable to open database file\x00locking protocol\x00constraint failed\x00datatype mismatch\x00bad parameter or other API misuse\x00authorization denied\x00column index out of range\x00file is not a database\x00notification message\x00warning message\x00unknown error\x00abort due to ROLLBACK\x00another row available\x00no more rows available\x00unable to delete/modify user-function due to active statements\x00unable to use function %s in the requested context\x00unknown database: %s\x00unable to delete/modify collation sequence due to active statements\x00file:\x00localhost\x00invalid uri authority: %.*s\x00vfs\x00private\x00ro\x00rw\x00rwc\x00access\x00no such %s mode: %s\x00%s mode not allowed: %s\x00no such vfs: %s\x00RTRIM\x00\x00\x00\x00%s at line %d of [%.10s]\x00database corruption\x00misuse\x00cannot open file\x00no such table column: %s.%s\x00overflow\x00%s%.3x+%.6x\x00%s%.3x/\x00internal\x00leaf\x00corrupted\x00SELECT * FROM (SELECT 'sqlite_schema' AS name,1 AS rootpage,'table' AS type UNION ALL SELECT name,rootpage,type FROM \"%w\".sqlite_schema WHERE rootpage!=0)\x00WHERE name=%Q\x00 ORDER BY name\x00dbstat\x00CREATE TABLE x(pgno INTEGER PRIMARY KEY, data BLOB, schema HIDDEN)\x00read-only\x00cannot delete\x00cannot insert\x00no such schema\x00bad page number\x00bad page value\x00sqlite_dbpage\x00CREATE TABLE x(sql,ncol,ro,busy,nscan,nsort,naidx,nstep,reprep,run,mem)\x00sqlite_stmt\x002022-01-06 13:25:41 872ba256cbf61d9290b571c0e6d82a20c224ca3ad82971edc46b29818d5d17a0\x00"
