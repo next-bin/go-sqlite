@@ -1,4 +1,4 @@
-// Code generated for darwin/arm64 by 'generator --package-name libsqlite3 --prefix-enumerator=_ --prefix-external=x_ --prefix-field=F --prefix-macro=m_ --prefix-static-internal=_ --prefix-static-none=_ --prefix-tagged-enum=_ --prefix-tagged-struct=T --prefix-tagged-union=T --prefix-typename=T --prefix-undefined=_ -ignore-unsupported-alignment -DLONGDOUBLE_TYPE=double -DSQLITE_WITHOUT_ZONEMALLOC -DSQLITE_THREADSAFE=0 -Dpread64=pread -Dpwrite64=pwrite -DNDEBUG -extended-errors -o sqlite3.go sqlite3.c -I/tmp/libsqlite3/sqlite-amalgamation-3370200/ccgo', DO NOT EDIT.
+// Code generated for darwin/arm64 by 'generator --package-name libsqlite3 --prefix-enumerator=_ --prefix-external=x_ --prefix-field=F --prefix-macro=m_ --prefix-static-internal=_ --prefix-static-none=_ --prefix-tagged-enum=_ --prefix-tagged-struct=T --prefix-tagged-union=T --prefix-typename=T --prefix-undefined=_ -ignore-unsupported-alignment -DLONGDOUBLE_TYPE=double -DSQLITE_WITHOUT_ZONEMALLOC -DSQLITE_THREADSAFE=0 -Dpread64=pread -Dpwrite64=pwrite -DNDEBUG -extended-errors -o sqlite3.go sqlite3.c -I/tmp/libsqlite3/sqlite-amalgamation-3370200/ccgo -DSQLITE_OS_UNIX=1', DO NOT EDIT.
 
 //go:build darwin && arm64
 // +build darwin,arm64
@@ -19728,6 +19728,7 @@ const _kGUARD_EXC_MOD_REFS = 2
 const _kGUARD_EXC_INVALID_OPTIONS = 3
 const _kGUARD_EXC_SET_CONTEXT = 4
 const _kGUARD_EXC_THREAD_SET_STATE = 5
+const _kGUARD_EXC_EXCEPTION_BEHAVIOR_ENFORCE = 6
 const _kGUARD_EXC_UNGUARDED = 8
 const _kGUARD_EXC_INCORRECT_GUARD = 16
 const _kGUARD_EXC_IMMOVABLE = 32
@@ -19749,7 +19750,6 @@ const _kGUARD_EXC_RCV_GUARDED_DESC = 1048576
 const _kGUARD_EXC_MOD_REFS_NON_FATAL = 2097152
 const _kGUARD_EXC_IMMOVABLE_NON_FATAL = 4194304
 const _kGUARD_EXC_REQUIRE_REPLY_PORT_SEMANTICS = 8388608
-const _kGUARD_EXC_EXCEPTION_BEHAVIOR_ENFORCE = 16777216
 
 type Txucred = struct {
 	Fcr_version Tu_int
@@ -150048,49 +150048,9 @@ func Xsqlite3_sourceid(tls *libc.TLS) (r uintptr) {
 	return __ccgo_ts + 23744
 }
 
-type TInLoop = struct {
-	FiCur       int32
-	FaddrInTop  int32
-	FiBase      int32
-	FnPrefix    int32
-	FeEndLoopOp Tu8
-}
-
-type Tsqlite3_index_orderby = struct {
-	FiColumn int32
-	Fdesc    uint8
-}
-
-type T_ht = struct {
-	Fcount uint32
-	Fchain uintptr
-}
-
-type Tsqlite3_index_constraint_usage = struct {
-	FargvIndex int32
-	Fomit      uint8
-}
-
-type TAggInfo_func = struct {
-	FpFExpr    uintptr
-	FpFunc     uintptr
-	FiMem      int32
-	FiDistinct int32
-	FiDistAddr int32
-}
-
-type TsColMap = struct {
-	FiFrom int32
-	FzCol  uintptr
-}
-
-type Tsqlite3InitInfo = struct {
-	FnewTnum       TPgno
-	FiDb           Tu8
-	Fbusy          Tu8
-	F__ccgo_align3 [2]byte
-	F__ccgo8       uint8
-	FazInit        uintptr
+type TIdList_item = struct {
+	FzName uintptr
+	Fidx   int32
 }
 
 type TAggInfo_col = struct {
@@ -150102,9 +150062,22 @@ type TAggInfo_col = struct {
 	FiSorterColumn Ti16
 }
 
-type TIdList_item = struct {
-	FzName uintptr
-	Fidx   int32
+type TsColMap = struct {
+	FiFrom int32
+	FzCol  uintptr
+}
+
+type TWalSegment = struct {
+	FiNext  int32
+	FaIndex uintptr
+	FaPgno  uintptr
+	FnEntry int32
+	FiZero  int32
+}
+
+type Tsqlite3_index_constraint_usage = struct {
+	FargvIndex int32
+	Fomit      uint8
 }
 
 type Tsqlite3_index_constraint = struct {
@@ -150114,12 +150087,39 @@ type Tsqlite3_index_constraint = struct {
 	FiTermOffset int32
 }
 
-type TWalSegment = struct {
-	FiNext  int32
-	FaIndex uintptr
-	FaPgno  uintptr
-	FnEntry int32
-	FiZero  int32
+type Tsqlite3_index_orderby = struct {
+	FiColumn int32
+	Fdesc    uint8
+}
+
+type TAggInfo_func = struct {
+	FpFExpr    uintptr
+	FpFunc     uintptr
+	FiMem      int32
+	FiDistinct int32
+	FiDistAddr int32
+}
+
+type TInLoop = struct {
+	FiCur       int32
+	FaddrInTop  int32
+	FiBase      int32
+	FnPrefix    int32
+	FeEndLoopOp Tu8
+}
+
+type T_ht = struct {
+	Fcount uint32
+	Fchain uintptr
+}
+
+type Tsqlite3InitInfo = struct {
+	FnewTnum       TPgno
+	FiDb           Tu8
+	Fbusy          Tu8
+	F__ccgo_align3 [2]byte
+	F__ccgo8       uint8
+	FazInit        uintptr
 }
 
 type TMemValue = struct {

@@ -1,4 +1,4 @@
-// Code generated for darwin/arm64 by 'gcc -DSQLITE_WITHOUT_ZONEMALLOC -DSQLITE_THREADSAFE=0 -Dpread64=pread -Dpwrite64=pwrite -DNDEBUG -absolute-paths -keep-object-files -positions --libc modernc.org/libc --prefix-enumerator=_ --prefix-external=x_ --prefix-field=F --prefix-macro=m_ --prefix-static-internal=_ --prefix-static-none=_ --prefix-tagged-enum=_ --prefix-tagged-struct=T --prefix-tagged-union=T --prefix-typename=T --prefix-undefined=_ -extended-errors -ignore-unsupported-alignment -I/tmp/libsqlite3/sqlite-amalgamation-3370200/ccgo -DLONGDOUBLE_TYPE=double -DSQLITE_WITHOUT_ZONEMALLOC -DSQLITE_THREADSAFE=0 -Dpread64=pread -Dpwrite64=pwrite -DNDEBUG -DSQLITE_OS_UNIX=1 -I. -I/private/tmp/libsqlite3/sqlite-src-3370200/src -I/private/tmp/libsqlite3/sqlite-src-3370200/ext/rtree -I/private/tmp/libsqlite3/sqlite-src-3370200/ext/icu -I/private/tmp/libsqlite3/sqlite-src-3370200/ext/fts3 -I/private/tmp/libsqlite3/sqlite-src-3370200/ext/async -I/private/tmp/libsqlite3/sqlite-src-3370200/ext/session -I/private/tmp/libsqlite3/sqlite-src-3370200/ext/userauth -D_HAVE_SQLITE_CONFIG_H -DBUILD_sqlite -DNDEBUG -I/opt/homebrew/Cellar/tcl-tk/8.6.13_5/include/tcl-tk -DSQLITE_THREADSAFE=0 -DSQLITE_OMIT_LOAD_EXTENSION=1 -DSQLITE_ENABLE_MATH_FUNCTIONS -DSQLITE_HAVE_ZLIB=1 -DSQLITE_NO_SYNC=1 -DSQLITE_TEMP_STORE=1 -DSQLITE_TEST=1 -DSQLITE_CRASH_TEST=1 -DTCLSH_INIT_PROC=sqlite3TestInit -DSQLITE_SERVER=1 -DSQLITE_PRIVATE= -DSQLITE_CORE -DBUILD_sqlite -DSQLITE_SERIES_CONSTRAINT_VERIFY=1 -DSQLITE_DEFAULT_PAGE_SIZE=1024 -DSQLITE_ENABLE_STMTVTAB -DSQLITE_ENABLE_DBPAGE_VTAB -DSQLITE_ENABLE_BYTECODE_VTAB -DSQLITE_CKSUMVFS_STATIC -o testfixture.go /private/tmp/libsqlite3/sqlite-src-3370200/src/test1.c /private/tmp/libsqlite3/sqlite-src-3370200/src/test2.c /private/tmp/libsqlite3/sqlite-src-3370200/src/test3.c /private/tmp/libsqlite3/sqlite-src-3370200/src/test4.c /private/tmp/libsqlite3/sqlite-src-3370200/src/test5.c /private/tmp/libsqlite3/sqlite-src-3370200/src/test6.c /private/tmp/libsqlite3/sqlite-src-3370200/src/test7.c /private/tmp/libsqlite3/sqlite-src-3370200/src/test8.c /private/tmp/libsqlite3/sqlite-src-3370200/src/test9.c /private/tmp/libsqlite3/sqlite-src-3370200/src/test_autoext.c /private/tmp/libsqlite3/sqlite-src-3370200/src/test_async.c /private/tmp/libsqlite3/sqlite-src-3370200/src/test_backup.c /private/tmp/libsqlite3/sqlite-src-3370200/src/test_bestindex.c /private/tmp/libsqlite3/sqlite-src-3370200/src/test_blob.c /private/tmp/libsqlite3/sqlite-src-3370200/src/test_btree.c /private/tmp/libsqlite3/sqlite-src-3370200/src/test_config.c /private/tmp/libsqlite3/sqlite-src-3370200/src/test_delete.c /private/tmp/libsqlite3/sqlite-src-3370200/src/test_demovfs.c /private/tmp/libsqlite3/sqlite-src-3370200/src/test_devsym.c /private/tmp/libsqlite3/sqlite-src-3370200/src/test_fs.c /private/tmp/libsqlite3/sqlite-src-3370200/src/test_func.c /private/tmp/libsqlite3/sqlite-src-3370200/src/test_hexio.c /private/tmp/libsqlite3/sqlite-src-3370200/src/test_init.c /private/tmp/libsqlite3/sqlite-src-3370200/src/test_intarray.c /private/tmp/libsqlite3/sqlite-src-3370200/src/test_journal.c /private/tmp/libsqlite3/sqlite-src-3370200/src/test_malloc.c /private/tmp/libsqlite3/sqlite-src-3370200/src/test_md5.c /private/tmp/libsqlite3/sqlite-src-3370200/src/test_multiplex.c /private/tmp/libsqlite3/sqlite-src-3370200/src/test_mutex.c /private/tmp/libsqlite3/sqlite-src-3370200/src/test_onefile.c /private/tmp/libsqlite3/sqlite-src-3370200/src/test_osinst.c /private/tmp/libsqlite3/sqlite-src-3370200/src/test_pcache.c /private/tmp/libsqlite3/sqlite-src-3370200/src/test_quota.c /private/tmp/libsqlite3/sqlite-src-3370200/src/test_rtree.c /private/tmp/libsqlite3/sqlite-src-3370200/src/test_schema.c /private/tmp/libsqlite3/sqlite-src-3370200/src/test_server.c /private/tmp/libsqlite3/sqlite-src-3370200/src/test_superlock.c /private/tmp/libsqlite3/sqlite-src-3370200/src/test_syscall.c /private/tmp/libsqlite3/sqlite-src-3370200/src/test_tclsh.c /private/tmp/libsqlite3/sqlite-src-3370200/src/test_tclvar.c /private/tmp/libsqlite3/sqlite-src-3370200/src/test_thread.c /private/tmp/libsqlite3/sqlite-src-3370200/src/test_vdbecov.c /private/tmp/libsqlite3/sqlite-src-3370200/src/test_vfs.c /private/tmp/libsqlite3/sqlite-src-3370200/src/test_windirent.c /private/tmp/libsqlite3/sqlite-src-3370200/src/test_window.c /private/tmp/libsqlite3/sqlite-src-3370200/src/test_wsd.c /private/tmp/libsqlite3/sqlite-src-3370200/ext/fts3/fts3_term.c /private/tmp/libsqlite3/sqlite-src-3370200/ext/fts3/fts3_test.c /private/tmp/libsqlite3/sqlite-src-3370200/ext/session/test_session.c /private/tmp/libsqlite3/sqlite-src-3370200/ext/rbu/test_rbu.c /private/tmp/libsqlite3/sqlite-src-3370200/ext/expert/sqlite3expert.c /private/tmp/libsqlite3/sqlite-src-3370200/ext/expert/test_expert.c /private/tmp/libsqlite3/sqlite-src-3370200/ext/misc/amatch.c /private/tmp/libsqlite3/sqlite-src-3370200/ext/misc/appendvfs.c /private/tmp/libsqlite3/sqlite-src-3370200/ext/misc/carray.c /private/tmp/libsqlite3/sqlite-src-3370200/ext/misc/cksumvfs.c /private/tmp/libsqlite3/sqlite-src-3370200/ext/misc/closure.c /private/tmp/libsqlite3/sqlite-src-3370200/ext/misc/csv.c /private/tmp/libsqlite3/sqlite-src-3370200/ext/misc/decimal.c /private/tmp/libsqlite3/sqlite-src-3370200/ext/misc/eval.c /private/tmp/libsqlite3/sqlite-src-3370200/ext/misc/explain.c /private/tmp/libsqlite3/sqlite-src-3370200/ext/misc/fileio.c /private/tmp/libsqlite3/sqlite-src-3370200/ext/misc/fuzzer.c /private/tmp/libsqlite3/sqlite-src-3370200/ext/fts5/fts5_tcl.c /private/tmp/libsqlite3/sqlite-src-3370200/ext/fts5/fts5_test_mi.c /private/tmp/libsqlite3/sqlite-src-3370200/ext/fts5/fts5_test_tok.c /private/tmp/libsqlite3/sqlite-src-3370200/ext/misc/ieee754.c /private/tmp/libsqlite3/sqlite-src-3370200/ext/misc/mmapwarm.c /private/tmp/libsqlite3/sqlite-src-3370200/ext/misc/nextchar.c /private/tmp/libsqlite3/sqlite-src-3370200/ext/misc/normalize.c /private/tmp/libsqlite3/sqlite-src-3370200/ext/misc/percentile.c /private/tmp/libsqlite3/sqlite-src-3370200/ext/misc/prefixes.c /private/tmp/libsqlite3/sqlite-src-3370200/ext/misc/regexp.c /private/tmp/libsqlite3/sqlite-src-3370200/ext/misc/remember.c /private/tmp/libsqlite3/sqlite-src-3370200/ext/misc/series.c /private/tmp/libsqlite3/sqlite-src-3370200/ext/misc/spellfix.c /private/tmp/libsqlite3/sqlite-src-3370200/ext/misc/totype.c /private/tmp/libsqlite3/sqlite-src-3370200/ext/misc/unionvtab.c /private/tmp/libsqlite3/sqlite-src-3370200/ext/misc/wholenumber.c /private/tmp/libsqlite3/sqlite-src-3370200/ext/misc/zipfile.c /private/tmp/libsqlite3/sqlite-src-3370200/ext/userauth/userauth.c /private/tmp/libsqlite3/sqlite-src-3370200/ext/rtree/test_rtreedoc.c /private/tmp/libsqlite3/sqlite-src-3370200/src/tclsqlite.c sqlite3.c -L/opt/homebrew/Cellar/tcl-tk/8.6.13_5/lib -ltcl8.6 -lz', DO NOT EDIT.
+// Code generated for darwin/arm64 by 'gcc -DSQLITE_WITHOUT_ZONEMALLOC -DSQLITE_THREADSAFE=0 -Dpread64=pread -Dpwrite64=pwrite -DNDEBUG -DSQLITE_OS_UNIX=1 -absolute-paths -keep-object-files -positions --libc modernc.org/libc --prefix-enumerator=_ --prefix-external=x_ --prefix-field=F --prefix-macro=m_ --prefix-static-internal=_ --prefix-static-none=_ --prefix-tagged-enum=_ --prefix-tagged-struct=T --prefix-tagged-union=T --prefix-typename=T --prefix-undefined=_ -extended-errors -ignore-unsupported-alignment -I/tmp/libsqlite3/sqlite-amalgamation-3370200/ccgo -DLONGDOUBLE_TYPE=double -DSQLITE_WITHOUT_ZONEMALLOC -DSQLITE_THREADSAFE=0 -Dpread64=pread -Dpwrite64=pwrite -DNDEBUG -DSQLITE_OS_UNIX=1 -DSQLITE_OS_UNIX=1 -I. -I/private/tmp/libsqlite3/sqlite-src-3370200/src -I/private/tmp/libsqlite3/sqlite-src-3370200/ext/rtree -I/private/tmp/libsqlite3/sqlite-src-3370200/ext/icu -I/private/tmp/libsqlite3/sqlite-src-3370200/ext/fts3 -I/private/tmp/libsqlite3/sqlite-src-3370200/ext/async -I/private/tmp/libsqlite3/sqlite-src-3370200/ext/session -I/private/tmp/libsqlite3/sqlite-src-3370200/ext/userauth -D_HAVE_SQLITE_CONFIG_H -DBUILD_sqlite -DNDEBUG -I/opt/homebrew/Cellar/tcl-tk/8.6.13_5/include/tcl-tk -DSQLITE_THREADSAFE=0 -DSQLITE_OMIT_LOAD_EXTENSION=1 -DSQLITE_ENABLE_MATH_FUNCTIONS -DSQLITE_HAVE_ZLIB=1 -DSQLITE_NO_SYNC=1 -DSQLITE_TEMP_STORE=1 -DSQLITE_TEST=1 -DSQLITE_CRASH_TEST=1 -DTCLSH_INIT_PROC=sqlite3TestInit -DSQLITE_SERVER=1 -DSQLITE_PRIVATE= -DSQLITE_CORE -DBUILD_sqlite -DSQLITE_SERIES_CONSTRAINT_VERIFY=1 -DSQLITE_DEFAULT_PAGE_SIZE=1024 -DSQLITE_ENABLE_STMTVTAB -DSQLITE_ENABLE_DBPAGE_VTAB -DSQLITE_ENABLE_BYTECODE_VTAB -DSQLITE_CKSUMVFS_STATIC -o testfixture.go /private/tmp/libsqlite3/sqlite-src-3370200/src/test1.c /private/tmp/libsqlite3/sqlite-src-3370200/src/test2.c /private/tmp/libsqlite3/sqlite-src-3370200/src/test3.c /private/tmp/libsqlite3/sqlite-src-3370200/src/test4.c /private/tmp/libsqlite3/sqlite-src-3370200/src/test5.c /private/tmp/libsqlite3/sqlite-src-3370200/src/test6.c /private/tmp/libsqlite3/sqlite-src-3370200/src/test7.c /private/tmp/libsqlite3/sqlite-src-3370200/src/test8.c /private/tmp/libsqlite3/sqlite-src-3370200/src/test9.c /private/tmp/libsqlite3/sqlite-src-3370200/src/test_autoext.c /private/tmp/libsqlite3/sqlite-src-3370200/src/test_async.c /private/tmp/libsqlite3/sqlite-src-3370200/src/test_backup.c /private/tmp/libsqlite3/sqlite-src-3370200/src/test_bestindex.c /private/tmp/libsqlite3/sqlite-src-3370200/src/test_blob.c /private/tmp/libsqlite3/sqlite-src-3370200/src/test_btree.c /private/tmp/libsqlite3/sqlite-src-3370200/src/test_config.c /private/tmp/libsqlite3/sqlite-src-3370200/src/test_delete.c /private/tmp/libsqlite3/sqlite-src-3370200/src/test_demovfs.c /private/tmp/libsqlite3/sqlite-src-3370200/src/test_devsym.c /private/tmp/libsqlite3/sqlite-src-3370200/src/test_fs.c /private/tmp/libsqlite3/sqlite-src-3370200/src/test_func.c /private/tmp/libsqlite3/sqlite-src-3370200/src/test_hexio.c /private/tmp/libsqlite3/sqlite-src-3370200/src/test_init.c /private/tmp/libsqlite3/sqlite-src-3370200/src/test_intarray.c /private/tmp/libsqlite3/sqlite-src-3370200/src/test_journal.c /private/tmp/libsqlite3/sqlite-src-3370200/src/test_malloc.c /private/tmp/libsqlite3/sqlite-src-3370200/src/test_md5.c /private/tmp/libsqlite3/sqlite-src-3370200/src/test_multiplex.c /private/tmp/libsqlite3/sqlite-src-3370200/src/test_mutex.c /private/tmp/libsqlite3/sqlite-src-3370200/src/test_onefile.c /private/tmp/libsqlite3/sqlite-src-3370200/src/test_osinst.c /private/tmp/libsqlite3/sqlite-src-3370200/src/test_pcache.c /private/tmp/libsqlite3/sqlite-src-3370200/src/test_quota.c /private/tmp/libsqlite3/sqlite-src-3370200/src/test_rtree.c /private/tmp/libsqlite3/sqlite-src-3370200/src/test_schema.c /private/tmp/libsqlite3/sqlite-src-3370200/src/test_server.c /private/tmp/libsqlite3/sqlite-src-3370200/src/test_superlock.c /private/tmp/libsqlite3/sqlite-src-3370200/src/test_syscall.c /private/tmp/libsqlite3/sqlite-src-3370200/src/test_tclsh.c /private/tmp/libsqlite3/sqlite-src-3370200/src/test_tclvar.c /private/tmp/libsqlite3/sqlite-src-3370200/src/test_thread.c /private/tmp/libsqlite3/sqlite-src-3370200/src/test_vdbecov.c /private/tmp/libsqlite3/sqlite-src-3370200/src/test_vfs.c /private/tmp/libsqlite3/sqlite-src-3370200/src/test_windirent.c /private/tmp/libsqlite3/sqlite-src-3370200/src/test_window.c /private/tmp/libsqlite3/sqlite-src-3370200/src/test_wsd.c /private/tmp/libsqlite3/sqlite-src-3370200/ext/fts3/fts3_term.c /private/tmp/libsqlite3/sqlite-src-3370200/ext/fts3/fts3_test.c /private/tmp/libsqlite3/sqlite-src-3370200/ext/session/test_session.c /private/tmp/libsqlite3/sqlite-src-3370200/ext/rbu/test_rbu.c /private/tmp/libsqlite3/sqlite-src-3370200/ext/expert/sqlite3expert.c /private/tmp/libsqlite3/sqlite-src-3370200/ext/expert/test_expert.c /private/tmp/libsqlite3/sqlite-src-3370200/ext/misc/amatch.c /private/tmp/libsqlite3/sqlite-src-3370200/ext/misc/appendvfs.c /private/tmp/libsqlite3/sqlite-src-3370200/ext/misc/carray.c /private/tmp/libsqlite3/sqlite-src-3370200/ext/misc/cksumvfs.c /private/tmp/libsqlite3/sqlite-src-3370200/ext/misc/closure.c /private/tmp/libsqlite3/sqlite-src-3370200/ext/misc/csv.c /private/tmp/libsqlite3/sqlite-src-3370200/ext/misc/decimal.c /private/tmp/libsqlite3/sqlite-src-3370200/ext/misc/eval.c /private/tmp/libsqlite3/sqlite-src-3370200/ext/misc/explain.c /private/tmp/libsqlite3/sqlite-src-3370200/ext/misc/fileio.c /private/tmp/libsqlite3/sqlite-src-3370200/ext/misc/fuzzer.c /private/tmp/libsqlite3/sqlite-src-3370200/ext/fts5/fts5_tcl.c /private/tmp/libsqlite3/sqlite-src-3370200/ext/fts5/fts5_test_mi.c /private/tmp/libsqlite3/sqlite-src-3370200/ext/fts5/fts5_test_tok.c /private/tmp/libsqlite3/sqlite-src-3370200/ext/misc/ieee754.c /private/tmp/libsqlite3/sqlite-src-3370200/ext/misc/mmapwarm.c /private/tmp/libsqlite3/sqlite-src-3370200/ext/misc/nextchar.c /private/tmp/libsqlite3/sqlite-src-3370200/ext/misc/normalize.c /private/tmp/libsqlite3/sqlite-src-3370200/ext/misc/percentile.c /private/tmp/libsqlite3/sqlite-src-3370200/ext/misc/prefixes.c /private/tmp/libsqlite3/sqlite-src-3370200/ext/misc/regexp.c /private/tmp/libsqlite3/sqlite-src-3370200/ext/misc/remember.c /private/tmp/libsqlite3/sqlite-src-3370200/ext/misc/series.c /private/tmp/libsqlite3/sqlite-src-3370200/ext/misc/spellfix.c /private/tmp/libsqlite3/sqlite-src-3370200/ext/misc/totype.c /private/tmp/libsqlite3/sqlite-src-3370200/ext/misc/unionvtab.c /private/tmp/libsqlite3/sqlite-src-3370200/ext/misc/wholenumber.c /private/tmp/libsqlite3/sqlite-src-3370200/ext/misc/zipfile.c /private/tmp/libsqlite3/sqlite-src-3370200/ext/userauth/userauth.c /private/tmp/libsqlite3/sqlite-src-3370200/ext/rtree/test_rtreedoc.c /private/tmp/libsqlite3/sqlite-src-3370200/src/tclsqlite.c sqlite3.c -L/opt/homebrew/Cellar/tcl-tk/8.6.13_5/lib -ltcl8.6 -lz', DO NOT EDIT.
 
 //go:build darwin && arm64
 // +build darwin,arm64
@@ -19491,6 +19491,12 @@ var _longdouble_size = int32(8)
 var _query_plan = __ccgo_ts + 9091
 
 // -:
+type TsColMap = struct {
+	FiFrom int32
+	FzCol  uintptr
+}
+
+// -:
 type Tsqlite3InitInfo = struct {
 	FnewTnum       TPgno
 	FiDb           Tu8
@@ -19514,12 +19520,6 @@ type TExprList_item = struct {
 			FiAlias      Tu16
 		}
 	}
-}
-
-// -:
-type TsColMap = struct {
-	FiFrom int32
-	FzCol  uintptr
 }
 
 // -:
@@ -29672,7 +29672,7 @@ const m_SQLITE_DEFAULT_AUTOVACUUM = "0"
 // /private/tmp/libsqlite3/sqlite-src-3370200/src/sqliteInt.h:653:10:
 const m_SQLITE_DEFAULT_FILE_FORMAT = 4
 
-// /private/tmp/libsqlite3/sqlite-src-3370200/<command-line>:30:9:
+// /private/tmp/libsqlite3/sqlite-src-3370200/<command-line>:32:9:
 const m_SQLITE_DEFAULT_PAGE_SIZE = 1024
 
 // /private/tmp/libsqlite3/sqlite-src-3370200/src/sqliteInt.h:1284:10:
@@ -29723,10 +29723,10 @@ const m_SQLITE_MAX_VDBE_OP = 250000000
 // /private/tmp/libsqlite3/sqlite-src-3370200/src/sqliteInt.h:679:10:
 const m_SQLITE_MAX_WORKER_THREADS = "0"
 
-// /private/tmp/libsqlite3/sqlite-src-3370200/<command-line>:21:9:
+// /private/tmp/libsqlite3/sqlite-src-3370200/<command-line>:23:9:
 const m_SQLITE_TEMP_STORE = 1
 
-// /private/tmp/libsqlite3/sqlite-src-3370200/<command-line>:16:9:
+// /private/tmp/libsqlite3/sqlite-src-3370200/<command-line>:18:9:
 const m_SQLITE_THREADSAFE = 0
 
 /*
@@ -88435,7 +88435,7 @@ const m_SERIES_COLUMN_STEP = 3
 // /private/tmp/libsqlite3/sqlite-src-3370200/ext/misc/series.c:120:9:
 const m_SERIES_COLUMN_STOP = 2
 
-// /private/tmp/libsqlite3/sqlite-src-3370200/<command-line>:29:9:
+// /private/tmp/libsqlite3/sqlite-src-3370200/<command-line>:31:9:
 const m_SQLITE_SERIES_CONSTRAINT_VERIFY = 1
 
 /*
@@ -127279,70 +127279,70 @@ const
 _kGUARD_EXC_THREAD_SET_STATE = 5
 const
 // /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/mach/port.h:407:2:
-_kGUARD_EXC_UNGUARDED = 8
+_kGUARD_EXC_EXCEPTION_BEHAVIOR_ENFORCE = 6
 const
 // /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/mach/port.h:408:2:
-_kGUARD_EXC_INCORRECT_GUARD = 16
+_kGUARD_EXC_UNGUARDED = 8
 const
 // /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/mach/port.h:409:2:
-_kGUARD_EXC_IMMOVABLE = 32
+_kGUARD_EXC_INCORRECT_GUARD = 16
 const
 // /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/mach/port.h:410:2:
-_kGUARD_EXC_STRICT_REPLY = 64
+_kGUARD_EXC_IMMOVABLE = 32
 const
 // /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/mach/port.h:411:2:
+_kGUARD_EXC_STRICT_REPLY = 64
+const
+// /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/mach/port.h:412:2:
 _kGUARD_EXC_MSG_FILTERED = 128
 const
-// /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/mach/port.h:413:2:
+// /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/mach/port.h:414:2:
 _kGUARD_EXC_INVALID_RIGHT = 256
 const
-// /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/mach/port.h:414:2:
+// /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/mach/port.h:415:2:
 _kGUARD_EXC_INVALID_NAME = 512
 const
-// /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/mach/port.h:415:2:
+// /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/mach/port.h:416:2:
 _kGUARD_EXC_INVALID_VALUE = 1024
 const
-// /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/mach/port.h:416:2:
+// /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/mach/port.h:417:2:
 _kGUARD_EXC_INVALID_ARGUMENT = 2048
 const
-// /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/mach/port.h:417:2:
+// /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/mach/port.h:418:2:
 _kGUARD_EXC_RIGHT_EXISTS = 4096
 const
-// /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/mach/port.h:418:2:
+// /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/mach/port.h:419:2:
 _kGUARD_EXC_KERN_NO_SPACE = 8192
 const
-// /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/mach/port.h:419:2:
+// /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/mach/port.h:420:2:
 _kGUARD_EXC_KERN_FAILURE = 16384
 const
-// /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/mach/port.h:420:2:
+// /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/mach/port.h:421:2:
 _kGUARD_EXC_KERN_RESOURCE = 32768
 const
-// /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/mach/port.h:421:2:
+// /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/mach/port.h:422:2:
 _kGUARD_EXC_SEND_INVALID_REPLY = 65536
 const
-// /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/mach/port.h:422:2:
+// /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/mach/port.h:423:2:
 _kGUARD_EXC_SEND_INVALID_VOUCHER = 131072
 const
-// /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/mach/port.h:423:2:
+// /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/mach/port.h:424:2:
 _kGUARD_EXC_SEND_INVALID_RIGHT = 262144
 const
-// /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/mach/port.h:424:2:
+// /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/mach/port.h:425:2:
 _kGUARD_EXC_RCV_INVALID_NAME = 524288
 const
-// /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/mach/port.h:426:2:
+// /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/mach/port.h:427:2:
 _kGUARD_EXC_RCV_GUARDED_DESC = 1048576
 const
-// /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/mach/port.h:427:2:
+// /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/mach/port.h:428:2:
 _kGUARD_EXC_MOD_REFS_NON_FATAL = 2097152
 const
-// /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/mach/port.h:428:2:
+// /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/mach/port.h:429:2:
 _kGUARD_EXC_IMMOVABLE_NON_FATAL = 4194304
 const
-// /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/mach/port.h:429:2:
-_kGUARD_EXC_REQUIRE_REPLY_PORT_SEMANTICS = 8388608
-const
 // /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/mach/port.h:430:2:
-_kGUARD_EXC_EXCEPTION_BEHAVIOR_ENFORCE = 16777216
+_kGUARD_EXC_REQUIRE_REPLY_PORT_SEMANTICS = 8388608
 
 // /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/sys/ucred.h:100:1:
 type Txucred = struct {
@@ -312645,15 +312645,6 @@ func x_sqlite3_sourceid(tls *libc.TLS) (r uintptr) {
 }
 
 // -:
-type TInLoop = struct {
-	FiCur       int32
-	FaddrInTop  int32
-	FiBase      int32
-	FnPrefix    int32
-	FeEndLoopOp Tu8
-}
-
-// -:
 type TIdList_item = struct {
 	FzName uintptr
 	Fidx   int32
@@ -312669,12 +312660,13 @@ type TAggInfo_func = struct {
 }
 
 // -:
-type TWalSegment = struct {
-	FiNext  int32
-	FaIndex uintptr
-	FaPgno  uintptr
-	FnEntry int32
-	FiZero  int32
+type TAggInfo_col = struct {
+	FpTab          uintptr
+	FpCExpr        uintptr
+	FiTable        int32
+	FiMem          int32
+	FiColumn       Ti16
+	FiSorterColumn Ti16
 }
 
 // -:
@@ -312684,13 +312676,21 @@ type T_ht = struct {
 }
 
 // -:
-type TAggInfo_col = struct {
-	FpTab          uintptr
-	FpCExpr        uintptr
-	FiTable        int32
-	FiMem          int32
-	FiColumn       Ti16
-	FiSorterColumn Ti16
+type TWalSegment = struct {
+	FiNext  int32
+	FaIndex uintptr
+	FaPgno  uintptr
+	FnEntry int32
+	FiZero  int32
+}
+
+// -:
+type TInLoop = struct {
+	FiCur       int32
+	FaddrInTop  int32
+	FiBase      int32
+	FnPrefix    int32
+	FeEndLoopOp Tu8
 }
 
 func __ccgo_fp(f interface{}) uintptr {
