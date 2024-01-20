@@ -1,12 +1,12 @@
 {
-	"autogen": "$libs",
-	"autotag": "$libs",
-	"autoupdate": "$libs",
+	"autogen": "$sqlite",
+	"autotag": "$sqlite",
+	"autoupdate": "$sqlite",
 	"download": [
 		{"re": ".", "files": [
 			"https://www.sqlite.org/2022/sqlite-amalgamation-3370200.zip", 
 			"https://www.sqlite.org/2022/sqlite-src-3370200.zip"
 		]}
 	],
-	"test": "$libs"
+	"test": "$sqlite"
 }
