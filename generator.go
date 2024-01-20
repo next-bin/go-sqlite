@@ -143,15 +143,14 @@ func main() {
 		)
 		switch {
 		case win:
-			out := util.MustShell(true, "which", "x86_64-w64-mingw32-gcc")
-			os.Setenv("CCGO_CPP", strings.TrimSpace(string(out)))
-			os.Setenv("TARGET_GOOS", goos)
-			os.Setenv("TARGET_GOARCH", goarch)
+			args = append(args, "-build-lines", "//go:build windows && (amd64 || arm64)\n// +build windows\n// +build amd64 arm64")
 			if err = ccgo.NewTask(
 				goos, goarch,
 				append(args,
+					"--cpp", strings.TrimSpace(string(util.MustShell(true, "which", "x86_64-w64-mingw32-gcc"))),
+					"--goarch", goarch,
+					"--goos", goos,
 					"--package-name=main",
-					"-build-lines", "//go:build windows && (amd64 || arm64)\n// +build windows\n// +build amd64 arm64",
 					"-map", "ar=x86_64-w64-mingw32-ar,gcc=x86_64-w64-mingw32-gcc",
 					"-exec", "sh", "-c",
 					fmt.Sprintf("make -j%s PREFIX=x86_64-w64-mingw32- -fwin32/Makefile.gcc libz.a example.exe minigzip.exe", j),

@@ -1,7 +1,8 @@
-// Code generated for windows/amd64 by 'generator --prefix-enumerator=_ --prefix-external=x_ --prefix-field=F --prefix-macro=m_ --prefix-static-internal=_ --prefix-static-none=_ --prefix-tagged-enum=_ --prefix-tagged-struct=T --prefix-tagged-union=T --prefix-typename=T --prefix-undefined=_ -extended-errors --package-name=libz -o libz.a.go libz.a', DO NOT EDIT.
+// Code generated for windows/amd64 by 'generator --prefix-enumerator=_ --prefix-external=x_ --prefix-field=F --prefix-macro=m_ --prefix-static-internal=_ --prefix-static-none=_ --prefix-tagged-enum=_ --prefix-tagged-struct=T --prefix-tagged-union=T --prefix-typename=T --prefix-undefined=_ -extended-errors -build-lines \/\/go:build windows && (amd64 || arm64)\n\/\/ \x2bbuild windows\n\/\/ \x2bbuild amd64 arm64 --package-name=libz -o libz.a.go libz.a', DO NOT EDIT.
 
-//go:build windows && amd64
-// +build windows,amd64
+//go:build windows && (amd64 || arm64)
+// +build windows
+// +build amd64 arm64
 
 package libz
 
