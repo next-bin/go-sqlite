@@ -1,4 +1,4 @@
-// Code generated for windows/amd64 by 'x86_64-w64-mingw32-gcc -DLONGDOUBLE_TYPE=double -DSQLITE_WITHOUT_ZONEMALLOC -DSQLITE_THREADSAFE=0 -Dpread64=pread -Dpwrite64=pwrite -DNDEBUG -DSQLITE_OS_WIN=1 -absolute-paths -keep-object-files -positions --libc modernc.org/libc --prefix-enumerator=_ --prefix-external=x_ --prefix-field=F --prefix-macro=m_ --prefix-static-internal=_ --prefix-static-none=_ --prefix-tagged-enum=_ --prefix-tagged-struct=T --prefix-tagged-union=T --prefix-typename=T --prefix-undefined=_ -extended-errors -ignore-unsupported-alignment -I/tmp/libsqlite3/sqlite-amalgamation-3370200/ccgo --cpp /usr/bin/x86_64-w64-mingw32-gcc --goarch amd64 --goos windows -D__mingw_strtod=strtod -build-lines \/\/go:build windows && (amd64 || arm64)\n\/\/ \x2bbuild windows\n\/\/ \x2bbuild amd64 arm64 -map gcc=x86_64-w64-mingw32-gcc -mlong-double-64 -DLONGDOUBLE_TYPE=double -DSQLITE_WITHOUT_ZONEMALLOC -DSQLITE_THREADSAFE=0 -DNDEBUG -DSQLITE_OS_WIN=1 -DSQLITE_OS_UNIX=0 -D_MSC_VER=1 -I. -I../sqlite-src-3370200/src -I../sqlite-src-3370200/ext/rtree -I../sqlite-src-3370200/ext/icu -I../sqlite-src-3370200/ext/fts3 -I../sqlite-src-3370200/ext/async -I../sqlite-src-3370200/ext/session -I../sqlite-src-3370200/ext/userauth -D_HAVE_SQLITE_CONFIG_H -DBUILD_sqlite -DNDEBUG -I/usr/include/tcl8.6 -DSQLITE_THREADSAFE=0 -DSQLITE_OMIT_LOAD_EXTENSION=1 -DSQLITE_ENABLE_MATH_FUNCTIONS -DSQLITE_NO_SYNC=1 -DSQLITE_TEMP_STORE=1 -DSQLITE_TEST=1 -DSQLITE_CRASH_TEST=1 -DTCLSH_INIT_PROC=sqlite3TestInit -DSQLITE_SERVER=1 -DSQLITE_PRIVATE= -DSQLITE_CORE -DBUILD_sqlite -DSQLITE_SERIES_CONSTRAINT_VERIFY=1 -DSQLITE_DEFAULT_PAGE_SIZE=1024 -DSQLITE_ENABLE_STMTVTAB -DSQLITE_ENABLE_DBPAGE_VTAB -DSQLITE_ENABLE_BYTECODE_VTAB -DSQLITE_CKSUMVFS_STATIC -o testfixture.exe.go ../sqlite-src-3370200/src/test1.c ../sqlite-src-3370200/src/test2.c ../sqlite-src-3370200/src/test3.c ../sqlite-src-3370200/src/test4.c ../sqlite-src-3370200/src/test5.c ../sqlite-src-3370200/src/test6.c ../sqlite-src-3370200/src/test7.c ../sqlite-src-3370200/src/test8.c ../sqlite-src-3370200/src/test9.c ../sqlite-src-3370200/src/test_autoext.c ../sqlite-src-3370200/src/test_async.c ../sqlite-src-3370200/src/test_backup.c ../sqlite-src-3370200/src/test_bestindex.c ../sqlite-src-3370200/src/test_blob.c ../sqlite-src-3370200/src/test_btree.c ../sqlite-src-3370200/src/test_config.c ../sqlite-src-3370200/src/test_delete.c ../sqlite-src-3370200/src/test_demovfs.c ../sqlite-src-3370200/src/test_devsym.c ../sqlite-src-3370200/src/test_fs.c ../sqlite-src-3370200/src/test_func.c ../sqlite-src-3370200/src/test_hexio.c ../sqlite-src-3370200/src/test_init.c ../sqlite-src-3370200/src/test_intarray.c ../sqlite-src-3370200/src/test_journal.c ../sqlite-src-3370200/src/test_malloc.c ../sqlite-src-3370200/src/test_md5.c ../sqlite-src-3370200/src/test_multiplex.c ../sqlite-src-3370200/src/test_mutex.c ../sqlite-src-3370200/src/test_onefile.c ../sqlite-src-3370200/src/test_osinst.c ../sqlite-src-3370200/src/test_pcache.c ../sqlite-src-3370200/src/test_quota.c ../sqlite-src-3370200/src/test_rtree.c ../sqlite-src-3370200/src/test_schema.c ../sqlite-src-3370200/src/test_server.c ../sqlite-src-3370200/src/test_superlock.c ../sqlite-src-3370200/src/test_syscall.c ../sqlite-src-3370200/src/test_tclsh.c ../sqlite-src-3370200/src/test_tclvar.c ../sqlite-src-3370200/src/test_thread.c ../sqlite-src-3370200/src/test_vdbecov.c ../sqlite-src-3370200/src/test_vfs.c ../sqlite-src-3370200/src/test_windirent.c ../sqlite-src-3370200/src/test_window.c ../sqlite-src-3370200/src/test_wsd.c ../sqlite-src-3370200/ext/fts3/fts3_term.c ../sqlite-src-3370200/ext/fts3/fts3_test.c ../sqlite-src-3370200/ext/session/test_session.c ../sqlite-src-3370200/ext/rbu/test_rbu.c ../sqlite-src-3370200/ext/expert/sqlite3expert.c ../sqlite-src-3370200/ext/expert/test_expert.c ../sqlite-src-3370200/ext/misc/amatch.c ../sqlite-src-3370200/ext/misc/appendvfs.c ../sqlite-src-3370200/ext/misc/carray.c ../sqlite-src-3370200/ext/misc/cksumvfs.c ../sqlite-src-3370200/ext/misc/closure.c ../sqlite-src-3370200/ext/misc/csv.c ../sqlite-src-3370200/ext/misc/decimal.c ../sqlite-src-3370200/ext/misc/eval.c ../sqlite-src-3370200/ext/misc/explain.c ../sqlite-src-3370200/ext/misc/fileio.c ../sqlite-src-3370200/ext/misc/fuzzer.c ../sqlite-src-3370200/ext/fts5/fts5_tcl.c ../sqlite-src-3370200/ext/fts5/fts5_test_mi.c ../sqlite-src-3370200/ext/fts5/fts5_test_tok.c ../sqlite-src-3370200/ext/misc/ieee754.c ../sqlite-src-3370200/ext/misc/mmapwarm.c ../sqlite-src-3370200/ext/misc/nextchar.c ../sqlite-src-3370200/ext/misc/normalize.c ../sqlite-src-3370200/ext/misc/percentile.c ../sqlite-src-3370200/ext/misc/prefixes.c ../sqlite-src-3370200/ext/misc/regexp.c ../sqlite-src-3370200/ext/misc/remember.c ../sqlite-src-3370200/ext/misc/series.c ../sqlite-src-3370200/ext/misc/spellfix.c ../sqlite-src-3370200/ext/misc/totype.c ../sqlite-src-3370200/ext/misc/unionvtab.c ../sqlite-src-3370200/ext/misc/wholenumber.c ../sqlite-src-3370200/ext/misc/zipfile.c ../sqlite-src-3370200/ext/userauth/userauth.c ../sqlite-src-3370200/ext/rtree/test_rtreedoc.c ../sqlite-src-3370200/src/tclsqlite.c sqlite3.c -L/usr/lib/x86_64-linux-gnu -ltcl8.6', DO NOT EDIT.
+// Code generated for windows/amd64 by 'x86_64-w64-mingw32-gcc -DLONGDOUBLE_TYPE=double -DSQLITE_WITHOUT_ZONEMALLOC -DSQLITE_THREADSAFE=0 -Dpread64=pread -Dpwrite64=pwrite -DNDEBUG -DSQLITE_ENABLE_MATH_FUNCTIONS -DSQLITE_OS_WIN=1 -absolute-paths -keep-object-files -positions --libc modernc.org/libc --prefix-enumerator=_ --prefix-external=x_ --prefix-field=F --prefix-macro=m_ --prefix-static-internal=_ --prefix-static-none=_ --prefix-tagged-enum=_ --prefix-tagged-struct=T --prefix-tagged-union=T --prefix-typename=T --prefix-undefined=_ -extended-errors -ignore-unsupported-alignment -I/tmp/libsqlite3/sqlite-amalgamation-3370200/ccgo --cpp /usr/bin/x86_64-w64-mingw32-gcc --goarch amd64 --goos windows -D__mingw_strtod=strtod -build-lines \/\/go:build windows && (amd64 || arm64)\n\/\/ \x2bbuild windows\n\/\/ \x2bbuild amd64 arm64 -map gcc=x86_64-w64-mingw32-gcc -mlong-double-64 -DLONGDOUBLE_TYPE=double -DSQLITE_WITHOUT_ZONEMALLOC -DSQLITE_THREADSAFE=0 -DNDEBUG -DSQLITE_OS_WIN=1 -DSQLITE_OS_UNIX=0 -D_MSC_VER=1 -I. -I../sqlite-src-3370200/src -I../sqlite-src-3370200/ext/rtree -I../sqlite-src-3370200/ext/icu -I../sqlite-src-3370200/ext/fts3 -I../sqlite-src-3370200/ext/async -I../sqlite-src-3370200/ext/session -I../sqlite-src-3370200/ext/userauth -D_HAVE_SQLITE_CONFIG_H -DBUILD_sqlite -DNDEBUG -I/usr/include/tcl8.6 -DSQLITE_THREADSAFE=0 -DSQLITE_OMIT_LOAD_EXTENSION=1 -DSQLITE_ENABLE_MATH_FUNCTIONS -DSQLITE_ENABLE_MATH_FUNCTIONS -DSQLITE_NO_SYNC=1 -DSQLITE_TEMP_STORE=1 -DSQLITE_TEST=1 -DSQLITE_CRASH_TEST=1 -DTCLSH_INIT_PROC=sqlite3TestInit -DSQLITE_SERVER=1 -DSQLITE_PRIVATE= -DSQLITE_CORE -DBUILD_sqlite -DSQLITE_SERIES_CONSTRAINT_VERIFY=1 -DSQLITE_DEFAULT_PAGE_SIZE=1024 -DSQLITE_ENABLE_STMTVTAB -DSQLITE_ENABLE_DBPAGE_VTAB -DSQLITE_ENABLE_BYTECODE_VTAB -DSQLITE_CKSUMVFS_STATIC -o testfixture.exe.go ../sqlite-src-3370200/src/test1.c ../sqlite-src-3370200/src/test2.c ../sqlite-src-3370200/src/test3.c ../sqlite-src-3370200/src/test4.c ../sqlite-src-3370200/src/test5.c ../sqlite-src-3370200/src/test6.c ../sqlite-src-3370200/src/test7.c ../sqlite-src-3370200/src/test8.c ../sqlite-src-3370200/src/test9.c ../sqlite-src-3370200/src/test_autoext.c ../sqlite-src-3370200/src/test_async.c ../sqlite-src-3370200/src/test_backup.c ../sqlite-src-3370200/src/test_bestindex.c ../sqlite-src-3370200/src/test_blob.c ../sqlite-src-3370200/src/test_btree.c ../sqlite-src-3370200/src/test_config.c ../sqlite-src-3370200/src/test_delete.c ../sqlite-src-3370200/src/test_demovfs.c ../sqlite-src-3370200/src/test_devsym.c ../sqlite-src-3370200/src/test_fs.c ../sqlite-src-3370200/src/test_func.c ../sqlite-src-3370200/src/test_hexio.c ../sqlite-src-3370200/src/test_init.c ../sqlite-src-3370200/src/test_intarray.c ../sqlite-src-3370200/src/test_journal.c ../sqlite-src-3370200/src/test_malloc.c ../sqlite-src-3370200/src/test_md5.c ../sqlite-src-3370200/src/test_multiplex.c ../sqlite-src-3370200/src/test_mutex.c ../sqlite-src-3370200/src/test_onefile.c ../sqlite-src-3370200/src/test_osinst.c ../sqlite-src-3370200/src/test_pcache.c ../sqlite-src-3370200/src/test_quota.c ../sqlite-src-3370200/src/test_rtree.c ../sqlite-src-3370200/src/test_schema.c ../sqlite-src-3370200/src/test_server.c ../sqlite-src-3370200/src/test_superlock.c ../sqlite-src-3370200/src/test_syscall.c ../sqlite-src-3370200/src/test_tclsh.c ../sqlite-src-3370200/src/test_tclvar.c ../sqlite-src-3370200/src/test_thread.c ../sqlite-src-3370200/src/test_vdbecov.c ../sqlite-src-3370200/src/test_vfs.c ../sqlite-src-3370200/src/test_windirent.c ../sqlite-src-3370200/src/test_window.c ../sqlite-src-3370200/src/test_wsd.c ../sqlite-src-3370200/ext/fts3/fts3_term.c ../sqlite-src-3370200/ext/fts3/fts3_test.c ../sqlite-src-3370200/ext/session/test_session.c ../sqlite-src-3370200/ext/rbu/test_rbu.c ../sqlite-src-3370200/ext/expert/sqlite3expert.c ../sqlite-src-3370200/ext/expert/test_expert.c ../sqlite-src-3370200/ext/misc/amatch.c ../sqlite-src-3370200/ext/misc/appendvfs.c ../sqlite-src-3370200/ext/misc/carray.c ../sqlite-src-3370200/ext/misc/cksumvfs.c ../sqlite-src-3370200/ext/misc/closure.c ../sqlite-src-3370200/ext/misc/csv.c ../sqlite-src-3370200/ext/misc/decimal.c ../sqlite-src-3370200/ext/misc/eval.c ../sqlite-src-3370200/ext/misc/explain.c ../sqlite-src-3370200/ext/misc/fileio.c ../sqlite-src-3370200/ext/misc/fuzzer.c ../sqlite-src-3370200/ext/fts5/fts5_tcl.c ../sqlite-src-3370200/ext/fts5/fts5_test_mi.c ../sqlite-src-3370200/ext/fts5/fts5_test_tok.c ../sqlite-src-3370200/ext/misc/ieee754.c ../sqlite-src-3370200/ext/misc/mmapwarm.c ../sqlite-src-3370200/ext/misc/nextchar.c ../sqlite-src-3370200/ext/misc/normalize.c ../sqlite-src-3370200/ext/misc/percentile.c ../sqlite-src-3370200/ext/misc/prefixes.c ../sqlite-src-3370200/ext/misc/regexp.c ../sqlite-src-3370200/ext/misc/remember.c ../sqlite-src-3370200/ext/misc/series.c ../sqlite-src-3370200/ext/misc/spellfix.c ../sqlite-src-3370200/ext/misc/totype.c ../sqlite-src-3370200/ext/misc/unionvtab.c ../sqlite-src-3370200/ext/misc/wholenumber.c ../sqlite-src-3370200/ext/misc/zipfile.c ../sqlite-src-3370200/ext/userauth/userauth.c ../sqlite-src-3370200/ext/rtree/test_rtreedoc.c ../sqlite-src-3370200/src/tclsqlite.c sqlite3.c -L/usr/lib/x86_64-linux-gnu -ltcl8.6', DO NOT EDIT.
 
 //go:build windows && (amd64 || arm64)
 // +build windows
@@ -91390,9 +91390,29 @@ var _longdouble_size = int32(8)
 var _query_plan = __ccgo_ts + 9301
 
 // -:
-type TsColMap = struct {
-	FiFrom int32
-	FzCol  uintptr
+type Tsqlite3InitInfo = struct {
+	FnewTnum       TPgno
+	FiDb           Tu8
+	Fbusy          Tu8
+	F__ccgo_align3 [2]byte
+	F__ccgo8       uint8
+	FazInit        uintptr
+}
+
+// -:
+type TExprList_item = struct {
+	FpExpr         uintptr
+	FzEName        uintptr
+	FsortFlags     Tu8
+	F__ccgo_align3 [3]byte
+	F__ccgo20      uint8
+	Fu             struct {
+		FiConstExprReg [0]int32
+		Fx             struct {
+			FiOrderByCol Tu16
+			FiAlias      Tu16
+		}
+	}
 }
 
 // -:
@@ -91457,29 +91477,9 @@ type T__tagVARIANT = struct {
 }
 
 // -:
-type Tsqlite3InitInfo = struct {
-	FnewTnum       TPgno
-	FiDb           Tu8
-	Fbusy          Tu8
-	F__ccgo_align3 [2]byte
-	F__ccgo8       uint8
-	FazInit        uintptr
-}
-
-// -:
-type TExprList_item = struct {
-	FpExpr         uintptr
-	FzEName        uintptr
-	FsortFlags     Tu8
-	F__ccgo_align3 [3]byte
-	F__ccgo20      uint8
-	Fu             struct {
-		FiConstExprReg [0]int32
-		Fx             struct {
-			FiOrderByCol Tu16
-			FiAlias      Tu16
-		}
-	}
+type TsColMap = struct {
+	FiFrom int32
+	FzCol  uintptr
 }
 
 // -:
@@ -91489,25 +91489,12 @@ type T__tagBRECORD = struct {
 }
 
 // -:
-type T__WIDL_wtypes_generated_name_00000001 = struct {
-	FpwszName    [0]uintptr
-	FdwValue     TDWORD
-	F__ccgo_pad2 [4]byte
-}
-
-// -:
-type T__WIDL_wtypes_generated_name_00000002 = struct {
-	FhRemote     [0]uintptr
-	FhInproc     TLONG
-	F__ccgo_pad2 [4]byte
-}
-
-// -:
-type T__WIDL_wtypes_generated_name_00000003 = struct {
-	FhRemote     [0]uintptr
-	FhInproc64   [0]TINT64
-	FhInproc     TLONG
-	F__ccgo_pad3 [4]byte
+type TMemValue = struct {
+	Fi      [0]Ti64
+	FnZero  [0]int32
+	FzPType [0]uintptr
+	FpDef   [0]uintptr
+	Fr      float64
 }
 
 // -:
@@ -91519,10 +91506,26 @@ type T__WIDL_wtypes_generated_name_00000004 = struct {
 }
 
 // -:
-type T__WIDL_objidl_generated_name_0000000C = struct {
-	FhPalette [0]TwireHPALETTE
-	FhGeneric [0]TwireHGLOBAL
-	FhBitmap  TwireHBITMAP
+type T__WIDL_wtypes_generated_name_00000005 = struct {
+	FhRemote     [0]uintptr
+	FhInproc64   [0]TINT64
+	FhInproc     TLONG
+	F__ccgo_pad3 [4]byte
+}
+
+// -:
+type T__WIDL_wtypes_generated_name_00000001 = struct {
+	FpwszName    [0]uintptr
+	FdwValue     TDWORD
+	F__ccgo_pad2 [4]byte
+}
+
+// -:
+type T__WIDL_wtypes_generated_name_00000007 = struct {
+	FhRemote     [0]uintptr
+	FhInproc64   [0]TINT64
+	FhInproc     TLONG
+	F__ccgo_pad3 [4]byte
 }
 
 // -:
@@ -91572,30 +91575,14 @@ type Tp4union = struct {
 }
 
 // -:
-type T__WIDL_wtypes_generated_name_00000006 = struct {
+type T__WIDL_wtypes_generated_name_00000002 = struct {
 	FhRemote     [0]uintptr
-	FhInproc64   [0]TINT64
 	FhInproc     TLONG
-	F__ccgo_pad3 [4]byte
+	F__ccgo_pad2 [4]byte
 }
 
 // -:
-type T__WIDL_wtypes_generated_name_00000009 = struct {
-	FhRemote [0]TLONG
-	FhInproc TLONG
-}
-
-// -:
-type TMemValue = struct {
-	Fi      [0]Ti64
-	FnZero  [0]int32
-	FzPType [0]uintptr
-	FpDef   [0]uintptr
-	Fr      float64
-}
-
-// -:
-type T__WIDL_wtypes_generated_name_00000007 = struct {
+type T__WIDL_wtypes_generated_name_00000006 = struct {
 	FhRemote     [0]uintptr
 	FhInproc64   [0]TINT64
 	FhInproc     TLONG
@@ -91608,6 +91595,27 @@ type T__WIDL_wtypes_generated_name_00000008 = struct {
 	FhInproc64   [0]TINT64
 	FhInproc     TLONG
 	F__ccgo_pad3 [4]byte
+}
+
+// -:
+type T__WIDL_objidl_generated_name_0000000C = struct {
+	FhPalette [0]TwireHPALETTE
+	FhGeneric [0]TwireHGLOBAL
+	FhBitmap  TwireHBITMAP
+}
+
+// -:
+type T__WIDL_wtypes_generated_name_00000003 = struct {
+	FhRemote     [0]uintptr
+	FhInproc64   [0]TINT64
+	FhInproc     TLONG
+	F__ccgo_pad3 [4]byte
+}
+
+// -:
+type T__WIDL_wtypes_generated_name_00000009 = struct {
+	FhRemote [0]TLONG
+	FhInproc TLONG
 }
 
 // -:
@@ -91626,14 +91634,6 @@ type T__WIDL_wtypes_generated_name_0000000A = struct {
 	}
 	Fclsid       TCLSID
 	F__ccgo_pad7 [16]byte
-}
-
-// -:
-type T__WIDL_wtypes_generated_name_00000005 = struct {
-	FhRemote     [0]uintptr
-	FhInproc64   [0]TINT64
-	FhInproc     TLONG
-	F__ccgo_pad3 [4]byte
 }
 
 // /tmp/libsqlite3/sqlite-src-3370200/src/sqliteInt.h:2018:9:
@@ -101953,7 +101953,7 @@ const m_SQLITE_DEFAULT_AUTOVACUUM = "0"
 // /tmp/libsqlite3/sqlite-src-3370200/src/sqliteInt.h:653:10:
 const m_SQLITE_DEFAULT_FILE_FORMAT = 4
 
-// /tmp/libsqlite3/sqlite-src-3370200/<command-line>:32:9:
+// /tmp/libsqlite3/sqlite-src-3370200/<command-line>:34:9:
 const m_SQLITE_DEFAULT_PAGE_SIZE = 1024
 
 // /tmp/libsqlite3/sqlite-src-3370200/src/sqliteInt.h:1284:10:
@@ -102004,10 +102004,10 @@ const m_SQLITE_MAX_VDBE_OP = 250000000
 // /tmp/libsqlite3/sqlite-src-3370200/src/sqliteInt.h:679:10:
 const m_SQLITE_MAX_WORKER_THREADS = "0"
 
-// /tmp/libsqlite3/sqlite-src-3370200/<command-line>:23:9:
+// /tmp/libsqlite3/sqlite-src-3370200/<command-line>:25:9:
 const m_SQLITE_TEMP_STORE = 1
 
-// /tmp/libsqlite3/sqlite-src-3370200/<command-line>:19:9:
+// /tmp/libsqlite3/sqlite-src-3370200/<command-line>:20:9:
 const m_SQLITE_THREADSAFE = 0
 
 /**
@@ -152906,7 +152906,7 @@ const m_SERIES_COLUMN_STEP = 3
 // /tmp/libsqlite3/sqlite-src-3370200/ext/misc/series.c:120:9:
 const m_SERIES_COLUMN_STOP = 2
 
-// /tmp/libsqlite3/sqlite-src-3370200/<command-line>:31:9:
+// /tmp/libsqlite3/sqlite-src-3370200/<command-line>:33:9:
 const m_SQLITE_SERIES_CONSTRAINT_VERIFY = 1
 
 // C documentation
@@ -371153,18 +371153,21 @@ func x_sqlite3_sourceid(tls *libc.TLS) (r uintptr) {
 }
 
 // -:
-type TInLoop = struct {
-	FiCur       int32
-	FaddrInTop  int32
-	FiBase      int32
-	FnPrefix    int32
-	FeEndLoopOp Tu8
-}
-
-// -:
 type T_ht = struct {
 	Fcount uint32
 	Fchain uintptr
+}
+
+// -:
+type TShmRegion = struct {
+	FhMap THANDLE
+	FpMap uintptr
+}
+
+// -:
+type TIdList_item = struct {
+	FzName uintptr
+	Fidx   int32
 }
 
 // -:
@@ -371187,12 +371190,6 @@ type TAggInfo_col = struct {
 }
 
 // -:
-type TIdList_item = struct {
-	FzName uintptr
-	Fidx   int32
-}
-
-// -:
 type TAggInfo_func = struct {
 	FpFExpr    uintptr
 	FpFunc     uintptr
@@ -371202,9 +371199,12 @@ type TAggInfo_func = struct {
 }
 
 // -:
-type TShmRegion = struct {
-	FhMap THANDLE
-	FpMap uintptr
+type TInLoop = struct {
+	FiCur       int32
+	FaddrInTop  int32
+	FiBase      int32
+	FnPrefix    int32
+	FeEndLoopOp Tu8
 }
 
 func __ccgo_fp(f interface{}) uintptr {
