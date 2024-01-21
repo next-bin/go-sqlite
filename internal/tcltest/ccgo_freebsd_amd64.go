@@ -1,4 +1,4 @@
-// Code generated for freebsd/amd64 by 'gcc -hide __fpgetround,__fpsetround,__fpsetprec,__fpsetmask,__fpgetsticky --prefix-enumerator=_ --prefix-external=x_ --prefix-field=F --prefix-macro=m_ --prefix-static-internal=_ --prefix-static-none=_ --prefix-tagged-enum=_ --prefix-tagged-struct=T --prefix-tagged-union=T --prefix-typename=T --prefix-undefined=_ -extended-errors -hide TclpCreateProcess -ignore-unsupported-alignment -I/tmp/libtcl8.6/tcl8.6.13/ccgo -O2 -DNDEBUG -UHAVE_COPYFILE -UHAVE_CPUID -UHAVE_FTS -UHAVE_TERMIOS_H -mlong-double-64 tclTestInit.o.go tclTest.o.go tclTestObj.o.go tclTestProcBodyObj.o.go tclThreadTest.o.go tclUnixTest.o.go -L/tmp/libtcl8.6/tcl8.6.13/unix -ltcl8.6 libtclstub8.6.a -lz -lm -o tcltest.go', DO NOT EDIT.
+// Code generated for freebsd/amd64 by 'gcc -hide __fpgetround,__fpsetround,__fpsetprec,__fpsetmask,__fpgetsticky -hide TclpCreateProcess --prefix-enumerator=_ --prefix-external=x_ --prefix-field=F --prefix-macro=m_ --prefix-static-internal=_ --prefix-static-none=_ --prefix-tagged-enum=_ --prefix-tagged-struct=T --prefix-tagged-union=T --prefix-typename=T --prefix-undefined=_ -extended-errors -ignore-unsupported-alignment -I/tmp/libtcl8.6/tcl8.6.13/ccgo -O2 -DNDEBUG -UHAVE_COPYFILE -UHAVE_CPUID -UHAVE_FTS -UHAVE_TERMIOS_H -mlong-double-64 tclTestInit.o.go tclTest.o.go tclTestObj.o.go tclTestProcBodyObj.o.go tclThreadTest.o.go tclUnixTest.o.go -L/tmp/libtcl8.6/tcl8.6.13/unix -ltcl8.6 libtclstub8.6.a -lz -lm -o tcltest.go', DO NOT EDIT.
 
 //go:build freebsd && amd64
 // +build freebsd,amd64
@@ -2600,8 +2600,8 @@ type Tconstraint_handler_t = uintptr
 type Tptrdiff_t = int64
 
 type Tmax_align_t = struct {
-	F__max_align1 int64
-	F__max_align2 float64
+	F__max_align_ll int64
+	F__max_align_ld float64
 }
 
 type TTcl_ResolvedVarInfo1 = struct {
@@ -43682,7 +43682,7 @@ func _ExprSqrtFunc(tls *libc.TLS, clientData TClientData, interp uintptr, objc i
 	if code != m_TCL_OK {
 		return int32(m_TCL_ERROR)
 	}
-	if *(*float64)(unsafe.Pointer(bp)) >= float64(0) && (*(*float64)(unsafe.Pointer(bp)) > float64(1.7976931348623157e+308) || *(*float64)(unsafe.Pointer(bp)) < -libc.Float64FromFloat64(1.7976931348623157e+308)) && x_Tcl_GetBignumFromObj(tls, libc.UintptrFromInt32(0), *(*uintptr)(unsafe.Pointer(objv + 1*8)), bp+8) == m_TCL_OK {
+	if *(*float64)(unsafe.Pointer(bp)) >= float64(0) && (*(*float64)(unsafe.Pointer(bp)) > libc.Float64FromFloat64(1.79769313486231570814527423731704357e+308) || *(*float64)(unsafe.Pointer(bp)) < -libc.Float64FromFloat64(1.79769313486231570814527423731704357e+308)) && x_Tcl_GetBignumFromObj(tls, libc.UintptrFromInt32(0), *(*uintptr)(unsafe.Pointer(objv + 1*8)), bp+8) == m_TCL_OK {
 		x_TclBN_mp_init(tls, bp+32)
 		x_TclBN_mp_sqrt(tls, bp+8, bp+32)
 		x_TclBN_mp_clear(tls, bp+8)
@@ -43726,7 +43726,7 @@ _3:
 		x_TclExprFloatError(tls, interp, dResult)
 		return int32(m_TCL_ERROR)
 	}
-	if *(*int32)(unsafe.Pointer(libc.X__error(tls))) == int32(m_ERANGE) && (dResult == float64(0) || (dResult > float64(1.7976931348623157e+308) || dResult < -libc.Float64FromFloat64(1.7976931348623157e+308))) {
+	if *(*int32)(unsafe.Pointer(libc.X__error(tls))) == int32(m_ERANGE) && (dResult == float64(0) || (dResult > libc.Float64FromFloat64(1.79769313486231570814527423731704357e+308) || dResult < -libc.Float64FromFloat64(1.79769313486231570814527423731704357e+308))) {
 		/*
 		 * When ERANGE signals under/overflow, just accept 0.0 or +/-Inf
 		 */
@@ -47732,11 +47732,11 @@ func _FormatNumber(tls *libc.TLS, interp uintptr, type1 int32, src uintptr, curs
 		 * an overflow cast (e.g. Borland), we restrict the values to the
 		 * valid range for float.
 		 */
-		if libc.Xfabs(tls, *(*float64)(unsafe.Pointer(bp + 8))) > libc.Float64FromFloat32(3.40282347e+38) {
+		if libc.Xfabs(tls, *(*float64)(unsafe.Pointer(bp + 8))) > libc.Float64FromFloat32(3.4028234663852886e+38) {
 			if *(*float64)(unsafe.Pointer(bp + 8)) >= float64(0) {
-				v1 = libc.Float32FromFloat32(3.40282347e+38)
+				v1 = libc.Float32FromFloat32(3.4028234663852886e+38)
 			} else {
-				v1 = -libc.Float32FromFloat32(3.40282347e+38)
+				v1 = -libc.Float32FromFloat32(3.4028234663852886e+38)
 			}
 			*(*float32)(unsafe.Pointer(bp + 24)) = v1
 		} else {
@@ -129411,6 +129411,8 @@ type Tyytype_int16 = int16
 
 /* Suppress unused-variable warnings by "using" E.  */
 
+/* Suppress an incorrect diagnostic about yylval being uninitialized.  */
+
 /* The parser invokes alloca or malloc; define the necessary symbols.  */
 
 /* A type that is properly aligned for any stack member.  */
@@ -130364,8 +130366,6 @@ func x_TclDateparse(tls *libc.TLS, info uintptr) (r int32) {
 	var _ /* yyval at bp+5224 */ TYYSTYPE
 	var _ /* yyvsa at bp+424 */ [200]TYYSTYPE
 	_, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _ = TclDatenerrs, yychar, yyerror_range, yyerrstatus, yylen, yyloc, yyls, yylsp, yyn, yynewbytes, yynewbytes1, yynewbytes2, yyptr, yyresult, yysize, yyss, yyss1, yyssp, yystacksize, yystate, yytoken, yyvs, yyvsp, v1, v10, v11, v12, v13, v15, v16, v17, v18, v19, v2, v3, v4, v5, v6, v7, v8, v9
-	*(*TYYSTYPE)(unsafe.Pointer(bp)) = TYYSTYPE{}
-	*(*TYYSTYPE1)(unsafe.Pointer(bp)) = _yyval_default
 	*(*TYYLTYPE)(unsafe.Pointer(bp + 8)) = _yyloc_default
 	/* Lookahead token as an internal (translated) token number.  */
 	yytoken = 0
@@ -130950,11 +130950,6 @@ yyreturn:
 	}
 	return yyresult
 }
-
-/* The semantic value of the lookahead symbol.  */
-/* Default value used for initialization, for pacifying older GCCs
-   or non-GCC compilers.  */
-var _yyval_default TYYSTYPE
 
 /* Location data for the lookahead symbol.  */
 var _yyloc_default = TYYLTYPE{
@@ -149568,7 +149563,6 @@ func x_Tcl_CreateThread(tls *libc.TLS, idPtr uintptr, proc uintptr, clientData T
 
 const m_ASYNC_CHECK_COUNT_MASK = 63
 const m_CONSTRUCTOR = 8
-const m_DBL_MANT_DIG = 53
 const m_DESTRUCTOR = 16
 const m_EDOM = 33
 const m_FILTER_HANDLING = 8192
@@ -149598,6 +149592,7 @@ const m_VAR_TRACED_ARRAY = 2048
 const m_VAR_TRACED_READ = 16
 const m_VAR_TRACED_UNSET = 64
 const m_VAR_TRACED_WRITE = 32
+const m___DBL_MANT_DIG__ = 53
 
 /*
  * Hack to determine whether we may expect IEEE floating point. The hack is
@@ -169016,7 +169011,7 @@ _21:
 	 * converted to double without loss of precision, then compare as
 	 * doubles.
 	 */
-	if libc.Bool(uint64(m_DBL_MANT_DIG) > libc.Uint64FromInt32(m___CHAR_BIT)*libc.Uint64FromInt64(8)) || l1 == int64(d1) || libc.Xmodf(tls, d2, bp+72) != float64(0) {
+	if libc.Bool(uint64(m___DBL_MANT_DIG__) > libc.Uint64FromInt32(m___CHAR_BIT)*libc.Uint64FromInt64(8)) || l1 == int64(d1) || libc.Xmodf(tls, d2, bp+72) != float64(0) {
 		goto doubleCompare
 	}
 	/*
@@ -169077,7 +169072,7 @@ doubleCompare:
 _27:
 	l2 = *(*int64)(unsafe.Pointer(*(*TClientData)(unsafe.Pointer(bp + 16))))
 	d2 = float64(l2)
-	if libc.Bool(uint64(m_DBL_MANT_DIG) > libc.Uint64FromInt32(m___CHAR_BIT)*libc.Uint64FromInt64(8)) || l2 == int64(d2) || libc.Xmodf(tls, d1, bp+72) != float64(0) {
+	if libc.Bool(uint64(m___DBL_MANT_DIG__) > libc.Uint64FromInt32(m___CHAR_BIT)*libc.Uint64FromInt64(8)) || l2 == int64(d2) || libc.Xmodf(tls, d1, bp+72) != float64(0) {
 		goto doubleCompare
 	}
 	if d1 < float64(-libc.Int64FromInt64(0x7fffffffffffffff)-libc.Int64FromInt32(1)) {
@@ -169089,7 +169084,7 @@ _27:
 	l1 = int64(d1)
 	goto longCompare
 _28:
-	if d1 > float64(1.7976931348623157e+308) || d1 < -libc.Float64FromFloat64(1.7976931348623157e+308) {
+	if d1 > libc.Float64FromFloat64(1.79769313486231570814527423731704357e+308) || d1 < -libc.Float64FromFloat64(1.79769313486231570814527423731704357e+308) {
 		if d1 > float64(0) {
 			v32 = int32(m_MP_GT)
 		} else {
@@ -169112,7 +169107,7 @@ _28:
 		x_TclBN_mp_clear(tls, bp+48)
 		return compare
 	}
-	if libc.Bool(uint64(m_DBL_MANT_DIG) > libc.Uint64FromInt32(m___CHAR_BIT)*libc.Uint64FromInt64(8)) && libc.Xmodf(tls, d1, bp+72) != float64(0) {
+	if libc.Bool(uint64(m___DBL_MANT_DIG__) > libc.Uint64FromInt32(m___CHAR_BIT)*libc.Uint64FromInt64(8)) && libc.Xmodf(tls, d1, bp+72) != float64(0) {
 		d2 = x_TclBignumToDouble(tls, bp+48)
 		x_TclBN_mp_clear(tls, bp+48)
 		goto doubleCompare
@@ -169138,7 +169133,7 @@ _34:
 	return compare
 _35:
 	d2 = *(*float64)(unsafe.Pointer(*(*TClientData)(unsafe.Pointer(bp + 16))))
-	if d2 > float64(1.7976931348623157e+308) || d2 < -libc.Float64FromFloat64(1.7976931348623157e+308) {
+	if d2 > libc.Float64FromFloat64(1.79769313486231570814527423731704357e+308) || d2 < -libc.Float64FromFloat64(1.79769313486231570814527423731704357e+308) {
 		if d2 > float64(0) {
 			v38 = -int32(1)
 		} else {
@@ -169153,7 +169148,7 @@ _35:
 		x_TclBN_mp_clear(tls, bp+24)
 		return compare
 	}
-	if libc.Bool(uint64(m_DBL_MANT_DIG) > libc.Uint64FromInt32(m___CHAR_BIT)*libc.Uint64FromInt64(8)) && libc.Xmodf(tls, d2, bp+72) != float64(0) {
+	if libc.Bool(uint64(m___DBL_MANT_DIG__) > libc.Uint64FromInt32(m___CHAR_BIT)*libc.Uint64FromInt64(8)) && libc.Xmodf(tls, d2, bp+72) != float64(0) {
 		d1 = x_TclBignumToDouble(tls, bp+24)
 		x_TclBN_mp_clear(tls, bp+24)
 		goto doubleCompare
@@ -169624,7 +169619,7 @@ func x_TclExprFloatError(tls *libc.TLS, interp uintptr, value float64) {
 		x_Tcl_SetObjResult(tls, interp, x_Tcl_NewStringObj(tls, s, -int32(1)))
 		x_Tcl_SetErrorCode(tls, interp, libc.VaList(bp+8, __ccgo_ts+18949, __ccgo_ts+18955, s, libc.UintptrFromInt32(0)))
 	} else {
-		if *(*int32)(unsafe.Pointer(libc.X__error(tls))) == int32(m_ERANGE) || (value > float64(1.7976931348623157e+308) || value < -libc.Float64FromFloat64(1.7976931348623157e+308)) {
+		if *(*int32)(unsafe.Pointer(libc.X__error(tls))) == int32(m_ERANGE) || (value > libc.Float64FromFloat64(1.79769313486231570814527423731704357e+308) || value < -libc.Float64FromFloat64(1.79769313486231570814527423731704357e+308)) {
 			if value == float64(0) {
 				s = __ccgo_ts + 39809
 				x_Tcl_SetObjResult(tls, interp, x_Tcl_NewStringObj(tls, s, -int32(1)))
@@ -192581,6 +192576,19 @@ func _FreeChannelInternalRep(tls *libc.TLS, objPtr uintptr) {
 	x_TclpFree(tls, resPtr)
 }
 
+type TCopyState1 = struct {
+	FreadPtr    uintptr
+	FwritePtr   uintptr
+	FreadFlags  int32
+	FwriteFlags int32
+	FtoRead     TTcl_WideInt
+	Ftotal      TTcl_WideInt
+	Finterp     uintptr
+	FcmdPtr     uintptr
+	FbufSize    int32
+	Fbuffer     [1]int8
+}
+
 type TChannelState1 = struct {
 	FchannelName         uintptr
 	Fflags               int32
@@ -192617,19 +192625,6 @@ type TChannelState1 = struct {
 	FchanMsg             uintptr
 	FunreportedMsg       uintptr
 	Fepoch               int32
-}
-
-type TCopyState1 = struct {
-	FreadPtr    uintptr
-	FwritePtr   uintptr
-	FreadFlags  int32
-	FwriteFlags int32
-	FtoRead     TTcl_WideInt
-	Ftotal      TTcl_WideInt
-	Finterp     uintptr
-	FcmdPtr     uintptr
-	FbufSize    int32
-	Fbuffer     [1]int8
 }
 
 type TChannel1 = struct {
@@ -205319,7 +205314,7 @@ func _LinkTraceProc(tls *libc.TLS, clientData TClientData, interp uintptr, name1
 		*(*TTcl_WideUInt)(unsafe.Pointer(linkPtr + 40)) = v10
 		*(*TTcl_WideUInt)(unsafe.Pointer((*TLink)(unsafe.Pointer(linkPtr)).Faddr)) = v10
 	case int32(m_TCL_LINK_FLOAT):
-		if x_Tcl_GetDoubleFromObj(tls, libc.UintptrFromInt32(0), valueObj, bp+16) != m_TCL_OK && _GetInvalidDoubleFromObj(tls, valueObj, bp+16) != m_TCL_OK || *(*float64)(unsafe.Pointer(bp + 16)) < float64(-libc.Float32FromFloat32(3.40282347e+38)) || *(*float64)(unsafe.Pointer(bp + 16)) > libc.Float64FromFloat32(3.40282347e+38) {
+		if x_Tcl_GetDoubleFromObj(tls, libc.UintptrFromInt32(0), valueObj, bp+16) != m_TCL_OK && _GetInvalidDoubleFromObj(tls, valueObj, bp+16) != m_TCL_OK || *(*float64)(unsafe.Pointer(bp + 16)) < float64(-libc.Float32FromFloat32(3.4028234663852886e+38)) || *(*float64)(unsafe.Pointer(bp + 16)) > libc.Float64FromFloat32(3.4028234663852886e+38) {
 			x_Tcl_ObjSetVar2(tls, interp, (*TLink)(unsafe.Pointer(linkPtr)).FvarName, libc.UintptrFromInt32(0), _ObjValue(tls, linkPtr), int32(m_TCL_GLOBAL_ONLY))
 			return __ccgo_ts + 54259
 		}
@@ -216019,14 +216014,6 @@ func x_Tcl_LogCommandInfo(tls *libc.TLS, interp uintptr, script uintptr, command
 	x_TclLogCommandInfo(tls, interp, script, command, length, libc.UintptrFromInt32(0), libc.UintptrFromInt32(0))
 }
 
-type TTcl_Namespace1 = struct {
-	Fname       uintptr
-	FfullName   uintptr
-	FclientData TClientData
-	FdeleteProc uintptr
-	FparentPtr  uintptr
-}
-
 type TNamespace1 = struct {
 	Fname                  uintptr
 	FfullName              uintptr
@@ -216056,6 +216043,14 @@ type TNamespace1 = struct {
 	FcommandPathArray      uintptr
 	FcommandPathSourceList uintptr
 	FearlyDeleteProc       uintptr
+}
+
+type TTcl_Namespace1 = struct {
+	Fname       uintptr
+	FfullName   uintptr
+	FclientData TClientData
+	FdeleteProc uintptr
+	FparentPtr  uintptr
 }
 
 /*
@@ -243724,12 +243719,10 @@ func _FreeStringInternalRep(tls *libc.TLS, objPtr uintptr) {
 }
 
 const m_BLETCH = 16
-const m_DBL_MAX_EXP = 1024
 const m_DIGIT_GROUP = 8
 const m_EXPONENT_BIAS = 1023
 const m_EXP_MASK = 2146435072
 const m_EXP_SHIFT = 20
-const m_FLT_RADIX = 2
 const m_FP_PRECISION = 53
 const m_HI_ORDER_SIG_MASK = 1048575
 const m_LOG10_2 = 0.3010299956639812
@@ -243746,6 +243739,8 @@ const m_TCL_DD_SHORTEST0 = 0
 const m_TCL_DD_STEELE0 = 1
 const m_TEN_PMAX = 22
 const m_TWO_OVER_3LOG10 = 0.28952965460216784
+const m___DBL_MAX_EXP__ = 1024
+const m___FLT_RADIX__ = 2
 
 /*
  * Define KILL_OCTAL to suppress interpretation of numbers with leading zero
@@ -245526,7 +245521,7 @@ func _MakeHighPrecisionDouble(tls *libc.TLS, signum int32, significand uintptr, 
 	 */
 	retval = _BignumToBiasedFrExp(tls, significand, bp)
 	retval = _Pow10TimesFrExp(tls, int32(exponent), retval, bp)
-	if *(*int32)(unsafe.Pointer(bp)) > int32(m_DBL_MAX_EXP)*_log2FLT_RADIX {
+	if *(*int32)(unsafe.Pointer(bp)) > int32(m___DBL_MAX_EXP__)*_log2FLT_RADIX {
 		retval = libc.X__builtin_huge_val(tls)
 		goto returnValue
 	}
@@ -248059,17 +248054,17 @@ func x_TclInitDoubleConversion(tls *libc.TLS) {
 	 * Determine how many bits of precision a double has, and how many decimal
 	 * digits that represents.
 	 */
-	if libc.Xfrexp(tls, libc.Float64FromInt32(m_FLT_RADIX), uintptr(unsafe.Pointer(&_log2FLT_RADIX))) != float64(0.5) {
+	if libc.Xfrexp(tls, libc.Float64FromInt32(m___FLT_RADIX__), uintptr(unsafe.Pointer(&_log2FLT_RADIX))) != float64(0.5) {
 		x_Tcl_Panic(tls, __ccgo_ts+67424, 0)
 	}
 	_log2FLT_RADIX--
-	_mantBits = int32(m_DBL_MANT_DIG) * _log2FLT_RADIX
+	_mantBits = int32(m___DBL_MANT_DIG__) * _log2FLT_RADIX
 	d = float64(1)
 	/*
 	 * Initialize a table of powers of ten that can be exactly represented in
 	 * a double.
 	 */
-	x = int32(libc.Float64FromInt32(m_DBL_MANT_DIG) * libc.Xlog(tls, libc.Float64FromInt32(m_FLT_RADIX)) / libc.Xlog(tls, float64(5)))
+	x = int32(libc.Float64FromInt32(m___DBL_MANT_DIG__) * libc.Xlog(tls, libc.Float64FromInt32(m___FLT_RADIX__)) / libc.Xlog(tls, float64(5)))
 	if x < int32(m_MAXPOW) {
 		_mmaxpow = x
 	} else {
@@ -248128,8 +248123,8 @@ func x_TclInitDoubleConversion(tls *libc.TLS) {
 	 * that differs from zero, and the number of mp_digits needed to represent
 	 * the significand of a double.
 	 */
-	_maxDigits = int32((libc.Float64FromInt32(m_DBL_MAX_EXP)*libc.Xlog(tls, libc.Float64FromInt32(m_FLT_RADIX)) + libc.Float64FromFloat64(0.5)*libc.Xlog(tls, float64(10))) / libc.Xlog(tls, float64(10)))
-	_minDigits = int32(libc.Xfloor(tls, float64(-libc.Int32FromInt32(1021)-libc.Int32FromInt32(m_DBL_MANT_DIG))*libc.Xlog(tls, libc.Float64FromInt32(m_FLT_RADIX))/libc.Xlog(tls, float64(10))))
+	_maxDigits = int32((libc.Float64FromInt32(m___DBL_MAX_EXP__)*libc.Xlog(tls, libc.Float64FromInt32(m___FLT_RADIX__)) + libc.Float64FromFloat64(0.5)*libc.Xlog(tls, float64(10))) / libc.Xlog(tls, float64(10)))
+	_minDigits = int32(libc.Xfloor(tls, float64(-libc.Int32FromInt32(1021)-libc.Int32FromInt32(m___DBL_MANT_DIG__))*libc.Xlog(tls, libc.Float64FromInt32(m___FLT_RADIX__))/libc.Xlog(tls, float64(10))))
 	_log10_DIGIT_MAX = int32(libc.Xfloor(tls, libc.Float64FromInt32(m_MP_DIGIT_BIT)*libc.Xlog(tls, float64(2))/libc.Xlog(tls, float64(10))))
 	/*
 	 * Nokia 770's software-emulated floating point is "middle endian": the
@@ -248222,7 +248217,7 @@ func x_Tcl_InitBignumFromDouble(tls *libc.TLS, interp uintptr, d float64, b uint
 	/*
 	 * Infinite values can't convert to bignum.
 	 */
-	if d > float64(1.7976931348623157e+308) || d < -libc.Float64FromFloat64(1.7976931348623157e+308) {
+	if d > libc.Float64FromFloat64(1.79769313486231570814527423731704357e+308) || d < -libc.Float64FromFloat64(1.79769313486231570814527423731704357e+308) {
 		if interp != libc.UintptrFromInt32(0) {
 			s = __ccgo_ts + 21213
 			x_Tcl_SetObjResult(tls, interp, x_Tcl_NewStringObj(tls, s, -int32(1)))
@@ -248276,7 +248271,7 @@ func x_TclBignumToDouble(tls *libc.TLS, a uintptr) (r1 float64) {
 	 * give us that.
 	 */
 	bits = x_TclBN_mp_count_bits(tls, a)
-	if bits > int32(m_DBL_MAX_EXP)*_log2FLT_RADIX {
+	if bits > int32(m___DBL_MAX_EXP__)*_log2FLT_RADIX {
 		*(*int32)(unsafe.Pointer(libc.X__error(tls))) = int32(m_ERANGE)
 		if (*Tmp_int)(unsafe.Pointer(a)).Fsign != m_MP_ZPOS {
 			v1 = int32(m_MP_YES)
@@ -248414,7 +248409,7 @@ func x_TclCeil(tls *libc.TLS, a uintptr) (r1 float64) {
 		r = -x_TclFloor(tls, bp)
 	} else {
 		bits = x_TclBN_mp_count_bits(tls, a)
-		if bits > int32(m_DBL_MAX_EXP)*_log2FLT_RADIX {
+		if bits > int32(m___DBL_MAX_EXP__)*_log2FLT_RADIX {
 			r = libc.X__builtin_huge_val(tls)
 		} else {
 			exact = int32(1)
@@ -248484,8 +248479,8 @@ func x_TclFloor(tls *libc.TLS, a uintptr) (r1 float64) {
 		r = -x_TclCeil(tls, bp)
 	} else {
 		bits = x_TclBN_mp_count_bits(tls, a)
-		if bits > int32(m_DBL_MAX_EXP)*_log2FLT_RADIX {
-			r = float64(1.7976931348623157e+308)
+		if bits > int32(m___DBL_MAX_EXP__)*_log2FLT_RADIX {
+			r = libc.Float64FromFloat64(1.79769313486231570814527423731704357e+308)
 		} else {
 			shift = _mantBits - bits
 			if shift > 0 {
@@ -272597,7 +272592,7 @@ _3:
 	/*
 	 * Handle infinities.
 	 */
-	if value > float64(1.7976931348623157e+308) || value < -libc.Float64FromFloat64(1.7976931348623157e+308) {
+	if value > libc.Float64FromFloat64(1.79769313486231570814527423731704357e+308) || value < -libc.Float64FromFloat64(1.79769313486231570814527423731704357e+308) {
 		/*
 		 * Remember to copy the terminating NUL too.
 		 */
@@ -308794,35 +308789,31 @@ func x_TclBN_mp_clear(tls *libc.TLS, a uintptr) {
 /* LibTomMath, multiple-precision integer library -- Tom St Denis */
 /* SPDX-License-Identifier: Unlicense */
 
-/*-
- * This file is in the public domain.
- */
+/* Copyright (C) 1989-2022 Free Software Foundation, Inc.
 
-/*-
- * SPDX-License-Identifier: BSD-2-Clause
- *
- * Copyright (c) 2017 Poul-Henning Kamp.  All rights reserved.
- *
- * Redistribution and use in source and binary forms, with or without
- * modification, are permitted provided that the following conditions
- * are met:
- * 1. Redistributions of source code must retain the above copyright
- *    notice, this list of conditions and the following disclaimer.
- * 2. Redistributions in binary form must reproduce the above copyright
- *    notice, this list of conditions and the following disclaimer in the
- *    documentation and/or other materials provided with the distribution.
- *
- * THIS SOFTWARE IS PROVIDED BY THE AUTHOR AND CONTRIBUTORS ``AS IS'' AND
- * ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE
- * IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE
- * ARE DISCLAIMED.  IN NO EVENT SHALL THE AUTHOR OR CONTRIBUTORS BE LIABLE
- * FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL
- * DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS
- * OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION)
- * HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT
- * LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY
- * OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF
- * SUCH DAMAGE.
+This file is part of GCC.
+
+GCC is free software; you can redistribute it and/or modify
+it under the terms of the GNU General Public License as published by
+the Free Software Foundation; either version 3, or (at your option)
+any later version.
+
+GCC is distributed in the hope that it will be useful,
+but WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+GNU General Public License for more details.
+
+Under Section 7 of GPL version 3, you are granted additional
+permissions described in the GCC Runtime Library Exception, version
+3.1, as published by the Free Software Foundation.
+
+You should have received a copy of the GNU General Public License and
+a copy of the GCC Runtime Library Exception along with this program;
+see the files COPYING3 and COPYING.RUNTIME respectively.  If not, see
+<http://www.gnu.org/licenses/>.  */
+
+/*
+ * ISO C Standard:  7.15  Variable arguments  <stdarg.h>
  */
 
 func x_TclBN_mp_clear_multi(tls *libc.TLS, mp uintptr, va uintptr) {
@@ -309823,35 +309814,31 @@ func x_TclBN_mp_init_copy(tls *libc.TLS, a uintptr, b uintptr) (r Tmp_err) {
 /* LibTomMath, multiple-precision integer library -- Tom St Denis */
 /* SPDX-License-Identifier: Unlicense */
 
-/*-
- * This file is in the public domain.
- */
+/* Copyright (C) 1989-2022 Free Software Foundation, Inc.
 
-/*-
- * SPDX-License-Identifier: BSD-2-Clause
- *
- * Copyright (c) 2017 Poul-Henning Kamp.  All rights reserved.
- *
- * Redistribution and use in source and binary forms, with or without
- * modification, are permitted provided that the following conditions
- * are met:
- * 1. Redistributions of source code must retain the above copyright
- *    notice, this list of conditions and the following disclaimer.
- * 2. Redistributions in binary form must reproduce the above copyright
- *    notice, this list of conditions and the following disclaimer in the
- *    documentation and/or other materials provided with the distribution.
- *
- * THIS SOFTWARE IS PROVIDED BY THE AUTHOR AND CONTRIBUTORS ``AS IS'' AND
- * ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE
- * IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE
- * ARE DISCLAIMED.  IN NO EVENT SHALL THE AUTHOR OR CONTRIBUTORS BE LIABLE
- * FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL
- * DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS
- * OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION)
- * HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT
- * LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY
- * OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF
- * SUCH DAMAGE.
+This file is part of GCC.
+
+GCC is free software; you can redistribute it and/or modify
+it under the terms of the GNU General Public License as published by
+the Free Software Foundation; either version 3, or (at your option)
+any later version.
+
+GCC is distributed in the hope that it will be useful,
+but WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+GNU General Public License for more details.
+
+Under Section 7 of GPL version 3, you are granted additional
+permissions described in the GCC Runtime Library Exception, version
+3.1, as published by the Free Software Foundation.
+
+You should have received a copy of the GNU General Public License and
+a copy of the GCC Runtime Library Exception along with this program;
+see the files COPYING3 and COPYING.RUNTIME respectively.  If not, see
+<http://www.gnu.org/licenses/>.  */
+
+/*
+ * ISO C Standard:  7.15  Variable arguments  <stdarg.h>
  */
 
 func x_TclBN_mp_init_multi(tls *libc.TLS, mp uintptr, va uintptr) (r Tmp_err) {
