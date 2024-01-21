@@ -378,6 +378,7 @@ func main() {
 		mustCopyFile(filepath.Join("internal", "testfixture", fn), filepath.Join(makeRoot, "testfixture.go"), nil)
 	}
 	mustCopyDir(filepath.Join("internal", "test"), filepath.Join(makeRoot, "test"), nil, false)
+	mustCopyDir("internal/test", "internal/overlay/test", nil, false)
 	util.Shell("sh", "-c", "./unconvert.sh")
 	util.MustShell(true, "go", "test", "-run", "@")
 	util.Shell("git", "status")
