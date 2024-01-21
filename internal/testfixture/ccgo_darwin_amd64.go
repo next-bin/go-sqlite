@@ -1,4 +1,4 @@
-// Code generated for darwin/amd64 by 'gcc -DLONGDOUBLE_TYPE=double -DSQLITE_WITHOUT_ZONEMALLOC -DSQLITE_THREADSAFE=0 -Dpread64=pread -Dpwrite64=pwrite -DNDEBUG -DSQLITE_OS_UNIX=1 -absolute-paths -keep-object-files -positions --libc modernc.org/libc --prefix-enumerator=_ --prefix-external=x_ --prefix-field=F --prefix-macro=m_ --prefix-static-internal=_ --prefix-static-none=_ --prefix-tagged-enum=_ --prefix-tagged-struct=T --prefix-tagged-union=T --prefix-typename=T --prefix-undefined=_ -extended-errors -ignore-unsupported-alignment -I/tmp/libsqlite3/sqlite-amalgamation-3370200/ccgo -mlong-double-64 -DLONGDOUBLE_TYPE=double -DSQLITE_WITHOUT_ZONEMALLOC -DSQLITE_THREADSAFE=0 -Dpread64=pread -Dpwrite64=pwrite -DNDEBUG -DSQLITE_OS_UNIX=1 -DSQLITE_OS_UNIX=1 -I. -I/private/tmp/libsqlite3/sqlite-src-3370200/src -I/private/tmp/libsqlite3/sqlite-src-3370200/ext/rtree -I/private/tmp/libsqlite3/sqlite-src-3370200/ext/icu -I/private/tmp/libsqlite3/sqlite-src-3370200/ext/fts3 -I/private/tmp/libsqlite3/sqlite-src-3370200/ext/async -I/private/tmp/libsqlite3/sqlite-src-3370200/ext/session -I/private/tmp/libsqlite3/sqlite-src-3370200/ext/userauth -D_HAVE_SQLITE_CONFIG_H -DBUILD_sqlite -DNDEBUG -I/opt/homebrew/Cellar/tcl-tk/8.6.13_5/include/tcl-tk -DSQLITE_THREADSAFE=0 -DSQLITE_OMIT_LOAD_EXTENSION=1 -DSQLITE_ENABLE_MATH_FUNCTIONS -DSQLITE_HAVE_ZLIB=1 -DSQLITE_NO_SYNC=1 -DSQLITE_TEMP_STORE=1 -DSQLITE_TEST=1 -DSQLITE_CRASH_TEST=1 -DTCLSH_INIT_PROC=sqlite3TestInit -DSQLITE_SERVER=1 -DSQLITE_PRIVATE= -DSQLITE_CORE -DBUILD_sqlite -DSQLITE_SERIES_CONSTRAINT_VERIFY=1 -DSQLITE_DEFAULT_PAGE_SIZE=1024 -DSQLITE_ENABLE_STMTVTAB -DSQLITE_ENABLE_DBPAGE_VTAB -DSQLITE_ENABLE_BYTECODE_VTAB -DSQLITE_CKSUMVFS_STATIC -o testfixture.go /private/tmp/libsqlite3/sqlite-src-3370200/src/test1.c /private/tmp/libsqlite3/sqlite-src-3370200/src/test2.c /private/tmp/libsqlite3/sqlite-src-3370200/src/test3.c /private/tmp/libsqlite3/sqlite-src-3370200/src/test4.c /private/tmp/libsqlite3/sqlite-src-3370200/src/test5.c /private/tmp/libsqlite3/sqlite-src-3370200/src/test6.c /private/tmp/libsqlite3/sqlite-src-3370200/src/test7.c /private/tmp/libsqlite3/sqlite-src-3370200/src/test8.c /private/tmp/libsqlite3/sqlite-src-3370200/src/test9.c /private/tmp/libsqlite3/sqlite-src-3370200/src/test_autoext.c /private/tmp/libsqlite3/sqlite-src-3370200/src/test_async.c /private/tmp/libsqlite3/sqlite-src-3370200/src/test_backup.c /private/tmp/libsqlite3/sqlite-src-3370200/src/test_bestindex.c /private/tmp/libsqlite3/sqlite-src-3370200/src/test_blob.c /private/tmp/libsqlite3/sqlite-src-3370200/src/test_btree.c /private/tmp/libsqlite3/sqlite-src-3370200/src/test_config.c /private/tmp/libsqlite3/sqlite-src-3370200/src/test_delete.c /private/tmp/libsqlite3/sqlite-src-3370200/src/test_demovfs.c /private/tmp/libsqlite3/sqlite-src-3370200/src/test_devsym.c /private/tmp/libsqlite3/sqlite-src-3370200/src/test_fs.c /private/tmp/libsqlite3/sqlite-src-3370200/src/test_func.c /private/tmp/libsqlite3/sqlite-src-3370200/src/test_hexio.c /private/tmp/libsqlite3/sqlite-src-3370200/src/test_init.c /private/tmp/libsqlite3/sqlite-src-3370200/src/test_intarray.c /private/tmp/libsqlite3/sqlite-src-3370200/src/test_journal.c /private/tmp/libsqlite3/sqlite-src-3370200/src/test_malloc.c /private/tmp/libsqlite3/sqlite-src-3370200/src/test_md5.c /private/tmp/libsqlite3/sqlite-src-3370200/src/test_multiplex.c /private/tmp/libsqlite3/sqlite-src-3370200/src/test_mutex.c /private/tmp/libsqlite3/sqlite-src-3370200/src/test_onefile.c /private/tmp/libsqlite3/sqlite-src-3370200/src/test_osinst.c /private/tmp/libsqlite3/sqlite-src-3370200/src/test_pcache.c /private/tmp/libsqlite3/sqlite-src-3370200/src/test_quota.c /private/tmp/libsqlite3/sqlite-src-3370200/src/test_rtree.c /private/tmp/libsqlite3/sqlite-src-3370200/src/test_schema.c /private/tmp/libsqlite3/sqlite-src-3370200/src/test_server.c /private/tmp/libsqlite3/sqlite-src-3370200/src/test_superlock.c /private/tmp/libsqlite3/sqlite-src-3370200/src/test_syscall.c /private/tmp/libsqlite3/sqlite-src-3370200/src/test_tclsh.c /private/tmp/libsqlite3/sqlite-src-3370200/src/test_tclvar.c /private/tmp/libsqlite3/sqlite-src-3370200/src/test_thread.c /private/tmp/libsqlite3/sqlite-src-3370200/src/test_vdbecov.c /private/tmp/libsqlite3/sqlite-src-3370200/src/test_vfs.c /private/tmp/libsqlite3/sqlite-src-3370200/src/test_windirent.c /private/tmp/libsqlite3/sqlite-src-3370200/src/test_window.c /private/tmp/libsqlite3/sqlite-src-3370200/src/test_wsd.c /private/tmp/libsqlite3/sqlite-src-3370200/ext/fts3/fts3_term.c /private/tmp/libsqlite3/sqlite-src-3370200/ext/fts3/fts3_test.c /private/tmp/libsqlite3/sqlite-src-3370200/ext/session/test_session.c /private/tmp/libsqlite3/sqlite-src-3370200/ext/rbu/test_rbu.c /private/tmp/libsqlite3/sqlite-src-3370200/ext/expert/sqlite3expert.c /private/tmp/libsqlite3/sqlite-src-3370200/ext/expert/test_expert.c /private/tmp/libsqlite3/sqlite-src-3370200/ext/misc/amatch.c /private/tmp/libsqlite3/sqlite-src-3370200/ext/misc/appendvfs.c /private/tmp/libsqlite3/sqlite-src-3370200/ext/misc/carray.c /private/tmp/libsqlite3/sqlite-src-3370200/ext/misc/cksumvfs.c /private/tmp/libsqlite3/sqlite-src-3370200/ext/misc/closure.c /private/tmp/libsqlite3/sqlite-src-3370200/ext/misc/csv.c /private/tmp/libsqlite3/sqlite-src-3370200/ext/misc/decimal.c /private/tmp/libsqlite3/sqlite-src-3370200/ext/misc/eval.c /private/tmp/libsqlite3/sqlite-src-3370200/ext/misc/explain.c /private/tmp/libsqlite3/sqlite-src-3370200/ext/misc/fileio.c /private/tmp/libsqlite3/sqlite-src-3370200/ext/misc/fuzzer.c /private/tmp/libsqlite3/sqlite-src-3370200/ext/fts5/fts5_tcl.c /private/tmp/libsqlite3/sqlite-src-3370200/ext/fts5/fts5_test_mi.c /private/tmp/libsqlite3/sqlite-src-3370200/ext/fts5/fts5_test_tok.c /private/tmp/libsqlite3/sqlite-src-3370200/ext/misc/ieee754.c /private/tmp/libsqlite3/sqlite-src-3370200/ext/misc/mmapwarm.c /private/tmp/libsqlite3/sqlite-src-3370200/ext/misc/nextchar.c /private/tmp/libsqlite3/sqlite-src-3370200/ext/misc/normalize.c /private/tmp/libsqlite3/sqlite-src-3370200/ext/misc/percentile.c /private/tmp/libsqlite3/sqlite-src-3370200/ext/misc/prefixes.c /private/tmp/libsqlite3/sqlite-src-3370200/ext/misc/regexp.c /private/tmp/libsqlite3/sqlite-src-3370200/ext/misc/remember.c /private/tmp/libsqlite3/sqlite-src-3370200/ext/misc/series.c /private/tmp/libsqlite3/sqlite-src-3370200/ext/misc/spellfix.c /private/tmp/libsqlite3/sqlite-src-3370200/ext/misc/totype.c /private/tmp/libsqlite3/sqlite-src-3370200/ext/misc/unionvtab.c /private/tmp/libsqlite3/sqlite-src-3370200/ext/misc/wholenumber.c /private/tmp/libsqlite3/sqlite-src-3370200/ext/misc/zipfile.c /private/tmp/libsqlite3/sqlite-src-3370200/ext/userauth/userauth.c /private/tmp/libsqlite3/sqlite-src-3370200/ext/rtree/test_rtreedoc.c /private/tmp/libsqlite3/sqlite-src-3370200/src/tclsqlite.c sqlite3.c -L/opt/homebrew/Cellar/tcl-tk/8.6.13_5/lib -ltcl8.6 -lz', DO NOT EDIT.
+// Code generated for darwin/amd64 by 'gcc -DLONGDOUBLE_TYPE=double -DSQLITE_WITHOUT_ZONEMALLOC -DSQLITE_THREADSAFE=0 -Dpread64=pread -Dpwrite64=pwrite -DNDEBUG -DSQLITE_ENABLE_MATH_FUNCTIONS -DSQLITE_OS_UNIX=1 -absolute-paths -keep-object-files -positions --libc modernc.org/libc --prefix-enumerator=_ --prefix-external=x_ --prefix-field=F --prefix-macro=m_ --prefix-static-internal=_ --prefix-static-none=_ --prefix-tagged-enum=_ --prefix-tagged-struct=T --prefix-tagged-union=T --prefix-typename=T --prefix-undefined=_ -extended-errors -ignore-unsupported-alignment -I/tmp/libsqlite3/sqlite-amalgamation-3370200/ccgo -mlong-double-64 -DLONGDOUBLE_TYPE=double -DSQLITE_WITHOUT_ZONEMALLOC -DSQLITE_THREADSAFE=0 -Dpread64=pread -Dpwrite64=pwrite -DNDEBUG -DSQLITE_OS_UNIX=1 -DSQLITE_OS_UNIX=1 -I. -I/private/tmp/libsqlite3/sqlite-src-3370200/src -I/private/tmp/libsqlite3/sqlite-src-3370200/ext/rtree -I/private/tmp/libsqlite3/sqlite-src-3370200/ext/icu -I/private/tmp/libsqlite3/sqlite-src-3370200/ext/fts3 -I/private/tmp/libsqlite3/sqlite-src-3370200/ext/async -I/private/tmp/libsqlite3/sqlite-src-3370200/ext/session -I/private/tmp/libsqlite3/sqlite-src-3370200/ext/userauth -D_HAVE_SQLITE_CONFIG_H -DBUILD_sqlite -DNDEBUG -I/opt/homebrew/Cellar/tcl-tk/8.6.13_5/include/tcl-tk -DSQLITE_THREADSAFE=0 -DSQLITE_OMIT_LOAD_EXTENSION=1 -DSQLITE_ENABLE_MATH_FUNCTIONS -DSQLITE_ENABLE_MATH_FUNCTIONS -DSQLITE_HAVE_ZLIB=1 -DSQLITE_NO_SYNC=1 -DSQLITE_TEMP_STORE=1 -DSQLITE_TEST=1 -DSQLITE_CRASH_TEST=1 -DTCLSH_INIT_PROC=sqlite3TestInit -DSQLITE_SERVER=1 -DSQLITE_PRIVATE= -DSQLITE_CORE -DBUILD_sqlite -DSQLITE_SERIES_CONSTRAINT_VERIFY=1 -DSQLITE_DEFAULT_PAGE_SIZE=1024 -DSQLITE_ENABLE_STMTVTAB -DSQLITE_ENABLE_DBPAGE_VTAB -DSQLITE_ENABLE_BYTECODE_VTAB -DSQLITE_CKSUMVFS_STATIC -o testfixture.go /private/tmp/libsqlite3/sqlite-src-3370200/src/test1.c /private/tmp/libsqlite3/sqlite-src-3370200/src/test2.c /private/tmp/libsqlite3/sqlite-src-3370200/src/test3.c /private/tmp/libsqlite3/sqlite-src-3370200/src/test4.c /private/tmp/libsqlite3/sqlite-src-3370200/src/test5.c /private/tmp/libsqlite3/sqlite-src-3370200/src/test6.c /private/tmp/libsqlite3/sqlite-src-3370200/src/test7.c /private/tmp/libsqlite3/sqlite-src-3370200/src/test8.c /private/tmp/libsqlite3/sqlite-src-3370200/src/test9.c /private/tmp/libsqlite3/sqlite-src-3370200/src/test_autoext.c /private/tmp/libsqlite3/sqlite-src-3370200/src/test_async.c /private/tmp/libsqlite3/sqlite-src-3370200/src/test_backup.c /private/tmp/libsqlite3/sqlite-src-3370200/src/test_bestindex.c /private/tmp/libsqlite3/sqlite-src-3370200/src/test_blob.c /private/tmp/libsqlite3/sqlite-src-3370200/src/test_btree.c /private/tmp/libsqlite3/sqlite-src-3370200/src/test_config.c /private/tmp/libsqlite3/sqlite-src-3370200/src/test_delete.c /private/tmp/libsqlite3/sqlite-src-3370200/src/test_demovfs.c /private/tmp/libsqlite3/sqlite-src-3370200/src/test_devsym.c /private/tmp/libsqlite3/sqlite-src-3370200/src/test_fs.c /private/tmp/libsqlite3/sqlite-src-3370200/src/test_func.c /private/tmp/libsqlite3/sqlite-src-3370200/src/test_hexio.c /private/tmp/libsqlite3/sqlite-src-3370200/src/test_init.c /private/tmp/libsqlite3/sqlite-src-3370200/src/test_intarray.c /private/tmp/libsqlite3/sqlite-src-3370200/src/test_journal.c /private/tmp/libsqlite3/sqlite-src-3370200/src/test_malloc.c /private/tmp/libsqlite3/sqlite-src-3370200/src/test_md5.c /private/tmp/libsqlite3/sqlite-src-3370200/src/test_multiplex.c /private/tmp/libsqlite3/sqlite-src-3370200/src/test_mutex.c /private/tmp/libsqlite3/sqlite-src-3370200/src/test_onefile.c /private/tmp/libsqlite3/sqlite-src-3370200/src/test_osinst.c /private/tmp/libsqlite3/sqlite-src-3370200/src/test_pcache.c /private/tmp/libsqlite3/sqlite-src-3370200/src/test_quota.c /private/tmp/libsqlite3/sqlite-src-3370200/src/test_rtree.c /private/tmp/libsqlite3/sqlite-src-3370200/src/test_schema.c /private/tmp/libsqlite3/sqlite-src-3370200/src/test_server.c /private/tmp/libsqlite3/sqlite-src-3370200/src/test_superlock.c /private/tmp/libsqlite3/sqlite-src-3370200/src/test_syscall.c /private/tmp/libsqlite3/sqlite-src-3370200/src/test_tclsh.c /private/tmp/libsqlite3/sqlite-src-3370200/src/test_tclvar.c /private/tmp/libsqlite3/sqlite-src-3370200/src/test_thread.c /private/tmp/libsqlite3/sqlite-src-3370200/src/test_vdbecov.c /private/tmp/libsqlite3/sqlite-src-3370200/src/test_vfs.c /private/tmp/libsqlite3/sqlite-src-3370200/src/test_windirent.c /private/tmp/libsqlite3/sqlite-src-3370200/src/test_window.c /private/tmp/libsqlite3/sqlite-src-3370200/src/test_wsd.c /private/tmp/libsqlite3/sqlite-src-3370200/ext/fts3/fts3_term.c /private/tmp/libsqlite3/sqlite-src-3370200/ext/fts3/fts3_test.c /private/tmp/libsqlite3/sqlite-src-3370200/ext/session/test_session.c /private/tmp/libsqlite3/sqlite-src-3370200/ext/rbu/test_rbu.c /private/tmp/libsqlite3/sqlite-src-3370200/ext/expert/sqlite3expert.c /private/tmp/libsqlite3/sqlite-src-3370200/ext/expert/test_expert.c /private/tmp/libsqlite3/sqlite-src-3370200/ext/misc/amatch.c /private/tmp/libsqlite3/sqlite-src-3370200/ext/misc/appendvfs.c /private/tmp/libsqlite3/sqlite-src-3370200/ext/misc/carray.c /private/tmp/libsqlite3/sqlite-src-3370200/ext/misc/cksumvfs.c /private/tmp/libsqlite3/sqlite-src-3370200/ext/misc/closure.c /private/tmp/libsqlite3/sqlite-src-3370200/ext/misc/csv.c /private/tmp/libsqlite3/sqlite-src-3370200/ext/misc/decimal.c /private/tmp/libsqlite3/sqlite-src-3370200/ext/misc/eval.c /private/tmp/libsqlite3/sqlite-src-3370200/ext/misc/explain.c /private/tmp/libsqlite3/sqlite-src-3370200/ext/misc/fileio.c /private/tmp/libsqlite3/sqlite-src-3370200/ext/misc/fuzzer.c /private/tmp/libsqlite3/sqlite-src-3370200/ext/fts5/fts5_tcl.c /private/tmp/libsqlite3/sqlite-src-3370200/ext/fts5/fts5_test_mi.c /private/tmp/libsqlite3/sqlite-src-3370200/ext/fts5/fts5_test_tok.c /private/tmp/libsqlite3/sqlite-src-3370200/ext/misc/ieee754.c /private/tmp/libsqlite3/sqlite-src-3370200/ext/misc/mmapwarm.c /private/tmp/libsqlite3/sqlite-src-3370200/ext/misc/nextchar.c /private/tmp/libsqlite3/sqlite-src-3370200/ext/misc/normalize.c /private/tmp/libsqlite3/sqlite-src-3370200/ext/misc/percentile.c /private/tmp/libsqlite3/sqlite-src-3370200/ext/misc/prefixes.c /private/tmp/libsqlite3/sqlite-src-3370200/ext/misc/regexp.c /private/tmp/libsqlite3/sqlite-src-3370200/ext/misc/remember.c /private/tmp/libsqlite3/sqlite-src-3370200/ext/misc/series.c /private/tmp/libsqlite3/sqlite-src-3370200/ext/misc/spellfix.c /private/tmp/libsqlite3/sqlite-src-3370200/ext/misc/totype.c /private/tmp/libsqlite3/sqlite-src-3370200/ext/misc/unionvtab.c /private/tmp/libsqlite3/sqlite-src-3370200/ext/misc/wholenumber.c /private/tmp/libsqlite3/sqlite-src-3370200/ext/misc/zipfile.c /private/tmp/libsqlite3/sqlite-src-3370200/ext/userauth/userauth.c /private/tmp/libsqlite3/sqlite-src-3370200/ext/rtree/test_rtreedoc.c /private/tmp/libsqlite3/sqlite-src-3370200/src/tclsqlite.c sqlite3.c -L/opt/homebrew/Cellar/tcl-tk/8.6.13_5/lib -ltcl8.6 -lz', DO NOT EDIT.
 
 //go:build darwin && amd64
 // +build darwin,amd64
@@ -19979,12 +19979,6 @@ type TExprList_item = struct {
 }
 
 // -:
-type TsColMap = struct {
-	FiFrom int32
-	FzCol  uintptr
-}
-
-// -:
 type Tsqlite3InitInfo = struct {
 	FnewTnum       TPgno
 	FiDb           Tu8
@@ -19992,6 +19986,12 @@ type Tsqlite3InitInfo = struct {
 	F__ccgo_align3 [2]byte
 	F__ccgo8       uint8
 	FazInit        uintptr
+}
+
+// -:
+type TsColMap = struct {
+	FiFrom int32
+	FzCol  uintptr
 }
 
 // -:
@@ -27380,15 +27380,15 @@ type Tsqlite3_index_constraint = struct {
 }
 
 // -:
-type Tsqlite3_index_orderby = struct {
-	FiColumn int32
-	Fdesc    uint8
-}
-
-// -:
 type Tsqlite3_index_constraint_usage = struct {
 	FargvIndex int32
 	Fomit      uint8
+}
+
+// -:
+type Tsqlite3_index_orderby = struct {
+	FiColumn int32
+	Fdesc    uint8
 }
 
 /*
@@ -30144,7 +30144,7 @@ const m_SQLITE_DEFAULT_AUTOVACUUM = "0"
 // /private/tmp/libsqlite3/sqlite-src-3370200/src/sqliteInt.h:653:10:
 const m_SQLITE_DEFAULT_FILE_FORMAT = 4
 
-// /private/tmp/libsqlite3/sqlite-src-3370200/<command-line>:33:9:
+// /private/tmp/libsqlite3/sqlite-src-3370200/<command-line>:35:9:
 const m_SQLITE_DEFAULT_PAGE_SIZE = 1024
 
 // /private/tmp/libsqlite3/sqlite-src-3370200/src/sqliteInt.h:1284:10:
@@ -30195,10 +30195,10 @@ const m_SQLITE_MAX_VDBE_OP = 250000000
 // /private/tmp/libsqlite3/sqlite-src-3370200/src/sqliteInt.h:679:10:
 const m_SQLITE_MAX_WORKER_THREADS = "0"
 
-// /private/tmp/libsqlite3/sqlite-src-3370200/<command-line>:24:9:
+// /private/tmp/libsqlite3/sqlite-src-3370200/<command-line>:26:9:
 const m_SQLITE_TEMP_STORE = 1
 
-// /private/tmp/libsqlite3/sqlite-src-3370200/<command-line>:19:9:
+// /private/tmp/libsqlite3/sqlite-src-3370200/<command-line>:20:9:
 const m_SQLITE_THREADSAFE = 0
 
 /*
@@ -88929,7 +88929,7 @@ const m_SERIES_COLUMN_STEP = 3
 // /private/tmp/libsqlite3/sqlite-src-3370200/ext/misc/series.c:120:9:
 const m_SERIES_COLUMN_STOP = 2
 
-// /private/tmp/libsqlite3/sqlite-src-3370200/<command-line>:32:9:
+// /private/tmp/libsqlite3/sqlite-src-3370200/<command-line>:34:9:
 const m_SQLITE_SERIES_CONSTRAINT_VERIFY = 1
 
 /*
@@ -313513,9 +313513,19 @@ func x_sqlite3_sourceid(tls *libc.TLS) (r uintptr) {
 }
 
 // -:
-type T_ht = struct {
-	Fcount uint32
-	Fchain uintptr
+type TIdList_item = struct {
+	FzName uintptr
+	Fidx   int32
+}
+
+// -:
+type TAggInfo_col = struct {
+	FpTab          uintptr
+	FpCExpr        uintptr
+	FiTable        int32
+	FiMem          int32
+	FiColumn       Ti16
+	FiSorterColumn Ti16
 }
 
 // -:
@@ -313537,12 +313547,6 @@ type TWalSegment = struct {
 }
 
 // -:
-type TIdList_item = struct {
-	FzName uintptr
-	Fidx   int32
-}
-
-// -:
 type TAggInfo_func = struct {
 	FpFExpr    uintptr
 	FpFunc     uintptr
@@ -313552,13 +313556,9 @@ type TAggInfo_func = struct {
 }
 
 // -:
-type TAggInfo_col = struct {
-	FpTab          uintptr
-	FpCExpr        uintptr
-	FiTable        int32
-	FiMem          int32
-	FiColumn       Ti16
-	FiSorterColumn Ti16
+type T_ht = struct {
+	Fcount uint32
+	Fchain uintptr
 }
 
 func __ccgo_fp(f interface{}) uintptr {
