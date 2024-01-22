@@ -298,17 +298,13 @@ func main() {
 			// "-DSQLITE_SOUNDEX",
 			// "-DSQLITE_TEMP_STORE=1",
 		)
-		switch {
-		case win:
-			config = append(config, "-DSQLITE_OS_WIN=1")
-		default:
-			config = append(config, "-DSQLITE_OS_UNIX=1")
-		}
 		//TODO threadsafe
 		switch {
 		case win:
+			config = append(config, "-DSQLITE_OS_WIN=1", "-DHAVE_MALLOC_USABLE_SIZE=1")
 			util.MustShell(true, "sh", "-c", fmt.Sprintf("CFLAGS='%s' ./configure --build=x86-64_gnu-linux --host=x86_64-w64-mingw32 --disable-threadsafe --disable-shared --disable-load-extension", strings.Join(config, " ")))
 		default:
+			config = append(config, "-DSQLITE_OS_UNIX=1")
 			util.MustShell(true, "sh", "-c", fmt.Sprintf("CFLAGS='%s' ./configure --disable-threadsafe --disable-shared --disable-load-extension", strings.Join(config, " ")))
 		}
 		switch target {
