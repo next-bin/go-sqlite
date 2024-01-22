@@ -347,6 +347,7 @@ func main() {
 					"--goarch", goarch,
 					"--goos", goos,
 					"-DSQLITE_HAVE_C99_MATH_FUNCS=(1)",
+					"-Dmalloc_usable_size(x)=( (int) ( unsigned long long ) ( malloc_usable_size ( x ) ) )",
 					"-D__mingw_strtod=strtod",
 					"-build-lines", "//go:build windows && (amd64 || arm64)\n// +build windows\n// +build amd64 arm64",
 					"-map", "gcc=x86_64-w64-mingw32-gcc",
