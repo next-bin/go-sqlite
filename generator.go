@@ -7,8 +7,6 @@
 
 package main
 
-//	./configure --build=x86-64_gnu-linux --host=x86_64-w64-mingw32 --disable-shared
-
 import (
 	"bufio"
 	"fmt"
