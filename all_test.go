@@ -90,7 +90,7 @@ func TestTclTest(t *testing.T) {
 		// See https://gitlab.com/cznic/sqlite/-/issues/120#note_1362306424
 		// TODO Fixed in SQLite 3.42.0
 		blacklist["sysfault.test"] = struct{}{}
-	case "windows/amd64":
+	case "windows/arm64":
 		// https://gitlab.com/cznic/sqlite/-/commit/b09ae7d8fe947bda4fa3ef0838784050fccd5592
 		blacklist["shared.test"] = struct{}{}
 	}
