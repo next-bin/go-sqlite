@@ -56314,8 +56314,8 @@ func _sqlite3AtoF(tls *libc.TLS, z uintptr, pResult uintptr, length int32, enc T
 	esign = int32(1) /* sign of exponent */
 	e = 0            /* exponent */
 	eValid = int32(1)
-	nDigit = 0                                        /* Number of digits processed */
-	eType = int32(1)                                  /* 1: pure integer,  2+: fractional  -1 or less: bad UTF16 */
+	nDigit = 0       /* Number of digits processed */
+	eType = int32(1) /* 1: pure integer,  2+: fractional  -1 or less: bad UTF16 */
 	*(*float64)(unsafe.Pointer(pResult)) = float64(0) /* Default return value, in case of an error */
 	if length == 0 {
 		return 0
@@ -61472,7 +61472,7 @@ func _winOpen(tls *libc.TLS, pVfs uintptr, zName uintptr, id uintptr, flags int3
 	 ** a temporary file. Use this buffer to store the file name in.
 	 */
 	*(*uintptr)(unsafe.Pointer(bp + 8)) = uintptr(0) /* For temporary filename, if necessary. */
-	rc = m_SQLITE_OK                                 /* Function Return Code */
+	rc = m_SQLITE_OK /* Function Return Code */
 	isExclusive = flags & int32(m_SQLITE_OPEN_EXCLUSIVE)
 	isDelete = flags & int32(m_SQLITE_OPEN_DELETEONCLOSE)
 	isCreate = flags & int32(m_SQLITE_OPEN_CREATE)
@@ -69079,7 +69079,7 @@ func _readDbPage(tls *libc.TLS, pPg uintptr) (r int32) {
 	_, _, _, _ = dbFileVers, iOffset, pPager, rc
 	pPager = (*TPgHdr)(unsafe.Pointer(pPg)).FpPager /* Pager object associated with page pPg */
 	rc = m_SQLITE_OK                                /* Return code */
-	*(*Tu32)(unsafe.Pointer(bp)) = uint32(0)        /* Frame of WAL containing pgno */
+	*(*Tu32)(unsafe.Pointer(bp)) = uint32(0) /* Frame of WAL containing pgno */
 	if (*TPager)(unsafe.Pointer(pPager)).FpWal != uintptr(0) {
 		rc = _sqlite3WalFindFrame(tls, (*TPager)(unsafe.Pointer(pPager)).FpWal, (*TPgHdr)(unsafe.Pointer(pPg)).Fpgno, bp)
 		if rc != 0 {
@@ -86747,7 +86747,7 @@ func _btreeCreateTable(tls *libc.TLS, p uintptr, piTable uintptr, createTabFlags
 	var _ /* pgnoRoot at bp+8 */ TPgno
 	var _ /* rc at bp+12 */ int32
 	_, _ = pBt, ptfFlags
-	pBt = (*TBtree)(unsafe.Pointer(p)).FpBt                 /* Page-type flage for the root page of new table */
+	pBt = (*TBtree)(unsafe.Pointer(p)).FpBt /* Page-type flage for the root page of new table */
 	if (*TBtShared)(unsafe.Pointer(pBt)).FautoVacuum != 0 { /* The page to move to. */
 		/* Creating a new table may probably require moving an existing database
 		 ** to make room for the new tables root page. In case this page turns
@@ -92206,7 +92206,7 @@ func _sqlite3VdbeMakeReady(tls *libc.TLS, p uintptr, pParse uintptr) {
 	 */
 	n = int32((libc.Uint64FromInt64(24)*uint64((*TVdbe)(unsafe.Pointer(p)).FnOp) + libc.Uint64FromInt32(7)) & uint64(^libc.Int32FromInt32(7))) /* Bytes of opcode memory used */
 	(*(*TReusableSpace)(unsafe.Pointer(bp + 8))).FpSpace = (*TVdbe)(unsafe.Pointer(p)).FaOp + uintptr(n)                                       /* Unused opcode memory */
-	(*(*TReusableSpace)(unsafe.Pointer(bp + 8))).FnFree = int64(((*TParse)(unsafe.Pointer(pParse)).FszOpAlloc - n) & ^libc.Int32FromInt32(7))  /* Bytes of unused memory */
+	(*(*TReusableSpace)(unsafe.Pointer(bp + 8))).FnFree = int64(((*TParse)(unsafe.Pointer(pParse)).FszOpAlloc - n) & ^libc.Int32FromInt32(7)) /* Bytes of unused memory */
 	_resolveP2Values(tls, p, bp)
 	libc.SetBitFieldPtr16Uint32(p+208, uint32(libc.BoolUint8((*TParse)(unsafe.Pointer(pParse)).FisMultiWrite != 0 && (*TParse)(unsafe.Pointer(pParse)).FmayAbort != 0)), 6, 0x40)
 	if (*TParse)(unsafe.Pointer(pParse)).Fexplain != 0 {
@@ -119293,7 +119293,7 @@ func _statInit(tls *libc.TLS, context uintptr, argc int32, argv uintptr) {
 	var db, p uintptr
 	var n, nCol, nColUp, nKeyCol int32
 	_, _, _, _, _, _ = db, n, nCol, nColUp, nKeyCol, p /* Bytes of space to allocate */
-	db = Xsqlite3_context_db_handle(tls, context)      /* Database connection */
+	db = Xsqlite3_context_db_handle(tls, context)     /* Database connection */
 	/* Decode the three function arguments */
 	_ = argc
 	nCol = Xsqlite3_value_int(tls, *(*uintptr)(unsafe.Pointer(argv)))
@@ -125260,7 +125260,7 @@ func _sqlite3RefillIndex(tls *libc.TLS, pParse uintptr, pIndex uintptr, memRootP
 func _sqlite3AllocateIndexObject(tls *libc.TLS, db uintptr, nCol Ti16, nExtra int32, ppExtra uintptr) (r uintptr) {
 	var nByte int32
 	var p, pExtra uintptr
-	_, _, _ = nByte, p, pExtra                                                                                                                                                                                                                                                                                                                              /* Bytes of space for Index object + arrays */
+	_, _, _ = nByte, p, pExtra /* Bytes of space for Index object + arrays */
 	nByte = int32((libc.Uint64FromInt64(112)+libc.Uint64FromInt32(7))&uint64(^libc.Int32FromInt32(7)) + (uint64(8)*uint64(uint64(nCol))+uint64(7))&uint64(^libc.Int32FromInt32(7)) + (uint64(2)*uint64(int32(int32(nCol))+libc.Int32FromInt32(1))+uint64(2)*uint64(uint64(nCol))+uint64(1)*uint64(uint64(nCol))+uint64(7))&uint64(^libc.Int32FromInt32(7))) /* Index.aSortOrder */
 	p = _sqlite3DbMallocZero(tls, db, uint64(nByte+nExtra))
 	if p != 0 {
@@ -133865,7 +133865,7 @@ func _autoIncBegin(tls *libc.TLS, pParse uintptr, iDb int32, pTab uintptr) (r in
 			v3 = pToplevel + 56
 			*(*int32)(unsafe.Pointer(v3))++
 			v2 = *(*int32)(unsafe.Pointer(v3))
-			(*TAutoincInfo)(unsafe.Pointer(pInfo)).FregCtr = v2   /* Max rowid register */
+			(*TAutoincInfo)(unsafe.Pointer(pInfo)).FregCtr = v2 /* Max rowid register */
 			*(*int32)(unsafe.Pointer(pToplevel + 56)) += int32(2) /* Rowid in sqlite_sequence + orig max val */
 		}
 		memId = (*TAutoincInfo)(unsafe.Pointer(pInfo)).FregCtr
@@ -157212,7 +157212,7 @@ func _sqlite3WhereCodeOneLoopStart(tls *libc.TLS, pParse uintptr, v uintptr, pWI
 							iCovCur = v38
 							v41 = pParse + 56
 							*(*int32)(unsafe.Pointer(v41))++
-							v40 = *(*int32)(unsafe.Pointer(v41))           /* Cursor used for index scans (if any) */
+							v40 = *(*int32)(unsafe.Pointer(v41)) /* Cursor used for index scans (if any) */
 							regReturn = v40                                /* Register used with OP_Gosub */
 							regRowset = 0                                  /* Register for RowSet object */
 							regRowid = 0                                   /* Register holding rowid */
@@ -185708,12 +185708,36 @@ func Xsqlite3_sourceid(tls *libc.TLS) (r uintptr) {
 	return __ccgo_ts + 24843
 }
 
-type TAggInfo_func = struct {
-	FpFExpr    uintptr
-	FpFunc     uintptr
-	FiMem      int32
-	FiDistinct int32
-	FiDistAddr int32
+type T_ht = struct {
+	Fcount uint32
+	Fchain uintptr
+}
+
+type Tsqlite3_index_orderby = struct {
+	FiColumn int32
+	Fdesc    uint8
+}
+
+type TsColMap = struct {
+	FiFrom int32
+	FzCol  uintptr
+}
+
+type Tsqlite3_index_constraint = struct {
+	FiColumn     int32
+	Fop          uint8
+	Fusable      uint8
+	FiTermOffset int32
+}
+
+type TShmRegion = struct {
+	FhMap THANDLE
+	FpMap uintptr
+}
+
+type T_STGMEDIUM_UNION = struct {
+	Ftymed TDWORD
+	Fu     t__WIDL_objidl_generated_name_0000000D
 }
 
 type TWalSegment = struct {
@@ -185724,17 +185748,12 @@ type TWalSegment = struct {
 	FiZero  int32
 }
 
-type TInLoop = struct {
-	FiCur       int32
-	FaddrInTop  int32
-	FiBase      int32
-	FnPrefix    int32
-	FeEndLoopOp Tu8
-}
-
-type TShmRegion = struct {
-	FhMap THANDLE
-	FpMap uintptr
+type TAggInfo_func = struct {
+	FpFExpr    uintptr
+	FpFunc     uintptr
+	FiMem      int32
+	FiDistinct int32
+	FiDistAddr int32
 }
 
 type TIdList_item = struct {
@@ -185747,11 +185766,12 @@ type Tsqlite3_index_constraint_usage = struct {
 	Fomit      uint8
 }
 
-type Tsqlite3_index_constraint = struct {
-	FiColumn     int32
-	Fop          uint8
-	Fusable      uint8
-	FiTermOffset int32
+type TInLoop = struct {
+	FiCur       int32
+	FaddrInTop  int32
+	FiBase      int32
+	FnPrefix    int32
+	FeEndLoopOp Tu8
 }
 
 type TAggInfo_col = struct {
@@ -185763,16 +185783,6 @@ type TAggInfo_col = struct {
 	FiSorterColumn Ti16
 }
 
-type T_STGMEDIUM_UNION = struct {
-	Ftymed TDWORD
-	Fu     t__WIDL_objidl_generated_name_0000000D
-}
-
-type TsColMap = struct {
-	FiFrom int32
-	FzCol  uintptr
-}
-
 type Tsqlite3InitInfo = struct {
 	FnewTnum       TPgno
 	FiDb           Tu8
@@ -185782,14 +185792,19 @@ type Tsqlite3InitInfo = struct {
 	FazInit        uintptr
 }
 
-type Tsqlite3_index_orderby = struct {
-	FiColumn int32
-	Fdesc    uint8
+type t__WIDL_wtypes_generated_name_00000008 = struct {
+	FhRemote     [0]uintptr
+	FhInproc64   [0]TINT64
+	FhInproc     TLONG
+	F__ccgo_pad3 [4]byte
 }
 
-type T_ht = struct {
-	Fcount uint32
-	Fchain uintptr
+type TMemValue = struct {
+	Fi      [0]int64
+	FnZero  [0]int32
+	FzPType [0]uintptr
+	FpDef   [0]uintptr
+	Fr      float64
 }
 
 type t__WIDL_wtypes_generated_name_00000003 = struct {
@@ -185813,59 +185828,6 @@ type t__WIDL_wtypes_generated_name_00000007 = struct {
 	F__ccgo_pad3 [4]byte
 }
 
-type t__WIDL_wtypes_generated_name_00000008 = struct {
-	FhRemote     [0]uintptr
-	FhInproc64   [0]TINT64
-	FhInproc     TLONG
-	F__ccgo_pad3 [4]byte
-}
-
-type t__WIDL_objidl_generated_name_0000000D = struct {
-	FhHEnhMetaFile [0]TwireHENHMETAFILE
-	FhGdiHandle    [0]uintptr
-	FhGlobal       [0]TwireHGLOBAL
-	FlpszFileName  [0]TLPOLESTR
-	Fpstm          [0]uintptr
-	Fpstg          [0]uintptr
-	FhMetaFilePict TwireHMETAFILEPICT
-}
-
-type t__WIDL_wtypes_generated_name_00000009 = struct {
-	FhRemote [0]TLONG
-	FhInproc TLONG
-}
-
-type t__WIDL_wtypes_generated_name_0000000A = struct {
-	FpFileExt  [0]TLPOLESTR
-	FpMimeType [0]TLPOLESTR
-	FpProgId   [0]TLPOLESTR
-	FpFileName [0]TLPOLESTR
-	FByName    [0]struct {
-		FpPackageName TLPOLESTR
-		FPolicyId     TGUID
-	}
-	FByObjectId [0]struct {
-		FObjectId TGUID
-		FPolicyId TGUID
-	}
-	Fclsid       TCLSID
-	F__ccgo_pad7 [16]byte
-}
-
-type t__WIDL_oaidl_generated_name_0000000E = struct {
-	FUnknownStr   [0]TSAFEARR_UNKNOWN
-	FDispatchStr  [0]TSAFEARR_DISPATCH
-	FVariantStr   [0]TSAFEARR_VARIANT
-	FRecordStr    [0]TSAFEARR_BRECORD
-	FHaveIidStr   [0]TSAFEARR_HAVEIID
-	FByteStr      [0]TBYTE_SIZEDARR
-	FWordStr      [0]TWORD_SIZEDARR
-	FLongStr      [0]TDWORD_SIZEDARR
-	FHyperStr     [0]THYPER_SIZEDARR
-	FBstrStr      TSAFEARR_BSTR
-	F__ccgo_pad10 [16]byte
-}
-
 type Tp4union = struct {
 	Fp            [0]uintptr
 	Fz            [0]uintptr
@@ -185885,12 +185847,6 @@ type Tp4union = struct {
 	F__ccgo_pad15 [4]byte
 }
 
-type t__WIDL_wtypes_generated_name_00000001 = struct {
-	FpwszName    [0]uintptr
-	FdwValue     TDWORD
-	F__ccgo_pad2 [4]byte
-}
-
 type t__WIDL_wtypes_generated_name_00000002 = struct {
 	FhRemote     [0]uintptr
 	FhInproc     TLONG
@@ -185904,12 +185860,43 @@ type t__WIDL_wtypes_generated_name_00000004 = struct {
 	F__ccgo_pad3 [4]byte
 }
 
-type TMemValue = struct {
-	Fi      [0]int64
-	FnZero  [0]int32
-	FzPType [0]uintptr
-	FpDef   [0]uintptr
-	Fr      float64
+type t__WIDL_wtypes_generated_name_0000000A = struct {
+	FpFileExt  [0]TLPOLESTR
+	FpMimeType [0]TLPOLESTR
+	FpProgId   [0]TLPOLESTR
+	FpFileName [0]TLPOLESTR
+	FByName    [0]struct {
+		FpPackageName TLPOLESTR
+		FPolicyId     TGUID
+	}
+	FByObjectId [0]struct {
+		FObjectId TGUID
+		FPolicyId TGUID
+	}
+	Fclsid       TCLSID
+	F__ccgo_pad7 [16]byte
+}
+
+type t__WIDL_objidl_generated_name_0000000C = struct {
+	FhPalette [0]TwireHPALETTE
+	FhGeneric [0]TwireHGLOBAL
+	FhBitmap  TwireHBITMAP
+}
+
+type t__WIDL_objidl_generated_name_0000000D = struct {
+	FhHEnhMetaFile [0]TwireHENHMETAFILE
+	FhGdiHandle    [0]uintptr
+	FhGlobal       [0]TwireHGLOBAL
+	FlpszFileName  [0]TLPOLESTR
+	Fpstm          [0]uintptr
+	Fpstg          [0]uintptr
+	FhMetaFilePict TwireHMETAFILEPICT
+}
+
+type t__WIDL_wtypes_generated_name_00000001 = struct {
+	FpwszName    [0]uintptr
+	FdwValue     TDWORD
+	F__ccgo_pad2 [4]byte
 }
 
 type t__WIDL_wtypes_generated_name_00000005 = struct {
@@ -185919,10 +185906,23 @@ type t__WIDL_wtypes_generated_name_00000005 = struct {
 	F__ccgo_pad3 [4]byte
 }
 
-type t__WIDL_objidl_generated_name_0000000C = struct {
-	FhPalette [0]TwireHPALETTE
-	FhGeneric [0]TwireHGLOBAL
-	FhBitmap  TwireHBITMAP
+type t__WIDL_wtypes_generated_name_00000009 = struct {
+	FhRemote [0]TLONG
+	FhInproc TLONG
+}
+
+type t__WIDL_oaidl_generated_name_0000000E = struct {
+	FUnknownStr   [0]TSAFEARR_UNKNOWN
+	FDispatchStr  [0]TSAFEARR_DISPATCH
+	FVariantStr   [0]TSAFEARR_VARIANT
+	FRecordStr    [0]TSAFEARR_BRECORD
+	FHaveIidStr   [0]TSAFEARR_HAVEIID
+	FByteStr      [0]TBYTE_SIZEDARR
+	FWordStr      [0]TWORD_SIZEDARR
+	FLongStr      [0]TDWORD_SIZEDARR
+	FHyperStr     [0]THYPER_SIZEDARR
+	FBstrStr      TSAFEARR_BSTR
+	F__ccgo_pad10 [16]byte
 }
 
 func __ccgo_fp(f interface{}) uintptr {

@@ -91400,12 +91400,6 @@ type Tsqlite3InitInfo = struct {
 }
 
 // -:
-type T_STGMEDIUM_UNION = struct {
-	Ftymed TDWORD
-	Fu     T__WIDL_objidl_generated_name_0000000D
-}
-
-// -:
 type T__tagVARIANT = struct {
 	Fvt         TVARTYPE
 	FwReserved1 TWORD
@@ -91483,9 +91477,47 @@ type TsColMap = struct {
 }
 
 // -:
+type T_STGMEDIUM_UNION = struct {
+	Ftymed TDWORD
+	Fu     T__WIDL_objidl_generated_name_0000000D
+}
+
+// -:
 type T__tagBRECORD = struct {
 	FpvRecord TPVOID
 	FpRecInfo uintptr
+}
+
+// -:
+type T__WIDL_wtypes_generated_name_00000009 = struct {
+	FhRemote [0]TLONG
+	FhInproc TLONG
+}
+
+// -:
+type T__WIDL_oaidl_generated_name_0000000E = struct {
+	FUnknownStr   [0]TSAFEARR_UNKNOWN
+	FDispatchStr  [0]TSAFEARR_DISPATCH
+	FVariantStr   [0]TSAFEARR_VARIANT
+	FRecordStr    [0]TSAFEARR_BRECORD
+	FHaveIidStr   [0]TSAFEARR_HAVEIID
+	FByteStr      [0]TBYTE_SIZEDARR
+	FWordStr      [0]TWORD_SIZEDARR
+	FLongStr      [0]TDWORD_SIZEDARR
+	FHyperStr     [0]THYPER_SIZEDARR
+	FBstrStr      TSAFEARR_BSTR
+	F__ccgo_pad10 [16]byte
+}
+
+// -:
+type T__WIDL_objidl_generated_name_0000000D = struct {
+	FhHEnhMetaFile [0]TwireHENHMETAFILE
+	FhGdiHandle    [0]uintptr
+	FhGlobal       [0]TwireHGLOBAL
+	FlpszFileName  [0]TLPOLESTR
+	Fpstm          [0]uintptr
+	Fpstg          [0]uintptr
+	FhMetaFilePict TwireHMETAFILEPICT
 }
 
 // -:
@@ -91518,24 +91550,6 @@ type Tp4union = struct {
 }
 
 // -:
-type T__WIDL_wtypes_generated_name_00000001 = struct {
-	FpwszName    [0]uintptr
-	FdwValue     TDWORD
-	F__ccgo_pad2 [4]byte
-}
-
-// -:
-type T__WIDL_objidl_generated_name_0000000D = struct {
-	FhHEnhMetaFile [0]TwireHENHMETAFILE
-	FhGdiHandle    [0]uintptr
-	FhGlobal       [0]TwireHGLOBAL
-	FlpszFileName  [0]TLPOLESTR
-	Fpstm          [0]uintptr
-	Fpstg          [0]uintptr
-	FhMetaFilePict TwireHMETAFILEPICT
-}
-
-// -:
 type T__WIDL_wtypes_generated_name_00000003 = struct {
 	FhRemote     [0]uintptr
 	FhInproc64   [0]TINT64
@@ -91544,47 +91558,15 @@ type T__WIDL_wtypes_generated_name_00000003 = struct {
 }
 
 // -:
-type T__WIDL_wtypes_generated_name_0000000A = struct {
-	FpFileExt  [0]TLPOLESTR
-	FpMimeType [0]TLPOLESTR
-	FpProgId   [0]TLPOLESTR
-	FpFileName [0]TLPOLESTR
-	FByName    [0]struct {
-		FpPackageName TLPOLESTR
-		FPolicyId     TGUID
-	}
-	FByObjectId [0]struct {
-		FObjectId TGUID
-		FPolicyId TGUID
-	}
-	Fclsid       TCLSID
-	F__ccgo_pad7 [16]byte
-}
-
-// -:
-type T__WIDL_oaidl_generated_name_0000000E = struct {
-	FUnknownStr   [0]TSAFEARR_UNKNOWN
-	FDispatchStr  [0]TSAFEARR_DISPATCH
-	FVariantStr   [0]TSAFEARR_VARIANT
-	FRecordStr    [0]TSAFEARR_BRECORD
-	FHaveIidStr   [0]TSAFEARR_HAVEIID
-	FByteStr      [0]TBYTE_SIZEDARR
-	FWordStr      [0]TWORD_SIZEDARR
-	FLongStr      [0]TDWORD_SIZEDARR
-	FHyperStr     [0]THYPER_SIZEDARR
-	FBstrStr      TSAFEARR_BSTR
-	F__ccgo_pad10 [16]byte
-}
-
-// -:
-type T__WIDL_wtypes_generated_name_00000002 = struct {
-	FhRemote     [0]uintptr
-	FhInproc     TLONG
-	F__ccgo_pad2 [4]byte
-}
-
-// -:
 type T__WIDL_wtypes_generated_name_00000005 = struct {
+	FhRemote     [0]uintptr
+	FhInproc64   [0]TINT64
+	FhInproc     TLONG
+	F__ccgo_pad3 [4]byte
+}
+
+// -:
+type T__WIDL_wtypes_generated_name_00000007 = struct {
 	FhRemote     [0]uintptr
 	FhInproc64   [0]TINT64
 	FhInproc     TLONG
@@ -91608,14 +91590,6 @@ type T__WIDL_wtypes_generated_name_00000006 = struct {
 }
 
 // -:
-type T__WIDL_wtypes_generated_name_00000007 = struct {
-	FhRemote     [0]uintptr
-	FhInproc64   [0]TINT64
-	FhInproc     TLONG
-	F__ccgo_pad3 [4]byte
-}
-
-// -:
 type T__WIDL_wtypes_generated_name_00000008 = struct {
 	FhRemote     [0]uintptr
 	FhInproc64   [0]TINT64
@@ -91624,16 +91598,42 @@ type T__WIDL_wtypes_generated_name_00000008 = struct {
 }
 
 // -:
-type T__WIDL_wtypes_generated_name_00000009 = struct {
-	FhRemote [0]TLONG
-	FhInproc TLONG
-}
-
-// -:
 type T__WIDL_objidl_generated_name_0000000C = struct {
 	FhPalette [0]TwireHPALETTE
 	FhGeneric [0]TwireHGLOBAL
 	FhBitmap  TwireHBITMAP
+}
+
+// -:
+type T__WIDL_wtypes_generated_name_00000001 = struct {
+	FpwszName    [0]uintptr
+	FdwValue     TDWORD
+	F__ccgo_pad2 [4]byte
+}
+
+// -:
+type T__WIDL_wtypes_generated_name_00000002 = struct {
+	FhRemote     [0]uintptr
+	FhInproc     TLONG
+	F__ccgo_pad2 [4]byte
+}
+
+// -:
+type T__WIDL_wtypes_generated_name_0000000A = struct {
+	FpFileExt  [0]TLPOLESTR
+	FpMimeType [0]TLPOLESTR
+	FpProgId   [0]TLPOLESTR
+	FpFileName [0]TLPOLESTR
+	FByName    [0]struct {
+		FpPackageName TLPOLESTR
+		FPolicyId     TGUID
+	}
+	FByObjectId [0]struct {
+		FObjectId TGUID
+		FPolicyId TGUID
+	}
+	Fclsid       TCLSID
+	F__ccgo_pad7 [16]byte
 }
 
 // /tmp/libsqlite3/sqlite-src-3370200/src/sqliteInt.h:2018:9:
@@ -371187,18 +371187,21 @@ func x_sqlite3_sourceid(tls *libc.TLS) (r uintptr) {
 }
 
 // -:
+type TInLoop = struct {
+	FiCur       int32
+	FaddrInTop  int32
+	FiBase      int32
+	FnPrefix    int32
+	FeEndLoopOp Tu8
+}
+
+// -:
 type TWalSegment = struct {
 	FiNext  int32
 	FaIndex uintptr
 	FaPgno  uintptr
 	FnEntry int32
 	FiZero  int32
-}
-
-// -:
-type T_ht = struct {
-	Fcount uint32
-	Fchain uintptr
 }
 
 // -:
@@ -371218,15 +371221,6 @@ type TShmRegion = struct {
 }
 
 // -:
-type TInLoop = struct {
-	FiCur       int32
-	FaddrInTop  int32
-	FiBase      int32
-	FnPrefix    int32
-	FeEndLoopOp Tu8
-}
-
-// -:
 type TAggInfo_func = struct {
 	FpFExpr    uintptr
 	FpFunc     uintptr
@@ -371239,6 +371233,12 @@ type TAggInfo_func = struct {
 type TIdList_item = struct {
 	FzName uintptr
 	Fidx   int32
+}
+
+// -:
+type T_ht = struct {
+	Fcount uint32
+	Fchain uintptr
 }
 
 func __ccgo_fp(f interface{}) uintptr {
