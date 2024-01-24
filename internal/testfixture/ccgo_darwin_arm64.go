@@ -19523,15 +19523,6 @@ type TsColMap = struct {
 }
 
 // -:
-type TMemValue = struct {
-	Fi      [0]Ti64
-	FnZero  [0]int32
-	FzPType [0]uintptr
-	FpDef   [0]uintptr
-	Fr      float64
-}
-
-// -:
 type Tp4union = struct {
 	Fp            [0]uintptr
 	Fz            [0]uintptr
@@ -19549,6 +19540,15 @@ type Tp4union = struct {
 	FxAdvance     [0]uintptr
 	Fi            int32
 	F__ccgo_pad15 [4]byte
+}
+
+// -:
+type TMemValue = struct {
+	Fi      [0]Ti64
+	FnZero  [0]int32
+	FzPType [0]uintptr
+	FpDef   [0]uintptr
+	Fr      float64
 }
 
 // /private/tmp/libsqlite3/sqlite-src-3370200/src/sqliteInt.h:2018:9:
@@ -26900,12 +26900,6 @@ func init() {
 }
 
 // -:
-type Tsqlite3_index_orderby = struct {
-	FiColumn int32
-	Fdesc    uint8
-}
-
-// -:
 type Tsqlite3_index_constraint = struct {
 	FiColumn     int32
 	Fop          uint8
@@ -26917,6 +26911,12 @@ type Tsqlite3_index_constraint = struct {
 type Tsqlite3_index_constraint_usage = struct {
 	FargvIndex int32
 	Fomit      uint8
+}
+
+// -:
+type Tsqlite3_index_orderby = struct {
+	FiColumn int32
+	Fdesc    uint8
 }
 
 /*
@@ -312645,30 +312645,6 @@ func x_sqlite3_sourceid(tls *libc.TLS) (r uintptr) {
 }
 
 // -:
-type T_ht = struct {
-	Fcount uint32
-	Fchain uintptr
-}
-
-// -:
-type TAggInfo_func = struct {
-	FpFExpr    uintptr
-	FpFunc     uintptr
-	FiMem      int32
-	FiDistinct int32
-	FiDistAddr int32
-}
-
-// -:
-type TWalSegment = struct {
-	FiNext  int32
-	FaIndex uintptr
-	FaPgno  uintptr
-	FnEntry int32
-	FiZero  int32
-}
-
-// -:
 type TAggInfo_col = struct {
 	FpTab          uintptr
 	FpCExpr        uintptr
@@ -312691,6 +312667,30 @@ type TInLoop = struct {
 	FiBase      int32
 	FnPrefix    int32
 	FeEndLoopOp Tu8
+}
+
+// -:
+type TWalSegment = struct {
+	FiNext  int32
+	FaIndex uintptr
+	FaPgno  uintptr
+	FnEntry int32
+	FiZero  int32
+}
+
+// -:
+type TAggInfo_func = struct {
+	FpFExpr    uintptr
+	FpFunc     uintptr
+	FiMem      int32
+	FiDistinct int32
+	FiDistAddr int32
+}
+
+// -:
+type T_ht = struct {
+	Fcount uint32
+	Fchain uintptr
 }
 
 func __ccgo_fp(f interface{}) uintptr {
