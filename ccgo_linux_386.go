@@ -183827,17 +183827,6 @@ type TChannelState1 = struct {
 	Fepoch               int32
 }
 
-type TChannel1 = struct {
-	Fstate        uintptr
-	FinstanceData TClientData
-	FtypePtr      uintptr
-	FdownChanPtr  uintptr
-	FupChanPtr    uintptr
-	FinQueueHead  uintptr
-	FinQueueTail  uintptr
-	FrefCount     int32
-}
-
 type TCopyState1 = struct {
 	FreadPtr    uintptr
 	FwritePtr   uintptr
@@ -183849,6 +183838,17 @@ type TCopyState1 = struct {
 	FcmdPtr     uintptr
 	FbufSize    int32
 	Fbuffer     [1]int8
+}
+
+type TChannel1 = struct {
+	Fstate        uintptr
+	FinstanceData TClientData
+	FtypePtr      uintptr
+	FdownChanPtr  uintptr
+	FupChanPtr    uintptr
+	FinQueueHead  uintptr
+	FinQueueTail  uintptr
+	FrefCount     int32
 }
 
 const m_O_RDONLY = 0
