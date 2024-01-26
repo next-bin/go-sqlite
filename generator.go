@@ -311,11 +311,13 @@ func main() {
 			util.MustShell(true, "sh", "-c", "echo '#define HAVE_MALLOC_USABLE_SIZE 1' >> config.h")
 			util.MustShell(true, "sh", "-c", "echo '#define HAVE_MEMORY_H 1' >> config.h")
 		}
-		config = append(config,
-			"-absolute-paths",
-			"-keep-object-files",
-			"-positions",
-		)
+		if dev {
+			config = append(config,
+				"-absolute-paths",
+				"-keep-object-files",
+				"-positions",
+			)
+		}
 		config = append(config,
 			"--libc", "modernc.org/libc",
 			"--prefix-enumerator=_",

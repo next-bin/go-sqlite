@@ -56314,8 +56314,8 @@ func _sqlite3AtoF(tls *libc.TLS, z uintptr, pResult uintptr, length int32, enc T
 	esign = int32(1) /* sign of exponent */
 	e = 0            /* exponent */
 	eValid = int32(1)
-	nDigit = 0       /* Number of digits processed */
-	eType = int32(1) /* 1: pure integer,  2+: fractional  -1 or less: bad UTF16 */
+	nDigit = 0                                        /* Number of digits processed */
+	eType = int32(1)                                  /* 1: pure integer,  2+: fractional  -1 or less: bad UTF16 */
 	*(*float64)(unsafe.Pointer(pResult)) = float64(0) /* Default return value, in case of an error */
 	if length == 0 {
 		return 0
@@ -61472,7 +61472,7 @@ func _winOpen(tls *libc.TLS, pVfs uintptr, zName uintptr, id uintptr, flags int3
 	 ** a temporary file. Use this buffer to store the file name in.
 	 */
 	*(*uintptr)(unsafe.Pointer(bp + 8)) = uintptr(0) /* For temporary filename, if necessary. */
-	rc = m_SQLITE_OK /* Function Return Code */
+	rc = m_SQLITE_OK                                 /* Function Return Code */
 	isExclusive = flags & int32(m_SQLITE_OPEN_EXCLUSIVE)
 	isDelete = flags & int32(m_SQLITE_OPEN_DELETEONCLOSE)
 	isCreate = flags & int32(m_SQLITE_OPEN_CREATE)
@@ -69079,7 +69079,7 @@ func _readDbPage(tls *libc.TLS, pPg uintptr) (r int32) {
 	_, _, _, _ = dbFileVers, iOffset, pPager, rc
 	pPager = (*TPgHdr)(unsafe.Pointer(pPg)).FpPager /* Pager object associated with page pPg */
 	rc = m_SQLITE_OK                                /* Return code */
-	*(*Tu32)(unsafe.Pointer(bp)) = uint32(0) /* Frame of WAL containing pgno */
+	*(*Tu32)(unsafe.Pointer(bp)) = uint32(0)        /* Frame of WAL containing pgno */
 	if (*TPager)(unsafe.Pointer(pPager)).FpWal != uintptr(0) {
 		rc = _sqlite3WalFindFrame(tls, (*TPager)(unsafe.Pointer(pPager)).FpWal, (*TPgHdr)(unsafe.Pointer(pPg)).Fpgno, bp)
 		if rc != 0 {
@@ -86747,7 +86747,7 @@ func _btreeCreateTable(tls *libc.TLS, p uintptr, piTable uintptr, createTabFlags
 	var _ /* pgnoRoot at bp+8 */ TPgno
 	var _ /* rc at bp+12 */ int32
 	_, _ = pBt, ptfFlags
-	pBt = (*TBtree)(unsafe.Pointer(p)).FpBt /* Page-type flage for the root page of new table */
+	pBt = (*TBtree)(unsafe.Pointer(p)).FpBt                 /* Page-type flage for the root page of new table */
 	if (*TBtShared)(unsafe.Pointer(pBt)).FautoVacuum != 0 { /* The page to move to. */
 		/* Creating a new table may probably require moving an existing database
 		 ** to make room for the new tables root page. In case this page turns
@@ -92206,7 +92206,7 @@ func _sqlite3VdbeMakeReady(tls *libc.TLS, p uintptr, pParse uintptr) {
 	 */
 	n = int32((libc.Uint64FromInt64(24)*uint64((*TVdbe)(unsafe.Pointer(p)).FnOp) + libc.Uint64FromInt32(7)) & uint64(^libc.Int32FromInt32(7))) /* Bytes of opcode memory used */
 	(*(*TReusableSpace)(unsafe.Pointer(bp + 8))).FpSpace = (*TVdbe)(unsafe.Pointer(p)).FaOp + uintptr(n)                                       /* Unused opcode memory */
-	(*(*TReusableSpace)(unsafe.Pointer(bp + 8))).FnFree = int64(((*TParse)(unsafe.Pointer(pParse)).FszOpAlloc - n) & ^libc.Int32FromInt32(7)) /* Bytes of unused memory */
+	(*(*TReusableSpace)(unsafe.Pointer(bp + 8))).FnFree = int64(((*TParse)(unsafe.Pointer(pParse)).FszOpAlloc - n) & ^libc.Int32FromInt32(7))  /* Bytes of unused memory */
 	_resolveP2Values(tls, p, bp)
 	libc.SetBitFieldPtr16Uint32(p+208, uint32(libc.BoolUint8((*TParse)(unsafe.Pointer(pParse)).FisMultiWrite != 0 && (*TParse)(unsafe.Pointer(pParse)).FmayAbort != 0)), 6, 0x40)
 	if (*TParse)(unsafe.Pointer(pParse)).Fexplain != 0 {
@@ -119293,7 +119293,7 @@ func _statInit(tls *libc.TLS, context uintptr, argc int32, argv uintptr) {
 	var db, p uintptr
 	var n, nCol, nColUp, nKeyCol int32
 	_, _, _, _, _, _ = db, n, nCol, nColUp, nKeyCol, p /* Bytes of space to allocate */
-	db = Xsqlite3_context_db_handle(tls, context)     /* Database connection */
+	db = Xsqlite3_context_db_handle(tls, context)      /* Database connection */
 	/* Decode the three function arguments */
 	_ = argc
 	nCol = Xsqlite3_value_int(tls, *(*uintptr)(unsafe.Pointer(argv)))
@@ -125260,7 +125260,7 @@ func _sqlite3RefillIndex(tls *libc.TLS, pParse uintptr, pIndex uintptr, memRootP
 func _sqlite3AllocateIndexObject(tls *libc.TLS, db uintptr, nCol Ti16, nExtra int32, ppExtra uintptr) (r uintptr) {
 	var nByte int32
 	var p, pExtra uintptr
-	_, _, _ = nByte, p, pExtra /* Bytes of space for Index object + arrays */
+	_, _, _ = nByte, p, pExtra                                                                                                                                                                                                                                                                                                                              /* Bytes of space for Index object + arrays */
 	nByte = int32((libc.Uint64FromInt64(112)+libc.Uint64FromInt32(7))&uint64(^libc.Int32FromInt32(7)) + (uint64(8)*uint64(uint64(nCol))+uint64(7))&uint64(^libc.Int32FromInt32(7)) + (uint64(2)*uint64(int32(int32(nCol))+libc.Int32FromInt32(1))+uint64(2)*uint64(uint64(nCol))+uint64(1)*uint64(uint64(nCol))+uint64(7))&uint64(^libc.Int32FromInt32(7))) /* Index.aSortOrder */
 	p = _sqlite3DbMallocZero(tls, db, uint64(nByte+nExtra))
 	if p != 0 {
@@ -133865,7 +133865,7 @@ func _autoIncBegin(tls *libc.TLS, pParse uintptr, iDb int32, pTab uintptr) (r in
 			v3 = pToplevel + 56
 			*(*int32)(unsafe.Pointer(v3))++
 			v2 = *(*int32)(unsafe.Pointer(v3))
-			(*TAutoincInfo)(unsafe.Pointer(pInfo)).FregCtr = v2 /* Max rowid register */
+			(*TAutoincInfo)(unsafe.Pointer(pInfo)).FregCtr = v2   /* Max rowid register */
 			*(*int32)(unsafe.Pointer(pToplevel + 56)) += int32(2) /* Rowid in sqlite_sequence + orig max val */
 		}
 		memId = (*TAutoincInfo)(unsafe.Pointer(pInfo)).FregCtr
@@ -157212,7 +157212,7 @@ func _sqlite3WhereCodeOneLoopStart(tls *libc.TLS, pParse uintptr, v uintptr, pWI
 							iCovCur = v38
 							v41 = pParse + 56
 							*(*int32)(unsafe.Pointer(v41))++
-							v40 = *(*int32)(unsafe.Pointer(v41)) /* Cursor used for index scans (if any) */
+							v40 = *(*int32)(unsafe.Pointer(v41))           /* Cursor used for index scans (if any) */
 							regReturn = v40                                /* Register used with OP_Gosub */
 							regRowset = 0                                  /* Register for RowSet object */
 							regRowid = 0                                   /* Register holding rowid */
