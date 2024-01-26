@@ -2,7 +2,7 @@
 # Use of the source code is governed by a BSD-style
 # license that can be found in the LICENSE file.
 
-.PHONY:	all clean dev download edit editor generate test work
+.PHONY:	all clean dev download edit editor extraquick generate test work
 
 DIR = /tmp/libsqlite3
 ZIP = sqlite-amalgamation-3370200.zip
@@ -69,6 +69,9 @@ dev: download
 	grep 'TRC\|TODO\|ERRORF\|FAIL' log-generate || true
 	grep 'TRC\|TODO\|ERRORF\|FAIL' log-generate-errors || true
 	grep 'TRC\|TODO\|ERRORF\|FAIL' /tmp/ccgo.log || true
+
+extraquick:
+	go test -v -timeout 24h -suite=extraquick 2>&1 | tee log-test
 
 test:
 	go test -v -timeout 24h 2>&1 | tee log-test
