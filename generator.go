@@ -48,7 +48,7 @@ func main() {
 		return
 	}
 
-	if !win && target == "linux/amd64" {
+	if !win && target == "linux/amd64" && os.Getenv("GO_GENERATE_NOWIN") == "" {
 		defer func() {
 			util.MustShell(true, "make", "windows")
 			util.MustCopyFile(true, "internal/autogen/windows_amd64.mod", "go.mod", nil)
@@ -259,16 +259,15 @@ func main() {
 		}
 		config = append(config,
 			"-DLONGDOUBLE_TYPE=double",
+			"-DNDEBUG",
+			"-DSQLITE_ENABLE_MATH_FUNCTIONS",
+			"-DSQLITE_MUTEX_NOOP",
 			"-DSQLITE_WITHOUT_ZONEMALLOC",
-			// "-DSQLITE_DEBUG",
-			// "-DSQLITE_MEM_DEBUG",
-			"-DSQLITE_THREADSAFE=0",
 			"-Dpread64=pread",
 			"-Dpwrite64=pwrite",
-			"-DNDEBUG",
-
 			// "-DHAVE_USLEEP",
 			// "-DSQLITE_CKSUMVFS_STATIC",
+			// "-DSQLITE_DEBUG",
 			// "-DSQLITE_DEFAULT_MEMSTATUS=1",
 			// "-DSQLITE_ENABLE_BYTECODE_VTAB",
 			// "-DSQLITE_ENABLE_COLUMN_METADATA",
@@ -278,7 +277,6 @@ func main() {
 			// "-DSQLITE_ENABLE_EXPLAIN_COMMENTS",
 			// "-DSQLITE_ENABLE_FTS5",
 			// "-DSQLITE_ENABLE_GEOPOLY",
-			"-DSQLITE_ENABLE_MATH_FUNCTIONS",
 			// "-DSQLITE_ENABLE_MEMORY_MANAGEMENT",
 			// "-DSQLITE_ENABLE_OFFSET_SQL_FUNC",
 			// "-DSQLITE_ENABLE_PREUPDATE_HOOK",
@@ -288,6 +286,7 @@ func main() {
 			// "-DSQLITE_ENABLE_STMTVTAB",
 			// "-DSQLITE_ENABLE_UNLOCK_NOTIFY",
 			// "-DSQLITE_LIKE_DOESNT_MATCH_BLOBS",
+			// "-DSQLITE_MEM_DEBUG",
 			// "-DSQLITE_SOUNDEX",
 			// "-DSQLITE_TEMP_STORE=1",
 		)
@@ -295,10 +294,10 @@ func main() {
 		switch {
 		case win:
 			config = append(config, "-DSQLITE_OS_WIN=1", "-DHAVE_MALLOC_USABLE_SIZE=1")
-			util.MustShell(true, "sh", "-c", fmt.Sprintf("CFLAGS='%s' ./configure --build=x86-64_gnu-linux --host=x86_64-w64-mingw32 --disable-threadsafe --disable-shared --disable-load-extension", strings.Join(config, " ")))
+			util.MustShell(true, "sh", "-c", fmt.Sprintf("CFLAGS='%s' ./configure --build=x86-64_gnu-linux --host=x86_64-w64-mingw32 --disable-shared --disable-load-extension", strings.Join(config, " ")))
 		default:
 			config = append(config, "-DSQLITE_OS_UNIX=1")
-			util.MustShell(true, "sh", "-c", fmt.Sprintf("CFLAGS='%s' ./configure --disable-threadsafe --disable-shared --disable-load-extension", strings.Join(config, " ")))
+			util.MustShell(true, "sh", "-c", fmt.Sprintf("CFLAGS='%s' ./configure --disable-shared --disable-load-extension", strings.Join(config, " ")))
 		}
 		switch target {
 		case "darwin/amd64", "darwin/arm64":
@@ -349,7 +348,7 @@ func main() {
 					"-exec", "make", "-j", j,
 					"BEXE=",
 
-					"CFLAGS=-mlong-double-64 -DLONGDOUBLE_TYPE=double -DSQLITE_WITHOUT_ZONEMALLOC -DSQLITE_THREADSAFE=0 -DNDEBUG -DSQLITE_OS_WIN=1 -DSQLITE_OS_UNIX=0 -D_MSC_VER=1",
+					"CFLAGS=-mlong-double-64 -DLONGDOUBLE_TYPE=double -DSQLITE_WITHOUT_ZONEMALLOC -DNDEBUG -DSQLITE_OS_WIN=1 -DSQLITE_OS_UNIX=0 -D_MSC_VER=1",
 					"TOP=../sqlite-src-3370200",
 					"TEXE=.exe",
 					"testfixture.exe",
@@ -358,7 +357,12 @@ func main() {
 			).Exec()
 			return nil
 		default:
-			config = append(config, "-exec", "make", "-j", j, "testfixture")
+			switch {
+			case os.Getenv("GO_GENERATE_TEST") != "":
+				config = append(config, "-exec", "make", "-j", j, "fulltestonly")
+			default:
+				config = append(config, "-exec", "make", "-j", j, "testfixture")
+			}
 			return ccgo.NewTask(goos, goarch, config, os.Stdout, os.Stderr, nil).Exec()
 		}
 	})
