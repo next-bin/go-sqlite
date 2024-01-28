@@ -2,7 +2,7 @@
 # Use of the source code is governed by a BSD-style
 # license that can be found in the LICENSE file.
 
-.PHONY:	all clean dev download edit editor extraquick generate test work
+.PHONY:	all clean dev download edit editor extraquick generate test work xtest
 
 DIR = /tmp/libsqlite3
 ZIP = sqlite-amalgamation-3370200.zip
@@ -117,3 +117,6 @@ work:
 	go work use ../libc
 	go work use ../libtcl8.6
 	go work use ../libz
+
+xtest:
+	GO_GENERATE_NOWIN=1 GO_GENERATE_TEST=1 GOMAXPROCS=1 make dev ; go test -v -run Options 2>&1 | tee log-options
