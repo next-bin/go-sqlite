@@ -12,17 +12,17 @@ import (
 	"os"
 	"path/filepath"
 	"runtime"
-	// "strconv"
+	"strconv"
 	"strings"
 	"testing"
 
-	// "github.com/pmezard/go-difflib/difflib"
+	"github.com/pmezard/go-difflib/difflib"
 	util "modernc.org/ccgo/v3/lib"
 	_ "modernc.org/ccgo/v4/lib"
-	// "modernc.org/libc"
+	"modernc.org/libc"
 	"modernc.org/libtcl8.6/library"
-	// sqliteprod "modernc.org/sqlite/lib"
-	// sqlitetest "modernc.org/sqlite/libtest"
+	sqliteprod "modernc.org/sqlite/lib"
+	sqlitetest "modernc.org/sqlite/libtest"
 )
 
 var (
@@ -209,140 +209,140 @@ func cp(fsys embed.FS, rootDir, destDir string) (err error) {
 	})
 }
 
-// func TestOptions(t *testing.T) {
-// 	tls := libc.NewTLS()
-// 
-// 	defer tls.Close()
-// 
-// 	have := libc.GoString(Xsqlite3_libversion(tls))
-// 	want := libc.GoString(sqliteprod.Xsqlite3_libversion(tls))
-// 	if have != want {
-// 		t.Fatalf("have=%s want=%s", have, want)
-// 	}
-// 
-// 	t.Logf("SQLite version %s", have)
-// 	var a []string
-// 	for i := 0; ; i++ {
-// 		p := Xsqlite3_compileoption_get(tls, int32(i))
-// 		if p == 0 {
-// 			break
-// 		}
-// 
-// 		if s := libc.GoString(p); !strings.HasPrefix(s, "COMPILER=") {
-// 			a = append(a, s)
-// 		}
-// 	}
-// 	have = strings.Join(a, "\n")
-// 	a = a[:0]
-// 	for i := 0; ; i++ {
-// 		p := sqliteprod.Xsqlite3_compileoption_get(tls, int32(i))
-// 		if p == 0 {
-// 			break
-// 		}
-// 
-// 		if s := libc.GoString(p); !strings.HasPrefix(s, "COMPILER=") {
-// 			a = append(a, s)
-// 		}
-// 	}
-// 	want = strings.Join(a, "\n")
-// 	if have != want {
-// 		diff := difflib.UnifiedDiff{
-// 			A:        difflib.SplitLines(want),
-// 			B:        difflib.SplitLines(have),
-// 			FromFile: "prod - want",
-// 			ToFile:   "prod - have",
-// 			Context:  3,
-// 		}
-// 		text, _ := difflib.GetUnifiedDiffString(diff)
-// 		t.Logf("\n%v", text)
-// 	}
-// 
-// 	fn := fmt.Sprintf("ccgo_%s_%s.go", goos, goarch)
-// 	if goos == "windows" {
-// 		fn = "ccgo_windows.go"
-// 	}
-// 	b, err := os.ReadFile(filepath.Join("internal", "testfixture", fn))
-// 	if err != nil {
-// 		t.Fatal(err)
-// 	}
-// 
-// 	s, b := string(b), nil
-// 	const (
-// 		tagPtrs = "var _sqlite3azCompileOpt = "
-// 		tagText = "var __ccgo_ts1 = "
-// 	)
-// 	x := strings.Index(s, tagPtrs)
-// 	if x < 0 {
-// 		t.Fatal(x)
-// 	}
-// 
-// 	s = s[x:]
-// 	x = strings.Index(s, "\n}")
-// 	if x < 0 {
-// 		t.Fatal(x)
-// 	}
-// 
-// 	ptrs := s[:x]
-// 	x = strings.Index(s, tagText)
-// 	if x < 0 {
-// 		t.Fatal(x)
-// 	}
-// 
-// 	text := s[x+len(tagText):]
-// 	x = strings.IndexByte(text, '\n')
-// 	if x > 0 {
-// 		text = text[:x]
-// 	}
-// 	if text, err = strconv.Unquote(text); err != nil {
-// 		t.Fatal(err)
-// 	}
-// 
-// 	a = a[:0]
-// 	for _, v := range strings.Split(ptrs, "\n") {
-// 		f := strings.Fields(v)
-// 		// ["0:" "__ccgo_ts" "+" "35651,"]
-// 		if len(f) == 4 && f[1] == "__ccgo_ts" {
-// 			s := f[3]
-// 			s = s[:len(s)-1]
-// 			p, err := strconv.ParseUint(s, 10, 32)
-// 			if err != nil {
-// 				t.Fatal(err)
-// 			}
-// 
-// 			text := text[p:]
-// 			x := strings.IndexByte(text, 0)
-// 			if x < 0 {
-// 				t.Fatal(err)
-// 			}
-// 
-// 			if s = text[:x]; !strings.HasPrefix(s, "COMPILER=") {
-// 				a = append(a, s)
-// 			}
-// 		}
-// 	}
-// 
-// 	have = strings.Join(a, "\n")
-// 	a = a[:0]
-// 	for i := 0; ; i++ {
-// 		p := sqlitetest.Xsqlite3_compileoption_get(tls, int32(i))
-// 		if p == 0 {
-// 			break
-// 		}
-// 
-// 		if s := libc.GoString(p); !strings.HasPrefix(s, "COMPILER=") {
-// 			a = append(a, s)
-// 		}
-// 	}
-// 	want = strings.Join(a, "\n")
-// 	if have != want {
-// 		diff := difflib.UnifiedDiff{
-// 			A:        difflib.SplitLines(want),
-// 			B:        difflib.SplitLines(have),
-// 			FromFile: "test - want",
-// 			ToFile:   "test - have",
-// 			Context:  3,
-// 		}
-// 		text, _ := difflib.GetUnifiedDiffString(diff)
-// 		t.Logf("\n%v", text)
-// 	}
-// }
+func TestOptions(t *testing.T) {
+	tls := libc.NewTLS()
+
+	defer tls.Close()
+
+	have := libc.GoString(Xsqlite3_libversion(tls))
+	want := libc.GoString(sqliteprod.Xsqlite3_libversion(tls))
+	if have != want {
+		t.Fatalf("have=%s want=%s", have, want)
+	}
+
+	t.Logf("SQLite version %s", have)
+	var a []string
+	for i := 0; ; i++ {
+		p := Xsqlite3_compileoption_get(tls, int32(i))
+		if p == 0 {
+			break
+		}
+
+		if s := libc.GoString(p); !strings.HasPrefix(s, "COMPILER=") {
+			a = append(a, s)
+		}
+	}
+	have = strings.Join(a, "\n")
+	a = a[:0]
+	for i := 0; ; i++ {
+		p := sqliteprod.Xsqlite3_compileoption_get(tls, int32(i))
+		if p == 0 {
+			break
+		}
+
+		if s := libc.GoString(p); !strings.HasPrefix(s, "COMPILER=") {
+			a = append(a, s)
+		}
+	}
+	want = strings.Join(a, "\n")
+	if have != want {
+		diff := difflib.UnifiedDiff{
+			A:        difflib.SplitLines(want),
+			B:        difflib.SplitLines(have),
+			FromFile: "prod - want",
+			ToFile:   "prod - have",
+			Context:  3,
+		}
+		text, _ := difflib.GetUnifiedDiffString(diff)
+		t.Logf("\n%v", text)
+	}
+
+	fn := fmt.Sprintf("ccgo_%s_%s.go", goos, goarch)
+	if goos == "windows" {
+		fn = "ccgo_windows.go"
+	}
+	b, err := os.ReadFile(filepath.Join("internal", "testfixture", fn))
+	if err != nil {
+		t.Fatal(err)
+	}
+
+	s, b := string(b), nil
+	const (
+		tagPtrs = "var _sqlite3azCompileOpt = "
+		tagText = "var __ccgo_ts1 = "
+	)
+	x := strings.Index(s, tagPtrs)
+	if x < 0 {
+		t.Fatal(x)
+	}
+
+	s = s[x:]
+	x = strings.Index(s, "\n}")
+	if x < 0 {
+		t.Fatal(x)
+	}
+
+	ptrs := s[:x]
+	x = strings.Index(s, tagText)
+	if x < 0 {
+		t.Fatal(x)
+	}
+
+	text := s[x+len(tagText):]
+	x = strings.IndexByte(text, '\n')
+	if x > 0 {
+		text = text[:x]
+	}
+	if text, err = strconv.Unquote(text); err != nil {
+		t.Fatal(err)
+	}
+
+	a = a[:0]
+	for _, v := range strings.Split(ptrs, "\n") {
+		f := strings.Fields(v)
+		// ["0:" "__ccgo_ts" "+" "35651,"]
+		if len(f) == 4 && f[1] == "__ccgo_ts" {
+			s := f[3]
+			s = s[:len(s)-1]
+			p, err := strconv.ParseUint(s, 10, 32)
+			if err != nil {
+				t.Fatal(err)
+			}
+
+			text := text[p:]
+			x := strings.IndexByte(text, 0)
+			if x < 0 {
+				t.Fatal(err)
+			}
+
+			if s = text[:x]; !strings.HasPrefix(s, "COMPILER=") {
+				a = append(a, s)
+			}
+		}
+	}
+
+	have = strings.Join(a, "\n")
+	a = a[:0]
+	for i := 0; ; i++ {
+		p := sqlitetest.Xsqlite3_compileoption_get(tls, int32(i))
+		if p == 0 {
+			break
+		}
+
+		if s := libc.GoString(p); !strings.HasPrefix(s, "COMPILER=") {
+			a = append(a, s)
+		}
+	}
+	want = strings.Join(a, "\n")
+	if have != want {
+		diff := difflib.UnifiedDiff{
+			A:        difflib.SplitLines(want),
+			B:        difflib.SplitLines(have),
+			FromFile: "test - want",
+			ToFile:   "test - have",
+			Context:  3,
+		}
+		text, _ := difflib.GetUnifiedDiffString(diff)
+		t.Logf("\n%v", text)
+	}
+}
