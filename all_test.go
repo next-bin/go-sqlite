@@ -56,6 +56,11 @@ func TestTclTest(t *testing.T) {
 		blacklist["symlink2.test"] = struct{}{}
 	}
 	switch target {
+	case "linux/arm64": // OOM killed on rpi5
+		// # This test causes thrashing on machines with smaller amounts of
+		// # memory.  Make sure the host has at least 8GB available before running
+		// # this test.
+		blacklist["bigsort.test"] = struct{}{}
 	case "linux/s390x":
 		// See https://gitlab.com/cznic/sqlite/-/issues/120#note_1362306424
 		// TODO Fixed in SQLite 3.42.0
