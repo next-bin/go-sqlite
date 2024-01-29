@@ -62,8 +62,6 @@ const m_MIXED = 4
 const m_NOPROP = 3
 const m_NUM_STATIC_TOKENS = 20
 const m_NWBDRY = 87
-const m_O_CREAT = 64
-const m_PATH_MAX = 4096
 const m_PLAIN = 112
 const m_PRIVATE_MP_PRIME_TAB_SIZE = 256
 const m_PSEUDO = 2
@@ -134,7 +132,6 @@ const m__SS_SIZE = 128
 const m__UTSNAME_LENGTH = 65
 const m___CHAR_BIT__ = 8
 const m___FD_SETSIZE = 1024
-const m___O_DIRECTORY = 16384
 const m___SHRT_MAX__ = 32767
 const m___SIGEV_MAX_SIZE = 64
 const m___SIZEOF_PTHREAD_ATTR_T = 64
@@ -147,8 +144,6 @@ const m___SIZEOF_PTHREAD_MUTEX_T = 48
 const m___SIZEOF_PTHREAD_RWLOCKATTR_T = 8
 const m___SIZEOF_PTHREAD_RWLOCK_T = 56
 const m___SI_MAX_SIZE = 128
-const m___STDLIB_MB_LEN_MAX = 16
-const m___USE_FORTIFY_LEVEL = 2
 
 type t__builtin_va_list = uintptr
 
@@ -753,6 +748,13 @@ type Textra_context = struct {
 type Tsve_context = struct {
 	Fhead       T_aarch64_ctx
 	Fvl         t__u16
+	Fflags      t__u16
+	F__reserved [2]t__u16
+}
+
+type Tza_context = struct {
+	Fhead       T_aarch64_ctx
+	Fvl         t__u16
 	F__reserved [3]t__u16
 }
 
@@ -1231,6 +1233,7 @@ type Tidtype_t = int32
 const _P_ALL = 0
 const _P_PID = 1
 const _P_PGID = 2
+const _P_PIDFD = 3
 
 type Tuint8_t = uint8
 
@@ -1703,12 +1706,6 @@ type Tip_opts = struct {
 	Fip_opts [40]uint8
 }
 
-type Tip_mreqn = struct {
-	Fimr_multiaddr Tin_addr
-	Fimr_address   Tin_addr
-	Fimr_ifindex   int32
-}
-
 type Tin_pktinfo = struct {
 	Fipi_ifindex  int32
 	Fipi_spec_dst Tin_addr
@@ -1806,6 +1803,12 @@ type Tsockaddr_in6 = struct {
 type Tip_mreq = struct {
 	Fimr_multiaddr Tin_addr
 	Fimr_interface Tin_addr
+}
+
+type Tip_mreqn = struct {
+	Fimr_multiaddr Tin_addr
+	Fimr_address   Tin_addr
+	Fimr_ifindex   int32
 }
 
 type Tip_mreq_source = struct {
@@ -183042,6 +183045,17 @@ func _FreeChannelInternalRep(tls *libc.TLS, objPtr uintptr) {
 	XTclpFree(tls, resPtr)
 }
 
+type TChannel1 = struct {
+	Fstate        uintptr
+	FinstanceData TClientData
+	FtypePtr      uintptr
+	FdownChanPtr  uintptr
+	FupChanPtr    uintptr
+	FinQueueHead  uintptr
+	FinQueueTail  uintptr
+	FrefCount     int32
+}
+
 type TChannelState1 = struct {
 	FchannelName         uintptr
 	Fflags               int32
@@ -183091,17 +183105,6 @@ type TCopyState1 = struct {
 	FcmdPtr     uintptr
 	FbufSize    int32
 	Fbuffer     [1]uint8
-}
-
-type TChannel1 = struct {
-	Fstate        uintptr
-	FinstanceData TClientData
-	FtypePtr      uintptr
-	FdownChanPtr  uintptr
-	FupChanPtr    uintptr
-	FinQueueHead  uintptr
-	FinQueueTail  uintptr
-	FrefCount     int32
 }
 
 const m_O_RDONLY = 0
@@ -190699,6 +190702,7 @@ func XTclCreateSocketAddress(tls *libc.TLS, interp uintptr, addrlist uintptr, ho
 }
 
 const m_O_APPEND = 1024
+const m_O_CREAT = 64
 const m_O_EXCL = 128
 const m_O_NOCTTY = 256
 const m_O_NONBLOCK = 2048
@@ -206447,14 +206451,6 @@ func XTcl_LogCommandInfo(tls *libc.TLS, interp uintptr, script uintptr, command 
 	XTclLogCommandInfo(tls, interp, script, command, length, libc.UintptrFromInt32(0), libc.UintptrFromInt32(0))
 }
 
-type TTcl_Namespace1 = struct {
-	Fname       uintptr
-	FfullName   uintptr
-	FclientData TClientData
-	FdeleteProc uintptr
-	FparentPtr  uintptr
-}
-
 type TNamespace1 = struct {
 	Fname                  uintptr
 	FfullName              uintptr
@@ -206484,6 +206480,14 @@ type TNamespace1 = struct {
 	FcommandPathArray      uintptr
 	FcommandPathSourceList uintptr
 	FearlyDeleteProc       uintptr
+}
+
+type TTcl_Namespace1 = struct {
+	Fname       uintptr
+	FfullName   uintptr
+	FclientData TClientData
+	FdeleteProc uintptr
+	FparentPtr  uintptr
 }
 
 const m_TCL_SERVICE_ALL = 1
@@ -271048,6 +271052,7 @@ const m_MAX_MEM_LEVEL = 9
 const m_MAX_WBITS = 15
 const m_MIN_NONSTREAM_BUFFER_SIZE = 16
 const m_OUT_HEADER = 4
+const m_PATH_MAX = 4096
 const m_STREAM_DECOMPRESS = 8
 const m_STREAM_DONE = 16
 const m_TCL_ZLIB_FORMAT_AUTO = 8
@@ -276111,7 +276116,6 @@ func XTclUnixWaitForFile(tls *libc.TLS, fd int32, mask int32, timeout int32) (r 
 	 * at all, and a value of -1 means wait
 	 * forever. */
 	var __arr, __arr1, __arr2, timeoutPtr uintptr
-	var __d, __d1, __d2, __d3, __d4, __d5, v4, v5, v6, v7, v8, v9 int64
 	var __i, __i1, __i2 uint32
 	var abortTime TTcl_Time
 	var numFound, result int32
@@ -276120,7 +276124,7 @@ func XTclUnixWaitForFile(tls *libc.TLS, fd int32, mask int32, timeout int32) (r 
 	var _ /* now at bp+0 */ TTcl_Time
 	var _ /* readableMask at bp+32 */ Tfd_set
 	var _ /* writableMask at bp+160 */ Tfd_set
-	_, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _ = __arr, __arr1, __arr2, __d, __d1, __d2, __d3, __d4, __d5, __i, __i1, __i2, abortTime, numFound, result, timeoutPtr, v4, v5, v6, v7, v8, v9
+	_, _, _, _, _, _, _, _, _, _ = __arr, __arr1, __arr2, __i, __i1, __i2, abortTime, numFound, result, timeoutPtr
 	abortTime = TTcl_Time{}
 	result = 0
 	/*
@@ -276209,50 +276213,26 @@ func XTclUnixWaitForFile(tls *libc.TLS, fd int32, mask int32, timeout int32) (r 
 		 * Setup the select masks for the fd.
 		 */
 		if mask&(libc.Int32FromInt32(1)<<libc.Int32FromInt32(1)) != 0 {
-			{
-				__d = int64(fd)
-				v4 = libc.X__fdelt_chk(tls, __d)
-			}
-			*(*t__fd_mask)(unsafe.Pointer(bp + 32 + uintptr(v4)*8)) |= int64(libc.Uint64FromUint64(1) << (fd % (libc.Int32FromInt32(8) * libc.Int32FromInt64(8))))
+			*(*t__fd_mask)(unsafe.Pointer(bp + 32 + uintptr(fd/(libc.Int32FromInt32(8)*libc.Int32FromInt64(8)))*8)) |= int64(libc.Uint64FromUint64(1) << (fd % (libc.Int32FromInt32(8) * libc.Int32FromInt64(8))))
 		}
 		if mask&(libc.Int32FromInt32(1)<<libc.Int32FromInt32(2)) != 0 {
-			{
-				__d1 = int64(fd)
-				v5 = libc.X__fdelt_chk(tls, __d1)
-			}
-			*(*t__fd_mask)(unsafe.Pointer(bp + 160 + uintptr(v5)*8)) |= int64(libc.Uint64FromUint64(1) << (fd % (libc.Int32FromInt32(8) * libc.Int32FromInt64(8))))
+			*(*t__fd_mask)(unsafe.Pointer(bp + 160 + uintptr(fd/(libc.Int32FromInt32(8)*libc.Int32FromInt64(8)))*8)) |= int64(libc.Uint64FromUint64(1) << (fd % (libc.Int32FromInt32(8) * libc.Int32FromInt64(8))))
 		}
 		if mask&(libc.Int32FromInt32(1)<<libc.Int32FromInt32(3)) != 0 {
-			{
-				__d2 = int64(fd)
-				v6 = libc.X__fdelt_chk(tls, __d2)
-			}
-			*(*t__fd_mask)(unsafe.Pointer(bp + 288 + uintptr(v6)*8)) |= int64(libc.Uint64FromUint64(1) << (fd % (libc.Int32FromInt32(8) * libc.Int32FromInt64(8))))
+			*(*t__fd_mask)(unsafe.Pointer(bp + 288 + uintptr(fd/(libc.Int32FromInt32(8)*libc.Int32FromInt64(8)))*8)) |= int64(libc.Uint64FromUint64(1) << (fd % (libc.Int32FromInt32(8) * libc.Int32FromInt64(8))))
 		}
 		/*
 		 * Wait for the event or a timeout.
 		 */
 		numFound = libc.Xselect(tls, fd+int32(1), bp+32, bp+160, bp+288, timeoutPtr)
 		if numFound == int32(1) {
-			{
-				__d3 = int64(fd)
-				v7 = libc.X__fdelt_chk(tls, __d3)
-			}
-			if *(*t__fd_mask)(unsafe.Pointer(bp + 32 + uintptr(v7)*8))&int64(libc.Uint64FromUint64(1)<<(fd%(libc.Int32FromInt32(8)*libc.Int32FromInt64(8)))) != 0 {
+			if *(*t__fd_mask)(unsafe.Pointer(bp + 32 + uintptr(fd/(libc.Int32FromInt32(8)*libc.Int32FromInt64(8)))*8))&int64(libc.Uint64FromUint64(1)<<(fd%(libc.Int32FromInt32(8)*libc.Int32FromInt64(8)))) != 0 {
 				result |= libc.Int32FromInt32(1) << libc.Int32FromInt32(1)
 			}
-			{
-				__d4 = int64(fd)
-				v8 = libc.X__fdelt_chk(tls, __d4)
-			}
-			if *(*t__fd_mask)(unsafe.Pointer(bp + 160 + uintptr(v8)*8))&int64(libc.Uint64FromUint64(1)<<(fd%(libc.Int32FromInt32(8)*libc.Int32FromInt64(8)))) != 0 {
+			if *(*t__fd_mask)(unsafe.Pointer(bp + 160 + uintptr(fd/(libc.Int32FromInt32(8)*libc.Int32FromInt64(8)))*8))&int64(libc.Uint64FromUint64(1)<<(fd%(libc.Int32FromInt32(8)*libc.Int32FromInt64(8)))) != 0 {
 				result |= libc.Int32FromInt32(1) << libc.Int32FromInt32(2)
 			}
-			{
-				__d5 = int64(fd)
-				v9 = libc.X__fdelt_chk(tls, __d5)
-			}
-			if *(*t__fd_mask)(unsafe.Pointer(bp + 288 + uintptr(v9)*8))&int64(libc.Uint64FromUint64(1)<<(fd%(libc.Int32FromInt32(8)*libc.Int32FromInt64(8)))) != 0 {
+			if *(*t__fd_mask)(unsafe.Pointer(bp + 288 + uintptr(fd/(libc.Int32FromInt32(8)*libc.Int32FromInt64(8)))*8))&int64(libc.Uint64FromUint64(1)<<(fd%(libc.Int32FromInt32(8)*libc.Int32FromInt64(8)))) != 0 {
 				result |= libc.Int32FromInt32(1) << libc.Int32FromInt32(3)
 			}
 			result &= mask
@@ -284676,9 +284656,8 @@ func XTcl_ServiceModeHook(tls *libc.TLS, mode int32) {
 
 func XTcl_CreateFileHandler(tls *libc.TLS, fd int32, mask int32, proc uintptr, clientData uintptr) {
 	/* Arbitrary data to pass to proc. */
-	var __d, __d1, __d2, __d3, __d4, __d5, v2, v3, v4, v5, v6, v7 int64
 	var filePtr, tsdPtr uintptr
-	_, _, _, _, _, _, _, _, _, _, _, _, _, _ = __d, __d1, __d2, __d3, __d4, __d5, filePtr, tsdPtr, v2, v3, v4, v5, v6, v7
+	_, _ = filePtr, tsdPtr
 	if XtclNotifierHooks.FcreateFileHandlerProc != 0 {
 		(*(*func(*libc.TLS, int32, int32, uintptr, TClientData))(unsafe.Pointer(&struct{ uintptr }{XtclNotifierHooks.FcreateFileHandlerProc})))(tls, fd, mask, proc, clientData)
 		return
@@ -284710,43 +284689,19 @@ func XTcl_CreateFileHandler(tls *libc.TLS, fd int32, mask int32, proc uintptr, c
 		 * Update the check masks for this file.
 		 */
 		if mask&(libc.Int32FromInt32(1)<<libc.Int32FromInt32(1)) != 0 {
-			{
-				__d = int64(fd)
-				v2 = libc.X__fdelt_chk(tls, __d)
-			}
-			*(*t__fd_mask)(unsafe.Pointer(tsdPtr + 8 + uintptr(v2)*8)) |= int64(libc.Uint64FromUint64(1) << (fd % (libc.Int32FromInt32(8) * libc.Int32FromInt64(8))))
+			*(*t__fd_mask)(unsafe.Pointer(tsdPtr + 8 + uintptr(fd/(libc.Int32FromInt32(8)*libc.Int32FromInt64(8)))*8)) |= int64(libc.Uint64FromUint64(1) << (fd % (libc.Int32FromInt32(8) * libc.Int32FromInt64(8))))
 		} else {
-			{
-				__d1 = int64(fd)
-				v3 = libc.X__fdelt_chk(tls, __d1)
-			}
-			*(*t__fd_mask)(unsafe.Pointer(tsdPtr + 8 + uintptr(v3)*8)) &= ^int64(libc.Uint64FromUint64(1) << (fd % (libc.Int32FromInt32(8) * libc.Int32FromInt64(8))))
+			*(*t__fd_mask)(unsafe.Pointer(tsdPtr + 8 + uintptr(fd/(libc.Int32FromInt32(8)*libc.Int32FromInt64(8)))*8)) &= ^int64(libc.Uint64FromUint64(1) << (fd % (libc.Int32FromInt32(8) * libc.Int32FromInt64(8))))
 		}
 		if mask&(libc.Int32FromInt32(1)<<libc.Int32FromInt32(2)) != 0 {
-			{
-				__d2 = int64(fd)
-				v4 = libc.X__fdelt_chk(tls, __d2)
-			}
-			*(*t__fd_mask)(unsafe.Pointer(tsdPtr + 8 + 128 + uintptr(v4)*8)) |= int64(libc.Uint64FromUint64(1) << (fd % (libc.Int32FromInt32(8) * libc.Int32FromInt64(8))))
+			*(*t__fd_mask)(unsafe.Pointer(tsdPtr + 8 + 128 + uintptr(fd/(libc.Int32FromInt32(8)*libc.Int32FromInt64(8)))*8)) |= int64(libc.Uint64FromUint64(1) << (fd % (libc.Int32FromInt32(8) * libc.Int32FromInt64(8))))
 		} else {
-			{
-				__d3 = int64(fd)
-				v5 = libc.X__fdelt_chk(tls, __d3)
-			}
-			*(*t__fd_mask)(unsafe.Pointer(tsdPtr + 8 + 128 + uintptr(v5)*8)) &= ^int64(libc.Uint64FromUint64(1) << (fd % (libc.Int32FromInt32(8) * libc.Int32FromInt64(8))))
+			*(*t__fd_mask)(unsafe.Pointer(tsdPtr + 8 + 128 + uintptr(fd/(libc.Int32FromInt32(8)*libc.Int32FromInt64(8)))*8)) &= ^int64(libc.Uint64FromUint64(1) << (fd % (libc.Int32FromInt32(8) * libc.Int32FromInt64(8))))
 		}
 		if mask&(libc.Int32FromInt32(1)<<libc.Int32FromInt32(3)) != 0 {
-			{
-				__d4 = int64(fd)
-				v6 = libc.X__fdelt_chk(tls, __d4)
-			}
-			*(*t__fd_mask)(unsafe.Pointer(tsdPtr + 8 + 256 + uintptr(v6)*8)) |= int64(libc.Uint64FromUint64(1) << (fd % (libc.Int32FromInt32(8) * libc.Int32FromInt64(8))))
+			*(*t__fd_mask)(unsafe.Pointer(tsdPtr + 8 + 256 + uintptr(fd/(libc.Int32FromInt32(8)*libc.Int32FromInt64(8)))*8)) |= int64(libc.Uint64FromUint64(1) << (fd % (libc.Int32FromInt32(8) * libc.Int32FromInt64(8))))
 		} else {
-			{
-				__d5 = int64(fd)
-				v7 = libc.X__fdelt_chk(tls, __d5)
-			}
-			*(*t__fd_mask)(unsafe.Pointer(tsdPtr + 8 + 256 + uintptr(v7)*8)) &= ^int64(libc.Uint64FromUint64(1) << (fd % (libc.Int32FromInt32(8) * libc.Int32FromInt64(8))))
+			*(*t__fd_mask)(unsafe.Pointer(tsdPtr + 8 + 256 + uintptr(fd/(libc.Int32FromInt32(8)*libc.Int32FromInt64(8)))*8)) &= ^int64(libc.Uint64FromUint64(1) << (fd % (libc.Int32FromInt32(8) * libc.Int32FromInt64(8))))
 		}
 		if (*TThreadSpecificData13)(unsafe.Pointer(tsdPtr)).FnumFdBits <= fd {
 			(*TThreadSpecificData13)(unsafe.Pointer(tsdPtr)).FnumFdBits = fd + int32(1)
@@ -284773,11 +284728,9 @@ func XTcl_CreateFileHandler(tls *libc.TLS, fd int32, mask int32, proc uintptr, c
 func XTcl_DeleteFileHandler(tls *libc.TLS, fd int32) {
 	/* Stream id for which to remove callback
 	 * function. */
-	var __d, __d1, __d2, __d3, __d4, __d5, v2, v3, v4, v6, v7, v9 int64
 	var filePtr, prevPtr, tsdPtr uintptr
 	var i, numFdBits int32
-	var v10, v8 bool
-	_, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _ = __d, __d1, __d2, __d3, __d4, __d5, filePtr, i, numFdBits, prevPtr, tsdPtr, v10, v2, v3, v4, v6, v7, v8, v9
+	_, _, _, _, _ = filePtr, i, numFdBits, prevPtr, tsdPtr
 	if XtclNotifierHooks.FdeleteFileHandlerProc != 0 {
 		(*(*func(*libc.TLS, int32))(unsafe.Pointer(&struct{ uintptr }{XtclNotifierHooks.FdeleteFileHandlerProc})))(tls, fd)
 		return
@@ -284804,25 +284757,13 @@ func XTcl_DeleteFileHandler(tls *libc.TLS, fd int32) {
 		 * Update the check masks for this file.
 		 */
 		if (*TFileHandler)(unsafe.Pointer(filePtr)).Fmask&(libc.Int32FromInt32(1)<<libc.Int32FromInt32(1)) != 0 {
-			{
-				__d = int64(fd)
-				v2 = libc.X__fdelt_chk(tls, __d)
-			}
-			*(*t__fd_mask)(unsafe.Pointer(tsdPtr + 8 + uintptr(v2)*8)) &= ^int64(libc.Uint64FromUint64(1) << (fd % (libc.Int32FromInt32(8) * libc.Int32FromInt64(8))))
+			*(*t__fd_mask)(unsafe.Pointer(tsdPtr + 8 + uintptr(fd/(libc.Int32FromInt32(8)*libc.Int32FromInt64(8)))*8)) &= ^int64(libc.Uint64FromUint64(1) << (fd % (libc.Int32FromInt32(8) * libc.Int32FromInt64(8))))
 		}
 		if (*TFileHandler)(unsafe.Pointer(filePtr)).Fmask&(libc.Int32FromInt32(1)<<libc.Int32FromInt32(2)) != 0 {
-			{
-				__d1 = int64(fd)
-				v3 = libc.X__fdelt_chk(tls, __d1)
-			}
-			*(*t__fd_mask)(unsafe.Pointer(tsdPtr + 8 + 128 + uintptr(v3)*8)) &= ^int64(libc.Uint64FromUint64(1) << (fd % (libc.Int32FromInt32(8) * libc.Int32FromInt64(8))))
+			*(*t__fd_mask)(unsafe.Pointer(tsdPtr + 8 + 128 + uintptr(fd/(libc.Int32FromInt32(8)*libc.Int32FromInt64(8)))*8)) &= ^int64(libc.Uint64FromUint64(1) << (fd % (libc.Int32FromInt32(8) * libc.Int32FromInt64(8))))
 		}
 		if (*TFileHandler)(unsafe.Pointer(filePtr)).Fmask&(libc.Int32FromInt32(1)<<libc.Int32FromInt32(3)) != 0 {
-			{
-				__d2 = int64(fd)
-				v4 = libc.X__fdelt_chk(tls, __d2)
-			}
-			*(*t__fd_mask)(unsafe.Pointer(tsdPtr + 8 + 256 + uintptr(v4)*8)) &= ^int64(libc.Uint64FromUint64(1) << (fd % (libc.Int32FromInt32(8) * libc.Int32FromInt64(8))))
+			*(*t__fd_mask)(unsafe.Pointer(tsdPtr + 8 + 256 + uintptr(fd/(libc.Int32FromInt32(8)*libc.Int32FromInt64(8)))*8)) &= ^int64(libc.Uint64FromUint64(1) << (fd % (libc.Int32FromInt32(8) * libc.Int32FromInt64(8))))
 		}
 		/*
 		 * Find current max fd.
@@ -284834,28 +284775,12 @@ func XTcl_DeleteFileHandler(tls *libc.TLS, fd int32) {
 				if !(i >= 0) {
 					break
 				}
-				{
-					__d3 = int64(i)
-					v6 = libc.X__fdelt_chk(tls, __d3)
-				}
-				if v8 = *(*t__fd_mask)(unsafe.Pointer(tsdPtr + 8 + uintptr(v6)*8))&int64(libc.Uint64FromUint64(1)<<(i%(libc.Int32FromInt32(8)*libc.Int32FromInt64(8)))) != 0; !v8 {
-					{
-						__d4 = int64(i)
-						v7 = libc.X__fdelt_chk(tls, __d4)
-					}
-				}
-				if v10 = v8 || *(*t__fd_mask)(unsafe.Pointer(tsdPtr + 8 + 128 + uintptr(v7)*8))&int64(libc.Uint64FromUint64(1)<<(i%(libc.Int32FromInt32(8)*libc.Int32FromInt64(8)))) != 0; !v10 {
-					{
-						__d5 = int64(i)
-						v9 = libc.X__fdelt_chk(tls, __d5)
-					}
-				}
-				if v10 || *(*t__fd_mask)(unsafe.Pointer(tsdPtr + 8 + 256 + uintptr(v9)*8))&int64(libc.Uint64FromUint64(1)<<(i%(libc.Int32FromInt32(8)*libc.Int32FromInt64(8)))) != 0 {
+				if *(*t__fd_mask)(unsafe.Pointer(tsdPtr + 8 + uintptr(i/(libc.Int32FromInt32(8)*libc.Int32FromInt64(8)))*8))&int64(libc.Uint64FromUint64(1)<<(i%(libc.Int32FromInt32(8)*libc.Int32FromInt64(8)))) != 0 || *(*t__fd_mask)(unsafe.Pointer(tsdPtr + 8 + 128 + uintptr(i/(libc.Int32FromInt32(8)*libc.Int32FromInt64(8)))*8))&int64(libc.Uint64FromUint64(1)<<(i%(libc.Int32FromInt32(8)*libc.Int32FromInt64(8)))) != 0 || *(*t__fd_mask)(unsafe.Pointer(tsdPtr + 8 + 256 + uintptr(i/(libc.Int32FromInt32(8)*libc.Int32FromInt64(8)))*8))&int64(libc.Uint64FromUint64(1)<<(i%(libc.Int32FromInt32(8)*libc.Int32FromInt64(8)))) != 0 {
 					numFdBits = i + int32(1)
 					break
 				}
-				goto _5
-			_5:
+				goto _2
+			_2:
 				i--
 			}
 			(*TThreadSpecificData13)(unsafe.Pointer(tsdPtr)).FnumFdBits = numFdBits
@@ -284965,12 +284890,11 @@ func XTcl_WaitForEvent(tls *libc.TLS, timePtr uintptr) (r int32) {
 	bp := tls.Alloc(32)
 	defer tls.Free(32) /* Maximum block time, or NULL. */
 	var __arr, __arr1, __arr2, fileEvPtr, filePtr, timeoutPtr, tsdPtr uintptr
-	var __d, __d1, __d2, v5, v6, v7 int64
 	var __i, __i1, __i2 uint32
 	var mask, numFound int32
 	var _ /* timeout at bp+16 */ Ttimeval
 	var _ /* vTime at bp+0 */ TTcl_Time
-	_, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _ = __arr, __arr1, __arr2, __d, __d1, __d2, __i, __i1, __i2, fileEvPtr, filePtr, mask, numFound, timeoutPtr, tsdPtr, v5, v6, v7
+	_, _, _, _, _, _, _, _, _, _, _, _ = __arr, __arr1, __arr2, __i, __i1, __i2, fileEvPtr, filePtr, mask, numFound, timeoutPtr, tsdPtr
 	if XtclNotifierHooks.FwaitForEventProc != 0 {
 		return (*(*func(*libc.TLS, uintptr) int32)(unsafe.Pointer(&struct{ uintptr }{XtclNotifierHooks.FwaitForEventProc})))(tls, timePtr)
 	} else {
@@ -285058,25 +284982,13 @@ func XTcl_WaitForEvent(tls *libc.TLS, timePtr uintptr) (r int32) {
 				break
 			}
 			mask = 0
-			{
-				__d = int64((*TFileHandler)(unsafe.Pointer(filePtr)).Ffd)
-				v5 = libc.X__fdelt_chk(tls, __d)
-			}
-			if *(*t__fd_mask)(unsafe.Pointer(tsdPtr + 392 + uintptr(v5)*8))&int64(libc.Uint64FromUint64(1)<<((*TFileHandler)(unsafe.Pointer(filePtr)).Ffd%(libc.Int32FromInt32(8)*libc.Int32FromInt64(8)))) != 0 {
+			if *(*t__fd_mask)(unsafe.Pointer(tsdPtr + 392 + uintptr((*TFileHandler)(unsafe.Pointer(filePtr)).Ffd/(libc.Int32FromInt32(8)*libc.Int32FromInt64(8)))*8))&int64(libc.Uint64FromUint64(1)<<((*TFileHandler)(unsafe.Pointer(filePtr)).Ffd%(libc.Int32FromInt32(8)*libc.Int32FromInt64(8)))) != 0 {
 				mask |= libc.Int32FromInt32(1) << libc.Int32FromInt32(1)
 			}
-			{
-				__d1 = int64((*TFileHandler)(unsafe.Pointer(filePtr)).Ffd)
-				v6 = libc.X__fdelt_chk(tls, __d1)
-			}
-			if *(*t__fd_mask)(unsafe.Pointer(tsdPtr + 392 + 128 + uintptr(v6)*8))&int64(libc.Uint64FromUint64(1)<<((*TFileHandler)(unsafe.Pointer(filePtr)).Ffd%(libc.Int32FromInt32(8)*libc.Int32FromInt64(8)))) != 0 {
+			if *(*t__fd_mask)(unsafe.Pointer(tsdPtr + 392 + 128 + uintptr((*TFileHandler)(unsafe.Pointer(filePtr)).Ffd/(libc.Int32FromInt32(8)*libc.Int32FromInt64(8)))*8))&int64(libc.Uint64FromUint64(1)<<((*TFileHandler)(unsafe.Pointer(filePtr)).Ffd%(libc.Int32FromInt32(8)*libc.Int32FromInt64(8)))) != 0 {
 				mask |= libc.Int32FromInt32(1) << libc.Int32FromInt32(2)
 			}
-			{
-				__d2 = int64((*TFileHandler)(unsafe.Pointer(filePtr)).Ffd)
-				v7 = libc.X__fdelt_chk(tls, __d2)
-			}
-			if *(*t__fd_mask)(unsafe.Pointer(tsdPtr + 392 + 256 + uintptr(v7)*8))&int64(libc.Uint64FromUint64(1)<<((*TFileHandler)(unsafe.Pointer(filePtr)).Ffd%(libc.Int32FromInt32(8)*libc.Int32FromInt64(8)))) != 0 {
+			if *(*t__fd_mask)(unsafe.Pointer(tsdPtr + 392 + 256 + uintptr((*TFileHandler)(unsafe.Pointer(filePtr)).Ffd/(libc.Int32FromInt32(8)*libc.Int32FromInt64(8)))*8))&int64(libc.Uint64FromUint64(1)<<((*TFileHandler)(unsafe.Pointer(filePtr)).Ffd%(libc.Int32FromInt32(8)*libc.Int32FromInt64(8)))) != 0 {
 				mask |= libc.Int32FromInt32(1) << libc.Int32FromInt32(3)
 			}
 			if !(mask != 0) {
@@ -299432,7 +299344,7 @@ func XTclBN_mp_clear(tls *libc.TLS, a uintptr) {
 /* LibTomMath, multiple-precision integer library -- Tom St Denis */
 /* SPDX-License-Identifier: Unlicense */
 
-/* Copyright (C) 1989-2021 Free Software Foundation, Inc.
+/* Copyright (C) 1989-2022 Free Software Foundation, Inc.
 
 This file is part of GCC.
 
@@ -300457,7 +300369,7 @@ func XTclBN_mp_init_copy(tls *libc.TLS, a uintptr, b uintptr) (r Tmp_err) {
 /* LibTomMath, multiple-precision integer library -- Tom St Denis */
 /* SPDX-License-Identifier: Unlicense */
 
-/* Copyright (C) 1989-2021 Free Software Foundation, Inc.
+/* Copyright (C) 1989-2022 Free Software Foundation, Inc.
 
 This file is part of GCC.
 
