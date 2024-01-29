@@ -61,7 +61,6 @@ func TestTclTest(t *testing.T) {
 		// # memory.  Make sure the host has at least 8GB available before running
 		// # this test.
 		blacklist["bigsort.test"] = struct{}{}
-	}
 	case "linux/s390x":
 		// See https://gitlab.com/cznic/sqlite/-/issues/120#note_1362306424
 		// TODO Fixed in SQLite 3.42.0
