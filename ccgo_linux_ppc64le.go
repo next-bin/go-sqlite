@@ -1,4 +1,4 @@
-// Code generated for linux/ppc64le by 'generator -mlong-double-64 --package-name libsqlite3 --prefix-enumerator=_ --prefix-external=x_ --prefix-field=F --prefix-macro=m_ --prefix-static-internal=_ --prefix-static-none=_ --prefix-tagged-enum=_ --prefix-tagged-struct=T --prefix-tagged-union=T --prefix-typename=T --prefix-undefined=_ -ignore-unsupported-alignment -DHAVE_USLEEP -DLONGDOUBLE_TYPE=double -DNDEBUG -DSQLITE_ENABLE_COLUMN_METADATA -DSQLITE_ENABLE_FTS5 -DSQLITE_ENABLE_GEOPOLY -DSQLITE_ENABLE_JSON1 -DSQLITE_ENABLE_MATH_FUNCTIONS -DSQLITE_ENABLE_MEMORY_MANAGEMENT -DSQLITE_ENABLE_OFFSET_SQL_FUNC -DSQLITE_ENABLE_PREUPDATE_HOOK -DSQLITE_ENABLE_RBU -DSQLITE_ENABLE_RTREE -DSQLITE_ENABLE_SESSION -DSQLITE_ENABLE_SNAPSHOT -DSQLITE_ENABLE_STAT4 -DSQLITE_ENABLE_UNLOCK_NOTIFY -DSQLITE_HAVE_ZLIB=1 -DSQLITE_LIKE_DOESNT_MATCH_BLOBS -DSQLITE_MUTEX_NOOP -DSQLITE_SOUNDEX -DSQLITE_THREADSAFE=1 -DSQLITE_WITHOUT_ZONEMALLOC -Dpread64=pread -Dpwrite64=pwrite -extended-errors -o sqlite3.go sqlite3.c -I/tmp/libsqlite3/sqlite-amalgamation-3370200/ccgo -DSQLITE_OS_UNIX=1', DO NOT EDIT.
+// Code generated for linux/ppc64le by 'generator -mlong-double-64 --package-name libsqlite3 --prefix-enumerator=_ --prefix-external=x_ --prefix-field=F --prefix-macro=m_ --prefix-static-internal=_ --prefix-static-none=_ --prefix-tagged-enum=_ --prefix-tagged-struct=T --prefix-tagged-union=T --prefix-typename=T --prefix-undefined=_ -ignore-unsupported-alignment -DHAVE_USLEEP -DLONGDOUBLE_TYPE=double -DNDEBUG -DSQLITE_DEFAULT_MEMSTATUS=0 -DSQLITE_ENABLE_COLUMN_METADATA -DSQLITE_ENABLE_FTS5 -DSQLITE_ENABLE_GEOPOLY -DSQLITE_ENABLE_JSON1 -DSQLITE_ENABLE_MATH_FUNCTIONS -DSQLITE_ENABLE_MEMORY_MANAGEMENT -DSQLITE_ENABLE_OFFSET_SQL_FUNC -DSQLITE_ENABLE_PREUPDATE_HOOK -DSQLITE_ENABLE_RBU -DSQLITE_ENABLE_RTREE -DSQLITE_ENABLE_SESSION -DSQLITE_ENABLE_SNAPSHOT -DSQLITE_ENABLE_STAT4 -DSQLITE_ENABLE_UNLOCK_NOTIFY -DSQLITE_HAVE_ZLIB=1 -DSQLITE_LIKE_DOESNT_MATCH_BLOBS -DSQLITE_MUTEX_NOOP -DSQLITE_SOUNDEX -DSQLITE_THREADSAFE=1 -DSQLITE_WITHOUT_ZONEMALLOC -Dpread64=pread -Dpwrite64=pwrite -extended-errors -o sqlite3.go sqlite3.c -I/tmp/libsqlite3/sqlite-amalgamation-3370200/ccgo -DSQLITE_OS_UNIX=1', DO NOT EDIT.
 
 //go:build linux && ppc64le
 // +build linux,ppc64le
@@ -967,7 +967,7 @@ const m_SQLITE_DBSTATUS_SCHEMA_USED = 2
 const m_SQLITE_DBSTATUS_STMT_USED = 3
 const m_SQLITE_DEFAULT_AUTOVACUUM = 0
 const m_SQLITE_DEFAULT_FILE_PERMISSIONS = 420
-const m_SQLITE_DEFAULT_MEMSTATUS = 1
+const m_SQLITE_DEFAULT_MEMSTATUS = 0
 const m_SQLITE_DEFAULT_MMAP_SIZE = 0
 const m_SQLITE_DEFAULT_PAGE_SIZE = 4096
 const m_SQLITE_DEFAULT_PCACHE_INITSZ = 20
@@ -9099,7 +9099,7 @@ type TPrintfArguments1 = struct {
 //	** only a handful of compile-time options, so most times this array is usually
 //	** rather short and uses little memory space.
 //	*/
-var _sqlite3azCompileOpt = [52]uintptr{
+var _sqlite3azCompileOpt = [53]uintptr{
 	0:  __ccgo_ts,
 	1:  __ccgo_ts + 20,
 	2:  __ccgo_ts + 49,
@@ -9108,54 +9108,55 @@ var _sqlite3azCompileOpt = [52]uintptr{
 	5:  __ccgo_ts + 115,
 	6:  __ccgo_ts + 145,
 	7:  __ccgo_ts + 165,
-	8:  __ccgo_ts + 188,
-	9:  __ccgo_ts + 213,
-	10: __ccgo_ts + 240,
-	11: __ccgo_ts + 265,
-	12: __ccgo_ts + 287,
-	13: __ccgo_ts + 319,
-	14: __ccgo_ts + 345,
-	15: __ccgo_ts + 370,
-	16: __ccgo_ts + 393,
-	17: __ccgo_ts + 405,
-	18: __ccgo_ts + 420,
-	19: __ccgo_ts + 433,
-	20: __ccgo_ts + 455,
-	21: __ccgo_ts + 480,
-	22: __ccgo_ts + 503,
-	23: __ccgo_ts + 525,
-	24: __ccgo_ts + 536,
-	25: __ccgo_ts + 549,
-	26: __ccgo_ts + 564,
-	27: __ccgo_ts + 580,
-	28: __ccgo_ts + 593,
-	29: __ccgo_ts + 614,
-	30: __ccgo_ts + 638,
-	31: __ccgo_ts + 661,
-	32: __ccgo_ts + 677,
-	33: __ccgo_ts + 693,
-	34: __ccgo_ts + 717,
-	35: __ccgo_ts + 744,
+	8:  __ccgo_ts + 185,
+	9:  __ccgo_ts + 208,
+	10: __ccgo_ts + 233,
+	11: __ccgo_ts + 260,
+	12: __ccgo_ts + 285,
+	13: __ccgo_ts + 307,
+	14: __ccgo_ts + 339,
+	15: __ccgo_ts + 365,
+	16: __ccgo_ts + 390,
+	17: __ccgo_ts + 413,
+	18: __ccgo_ts + 425,
+	19: __ccgo_ts + 440,
+	20: __ccgo_ts + 453,
+	21: __ccgo_ts + 475,
+	22: __ccgo_ts + 500,
+	23: __ccgo_ts + 523,
+	24: __ccgo_ts + 545,
+	25: __ccgo_ts + 556,
+	26: __ccgo_ts + 569,
+	27: __ccgo_ts + 584,
+	28: __ccgo_ts + 600,
+	29: __ccgo_ts + 613,
+	30: __ccgo_ts + 634,
+	31: __ccgo_ts + 658,
+	32: __ccgo_ts + 681,
+	33: __ccgo_ts + 697,
+	34: __ccgo_ts + 713,
+	35: __ccgo_ts + 737,
 	36: __ccgo_ts + 764,
-	37: __ccgo_ts + 785,
-	38: __ccgo_ts + 807,
-	39: __ccgo_ts + 837,
-	40: __ccgo_ts + 862,
-	41: __ccgo_ts + 888,
+	37: __ccgo_ts + 784,
+	38: __ccgo_ts + 805,
+	39: __ccgo_ts + 827,
+	40: __ccgo_ts + 857,
+	41: __ccgo_ts + 882,
 	42: __ccgo_ts + 908,
-	43: __ccgo_ts + 934,
-	44: __ccgo_ts + 957,
-	45: __ccgo_ts + 983,
-	46: __ccgo_ts + 1005,
-	47: __ccgo_ts + 1026,
-	48: __ccgo_ts + 1037,
-	49: __ccgo_ts + 1045,
-	50: __ccgo_ts + 1059,
-	51: __ccgo_ts + 1072,
+	43: __ccgo_ts + 928,
+	44: __ccgo_ts + 954,
+	45: __ccgo_ts + 977,
+	46: __ccgo_ts + 1003,
+	47: __ccgo_ts + 1025,
+	48: __ccgo_ts + 1046,
+	49: __ccgo_ts + 1057,
+	50: __ccgo_ts + 1065,
+	51: __ccgo_ts + 1079,
+	52: __ccgo_ts + 1092,
 }
 
 func _sqlite3CompileOptions(tls *libc.TLS, pnOpt uintptr) (r uintptr) {
-	*(*int32)(unsafe.Pointer(pnOpt)) = int32(libc.Uint64FromInt64(416) / libc.Uint64FromInt64(8))
+	*(*int32)(unsafe.Pointer(pnOpt)) = int32(libc.Uint64FromInt64(424) / libc.Uint64FromInt64(8))
 	return uintptr(unsafe.Pointer(&_sqlite3azCompileOpt))
 }
 
@@ -9749,7 +9750,6 @@ var _sqlite3CtypeMap = [256]uint8{
 //	** the SQLite library.
 //	*/
 var _sqlite3Config = TSqlite3Config{
-	FbMemstat:            int32(m_SQLITE_DEFAULT_MEMSTATUS),
 	FbCoreMutex:          uint8(1),
 	FbFullMutex:          libc.BoolUint8(true),
 	FbUseCis:             uint8(m_SQLITE_ALLOW_COVERING_INDEX_SCAN),
@@ -9974,12 +9974,12 @@ var _sqlite3StdTypeMap = [6]uint8{
 }
 
 var _sqlite3StdType = [6]uintptr{
-	0: __ccgo_ts + 1085,
-	1: __ccgo_ts + 1089,
-	2: __ccgo_ts + 1094,
-	3: __ccgo_ts + 1098,
-	4: __ccgo_ts + 1106,
-	5: __ccgo_ts + 1111,
+	0: __ccgo_ts + 1105,
+	1: __ccgo_ts + 1109,
+	2: __ccgo_ts + 1114,
+	3: __ccgo_ts + 1118,
+	4: __ccgo_ts + 1126,
+	5: __ccgo_ts + 1131,
 }
 
 /************** End of global.c **********************************************/
@@ -11075,7 +11075,7 @@ func _parseTimezone(tls *libc.TLS, zDate uintptr, p uintptr) (r int32) {
 		}
 	}
 	zDate++
-	if _getDigits(tls, zDate, __ccgo_ts+1116, libc.VaList(bp+16, bp, bp+4)) != int32(2) {
+	if _getDigits(tls, zDate, __ccgo_ts+1136, libc.VaList(bp+16, bp, bp+4)) != int32(2) {
 		return int32(1)
 	}
 	zDate += uintptr(5)
@@ -11107,13 +11107,13 @@ func _parseHhMmSs(tls *libc.TLS, zDate uintptr, p uintptr) (r int32) {
 	var _ /* s at bp+8 */ int32
 	_, _, _ = ms, rScale, v1
 	ms = float64(0)
-	if _getDigits(tls, zDate, __ccgo_ts+1124, libc.VaList(bp+24, bp, bp+4)) != int32(2) {
+	if _getDigits(tls, zDate, __ccgo_ts+1144, libc.VaList(bp+24, bp, bp+4)) != int32(2) {
 		return int32(1)
 	}
 	zDate += uintptr(5)
 	if int32(*(*uint8)(unsafe.Pointer(zDate))) == int32(':') {
 		zDate++
-		if _getDigits(tls, zDate, __ccgo_ts+1132, libc.VaList(bp+24, bp+8)) != int32(1) {
+		if _getDigits(tls, zDate, __ccgo_ts+1152, libc.VaList(bp+24, bp+8)) != int32(1) {
 			return int32(1)
 		}
 		zDate += uintptr(2)
@@ -11234,7 +11234,7 @@ func _parseYyyyMmDd(tls *libc.TLS, zDate uintptr, p uintptr) (r int32) {
 	} else {
 		neg = 0
 	}
-	if _getDigits(tls, zDate, __ccgo_ts+1136, libc.VaList(bp+24, bp, bp+4, bp+8)) != int32(3) {
+	if _getDigits(tls, zDate, __ccgo_ts+1156, libc.VaList(bp+24, bp, bp+4, bp+8)) != int32(3) {
 		return int32(1)
 	}
 	zDate += uintptr(10)
@@ -11329,7 +11329,7 @@ func _parseDateOrTime(tls *libc.TLS, context uintptr, zDate uintptr, p uintptr) 
 		if _parseHhMmSs(tls, zDate, p) == 0 {
 			return 0
 		} else {
-			if _sqlite3StrICmp(tls, zDate, __ccgo_ts+1148) == 0 && _sqlite3NotPureFunc(tls, context) != 0 {
+			if _sqlite3StrICmp(tls, zDate, __ccgo_ts+1168) == 0 && _sqlite3NotPureFunc(tls, context) != 0 {
 				return _setDateTimeToCurrent(tls, context, p)
 			} else {
 				if _sqlite3AtoF(tls, zDate, bp, _sqlite3Strlen30(tls, zDate), uint8(m_SQLITE_UTF8)) > 0 {
@@ -11542,7 +11542,7 @@ func _localtimeOffset(tls *libc.TLS, p uintptr, pCtx uintptr, pRc uintptr) (r Ts
 	_computeJD(tls, bp)
 	*(*Ttime_t)(unsafe.Pointer(bp + 96)) = (*(*TDateTime)(unsafe.Pointer(bp))).FiJD/libc.Int64FromInt32(1000) - libc.Int64FromInt32(21086676)*libc.Int64FromInt32(10000)
 	if _osLocaltime(tls, bp+96, bp+104) != 0 {
-		Xsqlite3_result_error(tls, pCtx, __ccgo_ts+1152, -int32(1))
+		Xsqlite3_result_error(tls, pCtx, __ccgo_ts+1172, -int32(1))
 		*(*int32)(unsafe.Pointer(pRc)) = int32(m_SQLITE_ERROR)
 		return 0
 	}
@@ -11582,39 +11582,39 @@ var _aXformType = [6]struct {
 }{
 	0: {
 		FnName:  uint8(6),
-		FzName:  __ccgo_ts + 1175,
+		FzName:  __ccgo_ts + 1195,
 		FrLimit: float64(4.642690608e+11),
 		FrXform: float64(1000),
 	},
 	1: {
 		FnName:  uint8(6),
-		FzName:  __ccgo_ts + 1182,
+		FzName:  __ccgo_ts + 1202,
 		FrLimit: float64(7.73781768e+09),
 		FrXform: float64(60000),
 	},
 	2: {
 		FnName:  uint8(4),
-		FzName:  __ccgo_ts + 1189,
+		FzName:  __ccgo_ts + 1209,
 		FrLimit: float64(1.28963628e+08),
 		FrXform: float64(3.6e+06),
 	},
 	3: {
 		FnName:  uint8(3),
-		FzName:  __ccgo_ts + 1194,
+		FzName:  __ccgo_ts + 1214,
 		FrLimit: float64(5.373485e+06),
 		FrXform: float64(8.64e+07),
 	},
 	4: {
 		FeType:  uint8(1),
 		FnName:  uint8(5),
-		FzName:  __ccgo_ts + 1198,
+		FzName:  __ccgo_ts + 1218,
 		FrLimit: float64(176546),
 		FrXform: float64(2.592e+09),
 	},
 	5: {
 		FeType:  uint8(2),
 		FnName:  uint8(4),
-		FzName:  __ccgo_ts + 1204,
+		FzName:  __ccgo_ts + 1224,
 		FrLimit: float64(14713),
 		FrXform: float64(3.1536e+10),
 	},
@@ -11666,7 +11666,7 @@ func _parseModifier(tls *libc.TLS, pCtx uintptr, z uintptr, n int32, p uintptr) 
 		 ** Assuming the current time value is UTC (a.k.a. GMT), shift it to
 		 ** show local time.
 		 */
-		if Xsqlite3_stricmp(tls, z, __ccgo_ts+1209) == 0 && _sqlite3NotPureFunc(tls, pCtx) != 0 {
+		if Xsqlite3_stricmp(tls, z, __ccgo_ts+1229) == 0 && _sqlite3NotPureFunc(tls, pCtx) != 0 {
 			_computeJD(tls, p)
 			*(*Tsqlite3_int64)(unsafe.Pointer(p)) += _localtimeOffset(tls, p, pCtx, bp)
 			_clearYMD_HMS_TZ(tls, p)
@@ -11678,7 +11678,7 @@ func _parseModifier(tls *libc.TLS, pCtx uintptr, z uintptr, n int32, p uintptr) 
 		 ** Treat the current value of p->s as the number of
 		 ** seconds since 1970.  Convert to a real julian day number.
 		 */
-		if Xsqlite3_stricmp(tls, z, __ccgo_ts+1219) == 0 && (*TDateTime)(unsafe.Pointer(p)).FrawS != 0 {
+		if Xsqlite3_stricmp(tls, z, __ccgo_ts+1239) == 0 && (*TDateTime)(unsafe.Pointer(p)).FrawS != 0 {
 			*(*float64)(unsafe.Pointer(bp + 8)) = (*TDateTime)(unsafe.Pointer(p)).Fs*float64(1000) + float64(2.1086676e+14)
 			if *(*float64)(unsafe.Pointer(bp + 8)) >= float64(0) && *(*float64)(unsafe.Pointer(bp + 8)) < float64(4.642690608e+14) {
 				_clearYMD_HMS_TZ(tls, p)
@@ -11688,7 +11688,7 @@ func _parseModifier(tls *libc.TLS, pCtx uintptr, z uintptr, n int32, p uintptr) 
 				*(*int32)(unsafe.Pointer(bp)) = 0
 			}
 		} else {
-			if Xsqlite3_stricmp(tls, z, __ccgo_ts+1229) == 0 && _sqlite3NotPureFunc(tls, pCtx) != 0 {
+			if Xsqlite3_stricmp(tls, z, __ccgo_ts+1249) == 0 && _sqlite3NotPureFunc(tls, pCtx) != 0 {
 				if int32((*TDateTime)(unsafe.Pointer(p)).FtzSet) == 0 {
 					_computeJD(tls, p)
 					c1 = _localtimeOffset(tls, p, pCtx, bp)
@@ -11704,7 +11704,7 @@ func _parseModifier(tls *libc.TLS, pCtx uintptr, z uintptr, n int32, p uintptr) 
 			}
 		}
 	case int32('w'):
-		if v2 = Xsqlite3_strnicmp(tls, z, __ccgo_ts+1233, int32(8)) == 0 && _sqlite3AtoF(tls, z+8, bp+8, _sqlite3Strlen30(tls, z+8), uint8(m_SQLITE_UTF8)) > 0; v2 {
+		if v2 = Xsqlite3_strnicmp(tls, z, __ccgo_ts+1253, int32(8)) == 0 && _sqlite3AtoF(tls, z+8, bp+8, _sqlite3Strlen30(tls, z+8), uint8(m_SQLITE_UTF8)) > 0; v2 {
 			v1 = int32(*(*float64)(unsafe.Pointer(bp + 8)))
 			n = v1
 		}
@@ -11728,7 +11728,7 @@ func _parseModifier(tls *libc.TLS, pCtx uintptr, z uintptr, n int32, p uintptr) 
 		 ** Move the date backwards to the beginning of the current day,
 		 ** or month or year.
 		 */
-		if Xsqlite3_strnicmp(tls, z, __ccgo_ts+1242, int32(9)) != 0 {
+		if Xsqlite3_strnicmp(tls, z, __ccgo_ts+1262, int32(9)) != 0 {
 			break
 		}
 		if !((*TDateTime)(unsafe.Pointer(p)).FvalidJD != 0) && !((*TDateTime)(unsafe.Pointer(p)).FvalidYMD != 0) && !((*TDateTime)(unsafe.Pointer(p)).FvalidHMS != 0) {
@@ -11744,16 +11744,16 @@ func _parseModifier(tls *libc.TLS, pCtx uintptr, z uintptr, n int32, p uintptr) 
 		(*TDateTime)(unsafe.Pointer(p)).FrawS = uint8(0)
 		(*TDateTime)(unsafe.Pointer(p)).FvalidTZ = uint8(0)
 		(*TDateTime)(unsafe.Pointer(p)).FvalidJD = uint8(0)
-		if Xsqlite3_stricmp(tls, z, __ccgo_ts+1198) == 0 {
+		if Xsqlite3_stricmp(tls, z, __ccgo_ts+1218) == 0 {
 			(*TDateTime)(unsafe.Pointer(p)).FD = int32(1)
 			*(*int32)(unsafe.Pointer(bp)) = 0
 		} else {
-			if Xsqlite3_stricmp(tls, z, __ccgo_ts+1204) == 0 {
+			if Xsqlite3_stricmp(tls, z, __ccgo_ts+1224) == 0 {
 				(*TDateTime)(unsafe.Pointer(p)).FM = int32(1)
 				(*TDateTime)(unsafe.Pointer(p)).FD = int32(1)
 				*(*int32)(unsafe.Pointer(bp)) = 0
 			} else {
-				if Xsqlite3_stricmp(tls, z, __ccgo_ts+1194) == 0 {
+				if Xsqlite3_stricmp(tls, z, __ccgo_ts+1214) == 0 {
 					*(*int32)(unsafe.Pointer(bp)) = 0
 				}
 			}
@@ -11975,7 +11975,7 @@ func _datetimeFunc(tls *libc.TLS, context uintptr, argc int32, argv uintptr) {
 	var _ /* zBuf at bp+48 */ [100]uint8
 	if _isDate(tls, context, argc, argv, bp) == 0 {
 		_computeYMD_HMS(tls, bp)
-		Xsqlite3_snprintf(tls, int32(100), bp+48, __ccgo_ts+1252, libc.VaList(bp+160, (*(*TDateTime)(unsafe.Pointer(bp))).FY, (*(*TDateTime)(unsafe.Pointer(bp))).FM, (*(*TDateTime)(unsafe.Pointer(bp))).FD, (*(*TDateTime)(unsafe.Pointer(bp))).Fh, (*(*TDateTime)(unsafe.Pointer(bp))).Fm, int32((*(*TDateTime)(unsafe.Pointer(bp))).Fs)))
+		Xsqlite3_snprintf(tls, int32(100), bp+48, __ccgo_ts+1272, libc.VaList(bp+160, (*(*TDateTime)(unsafe.Pointer(bp))).FY, (*(*TDateTime)(unsafe.Pointer(bp))).FM, (*(*TDateTime)(unsafe.Pointer(bp))).FD, (*(*TDateTime)(unsafe.Pointer(bp))).Fh, (*(*TDateTime)(unsafe.Pointer(bp))).Fm, int32((*(*TDateTime)(unsafe.Pointer(bp))).Fs)))
 		Xsqlite3_result_text(tls, context, bp+48, -int32(1), uintptr(-libc.Int32FromInt32(1)))
 	}
 }
@@ -11994,7 +11994,7 @@ func _timeFunc(tls *libc.TLS, context uintptr, argc int32, argv uintptr) {
 	var _ /* zBuf at bp+48 */ [100]uint8
 	if _isDate(tls, context, argc, argv, bp) == 0 {
 		_computeHMS(tls, bp)
-		Xsqlite3_snprintf(tls, int32(100), bp+48, __ccgo_ts+1282, libc.VaList(bp+160, (*(*TDateTime)(unsafe.Pointer(bp))).Fh, (*(*TDateTime)(unsafe.Pointer(bp))).Fm, int32((*(*TDateTime)(unsafe.Pointer(bp))).Fs)))
+		Xsqlite3_snprintf(tls, int32(100), bp+48, __ccgo_ts+1302, libc.VaList(bp+160, (*(*TDateTime)(unsafe.Pointer(bp))).Fh, (*(*TDateTime)(unsafe.Pointer(bp))).Fm, int32((*(*TDateTime)(unsafe.Pointer(bp))).Fs)))
 		Xsqlite3_result_text(tls, context, bp+48, -int32(1), uintptr(-libc.Int32FromInt32(1)))
 	}
 }
@@ -12013,7 +12013,7 @@ func _dateFunc(tls *libc.TLS, context uintptr, argc int32, argv uintptr) {
 	var _ /* zBuf at bp+48 */ [100]uint8
 	if _isDate(tls, context, argc, argv, bp) == 0 {
 		_computeYMD(tls, bp)
-		Xsqlite3_snprintf(tls, int32(100), bp+48, __ccgo_ts+1297, libc.VaList(bp+160, (*(*TDateTime)(unsafe.Pointer(bp))).FY, (*(*TDateTime)(unsafe.Pointer(bp))).FM, (*(*TDateTime)(unsafe.Pointer(bp))).FD))
+		Xsqlite3_snprintf(tls, int32(100), bp+48, __ccgo_ts+1317, libc.VaList(bp+160, (*(*TDateTime)(unsafe.Pointer(bp))).FY, (*(*TDateTime)(unsafe.Pointer(bp))).FM, (*(*TDateTime)(unsafe.Pointer(bp))).FD))
 		Xsqlite3_result_text(tls, context, bp+48, -int32(1), uintptr(-libc.Int32FromInt32(1)))
 	}
 }
@@ -12079,15 +12079,15 @@ func _strftimeFunc(tls *libc.TLS, context uintptr, argc int32, argv uintptr) {
 		j = i + uint64(1)
 		switch int32(*(*uint8)(unsafe.Pointer(zFmt + uintptr(i)))) {
 		case int32('d'):
-			Xsqlite3_str_appendf(tls, bp+48, __ccgo_ts+1312, libc.VaList(bp+136, (*(*TDateTime)(unsafe.Pointer(bp))).FD))
+			Xsqlite3_str_appendf(tls, bp+48, __ccgo_ts+1332, libc.VaList(bp+136, (*(*TDateTime)(unsafe.Pointer(bp))).FD))
 		case int32('f'):
 			s = (*(*TDateTime)(unsafe.Pointer(bp))).Fs
 			if s > float64(59.999) {
 				s = float64(59.999)
 			}
-			Xsqlite3_str_appendf(tls, bp+48, __ccgo_ts+1317, libc.VaList(bp+136, s))
+			Xsqlite3_str_appendf(tls, bp+48, __ccgo_ts+1337, libc.VaList(bp+136, s))
 		case int32('H'):
-			Xsqlite3_str_appendf(tls, bp+48, __ccgo_ts+1312, libc.VaList(bp+136, (*(*TDateTime)(unsafe.Pointer(bp))).Fh))
+			Xsqlite3_str_appendf(tls, bp+48, __ccgo_ts+1332, libc.VaList(bp+136, (*(*TDateTime)(unsafe.Pointer(bp))).Fh))
 		case int32('W'):
 			fallthrough
 		case int32('j'):
@@ -12099,25 +12099,25 @@ func _strftimeFunc(tls *libc.TLS, context uintptr, argc int32, argv uintptr) {
 			nDay = int32(((*(*TDateTime)(unsafe.Pointer(bp))).FiJD - (*(*TDateTime)(unsafe.Pointer(bp + 80))).FiJD + libc.Int64FromInt32(43200000)) / libc.Int64FromInt32(86400000))
 			if int32(*(*uint8)(unsafe.Pointer(zFmt + uintptr(i)))) == int32('W') { /* 0=Monday, 1=Tuesday, ... 6=Sunday */
 				wd = int32(((*(*TDateTime)(unsafe.Pointer(bp))).FiJD + libc.Int64FromInt32(43200000)) / libc.Int64FromInt32(86400000) % libc.Int64FromInt32(7))
-				Xsqlite3_str_appendf(tls, bp+48, __ccgo_ts+1312, libc.VaList(bp+136, (nDay+int32(7)-wd)/int32(7)))
+				Xsqlite3_str_appendf(tls, bp+48, __ccgo_ts+1332, libc.VaList(bp+136, (nDay+int32(7)-wd)/int32(7)))
 			} else {
-				Xsqlite3_str_appendf(tls, bp+48, __ccgo_ts+1324, libc.VaList(bp+136, nDay+int32(1)))
+				Xsqlite3_str_appendf(tls, bp+48, __ccgo_ts+1344, libc.VaList(bp+136, nDay+int32(1)))
 			}
 		case int32('J'):
-			Xsqlite3_str_appendf(tls, bp+48, __ccgo_ts+1329, libc.VaList(bp+136, float64((*(*TDateTime)(unsafe.Pointer(bp))).FiJD)/float64(8.64e+07)))
+			Xsqlite3_str_appendf(tls, bp+48, __ccgo_ts+1349, libc.VaList(bp+136, float64((*(*TDateTime)(unsafe.Pointer(bp))).FiJD)/float64(8.64e+07)))
 		case int32('m'):
-			Xsqlite3_str_appendf(tls, bp+48, __ccgo_ts+1312, libc.VaList(bp+136, (*(*TDateTime)(unsafe.Pointer(bp))).FM))
+			Xsqlite3_str_appendf(tls, bp+48, __ccgo_ts+1332, libc.VaList(bp+136, (*(*TDateTime)(unsafe.Pointer(bp))).FM))
 		case int32('M'):
-			Xsqlite3_str_appendf(tls, bp+48, __ccgo_ts+1312, libc.VaList(bp+136, (*(*TDateTime)(unsafe.Pointer(bp))).Fm))
+			Xsqlite3_str_appendf(tls, bp+48, __ccgo_ts+1332, libc.VaList(bp+136, (*(*TDateTime)(unsafe.Pointer(bp))).Fm))
 		case int32('s'):
 			iS = (*(*TDateTime)(unsafe.Pointer(bp))).FiJD/libc.Int64FromInt32(1000) - libc.Int64FromInt32(21086676)*libc.Int64FromInt32(10000)
-			Xsqlite3_str_appendf(tls, bp+48, __ccgo_ts+1335, libc.VaList(bp+136, iS))
+			Xsqlite3_str_appendf(tls, bp+48, __ccgo_ts+1355, libc.VaList(bp+136, iS))
 		case int32('S'):
-			Xsqlite3_str_appendf(tls, bp+48, __ccgo_ts+1312, libc.VaList(bp+136, int32((*(*TDateTime)(unsafe.Pointer(bp))).Fs)))
+			Xsqlite3_str_appendf(tls, bp+48, __ccgo_ts+1332, libc.VaList(bp+136, int32((*(*TDateTime)(unsafe.Pointer(bp))).Fs)))
 		case int32('w'):
 			Xsqlite3_str_appendchar(tls, bp+48, int32(1), uint8(int32(uint8(((*(*TDateTime)(unsafe.Pointer(bp))).FiJD+libc.Int64FromInt32(129600000))/libc.Int64FromInt32(86400000)%libc.Int64FromInt32(7)))+int32('0')))
 		case int32('Y'):
-			Xsqlite3_str_appendf(tls, bp+48, __ccgo_ts+1340, libc.VaList(bp+136, (*(*TDateTime)(unsafe.Pointer(bp))).FY))
+			Xsqlite3_str_appendf(tls, bp+48, __ccgo_ts+1360, libc.VaList(bp+136, (*(*TDateTime)(unsafe.Pointer(bp))).FY))
 		case int32('%'):
 			Xsqlite3_str_appendchar(tls, bp+48, int32(1), uint8('%'))
 		default:
@@ -12189,43 +12189,43 @@ var _aDateTimeFuncs = [8]TFuncDef{
 		FnArg:      int8(-int32(1)),
 		FfuncFlags: uint32(libc.Int32FromInt32(m_SQLITE_FUNC_BUILTIN) | libc.Int32FromInt32(m_SQLITE_FUNC_SLOCHNG) | libc.Int32FromInt32(m_SQLITE_UTF8) | libc.Int32FromInt32(m_SQLITE_FUNC_CONSTANT)),
 		FpUserData: uintptr(unsafe.Pointer(&_sqlite3Config)),
-		FzName:     __ccgo_ts + 1345,
+		FzName:     __ccgo_ts + 1365,
 	},
 	1: {
 		FnArg:      int8(-int32(1)),
 		FfuncFlags: uint32(libc.Int32FromInt32(m_SQLITE_FUNC_BUILTIN) | libc.Int32FromInt32(m_SQLITE_FUNC_SLOCHNG) | libc.Int32FromInt32(m_SQLITE_UTF8) | libc.Int32FromInt32(m_SQLITE_FUNC_CONSTANT)),
 		FpUserData: uintptr(unsafe.Pointer(&_sqlite3Config)),
-		FzName:     __ccgo_ts + 1355,
+		FzName:     __ccgo_ts + 1375,
 	},
 	2: {
 		FnArg:      int8(-int32(1)),
 		FfuncFlags: uint32(libc.Int32FromInt32(m_SQLITE_FUNC_BUILTIN) | libc.Int32FromInt32(m_SQLITE_FUNC_SLOCHNG) | libc.Int32FromInt32(m_SQLITE_UTF8) | libc.Int32FromInt32(m_SQLITE_FUNC_CONSTANT)),
 		FpUserData: uintptr(unsafe.Pointer(&_sqlite3Config)),
-		FzName:     __ccgo_ts + 1360,
+		FzName:     __ccgo_ts + 1380,
 	},
 	3: {
 		FnArg:      int8(-int32(1)),
 		FfuncFlags: uint32(libc.Int32FromInt32(m_SQLITE_FUNC_BUILTIN) | libc.Int32FromInt32(m_SQLITE_FUNC_SLOCHNG) | libc.Int32FromInt32(m_SQLITE_UTF8) | libc.Int32FromInt32(m_SQLITE_FUNC_CONSTANT)),
 		FpUserData: uintptr(unsafe.Pointer(&_sqlite3Config)),
-		FzName:     __ccgo_ts + 1365,
+		FzName:     __ccgo_ts + 1385,
 	},
 	4: {
 		FnArg:      int8(-int32(1)),
 		FfuncFlags: uint32(libc.Int32FromInt32(m_SQLITE_FUNC_BUILTIN) | libc.Int32FromInt32(m_SQLITE_FUNC_SLOCHNG) | libc.Int32FromInt32(m_SQLITE_UTF8) | libc.Int32FromInt32(m_SQLITE_FUNC_CONSTANT)),
 		FpUserData: uintptr(unsafe.Pointer(&_sqlite3Config)),
-		FzName:     __ccgo_ts + 1374,
+		FzName:     __ccgo_ts + 1394,
 	},
 	5: {
 		FfuncFlags: uint32(libc.Int32FromInt32(m_SQLITE_FUNC_BUILTIN) | libc.Int32FromInt32(m_SQLITE_FUNC_SLOCHNG) | libc.Int32FromInt32(m_SQLITE_UTF8)),
-		FzName:     __ccgo_ts + 1383,
+		FzName:     __ccgo_ts + 1403,
 	},
 	6: {
 		FfuncFlags: uint32(libc.Int32FromInt32(m_SQLITE_FUNC_BUILTIN) | libc.Int32FromInt32(m_SQLITE_FUNC_SLOCHNG) | libc.Int32FromInt32(m_SQLITE_UTF8)),
-		FzName:     __ccgo_ts + 1396,
+		FzName:     __ccgo_ts + 1416,
 	},
 	7: {
 		FfuncFlags: uint32(libc.Int32FromInt32(m_SQLITE_FUNC_BUILTIN) | libc.Int32FromInt32(m_SQLITE_FUNC_SLOCHNG) | libc.Int32FromInt32(m_SQLITE_UTF8)),
-		FzName:     __ccgo_ts + 1414,
+		FzName:     __ccgo_ts + 1434,
 	},
 }
 
@@ -12897,7 +12897,7 @@ func _sqlite3MemMalloc(tls *libc.TLS, nByte int32) (r uintptr) {
 		*(*Tsqlite3_int64)(unsafe.Pointer(p)) = int64(nByte)
 		p += 8
 	} else {
-		Xsqlite3_log(tls, int32(m_SQLITE_NOMEM), __ccgo_ts+1427, libc.VaList(bp+8, nByte))
+		Xsqlite3_log(tls, int32(m_SQLITE_NOMEM), __ccgo_ts+1447, libc.VaList(bp+8, nByte))
 	}
 	return p
 }
@@ -12962,7 +12962,7 @@ func _sqlite3MemRealloc(tls *libc.TLS, pPrior uintptr, nByte int32) (r uintptr) 
 		*(*Tsqlite3_int64)(unsafe.Pointer(p)) = int64(nByte)
 		p += 8
 	} else {
-		Xsqlite3_log(tls, int32(m_SQLITE_NOMEM), __ccgo_ts+1465, libc.VaList(bp+8, _sqlite3MemSize(tls, pPrior), nByte))
+		Xsqlite3_log(tls, int32(m_SQLITE_NOMEM), __ccgo_ts+1485, libc.VaList(bp+8, _sqlite3MemSize(tls, pPrior), nByte))
 	}
 	return p
 }
@@ -14783,7 +14783,7 @@ func Xsqlite3_str_vappendf(tls *libc.TLS, pAccum uintptr, fmt uintptr, ap Tva_li
 		v3 = int32(*(*uint8)(unsafe.Pointer(v4)))
 		c = v3
 		if v3 == 0 {
-			Xsqlite3_str_append(tls, pAccum, __ccgo_ts+1501, int32(1))
+			Xsqlite3_str_append(tls, pAccum, __ccgo_ts+1521, int32(1))
 			break
 		}
 		/* Find out what flags are present */
@@ -15195,7 +15195,7 @@ func Xsqlite3_str_vappendf(tls *libc.TLS, pAccum uintptr, fmt uintptr, ap Tva_li
 		/* Normalize realvalue to within 10.0 > realvalue >= 1.0 */
 		exp = 0
 		if _sqlite3IsNaN(tls, *(*float64)(unsafe.Pointer(bp))) != 0 {
-			bufpt = __ccgo_ts + 1503
+			bufpt = __ccgo_ts + 1523
 			length = int32(3)
 			goto _44
 		}
@@ -15225,7 +15225,7 @@ func Xsqlite3_str_vappendf(tls *libc.TLS, pAccum uintptr, fmt uintptr, ap Tva_li
 			if exp > int32(350) {
 				bufpt = bp + 12
 				(*(*[70]uint8)(unsafe.Pointer(bp + 12)))[0] = prefix
-				libc.Xmemcpy(tls, bp+12+libc.BoolUintptr(int32(prefix) != libc.Int32FromInt32(0)), __ccgo_ts+1507, uint64(4))
+				libc.Xmemcpy(tls, bp+12+libc.BoolUintptr(int32(prefix) != libc.Int32FromInt32(0)), __ccgo_ts+1527, uint64(4))
 				length = int32(3) + libc.BoolInt32(int32(prefix) != 0)
 				goto _44
 			}
@@ -15508,7 +15508,7 @@ func Xsqlite3_str_vappendf(tls *libc.TLS, pAccum uintptr, fmt uintptr, ap Tva_li
 			bufpt = libc.VaUintptr(&ap)
 		}
 		if bufpt == uintptr(0) {
-			bufpt = __ccgo_ts + 1511
+			bufpt = __ccgo_ts + 1531
 		} else {
 			if int32(xtype) == int32(m_etDYNSTRING) {
 				if (*Tsqlite3_str)(unsafe.Pointer(pAccum)).FnChar == uint32(0) && (*Tsqlite3_str)(unsafe.Pointer(pAccum)).FmxAlloc != 0 && width == 0 && precision < 0 && int32((*Tsqlite3_str)(unsafe.Pointer(pAccum)).FaccError) == 0 {
@@ -15591,9 +15591,9 @@ func Xsqlite3_str_vappendf(tls *libc.TLS, pAccum uintptr, fmt uintptr, ap Tva_li
 		isnull = libc.BoolInt32(escarg == uintptr(0))
 		if isnull != 0 {
 			if int32(xtype) == int32(m_etSQLESCAPE2) {
-				v92 = __ccgo_ts + 1512
+				v92 = __ccgo_ts + 1532
 			} else {
-				v92 = __ccgo_ts + 1517
+				v92 = __ccgo_ts + 1537
 			}
 			escarg = v92
 		}
@@ -15698,7 +15698,7 @@ func Xsqlite3_str_vappendf(tls *libc.TLS, pAccum uintptr, fmt uintptr, ap Tva_li
 			if (*TSrcItem)(unsafe.Pointer(pItem)).FzName != 0 {
 				if (*TSrcItem)(unsafe.Pointer(pItem)).FzDatabase != 0 {
 					Xsqlite3_str_appendall(tls, pAccum, (*TSrcItem)(unsafe.Pointer(pItem)).FzDatabase)
-					Xsqlite3_str_append(tls, pAccum, __ccgo_ts+1524, int32(1))
+					Xsqlite3_str_append(tls, pAccum, __ccgo_ts+1544, int32(1))
 				}
 				Xsqlite3_str_appendall(tls, pAccum, (*TSrcItem)(unsafe.Pointer(pItem)).FzName)
 			} else {
@@ -15706,7 +15706,7 @@ func Xsqlite3_str_vappendf(tls *libc.TLS, pAccum uintptr, fmt uintptr, ap Tva_li
 					Xsqlite3_str_appendall(tls, pAccum, (*TSrcItem)(unsafe.Pointer(pItem)).FzAlias)
 				} else {
 					if (*TSrcItem)(unsafe.Pointer(pItem)).FpSelect != 0 {
-						Xsqlite3_str_appendf(tls, pAccum, __ccgo_ts+1526, libc.VaList(bp+112, (*TSelect)(unsafe.Pointer((*TSrcItem)(unsafe.Pointer(pItem)).FpSelect)).FselId))
+						Xsqlite3_str_appendf(tls, pAccum, __ccgo_ts+1546, libc.VaList(bp+112, (*TSelect)(unsafe.Pointer((*TSrcItem)(unsafe.Pointer(pItem)).FpSelect)).FselId))
 					}
 				}
 			}
@@ -15944,7 +15944,7 @@ func _sqlite3ResultStrAccum(tls *libc.TLS, pCtx uintptr, p uintptr) {
 		if int32((*TStrAccum)(unsafe.Pointer(p)).FprintfFlags)&int32(m_SQLITE_PRINTF_MALLOCED) != 0 {
 			Xsqlite3_result_text(tls, pCtx, (*TStrAccum)(unsafe.Pointer(p)).FzText, int32((*TStrAccum)(unsafe.Pointer(p)).FnChar), __ccgo_fp(_sqlite3OomFault))
 		} else {
-			Xsqlite3_result_text(tls, pCtx, __ccgo_ts+1511, 0, libc.UintptrFromInt32(0))
+			Xsqlite3_result_text(tls, pCtx, __ccgo_ts+1531, 0, libc.UintptrFromInt32(0))
 			Xsqlite3_str_reset(tls, p)
 		}
 	}
@@ -18112,7 +18112,7 @@ func _compare2pow63(tls *libc.TLS, zNum uintptr, incr int32) (r int32) {
 	_, _, _ = c, i, pow63
 	c = 0
 	/* 012345678901234567 */
-	pow63 = __ccgo_ts + 1538
+	pow63 = __ccgo_ts + 1558
 	i = 0
 	for {
 		if !(c == 0 && i < int32(18)) {
@@ -18883,7 +18883,7 @@ func _sqlite3HexToBlob(tls *libc.TLS, db uintptr, z uintptr, n int32) (r uintptr
 func _logBadConnection(tls *libc.TLS, zType uintptr) {
 	bp := tls.Alloc(16)
 	defer tls.Free(16)
-	Xsqlite3_log(tls, int32(m_SQLITE_MISUSE), __ccgo_ts+1557, libc.VaList(bp+8, zType))
+	Xsqlite3_log(tls, int32(m_SQLITE_MISUSE), __ccgo_ts+1577, libc.VaList(bp+8, zType))
 }
 
 // C documentation
@@ -18906,13 +18906,13 @@ func _sqlite3SafetyCheckOk(tls *libc.TLS, db uintptr) (r int32) {
 	var eOpenState Tu8
 	_ = eOpenState
 	if db == uintptr(0) {
-		_logBadConnection(tls, __ccgo_ts+1512)
+		_logBadConnection(tls, __ccgo_ts+1532)
 		return 0
 	}
 	eOpenState = (*Tsqlite3)(unsafe.Pointer(db)).FeOpenState
 	if int32(eOpenState) != int32(m_SQLITE_STATE_OPEN) {
 		if _sqlite3SafetyCheckSickOrOk(tls, db) != 0 {
-			_logBadConnection(tls, __ccgo_ts+1602)
+			_logBadConnection(tls, __ccgo_ts+1622)
 		}
 		return 0
 	} else {
@@ -18926,7 +18926,7 @@ func _sqlite3SafetyCheckSickOrOk(tls *libc.TLS, db uintptr) (r int32) {
 	_ = eOpenState
 	eOpenState = (*Tsqlite3)(unsafe.Pointer(db)).FeOpenState
 	if int32(eOpenState) != int32(m_SQLITE_STATE_SICK) && int32(eOpenState) != int32(m_SQLITE_STATE_OPEN) && int32(eOpenState) != int32(m_SQLITE_STATE_BUSY) {
-		_logBadConnection(tls, __ccgo_ts+1611)
+		_logBadConnection(tls, __ccgo_ts+1631)
 		return 0
 	} else {
 		return int32(1)
@@ -19587,188 +19587,188 @@ func _sqlite3OpcodeName(tls *libc.TLS, i int32) (r uintptr) {
 }
 
 var _azName = [182]uintptr{
-	0:   __ccgo_ts + 1619,
-	1:   __ccgo_ts + 1629,
-	2:   __ccgo_ts + 1640,
-	3:   __ccgo_ts + 1652,
-	4:   __ccgo_ts + 1663,
-	5:   __ccgo_ts + 1668,
-	6:   __ccgo_ts + 1673,
-	7:   __ccgo_ts + 1684,
-	8:   __ccgo_ts + 1696,
-	9:   __ccgo_ts + 1703,
-	10:  __ccgo_ts + 1711,
-	11:  __ccgo_ts + 1719,
-	12:  __ccgo_ts + 1724,
-	13:  __ccgo_ts + 1730,
-	14:  __ccgo_ts + 1744,
-	15:  __ccgo_ts + 1750,
-	16:  __ccgo_ts + 1760,
-	17:  __ccgo_ts + 1765,
-	18:  __ccgo_ts + 1770,
-	19:  __ccgo_ts + 1773,
-	20:  __ccgo_ts + 1777,
-	21:  __ccgo_ts + 1783,
-	22:  __ccgo_ts + 1796,
-	23:  __ccgo_ts + 1806,
-	24:  __ccgo_ts + 1813,
-	25:  __ccgo_ts + 1820,
-	26:  __ccgo_ts + 1827,
-	27:  __ccgo_ts + 1834,
-	28:  __ccgo_ts + 1844,
-	29:  __ccgo_ts + 1853,
-	30:  __ccgo_ts + 1864,
-	31:  __ccgo_ts + 1873,
-	32:  __ccgo_ts + 1879,
-	33:  __ccgo_ts + 1889,
-	34:  __ccgo_ts + 1899,
-	35:  __ccgo_ts + 1904,
-	36:  __ccgo_ts + 1914,
-	37:  __ccgo_ts + 1925,
-	38:  __ccgo_ts + 1930,
-	39:  __ccgo_ts + 1937,
-	40:  __ccgo_ts + 1943,
-	41:  __ccgo_ts + 1949,
-	42:  __ccgo_ts + 1955,
-	43:  __ccgo_ts + 1961,
-	44:  __ccgo_ts + 1964,
-	45:  __ccgo_ts + 1968,
-	46:  __ccgo_ts + 1979,
-	47:  __ccgo_ts + 1990,
-	48:  __ccgo_ts + 1998,
-	49:  __ccgo_ts + 2007,
-	50:  __ccgo_ts + 2013,
-	51:  __ccgo_ts + 2020,
-	52:  __ccgo_ts + 2028,
-	53:  __ccgo_ts + 2031,
-	54:  __ccgo_ts + 2034,
-	55:  __ccgo_ts + 2037,
-	56:  __ccgo_ts + 2040,
-	57:  __ccgo_ts + 2043,
-	58:  __ccgo_ts + 2046,
-	59:  __ccgo_ts + 2053,
-	60:  __ccgo_ts + 2063,
-	61:  __ccgo_ts + 2076,
-	62:  __ccgo_ts + 2087,
-	63:  __ccgo_ts + 2093,
-	64:  __ccgo_ts + 2098,
-	65:  __ccgo_ts + 2107,
-	66:  __ccgo_ts + 2116,
-	67:  __ccgo_ts + 2123,
-	68:  __ccgo_ts + 2136,
-	69:  __ccgo_ts + 2147,
-	70:  __ccgo_ts + 2152,
-	71:  __ccgo_ts + 2160,
-	72:  __ccgo_ts + 2166,
-	73:  __ccgo_ts + 2173,
-	74:  __ccgo_ts + 2178,
-	75:  __ccgo_ts + 2187,
-	76:  __ccgo_ts + 2192,
-	77:  __ccgo_ts + 2201,
-	78:  __ccgo_ts + 2206,
-	79:  __ccgo_ts + 2211,
-	80:  __ccgo_ts + 2217,
-	81:  __ccgo_ts + 2225,
-	82:  __ccgo_ts + 2236,
-	83:  __ccgo_ts + 2246,
-	84:  __ccgo_ts + 2254,
-	85:  __ccgo_ts + 2261,
-	86:  __ccgo_ts + 2274,
-	87:  __ccgo_ts + 2279,
-	88:  __ccgo_ts + 2291,
-	89:  __ccgo_ts + 2299,
-	90:  __ccgo_ts + 2306,
-	91:  __ccgo_ts + 2317,
-	92:  __ccgo_ts + 2324,
-	93:  __ccgo_ts + 2331,
-	94:  __ccgo_ts + 2341,
-	95:  __ccgo_ts + 2350,
-	96:  __ccgo_ts + 2361,
-	97:  __ccgo_ts + 2367,
-	98:  __ccgo_ts + 2378,
-	99:  __ccgo_ts + 2388,
-	100: __ccgo_ts + 2398,
-	101: __ccgo_ts + 2407,
-	102: __ccgo_ts + 2417,
-	103: __ccgo_ts + 2424,
-	104: __ccgo_ts + 2430,
-	105: __ccgo_ts + 2440,
-	106: __ccgo_ts + 2451,
-	107: __ccgo_ts + 2455,
-	108: __ccgo_ts + 2464,
-	109: __ccgo_ts + 2473,
-	110: __ccgo_ts + 2480,
-	111: __ccgo_ts + 2490,
-	112: __ccgo_ts + 2497,
-	113: __ccgo_ts + 2505,
-	114: __ccgo_ts + 2512,
-	115: __ccgo_ts + 2526,
-	116: __ccgo_ts + 2540,
-	117: __ccgo_ts + 2548,
-	118: __ccgo_ts + 2559,
-	119: __ccgo_ts + 2572,
-	120: __ccgo_ts + 2583,
-	121: __ccgo_ts + 2589,
-	122: __ccgo_ts + 2601,
-	123: __ccgo_ts + 2610,
-	124: __ccgo_ts + 2618,
-	125: __ccgo_ts + 2627,
-	126: __ccgo_ts + 2636,
-	127: __ccgo_ts + 2643,
-	128: __ccgo_ts + 2651,
-	129: __ccgo_ts + 2658,
-	130: __ccgo_ts + 2669,
-	131: __ccgo_ts + 2683,
-	132: __ccgo_ts + 2694,
-	133: __ccgo_ts + 2702,
-	134: __ccgo_ts + 2708,
-	135: __ccgo_ts + 2716,
-	136: __ccgo_ts + 2724,
-	137: __ccgo_ts + 2734,
-	138: __ccgo_ts + 2747,
-	139: __ccgo_ts + 2757,
-	140: __ccgo_ts + 2770,
-	141: __ccgo_ts + 2779,
-	142: __ccgo_ts + 2790,
-	143: __ccgo_ts + 2798,
-	144: __ccgo_ts + 2804,
-	145: __ccgo_ts + 2816,
-	146: __ccgo_ts + 2828,
-	147: __ccgo_ts + 2836,
-	148: __ccgo_ts + 2848,
-	149: __ccgo_ts + 2861,
-	150: __ccgo_ts + 2871,
-	151: __ccgo_ts + 2881,
-	152: __ccgo_ts + 2893,
-	153: __ccgo_ts + 2898,
-	154: __ccgo_ts + 2910,
-	155: __ccgo_ts + 2920,
-	156: __ccgo_ts + 2926,
-	157: __ccgo_ts + 2936,
-	158: __ccgo_ts + 2943,
-	159: __ccgo_ts + 2955,
-	160: __ccgo_ts + 2966,
-	161: __ccgo_ts + 2974,
-	162: __ccgo_ts + 2983,
-	163: __ccgo_ts + 2992,
-	164: __ccgo_ts + 3001,
-	165: __ccgo_ts + 3008,
-	166: __ccgo_ts + 3019,
-	167: __ccgo_ts + 3032,
-	168: __ccgo_ts + 3042,
-	169: __ccgo_ts + 3049,
-	170: __ccgo_ts + 3057,
-	171: __ccgo_ts + 3066,
-	172: __ccgo_ts + 3072,
-	173: __ccgo_ts + 3080,
-	174: __ccgo_ts + 3088,
-	175: __ccgo_ts + 3098,
-	176: __ccgo_ts + 3107,
-	177: __ccgo_ts + 3113,
-	178: __ccgo_ts + 3124,
-	179: __ccgo_ts + 3135,
-	180: __ccgo_ts + 3140,
-	181: __ccgo_ts + 3148,
+	0:   __ccgo_ts + 1639,
+	1:   __ccgo_ts + 1649,
+	2:   __ccgo_ts + 1660,
+	3:   __ccgo_ts + 1672,
+	4:   __ccgo_ts + 1683,
+	5:   __ccgo_ts + 1688,
+	6:   __ccgo_ts + 1693,
+	7:   __ccgo_ts + 1704,
+	8:   __ccgo_ts + 1716,
+	9:   __ccgo_ts + 1723,
+	10:  __ccgo_ts + 1731,
+	11:  __ccgo_ts + 1739,
+	12:  __ccgo_ts + 1744,
+	13:  __ccgo_ts + 1750,
+	14:  __ccgo_ts + 1764,
+	15:  __ccgo_ts + 1770,
+	16:  __ccgo_ts + 1780,
+	17:  __ccgo_ts + 1785,
+	18:  __ccgo_ts + 1790,
+	19:  __ccgo_ts + 1793,
+	20:  __ccgo_ts + 1797,
+	21:  __ccgo_ts + 1803,
+	22:  __ccgo_ts + 1816,
+	23:  __ccgo_ts + 1826,
+	24:  __ccgo_ts + 1833,
+	25:  __ccgo_ts + 1840,
+	26:  __ccgo_ts + 1847,
+	27:  __ccgo_ts + 1854,
+	28:  __ccgo_ts + 1864,
+	29:  __ccgo_ts + 1873,
+	30:  __ccgo_ts + 1884,
+	31:  __ccgo_ts + 1893,
+	32:  __ccgo_ts + 1899,
+	33:  __ccgo_ts + 1909,
+	34:  __ccgo_ts + 1919,
+	35:  __ccgo_ts + 1924,
+	36:  __ccgo_ts + 1934,
+	37:  __ccgo_ts + 1945,
+	38:  __ccgo_ts + 1950,
+	39:  __ccgo_ts + 1957,
+	40:  __ccgo_ts + 1963,
+	41:  __ccgo_ts + 1969,
+	42:  __ccgo_ts + 1975,
+	43:  __ccgo_ts + 1981,
+	44:  __ccgo_ts + 1984,
+	45:  __ccgo_ts + 1988,
+	46:  __ccgo_ts + 1999,
+	47:  __ccgo_ts + 2010,
+	48:  __ccgo_ts + 2018,
+	49:  __ccgo_ts + 2027,
+	50:  __ccgo_ts + 2033,
+	51:  __ccgo_ts + 2040,
+	52:  __ccgo_ts + 2048,
+	53:  __ccgo_ts + 2051,
+	54:  __ccgo_ts + 2054,
+	55:  __ccgo_ts + 2057,
+	56:  __ccgo_ts + 2060,
+	57:  __ccgo_ts + 2063,
+	58:  __ccgo_ts + 2066,
+	59:  __ccgo_ts + 2073,
+	60:  __ccgo_ts + 2083,
+	61:  __ccgo_ts + 2096,
+	62:  __ccgo_ts + 2107,
+	63:  __ccgo_ts + 2113,
+	64:  __ccgo_ts + 2118,
+	65:  __ccgo_ts + 2127,
+	66:  __ccgo_ts + 2136,
+	67:  __ccgo_ts + 2143,
+	68:  __ccgo_ts + 2156,
+	69:  __ccgo_ts + 2167,
+	70:  __ccgo_ts + 2172,
+	71:  __ccgo_ts + 2180,
+	72:  __ccgo_ts + 2186,
+	73:  __ccgo_ts + 2193,
+	74:  __ccgo_ts + 2198,
+	75:  __ccgo_ts + 2207,
+	76:  __ccgo_ts + 2212,
+	77:  __ccgo_ts + 2221,
+	78:  __ccgo_ts + 2226,
+	79:  __ccgo_ts + 2231,
+	80:  __ccgo_ts + 2237,
+	81:  __ccgo_ts + 2245,
+	82:  __ccgo_ts + 2256,
+	83:  __ccgo_ts + 2266,
+	84:  __ccgo_ts + 2274,
+	85:  __ccgo_ts + 2281,
+	86:  __ccgo_ts + 2294,
+	87:  __ccgo_ts + 2299,
+	88:  __ccgo_ts + 2311,
+	89:  __ccgo_ts + 2319,
+	90:  __ccgo_ts + 2326,
+	91:  __ccgo_ts + 2337,
+	92:  __ccgo_ts + 2344,
+	93:  __ccgo_ts + 2351,
+	94:  __ccgo_ts + 2361,
+	95:  __ccgo_ts + 2370,
+	96:  __ccgo_ts + 2381,
+	97:  __ccgo_ts + 2387,
+	98:  __ccgo_ts + 2398,
+	99:  __ccgo_ts + 2408,
+	100: __ccgo_ts + 2418,
+	101: __ccgo_ts + 2427,
+	102: __ccgo_ts + 2437,
+	103: __ccgo_ts + 2444,
+	104: __ccgo_ts + 2450,
+	105: __ccgo_ts + 2460,
+	106: __ccgo_ts + 2471,
+	107: __ccgo_ts + 2475,
+	108: __ccgo_ts + 2484,
+	109: __ccgo_ts + 2493,
+	110: __ccgo_ts + 2500,
+	111: __ccgo_ts + 2510,
+	112: __ccgo_ts + 2517,
+	113: __ccgo_ts + 2525,
+	114: __ccgo_ts + 2532,
+	115: __ccgo_ts + 2546,
+	116: __ccgo_ts + 2560,
+	117: __ccgo_ts + 2568,
+	118: __ccgo_ts + 2579,
+	119: __ccgo_ts + 2592,
+	120: __ccgo_ts + 2603,
+	121: __ccgo_ts + 2609,
+	122: __ccgo_ts + 2621,
+	123: __ccgo_ts + 2630,
+	124: __ccgo_ts + 2638,
+	125: __ccgo_ts + 2647,
+	126: __ccgo_ts + 2656,
+	127: __ccgo_ts + 2663,
+	128: __ccgo_ts + 2671,
+	129: __ccgo_ts + 2678,
+	130: __ccgo_ts + 2689,
+	131: __ccgo_ts + 2703,
+	132: __ccgo_ts + 2714,
+	133: __ccgo_ts + 2722,
+	134: __ccgo_ts + 2728,
+	135: __ccgo_ts + 2736,
+	136: __ccgo_ts + 2744,
+	137: __ccgo_ts + 2754,
+	138: __ccgo_ts + 2767,
+	139: __ccgo_ts + 2777,
+	140: __ccgo_ts + 2790,
+	141: __ccgo_ts + 2799,
+	142: __ccgo_ts + 2810,
+	143: __ccgo_ts + 2818,
+	144: __ccgo_ts + 2824,
+	145: __ccgo_ts + 2836,
+	146: __ccgo_ts + 2848,
+	147: __ccgo_ts + 2856,
+	148: __ccgo_ts + 2868,
+	149: __ccgo_ts + 2881,
+	150: __ccgo_ts + 2891,
+	151: __ccgo_ts + 2901,
+	152: __ccgo_ts + 2913,
+	153: __ccgo_ts + 2918,
+	154: __ccgo_ts + 2930,
+	155: __ccgo_ts + 2940,
+	156: __ccgo_ts + 2946,
+	157: __ccgo_ts + 2956,
+	158: __ccgo_ts + 2963,
+	159: __ccgo_ts + 2975,
+	160: __ccgo_ts + 2986,
+	161: __ccgo_ts + 2994,
+	162: __ccgo_ts + 3003,
+	163: __ccgo_ts + 3012,
+	164: __ccgo_ts + 3021,
+	165: __ccgo_ts + 3028,
+	166: __ccgo_ts + 3039,
+	167: __ccgo_ts + 3052,
+	168: __ccgo_ts + 3062,
+	169: __ccgo_ts + 3069,
+	170: __ccgo_ts + 3077,
+	171: __ccgo_ts + 3086,
+	172: __ccgo_ts + 3092,
+	173: __ccgo_ts + 3100,
+	174: __ccgo_ts + 3108,
+	175: __ccgo_ts + 3118,
+	176: __ccgo_ts + 3127,
+	177: __ccgo_ts + 3133,
+	178: __ccgo_ts + 3144,
+	179: __ccgo_ts + 3155,
+	180: __ccgo_ts + 3160,
+	181: __ccgo_ts + 3168,
 }
 
 type Tstat = struct {
@@ -20459,91 +20459,91 @@ type Tunix_syscall = struct {
 //	*/
 var _aSyscall = [29]Tunix_syscall{
 	0: {
-		FzName: __ccgo_ts + 3158,
+		FzName: __ccgo_ts + 3178,
 	},
 	1: {
-		FzName: __ccgo_ts + 3163,
-	},
-	2: {
-		FzName: __ccgo_ts + 3169,
-	},
-	3: {
-		FzName: __ccgo_ts + 3176,
-	},
-	4: {
 		FzName: __ccgo_ts + 3183,
 	},
+	2: {
+		FzName: __ccgo_ts + 3189,
+	},
+	3: {
+		FzName: __ccgo_ts + 3196,
+	},
+	4: {
+		FzName: __ccgo_ts + 3203,
+	},
 	5: {
-		FzName: __ccgo_ts + 3188,
+		FzName: __ccgo_ts + 3208,
 	},
 	6: {
-		FzName: __ccgo_ts + 3194,
+		FzName: __ccgo_ts + 3214,
 	},
 	7: {
-		FzName: __ccgo_ts + 3204,
+		FzName: __ccgo_ts + 3224,
 	},
 	8: {
-		FzName: __ccgo_ts + 3210,
+		FzName: __ccgo_ts + 3230,
 	},
 	9: {
-		FzName: __ccgo_ts + 3215,
-	},
-	10: {
-		FzName: __ccgo_ts + 3221,
-	},
-	11: {
-		FzName: __ccgo_ts + 3229,
-	},
-	12: {
 		FzName: __ccgo_ts + 3235,
 	},
+	10: {
+		FzName: __ccgo_ts + 3241,
+	},
+	11: {
+		FzName: __ccgo_ts + 3249,
+	},
+	12: {
+		FzName: __ccgo_ts + 3255,
+	},
 	13: {
-		FzName: __ccgo_ts + 3242,
+		FzName: __ccgo_ts + 3262,
 	},
 	14: {
-		FzName: __ccgo_ts + 3251,
+		FzName: __ccgo_ts + 3271,
 	},
 	15: {
-		FzName: __ccgo_ts + 3258,
+		FzName: __ccgo_ts + 3278,
 	},
 	16: {
-		FzName: __ccgo_ts + 3268,
+		FzName: __ccgo_ts + 3288,
 	},
 	17: {
-		FzName: __ccgo_ts + 3275,
-	},
-	18: {
-		FzName: __ccgo_ts + 3289,
-	},
-	19: {
 		FzName: __ccgo_ts + 3295,
 	},
+	18: {
+		FzName: __ccgo_ts + 3309,
+	},
+	19: {
+		FzName: __ccgo_ts + 3315,
+	},
 	20: {
-		FzName: __ccgo_ts + 3301,
-	},
-	21: {
-		FzName: __ccgo_ts + 3308,
-	},
-	22: {
-		FzName: __ccgo_ts + 3316,
-	},
-	23: {
 		FzName: __ccgo_ts + 3321,
 	},
-	24: {
+	21: {
 		FzName: __ccgo_ts + 3328,
 	},
+	22: {
+		FzName: __ccgo_ts + 3336,
+	},
+	23: {
+		FzName: __ccgo_ts + 3341,
+	},
+	24: {
+		FzName: __ccgo_ts + 3348,
+	},
 	25: {
-		FzName: __ccgo_ts + 3335,
+		FzName: __ccgo_ts + 3355,
 	},
 	26: {
-		FzName: __ccgo_ts + 3347,
+		FzName: __ccgo_ts + 3367,
 	},
 	27: {
-		FzName: __ccgo_ts + 3356,
+		FzName: __ccgo_ts + 3376,
 	},
 	28: {
-		FzName: __ccgo_ts + 3362,
+		FzName: __ccgo_ts + 3382,
 	},
 }
 
@@ -20772,9 +20772,9 @@ func _robust_open(tls *libc.TLS, z uintptr, f int32, m Tmode_t) (r int32) {
 			break
 		}
 		(*(*func(*libc.TLS, int32) int32)(unsafe.Pointer(&struct{ uintptr }{_aSyscall[int32(1)].FpCurrent})))(tls, fd)
-		Xsqlite3_log(tls, int32(m_SQLITE_WARNING), __ccgo_ts+3368, libc.VaList(bp+152, z, fd))
+		Xsqlite3_log(tls, int32(m_SQLITE_WARNING), __ccgo_ts+3388, libc.VaList(bp+152, z, fd))
 		fd = -int32(1)
-		if (*(*func(*libc.TLS, uintptr, int32, int32) int32)(unsafe.Pointer(&struct{ uintptr }{_aSyscall[0].FpCurrent})))(tls, __ccgo_ts+3411, m_O_RDONLY, int32(m)) < 0 {
+		if (*(*func(*libc.TLS, uintptr, int32, int32) int32)(unsafe.Pointer(&struct{ uintptr }{_aSyscall[0].FpCurrent})))(tls, __ccgo_ts+3431, m_O_RDONLY, int32(m)) < 0 {
 			break
 		}
 	}
@@ -21086,11 +21086,11 @@ func _unixLogErrorAtLine(tls *libc.TLS, errcode int32, zFunc uintptr, zPath uint
 	 ** equivalent to errno. Otherwise, use strerror_r().
 	 */
 	/* This is a threadsafe build, but strerror_r() is not available. */
-	zErr = __ccgo_ts + 1511
+	zErr = __ccgo_ts + 1531
 	if zPath == uintptr(0) {
-		zPath = __ccgo_ts + 1511
+		zPath = __ccgo_ts + 1531
 	}
-	Xsqlite3_log(tls, errcode, __ccgo_ts+3421, libc.VaList(bp+8, iLine, iErrno, zFunc, zPath, zErr))
+	Xsqlite3_log(tls, errcode, __ccgo_ts+3441, libc.VaList(bp+8, iLine, iErrno, zFunc, zPath, zErr))
 	return errcode
 }
 
@@ -21118,7 +21118,7 @@ func _robust_close(tls *libc.TLS, pFile uintptr, h int32, lineno int32) {
 		} else {
 			v1 = uintptr(0)
 		}
-		_unixLogErrorAtLine(tls, libc.Int32FromInt32(m_SQLITE_IOERR)|libc.Int32FromInt32(16)<<libc.Int32FromInt32(8), __ccgo_ts+3163, v1, lineno)
+		_unixLogErrorAtLine(tls, libc.Int32FromInt32(m_SQLITE_IOERR)|libc.Int32FromInt32(16)<<libc.Int32FromInt32(8), __ccgo_ts+3183, v1, lineno)
 	}
 }
 
@@ -21297,19 +21297,19 @@ func _verifyDbFile(tls *libc.TLS, pFile uintptr) {
 	}
 	rc = (*(*func(*libc.TLS, int32, uintptr) int32)(unsafe.Pointer(&struct{ uintptr }{_aSyscall[int32(5)].FpCurrent})))(tls, (*TunixFile)(unsafe.Pointer(pFile)).Fh, bp)
 	if rc != 0 {
-		Xsqlite3_log(tls, int32(m_SQLITE_WARNING), __ccgo_ts+3452, libc.VaList(bp+152, (*TunixFile)(unsafe.Pointer(pFile)).FzPath))
+		Xsqlite3_log(tls, int32(m_SQLITE_WARNING), __ccgo_ts+3472, libc.VaList(bp+152, (*TunixFile)(unsafe.Pointer(pFile)).FzPath))
 		return
 	}
 	if (*(*Tstat)(unsafe.Pointer(bp))).Fst_nlink == uint64(0) {
-		Xsqlite3_log(tls, int32(m_SQLITE_WARNING), __ccgo_ts+3476, libc.VaList(bp+152, (*TunixFile)(unsafe.Pointer(pFile)).FzPath))
+		Xsqlite3_log(tls, int32(m_SQLITE_WARNING), __ccgo_ts+3496, libc.VaList(bp+152, (*TunixFile)(unsafe.Pointer(pFile)).FzPath))
 		return
 	}
 	if (*(*Tstat)(unsafe.Pointer(bp))).Fst_nlink > uint64(1) {
-		Xsqlite3_log(tls, int32(m_SQLITE_WARNING), __ccgo_ts+3505, libc.VaList(bp+152, (*TunixFile)(unsafe.Pointer(pFile)).FzPath))
+		Xsqlite3_log(tls, int32(m_SQLITE_WARNING), __ccgo_ts+3525, libc.VaList(bp+152, (*TunixFile)(unsafe.Pointer(pFile)).FzPath))
 		return
 	}
 	if _fileHasMoved(tls, pFile) != 0 {
-		Xsqlite3_log(tls, int32(m_SQLITE_WARNING), __ccgo_ts+3532, libc.VaList(bp+152, (*TunixFile)(unsafe.Pointer(pFile)).FzPath))
+		Xsqlite3_log(tls, int32(m_SQLITE_WARNING), __ccgo_ts+3552, libc.VaList(bp+152, (*TunixFile)(unsafe.Pointer(pFile)).FzPath))
 		return
 	}
 }
@@ -22451,7 +22451,7 @@ func _openDirectory(tls *libc.TLS, zFilename uintptr, pFd uintptr) (r int32) {
 	var _ /* zDirname at bp+0 */ [513]uint8
 	_, _ = fd, ii
 	fd = -int32(1)
-	Xsqlite3_snprintf(tls, int32(m_MAX_PATHNAME), bp, __ccgo_ts+3560, libc.VaList(bp+528, zFilename))
+	Xsqlite3_snprintf(tls, int32(m_MAX_PATHNAME), bp, __ccgo_ts+3580, libc.VaList(bp+528, zFilename))
 	ii = int32(libc.Xstrlen(tls, bp))
 	for {
 		if !(ii > 0 && int32((*(*[513]uint8)(unsafe.Pointer(bp)))[ii]) != int32('/')) {
@@ -22476,7 +22476,7 @@ func _openDirectory(tls *libc.TLS, zFilename uintptr, pFd uintptr) (r int32) {
 	if fd >= 0 {
 		return m_SQLITE_OK
 	}
-	return _unixLogErrorAtLine(tls, _sqlite3CantopenError(tls, int32(37953)), __ccgo_ts+3275, bp, int32(37953))
+	return _unixLogErrorAtLine(tls, _sqlite3CantopenError(tls, int32(37953)), __ccgo_ts+3295, bp, int32(37953))
 }
 
 // C documentation
@@ -22515,7 +22515,7 @@ func _unixSync(tls *libc.TLS, id uintptr, flags int32) (r int32) {
 	rc = _full_fsync(tls, (*TunixFile)(unsafe.Pointer(pFile)).Fh, isFullsync, isDataOnly)
 	if rc != 0 {
 		_storeLastErrno(tls, pFile, *(*int32)(unsafe.Pointer(libc.X__errno_location(tls))))
-		return _unixLogErrorAtLine(tls, libc.Int32FromInt32(m_SQLITE_IOERR)|libc.Int32FromInt32(4)<<libc.Int32FromInt32(8), __ccgo_ts+3563, (*TunixFile)(unsafe.Pointer(pFile)).FzPath, int32(37994))
+		return _unixLogErrorAtLine(tls, libc.Int32FromInt32(m_SQLITE_IOERR)|libc.Int32FromInt32(4)<<libc.Int32FromInt32(8), __ccgo_ts+3583, (*TunixFile)(unsafe.Pointer(pFile)).FzPath, int32(37994))
 	}
 	/* Also fsync the directory containing the file if the DIRSYNC flag
 	 ** is set.  This is a one-time occurrence.  Many systems (examples: AIX)
@@ -22558,7 +22558,7 @@ func _unixTruncate(tls *libc.TLS, id uintptr, nByte Ti64) (r int32) {
 	rc = _robust_ftruncate(tls, (*TunixFile)(unsafe.Pointer(pFile)).Fh, nByte)
 	if rc != 0 {
 		_storeLastErrno(tls, pFile, *(*int32)(unsafe.Pointer(libc.X__errno_location(tls))))
-		return _unixLogErrorAtLine(tls, libc.Int32FromInt32(m_SQLITE_IOERR)|libc.Int32FromInt32(6)<<libc.Int32FromInt32(8), __ccgo_ts+3194, (*TunixFile)(unsafe.Pointer(pFile)).FzPath, int32(38039))
+		return _unixLogErrorAtLine(tls, libc.Int32FromInt32(m_SQLITE_IOERR)|libc.Int32FromInt32(6)<<libc.Int32FromInt32(8), __ccgo_ts+3214, (*TunixFile)(unsafe.Pointer(pFile)).FzPath, int32(38039))
 	} else {
 		/* If the file was just truncated to a size smaller than the currently
 		 ** mapped region, reduce the effective mapping size as well. SQLite will
@@ -22642,7 +22642,7 @@ func _fcntlSizeHint(tls *libc.TLS, pFile uintptr, nByte Ti64) (r int32) {
 				if iWrite >= nSize {
 					iWrite = nSize - int64(1)
 				}
-				nWrite = _seekAndWrite(tls, pFile, iWrite, __ccgo_ts+1511, int32(1))
+				nWrite = _seekAndWrite(tls, pFile, iWrite, __ccgo_ts+1531, int32(1))
 				if nWrite != int32(1) {
 					return libc.Int32FromInt32(m_SQLITE_IOERR) | libc.Int32FromInt32(3)<<libc.Int32FromInt32(8)
 				}
@@ -22656,7 +22656,7 @@ func _fcntlSizeHint(tls *libc.TLS, pFile uintptr, nByte Ti64) (r int32) {
 		if (*TunixFile)(unsafe.Pointer(pFile)).FszChunk <= 0 {
 			if _robust_ftruncate(tls, (*TunixFile)(unsafe.Pointer(pFile)).Fh, nByte) != 0 {
 				_storeLastErrno(tls, pFile, *(*int32)(unsafe.Pointer(libc.X__errno_location(tls))))
-				return _unixLogErrorAtLine(tls, libc.Int32FromInt32(m_SQLITE_IOERR)|libc.Int32FromInt32(6)<<libc.Int32FromInt32(8), __ccgo_ts+3194, (*TunixFile)(unsafe.Pointer(pFile)).FzPath, int32(38160))
+				return _unixLogErrorAtLine(tls, libc.Int32FromInt32(m_SQLITE_IOERR)|libc.Int32FromInt32(6)<<libc.Int32FromInt32(8), __ccgo_ts+3214, (*TunixFile)(unsafe.Pointer(pFile)).FzPath, int32(38160))
 			}
 		}
 		rc = _unixMapfile(tls, pFile, nByte)
@@ -22722,7 +22722,7 @@ func _unixFileControl(tls *libc.TLS, id uintptr, op int32, pArg uintptr) (r int3
 		_unixModeBit(tls, pFile, uint8(m_UNIXFILE_PSOW), pArg)
 		return m_SQLITE_OK
 	case int32(m_SQLITE_FCNTL_VFSNAME):
-		*(*uintptr)(unsafe.Pointer(pArg)) = Xsqlite3_mprintf(tls, __ccgo_ts+3560, libc.VaList(bp+8, (*Tsqlite3_vfs)(unsafe.Pointer((*TunixFile)(unsafe.Pointer(pFile)).FpVfs)).FzName))
+		*(*uintptr)(unsafe.Pointer(pArg)) = Xsqlite3_mprintf(tls, __ccgo_ts+3580, libc.VaList(bp+8, (*Tsqlite3_vfs)(unsafe.Pointer((*TunixFile)(unsafe.Pointer(pFile)).FpVfs)).FzName))
 		return m_SQLITE_OK
 	case int32(m_SQLITE_FCNTL_TEMPFILENAME):
 		zTFile = Xsqlite3_malloc64(tls, uint64((*Tsqlite3_vfs)(unsafe.Pointer((*TunixFile)(unsafe.Pointer(pFile)).FpVfs)).FmxPathname))
@@ -23104,7 +23104,7 @@ func _unixLockSharedMemory(tls *libc.TLS, pDbFd uintptr, pShmNode uintptr) (r in
 				 ** help detect if a -shm file truncation is legitimate or is the work
 				 ** or a rogue process. */
 				if rc == m_SQLITE_OK && _robust_ftruncate(tls, (*TunixShmNode)(unsafe.Pointer(pShmNode)).FhShm, int64(3)) != 0 {
-					rc = _unixLogErrorAtLine(tls, libc.Int32FromInt32(m_SQLITE_IOERR)|libc.Int32FromInt32(18)<<libc.Int32FromInt32(8), __ccgo_ts+3194, (*TunixShmNode)(unsafe.Pointer(pShmNode)).FzFilename, int32(38776))
+					rc = _unixLogErrorAtLine(tls, libc.Int32FromInt32(m_SQLITE_IOERR)|libc.Int32FromInt32(18)<<libc.Int32FromInt32(8), __ccgo_ts+3214, (*TunixShmNode)(unsafe.Pointer(pShmNode)).FzFilename, int32(38776))
 				}
 			}
 		} else {
@@ -23200,7 +23200,7 @@ func _unixOpenSharedMemory(tls *libc.TLS, pDbFd uintptr) (r int32) {
 		v1 = pShmNode + 1*96
 		(*TunixShmNode1)(unsafe.Pointer(pShmNode)).FzFilename = v1
 		zShm = v1
-		Xsqlite3_snprintf(tls, nShmFilename, zShm, __ccgo_ts+3574, libc.VaList(bp+152, zBasePath))
+		Xsqlite3_snprintf(tls, nShmFilename, zShm, __ccgo_ts+3594, libc.VaList(bp+152, zBasePath))
 		(*TunixShmNode1)(unsafe.Pointer(pShmNode)).FhShm = -int32(1)
 		(*TunixInodeInfo)(unsafe.Pointer((*TunixFile)(unsafe.Pointer(pDbFd)).FpInode)).FpShmNode = pShmNode
 		(*TunixShmNode1)(unsafe.Pointer(pShmNode)).FpInode = (*TunixFile)(unsafe.Pointer(pDbFd)).FpInode
@@ -23212,13 +23212,13 @@ func _unixOpenSharedMemory(tls *libc.TLS, pDbFd uintptr) (r int32) {
 			}
 		}
 		if int32((*TunixInodeInfo)(unsafe.Pointer(pInode)).FbProcessLock) == 0 {
-			if 0 == Xsqlite3_uri_boolean(tls, (*TunixFile)(unsafe.Pointer(pDbFd)).FzPath, __ccgo_ts+3581, 0) {
+			if 0 == Xsqlite3_uri_boolean(tls, (*TunixFile)(unsafe.Pointer(pDbFd)).FzPath, __ccgo_ts+3601, 0) {
 				(*TunixShmNode1)(unsafe.Pointer(pShmNode)).FhShm = _robust_open(tls, zShm, libc.Int32FromInt32(m_O_RDWR)|libc.Int32FromInt32(m_O_CREAT)|libc.Int32FromInt32(m___O_NOFOLLOW), (*(*Tstat)(unsafe.Pointer(bp))).Fst_mode&libc.Uint32FromInt32(0777))
 			}
 			if (*TunixShmNode1)(unsafe.Pointer(pShmNode)).FhShm < 0 {
 				(*TunixShmNode1)(unsafe.Pointer(pShmNode)).FhShm = _robust_open(tls, zShm, libc.Int32FromInt32(m_O_RDONLY)|libc.Int32FromInt32(m___O_NOFOLLOW), (*(*Tstat)(unsafe.Pointer(bp))).Fst_mode&libc.Uint32FromInt32(0777))
 				if (*TunixShmNode1)(unsafe.Pointer(pShmNode)).FhShm < 0 {
-					rc = _unixLogErrorAtLine(tls, _sqlite3CantopenError(tls, int32(38901)), __ccgo_ts+3158, zShm, int32(38901))
+					rc = _unixLogErrorAtLine(tls, _sqlite3CantopenError(tls, int32(38901)), __ccgo_ts+3178, zShm, int32(38901))
 					goto shm_open_err
 				}
 				(*TunixShmNode1)(unsafe.Pointer(pShmNode)).FisReadonly = uint8(1)
@@ -23341,9 +23341,9 @@ func _unixShmMap(tls *libc.TLS, fd uintptr, iRegion int32, szRegion int32, bExte
 							break
 						}
 						*(*int32)(unsafe.Pointer(bp + 144)) = 0
-						if _seekAndWriteFd(tls, (*TunixShmNode)(unsafe.Pointer(pShmNode)).FhShm, int64(iPg*_pgsz+_pgsz-int32(1)), __ccgo_ts+1511, int32(1), bp+144) != int32(1) {
+						if _seekAndWriteFd(tls, (*TunixShmNode)(unsafe.Pointer(pShmNode)).FhShm, int64(iPg*_pgsz+_pgsz-int32(1)), __ccgo_ts+1531, int32(1), bp+144) != int32(1) {
 							zFile = (*TunixShmNode)(unsafe.Pointer(pShmNode)).FzFilename
-							rc = _unixLogErrorAtLine(tls, libc.Int32FromInt32(m_SQLITE_IOERR)|libc.Int32FromInt32(19)<<libc.Int32FromInt32(8), __ccgo_ts+3229, zFile, int32(39045))
+							rc = _unixLogErrorAtLine(tls, libc.Int32FromInt32(m_SQLITE_IOERR)|libc.Int32FromInt32(19)<<libc.Int32FromInt32(8), __ccgo_ts+3249, zFile, int32(39045))
 							goto shmpage_out
 						}
 						goto _1
@@ -23370,7 +23370,7 @@ func _unixShmMap(tls *libc.TLS, fd uintptr, iRegion int32, szRegion int32, bExte
 				}
 				pMem = (*(*func(*libc.TLS, uintptr, Tsize_t, int32, int32, int32, Toff_t) uintptr)(unsafe.Pointer(&struct{ uintptr }{_aSyscall[int32(22)].FpCurrent})))(tls, uintptr(0), uint64(nMap), v2, int32(m_MAP_SHARED), (*TunixShmNode)(unsafe.Pointer(pShmNode)).FhShm, int64(szRegion)*int64((*TunixShmNode)(unsafe.Pointer(pShmNode)).FnRegion))
 				if pMem == uintptr(-libc.Int32FromInt32(1)) {
-					rc = _unixLogErrorAtLine(tls, libc.Int32FromInt32(m_SQLITE_IOERR)|libc.Int32FromInt32(21)<<libc.Int32FromInt32(8), __ccgo_ts+3316, (*TunixShmNode)(unsafe.Pointer(pShmNode)).FzFilename, int32(39072))
+					rc = _unixLogErrorAtLine(tls, libc.Int32FromInt32(m_SQLITE_IOERR)|libc.Int32FromInt32(21)<<libc.Int32FromInt32(8), __ccgo_ts+3336, (*TunixShmNode)(unsafe.Pointer(pShmNode)).FzFilename, int32(39072))
 					goto shmpage_out
 				}
 			} else {
@@ -23670,7 +23670,7 @@ func _unixRemapfile(tls *libc.TLS, pFd uintptr, nNew Ti64) {
 	var pNew, pOrig, pReq, zErr uintptr
 	var v1 Tsqlite3_int64
 	_, _, _, _, _, _, _, _, _ = flags, h, nOrig, nReuse, pNew, pOrig, pReq, zErr, v1
-	zErr = __ccgo_ts + 3316
+	zErr = __ccgo_ts + 3336
 	h = (*TunixFile)(unsafe.Pointer(pFd)).Fh                  /* File descriptor open on db file */
 	pOrig = (*TunixFile)(unsafe.Pointer(pFd)).FpMapRegion     /* Pointer to current file mapping */
 	nOrig = (*TunixFile)(unsafe.Pointer(pFd)).FmmapSizeActual /* Size of pOrig region in bytes */
@@ -23690,7 +23690,7 @@ func _unixRemapfile(tls *libc.TLS, pFd uintptr, nNew Ti64) {
 			(*(*func(*libc.TLS, uintptr, Tsize_t) int32)(unsafe.Pointer(&struct{ uintptr }{_aSyscall[int32(23)].FpCurrent})))(tls, pReq, uint64(nOrig-nReuse))
 		}
 		pNew = (*(*func(*libc.TLS, uintptr, Tsize_t, Tsize_t, int32, uintptr) uintptr)(unsafe.Pointer(&struct{ uintptr }{_aSyscall[int32(24)].FpCurrent})))(tls, pOrig, uint64(nReuse), uint64(nNew), int32(m_MREMAP_MAYMOVE), 0)
-		zErr = __ccgo_ts + 3328
+		zErr = __ccgo_ts + 3348
 		/* The attempt to extend the existing mapping failed. Free it. */
 		if pNew == uintptr(-libc.Int32FromInt32(1)) || pNew == uintptr(0) {
 			(*(*func(*libc.TLS, uintptr, Tsize_t) int32)(unsafe.Pointer(&struct{ uintptr }{_aSyscall[int32(23)].FpCurrent})))(tls, pOrig, uint64(nReuse))
@@ -24040,11 +24040,11 @@ func _fillInUnixFile(tls *libc.TLS, pVfs uintptr, h int32, pId uintptr, zFilenam
 	} else {
 		v1 = uintptr(0)
 	}
-	if Xsqlite3_uri_boolean(tls, v1, __ccgo_ts+3594, int32(m_SQLITE_POWERSAFE_OVERWRITE)) != 0 {
+	if Xsqlite3_uri_boolean(tls, v1, __ccgo_ts+3614, int32(m_SQLITE_POWERSAFE_OVERWRITE)) != 0 {
 		p2 = pNew + 30
 		*(*uint16)(unsafe.Pointer(p2)) = uint16(int32(*(*uint16)(unsafe.Pointer(p2))) | libc.Int32FromInt32(m_UNIXFILE_PSOW))
 	}
-	if libc.Xstrcmp(tls, (*Tsqlite3_vfs)(unsafe.Pointer(pVfs)).FzName, __ccgo_ts+3599) == 0 {
+	if libc.Xstrcmp(tls, (*Tsqlite3_vfs)(unsafe.Pointer(pVfs)).FzName, __ccgo_ts+3619) == 0 {
 		p3 = pNew + 30
 		*(*uint16)(unsafe.Pointer(p3)) = uint16(int32(*(*uint16)(unsafe.Pointer(p3))) | libc.Int32FromInt32(m_UNIXFILE_EXCL))
 	}
@@ -24087,7 +24087,7 @@ func _fillInUnixFile(tls *libc.TLS, pVfs uintptr, h int32, pId uintptr, zFilenam
 			if zLockFile == uintptr(0) {
 				rc = int32(m_SQLITE_NOMEM)
 			} else {
-				Xsqlite3_snprintf(tls, nFilename, zLockFile, __ccgo_ts+3609, libc.VaList(bp+8, zFilename))
+				Xsqlite3_snprintf(tls, nFilename, zLockFile, __ccgo_ts+3629, libc.VaList(bp+8, zFilename))
 			}
 			(*TunixFile)(unsafe.Pointer(pNew)).FlockingContext = zLockFile
 		}
@@ -24110,10 +24110,10 @@ func _fillInUnixFile(tls *libc.TLS, pVfs uintptr, h int32, pId uintptr, zFilenam
 //	** Directories to consider for temp files.
 //	*/
 var _azTempDirs = [6]uintptr{
-	2: __ccgo_ts + 3617,
-	3: __ccgo_ts + 3626,
-	4: __ccgo_ts + 3635,
-	5: __ccgo_ts + 1524,
+	2: __ccgo_ts + 3637,
+	3: __ccgo_ts + 3646,
+	4: __ccgo_ts + 3655,
+	5: __ccgo_ts + 1544,
 }
 
 // C documentation
@@ -24122,8 +24122,8 @@ var _azTempDirs = [6]uintptr{
 //	** Initialize first two members of azTempDirs[] array.
 //	*/
 func _unixTempFileInit(tls *libc.TLS) {
-	_azTempDirs[0] = libc.Xgetenv(tls, __ccgo_ts+3640)
-	_azTempDirs[int32(1)] = libc.Xgetenv(tls, __ccgo_ts+3654)
+	_azTempDirs[0] = libc.Xgetenv(tls, __ccgo_ts+3660)
+	_azTempDirs[int32(1)] = libc.Xgetenv(tls, __ccgo_ts+3674)
 }
 
 // C documentation
@@ -24184,7 +24184,7 @@ func _unixGetTempname(tls *libc.TLS, nBuf int32, zBuf uintptr) (r int32) {
 		Xsqlite3_randomness(tls, int32(8), bp)
 		_ = libc.Int32FromInt32(0)
 		*(*uint8)(unsafe.Pointer(zBuf + uintptr(nBuf-int32(2)))) = uint8(0)
-		Xsqlite3_snprintf(tls, nBuf, zBuf, __ccgo_ts+3661, libc.VaList(bp+16, zDir, *(*Tu64)(unsafe.Pointer(bp)), 0))
+		Xsqlite3_snprintf(tls, nBuf, zBuf, __ccgo_ts+3681, libc.VaList(bp+16, zDir, *(*Tu64)(unsafe.Pointer(bp)), 0))
 		if v2 = int32(*(*uint8)(unsafe.Pointer(zBuf + uintptr(nBuf-int32(2))))) != 0; !v2 {
 			v1 = iLimit
 			iLimit++
@@ -24351,7 +24351,7 @@ func _findCreateFileMode(tls *libc.TLS, zPath uintptr, flags int32, pMode uintpt
 				 ** filename, check for the "modeof" parameter. If present, interpret
 				 ** its value as a filename and try to copy the mode, uid and gid from
 				 ** that file.  */
-				z = Xsqlite3_uri_parameter(tls, zPath, __ccgo_ts+3678)
+				z = Xsqlite3_uri_parameter(tls, zPath, __ccgo_ts+3698)
 				if z != 0 {
 					rc = _getFileMode(tls, z, pMode, pUid, pGid)
 				}
@@ -24514,7 +24514,7 @@ func _unixOpen(tls *libc.TLS, pVfs uintptr, zPath uintptr, pFile uintptr, flags 
 			}
 		}
 		if fd < 0 {
-			rc2 = _unixLogErrorAtLine(tls, _sqlite3CantopenError(tls, int32(40457)), __ccgo_ts+3158, zName, int32(40457))
+			rc2 = _unixLogErrorAtLine(tls, _sqlite3CantopenError(tls, int32(40457)), __ccgo_ts+3178, zName, int32(40457))
 			if rc == m_SQLITE_OK {
 				rc = rc2
 			}
@@ -24591,7 +24591,7 @@ func _unixDelete(tls *libc.TLS, NotUsed uintptr, zPath uintptr, dirSync int32) (
 		if *(*int32)(unsafe.Pointer(libc.X__errno_location(tls))) == int32(m_ENOENT) {
 			rc = libc.Int32FromInt32(m_SQLITE_IOERR) | libc.Int32FromInt32(23)<<libc.Int32FromInt32(8)
 		} else {
-			rc = _unixLogErrorAtLine(tls, libc.Int32FromInt32(m_SQLITE_IOERR)|libc.Int32FromInt32(10)<<libc.Int32FromInt32(8), __ccgo_ts+3268, zPath, int32(40596))
+			rc = _unixLogErrorAtLine(tls, libc.Int32FromInt32(m_SQLITE_IOERR)|libc.Int32FromInt32(10)<<libc.Int32FromInt32(8), __ccgo_ts+3288, zPath, int32(40596))
 		}
 		return rc
 	}
@@ -24599,7 +24599,7 @@ func _unixDelete(tls *libc.TLS, NotUsed uintptr, zPath uintptr, dirSync int32) (
 		rc = (*(*func(*libc.TLS, uintptr, uintptr) int32)(unsafe.Pointer(&struct{ uintptr }{_aSyscall[int32(17)].FpCurrent})))(tls, zPath, bp)
 		if rc == m_SQLITE_OK {
 			if _full_fsync(tls, *(*int32)(unsafe.Pointer(bp)), 0, 0) != 0 {
-				rc = _unixLogErrorAtLine(tls, libc.Int32FromInt32(m_SQLITE_IOERR)|libc.Int32FromInt32(5)<<libc.Int32FromInt32(8), __ccgo_ts+3685, zPath, int32(40606))
+				rc = _unixLogErrorAtLine(tls, libc.Int32FromInt32(m_SQLITE_IOERR)|libc.Int32FromInt32(5)<<libc.Int32FromInt32(8), __ccgo_ts+3705, zPath, int32(40606))
 			}
 			_robust_close(tls, uintptr(0), *(*int32)(unsafe.Pointer(bp)), int32(40608))
 		} else {
@@ -24691,7 +24691,7 @@ func _mkFullPathname(tls *libc.TLS, zPath uintptr, zOut uintptr, nOut int32) (r 
 	iOff = 0
 	if int32(*(*uint8)(unsafe.Pointer(zPath))) != int32('/') {
 		if (*(*func(*libc.TLS, uintptr, Tsize_t) uintptr)(unsafe.Pointer(&struct{ uintptr }{_aSyscall[int32(3)].FpCurrent})))(tls, zOut, uint64(nOut-int32(2))) == uintptr(0) {
-			return _unixLogErrorAtLine(tls, _sqlite3CantopenError(tls, int32(40685)), __ccgo_ts+3176, zPath, int32(40685))
+			return _unixLogErrorAtLine(tls, _sqlite3CantopenError(tls, int32(40685)), __ccgo_ts+3196, zPath, int32(40685))
 		}
 		iOff = _sqlite3Strlen30(tls, zOut)
 		v1 = iOff
@@ -24704,7 +24704,7 @@ func _mkFullPathname(tls *libc.TLS, zPath uintptr, zOut uintptr, nOut int32) (r 
 		*(*uint8)(unsafe.Pointer(zOut + uintptr(iOff))) = uint8('\000')
 		return _sqlite3CantopenError(tls, int32(40694))
 	}
-	Xsqlite3_snprintf(tls, nOut-iOff, zOut+uintptr(iOff), __ccgo_ts+3560, libc.VaList(bp+16, zPath))
+	Xsqlite3_snprintf(tls, nOut-iOff, zOut+uintptr(iOff), __ccgo_ts+3580, libc.VaList(bp+16, zPath))
 	/* Remove duplicate '/' characters.  Except, two // at the beginning
 	 ** of a pathname is allowed since this is important on windows. */
 	v3 = libc.Int32FromInt32(1)
@@ -24799,7 +24799,7 @@ func _unixFullPathname(tls *libc.TLS, pVfs uintptr, zPath uintptr, nOut int32, z
 		bLink = 0
 		if (*(*func(*libc.TLS, uintptr, uintptr) int32)(unsafe.Pointer(&struct{ uintptr }{_aSyscall[int32(27)].FpCurrent})))(tls, zIn, bp) != 0 {
 			if *(*int32)(unsafe.Pointer(libc.X__errno_location(tls))) != int32(m_ENOENT) {
-				rc = _unixLogErrorAtLine(tls, _sqlite3CantopenError(tls, int32(40777)), __ccgo_ts+3356, zIn, int32(40777))
+				rc = _unixLogErrorAtLine(tls, _sqlite3CantopenError(tls, int32(40777)), __ccgo_ts+3376, zIn, int32(40777))
 			}
 		} else {
 			bLink = libc.BoolInt32((*(*Tstat)(unsafe.Pointer(bp))).Fst_mode&uint32(m___S_IFMT) == uint32(libc.Int32FromInt32(m___S_IFLNK)))
@@ -24819,7 +24819,7 @@ func _unixFullPathname(tls *libc.TLS, pVfs uintptr, zPath uintptr, nOut int32, z
 			if rc == m_SQLITE_OK {
 				nByte = int32((*(*func(*libc.TLS, uintptr, uintptr, Tsize_t) Tssize_t)(unsafe.Pointer(&struct{ uintptr }{_aSyscall[int32(26)].FpCurrent})))(tls, zIn, zDel, uint64(nOut-int32(1))))
 				if nByte < 0 {
-					rc = _unixLogErrorAtLine(tls, _sqlite3CantopenError(tls, int32(40795)), __ccgo_ts+3347, zIn, int32(40795))
+					rc = _unixLogErrorAtLine(tls, _sqlite3CantopenError(tls, int32(40795)), __ccgo_ts+3367, zIn, int32(40795))
 				} else {
 					if int32(*(*uint8)(unsafe.Pointer(zDel))) != int32('/') {
 						n = _sqlite3Strlen30(tls, zIn)
@@ -24919,7 +24919,7 @@ func _unixDlError(tls *libc.TLS, NotUsed uintptr, nBuf int32, zBufOut uintptr) {
 	_unixEnterMutex(tls)
 	zErr = libc.Xdlerror(tls)
 	if zErr != 0 {
-		Xsqlite3_snprintf(tls, nBuf, zBufOut, __ccgo_ts+3560, libc.VaList(bp+8, zErr))
+		Xsqlite3_snprintf(tls, nBuf, zBufOut, __ccgo_ts+3580, libc.VaList(bp+8, zErr))
 	}
 	_unixLeaveMutex(tls)
 }
@@ -24964,7 +24964,7 @@ func _unixRandomness(tls *libc.TLS, NotUsed uintptr, nBuf int32, zBuf uintptr) (
 	 */
 	libc.Xmemset(tls, zBuf, 0, uint64(nBuf))
 	_randomnessPid = libc.Xgetpid(tls)
-	fd = _robust_open(tls, __ccgo_ts+3691, m_O_RDONLY, uint32(0))
+	fd = _robust_open(tls, __ccgo_ts+3711, m_O_RDONLY, uint32(0))
 	if fd < 0 {
 		libc.Xtime(tls, bp)
 		libc.Xmemcpy(tls, zBuf, bp, uint64(8))
@@ -25321,25 +25321,25 @@ var _aVfs = [4]Tsqlite3_vfs{
 		FiVersion:   int32(3),
 		FszOsFile:   int32(120),
 		FmxPathname: int32(m_MAX_PATHNAME),
-		FzName:      __ccgo_ts + 3704,
+		FzName:      __ccgo_ts + 3724,
 	},
 	1: {
 		FiVersion:   int32(3),
 		FszOsFile:   int32(120),
 		FmxPathname: int32(m_MAX_PATHNAME),
-		FzName:      __ccgo_ts + 3709,
+		FzName:      __ccgo_ts + 3729,
 	},
 	2: {
 		FiVersion:   int32(3),
 		FszOsFile:   int32(120),
 		FmxPathname: int32(m_MAX_PATHNAME),
-		FzName:      __ccgo_ts + 3719,
+		FzName:      __ccgo_ts + 3739,
 	},
 	3: {
 		FiVersion:   int32(3),
 		FszOsFile:   int32(120),
 		FmxPathname: int32(m_MAX_PATHNAME),
-		FzName:      __ccgo_ts + 3599,
+		FzName:      __ccgo_ts + 3619,
 	},
 }
 
@@ -25606,7 +25606,7 @@ var _memdb_g TMemFS
 var _memdb_vfs = Tsqlite3_vfs{
 	FiVersion:   int32(2),
 	FmxPathname: int32(1024),
-	FzName:      __ccgo_ts + 3732,
+	FzName:      __ccgo_ts + 3752,
 }
 
 func init() {
@@ -25925,7 +25925,7 @@ func _memdbFileControl(tls *libc.TLS, pFile uintptr, op int32, pArg uintptr) (r 
 	rc = int32(m_SQLITE_NOTFOUND)
 	_memdbEnter(tls, p)
 	if op == int32(m_SQLITE_FCNTL_VFSNAME) {
-		*(*uintptr)(unsafe.Pointer(pArg)) = Xsqlite3_mprintf(tls, __ccgo_ts+3738, libc.VaList(bp+8, (*TMemStore)(unsafe.Pointer(p)).FaData, (*TMemStore)(unsafe.Pointer(p)).Fsz))
+		*(*uintptr)(unsafe.Pointer(pArg)) = Xsqlite3_mprintf(tls, __ccgo_ts+3758, libc.VaList(bp+8, (*TMemStore)(unsafe.Pointer(p)).FaData, (*TMemStore)(unsafe.Pointer(p)).Fsz))
 		rc = m_SQLITE_OK
 	}
 	if op == int32(m_SQLITE_FCNTL_SIZE_LIMIT) {
@@ -26099,7 +26099,7 @@ func _memdbFullPathname(tls *libc.TLS, pVfs uintptr, zPath uintptr, nOut int32, 
 	bp := tls.Alloc(16)
 	defer tls.Free(16)
 	_ = pVfs
-	Xsqlite3_snprintf(tls, nOut, zOut, __ccgo_ts+3560, libc.VaList(bp+8, zPath))
+	Xsqlite3_snprintf(tls, nOut, zOut, __ccgo_ts+3580, libc.VaList(bp+8, zPath))
 	return m_SQLITE_OK
 }
 
@@ -26247,7 +26247,7 @@ func Xsqlite3_serialize(tls *libc.TLS, db uintptr, zSchema uintptr, piSize uintp
 		return uintptr(0)
 	}
 	szPage = _sqlite3BtreeGetPageSize(tls, pBt)
-	zSql = Xsqlite3_mprintf(tls, __ccgo_ts+3753, libc.VaList(bp+24, zSchema))
+	zSql = Xsqlite3_mprintf(tls, __ccgo_ts+3773, libc.VaList(bp+24, zSchema))
 	if zSql != 0 {
 		v1 = Xsqlite3_prepare_v2(tls, db, zSql, -int32(1), bp, uintptr(0))
 	} else {
@@ -26319,7 +26319,7 @@ func Xsqlite3_deserialize(tls *libc.TLS, db uintptr, zSchema uintptr, pData uint
 		rc = int32(m_SQLITE_ERROR)
 		goto end_deserialize
 	}
-	zSql = Xsqlite3_mprintf(tls, __ccgo_ts+3776, libc.VaList(bp+16, zSchema))
+	zSql = Xsqlite3_mprintf(tls, __ccgo_ts+3796, libc.VaList(bp+16, zSchema))
 	if zSql == uintptr(0) {
 		rc = int32(m_SQLITE_NOMEM)
 	} else {
@@ -32478,7 +32478,7 @@ end_playback:
 		rc = _pager_delsuper(tls, pPager, zSuper)
 	}
 	if isHot != 0 && nPlayback != 0 {
-		Xsqlite3_log(tls, libc.Int32FromInt32(m_SQLITE_NOTICE)|libc.Int32FromInt32(2)<<libc.Int32FromInt32(8), __ccgo_ts+3791, libc.VaList(bp+32, nPlayback, (*TPager)(unsafe.Pointer(pPager)).FzJournal))
+		Xsqlite3_log(tls, libc.Int32FromInt32(m_SQLITE_NOTICE)|libc.Int32FromInt32(2)<<libc.Int32FromInt32(8), __ccgo_ts+3811, libc.VaList(bp+32, nPlayback, (*TPager)(unsafe.Pointer(pPager)).FzJournal))
 	}
 	/* The Pager.sectorSize variable may have been updated while rolling
 	 ** back a journal created by a process with a different sector size
@@ -34361,7 +34361,7 @@ func _sqlite3PagerOpen(tls *libc.TLS, pVfs uintptr, ppPager uintptr, zFilename u
 		(*TPager)(unsafe.Pointer(*(*uintptr)(unsafe.Pointer(bp)))).FzJournal = pPtr
 		libc.Xmemcpy(tls, pPtr, zPathname, uint64(nPathname))
 		pPtr += uintptr(nPathname)
-		libc.Xmemcpy(tls, pPtr, __ccgo_ts+3818, uint64(8))
+		libc.Xmemcpy(tls, pPtr, __ccgo_ts+3838, uint64(8))
 		pPtr += uintptr(libc.Int32FromInt32(8) + libc.Int32FromInt32(1))
 	} else {
 		(*TPager)(unsafe.Pointer(*(*uintptr)(unsafe.Pointer(bp)))).FzJournal = uintptr(0)
@@ -34371,7 +34371,7 @@ func _sqlite3PagerOpen(tls *libc.TLS, pVfs uintptr, ppPager uintptr, zFilename u
 		(*TPager)(unsafe.Pointer(*(*uintptr)(unsafe.Pointer(bp)))).FzWal = pPtr
 		libc.Xmemcpy(tls, pPtr, zPathname, uint64(nPathname))
 		pPtr += uintptr(nPathname)
-		libc.Xmemcpy(tls, pPtr, __ccgo_ts+3827, uint64(4))
+		libc.Xmemcpy(tls, pPtr, __ccgo_ts+3847, uint64(4))
 		pPtr += uintptr(libc.Int32FromInt32(4) + libc.Int32FromInt32(1))
 	} else {
 		(*TPager)(unsafe.Pointer(*(*uintptr)(unsafe.Pointer(bp)))).FzWal = uintptr(0)
@@ -34415,8 +34415,8 @@ func _sqlite3PagerOpen(tls *libc.TLS, pVfs uintptr, ppPager uintptr, zFilename u
 				}
 			}
 		}
-		(*TPager)(unsafe.Pointer(*(*uintptr)(unsafe.Pointer(bp)))).FnoLock = uint8(Xsqlite3_uri_boolean(tls, (*TPager)(unsafe.Pointer(*(*uintptr)(unsafe.Pointer(bp)))).FzFilename, __ccgo_ts+3832, 0))
-		if iDc&int32(m_SQLITE_IOCAP_IMMUTABLE) != 0 || Xsqlite3_uri_boolean(tls, (*TPager)(unsafe.Pointer(*(*uintptr)(unsafe.Pointer(bp)))).FzFilename, __ccgo_ts+3839, 0) != 0 {
+		(*TPager)(unsafe.Pointer(*(*uintptr)(unsafe.Pointer(bp)))).FnoLock = uint8(Xsqlite3_uri_boolean(tls, (*TPager)(unsafe.Pointer(*(*uintptr)(unsafe.Pointer(bp)))).FzFilename, __ccgo_ts+3852, 0))
+		if iDc&int32(m_SQLITE_IOCAP_IMMUTABLE) != 0 || Xsqlite3_uri_boolean(tls, (*TPager)(unsafe.Pointer(*(*uintptr)(unsafe.Pointer(bp)))).FzFilename, __ccgo_ts+3859, 0) != 0 {
 			vfsFlags |= int32(m_SQLITE_OPEN_READONLY)
 			goto act_like_temp_file
 		}
@@ -38401,7 +38401,7 @@ finished:
 		 ** checkpointing the log file.
 		 */
 		if (*TWal)(unsafe.Pointer(pWal)).Fhdr.FnPage != 0 {
-			Xsqlite3_log(tls, libc.Int32FromInt32(m_SQLITE_NOTICE)|libc.Int32FromInt32(1)<<libc.Int32FromInt32(8), __ccgo_ts+3849, libc.VaList(bp+64, (*TWal)(unsafe.Pointer(pWal)).Fhdr.FmxFrame, (*TWal)(unsafe.Pointer(pWal)).FzWalName))
+			Xsqlite3_log(tls, libc.Int32FromInt32(m_SQLITE_NOTICE)|libc.Int32FromInt32(1)<<libc.Int32FromInt32(8), __ccgo_ts+3869, libc.VaList(bp+64, (*TWal)(unsafe.Pointer(pWal)).Fhdr.FmxFrame, (*TWal)(unsafe.Pointer(pWal)).FzWalName))
 		}
 	}
 recovery_error:
@@ -39187,7 +39187,7 @@ func _walLimitSize(tls *libc.TLS, pWal uintptr, nMax Ti64) {
 	}
 	_sqlite3EndBenignMalloc(tls)
 	if rx != 0 {
-		Xsqlite3_log(tls, rx, __ccgo_ts+3886, libc.VaList(bp+16, (*TWal)(unsafe.Pointer(pWal)).FzWalName))
+		Xsqlite3_log(tls, rx, __ccgo_ts+3906, libc.VaList(bp+16, (*TWal)(unsafe.Pointer(pWal)).FzWalName))
 	}
 }
 
@@ -44397,7 +44397,7 @@ func _sqlite3BtreeOpen(tls *libc.TLS, pVfs uintptr, zFilename uintptr, db uintpt
 	/* Set the variable isMemdb to true for an in-memory database, or
 	 ** false for a file-based database.
 	 */
-	isMemdb = libc.BoolInt32(zFilename != 0 && libc.Xstrcmp(tls, zFilename, __ccgo_ts+3912) == 0 || isTempDb != 0 && _sqlite3TempInMemory(tls, db) != 0 || vfsFlags&int32(m_SQLITE_OPEN_MEMORY) != 0)
+	isMemdb = libc.BoolInt32(zFilename != 0 && libc.Xstrcmp(tls, zFilename, __ccgo_ts+3932) == 0 || isTempDb != 0 && _sqlite3TempInMemory(tls, db) != 0 || vfsFlags&int32(m_SQLITE_OPEN_MEMORY) != 0)
 	_ = libc.Int32FromInt32(0)
 	_ = libc.Int32FromInt32(0)
 	_ = libc.Int32FromInt32(0)
@@ -45201,7 +45201,7 @@ func _lockBtree(tls *libc.TLS, pBt uintptr) (r int32) {
 		 ** The original design allowed these amounts to vary, but as of
 		 ** version 3.6.0, we require them to be fixed.
 		 */
-		if libc.Xmemcmp(tls, page1+21, __ccgo_ts+3921, uint64(3)) != 0 {
+		if libc.Xmemcmp(tls, page1+21, __ccgo_ts+3941, uint64(3)) != 0 {
 			goto page1_init_failed
 		}
 		/* EVIDENCE-OF: R-51873-39618 The page size for a database file is
@@ -52240,7 +52240,7 @@ func _checkAppendMsg(tls *libc.TLS, pCheck uintptr, zFormat uintptr, va uintptr)
 	(*TIntegrityCk)(unsafe.Pointer(pCheck)).FnErr++
 	ap = va
 	if (*TIntegrityCk)(unsafe.Pointer(pCheck)).FerrMsg.FnChar != 0 {
-		Xsqlite3_str_append(tls, pCheck+56, __ccgo_ts+3925, int32(1))
+		Xsqlite3_str_append(tls, pCheck+56, __ccgo_ts+3945, int32(1))
 	}
 	if (*TIntegrityCk)(unsafe.Pointer(pCheck)).FzPfx != 0 {
 		Xsqlite3_str_appendf(tls, pCheck+56, (*TIntegrityCk)(unsafe.Pointer(pCheck)).FzPfx, libc.VaList(bp+8, (*TIntegrityCk)(unsafe.Pointer(pCheck)).Fv1, (*TIntegrityCk)(unsafe.Pointer(pCheck)).Fv2))
@@ -52290,11 +52290,11 @@ func _checkRef(tls *libc.TLS, pCheck uintptr, iPage TPgno) (r int32) {
 	bp := tls.Alloc(16)
 	defer tls.Free(16)
 	if iPage > (*TIntegrityCk)(unsafe.Pointer(pCheck)).FnPage || iPage == uint32(0) {
-		_checkAppendMsg(tls, pCheck, __ccgo_ts+3927, libc.VaList(bp+8, iPage))
+		_checkAppendMsg(tls, pCheck, __ccgo_ts+3947, libc.VaList(bp+8, iPage))
 		return int32(1)
 	}
 	if _getPageReferenced(tls, pCheck, iPage) != 0 {
-		_checkAppendMsg(tls, pCheck, __ccgo_ts+3950, libc.VaList(bp+8, iPage))
+		_checkAppendMsg(tls, pCheck, __ccgo_ts+3970, libc.VaList(bp+8, iPage))
 		return int32(1)
 	}
 	if libc.AtomicLoadNInt32((*TIntegrityCk)(unsafe.Pointer(pCheck)).Fdb+432, libc.Int32FromInt32(m___ATOMIC_RELAXED)) != 0 {
@@ -52323,11 +52323,11 @@ func _checkPtrmap(tls *libc.TLS, pCheck uintptr, iChild TPgno, eType Tu8, iParen
 		if rc == int32(m_SQLITE_NOMEM) || rc == libc.Int32FromInt32(m_SQLITE_IOERR)|libc.Int32FromInt32(12)<<libc.Int32FromInt32(8) {
 			(*TIntegrityCk)(unsafe.Pointer(pCheck)).FbOomFault = int32(1)
 		}
-		_checkAppendMsg(tls, pCheck, __ccgo_ts+3975, libc.VaList(bp+16, iChild))
+		_checkAppendMsg(tls, pCheck, __ccgo_ts+3995, libc.VaList(bp+16, iChild))
 		return
 	}
 	if int32(*(*Tu8)(unsafe.Pointer(bp))) != int32(eType) || *(*TPgno)(unsafe.Pointer(bp + 4)) != iParent {
-		_checkAppendMsg(tls, pCheck, __ccgo_ts+4004, libc.VaList(bp+16, iChild, int32(eType), iParent, int32(*(*Tu8)(unsafe.Pointer(bp))), *(*TPgno)(unsafe.Pointer(bp + 4))))
+		_checkAppendMsg(tls, pCheck, __ccgo_ts+4024, libc.VaList(bp+16, iChild, int32(eType), iParent, int32(*(*Tu8)(unsafe.Pointer(bp))), *(*TPgno)(unsafe.Pointer(bp + 4))))
 	}
 }
 
@@ -52354,7 +52354,7 @@ func _checkList(tls *libc.TLS, pCheck uintptr, isFreeList int32, iPage TPgno, N 
 		}
 		N--
 		if _sqlite3PagerGet(tls, (*TIntegrityCk)(unsafe.Pointer(pCheck)).FpPager, iPage, bp, 0) != 0 {
-			_checkAppendMsg(tls, pCheck, __ccgo_ts+4058, libc.VaList(bp+16, iPage))
+			_checkAppendMsg(tls, pCheck, __ccgo_ts+4078, libc.VaList(bp+16, iPage))
 			break
 		}
 		pOvflData = _sqlite3PagerGetData(tls, *(*uintptr)(unsafe.Pointer(bp)))
@@ -52364,7 +52364,7 @@ func _checkList(tls *libc.TLS, pCheck uintptr, isFreeList int32, iPage TPgno, N 
 				_checkPtrmap(tls, pCheck, iPage, uint8(m_PTRMAP_FREEPAGE), uint32(0))
 			}
 			if n > (*TBtShared)(unsafe.Pointer((*TIntegrityCk)(unsafe.Pointer(pCheck)).FpBt)).FusableSize/uint32(4)-uint32(2) {
-				_checkAppendMsg(tls, pCheck, __ccgo_ts+4080, libc.VaList(bp+16, iPage))
+				_checkAppendMsg(tls, pCheck, __ccgo_ts+4100, libc.VaList(bp+16, iPage))
 				N--
 			} else {
 				i = 0
@@ -52398,11 +52398,11 @@ func _checkList(tls *libc.TLS, pCheck uintptr, isFreeList int32, iPage TPgno, N 
 	}
 	if N != 0 && nErrAtStart == (*TIntegrityCk)(unsafe.Pointer(pCheck)).FnErr {
 		if isFreeList != 0 {
-			v2 = __ccgo_ts + 4119
+			v2 = __ccgo_ts + 4139
 		} else {
-			v2 = __ccgo_ts + 4124
+			v2 = __ccgo_ts + 4144
 		}
-		_checkAppendMsg(tls, pCheck, __ccgo_ts+4145, libc.VaList(bp+16, v2, expected-N, expected))
+		_checkAppendMsg(tls, pCheck, __ccgo_ts+4165, libc.VaList(bp+16, v2, expected-N, expected))
 	}
 }
 
@@ -52534,12 +52534,12 @@ func _checkTreePage(tls *libc.TLS, pCheck uintptr, iPage TPgno, piMinKey uintptr
 	if _checkRef(tls, pCheck, iPage) != 0 {
 		return 0
 	}
-	(*TIntegrityCk)(unsafe.Pointer(pCheck)).FzPfx = __ccgo_ts + 4171
+	(*TIntegrityCk)(unsafe.Pointer(pCheck)).FzPfx = __ccgo_ts + 4191
 	(*TIntegrityCk)(unsafe.Pointer(pCheck)).Fv1 = iPage
 	v1 = _btreeGetPage(tls, pBt, iPage, bp+8, 0)
 	rc = v1
 	if v1 != 0 {
-		_checkAppendMsg(tls, pCheck, __ccgo_ts+4181, libc.VaList(bp+56, rc))
+		_checkAppendMsg(tls, pCheck, __ccgo_ts+4201, libc.VaList(bp+56, rc))
 		goto end_of_check
 	}
 	/* Clear MemPage.isInit to make sure the corruption detection code in
@@ -52550,20 +52550,20 @@ func _checkTreePage(tls *libc.TLS, pCheck uintptr, iPage TPgno, piMinKey uintptr
 	rc = v2
 	if v2 != 0 {
 		_ = libc.Int32FromInt32(0) /* The only possible error from InitPage */
-		_checkAppendMsg(tls, pCheck, __ccgo_ts+4219, libc.VaList(bp+56, rc))
+		_checkAppendMsg(tls, pCheck, __ccgo_ts+4239, libc.VaList(bp+56, rc))
 		goto end_of_check
 	}
 	v3 = _btreeComputeFreeSpace(tls, *(*uintptr)(unsafe.Pointer(bp + 8)))
 	rc = v3
 	if v3 != 0 {
 		_ = libc.Int32FromInt32(0)
-		_checkAppendMsg(tls, pCheck, __ccgo_ts+4257, libc.VaList(bp+56, rc))
+		_checkAppendMsg(tls, pCheck, __ccgo_ts+4277, libc.VaList(bp+56, rc))
 		goto end_of_check
 	}
 	data = (*TMemPage)(unsafe.Pointer(*(*uintptr)(unsafe.Pointer(bp + 8)))).FaData
 	hdr = int32((*TMemPage)(unsafe.Pointer(*(*uintptr)(unsafe.Pointer(bp + 8)))).FhdrOffset)
 	/* Set up for cell analysis */
-	(*TIntegrityCk)(unsafe.Pointer(pCheck)).FzPfx = __ccgo_ts + 4279
+	(*TIntegrityCk)(unsafe.Pointer(pCheck)).FzPfx = __ccgo_ts + 4299
 	contentOffset = uint32((int32(*(*Tu8)(unsafe.Pointer(data + uintptr(hdr+int32(5)))))<<libc.Int32FromInt32(8)|int32(*(*Tu8)(unsafe.Pointer(data + uintptr(hdr+int32(5)) + 1)))-libc.Int32FromInt32(1))&libc.Int32FromInt32(0xffff) + libc.Int32FromInt32(1))
 	_ = libc.Int32FromInt32(0) /* Enforced by btreeInitPage() */
 	/* EVIDENCE-OF: R-37002-32774 The two-byte integer at offset 3 gives the
@@ -52579,7 +52579,7 @@ func _checkTreePage(tls *libc.TLS, pCheck uintptr, iPage TPgno, piMinKey uintptr
 		/* Analyze the right-child page of internal pages */
 		pgno = int32(_sqlite3Get4byte(tls, data+uintptr(hdr+int32(8))))
 		if (*TBtShared)(unsafe.Pointer(pBt)).FautoVacuum != 0 {
-			(*TIntegrityCk)(unsafe.Pointer(pCheck)).FzPfx = __ccgo_ts + 4305
+			(*TIntegrityCk)(unsafe.Pointer(pCheck)).FzPfx = __ccgo_ts + 4325
 			_checkPtrmap(tls, pCheck, uint32(pgno), uint8(m_PTRMAP_BTREE), iPage)
 		}
 		depth = _checkTreePage(tls, pCheck, uint32(pgno), bp, *(*Ti64)(unsafe.Pointer(bp)))
@@ -52603,14 +52603,14 @@ func _checkTreePage(tls *libc.TLS, pCheck uintptr, iPage TPgno, piMinKey uintptr
 		pc = uint32(int32(*(*Tu8)(unsafe.Pointer(pCellIdx)))<<libc.Int32FromInt32(8) | int32(*(*Tu8)(unsafe.Pointer(pCellIdx + 1))))
 		pCellIdx -= uintptr(2)
 		if pc < contentOffset || pc > usableSize-uint32(4) {
-			_checkAppendMsg(tls, pCheck, __ccgo_ts+4333, libc.VaList(bp+56, pc, contentOffset, usableSize-uint32(4)))
+			_checkAppendMsg(tls, pCheck, __ccgo_ts+4353, libc.VaList(bp+56, pc, contentOffset, usableSize-uint32(4)))
 			doCoverageCheck = 0
 			goto _4
 		}
 		pCell = data + uintptr(pc)
 		(*(*func(*libc.TLS, uintptr, uintptr, uintptr))(unsafe.Pointer(&struct{ uintptr }{(*TMemPage)(unsafe.Pointer(*(*uintptr)(unsafe.Pointer(bp + 8)))).FxParseCell})))(tls, *(*uintptr)(unsafe.Pointer(bp + 8)), pCell, bp+24)
 		if pc+uint32((*(*TCellInfo)(unsafe.Pointer(bp + 24))).FnSize) > usableSize {
-			_checkAppendMsg(tls, pCheck, __ccgo_ts+4363, 0)
+			_checkAppendMsg(tls, pCheck, __ccgo_ts+4383, 0)
 			doCoverageCheck = 0
 			goto _4
 		}
@@ -52622,7 +52622,7 @@ func _checkTreePage(tls *libc.TLS, pCheck uintptr, iPage TPgno, piMinKey uintptr
 				v5 = libc.BoolInt32((*(*TCellInfo)(unsafe.Pointer(bp + 24))).FnKey >= *(*Ti64)(unsafe.Pointer(bp)))
 			}
 			if v5 != 0 {
-				_checkAppendMsg(tls, pCheck, __ccgo_ts+4387, libc.VaList(bp+56, (*(*TCellInfo)(unsafe.Pointer(bp + 24))).FnKey))
+				_checkAppendMsg(tls, pCheck, __ccgo_ts+4407, libc.VaList(bp+56, (*(*TCellInfo)(unsafe.Pointer(bp + 24))).FnKey))
 			}
 			*(*Ti64)(unsafe.Pointer(bp)) = (*(*TCellInfo)(unsafe.Pointer(bp + 24))).FnKey
 			keyCanBeEqual = 0 /* Only the first key on the page may ==maxKey */
@@ -52646,7 +52646,7 @@ func _checkTreePage(tls *libc.TLS, pCheck uintptr, iPage TPgno, piMinKey uintptr
 			d2 = _checkTreePage(tls, pCheck, uint32(pgno), bp, *(*Ti64)(unsafe.Pointer(bp)))
 			keyCanBeEqual = 0
 			if d2 != depth {
-				_checkAppendMsg(tls, pCheck, __ccgo_ts+4411, 0)
+				_checkAppendMsg(tls, pCheck, __ccgo_ts+4431, 0)
 				depth = d2
 			}
 		} else {
@@ -52721,7 +52721,7 @@ func _checkTreePage(tls *libc.TLS, pCheck uintptr, iPage TPgno, piMinKey uintptr
 		prev = contentOffset - uint32(1) /* Implied first min-heap entry */
 		for _btreeHeapPull(tls, heap, bp+16) != 0 {
 			if prev&uint32(0xffff) >= *(*Tu32)(unsafe.Pointer(bp + 16))>>libc.Int32FromInt32(16) {
-				_checkAppendMsg(tls, pCheck, __ccgo_ts+4436, libc.VaList(bp+56, *(*Tu32)(unsafe.Pointer(bp + 16))>>int32(16), iPage))
+				_checkAppendMsg(tls, pCheck, __ccgo_ts+4456, libc.VaList(bp+56, *(*Tu32)(unsafe.Pointer(bp + 16))>>int32(16), iPage))
 				break
 			} else {
 				nFrag = int32(uint32(nFrag) + (*(*Tu32)(unsafe.Pointer(bp + 16))>>libc.Int32FromInt32(16) - prev&libc.Uint32FromInt32(0xffff) - libc.Uint32FromInt32(1)))
@@ -52735,7 +52735,7 @@ func _checkTreePage(tls *libc.TLS, pCheck uintptr, iPage TPgno, piMinKey uintptr
 		 ** number of fragmented free bytes within the cell content area.
 		 */
 		if *(*Tu32)(unsafe.Pointer(heap)) == uint32(0) && nFrag != int32(*(*Tu8)(unsafe.Pointer(data + uintptr(hdr+int32(7))))) {
-			_checkAppendMsg(tls, pCheck, __ccgo_ts+4473, libc.VaList(bp+56, nFrag, int32(*(*Tu8)(unsafe.Pointer(data + uintptr(hdr+int32(7))))), iPage))
+			_checkAppendMsg(tls, pCheck, __ccgo_ts+4493, libc.VaList(bp+56, nFrag, int32(*(*Tu8)(unsafe.Pointer(data + uintptr(hdr+int32(7))))), iPage))
 		}
 	}
 end_of_check:
@@ -52834,7 +52834,7 @@ func _sqlite3BtreeIntegrityCheck(tls *libc.TLS, db uintptr, p uintptr, aRoot uin
 	/* Check the integrity of the freelist
 	 */
 	if bCkFreelist != 0 {
-		(*(*TIntegrityCk)(unsafe.Pointer(bp))).FzPfx = __ccgo_ts + 4525
+		(*(*TIntegrityCk)(unsafe.Pointer(bp))).FzPfx = __ccgo_ts + 4545
 		_checkList(tls, bp, int32(1), _sqlite3Get4byte(tls, (*TMemPage)(unsafe.Pointer((*TBtShared)(unsafe.Pointer(pBt)).FpPage1)).FaData+32), _sqlite3Get4byte(tls, (*TMemPage)(unsafe.Pointer((*TBtShared)(unsafe.Pointer(pBt)).FpPage1)).FaData+36))
 		(*(*TIntegrityCk)(unsafe.Pointer(bp))).FzPfx = uintptr(0)
 	}
@@ -52857,11 +52857,11 @@ func _sqlite3BtreeIntegrityCheck(tls *libc.TLS, db uintptr, p uintptr, aRoot uin
 			}
 			mxInHdr = _sqlite3Get4byte(tls, (*TMemPage)(unsafe.Pointer((*TBtShared)(unsafe.Pointer(pBt)).FpPage1)).FaData+52)
 			if mx != mxInHdr {
-				_checkAppendMsg(tls, bp, __ccgo_ts+4541, libc.VaList(bp+224, mx, mxInHdr))
+				_checkAppendMsg(tls, bp, __ccgo_ts+4561, libc.VaList(bp+224, mx, mxInHdr))
 			}
 		} else {
 			if _sqlite3Get4byte(tls, (*TMemPage)(unsafe.Pointer((*TBtShared)(unsafe.Pointer(pBt)).FpPage1)).FaData+64) != uint32(0) {
-				_checkAppendMsg(tls, bp, __ccgo_ts+4586, 0)
+				_checkAppendMsg(tls, bp, __ccgo_ts+4606, 0)
 			}
 		}
 	}
@@ -52895,10 +52895,10 @@ func _sqlite3BtreeIntegrityCheck(tls *libc.TLS, db uintptr, p uintptr, aRoot uin
 			 ** references to pointer-map pages.
 			 */
 			if _getPageReferenced(tls, bp, i) == 0 && (_ptrmapPageno(tls, pBt, i) != i || !((*TBtShared)(unsafe.Pointer(pBt)).FautoVacuum != 0)) {
-				_checkAppendMsg(tls, bp, __ccgo_ts+4641, libc.VaList(bp+224, i))
+				_checkAppendMsg(tls, bp, __ccgo_ts+4661, libc.VaList(bp+224, i))
 			}
 			if _getPageReferenced(tls, bp, i) != 0 && (_ptrmapPageno(tls, pBt, i) == i && (*TBtShared)(unsafe.Pointer(pBt)).FautoVacuum != 0) {
-				_checkAppendMsg(tls, bp, __ccgo_ts+4663, libc.VaList(bp+224, i))
+				_checkAppendMsg(tls, bp, __ccgo_ts+4683, libc.VaList(bp+224, i))
 			}
 			goto _3
 		_3:
@@ -53340,7 +53340,7 @@ func _findBtree(tls *libc.TLS, pErrorDb uintptr, pDb uintptr, zDb uintptr) (r ui
 		libc.Xmemset(tls, bp, 0, uint64(400))
 		(*(*TParse)(unsafe.Pointer(bp))).Fdb = pDb
 		if _sqlite3OpenTempDatabase(tls, bp) != 0 {
-			_sqlite3ErrorWithMsg(tls, pErrorDb, (*(*TParse)(unsafe.Pointer(bp))).Frc, __ccgo_ts+3560, libc.VaList(bp+408, (*(*TParse)(unsafe.Pointer(bp))).FzErrMsg))
+			_sqlite3ErrorWithMsg(tls, pErrorDb, (*(*TParse)(unsafe.Pointer(bp))).Frc, __ccgo_ts+3580, libc.VaList(bp+408, (*(*TParse)(unsafe.Pointer(bp))).FzErrMsg))
 			rc = int32(m_SQLITE_ERROR)
 		}
 		_sqlite3DbFree(tls, pErrorDb, (*(*TParse)(unsafe.Pointer(bp))).FzErrMsg)
@@ -53350,7 +53350,7 @@ func _findBtree(tls *libc.TLS, pErrorDb uintptr, pDb uintptr, zDb uintptr) (r ui
 		}
 	}
 	if i < 0 {
-		_sqlite3ErrorWithMsg(tls, pErrorDb, int32(m_SQLITE_ERROR), __ccgo_ts+4697, libc.VaList(bp+408, zDb))
+		_sqlite3ErrorWithMsg(tls, pErrorDb, int32(m_SQLITE_ERROR), __ccgo_ts+4717, libc.VaList(bp+408, zDb))
 		return uintptr(0)
 	}
 	return (*(*TDb)(unsafe.Pointer((*Tsqlite3)(unsafe.Pointer(pDb)).FaDb + uintptr(i)*32))).FpBt
@@ -53379,7 +53379,7 @@ func _setDestPgsz(tls *libc.TLS, p uintptr) (r int32) {
 //	*/
 func _checkReadTransaction(tls *libc.TLS, db uintptr, p uintptr) (r int32) {
 	if _sqlite3BtreeTxnState(tls, p) != m_SQLITE_TXN_NONE {
-		_sqlite3ErrorWithMsg(tls, db, int32(m_SQLITE_ERROR), __ccgo_ts+4717, 0)
+		_sqlite3ErrorWithMsg(tls, db, int32(m_SQLITE_ERROR), __ccgo_ts+4737, 0)
 		return int32(m_SQLITE_ERROR)
 	}
 	return m_SQLITE_OK
@@ -53409,7 +53409,7 @@ func Xsqlite3_backup_init(tls *libc.TLS, pDestDb uintptr, zDestDb uintptr, pSrcD
 	Xsqlite3_mutex_enter(tls, (*Tsqlite3)(unsafe.Pointer(pSrcDb)).Fmutex)
 	Xsqlite3_mutex_enter(tls, (*Tsqlite3)(unsafe.Pointer(pDestDb)).Fmutex)
 	if pSrcDb == pDestDb {
-		_sqlite3ErrorWithMsg(tls, pDestDb, int32(m_SQLITE_ERROR), __ccgo_ts+4748, 0)
+		_sqlite3ErrorWithMsg(tls, pDestDb, int32(m_SQLITE_ERROR), __ccgo_ts+4768, 0)
 		p = uintptr(0)
 	} else {
 		/* Allocate space for a new sqlite3_backup object...
@@ -54111,7 +54111,7 @@ func _vdbeMemRenderNum(tls *libc.TLS, sz int32, zBuf uintptr, p uintptr) {
 		} else {
 			v1 = *(*float64)(unsafe.Pointer(p))
 		}
-		Xsqlite3_str_appendf(tls, bp, __ccgo_ts+4788, libc.VaList(bp+48, v1))
+		Xsqlite3_str_appendf(tls, bp, __ccgo_ts+4808, libc.VaList(bp+48, v1))
 		_ = libc.Int32FromInt32(0)
 		*(*uint8)(unsafe.Pointer(zBuf + uintptr((*(*TStrAccum)(unsafe.Pointer(bp))).FnChar))) = uint8(0) /* Fast version of sqlite3StrAccumFinish(&acc) */
 	}
@@ -54934,7 +54934,7 @@ func _sqlite3VdbeMemSetPointer(tls *libc.TLS, pMem uintptr, pPtr uintptr, zPType
 	if zPType != 0 {
 		v1 = zPType
 	} else {
-		v1 = __ccgo_ts + 1511
+		v1 = __ccgo_ts + 1531
 	}
 	*(*uintptr)(unsafe.Pointer(pMem)) = v1
 	(*TMem)(unsafe.Pointer(pMem)).Fz = pPtr
@@ -55518,7 +55518,7 @@ func _valueFromFunction(tls *libc.TLS, db uintptr, p uintptr, enc Tu8, aff Tu8, 
 	(*(*func(*libc.TLS, uintptr, int32, uintptr))(unsafe.Pointer(&struct{ uintptr }{(*TFuncDef)(unsafe.Pointer(pFunc)).FxSFunc})))(tls, bp, nVal, apVal)
 	if (*(*Tsqlite3_context)(unsafe.Pointer(bp))).FisError != 0 {
 		rc = (*(*Tsqlite3_context)(unsafe.Pointer(bp))).FisError
-		_sqlite3ErrorMsg(tls, (*TValueNewStat4Ctx)(unsafe.Pointer(pCtx)).FpParse, __ccgo_ts+3560, libc.VaList(bp+64, Xsqlite3_value_text(tls, pVal)))
+		_sqlite3ErrorMsg(tls, (*TValueNewStat4Ctx)(unsafe.Pointer(pCtx)).FpParse, __ccgo_ts+3580, libc.VaList(bp+64, Xsqlite3_value_text(tls, pVal)))
 	} else {
 		_sqlite3ValueApplyAffinity(tls, pVal, aff, uint8(m_SQLITE_UTF8))
 		_ = libc.Int32FromInt32(0)
@@ -55573,7 +55573,7 @@ func _valueFromExpr(tls *libc.TLS, db uintptr, pExpr uintptr, enc Tu8, affinity 
 	zVal = uintptr(0)
 	*(*uintptr)(unsafe.Pointer(bp)) = uintptr(0)
 	negInt = int32(1)
-	zNeg = __ccgo_ts + 1511
+	zNeg = __ccgo_ts + 1531
 	rc = m_SQLITE_OK
 	_ = libc.Int32FromInt32(0)
 	for {
@@ -55609,7 +55609,7 @@ func _valueFromExpr(tls *libc.TLS, db uintptr, pExpr uintptr, enc Tu8, affinity 
 		pExpr = (*TExpr)(unsafe.Pointer(pExpr)).FpLeft
 		op = int32((*TExpr)(unsafe.Pointer(pExpr)).Fop)
 		negInt = -int32(1)
-		zNeg = __ccgo_ts + 4795
+		zNeg = __ccgo_ts + 4815
 	}
 	if op == int32(m_TK_STRING) || op == int32(m_TK_FLOAT) || op == int32(m_TK_INTEGER) {
 		*(*uintptr)(unsafe.Pointer(bp)) = _valueNew(tls, db, pCtx)
@@ -55619,7 +55619,7 @@ func _valueFromExpr(tls *libc.TLS, db uintptr, pExpr uintptr, enc Tu8, affinity 
 		if (*TExpr)(unsafe.Pointer(pExpr)).Fflags&uint32(libc.Int32FromInt32(m_EP_IntValue)) != uint32(0) {
 			_sqlite3VdbeMemSetInt64(tls, *(*uintptr)(unsafe.Pointer(bp)), int64(*(*int32)(unsafe.Pointer(&(*TExpr)(unsafe.Pointer(pExpr)).Fu)))*int64(negInt))
 		} else {
-			zVal = _sqlite3MPrintf(tls, db, __ccgo_ts+4797, libc.VaList(bp+16, zNeg, *(*uintptr)(unsafe.Pointer(pExpr + 8))))
+			zVal = _sqlite3MPrintf(tls, db, __ccgo_ts+4817, libc.VaList(bp+16, zNeg, *(*uintptr)(unsafe.Pointer(pExpr + 8))))
 			if zVal == uintptr(0) {
 				goto no_mem
 			}
@@ -57228,7 +57228,7 @@ func _sqlite3VdbeDisplayP4(tls *libc.TLS, db uintptr, pOp uintptr) (r uintptr) {
 	case -int32(9):
 		pKeyInfo = *(*uintptr)(unsafe.Pointer(pOp + 16))
 		_ = libc.Int32FromInt32(0)
-		Xsqlite3_str_appendf(tls, bp, __ccgo_ts+4802, libc.VaList(bp+40, int32((*TKeyInfo)(unsafe.Pointer(pKeyInfo)).FnKeyField)))
+		Xsqlite3_str_appendf(tls, bp, __ccgo_ts+4822, libc.VaList(bp+40, int32((*TKeyInfo)(unsafe.Pointer(pKeyInfo)).FnKeyField)))
 		j = 0
 		for {
 			if !(j < int32((*TKeyInfo)(unsafe.Pointer(pKeyInfo)).FnKeyField)) {
@@ -57238,67 +57238,67 @@ func _sqlite3VdbeDisplayP4(tls *libc.TLS, db uintptr, pOp uintptr) (r uintptr) {
 			if pColl != 0 {
 				v2 = (*TCollSeq)(unsafe.Pointer(pColl)).FzName
 			} else {
-				v2 = __ccgo_ts + 1511
+				v2 = __ccgo_ts + 1531
 			}
 			zColl = v2
-			if libc.Xstrcmp(tls, zColl, __ccgo_ts+4807) == 0 {
-				zColl = __ccgo_ts + 4814
+			if libc.Xstrcmp(tls, zColl, __ccgo_ts+4827) == 0 {
+				zColl = __ccgo_ts + 4834
 			}
 			if int32(*(*Tu8)(unsafe.Pointer((*TKeyInfo)(unsafe.Pointer(pKeyInfo)).FaSortFlags + uintptr(j))))&int32(m_KEYINFO_ORDER_DESC) != 0 {
-				v3 = __ccgo_ts + 4795
+				v3 = __ccgo_ts + 4815
 			} else {
-				v3 = __ccgo_ts + 1511
+				v3 = __ccgo_ts + 1531
 			}
 			if int32(*(*Tu8)(unsafe.Pointer((*TKeyInfo)(unsafe.Pointer(pKeyInfo)).FaSortFlags + uintptr(j))))&int32(m_KEYINFO_ORDER_BIGNULL) != 0 {
-				v4 = __ccgo_ts + 4816
+				v4 = __ccgo_ts + 4836
 			} else {
-				v4 = __ccgo_ts + 1511
+				v4 = __ccgo_ts + 1531
 			}
-			Xsqlite3_str_appendf(tls, bp, __ccgo_ts+4819, libc.VaList(bp+40, v3, v4, zColl))
+			Xsqlite3_str_appendf(tls, bp, __ccgo_ts+4839, libc.VaList(bp+40, v3, v4, zColl))
 			goto _1
 		_1:
 			j++
 		}
-		Xsqlite3_str_append(tls, bp, __ccgo_ts+4827, int32(1))
+		Xsqlite3_str_append(tls, bp, __ccgo_ts+4847, int32(1))
 	case -int32(2):
 		pColl1 = *(*uintptr)(unsafe.Pointer(pOp + 16))
 		_ = libc.Int32FromInt32(0)
-		Xsqlite3_str_appendf(tls, bp, __ccgo_ts+4843, libc.VaList(bp+40, (*TCollSeq)(unsafe.Pointer(pColl1)).FzName, _encnames[(*TCollSeq)(unsafe.Pointer(pColl1)).Fenc]))
+		Xsqlite3_str_appendf(tls, bp, __ccgo_ts+4863, libc.VaList(bp+40, (*TCollSeq)(unsafe.Pointer(pColl1)).FzName, _encnames[(*TCollSeq)(unsafe.Pointer(pColl1)).Fenc]))
 	case -int32(8):
 		pDef = *(*uintptr)(unsafe.Pointer(pOp + 16))
-		Xsqlite3_str_appendf(tls, bp, __ccgo_ts+4852, libc.VaList(bp+40, (*TFuncDef)(unsafe.Pointer(pDef)).FzName, int32((*TFuncDef)(unsafe.Pointer(pDef)).FnArg)))
+		Xsqlite3_str_appendf(tls, bp, __ccgo_ts+4872, libc.VaList(bp+40, (*TFuncDef)(unsafe.Pointer(pDef)).FzName, int32((*TFuncDef)(unsafe.Pointer(pDef)).FnArg)))
 	case -int32(16):
 		pDef1 = (*Tsqlite3_context)(unsafe.Pointer(*(*uintptr)(unsafe.Pointer(pOp + 16)))).FpFunc
-		Xsqlite3_str_appendf(tls, bp, __ccgo_ts+4852, libc.VaList(bp+40, (*TFuncDef)(unsafe.Pointer(pDef1)).FzName, int32((*TFuncDef)(unsafe.Pointer(pDef1)).FnArg)))
+		Xsqlite3_str_appendf(tls, bp, __ccgo_ts+4872, libc.VaList(bp+40, (*TFuncDef)(unsafe.Pointer(pDef1)).FzName, int32((*TFuncDef)(unsafe.Pointer(pDef1)).FnArg)))
 	case -int32(14):
-		Xsqlite3_str_appendf(tls, bp, __ccgo_ts+1335, libc.VaList(bp+40, *(*Ti64)(unsafe.Pointer(*(*uintptr)(unsafe.Pointer(pOp + 16))))))
+		Xsqlite3_str_appendf(tls, bp, __ccgo_ts+1355, libc.VaList(bp+40, *(*Ti64)(unsafe.Pointer(*(*uintptr)(unsafe.Pointer(pOp + 16))))))
 	case -int32(3):
-		Xsqlite3_str_appendf(tls, bp, __ccgo_ts+4859, libc.VaList(bp+40, (*TOp)(unsafe.Pointer(pOp)).Fp4.Fi))
+		Xsqlite3_str_appendf(tls, bp, __ccgo_ts+4879, libc.VaList(bp+40, (*TOp)(unsafe.Pointer(pOp)).Fp4.Fi))
 	case -int32(13):
-		Xsqlite3_str_appendf(tls, bp, __ccgo_ts+1329, libc.VaList(bp+40, *(*float64)(unsafe.Pointer(*(*uintptr)(unsafe.Pointer(pOp + 16))))))
+		Xsqlite3_str_appendf(tls, bp, __ccgo_ts+1349, libc.VaList(bp+40, *(*float64)(unsafe.Pointer(*(*uintptr)(unsafe.Pointer(pOp + 16))))))
 	case -int32(11):
 		pMem = *(*uintptr)(unsafe.Pointer(pOp + 16))
 		if int32((*TMem)(unsafe.Pointer(pMem)).Fflags)&int32(m_MEM_Str) != 0 {
 			zP4 = (*TMem)(unsafe.Pointer(pMem)).Fz
 		} else {
 			if int32((*TMem)(unsafe.Pointer(pMem)).Fflags)&(libc.Int32FromInt32(m_MEM_Int)|libc.Int32FromInt32(m_MEM_IntReal)) != 0 {
-				Xsqlite3_str_appendf(tls, bp, __ccgo_ts+1335, libc.VaList(bp+40, *(*Ti64)(unsafe.Pointer(pMem))))
+				Xsqlite3_str_appendf(tls, bp, __ccgo_ts+1355, libc.VaList(bp+40, *(*Ti64)(unsafe.Pointer(pMem))))
 			} else {
 				if int32((*TMem)(unsafe.Pointer(pMem)).Fflags)&int32(m_MEM_Real) != 0 {
-					Xsqlite3_str_appendf(tls, bp, __ccgo_ts+1329, libc.VaList(bp+40, *(*float64)(unsafe.Pointer(pMem))))
+					Xsqlite3_str_appendf(tls, bp, __ccgo_ts+1349, libc.VaList(bp+40, *(*float64)(unsafe.Pointer(pMem))))
 				} else {
 					if int32((*TMem)(unsafe.Pointer(pMem)).Fflags)&int32(m_MEM_Null) != 0 {
-						zP4 = __ccgo_ts + 1512
+						zP4 = __ccgo_ts + 1532
 					} else {
 						_ = libc.Int32FromInt32(0)
-						zP4 = __ccgo_ts + 4862
+						zP4 = __ccgo_ts + 4882
 					}
 				}
 			}
 		}
 	case -int32(12):
 		pVtab = (*TVTable)(unsafe.Pointer(*(*uintptr)(unsafe.Pointer(pOp + 16)))).FpVtab
-		Xsqlite3_str_appendf(tls, bp, __ccgo_ts+4869, libc.VaList(bp+40, pVtab))
+		Xsqlite3_str_appendf(tls, bp, __ccgo_ts+4889, libc.VaList(bp+40, pVtab))
 	case -int32(15):
 		ai = *(*uintptr)(unsafe.Pointer(pOp + 16))
 		n = *(*Tu32)(unsafe.Pointer(ai)) /* The first element of an INTARRAY is always the
@@ -57313,14 +57313,14 @@ func _sqlite3VdbeDisplayP4(tls *libc.TLS, db uintptr, pOp uintptr) (r uintptr) {
 			} else {
 				v6 = int32(',')
 			}
-			Xsqlite3_str_appendf(tls, bp, __ccgo_ts+4877, libc.VaList(bp+40, v6, *(*Tu32)(unsafe.Pointer(ai + uintptr(i)*4))))
+			Xsqlite3_str_appendf(tls, bp, __ccgo_ts+4897, libc.VaList(bp+40, v6, *(*Tu32)(unsafe.Pointer(ai + uintptr(i)*4))))
 			goto _5
 		_5:
 			i++
 		}
-		Xsqlite3_str_append(tls, bp, __ccgo_ts+4882, int32(1))
+		Xsqlite3_str_append(tls, bp, __ccgo_ts+4902, int32(1))
 	case -int32(4):
-		zP4 = __ccgo_ts + 4884
+		zP4 = __ccgo_ts + 4904
 	case -int32(17):
 		fallthrough
 	case -int32(5):
@@ -57339,10 +57339,10 @@ func _sqlite3VdbeDisplayP4(tls *libc.TLS, db uintptr, pOp uintptr) (r uintptr) {
 }
 
 var _encnames = [4]uintptr{
-	0: __ccgo_ts + 4829,
-	1: __ccgo_ts + 4831,
-	2: __ccgo_ts + 4833,
-	3: __ccgo_ts + 4838,
+	0: __ccgo_ts + 4849,
+	1: __ccgo_ts + 4851,
+	2: __ccgo_ts + 4853,
+	3: __ccgo_ts + 4858,
 }
 
 // C documentation
@@ -57992,18 +57992,18 @@ func _sqlite3VdbeMakeReady(tls *libc.TLS, p uintptr, pParse uintptr) {
 }
 
 var _azColName = [12]uintptr{
-	0:  __ccgo_ts + 4892,
-	1:  __ccgo_ts + 4897,
-	2:  __ccgo_ts + 4904,
-	3:  __ccgo_ts + 4907,
-	4:  __ccgo_ts + 4910,
-	5:  __ccgo_ts + 4913,
-	6:  __ccgo_ts + 4916,
-	7:  __ccgo_ts + 4919,
-	8:  __ccgo_ts + 4927,
-	9:  __ccgo_ts + 4930,
-	10: __ccgo_ts + 4937,
-	11: __ccgo_ts + 4945,
+	0:  __ccgo_ts + 4912,
+	1:  __ccgo_ts + 4917,
+	2:  __ccgo_ts + 4924,
+	3:  __ccgo_ts + 4927,
+	4:  __ccgo_ts + 4930,
+	5:  __ccgo_ts + 4933,
+	6:  __ccgo_ts + 4936,
+	7:  __ccgo_ts + 4939,
+	8:  __ccgo_ts + 4947,
+	9:  __ccgo_ts + 4950,
+	10: __ccgo_ts + 4957,
+	11: __ccgo_ts + 4965,
 }
 
 // C documentation
@@ -58310,7 +58310,7 @@ func _vdbeCommit(tls *libc.TLS, db uintptr, p uintptr) (r int32) {
 		retryCount = 0
 		/* Select a super-journal file name */
 		nMainFile = _sqlite3Strlen30(tls, zMainFile)
-		zSuper = _sqlite3MPrintf(tls, db, __ccgo_ts+4952, libc.VaList(bp+24, 0, zMainFile, 0))
+		zSuper = _sqlite3MPrintf(tls, db, __ccgo_ts+4972, libc.VaList(bp+24, 0, zMainFile, 0))
 		if zSuper == uintptr(0) {
 			return int32(m_SQLITE_NOMEM)
 		}
@@ -58318,18 +58318,18 @@ func _vdbeCommit(tls *libc.TLS, db uintptr, p uintptr) (r int32) {
 		for cond := true; cond; cond = rc == m_SQLITE_OK && *(*int32)(unsafe.Pointer(bp + 8)) != 0 {
 			if retryCount != 0 {
 				if retryCount > int32(100) {
-					Xsqlite3_log(tls, int32(m_SQLITE_FULL), __ccgo_ts+4964, libc.VaList(bp+24, zSuper))
+					Xsqlite3_log(tls, int32(m_SQLITE_FULL), __ccgo_ts+4984, libc.VaList(bp+24, zSuper))
 					_sqlite3OsDelete(tls, pVfs, zSuper, 0)
 					break
 				} else {
 					if retryCount == int32(1) {
-						Xsqlite3_log(tls, int32(m_SQLITE_FULL), __ccgo_ts+4978, libc.VaList(bp+24, zSuper))
+						Xsqlite3_log(tls, int32(m_SQLITE_FULL), __ccgo_ts+4998, libc.VaList(bp+24, zSuper))
 					}
 				}
 			}
 			retryCount++
 			Xsqlite3_randomness(tls, int32(4), bp+12)
-			Xsqlite3_snprintf(tls, int32(13), zSuper+uintptr(nMainFile), __ccgo_ts+4993, libc.VaList(bp+24, *(*Tu32)(unsafe.Pointer(bp + 12))>>libc.Int32FromInt32(8)&uint32(0xffffff), *(*Tu32)(unsafe.Pointer(bp + 12))&uint32(0xff)))
+			Xsqlite3_snprintf(tls, int32(13), zSuper+uintptr(nMainFile), __ccgo_ts+5013, libc.VaList(bp+24, *(*Tu32)(unsafe.Pointer(bp + 12))>>libc.Int32FromInt32(8)&uint32(0xffffff), *(*Tu32)(unsafe.Pointer(bp + 12))&uint32(0xff)))
 			/* The antipenultimate character of the super-journal name must
 			 ** be "9" to avoid name collisions when using 8+3 filenames. */
 			_ = libc.Int32FromInt32(0)
@@ -58562,7 +58562,7 @@ func _sqlite3VdbeCheckFk(tls *libc.TLS, p uintptr, deferred int32) (r int32) {
 	if deferred != 0 && (*Tsqlite3)(unsafe.Pointer(db)).FnDeferredCons+(*Tsqlite3)(unsafe.Pointer(db)).FnDeferredImmCons > 0 || !(deferred != 0) && (*TVdbe)(unsafe.Pointer(p)).FnFkConstraint > 0 {
 		(*TVdbe)(unsafe.Pointer(p)).Frc = libc.Int32FromInt32(m_SQLITE_CONSTRAINT) | libc.Int32FromInt32(3)<<libc.Int32FromInt32(8)
 		(*TVdbe)(unsafe.Pointer(p)).FerrorAction = uint8(m_OE_Abort)
-		_sqlite3VdbeError(tls, p, __ccgo_ts+5006, 0)
+		_sqlite3VdbeError(tls, p, __ccgo_ts+5026, 0)
 		return int32(m_SQLITE_ERROR)
 	}
 	return m_SQLITE_OK
@@ -58875,7 +58875,7 @@ func _sqlite3VdbeReset(tls *libc.TLS, p uintptr) (r int32) {
 			 ** called), set the database error in this case as well.
 			 */
 			if (*TVdbe)(unsafe.Pointer(p)).FzErrMsg != 0 {
-				v1 = __ccgo_ts + 3560
+				v1 = __ccgo_ts + 3580
 			} else {
 				v1 = uintptr(0)
 			}
@@ -60603,15 +60603,15 @@ func _sqlite3NotPureFunc(tls *libc.TLS, pCtx uintptr) (r int32) {
 	pOp = (*TVdbe)(unsafe.Pointer((*Tsqlite3_context)(unsafe.Pointer(pCtx)).FpVdbe)).FaOp + uintptr((*Tsqlite3_context)(unsafe.Pointer(pCtx)).FiOp)*24
 	if int32((*TVdbeOp)(unsafe.Pointer(pOp)).Fopcode) == int32(m_OP_PureFunc) {
 		if int32((*TVdbeOp)(unsafe.Pointer(pOp)).Fp5)&int32(m_NC_IsCheck) != 0 {
-			zContext = __ccgo_ts + 5036
+			zContext = __ccgo_ts + 5056
 		} else {
 			if int32((*TVdbeOp)(unsafe.Pointer(pOp)).Fp5)&int32(m_NC_GenCol) != 0 {
-				zContext = __ccgo_ts + 5055
+				zContext = __ccgo_ts + 5075
 			} else {
-				zContext = __ccgo_ts + 5074
+				zContext = __ccgo_ts + 5094
 			}
 		}
-		zMsg = Xsqlite3_mprintf(tls, __ccgo_ts+5083, libc.VaList(bp+8, (*TFuncDef)(unsafe.Pointer((*Tsqlite3_context)(unsafe.Pointer(pCtx)).FpFunc)).FzName, zContext))
+		zMsg = Xsqlite3_mprintf(tls, __ccgo_ts+5103, libc.VaList(bp+8, (*TFuncDef)(unsafe.Pointer((*Tsqlite3_context)(unsafe.Pointer(pCtx)).FpFunc)).FzName, zContext))
 		Xsqlite3_result_error(tls, pCtx, zMsg, -int32(1))
 		Xsqlite3_free(tls, zMsg)
 		return 0
@@ -60786,7 +60786,7 @@ func Xsqlite3_expired(tls *libc.TLS, pStmt uintptr) (r int32) {
 //	*/
 func _vdbeSafety(tls *libc.TLS, p uintptr) (r int32) {
 	if (*TVdbe)(unsafe.Pointer(p)).Fdb == uintptr(0) {
-		Xsqlite3_log(tls, int32(m_SQLITE_MISUSE), __ccgo_ts+5119, 0)
+		Xsqlite3_log(tls, int32(m_SQLITE_MISUSE), __ccgo_ts+5139, 0)
 		return int32(1)
 	} else {
 		return 0
@@ -60796,7 +60796,7 @@ func _vdbeSafety(tls *libc.TLS, p uintptr) (r int32) {
 
 func _vdbeSafetyNotNull(tls *libc.TLS, p uintptr) (r int32) {
 	if p == uintptr(0) {
-		Xsqlite3_log(tls, int32(m_SQLITE_MISUSE), __ccgo_ts+5164, 0)
+		Xsqlite3_log(tls, int32(m_SQLITE_MISUSE), __ccgo_ts+5184, 0)
 		return int32(1)
 	} else {
 		return _vdbeSafety(tls, p)
@@ -61385,7 +61385,7 @@ func Xsqlite3_result_error_code(tls *libc.TLS, pCtx uintptr, errCode int32) {
 func Xsqlite3_result_error_toobig(tls *libc.TLS, pCtx uintptr) {
 	_ = libc.Int32FromInt32(0)
 	(*Tsqlite3_context)(unsafe.Pointer(pCtx)).FisError = int32(m_SQLITE_TOOBIG)
-	_sqlite3VdbeMemSetStr(tls, (*Tsqlite3_context)(unsafe.Pointer(pCtx)).FpOut, __ccgo_ts+5204, int64(-int32(1)), uint8(m_SQLITE_UTF8), libc.UintptrFromInt32(0))
+	_sqlite3VdbeMemSetStr(tls, (*Tsqlite3_context)(unsafe.Pointer(pCtx)).FpOut, __ccgo_ts+5224, int64(-int32(1)), uint8(m_SQLITE_UTF8), libc.UintptrFromInt32(0))
 }
 
 // C documentation
@@ -62238,7 +62238,7 @@ func _vdbeUnbind(tls *libc.TLS, p uintptr, i int32) (r int32) {
 	if (*TVdbe)(unsafe.Pointer(p)).FiVdbeMagic != uint32(m_VDBE_MAGIC_RUN) || (*TVdbe)(unsafe.Pointer(p)).Fpc >= 0 {
 		_sqlite3Error(tls, (*TVdbe)(unsafe.Pointer(p)).Fdb, int32(m_SQLITE_MISUSE))
 		Xsqlite3_mutex_leave(tls, (*Tsqlite3)(unsafe.Pointer((*TVdbe)(unsafe.Pointer(p)).Fdb)).Fmutex)
-		Xsqlite3_log(tls, int32(m_SQLITE_MISUSE), __ccgo_ts+5227, libc.VaList(bp+8, (*TVdbe)(unsafe.Pointer(p)).FzSql))
+		Xsqlite3_log(tls, int32(m_SQLITE_MISUSE), __ccgo_ts+5247, libc.VaList(bp+8, (*TVdbe)(unsafe.Pointer(p)).FzSql))
 		return _sqlite3MisuseError(tls, int32(85791))
 	}
 	if i < int32(1) || i > int32((*TVdbe)(unsafe.Pointer(p)).FnVar) {
@@ -63074,7 +63074,7 @@ func _sqlite3VdbeExpandSql(tls *libc.TLS, p uintptr, zRawSql uintptr) (r uintptr
 					break
 				}
 			}
-			Xsqlite3_str_append(tls, bp+8, __ccgo_ts+5267, int32(3))
+			Xsqlite3_str_append(tls, bp+8, __ccgo_ts+5287, int32(3))
 			_ = libc.Int32FromInt32(0)
 			Xsqlite3_str_append(tls, bp+8, zStart, int32(int64(zRawSql)-int64(zStart)))
 		}
@@ -63113,13 +63113,13 @@ func _sqlite3VdbeExpandSql(tls *libc.TLS, p uintptr, zRawSql uintptr) (r uintptr
 				_ = libc.Int32FromInt32(0)
 				pVar = (*TVdbe)(unsafe.Pointer(p)).FaVar + uintptr(*(*int32)(unsafe.Pointer(bp))-int32(1))*56
 				if int32((*TMem)(unsafe.Pointer(pVar)).Fflags)&int32(m_MEM_Null) != 0 {
-					Xsqlite3_str_append(tls, bp+8, __ccgo_ts+1512, int32(4))
+					Xsqlite3_str_append(tls, bp+8, __ccgo_ts+1532, int32(4))
 				} else {
 					if int32((*TMem)(unsafe.Pointer(pVar)).Fflags)&(libc.Int32FromInt32(m_MEM_Int)|libc.Int32FromInt32(m_MEM_IntReal)) != 0 {
-						Xsqlite3_str_appendf(tls, bp+8, __ccgo_ts+1335, libc.VaList(bp+104, *(*Ti64)(unsafe.Pointer(pVar))))
+						Xsqlite3_str_appendf(tls, bp+8, __ccgo_ts+1355, libc.VaList(bp+104, *(*Ti64)(unsafe.Pointer(pVar))))
 					} else {
 						if int32((*TMem)(unsafe.Pointer(pVar)).Fflags)&int32(m_MEM_Real) != 0 {
-							Xsqlite3_str_appendf(tls, bp+8, __ccgo_ts+4788, libc.VaList(bp+104, *(*float64)(unsafe.Pointer(pVar))))
+							Xsqlite3_str_appendf(tls, bp+8, __ccgo_ts+4808, libc.VaList(bp+104, *(*float64)(unsafe.Pointer(pVar))))
 						} else {
 							if int32((*TMem)(unsafe.Pointer(pVar)).Fflags)&int32(m_MEM_Str) != 0 { /* Number of bytes of the string text to include in output */
 								enc = (*Tsqlite3)(unsafe.Pointer(db)).Fenc
@@ -63134,28 +63134,28 @@ func _sqlite3VdbeExpandSql(tls *libc.TLS, p uintptr, zRawSql uintptr) (r uintptr
 									pVar = bp + 40
 								}
 								nOut = (*TMem)(unsafe.Pointer(pVar)).Fn
-								Xsqlite3_str_appendf(tls, bp+8, __ccgo_ts+5271, libc.VaList(bp+104, nOut, (*TMem)(unsafe.Pointer(pVar)).Fz))
+								Xsqlite3_str_appendf(tls, bp+8, __ccgo_ts+5291, libc.VaList(bp+104, nOut, (*TMem)(unsafe.Pointer(pVar)).Fz))
 								if int32(enc) != int32(m_SQLITE_UTF8) {
 									_sqlite3VdbeMemRelease(tls, bp+40)
 								}
 							} else {
 								if int32((*TMem)(unsafe.Pointer(pVar)).Fflags)&int32(m_MEM_Zero) != 0 {
-									Xsqlite3_str_appendf(tls, bp+8, __ccgo_ts+5278, libc.VaList(bp+104, *(*int32)(unsafe.Pointer(&(*TMem)(unsafe.Pointer(pVar)).Fu))))
+									Xsqlite3_str_appendf(tls, bp+8, __ccgo_ts+5298, libc.VaList(bp+104, *(*int32)(unsafe.Pointer(&(*TMem)(unsafe.Pointer(pVar)).Fu))))
 								} else { /* Number of bytes of the blob to include in output */
 									_ = libc.Int32FromInt32(0)
-									Xsqlite3_str_append(tls, bp+8, __ccgo_ts+5291, int32(2))
+									Xsqlite3_str_append(tls, bp+8, __ccgo_ts+5311, int32(2))
 									nOut1 = (*TMem)(unsafe.Pointer(pVar)).Fn
 									i = 0
 									for {
 										if !(i < nOut1) {
 											break
 										}
-										Xsqlite3_str_appendf(tls, bp+8, __ccgo_ts+5294, libc.VaList(bp+104, int32(*(*uint8)(unsafe.Pointer((*TMem)(unsafe.Pointer(pVar)).Fz + uintptr(i))))&int32(0xff)))
+										Xsqlite3_str_appendf(tls, bp+8, __ccgo_ts+5314, libc.VaList(bp+104, int32(*(*uint8)(unsafe.Pointer((*TMem)(unsafe.Pointer(pVar)).Fz + uintptr(i))))&int32(0xff)))
 										goto _3
 									_3:
 										i++
 									}
-									Xsqlite3_str_append(tls, bp+8, __ccgo_ts+5299, int32(1))
+									Xsqlite3_str_append(tls, bp+8, __ccgo_ts+5319, int32(1))
 								}
 							}
 						}
@@ -63640,11 +63640,11 @@ func _vdbeMemTypeName(tls *libc.TLS, pMem uintptr) (r uintptr) {
 }
 
 var _azTypes = [5]uintptr{
-	0: __ccgo_ts + 1094,
-	1: __ccgo_ts + 1106,
-	2: __ccgo_ts + 1111,
-	3: __ccgo_ts + 1089,
-	4: __ccgo_ts + 1512,
+	0: __ccgo_ts + 1114,
+	1: __ccgo_ts + 1126,
+	2: __ccgo_ts + 1131,
+	3: __ccgo_ts + 1109,
+	4: __ccgo_ts + 1532,
 }
 
 // C documentation
@@ -64363,14 +64363,14 @@ func _sqlite3VdbeExec(tls *libc.TLS, p uintptr) (r int32) {
 		_ = libc.Int32FromInt32(0)
 		if (*TVdbe)(unsafe.Pointer(p)).Frc != 0 {
 			if (*TOp)(unsafe.Pointer(pOp)).Fp5 != 0 {
-				_sqlite3VdbeError(tls, p, __ccgo_ts+5335, libc.VaList(bp+784, _azType[int32((*TOp)(unsafe.Pointer(pOp)).Fp5)-int32(1)]))
+				_sqlite3VdbeError(tls, p, __ccgo_ts+5355, libc.VaList(bp+784, _azType[int32((*TOp)(unsafe.Pointer(pOp)).Fp5)-int32(1)]))
 				if *(*uintptr)(unsafe.Pointer(pOp + 16)) != 0 {
-					(*TVdbe)(unsafe.Pointer(p)).FzErrMsg = _sqlite3MPrintf(tls, db, __ccgo_ts+5356, libc.VaList(bp+784, (*TVdbe)(unsafe.Pointer(p)).FzErrMsg, *(*uintptr)(unsafe.Pointer(pOp + 16))))
+					(*TVdbe)(unsafe.Pointer(p)).FzErrMsg = _sqlite3MPrintf(tls, db, __ccgo_ts+5376, libc.VaList(bp+784, (*TVdbe)(unsafe.Pointer(p)).FzErrMsg, *(*uintptr)(unsafe.Pointer(pOp + 16))))
 				}
 			} else {
-				_sqlite3VdbeError(tls, p, __ccgo_ts+3560, libc.VaList(bp+784, *(*uintptr)(unsafe.Pointer(pOp + 16))))
+				_sqlite3VdbeError(tls, p, __ccgo_ts+3580, libc.VaList(bp+784, *(*uintptr)(unsafe.Pointer(pOp + 16))))
 			}
-			Xsqlite3_log(tls, (*TOp)(unsafe.Pointer(pOp)).Fp1, __ccgo_ts+5363, libc.VaList(bp+784, pcx, (*TVdbe)(unsafe.Pointer(p)).FzSql, (*TVdbe)(unsafe.Pointer(p)).FzErrMsg))
+			Xsqlite3_log(tls, (*TOp)(unsafe.Pointer(pOp)).Fp1, __ccgo_ts+5383, libc.VaList(bp+784, pcx, (*TVdbe)(unsafe.Pointer(p)).FzSql, (*TVdbe)(unsafe.Pointer(p)).FzErrMsg))
 		}
 		rc = _sqlite3VdbeHalt(tls, p)
 		_ = libc.Int32FromInt32(0)
@@ -66083,7 +66083,7 @@ func _sqlite3VdbeExec(tls *libc.TLS, p uintptr) (r int32) {
 		_ = libc.Int32FromInt32(0)
 		goto _179
 	vdbe_type_error:
-		_sqlite3VdbeError(tls, p, __ccgo_ts+5387, libc.VaList(bp+784, _vdbeMemTypeName(tls, pIn1), _sqlite3StdType[int32(uint32(*(*uint8)(unsafe.Pointer(aCol + uintptr(i3)*16 + 8))&0xf0>>4))-int32(1)], (*TTable)(unsafe.Pointer(pTab)).FzName, (*(*TColumn)(unsafe.Pointer(aCol + uintptr(i3)*16))).FzCnName))
+		_sqlite3VdbeError(tls, p, __ccgo_ts+5407, libc.VaList(bp+784, _vdbeMemTypeName(tls, pIn1), _sqlite3StdType[int32(uint32(*(*uint8)(unsafe.Pointer(aCol + uintptr(i3)*16 + 8))&0xf0>>4))-int32(1)], (*TTable)(unsafe.Pointer(pTab)).FzName, (*(*TColumn)(unsafe.Pointer(aCol + uintptr(i3)*16))).FzCnName))
 		rc = libc.Int32FromInt32(m_SQLITE_CONSTRAINT) | libc.Int32FromInt32(12)<<libc.Int32FromInt32(8)
 		goto abort_due_to_error
 		/* Opcode: Affinity P1 P2 * P4 *
@@ -66461,7 +66461,7 @@ func _sqlite3VdbeExec(tls *libc.TLS, p uintptr) (r int32) {
 				/* A new savepoint cannot be created if there are active write
 				 ** statements (i.e. open read/write incremental blob handles).
 				 */
-				_sqlite3VdbeError(tls, p, __ccgo_ts+5428, 0)
+				_sqlite3VdbeError(tls, p, __ccgo_ts+5448, 0)
 				rc = int32(m_SQLITE_BUSY)
 			} else {
 				nName = _sqlite3Strlen30(tls, zName)
@@ -66510,14 +66510,14 @@ func _sqlite3VdbeExec(tls *libc.TLS, p uintptr) (r int32) {
 				pSavepoint = (*TSavepoint)(unsafe.Pointer(pSavepoint)).FpNext
 			}
 			if !(pSavepoint != 0) {
-				_sqlite3VdbeError(tls, p, __ccgo_ts+5479, libc.VaList(bp+784, zName))
+				_sqlite3VdbeError(tls, p, __ccgo_ts+5499, libc.VaList(bp+784, zName))
 				rc = int32(m_SQLITE_ERROR)
 			} else {
 				if (*Tsqlite3)(unsafe.Pointer(db)).FnVdbeWrite > 0 && p12 == int32(m_SAVEPOINT_RELEASE) {
 					/* It is not possible to release (commit) a savepoint if there are
 					 ** active write statements.
 					 */
-					_sqlite3VdbeError(tls, p, __ccgo_ts+5501, 0)
+					_sqlite3VdbeError(tls, p, __ccgo_ts+5521, 0)
 					rc = int32(m_SQLITE_BUSY)
 				} else {
 					/* Determine whether or not this is a transaction savepoint. If so,
@@ -66652,7 +66652,7 @@ func _sqlite3VdbeExec(tls *libc.TLS, p uintptr) (r int32) {
 					/* If this instruction implements a COMMIT and other VMs are writing
 					 ** return an error indicating that the other VMs must complete first.
 					 */
-					_sqlite3VdbeError(tls, p, __ccgo_ts+5555, 0)
+					_sqlite3VdbeError(tls, p, __ccgo_ts+5575, 0)
 					rc = int32(m_SQLITE_BUSY)
 					goto abort_due_to_error
 				} else {
@@ -66682,12 +66682,12 @@ func _sqlite3VdbeExec(tls *libc.TLS, p uintptr) (r int32) {
 			goto vdbe_return
 		} else {
 			if !(desiredAutoCommit != 0) {
-				v242 = __ccgo_ts + 5610
+				v242 = __ccgo_ts + 5630
 			} else {
 				if iRollback != 0 {
-					v243 = __ccgo_ts + 5658
+					v243 = __ccgo_ts + 5678
 				} else {
-					v243 = __ccgo_ts + 5701
+					v243 = __ccgo_ts + 5721
 				}
 				v242 = v243
 			}
@@ -66787,7 +66787,7 @@ func _sqlite3VdbeExec(tls *libc.TLS, p uintptr) (r int32) {
 			 ** SQL statement was prepared.
 			 */
 			_sqlite3DbFree(tls, db, (*TVdbe)(unsafe.Pointer(p)).FzErrMsg)
-			(*TVdbe)(unsafe.Pointer(p)).FzErrMsg = _sqlite3DbStrDup(tls, db, __ccgo_ts+5742)
+			(*TVdbe)(unsafe.Pointer(p)).FzErrMsg = _sqlite3DbStrDup(tls, db, __ccgo_ts+5762)
 			/* If the schema-cookie from the database file matches the cookie
 			 ** stored with the in-memory representation of the schema, do
 			 ** not reload the schema from the database file.
@@ -67130,7 +67130,7 @@ func _sqlite3VdbeExec(tls *libc.TLS, p uintptr) (r int32) {
 			_ = libc.Int32FromInt32(0)
 			_ = libc.Int32FromInt32(0)
 			(*(*TMem)(unsafe.Pointer(aMem + uintptr((*TOp)(unsafe.Pointer(pOp)).Fp3)*56))).Fn = 0
-			(*(*TMem)(unsafe.Pointer(aMem + uintptr((*TOp)(unsafe.Pointer(pOp)).Fp3)*56))).Fz = __ccgo_ts + 1511
+			(*(*TMem)(unsafe.Pointer(aMem + uintptr((*TOp)(unsafe.Pointer(pOp)).Fp3)*56))).Fz = __ccgo_ts + 1531
 		}
 		pCx1 = *(*uintptr)(unsafe.Pointer((*TVdbe)(unsafe.Pointer(p)).FapCsr + uintptr((*TOp)(unsafe.Pointer(pOp)).Fp1)*8))
 		if pCx1 != 0 && !(int32(TBool(*(*uint8)(unsafe.Pointer(pCx1 + 8))&0x8>>3)) != 0) && (*TOp)(unsafe.Pointer(pOp)).Fp2 <= int32((*TVdbeCursor)(unsafe.Pointer(pCx1)).FnField) {
@@ -68902,7 +68902,7 @@ func _sqlite3VdbeExec(tls *libc.TLS, p uintptr) (r int32) {
 			}
 		} else {
 			if (*TOp)(unsafe.Pointer(pOp)).Fp5 != 0 && !(_sqlite3WritableSchema(tls, db) != 0) {
-				rc = _sqlite3ReportError(tls, libc.Int32FromInt32(m_SQLITE_CORRUPT)|libc.Int32FromInt32(3)<<libc.Int32FromInt32(8), int32(92800), __ccgo_ts+5770)
+				rc = _sqlite3ReportError(tls, libc.Int32FromInt32(m_SQLITE_CORRUPT)|libc.Int32FromInt32(3)<<libc.Int32FromInt32(8), int32(92800), __ccgo_ts+5790)
 				goto abort_due_to_error
 			}
 		}
@@ -69272,13 +69272,13 @@ func _sqlite3VdbeExec(tls *libc.TLS, p uintptr) (r int32) {
 			*(*Tu32)(unsafe.Pointer(db + 44)) |= uint32(m_DBFLAG_SchemaChange)
 			libc.SetBitFieldPtr16Uint32(p+208, libc.Uint32FromInt32(0), 0, 0x3)
 		} else {
-			zSchema = __ccgo_ts + 5787
+			zSchema = __ccgo_ts + 5807
 			(*(*TInitData)(unsafe.Pointer(bp + 568))).Fdb = db
 			(*(*TInitData)(unsafe.Pointer(bp + 568))).FiDb = iDb3
 			(*(*TInitData)(unsafe.Pointer(bp + 568))).FpzErrMsg = p + 176
 			(*(*TInitData)(unsafe.Pointer(bp + 568))).FmInitFlags = uint32(0)
 			(*(*TInitData)(unsafe.Pointer(bp + 568))).FmxPage = _sqlite3BtreeLastPage(tls, (*(*TDb)(unsafe.Pointer((*Tsqlite3)(unsafe.Pointer(db)).FaDb + uintptr(iDb3)*32))).FpBt)
-			zSql = _sqlite3MPrintf(tls, db, __ccgo_ts+5801, libc.VaList(bp+784, (*(*TDb)(unsafe.Pointer((*Tsqlite3)(unsafe.Pointer(db)).FaDb + uintptr(iDb3)*32))).FzDbSName, zSchema, *(*uintptr)(unsafe.Pointer(pOp + 16))))
+			zSql = _sqlite3MPrintf(tls, db, __ccgo_ts+5821, libc.VaList(bp+784, (*(*TDb)(unsafe.Pointer((*Tsqlite3)(unsafe.Pointer(db)).FaDb + uintptr(iDb3)*32))).FzDbSName, zSchema, *(*uintptr)(unsafe.Pointer(pOp + 16))))
 			if zSql == uintptr(0) {
 				rc = int32(m_SQLITE_NOMEM)
 			} else {
@@ -69537,7 +69537,7 @@ func _sqlite3VdbeExec(tls *libc.TLS, p uintptr) (r int32) {
 		}
 		if (*TVdbe)(unsafe.Pointer(p)).FnFrame >= *(*int32)(unsafe.Pointer(db + 136 + 10*4)) {
 			rc = int32(m_SQLITE_ERROR)
-			_sqlite3VdbeError(tls, p, __ccgo_ts+5844, 0)
+			_sqlite3VdbeError(tls, p, __ccgo_ts+5864, 0)
 			goto abort_due_to_error
 		}
 		/* Register pRt is used to store the memory required to save the state
@@ -69906,7 +69906,7 @@ func _sqlite3VdbeExec(tls *libc.TLS, p uintptr) (r int32) {
 		} /* IMP: R-24505-23230 */
 		if (*Tsqlite3_context)(unsafe.Pointer(pCtx1)).FisError != 0 {
 			if (*Tsqlite3_context)(unsafe.Pointer(pCtx1)).FisError > 0 {
-				_sqlite3VdbeError(tls, p, __ccgo_ts+3560, libc.VaList(bp+784, Xsqlite3_value_text(tls, (*Tsqlite3_context)(unsafe.Pointer(pCtx1)).FpOut)))
+				_sqlite3VdbeError(tls, p, __ccgo_ts+3580, libc.VaList(bp+784, Xsqlite3_value_text(tls, (*Tsqlite3_context)(unsafe.Pointer(pCtx1)).FpOut)))
 				rc = (*Tsqlite3_context)(unsafe.Pointer(pCtx1)).FisError
 			}
 			if (*Tsqlite3_context)(unsafe.Pointer(pCtx1)).FskipFlag != 0 {
@@ -69966,7 +69966,7 @@ func _sqlite3VdbeExec(tls *libc.TLS, p uintptr) (r int32) {
 			rc = _sqlite3VdbeMemFinalize(tls, pMem4, *(*uintptr)(unsafe.Pointer(pOp + 16)))
 		}
 		if rc != 0 {
-			_sqlite3VdbeError(tls, p, __ccgo_ts+3560, libc.VaList(bp+784, Xsqlite3_value_text(tls, pMem4)))
+			_sqlite3VdbeError(tls, p, __ccgo_ts+3580, libc.VaList(bp+784, Xsqlite3_value_text(tls, pMem4)))
 			goto abort_due_to_error
 		}
 		_sqlite3VdbeChangeEncoding(tls, pMem4, int32(encoding))
@@ -70051,11 +70051,11 @@ func _sqlite3VdbeExec(tls *libc.TLS, p uintptr) (r int32) {
 			if !((*Tsqlite3)(unsafe.Pointer(db)).FautoCommit != 0) || (*Tsqlite3)(unsafe.Pointer(db)).FnVdbeRead > int32(1) {
 				rc = int32(m_SQLITE_ERROR)
 				if eNew == int32(m_PAGER_JOURNALMODE_WAL) {
-					v279 = __ccgo_ts + 5881
+					v279 = __ccgo_ts + 5901
 				} else {
-					v279 = __ccgo_ts + 5886
+					v279 = __ccgo_ts + 5906
 				}
-				_sqlite3VdbeError(tls, p, __ccgo_ts+5893, libc.VaList(bp+784, v279))
+				_sqlite3VdbeError(tls, p, __ccgo_ts+5913, libc.VaList(bp+784, v279))
 				goto abort_due_to_error
 			} else {
 				if eOld == int32(m_PAGER_JOURNALMODE_WAL) {
@@ -70217,7 +70217,7 @@ func _sqlite3VdbeExec(tls *libc.TLS, p uintptr) (r int32) {
 			if rc != 0 {
 				if rc&int32(0xFF) == int32(m_SQLITE_LOCKED) {
 					z1 = *(*uintptr)(unsafe.Pointer(pOp + 16))
-					_sqlite3VdbeError(tls, p, __ccgo_ts+5945, libc.VaList(bp+784, z1))
+					_sqlite3VdbeError(tls, p, __ccgo_ts+5965, libc.VaList(bp+784, z1))
 				}
 				goto abort_due_to_error
 			}
@@ -70410,7 +70410,7 @@ func _sqlite3VdbeExec(tls *libc.TLS, p uintptr) (r int32) {
 		rc = (*(*func(*libc.TLS, uintptr, uintptr, int32) int32)(unsafe.Pointer(&struct{ uintptr }{(*Tsqlite3_module)(unsafe.Pointer(pModule3)).FxColumn})))(tls, *(*uintptr)(unsafe.Pointer(pCur4 + 56)), bp+712, (*TOp)(unsafe.Pointer(pOp)).Fp2)
 		_sqlite3VtabImportErrmsg(tls, p, pVtab3)
 		if (*(*Tsqlite3_context)(unsafe.Pointer(bp + 712))).FisError > 0 {
-			_sqlite3VdbeError(tls, p, __ccgo_ts+3560, libc.VaList(bp+784, Xsqlite3_value_text(tls, pDest2)))
+			_sqlite3VdbeError(tls, p, __ccgo_ts+3580, libc.VaList(bp+784, Xsqlite3_value_text(tls, pDest2)))
 			rc = (*(*Tsqlite3_context)(unsafe.Pointer(bp + 712))).FisError
 		}
 		_sqlite3VdbeChangeEncoding(tls, pDest2, int32(encoding))
@@ -70672,7 +70672,7 @@ func _sqlite3VdbeExec(tls *libc.TLS, p uintptr) (r int32) {
 		/* If the function returned an error, throw an exception */
 		if (*Tsqlite3_context)(unsafe.Pointer(pCtx2)).FisError != 0 {
 			if (*Tsqlite3_context)(unsafe.Pointer(pCtx2)).FisError > 0 {
-				_sqlite3VdbeError(tls, p, __ccgo_ts+3560, libc.VaList(bp+784, Xsqlite3_value_text(tls, pOut)))
+				_sqlite3VdbeError(tls, p, __ccgo_ts+3580, libc.VaList(bp+784, Xsqlite3_value_text(tls, pOut)))
 				rc = (*Tsqlite3_context)(unsafe.Pointer(pCtx2)).FisError
 			}
 			_sqlite3VdbeDeleteAuxData(tls, db, p+296, (*Tsqlite3_context)(unsafe.Pointer(pCtx2)).FiOp, (*TOp)(unsafe.Pointer(pOp)).Fp1)
@@ -70744,7 +70744,7 @@ func _sqlite3VdbeExec(tls *libc.TLS, p uintptr) (r int32) {
 				Xsqlite3_free(tls, z2)
 			} else {
 				if (*Tsqlite3)(unsafe.Pointer(db)).FnVdbeExec > int32(1) {
-					z3 = _sqlite3MPrintf(tls, db, __ccgo_ts+5974, libc.VaList(bp+784, zTrace))
+					z3 = _sqlite3MPrintf(tls, db, __ccgo_ts+5994, libc.VaList(bp+784, zTrace))
 					(*(*func(*libc.TLS, Tu32, uintptr, uintptr, uintptr) int32)(unsafe.Pointer(&struct{ uintptr }{*(*uintptr)(unsafe.Pointer(&(*Tsqlite3)(unsafe.Pointer(db)).Ftrace))})))(tls, uint32(m_SQLITE_TRACE_STMT), (*Tsqlite3)(unsafe.Pointer(db)).FpTraceArg, p, z3)
 					_sqlite3DbFree(tls, db, z3)
 				} else {
@@ -70817,11 +70817,11 @@ abort_due_to_error:
 	}
 	_ = libc.Int32FromInt32(0)
 	if (*TVdbe)(unsafe.Pointer(p)).FzErrMsg == uintptr(0) && rc != libc.Int32FromInt32(m_SQLITE_IOERR)|libc.Int32FromInt32(12)<<libc.Int32FromInt32(8) {
-		_sqlite3VdbeError(tls, p, __ccgo_ts+3560, libc.VaList(bp+784, _sqlite3ErrStr(tls, rc)))
+		_sqlite3VdbeError(tls, p, __ccgo_ts+3580, libc.VaList(bp+784, _sqlite3ErrStr(tls, rc)))
 	}
 	(*TVdbe)(unsafe.Pointer(p)).Frc = rc
 	_sqlite3SystemError(tls, db, rc)
-	Xsqlite3_log(tls, rc, __ccgo_ts+5980, libc.VaList(bp+784, int32((int64(pOp)-int64(aOp))/24), (*TVdbe)(unsafe.Pointer(p)).FzSql, (*TVdbe)(unsafe.Pointer(p)).FzErrMsg))
+	Xsqlite3_log(tls, rc, __ccgo_ts+6000, libc.VaList(bp+784, int32((int64(pOp)-int64(aOp))/24), (*TVdbe)(unsafe.Pointer(p)).FzSql, (*TVdbe)(unsafe.Pointer(p)).FzErrMsg))
 	_sqlite3VdbeHalt(tls, p)
 	if rc == libc.Int32FromInt32(m_SQLITE_IOERR)|libc.Int32FromInt32(12)<<libc.Int32FromInt32(8) {
 		_sqlite3OomFault(tls, db)
@@ -70853,14 +70853,14 @@ vdbe_return:
 	 ** is encountered.
 	 */
 too_big:
-	_sqlite3VdbeError(tls, p, __ccgo_ts+5204, 0)
+	_sqlite3VdbeError(tls, p, __ccgo_ts+5224, 0)
 	rc = int32(m_SQLITE_TOOBIG)
 	goto abort_due_to_error
 	/* Jump to here if a malloc() fails.
 	 */
 no_mem:
 	_sqlite3OomFault(tls, db)
-	_sqlite3VdbeError(tls, p, __ccgo_ts+6012, 0)
+	_sqlite3VdbeError(tls, p, __ccgo_ts+6032, 0)
 	rc = int32(m_SQLITE_NOMEM)
 	goto abort_due_to_error
 	/* Jump to here if the sqlite3_interrupt() API sets the interrupt
@@ -70874,10 +70874,10 @@ abort_due_to_interrupt:
 }
 
 var _azType = [4]uintptr{
-	0: __ccgo_ts + 5301,
-	1: __ccgo_ts + 5310,
-	2: __ccgo_ts + 5317,
-	3: __ccgo_ts + 5323,
+	0: __ccgo_ts + 5321,
+	1: __ccgo_ts + 5330,
+	2: __ccgo_ts + 5337,
+	3: __ccgo_ts + 5343,
 }
 
 var _and_logic = [9]uint8{
@@ -71013,16 +71013,16 @@ func _blobSeekToRow(tls *libc.TLS, p uintptr, iRow Tsqlite3_int64, pzErr uintptr
 		type1 = v1
 		if type1 < uint32(12) {
 			if type1 == uint32(0) {
-				v2 = __ccgo_ts + 6026
+				v2 = __ccgo_ts + 6046
 			} else {
 				if type1 == uint32(7) {
-					v3 = __ccgo_ts + 6031
+					v3 = __ccgo_ts + 6051
 				} else {
-					v3 = __ccgo_ts + 6036
+					v3 = __ccgo_ts + 6056
 				}
 				v2 = v3
 			}
-			zErr = _sqlite3MPrintf(tls, (*TIncrblob)(unsafe.Pointer(p)).Fdb, __ccgo_ts+6044, libc.VaList(bp+8, v2))
+			zErr = _sqlite3MPrintf(tls, (*TIncrblob)(unsafe.Pointer(p)).Fdb, __ccgo_ts+6064, libc.VaList(bp+8, v2))
 			rc = int32(m_SQLITE_ERROR)
 			Xsqlite3_finalize(tls, (*TIncrblob)(unsafe.Pointer(p)).FpStmt)
 			(*TIncrblob)(unsafe.Pointer(p)).FpStmt = uintptr(0)
@@ -71040,10 +71040,10 @@ func _blobSeekToRow(tls *libc.TLS, p uintptr, iRow Tsqlite3_int64, pzErr uintptr
 			rc = Xsqlite3_finalize(tls, (*TIncrblob)(unsafe.Pointer(p)).FpStmt)
 			(*TIncrblob)(unsafe.Pointer(p)).FpStmt = uintptr(0)
 			if rc == m_SQLITE_OK {
-				zErr = _sqlite3MPrintf(tls, (*TIncrblob)(unsafe.Pointer(p)).Fdb, __ccgo_ts+6073, libc.VaList(bp+8, iRow))
+				zErr = _sqlite3MPrintf(tls, (*TIncrblob)(unsafe.Pointer(p)).Fdb, __ccgo_ts+6093, libc.VaList(bp+8, iRow))
 				rc = int32(m_SQLITE_ERROR)
 			} else {
-				zErr = _sqlite3MPrintf(tls, (*TIncrblob)(unsafe.Pointer(p)).Fdb, __ccgo_ts+3560, libc.VaList(bp+8, Xsqlite3_errmsg(tls, (*TIncrblob)(unsafe.Pointer(p)).Fdb)))
+				zErr = _sqlite3MPrintf(tls, (*TIncrblob)(unsafe.Pointer(p)).Fdb, __ccgo_ts+3580, libc.VaList(bp+8, Xsqlite3_errmsg(tls, (*TIncrblob)(unsafe.Pointer(p)).Fdb)))
 			}
 		}
 	}
@@ -71086,15 +71086,15 @@ func Xsqlite3_blob_open(tls *libc.TLS, db uintptr, zDb uintptr, zTable uintptr, 
 		pTab = _sqlite3LocateTable(tls, bp+8, uint32(0), zTable, zDb)
 		if pTab != 0 && int32((*TTable)(unsafe.Pointer(pTab)).FeTabType) == int32(m_TABTYP_VTAB) {
 			pTab = uintptr(0)
-			_sqlite3ErrorMsg(tls, bp+8, __ccgo_ts+6093, libc.VaList(bp+416, zTable))
+			_sqlite3ErrorMsg(tls, bp+8, __ccgo_ts+6113, libc.VaList(bp+416, zTable))
 		}
 		if pTab != 0 && !((*TTable)(unsafe.Pointer(pTab)).FtabFlags&libc.Uint32FromInt32(m_TF_WithoutRowid) == libc.Uint32FromInt32(0)) {
 			pTab = uintptr(0)
-			_sqlite3ErrorMsg(tls, bp+8, __ccgo_ts+6123, libc.VaList(bp+416, zTable))
+			_sqlite3ErrorMsg(tls, bp+8, __ccgo_ts+6143, libc.VaList(bp+416, zTable))
 		}
 		if pTab != 0 && int32((*TTable)(unsafe.Pointer(pTab)).FeTabType) == int32(m_TABTYP_VIEW) {
 			pTab = uintptr(0)
-			_sqlite3ErrorMsg(tls, bp+8, __ccgo_ts+6159, libc.VaList(bp+416, zTable))
+			_sqlite3ErrorMsg(tls, bp+8, __ccgo_ts+6179, libc.VaList(bp+416, zTable))
 		}
 		if !(pTab != 0) {
 			if (*(*TParse)(unsafe.Pointer(bp + 8))).FzErrMsg != 0 {
@@ -71123,7 +71123,7 @@ func Xsqlite3_blob_open(tls *libc.TLS, db uintptr, zDb uintptr, zTable uintptr, 
 		}
 		if iCol == int32((*TTable)(unsafe.Pointer(pTab)).FnCol) {
 			_sqlite3DbFree(tls, db, *(*uintptr)(unsafe.Pointer(bp)))
-			*(*uintptr)(unsafe.Pointer(bp)) = _sqlite3MPrintf(tls, db, __ccgo_ts+6180, libc.VaList(bp+416, zColumn))
+			*(*uintptr)(unsafe.Pointer(bp)) = _sqlite3MPrintf(tls, db, __ccgo_ts+6200, libc.VaList(bp+416, zColumn))
 			rc = int32(m_SQLITE_ERROR)
 			_sqlite3BtreeLeaveAll(tls, db)
 			goto blob_open_out
@@ -71150,7 +71150,7 @@ func Xsqlite3_blob_open(tls *libc.TLS, db uintptr, zDb uintptr, zTable uintptr, 
 							break
 						}
 						if (*(*TsColMap)(unsafe.Pointer(pFKey + 64 + uintptr(j)*16))).FiFrom == iCol {
-							zFault = __ccgo_ts + 6201
+							zFault = __ccgo_ts + 6221
 						}
 						goto _5
 					_5:
@@ -71173,7 +71173,7 @@ func Xsqlite3_blob_open(tls *libc.TLS, db uintptr, zDb uintptr, zTable uintptr, 
 					}
 					/* FIXME: Be smarter about indexes that use expressions */
 					if int32(*(*Ti16)(unsafe.Pointer((*TIndex)(unsafe.Pointer(pIdx)).FaiColumn + uintptr(j1)*2))) == iCol || int32(*(*Ti16)(unsafe.Pointer((*TIndex)(unsafe.Pointer(pIdx)).FaiColumn + uintptr(j1)*2))) == -int32(2) {
-						zFault = __ccgo_ts + 6213
+						zFault = __ccgo_ts + 6233
 					}
 					goto _7
 				_7:
@@ -71185,7 +71185,7 @@ func Xsqlite3_blob_open(tls *libc.TLS, db uintptr, zDb uintptr, zTable uintptr, 
 			}
 			if zFault != 0 {
 				_sqlite3DbFree(tls, db, *(*uintptr)(unsafe.Pointer(bp)))
-				*(*uintptr)(unsafe.Pointer(bp)) = _sqlite3MPrintf(tls, db, __ccgo_ts+6221, libc.VaList(bp+416, zFault))
+				*(*uintptr)(unsafe.Pointer(bp)) = _sqlite3MPrintf(tls, db, __ccgo_ts+6241, libc.VaList(bp+416, zFault))
 				rc = int32(m_SQLITE_ERROR)
 				_sqlite3BtreeLeaveAll(tls, db)
 				goto blob_open_out
@@ -71259,7 +71259,7 @@ blob_open_out:
 		_sqlite3DbFree(tls, db, pBlob)
 	}
 	if *(*uintptr)(unsafe.Pointer(bp)) != 0 {
-		v8 = __ccgo_ts + 3560
+		v8 = __ccgo_ts + 3580
 	} else {
 		v8 = uintptr(0)
 	}
@@ -71465,7 +71465,7 @@ func Xsqlite3_blob_reopen(tls *libc.TLS, pBlob uintptr, iRow Tsqlite3_int64) (r 
 		rc = _blobSeekToRow(tls, p, iRow, bp)
 		if rc != m_SQLITE_OK {
 			if *(*uintptr)(unsafe.Pointer(bp)) != 0 {
-				v1 = __ccgo_ts + 3560
+				v1 = __ccgo_ts + 3580
 			} else {
 				v1 = uintptr(0)
 			}
@@ -75644,7 +75644,7 @@ func _lookupName(tls *libc.TLS, pParse uintptr, zDb uintptr, zTab uintptr, zCol 
 			_1:
 				i++
 			}
-			if i == (*Tsqlite3)(unsafe.Pointer(db)).FnDb && _sqlite3StrICmp(tls, __ccgo_ts+6255, zDb) == 0 {
+			if i == (*Tsqlite3)(unsafe.Pointer(db)).FnDb && _sqlite3StrICmp(tls, __ccgo_ts+6275, zDb) == 0 {
 				/* This branch is taken when the main database has been renamed
 				 ** using SQLITE_DBCONFIG_MAINDBNAME. */
 				pSchema = (*(*TDb)(unsafe.Pointer((*Tsqlite3)(unsafe.Pointer(db)).FaDb))).FpSchema
@@ -75781,11 +75781,11 @@ func _lookupName(tls *libc.TLS, pParse uintptr, zDb uintptr, zTab uintptr, zCol 
 						pTab = (*TParse)(unsafe.Pointer(pParse)).FpTriggerTab
 					}
 				} else {
-					if op != int32(m_TK_DELETE) && zTab != 0 && _sqlite3StrICmp(tls, __ccgo_ts+6260, zTab) == 0 {
+					if op != int32(m_TK_DELETE) && zTab != 0 && _sqlite3StrICmp(tls, __ccgo_ts+6280, zTab) == 0 {
 						(*TExpr)(unsafe.Pointer(pExpr)).FiTable = int32(1)
 						pTab = (*TParse)(unsafe.Pointer(pParse)).FpTriggerTab
 					} else {
-						if op != int32(m_TK_INSERT) && zTab != 0 && _sqlite3StrICmp(tls, __ccgo_ts+6264, zTab) == 0 {
+						if op != int32(m_TK_INSERT) && zTab != 0 && _sqlite3StrICmp(tls, __ccgo_ts+6284, zTab) == 0 {
 							(*TExpr)(unsafe.Pointer(pExpr)).FiTable = 0
 							pTab = (*TParse)(unsafe.Pointer(pParse)).FpTriggerTab
 						}
@@ -75794,7 +75794,7 @@ func _lookupName(tls *libc.TLS, pParse uintptr, zDb uintptr, zTab uintptr, zCol 
 			}
 			if (*TNameContext)(unsafe.Pointer(pNC)).FncFlags&int32(m_NC_UUpsert) != 0 && zTab != uintptr(0) {
 				pUpsert = *(*uintptr)(unsafe.Pointer(pNC + 16))
-				if pUpsert != 0 && _sqlite3StrICmp(tls, __ccgo_ts+6268, zTab) == 0 {
+				if pUpsert != 0 && _sqlite3StrICmp(tls, __ccgo_ts+6288, zTab) == 0 {
 					pTab = (*(*TSrcItem)(unsafe.Pointer((*TUpsert)(unsafe.Pointer(pUpsert)).FpUpsertSrc + 8))).FpTab
 					(*TExpr)(unsafe.Pointer(pExpr)).FiTable = int32(m_EXCLUDED_TABLE_NUMBER)
 				}
@@ -75911,15 +75911,15 @@ func _lookupName(tls *libc.TLS, pParse uintptr, zDb uintptr, zTab uintptr, zCol 
 					_ = libc.Int32FromInt32(0)
 					pOrig = (*(*TExprList_item)(unsafe.Pointer(pEList + 8 + uintptr(j)*32))).FpExpr
 					if (*TNameContext)(unsafe.Pointer(pNC)).FncFlags&int32(m_NC_AllowAgg) == 0 && (*TExpr)(unsafe.Pointer(pOrig)).Fflags&uint32(libc.Int32FromInt32(m_EP_Agg)) != uint32(0) {
-						_sqlite3ErrorMsg(tls, pParse, __ccgo_ts+6277, libc.VaList(bp+8, zAs))
+						_sqlite3ErrorMsg(tls, pParse, __ccgo_ts+6297, libc.VaList(bp+8, zAs))
 						return int32(m_WRC_Abort)
 					}
 					if (*TExpr)(unsafe.Pointer(pOrig)).Fflags&uint32(libc.Int32FromInt32(m_EP_Win)) != uint32(0) && ((*TNameContext)(unsafe.Pointer(pNC)).FncFlags&int32(m_NC_AllowWin) == 0 || pNC != pTopNC) {
-						_sqlite3ErrorMsg(tls, pParse, __ccgo_ts+6308, libc.VaList(bp+8, zAs))
+						_sqlite3ErrorMsg(tls, pParse, __ccgo_ts+6328, libc.VaList(bp+8, zAs))
 						return int32(m_WRC_Abort)
 					}
 					if _sqlite3ExprVectorSize(tls, pOrig) != int32(1) {
-						_sqlite3ErrorMsg(tls, pParse, __ccgo_ts+6345, 0)
+						_sqlite3ErrorMsg(tls, pParse, __ccgo_ts+6365, 0)
 						return int32(m_WRC_Abort)
 					}
 					_resolveAlias(tls, pParse, pEList, j, pExpr, nSubquery)
@@ -75972,7 +75972,7 @@ func _lookupName(tls *libc.TLS, pParse uintptr, zDb uintptr, zTab uintptr, zCol 
 			 ** a huge amount of legacy SQL that uses it. So for now, we just
 			 ** issue a warning.
 			 */
-			Xsqlite3_log(tls, int32(m_SQLITE_WARNING), __ccgo_ts+6363, libc.VaList(bp+8, zCol))
+			Xsqlite3_log(tls, int32(m_SQLITE_WARNING), __ccgo_ts+6383, libc.VaList(bp+8, zCol))
 			(*TExpr)(unsafe.Pointer(pExpr)).Fop = uint8(m_TK_STRING)
 			libc.Xmemset(tls, pExpr+64, 0, uint64(8))
 			return int32(m_WRC_Prune)
@@ -75987,18 +75987,18 @@ func _lookupName(tls *libc.TLS, pParse uintptr, zDb uintptr, zTab uintptr, zCol 
 	 */
 	if cnt != int32(1) {
 		if cnt == 0 {
-			v11 = __ccgo_ts + 6398
+			v11 = __ccgo_ts + 6418
 		} else {
-			v11 = __ccgo_ts + 6413
+			v11 = __ccgo_ts + 6433
 		}
 		zErr = v11
 		if zDb != 0 {
-			_sqlite3ErrorMsg(tls, pParse, __ccgo_ts+6435, libc.VaList(bp+8, zErr, zDb, zTab, zCol))
+			_sqlite3ErrorMsg(tls, pParse, __ccgo_ts+6455, libc.VaList(bp+8, zErr, zDb, zTab, zCol))
 		} else {
 			if zTab != 0 {
-				_sqlite3ErrorMsg(tls, pParse, __ccgo_ts+6448, libc.VaList(bp+8, zErr, zTab, zCol))
+				_sqlite3ErrorMsg(tls, pParse, __ccgo_ts+6468, libc.VaList(bp+8, zErr, zTab, zCol))
 			} else {
-				_sqlite3ErrorMsg(tls, pParse, __ccgo_ts+6458, libc.VaList(bp+8, zErr, zCol))
+				_sqlite3ErrorMsg(tls, pParse, __ccgo_ts+6478, libc.VaList(bp+8, zErr, zCol))
 			}
 		}
 		(*TParse)(unsafe.Pointer(pParse)).FcheckSchema = uint8(1)
@@ -76122,19 +76122,19 @@ func _notValidImpl(tls *libc.TLS, pParse uintptr, pNC uintptr, zMsg uintptr, pEx
 	defer tls.Free(32)
 	var zIn uintptr
 	_ = zIn
-	zIn = __ccgo_ts + 6465
+	zIn = __ccgo_ts + 6485
 	if (*TNameContext)(unsafe.Pointer(pNC)).FncFlags&int32(m_NC_IdxExpr) != 0 {
-		zIn = __ccgo_ts + 6493
+		zIn = __ccgo_ts + 6513
 	} else {
 		if (*TNameContext)(unsafe.Pointer(pNC)).FncFlags&int32(m_NC_IsCheck) != 0 {
-			zIn = __ccgo_ts + 6511
+			zIn = __ccgo_ts + 6531
 		} else {
 			if (*TNameContext)(unsafe.Pointer(pNC)).FncFlags&int32(m_NC_GenCol) != 0 {
-				zIn = __ccgo_ts + 6529
+				zIn = __ccgo_ts + 6549
 			}
 		}
 	}
-	_sqlite3ErrorMsg(tls, pParse, __ccgo_ts+6547, libc.VaList(bp+8, zMsg, zIn))
+	_sqlite3ErrorMsg(tls, pParse, __ccgo_ts+6567, libc.VaList(bp+8, zMsg, zIn))
 	if pExpr != 0 {
 		(*TExpr)(unsafe.Pointer(pExpr)).Fop = uint8(m_TK_NULL)
 	}
@@ -76240,10 +76240,10 @@ func _resolveExprStep(tls *libc.TLS, pWalker uintptr, pExpr uintptr) (r int32) {
 		if 0 == _sqlite3ExprCanBeNull(tls, (*TExpr)(unsafe.Pointer(pExpr)).FpLeft) && !(int32((*TParse)(unsafe.Pointer(pParse)).FeParseMode) >= libc.Int32FromInt32(m_PARSE_MODE_RENAME)) {
 			_ = libc.Int32FromInt32(0)
 			if int32((*TExpr)(unsafe.Pointer(pExpr)).Fop) == int32(m_TK_NOTNULL) {
-				*(*uintptr)(unsafe.Pointer(pExpr + 8)) = __ccgo_ts + 6567
+				*(*uintptr)(unsafe.Pointer(pExpr + 8)) = __ccgo_ts + 6587
 				*(*Tu32)(unsafe.Pointer(pExpr + 4)) |= uint32(libc.Int32FromInt32(m_EP_IsTrue))
 			} else {
-				*(*uintptr)(unsafe.Pointer(pExpr + 8)) = __ccgo_ts + 6572
+				*(*uintptr)(unsafe.Pointer(pExpr + 8)) = __ccgo_ts + 6592
 				*(*Tu32)(unsafe.Pointer(pExpr + 4)) |= uint32(libc.Int32FromInt32(m_EP_IsFalse))
 			}
 			(*TExpr)(unsafe.Pointer(pExpr)).Fop = uint8(m_TK_TRUEFALSE)
@@ -76284,7 +76284,7 @@ func _resolveExprStep(tls *libc.TLS, pWalker uintptr, pExpr uintptr) (r int32) {
 			pLeft = (*TExpr)(unsafe.Pointer(pExpr)).FpLeft
 			_ = libc.Int32FromInt32(0)
 			if (*TNameContext)(unsafe.Pointer(pNC)).FncFlags&(libc.Int32FromInt32(m_NC_IdxExpr)|libc.Int32FromInt32(m_NC_GenCol)) != 0 {
-				_notValidImpl(tls, pParse, pNC, __ccgo_ts+6578, uintptr(0))
+				_notValidImpl(tls, pParse, pNC, __ccgo_ts+6598, uintptr(0))
 			}
 			pRight = (*TExpr)(unsafe.Pointer(pExpr)).FpRight
 			if int32((*TExpr)(unsafe.Pointer(pRight)).Fop) == int32(m_TK_ID) {
@@ -76346,7 +76346,7 @@ func _resolveExprStep(tls *libc.TLS, pWalker uintptr, pExpr uintptr) (r int32) {
 				if n == int32(2) {
 					(*TExpr)(unsafe.Pointer(pExpr)).FiTable = _exprProbability(tls, (*(*TExprList_item)(unsafe.Pointer(pList + 8 + 1*32))).FpExpr)
 					if (*TExpr)(unsafe.Pointer(pExpr)).FiTable < 0 {
-						_sqlite3ErrorMsg(tls, pParse, __ccgo_ts+6595, 0)
+						_sqlite3ErrorMsg(tls, pParse, __ccgo_ts+6615, 0)
 						(*TNameContext)(unsafe.Pointer(pNC)).FnNcErr++
 					}
 				} else {
@@ -76370,7 +76370,7 @@ func _resolveExprStep(tls *libc.TLS, pWalker uintptr, pExpr uintptr) (r int32) {
 			auth = _sqlite3AuthCheck(tls, pParse, int32(m_SQLITE_FUNCTION), uintptr(0), (*TFuncDef)(unsafe.Pointer(pDef)).FzName, uintptr(0))
 			if auth != m_SQLITE_OK {
 				if auth == int32(m_SQLITE_DENY) {
-					_sqlite3ErrorMsg(tls, pParse, __ccgo_ts+6666, libc.VaList(bp+8, (*TFuncDef)(unsafe.Pointer(pDef)).FzName))
+					_sqlite3ErrorMsg(tls, pParse, __ccgo_ts+6686, libc.VaList(bp+8, (*TFuncDef)(unsafe.Pointer(pDef)).FzName))
 					(*TNameContext)(unsafe.Pointer(pNC)).FnNcErr++
 				}
 				(*TExpr)(unsafe.Pointer(pExpr)).Fop = uint8(m_TK_NULL)
@@ -76392,7 +76392,7 @@ func _resolveExprStep(tls *libc.TLS, pWalker uintptr, pExpr uintptr) (r int32) {
 				 ** all this. */
 				_ = libc.Int32FromInt32(0)
 				if (*TNameContext)(unsafe.Pointer(pNC)).FncFlags&(libc.Int32FromInt32(m_NC_IdxExpr)|libc.Int32FromInt32(m_NC_PartIdx)|libc.Int32FromInt32(m_NC_GenCol)) != 0 {
-					_notValidImpl(tls, pParse, pNC, __ccgo_ts+6701, uintptr(0))
+					_notValidImpl(tls, pParse, pNC, __ccgo_ts+6721, uintptr(0))
 				}
 			} else {
 				_ = libc.Int32FromInt32(0) /* Must fit in 8 bits */
@@ -76417,29 +76417,29 @@ func _resolveExprStep(tls *libc.TLS, pWalker uintptr, pExpr uintptr) (r int32) {
 		if 0 == libc.BoolInt32(int32((*TParse)(unsafe.Pointer(pParse)).FeParseMode) >= int32(m_PARSE_MODE_RENAME)) {
 			_ = libc.Int32FromInt32(0)
 			if pDef != 0 && (*TFuncDef)(unsafe.Pointer(pDef)).FxValue == uintptr(0) && pWin != 0 {
-				_sqlite3ErrorMsg(tls, pParse, __ccgo_ts+6729, libc.VaList(bp+8, nId, zId))
+				_sqlite3ErrorMsg(tls, pParse, __ccgo_ts+6749, libc.VaList(bp+8, nId, zId))
 				(*TNameContext)(unsafe.Pointer(pNC)).FnNcErr++
 			} else {
 				if is_agg != 0 && (*TNameContext)(unsafe.Pointer(pNC)).FncFlags&int32(m_NC_AllowAgg) == 0 || is_agg != 0 && (*TFuncDef)(unsafe.Pointer(pDef)).FfuncFlags&uint32(m_SQLITE_FUNC_WINDOW) != 0 && !(pWin != 0) || is_agg != 0 && pWin != 0 && (*TNameContext)(unsafe.Pointer(pNC)).FncFlags&int32(m_NC_AllowWin) == 0 {
 					if (*TFuncDef)(unsafe.Pointer(pDef)).FfuncFlags&uint32(m_SQLITE_FUNC_WINDOW) != 0 || pWin != 0 {
-						zType = __ccgo_ts + 6773
+						zType = __ccgo_ts + 6793
 					} else {
-						zType = __ccgo_ts + 6780
+						zType = __ccgo_ts + 6800
 					}
-					_sqlite3ErrorMsg(tls, pParse, __ccgo_ts+6790, libc.VaList(bp+8, zType, nId, zId))
+					_sqlite3ErrorMsg(tls, pParse, __ccgo_ts+6810, libc.VaList(bp+8, zType, nId, zId))
 					(*TNameContext)(unsafe.Pointer(pNC)).FnNcErr++
 					is_agg = 0
 				} else {
 					if no_such_func != 0 && int32((*Tsqlite3)(unsafe.Pointer((*TParse)(unsafe.Pointer(pParse)).Fdb)).Finit1.Fbusy) == 0 {
-						_sqlite3ErrorMsg(tls, pParse, __ccgo_ts+6819, libc.VaList(bp+8, nId, zId))
+						_sqlite3ErrorMsg(tls, pParse, __ccgo_ts+6839, libc.VaList(bp+8, nId, zId))
 						(*TNameContext)(unsafe.Pointer(pNC)).FnNcErr++
 					} else {
 						if wrong_num_args != 0 {
-							_sqlite3ErrorMsg(tls, pParse, __ccgo_ts+6842, libc.VaList(bp+8, nId, zId))
+							_sqlite3ErrorMsg(tls, pParse, __ccgo_ts+6862, libc.VaList(bp+8, nId, zId))
 							(*TNameContext)(unsafe.Pointer(pNC)).FnNcErr++
 						} else {
 							if is_agg == 0 && (*TExpr)(unsafe.Pointer(pExpr)).Fflags&uint32(libc.Int32FromInt32(m_EP_WinFunc)) != uint32(0) {
-								_sqlite3ErrorMsg(tls, pParse, __ccgo_ts+6887, libc.VaList(bp+8, nId, zId))
+								_sqlite3ErrorMsg(tls, pParse, __ccgo_ts+6907, libc.VaList(bp+8, nId, zId))
 								(*TNameContext)(unsafe.Pointer(pNC)).FnNcErr++
 							}
 						}
@@ -76517,7 +76517,7 @@ func _resolveExprStep(tls *libc.TLS, pWalker uintptr, pExpr uintptr) (r int32) {
 		if (*TExpr)(unsafe.Pointer(pExpr)).Fflags&uint32(m_EP_xIsSelect) != uint32(0) {
 			nRef = (*TNameContext)(unsafe.Pointer(pNC)).FnRef
 			if (*TNameContext)(unsafe.Pointer(pNC)).FncFlags&int32(m_NC_SelfRef) != 0 {
-				_notValidImpl(tls, pParse, pNC, __ccgo_ts+6936, pExpr)
+				_notValidImpl(tls, pParse, pNC, __ccgo_ts+6956, pExpr)
 			} else {
 				_sqlite3WalkSelect(tls, pWalker, *(*uintptr)(unsafe.Pointer(pExpr + 32)))
 			}
@@ -76530,7 +76530,7 @@ func _resolveExprStep(tls *libc.TLS, pWalker uintptr, pExpr uintptr) (r int32) {
 	case int32(m_TK_VARIABLE):
 		_ = libc.Int32FromInt32(0)
 		if (*TNameContext)(unsafe.Pointer(pNC)).FncFlags&(libc.Int32FromInt32(m_NC_IsCheck)|libc.Int32FromInt32(m_NC_PartIdx)|libc.Int32FromInt32(m_NC_IdxExpr)|libc.Int32FromInt32(m_NC_GenCol)) != 0 {
-			_notValidImpl(tls, pParse, pNC, __ccgo_ts+6947, pExpr)
+			_notValidImpl(tls, pParse, pNC, __ccgo_ts+6967, pExpr)
 		}
 	case int32(m_TK_IS):
 		fallthrough
@@ -76580,7 +76580,7 @@ func _resolveExprStep(tls *libc.TLS, pWalker uintptr, pExpr uintptr) (r int32) {
 			nRight = _sqlite3ExprVectorSize(tls, (*TExpr)(unsafe.Pointer(pExpr)).FpRight)
 		}
 		if nLeft != nRight {
-			_sqlite3ErrorMsg(tls, pParse, __ccgo_ts+6345, 0)
+			_sqlite3ErrorMsg(tls, pParse, __ccgo_ts+6365, 0)
 		}
 		break
 	}
@@ -76704,7 +76704,7 @@ func _resolveOrderByTermToExprList(tls *libc.TLS, pParse uintptr, pSelect uintpt
 func _resolveOutOfRangeError(tls *libc.TLS, pParse uintptr, zType uintptr, i int32, mx int32) {
 	bp := tls.Alloc(32)
 	defer tls.Free(32)
-	_sqlite3ErrorMsg(tls, pParse, __ccgo_ts+6958, libc.VaList(bp+8, i, zType, mx))
+	_sqlite3ErrorMsg(tls, pParse, __ccgo_ts+6978, libc.VaList(bp+8, i, zType, mx))
 }
 
 // C documentation
@@ -76738,7 +76738,7 @@ func _resolveCompoundOrderBy(tls *libc.TLS, pParse uintptr, pSelect uintptr) (r 
 	}
 	db = (*TParse)(unsafe.Pointer(pParse)).Fdb
 	if (*TExprList)(unsafe.Pointer(pOrderBy)).FnExpr > *(*int32)(unsafe.Pointer(db + 136 + 2*4)) {
-		_sqlite3ErrorMsg(tls, pParse, __ccgo_ts+7014, 0)
+		_sqlite3ErrorMsg(tls, pParse, __ccgo_ts+7034, 0)
 		return int32(1)
 	}
 	i = 0
@@ -76776,7 +76776,7 @@ func _resolveCompoundOrderBy(tls *libc.TLS, pParse uintptr, pSelect uintptr) (r 
 			}
 			if _sqlite3ExprIsInteger(tls, pE, bp) != 0 {
 				if *(*int32)(unsafe.Pointer(bp)) <= 0 || *(*int32)(unsafe.Pointer(bp)) > (*TExprList)(unsafe.Pointer(pEList)).FnExpr {
-					_resolveOutOfRangeError(tls, pParse, __ccgo_ts+7048, i+int32(1), (*TExprList)(unsafe.Pointer(pEList)).FnExpr)
+					_resolveOutOfRangeError(tls, pParse, __ccgo_ts+7068, i+int32(1), (*TExprList)(unsafe.Pointer(pEList)).FnExpr)
 					return int32(1)
 				}
 			} else {
@@ -76848,7 +76848,7 @@ func _resolveCompoundOrderBy(tls *libc.TLS, pParse uintptr, pSelect uintptr) (r 
 			break
 		}
 		if int32(uint32(*(*uint8)(unsafe.Pointer(pOrderBy + 8 + uintptr(i)*32 + 20))&0x4>>2)) == 0 {
-			_sqlite3ErrorMsg(tls, pParse, __ccgo_ts+7054, libc.VaList(bp+16, i+int32(1)))
+			_sqlite3ErrorMsg(tls, pParse, __ccgo_ts+7074, libc.VaList(bp+16, i+int32(1)))
 			return int32(1)
 		}
 		goto _3
@@ -76881,7 +76881,7 @@ func _sqlite3ResolveOrderGroupBy(tls *libc.TLS, pParse uintptr, pSelect uintptr,
 		return 0
 	}
 	if (*TExprList)(unsafe.Pointer(pOrderBy)).FnExpr > *(*int32)(unsafe.Pointer(db + 136 + 2*4)) {
-		_sqlite3ErrorMsg(tls, pParse, __ccgo_ts+7115, libc.VaList(bp+8, zType))
+		_sqlite3ErrorMsg(tls, pParse, __ccgo_ts+7135, libc.VaList(bp+8, zType))
 		return int32(1)
 	}
 	pEList = (*TSelect)(unsafe.Pointer(pSelect)).FpEList
@@ -77195,7 +77195,7 @@ func _resolveSelectStep(tls *libc.TLS, pWalker uintptr, p uintptr) (r int32) {
 		(*(*TNameContext)(unsafe.Pointer(bp))).FncFlags |= int32(m_NC_UEList)
 		if (*TSelect)(unsafe.Pointer(p)).FpHaving != 0 {
 			if !(pGroupBy != 0) {
-				_sqlite3ErrorMsg(tls, pParse, __ccgo_ts+7146, 0)
+				_sqlite3ErrorMsg(tls, pParse, __ccgo_ts+7166, 0)
 				return int32(m_WRC_Abort)
 			}
 			if _sqlite3ResolveExprNames(tls, bp, (*TSelect)(unsafe.Pointer(p)).FpHaving) != 0 {
@@ -77258,7 +77258,7 @@ func _resolveSelectStep(tls *libc.TLS, pWalker uintptr, p uintptr) (r int32) {
 		 ** is not detected until much later, and so we need to go ahead and
 		 ** resolve those symbols on the incorrect ORDER BY for consistency.
 		 */
-		if (*TSelect)(unsafe.Pointer(p)).FpOrderBy != uintptr(0) && isCompound <= nCompound && _resolveOrderGroupBy(tls, bp, p, (*TSelect)(unsafe.Pointer(p)).FpOrderBy, __ccgo_ts+7048) != 0 {
+		if (*TSelect)(unsafe.Pointer(p)).FpOrderBy != uintptr(0) && isCompound <= nCompound && _resolveOrderGroupBy(tls, bp, p, (*TSelect)(unsafe.Pointer(p)).FpOrderBy, __ccgo_ts+7068) != 0 {
 			return int32(m_WRC_Abort)
 		}
 		if (*Tsqlite3)(unsafe.Pointer(db)).FmallocFailed != 0 {
@@ -77269,7 +77269,7 @@ func _resolveSelectStep(tls *libc.TLS, pWalker uintptr, p uintptr) (r int32) {
 		 ** the GROUP BY clause does not contain aggregate functions.
 		 */
 		if pGroupBy != 0 {
-			if _resolveOrderGroupBy(tls, bp, p, pGroupBy, __ccgo_ts+7190) != 0 || (*Tsqlite3)(unsafe.Pointer(db)).FmallocFailed != 0 {
+			if _resolveOrderGroupBy(tls, bp, p, pGroupBy, __ccgo_ts+7210) != 0 || (*Tsqlite3)(unsafe.Pointer(db)).FmallocFailed != 0 {
 				return int32(m_WRC_Abort)
 			}
 			i = 0
@@ -77279,7 +77279,7 @@ func _resolveSelectStep(tls *libc.TLS, pWalker uintptr, p uintptr) (r int32) {
 					break
 				}
 				if (*TExpr)(unsafe.Pointer((*TExprList_item)(unsafe.Pointer(pItem2)).FpExpr)).Fflags&uint32(libc.Int32FromInt32(m_EP_Agg)) != uint32(0) {
-					_sqlite3ErrorMsg(tls, pParse, __ccgo_ts+7196, 0)
+					_sqlite3ErrorMsg(tls, pParse, __ccgo_ts+7216, 0)
 					return int32(m_WRC_Abort)
 				}
 				goto _6
@@ -78213,7 +78213,7 @@ func _codeVectorCompare(tls *libc.TLS, pParse uintptr, pExpr uintptr, dest int32
 		return
 	}
 	if nLeft != _sqlite3ExprVectorSize(tls, pRight) {
-		_sqlite3ErrorMsg(tls, pParse, __ccgo_ts+6345, 0)
+		_sqlite3ErrorMsg(tls, pParse, __ccgo_ts+6365, 0)
 		return
 	}
 	_ = libc.Int32FromInt32(0)
@@ -78297,7 +78297,7 @@ func _sqlite3ExprCheckHeight(tls *libc.TLS, pParse uintptr, nHeight int32) (r in
 	rc = m_SQLITE_OK
 	mxHeight = *(*int32)(unsafe.Pointer((*TParse)(unsafe.Pointer(pParse)).Fdb + 136 + 3*4))
 	if nHeight > mxHeight {
-		_sqlite3ErrorMsg(tls, pParse, __ccgo_ts+7255, libc.VaList(bp+8, mxHeight))
+		_sqlite3ErrorMsg(tls, pParse, __ccgo_ts+7275, libc.VaList(bp+8, mxHeight))
 		rc = int32(m_SQLITE_ERROR)
 	}
 	return rc
@@ -78618,11 +78618,11 @@ func _sqlite3ExprListToValues(tls *libc.TLS, pParse uintptr, nElem int32, pEList
 		}
 		if nExprElem != nElem {
 			if nExprElem > int32(1) {
-				v2 = __ccgo_ts + 7303
+				v2 = __ccgo_ts + 7323
 			} else {
-				v2 = __ccgo_ts + 1511
+				v2 = __ccgo_ts + 1531
 			}
-			_sqlite3ErrorMsg(tls, pParse, __ccgo_ts+7305, libc.VaList(bp+8, nExprElem, v2, nElem))
+			_sqlite3ErrorMsg(tls, pParse, __ccgo_ts+7325, libc.VaList(bp+8, nExprElem, v2, nElem))
 			break
 		}
 		_ = libc.Int32FromInt32(0)
@@ -78669,7 +78669,7 @@ func _sqlite3ExprAnd(tls *libc.TLS, pParse uintptr, pLeft uintptr, pRight uintpt
 			if ((*TExpr)(unsafe.Pointer(pLeft)).Fflags&uint32(libc.Int32FromInt32(m_EP_FromJoin)|libc.Int32FromInt32(m_EP_IsFalse)) == uint32(m_EP_IsFalse) || (*TExpr)(unsafe.Pointer(pRight)).Fflags&uint32(libc.Int32FromInt32(m_EP_FromJoin)|libc.Int32FromInt32(m_EP_IsFalse)) == uint32(m_EP_IsFalse)) && !(int32((*TParse)(unsafe.Pointer(pParse)).FeParseMode) >= libc.Int32FromInt32(m_PARSE_MODE_RENAME)) {
 				_sqlite3ExprDeferredDelete(tls, pParse, pLeft)
 				_sqlite3ExprDeferredDelete(tls, pParse, pRight)
-				return _sqlite3Expr(tls, db, int32(m_TK_INTEGER), __ccgo_ts+7349)
+				return _sqlite3Expr(tls, db, int32(m_TK_INTEGER), __ccgo_ts+7369)
 			} else {
 				return _sqlite3PExpr(tls, pParse, int32(m_TK_AND), pLeft, pRight)
 			}
@@ -78697,7 +78697,7 @@ func _sqlite3ExprFunction(tls *libc.TLS, pParse uintptr, pList uintptr, pToken u
 		return uintptr(0)
 	}
 	if pList != 0 && (*TExprList)(unsafe.Pointer(pList)).FnExpr > *(*int32)(unsafe.Pointer((*TParse)(unsafe.Pointer(pParse)).Fdb + 136 + 6*4)) && !((*TParse)(unsafe.Pointer(pParse)).Fnested != 0) {
-		_sqlite3ErrorMsg(tls, pParse, __ccgo_ts+7351, libc.VaList(bp+8, pToken))
+		_sqlite3ErrorMsg(tls, pParse, __ccgo_ts+7371, libc.VaList(bp+8, pToken))
 	}
 	*(*uintptr)(unsafe.Pointer(pNew + 32)) = pList
 	*(*Tu32)(unsafe.Pointer(pNew + 4)) |= uint32(libc.Int32FromInt32(m_EP_HasFunc))
@@ -78736,7 +78736,7 @@ func _sqlite3ExprFunctionUsable(tls *libc.TLS, pParse uintptr, pExpr uintptr, pD
 			 **         SQLITE_DBCONFIG_TRUSTED_SCHEMA is off (meaning
 			 **         that the schema is possibly tainted).
 			 */
-			_sqlite3ErrorMsg(tls, pParse, __ccgo_ts+7385, libc.VaList(bp+8, (*TFuncDef)(unsafe.Pointer(pDef)).FzName))
+			_sqlite3ErrorMsg(tls, pParse, __ccgo_ts+7405, libc.VaList(bp+8, (*TFuncDef)(unsafe.Pointer(pDef)).FzName))
 		}
 	}
 }
@@ -78793,7 +78793,7 @@ func _sqlite3ExprAssignVarNumber(tls *libc.TLS, pParse uintptr, pExpr uintptr, n
 				bOk = libc.BoolInt32(0 == _sqlite3Atoi64(tls, z+1, bp, int32(n-uint32(1)), uint8(m_SQLITE_UTF8)))
 			}
 			if bOk == 0 || *(*Ti64)(unsafe.Pointer(bp)) < int64(1) || *(*Ti64)(unsafe.Pointer(bp)) > int64(*(*int32)(unsafe.Pointer(db + 136 + 9*4))) {
-				_sqlite3ErrorMsg(tls, pParse, __ccgo_ts+7404, libc.VaList(bp+16, *(*int32)(unsafe.Pointer(db + 136 + 9*4))))
+				_sqlite3ErrorMsg(tls, pParse, __ccgo_ts+7424, libc.VaList(bp+16, *(*int32)(unsafe.Pointer(db + 136 + 9*4))))
 				return
 			}
 			x = int16(*(*Ti64)(unsafe.Pointer(bp)))
@@ -78825,7 +78825,7 @@ func _sqlite3ExprAssignVarNumber(tls *libc.TLS, pParse uintptr, pExpr uintptr, n
 	}
 	(*TExpr)(unsafe.Pointer(pExpr)).FiColumn = x
 	if int32(x) > *(*int32)(unsafe.Pointer(db + 136 + 9*4)) {
-		_sqlite3ErrorMsg(tls, pParse, __ccgo_ts+7447, 0)
+		_sqlite3ErrorMsg(tls, pParse, __ccgo_ts+7467, 0)
 	}
 }
 
@@ -79637,7 +79637,7 @@ func _sqlite3ExprListAppendVector(tls *libc.TLS, pParse uintptr, pList uintptr, 
 		n = v2
 	}
 	if v3 && (*TIdList)(unsafe.Pointer(pColumns)).FnId != v2 {
-		_sqlite3ErrorMsg(tls, pParse, __ccgo_ts+7470, libc.VaList(bp+8, (*TIdList)(unsafe.Pointer(pColumns)).FnId, n))
+		_sqlite3ErrorMsg(tls, pParse, __ccgo_ts+7490, libc.VaList(bp+8, (*TIdList)(unsafe.Pointer(pColumns)).FnId, n))
 		goto vector_append_error
 	}
 	i = 0
@@ -79779,7 +79779,7 @@ func _sqlite3ExprListCheckLength(tls *libc.TLS, pParse uintptr, pEList uintptr, 
 	_ = mx
 	mx = *(*int32)(unsafe.Pointer((*TParse)(unsafe.Pointer(pParse)).Fdb + 136 + 2*4))
 	if pEList != 0 && (*TExprList)(unsafe.Pointer(pEList)).FnExpr > mx {
-		_sqlite3ErrorMsg(tls, pParse, __ccgo_ts+7500, libc.VaList(bp+8, zObject))
+		_sqlite3ErrorMsg(tls, pParse, __ccgo_ts+7520, libc.VaList(bp+8, zObject))
 	}
 }
 
@@ -79870,10 +79870,10 @@ func _sqlite3SelectWalkFail(tls *libc.TLS, pWalker uintptr, NotUsed uintptr) (r 
 //	**         anything else                  0
 //	*/
 func _sqlite3IsTrueOrFalse(tls *libc.TLS, zIn uintptr) (r Tu32) {
-	if _sqlite3StrICmp(tls, zIn, __ccgo_ts+6567) == 0 {
+	if _sqlite3StrICmp(tls, zIn, __ccgo_ts+6587) == 0 {
 		return uint32(m_EP_IsTrue)
 	}
-	if _sqlite3StrICmp(tls, zIn, __ccgo_ts+6572) == 0 {
+	if _sqlite3StrICmp(tls, zIn, __ccgo_ts+6592) == 0 {
 		return uint32(m_EP_IsFalse)
 	}
 	return uint32(0)
@@ -80356,13 +80356,13 @@ func _sqlite3ExprNeedsNoAffinityChange(tls *libc.TLS, p uintptr, aff uint8) (r i
 //	** Return TRUE if the given string is a row-id column name.
 //	*/
 func _sqlite3IsRowid(tls *libc.TLS, z uintptr) (r int32) {
-	if _sqlite3StrICmp(tls, z, __ccgo_ts+7523) == 0 {
+	if _sqlite3StrICmp(tls, z, __ccgo_ts+7543) == 0 {
 		return int32(1)
 	}
-	if _sqlite3StrICmp(tls, z, __ccgo_ts+7531) == 0 {
+	if _sqlite3StrICmp(tls, z, __ccgo_ts+7551) == 0 {
 		return int32(1)
 	}
-	if _sqlite3StrICmp(tls, z, __ccgo_ts+7537) == 0 {
+	if _sqlite3StrICmp(tls, z, __ccgo_ts+7557) == 0 {
 		return int32(1)
 	}
 	return 0
@@ -80620,7 +80620,7 @@ func _sqlite3FindInIndex(tls *libc.TLS, pParse uintptr, pX uintptr, inFlags Tu32
 			iAddr = _sqlite3VdbeAddOp0(tls, v, int32(m_OP_Once))
 			_sqlite3OpenTable(tls, pParse, iTab, iDb, pTab, int32(m_OP_OpenRead))
 			eType = int32(m_IN_INDEX_ROWID)
-			_sqlite3VdbeExplain(tls, pParse, uint8(0), __ccgo_ts+7541, libc.VaList(bp+8, (*TTable)(unsafe.Pointer(pTab)).FzName))
+			_sqlite3VdbeExplain(tls, pParse, uint8(0), __ccgo_ts+7561, libc.VaList(bp+8, (*TTable)(unsafe.Pointer(pTab)).FzName))
 			_sqlite3VdbeJumpHere(tls, v, iAddr)
 		} else { /* Iterator variable */
 			affinity_ok = int32(1)
@@ -80721,7 +80721,7 @@ func _sqlite3FindInIndex(tls *libc.TLS, pParse uintptr, pX uintptr, inFlags Tu32
 					if colUsed == libc.Uint64FromInt32(1)<<nExpr-uint64(1) {
 						/* If we reach this point, that means the index pIdx is usable */
 						iAddr1 = _sqlite3VdbeAddOp0(tls, v, int32(m_OP_Once))
-						_sqlite3VdbeExplain(tls, pParse, uint8(0), __ccgo_ts+7588, libc.VaList(bp+8, (*TIndex)(unsafe.Pointer(pIdx)).FzName))
+						_sqlite3VdbeExplain(tls, pParse, uint8(0), __ccgo_ts+7608, libc.VaList(bp+8, (*TIndex)(unsafe.Pointer(pIdx)).FzName))
 						_sqlite3VdbeAddOp3(tls, v, int32(m_OP_OpenRead), iTab, int32((*TIndex)(unsafe.Pointer(pIdx)).Ftnum), iDb)
 						_sqlite3VdbeSetP4KeyInfo(tls, pParse, pIdx)
 						_ = libc.Int32FromInt32(0)
@@ -80858,7 +80858,7 @@ func _sqlite3SubselectError(tls *libc.TLS, pParse uintptr, nActual int32, nExpec
 	var zFmt uintptr
 	_ = zFmt
 	if (*TParse)(unsafe.Pointer(pParse)).FnErr == 0 {
-		zFmt = __ccgo_ts + 7619
+		zFmt = __ccgo_ts + 7639
 		_sqlite3ErrorMsg(tls, pParse, zFmt, libc.VaList(bp+8, nActual, nExpect))
 	}
 }
@@ -80880,7 +80880,7 @@ func _sqlite3VectorErrorMsg(tls *libc.TLS, pParse uintptr, pExpr uintptr) {
 	if (*TExpr)(unsafe.Pointer(pExpr)).Fflags&uint32(m_EP_xIsSelect) != uint32(0) {
 		_sqlite3SubselectError(tls, pParse, (*TExprList)(unsafe.Pointer((*TSelect)(unsafe.Pointer(*(*uintptr)(unsafe.Pointer(pExpr + 32)))).FpEList)).FnExpr, int32(1))
 	} else {
-		_sqlite3ErrorMsg(tls, pParse, __ccgo_ts+6345, 0)
+		_sqlite3ErrorMsg(tls, pParse, __ccgo_ts+6365, 0)
 	}
 }
 
@@ -80938,7 +80938,7 @@ func _sqlite3CodeRhsOfIN(tls *libc.TLS, pParse uintptr, pExpr uintptr, iTab int3
 		if (*TExpr)(unsafe.Pointer(pExpr)).Fflags&uint32(libc.Int32FromInt32(m_EP_Subrtn)) != uint32(0) {
 			addrOnce = _sqlite3VdbeAddOp0(tls, v, int32(m_OP_Once))
 			if (*TExpr)(unsafe.Pointer(pExpr)).Fflags&uint32(m_EP_xIsSelect) != uint32(0) {
-				_sqlite3VdbeExplain(tls, pParse, uint8(0), __ccgo_ts+7663, libc.VaList(bp+56, (*TSelect)(unsafe.Pointer(*(*uintptr)(unsafe.Pointer(pExpr + 32)))).FselId))
+				_sqlite3VdbeExplain(tls, pParse, uint8(0), __ccgo_ts+7683, libc.VaList(bp+56, (*TSelect)(unsafe.Pointer(*(*uintptr)(unsafe.Pointer(pExpr + 32)))).FselId))
 			}
 			_ = libc.Int32FromInt32(0)
 			_sqlite3VdbeAddOp2(tls, v, int32(m_OP_Gosub), (*(*struct {
@@ -80990,11 +80990,11 @@ func _sqlite3CodeRhsOfIN(tls *libc.TLS, pParse uintptr, pExpr uintptr, iTab int3
 		pSelect = *(*uintptr)(unsafe.Pointer(pExpr + 32))
 		pEList = (*TSelect)(unsafe.Pointer(pSelect)).FpEList
 		if addrOnce != 0 {
-			v3 = __ccgo_ts + 1511
+			v3 = __ccgo_ts + 1531
 		} else {
-			v3 = __ccgo_ts + 7686
+			v3 = __ccgo_ts + 7706
 		}
-		_sqlite3VdbeExplain(tls, pParse, uint8(1), __ccgo_ts+7698, libc.VaList(bp+56, v3, (*TSelect)(unsafe.Pointer(pSelect)).FselId))
+		_sqlite3VdbeExplain(tls, pParse, uint8(1), __ccgo_ts+7718, libc.VaList(bp+56, v3, (*TSelect)(unsafe.Pointer(pSelect)).FselId))
 		/* If the LHS and RHS of the IN operator do not match, that
 		 ** error will have been caught long before we reach this point. */
 		if (*TExprList)(unsafe.Pointer(pEList)).FnExpr == nVal {
@@ -81134,7 +81134,7 @@ func _sqlite3CodeSubselect(tls *libc.TLS, pParse uintptr, pExpr uintptr) (r int3
 	/* If this routine has already been coded, then invoke it as a
 	 ** subroutine. */
 	if (*TExpr)(unsafe.Pointer(pExpr)).Fflags&uint32(libc.Int32FromInt32(m_EP_Subrtn)) != uint32(0) {
-		_sqlite3VdbeExplain(tls, pParse, uint8(0), __ccgo_ts+7717, libc.VaList(bp+48, (*TSelect)(unsafe.Pointer(pSel)).FselId))
+		_sqlite3VdbeExplain(tls, pParse, uint8(0), __ccgo_ts+7737, libc.VaList(bp+48, (*TSelect)(unsafe.Pointer(pSel)).FselId))
 		_ = libc.Int32FromInt32(0)
 		_sqlite3VdbeAddOp2(tls, v, int32(m_OP_Gosub), (*(*struct {
 			FiAddr     int32
@@ -81187,11 +81187,11 @@ func _sqlite3CodeSubselect(tls *libc.TLS, pParse uintptr, pExpr uintptr) (r int3
 	 ** preexisting limit is discarded in place of the new LIMIT 1.
 	 */
 	if addrOnce != 0 {
-		v3 = __ccgo_ts + 1511
+		v3 = __ccgo_ts + 1531
 	} else {
-		v3 = __ccgo_ts + 7686
+		v3 = __ccgo_ts + 7706
 	}
-	_sqlite3VdbeExplain(tls, pParse, uint8(1), __ccgo_ts+7735, libc.VaList(bp+48, v3, (*TSelect)(unsafe.Pointer(pSel)).FselId))
+	_sqlite3VdbeExplain(tls, pParse, uint8(1), __ccgo_ts+7755, libc.VaList(bp+48, v3, (*TSelect)(unsafe.Pointer(pSel)).FselId))
 	if int32((*TExpr)(unsafe.Pointer(pExpr)).Fop) == int32(m_TK_SELECT) {
 		v4 = (*TExprList)(unsafe.Pointer((*TSelect)(unsafe.Pointer(pSel)).FpEList)).FnExpr
 	} else {
@@ -81213,7 +81213,7 @@ func _sqlite3CodeSubselect(tls *libc.TLS, pParse uintptr, pExpr uintptr) (r int3
 		/* The subquery already has a limit.  If the pre-existing limit is X
 		 ** then make the new limit X<>0 so that the new limit is either 1 or 0 */
 		db = (*TParse)(unsafe.Pointer(pParse)).Fdb
-		pLimit = _sqlite3Expr(tls, db, int32(m_TK_INTEGER), __ccgo_ts+7349)
+		pLimit = _sqlite3Expr(tls, db, int32(m_TK_INTEGER), __ccgo_ts+7369)
 		if pLimit != 0 {
 			(*TExpr)(unsafe.Pointer(pLimit)).FaffExpr = uint8(m_SQLITE_AFF_NUMERIC)
 			pLimit = _sqlite3PExpr(tls, pParse, int32(m_TK_NE), _sqlite3ExprDup(tls, db, (*TExpr)(unsafe.Pointer((*TSelect)(unsafe.Pointer(pSel)).FpLimit)).FpLeft, 0), pLimit)
@@ -81222,7 +81222,7 @@ func _sqlite3CodeSubselect(tls *libc.TLS, pParse uintptr, pExpr uintptr) (r int3
 		(*TExpr)(unsafe.Pointer((*TSelect)(unsafe.Pointer(pSel)).FpLimit)).FpLeft = pLimit
 	} else {
 		/* If there is no pre-existing limit add a limit of 1 */
-		pLimit = _sqlite3Expr(tls, (*TParse)(unsafe.Pointer(pParse)).Fdb, int32(m_TK_INTEGER), __ccgo_ts+7756)
+		pLimit = _sqlite3Expr(tls, (*TParse)(unsafe.Pointer(pParse)).Fdb, int32(m_TK_INTEGER), __ccgo_ts+7776)
 		(*TSelect)(unsafe.Pointer(pSel)).FpLimit = _sqlite3PExpr(tls, pParse, int32(m_TK_LIMIT), pLimit, uintptr(0))
 	}
 	(*TSelect)(unsafe.Pointer(pSel)).FiLimit = 0
@@ -81614,13 +81614,13 @@ func _codeInteger(tls *libc.TLS, pParse uintptr, pExpr uintptr, negFlag int32, i
 		_ = libc.Int32FromInt32(0)
 		c = _sqlite3DecOrHexToI64(tls, z, bp)
 		if c == int32(3) && !(negFlag != 0) || c == int32(2) || negFlag != 0 && *(*Ti64)(unsafe.Pointer(bp)) == int64(-libc.Int32FromInt32(1))-(libc.Int64FromUint32(0xffffffff)|libc.Int64FromInt32(0x7fffffff)<<libc.Int32FromInt32(32)) {
-			if Xsqlite3_strnicmp(tls, z, __ccgo_ts+7758, int32(2)) == 0 {
+			if Xsqlite3_strnicmp(tls, z, __ccgo_ts+7778, int32(2)) == 0 {
 				if negFlag != 0 {
-					v1 = __ccgo_ts + 4795
+					v1 = __ccgo_ts + 4815
 				} else {
-					v1 = __ccgo_ts + 1511
+					v1 = __ccgo_ts + 1531
 				}
-				_sqlite3ErrorMsg(tls, pParse, __ccgo_ts+7761, libc.VaList(bp+16, v1, z))
+				_sqlite3ErrorMsg(tls, pParse, __ccgo_ts+7781, libc.VaList(bp+16, v1, z))
 			} else {
 				_codeReal(tls, v, z, negFlag, iMem)
 			}
@@ -81713,7 +81713,7 @@ func _sqlite3ExprCodeGetColumnOfTable(tls *libc.TLS, v uintptr, pTab uintptr, iT
 			if int32((*TColumn)(unsafe.Pointer(v1)).FcolFlags)&int32(m_COLFLAG_VIRTUAL) != 0 {
 				pParse = _sqlite3VdbeParser(tls, v)
 				if int32((*TColumn)(unsafe.Pointer(pCol)).FcolFlags)&int32(m_COLFLAG_BUSY) != 0 {
-					_sqlite3ErrorMsg(tls, pParse, __ccgo_ts+7787, libc.VaList(bp+8, (*TColumn)(unsafe.Pointer(pCol)).FzCnName))
+					_sqlite3ErrorMsg(tls, pParse, __ccgo_ts+7807, libc.VaList(bp+8, (*TColumn)(unsafe.Pointer(pCol)).FzCnName))
 				} else {
 					savedSelfTab = (*TParse)(unsafe.Pointer(pParse)).FiSelfTab
 					p2 = pCol + 14
@@ -81927,16 +81927,16 @@ func _exprCodeInlineFunction(tls *libc.TLS, pParse uintptr, pFarg uintptr, iFunc
 		 ** the SQLite type logic.
 		 */
 		azAff = [5]uintptr{
-			0: __ccgo_ts + 7817,
-			1: __ccgo_ts + 7822,
-			2: __ccgo_ts + 7827,
-			3: __ccgo_ts + 6036,
-			4: __ccgo_ts + 6031,
+			0: __ccgo_ts + 7837,
+			1: __ccgo_ts + 7842,
+			2: __ccgo_ts + 7847,
+			3: __ccgo_ts + 6056,
+			4: __ccgo_ts + 6051,
 		}
 		_ = libc.Int32FromInt32(0)
 		aff = _sqlite3ExprAffinity(tls, (*(*TExprList_item)(unsafe.Pointer(pFarg + 8))).FpExpr)
 		if int32(aff) <= int32(m_SQLITE_AFF_NONE) {
-			v2 = __ccgo_ts + 7835
+			v2 = __ccgo_ts + 7855
 		} else {
 			v2 = azAff[int32(aff)-int32(m_SQLITE_AFF_BLOB)]
 		}
@@ -82041,7 +82041,7 @@ expr_code_doover:
 				iSrc = int32(_sqlite3TableColumnToStorage(tls, pTab1, int16(iCol))) - (*TParse)(unsafe.Pointer(pParse)).FiSelfTab
 				if int32((*TColumn)(unsafe.Pointer(pCol1)).FcolFlags)&int32(m_COLFLAG_GENERATED) != 0 {
 					if int32((*TColumn)(unsafe.Pointer(pCol1)).FcolFlags)&int32(m_COLFLAG_BUSY) != 0 {
-						_sqlite3ErrorMsg(tls, pParse, __ccgo_ts+7787, libc.VaList(bp+160, (*TColumn)(unsafe.Pointer(pCol1)).FzCnName))
+						_sqlite3ErrorMsg(tls, pParse, __ccgo_ts+7807, libc.VaList(bp+160, (*TColumn)(unsafe.Pointer(pCol1)).FzCnName))
 						return 0
 					}
 					p11 = pCol1 + 14
@@ -82255,7 +82255,7 @@ expr_code_doover:
 		pInfo = (*TExpr)(unsafe.Pointer(pExpr)).FpAggInfo
 		if pInfo == uintptr(0) || int32((*TExpr)(unsafe.Pointer(pExpr)).FiAgg) < 0 || int32((*TExpr)(unsafe.Pointer(pExpr)).FiAgg) >= (*TAggInfo)(unsafe.Pointer(pInfo)).FnFunc {
 			_ = libc.Int32FromInt32(0)
-			_sqlite3ErrorMsg(tls, pParse, __ccgo_ts+7840, libc.VaList(bp+160, *(*uintptr)(unsafe.Pointer(pExpr + 8))))
+			_sqlite3ErrorMsg(tls, pParse, __ccgo_ts+7860, libc.VaList(bp+160, *(*uintptr)(unsafe.Pointer(pExpr + 8))))
 		} else {
 			return (*(*TAggInfo_func)(unsafe.Pointer((*TAggInfo)(unsafe.Pointer(pInfo)).FaFunc + uintptr((*TExpr)(unsafe.Pointer(pExpr)).FiAgg)*32))).FiMem
 		}
@@ -82285,7 +82285,7 @@ expr_code_doover:
 		zId = *(*uintptr)(unsafe.Pointer(pExpr + 8))
 		pDef = _sqlite3FindFunction(tls, db, zId, nFarg, enc, uint8(0))
 		if pDef == uintptr(0) || (*TFuncDef)(unsafe.Pointer(pDef)).FxFinalize != uintptr(0) {
-			_sqlite3ErrorMsg(tls, pParse, __ccgo_ts+7866, libc.VaList(bp+160, zId))
+			_sqlite3ErrorMsg(tls, pParse, __ccgo_ts+7886, libc.VaList(bp+160, zId))
 			break
 		}
 		if (*TFuncDef)(unsafe.Pointer(pDef)).FfuncFlags&uint32(m_SQLITE_FUNC_INLINE) != 0 {
@@ -82403,7 +82403,7 @@ expr_code_doover:
 		_ = libc.Int32FromInt32(0)
 		n1 = _sqlite3ExprVectorSize(tls, (*TExpr)(unsafe.Pointer(pExpr)).FpLeft)
 		if (*TExpr)(unsafe.Pointer(pExpr)).FiTable != n1 {
-			_sqlite3ErrorMsg(tls, pParse, __ccgo_ts+7470, libc.VaList(bp+160, (*TExpr)(unsafe.Pointer(pExpr)).FiTable, n1))
+			_sqlite3ErrorMsg(tls, pParse, __ccgo_ts+7490, libc.VaList(bp+160, (*TExpr)(unsafe.Pointer(pExpr)).FiTable, n1))
 		}
 		return (*TExpr)(unsafe.Pointer((*TExpr)(unsafe.Pointer(pExpr)).FpLeft)).FiTable + int32((*TExpr)(unsafe.Pointer(pExpr)).FiColumn)
 	case int32(m_TK_IN):
@@ -82457,7 +82457,7 @@ expr_code_doover:
 			_sqlite3VdbeAddOp1(tls, v, int32(m_OP_RealAffinity), target)
 		}
 	case int32(m_TK_VECTOR):
-		_sqlite3ErrorMsg(tls, pParse, __ccgo_ts+6345, 0)
+		_sqlite3ErrorMsg(tls, pParse, __ccgo_ts+6365, 0)
 		break
 		/* TK_IF_NULL_ROW Expr nodes are inserted ahead of expressions
 		 ** that derive from the right-hand table of a LEFT JOIN.  The
@@ -82561,7 +82561,7 @@ expr_code_doover:
 	case int32(m_TK_RAISE):
 		_ = libc.Int32FromInt32(0)
 		if !((*TParse)(unsafe.Pointer(pParse)).FpTriggerTab != 0) && !((*TParse)(unsafe.Pointer(pParse)).Fnested != 0) {
-			_sqlite3ErrorMsg(tls, pParse, __ccgo_ts+7889, 0)
+			_sqlite3ErrorMsg(tls, pParse, __ccgo_ts+7909, 0)
 			return 0
 		}
 		if int32((*TExpr)(unsafe.Pointer(pExpr)).FaffExpr) == int32(m_OE_Abort) {
@@ -84488,8 +84488,8 @@ func _sqlite3ClearTempRegCache(tls *libc.TLS, pParse uintptr) {
 func _isAlterableTable(tls *libc.TLS, pParse uintptr, pTab uintptr) (r int32) {
 	bp := tls.Alloc(16)
 	defer tls.Free(16)
-	if 0 == Xsqlite3_strnicmp(tls, (*TTable)(unsafe.Pointer(pTab)).FzName, __ccgo_ts+7939, int32(7)) || (*TTable)(unsafe.Pointer(pTab)).FtabFlags&uint32(m_TF_Eponymous) != uint32(0) || (*TTable)(unsafe.Pointer(pTab)).FtabFlags&uint32(m_TF_Shadow) != uint32(0) && _sqlite3ReadOnlyShadowTables(tls, (*TParse)(unsafe.Pointer(pParse)).Fdb) != 0 {
-		_sqlite3ErrorMsg(tls, pParse, __ccgo_ts+7947, libc.VaList(bp+8, (*TTable)(unsafe.Pointer(pTab)).FzName))
+	if 0 == Xsqlite3_strnicmp(tls, (*TTable)(unsafe.Pointer(pTab)).FzName, __ccgo_ts+7959, int32(7)) || (*TTable)(unsafe.Pointer(pTab)).FtabFlags&uint32(m_TF_Eponymous) != uint32(0) || (*TTable)(unsafe.Pointer(pTab)).FtabFlags&uint32(m_TF_Shadow) != uint32(0) && _sqlite3ReadOnlyShadowTables(tls, (*TParse)(unsafe.Pointer(pParse)).Fdb) != 0 {
+		_sqlite3ErrorMsg(tls, pParse, __ccgo_ts+7967, libc.VaList(bp+8, (*TTable)(unsafe.Pointer(pTab)).FzName))
 		return int32(1)
 	}
 	return 0
@@ -84508,9 +84508,9 @@ func _renameTestSchema(tls *libc.TLS, pParse uintptr, zDb uintptr, bTemp int32, 
 	bp := tls.Alloc(48)
 	defer tls.Free(48)
 	(*TParse)(unsafe.Pointer(pParse)).FcolNamesSet = uint8(1)
-	_sqlite3NestedParse(tls, pParse, __ccgo_ts+7975, libc.VaList(bp+8, zDb, zDb, bTemp, zWhen, bNoDQS))
+	_sqlite3NestedParse(tls, pParse, __ccgo_ts+7995, libc.VaList(bp+8, zDb, zDb, bTemp, zWhen, bNoDQS))
 	if bTemp == 0 {
-		_sqlite3NestedParse(tls, pParse, __ccgo_ts+8150, libc.VaList(bp+8, zDb, zWhen, bNoDQS))
+		_sqlite3NestedParse(tls, pParse, __ccgo_ts+8170, libc.VaList(bp+8, zDb, zWhen, bNoDQS))
 	}
 }
 
@@ -84526,9 +84526,9 @@ func _renameTestSchema(tls *libc.TLS, pParse uintptr, zDb uintptr, bTemp int32, 
 func _renameFixQuotes(tls *libc.TLS, pParse uintptr, zDb uintptr, bTemp int32) {
 	bp := tls.Alloc(32)
 	defer tls.Free(32)
-	_sqlite3NestedParse(tls, pParse, __ccgo_ts+8324, libc.VaList(bp+8, zDb, zDb))
+	_sqlite3NestedParse(tls, pParse, __ccgo_ts+8344, libc.VaList(bp+8, zDb, zDb))
 	if bTemp == 0 {
-		_sqlite3NestedParse(tls, pParse, __ccgo_ts+8471, 0)
+		_sqlite3NestedParse(tls, pParse, __ccgo_ts+8491, 0)
 	}
 }
 
@@ -84586,7 +84586,7 @@ func _sqlite3AlterRenameTable(tls *libc.TLS, pParse uintptr, pSrc uintptr, pName
 	 ** in database iDb. If so, this is an error.
 	 */
 	if _sqlite3FindTable(tls, db, zName, zDb) != 0 || _sqlite3FindIndex(tls, db, zName, zDb) != 0 || _sqlite3IsShadowTableOf(tls, db, pTab, zName) != 0 {
-		_sqlite3ErrorMsg(tls, pParse, __ccgo_ts+8622, libc.VaList(bp+8, zName))
+		_sqlite3ErrorMsg(tls, pParse, __ccgo_ts+8642, libc.VaList(bp+8, zName))
 		goto exit_rename_table
 	}
 	/* Make sure it is not a system table being altered, or a reserved name
@@ -84595,11 +84595,11 @@ func _sqlite3AlterRenameTable(tls *libc.TLS, pParse uintptr, pSrc uintptr, pName
 	if m_SQLITE_OK != _isAlterableTable(tls, pParse, pTab) {
 		goto exit_rename_table
 	}
-	if m_SQLITE_OK != _sqlite3CheckObjectName(tls, pParse, zName, __ccgo_ts+8681, zName) {
+	if m_SQLITE_OK != _sqlite3CheckObjectName(tls, pParse, zName, __ccgo_ts+8701, zName) {
 		goto exit_rename_table
 	}
 	if int32((*TTable)(unsafe.Pointer(pTab)).FeTabType) == int32(m_TABTYP_VIEW) {
-		_sqlite3ErrorMsg(tls, pParse, __ccgo_ts+8687, libc.VaList(bp+8, (*TTable)(unsafe.Pointer(pTab)).FzName))
+		_sqlite3ErrorMsg(tls, pParse, __ccgo_ts+8707, libc.VaList(bp+8, (*TTable)(unsafe.Pointer(pTab)).FzName))
 		goto exit_rename_table
 	}
 	/* Invoke the authorization callback. */
@@ -84629,21 +84629,21 @@ func _sqlite3AlterRenameTable(tls *libc.TLS, pParse uintptr, pSrc uintptr, pName
 	nTabName = _sqlite3Utf8CharLen(tls, zTabName, -int32(1))
 	/* Rewrite all CREATE TABLE, INDEX, TRIGGER or VIEW statements in
 	 ** the schema to use the new table name.  */
-	_sqlite3NestedParse(tls, pParse, __ccgo_ts+8714, libc.VaList(bp+8, zDb, zDb, zTabName, zName, libc.BoolInt32(iDb == int32(1)), zTabName))
+	_sqlite3NestedParse(tls, pParse, __ccgo_ts+8734, libc.VaList(bp+8, zDb, zDb, zTabName, zName, libc.BoolInt32(iDb == int32(1)), zTabName))
 	/* Update the tbl_name and name columns of the sqlite_schema table
 	 ** as required.  */
-	_sqlite3NestedParse(tls, pParse, __ccgo_ts+8898, libc.VaList(bp+8, zDb, zName, zName, zName, nTabName, zTabName))
+	_sqlite3NestedParse(tls, pParse, __ccgo_ts+8918, libc.VaList(bp+8, zDb, zName, zName, zName, nTabName, zTabName))
 	/* If the sqlite_sequence table exists in this database, then update
 	 ** it with the new table name.
 	 */
-	if _sqlite3FindTable(tls, db, __ccgo_ts+9203, zDb) != 0 {
-		_sqlite3NestedParse(tls, pParse, __ccgo_ts+9219, libc.VaList(bp+8, zDb, zName, (*TTable)(unsafe.Pointer(pTab)).FzName))
+	if _sqlite3FindTable(tls, db, __ccgo_ts+9223, zDb) != 0 {
+		_sqlite3NestedParse(tls, pParse, __ccgo_ts+9239, libc.VaList(bp+8, zDb, zName, (*TTable)(unsafe.Pointer(pTab)).FzName))
 	}
 	/* If the table being renamed is not itself part of the temp database,
 	 ** edit view and trigger definitions within the temp database
 	 ** as required.  */
 	if iDb != int32(1) {
-		_sqlite3NestedParse(tls, pParse, __ccgo_ts+9277, libc.VaList(bp+8, zDb, zTabName, zName, zTabName, zDb, zName))
+		_sqlite3NestedParse(tls, pParse, __ccgo_ts+9297, libc.VaList(bp+8, zDb, zTabName, zName, zTabName, zDb, zName))
 	}
 	/* If this is a virtual table, invoke the xRename() function if
 	 ** one is defined. The xRename() callback will modify the names
@@ -84659,7 +84659,7 @@ func _sqlite3AlterRenameTable(tls *libc.TLS, pParse uintptr, pSrc uintptr, pName
 		_sqlite3VdbeAddOp4(tls, v, int32(m_OP_VRename), i, 0, 0, pVTab, -int32(12))
 	}
 	_renameReloadSchema(tls, pParse, iDb, uint16(m_INITFLAG_AlterRename))
-	_renameTestSchema(tls, pParse, zDb, libc.BoolInt32(iDb == int32(1)), __ccgo_ts+9542, 0)
+	_renameTestSchema(tls, pParse, zDb, libc.BoolInt32(iDb == int32(1)), __ccgo_ts+9562, 0)
 exit_rename_table:
 	_sqlite3SrcListDelete(tls, db, pSrc)
 	_sqlite3DbFree(tls, db, zName)
@@ -84674,7 +84674,7 @@ exit_rename_table:
 func _sqlite3ErrorIfNotEmpty(tls *libc.TLS, pParse uintptr, zDb uintptr, zTab uintptr, zErr uintptr) {
 	bp := tls.Alloc(32)
 	defer tls.Free(32)
-	_sqlite3NestedParse(tls, pParse, __ccgo_ts+9555, libc.VaList(bp+8, zErr, zDb, zTab))
+	_sqlite3NestedParse(tls, pParse, __ccgo_ts+9575, libc.VaList(bp+8, zErr, zDb, zTab))
 }
 
 // C documentation
@@ -84717,11 +84717,11 @@ func _sqlite3AlterFinishAddColumn(tls *libc.TLS, pParse uintptr, pColDef uintptr
 	 ** column must not be NULL.
 	 */
 	if int32((*TColumn)(unsafe.Pointer(pCol)).FcolFlags)&int32(m_COLFLAG_PRIMKEY) != 0 {
-		_sqlite3ErrorMsg(tls, pParse, __ccgo_ts+9593, 0)
+		_sqlite3ErrorMsg(tls, pParse, __ccgo_ts+9613, 0)
 		return
 	}
 	if (*TTable)(unsafe.Pointer(pNew)).FpIndex != 0 {
-		_sqlite3ErrorMsg(tls, pParse, __ccgo_ts+9625, 0)
+		_sqlite3ErrorMsg(tls, pParse, __ccgo_ts+9645, 0)
 		return
 	}
 	if int32((*TColumn)(unsafe.Pointer(pCol)).FcolFlags)&int32(m_COLFLAG_GENERATED) == 0 {
@@ -84739,10 +84739,10 @@ func _sqlite3AlterFinishAddColumn(tls *libc.TLS, pParse uintptr, pColDef uintptr
 			FpFKey        uintptr
 			FpDfltList    uintptr
 		})(unsafe.Pointer(pNew + 64))).FpFKey != 0 && pDflt != 0 {
-			_sqlite3ErrorIfNotEmpty(tls, pParse, zDb, zTab, __ccgo_ts+9652)
+			_sqlite3ErrorIfNotEmpty(tls, pParse, zDb, zTab, __ccgo_ts+9672)
 		}
 		if int32(uint32(*(*uint8)(unsafe.Pointer(pCol + 8))&0xf>>0)) != 0 && !(pDflt != 0) {
-			_sqlite3ErrorIfNotEmpty(tls, pParse, zDb, zTab, __ccgo_ts+9711)
+			_sqlite3ErrorIfNotEmpty(tls, pParse, zDb, zTab, __ccgo_ts+9731)
 		}
 		/* Ensure the default expression is something that sqlite3ValueFromExpr()
 		 ** can handle (i.e. not CURRENT_TIME etc.)
@@ -84756,13 +84756,13 @@ func _sqlite3AlterFinishAddColumn(tls *libc.TLS, pParse uintptr, pColDef uintptr
 				return
 			}
 			if !(*(*uintptr)(unsafe.Pointer(bp)) != 0) {
-				_sqlite3ErrorIfNotEmpty(tls, pParse, zDb, zTab, __ccgo_ts+9764)
+				_sqlite3ErrorIfNotEmpty(tls, pParse, zDb, zTab, __ccgo_ts+9784)
 			}
 			_sqlite3ValueFree(tls, *(*uintptr)(unsafe.Pointer(bp)))
 		}
 	} else {
 		if int32((*TColumn)(unsafe.Pointer(pCol)).FcolFlags)&int32(m_COLFLAG_STORED) != 0 {
-			_sqlite3ErrorIfNotEmpty(tls, pParse, zDb, zTab, __ccgo_ts+9810)
+			_sqlite3ErrorIfNotEmpty(tls, pParse, zDb, zTab, __ccgo_ts+9830)
 		}
 	}
 	/* Modify the CREATE TABLE statement. */
@@ -84778,7 +84778,7 @@ func _sqlite3AlterFinishAddColumn(tls *libc.TLS, pParse uintptr, pColDef uintptr
 		 ** have to use printf() to translate between these units: */
 		_ = libc.Int32FromInt32(0)
 		_ = libc.Int32FromInt32(0)
-		_sqlite3NestedParse(tls, pParse, __ccgo_ts+9837, libc.VaList(bp+16, zDb, (*(*struct {
+		_sqlite3NestedParse(tls, pParse, __ccgo_ts+9857, libc.VaList(bp+16, zDb, (*(*struct {
 			FaddColOffset int32
 			FpFKey        uintptr
 			FpDfltList    uintptr
@@ -84806,7 +84806,7 @@ func _sqlite3AlterFinishAddColumn(tls *libc.TLS, pParse uintptr, pColDef uintptr
 		_renameReloadSchema(tls, pParse, iDb, uint16(m_INITFLAG_AlterAdd))
 		/* Verify that constraints are still satisfied */
 		if (*TTable)(unsafe.Pointer(pNew)).FpCheck != uintptr(0) || int32(uint32(*(*uint8)(unsafe.Pointer(pCol + 8))&0xf>>0)) != 0 && int32((*TColumn)(unsafe.Pointer(pCol)).FcolFlags)&int32(m_COLFLAG_GENERATED) != 0 {
-			_sqlite3NestedParse(tls, pParse, __ccgo_ts+9983, libc.VaList(bp+16, zTab, zDb))
+			_sqlite3NestedParse(tls, pParse, __ccgo_ts+10003, libc.VaList(bp+16, zTab, zDb))
 		}
 	}
 }
@@ -84846,12 +84846,12 @@ func _sqlite3AlterBeginAddColumn(tls *libc.TLS, pParse uintptr, pSrc uintptr) {
 		goto exit_begin_add_column
 	}
 	if int32((*TTable)(unsafe.Pointer(pTab)).FeTabType) == int32(m_TABTYP_VTAB) {
-		_sqlite3ErrorMsg(tls, pParse, __ccgo_ts+10217, 0)
+		_sqlite3ErrorMsg(tls, pParse, __ccgo_ts+10237, 0)
 		goto exit_begin_add_column
 	}
 	/* Make sure this is not an attempt to ALTER a view. */
 	if int32((*TTable)(unsafe.Pointer(pTab)).FeTabType) == int32(m_TABTYP_VIEW) {
-		_sqlite3ErrorMsg(tls, pParse, __ccgo_ts+10251, 0)
+		_sqlite3ErrorMsg(tls, pParse, __ccgo_ts+10271, 0)
 		goto exit_begin_add_column
 	}
 	if m_SQLITE_OK != _isAlterableTable(tls, pParse, pTab) {
@@ -84879,7 +84879,7 @@ func _sqlite3AlterBeginAddColumn(tls *libc.TLS, pParse uintptr, pSrc uintptr) {
 	nAlloc = (int32((*TTable)(unsafe.Pointer(pNew)).FnCol)-int32(1))/int32(8)*int32(8) + int32(8)
 	_ = libc.Int32FromInt32(0)
 	(*TTable)(unsafe.Pointer(pNew)).FaCol = _sqlite3DbMallocZero(tls, db, uint64(16)*uint64(nAlloc))
-	(*TTable)(unsafe.Pointer(pNew)).FzName = _sqlite3MPrintf(tls, db, __ccgo_ts+10281, libc.VaList(bp+8, (*TTable)(unsafe.Pointer(pTab)).FzName))
+	(*TTable)(unsafe.Pointer(pNew)).FzName = _sqlite3MPrintf(tls, db, __ccgo_ts+10301, libc.VaList(bp+8, (*TTable)(unsafe.Pointer(pTab)).FzName))
 	if !((*TTable)(unsafe.Pointer(pNew)).FaCol != 0) || !((*TTable)(unsafe.Pointer(pNew)).FzName != 0) {
 		_ = libc.Int32FromInt32(0)
 		goto exit_begin_add_column
@@ -84940,18 +84940,18 @@ func _isRealTable(tls *libc.TLS, pParse uintptr, pTab uintptr, bDrop int32) (r i
 	_, _ = zType, v1
 	zType = uintptr(0)
 	if int32((*TTable)(unsafe.Pointer(pTab)).FeTabType) == int32(m_TABTYP_VIEW) {
-		zType = __ccgo_ts + 10300
+		zType = __ccgo_ts + 10320
 	}
 	if int32((*TTable)(unsafe.Pointer(pTab)).FeTabType) == int32(m_TABTYP_VTAB) {
-		zType = __ccgo_ts + 10305
+		zType = __ccgo_ts + 10325
 	}
 	if zType != 0 {
 		if bDrop != 0 {
-			v1 = __ccgo_ts + 10319
+			v1 = __ccgo_ts + 10339
 		} else {
-			v1 = __ccgo_ts + 10336
+			v1 = __ccgo_ts + 10356
 		}
-		_sqlite3ErrorMsg(tls, pParse, __ccgo_ts+10354, libc.VaList(bp+8, v1, zType, (*TTable)(unsafe.Pointer(pTab)).FzName))
+		_sqlite3ErrorMsg(tls, pParse, __ccgo_ts+10374, libc.VaList(bp+8, v1, zType, (*TTable)(unsafe.Pointer(pTab)).FzName))
 		return int32(1)
 	}
 	return 0
@@ -85012,11 +85012,11 @@ func _sqlite3AlterRenameColumn(tls *libc.TLS, pParse uintptr, pSrc uintptr, pOld
 		iCol++
 	}
 	if iCol == int32((*TTable)(unsafe.Pointer(pTab)).FnCol) {
-		_sqlite3ErrorMsg(tls, pParse, __ccgo_ts+6180, libc.VaList(bp+8, zOld))
+		_sqlite3ErrorMsg(tls, pParse, __ccgo_ts+6200, libc.VaList(bp+8, zOld))
 		goto exit_rename_column
 	}
 	/* Ensure the schema contains no double-quoted strings */
-	_renameTestSchema(tls, pParse, zDb, libc.BoolInt32(iSchema == int32(1)), __ccgo_ts+1511, 0)
+	_renameTestSchema(tls, pParse, zDb, libc.BoolInt32(iSchema == int32(1)), __ccgo_ts+1531, 0)
 	_renameFixQuotes(tls, pParse, zDb, libc.BoolInt32(iSchema == int32(1)))
 	/* Do the rename operation using a recursive UPDATE statement that
 	 ** uses the sqlite_rename_column() SQL function to compute the new
@@ -85029,11 +85029,11 @@ func _sqlite3AlterRenameColumn(tls *libc.TLS, pParse uintptr, pSrc uintptr, pOld
 	}
 	_ = libc.Int32FromInt32(0)
 	bQuote = int32(_sqlite3CtypeMap[*(*uint8)(unsafe.Pointer((*TToken)(unsafe.Pointer(pNew)).Fz))]) & int32(0x80)
-	_sqlite3NestedParse(tls, pParse, __ccgo_ts+10372, libc.VaList(bp+8, zDb, zDb, (*TTable)(unsafe.Pointer(pTab)).FzName, iCol, zNew, bQuote, libc.BoolInt32(iSchema == int32(1)), (*TTable)(unsafe.Pointer(pTab)).FzName))
-	_sqlite3NestedParse(tls, pParse, __ccgo_ts+10554, libc.VaList(bp+8, zDb, (*TTable)(unsafe.Pointer(pTab)).FzName, iCol, zNew, bQuote))
+	_sqlite3NestedParse(tls, pParse, __ccgo_ts+10392, libc.VaList(bp+8, zDb, zDb, (*TTable)(unsafe.Pointer(pTab)).FzName, iCol, zNew, bQuote, libc.BoolInt32(iSchema == int32(1)), (*TTable)(unsafe.Pointer(pTab)).FzName))
+	_sqlite3NestedParse(tls, pParse, __ccgo_ts+10574, libc.VaList(bp+8, zDb, (*TTable)(unsafe.Pointer(pTab)).FzName, iCol, zNew, bQuote))
 	/* Drop and reload the database schema. */
 	_renameReloadSchema(tls, pParse, iSchema, uint16(m_INITFLAG_AlterRename))
-	_renameTestSchema(tls, pParse, zDb, libc.BoolInt32(iSchema == int32(1)), __ccgo_ts+9542, int32(1))
+	_renameTestSchema(tls, pParse, zDb, libc.BoolInt32(iSchema == int32(1)), __ccgo_ts+9562, int32(1))
 exit_rename_column:
 	_sqlite3SrcListDelete(tls, db, pSrc)
 	_sqlite3DbFree(tls, db, zOld)
@@ -85492,11 +85492,11 @@ func _renameColumnParseError(tls *libc.TLS, pCtx uintptr, zWhen uintptr, pType u
 	zT = Xsqlite3_value_text(tls, pType)
 	zN = Xsqlite3_value_text(tls, pObject)
 	if *(*uint8)(unsafe.Pointer(zWhen)) != 0 {
-		v1 = __ccgo_ts + 10685
+		v1 = __ccgo_ts + 10705
 	} else {
-		v1 = __ccgo_ts + 1511
+		v1 = __ccgo_ts + 1531
 	}
-	zErr = Xsqlite3_mprintf(tls, __ccgo_ts+10687, libc.VaList(bp+8, zT, zN, v1, zWhen, (*TParse)(unsafe.Pointer(pParse)).FzErrMsg))
+	zErr = Xsqlite3_mprintf(tls, __ccgo_ts+10707, libc.VaList(bp+8, zT, zN, v1, zWhen, (*TParse)(unsafe.Pointer(pParse)).FzErrMsg))
 	Xsqlite3_result_error(tls, pCtx, zErr, -int32(1))
 	Xsqlite3_free(tls, zErr)
 }
@@ -85636,7 +85636,7 @@ func _renameEditSql(tls *libc.TLS, pCtx uintptr, pRename uintptr, zSql uintptr, 
 		 ** ALTER TABLE statement was quoted (bQuote==1), then set zNew to
 		 ** point to zQuot so that all substitutions are made using the
 		 ** quoted version of the new column name.  */
-		zQuot = _sqlite3MPrintf(tls, db, __ccgo_ts+10710, libc.VaList(bp+8, zNew))
+		zQuot = _sqlite3MPrintf(tls, db, __ccgo_ts+10730, libc.VaList(bp+8, zNew))
 		if zQuot == uintptr(0) {
 			return int32(m_SQLITE_NOMEM)
 		} else {
@@ -85682,11 +85682,11 @@ func _renameEditSql(tls *libc.TLS, pCtx uintptr, pRename uintptr, zSql uintptr, 
 				*(*uint8)(unsafe.Pointer(zBuf1 + uintptr((*TRenameToken)(unsafe.Pointer(pBest)).Ft.Fn))) = uint8(0)
 				_sqlite3Dequote(tls, zBuf1)
 				if int32(*(*uint8)(unsafe.Pointer((*TRenameToken)(unsafe.Pointer(pBest)).Ft.Fz + uintptr((*TRenameToken)(unsafe.Pointer(pBest)).Ft.Fn)))) == int32('\'') {
-					v1 = __ccgo_ts + 10685
+					v1 = __ccgo_ts + 10705
 				} else {
-					v1 = __ccgo_ts + 1511
+					v1 = __ccgo_ts + 1531
 				}
-				Xsqlite3_snprintf(tls, int32(nSql*int64(2)), zBuf2, __ccgo_ts+10716, libc.VaList(bp+8, zBuf1, v1))
+				Xsqlite3_snprintf(tls, int32(nSql*int64(2)), zBuf2, __ccgo_ts+10736, libc.VaList(bp+8, zBuf1, v1))
 				zReplace = zBuf2
 				nReplace = uint32(_sqlite3Strlen30(tls, zReplace))
 			}
@@ -86121,7 +86121,7 @@ func _renameColumnFunc(tls *libc.TLS, context uintptr, NotUsed int32, argv uintp
 renameColumnFunc_done:
 	if rc != m_SQLITE_OK {
 		if (*(*TParse)(unsafe.Pointer(bp + 32))).FzErrMsg != 0 {
-			_renameColumnParseError(tls, context, __ccgo_ts+1511, *(*uintptr)(unsafe.Pointer(argv + 1*8)), *(*uintptr)(unsafe.Pointer(argv + 2*8)), bp+32)
+			_renameColumnParseError(tls, context, __ccgo_ts+1531, *(*uintptr)(unsafe.Pointer(argv + 1*8)), *(*uintptr)(unsafe.Pointer(argv + 2*8)), bp+32)
 		} else {
 			Xsqlite3_result_error_code(tls, context, rc)
 		}
@@ -86327,7 +86327,7 @@ func _renameTableFunc(tls *libc.TLS, context uintptr, NotUsed int32, argv uintpt
 		}
 		if rc != m_SQLITE_OK {
 			if (*(*TParse)(unsafe.Pointer(bp))).FzErrMsg != 0 {
-				_renameColumnParseError(tls, context, __ccgo_ts+1511, *(*uintptr)(unsafe.Pointer(argv + 1*8)), *(*uintptr)(unsafe.Pointer(argv + 2*8)), bp)
+				_renameColumnParseError(tls, context, __ccgo_ts+1531, *(*uintptr)(unsafe.Pointer(argv + 1*8)), *(*uintptr)(unsafe.Pointer(argv + 2*8)), bp)
 			} else {
 				Xsqlite3_result_error_code(tls, context, rc)
 			}
@@ -86592,7 +86592,7 @@ func _dropColumnFunc(tls *libc.TLS, context uintptr, NotUsed int32, argv uintptr
 			(*TRenameToken)(unsafe.Pointer(pCol)).Ft.Fz--
 		}
 	}
-	zNew = _sqlite3MPrintf(tls, db, __ccgo_ts+10721, libc.VaList(bp+408, int64((*TRenameToken)(unsafe.Pointer(pCol)).Ft.Fz)-int64(zSql), zSql, zEnd))
+	zNew = _sqlite3MPrintf(tls, db, __ccgo_ts+10741, libc.VaList(bp+408, int64((*TRenameToken)(unsafe.Pointer(pCol)).Ft.Fz)-int64(zSql), zSql, zEnd))
 	Xsqlite3_result_text(tls, context, zNew, -int32(1), uintptr(-libc.Int32FromInt32(1)))
 	Xsqlite3_free(tls, zNew)
 drop_column_done:
@@ -86647,35 +86647,35 @@ func _sqlite3AlterDropColumn(tls *libc.TLS, pParse uintptr, pSrc uintptr, pName 
 	}
 	iCol = _sqlite3ColumnIndex(tls, pTab, zCol)
 	if iCol < 0 {
-		_sqlite3ErrorMsg(tls, pParse, __ccgo_ts+6180, libc.VaList(bp+8, zCol))
+		_sqlite3ErrorMsg(tls, pParse, __ccgo_ts+6200, libc.VaList(bp+8, zCol))
 		goto exit_drop_column
 	}
 	/* Do not allow the user to drop a PRIMARY KEY column or a column
 	 ** constrained by a UNIQUE constraint.  */
 	if int32((*(*TColumn)(unsafe.Pointer((*TTable)(unsafe.Pointer(pTab)).FaCol + uintptr(iCol)*16))).FcolFlags)&(libc.Int32FromInt32(m_COLFLAG_PRIMKEY)|libc.Int32FromInt32(m_COLFLAG_UNIQUE)) != 0 {
 		if int32((*(*TColumn)(unsafe.Pointer((*TTable)(unsafe.Pointer(pTab)).FaCol + uintptr(iCol)*16))).FcolFlags)&int32(m_COLFLAG_PRIMKEY) != 0 {
-			v1 = __ccgo_ts + 10728
+			v1 = __ccgo_ts + 10748
 		} else {
-			v1 = __ccgo_ts + 5310
+			v1 = __ccgo_ts + 5330
 		}
-		_sqlite3ErrorMsg(tls, pParse, __ccgo_ts+10740, libc.VaList(bp+8, v1, zCol))
+		_sqlite3ErrorMsg(tls, pParse, __ccgo_ts+10760, libc.VaList(bp+8, v1, zCol))
 		goto exit_drop_column
 	}
 	/* Do not allow the number of columns to go to zero */
 	if int32((*TTable)(unsafe.Pointer(pTab)).FnCol) <= int32(1) {
-		_sqlite3ErrorMsg(tls, pParse, __ccgo_ts+10768, libc.VaList(bp+8, zCol))
+		_sqlite3ErrorMsg(tls, pParse, __ccgo_ts+10788, libc.VaList(bp+8, zCol))
 		goto exit_drop_column
 	}
 	/* Edit the sqlite_schema table */
 	iDb = _sqlite3SchemaToIndex(tls, db, (*TTable)(unsafe.Pointer(pTab)).FpSchema)
 	_ = libc.Int32FromInt32(0)
 	zDb = (*(*TDb)(unsafe.Pointer((*Tsqlite3)(unsafe.Pointer(db)).FaDb + uintptr(iDb)*32))).FzDbSName
-	_renameTestSchema(tls, pParse, zDb, libc.BoolInt32(iDb == int32(1)), __ccgo_ts+1511, 0)
+	_renameTestSchema(tls, pParse, zDb, libc.BoolInt32(iDb == int32(1)), __ccgo_ts+1531, 0)
 	_renameFixQuotes(tls, pParse, zDb, libc.BoolInt32(iDb == int32(1)))
-	_sqlite3NestedParse(tls, pParse, __ccgo_ts+10816, libc.VaList(bp+8, zDb, iDb, iCol, (*TTable)(unsafe.Pointer(pTab)).FzName))
+	_sqlite3NestedParse(tls, pParse, __ccgo_ts+10836, libc.VaList(bp+8, zDb, iDb, iCol, (*TTable)(unsafe.Pointer(pTab)).FzName))
 	/* Drop and reload the database schema. */
 	_renameReloadSchema(tls, pParse, iDb, uint16(m_INITFLAG_AlterDrop))
-	_renameTestSchema(tls, pParse, zDb, libc.BoolInt32(iDb == int32(1)), __ccgo_ts+10937, int32(1))
+	_renameTestSchema(tls, pParse, zDb, libc.BoolInt32(iDb == int32(1)), __ccgo_ts+10957, int32(1))
 	/* Edit rows of table on disk */
 	if (*TParse)(unsafe.Pointer(pParse)).FnErr == 0 && int32((*(*TColumn)(unsafe.Pointer((*TTable)(unsafe.Pointer(pTab)).FaCol + uintptr(iCol)*16))).FcolFlags)&int32(m_COLFLAG_VIRTUAL) == 0 {
 		pPk = uintptr(0)
@@ -86774,27 +86774,27 @@ var _aAlterTableFuncs = [5]TFuncDef{
 	0: {
 		FnArg:      int8(9),
 		FfuncFlags: uint32(libc.Int32FromInt32(m_SQLITE_FUNC_BUILTIN) | libc.Int32FromInt32(m_SQLITE_FUNC_INTERNAL) | libc.Int32FromInt32(m_SQLITE_UTF8) | libc.Int32FromInt32(m_SQLITE_FUNC_CONSTANT)),
-		FzName:     __ccgo_ts + 10955,
+		FzName:     __ccgo_ts + 10975,
 	},
 	1: {
 		FnArg:      int8(7),
 		FfuncFlags: uint32(libc.Int32FromInt32(m_SQLITE_FUNC_BUILTIN) | libc.Int32FromInt32(m_SQLITE_FUNC_INTERNAL) | libc.Int32FromInt32(m_SQLITE_UTF8) | libc.Int32FromInt32(m_SQLITE_FUNC_CONSTANT)),
-		FzName:     __ccgo_ts + 10976,
+		FzName:     __ccgo_ts + 10996,
 	},
 	2: {
 		FnArg:      int8(7),
 		FfuncFlags: uint32(libc.Int32FromInt32(m_SQLITE_FUNC_BUILTIN) | libc.Int32FromInt32(m_SQLITE_FUNC_INTERNAL) | libc.Int32FromInt32(m_SQLITE_UTF8) | libc.Int32FromInt32(m_SQLITE_FUNC_CONSTANT)),
-		FzName:     __ccgo_ts + 10996,
+		FzName:     __ccgo_ts + 11016,
 	},
 	3: {
 		FnArg:      int8(3),
 		FfuncFlags: uint32(libc.Int32FromInt32(m_SQLITE_FUNC_BUILTIN) | libc.Int32FromInt32(m_SQLITE_FUNC_INTERNAL) | libc.Int32FromInt32(m_SQLITE_UTF8) | libc.Int32FromInt32(m_SQLITE_FUNC_CONSTANT)),
-		FzName:     __ccgo_ts + 11015,
+		FzName:     __ccgo_ts + 11035,
 	},
 	4: {
 		FnArg:      int8(2),
 		FfuncFlags: uint32(libc.Int32FromInt32(m_SQLITE_FUNC_BUILTIN) | libc.Int32FromInt32(m_SQLITE_FUNC_INTERNAL) | libc.Int32FromInt32(m_SQLITE_UTF8) | libc.Int32FromInt32(m_SQLITE_FUNC_CONSTANT)),
-		FzName:     __ccgo_ts + 11034,
+		FzName:     __ccgo_ts + 11054,
 	},
 }
 
@@ -87007,7 +87007,7 @@ func _openStatTable(tls *libc.TLS, pParse uintptr, iDb int32, iStatCur int32, zW
 				 ** side-effect of the CREATE TABLE statement is to leave the rootpage
 				 ** of the new table in register pParse->regRoot. This is important
 				 ** because the OpenWrite opcode below will be needing it. */
-				_sqlite3NestedParse(tls, pParse, __ccgo_ts+11137, libc.VaList(bp+8, (*TDb)(unsafe.Pointer(pDb)).FzDbSName, zTab, _aTable[i].FzCols))
+				_sqlite3NestedParse(tls, pParse, __ccgo_ts+11157, libc.VaList(bp+8, (*TDb)(unsafe.Pointer(pDb)).FzDbSName, zTab, _aTable[i].FzCols))
 				aRoot[i] = uint32((*TParse)(unsafe.Pointer(pParse)).FregRoot)
 				aCreateTbl[i] = uint8(m_OPFLAG_P2ISREG)
 			}
@@ -87018,10 +87018,10 @@ func _openStatTable(tls *libc.TLS, pParse uintptr, iDb int32, iStatCur int32, zW
 			aRoot[i] = (*TTable)(unsafe.Pointer(pStat)).Ftnum
 			_sqlite3TableLock(tls, pParse, iDb, aRoot[i], uint8(1), zTab)
 			if zWhere != 0 {
-				_sqlite3NestedParse(tls, pParse, __ccgo_ts+11160, libc.VaList(bp+8, (*TDb)(unsafe.Pointer(pDb)).FzDbSName, zTab, zWhereType, zWhere))
+				_sqlite3NestedParse(tls, pParse, __ccgo_ts+11180, libc.VaList(bp+8, (*TDb)(unsafe.Pointer(pDb)).FzDbSName, zTab, zWhereType, zWhere))
 			} else {
 				if (*Tsqlite3)(unsafe.Pointer(db)).FxPreUpdateCallback != 0 {
-					_sqlite3NestedParse(tls, pParse, __ccgo_ts+11190, libc.VaList(bp+8, (*TDb)(unsafe.Pointer(pDb)).FzDbSName, zTab))
+					_sqlite3NestedParse(tls, pParse, __ccgo_ts+11210, libc.VaList(bp+8, (*TDb)(unsafe.Pointer(pDb)).FzDbSName, zTab))
 				} else {
 					/* The sqlite_stat[134] table already exists.  Delete all rows. */
 					_sqlite3VdbeAddOp2(tls, v, int32(m_OP_Clear), int32(aRoot[i]), iDb)
@@ -87052,15 +87052,15 @@ var _aTable = [3]struct {
 	FzCols uintptr
 }{
 	0: {
-		FzName: __ccgo_ts + 11057,
-		FzCols: __ccgo_ts + 11070,
+		FzName: __ccgo_ts + 11077,
+		FzCols: __ccgo_ts + 11090,
 	},
 	1: {
-		FzName: __ccgo_ts + 11083,
-		FzCols: __ccgo_ts + 11096,
+		FzName: __ccgo_ts + 11103,
+		FzCols: __ccgo_ts + 11116,
 	},
 	2: {
-		FzName: __ccgo_ts + 11124,
+		FzName: __ccgo_ts + 11144,
 	},
 }
 
@@ -87356,7 +87356,7 @@ func _statInit(tls *libc.TLS, context uintptr, argc int32, argv uintptr) {
 var _statInitFuncdef = TFuncDef{
 	FnArg:      int8(4),
 	FfuncFlags: uint32(m_SQLITE_UTF8),
-	FzName:     __ccgo_ts + 11208,
+	FzName:     __ccgo_ts + 11228,
 }
 
 func init() {
@@ -87728,7 +87728,7 @@ func _statPush(tls *libc.TLS, context uintptr, argc int32, argv uintptr) {
 var _statPushFuncdef = TFuncDef{
 	FnArg:      int8(libc.Int32FromInt32(2) + libc.Int32FromInt32(m_IsStat4)),
 	FfuncFlags: uint32(m_SQLITE_UTF8),
-	FzName:     __ccgo_ts + 11218,
+	FzName:     __ccgo_ts + 11238,
 }
 
 func init() {
@@ -87781,7 +87781,7 @@ func _statGet(tls *libc.TLS, context uintptr, argc int32, argv uintptr) {
 		} else {
 			v1 = uint64((*TStatAccum)(unsafe.Pointer(p)).FnRow)
 		}
-		Xsqlite3_str_appendf(tls, bp, __ccgo_ts+11228, libc.VaList(bp+72, v1))
+		Xsqlite3_str_appendf(tls, bp, __ccgo_ts+11248, libc.VaList(bp+72, v1))
 		i = 0
 		for {
 			if !(i < (*TStatAccum)(unsafe.Pointer(p)).FnKeyCol) {
@@ -87789,7 +87789,7 @@ func _statGet(tls *libc.TLS, context uintptr, argc int32, argv uintptr) {
 			}
 			nDistinct = uint64(*(*TtRowcnt)(unsafe.Pointer((*TStatAccum)(unsafe.Pointer(p)).Fcurrent.FanDLt + uintptr(i)*4)) + uint32(1))
 			iVal = (uint64((*TStatAccum)(unsafe.Pointer(p)).FnRow) + nDistinct - uint64(1)) / nDistinct
-			Xsqlite3_str_appendf(tls, bp, __ccgo_ts+11233, libc.VaList(bp+72, iVal))
+			Xsqlite3_str_appendf(tls, bp, __ccgo_ts+11253, libc.VaList(bp+72, iVal))
 			_ = libc.Int32FromInt32(0)
 			goto _2
 		_2:
@@ -87829,7 +87829,7 @@ func _statGet(tls *libc.TLS, context uintptr, argc int32, argv uintptr) {
 				if !(i1 < (*TStatAccum)(unsafe.Pointer(p)).FnCol) {
 					break
 				}
-				Xsqlite3_str_appendf(tls, bp+32, __ccgo_ts+11239, libc.VaList(bp+72, uint64(*(*TtRowcnt)(unsafe.Pointer(aCnt + uintptr(i1)*4)))))
+				Xsqlite3_str_appendf(tls, bp+32, __ccgo_ts+11259, libc.VaList(bp+72, uint64(*(*TtRowcnt)(unsafe.Pointer(aCnt + uintptr(i1)*4)))))
 				goto _3
 			_3:
 				i1++
@@ -87846,7 +87846,7 @@ func _statGet(tls *libc.TLS, context uintptr, argc int32, argv uintptr) {
 var _statGetFuncdef = TFuncDef{
 	FnArg:      int8(libc.Int32FromInt32(1) + libc.Int32FromInt32(m_IsStat4)),
 	FfuncFlags: uint32(m_SQLITE_UTF8),
-	FzName:     __ccgo_ts + 11245,
+	FzName:     __ccgo_ts + 11265,
 }
 
 func init() {
@@ -87917,7 +87917,7 @@ func _analyzeOneTable(tls *libc.TLS, pParse uintptr, pTab uintptr, pOnlyIdx uint
 		/* Do not gather statistics on views or virtual tables */
 		return
 	}
-	if Xsqlite3_strlike(tls, __ccgo_ts+11254, (*TTable)(unsafe.Pointer(pTab)).FzName, uint32('\\')) == 0 {
+	if Xsqlite3_strlike(tls, __ccgo_ts+11274, (*TTable)(unsafe.Pointer(pTab)).FzName, uint32('\\')) == 0 {
 		/* Do not gather statistics on system tables */
 		return
 	}
@@ -87934,7 +87934,7 @@ func _analyzeOneTable(tls *libc.TLS, pParse uintptr, pTab uintptr, pOnlyIdx uint
 			return
 		}
 		(*TTable)(unsafe.Pointer(pStat1)).FzName = pStat1 + 1*104
-		libc.Xmemcpy(tls, (*TTable)(unsafe.Pointer(pStat1)).FzName, __ccgo_ts+11057, uint64(13))
+		libc.Xmemcpy(tls, (*TTable)(unsafe.Pointer(pStat1)).FzName, __ccgo_ts+11077, uint64(13))
 		(*TTable)(unsafe.Pointer(pStat1)).FnCol = int16(3)
 		(*TTable)(unsafe.Pointer(pStat1)).FiPKey = int16(-int32(1))
 		_sqlite3VdbeAddOp4(tls, (*TParse)(unsafe.Pointer(pParse)).FpVdbe, int32(m_OP_Noop), 0, 0, 0, pStat1, -int32(17))
@@ -88168,7 +88168,7 @@ func _analyzeOneTable(tls *libc.TLS, pParse uintptr, pTab uintptr, pOnlyIdx uint
 		/* Add the entry to the stat1 table. */
 		_callStatGet(tls, pParse, regStat, m_STAT_GET_STAT1, regStat1)
 		_ = libc.Int32FromInt32(0)
-		_sqlite3VdbeAddOp4(tls, v, int32(m_OP_MakeRecord), regTabname, int32(3), regTemp, __ccgo_ts+11264, 0)
+		_sqlite3VdbeAddOp4(tls, v, int32(m_OP_MakeRecord), regTabname, int32(3), regTemp, __ccgo_ts+11284, 0)
 		_sqlite3VdbeAddOp2(tls, v, int32(m_OP_NewRowid), iStatCur, regNewRowid)
 		_sqlite3VdbeAddOp3(tls, v, int32(m_OP_Insert), iStatCur, regTemp, regNewRowid)
 		_sqlite3VdbeChangeP4(tls, v, -int32(1), pStat1, -int32(6))
@@ -88231,7 +88231,7 @@ func _analyzeOneTable(tls *libc.TLS, pParse uintptr, pTab uintptr, pOnlyIdx uint
 		jZeroRows = _sqlite3VdbeAddOp1(tls, v, int32(m_OP_IfNot), regStat1)
 		_sqlite3VdbeAddOp2(tls, v, int32(m_OP_Null), 0, regIdxname)
 		_ = libc.Int32FromInt32(0)
-		_sqlite3VdbeAddOp4(tls, v, int32(m_OP_MakeRecord), regTabname, int32(3), regTemp, __ccgo_ts+11264, 0)
+		_sqlite3VdbeAddOp4(tls, v, int32(m_OP_MakeRecord), regTabname, int32(3), regTemp, __ccgo_ts+11284, 0)
 		_sqlite3VdbeAddOp2(tls, v, int32(m_OP_NewRowid), iStatCur, regNewRowid)
 		_sqlite3VdbeAddOp3(tls, v, int32(m_OP_Insert), iStatCur, regTemp, regNewRowid)
 		_sqlite3VdbeChangeP5(tls, v, uint16(m_OPFLAG_APPEND))
@@ -88304,9 +88304,9 @@ func _analyzeTable(tls *libc.TLS, pParse uintptr, pTab uintptr, pOnlyIdx uintptr
 	iStatCur = (*TParse)(unsafe.Pointer(pParse)).FnTab
 	*(*int32)(unsafe.Pointer(pParse + 52)) += int32(3)
 	if pOnlyIdx != 0 {
-		_openStatTable(tls, pParse, iDb, iStatCur, (*TIndex)(unsafe.Pointer(pOnlyIdx)).FzName, __ccgo_ts+11268)
+		_openStatTable(tls, pParse, iDb, iStatCur, (*TIndex)(unsafe.Pointer(pOnlyIdx)).FzName, __ccgo_ts+11288)
 	} else {
-		_openStatTable(tls, pParse, iDb, iStatCur, (*TTable)(unsafe.Pointer(pTab)).FzName, __ccgo_ts+11272)
+		_openStatTable(tls, pParse, iDb, iStatCur, (*TTable)(unsafe.Pointer(pTab)).FzName, __ccgo_ts+11292)
 	}
 	_analyzeOneTable(tls, pParse, pTab, pOnlyIdx, iStatCur, (*TParse)(unsafe.Pointer(pParse)).FnMem+int32(1), (*TParse)(unsafe.Pointer(pParse)).FnTab)
 	_loadAnalysis(tls, pParse, iDb)
@@ -88432,7 +88432,7 @@ func _decodeIntArray(tls *libc.TLS, zIntArray uintptr, nOut int32, aOut uintptr,
 	_, _, _, _, _, _ = c, i, sz, v, z, v2
 	z = zIntArray
 	if z == uintptr(0) {
-		z = __ccgo_ts + 1511
+		z = __ccgo_ts + 1531
 	}
 	i = 0
 	for {
@@ -88466,17 +88466,17 @@ func _decodeIntArray(tls *libc.TLS, zIntArray uintptr, nOut int32, aOut uintptr,
 		libc.SetBitFieldPtr16Uint32(pIndex+100, libc.Uint32FromInt32(0), 2, 0x4)
 		libc.SetBitFieldPtr16Uint32(pIndex+100, libc.Uint32FromInt32(0), 6, 0x40)
 		for *(*uint8)(unsafe.Pointer(z)) != 0 {
-			if Xsqlite3_strglob(tls, __ccgo_ts+11276, z) == 0 {
+			if Xsqlite3_strglob(tls, __ccgo_ts+11296, z) == 0 {
 				libc.SetBitFieldPtr16Uint32(pIndex+100, libc.Uint32FromInt32(1), 2, 0x4)
 			} else {
-				if Xsqlite3_strglob(tls, __ccgo_ts+11287, z) == 0 {
+				if Xsqlite3_strglob(tls, __ccgo_ts+11307, z) == 0 {
 					sz = _sqlite3Atoi(tls, z+uintptr(3))
 					if sz < int32(2) {
 						sz = int32(2)
 					}
 					(*TIndex)(unsafe.Pointer(pIndex)).FszIdxRow = _sqlite3LogEst(tls, uint64(sz))
 				} else {
-					if Xsqlite3_strglob(tls, __ccgo_ts+11297, z) == 0 {
+					if Xsqlite3_strglob(tls, __ccgo_ts+11317, z) == 0 {
 						libc.SetBitFieldPtr16Uint32(pIndex+100, libc.Uint32FromInt32(1), 6, 0x40)
 					}
 				}
@@ -88834,10 +88834,10 @@ func _loadStat4(tls *libc.TLS, db uintptr, zDb uintptr) (r int32) {
 	_, _, _ = pStat4, rc, v1
 	rc = m_SQLITE_OK
 	_ = libc.Int32FromInt32(0)
-	v1 = _sqlite3FindTable(tls, db, __ccgo_ts+11083, zDb)
+	v1 = _sqlite3FindTable(tls, db, __ccgo_ts+11103, zDb)
 	pStat4 = v1
 	if v1 != uintptr(0) && int32((*TTable)(unsafe.Pointer(pStat4)).FeTabType) == m_TABTYP_NORM {
-		rc = _loadStatTbl(tls, db, __ccgo_ts+11309, __ccgo_ts+11363, zDb)
+		rc = _loadStatTbl(tls, db, __ccgo_ts+11329, __ccgo_ts+11383, zDb)
 	}
 	return rc
 }
@@ -88904,10 +88904,10 @@ func _sqlite3AnalysisLoad(tls *libc.TLS, db uintptr, iDb int32) (r int32) {
 	/* Load new statistics out of the sqlite_stat1 table */
 	(*(*TanalysisInfo)(unsafe.Pointer(bp))).Fdb = db
 	(*(*TanalysisInfo)(unsafe.Pointer(bp))).FzDatabase = (*(*TDb)(unsafe.Pointer((*Tsqlite3)(unsafe.Pointer(db)).FaDb + uintptr(iDb)*32))).FzDbSName
-	v3 = _sqlite3FindTable(tls, db, __ccgo_ts+11057, (*(*TanalysisInfo)(unsafe.Pointer(bp))).FzDatabase)
+	v3 = _sqlite3FindTable(tls, db, __ccgo_ts+11077, (*(*TanalysisInfo)(unsafe.Pointer(bp))).FzDatabase)
 	pStat1 = v3
 	if v3 != 0 && int32((*TTable)(unsafe.Pointer(pStat1)).FeTabType) == m_TABTYP_NORM {
-		zSql = _sqlite3MPrintf(tls, db, __ccgo_ts+11415, libc.VaList(bp+24, (*(*TanalysisInfo)(unsafe.Pointer(bp))).FzDatabase))
+		zSql = _sqlite3MPrintf(tls, db, __ccgo_ts+11435, libc.VaList(bp+24, (*(*TanalysisInfo)(unsafe.Pointer(bp))).FzDatabase))
 		if zSql == uintptr(0) {
 			rc = int32(m_SQLITE_NOMEM)
 		} else {
@@ -89019,7 +89019,7 @@ func _resolveAttachExpr(tls *libc.TLS, pName uintptr, pExpr uintptr) (r int32) {
 //	** database iDb attached to handle db.
 //	*/
 func _sqlite3DbIsNamed(tls *libc.TLS, db uintptr, iDb int32, zName uintptr) (r int32) {
-	return libc.BoolInt32(_sqlite3StrICmp(tls, (*(*TDb)(unsafe.Pointer((*Tsqlite3)(unsafe.Pointer(db)).FaDb + uintptr(iDb)*32))).FzDbSName, zName) == 0 || iDb == 0 && _sqlite3StrICmp(tls, __ccgo_ts+6255, zName) == 0)
+	return libc.BoolInt32(_sqlite3StrICmp(tls, (*(*TDb)(unsafe.Pointer((*Tsqlite3)(unsafe.Pointer(db)).FaDb + uintptr(iDb)*32))).FzDbSName, zName) == 0 || iDb == 0 && _sqlite3StrICmp(tls, __ccgo_ts+6275, zName) == 0)
 }
 
 // C documentation
@@ -89059,16 +89059,16 @@ func _attachFunc(tls *libc.TLS, context uintptr, NotUsed int32, argv uintptr) {
 	zFile = Xsqlite3_value_text(tls, *(*uintptr)(unsafe.Pointer(argv)))
 	zName = Xsqlite3_value_text(tls, *(*uintptr)(unsafe.Pointer(argv + 1*8)))
 	if zFile == uintptr(0) {
-		zFile = __ccgo_ts + 1511
+		zFile = __ccgo_ts + 1531
 	}
 	if zName == uintptr(0) {
-		zName = __ccgo_ts + 1511
+		zName = __ccgo_ts + 1531
 	}
 	if int32(uint32(*(*uint8)(unsafe.Pointer(db + 192 + 8))&0x4>>2)) != 0 {
 		/* This is not a real ATTACH.  Instead, this routine is being called
 		 ** from sqlite3_deserialize() to close database db->init.iDb and
 		 ** reopen it as a MemDB */
-		*(*uintptr)(unsafe.Pointer(bp + 32)) = Xsqlite3_vfs_find(tls, __ccgo_ts+3732)
+		*(*uintptr)(unsafe.Pointer(bp + 32)) = Xsqlite3_vfs_find(tls, __ccgo_ts+3752)
 		if *(*uintptr)(unsafe.Pointer(bp + 32)) == uintptr(0) {
 			return
 		}
@@ -89078,7 +89078,7 @@ func _attachFunc(tls *libc.TLS, context uintptr, NotUsed int32, argv uintptr) {
 		}
 		(*TDb)(unsafe.Pointer(pNew)).FpBt = uintptr(0)
 		(*TDb)(unsafe.Pointer(pNew)).FpSchema = uintptr(0)
-		rc = _sqlite3BtreeOpen(tls, *(*uintptr)(unsafe.Pointer(bp + 32)), __ccgo_ts+11456, db, pNew+8, 0, int32(m_SQLITE_OPEN_MAIN_DB))
+		rc = _sqlite3BtreeOpen(tls, *(*uintptr)(unsafe.Pointer(bp + 32)), __ccgo_ts+11476, db, pNew+8, 0, int32(m_SQLITE_OPEN_MAIN_DB))
 	} else {
 		/* This is a real ATTACH
 		 **
@@ -89089,7 +89089,7 @@ func _attachFunc(tls *libc.TLS, context uintptr, NotUsed int32, argv uintptr) {
 		 **     * Specified database name already being used.
 		 */
 		if (*Tsqlite3)(unsafe.Pointer(db)).FnDb >= *(*int32)(unsafe.Pointer(db + 136 + 7*4))+int32(2) {
-			*(*uintptr)(unsafe.Pointer(bp + 24)) = _sqlite3MPrintf(tls, db, __ccgo_ts+11459, libc.VaList(bp+48, *(*int32)(unsafe.Pointer(db + 136 + 7*4))))
+			*(*uintptr)(unsafe.Pointer(bp + 24)) = _sqlite3MPrintf(tls, db, __ccgo_ts+11479, libc.VaList(bp+48, *(*int32)(unsafe.Pointer(db + 136 + 7*4))))
 			goto attach_error
 		}
 		i = 0
@@ -89099,7 +89099,7 @@ func _attachFunc(tls *libc.TLS, context uintptr, NotUsed int32, argv uintptr) {
 			}
 			_ = libc.Int32FromInt32(0)
 			if _sqlite3DbIsNamed(tls, db, i, zName) != 0 {
-				*(*uintptr)(unsafe.Pointer(bp + 24)) = _sqlite3MPrintf(tls, db, __ccgo_ts+11496, libc.VaList(bp+48, zName))
+				*(*uintptr)(unsafe.Pointer(bp + 24)) = _sqlite3MPrintf(tls, db, __ccgo_ts+11516, libc.VaList(bp+48, zName))
 				goto attach_error
 			}
 			goto _1
@@ -89147,7 +89147,7 @@ func _attachFunc(tls *libc.TLS, context uintptr, NotUsed int32, argv uintptr) {
 	(*Tsqlite3)(unsafe.Pointer(db)).FnoSharedCache = uint8(0)
 	if rc == int32(m_SQLITE_CONSTRAINT) {
 		rc = int32(m_SQLITE_ERROR)
-		*(*uintptr)(unsafe.Pointer(bp + 24)) = _sqlite3MPrintf(tls, db, __ccgo_ts+11526, 0)
+		*(*uintptr)(unsafe.Pointer(bp + 24)) = _sqlite3MPrintf(tls, db, __ccgo_ts+11546, 0)
 	} else {
 		if rc == m_SQLITE_OK {
 			(*TDb)(unsafe.Pointer(pNew)).FpSchema = _sqlite3SchemaGet(tls, db, (*TDb)(unsafe.Pointer(pNew)).FpBt)
@@ -89155,7 +89155,7 @@ func _attachFunc(tls *libc.TLS, context uintptr, NotUsed int32, argv uintptr) {
 				rc = int32(m_SQLITE_NOMEM)
 			} else {
 				if (*TSchema)(unsafe.Pointer((*TDb)(unsafe.Pointer(pNew)).FpSchema)).Ffile_format != 0 && int32((*TSchema)(unsafe.Pointer((*TDb)(unsafe.Pointer(pNew)).FpSchema)).Fenc) != int32((*Tsqlite3)(unsafe.Pointer(db)).Fenc) {
-					*(*uintptr)(unsafe.Pointer(bp + 24)) = _sqlite3MPrintf(tls, db, __ccgo_ts+11555, 0)
+					*(*uintptr)(unsafe.Pointer(bp + 24)) = _sqlite3MPrintf(tls, db, __ccgo_ts+11575, 0)
 					rc = int32(m_SQLITE_ERROR)
 				}
 			}
@@ -89201,10 +89201,10 @@ func _attachFunc(tls *libc.TLS, context uintptr, NotUsed int32, argv uintptr) {
 			if rc == int32(m_SQLITE_NOMEM) || rc == libc.Int32FromInt32(m_SQLITE_IOERR)|libc.Int32FromInt32(12)<<libc.Int32FromInt32(8) {
 				_sqlite3OomFault(tls, db)
 				_sqlite3DbFree(tls, db, *(*uintptr)(unsafe.Pointer(bp + 24)))
-				*(*uintptr)(unsafe.Pointer(bp + 24)) = _sqlite3MPrintf(tls, db, __ccgo_ts+6012, 0)
+				*(*uintptr)(unsafe.Pointer(bp + 24)) = _sqlite3MPrintf(tls, db, __ccgo_ts+6032, 0)
 			} else {
 				if *(*uintptr)(unsafe.Pointer(bp + 24)) == uintptr(0) {
-					*(*uintptr)(unsafe.Pointer(bp + 24)) = _sqlite3MPrintf(tls, db, __ccgo_ts+11623, libc.VaList(bp+48, zFile))
+					*(*uintptr)(unsafe.Pointer(bp + 24)) = _sqlite3MPrintf(tls, db, __ccgo_ts+11643, libc.VaList(bp+48, zFile))
 				}
 			}
 		}
@@ -89244,7 +89244,7 @@ func _detachFunc(tls *libc.TLS, context uintptr, NotUsed int32, argv uintptr) {
 	pDb = uintptr(0)
 	_ = NotUsed
 	if zName == uintptr(0) {
-		zName = __ccgo_ts + 1511
+		zName = __ccgo_ts + 1531
 	}
 	i = 0
 	for {
@@ -89263,15 +89263,15 @@ func _detachFunc(tls *libc.TLS, context uintptr, NotUsed int32, argv uintptr) {
 		i++
 	}
 	if i >= (*Tsqlite3)(unsafe.Pointer(db)).FnDb {
-		Xsqlite3_snprintf(tls, int32(128), bp, __ccgo_ts+11651, libc.VaList(bp+136, zName))
+		Xsqlite3_snprintf(tls, int32(128), bp, __ccgo_ts+11671, libc.VaList(bp+136, zName))
 		goto detach_error
 	}
 	if i < int32(2) {
-		Xsqlite3_snprintf(tls, int32(128), bp, __ccgo_ts+11672, libc.VaList(bp+136, zName))
+		Xsqlite3_snprintf(tls, int32(128), bp, __ccgo_ts+11692, libc.VaList(bp+136, zName))
 		goto detach_error
 	}
 	if _sqlite3BtreeTxnState(tls, (*TDb)(unsafe.Pointer(pDb)).FpBt) != m_SQLITE_TXN_NONE || _sqlite3BtreeIsInBackup(tls, (*TDb)(unsafe.Pointer(pDb)).FpBt) != 0 {
-		Xsqlite3_snprintf(tls, int32(128), bp, __ccgo_ts+11698, libc.VaList(bp+136, zName))
+		Xsqlite3_snprintf(tls, int32(128), bp, __ccgo_ts+11718, libc.VaList(bp+136, zName))
 		goto detach_error
 	}
 	/* If any TEMP triggers reference the schema being detached, move those
@@ -89362,7 +89362,7 @@ func _sqlite3Detach(tls *libc.TLS, pParse uintptr, pDbname uintptr) {
 var _detach_func = TFuncDef{
 	FnArg:      int8(1),
 	FfuncFlags: uint32(m_SQLITE_UTF8),
-	FzName:     __ccgo_ts + 11720,
+	FzName:     __ccgo_ts + 11740,
 }
 
 func init() {
@@ -89384,7 +89384,7 @@ func _sqlite3Attach(tls *libc.TLS, pParse uintptr, p uintptr, pDbname uintptr, p
 var _attach_func = TFuncDef{
 	FnArg:      int8(3),
 	FfuncFlags: uint32(m_SQLITE_UTF8),
-	FzName:     __ccgo_ts + 11734,
+	FzName:     __ccgo_ts + 11754,
 }
 
 func init() {
@@ -89410,7 +89410,7 @@ func _fixExprCb(tls *libc.TLS, p uintptr, pExpr uintptr) (r int32) {
 		if (*Tsqlite3)(unsafe.Pointer((*TParse)(unsafe.Pointer((*TDbFixer)(unsafe.Pointer(pFix)).FpParse)).Fdb)).Finit1.Fbusy != 0 {
 			(*TExpr)(unsafe.Pointer(pExpr)).Fop = uint8(m_TK_NULL)
 		} else {
-			_sqlite3ErrorMsg(tls, (*TDbFixer)(unsafe.Pointer(pFix)).FpParse, __ccgo_ts+11748, libc.VaList(bp+8, (*TDbFixer)(unsafe.Pointer(pFix)).FzType))
+			_sqlite3ErrorMsg(tls, (*TDbFixer)(unsafe.Pointer(pFix)).FpParse, __ccgo_ts+11768, libc.VaList(bp+8, (*TDbFixer)(unsafe.Pointer(pFix)).FzType))
 			return int32(m_WRC_Abort)
 		}
 	}
@@ -89444,7 +89444,7 @@ func _fixSelectCb(tls *libc.TLS, p uintptr, pSelect uintptr) (r int32) {
 		if int32((*TDbFixer)(unsafe.Pointer(pFix)).FbTemp) == 0 {
 			if (*TSrcItem)(unsafe.Pointer(pItem)).FzDatabase != 0 {
 				if iDb != _sqlite3FindDbName(tls, db, (*TSrcItem)(unsafe.Pointer(pItem)).FzDatabase) {
-					_sqlite3ErrorMsg(tls, (*TDbFixer)(unsafe.Pointer(pFix)).FpParse, __ccgo_ts+11772, libc.VaList(bp+8, (*TDbFixer)(unsafe.Pointer(pFix)).FzType, (*TDbFixer)(unsafe.Pointer(pFix)).FpName, (*TSrcItem)(unsafe.Pointer(pItem)).FzDatabase))
+					_sqlite3ErrorMsg(tls, (*TDbFixer)(unsafe.Pointer(pFix)).FpParse, __ccgo_ts+11792, libc.VaList(bp+8, (*TDbFixer)(unsafe.Pointer(pFix)).FzType, (*TDbFixer)(unsafe.Pointer(pFix)).FpName, (*TSrcItem)(unsafe.Pointer(pItem)).FzDatabase))
 					return int32(m_WRC_Abort)
 				}
 				_sqlite3DbFree(tls, db, (*TSrcItem)(unsafe.Pointer(pItem)).FzDatabase)
@@ -89658,7 +89658,7 @@ func Xsqlite3_set_authorizer(tls *libc.TLS, db uintptr, xAuth uintptr, pArg uint
 //	** user-supplied authorization function returned an illegal value.
 //	*/
 func _sqliteAuthBadReturnCode(tls *libc.TLS, pParse uintptr) {
-	_sqlite3ErrorMsg(tls, pParse, __ccgo_ts+11818, 0)
+	_sqlite3ErrorMsg(tls, pParse, __ccgo_ts+11838, 0)
 	(*TParse)(unsafe.Pointer(pParse)).Frc = int32(m_SQLITE_ERROR)
 }
 
@@ -89686,11 +89686,11 @@ func _sqlite3AuthReadCol(tls *libc.TLS, pParse uintptr, zTab uintptr, zCol uintp
 	}
 	rc = (*(*func(*libc.TLS, uintptr, int32, uintptr, uintptr, uintptr, uintptr) int32)(unsafe.Pointer(&struct{ uintptr }{(*Tsqlite3)(unsafe.Pointer(db)).FxAuth})))(tls, (*Tsqlite3)(unsafe.Pointer(db)).FpAuthArg, int32(m_SQLITE_READ), zTab, zCol, zDb, (*TParse)(unsafe.Pointer(pParse)).FzAuthContext)
 	if rc == int32(m_SQLITE_DENY) {
-		z = Xsqlite3_mprintf(tls, __ccgo_ts+11841, libc.VaList(bp+8, zTab, zCol))
+		z = Xsqlite3_mprintf(tls, __ccgo_ts+11861, libc.VaList(bp+8, zTab, zCol))
 		if (*Tsqlite3)(unsafe.Pointer(db)).FnDb > int32(2) || iDb != 0 {
-			z = Xsqlite3_mprintf(tls, __ccgo_ts+11847, libc.VaList(bp+8, zDb, z))
+			z = Xsqlite3_mprintf(tls, __ccgo_ts+11867, libc.VaList(bp+8, zDb, z))
 		}
-		_sqlite3ErrorMsg(tls, pParse, __ccgo_ts+11853, libc.VaList(bp+8, z))
+		_sqlite3ErrorMsg(tls, pParse, __ccgo_ts+11873, libc.VaList(bp+8, z))
 		(*TParse)(unsafe.Pointer(pParse)).Frc = int32(m_SQLITE_AUTH)
 	} else {
 		if rc != int32(m_SQLITE_IGNORE) && rc != m_SQLITE_OK {
@@ -89755,7 +89755,7 @@ func _sqlite3AuthRead(tls *libc.TLS, pParse uintptr, pExpr uintptr, pSchema uint
 			_ = libc.Int32FromInt32(0)
 			zCol = (*(*TColumn)(unsafe.Pointer((*TTable)(unsafe.Pointer(pTab)).FaCol + uintptr((*TTable)(unsafe.Pointer(pTab)).FiPKey)*16))).FzCnName
 		} else {
-			zCol = __ccgo_ts + 7531
+			zCol = __ccgo_ts + 7551
 		}
 	}
 	_ = libc.Int32FromInt32(0)
@@ -89792,7 +89792,7 @@ func _sqlite3AuthCheck(tls *libc.TLS, pParse uintptr, code int32, zArg1 uintptr,
 	 ** parameters can be either NULL or a string. */
 	rc = (*(*func(*libc.TLS, uintptr, int32, uintptr, uintptr, uintptr, uintptr) int32)(unsafe.Pointer(&struct{ uintptr }{(*Tsqlite3)(unsafe.Pointer(db)).FxAuth})))(tls, (*Tsqlite3)(unsafe.Pointer(db)).FpAuthArg, code, zArg1, zArg2, zArg3, (*TParse)(unsafe.Pointer(pParse)).FzAuthContext)
 	if rc == int32(m_SQLITE_DENY) {
-		_sqlite3ErrorMsg(tls, pParse, __ccgo_ts+11880, 0)
+		_sqlite3ErrorMsg(tls, pParse, __ccgo_ts+11900, 0)
 		(*TParse)(unsafe.Pointer(pParse)).Frc = int32(m_SQLITE_AUTH)
 	} else {
 		if rc != m_SQLITE_OK && rc != int32(m_SQLITE_IGNORE) {
@@ -90220,21 +90220,21 @@ func _sqlite3FindTable(tls *libc.TLS, db uintptr, zName uintptr, zDatabase uintp
 		if i >= (*Tsqlite3)(unsafe.Pointer(db)).FnDb {
 			/* No match against the official names.  But always match "main"
 			 ** to schema 0 as a legacy fallback. */
-			if _sqlite3StrICmp(tls, zDatabase, __ccgo_ts+6255) == 0 {
+			if _sqlite3StrICmp(tls, zDatabase, __ccgo_ts+6275) == 0 {
 				i = 0
 			} else {
 				return uintptr(0)
 			}
 		}
 		p = _sqlite3HashFind(tls, (*(*TDb)(unsafe.Pointer((*Tsqlite3)(unsafe.Pointer(db)).FaDb + uintptr(i)*32))).FpSchema+8, zName)
-		if p == uintptr(0) && Xsqlite3_strnicmp(tls, zName, __ccgo_ts+7939, int32(7)) == 0 {
+		if p == uintptr(0) && Xsqlite3_strnicmp(tls, zName, __ccgo_ts+7959, int32(7)) == 0 {
 			if i == int32(1) {
-				if _sqlite3StrICmp(tls, zName+uintptr(7), __ccgo_ts+11895+7) == 0 || _sqlite3StrICmp(tls, zName+uintptr(7), __ccgo_ts+11914+7) == 0 || _sqlite3StrICmp(tls, zName+uintptr(7), __ccgo_ts+5787+7) == 0 {
-					p = _sqlite3HashFind(tls, (*(*TDb)(unsafe.Pointer((*Tsqlite3)(unsafe.Pointer(db)).FaDb + 1*32))).FpSchema+8, __ccgo_ts+11928)
+				if _sqlite3StrICmp(tls, zName+uintptr(7), __ccgo_ts+11915+7) == 0 || _sqlite3StrICmp(tls, zName+uintptr(7), __ccgo_ts+11934+7) == 0 || _sqlite3StrICmp(tls, zName+uintptr(7), __ccgo_ts+5807+7) == 0 {
+					p = _sqlite3HashFind(tls, (*(*TDb)(unsafe.Pointer((*Tsqlite3)(unsafe.Pointer(db)).FaDb + 1*32))).FpSchema+8, __ccgo_ts+11948)
 				}
 			} else {
-				if _sqlite3StrICmp(tls, zName+uintptr(7), __ccgo_ts+11914+7) == 0 {
-					p = _sqlite3HashFind(tls, (*(*TDb)(unsafe.Pointer((*Tsqlite3)(unsafe.Pointer(db)).FaDb + uintptr(i)*32))).FpSchema+8, __ccgo_ts+5787)
+				if _sqlite3StrICmp(tls, zName+uintptr(7), __ccgo_ts+11934+7) == 0 {
+					p = _sqlite3HashFind(tls, (*(*TDb)(unsafe.Pointer((*Tsqlite3)(unsafe.Pointer(db)).FaDb + uintptr(i)*32))).FpSchema+8, __ccgo_ts+5807)
 				}
 			}
 		}
@@ -90264,12 +90264,12 @@ func _sqlite3FindTable(tls *libc.TLS, db uintptr, zName uintptr, zDatabase uintp
 		_2:
 			i++
 		}
-		if p == uintptr(0) && Xsqlite3_strnicmp(tls, zName, __ccgo_ts+7939, int32(7)) == 0 {
-			if _sqlite3StrICmp(tls, zName+uintptr(7), __ccgo_ts+11914+7) == 0 {
-				p = _sqlite3HashFind(tls, (*(*TDb)(unsafe.Pointer((*Tsqlite3)(unsafe.Pointer(db)).FaDb))).FpSchema+8, __ccgo_ts+5787)
+		if p == uintptr(0) && Xsqlite3_strnicmp(tls, zName, __ccgo_ts+7959, int32(7)) == 0 {
+			if _sqlite3StrICmp(tls, zName+uintptr(7), __ccgo_ts+11934+7) == 0 {
+				p = _sqlite3HashFind(tls, (*(*TDb)(unsafe.Pointer((*Tsqlite3)(unsafe.Pointer(db)).FaDb))).FpSchema+8, __ccgo_ts+5807)
 			} else {
-				if _sqlite3StrICmp(tls, zName+uintptr(7), __ccgo_ts+11895+7) == 0 {
-					p = _sqlite3HashFind(tls, (*(*TDb)(unsafe.Pointer((*Tsqlite3)(unsafe.Pointer(db)).FaDb + 1*32))).FpSchema+8, __ccgo_ts+11928)
+				if _sqlite3StrICmp(tls, zName+uintptr(7), __ccgo_ts+11915+7) == 0 {
+					p = _sqlite3HashFind(tls, (*(*TDb)(unsafe.Pointer((*Tsqlite3)(unsafe.Pointer(db)).FaDb + 1*32))).FpSchema+8, __ccgo_ts+11948)
 				}
 			}
 		}
@@ -90307,7 +90307,7 @@ func _sqlite3LocateTable(tls *libc.TLS, pParse uintptr, flags Tu32, zName uintpt
 		 ** can be an eponymous virtual table. */
 		if int32((*TParse)(unsafe.Pointer(pParse)).FdisableVtab) == 0 && int32((*Tsqlite3)(unsafe.Pointer(db)).Finit1.Fbusy) == 0 {
 			pMod = _sqlite3HashFind(tls, db+568, zName)
-			if pMod == uintptr(0) && Xsqlite3_strnicmp(tls, zName, __ccgo_ts+11947, int32(7)) == 0 {
+			if pMod == uintptr(0) && Xsqlite3_strnicmp(tls, zName, __ccgo_ts+11967, int32(7)) == 0 {
 				pMod = _sqlite3PragmaVtabRegister(tls, db, zName)
 			}
 			if pMod != 0 && _sqlite3VtabEponymousTableInit(tls, pParse, pMod) != 0 {
@@ -90325,15 +90325,15 @@ func _sqlite3LocateTable(tls *libc.TLS, pParse uintptr, flags Tu32, zName uintpt
 	}
 	if p == uintptr(0) {
 		if flags&uint32(m_LOCATE_VIEW) != 0 {
-			v1 = __ccgo_ts + 11955
+			v1 = __ccgo_ts + 11975
 		} else {
-			v1 = __ccgo_ts + 11968
+			v1 = __ccgo_ts + 11988
 		}
 		zMsg = v1
 		if zDbase != 0 {
-			_sqlite3ErrorMsg(tls, pParse, __ccgo_ts+6448, libc.VaList(bp+8, zMsg, zDbase, zName))
+			_sqlite3ErrorMsg(tls, pParse, __ccgo_ts+6468, libc.VaList(bp+8, zMsg, zDbase, zName))
 		} else {
-			_sqlite3ErrorMsg(tls, pParse, __ccgo_ts+6458, libc.VaList(bp+8, zMsg, zName))
+			_sqlite3ErrorMsg(tls, pParse, __ccgo_ts+6478, libc.VaList(bp+8, zMsg, zName))
 		}
 	} else {
 		_ = libc.Int32FromInt32(0)
@@ -90373,12 +90373,12 @@ func _sqlite3LocateTableItem(tls *libc.TLS, pParse uintptr, flags Tu32, p uintpt
 //	** names into the new preferred names, as appropriate.
 //	*/
 func _sqlite3PreferredTableName(tls *libc.TLS, zName uintptr) (r uintptr) {
-	if Xsqlite3_strnicmp(tls, zName, __ccgo_ts+7939, int32(7)) == 0 {
-		if _sqlite3StrICmp(tls, zName+uintptr(7), __ccgo_ts+5787+7) == 0 {
-			return __ccgo_ts + 11914
+	if Xsqlite3_strnicmp(tls, zName, __ccgo_ts+7959, int32(7)) == 0 {
+		if _sqlite3StrICmp(tls, zName+uintptr(7), __ccgo_ts+5807+7) == 0 {
+			return __ccgo_ts + 11934
 		}
-		if _sqlite3StrICmp(tls, zName+uintptr(7), __ccgo_ts+11928+7) == 0 {
-			return __ccgo_ts + 11895
+		if _sqlite3StrICmp(tls, zName+uintptr(7), __ccgo_ts+11948+7) == 0 {
+			return __ccgo_ts + 11915
 		}
 	}
 	return zName
@@ -90912,7 +90912,7 @@ func _sqlite3OpenSchemaTable(tls *libc.TLS, p uintptr, iDb int32) {
 	var v uintptr
 	_ = v
 	v = _sqlite3GetVdbe(tls, p)
-	_sqlite3TableLock(tls, p, iDb, uint32(m_SCHEMA_ROOT), uint8(1), __ccgo_ts+5787)
+	_sqlite3TableLock(tls, p, iDb, uint32(m_SCHEMA_ROOT), uint8(1), __ccgo_ts+5807)
 	_sqlite3VdbeAddOp4Int(tls, v, int32(m_OP_OpenWrite), 0, int32(m_SCHEMA_ROOT), iDb, int32(5))
 	if (*TParse)(unsafe.Pointer(p)).FnTab == 0 {
 		(*TParse)(unsafe.Pointer(p)).FnTab = int32(1)
@@ -90944,7 +90944,7 @@ func _sqlite3FindDbName(tls *libc.TLS, db uintptr, zName uintptr) (r int32) {
 			}
 			/* "main" is always an acceptable alias for the primary database
 			 ** even if it has been renamed using SQLITE_DBCONFIG_MAINDBNAME. */
-			if i == 0 && 0 == Xsqlite3_stricmp(tls, __ccgo_ts+6255, zName) {
+			if i == 0 && 0 == Xsqlite3_stricmp(tls, __ccgo_ts+6275, zName) {
 				break
 			}
 			goto _1
@@ -91002,13 +91002,13 @@ func _sqlite3TwoPartName(tls *libc.TLS, pParse uintptr, pName1 uintptr, pName2 u
 	_ = libc.Int32FromInt32(0)
 	if (*TToken)(unsafe.Pointer(pName2)).Fn > uint32(0) {
 		if (*Tsqlite3)(unsafe.Pointer(db)).Finit1.Fbusy != 0 {
-			_sqlite3ErrorMsg(tls, pParse, __ccgo_ts+11982, 0)
+			_sqlite3ErrorMsg(tls, pParse, __ccgo_ts+12002, 0)
 			return -int32(1)
 		}
 		*(*uintptr)(unsafe.Pointer(pUnqual)) = pName2
 		iDb = _sqlite3FindDb(tls, db, pName1)
 		if iDb < 0 {
-			_sqlite3ErrorMsg(tls, pParse, __ccgo_ts+11999, libc.VaList(bp+8, pName1))
+			_sqlite3ErrorMsg(tls, pParse, __ccgo_ts+12019, libc.VaList(bp+8, pName1))
 			return -int32(1)
 		}
 	} else {
@@ -91053,12 +91053,12 @@ func _sqlite3CheckObjectName(tls *libc.TLS, pParse uintptr, zName uintptr, zType
 	}
 	if (*Tsqlite3)(unsafe.Pointer(db)).Finit1.Fbusy != 0 {
 		if Xsqlite3_stricmp(tls, zType, *(*uintptr)(unsafe.Pointer((*Tsqlite3)(unsafe.Pointer(db)).Finit1.FazInit))) != 0 || Xsqlite3_stricmp(tls, zName, *(*uintptr)(unsafe.Pointer((*Tsqlite3)(unsafe.Pointer(db)).Finit1.FazInit + 1*8))) != 0 || Xsqlite3_stricmp(tls, zTblName, *(*uintptr)(unsafe.Pointer((*Tsqlite3)(unsafe.Pointer(db)).Finit1.FazInit + 2*8))) != 0 {
-			_sqlite3ErrorMsg(tls, pParse, __ccgo_ts+1511, 0) /* corruptSchema() will supply the error */
+			_sqlite3ErrorMsg(tls, pParse, __ccgo_ts+1531, 0) /* corruptSchema() will supply the error */
 			return int32(m_SQLITE_ERROR)
 		}
 	} else {
-		if int32((*TParse)(unsafe.Pointer(pParse)).Fnested) == 0 && 0 == Xsqlite3_strnicmp(tls, zName, __ccgo_ts+7939, int32(7)) || _sqlite3ReadOnlyShadowTables(tls, db) != 0 && _sqlite3ShadowTableName(tls, db, zName) != 0 {
-			_sqlite3ErrorMsg(tls, pParse, __ccgo_ts+12019, libc.VaList(bp+8, zName))
+		if int32((*TParse)(unsafe.Pointer(pParse)).Fnested) == 0 && 0 == Xsqlite3_strnicmp(tls, zName, __ccgo_ts+7959, int32(7)) || _sqlite3ReadOnlyShadowTables(tls, db) != 0 && _sqlite3ShadowTableName(tls, db, zName) != 0 {
+			_sqlite3ErrorMsg(tls, pParse, __ccgo_ts+12039, libc.VaList(bp+8, zName))
 			return int32(m_SQLITE_ERROR)
 		}
 	}
@@ -91270,9 +91270,9 @@ func _sqlite3StartTable(tls *libc.TLS, pParse uintptr, pName1 uintptr, pName2 ui
 		/* Special case:  Parsing the sqlite_schema or sqlite_temp_schema schema */
 		iDb = int32((*Tsqlite3)(unsafe.Pointer(db)).Finit1.FiDb)
 		if libc.Bool(!(libc.Int32FromInt32(m_OMIT_TEMPDB) != 0)) && iDb == int32(1) {
-			v1 = __ccgo_ts + 11928
+			v1 = __ccgo_ts + 11948
 		} else {
-			v1 = __ccgo_ts + 5787
+			v1 = __ccgo_ts + 5807
 		}
 		zName = _sqlite3DbStrDup(tls, db, v1)
 		*(*uintptr)(unsafe.Pointer(bp)) = pName1
@@ -91285,7 +91285,7 @@ func _sqlite3StartTable(tls *libc.TLS, pParse uintptr, pName1 uintptr, pName2 ui
 		if libc.Bool(!(libc.Int32FromInt32(m_OMIT_TEMPDB) != 0)) && isTemp != 0 && (*TToken)(unsafe.Pointer(pName2)).Fn > uint32(0) && iDb != int32(1) {
 			/* If creating a temp table, the name may not be qualified. Unless
 			 ** the database name is "temp" anyway.  */
-			_sqlite3ErrorMsg(tls, pParse, __ccgo_ts+12061, 0)
+			_sqlite3ErrorMsg(tls, pParse, __ccgo_ts+12081, 0)
 			return
 		}
 		if libc.Bool(!(libc.Int32FromInt32(m_OMIT_TEMPDB) != 0)) && isTemp != 0 {
@@ -91301,9 +91301,9 @@ func _sqlite3StartTable(tls *libc.TLS, pParse uintptr, pName1 uintptr, pName2 ui
 		return
 	}
 	if isView != 0 {
-		v2 = __ccgo_ts + 10300
+		v2 = __ccgo_ts + 10320
 	} else {
-		v2 = __ccgo_ts + 8681
+		v2 = __ccgo_ts + 8701
 	}
 	if _sqlite3CheckObjectName(tls, pParse, zName, v2, zName) != 0 {
 		goto begin_table_error
@@ -91315,9 +91315,9 @@ func _sqlite3StartTable(tls *libc.TLS, pParse uintptr, pName1 uintptr, pName2 ui
 	_ = libc.Int32FromInt32(0)
 	zDb = (*(*TDb)(unsafe.Pointer((*Tsqlite3)(unsafe.Pointer(db)).FaDb + uintptr(iDb)*32))).FzDbSName
 	if libc.Bool(!(libc.Int32FromInt32(m_OMIT_TEMPDB) != 0)) && isTemp == int32(1) {
-		v3 = __ccgo_ts + 11928
+		v3 = __ccgo_ts + 11948
 	} else {
-		v3 = __ccgo_ts + 5787
+		v3 = __ccgo_ts + 5807
 	}
 	if _sqlite3AuthCheck(tls, pParse, int32(m_SQLITE_INSERT), v3, uintptr(0), zDb) != 0 {
 		goto begin_table_error
@@ -91340,7 +91340,7 @@ func _sqlite3StartTable(tls *libc.TLS, pParse uintptr, pName1 uintptr, pName2 ui
 		pTable = _sqlite3FindTable(tls, db, zName, zDb1)
 		if pTable != 0 {
 			if !(noErr != 0) {
-				_sqlite3ErrorMsg(tls, pParse, __ccgo_ts+12102, libc.VaList(bp+16, *(*uintptr)(unsafe.Pointer(bp))))
+				_sqlite3ErrorMsg(tls, pParse, __ccgo_ts+12122, libc.VaList(bp+16, *(*uintptr)(unsafe.Pointer(bp))))
 			} else {
 				_ = libc.Int32FromInt32(0)
 				_sqlite3CodeVerifySchema(tls, pParse, iDb)
@@ -91349,7 +91349,7 @@ func _sqlite3StartTable(tls *libc.TLS, pParse uintptr, pName1 uintptr, pName2 ui
 			goto begin_table_error
 		}
 		if _sqlite3FindIndex(tls, db, zName, zDb1) != uintptr(0) {
-			_sqlite3ErrorMsg(tls, pParse, __ccgo_ts+12126, libc.VaList(bp+16, zName))
+			_sqlite3ErrorMsg(tls, pParse, __ccgo_ts+12146, libc.VaList(bp+16, zName))
 			goto begin_table_error
 		}
 	}
@@ -91478,7 +91478,7 @@ func _sqlite3DeleteReturning(tls *libc.TLS, db uintptr, pRet uintptr) {
 	var pHash uintptr
 	_ = pHash
 	pHash = (*(*TDb)(unsafe.Pointer((*Tsqlite3)(unsafe.Pointer(db)).FaDb + 1*32))).FpSchema + 56
-	_sqlite3HashInsert(tls, pHash, __ccgo_ts+12161, uintptr(0))
+	_sqlite3HashInsert(tls, pHash, __ccgo_ts+12181, uintptr(0))
 	_sqlite3ExprListDelete(tls, db, (*TReturning)(unsafe.Pointer(pRet)).FpReturnEL)
 	_sqlite3DbFree(tls, db, pRet)
 }
@@ -91506,7 +91506,7 @@ func _sqlite3AddReturning(tls *libc.TLS, pParse uintptr, pList uintptr) {
 	_, _, _ = db, pHash, pRet
 	db = (*TParse)(unsafe.Pointer(pParse)).Fdb
 	if (*TParse)(unsafe.Pointer(pParse)).FpNewTrigger != 0 {
-		_sqlite3ErrorMsg(tls, pParse, __ccgo_ts+12178, 0)
+		_sqlite3ErrorMsg(tls, pParse, __ccgo_ts+12198, 0)
 	} else {
 		_ = libc.Int32FromInt32(0)
 	}
@@ -91523,7 +91523,7 @@ func _sqlite3AddReturning(tls *libc.TLS, pParse uintptr, pList uintptr) {
 	if (*Tsqlite3)(unsafe.Pointer(db)).FmallocFailed != 0 {
 		return
 	}
-	(*TReturning)(unsafe.Pointer(pRet)).FretTrig.FzName = __ccgo_ts + 12161
+	(*TReturning)(unsafe.Pointer(pRet)).FretTrig.FzName = __ccgo_ts + 12181
 	(*TReturning)(unsafe.Pointer(pRet)).FretTrig.Fop = uint8(m_TK_RETURNING)
 	(*TReturning)(unsafe.Pointer(pRet)).FretTrig.Ftr_tm = uint8(m_TRIGGER_AFTER)
 	(*TReturning)(unsafe.Pointer(pRet)).FretTrig.FbReturning = uint8(1)
@@ -91535,7 +91535,7 @@ func _sqlite3AddReturning(tls *libc.TLS, pParse uintptr, pList uintptr) {
 	(*TReturning)(unsafe.Pointer(pRet)).FretTStep.FpExprList = pList
 	pHash = (*(*TDb)(unsafe.Pointer((*Tsqlite3)(unsafe.Pointer(db)).FaDb + 1*32))).FpSchema + 56
 	_ = libc.Int32FromInt32(0)
-	if _sqlite3HashInsert(tls, pHash, __ccgo_ts+12161, pRet+16) == pRet+16 {
+	if _sqlite3HashInsert(tls, pHash, __ccgo_ts+12181, pRet+16) == pRet+16 {
 		_sqlite3OomFault(tls, db)
 	}
 }
@@ -91570,7 +91570,7 @@ func _sqlite3AddColumn(tls *libc.TLS, pParse uintptr, _sName TToken, _sType TTok
 		return
 	}
 	if int32((*TTable)(unsafe.Pointer(p)).FnCol)+int32(1) > *(*int32)(unsafe.Pointer(db + 136 + 2*4)) {
-		_sqlite3ErrorMsg(tls, pParse, __ccgo_ts+12212, libc.VaList(bp+40, (*TTable)(unsafe.Pointer(p)).FzName))
+		_sqlite3ErrorMsg(tls, pParse, __ccgo_ts+12232, libc.VaList(bp+40, (*TTable)(unsafe.Pointer(p)).FzName))
 		return
 	}
 	if !(int32((*TParse)(unsafe.Pointer(pParse)).FeParseMode) >= libc.Int32FromInt32(m_PARSE_MODE_RENAME)) {
@@ -91580,12 +91580,12 @@ func _sqlite3AddColumn(tls *libc.TLS, pParse uintptr, _sName TToken, _sType TTok
 	 ** by the parser, we can sometimes end up with a typename that ends
 	 ** with "generated always".  Check for this case and omit the surplus
 	 ** text. */
-	if (*(*TToken)(unsafe.Pointer(bp + 16))).Fn >= uint32(16) && Xsqlite3_strnicmp(tls, (*(*TToken)(unsafe.Pointer(bp + 16))).Fz+uintptr((*(*TToken)(unsafe.Pointer(bp + 16))).Fn-libc.Uint32FromInt32(6)), __ccgo_ts+12235, int32(6)) == 0 {
+	if (*(*TToken)(unsafe.Pointer(bp + 16))).Fn >= uint32(16) && Xsqlite3_strnicmp(tls, (*(*TToken)(unsafe.Pointer(bp + 16))).Fz+uintptr((*(*TToken)(unsafe.Pointer(bp + 16))).Fn-libc.Uint32FromInt32(6)), __ccgo_ts+12255, int32(6)) == 0 {
 		(*(*TToken)(unsafe.Pointer(bp + 16))).Fn -= uint32(6)
 		for (*(*TToken)(unsafe.Pointer(bp + 16))).Fn > uint32(0) && int32(_sqlite3CtypeMap[*(*uint8)(unsafe.Pointer((*(*TToken)(unsafe.Pointer(bp + 16))).Fz + uintptr((*(*TToken)(unsafe.Pointer(bp + 16))).Fn-uint32(1))))])&int32(0x01) != 0 {
 			(*(*TToken)(unsafe.Pointer(bp + 16))).Fn--
 		}
-		if (*(*TToken)(unsafe.Pointer(bp + 16))).Fn >= uint32(9) && Xsqlite3_strnicmp(tls, (*(*TToken)(unsafe.Pointer(bp + 16))).Fz+uintptr((*(*TToken)(unsafe.Pointer(bp + 16))).Fn-libc.Uint32FromInt32(9)), __ccgo_ts+12242, int32(9)) == 0 {
+		if (*(*TToken)(unsafe.Pointer(bp + 16))).Fn >= uint32(9) && Xsqlite3_strnicmp(tls, (*(*TToken)(unsafe.Pointer(bp + 16))).Fz+uintptr((*(*TToken)(unsafe.Pointer(bp + 16))).Fn-libc.Uint32FromInt32(9)), __ccgo_ts+12262, int32(9)) == 0 {
 			(*(*TToken)(unsafe.Pointer(bp + 16))).Fn -= uint32(9)
 			for (*(*TToken)(unsafe.Pointer(bp + 16))).Fn > uint32(0) && int32(_sqlite3CtypeMap[*(*uint8)(unsafe.Pointer((*(*TToken)(unsafe.Pointer(bp + 16))).Fz + uintptr((*(*TToken)(unsafe.Pointer(bp + 16))).Fn-uint32(1))))])&int32(0x01) != 0 {
 				(*(*TToken)(unsafe.Pointer(bp + 16))).Fn--
@@ -91633,7 +91633,7 @@ func _sqlite3AddColumn(tls *libc.TLS, pParse uintptr, _sName TToken, _sType TTok
 			break
 		}
 		if int32((*(*TColumn)(unsafe.Pointer((*TTable)(unsafe.Pointer(p)).FaCol + uintptr(i)*16))).FhName) == int32(hName) && _sqlite3StrICmp(tls, z, (*(*TColumn)(unsafe.Pointer((*TTable)(unsafe.Pointer(p)).FaCol + uintptr(i)*16))).FzCnName) == 0 {
-			_sqlite3ErrorMsg(tls, pParse, __ccgo_ts+12252, libc.VaList(bp+40, z))
+			_sqlite3ErrorMsg(tls, pParse, __ccgo_ts+12272, libc.VaList(bp+40, z))
 			_sqlite3DbFree(tls, db, z)
 			return
 		}
@@ -91839,10 +91839,10 @@ func _sqlite3AddDefaultValue(tls *libc.TLS, pParse uintptr, pExpr uintptr, zStar
 		isInit = libc.BoolInt32((*Tsqlite3)(unsafe.Pointer(db)).Finit1.Fbusy != 0 && int32((*Tsqlite3)(unsafe.Pointer(db)).Finit1.FiDb) != int32(1))
 		pCol = (*TTable)(unsafe.Pointer(p)).FaCol + uintptr(int32((*TTable)(unsafe.Pointer(p)).FnCol)-int32(1))*16
 		if !(_sqlite3ExprIsConstantOrFunction(tls, pExpr, uint8(isInit)) != 0) {
-			_sqlite3ErrorMsg(tls, pParse, __ccgo_ts+12278, libc.VaList(bp+80, (*TColumn)(unsafe.Pointer(pCol)).FzCnName))
+			_sqlite3ErrorMsg(tls, pParse, __ccgo_ts+12298, libc.VaList(bp+80, (*TColumn)(unsafe.Pointer(pCol)).FzCnName))
 		} else {
 			if int32((*TColumn)(unsafe.Pointer(pCol)).FcolFlags)&int32(m_COLFLAG_GENERATED) != 0 {
-				_sqlite3ErrorMsg(tls, pParse, __ccgo_ts+12323, 0)
+				_sqlite3ErrorMsg(tls, pParse, __ccgo_ts+12343, 0)
 			} else {
 				libc.Xmemset(tls, bp, 0, uint64(72))
 				(*(*TExpr)(unsafe.Pointer(bp))).Fop = uint8(m_TK_SPAN)
@@ -91900,7 +91900,7 @@ func _makeColumnPartOfPrimaryKey(tls *libc.TLS, pParse uintptr, pCol uintptr) {
 	p1 = pCol + 14
 	*(*Tu16)(unsafe.Pointer(p1)) = Tu16(int32(*(*Tu16)(unsafe.Pointer(p1))) | libc.Int32FromInt32(m_COLFLAG_PRIMKEY))
 	if int32((*TColumn)(unsafe.Pointer(pCol)).FcolFlags)&int32(m_COLFLAG_GENERATED) != 0 {
-		_sqlite3ErrorMsg(tls, pParse, __ccgo_ts+12364, 0)
+		_sqlite3ErrorMsg(tls, pParse, __ccgo_ts+12384, 0)
 	}
 }
 
@@ -91937,7 +91937,7 @@ func _sqlite3AddPrimaryKey(tls *libc.TLS, pParse uintptr, pList uintptr, onError
 		goto primary_key_exit
 	}
 	if (*TTable)(unsafe.Pointer(pTab)).FtabFlags&uint32(m_TF_HasPrimaryKey) != 0 {
-		_sqlite3ErrorMsg(tls, pParse, __ccgo_ts+12416, libc.VaList(bp+8, (*TTable)(unsafe.Pointer(pTab)).FzName))
+		_sqlite3ErrorMsg(tls, pParse, __ccgo_ts+12436, libc.VaList(bp+8, (*TTable)(unsafe.Pointer(pTab)).FzName))
 		goto primary_key_exit
 	}
 	*(*Tu32)(unsafe.Pointer(pTab + 48)) |= uint32(m_TF_HasPrimaryKey)
@@ -91994,7 +91994,7 @@ func _sqlite3AddPrimaryKey(tls *libc.TLS, pParse uintptr, pList uintptr, onError
 		_sqlite3HasExplicitNulls(tls, pParse, pList)
 	} else {
 		if autoInc != 0 {
-			_sqlite3ErrorMsg(tls, pParse, __ccgo_ts+12457, 0)
+			_sqlite3ErrorMsg(tls, pParse, __ccgo_ts+12477, 0)
 		} else {
 			_sqlite3CreateIndex(tls, pParse, uintptr(0), uintptr(0), uintptr(0), pList, onError, uintptr(0), uintptr(0), sortOrder, 0, uint8(m_SQLITE_IDXTYPE_PRIMARYKEY))
 			pList = uintptr(0)
@@ -92107,17 +92107,17 @@ func _sqlite3AddGenerated(tls *libc.TLS, pParse uintptr, pExpr uintptr, pType ui
 	}
 	pCol = (*TTable)(unsafe.Pointer(pTab)).FaCol + uintptr(int32((*TTable)(unsafe.Pointer(pTab)).FnCol)-int32(1))*16
 	if int32((*TParse)(unsafe.Pointer(pParse)).FeParseMode) == int32(m_PARSE_MODE_DECLARE_VTAB) {
-		_sqlite3ErrorMsg(tls, pParse, __ccgo_ts+12513, 0)
+		_sqlite3ErrorMsg(tls, pParse, __ccgo_ts+12533, 0)
 		goto generated_done
 	}
 	if int32((*TColumn)(unsafe.Pointer(pCol)).FiDflt) > 0 {
 		goto generated_error
 	}
 	if pType != 0 {
-		if (*TToken)(unsafe.Pointer(pType)).Fn == uint32(7) && Xsqlite3_strnicmp(tls, __ccgo_ts+12556, (*TToken)(unsafe.Pointer(pType)).Fz, int32(7)) == 0 {
+		if (*TToken)(unsafe.Pointer(pType)).Fn == uint32(7) && Xsqlite3_strnicmp(tls, __ccgo_ts+12576, (*TToken)(unsafe.Pointer(pType)).Fz, int32(7)) == 0 {
 			/* no-op */
 		} else {
-			if (*TToken)(unsafe.Pointer(pType)).Fn == uint32(6) && Xsqlite3_strnicmp(tls, __ccgo_ts+12564, (*TToken)(unsafe.Pointer(pType)).Fz, int32(6)) == 0 {
+			if (*TToken)(unsafe.Pointer(pType)).Fn == uint32(6) && Xsqlite3_strnicmp(tls, __ccgo_ts+12584, (*TToken)(unsafe.Pointer(pType)).Fz, int32(6)) == 0 {
 				eType = uint8(m_COLFLAG_STORED)
 			} else {
 				goto generated_error
@@ -92139,7 +92139,7 @@ func _sqlite3AddGenerated(tls *libc.TLS, pParse uintptr, pExpr uintptr, pType ui
 	pExpr = uintptr(0)
 	goto generated_done
 generated_error:
-	_sqlite3ErrorMsg(tls, pParse, __ccgo_ts+12571, libc.VaList(bp+8, (*TColumn)(unsafe.Pointer(pCol)).FzCnName))
+	_sqlite3ErrorMsg(tls, pParse, __ccgo_ts+12591, libc.VaList(bp+8, (*TColumn)(unsafe.Pointer(pCol)).FzCnName))
 generated_done:
 	_sqlite3ExprDelete(tls, (*TParse)(unsafe.Pointer(pParse)).Fdb, pExpr)
 }
@@ -92297,13 +92297,13 @@ func _createTableStmt(tls *libc.TLS, db uintptr, p uintptr) (r uintptr) {
 	}
 	n += _identLength(tls, (*TTable)(unsafe.Pointer(p)).FzName)
 	if n < int32(50) {
-		zSep = __ccgo_ts + 1511
-		zSep2 = __ccgo_ts + 12602
-		zEnd = __ccgo_ts + 4827
+		zSep = __ccgo_ts + 1531
+		zSep2 = __ccgo_ts + 12622
+		zEnd = __ccgo_ts + 4847
 	} else {
-		zSep = __ccgo_ts + 12604
-		zSep2 = __ccgo_ts + 12608
-		zEnd = __ccgo_ts + 12613
+		zSep = __ccgo_ts + 12624
+		zSep2 = __ccgo_ts + 12628
+		zEnd = __ccgo_ts + 12633
 	}
 	n += int32(35) + int32(6)*int32((*TTable)(unsafe.Pointer(p)).FnCol)
 	zStmt = _sqlite3DbMallocRaw(tls, uintptr(0), uint64(n))
@@ -92311,7 +92311,7 @@ func _createTableStmt(tls *libc.TLS, db uintptr, p uintptr) (r uintptr) {
 		_sqlite3OomFault(tls, db)
 		return uintptr(0)
 	}
-	Xsqlite3_snprintf(tls, n, zStmt, __ccgo_ts+12616, 0)
+	Xsqlite3_snprintf(tls, n, zStmt, __ccgo_ts+12636, 0)
 	*(*int32)(unsafe.Pointer(bp)) = _sqlite3Strlen30(tls, zStmt)
 	_identPut(tls, zStmt, bp, (*TTable)(unsafe.Pointer(p)).FzName)
 	v2 = *(*int32)(unsafe.Pointer(bp))
@@ -92340,16 +92340,16 @@ func _createTableStmt(tls *libc.TLS, db uintptr, p uintptr) (r uintptr) {
 		i++
 		pCol += 16
 	}
-	Xsqlite3_snprintf(tls, n-*(*int32)(unsafe.Pointer(bp)), zStmt+uintptr(*(*int32)(unsafe.Pointer(bp))), __ccgo_ts+3560, libc.VaList(bp+16, zEnd))
+	Xsqlite3_snprintf(tls, n-*(*int32)(unsafe.Pointer(bp)), zStmt+uintptr(*(*int32)(unsafe.Pointer(bp))), __ccgo_ts+3580, libc.VaList(bp+16, zEnd))
 	return zStmt
 }
 
 var _azType1 = [5]uintptr{
-	0: __ccgo_ts + 1511,
-	1: __ccgo_ts + 12630,
-	2: __ccgo_ts + 12636,
-	3: __ccgo_ts + 12641,
-	4: __ccgo_ts + 12646,
+	0: __ccgo_ts + 1531,
+	1: __ccgo_ts + 12650,
+	2: __ccgo_ts + 12656,
+	3: __ccgo_ts + 12661,
+	4: __ccgo_ts + 12666,
 }
 
 // C documentation
@@ -92962,7 +92962,7 @@ func _sqlite3EndTable(tls *libc.TLS, pParse uintptr, pCons uintptr, pEnd uintptr
 	 */
 	if (*Tsqlite3)(unsafe.Pointer(db)).Finit1.Fbusy != 0 {
 		if pSelect != 0 || !(int32((*TTable)(unsafe.Pointer(p)).FeTabType) == libc.Int32FromInt32(m_TABTYP_NORM)) && (*Tsqlite3)(unsafe.Pointer(db)).Finit1.FnewTnum != 0 {
-			_sqlite3ErrorMsg(tls, pParse, __ccgo_ts+1511, 0)
+			_sqlite3ErrorMsg(tls, pParse, __ccgo_ts+1531, 0)
 			return
 		}
 		(*TTable)(unsafe.Pointer(p)).Ftnum = (*Tsqlite3)(unsafe.Pointer(db)).Finit1.FnewTnum
@@ -92989,9 +92989,9 @@ func _sqlite3EndTable(tls *libc.TLS, pParse uintptr, pCons uintptr, pEnd uintptr
 			pCol = (*TTable)(unsafe.Pointer(p)).FaCol + uintptr(ii)*16
 			if int32(uint32(*(*uint8)(unsafe.Pointer(pCol + 8))&0xf0>>4)) == m_COLTYPE_CUSTOM {
 				if int32((*TColumn)(unsafe.Pointer(pCol)).FcolFlags)&int32(m_COLFLAG_HASTYPE) != 0 {
-					_sqlite3ErrorMsg(tls, pParse, __ccgo_ts+12652, libc.VaList(bp+48, (*TTable)(unsafe.Pointer(p)).FzName, (*TColumn)(unsafe.Pointer(pCol)).FzCnName, _sqlite3ColumnType(tls, pCol, __ccgo_ts+1511)))
+					_sqlite3ErrorMsg(tls, pParse, __ccgo_ts+12672, libc.VaList(bp+48, (*TTable)(unsafe.Pointer(p)).FzName, (*TColumn)(unsafe.Pointer(pCol)).FzCnName, _sqlite3ColumnType(tls, pCol, __ccgo_ts+1531)))
 				} else {
-					_sqlite3ErrorMsg(tls, pParse, __ccgo_ts+12685, libc.VaList(bp+48, (*TTable)(unsafe.Pointer(p)).FzName, (*TColumn)(unsafe.Pointer(pCol)).FzCnName))
+					_sqlite3ErrorMsg(tls, pParse, __ccgo_ts+12705, libc.VaList(bp+48, (*TTable)(unsafe.Pointer(p)).FzName, (*TColumn)(unsafe.Pointer(pCol)).FzCnName))
 				}
 				return
 			} else {
@@ -93013,11 +93013,11 @@ func _sqlite3EndTable(tls *libc.TLS, pParse uintptr, pCons uintptr, pEnd uintptr
 	/* Special processing for WITHOUT ROWID Tables */
 	if tabOpts&uint32(m_TF_WithoutRowid) != 0 {
 		if (*TTable)(unsafe.Pointer(p)).FtabFlags&uint32(m_TF_Autoincrement) != 0 {
-			_sqlite3ErrorMsg(tls, pParse, __ccgo_ts+12712, 0)
+			_sqlite3ErrorMsg(tls, pParse, __ccgo_ts+12732, 0)
 			return
 		}
 		if (*TTable)(unsafe.Pointer(p)).FtabFlags&uint32(m_TF_HasPrimaryKey) == uint32(0) {
-			_sqlite3ErrorMsg(tls, pParse, __ccgo_ts+12762, libc.VaList(bp+48, (*TTable)(unsafe.Pointer(p)).FzName))
+			_sqlite3ErrorMsg(tls, pParse, __ccgo_ts+12782, libc.VaList(bp+48, (*TTable)(unsafe.Pointer(p)).FzName))
 			return
 		}
 		*(*Tu32)(unsafe.Pointer(p + 48)) |= uint32(libc.Int32FromInt32(m_TF_WithoutRowid) | libc.Int32FromInt32(m_TF_NoVisibleRowid))
@@ -93063,7 +93063,7 @@ func _sqlite3EndTable(tls *libc.TLS, pParse uintptr, pCons uintptr, pEnd uintptr
 			ii1++
 		}
 		if nNG == 0 {
-			_sqlite3ErrorMsg(tls, pParse, __ccgo_ts+12794, 0)
+			_sqlite3ErrorMsg(tls, pParse, __ccgo_ts+12814, 0)
 			return
 		}
 	}
@@ -93096,12 +93096,12 @@ func _sqlite3EndTable(tls *libc.TLS, pParse uintptr, pCons uintptr, pEnd uintptr
 		 */
 		if int32((*TTable)(unsafe.Pointer(p)).FeTabType) == m_TABTYP_NORM {
 			/* A regular table */
-			zType = __ccgo_ts + 8681
-			zType2 = __ccgo_ts + 12838
+			zType = __ccgo_ts + 8701
+			zType2 = __ccgo_ts + 12858
 		} else {
 			/* A view */
-			zType = __ccgo_ts + 10300
-			zType2 = __ccgo_ts + 12844
+			zType = __ccgo_ts + 10320
+			zType2 = __ccgo_ts + 12864
 		}
 		/* If this is a CREATE TABLE xx AS SELECT ..., execute the SELECT
 		 ** statement to populate the new table. The root-page number for the
@@ -93181,13 +93181,13 @@ func _sqlite3EndTable(tls *libc.TLS, pParse uintptr, pCons uintptr, pEnd uintptr
 			if int32(*(*uint8)(unsafe.Pointer((*TToken)(unsafe.Pointer(pEnd2)).Fz))) != int32(';') {
 				n = int32(uint32(n) + (*TToken)(unsafe.Pointer(pEnd2)).Fn)
 			}
-			zStmt = _sqlite3MPrintf(tls, db, __ccgo_ts+12849, libc.VaList(bp+48, zType2, n, (*TParse)(unsafe.Pointer(pParse)).FsNameToken.Fz))
+			zStmt = _sqlite3MPrintf(tls, db, __ccgo_ts+12869, libc.VaList(bp+48, zType2, n, (*TParse)(unsafe.Pointer(pParse)).FsNameToken.Fz))
 		}
 		/* A slot for the record has already been allocated in the
 		 ** schema table.  We just need to update that slot with all
 		 ** the information we've collected.
 		 */
-		_sqlite3NestedParse(tls, pParse, __ccgo_ts+12864, libc.VaList(bp+48, (*(*TDb)(unsafe.Pointer((*Tsqlite3)(unsafe.Pointer(db)).FaDb + uintptr(iDb)*32))).FzDbSName, zType, (*TTable)(unsafe.Pointer(p)).FzName, (*TTable)(unsafe.Pointer(p)).FzName, (*TParse)(unsafe.Pointer(pParse)).FregRoot, zStmt, (*TParse)(unsafe.Pointer(pParse)).FregRowid))
+		_sqlite3NestedParse(tls, pParse, __ccgo_ts+12884, libc.VaList(bp+48, (*(*TDb)(unsafe.Pointer((*Tsqlite3)(unsafe.Pointer(db)).FaDb + uintptr(iDb)*32))).FzDbSName, zType, (*TTable)(unsafe.Pointer(p)).FzName, (*TTable)(unsafe.Pointer(p)).FzName, (*TParse)(unsafe.Pointer(pParse)).FregRoot, zStmt, (*TParse)(unsafe.Pointer(pParse)).FregRowid))
 		_sqlite3DbFree(tls, db, zStmt)
 		_sqlite3ChangeCookie(tls, pParse, iDb)
 		/* Check to see if we need to create an sqlite_sequence table for
@@ -93197,11 +93197,11 @@ func _sqlite3EndTable(tls *libc.TLS, pParse uintptr, pCons uintptr, pEnd uintptr
 			pDb = (*Tsqlite3)(unsafe.Pointer(db)).FaDb + uintptr(iDb)*32
 			_ = libc.Int32FromInt32(0)
 			if (*TSchema)(unsafe.Pointer((*TDb)(unsafe.Pointer(pDb)).FpSchema)).FpSeqTab == uintptr(0) {
-				_sqlite3NestedParse(tls, pParse, __ccgo_ts+12962, libc.VaList(bp+48, (*TDb)(unsafe.Pointer(pDb)).FzDbSName))
+				_sqlite3NestedParse(tls, pParse, __ccgo_ts+12982, libc.VaList(bp+48, (*TDb)(unsafe.Pointer(pDb)).FzDbSName))
 			}
 		}
 		/* Reparse everything to update our internal data structures */
-		_sqlite3VdbeAddParseSchemaOp(tls, v, iDb, _sqlite3MPrintf(tls, db, __ccgo_ts+13004, libc.VaList(bp+48, (*TTable)(unsafe.Pointer(p)).FzName)), uint16(0))
+		_sqlite3VdbeAddParseSchemaOp(tls, v, iDb, _sqlite3MPrintf(tls, db, __ccgo_ts+13024, libc.VaList(bp+48, (*TTable)(unsafe.Pointer(p)).FzName)), uint16(0))
 	}
 	/* Add the table to the in-memory representation of the database.
 	 */
@@ -93221,7 +93221,7 @@ func _sqlite3EndTable(tls *libc.TLS, pParse uintptr, pCons uintptr, pEnd uintptr
 		 ** then record a pointer to this table in the main database structure
 		 ** so that INSERT can find the table easily.  */
 		_ = libc.Int32FromInt32(0)
-		if libc.Xstrcmp(tls, (*TTable)(unsafe.Pointer(p)).FzName, __ccgo_ts+9203) == 0 {
+		if libc.Xstrcmp(tls, (*TTable)(unsafe.Pointer(p)).FzName, __ccgo_ts+9223) == 0 {
 			_ = libc.Int32FromInt32(0)
 			(*TSchema)(unsafe.Pointer((*TTable)(unsafe.Pointer(p)).FpSchema)).FpSeqTab = p
 		}
@@ -93256,7 +93256,7 @@ func _sqlite3CreateView(tls *libc.TLS, pParse uintptr, pBegin uintptr, pName1 ui
 	*(*uintptr)(unsafe.Pointer(bp + 112)) = uintptr(0)
 	db = (*TParse)(unsafe.Pointer(pParse)).Fdb
 	if int32((*TParse)(unsafe.Pointer(pParse)).FnVar) > 0 {
-		_sqlite3ErrorMsg(tls, pParse, __ccgo_ts+13038, 0)
+		_sqlite3ErrorMsg(tls, pParse, __ccgo_ts+13058, 0)
 		goto create_view_fail
 	}
 	_sqlite3StartTable(tls, pParse, pName1, pName2, isTemp, int32(1), 0, noErr)
@@ -93272,7 +93272,7 @@ func _sqlite3CreateView(tls *libc.TLS, pParse uintptr, pBegin uintptr, pName1 ui
 	*(*Tu32)(unsafe.Pointer(p + 48)) |= uint32(m_TF_NoVisibleRowid)
 	_sqlite3TwoPartName(tls, pParse, pName1, pName2, bp+112)
 	iDb = _sqlite3SchemaToIndex(tls, db, (*TTable)(unsafe.Pointer(p)).FpSchema)
-	_sqlite3FixInit(tls, bp+16, pParse, iDb, __ccgo_ts+10300, *(*uintptr)(unsafe.Pointer(bp + 112)))
+	_sqlite3FixInit(tls, bp+16, pParse, iDb, __ccgo_ts+10320, *(*uintptr)(unsafe.Pointer(bp + 112)))
 	if _sqlite3FixSelect(tls, bp+16, pSelect) != 0 {
 		goto create_view_fail
 	}
@@ -93371,7 +93371,7 @@ func _sqlite3ViewGetColumnNames(tls *libc.TLS, pParse uintptr, pTable uintptr) (
 	 **     SELECT * FROM temp.ex1;
 	 */
 	if int32((*TTable)(unsafe.Pointer(pTable)).FnCol) < 0 {
-		_sqlite3ErrorMsg(tls, pParse, __ccgo_ts+13074, libc.VaList(bp+8, (*TTable)(unsafe.Pointer(pTable)).FzName))
+		_sqlite3ErrorMsg(tls, pParse, __ccgo_ts+13094, libc.VaList(bp+8, (*TTable)(unsafe.Pointer(pTable)).FzName))
 		return int32(1)
 	}
 	_ = libc.Int32FromInt32(0)
@@ -93549,7 +93549,7 @@ func _destroyRootPage(tls *libc.TLS, pParse uintptr, iTable int32, iDb int32) {
 	v = _sqlite3GetVdbe(tls, pParse)
 	r1 = _sqlite3GetTempReg(tls, pParse)
 	if iTable < int32(2) {
-		_sqlite3ErrorMsg(tls, pParse, __ccgo_ts+13104, 0)
+		_sqlite3ErrorMsg(tls, pParse, __ccgo_ts+13124, 0)
 	}
 	_sqlite3VdbeAddOp3(tls, v, int32(m_OP_Destroy), iTable, r1, iDb)
 	_sqlite3MayAbort(tls, pParse)
@@ -93562,7 +93562,7 @@ func _destroyRootPage(tls *libc.TLS, pParse uintptr, iTable int32, iDb int32) {
 	 ** is in register NNN.  See grammar rules associated with the TK_REGISTER
 	 ** token for additional information.
 	 */
-	_sqlite3NestedParse(tls, pParse, __ccgo_ts+13119, libc.VaList(bp+8, (*(*TDb)(unsafe.Pointer((*Tsqlite3)(unsafe.Pointer((*TParse)(unsafe.Pointer(pParse)).Fdb)).FaDb + uintptr(iDb)*32))).FzDbSName, iTable, r1, r1))
+	_sqlite3NestedParse(tls, pParse, __ccgo_ts+13139, libc.VaList(bp+8, (*(*TDb)(unsafe.Pointer((*Tsqlite3)(unsafe.Pointer((*TParse)(unsafe.Pointer(pParse)).Fdb)).FaDb + uintptr(iDb)*32))).FzDbSName, iTable, r1, r1))
 	_sqlite3ReleaseTempReg(tls, pParse, r1)
 }
 
@@ -93646,9 +93646,9 @@ func _sqlite3ClearStatTables(tls *libc.TLS, pParse uintptr, iDb int32, zType uin
 		if !(i <= int32(4)) {
 			break
 		}
-		Xsqlite3_snprintf(tls, int32(24), bp, __ccgo_ts+13186, libc.VaList(bp+32, i))
+		Xsqlite3_snprintf(tls, int32(24), bp, __ccgo_ts+13206, libc.VaList(bp+32, i))
 		if _sqlite3FindTable(tls, (*TParse)(unsafe.Pointer(pParse)).Fdb, bp, zDbName) != 0 {
-			_sqlite3NestedParse(tls, pParse, __ccgo_ts+11160, libc.VaList(bp+32, zDbName, bp, zType, zName))
+			_sqlite3NestedParse(tls, pParse, __ccgo_ts+11180, libc.VaList(bp+32, zDbName, bp, zType, zName))
 		}
 		goto _1
 	_1:
@@ -93690,7 +93690,7 @@ func _sqlite3CodeDropTable(tls *libc.TLS, pParse uintptr, pTab uintptr, iDb int3
 	 ** move as a result of the drop (can happen in auto-vacuum mode).
 	 */
 	if (*TTable)(unsafe.Pointer(pTab)).FtabFlags&uint32(m_TF_Autoincrement) != 0 {
-		_sqlite3NestedParse(tls, pParse, __ccgo_ts+13200, libc.VaList(bp+8, (*TDb)(unsafe.Pointer(pDb)).FzDbSName, (*TTable)(unsafe.Pointer(pTab)).FzName))
+		_sqlite3NestedParse(tls, pParse, __ccgo_ts+13220, libc.VaList(bp+8, (*TDb)(unsafe.Pointer(pDb)).FzDbSName, (*TTable)(unsafe.Pointer(pTab)).FzName))
 	}
 	/* Drop all entries in the schema table that refer to the
 	 ** table. The program name loops through the schema table and deletes
@@ -93699,7 +93699,7 @@ func _sqlite3CodeDropTable(tls *libc.TLS, pParse uintptr, pTab uintptr, iDb int3
 	 ** created in the temp database that refers to a table in another
 	 ** database.
 	 */
-	_sqlite3NestedParse(tls, pParse, __ccgo_ts+13245, libc.VaList(bp+8, (*TDb)(unsafe.Pointer(pDb)).FzDbSName, (*TTable)(unsafe.Pointer(pTab)).FzName))
+	_sqlite3NestedParse(tls, pParse, __ccgo_ts+13265, libc.VaList(bp+8, (*TDb)(unsafe.Pointer(pDb)).FzDbSName, (*TTable)(unsafe.Pointer(pTab)).FzName))
 	if !(isView != 0) && !(int32((*TTable)(unsafe.Pointer(pTab)).FeTabType) == libc.Int32FromInt32(m_TABTYP_VTAB)) {
 		_destroyTable(tls, pParse, pTab)
 	}
@@ -93734,11 +93734,11 @@ func _sqlite3ReadOnlyShadowTables(tls *libc.TLS, db uintptr) (r int32) {
 //	** Return true if it is not allowed to drop the given table
 //	*/
 func _tableMayNotBeDropped(tls *libc.TLS, db uintptr, pTab uintptr) (r int32) {
-	if Xsqlite3_strnicmp(tls, (*TTable)(unsafe.Pointer(pTab)).FzName, __ccgo_ts+7939, int32(7)) == 0 {
-		if Xsqlite3_strnicmp(tls, (*TTable)(unsafe.Pointer(pTab)).FzName+uintptr(7), __ccgo_ts+3183, int32(4)) == 0 {
+	if Xsqlite3_strnicmp(tls, (*TTable)(unsafe.Pointer(pTab)).FzName, __ccgo_ts+7959, int32(7)) == 0 {
+		if Xsqlite3_strnicmp(tls, (*TTable)(unsafe.Pointer(pTab)).FzName+uintptr(7), __ccgo_ts+3203, int32(4)) == 0 {
 			return 0
 		}
-		if Xsqlite3_strnicmp(tls, (*TTable)(unsafe.Pointer(pTab)).FzName+uintptr(7), __ccgo_ts+6947, int32(10)) == 0 {
+		if Xsqlite3_strnicmp(tls, (*TTable)(unsafe.Pointer(pTab)).FzName+uintptr(7), __ccgo_ts+6967, int32(10)) == 0 {
 			return 0
 		}
 		return int32(1)
@@ -93797,9 +93797,9 @@ func _sqlite3DropTable(tls *libc.TLS, pParse uintptr, pName uintptr, isView int3
 		goto exit_drop_table
 	}
 	if libc.Bool(!(libc.Int32FromInt32(m_OMIT_TEMPDB) != 0)) && iDb == int32(1) {
-		v1 = __ccgo_ts + 11928
+		v1 = __ccgo_ts + 11948
 	} else {
-		v1 = __ccgo_ts + 5787
+		v1 = __ccgo_ts + 5807
 	}
 	zTab = v1
 	zDb = (*(*TDb)(unsafe.Pointer((*Tsqlite3)(unsafe.Pointer(db)).FaDb + uintptr(iDb)*32))).FzDbSName
@@ -93832,18 +93832,18 @@ func _sqlite3DropTable(tls *libc.TLS, pParse uintptr, pName uintptr, isView int3
 		goto exit_drop_table
 	}
 	if _tableMayNotBeDropped(tls, db, pTab) != 0 {
-		_sqlite3ErrorMsg(tls, pParse, __ccgo_ts+13312, libc.VaList(bp+8, (*TTable)(unsafe.Pointer(pTab)).FzName))
+		_sqlite3ErrorMsg(tls, pParse, __ccgo_ts+13332, libc.VaList(bp+8, (*TTable)(unsafe.Pointer(pTab)).FzName))
 		goto exit_drop_table
 	}
 	/* Ensure DROP TABLE is not used on a view, and DROP VIEW is not used
 	 ** on a table.
 	 */
 	if isView != 0 && !(int32((*TTable)(unsafe.Pointer(pTab)).FeTabType) == libc.Int32FromInt32(m_TABTYP_VIEW)) {
-		_sqlite3ErrorMsg(tls, pParse, __ccgo_ts+13340, libc.VaList(bp+8, (*TTable)(unsafe.Pointer(pTab)).FzName))
+		_sqlite3ErrorMsg(tls, pParse, __ccgo_ts+13360, libc.VaList(bp+8, (*TTable)(unsafe.Pointer(pTab)).FzName))
 		goto exit_drop_table
 	}
 	if !(isView != 0) && int32((*TTable)(unsafe.Pointer(pTab)).FeTabType) == int32(m_TABTYP_VIEW) {
-		_sqlite3ErrorMsg(tls, pParse, __ccgo_ts+13374, libc.VaList(bp+8, (*TTable)(unsafe.Pointer(pTab)).FzName))
+		_sqlite3ErrorMsg(tls, pParse, __ccgo_ts+13394, libc.VaList(bp+8, (*TTable)(unsafe.Pointer(pTab)).FzName))
 		goto exit_drop_table
 	}
 	/* Generate code to remove the table from the schema table
@@ -93853,7 +93853,7 @@ func _sqlite3DropTable(tls *libc.TLS, pParse uintptr, pName uintptr, isView int3
 	if v != 0 {
 		_sqlite3BeginWriteOperation(tls, pParse, int32(1), iDb)
 		if !(isView != 0) {
-			_sqlite3ClearStatTables(tls, pParse, iDb, __ccgo_ts+11272, (*TTable)(unsafe.Pointer(pTab)).FzName)
+			_sqlite3ClearStatTables(tls, pParse, iDb, __ccgo_ts+11292, (*TTable)(unsafe.Pointer(pTab)).FzName)
 			_sqlite3FkDropTable(tls, pParse, pName, pTab)
 		}
 		_sqlite3CodeDropTable(tls, pParse, pTab, iDb, isView)
@@ -93900,13 +93900,13 @@ func _sqlite3CreateForeignKey(tls *libc.TLS, pParse uintptr, pFromCol uintptr, p
 			goto fk_end
 		}
 		if pToCol != 0 && (*TExprList)(unsafe.Pointer(pToCol)).FnExpr != int32(1) {
-			_sqlite3ErrorMsg(tls, pParse, __ccgo_ts+13406, libc.VaList(bp+8, (*(*TColumn)(unsafe.Pointer((*TTable)(unsafe.Pointer(p)).FaCol + uintptr(iCol)*16))).FzCnName, pTo))
+			_sqlite3ErrorMsg(tls, pParse, __ccgo_ts+13426, libc.VaList(bp+8, (*(*TColumn)(unsafe.Pointer((*TTable)(unsafe.Pointer(p)).FaCol + uintptr(iCol)*16))).FzCnName, pTo))
 			goto fk_end
 		}
 		nCol = int32(1)
 	} else {
 		if pToCol != 0 && (*TExprList)(unsafe.Pointer(pToCol)).FnExpr != (*TExprList)(unsafe.Pointer(pFromCol)).FnExpr {
-			_sqlite3ErrorMsg(tls, pParse, __ccgo_ts+13469, 0)
+			_sqlite3ErrorMsg(tls, pParse, __ccgo_ts+13489, 0)
 			goto fk_end
 		} else {
 			nCol = (*TExprList)(unsafe.Pointer(pFromCol)).FnExpr
@@ -93968,7 +93968,7 @@ func _sqlite3CreateForeignKey(tls *libc.TLS, pParse uintptr, pFromCol uintptr, p
 				j++
 			}
 			if j >= int32((*TTable)(unsafe.Pointer(p)).FnCol) {
-				_sqlite3ErrorMsg(tls, pParse, __ccgo_ts+13563, libc.VaList(bp+8, (*(*TExprList_item)(unsafe.Pointer(pFromCol + 8 + uintptr(i)*32))).FzEName))
+				_sqlite3ErrorMsg(tls, pParse, __ccgo_ts+13583, libc.VaList(bp+8, (*(*TExprList_item)(unsafe.Pointer(pFromCol + 8 + uintptr(i)*32))).FzEName))
 				goto fk_end
 			}
 			if int32((*TParse)(unsafe.Pointer(pParse)).FeParseMode) >= int32(m_PARSE_MODE_RENAME) {
@@ -94228,11 +94228,11 @@ func _sqlite3HasExplicitNulls(tls *libc.TLS, pParse uintptr, pList uintptr) (r i
 			if int32(uint32(*(*uint8)(unsafe.Pointer(pList + 8 + uintptr(i)*32 + 20))&0x20>>5)) != 0 {
 				sf = (*(*TExprList_item)(unsafe.Pointer(pList + 8 + uintptr(i)*32))).FsortFlags
 				if int32(sf) == 0 || int32(sf) == int32(3) {
-					v2 = __ccgo_ts + 13609
+					v2 = __ccgo_ts + 13629
 				} else {
-					v2 = __ccgo_ts + 13615
+					v2 = __ccgo_ts + 13635
 				}
-				_sqlite3ErrorMsg(tls, pParse, __ccgo_ts+13620, libc.VaList(bp+8, v2))
+				_sqlite3ErrorMsg(tls, pParse, __ccgo_ts+13640, libc.VaList(bp+8, v2))
 				return int32(1)
 			}
 			goto _1
@@ -94311,7 +94311,7 @@ func _sqlite3CreateIndex(tls *libc.TLS, pParse uintptr, pName1 uintptr, pName2 u
 				iDb = int32(1)
 			}
 		}
-		_sqlite3FixInit(tls, bp, pParse, iDb, __ccgo_ts+13648, *(*uintptr)(unsafe.Pointer(bp + 96)))
+		_sqlite3FixInit(tls, bp, pParse, iDb, __ccgo_ts+13668, *(*uintptr)(unsafe.Pointer(bp + 96)))
 		if _sqlite3FixSrcList(tls, bp, pTblName) != 0 {
 			/* Because the parser constructs pTblName from a single identifier,
 			 ** sqlite3FixSrcList can never fail. */
@@ -94323,7 +94323,7 @@ func _sqlite3CreateIndex(tls *libc.TLS, pParse uintptr, pName1 uintptr, pName2 u
 			goto exit_create_index
 		}
 		if iDb == int32(1) && (*(*TDb)(unsafe.Pointer((*Tsqlite3)(unsafe.Pointer(db)).FaDb + uintptr(iDb)*32))).FpSchema != (*TTable)(unsafe.Pointer(pTab)).FpSchema {
-			_sqlite3ErrorMsg(tls, pParse, __ccgo_ts+13654, libc.VaList(bp+136, (*TTable)(unsafe.Pointer(pTab)).FzName))
+			_sqlite3ErrorMsg(tls, pParse, __ccgo_ts+13674, libc.VaList(bp+136, (*TTable)(unsafe.Pointer(pTab)).FzName))
 			goto exit_create_index
 		}
 		if !((*TTable)(unsafe.Pointer(pTab)).FtabFlags&libc.Uint32FromInt32(m_TF_WithoutRowid) == libc.Uint32FromInt32(0)) {
@@ -94341,16 +94341,16 @@ func _sqlite3CreateIndex(tls *libc.TLS, pParse uintptr, pName1 uintptr, pName2 u
 	pDb = (*Tsqlite3)(unsafe.Pointer(db)).FaDb + uintptr(iDb)*32
 	_ = libc.Int32FromInt32(0)
 	_ = libc.Int32FromInt32(0)
-	if Xsqlite3_strnicmp(tls, (*TTable)(unsafe.Pointer(pTab)).FzName, __ccgo_ts+7939, int32(7)) == 0 && int32((*Tsqlite3)(unsafe.Pointer(db)).Finit1.Fbusy) == 0 && pTblName != uintptr(0) {
-		_sqlite3ErrorMsg(tls, pParse, __ccgo_ts+13704, libc.VaList(bp+136, (*TTable)(unsafe.Pointer(pTab)).FzName))
+	if Xsqlite3_strnicmp(tls, (*TTable)(unsafe.Pointer(pTab)).FzName, __ccgo_ts+7959, int32(7)) == 0 && int32((*Tsqlite3)(unsafe.Pointer(db)).Finit1.Fbusy) == 0 && pTblName != uintptr(0) {
+		_sqlite3ErrorMsg(tls, pParse, __ccgo_ts+13724, libc.VaList(bp+136, (*TTable)(unsafe.Pointer(pTab)).FzName))
 		goto exit_create_index
 	}
 	if int32((*TTable)(unsafe.Pointer(pTab)).FeTabType) == int32(m_TABTYP_VIEW) {
-		_sqlite3ErrorMsg(tls, pParse, __ccgo_ts+13732, 0)
+		_sqlite3ErrorMsg(tls, pParse, __ccgo_ts+13752, 0)
 		goto exit_create_index
 	}
 	if int32((*TTable)(unsafe.Pointer(pTab)).FeTabType) == int32(m_TABTYP_VTAB) {
-		_sqlite3ErrorMsg(tls, pParse, __ccgo_ts+13757, 0)
+		_sqlite3ErrorMsg(tls, pParse, __ccgo_ts+13777, 0)
 		goto exit_create_index
 	}
 	/*
@@ -94372,19 +94372,19 @@ func _sqlite3CreateIndex(tls *libc.TLS, pParse uintptr, pName1 uintptr, pName2 u
 			goto exit_create_index
 		}
 		_ = libc.Int32FromInt32(0)
-		if m_SQLITE_OK != _sqlite3CheckObjectName(tls, pParse, zName, __ccgo_ts+13648, (*TTable)(unsafe.Pointer(pTab)).FzName) {
+		if m_SQLITE_OK != _sqlite3CheckObjectName(tls, pParse, zName, __ccgo_ts+13668, (*TTable)(unsafe.Pointer(pTab)).FzName) {
 			goto exit_create_index
 		}
 		if !(int32((*TParse)(unsafe.Pointer(pParse)).FeParseMode) >= libc.Int32FromInt32(m_PARSE_MODE_RENAME)) {
 			if !((*Tsqlite3)(unsafe.Pointer(db)).Finit1.Fbusy != 0) {
 				if _sqlite3FindTable(tls, db, zName, uintptr(0)) != uintptr(0) {
-					_sqlite3ErrorMsg(tls, pParse, __ccgo_ts+13791, libc.VaList(bp+136, zName))
+					_sqlite3ErrorMsg(tls, pParse, __ccgo_ts+13811, libc.VaList(bp+136, zName))
 					goto exit_create_index
 				}
 			}
 			if _sqlite3FindIndex(tls, db, zName, (*TDb)(unsafe.Pointer(pDb)).FzDbSName) != uintptr(0) {
 				if !(ifNotExist != 0) {
-					_sqlite3ErrorMsg(tls, pParse, __ccgo_ts+13825, libc.VaList(bp+136, zName))
+					_sqlite3ErrorMsg(tls, pParse, __ccgo_ts+13845, libc.VaList(bp+136, zName))
 				} else {
 					_ = libc.Int32FromInt32(0)
 					_sqlite3CodeVerifySchema(tls, pParse, iDb)
@@ -94405,7 +94405,7 @@ func _sqlite3CreateIndex(tls *libc.TLS, pParse uintptr, pName1 uintptr, pName2 u
 			pLoop = (*TIndex)(unsafe.Pointer(pLoop)).FpNext
 			n++
 		}
-		zName = _sqlite3MPrintf(tls, db, __ccgo_ts+13849, libc.VaList(bp+136, (*TTable)(unsafe.Pointer(pTab)).FzName, n))
+		zName = _sqlite3MPrintf(tls, db, __ccgo_ts+13869, libc.VaList(bp+136, (*TTable)(unsafe.Pointer(pTab)).FzName, n))
 		if zName == uintptr(0) {
 			goto exit_create_index
 		}
@@ -94423,9 +94423,9 @@ func _sqlite3CreateIndex(tls *libc.TLS, pParse uintptr, pName1 uintptr, pName2 u
 	if !(int32((*TParse)(unsafe.Pointer(pParse)).FeParseMode) >= libc.Int32FromInt32(m_PARSE_MODE_RENAME)) {
 		zDb = (*TDb)(unsafe.Pointer(pDb)).FzDbSName
 		if libc.Bool(!(libc.Int32FromInt32(m_OMIT_TEMPDB) != 0)) && iDb == int32(1) {
-			v2 = __ccgo_ts + 11928
+			v2 = __ccgo_ts + 11948
 		} else {
-			v2 = __ccgo_ts + 5787
+			v2 = __ccgo_ts + 5807
 		}
 		if _sqlite3AuthCheck(tls, pParse, int32(m_SQLITE_INSERT), v2, uintptr(0), zDb) != 0 {
 			goto exit_create_index
@@ -94454,7 +94454,7 @@ func _sqlite3CreateIndex(tls *libc.TLS, pParse uintptr, pName1 uintptr, pName2 u
 		_ = libc.Int32FromInt32(0)
 		_sqlite3ExprListSetSortOrder(tls, pList, sortOrder, -int32(1))
 	} else {
-		_sqlite3ExprListCheckLength(tls, pParse, pList, __ccgo_ts+13648)
+		_sqlite3ExprListCheckLength(tls, pParse, pList, __ccgo_ts+13668)
 		if (*TParse)(unsafe.Pointer(pParse)).FnErr != 0 {
 			goto exit_create_index
 		}
@@ -94543,7 +94543,7 @@ func _sqlite3CreateIndex(tls *libc.TLS, pParse uintptr, pName1 uintptr, pName2 u
 		pCExpr = _sqlite3ExprSkipCollate(tls, (*TExprList_item)(unsafe.Pointer(pListItem)).FpExpr)
 		if int32((*TExpr)(unsafe.Pointer(pCExpr)).Fop) != int32(m_TK_COLUMN) {
 			if pTab == (*TParse)(unsafe.Pointer(pParse)).FpNewTable {
-				_sqlite3ErrorMsg(tls, pParse, __ccgo_ts+13872, 0)
+				_sqlite3ErrorMsg(tls, pParse, __ccgo_ts+13892, 0)
 				goto exit_create_index
 			}
 			if (*TIndex)(unsafe.Pointer(pIndex)).FaColExpr == uintptr(0) {
@@ -94694,7 +94694,7 @@ func _sqlite3CreateIndex(tls *libc.TLS, pParse uintptr, pName1 uintptr, pName2 u
 					 ** explicitly specified behavior for the index.
 					 */
 					if !(int32((*TIndex)(unsafe.Pointer(pIdx)).FonError) == int32(m_OE_Default) || int32((*TIndex)(unsafe.Pointer(pIndex)).FonError) == int32(m_OE_Default)) {
-						_sqlite3ErrorMsg(tls, pParse, __ccgo_ts+13933, libc.VaList(bp+136, 0))
+						_sqlite3ErrorMsg(tls, pParse, __ccgo_ts+13953, libc.VaList(bp+136, 0))
 					}
 					if int32((*TIndex)(unsafe.Pointer(pIdx)).FonError) == int32(m_OE_Default) {
 						(*TIndex)(unsafe.Pointer(pIdx)).FonError = (*TIndex)(unsafe.Pointer(pIndex)).FonError
@@ -94726,7 +94726,7 @@ func _sqlite3CreateIndex(tls *libc.TLS, pParse uintptr, pName1 uintptr, pName2 u
 			if pTblName != uintptr(0) {
 				(*TIndex)(unsafe.Pointer(pIndex)).Ftnum = (*Tsqlite3)(unsafe.Pointer(db)).Finit1.FnewTnum
 				if _sqlite3IndexHasDuplicateRootPage(tls, pIndex) != 0 {
-					_sqlite3ErrorMsg(tls, pParse, __ccgo_ts+13975, 0)
+					_sqlite3ErrorMsg(tls, pParse, __ccgo_ts+13995, 0)
 					(*TParse)(unsafe.Pointer(pParse)).Frc = _sqlite3CorruptError(tls, int32(117375))
 					goto exit_create_index
 				}
@@ -94768,11 +94768,11 @@ func _sqlite3CreateIndex(tls *libc.TLS, pParse uintptr, pName1 uintptr, pName2 u
 					}
 					/* A named index with an explicit CREATE INDEX statement */
 					if onError == m_OE_None {
-						v13 = __ccgo_ts + 1511
+						v13 = __ccgo_ts + 1531
 					} else {
-						v13 = __ccgo_ts + 13992
+						v13 = __ccgo_ts + 14012
 					}
-					zStmt = _sqlite3MPrintf(tls, db, __ccgo_ts+14000, libc.VaList(bp+136, v13, n1, (*TToken)(unsafe.Pointer(*(*uintptr)(unsafe.Pointer(bp + 96)))).Fz))
+					zStmt = _sqlite3MPrintf(tls, db, __ccgo_ts+14020, libc.VaList(bp+136, v13, n1, (*TToken)(unsafe.Pointer(*(*uintptr)(unsafe.Pointer(bp + 96)))).Fz))
 				} else {
 					/* An automatic index created by a PRIMARY KEY or UNIQUE constraint */
 					/* zStmt = sqlite3MPrintf(""); */
@@ -94780,7 +94780,7 @@ func _sqlite3CreateIndex(tls *libc.TLS, pParse uintptr, pName1 uintptr, pName2 u
 				}
 				/* Add an entry in sqlite_schema for this index
 				 */
-				_sqlite3NestedParse(tls, pParse, __ccgo_ts+14020, libc.VaList(bp+136, (*(*TDb)(unsafe.Pointer((*Tsqlite3)(unsafe.Pointer(db)).FaDb + uintptr(iDb)*32))).FzDbSName, (*TIndex)(unsafe.Pointer(pIndex)).FzName, (*TTable)(unsafe.Pointer(pTab)).FzName, iMem, zStmt))
+				_sqlite3NestedParse(tls, pParse, __ccgo_ts+14040, libc.VaList(bp+136, (*(*TDb)(unsafe.Pointer((*Tsqlite3)(unsafe.Pointer(db)).FaDb + uintptr(iDb)*32))).FzDbSName, (*TIndex)(unsafe.Pointer(pIndex)).FzName, (*TTable)(unsafe.Pointer(pTab)).FzName, iMem, zStmt))
 				_sqlite3DbFree(tls, db, zStmt)
 				/* Fill the index with data and reparse the schema. Code an OP_Expire
 				 ** to invalidate all pre-compiled statements.
@@ -94788,7 +94788,7 @@ func _sqlite3CreateIndex(tls *libc.TLS, pParse uintptr, pName1 uintptr, pName2 u
 				if pTblName != 0 {
 					_sqlite3RefillIndex(tls, pParse, pIndex, iMem)
 					_sqlite3ChangeCookie(tls, pParse, iDb)
-					_sqlite3VdbeAddParseSchemaOp(tls, v, iDb, _sqlite3MPrintf(tls, db, __ccgo_ts+14079, libc.VaList(bp+136, (*TIndex)(unsafe.Pointer(pIndex)).FzName)), uint16(0))
+					_sqlite3VdbeAddParseSchemaOp(tls, v, iDb, _sqlite3MPrintf(tls, db, __ccgo_ts+14099, libc.VaList(bp+136, (*TIndex)(unsafe.Pointer(pIndex)).FzName)), uint16(0))
 					_sqlite3VdbeAddOp2(tls, v, int32(m_OP_Expire), 0, int32(1))
 				}
 				_sqlite3VdbeJumpHere(tls, v, int32((*TIndex)(unsafe.Pointer(pIndex)).Ftnum))
@@ -94954,7 +94954,7 @@ func _sqlite3DropIndex(tls *libc.TLS, pParse uintptr, pName uintptr, ifExists in
 	pIndex = _sqlite3FindIndex(tls, db, (*(*TSrcItem)(unsafe.Pointer(pName + 8))).FzName, (*(*TSrcItem)(unsafe.Pointer(pName + 8))).FzDatabase)
 	if pIndex == uintptr(0) {
 		if !(ifExists != 0) {
-			_sqlite3ErrorMsg(tls, pParse, __ccgo_ts+14106, libc.VaList(bp+8, pName+8))
+			_sqlite3ErrorMsg(tls, pParse, __ccgo_ts+14126, libc.VaList(bp+8, pName+8))
 		} else {
 			_sqlite3CodeVerifyNamedSchema(tls, pParse, (*(*TSrcItem)(unsafe.Pointer(pName + 8))).FzDatabase)
 			_sqlite3ForceNotReadOnly(tls, pParse)
@@ -94963,7 +94963,7 @@ func _sqlite3DropIndex(tls *libc.TLS, pParse uintptr, pName uintptr, ifExists in
 		goto exit_drop_index
 	}
 	if int32(uint32(*(*uint16)(unsafe.Pointer(pIndex + 100))&0x3>>0)) != m_SQLITE_IDXTYPE_APPDEF {
-		_sqlite3ErrorMsg(tls, pParse, __ccgo_ts+14124, libc.VaList(bp+8, 0))
+		_sqlite3ErrorMsg(tls, pParse, __ccgo_ts+14144, libc.VaList(bp+8, 0))
 		goto exit_drop_index
 	}
 	iDb = _sqlite3SchemaToIndex(tls, db, (*TIndex)(unsafe.Pointer(pIndex)).FpSchema)
@@ -94971,9 +94971,9 @@ func _sqlite3DropIndex(tls *libc.TLS, pParse uintptr, pName uintptr, ifExists in
 	pTab = (*TIndex)(unsafe.Pointer(pIndex)).FpTable
 	zDb = (*(*TDb)(unsafe.Pointer((*Tsqlite3)(unsafe.Pointer(db)).FaDb + uintptr(iDb)*32))).FzDbSName
 	if libc.Bool(!(libc.Int32FromInt32(m_OMIT_TEMPDB) != 0)) && iDb == int32(1) {
-		v1 = __ccgo_ts + 11928
+		v1 = __ccgo_ts + 11948
 	} else {
-		v1 = __ccgo_ts + 5787
+		v1 = __ccgo_ts + 5807
 	}
 	zTab = v1
 	if _sqlite3AuthCheck(tls, pParse, int32(m_SQLITE_DELETE), zTab, uintptr(0), zDb) != 0 {
@@ -94989,8 +94989,8 @@ func _sqlite3DropIndex(tls *libc.TLS, pParse uintptr, pName uintptr, ifExists in
 	v = _sqlite3GetVdbe(tls, pParse)
 	if v != 0 {
 		_sqlite3BeginWriteOperation(tls, pParse, int32(1), iDb)
-		_sqlite3NestedParse(tls, pParse, __ccgo_ts+14197, libc.VaList(bp+8, (*(*TDb)(unsafe.Pointer((*Tsqlite3)(unsafe.Pointer(db)).FaDb + uintptr(iDb)*32))).FzDbSName, (*TIndex)(unsafe.Pointer(pIndex)).FzName))
-		_sqlite3ClearStatTables(tls, pParse, iDb, __ccgo_ts+11268, (*TIndex)(unsafe.Pointer(pIndex)).FzName)
+		_sqlite3NestedParse(tls, pParse, __ccgo_ts+14217, libc.VaList(bp+8, (*(*TDb)(unsafe.Pointer((*Tsqlite3)(unsafe.Pointer(db)).FaDb + uintptr(iDb)*32))).FzDbSName, (*TIndex)(unsafe.Pointer(pIndex)).FzName))
+		_sqlite3ClearStatTables(tls, pParse, iDb, __ccgo_ts+11288, (*TIndex)(unsafe.Pointer(pIndex)).FzName)
 		_sqlite3ChangeCookie(tls, pParse, iDb)
 		_destroyRootPage(tls, pParse, int32((*TIndex)(unsafe.Pointer(pIndex)).Ftnum), iDb)
 		_sqlite3VdbeAddOp4(tls, v, int32(m_OP_DropIndex), iDb, 0, 0, (*TIndex)(unsafe.Pointer(pIndex)).FzName, 0)
@@ -95180,7 +95180,7 @@ func _sqlite3SrcListEnlarge(tls *libc.TLS, pParse uintptr, pSrc uintptr, nExtra 
 		nAlloc = int64(2)*int64((*TSrcList)(unsafe.Pointer(pSrc)).FnSrc) + int64(nExtra)
 		db = (*TParse)(unsafe.Pointer(pParse)).Fdb
 		if (*TSrcList)(unsafe.Pointer(pSrc)).FnSrc+nExtra >= int32(m_SQLITE_MAX_SRCLIST) {
-			_sqlite3ErrorMsg(tls, pParse, __ccgo_ts+14257, libc.VaList(bp+8, int32(m_SQLITE_MAX_SRCLIST)))
+			_sqlite3ErrorMsg(tls, pParse, __ccgo_ts+14277, libc.VaList(bp+8, int32(m_SQLITE_MAX_SRCLIST)))
 			return uintptr(0)
 		}
 		if nAlloc > int64(m_SQLITE_MAX_SRCLIST) {
@@ -95409,11 +95409,11 @@ func _sqlite3SrcListAppendFromTerm(tls *libc.TLS, pParse uintptr, p uintptr, pTa
 	db = (*TParse)(unsafe.Pointer(pParse)).Fdb
 	if !(p != 0) && (pOn != 0 || pUsing != 0) {
 		if pOn != 0 {
-			v1 = __ccgo_ts + 14293
+			v1 = __ccgo_ts + 14313
 		} else {
-			v1 = __ccgo_ts + 14296
+			v1 = __ccgo_ts + 14316
 		}
-		_sqlite3ErrorMsg(tls, pParse, __ccgo_ts+14302, libc.VaList(bp+8, v1))
+		_sqlite3ErrorMsg(tls, pParse, __ccgo_ts+14322, libc.VaList(bp+8, v1))
 		goto append_from_error
 	}
 	p = _sqlite3SrcListAppend(tls, pParse, p, pTable, pDatabase)
@@ -95569,7 +95569,7 @@ func _sqlite3BeginTransaction(tls *libc.TLS, pParse uintptr, type1 int32) {
 	_ = libc.Int32FromInt32(0)
 	db = (*TParse)(unsafe.Pointer(pParse)).Fdb
 	_ = libc.Int32FromInt32(0)
-	if _sqlite3AuthCheck(tls, pParse, int32(m_SQLITE_TRANSACTION), __ccgo_ts+14338, uintptr(0), uintptr(0)) != 0 {
+	if _sqlite3AuthCheck(tls, pParse, int32(m_SQLITE_TRANSACTION), __ccgo_ts+14358, uintptr(0), uintptr(0)) != 0 {
 		return
 	}
 	v = _sqlite3GetVdbe(tls, pParse)
@@ -95618,9 +95618,9 @@ func _sqlite3EndTransaction(tls *libc.TLS, pParse uintptr, eType int32) {
 	_ = libc.Int32FromInt32(0)
 	isRollback = libc.BoolInt32(eType == int32(m_TK_ROLLBACK))
 	if isRollback != 0 {
-		v1 = __ccgo_ts + 14344
+		v1 = __ccgo_ts + 14364
 	} else {
-		v1 = __ccgo_ts + 14353
+		v1 = __ccgo_ts + 14373
 	}
 	if _sqlite3AuthCheck(tls, pParse, int32(m_SQLITE_TRANSACTION), v1, uintptr(0), uintptr(0)) != 0 {
 		return
@@ -95653,9 +95653,9 @@ func _sqlite3Savepoint(tls *libc.TLS, pParse uintptr, op int32, pName uintptr) {
 }
 
 var _az = [3]uintptr{
-	0: __ccgo_ts + 14338,
-	1: __ccgo_ts + 14360,
-	2: __ccgo_ts + 14344,
+	0: __ccgo_ts + 14358,
+	1: __ccgo_ts + 14380,
+	2: __ccgo_ts + 14364,
 }
 
 // C documentation
@@ -95675,7 +95675,7 @@ func _sqlite3OpenTempDatabase(tls *libc.TLS, pParse uintptr) (r int32) {
 	if (*(*TDb)(unsafe.Pointer((*Tsqlite3)(unsafe.Pointer(db)).FaDb + 1*32))).FpBt == uintptr(0) && !((*TParse)(unsafe.Pointer(pParse)).Fexplain != 0) {
 		rc = _sqlite3BtreeOpen(tls, (*Tsqlite3)(unsafe.Pointer(db)).FpVfs, uintptr(0), db, bp, 0, _flags)
 		if rc != m_SQLITE_OK {
-			_sqlite3ErrorMsg(tls, pParse, __ccgo_ts+14368, 0)
+			_sqlite3ErrorMsg(tls, pParse, __ccgo_ts+14388, 0)
 			(*TParse)(unsafe.Pointer(pParse)).Frc = rc
 			return int32(1)
 		}
@@ -95865,7 +95865,7 @@ func _sqlite3UniqueConstraint(tls *libc.TLS, pParse uintptr, onError int32, pIdx
 	pTab = (*TIndex)(unsafe.Pointer(pIdx)).FpTable
 	_sqlite3StrAccumInit(tls, bp, (*TParse)(unsafe.Pointer(pParse)).Fdb, uintptr(0), 0, *(*int32)(unsafe.Pointer((*TParse)(unsafe.Pointer(pParse)).Fdb + 136)))
 	if (*TIndex)(unsafe.Pointer(pIdx)).FaColExpr != 0 {
-		Xsqlite3_str_appendf(tls, bp, __ccgo_ts+14438, libc.VaList(bp+40, (*TIndex)(unsafe.Pointer(pIdx)).FzName))
+		Xsqlite3_str_appendf(tls, bp, __ccgo_ts+14458, libc.VaList(bp+40, (*TIndex)(unsafe.Pointer(pIdx)).FzName))
 	} else {
 		j = 0
 		for {
@@ -95875,10 +95875,10 @@ func _sqlite3UniqueConstraint(tls *libc.TLS, pParse uintptr, onError int32, pIdx
 			_ = libc.Int32FromInt32(0)
 			zCol = (*(*TColumn)(unsafe.Pointer((*TTable)(unsafe.Pointer(pTab)).FaCol + uintptr(*(*Ti16)(unsafe.Pointer((*TIndex)(unsafe.Pointer(pIdx)).FaiColumn + uintptr(j)*2)))*16))).FzCnName
 			if j != 0 {
-				Xsqlite3_str_append(tls, bp, __ccgo_ts+14449, int32(2))
+				Xsqlite3_str_append(tls, bp, __ccgo_ts+14469, int32(2))
 			}
 			Xsqlite3_str_appendall(tls, bp, (*TTable)(unsafe.Pointer(pTab)).FzName)
-			Xsqlite3_str_append(tls, bp, __ccgo_ts+1524, int32(1))
+			Xsqlite3_str_append(tls, bp, __ccgo_ts+1544, int32(1))
 			Xsqlite3_str_appendall(tls, bp, zCol)
 			goto _1
 		_1:
@@ -95906,10 +95906,10 @@ func _sqlite3RowidConstraint(tls *libc.TLS, pParse uintptr, onError int32, pTab 
 	var zMsg uintptr
 	_, _ = rc, zMsg
 	if int32((*TTable)(unsafe.Pointer(pTab)).FiPKey) >= 0 {
-		zMsg = _sqlite3MPrintf(tls, (*TParse)(unsafe.Pointer(pParse)).Fdb, __ccgo_ts+11841, libc.VaList(bp+8, (*TTable)(unsafe.Pointer(pTab)).FzName, (*(*TColumn)(unsafe.Pointer((*TTable)(unsafe.Pointer(pTab)).FaCol + uintptr((*TTable)(unsafe.Pointer(pTab)).FiPKey)*16))).FzCnName))
+		zMsg = _sqlite3MPrintf(tls, (*TParse)(unsafe.Pointer(pParse)).Fdb, __ccgo_ts+11861, libc.VaList(bp+8, (*TTable)(unsafe.Pointer(pTab)).FzName, (*(*TColumn)(unsafe.Pointer((*TTable)(unsafe.Pointer(pTab)).FaCol + uintptr((*TTable)(unsafe.Pointer(pTab)).FiPKey)*16))).FzCnName))
 		rc = libc.Int32FromInt32(m_SQLITE_CONSTRAINT) | libc.Int32FromInt32(6)<<libc.Int32FromInt32(8)
 	} else {
-		zMsg = _sqlite3MPrintf(tls, (*TParse)(unsafe.Pointer(pParse)).Fdb, __ccgo_ts+14452, libc.VaList(bp+8, (*TTable)(unsafe.Pointer(pTab)).FzName))
+		zMsg = _sqlite3MPrintf(tls, (*TParse)(unsafe.Pointer(pParse)).Fdb, __ccgo_ts+14472, libc.VaList(bp+8, (*TTable)(unsafe.Pointer(pTab)).FzName))
 		rc = libc.Int32FromInt32(m_SQLITE_CONSTRAINT) | libc.Int32FromInt32(10)<<libc.Int32FromInt32(8)
 	}
 	_sqlite3HaltConstraint(tls, pParse, rc, onError, zMsg, int8(-libc.Int32FromInt32(7)), uint8(m_P5_ConstraintUnique))
@@ -96078,7 +96078,7 @@ func _sqlite3Reindex(tls *libc.TLS, pParse uintptr, pName1 uintptr, pName2 uintp
 		_sqlite3RefillIndex(tls, pParse, pIndex, -int32(1))
 		return
 	}
-	_sqlite3ErrorMsg(tls, pParse, __ccgo_ts+14461, 0)
+	_sqlite3ErrorMsg(tls, pParse, __ccgo_ts+14481, 0)
 }
 
 // C documentation
@@ -96219,7 +96219,7 @@ func _sqlite3WithAdd(tls *libc.TLS, pParse uintptr, pWith uintptr, pCte uintptr)
 				break
 			}
 			if _sqlite3StrICmp(tls, zName, (*(*TCte)(unsafe.Pointer(pWith + 16 + uintptr(i)*48))).FzName) == 0 {
-				_sqlite3ErrorMsg(tls, pParse, __ccgo_ts+14507, libc.VaList(bp+8, zName))
+				_sqlite3ErrorMsg(tls, pParse, __ccgo_ts+14527, libc.VaList(bp+8, zName))
 			}
 			goto _1
 		_1:
@@ -96524,7 +96524,7 @@ func _sqlite3GetCollSeq(tls *libc.TLS, pParse uintptr, enc Tu8, pColl uintptr, z
 	}
 	_ = libc.Int32FromInt32(0)
 	if p == uintptr(0) {
-		_sqlite3ErrorMsg(tls, pParse, __ccgo_ts+14537, libc.VaList(bp+8, zName))
+		_sqlite3ErrorMsg(tls, pParse, __ccgo_ts+14557, libc.VaList(bp+8, zName))
 		(*TParse)(unsafe.Pointer(pParse)).Frc = libc.Int32FromInt32(m_SQLITE_ERROR) | libc.Int32FromInt32(1)<<libc.Int32FromInt32(8)
 	}
 	return p
@@ -96976,11 +96976,11 @@ func _sqlite3IsReadOnly(tls *libc.TLS, pParse uintptr, pTab uintptr, viewOk int3
 	bp := tls.Alloc(16)
 	defer tls.Free(16)
 	if _tabIsReadOnly(tls, pParse, pTab) != 0 {
-		_sqlite3ErrorMsg(tls, pParse, __ccgo_ts+14568, libc.VaList(bp+8, (*TTable)(unsafe.Pointer(pTab)).FzName))
+		_sqlite3ErrorMsg(tls, pParse, __ccgo_ts+14588, libc.VaList(bp+8, (*TTable)(unsafe.Pointer(pTab)).FzName))
 		return int32(1)
 	}
 	if !(viewOk != 0) && int32((*TTable)(unsafe.Pointer(pTab)).FeTabType) == int32(m_TABTYP_VIEW) {
-		_sqlite3ErrorMsg(tls, pParse, __ccgo_ts+14597, libc.VaList(bp+8, (*TTable)(unsafe.Pointer(pTab)).FzName))
+		_sqlite3ErrorMsg(tls, pParse, __ccgo_ts+14617, libc.VaList(bp+8, (*TTable)(unsafe.Pointer(pTab)).FzName))
 		return int32(1)
 	}
 	return 0
@@ -97406,7 +97406,7 @@ func _sqlite3DeleteFrom(tls *libc.TLS, pParse uintptr, pTabList uintptr, pWhere 
 	if memCnt != 0 {
 		_sqlite3VdbeAddOp2(tls, v, int32(m_OP_ChngCntRow), memCnt, int32(1))
 		_sqlite3VdbeSetNumCols(tls, v, int32(1))
-		_sqlite3VdbeSetColName(tls, v, 0, m_COLNAME_NAME, __ccgo_ts+14635, libc.UintptrFromInt32(0))
+		_sqlite3VdbeSetColName(tls, v, 0, m_COLNAME_NAME, __ccgo_ts+14655, libc.UintptrFromInt32(0))
 	}
 delete_from_cleanup:
 	_sqlite3AuthContextPop(tls, bp+8)
@@ -97550,7 +97550,7 @@ func _sqlite3GenerateRowDelete(tls *libc.TLS, pParse uintptr, pTab uintptr, pTri
 			v3 = 0
 		}
 		_sqlite3VdbeAddOp2(tls, v, int32(m_OP_Delete), iDataCur, v3)
-		if int32((*TParse)(unsafe.Pointer(pParse)).Fnested) == 0 || 0 == Xsqlite3_stricmp(tls, (*TTable)(unsafe.Pointer(pTab)).FzName, __ccgo_ts+11057) {
+		if int32((*TParse)(unsafe.Pointer(pParse)).Fnested) == 0 || 0 == Xsqlite3_stricmp(tls, (*TTable)(unsafe.Pointer(pTab)).FzName, __ccgo_ts+11077) {
 			_sqlite3VdbeAppendP4(tls, v, pTab, -int32(6))
 		}
 		if int32(eMode) != m_ONEPASS_OFF {
@@ -97863,11 +97863,11 @@ func _typeofFunc(tls *libc.TLS, context uintptr, NotUsed int32, argv uintptr) {
 }
 
 var _azType2 = [5]uintptr{
-	0: __ccgo_ts + 6036,
-	1: __ccgo_ts + 6031,
-	2: __ccgo_ts + 7822,
-	3: __ccgo_ts + 7817,
-	4: __ccgo_ts + 6026,
+	0: __ccgo_ts + 6056,
+	1: __ccgo_ts + 6051,
+	2: __ccgo_ts + 7842,
+	3: __ccgo_ts + 7837,
+	4: __ccgo_ts + 6046,
 }
 
 // C documentation
@@ -97937,7 +97937,7 @@ func _absFunc(tls *libc.TLS, context uintptr, argc int32, argv uintptr) {
 				/* IMP: R-31676-45509 If X is the integer -9223372036854775808
 				 ** then abs(X) throws an integer overflow error since there is no
 				 ** equivalent positive 64-bit two complement value. */
-				Xsqlite3_result_error(tls, context, __ccgo_ts+14648, -int32(1))
+				Xsqlite3_result_error(tls, context, __ccgo_ts+14668, -int32(1))
 				return
 			}
 			iVal = -iVal
@@ -98250,7 +98250,7 @@ func _roundFunc(tls *libc.TLS, context uintptr, argc int32, argv uintptr) {
 			}
 			*(*float64)(unsafe.Pointer(bp)) = float64(int64(*(*float64)(unsafe.Pointer(bp)) + v1))
 		} else {
-			zBuf = Xsqlite3_mprintf(tls, __ccgo_ts+14665, libc.VaList(bp+16, n, *(*float64)(unsafe.Pointer(bp))))
+			zBuf = Xsqlite3_mprintf(tls, __ccgo_ts+14685, libc.VaList(bp+16, n, *(*float64)(unsafe.Pointer(bp))))
 			if zBuf == uintptr(0) {
 				Xsqlite3_result_error_nomem(tls, context)
 				return
@@ -98812,7 +98812,7 @@ func _likeFunc(tls *libc.TLS, context uintptr, argc int32, argv uintptr) {
 	 */
 	nPat = Xsqlite3_value_bytes(tls, *(*uintptr)(unsafe.Pointer(argv)))
 	if nPat > *(*int32)(unsafe.Pointer(db + 136 + 8*4)) {
-		Xsqlite3_result_error(tls, context, __ccgo_ts+14670, -int32(1))
+		Xsqlite3_result_error(tls, context, __ccgo_ts+14690, -int32(1))
 		return
 	}
 	if argc == int32(3) {
@@ -98824,7 +98824,7 @@ func _likeFunc(tls *libc.TLS, context uintptr, argc int32, argv uintptr) {
 			return
 		}
 		if _sqlite3Utf8CharLen(tls, *(*uintptr)(unsafe.Pointer(bp + 8)), -int32(1)) != int32(1) {
-			Xsqlite3_result_error(tls, context, __ccgo_ts+14703, -int32(1))
+			Xsqlite3_result_error(tls, context, __ccgo_ts+14723, -int32(1))
 			return
 		}
 		escape = _sqlite3Utf8Read(tls, bp+8)
@@ -98906,7 +98906,7 @@ func _errlogFunc(tls *libc.TLS, context uintptr, argc int32, argv uintptr) {
 	defer tls.Free(16)
 	_ = argc
 	_ = context
-	Xsqlite3_log(tls, Xsqlite3_value_int(tls, *(*uintptr)(unsafe.Pointer(argv))), __ccgo_ts+3560, libc.VaList(bp+8, Xsqlite3_value_text(tls, *(*uintptr)(unsafe.Pointer(argv + 1*8)))))
+	Xsqlite3_log(tls, Xsqlite3_value_int(tls, *(*uintptr)(unsafe.Pointer(argv))), __ccgo_ts+3580, libc.VaList(bp+8, Xsqlite3_value_text(tls, *(*uintptr)(unsafe.Pointer(argv + 1*8)))))
 }
 
 // C documentation
@@ -98998,10 +98998,10 @@ func _quoteFunc(tls *libc.TLS, context uintptr, argc int32, argv uintptr) {
 	switch Xsqlite3_value_type(tls, *(*uintptr)(unsafe.Pointer(argv))) {
 	case int32(m_SQLITE_FLOAT):
 		r1 = Xsqlite3_value_double(tls, *(*uintptr)(unsafe.Pointer(argv)))
-		Xsqlite3_snprintf(tls, int32(50), bp+8, __ccgo_ts+4788, libc.VaList(bp+72, r1))
+		Xsqlite3_snprintf(tls, int32(50), bp+8, __ccgo_ts+4808, libc.VaList(bp+72, r1))
 		_sqlite3AtoF(tls, bp+8, bp, int32(20), uint8(m_SQLITE_UTF8))
 		if r1 != *(*float64)(unsafe.Pointer(bp)) {
-			Xsqlite3_snprintf(tls, int32(50), bp+8, __ccgo_ts+14748, libc.VaList(bp+72, r1))
+			Xsqlite3_snprintf(tls, int32(50), bp+8, __ccgo_ts+14768, libc.VaList(bp+72, r1))
 		}
 		Xsqlite3_result_text(tls, context, bp+8, -int32(1), uintptr(-libc.Int32FromInt32(1)))
 	case int32(m_SQLITE_INTEGER):
@@ -99078,7 +99078,7 @@ func _quoteFunc(tls *libc.TLS, context uintptr, argc int32, argv uintptr) {
 		}
 	default:
 		_ = libc.Int32FromInt32(0)
-		Xsqlite3_result_text(tls, context, __ccgo_ts+1512, int32(4), libc.UintptrFromInt32(0))
+		Xsqlite3_result_text(tls, context, __ccgo_ts+1532, int32(4), libc.UintptrFromInt32(0))
 		break
 	}
 }
@@ -99471,7 +99471,7 @@ var _lenOne = [1]uint32{
 }
 
 var _azOne = [1]uintptr{
-	0: __ccgo_ts + 10685,
+	0: __ccgo_ts + 10705,
 }
 
 // C documentation
@@ -99497,7 +99497,7 @@ func _soundexFunc(tls *libc.TLS, context uintptr, argc int32, argv uintptr) {
 	_ = libc.Int32FromInt32(0)
 	zIn = Xsqlite3_value_text(tls, *(*uintptr)(unsafe.Pointer(argv)))
 	if zIn == uintptr(0) {
-		zIn = __ccgo_ts + 1511
+		zIn = __ccgo_ts + 1531
 	}
 	i = 0
 	for {
@@ -99541,7 +99541,7 @@ func _soundexFunc(tls *libc.TLS, context uintptr, argc int32, argv uintptr) {
 	} else {
 		/* IMP: R-64894-50321 The string "?000" is returned if the argument
 		 ** is NULL or contains no ASCII alphabetic characters. */
-		Xsqlite3_result_text(tls, context, __ccgo_ts+14755, int32(4), libc.UintptrFromInt32(0))
+		Xsqlite3_result_text(tls, context, __ccgo_ts+14775, int32(4), libc.UintptrFromInt32(0))
 	}
 }
 
@@ -99602,7 +99602,7 @@ func _loadExt(tls *libc.TLS, context uintptr, argc int32, argv uintptr) {
 	 ** flag is set.  See the sqlite3_enable_load_extension() API.
 	 */
 	if (*Tsqlite3)(unsafe.Pointer(db)).Fflags&uint64(m_SQLITE_LoadExtFunc) == uint64(0) {
-		Xsqlite3_result_error(tls, context, __ccgo_ts+11880, -int32(1))
+		Xsqlite3_result_error(tls, context, __ccgo_ts+11900, -int32(1))
 		return
 	}
 	if argc == int32(2) {
@@ -99708,7 +99708,7 @@ func _sumFinalize(tls *libc.TLS, context uintptr) {
 	p = Xsqlite3_aggregate_context(tls, context, 0)
 	if p != 0 && (*TSumCtx)(unsafe.Pointer(p)).Fcnt > 0 {
 		if (*TSumCtx)(unsafe.Pointer(p)).Foverflow != 0 {
-			Xsqlite3_result_error(tls, context, __ccgo_ts+14648, -int32(1))
+			Xsqlite3_result_error(tls, context, __ccgo_ts+14668, -int32(1))
 		} else {
 			if (*TSumCtx)(unsafe.Pointer(p)).Fapprox != 0 {
 				Xsqlite3_result_double(tls, context, (*TSumCtx)(unsafe.Pointer(p)).FrSum)
@@ -100030,7 +100030,7 @@ func _groupConcatValue(tls *libc.TLS, context uintptr) {
 func _sqlite3RegisterPerConnectionBuiltinFunctions(tls *libc.TLS, db uintptr) {
 	var rc int32
 	_ = rc
-	rc = Xsqlite3_overload_function(tls, db, __ccgo_ts+14760, int32(2))
+	rc = Xsqlite3_overload_function(tls, db, __ccgo_ts+14780, int32(2))
 	_ = libc.Int32FromInt32(0)
 	if rc == int32(m_SQLITE_NOMEM) {
 		_sqlite3OomFault(tls, db)
@@ -100055,10 +100055,10 @@ func _sqlite3RegisterLikeFunctions(tls *libc.TLS, db uintptr, caseSensitive int3
 		pInfo = uintptr(unsafe.Pointer(&_likeInfoNorm))
 		flags = int32(m_SQLITE_FUNC_LIKE)
 	}
-	_sqlite3CreateFunc(tls, db, __ccgo_ts+14766, int32(2), int32(m_SQLITE_UTF8), pInfo, __ccgo_fp(_likeFunc), uintptr(0), uintptr(0), uintptr(0), uintptr(0), uintptr(0))
-	_sqlite3CreateFunc(tls, db, __ccgo_ts+14766, int32(3), int32(m_SQLITE_UTF8), pInfo, __ccgo_fp(_likeFunc), uintptr(0), uintptr(0), uintptr(0), uintptr(0), uintptr(0))
-	*(*Tu32)(unsafe.Pointer(_sqlite3FindFunction(tls, db, __ccgo_ts+14766, int32(2), uint8(m_SQLITE_UTF8), uint8(0)) + 4)) |= uint32(flags)
-	*(*Tu32)(unsafe.Pointer(_sqlite3FindFunction(tls, db, __ccgo_ts+14766, int32(3), uint8(m_SQLITE_UTF8), uint8(0)) + 4)) |= uint32(flags)
+	_sqlite3CreateFunc(tls, db, __ccgo_ts+14786, int32(2), int32(m_SQLITE_UTF8), pInfo, __ccgo_fp(_likeFunc), uintptr(0), uintptr(0), uintptr(0), uintptr(0), uintptr(0))
+	_sqlite3CreateFunc(tls, db, __ccgo_ts+14786, int32(3), int32(m_SQLITE_UTF8), pInfo, __ccgo_fp(_likeFunc), uintptr(0), uintptr(0), uintptr(0), uintptr(0), uintptr(0))
+	*(*Tu32)(unsafe.Pointer(_sqlite3FindFunction(tls, db, __ccgo_ts+14786, int32(2), uint8(m_SQLITE_UTF8), uint8(0)) + 4)) |= uint32(flags)
+	*(*Tu32)(unsafe.Pointer(_sqlite3FindFunction(tls, db, __ccgo_ts+14786, int32(3), uint8(m_SQLITE_UTF8), uint8(0)) + 4)) |= uint32(flags)
 }
 
 // C documentation
@@ -100364,508 +100364,508 @@ var _aBuiltinFunc = [99]TFuncDef{
 		FnArg:      int8(2),
 		FfuncFlags: uint32(libc.Int32FromInt32(m_SQLITE_FUNC_BUILTIN) | libc.Int32FromInt32(m_SQLITE_UTF8) | libc.Int32FromInt32(m_SQLITE_FUNC_INTERNAL) | libc.Int32FromInt32(m_SQLITE_FUNC_TEST) | libc.Int32FromInt32(m_SQLITE_FUNC_INLINE) | libc.Int32FromInt32(m_SQLITE_FUNC_CONSTANT) | libc.Int32FromInt32(0)),
 		FpUserData: uintptr(int64(libc.Int32FromInt32(m_INLINEFUNC_implies_nonnull_row))),
-		FzName:     __ccgo_ts + 14771,
+		FzName:     __ccgo_ts + 14791,
 	},
 	1: {
 		FnArg:      int8(2),
 		FfuncFlags: uint32(libc.Int32FromInt32(m_SQLITE_FUNC_BUILTIN) | libc.Int32FromInt32(m_SQLITE_UTF8) | libc.Int32FromInt32(m_SQLITE_FUNC_INTERNAL) | libc.Int32FromInt32(m_SQLITE_FUNC_TEST) | libc.Int32FromInt32(m_SQLITE_FUNC_INLINE) | libc.Int32FromInt32(m_SQLITE_FUNC_CONSTANT) | libc.Int32FromInt32(0)),
 		FpUserData: uintptr(int64(libc.Int32FromInt32(m_INLINEFUNC_expr_compare))),
-		FzName:     __ccgo_ts + 14791,
+		FzName:     __ccgo_ts + 14811,
 	},
 	2: {
 		FnArg:      int8(2),
 		FfuncFlags: uint32(libc.Int32FromInt32(m_SQLITE_FUNC_BUILTIN) | libc.Int32FromInt32(m_SQLITE_UTF8) | libc.Int32FromInt32(m_SQLITE_FUNC_INTERNAL) | libc.Int32FromInt32(m_SQLITE_FUNC_TEST) | libc.Int32FromInt32(m_SQLITE_FUNC_INLINE) | libc.Int32FromInt32(m_SQLITE_FUNC_CONSTANT) | libc.Int32FromInt32(0)),
 		FpUserData: uintptr(int64(libc.Int32FromInt32(m_INLINEFUNC_expr_implies_expr))),
-		FzName:     __ccgo_ts + 14804,
+		FzName:     __ccgo_ts + 14824,
 	},
 	3: {
 		FnArg:      int8(1),
 		FfuncFlags: uint32(libc.Int32FromInt32(m_SQLITE_FUNC_BUILTIN) | libc.Int32FromInt32(m_SQLITE_UTF8) | libc.Int32FromInt32(m_SQLITE_FUNC_INTERNAL) | libc.Int32FromInt32(m_SQLITE_FUNC_TEST) | libc.Int32FromInt32(m_SQLITE_FUNC_INLINE) | libc.Int32FromInt32(m_SQLITE_FUNC_CONSTANT) | libc.Int32FromInt32(0)),
 		FpUserData: uintptr(int64(libc.Int32FromInt32(m_INLINEFUNC_affinity))),
-		FzName:     __ccgo_ts + 14822,
+		FzName:     __ccgo_ts + 14842,
 	},
 	4: {
 		FnArg:      int8(1),
 		FfuncFlags: uint32(libc.Int32FromInt32(m_SQLITE_FUNC_BUILTIN) | libc.Int32FromInt32(m_SQLITE_FUNC_CONSTANT) | libc.Int32FromInt32(m_SQLITE_UTF8) | libc.Int32FromInt32(0)*libc.Int32FromInt32(m_SQLITE_FUNC_NEEDCOLL)),
-		FzName:     __ccgo_ts + 14831,
+		FzName:     __ccgo_ts + 14851,
 	},
 	5: {
 		FnArg:      int8(1),
 		FfuncFlags: uint32(libc.Int32FromInt32(m_SQLITE_FUNC_BUILTIN) | libc.Int32FromInt32(m_SQLITE_UTF8) | libc.Int32FromInt32(m_SQLITE_DIRECTONLY) | libc.Int32FromInt32(m_SQLITE_FUNC_UNSAFE)),
-		FzName:     __ccgo_ts + 14839,
+		FzName:     __ccgo_ts + 14859,
 	},
 	6: {
 		FnArg:      int8(2),
 		FfuncFlags: uint32(libc.Int32FromInt32(m_SQLITE_FUNC_BUILTIN) | libc.Int32FromInt32(m_SQLITE_UTF8) | libc.Int32FromInt32(m_SQLITE_DIRECTONLY) | libc.Int32FromInt32(m_SQLITE_FUNC_UNSAFE)),
-		FzName:     __ccgo_ts + 14839,
+		FzName:     __ccgo_ts + 14859,
 	},
 	7: {
 		FnArg:      int8(1),
 		FfuncFlags: uint32(libc.Int32FromInt32(m_SQLITE_FUNC_BUILTIN) | libc.Int32FromInt32(m_SQLITE_FUNC_SLOCHNG) | libc.Int32FromInt32(m_SQLITE_UTF8)),
-		FzName:     __ccgo_ts + 14854,
+		FzName:     __ccgo_ts + 14874,
 	},
 	8: {
 		FnArg:      int8(1),
 		FfuncFlags: uint32(libc.Int32FromInt32(m_SQLITE_FUNC_BUILTIN) | libc.Int32FromInt32(m_SQLITE_FUNC_SLOCHNG) | libc.Int32FromInt32(m_SQLITE_UTF8)),
-		FzName:     __ccgo_ts + 14880,
+		FzName:     __ccgo_ts + 14900,
 	},
 	9: {
 		FnArg:      int8(1),
 		FfuncFlags: uint32(libc.Int32FromInt32(m_SQLITE_FUNC_BUILTIN) | libc.Int32FromInt32(m_SQLITE_UTF8) | libc.Int32FromInt32(m_SQLITE_FUNC_INLINE) | libc.Int32FromInt32(m_SQLITE_FUNC_CONSTANT) | libc.Int32FromInt32(m_SQLITE_FUNC_UNLIKELY)),
 		FpUserData: uintptr(int64(libc.Int32FromInt32(m_INLINEFUNC_unlikely))),
-		FzName:     __ccgo_ts + 14905,
+		FzName:     __ccgo_ts + 14925,
 	},
 	10: {
 		FnArg:      int8(2),
 		FfuncFlags: uint32(libc.Int32FromInt32(m_SQLITE_FUNC_BUILTIN) | libc.Int32FromInt32(m_SQLITE_UTF8) | libc.Int32FromInt32(m_SQLITE_FUNC_INLINE) | libc.Int32FromInt32(m_SQLITE_FUNC_CONSTANT) | libc.Int32FromInt32(m_SQLITE_FUNC_UNLIKELY)),
 		FpUserData: uintptr(int64(libc.Int32FromInt32(m_INLINEFUNC_unlikely))),
-		FzName:     __ccgo_ts + 14914,
+		FzName:     __ccgo_ts + 14934,
 	},
 	11: {
 		FnArg:      int8(1),
 		FfuncFlags: uint32(libc.Int32FromInt32(m_SQLITE_FUNC_BUILTIN) | libc.Int32FromInt32(m_SQLITE_UTF8) | libc.Int32FromInt32(m_SQLITE_FUNC_INLINE) | libc.Int32FromInt32(m_SQLITE_FUNC_CONSTANT) | libc.Int32FromInt32(m_SQLITE_FUNC_UNLIKELY)),
 		FpUserData: uintptr(int64(libc.Int32FromInt32(m_INLINEFUNC_unlikely))),
-		FzName:     __ccgo_ts + 14925,
+		FzName:     __ccgo_ts + 14945,
 	},
 	12: {
 		FnArg:      int8(1),
 		FfuncFlags: uint32(libc.Int32FromInt32(m_SQLITE_FUNC_BUILTIN) | libc.Int32FromInt32(m_SQLITE_FUNC_CONSTANT) | libc.Int32FromInt32(m_SQLITE_UTF8) | libc.Int32FromInt32(0)*libc.Int32FromInt32(m_SQLITE_FUNC_NEEDCOLL) | libc.Int32FromInt32(m_SQLITE_FUNC_OFFSET) | libc.Int32FromInt32(m_SQLITE_FUNC_TYPEOF)),
-		FzName:     __ccgo_ts + 14932,
+		FzName:     __ccgo_ts + 14952,
 	},
 	13: {
 		FnArg:      int8(1),
 		FfuncFlags: uint32(libc.Int32FromInt32(m_SQLITE_FUNC_BUILTIN) | libc.Int32FromInt32(m_SQLITE_FUNC_CONSTANT) | libc.Int32FromInt32(m_SQLITE_UTF8) | libc.Int32FromInt32(0)*libc.Int32FromInt32(m_SQLITE_FUNC_NEEDCOLL)),
 		FpUserData: uintptr(int64(libc.Int32FromInt32(1))),
-		FzName:     __ccgo_ts + 14946,
+		FzName:     __ccgo_ts + 14966,
 	},
 	14: {
 		FnArg:      int8(2),
 		FfuncFlags: uint32(libc.Int32FromInt32(m_SQLITE_FUNC_BUILTIN) | libc.Int32FromInt32(m_SQLITE_FUNC_CONSTANT) | libc.Int32FromInt32(m_SQLITE_UTF8) | libc.Int32FromInt32(0)*libc.Int32FromInt32(m_SQLITE_FUNC_NEEDCOLL)),
 		FpUserData: uintptr(int64(libc.Int32FromInt32(1))),
-		FzName:     __ccgo_ts + 14946,
+		FzName:     __ccgo_ts + 14966,
 	},
 	15: {
 		FnArg:      int8(1),
 		FfuncFlags: uint32(libc.Int32FromInt32(m_SQLITE_FUNC_BUILTIN) | libc.Int32FromInt32(m_SQLITE_FUNC_CONSTANT) | libc.Int32FromInt32(m_SQLITE_UTF8) | libc.Int32FromInt32(0)*libc.Int32FromInt32(m_SQLITE_FUNC_NEEDCOLL)),
 		FpUserData: uintptr(int64(libc.Int32FromInt32(2))),
-		FzName:     __ccgo_ts + 14952,
+		FzName:     __ccgo_ts + 14972,
 	},
 	16: {
 		FnArg:      int8(2),
 		FfuncFlags: uint32(libc.Int32FromInt32(m_SQLITE_FUNC_BUILTIN) | libc.Int32FromInt32(m_SQLITE_FUNC_CONSTANT) | libc.Int32FromInt32(m_SQLITE_UTF8) | libc.Int32FromInt32(0)*libc.Int32FromInt32(m_SQLITE_FUNC_NEEDCOLL)),
 		FpUserData: uintptr(int64(libc.Int32FromInt32(2))),
-		FzName:     __ccgo_ts + 14952,
+		FzName:     __ccgo_ts + 14972,
 	},
 	17: {
 		FnArg:      int8(1),
 		FfuncFlags: uint32(libc.Int32FromInt32(m_SQLITE_FUNC_BUILTIN) | libc.Int32FromInt32(m_SQLITE_FUNC_CONSTANT) | libc.Int32FromInt32(m_SQLITE_UTF8) | libc.Int32FromInt32(0)*libc.Int32FromInt32(m_SQLITE_FUNC_NEEDCOLL)),
 		FpUserData: uintptr(int64(libc.Int32FromInt32(3))),
-		FzName:     __ccgo_ts + 14958,
+		FzName:     __ccgo_ts + 14978,
 	},
 	18: {
 		FnArg:      int8(2),
 		FfuncFlags: uint32(libc.Int32FromInt32(m_SQLITE_FUNC_BUILTIN) | libc.Int32FromInt32(m_SQLITE_FUNC_CONSTANT) | libc.Int32FromInt32(m_SQLITE_UTF8) | libc.Int32FromInt32(0)*libc.Int32FromInt32(m_SQLITE_FUNC_NEEDCOLL)),
 		FpUserData: uintptr(int64(libc.Int32FromInt32(3))),
-		FzName:     __ccgo_ts + 14958,
+		FzName:     __ccgo_ts + 14978,
 	},
 	19: {
 		FnArg:      int8(-int32(1)),
 		FfuncFlags: uint32(libc.Int32FromInt32(m_SQLITE_FUNC_BUILTIN) | libc.Int32FromInt32(m_SQLITE_FUNC_CONSTANT) | libc.Int32FromInt32(m_SQLITE_UTF8) | libc.Int32FromInt32(1)*libc.Int32FromInt32(m_SQLITE_FUNC_NEEDCOLL)),
-		FzName:     __ccgo_ts + 14963,
+		FzName:     __ccgo_ts + 14983,
 	},
 	20: {
 		FfuncFlags: uint32(libc.Int32FromInt32(m_SQLITE_FUNC_BUILTIN) | libc.Int32FromInt32(m_SQLITE_FUNC_CONSTANT) | libc.Int32FromInt32(m_SQLITE_UTF8) | libc.Int32FromInt32(1)*libc.Int32FromInt32(m_SQLITE_FUNC_NEEDCOLL)),
-		FzName:     __ccgo_ts + 14963,
+		FzName:     __ccgo_ts + 14983,
 	},
 	21: {
 		FnArg:      int8(1),
 		FfuncFlags: uint32(libc.Int32FromInt32(m_SQLITE_FUNC_BUILTIN) | libc.Int32FromInt32(m_SQLITE_UTF8) | libc.Int32FromInt32(1)*libc.Int32FromInt32(m_SQLITE_FUNC_NEEDCOLL) | libc.Int32FromInt32(m_SQLITE_FUNC_MINMAX) | libc.Int32FromInt32(m_SQLITE_FUNC_ANYORDER)),
-		FzName:     __ccgo_ts + 14963,
+		FzName:     __ccgo_ts + 14983,
 	},
 	22: {
 		FnArg:      int8(-int32(1)),
 		FfuncFlags: uint32(libc.Int32FromInt32(m_SQLITE_FUNC_BUILTIN) | libc.Int32FromInt32(m_SQLITE_FUNC_CONSTANT) | libc.Int32FromInt32(m_SQLITE_UTF8) | libc.Int32FromInt32(1)*libc.Int32FromInt32(m_SQLITE_FUNC_NEEDCOLL)),
 		FpUserData: uintptr(int64(libc.Int32FromInt32(1))),
-		FzName:     __ccgo_ts + 14967,
+		FzName:     __ccgo_ts + 14987,
 	},
 	23: {
 		FfuncFlags: uint32(libc.Int32FromInt32(m_SQLITE_FUNC_BUILTIN) | libc.Int32FromInt32(m_SQLITE_FUNC_CONSTANT) | libc.Int32FromInt32(m_SQLITE_UTF8) | libc.Int32FromInt32(1)*libc.Int32FromInt32(m_SQLITE_FUNC_NEEDCOLL)),
 		FpUserData: uintptr(int64(libc.Int32FromInt32(1))),
-		FzName:     __ccgo_ts + 14967,
+		FzName:     __ccgo_ts + 14987,
 	},
 	24: {
 		FnArg:      int8(1),
 		FfuncFlags: uint32(libc.Int32FromInt32(m_SQLITE_FUNC_BUILTIN) | libc.Int32FromInt32(m_SQLITE_UTF8) | libc.Int32FromInt32(1)*libc.Int32FromInt32(m_SQLITE_FUNC_NEEDCOLL) | libc.Int32FromInt32(m_SQLITE_FUNC_MINMAX) | libc.Int32FromInt32(m_SQLITE_FUNC_ANYORDER)),
 		FpUserData: uintptr(int64(libc.Int32FromInt32(1))),
-		FzName:     __ccgo_ts + 14967,
+		FzName:     __ccgo_ts + 14987,
 	},
 	25: {
 		FnArg:      int8(1),
 		FfuncFlags: uint32(libc.Int32FromInt32(m_SQLITE_FUNC_BUILTIN) | libc.Int32FromInt32(m_SQLITE_FUNC_CONSTANT) | libc.Int32FromInt32(m_SQLITE_UTF8) | libc.Int32FromInt32(0)*libc.Int32FromInt32(m_SQLITE_FUNC_NEEDCOLL) | libc.Int32FromInt32(m_SQLITE_FUNC_TYPEOF)),
-		FzName:     __ccgo_ts + 14971,
+		FzName:     __ccgo_ts + 14991,
 	},
 	26: {
 		FnArg:      int8(1),
 		FfuncFlags: uint32(libc.Int32FromInt32(m_SQLITE_FUNC_BUILTIN) | libc.Int32FromInt32(m_SQLITE_FUNC_CONSTANT) | libc.Int32FromInt32(m_SQLITE_UTF8) | libc.Int32FromInt32(0)*libc.Int32FromInt32(m_SQLITE_FUNC_NEEDCOLL) | libc.Int32FromInt32(m_SQLITE_FUNC_LENGTH)),
-		FzName:     __ccgo_ts + 14978,
+		FzName:     __ccgo_ts + 14998,
 	},
 	27: {
 		FnArg:      int8(2),
 		FfuncFlags: uint32(libc.Int32FromInt32(m_SQLITE_FUNC_BUILTIN) | libc.Int32FromInt32(m_SQLITE_FUNC_CONSTANT) | libc.Int32FromInt32(m_SQLITE_UTF8) | libc.Int32FromInt32(0)*libc.Int32FromInt32(m_SQLITE_FUNC_NEEDCOLL)),
-		FzName:     __ccgo_ts + 14985,
+		FzName:     __ccgo_ts + 15005,
 	},
 	28: {
 		FnArg:      int8(-int32(1)),
 		FfuncFlags: uint32(libc.Int32FromInt32(m_SQLITE_FUNC_BUILTIN) | libc.Int32FromInt32(m_SQLITE_FUNC_CONSTANT) | libc.Int32FromInt32(m_SQLITE_UTF8) | libc.Int32FromInt32(0)*libc.Int32FromInt32(m_SQLITE_FUNC_NEEDCOLL)),
-		FzName:     __ccgo_ts + 14991,
+		FzName:     __ccgo_ts + 15011,
 	},
 	29: {
 		FnArg:      int8(1),
 		FfuncFlags: uint32(libc.Int32FromInt32(m_SQLITE_FUNC_BUILTIN) | libc.Int32FromInt32(m_SQLITE_FUNC_CONSTANT) | libc.Int32FromInt32(m_SQLITE_UTF8) | libc.Int32FromInt32(0)*libc.Int32FromInt32(m_SQLITE_FUNC_NEEDCOLL)),
-		FzName:     __ccgo_ts + 14998,
+		FzName:     __ccgo_ts + 15018,
 	},
 	30: {
 		FnArg:      int8(-int32(1)),
 		FfuncFlags: uint32(libc.Int32FromInt32(m_SQLITE_FUNC_BUILTIN) | libc.Int32FromInt32(m_SQLITE_FUNC_CONSTANT) | libc.Int32FromInt32(m_SQLITE_UTF8) | libc.Int32FromInt32(0)*libc.Int32FromInt32(m_SQLITE_FUNC_NEEDCOLL)),
-		FzName:     __ccgo_ts + 15006,
+		FzName:     __ccgo_ts + 15026,
 	},
 	31: {
 		FnArg:      int8(1),
 		FfuncFlags: uint32(libc.Int32FromInt32(m_SQLITE_FUNC_BUILTIN) | libc.Int32FromInt32(m_SQLITE_FUNC_CONSTANT) | libc.Int32FromInt32(m_SQLITE_UTF8) | libc.Int32FromInt32(0)*libc.Int32FromInt32(m_SQLITE_FUNC_NEEDCOLL)),
-		FzName:     __ccgo_ts + 15011,
+		FzName:     __ccgo_ts + 15031,
 	},
 	32: {
 		FnArg:      int8(1),
 		FfuncFlags: uint32(libc.Int32FromInt32(m_SQLITE_FUNC_BUILTIN) | libc.Int32FromInt32(m_SQLITE_FUNC_CONSTANT) | libc.Int32FromInt32(m_SQLITE_UTF8) | libc.Int32FromInt32(0)*libc.Int32FromInt32(m_SQLITE_FUNC_NEEDCOLL)),
-		FzName:     __ccgo_ts + 15015,
+		FzName:     __ccgo_ts + 15035,
 	},
 	33: {
 		FnArg:      int8(2),
 		FfuncFlags: uint32(libc.Int32FromInt32(m_SQLITE_FUNC_BUILTIN) | libc.Int32FromInt32(m_SQLITE_FUNC_CONSTANT) | libc.Int32FromInt32(m_SQLITE_UTF8) | libc.Int32FromInt32(0)*libc.Int32FromInt32(m_SQLITE_FUNC_NEEDCOLL)),
-		FzName:     __ccgo_ts + 15015,
+		FzName:     __ccgo_ts + 15035,
 	},
 	34: {
 		FnArg:      int8(1),
 		FfuncFlags: uint32(libc.Int32FromInt32(m_SQLITE_FUNC_BUILTIN) | libc.Int32FromInt32(m_SQLITE_FUNC_CONSTANT) | libc.Int32FromInt32(m_SQLITE_UTF8) | libc.Int32FromInt32(0)*libc.Int32FromInt32(m_SQLITE_FUNC_NEEDCOLL)),
-		FzName:     __ccgo_ts + 15021,
+		FzName:     __ccgo_ts + 15041,
 	},
 	35: {
 		FnArg:      int8(1),
 		FfuncFlags: uint32(libc.Int32FromInt32(m_SQLITE_FUNC_BUILTIN) | libc.Int32FromInt32(m_SQLITE_FUNC_CONSTANT) | libc.Int32FromInt32(m_SQLITE_UTF8) | libc.Int32FromInt32(0)*libc.Int32FromInt32(m_SQLITE_FUNC_NEEDCOLL)),
-		FzName:     __ccgo_ts + 15027,
+		FzName:     __ccgo_ts + 15047,
 	},
 	36: {
 		FnArg:      int8(1),
 		FfuncFlags: uint32(libc.Int32FromInt32(m_SQLITE_FUNC_BUILTIN) | libc.Int32FromInt32(m_SQLITE_FUNC_CONSTANT) | libc.Int32FromInt32(m_SQLITE_UTF8) | libc.Int32FromInt32(0)*libc.Int32FromInt32(m_SQLITE_FUNC_NEEDCOLL)),
-		FzName:     __ccgo_ts + 15033,
+		FzName:     __ccgo_ts + 15053,
 	},
 	37: {
 		FnArg:      int8(2),
 		FfuncFlags: uint32(libc.Int32FromInt32(m_SQLITE_FUNC_BUILTIN) | libc.Int32FromInt32(m_SQLITE_UTF8) | libc.Int32FromInt32(m_SQLITE_FUNC_INLINE) | libc.Int32FromInt32(m_SQLITE_FUNC_CONSTANT) | libc.Int32FromInt32(0)),
-		FzName:     __ccgo_ts + 15037,
+		FzName:     __ccgo_ts + 15057,
 	},
 	38: {
 		FfuncFlags: uint32(libc.Int32FromInt32(m_SQLITE_FUNC_BUILTIN) | libc.Int32FromInt32(m_SQLITE_UTF8) | libc.Int32FromInt32(0)*libc.Int32FromInt32(m_SQLITE_FUNC_NEEDCOLL)),
-		FzName:     __ccgo_ts + 15044,
+		FzName:     __ccgo_ts + 15064,
 	},
 	39: {
 		FnArg:      int8(1),
 		FfuncFlags: uint32(libc.Int32FromInt32(m_SQLITE_FUNC_BUILTIN) | libc.Int32FromInt32(m_SQLITE_UTF8) | libc.Int32FromInt32(0)*libc.Int32FromInt32(m_SQLITE_FUNC_NEEDCOLL)),
-		FzName:     __ccgo_ts + 15051,
+		FzName:     __ccgo_ts + 15071,
 	},
 	40: {
 		FnArg:      int8(2),
 		FfuncFlags: uint32(libc.Int32FromInt32(m_SQLITE_FUNC_BUILTIN) | libc.Int32FromInt32(m_SQLITE_FUNC_CONSTANT) | libc.Int32FromInt32(m_SQLITE_UTF8) | libc.Int32FromInt32(1)*libc.Int32FromInt32(m_SQLITE_FUNC_NEEDCOLL)),
-		FzName:     __ccgo_ts + 15062,
+		FzName:     __ccgo_ts + 15082,
 	},
 	41: {
 		FfuncFlags: uint32(libc.Int32FromInt32(m_SQLITE_FUNC_BUILTIN) | libc.Int32FromInt32(m_SQLITE_FUNC_SLOCHNG) | libc.Int32FromInt32(m_SQLITE_UTF8)),
-		FzName:     __ccgo_ts + 15069,
+		FzName:     __ccgo_ts + 15089,
 	},
 	42: {
 		FfuncFlags: uint32(libc.Int32FromInt32(m_SQLITE_FUNC_BUILTIN) | libc.Int32FromInt32(m_SQLITE_FUNC_SLOCHNG) | libc.Int32FromInt32(m_SQLITE_UTF8)),
-		FzName:     __ccgo_ts + 15084,
+		FzName:     __ccgo_ts + 15104,
 	},
 	43: {
 		FnArg:      int8(2),
 		FfuncFlags: uint32(libc.Int32FromInt32(m_SQLITE_FUNC_BUILTIN) | libc.Int32FromInt32(m_SQLITE_FUNC_CONSTANT) | libc.Int32FromInt32(m_SQLITE_UTF8) | libc.Int32FromInt32(0)*libc.Int32FromInt32(m_SQLITE_FUNC_NEEDCOLL)),
-		FzName:     __ccgo_ts + 15101,
+		FzName:     __ccgo_ts + 15121,
 	},
 	44: {
 		FnArg:      int8(1),
 		FfuncFlags: uint32(libc.Int32FromInt32(m_SQLITE_FUNC_BUILTIN) | libc.Int32FromInt32(m_SQLITE_FUNC_CONSTANT) | libc.Int32FromInt32(m_SQLITE_UTF8) | libc.Int32FromInt32(0)*libc.Int32FromInt32(m_SQLITE_FUNC_NEEDCOLL)),
-		FzName:     __ccgo_ts + 15112,
+		FzName:     __ccgo_ts + 15132,
 	},
 	45: {
 		FfuncFlags: uint32(libc.Int32FromInt32(m_SQLITE_FUNC_BUILTIN) | libc.Int32FromInt32(m_SQLITE_UTF8) | libc.Int32FromInt32(0)*libc.Int32FromInt32(m_SQLITE_FUNC_NEEDCOLL)),
-		FzName:     __ccgo_ts + 15118,
+		FzName:     __ccgo_ts + 15138,
 	},
 	46: {
 		FfuncFlags: uint32(libc.Int32FromInt32(m_SQLITE_FUNC_BUILTIN) | libc.Int32FromInt32(m_SQLITE_UTF8) | libc.Int32FromInt32(0)*libc.Int32FromInt32(m_SQLITE_FUNC_NEEDCOLL)),
-		FzName:     __ccgo_ts + 15136,
+		FzName:     __ccgo_ts + 15156,
 	},
 	47: {
 		FfuncFlags: uint32(libc.Int32FromInt32(m_SQLITE_FUNC_BUILTIN) | libc.Int32FromInt32(m_SQLITE_UTF8) | libc.Int32FromInt32(0)*libc.Int32FromInt32(m_SQLITE_FUNC_NEEDCOLL)),
-		FzName:     __ccgo_ts + 15144,
+		FzName:     __ccgo_ts + 15164,
 	},
 	48: {
 		FnArg:      int8(3),
 		FfuncFlags: uint32(libc.Int32FromInt32(m_SQLITE_FUNC_BUILTIN) | libc.Int32FromInt32(m_SQLITE_FUNC_CONSTANT) | libc.Int32FromInt32(m_SQLITE_UTF8) | libc.Int32FromInt32(0)*libc.Int32FromInt32(m_SQLITE_FUNC_NEEDCOLL)),
-		FzName:     __ccgo_ts + 15158,
+		FzName:     __ccgo_ts + 15178,
 	},
 	49: {
 		FnArg:      int8(1),
 		FfuncFlags: uint32(libc.Int32FromInt32(m_SQLITE_FUNC_BUILTIN) | libc.Int32FromInt32(m_SQLITE_FUNC_CONSTANT) | libc.Int32FromInt32(m_SQLITE_UTF8) | libc.Int32FromInt32(0)*libc.Int32FromInt32(m_SQLITE_FUNC_NEEDCOLL)),
-		FzName:     __ccgo_ts + 15166,
+		FzName:     __ccgo_ts + 15186,
 	},
 	50: {
 		FnArg:      int8(2),
 		FfuncFlags: uint32(libc.Int32FromInt32(m_SQLITE_FUNC_BUILTIN) | libc.Int32FromInt32(m_SQLITE_FUNC_CONSTANT) | libc.Int32FromInt32(m_SQLITE_UTF8) | libc.Int32FromInt32(0)*libc.Int32FromInt32(m_SQLITE_FUNC_NEEDCOLL)),
-		FzName:     __ccgo_ts + 15175,
+		FzName:     __ccgo_ts + 15195,
 	},
 	51: {
 		FnArg:      int8(3),
 		FfuncFlags: uint32(libc.Int32FromInt32(m_SQLITE_FUNC_BUILTIN) | libc.Int32FromInt32(m_SQLITE_FUNC_CONSTANT) | libc.Int32FromInt32(m_SQLITE_UTF8) | libc.Int32FromInt32(0)*libc.Int32FromInt32(m_SQLITE_FUNC_NEEDCOLL)),
-		FzName:     __ccgo_ts + 15175,
+		FzName:     __ccgo_ts + 15195,
 	},
 	52: {
 		FnArg:      int8(2),
 		FfuncFlags: uint32(libc.Int32FromInt32(m_SQLITE_FUNC_BUILTIN) | libc.Int32FromInt32(m_SQLITE_FUNC_CONSTANT) | libc.Int32FromInt32(m_SQLITE_UTF8) | libc.Int32FromInt32(0)*libc.Int32FromInt32(m_SQLITE_FUNC_NEEDCOLL)),
-		FzName:     __ccgo_ts + 15182,
+		FzName:     __ccgo_ts + 15202,
 	},
 	53: {
 		FnArg:      int8(3),
 		FfuncFlags: uint32(libc.Int32FromInt32(m_SQLITE_FUNC_BUILTIN) | libc.Int32FromInt32(m_SQLITE_FUNC_CONSTANT) | libc.Int32FromInt32(m_SQLITE_UTF8) | libc.Int32FromInt32(0)*libc.Int32FromInt32(m_SQLITE_FUNC_NEEDCOLL)),
-		FzName:     __ccgo_ts + 15182,
+		FzName:     __ccgo_ts + 15202,
 	},
 	54: {
 		FnArg:      int8(1),
 		FfuncFlags: uint32(libc.Int32FromInt32(m_SQLITE_FUNC_BUILTIN) | libc.Int32FromInt32(m_SQLITE_UTF8) | libc.Int32FromInt32(0)*libc.Int32FromInt32(m_SQLITE_FUNC_NEEDCOLL) | libc.Int32FromInt32(0)),
-		FzName:     __ccgo_ts + 15192,
+		FzName:     __ccgo_ts + 15212,
 	},
 	55: {
 		FnArg:      int8(1),
 		FfuncFlags: uint32(libc.Int32FromInt32(m_SQLITE_FUNC_BUILTIN) | libc.Int32FromInt32(m_SQLITE_UTF8) | libc.Int32FromInt32(0)*libc.Int32FromInt32(m_SQLITE_FUNC_NEEDCOLL) | libc.Int32FromInt32(0)),
-		FzName:     __ccgo_ts + 15196,
+		FzName:     __ccgo_ts + 15216,
 	},
 	56: {
 		FnArg:      int8(1),
 		FfuncFlags: uint32(libc.Int32FromInt32(m_SQLITE_FUNC_BUILTIN) | libc.Int32FromInt32(m_SQLITE_UTF8) | libc.Int32FromInt32(0)*libc.Int32FromInt32(m_SQLITE_FUNC_NEEDCOLL) | libc.Int32FromInt32(0)),
-		FzName:     __ccgo_ts + 15202,
+		FzName:     __ccgo_ts + 15222,
 	},
 	57: {
 		FfuncFlags: uint32(libc.Int32FromInt32(m_SQLITE_FUNC_BUILTIN) | libc.Int32FromInt32(m_SQLITE_UTF8) | libc.Int32FromInt32(0)*libc.Int32FromInt32(m_SQLITE_FUNC_NEEDCOLL) | libc.Int32FromInt32(m_SQLITE_FUNC_COUNT) | libc.Int32FromInt32(m_SQLITE_FUNC_ANYORDER)),
-		FzName:     __ccgo_ts + 15206,
+		FzName:     __ccgo_ts + 15226,
 	},
 	58: {
 		FnArg:      int8(1),
 		FfuncFlags: uint32(libc.Int32FromInt32(m_SQLITE_FUNC_BUILTIN) | libc.Int32FromInt32(m_SQLITE_UTF8) | libc.Int32FromInt32(0)*libc.Int32FromInt32(m_SQLITE_FUNC_NEEDCOLL) | libc.Int32FromInt32(m_SQLITE_FUNC_ANYORDER)),
-		FzName:     __ccgo_ts + 15206,
+		FzName:     __ccgo_ts + 15226,
 	},
 	59: {
 		FnArg:      int8(1),
 		FfuncFlags: uint32(libc.Int32FromInt32(m_SQLITE_FUNC_BUILTIN) | libc.Int32FromInt32(m_SQLITE_UTF8) | libc.Int32FromInt32(0)*libc.Int32FromInt32(m_SQLITE_FUNC_NEEDCOLL) | libc.Int32FromInt32(0)),
-		FzName:     __ccgo_ts + 15212,
+		FzName:     __ccgo_ts + 15232,
 	},
 	60: {
 		FnArg:      int8(2),
 		FfuncFlags: uint32(libc.Int32FromInt32(m_SQLITE_FUNC_BUILTIN) | libc.Int32FromInt32(m_SQLITE_UTF8) | libc.Int32FromInt32(0)*libc.Int32FromInt32(m_SQLITE_FUNC_NEEDCOLL) | libc.Int32FromInt32(0)),
-		FzName:     __ccgo_ts + 15212,
+		FzName:     __ccgo_ts + 15232,
 	},
 	61: {
 		FnArg:      int8(2),
 		FfuncFlags: uint32(libc.Int32FromInt32(m_SQLITE_FUNC_BUILTIN) | libc.Int32FromInt32(m_SQLITE_FUNC_CONSTANT) | libc.Int32FromInt32(m_SQLITE_UTF8) | libc.Int32FromInt32(m_SQLITE_FUNC_LIKE) | libc.Int32FromInt32(m_SQLITE_FUNC_CASE)),
 		FpUserData: uintptr(unsafe.Pointer(&_globInfo)),
-		FzName:     __ccgo_ts + 15225,
+		FzName:     __ccgo_ts + 15245,
 	},
 	62: {
 		FnArg:      int8(2),
 		FfuncFlags: uint32(libc.Int32FromInt32(m_SQLITE_FUNC_BUILTIN) | libc.Int32FromInt32(m_SQLITE_FUNC_CONSTANT) | libc.Int32FromInt32(m_SQLITE_UTF8) | libc.Int32FromInt32(m_SQLITE_FUNC_LIKE)),
 		FpUserData: uintptr(unsafe.Pointer(&_likeInfoNorm)),
-		FzName:     __ccgo_ts + 14766,
+		FzName:     __ccgo_ts + 14786,
 	},
 	63: {
 		FnArg:      int8(3),
 		FfuncFlags: uint32(libc.Int32FromInt32(m_SQLITE_FUNC_BUILTIN) | libc.Int32FromInt32(m_SQLITE_FUNC_CONSTANT) | libc.Int32FromInt32(m_SQLITE_UTF8) | libc.Int32FromInt32(m_SQLITE_FUNC_LIKE)),
 		FpUserData: uintptr(unsafe.Pointer(&_likeInfoNorm)),
-		FzName:     __ccgo_ts + 14766,
+		FzName:     __ccgo_ts + 14786,
 	},
 	64: {
 		FnArg:      int8(1),
 		FfuncFlags: uint32(libc.Int32FromInt32(m_SQLITE_FUNC_BUILTIN) | libc.Int32FromInt32(m_SQLITE_FUNC_CONSTANT) | libc.Int32FromInt32(m_SQLITE_UTF8) | libc.Int32FromInt32(0)*libc.Int32FromInt32(m_SQLITE_FUNC_NEEDCOLL)),
-		FzName:     __ccgo_ts + 15230,
+		FzName:     __ccgo_ts + 15250,
 	},
 	65: {
 		FfuncFlags: uint32(libc.Int32FromInt32(m_SQLITE_FUNC_BUILTIN) | libc.Int32FromInt32(m_SQLITE_FUNC_CONSTANT) | libc.Int32FromInt32(m_SQLITE_UTF8) | libc.Int32FromInt32(0)*libc.Int32FromInt32(m_SQLITE_FUNC_NEEDCOLL)),
-		FzName:     __ccgo_ts + 15230,
+		FzName:     __ccgo_ts + 15250,
 	},
 	66: {
 		FnArg:      int8(1),
 		FfuncFlags: uint32(libc.Int32FromInt32(m_SQLITE_FUNC_BUILTIN) | libc.Int32FromInt32(m_SQLITE_FUNC_CONSTANT) | libc.Int32FromInt32(m_SQLITE_UTF8)),
-		FzName:     __ccgo_ts + 15239,
+		FzName:     __ccgo_ts + 15259,
 	},
 	67: {
 		FnArg:      int8(1),
 		FfuncFlags: uint32(libc.Int32FromInt32(m_SQLITE_FUNC_BUILTIN) | libc.Int32FromInt32(m_SQLITE_FUNC_CONSTANT) | libc.Int32FromInt32(m_SQLITE_UTF8)),
-		FzName:     __ccgo_ts + 15244,
+		FzName:     __ccgo_ts + 15264,
 	},
 	68: {
 		FnArg:      int8(1),
 		FfuncFlags: uint32(libc.Int32FromInt32(m_SQLITE_FUNC_BUILTIN) | libc.Int32FromInt32(m_SQLITE_FUNC_CONSTANT) | libc.Int32FromInt32(m_SQLITE_UTF8)),
-		FzName:     __ccgo_ts + 15252,
+		FzName:     __ccgo_ts + 15272,
 	},
 	69: {
 		FnArg:      int8(1),
 		FfuncFlags: uint32(libc.Int32FromInt32(m_SQLITE_FUNC_BUILTIN) | libc.Int32FromInt32(m_SQLITE_FUNC_CONSTANT) | libc.Int32FromInt32(m_SQLITE_UTF8)),
-		FzName:     __ccgo_ts + 15258,
+		FzName:     __ccgo_ts + 15278,
 	},
 	70: {
 		FnArg:      int8(1),
 		FfuncFlags: uint32(libc.Int32FromInt32(m_SQLITE_FUNC_BUILTIN) | libc.Int32FromInt32(m_SQLITE_FUNC_CONSTANT) | libc.Int32FromInt32(m_SQLITE_UTF8) | libc.Int32FromInt32(0)*libc.Int32FromInt32(m_SQLITE_FUNC_NEEDCOLL)),
-		FzName:     __ccgo_ts + 15264,
+		FzName:     __ccgo_ts + 15284,
 	},
 	71: {
 		FnArg:      int8(1),
 		FfuncFlags: uint32(libc.Int32FromInt32(m_SQLITE_FUNC_BUILTIN) | libc.Int32FromInt32(m_SQLITE_FUNC_CONSTANT) | libc.Int32FromInt32(m_SQLITE_UTF8) | libc.Int32FromInt32(0)*libc.Int32FromInt32(m_SQLITE_FUNC_NEEDCOLL)),
 		FpUserData: uintptr(int64(libc.Int32FromInt32(1))),
-		FzName:     __ccgo_ts + 15267,
+		FzName:     __ccgo_ts + 15287,
 	},
 	72: {
 		FnArg:      int8(1),
 		FfuncFlags: uint32(libc.Int32FromInt32(m_SQLITE_FUNC_BUILTIN) | libc.Int32FromInt32(m_SQLITE_FUNC_CONSTANT) | libc.Int32FromInt32(m_SQLITE_UTF8) | libc.Int32FromInt32(0)*libc.Int32FromInt32(m_SQLITE_FUNC_NEEDCOLL)),
 		FpUserData: uintptr(int64(libc.Int32FromInt32(1))),
-		FzName:     __ccgo_ts + 15271,
+		FzName:     __ccgo_ts + 15291,
 	},
 	73: {
 		FnArg:      int8(1),
 		FfuncFlags: uint32(libc.Int32FromInt32(m_SQLITE_FUNC_BUILTIN) | libc.Int32FromInt32(m_SQLITE_FUNC_CONSTANT) | libc.Int32FromInt32(m_SQLITE_UTF8) | libc.Int32FromInt32(0)*libc.Int32FromInt32(m_SQLITE_FUNC_NEEDCOLL)),
 		FpUserData: uintptr(int64(libc.Int32FromInt32(2))),
-		FzName:     __ccgo_ts + 15277,
+		FzName:     __ccgo_ts + 15297,
 	},
 	74: {
 		FnArg:      int8(2),
 		FfuncFlags: uint32(libc.Int32FromInt32(m_SQLITE_FUNC_BUILTIN) | libc.Int32FromInt32(m_SQLITE_FUNC_CONSTANT) | libc.Int32FromInt32(m_SQLITE_UTF8) | libc.Int32FromInt32(0)*libc.Int32FromInt32(m_SQLITE_FUNC_NEEDCOLL)),
-		FzName:     __ccgo_ts + 15267,
+		FzName:     __ccgo_ts + 15287,
 	},
 	75: {
 		FnArg:      int8(1),
 		FfuncFlags: uint32(libc.Int32FromInt32(m_SQLITE_FUNC_BUILTIN) | libc.Int32FromInt32(m_SQLITE_FUNC_CONSTANT) | libc.Int32FromInt32(m_SQLITE_UTF8)),
-		FzName:     __ccgo_ts + 15282,
+		FzName:     __ccgo_ts + 15302,
 	},
 	76: {
 		FnArg:      int8(2),
 		FfuncFlags: uint32(libc.Int32FromInt32(m_SQLITE_FUNC_BUILTIN) | libc.Int32FromInt32(m_SQLITE_FUNC_CONSTANT) | libc.Int32FromInt32(m_SQLITE_UTF8)),
-		FzName:     __ccgo_ts + 15286,
+		FzName:     __ccgo_ts + 15306,
 	},
 	77: {
 		FnArg:      int8(2),
 		FfuncFlags: uint32(libc.Int32FromInt32(m_SQLITE_FUNC_BUILTIN) | libc.Int32FromInt32(m_SQLITE_FUNC_CONSTANT) | libc.Int32FromInt32(m_SQLITE_UTF8)),
-		FzName:     __ccgo_ts + 15290,
+		FzName:     __ccgo_ts + 15310,
 	},
 	78: {
 		FnArg:      int8(2),
 		FfuncFlags: uint32(libc.Int32FromInt32(m_SQLITE_FUNC_BUILTIN) | libc.Int32FromInt32(m_SQLITE_FUNC_CONSTANT) | libc.Int32FromInt32(m_SQLITE_UTF8)),
-		FzName:     __ccgo_ts + 15296,
+		FzName:     __ccgo_ts + 15316,
 	},
 	79: {
 		FnArg:      int8(1),
 		FfuncFlags: uint32(libc.Int32FromInt32(m_SQLITE_FUNC_BUILTIN) | libc.Int32FromInt32(m_SQLITE_FUNC_CONSTANT) | libc.Int32FromInt32(m_SQLITE_UTF8)),
-		FzName:     __ccgo_ts + 15300,
+		FzName:     __ccgo_ts + 15320,
 	},
 	80: {
 		FnArg:      int8(1),
 		FfuncFlags: uint32(libc.Int32FromInt32(m_SQLITE_FUNC_BUILTIN) | libc.Int32FromInt32(m_SQLITE_FUNC_CONSTANT) | libc.Int32FromInt32(m_SQLITE_UTF8)),
-		FzName:     __ccgo_ts + 15305,
+		FzName:     __ccgo_ts + 15325,
 	},
 	81: {
 		FnArg:      int8(1),
 		FfuncFlags: uint32(libc.Int32FromInt32(m_SQLITE_FUNC_BUILTIN) | libc.Int32FromInt32(m_SQLITE_FUNC_CONSTANT) | libc.Int32FromInt32(m_SQLITE_UTF8)),
-		FzName:     __ccgo_ts + 15310,
+		FzName:     __ccgo_ts + 15330,
 	},
 	82: {
 		FnArg:      int8(2),
 		FfuncFlags: uint32(libc.Int32FromInt32(m_SQLITE_FUNC_BUILTIN) | libc.Int32FromInt32(m_SQLITE_FUNC_CONSTANT) | libc.Int32FromInt32(m_SQLITE_UTF8)),
-		FzName:     __ccgo_ts + 15315,
+		FzName:     __ccgo_ts + 15335,
 	},
 	83: {
 		FnArg:      int8(1),
 		FfuncFlags: uint32(libc.Int32FromInt32(m_SQLITE_FUNC_BUILTIN) | libc.Int32FromInt32(m_SQLITE_FUNC_CONSTANT) | libc.Int32FromInt32(m_SQLITE_UTF8)),
-		FzName:     __ccgo_ts + 15321,
+		FzName:     __ccgo_ts + 15341,
 	},
 	84: {
 		FnArg:      int8(1),
 		FfuncFlags: uint32(libc.Int32FromInt32(m_SQLITE_FUNC_BUILTIN) | libc.Int32FromInt32(m_SQLITE_FUNC_CONSTANT) | libc.Int32FromInt32(m_SQLITE_UTF8)),
-		FzName:     __ccgo_ts + 15325,
+		FzName:     __ccgo_ts + 15345,
 	},
 	85: {
 		FnArg:      int8(1),
 		FfuncFlags: uint32(libc.Int32FromInt32(m_SQLITE_FUNC_BUILTIN) | libc.Int32FromInt32(m_SQLITE_FUNC_CONSTANT) | libc.Int32FromInt32(m_SQLITE_UTF8)),
-		FzName:     __ccgo_ts + 15329,
+		FzName:     __ccgo_ts + 15349,
 	},
 	86: {
 		FnArg:      int8(1),
 		FfuncFlags: uint32(libc.Int32FromInt32(m_SQLITE_FUNC_BUILTIN) | libc.Int32FromInt32(m_SQLITE_FUNC_CONSTANT) | libc.Int32FromInt32(m_SQLITE_UTF8)),
-		FzName:     __ccgo_ts + 15333,
+		FzName:     __ccgo_ts + 15353,
 	},
 	87: {
 		FnArg:      int8(1),
 		FfuncFlags: uint32(libc.Int32FromInt32(m_SQLITE_FUNC_BUILTIN) | libc.Int32FromInt32(m_SQLITE_FUNC_CONSTANT) | libc.Int32FromInt32(m_SQLITE_UTF8)),
-		FzName:     __ccgo_ts + 15338,
+		FzName:     __ccgo_ts + 15358,
 	},
 	88: {
 		FnArg:      int8(1),
 		FfuncFlags: uint32(libc.Int32FromInt32(m_SQLITE_FUNC_BUILTIN) | libc.Int32FromInt32(m_SQLITE_FUNC_CONSTANT) | libc.Int32FromInt32(m_SQLITE_UTF8)),
-		FzName:     __ccgo_ts + 15343,
+		FzName:     __ccgo_ts + 15363,
 	},
 	89: {
 		FnArg:      int8(1),
 		FfuncFlags: uint32(libc.Int32FromInt32(m_SQLITE_FUNC_BUILTIN) | libc.Int32FromInt32(m_SQLITE_FUNC_CONSTANT) | libc.Int32FromInt32(m_SQLITE_UTF8)),
-		FzName:     __ccgo_ts + 15348,
+		FzName:     __ccgo_ts + 15368,
 	},
 	90: {
 		FnArg:      int8(1),
 		FfuncFlags: uint32(libc.Int32FromInt32(m_SQLITE_FUNC_BUILTIN) | libc.Int32FromInt32(m_SQLITE_FUNC_CONSTANT) | libc.Int32FromInt32(m_SQLITE_UTF8)),
-		FzName:     __ccgo_ts + 15354,
+		FzName:     __ccgo_ts + 15374,
 	},
 	91: {
 		FnArg:      int8(1),
 		FfuncFlags: uint32(libc.Int32FromInt32(m_SQLITE_FUNC_BUILTIN) | libc.Int32FromInt32(m_SQLITE_FUNC_CONSTANT) | libc.Int32FromInt32(m_SQLITE_UTF8)),
-		FzName:     __ccgo_ts + 15360,
+		FzName:     __ccgo_ts + 15380,
 	},
 	92: {
 		FnArg:      int8(1),
 		FfuncFlags: uint32(libc.Int32FromInt32(m_SQLITE_FUNC_BUILTIN) | libc.Int32FromInt32(m_SQLITE_FUNC_CONSTANT) | libc.Int32FromInt32(m_SQLITE_UTF8)),
-		FzName:     __ccgo_ts + 15366,
+		FzName:     __ccgo_ts + 15386,
 	},
 	93: {
 		FnArg:      int8(1),
 		FfuncFlags: uint32(libc.Int32FromInt32(m_SQLITE_FUNC_BUILTIN) | libc.Int32FromInt32(m_SQLITE_FUNC_CONSTANT) | libc.Int32FromInt32(m_SQLITE_UTF8)),
-		FzName:     __ccgo_ts + 15371,
+		FzName:     __ccgo_ts + 15391,
 	},
 	94: {
 		FnArg:      int8(1),
 		FfuncFlags: uint32(libc.Int32FromInt32(m_SQLITE_FUNC_BUILTIN) | libc.Int32FromInt32(m_SQLITE_FUNC_CONSTANT) | libc.Int32FromInt32(m_SQLITE_UTF8)),
-		FzName:     __ccgo_ts + 15379,
+		FzName:     __ccgo_ts + 15399,
 	},
 	95: {
 		FfuncFlags: uint32(libc.Int32FromInt32(m_SQLITE_FUNC_BUILTIN) | libc.Int32FromInt32(m_SQLITE_FUNC_CONSTANT) | libc.Int32FromInt32(m_SQLITE_UTF8) | libc.Int32FromInt32(0)*libc.Int32FromInt32(m_SQLITE_FUNC_NEEDCOLL)),
-		FzName:     __ccgo_ts + 15387,
+		FzName:     __ccgo_ts + 15407,
 	},
 	96: {
 		FnArg:      int8(1),
 		FfuncFlags: uint32(libc.Int32FromInt32(m_SQLITE_FUNC_BUILTIN) | libc.Int32FromInt32(m_SQLITE_FUNC_CONSTANT) | libc.Int32FromInt32(m_SQLITE_UTF8) | libc.Int32FromInt32(0)*libc.Int32FromInt32(m_SQLITE_FUNC_NEEDCOLL)),
-		FzName:     __ccgo_ts + 15390,
+		FzName:     __ccgo_ts + 15410,
 	},
 	97: {
 		FnArg:      int8(-int32(1)),
 		FfuncFlags: uint32(libc.Int32FromInt32(m_SQLITE_FUNC_BUILTIN) | libc.Int32FromInt32(m_SQLITE_UTF8) | libc.Int32FromInt32(m_SQLITE_FUNC_INLINE) | libc.Int32FromInt32(m_SQLITE_FUNC_CONSTANT) | libc.Int32FromInt32(0)),
-		FzName:     __ccgo_ts + 15230,
+		FzName:     __ccgo_ts + 15250,
 	},
 	98: {
 		FnArg:      int8(3),
 		FfuncFlags: uint32(libc.Int32FromInt32(m_SQLITE_FUNC_BUILTIN) | libc.Int32FromInt32(m_SQLITE_UTF8) | libc.Int32FromInt32(m_SQLITE_FUNC_INLINE) | libc.Int32FromInt32(m_SQLITE_FUNC_CONSTANT) | libc.Int32FromInt32(0)),
 		FpUserData: uintptr(int64(libc.Int32FromInt32(m_INLINEFUNC_iif))),
-		FzName:     __ccgo_ts + 15395,
+		FzName:     __ccgo_ts + 15415,
 	},
 }
 
@@ -101331,7 +101331,7 @@ func _sqlite3FkLocateIndex(tls *libc.TLS, pParse uintptr, pParent uintptr, pFKey
 	}
 	if !(pIdx != 0) {
 		if !((*TParse)(unsafe.Pointer(pParse)).FdisableTriggers != 0) {
-			_sqlite3ErrorMsg(tls, pParse, __ccgo_ts+15399, libc.VaList(bp+8, (*TTable)(unsafe.Pointer((*TFKey)(unsafe.Pointer(pFKey)).FpFrom)).FzName, (*TFKey)(unsafe.Pointer(pFKey)).FzTo))
+			_sqlite3ErrorMsg(tls, pParse, __ccgo_ts+15419, libc.VaList(bp+8, (*TTable)(unsafe.Pointer((*TFKey)(unsafe.Pointer(pFKey)).FpFrom)).FzName, (*TFKey)(unsafe.Pointer(pFKey)).FzTo))
 		}
 		_sqlite3DbFree(tls, (*TParse)(unsafe.Pointer(pParse)).Fdb, aiCol)
 		return int32(1)
@@ -102442,11 +102442,11 @@ func _fkActionTrigger(tls *libc.TLS, pParse uintptr, pTab uintptr, pFKey uintptr
 				break
 			}
 			*(*TToken)(unsafe.Pointer(bp + 16)) = TToken{
-				Fz: __ccgo_ts + 6264,
+				Fz: __ccgo_ts + 6284,
 				Fn: uint32(3),
 			} /* Literal "old" token */
 			*(*TToken)(unsafe.Pointer(bp + 32)) = TToken{
-				Fz: __ccgo_ts + 6260,
+				Fz: __ccgo_ts + 6280,
 				Fn: uint32(3),
 			} /* tFromCol = OLD.tToCol */
 			if *(*uintptr)(unsafe.Pointer(bp + 8)) != 0 {
@@ -102513,7 +102513,7 @@ func _fkActionTrigger(tls *libc.TLS, pParse uintptr, pTab uintptr, pFKey uintptr
 		if action == int32(m_OE_Restrict) {
 			(*(*TToken)(unsafe.Pointer(bp + 80))).Fz = zFrom
 			(*(*TToken)(unsafe.Pointer(bp + 80))).Fn = uint32(nFrom)
-			pRaise = _sqlite3Expr(tls, db, int32(m_TK_RAISE), __ccgo_ts+5006)
+			pRaise = _sqlite3Expr(tls, db, int32(m_TK_RAISE), __ccgo_ts+5026)
 			if pRaise != 0 {
 				(*TExpr)(unsafe.Pointer(pRaise)).FaffExpr = uint8(m_OE_Abort)
 			}
@@ -103083,7 +103083,7 @@ func _sqlite3ComputeGeneratedColumns(tls *libc.TLS, pParse uintptr, iRegStore in
 		}
 	}
 	if pRedo != 0 {
-		_sqlite3ErrorMsg(tls, pParse, __ccgo_ts+7787, libc.VaList(bp+56, (*TColumn)(unsafe.Pointer(pRedo)).FzCnName))
+		_sqlite3ErrorMsg(tls, pParse, __ccgo_ts+7807, libc.VaList(bp+56, (*TColumn)(unsafe.Pointer(pRedo)).FzCnName))
 	}
 	(*TParse)(unsafe.Pointer(pParse)).FiSelfTab = 0
 }
@@ -103612,7 +103612,7 @@ func _sqlite3Insert(tls *libc.TLS, pParse uintptr, pTabList uintptr, pSelect uin
 						_ = libc.Int32FromInt32(0)
 					}
 					if int32((*(*TColumn)(unsafe.Pointer((*TTable)(unsafe.Pointer(pTab)).FaCol + uintptr(j)*16))).FcolFlags)&(libc.Int32FromInt32(m_COLFLAG_STORED)|libc.Int32FromInt32(m_COLFLAG_VIRTUAL)) != 0 {
-						_sqlite3ErrorMsg(tls, pParse, __ccgo_ts+15444, libc.VaList(bp+128, (*(*TColumn)(unsafe.Pointer((*TTable)(unsafe.Pointer(pTab)).FaCol + uintptr(j)*16))).FzCnName))
+						_sqlite3ErrorMsg(tls, pParse, __ccgo_ts+15464, libc.VaList(bp+128, (*(*TColumn)(unsafe.Pointer((*TTable)(unsafe.Pointer(pTab)).FaCol + uintptr(j)*16))).FzCnName))
 						goto insert_cleanup
 					}
 					break
@@ -103626,7 +103626,7 @@ func _sqlite3Insert(tls *libc.TLS, pParse uintptr, pTabList uintptr, pSelect uin
 					ipkColumn = i
 					bIdListInOrder = uint8(0)
 				} else {
-					_sqlite3ErrorMsg(tls, pParse, __ccgo_ts+15485, libc.VaList(bp+128, pTabList+8, (*(*TIdList_item)(unsafe.Pointer((*TIdList)(unsafe.Pointer(pColumn)).Fa + uintptr(i)*16))).FzName))
+					_sqlite3ErrorMsg(tls, pParse, __ccgo_ts+15505, libc.VaList(bp+128, pTabList+8, (*(*TIdList_item)(unsafe.Pointer((*TIdList)(unsafe.Pointer(pColumn)).Fa + uintptr(i)*16))).FzName))
 					(*TParse)(unsafe.Pointer(pParse)).FcheckSchema = uint8(1)
 					goto insert_cleanup
 				}
@@ -103749,12 +103749,12 @@ func _sqlite3Insert(tls *libc.TLS, pParse uintptr, pTabList uintptr, pSelect uin
 			}
 		}
 		if nColumn != int32((*TTable)(unsafe.Pointer(pTab)).FnCol)-nHidden {
-			_sqlite3ErrorMsg(tls, pParse, __ccgo_ts+15517, libc.VaList(bp+128, pTabList+8, int32((*TTable)(unsafe.Pointer(pTab)).FnCol)-nHidden, nColumn))
+			_sqlite3ErrorMsg(tls, pParse, __ccgo_ts+15537, libc.VaList(bp+128, pTabList+8, int32((*TTable)(unsafe.Pointer(pTab)).FnCol)-nHidden, nColumn))
 			goto insert_cleanup
 		}
 	}
 	if pColumn != uintptr(0) && nColumn != (*TIdList)(unsafe.Pointer(pColumn)).FnId {
-		_sqlite3ErrorMsg(tls, pParse, __ccgo_ts+15569, libc.VaList(bp+128, nColumn, (*TIdList)(unsafe.Pointer(pColumn)).FnId))
+		_sqlite3ErrorMsg(tls, pParse, __ccgo_ts+15589, libc.VaList(bp+128, nColumn, (*TIdList)(unsafe.Pointer(pColumn)).FnId))
 		goto insert_cleanup
 	}
 	/* Initialize the count of rows to be inserted
@@ -103797,11 +103797,11 @@ func _sqlite3Insert(tls *libc.TLS, pParse uintptr, pTabList uintptr, pSelect uin
 	}
 	if pUpsert != 0 {
 		if int32((*TTable)(unsafe.Pointer(pTab)).FeTabType) == int32(m_TABTYP_VTAB) {
-			_sqlite3ErrorMsg(tls, pParse, __ccgo_ts+15594, libc.VaList(bp+128, (*TTable)(unsafe.Pointer(pTab)).FzName))
+			_sqlite3ErrorMsg(tls, pParse, __ccgo_ts+15614, libc.VaList(bp+128, (*TTable)(unsafe.Pointer(pTab)).FzName))
 			goto insert_cleanup
 		}
 		if int32((*TTable)(unsafe.Pointer(pTab)).FeTabType) == int32(m_TABTYP_VIEW) {
-			_sqlite3ErrorMsg(tls, pParse, __ccgo_ts+15640, 0)
+			_sqlite3ErrorMsg(tls, pParse, __ccgo_ts+15660, 0)
 			goto insert_cleanup
 		}
 		if _sqlite3HasExplicitNulls(tls, pParse, (*TUpsert)(unsafe.Pointer(pUpsert)).FpUpsertTarget) != 0 {
@@ -104121,7 +104121,7 @@ insert_end:
 	if regRowCount != 0 {
 		_sqlite3VdbeAddOp2(tls, v, int32(m_OP_ChngCntRow), regRowCount, int32(1))
 		_sqlite3VdbeSetNumCols(tls, v, int32(1))
-		_sqlite3VdbeSetColName(tls, v, 0, m_COLNAME_NAME, __ccgo_ts+15661, libc.UintptrFromInt32(0))
+		_sqlite3VdbeSetColName(tls, v, 0, m_COLNAME_NAME, __ccgo_ts+15681, libc.UintptrFromInt32(0))
 	}
 insert_cleanup:
 	_sqlite3SrcListDelete(tls, db, pTabList)
@@ -104508,7 +104508,7 @@ func _sqlite3GenerateConstraintChecks(tls *libc.TLS, pParse uintptr, pTab uintpt
 				case int32(m_OE_Rollback):
 					fallthrough
 				case int32(m_OE_Fail):
-					zMsg = _sqlite3MPrintf(tls, db, __ccgo_ts+11841, libc.VaList(bp+64, (*TTable)(unsafe.Pointer(pTab)).FzName, (*TColumn)(unsafe.Pointer(pCol)).FzCnName))
+					zMsg = _sqlite3MPrintf(tls, db, __ccgo_ts+11861, libc.VaList(bp+64, (*TTable)(unsafe.Pointer(pTab)).FzName, (*TColumn)(unsafe.Pointer(pCol)).FzCnName))
 					_sqlite3VdbeAddOp3(tls, v, int32(m_OP_HaltIfNull), libc.Int32FromInt32(m_SQLITE_CONSTRAINT)|libc.Int32FromInt32(5)<<libc.Int32FromInt32(8), onError, iReg)
 					_sqlite3VdbeAppendP4(tls, v, zMsg, -int32(7))
 					_sqlite3VdbeChangeP5(tls, v, uint16(m_P5_ConstraintNotNull))
@@ -105891,7 +105891,7 @@ func Xsqlite3_exec(tls *libc.TLS, db uintptr, zSql uintptr, xCallback Tsqlite3_c
 		return _sqlite3MisuseError(tls, int32(127193))
 	}
 	if zSql == uintptr(0) {
-		zSql = __ccgo_ts + 1511
+		zSql = __ccgo_ts + 1531
 	}
 	Xsqlite3_mutex_enter(tls, (*Tsqlite3)(unsafe.Pointer(db)).Fmutex)
 	_sqlite3Error(tls, db, m_SQLITE_OK)
@@ -106658,14 +106658,14 @@ func _sqlite3LoadExtension(tls *libc.TLS, db uintptr, zFile uintptr, zProc uintp
 	 */
 	if (*Tsqlite3)(unsafe.Pointer(db)).Fflags&uint64(m_SQLITE_LoadExtension) == uint64(0) {
 		if pzErrMsg != 0 {
-			*(*uintptr)(unsafe.Pointer(pzErrMsg)) = Xsqlite3_mprintf(tls, __ccgo_ts+11880, 0)
+			*(*uintptr)(unsafe.Pointer(pzErrMsg)) = Xsqlite3_mprintf(tls, __ccgo_ts+11900, 0)
 		}
 		return int32(m_SQLITE_ERROR)
 	}
 	if zProc != 0 {
 		v1 = zProc
 	} else {
-		v1 = __ccgo_ts + 15678
+		v1 = __ccgo_ts + 15698
 	}
 	zEntry = v1
 	/* tag-20210611-1.  Some dlopen() implementations will segfault if given
@@ -106681,7 +106681,7 @@ func _sqlite3LoadExtension(tls *libc.TLS, db uintptr, zFile uintptr, zProc uintp
 		if !(ii < int32(libc.Uint64FromInt64(8)/libc.Uint64FromInt64(8)) && handle == uintptr(0)) {
 			break
 		}
-		zAltFile = Xsqlite3_mprintf(tls, __ccgo_ts+11841, libc.VaList(bp+16, zFile, _azEndings[ii]))
+		zAltFile = Xsqlite3_mprintf(tls, __ccgo_ts+11861, libc.VaList(bp+16, zFile, _azEndings[ii]))
 		if zAltFile == uintptr(0) {
 			return int32(m_SQLITE_NOMEM)
 		}
@@ -106713,7 +106713,7 @@ func _sqlite3LoadExtension(tls *libc.TLS, db uintptr, zFile uintptr, zProc uintp
 			_sqlite3OsDlClose(tls, pVfs, handle)
 			return int32(m_SQLITE_NOMEM)
 		}
-		libc.Xmemcpy(tls, zAltEntry, __ccgo_ts+15701, uint64(8))
+		libc.Xmemcpy(tls, zAltEntry, __ccgo_ts+15721, uint64(8))
 		iFile = ncFile - int32(1)
 		for {
 			if !(iFile >= 0 && !(int32(*(*uint8)(unsafe.Pointer(zFile + uintptr(iFile)))) == libc.Int32FromUint8('/'))) {
@@ -106724,7 +106724,7 @@ func _sqlite3LoadExtension(tls *libc.TLS, db uintptr, zFile uintptr, zProc uintp
 			iFile--
 		}
 		iFile++
-		if Xsqlite3_strnicmp(tls, zFile+uintptr(iFile), __ccgo_ts+15710, int32(3)) == 0 {
+		if Xsqlite3_strnicmp(tls, zFile+uintptr(iFile), __ccgo_ts+15730, int32(3)) == 0 {
 			iFile += int32(3)
 		}
 		iEntry = int32(8)
@@ -106743,7 +106743,7 @@ func _sqlite3LoadExtension(tls *libc.TLS, db uintptr, zFile uintptr, zProc uintp
 		_4:
 			iFile++
 		}
-		libc.Xmemcpy(tls, zAltEntry+uintptr(iEntry), __ccgo_ts+15714, uint64(6))
+		libc.Xmemcpy(tls, zAltEntry+uintptr(iEntry), __ccgo_ts+15734, uint64(6))
 		zEntry = zAltEntry
 		xInit = _sqlite3OsDlSym(tls, pVfs, handle, zEntry)
 	}
@@ -106755,7 +106755,7 @@ func _sqlite3LoadExtension(tls *libc.TLS, db uintptr, zFile uintptr, zProc uintp
 			*(*uintptr)(unsafe.Pointer(pzErrMsg)) = v7
 			if *(*uintptr)(unsafe.Pointer(bp)) != 0 {
 				_ = libc.Int32FromInt32(0) /* zErrmsg would be NULL if not so */
-				Xsqlite3_snprintf(tls, int32(nMsg), *(*uintptr)(unsafe.Pointer(bp)), __ccgo_ts+15720, libc.VaList(bp+16, zEntry, zFile))
+				Xsqlite3_snprintf(tls, int32(nMsg), *(*uintptr)(unsafe.Pointer(bp)), __ccgo_ts+15740, libc.VaList(bp+16, zEntry, zFile))
 				_sqlite3OsDlError(tls, pVfs, int32(nMsg-uint64(1)), *(*uintptr)(unsafe.Pointer(bp)))
 			}
 		}
@@ -106770,7 +106770,7 @@ func _sqlite3LoadExtension(tls *libc.TLS, db uintptr, zFile uintptr, zProc uintp
 			return m_SQLITE_OK
 		}
 		if pzErrMsg != 0 {
-			*(*uintptr)(unsafe.Pointer(pzErrMsg)) = Xsqlite3_mprintf(tls, __ccgo_ts+15763, libc.VaList(bp+16, *(*uintptr)(unsafe.Pointer(bp))))
+			*(*uintptr)(unsafe.Pointer(pzErrMsg)) = Xsqlite3_mprintf(tls, __ccgo_ts+15783, libc.VaList(bp+16, *(*uintptr)(unsafe.Pointer(bp))))
 		}
 		Xsqlite3_free(tls, *(*uintptr)(unsafe.Pointer(bp)))
 		_sqlite3OsDlClose(tls, pVfs, handle)
@@ -106799,7 +106799,7 @@ extension_not_found:
 		*(*uintptr)(unsafe.Pointer(pzErrMsg)) = v10
 		if *(*uintptr)(unsafe.Pointer(bp)) != 0 {
 			_ = libc.Int32FromInt32(0) /* zErrmsg would be NULL if not so */
-			Xsqlite3_snprintf(tls, int32(nMsg), *(*uintptr)(unsafe.Pointer(bp)), __ccgo_ts+15795, libc.VaList(bp+16, int32(m_FILENAME_MAX), zFile))
+			Xsqlite3_snprintf(tls, int32(nMsg), *(*uintptr)(unsafe.Pointer(bp)), __ccgo_ts+15815, libc.VaList(bp+16, int32(m_FILENAME_MAX), zFile))
 			_sqlite3OsDlError(tls, pVfs, int32(nMsg-uint64(1)), *(*uintptr)(unsafe.Pointer(bp)))
 		}
 	}
@@ -106808,7 +106808,7 @@ extension_not_found:
 
 /* Shared library endings to try if zFile cannot be loaded as written */
 var _azEndings = [1]uintptr{
-	0: __ccgo_ts + 15675,
+	0: __ccgo_ts + 15695,
 }
 
 func Xsqlite3_load_extension(tls *libc.TLS, db uintptr, zFile uintptr, zProc uintptr, pzErrMsg uintptr) (r int32) {
@@ -107036,7 +107036,7 @@ func _sqlite3AutoLoadExtensions(tls *libc.TLS, db uintptr) {
 			rc = v2
 		}
 		if v3 && v2 != 0 {
-			_sqlite3ErrorWithMsg(tls, db, rc, __ccgo_ts+15832, libc.VaList(bp+16, *(*uintptr)(unsafe.Pointer(bp))))
+			_sqlite3ErrorWithMsg(tls, db, rc, __ccgo_ts+15852, libc.VaList(bp+16, *(*uintptr)(unsafe.Pointer(bp))))
 			go1 = 0
 		}
 		Xsqlite3_free(tls, *(*uintptr)(unsafe.Pointer(bp)))
@@ -107089,63 +107089,63 @@ func _sqlite3AutoLoadExtensions(tls *libc.TLS, db uintptr) {
 //	** result column is different from the name of the pragma
 //	*/
 var _pragCName = [57]uintptr{
-	0:  __ccgo_ts + 4927,
-	1:  __ccgo_ts + 15871,
-	2:  __ccgo_ts + 8681,
-	3:  __ccgo_ts + 15875,
-	4:  __ccgo_ts + 15880,
-	5:  __ccgo_ts + 15883,
-	6:  __ccgo_ts + 15893,
-	7:  __ccgo_ts + 15903,
-	8:  __ccgo_ts + 15909,
-	9:  __ccgo_ts + 15913,
-	10: __ccgo_ts + 15918,
-	11: __ccgo_ts + 15923,
-	12: __ccgo_ts + 15931,
-	13: __ccgo_ts + 15942,
-	14: __ccgo_ts + 15945,
-	15: __ccgo_ts + 15952,
-	16: __ccgo_ts + 15913,
-	17: __ccgo_ts + 15918,
-	18: __ccgo_ts + 15959,
-	19: __ccgo_ts + 15964,
-	20: __ccgo_ts + 15967,
-	21: __ccgo_ts + 15974,
-	22: __ccgo_ts + 15909,
-	23: __ccgo_ts + 15913,
-	24: __ccgo_ts + 15980,
-	25: __ccgo_ts + 15985,
-	26: __ccgo_ts + 15990,
-	27: __ccgo_ts + 15913,
-	28: __ccgo_ts + 15994,
-	29: __ccgo_ts + 15918,
-	30: __ccgo_ts + 16002,
-	31: __ccgo_ts + 16006,
-	32: __ccgo_ts + 16011,
-	33: __ccgo_ts + 11272,
-	34: __ccgo_ts + 11268,
-	35: __ccgo_ts + 16017,
-	36: __ccgo_ts + 16022,
-	37: __ccgo_ts + 16027,
-	38: __ccgo_ts + 15871,
-	39: __ccgo_ts + 15913,
-	40: __ccgo_ts + 16032,
-	41: __ccgo_ts + 16039,
-	42: __ccgo_ts + 16046,
-	43: __ccgo_ts + 8681,
-	44: __ccgo_ts + 16054,
-	45: __ccgo_ts + 4930,
-	46: __ccgo_ts + 16060,
-	47: __ccgo_ts + 15871,
-	48: __ccgo_ts + 15913,
-	49: __ccgo_ts + 16065,
-	50: __ccgo_ts + 16070,
-	51: __ccgo_ts + 15267,
-	52: __ccgo_ts + 16075,
-	53: __ccgo_ts + 16088,
-	54: __ccgo_ts + 16097,
-	55: __ccgo_ts + 16104,
-	56: __ccgo_ts + 16115,
+	0:  __ccgo_ts + 4947,
+	1:  __ccgo_ts + 15891,
+	2:  __ccgo_ts + 8701,
+	3:  __ccgo_ts + 15895,
+	4:  __ccgo_ts + 15900,
+	5:  __ccgo_ts + 15903,
+	6:  __ccgo_ts + 15913,
+	7:  __ccgo_ts + 15923,
+	8:  __ccgo_ts + 15929,
+	9:  __ccgo_ts + 15933,
+	10: __ccgo_ts + 15938,
+	11: __ccgo_ts + 15943,
+	12: __ccgo_ts + 15951,
+	13: __ccgo_ts + 15962,
+	14: __ccgo_ts + 15965,
+	15: __ccgo_ts + 15972,
+	16: __ccgo_ts + 15933,
+	17: __ccgo_ts + 15938,
+	18: __ccgo_ts + 15979,
+	19: __ccgo_ts + 15984,
+	20: __ccgo_ts + 15987,
+	21: __ccgo_ts + 15994,
+	22: __ccgo_ts + 15929,
+	23: __ccgo_ts + 15933,
+	24: __ccgo_ts + 16000,
+	25: __ccgo_ts + 16005,
+	26: __ccgo_ts + 16010,
+	27: __ccgo_ts + 15933,
+	28: __ccgo_ts + 16014,
+	29: __ccgo_ts + 15938,
+	30: __ccgo_ts + 16022,
+	31: __ccgo_ts + 16026,
+	32: __ccgo_ts + 16031,
+	33: __ccgo_ts + 11292,
+	34: __ccgo_ts + 11288,
+	35: __ccgo_ts + 16037,
+	36: __ccgo_ts + 16042,
+	37: __ccgo_ts + 16047,
+	38: __ccgo_ts + 15891,
+	39: __ccgo_ts + 15933,
+	40: __ccgo_ts + 16052,
+	41: __ccgo_ts + 16059,
+	42: __ccgo_ts + 16066,
+	43: __ccgo_ts + 8701,
+	44: __ccgo_ts + 16074,
+	45: __ccgo_ts + 4950,
+	46: __ccgo_ts + 16080,
+	47: __ccgo_ts + 15891,
+	48: __ccgo_ts + 15933,
+	49: __ccgo_ts + 16085,
+	50: __ccgo_ts + 16090,
+	51: __ccgo_ts + 15287,
+	52: __ccgo_ts + 16095,
+	53: __ccgo_ts + 16108,
+	54: __ccgo_ts + 16117,
+	55: __ccgo_ts + 16124,
+	56: __ccgo_ts + 16135,
 }
 
 // C documentation
@@ -107162,191 +107162,191 @@ type TPragmaName = struct {
 
 var _aPragmaName = [66]TPragmaName{
 	0: {
-		FzName:    __ccgo_ts + 16123,
+		FzName:    __ccgo_ts + 16143,
 		FePragTyp: uint8(m_PragTyp_ANALYSIS_LIMIT),
 		FmPragFlg: uint8(m_PragFlg_Result0),
 	},
 	1: {
-		FzName:    __ccgo_ts + 16138,
+		FzName:    __ccgo_ts + 16158,
 		FePragTyp: uint8(m_PragTyp_HEADER_VALUE),
 		FmPragFlg: uint8(libc.Int32FromInt32(m_PragFlg_NoColumns1) | libc.Int32FromInt32(m_PragFlg_Result0)),
 		FiArg:     uint64(m_BTREE_APPLICATION_ID),
 	},
 	2: {
-		FzName:    __ccgo_ts + 16153,
+		FzName:    __ccgo_ts + 16173,
 		FePragTyp: uint8(m_PragTyp_AUTO_VACUUM),
 		FmPragFlg: uint8(libc.Int32FromInt32(m_PragFlg_NeedSchema) | libc.Int32FromInt32(m_PragFlg_Result0) | libc.Int32FromInt32(m_PragFlg_SchemaReq) | libc.Int32FromInt32(m_PragFlg_NoColumns1)),
 	},
 	3: {
-		FzName:    __ccgo_ts + 16165,
+		FzName:    __ccgo_ts + 16185,
 		FePragTyp: uint8(m_PragTyp_FLAG),
 		FmPragFlg: uint8(libc.Int32FromInt32(m_PragFlg_Result0) | libc.Int32FromInt32(m_PragFlg_NoColumns1)),
 		FiArg:     uint64(m_SQLITE_AutoIndex),
 	},
 	4: {
-		FzName:      __ccgo_ts + 16181,
+		FzName:      __ccgo_ts + 16201,
 		FePragTyp:   uint8(m_PragTyp_BUSY_TIMEOUT),
 		FmPragFlg:   uint8(m_PragFlg_Result0),
 		FiPragCName: uint8(56),
 		FnPragCName: uint8(1),
 	},
 	5: {
-		FzName:    __ccgo_ts + 16104,
+		FzName:    __ccgo_ts + 16124,
 		FePragTyp: uint8(m_PragTyp_CACHE_SIZE),
 		FmPragFlg: uint8(libc.Int32FromInt32(m_PragFlg_NeedSchema) | libc.Int32FromInt32(m_PragFlg_Result0) | libc.Int32FromInt32(m_PragFlg_SchemaReq) | libc.Int32FromInt32(m_PragFlg_NoColumns1)),
 	},
 	6: {
-		FzName:    __ccgo_ts + 16194,
+		FzName:    __ccgo_ts + 16214,
 		FePragTyp: uint8(m_PragTyp_CACHE_SPILL),
 		FmPragFlg: uint8(libc.Int32FromInt32(m_PragFlg_Result0) | libc.Int32FromInt32(m_PragFlg_SchemaReq) | libc.Int32FromInt32(m_PragFlg_NoColumns1)),
 	},
 	7: {
-		FzName:    __ccgo_ts + 16206,
+		FzName:    __ccgo_ts + 16226,
 		FePragTyp: uint8(m_PragTyp_CASE_SENSITIVE_LIKE),
 		FmPragFlg: uint8(m_PragFlg_NoColumns),
 	},
 	8: {
-		FzName:    __ccgo_ts + 16226,
+		FzName:    __ccgo_ts + 16246,
 		FePragTyp: uint8(m_PragTyp_FLAG),
 		FmPragFlg: uint8(libc.Int32FromInt32(m_PragFlg_Result0) | libc.Int32FromInt32(m_PragFlg_NoColumns1)),
 		FiArg:     uint64(m_SQLITE_CellSizeCk),
 	},
 	9: {
-		FzName:    __ccgo_ts + 16242,
+		FzName:    __ccgo_ts + 16262,
 		FePragTyp: uint8(m_PragTyp_FLAG),
 		FmPragFlg: uint8(libc.Int32FromInt32(m_PragFlg_Result0) | libc.Int32FromInt32(m_PragFlg_NoColumns1)),
 		FiArg:     uint64(m_SQLITE_CkptFullFSync),
 	},
 	10: {
-		FzName:      __ccgo_ts + 16263,
+		FzName:      __ccgo_ts + 16283,
 		FePragTyp:   uint8(m_PragTyp_COLLATION_LIST),
 		FmPragFlg:   uint8(m_PragFlg_Result0),
 		FiPragCName: uint8(38),
 		FnPragCName: uint8(2),
 	},
 	11: {
-		FzName:    __ccgo_ts + 16278,
+		FzName:    __ccgo_ts + 16298,
 		FePragTyp: uint8(m_PragTyp_COMPILE_OPTIONS),
 		FmPragFlg: uint8(m_PragFlg_Result0),
 	},
 	12: {
-		FzName:    __ccgo_ts + 16294,
+		FzName:    __ccgo_ts + 16314,
 		FePragTyp: uint8(m_PragTyp_FLAG),
 		FmPragFlg: uint8(libc.Int32FromInt32(m_PragFlg_Result0) | libc.Int32FromInt32(m_PragFlg_NoColumns1)),
 		FiArg:     uint64(libc.Int32FromInt32(0x00001)) << libc.Int32FromInt32(32),
 	},
 	13: {
-		FzName:    __ccgo_ts + 16308,
+		FzName:    __ccgo_ts + 16328,
 		FePragTyp: uint8(m_PragTyp_HEADER_VALUE),
 		FmPragFlg: uint8(libc.Int32FromInt32(m_PragFlg_ReadOnly) | libc.Int32FromInt32(m_PragFlg_Result0)),
 		FiArg:     uint64(m_BTREE_DATA_VERSION),
 	},
 	14: {
-		FzName:      __ccgo_ts + 16321,
+		FzName:      __ccgo_ts + 16341,
 		FePragTyp:   uint8(m_PragTyp_DATABASE_LIST),
 		FmPragFlg:   uint8(libc.Int32FromInt32(m_PragFlg_NeedSchema) | libc.Int32FromInt32(m_PragFlg_Result0)),
 		FiPragCName: uint8(47),
 		FnPragCName: uint8(3),
 	},
 	15: {
-		FzName:      __ccgo_ts + 16335,
+		FzName:      __ccgo_ts + 16355,
 		FePragTyp:   uint8(m_PragTyp_DEFAULT_CACHE_SIZE),
 		FmPragFlg:   uint8(libc.Int32FromInt32(m_PragFlg_NeedSchema) | libc.Int32FromInt32(m_PragFlg_Result0) | libc.Int32FromInt32(m_PragFlg_SchemaReq) | libc.Int32FromInt32(m_PragFlg_NoColumns1)),
 		FiPragCName: uint8(55),
 		FnPragCName: uint8(1),
 	},
 	16: {
-		FzName:    __ccgo_ts + 16354,
+		FzName:    __ccgo_ts + 16374,
 		FePragTyp: uint8(m_PragTyp_FLAG),
 		FmPragFlg: uint8(libc.Int32FromInt32(m_PragFlg_Result0) | libc.Int32FromInt32(m_PragFlg_NoColumns1)),
 		FiArg:     uint64(m_SQLITE_DeferFKs),
 	},
 	17: {
-		FzName:    __ccgo_ts + 16373,
+		FzName:    __ccgo_ts + 16393,
 		FePragTyp: uint8(m_PragTyp_FLAG),
 		FmPragFlg: uint8(libc.Int32FromInt32(m_PragFlg_Result0) | libc.Int32FromInt32(m_PragFlg_NoColumns1)),
 		FiArg:     uint64(m_SQLITE_NullCallback),
 	},
 	18: {
-		FzName:    __ccgo_ts + 16396,
+		FzName:    __ccgo_ts + 16416,
 		FePragTyp: uint8(m_PragTyp_ENCODING),
 		FmPragFlg: uint8(libc.Int32FromInt32(m_PragFlg_Result0) | libc.Int32FromInt32(m_PragFlg_NoColumns1)),
 	},
 	19: {
-		FzName:      __ccgo_ts + 16405,
+		FzName:      __ccgo_ts + 16425,
 		FePragTyp:   uint8(m_PragTyp_FOREIGN_KEY_CHECK),
 		FmPragFlg:   uint8(libc.Int32FromInt32(m_PragFlg_NeedSchema) | libc.Int32FromInt32(m_PragFlg_Result0) | libc.Int32FromInt32(m_PragFlg_Result1) | libc.Int32FromInt32(m_PragFlg_SchemaOpt)),
 		FiPragCName: uint8(43),
 		FnPragCName: uint8(4),
 	},
 	20: {
-		FzName:      __ccgo_ts + 16423,
+		FzName:      __ccgo_ts + 16443,
 		FePragTyp:   uint8(m_PragTyp_FOREIGN_KEY_LIST),
 		FmPragFlg:   uint8(libc.Int32FromInt32(m_PragFlg_NeedSchema) | libc.Int32FromInt32(m_PragFlg_Result1) | libc.Int32FromInt32(m_PragFlg_SchemaOpt)),
 		FnPragCName: uint8(8),
 	},
 	21: {
-		FzName:    __ccgo_ts + 16440,
+		FzName:    __ccgo_ts + 16460,
 		FePragTyp: uint8(m_PragTyp_FLAG),
 		FmPragFlg: uint8(libc.Int32FromInt32(m_PragFlg_Result0) | libc.Int32FromInt32(m_PragFlg_NoColumns1)),
 		FiArg:     uint64(m_SQLITE_ForeignKeys),
 	},
 	22: {
-		FzName:    __ccgo_ts + 16453,
+		FzName:    __ccgo_ts + 16473,
 		FePragTyp: uint8(m_PragTyp_HEADER_VALUE),
 		FmPragFlg: uint8(libc.Int32FromInt32(m_PragFlg_ReadOnly) | libc.Int32FromInt32(m_PragFlg_Result0)),
 	},
 	23: {
-		FzName:    __ccgo_ts + 16468,
+		FzName:    __ccgo_ts + 16488,
 		FePragTyp: uint8(m_PragTyp_FLAG),
 		FmPragFlg: uint8(libc.Int32FromInt32(m_PragFlg_Result0) | libc.Int32FromInt32(m_PragFlg_NoColumns1)),
 		FiArg:     uint64(m_SQLITE_FullColNames),
 	},
 	24: {
-		FzName:    __ccgo_ts + 16486,
+		FzName:    __ccgo_ts + 16506,
 		FePragTyp: uint8(m_PragTyp_FLAG),
 		FmPragFlg: uint8(libc.Int32FromInt32(m_PragFlg_Result0) | libc.Int32FromInt32(m_PragFlg_NoColumns1)),
 		FiArg:     uint64(m_SQLITE_FullFSync),
 	},
 	25: {
-		FzName:      __ccgo_ts + 16496,
+		FzName:      __ccgo_ts + 16516,
 		FePragTyp:   uint8(m_PragTyp_FUNCTION_LIST),
 		FmPragFlg:   uint8(m_PragFlg_Result0),
 		FiPragCName: uint8(27),
 		FnPragCName: uint8(6),
 	},
 	26: {
-		FzName:    __ccgo_ts + 16510,
+		FzName:    __ccgo_ts + 16530,
 		FePragTyp: uint8(m_PragTyp_HARD_HEAP_LIMIT),
 		FmPragFlg: uint8(m_PragFlg_Result0),
 	},
 	27: {
-		FzName:    __ccgo_ts + 16526,
+		FzName:    __ccgo_ts + 16546,
 		FePragTyp: uint8(m_PragTyp_FLAG),
 		FmPragFlg: uint8(libc.Int32FromInt32(m_PragFlg_Result0) | libc.Int32FromInt32(m_PragFlg_NoColumns1)),
 		FiArg:     uint64(m_SQLITE_IgnoreChecks),
 	},
 	28: {
-		FzName:    __ccgo_ts + 16551,
+		FzName:    __ccgo_ts + 16571,
 		FePragTyp: uint8(m_PragTyp_INCREMENTAL_VACUUM),
 		FmPragFlg: uint8(libc.Int32FromInt32(m_PragFlg_NeedSchema) | libc.Int32FromInt32(m_PragFlg_NoColumns)),
 	},
 	29: {
-		FzName:      __ccgo_ts + 16570,
+		FzName:      __ccgo_ts + 16590,
 		FePragTyp:   uint8(m_PragTyp_INDEX_INFO),
 		FmPragFlg:   uint8(libc.Int32FromInt32(m_PragFlg_NeedSchema) | libc.Int32FromInt32(m_PragFlg_Result1) | libc.Int32FromInt32(m_PragFlg_SchemaOpt)),
 		FiPragCName: uint8(21),
 		FnPragCName: uint8(3),
 	},
 	30: {
-		FzName:      __ccgo_ts + 16581,
+		FzName:      __ccgo_ts + 16601,
 		FePragTyp:   uint8(m_PragTyp_INDEX_LIST),
 		FmPragFlg:   uint8(libc.Int32FromInt32(m_PragFlg_NeedSchema) | libc.Int32FromInt32(m_PragFlg_Result1) | libc.Int32FromInt32(m_PragFlg_SchemaOpt)),
 		FiPragCName: uint8(38),
 		FnPragCName: uint8(5),
 	},
 	31: {
-		FzName:      __ccgo_ts + 16592,
+		FzName:      __ccgo_ts + 16612,
 		FePragTyp:   uint8(m_PragTyp_INDEX_INFO),
 		FmPragFlg:   uint8(libc.Int32FromInt32(m_PragFlg_NeedSchema) | libc.Int32FromInt32(m_PragFlg_Result1) | libc.Int32FromInt32(m_PragFlg_SchemaOpt)),
 		FiPragCName: uint8(21),
@@ -107354,146 +107354,146 @@ var _aPragmaName = [66]TPragmaName{
 		FiArg:       uint64(1),
 	},
 	32: {
-		FzName:    __ccgo_ts + 16604,
+		FzName:    __ccgo_ts + 16624,
 		FePragTyp: uint8(m_PragTyp_INTEGRITY_CHECK),
 		FmPragFlg: uint8(libc.Int32FromInt32(m_PragFlg_NeedSchema) | libc.Int32FromInt32(m_PragFlg_Result0) | libc.Int32FromInt32(m_PragFlg_Result1) | libc.Int32FromInt32(m_PragFlg_SchemaOpt)),
 	},
 	33: {
-		FzName:    __ccgo_ts + 16620,
+		FzName:    __ccgo_ts + 16640,
 		FePragTyp: uint8(m_PragTyp_JOURNAL_MODE),
 		FmPragFlg: uint8(libc.Int32FromInt32(m_PragFlg_NeedSchema) | libc.Int32FromInt32(m_PragFlg_Result0) | libc.Int32FromInt32(m_PragFlg_SchemaReq)),
 	},
 	34: {
-		FzName:    __ccgo_ts + 16633,
+		FzName:    __ccgo_ts + 16653,
 		FePragTyp: uint8(m_PragTyp_JOURNAL_SIZE_LIMIT),
 		FmPragFlg: uint8(libc.Int32FromInt32(m_PragFlg_Result0) | libc.Int32FromInt32(m_PragFlg_SchemaReq)),
 	},
 	35: {
-		FzName:    __ccgo_ts + 16652,
+		FzName:    __ccgo_ts + 16672,
 		FePragTyp: uint8(m_PragTyp_FLAG),
 		FmPragFlg: uint8(libc.Int32FromInt32(m_PragFlg_Result0) | libc.Int32FromInt32(m_PragFlg_NoColumns1)),
 		FiArg:     uint64(m_SQLITE_LegacyAlter),
 	},
 	36: {
-		FzName:    __ccgo_ts + 16671,
+		FzName:    __ccgo_ts + 16691,
 		FePragTyp: uint8(m_PragTyp_LOCKING_MODE),
 		FmPragFlg: uint8(libc.Int32FromInt32(m_PragFlg_Result0) | libc.Int32FromInt32(m_PragFlg_SchemaReq)),
 	},
 	37: {
-		FzName:    __ccgo_ts + 16684,
+		FzName:    __ccgo_ts + 16704,
 		FePragTyp: uint8(m_PragTyp_PAGE_COUNT),
 		FmPragFlg: uint8(libc.Int32FromInt32(m_PragFlg_NeedSchema) | libc.Int32FromInt32(m_PragFlg_Result0) | libc.Int32FromInt32(m_PragFlg_SchemaReq)),
 	},
 	38: {
-		FzName:    __ccgo_ts + 16699,
+		FzName:    __ccgo_ts + 16719,
 		FePragTyp: uint8(m_PragTyp_MMAP_SIZE),
 	},
 	39: {
-		FzName:      __ccgo_ts + 16709,
+		FzName:      __ccgo_ts + 16729,
 		FePragTyp:   uint8(m_PragTyp_MODULE_LIST),
 		FmPragFlg:   uint8(m_PragFlg_Result0),
 		FiPragCName: uint8(9),
 		FnPragCName: uint8(1),
 	},
 	40: {
-		FzName:    __ccgo_ts + 16721,
+		FzName:    __ccgo_ts + 16741,
 		FePragTyp: uint8(m_PragTyp_OPTIMIZE),
 		FmPragFlg: uint8(libc.Int32FromInt32(m_PragFlg_Result1) | libc.Int32FromInt32(m_PragFlg_NeedSchema)),
 	},
 	41: {
-		FzName:    __ccgo_ts + 16730,
+		FzName:    __ccgo_ts + 16750,
 		FePragTyp: uint8(m_PragTyp_PAGE_COUNT),
 		FmPragFlg: uint8(libc.Int32FromInt32(m_PragFlg_NeedSchema) | libc.Int32FromInt32(m_PragFlg_Result0) | libc.Int32FromInt32(m_PragFlg_SchemaReq)),
 	},
 	42: {
-		FzName:    __ccgo_ts + 16741,
+		FzName:    __ccgo_ts + 16761,
 		FePragTyp: uint8(m_PragTyp_PAGE_SIZE),
 		FmPragFlg: uint8(libc.Int32FromInt32(m_PragFlg_Result0) | libc.Int32FromInt32(m_PragFlg_SchemaReq) | libc.Int32FromInt32(m_PragFlg_NoColumns1)),
 	},
 	43: {
-		FzName:      __ccgo_ts + 16751,
+		FzName:      __ccgo_ts + 16771,
 		FePragTyp:   uint8(m_PragTyp_PRAGMA_LIST),
 		FmPragFlg:   uint8(m_PragFlg_Result0),
 		FiPragCName: uint8(9),
 		FnPragCName: uint8(1),
 	},
 	44: {
-		FzName:    __ccgo_ts + 16763,
+		FzName:    __ccgo_ts + 16783,
 		FePragTyp: uint8(m_PragTyp_FLAG),
 		FmPragFlg: uint8(libc.Int32FromInt32(m_PragFlg_Result0) | libc.Int32FromInt32(m_PragFlg_NoColumns1)),
 		FiArg:     uint64(m_SQLITE_QueryOnly),
 	},
 	45: {
-		FzName:    __ccgo_ts + 16774,
+		FzName:    __ccgo_ts + 16794,
 		FePragTyp: uint8(m_PragTyp_INTEGRITY_CHECK),
 		FmPragFlg: uint8(libc.Int32FromInt32(m_PragFlg_NeedSchema) | libc.Int32FromInt32(m_PragFlg_Result0) | libc.Int32FromInt32(m_PragFlg_Result1) | libc.Int32FromInt32(m_PragFlg_SchemaOpt)),
 	},
 	46: {
-		FzName:    __ccgo_ts + 16786,
+		FzName:    __ccgo_ts + 16806,
 		FePragTyp: uint8(m_PragTyp_FLAG),
 		FmPragFlg: uint8(libc.Int32FromInt32(m_PragFlg_Result0) | libc.Int32FromInt32(m_PragFlg_NoColumns1)),
 		FiArg:     uint64(m_SQLITE_ReadUncommit),
 	},
 	47: {
-		FzName:    __ccgo_ts + 16803,
+		FzName:    __ccgo_ts + 16823,
 		FePragTyp: uint8(m_PragTyp_FLAG),
 		FmPragFlg: uint8(libc.Int32FromInt32(m_PragFlg_Result0) | libc.Int32FromInt32(m_PragFlg_NoColumns1)),
 		FiArg:     uint64(m_SQLITE_RecTriggers),
 	},
 	48: {
-		FzName:    __ccgo_ts + 16822,
+		FzName:    __ccgo_ts + 16842,
 		FePragTyp: uint8(m_PragTyp_FLAG),
 		FmPragFlg: uint8(libc.Int32FromInt32(m_PragFlg_Result0) | libc.Int32FromInt32(m_PragFlg_NoColumns1)),
 		FiArg:     uint64(m_SQLITE_ReverseOrder),
 	},
 	49: {
-		FzName:    __ccgo_ts + 16848,
+		FzName:    __ccgo_ts + 16868,
 		FePragTyp: uint8(m_PragTyp_HEADER_VALUE),
 		FmPragFlg: uint8(libc.Int32FromInt32(m_PragFlg_NoColumns1) | libc.Int32FromInt32(m_PragFlg_Result0)),
 		FiArg:     uint64(m_BTREE_SCHEMA_VERSION),
 	},
 	50: {
-		FzName:    __ccgo_ts + 16863,
+		FzName:    __ccgo_ts + 16883,
 		FePragTyp: uint8(m_PragTyp_SECURE_DELETE),
 		FmPragFlg: uint8(m_PragFlg_Result0),
 	},
 	51: {
-		FzName:    __ccgo_ts + 16877,
+		FzName:    __ccgo_ts + 16897,
 		FePragTyp: uint8(m_PragTyp_FLAG),
 		FmPragFlg: uint8(libc.Int32FromInt32(m_PragFlg_Result0) | libc.Int32FromInt32(m_PragFlg_NoColumns1)),
 		FiArg:     uint64(m_SQLITE_ShortColNames),
 	},
 	52: {
-		FzName:    __ccgo_ts + 16896,
+		FzName:    __ccgo_ts + 16916,
 		FePragTyp: uint8(m_PragTyp_SHRINK_MEMORY),
 		FmPragFlg: uint8(m_PragFlg_NoColumns),
 	},
 	53: {
-		FzName:    __ccgo_ts + 16910,
+		FzName:    __ccgo_ts + 16930,
 		FePragTyp: uint8(m_PragTyp_SOFT_HEAP_LIMIT),
 		FmPragFlg: uint8(m_PragFlg_Result0),
 	},
 	54: {
-		FzName:    __ccgo_ts + 16926,
+		FzName:    __ccgo_ts + 16946,
 		FePragTyp: uint8(m_PragTyp_SYNCHRONOUS),
 		FmPragFlg: uint8(libc.Int32FromInt32(m_PragFlg_NeedSchema) | libc.Int32FromInt32(m_PragFlg_Result0) | libc.Int32FromInt32(m_PragFlg_SchemaReq) | libc.Int32FromInt32(m_PragFlg_NoColumns1)),
 	},
 	55: {
-		FzName:      __ccgo_ts + 16938,
+		FzName:      __ccgo_ts + 16958,
 		FePragTyp:   uint8(m_PragTyp_TABLE_INFO),
 		FmPragFlg:   uint8(libc.Int32FromInt32(m_PragFlg_NeedSchema) | libc.Int32FromInt32(m_PragFlg_Result1) | libc.Int32FromInt32(m_PragFlg_SchemaOpt)),
 		FiPragCName: uint8(8),
 		FnPragCName: uint8(6),
 	},
 	56: {
-		FzName:      __ccgo_ts + 16949,
+		FzName:      __ccgo_ts + 16969,
 		FePragTyp:   uint8(m_PragTyp_TABLE_LIST),
 		FmPragFlg:   uint8(libc.Int32FromInt32(m_PragFlg_NeedSchema) | libc.Int32FromInt32(m_PragFlg_Result1)),
 		FiPragCName: uint8(15),
 		FnPragCName: uint8(6),
 	},
 	57: {
-		FzName:      __ccgo_ts + 16960,
+		FzName:      __ccgo_ts + 16980,
 		FePragTyp:   uint8(m_PragTyp_TABLE_INFO),
 		FmPragFlg:   uint8(libc.Int32FromInt32(m_PragFlg_NeedSchema) | libc.Int32FromInt32(m_PragFlg_Result1) | libc.Int32FromInt32(m_PragFlg_SchemaOpt)),
 		FiPragCName: uint8(8),
@@ -107501,45 +107501,45 @@ var _aPragmaName = [66]TPragmaName{
 		FiArg:       uint64(1),
 	},
 	58: {
-		FzName:    __ccgo_ts + 16972,
+		FzName:    __ccgo_ts + 16992,
 		FePragTyp: uint8(m_PragTyp_TEMP_STORE),
 		FmPragFlg: uint8(libc.Int32FromInt32(m_PragFlg_Result0) | libc.Int32FromInt32(m_PragFlg_NoColumns1)),
 	},
 	59: {
-		FzName:    __ccgo_ts + 16983,
+		FzName:    __ccgo_ts + 17003,
 		FePragTyp: uint8(m_PragTyp_TEMP_STORE_DIRECTORY),
 		FmPragFlg: uint8(m_PragFlg_NoColumns1),
 	},
 	60: {
-		FzName:    __ccgo_ts + 17004,
+		FzName:    __ccgo_ts + 17024,
 		FePragTyp: uint8(m_PragTyp_THREADS),
 		FmPragFlg: uint8(m_PragFlg_Result0),
 	},
 	61: {
-		FzName:    __ccgo_ts + 17012,
+		FzName:    __ccgo_ts + 17032,
 		FePragTyp: uint8(m_PragTyp_FLAG),
 		FmPragFlg: uint8(libc.Int32FromInt32(m_PragFlg_Result0) | libc.Int32FromInt32(m_PragFlg_NoColumns1)),
 		FiArg:     uint64(m_SQLITE_TrustedSchema),
 	},
 	62: {
-		FzName:    __ccgo_ts + 17027,
+		FzName:    __ccgo_ts + 17047,
 		FePragTyp: uint8(m_PragTyp_HEADER_VALUE),
 		FmPragFlg: uint8(libc.Int32FromInt32(m_PragFlg_NoColumns1) | libc.Int32FromInt32(m_PragFlg_Result0)),
 		FiArg:     uint64(m_BTREE_USER_VERSION),
 	},
 	63: {
-		FzName:    __ccgo_ts + 17040,
+		FzName:    __ccgo_ts + 17060,
 		FePragTyp: uint8(m_PragTyp_WAL_AUTOCHECKPOINT),
 	},
 	64: {
-		FzName:      __ccgo_ts + 17059,
+		FzName:      __ccgo_ts + 17079,
 		FePragTyp:   uint8(m_PragTyp_WAL_CHECKPOINT),
 		FmPragFlg:   uint8(m_PragFlg_NeedSchema),
 		FiPragCName: uint8(50),
 		FnPragCName: uint8(3),
 	},
 	65: {
-		FzName:    __ccgo_ts + 17074,
+		FzName:    __ccgo_ts + 17094,
 		FePragTyp: uint8(m_PragTyp_FLAG),
 		FmPragFlg: uint8(libc.Int32FromInt32(m_PragFlg_Result0) | libc.Int32FromInt32(m_PragFlg_NoColumns1)),
 		FiArg:     uint64(libc.Int32FromInt32(m_SQLITE_WriteSchema) | libc.Int32FromInt32(m_SQLITE_NoSchemaError)),
@@ -107639,10 +107639,10 @@ func _sqlite3GetBoolean(tls *libc.TLS, z uintptr, dflt Tu8) (r Tu8) {
 //	*/
 func _getLockingMode(tls *libc.TLS, z uintptr) (r int32) {
 	if z != 0 {
-		if 0 == _sqlite3StrICmp(tls, z, __ccgo_ts+17090) {
+		if 0 == _sqlite3StrICmp(tls, z, __ccgo_ts+17110) {
 			return int32(m_PAGER_LOCKINGMODE_EXCLUSIVE)
 		}
-		if 0 == _sqlite3StrICmp(tls, z, __ccgo_ts+17100) {
+		if 0 == _sqlite3StrICmp(tls, z, __ccgo_ts+17120) {
 			return m_PAGER_LOCKINGMODE_NORMAL
 		}
 	}
@@ -107660,13 +107660,13 @@ func _getLockingMode(tls *libc.TLS, z uintptr) (r int32) {
 func _getAutoVacuum(tls *libc.TLS, z uintptr) (r int32) {
 	var i, v1 int32
 	_, _ = i, v1
-	if 0 == _sqlite3StrICmp(tls, z, __ccgo_ts+7835) {
+	if 0 == _sqlite3StrICmp(tls, z, __ccgo_ts+7855) {
 		return m_BTREE_AUTOVACUUM_NONE
 	}
-	if 0 == _sqlite3StrICmp(tls, z, __ccgo_ts+17107) {
+	if 0 == _sqlite3StrICmp(tls, z, __ccgo_ts+17127) {
 		return int32(m_BTREE_AUTOVACUUM_FULL)
 	}
-	if 0 == _sqlite3StrICmp(tls, z, __ccgo_ts+17112) {
+	if 0 == _sqlite3StrICmp(tls, z, __ccgo_ts+17132) {
 		return int32(m_BTREE_AUTOVACUUM_INCR)
 	}
 	i = _sqlite3Atoi(tls, z)
@@ -107689,10 +107689,10 @@ func _getTempStore(tls *libc.TLS, z uintptr) (r int32) {
 	if int32(*(*uint8)(unsafe.Pointer(z))) >= int32('0') && int32(*(*uint8)(unsafe.Pointer(z))) <= int32('2') {
 		return int32(*(*uint8)(unsafe.Pointer(z))) - int32('0')
 	} else {
-		if _sqlite3StrICmp(tls, z, __ccgo_ts+16065) == 0 {
+		if _sqlite3StrICmp(tls, z, __ccgo_ts+16085) == 0 {
 			return int32(1)
 		} else {
-			if _sqlite3StrICmp(tls, z, __ccgo_ts+17124) == 0 {
+			if _sqlite3StrICmp(tls, z, __ccgo_ts+17144) == 0 {
 				return int32(2)
 			} else {
 				return 0
@@ -107714,7 +107714,7 @@ func _invalidateTempStorage(tls *libc.TLS, pParse uintptr) (r int32) {
 	db = (*TParse)(unsafe.Pointer(pParse)).Fdb
 	if (*(*TDb)(unsafe.Pointer((*Tsqlite3)(unsafe.Pointer(db)).FaDb + 1*32))).FpBt != uintptr(0) {
 		if !((*Tsqlite3)(unsafe.Pointer(db)).FautoCommit != 0) || _sqlite3BtreeTxnState(tls, (*(*TDb)(unsafe.Pointer((*Tsqlite3)(unsafe.Pointer(db)).FaDb + 1*32))).FpBt) != m_SQLITE_TXN_NONE {
-			_sqlite3ErrorMsg(tls, pParse, __ccgo_ts+17131, 0)
+			_sqlite3ErrorMsg(tls, pParse, __ccgo_ts+17151, 0)
 			return int32(m_SQLITE_ERROR)
 		}
 		_sqlite3BtreeClose(tls, (*(*TDb)(unsafe.Pointer((*Tsqlite3)(unsafe.Pointer(db)).FaDb + 1*32))).FpBt)
@@ -107848,15 +107848,15 @@ func _actionName(tls *libc.TLS, action Tu8) (r uintptr) {
 	_ = zName
 	switch int32(action) {
 	case int32(m_OE_SetNull):
-		zName = __ccgo_ts + 17193
+		zName = __ccgo_ts + 17213
 	case int32(m_OE_SetDflt):
-		zName = __ccgo_ts + 17202
-	case int32(m_OE_Cascade):
-		zName = __ccgo_ts + 17214
-	case int32(m_OE_Restrict):
 		zName = __ccgo_ts + 17222
+	case int32(m_OE_Cascade):
+		zName = __ccgo_ts + 17234
+	case int32(m_OE_Restrict):
+		zName = __ccgo_ts + 17242
 	default:
-		zName = __ccgo_ts + 17231
+		zName = __ccgo_ts + 17251
 		_ = libc.Int32FromInt32(0)
 		break
 	}
@@ -107885,12 +107885,12 @@ func _sqlite3JournalModename(tls *libc.TLS, eMode int32) (r uintptr) {
 }
 
 var _azModeName = [6]uintptr{
-	0: __ccgo_ts + 17241,
-	1: __ccgo_ts + 17248,
-	2: __ccgo_ts + 17256,
-	3: __ccgo_ts + 17260,
-	4: __ccgo_ts + 17124,
-	5: __ccgo_ts + 17269,
+	0: __ccgo_ts + 17261,
+	1: __ccgo_ts + 17268,
+	2: __ccgo_ts + 17276,
+	3: __ccgo_ts + 17280,
+	4: __ccgo_ts + 17144,
+	5: __ccgo_ts + 17289,
 }
 
 // C documentation
@@ -107951,15 +107951,15 @@ func _pragmaFunclistLine(tls *libc.TLS, v uintptr, p uintptr, isBuiltin int32, s
 			goto _1
 		}
 		if (*TFuncDef)(unsafe.Pointer(p)).FxValue != uintptr(0) {
-			zType = __ccgo_ts + 17294
+			zType = __ccgo_ts + 17314
 		} else {
 			if (*TFuncDef)(unsafe.Pointer(p)).FxFinalize != uintptr(0) {
-				zType = __ccgo_ts + 17296
+				zType = __ccgo_ts + 17316
 			} else {
-				zType = __ccgo_ts + 7303
+				zType = __ccgo_ts + 7323
 			}
 		}
-		_sqlite3VdbeMultiLoad(tls, v, int32(1), __ccgo_ts+17298, libc.VaList(bp+8, (*TFuncDef)(unsafe.Pointer(p)).FzName, isBuiltin, zType, _azEnc[(*TFuncDef)(unsafe.Pointer(p)).FfuncFlags&uint32(m_SQLITE_FUNC_ENCMASK)], int32((*TFuncDef)(unsafe.Pointer(p)).FnArg), (*TFuncDef)(unsafe.Pointer(p)).FfuncFlags&_mask^uint32(m_SQLITE_INNOCUOUS)))
+		_sqlite3VdbeMultiLoad(tls, v, int32(1), __ccgo_ts+17318, libc.VaList(bp+8, (*TFuncDef)(unsafe.Pointer(p)).FzName, isBuiltin, zType, _azEnc[(*TFuncDef)(unsafe.Pointer(p)).FfuncFlags&uint32(m_SQLITE_FUNC_ENCMASK)], int32((*TFuncDef)(unsafe.Pointer(p)).FnArg), (*TFuncDef)(unsafe.Pointer(p)).FfuncFlags&_mask^uint32(m_SQLITE_INNOCUOUS)))
 		goto _1
 	_1:
 		p = (*TFuncDef)(unsafe.Pointer(p)).FpNext
@@ -107969,9 +107969,9 @@ func _pragmaFunclistLine(tls *libc.TLS, v uintptr, p uintptr, isBuiltin int32, s
 var _mask = uint32(libc.Int32FromInt32(m_SQLITE_DETERMINISTIC) | libc.Int32FromInt32(m_SQLITE_DIRECTONLY) | libc.Int32FromInt32(m_SQLITE_SUBTYPE) | libc.Int32FromInt32(m_SQLITE_INNOCUOUS) | libc.Int32FromInt32(m_SQLITE_FUNC_INTERNAL))
 
 var _azEnc = [4]uintptr{
-	1: __ccgo_ts + 17273,
-	2: __ccgo_ts + 17278,
-	3: __ccgo_ts + 17286,
+	1: __ccgo_ts + 17293,
+	2: __ccgo_ts + 17298,
+	3: __ccgo_ts + 17306,
 }
 
 // C documentation
@@ -108069,7 +108069,7 @@ func _sqlite3Pragma(tls *libc.TLS, pParse uintptr, pId1 uintptr, pId2 uintptr, p
 		return
 	}
 	if minusFlag != 0 {
-		zRight = _sqlite3MPrintf(tls, db, __ccgo_ts+17305, libc.VaList(bp+160, pValue))
+		zRight = _sqlite3MPrintf(tls, db, __ccgo_ts+17325, libc.VaList(bp+160, pValue))
 	} else {
 		zRight = _sqlite3NameFromToken(tls, db, pValue)
 	}
@@ -108113,7 +108113,7 @@ func _sqlite3Pragma(tls *libc.TLS, pParse uintptr, pId1 uintptr, pId2 uintptr, p
 	}
 	if rc != int32(m_SQLITE_NOTFOUND) {
 		if (*(*[4]uintptr)(unsafe.Pointer(bp + 8)))[0] != 0 {
-			_sqlite3ErrorMsg(tls, pParse, __ccgo_ts+3560, libc.VaList(bp+160, (*(*[4]uintptr)(unsafe.Pointer(bp + 8)))[0]))
+			_sqlite3ErrorMsg(tls, pParse, __ccgo_ts+3580, libc.VaList(bp+160, (*(*[4]uintptr)(unsafe.Pointer(bp + 8)))[0]))
 			Xsqlite3_free(tls, (*(*[4]uintptr)(unsafe.Pointer(bp + 8)))[0])
 		}
 		(*TParse)(unsafe.Pointer(pParse)).FnErr++
@@ -108220,7 +108220,7 @@ func _sqlite3Pragma(tls *libc.TLS, pParse uintptr, pId1 uintptr, pId2 uintptr, p
 		b = -int32(1)
 		_ = libc.Int32FromInt32(0)
 		if zRight != 0 {
-			if Xsqlite3_stricmp(tls, zRight, __ccgo_ts+17309) == 0 {
+			if Xsqlite3_stricmp(tls, zRight, __ccgo_ts+17329) == 0 {
 				b = int32(2)
 			} else {
 				b = int32(_sqlite3GetBoolean(tls, zRight, uint8(0)))
@@ -108290,7 +108290,7 @@ func _sqlite3Pragma(tls *libc.TLS, pParse uintptr, pId1 uintptr, pId2 uintptr, p
 		 */
 		fallthrough
 	case int32(m_PragTyp_LOCKING_MODE):
-		zRet = __ccgo_ts + 17100
+		zRet = __ccgo_ts + 17120
 		eMode = _getLockingMode(tls, zRight)
 		if (*TToken)(unsafe.Pointer(pId2)).Fn == uint32(0) && eMode == -int32(1) {
 			/* Simple "PRAGMA locking_mode;" statement. This is a query for
@@ -108319,7 +108319,7 @@ func _sqlite3Pragma(tls *libc.TLS, pParse uintptr, pId1 uintptr, pId2 uintptr, p
 		}
 		_ = libc.Int32FromInt32(0)
 		if eMode == int32(m_PAGER_LOCKINGMODE_EXCLUSIVE) {
-			zRet = __ccgo_ts + 17090
+			zRet = __ccgo_ts + 17110
 		}
 		_returnSingleText(tls, v, zRet)
 		break
@@ -108609,7 +108609,7 @@ func _sqlite3Pragma(tls *libc.TLS, pParse uintptr, pId1 uintptr, pId2 uintptr, p
 			if *(*uint8)(unsafe.Pointer(zRight)) != 0 {
 				rc = _sqlite3OsAccess(tls, (*Tsqlite3)(unsafe.Pointer(db)).FpVfs, zRight, int32(m_SQLITE_ACCESS_READWRITE), bp+72)
 				if rc != m_SQLITE_OK || *(*int32)(unsafe.Pointer(bp + 72)) == 0 {
-					_sqlite3ErrorMsg(tls, pParse, __ccgo_ts+17314, 0)
+					_sqlite3ErrorMsg(tls, pParse, __ccgo_ts+17334, 0)
 					goto pragma_out
 				}
 			}
@@ -108618,7 +108618,7 @@ func _sqlite3Pragma(tls *libc.TLS, pParse uintptr, pId1 uintptr, pId2 uintptr, p
 			}
 			Xsqlite3_free(tls, Xsqlite3_temp_directory)
 			if *(*uint8)(unsafe.Pointer(zRight)) != 0 {
-				Xsqlite3_temp_directory = Xsqlite3_mprintf(tls, __ccgo_ts+3560, libc.VaList(bp+160, zRight))
+				Xsqlite3_temp_directory = Xsqlite3_mprintf(tls, __ccgo_ts+3580, libc.VaList(bp+160, zRight))
 			} else {
 				Xsqlite3_temp_directory = uintptr(0)
 			}
@@ -108639,7 +108639,7 @@ func _sqlite3Pragma(tls *libc.TLS, pParse uintptr, pId1 uintptr, pId2 uintptr, p
 			_returnSingleInt(tls, v, int64(int32((*TDb)(unsafe.Pointer(pDb)).Fsafety_level)-int32(1)))
 		} else {
 			if !((*Tsqlite3)(unsafe.Pointer(db)).FautoCommit != 0) {
-				_sqlite3ErrorMsg(tls, pParse, __ccgo_ts+17339, 0)
+				_sqlite3ErrorMsg(tls, pParse, __ccgo_ts+17359, 0)
 			} else {
 				if iDb != int32(1) {
 					iLevel = (int32(_getSafetyLevel(tls, zRight, 0, uint8(1))) + int32(1)) & int32(m_PAGER_SYNCHRONOUS_MASK)
@@ -108670,7 +108670,7 @@ func _sqlite3Pragma(tls *libc.TLS, pParse uintptr, pId1 uintptr, pId2 uintptr, p
 				if mask == uint64(m_SQLITE_DeferFKs) {
 					(*Tsqlite3)(unsafe.Pointer(db)).FnDeferredImmCons = 0
 				}
-				if mask&uint64(m_SQLITE_WriteSchema) != uint64(0) && Xsqlite3_stricmp(tls, zRight, __ccgo_ts+17392) == 0 {
+				if mask&uint64(m_SQLITE_WriteSchema) != uint64(0) && Xsqlite3_stricmp(tls, zRight, __ccgo_ts+17412) == 0 {
 					/* IMP: R-60817-01178 If the argument is "RESET" then schema
 					 ** writing is disabled (as with "PRAGMA writable_schema=OFF") and,
 					 ** in addition, the schema is reloaded. */
@@ -108752,9 +108752,9 @@ func _sqlite3Pragma(tls *libc.TLS, pParse uintptr, pId1 uintptr, pId2 uintptr, p
 					_ = libc.Int32FromInt32(0)
 					_ = libc.Int32FromInt32(0)
 					if (*TPragmaName)(unsafe.Pointer(pPragma)).FiArg != 0 {
-						v14 = __ccgo_ts + 17398
+						v14 = __ccgo_ts + 17418
 					} else {
-						v14 = __ccgo_ts + 17406
+						v14 = __ccgo_ts + 17426
 					}
 					if int32(uint32(*(*uint8)(unsafe.Pointer(pCol + 8))&0xf>>0)) != 0 {
 						v15 = int32(1)
@@ -108766,7 +108766,7 @@ func _sqlite3Pragma(tls *libc.TLS, pParse uintptr, pId1 uintptr, pId2 uintptr, p
 					} else {
 						v16 = *(*uintptr)(unsafe.Pointer(pColExpr + 8))
 					}
-					_sqlite3VdbeMultiLoad(tls, v, int32(1), v14, libc.VaList(bp+160, i-nHidden, (*TColumn)(unsafe.Pointer(pCol)).FzCnName, _sqlite3ColumnType(tls, pCol, __ccgo_ts+1511), v15, v16, k, isHidden))
+					_sqlite3VdbeMultiLoad(tls, v, int32(1), v14, libc.VaList(bp+160, i-nHidden, (*TColumn)(unsafe.Pointer(pCol)).FzCnName, _sqlite3ColumnType(tls, pCol, __ccgo_ts+1531), v15, v16, k, isHidden))
 					goto _12
 				_12:
 					i++
@@ -108824,7 +108824,7 @@ func _sqlite3Pragma(tls *libc.TLS, pParse uintptr, pId1 uintptr, pId2 uintptr, p
 					}
 					pTab1 = (*THashElem)(unsafe.Pointer(k1)).Fdata
 					if int32((*TTable)(unsafe.Pointer(pTab1)).FnCol) == 0 {
-						zSql = _sqlite3MPrintf(tls, db, __ccgo_ts+17413, libc.VaList(bp+160, (*TTable)(unsafe.Pointer(pTab1)).FzName))
+						zSql = _sqlite3MPrintf(tls, db, __ccgo_ts+17433, libc.VaList(bp+160, (*TTable)(unsafe.Pointer(pTab1)).FzName))
 						if zSql != 0 {
 							*(*uintptr)(unsafe.Pointer(bp + 80)) = uintptr(0)
 							Xsqlite3_prepare(tls, db, zSql, -int32(1), bp+80, uintptr(0))
@@ -108849,19 +108849,19 @@ func _sqlite3Pragma(tls *libc.TLS, pParse uintptr, pId1 uintptr, pId2 uintptr, p
 					goto _20
 				}
 				if int32((*TTable)(unsafe.Pointer(pTab2)).FeTabType) == int32(m_TABTYP_VIEW) {
-					zType = __ccgo_ts + 10300
+					zType = __ccgo_ts + 10320
 				} else {
 					if int32((*TTable)(unsafe.Pointer(pTab2)).FeTabType) == int32(m_TABTYP_VTAB) {
-						zType = __ccgo_ts + 12556
+						zType = __ccgo_ts + 12576
 					} else {
 						if (*TTable)(unsafe.Pointer(pTab2)).FtabFlags&uint32(m_TF_Shadow) != 0 {
-							zType = __ccgo_ts + 17429
+							zType = __ccgo_ts + 17449
 						} else {
-							zType = __ccgo_ts + 8681
+							zType = __ccgo_ts + 8701
 						}
 					}
 				}
-				_sqlite3VdbeMultiLoad(tls, v, int32(1), __ccgo_ts+17436, libc.VaList(bp+160, (*(*TDb)(unsafe.Pointer((*Tsqlite3)(unsafe.Pointer(db)).FaDb + uintptr(ii4)*32))).FzDbSName, _sqlite3PreferredTableName(tls, (*TTable)(unsafe.Pointer(pTab2)).FzName), zType, int32((*TTable)(unsafe.Pointer(pTab2)).FnCol), libc.BoolInt32((*TTable)(unsafe.Pointer(pTab2)).FtabFlags&uint32(m_TF_WithoutRowid) != uint32(0)), libc.BoolInt32((*TTable)(unsafe.Pointer(pTab2)).FtabFlags&uint32(m_TF_Strict) != uint32(0))))
+				_sqlite3VdbeMultiLoad(tls, v, int32(1), __ccgo_ts+17456, libc.VaList(bp+160, (*(*TDb)(unsafe.Pointer((*Tsqlite3)(unsafe.Pointer(db)).FaDb + uintptr(ii4)*32))).FzDbSName, _sqlite3PreferredTableName(tls, (*TTable)(unsafe.Pointer(pTab2)).FzName), zType, int32((*TTable)(unsafe.Pointer(pTab2)).FnCol), libc.BoolInt32((*TTable)(unsafe.Pointer(pTab2)).FtabFlags&uint32(m_TF_WithoutRowid) != uint32(0)), libc.BoolInt32((*TTable)(unsafe.Pointer(pTab2)).FtabFlags&uint32(m_TF_Strict) != uint32(0))))
 				goto _20
 			_20:
 				k1 = (*THashElem)(unsafe.Pointer(k1)).Fnext
@@ -108907,9 +108907,9 @@ func _sqlite3Pragma(tls *libc.TLS, pParse uintptr, pId1 uintptr, pId2 uintptr, p
 					} else {
 						v22 = (*(*TColumn)(unsafe.Pointer((*TTable)(unsafe.Pointer(pTab3)).FaCol + uintptr(cnum)*16))).FzCnName
 					}
-					_sqlite3VdbeMultiLoad(tls, v, int32(1), __ccgo_ts+17443, libc.VaList(bp+160, i1, int32(cnum), v22))
+					_sqlite3VdbeMultiLoad(tls, v, int32(1), __ccgo_ts+17463, libc.VaList(bp+160, i1, int32(cnum), v22))
 					if (*TPragmaName)(unsafe.Pointer(pPragma)).FiArg != 0 {
-						_sqlite3VdbeMultiLoad(tls, v, int32(4), __ccgo_ts+17448, libc.VaList(bp+160, int32(*(*Tu8)(unsafe.Pointer((*TIndex)(unsafe.Pointer(pIdx)).FaSortOrder + uintptr(i1)))), *(*uintptr)(unsafe.Pointer((*TIndex)(unsafe.Pointer(pIdx)).FazColl + uintptr(i1)*8)), libc.BoolInt32(i1 < int32((*TIndex)(unsafe.Pointer(pIdx)).FnKeyCol))))
+						_sqlite3VdbeMultiLoad(tls, v, int32(4), __ccgo_ts+17468, libc.VaList(bp+160, int32(*(*Tu8)(unsafe.Pointer((*TIndex)(unsafe.Pointer(pIdx)).FaSortOrder + uintptr(i1)))), *(*uintptr)(unsafe.Pointer((*TIndex)(unsafe.Pointer(pIdx)).FazColl + uintptr(i1)*8)), libc.BoolInt32(i1 < int32((*TIndex)(unsafe.Pointer(pIdx)).FnKeyCol))))
 					}
 					_sqlite3VdbeAddOp2(tls, v, int32(m_OP_ResultRow), int32(1), (*TParse)(unsafe.Pointer(pParse)).FnMem)
 					goto _21
@@ -108932,11 +108932,11 @@ func _sqlite3Pragma(tls *libc.TLS, pParse uintptr, pId1 uintptr, pId2 uintptr, p
 						break
 					}
 					azOrigin = [3]uintptr{
-						0: __ccgo_ts + 17453,
-						1: __ccgo_ts + 17455,
-						2: __ccgo_ts + 15942,
+						0: __ccgo_ts + 17473,
+						1: __ccgo_ts + 17475,
+						2: __ccgo_ts + 15962,
 					}
-					_sqlite3VdbeMultiLoad(tls, v, int32(1), __ccgo_ts+17457, libc.VaList(bp+160, i2, (*TIndex)(unsafe.Pointer(pIdx1)).FzName, libc.BoolInt32(int32((*TIndex)(unsafe.Pointer(pIdx1)).FonError) != m_OE_None), azOrigin[int32(uint32(*(*uint16)(unsafe.Pointer(pIdx1 + 100))&0x3>>0))], libc.BoolInt32((*TIndex)(unsafe.Pointer(pIdx1)).FpPartIdxWhere != uintptr(0))))
+					_sqlite3VdbeMultiLoad(tls, v, int32(1), __ccgo_ts+17477, libc.VaList(bp+160, i2, (*TIndex)(unsafe.Pointer(pIdx1)).FzName, libc.BoolInt32(int32((*TIndex)(unsafe.Pointer(pIdx1)).FonError) != m_OE_None), azOrigin[int32(uint32(*(*uint16)(unsafe.Pointer(pIdx1 + 100))&0x3>>0))], libc.BoolInt32((*TIndex)(unsafe.Pointer(pIdx1)).FpPartIdxWhere != uintptr(0))))
 					goto _23
 				_23:
 					pIdx1 = (*TIndex)(unsafe.Pointer(pIdx1)).FpNext
@@ -108955,7 +108955,7 @@ func _sqlite3Pragma(tls *libc.TLS, pParse uintptr, pId1 uintptr, pId2 uintptr, p
 				goto _24
 			}
 			_ = libc.Int32FromInt32(0)
-			_sqlite3VdbeMultiLoad(tls, v, int32(1), __ccgo_ts+17463, libc.VaList(bp+160, i3, (*(*TDb)(unsafe.Pointer((*Tsqlite3)(unsafe.Pointer(db)).FaDb + uintptr(i3)*32))).FzDbSName, _sqlite3BtreeGetFilename(tls, (*(*TDb)(unsafe.Pointer((*Tsqlite3)(unsafe.Pointer(db)).FaDb + uintptr(i3)*32))).FpBt)))
+			_sqlite3VdbeMultiLoad(tls, v, int32(1), __ccgo_ts+17483, libc.VaList(bp+160, i3, (*(*TDb)(unsafe.Pointer((*Tsqlite3)(unsafe.Pointer(db)).FaDb + uintptr(i3)*32))).FzDbSName, _sqlite3BtreeGetFilename(tls, (*(*TDb)(unsafe.Pointer((*Tsqlite3)(unsafe.Pointer(db)).FaDb + uintptr(i3)*32))).FpBt)))
 			goto _24
 		_24:
 			i3++
@@ -108971,7 +108971,7 @@ func _sqlite3Pragma(tls *libc.TLS, pParse uintptr, pId1 uintptr, pId2 uintptr, p
 			pColl = (*THashElem)(unsafe.Pointer(p)).Fdata
 			v26 = i4
 			i4++
-			_sqlite3VdbeMultiLoad(tls, v, int32(1), __ccgo_ts+17467, libc.VaList(bp+160, v26, (*TCollSeq)(unsafe.Pointer(pColl)).FzName))
+			_sqlite3VdbeMultiLoad(tls, v, int32(1), __ccgo_ts+17487, libc.VaList(bp+160, v26, (*TCollSeq)(unsafe.Pointer(pColl)).FzName))
 			goto _25
 		_25:
 			p = (*THashElem)(unsafe.Pointer(p)).Fnext
@@ -109019,7 +109019,7 @@ func _sqlite3Pragma(tls *libc.TLS, pParse uintptr, pId1 uintptr, pId2 uintptr, p
 				break
 			}
 			pMod = (*THashElem)(unsafe.Pointer(j1)).Fdata
-			_sqlite3VdbeMultiLoad(tls, v, int32(1), __ccgo_ts+7303, libc.VaList(bp+160, (*TModule)(unsafe.Pointer(pMod)).FzName))
+			_sqlite3VdbeMultiLoad(tls, v, int32(1), __ccgo_ts+7323, libc.VaList(bp+160, (*TModule)(unsafe.Pointer(pMod)).FzName))
 			goto _30
 		_30:
 			j1 = (*THashElem)(unsafe.Pointer(j1)).Fnext
@@ -109030,7 +109030,7 @@ func _sqlite3Pragma(tls *libc.TLS, pParse uintptr, pId1 uintptr, pId2 uintptr, p
 			if !(i6 < int32(libc.Uint64FromInt64(1584)/libc.Uint64FromInt64(24))) {
 				break
 			}
-			_sqlite3VdbeMultiLoad(tls, v, int32(1), __ccgo_ts+7303, libc.VaList(bp+160, _aPragmaName[i6].FzName))
+			_sqlite3VdbeMultiLoad(tls, v, int32(1), __ccgo_ts+7323, libc.VaList(bp+160, _aPragmaName[i6].FzName))
 			goto _31
 		_31:
 			i6++
@@ -109055,7 +109055,7 @@ func _sqlite3Pragma(tls *libc.TLS, pParse uintptr, pId1 uintptr, pId2 uintptr, p
 							if !(j2 < (*TFKey)(unsafe.Pointer(pFK)).FnCol) {
 								break
 							}
-							_sqlite3VdbeMultiLoad(tls, v, int32(1), __ccgo_ts+17470, libc.VaList(bp+160, i7, j2, (*TFKey)(unsafe.Pointer(pFK)).FzTo, (*(*TColumn)(unsafe.Pointer((*TTable)(unsafe.Pointer(pTab5)).FaCol + uintptr((*(*TsColMap)(unsafe.Pointer(pFK + 64 + uintptr(j2)*16))).FiFrom)*16))).FzCnName, (*(*TsColMap)(unsafe.Pointer(pFK + 64 + uintptr(j2)*16))).FzCol, _actionName(tls, *(*Tu8)(unsafe.Pointer(pFK + 45 + 1))), _actionName(tls, *(*Tu8)(unsafe.Pointer(pFK + 45))), __ccgo_ts+17479))
+							_sqlite3VdbeMultiLoad(tls, v, int32(1), __ccgo_ts+17490, libc.VaList(bp+160, i7, j2, (*TFKey)(unsafe.Pointer(pFK)).FzTo, (*(*TColumn)(unsafe.Pointer((*TTable)(unsafe.Pointer(pTab5)).FaCol + uintptr((*(*TsColMap)(unsafe.Pointer(pFK + 64 + uintptr(j2)*16))).FiFrom)*16))).FzCnName, (*(*TsColMap)(unsafe.Pointer(pFK + 64 + uintptr(j2)*16))).FzCol, _actionName(tls, *(*Tu8)(unsafe.Pointer(pFK + 45 + 1))), _actionName(tls, *(*Tu8)(unsafe.Pointer(pFK + 45))), __ccgo_ts+17499))
 							goto _32
 						_32:
 							j2++
@@ -109206,7 +109206,7 @@ func _sqlite3Pragma(tls *libc.TLS, pParse uintptr, pId1 uintptr, pId2 uintptr, p
 				} else {
 					_sqlite3VdbeAddOp2(tls, v, int32(m_OP_Null), 0, regResult+int32(1))
 				}
-				_sqlite3VdbeMultiLoad(tls, v, regResult+int32(2), __ccgo_ts+17484, libc.VaList(bp+160, (*TFKey)(unsafe.Pointer(pFK1)).FzTo, i8-int32(1)))
+				_sqlite3VdbeMultiLoad(tls, v, regResult+int32(2), __ccgo_ts+17504, libc.VaList(bp+160, (*TFKey)(unsafe.Pointer(pFK1)).FzTo, i8-int32(1)))
 				_sqlite3VdbeAddOp2(tls, v, int32(m_OP_ResultRow), regResult, int32(4))
 				_sqlite3VdbeResolveLabel(tls, v, addrOk)
 				_sqlite3DbFree(tls, db, *(*uintptr)(unsafe.Pointer(bp + 96)))
@@ -109402,7 +109402,7 @@ func _sqlite3Pragma(tls *libc.TLS, pParse uintptr, pId1 uintptr, pId2 uintptr, p
 			_sqlite3VdbeAddOp4(tls, v, int32(m_OP_IntegrityCk), int32(2), cnt, int32(1), aRoot, -int32(15))
 			_sqlite3VdbeChangeP5(tls, v, uint16(uint8(i9)))
 			addr1 = _sqlite3VdbeAddOp1(tls, v, int32(m_OP_IsNull), int32(2))
-			_sqlite3VdbeAddOp4(tls, v, int32(m_OP_String8), 0, int32(3), 0, _sqlite3MPrintf(tls, db, __ccgo_ts+17488, libc.VaList(bp+160, (*(*TDb)(unsafe.Pointer((*Tsqlite3)(unsafe.Pointer(db)).FaDb + uintptr(i9)*32))).FzDbSName)), -int32(7))
+			_sqlite3VdbeAddOp4(tls, v, int32(m_OP_String8), 0, int32(3), 0, _sqlite3MPrintf(tls, db, __ccgo_ts+17508, libc.VaList(bp+160, (*(*TDb)(unsafe.Pointer((*Tsqlite3)(unsafe.Pointer(db)).FaDb + uintptr(i9)*32))).FzDbSName)), -int32(7))
 			_sqlite3VdbeAddOp3(tls, v, int32(m_OP_Concat), int32(2), int32(3), int32(3))
 			_integrityCheckResultRow(tls, v)
 			_sqlite3VdbeJumpHere(tls, v, addr1)
@@ -109481,7 +109481,7 @@ func _sqlite3Pragma(tls *libc.TLS, pParse uintptr, pId1 uintptr, pId2 uintptr, p
 					}
 					if int32(uint32(*(*uint8)(unsafe.Pointer(pCol1 + 8))&0xf>>0)) != 0 {
 						jmp2 = _sqlite3VdbeAddOp1(tls, v, int32(m_OP_NotNull), int32(3))
-						zErr = _sqlite3MPrintf(tls, db, __ccgo_ts+17512, libc.VaList(bp+160, (*TTable)(unsafe.Pointer(pTab9)).FzName, (*TColumn)(unsafe.Pointer(pCol1)).FzCnName))
+						zErr = _sqlite3MPrintf(tls, db, __ccgo_ts+17532, libc.VaList(bp+160, (*TTable)(unsafe.Pointer(pTab9)).FzName, (*TColumn)(unsafe.Pointer(pCol1)).FzCnName))
 						_sqlite3VdbeAddOp4(tls, v, int32(m_OP_String8), 0, int32(3), 0, zErr, -int32(7))
 						if bStrict != 0 && int32(uint32(*(*uint8)(unsafe.Pointer(pCol1 + 8))&0xf0>>4)) != int32(m_COLTYPE_ANY) {
 							_sqlite3VdbeGoto(tls, v, doError)
@@ -109492,7 +109492,7 @@ func _sqlite3Pragma(tls *libc.TLS, pParse uintptr, pId1 uintptr, pId2 uintptr, p
 					}
 					if (*TTable)(unsafe.Pointer(pTab9)).FtabFlags&uint32(m_TF_Strict) != uint32(0) && int32(uint32(*(*uint8)(unsafe.Pointer(pCol1 + 8))&0xf0>>4)) != int32(m_COLTYPE_ANY) {
 						jmp2 = _sqlite3VdbeAddOp3(tls, v, int32(m_OP_IsNullOrType), int32(3), 0, int32(_sqlite3StdTypeMap[int32(uint32(*(*uint8)(unsafe.Pointer(pCol1 + 8))&0xf0>>4))-int32(1)]))
-						zErr = _sqlite3MPrintf(tls, db, __ccgo_ts+17532, libc.VaList(bp+160, _sqlite3StdType[int32(uint32(*(*uint8)(unsafe.Pointer(pCol1 + 8))&0xf0>>4))-int32(1)], (*TTable)(unsafe.Pointer(pTab9)).FzName, (*(*TColumn)(unsafe.Pointer((*TTable)(unsafe.Pointer(pTab9)).FaCol + uintptr(j4)*16))).FzCnName))
+						zErr = _sqlite3MPrintf(tls, db, __ccgo_ts+17552, libc.VaList(bp+160, _sqlite3StdType[int32(uint32(*(*uint8)(unsafe.Pointer(pCol1 + 8))&0xf0>>4))-int32(1)], (*TTable)(unsafe.Pointer(pTab9)).FzName, (*(*TColumn)(unsafe.Pointer((*TTable)(unsafe.Pointer(pTab9)).FaCol + uintptr(j4)*16))).FzCnName))
 						_sqlite3VdbeAddOp4(tls, v, int32(m_OP_String8), 0, int32(3), 0, zErr, -int32(7))
 						_sqlite3VdbeResolveLabel(tls, v, doError)
 						_integrityCheckResultRow(tls, v)
@@ -109522,7 +109522,7 @@ func _sqlite3Pragma(tls *libc.TLS, pParse uintptr, pId1 uintptr, pId2 uintptr, p
 						_sqlite3ExprIfTrue(tls, pParse, (*(*TExprList_item)(unsafe.Pointer(pCheck + 8))).FpExpr, addrCkOk, int32(m_SQLITE_JUMPIFNULL))
 						_sqlite3VdbeResolveLabel(tls, v, addrCkFault)
 						(*TParse)(unsafe.Pointer(pParse)).FiSelfTab = 0
-						zErr1 = _sqlite3MPrintf(tls, db, __ccgo_ts+17554, libc.VaList(bp+160, (*TTable)(unsafe.Pointer(pTab9)).FzName))
+						zErr1 = _sqlite3MPrintf(tls, db, __ccgo_ts+17574, libc.VaList(bp+160, (*TTable)(unsafe.Pointer(pTab9)).FzName))
 						_sqlite3VdbeAddOp4(tls, v, int32(m_OP_String8), 0, int32(3), 0, zErr1, -int32(7))
 						_integrityCheckResultRow(tls, v)
 						_sqlite3VdbeResolveLabel(tls, v, addrCkOk)
@@ -109546,9 +109546,9 @@ func _sqlite3Pragma(tls *libc.TLS, pParse uintptr, pId1 uintptr, pId2 uintptr, p
 						_sqlite3VdbeAddOp2(tls, v, int32(m_OP_AddImm), int32(8)+j4, int32(1)) /* increment entry count */
 						/* Verify that an index entry exists for the current table row */
 						jmp21 = _sqlite3VdbeAddOp4Int(tls, v, int32(m_OP_Found), *(*int32)(unsafe.Pointer(bp + 112))+j4, ckUniq, r1, int32((*TIndex)(unsafe.Pointer(pIdx5)).FnColumn))
-						_sqlite3VdbeLoadString(tls, v, int32(3), __ccgo_ts+17584)
+						_sqlite3VdbeLoadString(tls, v, int32(3), __ccgo_ts+17604)
 						_sqlite3VdbeAddOp3(tls, v, int32(m_OP_Concat), int32(7), int32(3), int32(3))
-						_sqlite3VdbeLoadString(tls, v, int32(4), __ccgo_ts+17589)
+						_sqlite3VdbeLoadString(tls, v, int32(4), __ccgo_ts+17609)
 						_sqlite3VdbeAddOp3(tls, v, int32(m_OP_Concat), int32(4), int32(3), int32(3))
 						jmp5 = _sqlite3VdbeLoadString(tls, v, int32(4), (*TIndex)(unsafe.Pointer(pIdx5)).FzName)
 						_sqlite3VdbeAddOp3(tls, v, int32(m_OP_Concat), int32(4), int32(3), int32(3))
@@ -109578,7 +109578,7 @@ func _sqlite3Pragma(tls *libc.TLS, pParse uintptr, pId1 uintptr, pId2 uintptr, p
 							_sqlite3VdbeGoto(tls, v, uniqOk)
 							_sqlite3VdbeJumpHere(tls, v, jmp6)
 							_sqlite3VdbeAddOp4Int(tls, v, int32(m_OP_IdxGT), *(*int32)(unsafe.Pointer(bp + 112))+j4, uniqOk, r1, int32((*TIndex)(unsafe.Pointer(pIdx5)).FnKeyCol))
-							_sqlite3VdbeLoadString(tls, v, int32(3), __ccgo_ts+17610)
+							_sqlite3VdbeLoadString(tls, v, int32(3), __ccgo_ts+17630)
 							_sqlite3VdbeGoto(tls, v, jmp5)
 							_sqlite3VdbeResolveLabel(tls, v, uniqOk)
 						}
@@ -109593,7 +109593,7 @@ func _sqlite3Pragma(tls *libc.TLS, pParse uintptr, pId1 uintptr, pId2 uintptr, p
 				_sqlite3VdbeAddOp2(tls, v, int32(m_OP_Next), *(*int32)(unsafe.Pointer(bp + 108)), loopTop)
 				_sqlite3VdbeJumpHere(tls, v, loopTop-int32(1))
 				if !(isQuick != 0) {
-					_sqlite3VdbeLoadString(tls, v, int32(2), __ccgo_ts+17637)
+					_sqlite3VdbeLoadString(tls, v, int32(2), __ccgo_ts+17657)
 					j4 = 0
 					pIdx5 = (*TTable)(unsafe.Pointer(pTab9)).FpIndex
 					for {
@@ -109628,7 +109628,7 @@ func _sqlite3Pragma(tls *libc.TLS, pParse uintptr, pId1 uintptr, pId2 uintptr, p
 		if aOp2 != 0 {
 			(*(*TVdbeOp)(unsafe.Pointer(aOp2))).Fp2 = int32(1) - *(*int32)(unsafe.Pointer(bp + 104))
 			(*(*TVdbeOp)(unsafe.Pointer(aOp2 + 2*24))).Fp4type = int8(-libc.Int32FromInt32(1))
-			*(*uintptr)(unsafe.Pointer(aOp2 + 2*24 + 16)) = __ccgo_ts + 17666
+			*(*uintptr)(unsafe.Pointer(aOp2 + 2*24 + 16)) = __ccgo_ts + 17686
 			(*(*TVdbeOp)(unsafe.Pointer(aOp2 + 5*24))).Fp4type = int8(-libc.Int32FromInt32(1))
 			*(*uintptr)(unsafe.Pointer(aOp2 + 5*24 + 16)) = _sqlite3ErrStr(tls, int32(m_SQLITE_CORRUPT))
 		}
@@ -109714,7 +109714,7 @@ func _sqlite3Pragma(tls *libc.TLS, pParse uintptr, pId1 uintptr, pId2 uintptr, p
 					FzName uintptr
 					Fenc   Tu8
 				})(unsafe.Pointer(pEnc)).FzName != 0) {
-					_sqlite3ErrorMsg(tls, pParse, __ccgo_ts+17727, libc.VaList(bp+160, zRight))
+					_sqlite3ErrorMsg(tls, pParse, __ccgo_ts+17747, libc.VaList(bp+160, zRight))
 				}
 			}
 		}
@@ -109814,13 +109814,13 @@ func _sqlite3Pragma(tls *libc.TLS, pParse uintptr, pId1 uintptr, pId2 uintptr, p
 		iBt = v65
 		eMode2 = m_SQLITE_CHECKPOINT_PASSIVE
 		if zRight != 0 {
-			if _sqlite3StrICmp(tls, zRight, __ccgo_ts+17107) == 0 {
+			if _sqlite3StrICmp(tls, zRight, __ccgo_ts+17127) == 0 {
 				eMode2 = int32(m_SQLITE_CHECKPOINT_FULL)
 			} else {
-				if _sqlite3StrICmp(tls, zRight, __ccgo_ts+17752) == 0 {
+				if _sqlite3StrICmp(tls, zRight, __ccgo_ts+17772) == 0 {
 					eMode2 = int32(m_SQLITE_CHECKPOINT_RESTART)
 				} else {
-					if _sqlite3StrICmp(tls, zRight, __ccgo_ts+17260) == 0 {
+					if _sqlite3StrICmp(tls, zRight, __ccgo_ts+17280) == 0 {
 						eMode2 = int32(m_SQLITE_CHECKPOINT_TRUNCATE)
 					}
 				}
@@ -109976,7 +109976,7 @@ func _sqlite3Pragma(tls *libc.TLS, pParse uintptr, pId1 uintptr, pId2 uintptr, p
 					_sqlite3OpenTable(tls, pParse, iTabCur, iDb, pTab10, int32(m_OP_OpenRead))
 					_sqlite3VdbeAddOp3(tls, v, int32(m_OP_IfSmaller), iTabCur, int32(uint32(_sqlite3VdbeCurrentAddr(tls, v)+int32(2))+opMask&uint32(1)), int32(szThreshold))
 				}
-				zSubSql = _sqlite3MPrintf(tls, db, __ccgo_ts+17760, libc.VaList(bp+160, (*(*TDb)(unsafe.Pointer((*Tsqlite3)(unsafe.Pointer(db)).FaDb + uintptr(iDb)*32))).FzDbSName, (*TTable)(unsafe.Pointer(pTab10)).FzName))
+				zSubSql = _sqlite3MPrintf(tls, db, __ccgo_ts+17780, libc.VaList(bp+160, (*(*TDb)(unsafe.Pointer((*Tsqlite3)(unsafe.Pointer(db)).FaDb + uintptr(iDb)*32))).FzDbSName, (*TTable)(unsafe.Pointer(pTab10)).FzName))
 				if opMask&uint32(0x01) != 0 {
 					r11 = _sqlite3GetTempReg(tls, pParse)
 					_sqlite3VdbeAddOp4(tls, v, int32(m_OP_String8), 0, r11, 0, zSubSql, -int32(7))
@@ -110207,34 +110207,34 @@ var _encnames1 = [9]struct {
 	Fenc   Tu8
 }{
 	0: {
-		FzName: __ccgo_ts + 17669,
+		FzName: __ccgo_ts + 17689,
 		Fenc:   uint8(m_SQLITE_UTF8),
 	},
 	1: {
-		FzName: __ccgo_ts + 17674,
+		FzName: __ccgo_ts + 17694,
 		Fenc:   uint8(m_SQLITE_UTF8),
 	},
 	2: {
-		FzName: __ccgo_ts + 17680,
+		FzName: __ccgo_ts + 17700,
 		Fenc:   uint8(m_SQLITE_UTF16LE),
 	},
 	3: {
-		FzName: __ccgo_ts + 17689,
+		FzName: __ccgo_ts + 17709,
 		Fenc:   uint8(m_SQLITE_UTF16BE),
 	},
 	4: {
-		FzName: __ccgo_ts + 17698,
+		FzName: __ccgo_ts + 17718,
 		Fenc:   uint8(m_SQLITE_UTF16LE),
 	},
 	5: {
-		FzName: __ccgo_ts + 17706,
+		FzName: __ccgo_ts + 17726,
 		Fenc:   uint8(m_SQLITE_UTF16BE),
 	},
 	6: {
-		FzName: __ccgo_ts + 17714,
+		FzName: __ccgo_ts + 17734,
 	},
 	7: {
-		FzName: __ccgo_ts + 17721,
+		FzName: __ccgo_ts + 17741,
 	},
 	8: {},
 }
@@ -110322,14 +110322,14 @@ func _pragmaVtabConnect(tls *libc.TLS, db uintptr, pAux uintptr, argc int32, arg
 	_ = argc
 	_ = argv
 	_sqlite3StrAccumInit(tls, bp, uintptr(0), bp+32, int32(200), 0)
-	Xsqlite3_str_appendall(tls, bp, __ccgo_ts+17778)
+	Xsqlite3_str_appendall(tls, bp, __ccgo_ts+17798)
 	i = 0
 	j = int32((*TPragmaName)(unsafe.Pointer(pPragma)).FiPragCName)
 	for {
 		if !(i < int32((*TPragmaName)(unsafe.Pointer(pPragma)).FnPragCName)) {
 			break
 		}
-		Xsqlite3_str_appendf(tls, bp, __ccgo_ts+17793, libc.VaList(bp+240, int32(cSep), _pragCName[j]))
+		Xsqlite3_str_appendf(tls, bp, __ccgo_ts+17813, libc.VaList(bp+240, int32(cSep), _pragCName[j]))
 		cSep = uint8(',')
 		goto _1
 	_1:
@@ -110337,19 +110337,19 @@ func _pragmaVtabConnect(tls *libc.TLS, db uintptr, pAux uintptr, argc int32, arg
 		j++
 	}
 	if i == 0 {
-		Xsqlite3_str_appendf(tls, bp, __ccgo_ts+17800, libc.VaList(bp+240, (*TPragmaName)(unsafe.Pointer(pPragma)).FzName))
+		Xsqlite3_str_appendf(tls, bp, __ccgo_ts+17820, libc.VaList(bp+240, (*TPragmaName)(unsafe.Pointer(pPragma)).FzName))
 		i++
 	}
 	j = 0
 	if int32((*TPragmaName)(unsafe.Pointer(pPragma)).FmPragFlg)&int32(m_PragFlg_Result1) != 0 {
-		Xsqlite3_str_appendall(tls, bp, __ccgo_ts+17806)
+		Xsqlite3_str_appendall(tls, bp, __ccgo_ts+17826)
 		j++
 	}
 	if int32((*TPragmaName)(unsafe.Pointer(pPragma)).FmPragFlg)&(libc.Int32FromInt32(m_PragFlg_SchemaOpt)|libc.Int32FromInt32(m_PragFlg_SchemaReq)) != 0 {
-		Xsqlite3_str_appendall(tls, bp, __ccgo_ts+17818)
+		Xsqlite3_str_appendall(tls, bp, __ccgo_ts+17838)
 		j++
 	}
-	Xsqlite3_str_append(tls, bp, __ccgo_ts+4827, int32(1))
+	Xsqlite3_str_append(tls, bp, __ccgo_ts+4847, int32(1))
 	_sqlite3StrAccumFinish(tls, bp)
 	_ = libc.Int32FromInt32(0)
 	rc = Xsqlite3_declare_vtab(tls, db, bp+32)
@@ -110365,7 +110365,7 @@ func _pragmaVtabConnect(tls *libc.TLS, db uintptr, pAux uintptr, argc int32, arg
 			(*TPragmaVtab)(unsafe.Pointer(pTab)).FnHidden = uint8(j)
 		}
 	} else {
-		*(*uintptr)(unsafe.Pointer(pzErr)) = Xsqlite3_mprintf(tls, __ccgo_ts+3560, libc.VaList(bp+240, Xsqlite3_errmsg(tls, db)))
+		*(*uintptr)(unsafe.Pointer(pzErr)) = Xsqlite3_mprintf(tls, __ccgo_ts+3580, libc.VaList(bp+240, Xsqlite3_errmsg(tls, db)))
 	}
 	*(*uintptr)(unsafe.Pointer(ppVtab)) = pTab
 	return rc
@@ -110548,7 +110548,7 @@ func _pragmaVtabFilter(tls *libc.TLS, pVtabCursor uintptr, idxNum int32, idxStr 
 		_ = libc.Int32FromInt32(0)
 		_ = libc.Int32FromInt32(0)
 		if zText != 0 {
-			*(*uintptr)(unsafe.Pointer(pCsr + 24 + uintptr(j)*8)) = Xsqlite3_mprintf(tls, __ccgo_ts+3560, libc.VaList(bp+40, zText))
+			*(*uintptr)(unsafe.Pointer(pCsr + 24 + uintptr(j)*8)) = Xsqlite3_mprintf(tls, __ccgo_ts+3580, libc.VaList(bp+40, zText))
 			if *(*uintptr)(unsafe.Pointer(pCsr + 24 + uintptr(j)*8)) == uintptr(0) {
 				return int32(m_SQLITE_NOMEM)
 			}
@@ -110559,13 +110559,13 @@ func _pragmaVtabFilter(tls *libc.TLS, pVtabCursor uintptr, idxNum int32, idxStr 
 		j++
 	}
 	_sqlite3StrAccumInit(tls, bp, uintptr(0), uintptr(0), 0, *(*int32)(unsafe.Pointer((*TPragmaVtab)(unsafe.Pointer(pTab)).Fdb + 136 + 1*4)))
-	Xsqlite3_str_appendall(tls, bp, __ccgo_ts+17833)
+	Xsqlite3_str_appendall(tls, bp, __ccgo_ts+17853)
 	if *(*uintptr)(unsafe.Pointer(pCsr + 24 + 1*8)) != 0 {
-		Xsqlite3_str_appendf(tls, bp, __ccgo_ts+17841, libc.VaList(bp+40, *(*uintptr)(unsafe.Pointer(pCsr + 24 + 1*8))))
+		Xsqlite3_str_appendf(tls, bp, __ccgo_ts+17861, libc.VaList(bp+40, *(*uintptr)(unsafe.Pointer(pCsr + 24 + 1*8))))
 	}
 	Xsqlite3_str_appendall(tls, bp, (*TPragmaName)(unsafe.Pointer((*TPragmaVtab)(unsafe.Pointer(pTab)).FpName)).FzName)
 	if *(*uintptr)(unsafe.Pointer(pCsr + 24)) != 0 {
-		Xsqlite3_str_appendf(tls, bp, __ccgo_ts+17845, libc.VaList(bp+40, *(*uintptr)(unsafe.Pointer(pCsr + 24))))
+		Xsqlite3_str_appendf(tls, bp, __ccgo_ts+17865, libc.VaList(bp+40, *(*uintptr)(unsafe.Pointer(pCsr + 24))))
 	}
 	zSql = _sqlite3StrAccumFinish(tls, bp)
 	if zSql == uintptr(0) {
@@ -110574,7 +110574,7 @@ func _pragmaVtabFilter(tls *libc.TLS, pVtabCursor uintptr, idxNum int32, idxStr 
 	rc = Xsqlite3_prepare_v2(tls, (*TPragmaVtab)(unsafe.Pointer(pTab)).Fdb, zSql, -int32(1), pCsr+8, uintptr(0))
 	Xsqlite3_free(tls, zSql)
 	if rc != m_SQLITE_OK {
-		(*TPragmaVtab)(unsafe.Pointer(pTab)).Fbase.FzErrMsg = Xsqlite3_mprintf(tls, __ccgo_ts+3560, libc.VaList(bp+40, Xsqlite3_errmsg(tls, (*TPragmaVtab)(unsafe.Pointer(pTab)).Fdb)))
+		(*TPragmaVtab)(unsafe.Pointer(pTab)).Fbase.FzErrMsg = Xsqlite3_mprintf(tls, __ccgo_ts+3580, libc.VaList(bp+40, Xsqlite3_errmsg(tls, (*TPragmaVtab)(unsafe.Pointer(pTab)).Fdb)))
 		return rc
 	}
 	return _pragmaVtabNext(tls, pVtabCursor)
@@ -110702,7 +110702,7 @@ func _corruptSchema(tls *libc.TLS, pData uintptr, azObj uintptr, zExtra uintptr)
 			/* A error message has already been generated.  Do not overwrite it */
 		} else {
 			if (*TInitData)(unsafe.Pointer(pData)).FmInitFlags&uint32(libc.Int32FromInt32(m_INITFLAG_AlterMask)) != 0 {
-				*(*uintptr)(unsafe.Pointer((*TInitData)(unsafe.Pointer(pData)).FpzErrMsg)) = _sqlite3MPrintf(tls, db, __ccgo_ts+17879, libc.VaList(bp+8, *(*uintptr)(unsafe.Pointer(azObj)), *(*uintptr)(unsafe.Pointer(azObj + 1*8)), _azAlterType[(*TInitData)(unsafe.Pointer(pData)).FmInitFlags&uint32(m_INITFLAG_AlterMask)-uint32(1)], zExtra))
+				*(*uintptr)(unsafe.Pointer((*TInitData)(unsafe.Pointer(pData)).FpzErrMsg)) = _sqlite3MPrintf(tls, db, __ccgo_ts+17899, libc.VaList(bp+8, *(*uintptr)(unsafe.Pointer(azObj)), *(*uintptr)(unsafe.Pointer(azObj + 1*8)), _azAlterType[(*TInitData)(unsafe.Pointer(pData)).FmInitFlags&uint32(m_INITFLAG_AlterMask)-uint32(1)], zExtra))
 				(*TInitData)(unsafe.Pointer(pData)).Frc = int32(m_SQLITE_ERROR)
 			} else {
 				if (*Tsqlite3)(unsafe.Pointer(db)).Fflags&uint64(m_SQLITE_WriteSchema) != 0 {
@@ -110711,12 +110711,12 @@ func _corruptSchema(tls *libc.TLS, pData uintptr, azObj uintptr, zExtra uintptr)
 					if *(*uintptr)(unsafe.Pointer(azObj + 1*8)) != 0 {
 						v1 = *(*uintptr)(unsafe.Pointer(azObj + 1*8))
 					} else {
-						v1 = __ccgo_ts + 4829
+						v1 = __ccgo_ts + 4849
 					}
 					zObj = v1
-					z = _sqlite3MPrintf(tls, db, __ccgo_ts+17907, libc.VaList(bp+8, zObj))
+					z = _sqlite3MPrintf(tls, db, __ccgo_ts+17927, libc.VaList(bp+8, zObj))
 					if zExtra != 0 && *(*uint8)(unsafe.Pointer(zExtra)) != 0 {
-						z = _sqlite3MPrintf(tls, db, __ccgo_ts+17938, libc.VaList(bp+8, z, zExtra))
+						z = _sqlite3MPrintf(tls, db, __ccgo_ts+17958, libc.VaList(bp+8, z, zExtra))
 					}
 					*(*uintptr)(unsafe.Pointer((*TInitData)(unsafe.Pointer(pData)).FpzErrMsg)) = z
 					(*TInitData)(unsafe.Pointer(pData)).Frc = _sqlite3CorruptError(tls, int32(132279))
@@ -110727,9 +110727,9 @@ func _corruptSchema(tls *libc.TLS, pData uintptr, azObj uintptr, zExtra uintptr)
 }
 
 var _azAlterType = [3]uintptr{
-	0: __ccgo_ts + 17849,
-	1: __ccgo_ts + 17856,
-	2: __ccgo_ts + 17868,
+	0: __ccgo_ts + 17869,
+	1: __ccgo_ts + 17876,
+	2: __ccgo_ts + 17888,
 }
 
 // C documentation
@@ -110808,7 +110808,7 @@ func _sqlite3InitCallback(tls *libc.TLS, pInit uintptr, argc int32, argv uintptr
 			(*Tsqlite3)(unsafe.Pointer(db)).Finit1.FiDb = uint8(iDb)
 			if _sqlite3GetUInt32(tls, *(*uintptr)(unsafe.Pointer(argv + 3*8)), db+192) == 0 || (*Tsqlite3)(unsafe.Pointer(db)).Finit1.FnewTnum > (*TInitData)(unsafe.Pointer(pData)).FmxPage && (*TInitData)(unsafe.Pointer(pData)).FmxPage > uint32(0) {
 				if _sqlite3Config.FbExtraSchemaChecks != 0 {
-					_corruptSchema(tls, pData, argv, __ccgo_ts+13975)
+					_corruptSchema(tls, pData, argv, __ccgo_ts+13995)
 				}
 			}
 			libc.SetBitFieldPtr8Uint32(db+192+8, libc.Uint32FromInt32(0), 0, 0x1)
@@ -110843,11 +110843,11 @@ func _sqlite3InitCallback(tls *libc.TLS, pInit uintptr, argc int32, argv uintptr
 			} else {
 				pIndex = _sqlite3FindIndex(tls, db, *(*uintptr)(unsafe.Pointer(argv + 1*8)), (*(*TDb)(unsafe.Pointer((*Tsqlite3)(unsafe.Pointer(db)).FaDb + uintptr(iDb)*32))).FzDbSName)
 				if pIndex == uintptr(0) {
-					_corruptSchema(tls, pData, argv, __ccgo_ts+17946)
+					_corruptSchema(tls, pData, argv, __ccgo_ts+17966)
 				} else {
 					if _sqlite3GetUInt32(tls, *(*uintptr)(unsafe.Pointer(argv + 3*8)), pIndex+88) == 0 || (*TIndex)(unsafe.Pointer(pIndex)).Ftnum < uint32(2) || (*TIndex)(unsafe.Pointer(pIndex)).Ftnum > (*TInitData)(unsafe.Pointer(pData)).FmxPage || _sqlite3IndexHasDuplicateRootPage(tls, pIndex) != 0 {
 						if _sqlite3Config.FbExtraSchemaChecks != 0 {
-							_corruptSchema(tls, pData, argv, __ccgo_ts+13975)
+							_corruptSchema(tls, pData, argv, __ccgo_ts+13995)
 						}
 					}
 				}
@@ -110891,18 +110891,18 @@ func _sqlite3InitOne(tls *libc.TLS, db uintptr, iDb int32, pzErrMsg uintptr, mFl
 	 ** table name will be inserted automatically by the parser so we can just
 	 ** use the abbreviation "x" here.  The parser will also automatically tag
 	 ** the schema table as read-only. */
-	(*(*[6]uintptr)(unsafe.Pointer(bp)))[0] = __ccgo_ts + 8681
+	(*(*[6]uintptr)(unsafe.Pointer(bp)))[0] = __ccgo_ts + 8701
 	if libc.Bool(!(libc.Int32FromInt32(m_OMIT_TEMPDB) != 0)) && iDb == int32(1) {
-		v2 = __ccgo_ts + 11928
+		v2 = __ccgo_ts + 11948
 	} else {
-		v2 = __ccgo_ts + 5787
+		v2 = __ccgo_ts + 5807
 	}
 	v1 = v2
 	zSchemaTabName = v1
 	(*(*[6]uintptr)(unsafe.Pointer(bp)))[int32(1)] = v1
 	(*(*[6]uintptr)(unsafe.Pointer(bp)))[int32(2)] = (*(*[6]uintptr)(unsafe.Pointer(bp)))[int32(1)]
-	(*(*[6]uintptr)(unsafe.Pointer(bp)))[int32(3)] = __ccgo_ts + 7756
-	(*(*[6]uintptr)(unsafe.Pointer(bp)))[int32(4)] = __ccgo_ts + 17959
+	(*(*[6]uintptr)(unsafe.Pointer(bp)))[int32(3)] = __ccgo_ts + 7776
+	(*(*[6]uintptr)(unsafe.Pointer(bp)))[int32(4)] = __ccgo_ts + 17979
 	(*(*[6]uintptr)(unsafe.Pointer(bp)))[int32(5)] = uintptr(0)
 	(*(*TInitData)(unsafe.Pointer(bp + 72))).Fdb = db
 	(*(*TInitData)(unsafe.Pointer(bp + 72))).FiDb = iDb
@@ -110986,7 +110986,7 @@ func _sqlite3InitOne(tls *libc.TLS, db uintptr, iDb int32, pzErrMsg uintptr, mFl
 		} else {
 			/* If opening an attached database, the encoding much match ENC(db) */
 			if (*(*[5]int32)(unsafe.Pointer(bp + 48)))[libc.Int32FromInt32(m_BTREE_TEXT_ENCODING)-libc.Int32FromInt32(1)]&int32(3) != int32((*Tsqlite3)(unsafe.Pointer(db)).Fenc) {
-				_sqlite3SetString(tls, pzErrMsg, db, __ccgo_ts+11555)
+				_sqlite3SetString(tls, pzErrMsg, db, __ccgo_ts+11575)
 				rc = int32(m_SQLITE_ERROR)
 				goto initone_error_out
 			}
@@ -111012,7 +111012,7 @@ func _sqlite3InitOne(tls *libc.TLS, db uintptr, iDb int32, pzErrMsg uintptr, mFl
 		(*TSchema)(unsafe.Pointer((*TDb)(unsafe.Pointer(pDb)).FpSchema)).Ffile_format = uint8(1)
 	}
 	if int32((*TSchema)(unsafe.Pointer((*TDb)(unsafe.Pointer(pDb)).FpSchema)).Ffile_format) > int32(m_SQLITE_MAX_FILE_FORMAT) {
-		_sqlite3SetString(tls, pzErrMsg, db, __ccgo_ts+18031)
+		_sqlite3SetString(tls, pzErrMsg, db, __ccgo_ts+18051)
 		rc = int32(m_SQLITE_ERROR)
 		goto initone_error_out
 	}
@@ -111028,7 +111028,7 @@ func _sqlite3InitOne(tls *libc.TLS, db uintptr, iDb int32, pzErrMsg uintptr, mFl
 	 */
 	_ = libc.Int32FromInt32(0)
 	(*(*TInitData)(unsafe.Pointer(bp + 72))).FmxPage = _sqlite3BtreeLastPage(tls, (*TDb)(unsafe.Pointer(pDb)).FpBt)
-	zSql = _sqlite3MPrintf(tls, db, __ccgo_ts+18055, libc.VaList(bp+120, (*(*TDb)(unsafe.Pointer((*Tsqlite3)(unsafe.Pointer(db)).FaDb + uintptr(iDb)*32))).FzDbSName, zSchemaTabName))
+	zSql = _sqlite3MPrintf(tls, db, __ccgo_ts+18075, libc.VaList(bp+120, (*(*TDb)(unsafe.Pointer((*Tsqlite3)(unsafe.Pointer(db)).FaDb + uintptr(iDb)*32))).FzDbSName, zSchemaTabName))
 	xAuth = (*Tsqlite3)(unsafe.Pointer(db)).FxAuth
 	(*Tsqlite3)(unsafe.Pointer(db)).FxAuth = uintptr(0)
 	rc = Xsqlite3_exec(tls, db, zSql, __ccgo_fp(_sqlite3InitCallback), bp+72, uintptr(0))
@@ -111407,7 +111407,7 @@ func _sqlite3Prepare(tls *libc.TLS, db uintptr, zSql uintptr, nBytes int32, prep
 				rc = _sqlite3BtreeSchemaLocked(tls, pBt)
 				if rc != 0 {
 					zDb = (*(*TDb)(unsafe.Pointer((*Tsqlite3)(unsafe.Pointer(db)).FaDb + uintptr(i)*32))).FzDbSName
-					_sqlite3ErrorWithMsg(tls, db, rc, __ccgo_ts+18089, libc.VaList(bp+416, zDb))
+					_sqlite3ErrorWithMsg(tls, db, rc, __ccgo_ts+18109, libc.VaList(bp+416, zDb))
 					goto end_prepare
 				}
 			}
@@ -111421,7 +111421,7 @@ func _sqlite3Prepare(tls *libc.TLS, db uintptr, zSql uintptr, nBytes int32, prep
 	if nBytes >= 0 && (nBytes == 0 || int32(*(*uint8)(unsafe.Pointer(zSql + uintptr(nBytes-int32(1))))) != 0) {
 		mxLen = *(*int32)(unsafe.Pointer(db + 136 + 1*4))
 		if nBytes > mxLen {
-			_sqlite3ErrorWithMsg(tls, db, int32(m_SQLITE_TOOBIG), __ccgo_ts+18119, 0)
+			_sqlite3ErrorWithMsg(tls, db, int32(m_SQLITE_TOOBIG), __ccgo_ts+18139, 0)
 			rc = _sqlite3ApiExit(tls, db, int32(m_SQLITE_TOOBIG))
 			goto end_prepare
 		}
@@ -111457,7 +111457,7 @@ func _sqlite3Prepare(tls *libc.TLS, db uintptr, zSql uintptr, nBytes int32, prep
 		_ = libc.Int32FromInt32(0)
 		rc = (*(*TParse)(unsafe.Pointer(bp + 8))).Frc
 		if *(*uintptr)(unsafe.Pointer(bp)) != 0 {
-			_sqlite3ErrorWithMsg(tls, db, rc, __ccgo_ts+3560, libc.VaList(bp+416, *(*uintptr)(unsafe.Pointer(bp))))
+			_sqlite3ErrorWithMsg(tls, db, rc, __ccgo_ts+3580, libc.VaList(bp+416, *(*uintptr)(unsafe.Pointer(bp))))
 			_sqlite3DbFree(tls, db, *(*uintptr)(unsafe.Pointer(bp)))
 		} else {
 			_sqlite3Error(tls, db, rc)
@@ -111974,16 +111974,16 @@ func _sqlite3JoinType(tls *libc.TLS, pParse uintptr, pA uintptr, pB uintptr, pC 
 		i++
 	}
 	if jointype&(libc.Int32FromInt32(m_JT_INNER)|libc.Int32FromInt32(m_JT_OUTER)) == libc.Int32FromInt32(m_JT_INNER)|libc.Int32FromInt32(m_JT_OUTER) || jointype&int32(m_JT_ERROR) != 0 {
-		zSp = __ccgo_ts + 10685
+		zSp = __ccgo_ts + 10705
 		_ = libc.Int32FromInt32(0)
 		if pC == uintptr(0) {
 			zSp++
 		}
-		_sqlite3ErrorMsg(tls, pParse, __ccgo_ts+18138, libc.VaList(bp+8, pA, pB, zSp, pC))
+		_sqlite3ErrorMsg(tls, pParse, __ccgo_ts+18158, libc.VaList(bp+8, pA, pB, zSp, pC))
 		jointype = int32(m_JT_INNER)
 	} else {
 		if jointype&int32(m_JT_OUTER) != 0 && jointype&(libc.Int32FromInt32(m_JT_LEFT)|libc.Int32FromInt32(m_JT_RIGHT)) != int32(m_JT_LEFT) {
-			_sqlite3ErrorMsg(tls, pParse, __ccgo_ts+18182, 0)
+			_sqlite3ErrorMsg(tls, pParse, __ccgo_ts+18202, 0)
 			jointype = int32(m_JT_INNER)
 		}
 	}
@@ -112270,7 +112270,7 @@ func _sqliteProcessJoin(tls *libc.TLS, pParse uintptr, p uintptr) (r int32) {
 		 */
 		if int32((*TSrcItem)(unsafe.Pointer(pRight)).Ffg.Fjointype)&int32(m_JT_NATURAL) != 0 {
 			if (*TSrcItem)(unsafe.Pointer(pRight)).FpOn != 0 || (*TSrcItem)(unsafe.Pointer(pRight)).FpUsing != 0 {
-				_sqlite3ErrorMsg(tls, pParse, __ccgo_ts+18237, libc.VaList(bp+24, 0))
+				_sqlite3ErrorMsg(tls, pParse, __ccgo_ts+18257, libc.VaList(bp+24, 0))
 				return int32(1)
 			}
 			j = 0
@@ -112293,7 +112293,7 @@ func _sqliteProcessJoin(tls *libc.TLS, pParse uintptr, p uintptr) (r int32) {
 		/* Disallow both ON and USING clauses in the same join
 		 */
 		if (*TSrcItem)(unsafe.Pointer(pRight)).FpOn != 0 && (*TSrcItem)(unsafe.Pointer(pRight)).FpUsing != 0 {
-			_sqlite3ErrorMsg(tls, pParse, __ccgo_ts+18287, 0)
+			_sqlite3ErrorMsg(tls, pParse, __ccgo_ts+18307, 0)
 			return int32(1)
 		}
 		/* Add the ON clause to the end of the WHERE clause, connected by
@@ -112323,7 +112323,7 @@ func _sqliteProcessJoin(tls *libc.TLS, pParse uintptr, p uintptr) (r int32) {
 				zName1 = (*(*TIdList_item)(unsafe.Pointer((*TIdList)(unsafe.Pointer(pList)).Fa + uintptr(j)*16))).FzName
 				iRightCol = _sqlite3ColumnIndex(tls, pRightTab, zName1)
 				if iRightCol < 0 || !(_tableAndColumnIndex(tls, pSrc, i+int32(1), zName1, bp+8, bp+12, 0) != 0) {
-					_sqlite3ErrorMsg(tls, pParse, __ccgo_ts+18342, libc.VaList(bp+24, zName1))
+					_sqlite3ErrorMsg(tls, pParse, __ccgo_ts+18362, libc.VaList(bp+24, zName1))
 					return int32(1)
 				}
 				_addWhereTerm(tls, pParse, pSrc, *(*int32)(unsafe.Pointer(bp + 8)), *(*int32)(unsafe.Pointer(bp + 12)), i+int32(1), iRightCol, isOuter, p+48)
@@ -113126,13 +113126,13 @@ func _sqlite3SelectOpName(tls *libc.TLS, id int32) (r uintptr) {
 	_ = z
 	switch id {
 	case int32(m_TK_ALL):
-		z = __ccgo_ts + 18406
-	case int32(m_TK_INTERSECT):
-		z = __ccgo_ts + 18416
-	case int32(m_TK_EXCEPT):
 		z = __ccgo_ts + 18426
+	case int32(m_TK_INTERSECT):
+		z = __ccgo_ts + 18436
+	case int32(m_TK_EXCEPT):
+		z = __ccgo_ts + 18446
 	default:
-		z = __ccgo_ts + 18433
+		z = __ccgo_ts + 18453
 		break
 	}
 	return z
@@ -113153,7 +113153,7 @@ func _sqlite3SelectOpName(tls *libc.TLS, id int32) (r uintptr) {
 func _explainTempTable(tls *libc.TLS, pParse uintptr, zUsage uintptr) {
 	bp := tls.Alloc(16)
 	defer tls.Free(16)
-	_sqlite3VdbeExplain(tls, pParse, uint8(0), __ccgo_ts+18439, libc.VaList(bp+8, zUsage))
+	_sqlite3VdbeExplain(tls, pParse, uint8(0), __ccgo_ts+18459, libc.VaList(bp+8, zUsage))
 }
 
 /*
@@ -113426,8 +113426,8 @@ func _columnTypeImpl(tls *libc.TLS, pNC uintptr, pExpr uintptr, pzOrigDb uintptr
 			}
 			_ = libc.Int32FromInt32(0)
 			if iCol < 0 {
-				zType = __ccgo_ts + 1098
-				*(*uintptr)(unsafe.Pointer(bp + 16)) = __ccgo_ts + 16054
+				zType = __ccgo_ts + 1118
+				*(*uintptr)(unsafe.Pointer(bp + 16)) = __ccgo_ts + 16074
 			} else {
 				*(*uintptr)(unsafe.Pointer(bp + 16)) = (*(*TColumn)(unsafe.Pointer((*TTable)(unsafe.Pointer(pTab)).FaCol + uintptr(iCol)*16))).FzCnName
 				zType = _sqlite3ColumnType(tls, (*TTable)(unsafe.Pointer(pTab)).FaCol+uintptr(iCol)*16, uintptr(0))
@@ -113583,13 +113583,13 @@ func _sqlite3GenerateColumnNames(tls *libc.TLS, pParse uintptr, pSelect uintptr)
 				}
 				_ = libc.Int32FromInt32(0)
 				if iCol < 0 {
-					zCol = __ccgo_ts + 16054
+					zCol = __ccgo_ts + 16074
 				} else {
 					zCol = (*(*TColumn)(unsafe.Pointer((*TTable)(unsafe.Pointer(pTab)).FaCol + uintptr(iCol)*16))).FzCnName
 				}
 				if fullName != 0 {
 					zName1 = uintptr(0)
-					zName1 = _sqlite3MPrintf(tls, db, __ccgo_ts+11841, libc.VaList(bp+8, (*TTable)(unsafe.Pointer(pTab)).FzName, zCol))
+					zName1 = _sqlite3MPrintf(tls, db, __ccgo_ts+11861, libc.VaList(bp+8, (*TTable)(unsafe.Pointer(pTab)).FzName, zCol))
 					_sqlite3VdbeSetColName(tls, v, i, m_COLNAME_NAME, zName1, __ccgo_fp(_sqlite3OomFault))
 				} else {
 					_sqlite3VdbeSetColName(tls, v, i, m_COLNAME_NAME, zCol, uintptr(-libc.Int32FromInt32(1)))
@@ -113597,7 +113597,7 @@ func _sqlite3GenerateColumnNames(tls *libc.TLS, pParse uintptr, pSelect uintptr)
 			} else {
 				z = (*(*TExprList_item)(unsafe.Pointer(pEList + 8 + uintptr(i)*32))).FzEName
 				if z == uintptr(0) {
-					v2 = _sqlite3MPrintf(tls, db, __ccgo_ts+18462, libc.VaList(bp+8, i+int32(1)))
+					v2 = _sqlite3MPrintf(tls, db, __ccgo_ts+18482, libc.VaList(bp+8, i+int32(1)))
 				} else {
 					v2 = _sqlite3DbStrDup(tls, db, z)
 				}
@@ -113692,7 +113692,7 @@ func _sqlite3ColumnsFromExprList(tls *libc.TLS, pParse uintptr, pEList uintptr, 
 				if iCol >= 0 {
 					v5 = (*(*TColumn)(unsafe.Pointer((*TTable)(unsafe.Pointer(pTab)).FaCol + uintptr(iCol)*16))).FzCnName
 				} else {
-					v5 = __ccgo_ts + 16054
+					v5 = __ccgo_ts + 16074
 				}
 				zName = v5
 			} else {
@@ -113708,7 +113708,7 @@ func _sqlite3ColumnsFromExprList(tls *libc.TLS, pParse uintptr, pEList uintptr, 
 		if zName != 0 && !(_sqlite3IsTrueOrFalse(tls, zName) != 0) {
 			zName = _sqlite3DbStrDup(tls, db, zName)
 		} else {
-			zName = _sqlite3MPrintf(tls, db, __ccgo_ts+18462, libc.VaList(bp+40, i+int32(1)))
+			zName = _sqlite3MPrintf(tls, db, __ccgo_ts+18482, libc.VaList(bp+40, i+int32(1)))
 		}
 		/* Make sure the column name is unique.  If the name is not unique,
 		 ** append an integer to the name so that it becomes unique.
@@ -113732,7 +113732,7 @@ func _sqlite3ColumnsFromExprList(tls *libc.TLS, pParse uintptr, pEList uintptr, 
 			}
 			*(*Tu32)(unsafe.Pointer(bp))++
 			v7 = *(*Tu32)(unsafe.Pointer(bp))
-			zName = _sqlite3MPrintf(tls, db, __ccgo_ts+18471, libc.VaList(bp+40, nName, zName, v7))
+			zName = _sqlite3MPrintf(tls, db, __ccgo_ts+18491, libc.VaList(bp+40, nName, zName, v7))
 			if *(*Tu32)(unsafe.Pointer(bp)) > uint32(3) {
 				Xsqlite3_randomness(tls, int32(4), bp)
 			}
@@ -114114,7 +114114,7 @@ func _generateWithRecursiveQuery(tls *libc.TLS, pParse uintptr, p uintptr, pDest
 	iDistinct = 0                                                                     /* To ensure unique results if UNION */
 	eDest = int32(m_SRT_Fifo)                                                         /* Registers used by LIMIT and OFFSET */
 	if (*TSelect)(unsafe.Pointer(p)).FpWin != 0 {
-		_sqlite3ErrorMsg(tls, pParse, __ccgo_ts+18479, 0)
+		_sqlite3ErrorMsg(tls, pParse, __ccgo_ts+18499, 0)
 		return
 	}
 	/* Obtain authorization to do a recursive query */
@@ -114206,7 +114206,7 @@ func _generateWithRecursiveQuery(tls *libc.TLS, pParse uintptr, p uintptr, pDest
 			break
 		}
 		if (*TSelect)(unsafe.Pointer(pFirstRec)).FselFlags&uint32(m_SF_Aggregate) != 0 {
-			_sqlite3ErrorMsg(tls, pParse, __ccgo_ts+18528, 0)
+			_sqlite3ErrorMsg(tls, pParse, __ccgo_ts+18548, 0)
 			goto end_of_recursive_query
 		}
 		(*TSelect)(unsafe.Pointer(pFirstRec)).Fop = uint8(m_TK_ALL)
@@ -114220,7 +114220,7 @@ func _generateWithRecursiveQuery(tls *libc.TLS, pParse uintptr, p uintptr, pDest
 	/* Store the results of the setup-query in Queue. */
 	pSetup = (*TSelect)(unsafe.Pointer(pFirstRec)).FpPrior
 	(*TSelect)(unsafe.Pointer(pSetup)).FpNext = uintptr(0)
-	_sqlite3VdbeExplain(tls, pParse, uint8(1), __ccgo_ts+18570, 0)
+	_sqlite3VdbeExplain(tls, pParse, uint8(1), __ccgo_ts+18590, 0)
 	rc = _sqlite3Select(tls, pParse, pSetup, bp)
 	(*TSelect)(unsafe.Pointer(pSetup)).FpNext = p
 	if rc != 0 {
@@ -114248,7 +114248,7 @@ func _generateWithRecursiveQuery(tls *libc.TLS, pParse uintptr, p uintptr, pDest
 	 ** the value for the recursive-table. Store the results in the Queue.
 	 */
 	(*TSelect)(unsafe.Pointer(pFirstRec)).FpPrior = uintptr(0)
-	_sqlite3VdbeExplain(tls, pParse, uint8(1), __ccgo_ts+18576, 0)
+	_sqlite3VdbeExplain(tls, pParse, uint8(1), __ccgo_ts+18596, 0)
 	_sqlite3Select(tls, pParse, p, bp)
 	_ = libc.Int32FromInt32(0)
 	(*TSelect)(unsafe.Pointer(pFirstRec)).FpPrior = pSetup
@@ -114305,11 +114305,11 @@ func _multiSelectValues(tls *libc.TLS, pParse uintptr, p uintptr, pDest uintptr)
 		nRow += bShowAll
 	}
 	if nRow == int32(1) {
-		v1 = __ccgo_ts + 1511
+		v1 = __ccgo_ts + 1531
 	} else {
-		v1 = __ccgo_ts + 18591
+		v1 = __ccgo_ts + 18611
 	}
-	_sqlite3VdbeExplain(tls, pParse, uint8(0), __ccgo_ts+18593, libc.VaList(bp+8, nRow, v1))
+	_sqlite3VdbeExplain(tls, pParse, uint8(0), __ccgo_ts+18613, libc.VaList(bp+8, nRow, v1))
 	for p != 0 {
 		_selectInnerLoop(tls, pParse, p, -int32(1), uintptr(0), uintptr(0), pDest, int32(1), int32(1))
 		if !(bShowAll != 0) {
@@ -114424,8 +114424,8 @@ func _multiSelect(tls *libc.TLS, pParse uintptr, p uintptr, pDest uintptr) (r in
 			return _multiSelectOrderBy(tls, pParse, p, pDest)
 		} else {
 			if (*TSelect)(unsafe.Pointer(pPrior)).FpPrior == uintptr(0) {
-				_sqlite3VdbeExplain(tls, pParse, uint8(1), __ccgo_ts+18616, 0)
-				_sqlite3VdbeExplain(tls, pParse, uint8(1), __ccgo_ts+18631, 0)
+				_sqlite3VdbeExplain(tls, pParse, uint8(1), __ccgo_ts+18636, 0)
+				_sqlite3VdbeExplain(tls, pParse, uint8(1), __ccgo_ts+18651, 0)
 			}
 			/* Generate code for the left and right SELECT statements.
 			 */
@@ -114451,7 +114451,7 @@ func _multiSelect(tls *libc.TLS, pParse uintptr, p uintptr, pDest uintptr) (r in
 						_sqlite3VdbeAddOp3(tls, v, int32(m_OP_OffsetLimit), (*TSelect)(unsafe.Pointer(p)).FiLimit, (*TSelect)(unsafe.Pointer(p)).FiOffset+int32(1), (*TSelect)(unsafe.Pointer(p)).FiOffset)
 					}
 				}
-				_sqlite3VdbeExplain(tls, pParse, uint8(1), __ccgo_ts+18406, 0)
+				_sqlite3VdbeExplain(tls, pParse, uint8(1), __ccgo_ts+18426, 0)
 				rc = _sqlite3Select(tls, pParse, p, bp)
 				pDelete = (*TSelect)(unsafe.Pointer(p)).FpPrior
 				(*TSelect)(unsafe.Pointer(p)).FpPrior = pPrior
@@ -114508,7 +114508,7 @@ func _multiSelect(tls *libc.TLS, pParse uintptr, p uintptr, pDest uintptr) (r in
 				pLimit = (*TSelect)(unsafe.Pointer(p)).FpLimit
 				(*TSelect)(unsafe.Pointer(p)).FpLimit = uintptr(0)
 				(*(*TSelectDest)(unsafe.Pointer(bp + 48))).FeDest = op
-				_sqlite3VdbeExplain(tls, pParse, uint8(1), __ccgo_ts+18650, libc.VaList(bp+136, _sqlite3SelectOpName(tls, int32((*TSelect)(unsafe.Pointer(p)).Fop))))
+				_sqlite3VdbeExplain(tls, pParse, uint8(1), __ccgo_ts+18670, libc.VaList(bp+136, _sqlite3SelectOpName(tls, int32((*TSelect)(unsafe.Pointer(p)).Fop))))
 				rc = _sqlite3Select(tls, pParse, p, bp+48)
 				_ = libc.Int32FromInt32(0)
 				pDelete = (*TSelect)(unsafe.Pointer(p)).FpPrior
@@ -114574,7 +114574,7 @@ func _multiSelect(tls *libc.TLS, pParse uintptr, p uintptr, pDest uintptr) (r in
 				pLimit1 = (*TSelect)(unsafe.Pointer(p)).FpLimit
 				(*TSelect)(unsafe.Pointer(p)).FpLimit = uintptr(0)
 				(*(*TSelectDest)(unsafe.Pointer(bp + 88))).FiSDParm = tab2
-				_sqlite3VdbeExplain(tls, pParse, uint8(1), __ccgo_ts+18650, libc.VaList(bp+136, _sqlite3SelectOpName(tls, int32((*TSelect)(unsafe.Pointer(p)).Fop))))
+				_sqlite3VdbeExplain(tls, pParse, uint8(1), __ccgo_ts+18670, libc.VaList(bp+136, _sqlite3SelectOpName(tls, int32((*TSelect)(unsafe.Pointer(p)).Fop))))
 				rc = _sqlite3Select(tls, pParse, p, bp+88)
 				pDelete = (*TSelect)(unsafe.Pointer(p)).FpPrior
 				(*TSelect)(unsafe.Pointer(p)).FpPrior = pPrior
@@ -114696,9 +114696,9 @@ func _sqlite3SelectWrongNumTermsError(tls *libc.TLS, pParse uintptr, p uintptr) 
 	bp := tls.Alloc(16)
 	defer tls.Free(16)
 	if (*TSelect)(unsafe.Pointer(p)).FselFlags&uint32(m_SF_Values) != 0 {
-		_sqlite3ErrorMsg(tls, pParse, __ccgo_ts+18671, 0)
+		_sqlite3ErrorMsg(tls, pParse, __ccgo_ts+18691, 0)
 	} else {
-		_sqlite3ErrorMsg(tls, pParse, __ccgo_ts+18717, libc.VaList(bp+8, _sqlite3SelectOpName(tls, int32((*TSelect)(unsafe.Pointer(p)).Fop))))
+		_sqlite3ErrorMsg(tls, pParse, __ccgo_ts+18737, libc.VaList(bp+8, _sqlite3SelectOpName(tls, int32((*TSelect)(unsafe.Pointer(p)).Fop))))
 	}
 }
 
@@ -115049,9 +115049,9 @@ func _multiSelectOrderBy(tls *libc.TLS, pParse uintptr, p uintptr, pDest uintptr
 	 */
 	(*TSelect)(unsafe.Pointer(p)).FpPrior = uintptr(0)
 	(*TSelect)(unsafe.Pointer(pPrior)).FpNext = uintptr(0)
-	_sqlite3ResolveOrderGroupBy(tls, pParse, p, (*TSelect)(unsafe.Pointer(p)).FpOrderBy, __ccgo_ts+7048)
+	_sqlite3ResolveOrderGroupBy(tls, pParse, p, (*TSelect)(unsafe.Pointer(p)).FpOrderBy, __ccgo_ts+7068)
 	if (*TSelect)(unsafe.Pointer(pPrior)).FpPrior == uintptr(0) {
-		_sqlite3ResolveOrderGroupBy(tls, pParse, pPrior, (*TSelect)(unsafe.Pointer(pPrior)).FpOrderBy, __ccgo_ts+7048)
+		_sqlite3ResolveOrderGroupBy(tls, pParse, pPrior, (*TSelect)(unsafe.Pointer(pPrior)).FpOrderBy, __ccgo_ts+7068)
 	}
 	/* Compute the limit registers */
 	_computeLimitRegisters(tls, pParse, p, labelEnd)
@@ -115096,14 +115096,14 @@ func _multiSelectOrderBy(tls *libc.TLS, pParse uintptr, p uintptr, pDest uintptr
 	regOutB = v19
 	_sqlite3SelectDestInit(tls, bp, int32(m_SRT_Coroutine), regAddrA)
 	_sqlite3SelectDestInit(tls, bp+40, int32(m_SRT_Coroutine), regAddrB)
-	_sqlite3VdbeExplain(tls, pParse, uint8(1), __ccgo_ts+18799, libc.VaList(bp+88, _sqlite3SelectOpName(tls, int32((*TSelect)(unsafe.Pointer(p)).Fop))))
+	_sqlite3VdbeExplain(tls, pParse, uint8(1), __ccgo_ts+18819, libc.VaList(bp+88, _sqlite3SelectOpName(tls, int32((*TSelect)(unsafe.Pointer(p)).Fop))))
 	/* Generate a coroutine to evaluate the SELECT statement to the
 	 ** left of the compound operator - the "A" select.
 	 */
 	addrSelectA = _sqlite3VdbeCurrentAddr(tls, v) + int32(1)
 	addr1 = _sqlite3VdbeAddOp3(tls, v, int32(m_OP_InitCoroutine), regAddrA, 0, addrSelectA)
 	(*TSelect)(unsafe.Pointer(pPrior)).FiLimit = regLimitA
-	_sqlite3VdbeExplain(tls, pParse, uint8(1), __ccgo_ts+18810, 0)
+	_sqlite3VdbeExplain(tls, pParse, uint8(1), __ccgo_ts+18830, 0)
 	_sqlite3Select(tls, pParse, pPrior, bp)
 	_sqlite3VdbeEndCoroutine(tls, v, regAddrA)
 	_sqlite3VdbeJumpHere(tls, v, addr1)
@@ -115116,7 +115116,7 @@ func _multiSelectOrderBy(tls *libc.TLS, pParse uintptr, p uintptr, pDest uintptr
 	savedOffset = (*TSelect)(unsafe.Pointer(p)).FiOffset
 	(*TSelect)(unsafe.Pointer(p)).FiLimit = regLimitB
 	(*TSelect)(unsafe.Pointer(p)).FiOffset = 0
-	_sqlite3VdbeExplain(tls, pParse, uint8(1), __ccgo_ts+18815, 0)
+	_sqlite3VdbeExplain(tls, pParse, uint8(1), __ccgo_ts+18835, 0)
 	_sqlite3Select(tls, pParse, p, bp+40)
 	(*TSelect)(unsafe.Pointer(p)).FiLimit = savedLimit
 	(*TSelect)(unsafe.Pointer(p)).FiOffset = savedOffset
@@ -115293,7 +115293,7 @@ func _substExpr(tls *libc.TLS, pSubst uintptr, pExpr uintptr) (r uintptr) {
 				if pColl != 0 {
 					v1 = (*TCollSeq)(unsafe.Pointer(pColl)).FzName
 				} else {
-					v1 = __ccgo_ts + 4807
+					v1 = __ccgo_ts + 4827
 				}
 				pExpr = _sqlite3ExprAddCollateString(tls, (*TSubstContext)(unsafe.Pointer(pSubst)).FpParse, pExpr, v1)
 			}
@@ -116634,13 +116634,13 @@ func _minMaxQuery(tls *libc.TLS, db uintptr, pFunc uintptr, ppMinMax uintptr) (r
 	}
 	_ = libc.Int32FromInt32(0)
 	zFunc = *(*uintptr)(unsafe.Pointer(pFunc + 8))
-	if _sqlite3StrICmp(tls, zFunc, __ccgo_ts+14963) == 0 {
+	if _sqlite3StrICmp(tls, zFunc, __ccgo_ts+14983) == 0 {
 		eRet = int32(m_WHERE_ORDERBY_MIN)
 		if _sqlite3ExprCanBeNull(tls, (*(*TExprList_item)(unsafe.Pointer(pEList + 8))).FpExpr) != 0 {
 			sortFlags = uint8(m_KEYINFO_ORDER_BIGNULL)
 		}
 	} else {
-		if _sqlite3StrICmp(tls, zFunc, __ccgo_ts+14967) == 0 {
+		if _sqlite3StrICmp(tls, zFunc, __ccgo_ts+14987) == 0 {
 			eRet = int32(m_WHERE_ORDERBY_MAX)
 			sortFlags = uint8(m_KEYINFO_ORDER_DESC)
 		} else {
@@ -116735,7 +116735,7 @@ func _sqlite3IndexedByLookup(tls *libc.TLS, pParse uintptr, pFrom uintptr) (r in
 		pIdx = (*TIndex)(unsafe.Pointer(pIdx)).FpNext
 	}
 	if !(pIdx != 0) {
-		_sqlite3ErrorMsg(tls, pParse, __ccgo_ts+18821, libc.VaList(bp+8, zIndexedBy, 0))
+		_sqlite3ErrorMsg(tls, pParse, __ccgo_ts+18841, libc.VaList(bp+8, zIndexedBy, 0))
 		(*TParse)(unsafe.Pointer(pParse)).FcheckSchema = uint8(1)
 		return int32(m_SQLITE_ERROR)
 	}
@@ -116860,7 +116860,7 @@ func _cannotBeFunction(tls *libc.TLS, pParse uintptr, pFrom uintptr) (r int32) {
 	bp := tls.Alloc(16)
 	defer tls.Free(16)
 	if int32(uint32(*(*uint16)(unsafe.Pointer(pFrom + 60 + 4))&0x4>>2)) != 0 {
-		_sqlite3ErrorMsg(tls, pParse, __ccgo_ts+18839, libc.VaList(bp+8, (*TSrcItem)(unsafe.Pointer(pFrom)).FzName))
+		_sqlite3ErrorMsg(tls, pParse, __ccgo_ts+18859, libc.VaList(bp+8, (*TSrcItem)(unsafe.Pointer(pFrom)).FzName))
 		return int32(1)
 	}
 	return 0
@@ -117040,7 +117040,7 @@ func _resolveFromTermToCte(tls *libc.TLS, pParse uintptr, pWalker uintptr, pFrom
 		*(*Tu32)(unsafe.Pointer((*TSrcItem)(unsafe.Pointer(pFrom)).FpSelect + 4)) |= uint32(m_SF_CopyCte)
 		_ = libc.Int32FromInt32(0)
 		if int32(uint32(*(*uint16)(unsafe.Pointer(pFrom + 60 + 4))&0x2>>1)) != 0 {
-			_sqlite3ErrorMsg(tls, pParse, __ccgo_ts+18862, libc.VaList(bp+16, *(*uintptr)(unsafe.Pointer(pFrom + 96))))
+			_sqlite3ErrorMsg(tls, pParse, __ccgo_ts+18882, libc.VaList(bp+16, *(*uintptr)(unsafe.Pointer(pFrom + 96))))
 			return int32(2)
 		}
 		libc.SetBitFieldPtr16Uint32(pFrom+60+4, libc.Uint32FromInt32(1), 7, 0x80)
@@ -117068,7 +117068,7 @@ func _resolveFromTermToCte(tls *libc.TLS, pParse uintptr, pWalker uintptr, pFrom
 					(*TTable)(unsafe.Pointer(pTab)).FnTabRef++
 					libc.SetBitFieldPtr16Uint32(pItem+60+4, libc.Uint32FromInt32(1), 5, 0x20)
 					if (*TSelect)(unsafe.Pointer(pRecTerm)).FselFlags&uint32(m_SF_Recursive) != 0 {
-						_sqlite3ErrorMsg(tls, pParse, __ccgo_ts+18882, libc.VaList(bp+16, (*TCte)(unsafe.Pointer(pCte)).FzName))
+						_sqlite3ErrorMsg(tls, pParse, __ccgo_ts+18902, libc.VaList(bp+16, (*TCte)(unsafe.Pointer(pCte)).FzName))
 						return int32(2)
 					}
 					*(*Tu32)(unsafe.Pointer(pRecTerm + 4)) |= uint32(m_SF_Recursive)
@@ -117089,7 +117089,7 @@ func _resolveFromTermToCte(tls *libc.TLS, pParse uintptr, pWalker uintptr, pFrom
 			}
 			pRecTerm = (*TSelect)(unsafe.Pointer(pRecTerm)).FpPrior
 		}
-		(*TCte)(unsafe.Pointer(pCte)).FzCteErr = __ccgo_ts + 18925
+		(*TCte)(unsafe.Pointer(pCte)).FzCteErr = __ccgo_ts + 18945
 		pSavedWith = (*TParse)(unsafe.Pointer(pParse)).FpWith
 		(*TParse)(unsafe.Pointer(pParse)).FpWith = *(*uintptr)(unsafe.Pointer(bp))
 		if (*TSelect)(unsafe.Pointer(pSel)).FselFlags&uint32(m_SF_Recursive) != 0 {
@@ -117124,7 +117124,7 @@ func _resolveFromTermToCte(tls *libc.TLS, pParse uintptr, pWalker uintptr, pFrom
 		pEList = (*TSelect)(unsafe.Pointer(pLeft)).FpEList
 		if (*TCte)(unsafe.Pointer(pCte)).FpCols != 0 {
 			if pEList != 0 && (*TExprList)(unsafe.Pointer(pEList)).FnExpr != (*TExprList)(unsafe.Pointer((*TCte)(unsafe.Pointer(pCte)).FpCols)).FnExpr {
-				_sqlite3ErrorMsg(tls, pParse, __ccgo_ts+18948, libc.VaList(bp+16, (*TCte)(unsafe.Pointer(pCte)).FzName, (*TExprList)(unsafe.Pointer(pEList)).FnExpr, (*TExprList)(unsafe.Pointer((*TCte)(unsafe.Pointer(pCte)).FpCols)).FnExpr))
+				_sqlite3ErrorMsg(tls, pParse, __ccgo_ts+18968, libc.VaList(bp+16, (*TCte)(unsafe.Pointer(pCte)).FzName, (*TExprList)(unsafe.Pointer(pEList)).FnExpr, (*TExprList)(unsafe.Pointer((*TCte)(unsafe.Pointer(pCte)).FpCols)).FnExpr))
 				(*TParse)(unsafe.Pointer(pParse)).FpWith = pSavedWith
 				return int32(2)
 			}
@@ -117133,9 +117133,9 @@ func _resolveFromTermToCte(tls *libc.TLS, pParse uintptr, pWalker uintptr, pFrom
 		_sqlite3ColumnsFromExprList(tls, pParse, pEList, pTab+54, pTab+8)
 		if bMayRecursive != 0 {
 			if (*TSelect)(unsafe.Pointer(pSel)).FselFlags&uint32(m_SF_Recursive) != 0 {
-				(*TCte)(unsafe.Pointer(pCte)).FzCteErr = __ccgo_ts + 18986
+				(*TCte)(unsafe.Pointer(pCte)).FzCteErr = __ccgo_ts + 19006
 			} else {
-				(*TCte)(unsafe.Pointer(pCte)).FzCteErr = __ccgo_ts + 19020
+				(*TCte)(unsafe.Pointer(pCte)).FzCteErr = __ccgo_ts + 19040
 			}
 			_sqlite3WalkSelect(tls, pWalker, pSel)
 		}
@@ -117196,7 +117196,7 @@ func _sqlite3ExpandSubquery(tls *libc.TLS, pParse uintptr, pFrom uintptr) (r int
 	if (*TSrcItem)(unsafe.Pointer(pFrom)).FzAlias != 0 {
 		(*TTable)(unsafe.Pointer(pTab)).FzName = _sqlite3DbStrDup(tls, (*TParse)(unsafe.Pointer(pParse)).Fdb, (*TSrcItem)(unsafe.Pointer(pFrom)).FzAlias)
 	} else {
-		(*TTable)(unsafe.Pointer(pTab)).FzName = _sqlite3MPrintf(tls, (*TParse)(unsafe.Pointer(pParse)).Fdb, __ccgo_ts+19058, libc.VaList(bp+8, (*TSelect)(unsafe.Pointer(pSel)).FselId))
+		(*TTable)(unsafe.Pointer(pTab)).FzName = _sqlite3MPrintf(tls, (*TParse)(unsafe.Pointer(pParse)).Fdb, __ccgo_ts+19078, libc.VaList(bp+8, (*TSelect)(unsafe.Pointer(pSel)).FselId))
 	}
 	for (*TSelect)(unsafe.Pointer(pSel)).FpPrior != 0 {
 		pSel = (*TSelect)(unsafe.Pointer(pSel)).FpPrior
@@ -117332,7 +117332,7 @@ func _selectExpander(tls *libc.TLS, pWalker uintptr, p uintptr) (r int32) {
 					return int32(m_WRC_Abort)
 				}
 				if (*TTable)(unsafe.Pointer(pTab)).FnTabRef >= uint32(0xffff) {
-					_sqlite3ErrorMsg(tls, pParse, __ccgo_ts+19070, libc.VaList(bp+24, (*TTable)(unsafe.Pointer(pTab)).FzName))
+					_sqlite3ErrorMsg(tls, pParse, __ccgo_ts+19090, libc.VaList(bp+24, (*TTable)(unsafe.Pointer(pTab)).FzName))
 					(*TSrcItem)(unsafe.Pointer(pFrom)).FpTab = uintptr(0)
 					return int32(m_WRC_Abort)
 				}
@@ -117348,7 +117348,7 @@ func _selectExpander(tls *libc.TLS, pWalker uintptr, p uintptr) (r int32) {
 					_ = libc.Int32FromInt32(0)
 					if int32((*TTable)(unsafe.Pointer(pTab)).FeTabType) == int32(m_TABTYP_VIEW) {
 						if (*Tsqlite3)(unsafe.Pointer(db)).Fflags&uint64(m_SQLITE_EnableView) == uint64(0) && (*TTable)(unsafe.Pointer(pTab)).FpSchema != (*(*TDb)(unsafe.Pointer((*Tsqlite3)(unsafe.Pointer(db)).FaDb + 1*32))).FpSchema {
-							_sqlite3ErrorMsg(tls, pParse, __ccgo_ts+19109, libc.VaList(bp+24, (*TTable)(unsafe.Pointer(pTab)).FzName))
+							_sqlite3ErrorMsg(tls, pParse, __ccgo_ts+19129, libc.VaList(bp+24, (*TTable)(unsafe.Pointer(pTab)).FzName))
 						}
 						(*TSrcItem)(unsafe.Pointer(pFrom)).FpSelect = _sqlite3SelectDup(tls, db, (*(*struct {
 							FpSelect uintptr
@@ -117363,7 +117363,7 @@ func _selectExpander(tls *libc.TLS, pWalker uintptr, p uintptr) (r int32) {
 							FazArg uintptr
 							Fp     uintptr
 						})(unsafe.Pointer(pTab + 64))).Fp)).FeVtabRisk) > libc.BoolInt32((*Tsqlite3)(unsafe.Pointer(db)).Fflags&uint64(m_SQLITE_TrustedSchema) != uint64(0)) {
-							_sqlite3ErrorMsg(tls, pParse, __ccgo_ts+19140, libc.VaList(bp+24, (*TTable)(unsafe.Pointer(pTab)).FzName))
+							_sqlite3ErrorMsg(tls, pParse, __ccgo_ts+19160, libc.VaList(bp+24, (*TTable)(unsafe.Pointer(pTab)).FzName))
 						}
 					}
 					_ = libc.Int32FromInt32(0)
@@ -117484,7 +117484,7 @@ func _selectExpander(tls *libc.TLS, pWalker uintptr, p uintptr) (r int32) {
 						if iDb >= 0 {
 							v9 = (*(*TDb)(unsafe.Pointer((*Tsqlite3)(unsafe.Pointer(db)).FaDb + uintptr(iDb)*32))).FzDbSName
 						} else {
-							v9 = __ccgo_ts + 19173
+							v9 = __ccgo_ts + 19193
 						}
 						zSchemaName = v9
 					}
@@ -117529,7 +117529,7 @@ func _selectExpander(tls *libc.TLS, pWalker uintptr, p uintptr) (r int32) {
 								pExpr = _sqlite3PExpr(tls, pParse, int32(m_TK_DOT), pLeft, pExpr)
 							}
 							if longNames != 0 {
-								zColname = _sqlite3MPrintf(tls, db, __ccgo_ts+11841, libc.VaList(bp+24, zTabName, zName))
+								zColname = _sqlite3MPrintf(tls, db, __ccgo_ts+11861, libc.VaList(bp+24, zTabName, zName))
 								zToFree = zColname
 							}
 						} else {
@@ -117544,7 +117544,7 @@ func _selectExpander(tls *libc.TLS, pWalker uintptr, p uintptr) (r int32) {
 							if pSub != 0 {
 								(*TExprList_item)(unsafe.Pointer(pX)).FzEName = _sqlite3DbStrDup(tls, db, (*(*TExprList_item)(unsafe.Pointer((*TSelect)(unsafe.Pointer(pSub)).FpEList + 8 + uintptr(j)*32))).FzEName)
 							} else {
-								(*TExprList_item)(unsafe.Pointer(pX)).FzEName = _sqlite3MPrintf(tls, db, __ccgo_ts+19175, libc.VaList(bp+24, zSchemaName, zTabName, zColname))
+								(*TExprList_item)(unsafe.Pointer(pX)).FzEName = _sqlite3MPrintf(tls, db, __ccgo_ts+19195, libc.VaList(bp+24, zSchemaName, zTabName, zColname))
 							}
 							libc.SetBitFieldPtr8Uint32(pX+20, libc.Uint32FromInt32(m_ENAME_TAB), 0, 0x3)
 						}
@@ -117560,9 +117560,9 @@ func _selectExpander(tls *libc.TLS, pWalker uintptr, p uintptr) (r int32) {
 				}
 				if !(tableSeen != 0) {
 					if zTName != 0 {
-						_sqlite3ErrorMsg(tls, pParse, __ccgo_ts+19184, libc.VaList(bp+24, zTName))
+						_sqlite3ErrorMsg(tls, pParse, __ccgo_ts+19204, libc.VaList(bp+24, zTName))
 					} else {
-						_sqlite3ErrorMsg(tls, pParse, __ccgo_ts+19202, 0)
+						_sqlite3ErrorMsg(tls, pParse, __ccgo_ts+19222, 0)
 					}
 				}
 			}
@@ -117575,7 +117575,7 @@ func _selectExpander(tls *libc.TLS, pWalker uintptr, p uintptr) (r int32) {
 	}
 	if (*TSelect)(unsafe.Pointer(p)).FpEList != 0 {
 		if (*TExprList)(unsafe.Pointer((*TSelect)(unsafe.Pointer(p)).FpEList)).FnExpr > *(*int32)(unsafe.Pointer(db + 136 + 2*4)) {
-			_sqlite3ErrorMsg(tls, pParse, __ccgo_ts+19222, 0)
+			_sqlite3ErrorMsg(tls, pParse, __ccgo_ts+19242, 0)
 			return int32(m_WRC_Abort)
 		}
 		if elistFlags&uint32(libc.Int32FromInt32(m_EP_HasFunc)|libc.Int32FromInt32(m_EP_Subquery)) != uint32(0) {
@@ -117756,12 +117756,12 @@ func _resetAccumulator(tls *libc.TLS, pParse uintptr, pAggInfo uintptr) {
 			pE = (*TAggInfo_func)(unsafe.Pointer(pFunc)).FpFExpr
 			_ = libc.Int32FromInt32(0)
 			if *(*uintptr)(unsafe.Pointer(pE + 32)) == uintptr(0) || (*TExprList)(unsafe.Pointer(*(*uintptr)(unsafe.Pointer(pE + 32)))).FnExpr != int32(1) {
-				_sqlite3ErrorMsg(tls, pParse, __ccgo_ts+19253, 0)
+				_sqlite3ErrorMsg(tls, pParse, __ccgo_ts+19273, 0)
 				(*TAggInfo_func)(unsafe.Pointer(pFunc)).FiDistinct = -int32(1)
 			} else {
 				pKeyInfo = _sqlite3KeyInfoFromExprList(tls, pParse, *(*uintptr)(unsafe.Pointer(pE + 32)), 0, 0)
 				(*TAggInfo_func)(unsafe.Pointer(pFunc)).FiDistAddr = _sqlite3VdbeAddOp4(tls, v, int32(m_OP_OpenEphemeral), (*TAggInfo_func)(unsafe.Pointer(pFunc)).FiDistinct, 0, 0, pKeyInfo, -int32(9))
-				_sqlite3VdbeExplain(tls, pParse, uint8(0), __ccgo_ts+19304, libc.VaList(bp+8, (*TFuncDef)(unsafe.Pointer((*TAggInfo_func)(unsafe.Pointer(pFunc)).FpFunc)).FzName))
+				_sqlite3VdbeExplain(tls, pParse, uint8(0), __ccgo_ts+19324, libc.VaList(bp+8, (*TFuncDef)(unsafe.Pointer((*TAggInfo_func)(unsafe.Pointer(pFunc)).FpFunc)).FzName))
 			}
 		}
 		goto _1
@@ -117948,16 +117948,16 @@ func _explainSimpleCount(tls *libc.TLS, pParse uintptr, pTab uintptr, pIdx uintp
 	if int32((*TParse)(unsafe.Pointer(pParse)).Fexplain) == int32(2) {
 		bCover = libc.BoolInt32(pIdx != uintptr(0) && ((*TTable)(unsafe.Pointer(pTab)).FtabFlags&uint32(m_TF_WithoutRowid) == uint32(0) || !(int32(uint32(*(*uint16)(unsafe.Pointer(pIdx + 100))&0x3>>0)) == libc.Int32FromInt32(m_SQLITE_IDXTYPE_PRIMARYKEY))))
 		if bCover != 0 {
-			v1 = __ccgo_ts + 19337
+			v1 = __ccgo_ts + 19357
 		} else {
-			v1 = __ccgo_ts + 1511
+			v1 = __ccgo_ts + 1531
 		}
 		if bCover != 0 {
 			v2 = (*TIndex)(unsafe.Pointer(pIdx)).FzName
 		} else {
-			v2 = __ccgo_ts + 1511
+			v2 = __ccgo_ts + 1531
 		}
-		_sqlite3VdbeExplain(tls, pParse, uint8(0), __ccgo_ts+19360, libc.VaList(bp+8, (*TTable)(unsafe.Pointer(pTab)).FzName, v1, v2))
+		_sqlite3VdbeExplain(tls, pParse, uint8(0), __ccgo_ts+19380, libc.VaList(bp+8, (*TTable)(unsafe.Pointer(pTab)).FzName, v1, v2))
 	}
 }
 
@@ -117989,7 +117989,7 @@ func _havingToWhereExprCb(tls *libc.TLS, pWalker uintptr, pExpr uintptr) (r int3
 		 ** statements AggInfo structure.  */
 		if _sqlite3ExprIsConstantOrGroupBy(tls, (*TWalker)(unsafe.Pointer(pWalker)).FpParse, pExpr, (*TSelect)(unsafe.Pointer(pS)).FpGroupBy) != 0 && libc.BoolInt32((*TExpr)(unsafe.Pointer(pExpr)).Fflags&uint32(libc.Int32FromInt32(m_EP_FromJoin)|libc.Int32FromInt32(m_EP_IsFalse)) == uint32(m_EP_IsFalse)) == 0 && (*TExpr)(unsafe.Pointer(pExpr)).FpAggInfo == uintptr(0) {
 			db = (*TParse)(unsafe.Pointer((*TWalker)(unsafe.Pointer(pWalker)).FpParse)).Fdb
-			pNew = _sqlite3Expr(tls, db, int32(m_TK_INTEGER), __ccgo_ts+7756)
+			pNew = _sqlite3Expr(tls, db, int32(m_TK_INTEGER), __ccgo_ts+7776)
 			if pNew != 0 {
 				pWhere = (*TSelect)(unsafe.Pointer(pS)).FpWhere
 				t = *(*TExpr)(unsafe.Pointer(pNew))
@@ -118182,7 +118182,7 @@ func _sqlite3Select(tls *libc.TLS, pParse uintptr, p uintptr, pDest uintptr) (r 
 				} else {
 					v2 = (*TTable)(unsafe.Pointer((*TSrcItem)(unsafe.Pointer(p0)).FpTab)).FzName
 				}
-				_sqlite3ErrorMsg(tls, pParse, __ccgo_ts+19372, libc.VaList(bp+176, v2))
+				_sqlite3ErrorMsg(tls, pParse, __ccgo_ts+19392, libc.VaList(bp+176, v2))
 				goto select_end
 			}
 			goto _1
@@ -118236,7 +118236,7 @@ func _sqlite3Select(tls *libc.TLS, pParse uintptr, p uintptr, pDest uintptr) (r 
 		/* Catch mismatch in the declared columns of a view and the number of
 		 ** columns in the SELECT on the RHS */
 		if int32((*TTable)(unsafe.Pointer(pTab)).FnCol) != (*TExprList)(unsafe.Pointer((*TSelect)(unsafe.Pointer(pSub)).FpEList)).FnExpr {
-			_sqlite3ErrorMsg(tls, pParse, __ccgo_ts+19426, libc.VaList(bp+176, int32((*TTable)(unsafe.Pointer(pTab)).FnCol), (*TTable)(unsafe.Pointer(pTab)).FzName, (*TExprList)(unsafe.Pointer((*TSelect)(unsafe.Pointer(pSub)).FpEList)).FnExpr))
+			_sqlite3ErrorMsg(tls, pParse, __ccgo_ts+19446, libc.VaList(bp+176, int32((*TTable)(unsafe.Pointer(pTab)).FnCol), (*TTable)(unsafe.Pointer(pTab)).FzName, (*TExprList)(unsafe.Pointer((*TSelect)(unsafe.Pointer(pSub)).FpEList)).FnExpr))
 			goto select_end
 		}
 		/* Do not try to flatten an aggregate subquery.
@@ -118358,7 +118358,7 @@ func _sqlite3Select(tls *libc.TLS, pParse uintptr, p uintptr, pDest uintptr) (r 
 		 ** string for the fake column name seems safer.
 		 */
 		if (*TSrcItem)(unsafe.Pointer(pItem1)).FcolUsed == uint64(0) && (*TSrcItem)(unsafe.Pointer(pItem1)).FzName != uintptr(0) {
-			_sqlite3AuthCheck(tls, pParse, int32(m_SQLITE_READ), (*TSrcItem)(unsafe.Pointer(pItem1)).FzName, __ccgo_ts+1511, (*TSrcItem)(unsafe.Pointer(pItem1)).FzDatabase)
+			_sqlite3AuthCheck(tls, pParse, int32(m_SQLITE_READ), (*TSrcItem)(unsafe.Pointer(pItem1)).FzName, __ccgo_ts+1531, (*TSrcItem)(unsafe.Pointer(pItem1)).FzDatabase)
 		}
 		/* Generate code for all sub-queries in the FROM clause
 		 */
@@ -118407,7 +118407,7 @@ func _sqlite3Select(tls *libc.TLS, pParse uintptr, p uintptr, pDest uintptr) (r 
 			_sqlite3VdbeAddOp3(tls, v, int32(m_OP_InitCoroutine), (*TSrcItem)(unsafe.Pointer(pItem1)).FregReturn, 0, addrTop)
 			(*TSrcItem)(unsafe.Pointer(pItem1)).FaddrFillSub = addrTop
 			_sqlite3SelectDestInit(tls, bp+72, int32(m_SRT_Coroutine), (*TSrcItem)(unsafe.Pointer(pItem1)).FregReturn)
-			_sqlite3VdbeExplain(tls, pParse, uint8(1), __ccgo_ts+19466, libc.VaList(bp+176, pItem1))
+			_sqlite3VdbeExplain(tls, pParse, uint8(1), __ccgo_ts+19486, libc.VaList(bp+176, pItem1))
 			_sqlite3Select(tls, pParse, pSub1, bp+72)
 			(*TTable)(unsafe.Pointer((*TSrcItem)(unsafe.Pointer(pItem1)).FpTab)).FnRowLogEst = (*TSelect)(unsafe.Pointer(pSub1)).FnSelectRow
 			libc.SetBitFieldPtr16Uint32(pItem1+60+4, libc.Uint32FromInt32(1), 4, 0x10)
@@ -118454,7 +118454,7 @@ func _sqlite3Select(tls *libc.TLS, pParse uintptr, p uintptr, pDest uintptr) (r 
 					} else {
 					}
 					_sqlite3SelectDestInit(tls, bp+72, int32(m_SRT_EphemTab), (*TSrcItem)(unsafe.Pointer(pItem1)).FiCursor)
-					_sqlite3VdbeExplain(tls, pParse, uint8(1), __ccgo_ts+19481, libc.VaList(bp+176, pItem1))
+					_sqlite3VdbeExplain(tls, pParse, uint8(1), __ccgo_ts+19501, libc.VaList(bp+176, pItem1))
 					_sqlite3Select(tls, pParse, pSub1, bp+72)
 					(*TTable)(unsafe.Pointer((*TSrcItem)(unsafe.Pointer(pItem1)).FpTab)).FnRowLogEst = (*TSelect)(unsafe.Pointer(pSub1)).FnSelectRow
 					if onceAddr != 0 {
@@ -118847,9 +118847,9 @@ func _sqlite3Select(tls *libc.TLS, pParse uintptr, p uintptr, pDest uintptr) (r 
 				groupBySort = 0
 			} else {
 				if (*(*TDistinctCtx)(unsafe.Pointer(bp))).FisTnct != 0 && (*TSelect)(unsafe.Pointer(p)).FselFlags&uint32(m_SF_Distinct) == uint32(0) {
-					v37 = __ccgo_ts + 19497
+					v37 = __ccgo_ts + 19517
 				} else {
-					v37 = __ccgo_ts + 19506
+					v37 = __ccgo_ts + 19526
 				}
 				_explainTempTable(tls, pParse, v37)
 				groupBySort = int32(1)
@@ -119156,16 +119156,16 @@ func _sqlite3Select(tls *libc.TLS, pParse uintptr, p uintptr, pDest uintptr) (r 
 		_sqlite3VdbeResolveLabel(tls, v, addrEnd)
 	} /* endif aggregate query */
 	if int32((*(*TDistinctCtx)(unsafe.Pointer(bp))).FeTnctType) == int32(m_WHERE_DISTINCT_UNORDERED) {
-		_explainTempTable(tls, pParse, __ccgo_ts+19497)
+		_explainTempTable(tls, pParse, __ccgo_ts+19517)
 	}
 	/* If there is an ORDER BY clause, then we need to sort the results
 	 ** and send them to the callback one by one.
 	 */
 	if (*(*TSortCtx)(unsafe.Pointer(bp + 16))).FpOrderBy != 0 {
 		if (*(*TSortCtx)(unsafe.Pointer(bp + 16))).FnOBSat > 0 {
-			v52 = __ccgo_ts + 19515
+			v52 = __ccgo_ts + 19535
 		} else {
-			v52 = __ccgo_ts + 19538
+			v52 = __ccgo_ts + 19558
 		}
 		_explainTempTable(tls, pParse, v52)
 		_ = libc.Int32FromInt32(0)
@@ -119267,7 +119267,7 @@ func _sqlite3_get_table_cb(tls *libc.TLS, pArg uintptr, nCol int32, argv uintptr
 			if !(i < nCol) {
 				break
 			}
-			z = Xsqlite3_mprintf(tls, __ccgo_ts+3560, libc.VaList(bp+8, *(*uintptr)(unsafe.Pointer(colv + uintptr(i)*8))))
+			z = Xsqlite3_mprintf(tls, __ccgo_ts+3580, libc.VaList(bp+8, *(*uintptr)(unsafe.Pointer(colv + uintptr(i)*8))))
 			if z == uintptr(0) {
 				goto malloc_failed
 			}
@@ -119282,7 +119282,7 @@ func _sqlite3_get_table_cb(tls *libc.TLS, pArg uintptr, nCol int32, argv uintptr
 	} else {
 		if int32((*TTabResult)(unsafe.Pointer(p)).FnColumn) != nCol {
 			Xsqlite3_free(tls, (*TTabResult)(unsafe.Pointer(p)).FzErrMsg)
-			(*TTabResult)(unsafe.Pointer(p)).FzErrMsg = Xsqlite3_mprintf(tls, __ccgo_ts+19547, 0)
+			(*TTabResult)(unsafe.Pointer(p)).FzErrMsg = Xsqlite3_mprintf(tls, __ccgo_ts+19567, 0)
 			(*TTabResult)(unsafe.Pointer(p)).Frc = int32(m_SQLITE_ERROR)
 			return int32(1)
 		}
@@ -119370,7 +119370,7 @@ func Xsqlite3_get_table(tls *libc.TLS, db uintptr, zSql uintptr, pazResult uintp
 		if (*(*TTabResult)(unsafe.Pointer(bp))).FzErrMsg != 0 {
 			if pzErrMsg != 0 {
 				Xsqlite3_free(tls, *(*uintptr)(unsafe.Pointer(pzErrMsg)))
-				*(*uintptr)(unsafe.Pointer(pzErrMsg)) = Xsqlite3_mprintf(tls, __ccgo_ts+3560, libc.VaList(bp+48, (*(*TTabResult)(unsafe.Pointer(bp))).FzErrMsg))
+				*(*uintptr)(unsafe.Pointer(pzErrMsg)) = Xsqlite3_mprintf(tls, __ccgo_ts+3580, libc.VaList(bp+48, (*(*TTabResult)(unsafe.Pointer(bp))).FzErrMsg))
 			}
 			Xsqlite3_free(tls, (*(*TTabResult)(unsafe.Pointer(bp))).FzErrMsg)
 		}
@@ -119540,7 +119540,7 @@ func _sqlite3BeginTrigger(tls *libc.TLS, pParse uintptr, pName1 uintptr, pName2 
 	if isTemp != 0 {
 		/* If TEMP was specified, then the trigger name may not be qualified. */
 		if (*TToken)(unsafe.Pointer(pName2)).Fn > uint32(0) {
-			_sqlite3ErrorMsg(tls, pParse, __ccgo_ts+19612, 0)
+			_sqlite3ErrorMsg(tls, pParse, __ccgo_ts+19632, 0)
 			goto trigger_cleanup
 		}
 		iDb = int32(1)
@@ -119581,7 +119581,7 @@ func _sqlite3BeginTrigger(tls *libc.TLS, pParse uintptr, pName1 uintptr, pName2 
 		goto trigger_cleanup
 	}
 	_ = libc.Int32FromInt32(0)
-	_sqlite3FixInit(tls, bp+8, pParse, iDb, __ccgo_ts+19658, *(*uintptr)(unsafe.Pointer(bp)))
+	_sqlite3FixInit(tls, bp+8, pParse, iDb, __ccgo_ts+19678, *(*uintptr)(unsafe.Pointer(bp)))
 	if _sqlite3FixSrcList(tls, bp+8, pTableName) != 0 {
 		goto trigger_cleanup
 	}
@@ -119591,7 +119591,7 @@ func _sqlite3BeginTrigger(tls *libc.TLS, pParse uintptr, pName1 uintptr, pName2 
 		goto trigger_orphan_error
 	}
 	if int32((*TTable)(unsafe.Pointer(pTab)).FeTabType) == int32(m_TABTYP_VTAB) {
-		_sqlite3ErrorMsg(tls, pParse, __ccgo_ts+19666, 0)
+		_sqlite3ErrorMsg(tls, pParse, __ccgo_ts+19686, 0)
 		goto trigger_orphan_error
 	}
 	/* Check that the trigger name is not reserved and that no trigger of the
@@ -119601,14 +119601,14 @@ func _sqlite3BeginTrigger(tls *libc.TLS, pParse uintptr, pName1 uintptr, pName2 
 		_ = libc.Int32FromInt32(0)
 		goto trigger_cleanup
 	}
-	if _sqlite3CheckObjectName(tls, pParse, zName, __ccgo_ts+19658, (*TTable)(unsafe.Pointer(pTab)).FzName) != 0 {
+	if _sqlite3CheckObjectName(tls, pParse, zName, __ccgo_ts+19678, (*TTable)(unsafe.Pointer(pTab)).FzName) != 0 {
 		goto trigger_cleanup
 	}
 	_ = libc.Int32FromInt32(0)
 	if !(int32((*TParse)(unsafe.Pointer(pParse)).FeParseMode) >= libc.Int32FromInt32(m_PARSE_MODE_RENAME)) {
 		if _sqlite3HashFind(tls, (*(*TDb)(unsafe.Pointer((*Tsqlite3)(unsafe.Pointer(db)).FaDb + uintptr(iDb)*32))).FpSchema+56, zName) != 0 {
 			if !(noErr != 0) {
-				_sqlite3ErrorMsg(tls, pParse, __ccgo_ts+19707, libc.VaList(bp+112, *(*uintptr)(unsafe.Pointer(bp))))
+				_sqlite3ErrorMsg(tls, pParse, __ccgo_ts+19727, libc.VaList(bp+112, *(*uintptr)(unsafe.Pointer(bp))))
 			} else {
 				_ = libc.Int32FromInt32(0)
 				_sqlite3CodeVerifySchema(tls, pParse, iDb)
@@ -119617,8 +119617,8 @@ func _sqlite3BeginTrigger(tls *libc.TLS, pParse uintptr, pName1 uintptr, pName2 
 		}
 	}
 	/* Do not create a trigger on a system table */
-	if Xsqlite3_strnicmp(tls, (*TTable)(unsafe.Pointer(pTab)).FzName, __ccgo_ts+7939, int32(7)) == 0 {
-		_sqlite3ErrorMsg(tls, pParse, __ccgo_ts+19733, 0)
+	if Xsqlite3_strnicmp(tls, (*TTable)(unsafe.Pointer(pTab)).FzName, __ccgo_ts+7959, int32(7)) == 0 {
+		_sqlite3ErrorMsg(tls, pParse, __ccgo_ts+19753, 0)
 		goto trigger_cleanup
 	}
 	/* INSTEAD of triggers are only for views and views only support INSTEAD
@@ -119626,15 +119626,15 @@ func _sqlite3BeginTrigger(tls *libc.TLS, pParse uintptr, pName1 uintptr, pName2 
 	 */
 	if int32((*TTable)(unsafe.Pointer(pTab)).FeTabType) == int32(m_TABTYP_VIEW) && tr_tm != int32(m_TK_INSTEAD) {
 		if tr_tm == int32(m_TK_BEFORE) {
-			v1 = __ccgo_ts + 19771
+			v1 = __ccgo_ts + 19791
 		} else {
-			v1 = __ccgo_ts + 19778
+			v1 = __ccgo_ts + 19798
 		}
-		_sqlite3ErrorMsg(tls, pParse, __ccgo_ts+19784, libc.VaList(bp+112, v1, pTableName+8))
+		_sqlite3ErrorMsg(tls, pParse, __ccgo_ts+19804, libc.VaList(bp+112, v1, pTableName+8))
 		goto trigger_orphan_error
 	}
 	if !(int32((*TTable)(unsafe.Pointer(pTab)).FeTabType) == libc.Int32FromInt32(m_TABTYP_VIEW)) && tr_tm == int32(m_TK_INSTEAD) {
-		_sqlite3ErrorMsg(tls, pParse, __ccgo_ts+19821, libc.VaList(bp+112, pTableName+8))
+		_sqlite3ErrorMsg(tls, pParse, __ccgo_ts+19841, libc.VaList(bp+112, pTableName+8))
 		goto trigger_orphan_error
 	}
 	if !(int32((*TParse)(unsafe.Pointer(pParse)).FeParseMode) >= libc.Int32FromInt32(m_PARSE_MODE_RENAME)) {
@@ -119654,9 +119654,9 @@ func _sqlite3BeginTrigger(tls *libc.TLS, pParse uintptr, pName1 uintptr, pName2 
 			goto trigger_cleanup
 		}
 		if libc.Bool(!(libc.Int32FromInt32(m_OMIT_TEMPDB) != 0)) && iTabDb == int32(1) {
-			v3 = __ccgo_ts + 11928
+			v3 = __ccgo_ts + 11948
 		} else {
-			v3 = __ccgo_ts + 5787
+			v3 = __ccgo_ts + 5807
 		}
 		if _sqlite3AuthCheck(tls, pParse, int32(m_SQLITE_INSERT), v3, uintptr(0), zDb) != 0 {
 			goto trigger_cleanup
@@ -119754,7 +119754,7 @@ func _sqlite3FinishTrigger(tls *libc.TLS, pParse uintptr, pStepList uintptr, pAl
 		pStepList = (*TTriggerStep)(unsafe.Pointer(pStepList)).FpNext
 	}
 	_sqlite3TokenInit(tls, bp+96, (*TTrigger)(unsafe.Pointer(pTrig)).FzName)
-	_sqlite3FixInit(tls, bp, pParse, iDb, __ccgo_ts+19658, bp+96)
+	_sqlite3FixInit(tls, bp, pParse, iDb, __ccgo_ts+19678, bp+96)
 	if _sqlite3FixTriggerStep(tls, bp, (*TTrigger)(unsafe.Pointer(pTrig)).Fstep_list) != 0 || _sqlite3FixExpr(tls, bp, (*TTrigger)(unsafe.Pointer(pTrig)).FpWhen) != 0 {
 		goto triggerfinish_cleanup
 	}
@@ -119774,10 +119774,10 @@ func _sqlite3FinishTrigger(tls *libc.TLS, pParse uintptr, pStepList uintptr, pAl
 			}
 			_sqlite3BeginWriteOperation(tls, pParse, 0, iDb)
 			z = _sqlite3DbStrNDup(tls, db, (*TToken)(unsafe.Pointer(pAll)).Fz, uint64((*TToken)(unsafe.Pointer(pAll)).Fn))
-			_sqlite3NestedParse(tls, pParse, __ccgo_ts+19867, libc.VaList(bp+120, (*(*TDb)(unsafe.Pointer((*Tsqlite3)(unsafe.Pointer(db)).FaDb + uintptr(iDb)*32))).FzDbSName, zName, (*TTrigger)(unsafe.Pointer(pTrig)).Ftable, z))
+			_sqlite3NestedParse(tls, pParse, __ccgo_ts+19887, libc.VaList(bp+120, (*(*TDb)(unsafe.Pointer((*Tsqlite3)(unsafe.Pointer(db)).FaDb + uintptr(iDb)*32))).FzDbSName, zName, (*TTrigger)(unsafe.Pointer(pTrig)).Ftable, z))
 			_sqlite3DbFree(tls, db, z)
 			_sqlite3ChangeCookie(tls, pParse, iDb)
-			_sqlite3VdbeAddParseSchemaOp(tls, v, iDb, _sqlite3MPrintf(tls, db, __ccgo_ts+19942, libc.VaList(bp+120, zName)), uint16(0))
+			_sqlite3VdbeAddParseSchemaOp(tls, v, iDb, _sqlite3MPrintf(tls, db, __ccgo_ts+19962, libc.VaList(bp+120, zName)), uint16(0))
 		}
 	}
 	if (*Tsqlite3)(unsafe.Pointer(db)).Finit1.Fbusy != 0 {
@@ -120046,7 +120046,7 @@ func _sqlite3DropTrigger(tls *libc.TLS, pParse uintptr, pName uintptr, noErr int
 	}
 	if !(pTrigger != 0) {
 		if !(noErr != 0) {
-			_sqlite3ErrorMsg(tls, pParse, __ccgo_ts+19971, libc.VaList(bp+8, pName+8))
+			_sqlite3ErrorMsg(tls, pParse, __ccgo_ts+19991, libc.VaList(bp+8, pName+8))
 		} else {
 			_sqlite3CodeVerifyNamedSchema(tls, pParse, zDb)
 		}
@@ -120088,9 +120088,9 @@ func _sqlite3DropTriggerPtr(tls *libc.TLS, pParse uintptr, pTrigger uintptr) {
 		code = int32(m_SQLITE_DROP_TRIGGER)
 		zDb = (*(*TDb)(unsafe.Pointer((*Tsqlite3)(unsafe.Pointer(db)).FaDb + uintptr(iDb)*32))).FzDbSName
 		if libc.Bool(!(libc.Int32FromInt32(m_OMIT_TEMPDB) != 0)) && iDb == int32(1) {
-			v1 = __ccgo_ts + 11928
+			v1 = __ccgo_ts + 11948
 		} else {
-			v1 = __ccgo_ts + 5787
+			v1 = __ccgo_ts + 5807
 		}
 		zTab = v1
 		if iDb == int32(1) {
@@ -120105,7 +120105,7 @@ func _sqlite3DropTriggerPtr(tls *libc.TLS, pParse uintptr, pTrigger uintptr) {
 	v2 = _sqlite3GetVdbe(tls, pParse)
 	v = v2
 	if v2 != uintptr(0) {
-		_sqlite3NestedParse(tls, pParse, __ccgo_ts+19991, libc.VaList(bp+8, (*(*TDb)(unsafe.Pointer((*Tsqlite3)(unsafe.Pointer(db)).FaDb + uintptr(iDb)*32))).FzDbSName, (*TTrigger)(unsafe.Pointer(pTrigger)).FzName))
+		_sqlite3NestedParse(tls, pParse, __ccgo_ts+20011, libc.VaList(bp+8, (*(*TDb)(unsafe.Pointer((*Tsqlite3)(unsafe.Pointer(db)).FaDb + uintptr(iDb)*32))).FzDbSName, (*TTrigger)(unsafe.Pointer(pTrigger)).FzName))
 		_sqlite3ChangeCookie(tls, pParse, iDb)
 		_sqlite3VdbeAddOp4(tls, v, int32(m_OP_DropTrigger), iDb, 0, 0, (*TTrigger)(unsafe.Pointer(pTrigger)).FzName, 0)
 	}
@@ -120224,11 +120224,11 @@ func _sqlite3TriggersExist(tls *libc.TLS, pParse uintptr, pTab uintptr, op int32
 					if int32((*TTable)(unsafe.Pointer(pTab)).FeTabType) == int32(m_TABTYP_VTAB) {
 						if op != int32(m_TK_INSERT) {
 							if op == int32(m_TK_DELETE) {
-								v1 = __ccgo_ts + 20053
+								v1 = __ccgo_ts + 20073
 							} else {
-								v1 = __ccgo_ts + 20060
+								v1 = __ccgo_ts + 20080
 							}
-							_sqlite3ErrorMsg(tls, pParse, __ccgo_ts+20067, libc.VaList(bp+8, v1))
+							_sqlite3ErrorMsg(tls, pParse, __ccgo_ts+20087, libc.VaList(bp+8, v1))
 						}
 						(*TTrigger)(unsafe.Pointer(p)).Ftr_tm = uint8(m_TRIGGER_BEFORE)
 					} else {
@@ -120313,7 +120313,7 @@ func _isAsteriskTerm(tls *libc.TLS, pParse uintptr, pTerm uintptr) (r int32) {
 	if int32((*TExpr)(unsafe.Pointer((*TExpr)(unsafe.Pointer(pTerm)).FpRight)).Fop) != int32(m_TK_ASTERISK) {
 		return 0
 	}
-	_sqlite3ErrorMsg(tls, pParse, __ccgo_ts+20115, 0)
+	_sqlite3ErrorMsg(tls, pParse, __ccgo_ts+20135, 0)
 	return int32(1)
 }
 
@@ -120496,7 +120496,7 @@ func _codeTriggerProgram(tls *libc.TLS, pParse uintptr, pStepList uintptr, orcon
 		(*TParse)(unsafe.Pointer(pParse)).FeOrconf = uint8(v2)
 		_ = libc.Int32FromInt32(0)
 		if (*TTriggerStep)(unsafe.Pointer(pStep)).FzSpan != 0 {
-			_sqlite3VdbeAddOp4(tls, v, int32(m_OP_Trace), int32(0x7fffffff), int32(1), 0, _sqlite3MPrintf(tls, db, __ccgo_ts+5974, libc.VaList(bp+48, (*TTriggerStep)(unsafe.Pointer(pStep)).FzSpan)), -int32(7))
+			_sqlite3VdbeAddOp4(tls, v, int32(m_OP_Trace), int32(0x7fffffff), int32(1), 0, _sqlite3MPrintf(tls, db, __ccgo_ts+5994, libc.VaList(bp+48, (*TTriggerStep)(unsafe.Pointer(pStep)).FzSpan)), -int32(7))
 		}
 		switch int32((*TTriggerStep)(unsafe.Pointer(pStep)).Fop) {
 		case int32(m_TK_UPDATE):
@@ -120605,7 +120605,7 @@ func _codeRowTrigger(tls *libc.TLS, pParse uintptr, pTrigger uintptr, pTab uintp
 	v = _sqlite3GetVdbe(tls, pSubParse)
 	if v != 0 {
 		if (*TTrigger)(unsafe.Pointer(pTrigger)).FzName != 0 {
-			_sqlite3VdbeChangeP4(tls, v, -int32(1), _sqlite3MPrintf(tls, db, __ccgo_ts+20157, libc.VaList(bp+64, (*TTrigger)(unsafe.Pointer(pTrigger)).FzName)), -int32(7))
+			_sqlite3VdbeChangeP4(tls, v, -int32(1), _sqlite3MPrintf(tls, db, __ccgo_ts+20177, libc.VaList(bp+64, (*TTrigger)(unsafe.Pointer(pTrigger)).FzName)), -int32(7))
 		}
 		/* If one was specified, code the WHEN clause. If it evaluates to false
 		 ** (or NULL) the sub-vdbe is immediately halted by jumping to the
@@ -121299,7 +121299,7 @@ func _sqlite3Update(tls *libc.TLS, pParse uintptr, pTabList uintptr, pChanges ui
 						chngPk = uint8(1)
 					} else {
 						if int32((*(*TColumn)(unsafe.Pointer((*TTable)(unsafe.Pointer(pTab)).FaCol + uintptr(j)*16))).FcolFlags)&int32(m_COLFLAG_GENERATED) != 0 {
-							_sqlite3ErrorMsg(tls, pParse, __ccgo_ts+20171, libc.VaList(bp+104, (*(*TColumn)(unsafe.Pointer((*TTable)(unsafe.Pointer(pTab)).FaCol + uintptr(j)*16))).FzCnName))
+							_sqlite3ErrorMsg(tls, pParse, __ccgo_ts+20191, libc.VaList(bp+104, (*(*TColumn)(unsafe.Pointer((*TTable)(unsafe.Pointer(pTab)).FaCol + uintptr(j)*16))).FzCnName))
 							goto update_cleanup
 						}
 					}
@@ -121318,13 +121318,13 @@ func _sqlite3Update(tls *libc.TLS, pParse uintptr, pTabList uintptr, pChanges ui
 				pRowidExpr = (*(*TExprList_item)(unsafe.Pointer(pChanges + 8 + uintptr(i)*32))).FpExpr
 				iRowidExpr = i
 			} else {
-				_sqlite3ErrorMsg(tls, pParse, __ccgo_ts+20207, libc.VaList(bp+104, (*(*TExprList_item)(unsafe.Pointer(pChanges + 8 + uintptr(i)*32))).FzEName))
+				_sqlite3ErrorMsg(tls, pParse, __ccgo_ts+20227, libc.VaList(bp+104, (*(*TExprList_item)(unsafe.Pointer(pChanges + 8 + uintptr(i)*32))).FzEName))
 				(*TParse)(unsafe.Pointer(pParse)).FcheckSchema = uint8(1)
 				goto update_cleanup
 			}
 		}
 		if j < 0 {
-			v11 = __ccgo_ts + 7531
+			v11 = __ccgo_ts + 7551
 		} else {
 			v11 = (*(*TColumn)(unsafe.Pointer((*TTable)(unsafe.Pointer(pTab)).FaCol + uintptr(j)*16))).FzCnName
 		}
@@ -122005,7 +122005,7 @@ func _sqlite3Update(tls *libc.TLS, pParse uintptr, pTabList uintptr, pChanges ui
 	if regRowCount != 0 {
 		_sqlite3VdbeAddOp2(tls, v, int32(m_OP_ChngCntRow), regRowCount, int32(1))
 		_sqlite3VdbeSetNumCols(tls, v, int32(1))
-		_sqlite3VdbeSetColName(tls, v, 0, m_COLNAME_NAME, __ccgo_ts+20226, libc.UintptrFromInt32(0))
+		_sqlite3VdbeSetColName(tls, v, 0, m_COLNAME_NAME, __ccgo_ts+20246, libc.UintptrFromInt32(0))
 	}
 update_cleanup:
 	_sqlite3AuthContextPop(tls, bp)
@@ -122433,9 +122433,9 @@ func _sqlite3UpsertAnalyzeTarget(tls *libc.TLS, pParse uintptr, pTabList uintptr
 			if nClause == 0 && (*TUpsert)(unsafe.Pointer(pUpsert)).FpNextUpsert == uintptr(0) {
 				(*(*[16]uint8)(unsafe.Pointer(bp + 200)))[0] = uint8(0)
 			} else {
-				Xsqlite3_snprintf(tls, int32(16), bp+200, __ccgo_ts+20239, libc.VaList(bp+224, nClause+int32(1)))
+				Xsqlite3_snprintf(tls, int32(16), bp+200, __ccgo_ts+20259, libc.VaList(bp+224, nClause+int32(1)))
 			}
-			_sqlite3ErrorMsg(tls, pParse, __ccgo_ts+20243, libc.VaList(bp+224, bp+200))
+			_sqlite3ErrorMsg(tls, pParse, __ccgo_ts+20263, libc.VaList(bp+224, bp+200))
 			return int32(m_SQLITE_ERROR)
 		}
 		goto _1
@@ -122533,7 +122533,7 @@ func _sqlite3UpsertDoUpdate(tls *libc.TLS, pParse uintptr, pUpsert uintptr, pTab
 				i++
 			}
 			i = _sqlite3VdbeAddOp4Int(tls, v, int32(m_OP_Found), iDataCur, 0, iPk, nPk)
-			_sqlite3VdbeAddOp4(tls, v, int32(m_OP_Halt), int32(m_SQLITE_CORRUPT), int32(m_OE_Abort), 0, __ccgo_ts+11982, -int32(1))
+			_sqlite3VdbeAddOp4(tls, v, int32(m_OP_Halt), int32(m_SQLITE_CORRUPT), int32(m_OE_Abort), 0, __ccgo_ts+12002, -int32(1))
 			_sqlite3MayAbort(tls, pParse)
 			_sqlite3VdbeJumpHere(tls, v, i)
 		}
@@ -122615,7 +122615,7 @@ func _execSql(tls *libc.TLS, db uintptr, pzErrMsg uintptr, zSql uintptr) (r int3
 		 ** corrupt the sqlite_schema.sql field with other kinds of statements
 		 ** then run VACUUM to get those statements to execute at inappropriate
 		 ** times. */
-		if zSubSql != 0 && (libc.Xstrncmp(tls, zSubSql, __ccgo_ts+20316, uint64(3)) == 0 || libc.Xstrncmp(tls, zSubSql, __ccgo_ts+20320, uint64(3)) == 0) {
+		if zSubSql != 0 && (libc.Xstrncmp(tls, zSubSql, __ccgo_ts+20336, uint64(3)) == 0 || libc.Xstrncmp(tls, zSubSql, __ccgo_ts+20340, uint64(3)) == 0) {
 			rc = _execSql(tls, db, pzErrMsg, zSubSql)
 			if rc != m_SQLITE_OK {
 				break
@@ -122741,24 +122741,24 @@ func _sqlite3RunVacuum(tls *libc.TLS, pzErrMsg uintptr, db uintptr, iDb int32, p
 	rc = m_SQLITE_OK /* Saved trace settings */
 	pDb = uintptr(0) /* Name of output file */
 	if !((*Tsqlite3)(unsafe.Pointer(db)).FautoCommit != 0) {
-		_sqlite3SetString(tls, pzErrMsg, db, __ccgo_ts+20324)
+		_sqlite3SetString(tls, pzErrMsg, db, __ccgo_ts+20344)
 		return int32(m_SQLITE_ERROR) /* IMP: R-12218-18073 */
 	}
 	if (*Tsqlite3)(unsafe.Pointer(db)).FnVdbeActive > int32(1) {
-		_sqlite3SetString(tls, pzErrMsg, db, __ccgo_ts+20364)
+		_sqlite3SetString(tls, pzErrMsg, db, __ccgo_ts+20384)
 		return int32(m_SQLITE_ERROR) /* IMP: R-15610-35227 */
 	}
 	saved_openFlags = (*Tsqlite3)(unsafe.Pointer(db)).FopenFlags
 	if pOut != 0 {
 		if Xsqlite3_value_type(tls, pOut) != int32(m_SQLITE_TEXT) {
-			_sqlite3SetString(tls, pzErrMsg, db, __ccgo_ts+20407)
+			_sqlite3SetString(tls, pzErrMsg, db, __ccgo_ts+20427)
 			return int32(m_SQLITE_ERROR)
 		}
 		zOut = Xsqlite3_value_text(tls, pOut)
 		*(*uint32)(unsafe.Pointer(db + 76)) &= uint32(^libc.Int32FromInt32(m_SQLITE_OPEN_READONLY))
 		*(*uint32)(unsafe.Pointer(db + 76)) |= uint32(libc.Int32FromInt32(m_SQLITE_OPEN_CREATE) | libc.Int32FromInt32(m_SQLITE_OPEN_READWRITE))
 	} else {
-		zOut = __ccgo_ts + 1511
+		zOut = __ccgo_ts + 1531
 	}
 	/* Save the current value of the database flags so that it can be
 	 ** restored before returning. Then set the writable-schema flag, and
@@ -122790,7 +122790,7 @@ func _sqlite3RunVacuum(tls *libc.TLS, pzErrMsg uintptr, db uintptr, iDb int32, p
 	 ** to write the journal header file.
 	 */
 	nDb = (*Tsqlite3)(unsafe.Pointer(db)).FnDb
-	rc = _execSqlF(tls, db, pzErrMsg, __ccgo_ts+20425, libc.VaList(bp+24, zOut))
+	rc = _execSqlF(tls, db, pzErrMsg, __ccgo_ts+20445, libc.VaList(bp+24, zOut))
 	(*Tsqlite3)(unsafe.Pointer(db)).FopenFlags = saved_openFlags
 	if rc != m_SQLITE_OK {
 		goto end_of_vacuum
@@ -122804,7 +122804,7 @@ func _sqlite3RunVacuum(tls *libc.TLS, pzErrMsg uintptr, db uintptr, iDb int32, p
 		*(*Ti64)(unsafe.Pointer(bp)) = 0
 		if (*Tsqlite3_file)(unsafe.Pointer(id)).FpMethods != uintptr(0) && (_sqlite3OsFileSize(tls, id, bp) != m_SQLITE_OK || *(*Ti64)(unsafe.Pointer(bp)) > 0) {
 			rc = int32(m_SQLITE_ERROR)
-			_sqlite3SetString(tls, pzErrMsg, db, __ccgo_ts+20448)
+			_sqlite3SetString(tls, pzErrMsg, db, __ccgo_ts+20468)
 			goto end_of_vacuum
 		}
 		*(*Tu32)(unsafe.Pointer(db + 44)) |= uint32(m_DBFLAG_VacuumInto)
@@ -122817,7 +122817,7 @@ func _sqlite3RunVacuum(tls *libc.TLS, pzErrMsg uintptr, db uintptr, iDb int32, p
 	 ** file. This is done before the sqlite3BtreeGetPageSize(pMain) call below,
 	 ** to ensure that we do not try to change the page-size on a WAL database.
 	 */
-	rc = _execSql(tls, db, pzErrMsg, __ccgo_ts+14338)
+	rc = _execSql(tls, db, pzErrMsg, __ccgo_ts+14358)
 	if rc != m_SQLITE_OK {
 		goto end_of_vacuum
 	}
@@ -122848,11 +122848,11 @@ func _sqlite3RunVacuum(tls *libc.TLS, pzErrMsg uintptr, db uintptr, iDb int32, p
 	 ** in the temporary database.
 	 */
 	(*Tsqlite3)(unsafe.Pointer(db)).Finit1.FiDb = uint8(nDb) /* force new CREATE statements into vacuum_db */
-	rc = _execSqlF(tls, db, pzErrMsg, __ccgo_ts+20475, libc.VaList(bp+24, zDbMain))
+	rc = _execSqlF(tls, db, pzErrMsg, __ccgo_ts+20495, libc.VaList(bp+24, zDbMain))
 	if rc != m_SQLITE_OK {
 		goto end_of_vacuum
 	}
-	rc = _execSqlF(tls, db, pzErrMsg, __ccgo_ts+20583, libc.VaList(bp+24, zDbMain))
+	rc = _execSqlF(tls, db, pzErrMsg, __ccgo_ts+20603, libc.VaList(bp+24, zDbMain))
 	if rc != m_SQLITE_OK {
 		goto end_of_vacuum
 	}
@@ -122861,7 +122861,7 @@ func _sqlite3RunVacuum(tls *libc.TLS, pzErrMsg uintptr, db uintptr, iDb int32, p
 	 ** an "INSERT INTO vacuum_db.xxx SELECT * FROM main.xxx;" to copy
 	 ** the contents to the temporary database.
 	 */
-	rc = _execSqlF(tls, db, pzErrMsg, __ccgo_ts+20637, libc.VaList(bp+24, zDbMain))
+	rc = _execSqlF(tls, db, pzErrMsg, __ccgo_ts+20657, libc.VaList(bp+24, zDbMain))
 	_ = libc.Int32FromInt32(0)
 	*(*Tu32)(unsafe.Pointer(db + 44)) &= uint32(^libc.Int32FromInt32(m_DBFLAG_Vacuum))
 	if rc != m_SQLITE_OK {
@@ -122872,7 +122872,7 @@ func _sqlite3RunVacuum(tls *libc.TLS, pzErrMsg uintptr, db uintptr, iDb int32, p
 	 ** associated storage, so all we have to do is copy their entries
 	 ** from the schema table.
 	 */
-	rc = _execSqlF(tls, db, pzErrMsg, __ccgo_ts+20788, libc.VaList(bp+24, zDbMain))
+	rc = _execSqlF(tls, db, pzErrMsg, __ccgo_ts+20808, libc.VaList(bp+24, zDbMain))
 	if rc != 0 {
 		goto end_of_vacuum
 	}
@@ -123409,7 +123409,7 @@ func _addModuleArgument(tls *libc.TLS, pParse uintptr, pTable uintptr, zArg uint
 		FazArg uintptr
 		Fp     uintptr
 	})(unsafe.Pointer(pTable + 64))).FnArg+int32(3) >= *(*int32)(unsafe.Pointer(db + 136 + 2*4)) {
-		_sqlite3ErrorMsg(tls, pParse, __ccgo_ts+12212, libc.VaList(bp+8, (*TTable)(unsafe.Pointer(pTable)).FzName))
+		_sqlite3ErrorMsg(tls, pParse, __ccgo_ts+12232, libc.VaList(bp+8, (*TTable)(unsafe.Pointer(pTable)).FzName))
 	}
 	azModuleArg = _sqlite3DbRealloc(tls, db, (*(*struct {
 		FnArg  int32
@@ -123536,7 +123536,7 @@ func _sqlite3VtabFinishParse(tls *libc.TLS, pParse uintptr, pEnd uintptr) {
 		if pEnd != 0 {
 			(*TParse)(unsafe.Pointer(pParse)).FsNameToken.Fn = uint32(int32(int64((*TToken)(unsafe.Pointer(pEnd)).Fz)-int64((*TParse)(unsafe.Pointer(pParse)).FsNameToken.Fz))) + (*TToken)(unsafe.Pointer(pEnd)).Fn
 		}
-		zStmt = _sqlite3MPrintf(tls, db, __ccgo_ts+20918, libc.VaList(bp+8, pParse+248))
+		zStmt = _sqlite3MPrintf(tls, db, __ccgo_ts+20938, libc.VaList(bp+8, pParse+248))
 		/* A slot for the record has already been allocated in the
 		 ** schema table.  We just need to update that slot with all
 		 ** the information we've collected.
@@ -123546,11 +123546,11 @@ func _sqlite3VtabFinishParse(tls *libc.TLS, pParse uintptr, pEnd uintptr) {
 		 ** by sqlite3StartTable().
 		 */
 		iDb = _sqlite3SchemaToIndex(tls, db, (*TTable)(unsafe.Pointer(pTab)).FpSchema)
-		_sqlite3NestedParse(tls, pParse, __ccgo_ts+20942, libc.VaList(bp+8, (*(*TDb)(unsafe.Pointer((*Tsqlite3)(unsafe.Pointer(db)).FaDb + uintptr(iDb)*32))).FzDbSName, (*TTable)(unsafe.Pointer(pTab)).FzName, (*TTable)(unsafe.Pointer(pTab)).FzName, zStmt, (*TParse)(unsafe.Pointer(pParse)).FregRowid))
+		_sqlite3NestedParse(tls, pParse, __ccgo_ts+20962, libc.VaList(bp+8, (*(*TDb)(unsafe.Pointer((*Tsqlite3)(unsafe.Pointer(db)).FaDb + uintptr(iDb)*32))).FzDbSName, (*TTable)(unsafe.Pointer(pTab)).FzName, (*TTable)(unsafe.Pointer(pTab)).FzName, zStmt, (*TParse)(unsafe.Pointer(pParse)).FregRowid))
 		v = _sqlite3GetVdbe(tls, pParse)
 		_sqlite3ChangeCookie(tls, pParse, iDb)
 		_sqlite3VdbeAddOp0(tls, v, int32(m_OP_Expire))
-		zWhere = _sqlite3MPrintf(tls, db, __ccgo_ts+21041, libc.VaList(bp+8, (*TTable)(unsafe.Pointer(pTab)).FzName, zStmt))
+		zWhere = _sqlite3MPrintf(tls, db, __ccgo_ts+21061, libc.VaList(bp+8, (*TTable)(unsafe.Pointer(pTab)).FzName, zStmt))
 		_sqlite3VdbeAddParseSchemaOp(tls, v, iDb, zWhere, uint16(0))
 		_sqlite3DbFree(tls, db, zStmt)
 		v2 = pParse + 56
@@ -123640,7 +123640,7 @@ func _vtabCallConstructor(tls *libc.TLS, db uintptr, pTab uintptr, pMod uintptr,
 			break
 		}
 		if (*TVtabCtx)(unsafe.Pointer(pCtx)).FpTab == pTab {
-			*(*uintptr)(unsafe.Pointer(pzErr)) = _sqlite3MPrintf(tls, db, __ccgo_ts+21060, libc.VaList(bp+48, (*TTable)(unsafe.Pointer(pTab)).FzName))
+			*(*uintptr)(unsafe.Pointer(pzErr)) = _sqlite3MPrintf(tls, db, __ccgo_ts+21080, libc.VaList(bp+48, (*TTable)(unsafe.Pointer(pTab)).FzName))
 			return int32(m_SQLITE_LOCKED)
 		}
 		goto _1
@@ -123682,9 +123682,9 @@ func _vtabCallConstructor(tls *libc.TLS, db uintptr, pTab uintptr, pMod uintptr,
 	_ = libc.Int32FromInt32(0)
 	if m_SQLITE_OK != rc {
 		if *(*uintptr)(unsafe.Pointer(bp + 32)) == uintptr(0) {
-			*(*uintptr)(unsafe.Pointer(pzErr)) = _sqlite3MPrintf(tls, db, __ccgo_ts+21102, libc.VaList(bp+48, zModuleName))
+			*(*uintptr)(unsafe.Pointer(pzErr)) = _sqlite3MPrintf(tls, db, __ccgo_ts+21122, libc.VaList(bp+48, zModuleName))
 		} else {
-			*(*uintptr)(unsafe.Pointer(pzErr)) = _sqlite3MPrintf(tls, db, __ccgo_ts+3560, libc.VaList(bp+48, *(*uintptr)(unsafe.Pointer(bp + 32))))
+			*(*uintptr)(unsafe.Pointer(pzErr)) = _sqlite3MPrintf(tls, db, __ccgo_ts+3580, libc.VaList(bp+48, *(*uintptr)(unsafe.Pointer(bp + 32))))
 			Xsqlite3_free(tls, *(*uintptr)(unsafe.Pointer(bp + 32)))
 		}
 		_sqlite3DbFree(tls, db, pVTable)
@@ -123697,7 +123697,7 @@ func _vtabCallConstructor(tls *libc.TLS, db uintptr, pTab uintptr, pMod uintptr,
 			(*TModule)(unsafe.Pointer(pMod)).FnRefModule++
 			(*TVTable)(unsafe.Pointer(pVTable)).FnRef = int32(1)
 			if (*(*TVtabCtx)(unsafe.Pointer(bp))).FbDeclared == 0 {
-				zFormat = __ccgo_ts + 21132
+				zFormat = __ccgo_ts + 21152
 				*(*uintptr)(unsafe.Pointer(pzErr)) = _sqlite3MPrintf(tls, db, zFormat, libc.VaList(bp+48, (*TTable)(unsafe.Pointer(pTab)).FzName))
 				_sqlite3VtabUnlock(tls, pVTable)
 				rc = int32(m_SQLITE_ERROR)
@@ -123723,7 +123723,7 @@ func _vtabCallConstructor(tls *libc.TLS, db uintptr, pTab uintptr, pMod uintptr,
 					if !(iCol < int32((*TTable)(unsafe.Pointer(pTab)).FnCol)) {
 						break
 					}
-					zType = _sqlite3ColumnType(tls, (*TTable)(unsafe.Pointer(pTab)).FaCol+uintptr(iCol)*16, __ccgo_ts+1511)
+					zType = _sqlite3ColumnType(tls, (*TTable)(unsafe.Pointer(pTab)).FaCol+uintptr(iCol)*16, __ccgo_ts+1531)
 					i = 0
 					nType = _sqlite3Strlen30(tls, zType)
 					i = 0
@@ -123731,7 +123731,7 @@ func _vtabCallConstructor(tls *libc.TLS, db uintptr, pTab uintptr, pMod uintptr,
 						if !(i < nType) {
 							break
 						}
-						if 0 == Xsqlite3_strnicmp(tls, __ccgo_ts+15945, zType+uintptr(i), int32(6)) && (i == 0 || int32(*(*uint8)(unsafe.Pointer(zType + uintptr(i-int32(1))))) == int32(' ')) && (int32(*(*uint8)(unsafe.Pointer(zType + uintptr(i+int32(6))))) == int32('\000') || int32(*(*uint8)(unsafe.Pointer(zType + uintptr(i+int32(6))))) == int32(' ')) {
+						if 0 == Xsqlite3_strnicmp(tls, __ccgo_ts+15965, zType+uintptr(i), int32(6)) && (i == 0 || int32(*(*uint8)(unsafe.Pointer(zType + uintptr(i-int32(1))))) == int32(' ')) && (int32(*(*uint8)(unsafe.Pointer(zType + uintptr(i+int32(6))))) == int32('\000') || int32(*(*uint8)(unsafe.Pointer(zType + uintptr(i+int32(6))))) == int32(' ')) {
 							break
 						}
 						goto _3
@@ -123812,13 +123812,13 @@ func _sqlite3VtabCallConnect(tls *libc.TLS, pParse uintptr, pTab uintptr) (r int
 			FazArg uintptr
 			Fp     uintptr
 		})(unsafe.Pointer(pTab + 64))).FazArg))
-		_sqlite3ErrorMsg(tls, pParse, __ccgo_ts+21178, libc.VaList(bp+16, zModule))
+		_sqlite3ErrorMsg(tls, pParse, __ccgo_ts+21198, libc.VaList(bp+16, zModule))
 		rc = int32(m_SQLITE_ERROR)
 	} else {
 		*(*uintptr)(unsafe.Pointer(bp)) = uintptr(0)
 		rc = _vtabCallConstructor(tls, db, pTab, pMod, (*Tsqlite3_module)(unsafe.Pointer((*TModule)(unsafe.Pointer(pMod)).FpModule)).FxConnect, bp)
 		if rc != m_SQLITE_OK {
-			_sqlite3ErrorMsg(tls, pParse, __ccgo_ts+3560, libc.VaList(bp+16, *(*uintptr)(unsafe.Pointer(bp))))
+			_sqlite3ErrorMsg(tls, pParse, __ccgo_ts+3580, libc.VaList(bp+16, *(*uintptr)(unsafe.Pointer(bp))))
 			(*TParse)(unsafe.Pointer(pParse)).Frc = rc
 		}
 		_sqlite3DbFree(tls, db, *(*uintptr)(unsafe.Pointer(bp)))
@@ -123900,7 +123900,7 @@ func _sqlite3VtabCallCreate(tls *libc.TLS, db uintptr, iDb int32, zTab uintptr, 
 	 ** error. Otherwise, do nothing.
 	 */
 	if pMod == uintptr(0) || (*Tsqlite3_module)(unsafe.Pointer((*TModule)(unsafe.Pointer(pMod)).FpModule)).FxCreate == uintptr(0) || (*Tsqlite3_module)(unsafe.Pointer((*TModule)(unsafe.Pointer(pMod)).FpModule)).FxDestroy == uintptr(0) {
-		*(*uintptr)(unsafe.Pointer(pzErr)) = _sqlite3MPrintf(tls, db, __ccgo_ts+21178, libc.VaList(bp+8, zMod))
+		*(*uintptr)(unsafe.Pointer(pzErr)) = _sqlite3MPrintf(tls, db, __ccgo_ts+21198, libc.VaList(bp+8, zMod))
 		rc = int32(m_SQLITE_ERROR)
 	} else {
 		rc = _vtabCallConstructor(tls, db, pTab, pMod, (*Tsqlite3_module)(unsafe.Pointer((*TModule)(unsafe.Pointer(pMod)).FpModule)).FxCreate, pzErr)
@@ -123986,7 +123986,7 @@ func Xsqlite3_declare_vtab(tls *libc.TLS, db uintptr, zCreateTable uintptr) (r i
 		(*TVtabCtx)(unsafe.Pointer(pCtx)).FbDeclared = int32(1)
 	} else {
 		if *(*uintptr)(unsafe.Pointer(bp)) != 0 {
-			v2 = __ccgo_ts + 3560
+			v2 = __ccgo_ts + 3580
 		} else {
 			v2 = uintptr(0)
 		}
@@ -124458,7 +124458,7 @@ func _sqlite3VtabEponymousTableInit(tls *libc.TLS, pParse uintptr, pMod uintptr)
 	_addModuleArgument(tls, pParse, pTab, _sqlite3DbStrDup(tls, db, (*TTable)(unsafe.Pointer(pTab)).FzName))
 	rc = _vtabCallConstructor(tls, db, pTab, pMod, (*Tsqlite3_module)(unsafe.Pointer(pModule)).FxConnect, bp)
 	if rc != 0 {
-		_sqlite3ErrorMsg(tls, pParse, __ccgo_ts+3560, libc.VaList(bp+16, *(*uintptr)(unsafe.Pointer(bp))))
+		_sqlite3ErrorMsg(tls, pParse, __ccgo_ts+3580, libc.VaList(bp+16, *(*uintptr)(unsafe.Pointer(bp))))
 		_sqlite3DbFree(tls, db, *(*uintptr)(unsafe.Pointer(bp)))
 		_sqlite3VtabEponymousTableClear(tls, db, pMod)
 	}
@@ -125184,10 +125184,10 @@ type TWhereInfo1 = struct {
 func _explainIndexColumnName(tls *libc.TLS, pIdx uintptr, i int32) (r uintptr) {
 	i = int32(*(*Ti16)(unsafe.Pointer((*TIndex)(unsafe.Pointer(pIdx)).FaiColumn + uintptr(i)*2)))
 	if i == -int32(2) {
-		return __ccgo_ts + 21197
+		return __ccgo_ts + 21217
 	}
 	if i == -int32(1) {
-		return __ccgo_ts + 16054
+		return __ccgo_ts + 16074
 	}
 	return (*(*TColumn)(unsafe.Pointer((*TTable)(unsafe.Pointer((*TIndex)(unsafe.Pointer(pIdx)).FpTable)).FaCol + uintptr(i)*16))).FzCnName
 }
@@ -125207,10 +125207,10 @@ func _explainAppendTerm(tls *libc.TLS, pStr uintptr, pIdx uintptr, nTerm int32, 
 	_ = i
 	_ = libc.Int32FromInt32(0)
 	if bAnd != 0 {
-		Xsqlite3_str_append(tls, pStr, __ccgo_ts+21204, int32(5))
+		Xsqlite3_str_append(tls, pStr, __ccgo_ts+21224, int32(5))
 	}
 	if nTerm > int32(1) {
-		Xsqlite3_str_append(tls, pStr, __ccgo_ts+21210, int32(1))
+		Xsqlite3_str_append(tls, pStr, __ccgo_ts+21230, int32(1))
 	}
 	i = 0
 	for {
@@ -125218,7 +125218,7 @@ func _explainAppendTerm(tls *libc.TLS, pStr uintptr, pIdx uintptr, nTerm int32, 
 			break
 		}
 		if i != 0 {
-			Xsqlite3_str_append(tls, pStr, __ccgo_ts+12602, int32(1))
+			Xsqlite3_str_append(tls, pStr, __ccgo_ts+12622, int32(1))
 		}
 		Xsqlite3_str_appendall(tls, pStr, _explainIndexColumnName(tls, pIdx, iTerm+i))
 		goto _1
@@ -125226,11 +125226,11 @@ func _explainAppendTerm(tls *libc.TLS, pStr uintptr, pIdx uintptr, nTerm int32, 
 		i++
 	}
 	if nTerm > int32(1) {
-		Xsqlite3_str_append(tls, pStr, __ccgo_ts+4827, int32(1))
+		Xsqlite3_str_append(tls, pStr, __ccgo_ts+4847, int32(1))
 	}
 	Xsqlite3_str_append(tls, pStr, zOp, int32(1))
 	if nTerm > int32(1) {
-		Xsqlite3_str_append(tls, pStr, __ccgo_ts+21210, int32(1))
+		Xsqlite3_str_append(tls, pStr, __ccgo_ts+21230, int32(1))
 	}
 	i = 0
 	for {
@@ -125238,15 +125238,15 @@ func _explainAppendTerm(tls *libc.TLS, pStr uintptr, pIdx uintptr, nTerm int32, 
 			break
 		}
 		if i != 0 {
-			Xsqlite3_str_append(tls, pStr, __ccgo_ts+12602, int32(1))
+			Xsqlite3_str_append(tls, pStr, __ccgo_ts+12622, int32(1))
 		}
-		Xsqlite3_str_append(tls, pStr, __ccgo_ts+4829, int32(1))
+		Xsqlite3_str_append(tls, pStr, __ccgo_ts+4849, int32(1))
 		goto _2
 	_2:
 		i++
 	}
 	if nTerm > int32(1) {
-		Xsqlite3_str_append(tls, pStr, __ccgo_ts+4827, int32(1))
+		Xsqlite3_str_append(tls, pStr, __ccgo_ts+4847, int32(1))
 	}
 }
 
@@ -125291,7 +125291,7 @@ func _explainIndexRange(tls *libc.TLS, pStr uintptr, pLoop uintptr) {
 	if int32(nEq) == 0 && (*TWhereLoop)(unsafe.Pointer(pLoop)).FwsFlags&uint32(libc.Int32FromInt32(m_WHERE_BTM_LIMIT)|libc.Int32FromInt32(m_WHERE_TOP_LIMIT)) == uint32(0) {
 		return
 	}
-	Xsqlite3_str_append(tls, pStr, __ccgo_ts+21212, int32(2))
+	Xsqlite3_str_append(tls, pStr, __ccgo_ts+21232, int32(2))
 	i = 0
 	for {
 		if !(i < int32(nEq)) {
@@ -125299,12 +125299,12 @@ func _explainIndexRange(tls *libc.TLS, pStr uintptr, pLoop uintptr) {
 		}
 		z = _explainIndexColumnName(tls, pIndex, i)
 		if i != 0 {
-			Xsqlite3_str_append(tls, pStr, __ccgo_ts+21204, int32(5))
+			Xsqlite3_str_append(tls, pStr, __ccgo_ts+21224, int32(5))
 		}
 		if i >= int32(nSkip) {
-			v2 = __ccgo_ts + 21215
+			v2 = __ccgo_ts + 21235
 		} else {
-			v2 = __ccgo_ts + 21220
+			v2 = __ccgo_ts + 21240
 		}
 		Xsqlite3_str_appendf(tls, pStr, v2, libc.VaList(bp+8, z))
 		goto _1
@@ -125319,7 +125319,7 @@ func _explainIndexRange(tls *libc.TLS, pStr uintptr, pLoop uintptr) {
 			FnTop         Tu16
 			FnDistinctCol Tu16
 			FpIndex       uintptr
-		})(unsafe.Pointer(pLoop + 24))).FnBtm), j, i, __ccgo_ts+21228)
+		})(unsafe.Pointer(pLoop + 24))).FnBtm), j, i, __ccgo_ts+21248)
 		i = int32(1)
 	}
 	if (*TWhereLoop)(unsafe.Pointer(pLoop)).FwsFlags&uint32(m_WHERE_TOP_LIMIT) != 0 {
@@ -125329,9 +125329,9 @@ func _explainIndexRange(tls *libc.TLS, pStr uintptr, pLoop uintptr) {
 			FnTop         Tu16
 			FnDistinctCol Tu16
 			FpIndex       uintptr
-		})(unsafe.Pointer(pLoop + 24))).FnTop), j, i, __ccgo_ts+21230)
+		})(unsafe.Pointer(pLoop + 24))).FnTop), j, i, __ccgo_ts+21250)
 	}
-	Xsqlite3_str_append(tls, pStr, __ccgo_ts+4827, int32(1))
+	Xsqlite3_str_append(tls, pStr, __ccgo_ts+4847, int32(1))
 }
 
 // C documentation
@@ -125379,11 +125379,11 @@ func _sqlite3WhereExplainOneScan(tls *libc.TLS, pParse uintptr, pTabList uintptr
 		_sqlite3StrAccumInit(tls, bp, db, bp+32, int32(100), int32(m_SQLITE_MAX_LENGTH))
 		(*(*TStrAccum)(unsafe.Pointer(bp))).FprintfFlags = uint8(m_SQLITE_PRINTF_INTERNAL)
 		if isSearch != 0 {
-			v2 = __ccgo_ts + 21232
+			v2 = __ccgo_ts + 21252
 		} else {
-			v2 = __ccgo_ts + 21239
+			v2 = __ccgo_ts + 21259
 		}
-		Xsqlite3_str_appendf(tls, bp, __ccgo_ts+21244, libc.VaList(bp+144, v2, pItem))
+		Xsqlite3_str_appendf(tls, bp, __ccgo_ts+21264, libc.VaList(bp+144, v2, pItem))
 		if flags&uint32(libc.Int32FromInt32(m_WHERE_IPK)|libc.Int32FromInt32(m_WHERE_VIRTUALTABLE)) == uint32(0) {
 			zFmt = uintptr(0)
 			_ = libc.Int32FromInt32(0)
@@ -125397,48 +125397,48 @@ func _sqlite3WhereExplainOneScan(tls *libc.TLS, pParse uintptr, pTabList uintptr
 			_ = libc.Int32FromInt32(0)
 			if !((*TTable)(unsafe.Pointer((*TSrcItem)(unsafe.Pointer(pItem)).FpTab)).FtabFlags&libc.Uint32FromInt32(m_TF_WithoutRowid) == libc.Uint32FromInt32(0)) && int32(uint32(*(*uint16)(unsafe.Pointer(pIdx + 100))&0x3>>0)) == int32(m_SQLITE_IDXTYPE_PRIMARYKEY) {
 				if isSearch != 0 {
-					zFmt = __ccgo_ts + 10728
+					zFmt = __ccgo_ts + 10748
 				}
 			} else {
 				if flags&uint32(m_WHERE_PARTIALIDX) != 0 {
-					zFmt = __ccgo_ts + 21250
+					zFmt = __ccgo_ts + 21270
 				} else {
 					if flags&uint32(m_WHERE_AUTO_INDEX) != 0 {
-						zFmt = __ccgo_ts + 21283
+						zFmt = __ccgo_ts + 21303
 					} else {
 						if flags&uint32(m_WHERE_IDX_ONLY) != 0 {
-							zFmt = __ccgo_ts + 21308
+							zFmt = __ccgo_ts + 21328
 						} else {
-							zFmt = __ccgo_ts + 21326
+							zFmt = __ccgo_ts + 21346
 						}
 					}
 				}
 			}
 			if zFmt != 0 {
-				Xsqlite3_str_append(tls, bp, __ccgo_ts+21335, int32(7))
+				Xsqlite3_str_append(tls, bp, __ccgo_ts+21355, int32(7))
 				Xsqlite3_str_appendf(tls, bp, zFmt, libc.VaList(bp+144, (*TIndex)(unsafe.Pointer(pIdx)).FzName))
 				_explainIndexRange(tls, bp, pLoop)
 			}
 		} else {
 			if flags&uint32(m_WHERE_IPK) != uint32(0) && flags&uint32(m_WHERE_CONSTRAINT) != uint32(0) {
 				if flags&uint32(libc.Int32FromInt32(m_WHERE_COLUMN_EQ)|libc.Int32FromInt32(m_WHERE_COLUMN_IN)) != 0 {
-					zRangeOp = __ccgo_ts + 21343
+					zRangeOp = __ccgo_ts + 21363
 				} else {
 					if flags&uint32(m_WHERE_BOTH_LIMIT) == uint32(m_WHERE_BOTH_LIMIT) {
-						zRangeOp = __ccgo_ts + 21345
+						zRangeOp = __ccgo_ts + 21365
 					} else {
 						if flags&uint32(m_WHERE_BTM_LIMIT) != 0 {
-							zRangeOp = __ccgo_ts + 21228
+							zRangeOp = __ccgo_ts + 21248
 						} else {
 							_ = libc.Int32FromInt32(0)
-							zRangeOp = __ccgo_ts + 21230
+							zRangeOp = __ccgo_ts + 21250
 						}
 					}
 				}
-				Xsqlite3_str_appendf(tls, bp, __ccgo_ts+21359, libc.VaList(bp+144, zRangeOp))
+				Xsqlite3_str_appendf(tls, bp, __ccgo_ts+21379, libc.VaList(bp+144, zRangeOp))
 			} else {
 				if flags&uint32(m_WHERE_VIRTUALTABLE) != uint32(0) {
-					Xsqlite3_str_appendf(tls, bp, __ccgo_ts+21397, libc.VaList(bp+144, (*(*struct {
+					Xsqlite3_str_appendf(tls, bp, __ccgo_ts+21417, libc.VaList(bp+144, (*(*struct {
 						FidxNum    int32
 						FneedFree  Tu8
 						FisOrdered Ti8
@@ -127274,7 +127274,7 @@ func _sqlite3WhereCodeOneLoopStart(tls *libc.TLS, pParse uintptr, v uintptr, pWI
 							 ** eliminating duplicates from other WHERE clauses, the action for each
 							 ** sub-WHERE clause is to to invoke the main loop body as a subroutine.
 							 */
-							_sqlite3VdbeExplain(tls, pParse, uint8(1), __ccgo_ts+21424, 0)
+							_sqlite3VdbeExplain(tls, pParse, uint8(1), __ccgo_ts+21444, 0)
 							ii = 0
 							for {
 								if !(ii < (*TWhereClause)(unsafe.Pointer(pOrWc)).FnTerm) {
@@ -127297,7 +127297,7 @@ func _sqlite3WhereCodeOneLoopStart(tls *libc.TLS, pParse uintptr, v uintptr, pWI
 										pOrExpr = pAndExpr
 									}
 									/* Loop through table entries that match term pOrTerm. */
-									_sqlite3VdbeExplain(tls, pParse, uint8(1), __ccgo_ts+21439, libc.VaList(bp+96, ii+int32(1)))
+									_sqlite3VdbeExplain(tls, pParse, uint8(1), __ccgo_ts+21459, libc.VaList(bp+96, ii+int32(1)))
 									pSubWInfo = _sqlite3WhereBegin(tls, pParse, pOrTab, pOrExpr, uintptr(0), uintptr(0), uint16(m_WHERE_OR_SUBCLAUSE), iCovCur)
 									_ = libc.Int32FromInt32(0)
 									if pSubWInfo != 0 {
@@ -128134,19 +128134,19 @@ var _aOp = [4]struct {
 	FeOp2 uint8
 }{
 	0: {
-		FzOp:  __ccgo_ts + 15903,
+		FzOp:  __ccgo_ts + 15923,
 		FeOp2: uint8(m_SQLITE_INDEX_CONSTRAINT_MATCH),
 	},
 	1: {
-		FzOp:  __ccgo_ts + 15225,
+		FzOp:  __ccgo_ts + 15245,
 		FeOp2: uint8(m_SQLITE_INDEX_CONSTRAINT_GLOB),
 	},
 	2: {
-		FzOp:  __ccgo_ts + 14766,
+		FzOp:  __ccgo_ts + 14786,
 		FeOp2: uint8(m_SQLITE_INDEX_CONSTRAINT_LIKE),
 	},
 	3: {
-		FzOp:  __ccgo_ts + 21448,
+		FzOp:  __ccgo_ts + 21468,
 		FeOp2: uint8(m_SQLITE_INDEX_CONSTRAINT_REGEXP),
 	},
 }
@@ -128928,7 +128928,7 @@ func _exprAnalyze(tls *libc.TLS, pSrc uintptr, pWC uintptr, idxTerm int32) {
 		extraRight = x - uint64(1) /* ON clause terms may not be used with an index
 		 ** on left table of a LEFT JOIN.  Ticket #3015 */
 		if prereqAll>>libc.Int32FromInt32(1) >= x {
-			_sqlite3ErrorMsg(tls, pParse, __ccgo_ts+21455, 0)
+			_sqlite3ErrorMsg(tls, pParse, __ccgo_ts+21475, 0)
 			return
 		}
 	}
@@ -129016,7 +129016,7 @@ func _exprAnalyze(tls *libc.TLS, pSrc uintptr, pWC uintptr, idxTerm int32) {
 			if op == int32(m_TK_ISNULL) && !((*TExpr)(unsafe.Pointer(pExpr)).Fflags&uint32(libc.Int32FromInt32(m_EP_FromJoin)) != libc.Uint32FromInt32(0)) && 0 == _sqlite3ExprCanBeNull(tls, pLeft) {
 				_ = libc.Int32FromInt32(0)
 				(*TExpr)(unsafe.Pointer(pExpr)).Fop = uint8(m_TK_TRUEFALSE)
-				*(*uintptr)(unsafe.Pointer(pExpr + 8)) = __ccgo_ts + 6572
+				*(*uintptr)(unsafe.Pointer(pExpr + 8)) = __ccgo_ts + 6592
 				*(*Tu32)(unsafe.Pointer(pExpr + 4)) |= uint32(libc.Int32FromInt32(m_EP_IsFalse))
 				(*TWhereTerm)(unsafe.Pointer(pTerm)).FprereqAll = uint64(0)
 				(*TWhereTerm)(unsafe.Pointer(pTerm)).FeOperator = uint16(0)
@@ -129117,7 +129117,7 @@ func _exprAnalyze(tls *libc.TLS, pSrc uintptr, pWC uintptr, idxTerm int32) {
 							*(*Tu8)(unsafe.Pointer(pC)) = uint8(int32(c1) + int32(1))
 						}
 						if *(*int32)(unsafe.Pointer(bp + 12)) != 0 {
-							v13 = __ccgo_ts + 21496
+							v13 = __ccgo_ts + 21516
 						} else {
 							v13 = uintptr(unsafe.Pointer(&_sqlite3StrBINARY))
 						}
@@ -129481,7 +129481,7 @@ func _sqlite3WhereTabFuncArgs(tls *libc.TLS, pParse uintptr, pItem uintptr, pWC 
 			k++
 		}
 		if k >= int32((*TTable)(unsafe.Pointer(pTab)).FnCol) {
-			_sqlite3ErrorMsg(tls, pParse, __ccgo_ts+21503, libc.VaList(bp+8, (*TTable)(unsafe.Pointer(pTab)).FzName, j))
+			_sqlite3ErrorMsg(tls, pParse, __ccgo_ts+21523, libc.VaList(bp+8, (*TTable)(unsafe.Pointer(pTab)).FzName, j))
 			return
 		}
 		pColRef = _sqlite3ExprAlloc(tls, (*TParse)(unsafe.Pointer(pParse)).Fdb, int32(m_TK_COLUMN), uintptr(0), 0)
@@ -130398,7 +130398,7 @@ func _constructAutomaticIndex(tls *libc.TLS, pParse uintptr, pWC uintptr, pSrc u
 			}
 			cMask = v2
 			if !(sentWarning != 0) {
-				Xsqlite3_log(tls, libc.Int32FromInt32(m_SQLITE_WARNING)|libc.Int32FromInt32(1)<<libc.Int32FromInt32(8), __ccgo_ts+21539, libc.VaList(bp+16, (*TTable)(unsafe.Pointer(pTable)).FzName, (*(*TColumn)(unsafe.Pointer((*TTable)(unsafe.Pointer(pTable)).FaCol + uintptr(iCol)*16))).FzCnName))
+				Xsqlite3_log(tls, libc.Int32FromInt32(m_SQLITE_WARNING)|libc.Int32FromInt32(1)<<libc.Int32FromInt32(8), __ccgo_ts+21559, libc.VaList(bp+16, (*TTable)(unsafe.Pointer(pTable)).FzName, (*(*TColumn)(unsafe.Pointer((*TTable)(unsafe.Pointer(pTable)).FaCol + uintptr(iCol)*16))).FzCnName))
 				sentWarning = uint8(1)
 			}
 			if idxCols&cMask == uint64(0) {
@@ -130468,7 +130468,7 @@ func _constructAutomaticIndex(tls *libc.TLS, pParse uintptr, pWC uintptr, pSrc u
 		FnDistinctCol Tu16
 		FpIndex       uintptr
 	})(unsafe.Pointer(pLoop + 24))).FpIndex = pIdx
-	(*TIndex)(unsafe.Pointer(pIdx)).FzName = __ccgo_ts + 21565
+	(*TIndex)(unsafe.Pointer(pIdx)).FzName = __ccgo_ts + 21585
 	(*TIndex)(unsafe.Pointer(pIdx)).FpTable = pTable
 	n = 0
 	idxCols = uint64(0)
@@ -130668,7 +130668,7 @@ func _allocateIndexInfo(tls *libc.TLS, pParse uintptr, pWC uintptr, mUnusable TB
 	 */
 	pIdxInfo = _sqlite3DbMallocZero(tls, (*TParse)(unsafe.Pointer(pParse)).Fdb, uint64(96)+(libc.Uint64FromInt64(12)+libc.Uint64FromInt64(8))*uint64(nTerm)+uint64(8)*uint64(nOrderBy)+uint64(16))
 	if pIdxInfo == uintptr(0) {
-		_sqlite3ErrorMsg(tls, pParse, __ccgo_ts+6012, 0)
+		_sqlite3ErrorMsg(tls, pParse, __ccgo_ts+6032, 0)
 		return uintptr(0)
 	}
 	pHidden = pIdxInfo + 1*96
@@ -130806,9 +130806,9 @@ func _vtabBestIndex(tls *libc.TLS, pParse uintptr, pTab uintptr, p uintptr) (r i
 			_sqlite3OomFault(tls, (*TParse)(unsafe.Pointer(pParse)).Fdb)
 		} else {
 			if !((*Tsqlite3_vtab)(unsafe.Pointer(pVtab)).FzErrMsg != 0) {
-				_sqlite3ErrorMsg(tls, pParse, __ccgo_ts+3560, libc.VaList(bp+8, _sqlite3ErrStr(tls, rc)))
+				_sqlite3ErrorMsg(tls, pParse, __ccgo_ts+3580, libc.VaList(bp+8, _sqlite3ErrStr(tls, rc)))
 			} else {
-				_sqlite3ErrorMsg(tls, pParse, __ccgo_ts+3560, libc.VaList(bp+8, (*Tsqlite3_vtab)(unsafe.Pointer(pVtab)).FzErrMsg))
+				_sqlite3ErrorMsg(tls, pParse, __ccgo_ts+3580, libc.VaList(bp+8, (*Tsqlite3_vtab)(unsafe.Pointer(pVtab)).FzErrMsg))
 			}
 		}
 	}
@@ -133234,7 +133234,7 @@ func _whereLoopAddVirtualOne(tls *libc.TLS, pBuilder uintptr, mPrereq TBitmask, 
 		if v4 >= 0 {
 			j = (*Tsqlite3_index_constraint)(unsafe.Pointer(pIdxCons)).FiTermOffset
 			if iTerm >= nConstraint || j < 0 || j >= (*TWhereClause)(unsafe.Pointer(pWC)).FnTerm || *(*uintptr)(unsafe.Pointer((*TWhereLoop)(unsafe.Pointer(pNew)).FaLTerm + uintptr(iTerm)*8)) != uintptr(0) || int32((*Tsqlite3_index_constraint)(unsafe.Pointer(pIdxCons)).Fusable) == 0 {
-				_sqlite3ErrorMsg(tls, pParse, __ccgo_ts+21576, libc.VaList(bp+8, (*TTable)(unsafe.Pointer((*TSrcItem)(unsafe.Pointer(pSrc)).FpTab)).FzName))
+				_sqlite3ErrorMsg(tls, pParse, __ccgo_ts+21596, libc.VaList(bp+8, (*TTable)(unsafe.Pointer((*TSrcItem)(unsafe.Pointer(pSrc)).FpTab)).FzName))
 				return int32(m_SQLITE_ERROR)
 			}
 			pTerm1 = (*TWhereClause)(unsafe.Pointer(pWC)).Fa + uintptr(j)*56
@@ -133277,7 +133277,7 @@ func _whereLoopAddVirtualOne(tls *libc.TLS, pBuilder uintptr, mPrereq TBitmask, 
 		if *(*uintptr)(unsafe.Pointer((*TWhereLoop)(unsafe.Pointer(pNew)).FaLTerm + uintptr(i)*8)) == uintptr(0) {
 			/* The non-zero argvIdx values must be contiguous.  Raise an
 			 ** error if they are not */
-			_sqlite3ErrorMsg(tls, pParse, __ccgo_ts+21576, libc.VaList(bp+8, (*TTable)(unsafe.Pointer((*TSrcItem)(unsafe.Pointer(pSrc)).FpTab)).FzName))
+			_sqlite3ErrorMsg(tls, pParse, __ccgo_ts+21596, libc.VaList(bp+8, (*TTable)(unsafe.Pointer((*TSrcItem)(unsafe.Pointer(pSrc)).FpTab)).FzName))
 			return int32(m_SQLITE_ERROR)
 		}
 		goto _6
@@ -133736,7 +133736,7 @@ func _whereLoopAddAll(tls *libc.TLS, pBuilder uintptr) (r int32) {
 		if rc != 0 || (*Tsqlite3)(unsafe.Pointer(db)).FmallocFailed != 0 {
 			if rc == int32(m_SQLITE_DONE) {
 				/* We hit the query planner search limit set by iPlanLimit */
-				Xsqlite3_log(tls, int32(m_SQLITE_WARNING), __ccgo_ts+21602, 0)
+				Xsqlite3_log(tls, int32(m_SQLITE_WARNING), __ccgo_ts+21622, 0)
 				rc = m_SQLITE_OK
 			} else {
 				break
@@ -134562,7 +134562,7 @@ func _wherePathSolver(tls *libc.TLS, pWInfo uintptr, nRowEst TLogEst) (r int32) 
 		iLoop++
 	}
 	if nFrom == 0 {
-		_sqlite3ErrorMsg(tls, pParse, __ccgo_ts+21637, 0)
+		_sqlite3ErrorMsg(tls, pParse, __ccgo_ts+21657, 0)
 		_sqlite3DbFreeNN(tls, db, pSpace)
 		return int32(m_SQLITE_ERROR)
 	}
@@ -134939,7 +134939,7 @@ func _sqlite3WhereBegin(tls *libc.TLS, pParse uintptr, pTabList uintptr, pWhere 
 	 ** bits in a Bitmask
 	 */
 	if (*TSrcList)(unsafe.Pointer(pTabList)).FnSrc > int32(libc.Uint64FromInt64(8)*libc.Uint64FromInt32(8)) {
-		_sqlite3ErrorMsg(tls, pParse, __ccgo_ts+21655, libc.VaList(bp+72, int32(libc.Uint64FromInt64(8)*libc.Uint64FromInt32(8))))
+		_sqlite3ErrorMsg(tls, pParse, __ccgo_ts+21675, libc.VaList(bp+72, int32(libc.Uint64FromInt64(8)*libc.Uint64FromInt32(8))))
 		return uintptr(0)
 	}
 	/* This function normally generates a nested loop for all tables in
@@ -135006,7 +135006,7 @@ func _sqlite3WhereBegin(tls *libc.TLS, pParse uintptr, pTabList uintptr, pWhere 
 		if int32(wctrlFlags)&int32(m_WHERE_WANT_DISTINCT) != 0 {
 			(*TWhereInfo)(unsafe.Pointer(pWInfo)).FeDistinct = uint8(m_WHERE_DISTINCT_UNIQUE)
 		}
-		_sqlite3VdbeExplain(tls, pParse, uint8(0), __ccgo_ts+21683, 0)
+		_sqlite3VdbeExplain(tls, pParse, uint8(0), __ccgo_ts+21703, 0)
 	} else {
 		/* Assign a bit from the bitmask to every term in the FROM clause.
 		 **
@@ -135964,7 +135964,7 @@ func _nth_valueStepFunc(tls *libc.TLS, pCtx uintptr, nArg int32, apArg uintptr) 
 	_ = apArg
 	return
 error_out:
-	Xsqlite3_result_error(tls, pCtx, __ccgo_ts+21701, -int32(1))
+	Xsqlite3_result_error(tls, pCtx, __ccgo_ts+21721, -int32(1))
 }
 
 func _nth_valueFinalizeFunc(tls *libc.TLS, pCtx uintptr) {
@@ -136149,7 +136149,7 @@ func _ntileStepFunc(tls *libc.TLS, pCtx uintptr, nArg int32, apArg uintptr) {
 		if (*TNtileCtx)(unsafe.Pointer(p)).FnTotal == 0 {
 			(*TNtileCtx)(unsafe.Pointer(p)).FnParam = Xsqlite3_value_int64(tls, *(*uintptr)(unsafe.Pointer(apArg)))
 			if (*TNtileCtx)(unsafe.Pointer(p)).FnParam <= 0 {
-				Xsqlite3_result_error(tls, pCtx, __ccgo_ts+21757, -int32(1))
+				Xsqlite3_result_error(tls, pCtx, __ccgo_ts+21777, -int32(1))
 			}
 		}
 		(*TNtileCtx)(unsafe.Pointer(p)).FnTotal++
@@ -136474,7 +136474,7 @@ func _windowFind(tls *libc.TLS, pParse uintptr, pList uintptr, zName uintptr) (r
 		p = (*TWindow)(unsafe.Pointer(p)).FpNextWin
 	}
 	if p == uintptr(0) {
-		_sqlite3ErrorMsg(tls, pParse, __ccgo_ts+21802, libc.VaList(bp+8, zName))
+		_sqlite3ErrorMsg(tls, pParse, __ccgo_ts+21822, libc.VaList(bp+8, zName))
 	}
 	return p
 }
@@ -136525,12 +136525,12 @@ func _sqlite3WindowUpdate(tls *libc.TLS, pParse uintptr, pList uintptr, pWin uin
 		_sqlite3WindowChain(tls, pParse, pWin, pList)
 	}
 	if int32((*TWindow)(unsafe.Pointer(pWin)).FeFrmType) == int32(m_TK_RANGE) && ((*TWindow)(unsafe.Pointer(pWin)).FpStart != 0 || (*TWindow)(unsafe.Pointer(pWin)).FpEnd != 0) && ((*TWindow)(unsafe.Pointer(pWin)).FpOrderBy == uintptr(0) || (*TExprList)(unsafe.Pointer((*TWindow)(unsafe.Pointer(pWin)).FpOrderBy)).FnExpr != int32(1)) {
-		_sqlite3ErrorMsg(tls, pParse, __ccgo_ts+21821, 0)
+		_sqlite3ErrorMsg(tls, pParse, __ccgo_ts+21841, 0)
 	} else {
 		if (*TFuncDef)(unsafe.Pointer(pFunc)).FfuncFlags&uint32(m_SQLITE_FUNC_WINDOW) != 0 {
 			db = (*TParse)(unsafe.Pointer(pParse)).Fdb
 			if (*TWindow)(unsafe.Pointer(pWin)).FpFilter != 0 {
-				_sqlite3ErrorMsg(tls, pParse, __ccgo_ts+21892, 0)
+				_sqlite3ErrorMsg(tls, pParse, __ccgo_ts+21912, 0)
 			} else {
 				aUp = [8]struct {
 					FzFunc    uintptr
@@ -136603,7 +136603,7 @@ func _sqlite3WindowUpdate(tls *libc.TLS, pParse uintptr, pList uintptr, pWin uin
 						(*TWindow)(unsafe.Pointer(pWin)).FeEnd = uint8(aUp[i].FeEnd)
 						(*TWindow)(unsafe.Pointer(pWin)).FeExclude = uint8(0)
 						if int32((*TWindow)(unsafe.Pointer(pWin)).FeStart) == int32(m_TK_FOLLOWING) {
-							(*TWindow)(unsafe.Pointer(pWin)).FpStart = _sqlite3Expr(tls, db, int32(m_TK_INTEGER), __ccgo_ts+7756)
+							(*TWindow)(unsafe.Pointer(pWin)).FpStart = _sqlite3Expr(tls, db, int32(m_TK_INTEGER), __ccgo_ts+7776)
 						}
 						break
 					}
@@ -136881,7 +136881,7 @@ func _disallowAggregatesInOrderByCb(tls *libc.TLS, pWalker uintptr, pExpr uintpt
 	defer tls.Free(16)
 	if int32((*TExpr)(unsafe.Pointer(pExpr)).Fop) == int32(m_TK_AGG_FUNCTION) && (*TExpr)(unsafe.Pointer(pExpr)).FpAggInfo == uintptr(0) {
 		_ = libc.Int32FromInt32(0)
-		_sqlite3ErrorMsg(tls, (*TWalker)(unsafe.Pointer(pWalker)).FpParse, __ccgo_ts+7840, libc.VaList(bp+8, *(*uintptr)(unsafe.Pointer(pExpr + 8))))
+		_sqlite3ErrorMsg(tls, (*TWalker)(unsafe.Pointer(pWalker)).FpParse, __ccgo_ts+7860, libc.VaList(bp+8, *(*uintptr)(unsafe.Pointer(pExpr + 8))))
 	}
 	return m_WRC_Continue
 }
@@ -137022,7 +137022,7 @@ func _sqlite3WindowRewrite(tls *libc.TLS, pParse uintptr, p uintptr) (r int32) {
 		 ** keep everything legal in this case.
 		 */
 		if *(*uintptr)(unsafe.Pointer(bp)) == uintptr(0) {
-			*(*uintptr)(unsafe.Pointer(bp)) = _sqlite3ExprListAppend(tls, pParse, uintptr(0), _sqlite3Expr(tls, db, int32(m_TK_INTEGER), __ccgo_ts+7349))
+			*(*uintptr)(unsafe.Pointer(bp)) = _sqlite3ExprListAppend(tls, pParse, uintptr(0), _sqlite3Expr(tls, db, int32(m_TK_INTEGER), __ccgo_ts+7369))
 		}
 		pSub = _sqlite3SelectNew(tls, pParse, *(*uintptr)(unsafe.Pointer(bp)), pSrc, pWhere, pGroupBy, pHaving, pSort, uint32(0), uintptr(0))
 		(*TSelect)(unsafe.Pointer(p)).FpSrc = _sqlite3SrcListAppend(tls, pParse, uintptr(0), uintptr(0), uintptr(0))
@@ -137177,7 +137177,7 @@ func _sqlite3WindowAlloc(tls *libc.TLS, pParse uintptr, eType int32, eStart int3
 	 ** frame boundary.
 	 */
 	if eStart == int32(m_TK_CURRENT) && eEnd == int32(m_TK_PRECEDING) || eStart == int32(m_TK_FOLLOWING) && (eEnd == int32(m_TK_PRECEDING) || eEnd == int32(m_TK_CURRENT)) {
-		_sqlite3ErrorMsg(tls, pParse, __ccgo_ts+21955, 0)
+		_sqlite3ErrorMsg(tls, pParse, __ccgo_ts+21975, 0)
 		goto windowAllocErr
 	}
 	pWin = _sqlite3DbMallocZero(tls, (*TParse)(unsafe.Pointer(pParse)).Fdb, uint64(144))
@@ -137243,18 +137243,18 @@ func _sqlite3WindowChain(tls *libc.TLS, pParse uintptr, pWin uintptr, pList uint
 			zErr = uintptr(0)
 			/* Check for errors */
 			if (*TWindow)(unsafe.Pointer(pWin)).FpPartition != 0 {
-				zErr = __ccgo_ts + 21987
+				zErr = __ccgo_ts + 22007
 			} else {
 				if (*TWindow)(unsafe.Pointer(pExist)).FpOrderBy != 0 && (*TWindow)(unsafe.Pointer(pWin)).FpOrderBy != 0 {
-					zErr = __ccgo_ts + 22004
+					zErr = __ccgo_ts + 22024
 				} else {
 					if int32((*TWindow)(unsafe.Pointer(pExist)).FbImplicitFrame) == 0 {
-						zErr = __ccgo_ts + 22020
+						zErr = __ccgo_ts + 22040
 					}
 				}
 			}
 			if zErr != 0 {
-				_sqlite3ErrorMsg(tls, pParse, __ccgo_ts+22040, libc.VaList(bp+8, zErr, (*TWindow)(unsafe.Pointer(pWin)).FzBase))
+				_sqlite3ErrorMsg(tls, pParse, __ccgo_ts+22060, libc.VaList(bp+8, zErr, (*TWindow)(unsafe.Pointer(pWin)).FzBase))
 			} else {
 				(*TWindow)(unsafe.Pointer(pWin)).FpPartition = _sqlite3ExprListDup(tls, db, (*TWindow)(unsafe.Pointer(pExist)).FpPartition, 0)
 				if (*TWindow)(unsafe.Pointer(pExist)).FpOrderBy != 0 {
@@ -137281,7 +137281,7 @@ func _sqlite3WindowAttach(tls *libc.TLS, pParse uintptr, p uintptr, pWin uintptr
 		*(*Tu32)(unsafe.Pointer(p + 4)) |= uint32(libc.Int32FromInt32(m_EP_WinFunc))
 		(*TWindow)(unsafe.Pointer(pWin)).FpOwner = p
 		if (*TExpr)(unsafe.Pointer(p)).Fflags&uint32(m_EP_Distinct) != 0 && int32((*TWindow)(unsafe.Pointer(pWin)).FeFrmType) != int32(m_TK_FILTER) {
-			_sqlite3ErrorMsg(tls, pParse, __ccgo_ts+22073, 0)
+			_sqlite3ErrorMsg(tls, pParse, __ccgo_ts+22093, 0)
 		}
 	} else {
 		_sqlite3WindowDelete(tls, (*TParse)(unsafe.Pointer(pParse)).Fdb, pWin)
@@ -137482,7 +137482,7 @@ func _windowCheckValue(tls *libc.TLS, pParse uintptr, reg int32, eCond int32) {
 	_sqlite3VdbeAddOp2(tls, v, int32(m_OP_Integer), 0, regZero)
 	if eCond >= int32(m_WINDOW_STARTING_NUM) {
 		regString = _sqlite3GetTempReg(tls, pParse)
-		_sqlite3VdbeAddOp4(tls, v, int32(m_OP_String8), 0, regString, 0, __ccgo_ts+1511, -int32(1))
+		_sqlite3VdbeAddOp4(tls, v, int32(m_OP_String8), 0, regString, 0, __ccgo_ts+1531, -int32(1))
 		_sqlite3VdbeAddOp3(tls, v, int32(m_OP_Ge), regString, _sqlite3VdbeCurrentAddr(tls, v)+int32(2), reg)
 		_sqlite3VdbeChangeP5(tls, v, uint16(libc.Int32FromInt32(m_SQLITE_AFF_NUMERIC)|libc.Int32FromInt32(m_SQLITE_JUMPIFNULL)))
 		_ = libc.Int32FromInt32(0)
@@ -137503,11 +137503,11 @@ func _windowCheckValue(tls *libc.TLS, pParse uintptr, reg int32, eCond int32) {
 }
 
 var _azErr = [5]uintptr{
-	0: __ccgo_ts + 22120,
-	1: __ccgo_ts + 22173,
-	2: __ccgo_ts + 21701,
-	3: __ccgo_ts + 22224,
-	4: __ccgo_ts + 22276,
+	0: __ccgo_ts + 22140,
+	1: __ccgo_ts + 22193,
+	2: __ccgo_ts + 21721,
+	3: __ccgo_ts + 22244,
+	4: __ccgo_ts + 22296,
 }
 
 var _aOp1 = [5]int32{
@@ -138260,7 +138260,7 @@ func _windowCodeRangeTest(tls *libc.TLS, p uintptr, op int32, csr1 int32, regVal
 	 ** the add/subtract is skipped for these, as required. If reg1 is a NULL,
 	 ** then the arithmetic is performed, but since adding or subtracting from
 	 ** NULL is always NULL anyway, this case is handled as required too.  */
-	_sqlite3VdbeAddOp4(tls, v, int32(m_OP_String8), 0, regString, 0, __ccgo_ts+1511, -int32(1))
+	_sqlite3VdbeAddOp4(tls, v, int32(m_OP_String8), 0, regString, 0, __ccgo_ts+1531, -int32(1))
 	addrGe = _sqlite3VdbeAddOp3(tls, v, int32(m_OP_Ge), regString, 0, reg1)
 	if op == int32(m_OP_Ge) && arith == int32(m_OP_Add) || op == int32(m_OP_Le) && arith == int32(m_OP_Subtract) {
 		_sqlite3VdbeAddOp3(tls, v, op, reg2, lbl, reg1)
@@ -139294,11 +139294,11 @@ func _parserDoubleLinkSelect(tls *libc.TLS, pParse uintptr, p uintptr) {
 			cnt++
 			if (*TSelect)(unsafe.Pointer(pLoop)).FpOrderBy != 0 || (*TSelect)(unsafe.Pointer(pLoop)).FpLimit != 0 {
 				if (*TSelect)(unsafe.Pointer(pLoop)).FpOrderBy != uintptr(0) {
-					v1 = __ccgo_ts + 19538
+					v1 = __ccgo_ts + 19558
 				} else {
-					v1 = __ccgo_ts + 22326
+					v1 = __ccgo_ts + 22346
 				}
-				_sqlite3ErrorMsg(tls, pParse, __ccgo_ts+22332, libc.VaList(bp+8, v1, _sqlite3SelectOpName(tls, int32((*TSelect)(unsafe.Pointer(pNext)).Fop))))
+				_sqlite3ErrorMsg(tls, pParse, __ccgo_ts+22352, libc.VaList(bp+8, v1, _sqlite3SelectOpName(tls, int32((*TSelect)(unsafe.Pointer(pNext)).Fop))))
 				break
 			}
 		}
@@ -139307,7 +139307,7 @@ func _parserDoubleLinkSelect(tls *libc.TLS, pParse uintptr, p uintptr) {
 			mxSelect = v2
 		}
 		if v3 && v2 > 0 && cnt > mxSelect {
-			_sqlite3ErrorMsg(tls, pParse, __ccgo_ts+22374, 0)
+			_sqlite3ErrorMsg(tls, pParse, __ccgo_ts+22394, 0)
 		}
 	}
 }
@@ -139398,7 +139398,7 @@ func _parserAddExprIdListTerm(tls *libc.TLS, pParse uintptr, pPrior uintptr, pId
 	_ = p
 	p = _sqlite3ExprListAppend(tls, pParse, pPrior, uintptr(0))
 	if (hasCollate != 0 || sortOrder != -int32(1)) && int32((*Tsqlite3)(unsafe.Pointer((*TParse)(unsafe.Pointer(pParse)).Fdb)).Finit1.Fbusy) == 0 {
-		_sqlite3ErrorMsg(tls, pParse, __ccgo_ts+22408, libc.VaList(bp+8, (*TToken)(unsafe.Pointer(pIdToken)).Fn, (*TToken)(unsafe.Pointer(pIdToken)).Fz))
+		_sqlite3ErrorMsg(tls, pParse, __ccgo_ts+22428, libc.VaList(bp+8, (*TToken)(unsafe.Pointer(pIdToken)).Fn, (*TToken)(unsafe.Pointer(pIdToken)).Fz))
 	}
 	_sqlite3ExprListSetName(tls, pParse, p, pIdToken, int32(1))
 	return p
@@ -145796,7 +145796,7 @@ func _yyStackOverflow(tls *libc.TLS, yypParser uintptr) {
 	/* Here code is inserted which will execute if the parser
 	 ** stack every overflows */
 	/******** Begin %stack_overflow code ******************************************/
-	_sqlite3ErrorMsg(tls, pParse, __ccgo_ts+22446, 0)
+	_sqlite3ErrorMsg(tls, pParse, __ccgo_ts+22466, 0)
 	/******** End %stack_overflow code ********************************************/
 	/* Suppress warning about unused %extra_argument var */
 	(*TyyParser)(unsafe.Pointer(yypParser)).FpParse = pParse
@@ -147369,19 +147369,19 @@ _30: /* table_option_set ::= table_option_set COMMA table_option */
 	*(*Tu32)(unsafe.Pointer(yymsp + uintptr(-libc.Int32FromInt32(2))*24 + 8)) = *(*Tu32)(unsafe.Pointer(&*(*TYYMINORTYPE)(unsafe.Pointer(bp))))
 	goto _341
 _31: /* table_option ::= WITHOUT nm */
-	if *(*uint32)(unsafe.Pointer(yymsp + 8 + 8)) == uint32(5) && Xsqlite3_strnicmp(tls, *(*uintptr)(unsafe.Pointer(yymsp + 8)), __ccgo_ts+16054, int32(5)) == 0 {
+	if *(*uint32)(unsafe.Pointer(yymsp + 8 + 8)) == uint32(5) && Xsqlite3_strnicmp(tls, *(*uintptr)(unsafe.Pointer(yymsp + 8)), __ccgo_ts+16074, int32(5)) == 0 {
 		*(*Tu32)(unsafe.Pointer(yymsp + uintptr(-libc.Int32FromInt32(1))*24 + 8)) = uint32(libc.Int32FromInt32(m_TF_WithoutRowid) | libc.Int32FromInt32(m_TF_NoVisibleRowid))
 	} else {
 		*(*Tu32)(unsafe.Pointer(yymsp + uintptr(-libc.Int32FromInt32(1))*24 + 8)) = uint32(0)
-		_sqlite3ErrorMsg(tls, pParse, __ccgo_ts+22468, libc.VaList(bp+112, *(*uint32)(unsafe.Pointer(yymsp + 8 + 8)), *(*uintptr)(unsafe.Pointer(yymsp + 8))))
+		_sqlite3ErrorMsg(tls, pParse, __ccgo_ts+22488, libc.VaList(bp+112, *(*uint32)(unsafe.Pointer(yymsp + 8 + 8)), *(*uintptr)(unsafe.Pointer(yymsp + 8))))
 	}
 	goto _341
 _32: /* table_option ::= nm */
-	if *(*uint32)(unsafe.Pointer(yymsp + 8 + 8)) == uint32(6) && Xsqlite3_strnicmp(tls, *(*uintptr)(unsafe.Pointer(yymsp + 8)), __ccgo_ts+15967, int32(6)) == 0 {
+	if *(*uint32)(unsafe.Pointer(yymsp + 8 + 8)) == uint32(6) && Xsqlite3_strnicmp(tls, *(*uintptr)(unsafe.Pointer(yymsp + 8)), __ccgo_ts+15987, int32(6)) == 0 {
 		*(*Tu32)(unsafe.Pointer(&*(*TYYMINORTYPE)(unsafe.Pointer(bp)))) = uint32(m_TF_Strict)
 	} else {
 		*(*Tu32)(unsafe.Pointer(&*(*TYYMINORTYPE)(unsafe.Pointer(bp)))) = uint32(0)
-		_sqlite3ErrorMsg(tls, pParse, __ccgo_ts+22468, libc.VaList(bp+112, *(*uint32)(unsafe.Pointer(yymsp + 8 + 8)), *(*uintptr)(unsafe.Pointer(yymsp + 8))))
+		_sqlite3ErrorMsg(tls, pParse, __ccgo_ts+22488, libc.VaList(bp+112, *(*uint32)(unsafe.Pointer(yymsp + 8 + 8)), *(*uintptr)(unsafe.Pointer(yymsp + 8))))
 	}
 	*(*Tu32)(unsafe.Pointer(yymsp + 8)) = *(*Tu32)(unsafe.Pointer(&*(*TYYMINORTYPE)(unsafe.Pointer(bp))))
 	goto _341
@@ -147862,7 +147862,7 @@ _175: /* where_opt_ret ::= WHERE expr RETURNING selcollist */
 	goto _341
 _176: /* cmd ::= with UPDATE orconf xfullname indexed_opt SET setlist from where_opt_ret */
 	_sqlite3SrcListIndexedBy(tls, pParse, *(*uintptr)(unsafe.Pointer(yymsp + uintptr(-libc.Int32FromInt32(5))*24 + 8)), yymsp+uintptr(-libc.Int32FromInt32(4))*24+8)
-	_sqlite3ExprListCheckLength(tls, pParse, *(*uintptr)(unsafe.Pointer(yymsp + uintptr(-libc.Int32FromInt32(2))*24 + 8)), __ccgo_ts+22495)
+	_sqlite3ExprListCheckLength(tls, pParse, *(*uintptr)(unsafe.Pointer(yymsp + uintptr(-libc.Int32FromInt32(2))*24 + 8)), __ccgo_ts+22515)
 	*(*uintptr)(unsafe.Pointer(yymsp + uintptr(-libc.Int32FromInt32(5))*24 + 8)) = _sqlite3SrcListAppendList(tls, pParse, *(*uintptr)(unsafe.Pointer(yymsp + uintptr(-libc.Int32FromInt32(5))*24 + 8)), *(*uintptr)(unsafe.Pointer(yymsp + uintptr(-libc.Int32FromInt32(1))*24 + 8)))
 	_sqlite3Update(tls, pParse, *(*uintptr)(unsafe.Pointer(yymsp + uintptr(-libc.Int32FromInt32(5))*24 + 8)), *(*uintptr)(unsafe.Pointer(yymsp + uintptr(-libc.Int32FromInt32(2))*24 + 8)), *(*uintptr)(unsafe.Pointer(yymsp + 8)), *(*int32)(unsafe.Pointer(yymsp + uintptr(-libc.Int32FromInt32(6))*24 + 8)), uintptr(0), uintptr(0), uintptr(0))
 	goto _341
@@ -147967,7 +147967,7 @@ _201: /* expr ::= VARIABLE */
 		*(*TToken)(unsafe.Pointer(bp + 72)) = *(*TToken)(unsafe.Pointer(yymsp + 8)) /*A-overwrites-X*/
 		_ = libc.Int32FromInt32(0)
 		if int32((*TParse)(unsafe.Pointer(pParse)).Fnested) == 0 {
-			_sqlite3ErrorMsg(tls, pParse, __ccgo_ts+22504, libc.VaList(bp+112, bp+72))
+			_sqlite3ErrorMsg(tls, pParse, __ccgo_ts+22524, libc.VaList(bp+112, bp+72))
 			*(*uintptr)(unsafe.Pointer(yymsp + 8)) = uintptr(0)
 		} else {
 			*(*uintptr)(unsafe.Pointer(yymsp + 8)) = _sqlite3PExpr(tls, pParse, int32(m_TK_REGISTER), uintptr(0), uintptr(0))
@@ -148117,9 +148117,9 @@ _231: /* expr ::= expr in_op LP exprlist RP */
 		 */
 		_sqlite3ExprUnmapAndDelete(tls, pParse, *(*uintptr)(unsafe.Pointer(yymsp + uintptr(-libc.Int32FromInt32(4))*24 + 8)))
 		if *(*int32)(unsafe.Pointer(yymsp + uintptr(-libc.Int32FromInt32(3))*24 + 8)) != 0 {
-			v344 = __ccgo_ts + 7756
+			v344 = __ccgo_ts + 7776
 		} else {
-			v344 = __ccgo_ts + 7349
+			v344 = __ccgo_ts + 7369
 		}
 		*(*uintptr)(unsafe.Pointer(yymsp + uintptr(-libc.Int32FromInt32(4))*24 + 8)) = _sqlite3Expr(tls, (*TParse)(unsafe.Pointer(pParse)).Fdb, int32(m_TK_INTEGER), v344)
 	} else {
@@ -148316,13 +148316,13 @@ _271: /* trigger_cmd_list ::= trigger_cmd SEMI */
 	goto _341
 _272: /* trnm ::= nm DOT nm */
 	*(*TToken)(unsafe.Pointer(yymsp + uintptr(-libc.Int32FromInt32(2))*24 + 8)) = *(*TToken)(unsafe.Pointer(yymsp + 8))
-	_sqlite3ErrorMsg(tls, pParse, __ccgo_ts+22528, 0)
+	_sqlite3ErrorMsg(tls, pParse, __ccgo_ts+22548, 0)
 	goto _341
 _273: /* tridxby ::= INDEXED BY nm */
-	_sqlite3ErrorMsg(tls, pParse, __ccgo_ts+22623, 0)
+	_sqlite3ErrorMsg(tls, pParse, __ccgo_ts+22643, 0)
 	goto _341
 _274: /* tridxby ::= NOT INDEXED */
-	_sqlite3ErrorMsg(tls, pParse, __ccgo_ts+22707, 0)
+	_sqlite3ErrorMsg(tls, pParse, __ccgo_ts+22727, 0)
 	goto _341
 _275: /* trigger_cmd ::= UPDATE orconf trnm tridxby SET setlist from where_opt scanpt */
 	*(*uintptr)(unsafe.Pointer(&*(*TYYMINORTYPE)(unsafe.Pointer(bp)))) = _sqlite3TriggerUpdateStep(tls, pParse, yymsp+uintptr(-libc.Int32FromInt32(6))*24+8, *(*uintptr)(unsafe.Pointer(yymsp + uintptr(-libc.Int32FromInt32(2))*24 + 8)), *(*uintptr)(unsafe.Pointer(yymsp + uintptr(-libc.Int32FromInt32(3))*24 + 8)), *(*uintptr)(unsafe.Pointer(yymsp + uintptr(-libc.Int32FromInt32(1))*24 + 8)), uint8(*(*int32)(unsafe.Pointer(yymsp + uintptr(-libc.Int32FromInt32(7))*24 + 8))), *(*uintptr)(unsafe.Pointer(yymsp + uintptr(-libc.Int32FromInt32(8))*24 + 8)), *(*uintptr)(unsafe.Pointer(yymsp + 8)))
@@ -148603,9 +148603,9 @@ func _yy_syntax_error(tls *libc.TLS, yypParser uintptr, yymajor int32, _yyminor 
 	/************ Begin %syntax_error code ****************************************/
 	_ = yymajor /* Silence some compiler warnings */
 	if *(*uint8)(unsafe.Pointer((*(*TToken)(unsafe.Pointer(bp))).Fz)) != 0 {
-		_sqlite3ErrorMsg(tls, pParse, __ccgo_ts+22504, libc.VaList(bp+24, bp))
+		_sqlite3ErrorMsg(tls, pParse, __ccgo_ts+22524, libc.VaList(bp+24, bp))
 	} else {
-		_sqlite3ErrorMsg(tls, pParse, __ccgo_ts+22792, 0)
+		_sqlite3ErrorMsg(tls, pParse, __ccgo_ts+22812, 0)
 	}
 	/************ End %syntax_error code ******************************************/
 	/* Suppress warning about unused %extra_argument variable */
@@ -151280,7 +151280,7 @@ func _sqlite3RunParser(tls *libc.TLS, pParse uintptr, zSql uintptr, pzErrMsg uin
 							_ = libc.Int32FromInt32(0)
 							*(*int32)(unsafe.Pointer(bp)) = _analyzeFilterKeyword(tls, zSql+6, lastTokenParsed)
 						} else {
-							_sqlite3ErrorMsg(tls, pParse, __ccgo_ts+22809, libc.VaList(bp+2440, n, zSql))
+							_sqlite3ErrorMsg(tls, pParse, __ccgo_ts+22829, libc.VaList(bp+2440, n, zSql))
 							break
 						}
 					}
@@ -151303,12 +151303,12 @@ func _sqlite3RunParser(tls *libc.TLS, pParse uintptr, zSql uintptr, pzErrMsg uin
 		(*TParse)(unsafe.Pointer(pParse)).Frc = int32(m_SQLITE_NOMEM)
 	}
 	if (*TParse)(unsafe.Pointer(pParse)).Frc != m_SQLITE_OK && (*TParse)(unsafe.Pointer(pParse)).Frc != int32(m_SQLITE_DONE) && (*TParse)(unsafe.Pointer(pParse)).FzErrMsg == uintptr(0) {
-		(*TParse)(unsafe.Pointer(pParse)).FzErrMsg = _sqlite3MPrintf(tls, db, __ccgo_ts+3560, libc.VaList(bp+2440, _sqlite3ErrStr(tls, (*TParse)(unsafe.Pointer(pParse)).Frc)))
+		(*TParse)(unsafe.Pointer(pParse)).FzErrMsg = _sqlite3MPrintf(tls, db, __ccgo_ts+3580, libc.VaList(bp+2440, _sqlite3ErrStr(tls, (*TParse)(unsafe.Pointer(pParse)).Frc)))
 	}
 	_ = libc.Int32FromInt32(0)
 	if (*TParse)(unsafe.Pointer(pParse)).FzErrMsg != 0 {
 		*(*uintptr)(unsafe.Pointer(pzErrMsg)) = (*TParse)(unsafe.Pointer(pParse)).FzErrMsg
-		Xsqlite3_log(tls, (*TParse)(unsafe.Pointer(pParse)).Frc, __ccgo_ts+22836, libc.VaList(bp+2440, *(*uintptr)(unsafe.Pointer(pzErrMsg)), (*TParse)(unsafe.Pointer(pParse)).FzTail))
+		Xsqlite3_log(tls, (*TParse)(unsafe.Pointer(pParse)).Frc, __ccgo_ts+22856, libc.VaList(bp+2440, *(*uintptr)(unsafe.Pointer(pzErrMsg)), (*TParse)(unsafe.Pointer(pParse)).FzTail))
 		(*TParse)(unsafe.Pointer(pParse)).FzErrMsg = uintptr(0)
 		nErr++
 	}
@@ -151508,7 +151508,7 @@ func Xsqlite3_complete(tls *libc.TLS, zSql uintptr) (r int32) {
 				case int32('c'):
 					fallthrough
 				case int32('C'):
-					if nId == int32(6) && Xsqlite3_strnicmp(tls, zSql, __ccgo_ts+22847, int32(6)) == 0 {
+					if nId == int32(6) && Xsqlite3_strnicmp(tls, zSql, __ccgo_ts+22867, int32(6)) == 0 {
 						token = uint8(m_tkCREATE)
 					} else {
 						token = uint8(m_tkOTHER)
@@ -151516,13 +151516,13 @@ func Xsqlite3_complete(tls *libc.TLS, zSql uintptr) (r int32) {
 				case int32('t'):
 					fallthrough
 				case int32('T'):
-					if nId == int32(7) && Xsqlite3_strnicmp(tls, zSql, __ccgo_ts+19658, int32(7)) == 0 {
+					if nId == int32(7) && Xsqlite3_strnicmp(tls, zSql, __ccgo_ts+19678, int32(7)) == 0 {
 						token = uint8(m_tkTRIGGER)
 					} else {
-						if nId == int32(4) && Xsqlite3_strnicmp(tls, zSql, __ccgo_ts+22854, int32(4)) == 0 {
+						if nId == int32(4) && Xsqlite3_strnicmp(tls, zSql, __ccgo_ts+22874, int32(4)) == 0 {
 							token = uint8(m_tkTEMP)
 						} else {
-							if nId == int32(9) && Xsqlite3_strnicmp(tls, zSql, __ccgo_ts+22859, int32(9)) == 0 {
+							if nId == int32(9) && Xsqlite3_strnicmp(tls, zSql, __ccgo_ts+22879, int32(9)) == 0 {
 								token = uint8(m_tkTEMP)
 							} else {
 								token = uint8(m_tkOTHER)
@@ -151532,10 +151532,10 @@ func Xsqlite3_complete(tls *libc.TLS, zSql uintptr) (r int32) {
 				case int32('e'):
 					fallthrough
 				case int32('E'):
-					if nId == int32(3) && Xsqlite3_strnicmp(tls, zSql, __ccgo_ts+22869, int32(3)) == 0 {
+					if nId == int32(3) && Xsqlite3_strnicmp(tls, zSql, __ccgo_ts+22889, int32(3)) == 0 {
 						token = uint8(m_tkEND)
 					} else {
-						if nId == int32(7) && Xsqlite3_strnicmp(tls, zSql, __ccgo_ts+22873, int32(7)) == 0 {
+						if nId == int32(7) && Xsqlite3_strnicmp(tls, zSql, __ccgo_ts+22893, int32(7)) == 0 {
 							token = uint8(m_tkEXPLAIN)
 						} else {
 							token = uint8(m_tkOTHER)
@@ -152744,7 +152744,7 @@ func _sqlite3Close(tls *libc.TLS, db uintptr, forceZombie int32) (r int32) {
 	 ** SQLITE_BUSY if the connection can not be closed immediately.
 	 */
 	if !(forceZombie != 0) && _connectionIsBusy(tls, db) != 0 {
-		_sqlite3ErrorWithMsg(tls, db, int32(m_SQLITE_BUSY), __ccgo_ts+22881, 0)
+		_sqlite3ErrorWithMsg(tls, db, int32(m_SQLITE_BUSY), __ccgo_ts+22901, 0)
 		Xsqlite3_mutex_leave(tls, (*Tsqlite3)(unsafe.Pointer(db)).Fmutex)
 		return int32(m_SQLITE_BUSY)
 	}
@@ -153034,14 +153034,14 @@ func _sqlite3RollbackAll(tls *libc.TLS, db uintptr, tripCode int32) {
 func _sqlite3ErrStr(tls *libc.TLS, rc int32) (r uintptr) {
 	var zErr uintptr
 	_ = zErr
-	zErr = __ccgo_ts + 23424
+	zErr = __ccgo_ts + 23444
 	switch rc {
 	case libc.Int32FromInt32(m_SQLITE_ABORT) | libc.Int32FromInt32(2)<<libc.Int32FromInt32(8):
-		zErr = __ccgo_ts + 23438
+		zErr = __ccgo_ts + 23458
 	case int32(m_SQLITE_ROW):
-		zErr = __ccgo_ts + 23460
+		zErr = __ccgo_ts + 23480
 	case int32(m_SQLITE_DONE):
-		zErr = __ccgo_ts + 23482
+		zErr = __ccgo_ts + 23502
 	default:
 		rc &= int32(0xff)
 		if rc >= 0 && rc < int32(libc.Uint64FromInt64(232)/libc.Uint64FromInt64(8)) && _aMsg[rc] != uintptr(0) {
@@ -153053,31 +153053,31 @@ func _sqlite3ErrStr(tls *libc.TLS, rc int32) (r uintptr) {
 }
 
 var _aMsg = [29]uintptr{
-	0:  __ccgo_ts + 22949,
-	1:  __ccgo_ts + 22962,
-	3:  __ccgo_ts + 22978,
-	4:  __ccgo_ts + 23003,
-	5:  __ccgo_ts + 23017,
-	6:  __ccgo_ts + 23036,
-	7:  __ccgo_ts + 6012,
-	8:  __ccgo_ts + 23061,
-	9:  __ccgo_ts + 23098,
-	10: __ccgo_ts + 23110,
-	11: __ccgo_ts + 23125,
-	12: __ccgo_ts + 23158,
-	13: __ccgo_ts + 23176,
-	14: __ccgo_ts + 23201,
-	15: __ccgo_ts + 23230,
-	17: __ccgo_ts + 5742,
-	18: __ccgo_ts + 5204,
-	19: __ccgo_ts + 23247,
-	20: __ccgo_ts + 23265,
-	21: __ccgo_ts + 23283,
-	23: __ccgo_ts + 23317,
-	25: __ccgo_ts + 23338,
-	26: __ccgo_ts + 23364,
-	27: __ccgo_ts + 23387,
-	28: __ccgo_ts + 23408,
+	0:  __ccgo_ts + 22969,
+	1:  __ccgo_ts + 22982,
+	3:  __ccgo_ts + 22998,
+	4:  __ccgo_ts + 23023,
+	5:  __ccgo_ts + 23037,
+	6:  __ccgo_ts + 23056,
+	7:  __ccgo_ts + 6032,
+	8:  __ccgo_ts + 23081,
+	9:  __ccgo_ts + 23118,
+	10: __ccgo_ts + 23130,
+	11: __ccgo_ts + 23145,
+	12: __ccgo_ts + 23178,
+	13: __ccgo_ts + 23196,
+	14: __ccgo_ts + 23221,
+	15: __ccgo_ts + 23250,
+	17: __ccgo_ts + 5762,
+	18: __ccgo_ts + 5224,
+	19: __ccgo_ts + 23267,
+	20: __ccgo_ts + 23285,
+	21: __ccgo_ts + 23303,
+	23: __ccgo_ts + 23337,
+	25: __ccgo_ts + 23358,
+	26: __ccgo_ts + 23384,
+	27: __ccgo_ts + 23407,
+	28: __ccgo_ts + 23428,
 }
 
 // C documentation
@@ -153300,7 +153300,7 @@ func _sqlite3CreateFunc(tls *libc.TLS, db uintptr, zFunctionName uintptr, nArg i
 	p = _sqlite3FindFunction(tls, db, zFunctionName, nArg, uint8(enc), uint8(0))
 	if p != 0 && (*TFuncDef)(unsafe.Pointer(p)).FfuncFlags&uint32(m_SQLITE_FUNC_ENCMASK) == uint32(enc) && int32((*TFuncDef)(unsafe.Pointer(p)).FnArg) == nArg {
 		if (*Tsqlite3)(unsafe.Pointer(db)).FnVdbeActive != 0 {
-			_sqlite3ErrorWithMsg(tls, db, int32(m_SQLITE_BUSY), __ccgo_ts+23505, 0)
+			_sqlite3ErrorWithMsg(tls, db, int32(m_SQLITE_BUSY), __ccgo_ts+23525, 0)
 			_ = libc.Int32FromInt32(0)
 			return int32(m_SQLITE_BUSY)
 		} else {
@@ -153433,7 +153433,7 @@ func _sqlite3InvalidFunction(tls *libc.TLS, context uintptr, NotUsed int32, NotU
 	zName = Xsqlite3_user_data(tls, context)
 	_ = NotUsed
 	_ = NotUsed2
-	zErr = Xsqlite3_mprintf(tls, __ccgo_ts+23568, libc.VaList(bp+8, zName))
+	zErr = Xsqlite3_mprintf(tls, __ccgo_ts+23588, libc.VaList(bp+8, zName))
 	Xsqlite3_result_error(tls, context, zErr, -int32(1))
 	Xsqlite3_free(tls, zErr)
 }
@@ -153720,7 +153720,7 @@ func Xsqlite3_wal_checkpoint_v2(tls *libc.TLS, db uintptr, zDb uintptr, eMode in
 	}
 	if iDb < 0 {
 		rc = int32(m_SQLITE_ERROR)
-		_sqlite3ErrorWithMsg(tls, db, int32(m_SQLITE_ERROR), __ccgo_ts+23619, libc.VaList(bp+8, zDb))
+		_sqlite3ErrorWithMsg(tls, db, int32(m_SQLITE_ERROR), __ccgo_ts+23639, libc.VaList(bp+8, zDb))
 	} else {
 		(*Tsqlite3)(unsafe.Pointer(db)).FbusyHandler.FnBusy = 0
 		rc = _sqlite3Checkpoint(tls, db, iDb, eMode, pnLog, pnCkpt)
@@ -154034,7 +154034,7 @@ func _createCollation(tls *libc.TLS, db uintptr, zName uintptr, enc Tu8, pCtx ui
 	pColl = _sqlite3FindCollSeq(tls, db, uint8(enc2), zName, 0)
 	if pColl != 0 && (*TCollSeq)(unsafe.Pointer(pColl)).FxCmp != 0 {
 		if (*Tsqlite3)(unsafe.Pointer(db)).FnVdbeActive != 0 {
-			_sqlite3ErrorWithMsg(tls, db, int32(m_SQLITE_BUSY), __ccgo_ts+23640, 0)
+			_sqlite3ErrorWithMsg(tls, db, int32(m_SQLITE_BUSY), __ccgo_ts+23660, 0)
 			return int32(m_SQLITE_BUSY)
 		}
 		_sqlite3ExpirePreparedStatements(tls, db, 0)
@@ -154194,7 +154194,7 @@ func _sqlite3ParseUri(tls *libc.TLS, zDefaultVfs uintptr, zUri uintptr, pFlags u
 	zVfs = zDefaultVfs
 	nUri = _sqlite3Strlen30(tls, zUri)
 	_ = libc.Int32FromInt32(0)
-	if (flags&uint32(m_SQLITE_OPEN_URI) != 0 || _sqlite3Config.FbOpenUri != 0) && nUri >= int32(5) && libc.Xmemcmp(tls, zUri, __ccgo_ts+23708, uint64(5)) == 0 { /* Input character index */
+	if (flags&uint32(m_SQLITE_OPEN_URI) != 0 || _sqlite3Config.FbOpenUri != 0) && nUri >= int32(5) && libc.Xmemcmp(tls, zUri, __ccgo_ts+23728, uint64(5)) == 0 { /* Input character index */
 		iOut = 0                        /* Output character index */
 		nByte = uint64(nUri + int32(8)) /* Bytes of space to allocate */
 		/* Make sure the SQLITE_OPEN_URI flag is set to indicate to the VFS xOpen
@@ -154223,8 +154223,8 @@ func _sqlite3ParseUri(tls *libc.TLS, zDefaultVfs uintptr, zUri uintptr, pFlags u
 			for *(*uint8)(unsafe.Pointer(zUri + uintptr(iIn))) != 0 && int32(*(*uint8)(unsafe.Pointer(zUri + uintptr(iIn)))) != int32('/') {
 				iIn++
 			}
-			if iIn != int32(7) && (iIn != int32(16) || libc.Xmemcmp(tls, __ccgo_ts+23714, zUri+7, uint64(9)) != 0) {
-				*(*uintptr)(unsafe.Pointer(pzErrMsg)) = Xsqlite3_mprintf(tls, __ccgo_ts+23724, libc.VaList(bp+8, iIn-int32(7), zUri+7))
+			if iIn != int32(7) && (iIn != int32(16) || libc.Xmemcmp(tls, __ccgo_ts+23734, zUri+7, uint64(9)) != 0) {
+				*(*uintptr)(unsafe.Pointer(pzErrMsg)) = Xsqlite3_mprintf(tls, __ccgo_ts+23744, libc.VaList(bp+8, iIn-int32(7), zUri+7))
 				rc = int32(m_SQLITE_ERROR)
 				goto parse_uri_out
 			}
@@ -154314,24 +154314,24 @@ func _sqlite3ParseUri(tls *libc.TLS, zDefaultVfs uintptr, zUri uintptr, pFlags u
 			nOpt = _sqlite3Strlen30(tls, zOpt)
 			zVal = zOpt + uintptr(nOpt+int32(1))
 			nVal = _sqlite3Strlen30(tls, zVal)
-			if nOpt == int32(3) && libc.Xmemcmp(tls, __ccgo_ts+23752, zOpt, uint64(3)) == 0 {
+			if nOpt == int32(3) && libc.Xmemcmp(tls, __ccgo_ts+23772, zOpt, uint64(3)) == 0 {
 				zVfs = zVal
 			} else {
 				aMode = uintptr(0)
 				zModeType = uintptr(0)
 				mask = 0
 				limit = 0
-				if nOpt == int32(5) && libc.Xmemcmp(tls, __ccgo_ts+23756, zOpt, uint64(5)) == 0 {
+				if nOpt == int32(5) && libc.Xmemcmp(tls, __ccgo_ts+23776, zOpt, uint64(5)) == 0 {
 					mask = libc.Int32FromInt32(m_SQLITE_OPEN_SHAREDCACHE) | libc.Int32FromInt32(m_SQLITE_OPEN_PRIVATECACHE)
 					aMode = uintptr(unsafe.Pointer(&_aCacheMode))
 					limit = mask
-					zModeType = __ccgo_ts + 23756
+					zModeType = __ccgo_ts + 23776
 				}
-				if nOpt == int32(4) && libc.Xmemcmp(tls, __ccgo_ts+23777, zOpt, uint64(4)) == 0 {
+				if nOpt == int32(4) && libc.Xmemcmp(tls, __ccgo_ts+23797, zOpt, uint64(4)) == 0 {
 					mask = libc.Int32FromInt32(m_SQLITE_OPEN_READONLY) | libc.Int32FromInt32(m_SQLITE_OPEN_READWRITE) | libc.Int32FromInt32(m_SQLITE_OPEN_CREATE) | libc.Int32FromInt32(m_SQLITE_OPEN_MEMORY)
 					aMode = uintptr(unsafe.Pointer(&_aOpenMode))
 					limit = int32(uint32(mask) & flags)
-					zModeType = __ccgo_ts + 3169
+					zModeType = __ccgo_ts + 3189
 				}
 				if aMode != 0 {
 					mode = 0
@@ -154359,12 +154359,12 @@ func _sqlite3ParseUri(tls *libc.TLS, zDefaultVfs uintptr, zUri uintptr, pFlags u
 						i++
 					}
 					if mode == 0 {
-						*(*uintptr)(unsafe.Pointer(pzErrMsg)) = Xsqlite3_mprintf(tls, __ccgo_ts+23792, libc.VaList(bp+8, zModeType, zVal))
+						*(*uintptr)(unsafe.Pointer(pzErrMsg)) = Xsqlite3_mprintf(tls, __ccgo_ts+23812, libc.VaList(bp+8, zModeType, zVal))
 						rc = int32(m_SQLITE_ERROR)
 						goto parse_uri_out
 					}
 					if mode & ^libc.Int32FromInt32(m_SQLITE_OPEN_MEMORY) > limit {
-						*(*uintptr)(unsafe.Pointer(pzErrMsg)) = Xsqlite3_mprintf(tls, __ccgo_ts+23812, libc.VaList(bp+8, zModeType, zVal))
+						*(*uintptr)(unsafe.Pointer(pzErrMsg)) = Xsqlite3_mprintf(tls, __ccgo_ts+23832, libc.VaList(bp+8, zModeType, zVal))
 						rc = int32(m_SQLITE_PERM)
 						goto parse_uri_out
 					}
@@ -154388,7 +154388,7 @@ func _sqlite3ParseUri(tls *libc.TLS, zDefaultVfs uintptr, zUri uintptr, pFlags u
 	}
 	*(*uintptr)(unsafe.Pointer(ppVfs)) = Xsqlite3_vfs_find(tls, zVfs)
 	if *(*uintptr)(unsafe.Pointer(ppVfs)) == uintptr(0) {
-		*(*uintptr)(unsafe.Pointer(pzErrMsg)) = Xsqlite3_mprintf(tls, __ccgo_ts+23836, libc.VaList(bp+8, zVfs))
+		*(*uintptr)(unsafe.Pointer(pzErrMsg)) = Xsqlite3_mprintf(tls, __ccgo_ts+23856, libc.VaList(bp+8, zVfs))
 		rc = int32(m_SQLITE_ERROR)
 	}
 parse_uri_out:
@@ -154406,11 +154406,11 @@ var _aCacheMode = [3]struct {
 	Fmode int32
 }{
 	0: {
-		Fz:    __ccgo_ts + 23762,
+		Fz:    __ccgo_ts + 23782,
 		Fmode: int32(m_SQLITE_OPEN_SHAREDCACHE),
 	},
 	1: {
-		Fz:    __ccgo_ts + 23769,
+		Fz:    __ccgo_ts + 23789,
 		Fmode: int32(m_SQLITE_OPEN_PRIVATECACHE),
 	},
 	2: {},
@@ -154421,19 +154421,19 @@ var _aOpenMode = [5]struct {
 	Fmode int32
 }{
 	0: {
-		Fz:    __ccgo_ts + 23782,
+		Fz:    __ccgo_ts + 23802,
 		Fmode: int32(m_SQLITE_OPEN_READONLY),
 	},
 	1: {
-		Fz:    __ccgo_ts + 23785,
+		Fz:    __ccgo_ts + 23805,
 		Fmode: int32(m_SQLITE_OPEN_READWRITE),
 	},
 	2: {
-		Fz:    __ccgo_ts + 23788,
+		Fz:    __ccgo_ts + 23808,
 		Fmode: libc.Int32FromInt32(m_SQLITE_OPEN_READWRITE) | libc.Int32FromInt32(m_SQLITE_OPEN_CREATE),
 	},
 	3: {
-		Fz:    __ccgo_ts + 17124,
+		Fz:    __ccgo_ts + 17144,
 		Fmode: int32(m_SQLITE_OPEN_MEMORY),
 	},
 	4: {},
@@ -154562,8 +154562,8 @@ func _openDatabase(tls *libc.TLS, zFilename uintptr, ppDb uintptr, _flags uint32
 	_createCollation(tls, db, uintptr(unsafe.Pointer(&_sqlite3StrBINARY)), uint8(m_SQLITE_UTF8), uintptr(0), __ccgo_fp(_binCollFunc), uintptr(0))
 	_createCollation(tls, db, uintptr(unsafe.Pointer(&_sqlite3StrBINARY)), uint8(m_SQLITE_UTF16BE), uintptr(0), __ccgo_fp(_binCollFunc), uintptr(0))
 	_createCollation(tls, db, uintptr(unsafe.Pointer(&_sqlite3StrBINARY)), uint8(m_SQLITE_UTF16LE), uintptr(0), __ccgo_fp(_binCollFunc), uintptr(0))
-	_createCollation(tls, db, __ccgo_ts+21496, uint8(m_SQLITE_UTF8), uintptr(0), __ccgo_fp(_nocaseCollatingFunc), uintptr(0))
-	_createCollation(tls, db, __ccgo_ts+23852, uint8(m_SQLITE_UTF8), uintptr(0), __ccgo_fp(_rtrimCollFunc), uintptr(0))
+	_createCollation(tls, db, __ccgo_ts+21516, uint8(m_SQLITE_UTF8), uintptr(0), __ccgo_fp(_nocaseCollatingFunc), uintptr(0))
+	_createCollation(tls, db, __ccgo_ts+23872, uint8(m_SQLITE_UTF8), uintptr(0), __ccgo_fp(_rtrimCollFunc), uintptr(0))
 	if (*Tsqlite3)(unsafe.Pointer(db)).FmallocFailed != 0 {
 		goto opendb_out
 	}
@@ -154596,7 +154596,7 @@ func _openDatabase(tls *libc.TLS, zFilename uintptr, ppDb uintptr, _flags uint32
 			_sqlite3OomFault(tls, db)
 		}
 		if *(*uintptr)(unsafe.Pointer(bp + 16)) != 0 {
-			v2 = __ccgo_ts + 3560
+			v2 = __ccgo_ts + 3580
 		} else {
 			v2 = uintptr(0)
 		}
@@ -154623,9 +154623,9 @@ func _openDatabase(tls *libc.TLS, zFilename uintptr, ppDb uintptr, _flags uint32
 	/* The default safety_level for the main database is FULL; for the temp
 	 ** database it is OFF. This matches the pager layer defaults.
 	 */
-	(*(*TDb)(unsafe.Pointer((*Tsqlite3)(unsafe.Pointer(db)).FaDb))).FzDbSName = __ccgo_ts + 6255
+	(*(*TDb)(unsafe.Pointer((*Tsqlite3)(unsafe.Pointer(db)).FaDb))).FzDbSName = __ccgo_ts + 6275
 	(*(*TDb)(unsafe.Pointer((*Tsqlite3)(unsafe.Pointer(db)).FaDb))).Fsafety_level = uint8(libc.Int32FromInt32(m_SQLITE_DEFAULT_SYNCHRONOUS) + libc.Int32FromInt32(1))
-	(*(*TDb)(unsafe.Pointer((*Tsqlite3)(unsafe.Pointer(db)).FaDb + 1*32))).FzDbSName = __ccgo_ts + 22854
+	(*(*TDb)(unsafe.Pointer((*Tsqlite3)(unsafe.Pointer(db)).FaDb + 1*32))).FzDbSName = __ccgo_ts + 22874
 	(*(*TDb)(unsafe.Pointer((*Tsqlite3)(unsafe.Pointer(db)).FaDb + 1*32))).Fsafety_level = uint8(m_PAGER_SYNCHRONOUS_OFF)
 	(*Tsqlite3)(unsafe.Pointer(db)).FeOpenState = uint8(m_SQLITE_STATE_OPEN)
 	if (*Tsqlite3)(unsafe.Pointer(db)).FmallocFailed != 0 {
@@ -154718,7 +154718,7 @@ func Xsqlite3_open16(tls *libc.TLS, zFilename uintptr, ppDb uintptr) (r int32) {
 		return rc
 	}
 	if zFilename == uintptr(0) {
-		zFilename = __ccgo_ts + 23858
+		zFilename = __ccgo_ts + 23878
 	}
 	pVal = _sqlite3ValueNew(tls, uintptr(0))
 	if int32(*(*uint8)(unsafe.Pointer(uintptr(unsafe.Pointer(&Xsqlite3one))))) == 0 {
@@ -154868,20 +154868,20 @@ func Xsqlite3_get_autocommit(tls *libc.TLS, db uintptr) (r int32) {
 func _sqlite3ReportError(tls *libc.TLS, iErr int32, lineno int32, zType uintptr) (r int32) {
 	bp := tls.Alloc(32)
 	defer tls.Free(32)
-	Xsqlite3_log(tls, iErr, __ccgo_ts+23861, libc.VaList(bp+8, zType, lineno, uintptr(20)+Xsqlite3_sourceid(tls)))
+	Xsqlite3_log(tls, iErr, __ccgo_ts+23881, libc.VaList(bp+8, zType, lineno, uintptr(20)+Xsqlite3_sourceid(tls)))
 	return iErr
 }
 
 func _sqlite3CorruptError(tls *libc.TLS, lineno int32) (r int32) {
-	return _sqlite3ReportError(tls, int32(m_SQLITE_CORRUPT), lineno, __ccgo_ts+23886)
+	return _sqlite3ReportError(tls, int32(m_SQLITE_CORRUPT), lineno, __ccgo_ts+23906)
 }
 
 func _sqlite3MisuseError(tls *libc.TLS, lineno int32) (r int32) {
-	return _sqlite3ReportError(tls, int32(m_SQLITE_MISUSE), lineno, __ccgo_ts+23906)
+	return _sqlite3ReportError(tls, int32(m_SQLITE_MISUSE), lineno, __ccgo_ts+23926)
 }
 
 func _sqlite3CantopenError(tls *libc.TLS, lineno int32) (r int32) {
-	return _sqlite3ReportError(tls, int32(m_SQLITE_CANTOPEN), lineno, __ccgo_ts+23913)
+	return _sqlite3ReportError(tls, int32(m_SQLITE_CANTOPEN), lineno, __ccgo_ts+23933)
 }
 
 // C documentation
@@ -154980,7 +154980,7 @@ func Xsqlite3_table_column_metadata(tls *libc.TLS, db uintptr, zDbName uintptr, 
 		primarykey = libc.BoolInt32(int32((*TColumn)(unsafe.Pointer(pCol)).FcolFlags)&int32(m_COLFLAG_PRIMKEY) != 0)
 		autoinc = libc.BoolInt32(int32((*TTable)(unsafe.Pointer(pTab)).FiPKey) == iCol && (*TTable)(unsafe.Pointer(pTab)).FtabFlags&uint32(m_TF_Autoincrement) != uint32(0))
 	} else {
-		zDataType = __ccgo_ts + 1098
+		zDataType = __ccgo_ts + 1118
 		primarykey = int32(1)
 	}
 	if !(zCollSeq != 0) {
@@ -155009,11 +155009,11 @@ error_out:
 	}
 	if m_SQLITE_OK == rc && !(pTab != 0) {
 		_sqlite3DbFree(tls, db, *(*uintptr)(unsafe.Pointer(bp)))
-		*(*uintptr)(unsafe.Pointer(bp)) = _sqlite3MPrintf(tls, db, __ccgo_ts+23930, libc.VaList(bp+16, zTableName, zColumnName))
+		*(*uintptr)(unsafe.Pointer(bp)) = _sqlite3MPrintf(tls, db, __ccgo_ts+23950, libc.VaList(bp+16, zTableName, zColumnName))
 		rc = int32(m_SQLITE_ERROR)
 	}
 	if *(*uintptr)(unsafe.Pointer(bp)) != 0 {
-		v3 = __ccgo_ts + 3560
+		v3 = __ccgo_ts + 3580
 	} else {
 		v3 = uintptr(0)
 	}
@@ -155928,7 +155928,7 @@ func Xsqlite3_compileoption_used(tls *libc.TLS, zOptName uintptr) (r int32) {
 	var _ /* nOpt at bp+0 */ int32
 	_, _, _ = azCompileOpt, i, n
 	azCompileOpt = _sqlite3CompileOptions(tls, bp)
-	if Xsqlite3_strnicmp(tls, zOptName, __ccgo_ts+23958, int32(7)) == 0 {
+	if Xsqlite3_strnicmp(tls, zOptName, __ccgo_ts+23978, int32(7)) == 0 {
 		zOptName += uintptr(7)
 	}
 	n = _sqlite3Strlen30(tls, zOptName)
@@ -156146,7 +156146,7 @@ func Xsqlite3_unlock_notify(tls *libc.TLS, db uintptr, xNotify uintptr, _pArg ui
 	_leaveMutex(tls)
 	_ = libc.Int32FromInt32(0)
 	if rc != 0 {
-		v2 = __ccgo_ts + 23966
+		v2 = __ccgo_ts + 23986
 	} else {
 		v2 = uintptr(0)
 	}
@@ -157024,14 +157024,14 @@ type TJsonString1 = struct {
 //	** Names of the various JSON types:
 //	*/
 var _jsonType = [8]uintptr{
-	0: __ccgo_ts + 6026,
-	1: __ccgo_ts + 6567,
-	2: __ccgo_ts + 6572,
-	3: __ccgo_ts + 6036,
-	4: __ccgo_ts + 6031,
-	5: __ccgo_ts + 7822,
-	6: __ccgo_ts + 23989,
-	7: __ccgo_ts + 23995,
+	0: __ccgo_ts + 6046,
+	1: __ccgo_ts + 6587,
+	2: __ccgo_ts + 6592,
+	3: __ccgo_ts + 6056,
+	4: __ccgo_ts + 6051,
+	5: __ccgo_ts + 7842,
+	6: __ccgo_ts + 24009,
+	7: __ccgo_ts + 24015,
 }
 
 /* Bit values for the JsonNode.jnFlag field
@@ -157301,7 +157301,7 @@ func _jsonAppendString(tls *libc.TLS, p uintptr, zIn uintptr, N Tu32) {
 			v16 = *(*Tu64)(unsafe.Pointer(v17))
 			*(*Tu64)(unsafe.Pointer(v17))++
 			*(*uint8)(unsafe.Pointer((*TJsonString)(unsafe.Pointer(p)).FzBuf + uintptr(v16))) = uint8(int32('0') + int32(c)>>int32(4))
-			c = *(*uint8)(unsafe.Pointer(__ccgo_ts + 24002 + uintptr(int32(c)&int32(0xf))))
+			c = *(*uint8)(unsafe.Pointer(__ccgo_ts + 24022 + uintptr(int32(c)&int32(0xf))))
 		}
 	_5:
 		v19 = p + 24
@@ -157339,7 +157339,7 @@ func _jsonAppendValue(tls *libc.TLS, p uintptr, pValue uintptr) {
 	_, _, _, _ = n, n1, z, z1
 	switch Xsqlite3_value_type(tls, pValue) {
 	case int32(m_SQLITE_NULL):
-		_jsonAppendRaw(tls, p, __ccgo_ts+6026, uint32(4))
+		_jsonAppendRaw(tls, p, __ccgo_ts+6046, uint32(4))
 	case int32(m_SQLITE_INTEGER):
 		fallthrough
 	case int32(m_SQLITE_FLOAT):
@@ -157356,7 +157356,7 @@ func _jsonAppendValue(tls *libc.TLS, p uintptr, pValue uintptr) {
 		}
 	default:
 		if int32((*TJsonString)(unsafe.Pointer(p)).FbErr) == 0 {
-			Xsqlite3_result_error(tls, (*TJsonString)(unsafe.Pointer(p)).FpCtx, __ccgo_ts+24019, -int32(1))
+			Xsqlite3_result_error(tls, (*TJsonString)(unsafe.Pointer(p)).FpCtx, __ccgo_ts+24039, -int32(1))
 			(*TJsonString)(unsafe.Pointer(p)).FbErr = uint8(2)
 			_jsonReset(tls, p)
 		}
@@ -157457,11 +157457,11 @@ func _jsonRenderNode(tls *libc.TLS, pNode uintptr, pOut uintptr, aReplace uintpt
 	switch int32((*TJsonNode)(unsafe.Pointer(pNode)).FeType) {
 	default:
 		_ = libc.Int32FromInt32(0)
-		_jsonAppendRaw(tls, pOut, __ccgo_ts+6026, uint32(4))
+		_jsonAppendRaw(tls, pOut, __ccgo_ts+6046, uint32(4))
 	case int32(m_JSON_TRUE):
-		_jsonAppendRaw(tls, pOut, __ccgo_ts+6567, uint32(4))
+		_jsonAppendRaw(tls, pOut, __ccgo_ts+6587, uint32(4))
 	case int32(m_JSON_FALSE):
-		_jsonAppendRaw(tls, pOut, __ccgo_ts+6572, uint32(5))
+		_jsonAppendRaw(tls, pOut, __ccgo_ts+6592, uint32(5))
 	case int32(m_JSON_STRING):
 		if int32((*TJsonNode)(unsafe.Pointer(pNode)).FjnFlags)&int32(m_JNODE_RAW) != 0 {
 			_ = libc.Int32FromInt32(0)
@@ -158021,15 +158021,15 @@ func _jsonParseValue(tls *libc.TLS, pParse uintptr, i Tu32) (r int32) {
 				}
 				return int32(j + uint32(1))
 			} else {
-				if int32(c) == int32('n') && libc.Xstrncmp(tls, z+uintptr(i), __ccgo_ts+6026, uint64(4)) == 0 && !(int32(_sqlite3CtypeMap[*(*uint8)(unsafe.Pointer(z + uintptr(i+uint32(4))))])&libc.Int32FromInt32(0x06) != 0) {
+				if int32(c) == int32('n') && libc.Xstrncmp(tls, z+uintptr(i), __ccgo_ts+6046, uint64(4)) == 0 && !(int32(_sqlite3CtypeMap[*(*uint8)(unsafe.Pointer(z + uintptr(i+uint32(4))))])&libc.Int32FromInt32(0x06) != 0) {
 					_jsonParseAddNode(tls, pParse, uint32(m_JSON_NULL), uint32(0), uintptr(0))
 					return int32(i + uint32(4))
 				} else {
-					if int32(c) == int32('t') && libc.Xstrncmp(tls, z+uintptr(i), __ccgo_ts+6567, uint64(4)) == 0 && !(int32(_sqlite3CtypeMap[*(*uint8)(unsafe.Pointer(z + uintptr(i+uint32(4))))])&libc.Int32FromInt32(0x06) != 0) {
+					if int32(c) == int32('t') && libc.Xstrncmp(tls, z+uintptr(i), __ccgo_ts+6587, uint64(4)) == 0 && !(int32(_sqlite3CtypeMap[*(*uint8)(unsafe.Pointer(z + uintptr(i+uint32(4))))])&libc.Int32FromInt32(0x06) != 0) {
 						_jsonParseAddNode(tls, pParse, uint32(m_JSON_TRUE), uint32(0), uintptr(0))
 						return int32(i + uint32(4))
 					} else {
-						if int32(c) == int32('f') && libc.Xstrncmp(tls, z+uintptr(i), __ccgo_ts+6572, uint64(5)) == 0 && !(int32(_sqlite3CtypeMap[*(*uint8)(unsafe.Pointer(z + uintptr(i+uint32(5))))])&libc.Int32FromInt32(0x06) != 0) {
+						if int32(c) == int32('f') && libc.Xstrncmp(tls, z+uintptr(i), __ccgo_ts+6592, uint64(5)) == 0 && !(int32(_sqlite3CtypeMap[*(*uint8)(unsafe.Pointer(z + uintptr(i+uint32(5))))])&libc.Int32FromInt32(0x06) != 0) {
 							_jsonParseAddNode(tls, pParse, uint32(m_JSON_FALSE), uint32(0), uintptr(0))
 							return int32(i + uint32(5))
 						} else {
@@ -158159,7 +158159,7 @@ func _jsonParse(tls *libc.TLS, pParse uintptr, pCtx uintptr, zJson uintptr) (r i
 			if (*TJsonParse)(unsafe.Pointer(pParse)).Foom != 0 {
 				Xsqlite3_result_error_nomem(tls, pCtx)
 			} else {
-				Xsqlite3_result_error(tls, pCtx, __ccgo_ts+24048, -int32(1))
+				Xsqlite3_result_error(tls, pCtx, __ccgo_ts+24068, -int32(1))
 			}
 		}
 		_jsonParseReset(tls, pParse)
@@ -158552,7 +158552,7 @@ func _jsonLookupAppend(tls *libc.TLS, pParse uintptr, zPath uintptr, pApnd uintp
 	if int32(*(*uint8)(unsafe.Pointer(zPath))) == int32('.') {
 		_jsonParseAddNode(tls, pParse, uint32(m_JSON_OBJECT), uint32(0), uintptr(0))
 	} else {
-		if libc.Xstrncmp(tls, zPath, __ccgo_ts+24063, uint64(3)) == 0 {
+		if libc.Xstrncmp(tls, zPath, __ccgo_ts+24083, uint64(3)) == 0 {
 			_jsonParseAddNode(tls, pParse, uint32(m_JSON_ARRAY), uint32(0), uintptr(0))
 		} else {
 			return uintptr(0)
@@ -158573,7 +158573,7 @@ func _jsonLookupAppend(tls *libc.TLS, pParse uintptr, zPath uintptr, pApnd uintp
 func _jsonPathSyntaxError(tls *libc.TLS, zErr uintptr) (r uintptr) {
 	bp := tls.Alloc(16)
 	defer tls.Free(16)
-	return Xsqlite3_mprintf(tls, __ccgo_ts+24067, libc.VaList(bp+8, zErr))
+	return Xsqlite3_mprintf(tls, __ccgo_ts+24087, libc.VaList(bp+8, zErr))
 }
 
 // C documentation
@@ -158632,7 +158632,7 @@ func _jsonWrongNumArgs(tls *libc.TLS, pCtx uintptr, zFuncName uintptr) {
 	defer tls.Free(16)
 	var zMsg uintptr
 	_ = zMsg
-	zMsg = Xsqlite3_mprintf(tls, __ccgo_ts+24093, libc.VaList(bp+8, zFuncName))
+	zMsg = Xsqlite3_mprintf(tls, __ccgo_ts+24113, libc.VaList(bp+8, zFuncName))
 	Xsqlite3_result_error(tls, pCtx, zMsg, -int32(1))
 	Xsqlite3_free(tls, zMsg)
 }
@@ -158811,7 +158811,7 @@ func _jsonExtractFunc(tls *libc.TLS, ctx uintptr, argc int32, argv uintptr) {
 			if pNode != 0 {
 				_jsonRenderNode(tls, pNode, bp, uintptr(0))
 			} else {
-				_jsonAppendRaw(tls, bp, __ccgo_ts+6026, uint32(4))
+				_jsonAppendRaw(tls, bp, __ccgo_ts+6046, uint32(4))
 			}
 		} else {
 			if pNode != 0 {
@@ -158970,7 +158970,7 @@ func _jsonObjectFunc(tls *libc.TLS, ctx uintptr, argc int32, argv uintptr) {
 	var _ /* jx at bp+0 */ TJsonString
 	_, _, _ = i, n, z
 	if argc&int32(1) != 0 {
-		Xsqlite3_result_error(tls, ctx, __ccgo_ts+24136, -int32(1))
+		Xsqlite3_result_error(tls, ctx, __ccgo_ts+24156, -int32(1))
 		return
 	}
 	_jsonInit(tls, bp, ctx)
@@ -158981,7 +158981,7 @@ func _jsonObjectFunc(tls *libc.TLS, ctx uintptr, argc int32, argv uintptr) {
 			break
 		}
 		if Xsqlite3_value_type(tls, *(*uintptr)(unsafe.Pointer(argv + uintptr(i)*8))) != int32(m_SQLITE_TEXT) {
-			Xsqlite3_result_error(tls, ctx, __ccgo_ts+24187, -int32(1))
+			Xsqlite3_result_error(tls, ctx, __ccgo_ts+24207, -int32(1))
 			_jsonReset(tls, bp)
 			return
 		}
@@ -159069,7 +159069,7 @@ func _jsonReplaceFunc(tls *libc.TLS, ctx uintptr, argc int32, argv uintptr) {
 		return
 	}
 	if argc&int32(1) == 0 {
-		_jsonWrongNumArgs(tls, ctx, __ccgo_ts+15158)
+		_jsonWrongNumArgs(tls, ctx, __ccgo_ts+15178)
 		return
 	}
 	if _jsonParse(tls, bp, ctx, Xsqlite3_value_text(tls, *(*uintptr)(unsafe.Pointer(argv)))) != 0 {
@@ -159135,9 +159135,9 @@ func _jsonSetFunc(tls *libc.TLS, ctx uintptr, argc int32, argv uintptr) {
 	}
 	if argc&int32(1) == 0 {
 		if bIsSet != 0 {
-			v1 = __ccgo_ts + 24221
+			v1 = __ccgo_ts + 24241
 		} else {
-			v1 = __ccgo_ts + 24225
+			v1 = __ccgo_ts + 24245
 		}
 		_jsonWrongNumArgs(tls, ctx, v1)
 		return
@@ -159283,7 +159283,7 @@ func _jsonArrayCompute(tls *libc.TLS, ctx uintptr, isFinal int32) {
 			}
 		}
 	} else {
-		Xsqlite3_result_text(tls, ctx, __ccgo_ts+24232, int32(2), libc.UintptrFromInt32(0))
+		Xsqlite3_result_text(tls, ctx, __ccgo_ts+24252, int32(2), libc.UintptrFromInt32(0))
 	}
 	Xsqlite3_result_subtype(tls, ctx, uint32(m_JSON_SUBTYPE))
 }
@@ -159418,7 +159418,7 @@ func _jsonObjectCompute(tls *libc.TLS, ctx uintptr, isFinal int32) {
 			}
 		}
 	} else {
-		Xsqlite3_result_text(tls, ctx, __ccgo_ts+24235, int32(2), libc.UintptrFromInt32(0))
+		Xsqlite3_result_text(tls, ctx, __ccgo_ts+24255, int32(2), libc.UintptrFromInt32(0))
 	}
 	Xsqlite3_result_subtype(tls, ctx, uint32(m_JSON_SUBTYPE))
 }
@@ -159477,7 +159477,7 @@ func _jsonEachConnect(tls *libc.TLS, db uintptr, pAux uintptr, argc int32, argv 
 	_ = argv
 	_ = argc
 	_ = pAux
-	rc = Xsqlite3_declare_vtab(tls, db, __ccgo_ts+24238)
+	rc = Xsqlite3_declare_vtab(tls, db, __ccgo_ts+24258)
 	if rc == m_SQLITE_OK {
 		v1 = Xsqlite3_malloc(tls, int32(24))
 		*(*uintptr)(unsafe.Pointer(ppVtab)) = v1
@@ -159632,7 +159632,7 @@ func _jsonEachComputePath(tls *libc.TLS, p uintptr, pStr uintptr, i Tu32) {
 	pUp = (*TJsonEachCursor)(unsafe.Pointer(p)).FsParse.FaNode + uintptr(iUp)*16
 	if int32((*TJsonNode)(unsafe.Pointer(pUp)).FeType) == int32(m_JSON_ARRAY) {
 		_ = libc.Int32FromInt32(0)
-		_jsonPrintf(tls, int32(30), pStr, __ccgo_ts+24321, libc.VaList(bp+8, *(*Tu32)(unsafe.Pointer(&(*TJsonNode)(unsafe.Pointer(pUp)).Fu))))
+		_jsonPrintf(tls, int32(30), pStr, __ccgo_ts+24341, libc.VaList(bp+8, *(*Tu32)(unsafe.Pointer(&(*TJsonNode)(unsafe.Pointer(pUp)).Fu))))
 	} else {
 		_ = libc.Int32FromInt32(0)
 		if int32((*TJsonNode)(unsafe.Pointer(pNode)).FjnFlags)&int32(m_JNODE_LABEL) == 0 {
@@ -159641,7 +159641,7 @@ func _jsonEachComputePath(tls *libc.TLS, p uintptr, pStr uintptr, i Tu32) {
 		_ = libc.Int32FromInt32(0)
 		_ = libc.Int32FromInt32(0)
 		_ = libc.Int32FromInt32(0)
-		_jsonPrintf(tls, int32((*TJsonNode)(unsafe.Pointer(pNode)).Fn+uint32(1)), pStr, __ccgo_ts+24326, libc.VaList(bp+8, (*TJsonNode)(unsafe.Pointer(pNode)).Fn-uint32(2), *(*uintptr)(unsafe.Pointer(pNode + 8))+uintptr(1)))
+		_jsonPrintf(tls, int32((*TJsonNode)(unsafe.Pointer(pNode)).Fn+uint32(1)), pStr, __ccgo_ts+24346, libc.VaList(bp+8, (*TJsonNode)(unsafe.Pointer(pNode)).Fn-uint32(2), *(*uintptr)(unsafe.Pointer(pNode + 8))+uintptr(1)))
 	}
 }
 
@@ -159714,11 +159714,11 @@ func _jsonEachColumn(tls *libc.TLS, cur uintptr, ctx uintptr, i int32) (r int32)
 				_jsonAppendChar(tls, bp, uint8('$'))
 			}
 			if int32((*TJsonEachCursor)(unsafe.Pointer(p)).FeType) == int32(m_JSON_ARRAY) {
-				_jsonPrintf(tls, int32(30), bp, __ccgo_ts+24321, libc.VaList(bp+280, (*TJsonEachCursor)(unsafe.Pointer(p)).FiRowid))
+				_jsonPrintf(tls, int32(30), bp, __ccgo_ts+24341, libc.VaList(bp+280, (*TJsonEachCursor)(unsafe.Pointer(p)).FiRowid))
 			} else {
 				if int32((*TJsonEachCursor)(unsafe.Pointer(p)).FeType) == int32(m_JSON_OBJECT) {
 					_ = libc.Int32FromInt32(0)
-					_jsonPrintf(tls, int32((*TJsonNode)(unsafe.Pointer(pThis)).Fn), bp, __ccgo_ts+24326, libc.VaList(bp+280, (*TJsonNode)(unsafe.Pointer(pThis)).Fn-uint32(2), *(*uintptr)(unsafe.Pointer(pThis + 8))+uintptr(1)))
+					_jsonPrintf(tls, int32((*TJsonNode)(unsafe.Pointer(pThis)).Fn), bp, __ccgo_ts+24346, libc.VaList(bp+280, (*TJsonNode)(unsafe.Pointer(pThis)).Fn-uint32(2), *(*uintptr)(unsafe.Pointer(pThis + 8))+uintptr(1)))
 				}
 			}
 		}
@@ -159734,7 +159734,7 @@ func _jsonEachColumn(tls *libc.TLS, cur uintptr, ctx uintptr, i int32) (r int32)
 	default:
 		zRoot = (*TJsonEachCursor)(unsafe.Pointer(p)).FzRoot
 		if zRoot == uintptr(0) {
-			zRoot = __ccgo_ts + 24332
+			zRoot = __ccgo_ts + 24352
 		}
 		Xsqlite3_result_text(tls, ctx, zRoot, -int32(1), libc.UintptrFromInt32(0))
 	case int32(m_JEACH_JSON):
@@ -159863,7 +159863,7 @@ func _jsonEachFilter(tls *libc.TLS, cur uintptr, idxNum int32, idxStr uintptr, a
 		rc = int32(m_SQLITE_NOMEM)
 		if int32((*TJsonEachCursor)(unsafe.Pointer(p)).FsParse.Foom) == 0 {
 			Xsqlite3_free(tls, (*Tsqlite3_vtab)(unsafe.Pointer((*Tsqlite3_vtab_cursor)(unsafe.Pointer(cur)).FpVtab)).FzErrMsg)
-			(*Tsqlite3_vtab)(unsafe.Pointer((*Tsqlite3_vtab_cursor)(unsafe.Pointer(cur)).FpVtab)).FzErrMsg = Xsqlite3_mprintf(tls, __ccgo_ts+24048, 0)
+			(*Tsqlite3_vtab)(unsafe.Pointer((*Tsqlite3_vtab_cursor)(unsafe.Pointer(cur)).FpVtab)).FzErrMsg = Xsqlite3_mprintf(tls, __ccgo_ts+24068, 0)
 			if (*Tsqlite3_vtab)(unsafe.Pointer((*Tsqlite3_vtab_cursor)(unsafe.Pointer(cur)).FpVtab)).FzErrMsg != 0 {
 				rc = int32(m_SQLITE_ERROR)
 			}
@@ -160023,64 +160023,64 @@ var _aFunc = [15]struct {
 	FxFunc uintptr
 }{
 	0: {
-		FzName: __ccgo_ts + 24334,
+		FzName: __ccgo_ts + 24354,
 		FnArg:  int32(1),
 	},
 	1: {
-		FzName: __ccgo_ts + 24339,
+		FzName: __ccgo_ts + 24359,
 		FnArg:  -int32(1),
 	},
 	2: {
-		FzName: __ccgo_ts + 24350,
+		FzName: __ccgo_ts + 24370,
 		FnArg:  int32(1),
 	},
 	3: {
-		FzName: __ccgo_ts + 24350,
+		FzName: __ccgo_ts + 24370,
 		FnArg:  int32(2),
 	},
 	4: {
-		FzName: __ccgo_ts + 24368,
+		FzName: __ccgo_ts + 24388,
 		FnArg:  -int32(1),
 	},
 	5: {
-		FzName: __ccgo_ts + 24381,
+		FzName: __ccgo_ts + 24401,
 		FnArg:  -int32(1),
 	},
 	6: {
-		FzName: __ccgo_ts + 24393,
+		FzName: __ccgo_ts + 24413,
 		FnArg:  -int32(1),
 	},
 	7: {
-		FzName: __ccgo_ts + 24405,
+		FzName: __ccgo_ts + 24425,
 		FnArg:  int32(2),
 	},
 	8: {
-		FzName: __ccgo_ts + 24416,
+		FzName: __ccgo_ts + 24436,
 		FnArg:  int32(1),
 	},
 	9: {
-		FzName: __ccgo_ts + 24427,
+		FzName: __ccgo_ts + 24447,
 		FnArg:  -int32(1),
 	},
 	10: {
-		FzName: __ccgo_ts + 24439,
+		FzName: __ccgo_ts + 24459,
 		FnArg:  -int32(1),
 	},
 	11: {
-		FzName: __ccgo_ts + 24452,
+		FzName: __ccgo_ts + 24472,
 		FnArg:  -int32(1),
 		Fflag:  int32(1),
 	},
 	12: {
-		FzName: __ccgo_ts + 24461,
+		FzName: __ccgo_ts + 24481,
 		FnArg:  int32(1),
 	},
 	13: {
-		FzName: __ccgo_ts + 24461,
+		FzName: __ccgo_ts + 24481,
 		FnArg:  int32(2),
 	},
 	14: {
-		FzName: __ccgo_ts + 24471,
+		FzName: __ccgo_ts + 24491,
 		FnArg:  int32(1),
 	},
 }
@@ -160112,11 +160112,11 @@ var _aAgg = [2]struct {
 	FxValue uintptr
 }{
 	0: {
-		FzName: __ccgo_ts + 24482,
+		FzName: __ccgo_ts + 24502,
 		FnArg:  int32(1),
 	},
 	1: {
-		FzName: __ccgo_ts + 24499,
+		FzName: __ccgo_ts + 24519,
 		FnArg:  int32(2),
 	},
 }
@@ -160136,11 +160136,11 @@ var _aMod = [2]struct {
 	FpModule uintptr
 }{
 	0: {
-		FzName:   __ccgo_ts + 24517,
+		FzName:   __ccgo_ts + 24537,
 		FpModule: uintptr(unsafe.Pointer(&_jsonEachModule)),
 	},
 	1: {
-		FzName:   __ccgo_ts + 24527,
+		FzName:   __ccgo_ts + 24547,
 		FpModule: uintptr(unsafe.Pointer(&_jsonTreeModule)),
 	},
 }
@@ -160756,11 +160756,11 @@ func _nodeAcquire(tls *libc.TLS, pRtree uintptr, iNode Ti64, pParent uintptr, pp
 		}
 	}
 	if (*TRtree)(unsafe.Pointer(pRtree)).FpNodeBlob == uintptr(0) {
-		zTab = Xsqlite3_mprintf(tls, __ccgo_ts+24537, libc.VaList(bp+8, (*TRtree)(unsafe.Pointer(pRtree)).FzName))
+		zTab = Xsqlite3_mprintf(tls, __ccgo_ts+24557, libc.VaList(bp+8, (*TRtree)(unsafe.Pointer(pRtree)).FzName))
 		if zTab == uintptr(0) {
 			return int32(m_SQLITE_NOMEM)
 		}
-		rc = Xsqlite3_blob_open(tls, (*TRtree)(unsafe.Pointer(pRtree)).Fdb, (*TRtree)(unsafe.Pointer(pRtree)).FzDb, zTab, __ccgo_ts+24545, iNode, 0, pRtree+112)
+		rc = Xsqlite3_blob_open(tls, (*TRtree)(unsafe.Pointer(pRtree)).Fdb, (*TRtree)(unsafe.Pointer(pRtree)).FzDb, zTab, __ccgo_ts+24565, iNode, 0, pRtree+112)
 		Xsqlite3_free(tls, zTab)
 	}
 	if rc != 0 {
@@ -161071,7 +161071,7 @@ func _rtreeDestroy(tls *libc.TLS, pVtab uintptr) (r int32) {
 	var rc int32
 	_, _, _ = pRtree, rc, zCreate
 	pRtree = pVtab
-	zCreate = Xsqlite3_mprintf(tls, __ccgo_ts+24550, libc.VaList(bp+8, (*TRtree)(unsafe.Pointer(pRtree)).FzDb, (*TRtree)(unsafe.Pointer(pRtree)).FzName, (*TRtree)(unsafe.Pointer(pRtree)).FzDb, (*TRtree)(unsafe.Pointer(pRtree)).FzName, (*TRtree)(unsafe.Pointer(pRtree)).FzDb, (*TRtree)(unsafe.Pointer(pRtree)).FzName))
+	zCreate = Xsqlite3_mprintf(tls, __ccgo_ts+24570, libc.VaList(bp+8, (*TRtree)(unsafe.Pointer(pRtree)).FzDb, (*TRtree)(unsafe.Pointer(pRtree)).FzName, (*TRtree)(unsafe.Pointer(pRtree)).FzDb, (*TRtree)(unsafe.Pointer(pRtree)).FzName, (*TRtree)(unsafe.Pointer(pRtree)).FzDb, (*TRtree)(unsafe.Pointer(pRtree)).FzName))
 	if !(zCreate != 0) {
 		rc = int32(m_SQLITE_NOMEM)
 	} else {
@@ -161991,7 +161991,7 @@ func _findLeafNode(tls *libc.TLS, pRtree uintptr, iRowid Ti64, ppLeaf uintptr, p
 func _deserializeGeometry(tls *libc.TLS, pValue uintptr, pCons uintptr) (r int32) {
 	var pBlob, pInfo, pSrc uintptr
 	_, _, _ = pBlob, pInfo, pSrc /* Callback information */
-	pSrc = Xsqlite3_value_pointer(tls, pValue, __ccgo_ts+24632)
+	pSrc = Xsqlite3_value_pointer(tls, pValue, __ccgo_ts+24652)
 	if pSrc == uintptr(0) {
 		return int32(m_SQLITE_ERROR)
 	}
@@ -162275,7 +162275,7 @@ func _rtreeBestIndex(tls *libc.TLS, tab uintptr, pIdxInfo uintptr) (r int32) {
 	(*Tsqlite3_index_info)(unsafe.Pointer(pIdxInfo)).FidxNum = int32(2)
 	(*Tsqlite3_index_info)(unsafe.Pointer(pIdxInfo)).FneedToFreeIdxStr = int32(1)
 	if v7 = iIdx > 0; v7 {
-		v6 = Xsqlite3_mprintf(tls, __ccgo_ts+3560, libc.VaList(bp+56, bp))
+		v6 = Xsqlite3_mprintf(tls, __ccgo_ts+3580, libc.VaList(bp+56, bp))
 		(*Tsqlite3_index_info)(unsafe.Pointer(pIdxInfo)).FidxStr = v6
 	}
 	if v7 && uintptr(0) == v6 {
@@ -163681,7 +163681,7 @@ func _rtreeConstraintError(tls *libc.TLS, pRtree uintptr, iCol int32) (r int32) 
 	_, _, _, _, _, _ = rc, zCol, zCol1, zCol2, zSql, v1
 	*(*uintptr)(unsafe.Pointer(bp)) = uintptr(0)
 	_ = libc.Int32FromInt32(0)
-	zSql = Xsqlite3_mprintf(tls, __ccgo_ts+24646, libc.VaList(bp+16, (*TRtree)(unsafe.Pointer(pRtree)).FzDb, (*TRtree)(unsafe.Pointer(pRtree)).FzName))
+	zSql = Xsqlite3_mprintf(tls, __ccgo_ts+24666, libc.VaList(bp+16, (*TRtree)(unsafe.Pointer(pRtree)).FzDb, (*TRtree)(unsafe.Pointer(pRtree)).FzName))
 	if zSql != 0 {
 		rc = Xsqlite3_prepare_v2(tls, (*TRtree)(unsafe.Pointer(pRtree)).Fdb, zSql, -int32(1), bp, uintptr(0))
 	} else {
@@ -163691,11 +163691,11 @@ func _rtreeConstraintError(tls *libc.TLS, pRtree uintptr, iCol int32) (r int32) 
 	if rc == m_SQLITE_OK {
 		if iCol == 0 {
 			zCol = Xsqlite3_column_name(tls, *(*uintptr)(unsafe.Pointer(bp)), 0)
-			(*TRtree)(unsafe.Pointer(pRtree)).Fbase.FzErrMsg = Xsqlite3_mprintf(tls, __ccgo_ts+24666, libc.VaList(bp+16, (*TRtree)(unsafe.Pointer(pRtree)).FzName, zCol))
+			(*TRtree)(unsafe.Pointer(pRtree)).Fbase.FzErrMsg = Xsqlite3_mprintf(tls, __ccgo_ts+24686, libc.VaList(bp+16, (*TRtree)(unsafe.Pointer(pRtree)).FzName, zCol))
 		} else {
 			zCol1 = Xsqlite3_column_name(tls, *(*uintptr)(unsafe.Pointer(bp)), iCol)
 			zCol2 = Xsqlite3_column_name(tls, *(*uintptr)(unsafe.Pointer(bp)), iCol+int32(1))
-			(*TRtree)(unsafe.Pointer(pRtree)).Fbase.FzErrMsg = Xsqlite3_mprintf(tls, __ccgo_ts+24698, libc.VaList(bp+16, (*TRtree)(unsafe.Pointer(pRtree)).FzName, zCol1, zCol2))
+			(*TRtree)(unsafe.Pointer(pRtree)).Fbase.FzErrMsg = Xsqlite3_mprintf(tls, __ccgo_ts+24718, libc.VaList(bp+16, (*TRtree)(unsafe.Pointer(pRtree)).FzName, zCol1, zCol2))
 		}
 	}
 	Xsqlite3_finalize(tls, *(*uintptr)(unsafe.Pointer(bp)))
@@ -163903,7 +163903,7 @@ func _rtreeRename(tls *libc.TLS, pVtab uintptr, zNewName uintptr) (r int32) {
 	_, _, _ = pRtree, rc, zSql
 	pRtree = pVtab
 	rc = int32(m_SQLITE_NOMEM)
-	zSql = Xsqlite3_mprintf(tls, __ccgo_ts+24735, libc.VaList(bp+8, (*TRtree)(unsafe.Pointer(pRtree)).FzDb, (*TRtree)(unsafe.Pointer(pRtree)).FzName, zNewName, (*TRtree)(unsafe.Pointer(pRtree)).FzDb, (*TRtree)(unsafe.Pointer(pRtree)).FzName, zNewName, (*TRtree)(unsafe.Pointer(pRtree)).FzDb, (*TRtree)(unsafe.Pointer(pRtree)).FzName, zNewName))
+	zSql = Xsqlite3_mprintf(tls, __ccgo_ts+24755, libc.VaList(bp+8, (*TRtree)(unsafe.Pointer(pRtree)).FzDb, (*TRtree)(unsafe.Pointer(pRtree)).FzName, zNewName, (*TRtree)(unsafe.Pointer(pRtree)).FzDb, (*TRtree)(unsafe.Pointer(pRtree)).FzName, zNewName, (*TRtree)(unsafe.Pointer(pRtree)).FzDb, (*TRtree)(unsafe.Pointer(pRtree)).FzName, zNewName))
 	if zSql != 0 {
 		_nodeBlobReset(tls, pRtree)
 		rc = Xsqlite3_exec(tls, (*TRtree)(unsafe.Pointer(pRtree)).Fdb, zSql, uintptr(0), uintptr(0), uintptr(0))
@@ -163957,9 +163957,9 @@ func _rtreeQueryStat1(tls *libc.TLS, db uintptr, pRtree uintptr) (r int32) {
 	var v2 int64
 	var _ /* p at bp+0 */ uintptr
 	_, _, _, _, _, _ = nRow, rc, zFmt, zSql, v1, v2
-	zFmt = __ccgo_ts + 24880
+	zFmt = __ccgo_ts + 24900
 	nRow = int64(m_RTREE_MIN_ROWEST)
-	rc = Xsqlite3_table_column_metadata(tls, db, (*TRtree)(unsafe.Pointer(pRtree)).FzDb, __ccgo_ts+11057, uintptr(0), uintptr(0), uintptr(0), uintptr(0), uintptr(0), uintptr(0))
+	rc = Xsqlite3_table_column_metadata(tls, db, (*TRtree)(unsafe.Pointer(pRtree)).FzDb, __ccgo_ts+11077, uintptr(0), uintptr(0), uintptr(0), uintptr(0), uintptr(0), uintptr(0))
 	if rc != m_SQLITE_OK {
 		(*TRtree)(unsafe.Pointer(pRtree)).FnRowEst = int64(m_RTREE_DEFAULT_ROWEST)
 		if rc == int32(m_SQLITE_ERROR) {
@@ -164016,9 +164016,9 @@ func _rtreeShadowName(tls *libc.TLS, zName uintptr) (r int32) {
 }
 
 var _azName1 = [3]uintptr{
-	0: __ccgo_ts + 24936,
-	1: __ccgo_ts + 4930,
-	2: __ccgo_ts + 16054,
+	0: __ccgo_ts + 24956,
+	1: __ccgo_ts + 4950,
+	2: __ccgo_ts + 16074,
 }
 
 var _rtreeModule = Tsqlite3_module{
@@ -164061,20 +164061,20 @@ func _rtreeSqlInit(tls *libc.TLS, pRtree uintptr, db uintptr, zDb uintptr, zPref
 	(*TRtree)(unsafe.Pointer(pRtree)).Fdb = db
 	if isCreate != 0 {
 		p = Xsqlite3_str_new(tls, db)
-		Xsqlite3_str_appendf(tls, p, __ccgo_ts+25350, libc.VaList(bp+8, zDb, zPrefix))
+		Xsqlite3_str_appendf(tls, p, __ccgo_ts+25370, libc.VaList(bp+8, zDb, zPrefix))
 		ii = 0
 		for {
 			if !(ii < int32((*TRtree)(unsafe.Pointer(pRtree)).FnAux)) {
 				break
 			}
-			Xsqlite3_str_appendf(tls, p, __ccgo_ts+25412, libc.VaList(bp+8, ii))
+			Xsqlite3_str_appendf(tls, p, __ccgo_ts+25432, libc.VaList(bp+8, ii))
 			goto _1
 		_1:
 			ii++
 		}
-		Xsqlite3_str_appendf(tls, p, __ccgo_ts+25417, libc.VaList(bp+8, zDb, zPrefix))
-		Xsqlite3_str_appendf(tls, p, __ccgo_ts+25481, libc.VaList(bp+8, zDb, zPrefix))
-		Xsqlite3_str_appendf(tls, p, __ccgo_ts+25551, libc.VaList(bp+8, zDb, zPrefix, (*TRtree)(unsafe.Pointer(pRtree)).FiNodeSize))
+		Xsqlite3_str_appendf(tls, p, __ccgo_ts+25437, libc.VaList(bp+8, zDb, zPrefix))
+		Xsqlite3_str_appendf(tls, p, __ccgo_ts+25501, libc.VaList(bp+8, zDb, zPrefix))
+		Xsqlite3_str_appendf(tls, p, __ccgo_ts+25571, libc.VaList(bp+8, zDb, zPrefix, (*TRtree)(unsafe.Pointer(pRtree)).FiNodeSize))
 		zCreate = Xsqlite3_str_finish(tls, p)
 		if !(zCreate != 0) {
 			return int32(m_SQLITE_NOMEM)
@@ -164104,7 +164104,7 @@ func _rtreeSqlInit(tls *libc.TLS, pRtree uintptr, db uintptr, zDb uintptr, zPref
 		} else {
 			/* An UPSERT is very slightly slower than REPLACE, but it is needed
 			 ** if there are auxiliary columns */
-			zFormat = __ccgo_ts + 25600
+			zFormat = __ccgo_ts + 25620
 		}
 		zSql = Xsqlite3_mprintf(tls, zFormat, libc.VaList(bp+8, zDb, zPrefix))
 		if zSql != 0 {
@@ -164118,30 +164118,30 @@ func _rtreeSqlInit(tls *libc.TLS, pRtree uintptr, db uintptr, zDb uintptr, zPref
 		i++
 	}
 	if (*TRtree)(unsafe.Pointer(pRtree)).FnAux != 0 {
-		(*TRtree)(unsafe.Pointer(pRtree)).FzReadAuxSql = Xsqlite3_mprintf(tls, __ccgo_ts+25708, libc.VaList(bp+8, zDb, zPrefix))
+		(*TRtree)(unsafe.Pointer(pRtree)).FzReadAuxSql = Xsqlite3_mprintf(tls, __ccgo_ts+25728, libc.VaList(bp+8, zDb, zPrefix))
 		if (*TRtree)(unsafe.Pointer(pRtree)).FzReadAuxSql == uintptr(0) {
 			rc = int32(m_SQLITE_NOMEM)
 		} else {
 			p1 = Xsqlite3_str_new(tls, db)
-			Xsqlite3_str_appendf(tls, p1, __ccgo_ts+25753, libc.VaList(bp+8, zDb, zPrefix))
+			Xsqlite3_str_appendf(tls, p1, __ccgo_ts+25773, libc.VaList(bp+8, zDb, zPrefix))
 			ii1 = 0
 			for {
 				if !(ii1 < int32((*TRtree)(unsafe.Pointer(pRtree)).FnAux)) {
 					break
 				}
 				if ii1 != 0 {
-					Xsqlite3_str_append(tls, p1, __ccgo_ts+12602, int32(1))
+					Xsqlite3_str_append(tls, p1, __ccgo_ts+12622, int32(1))
 				}
 				if ii1 < int32((*TRtree)(unsafe.Pointer(pRtree)).FnAuxNotNull) {
-					Xsqlite3_str_appendf(tls, p1, __ccgo_ts+25780, libc.VaList(bp+8, ii1, ii1+int32(2), ii1))
+					Xsqlite3_str_appendf(tls, p1, __ccgo_ts+25800, libc.VaList(bp+8, ii1, ii1+int32(2), ii1))
 				} else {
-					Xsqlite3_str_appendf(tls, p1, __ccgo_ts+25802, libc.VaList(bp+8, ii1, ii1+int32(2)))
+					Xsqlite3_str_appendf(tls, p1, __ccgo_ts+25822, libc.VaList(bp+8, ii1, ii1+int32(2)))
 				}
 				goto _3
 			_3:
 				ii1++
 			}
-			Xsqlite3_str_appendf(tls, p1, __ccgo_ts+25810, 0)
+			Xsqlite3_str_appendf(tls, p1, __ccgo_ts+25830, 0)
 			zSql1 = Xsqlite3_str_finish(tls, p1)
 			if zSql1 == uintptr(0) {
 				rc = int32(m_SQLITE_NOMEM)
@@ -164155,14 +164155,14 @@ func _rtreeSqlInit(tls *libc.TLS, pRtree uintptr, db uintptr, zDb uintptr, zPref
 }
 
 var _azSql = [8]uintptr{
-	0: __ccgo_ts + 24941,
-	1: __ccgo_ts + 24994,
-	2: __ccgo_ts + 25039,
-	3: __ccgo_ts + 25091,
-	4: __ccgo_ts + 25145,
-	5: __ccgo_ts + 25190,
-	6: __ccgo_ts + 25248,
-	7: __ccgo_ts + 25303,
+	0: __ccgo_ts + 24961,
+	1: __ccgo_ts + 25014,
+	2: __ccgo_ts + 25059,
+	3: __ccgo_ts + 25111,
+	4: __ccgo_ts + 25165,
+	5: __ccgo_ts + 25210,
+	6: __ccgo_ts + 25268,
+	7: __ccgo_ts + 25323,
 }
 
 // C documentation
@@ -164220,7 +164220,7 @@ func _getNodeSize(tls *libc.TLS, db uintptr, pRtree uintptr, isCreate int32, pzE
 	_, _ = rc, zSql
 	if isCreate != 0 {
 		*(*int32)(unsafe.Pointer(bp)) = 0
-		zSql = Xsqlite3_mprintf(tls, __ccgo_ts+25826, libc.VaList(bp+16, (*TRtree)(unsafe.Pointer(pRtree)).FzDb))
+		zSql = Xsqlite3_mprintf(tls, __ccgo_ts+25846, libc.VaList(bp+16, (*TRtree)(unsafe.Pointer(pRtree)).FzDb))
 		rc = _getIntFromStmt(tls, db, zSql, bp)
 		if rc == m_SQLITE_OK {
 			(*TRtree)(unsafe.Pointer(pRtree)).FiNodeSize = *(*int32)(unsafe.Pointer(bp)) - int32(64)
@@ -164228,17 +164228,17 @@ func _getNodeSize(tls *libc.TLS, db uintptr, pRtree uintptr, isCreate int32, pzE
 				(*TRtree)(unsafe.Pointer(pRtree)).FiNodeSize = int32(4) + int32((*TRtree)(unsafe.Pointer(pRtree)).FnBytesPerCell)*int32(m_RTREE_MAXCELLS)
 			}
 		} else {
-			*(*uintptr)(unsafe.Pointer(pzErr)) = Xsqlite3_mprintf(tls, __ccgo_ts+3560, libc.VaList(bp+16, Xsqlite3_errmsg(tls, db)))
+			*(*uintptr)(unsafe.Pointer(pzErr)) = Xsqlite3_mprintf(tls, __ccgo_ts+3580, libc.VaList(bp+16, Xsqlite3_errmsg(tls, db)))
 		}
 	} else {
-		zSql = Xsqlite3_mprintf(tls, __ccgo_ts+25846, libc.VaList(bp+16, (*TRtree)(unsafe.Pointer(pRtree)).FzDb, (*TRtree)(unsafe.Pointer(pRtree)).FzName))
+		zSql = Xsqlite3_mprintf(tls, __ccgo_ts+25866, libc.VaList(bp+16, (*TRtree)(unsafe.Pointer(pRtree)).FzDb, (*TRtree)(unsafe.Pointer(pRtree)).FzName))
 		rc = _getIntFromStmt(tls, db, zSql, pRtree+32)
 		if rc != m_SQLITE_OK {
-			*(*uintptr)(unsafe.Pointer(pzErr)) = Xsqlite3_mprintf(tls, __ccgo_ts+3560, libc.VaList(bp+16, Xsqlite3_errmsg(tls, db)))
+			*(*uintptr)(unsafe.Pointer(pzErr)) = Xsqlite3_mprintf(tls, __ccgo_ts+3580, libc.VaList(bp+16, Xsqlite3_errmsg(tls, db)))
 		} else {
 			if (*TRtree)(unsafe.Pointer(pRtree)).FiNodeSize < libc.Int32FromInt32(512)-libc.Int32FromInt32(64) {
 				rc = libc.Int32FromInt32(m_SQLITE_CORRUPT) | libc.Int32FromInt32(1)<<libc.Int32FromInt32(8)
-				*(*uintptr)(unsafe.Pointer(pzErr)) = Xsqlite3_mprintf(tls, __ccgo_ts+25903, libc.VaList(bp+16, (*TRtree)(unsafe.Pointer(pRtree)).FzName))
+				*(*uintptr)(unsafe.Pointer(pzErr)) = Xsqlite3_mprintf(tls, __ccgo_ts+25923, libc.VaList(bp+16, (*TRtree)(unsafe.Pointer(pRtree)).FzName))
 			}
 		}
 	}
@@ -164286,14 +164286,14 @@ func _rtreeInit(tls *libc.TLS, db uintptr, pAux uintptr, argc int32, argv uintpt
 	eCoordType = v1
 	ii = int32(4)
 	aErrMsg = [5]uintptr{
-		1: __ccgo_ts + 25938,
-		2: __ccgo_ts + 25981,
-		3: __ccgo_ts + 26016,
-		4: __ccgo_ts + 26052,
+		1: __ccgo_ts + 25958,
+		2: __ccgo_ts + 26001,
+		3: __ccgo_ts + 26036,
+		4: __ccgo_ts + 26072,
 	}
 	_ = libc.Int32FromInt32(0) /* Aux columns counted by a u8 */
 	if argc < int32(6) || argc > libc.Int32FromInt32(m_RTREE_MAX_AUX_COLUMN)+libc.Int32FromInt32(3) {
-		*(*uintptr)(unsafe.Pointer(pzErr)) = Xsqlite3_mprintf(tls, __ccgo_ts+3560, libc.VaList(bp+8, aErrMsg[int32(2)+libc.BoolInt32(argc >= int32(6))]))
+		*(*uintptr)(unsafe.Pointer(pzErr)) = Xsqlite3_mprintf(tls, __ccgo_ts+3580, libc.VaList(bp+8, aErrMsg[int32(2)+libc.BoolInt32(argc >= int32(6))]))
 		return int32(m_SQLITE_ERROR)
 	}
 	Xsqlite3_vtab_config(tls, db, int32(m_SQLITE_VTAB_CONSTRAINT_SUPPORT), libc.VaList(bp+8, int32(1)))
@@ -164317,7 +164317,7 @@ func _rtreeInit(tls *libc.TLS, db uintptr, pAux uintptr, argc int32, argv uintpt
 	 ** the r-tree table schema.
 	 */
 	pSql = Xsqlite3_str_new(tls, db)
-	Xsqlite3_str_appendf(tls, pSql, __ccgo_ts+26089, libc.VaList(bp+8, _rtreeTokenLength(tls, *(*uintptr)(unsafe.Pointer(argv + 3*8))), *(*uintptr)(unsafe.Pointer(argv + 3*8))))
+	Xsqlite3_str_appendf(tls, pSql, __ccgo_ts+26109, libc.VaList(bp+8, _rtreeTokenLength(tls, *(*uintptr)(unsafe.Pointer(argv + 3*8))), *(*uintptr)(unsafe.Pointer(argv + 3*8))))
 	ii = int32(4)
 	for {
 		if !(ii < argc) {
@@ -164326,7 +164326,7 @@ func _rtreeInit(tls *libc.TLS, db uintptr, pAux uintptr, argc int32, argv uintpt
 		zArg = *(*uintptr)(unsafe.Pointer(argv + uintptr(ii)*8))
 		if int32(*(*uint8)(unsafe.Pointer(zArg))) == int32('+') {
 			(*TRtree)(unsafe.Pointer(pRtree)).FnAux++
-			Xsqlite3_str_appendf(tls, pSql, __ccgo_ts+26113, libc.VaList(bp+8, _rtreeTokenLength(tls, zArg+uintptr(1)), zArg+uintptr(1)))
+			Xsqlite3_str_appendf(tls, pSql, __ccgo_ts+26133, libc.VaList(bp+8, _rtreeTokenLength(tls, zArg+uintptr(1)), zArg+uintptr(1)))
 		} else {
 			if int32((*TRtree)(unsafe.Pointer(pRtree)).FnAux) > 0 {
 				break
@@ -164339,19 +164339,19 @@ func _rtreeInit(tls *libc.TLS, db uintptr, pAux uintptr, argc int32, argv uintpt
 	_2:
 		ii++
 	}
-	Xsqlite3_str_appendf(tls, pSql, __ccgo_ts+26140, 0)
+	Xsqlite3_str_appendf(tls, pSql, __ccgo_ts+26160, 0)
 	zSql = Xsqlite3_str_finish(tls, pSql)
 	if !(zSql != 0) {
 		rc = int32(m_SQLITE_NOMEM)
 	} else {
 		if ii < argc {
-			*(*uintptr)(unsafe.Pointer(pzErr)) = Xsqlite3_mprintf(tls, __ccgo_ts+3560, libc.VaList(bp+8, aErrMsg[int32(4)]))
+			*(*uintptr)(unsafe.Pointer(pzErr)) = Xsqlite3_mprintf(tls, __ccgo_ts+3580, libc.VaList(bp+8, aErrMsg[int32(4)]))
 			rc = int32(m_SQLITE_ERROR)
 		} else {
 			v3 = Xsqlite3_declare_vtab(tls, db, zSql)
 			rc = v3
 			if m_SQLITE_OK != v3 {
-				*(*uintptr)(unsafe.Pointer(pzErr)) = Xsqlite3_mprintf(tls, __ccgo_ts+3560, libc.VaList(bp+8, Xsqlite3_errmsg(tls, db)))
+				*(*uintptr)(unsafe.Pointer(pzErr)) = Xsqlite3_mprintf(tls, __ccgo_ts+3580, libc.VaList(bp+8, Xsqlite3_errmsg(tls, db)))
 			}
 		}
 	}
@@ -164374,7 +164374,7 @@ func _rtreeInit(tls *libc.TLS, db uintptr, pAux uintptr, argc int32, argv uintpt
 		}
 	}
 	if iErr != 0 {
-		*(*uintptr)(unsafe.Pointer(pzErr)) = Xsqlite3_mprintf(tls, __ccgo_ts+3560, libc.VaList(bp+8, aErrMsg[iErr]))
+		*(*uintptr)(unsafe.Pointer(pzErr)) = Xsqlite3_mprintf(tls, __ccgo_ts+3580, libc.VaList(bp+8, aErrMsg[iErr]))
 		goto rtreeInit_fail
 	}
 	(*TRtree)(unsafe.Pointer(pRtree)).FnBytesPerCell = uint8(int32(8) + int32((*TRtree)(unsafe.Pointer(pRtree)).FnDim2)*int32(4))
@@ -164385,7 +164385,7 @@ func _rtreeInit(tls *libc.TLS, db uintptr, pAux uintptr, argc int32, argv uintpt
 	}
 	rc = _rtreeSqlInit(tls, pRtree, db, *(*uintptr)(unsafe.Pointer(argv + 1*8)), *(*uintptr)(unsafe.Pointer(argv + 2*8)), isCreate)
 	if rc != 0 {
-		*(*uintptr)(unsafe.Pointer(pzErr)) = Xsqlite3_mprintf(tls, __ccgo_ts+3560, libc.VaList(bp+8, Xsqlite3_errmsg(tls, db)))
+		*(*uintptr)(unsafe.Pointer(pzErr)) = Xsqlite3_mprintf(tls, __ccgo_ts+3580, libc.VaList(bp+8, Xsqlite3_errmsg(tls, db)))
 		goto rtreeInit_fail
 	}
 	*(*uintptr)(unsafe.Pointer(ppVtab)) = pRtree
@@ -164401,8 +164401,8 @@ rtreeInit_fail:
 }
 
 var _azFormat = [2]uintptr{
-	0: __ccgo_ts + 26119,
-	1: __ccgo_ts + 26130,
+	0: __ccgo_ts + 26139,
+	1: __ccgo_ts + 26150,
 }
 
 // C documentation
@@ -164460,20 +164460,20 @@ func _rtreenode(tls *libc.TLS, ctx uintptr, nArg int32, apArg uintptr) {
 		}
 		_nodeGetCell(tls, bp+40, bp, ii, bp+1008)
 		if ii > 0 {
-			Xsqlite3_str_append(tls, pOut, __ccgo_ts+10685, int32(1))
+			Xsqlite3_str_append(tls, pOut, __ccgo_ts+10705, int32(1))
 		}
-		Xsqlite3_str_appendf(tls, pOut, __ccgo_ts+26143, libc.VaList(bp+1064, (*(*TRtreeCell)(unsafe.Pointer(bp + 1008))).FiRowid))
+		Xsqlite3_str_appendf(tls, pOut, __ccgo_ts+26163, libc.VaList(bp+1064, (*(*TRtreeCell)(unsafe.Pointer(bp + 1008))).FiRowid))
 		jj = 0
 		for {
 			if !(jj < int32((*(*TRtree)(unsafe.Pointer(bp + 40))).FnDim2)) {
 				break
 			}
-			Xsqlite3_str_appendf(tls, pOut, __ccgo_ts+26149, libc.VaList(bp+1064, float64(*(*TRtreeValue)(unsafe.Pointer(bp + 1008 + 8 + uintptr(jj)*4)))))
+			Xsqlite3_str_appendf(tls, pOut, __ccgo_ts+26169, libc.VaList(bp+1064, float64(*(*TRtreeValue)(unsafe.Pointer(bp + 1008 + 8 + uintptr(jj)*4)))))
 			goto _2
 		_2:
 			jj++
 		}
-		Xsqlite3_str_append(tls, pOut, __ccgo_ts+26153, int32(1))
+		Xsqlite3_str_append(tls, pOut, __ccgo_ts+26173, int32(1))
 		goto _1
 	_1:
 		ii++
@@ -164499,7 +164499,7 @@ func _rtreedepth(tls *libc.TLS, ctx uintptr, nArg int32, apArg uintptr) {
 	_ = zBlob
 	_ = nArg
 	if Xsqlite3_value_type(tls, *(*uintptr)(unsafe.Pointer(apArg))) != int32(m_SQLITE_BLOB) || Xsqlite3_value_bytes(tls, *(*uintptr)(unsafe.Pointer(apArg))) < int32(2) {
-		Xsqlite3_result_error(tls, ctx, __ccgo_ts+26155, -int32(1))
+		Xsqlite3_result_error(tls, ctx, __ccgo_ts+26175, -int32(1))
 	} else {
 		zBlob = Xsqlite3_value_blob(tls, *(*uintptr)(unsafe.Pointer(apArg)))
 		if zBlob != 0 {
@@ -164613,11 +164613,11 @@ func _rtreeCheckAppendMsg(tls *libc.TLS, pCheck uintptr, zFmt uintptr, va uintpt
 			(*TRtreeCheck)(unsafe.Pointer(pCheck)).Frc = int32(m_SQLITE_NOMEM)
 		} else {
 			if (*TRtreeCheck)(unsafe.Pointer(pCheck)).FzReport != 0 {
-				v1 = __ccgo_ts + 3925
+				v1 = __ccgo_ts + 3945
 			} else {
-				v1 = __ccgo_ts + 1511
+				v1 = __ccgo_ts + 1531
 			}
-			(*TRtreeCheck)(unsafe.Pointer(pCheck)).FzReport = Xsqlite3_mprintf(tls, __ccgo_ts+26188, libc.VaList(bp+8, (*TRtreeCheck)(unsafe.Pointer(pCheck)).FzReport, v1, z))
+			(*TRtreeCheck)(unsafe.Pointer(pCheck)).FzReport = Xsqlite3_mprintf(tls, __ccgo_ts+26208, libc.VaList(bp+8, (*TRtreeCheck)(unsafe.Pointer(pCheck)).FzReport, v1, z))
 			if (*TRtreeCheck)(unsafe.Pointer(pCheck)).FzReport == uintptr(0) {
 				(*TRtreeCheck)(unsafe.Pointer(pCheck)).Frc = int32(m_SQLITE_NOMEM)
 			}
@@ -164651,7 +164651,7 @@ func _rtreeCheckGetNode(tls *libc.TLS, pCheck uintptr, iNode Ti64, pnNode uintpt
 	_, _, _ = nNode, pNode, pRet
 	pRet = uintptr(0) /* Return value */
 	if (*TRtreeCheck)(unsafe.Pointer(pCheck)).Frc == m_SQLITE_OK && (*TRtreeCheck)(unsafe.Pointer(pCheck)).FpGetNode == uintptr(0) {
-		(*TRtreeCheck)(unsafe.Pointer(pCheck)).FpGetNode = _rtreeCheckPrepare(tls, pCheck, __ccgo_ts+26195, libc.VaList(bp+8, (*TRtreeCheck)(unsafe.Pointer(pCheck)).FzDb, (*TRtreeCheck)(unsafe.Pointer(pCheck)).FzTab))
+		(*TRtreeCheck)(unsafe.Pointer(pCheck)).FpGetNode = _rtreeCheckPrepare(tls, pCheck, __ccgo_ts+26215, libc.VaList(bp+8, (*TRtreeCheck)(unsafe.Pointer(pCheck)).FzDb, (*TRtreeCheck)(unsafe.Pointer(pCheck)).FzTab))
 	}
 	if (*TRtreeCheck)(unsafe.Pointer(pCheck)).Frc == m_SQLITE_OK {
 		Xsqlite3_bind_int64(tls, (*TRtreeCheck)(unsafe.Pointer(pCheck)).FpGetNode, int32(1), iNode)
@@ -164668,7 +164668,7 @@ func _rtreeCheckGetNode(tls *libc.TLS, pCheck uintptr, iNode Ti64, pnNode uintpt
 		}
 		_rtreeCheckReset(tls, pCheck, (*TRtreeCheck)(unsafe.Pointer(pCheck)).FpGetNode)
 		if (*TRtreeCheck)(unsafe.Pointer(pCheck)).Frc == m_SQLITE_OK && pRet == uintptr(0) {
-			_rtreeCheckAppendMsg(tls, pCheck, __ccgo_ts+26240, libc.VaList(bp+8, iNode))
+			_rtreeCheckAppendMsg(tls, pCheck, __ccgo_ts+26260, libc.VaList(bp+8, iNode))
 		}
 	}
 	return pRet
@@ -164697,8 +164697,8 @@ func _rtreeCheckMapping(tls *libc.TLS, pCheck uintptr, bLeaf int32, iKey Ti64, i
 	var rc int32
 	_, _, _, _, _, _ = azSql, ii, pStmt, rc, v1, v2
 	azSql = [2]uintptr{
-		0: __ccgo_ts + 26272,
-		1: __ccgo_ts + 26326,
+		0: __ccgo_ts + 26292,
+		1: __ccgo_ts + 26346,
 	}
 	_ = libc.Int32FromInt32(0)
 	if *(*uintptr)(unsafe.Pointer(pCheck + 40 + uintptr(bLeaf)*8)) == uintptr(0) {
@@ -164712,21 +164712,21 @@ func _rtreeCheckMapping(tls *libc.TLS, pCheck uintptr, bLeaf int32, iKey Ti64, i
 	rc = Xsqlite3_step(tls, pStmt)
 	if rc == int32(m_SQLITE_DONE) {
 		if bLeaf != 0 {
-			v1 = __ccgo_ts + 26374
+			v1 = __ccgo_ts + 26394
 		} else {
-			v1 = __ccgo_ts + 26382
+			v1 = __ccgo_ts + 26402
 		}
-		_rtreeCheckAppendMsg(tls, pCheck, __ccgo_ts+26391, libc.VaList(bp+8, iKey, iVal, v1))
+		_rtreeCheckAppendMsg(tls, pCheck, __ccgo_ts+26411, libc.VaList(bp+8, iKey, iVal, v1))
 	} else {
 		if rc == int32(m_SQLITE_ROW) {
 			ii = Xsqlite3_column_int64(tls, pStmt, 0)
 			if ii != iVal {
 				if bLeaf != 0 {
-					v2 = __ccgo_ts + 26374
+					v2 = __ccgo_ts + 26394
 				} else {
-					v2 = __ccgo_ts + 26382
+					v2 = __ccgo_ts + 26402
 				}
-				_rtreeCheckAppendMsg(tls, pCheck, __ccgo_ts+26436, libc.VaList(bp+8, iKey, ii, v2, iKey, iVal))
+				_rtreeCheckAppendMsg(tls, pCheck, __ccgo_ts+26456, libc.VaList(bp+8, iKey, ii, v2, iKey, iVal))
 			}
 		}
 	}
@@ -164771,7 +164771,7 @@ func _rtreeCheckCellCoord(tls *libc.TLS, pCheck uintptr, iNode Ti64, iCell int32
 			v2 = libc.BoolInt32(*(*TRtreeValue)(unsafe.Pointer(bp)) > *(*TRtreeValue)(unsafe.Pointer(bp + 4)))
 		}
 		if v2 != 0 {
-			_rtreeCheckAppendMsg(tls, pCheck, __ccgo_ts+26494, libc.VaList(bp+24, i, iCell, iNode))
+			_rtreeCheckAppendMsg(tls, pCheck, __ccgo_ts+26514, libc.VaList(bp+24, i, iCell, iNode))
 		}
 		if pParent != 0 {
 			_readCoord(tls, pParent+uintptr(libc.Int32FromInt32(4)*libc.Int32FromInt32(2)*i), bp+8)
@@ -164789,7 +164789,7 @@ func _rtreeCheckCellCoord(tls *libc.TLS, pCheck uintptr, iNode Ti64, iCell int32
 				}
 			}
 			if v5 || v4 != 0 {
-				_rtreeCheckAppendMsg(tls, pCheck, __ccgo_ts+26542, libc.VaList(bp+24, i, iCell, iNode))
+				_rtreeCheckAppendMsg(tls, pCheck, __ccgo_ts+26562, libc.VaList(bp+24, i, iCell, iNode))
 			}
 		}
 		goto _1
@@ -164823,19 +164823,19 @@ func _rtreeCheckNode(tls *libc.TLS, pCheck uintptr, iDepth int32, aParent uintpt
 	aNode = _rtreeCheckGetNode(tls, pCheck, iNode, bp)
 	if aNode != 0 {
 		if *(*int32)(unsafe.Pointer(bp)) < int32(4) {
-			_rtreeCheckAppendMsg(tls, pCheck, __ccgo_ts+26609, libc.VaList(bp+16, iNode, *(*int32)(unsafe.Pointer(bp))))
+			_rtreeCheckAppendMsg(tls, pCheck, __ccgo_ts+26629, libc.VaList(bp+16, iNode, *(*int32)(unsafe.Pointer(bp))))
 		} else { /* Used to iterate through cells */
 			if aParent == uintptr(0) {
 				iDepth = _readInt16(tls, aNode)
 				if iDepth > int32(m_RTREE_MAX_DEPTH) {
-					_rtreeCheckAppendMsg(tls, pCheck, __ccgo_ts+26643, libc.VaList(bp+16, iDepth))
+					_rtreeCheckAppendMsg(tls, pCheck, __ccgo_ts+26663, libc.VaList(bp+16, iDepth))
 					Xsqlite3_free(tls, aNode)
 					return
 				}
 			}
 			nCell = _readInt16(tls, aNode+2)
 			if int32(4)+nCell*(int32(8)+(*TRtreeCheck)(unsafe.Pointer(pCheck)).FnDim*int32(2)*int32(4)) > *(*int32)(unsafe.Pointer(bp)) {
-				_rtreeCheckAppendMsg(tls, pCheck, __ccgo_ts+26673, libc.VaList(bp+16, iNode, nCell, *(*int32)(unsafe.Pointer(bp))))
+				_rtreeCheckAppendMsg(tls, pCheck, __ccgo_ts+26693, libc.VaList(bp+16, iNode, nCell, *(*int32)(unsafe.Pointer(bp))))
 			} else {
 				i = 0
 				for {
@@ -164879,12 +164879,12 @@ func _rtreeCheckCount(tls *libc.TLS, pCheck uintptr, zTbl uintptr, nExpect Ti64)
 	var pCount uintptr
 	_, _ = nActual, pCount
 	if (*TRtreeCheck)(unsafe.Pointer(pCheck)).Frc == m_SQLITE_OK {
-		pCount = _rtreeCheckPrepare(tls, pCheck, __ccgo_ts+26728, libc.VaList(bp+8, (*TRtreeCheck)(unsafe.Pointer(pCheck)).FzDb, (*TRtreeCheck)(unsafe.Pointer(pCheck)).FzTab, zTbl))
+		pCount = _rtreeCheckPrepare(tls, pCheck, __ccgo_ts+26748, libc.VaList(bp+8, (*TRtreeCheck)(unsafe.Pointer(pCheck)).FzDb, (*TRtreeCheck)(unsafe.Pointer(pCheck)).FzTab, zTbl))
 		if pCount != 0 {
 			if Xsqlite3_step(tls, pCount) == int32(m_SQLITE_ROW) {
 				nActual = Xsqlite3_column_int64(tls, pCount, 0)
 				if nActual != nExpect {
-					_rtreeCheckAppendMsg(tls, pCheck, __ccgo_ts+26759, libc.VaList(bp+8, zTbl, nExpect, nActual))
+					_rtreeCheckAppendMsg(tls, pCheck, __ccgo_ts+26779, libc.VaList(bp+8, zTbl, nExpect, nActual))
 				}
 			}
 			(*TRtreeCheck)(unsafe.Pointer(pCheck)).Frc = Xsqlite3_finalize(tls, pCount)
@@ -164917,12 +164917,12 @@ func _rtreeCheckTable(tls *libc.TLS, db uintptr, zDb uintptr, zTab uintptr, pzRe
 	 ** to ensure that the queries run as part of this integrity-check operate
 	 ** on a consistent snapshot.  */
 	if Xsqlite3_get_autocommit(tls, db) != 0 {
-		(*(*TRtreeCheck)(unsafe.Pointer(bp))).Frc = Xsqlite3_exec(tls, db, __ccgo_ts+14338, uintptr(0), uintptr(0), uintptr(0))
+		(*(*TRtreeCheck)(unsafe.Pointer(bp))).Frc = Xsqlite3_exec(tls, db, __ccgo_ts+14358, uintptr(0), uintptr(0), uintptr(0))
 		bEnd = int32(1)
 	}
 	/* Find the number of auxiliary columns */
 	if (*(*TRtreeCheck)(unsafe.Pointer(bp))).Frc == m_SQLITE_OK {
-		pStmt = _rtreeCheckPrepare(tls, bp, __ccgo_ts+26826, libc.VaList(bp+96, zDb, zTab))
+		pStmt = _rtreeCheckPrepare(tls, bp, __ccgo_ts+26846, libc.VaList(bp+96, zDb, zTab))
 		if pStmt != 0 {
 			nAux = Xsqlite3_column_count(tls, pStmt) - int32(2)
 			Xsqlite3_finalize(tls, pStmt)
@@ -164933,11 +164933,11 @@ func _rtreeCheckTable(tls *libc.TLS, db uintptr, zDb uintptr, zTab uintptr, pzRe
 		}
 	}
 	/* Find number of dimensions in the rtree table. */
-	pStmt = _rtreeCheckPrepare(tls, bp, __ccgo_ts+24646, libc.VaList(bp+96, zDb, zTab))
+	pStmt = _rtreeCheckPrepare(tls, bp, __ccgo_ts+24666, libc.VaList(bp+96, zDb, zTab))
 	if pStmt != 0 {
 		(*(*TRtreeCheck)(unsafe.Pointer(bp))).FnDim = (Xsqlite3_column_count(tls, pStmt) - int32(1) - nAux) / int32(2)
 		if (*(*TRtreeCheck)(unsafe.Pointer(bp))).FnDim < int32(1) {
-			_rtreeCheckAppendMsg(tls, bp, __ccgo_ts+26854, 0)
+			_rtreeCheckAppendMsg(tls, bp, __ccgo_ts+26874, 0)
 		} else {
 			if int32(m_SQLITE_ROW) == Xsqlite3_step(tls, pStmt) {
 				(*(*TRtreeCheck)(unsafe.Pointer(bp))).FbInt = libc.BoolInt32(Xsqlite3_column_type(tls, pStmt, int32(1)) == int32(m_SQLITE_INTEGER))
@@ -164953,8 +164953,8 @@ func _rtreeCheckTable(tls *libc.TLS, db uintptr, zDb uintptr, zTab uintptr, pzRe
 		if (*(*TRtreeCheck)(unsafe.Pointer(bp))).Frc == m_SQLITE_OK {
 			_rtreeCheckNode(tls, bp, 0, uintptr(0), int64(1))
 		}
-		_rtreeCheckCount(tls, bp, __ccgo_ts+26885, int64((*(*TRtreeCheck)(unsafe.Pointer(bp))).FnLeaf))
-		_rtreeCheckCount(tls, bp, __ccgo_ts+26892, int64((*(*TRtreeCheck)(unsafe.Pointer(bp))).FnNonLeaf))
+		_rtreeCheckCount(tls, bp, __ccgo_ts+26905, int64((*(*TRtreeCheck)(unsafe.Pointer(bp))).FnLeaf))
+		_rtreeCheckCount(tls, bp, __ccgo_ts+26912, int64((*(*TRtreeCheck)(unsafe.Pointer(bp))).FnNonLeaf))
 	}
 	/* Finalize SQL statements used by the integrity-check */
 	Xsqlite3_finalize(tls, (*(*TRtreeCheck)(unsafe.Pointer(bp))).FpGetNode)
@@ -164962,7 +164962,7 @@ func _rtreeCheckTable(tls *libc.TLS, db uintptr, zDb uintptr, zTab uintptr, pzRe
 	Xsqlite3_finalize(tls, *(*uintptr)(unsafe.Pointer(bp + 40 + 1*8)))
 	/* If one was opened, close the transaction */
 	if bEnd != 0 {
-		rc1 = Xsqlite3_exec(tls, db, __ccgo_ts+26900, uintptr(0), uintptr(0), uintptr(0))
+		rc1 = Xsqlite3_exec(tls, db, __ccgo_ts+26920, uintptr(0), uintptr(0), uintptr(0))
 		if (*(*TRtreeCheck)(unsafe.Pointer(bp))).Frc == m_SQLITE_OK {
 			(*(*TRtreeCheck)(unsafe.Pointer(bp))).Frc = rc1
 		}
@@ -165014,13 +165014,13 @@ func _rtreecheck(tls *libc.TLS, ctx uintptr, nArg int32, apArg uintptr) {
 	var _ /* zReport at bp+0 */ uintptr
 	_, _, _, _ = rc, zDb, zTab, v1
 	if nArg != int32(1) && nArg != int32(2) {
-		Xsqlite3_result_error(tls, ctx, __ccgo_ts+26904, -int32(1))
+		Xsqlite3_result_error(tls, ctx, __ccgo_ts+26924, -int32(1))
 	} else {
 		*(*uintptr)(unsafe.Pointer(bp)) = uintptr(0)
 		zDb = Xsqlite3_value_text(tls, *(*uintptr)(unsafe.Pointer(apArg)))
 		if nArg == int32(1) {
 			zTab = zDb
-			zDb = __ccgo_ts + 6255
+			zDb = __ccgo_ts + 6275
 		} else {
 			zTab = Xsqlite3_value_text(tls, *(*uintptr)(unsafe.Pointer(apArg + 1*8)))
 		}
@@ -165029,7 +165029,7 @@ func _rtreecheck(tls *libc.TLS, ctx uintptr, nArg int32, apArg uintptr) {
 			if *(*uintptr)(unsafe.Pointer(bp)) != 0 {
 				v1 = *(*uintptr)(unsafe.Pointer(bp))
 			} else {
-				v1 = __ccgo_ts + 17666
+				v1 = __ccgo_ts + 17686
 			}
 			Xsqlite3_result_text(tls, ctx, v1, -int32(1), uintptr(-libc.Int32FromInt32(1)))
 		} else {
@@ -165463,18 +165463,18 @@ func _geopolyJsonFunc(tls *libc.TLS, context uintptr, argc int32, argv uintptr) 
 	if p != 0 {
 		db = Xsqlite3_context_db_handle(tls, context)
 		x = Xsqlite3_str_new(tls, db)
-		Xsqlite3_str_append(tls, x, __ccgo_ts+26955, int32(1))
+		Xsqlite3_str_append(tls, x, __ccgo_ts+26975, int32(1))
 		i = 0
 		for {
 			if !(i < (*TGeoPoly)(unsafe.Pointer(p)).FnVertex) {
 				break
 			}
-			Xsqlite3_str_appendf(tls, x, __ccgo_ts+26957, libc.VaList(bp+8, float64(*(*TGeoCoord)(unsafe.Pointer(p + 8 + uintptr(i*int32(2))*4))), float64(*(*TGeoCoord)(unsafe.Pointer(p + 8 + uintptr(i*int32(2)+int32(1))*4)))))
+			Xsqlite3_str_appendf(tls, x, __ccgo_ts+26977, libc.VaList(bp+8, float64(*(*TGeoCoord)(unsafe.Pointer(p + 8 + uintptr(i*int32(2))*4))), float64(*(*TGeoCoord)(unsafe.Pointer(p + 8 + uintptr(i*int32(2)+int32(1))*4)))))
 			goto _1
 		_1:
 			i++
 		}
-		Xsqlite3_str_appendf(tls, x, __ccgo_ts+26968, libc.VaList(bp+8, float64(*(*TGeoCoord)(unsafe.Pointer(p + 8 + uintptr(libc.Int32FromInt32(0)*libc.Int32FromInt32(2))*4))), float64(*(*TGeoCoord)(unsafe.Pointer(p + 8 + uintptr(libc.Int32FromInt32(0)*libc.Int32FromInt32(2)+libc.Int32FromInt32(1))*4)))))
+		Xsqlite3_str_appendf(tls, x, __ccgo_ts+26988, libc.VaList(bp+8, float64(*(*TGeoCoord)(unsafe.Pointer(p + 8 + uintptr(libc.Int32FromInt32(0)*libc.Int32FromInt32(2))*4))), float64(*(*TGeoCoord)(unsafe.Pointer(p + 8 + uintptr(libc.Int32FromInt32(0)*libc.Int32FromInt32(2)+libc.Int32FromInt32(1))*4)))))
 		Xsqlite3_result_text(tls, context, Xsqlite3_str_finish(tls, x), -int32(1), __ccgo_fp(Xsqlite3_free))
 		Xsqlite3_free(tls, p)
 	}
@@ -165503,19 +165503,19 @@ func _geopolySvgFunc(tls *libc.TLS, context uintptr, argc int32, argv uintptr) {
 		db = Xsqlite3_context_db_handle(tls, context)
 		x = Xsqlite3_str_new(tls, db)
 		cSep = uint8('\'')
-		Xsqlite3_str_appendf(tls, x, __ccgo_ts+26979, 0)
+		Xsqlite3_str_appendf(tls, x, __ccgo_ts+26999, 0)
 		i = 0
 		for {
 			if !(i < (*TGeoPoly)(unsafe.Pointer(p)).FnVertex) {
 				break
 			}
-			Xsqlite3_str_appendf(tls, x, __ccgo_ts+26997, libc.VaList(bp+8, int32(cSep), float64(*(*TGeoCoord)(unsafe.Pointer(p + 8 + uintptr(i*int32(2))*4))), float64(*(*TGeoCoord)(unsafe.Pointer(p + 8 + uintptr(i*int32(2)+int32(1))*4)))))
+			Xsqlite3_str_appendf(tls, x, __ccgo_ts+27017, libc.VaList(bp+8, int32(cSep), float64(*(*TGeoCoord)(unsafe.Pointer(p + 8 + uintptr(i*int32(2))*4))), float64(*(*TGeoCoord)(unsafe.Pointer(p + 8 + uintptr(i*int32(2)+int32(1))*4)))))
 			cSep = uint8(' ')
 			goto _1
 		_1:
 			i++
 		}
-		Xsqlite3_str_appendf(tls, x, __ccgo_ts+27005, libc.VaList(bp+8, float64(*(*TGeoCoord)(unsafe.Pointer(p + 8 + uintptr(libc.Int32FromInt32(0)*libc.Int32FromInt32(2))*4))), float64(*(*TGeoCoord)(unsafe.Pointer(p + 8 + uintptr(libc.Int32FromInt32(0)*libc.Int32FromInt32(2)+libc.Int32FromInt32(1))*4)))))
+		Xsqlite3_str_appendf(tls, x, __ccgo_ts+27025, libc.VaList(bp+8, float64(*(*TGeoCoord)(unsafe.Pointer(p + 8 + uintptr(libc.Int32FromInt32(0)*libc.Int32FromInt32(2))*4))), float64(*(*TGeoCoord)(unsafe.Pointer(p + 8 + uintptr(libc.Int32FromInt32(0)*libc.Int32FromInt32(2)+libc.Int32FromInt32(1))*4)))))
 		i = int32(1)
 		for {
 			if !(i < argc) {
@@ -165523,13 +165523,13 @@ func _geopolySvgFunc(tls *libc.TLS, context uintptr, argc int32, argv uintptr) {
 			}
 			z = Xsqlite3_value_text(tls, *(*uintptr)(unsafe.Pointer(argv + uintptr(i)*8)))
 			if z != 0 && *(*uint8)(unsafe.Pointer(z)) != 0 {
-				Xsqlite3_str_appendf(tls, x, __ccgo_ts+27013, libc.VaList(bp+8, z))
+				Xsqlite3_str_appendf(tls, x, __ccgo_ts+27033, libc.VaList(bp+8, z))
 			}
 			goto _2
 		_2:
 			i++
 		}
-		Xsqlite3_str_appendf(tls, x, __ccgo_ts+27017, 0)
+		Xsqlite3_str_appendf(tls, x, __ccgo_ts+27037, 0)
 		Xsqlite3_result_text(tls, context, Xsqlite3_str_finish(tls, x), -int32(1), __ccgo_fp(Xsqlite3_free))
 		Xsqlite3_free(tls, p)
 	}
@@ -166609,7 +166609,7 @@ func _geopolyInit(tls *libc.TLS, db uintptr, pAux uintptr, argc int32, argv uint
 	 ** the r-tree table schema.
 	 */
 	pSql = Xsqlite3_str_new(tls, db)
-	Xsqlite3_str_appendf(tls, pSql, __ccgo_ts+27030, 0)
+	Xsqlite3_str_appendf(tls, pSql, __ccgo_ts+27050, 0)
 	(*TRtree)(unsafe.Pointer(pRtree)).FnAux = uint8(1)        /* Add one for _shape */
 	(*TRtree)(unsafe.Pointer(pRtree)).FnAuxNotNull = uint8(1) /* The _shape column is always not-null */
 	ii = int32(3)
@@ -166618,12 +166618,12 @@ func _geopolyInit(tls *libc.TLS, db uintptr, pAux uintptr, argc int32, argv uint
 			break
 		}
 		(*TRtree)(unsafe.Pointer(pRtree)).FnAux++
-		Xsqlite3_str_appendf(tls, pSql, __ccgo_ts+27052, libc.VaList(bp+8, *(*uintptr)(unsafe.Pointer(argv + uintptr(ii)*8))))
+		Xsqlite3_str_appendf(tls, pSql, __ccgo_ts+27072, libc.VaList(bp+8, *(*uintptr)(unsafe.Pointer(argv + uintptr(ii)*8))))
 		goto _1
 	_1:
 		ii++
 	}
-	Xsqlite3_str_appendf(tls, pSql, __ccgo_ts+26140, 0)
+	Xsqlite3_str_appendf(tls, pSql, __ccgo_ts+26160, 0)
 	zSql = Xsqlite3_str_finish(tls, pSql)
 	if !(zSql != 0) {
 		rc = int32(m_SQLITE_NOMEM)
@@ -166631,7 +166631,7 @@ func _geopolyInit(tls *libc.TLS, db uintptr, pAux uintptr, argc int32, argv uint
 		v2 = Xsqlite3_declare_vtab(tls, db, zSql)
 		rc = v2
 		if m_SQLITE_OK != v2 {
-			*(*uintptr)(unsafe.Pointer(pzErr)) = Xsqlite3_mprintf(tls, __ccgo_ts+3560, libc.VaList(bp+8, Xsqlite3_errmsg(tls, db)))
+			*(*uintptr)(unsafe.Pointer(pzErr)) = Xsqlite3_mprintf(tls, __ccgo_ts+3580, libc.VaList(bp+8, Xsqlite3_errmsg(tls, db)))
 		}
 	}
 	Xsqlite3_free(tls, zSql)
@@ -166646,7 +166646,7 @@ func _geopolyInit(tls *libc.TLS, db uintptr, pAux uintptr, argc int32, argv uint
 	}
 	rc = _rtreeSqlInit(tls, pRtree, db, *(*uintptr)(unsafe.Pointer(argv + 1*8)), *(*uintptr)(unsafe.Pointer(argv + 2*8)), isCreate)
 	if rc != 0 {
-		*(*uintptr)(unsafe.Pointer(pzErr)) = Xsqlite3_mprintf(tls, __ccgo_ts+3560, libc.VaList(bp+8, Xsqlite3_errmsg(tls, db)))
+		*(*uintptr)(unsafe.Pointer(pzErr)) = Xsqlite3_mprintf(tls, __ccgo_ts+3580, libc.VaList(bp+8, Xsqlite3_errmsg(tls, db)))
 		goto geopolyInit_fail
 	}
 	*(*uintptr)(unsafe.Pointer(ppVtab)) = pRtree
@@ -166856,7 +166856,7 @@ func _geopolyBestIndex(tls *libc.TLS, tab uintptr, pIdxInfo uintptr) (r int32) {
 	}
 	if iRowidTerm >= 0 {
 		(*Tsqlite3_index_info)(unsafe.Pointer(pIdxInfo)).FidxNum = int32(1)
-		(*Tsqlite3_index_info)(unsafe.Pointer(pIdxInfo)).FidxStr = __ccgo_ts + 16054
+		(*Tsqlite3_index_info)(unsafe.Pointer(pIdxInfo)).FidxStr = __ccgo_ts + 16074
 		(*(*Tsqlite3_index_constraint_usage)(unsafe.Pointer((*Tsqlite3_index_info)(unsafe.Pointer(pIdxInfo)).FaConstraintUsage + uintptr(iRowidTerm)*8))).FargvIndex = int32(1)
 		(*(*Tsqlite3_index_constraint_usage)(unsafe.Pointer((*Tsqlite3_index_info)(unsafe.Pointer(pIdxInfo)).FaConstraintUsage + uintptr(iRowidTerm)*8))).Fomit = uint8(1)
 		(*Tsqlite3_index_info)(unsafe.Pointer(pIdxInfo)).FestimatedCost = float64(30)
@@ -166866,7 +166866,7 @@ func _geopolyBestIndex(tls *libc.TLS, tab uintptr, pIdxInfo uintptr) (r int32) {
 	}
 	if iFuncTerm >= 0 {
 		(*Tsqlite3_index_info)(unsafe.Pointer(pIdxInfo)).FidxNum = idxNum
-		(*Tsqlite3_index_info)(unsafe.Pointer(pIdxInfo)).FidxStr = __ccgo_ts + 27056
+		(*Tsqlite3_index_info)(unsafe.Pointer(pIdxInfo)).FidxStr = __ccgo_ts + 27076
 		(*(*Tsqlite3_index_constraint_usage)(unsafe.Pointer((*Tsqlite3_index_info)(unsafe.Pointer(pIdxInfo)).FaConstraintUsage + uintptr(iFuncTerm)*8))).FargvIndex = int32(1)
 		(*(*Tsqlite3_index_constraint_usage)(unsafe.Pointer((*Tsqlite3_index_info)(unsafe.Pointer(pIdxInfo)).FaConstraintUsage + uintptr(iFuncTerm)*8))).Fomit = uint8(0)
 		(*Tsqlite3_index_info)(unsafe.Pointer(pIdxInfo)).FestimatedCost = float64(300)
@@ -166874,7 +166874,7 @@ func _geopolyBestIndex(tls *libc.TLS, tab uintptr, pIdxInfo uintptr) (r int32) {
 		return m_SQLITE_OK
 	}
 	(*Tsqlite3_index_info)(unsafe.Pointer(pIdxInfo)).FidxNum = int32(4)
-	(*Tsqlite3_index_info)(unsafe.Pointer(pIdxInfo)).FidxStr = __ccgo_ts + 27062
+	(*Tsqlite3_index_info)(unsafe.Pointer(pIdxInfo)).FidxStr = __ccgo_ts + 27082
 	(*Tsqlite3_index_info)(unsafe.Pointer(pIdxInfo)).FestimatedCost = float64(3e+06)
 	(*Tsqlite3_index_info)(unsafe.Pointer(pIdxInfo)).FestimatedRows = int64(100000)
 	return m_SQLITE_OK
@@ -166996,7 +166996,7 @@ func _geopolyUpdate(tls *libc.TLS, pVtab uintptr, nData int32, aData uintptr, pR
 		_geopolyBBox(tls, uintptr(0), *(*uintptr)(unsafe.Pointer(aData + 2*8)), bp+8+8, bp)
 		if *(*int32)(unsafe.Pointer(bp)) != 0 {
 			if *(*int32)(unsafe.Pointer(bp)) == int32(m_SQLITE_ERROR) {
-				(*Tsqlite3_vtab)(unsafe.Pointer(pVtab)).FzErrMsg = Xsqlite3_mprintf(tls, __ccgo_ts+27071, 0)
+				(*Tsqlite3_vtab)(unsafe.Pointer(pVtab)).FzErrMsg = Xsqlite3_mprintf(tls, __ccgo_ts+27091, 0)
 			}
 			goto geopoly_update_end
 		}
@@ -167096,12 +167096,12 @@ geopoly_update_end:
 //	** for use in xBestIndex.
 //	*/
 func _geopolyFindFunction(tls *libc.TLS, pVtab uintptr, nArg int32, zName uintptr, pxFunc uintptr, ppArg uintptr) (r int32) {
-	if Xsqlite3_stricmp(tls, zName, __ccgo_ts+27111) == 0 {
+	if Xsqlite3_stricmp(tls, zName, __ccgo_ts+27131) == 0 {
 		*(*uintptr)(unsafe.Pointer(pxFunc)) = __ccgo_fp(_geopolyOverlapFunc)
 		*(*uintptr)(unsafe.Pointer(ppArg)) = uintptr(0)
 		return int32(m_SQLITE_INDEX_CONSTRAINT_FUNCTION)
 	}
-	if Xsqlite3_stricmp(tls, zName, __ccgo_ts+27127) == 0 {
+	if Xsqlite3_stricmp(tls, zName, __ccgo_ts+27147) == 0 {
 		*(*uintptr)(unsafe.Pointer(pxFunc)) = __ccgo_fp(_geopolyWithinFunc)
 		*(*uintptr)(unsafe.Pointer(ppArg)) = uintptr(0)
 		return libc.Int32FromInt32(m_SQLITE_INDEX_CONSTRAINT_FUNCTION) + libc.Int32FromInt32(1)
@@ -167168,7 +167168,7 @@ func _sqlite3_geopoly_init(tls *libc.TLS, db uintptr) (r int32) {
 		i++
 	}
 	if rc == m_SQLITE_OK {
-		rc = Xsqlite3_create_module_v2(tls, db, __ccgo_ts+27304, uintptr(unsafe.Pointer(&_geopolyModule)), uintptr(0), uintptr(0))
+		rc = Xsqlite3_create_module_v2(tls, db, __ccgo_ts+27324, uintptr(unsafe.Pointer(&_geopolyModule)), uintptr(0), uintptr(0))
 	}
 	return rc
 }
@@ -167182,61 +167182,61 @@ var _aFunc1 = [12]struct {
 	0: {
 		FnArg:  int8(1),
 		FbPure: uint8(1),
-		FzName: __ccgo_ts + 27142,
+		FzName: __ccgo_ts + 27162,
 	},
 	1: {
 		FnArg:  int8(1),
 		FbPure: uint8(1),
-		FzName: __ccgo_ts + 27155,
+		FzName: __ccgo_ts + 27175,
 	},
 	2: {
 		FnArg:  int8(1),
 		FbPure: uint8(1),
-		FzName: __ccgo_ts + 27168,
+		FzName: __ccgo_ts + 27188,
 	},
 	3: {
 		FnArg:  int8(-int32(1)),
 		FbPure: uint8(1),
-		FzName: __ccgo_ts + 27181,
+		FzName: __ccgo_ts + 27201,
 	},
 	4: {
 		FnArg:  int8(2),
 		FbPure: uint8(1),
-		FzName: __ccgo_ts + 27127,
+		FzName: __ccgo_ts + 27147,
 	},
 	5: {
 		FnArg:  int8(3),
 		FbPure: uint8(1),
-		FzName: __ccgo_ts + 27193,
+		FzName: __ccgo_ts + 27213,
 	},
 	6: {
 		FnArg:  int8(2),
 		FbPure: uint8(1),
-		FzName: __ccgo_ts + 27111,
+		FzName: __ccgo_ts + 27131,
 	},
 	7: {
 		FnArg:  int8(1),
-		FzName: __ccgo_ts + 27216,
+		FzName: __ccgo_ts + 27236,
 	},
 	8: {
 		FnArg:  int8(1),
 		FbPure: uint8(1),
-		FzName: __ccgo_ts + 27230,
+		FzName: __ccgo_ts + 27250,
 	},
 	9: {
 		FnArg:  int8(7),
 		FbPure: uint8(1),
-		FzName: __ccgo_ts + 27243,
+		FzName: __ccgo_ts + 27263,
 	},
 	10: {
 		FnArg:  int8(4),
 		FbPure: uint8(1),
-		FzName: __ccgo_ts + 27257,
+		FzName: __ccgo_ts + 27277,
 	},
 	11: {
 		FnArg:  int8(1),
 		FbPure: uint8(1),
-		FzName: __ccgo_ts + 27273,
+		FzName: __ccgo_ts + 27293,
 	},
 }
 
@@ -167262,7 +167262,7 @@ var _aAgg1 = [1]struct {
 	FzName  uintptr
 }{
 	0: {
-		FzName: __ccgo_ts + 27285,
+		FzName: __ccgo_ts + 27305,
 	},
 }
 
@@ -167287,20 +167287,20 @@ func _sqlite3RtreeInit(tls *libc.TLS, db uintptr) (r int32) {
 	var rc, utf8 int32
 	_, _, _, _ = c, c1, rc, utf8
 	utf8 = int32(m_SQLITE_UTF8)
-	rc = Xsqlite3_create_function(tls, db, __ccgo_ts+27312, int32(2), utf8, uintptr(0), __ccgo_fp(_rtreenode), uintptr(0), uintptr(0))
+	rc = Xsqlite3_create_function(tls, db, __ccgo_ts+27332, int32(2), utf8, uintptr(0), __ccgo_fp(_rtreenode), uintptr(0), uintptr(0))
 	if rc == m_SQLITE_OK {
-		rc = Xsqlite3_create_function(tls, db, __ccgo_ts+27322, int32(1), utf8, uintptr(0), __ccgo_fp(_rtreedepth), uintptr(0), uintptr(0))
+		rc = Xsqlite3_create_function(tls, db, __ccgo_ts+27342, int32(1), utf8, uintptr(0), __ccgo_fp(_rtreedepth), uintptr(0), uintptr(0))
 	}
 	if rc == m_SQLITE_OK {
-		rc = Xsqlite3_create_function(tls, db, __ccgo_ts+27333, -int32(1), utf8, uintptr(0), __ccgo_fp(_rtreecheck), uintptr(0), uintptr(0))
+		rc = Xsqlite3_create_function(tls, db, __ccgo_ts+27353, -int32(1), utf8, uintptr(0), __ccgo_fp(_rtreecheck), uintptr(0), uintptr(0))
 	}
 	if rc == m_SQLITE_OK {
 		c = libc.UintptrFromInt32(m_RTREE_COORD_REAL32)
-		rc = Xsqlite3_create_module_v2(tls, db, __ccgo_ts+27056, uintptr(unsafe.Pointer(&_rtreeModule)), c, uintptr(0))
+		rc = Xsqlite3_create_module_v2(tls, db, __ccgo_ts+27076, uintptr(unsafe.Pointer(&_rtreeModule)), c, uintptr(0))
 	}
 	if rc == m_SQLITE_OK {
 		c1 = libc.UintptrFromInt32(m_RTREE_COORD_INT32)
-		rc = Xsqlite3_create_module_v2(tls, db, __ccgo_ts+27344, uintptr(unsafe.Pointer(&_rtreeModule)), c1, uintptr(0))
+		rc = Xsqlite3_create_module_v2(tls, db, __ccgo_ts+27364, uintptr(unsafe.Pointer(&_rtreeModule)), c1, uintptr(0))
 	}
 	if rc == m_SQLITE_OK {
 		rc = _sqlite3_geopoly_init(tls, db)
@@ -167400,7 +167400,7 @@ func _geomCallback(tls *libc.TLS, ctx uintptr, nArg int32, aArg uintptr) {
 			Xsqlite3_result_error_nomem(tls, ctx)
 			_rtreeMatchArgFree(tls, pBlob)
 		} else {
-			Xsqlite3_result_pointer(tls, ctx, pBlob, __ccgo_ts+24632, __ccgo_fp(_rtreeMatchArgFree))
+			Xsqlite3_result_pointer(tls, ctx, pBlob, __ccgo_ts+24652, __ccgo_fp(_rtreeMatchArgFree))
 		}
 	}
 }
@@ -168582,7 +168582,7 @@ func _rbuFossilDeltaFunc(tls *libc.TLS, context uintptr, argc int32, argv uintpt
 	/* Figure out the size of the output */
 	nOut = _rbuDeltaOutputSize(tls, aDelta, nDelta)
 	if nOut < 0 {
-		Xsqlite3_result_error(tls, context, __ccgo_ts+27354, -int32(1))
+		Xsqlite3_result_error(tls, context, __ccgo_ts+27374, -int32(1))
 		return
 	}
 	aOut = Xsqlite3_malloc(tls, nOut+int32(1))
@@ -168592,7 +168592,7 @@ func _rbuFossilDeltaFunc(tls *libc.TLS, context uintptr, argc int32, argv uintpt
 		nOut2 = _rbuDeltaApply(tls, aOrig, nOrig, aDelta, nDelta, aOut)
 		if nOut2 != nOut {
 			Xsqlite3_free(tls, aOut)
-			Xsqlite3_result_error(tls, context, __ccgo_ts+27354, -int32(1))
+			Xsqlite3_result_error(tls, context, __ccgo_ts+27374, -int32(1))
 		} else {
 			Xsqlite3_result_blob(tls, context, aOut, nOut, __ccgo_fp(Xsqlite3_free))
 		}
@@ -168618,7 +168618,7 @@ func _prepareAndCollectError(tls *libc.TLS, db uintptr, ppStmt uintptr, pzErrmsg
 	_ = rc
 	rc = Xsqlite3_prepare_v2(tls, db, zSql, -int32(1), ppStmt, uintptr(0))
 	if rc != m_SQLITE_OK {
-		*(*uintptr)(unsafe.Pointer(pzErrmsg)) = Xsqlite3_mprintf(tls, __ccgo_ts+3560, libc.VaList(bp+8, Xsqlite3_errmsg(tls, db)))
+		*(*uintptr)(unsafe.Pointer(pzErrmsg)) = Xsqlite3_mprintf(tls, __ccgo_ts+3580, libc.VaList(bp+8, Xsqlite3_errmsg(tls, db)))
 		*(*uintptr)(unsafe.Pointer(ppStmt)) = uintptr(0)
 	}
 	return rc
@@ -168641,7 +168641,7 @@ func _resetAndCollectError(tls *libc.TLS, pStmt uintptr, pzErrmsg uintptr) (r in
 	_ = rc
 	rc = Xsqlite3_reset(tls, pStmt)
 	if rc != m_SQLITE_OK {
-		*(*uintptr)(unsafe.Pointer(pzErrmsg)) = Xsqlite3_mprintf(tls, __ccgo_ts+3560, libc.VaList(bp+8, Xsqlite3_errmsg(tls, Xsqlite3_db_handle(tls, pStmt))))
+		*(*uintptr)(unsafe.Pointer(pzErrmsg)) = Xsqlite3_mprintf(tls, __ccgo_ts+3580, libc.VaList(bp+8, Xsqlite3_errmsg(tls, Xsqlite3_db_handle(tls, pStmt))))
 	}
 	return rc
 }
@@ -168773,7 +168773,7 @@ func _rbuObjIterNext(tls *libc.TLS, p uintptr, pIter uintptr) (r int32) {
 		/* Free any SQLite statements used while processing the previous object */
 		_rbuObjIterClearStatements(tls, pIter)
 		if (*TRbuObjIter)(unsafe.Pointer(pIter)).FzIdx == uintptr(0) {
-			rc = Xsqlite3_exec(tls, (*Tsqlite3rbu)(unsafe.Pointer(p)).FdbMain, __ccgo_ts+27375, uintptr(0), uintptr(0), p+64)
+			rc = Xsqlite3_exec(tls, (*Tsqlite3rbu)(unsafe.Pointer(p)).FdbMain, __ccgo_ts+27395, uintptr(0), uintptr(0), p+64)
 		}
 		if rc == m_SQLITE_OK {
 			if (*TRbuObjIter)(unsafe.Pointer(pIter)).FbCleanup != 0 {
@@ -168863,7 +168863,7 @@ func _rbuTargetNameFunc(tls *libc.TLS, pCtx uintptr, argc int32, argv uintptr) {
 				Xsqlite3_result_text(tls, pCtx, zIn, -int32(1), libc.UintptrFromInt32(0))
 			}
 		} else {
-			if libc.Xstrlen(tls, zIn) > uint64(4) && libc.Xmemcmp(tls, __ccgo_ts+24545, zIn, uint64(4)) == 0 {
+			if libc.Xstrlen(tls, zIn) > uint64(4) && libc.Xmemcmp(tls, __ccgo_ts+24565, zIn, uint64(4)) == 0 {
 				i = int32(4)
 				for {
 					if !(int32(*(*uint8)(unsafe.Pointer(zIn + uintptr(i)))) >= int32('0') && int32(*(*uint8)(unsafe.Pointer(zIn + uintptr(i)))) <= int32('9')) {
@@ -168899,13 +168899,13 @@ func _rbuObjIterFirst(tls *libc.TLS, p uintptr, pIter uintptr) (r int32) {
 	_, _ = rc, v1
 	libc.Xmemset(tls, pIter, 0, uint64(192))
 	if (*Tsqlite3rbu)(unsafe.Pointer(p)).FzTarget == uintptr(0) {
-		v1 = __ccgo_ts + 27546
+		v1 = __ccgo_ts + 27566
 	} else {
-		v1 = __ccgo_ts + 1511
+		v1 = __ccgo_ts + 1531
 	}
-	rc = _prepareFreeAndCollectError(tls, (*Tsqlite3rbu)(unsafe.Pointer(p)).FdbRbu, pIter, p+64, Xsqlite3_mprintf(tls, __ccgo_ts+27587, libc.VaList(bp+8, v1)))
+	rc = _prepareFreeAndCollectError(tls, (*Tsqlite3rbu)(unsafe.Pointer(p)).FdbRbu, pIter, p+64, Xsqlite3_mprintf(tls, __ccgo_ts+27607, libc.VaList(bp+8, v1)))
 	if rc == m_SQLITE_OK {
-		rc = _prepareAndCollectError(tls, (*Tsqlite3rbu)(unsafe.Pointer(p)).FdbMain, pIter+8, p+64, __ccgo_ts+27737)
+		rc = _prepareAndCollectError(tls, (*Tsqlite3rbu)(unsafe.Pointer(p)).FdbMain, pIter+8, p+64, __ccgo_ts+27757)
 	}
 	(*TRbuObjIter)(unsafe.Pointer(pIter)).FbCleanup = int32(1)
 	(*Tsqlite3rbu)(unsafe.Pointer(p)).Frc = rc
@@ -169073,7 +169073,7 @@ func _rbuFinalize(tls *libc.TLS, p uintptr, pStmt uintptr) {
 	rc = Xsqlite3_finalize(tls, pStmt)
 	if (*Tsqlite3rbu)(unsafe.Pointer(p)).Frc == m_SQLITE_OK && rc != m_SQLITE_OK {
 		(*Tsqlite3rbu)(unsafe.Pointer(p)).Frc = rc
-		(*Tsqlite3rbu)(unsafe.Pointer(p)).FzErrmsg = Xsqlite3_mprintf(tls, __ccgo_ts+3560, libc.VaList(bp+8, Xsqlite3_errmsg(tls, db)))
+		(*Tsqlite3rbu)(unsafe.Pointer(p)).FzErrmsg = Xsqlite3_mprintf(tls, __ccgo_ts+3580, libc.VaList(bp+8, Xsqlite3_errmsg(tls, db)))
 	}
 }
 
@@ -169135,7 +169135,7 @@ func _rbuTableType(tls *libc.TLS, p uintptr, zTab uintptr, peType uintptr, piTnu
 	*(*int32)(unsafe.Pointer(peType)) = m_RBU_PK_NOTABLE
 	*(*int32)(unsafe.Pointer(piPk)) = 0
 	_ = libc.Int32FromInt32(0)
-	(*Tsqlite3rbu)(unsafe.Pointer(p)).Frc = _prepareFreeAndCollectError(tls, (*Tsqlite3rbu)(unsafe.Pointer(p)).FdbMain, bp, p+64, Xsqlite3_mprintf(tls, __ccgo_ts+27862, libc.VaList(bp+40, zTab)))
+	(*Tsqlite3rbu)(unsafe.Pointer(p)).Frc = _prepareFreeAndCollectError(tls, (*Tsqlite3rbu)(unsafe.Pointer(p)).FdbMain, bp, p+64, Xsqlite3_mprintf(tls, __ccgo_ts+27882, libc.VaList(bp+40, zTab)))
 	if (*Tsqlite3rbu)(unsafe.Pointer(p)).Frc != m_SQLITE_OK || Xsqlite3_step(tls, (*(*[4]uintptr)(unsafe.Pointer(bp)))[0]) != int32(m_SQLITE_ROW) {
 		/* Either an error, or no such table. */
 		goto rbuTableType_end
@@ -169145,7 +169145,7 @@ func _rbuTableType(tls *libc.TLS, p uintptr, zTab uintptr, peType uintptr, piTnu
 		goto rbuTableType_end
 	}
 	*(*int32)(unsafe.Pointer(piTnum)) = Xsqlite3_column_int(tls, (*(*[4]uintptr)(unsafe.Pointer(bp)))[0], int32(1))
-	(*Tsqlite3rbu)(unsafe.Pointer(p)).Frc = _prepareFreeAndCollectError(tls, (*Tsqlite3rbu)(unsafe.Pointer(p)).FdbMain, bp+1*8, p+64, Xsqlite3_mprintf(tls, __ccgo_ts+27981, libc.VaList(bp+40, zTab)))
+	(*Tsqlite3rbu)(unsafe.Pointer(p)).Frc = _prepareFreeAndCollectError(tls, (*Tsqlite3rbu)(unsafe.Pointer(p)).FdbMain, bp+1*8, p+64, Xsqlite3_mprintf(tls, __ccgo_ts+28001, libc.VaList(bp+40, zTab)))
 	if (*Tsqlite3rbu)(unsafe.Pointer(p)).Frc != 0 {
 		goto rbuTableType_end
 	}
@@ -169153,7 +169153,7 @@ func _rbuTableType(tls *libc.TLS, p uintptr, zTab uintptr, peType uintptr, piTnu
 		zOrig = Xsqlite3_column_text(tls, (*(*[4]uintptr)(unsafe.Pointer(bp)))[int32(1)], int32(3))
 		zIdx = Xsqlite3_column_text(tls, (*(*[4]uintptr)(unsafe.Pointer(bp)))[int32(1)], int32(1))
 		if zOrig != 0 && zIdx != 0 && int32(*(*Tu8)(unsafe.Pointer(zOrig))) == int32('p') {
-			(*Tsqlite3rbu)(unsafe.Pointer(p)).Frc = _prepareFreeAndCollectError(tls, (*Tsqlite3rbu)(unsafe.Pointer(p)).FdbMain, bp+2*8, p+64, Xsqlite3_mprintf(tls, __ccgo_ts+28002, libc.VaList(bp+40, zIdx)))
+			(*Tsqlite3rbu)(unsafe.Pointer(p)).Frc = _prepareFreeAndCollectError(tls, (*Tsqlite3rbu)(unsafe.Pointer(p)).FdbMain, bp+2*8, p+64, Xsqlite3_mprintf(tls, __ccgo_ts+28022, libc.VaList(bp+40, zIdx)))
 			if (*Tsqlite3rbu)(unsafe.Pointer(p)).Frc == m_SQLITE_OK {
 				if Xsqlite3_step(tls, (*(*[4]uintptr)(unsafe.Pointer(bp)))[int32(2)]) == int32(m_SQLITE_ROW) {
 					*(*int32)(unsafe.Pointer(piPk)) = Xsqlite3_column_int(tls, (*(*[4]uintptr)(unsafe.Pointer(bp)))[int32(2)], 0)
@@ -169165,7 +169165,7 @@ func _rbuTableType(tls *libc.TLS, p uintptr, zTab uintptr, peType uintptr, piTnu
 			goto rbuTableType_end
 		}
 	}
-	(*Tsqlite3rbu)(unsafe.Pointer(p)).Frc = _prepareFreeAndCollectError(tls, (*Tsqlite3rbu)(unsafe.Pointer(p)).FdbMain, bp+3*8, p+64, Xsqlite3_mprintf(tls, __ccgo_ts+28053, libc.VaList(bp+40, zTab)))
+	(*Tsqlite3rbu)(unsafe.Pointer(p)).Frc = _prepareFreeAndCollectError(tls, (*Tsqlite3rbu)(unsafe.Pointer(p)).FdbMain, bp+3*8, p+64, Xsqlite3_mprintf(tls, __ccgo_ts+28073, libc.VaList(bp+40, zTab)))
 	if (*Tsqlite3rbu)(unsafe.Pointer(p)).Frc == m_SQLITE_OK {
 		for Xsqlite3_step(tls, (*(*[4]uintptr)(unsafe.Pointer(bp)))[int32(3)]) == int32(m_SQLITE_ROW) {
 			if Xsqlite3_column_int(tls, (*(*[4]uintptr)(unsafe.Pointer(bp)))[int32(3)], int32(5)) > 0 {
@@ -169206,7 +169206,7 @@ func _rbuObjIterCacheIndexedCols(tls *libc.TLS, p uintptr, pIter uintptr) {
 	bIndex = 0
 	if (*Tsqlite3rbu)(unsafe.Pointer(p)).Frc == m_SQLITE_OK {
 		libc.Xmemcpy(tls, (*TRbuObjIter)(unsafe.Pointer(pIter)).FabIndexed, (*TRbuObjIter)(unsafe.Pointer(pIter)).FabTblPk, uint64(1)*uint64((*TRbuObjIter)(unsafe.Pointer(pIter)).FnTblCol))
-		(*Tsqlite3rbu)(unsafe.Pointer(p)).Frc = _prepareFreeAndCollectError(tls, (*Tsqlite3rbu)(unsafe.Pointer(p)).FdbMain, bp, p+64, Xsqlite3_mprintf(tls, __ccgo_ts+28074, libc.VaList(bp+24, (*TRbuObjIter)(unsafe.Pointer(pIter)).FzTbl)))
+		(*Tsqlite3rbu)(unsafe.Pointer(p)).Frc = _prepareFreeAndCollectError(tls, (*Tsqlite3rbu)(unsafe.Pointer(p)).FdbMain, bp, p+64, Xsqlite3_mprintf(tls, __ccgo_ts+28094, libc.VaList(bp+24, (*TRbuObjIter)(unsafe.Pointer(pIter)).FzTbl)))
 	}
 	(*TRbuObjIter)(unsafe.Pointer(pIter)).FnIndex = 0
 	for (*Tsqlite3rbu)(unsafe.Pointer(p)).Frc == m_SQLITE_OK && int32(m_SQLITE_ROW) == Xsqlite3_step(tls, *(*uintptr)(unsafe.Pointer(bp))) {
@@ -169219,7 +169219,7 @@ func _rbuObjIterCacheIndexedCols(tls *libc.TLS, p uintptr, pIter uintptr) {
 		if bPartial != 0 {
 			libc.Xmemset(tls, (*TRbuObjIter)(unsafe.Pointer(pIter)).FabIndexed, int32(0x01), uint64(1)*uint64((*TRbuObjIter)(unsafe.Pointer(pIter)).FnTblCol))
 		}
-		(*Tsqlite3rbu)(unsafe.Pointer(p)).Frc = _prepareFreeAndCollectError(tls, (*Tsqlite3rbu)(unsafe.Pointer(p)).FdbMain, bp+8, p+64, Xsqlite3_mprintf(tls, __ccgo_ts+28102, libc.VaList(bp+24, zIdx)))
+		(*Tsqlite3rbu)(unsafe.Pointer(p)).Frc = _prepareFreeAndCollectError(tls, (*Tsqlite3rbu)(unsafe.Pointer(p)).FdbMain, bp+8, p+64, Xsqlite3_mprintf(tls, __ccgo_ts+28122, libc.VaList(bp+24, zIdx)))
 		for (*Tsqlite3rbu)(unsafe.Pointer(p)).Frc == m_SQLITE_OK && int32(m_SQLITE_ROW) == Xsqlite3_step(tls, *(*uintptr)(unsafe.Pointer(bp + 8))) {
 			iCid = Xsqlite3_column_int(tls, *(*uintptr)(unsafe.Pointer(bp + 8)), int32(1))
 			if iCid >= 0 {
@@ -169273,7 +169273,7 @@ func _rbuObjIterCacheTableInfo(tls *libc.TLS, p uintptr, pIter uintptr) (r int32
 		_rbuTableType(tls, p, (*TRbuObjIter)(unsafe.Pointer(pIter)).FzTbl, pIter+72, bp+8, pIter+108)
 		if (*Tsqlite3rbu)(unsafe.Pointer(p)).Frc == m_SQLITE_OK && (*TRbuObjIter)(unsafe.Pointer(pIter)).FeType == m_RBU_PK_NOTABLE {
 			(*Tsqlite3rbu)(unsafe.Pointer(p)).Frc = int32(m_SQLITE_ERROR)
-			(*Tsqlite3rbu)(unsafe.Pointer(p)).FzErrmsg = Xsqlite3_mprintf(tls, __ccgo_ts+19184, libc.VaList(bp+24, (*TRbuObjIter)(unsafe.Pointer(pIter)).FzTbl))
+			(*Tsqlite3rbu)(unsafe.Pointer(p)).FzErrmsg = Xsqlite3_mprintf(tls, __ccgo_ts+19204, libc.VaList(bp+24, (*TRbuObjIter)(unsafe.Pointer(pIter)).FzTbl))
 		}
 		if (*Tsqlite3rbu)(unsafe.Pointer(p)).Frc != 0 {
 			return (*Tsqlite3rbu)(unsafe.Pointer(p)).Frc
@@ -169285,7 +169285,7 @@ func _rbuObjIterCacheTableInfo(tls *libc.TLS, p uintptr, pIter uintptr) (r int32
 		/* Populate the azTblCol[] and nTblCol variables based on the columns
 		 ** of the input table. Ignore any input table columns that begin with
 		 ** "rbu_".  */
-		(*Tsqlite3rbu)(unsafe.Pointer(p)).Frc = _prepareFreeAndCollectError(tls, (*Tsqlite3rbu)(unsafe.Pointer(p)).FdbRbu, bp, p+64, Xsqlite3_mprintf(tls, __ccgo_ts+28131, libc.VaList(bp+24, (*TRbuObjIter)(unsafe.Pointer(pIter)).FzDataTbl)))
+		(*Tsqlite3rbu)(unsafe.Pointer(p)).Frc = _prepareFreeAndCollectError(tls, (*Tsqlite3rbu)(unsafe.Pointer(p)).FdbRbu, bp, p+64, Xsqlite3_mprintf(tls, __ccgo_ts+28151, libc.VaList(bp+24, (*TRbuObjIter)(unsafe.Pointer(pIter)).FzDataTbl)))
 		if (*Tsqlite3rbu)(unsafe.Pointer(p)).Frc == m_SQLITE_OK {
 			nCol = Xsqlite3_column_count(tls, *(*uintptr)(unsafe.Pointer(bp)))
 			_rbuAllocateIterArrays(tls, p, pIter, nCol)
@@ -169296,7 +169296,7 @@ func _rbuObjIterCacheTableInfo(tls *libc.TLS, p uintptr, pIter uintptr) (r int32
 				break
 			}
 			zName = Xsqlite3_column_name(tls, *(*uintptr)(unsafe.Pointer(bp)), i)
-			if Xsqlite3_strnicmp(tls, __ccgo_ts+28150, zName, int32(4)) != 0 {
+			if Xsqlite3_strnicmp(tls, __ccgo_ts+28170, zName, int32(4)) != 0 {
 				zCopy = _rbuStrndup(tls, zName, p+56)
 				*(*int32)(unsafe.Pointer((*TRbuObjIter)(unsafe.Pointer(pIter)).FaiSrcOrder + uintptr((*TRbuObjIter)(unsafe.Pointer(pIter)).FnTblCol)*4)) = (*TRbuObjIter)(unsafe.Pointer(pIter)).FnTblCol
 				v3 = pIter + 16
@@ -169304,7 +169304,7 @@ func _rbuObjIterCacheTableInfo(tls *libc.TLS, p uintptr, pIter uintptr) (r int32
 				*(*int32)(unsafe.Pointer(v3))++
 				*(*uintptr)(unsafe.Pointer((*TRbuObjIter)(unsafe.Pointer(pIter)).FazTblCol + uintptr(v2)*8)) = zCopy
 			} else {
-				if 0 == Xsqlite3_stricmp(tls, __ccgo_ts+28155, zName) {
+				if 0 == Xsqlite3_stricmp(tls, __ccgo_ts+28175, zName) {
 					bRbuRowid = int32(1)
 				}
 			}
@@ -169317,17 +169317,17 @@ func _rbuObjIterCacheTableInfo(tls *libc.TLS, p uintptr, pIter uintptr) (r int32
 		if (*Tsqlite3rbu)(unsafe.Pointer(p)).Frc == m_SQLITE_OK && libc.BoolInt32((*Tsqlite3rbu)(unsafe.Pointer(p)).FzTarget == uintptr(0)) == 0 && bRbuRowid != libc.BoolInt32((*TRbuObjIter)(unsafe.Pointer(pIter)).FeType == int32(m_RBU_PK_VTAB) || (*TRbuObjIter)(unsafe.Pointer(pIter)).FeType == int32(m_RBU_PK_NONE)) {
 			(*Tsqlite3rbu)(unsafe.Pointer(p)).Frc = int32(m_SQLITE_ERROR)
 			if bRbuRowid != 0 {
-				v4 = __ccgo_ts + 28165
+				v4 = __ccgo_ts + 28185
 			} else {
-				v4 = __ccgo_ts + 28178
+				v4 = __ccgo_ts + 28198
 			}
-			(*Tsqlite3rbu)(unsafe.Pointer(p)).FzErrmsg = Xsqlite3_mprintf(tls, __ccgo_ts+28187, libc.VaList(bp+24, (*TRbuObjIter)(unsafe.Pointer(pIter)).FzDataTbl, v4))
+			(*Tsqlite3rbu)(unsafe.Pointer(p)).FzErrmsg = Xsqlite3_mprintf(tls, __ccgo_ts+28207, libc.VaList(bp+24, (*TRbuObjIter)(unsafe.Pointer(pIter)).FzDataTbl, v4))
 		}
 		/* Check that all non-HIDDEN columns in the destination table are also
 		 ** present in the input table. Populate the abTblPk[], azTblType[] and
 		 ** aiTblOrder[] arrays at the same time.  */
 		if (*Tsqlite3rbu)(unsafe.Pointer(p)).Frc == m_SQLITE_OK {
-			(*Tsqlite3rbu)(unsafe.Pointer(p)).Frc = _prepareFreeAndCollectError(tls, (*Tsqlite3rbu)(unsafe.Pointer(p)).FdbMain, bp, p+64, Xsqlite3_mprintf(tls, __ccgo_ts+28216, libc.VaList(bp+24, (*TRbuObjIter)(unsafe.Pointer(pIter)).FzTbl)))
+			(*Tsqlite3rbu)(unsafe.Pointer(p)).Frc = _prepareFreeAndCollectError(tls, (*Tsqlite3rbu)(unsafe.Pointer(p)).FdbMain, bp, p+64, Xsqlite3_mprintf(tls, __ccgo_ts+28236, libc.VaList(bp+24, (*TRbuObjIter)(unsafe.Pointer(pIter)).FzTbl)))
 		}
 		for (*Tsqlite3rbu)(unsafe.Pointer(p)).Frc == m_SQLITE_OK && int32(m_SQLITE_ROW) == Xsqlite3_step(tls, *(*uintptr)(unsafe.Pointer(bp))) {
 			zName1 = Xsqlite3_column_text(tls, *(*uintptr)(unsafe.Pointer(bp)), int32(1))
@@ -169348,7 +169348,7 @@ func _rbuObjIterCacheTableInfo(tls *libc.TLS, p uintptr, pIter uintptr) (r int32
 			}
 			if i == (*TRbuObjIter)(unsafe.Pointer(pIter)).FnTblCol {
 				(*Tsqlite3rbu)(unsafe.Pointer(p)).Frc = int32(m_SQLITE_ERROR)
-				(*Tsqlite3rbu)(unsafe.Pointer(p)).FzErrmsg = Xsqlite3_mprintf(tls, __ccgo_ts+28238, libc.VaList(bp+24, (*TRbuObjIter)(unsafe.Pointer(pIter)).FzDataTbl, zName1))
+				(*Tsqlite3rbu)(unsafe.Pointer(p)).FzErrmsg = Xsqlite3_mprintf(tls, __ccgo_ts+28258, libc.VaList(bp+24, (*TRbuObjIter)(unsafe.Pointer(pIter)).FzDataTbl, zName1))
 			} else {
 				iPk = Xsqlite3_column_int(tls, *(*uintptr)(unsafe.Pointer(bp)), int32(5))
 				bNotNull = Xsqlite3_column_int(tls, *(*uintptr)(unsafe.Pointer(bp)), int32(3))
@@ -169390,15 +169390,15 @@ func _rbuObjIterGetCollist(tls *libc.TLS, p uintptr, pIter uintptr) (r uintptr) 
 	var z, zList, zSep uintptr
 	_, _, _, _ = i, z, zList, zSep
 	zList = uintptr(0)
-	zSep = __ccgo_ts + 1511
+	zSep = __ccgo_ts + 1531
 	i = 0
 	for {
 		if !(i < (*TRbuObjIter)(unsafe.Pointer(pIter)).FnTblCol) {
 			break
 		}
 		z = *(*uintptr)(unsafe.Pointer((*TRbuObjIter)(unsafe.Pointer(pIter)).FazTblCol + uintptr(i)*8))
-		zList = _rbuMPrintf(tls, p, __ccgo_ts+28265, libc.VaList(bp+8, zList, zSep, z))
-		zSep = __ccgo_ts + 14449
+		zList = _rbuMPrintf(tls, p, __ccgo_ts+28285, libc.VaList(bp+8, zList, zSep, z))
+		zSep = __ccgo_ts + 14469
 		goto _1
 	_1:
 		i++
@@ -169422,7 +169422,7 @@ func _rbuObjIterGetPkList(tls *libc.TLS, p uintptr, pIter uintptr, zPre uintptr,
 	_, _, _, _, _ = i, iPk, zCol, zRet, zSep
 	iPk = int32(1)
 	zRet = uintptr(0)
-	zSep = __ccgo_ts + 1511
+	zSep = __ccgo_ts + 1531
 	for int32(1) != 0 {
 		i = 0
 		for {
@@ -169431,7 +169431,7 @@ func _rbuObjIterGetPkList(tls *libc.TLS, p uintptr, pIter uintptr, zPre uintptr,
 			}
 			if int32(*(*Tu8)(unsafe.Pointer((*TRbuObjIter)(unsafe.Pointer(pIter)).FabTblPk + uintptr(i)))) == iPk {
 				zCol = *(*uintptr)(unsafe.Pointer((*TRbuObjIter)(unsafe.Pointer(pIter)).FazTblCol + uintptr(i)*8))
-				zRet = _rbuMPrintf(tls, p, __ccgo_ts+28274, libc.VaList(bp+8, zRet, zSep, zPre, zCol, zPost))
+				zRet = _rbuMPrintf(tls, p, __ccgo_ts+28294, libc.VaList(bp+8, zRet, zSep, zPre, zCol, zPost))
 				zSep = zSeparator
 				break
 			}
@@ -169478,21 +169478,21 @@ func _rbuVacuumTableStart(tls *libc.TLS, p uintptr, pIter uintptr, bRowid int32,
 	*(*uintptr)(unsafe.Pointer(bp)) = uintptr(0)
 	zRet = uintptr(0)
 	if bRowid != 0 {
-		(*Tsqlite3rbu)(unsafe.Pointer(p)).Frc = _prepareFreeAndCollectError(tls, (*Tsqlite3rbu)(unsafe.Pointer(p)).FdbMain, bp, p+64, Xsqlite3_mprintf(tls, __ccgo_ts+28287, libc.VaList(bp+16, zWrite, (*TRbuObjIter)(unsafe.Pointer(pIter)).FzTbl)))
+		(*Tsqlite3rbu)(unsafe.Pointer(p)).Frc = _prepareFreeAndCollectError(tls, (*Tsqlite3rbu)(unsafe.Pointer(p)).FdbMain, bp, p+64, Xsqlite3_mprintf(tls, __ccgo_ts+28307, libc.VaList(bp+16, zWrite, (*TRbuObjIter)(unsafe.Pointer(pIter)).FzTbl)))
 		if (*Tsqlite3rbu)(unsafe.Pointer(p)).Frc == m_SQLITE_OK && int32(m_SQLITE_ROW) == Xsqlite3_step(tls, *(*uintptr)(unsafe.Pointer(bp))) {
 			iMax = Xsqlite3_column_int64(tls, *(*uintptr)(unsafe.Pointer(bp)), 0)
-			zRet = _rbuMPrintf(tls, p, __ccgo_ts+28319, libc.VaList(bp+16, iMax))
+			zRet = _rbuMPrintf(tls, p, __ccgo_ts+28339, libc.VaList(bp+16, iMax))
 		}
 		_rbuFinalize(tls, p, *(*uintptr)(unsafe.Pointer(bp)))
 	} else {
-		zOrder = _rbuObjIterGetPkList(tls, p, pIter, __ccgo_ts+1511, __ccgo_ts+14449, __ccgo_ts+28342)
-		zSelect = _rbuObjIterGetPkList(tls, p, pIter, __ccgo_ts+28348, __ccgo_ts+28355, __ccgo_ts+4827)
-		zList = _rbuObjIterGetPkList(tls, p, pIter, __ccgo_ts+1511, __ccgo_ts+14449, __ccgo_ts+1511)
+		zOrder = _rbuObjIterGetPkList(tls, p, pIter, __ccgo_ts+1531, __ccgo_ts+14469, __ccgo_ts+28362)
+		zSelect = _rbuObjIterGetPkList(tls, p, pIter, __ccgo_ts+28368, __ccgo_ts+28375, __ccgo_ts+4847)
+		zList = _rbuObjIterGetPkList(tls, p, pIter, __ccgo_ts+1531, __ccgo_ts+14469, __ccgo_ts+1531)
 		if (*Tsqlite3rbu)(unsafe.Pointer(p)).Frc == m_SQLITE_OK {
-			(*Tsqlite3rbu)(unsafe.Pointer(p)).Frc = _prepareFreeAndCollectError(tls, (*Tsqlite3rbu)(unsafe.Pointer(p)).FdbMain, bp, p+64, Xsqlite3_mprintf(tls, __ccgo_ts+28363, libc.VaList(bp+16, zSelect, zWrite, (*TRbuObjIter)(unsafe.Pointer(pIter)).FzTbl, zOrder)))
+			(*Tsqlite3rbu)(unsafe.Pointer(p)).Frc = _prepareFreeAndCollectError(tls, (*Tsqlite3rbu)(unsafe.Pointer(p)).FdbMain, bp, p+64, Xsqlite3_mprintf(tls, __ccgo_ts+28383, libc.VaList(bp+16, zSelect, zWrite, (*TRbuObjIter)(unsafe.Pointer(pIter)).FzTbl, zOrder)))
 			if (*Tsqlite3rbu)(unsafe.Pointer(p)).Frc == m_SQLITE_OK && int32(m_SQLITE_ROW) == Xsqlite3_step(tls, *(*uintptr)(unsafe.Pointer(bp))) {
 				zVal = Xsqlite3_column_text(tls, *(*uintptr)(unsafe.Pointer(bp)), 0)
-				zRet = _rbuMPrintf(tls, p, __ccgo_ts+28405, libc.VaList(bp+16, zList, zVal))
+				zRet = _rbuMPrintf(tls, p, __ccgo_ts+28425, libc.VaList(bp+16, zList, zVal))
 			}
 			_rbuFinalize(tls, p, *(*uintptr)(unsafe.Pointer(bp)))
 		}
@@ -169541,10 +169541,10 @@ func XrbuVacuumIndexStart(tls *libc.TLS, p uintptr, pIter uintptr) (r uintptr) {
 	zVector = uintptr(0)
 	zRet = uintptr(0)
 	bFailed = 0
-	zSep = __ccgo_ts + 1511
+	zSep = __ccgo_ts + 1531
 	iCol = 0
 	*(*uintptr)(unsafe.Pointer(bp)) = uintptr(0)
-	(*Tsqlite3rbu)(unsafe.Pointer(p)).Frc = _prepareFreeAndCollectError(tls, (*Tsqlite3rbu)(unsafe.Pointer(p)).FdbMain, bp, p+64, Xsqlite3_mprintf(tls, __ccgo_ts+28102, libc.VaList(bp+24, (*TRbuObjIter)(unsafe.Pointer(pIter)).FzIdx)))
+	(*Tsqlite3rbu)(unsafe.Pointer(p)).Frc = _prepareFreeAndCollectError(tls, (*Tsqlite3rbu)(unsafe.Pointer(p)).FdbMain, bp, p+64, Xsqlite3_mprintf(tls, __ccgo_ts+28122, libc.VaList(bp+24, (*TRbuObjIter)(unsafe.Pointer(pIter)).FzIdx)))
 	for (*Tsqlite3rbu)(unsafe.Pointer(p)).Frc == m_SQLITE_OK && int32(m_SQLITE_ROW) == Xsqlite3_step(tls, *(*uintptr)(unsafe.Pointer(bp))) {
 		iCid = Xsqlite3_column_int(tls, *(*uintptr)(unsafe.Pointer(bp)), int32(1))
 		zCollate = Xsqlite3_column_text(tls, *(*uintptr)(unsafe.Pointer(bp)), int32(4))
@@ -169566,15 +169566,15 @@ func XrbuVacuumIndexStart(tls *libc.TLS, p uintptr, pIter uintptr) (r uintptr) {
 				_ = libc.Int32FromInt32(0)
 				zCol = *(*uintptr)(unsafe.Pointer((*TRbuObjIter)(unsafe.Pointer(pIter)).FazTblCol + uintptr(i)*8))
 			} else {
-				zCol = __ccgo_ts + 28425
+				zCol = __ccgo_ts + 28445
 			}
 		} else {
 			zCol = *(*uintptr)(unsafe.Pointer((*TRbuObjIter)(unsafe.Pointer(pIter)).FazTblCol + uintptr(iCid)*8))
 		}
-		zLhs = _rbuMPrintf(tls, p, __ccgo_ts+28433, libc.VaList(bp+24, zLhs, zSep, zCol, zCollate))
-		zOrder = _rbuMPrintf(tls, p, __ccgo_ts+28454, libc.VaList(bp+24, zOrder, zSep, iCol, zCol, zCollate))
-		zSelect = _rbuMPrintf(tls, p, __ccgo_ts+28490, libc.VaList(bp+24, zSelect, zSep, iCol, zCol))
-		zSep = __ccgo_ts + 14449
+		zLhs = _rbuMPrintf(tls, p, __ccgo_ts+28453, libc.VaList(bp+24, zLhs, zSep, zCol, zCollate))
+		zOrder = _rbuMPrintf(tls, p, __ccgo_ts+28474, libc.VaList(bp+24, zOrder, zSep, iCol, zCol, zCollate))
+		zSelect = _rbuMPrintf(tls, p, __ccgo_ts+28510, libc.VaList(bp+24, zSelect, zSep, iCol, zCol))
+		zSep = __ccgo_ts + 14469
 		iCol++
 	}
 	_rbuFinalize(tls, p, *(*uintptr)(unsafe.Pointer(bp)))
@@ -169583,9 +169583,9 @@ func XrbuVacuumIndexStart(tls *libc.TLS, p uintptr, pIter uintptr) (r uintptr) {
 	}
 	if (*Tsqlite3rbu)(unsafe.Pointer(p)).Frc == m_SQLITE_OK {
 		*(*uintptr)(unsafe.Pointer(bp + 8)) = uintptr(0)
-		(*Tsqlite3rbu)(unsafe.Pointer(p)).Frc = _prepareFreeAndCollectError(tls, (*Tsqlite3rbu)(unsafe.Pointer(p)).FdbMain, bp+8, p+64, Xsqlite3_mprintf(tls, __ccgo_ts+28517, libc.VaList(bp+24, zSelect, (*TRbuObjIter)(unsafe.Pointer(pIter)).FzTbl, zOrder)))
+		(*Tsqlite3rbu)(unsafe.Pointer(p)).Frc = _prepareFreeAndCollectError(tls, (*Tsqlite3rbu)(unsafe.Pointer(p)).FdbMain, bp+8, p+64, Xsqlite3_mprintf(tls, __ccgo_ts+28537, libc.VaList(bp+24, zSelect, (*TRbuObjIter)(unsafe.Pointer(pIter)).FzTbl, zOrder)))
 		if (*Tsqlite3rbu)(unsafe.Pointer(p)).Frc == m_SQLITE_OK && int32(m_SQLITE_ROW) == Xsqlite3_step(tls, *(*uintptr)(unsafe.Pointer(bp + 8))) {
-			zSep = __ccgo_ts + 1511
+			zSep = __ccgo_ts + 1531
 			iCol = 0
 			for {
 				if !(iCol < (*TRbuObjIter)(unsafe.Pointer(pIter)).FnCol) {
@@ -169600,14 +169600,14 @@ func XrbuVacuumIndexStart(tls *libc.TLS, p uintptr, pIter uintptr) (r uintptr) {
 						break
 					}
 				}
-				zVector = _rbuMPrintf(tls, p, __ccgo_ts+28565, libc.VaList(bp+24, zVector, zSep, zQuoted))
-				zSep = __ccgo_ts + 14449
+				zVector = _rbuMPrintf(tls, p, __ccgo_ts+28585, libc.VaList(bp+24, zVector, zSep, zQuoted))
+				zSep = __ccgo_ts + 14469
 				goto _2
 			_2:
 				iCol++
 			}
 			if !(bFailed != 0) {
-				zRet = _rbuMPrintf(tls, p, __ccgo_ts+28572, libc.VaList(bp+24, zLhs, zVector))
+				zRet = _rbuMPrintf(tls, p, __ccgo_ts+28592, libc.VaList(bp+24, zLhs, zVector))
 			}
 		}
 		_rbuFinalize(tls, p, *(*uintptr)(unsafe.Pointer(bp + 8)))
@@ -169659,12 +169659,12 @@ func _rbuObjIterGetIndexCols(tls *libc.TLS, p uintptr, pIter uintptr, pzImposter
 	zImpPK = uintptr(0)                          /* String to return via *pzImposterPK */
 	zWhere = uintptr(0)                          /* String to return via *pzWhere */
 	nBind = 0                                    /* Value to return via *pnBind */
-	zCom = __ccgo_ts + 1511                      /* Set to ", " later on */
-	zAnd = __ccgo_ts + 1511                      /* Set to " AND " later on */
+	zCom = __ccgo_ts + 1531                      /* Set to ", " later on */
+	zAnd = __ccgo_ts + 1531                      /* Set to " AND " later on */
 	*(*uintptr)(unsafe.Pointer(bp)) = uintptr(0) /* PRAGMA index_xinfo = ? */
 	if rc == m_SQLITE_OK {
 		_ = libc.Int32FromInt32(0)
-		rc = _prepareFreeAndCollectError(tls, (*Tsqlite3rbu)(unsafe.Pointer(p)).FdbMain, bp, p+64, Xsqlite3_mprintf(tls, __ccgo_ts+28102, libc.VaList(bp+16, (*TRbuObjIter)(unsafe.Pointer(pIter)).FzIdx)))
+		rc = _prepareFreeAndCollectError(tls, (*Tsqlite3rbu)(unsafe.Pointer(p)).FdbMain, bp, p+64, Xsqlite3_mprintf(tls, __ccgo_ts+28122, libc.VaList(bp+16, (*TRbuObjIter)(unsafe.Pointer(pIter)).FzIdx)))
 	}
 	for rc == m_SQLITE_OK && int32(m_SQLITE_ROW) == Xsqlite3_step(tls, *(*uintptr)(unsafe.Pointer(bp))) {
 		iCid = Xsqlite3_column_int(tls, *(*uintptr)(unsafe.Pointer(bp)), int32(1))
@@ -169673,8 +169673,8 @@ func _rbuObjIterGetIndexCols(tls *libc.TLS, p uintptr, pIter uintptr, pzImposter
 		zCol = uintptr(0)
 		if iCid == -int32(2) {
 			iSeq = Xsqlite3_column_int(tls, *(*uintptr)(unsafe.Pointer(bp)), 0)
-			zRet = Xsqlite3_mprintf(tls, __ccgo_ts+28584, libc.VaList(bp+16, zRet, zCom, (*(*TRbuSpan)(unsafe.Pointer((*TRbuObjIter)(unsafe.Pointer(pIter)).FaIdxCol + uintptr(iSeq)*16))).FnSpan, (*(*TRbuSpan)(unsafe.Pointer((*TRbuObjIter)(unsafe.Pointer(pIter)).FaIdxCol + uintptr(iSeq)*16))).FzSpan, zCollate))
-			zType = __ccgo_ts + 1511
+			zRet = Xsqlite3_mprintf(tls, __ccgo_ts+28604, libc.VaList(bp+16, zRet, zCom, (*(*TRbuSpan)(unsafe.Pointer((*TRbuObjIter)(unsafe.Pointer(pIter)).FaIdxCol + uintptr(iSeq)*16))).FnSpan, (*(*TRbuSpan)(unsafe.Pointer((*TRbuObjIter)(unsafe.Pointer(pIter)).FaIdxCol + uintptr(iSeq)*16))).FzSpan, zCollate))
+			zType = __ccgo_ts + 1531
 		} else {
 			if iCid < 0 {
 				/* An integer primary key. If the table has an explicit IPK, use
@@ -169693,34 +169693,34 @@ func _rbuObjIterGetIndexCols(tls *libc.TLS, p uintptr, pIter uintptr, pzImposter
 					zCol = *(*uintptr)(unsafe.Pointer((*TRbuObjIter)(unsafe.Pointer(pIter)).FazTblCol + uintptr(i)*8))
 				} else {
 					if (*Tsqlite3rbu)(unsafe.Pointer(p)).FzTarget == uintptr(0) {
-						zCol = __ccgo_ts + 28425
+						zCol = __ccgo_ts + 28445
 					} else {
-						zCol = __ccgo_ts + 28155
+						zCol = __ccgo_ts + 28175
 					}
 				}
-				zType = __ccgo_ts + 1098
+				zType = __ccgo_ts + 1118
 			} else {
 				zCol = *(*uintptr)(unsafe.Pointer((*TRbuObjIter)(unsafe.Pointer(pIter)).FazTblCol + uintptr(iCid)*8))
 				zType = *(*uintptr)(unsafe.Pointer((*TRbuObjIter)(unsafe.Pointer(pIter)).FazTblType + uintptr(iCid)*8))
 			}
-			zRet = Xsqlite3_mprintf(tls, __ccgo_ts+28606, libc.VaList(bp+16, zRet, zCom, zCol, zCollate))
+			zRet = Xsqlite3_mprintf(tls, __ccgo_ts+28626, libc.VaList(bp+16, zRet, zCom, zCol, zCollate))
 		}
 		if (*TRbuObjIter)(unsafe.Pointer(pIter)).FbUnique == 0 || Xsqlite3_column_int(tls, *(*uintptr)(unsafe.Pointer(bp)), int32(5)) != 0 {
 			if bDesc != 0 {
-				v2 = __ccgo_ts + 28342
+				v2 = __ccgo_ts + 28362
 			} else {
-				v2 = __ccgo_ts + 1511
+				v2 = __ccgo_ts + 1531
 			}
 			zOrder = v2
-			zImpPK = Xsqlite3_mprintf(tls, __ccgo_ts+28626, libc.VaList(bp+16, zImpPK, zCom, nBind, zCol, zOrder))
+			zImpPK = Xsqlite3_mprintf(tls, __ccgo_ts+28646, libc.VaList(bp+16, zImpPK, zCom, nBind, zCol, zOrder))
 		}
-		zImpCols = Xsqlite3_mprintf(tls, __ccgo_ts+28647, libc.VaList(bp+16, zImpCols, zCom, nBind, zCol, zType, zCollate))
-		zWhere = Xsqlite3_mprintf(tls, __ccgo_ts+28680, libc.VaList(bp+16, zWhere, zAnd, nBind, zCol))
+		zImpCols = Xsqlite3_mprintf(tls, __ccgo_ts+28667, libc.VaList(bp+16, zImpCols, zCom, nBind, zCol, zType, zCollate))
+		zWhere = Xsqlite3_mprintf(tls, __ccgo_ts+28700, libc.VaList(bp+16, zWhere, zAnd, nBind, zCol))
 		if zRet == uintptr(0) || zImpPK == uintptr(0) || zImpCols == uintptr(0) || zWhere == uintptr(0) {
 			rc = int32(m_SQLITE_NOMEM)
 		}
-		zCom = __ccgo_ts + 14449
-		zAnd = __ccgo_ts + 21204
+		zCom = __ccgo_ts + 14469
+		zAnd = __ccgo_ts + 21224
 		nBind++
 	}
 	rc2 = Xsqlite3_finalize(tls, *(*uintptr)(unsafe.Pointer(bp)))
@@ -169766,7 +169766,7 @@ func _rbuObjIterGetOldlist(tls *libc.TLS, p uintptr, pIter uintptr, zObj uintptr
 	_, _, _, _ = i, zCol, zList, zS
 	zList = uintptr(0)
 	if (*Tsqlite3rbu)(unsafe.Pointer(p)).Frc == m_SQLITE_OK && (*TRbuObjIter)(unsafe.Pointer(pIter)).FabIndexed != 0 {
-		zS = __ccgo_ts + 1511
+		zS = __ccgo_ts + 1531
 		i = 0
 		for {
 			if !(i < (*TRbuObjIter)(unsafe.Pointer(pIter)).FnTblCol) {
@@ -169774,11 +169774,11 @@ func _rbuObjIterGetOldlist(tls *libc.TLS, p uintptr, pIter uintptr, zObj uintptr
 			}
 			if *(*Tu8)(unsafe.Pointer((*TRbuObjIter)(unsafe.Pointer(pIter)).FabIndexed + uintptr(i))) != 0 {
 				zCol = *(*uintptr)(unsafe.Pointer((*TRbuObjIter)(unsafe.Pointer(pIter)).FazTblCol + uintptr(i)*8))
-				zList = Xsqlite3_mprintf(tls, __ccgo_ts+28704, libc.VaList(bp+8, zList, zS, zObj, zCol))
+				zList = Xsqlite3_mprintf(tls, __ccgo_ts+28724, libc.VaList(bp+8, zList, zS, zObj, zCol))
 			} else {
-				zList = Xsqlite3_mprintf(tls, __ccgo_ts+28716, libc.VaList(bp+8, zList, zS))
+				zList = Xsqlite3_mprintf(tls, __ccgo_ts+28736, libc.VaList(bp+8, zList, zS))
 			}
-			zS = __ccgo_ts + 14449
+			zS = __ccgo_ts + 14469
 			if zList == uintptr(0) {
 				(*Tsqlite3rbu)(unsafe.Pointer(p)).Frc = int32(m_SQLITE_NOMEM)
 				break
@@ -169789,7 +169789,7 @@ func _rbuObjIterGetOldlist(tls *libc.TLS, p uintptr, pIter uintptr, zObj uintptr
 		}
 		/* For a table with implicit rowids, append "old._rowid_" to the list. */
 		if (*TRbuObjIter)(unsafe.Pointer(pIter)).FeType == int32(m_RBU_PK_EXTERNAL) || (*TRbuObjIter)(unsafe.Pointer(pIter)).FeType == int32(m_RBU_PK_NONE) {
-			zList = _rbuMPrintf(tls, p, __ccgo_ts+28725, libc.VaList(bp+8, zList, zObj))
+			zList = _rbuMPrintf(tls, p, __ccgo_ts+28745, libc.VaList(bp+8, zList, zObj))
 		}
 	}
 	return zList
@@ -169815,26 +169815,26 @@ func _rbuObjIterGetWhere(tls *libc.TLS, p uintptr, pIter uintptr) (r uintptr) {
 	_, _, _, _, _, _ = i, i1, zCol, zList, zSep, zSep1
 	zList = uintptr(0)
 	if (*TRbuObjIter)(unsafe.Pointer(pIter)).FeType == int32(m_RBU_PK_VTAB) || (*TRbuObjIter)(unsafe.Pointer(pIter)).FeType == int32(m_RBU_PK_NONE) {
-		zList = _rbuMPrintf(tls, p, __ccgo_ts+28740, libc.VaList(bp+8, (*TRbuObjIter)(unsafe.Pointer(pIter)).FnTblCol+int32(1)))
+		zList = _rbuMPrintf(tls, p, __ccgo_ts+28760, libc.VaList(bp+8, (*TRbuObjIter)(unsafe.Pointer(pIter)).FnTblCol+int32(1)))
 	} else {
 		if (*TRbuObjIter)(unsafe.Pointer(pIter)).FeType == int32(m_RBU_PK_EXTERNAL) {
-			zSep = __ccgo_ts + 1511
+			zSep = __ccgo_ts + 1531
 			i = 0
 			for {
 				if !(i < (*TRbuObjIter)(unsafe.Pointer(pIter)).FnTblCol) {
 					break
 				}
 				if *(*Tu8)(unsafe.Pointer((*TRbuObjIter)(unsafe.Pointer(pIter)).FabTblPk + uintptr(i))) != 0 {
-					zList = _rbuMPrintf(tls, p, __ccgo_ts+28754, libc.VaList(bp+8, zList, zSep, i, i+int32(1)))
-					zSep = __ccgo_ts + 21204
+					zList = _rbuMPrintf(tls, p, __ccgo_ts+28774, libc.VaList(bp+8, zList, zSep, i, i+int32(1)))
+					zSep = __ccgo_ts + 21224
 				}
 				goto _1
 			_1:
 				i++
 			}
-			zList = _rbuMPrintf(tls, p, __ccgo_ts+28766, libc.VaList(bp+8, zList))
+			zList = _rbuMPrintf(tls, p, __ccgo_ts+28786, libc.VaList(bp+8, zList))
 		} else {
-			zSep1 = __ccgo_ts + 1511
+			zSep1 = __ccgo_ts + 1531
 			i1 = 0
 			for {
 				if !(i1 < (*TRbuObjIter)(unsafe.Pointer(pIter)).FnTblCol) {
@@ -169842,8 +169842,8 @@ func _rbuObjIterGetWhere(tls *libc.TLS, p uintptr, pIter uintptr) (r uintptr) {
 				}
 				if *(*Tu8)(unsafe.Pointer((*TRbuObjIter)(unsafe.Pointer(pIter)).FabTblPk + uintptr(i1))) != 0 {
 					zCol = *(*uintptr)(unsafe.Pointer((*TRbuObjIter)(unsafe.Pointer(pIter)).FazTblCol + uintptr(i1)*8))
-					zList = _rbuMPrintf(tls, p, __ccgo_ts+28816, libc.VaList(bp+8, zList, zSep1, zCol, i1+int32(1)))
-					zSep1 = __ccgo_ts + 21204
+					zList = _rbuMPrintf(tls, p, __ccgo_ts+28836, libc.VaList(bp+8, zList, zSep1, zCol, i1+int32(1)))
+					zSep1 = __ccgo_ts + 21224
 				}
 				goto _2
 			_2:
@@ -169865,7 +169865,7 @@ func _rbuObjIterGetWhere(tls *libc.TLS, p uintptr, pIter uintptr) (r uintptr) {
 //	*/
 func _rbuBadControlError(tls *libc.TLS, p uintptr) {
 	(*Tsqlite3rbu)(unsafe.Pointer(p)).Frc = int32(m_SQLITE_ERROR)
-	(*Tsqlite3rbu)(unsafe.Pointer(p)).FzErrmsg = Xsqlite3_mprintf(tls, __ccgo_ts+28829, 0)
+	(*Tsqlite3rbu)(unsafe.Pointer(p)).FzErrmsg = Xsqlite3_mprintf(tls, __ccgo_ts+28849, 0)
 }
 
 // C documentation
@@ -169899,7 +169899,7 @@ func _rbuObjIterGetSetlist(tls *libc.TLS, p uintptr, pIter uintptr, zMask uintpt
 		if int32(libc.Xstrlen(tls, zMask)) != (*TRbuObjIter)(unsafe.Pointer(pIter)).FnTblCol {
 			_rbuBadControlError(tls, p)
 		} else {
-			zSep = __ccgo_ts + 1511
+			zSep = __ccgo_ts + 1531
 			i = 0
 			for {
 				if !(i < (*TRbuObjIter)(unsafe.Pointer(pIter)).FnTblCol) {
@@ -169907,16 +169907,16 @@ func _rbuObjIterGetSetlist(tls *libc.TLS, p uintptr, pIter uintptr, zMask uintpt
 				}
 				c = *(*uint8)(unsafe.Pointer(zMask + uintptr(*(*int32)(unsafe.Pointer((*TRbuObjIter)(unsafe.Pointer(pIter)).FaiSrcOrder + uintptr(i)*4)))))
 				if int32(c) == int32('x') {
-					zList = _rbuMPrintf(tls, p, __ccgo_ts+28816, libc.VaList(bp+8, zList, zSep, *(*uintptr)(unsafe.Pointer((*TRbuObjIter)(unsafe.Pointer(pIter)).FazTblCol + uintptr(i)*8)), i+int32(1)))
-					zSep = __ccgo_ts + 14449
+					zList = _rbuMPrintf(tls, p, __ccgo_ts+28836, libc.VaList(bp+8, zList, zSep, *(*uintptr)(unsafe.Pointer((*TRbuObjIter)(unsafe.Pointer(pIter)).FazTblCol + uintptr(i)*8)), i+int32(1)))
+					zSep = __ccgo_ts + 14469
 				} else {
 					if int32(c) == int32('d') {
-						zList = _rbuMPrintf(tls, p, __ccgo_ts+28855, libc.VaList(bp+8, zList, zSep, *(*uintptr)(unsafe.Pointer((*TRbuObjIter)(unsafe.Pointer(pIter)).FazTblCol + uintptr(i)*8)), *(*uintptr)(unsafe.Pointer((*TRbuObjIter)(unsafe.Pointer(pIter)).FazTblCol + uintptr(i)*8)), i+int32(1)))
-						zSep = __ccgo_ts + 14449
+						zList = _rbuMPrintf(tls, p, __ccgo_ts+28875, libc.VaList(bp+8, zList, zSep, *(*uintptr)(unsafe.Pointer((*TRbuObjIter)(unsafe.Pointer(pIter)).FazTblCol + uintptr(i)*8)), *(*uintptr)(unsafe.Pointer((*TRbuObjIter)(unsafe.Pointer(pIter)).FazTblCol + uintptr(i)*8)), i+int32(1)))
+						zSep = __ccgo_ts + 14469
 					} else {
 						if int32(c) == int32('f') {
-							zList = _rbuMPrintf(tls, p, __ccgo_ts+28885, libc.VaList(bp+8, zList, zSep, *(*uintptr)(unsafe.Pointer((*TRbuObjIter)(unsafe.Pointer(pIter)).FazTblCol + uintptr(i)*8)), *(*uintptr)(unsafe.Pointer((*TRbuObjIter)(unsafe.Pointer(pIter)).FazTblCol + uintptr(i)*8)), i+int32(1)))
-							zSep = __ccgo_ts + 14449
+							zList = _rbuMPrintf(tls, p, __ccgo_ts+28905, libc.VaList(bp+8, zList, zSep, *(*uintptr)(unsafe.Pointer((*TRbuObjIter)(unsafe.Pointer(pIter)).FazTblCol + uintptr(i)*8)), *(*uintptr)(unsafe.Pointer((*TRbuObjIter)(unsafe.Pointer(pIter)).FazTblCol + uintptr(i)*8)), i+int32(1)))
+							zSep = __ccgo_ts + 14469
 						}
 					}
 				}
@@ -169999,16 +169999,16 @@ func _rbuWithoutRowidPK(tls *libc.TLS, p uintptr, pIter uintptr) (r uintptr) {
 	z = uintptr(0)
 	_ = libc.Int32FromInt32(0)
 	if (*Tsqlite3rbu)(unsafe.Pointer(p)).Frc == m_SQLITE_OK {
-		zSep = __ccgo_ts + 28922
+		zSep = __ccgo_ts + 28942
 		*(*uintptr)(unsafe.Pointer(bp)) = uintptr(0)     /* PRAGMA index_list = (pIter->zTbl) */
 		*(*uintptr)(unsafe.Pointer(bp + 8)) = uintptr(0) /* PRAGMA index_xinfo = <pk-index> */
-		(*Tsqlite3rbu)(unsafe.Pointer(p)).Frc = _prepareFreeAndCollectError(tls, (*Tsqlite3rbu)(unsafe.Pointer(p)).FdbMain, bp, p+64, Xsqlite3_mprintf(tls, __ccgo_ts+28074, libc.VaList(bp+24, (*TRbuObjIter)(unsafe.Pointer(pIter)).FzTbl)))
+		(*Tsqlite3rbu)(unsafe.Pointer(p)).Frc = _prepareFreeAndCollectError(tls, (*Tsqlite3rbu)(unsafe.Pointer(p)).FdbMain, bp, p+64, Xsqlite3_mprintf(tls, __ccgo_ts+28094, libc.VaList(bp+24, (*TRbuObjIter)(unsafe.Pointer(pIter)).FzTbl)))
 		for (*Tsqlite3rbu)(unsafe.Pointer(p)).Frc == m_SQLITE_OK && int32(m_SQLITE_ROW) == Xsqlite3_step(tls, *(*uintptr)(unsafe.Pointer(bp))) {
 			zOrig = Xsqlite3_column_text(tls, *(*uintptr)(unsafe.Pointer(bp)), int32(3))
-			if zOrig != 0 && libc.Xstrcmp(tls, zOrig, __ccgo_ts+15942) == 0 {
+			if zOrig != 0 && libc.Xstrcmp(tls, zOrig, __ccgo_ts+15962) == 0 {
 				zIdx = Xsqlite3_column_text(tls, *(*uintptr)(unsafe.Pointer(bp)), int32(1))
 				if zIdx != 0 {
-					(*Tsqlite3rbu)(unsafe.Pointer(p)).Frc = _prepareFreeAndCollectError(tls, (*Tsqlite3rbu)(unsafe.Pointer(p)).FdbMain, bp+8, p+64, Xsqlite3_mprintf(tls, __ccgo_ts+28102, libc.VaList(bp+24, zIdx)))
+					(*Tsqlite3rbu)(unsafe.Pointer(p)).Frc = _prepareFreeAndCollectError(tls, (*Tsqlite3rbu)(unsafe.Pointer(p)).FdbMain, bp+8, p+64, Xsqlite3_mprintf(tls, __ccgo_ts+28122, libc.VaList(bp+24, zIdx)))
 				}
 				break
 			}
@@ -170019,16 +170019,16 @@ func _rbuWithoutRowidPK(tls *libc.TLS, p uintptr, pIter uintptr) (r uintptr) {
 				/* int iCid = sqlite3_column_int(pXInfo, 0); */
 				zCol = Xsqlite3_column_text(tls, *(*uintptr)(unsafe.Pointer(bp + 8)), int32(2))
 				if Xsqlite3_column_int(tls, *(*uintptr)(unsafe.Pointer(bp + 8)), int32(3)) != 0 {
-					v1 = __ccgo_ts + 28342
+					v1 = __ccgo_ts + 28362
 				} else {
-					v1 = __ccgo_ts + 1511
+					v1 = __ccgo_ts + 1531
 				}
 				zDesc = v1
-				z = _rbuMPrintf(tls, p, __ccgo_ts+28935, libc.VaList(bp+24, z, zSep, zCol, zDesc))
-				zSep = __ccgo_ts + 14449
+				z = _rbuMPrintf(tls, p, __ccgo_ts+28955, libc.VaList(bp+24, z, zSep, zCol, zDesc))
+				zSep = __ccgo_ts + 14469
 			}
 		}
-		z = _rbuMPrintf(tls, p, __ccgo_ts+28946, libc.VaList(bp+24, z))
+		z = _rbuMPrintf(tls, p, __ccgo_ts+28966, libc.VaList(bp+24, z))
 		_rbuFinalize(tls, p, *(*uintptr)(unsafe.Pointer(bp + 8)))
 	}
 	return z
@@ -170068,13 +170068,13 @@ func _rbuCreateImposterTable2(tls *libc.TLS, p uintptr, pIter uintptr) {
 		*(*uintptr)(unsafe.Pointer(bp)) = uintptr(0)          /* SELECT name ... WHERE rootpage = $tnum */
 		zIdx = uintptr(0)                                     /* Name of PK index */
 		*(*uintptr)(unsafe.Pointer(bp + 8)) = uintptr(0)      /* PRAGMA main.index_xinfo = $zIdx */
-		zComma = __ccgo_ts + 1511
+		zComma = __ccgo_ts + 1531
 		zCols = uintptr(0) /* Used to build up list of table cols */
 		zPk = uintptr(0)   /* Used to build up table PK declaration */
 		/* Figure out the name of the primary key index for the current table.
 		 ** This is needed for the argument to "PRAGMA index_xinfo". Set
 		 ** zIdx to point to a nul-terminated string containing this name. */
-		(*Tsqlite3rbu)(unsafe.Pointer(p)).Frc = _prepareAndCollectError(tls, (*Tsqlite3rbu)(unsafe.Pointer(p)).FdbMain, bp, p+64, __ccgo_ts+28950)
+		(*Tsqlite3rbu)(unsafe.Pointer(p)).Frc = _prepareAndCollectError(tls, (*Tsqlite3rbu)(unsafe.Pointer(p)).FdbMain, bp, p+64, __ccgo_ts+28970)
 		if (*Tsqlite3rbu)(unsafe.Pointer(p)).Frc == m_SQLITE_OK {
 			Xsqlite3_bind_int(tls, *(*uintptr)(unsafe.Pointer(bp)), int32(1), tnum)
 			if int32(m_SQLITE_ROW) == Xsqlite3_step(tls, *(*uintptr)(unsafe.Pointer(bp))) {
@@ -170082,7 +170082,7 @@ func _rbuCreateImposterTable2(tls *libc.TLS, p uintptr, pIter uintptr) {
 			}
 		}
 		if zIdx != 0 {
-			(*Tsqlite3rbu)(unsafe.Pointer(p)).Frc = _prepareFreeAndCollectError(tls, (*Tsqlite3rbu)(unsafe.Pointer(p)).FdbMain, bp+8, p+64, Xsqlite3_mprintf(tls, __ccgo_ts+28102, libc.VaList(bp+24, zIdx)))
+			(*Tsqlite3rbu)(unsafe.Pointer(p)).Frc = _prepareFreeAndCollectError(tls, (*Tsqlite3rbu)(unsafe.Pointer(p)).FdbMain, bp+8, p+64, Xsqlite3_mprintf(tls, __ccgo_ts+28122, libc.VaList(bp+24, zIdx)))
 		}
 		_rbuFinalize(tls, p, *(*uintptr)(unsafe.Pointer(bp)))
 		for (*Tsqlite3rbu)(unsafe.Pointer(p)).Frc == m_SQLITE_OK && int32(m_SQLITE_ROW) == Xsqlite3_step(tls, *(*uintptr)(unsafe.Pointer(bp + 8))) {
@@ -170091,21 +170091,21 @@ func _rbuCreateImposterTable2(tls *libc.TLS, p uintptr, pIter uintptr) {
 				iCid = Xsqlite3_column_int(tls, *(*uintptr)(unsafe.Pointer(bp + 8)), int32(1))
 				bDesc = Xsqlite3_column_int(tls, *(*uintptr)(unsafe.Pointer(bp + 8)), int32(3))
 				zCollate = Xsqlite3_column_text(tls, *(*uintptr)(unsafe.Pointer(bp + 8)), int32(4))
-				zCols = _rbuMPrintf(tls, p, __ccgo_ts+29000, libc.VaList(bp+24, zCols, zComma, iCid, *(*uintptr)(unsafe.Pointer((*TRbuObjIter)(unsafe.Pointer(pIter)).FazTblType + uintptr(iCid)*8)), zCollate))
+				zCols = _rbuMPrintf(tls, p, __ccgo_ts+29020, libc.VaList(bp+24, zCols, zComma, iCid, *(*uintptr)(unsafe.Pointer((*TRbuObjIter)(unsafe.Pointer(pIter)).FazTblType + uintptr(iCid)*8)), zCollate))
 				if bDesc != 0 {
-					v1 = __ccgo_ts + 28342
+					v1 = __ccgo_ts + 28362
 				} else {
-					v1 = __ccgo_ts + 1511
+					v1 = __ccgo_ts + 1531
 				}
-				zPk = _rbuMPrintf(tls, p, __ccgo_ts+29022, libc.VaList(bp+24, zPk, zComma, iCid, v1))
-				zComma = __ccgo_ts + 14449
+				zPk = _rbuMPrintf(tls, p, __ccgo_ts+29042, libc.VaList(bp+24, zPk, zComma, iCid, v1))
+				zComma = __ccgo_ts + 14469
 			}
 		}
-		zCols = _rbuMPrintf(tls, p, __ccgo_ts+29032, libc.VaList(bp+24, zCols))
+		zCols = _rbuMPrintf(tls, p, __ccgo_ts+29052, libc.VaList(bp+24, zCols))
 		_rbuFinalize(tls, p, *(*uintptr)(unsafe.Pointer(bp + 8)))
-		Xsqlite3_test_control(tls, int32(m_SQLITE_TESTCTRL_IMPOSTER), libc.VaList(bp+24, (*Tsqlite3rbu)(unsafe.Pointer(p)).FdbMain, __ccgo_ts+6255, int32(1), tnum))
-		_rbuMPrintfExec(tls, p, (*Tsqlite3rbu)(unsafe.Pointer(p)).FdbMain, __ccgo_ts+29047, libc.VaList(bp+24, zCols, zPk))
-		Xsqlite3_test_control(tls, int32(m_SQLITE_TESTCTRL_IMPOSTER), libc.VaList(bp+24, (*Tsqlite3rbu)(unsafe.Pointer(p)).FdbMain, __ccgo_ts+6255, 0, 0))
+		Xsqlite3_test_control(tls, int32(m_SQLITE_TESTCTRL_IMPOSTER), libc.VaList(bp+24, (*Tsqlite3rbu)(unsafe.Pointer(p)).FdbMain, __ccgo_ts+6275, int32(1), tnum))
+		_rbuMPrintfExec(tls, p, (*Tsqlite3rbu)(unsafe.Pointer(p)).FdbMain, __ccgo_ts+29067, libc.VaList(bp+24, zCols, zPk))
+		Xsqlite3_test_control(tls, int32(m_SQLITE_TESTCTRL_IMPOSTER), libc.VaList(bp+24, (*Tsqlite3rbu)(unsafe.Pointer(p)).FdbMain, __ccgo_ts+6275, 0, 0))
 	}
 }
 
@@ -170140,30 +170140,30 @@ func _rbuCreateImposterTable(tls *libc.TLS, p uintptr, pIter uintptr) {
 	_, _, _, _, _, _, _, _, _ = iCol, tnum, zCol, zComma, zPk, zPk1, zSql, v2, v3
 	if (*Tsqlite3rbu)(unsafe.Pointer(p)).Frc == m_SQLITE_OK && (*TRbuObjIter)(unsafe.Pointer(pIter)).FeType != int32(m_RBU_PK_VTAB) {
 		tnum = (*TRbuObjIter)(unsafe.Pointer(pIter)).FiTnum
-		zComma = __ccgo_ts + 1511
+		zComma = __ccgo_ts + 1531
 		zSql = uintptr(0)
-		Xsqlite3_test_control(tls, int32(m_SQLITE_TESTCTRL_IMPOSTER), libc.VaList(bp+16, (*Tsqlite3rbu)(unsafe.Pointer(p)).FdbMain, __ccgo_ts+6255, 0, int32(1)))
+		Xsqlite3_test_control(tls, int32(m_SQLITE_TESTCTRL_IMPOSTER), libc.VaList(bp+16, (*Tsqlite3rbu)(unsafe.Pointer(p)).FdbMain, __ccgo_ts+6275, 0, int32(1)))
 		iCol = 0
 		for {
 			if !((*Tsqlite3rbu)(unsafe.Pointer(p)).Frc == m_SQLITE_OK && iCol < (*TRbuObjIter)(unsafe.Pointer(pIter)).FnTblCol) {
 				break
 			}
-			zPk = __ccgo_ts + 1511
+			zPk = __ccgo_ts + 1531
 			zCol = *(*uintptr)(unsafe.Pointer((*TRbuObjIter)(unsafe.Pointer(pIter)).FazTblCol + uintptr(iCol)*8))
 			*(*uintptr)(unsafe.Pointer(bp)) = uintptr(0)
-			(*Tsqlite3rbu)(unsafe.Pointer(p)).Frc = Xsqlite3_table_column_metadata(tls, (*Tsqlite3rbu)(unsafe.Pointer(p)).FdbMain, __ccgo_ts+6255, (*TRbuObjIter)(unsafe.Pointer(pIter)).FzTbl, zCol, uintptr(0), bp, uintptr(0), uintptr(0), uintptr(0))
+			(*Tsqlite3rbu)(unsafe.Pointer(p)).Frc = Xsqlite3_table_column_metadata(tls, (*Tsqlite3rbu)(unsafe.Pointer(p)).FdbMain, __ccgo_ts+6275, (*TRbuObjIter)(unsafe.Pointer(pIter)).FzTbl, zCol, uintptr(0), bp, uintptr(0), uintptr(0), uintptr(0))
 			if (*TRbuObjIter)(unsafe.Pointer(pIter)).FeType == int32(m_RBU_PK_IPK) && *(*Tu8)(unsafe.Pointer((*TRbuObjIter)(unsafe.Pointer(pIter)).FabTblPk + uintptr(iCol))) != 0 {
 				/* If the target table column is an "INTEGER PRIMARY KEY", add
 				 ** "PRIMARY KEY" to the imposter table column declaration. */
-				zPk = __ccgo_ts + 29109
+				zPk = __ccgo_ts + 29129
 			}
 			if *(*Tu8)(unsafe.Pointer((*TRbuObjIter)(unsafe.Pointer(pIter)).FabNotNull + uintptr(iCol))) != 0 {
-				v2 = __ccgo_ts + 29122
+				v2 = __ccgo_ts + 29142
 			} else {
-				v2 = __ccgo_ts + 1511
+				v2 = __ccgo_ts + 1531
 			}
-			zSql = _rbuMPrintf(tls, p, __ccgo_ts+29132, libc.VaList(bp+16, zSql, zComma, zCol, *(*uintptr)(unsafe.Pointer((*TRbuObjIter)(unsafe.Pointer(pIter)).FazTblType + uintptr(iCol)*8)), zPk, *(*uintptr)(unsafe.Pointer(bp)), v2))
-			zComma = __ccgo_ts + 14449
+			zSql = _rbuMPrintf(tls, p, __ccgo_ts+29152, libc.VaList(bp+16, zSql, zComma, zCol, *(*uintptr)(unsafe.Pointer((*TRbuObjIter)(unsafe.Pointer(pIter)).FazTblType + uintptr(iCol)*8)), zPk, *(*uintptr)(unsafe.Pointer(bp)), v2))
+			zComma = __ccgo_ts + 14469
 			goto _1
 		_1:
 			iCol++
@@ -170171,17 +170171,17 @@ func _rbuCreateImposterTable(tls *libc.TLS, p uintptr, pIter uintptr) {
 		if (*TRbuObjIter)(unsafe.Pointer(pIter)).FeType == int32(m_RBU_PK_WITHOUT_ROWID) {
 			zPk1 = _rbuWithoutRowidPK(tls, p, pIter)
 			if zPk1 != 0 {
-				zSql = _rbuMPrintf(tls, p, __ccgo_ts+29159, libc.VaList(bp+16, zSql, zPk1))
+				zSql = _rbuMPrintf(tls, p, __ccgo_ts+29179, libc.VaList(bp+16, zSql, zPk1))
 			}
 		}
-		Xsqlite3_test_control(tls, int32(m_SQLITE_TESTCTRL_IMPOSTER), libc.VaList(bp+16, (*Tsqlite3rbu)(unsafe.Pointer(p)).FdbMain, __ccgo_ts+6255, int32(1), tnum))
+		Xsqlite3_test_control(tls, int32(m_SQLITE_TESTCTRL_IMPOSTER), libc.VaList(bp+16, (*Tsqlite3rbu)(unsafe.Pointer(p)).FdbMain, __ccgo_ts+6275, int32(1), tnum))
 		if (*TRbuObjIter)(unsafe.Pointer(pIter)).FeType == int32(m_RBU_PK_WITHOUT_ROWID) {
-			v3 = __ccgo_ts + 29166
+			v3 = __ccgo_ts + 29186
 		} else {
-			v3 = __ccgo_ts + 1511
+			v3 = __ccgo_ts + 1531
 		}
-		_rbuMPrintfExec(tls, p, (*Tsqlite3rbu)(unsafe.Pointer(p)).FdbMain, __ccgo_ts+29181, libc.VaList(bp+16, (*TRbuObjIter)(unsafe.Pointer(pIter)).FzTbl, zSql, v3))
-		Xsqlite3_test_control(tls, int32(m_SQLITE_TESTCTRL_IMPOSTER), libc.VaList(bp+16, (*Tsqlite3rbu)(unsafe.Pointer(p)).FdbMain, __ccgo_ts+6255, 0, 0))
+		_rbuMPrintfExec(tls, p, (*Tsqlite3rbu)(unsafe.Pointer(p)).FdbMain, __ccgo_ts+29201, libc.VaList(bp+16, (*TRbuObjIter)(unsafe.Pointer(pIter)).FzTbl, zSql, v3))
+		Xsqlite3_test_control(tls, int32(m_SQLITE_TESTCTRL_IMPOSTER), libc.VaList(bp+16, (*Tsqlite3rbu)(unsafe.Pointer(p)).FdbMain, __ccgo_ts+6275, 0, 0))
 	}
 }
 
@@ -170208,7 +170208,7 @@ func _rbuObjIterPrepareTmpInsert(tls *libc.TLS, p uintptr, pIter uintptr, zColli
 	zBind = _rbuObjIterGetBindlist(tls, p, (*TRbuObjIter)(unsafe.Pointer(pIter)).FnTblCol+int32(1)+bRbuRowid)
 	if zBind != 0 {
 		_ = libc.Int32FromInt32(0)
-		(*Tsqlite3rbu)(unsafe.Pointer(p)).Frc = _prepareFreeAndCollectError(tls, (*Tsqlite3rbu)(unsafe.Pointer(p)).FdbRbu, pIter+152, p+64, Xsqlite3_mprintf(tls, __ccgo_ts+29213, libc.VaList(bp+8, p+48, (*TRbuObjIter)(unsafe.Pointer(pIter)).FzDataTbl, zCollist, zRbuRowid, zBind)))
+		(*Tsqlite3rbu)(unsafe.Pointer(p)).Frc = _prepareFreeAndCollectError(tls, (*Tsqlite3rbu)(unsafe.Pointer(p)).FdbRbu, pIter+152, p+64, Xsqlite3_mprintf(tls, __ccgo_ts+29233, libc.VaList(bp+8, p+48, (*TRbuObjIter)(unsafe.Pointer(pIter)).FzDataTbl, zCollist, zRbuRowid, zBind)))
 	}
 }
 
@@ -170255,7 +170255,7 @@ func _rbuObjIterGetIndexWhere(tls *libc.TLS, p uintptr, pIter uintptr) (r uintpt
 	zRet = uintptr(0)
 	_ = libc.Int32FromInt32(0)
 	if *(*int32)(unsafe.Pointer(bp + 8)) == m_SQLITE_OK {
-		*(*int32)(unsafe.Pointer(bp + 8)) = _prepareAndCollectError(tls, (*Tsqlite3rbu)(unsafe.Pointer(p)).FdbMain, bp, p+64, __ccgo_ts+29270)
+		*(*int32)(unsafe.Pointer(bp + 8)) = _prepareAndCollectError(tls, (*Tsqlite3rbu)(unsafe.Pointer(p)).FdbMain, bp, p+64, __ccgo_ts+29290)
 	}
 	if *(*int32)(unsafe.Pointer(bp + 8)) == m_SQLITE_OK {
 		*(*int32)(unsafe.Pointer(bp + 8)) = Xsqlite3_bind_text(tls, *(*uintptr)(unsafe.Pointer(bp)), int32(1), (*TRbuObjIter)(unsafe.Pointer(pIter)).FzIdx, -int32(1), libc.UintptrFromInt32(0))
@@ -170421,7 +170421,7 @@ func _rbuObjIterPrepareAll(tls *libc.TLS, p uintptr, pIter uintptr, nOffset int3
 		zIdx = (*TRbuObjIter)(unsafe.Pointer(pIter)).FzIdx
 		zLimit = uintptr(0)
 		if nOffset != 0 {
-			zLimit = Xsqlite3_mprintf(tls, __ccgo_ts+29336, libc.VaList(bp+40, nOffset))
+			zLimit = Xsqlite3_mprintf(tls, __ccgo_ts+29356, libc.VaList(bp+40, nOffset))
 			if !(zLimit != 0) {
 				(*Tsqlite3rbu)(unsafe.Pointer(p)).Frc = int32(m_SQLITE_NOMEM)
 			}
@@ -170439,18 +170439,18 @@ func _rbuObjIterPrepareAll(tls *libc.TLS, p uintptr, pIter uintptr, nOffset int3
 			zCollist = _rbuObjIterGetIndexCols(tls, p, pIter, bp, bp+8, bp+16, bp+24)
 			zBind = _rbuObjIterGetBindlist(tls, p, *(*int32)(unsafe.Pointer(bp + 24)))
 			/* Create the imposter table used to write to this index. */
-			Xsqlite3_test_control(tls, int32(m_SQLITE_TESTCTRL_IMPOSTER), libc.VaList(bp+40, (*Tsqlite3rbu)(unsafe.Pointer(p)).FdbMain, __ccgo_ts+6255, 0, int32(1)))
-			Xsqlite3_test_control(tls, int32(m_SQLITE_TESTCTRL_IMPOSTER), libc.VaList(bp+40, (*Tsqlite3rbu)(unsafe.Pointer(p)).FdbMain, __ccgo_ts+6255, int32(1), tnum))
-			_rbuMPrintfExec(tls, p, (*Tsqlite3rbu)(unsafe.Pointer(p)).FdbMain, __ccgo_ts+29356, libc.VaList(bp+40, zTbl, *(*uintptr)(unsafe.Pointer(bp)), *(*uintptr)(unsafe.Pointer(bp + 8))))
-			Xsqlite3_test_control(tls, int32(m_SQLITE_TESTCTRL_IMPOSTER), libc.VaList(bp+40, (*Tsqlite3rbu)(unsafe.Pointer(p)).FdbMain, __ccgo_ts+6255, 0, 0))
+			Xsqlite3_test_control(tls, int32(m_SQLITE_TESTCTRL_IMPOSTER), libc.VaList(bp+40, (*Tsqlite3rbu)(unsafe.Pointer(p)).FdbMain, __ccgo_ts+6275, 0, int32(1)))
+			Xsqlite3_test_control(tls, int32(m_SQLITE_TESTCTRL_IMPOSTER), libc.VaList(bp+40, (*Tsqlite3rbu)(unsafe.Pointer(p)).FdbMain, __ccgo_ts+6275, int32(1), tnum))
+			_rbuMPrintfExec(tls, p, (*Tsqlite3rbu)(unsafe.Pointer(p)).FdbMain, __ccgo_ts+29376, libc.VaList(bp+40, zTbl, *(*uintptr)(unsafe.Pointer(bp)), *(*uintptr)(unsafe.Pointer(bp + 8))))
+			Xsqlite3_test_control(tls, int32(m_SQLITE_TESTCTRL_IMPOSTER), libc.VaList(bp+40, (*Tsqlite3rbu)(unsafe.Pointer(p)).FdbMain, __ccgo_ts+6275, 0, 0))
 			/* Create the statement to insert index entries */
 			(*TRbuObjIter)(unsafe.Pointer(pIter)).FnCol = *(*int32)(unsafe.Pointer(bp + 24))
 			if (*Tsqlite3rbu)(unsafe.Pointer(p)).Frc == m_SQLITE_OK {
-				(*Tsqlite3rbu)(unsafe.Pointer(p)).Frc = _prepareFreeAndCollectError(tls, (*Tsqlite3rbu)(unsafe.Pointer(p)).FdbMain, pIter+136, p+64, Xsqlite3_mprintf(tls, __ccgo_ts+29421, libc.VaList(bp+40, zTbl, zBind)))
+				(*Tsqlite3rbu)(unsafe.Pointer(p)).Frc = _prepareFreeAndCollectError(tls, (*Tsqlite3rbu)(unsafe.Pointer(p)).FdbMain, pIter+136, p+64, Xsqlite3_mprintf(tls, __ccgo_ts+29441, libc.VaList(bp+40, zTbl, zBind)))
 			}
 			/* And to delete index entries */
 			if libc.BoolInt32((*Tsqlite3rbu)(unsafe.Pointer(p)).FzTarget == uintptr(0)) == 0 && (*Tsqlite3rbu)(unsafe.Pointer(p)).Frc == m_SQLITE_OK {
-				(*Tsqlite3rbu)(unsafe.Pointer(p)).Frc = _prepareFreeAndCollectError(tls, (*Tsqlite3rbu)(unsafe.Pointer(p)).FdbMain, pIter+144, p+64, Xsqlite3_mprintf(tls, __ccgo_ts+29457, libc.VaList(bp+40, zTbl, *(*uintptr)(unsafe.Pointer(bp + 16)))))
+				(*Tsqlite3rbu)(unsafe.Pointer(p)).Frc = _prepareFreeAndCollectError(tls, (*Tsqlite3rbu)(unsafe.Pointer(p)).FdbMain, pIter+144, p+64, Xsqlite3_mprintf(tls, __ccgo_ts+29477, libc.VaList(bp+40, zTbl, *(*uintptr)(unsafe.Pointer(bp + 16)))))
 			}
 			/* Create the SELECT statement to read keys in sorted order */
 			if (*Tsqlite3rbu)(unsafe.Pointer(p)).Frc == m_SQLITE_OK {
@@ -170465,26 +170465,26 @@ func _rbuObjIterPrepareAll(tls *libc.TLS, p uintptr, pIter uintptr, nOffset int3
 					}
 					if zStart != 0 {
 						if zPart != 0 {
-							v2 = __ccgo_ts + 29491
+							v2 = __ccgo_ts + 29511
 						} else {
-							v2 = __ccgo_ts + 29495
+							v2 = __ccgo_ts + 29515
 						}
 						v1 = v2
 					} else {
-						v1 = __ccgo_ts + 1511
+						v1 = __ccgo_ts + 1531
 					}
-					zSql = Xsqlite3_mprintf(tls, __ccgo_ts+29501, libc.VaList(bp+40, zCollist, (*TRbuObjIter)(unsafe.Pointer(pIter)).FzDataTbl, zPart, v1, zStart, zCollist, zLimit))
+					zSql = Xsqlite3_mprintf(tls, __ccgo_ts+29521, libc.VaList(bp+40, zCollist, (*TRbuObjIter)(unsafe.Pointer(pIter)).FzDataTbl, zPart, v1, zStart, zCollist, zLimit))
 					Xsqlite3_free(tls, zStart)
 				} else {
 					if (*TRbuObjIter)(unsafe.Pointer(pIter)).FeType == int32(m_RBU_PK_EXTERNAL) || (*TRbuObjIter)(unsafe.Pointer(pIter)).FeType == int32(m_RBU_PK_NONE) {
-						zSql = Xsqlite3_mprintf(tls, __ccgo_ts+29562, libc.VaList(bp+40, zCollist, p+48, (*TRbuObjIter)(unsafe.Pointer(pIter)).FzDataTbl, zPart, zCollist, zLimit))
+						zSql = Xsqlite3_mprintf(tls, __ccgo_ts+29582, libc.VaList(bp+40, zCollist, p+48, (*TRbuObjIter)(unsafe.Pointer(pIter)).FzDataTbl, zPart, zCollist, zLimit))
 					} else {
 						if zPart != 0 {
-							v3 = __ccgo_ts + 29491
+							v3 = __ccgo_ts + 29511
 						} else {
-							v3 = __ccgo_ts + 29495
+							v3 = __ccgo_ts + 29515
 						}
-						zSql = Xsqlite3_mprintf(tls, __ccgo_ts+29623, libc.VaList(bp+40, zCollist, p+48, (*TRbuObjIter)(unsafe.Pointer(pIter)).FzDataTbl, zPart, zCollist, (*TRbuObjIter)(unsafe.Pointer(pIter)).FzDataTbl, zPart, v3, zCollist, zLimit))
+						zSql = Xsqlite3_mprintf(tls, __ccgo_ts+29643, libc.VaList(bp+40, zCollist, p+48, (*TRbuObjIter)(unsafe.Pointer(pIter)).FzDataTbl, zPart, zCollist, (*TRbuObjIter)(unsafe.Pointer(pIter)).FzDataTbl, zPart, v3, zCollist, zLimit))
 					}
 				}
 				if (*Tsqlite3rbu)(unsafe.Pointer(p)).Frc == m_SQLITE_OK {
@@ -170503,62 +170503,62 @@ func _rbuObjIterPrepareAll(tls *libc.TLS, p uintptr, pIter uintptr, nOffset int3
 			zTbl1 = (*TRbuObjIter)(unsafe.Pointer(pIter)).FzTbl /* Imposter table name */
 			zBindings = _rbuObjIterGetBindlist(tls, p, (*TRbuObjIter)(unsafe.Pointer(pIter)).FnTblCol+bRbuRowid)
 			zWhere1 = _rbuObjIterGetWhere(tls, p, pIter)
-			zOldlist = _rbuObjIterGetOldlist(tls, p, pIter, __ccgo_ts+6264)
-			zNewlist = _rbuObjIterGetOldlist(tls, p, pIter, __ccgo_ts+6260)
+			zOldlist = _rbuObjIterGetOldlist(tls, p, pIter, __ccgo_ts+6284)
+			zNewlist = _rbuObjIterGetOldlist(tls, p, pIter, __ccgo_ts+6280)
 			zCollist = _rbuObjIterGetCollist(tls, p, pIter)
 			(*TRbuObjIter)(unsafe.Pointer(pIter)).FnCol = (*TRbuObjIter)(unsafe.Pointer(pIter)).FnTblCol
 			/* Create the imposter table or tables (if required). */
 			_rbuCreateImposterTable(tls, p, pIter)
 			_rbuCreateImposterTable2(tls, p, pIter)
 			if (*TRbuObjIter)(unsafe.Pointer(pIter)).FeType == int32(m_RBU_PK_VTAB) {
-				v4 = __ccgo_ts + 1511
+				v4 = __ccgo_ts + 1531
 			} else {
-				v4 = __ccgo_ts + 29782
+				v4 = __ccgo_ts + 29802
 			}
 			zWrite = v4
 			/* Create the INSERT statement to write to the target PK b-tree */
 			if (*Tsqlite3rbu)(unsafe.Pointer(p)).Frc == m_SQLITE_OK {
 				if bRbuRowid != 0 {
-					v5 = __ccgo_ts + 29791
+					v5 = __ccgo_ts + 29811
 				} else {
-					v5 = __ccgo_ts + 1511
+					v5 = __ccgo_ts + 1531
 				}
-				(*Tsqlite3rbu)(unsafe.Pointer(p)).Frc = _prepareFreeAndCollectError(tls, (*Tsqlite3rbu)(unsafe.Pointer(p)).FdbMain, pIter+136, pz, Xsqlite3_mprintf(tls, __ccgo_ts+29801, libc.VaList(bp+40, zWrite, zTbl1, zCollist, v5, zBindings)))
+				(*Tsqlite3rbu)(unsafe.Pointer(p)).Frc = _prepareFreeAndCollectError(tls, (*Tsqlite3rbu)(unsafe.Pointer(p)).FdbMain, pIter+136, pz, Xsqlite3_mprintf(tls, __ccgo_ts+29821, libc.VaList(bp+40, zWrite, zTbl1, zCollist, v5, zBindings)))
 			}
 			/* Create the DELETE statement to write to the target PK b-tree.
 			 ** Because it only performs INSERT operations, this is not required for
 			 ** an rbu vacuum handle.  */
 			if libc.BoolInt32((*Tsqlite3rbu)(unsafe.Pointer(p)).FzTarget == uintptr(0)) == 0 && (*Tsqlite3rbu)(unsafe.Pointer(p)).Frc == m_SQLITE_OK {
-				(*Tsqlite3rbu)(unsafe.Pointer(p)).Frc = _prepareFreeAndCollectError(tls, (*Tsqlite3rbu)(unsafe.Pointer(p)).FdbMain, pIter+144, pz, Xsqlite3_mprintf(tls, __ccgo_ts+29837, libc.VaList(bp+40, zWrite, zTbl1, zWhere1)))
+				(*Tsqlite3rbu)(unsafe.Pointer(p)).Frc = _prepareFreeAndCollectError(tls, (*Tsqlite3rbu)(unsafe.Pointer(p)).FdbMain, pIter+144, pz, Xsqlite3_mprintf(tls, __ccgo_ts+29857, libc.VaList(bp+40, zWrite, zTbl1, zWhere1)))
 			}
 			if libc.BoolInt32((*Tsqlite3rbu)(unsafe.Pointer(p)).FzTarget == uintptr(0)) == 0 && (*TRbuObjIter)(unsafe.Pointer(pIter)).FabIndexed != 0 {
-				zRbuRowid = __ccgo_ts + 1511
+				zRbuRowid = __ccgo_ts + 1531
 				if (*TRbuObjIter)(unsafe.Pointer(pIter)).FeType == int32(m_RBU_PK_EXTERNAL) || (*TRbuObjIter)(unsafe.Pointer(pIter)).FeType == int32(m_RBU_PK_NONE) {
-					zRbuRowid = __ccgo_ts + 29865
+					zRbuRowid = __ccgo_ts + 29885
 				}
 				/* Create the rbu_tmp_xxx table and the triggers to populate it. */
 				if (*TRbuObjIter)(unsafe.Pointer(pIter)).FeType == int32(m_RBU_PK_EXTERNAL) {
-					v6 = __ccgo_ts + 29877
+					v6 = __ccgo_ts + 29897
 				} else {
-					v6 = __ccgo_ts + 1511
+					v6 = __ccgo_ts + 1531
 				}
-				_rbuMPrintfExec(tls, p, (*Tsqlite3rbu)(unsafe.Pointer(p)).FdbRbu, __ccgo_ts+29894, libc.VaList(bp+40, p+48, (*TRbuObjIter)(unsafe.Pointer(pIter)).FzDataTbl, v6, (*TRbuObjIter)(unsafe.Pointer(pIter)).FzDataTbl))
-				_rbuMPrintfExec(tls, p, (*Tsqlite3rbu)(unsafe.Pointer(p)).FdbMain, __ccgo_ts+29970, libc.VaList(bp+40, zWrite, zTbl1, zOldlist, zWrite, zTbl1, zOldlist, zWrite, zTbl1, zNewlist))
+				_rbuMPrintfExec(tls, p, (*Tsqlite3rbu)(unsafe.Pointer(p)).FdbRbu, __ccgo_ts+29914, libc.VaList(bp+40, p+48, (*TRbuObjIter)(unsafe.Pointer(pIter)).FzDataTbl, v6, (*TRbuObjIter)(unsafe.Pointer(pIter)).FzDataTbl))
+				_rbuMPrintfExec(tls, p, (*Tsqlite3rbu)(unsafe.Pointer(p)).FdbMain, __ccgo_ts+29990, libc.VaList(bp+40, zWrite, zTbl1, zOldlist, zWrite, zTbl1, zOldlist, zWrite, zTbl1, zNewlist))
 				if (*TRbuObjIter)(unsafe.Pointer(pIter)).FeType == int32(m_RBU_PK_EXTERNAL) || (*TRbuObjIter)(unsafe.Pointer(pIter)).FeType == int32(m_RBU_PK_NONE) {
-					_rbuMPrintfExec(tls, p, (*Tsqlite3rbu)(unsafe.Pointer(p)).FdbMain, __ccgo_ts+30269, libc.VaList(bp+40, zWrite, zTbl1, zNewlist))
+					_rbuMPrintfExec(tls, p, (*Tsqlite3rbu)(unsafe.Pointer(p)).FdbMain, __ccgo_ts+30289, libc.VaList(bp+40, zWrite, zTbl1, zNewlist))
 				}
 				_rbuObjIterPrepareTmpInsert(tls, p, pIter, zCollist, zRbuRowid)
 			}
 			/* Create the SELECT statement to read keys from data_xxx */
 			if (*Tsqlite3rbu)(unsafe.Pointer(p)).Frc == m_SQLITE_OK {
-				zRbuRowid1 = __ccgo_ts + 1511
+				zRbuRowid1 = __ccgo_ts + 1531
 				zStart1 = uintptr(0)
 				zOrder = uintptr(0)
 				if bRbuRowid != 0 {
 					if (*Tsqlite3rbu)(unsafe.Pointer(p)).FzTarget == uintptr(0) {
-						v7 = __ccgo_ts + 30368
+						v7 = __ccgo_ts + 30388
 					} else {
-						v7 = __ccgo_ts + 30378
+						v7 = __ccgo_ts + 30398
 					}
 					zRbuRowid1 = v7
 				}
@@ -170571,28 +170571,28 @@ func _rbuObjIterPrepareAll(tls *libc.TLS, p uintptr, pIter uintptr, nOffset int3
 						}
 					}
 					if bRbuRowid != 0 {
-						zOrder = _rbuMPrintf(tls, p, __ccgo_ts+28425, 0)
+						zOrder = _rbuMPrintf(tls, p, __ccgo_ts+28445, 0)
 					} else {
-						zOrder = _rbuObjIterGetPkList(tls, p, pIter, __ccgo_ts+1511, __ccgo_ts+14449, __ccgo_ts+1511)
+						zOrder = _rbuObjIterGetPkList(tls, p, pIter, __ccgo_ts+1531, __ccgo_ts+14469, __ccgo_ts+1531)
 					}
 				}
 				if (*Tsqlite3rbu)(unsafe.Pointer(p)).Frc == m_SQLITE_OK {
 					if (*Tsqlite3rbu)(unsafe.Pointer(p)).FzTarget == uintptr(0) {
-						v8 = __ccgo_ts + 30389
+						v8 = __ccgo_ts + 30409
 					} else {
-						v8 = __ccgo_ts + 1511
+						v8 = __ccgo_ts + 1531
 					}
 					if zStart1 != 0 {
 						v9 = zStart1
 					} else {
-						v9 = __ccgo_ts + 1511
+						v9 = __ccgo_ts + 1531
 					}
 					if zOrder != 0 {
-						v10 = __ccgo_ts + 19538
+						v10 = __ccgo_ts + 19558
 					} else {
-						v10 = __ccgo_ts + 1511
+						v10 = __ccgo_ts + 1531
 					}
-					(*Tsqlite3rbu)(unsafe.Pointer(p)).Frc = _prepareFreeAndCollectError(tls, (*Tsqlite3rbu)(unsafe.Pointer(p)).FdbRbu, pIter+128, pz, Xsqlite3_mprintf(tls, __ccgo_ts+30395, libc.VaList(bp+40, zCollist, v8, zRbuRowid1, (*TRbuObjIter)(unsafe.Pointer(pIter)).FzDataTbl, v9, v10, zOrder, zLimit)))
+					(*Tsqlite3rbu)(unsafe.Pointer(p)).Frc = _prepareFreeAndCollectError(tls, (*Tsqlite3rbu)(unsafe.Pointer(p)).FdbRbu, pIter+128, pz, Xsqlite3_mprintf(tls, __ccgo_ts+30415, libc.VaList(bp+40, zCollist, v8, zRbuRowid1, (*TRbuObjIter)(unsafe.Pointer(pIter)).FzDataTbl, v9, v10, zOrder, zLimit)))
 				}
 				Xsqlite3_free(tls, zStart1)
 				Xsqlite3_free(tls, zOrder)
@@ -170677,11 +170677,11 @@ func _rbuGetUpdateStmt(tls *libc.TLS, p uintptr, pIter uintptr, zMask uintptr, p
 		(*TRbuUpdateStmt)(unsafe.Pointer(pUp)).FpNext = (*TRbuObjIter)(unsafe.Pointer(pIter)).FpRbuUpdate
 		(*TRbuObjIter)(unsafe.Pointer(pIter)).FpRbuUpdate = pUp
 		if zSet != 0 {
-			zPrefix = __ccgo_ts + 1511
+			zPrefix = __ccgo_ts + 1531
 			if (*TRbuObjIter)(unsafe.Pointer(pIter)).FeType != int32(m_RBU_PK_VTAB) {
-				zPrefix = __ccgo_ts + 29782
+				zPrefix = __ccgo_ts + 29802
 			}
-			zUpdate = Xsqlite3_mprintf(tls, __ccgo_ts+30443, libc.VaList(bp+8, zPrefix, (*TRbuObjIter)(unsafe.Pointer(pIter)).FzTbl, zSet, zWhere))
+			zUpdate = Xsqlite3_mprintf(tls, __ccgo_ts+30463, libc.VaList(bp+8, zPrefix, (*TRbuObjIter)(unsafe.Pointer(pIter)).FzTbl, zSet, zWhere))
 			(*Tsqlite3rbu)(unsafe.Pointer(p)).Frc = _prepareFreeAndCollectError(tls, (*Tsqlite3rbu)(unsafe.Pointer(p)).FdbMain, pUp+8, p+64, zUpdate)
 			*(*uintptr)(unsafe.Pointer(ppStmt)) = (*TRbuUpdateStmt)(unsafe.Pointer(pUp)).FpUpdate
 		}
@@ -170708,7 +170708,7 @@ func _rbuOpenDbhandle(tls *libc.TLS, p uintptr, zName uintptr, bUseVfs int32) (r
 		}
 		(*Tsqlite3rbu)(unsafe.Pointer(p)).Frc = Xsqlite3_open_v2(tls, zName, bp, flags, v1)
 		if (*Tsqlite3rbu)(unsafe.Pointer(p)).Frc != 0 {
-			(*Tsqlite3rbu)(unsafe.Pointer(p)).FzErrmsg = Xsqlite3_mprintf(tls, __ccgo_ts+3560, libc.VaList(bp+16, Xsqlite3_errmsg(tls, *(*uintptr)(unsafe.Pointer(bp)))))
+			(*Tsqlite3rbu)(unsafe.Pointer(p)).FzErrmsg = Xsqlite3_mprintf(tls, __ccgo_ts+3580, libc.VaList(bp+16, Xsqlite3_errmsg(tls, *(*uintptr)(unsafe.Pointer(bp)))))
 			Xsqlite3_close(tls, *(*uintptr)(unsafe.Pointer(bp)))
 			*(*uintptr)(unsafe.Pointer(bp)) = uintptr(0)
 		}
@@ -170755,7 +170755,7 @@ func _rbuLoadState(tls *libc.TLS, p uintptr) (r uintptr) {
 	if pRet == uintptr(0) {
 		return uintptr(0)
 	}
-	*(*int32)(unsafe.Pointer(bp + 8)) = _prepareFreeAndCollectError(tls, (*Tsqlite3rbu)(unsafe.Pointer(p)).FdbRbu, bp, p+64, Xsqlite3_mprintf(tls, __ccgo_ts+30473, libc.VaList(bp+24, p+48)))
+	*(*int32)(unsafe.Pointer(bp + 8)) = _prepareFreeAndCollectError(tls, (*Tsqlite3rbu)(unsafe.Pointer(p)).FdbRbu, bp, p+64, Xsqlite3_mprintf(tls, __ccgo_ts+30493, libc.VaList(bp+24, p+48)))
 	for *(*int32)(unsafe.Pointer(bp + 8)) == m_SQLITE_OK && int32(m_SQLITE_ROW) == Xsqlite3_step(tls, *(*uintptr)(unsafe.Pointer(bp))) {
 		switch Xsqlite3_column_int(tls, *(*uintptr)(unsafe.Pointer(bp)), 0) {
 		case int32(m_RBU_STATE_STAGE):
@@ -170817,27 +170817,27 @@ func _rbuOpenDatabase(tls *libc.TLS, p uintptr, dbMain uintptr, pbRetry uintptr)
 	(*Tsqlite3rbu)(unsafe.Pointer(p)).FdbRbu = _rbuOpenDbhandle(tls, p, (*Tsqlite3rbu)(unsafe.Pointer(p)).FzRbu, int32(1))
 	(*Tsqlite3rbu)(unsafe.Pointer(p)).FdbMain = dbMain
 	if (*Tsqlite3rbu)(unsafe.Pointer(p)).Frc == m_SQLITE_OK && (*Tsqlite3rbu)(unsafe.Pointer(p)).FzTarget == uintptr(0) {
-		Xsqlite3_file_control(tls, (*Tsqlite3rbu)(unsafe.Pointer(p)).FdbRbu, __ccgo_ts+6255, int32(m_SQLITE_FCNTL_RBUCNT), p)
+		Xsqlite3_file_control(tls, (*Tsqlite3rbu)(unsafe.Pointer(p)).FdbRbu, __ccgo_ts+6275, int32(m_SQLITE_FCNTL_RBUCNT), p)
 		if (*Tsqlite3rbu)(unsafe.Pointer(p)).FzState == uintptr(0) {
-			zFile = Xsqlite3_db_filename(tls, (*Tsqlite3rbu)(unsafe.Pointer(p)).FdbRbu, __ccgo_ts+6255)
-			(*Tsqlite3rbu)(unsafe.Pointer(p)).FzState = _rbuMPrintf(tls, p, __ccgo_ts+30503, libc.VaList(bp+8, zFile, zFile))
+			zFile = Xsqlite3_db_filename(tls, (*Tsqlite3rbu)(unsafe.Pointer(p)).FdbRbu, __ccgo_ts+6275)
+			(*Tsqlite3rbu)(unsafe.Pointer(p)).FzState = _rbuMPrintf(tls, p, __ccgo_ts+30523, libc.VaList(bp+8, zFile, zFile))
 		}
 	}
 	/* If using separate RBU and state databases, attach the state database to
 	 ** the RBU db handle now.  */
 	if (*Tsqlite3rbu)(unsafe.Pointer(p)).FzState != 0 {
-		_rbuMPrintfExec(tls, p, (*Tsqlite3rbu)(unsafe.Pointer(p)).FdbRbu, __ccgo_ts+30530, libc.VaList(bp+8, (*Tsqlite3rbu)(unsafe.Pointer(p)).FzState))
-		libc.Xmemcpy(tls, p+48, __ccgo_ts+3183, uint64(4))
+		_rbuMPrintfExec(tls, p, (*Tsqlite3rbu)(unsafe.Pointer(p)).FdbRbu, __ccgo_ts+30550, libc.VaList(bp+8, (*Tsqlite3rbu)(unsafe.Pointer(p)).FzState))
+		libc.Xmemcpy(tls, p+48, __ccgo_ts+3203, uint64(4))
 	} else {
-		libc.Xmemcpy(tls, p+48, __ccgo_ts+6255, uint64(4))
+		libc.Xmemcpy(tls, p+48, __ccgo_ts+6275, uint64(4))
 	}
 	/* If it has not already been created, create the rbu_state table */
-	_rbuMPrintfExec(tls, p, (*Tsqlite3rbu)(unsafe.Pointer(p)).FdbRbu, __ccgo_ts+30548, libc.VaList(bp+8, p+48))
+	_rbuMPrintfExec(tls, p, (*Tsqlite3rbu)(unsafe.Pointer(p)).FdbRbu, __ccgo_ts+30568, libc.VaList(bp+8, p+48))
 	if (*Tsqlite3rbu)(unsafe.Pointer(p)).Frc == m_SQLITE_OK && (*Tsqlite3rbu)(unsafe.Pointer(p)).FzTarget == uintptr(0) {
 		bOpen = 0
 		(*Tsqlite3rbu)(unsafe.Pointer(p)).FnRbu = 0
 		(*Tsqlite3rbu)(unsafe.Pointer(p)).FpRbuFd = uintptr(0)
-		rc = Xsqlite3_file_control(tls, (*Tsqlite3rbu)(unsafe.Pointer(p)).FdbRbu, __ccgo_ts+6255, int32(m_SQLITE_FCNTL_RBUCNT), p)
+		rc = Xsqlite3_file_control(tls, (*Tsqlite3rbu)(unsafe.Pointer(p)).FdbRbu, __ccgo_ts+6275, int32(m_SQLITE_FCNTL_RBUCNT), p)
 		if rc != int32(m_SQLITE_NOTFOUND) {
 			(*Tsqlite3rbu)(unsafe.Pointer(p)).Frc = rc
 		}
@@ -170870,10 +170870,10 @@ func _rbuOpenDatabase(tls *libc.TLS, p uintptr, dbMain uintptr, pbRetry uintptr)
 					return
 				}
 				(*Tsqlite3rbu)(unsafe.Pointer(p)).Frc = int32(m_SQLITE_ERROR)
-				(*Tsqlite3rbu)(unsafe.Pointer(p)).FzErrmsg = Xsqlite3_mprintf(tls, __ccgo_ts+30614, 0)
+				(*Tsqlite3rbu)(unsafe.Pointer(p)).FzErrmsg = Xsqlite3_mprintf(tls, __ccgo_ts+30634, 0)
 			} else {
 				zExtra = uintptr(0)
-				if libc.Xstrlen(tls, (*Tsqlite3rbu)(unsafe.Pointer(p)).FzRbu) >= uint64(5) && 0 == libc.Xmemcmp(tls, __ccgo_ts+23708, (*Tsqlite3rbu)(unsafe.Pointer(p)).FzRbu, uint64(5)) {
+				if libc.Xstrlen(tls, (*Tsqlite3rbu)(unsafe.Pointer(p)).FzRbu) >= uint64(5) && 0 == libc.Xmemcmp(tls, __ccgo_ts+23728, (*Tsqlite3rbu)(unsafe.Pointer(p)).FzRbu, uint64(5)) {
 					zExtra = (*Tsqlite3rbu)(unsafe.Pointer(p)).FzRbu + 5
 					for *(*uint8)(unsafe.Pointer(zExtra)) != 0 {
 						v1 = zExtra
@@ -170887,16 +170887,16 @@ func _rbuOpenDatabase(tls *libc.TLS, p uintptr, dbMain uintptr, pbRetry uintptr)
 					}
 				}
 				if zExtra == uintptr(0) {
-					v2 = __ccgo_ts + 1511
+					v2 = __ccgo_ts + 1531
 				} else {
-					v2 = __ccgo_ts + 30646
+					v2 = __ccgo_ts + 30666
 				}
 				if zExtra == uintptr(0) {
-					v3 = __ccgo_ts + 1511
+					v3 = __ccgo_ts + 1531
 				} else {
 					v3 = zExtra
 				}
-				zTarget = Xsqlite3_mprintf(tls, __ccgo_ts+30648, libc.VaList(bp+8, Xsqlite3_db_filename(tls, (*Tsqlite3rbu)(unsafe.Pointer(p)).FdbRbu, __ccgo_ts+6255), v2, v3))
+				zTarget = Xsqlite3_mprintf(tls, __ccgo_ts+30668, libc.VaList(bp+8, Xsqlite3_db_filename(tls, (*Tsqlite3rbu)(unsafe.Pointer(p)).FdbRbu, __ccgo_ts+6275), v2, v3))
 				if zTarget == uintptr(0) {
 					(*Tsqlite3rbu)(unsafe.Pointer(p)).Frc = int32(m_SQLITE_NOMEM)
 					return
@@ -170907,27 +170907,27 @@ func _rbuOpenDatabase(tls *libc.TLS, p uintptr, dbMain uintptr, pbRetry uintptr)
 		}
 	}
 	if (*Tsqlite3rbu)(unsafe.Pointer(p)).Frc == m_SQLITE_OK {
-		(*Tsqlite3rbu)(unsafe.Pointer(p)).Frc = Xsqlite3_create_function(tls, (*Tsqlite3rbu)(unsafe.Pointer(p)).FdbMain, __ccgo_ts+30680, -int32(1), int32(m_SQLITE_UTF8), p, __ccgo_fp(_rbuTmpInsertFunc), uintptr(0), uintptr(0))
+		(*Tsqlite3rbu)(unsafe.Pointer(p)).Frc = Xsqlite3_create_function(tls, (*Tsqlite3rbu)(unsafe.Pointer(p)).FdbMain, __ccgo_ts+30700, -int32(1), int32(m_SQLITE_UTF8), p, __ccgo_fp(_rbuTmpInsertFunc), uintptr(0), uintptr(0))
 	}
 	if (*Tsqlite3rbu)(unsafe.Pointer(p)).Frc == m_SQLITE_OK {
-		(*Tsqlite3rbu)(unsafe.Pointer(p)).Frc = Xsqlite3_create_function(tls, (*Tsqlite3rbu)(unsafe.Pointer(p)).FdbMain, __ccgo_ts+30695, int32(2), int32(m_SQLITE_UTF8), uintptr(0), __ccgo_fp(_rbuFossilDeltaFunc), uintptr(0), uintptr(0))
+		(*Tsqlite3rbu)(unsafe.Pointer(p)).Frc = Xsqlite3_create_function(tls, (*Tsqlite3rbu)(unsafe.Pointer(p)).FdbMain, __ccgo_ts+30715, int32(2), int32(m_SQLITE_UTF8), uintptr(0), __ccgo_fp(_rbuFossilDeltaFunc), uintptr(0), uintptr(0))
 	}
 	if (*Tsqlite3rbu)(unsafe.Pointer(p)).Frc == m_SQLITE_OK {
-		(*Tsqlite3rbu)(unsafe.Pointer(p)).Frc = Xsqlite3_create_function(tls, (*Tsqlite3rbu)(unsafe.Pointer(p)).FdbRbu, __ccgo_ts+30712, -int32(1), int32(m_SQLITE_UTF8), p, __ccgo_fp(_rbuTargetNameFunc), uintptr(0), uintptr(0))
+		(*Tsqlite3rbu)(unsafe.Pointer(p)).Frc = Xsqlite3_create_function(tls, (*Tsqlite3rbu)(unsafe.Pointer(p)).FdbRbu, __ccgo_ts+30732, -int32(1), int32(m_SQLITE_UTF8), p, __ccgo_fp(_rbuTargetNameFunc), uintptr(0), uintptr(0))
 	}
 	if (*Tsqlite3rbu)(unsafe.Pointer(p)).Frc == m_SQLITE_OK {
-		(*Tsqlite3rbu)(unsafe.Pointer(p)).Frc = Xsqlite3_file_control(tls, (*Tsqlite3rbu)(unsafe.Pointer(p)).FdbMain, __ccgo_ts+6255, int32(m_SQLITE_FCNTL_RBU), p)
+		(*Tsqlite3rbu)(unsafe.Pointer(p)).Frc = Xsqlite3_file_control(tls, (*Tsqlite3rbu)(unsafe.Pointer(p)).FdbMain, __ccgo_ts+6275, int32(m_SQLITE_FCNTL_RBU), p)
 	}
-	_rbuMPrintfExec(tls, p, (*Tsqlite3rbu)(unsafe.Pointer(p)).FdbMain, __ccgo_ts+30728, 0)
+	_rbuMPrintfExec(tls, p, (*Tsqlite3rbu)(unsafe.Pointer(p)).FdbMain, __ccgo_ts+30748, 0)
 	/* Mark the database file just opened as an RBU target database. If
 	 ** this call returns SQLITE_NOTFOUND, then the RBU vfs is not in use.
 	 ** This is an error.  */
 	if (*Tsqlite3rbu)(unsafe.Pointer(p)).Frc == m_SQLITE_OK {
-		(*Tsqlite3rbu)(unsafe.Pointer(p)).Frc = Xsqlite3_file_control(tls, (*Tsqlite3rbu)(unsafe.Pointer(p)).FdbMain, __ccgo_ts+6255, int32(m_SQLITE_FCNTL_RBU), p)
+		(*Tsqlite3rbu)(unsafe.Pointer(p)).Frc = Xsqlite3_file_control(tls, (*Tsqlite3rbu)(unsafe.Pointer(p)).FdbMain, __ccgo_ts+6275, int32(m_SQLITE_FCNTL_RBU), p)
 	}
 	if (*Tsqlite3rbu)(unsafe.Pointer(p)).Frc == int32(m_SQLITE_NOTFOUND) {
 		(*Tsqlite3rbu)(unsafe.Pointer(p)).Frc = int32(m_SQLITE_ERROR)
-		(*Tsqlite3rbu)(unsafe.Pointer(p)).FzErrmsg = Xsqlite3_mprintf(tls, __ccgo_ts+30756, 0)
+		(*Tsqlite3rbu)(unsafe.Pointer(p)).FzErrmsg = Xsqlite3_mprintf(tls, __ccgo_ts+30776, 0)
 	}
 }
 
@@ -171011,7 +171011,7 @@ func _rbuSetupCheckpoint(tls *libc.TLS, p uintptr, pState uintptr) {
 	if pState == uintptr(0) {
 		(*Tsqlite3rbu)(unsafe.Pointer(p)).FeStage = 0
 		if (*Tsqlite3rbu)(unsafe.Pointer(p)).Frc == m_SQLITE_OK {
-			(*Tsqlite3rbu)(unsafe.Pointer(p)).Frc = Xsqlite3_exec(tls, (*Tsqlite3rbu)(unsafe.Pointer(p)).FdbMain, __ccgo_ts+30728, uintptr(0), uintptr(0), uintptr(0))
+			(*Tsqlite3rbu)(unsafe.Pointer(p)).Frc = Xsqlite3_exec(tls, (*Tsqlite3rbu)(unsafe.Pointer(p)).FdbMain, __ccgo_ts+30748, uintptr(0), uintptr(0), uintptr(0))
 		}
 	}
 	/* Assuming no error has occurred, run a "restart" checkpoint with the
@@ -171044,7 +171044,7 @@ func _rbuSetupCheckpoint(tls *libc.TLS, p uintptr, pState uintptr) {
 	 */
 	if (*Tsqlite3rbu)(unsafe.Pointer(p)).Frc == m_SQLITE_OK {
 		(*Tsqlite3rbu)(unsafe.Pointer(p)).FeStage = int32(m_RBU_STAGE_CAPTURE)
-		rc2 = Xsqlite3_exec(tls, (*Tsqlite3rbu)(unsafe.Pointer(p)).FdbMain, __ccgo_ts+30774, uintptr(0), uintptr(0), uintptr(0))
+		rc2 = Xsqlite3_exec(tls, (*Tsqlite3rbu)(unsafe.Pointer(p)).FdbMain, __ccgo_ts+30794, uintptr(0), uintptr(0), uintptr(0))
 		if rc2 != int32(m_SQLITE_INTERNAL) {
 			(*Tsqlite3rbu)(unsafe.Pointer(p)).Frc = rc2
 		}
@@ -171174,7 +171174,7 @@ func _rbuLockDatabase(tls *libc.TLS, db uintptr) (r int32) {
 	_ = rc
 	rc = m_SQLITE_OK
 	*(*uintptr)(unsafe.Pointer(bp)) = uintptr(0)
-	Xsqlite3_file_control(tls, db, __ccgo_ts+6255, int32(m_SQLITE_FCNTL_FILE_POINTER), bp)
+	Xsqlite3_file_control(tls, db, __ccgo_ts+6275, int32(m_SQLITE_FCNTL_FILE_POINTER), bp)
 	if (*Tsqlite3_file)(unsafe.Pointer(*(*uintptr)(unsafe.Pointer(bp)))).FpMethods != 0 {
 		rc = (*(*func(*libc.TLS, uintptr, int32) int32)(unsafe.Pointer(&struct{ uintptr }{(*Tsqlite3_io_methods1)(unsafe.Pointer((*Tsqlite3_file)(unsafe.Pointer(*(*uintptr)(unsafe.Pointer(bp)))).FpMethods)).FxLock})))(tls, *(*uintptr)(unsafe.Pointer(bp)), int32(m_SQLITE_LOCK_SHARED))
 		if rc == m_SQLITE_OK {
@@ -171195,7 +171195,7 @@ func _rbuExclusiveCheckpoint(tls *libc.TLS, db uintptr) (r int32) {
 	var zUri uintptr
 	_ = zUri
 	zUri = Xsqlite3_db_filename(tls, db, uintptr(0))
-	return Xsqlite3_uri_boolean(tls, zUri, __ccgo_ts+30809, 0)
+	return Xsqlite3_uri_boolean(tls, zUri, __ccgo_ts+30829, 0)
 }
 
 // C documentation
@@ -171213,13 +171213,13 @@ func _rbuMoveOalFile(tls *libc.TLS, p uintptr) {
 	var dbMain, zBase, zMove, zOal, zWal uintptr
 	var v1 int32
 	_, _, _, _, _, _ = dbMain, zBase, zMove, zOal, zWal, v1
-	zBase = Xsqlite3_db_filename(tls, (*Tsqlite3rbu)(unsafe.Pointer(p)).FdbMain, __ccgo_ts+6255)
+	zBase = Xsqlite3_db_filename(tls, (*Tsqlite3rbu)(unsafe.Pointer(p)).FdbMain, __ccgo_ts+6275)
 	zMove = zBase
 	if (*Tsqlite3rbu)(unsafe.Pointer(p)).FzTarget == uintptr(0) {
-		zMove = Xsqlite3_db_filename(tls, (*Tsqlite3rbu)(unsafe.Pointer(p)).FdbRbu, __ccgo_ts+6255)
+		zMove = Xsqlite3_db_filename(tls, (*Tsqlite3rbu)(unsafe.Pointer(p)).FdbRbu, __ccgo_ts+6275)
 	}
-	zOal = Xsqlite3_mprintf(tls, __ccgo_ts+30834, libc.VaList(bp+8, zMove))
-	zWal = Xsqlite3_mprintf(tls, __ccgo_ts+30841, libc.VaList(bp+8, zMove))
+	zOal = Xsqlite3_mprintf(tls, __ccgo_ts+30854, libc.VaList(bp+8, zMove))
+	zWal = Xsqlite3_mprintf(tls, __ccgo_ts+30861, libc.VaList(bp+8, zMove))
 	_ = libc.Int32FromInt32(0)
 	_ = libc.Int32FromInt32(0)
 	if zWal == uintptr(0) || zOal == uintptr(0) {
@@ -171362,7 +171362,7 @@ func _rbuStepOneOp(tls *libc.TLS, p uintptr, eType int32) {
 		 ** to write a NULL into the IPK column. That is not permitted.  */
 		if eType == int32(m_RBU_INSERT) && (*TRbuObjIter)(unsafe.Pointer(pIter)).FzIdx == uintptr(0) && (*TRbuObjIter)(unsafe.Pointer(pIter)).FeType == int32(m_RBU_PK_IPK) && *(*Tu8)(unsafe.Pointer((*TRbuObjIter)(unsafe.Pointer(pIter)).FabTblPk + uintptr(i))) != 0 && Xsqlite3_column_type(tls, (*TRbuObjIter)(unsafe.Pointer(pIter)).FpSelect, i) == int32(m_SQLITE_NULL) {
 			(*Tsqlite3rbu)(unsafe.Pointer(p)).Frc = int32(m_SQLITE_MISMATCH)
-			(*Tsqlite3rbu)(unsafe.Pointer(p)).FzErrmsg = Xsqlite3_mprintf(tls, __ccgo_ts+23265, 0)
+			(*Tsqlite3rbu)(unsafe.Pointer(p)).FzErrmsg = Xsqlite3_mprintf(tls, __ccgo_ts+23285, 0)
 			return
 		}
 		if eType == int32(m_RBU_DELETE) && int32(*(*Tu8)(unsafe.Pointer((*TRbuObjIter)(unsafe.Pointer(pIter)).FabTblPk + uintptr(i)))) == 0 {
@@ -171499,7 +171499,7 @@ func _rbuIncrSchemaCookie(tls *libc.TLS, p uintptr) {
 		}
 		dbread = v1
 		iCookie = int32(1000000)
-		(*Tsqlite3rbu)(unsafe.Pointer(p)).Frc = _prepareAndCollectError(tls, dbread, bp, p+64, __ccgo_ts+30848)
+		(*Tsqlite3rbu)(unsafe.Pointer(p)).Frc = _prepareAndCollectError(tls, dbread, bp, p+64, __ccgo_ts+30868)
 		if (*Tsqlite3rbu)(unsafe.Pointer(p)).Frc == m_SQLITE_OK {
 			/* Coverage: it may be that this sqlite3_step() cannot fail. There
 			 ** is already a transaction open, so the prepared statement cannot
@@ -171512,7 +171512,7 @@ func _rbuIncrSchemaCookie(tls *libc.TLS, p uintptr) {
 			_rbuFinalize(tls, p, *(*uintptr)(unsafe.Pointer(bp)))
 		}
 		if (*Tsqlite3rbu)(unsafe.Pointer(p)).Frc == m_SQLITE_OK {
-			_rbuMPrintfExec(tls, p, (*Tsqlite3rbu)(unsafe.Pointer(p)).FdbMain, __ccgo_ts+30870, libc.VaList(bp+16, iCookie+int32(1)))
+			_rbuMPrintfExec(tls, p, (*Tsqlite3rbu)(unsafe.Pointer(p)).FdbMain, __ccgo_ts+30890, libc.VaList(bp+16, iCookie+int32(1)))
 		}
 	}
 }
@@ -171540,7 +171540,7 @@ func _rbuSaveState(tls *libc.TLS, p uintptr, eStage int32) {
 		}
 		pFd = v1
 		_ = libc.Int32FromInt32(0)
-		rc = _prepareFreeAndCollectError(tls, (*Tsqlite3rbu)(unsafe.Pointer(p)).FdbRbu, bp, p+64, Xsqlite3_mprintf(tls, __ccgo_ts+30897, libc.VaList(bp+16, p+48, int32(m_RBU_STATE_STAGE), eStage, int32(m_RBU_STATE_TBL), (*Tsqlite3rbu)(unsafe.Pointer(p)).Fobjiter.FzTbl, int32(m_RBU_STATE_IDX), (*Tsqlite3rbu)(unsafe.Pointer(p)).Fobjiter.FzIdx, int32(m_RBU_STATE_ROW), (*Tsqlite3rbu)(unsafe.Pointer(p)).FnStep, int32(m_RBU_STATE_PROGRESS), (*Tsqlite3rbu)(unsafe.Pointer(p)).FnProgress, int32(m_RBU_STATE_CKPT), (*Tsqlite3rbu)(unsafe.Pointer(p)).FiWalCksum, int32(m_RBU_STATE_COOKIE), int64((*Trbu_file)(unsafe.Pointer(pFd)).FiCookie), int32(m_RBU_STATE_OALSZ), (*Tsqlite3rbu)(unsafe.Pointer(p)).FiOalSz, int32(m_RBU_STATE_PHASEONESTEP), (*Tsqlite3rbu)(unsafe.Pointer(p)).FnPhaseOneStep, int32(m_RBU_STATE_DATATBL), (*Tsqlite3rbu)(unsafe.Pointer(p)).Fobjiter.FzDataTbl)))
+		rc = _prepareFreeAndCollectError(tls, (*Tsqlite3rbu)(unsafe.Pointer(p)).FdbRbu, bp, p+64, Xsqlite3_mprintf(tls, __ccgo_ts+30917, libc.VaList(bp+16, p+48, int32(m_RBU_STATE_STAGE), eStage, int32(m_RBU_STATE_TBL), (*Tsqlite3rbu)(unsafe.Pointer(p)).Fobjiter.FzTbl, int32(m_RBU_STATE_IDX), (*Tsqlite3rbu)(unsafe.Pointer(p)).Fobjiter.FzIdx, int32(m_RBU_STATE_ROW), (*Tsqlite3rbu)(unsafe.Pointer(p)).FnStep, int32(m_RBU_STATE_PROGRESS), (*Tsqlite3rbu)(unsafe.Pointer(p)).FnProgress, int32(m_RBU_STATE_CKPT), (*Tsqlite3rbu)(unsafe.Pointer(p)).FiWalCksum, int32(m_RBU_STATE_COOKIE), int64((*Trbu_file)(unsafe.Pointer(pFd)).FiCookie), int32(m_RBU_STATE_OALSZ), (*Tsqlite3rbu)(unsafe.Pointer(p)).FiOalSz, int32(m_RBU_STATE_PHASEONESTEP), (*Tsqlite3rbu)(unsafe.Pointer(p)).FnPhaseOneStep, int32(m_RBU_STATE_DATATBL), (*Tsqlite3rbu)(unsafe.Pointer(p)).Fobjiter.FzDataTbl)))
 		_ = libc.Int32FromInt32(0)
 		if rc == m_SQLITE_OK {
 			Xsqlite3_step(tls, *(*uintptr)(unsafe.Pointer(bp)))
@@ -171577,9 +171577,9 @@ func _rbuCopyPragma(tls *libc.TLS, p uintptr, zPragma uintptr) {
 	var _ /* pPragma at bp+0 */ uintptr
 	if (*Tsqlite3rbu)(unsafe.Pointer(p)).Frc == m_SQLITE_OK {
 		*(*uintptr)(unsafe.Pointer(bp)) = uintptr(0)
-		(*Tsqlite3rbu)(unsafe.Pointer(p)).Frc = _prepareFreeAndCollectError(tls, (*Tsqlite3rbu)(unsafe.Pointer(p)).FdbRbu, bp, p+64, Xsqlite3_mprintf(tls, __ccgo_ts+31055, libc.VaList(bp+16, zPragma)))
+		(*Tsqlite3rbu)(unsafe.Pointer(p)).Frc = _prepareFreeAndCollectError(tls, (*Tsqlite3rbu)(unsafe.Pointer(p)).FdbRbu, bp, p+64, Xsqlite3_mprintf(tls, __ccgo_ts+31075, libc.VaList(bp+16, zPragma)))
 		if (*Tsqlite3rbu)(unsafe.Pointer(p)).Frc == m_SQLITE_OK && int32(m_SQLITE_ROW) == Xsqlite3_step(tls, *(*uintptr)(unsafe.Pointer(bp))) {
-			(*Tsqlite3rbu)(unsafe.Pointer(p)).Frc = _rbuMPrintfExec(tls, p, (*Tsqlite3rbu)(unsafe.Pointer(p)).FdbMain, __ccgo_ts+31070, libc.VaList(bp+16, zPragma, Xsqlite3_column_int(tls, *(*uintptr)(unsafe.Pointer(bp)), 0)))
+			(*Tsqlite3rbu)(unsafe.Pointer(p)).Frc = _rbuMPrintfExec(tls, p, (*Tsqlite3rbu)(unsafe.Pointer(p)).FdbMain, __ccgo_ts+31090, libc.VaList(bp+16, zPragma, Xsqlite3_column_int(tls, *(*uintptr)(unsafe.Pointer(bp)), 0)))
 		}
 		_rbuFinalize(tls, p, *(*uintptr)(unsafe.Pointer(bp)))
 	}
@@ -171603,9 +171603,9 @@ func _rbuCreateTargetSchema(tls *libc.TLS, p uintptr) {
 	*(*uintptr)(unsafe.Pointer(bp)) = uintptr(0)
 	*(*uintptr)(unsafe.Pointer(bp + 8)) = uintptr(0)
 	_ = libc.Int32FromInt32(0)
-	(*Tsqlite3rbu)(unsafe.Pointer(p)).Frc = Xsqlite3_exec(tls, (*Tsqlite3rbu)(unsafe.Pointer(p)).FdbMain, __ccgo_ts+31090, uintptr(0), uintptr(0), p+64)
+	(*Tsqlite3rbu)(unsafe.Pointer(p)).Frc = Xsqlite3_exec(tls, (*Tsqlite3rbu)(unsafe.Pointer(p)).FdbMain, __ccgo_ts+31110, uintptr(0), uintptr(0), p+64)
 	if (*Tsqlite3rbu)(unsafe.Pointer(p)).Frc == m_SQLITE_OK {
-		(*Tsqlite3rbu)(unsafe.Pointer(p)).Frc = _prepareAndCollectError(tls, (*Tsqlite3rbu)(unsafe.Pointer(p)).FdbRbu, bp, p+64, __ccgo_ts+31115)
+		(*Tsqlite3rbu)(unsafe.Pointer(p)).Frc = _prepareAndCollectError(tls, (*Tsqlite3rbu)(unsafe.Pointer(p)).FdbRbu, bp, p+64, __ccgo_ts+31135)
 	}
 	for (*Tsqlite3rbu)(unsafe.Pointer(p)).Frc == m_SQLITE_OK && Xsqlite3_step(tls, *(*uintptr)(unsafe.Pointer(bp))) == int32(m_SQLITE_ROW) {
 		zSql = Xsqlite3_column_text(tls, *(*uintptr)(unsafe.Pointer(bp)), 0)
@@ -171616,10 +171616,10 @@ func _rbuCreateTargetSchema(tls *libc.TLS, p uintptr) {
 		return
 	}
 	if (*Tsqlite3rbu)(unsafe.Pointer(p)).Frc == m_SQLITE_OK {
-		(*Tsqlite3rbu)(unsafe.Pointer(p)).Frc = _prepareAndCollectError(tls, (*Tsqlite3rbu)(unsafe.Pointer(p)).FdbRbu, bp, p+64, __ccgo_ts+31223)
+		(*Tsqlite3rbu)(unsafe.Pointer(p)).Frc = _prepareAndCollectError(tls, (*Tsqlite3rbu)(unsafe.Pointer(p)).FdbRbu, bp, p+64, __ccgo_ts+31243)
 	}
 	if (*Tsqlite3rbu)(unsafe.Pointer(p)).Frc == m_SQLITE_OK {
-		(*Tsqlite3rbu)(unsafe.Pointer(p)).Frc = _prepareAndCollectError(tls, (*Tsqlite3rbu)(unsafe.Pointer(p)).FdbMain, bp+8, p+64, __ccgo_ts+31288)
+		(*Tsqlite3rbu)(unsafe.Pointer(p)).Frc = _prepareAndCollectError(tls, (*Tsqlite3rbu)(unsafe.Pointer(p)).FdbMain, bp+8, p+64, __ccgo_ts+31308)
 	}
 	for (*Tsqlite3rbu)(unsafe.Pointer(p)).Frc == m_SQLITE_OK && Xsqlite3_step(tls, *(*uintptr)(unsafe.Pointer(bp))) == int32(m_SQLITE_ROW) {
 		i = 0
@@ -171636,7 +171636,7 @@ func _rbuCreateTargetSchema(tls *libc.TLS, p uintptr) {
 		(*Tsqlite3rbu)(unsafe.Pointer(p)).Frc = Xsqlite3_reset(tls, *(*uintptr)(unsafe.Pointer(bp + 8)))
 	}
 	if (*Tsqlite3rbu)(unsafe.Pointer(p)).Frc == m_SQLITE_OK {
-		(*Tsqlite3rbu)(unsafe.Pointer(p)).Frc = Xsqlite3_exec(tls, (*Tsqlite3rbu)(unsafe.Pointer(p)).FdbMain, __ccgo_ts+31332, uintptr(0), uintptr(0), p+64)
+		(*Tsqlite3rbu)(unsafe.Pointer(p)).Frc = Xsqlite3_exec(tls, (*Tsqlite3rbu)(unsafe.Pointer(p)).FdbMain, __ccgo_ts+31352, uintptr(0), uintptr(0), p+64)
 	}
 	_rbuFinalize(tls, p, *(*uintptr)(unsafe.Pointer(bp)))
 	_rbuFinalize(tls, p, *(*uintptr)(unsafe.Pointer(bp + 8)))
@@ -171663,8 +171663,8 @@ func Xsqlite3rbu_step(tls *libc.TLS, p uintptr) (r int32) {
 			 ** when this handle was opened, create the target database schema. */
 			if (*Tsqlite3rbu)(unsafe.Pointer(p)).FzTarget == uintptr(0) && (*Tsqlite3rbu)(unsafe.Pointer(p)).FnProgress == 0 && (*Tsqlite3rbu)(unsafe.Pointer(p)).Frc == m_SQLITE_OK {
 				_rbuCreateTargetSchema(tls, p)
-				_rbuCopyPragma(tls, p, __ccgo_ts+17027)
-				_rbuCopyPragma(tls, p, __ccgo_ts+16138)
+				_rbuCopyPragma(tls, p, __ccgo_ts+17047)
+				_rbuCopyPragma(tls, p, __ccgo_ts+16158)
 			}
 			for (*Tsqlite3rbu)(unsafe.Pointer(p)).Frc == m_SQLITE_OK && (*TRbuObjIter)(unsafe.Pointer(pIter)).FzTbl != 0 {
 				if (*TRbuObjIter)(unsafe.Pointer(pIter)).FbCleanup != 0 {
@@ -171672,7 +171672,7 @@ func Xsqlite3rbu_step(tls *libc.TLS, p uintptr) (r int32) {
 					 ** cannot be dropped as there are currently active SQL statements.
 					 ** But the contents can be deleted.  */
 					if libc.BoolInt32((*Tsqlite3rbu)(unsafe.Pointer(p)).FzTarget == uintptr(0)) == 0 && (*TRbuObjIter)(unsafe.Pointer(pIter)).FabIndexed != 0 {
-						_rbuMPrintfExec(tls, p, (*Tsqlite3rbu)(unsafe.Pointer(p)).FdbRbu, __ccgo_ts+31357, libc.VaList(bp+16, p+48, (*TRbuObjIter)(unsafe.Pointer(pIter)).FzDataTbl))
+						_rbuMPrintfExec(tls, p, (*Tsqlite3rbu)(unsafe.Pointer(p)).FdbRbu, __ccgo_ts+31377, libc.VaList(bp+16, p+48, (*TRbuObjIter)(unsafe.Pointer(pIter)).FzDataTbl))
 					}
 				} else {
 					_rbuObjIterPrepareAll(tls, p, pIter, 0)
@@ -171695,10 +171695,10 @@ func Xsqlite3rbu_step(tls *libc.TLS, p uintptr) (r int32) {
 				_rbuSaveState(tls, p, int32(m_RBU_STAGE_MOVE))
 				_rbuIncrSchemaCookie(tls, p)
 				if (*Tsqlite3rbu)(unsafe.Pointer(p)).Frc == m_SQLITE_OK {
-					(*Tsqlite3rbu)(unsafe.Pointer(p)).Frc = Xsqlite3_exec(tls, (*Tsqlite3rbu)(unsafe.Pointer(p)).FdbMain, __ccgo_ts+14353, uintptr(0), uintptr(0), p+64)
+					(*Tsqlite3rbu)(unsafe.Pointer(p)).Frc = Xsqlite3_exec(tls, (*Tsqlite3rbu)(unsafe.Pointer(p)).FdbMain, __ccgo_ts+14373, uintptr(0), uintptr(0), p+64)
 				}
 				if (*Tsqlite3rbu)(unsafe.Pointer(p)).Frc == m_SQLITE_OK {
-					(*Tsqlite3rbu)(unsafe.Pointer(p)).Frc = Xsqlite3_exec(tls, (*Tsqlite3rbu)(unsafe.Pointer(p)).FdbRbu, __ccgo_ts+14353, uintptr(0), uintptr(0), p+64)
+					(*Tsqlite3rbu)(unsafe.Pointer(p)).Frc = Xsqlite3_exec(tls, (*Tsqlite3rbu)(unsafe.Pointer(p)).FdbRbu, __ccgo_ts+14373, uintptr(0), uintptr(0), p+64)
 				}
 				(*Tsqlite3rbu)(unsafe.Pointer(p)).FeStage = int32(m_RBU_STAGE_MOVE)
 			}
@@ -171786,7 +171786,7 @@ func _rbuSetupOal(tls *libc.TLS, p uintptr, pState uintptr) {
 		}
 		if rc == m_SQLITE_OK && !((*TRbuObjIter)(unsafe.Pointer(pIter)).FzTbl != 0) {
 			rc = int32(m_SQLITE_ERROR)
-			(*Tsqlite3rbu)(unsafe.Pointer(p)).FzErrmsg = Xsqlite3_mprintf(tls, __ccgo_ts+31385, 0)
+			(*Tsqlite3rbu)(unsafe.Pointer(p)).FzErrmsg = Xsqlite3_mprintf(tls, __ccgo_ts+31405, 0)
 		}
 		if rc == m_SQLITE_OK {
 			(*Tsqlite3rbu)(unsafe.Pointer(p)).FnStep = (*TRbuState)(unsafe.Pointer(pState)).FnRow
@@ -171808,7 +171808,7 @@ func _rbuDeleteOalFile(tls *libc.TLS, p uintptr) {
 	defer tls.Free(16)
 	var pVfs, zOal uintptr
 	_, _ = pVfs, zOal
-	zOal = _rbuMPrintf(tls, p, __ccgo_ts+30834, libc.VaList(bp+8, (*Tsqlite3rbu)(unsafe.Pointer(p)).FzTarget))
+	zOal = _rbuMPrintf(tls, p, __ccgo_ts+30854, libc.VaList(bp+8, (*Tsqlite3rbu)(unsafe.Pointer(p)).FzTarget))
 	if zOal != 0 {
 		pVfs = Xsqlite3_vfs_find(tls, uintptr(0))
 		_ = libc.Int32FromInt32(0)
@@ -171834,7 +171834,7 @@ func _rbuCreateVfs(tls *libc.TLS, p uintptr) {
 	_ = pVfs
 	_ = libc.Int32FromInt32(0)
 	Xsqlite3_randomness(tls, int32(4), bp)
-	Xsqlite3_snprintf(tls, int32(64), bp+4, __ccgo_ts+31410, libc.VaList(bp+80, *(*int32)(unsafe.Pointer(bp))))
+	Xsqlite3_snprintf(tls, int32(64), bp+4, __ccgo_ts+31430, libc.VaList(bp+80, *(*int32)(unsafe.Pointer(bp))))
 	(*Tsqlite3rbu)(unsafe.Pointer(p)).Frc = Xsqlite3rbu_create_vfs(tls, bp+4, uintptr(0))
 	if (*Tsqlite3rbu)(unsafe.Pointer(p)).Frc == m_SQLITE_OK {
 		pVfs = Xsqlite3_vfs_find(tls, bp+4)
@@ -171882,7 +171882,7 @@ func _rbuIndexCntFunc(tls *libc.TLS, pCtx uintptr, nVal int32, apVal uintptr) {
 	}
 	db = v1
 	_ = libc.Int32FromInt32(0)
-	rc = _prepareFreeAndCollectError(tls, db, bp, bp+8, Xsqlite3_mprintf(tls, __ccgo_ts+31421, libc.VaList(bp+24, Xsqlite3_value_text(tls, *(*uintptr)(unsafe.Pointer(apVal))))))
+	rc = _prepareFreeAndCollectError(tls, db, bp, bp+8, Xsqlite3_mprintf(tls, __ccgo_ts+31441, libc.VaList(bp+24, Xsqlite3_value_text(tls, *(*uintptr)(unsafe.Pointer(apVal))))))
 	if rc != m_SQLITE_OK {
 		Xsqlite3_result_error(tls, pCtx, *(*uintptr)(unsafe.Pointer(bp + 8)), -int32(1))
 	} else {
@@ -171927,11 +171927,11 @@ func _rbuInitPhaseOneSteps(tls *libc.TLS, p uintptr) {
 		*(*uintptr)(unsafe.Pointer(bp)) = uintptr(0)
 		bExists = 0 /* True if rbu_count exists */
 		(*Tsqlite3rbu)(unsafe.Pointer(p)).FnPhaseOneStep = int64(-int32(1))
-		(*Tsqlite3rbu)(unsafe.Pointer(p)).Frc = Xsqlite3_create_function(tls, (*Tsqlite3rbu)(unsafe.Pointer(p)).FdbRbu, __ccgo_ts+31493, int32(1), int32(m_SQLITE_UTF8), p, __ccgo_fp(_rbuIndexCntFunc), uintptr(0), uintptr(0))
+		(*Tsqlite3rbu)(unsafe.Pointer(p)).Frc = Xsqlite3_create_function(tls, (*Tsqlite3rbu)(unsafe.Pointer(p)).FdbRbu, __ccgo_ts+31513, int32(1), int32(m_SQLITE_UTF8), p, __ccgo_fp(_rbuIndexCntFunc), uintptr(0), uintptr(0))
 		/* Check for the rbu_count table. If it does not exist, or if an error
 		 ** occurs, nPhaseOneStep will be left set to -1. */
 		if (*Tsqlite3rbu)(unsafe.Pointer(p)).Frc == m_SQLITE_OK {
-			(*Tsqlite3rbu)(unsafe.Pointer(p)).Frc = _prepareAndCollectError(tls, (*Tsqlite3rbu)(unsafe.Pointer(p)).FdbRbu, bp, p+64, __ccgo_ts+31507)
+			(*Tsqlite3rbu)(unsafe.Pointer(p)).Frc = _prepareAndCollectError(tls, (*Tsqlite3rbu)(unsafe.Pointer(p)).FdbRbu, bp, p+64, __ccgo_ts+31527)
 		}
 		if (*Tsqlite3rbu)(unsafe.Pointer(p)).Frc == m_SQLITE_OK {
 			if int32(m_SQLITE_ROW) == Xsqlite3_step(tls, *(*uintptr)(unsafe.Pointer(bp))) {
@@ -171940,7 +171940,7 @@ func _rbuInitPhaseOneSteps(tls *libc.TLS, p uintptr) {
 			(*Tsqlite3rbu)(unsafe.Pointer(p)).Frc = Xsqlite3_finalize(tls, *(*uintptr)(unsafe.Pointer(bp)))
 		}
 		if (*Tsqlite3rbu)(unsafe.Pointer(p)).Frc == m_SQLITE_OK && bExists != 0 {
-			(*Tsqlite3rbu)(unsafe.Pointer(p)).Frc = _prepareAndCollectError(tls, (*Tsqlite3rbu)(unsafe.Pointer(p)).FdbRbu, bp, p+64, __ccgo_ts+31564)
+			(*Tsqlite3rbu)(unsafe.Pointer(p)).Frc = _prepareAndCollectError(tls, (*Tsqlite3rbu)(unsafe.Pointer(p)).FdbRbu, bp, p+64, __ccgo_ts+31584)
 			if (*Tsqlite3rbu)(unsafe.Pointer(p)).Frc == m_SQLITE_OK {
 				if int32(m_SQLITE_ROW) == Xsqlite3_step(tls, *(*uintptr)(unsafe.Pointer(bp))) {
 					(*Tsqlite3rbu)(unsafe.Pointer(p)).FnPhaseOneStep = Xsqlite3_column_int64(tls, *(*uintptr)(unsafe.Pointer(bp)), 0)
@@ -171987,7 +171987,7 @@ func _openRbuHandle(tls *libc.TLS, zTarget uintptr, zRbu uintptr, zState uintptr
 			libc.Xmemcpy(tls, (*Tsqlite3rbu)(unsafe.Pointer(p)).FzRbu, zRbu, nRbu+uint64(1))
 			pCsr += uintptr(nRbu + uint64(1))
 			if zState != 0 {
-				(*Tsqlite3rbu)(unsafe.Pointer(p)).FzState = _rbuMPrintf(tls, p, __ccgo_ts+3560, libc.VaList(bp+16, zState))
+				(*Tsqlite3rbu)(unsafe.Pointer(p)).FzState = _rbuMPrintf(tls, p, __ccgo_ts+3580, libc.VaList(bp+16, zState))
 			}
 			/* If the first attempt to open the database file fails and the bRetry
 			 ** flag it set, this means that the db was not opened because it seemed
@@ -172021,7 +172021,7 @@ func _openRbuHandle(tls *libc.TLS, zTarget uintptr, zRbu uintptr, zState uintptr
 		if (*Tsqlite3rbu)(unsafe.Pointer(p)).Frc == m_SQLITE_OK && (*Trbu_file)(unsafe.Pointer((*Tsqlite3rbu)(unsafe.Pointer(p)).FpTargetFd)).FpWalFd != 0 {
 			if (*Tsqlite3rbu)(unsafe.Pointer(p)).FeStage == int32(m_RBU_STAGE_OAL) {
 				(*Tsqlite3rbu)(unsafe.Pointer(p)).Frc = int32(m_SQLITE_ERROR)
-				(*Tsqlite3rbu)(unsafe.Pointer(p)).FzErrmsg = Xsqlite3_mprintf(tls, __ccgo_ts+31638, 0)
+				(*Tsqlite3rbu)(unsafe.Pointer(p)).FzErrmsg = Xsqlite3_mprintf(tls, __ccgo_ts+31658, 0)
 			} else {
 				if (*Tsqlite3rbu)(unsafe.Pointer(p)).FeStage == int32(m_RBU_STAGE_MOVE) {
 					(*Tsqlite3rbu)(unsafe.Pointer(p)).FeStage = int32(m_RBU_STAGE_CKPT)
@@ -172043,17 +172043,17 @@ func _openRbuHandle(tls *libc.TLS, zTarget uintptr, zRbu uintptr, zState uintptr
 				 ** page 1 of the database file. */
 				(*Tsqlite3rbu)(unsafe.Pointer(p)).Frc = int32(m_SQLITE_BUSY)
 				if (*Tsqlite3rbu)(unsafe.Pointer(p)).FzTarget == uintptr(0) {
-					v3 = __ccgo_ts + 31670
+					v3 = __ccgo_ts + 31690
 				} else {
-					v3 = __ccgo_ts + 31677
+					v3 = __ccgo_ts + 31697
 				}
-				(*Tsqlite3rbu)(unsafe.Pointer(p)).FzErrmsg = Xsqlite3_mprintf(tls, __ccgo_ts+31684, libc.VaList(bp+16, v3))
+				(*Tsqlite3rbu)(unsafe.Pointer(p)).FzErrmsg = Xsqlite3_mprintf(tls, __ccgo_ts+31704, libc.VaList(bp+16, v3))
 			}
 		}
 		if (*Tsqlite3rbu)(unsafe.Pointer(p)).Frc == m_SQLITE_OK {
 			if (*Tsqlite3rbu)(unsafe.Pointer(p)).FeStage == int32(m_RBU_STAGE_OAL) {
 				db = (*Tsqlite3rbu)(unsafe.Pointer(p)).FdbMain
-				(*Tsqlite3rbu)(unsafe.Pointer(p)).Frc = Xsqlite3_exec(tls, (*Tsqlite3rbu)(unsafe.Pointer(p)).FdbRbu, __ccgo_ts+14338, uintptr(0), uintptr(0), p+64)
+				(*Tsqlite3rbu)(unsafe.Pointer(p)).Frc = Xsqlite3_exec(tls, (*Tsqlite3rbu)(unsafe.Pointer(p)).FdbRbu, __ccgo_ts+14358, uintptr(0), uintptr(0), p+64)
 				/* Point the object iterator at the first object */
 				if (*Tsqlite3rbu)(unsafe.Pointer(p)).Frc == m_SQLITE_OK {
 					(*Tsqlite3rbu)(unsafe.Pointer(p)).Frc = _rbuObjIterFirst(tls, p, p+80)
@@ -172065,21 +172065,21 @@ func _openRbuHandle(tls *libc.TLS, zTarget uintptr, zRbu uintptr, zState uintptr
 					(*Tsqlite3rbu)(unsafe.Pointer(p)).FeStage = int32(m_RBU_STAGE_DONE)
 				} else {
 					if (*Tsqlite3rbu)(unsafe.Pointer(p)).Frc == m_SQLITE_OK && (*TRbuState)(unsafe.Pointer(pState)).FeStage == 0 && (*Tsqlite3rbu)(unsafe.Pointer(p)).FzTarget == uintptr(0) {
-						_rbuCopyPragma(tls, p, __ccgo_ts+16741)
-						_rbuCopyPragma(tls, p, __ccgo_ts+16153)
+						_rbuCopyPragma(tls, p, __ccgo_ts+16761)
+						_rbuCopyPragma(tls, p, __ccgo_ts+16173)
 					}
 					/* Open transactions both databases. The *-oal file is opened or
 					 ** created at this point. */
 					if (*Tsqlite3rbu)(unsafe.Pointer(p)).Frc == m_SQLITE_OK {
-						(*Tsqlite3rbu)(unsafe.Pointer(p)).Frc = Xsqlite3_exec(tls, db, __ccgo_ts+31716, uintptr(0), uintptr(0), p+64)
+						(*Tsqlite3rbu)(unsafe.Pointer(p)).Frc = Xsqlite3_exec(tls, db, __ccgo_ts+31736, uintptr(0), uintptr(0), p+64)
 					}
 					/* Check if the main database is a zipvfs db. If it is, set the upper
 					 ** level pager to use "journal_mode=off". This prevents it from
 					 ** generating a large journal using a temp file.  */
 					if (*Tsqlite3rbu)(unsafe.Pointer(p)).Frc == m_SQLITE_OK {
-						frc = Xsqlite3_file_control(tls, db, __ccgo_ts+6255, int32(m_SQLITE_FCNTL_ZIPVFS), uintptr(0))
+						frc = Xsqlite3_file_control(tls, db, __ccgo_ts+6275, int32(m_SQLITE_FCNTL_ZIPVFS), uintptr(0))
 						if frc == m_SQLITE_OK {
-							(*Tsqlite3rbu)(unsafe.Pointer(p)).Frc = Xsqlite3_exec(tls, db, __ccgo_ts+31732, uintptr(0), uintptr(0), p+64)
+							(*Tsqlite3rbu)(unsafe.Pointer(p)).Frc = Xsqlite3_exec(tls, db, __ccgo_ts+31752, uintptr(0), uintptr(0), p+64)
 						}
 					}
 					if (*Tsqlite3rbu)(unsafe.Pointer(p)).Frc == m_SQLITE_OK {
@@ -172157,7 +172157,7 @@ func Xsqlite3rbu_vacuum(tls *libc.TLS, zTarget uintptr, zState uintptr) (r uintp
 	}
 	if zState != 0 {
 		n = int32(libc.Xstrlen(tls, zState))
-		if n >= int32(7) && 0 == libc.Xmemcmp(tls, __ccgo_ts+31756, zState+uintptr(n-int32(7)), uint64(7)) {
+		if n >= int32(7) && 0 == libc.Xmemcmp(tls, __ccgo_ts+31776, zState+uintptr(n-int32(7)), uint64(7)) {
 			return _rbuMisuseError(tls)
 		}
 	}
@@ -172204,7 +172204,7 @@ func _rbuEditErrmsg(tls *libc.TLS, p uintptr) {
 			if !(uint64(i) < nErrmsg-uint64(8)) {
 				break
 			}
-			if libc.Xmemcmp(tls, (*Tsqlite3rbu)(unsafe.Pointer(p)).FzErrmsg+uintptr(i), __ccgo_ts+29782, uint64(8)) == 0 {
+			if libc.Xmemcmp(tls, (*Tsqlite3rbu)(unsafe.Pointer(p)).FzErrmsg+uintptr(i), __ccgo_ts+29802, uint64(8)) == 0 {
 				nDel = int32(8)
 				for int32(*(*uint8)(unsafe.Pointer((*Tsqlite3rbu)(unsafe.Pointer(p)).FzErrmsg + uintptr(i+uint32(nDel))))) >= int32('0') && int32(*(*uint8)(unsafe.Pointer((*Tsqlite3rbu)(unsafe.Pointer(p)).FzErrmsg + uintptr(i+uint32(nDel))))) <= int32('9') {
 					nDel++
@@ -172231,7 +172231,7 @@ func Xsqlite3rbu_close(tls *libc.TLS, p uintptr, pzErrmsg uintptr) (r int32) {
 	if p != 0 {
 		/* Commit the transaction to the *-oal file. */
 		if (*Tsqlite3rbu)(unsafe.Pointer(p)).Frc == m_SQLITE_OK && (*Tsqlite3rbu)(unsafe.Pointer(p)).FeStage == int32(m_RBU_STAGE_OAL) {
-			(*Tsqlite3rbu)(unsafe.Pointer(p)).Frc = Xsqlite3_exec(tls, (*Tsqlite3rbu)(unsafe.Pointer(p)).FdbMain, __ccgo_ts+14353, uintptr(0), uintptr(0), p+64)
+			(*Tsqlite3rbu)(unsafe.Pointer(p)).Frc = Xsqlite3_exec(tls, (*Tsqlite3rbu)(unsafe.Pointer(p)).FdbMain, __ccgo_ts+14373, uintptr(0), uintptr(0), p+64)
 		}
 		/* Sync the db file if currently doing an incremental checkpoint */
 		if (*Tsqlite3rbu)(unsafe.Pointer(p)).Frc == m_SQLITE_OK && (*Tsqlite3rbu)(unsafe.Pointer(p)).FeStage == int32(m_RBU_STAGE_CKPT) {
@@ -172240,7 +172240,7 @@ func Xsqlite3rbu_close(tls *libc.TLS, p uintptr, pzErrmsg uintptr) (r int32) {
 		}
 		_rbuSaveState(tls, p, (*Tsqlite3rbu)(unsafe.Pointer(p)).FeStage)
 		if (*Tsqlite3rbu)(unsafe.Pointer(p)).Frc == m_SQLITE_OK && (*Tsqlite3rbu)(unsafe.Pointer(p)).FeStage == int32(m_RBU_STAGE_OAL) {
-			(*Tsqlite3rbu)(unsafe.Pointer(p)).Frc = Xsqlite3_exec(tls, (*Tsqlite3rbu)(unsafe.Pointer(p)).FdbRbu, __ccgo_ts+14353, uintptr(0), uintptr(0), p+64)
+			(*Tsqlite3rbu)(unsafe.Pointer(p)).Frc = Xsqlite3_exec(tls, (*Tsqlite3rbu)(unsafe.Pointer(p)).FdbRbu, __ccgo_ts+14373, uintptr(0), uintptr(0), p+64)
 		}
 		/* Close any open statement handles. */
 		_rbuObjIterFinalize(tls, p+80)
@@ -172250,7 +172250,7 @@ func Xsqlite3rbu_close(tls *libc.TLS, p uintptr, pzErrmsg uintptr) (r int32) {
 		 ** specifying the current target and state databases to start a new
 		 ** vacuum from scratch.  */
 		if (*Tsqlite3rbu)(unsafe.Pointer(p)).FzTarget == uintptr(0) && (*Tsqlite3rbu)(unsafe.Pointer(p)).Frc != m_SQLITE_OK && (*Tsqlite3rbu)(unsafe.Pointer(p)).FdbRbu != 0 {
-			rc2 = Xsqlite3_exec(tls, (*Tsqlite3rbu)(unsafe.Pointer(p)).FdbRbu, __ccgo_ts+31764, uintptr(0), uintptr(0), uintptr(0))
+			rc2 = Xsqlite3_exec(tls, (*Tsqlite3rbu)(unsafe.Pointer(p)).FdbRbu, __ccgo_ts+31784, uintptr(0), uintptr(0), uintptr(0))
 			if (*Tsqlite3rbu)(unsafe.Pointer(p)).Frc == int32(m_SQLITE_DONE) && rc2 != m_SQLITE_OK {
 				(*Tsqlite3rbu)(unsafe.Pointer(p)).Frc = rc2
 			}
@@ -172365,7 +172365,7 @@ func Xsqlite3rbu_savestate(tls *libc.TLS, p uintptr) (r int32) {
 	if (*Tsqlite3rbu)(unsafe.Pointer(p)).FeStage == int32(m_RBU_STAGE_OAL) {
 		_ = libc.Int32FromInt32(0)
 		if rc == m_SQLITE_OK {
-			rc = Xsqlite3_exec(tls, (*Tsqlite3rbu)(unsafe.Pointer(p)).FdbMain, __ccgo_ts+14353, uintptr(0), uintptr(0), uintptr(0))
+			rc = Xsqlite3_exec(tls, (*Tsqlite3rbu)(unsafe.Pointer(p)).FdbMain, __ccgo_ts+14373, uintptr(0), uintptr(0), uintptr(0))
 		}
 	}
 	/* Sync the db file */
@@ -172379,19 +172379,19 @@ func Xsqlite3rbu_savestate(tls *libc.TLS, p uintptr) (r int32) {
 	if (*Tsqlite3rbu)(unsafe.Pointer(p)).FeStage == int32(m_RBU_STAGE_OAL) {
 		_ = libc.Int32FromInt32(0)
 		if rc == m_SQLITE_OK {
-			rc = Xsqlite3_exec(tls, (*Tsqlite3rbu)(unsafe.Pointer(p)).FdbRbu, __ccgo_ts+14353, uintptr(0), uintptr(0), uintptr(0))
+			rc = Xsqlite3_exec(tls, (*Tsqlite3rbu)(unsafe.Pointer(p)).FdbRbu, __ccgo_ts+14373, uintptr(0), uintptr(0), uintptr(0))
 		}
 		if rc == m_SQLITE_OK {
 			if (*Tsqlite3rbu)(unsafe.Pointer(p)).FzTarget == uintptr(0) {
-				v1 = __ccgo_ts + 14338
+				v1 = __ccgo_ts + 14358
 			} else {
-				v1 = __ccgo_ts + 31716
+				v1 = __ccgo_ts + 31736
 			}
 			zBegin = v1
 			rc = Xsqlite3_exec(tls, (*Tsqlite3rbu)(unsafe.Pointer(p)).FdbRbu, zBegin, uintptr(0), uintptr(0), uintptr(0))
 		}
 		if rc == m_SQLITE_OK {
-			rc = Xsqlite3_exec(tls, (*Tsqlite3rbu)(unsafe.Pointer(p)).FdbMain, __ccgo_ts+31716, uintptr(0), uintptr(0), uintptr(0))
+			rc = Xsqlite3_exec(tls, (*Tsqlite3rbu)(unsafe.Pointer(p)).FdbMain, __ccgo_ts+31736, uintptr(0), uintptr(0), uintptr(0))
 		}
 	}
 	(*Tsqlite3rbu)(unsafe.Pointer(p)).Frc = rc
@@ -172926,7 +172926,7 @@ func _rbuVfsFileControl(tls *libc.TLS, pFile uintptr, op int32, pArg uintptr) (r
 			rc = (*(*func(*libc.TLS, uintptr, int32, uintptr) int32)(unsafe.Pointer(&struct{ uintptr }{xControl})))(tls, (*Trbu_file)(unsafe.Pointer(p)).FpReal, int32(m_SQLITE_FCNTL_ZIPVFS), bp)
 			if rc == m_SQLITE_OK {
 				rc = int32(m_SQLITE_ERROR)
-				(*Tsqlite3rbu)(unsafe.Pointer(pRbu)).FzErrmsg = Xsqlite3_mprintf(tls, __ccgo_ts+31791, 0)
+				(*Tsqlite3rbu)(unsafe.Pointer(pRbu)).FzErrmsg = Xsqlite3_mprintf(tls, __ccgo_ts+31811, 0)
 			} else {
 				if rc == int32(m_SQLITE_NOTFOUND) {
 					(*Tsqlite3rbu)(unsafe.Pointer(pRbu)).FpTargetFd = p
@@ -172952,7 +172952,7 @@ func _rbuVfsFileControl(tls *libc.TLS, pFile uintptr, op int32, pArg uintptr) (r
 	if rc == m_SQLITE_OK && op == int32(m_SQLITE_FCNTL_VFSNAME) {
 		pRbuVfs = (*Trbu_file)(unsafe.Pointer(p)).FpRbuVfs
 		zIn = *(*uintptr)(unsafe.Pointer(pArg))
-		zOut = Xsqlite3_mprintf(tls, __ccgo_ts+31814, libc.VaList(bp+16, (*Trbu_vfs)(unsafe.Pointer(pRbuVfs)).Fbase.FzName, zIn))
+		zOut = Xsqlite3_mprintf(tls, __ccgo_ts+31834, libc.VaList(bp+16, (*Trbu_vfs)(unsafe.Pointer(pRbuVfs)).Fbase.FzName, zIn))
 		*(*uintptr)(unsafe.Pointer(pArg)) = zOut
 		if zOut == uintptr(0) {
 			rc = int32(m_SQLITE_NOMEM)
@@ -173153,7 +173153,7 @@ func _rbuVfsOpen(tls *libc.TLS, pVfs uintptr, zName uintptr, pFile uintptr, flag
 				if pDb != 0 {
 					if (*Trbu_file)(unsafe.Pointer(pDb)).FpRbu != 0 && (*Tsqlite3rbu)(unsafe.Pointer((*Trbu_file)(unsafe.Pointer(pDb)).FpRbu)).FeStage == int32(m_RBU_STAGE_OAL) {
 						if (*Tsqlite3rbu)(unsafe.Pointer((*Trbu_file)(unsafe.Pointer(pDb)).FpRbu)).FzTarget == uintptr(0) {
-							zOpen = Xsqlite3_db_filename(tls, (*Tsqlite3rbu)(unsafe.Pointer((*Trbu_file)(unsafe.Pointer(pDb)).FpRbu)).FdbRbu, __ccgo_ts+6255)
+							zOpen = Xsqlite3_db_filename(tls, (*Tsqlite3rbu)(unsafe.Pointer((*Trbu_file)(unsafe.Pointer(pDb)).FpRbu)).FdbRbu, __ccgo_ts+6275)
 							zOpen = Xsqlite3_filename_wal(tls, zOpen)
 						}
 						nOpen = libc.Xstrlen(tls, zOpen)
@@ -173167,7 +173167,7 @@ func _rbuVfsOpen(tls *libc.TLS, pVfs uintptr, zName uintptr, pFile uintptr, flag
 	} else {
 		(*Trbu_file)(unsafe.Pointer(pFd)).FpRbu = (*Trbu_vfs)(unsafe.Pointer(pRbuVfs)).FpRbu
 	}
-	if oflags&int32(m_SQLITE_OPEN_MAIN_DB) != 0 && Xsqlite3_uri_boolean(tls, zName, __ccgo_ts+31825, 0) != 0 {
+	if oflags&int32(m_SQLITE_OPEN_MAIN_DB) != 0 && Xsqlite3_uri_boolean(tls, zName, __ccgo_ts+31845, 0) != 0 {
 		_ = libc.Int32FromInt32(0)
 		oflags = libc.Int32FromInt32(m_SQLITE_OPEN_TEMP_DB) | libc.Int32FromInt32(m_SQLITE_OPEN_READWRITE) | libc.Int32FromInt32(m_SQLITE_OPEN_CREATE) | libc.Int32FromInt32(m_SQLITE_OPEN_EXCLUSIVE) | libc.Int32FromInt32(m_SQLITE_OPEN_DELETEONCLOSE)
 		zOpen = uintptr(0)
@@ -174701,14 +174701,14 @@ func _sessionTableInfo(tls *libc.TLS, pSession uintptr, db uintptr, zDb uintptr,
 	abPK = uintptr(0)
 	_ = libc.Int32FromInt32(0)
 	nThis = _sqlite3Strlen30(tls, zThis)
-	if nThis == int32(12) && 0 == Xsqlite3_stricmp(tls, __ccgo_ts+11057, zThis) {
+	if nThis == int32(12) && 0 == Xsqlite3_stricmp(tls, __ccgo_ts+11077, zThis) {
 		rc = Xsqlite3_table_column_metadata(tls, db, zDb, zThis, uintptr(0), uintptr(0), uintptr(0), uintptr(0), uintptr(0), uintptr(0))
 		if rc == m_SQLITE_OK {
 			/* For sqlite_stat1, pretend that (tbl,idx) is the PRIMARY KEY. */
-			zPragma = Xsqlite3_mprintf(tls, __ccgo_ts+31836, 0)
+			zPragma = Xsqlite3_mprintf(tls, __ccgo_ts+31856, 0)
 		} else {
 			if rc == int32(m_SQLITE_ERROR) {
-				zPragma = Xsqlite3_mprintf(tls, __ccgo_ts+1511, 0)
+				zPragma = Xsqlite3_mprintf(tls, __ccgo_ts+1531, 0)
 			} else {
 				*(*uintptr)(unsafe.Pointer(pazCol)) = uintptr(0)
 				*(*uintptr)(unsafe.Pointer(pabPK)) = uintptr(0)
@@ -174720,7 +174720,7 @@ func _sessionTableInfo(tls *libc.TLS, pSession uintptr, db uintptr, zDb uintptr,
 			}
 		}
 	} else {
-		zPragma = Xsqlite3_mprintf(tls, __ccgo_ts+31957, libc.VaList(bp+16, zDb, zThis))
+		zPragma = Xsqlite3_mprintf(tls, __ccgo_ts+31977, libc.VaList(bp+16, zDb, zThis))
 	}
 	if !(zPragma != 0) {
 		*(*uintptr)(unsafe.Pointer(pazCol)) = uintptr(0)
@@ -174838,7 +174838,7 @@ func _sessionInitTable(tls *libc.TLS, pSession uintptr, pTab uintptr) (r int32) 
 			_1:
 				i++
 			}
-			if 0 == Xsqlite3_stricmp(tls, __ccgo_ts+11057, (*TSessionTable)(unsafe.Pointer(pTab)).FzName) {
+			if 0 == Xsqlite3_stricmp(tls, __ccgo_ts+11077, (*TSessionTable)(unsafe.Pointer(pTab)).FzName) {
 				(*TSessionTable)(unsafe.Pointer(pTab)).FbStat1 = int32(1)
 			}
 			if (*Tsqlite3_session)(unsafe.Pointer(pSession)).FbEnableSize != 0 {
@@ -175080,7 +175080,7 @@ func _sessionPreupdateOneChange(tls *libc.TLS, op int32, pSession uintptr, pTab 
 				rc = int32(m_SQLITE_NOMEM)
 				goto error_out
 			}
-			_sqlite3ValueSetStr(tls, p, 0, __ccgo_ts+1511, uint8(0), libc.UintptrFromInt32(0))
+			_sqlite3ValueSetStr(tls, p, 0, __ccgo_ts+1531, uint8(0), libc.UintptrFromInt32(0))
 			(*Tsqlite3_session)(unsafe.Pointer(pSession)).FpZeroBlob = p
 		}
 	}
@@ -175385,7 +175385,7 @@ func _sessionExprComparePK(tls *libc.TLS, nCol int32, zDb1 uintptr, zDb2 uintptr
 	var i int32
 	var zRet, zSep uintptr
 	_, _, _ = i, zRet, zSep
-	zSep = __ccgo_ts + 1511
+	zSep = __ccgo_ts + 1531
 	zRet = uintptr(0)
 	i = 0
 	for {
@@ -175393,8 +175393,8 @@ func _sessionExprComparePK(tls *libc.TLS, nCol int32, zDb1 uintptr, zDb2 uintptr
 			break
 		}
 		if *(*Tu8)(unsafe.Pointer(abPK + uintptr(i))) != 0 {
-			zRet = Xsqlite3_mprintf(tls, __ccgo_ts+31986, libc.VaList(bp+8, zRet, zSep, zDb1, zTab, *(*uintptr)(unsafe.Pointer(azCol + uintptr(i)*8)), zDb2, zTab, *(*uintptr)(unsafe.Pointer(azCol + uintptr(i)*8))))
-			zSep = __ccgo_ts + 21204
+			zRet = Xsqlite3_mprintf(tls, __ccgo_ts+32006, libc.VaList(bp+8, zRet, zSep, zDb1, zTab, *(*uintptr)(unsafe.Pointer(azCol + uintptr(i)*8)), zDb2, zTab, *(*uintptr)(unsafe.Pointer(azCol + uintptr(i)*8))))
+			zSep = __ccgo_ts + 21224
 			if zRet == uintptr(0) {
 				break
 			}
@@ -175412,7 +175412,7 @@ func _sessionExprCompareOther(tls *libc.TLS, nCol int32, zDb1 uintptr, zDb2 uint
 	var bHave, i int32
 	var zRet, zSep uintptr
 	_, _, _, _ = bHave, i, zRet, zSep
-	zSep = __ccgo_ts + 1511
+	zSep = __ccgo_ts + 1531
 	zRet = uintptr(0)
 	bHave = 0
 	i = 0
@@ -175422,8 +175422,8 @@ func _sessionExprCompareOther(tls *libc.TLS, nCol int32, zDb1 uintptr, zDb2 uint
 		}
 		if int32(*(*Tu8)(unsafe.Pointer(abPK + uintptr(i)))) == 0 {
 			bHave = int32(1)
-			zRet = Xsqlite3_mprintf(tls, __ccgo_ts+32020, libc.VaList(bp+8, zRet, zSep, zDb1, zTab, *(*uintptr)(unsafe.Pointer(azCol + uintptr(i)*8)), zDb2, zTab, *(*uintptr)(unsafe.Pointer(azCol + uintptr(i)*8))))
-			zSep = __ccgo_ts + 32061
+			zRet = Xsqlite3_mprintf(tls, __ccgo_ts+32040, libc.VaList(bp+8, zRet, zSep, zDb1, zTab, *(*uintptr)(unsafe.Pointer(azCol + uintptr(i)*8)), zDb2, zTab, *(*uintptr)(unsafe.Pointer(azCol + uintptr(i)*8))))
+			zSep = __ccgo_ts + 32081
 			if zRet == uintptr(0) {
 				break
 			}
@@ -175434,7 +175434,7 @@ func _sessionExprCompareOther(tls *libc.TLS, nCol int32, zDb1 uintptr, zDb2 uint
 	}
 	if bHave == 0 {
 		_ = libc.Int32FromInt32(0)
-		zRet = Xsqlite3_mprintf(tls, __ccgo_ts+7349, 0)
+		zRet = Xsqlite3_mprintf(tls, __ccgo_ts+7369, 0)
 	}
 	return zRet
 }
@@ -175444,7 +175444,7 @@ func _sessionSelectFindNew(tls *libc.TLS, nCol int32, zDb1 uintptr, zDb2 uintptr
 	defer tls.Free(48)
 	var zRet uintptr
 	_ = zRet
-	zRet = Xsqlite3_mprintf(tls, __ccgo_ts+32066, libc.VaList(bp+8, zDb1, zTbl, zDb2, zTbl, zExpr))
+	zRet = Xsqlite3_mprintf(tls, __ccgo_ts+32086, libc.VaList(bp+8, zDb1, zTbl, zDb2, zTbl, zExpr))
 	return zRet
 }
 
@@ -175487,7 +175487,7 @@ func _sessionDiffFindModified(tls *libc.TLS, pSession uintptr, pTab uintptr, zFr
 	if zExpr2 == uintptr(0) {
 		rc = int32(m_SQLITE_NOMEM)
 	} else {
-		zStmt = Xsqlite3_mprintf(tls, __ccgo_ts+32144, libc.VaList(bp+16, (*Tsqlite3_session)(unsafe.Pointer(pSession)).FzDb, (*TSessionTable)(unsafe.Pointer(pTab)).FzName, zFrom, (*TSessionTable)(unsafe.Pointer(pTab)).FzName, zExpr, zExpr2))
+		zStmt = Xsqlite3_mprintf(tls, __ccgo_ts+32164, libc.VaList(bp+16, (*Tsqlite3_session)(unsafe.Pointer(pSession)).FzDb, (*TSessionTable)(unsafe.Pointer(pTab)).FzName, zFrom, (*TSessionTable)(unsafe.Pointer(pTab)).FzName, zExpr, zExpr2))
 		if zStmt == uintptr(0) {
 			rc = int32(m_SQLITE_NOMEM)
 		} else {
@@ -175571,7 +175571,7 @@ func Xsqlite3session_diff(tls *libc.TLS, pSession uintptr, zFrom uintptr, zTbl u
 			Xsqlite3_free(tls, *(*uintptr)(unsafe.Pointer(bp + 40)))
 			if bMismatch != 0 {
 				if pzErrMsg != 0 {
-					*(*uintptr)(unsafe.Pointer(pzErrMsg)) = Xsqlite3_mprintf(tls, __ccgo_ts+32197, 0)
+					*(*uintptr)(unsafe.Pointer(pzErrMsg)) = Xsqlite3_mprintf(tls, __ccgo_ts+32217, 0)
 				}
 				rc = int32(m_SQLITE_SCHEMA)
 			}
@@ -175964,7 +175964,7 @@ func _sessionAppendInteger(tls *libc.TLS, p uintptr, iVal int32, pRc uintptr) {
 	bp := tls.Alloc(48)
 	defer tls.Free(48)
 	var _ /* aBuf at bp+0 */ [24]uint8
-	Xsqlite3_snprintf(tls, int32(libc.Uint64FromInt64(24)-libc.Uint64FromInt32(1)), bp, __ccgo_ts+4859, libc.VaList(bp+32, iVal))
+	Xsqlite3_snprintf(tls, int32(libc.Uint64FromInt64(24)-libc.Uint64FromInt32(1)), bp, __ccgo_ts+4879, libc.VaList(bp+32, iVal))
 	_sessionAppendStr(tls, p, bp, pRc)
 }
 
@@ -176249,19 +176249,19 @@ func _sessionSelectStmt(tls *libc.TLS, db uintptr, zDb uintptr, zTab uintptr, nC
 	*(*int32)(unsafe.Pointer(bp)) = m_SQLITE_OK
 	zSql = uintptr(0)
 	nSql = -int32(1)
-	if 0 == Xsqlite3_stricmp(tls, __ccgo_ts+11057, zTab) {
-		zSql = Xsqlite3_mprintf(tls, __ccgo_ts+32224, libc.VaList(bp+32, zDb))
+	if 0 == Xsqlite3_stricmp(tls, __ccgo_ts+11077, zTab) {
+		zSql = Xsqlite3_mprintf(tls, __ccgo_ts+32244, libc.VaList(bp+32, zDb))
 		if zSql == uintptr(0) {
 			*(*int32)(unsafe.Pointer(bp)) = int32(m_SQLITE_NOMEM)
 		}
 	} else {
-		zSep = __ccgo_ts + 1511
+		zSep = __ccgo_ts + 1531
 		*(*TSessionBuffer)(unsafe.Pointer(bp + 8)) = TSessionBuffer{}
-		_sessionAppendStr(tls, bp+8, __ccgo_ts+32334, bp)
+		_sessionAppendStr(tls, bp+8, __ccgo_ts+32354, bp)
 		_sessionAppendIdent(tls, bp+8, zDb, bp)
-		_sessionAppendStr(tls, bp+8, __ccgo_ts+1524, bp)
+		_sessionAppendStr(tls, bp+8, __ccgo_ts+1544, bp)
 		_sessionAppendIdent(tls, bp+8, zTab, bp)
-		_sessionAppendStr(tls, bp+8, __ccgo_ts+32349, bp)
+		_sessionAppendStr(tls, bp+8, __ccgo_ts+32369, bp)
 		i = 0
 		for {
 			if !(i < nCol) {
@@ -176270,9 +176270,9 @@ func _sessionSelectStmt(tls *libc.TLS, db uintptr, zDb uintptr, zTab uintptr, nC
 			if *(*Tu8)(unsafe.Pointer(abPK + uintptr(i))) != 0 {
 				_sessionAppendStr(tls, bp+8, zSep, bp)
 				_sessionAppendIdent(tls, bp+8, *(*uintptr)(unsafe.Pointer(azCol + uintptr(i)*8)), bp)
-				_sessionAppendStr(tls, bp+8, __ccgo_ts+32357, bp)
+				_sessionAppendStr(tls, bp+8, __ccgo_ts+32377, bp)
 				_sessionAppendInteger(tls, bp+8, i+int32(1), bp)
-				zSep = __ccgo_ts + 21204
+				zSep = __ccgo_ts + 21224
 			}
 			goto _1
 		_1:
@@ -176421,7 +176421,7 @@ func _sessionGenerateChangeset(tls *libc.TLS, pSession uintptr, bPatchset int32,
 	if (*Tsqlite3_session)(unsafe.Pointer(pSession)).Frc != 0 {
 		return (*Tsqlite3_session)(unsafe.Pointer(pSession)).Frc
 	}
-	*(*int32)(unsafe.Pointer(bp + 16)) = Xsqlite3_exec(tls, (*Tsqlite3_session)(unsafe.Pointer(pSession)).Fdb, __ccgo_ts+32363, uintptr(0), uintptr(0), uintptr(0))
+	*(*int32)(unsafe.Pointer(bp + 16)) = Xsqlite3_exec(tls, (*Tsqlite3_session)(unsafe.Pointer(pSession)).Fdb, __ccgo_ts+32383, uintptr(0), uintptr(0), uintptr(0))
 	if *(*int32)(unsafe.Pointer(bp + 16)) != m_SQLITE_OK {
 		return *(*int32)(unsafe.Pointer(bp + 16))
 	}
@@ -176527,7 +176527,7 @@ func _sessionGenerateChangeset(tls *libc.TLS, pSession uintptr, bPatchset int32,
 		}
 	}
 	Xsqlite3_free(tls, (*(*TSessionBuffer)(unsafe.Pointer(bp))).FaBuf)
-	Xsqlite3_exec(tls, db, __ccgo_ts+32383, uintptr(0), uintptr(0), uintptr(0))
+	Xsqlite3_exec(tls, db, __ccgo_ts+32403, uintptr(0), uintptr(0), uintptr(0))
 	Xsqlite3_mutex_leave(tls, Xsqlite3_db_mutex(tls, db))
 	return *(*int32)(unsafe.Pointer(bp + 16))
 }
@@ -177903,18 +177903,18 @@ func _sessionUpdateFind(tls *libc.TLS, pIter uintptr, p uintptr, bPatchset int32
 		}
 		if pUp == uintptr(0) {
 			nByte = int32(uint64(24) * uint64(nU32) * uint64(4))
-			bStat1 = libc.BoolInt32(Xsqlite3_stricmp(tls, (*Tsqlite3_changeset_iter)(unsafe.Pointer(pIter)).FzTab, __ccgo_ts+11057) == 0)
+			bStat1 = libc.BoolInt32(Xsqlite3_stricmp(tls, (*Tsqlite3_changeset_iter)(unsafe.Pointer(pIter)).FzTab, __ccgo_ts+11077) == 0)
 			pUp = Xsqlite3_malloc(tls, nByte)
 			if pUp == uintptr(0) {
 				*(*int32)(unsafe.Pointer(bp)) = int32(m_SQLITE_NOMEM)
 			} else {
-				zSep = __ccgo_ts + 1511
+				zSep = __ccgo_ts + 1531
 				libc.Xmemset(tls, bp+8, 0, uint64(16))
 				(*TSessionUpdate)(unsafe.Pointer(pUp)).FaMask = pUp + 1*24
 				libc.Xmemcpy(tls, (*TSessionUpdate)(unsafe.Pointer(pUp)).FaMask, (*TSessionApplyCtx)(unsafe.Pointer(p)).FaUpdateMask, uint64(nU32)*uint64(4))
-				_sessionAppendStr(tls, bp+8, __ccgo_ts+32401, bp)
+				_sessionAppendStr(tls, bp+8, __ccgo_ts+32421, bp)
 				_sessionAppendIdent(tls, bp+8, (*Tsqlite3_changeset_iter)(unsafe.Pointer(pIter)).FzTab, bp)
-				_sessionAppendStr(tls, bp+8, __ccgo_ts+32414, bp)
+				_sessionAppendStr(tls, bp+8, __ccgo_ts+32434, bp)
 				/* Create the assignments part of the UPDATE */
 				ii = 0
 				for {
@@ -177924,17 +177924,17 @@ func _sessionUpdateFind(tls *libc.TLS, pIter uintptr, p uintptr, bPatchset int32
 					if int32(*(*Tu8)(unsafe.Pointer((*TSessionApplyCtx)(unsafe.Pointer(p)).FabPK + uintptr(ii)))) == 0 && *(*uintptr)(unsafe.Pointer((*Tsqlite3_changeset_iter)(unsafe.Pointer(pIter)).FapValue + uintptr((*Tsqlite3_changeset_iter)(unsafe.Pointer(pIter)).FnCol+ii)*8)) != 0 {
 						_sessionAppendStr(tls, bp+8, zSep, bp)
 						_sessionAppendIdent(tls, bp+8, *(*uintptr)(unsafe.Pointer((*TSessionApplyCtx)(unsafe.Pointer(p)).FazCol + uintptr(ii)*8)), bp)
-						_sessionAppendStr(tls, bp+8, __ccgo_ts+32420, bp)
+						_sessionAppendStr(tls, bp+8, __ccgo_ts+32440, bp)
 						_sessionAppendInteger(tls, bp+8, ii*int32(2)+int32(1), bp)
-						zSep = __ccgo_ts + 14449
+						zSep = __ccgo_ts + 14469
 					}
 					goto _2
 				_2:
 					ii++
 				}
 				/* Create the WHERE clause part of the UPDATE */
-				zSep = __ccgo_ts + 1511
-				_sessionAppendStr(tls, bp+8, __ccgo_ts+32349, bp)
+				zSep = __ccgo_ts + 1531
+				_sessionAppendStr(tls, bp+8, __ccgo_ts+32369, bp)
 				ii = 0
 				for {
 					if !(ii < (*Tsqlite3_changeset_iter)(unsafe.Pointer(pIter)).FnCol) {
@@ -177944,13 +177944,13 @@ func _sessionUpdateFind(tls *libc.TLS, pIter uintptr, p uintptr, bPatchset int32
 						_sessionAppendStr(tls, bp+8, zSep, bp)
 						if bStat1 != 0 && ii == int32(1) {
 							_ = libc.Int32FromInt32(0)
-							_sessionAppendStr(tls, bp+8, __ccgo_ts+32425, bp)
+							_sessionAppendStr(tls, bp+8, __ccgo_ts+32445, bp)
 						} else {
 							_sessionAppendIdent(tls, bp+8, *(*uintptr)(unsafe.Pointer((*TSessionApplyCtx)(unsafe.Pointer(p)).FazCol + uintptr(ii)*8)), bp)
-							_sessionAppendStr(tls, bp+8, __ccgo_ts+32357, bp)
+							_sessionAppendStr(tls, bp+8, __ccgo_ts+32377, bp)
 							_sessionAppendInteger(tls, bp+8, ii*int32(2)+int32(2), bp)
 						}
-						zSep = __ccgo_ts + 21204
+						zSep = __ccgo_ts + 21224
 					}
 					goto _3
 				_3:
@@ -178032,13 +178032,13 @@ func _sessionDeleteRow(tls *libc.TLS, db uintptr, zTab uintptr, p uintptr) (r in
 	var _ /* buf at bp+8 */ TSessionBuffer
 	var _ /* rc at bp+0 */ int32
 	_, _, _ = i, nPk, zSep
-	zSep = __ccgo_ts + 1511
+	zSep = __ccgo_ts + 1531
 	*(*int32)(unsafe.Pointer(bp)) = m_SQLITE_OK
 	*(*TSessionBuffer)(unsafe.Pointer(bp + 8)) = TSessionBuffer{}
 	nPk = 0
-	_sessionAppendStr(tls, bp+8, __ccgo_ts+32500, bp)
+	_sessionAppendStr(tls, bp+8, __ccgo_ts+32520, bp)
 	_sessionAppendIdent(tls, bp+8, zTab, bp)
-	_sessionAppendStr(tls, bp+8, __ccgo_ts+32349, bp)
+	_sessionAppendStr(tls, bp+8, __ccgo_ts+32369, bp)
 	i = 0
 	for {
 		if !(i < (*TSessionApplyCtx)(unsafe.Pointer(p)).FnCol) {
@@ -178048,19 +178048,19 @@ func _sessionDeleteRow(tls *libc.TLS, db uintptr, zTab uintptr, p uintptr) (r in
 			nPk++
 			_sessionAppendStr(tls, bp+8, zSep, bp)
 			_sessionAppendIdent(tls, bp+8, *(*uintptr)(unsafe.Pointer((*TSessionApplyCtx)(unsafe.Pointer(p)).FazCol + uintptr(i)*8)), bp)
-			_sessionAppendStr(tls, bp+8, __ccgo_ts+32420, bp)
+			_sessionAppendStr(tls, bp+8, __ccgo_ts+32440, bp)
 			_sessionAppendInteger(tls, bp+8, i+int32(1), bp)
-			zSep = __ccgo_ts + 21204
+			zSep = __ccgo_ts + 21224
 		}
 		goto _1
 	_1:
 		i++
 	}
 	if nPk < (*TSessionApplyCtx)(unsafe.Pointer(p)).FnCol {
-		_sessionAppendStr(tls, bp+8, __ccgo_ts+32518, bp)
+		_sessionAppendStr(tls, bp+8, __ccgo_ts+32538, bp)
 		_sessionAppendInteger(tls, bp+8, (*TSessionApplyCtx)(unsafe.Pointer(p)).FnCol+int32(1), bp)
-		_sessionAppendStr(tls, bp+8, __ccgo_ts+32061, bp)
-		zSep = __ccgo_ts + 1511
+		_sessionAppendStr(tls, bp+8, __ccgo_ts+32081, bp)
+		zSep = __ccgo_ts + 1531
 		i = 0
 		for {
 			if !(i < (*TSessionApplyCtx)(unsafe.Pointer(p)).FnCol) {
@@ -178069,15 +178069,15 @@ func _sessionDeleteRow(tls *libc.TLS, db uintptr, zTab uintptr, p uintptr) (r in
 			if !(*(*Tu8)(unsafe.Pointer((*TSessionApplyCtx)(unsafe.Pointer(p)).FabPK + uintptr(i))) != 0) {
 				_sessionAppendStr(tls, bp+8, zSep, bp)
 				_sessionAppendIdent(tls, bp+8, *(*uintptr)(unsafe.Pointer((*TSessionApplyCtx)(unsafe.Pointer(p)).FazCol + uintptr(i)*8)), bp)
-				_sessionAppendStr(tls, bp+8, __ccgo_ts+32357, bp)
+				_sessionAppendStr(tls, bp+8, __ccgo_ts+32377, bp)
 				_sessionAppendInteger(tls, bp+8, i+int32(1), bp)
-				zSep = __ccgo_ts + 32526
+				zSep = __ccgo_ts + 32546
 			}
 			goto _2
 		_2:
 			i++
 		}
-		_sessionAppendStr(tls, bp+8, __ccgo_ts+4827, bp)
+		_sessionAppendStr(tls, bp+8, __ccgo_ts+4847, bp)
 	}
 	if *(*int32)(unsafe.Pointer(bp)) == m_SQLITE_OK {
 		*(*int32)(unsafe.Pointer(bp)) = Xsqlite3_prepare_v2(tls, db, (*(*TSessionBuffer)(unsafe.Pointer(bp + 8))).FaBuf, (*(*TSessionBuffer)(unsafe.Pointer(bp + 8))).FnBuf, p+8, uintptr(0))
@@ -178102,7 +178102,7 @@ func _sessionDeleteRow(tls *libc.TLS, db uintptr, zTab uintptr, p uintptr) (r in
 //	** pointing to the prepared version of the SQL statement.
 //	*/
 func _sessionSelectRow(tls *libc.TLS, db uintptr, zTab uintptr, p uintptr) (r int32) {
-	return _sessionSelectStmt(tls, db, __ccgo_ts+6255, zTab, (*TSessionApplyCtx)(unsafe.Pointer(p)).FnCol, (*TSessionApplyCtx)(unsafe.Pointer(p)).FazCol, (*TSessionApplyCtx)(unsafe.Pointer(p)).FabPK, p+24)
+	return _sessionSelectStmt(tls, db, __ccgo_ts+6275, zTab, (*TSessionApplyCtx)(unsafe.Pointer(p)).FnCol, (*TSessionApplyCtx)(unsafe.Pointer(p)).FazCol, (*TSessionApplyCtx)(unsafe.Pointer(p)).FabPK, p+24)
 }
 
 // C documentation
@@ -178125,34 +178125,34 @@ func _sessionInsertRow(tls *libc.TLS, db uintptr, zTab uintptr, p uintptr) (r in
 	_ = i
 	*(*int32)(unsafe.Pointer(bp)) = m_SQLITE_OK
 	*(*TSessionBuffer)(unsafe.Pointer(bp + 8)) = TSessionBuffer{}
-	_sessionAppendStr(tls, bp+8, __ccgo_ts+32531, bp)
+	_sessionAppendStr(tls, bp+8, __ccgo_ts+32551, bp)
 	_sessionAppendIdent(tls, bp+8, zTab, bp)
-	_sessionAppendStr(tls, bp+8, __ccgo_ts+21210, bp)
+	_sessionAppendStr(tls, bp+8, __ccgo_ts+21230, bp)
 	i = 0
 	for {
 		if !(i < (*TSessionApplyCtx)(unsafe.Pointer(p)).FnCol) {
 			break
 		}
 		if i != 0 {
-			_sessionAppendStr(tls, bp+8, __ccgo_ts+14449, bp)
+			_sessionAppendStr(tls, bp+8, __ccgo_ts+14469, bp)
 		}
 		_sessionAppendIdent(tls, bp+8, *(*uintptr)(unsafe.Pointer((*TSessionApplyCtx)(unsafe.Pointer(p)).FazCol + uintptr(i)*8)), bp)
 		goto _1
 	_1:
 		i++
 	}
-	_sessionAppendStr(tls, bp+8, __ccgo_ts+32549, bp)
+	_sessionAppendStr(tls, bp+8, __ccgo_ts+32569, bp)
 	i = int32(1)
 	for {
 		if !(i < (*TSessionApplyCtx)(unsafe.Pointer(p)).FnCol) {
 			break
 		}
-		_sessionAppendStr(tls, bp+8, __ccgo_ts+32560, bp)
+		_sessionAppendStr(tls, bp+8, __ccgo_ts+32580, bp)
 		goto _2
 	_2:
 		i++
 	}
-	_sessionAppendStr(tls, bp+8, __ccgo_ts+4827, bp)
+	_sessionAppendStr(tls, bp+8, __ccgo_ts+4847, bp)
 	if *(*int32)(unsafe.Pointer(bp)) == m_SQLITE_OK {
 		*(*int32)(unsafe.Pointer(bp)) = Xsqlite3_prepare_v2(tls, db, (*(*TSessionBuffer)(unsafe.Pointer(bp + 8))).FaBuf, (*(*TSessionBuffer)(unsafe.Pointer(bp + 8))).FnBuf, p+16, uintptr(0))
 	}
@@ -178175,12 +178175,12 @@ func _sessionPrepare(tls *libc.TLS, db uintptr, pp uintptr, zSql uintptr) (r int
 func _sessionStat1Sql(tls *libc.TLS, db uintptr, p uintptr) (r int32) {
 	var rc int32
 	_ = rc
-	rc = _sessionSelectRow(tls, db, __ccgo_ts+11057, p)
+	rc = _sessionSelectRow(tls, db, __ccgo_ts+11077, p)
 	if rc == m_SQLITE_OK {
-		rc = _sessionPrepare(tls, db, p+16, __ccgo_ts+32564)
+		rc = _sessionPrepare(tls, db, p+16, __ccgo_ts+32584)
 	}
 	if rc == m_SQLITE_OK {
-		rc = _sessionPrepare(tls, db, p+8, __ccgo_ts+32677)
+		rc = _sessionPrepare(tls, db, p+8, __ccgo_ts+32697)
 	}
 	return rc
 }
@@ -178645,7 +178645,7 @@ func _sessionApplyOneWithRetry(tls *libc.TLS, db uintptr, pIter uintptr, pApply 
 		} else {
 			if *(*int32)(unsafe.Pointer(bp)) != 0 {
 				_ = libc.Int32FromInt32(0)
-				rc = Xsqlite3_exec(tls, db, __ccgo_ts+32821, uintptr(0), uintptr(0), uintptr(0))
+				rc = Xsqlite3_exec(tls, db, __ccgo_ts+32841, uintptr(0), uintptr(0), uintptr(0))
 				if rc == m_SQLITE_OK {
 					rc = _sessionBindRow(tls, pIter, __ccgo_fp(Xsqlite3changeset_new), (*TSessionApplyCtx)(unsafe.Pointer(pApply)).FnCol, (*TSessionApplyCtx)(unsafe.Pointer(pApply)).FabPK, (*TSessionApplyCtx)(unsafe.Pointer(pApply)).FpDelete)
 					Xsqlite3_bind_int(tls, (*TSessionApplyCtx)(unsafe.Pointer(pApply)).FpDelete, (*TSessionApplyCtx)(unsafe.Pointer(pApply)).FnCol+int32(1), int32(1))
@@ -178658,7 +178658,7 @@ func _sessionApplyOneWithRetry(tls *libc.TLS, db uintptr, pIter uintptr, pApply 
 					rc = _sessionApplyOneOp(tls, pIter, pApply, xConflict, pCtx, uintptr(0), uintptr(0))
 				}
 				if rc == m_SQLITE_OK {
-					rc = Xsqlite3_exec(tls, db, __ccgo_ts+32842, uintptr(0), uintptr(0), uintptr(0))
+					rc = Xsqlite3_exec(tls, db, __ccgo_ts+32862, uintptr(0), uintptr(0), uintptr(0))
 				}
 			}
 		}
@@ -178753,10 +178753,10 @@ func _sessionChangesetApply(tls *libc.TLS, db uintptr, pIter uintptr, xFilter ui
 	(*(*TSessionApplyCtx)(unsafe.Pointer(bp + 8))).FbInvertConstraints = libc.BoolInt32(!!(flags&libc.Int32FromInt32(m_SQLITE_CHANGESETAPPLY_INVERT) != 0))
 	Xsqlite3_mutex_enter(tls, Xsqlite3_db_mutex(tls, db))
 	if flags&int32(m_SQLITE_CHANGESETAPPLY_NOSAVEPOINT) == 0 {
-		rc = Xsqlite3_exec(tls, db, __ccgo_ts+32861, uintptr(0), uintptr(0), uintptr(0))
+		rc = Xsqlite3_exec(tls, db, __ccgo_ts+32881, uintptr(0), uintptr(0), uintptr(0))
 	}
 	if rc == m_SQLITE_OK {
-		rc = Xsqlite3_exec(tls, db, __ccgo_ts+32887, uintptr(0), uintptr(0), uintptr(0))
+		rc = Xsqlite3_exec(tls, db, __ccgo_ts+32907, uintptr(0), uintptr(0), uintptr(0))
 	}
 	for rc == m_SQLITE_OK && int32(m_SQLITE_ROW) == Xsqlite3changeset_next(tls, pIter) {
 		Xsqlite3changeset_op(tls, pIter, bp+144, bp+136, bp+140, uintptr(0))
@@ -178786,7 +178786,7 @@ func _sessionChangesetApply(tls *libc.TLS, db uintptr, pIter uintptr, xFilter ui
 			 ** non-zero, proceed. */
 			schemaMismatch = libc.BoolInt32(xFilter != 0 && 0 == (*(*func(*libc.TLS, uintptr, uintptr) int32)(unsafe.Pointer(&struct{ uintptr }{xFilter})))(tls, pCtx, *(*uintptr)(unsafe.Pointer(bp + 144))))
 			if schemaMismatch != 0 {
-				*(*uintptr)(unsafe.Pointer(bp)) = Xsqlite3_mprintf(tls, __ccgo_ts+3560, libc.VaList(bp+328, *(*uintptr)(unsafe.Pointer(bp + 144))))
+				*(*uintptr)(unsafe.Pointer(bp)) = Xsqlite3_mprintf(tls, __ccgo_ts+3580, libc.VaList(bp+328, *(*uintptr)(unsafe.Pointer(bp + 144))))
 				if *(*uintptr)(unsafe.Pointer(bp)) == uintptr(0) {
 					rc = int32(m_SQLITE_NOMEM)
 					break
@@ -178796,7 +178796,7 @@ func _sessionChangesetApply(tls *libc.TLS, db uintptr, pIter uintptr, xFilter ui
 			} else {
 				nMinCol = 0
 				Xsqlite3changeset_pk(tls, pIter, bp+152, uintptr(0))
-				rc = _sessionTableInfo(tls, uintptr(0), db, __ccgo_ts+6255, *(*uintptr)(unsafe.Pointer(bp + 144)), bp+8+32, bp, bp+8+40, bp+8+48)
+				rc = _sessionTableInfo(tls, uintptr(0), db, __ccgo_ts+6275, *(*uintptr)(unsafe.Pointer(bp + 144)), bp+8+32, bp, bp+8+40, bp+8+48)
 				if rc != m_SQLITE_OK {
 					break
 				}
@@ -178814,18 +178814,18 @@ func _sessionChangesetApply(tls *libc.TLS, db uintptr, pIter uintptr, xFilter ui
 				}
 				if (*(*TSessionApplyCtx)(unsafe.Pointer(bp + 8))).FnCol == 0 {
 					schemaMismatch = int32(1)
-					Xsqlite3_log(tls, int32(m_SQLITE_SCHEMA), __ccgo_ts+32917, libc.VaList(bp+328, *(*uintptr)(unsafe.Pointer(bp))))
+					Xsqlite3_log(tls, int32(m_SQLITE_SCHEMA), __ccgo_ts+32937, libc.VaList(bp+328, *(*uintptr)(unsafe.Pointer(bp))))
 				} else {
 					if (*(*TSessionApplyCtx)(unsafe.Pointer(bp + 8))).FnCol < *(*int32)(unsafe.Pointer(bp + 136)) {
 						schemaMismatch = int32(1)
-						Xsqlite3_log(tls, int32(m_SQLITE_SCHEMA), __ccgo_ts+32961, libc.VaList(bp+328, *(*uintptr)(unsafe.Pointer(bp)), (*(*TSessionApplyCtx)(unsafe.Pointer(bp + 8))).FnCol, *(*int32)(unsafe.Pointer(bp + 136))))
+						Xsqlite3_log(tls, int32(m_SQLITE_SCHEMA), __ccgo_ts+32981, libc.VaList(bp+328, *(*uintptr)(unsafe.Pointer(bp)), (*(*TSessionApplyCtx)(unsafe.Pointer(bp + 8))).FnCol, *(*int32)(unsafe.Pointer(bp + 136))))
 					} else {
 						if *(*int32)(unsafe.Pointer(bp + 136)) < nMinCol || libc.Xmemcmp(tls, (*(*TSessionApplyCtx)(unsafe.Pointer(bp + 8))).FabPK, *(*uintptr)(unsafe.Pointer(bp + 152)), uint64(*(*int32)(unsafe.Pointer(bp + 136)))) != 0 {
 							schemaMismatch = int32(1)
-							Xsqlite3_log(tls, int32(m_SQLITE_SCHEMA), __ccgo_ts+33032, libc.VaList(bp+328, *(*uintptr)(unsafe.Pointer(bp))))
+							Xsqlite3_log(tls, int32(m_SQLITE_SCHEMA), __ccgo_ts+33052, libc.VaList(bp+328, *(*uintptr)(unsafe.Pointer(bp))))
 						} else {
 							(*(*TSessionApplyCtx)(unsafe.Pointer(bp + 8))).FnCol = *(*int32)(unsafe.Pointer(bp + 136))
-							if 0 == Xsqlite3_stricmp(tls, *(*uintptr)(unsafe.Pointer(bp)), __ccgo_ts+11057) {
+							if 0 == Xsqlite3_stricmp(tls, *(*uintptr)(unsafe.Pointer(bp)), __ccgo_ts+11077) {
 								v2 = _sessionStat1Sql(tls, db, bp+8)
 								rc = v2
 								if v2 != 0 {
@@ -178882,13 +178882,13 @@ func _sessionChangesetApply(tls *libc.TLS, db uintptr, pIter uintptr, xFilter ui
 			}
 		}
 	}
-	Xsqlite3_exec(tls, db, __ccgo_ts+33092, uintptr(0), uintptr(0), uintptr(0))
+	Xsqlite3_exec(tls, db, __ccgo_ts+33112, uintptr(0), uintptr(0), uintptr(0))
 	if flags&int32(m_SQLITE_CHANGESETAPPLY_NOSAVEPOINT) == 0 {
 		if rc == m_SQLITE_OK {
-			rc = Xsqlite3_exec(tls, db, __ccgo_ts+33122, uintptr(0), uintptr(0), uintptr(0))
+			rc = Xsqlite3_exec(tls, db, __ccgo_ts+33142, uintptr(0), uintptr(0), uintptr(0))
 		} else {
-			Xsqlite3_exec(tls, db, __ccgo_ts+33146, uintptr(0), uintptr(0), uintptr(0))
-			Xsqlite3_exec(tls, db, __ccgo_ts+33122, uintptr(0), uintptr(0), uintptr(0))
+			Xsqlite3_exec(tls, db, __ccgo_ts+33166, uintptr(0), uintptr(0), uintptr(0))
+			Xsqlite3_exec(tls, db, __ccgo_ts+33142, uintptr(0), uintptr(0), uintptr(0))
 		}
 	}
 	_ = libc.Int32FromInt32(0)
@@ -181183,7 +181183,7 @@ func _fts5yyStackOverflow(tls *libc.TLS, fts5yypParser uintptr) {
 	/* Here code is inserted which will execute if the parser
 	 ** stack every overflows */
 	/******** Begin %stack_overflow code ******************************************/
-	_sqlite3Fts5ParseError(tls, pParse, __ccgo_ts+33174, 0)
+	_sqlite3Fts5ParseError(tls, pParse, __ccgo_ts+33194, 0)
 	/******** End %stack_overflow code ********************************************/
 	(*Tfts5yyParser)(unsafe.Pointer(fts5yypParser)).FpParse = pParse /* Suppress warning about unused %extra_argument var */
 }
@@ -181509,7 +181509,7 @@ func _fts5yy_syntax_error(tls *libc.TLS, fts5yypParser uintptr, fts5yymajor int3
 	pParse = (*Tfts5yyParser)(unsafe.Pointer(fts5yypParser)).FpParse
 	/************ Begin %syntax_error code ****************************************/
 	_ = fts5yymajor /* Silence a compiler warning */
-	_sqlite3Fts5ParseError(tls, pParse, __ccgo_ts+33202, libc.VaList(bp+8, fts5yyminor.Fn, fts5yyminor.Fp))
+	_sqlite3Fts5ParseError(tls, pParse, __ccgo_ts+33222, libc.VaList(bp+8, fts5yyminor.Fn, fts5yyminor.Fp))
 	/************ End %syntax_error code ******************************************/
 	(*Tfts5yyParser)(unsafe.Pointer(fts5yypParser)).FpParse = pParse /* Suppress warning about unused %extra_argument variable */
 }
@@ -181807,7 +181807,7 @@ func _fts5HighlightAppend(tls *libc.TLS, pRc uintptr, p uintptr, z uintptr, n in
 		if n < 0 {
 			n = int32(libc.Xstrlen(tls, z))
 		}
-		(*THighlightContext)(unsafe.Pointer(p)).FzOut = Xsqlite3_mprintf(tls, __ccgo_ts+33233, libc.VaList(bp+8, (*THighlightContext)(unsafe.Pointer(p)).FzOut, n, z))
+		(*THighlightContext)(unsafe.Pointer(p)).FzOut = Xsqlite3_mprintf(tls, __ccgo_ts+33253, libc.VaList(bp+8, (*THighlightContext)(unsafe.Pointer(p)).FzOut, n, z))
 		if (*THighlightContext)(unsafe.Pointer(p)).FzOut == uintptr(0) {
 			*(*int32)(unsafe.Pointer(pRc)) = int32(m_SQLITE_NOMEM)
 		}
@@ -181885,7 +181885,7 @@ func _fts5HighlightFunction(tls *libc.TLS, pApi uintptr, pFts uintptr, pCtx uint
 	var _ /* rc at bp+96 */ int32
 	_, _ = iCol, zErr
 	if nVal != int32(3) {
-		zErr = __ccgo_ts + 33240
+		zErr = __ccgo_ts + 33260
 		Xsqlite3_result_error(tls, pCtx, zErr, -int32(1))
 		return
 	}
@@ -182082,7 +182082,7 @@ func _fts5ValueToText(tls *libc.TLS, pVal uintptr) (r uintptr) {
 	if zRet != 0 {
 		v1 = zRet
 	} else {
-		v1 = __ccgo_ts + 1511
+		v1 = __ccgo_ts + 1531
 	}
 	return v1
 }
@@ -182116,7 +182116,7 @@ func _fts5SnippetFunction(tls *libc.TLS, pApi uintptr, pFts uintptr, pCtx uintpt
 	nBestScore = 0                                   /* Score of best snippet */
 	*(*int32)(unsafe.Pointer(bp + 104)) = 0
 	if nVal != int32(5) {
-		zErr = __ccgo_ts + 33290
+		zErr = __ccgo_ts + 33310
 		Xsqlite3_result_error(tls, pCtx, zErr, -int32(1))
 		return
 	}
@@ -182483,15 +182483,15 @@ func _sqlite3Fts5AuxInit(tls *libc.TLS, pApi uintptr) (r int32) {
 		FxDestroy  uintptr
 	}{
 		0: {
-			FzFunc: __ccgo_ts + 33338,
+			FzFunc: __ccgo_ts + 33358,
 			FxFunc: __ccgo_fp(_fts5SnippetFunction),
 		},
 		1: {
-			FzFunc: __ccgo_ts + 33346,
+			FzFunc: __ccgo_ts + 33366,
 			FxFunc: __ccgo_fp(_fts5HighlightFunction),
 		},
 		2: {
-			FzFunc: __ccgo_ts + 33356,
+			FzFunc: __ccgo_ts + 33376,
 			FxFunc: __ccgo_fp(_fts5Bm25Function),
 		},
 	}
@@ -183143,7 +183143,7 @@ func _fts5ConfigSkipLiteral(tls *libc.TLS, pIn uintptr) (r uintptr) {
 	case int32('n'):
 		fallthrough
 	case int32('N'):
-		if Xsqlite3_strnicmp(tls, __ccgo_ts+6026, p, int32(4)) == 0 {
+		if Xsqlite3_strnicmp(tls, __ccgo_ts+6046, p, int32(4)) == 0 {
 			p = p + 4
 		} else {
 			p = uintptr(0)
@@ -183344,7 +183344,7 @@ func _fts5ConfigParseSpecial(tls *libc.TLS, pGlobal uintptr, pConfig uintptr, zC
 	_, _, _, _, _, _, _, _, _, _, _, _ = azArg, bFirst, nArg, nByte, nCmd, nPre, p, p1, p2, pDel, pSpace, v2
 	*(*int32)(unsafe.Pointer(bp)) = m_SQLITE_OK
 	nCmd = int32(libc.Xstrlen(tls, zCmd))
-	if Xsqlite3_strnicmp(tls, __ccgo_ts+33361, zCmd, nCmd) == 0 {
+	if Xsqlite3_strnicmp(tls, __ccgo_ts+33381, zCmd, nCmd) == 0 {
 		nByte = int32(libc.Uint64FromInt64(4) * libc.Uint64FromInt32(m_FTS5_MAX_PREFIX_INDEXES))
 		bFirst = int32(1)
 		if (*TFts5Config)(unsafe.Pointer(pConfig)).FaPrefix == uintptr(0) {
@@ -183370,12 +183370,12 @@ func _fts5ConfigParseSpecial(tls *libc.TLS, pGlobal uintptr, pConfig uintptr, zC
 				}
 			}
 			if int32(*(*uint8)(unsafe.Pointer(p))) < int32('0') || int32(*(*uint8)(unsafe.Pointer(p))) > int32('9') {
-				*(*uintptr)(unsafe.Pointer(pzErr)) = Xsqlite3_mprintf(tls, __ccgo_ts+33368, 0)
+				*(*uintptr)(unsafe.Pointer(pzErr)) = Xsqlite3_mprintf(tls, __ccgo_ts+33388, 0)
 				*(*int32)(unsafe.Pointer(bp)) = int32(m_SQLITE_ERROR)
 				break
 			}
 			if (*TFts5Config)(unsafe.Pointer(pConfig)).FnPrefix == int32(m_FTS5_MAX_PREFIX_INDEXES) {
-				*(*uintptr)(unsafe.Pointer(pzErr)) = Xsqlite3_mprintf(tls, __ccgo_ts+33399, libc.VaList(bp+80, int32(m_FTS5_MAX_PREFIX_INDEXES)))
+				*(*uintptr)(unsafe.Pointer(pzErr)) = Xsqlite3_mprintf(tls, __ccgo_ts+33419, libc.VaList(bp+80, int32(m_FTS5_MAX_PREFIX_INDEXES)))
 				*(*int32)(unsafe.Pointer(bp)) = int32(m_SQLITE_ERROR)
 				break
 			}
@@ -183384,7 +183384,7 @@ func _fts5ConfigParseSpecial(tls *libc.TLS, pGlobal uintptr, pConfig uintptr, zC
 				p++
 			}
 			if nPre <= 0 || nPre >= int32(1000) {
-				*(*uintptr)(unsafe.Pointer(pzErr)) = Xsqlite3_mprintf(tls, __ccgo_ts+33432, 0)
+				*(*uintptr)(unsafe.Pointer(pzErr)) = Xsqlite3_mprintf(tls, __ccgo_ts+33452, 0)
 				*(*int32)(unsafe.Pointer(bp)) = int32(m_SQLITE_ERROR)
 				break
 			}
@@ -183395,7 +183395,7 @@ func _fts5ConfigParseSpecial(tls *libc.TLS, pGlobal uintptr, pConfig uintptr, zC
 		_ = libc.Int32FromInt32(0)
 		return *(*int32)(unsafe.Pointer(bp))
 	}
-	if Xsqlite3_strnicmp(tls, __ccgo_ts+33469, zCmd, nCmd) == 0 {
+	if Xsqlite3_strnicmp(tls, __ccgo_ts+33489, zCmd, nCmd) == 0 {
 		p1 = zArg
 		nArg = int64(libc.Xstrlen(tls, zArg) + uint64(1))
 		azArg = _sqlite3Fts5MallocZero(tls, bp, int64(uint64(8)*uint64(nArg)))
@@ -183403,7 +183403,7 @@ func _fts5ConfigParseSpecial(tls *libc.TLS, pGlobal uintptr, pConfig uintptr, zC
 		pSpace = pDel
 		if azArg != 0 && pSpace != 0 {
 			if (*TFts5Config)(unsafe.Pointer(pConfig)).FpTok != 0 {
-				*(*uintptr)(unsafe.Pointer(pzErr)) = Xsqlite3_mprintf(tls, __ccgo_ts+33478, 0)
+				*(*uintptr)(unsafe.Pointer(pzErr)) = Xsqlite3_mprintf(tls, __ccgo_ts+33498, 0)
 				*(*int32)(unsafe.Pointer(bp)) = int32(m_SQLITE_ERROR)
 			} else {
 				nArg = 0
@@ -183429,7 +183429,7 @@ func _fts5ConfigParseSpecial(tls *libc.TLS, pGlobal uintptr, pConfig uintptr, zC
 					nArg++
 				}
 				if p1 == uintptr(0) {
-					*(*uintptr)(unsafe.Pointer(pzErr)) = Xsqlite3_mprintf(tls, __ccgo_ts+33511, 0)
+					*(*uintptr)(unsafe.Pointer(pzErr)) = Xsqlite3_mprintf(tls, __ccgo_ts+33531, 0)
 					*(*int32)(unsafe.Pointer(bp)) = int32(m_SQLITE_ERROR)
 				} else {
 					*(*int32)(unsafe.Pointer(bp)) = _sqlite3Fts5GetTokenizer(tls, pGlobal, azArg, int32(nArg), pConfig, pzErr)
@@ -183440,49 +183440,49 @@ func _fts5ConfigParseSpecial(tls *libc.TLS, pGlobal uintptr, pConfig uintptr, zC
 		Xsqlite3_free(tls, pDel)
 		return *(*int32)(unsafe.Pointer(bp))
 	}
-	if Xsqlite3_strnicmp(tls, __ccgo_ts+33545, zCmd, nCmd) == 0 {
+	if Xsqlite3_strnicmp(tls, __ccgo_ts+33565, zCmd, nCmd) == 0 {
 		if (*TFts5Config)(unsafe.Pointer(pConfig)).FeContent != m_FTS5_CONTENT_NORMAL {
-			*(*uintptr)(unsafe.Pointer(pzErr)) = Xsqlite3_mprintf(tls, __ccgo_ts+33553, 0)
+			*(*uintptr)(unsafe.Pointer(pzErr)) = Xsqlite3_mprintf(tls, __ccgo_ts+33573, 0)
 			*(*int32)(unsafe.Pointer(bp)) = int32(m_SQLITE_ERROR)
 		} else {
 			if *(*uint8)(unsafe.Pointer(zArg)) != 0 {
 				(*TFts5Config)(unsafe.Pointer(pConfig)).FeContent = int32(m_FTS5_CONTENT_EXTERNAL)
-				(*TFts5Config)(unsafe.Pointer(pConfig)).FzContent = _sqlite3Fts5Mprintf(tls, bp, __ccgo_ts+33585, libc.VaList(bp+80, (*TFts5Config)(unsafe.Pointer(pConfig)).FzDb, zArg))
+				(*TFts5Config)(unsafe.Pointer(pConfig)).FzContent = _sqlite3Fts5Mprintf(tls, bp, __ccgo_ts+33605, libc.VaList(bp+80, (*TFts5Config)(unsafe.Pointer(pConfig)).FzDb, zArg))
 			} else {
 				(*TFts5Config)(unsafe.Pointer(pConfig)).FeContent = int32(m_FTS5_CONTENT_NONE)
 			}
 		}
 		return *(*int32)(unsafe.Pointer(bp))
 	}
-	if Xsqlite3_strnicmp(tls, __ccgo_ts+33591, zCmd, nCmd) == 0 {
+	if Xsqlite3_strnicmp(tls, __ccgo_ts+33611, zCmd, nCmd) == 0 {
 		if (*TFts5Config)(unsafe.Pointer(pConfig)).FzContentRowid != 0 {
-			*(*uintptr)(unsafe.Pointer(pzErr)) = Xsqlite3_mprintf(tls, __ccgo_ts+33605, 0)
+			*(*uintptr)(unsafe.Pointer(pzErr)) = Xsqlite3_mprintf(tls, __ccgo_ts+33625, 0)
 			*(*int32)(unsafe.Pointer(bp)) = int32(m_SQLITE_ERROR)
 		} else {
 			(*TFts5Config)(unsafe.Pointer(pConfig)).FzContentRowid = _sqlite3Fts5Strndup(tls, bp, zArg, -int32(1))
 		}
 		return *(*int32)(unsafe.Pointer(bp))
 	}
-	if Xsqlite3_strnicmp(tls, __ccgo_ts+33643, zCmd, nCmd) == 0 {
+	if Xsqlite3_strnicmp(tls, __ccgo_ts+33663, zCmd, nCmd) == 0 {
 		if int32(*(*uint8)(unsafe.Pointer(zArg))) != int32('0') && int32(*(*uint8)(unsafe.Pointer(zArg))) != int32('1') || int32(*(*uint8)(unsafe.Pointer(zArg + 1))) != int32('\000') {
-			*(*uintptr)(unsafe.Pointer(pzErr)) = Xsqlite3_mprintf(tls, __ccgo_ts+33654, 0)
+			*(*uintptr)(unsafe.Pointer(pzErr)) = Xsqlite3_mprintf(tls, __ccgo_ts+33674, 0)
 			*(*int32)(unsafe.Pointer(bp)) = int32(m_SQLITE_ERROR)
 		} else {
 			(*TFts5Config)(unsafe.Pointer(pConfig)).FbColumnsize = libc.BoolInt32(int32(*(*uint8)(unsafe.Pointer(zArg))) == int32('1'))
 		}
 		return *(*int32)(unsafe.Pointer(bp))
 	}
-	if Xsqlite3_strnicmp(tls, __ccgo_ts+4945, zCmd, nCmd) == 0 {
+	if Xsqlite3_strnicmp(tls, __ccgo_ts+4965, zCmd, nCmd) == 0 {
 		*(*[4]TFts5Enum)(unsafe.Pointer(bp + 8)) = [4]TFts5Enum{
 			0: {
-				FzName: __ccgo_ts + 7835,
+				FzName: __ccgo_ts + 7855,
 				FeVal:  int32(m_FTS5_DETAIL_NONE),
 			},
 			1: {
-				FzName: __ccgo_ts + 17107,
+				FzName: __ccgo_ts + 17127,
 			},
 			2: {
-				FzName: __ccgo_ts + 33689,
+				FzName: __ccgo_ts + 33709,
 				FeVal:  int32(m_FTS5_DETAIL_COLUMNS),
 			},
 			3: {},
@@ -183490,11 +183490,11 @@ func _fts5ConfigParseSpecial(tls *libc.TLS, pGlobal uintptr, pConfig uintptr, zC
 		v2 = _fts5ConfigSetEnum(tls, bp+8, zArg, pConfig+92)
 		*(*int32)(unsafe.Pointer(bp)) = v2
 		if v2 != 0 {
-			*(*uintptr)(unsafe.Pointer(pzErr)) = Xsqlite3_mprintf(tls, __ccgo_ts+33697, 0)
+			*(*uintptr)(unsafe.Pointer(pzErr)) = Xsqlite3_mprintf(tls, __ccgo_ts+33717, 0)
 		}
 		return *(*int32)(unsafe.Pointer(bp))
 	}
-	*(*uintptr)(unsafe.Pointer(pzErr)) = Xsqlite3_mprintf(tls, __ccgo_ts+33728, libc.VaList(bp+80, nCmd, zCmd))
+	*(*uintptr)(unsafe.Pointer(pzErr)) = Xsqlite3_mprintf(tls, __ccgo_ts+33748, libc.VaList(bp+80, nCmd, zCmd))
 	return int32(m_SQLITE_ERROR)
 }
 
@@ -183568,15 +183568,15 @@ func _fts5ConfigParseColumn(tls *libc.TLS, p uintptr, zCol uintptr, zArg uintptr
 	var v2 uintptr
 	_, _, _ = rc, v1, v2
 	rc = m_SQLITE_OK
-	if 0 == Xsqlite3_stricmp(tls, zCol, __ccgo_ts+33756) || 0 == Xsqlite3_stricmp(tls, zCol, __ccgo_ts+16054) {
-		*(*uintptr)(unsafe.Pointer(pzErr)) = Xsqlite3_mprintf(tls, __ccgo_ts+33761, libc.VaList(bp+8, zCol))
+	if 0 == Xsqlite3_stricmp(tls, zCol, __ccgo_ts+33776) || 0 == Xsqlite3_stricmp(tls, zCol, __ccgo_ts+16074) {
+		*(*uintptr)(unsafe.Pointer(pzErr)) = Xsqlite3_mprintf(tls, __ccgo_ts+33781, libc.VaList(bp+8, zCol))
 		rc = int32(m_SQLITE_ERROR)
 	} else {
 		if zArg != 0 {
-			if 0 == Xsqlite3_stricmp(tls, zArg, __ccgo_ts+33791) {
+			if 0 == Xsqlite3_stricmp(tls, zArg, __ccgo_ts+33811) {
 				*(*Tu8)(unsafe.Pointer((*TFts5Config)(unsafe.Pointer(p)).FabUnindexed + uintptr((*TFts5Config)(unsafe.Pointer(p)).FnCol))) = uint8(1)
 			} else {
-				*(*uintptr)(unsafe.Pointer(pzErr)) = Xsqlite3_mprintf(tls, __ccgo_ts+33801, libc.VaList(bp+8, zArg))
+				*(*uintptr)(unsafe.Pointer(pzErr)) = Xsqlite3_mprintf(tls, __ccgo_ts+33821, libc.VaList(bp+8, zArg))
 				rc = int32(m_SQLITE_ERROR)
 			}
 		}
@@ -183602,7 +183602,7 @@ func _fts5ConfigMakeExprlist(tls *libc.TLS, p uintptr) (r int32) {
 	_ = i
 	*(*int32)(unsafe.Pointer(bp)) = m_SQLITE_OK
 	*(*TFts5Buffer)(unsafe.Pointer(bp + 8)) = TFts5Buffer{}
-	_sqlite3Fts5BufferAppendPrintf(tls, bp, bp+8, __ccgo_ts+33832, libc.VaList(bp+32, (*TFts5Config)(unsafe.Pointer(p)).FzContentRowid))
+	_sqlite3Fts5BufferAppendPrintf(tls, bp, bp+8, __ccgo_ts+33852, libc.VaList(bp+32, (*TFts5Config)(unsafe.Pointer(p)).FzContentRowid))
 	if (*TFts5Config)(unsafe.Pointer(p)).FeContent != int32(m_FTS5_CONTENT_NONE) {
 		i = 0
 		for {
@@ -183610,9 +183610,9 @@ func _fts5ConfigMakeExprlist(tls *libc.TLS, p uintptr) (r int32) {
 				break
 			}
 			if (*TFts5Config)(unsafe.Pointer(p)).FeContent == int32(m_FTS5_CONTENT_EXTERNAL) {
-				_sqlite3Fts5BufferAppendPrintf(tls, bp, bp+8, __ccgo_ts+33837, libc.VaList(bp+32, *(*uintptr)(unsafe.Pointer((*TFts5Config)(unsafe.Pointer(p)).FazCol + uintptr(i)*8))))
+				_sqlite3Fts5BufferAppendPrintf(tls, bp, bp+8, __ccgo_ts+33857, libc.VaList(bp+32, *(*uintptr)(unsafe.Pointer((*TFts5Config)(unsafe.Pointer(p)).FazCol + uintptr(i)*8))))
 			} else {
-				_sqlite3Fts5BufferAppendPrintf(tls, bp, bp+8, __ccgo_ts+33844, libc.VaList(bp+32, i))
+				_sqlite3Fts5BufferAppendPrintf(tls, bp, bp+8, __ccgo_ts+33864, libc.VaList(bp+32, i))
 			}
 			goto _1
 		_1:
@@ -183672,8 +183672,8 @@ func _sqlite3Fts5ConfigParse(tls *libc.TLS, pGlobal uintptr, db uintptr, nArg in
 	(*TFts5Config)(unsafe.Pointer(pRet)).FzName = _sqlite3Fts5Strndup(tls, bp, *(*uintptr)(unsafe.Pointer(azArg + 2*8)), -int32(1))
 	(*TFts5Config)(unsafe.Pointer(pRet)).FbColumnsize = int32(1)
 	(*TFts5Config)(unsafe.Pointer(pRet)).FeDetail = m_FTS5_DETAIL_FULL
-	if *(*int32)(unsafe.Pointer(bp)) == m_SQLITE_OK && Xsqlite3_stricmp(tls, (*TFts5Config)(unsafe.Pointer(pRet)).FzName, __ccgo_ts+33756) == 0 {
-		*(*uintptr)(unsafe.Pointer(pzErr)) = Xsqlite3_mprintf(tls, __ccgo_ts+33852, libc.VaList(bp+40, (*TFts5Config)(unsafe.Pointer(pRet)).FzName))
+	if *(*int32)(unsafe.Pointer(bp)) == m_SQLITE_OK && Xsqlite3_stricmp(tls, (*TFts5Config)(unsafe.Pointer(pRet)).FzName, __ccgo_ts+33776) == 0 {
+		*(*uintptr)(unsafe.Pointer(pzErr)) = Xsqlite3_mprintf(tls, __ccgo_ts+33872, libc.VaList(bp+40, (*TFts5Config)(unsafe.Pointer(pRet)).FzName))
 		*(*int32)(unsafe.Pointer(bp)) = int32(m_SQLITE_ERROR)
 	}
 	i = int32(3)
@@ -183705,19 +183705,19 @@ func _sqlite3Fts5ConfigParse(tls *libc.TLS, pGlobal uintptr, db uintptr, nArg in
 		}
 		if *(*int32)(unsafe.Pointer(bp)) == m_SQLITE_OK {
 			if z == uintptr(0) {
-				*(*uintptr)(unsafe.Pointer(pzErr)) = Xsqlite3_mprintf(tls, __ccgo_ts+33881, libc.VaList(bp+40, zOrig))
+				*(*uintptr)(unsafe.Pointer(pzErr)) = Xsqlite3_mprintf(tls, __ccgo_ts+33901, libc.VaList(bp+40, zOrig))
 				*(*int32)(unsafe.Pointer(bp)) = int32(m_SQLITE_ERROR)
 			} else {
 				if bOption != 0 {
 					if *(*uintptr)(unsafe.Pointer(bp + 8)) != 0 {
 						v4 = *(*uintptr)(unsafe.Pointer(bp + 8))
 					} else {
-						v4 = __ccgo_ts + 1511
+						v4 = __ccgo_ts + 1531
 					}
 					if *(*uintptr)(unsafe.Pointer(bp + 16)) != 0 {
 						v5 = *(*uintptr)(unsafe.Pointer(bp + 16))
 					} else {
-						v5 = __ccgo_ts + 1511
+						v5 = __ccgo_ts + 1531
 					}
 					*(*int32)(unsafe.Pointer(bp)) = _fts5ConfigParseSpecial(tls, pGlobal, pRet, v4, v5, pzErr)
 				} else {
@@ -183743,18 +183743,18 @@ func _sqlite3Fts5ConfigParse(tls *libc.TLS, pGlobal uintptr, db uintptr, nArg in
 		zTail = uintptr(0)
 		_ = libc.Int32FromInt32(0)
 		if (*TFts5Config)(unsafe.Pointer(pRet)).FeContent == m_FTS5_CONTENT_NORMAL {
-			zTail = __ccgo_ts + 33545
+			zTail = __ccgo_ts + 33565
 		} else {
 			if (*TFts5Config)(unsafe.Pointer(pRet)).FbColumnsize != 0 {
-				zTail = __ccgo_ts + 33901
+				zTail = __ccgo_ts + 33921
 			}
 		}
 		if zTail != 0 {
-			(*TFts5Config)(unsafe.Pointer(pRet)).FzContent = _sqlite3Fts5Mprintf(tls, bp, __ccgo_ts+33909, libc.VaList(bp+40, (*TFts5Config)(unsafe.Pointer(pRet)).FzDb, (*TFts5Config)(unsafe.Pointer(pRet)).FzName, zTail))
+			(*TFts5Config)(unsafe.Pointer(pRet)).FzContent = _sqlite3Fts5Mprintf(tls, bp, __ccgo_ts+33929, libc.VaList(bp+40, (*TFts5Config)(unsafe.Pointer(pRet)).FzDb, (*TFts5Config)(unsafe.Pointer(pRet)).FzName, zTail))
 		}
 	}
 	if *(*int32)(unsafe.Pointer(bp)) == m_SQLITE_OK && (*TFts5Config)(unsafe.Pointer(pRet)).FzContentRowid == uintptr(0) {
-		(*TFts5Config)(unsafe.Pointer(pRet)).FzContentRowid = _sqlite3Fts5Strndup(tls, bp, __ccgo_ts+16054, -int32(1))
+		(*TFts5Config)(unsafe.Pointer(pRet)).FzContentRowid = _sqlite3Fts5Strndup(tls, bp, __ccgo_ts+16074, -int32(1))
 	}
 	/* Formulate the zContentExprlist text */
 	if *(*int32)(unsafe.Pointer(bp)) == m_SQLITE_OK {
@@ -183817,24 +183817,24 @@ func _sqlite3Fts5ConfigDeclareVtab(tls *libc.TLS, pConfig uintptr) (r int32) {
 	var _ /* rc at bp+0 */ int32
 	_, _, _, _ = i, zSep, zSql, v2
 	*(*int32)(unsafe.Pointer(bp)) = m_SQLITE_OK
-	zSql = _sqlite3Fts5Mprintf(tls, bp, __ccgo_ts+33920, 0)
+	zSql = _sqlite3Fts5Mprintf(tls, bp, __ccgo_ts+33940, 0)
 	i = 0
 	for {
 		if !(zSql != 0 && i < (*TFts5Config)(unsafe.Pointer(pConfig)).FnCol) {
 			break
 		}
 		if i == 0 {
-			v2 = __ccgo_ts + 1511
+			v2 = __ccgo_ts + 1531
 		} else {
-			v2 = __ccgo_ts + 14449
+			v2 = __ccgo_ts + 14469
 		}
 		zSep = v2
-		zSql = _sqlite3Fts5Mprintf(tls, bp, __ccgo_ts+33936, libc.VaList(bp+16, zSql, zSep, *(*uintptr)(unsafe.Pointer((*TFts5Config)(unsafe.Pointer(pConfig)).FazCol + uintptr(i)*8))))
+		zSql = _sqlite3Fts5Mprintf(tls, bp, __ccgo_ts+33956, libc.VaList(bp+16, zSql, zSep, *(*uintptr)(unsafe.Pointer((*TFts5Config)(unsafe.Pointer(pConfig)).FazCol + uintptr(i)*8))))
 		goto _1
 	_1:
 		i++
 	}
-	zSql = _sqlite3Fts5Mprintf(tls, bp, __ccgo_ts+33943, libc.VaList(bp+16, zSql, (*TFts5Config)(unsafe.Pointer(pConfig)).FzName, __ccgo_ts+33756))
+	zSql = _sqlite3Fts5Mprintf(tls, bp, __ccgo_ts+33963, libc.VaList(bp+16, zSql, (*TFts5Config)(unsafe.Pointer(pConfig)).FzName, __ccgo_ts+33776))
 	_ = libc.Int32FromInt32(0)
 	if zSql != 0 {
 		*(*int32)(unsafe.Pointer(bp)) = Xsqlite3_declare_vtab(tls, (*TFts5Config)(unsafe.Pointer(pConfig)).Fdb, zSql)
@@ -183982,7 +183982,7 @@ func _sqlite3Fts5ConfigSetValue(tls *libc.TLS, pConfig uintptr, zKey uintptr, pV
 	var _ /* zRankArgs at bp+8 */ uintptr
 	_, _, _, _, _, _, _ = nAutomerge, nCrisisMerge, nHashSize, nUsermerge, pgsz, rc, zIn
 	rc = m_SQLITE_OK
-	if 0 == Xsqlite3_stricmp(tls, zKey, __ccgo_ts+33969) {
+	if 0 == Xsqlite3_stricmp(tls, zKey, __ccgo_ts+33989) {
 		pgsz = 0
 		if int32(m_SQLITE_INTEGER) == Xsqlite3_value_numeric_type(tls, pVal) {
 			pgsz = Xsqlite3_value_int(tls, pVal)
@@ -183993,7 +183993,7 @@ func _sqlite3Fts5ConfigSetValue(tls *libc.TLS, pConfig uintptr, zKey uintptr, pV
 			(*TFts5Config)(unsafe.Pointer(pConfig)).Fpgsz = pgsz
 		}
 	} else {
-		if 0 == Xsqlite3_stricmp(tls, zKey, __ccgo_ts+33974) {
+		if 0 == Xsqlite3_stricmp(tls, zKey, __ccgo_ts+33994) {
 			nHashSize = -int32(1)
 			if int32(m_SQLITE_INTEGER) == Xsqlite3_value_numeric_type(tls, pVal) {
 				nHashSize = Xsqlite3_value_int(tls, pVal)
@@ -184004,7 +184004,7 @@ func _sqlite3Fts5ConfigSetValue(tls *libc.TLS, pConfig uintptr, zKey uintptr, pV
 				(*TFts5Config)(unsafe.Pointer(pConfig)).FnHashSize = nHashSize
 			}
 		} else {
-			if 0 == Xsqlite3_stricmp(tls, zKey, __ccgo_ts+33983) {
+			if 0 == Xsqlite3_stricmp(tls, zKey, __ccgo_ts+34003) {
 				nAutomerge = -int32(1)
 				if int32(m_SQLITE_INTEGER) == Xsqlite3_value_numeric_type(tls, pVal) {
 					nAutomerge = Xsqlite3_value_int(tls, pVal)
@@ -184018,7 +184018,7 @@ func _sqlite3Fts5ConfigSetValue(tls *libc.TLS, pConfig uintptr, zKey uintptr, pV
 					(*TFts5Config)(unsafe.Pointer(pConfig)).FnAutomerge = nAutomerge
 				}
 			} else {
-				if 0 == Xsqlite3_stricmp(tls, zKey, __ccgo_ts+33993) {
+				if 0 == Xsqlite3_stricmp(tls, zKey, __ccgo_ts+34013) {
 					nUsermerge = -int32(1)
 					if int32(m_SQLITE_INTEGER) == Xsqlite3_value_numeric_type(tls, pVal) {
 						nUsermerge = Xsqlite3_value_int(tls, pVal)
@@ -184029,7 +184029,7 @@ func _sqlite3Fts5ConfigSetValue(tls *libc.TLS, pConfig uintptr, zKey uintptr, pV
 						(*TFts5Config)(unsafe.Pointer(pConfig)).FnUsermerge = nUsermerge
 					}
 				} else {
-					if 0 == Xsqlite3_stricmp(tls, zKey, __ccgo_ts+34003) {
+					if 0 == Xsqlite3_stricmp(tls, zKey, __ccgo_ts+34023) {
 						nCrisisMerge = -int32(1)
 						if int32(m_SQLITE_INTEGER) == Xsqlite3_value_numeric_type(tls, pVal) {
 							nCrisisMerge = Xsqlite3_value_int(tls, pVal)
@@ -184046,7 +184046,7 @@ func _sqlite3Fts5ConfigSetValue(tls *libc.TLS, pConfig uintptr, zKey uintptr, pV
 							(*TFts5Config)(unsafe.Pointer(pConfig)).FnCrisisMerge = nCrisisMerge
 						}
 					} else {
-						if 0 == Xsqlite3_stricmp(tls, zKey, __ccgo_ts+33756) {
+						if 0 == Xsqlite3_stricmp(tls, zKey, __ccgo_ts+33776) {
 							zIn = Xsqlite3_value_text(tls, pVal)
 							rc = _sqlite3Fts5ConfigParseRank(tls, zIn, bp, bp+8)
 							if rc == m_SQLITE_OK {
@@ -184085,7 +184085,7 @@ func _sqlite3Fts5ConfigLoad(tls *libc.TLS, pConfig uintptr, iCookie int32) (r in
 	var _ /* p at bp+0 */ uintptr
 	var _ /* rc at bp+8 */ int32
 	_, _, _, _, _ = iVersion, pVal, zK, zSelect, zSql
-	zSelect = __ccgo_ts + 34015
+	zSelect = __ccgo_ts + 34035
 	*(*uintptr)(unsafe.Pointer(bp)) = uintptr(0)
 	*(*int32)(unsafe.Pointer(bp + 8)) = m_SQLITE_OK
 	iVersion = 0
@@ -184105,7 +184105,7 @@ func _sqlite3Fts5ConfigLoad(tls *libc.TLS, pConfig uintptr, iCookie int32) (r in
 		for int32(m_SQLITE_ROW) == Xsqlite3_step(tls, *(*uintptr)(unsafe.Pointer(bp))) {
 			zK = Xsqlite3_column_text(tls, *(*uintptr)(unsafe.Pointer(bp)), 0)
 			pVal = Xsqlite3_column_value(tls, *(*uintptr)(unsafe.Pointer(bp)), int32(1))
-			if 0 == Xsqlite3_stricmp(tls, zK, __ccgo_ts+34047) {
+			if 0 == Xsqlite3_stricmp(tls, zK, __ccgo_ts+34067) {
 				iVersion = Xsqlite3_value_int(tls, pVal)
 			} else {
 				*(*int32)(unsafe.Pointer(bp + 12)) = 0
@@ -184118,7 +184118,7 @@ func _sqlite3Fts5ConfigLoad(tls *libc.TLS, pConfig uintptr, iCookie int32) (r in
 		*(*int32)(unsafe.Pointer(bp + 8)) = int32(m_SQLITE_ERROR)
 		if (*TFts5Config)(unsafe.Pointer(pConfig)).FpzErrmsg != 0 {
 			_ = libc.Int32FromInt32(0)
-			*(*uintptr)(unsafe.Pointer((*TFts5Config)(unsafe.Pointer(pConfig)).FpzErrmsg)) = Xsqlite3_mprintf(tls, __ccgo_ts+34055, libc.VaList(bp+24, iVersion, int32(m_FTS5_CURRENT_VERSION)))
+			*(*uintptr)(unsafe.Pointer((*TFts5Config)(unsafe.Pointer(pConfig)).FpzErrmsg)) = Xsqlite3_mprintf(tls, __ccgo_ts+34075, libc.VaList(bp+24, iVersion, int32(m_FTS5_CURRENT_VERSION)))
 		}
 	}
 	if *(*int32)(unsafe.Pointer(bp + 8)) == m_SQLITE_OK {
@@ -184309,7 +184309,7 @@ func _fts5ExprGetToken(tls *libc.TLS, pParse uintptr, pz uintptr, pToken uintptr
 				}
 			}
 			if int32(*(*uint8)(unsafe.Pointer(z2))) == int32('\000') {
-				_sqlite3Fts5ParseError(tls, pParse, __ccgo_ts+34120, 0)
+				_sqlite3Fts5ParseError(tls, pParse, __ccgo_ts+34140, 0)
 				return m_FTS5_EOF
 			}
 			goto _1
@@ -184319,7 +184319,7 @@ func _fts5ExprGetToken(tls *libc.TLS, pParse uintptr, pz uintptr, pToken uintptr
 		(*TFts5Token)(unsafe.Pointer(pToken)).Fn = int32(int64(z2) - int64(z))
 	default:
 		if _sqlite3Fts5IsBareword(tls, *(*uint8)(unsafe.Pointer(z))) == 0 {
-			_sqlite3Fts5ParseError(tls, pParse, __ccgo_ts+34140, libc.VaList(bp+8, z))
+			_sqlite3Fts5ParseError(tls, pParse, __ccgo_ts+34160, libc.VaList(bp+8, z))
 			return m_FTS5_EOF
 		}
 		tok = int32(m_FTS5_STRING)
@@ -184333,13 +184333,13 @@ func _fts5ExprGetToken(tls *libc.TLS, pParse uintptr, pz uintptr, pToken uintptr
 			z21++
 		}
 		(*TFts5Token)(unsafe.Pointer(pToken)).Fn = int32(int64(z21) - int64(z))
-		if (*TFts5Token)(unsafe.Pointer(pToken)).Fn == int32(2) && libc.Xmemcmp(tls, (*TFts5Token)(unsafe.Pointer(pToken)).Fp, __ccgo_ts+34171, uint64(2)) == 0 {
+		if (*TFts5Token)(unsafe.Pointer(pToken)).Fn == int32(2) && libc.Xmemcmp(tls, (*TFts5Token)(unsafe.Pointer(pToken)).Fp, __ccgo_ts+34191, uint64(2)) == 0 {
 			tok = int32(m_FTS5_OR)
 		}
-		if (*TFts5Token)(unsafe.Pointer(pToken)).Fn == int32(3) && libc.Xmemcmp(tls, (*TFts5Token)(unsafe.Pointer(pToken)).Fp, __ccgo_ts+34174, uint64(3)) == 0 {
+		if (*TFts5Token)(unsafe.Pointer(pToken)).Fn == int32(3) && libc.Xmemcmp(tls, (*TFts5Token)(unsafe.Pointer(pToken)).Fp, __ccgo_ts+34194, uint64(3)) == 0 {
 			tok = int32(m_FTS5_NOT)
 		}
-		if (*TFts5Token)(unsafe.Pointer(pToken)).Fn == int32(3) && libc.Xmemcmp(tls, (*TFts5Token)(unsafe.Pointer(pToken)).Fp, __ccgo_ts+29491, uint64(3)) == 0 {
+		if (*TFts5Token)(unsafe.Pointer(pToken)).Fn == int32(3) && libc.Xmemcmp(tls, (*TFts5Token)(unsafe.Pointer(pToken)).Fp, __ccgo_ts+29511, uint64(3)) == 0 {
 			tok = int32(m_FTS5_AND)
 		}
 		break
@@ -186341,8 +186341,8 @@ func _sqlite3Fts5ExprClonePhrase(tls *libc.TLS, pExpr uintptr, iPhrase int32, pp
 func _sqlite3Fts5ParseNear(tls *libc.TLS, pParse uintptr, pTok uintptr) {
 	bp := tls.Alloc(32)
 	defer tls.Free(32)
-	if (*TFts5Token)(unsafe.Pointer(pTok)).Fn != int32(4) || libc.Xmemcmp(tls, __ccgo_ts+34178, (*TFts5Token)(unsafe.Pointer(pTok)).Fp, uint64(4)) != 0 {
-		_sqlite3Fts5ParseError(tls, pParse, __ccgo_ts+33202, libc.VaList(bp+8, (*TFts5Token)(unsafe.Pointer(pTok)).Fn, (*TFts5Token)(unsafe.Pointer(pTok)).Fp))
+	if (*TFts5Token)(unsafe.Pointer(pTok)).Fn != int32(4) || libc.Xmemcmp(tls, __ccgo_ts+34198, (*TFts5Token)(unsafe.Pointer(pTok)).Fp, uint64(4)) != 0 {
+		_sqlite3Fts5ParseError(tls, pParse, __ccgo_ts+33222, libc.VaList(bp+8, (*TFts5Token)(unsafe.Pointer(pTok)).Fn, (*TFts5Token)(unsafe.Pointer(pTok)).Fp))
 	}
 }
 
@@ -186362,7 +186362,7 @@ func _sqlite3Fts5ParseSetDistance(tls *libc.TLS, pParse uintptr, pNear uintptr, 
 				}
 				c = *(*uint8)(unsafe.Pointer((*TFts5Token)(unsafe.Pointer(p)).Fp + uintptr(i)))
 				if int32(c) < int32('0') || int32(c) > int32('9') {
-					_sqlite3Fts5ParseError(tls, pParse, __ccgo_ts+34183, libc.VaList(bp+8, (*TFts5Token)(unsafe.Pointer(p)).Fn, (*TFts5Token)(unsafe.Pointer(p)).Fp))
+					_sqlite3Fts5ParseError(tls, pParse, __ccgo_ts+34203, libc.VaList(bp+8, (*TFts5Token)(unsafe.Pointer(p)).Fn, (*TFts5Token)(unsafe.Pointer(p)).Fp))
 					return
 				}
 				nNear = nNear*int32(10) + (int32(*(*uint8)(unsafe.Pointer((*TFts5Token)(unsafe.Pointer(p)).Fp + uintptr(i)))) - int32('0'))
@@ -186497,7 +186497,7 @@ func _sqlite3Fts5ParseColset(tls *libc.TLS, pParse uintptr, pColset uintptr, p u
 			iCol++
 		}
 		if iCol == (*TFts5Config)(unsafe.Pointer(pConfig)).FnCol {
-			_sqlite3Fts5ParseError(tls, pParse, __ccgo_ts+20207, libc.VaList(bp+8, z))
+			_sqlite3Fts5ParseError(tls, pParse, __ccgo_ts+20227, libc.VaList(bp+8, z))
 		} else {
 			pRet = _fts5ParseColset(tls, pParse, pColset, iCol)
 		}
@@ -186623,7 +186623,7 @@ func _sqlite3Fts5ParseSetColset(tls *libc.TLS, pParse uintptr, pExpr uintptr, pC
 	var _ /* pFree at bp+0 */ uintptr
 	*(*uintptr)(unsafe.Pointer(bp)) = pColset
 	if (*TFts5Config)(unsafe.Pointer((*TFts5Parse)(unsafe.Pointer(pParse)).FpConfig)).FeDetail == int32(m_FTS5_DETAIL_NONE) {
-		_sqlite3Fts5ParseError(tls, pParse, __ccgo_ts+34212, 0)
+		_sqlite3Fts5ParseError(tls, pParse, __ccgo_ts+34232, 0)
 	} else {
 		_fts5ParseSetColset(tls, pParse, pExpr, pColset, bp)
 	}
@@ -186797,11 +186797,11 @@ func _sqlite3Fts5ParseNode(tls *libc.TLS, pParse uintptr, eType int32, pLeft uin
 						pPhrase = *(*uintptr)(unsafe.Pointer(pNear + 24))
 						if (*TFts5ExprNearset)(unsafe.Pointer(pNear)).FnPhrase != int32(1) || (*TFts5ExprPhrase)(unsafe.Pointer(pPhrase)).FnTerm > int32(1) || (*TFts5ExprPhrase)(unsafe.Pointer(pPhrase)).FnTerm > 0 && (*(*TFts5ExprTerm)(unsafe.Pointer(pPhrase + 32))).FbFirst != 0 {
 							if (*TFts5ExprNearset)(unsafe.Pointer(pNear)).FnPhrase == int32(1) {
-								v2 = __ccgo_ts + 34265
+								v2 = __ccgo_ts + 34285
 							} else {
-								v2 = __ccgo_ts + 34178
+								v2 = __ccgo_ts + 34198
 							}
-							_sqlite3Fts5ParseError(tls, pParse, __ccgo_ts+34272, libc.VaList(bp+8, v2))
+							_sqlite3Fts5ParseError(tls, pParse, __ccgo_ts+34292, libc.VaList(bp+8, v2))
 							Xsqlite3_free(tls, pRet)
 							pRet = uintptr(0)
 						}
@@ -188561,7 +188561,7 @@ func _fts5DataRead(tls *libc.TLS, p uintptr, iRowid Ti64) (r uintptr) {
 		 ** to the requested entry.  */
 		if (*TFts5Index)(unsafe.Pointer(p)).FpReader == uintptr(0) && rc == m_SQLITE_OK {
 			pConfig = (*TFts5Index)(unsafe.Pointer(p)).FpConfig
-			rc = Xsqlite3_blob_open(tls, (*TFts5Config)(unsafe.Pointer(pConfig)).Fdb, (*TFts5Config)(unsafe.Pointer(pConfig)).FzDb, (*TFts5Index)(unsafe.Pointer(p)).FzDataTbl, __ccgo_ts+34322, iRowid, 0, p+56)
+			rc = Xsqlite3_blob_open(tls, (*TFts5Config)(unsafe.Pointer(pConfig)).Fdb, (*TFts5Config)(unsafe.Pointer(pConfig)).FzDb, (*TFts5Index)(unsafe.Pointer(p)).FzDataTbl, __ccgo_ts+34342, iRowid, 0, p+56)
 		}
 		/* If either of the sqlite3_blob_open() or sqlite3_blob_reopen() calls
 		 ** above returned SQLITE_ERROR, return SQLITE_CORRUPT_VTAB instead.
@@ -188655,7 +188655,7 @@ func _fts5DataWrite(tls *libc.TLS, p uintptr, iRowid Ti64, pData uintptr, nData 
 	}
 	if (*TFts5Index)(unsafe.Pointer(p)).FpWriter == uintptr(0) {
 		pConfig = (*TFts5Index)(unsafe.Pointer(p)).FpConfig
-		_fts5IndexPrepareStmt(tls, p, p+64, Xsqlite3_mprintf(tls, __ccgo_ts+34328, libc.VaList(bp+8, (*TFts5Config)(unsafe.Pointer(pConfig)).FzDb, (*TFts5Config)(unsafe.Pointer(pConfig)).FzName)))
+		_fts5IndexPrepareStmt(tls, p, p+64, Xsqlite3_mprintf(tls, __ccgo_ts+34348, libc.VaList(bp+8, (*TFts5Config)(unsafe.Pointer(pConfig)).FzDb, (*TFts5Config)(unsafe.Pointer(pConfig)).FzName)))
 		if (*TFts5Index)(unsafe.Pointer(p)).Frc != 0 {
 			return
 		}
@@ -188684,7 +188684,7 @@ func _fts5DataDelete(tls *libc.TLS, p uintptr, iFirst Ti64, iLast Ti64) {
 	}
 	if (*TFts5Index)(unsafe.Pointer(p)).FpDeleter == uintptr(0) {
 		pConfig = (*TFts5Index)(unsafe.Pointer(p)).FpConfig
-		zSql = Xsqlite3_mprintf(tls, __ccgo_ts+34379, libc.VaList(bp+8, (*TFts5Config)(unsafe.Pointer(pConfig)).FzDb, (*TFts5Config)(unsafe.Pointer(pConfig)).FzName))
+		zSql = Xsqlite3_mprintf(tls, __ccgo_ts+34399, libc.VaList(bp+8, (*TFts5Config)(unsafe.Pointer(pConfig)).FzDb, (*TFts5Config)(unsafe.Pointer(pConfig)).FzName))
 		if _fts5IndexPrepareStmt(tls, p, p+72, zSql) != 0 {
 			return
 		}
@@ -188711,7 +188711,7 @@ func _fts5DataRemoveSegment(tls *libc.TLS, p uintptr, iSegid int32) {
 	_fts5DataDelete(tls, p, iFirst, iLast)
 	if (*TFts5Index)(unsafe.Pointer(p)).FpIdxDeleter == uintptr(0) {
 		pConfig = (*TFts5Index)(unsafe.Pointer(p)).FpConfig
-		_fts5IndexPrepareStmt(tls, p, p+88, Xsqlite3_mprintf(tls, __ccgo_ts+34428, libc.VaList(bp+8, (*TFts5Config)(unsafe.Pointer(pConfig)).FzDb, (*TFts5Config)(unsafe.Pointer(pConfig)).FzName)))
+		_fts5IndexPrepareStmt(tls, p, p+88, Xsqlite3_mprintf(tls, __ccgo_ts+34448, libc.VaList(bp+8, (*TFts5Config)(unsafe.Pointer(pConfig)).FzDb, (*TFts5Config)(unsafe.Pointer(pConfig)).FzName)))
 	}
 	if (*TFts5Index)(unsafe.Pointer(p)).Frc == m_SQLITE_OK {
 		Xsqlite3_bind_int(tls, (*TFts5Index)(unsafe.Pointer(p)).FpIdxDeleter, int32(1), iSegid)
@@ -189041,7 +189041,7 @@ func _fts5IndexDataVersion(tls *libc.TLS, p uintptr) (r Ti64) {
 	iVersion = 0
 	if (*TFts5Index)(unsafe.Pointer(p)).Frc == m_SQLITE_OK {
 		if (*TFts5Index)(unsafe.Pointer(p)).FpDataVersion == uintptr(0) {
-			(*TFts5Index)(unsafe.Pointer(p)).Frc = _fts5IndexPrepareStmt(tls, p, p+112, Xsqlite3_mprintf(tls, __ccgo_ts+34468, libc.VaList(bp+8, (*TFts5Config)(unsafe.Pointer((*TFts5Index)(unsafe.Pointer(p)).FpConfig)).FzDb)))
+			(*TFts5Index)(unsafe.Pointer(p)).Frc = _fts5IndexPrepareStmt(tls, p, p+112, Xsqlite3_mprintf(tls, __ccgo_ts+34488, libc.VaList(bp+8, (*TFts5Config)(unsafe.Pointer((*TFts5Index)(unsafe.Pointer(p)).FpConfig)).FzDb)))
 			if (*TFts5Index)(unsafe.Pointer(p)).Frc != 0 {
 				return 0
 			}
@@ -190518,7 +190518,7 @@ func _fts5IdxSelectStmt(tls *libc.TLS, p uintptr) (r uintptr) {
 	_ = pConfig
 	if (*TFts5Index)(unsafe.Pointer(p)).FpIdxSelect == uintptr(0) {
 		pConfig = (*TFts5Index)(unsafe.Pointer(p)).FpConfig
-		_fts5IndexPrepareStmt(tls, p, p+96, Xsqlite3_mprintf(tls, __ccgo_ts+34491, libc.VaList(bp+8, (*TFts5Config)(unsafe.Pointer(pConfig)).FzDb, (*TFts5Config)(unsafe.Pointer(pConfig)).FzName)))
+		_fts5IndexPrepareStmt(tls, p, p+96, Xsqlite3_mprintf(tls, __ccgo_ts+34511, libc.VaList(bp+8, (*TFts5Config)(unsafe.Pointer(pConfig)).FzDb, (*TFts5Config)(unsafe.Pointer(pConfig)).FzName)))
 	}
 	return (*TFts5Index)(unsafe.Pointer(p)).FpIdxSelect
 }
@@ -192013,7 +192013,7 @@ func _fts5WriteFlushBtree(tls *libc.TLS, p uintptr, pWriter uintptr) {
 		if (*TFts5SegWriter)(unsafe.Pointer(pWriter)).Fbtterm.Fn > 0 {
 			v1 = (*TFts5SegWriter)(unsafe.Pointer(pWriter)).Fbtterm.Fp
 		} else {
-			v1 = __ccgo_ts + 1511
+			v1 = __ccgo_ts + 1531
 		}
 		z = v1
 		/* The following was already done in fts5WriteInit(): */
@@ -192380,7 +192380,7 @@ func _fts5WriteInit(tls *libc.TLS, p uintptr, pWriter uintptr, iSegid int32) {
 	_sqlite3Fts5BufferSize(tls, p+52, pWriter+8+8, uint32(nBuffer))
 	if (*TFts5Index)(unsafe.Pointer(p)).FpIdxWriter == uintptr(0) {
 		pConfig = (*TFts5Index)(unsafe.Pointer(p)).FpConfig
-		_fts5IndexPrepareStmt(tls, p, p+80, Xsqlite3_mprintf(tls, __ccgo_ts+34575, libc.VaList(bp+8, (*TFts5Config)(unsafe.Pointer(pConfig)).FzDb, (*TFts5Config)(unsafe.Pointer(pConfig)).FzName)))
+		_fts5IndexPrepareStmt(tls, p, p+80, Xsqlite3_mprintf(tls, __ccgo_ts+34595, libc.VaList(bp+8, (*TFts5Config)(unsafe.Pointer(pConfig)).FzDb, (*TFts5Config)(unsafe.Pointer(pConfig)).FzName)))
 	}
 	if (*TFts5Index)(unsafe.Pointer(p)).Frc == m_SQLITE_OK {
 		/* Initialize the 4-byte leaf-page header to 0x00. */
@@ -193708,7 +193708,7 @@ func _sqlite3Fts5IndexReinit(tls *libc.TLS, p uintptr) (r int32) {
 	_fts5StructureInvalidate(tls, p)
 	_fts5IndexDiscardData(tls, p)
 	libc.Xmemset(tls, bp, 0, uint64(40))
-	_fts5DataWrite(tls, p, int64(m_FTS5_AVERAGES_ROWID), __ccgo_ts+1511, 0)
+	_fts5DataWrite(tls, p, int64(m_FTS5_AVERAGES_ROWID), __ccgo_ts+1531, 0)
 	_fts5StructureWrite(tls, p, bp)
 	return _fts5IndexReturn(tls, p)
 }
@@ -193735,11 +193735,11 @@ func _sqlite3Fts5IndexOpen(tls *libc.TLS, pConfig uintptr, bCreate int32, pp uin
 	if *(*int32)(unsafe.Pointer(bp)) == m_SQLITE_OK {
 		(*TFts5Index)(unsafe.Pointer(p)).FpConfig = pConfig
 		(*TFts5Index)(unsafe.Pointer(p)).FnWorkUnit = int32(m_FTS5_WORK_UNIT)
-		(*TFts5Index)(unsafe.Pointer(p)).FzDataTbl = _sqlite3Fts5Mprintf(tls, bp, __ccgo_ts+34632, libc.VaList(bp+16, (*TFts5Config)(unsafe.Pointer(pConfig)).FzName))
+		(*TFts5Index)(unsafe.Pointer(p)).FzDataTbl = _sqlite3Fts5Mprintf(tls, bp, __ccgo_ts+34652, libc.VaList(bp+16, (*TFts5Config)(unsafe.Pointer(pConfig)).FzName))
 		if (*TFts5Index)(unsafe.Pointer(p)).FzDataTbl != 0 && bCreate != 0 {
-			*(*int32)(unsafe.Pointer(bp)) = _sqlite3Fts5CreateTable(tls, pConfig, __ccgo_ts+24545, __ccgo_ts+34640, 0, pzErr)
+			*(*int32)(unsafe.Pointer(bp)) = _sqlite3Fts5CreateTable(tls, pConfig, __ccgo_ts+24565, __ccgo_ts+34660, 0, pzErr)
 			if *(*int32)(unsafe.Pointer(bp)) == m_SQLITE_OK {
-				*(*int32)(unsafe.Pointer(bp)) = _sqlite3Fts5CreateTable(tls, pConfig, __ccgo_ts+11268, __ccgo_ts+34675, int32(1), pzErr)
+				*(*int32)(unsafe.Pointer(bp)) = _sqlite3Fts5CreateTable(tls, pConfig, __ccgo_ts+11288, __ccgo_ts+34695, int32(1), pzErr)
 			}
 			if *(*int32)(unsafe.Pointer(bp)) == m_SQLITE_OK {
 				*(*int32)(unsafe.Pointer(bp)) = _sqlite3Fts5IndexReinit(tls, p)
@@ -194144,7 +194144,7 @@ func _sqlite3Fts5IndexSetCookie(tls *libc.TLS, p uintptr, iNew int32) (r int32) 
 	*(*uintptr)(unsafe.Pointer(bp + 8)) = uintptr(0)
 	_ = libc.Int32FromInt32(0)
 	_sqlite3Fts5Put32(tls, bp, iNew)
-	rc = Xsqlite3_blob_open(tls, (*TFts5Config)(unsafe.Pointer(pConfig)).Fdb, (*TFts5Config)(unsafe.Pointer(pConfig)).FzDb, (*TFts5Index)(unsafe.Pointer(p)).FzDataTbl, __ccgo_ts+34322, int64(m_FTS5_STRUCTURE_ROWID), int32(1), bp+8)
+	rc = Xsqlite3_blob_open(tls, (*TFts5Config)(unsafe.Pointer(pConfig)).Fdb, (*TFts5Config)(unsafe.Pointer(pConfig)).FzDb, (*TFts5Index)(unsafe.Pointer(p)).FzDataTbl, __ccgo_ts+34342, int64(m_FTS5_STRUCTURE_ROWID), int32(1), bp+8)
 	if rc == m_SQLITE_OK {
 		Xsqlite3_blob_write(tls, *(*uintptr)(unsafe.Pointer(bp + 8)), bp, int32(4), 0)
 		rc = Xsqlite3_blob_close(tls, *(*uintptr)(unsafe.Pointer(bp + 8)))
@@ -194300,7 +194300,7 @@ func _fts5IndexIntegrityCheckSegment(tls *libc.TLS, p uintptr, pSeg uintptr) {
 	if (*TFts5StructureSegment)(unsafe.Pointer(pSeg)).FpgnoFirst == 0 {
 		return
 	}
-	_fts5IndexPrepareStmt(tls, p, bp, Xsqlite3_mprintf(tls, __ccgo_ts+34719, libc.VaList(bp+32, (*TFts5Config)(unsafe.Pointer(pConfig)).FzDb, (*TFts5Config)(unsafe.Pointer(pConfig)).FzName, (*TFts5StructureSegment)(unsafe.Pointer(pSeg)).FiSegid)))
+	_fts5IndexPrepareStmt(tls, p, bp, Xsqlite3_mprintf(tls, __ccgo_ts+34739, libc.VaList(bp+32, (*TFts5Config)(unsafe.Pointer(pConfig)).FzDb, (*TFts5Config)(unsafe.Pointer(pConfig)).FzName, (*TFts5StructureSegment)(unsafe.Pointer(pSeg)).FiSegid)))
 	/* Iterate through the b-tree hierarchy.  */
 	for (*TFts5Index)(unsafe.Pointer(p)).Frc == m_SQLITE_OK && int32(m_SQLITE_ROW) == Xsqlite3_step(tls, *(*uintptr)(unsafe.Pointer(bp))) { /* Data for this leaf */
 		zIdxTerm = Xsqlite3_column_blob(tls, *(*uintptr)(unsafe.Pointer(bp)), int32(1))
@@ -194517,7 +194517,7 @@ func _sqlite3Fts5IndexIntegrityCheck(tls *libc.TLS, p uintptr, cksum Tu64, bUseC
 		} else {
 			(*(*TFts5Buffer)(unsafe.Pointer(bp))).Fn = 0
 			_fts5SegiterPoslist(tls, p, *(*uintptr)(unsafe.Pointer(bp + 16))+96+uintptr((*(*TFts5CResult)(unsafe.Pointer((*TFts5Iter)(unsafe.Pointer(*(*uintptr)(unsafe.Pointer(bp + 16)))).FaFirst + 1*4))).FiFirst)*120, uintptr(0), bp)
-			_sqlite3Fts5BufferAppendBlob(tls, p+52, bp, uint32(4), __ccgo_ts+34805)
+			_sqlite3Fts5BufferAppendBlob(tls, p+52, bp, uint32(4), __ccgo_ts+34825)
 			for 0 == _sqlite3Fts5PoslistNext64(tls, (*(*TFts5Buffer)(unsafe.Pointer(bp))).Fp, (*(*TFts5Buffer)(unsafe.Pointer(bp))).Fn, bp+40, bp+32) {
 				iCol = int32(*(*Ti64)(unsafe.Pointer(bp + 32)) >> libc.Int32FromInt32(32))
 				iTokOff = int32(*(*Ti64)(unsafe.Pointer(bp + 32)) & libc.Int64FromInt32(0x7FFFFFFF))
@@ -195076,7 +195076,7 @@ func _fts5BestIndexMethod(tls *libc.TLS, pVTab uintptr, pInfo uintptr) (r int32)
 	_ = libc.Int32FromInt32(0)
 	_ = libc.Int32FromInt32(0)
 	if (*TFts5Config)(unsafe.Pointer(pConfig)).FbLock != 0 {
-		(*TFts5Table)(unsafe.Pointer(pTab)).Fbase.FzErrMsg = Xsqlite3_mprintf(tls, __ccgo_ts+34810, 0)
+		(*TFts5Table)(unsafe.Pointer(pTab)).Fbase.FzErrMsg = Xsqlite3_mprintf(tls, __ccgo_ts+34830, 0)
 		return int32(m_SQLITE_ERROR)
 	}
 	idxStr = Xsqlite3_malloc(tls, (*Tsqlite3_index_info)(unsafe.Pointer(pInfo)).FnConstraint*int32(8)+int32(1))
@@ -195116,7 +195116,7 @@ func _fts5BestIndexMethod(tls *libc.TLS, pVTab uintptr, pInfo uintptr) (r int32)
 						v3 = iIdxStr
 						iIdxStr++
 						*(*uint8)(unsafe.Pointer(idxStr + uintptr(v3))) = uint8('M')
-						Xsqlite3_snprintf(tls, int32(6), idxStr+uintptr(iIdxStr), __ccgo_ts+4859, libc.VaList(bp+8, iCol))
+						Xsqlite3_snprintf(tls, int32(6), idxStr+uintptr(iIdxStr), __ccgo_ts+4879, libc.VaList(bp+8, iCol))
 						idxStr += uintptr(libc.Xstrlen(tls, idxStr+uintptr(iIdxStr)))
 						_ = libc.Int32FromInt32(0)
 					}
@@ -195138,7 +195138,7 @@ func _fts5BestIndexMethod(tls *libc.TLS, pVTab uintptr, pInfo uintptr) (r int32)
 						v6 = int32('G')
 					}
 					*(*uint8)(unsafe.Pointer(idxStr + uintptr(v5))) = uint8(v6)
-					Xsqlite3_snprintf(tls, int32(6), idxStr+uintptr(iIdxStr), __ccgo_ts+4859, libc.VaList(bp+8, iCol))
+					Xsqlite3_snprintf(tls, int32(6), idxStr+uintptr(iIdxStr), __ccgo_ts+4879, libc.VaList(bp+8, iCol))
 					idxStr += uintptr(libc.Xstrlen(tls, idxStr+uintptr(iIdxStr)))
 					iCons++
 					v7 = iCons
@@ -195563,7 +195563,7 @@ func _fts5NextMethod(tls *libc.TLS, pCursor uintptr) (r int32) {
 				*(*int32)(unsafe.Pointer(pCsr + 80)) |= int32(m_FTS5CSR_EOF)
 				rc = Xsqlite3_reset(tls, (*TFts5Cursor)(unsafe.Pointer(pCsr)).FpStmt)
 				if rc != m_SQLITE_OK {
-					(*Tsqlite3_vtab)(unsafe.Pointer((*Tsqlite3_vtab_cursor)(unsafe.Pointer(pCursor)).FpVtab)).FzErrMsg = Xsqlite3_mprintf(tls, __ccgo_ts+3560, libc.VaList(bp+16, Xsqlite3_errmsg(tls, (*TFts5Config)(unsafe.Pointer(pConfig)).Fdb)))
+					(*Tsqlite3_vtab)(unsafe.Pointer((*Tsqlite3_vtab_cursor)(unsafe.Pointer(pCursor)).FpVtab)).FzErrMsg = Xsqlite3_mprintf(tls, __ccgo_ts+3580, libc.VaList(bp+16, Xsqlite3_errmsg(tls, (*TFts5Config)(unsafe.Pointer(pConfig)).Fdb)))
 				}
 			} else {
 				rc = m_SQLITE_OK
@@ -195590,7 +195590,7 @@ func _fts5PrepareStatement(tls *libc.TLS, ppStmt uintptr, pConfig uintptr, zFmt 
 	} else {
 		rc = Xsqlite3_prepare_v3(tls, (*TFts5Config)(unsafe.Pointer(pConfig)).Fdb, zSql, -int32(1), uint32(m_SQLITE_PREPARE_PERSISTENT), bp, uintptr(0))
 		if rc != m_SQLITE_OK {
-			*(*uintptr)(unsafe.Pointer((*TFts5Config)(unsafe.Pointer(pConfig)).FpzErrmsg)) = Xsqlite3_mprintf(tls, __ccgo_ts+3560, libc.VaList(bp+16, Xsqlite3_errmsg(tls, (*TFts5Config)(unsafe.Pointer(pConfig)).Fdb)))
+			*(*uintptr)(unsafe.Pointer((*TFts5Config)(unsafe.Pointer(pConfig)).FpzErrmsg)) = Xsqlite3_mprintf(tls, __ccgo_ts+3580, libc.VaList(bp+16, Xsqlite3_errmsg(tls, (*TFts5Config)(unsafe.Pointer(pConfig)).Fdb)))
 		}
 		Xsqlite3_free(tls, zSql)
 	}
@@ -195625,21 +195625,21 @@ func _fts5CursorFirstSorted(tls *libc.TLS, pTab uintptr, pCsr uintptr, bDesc int
 	 **
 	 ** If SQLite a built-in statement cache, this wouldn't be a problem. */
 	if zRankArgs != 0 {
-		v1 = __ccgo_ts + 14449
+		v1 = __ccgo_ts + 14469
 	} else {
-		v1 = __ccgo_ts + 1511
+		v1 = __ccgo_ts + 1531
 	}
 	if zRankArgs != 0 {
 		v2 = zRankArgs
 	} else {
-		v2 = __ccgo_ts + 1511
+		v2 = __ccgo_ts + 1531
 	}
 	if bDesc != 0 {
-		v3 = __ccgo_ts + 34849
+		v3 = __ccgo_ts + 34869
 	} else {
-		v3 = __ccgo_ts + 34854
+		v3 = __ccgo_ts + 34874
 	}
-	rc = _fts5PrepareStatement(tls, pSorter, pConfig, __ccgo_ts+34858, libc.VaList(bp+8, (*TFts5Config)(unsafe.Pointer(pConfig)).FzDb, (*TFts5Config)(unsafe.Pointer(pConfig)).FzName, zRank, (*TFts5Config)(unsafe.Pointer(pConfig)).FzName, v1, v2, v3))
+	rc = _fts5PrepareStatement(tls, pSorter, pConfig, __ccgo_ts+34878, libc.VaList(bp+8, (*TFts5Config)(unsafe.Pointer(pConfig)).FzDb, (*TFts5Config)(unsafe.Pointer(pConfig)).FzName, zRank, (*TFts5Config)(unsafe.Pointer(pConfig)).FzName, v1, v2, v3))
 	(*TFts5Cursor)(unsafe.Pointer(pCsr)).FpSorter = pSorter
 	if rc == m_SQLITE_OK {
 		_ = libc.Int32FromInt32(0)
@@ -195698,14 +195698,14 @@ func _fts5SpecialMatch(tls *libc.TLS, pTab uintptr, pCsr uintptr, zQuery uintptr
 	}
 	_ = libc.Int32FromInt32(0)
 	(*TFts5Cursor)(unsafe.Pointer(pCsr)).FePlan = int32(m_FTS5_PLAN_SPECIAL)
-	if n == int32(5) && 0 == Xsqlite3_strnicmp(tls, __ccgo_ts+34913, z, n) {
+	if n == int32(5) && 0 == Xsqlite3_strnicmp(tls, __ccgo_ts+34933, z, n) {
 		(*TFts5Cursor)(unsafe.Pointer(pCsr)).FiSpecial = int64(_sqlite3Fts5IndexReads(tls, (*TFts5FullTable)(unsafe.Pointer(pTab)).Fp.FpIndex))
 	} else {
-		if n == int32(2) && 0 == Xsqlite3_strnicmp(tls, __ccgo_ts+4927, z, n) {
+		if n == int32(2) && 0 == Xsqlite3_strnicmp(tls, __ccgo_ts+4947, z, n) {
 			(*TFts5Cursor)(unsafe.Pointer(pCsr)).FiSpecial = (*TFts5Cursor)(unsafe.Pointer(pCsr)).FiCsrId
 		} else {
 			/* An unrecognized directive. Return an error message. */
-			(*TFts5FullTable)(unsafe.Pointer(pTab)).Fp.Fbase.FzErrMsg = Xsqlite3_mprintf(tls, __ccgo_ts+34919, libc.VaList(bp+8, n, z))
+			(*TFts5FullTable)(unsafe.Pointer(pTab)).Fp.Fbase.FzErrMsg = Xsqlite3_mprintf(tls, __ccgo_ts+34939, libc.VaList(bp+8, n, z))
 			rc = int32(m_SQLITE_ERROR)
 		}
 	}
@@ -195754,7 +195754,7 @@ func _fts5FindRankFunction(tls *libc.TLS, pCsr uintptr) (r int32) {
 	zRank = (*TFts5Cursor)(unsafe.Pointer(pCsr)).FzRank
 	zRankArgs = (*TFts5Cursor)(unsafe.Pointer(pCsr)).FzRankArgs
 	if zRankArgs != 0 {
-		zSql = _sqlite3Fts5Mprintf(tls, bp, __ccgo_ts+34947, libc.VaList(bp+24, zRankArgs))
+		zSql = _sqlite3Fts5Mprintf(tls, bp, __ccgo_ts+34967, libc.VaList(bp+24, zRankArgs))
 		if zSql != 0 {
 			*(*uintptr)(unsafe.Pointer(bp + 8)) = uintptr(0)
 			*(*int32)(unsafe.Pointer(bp)) = Xsqlite3_prepare_v3(tls, (*TFts5Config)(unsafe.Pointer(pConfig)).Fdb, zSql, -int32(1), uint32(m_SQLITE_PREPARE_PERSISTENT), bp+8, uintptr(0))
@@ -195789,7 +195789,7 @@ func _fts5FindRankFunction(tls *libc.TLS, pCsr uintptr) (r int32) {
 		pAux = _fts5FindAuxiliary(tls, pTab, zRank)
 		if pAux == uintptr(0) {
 			_ = libc.Int32FromInt32(0)
-			(*TFts5FullTable)(unsafe.Pointer(pTab)).Fp.Fbase.FzErrMsg = Xsqlite3_mprintf(tls, __ccgo_ts+34957, libc.VaList(bp+24, zRank))
+			(*TFts5FullTable)(unsafe.Pointer(pTab)).Fp.Fbase.FzErrMsg = Xsqlite3_mprintf(tls, __ccgo_ts+34977, libc.VaList(bp+24, zRank))
 			*(*int32)(unsafe.Pointer(bp)) = int32(m_SQLITE_ERROR)
 		}
 	}
@@ -195823,7 +195823,7 @@ func _fts5CursorParseRank(tls *libc.TLS, pConfig uintptr, pCsr uintptr, pRank ui
 			*(*int32)(unsafe.Pointer(pCsr + 80)) |= int32(m_FTS5CSR_FREE_ZRANK)
 		} else {
 			if rc == int32(m_SQLITE_ERROR) {
-				(*Tsqlite3_vtab)(unsafe.Pointer((*TFts5Cursor)(unsafe.Pointer(pCsr)).Fbase.FpVtab)).FzErrMsg = Xsqlite3_mprintf(tls, __ccgo_ts+34978, libc.VaList(bp+24, z))
+				(*Tsqlite3_vtab)(unsafe.Pointer((*TFts5Cursor)(unsafe.Pointer(pCsr)).Fbase.FpVtab)).FzErrMsg = Xsqlite3_mprintf(tls, __ccgo_ts+34998, libc.VaList(bp+24, z))
 			}
 		}
 	} else {
@@ -195831,7 +195831,7 @@ func _fts5CursorParseRank(tls *libc.TLS, pConfig uintptr, pCsr uintptr, pRank ui
 			(*TFts5Cursor)(unsafe.Pointer(pCsr)).FzRank = (*TFts5Config)(unsafe.Pointer(pConfig)).FzRank
 			(*TFts5Cursor)(unsafe.Pointer(pCsr)).FzRankArgs = (*TFts5Config)(unsafe.Pointer(pConfig)).FzRankArgs
 		} else {
-			(*TFts5Cursor)(unsafe.Pointer(pCsr)).FzRank = __ccgo_ts + 33356
+			(*TFts5Cursor)(unsafe.Pointer(pCsr)).FzRank = __ccgo_ts + 33376
 			(*TFts5Cursor)(unsafe.Pointer(pCsr)).FzRankArgs = uintptr(0)
 		}
 	}
@@ -195882,7 +195882,7 @@ func _fts5FilterMethod(tls *libc.TLS, pCursor uintptr, idxNum int32, idxStr uint
 	iIdxStr = 0
 	*(*uintptr)(unsafe.Pointer(bp)) = uintptr(0)
 	if (*TFts5Config)(unsafe.Pointer(pConfig)).FbLock != 0 {
-		(*TFts5FullTable)(unsafe.Pointer(pTab)).Fp.Fbase.FzErrMsg = Xsqlite3_mprintf(tls, __ccgo_ts+34810, 0)
+		(*TFts5FullTable)(unsafe.Pointer(pTab)).Fp.Fbase.FzErrMsg = Xsqlite3_mprintf(tls, __ccgo_ts+34830, 0)
 		return int32(m_SQLITE_ERROR)
 	}
 	if (*TFts5Cursor)(unsafe.Pointer(pCsr)).FePlan != 0 {
@@ -195912,7 +195912,7 @@ func _fts5FilterMethod(tls *libc.TLS, pCursor uintptr, idxNum int32, idxStr uint
 		case int32('M'):
 			zText = Xsqlite3_value_text(tls, *(*uintptr)(unsafe.Pointer(apVal + uintptr(i)*8)))
 			if zText == uintptr(0) {
-				zText = __ccgo_ts + 1511
+				zText = __ccgo_ts + 1531
 			}
 			iCol = 0
 			for cond := true; cond; cond = int32(*(*uint8)(unsafe.Pointer(idxStr + uintptr(iIdxStr)))) >= int32('0') && int32(*(*uint8)(unsafe.Pointer(idxStr + uintptr(iIdxStr)))) <= int32('9') {
@@ -196034,7 +196034,7 @@ func _fts5FilterMethod(tls *libc.TLS, pCursor uintptr, idxNum int32, idxStr uint
 			}
 		} else {
 			if (*TFts5Config)(unsafe.Pointer(pConfig)).FzContent == uintptr(0) {
-				*(*uintptr)(unsafe.Pointer((*TFts5Config)(unsafe.Pointer(pConfig)).FpzErrmsg)) = Xsqlite3_mprintf(tls, __ccgo_ts+35011, libc.VaList(bp+16, (*TFts5Config)(unsafe.Pointer(pConfig)).FzName))
+				*(*uintptr)(unsafe.Pointer((*TFts5Config)(unsafe.Pointer(pConfig)).FpzErrmsg)) = Xsqlite3_mprintf(tls, __ccgo_ts+35031, libc.VaList(bp+16, (*TFts5Config)(unsafe.Pointer(pConfig)).FzName))
 				rc = int32(m_SQLITE_ERROR)
 			} else {
 				/* This is either a full-table scan (ePlan==FTS5_PLAN_SCAN) or a lookup
@@ -196176,7 +196176,7 @@ func _fts5SeekCursor(tls *libc.TLS, pCsr uintptr, bErrormsg int32) (r int32) {
 				rc = libc.Int32FromInt32(m_SQLITE_CORRUPT) | libc.Int32FromInt32(1)<<libc.Int32FromInt32(8)
 			} else {
 				if (*TFts5Config)(unsafe.Pointer((*TFts5Table)(unsafe.Pointer(pTab1)).FpConfig)).FpzErrmsg != 0 {
-					*(*uintptr)(unsafe.Pointer((*TFts5Config)(unsafe.Pointer((*TFts5Table)(unsafe.Pointer(pTab1)).FpConfig)).FpzErrmsg)) = Xsqlite3_mprintf(tls, __ccgo_ts+3560, libc.VaList(bp+8, Xsqlite3_errmsg(tls, (*TFts5Config)(unsafe.Pointer((*TFts5Table)(unsafe.Pointer(pTab1)).FpConfig)).Fdb)))
+					*(*uintptr)(unsafe.Pointer((*TFts5Config)(unsafe.Pointer((*TFts5Table)(unsafe.Pointer(pTab1)).FpConfig)).FpzErrmsg)) = Xsqlite3_mprintf(tls, __ccgo_ts+3580, libc.VaList(bp+8, Xsqlite3_errmsg(tls, (*TFts5Config)(unsafe.Pointer((*TFts5Table)(unsafe.Pointer(pTab1)).FpConfig)).Fdb)))
 				}
 			}
 		}
@@ -196220,30 +196220,30 @@ func _fts5SpecialInsert(tls *libc.TLS, pTab uintptr, zCmd uintptr, pVal uintptr)
 	pConfig = (*TFts5FullTable)(unsafe.Pointer(pTab)).Fp.FpConfig
 	rc = m_SQLITE_OK
 	*(*int32)(unsafe.Pointer(bp)) = 0
-	if 0 == Xsqlite3_stricmp(tls, __ccgo_ts+35047, zCmd) {
+	if 0 == Xsqlite3_stricmp(tls, __ccgo_ts+35067, zCmd) {
 		if (*TFts5Config)(unsafe.Pointer(pConfig)).FeContent == m_FTS5_CONTENT_NORMAL {
-			_fts5SetVtabError(tls, pTab, __ccgo_ts+35058, 0)
+			_fts5SetVtabError(tls, pTab, __ccgo_ts+35078, 0)
 			rc = int32(m_SQLITE_ERROR)
 		} else {
 			rc = _sqlite3Fts5StorageDeleteAll(tls, (*TFts5FullTable)(unsafe.Pointer(pTab)).FpStorage)
 		}
 	} else {
-		if 0 == Xsqlite3_stricmp(tls, __ccgo_ts+35138, zCmd) {
+		if 0 == Xsqlite3_stricmp(tls, __ccgo_ts+35158, zCmd) {
 			if (*TFts5Config)(unsafe.Pointer(pConfig)).FeContent == int32(m_FTS5_CONTENT_NONE) {
-				_fts5SetVtabError(tls, pTab, __ccgo_ts+35146, 0)
+				_fts5SetVtabError(tls, pTab, __ccgo_ts+35166, 0)
 				rc = int32(m_SQLITE_ERROR)
 			} else {
 				rc = _sqlite3Fts5StorageRebuild(tls, (*TFts5FullTable)(unsafe.Pointer(pTab)).FpStorage)
 			}
 		} else {
-			if 0 == Xsqlite3_stricmp(tls, __ccgo_ts+16721, zCmd) {
+			if 0 == Xsqlite3_stricmp(tls, __ccgo_ts+16741, zCmd) {
 				rc = _sqlite3Fts5StorageOptimize(tls, (*TFts5FullTable)(unsafe.Pointer(pTab)).FpStorage)
 			} else {
-				if 0 == Xsqlite3_stricmp(tls, __ccgo_ts+35202, zCmd) {
+				if 0 == Xsqlite3_stricmp(tls, __ccgo_ts+35222, zCmd) {
 					nMerge = Xsqlite3_value_int(tls, pVal)
 					rc = _sqlite3Fts5StorageMerge(tls, (*TFts5FullTable)(unsafe.Pointer(pTab)).FpStorage, nMerge)
 				} else {
-					if 0 == Xsqlite3_stricmp(tls, __ccgo_ts+35208, zCmd) {
+					if 0 == Xsqlite3_stricmp(tls, __ccgo_ts+35228, zCmd) {
 						iArg = Xsqlite3_value_int(tls, pVal)
 						rc = _sqlite3Fts5StorageIntegrity(tls, (*TFts5FullTable)(unsafe.Pointer(pTab)).FpStorage, iArg)
 					} else {
@@ -196332,7 +196332,7 @@ func _fts5UpdateMethod(tls *libc.TLS, pVtab uintptr, nArg int32, apVal uintptr, 
 	if eType0 == int32(m_SQLITE_NULL) && Xsqlite3_value_type(tls, *(*uintptr)(unsafe.Pointer(apVal + uintptr(int32(2)+(*TFts5Config)(unsafe.Pointer(pConfig)).FnCol)*8))) != int32(m_SQLITE_NULL) {
 		/* A "special" INSERT op. These are handled separately. */
 		z = Xsqlite3_value_text(tls, *(*uintptr)(unsafe.Pointer(apVal + uintptr(int32(2)+(*TFts5Config)(unsafe.Pointer(pConfig)).FnCol)*8)))
-		if (*TFts5Config)(unsafe.Pointer(pConfig)).FeContent != m_FTS5_CONTENT_NORMAL && 0 == Xsqlite3_stricmp(tls, __ccgo_ts+17241, z) {
+		if (*TFts5Config)(unsafe.Pointer(pConfig)).FeContent != m_FTS5_CONTENT_NORMAL && 0 == Xsqlite3_stricmp(tls, __ccgo_ts+17261, z) {
 			*(*int32)(unsafe.Pointer(bp)) = _fts5SpecialDelete(tls, pTab, apVal)
 		} else {
 			*(*int32)(unsafe.Pointer(bp)) = _fts5SpecialInsert(tls, pTab, z, *(*uintptr)(unsafe.Pointer(apVal + uintptr(int32(2)+(*TFts5Config)(unsafe.Pointer(pConfig)).FnCol+int32(1))*8)))
@@ -196359,11 +196359,11 @@ func _fts5UpdateMethod(tls *libc.TLS, pVtab uintptr, nArg int32, apVal uintptr, 
 		 ** This is not suported.  */
 		if eType0 == int32(m_SQLITE_INTEGER) && _fts5IsContentless(tls, pTab) != 0 {
 			if nArg > int32(1) {
-				v1 = __ccgo_ts + 20060
+				v1 = __ccgo_ts + 20080
 			} else {
-				v1 = __ccgo_ts + 35224
+				v1 = __ccgo_ts + 35244
 			}
-			(*TFts5FullTable)(unsafe.Pointer(pTab)).Fp.Fbase.FzErrMsg = Xsqlite3_mprintf(tls, __ccgo_ts+35236, libc.VaList(bp+16, v1, (*TFts5Config)(unsafe.Pointer(pConfig)).FzName))
+			(*TFts5FullTable)(unsafe.Pointer(pTab)).Fp.Fbase.FzErrMsg = Xsqlite3_mprintf(tls, __ccgo_ts+35256, libc.VaList(bp+16, v1, (*TFts5Config)(unsafe.Pointer(pConfig)).FzName))
 			*(*int32)(unsafe.Pointer(bp)) = int32(m_SQLITE_ERROR)
 		} else {
 			if nArg == int32(1) {
@@ -197137,7 +197137,7 @@ func _fts5ApiCallback(tls *libc.TLS, context uintptr, argc int32, argv uintptr) 
 	iCsrId = Xsqlite3_value_int64(tls, *(*uintptr)(unsafe.Pointer(argv)))
 	pCsr = _fts5CursorFromCsrid(tls, (*TFts5Auxiliary)(unsafe.Pointer(pAux)).FpGlobal, iCsrId)
 	if pCsr == uintptr(0) || (*TFts5Cursor)(unsafe.Pointer(pCsr)).FePlan == 0 {
-		zErr = Xsqlite3_mprintf(tls, __ccgo_ts+35273, libc.VaList(bp+8, iCsrId))
+		zErr = Xsqlite3_mprintf(tls, __ccgo_ts+35293, libc.VaList(bp+8, iCsrId))
 		Xsqlite3_result_error(tls, context, zErr, -int32(1))
 		Xsqlite3_free(tls, zErr)
 	} else {
@@ -197528,7 +197528,7 @@ func _sqlite3Fts5GetTokenizer(tls *libc.TLS, pGlobal uintptr, azArg uintptr, nAr
 	if pMod == uintptr(0) {
 		_ = libc.Int32FromInt32(0)
 		rc = int32(m_SQLITE_ERROR)
-		*(*uintptr)(unsafe.Pointer(pzErr)) = Xsqlite3_mprintf(tls, __ccgo_ts+35294, libc.VaList(bp+8, *(*uintptr)(unsafe.Pointer(azArg))))
+		*(*uintptr)(unsafe.Pointer(pzErr)) = Xsqlite3_mprintf(tls, __ccgo_ts+35314, libc.VaList(bp+8, *(*uintptr)(unsafe.Pointer(azArg))))
 	} else {
 		if azArg != 0 {
 			v2 = azArg + 1*8
@@ -197544,7 +197544,7 @@ func _sqlite3Fts5GetTokenizer(tls *libc.TLS, pGlobal uintptr, azArg uintptr, nAr
 		(*TFts5Config)(unsafe.Pointer(pConfig)).FpTokApi = pMod + 16
 		if rc != m_SQLITE_OK {
 			if pzErr != 0 {
-				*(*uintptr)(unsafe.Pointer(pzErr)) = Xsqlite3_mprintf(tls, __ccgo_ts+35316, 0)
+				*(*uintptr)(unsafe.Pointer(pzErr)) = Xsqlite3_mprintf(tls, __ccgo_ts+35336, 0)
 			}
 		} else {
 			(*TFts5Config)(unsafe.Pointer(pConfig)).FePattern = _sqlite3Fts5TokenizerPattern(tls, (*TFts5TokenizerModule)(unsafe.Pointer(pMod)).Fx.FxCreate, (*TFts5Config)(unsafe.Pointer(pConfig)).FpTok)
@@ -197598,7 +197598,7 @@ func _fts5Fts5Func(tls *libc.TLS, pCtx uintptr, nArg int32, apArg uintptr) {
 	pGlobal = Xsqlite3_user_data(tls, pCtx)
 	_ = nArg
 	_ = libc.Int32FromInt32(0)
-	ppApi = Xsqlite3_value_pointer(tls, *(*uintptr)(unsafe.Pointer(apArg)), __ccgo_ts+35347)
+	ppApi = Xsqlite3_value_pointer(tls, *(*uintptr)(unsafe.Pointer(apArg)), __ccgo_ts+35367)
 	if ppApi != 0 {
 		*(*uintptr)(unsafe.Pointer(ppApi)) = pGlobal
 	}
@@ -197613,7 +197613,7 @@ func _fts5SourceIdFunc(tls *libc.TLS, pCtx uintptr, nArg int32, apUnused uintptr
 	_ = libc.Int32FromInt32(0)
 	_ = nArg
 	_ = apUnused
-	Xsqlite3_result_text(tls, pCtx, __ccgo_ts+35360, -int32(1), uintptr(-libc.Int32FromInt32(1)))
+	Xsqlite3_result_text(tls, pCtx, __ccgo_ts+35380, -int32(1), uintptr(-libc.Int32FromInt32(1)))
 }
 
 // C documentation
@@ -197641,11 +197641,11 @@ func _fts5ShadowName(tls *libc.TLS, zName uintptr) (r int32) {
 }
 
 var _azName2 = [5]uintptr{
-	0: __ccgo_ts + 35451,
-	1: __ccgo_ts + 33545,
-	2: __ccgo_ts + 24545,
-	3: __ccgo_ts + 33901,
-	4: __ccgo_ts + 11268,
+	0: __ccgo_ts + 35471,
+	1: __ccgo_ts + 33565,
+	2: __ccgo_ts + 24565,
+	3: __ccgo_ts + 33921,
+	4: __ccgo_ts + 11288,
 }
 
 func _fts5Init(tls *libc.TLS, db uintptr) (r int32) {
@@ -197664,7 +197664,7 @@ func _fts5Init(tls *libc.TLS, db uintptr) (r int32) {
 		(*TFts5Global)(unsafe.Pointer(pGlobal)).Fapi.FxCreateFunction = __ccgo_fp(_fts5CreateAux)
 		(*TFts5Global)(unsafe.Pointer(pGlobal)).Fapi.FxCreateTokenizer = __ccgo_fp(_fts5CreateTokenizer)
 		(*TFts5Global)(unsafe.Pointer(pGlobal)).Fapi.FxFindTokenizer = __ccgo_fp(_fts5FindTokenizer)
-		rc = Xsqlite3_create_module_v2(tls, db, __ccgo_ts+35458, uintptr(unsafe.Pointer(&_fts5Mod)), p, __ccgo_fp(_fts5ModuleDestroy))
+		rc = Xsqlite3_create_module_v2(tls, db, __ccgo_ts+35478, uintptr(unsafe.Pointer(&_fts5Mod)), p, __ccgo_fp(_fts5ModuleDestroy))
 		if rc == m_SQLITE_OK {
 			rc = _sqlite3Fts5IndexInit(tls, db)
 		}
@@ -197681,10 +197681,10 @@ func _fts5Init(tls *libc.TLS, db uintptr) (r int32) {
 			rc = _sqlite3Fts5VocabInit(tls, pGlobal, db)
 		}
 		if rc == m_SQLITE_OK {
-			rc = Xsqlite3_create_function(tls, db, __ccgo_ts+35458, int32(1), int32(m_SQLITE_UTF8), p, __ccgo_fp(_fts5Fts5Func), uintptr(0), uintptr(0))
+			rc = Xsqlite3_create_function(tls, db, __ccgo_ts+35478, int32(1), int32(m_SQLITE_UTF8), p, __ccgo_fp(_fts5Fts5Func), uintptr(0), uintptr(0))
 		}
 		if rc == m_SQLITE_OK {
-			rc = Xsqlite3_create_function(tls, db, __ccgo_ts+35463, 0, int32(m_SQLITE_UTF8), p, __ccgo_fp(_fts5SourceIdFunc), uintptr(0), uintptr(0))
+			rc = Xsqlite3_create_function(tls, db, __ccgo_ts+35483, 0, int32(m_SQLITE_UTF8), p, __ccgo_fp(_fts5SourceIdFunc), uintptr(0), uintptr(0))
 		}
 	}
 	/* If SQLITE_FTS5_ENABLE_TEST_MI is defined, assume that the file
@@ -197786,17 +197786,17 @@ func _fts5StorageGetStmt(tls *libc.TLS, p uintptr, eStmt int32, ppStmt uintptr, 
 	_ = libc.Int32FromInt32(0)
 	if *(*uintptr)(unsafe.Pointer(p + 40 + uintptr(eStmt)*8)) == uintptr(0) {
 		azStmt = [11]uintptr{
-			0:  __ccgo_ts + 35478,
-			1:  __ccgo_ts + 35546,
-			2:  __ccgo_ts + 35615,
-			3:  __ccgo_ts + 35648,
-			4:  __ccgo_ts + 35687,
-			5:  __ccgo_ts + 35727,
-			6:  __ccgo_ts + 35766,
-			7:  __ccgo_ts + 35807,
-			8:  __ccgo_ts + 35846,
-			9:  __ccgo_ts + 35888,
-			10: __ccgo_ts + 35928,
+			0:  __ccgo_ts + 35498,
+			1:  __ccgo_ts + 35566,
+			2:  __ccgo_ts + 35635,
+			3:  __ccgo_ts + 35668,
+			4:  __ccgo_ts + 35707,
+			5:  __ccgo_ts + 35747,
+			6:  __ccgo_ts + 35786,
+			7:  __ccgo_ts + 35827,
+			8:  __ccgo_ts + 35866,
+			9:  __ccgo_ts + 35908,
+			10: __ccgo_ts + 35948,
 		}
 		pC = (*TFts5Storage)(unsafe.Pointer(p)).FpConfig
 		zSql = uintptr(0)
@@ -197846,7 +197846,7 @@ func _fts5StorageGetStmt(tls *libc.TLS, p uintptr, eStmt int32, ppStmt uintptr, 
 			(*TFts5Config)(unsafe.Pointer((*TFts5Storage)(unsafe.Pointer(p)).FpConfig)).FbLock--
 			Xsqlite3_free(tls, zSql)
 			if rc != m_SQLITE_OK && pzErrMsg != 0 {
-				*(*uintptr)(unsafe.Pointer(pzErrMsg)) = Xsqlite3_mprintf(tls, __ccgo_ts+3560, libc.VaList(bp+8, Xsqlite3_errmsg(tls, (*TFts5Config)(unsafe.Pointer(pC)).Fdb)))
+				*(*uintptr)(unsafe.Pointer(pzErrMsg)) = Xsqlite3_mprintf(tls, __ccgo_ts+3580, libc.VaList(bp+8, Xsqlite3_errmsg(tls, (*TFts5Config)(unsafe.Pointer(pC)).Fdb)))
 			}
 		}
 	}
@@ -197883,12 +197883,12 @@ func _sqlite3Fts5DropAll(tls *libc.TLS, pConfig uintptr) (r int32) {
 	defer tls.Free(64)
 	var rc int32
 	_ = rc
-	rc = _fts5ExecPrintf(tls, (*TFts5Config)(unsafe.Pointer(pConfig)).Fdb, uintptr(0), __ccgo_ts+35951, libc.VaList(bp+8, (*TFts5Config)(unsafe.Pointer(pConfig)).FzDb, (*TFts5Config)(unsafe.Pointer(pConfig)).FzName, (*TFts5Config)(unsafe.Pointer(pConfig)).FzDb, (*TFts5Config)(unsafe.Pointer(pConfig)).FzName, (*TFts5Config)(unsafe.Pointer(pConfig)).FzDb, (*TFts5Config)(unsafe.Pointer(pConfig)).FzName))
+	rc = _fts5ExecPrintf(tls, (*TFts5Config)(unsafe.Pointer(pConfig)).Fdb, uintptr(0), __ccgo_ts+35971, libc.VaList(bp+8, (*TFts5Config)(unsafe.Pointer(pConfig)).FzDb, (*TFts5Config)(unsafe.Pointer(pConfig)).FzName, (*TFts5Config)(unsafe.Pointer(pConfig)).FzDb, (*TFts5Config)(unsafe.Pointer(pConfig)).FzName, (*TFts5Config)(unsafe.Pointer(pConfig)).FzDb, (*TFts5Config)(unsafe.Pointer(pConfig)).FzName))
 	if rc == m_SQLITE_OK && (*TFts5Config)(unsafe.Pointer(pConfig)).FbColumnsize != 0 {
-		rc = _fts5ExecPrintf(tls, (*TFts5Config)(unsafe.Pointer(pConfig)).Fdb, uintptr(0), __ccgo_ts+36055, libc.VaList(bp+8, (*TFts5Config)(unsafe.Pointer(pConfig)).FzDb, (*TFts5Config)(unsafe.Pointer(pConfig)).FzName))
+		rc = _fts5ExecPrintf(tls, (*TFts5Config)(unsafe.Pointer(pConfig)).Fdb, uintptr(0), __ccgo_ts+36075, libc.VaList(bp+8, (*TFts5Config)(unsafe.Pointer(pConfig)).FzDb, (*TFts5Config)(unsafe.Pointer(pConfig)).FzName))
 	}
 	if rc == m_SQLITE_OK && (*TFts5Config)(unsafe.Pointer(pConfig)).FeContent == m_FTS5_CONTENT_NORMAL {
-		rc = _fts5ExecPrintf(tls, (*TFts5Config)(unsafe.Pointer(pConfig)).Fdb, uintptr(0), __ccgo_ts+36093, libc.VaList(bp+8, (*TFts5Config)(unsafe.Pointer(pConfig)).FzDb, (*TFts5Config)(unsafe.Pointer(pConfig)).FzName))
+		rc = _fts5ExecPrintf(tls, (*TFts5Config)(unsafe.Pointer(pConfig)).Fdb, uintptr(0), __ccgo_ts+36113, libc.VaList(bp+8, (*TFts5Config)(unsafe.Pointer(pConfig)).FzDb, (*TFts5Config)(unsafe.Pointer(pConfig)).FzName))
 	}
 	return rc
 }
@@ -197897,7 +197897,7 @@ func _fts5StorageRenameOne(tls *libc.TLS, pConfig uintptr, pRc uintptr, zTail ui
 	bp := tls.Alloc(48)
 	defer tls.Free(48)
 	if *(*int32)(unsafe.Pointer(pRc)) == m_SQLITE_OK {
-		*(*int32)(unsafe.Pointer(pRc)) = _fts5ExecPrintf(tls, (*TFts5Config)(unsafe.Pointer(pConfig)).Fdb, uintptr(0), __ccgo_ts+36131, libc.VaList(bp+8, (*TFts5Config)(unsafe.Pointer(pConfig)).FzDb, (*TFts5Config)(unsafe.Pointer(pConfig)).FzName, zTail, zName, zTail))
+		*(*int32)(unsafe.Pointer(pRc)) = _fts5ExecPrintf(tls, (*TFts5Config)(unsafe.Pointer(pConfig)).Fdb, uintptr(0), __ccgo_ts+36151, libc.VaList(bp+8, (*TFts5Config)(unsafe.Pointer(pConfig)).FzDb, (*TFts5Config)(unsafe.Pointer(pConfig)).FzName, zTail, zName, zTail))
 	}
 }
 
@@ -197909,14 +197909,14 @@ func _sqlite3Fts5StorageRename(tls *libc.TLS, pStorage uintptr, zName uintptr) (
 	_ = pConfig
 	pConfig = (*TFts5Storage)(unsafe.Pointer(pStorage)).FpConfig
 	*(*int32)(unsafe.Pointer(bp)) = _sqlite3Fts5StorageSync(tls, pStorage)
-	_fts5StorageRenameOne(tls, pConfig, bp, __ccgo_ts+24545, zName)
-	_fts5StorageRenameOne(tls, pConfig, bp, __ccgo_ts+11268, zName)
-	_fts5StorageRenameOne(tls, pConfig, bp, __ccgo_ts+35451, zName)
+	_fts5StorageRenameOne(tls, pConfig, bp, __ccgo_ts+24565, zName)
+	_fts5StorageRenameOne(tls, pConfig, bp, __ccgo_ts+11288, zName)
+	_fts5StorageRenameOne(tls, pConfig, bp, __ccgo_ts+35471, zName)
 	if (*TFts5Config)(unsafe.Pointer(pConfig)).FbColumnsize != 0 {
-		_fts5StorageRenameOne(tls, pConfig, bp, __ccgo_ts+33901, zName)
+		_fts5StorageRenameOne(tls, pConfig, bp, __ccgo_ts+33921, zName)
 	}
 	if (*TFts5Config)(unsafe.Pointer(pConfig)).FeContent == m_FTS5_CONTENT_NORMAL {
-		_fts5StorageRenameOne(tls, pConfig, bp, __ccgo_ts+33545, zName)
+		_fts5StorageRenameOne(tls, pConfig, bp, __ccgo_ts+33565, zName)
 	}
 	return *(*int32)(unsafe.Pointer(bp))
 }
@@ -197936,13 +197936,13 @@ func _sqlite3Fts5CreateTable(tls *libc.TLS, pConfig uintptr, zPost uintptr, zDef
 	_, _ = rc, v1
 	*(*uintptr)(unsafe.Pointer(bp)) = uintptr(0)
 	if bWithout != 0 {
-		v1 = __ccgo_ts + 29166
+		v1 = __ccgo_ts + 29186
 	} else {
-		v1 = __ccgo_ts + 1511
+		v1 = __ccgo_ts + 1531
 	}
-	rc = _fts5ExecPrintf(tls, (*TFts5Config)(unsafe.Pointer(pConfig)).Fdb, bp, __ccgo_ts+36173, libc.VaList(bp+16, (*TFts5Config)(unsafe.Pointer(pConfig)).FzDb, (*TFts5Config)(unsafe.Pointer(pConfig)).FzName, zPost, zDefn, v1))
+	rc = _fts5ExecPrintf(tls, (*TFts5Config)(unsafe.Pointer(pConfig)).Fdb, bp, __ccgo_ts+36193, libc.VaList(bp+16, (*TFts5Config)(unsafe.Pointer(pConfig)).FzDb, (*TFts5Config)(unsafe.Pointer(pConfig)).FzName, zPost, zDefn, v1))
 	if *(*uintptr)(unsafe.Pointer(bp)) != 0 {
-		*(*uintptr)(unsafe.Pointer(pzErr)) = Xsqlite3_mprintf(tls, __ccgo_ts+36203, libc.VaList(bp+16, (*TFts5Config)(unsafe.Pointer(pConfig)).FzName, zPost, *(*uintptr)(unsafe.Pointer(bp))))
+		*(*uintptr)(unsafe.Pointer(pzErr)) = Xsqlite3_mprintf(tls, __ccgo_ts+36223, libc.VaList(bp+16, (*TFts5Config)(unsafe.Pointer(pConfig)).FzName, zPost, *(*uintptr)(unsafe.Pointer(bp))))
 		Xsqlite3_free(tls, *(*uintptr)(unsafe.Pointer(bp)))
 	}
 	return rc
@@ -197983,31 +197983,31 @@ func _sqlite3Fts5StorageOpen(tls *libc.TLS, pConfig uintptr, pIndex uintptr, bCr
 			if zDefn == uintptr(0) {
 				rc = int32(m_SQLITE_NOMEM)
 			} else {
-				Xsqlite3_snprintf(tls, nDefn, zDefn, __ccgo_ts+36247, 0)
+				Xsqlite3_snprintf(tls, nDefn, zDefn, __ccgo_ts+36267, 0)
 				iOff = int32(libc.Xstrlen(tls, zDefn))
 				i = 0
 				for {
 					if !(i < (*TFts5Config)(unsafe.Pointer(pConfig)).FnCol) {
 						break
 					}
-					Xsqlite3_snprintf(tls, nDefn-iOff, zDefn+uintptr(iOff), __ccgo_ts+36270, libc.VaList(bp+8, i))
+					Xsqlite3_snprintf(tls, nDefn-iOff, zDefn+uintptr(iOff), __ccgo_ts+36290, libc.VaList(bp+8, i))
 					iOff += int32(libc.Xstrlen(tls, zDefn+uintptr(iOff)))
 					goto _2
 				_2:
 					i++
 				}
-				rc = _sqlite3Fts5CreateTable(tls, pConfig, __ccgo_ts+33545, zDefn, 0, pzErr)
+				rc = _sqlite3Fts5CreateTable(tls, pConfig, __ccgo_ts+33565, zDefn, 0, pzErr)
 			}
 			Xsqlite3_free(tls, zDefn)
 		}
 		if rc == m_SQLITE_OK && (*TFts5Config)(unsafe.Pointer(pConfig)).FbColumnsize != 0 {
-			rc = _sqlite3Fts5CreateTable(tls, pConfig, __ccgo_ts+33901, __ccgo_ts+36276, 0, pzErr)
+			rc = _sqlite3Fts5CreateTable(tls, pConfig, __ccgo_ts+33921, __ccgo_ts+36296, 0, pzErr)
 		}
 		if rc == m_SQLITE_OK {
-			rc = _sqlite3Fts5CreateTable(tls, pConfig, __ccgo_ts+35451, __ccgo_ts+36308, int32(1), pzErr)
+			rc = _sqlite3Fts5CreateTable(tls, pConfig, __ccgo_ts+35471, __ccgo_ts+36328, int32(1), pzErr)
 		}
 		if rc == m_SQLITE_OK {
-			rc = _sqlite3Fts5StorageConfigValue(tls, p, __ccgo_ts+34047, uintptr(0), int32(m_FTS5_CURRENT_VERSION))
+			rc = _sqlite3Fts5StorageConfigValue(tls, p, __ccgo_ts+34067, uintptr(0), int32(m_FTS5_CURRENT_VERSION))
 		}
 	}
 	if rc != 0 {
@@ -198296,9 +198296,9 @@ func _sqlite3Fts5StorageDeleteAll(tls *libc.TLS, p uintptr) (r int32) {
 	pConfig = (*TFts5Storage)(unsafe.Pointer(p)).FpConfig
 	(*TFts5Storage)(unsafe.Pointer(p)).FbTotalsValid = 0
 	/* Delete the contents of the %_data and %_docsize tables. */
-	rc = _fts5ExecPrintf(tls, (*TFts5Config)(unsafe.Pointer(pConfig)).Fdb, uintptr(0), __ccgo_ts+36325, libc.VaList(bp+8, (*TFts5Config)(unsafe.Pointer(pConfig)).FzDb, (*TFts5Config)(unsafe.Pointer(pConfig)).FzName, (*TFts5Config)(unsafe.Pointer(pConfig)).FzDb, (*TFts5Config)(unsafe.Pointer(pConfig)).FzName))
+	rc = _fts5ExecPrintf(tls, (*TFts5Config)(unsafe.Pointer(pConfig)).Fdb, uintptr(0), __ccgo_ts+36345, libc.VaList(bp+8, (*TFts5Config)(unsafe.Pointer(pConfig)).FzDb, (*TFts5Config)(unsafe.Pointer(pConfig)).FzName, (*TFts5Config)(unsafe.Pointer(pConfig)).FzDb, (*TFts5Config)(unsafe.Pointer(pConfig)).FzName))
 	if rc == m_SQLITE_OK && (*TFts5Config)(unsafe.Pointer(pConfig)).FbColumnsize != 0 {
-		rc = _fts5ExecPrintf(tls, (*TFts5Config)(unsafe.Pointer(pConfig)).Fdb, uintptr(0), __ccgo_ts+36375, libc.VaList(bp+8, (*TFts5Config)(unsafe.Pointer(pConfig)).FzDb, (*TFts5Config)(unsafe.Pointer(pConfig)).FzName))
+		rc = _fts5ExecPrintf(tls, (*TFts5Config)(unsafe.Pointer(pConfig)).Fdb, uintptr(0), __ccgo_ts+36395, libc.VaList(bp+8, (*TFts5Config)(unsafe.Pointer(pConfig)).FzDb, (*TFts5Config)(unsafe.Pointer(pConfig)).FzName))
 	}
 	/* Reinitialize the %_data table. This call creates the initial structure
 	 ** and averages records.  */
@@ -198306,7 +198306,7 @@ func _sqlite3Fts5StorageDeleteAll(tls *libc.TLS, p uintptr) (r int32) {
 		rc = _sqlite3Fts5IndexReinit(tls, (*TFts5Storage)(unsafe.Pointer(p)).FpIndex)
 	}
 	if rc == m_SQLITE_OK {
-		rc = _sqlite3Fts5StorageConfigValue(tls, p, __ccgo_ts+34047, uintptr(0), int32(m_FTS5_CURRENT_VERSION))
+		rc = _sqlite3Fts5StorageConfigValue(tls, p, __ccgo_ts+34067, uintptr(0), int32(m_FTS5_CURRENT_VERSION))
 	}
 	return rc
 }
@@ -198517,7 +198517,7 @@ func _fts5StorageCount(tls *libc.TLS, p uintptr, zSuffix uintptr, pnRow uintptr)
 	var _ /* pCnt at bp+0 */ uintptr
 	_, _, _ = pConfig, rc, zSql
 	pConfig = (*TFts5Storage)(unsafe.Pointer(p)).FpConfig
-	zSql = Xsqlite3_mprintf(tls, __ccgo_ts+36404, libc.VaList(bp+16, (*TFts5Config)(unsafe.Pointer(pConfig)).FzDb, (*TFts5Config)(unsafe.Pointer(pConfig)).FzName, zSuffix))
+	zSql = Xsqlite3_mprintf(tls, __ccgo_ts+36424, libc.VaList(bp+16, (*TFts5Config)(unsafe.Pointer(pConfig)).FzDb, (*TFts5Config)(unsafe.Pointer(pConfig)).FzName, zSuffix))
 	if zSql == uintptr(0) {
 		rc = int32(m_SQLITE_NOMEM)
 	} else {
@@ -198721,14 +198721,14 @@ func _sqlite3Fts5StorageIntegrity(tls *libc.TLS, p uintptr, iArg int32) (r int32
 		 ** number of rows.  */
 		if rc == m_SQLITE_OK && (*TFts5Config)(unsafe.Pointer(pConfig)).FeContent == m_FTS5_CONTENT_NORMAL {
 			*(*Ti64)(unsafe.Pointer(bp + 48)) = 0
-			rc = _fts5StorageCount(tls, p, __ccgo_ts+33545, bp+48)
+			rc = _fts5StorageCount(tls, p, __ccgo_ts+33565, bp+48)
 			if rc == m_SQLITE_OK && *(*Ti64)(unsafe.Pointer(bp + 48)) != (*TFts5Storage)(unsafe.Pointer(p)).FnTotalRow {
 				rc = libc.Int32FromInt32(m_SQLITE_CORRUPT) | libc.Int32FromInt32(1)<<libc.Int32FromInt32(8)
 			}
 		}
 		if rc == m_SQLITE_OK && (*TFts5Config)(unsafe.Pointer(pConfig)).FbColumnsize != 0 {
 			*(*Ti64)(unsafe.Pointer(bp + 56)) = 0
-			rc = _fts5StorageCount(tls, p, __ccgo_ts+33901, bp+56)
+			rc = _fts5StorageCount(tls, p, __ccgo_ts+33921, bp+56)
 			if rc == m_SQLITE_OK && *(*Ti64)(unsafe.Pointer(bp + 56)) != (*TFts5Storage)(unsafe.Pointer(p)).FnTotalRow {
 				rc = libc.Int32FromInt32(m_SQLITE_CORRUPT) | libc.Int32FromInt32(1)<<libc.Int32FromInt32(8)
 			}
@@ -199094,10 +199094,10 @@ func _fts5AsciiCreate(tls *libc.TLS, pUnused uintptr, azArg uintptr, nArg int32,
 					break
 				}
 				zArg = *(*uintptr)(unsafe.Pointer(azArg + uintptr(i+int32(1))*8))
-				if 0 == Xsqlite3_stricmp(tls, *(*uintptr)(unsafe.Pointer(azArg + uintptr(i)*8)), __ccgo_ts+36436) {
+				if 0 == Xsqlite3_stricmp(tls, *(*uintptr)(unsafe.Pointer(azArg + uintptr(i)*8)), __ccgo_ts+36456) {
 					_fts5AsciiAddExceptions(tls, p, zArg, int32(1))
 				} else {
-					if 0 == Xsqlite3_stricmp(tls, *(*uintptr)(unsafe.Pointer(azArg + uintptr(i)*8)), __ccgo_ts+36447) {
+					if 0 == Xsqlite3_stricmp(tls, *(*uintptr)(unsafe.Pointer(azArg + uintptr(i)*8)), __ccgo_ts+36467) {
 						_fts5AsciiAddExceptions(tls, p, zArg, 0)
 					} else {
 						rc = int32(m_SQLITE_ERROR)
@@ -199372,7 +199372,7 @@ func _fts5UnicodeCreate(tls *libc.TLS, pUnused uintptr, azArg uintptr, nArg int3
 	} else {
 		p = Xsqlite3_malloc(tls, int32(192))
 		if p != 0 {
-			zCat = __ccgo_ts + 36458
+			zCat = __ccgo_ts + 36478
 			libc.Xmemset(tls, p, 0, uint64(192))
 			(*TUnicode61Tokenizer)(unsafe.Pointer(p)).FeRemoveDiacritic = int32(m_FTS5_REMOVE_DIACRITICS_SIMPLE)
 			(*TUnicode61Tokenizer)(unsafe.Pointer(p)).FnFold = int32(64)
@@ -199386,7 +199386,7 @@ func _fts5UnicodeCreate(tls *libc.TLS, pUnused uintptr, azArg uintptr, nArg int3
 				if !(rc == m_SQLITE_OK && i < nArg) {
 					break
 				}
-				if 0 == Xsqlite3_stricmp(tls, *(*uintptr)(unsafe.Pointer(azArg + uintptr(i)*8)), __ccgo_ts+36467) {
+				if 0 == Xsqlite3_stricmp(tls, *(*uintptr)(unsafe.Pointer(azArg + uintptr(i)*8)), __ccgo_ts+36487) {
 					zCat = *(*uintptr)(unsafe.Pointer(azArg + uintptr(i+int32(1))*8))
 				}
 				goto _1
@@ -199402,7 +199402,7 @@ func _fts5UnicodeCreate(tls *libc.TLS, pUnused uintptr, azArg uintptr, nArg int3
 					break
 				}
 				zArg = *(*uintptr)(unsafe.Pointer(azArg + uintptr(i+int32(1))*8))
-				if 0 == Xsqlite3_stricmp(tls, *(*uintptr)(unsafe.Pointer(azArg + uintptr(i)*8)), __ccgo_ts+36478) {
+				if 0 == Xsqlite3_stricmp(tls, *(*uintptr)(unsafe.Pointer(azArg + uintptr(i)*8)), __ccgo_ts+36498) {
 					if int32(*(*uint8)(unsafe.Pointer(zArg))) != int32('0') && int32(*(*uint8)(unsafe.Pointer(zArg))) != int32('1') && int32(*(*uint8)(unsafe.Pointer(zArg))) != int32('2') || *(*uint8)(unsafe.Pointer(zArg + 1)) != 0 {
 						rc = int32(m_SQLITE_ERROR)
 					} else {
@@ -199410,13 +199410,13 @@ func _fts5UnicodeCreate(tls *libc.TLS, pUnused uintptr, azArg uintptr, nArg int3
 						_ = libc.Int32FromInt32(0)
 					}
 				} else {
-					if 0 == Xsqlite3_stricmp(tls, *(*uintptr)(unsafe.Pointer(azArg + uintptr(i)*8)), __ccgo_ts+36436) {
+					if 0 == Xsqlite3_stricmp(tls, *(*uintptr)(unsafe.Pointer(azArg + uintptr(i)*8)), __ccgo_ts+36456) {
 						rc = _fts5UnicodeAddExceptions(tls, p, zArg, int32(1))
 					} else {
-						if 0 == Xsqlite3_stricmp(tls, *(*uintptr)(unsafe.Pointer(azArg + uintptr(i)*8)), __ccgo_ts+36447) {
+						if 0 == Xsqlite3_stricmp(tls, *(*uintptr)(unsafe.Pointer(azArg + uintptr(i)*8)), __ccgo_ts+36467) {
 							rc = _fts5UnicodeAddExceptions(tls, p, zArg, 0)
 						} else {
-							if 0 == Xsqlite3_stricmp(tls, *(*uintptr)(unsafe.Pointer(azArg + uintptr(i)*8)), __ccgo_ts+36467) {
+							if 0 == Xsqlite3_stricmp(tls, *(*uintptr)(unsafe.Pointer(azArg + uintptr(i)*8)), __ccgo_ts+36487) {
 								/* no-op */
 							} else {
 								rc = int32(m_SQLITE_ERROR)
@@ -199686,7 +199686,7 @@ func _fts5PorterCreate(tls *libc.TLS, pCtx uintptr, azArg uintptr, nArg int32, p
 	pApi = pCtx
 	rc = m_SQLITE_OK
 	*(*uintptr)(unsafe.Pointer(bp)) = uintptr(0)
-	zBase = __ccgo_ts + 36496
+	zBase = __ccgo_ts + 36516
 	if nArg > 0 {
 		zBase = *(*uintptr)(unsafe.Pointer(azArg))
 	}
@@ -199891,64 +199891,64 @@ func _fts5PorterStep4(tls *libc.TLS, aBuf uintptr, pnBuf uintptr) (r int32) {
 	nBuf = *(*int32)(unsafe.Pointer(pnBuf))
 	switch int32(*(*uint8)(unsafe.Pointer(aBuf + uintptr(nBuf-int32(2))))) {
 	case int32('a'):
-		if nBuf > int32(2) && 0 == libc.Xmemcmp(tls, __ccgo_ts+36506, aBuf+uintptr(nBuf-int32(2)), uint64(2)) {
+		if nBuf > int32(2) && 0 == libc.Xmemcmp(tls, __ccgo_ts+36526, aBuf+uintptr(nBuf-int32(2)), uint64(2)) {
 			if _fts5Porter_MGt1(tls, aBuf, nBuf-int32(2)) != 0 {
 				*(*int32)(unsafe.Pointer(pnBuf)) = nBuf - int32(2)
 			}
 		}
 	case int32('c'):
-		if nBuf > int32(4) && 0 == libc.Xmemcmp(tls, __ccgo_ts+36509, aBuf+uintptr(nBuf-int32(4)), uint64(4)) {
+		if nBuf > int32(4) && 0 == libc.Xmemcmp(tls, __ccgo_ts+36529, aBuf+uintptr(nBuf-int32(4)), uint64(4)) {
 			if _fts5Porter_MGt1(tls, aBuf, nBuf-int32(4)) != 0 {
 				*(*int32)(unsafe.Pointer(pnBuf)) = nBuf - int32(4)
 			}
 		} else {
-			if nBuf > int32(4) && 0 == libc.Xmemcmp(tls, __ccgo_ts+36514, aBuf+uintptr(nBuf-int32(4)), uint64(4)) {
+			if nBuf > int32(4) && 0 == libc.Xmemcmp(tls, __ccgo_ts+36534, aBuf+uintptr(nBuf-int32(4)), uint64(4)) {
 				if _fts5Porter_MGt1(tls, aBuf, nBuf-int32(4)) != 0 {
 					*(*int32)(unsafe.Pointer(pnBuf)) = nBuf - int32(4)
 				}
 			}
 		}
 	case int32('e'):
-		if nBuf > int32(2) && 0 == libc.Xmemcmp(tls, __ccgo_ts+36519, aBuf+uintptr(nBuf-int32(2)), uint64(2)) {
+		if nBuf > int32(2) && 0 == libc.Xmemcmp(tls, __ccgo_ts+36539, aBuf+uintptr(nBuf-int32(2)), uint64(2)) {
 			if _fts5Porter_MGt1(tls, aBuf, nBuf-int32(2)) != 0 {
 				*(*int32)(unsafe.Pointer(pnBuf)) = nBuf - int32(2)
 			}
 		}
 	case int32('i'):
-		if nBuf > int32(2) && 0 == libc.Xmemcmp(tls, __ccgo_ts+36522, aBuf+uintptr(nBuf-int32(2)), uint64(2)) {
+		if nBuf > int32(2) && 0 == libc.Xmemcmp(tls, __ccgo_ts+36542, aBuf+uintptr(nBuf-int32(2)), uint64(2)) {
 			if _fts5Porter_MGt1(tls, aBuf, nBuf-int32(2)) != 0 {
 				*(*int32)(unsafe.Pointer(pnBuf)) = nBuf - int32(2)
 			}
 		}
 	case int32('l'):
-		if nBuf > int32(4) && 0 == libc.Xmemcmp(tls, __ccgo_ts+36525, aBuf+uintptr(nBuf-int32(4)), uint64(4)) {
+		if nBuf > int32(4) && 0 == libc.Xmemcmp(tls, __ccgo_ts+36545, aBuf+uintptr(nBuf-int32(4)), uint64(4)) {
 			if _fts5Porter_MGt1(tls, aBuf, nBuf-int32(4)) != 0 {
 				*(*int32)(unsafe.Pointer(pnBuf)) = nBuf - int32(4)
 			}
 		} else {
-			if nBuf > int32(4) && 0 == libc.Xmemcmp(tls, __ccgo_ts+36530, aBuf+uintptr(nBuf-int32(4)), uint64(4)) {
+			if nBuf > int32(4) && 0 == libc.Xmemcmp(tls, __ccgo_ts+36550, aBuf+uintptr(nBuf-int32(4)), uint64(4)) {
 				if _fts5Porter_MGt1(tls, aBuf, nBuf-int32(4)) != 0 {
 					*(*int32)(unsafe.Pointer(pnBuf)) = nBuf - int32(4)
 				}
 			}
 		}
 	case int32('n'):
-		if nBuf > int32(3) && 0 == libc.Xmemcmp(tls, __ccgo_ts+36535, aBuf+uintptr(nBuf-int32(3)), uint64(3)) {
+		if nBuf > int32(3) && 0 == libc.Xmemcmp(tls, __ccgo_ts+36555, aBuf+uintptr(nBuf-int32(3)), uint64(3)) {
 			if _fts5Porter_MGt1(tls, aBuf, nBuf-int32(3)) != 0 {
 				*(*int32)(unsafe.Pointer(pnBuf)) = nBuf - int32(3)
 			}
 		} else {
-			if nBuf > int32(5) && 0 == libc.Xmemcmp(tls, __ccgo_ts+36539, aBuf+uintptr(nBuf-int32(5)), uint64(5)) {
+			if nBuf > int32(5) && 0 == libc.Xmemcmp(tls, __ccgo_ts+36559, aBuf+uintptr(nBuf-int32(5)), uint64(5)) {
 				if _fts5Porter_MGt1(tls, aBuf, nBuf-int32(5)) != 0 {
 					*(*int32)(unsafe.Pointer(pnBuf)) = nBuf - int32(5)
 				}
 			} else {
-				if nBuf > int32(4) && 0 == libc.Xmemcmp(tls, __ccgo_ts+36545, aBuf+uintptr(nBuf-int32(4)), uint64(4)) {
+				if nBuf > int32(4) && 0 == libc.Xmemcmp(tls, __ccgo_ts+36565, aBuf+uintptr(nBuf-int32(4)), uint64(4)) {
 					if _fts5Porter_MGt1(tls, aBuf, nBuf-int32(4)) != 0 {
 						*(*int32)(unsafe.Pointer(pnBuf)) = nBuf - int32(4)
 					}
 				} else {
-					if nBuf > int32(3) && 0 == libc.Xmemcmp(tls, __ccgo_ts+36550, aBuf+uintptr(nBuf-int32(3)), uint64(3)) {
+					if nBuf > int32(3) && 0 == libc.Xmemcmp(tls, __ccgo_ts+36570, aBuf+uintptr(nBuf-int32(3)), uint64(3)) {
 						if _fts5Porter_MGt1(tls, aBuf, nBuf-int32(3)) != 0 {
 							*(*int32)(unsafe.Pointer(pnBuf)) = nBuf - int32(3)
 						}
@@ -199957,49 +199957,49 @@ func _fts5PorterStep4(tls *libc.TLS, aBuf uintptr, pnBuf uintptr) (r int32) {
 			}
 		}
 	case int32('o'):
-		if nBuf > int32(3) && 0 == libc.Xmemcmp(tls, __ccgo_ts+36554, aBuf+uintptr(nBuf-int32(3)), uint64(3)) {
+		if nBuf > int32(3) && 0 == libc.Xmemcmp(tls, __ccgo_ts+36574, aBuf+uintptr(nBuf-int32(3)), uint64(3)) {
 			if _fts5Porter_MGt1_and_S_or_T(tls, aBuf, nBuf-int32(3)) != 0 {
 				*(*int32)(unsafe.Pointer(pnBuf)) = nBuf - int32(3)
 			}
 		} else {
-			if nBuf > int32(2) && 0 == libc.Xmemcmp(tls, __ccgo_ts+36558, aBuf+uintptr(nBuf-int32(2)), uint64(2)) {
+			if nBuf > int32(2) && 0 == libc.Xmemcmp(tls, __ccgo_ts+36578, aBuf+uintptr(nBuf-int32(2)), uint64(2)) {
 				if _fts5Porter_MGt1(tls, aBuf, nBuf-int32(2)) != 0 {
 					*(*int32)(unsafe.Pointer(pnBuf)) = nBuf - int32(2)
 				}
 			}
 		}
 	case int32('s'):
-		if nBuf > int32(3) && 0 == libc.Xmemcmp(tls, __ccgo_ts+36561, aBuf+uintptr(nBuf-int32(3)), uint64(3)) {
+		if nBuf > int32(3) && 0 == libc.Xmemcmp(tls, __ccgo_ts+36581, aBuf+uintptr(nBuf-int32(3)), uint64(3)) {
 			if _fts5Porter_MGt1(tls, aBuf, nBuf-int32(3)) != 0 {
 				*(*int32)(unsafe.Pointer(pnBuf)) = nBuf - int32(3)
 			}
 		}
 	case int32('t'):
-		if nBuf > int32(3) && 0 == libc.Xmemcmp(tls, __ccgo_ts+36565, aBuf+uintptr(nBuf-int32(3)), uint64(3)) {
+		if nBuf > int32(3) && 0 == libc.Xmemcmp(tls, __ccgo_ts+36585, aBuf+uintptr(nBuf-int32(3)), uint64(3)) {
 			if _fts5Porter_MGt1(tls, aBuf, nBuf-int32(3)) != 0 {
 				*(*int32)(unsafe.Pointer(pnBuf)) = nBuf - int32(3)
 			}
 		} else {
-			if nBuf > int32(3) && 0 == libc.Xmemcmp(tls, __ccgo_ts+36569, aBuf+uintptr(nBuf-int32(3)), uint64(3)) {
+			if nBuf > int32(3) && 0 == libc.Xmemcmp(tls, __ccgo_ts+36589, aBuf+uintptr(nBuf-int32(3)), uint64(3)) {
 				if _fts5Porter_MGt1(tls, aBuf, nBuf-int32(3)) != 0 {
 					*(*int32)(unsafe.Pointer(pnBuf)) = nBuf - int32(3)
 				}
 			}
 		}
 	case int32('u'):
-		if nBuf > int32(3) && 0 == libc.Xmemcmp(tls, __ccgo_ts+36573, aBuf+uintptr(nBuf-int32(3)), uint64(3)) {
+		if nBuf > int32(3) && 0 == libc.Xmemcmp(tls, __ccgo_ts+36593, aBuf+uintptr(nBuf-int32(3)), uint64(3)) {
 			if _fts5Porter_MGt1(tls, aBuf, nBuf-int32(3)) != 0 {
 				*(*int32)(unsafe.Pointer(pnBuf)) = nBuf - int32(3)
 			}
 		}
 	case int32('v'):
-		if nBuf > int32(3) && 0 == libc.Xmemcmp(tls, __ccgo_ts+36577, aBuf+uintptr(nBuf-int32(3)), uint64(3)) {
+		if nBuf > int32(3) && 0 == libc.Xmemcmp(tls, __ccgo_ts+36597, aBuf+uintptr(nBuf-int32(3)), uint64(3)) {
 			if _fts5Porter_MGt1(tls, aBuf, nBuf-int32(3)) != 0 {
 				*(*int32)(unsafe.Pointer(pnBuf)) = nBuf - int32(3)
 			}
 		}
 	case int32('z'):
-		if nBuf > int32(3) && 0 == libc.Xmemcmp(tls, __ccgo_ts+36581, aBuf+uintptr(nBuf-int32(3)), uint64(3)) {
+		if nBuf > int32(3) && 0 == libc.Xmemcmp(tls, __ccgo_ts+36601, aBuf+uintptr(nBuf-int32(3)), uint64(3)) {
 			if _fts5Porter_MGt1(tls, aBuf, nBuf-int32(3)) != 0 {
 				*(*int32)(unsafe.Pointer(pnBuf)) = nBuf - int32(3)
 			}
@@ -200016,20 +200016,20 @@ func _fts5PorterStep1B2(tls *libc.TLS, aBuf uintptr, pnBuf uintptr) (r int32) {
 	nBuf = *(*int32)(unsafe.Pointer(pnBuf))
 	switch int32(*(*uint8)(unsafe.Pointer(aBuf + uintptr(nBuf-int32(2))))) {
 	case int32('a'):
-		if nBuf > int32(2) && 0 == libc.Xmemcmp(tls, __ccgo_ts+36585, aBuf+uintptr(nBuf-int32(2)), uint64(2)) {
-			libc.Xmemcpy(tls, aBuf+uintptr(nBuf-int32(2)), __ccgo_ts+36565, uint64(3))
+		if nBuf > int32(2) && 0 == libc.Xmemcmp(tls, __ccgo_ts+36605, aBuf+uintptr(nBuf-int32(2)), uint64(2)) {
+			libc.Xmemcpy(tls, aBuf+uintptr(nBuf-int32(2)), __ccgo_ts+36585, uint64(3))
 			*(*int32)(unsafe.Pointer(pnBuf)) = nBuf - int32(2) + int32(3)
 			ret = int32(1)
 		}
 	case int32('b'):
-		if nBuf > int32(2) && 0 == libc.Xmemcmp(tls, __ccgo_ts+36588, aBuf+uintptr(nBuf-int32(2)), uint64(2)) {
-			libc.Xmemcpy(tls, aBuf+uintptr(nBuf-int32(2)), __ccgo_ts+36591, uint64(3))
+		if nBuf > int32(2) && 0 == libc.Xmemcmp(tls, __ccgo_ts+36608, aBuf+uintptr(nBuf-int32(2)), uint64(2)) {
+			libc.Xmemcpy(tls, aBuf+uintptr(nBuf-int32(2)), __ccgo_ts+36611, uint64(3))
 			*(*int32)(unsafe.Pointer(pnBuf)) = nBuf - int32(2) + int32(3)
 			ret = int32(1)
 		}
 	case int32('i'):
-		if nBuf > int32(2) && 0 == libc.Xmemcmp(tls, __ccgo_ts+36595, aBuf+uintptr(nBuf-int32(2)), uint64(2)) {
-			libc.Xmemcpy(tls, aBuf+uintptr(nBuf-int32(2)), __ccgo_ts+36581, uint64(3))
+		if nBuf > int32(2) && 0 == libc.Xmemcmp(tls, __ccgo_ts+36615, aBuf+uintptr(nBuf-int32(2)), uint64(2)) {
+			libc.Xmemcpy(tls, aBuf+uintptr(nBuf-int32(2)), __ccgo_ts+36601, uint64(3))
 			*(*int32)(unsafe.Pointer(pnBuf)) = nBuf - int32(2) + int32(3)
 			ret = int32(1)
 		}
@@ -200045,75 +200045,75 @@ func _fts5PorterStep2(tls *libc.TLS, aBuf uintptr, pnBuf uintptr) (r int32) {
 	nBuf = *(*int32)(unsafe.Pointer(pnBuf))
 	switch int32(*(*uint8)(unsafe.Pointer(aBuf + uintptr(nBuf-int32(2))))) {
 	case int32('a'):
-		if nBuf > int32(7) && 0 == libc.Xmemcmp(tls, __ccgo_ts+36598, aBuf+uintptr(nBuf-int32(7)), uint64(7)) {
+		if nBuf > int32(7) && 0 == libc.Xmemcmp(tls, __ccgo_ts+36618, aBuf+uintptr(nBuf-int32(7)), uint64(7)) {
 			if _fts5Porter_MGt0(tls, aBuf, nBuf-int32(7)) != 0 {
-				libc.Xmemcpy(tls, aBuf+uintptr(nBuf-int32(7)), __ccgo_ts+36565, uint64(3))
+				libc.Xmemcpy(tls, aBuf+uintptr(nBuf-int32(7)), __ccgo_ts+36585, uint64(3))
 				*(*int32)(unsafe.Pointer(pnBuf)) = nBuf - int32(7) + int32(3)
 			}
 		} else {
-			if nBuf > int32(6) && 0 == libc.Xmemcmp(tls, __ccgo_ts+36606, aBuf+uintptr(nBuf-int32(6)), uint64(6)) {
+			if nBuf > int32(6) && 0 == libc.Xmemcmp(tls, __ccgo_ts+36626, aBuf+uintptr(nBuf-int32(6)), uint64(6)) {
 				if _fts5Porter_MGt0(tls, aBuf, nBuf-int32(6)) != 0 {
-					libc.Xmemcpy(tls, aBuf+uintptr(nBuf-int32(6)), __ccgo_ts+36613, uint64(4))
+					libc.Xmemcpy(tls, aBuf+uintptr(nBuf-int32(6)), __ccgo_ts+36633, uint64(4))
 					*(*int32)(unsafe.Pointer(pnBuf)) = nBuf - int32(6) + int32(4)
 				}
 			}
 		}
 	case int32('c'):
-		if nBuf > int32(4) && 0 == libc.Xmemcmp(tls, __ccgo_ts+36618, aBuf+uintptr(nBuf-int32(4)), uint64(4)) {
+		if nBuf > int32(4) && 0 == libc.Xmemcmp(tls, __ccgo_ts+36638, aBuf+uintptr(nBuf-int32(4)), uint64(4)) {
 			if _fts5Porter_MGt0(tls, aBuf, nBuf-int32(4)) != 0 {
-				libc.Xmemcpy(tls, aBuf+uintptr(nBuf-int32(4)), __ccgo_ts+36514, uint64(4))
+				libc.Xmemcpy(tls, aBuf+uintptr(nBuf-int32(4)), __ccgo_ts+36534, uint64(4))
 				*(*int32)(unsafe.Pointer(pnBuf)) = nBuf - int32(4) + int32(4)
 			}
 		} else {
-			if nBuf > int32(4) && 0 == libc.Xmemcmp(tls, __ccgo_ts+36623, aBuf+uintptr(nBuf-int32(4)), uint64(4)) {
+			if nBuf > int32(4) && 0 == libc.Xmemcmp(tls, __ccgo_ts+36643, aBuf+uintptr(nBuf-int32(4)), uint64(4)) {
 				if _fts5Porter_MGt0(tls, aBuf, nBuf-int32(4)) != 0 {
-					libc.Xmemcpy(tls, aBuf+uintptr(nBuf-int32(4)), __ccgo_ts+36509, uint64(4))
+					libc.Xmemcpy(tls, aBuf+uintptr(nBuf-int32(4)), __ccgo_ts+36529, uint64(4))
 					*(*int32)(unsafe.Pointer(pnBuf)) = nBuf - int32(4) + int32(4)
 				}
 			}
 		}
 	case int32('e'):
-		if nBuf > int32(4) && 0 == libc.Xmemcmp(tls, __ccgo_ts+36628, aBuf+uintptr(nBuf-int32(4)), uint64(4)) {
+		if nBuf > int32(4) && 0 == libc.Xmemcmp(tls, __ccgo_ts+36648, aBuf+uintptr(nBuf-int32(4)), uint64(4)) {
 			if _fts5Porter_MGt0(tls, aBuf, nBuf-int32(4)) != 0 {
-				libc.Xmemcpy(tls, aBuf+uintptr(nBuf-int32(4)), __ccgo_ts+36581, uint64(3))
+				libc.Xmemcpy(tls, aBuf+uintptr(nBuf-int32(4)), __ccgo_ts+36601, uint64(3))
 				*(*int32)(unsafe.Pointer(pnBuf)) = nBuf - int32(4) + int32(3)
 			}
 		}
 	case int32('g'):
-		if nBuf > int32(4) && 0 == libc.Xmemcmp(tls, __ccgo_ts+36633, aBuf+uintptr(nBuf-int32(4)), uint64(4)) {
+		if nBuf > int32(4) && 0 == libc.Xmemcmp(tls, __ccgo_ts+36653, aBuf+uintptr(nBuf-int32(4)), uint64(4)) {
 			if _fts5Porter_MGt0(tls, aBuf, nBuf-int32(4)) != 0 {
-				libc.Xmemcpy(tls, aBuf+uintptr(nBuf-int32(4)), __ccgo_ts+15267, uint64(3))
+				libc.Xmemcpy(tls, aBuf+uintptr(nBuf-int32(4)), __ccgo_ts+15287, uint64(3))
 				*(*int32)(unsafe.Pointer(pnBuf)) = nBuf - int32(4) + int32(3)
 			}
 		}
 	case int32('l'):
-		if nBuf > int32(3) && 0 == libc.Xmemcmp(tls, __ccgo_ts+36638, aBuf+uintptr(nBuf-int32(3)), uint64(3)) {
+		if nBuf > int32(3) && 0 == libc.Xmemcmp(tls, __ccgo_ts+36658, aBuf+uintptr(nBuf-int32(3)), uint64(3)) {
 			if _fts5Porter_MGt0(tls, aBuf, nBuf-int32(3)) != 0 {
-				libc.Xmemcpy(tls, aBuf+uintptr(nBuf-int32(3)), __ccgo_ts+36591, uint64(3))
+				libc.Xmemcpy(tls, aBuf+uintptr(nBuf-int32(3)), __ccgo_ts+36611, uint64(3))
 				*(*int32)(unsafe.Pointer(pnBuf)) = nBuf - int32(3) + int32(3)
 			}
 		} else {
-			if nBuf > int32(4) && 0 == libc.Xmemcmp(tls, __ccgo_ts+36642, aBuf+uintptr(nBuf-int32(4)), uint64(4)) {
+			if nBuf > int32(4) && 0 == libc.Xmemcmp(tls, __ccgo_ts+36662, aBuf+uintptr(nBuf-int32(4)), uint64(4)) {
 				if _fts5Porter_MGt0(tls, aBuf, nBuf-int32(4)) != 0 {
-					libc.Xmemcpy(tls, aBuf+uintptr(nBuf-int32(4)), __ccgo_ts+36506, uint64(2))
+					libc.Xmemcpy(tls, aBuf+uintptr(nBuf-int32(4)), __ccgo_ts+36526, uint64(2))
 					*(*int32)(unsafe.Pointer(pnBuf)) = nBuf - int32(4) + int32(2)
 				}
 			} else {
-				if nBuf > int32(5) && 0 == libc.Xmemcmp(tls, __ccgo_ts+36647, aBuf+uintptr(nBuf-int32(5)), uint64(5)) {
+				if nBuf > int32(5) && 0 == libc.Xmemcmp(tls, __ccgo_ts+36667, aBuf+uintptr(nBuf-int32(5)), uint64(5)) {
 					if _fts5Porter_MGt0(tls, aBuf, nBuf-int32(5)) != 0 {
-						libc.Xmemcpy(tls, aBuf+uintptr(nBuf-int32(5)), __ccgo_ts+36550, uint64(3))
+						libc.Xmemcpy(tls, aBuf+uintptr(nBuf-int32(5)), __ccgo_ts+36570, uint64(3))
 						*(*int32)(unsafe.Pointer(pnBuf)) = nBuf - int32(5) + int32(3)
 					}
 				} else {
-					if nBuf > int32(3) && 0 == libc.Xmemcmp(tls, __ccgo_ts+36653, aBuf+uintptr(nBuf-int32(3)), uint64(3)) {
+					if nBuf > int32(3) && 0 == libc.Xmemcmp(tls, __ccgo_ts+36673, aBuf+uintptr(nBuf-int32(3)), uint64(3)) {
 						if _fts5Porter_MGt0(tls, aBuf, nBuf-int32(3)) != 0 {
-							libc.Xmemcpy(tls, aBuf+uintptr(nBuf-int32(3)), __ccgo_ts+36657, uint64(1))
+							libc.Xmemcpy(tls, aBuf+uintptr(nBuf-int32(3)), __ccgo_ts+36677, uint64(1))
 							*(*int32)(unsafe.Pointer(pnBuf)) = nBuf - int32(3) + int32(1)
 						}
 					} else {
-						if nBuf > int32(5) && 0 == libc.Xmemcmp(tls, __ccgo_ts+36659, aBuf+uintptr(nBuf-int32(5)), uint64(5)) {
+						if nBuf > int32(5) && 0 == libc.Xmemcmp(tls, __ccgo_ts+36679, aBuf+uintptr(nBuf-int32(5)), uint64(5)) {
 							if _fts5Porter_MGt0(tls, aBuf, nBuf-int32(5)) != 0 {
-								libc.Xmemcpy(tls, aBuf+uintptr(nBuf-int32(5)), __ccgo_ts+36573, uint64(3))
+								libc.Xmemcpy(tls, aBuf+uintptr(nBuf-int32(5)), __ccgo_ts+36593, uint64(3))
 								*(*int32)(unsafe.Pointer(pnBuf)) = nBuf - int32(5) + int32(3)
 							}
 						}
@@ -200122,48 +200122,48 @@ func _fts5PorterStep2(tls *libc.TLS, aBuf uintptr, pnBuf uintptr) (r int32) {
 			}
 		}
 	case int32('o'):
-		if nBuf > int32(7) && 0 == libc.Xmemcmp(tls, __ccgo_ts+36665, aBuf+uintptr(nBuf-int32(7)), uint64(7)) {
+		if nBuf > int32(7) && 0 == libc.Xmemcmp(tls, __ccgo_ts+36685, aBuf+uintptr(nBuf-int32(7)), uint64(7)) {
 			if _fts5Porter_MGt0(tls, aBuf, nBuf-int32(7)) != 0 {
-				libc.Xmemcpy(tls, aBuf+uintptr(nBuf-int32(7)), __ccgo_ts+36581, uint64(3))
+				libc.Xmemcpy(tls, aBuf+uintptr(nBuf-int32(7)), __ccgo_ts+36601, uint64(3))
 				*(*int32)(unsafe.Pointer(pnBuf)) = nBuf - int32(7) + int32(3)
 			}
 		} else {
-			if nBuf > int32(5) && 0 == libc.Xmemcmp(tls, __ccgo_ts+36673, aBuf+uintptr(nBuf-int32(5)), uint64(5)) {
+			if nBuf > int32(5) && 0 == libc.Xmemcmp(tls, __ccgo_ts+36693, aBuf+uintptr(nBuf-int32(5)), uint64(5)) {
 				if _fts5Porter_MGt0(tls, aBuf, nBuf-int32(5)) != 0 {
-					libc.Xmemcpy(tls, aBuf+uintptr(nBuf-int32(5)), __ccgo_ts+36565, uint64(3))
+					libc.Xmemcpy(tls, aBuf+uintptr(nBuf-int32(5)), __ccgo_ts+36585, uint64(3))
 					*(*int32)(unsafe.Pointer(pnBuf)) = nBuf - int32(5) + int32(3)
 				}
 			} else {
-				if nBuf > int32(4) && 0 == libc.Xmemcmp(tls, __ccgo_ts+36679, aBuf+uintptr(nBuf-int32(4)), uint64(4)) {
+				if nBuf > int32(4) && 0 == libc.Xmemcmp(tls, __ccgo_ts+36699, aBuf+uintptr(nBuf-int32(4)), uint64(4)) {
 					if _fts5Porter_MGt0(tls, aBuf, nBuf-int32(4)) != 0 {
-						libc.Xmemcpy(tls, aBuf+uintptr(nBuf-int32(4)), __ccgo_ts+36565, uint64(3))
+						libc.Xmemcpy(tls, aBuf+uintptr(nBuf-int32(4)), __ccgo_ts+36585, uint64(3))
 						*(*int32)(unsafe.Pointer(pnBuf)) = nBuf - int32(4) + int32(3)
 					}
 				}
 			}
 		}
 	case int32('s'):
-		if nBuf > int32(5) && 0 == libc.Xmemcmp(tls, __ccgo_ts+36684, aBuf+uintptr(nBuf-int32(5)), uint64(5)) {
+		if nBuf > int32(5) && 0 == libc.Xmemcmp(tls, __ccgo_ts+36704, aBuf+uintptr(nBuf-int32(5)), uint64(5)) {
 			if _fts5Porter_MGt0(tls, aBuf, nBuf-int32(5)) != 0 {
-				libc.Xmemcpy(tls, aBuf+uintptr(nBuf-int32(5)), __ccgo_ts+36506, uint64(2))
+				libc.Xmemcpy(tls, aBuf+uintptr(nBuf-int32(5)), __ccgo_ts+36526, uint64(2))
 				*(*int32)(unsafe.Pointer(pnBuf)) = nBuf - int32(5) + int32(2)
 			}
 		} else {
-			if nBuf > int32(7) && 0 == libc.Xmemcmp(tls, __ccgo_ts+36690, aBuf+uintptr(nBuf-int32(7)), uint64(7)) {
+			if nBuf > int32(7) && 0 == libc.Xmemcmp(tls, __ccgo_ts+36710, aBuf+uintptr(nBuf-int32(7)), uint64(7)) {
 				if _fts5Porter_MGt0(tls, aBuf, nBuf-int32(7)) != 0 {
-					libc.Xmemcpy(tls, aBuf+uintptr(nBuf-int32(7)), __ccgo_ts+36577, uint64(3))
+					libc.Xmemcpy(tls, aBuf+uintptr(nBuf-int32(7)), __ccgo_ts+36597, uint64(3))
 					*(*int32)(unsafe.Pointer(pnBuf)) = nBuf - int32(7) + int32(3)
 				}
 			} else {
-				if nBuf > int32(7) && 0 == libc.Xmemcmp(tls, __ccgo_ts+36698, aBuf+uintptr(nBuf-int32(7)), uint64(7)) {
+				if nBuf > int32(7) && 0 == libc.Xmemcmp(tls, __ccgo_ts+36718, aBuf+uintptr(nBuf-int32(7)), uint64(7)) {
 					if _fts5Porter_MGt0(tls, aBuf, nBuf-int32(7)) != 0 {
-						libc.Xmemcpy(tls, aBuf+uintptr(nBuf-int32(7)), __ccgo_ts+36706, uint64(3))
+						libc.Xmemcpy(tls, aBuf+uintptr(nBuf-int32(7)), __ccgo_ts+36726, uint64(3))
 						*(*int32)(unsafe.Pointer(pnBuf)) = nBuf - int32(7) + int32(3)
 					}
 				} else {
-					if nBuf > int32(7) && 0 == libc.Xmemcmp(tls, __ccgo_ts+36710, aBuf+uintptr(nBuf-int32(7)), uint64(7)) {
+					if nBuf > int32(7) && 0 == libc.Xmemcmp(tls, __ccgo_ts+36730, aBuf+uintptr(nBuf-int32(7)), uint64(7)) {
 						if _fts5Porter_MGt0(tls, aBuf, nBuf-int32(7)) != 0 {
-							libc.Xmemcpy(tls, aBuf+uintptr(nBuf-int32(7)), __ccgo_ts+36573, uint64(3))
+							libc.Xmemcpy(tls, aBuf+uintptr(nBuf-int32(7)), __ccgo_ts+36593, uint64(3))
 							*(*int32)(unsafe.Pointer(pnBuf)) = nBuf - int32(7) + int32(3)
 						}
 					}
@@ -200171,21 +200171,21 @@ func _fts5PorterStep2(tls *libc.TLS, aBuf uintptr, pnBuf uintptr) (r int32) {
 			}
 		}
 	case int32('t'):
-		if nBuf > int32(5) && 0 == libc.Xmemcmp(tls, __ccgo_ts+36718, aBuf+uintptr(nBuf-int32(5)), uint64(5)) {
+		if nBuf > int32(5) && 0 == libc.Xmemcmp(tls, __ccgo_ts+36738, aBuf+uintptr(nBuf-int32(5)), uint64(5)) {
 			if _fts5Porter_MGt0(tls, aBuf, nBuf-int32(5)) != 0 {
-				libc.Xmemcpy(tls, aBuf+uintptr(nBuf-int32(5)), __ccgo_ts+36506, uint64(2))
+				libc.Xmemcpy(tls, aBuf+uintptr(nBuf-int32(5)), __ccgo_ts+36526, uint64(2))
 				*(*int32)(unsafe.Pointer(pnBuf)) = nBuf - int32(5) + int32(2)
 			}
 		} else {
-			if nBuf > int32(5) && 0 == libc.Xmemcmp(tls, __ccgo_ts+36724, aBuf+uintptr(nBuf-int32(5)), uint64(5)) {
+			if nBuf > int32(5) && 0 == libc.Xmemcmp(tls, __ccgo_ts+36744, aBuf+uintptr(nBuf-int32(5)), uint64(5)) {
 				if _fts5Porter_MGt0(tls, aBuf, nBuf-int32(5)) != 0 {
-					libc.Xmemcpy(tls, aBuf+uintptr(nBuf-int32(5)), __ccgo_ts+36577, uint64(3))
+					libc.Xmemcpy(tls, aBuf+uintptr(nBuf-int32(5)), __ccgo_ts+36597, uint64(3))
 					*(*int32)(unsafe.Pointer(pnBuf)) = nBuf - int32(5) + int32(3)
 				}
 			} else {
-				if nBuf > int32(6) && 0 == libc.Xmemcmp(tls, __ccgo_ts+36730, aBuf+uintptr(nBuf-int32(6)), uint64(6)) {
+				if nBuf > int32(6) && 0 == libc.Xmemcmp(tls, __ccgo_ts+36750, aBuf+uintptr(nBuf-int32(6)), uint64(6)) {
 					if _fts5Porter_MGt0(tls, aBuf, nBuf-int32(6)) != 0 {
-						libc.Xmemcpy(tls, aBuf+uintptr(nBuf-int32(6)), __ccgo_ts+36591, uint64(3))
+						libc.Xmemcpy(tls, aBuf+uintptr(nBuf-int32(6)), __ccgo_ts+36611, uint64(3))
 						*(*int32)(unsafe.Pointer(pnBuf)) = nBuf - int32(6) + int32(3)
 					}
 				}
@@ -200203,48 +200203,48 @@ func _fts5PorterStep3(tls *libc.TLS, aBuf uintptr, pnBuf uintptr) (r int32) {
 	nBuf = *(*int32)(unsafe.Pointer(pnBuf))
 	switch int32(*(*uint8)(unsafe.Pointer(aBuf + uintptr(nBuf-int32(2))))) {
 	case int32('a'):
-		if nBuf > int32(4) && 0 == libc.Xmemcmp(tls, __ccgo_ts+36737, aBuf+uintptr(nBuf-int32(4)), uint64(4)) {
+		if nBuf > int32(4) && 0 == libc.Xmemcmp(tls, __ccgo_ts+36757, aBuf+uintptr(nBuf-int32(4)), uint64(4)) {
 			if _fts5Porter_MGt0(tls, aBuf, nBuf-int32(4)) != 0 {
-				libc.Xmemcpy(tls, aBuf+uintptr(nBuf-int32(4)), __ccgo_ts+36522, uint64(2))
+				libc.Xmemcpy(tls, aBuf+uintptr(nBuf-int32(4)), __ccgo_ts+36542, uint64(2))
 				*(*int32)(unsafe.Pointer(pnBuf)) = nBuf - int32(4) + int32(2)
 			}
 		}
 	case int32('s'):
-		if nBuf > int32(4) && 0 == libc.Xmemcmp(tls, __ccgo_ts+36742, aBuf+uintptr(nBuf-int32(4)), uint64(4)) {
+		if nBuf > int32(4) && 0 == libc.Xmemcmp(tls, __ccgo_ts+36762, aBuf+uintptr(nBuf-int32(4)), uint64(4)) {
 			if _fts5Porter_MGt0(tls, aBuf, nBuf-int32(4)) != 0 {
 				*(*int32)(unsafe.Pointer(pnBuf)) = nBuf - int32(4)
 			}
 		}
 	case int32('t'):
-		if nBuf > int32(5) && 0 == libc.Xmemcmp(tls, __ccgo_ts+36747, aBuf+uintptr(nBuf-int32(5)), uint64(5)) {
+		if nBuf > int32(5) && 0 == libc.Xmemcmp(tls, __ccgo_ts+36767, aBuf+uintptr(nBuf-int32(5)), uint64(5)) {
 			if _fts5Porter_MGt0(tls, aBuf, nBuf-int32(5)) != 0 {
-				libc.Xmemcpy(tls, aBuf+uintptr(nBuf-int32(5)), __ccgo_ts+36522, uint64(2))
+				libc.Xmemcpy(tls, aBuf+uintptr(nBuf-int32(5)), __ccgo_ts+36542, uint64(2))
 				*(*int32)(unsafe.Pointer(pnBuf)) = nBuf - int32(5) + int32(2)
 			}
 		} else {
-			if nBuf > int32(5) && 0 == libc.Xmemcmp(tls, __ccgo_ts+36753, aBuf+uintptr(nBuf-int32(5)), uint64(5)) {
+			if nBuf > int32(5) && 0 == libc.Xmemcmp(tls, __ccgo_ts+36773, aBuf+uintptr(nBuf-int32(5)), uint64(5)) {
 				if _fts5Porter_MGt0(tls, aBuf, nBuf-int32(5)) != 0 {
-					libc.Xmemcpy(tls, aBuf+uintptr(nBuf-int32(5)), __ccgo_ts+36522, uint64(2))
+					libc.Xmemcpy(tls, aBuf+uintptr(nBuf-int32(5)), __ccgo_ts+36542, uint64(2))
 					*(*int32)(unsafe.Pointer(pnBuf)) = nBuf - int32(5) + int32(2)
 				}
 			}
 		}
 	case int32('u'):
-		if nBuf > int32(3) && 0 == libc.Xmemcmp(tls, __ccgo_ts+36706, aBuf+uintptr(nBuf-int32(3)), uint64(3)) {
+		if nBuf > int32(3) && 0 == libc.Xmemcmp(tls, __ccgo_ts+36726, aBuf+uintptr(nBuf-int32(3)), uint64(3)) {
 			if _fts5Porter_MGt0(tls, aBuf, nBuf-int32(3)) != 0 {
 				*(*int32)(unsafe.Pointer(pnBuf)) = nBuf - int32(3)
 			}
 		}
 	case int32('v'):
-		if nBuf > int32(5) && 0 == libc.Xmemcmp(tls, __ccgo_ts+36759, aBuf+uintptr(nBuf-int32(5)), uint64(5)) {
+		if nBuf > int32(5) && 0 == libc.Xmemcmp(tls, __ccgo_ts+36779, aBuf+uintptr(nBuf-int32(5)), uint64(5)) {
 			if _fts5Porter_MGt0(tls, aBuf, nBuf-int32(5)) != 0 {
 				*(*int32)(unsafe.Pointer(pnBuf)) = nBuf - int32(5)
 			}
 		}
 	case int32('z'):
-		if nBuf > int32(5) && 0 == libc.Xmemcmp(tls, __ccgo_ts+36765, aBuf+uintptr(nBuf-int32(5)), uint64(5)) {
+		if nBuf > int32(5) && 0 == libc.Xmemcmp(tls, __ccgo_ts+36785, aBuf+uintptr(nBuf-int32(5)), uint64(5)) {
 			if _fts5Porter_MGt0(tls, aBuf, nBuf-int32(5)) != 0 {
-				libc.Xmemcpy(tls, aBuf+uintptr(nBuf-int32(5)), __ccgo_ts+36506, uint64(2))
+				libc.Xmemcpy(tls, aBuf+uintptr(nBuf-int32(5)), __ccgo_ts+36526, uint64(2))
 				*(*int32)(unsafe.Pointer(pnBuf)) = nBuf - int32(5) + int32(2)
 			}
 		}
@@ -200260,13 +200260,13 @@ func _fts5PorterStep1B(tls *libc.TLS, aBuf uintptr, pnBuf uintptr) (r int32) {
 	nBuf = *(*int32)(unsafe.Pointer(pnBuf))
 	switch int32(*(*uint8)(unsafe.Pointer(aBuf + uintptr(nBuf-int32(2))))) {
 	case int32('e'):
-		if nBuf > int32(3) && 0 == libc.Xmemcmp(tls, __ccgo_ts+36771, aBuf+uintptr(nBuf-int32(3)), uint64(3)) {
+		if nBuf > int32(3) && 0 == libc.Xmemcmp(tls, __ccgo_ts+36791, aBuf+uintptr(nBuf-int32(3)), uint64(3)) {
 			if _fts5Porter_MGt0(tls, aBuf, nBuf-int32(3)) != 0 {
-				libc.Xmemcpy(tls, aBuf+uintptr(nBuf-int32(3)), __ccgo_ts+36775, uint64(2))
+				libc.Xmemcpy(tls, aBuf+uintptr(nBuf-int32(3)), __ccgo_ts+36795, uint64(2))
 				*(*int32)(unsafe.Pointer(pnBuf)) = nBuf - int32(3) + int32(2)
 			}
 		} else {
-			if nBuf > int32(2) && 0 == libc.Xmemcmp(tls, __ccgo_ts+36778, aBuf+uintptr(nBuf-int32(2)), uint64(2)) {
+			if nBuf > int32(2) && 0 == libc.Xmemcmp(tls, __ccgo_ts+36798, aBuf+uintptr(nBuf-int32(2)), uint64(2)) {
 				if _fts5Porter_Vowel(tls, aBuf, nBuf-int32(2)) != 0 {
 					*(*int32)(unsafe.Pointer(pnBuf)) = nBuf - int32(2)
 					ret = int32(1)
@@ -200274,7 +200274,7 @@ func _fts5PorterStep1B(tls *libc.TLS, aBuf uintptr, pnBuf uintptr) (r int32) {
 			}
 		}
 	case int32('n'):
-		if nBuf > int32(3) && 0 == libc.Xmemcmp(tls, __ccgo_ts+36781, aBuf+uintptr(nBuf-int32(3)), uint64(3)) {
+		if nBuf > int32(3) && 0 == libc.Xmemcmp(tls, __ccgo_ts+36801, aBuf+uintptr(nBuf-int32(3)), uint64(3)) {
 			if _fts5Porter_Vowel(tls, aBuf, nBuf-int32(3)) != 0 {
 				*(*int32)(unsafe.Pointer(pnBuf)) = nBuf - int32(3)
 				ret = int32(1)
@@ -200427,7 +200427,7 @@ func _fts5TriCreate(tls *libc.TLS, pUnused uintptr, azArg uintptr, nArg int32, p
 				break
 			}
 			zArg = *(*uintptr)(unsafe.Pointer(azArg + uintptr(i+int32(1))*8))
-			if 0 == Xsqlite3_stricmp(tls, *(*uintptr)(unsafe.Pointer(azArg + uintptr(i)*8)), __ccgo_ts+36785) {
+			if 0 == Xsqlite3_stricmp(tls, *(*uintptr)(unsafe.Pointer(azArg + uintptr(i)*8)), __ccgo_ts+36805) {
 				if int32(*(*uint8)(unsafe.Pointer(zArg))) != int32('0') && int32(*(*uint8)(unsafe.Pointer(zArg))) != int32('1') || *(*uint8)(unsafe.Pointer(zArg + 1)) != 0 {
 					rc = int32(m_SQLITE_ERROR)
 				} else {
@@ -200716,7 +200716,7 @@ func _sqlite3Fts5TokenizerInit(tls *libc.TLS, pApi uintptr) (r int32) {
 		Fx     Tfts5_tokenizer
 	}{
 		0: {
-			FzName: __ccgo_ts + 36496,
+			FzName: __ccgo_ts + 36516,
 			Fx: Tfts5_tokenizer{
 				FxCreate:   __ccgo_fp(_fts5UnicodeCreate),
 				FxDelete:   __ccgo_fp(_fts5UnicodeDelete),
@@ -200724,7 +200724,7 @@ func _sqlite3Fts5TokenizerInit(tls *libc.TLS, pApi uintptr) (r int32) {
 			},
 		},
 		1: {
-			FzName: __ccgo_ts + 36800,
+			FzName: __ccgo_ts + 36820,
 			Fx: Tfts5_tokenizer{
 				FxCreate:   __ccgo_fp(_fts5AsciiCreate),
 				FxDelete:   __ccgo_fp(_fts5AsciiDelete),
@@ -200732,7 +200732,7 @@ func _sqlite3Fts5TokenizerInit(tls *libc.TLS, pApi uintptr) (r int32) {
 			},
 		},
 		2: {
-			FzName: __ccgo_ts + 36806,
+			FzName: __ccgo_ts + 36826,
 			Fx: Tfts5_tokenizer{
 				FxCreate:   __ccgo_fp(_fts5PorterCreate),
 				FxDelete:   __ccgo_fp(_fts5PorterDelete),
@@ -200740,7 +200740,7 @@ func _sqlite3Fts5TokenizerInit(tls *libc.TLS, pApi uintptr) (r int32) {
 			},
 		},
 		3: {
-			FzName: __ccgo_ts + 36813,
+			FzName: __ccgo_ts + 36833,
 			Fx: Tfts5_tokenizer{
 				FxCreate:   __ccgo_fp(_fts5TriCreate),
 				FxDelete:   __ccgo_fp(_fts5TriDelete),
@@ -206273,16 +206273,16 @@ func _fts5VocabTableType(tls *libc.TLS, zType uintptr, pzErr uintptr, peType uin
 	zCopy = _sqlite3Fts5Strndup(tls, bp, zType, -int32(1))
 	if *(*int32)(unsafe.Pointer(bp)) == m_SQLITE_OK {
 		_sqlite3Fts5Dequote(tls, zCopy)
-		if Xsqlite3_stricmp(tls, zCopy, __ccgo_ts+36821) == 0 {
+		if Xsqlite3_stricmp(tls, zCopy, __ccgo_ts+36841) == 0 {
 			*(*int32)(unsafe.Pointer(peType)) = m_FTS5_VOCAB_COL
 		} else {
-			if Xsqlite3_stricmp(tls, zCopy, __ccgo_ts+36825) == 0 {
+			if Xsqlite3_stricmp(tls, zCopy, __ccgo_ts+36845) == 0 {
 				*(*int32)(unsafe.Pointer(peType)) = int32(m_FTS5_VOCAB_ROW)
 			} else {
-				if Xsqlite3_stricmp(tls, zCopy, __ccgo_ts+36829) == 0 {
+				if Xsqlite3_stricmp(tls, zCopy, __ccgo_ts+36849) == 0 {
 					*(*int32)(unsafe.Pointer(peType)) = int32(m_FTS5_VOCAB_INSTANCE)
 				} else {
-					*(*uintptr)(unsafe.Pointer(pzErr)) = Xsqlite3_mprintf(tls, __ccgo_ts+36838, libc.VaList(bp+16, zCopy))
+					*(*uintptr)(unsafe.Pointer(pzErr)) = Xsqlite3_mprintf(tls, __ccgo_ts+36858, libc.VaList(bp+16, zCopy))
 					*(*int32)(unsafe.Pointer(bp)) = int32(m_SQLITE_ERROR)
 				}
 			}
@@ -206351,15 +206351,15 @@ func _fts5VocabInitVtab(tls *libc.TLS, db uintptr, pAux uintptr, argc int32, arg
 	var _ /* rc at bp+0 */ int32
 	_, _, _, _, _, _, _, _, _, _, _, _ = azSchema, bDb, nByte, nDb, nTab, pRet, zDb, zTab, zType, v1, v2, v3
 	azSchema = [3]uintptr{
-		0: __ccgo_ts + 36872,
-		1: __ccgo_ts + 36912,
-		2: __ccgo_ts + 36947,
+		0: __ccgo_ts + 36892,
+		1: __ccgo_ts + 36932,
+		2: __ccgo_ts + 36967,
 	}
 	pRet = uintptr(0)
 	*(*int32)(unsafe.Pointer(bp)) = m_SQLITE_OK
-	bDb = libc.BoolInt32(argc == int32(6) && libc.Xstrlen(tls, *(*uintptr)(unsafe.Pointer(argv + 1*8))) == uint64(4) && libc.Xmemcmp(tls, __ccgo_ts+22854, *(*uintptr)(unsafe.Pointer(argv + 1*8)), uint64(4)) == 0)
+	bDb = libc.BoolInt32(argc == int32(6) && libc.Xstrlen(tls, *(*uintptr)(unsafe.Pointer(argv + 1*8))) == uint64(4) && libc.Xmemcmp(tls, __ccgo_ts+22874, *(*uintptr)(unsafe.Pointer(argv + 1*8)), uint64(4)) == 0)
 	if argc != int32(5) && bDb == 0 {
-		*(*uintptr)(unsafe.Pointer(pzErr)) = Xsqlite3_mprintf(tls, __ccgo_ts+36990, 0)
+		*(*uintptr)(unsafe.Pointer(pzErr)) = Xsqlite3_mprintf(tls, __ccgo_ts+37010, 0)
 		*(*int32)(unsafe.Pointer(bp)) = int32(m_SQLITE_ERROR)
 	} else {
 		if bDb != 0 {
@@ -206529,10 +206529,10 @@ func _fts5VocabOpenMethod(tls *libc.TLS, pVTab uintptr, ppCsr uintptr) (r int32)
 	*(*uintptr)(unsafe.Pointer(bp + 8)) = uintptr(0)
 	zSql = uintptr(0)
 	if (*TFts5VocabTable)(unsafe.Pointer(pTab)).FbBusy != 0 {
-		(*Tsqlite3_vtab)(unsafe.Pointer(pVTab)).FzErrMsg = Xsqlite3_mprintf(tls, __ccgo_ts+37023, libc.VaList(bp+24, (*TFts5VocabTable)(unsafe.Pointer(pTab)).FzFts5Db, (*TFts5VocabTable)(unsafe.Pointer(pTab)).FzFts5Tbl))
+		(*Tsqlite3_vtab)(unsafe.Pointer(pVTab)).FzErrMsg = Xsqlite3_mprintf(tls, __ccgo_ts+37043, libc.VaList(bp+24, (*TFts5VocabTable)(unsafe.Pointer(pTab)).FzFts5Db, (*TFts5VocabTable)(unsafe.Pointer(pTab)).FzFts5Tbl))
 		return int32(m_SQLITE_ERROR)
 	}
-	zSql = _sqlite3Fts5Mprintf(tls, bp, __ccgo_ts+37054, libc.VaList(bp+24, (*TFts5VocabTable)(unsafe.Pointer(pTab)).FzFts5Tbl, (*TFts5VocabTable)(unsafe.Pointer(pTab)).FzFts5Db, (*TFts5VocabTable)(unsafe.Pointer(pTab)).FzFts5Tbl, (*TFts5VocabTable)(unsafe.Pointer(pTab)).FzFts5Tbl))
+	zSql = _sqlite3Fts5Mprintf(tls, bp, __ccgo_ts+37074, libc.VaList(bp+24, (*TFts5VocabTable)(unsafe.Pointer(pTab)).FzFts5Tbl, (*TFts5VocabTable)(unsafe.Pointer(pTab)).FzFts5Db, (*TFts5VocabTable)(unsafe.Pointer(pTab)).FzFts5Tbl, (*TFts5VocabTable)(unsafe.Pointer(pTab)).FzFts5Tbl))
 	if zSql != 0 {
 		*(*int32)(unsafe.Pointer(bp)) = Xsqlite3_prepare_v2(tls, (*TFts5VocabTable)(unsafe.Pointer(pTab)).Fdb, zSql, -int32(1), bp+8, uintptr(0))
 	}
@@ -206552,7 +206552,7 @@ func _fts5VocabOpenMethod(tls *libc.TLS, pVTab uintptr, ppCsr uintptr) (r int32)
 			*(*int32)(unsafe.Pointer(bp)) = Xsqlite3_finalize(tls, *(*uintptr)(unsafe.Pointer(bp + 8)))
 			*(*uintptr)(unsafe.Pointer(bp + 8)) = uintptr(0)
 			if *(*int32)(unsafe.Pointer(bp)) == m_SQLITE_OK {
-				(*Tsqlite3_vtab)(unsafe.Pointer(pVTab)).FzErrMsg = Xsqlite3_mprintf(tls, __ccgo_ts+37105, libc.VaList(bp+24, (*TFts5VocabTable)(unsafe.Pointer(pTab)).FzFts5Db, (*TFts5VocabTable)(unsafe.Pointer(pTab)).FzFts5Tbl))
+				(*Tsqlite3_vtab)(unsafe.Pointer(pVTab)).FzErrMsg = Xsqlite3_mprintf(tls, __ccgo_ts+37125, libc.VaList(bp+24, (*TFts5VocabTable)(unsafe.Pointer(pTab)).FzFts5Db, (*TFts5VocabTable)(unsafe.Pointer(pTab)).FzFts5Tbl))
 				*(*int32)(unsafe.Pointer(bp)) = int32(m_SQLITE_ERROR)
 			}
 		} else {
@@ -206859,7 +206859,7 @@ func _fts5VocabFilterMethod(tls *libc.TLS, pCursor uintptr, idxNum int32, zUnuse
 		if pLe != 0 {
 			zCopy = Xsqlite3_value_text(tls, pLe)
 			if zCopy == uintptr(0) {
-				zCopy = __ccgo_ts + 1511
+				zCopy = __ccgo_ts + 1531
 			}
 			(*TFts5VocabCursor)(unsafe.Pointer(pCsr)).FnLeTerm = Xsqlite3_value_bytes(tls, pLe)
 			(*TFts5VocabCursor)(unsafe.Pointer(pCsr)).FzLeTerm = Xsqlite3_malloc(tls, (*TFts5VocabCursor)(unsafe.Pointer(pCsr)).FnLeTerm+int32(1))
@@ -206987,7 +206987,7 @@ func _sqlite3Fts5VocabInit(tls *libc.TLS, pGlobal uintptr, db uintptr) (r int32)
 	var p uintptr
 	_ = p
 	p = pGlobal
-	return Xsqlite3_create_module_v2(tls, db, __ccgo_ts+37131, uintptr(unsafe.Pointer(&_fts5Vocab)), p, uintptr(0))
+	return Xsqlite3_create_module_v2(tls, db, __ccgo_ts+37151, uintptr(unsafe.Pointer(&_fts5Vocab)), p, uintptr(0))
 }
 
 var _fts5Vocab = Tsqlite3_module{
@@ -207040,7 +207040,7 @@ func init() {
 //	/************** End of stmt.c ************************************************/
 //	/* Return the source-id for this library */
 func Xsqlite3_sourceid(tls *libc.TLS) (r uintptr) {
-	return __ccgo_ts + 37141
+	return __ccgo_ts + 37161
 }
 
 type TAggInfo_col = struct {
@@ -207317,4 +207317,4 @@ var Xsqlite3one = int32(1)
 
 var __ccgo_ts = (*reflect.StringHeader)(unsafe.Pointer(&__ccgo_ts1)).Data
 
-var __ccgo_ts1 = "ATOMIC_INTRINSICS=1\x00COMPILER=gcc-10.2.1 20210110\x00DEFAULT_AUTOVACUUM\x00DEFAULT_CACHE_SIZE=-2000\x00DEFAULT_FILE_FORMAT=4\x00DEFAULT_JOURNAL_SIZE_LIMIT=-1\x00DEFAULT_MMAP_SIZE=0\x00DEFAULT_PAGE_SIZE=4096\x00DEFAULT_PCACHE_INITSZ=20\x00DEFAULT_RECURSIVE_TRIGGERS\x00DEFAULT_SECTOR_SIZE=4096\x00DEFAULT_SYNCHRONOUS=2\x00DEFAULT_WAL_AUTOCHECKPOINT=1000\x00DEFAULT_WAL_SYNCHRONOUS=2\x00DEFAULT_WORKER_THREADS=0\x00ENABLE_COLUMN_METADATA\x00ENABLE_FTS5\x00ENABLE_GEOPOLY\x00ENABLE_JSON1\x00ENABLE_MATH_FUNCTIONS\x00ENABLE_MEMORY_MANAGEMENT\x00ENABLE_OFFSET_SQL_FUNC\x00ENABLE_PREUPDATE_HOOK\x00ENABLE_RBU\x00ENABLE_RTREE\x00ENABLE_SESSION\x00ENABLE_SNAPSHOT\x00ENABLE_STAT4\x00ENABLE_UNLOCK_NOTIFY\x00LIKE_DOESNT_MATCH_BLOBS\x00MALLOC_SOFT_LIMIT=1024\x00MAX_ATTACHED=10\x00MAX_COLUMN=2000\x00MAX_COMPOUND_SELECT=500\x00MAX_DEFAULT_PAGE_SIZE=8192\x00MAX_EXPR_DEPTH=1000\x00MAX_FUNCTION_ARG=127\x00MAX_LENGTH=1000000000\x00MAX_LIKE_PATTERN_LENGTH=50000\x00MAX_MMAP_SIZE=0x7fff0000\x00MAX_PAGE_COUNT=1073741823\x00MAX_PAGE_SIZE=65536\x00MAX_SQL_LENGTH=1000000000\x00MAX_TRIGGER_DEPTH=1000\x00MAX_VARIABLE_NUMBER=32766\x00MAX_VDBE_OP=250000000\x00MAX_WORKER_THREADS=8\x00MUTEX_NOOP\x00SOUNDEX\x00SYSTEM_MALLOC\x00TEMP_STORE=1\x00THREADSAFE=1\x00ANY\x00BLOB\x00INT\x00INTEGER\x00REAL\x00TEXT\x0020b:20e\x0020c:20e\x0020e\x0040f-21a-21d\x00now\x00local time unavailable\x00second\x00minute\x00hour\x00day\x00month\x00year\x00localtime\x00unixepoch\x00utc\x00weekday \x00start of \x00%04d-%02d-%02d %02d:%02d:%02d\x00%02d:%02d:%02d\x00%04d-%02d-%02d\x00%02d\x00%06.3f\x00%03d\x00%.16g\x00%lld\x00%04d\x00julianday\x00date\x00time\x00datetime\x00strftime\x00current_time\x00current_timestamp\x00current_date\x00failed to allocate %u bytes of memory\x00failed memory resize %u to %u bytes\x00%\x00NaN\x00Inf\x00\x00NULL\x00(NULL)\x00.\x00SUBQUERY %u\x00922337203685477580\x00API call with %s database connection pointer\x00unopened\x00invalid\x00Savepoint\x00AutoCommit\x00Transaction\x00SorterNext\x00Prev\x00Next\x00Checkpoint\x00JournalMode\x00Vacuum\x00VFilter\x00VUpdate\x00Goto\x00Gosub\x00InitCoroutine\x00Yield\x00MustBeInt\x00Jump\x00Once\x00If\x00Not\x00IfNot\x00IsNullOrType\x00IfNullRow\x00SeekLT\x00SeekLE\x00SeekGE\x00SeekGT\x00IfNotOpen\x00IfNoHope\x00NoConflict\x00NotFound\x00Found\x00SeekRowid\x00NotExists\x00Last\x00IfSmaller\x00SorterSort\x00Sort\x00Rewind\x00IdxLE\x00IdxGT\x00IdxLT\x00IdxGE\x00Or\x00And\x00RowSetRead\x00RowSetTest\x00Program\x00FkIfZero\x00IfPos\x00IsNull\x00NotNull\x00Ne\x00Eq\x00Gt\x00Le\x00Lt\x00Ge\x00ElseEq\x00IfNotZero\x00DecrJumpZero\x00IncrVacuum\x00VNext\x00Init\x00PureFunc\x00Function\x00Return\x00EndCoroutine\x00HaltIfNull\x00Halt\x00Integer\x00Int64\x00String\x00Null\x00SoftNull\x00Blob\x00Variable\x00Move\x00Copy\x00SCopy\x00IntCopy\x00ChngCntRow\x00ResultRow\x00CollSeq\x00AddImm\x00RealAffinity\x00Cast\x00Permutation\x00Compare\x00IsTrue\x00ZeroOrNull\x00Offset\x00Column\x00TypeCheck\x00Affinity\x00MakeRecord\x00Count\x00ReadCookie\x00SetCookie\x00ReopenIdx\x00OpenRead\x00OpenWrite\x00BitAnd\x00BitOr\x00ShiftLeft\x00ShiftRight\x00Add\x00Subtract\x00Multiply\x00Divide\x00Remainder\x00Concat\x00OpenDup\x00BitNot\x00OpenAutoindex\x00OpenEphemeral\x00String8\x00SorterOpen\x00SequenceTest\x00OpenPseudo\x00Close\x00ColumnsUsed\x00SeekScan\x00SeekHit\x00Sequence\x00NewRowid\x00Insert\x00RowCell\x00Delete\x00ResetCount\x00SorterCompare\x00SorterData\x00RowData\x00Rowid\x00NullRow\x00SeekEnd\x00IdxInsert\x00SorterInsert\x00IdxDelete\x00DeferredSeek\x00IdxRowid\x00FinishSeek\x00Destroy\x00Clear\x00ResetSorter\x00CreateBtree\x00SqlExec\x00ParseSchema\x00LoadAnalysis\x00DropTable\x00DropIndex\x00DropTrigger\x00Real\x00IntegrityCk\x00RowSetAdd\x00Param\x00FkCounter\x00MemMax\x00OffsetLimit\x00AggInverse\x00AggStep\x00AggStep1\x00AggValue\x00AggFinal\x00Expire\x00CursorLock\x00CursorUnlock\x00TableLock\x00VBegin\x00VCreate\x00VDestroy\x00VOpen\x00VColumn\x00VRename\x00Pagecount\x00MaxPgcnt\x00Trace\x00CursorHint\x00ReleaseReg\x00Noop\x00Explain\x00Abortable\x00open\x00close\x00access\x00getcwd\x00stat\x00fstat\x00ftruncate\x00fcntl\x00read\x00pread\x00pread64\x00write\x00pwrite\x00pwrite64\x00fchmod\x00fallocate\x00unlink\x00openDirectory\x00mkdir\x00rmdir\x00fchown\x00geteuid\x00mmap\x00munmap\x00mremap\x00getpagesize\x00readlink\x00lstat\x00ioctl\x00attempt to open \"%s\" as file descriptor %d\x00/dev/null\x00os_unix.c:%d: (%d) %s(%s) - %s\x00cannot fstat db file %s\x00file unlinked while open: %s\x00multiple links to file: %s\x00file renamed while open: %s\x00%s\x00full_fsync\x00%s-shm\x00readonly_shm\x00psow\x00unix-excl\x00%s.lock\x00/var/tmp\x00/usr/tmp\x00/tmp\x00SQLITE_TMPDIR\x00TMPDIR\x00%s/etilqs_%llx%c\x00modeof\x00fsync\x00/dev/urandom\x00unix\x00unix-none\x00unix-dotfile\x00memdb\x00memdb(%p,%lld)\x00PRAGMA \"%w\".page_count\x00ATTACH x AS %Q\x00recovered %d pages from %s\x00-journal\x00-wal\x00nolock\x00immutable\x00recovered %d frames from WAL file %s\x00cannot limit WAL size: %s\x00:memory:\x00@  \x00\n\x00invalid page number %d\x002nd reference to page %d\x00Failed to read ptrmap key=%d\x00Bad ptr map entry key=%d expected=(%d,%d) got=(%d,%d)\x00failed to get page %d\x00freelist leaf count too big on page %d\x00size\x00overflow list length\x00%s is %d but should be %d\x00Page %u: \x00unable to get the page. error code=%d\x00btreeInitPage() returns error code %d\x00free space corruption\x00On tree page %u cell %d: \x00On page %u at right child: \x00Offset %d out of range %d..%d\x00Extends off end of page\x00Rowid %lld out of order\x00Child page depth differs\x00Multiple uses for byte %u of page %u\x00Fragmentation of %d bytes reported as %d on page %u\x00Main freelist: \x00max rootpage (%d) disagrees with header (%d)\x00incremental_vacuum enabled with a max rootpage of zero\x00Page %d is never used\x00Pointer map page %d is referenced\x00unknown database %s\x00destination database is in use\x00source and destination must be distinct\x00%!.15g\x00-\x00%s%s\x00k(%d\x00BINARY\x00B\x00N.\x00,%s%s%s\x00)\x00?\x008\x0016LE\x0016BE\x00%.18s-%s\x00%s(%d)\x00%d\x00(blob)\x00vtab:%p\x00%c%u\x00]\x00program\x00addr\x00opcode\x00p1\x00p2\x00p3\x00p4\x00p5\x00comment\x00id\x00parent\x00notused\x00detail\x00%.4c%s%.16c\x00MJ delete: %s\x00MJ collide: %s\x00-mj%06X9%02X\x00FOREIGN KEY constraint failed\x00a CHECK constraint\x00a generated column\x00an index\x00non-deterministic use of %s() in %s\x00API called with finalized prepared statement\x00API called with NULL prepared statement\x00string or blob too big\x00bind on a busy prepared statement: [%s]\x00-- \x00'%.*q'\x00zeroblob(%d)\x00x'\x00%02x\x00'\x00NOT NULL\x00UNIQUE\x00CHECK\x00FOREIGN KEY\x00%s constraint failed\x00%z: %s\x00abort at %d in [%s]: %s\x00cannot store %s value in %s column %s.%s\x00cannot open savepoint - SQL statements in progress\x00no such savepoint: %s\x00cannot release savepoint - SQL statements in progress\x00cannot commit transaction - SQL statements in progress\x00cannot start a transaction within a transaction\x00cannot rollback - no transaction is active\x00cannot commit - no transaction is active\x00database schema has changed\x00index corruption\x00sqlite_master\x00SELECT*FROM\"%w\".%s WHERE %s ORDER BY rowid\x00too many levels of trigger recursion\x00into\x00out of\x00cannot change %s wal mode from within a transaction\x00database table is locked: %s\x00-- %s\x00statement aborts at %d: [%s] %s\x00out of memory\x00null\x00real\x00integer\x00cannot open value of type %s\x00no such rowid: %lld\x00cannot open virtual table: %s\x00cannot open table without rowid: %s\x00cannot open view: %s\x00no such column: \"%s\"\x00foreign key\x00indexed\x00cannot open %s column for writing\x00main\x00new\x00old\x00excluded\x00misuse of aliased aggregate %s\x00misuse of aliased window function %s\x00row value misused\x00double-quoted string literal: \"%w\"\x00no such column\x00ambiguous column name\x00%s: %s.%s.%s\x00%s: %s.%s\x00%s: %s\x00partial index WHERE clauses\x00index expressions\x00CHECK constraints\x00generated columns\x00%s prohibited in %s\x00true\x00false\x00the \".\" operator\x00second argument to likelihood() must be a constant between 0.0 and 1.0\x00not authorized to use function: %s\x00non-deterministic functions\x00%.*s() may not be used as a window function\x00window\x00aggregate\x00misuse of %s function %.*s()\x00no such function: %.*s\x00wrong number of arguments to function %.*s()\x00FILTER may not be used with non-aggregate %.*s()\x00subqueries\x00parameters\x00%r %s BY term out of range - should be between 1 and %d\x00too many terms in ORDER BY clause\x00ORDER\x00%r ORDER BY term does not match any column in the result set\x00too many terms in %s BY clause\x00a GROUP BY clause is required before HAVING\x00GROUP\x00aggregate functions are not allowed in the GROUP BY clause\x00Expression tree is too large (maximum depth %d)\x00s\x00IN(...) element has %d term%s - expected %d\x000\x00too many arguments on function %T\x00unsafe use of %s()\x00variable number must be between ?1 and ?%d\x00too many SQL variables\x00%d columns assigned %d values\x00too many columns in %s\x00_ROWID_\x00ROWID\x00OID\x00USING ROWID SEARCH ON TABLE %s FOR IN-OPERATOR\x00USING INDEX %s FOR IN-OPERATOR\x00sub-select returns %d columns - expected %d\x00REUSE LIST SUBQUERY %d\x00CORRELATED \x00%sLIST SUBQUERY %d\x00REUSE SUBQUERY %d\x00%sSCALAR SUBQUERY %d\x001\x000x\x00hex literal too big: %s%s\x00generated column loop on \"%s\"\x00blob\x00text\x00numeric\x00none\x00misuse of aggregate: %s()\x00unknown function: %s()\x00RAISE() may only be used within a trigger-program\x00sqlite_\x00table %s may not be altered\x00SELECT 1 FROM \"%w\".sqlite_master WHERE name NOT LIKE 'sqliteX_%%' ESCAPE 'X' AND sql NOT LIKE 'create virtual%%' AND sqlite_rename_test(%Q, sql, type, name, %d, %Q, %d)=NULL \x00SELECT 1 FROM temp.sqlite_master WHERE name NOT LIKE 'sqliteX_%%' ESCAPE 'X' AND sql NOT LIKE 'create virtual%%' AND sqlite_rename_test(%Q, sql, type, name, 1, %Q, %d)=NULL \x00UPDATE \"%w\".sqlite_master SET sql = sqlite_rename_quotefix(%Q, sql)WHERE name NOT LIKE 'sqliteX_%%' ESCAPE 'X' AND sql NOT LIKE 'create virtual%%'\x00UPDATE temp.sqlite_master SET sql = sqlite_rename_quotefix('temp', sql)WHERE name NOT LIKE 'sqliteX_%%' ESCAPE 'X' AND sql NOT LIKE 'create virtual%%'\x00there is already another table or index with this name: %s\x00table\x00view %s may not be altered\x00UPDATE \"%w\".sqlite_master SET sql = sqlite_rename_table(%Q, type, name, sql, %Q, %Q, %d) WHERE (type!='index' OR tbl_name=%Q COLLATE nocase)AND   name NOT LIKE 'sqliteX_%%' ESCAPE 'X'\x00UPDATE %Q.sqlite_master SET tbl_name = %Q, name = CASE WHEN type='table' THEN %Q WHEN name LIKE 'sqliteX_autoindex%%' ESCAPE 'X'      AND type='index' THEN 'sqlite_autoindex_' || %Q || substr(name,%d+18) ELSE name END WHERE tbl_name=%Q COLLATE nocase AND (type='table' OR type='index' OR type='trigger');\x00sqlite_sequence\x00UPDATE \"%w\".sqlite_sequence set name = %Q WHERE name = %Q\x00UPDATE sqlite_temp_schema SET sql = sqlite_rename_table(%Q, type, name, sql, %Q, %Q, 1), tbl_name = CASE WHEN tbl_name=%Q COLLATE nocase AND   sqlite_rename_test(%Q, sql, type, name, 1, 'after rename', 0) THEN %Q ELSE tbl_name END WHERE type IN ('view', 'trigger')\x00after rename\x00SELECT raise(ABORT,%Q) FROM \"%w\".\"%w\"\x00Cannot add a PRIMARY KEY column\x00Cannot add a UNIQUE column\x00Cannot add a REFERENCES column with non-NULL default value\x00Cannot add a NOT NULL column with default value NULL\x00Cannot add a column with non-constant default\x00cannot add a STORED column\x00UPDATE \"%w\".sqlite_master SET sql = printf('%%.%ds, ',sql) || %Q || substr(sql,1+length(printf('%%.%ds',sql))) WHERE type = 'table' AND name = %Q\x00SELECT CASE WHEN quick_check GLOB 'CHECK*' THEN raise(ABORT,'CHECK constraint failed') ELSE raise(ABORT,'NOT NULL constraint failed') END  FROM pragma_quick_check(\"%w\",\"%w\") WHERE quick_check GLOB 'CHECK*' OR quick_check GLOB 'NULL*'\x00virtual tables may not be altered\x00Cannot add a column to a view\x00sqlite_altertab_%s\x00view\x00virtual table\x00drop column from\x00rename columns of\x00cannot %s %s \"%s\"\x00UPDATE \"%w\".sqlite_master SET sql = sqlite_rename_column(sql, type, name, %Q, %Q, %d, %Q, %d, %d) WHERE name NOT LIKE 'sqliteX_%%' ESCAPE 'X'  AND (type != 'index' OR tbl_name = %Q)\x00UPDATE temp.sqlite_master SET sql = sqlite_rename_column(sql, type, name, %Q, %Q, %d, %Q, %d, 1) WHERE type IN ('trigger', 'view')\x00 \x00error in %s %s%s%s: %s\x00\"%w\" \x00%Q%s\x00%.*s%s\x00PRIMARY KEY\x00cannot drop %s column: \"%s\"\x00cannot drop column \"%s\": no other columns exist\x00UPDATE \"%w\".sqlite_master SET sql = sqlite_drop_column(%d, sql, %d) WHERE (type=='table' AND tbl_name=%Q COLLATE nocase)\x00after drop column\x00sqlite_rename_column\x00sqlite_rename_table\x00sqlite_rename_test\x00sqlite_drop_column\x00sqlite_rename_quotefix\x00sqlite_stat1\x00tbl,idx,stat\x00sqlite_stat4\x00tbl,idx,neq,nlt,ndlt,sample\x00sqlite_stat3\x00CREATE TABLE %Q.%s(%s)\x00DELETE FROM %Q.%s WHERE %s=%Q\x00DELETE FROM %Q.%s\x00stat_init\x00stat_push\x00%llu\x00 %llu\x00%llu \x00stat_get\x00sqlite\\_%\x00BBB\x00idx\x00tbl\x00unordered*\x00sz=[0-9]*\x00noskipscan*\x00SELECT idx,count(*) FROM %Q.sqlite_stat4 GROUP BY idx\x00SELECT idx,neq,nlt,ndlt,sample FROM %Q.sqlite_stat4\x00SELECT tbl,idx,stat FROM %Q.sqlite_stat1\x00x\x00\x00too many attached databases - max %d\x00database %s is already in use\x00database is already attached\x00attached databases must use the same text encoding as main database\x00unable to open database: %s\x00no such database: %s\x00cannot detach database %s\x00database %s is locked\x00sqlite_detach\x00sqlite_attach\x00%s cannot use variables\x00%s %T cannot reference objects in database %s\x00authorizer malfunction\x00%s.%s\x00%s.%z\x00access to %z is prohibited\x00not authorized\x00sqlite_temp_schema\x00sqlite_schema\x00sqlite_temp_master\x00pragma_\x00no such view\x00no such table\x00corrupt database\x00unknown database %T\x00object name reserved for internal use: %s\x00temporary table name must be unqualified\x00table %T already exists\x00there is already an index named %s\x00sqlite_returning\x00cannot use RETURNING in a trigger\x00too many columns on %s\x00always\x00generated\x00duplicate column name: %s\x00default value of column [%s] is not constant\x00cannot use DEFAULT on a generated column\x00generated columns cannot be part of the PRIMARY KEY\x00table \"%s\" has more than one primary key\x00AUTOINCREMENT is only allowed on an INTEGER PRIMARY KEY\x00virtual tables cannot use computed columns\x00virtual\x00stored\x00error in generated column \"%s\"\x00,\x00\n  \x00,\n  \x00\n)\x00CREATE TABLE \x00 TEXT\x00 NUM\x00 INT\x00 REAL\x00unknown datatype for %s.%s: \"%s\"\x00missing datatype for %s.%s\x00AUTOINCREMENT not allowed on WITHOUT ROWID tables\x00PRIMARY KEY missing on table %s\x00must have at least one non-generated column\x00TABLE\x00VIEW\x00CREATE %s %.*s\x00UPDATE %Q.sqlite_master SET type='%s', name=%Q, tbl_name=%Q, rootpage=#%d, sql=%Q WHERE rowid=#%d\x00CREATE TABLE %Q.sqlite_sequence(name,seq)\x00tbl_name='%q' AND type!='trigger'\x00parameters are not allowed in views\x00view %s is circularly defined\x00corrupt schema\x00UPDATE %Q.sqlite_master SET rootpage=%d WHERE #%d AND rootpage=#%d\x00sqlite_stat%d\x00DELETE FROM %Q.sqlite_sequence WHERE name=%Q\x00DELETE FROM %Q.sqlite_master WHERE tbl_name=%Q and type!='trigger'\x00table %s may not be dropped\x00use DROP TABLE to delete table %s\x00use DROP VIEW to delete view %s\x00foreign key on %s should reference only one column of table %T\x00number of columns in foreign key does not match the number of columns in the referenced table\x00unknown column \"%s\" in foreign key definition\x00FIRST\x00LAST\x00unsupported use of NULLS %s\x00index\x00cannot create a TEMP index on non-TEMP table \"%s\"\x00table %s may not be indexed\x00views may not be indexed\x00virtual tables may not be indexed\x00there is already a table named %s\x00index %s already exists\x00sqlite_autoindex_%s_%d\x00expressions prohibited in PRIMARY KEY and UNIQUE constraints\x00conflicting ON CONFLICT clauses specified\x00invalid rootpage\x00 UNIQUE\x00CREATE%s INDEX %.*s\x00INSERT INTO %Q.sqlite_master VALUES('index',%Q,%Q,#%d,%Q);\x00name='%q' AND type='index'\x00no such index: %S\x00index associated with UNIQUE or PRIMARY KEY constraint cannot be dropped\x00DELETE FROM %Q.sqlite_master WHERE name=%Q AND type='index'\x00too many FROM clause terms, max: %d\x00ON\x00USING\x00a JOIN clause is required before %s\x00BEGIN\x00ROLLBACK\x00COMMIT\x00RELEASE\x00unable to open a temporary database file for storing temporary tables\x00index '%q'\x00, \x00%s.rowid\x00unable to identify the object to be reindexed\x00duplicate WITH table name: %s\x00no such collation sequence: %s\x00table %s may not be modified\x00cannot modify %s because it is a view\x00rows deleted\x00integer overflow\x00%.*f\x00LIKE or GLOB pattern too complex\x00ESCAPE expression must be a single character\x00%!.20e\x00?000\x00MATCH\x00like\x00implies_nonnull_row\x00expr_compare\x00expr_implies_expr\x00affinity\x00soundex\x00load_extension\x00sqlite_compileoption_used\x00sqlite_compileoption_get\x00unlikely\x00likelihood\x00likely\x00sqlite_offset\x00ltrim\x00rtrim\x00trim\x00min\x00max\x00typeof\x00length\x00instr\x00printf\x00unicode\x00char\x00abs\x00round\x00upper\x00lower\x00hex\x00ifnull\x00random\x00randomblob\x00nullif\x00sqlite_version\x00sqlite_source_id\x00sqlite_log\x00quote\x00last_insert_rowid\x00changes\x00total_changes\x00replace\x00zeroblob\x00substr\x00substring\x00sum\x00total\x00avg\x00count\x00group_concat\x00glob\x00coalesce\x00ceil\x00ceiling\x00floor\x00trunc\x00ln\x00log\x00log10\x00log2\x00exp\x00pow\x00power\x00mod\x00acos\x00asin\x00atan\x00atan2\x00cos\x00sin\x00tan\x00cosh\x00sinh\x00tanh\x00acosh\x00asinh\x00atanh\x00sqrt\x00radians\x00degrees\x00pi\x00sign\x00iif\x00foreign key mismatch - \"%w\" referencing \"%w\"\x00cannot INSERT into generated column \"%s\"\x00table %S has no column named %s\x00table %S has %d columns but %d values were supplied\x00%d values for %d columns\x00UPSERT not implemented for virtual table \"%s\"\x00cannot UPSERT a view\x00rows inserted\x00so\x00sqlite3_extension_init\x00sqlite3_\x00lib\x00_init\x00no entry point [%s] in shared library [%s]\x00error during initialization: %s\x00unable to open shared library [%.*s]\x00automatic extension loading failed: %s\x00seq\x00from\x00to\x00on_update\x00on_delete\x00match\x00cid\x00name\x00type\x00notnull\x00dflt_value\x00pk\x00hidden\x00schema\x00ncol\x00wr\x00strict\x00seqno\x00desc\x00coll\x00key\x00builtin\x00enc\x00narg\x00flags\x00wdth\x00hght\x00flgs\x00unique\x00origin\x00partial\x00rowid\x00fkid\x00file\x00busy\x00checkpointed\x00database\x00status\x00cache_size\x00timeout\x00analysis_limit\x00application_id\x00auto_vacuum\x00automatic_index\x00busy_timeout\x00cache_spill\x00case_sensitive_like\x00cell_size_check\x00checkpoint_fullfsync\x00collation_list\x00compile_options\x00count_changes\x00data_version\x00database_list\x00default_cache_size\x00defer_foreign_keys\x00empty_result_callbacks\x00encoding\x00foreign_key_check\x00foreign_key_list\x00foreign_keys\x00freelist_count\x00full_column_names\x00fullfsync\x00function_list\x00hard_heap_limit\x00ignore_check_constraints\x00incremental_vacuum\x00index_info\x00index_list\x00index_xinfo\x00integrity_check\x00journal_mode\x00journal_size_limit\x00legacy_alter_table\x00locking_mode\x00max_page_count\x00mmap_size\x00module_list\x00optimize\x00page_count\x00page_size\x00pragma_list\x00query_only\x00quick_check\x00read_uncommitted\x00recursive_triggers\x00reverse_unordered_selects\x00schema_version\x00secure_delete\x00short_column_names\x00shrink_memory\x00soft_heap_limit\x00synchronous\x00table_info\x00table_list\x00table_xinfo\x00temp_store\x00temp_store_directory\x00threads\x00trusted_schema\x00user_version\x00wal_autocheckpoint\x00wal_checkpoint\x00writable_schema\x00exclusive\x00normal\x00full\x00incremental\x00memory\x00temporary storage cannot be changed from within a transaction\x00SET NULL\x00SET DEFAULT\x00CASCADE\x00RESTRICT\x00NO ACTION\x00delete\x00persist\x00off\x00truncate\x00wal\x00utf8\x00utf16le\x00utf16be\x00w\x00a\x00sissii\x00-%T\x00fast\x00not a writable directory\x00Safety level may not be changed inside a transaction\x00reset\x00issisii\x00issisi\x00SELECT*FROM\"%w\"\x00shadow\x00sssiii\x00iisX\x00isiX\x00c\x00u\x00isisi\x00iss\x00is\x00iissssss\x00NONE\x00siX\x00*** in database %s ***\n\x00NULL value in %s.%s\x00non-%s value in %s.%s\x00CHECK constraint failed in %s\x00row \x00 missing from index \x00non-unique entry in index \x00wrong # of entries in index \x00ok\x00UTF8\x00UTF-8\x00UTF-16le\x00UTF-16be\x00UTF16le\x00UTF16be\x00UTF-16\x00UTF16\x00unsupported encoding: %s\x00restart\x00ANALYZE \"%w\".\"%w\"\x00CREATE TABLE x\x00%c\"%s\"\x00(\"%s\"\x00,arg HIDDEN\x00,schema HIDDEN\x00PRAGMA \x00%Q.\x00=%Q\x00rename\x00drop column\x00add column\x00error in %s %s after %s: %s\x00malformed database schema (%s)\x00%z - %s\x00orphan index\x00CREATE TABLE x(type text,name text,tbl_name text,rootpage int,sql text)\x00unsupported file format\x00SELECT*FROM\"%w\".%s ORDER BY rowid\x00database schema is locked: %s\x00statement too long\x00unknown or unsupported join type: %T %T%s%T\x00RIGHT and FULL OUTER JOINs are not currently supported\x00a NATURAL join may not have an ON or USING clause\x00cannot have both ON and USING clauses in the same join\x00cannot join using column %s - column not present in both tables\x00UNION ALL\x00INTERSECT\x00EXCEPT\x00UNION\x00USE TEMP B-TREE FOR %s\x00column%d\x00%.*z:%u\x00cannot use window functions in recursive queries\x00recursive aggregate queries not supported\x00SETUP\x00RECURSIVE STEP\x00S\x00SCAN %d CONSTANT ROW%s\x00COMPOUND QUERY\x00LEFT-MOST SUBQUERY\x00%s USING TEMP B-TREE\x00all VALUES must have the same number of terms\x00SELECTs to the left and right of %s do not have the same number of result columns\x00MERGE (%s)\x00LEFT\x00RIGHT\x00no such index: %s\x00'%s' is not a function\x00no such index: \"%s\"\x00multiple references to recursive table: %s\x00circular reference: %s\x00table %s has %d values for %d columns\x00multiple recursive references: %s\x00recursive reference in a subquery: %s\x00subquery_%u\x00too many references to \"%s\": max 65535\x00access to view \"%s\" prohibited\x00unsafe use of virtual table \"%s\"\x00*\x00%s.%s.%s\x00no such table: %s\x00no tables specified\x00too many columns in result set\x00DISTINCT aggregates must have exactly one argument\x00USE TEMP B-TREE FOR %s(DISTINCT)\x00 USING COVERING INDEX \x00SCAN %s%s%s\x00target object/alias may not appear in FROM clause: %s\x00expected %d columns for '%s' but got %d\x00CO-ROUTINE %!S\x00MATERIALIZE %!S\x00DISTINCT\x00GROUP BY\x00RIGHT PART OF ORDER BY\x00ORDER BY\x00sqlite3_get_table() called with two or more incompatible queries\x00temporary trigger may not have qualified name\x00trigger\x00cannot create triggers on virtual tables\x00trigger %T already exists\x00cannot create trigger on system table\x00BEFORE\x00AFTER\x00cannot create %s trigger on view: %S\x00cannot create INSTEAD OF trigger on table: %S\x00INSERT INTO %Q.sqlite_master VALUES('trigger',%Q,%Q,0,'CREATE TRIGGER %q')\x00type='trigger' AND name='%q'\x00no such trigger: %S\x00DELETE FROM %Q.sqlite_master WHERE name=%Q AND type='trigger'\x00DELETE\x00UPDATE\x00%s RETURNING is not available on virtual tables\x00RETURNING may not use \"TABLE.*\" wildcards\x00-- TRIGGER %s\x00cannot UPDATE generated column \"%s\"\x00no such column: %s\x00rows updated\x00%r \x00%sON CONFLICT clause does not match any PRIMARY KEY or UNIQUE constraint\x00CRE\x00INS\x00cannot VACUUM from within a transaction\x00cannot VACUUM - SQL statements in progress\x00non-text filename\x00ATTACH %Q AS vacuum_db\x00output file already exists\x00SELECT sql FROM \"%w\".sqlite_schema WHERE type='table'AND name<>'sqlite_sequence' AND coalesce(rootpage,1)>0\x00SELECT sql FROM \"%w\".sqlite_schema WHERE type='index'\x00SELECT'INSERT INTO vacuum_db.'||quote(name)||' SELECT*FROM\"%w\".'||quote(name)FROM vacuum_db.sqlite_schema WHERE type='table'AND coalesce(rootpage,1)>0\x00INSERT INTO vacuum_db.sqlite_schema SELECT*FROM \"%w\".sqlite_schema WHERE type IN('view','trigger') OR(type='table'AND rootpage=0)\x00CREATE VIRTUAL TABLE %T\x00UPDATE %Q.sqlite_master SET type='table', name=%Q, tbl_name=%Q, rootpage=0, sql=%Q WHERE rowid=#%d\x00name=%Q AND sql=%Q\x00vtable constructor called recursively: %s\x00vtable constructor failed: %s\x00vtable constructor did not declare schema: %s\x00no such module: %s\x00<expr>\x00 AND \x00(\x00 (\x00%s=?\x00ANY(%s)\x00>\x00<\x00SEARCH\x00SCAN\x00%s %S\x00AUTOMATIC PARTIAL COVERING INDEX\x00AUTOMATIC COVERING INDEX\x00COVERING INDEX %s\x00INDEX %s\x00 USING \x00=\x00>? AND rowid<\x00 USING INTEGER PRIMARY KEY (rowid%s?)\x00 VIRTUAL TABLE INDEX %d:%s\x00MULTI-INDEX OR\x00INDEX %d\x00regexp\x00ON clause references tables to its right\x00NOCASE\x00too many arguments on %s() - max %d\x00automatic index on %s(%s)\x00auto-index\x00%s.xBestIndex malfunction\x00abbreviated query algorithm search\x00no query solution\x00at most %d tables in a join\x00SCAN CONSTANT ROW\x00second argument to nth_value must be a positive integer\x00argument of ntile must be a positive integer\x00no such window: %s\x00RANGE with offset PRECEDING/FOLLOWING requires one ORDER BY expression\x00FILTER clause may only be used with aggregate window functions\x00unsupported frame specification\x00PARTITION clause\x00ORDER BY clause\x00frame specification\x00cannot override %s of window: %s\x00DISTINCT is not supported for window functions\x00frame starting offset must be a non-negative integer\x00frame ending offset must be a non-negative integer\x00frame starting offset must be a non-negative number\x00frame ending offset must be a non-negative number\x00LIMIT\x00%s clause should come after %s not before\x00too many terms in compound SELECT\x00syntax error after column name \"%.*s\"\x00parser stack overflow\x00unknown table option: %.*s\x00set list\x00near \"%T\": syntax error\x00qualified table names are not allowed on INSERT, UPDATE, and DELETE statements within triggers\x00the INDEXED BY clause is not allowed on UPDATE or DELETE statements within triggers\x00the NOT INDEXED clause is not allowed on UPDATE or DELETE statements within triggers\x00incomplete input\x00unrecognized token: \"%.*s\"\x00%s in \"%s\"\x00create\x00temp\x00temporary\x00end\x00explain\x00unable to close due to unfinalized statements or unfinished backups\x00not an error\x00SQL logic error\x00access permission denied\x00query aborted\x00database is locked\x00database table is locked\x00attempt to write a readonly database\x00interrupted\x00disk I/O error\x00database disk image is malformed\x00unknown operation\x00database or disk is full\x00unable to open database file\x00locking protocol\x00constraint failed\x00datatype mismatch\x00bad parameter or other API misuse\x00authorization denied\x00column index out of range\x00file is not a database\x00notification message\x00warning message\x00unknown error\x00abort due to ROLLBACK\x00another row available\x00no more rows available\x00unable to delete/modify user-function due to active statements\x00unable to use function %s in the requested context\x00unknown database: %s\x00unable to delete/modify collation sequence due to active statements\x00file:\x00localhost\x00invalid uri authority: %.*s\x00vfs\x00cache\x00shared\x00private\x00mode\x00ro\x00rw\x00rwc\x00no such %s mode: %s\x00%s mode not allowed: %s\x00no such vfs: %s\x00RTRIM\x00\x00\x00\x00%s at line %d of [%.10s]\x00database corruption\x00misuse\x00cannot open file\x00no such table column: %s.%s\x00SQLITE_\x00database is deadlocked\x00array\x00object\x000123456789abcdef\x00JSON cannot hold BLOB values\x00malformed JSON\x00[0]\x00JSON path error near '%q'\x00json_%s() needs an odd number of arguments\x00json_object() requires an even number of arguments\x00json_object() labels must be TEXT\x00set\x00insert\x00[]\x00{}\x00CREATE TABLE x(key,value,type,atom,id,parent,fullkey,path,json HIDDEN,root HIDDEN)\x00[%d]\x00.%.*s\x00$\x00json\x00json_array\x00json_array_length\x00json_extract\x00json_insert\x00json_object\x00json_patch\x00json_quote\x00json_remove\x00json_replace\x00json_set\x00json_type\x00json_valid\x00json_group_array\x00json_group_object\x00json_each\x00json_tree\x00%s_node\x00data\x00DROP TABLE '%q'.'%q_node';DROP TABLE '%q'.'%q_rowid';DROP TABLE '%q'.'%q_parent';\x00RtreeMatchArg\x00SELECT * FROM %Q.%Q\x00UNIQUE constraint failed: %s.%s\x00rtree constraint failed: %s.(%s<=%s)\x00ALTER TABLE %Q.'%q_node'   RENAME TO \"%w_node\";ALTER TABLE %Q.'%q_parent' RENAME TO \"%w_parent\";ALTER TABLE %Q.'%q_rowid'  RENAME TO \"%w_rowid\";\x00SELECT stat FROM %Q.sqlite_stat1 WHERE tbl = '%q_rowid'\x00node\x00INSERT OR REPLACE INTO '%q'.'%q_node' VALUES(?1, ?2)\x00DELETE FROM '%q'.'%q_node' WHERE nodeno = ?1\x00SELECT nodeno FROM '%q'.'%q_rowid' WHERE rowid = ?1\x00INSERT OR REPLACE INTO '%q'.'%q_rowid' VALUES(?1, ?2)\x00DELETE FROM '%q'.'%q_rowid' WHERE rowid = ?1\x00SELECT parentnode FROM '%q'.'%q_parent' WHERE nodeno = ?1\x00INSERT OR REPLACE INTO '%q'.'%q_parent' VALUES(?1, ?2)\x00DELETE FROM '%q'.'%q_parent' WHERE nodeno = ?1\x00CREATE TABLE \"%w\".\"%w_rowid\"(rowid INTEGER PRIMARY KEY,nodeno\x00,a%d\x00);CREATE TABLE \"%w\".\"%w_node\"(nodeno INTEGER PRIMARY KEY,data);\x00CREATE TABLE \"%w\".\"%w_parent\"(nodeno INTEGER PRIMARY KEY,parentnode);\x00INSERT INTO \"%w\".\"%w_node\"VALUES(1,zeroblob(%d))\x00INSERT INTO\"%w\".\"%w_rowid\"(rowid,nodeno)VALUES(?1,?2)ON CONFLICT(rowid)DO UPDATE SET nodeno=excluded.nodeno\x00SELECT * FROM \"%w\".\"%w_rowid\" WHERE rowid=?1\x00UPDATE \"%w\".\"%w_rowid\"SET \x00a%d=coalesce(?%d,a%d)\x00a%d=?%d\x00 WHERE rowid=?1\x00PRAGMA %Q.page_size\x00SELECT length(data) FROM '%q'.'%q_node' WHERE nodeno = 1\x00undersize RTree blobs in \"%q_node\"\x00Wrong number of columns for an rtree table\x00Too few columns for an rtree table\x00Too many columns for an rtree table\x00Auxiliary rtree columns must be last\x00CREATE TABLE x(%.*s INT\x00,%.*s\x00,%.*s REAL\x00,%.*s INT\x00);\x00{%lld\x00 %g\x00}\x00Invalid argument to rtreedepth()\x00%z%s%z\x00SELECT data FROM %Q.'%q_node' WHERE nodeno=?\x00Node %lld missing from database\x00SELECT parentnode FROM %Q.'%q_parent' WHERE nodeno=?1\x00SELECT nodeno FROM %Q.'%q_rowid' WHERE rowid=?1\x00%_rowid\x00%_parent\x00Mapping (%lld -> %lld) missing from %s table\x00Found (%lld -> %lld) in %s table, expected (%lld -> %lld)\x00Dimension %d of cell %d on node %lld is corrupt\x00Dimension %d of cell %d on node %lld is corrupt relative to parent\x00Node %lld is too small (%d bytes)\x00Rtree depth out of range (%d)\x00Node %lld is too small for cell count of %d (%d bytes)\x00SELECT count(*) FROM %Q.'%q%s'\x00Wrong number of entries in %%%s table - expected %lld, actual %lld\x00SELECT * FROM %Q.'%q_rowid'\x00Schema corrupt or not an rtree\x00_rowid\x00_parent\x00END\x00wrong number of arguments to function rtreecheck()\x00[\x00[%!g,%!g],\x00[%!g,%!g]]\x00<polyline points=\x00%c%g,%g\x00 %g,%g'\x00 %s\x00></polyline>\x00CREATE TABLE x(_shape\x00,%s\x00rtree\x00fullscan\x00_shape does not contain a valid polygon\x00geopoly_overlap\x00geopoly_within\x00geopoly_area\x00geopoly_blob\x00geopoly_json\x00geopoly_svg\x00geopoly_contains_point\x00geopoly_debug\x00geopoly_bbox\x00geopoly_xform\x00geopoly_regular\x00geopoly_ccw\x00geopoly_group_bbox\x00geopoly\x00rtreenode\x00rtreedepth\x00rtreecheck\x00rtree_i32\x00corrupt fossil delta\x00DROP TRIGGER IF EXISTS temp.rbu_insert_tr;DROP TRIGGER IF EXISTS temp.rbu_update1_tr;DROP TRIGGER IF EXISTS temp.rbu_update2_tr;DROP TRIGGER IF EXISTS temp.rbu_delete_tr;\x00AND rootpage!=0 AND rootpage IS NOT NULL\x00SELECT rbu_target_name(name, type='view') AS target, name FROM sqlite_schema WHERE type IN ('table', 'view') AND target IS NOT NULL  %s ORDER BY name\x00SELECT name, rootpage, sql IS NULL OR substr(8, 6)=='UNIQUE'   FROM main.sqlite_schema   WHERE type='index' AND tbl_name = ?\x00SELECT  (sql COLLATE nocase BETWEEN 'CREATE VIRTUAL' AND 'CREATE VIRTUAM'), rootpage  FROM sqlite_schema WHERE name=%Q\x00PRAGMA index_list=%Q\x00SELECT rootpage FROM sqlite_schema WHERE name = %Q\x00PRAGMA table_info=%Q\x00PRAGMA main.index_list = %Q\x00PRAGMA main.index_xinfo = %Q\x00SELECT * FROM '%q'\x00rbu_\x00rbu_rowid\x00may not have\x00requires\x00table %q %s rbu_rowid column\x00PRAGMA table_info(%Q)\x00column missing from %q: %s\x00%z%s\"%w\"\x00%z%s%s\"%w\"%s\x00SELECT max(_rowid_) FROM \"%s%w\"\x00 WHERE _rowid_ > %lld \x00 DESC\x00quote(\x00||','||\x00SELECT %s FROM \"%s%w\" ORDER BY %s LIMIT 1\x00 WHERE (%s) > (%s) \x00_rowid_\x00%z%s \"%w\" COLLATE %Q\x00%z%s \"rbu_imp_%d%w\" COLLATE %Q DESC\x00%z%s quote(\"rbu_imp_%d%w\")\x00SELECT %s FROM \"rbu_imp_%w\" ORDER BY %s LIMIT 1\x00%z%s%s\x00(%s) > (%s)\x00%z%s(%.*s) COLLATE %Q\x00%z%s\"%w\" COLLATE %Q\x00%z%s\"rbu_imp_%d%w\"%s\x00%z%s\"rbu_imp_%d%w\" %s COLLATE %Q\x00%z%s\"rbu_imp_%d%w\" IS ?\x00%z%s%s.\"%w\"\x00%z%sNULL\x00%z, %s._rowid_\x00_rowid_ = ?%d\x00%z%sc%d=?%d\x00_rowid_ = (SELECT id FROM rbu_imposter2 WHERE %z)\x00%z%s\"%w\"=?%d\x00invalid rbu_control value\x00%z%s\"%w\"=rbu_delta(\"%w\", ?%d)\x00%z%s\"%w\"=rbu_fossil_delta(\"%w\", ?%d)\x00PRIMARY KEY(\x00%z%s\"%w\"%s\x00%z)\x00SELECT name FROM sqlite_schema WHERE rootpage = ?\x00%z%sc%d %s COLLATE %Q\x00%z%sc%d%s\x00%z, id INTEGER\x00CREATE TABLE rbu_imposter2(%z, PRIMARY KEY(%z)) WITHOUT ROWID\x00PRIMARY KEY \x00 NOT NULL\x00%z%s\"%w\" %s %sCOLLATE %Q%s\x00%z, %z\x00 WITHOUT ROWID\x00CREATE TABLE \"rbu_imp_%w\"(%z)%s\x00INSERT INTO %s.'rbu_tmp_%q'(rbu_control,%s%s) VALUES(%z)\x00SELECT trim(sql) FROM sqlite_schema WHERE type='index' AND name=?\x00 LIMIT -1 OFFSET %d\x00CREATE TABLE \"rbu_imp_%w\"( %s, PRIMARY KEY( %s ) ) WITHOUT ROWID\x00INSERT INTO \"rbu_imp_%w\" VALUES(%s)\x00DELETE FROM \"rbu_imp_%w\" WHERE %s\x00AND\x00WHERE\x00SELECT %s, 0 AS rbu_control FROM '%q' %s %s %s ORDER BY %s%s\x00SELECT %s, rbu_control FROM %s.'rbu_tmp_%q' %s ORDER BY %s%s\x00SELECT %s, rbu_control FROM %s.'rbu_tmp_%q' %s UNION ALL SELECT %s, rbu_control FROM '%q' %s %s typeof(rbu_control)='integer' AND rbu_control!=1 ORDER BY %s%s\x00rbu_imp_\x00, _rowid_\x00INSERT INTO \"%s%w\"(%s%s) VALUES(%s)\x00DELETE FROM \"%s%w\" WHERE %s\x00, rbu_rowid\x00, 0 AS rbu_rowid\x00CREATE TABLE IF NOT EXISTS %s.'rbu_tmp_%q' AS SELECT *%s FROM '%q' WHERE 0;\x00CREATE TEMP TRIGGER rbu_delete_tr BEFORE DELETE ON \"%s%w\" BEGIN   SELECT rbu_tmp_insert(3, %s);END;CREATE TEMP TRIGGER rbu_update1_tr BEFORE UPDATE ON \"%s%w\" BEGIN   SELECT rbu_tmp_insert(3, %s);END;CREATE TEMP TRIGGER rbu_update2_tr AFTER UPDATE ON \"%s%w\" BEGIN   SELECT rbu_tmp_insert(4, %s);END;\x00CREATE TEMP TRIGGER rbu_insert_tr AFTER INSERT ON \"%s%w\" BEGIN   SELECT rbu_tmp_insert(0, %s);END;\x00,_rowid_ \x00,rbu_rowid\x000 AS \x00SELECT %s,%s rbu_control%s FROM '%q'%s %s %s %s\x00UPDATE \"%s%w\" SET %s WHERE %s\x00SELECT k, v FROM %s.rbu_state\x00file://%s-vacuum?modeof=%s\x00ATTACH %Q AS stat\x00CREATE TABLE IF NOT EXISTS %s.rbu_state(k INTEGER PRIMARY KEY, v)\x00cannot vacuum wal mode database\x00&\x00file:%s-vactmp?rbu_memory=1%s%s\x00rbu_tmp_insert\x00rbu_fossil_delta\x00rbu_target_name\x00SELECT * FROM sqlite_schema\x00rbu vfs not found\x00PRAGMA main.wal_checkpoint=restart\x00rbu_exclusive_checkpoint\x00%s-oal\x00%s-wal\x00PRAGMA schema_version\x00PRAGMA schema_version = %d\x00INSERT OR REPLACE INTO %s.rbu_state(k, v) VALUES (%d, %d), (%d, %Q), (%d, %Q), (%d, %d), (%d, %d), (%d, %lld), (%d, %lld), (%d, %lld), (%d, %lld), (%d, %Q)  \x00PRAGMA main.%s\x00PRAGMA main.%s = %d\x00PRAGMA writable_schema=1\x00SELECT sql FROM sqlite_schema WHERE sql!='' AND rootpage!=0 AND name!='sqlite_sequence'  ORDER BY type DESC\x00SELECT * FROM sqlite_schema WHERE rootpage=0 OR rootpage IS NULL\x00INSERT INTO sqlite_schema VALUES(?,?,?,?,?)\x00PRAGMA writable_schema=0\x00DELETE FROM %s.'rbu_tmp_%q'\x00rbu_state mismatch error\x00rbu_vfs_%d\x00SELECT count(*) FROM sqlite_schema WHERE type='index' AND tbl_name = %Q\x00rbu_index_cnt\x00SELECT 1 FROM sqlite_schema WHERE tbl_name = 'rbu_count'\x00SELECT sum(cnt * (1 + rbu_index_cnt(rbu_target_name(tbl))))FROM rbu_count\x00cannot update wal mode database\x00vacuum\x00update\x00database modified during rbu %s\x00BEGIN IMMEDIATE\x00PRAGMA journal_mode=off\x00-vactmp\x00DELETE FROM stat.rbu_state\x00rbu/zipvfs setup error\x00rbu(%s)/%z\x00rbu_memory\x00SELECT 0, 'tbl',  '', 0, '', 1     UNION ALL SELECT 1, 'idx',  '', 0, '', 2     UNION ALL SELECT 2, 'stat', '', 0, '', 0\x00PRAGMA '%q'.table_info('%q')\x00%z%s\"%w\".\"%w\".\"%w\"=\"%w\".\"%w\".\"%w\"\x00%z%s\"%w\".\"%w\".\"%w\" IS NOT \"%w\".\"%w\".\"%w\"\x00 OR \x00SELECT * FROM \"%w\".\"%w\" WHERE NOT EXISTS (  SELECT 1 FROM \"%w\".\"%w\" WHERE %s)\x00SELECT * FROM \"%w\".\"%w\", \"%w\".\"%w\" WHERE %s AND (%z)\x00table schemas do not match\x00SELECT tbl, ?2, stat FROM %Q.sqlite_stat1 WHERE tbl IS ?1 AND idx IS (CASE WHEN ?2=X'' THEN NULL ELSE ?2 END)\x00SELECT * FROM \x00 WHERE \x00 IS ?\x00SAVEPOINT changeset\x00RELEASE changeset\x00UPDATE main.\x00 SET \x00 = ?\x00idx IS CASE WHEN length(?4)=0 AND typeof(?4)='blob' THEN NULL ELSE ?4 END \x00DELETE FROM main.\x00 AND (?\x00AND \x00INSERT INTO main.\x00) VALUES(?\x00, ?\x00INSERT INTO main.sqlite_stat1 VALUES(?1, CASE WHEN length(?2)=0 AND typeof(?2)='blob' THEN NULL ELSE ?2 END, ?3)\x00DELETE FROM main.sqlite_stat1 WHERE tbl=?1 AND idx IS CASE WHEN length(?2)=0 AND typeof(?2)='blob' THEN NULL ELSE ?2 END AND (?4 OR stat IS ?3)\x00SAVEPOINT replace_op\x00RELEASE replace_op\x00SAVEPOINT changeset_apply\x00PRAGMA defer_foreign_keys = 1\x00sqlite3changeset_apply(): no such table: %s\x00sqlite3changeset_apply(): table %s has %d columns, expected %d or more\x00sqlite3changeset_apply(): primary key mismatch for table %s\x00PRAGMA defer_foreign_keys = 0\x00RELEASE changeset_apply\x00ROLLBACK TO changeset_apply\x00fts5: parser stack overflow\x00fts5: syntax error near \"%.*s\"\x00%z%.*s\x00wrong number of arguments to function highlight()\x00wrong number of arguments to function snippet()\x00snippet\x00highlight\x00bm25\x00prefix\x00malformed prefix=... directive\x00too many prefix indexes (max %d)\x00prefix length out of range (max 999)\x00tokenize\x00multiple tokenize=... directives\x00parse error in tokenize directive\x00content\x00multiple content=... directives\x00%Q.%Q\x00content_rowid\x00multiple content_rowid=... directives\x00columnsize\x00malformed columnsize=... directive\x00columns\x00malformed detail=... directive\x00unrecognized option: \"%.*s\"\x00rank\x00reserved fts5 column name: %s\x00unindexed\x00unrecognized column option: %s\x00T.%Q\x00, T.%Q\x00, T.c%d\x00reserved fts5 table name: %s\x00parse error in \"%s\"\x00docsize\x00%Q.'%q_%s'\x00CREATE TABLE x(\x00%z%s%Q\x00%z, %Q HIDDEN, %s HIDDEN)\x00pgsz\x00hashsize\x00automerge\x00usermerge\x00crisismerge\x00SELECT k, v FROM %Q.'%q_config'\x00version\x00invalid fts5 file format (found %d, expected %d) - run 'rebuild'\x00unterminated string\x00fts5: syntax error near \"%.1s\"\x00OR\x00NOT\x00NEAR\x00expected integer, got \"%.*s\"\x00fts5: column queries are not supported (detail=none)\x00phrase\x00fts5: %s queries are not supported (detail!=full)\x00block\x00REPLACE INTO '%q'.'%q_data'(id, block) VALUES(?,?)\x00DELETE FROM '%q'.'%q_data' WHERE id>=? AND id<=?\x00DELETE FROM '%q'.'%q_idx' WHERE segid=?\x00PRAGMA %Q.data_version\x00SELECT pgno FROM '%q'.'%q_idx' WHERE segid=? AND term<=? ORDER BY term DESC LIMIT 1\x00INSERT INTO '%q'.'%q_idx'(segid,term,pgno) VALUES(?,?,?)\x00%s_data\x00id INTEGER PRIMARY KEY, block BLOB\x00segid, term, pgno, PRIMARY KEY(segid, term)\x00SELECT segid, term, (pgno>>1), (pgno&1) FROM %Q.'%q_idx' WHERE segid=%d ORDER BY 1, 2\x00\x00\x00\x00\x00\x00recursively defined fts5 content table\x00DESC\x00ASC\x00SELECT rowid, rank FROM %Q.%Q ORDER BY %s(\"%w\"%s%s) %s\x00reads\x00unknown special query: %.*s\x00SELECT %s\x00no such function: %s\x00parse error in rank function: %s\x00%s: table does not support scanning\x00delete-all\x00'delete-all' may only be used with a contentless or external content fts5 table\x00rebuild\x00'rebuild' may not be used with a contentless fts5 table\x00merge\x00integrity-check\x00DELETE from\x00cannot %s contentless fts5 table: %s\x00no such cursor: %lld\x00no such tokenizer: %s\x00error in tokenizer constructor\x00fts5_api_ptr\x00fts5: 2022-01-06 13:25:41 872ba256cbf61d9290b571c0e6d82a20c224ca3ad82971edc46b29818d5d17a0\x00config\x00fts5\x00fts5_source_id\x00SELECT %s FROM %s T WHERE T.%Q >= ? AND T.%Q <= ? ORDER BY T.%Q ASC\x00SELECT %s FROM %s T WHERE T.%Q <= ? AND T.%Q >= ? ORDER BY T.%Q DESC\x00SELECT %s FROM %s T WHERE T.%Q=?\x00INSERT INTO %Q.'%q_content' VALUES(%s)\x00REPLACE INTO %Q.'%q_content' VALUES(%s)\x00DELETE FROM %Q.'%q_content' WHERE id=?\x00REPLACE INTO %Q.'%q_docsize' VALUES(?,?)\x00DELETE FROM %Q.'%q_docsize' WHERE id=?\x00SELECT sz FROM %Q.'%q_docsize' WHERE id=?\x00REPLACE INTO %Q.'%q_config' VALUES(?,?)\x00SELECT %s FROM %s AS T\x00DROP TABLE IF EXISTS %Q.'%q_data';DROP TABLE IF EXISTS %Q.'%q_idx';DROP TABLE IF EXISTS %Q.'%q_config';\x00DROP TABLE IF EXISTS %Q.'%q_docsize';\x00DROP TABLE IF EXISTS %Q.'%q_content';\x00ALTER TABLE %Q.'%q_%s' RENAME TO '%q_%s';\x00CREATE TABLE %Q.'%q_%q'(%s)%s\x00fts5: error creating shadow table %q_%s: %s\x00id INTEGER PRIMARY KEY\x00, c%d\x00id INTEGER PRIMARY KEY, sz BLOB\x00k PRIMARY KEY, v\x00DELETE FROM %Q.'%q_data';DELETE FROM %Q.'%q_idx';\x00DELETE FROM %Q.'%q_docsize';\x00SELECT count(*) FROM %Q.'%q_%s'\x00tokenchars\x00separators\x00L* N* Co\x00categories\x00remove_diacritics\x00unicode61\x00al\x00ance\x00ence\x00er\x00ic\x00able\x00ible\x00ant\x00ement\x00ment\x00ent\x00ion\x00ou\x00ism\x00ate\x00iti\x00ous\x00ive\x00ize\x00at\x00bl\x00ble\x00iz\x00ational\x00tional\x00tion\x00enci\x00anci\x00izer\x00logi\x00bli\x00alli\x00entli\x00eli\x00e\x00ousli\x00ization\x00ation\x00ator\x00alism\x00iveness\x00fulness\x00ful\x00ousness\x00aliti\x00iviti\x00biliti\x00ical\x00ness\x00icate\x00iciti\x00ative\x00alize\x00eed\x00ee\x00ed\x00ing\x00case_sensitive\x00ascii\x00porter\x00trigram\x00col\x00row\x00instance\x00fts5vocab: unknown table type: %Q\x00CREATE TABlE vocab(term, col, doc, cnt)\x00CREATE TABlE vocab(term, doc, cnt)\x00CREATE TABlE vocab(term, doc, col, offset)\x00wrong number of vtable arguments\x00recursive definition for %s.%s\x00SELECT t.%Q FROM %Q.%Q AS t WHERE t.%Q MATCH '*id'\x00no such fts5 table: %s.%s\x00fts5vocab\x002022-01-06 13:25:41 872ba256cbf61d9290b571c0e6d82a20c224ca3ad82971edc46b29818d5d17a0\x00"
+var __ccgo_ts1 = "ATOMIC_INTRINSICS=1\x00COMPILER=gcc-10.2.1 20210110\x00DEFAULT_AUTOVACUUM\x00DEFAULT_CACHE_SIZE=-2000\x00DEFAULT_FILE_FORMAT=4\x00DEFAULT_JOURNAL_SIZE_LIMIT=-1\x00DEFAULT_MEMSTATUS=0\x00DEFAULT_MMAP_SIZE=0\x00DEFAULT_PAGE_SIZE=4096\x00DEFAULT_PCACHE_INITSZ=20\x00DEFAULT_RECURSIVE_TRIGGERS\x00DEFAULT_SECTOR_SIZE=4096\x00DEFAULT_SYNCHRONOUS=2\x00DEFAULT_WAL_AUTOCHECKPOINT=1000\x00DEFAULT_WAL_SYNCHRONOUS=2\x00DEFAULT_WORKER_THREADS=0\x00ENABLE_COLUMN_METADATA\x00ENABLE_FTS5\x00ENABLE_GEOPOLY\x00ENABLE_JSON1\x00ENABLE_MATH_FUNCTIONS\x00ENABLE_MEMORY_MANAGEMENT\x00ENABLE_OFFSET_SQL_FUNC\x00ENABLE_PREUPDATE_HOOK\x00ENABLE_RBU\x00ENABLE_RTREE\x00ENABLE_SESSION\x00ENABLE_SNAPSHOT\x00ENABLE_STAT4\x00ENABLE_UNLOCK_NOTIFY\x00LIKE_DOESNT_MATCH_BLOBS\x00MALLOC_SOFT_LIMIT=1024\x00MAX_ATTACHED=10\x00MAX_COLUMN=2000\x00MAX_COMPOUND_SELECT=500\x00MAX_DEFAULT_PAGE_SIZE=8192\x00MAX_EXPR_DEPTH=1000\x00MAX_FUNCTION_ARG=127\x00MAX_LENGTH=1000000000\x00MAX_LIKE_PATTERN_LENGTH=50000\x00MAX_MMAP_SIZE=0x7fff0000\x00MAX_PAGE_COUNT=1073741823\x00MAX_PAGE_SIZE=65536\x00MAX_SQL_LENGTH=1000000000\x00MAX_TRIGGER_DEPTH=1000\x00MAX_VARIABLE_NUMBER=32766\x00MAX_VDBE_OP=250000000\x00MAX_WORKER_THREADS=8\x00MUTEX_NOOP\x00SOUNDEX\x00SYSTEM_MALLOC\x00TEMP_STORE=1\x00THREADSAFE=1\x00ANY\x00BLOB\x00INT\x00INTEGER\x00REAL\x00TEXT\x0020b:20e\x0020c:20e\x0020e\x0040f-21a-21d\x00now\x00local time unavailable\x00second\x00minute\x00hour\x00day\x00month\x00year\x00localtime\x00unixepoch\x00utc\x00weekday \x00start of \x00%04d-%02d-%02d %02d:%02d:%02d\x00%02d:%02d:%02d\x00%04d-%02d-%02d\x00%02d\x00%06.3f\x00%03d\x00%.16g\x00%lld\x00%04d\x00julianday\x00date\x00time\x00datetime\x00strftime\x00current_time\x00current_timestamp\x00current_date\x00failed to allocate %u bytes of memory\x00failed memory resize %u to %u bytes\x00%\x00NaN\x00Inf\x00\x00NULL\x00(NULL)\x00.\x00SUBQUERY %u\x00922337203685477580\x00API call with %s database connection pointer\x00unopened\x00invalid\x00Savepoint\x00AutoCommit\x00Transaction\x00SorterNext\x00Prev\x00Next\x00Checkpoint\x00JournalMode\x00Vacuum\x00VFilter\x00VUpdate\x00Goto\x00Gosub\x00InitCoroutine\x00Yield\x00MustBeInt\x00Jump\x00Once\x00If\x00Not\x00IfNot\x00IsNullOrType\x00IfNullRow\x00SeekLT\x00SeekLE\x00SeekGE\x00SeekGT\x00IfNotOpen\x00IfNoHope\x00NoConflict\x00NotFound\x00Found\x00SeekRowid\x00NotExists\x00Last\x00IfSmaller\x00SorterSort\x00Sort\x00Rewind\x00IdxLE\x00IdxGT\x00IdxLT\x00IdxGE\x00Or\x00And\x00RowSetRead\x00RowSetTest\x00Program\x00FkIfZero\x00IfPos\x00IsNull\x00NotNull\x00Ne\x00Eq\x00Gt\x00Le\x00Lt\x00Ge\x00ElseEq\x00IfNotZero\x00DecrJumpZero\x00IncrVacuum\x00VNext\x00Init\x00PureFunc\x00Function\x00Return\x00EndCoroutine\x00HaltIfNull\x00Halt\x00Integer\x00Int64\x00String\x00Null\x00SoftNull\x00Blob\x00Variable\x00Move\x00Copy\x00SCopy\x00IntCopy\x00ChngCntRow\x00ResultRow\x00CollSeq\x00AddImm\x00RealAffinity\x00Cast\x00Permutation\x00Compare\x00IsTrue\x00ZeroOrNull\x00Offset\x00Column\x00TypeCheck\x00Affinity\x00MakeRecord\x00Count\x00ReadCookie\x00SetCookie\x00ReopenIdx\x00OpenRead\x00OpenWrite\x00BitAnd\x00BitOr\x00ShiftLeft\x00ShiftRight\x00Add\x00Subtract\x00Multiply\x00Divide\x00Remainder\x00Concat\x00OpenDup\x00BitNot\x00OpenAutoindex\x00OpenEphemeral\x00String8\x00SorterOpen\x00SequenceTest\x00OpenPseudo\x00Close\x00ColumnsUsed\x00SeekScan\x00SeekHit\x00Sequence\x00NewRowid\x00Insert\x00RowCell\x00Delete\x00ResetCount\x00SorterCompare\x00SorterData\x00RowData\x00Rowid\x00NullRow\x00SeekEnd\x00IdxInsert\x00SorterInsert\x00IdxDelete\x00DeferredSeek\x00IdxRowid\x00FinishSeek\x00Destroy\x00Clear\x00ResetSorter\x00CreateBtree\x00SqlExec\x00ParseSchema\x00LoadAnalysis\x00DropTable\x00DropIndex\x00DropTrigger\x00Real\x00IntegrityCk\x00RowSetAdd\x00Param\x00FkCounter\x00MemMax\x00OffsetLimit\x00AggInverse\x00AggStep\x00AggStep1\x00AggValue\x00AggFinal\x00Expire\x00CursorLock\x00CursorUnlock\x00TableLock\x00VBegin\x00VCreate\x00VDestroy\x00VOpen\x00VColumn\x00VRename\x00Pagecount\x00MaxPgcnt\x00Trace\x00CursorHint\x00ReleaseReg\x00Noop\x00Explain\x00Abortable\x00open\x00close\x00access\x00getcwd\x00stat\x00fstat\x00ftruncate\x00fcntl\x00read\x00pread\x00pread64\x00write\x00pwrite\x00pwrite64\x00fchmod\x00fallocate\x00unlink\x00openDirectory\x00mkdir\x00rmdir\x00fchown\x00geteuid\x00mmap\x00munmap\x00mremap\x00getpagesize\x00readlink\x00lstat\x00ioctl\x00attempt to open \"%s\" as file descriptor %d\x00/dev/null\x00os_unix.c:%d: (%d) %s(%s) - %s\x00cannot fstat db file %s\x00file unlinked while open: %s\x00multiple links to file: %s\x00file renamed while open: %s\x00%s\x00full_fsync\x00%s-shm\x00readonly_shm\x00psow\x00unix-excl\x00%s.lock\x00/var/tmp\x00/usr/tmp\x00/tmp\x00SQLITE_TMPDIR\x00TMPDIR\x00%s/etilqs_%llx%c\x00modeof\x00fsync\x00/dev/urandom\x00unix\x00unix-none\x00unix-dotfile\x00memdb\x00memdb(%p,%lld)\x00PRAGMA \"%w\".page_count\x00ATTACH x AS %Q\x00recovered %d pages from %s\x00-journal\x00-wal\x00nolock\x00immutable\x00recovered %d frames from WAL file %s\x00cannot limit WAL size: %s\x00:memory:\x00@  \x00\n\x00invalid page number %d\x002nd reference to page %d\x00Failed to read ptrmap key=%d\x00Bad ptr map entry key=%d expected=(%d,%d) got=(%d,%d)\x00failed to get page %d\x00freelist leaf count too big on page %d\x00size\x00overflow list length\x00%s is %d but should be %d\x00Page %u: \x00unable to get the page. error code=%d\x00btreeInitPage() returns error code %d\x00free space corruption\x00On tree page %u cell %d: \x00On page %u at right child: \x00Offset %d out of range %d..%d\x00Extends off end of page\x00Rowid %lld out of order\x00Child page depth differs\x00Multiple uses for byte %u of page %u\x00Fragmentation of %d bytes reported as %d on page %u\x00Main freelist: \x00max rootpage (%d) disagrees with header (%d)\x00incremental_vacuum enabled with a max rootpage of zero\x00Page %d is never used\x00Pointer map page %d is referenced\x00unknown database %s\x00destination database is in use\x00source and destination must be distinct\x00%!.15g\x00-\x00%s%s\x00k(%d\x00BINARY\x00B\x00N.\x00,%s%s%s\x00)\x00?\x008\x0016LE\x0016BE\x00%.18s-%s\x00%s(%d)\x00%d\x00(blob)\x00vtab:%p\x00%c%u\x00]\x00program\x00addr\x00opcode\x00p1\x00p2\x00p3\x00p4\x00p5\x00comment\x00id\x00parent\x00notused\x00detail\x00%.4c%s%.16c\x00MJ delete: %s\x00MJ collide: %s\x00-mj%06X9%02X\x00FOREIGN KEY constraint failed\x00a CHECK constraint\x00a generated column\x00an index\x00non-deterministic use of %s() in %s\x00API called with finalized prepared statement\x00API called with NULL prepared statement\x00string or blob too big\x00bind on a busy prepared statement: [%s]\x00-- \x00'%.*q'\x00zeroblob(%d)\x00x'\x00%02x\x00'\x00NOT NULL\x00UNIQUE\x00CHECK\x00FOREIGN KEY\x00%s constraint failed\x00%z: %s\x00abort at %d in [%s]: %s\x00cannot store %s value in %s column %s.%s\x00cannot open savepoint - SQL statements in progress\x00no such savepoint: %s\x00cannot release savepoint - SQL statements in progress\x00cannot commit transaction - SQL statements in progress\x00cannot start a transaction within a transaction\x00cannot rollback - no transaction is active\x00cannot commit - no transaction is active\x00database schema has changed\x00index corruption\x00sqlite_master\x00SELECT*FROM\"%w\".%s WHERE %s ORDER BY rowid\x00too many levels of trigger recursion\x00into\x00out of\x00cannot change %s wal mode from within a transaction\x00database table is locked: %s\x00-- %s\x00statement aborts at %d: [%s] %s\x00out of memory\x00null\x00real\x00integer\x00cannot open value of type %s\x00no such rowid: %lld\x00cannot open virtual table: %s\x00cannot open table without rowid: %s\x00cannot open view: %s\x00no such column: \"%s\"\x00foreign key\x00indexed\x00cannot open %s column for writing\x00main\x00new\x00old\x00excluded\x00misuse of aliased aggregate %s\x00misuse of aliased window function %s\x00row value misused\x00double-quoted string literal: \"%w\"\x00no such column\x00ambiguous column name\x00%s: %s.%s.%s\x00%s: %s.%s\x00%s: %s\x00partial index WHERE clauses\x00index expressions\x00CHECK constraints\x00generated columns\x00%s prohibited in %s\x00true\x00false\x00the \".\" operator\x00second argument to likelihood() must be a constant between 0.0 and 1.0\x00not authorized to use function: %s\x00non-deterministic functions\x00%.*s() may not be used as a window function\x00window\x00aggregate\x00misuse of %s function %.*s()\x00no such function: %.*s\x00wrong number of arguments to function %.*s()\x00FILTER may not be used with non-aggregate %.*s()\x00subqueries\x00parameters\x00%r %s BY term out of range - should be between 1 and %d\x00too many terms in ORDER BY clause\x00ORDER\x00%r ORDER BY term does not match any column in the result set\x00too many terms in %s BY clause\x00a GROUP BY clause is required before HAVING\x00GROUP\x00aggregate functions are not allowed in the GROUP BY clause\x00Expression tree is too large (maximum depth %d)\x00s\x00IN(...) element has %d term%s - expected %d\x000\x00too many arguments on function %T\x00unsafe use of %s()\x00variable number must be between ?1 and ?%d\x00too many SQL variables\x00%d columns assigned %d values\x00too many columns in %s\x00_ROWID_\x00ROWID\x00OID\x00USING ROWID SEARCH ON TABLE %s FOR IN-OPERATOR\x00USING INDEX %s FOR IN-OPERATOR\x00sub-select returns %d columns - expected %d\x00REUSE LIST SUBQUERY %d\x00CORRELATED \x00%sLIST SUBQUERY %d\x00REUSE SUBQUERY %d\x00%sSCALAR SUBQUERY %d\x001\x000x\x00hex literal too big: %s%s\x00generated column loop on \"%s\"\x00blob\x00text\x00numeric\x00none\x00misuse of aggregate: %s()\x00unknown function: %s()\x00RAISE() may only be used within a trigger-program\x00sqlite_\x00table %s may not be altered\x00SELECT 1 FROM \"%w\".sqlite_master WHERE name NOT LIKE 'sqliteX_%%' ESCAPE 'X' AND sql NOT LIKE 'create virtual%%' AND sqlite_rename_test(%Q, sql, type, name, %d, %Q, %d)=NULL \x00SELECT 1 FROM temp.sqlite_master WHERE name NOT LIKE 'sqliteX_%%' ESCAPE 'X' AND sql NOT LIKE 'create virtual%%' AND sqlite_rename_test(%Q, sql, type, name, 1, %Q, %d)=NULL \x00UPDATE \"%w\".sqlite_master SET sql = sqlite_rename_quotefix(%Q, sql)WHERE name NOT LIKE 'sqliteX_%%' ESCAPE 'X' AND sql NOT LIKE 'create virtual%%'\x00UPDATE temp.sqlite_master SET sql = sqlite_rename_quotefix('temp', sql)WHERE name NOT LIKE 'sqliteX_%%' ESCAPE 'X' AND sql NOT LIKE 'create virtual%%'\x00there is already another table or index with this name: %s\x00table\x00view %s may not be altered\x00UPDATE \"%w\".sqlite_master SET sql = sqlite_rename_table(%Q, type, name, sql, %Q, %Q, %d) WHERE (type!='index' OR tbl_name=%Q COLLATE nocase)AND   name NOT LIKE 'sqliteX_%%' ESCAPE 'X'\x00UPDATE %Q.sqlite_master SET tbl_name = %Q, name = CASE WHEN type='table' THEN %Q WHEN name LIKE 'sqliteX_autoindex%%' ESCAPE 'X'      AND type='index' THEN 'sqlite_autoindex_' || %Q || substr(name,%d+18) ELSE name END WHERE tbl_name=%Q COLLATE nocase AND (type='table' OR type='index' OR type='trigger');\x00sqlite_sequence\x00UPDATE \"%w\".sqlite_sequence set name = %Q WHERE name = %Q\x00UPDATE sqlite_temp_schema SET sql = sqlite_rename_table(%Q, type, name, sql, %Q, %Q, 1), tbl_name = CASE WHEN tbl_name=%Q COLLATE nocase AND   sqlite_rename_test(%Q, sql, type, name, 1, 'after rename', 0) THEN %Q ELSE tbl_name END WHERE type IN ('view', 'trigger')\x00after rename\x00SELECT raise(ABORT,%Q) FROM \"%w\".\"%w\"\x00Cannot add a PRIMARY KEY column\x00Cannot add a UNIQUE column\x00Cannot add a REFERENCES column with non-NULL default value\x00Cannot add a NOT NULL column with default value NULL\x00Cannot add a column with non-constant default\x00cannot add a STORED column\x00UPDATE \"%w\".sqlite_master SET sql = printf('%%.%ds, ',sql) || %Q || substr(sql,1+length(printf('%%.%ds',sql))) WHERE type = 'table' AND name = %Q\x00SELECT CASE WHEN quick_check GLOB 'CHECK*' THEN raise(ABORT,'CHECK constraint failed') ELSE raise(ABORT,'NOT NULL constraint failed') END  FROM pragma_quick_check(\"%w\",\"%w\") WHERE quick_check GLOB 'CHECK*' OR quick_check GLOB 'NULL*'\x00virtual tables may not be altered\x00Cannot add a column to a view\x00sqlite_altertab_%s\x00view\x00virtual table\x00drop column from\x00rename columns of\x00cannot %s %s \"%s\"\x00UPDATE \"%w\".sqlite_master SET sql = sqlite_rename_column(sql, type, name, %Q, %Q, %d, %Q, %d, %d) WHERE name NOT LIKE 'sqliteX_%%' ESCAPE 'X'  AND (type != 'index' OR tbl_name = %Q)\x00UPDATE temp.sqlite_master SET sql = sqlite_rename_column(sql, type, name, %Q, %Q, %d, %Q, %d, 1) WHERE type IN ('trigger', 'view')\x00 \x00error in %s %s%s%s: %s\x00\"%w\" \x00%Q%s\x00%.*s%s\x00PRIMARY KEY\x00cannot drop %s column: \"%s\"\x00cannot drop column \"%s\": no other columns exist\x00UPDATE \"%w\".sqlite_master SET sql = sqlite_drop_column(%d, sql, %d) WHERE (type=='table' AND tbl_name=%Q COLLATE nocase)\x00after drop column\x00sqlite_rename_column\x00sqlite_rename_table\x00sqlite_rename_test\x00sqlite_drop_column\x00sqlite_rename_quotefix\x00sqlite_stat1\x00tbl,idx,stat\x00sqlite_stat4\x00tbl,idx,neq,nlt,ndlt,sample\x00sqlite_stat3\x00CREATE TABLE %Q.%s(%s)\x00DELETE FROM %Q.%s WHERE %s=%Q\x00DELETE FROM %Q.%s\x00stat_init\x00stat_push\x00%llu\x00 %llu\x00%llu \x00stat_get\x00sqlite\\_%\x00BBB\x00idx\x00tbl\x00unordered*\x00sz=[0-9]*\x00noskipscan*\x00SELECT idx,count(*) FROM %Q.sqlite_stat4 GROUP BY idx\x00SELECT idx,neq,nlt,ndlt,sample FROM %Q.sqlite_stat4\x00SELECT tbl,idx,stat FROM %Q.sqlite_stat1\x00x\x00\x00too many attached databases - max %d\x00database %s is already in use\x00database is already attached\x00attached databases must use the same text encoding as main database\x00unable to open database: %s\x00no such database: %s\x00cannot detach database %s\x00database %s is locked\x00sqlite_detach\x00sqlite_attach\x00%s cannot use variables\x00%s %T cannot reference objects in database %s\x00authorizer malfunction\x00%s.%s\x00%s.%z\x00access to %z is prohibited\x00not authorized\x00sqlite_temp_schema\x00sqlite_schema\x00sqlite_temp_master\x00pragma_\x00no such view\x00no such table\x00corrupt database\x00unknown database %T\x00object name reserved for internal use: %s\x00temporary table name must be unqualified\x00table %T already exists\x00there is already an index named %s\x00sqlite_returning\x00cannot use RETURNING in a trigger\x00too many columns on %s\x00always\x00generated\x00duplicate column name: %s\x00default value of column [%s] is not constant\x00cannot use DEFAULT on a generated column\x00generated columns cannot be part of the PRIMARY KEY\x00table \"%s\" has more than one primary key\x00AUTOINCREMENT is only allowed on an INTEGER PRIMARY KEY\x00virtual tables cannot use computed columns\x00virtual\x00stored\x00error in generated column \"%s\"\x00,\x00\n  \x00,\n  \x00\n)\x00CREATE TABLE \x00 TEXT\x00 NUM\x00 INT\x00 REAL\x00unknown datatype for %s.%s: \"%s\"\x00missing datatype for %s.%s\x00AUTOINCREMENT not allowed on WITHOUT ROWID tables\x00PRIMARY KEY missing on table %s\x00must have at least one non-generated column\x00TABLE\x00VIEW\x00CREATE %s %.*s\x00UPDATE %Q.sqlite_master SET type='%s', name=%Q, tbl_name=%Q, rootpage=#%d, sql=%Q WHERE rowid=#%d\x00CREATE TABLE %Q.sqlite_sequence(name,seq)\x00tbl_name='%q' AND type!='trigger'\x00parameters are not allowed in views\x00view %s is circularly defined\x00corrupt schema\x00UPDATE %Q.sqlite_master SET rootpage=%d WHERE #%d AND rootpage=#%d\x00sqlite_stat%d\x00DELETE FROM %Q.sqlite_sequence WHERE name=%Q\x00DELETE FROM %Q.sqlite_master WHERE tbl_name=%Q and type!='trigger'\x00table %s may not be dropped\x00use DROP TABLE to delete table %s\x00use DROP VIEW to delete view %s\x00foreign key on %s should reference only one column of table %T\x00number of columns in foreign key does not match the number of columns in the referenced table\x00unknown column \"%s\" in foreign key definition\x00FIRST\x00LAST\x00unsupported use of NULLS %s\x00index\x00cannot create a TEMP index on non-TEMP table \"%s\"\x00table %s may not be indexed\x00views may not be indexed\x00virtual tables may not be indexed\x00there is already a table named %s\x00index %s already exists\x00sqlite_autoindex_%s_%d\x00expressions prohibited in PRIMARY KEY and UNIQUE constraints\x00conflicting ON CONFLICT clauses specified\x00invalid rootpage\x00 UNIQUE\x00CREATE%s INDEX %.*s\x00INSERT INTO %Q.sqlite_master VALUES('index',%Q,%Q,#%d,%Q);\x00name='%q' AND type='index'\x00no such index: %S\x00index associated with UNIQUE or PRIMARY KEY constraint cannot be dropped\x00DELETE FROM %Q.sqlite_master WHERE name=%Q AND type='index'\x00too many FROM clause terms, max: %d\x00ON\x00USING\x00a JOIN clause is required before %s\x00BEGIN\x00ROLLBACK\x00COMMIT\x00RELEASE\x00unable to open a temporary database file for storing temporary tables\x00index '%q'\x00, \x00%s.rowid\x00unable to identify the object to be reindexed\x00duplicate WITH table name: %s\x00no such collation sequence: %s\x00table %s may not be modified\x00cannot modify %s because it is a view\x00rows deleted\x00integer overflow\x00%.*f\x00LIKE or GLOB pattern too complex\x00ESCAPE expression must be a single character\x00%!.20e\x00?000\x00MATCH\x00like\x00implies_nonnull_row\x00expr_compare\x00expr_implies_expr\x00affinity\x00soundex\x00load_extension\x00sqlite_compileoption_used\x00sqlite_compileoption_get\x00unlikely\x00likelihood\x00likely\x00sqlite_offset\x00ltrim\x00rtrim\x00trim\x00min\x00max\x00typeof\x00length\x00instr\x00printf\x00unicode\x00char\x00abs\x00round\x00upper\x00lower\x00hex\x00ifnull\x00random\x00randomblob\x00nullif\x00sqlite_version\x00sqlite_source_id\x00sqlite_log\x00quote\x00last_insert_rowid\x00changes\x00total_changes\x00replace\x00zeroblob\x00substr\x00substring\x00sum\x00total\x00avg\x00count\x00group_concat\x00glob\x00coalesce\x00ceil\x00ceiling\x00floor\x00trunc\x00ln\x00log\x00log10\x00log2\x00exp\x00pow\x00power\x00mod\x00acos\x00asin\x00atan\x00atan2\x00cos\x00sin\x00tan\x00cosh\x00sinh\x00tanh\x00acosh\x00asinh\x00atanh\x00sqrt\x00radians\x00degrees\x00pi\x00sign\x00iif\x00foreign key mismatch - \"%w\" referencing \"%w\"\x00cannot INSERT into generated column \"%s\"\x00table %S has no column named %s\x00table %S has %d columns but %d values were supplied\x00%d values for %d columns\x00UPSERT not implemented for virtual table \"%s\"\x00cannot UPSERT a view\x00rows inserted\x00so\x00sqlite3_extension_init\x00sqlite3_\x00lib\x00_init\x00no entry point [%s] in shared library [%s]\x00error during initialization: %s\x00unable to open shared library [%.*s]\x00automatic extension loading failed: %s\x00seq\x00from\x00to\x00on_update\x00on_delete\x00match\x00cid\x00name\x00type\x00notnull\x00dflt_value\x00pk\x00hidden\x00schema\x00ncol\x00wr\x00strict\x00seqno\x00desc\x00coll\x00key\x00builtin\x00enc\x00narg\x00flags\x00wdth\x00hght\x00flgs\x00unique\x00origin\x00partial\x00rowid\x00fkid\x00file\x00busy\x00checkpointed\x00database\x00status\x00cache_size\x00timeout\x00analysis_limit\x00application_id\x00auto_vacuum\x00automatic_index\x00busy_timeout\x00cache_spill\x00case_sensitive_like\x00cell_size_check\x00checkpoint_fullfsync\x00collation_list\x00compile_options\x00count_changes\x00data_version\x00database_list\x00default_cache_size\x00defer_foreign_keys\x00empty_result_callbacks\x00encoding\x00foreign_key_check\x00foreign_key_list\x00foreign_keys\x00freelist_count\x00full_column_names\x00fullfsync\x00function_list\x00hard_heap_limit\x00ignore_check_constraints\x00incremental_vacuum\x00index_info\x00index_list\x00index_xinfo\x00integrity_check\x00journal_mode\x00journal_size_limit\x00legacy_alter_table\x00locking_mode\x00max_page_count\x00mmap_size\x00module_list\x00optimize\x00page_count\x00page_size\x00pragma_list\x00query_only\x00quick_check\x00read_uncommitted\x00recursive_triggers\x00reverse_unordered_selects\x00schema_version\x00secure_delete\x00short_column_names\x00shrink_memory\x00soft_heap_limit\x00synchronous\x00table_info\x00table_list\x00table_xinfo\x00temp_store\x00temp_store_directory\x00threads\x00trusted_schema\x00user_version\x00wal_autocheckpoint\x00wal_checkpoint\x00writable_schema\x00exclusive\x00normal\x00full\x00incremental\x00memory\x00temporary storage cannot be changed from within a transaction\x00SET NULL\x00SET DEFAULT\x00CASCADE\x00RESTRICT\x00NO ACTION\x00delete\x00persist\x00off\x00truncate\x00wal\x00utf8\x00utf16le\x00utf16be\x00w\x00a\x00sissii\x00-%T\x00fast\x00not a writable directory\x00Safety level may not be changed inside a transaction\x00reset\x00issisii\x00issisi\x00SELECT*FROM\"%w\"\x00shadow\x00sssiii\x00iisX\x00isiX\x00c\x00u\x00isisi\x00iss\x00is\x00iissssss\x00NONE\x00siX\x00*** in database %s ***\n\x00NULL value in %s.%s\x00non-%s value in %s.%s\x00CHECK constraint failed in %s\x00row \x00 missing from index \x00non-unique entry in index \x00wrong # of entries in index \x00ok\x00UTF8\x00UTF-8\x00UTF-16le\x00UTF-16be\x00UTF16le\x00UTF16be\x00UTF-16\x00UTF16\x00unsupported encoding: %s\x00restart\x00ANALYZE \"%w\".\"%w\"\x00CREATE TABLE x\x00%c\"%s\"\x00(\"%s\"\x00,arg HIDDEN\x00,schema HIDDEN\x00PRAGMA \x00%Q.\x00=%Q\x00rename\x00drop column\x00add column\x00error in %s %s after %s: %s\x00malformed database schema (%s)\x00%z - %s\x00orphan index\x00CREATE TABLE x(type text,name text,tbl_name text,rootpage int,sql text)\x00unsupported file format\x00SELECT*FROM\"%w\".%s ORDER BY rowid\x00database schema is locked: %s\x00statement too long\x00unknown or unsupported join type: %T %T%s%T\x00RIGHT and FULL OUTER JOINs are not currently supported\x00a NATURAL join may not have an ON or USING clause\x00cannot have both ON and USING clauses in the same join\x00cannot join using column %s - column not present in both tables\x00UNION ALL\x00INTERSECT\x00EXCEPT\x00UNION\x00USE TEMP B-TREE FOR %s\x00column%d\x00%.*z:%u\x00cannot use window functions in recursive queries\x00recursive aggregate queries not supported\x00SETUP\x00RECURSIVE STEP\x00S\x00SCAN %d CONSTANT ROW%s\x00COMPOUND QUERY\x00LEFT-MOST SUBQUERY\x00%s USING TEMP B-TREE\x00all VALUES must have the same number of terms\x00SELECTs to the left and right of %s do not have the same number of result columns\x00MERGE (%s)\x00LEFT\x00RIGHT\x00no such index: %s\x00'%s' is not a function\x00no such index: \"%s\"\x00multiple references to recursive table: %s\x00circular reference: %s\x00table %s has %d values for %d columns\x00multiple recursive references: %s\x00recursive reference in a subquery: %s\x00subquery_%u\x00too many references to \"%s\": max 65535\x00access to view \"%s\" prohibited\x00unsafe use of virtual table \"%s\"\x00*\x00%s.%s.%s\x00no such table: %s\x00no tables specified\x00too many columns in result set\x00DISTINCT aggregates must have exactly one argument\x00USE TEMP B-TREE FOR %s(DISTINCT)\x00 USING COVERING INDEX \x00SCAN %s%s%s\x00target object/alias may not appear in FROM clause: %s\x00expected %d columns for '%s' but got %d\x00CO-ROUTINE %!S\x00MATERIALIZE %!S\x00DISTINCT\x00GROUP BY\x00RIGHT PART OF ORDER BY\x00ORDER BY\x00sqlite3_get_table() called with two or more incompatible queries\x00temporary trigger may not have qualified name\x00trigger\x00cannot create triggers on virtual tables\x00trigger %T already exists\x00cannot create trigger on system table\x00BEFORE\x00AFTER\x00cannot create %s trigger on view: %S\x00cannot create INSTEAD OF trigger on table: %S\x00INSERT INTO %Q.sqlite_master VALUES('trigger',%Q,%Q,0,'CREATE TRIGGER %q')\x00type='trigger' AND name='%q'\x00no such trigger: %S\x00DELETE FROM %Q.sqlite_master WHERE name=%Q AND type='trigger'\x00DELETE\x00UPDATE\x00%s RETURNING is not available on virtual tables\x00RETURNING may not use \"TABLE.*\" wildcards\x00-- TRIGGER %s\x00cannot UPDATE generated column \"%s\"\x00no such column: %s\x00rows updated\x00%r \x00%sON CONFLICT clause does not match any PRIMARY KEY or UNIQUE constraint\x00CRE\x00INS\x00cannot VACUUM from within a transaction\x00cannot VACUUM - SQL statements in progress\x00non-text filename\x00ATTACH %Q AS vacuum_db\x00output file already exists\x00SELECT sql FROM \"%w\".sqlite_schema WHERE type='table'AND name<>'sqlite_sequence' AND coalesce(rootpage,1)>0\x00SELECT sql FROM \"%w\".sqlite_schema WHERE type='index'\x00SELECT'INSERT INTO vacuum_db.'||quote(name)||' SELECT*FROM\"%w\".'||quote(name)FROM vacuum_db.sqlite_schema WHERE type='table'AND coalesce(rootpage,1)>0\x00INSERT INTO vacuum_db.sqlite_schema SELECT*FROM \"%w\".sqlite_schema WHERE type IN('view','trigger') OR(type='table'AND rootpage=0)\x00CREATE VIRTUAL TABLE %T\x00UPDATE %Q.sqlite_master SET type='table', name=%Q, tbl_name=%Q, rootpage=0, sql=%Q WHERE rowid=#%d\x00name=%Q AND sql=%Q\x00vtable constructor called recursively: %s\x00vtable constructor failed: %s\x00vtable constructor did not declare schema: %s\x00no such module: %s\x00<expr>\x00 AND \x00(\x00 (\x00%s=?\x00ANY(%s)\x00>\x00<\x00SEARCH\x00SCAN\x00%s %S\x00AUTOMATIC PARTIAL COVERING INDEX\x00AUTOMATIC COVERING INDEX\x00COVERING INDEX %s\x00INDEX %s\x00 USING \x00=\x00>? AND rowid<\x00 USING INTEGER PRIMARY KEY (rowid%s?)\x00 VIRTUAL TABLE INDEX %d:%s\x00MULTI-INDEX OR\x00INDEX %d\x00regexp\x00ON clause references tables to its right\x00NOCASE\x00too many arguments on %s() - max %d\x00automatic index on %s(%s)\x00auto-index\x00%s.xBestIndex malfunction\x00abbreviated query algorithm search\x00no query solution\x00at most %d tables in a join\x00SCAN CONSTANT ROW\x00second argument to nth_value must be a positive integer\x00argument of ntile must be a positive integer\x00no such window: %s\x00RANGE with offset PRECEDING/FOLLOWING requires one ORDER BY expression\x00FILTER clause may only be used with aggregate window functions\x00unsupported frame specification\x00PARTITION clause\x00ORDER BY clause\x00frame specification\x00cannot override %s of window: %s\x00DISTINCT is not supported for window functions\x00frame starting offset must be a non-negative integer\x00frame ending offset must be a non-negative integer\x00frame starting offset must be a non-negative number\x00frame ending offset must be a non-negative number\x00LIMIT\x00%s clause should come after %s not before\x00too many terms in compound SELECT\x00syntax error after column name \"%.*s\"\x00parser stack overflow\x00unknown table option: %.*s\x00set list\x00near \"%T\": syntax error\x00qualified table names are not allowed on INSERT, UPDATE, and DELETE statements within triggers\x00the INDEXED BY clause is not allowed on UPDATE or DELETE statements within triggers\x00the NOT INDEXED clause is not allowed on UPDATE or DELETE statements within triggers\x00incomplete input\x00unrecognized token: \"%.*s\"\x00%s in \"%s\"\x00create\x00temp\x00temporary\x00end\x00explain\x00unable to close due to unfinalized statements or unfinished backups\x00not an error\x00SQL logic error\x00access permission denied\x00query aborted\x00database is locked\x00database table is locked\x00attempt to write a readonly database\x00interrupted\x00disk I/O error\x00database disk image is malformed\x00unknown operation\x00database or disk is full\x00unable to open database file\x00locking protocol\x00constraint failed\x00datatype mismatch\x00bad parameter or other API misuse\x00authorization denied\x00column index out of range\x00file is not a database\x00notification message\x00warning message\x00unknown error\x00abort due to ROLLBACK\x00another row available\x00no more rows available\x00unable to delete/modify user-function due to active statements\x00unable to use function %s in the requested context\x00unknown database: %s\x00unable to delete/modify collation sequence due to active statements\x00file:\x00localhost\x00invalid uri authority: %.*s\x00vfs\x00cache\x00shared\x00private\x00mode\x00ro\x00rw\x00rwc\x00no such %s mode: %s\x00%s mode not allowed: %s\x00no such vfs: %s\x00RTRIM\x00\x00\x00\x00%s at line %d of [%.10s]\x00database corruption\x00misuse\x00cannot open file\x00no such table column: %s.%s\x00SQLITE_\x00database is deadlocked\x00array\x00object\x000123456789abcdef\x00JSON cannot hold BLOB values\x00malformed JSON\x00[0]\x00JSON path error near '%q'\x00json_%s() needs an odd number of arguments\x00json_object() requires an even number of arguments\x00json_object() labels must be TEXT\x00set\x00insert\x00[]\x00{}\x00CREATE TABLE x(key,value,type,atom,id,parent,fullkey,path,json HIDDEN,root HIDDEN)\x00[%d]\x00.%.*s\x00$\x00json\x00json_array\x00json_array_length\x00json_extract\x00json_insert\x00json_object\x00json_patch\x00json_quote\x00json_remove\x00json_replace\x00json_set\x00json_type\x00json_valid\x00json_group_array\x00json_group_object\x00json_each\x00json_tree\x00%s_node\x00data\x00DROP TABLE '%q'.'%q_node';DROP TABLE '%q'.'%q_rowid';DROP TABLE '%q'.'%q_parent';\x00RtreeMatchArg\x00SELECT * FROM %Q.%Q\x00UNIQUE constraint failed: %s.%s\x00rtree constraint failed: %s.(%s<=%s)\x00ALTER TABLE %Q.'%q_node'   RENAME TO \"%w_node\";ALTER TABLE %Q.'%q_parent' RENAME TO \"%w_parent\";ALTER TABLE %Q.'%q_rowid'  RENAME TO \"%w_rowid\";\x00SELECT stat FROM %Q.sqlite_stat1 WHERE tbl = '%q_rowid'\x00node\x00INSERT OR REPLACE INTO '%q'.'%q_node' VALUES(?1, ?2)\x00DELETE FROM '%q'.'%q_node' WHERE nodeno = ?1\x00SELECT nodeno FROM '%q'.'%q_rowid' WHERE rowid = ?1\x00INSERT OR REPLACE INTO '%q'.'%q_rowid' VALUES(?1, ?2)\x00DELETE FROM '%q'.'%q_rowid' WHERE rowid = ?1\x00SELECT parentnode FROM '%q'.'%q_parent' WHERE nodeno = ?1\x00INSERT OR REPLACE INTO '%q'.'%q_parent' VALUES(?1, ?2)\x00DELETE FROM '%q'.'%q_parent' WHERE nodeno = ?1\x00CREATE TABLE \"%w\".\"%w_rowid\"(rowid INTEGER PRIMARY KEY,nodeno\x00,a%d\x00);CREATE TABLE \"%w\".\"%w_node\"(nodeno INTEGER PRIMARY KEY,data);\x00CREATE TABLE \"%w\".\"%w_parent\"(nodeno INTEGER PRIMARY KEY,parentnode);\x00INSERT INTO \"%w\".\"%w_node\"VALUES(1,zeroblob(%d))\x00INSERT INTO\"%w\".\"%w_rowid\"(rowid,nodeno)VALUES(?1,?2)ON CONFLICT(rowid)DO UPDATE SET nodeno=excluded.nodeno\x00SELECT * FROM \"%w\".\"%w_rowid\" WHERE rowid=?1\x00UPDATE \"%w\".\"%w_rowid\"SET \x00a%d=coalesce(?%d,a%d)\x00a%d=?%d\x00 WHERE rowid=?1\x00PRAGMA %Q.page_size\x00SELECT length(data) FROM '%q'.'%q_node' WHERE nodeno = 1\x00undersize RTree blobs in \"%q_node\"\x00Wrong number of columns for an rtree table\x00Too few columns for an rtree table\x00Too many columns for an rtree table\x00Auxiliary rtree columns must be last\x00CREATE TABLE x(%.*s INT\x00,%.*s\x00,%.*s REAL\x00,%.*s INT\x00);\x00{%lld\x00 %g\x00}\x00Invalid argument to rtreedepth()\x00%z%s%z\x00SELECT data FROM %Q.'%q_node' WHERE nodeno=?\x00Node %lld missing from database\x00SELECT parentnode FROM %Q.'%q_parent' WHERE nodeno=?1\x00SELECT nodeno FROM %Q.'%q_rowid' WHERE rowid=?1\x00%_rowid\x00%_parent\x00Mapping (%lld -> %lld) missing from %s table\x00Found (%lld -> %lld) in %s table, expected (%lld -> %lld)\x00Dimension %d of cell %d on node %lld is corrupt\x00Dimension %d of cell %d on node %lld is corrupt relative to parent\x00Node %lld is too small (%d bytes)\x00Rtree depth out of range (%d)\x00Node %lld is too small for cell count of %d (%d bytes)\x00SELECT count(*) FROM %Q.'%q%s'\x00Wrong number of entries in %%%s table - expected %lld, actual %lld\x00SELECT * FROM %Q.'%q_rowid'\x00Schema corrupt or not an rtree\x00_rowid\x00_parent\x00END\x00wrong number of arguments to function rtreecheck()\x00[\x00[%!g,%!g],\x00[%!g,%!g]]\x00<polyline points=\x00%c%g,%g\x00 %g,%g'\x00 %s\x00></polyline>\x00CREATE TABLE x(_shape\x00,%s\x00rtree\x00fullscan\x00_shape does not contain a valid polygon\x00geopoly_overlap\x00geopoly_within\x00geopoly_area\x00geopoly_blob\x00geopoly_json\x00geopoly_svg\x00geopoly_contains_point\x00geopoly_debug\x00geopoly_bbox\x00geopoly_xform\x00geopoly_regular\x00geopoly_ccw\x00geopoly_group_bbox\x00geopoly\x00rtreenode\x00rtreedepth\x00rtreecheck\x00rtree_i32\x00corrupt fossil delta\x00DROP TRIGGER IF EXISTS temp.rbu_insert_tr;DROP TRIGGER IF EXISTS temp.rbu_update1_tr;DROP TRIGGER IF EXISTS temp.rbu_update2_tr;DROP TRIGGER IF EXISTS temp.rbu_delete_tr;\x00AND rootpage!=0 AND rootpage IS NOT NULL\x00SELECT rbu_target_name(name, type='view') AS target, name FROM sqlite_schema WHERE type IN ('table', 'view') AND target IS NOT NULL  %s ORDER BY name\x00SELECT name, rootpage, sql IS NULL OR substr(8, 6)=='UNIQUE'   FROM main.sqlite_schema   WHERE type='index' AND tbl_name = ?\x00SELECT  (sql COLLATE nocase BETWEEN 'CREATE VIRTUAL' AND 'CREATE VIRTUAM'), rootpage  FROM sqlite_schema WHERE name=%Q\x00PRAGMA index_list=%Q\x00SELECT rootpage FROM sqlite_schema WHERE name = %Q\x00PRAGMA table_info=%Q\x00PRAGMA main.index_list = %Q\x00PRAGMA main.index_xinfo = %Q\x00SELECT * FROM '%q'\x00rbu_\x00rbu_rowid\x00may not have\x00requires\x00table %q %s rbu_rowid column\x00PRAGMA table_info(%Q)\x00column missing from %q: %s\x00%z%s\"%w\"\x00%z%s%s\"%w\"%s\x00SELECT max(_rowid_) FROM \"%s%w\"\x00 WHERE _rowid_ > %lld \x00 DESC\x00quote(\x00||','||\x00SELECT %s FROM \"%s%w\" ORDER BY %s LIMIT 1\x00 WHERE (%s) > (%s) \x00_rowid_\x00%z%s \"%w\" COLLATE %Q\x00%z%s \"rbu_imp_%d%w\" COLLATE %Q DESC\x00%z%s quote(\"rbu_imp_%d%w\")\x00SELECT %s FROM \"rbu_imp_%w\" ORDER BY %s LIMIT 1\x00%z%s%s\x00(%s) > (%s)\x00%z%s(%.*s) COLLATE %Q\x00%z%s\"%w\" COLLATE %Q\x00%z%s\"rbu_imp_%d%w\"%s\x00%z%s\"rbu_imp_%d%w\" %s COLLATE %Q\x00%z%s\"rbu_imp_%d%w\" IS ?\x00%z%s%s.\"%w\"\x00%z%sNULL\x00%z, %s._rowid_\x00_rowid_ = ?%d\x00%z%sc%d=?%d\x00_rowid_ = (SELECT id FROM rbu_imposter2 WHERE %z)\x00%z%s\"%w\"=?%d\x00invalid rbu_control value\x00%z%s\"%w\"=rbu_delta(\"%w\", ?%d)\x00%z%s\"%w\"=rbu_fossil_delta(\"%w\", ?%d)\x00PRIMARY KEY(\x00%z%s\"%w\"%s\x00%z)\x00SELECT name FROM sqlite_schema WHERE rootpage = ?\x00%z%sc%d %s COLLATE %Q\x00%z%sc%d%s\x00%z, id INTEGER\x00CREATE TABLE rbu_imposter2(%z, PRIMARY KEY(%z)) WITHOUT ROWID\x00PRIMARY KEY \x00 NOT NULL\x00%z%s\"%w\" %s %sCOLLATE %Q%s\x00%z, %z\x00 WITHOUT ROWID\x00CREATE TABLE \"rbu_imp_%w\"(%z)%s\x00INSERT INTO %s.'rbu_tmp_%q'(rbu_control,%s%s) VALUES(%z)\x00SELECT trim(sql) FROM sqlite_schema WHERE type='index' AND name=?\x00 LIMIT -1 OFFSET %d\x00CREATE TABLE \"rbu_imp_%w\"( %s, PRIMARY KEY( %s ) ) WITHOUT ROWID\x00INSERT INTO \"rbu_imp_%w\" VALUES(%s)\x00DELETE FROM \"rbu_imp_%w\" WHERE %s\x00AND\x00WHERE\x00SELECT %s, 0 AS rbu_control FROM '%q' %s %s %s ORDER BY %s%s\x00SELECT %s, rbu_control FROM %s.'rbu_tmp_%q' %s ORDER BY %s%s\x00SELECT %s, rbu_control FROM %s.'rbu_tmp_%q' %s UNION ALL SELECT %s, rbu_control FROM '%q' %s %s typeof(rbu_control)='integer' AND rbu_control!=1 ORDER BY %s%s\x00rbu_imp_\x00, _rowid_\x00INSERT INTO \"%s%w\"(%s%s) VALUES(%s)\x00DELETE FROM \"%s%w\" WHERE %s\x00, rbu_rowid\x00, 0 AS rbu_rowid\x00CREATE TABLE IF NOT EXISTS %s.'rbu_tmp_%q' AS SELECT *%s FROM '%q' WHERE 0;\x00CREATE TEMP TRIGGER rbu_delete_tr BEFORE DELETE ON \"%s%w\" BEGIN   SELECT rbu_tmp_insert(3, %s);END;CREATE TEMP TRIGGER rbu_update1_tr BEFORE UPDATE ON \"%s%w\" BEGIN   SELECT rbu_tmp_insert(3, %s);END;CREATE TEMP TRIGGER rbu_update2_tr AFTER UPDATE ON \"%s%w\" BEGIN   SELECT rbu_tmp_insert(4, %s);END;\x00CREATE TEMP TRIGGER rbu_insert_tr AFTER INSERT ON \"%s%w\" BEGIN   SELECT rbu_tmp_insert(0, %s);END;\x00,_rowid_ \x00,rbu_rowid\x000 AS \x00SELECT %s,%s rbu_control%s FROM '%q'%s %s %s %s\x00UPDATE \"%s%w\" SET %s WHERE %s\x00SELECT k, v FROM %s.rbu_state\x00file://%s-vacuum?modeof=%s\x00ATTACH %Q AS stat\x00CREATE TABLE IF NOT EXISTS %s.rbu_state(k INTEGER PRIMARY KEY, v)\x00cannot vacuum wal mode database\x00&\x00file:%s-vactmp?rbu_memory=1%s%s\x00rbu_tmp_insert\x00rbu_fossil_delta\x00rbu_target_name\x00SELECT * FROM sqlite_schema\x00rbu vfs not found\x00PRAGMA main.wal_checkpoint=restart\x00rbu_exclusive_checkpoint\x00%s-oal\x00%s-wal\x00PRAGMA schema_version\x00PRAGMA schema_version = %d\x00INSERT OR REPLACE INTO %s.rbu_state(k, v) VALUES (%d, %d), (%d, %Q), (%d, %Q), (%d, %d), (%d, %d), (%d, %lld), (%d, %lld), (%d, %lld), (%d, %lld), (%d, %Q)  \x00PRAGMA main.%s\x00PRAGMA main.%s = %d\x00PRAGMA writable_schema=1\x00SELECT sql FROM sqlite_schema WHERE sql!='' AND rootpage!=0 AND name!='sqlite_sequence'  ORDER BY type DESC\x00SELECT * FROM sqlite_schema WHERE rootpage=0 OR rootpage IS NULL\x00INSERT INTO sqlite_schema VALUES(?,?,?,?,?)\x00PRAGMA writable_schema=0\x00DELETE FROM %s.'rbu_tmp_%q'\x00rbu_state mismatch error\x00rbu_vfs_%d\x00SELECT count(*) FROM sqlite_schema WHERE type='index' AND tbl_name = %Q\x00rbu_index_cnt\x00SELECT 1 FROM sqlite_schema WHERE tbl_name = 'rbu_count'\x00SELECT sum(cnt * (1 + rbu_index_cnt(rbu_target_name(tbl))))FROM rbu_count\x00cannot update wal mode database\x00vacuum\x00update\x00database modified during rbu %s\x00BEGIN IMMEDIATE\x00PRAGMA journal_mode=off\x00-vactmp\x00DELETE FROM stat.rbu_state\x00rbu/zipvfs setup error\x00rbu(%s)/%z\x00rbu_memory\x00SELECT 0, 'tbl',  '', 0, '', 1     UNION ALL SELECT 1, 'idx',  '', 0, '', 2     UNION ALL SELECT 2, 'stat', '', 0, '', 0\x00PRAGMA '%q'.table_info('%q')\x00%z%s\"%w\".\"%w\".\"%w\"=\"%w\".\"%w\".\"%w\"\x00%z%s\"%w\".\"%w\".\"%w\" IS NOT \"%w\".\"%w\".\"%w\"\x00 OR \x00SELECT * FROM \"%w\".\"%w\" WHERE NOT EXISTS (  SELECT 1 FROM \"%w\".\"%w\" WHERE %s)\x00SELECT * FROM \"%w\".\"%w\", \"%w\".\"%w\" WHERE %s AND (%z)\x00table schemas do not match\x00SELECT tbl, ?2, stat FROM %Q.sqlite_stat1 WHERE tbl IS ?1 AND idx IS (CASE WHEN ?2=X'' THEN NULL ELSE ?2 END)\x00SELECT * FROM \x00 WHERE \x00 IS ?\x00SAVEPOINT changeset\x00RELEASE changeset\x00UPDATE main.\x00 SET \x00 = ?\x00idx IS CASE WHEN length(?4)=0 AND typeof(?4)='blob' THEN NULL ELSE ?4 END \x00DELETE FROM main.\x00 AND (?\x00AND \x00INSERT INTO main.\x00) VALUES(?\x00, ?\x00INSERT INTO main.sqlite_stat1 VALUES(?1, CASE WHEN length(?2)=0 AND typeof(?2)='blob' THEN NULL ELSE ?2 END, ?3)\x00DELETE FROM main.sqlite_stat1 WHERE tbl=?1 AND idx IS CASE WHEN length(?2)=0 AND typeof(?2)='blob' THEN NULL ELSE ?2 END AND (?4 OR stat IS ?3)\x00SAVEPOINT replace_op\x00RELEASE replace_op\x00SAVEPOINT changeset_apply\x00PRAGMA defer_foreign_keys = 1\x00sqlite3changeset_apply(): no such table: %s\x00sqlite3changeset_apply(): table %s has %d columns, expected %d or more\x00sqlite3changeset_apply(): primary key mismatch for table %s\x00PRAGMA defer_foreign_keys = 0\x00RELEASE changeset_apply\x00ROLLBACK TO changeset_apply\x00fts5: parser stack overflow\x00fts5: syntax error near \"%.*s\"\x00%z%.*s\x00wrong number of arguments to function highlight()\x00wrong number of arguments to function snippet()\x00snippet\x00highlight\x00bm25\x00prefix\x00malformed prefix=... directive\x00too many prefix indexes (max %d)\x00prefix length out of range (max 999)\x00tokenize\x00multiple tokenize=... directives\x00parse error in tokenize directive\x00content\x00multiple content=... directives\x00%Q.%Q\x00content_rowid\x00multiple content_rowid=... directives\x00columnsize\x00malformed columnsize=... directive\x00columns\x00malformed detail=... directive\x00unrecognized option: \"%.*s\"\x00rank\x00reserved fts5 column name: %s\x00unindexed\x00unrecognized column option: %s\x00T.%Q\x00, T.%Q\x00, T.c%d\x00reserved fts5 table name: %s\x00parse error in \"%s\"\x00docsize\x00%Q.'%q_%s'\x00CREATE TABLE x(\x00%z%s%Q\x00%z, %Q HIDDEN, %s HIDDEN)\x00pgsz\x00hashsize\x00automerge\x00usermerge\x00crisismerge\x00SELECT k, v FROM %Q.'%q_config'\x00version\x00invalid fts5 file format (found %d, expected %d) - run 'rebuild'\x00unterminated string\x00fts5: syntax error near \"%.1s\"\x00OR\x00NOT\x00NEAR\x00expected integer, got \"%.*s\"\x00fts5: column queries are not supported (detail=none)\x00phrase\x00fts5: %s queries are not supported (detail!=full)\x00block\x00REPLACE INTO '%q'.'%q_data'(id, block) VALUES(?,?)\x00DELETE FROM '%q'.'%q_data' WHERE id>=? AND id<=?\x00DELETE FROM '%q'.'%q_idx' WHERE segid=?\x00PRAGMA %Q.data_version\x00SELECT pgno FROM '%q'.'%q_idx' WHERE segid=? AND term<=? ORDER BY term DESC LIMIT 1\x00INSERT INTO '%q'.'%q_idx'(segid,term,pgno) VALUES(?,?,?)\x00%s_data\x00id INTEGER PRIMARY KEY, block BLOB\x00segid, term, pgno, PRIMARY KEY(segid, term)\x00SELECT segid, term, (pgno>>1), (pgno&1) FROM %Q.'%q_idx' WHERE segid=%d ORDER BY 1, 2\x00\x00\x00\x00\x00\x00recursively defined fts5 content table\x00DESC\x00ASC\x00SELECT rowid, rank FROM %Q.%Q ORDER BY %s(\"%w\"%s%s) %s\x00reads\x00unknown special query: %.*s\x00SELECT %s\x00no such function: %s\x00parse error in rank function: %s\x00%s: table does not support scanning\x00delete-all\x00'delete-all' may only be used with a contentless or external content fts5 table\x00rebuild\x00'rebuild' may not be used with a contentless fts5 table\x00merge\x00integrity-check\x00DELETE from\x00cannot %s contentless fts5 table: %s\x00no such cursor: %lld\x00no such tokenizer: %s\x00error in tokenizer constructor\x00fts5_api_ptr\x00fts5: 2022-01-06 13:25:41 872ba256cbf61d9290b571c0e6d82a20c224ca3ad82971edc46b29818d5d17a0\x00config\x00fts5\x00fts5_source_id\x00SELECT %s FROM %s T WHERE T.%Q >= ? AND T.%Q <= ? ORDER BY T.%Q ASC\x00SELECT %s FROM %s T WHERE T.%Q <= ? AND T.%Q >= ? ORDER BY T.%Q DESC\x00SELECT %s FROM %s T WHERE T.%Q=?\x00INSERT INTO %Q.'%q_content' VALUES(%s)\x00REPLACE INTO %Q.'%q_content' VALUES(%s)\x00DELETE FROM %Q.'%q_content' WHERE id=?\x00REPLACE INTO %Q.'%q_docsize' VALUES(?,?)\x00DELETE FROM %Q.'%q_docsize' WHERE id=?\x00SELECT sz FROM %Q.'%q_docsize' WHERE id=?\x00REPLACE INTO %Q.'%q_config' VALUES(?,?)\x00SELECT %s FROM %s AS T\x00DROP TABLE IF EXISTS %Q.'%q_data';DROP TABLE IF EXISTS %Q.'%q_idx';DROP TABLE IF EXISTS %Q.'%q_config';\x00DROP TABLE IF EXISTS %Q.'%q_docsize';\x00DROP TABLE IF EXISTS %Q.'%q_content';\x00ALTER TABLE %Q.'%q_%s' RENAME TO '%q_%s';\x00CREATE TABLE %Q.'%q_%q'(%s)%s\x00fts5: error creating shadow table %q_%s: %s\x00id INTEGER PRIMARY KEY\x00, c%d\x00id INTEGER PRIMARY KEY, sz BLOB\x00k PRIMARY KEY, v\x00DELETE FROM %Q.'%q_data';DELETE FROM %Q.'%q_idx';\x00DELETE FROM %Q.'%q_docsize';\x00SELECT count(*) FROM %Q.'%q_%s'\x00tokenchars\x00separators\x00L* N* Co\x00categories\x00remove_diacritics\x00unicode61\x00al\x00ance\x00ence\x00er\x00ic\x00able\x00ible\x00ant\x00ement\x00ment\x00ent\x00ion\x00ou\x00ism\x00ate\x00iti\x00ous\x00ive\x00ize\x00at\x00bl\x00ble\x00iz\x00ational\x00tional\x00tion\x00enci\x00anci\x00izer\x00logi\x00bli\x00alli\x00entli\x00eli\x00e\x00ousli\x00ization\x00ation\x00ator\x00alism\x00iveness\x00fulness\x00ful\x00ousness\x00aliti\x00iviti\x00biliti\x00ical\x00ness\x00icate\x00iciti\x00ative\x00alize\x00eed\x00ee\x00ed\x00ing\x00case_sensitive\x00ascii\x00porter\x00trigram\x00col\x00row\x00instance\x00fts5vocab: unknown table type: %Q\x00CREATE TABlE vocab(term, col, doc, cnt)\x00CREATE TABlE vocab(term, doc, cnt)\x00CREATE TABlE vocab(term, doc, col, offset)\x00wrong number of vtable arguments\x00recursive definition for %s.%s\x00SELECT t.%Q FROM %Q.%Q AS t WHERE t.%Q MATCH '*id'\x00no such fts5 table: %s.%s\x00fts5vocab\x002022-01-06 13:25:41 872ba256cbf61d9290b571c0e6d82a20c224ca3ad82971edc46b29818d5d17a0\x00"
