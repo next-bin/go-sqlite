@@ -34,6 +34,13 @@ var (
 	oQuiet    = flag.Bool("q", true, "reduce output")
 	oXTags    = flag.String("xtags", "", "passed as -tags to go build of testfixture")
 
+	expectedFailures = map[string]struct{}{
+		// Our min-useable malloc block-size appears to be 2k (actual) Because this
+		// test attempts to measure actual memory freed causing 2 blocks to be freed
+		// will free 4K, failing the tests
+		"malloc5-6.2.2": {},
+		"malloc5-6.2.3": {},
+	}
 	knownCFailures = map[string]struct{}{}
 
 	goos   = runtime.GOOS
@@ -61,6 +68,8 @@ func TestTclTest(t *testing.T) {
 		// # memory.  Make sure the host has at least 8GB available before running
 		// # this test.
 		blacklist["bigsort.test"] = struct{}{}
+	case "linux/ppc64le":
+		knownCFailures["snapshot_fault-4.1.1"] = struct{}{}
 	case "linux/s390x":
 		// See https://gitlab.com/cznic/sqlite/-/issues/120#note_1362306424
 		// TODO Fixed in SQLite 3.42.0
@@ -180,12 +189,17 @@ func TestTclTest(t *testing.T) {
 	s = strings.TrimSpace(s[:strings.IndexByte(s, '\n')])
 	a := strings.Fields(s)
 	for _, v := range a {
-		switch _, ok := knownCFailures[v]; {
-		case ok:
-			t.Logf("%s fails in C", v)
-		default:
-			t.Errorf("%s FAIL", v)
+		if _, ok := expectedFailures[v]; ok {
+			t.Logf("%s: expected fail", v)
+			continue
 		}
+
+		if _, ok := knownCFailures[v]; ok {
+			t.Logf("%s: fails in C", v)
+			continue
+		}
+
+		t.Errorf("%s FAIL", v)
 	}
 }
 
