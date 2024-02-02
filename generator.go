@@ -9,6 +9,7 @@ package main
 
 import (
 	"bufio"
+	"bytes"
 	"fmt"
 	"io"
 	"os"
@@ -22,8 +23,8 @@ import (
 )
 
 const (
-	archivePath  = "sqlite-amalgamation-3370200.zip"
-	archive2Path = "sqlite-src-3370200.zip"
+	archivePath  = "sqlite-amalgamation-3450100.zip"
+	archive2Path = "sqlite-src-3450100.zip"
 )
 
 var (
@@ -120,6 +121,7 @@ func main() {
 	mustCopyDir(ccgoInc, filepath.Join("..", "libz", "include", goos, goarch), nil, false)
 	mustCopyDir(ccgoInc, filepath.Join("..", "libtcl8.6", "include", goos, goarch), nil, false)
 	util.MustShell(true, "unzip", archivePath, "-d", tempDir)
+	fixWin(tempDir)
 	result := "sqlite3.go"
 	util.MustInDir(true, makeRoot, func() (err error) {
 		util.MustShell(true, "sh", "-c", "go mod init example.com/libsqlite3 ; go get modernc.org/libc@latest modernc.org/libz@latest modernc.org/libtcl8.6@latest")
@@ -190,6 +192,7 @@ func main() {
 				"--goos", goos,
 				"-DSQLITE_HAVE_C99_MATH_FUNCS=(1)",
 				"-DSQLITE_OS_WIN=1",
+				"-DSQLITE_OMIT_SEH",
 				"-build-lines", "//go:build windows && (amd64 || arm64)\n// +build windows\n// +build amd64 arm64",
 				"-map", "gcc=x86_64-w64-mingw32-gcc",
 			)
@@ -246,6 +249,7 @@ func main() {
 	fmt.Fprintf(os.Stderr, "makeRoot %s\n", makeRoot)
 	util.MustShell(true, "unzip", archive2Path, "-d", tempDir)
 	mustCopyDir(makeRoot, filepath.Join("internal", "overlay", "generator"), nil, false)
+	fixWin(tempDir)
 	mustCopyFile("LICENSE-SQLITE.md", filepath.Join(libRoot, "LICENSE.md"), nil)
 	util.MustInDir(true, makeRoot, func() (err error) {
 		util.MustShell(true, "sh", "-c", "go mod init example.com/libsqlite3 ; go get modernc.org/libc@latest modernc.org/libz@latest modernc.org/libtcl8.6@latest")
@@ -334,14 +338,13 @@ func main() {
 					"--goos", goos,
 					"-DSQLITE_HAVE_C99_MATH_FUNCS=(1)",
 					"-Dmalloc_usable_size(x)=( (int) ( unsigned long long ) ( malloc_usable_size ( x ) ) )",
-					"-D__mingw_strtod=strtod",
 					"-build-lines", "//go:build windows && (amd64 || arm64)\n// +build windows\n// +build amd64 arm64",
 					"-map", "gcc=x86_64-w64-mingw32-gcc",
 					"-exec", "make", "-j", j,
 					"BEXE=",
 
-					"CFLAGS=-mlong-double-64 -DLONGDOUBLE_TYPE=double -DSQLITE_WITHOUT_ZONEMALLOC -DNDEBUG -DSQLITE_OS_WIN=1 -DSQLITE_OS_UNIX=0 -D_MSC_VER=1",
-					"TOP=../sqlite-src-3370200",
+					"CFLAGS=-mlong-double-64 -DLONGDOUBLE_TYPE=double -DSQLITE_WITHOUT_ZONEMALLOC -DNDEBUG -DSQLITE_OS_WIN=1 -DSQLITE_OS_UNIX=0 -D_MSC_VER=1 -DSQLITE_OMIT_SEH",
+					"TOP=../sqlite-src-3450100",
 					"TEXE=.exe",
 					"testfixture.exe",
 				),
@@ -368,10 +371,37 @@ func main() {
 		mustCopyFile(filepath.Join("internal", "testfixture", fn), filepath.Join(makeRoot, "testfixture.go"), nil)
 	}
 	mustCopyDir(filepath.Join("internal", "test"), filepath.Join(makeRoot, "test"), nil, false)
-	mustCopyDir("internal/test", "internal/overlay/test", nil, false)
+	mustCopyDir("internal/test", "internal/overlay/test", nil, true)
 	util.Shell("sh", "-c", "./unconvert.sh")
 	util.MustShell(true, "go", "test", "-run", "@")
 	util.Shell("git", "status")
+}
+
+func fixWin(dir string) {
+	pat := []byte("<Windows.h>")
+	repl := []byte("<windows.h>")
+	if err := filepath.Walk(dir, func(path string, info os.FileInfo, err error) error {
+		if err != nil {
+			return err
+		}
+
+		if info.IsDir() || !strings.HasSuffix(path, ".c") {
+			return nil
+		}
+
+		b, err := os.ReadFile(path)
+		if err != nil {
+			return err
+		}
+
+		if !bytes.Contains(b, pat) {
+			return nil
+		}
+
+		return os.WriteFile(path, bytes.ReplaceAll(b, pat, repl), 0660)
+	}); err != nil {
+		fail(1, "%s\n", err)
+	}
 }
 
 func mustCopyDir(dst, src string, canOverwrite func(fn string, fi os.FileInfo) bool, srcNotExistsOk bool) (files int, bytes int64) {
