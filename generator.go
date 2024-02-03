@@ -358,7 +358,12 @@ func main() {
 			default:
 				args = append(args, "-exec", "make", "-j", j, "testfixture")
 			}
-			return ccgo.NewTask(goos, goarch, args, os.Stdout, os.Stderr, nil).Exec()
+			err := ccgo.NewTask(goos, goarch, args, os.Stdout, os.Stderr, nil).Exec()
+			switch target {
+			case "darwin/amd64", "darwin/arm64":
+				util.Shell(sed, "-i", `/func _guess_number_of_cores(/,/^}/d`, "testfixture.go")
+			}
+			return err
 		}
 	})
 

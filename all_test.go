@@ -99,11 +99,20 @@ func TestTclTest(t *testing.T) {
 	case goos == "windows":
 		bin += ".exe"
 		src = filepath.Join("internal", "testfixture", "ccgo_windows.go")
+		if out, err := util.Shell("go", "build", "-o", bin, "-tags="+*oXTags, src); err != nil {
+			t.Fatalf("%s\nFAIL: %v", out, err)
+		}
+	case goos == "darwin":
+		src = filepath.Join("internal", "testfixture", fmt.Sprintf("ccgo_%s_%s.go", runtime.GOOS, runtime.GOARCH))
+		src2 := filepath.Join("internal", "testfixture", "patch_darwin.go")
+		if out, err := util.Shell("go", "build", "-o", bin, "-tags="+*oXTags, src, src2); err != nil {
+			t.Fatalf("%s\nFAIL: %v", out, err)
+		}
 	default:
 		src = filepath.Join("internal", "testfixture", fmt.Sprintf("ccgo_%s_%s.go", runtime.GOOS, runtime.GOARCH))
-	}
-	if out, err := util.Shell("go", "build", "-o", bin, "-tags="+*oXTags, src); err != nil {
-		t.Fatalf("%s\nFAIL: %v", out, err)
+		if out, err := util.Shell("go", "build", "-o", bin, "-tags="+*oXTags, src); err != nil {
+			t.Fatalf("%s\nFAIL: %v", out, err)
+		}
 	}
 
 	testsSrc := filepath.Join("internal", "test")
