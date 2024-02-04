@@ -17,6 +17,7 @@ var (
 	_ unsafe.Pointer
 )
 
+const m_L_tmpnam = 20
 const m_SEEK_CUR = 1
 const m_TESTFILE = "foo.gz"
 const m_ZLIB_VERNUM = 4864
@@ -177,6 +178,8 @@ type T__time_t = int32
 type T__useconds_t = uint32
 
 type T__suseconds_t = int32
+
+type T__suseconds64_t = int64
 
 type T__daddr_t = int32
 
@@ -342,6 +345,15 @@ type Tfsblkcnt64_t = uint64
 
 type Tfsfilcnt64_t = uint64
 
+type T__atomic_wide_counter = struct {
+	F__ccgo_align [0]uint32
+	F__value32    [0]struct {
+		F__low  uint32
+		F__high uint32
+	}
+	F__value64 uint64
+}
+
 type T__pthread_list_t = struct {
 	F__prev uintptr
 	F__next uintptr
@@ -382,28 +394,22 @@ type T__pthread_rwlock_arch_t = struct {
 }
 
 type T__pthread_cond_s = struct {
-	F__ccgo_align [0]uint32
-	F__ccgo0_0    struct {
-		F__ccgo_align [0]uint32
-		F__wseq32     [0]struct {
-			F__low  uint32
-			F__high uint32
-		}
-		F__wseq uint64
-	}
-	F__ccgo1_8 struct {
-		F__ccgo_align [0]uint32
-		F__g1_start32 [0]struct {
-			F__low  uint32
-			F__high uint32
-		}
-		F__g1_start uint64
-	}
+	F__ccgo_align   [0]uint32
+	F__wseq         T__atomic_wide_counter
+	F__g1_start     T__atomic_wide_counter
 	F__g_refs       [2]uint32
 	F__g_size       [2]uint32
 	F__g1_orig_size uint32
 	F__wrefs        uint32
 	F__g_signals    [2]uint32
+}
+
+type T__tss_t = uint32
+
+type T__thrd_t = uint32
+
+type T__once_flag = struct {
+	F__data int32
 }
 
 type Tpthread_t = uint32
@@ -714,6 +720,8 @@ const __SC_TRACE_USER_EVENT_MAX = 245
 const __SC_XOPEN_STREAMS = 246
 const __SC_THREAD_ROBUST_PRIO_INHERIT = 247
 const __SC_THREAD_ROBUST_PRIO_PROTECT = 248
+const __SC_MINSIGSTKSZ = 249
+const __SC_SIGSTKSZ = 250
 const __CS_PATH = 0
 const __CS_V6_WIDTH_RESTRICTED_ENVS = 1
 const __CS_GNU_LIBC_VERSION = 2
@@ -988,12 +996,6 @@ type T__locale_t = uintptr
 
 type Tlocale_t = uintptr
 
-type Tidtype_t = int32
-
-const _P_ALL = 0
-const _P_PID = 1
-const _P_PGID = 2
-
 type Tdiv_t = struct {
 	Fquot int32
 	Frem  int32
@@ -1032,7 +1034,7 @@ type Tdrand48_data = struct {
 type T__compar_fn_t = uintptr
 
 /* Floating-point inline functions for stdlib.h.
-   Copyright (C) 2012-2020 Free Software Foundation, Inc.
+   Copyright (C) 2012-2022 Free Software Foundation, Inc.
    This file is part of the GNU C Library.
 
    The GNU C Library is free software; you can redistribute it and/or
@@ -1050,6 +1052,66 @@ type T__compar_fn_t = uintptr
    <https://www.gnu.org/licenses/>.  */
 
 /* Define some macros helping to catch buffer overflows.  */
+
+/* Macros to control TS 18661-3 glibc features.
+   Copyright (C) 2017-2022 Free Software Foundation, Inc.
+   This file is part of the GNU C Library.
+
+   The GNU C Library is free software; you can redistribute it and/or
+   modify it under the terms of the GNU Lesser General Public
+   License as published by the Free Software Foundation; either
+   version 2.1 of the License, or (at your option) any later version.
+
+   The GNU C Library is distributed in the hope that it will be useful,
+   but WITHOUT ANY WARRANTY; without even the implied warranty of
+   MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
+   Lesser General Public License for more details.
+
+   You should have received a copy of the GNU Lesser General Public
+   License along with the GNU C Library; if not, see
+   <https://www.gnu.org/licenses/>.  */
+
+/* Defined to 1 if the current compiler invocation provides a
+   floating-point type with the IEEE 754 binary128 format, and this glibc
+   includes corresponding *f128 interfaces for it.  */
+
+/* Defined to 1 if __HAVE_FLOAT128 is 1 and the type is ABI-distinct
+   from the default float, double and long double types in this glibc.  */
+
+/* Defined to 1 if the current compiler invocation provides a
+   floating-point type with the right format for _Float64x, and this
+   glibc includes corresponding *f64x interfaces for it.  */
+
+/* Defined to 1 if __HAVE_FLOAT64X is 1 and _Float64x has the format
+   of long double.  Otherwise, if __HAVE_FLOAT64X is 1, _Float64x has
+   the format of _Float128, which must be different from that of long
+   double.  */
+
+/* Defined to concatenate the literal suffix to be used with _Float128
+   types, if __HAVE_FLOAT128 is 1.
+   E.g.: #define __f128(x) x##f128.  */
+
+/* Defined to a complex binary128 type if __HAVE_FLOAT128 is 1.
+   E.g.: #define __CFLOAT128 _Complex _Float128.  */
+
+/* Macros to control TS 18661-3 glibc features where the same
+   definitions are appropriate for all platforms.
+   Copyright (C) 2017-2022 Free Software Foundation, Inc.
+   This file is part of the GNU C Library.
+
+   The GNU C Library is free software; you can redistribute it and/or
+   modify it under the terms of the GNU Lesser General Public
+   License as published by the Free Software Foundation; either
+   version 2.1 of the License, or (at your option) any later version.
+
+   The GNU C Library is distributed in the hope that it will be useful,
+   but WITHOUT ANY WARRANTY; without even the implied warranty of
+   MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
+   Lesser General Public License for more details.
+
+   You should have received a copy of the GNU Lesser General Public
+   License along with the GNU C Library; if not, see
+   <https://www.gnu.org/licenses/>.  */
 
 var _hello = [14]uint8{'h', 'e', 'l', 'l', 'o', ',', ' ', 'h', 'e', 'l', 'l', 'o', '!'}
 
@@ -22774,7 +22836,7 @@ func x_gzputs(tls *libc.TLS, file TgzFile, s uintptr) (r int32) {
 	return v1
 }
 
-/* Copyright (C) 1989-2020 Free Software Foundation, Inc.
+/* Copyright (C) 1989-2022 Free Software Foundation, Inc.
 
 This file is part of GCC.
 
