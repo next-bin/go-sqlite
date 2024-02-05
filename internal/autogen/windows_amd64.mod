@@ -3,14 +3,12 @@ module modernc.org/libsqlite3
 go 1.20
 
 require (
-	github.com/pmezard/go-difflib v1.0.0
 	golang.org/x/sys v0.16.0
 	modernc.org/ccgo/v3 v3.16.15
-	modernc.org/ccgo/v4 v4.9.1
+	modernc.org/ccgo/v4 v4.9.2
 	modernc.org/libc v1.41.0
 	modernc.org/libtcl8.6 v0.5.5
 	modernc.org/libz v0.5.3
-	modernc.org/sqlite v1.28.0
 )
 
 require (
