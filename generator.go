@@ -409,6 +409,46 @@ func main() {
 			fail(1, "%s\n", err)
 		}
 	}
+	os.Mkdir("mptest", 0770)
+	switch {
+	case win:
+		if err := ccgo.NewTask(
+			goos, goarch,
+			[]string{
+				os.Args[0],
+				"--cpp", xgcc,
+				"--goarch", goarch,
+				"--goos", goos,
+				"-DSQLITE_OMIT_SEH",
+				"-DSQLITE_OS_WIN=1",
+				"-I", makeRoot,
+				"-build-lines", "//go:build windows && (amd64 || arm64)\n// +build windows\n// +build amd64 arm64",
+				"-map", "gcc=x86_64-w64-mingw32-gcc",
+				"-o", filepath.Join("mptest", fn),
+				filepath.Join(makeRoot, "mptest", "mptest.c"),
+				"-lsqlite3",
+			},
+			os.Stdout, os.Stderr,
+			nil,
+		).Main(); err != nil {
+			fail(1, "%s\n", err)
+		}
+	default:
+		if err := ccgo.NewTask(
+			goos, goarch,
+			[]string{
+				os.Args[0],
+				"-o", filepath.Join("mptest", fn),
+				"-I", makeRoot,
+				filepath.Join(makeRoot, "mptest", "mptest.c"),
+				"-lsqlite3",
+			},
+			os.Stdout, os.Stderr,
+			nil,
+		).Main(); err != nil {
+			fail(1, "%s\n", err)
+		}
+	}
 
 	os.RemoveAll(filepath.Join("internal", "test"))
 	util.MustMkdirs(true, "internal/testfixture", "internal/test")
