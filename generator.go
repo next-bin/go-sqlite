@@ -34,6 +34,7 @@ var (
 	sed    = "sed"
 	j      = fmt.Sprint(runtime.GOMAXPROCS(-1))
 	win    = os.Getenv("GO_GENERATE_WIN") == "1"
+	xgcc   string
 )
 
 func fail(rc int, msg string, args ...any) {
@@ -64,6 +65,7 @@ func main() {
 
 		goos = "windows"
 		goarch = "amd64"
+		xgcc = strings.TrimSpace(string(util.MustShell(true, "which", "x86_64-w64-mingw32-gcc")))
 	}
 
 	switch target {
@@ -142,7 +144,6 @@ func main() {
 			"--prefix-enumerator=_",
 			"--prefix-external=x_",
 			"--prefix-field=F",
-			"--prefix-macro=m_",
 			"--prefix-static-internal=_",
 			"--prefix-static-none=_",
 			"--prefix-tagged-enum=_",
@@ -157,6 +158,7 @@ func main() {
 			"-DNDEBUG",
 			"-DSQLITE_DEFAULT_MEMSTATUS=0",
 			"-DSQLITE_ENABLE_COLUMN_METADATA",
+			"-DSQLITE_ENABLE_DBSTAT_VTAB",
 			"-DSQLITE_ENABLE_FTS5",
 			"-DSQLITE_ENABLE_GEOPOLY",
 			"-DSQLITE_ENABLE_JSON1",
@@ -187,7 +189,7 @@ func main() {
 		switch {
 		case win:
 			config = append(config,
-				"--cpp", strings.TrimSpace(string(util.MustShell(true, "which", "x86_64-w64-mingw32-gcc"))),
+				"--cpp", xgcc,
 				"--goarch", goarch,
 				"--goos", goos,
 				"-DSQLITE_HAVE_C99_MATH_FUNCS=(1)",
@@ -333,7 +335,7 @@ func main() {
 			ccgo.NewTask(
 				goos, goarch,
 				append(args,
-					"--cpp", strings.TrimSpace(string(util.MustShell(true, "which", "x86_64-w64-mingw32-gcc"))),
+					"--cpp", xgcc,
 					"--goarch", goarch,
 					"--goos", goos,
 					"-DSQLITE_HAVE_C99_MATH_FUNCS=(1)",
@@ -366,6 +368,47 @@ func main() {
 			return err
 		}
 	})
+
+	os.Mkdir("speedtest1", 0770)
+	switch {
+	case win:
+		if err := ccgo.NewTask(
+			goos, goarch,
+			[]string{
+				os.Args[0],
+				"--cpp", xgcc,
+				"--goarch", goarch,
+				"--goos", goos,
+				"-DSQLITE_OMIT_SEH",
+				"-DSQLITE_OS_WIN=1",
+				"-I", makeRoot,
+				"-build-lines", "//go:build windows && (amd64 || arm64)\n// +build windows\n// +build amd64 arm64",
+				"-map", "gcc=x86_64-w64-mingw32-gcc",
+				"-o", filepath.Join("speedtest1", fn),
+				filepath.Join(makeRoot, "test", "speedtest1.c"),
+				"-lsqlite3",
+			},
+			os.Stdout, os.Stderr,
+			nil,
+		).Main(); err != nil {
+			fail(1, "%s\n", err)
+		}
+	default:
+		if err := ccgo.NewTask(
+			goos, goarch,
+			[]string{
+				os.Args[0],
+				"-o", filepath.Join("speedtest1", fn),
+				"-I", makeRoot,
+				filepath.Join(makeRoot, "test", "speedtest1.c"),
+				"-lsqlite3",
+			},
+			os.Stdout, os.Stderr,
+			nil,
+		).Main(); err != nil {
+			fail(1, "%s\n", err)
+		}
+	}
 
 	os.RemoveAll(filepath.Join("internal", "test"))
 	util.MustMkdirs(true, "internal/testfixture", "internal/test")
