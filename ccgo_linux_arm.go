@@ -165,6 +165,8 @@ type t__useconds_t = uint32
 
 type t__suseconds_t = int32
 
+type t__suseconds64_t = int64
+
 type t__daddr_t = int32
 
 type t__key_t = int32
@@ -329,6 +331,15 @@ type Tfsblkcnt64_t = uint64
 
 type Tfsfilcnt64_t = uint64
 
+type t__atomic_wide_counter = struct {
+	F__ccgo_align [0]uint32
+	F__value32    [0]struct {
+		F__low  uint32
+		F__high uint32
+	}
+	F__value64 uint64
+}
+
 type t__pthread_list_t = struct {
 	F__prev uintptr
 	F__next uintptr
@@ -369,28 +380,22 @@ type t__pthread_rwlock_arch_t = struct {
 }
 
 type t__pthread_cond_s = struct {
-	F__ccgo_align [0]uint32
-	F__ccgo0_0    struct {
-		F__ccgo_align [0]uint32
-		F__wseq32     [0]struct {
-			F__low  uint32
-			F__high uint32
-		}
-		F__wseq uint64
-	}
-	F__ccgo1_8 struct {
-		F__ccgo_align [0]uint32
-		F__g1_start32 [0]struct {
-			F__low  uint32
-			F__high uint32
-		}
-		F__g1_start uint64
-	}
+	F__ccgo_align   [0]uint32
+	F__wseq         t__atomic_wide_counter
+	F__g1_start     t__atomic_wide_counter
 	F__g_refs       [2]uint32
 	F__g_size       [2]uint32
 	F__g1_orig_size uint32
 	F__wrefs        uint32
 	F__g_signals    [2]uint32
+}
+
+type t__tss_t = uint32
+
+type t__thrd_t = uint32
+
+type t__once_flag = struct {
+	F__data int32
 }
 
 type Tpthread_t = uint32
@@ -701,6 +706,8 @@ const __SC_TRACE_USER_EVENT_MAX = 245
 const __SC_XOPEN_STREAMS = 246
 const __SC_THREAD_ROBUST_PRIO_INHERIT = 247
 const __SC_THREAD_ROBUST_PRIO_PROTECT = 248
+const __SC_MINSIGSTKSZ = 249
+const __SC_SIGSTKSZ = 250
 const __CS_PATH = 0
 const __CS_V6_WIDTH_RESTRICTED_ENVS = 1
 const __CS_GNU_LIBC_VERSION = 2
@@ -835,12 +842,6 @@ type t__locale_struct = struct {
 type t__locale_t = uintptr
 
 type Tlocale_t = uintptr
-
-type Tidtype_t = int32
-
-const _P_ALL = 0
-const _P_PID = 1
-const _P_PGID = 2
 
 type Tdiv_t = struct {
 	Fquot int32
@@ -19934,6 +19935,8 @@ func x__tr_tally(tls *libc.TLS, s uintptr, dist uint32, lc uint32) (r int32) {
 	return libc.BoolInt32((*Tdeflate_state)(unsafe.Pointer(s)).Fsym_next == (*Tdeflate_state)(unsafe.Pointer(s)).Fsym_end)
 }
 
+const m_L_tmpnam = 20
+
 type t__mbstate_t = struct {
 	F__count int32
 	F__value struct {
@@ -22139,7 +22142,7 @@ func Xgzputs(tls *libc.TLS, file TgzFile, s uintptr) (r int32) {
 	return v1
 }
 
-/* Copyright (C) 1989-2020 Free Software Foundation, Inc.
+/* Copyright (C) 1989-2022 Free Software Foundation, Inc.
 
 This file is part of GCC.
 
