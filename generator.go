@@ -92,7 +92,7 @@ func main() {
 	dev := os.Getenv("GO_GENERATE_DEV") != ""
 	switch {
 	case tempDir != "":
-		util.MustShell(true, "sh", "-c", fmt.Sprintf("rm -rf %s", filepath.Join(tempDir, extractedArchivePath)))
+		util.Shell("sh", "-c", fmt.Sprintf("rm -rf %s", filepath.Join(tempDir, extractedArchivePath)))
 	default:
 		var err error
 		if tempDir, err = os.MkdirTemp("", "libsqlite3-generate"); err != nil {
@@ -226,7 +226,7 @@ func main() {
 	tempDir = os.Getenv("GO_GENERATE_DIR")
 	switch {
 	case tempDir != "":
-		util.MustShell(true, "sh", "-c", fmt.Sprintf("rm -rf %s", filepath.Join(tempDir, extractedArchivePath)))
+		util.Shell("sh", "-c", fmt.Sprintf("rm -rf %s", filepath.Join(tempDir, extractedArchivePath)))
 	default:
 		var err error
 		if tempDir, err = os.MkdirTemp("", "libsqlite3-generate"); err != nil {
