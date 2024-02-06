@@ -1,4 +1,4 @@
-// Code generated for darwin/arm64 by 'generator -ignore-unsupported-alignment -o mptest/ccgo_darwin_arm64.go -I /var/folders/4f/mc8mts295pqf7gmnfcwh6g8w0000gn/T/libsqlite3/sqlite-src-3450100 /var/folders/4f/mc8mts295pqf7gmnfcwh6g8w0000gn/T/libsqlite3/sqlite-src-3450100/mptest/mptest.c -lsqlite3', DO NOT EDIT.
+// Code generated for darwin/arm64 by 'generator -I /var/folders/4f/mc8mts295pqf7gmnfcwh6g8w0000gn/T/libsqlite3/sqlite-src-3450100 -ignore-unsupported-alignment -o mptest/ccgo_darwin_arm64.go /var/folders/4f/mc8mts295pqf7gmnfcwh6g8w0000gn/T/libsqlite3/sqlite-src-3450100/mptest/mptest.c -lsqlite3', DO NOT EDIT.
 
 //go:build darwin && arm64
 // +build darwin,arm64
@@ -3567,7 +3567,7 @@ func main1(tls *libc.TLS, argc int32, argv uintptr) (r int32) {
 	if strglob(tls, __ccgo_ts+2454, g.zDbFile) != 0 {
 		usage(tls, *(*uintptr)(unsafe.Pointer(argv)))
 	}
-	if libc.Xstrcmp(tls, libsqlite3.Xsqlite3_sourceid(tls), __ccgo_ts+2461) != 0 {
+	if libc.Bool(0 != 0) && libc.Xstrcmp(tls, libsqlite3.Xsqlite3_sourceid(tls), __ccgo_ts+2461) != 0 {
 		libc.Xfprintf(tls, libc.X__stderrp, __ccgo_ts+2546, libc.VaList(bp+40, libsqlite3.Xsqlite3_sourceid(tls), __ccgo_ts+2461))
 		libc.Xexit(tls, int32(1))
 	}
