@@ -411,12 +411,13 @@ func main() {
 		}
 	}
 	os.Mkdir("mptest", 0770)
+	util.MustShell(true, sed, "-i", `s/strcmp(sqlite3_sourceid()/0 \&\& strcmp(sqlite3_sourceid()/`, filepath.Join(makeRoot, "mptest", "mptest.c"))
 	switch {
 	case win:
 		if err := ccgo.NewTask(
 			goos, goarch,
 			[]string{
-				os.Args[0],
+os.Args[0],
 				"--cpp", xgcc,
 				"--goarch", goarch,
 				"--goos", goos,
@@ -425,8 +426,8 @@ func main() {
 				"-I", makeRoot,
 				"-build-lines", "//go:build windows && (amd64 || arm64)\n// +build windows\n// +build amd64 arm64",
 				"-map", "gcc=x86_64-w64-mingw32-gcc",
-				"-o", filepath.Join("mptest", fn),
-				filepath.Join(makeRoot, "mptest", "mptest.c"),
+				"-o", filepath.Join("speedtest1", fn),
+				filepath.Join(makeRoot, "test", "speedtest1.c"),
 				"-lsqlite3",
 			},
 			os.Stdout, os.Stderr,
@@ -439,9 +440,9 @@ func main() {
 			goos, goarch,
 			[]string{
 				os.Args[0],
+				"-I", makeRoot,
 				"-ignore-unsupported-alignment",
 				"-o", filepath.Join("mptest", fn),
-				"-I", makeRoot,
 				filepath.Join(makeRoot, "mptest", "mptest.c"),
 				"-lsqlite3",
 			},
@@ -451,6 +452,7 @@ func main() {
 			fail(1, "%s\n", err)
 		}
 	}
+	util.MustShell(true, "sh", "-c", fmt.Sprintf("cp %s %s", filepath.Join(makeRoot, "mptest", "*.*test"), "mptest/"))
 
 	os.RemoveAll(filepath.Join("internal", "test"))
 	util.MustMkdirs(true, "internal/testfixture", "internal/test")
