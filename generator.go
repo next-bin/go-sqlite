@@ -398,6 +398,7 @@ func main() {
 			goos, goarch,
 			[]string{
 				os.Args[0],
+				"-ignore-unsupported-alignment",
 				"-o", filepath.Join("speedtest1", fn),
 				"-I", makeRoot,
 				filepath.Join(makeRoot, "test", "speedtest1.c"),
@@ -438,6 +439,7 @@ func main() {
 			goos, goarch,
 			[]string{
 				os.Args[0],
+				"-ignore-unsupported-alignment",
 				"-o", filepath.Join("mptest", fn),
 				"-I", makeRoot,
 				filepath.Join(makeRoot, "mptest", "mptest.c"),
