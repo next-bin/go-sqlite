@@ -1,4 +1,4 @@
-// Code generated for linux/arm by 'generator -o speedtest1/ccgo_linux_arm.go -I /tmp/libsqlite3/sqlite-src-3450100 /tmp/libsqlite3/sqlite-src-3450100/test/speedtest1.c -lsqlite3', DO NOT EDIT.
+// Code generated for linux/arm by 'generator -ignore-unsupported-alignment -o speedtest1/ccgo_linux_arm.go -I /tmp/libsqlite3/sqlite-src-3450100 /tmp/libsqlite3/sqlite-src-3450100/test/speedtest1.c -lsqlite3', DO NOT EDIT.
 
 //go:build linux && arm
 // +build linux,arm
