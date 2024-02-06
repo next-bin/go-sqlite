@@ -1,4 +1,4 @@
-// Code generated for linux/s390x by 'generator -o mptest/ccgo_linux_s390x.go -I /tmp/libsqlite3/sqlite-src-3450100 /tmp/libsqlite3/sqlite-src-3450100/mptest/mptest.c -lsqlite3', DO NOT EDIT.
+// Code generated for linux/s390x by 'generator -I /tmp/libsqlite3/sqlite-src-3450100 -ignore-unsupported-alignment -o mptest/ccgo_linux_s390x.go /tmp/libsqlite3/sqlite-src-3450100/mptest/mptest.c -lsqlite3', DO NOT EDIT.
 
 //go:build linux && s390x
 // +build linux,s390x
@@ -3107,7 +3107,7 @@ func main1(tls *libc.TLS, argc int32, argv uintptr) (r int32) {
 	if strglob(tls, __ccgo_ts+2410, g.zDbFile) != 0 {
 		usage(tls, *(*uintptr)(unsafe.Pointer(argv)))
 	}
-	if libc.Xstrcmp(tls, libsqlite3.Xsqlite3_sourceid(tls), __ccgo_ts+2417) != 0 {
+	if libc.Bool(0 != 0) && libc.Xstrcmp(tls, libsqlite3.Xsqlite3_sourceid(tls), __ccgo_ts+2417) != 0 {
 		libc.Xfprintf(tls, libc.Xstderr, __ccgo_ts+2502, libc.VaList(bp+40, libsqlite3.Xsqlite3_sourceid(tls), __ccgo_ts+2417))
 		libc.Xexit(tls, int32(1))
 	}
