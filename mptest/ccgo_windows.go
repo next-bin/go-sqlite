@@ -19111,7 +19111,7 @@ func main1(tls *libc.TLS, argc int32, argv uintptr) (r int32) {
 	if strglob(tls, __ccgo_ts+2414, g.zDbFile) != 0 {
 		usage(tls, *(*uintptr)(unsafe.Pointer(argv)))
 	}
-	if libc.Xstrcmp(tls, libsqlite3.Xsqlite3_sourceid(tls), __ccgo_ts+2421) != 0 {
+	if false && libc.Xstrcmp(tls, libsqlite3.Xsqlite3_sourceid(tls), __ccgo_ts+2421) != 0 {
 		v1 = __ccgo_ts + 2506
 		libc.VaList(bp, libsqlite3.Xsqlite3_sourceid(tls), __ccgo_ts+2421)
 		__local_argv = bp
