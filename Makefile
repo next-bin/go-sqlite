@@ -2,7 +2,7 @@
 # Use of the source code is governed by a BSD-style
 # license that can be found in the LICENSE file.
 
-.PHONY:	all clean dev download edit editor extraquick generate test work xtest
+.PHONY:	all clean dev download edit editor extraquick generate mptest test work xtest
 
 DIR = /tmp/libsqlite3
 ZIP = sqlite-amalgamation-3450100.zip
@@ -72,6 +72,9 @@ dev: download
 
 extraquick:
 	go test -v -timeout 24h -suite=extraquick 2>&1 | tee log-test
+
+mptest:
+	go test -v -timeout 24h -run TestConcurrentProcesses 2>&1 | tee log-mptest
 
 test:
 	go test -v -timeout 24h 2>&1 | tee log-test
