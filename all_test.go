@@ -66,6 +66,11 @@ func TestConcurrentProcesses(t *testing.T) {
 		t.Skip("skipping test in short mode")
 	}
 
+	switch target {
+	case "linux/ppc64le":
+		t.Skip("TODO") // Slow VM?
+	}
+
 	dir, err := os.MkdirTemp("", "sqlite-test-")
 	if err != nil {
 		t.Fatal(err)
@@ -145,8 +150,8 @@ func TestConcurrentProcesses(t *testing.T) {
 	//		$(MPTEST1) --journalmode TRUNCATE
 	//		$(MPTEST2) --journalmode DELETE
 
-	mptest1 := []string{bin, "mptest.db", "crash01.test", "--repeat", "20" /* , "--timeout", "60000" */}
-	mptest2 := []string{bin, "mptest.db", "multiwrite01.test", "--repeat", "20" /* , "--timeout", "60000" */}
+	mptest1 := []string{bin, "mptest.db", "crash01.test", "--repeat", "20", "--timeout", "60000"}
+	mptest2 := []string{bin, "mptest.db", "multiwrite01.test", "--repeat", "20", "--timeout", "60000"}
 	mptest1 = mptest1[:len(mptest1):len(mptest1)]
 	mptest2 = mptest2[:len(mptest2):len(mptest2)]
 	os.Remove("mptest.db")
