@@ -91,9 +91,9 @@ func TestConcurrentProcesses(t *testing.T) {
 		}
 
 		if runtime.GOOS == "windows" {
-			// reference tests are in *nix format --
-			// but git on windows does line-ending xlation by default
-			// if someone has it 'off' this has no impact.
+			// reference tests are in *nix format -- but git on windows does line-ending
+			// xlation by default if someone has it 'off' this has no impact.
+			//
 			// '\r\n'  -->  '\n'
 			b = bytes.ReplaceAll(b, []byte("\r\n"), []byte("\n"))
 		}
@@ -128,24 +128,49 @@ func TestConcurrentProcesses(t *testing.T) {
 		t.Fatal(err)
 	}
 
+	//	mptester$(TEXE):	sqlite3.lo $(TOP)/mptest/mptest.c
+	//		$(LTLINK) -o $@ -I. $(TOP)/mptest/mptest.c sqlite3.lo \
+	//			$(TLIBS) -rpath "$(libdir)"
+	//
+	//	MPTEST1=./mptester$(TEXE) mptest.db $(TOP)/mptest/crash01.test --repeat 20
+	//	MPTEST2=./mptester$(TEXE) mptest.db $(TOP)/mptest/multiwrite01.test --repeat 20
+	//	mptest:	mptester$(TEXE)
+	//		rm -f mptest.db
+	//		$(MPTEST1) --journalmode DELETE
+	//		$(MPTEST2) --journalmode WAL
+	//		$(MPTEST1) --journalmode WAL
+	//		$(MPTEST2) --journalmode PERSIST
+	//		$(MPTEST1) --journalmode PERSIST
+	//		$(MPTEST2) --journalmode TRUNCATE
+	//		$(MPTEST1) --journalmode TRUNCATE
+	//		$(MPTEST2) --journalmode DELETE
+
+	mptest1 := []string{bin, "mptest.db", "crash01.test", "--repeat", "20" /* , "--timeout", "60000" */}
+	mptest2 := []string{bin, "mptest.db", "multiwrite01.test", "--repeat", "20" /* , "--timeout", "60000" */}
+	mptest1 = mptest1[:len(mptest1):len(mptest1)]
+	mptest2 = mptest2[:len(mptest2):len(mptest2)]
+	os.Remove("mptest.db")
 outer:
-	for _, script := range m {
-		script = filepath.Base(script)
-		if filepath.Ext(script) != ".test" {
-			continue
-		}
-
-		fmt.Printf("exec: %s db %s\n", filepath.FromSlash(bin), script)
-		out, err := exec.Command(filepath.FromSlash(bin), "db", "--timeout", "6000000", script).CombinedOutput()
+	for _, args := range [][]string{
+		append(mptest1, "--journalmode", "DELETE"),
+		append(mptest2, "--journalmode", "WAL"),
+		append(mptest1, "--journalmode", "WAL"),
+		append(mptest2, "--journalmode", "PERSIST"),
+		append(mptest1, "--journalmode", "PERSIST"),
+		append(mptest2, "--journalmode", "TRUNCATE"),
+		append(mptest1, "--journalmode", "TRUNCATE"),
+		append(mptest2, "--journalmode", "DELETE"),
+	} {
+		fmt.Printf("execute %v\n", args)
+		out, err := exec.Command(args[0], args[1:]...).CombinedOutput()
 		if err != nil {
-			t.Fatalf("%s\n%v", out, err)
+			t.Fatalf("FAIL err=%v out=%s", err, out)
 		}
 
-		// just remove it so we don't get a
-		// file busy race-condition
-		// when we spin up the next script
+		// just remove it so we don't get a file busy race-condition when we spin up
+		// the next script
 		if runtime.GOOS == "windows" {
-			_ = os.Remove("db")
+			os.Remove("mptest.db")
 		}
 
 		a := strings.Split(string(out), "\n")
@@ -165,7 +190,7 @@ outer:
 					t.Errorf("%s", out)
 				}
 
-				t.Logf("%v: %v", script, v)
+				t.Logf("%v", v)
 				continue outer
 			}
 
