@@ -19,13 +19,650 @@ var (
 )
 
 const m_BUFLEN = 16384
+const m_BUFSIZ = 512
+const m_CHAR_BIT = "__CHAR_BIT__"
+const m_CHAR_MAX = "SCHAR_MAX"
+const m_CHAR_MIN = "SCHAR_MIN"
+const m_E2BIG = 7
+const m_EACCES = 13
+const m_EADDRINUSE = 100
+const m_EADDRNOTAVAIL = 101
+const m_EAFNOSUPPORT = 102
+const m_EAGAIN = 11
+const m_EALREADY = 103
+const m_EBADF = 9
+const m_EBADMSG = 104
+const m_EBUSY = 16
+const m_ECANCELED = 105
+const m_ECHILD = 10
+const m_ECONNABORTED = 106
+const m_ECONNREFUSED = 107
+const m_ECONNRESET = 108
+const m_EDEADLK = 36
+const m_EDEADLOCK = "EDEADLK"
+const m_EDESTADDRREQ = 109
+const m_EDOM = 33
+const m_EEXIST = 17
+const m_EFAULT = 14
+const m_EFBIG = 27
+const m_EHOSTUNREACH = 110
+const m_EIDRM = 111
+const m_EILSEQ = 42
+const m_EINPROGRESS = 112
+const m_EINTR = 4
 const m_EINVAL = 22
+const m_EIO = 5
+const m_EISCONN = 113
+const m_EISDIR = 21
+const m_ELOOP = 114
+const m_EMFILE = 24
+const m_EMLINK = 31
+const m_EMSGSIZE = 115
+const m_ENAMETOOLONG = 38
+const m_ENETDOWN = 116
+const m_ENETRESET = 117
+const m_ENETUNREACH = 118
+const m_ENFILE = 23
+const m_ENOBUFS = 119
+const m_ENODATA = 120
+const m_ENODEV = 19
+const m_ENOENT = 2
+const m_ENOEXEC = 8
+const m_ENOFILE = "ENOENT"
+const m_ENOLCK = 39
+const m_ENOLINK = 121
+const m_ENOMEM = 12
+const m_ENOMSG = 122
+const m_ENOPROTOOPT = 123
+const m_ENOSPC = 28
+const m_ENOSR = 124
+const m_ENOSTR = 125
+const m_ENOSYS = 40
+const m_ENOTCONN = 126
+const m_ENOTDIR = 20
+const m_ENOTEMPTY = 41
+const m_ENOTRECOVERABLE = 127
+const m_ENOTSOCK = 128
+const m_ENOTSUP = 129
+const m_ENOTTY = 25
+const m_ENXIO = 6
+const m_EOPNOTSUPP = 130
+const m_EOVERFLOW = 132
+const m_EOWNERDEAD = 133
+const m_EPERM = 1
+const m_EPIPE = 32
+const m_EPROTO = 134
+const m_EPROTONOSUPPORT = 135
+const m_EPROTOTYPE = 136
+const m_ERANGE = 34
+const m_EROFS = 30
+const m_ESPIPE = 29
+const m_ESRCH = 3
+const m_ETIME = 137
+const m_ETIMEDOUT = 138
+const m_ETXTBSY = 139
+const m_EWOULDBLOCK = 140
+const m_EXDEV = 18
+const m_EXIT_FAILURE = 1
+const m_EXIT_SUCCESS = 0
+const m_FILENAME_MAX = 260
+const m_FOPEN_MAX = 20
+const m_F_OK = 0
 const m_GZ_SUFFIX = ".gz"
+const m_INT_MAX = "__INT_MAX__"
+const m_LLONG_MAX = "__LONG_LONG_MAX__"
+const m_LONG_LONG_MAX = "__LONG_LONG_MAX__"
+const m_LONG_MAX = "__LONG_MAX__"
+const m_L_tmpnam_s = "L_tmpnam"
+const m_MAX_MEM_LEVEL = 9
 const m_MAX_NAME_LEN = 1024
+const m_MAX_WBITS = 15
+const m_MB_LEN_MAX = 5
+const m_MINGW_HAS_DDK_H = 1
+const m_MINGW_HAS_SECURE_API = 1
+const m_OF = "args"
+const m_O_ACCMODE = "_O_ACCMODE"
+const m_O_APPEND = "_O_APPEND"
+const m_O_BINARY = "_O_BINARY"
+const m_O_CREAT = "_O_CREAT"
+const m_O_EXCL = "_O_EXCL"
+const m_O_NOINHERIT = "_O_NOINHERIT"
+const m_O_RANDOM = "_O_RANDOM"
+const m_O_RAW = "_O_BINARY"
+const m_O_RDONLY = "_O_RDONLY"
+const m_O_RDWR = "_O_RDWR"
+const m_O_SEQUENTIAL = "_O_SEQUENTIAL"
+const m_O_TEMPORARY = "_O_TEMPORARY"
+const m_O_TEXT = "_O_TEXT"
+const m_O_TRUNC = "_O_TRUNC"
+const m_O_WRONLY = "_O_WRONLY"
+const m_PATH_MAX = 260
+const m_P_tmpdir = "_P_tmpdir"
+const m_RAND_MAX = 0x7fff
+const m_R_OK = 4
+const m_SCHAR_MAX = "__SCHAR_MAX__"
+const m_SEEK_CUR = 1
+const m_SEEK_END = 2
+const m_SEEK_SET = 0
+const m_SHRT_MAX = "__SHRT_MAX__"
+const m_SIZE_MAX = "_UI64_MAX"
+const m_SSIZE_MAX = "_I64_MAX"
+const m_STDERR_FILENO = 2
+const m_STDIN_FILENO = 0
+const m_STDOUT_FILENO = 1
+const m_STRUNCATE = 80
+const m_SYS_OPEN = "_SYS_OPEN"
+const m_TMP_MAX = 32767
+const m_TMP_MAX_S = "TMP_MAX"
+const m_UNALIGNED = "__unaligned"
+const m_USE___UUIDOF = 0
+const m_WIN32 = 1
+const m_WIN64 = 1
+const m_WINNT = 1
+const m_W_OK = 2
+const m_X_OK = 1
+const m_ZEXTERN = "extern"
+const m_ZLIB_VERNUM = 0x1300
+const m_ZLIB_VERSION = "1.3"
+const m_ZLIB_VER_MAJOR = 1
+const m_ZLIB_VER_MINOR = 3
+const m_ZLIB_VER_REVISION = 0
+const m_ZLIB_VER_SUBREVISION = 0
+const m_Z_ARG = "args"
+const m_Z_ASCII = "Z_TEXT"
+const m_Z_BEST_COMPRESSION = 9
+const m_Z_BEST_SPEED = 1
+const m_Z_BINARY = 0
+const m_Z_BLOCK = 5
+const m_Z_DEFAULT_STRATEGY = 0
+const m_Z_DEFLATED = 8
+const m_Z_FILTERED = 1
+const m_Z_FINISH = 4
+const m_Z_FIXED = 4
+const m_Z_FULL_FLUSH = 3
+const m_Z_HUFFMAN_ONLY = 2
+const m_Z_NEED_DICT = 2
+const m_Z_NO_COMPRESSION = 0
+const m_Z_NO_FLUSH = 0
+const m_Z_NULL = 0
 const m_Z_OK = 0
+const m_Z_PARTIAL_FLUSH = 1
+const m_Z_RLE = 3
+const m_Z_STREAM_END = 1
+const m_Z_SYNC_FLUSH = 2
+const m_Z_TEXT = 1
+const m_Z_TREES = 6
+const m_Z_U4 = "unsigned"
+const m_Z_UNKNOWN = 2
 const m__ALLOCA_S_HEAP_MARKER = 56797
 const m__ALLOCA_S_MARKER_SIZE = 16
+const m__ALLOCA_S_STACK_MARKER = 0xCCCC
+const m__ALLOCA_S_THRESHOLD = 1024
+const m__ANONYMOUS_STRUCT = "__MINGW_EXTENSION"
+const m__ANONYMOUS_UNION = "__MINGW_EXTENSION"
+const m__ARGMAX = 100
+const m__A_ARCH = 0x20
+const m__A_HIDDEN = 0x02
+const m__A_NORMAL = 0x00
+const m__A_RDONLY = 0x01
+const m__A_SUBDIR = 0x10
+const m__A_SYSTEM = 0x04
+const m__CALL_REPORTFAULT = 0x2
+const m__CRTIMP2 = "_CRTIMP"
+const m__CRTIMP_ALTERNATIVE = "_CRTIMP"
+const m__CRTIMP_NOIA64 = "_CRTIMP"
+const m__CRTIMP_PURE = "_CRTIMP"
+const m__CRT_INTERNAL_LOCAL_PRINTF_OPTIONS = "_CRT_INTERNAL_PRINTF_LEGACY_WIDE_SPECIFIERS"
+const m__CRT_INTERNAL_LOCAL_SCANF_OPTIONS = "_CRT_INTERNAL_SCANF_LEGACY_WIDE_SPECIFIERS"
+const m__CRT_INTERNAL_PRINTF_LEGACY_MSVCRT_COMPATIBILITY = "0x0008U"
+const m__CRT_INTERNAL_PRINTF_LEGACY_THREE_DIGIT_EXPONENTS = "0x0010U"
+const m__CRT_INTERNAL_PRINTF_LEGACY_VSPRINTF_NULL_TERMINATION = "0x0001U"
+const m__CRT_INTERNAL_PRINTF_LEGACY_WIDE_SPECIFIERS = "0x0004U"
+const m__CRT_INTERNAL_PRINTF_STANDARD_SNPRINTF_BEHAVIOR = "0x0002U"
+const m__CRT_INTERNAL_SCANF_LEGACY_MSVCRT_COMPATIBILITY = "0x0004U"
+const m__CRT_INTERNAL_SCANF_LEGACY_WIDE_SPECIFIERS = "0x0002U"
+const m__CRT_INTERNAL_SCANF_SECURECRT = "0x0001U"
+const m__CRT_PACKING = 8
+const m__CRT_SECURE_CPP_OVERLOAD_SECURE_NAMES = 0
+const m__CRT_SECURE_CPP_OVERLOAD_SECURE_NAMES_MEMORY = 0
+const m__CRT_SECURE_CPP_OVERLOAD_STANDARD_NAMES = 0
+const m__CRT_SECURE_CPP_OVERLOAD_STANDARD_NAMES_COUNT = 0
+const m__CRT_SECURE_CPP_OVERLOAD_STANDARD_NAMES_MEMORY = 0
+const m__CRT_glob = "_dowildcard"
+const m__FREEENTRY = 0
+const m__HEAP_MAXREQ = 0xFFFFFFFFFFFFFFE0
+const m__I16_MAX = 32767
+const m__I32_MAX = 2147483647
+const m__I64_MAX = "9223372036854775807ll"
+const m__I8_MAX = 127
+const m__INTEGRAL_MAX_BITS = 64
+const m__IOB_ENTRIES = 20
+const m__IOEOF = 0x0010
+const m__IOERR = 0x0020
+const m__IOFBF = 0x0000
+const m__IOLBF = 0x0040
+const m__IOMYBUF = 0x0008
+const m__IONBF = 0x0004
+const m__IOREAD = 0x0001
+const m__IORW = 0x0080
+const m__IOSTRG = 0x0040
+const m__IOWRT = 0x0002
+const m__MAX_DIR = 256
+const m__MAX_DRIVE = 3
+const m__MAX_ENV = 32767
+const m__MAX_EXT = 256
+const m__MAX_FNAME = 256
+const m__MAX_PATH = 260
+const m__MAX_WAIT_MALLOC_CRT = 60000
+const m__MCRTIMP = "_CRTIMP"
+const m__MRTIMP2 = "_CRTIMP"
+const m__M_AMD64 = 100
+const m__M_X64 = 100
+const m__NFILE = "_NSTREAM_"
+const m__NLSCMPERROR = 2147483647
+const m__NSTREAM_ = 512
+const m__OLD_P_OVERLAY = 2
+const m__OUT_TO_DEFAULT = 0
+const m__OUT_TO_MSGBOX = 2
+const m__OUT_TO_STDERR = 1
+const m__O_APPEND = 0x0008
 const m__O_BINARY = 32768
+const m__O_CREAT = 0x0100
+const m__O_EXCL = 0x0400
+const m__O_NOINHERIT = 0x0080
+const m__O_RANDOM = 0x0010
+const m__O_RAW = "_O_BINARY"
+const m__O_RDONLY = 0x0000
+const m__O_RDWR = 0x0002
+const m__O_SEQUENTIAL = 0x0020
+const m__O_SHORT_LIVED = 0x1000
+const m__O_TEMPORARY = 0x0040
+const m__O_TEXT = 0x4000
+const m__O_TRUNC = 0x0200
+const m__O_U16TEXT = 0x20000
+const m__O_U8TEXT = 0x40000
+const m__O_WRONLY = 0x0001
+const m__O_WTEXT = 0x10000
+const m__P_DETACH = 4
+const m__P_NOWAIT = 1
+const m__P_NOWAITO = 3
+const m__P_OVERLAY = 2
+const m__P_WAIT = 0
+const m__P_tmpdir = "\\\\"
+const m__REPORT_ERRMODE = 3
+const m__SECURECRT_FILL_BUFFER_PATTERN = 0xFD
+const m__SYS_OPEN = 20
+const m__TWO_DIGIT_EXPONENT = 0x1
+const m__UI16_MAX = "0xffffu"
+const m__UI32_MAX = "0xffffffffu"
+const m__UI64_MAX = "0xffffffffffffffffull"
+const m__UI8_MAX = "0xffu"
+const m__USEDENTRY = 1
+const m__WAIT_CHILD = 0
+const m__WAIT_GRANDCHILD = 1
+const m__WConst_return = "_CONST_RETURN"
+const m__WIN32 = 1
+const m__WIN32_WINNT = 0xa00
+const m__WIN64 = 1
+const m__WRITE_ABORT_MSG = 0x1
+const m___ATOMIC_ACQUIRE = 2
+const m___ATOMIC_ACQ_REL = 4
+const m___ATOMIC_CONSUME = 1
+const m___ATOMIC_HLE_ACQUIRE = 65536
+const m___ATOMIC_HLE_RELEASE = 131072
+const m___ATOMIC_RELAXED = 0
+const m___ATOMIC_RELEASE = 3
+const m___ATOMIC_SEQ_CST = 5
+const m___BIGGEST_ALIGNMENT__ = 16
+const m___BYTE_ORDER__ = "__ORDER_LITTLE_ENDIAN__"
+const m___C89_NAMELESS = "__MINGW_EXTENSION"
+const m___CCGO__ = 1
+const m___CHAR_BIT__ = 8
+const m___CRTDECL = "__cdecl"
+const m___DBL_DECIMAL_DIG__ = 17
+const m___DBL_DIG__ = 15
+const m___DBL_HAS_DENORM__ = 1
+const m___DBL_HAS_INFINITY__ = 1
+const m___DBL_HAS_QUIET_NAN__ = 1
+const m___DBL_IS_IEC_60559__ = 2
+const m___DBL_MANT_DIG__ = 53
+const m___DBL_MAX_10_EXP__ = 308
+const m___DBL_MAX_EXP__ = 1024
+const m___DEC128_EPSILON__ = 1e-33
+const m___DEC128_MANT_DIG__ = 34
+const m___DEC128_MAX_EXP__ = 6145
+const m___DEC128_MAX__ = "9.999999999999999999999999999999999E6144"
+const m___DEC128_MIN__ = 1e-6143
+const m___DEC128_SUBNORMAL_MIN__ = 0.000000000000000000000000000000001e-6143
+const m___DEC32_EPSILON__ = 1e-6
+const m___DEC32_MANT_DIG__ = 7
+const m___DEC32_MAX_EXP__ = 97
+const m___DEC32_MAX__ = 9.999999e96
+const m___DEC32_MIN__ = 1e-95
+const m___DEC32_SUBNORMAL_MIN__ = 0.000001e-95
+const m___DEC64_EPSILON__ = 1e-15
+const m___DEC64_MANT_DIG__ = 16
+const m___DEC64_MAX_EXP__ = 385
+const m___DEC64_MAX__ = "9.999999999999999E384"
+const m___DEC64_MIN__ = 1e-383
+const m___DEC64_SUBNORMAL_MIN__ = 0.000000000000001e-383
+const m___DECIMAL_BID_FORMAT__ = 1
+const m___DECIMAL_DIG__ = 17
+const m___DEC_EVAL_METHOD__ = 2
+const m___FINITE_MATH_ONLY__ = 0
+const m___FLOAT_WORD_ORDER__ = "__ORDER_LITTLE_ENDIAN__"
+const m___FLT128_DECIMAL_DIG__ = 36
+const m___FLT128_DENORM_MIN__ = 6.47517511943802511092443895822764655e-4966
+const m___FLT128_DIG__ = 33
+const m___FLT128_EPSILON__ = 1.92592994438723585305597794258492732e-34
+const m___FLT128_HAS_DENORM__ = 1
+const m___FLT128_HAS_INFINITY__ = 1
+const m___FLT128_HAS_QUIET_NAN__ = 1
+const m___FLT128_IS_IEC_60559__ = 2
+const m___FLT128_MANT_DIG__ = 113
+const m___FLT128_MAX_10_EXP__ = 4932
+const m___FLT128_MAX_EXP__ = 16384
+const m___FLT128_MAX__ = "1.18973149535723176508575932662800702e+4932"
+const m___FLT128_MIN__ = 3.36210314311209350626267781732175260e-4932
+const m___FLT128_NORM_MAX__ = "1.18973149535723176508575932662800702e+4932"
+const m___FLT32X_DECIMAL_DIG__ = 17
+const m___FLT32X_DENORM_MIN__ = 4.94065645841246544176568792868221372e-324
+const m___FLT32X_DIG__ = 15
+const m___FLT32X_EPSILON__ = 2.22044604925031308084726333618164062e-16
+const m___FLT32X_HAS_DENORM__ = 1
+const m___FLT32X_HAS_INFINITY__ = 1
+const m___FLT32X_HAS_QUIET_NAN__ = 1
+const m___FLT32X_IS_IEC_60559__ = 2
+const m___FLT32X_MANT_DIG__ = 53
+const m___FLT32X_MAX_10_EXP__ = 308
+const m___FLT32X_MAX_EXP__ = 1024
+const m___FLT32X_MAX__ = 1.79769313486231570814527423731704357e+308
+const m___FLT32X_MIN__ = 2.22507385850720138309023271733240406e-308
+const m___FLT32X_NORM_MAX__ = 1.79769313486231570814527423731704357e+308
+const m___FLT32_DECIMAL_DIG__ = 9
+const m___FLT32_DENORM_MIN__ = 1.40129846432481707092372958328991613e-45
+const m___FLT32_DIG__ = 6
+const m___FLT32_EPSILON__ = 1.19209289550781250000000000000000000e-7
+const m___FLT32_HAS_DENORM__ = 1
+const m___FLT32_HAS_INFINITY__ = 1
+const m___FLT32_HAS_QUIET_NAN__ = 1
+const m___FLT32_IS_IEC_60559__ = 2
+const m___FLT32_MANT_DIG__ = 24
+const m___FLT32_MAX_10_EXP__ = 38
+const m___FLT32_MAX_EXP__ = 128
+const m___FLT32_MAX__ = 3.40282346638528859811704183484516925e+38
+const m___FLT32_MIN__ = 1.17549435082228750796873653722224568e-38
+const m___FLT32_NORM_MAX__ = 3.40282346638528859811704183484516925e+38
+const m___FLT64X_DECIMAL_DIG__ = 36
+const m___FLT64X_DENORM_MIN__ = 6.47517511943802511092443895822764655e-4966
+const m___FLT64X_DIG__ = 33
+const m___FLT64X_EPSILON__ = 1.92592994438723585305597794258492732e-34
+const m___FLT64X_HAS_DENORM__ = 1
+const m___FLT64X_HAS_INFINITY__ = 1
+const m___FLT64X_HAS_QUIET_NAN__ = 1
+const m___FLT64X_IS_IEC_60559__ = 2
+const m___FLT64X_MANT_DIG__ = 113
+const m___FLT64X_MAX_10_EXP__ = 4932
+const m___FLT64X_MAX_EXP__ = 16384
+const m___FLT64X_MAX__ = "1.18973149535723176508575932662800702e+4932"
+const m___FLT64X_MIN__ = 3.36210314311209350626267781732175260e-4932
+const m___FLT64X_NORM_MAX__ = "1.18973149535723176508575932662800702e+4932"
+const m___FLT64_DECIMAL_DIG__ = 17
+const m___FLT64_DENORM_MIN__ = 4.94065645841246544176568792868221372e-324
+const m___FLT64_DIG__ = 15
+const m___FLT64_EPSILON__ = 2.22044604925031308084726333618164062e-16
+const m___FLT64_HAS_DENORM__ = 1
+const m___FLT64_HAS_INFINITY__ = 1
+const m___FLT64_HAS_QUIET_NAN__ = 1
+const m___FLT64_IS_IEC_60559__ = 2
+const m___FLT64_MANT_DIG__ = 53
+const m___FLT64_MAX_10_EXP__ = 308
+const m___FLT64_MAX_EXP__ = 1024
+const m___FLT64_MAX__ = 1.79769313486231570814527423731704357e+308
+const m___FLT64_MIN__ = 2.22507385850720138309023271733240406e-308
+const m___FLT64_NORM_MAX__ = 1.79769313486231570814527423731704357e+308
+const m___FLT_DECIMAL_DIG__ = 9
+const m___FLT_DENORM_MIN__ = 1.40129846432481707092372958328991613e-45
+const m___FLT_DIG__ = 6
+const m___FLT_EPSILON__ = 1.19209289550781250000000000000000000e-7
+const m___FLT_EVAL_METHOD_TS_18661_3__ = 2
+const m___FLT_EVAL_METHOD__ = 2
+const m___FLT_HAS_DENORM__ = 1
+const m___FLT_HAS_INFINITY__ = 1
+const m___FLT_HAS_QUIET_NAN__ = 1
+const m___FLT_IS_IEC_60559__ = 2
+const m___FLT_MANT_DIG__ = 24
+const m___FLT_MAX_10_EXP__ = 38
+const m___FLT_MAX_EXP__ = 128
+const m___FLT_MAX__ = 3.40282346638528859811704183484516925e+38
+const m___FLT_MIN__ = 1.17549435082228750796873653722224568e-38
+const m___FLT_NORM_MAX__ = 3.40282346638528859811704183484516925e+38
+const m___FLT_RADIX__ = 2
+const m___FUNCTION__ = "__func__"
+const m___FXSR__ = 1
+const m___GCC_ASM_FLAG_OUTPUTS__ = 1
+const m___GCC_ATOMIC_BOOL_LOCK_FREE = 2
+const m___GCC_ATOMIC_CHAR16_T_LOCK_FREE = 2
+const m___GCC_ATOMIC_CHAR32_T_LOCK_FREE = 2
+const m___GCC_ATOMIC_CHAR_LOCK_FREE = 2
+const m___GCC_ATOMIC_INT_LOCK_FREE = 2
+const m___GCC_ATOMIC_LLONG_LOCK_FREE = 2
+const m___GCC_ATOMIC_LONG_LOCK_FREE = 2
+const m___GCC_ATOMIC_POINTER_LOCK_FREE = 2
+const m___GCC_ATOMIC_SHORT_LOCK_FREE = 2
+const m___GCC_ATOMIC_TEST_AND_SET_TRUEVAL = 1
+const m___GCC_ATOMIC_WCHAR_T_LOCK_FREE = 2
+const m___GCC_CONSTRUCTIVE_SIZE = 64
+const m___GCC_DESTRUCTIVE_SIZE = 64
+const m___GCC_HAVE_SYNC_COMPARE_AND_SWAP_1 = 1
+const m___GCC_HAVE_SYNC_COMPARE_AND_SWAP_2 = 1
+const m___GCC_HAVE_SYNC_COMPARE_AND_SWAP_4 = 1
+const m___GCC_HAVE_SYNC_COMPARE_AND_SWAP_8 = 1
+const m___GCC_IEC_559 = 2
+const m___GCC_IEC_559_COMPLEX = 2
+const m___GNUC_EXECUTION_CHARSET_NAME = "UTF-8"
+const m___GNUC_MINOR__ = 0
+const m___GNUC_PATCHLEVEL__ = 0
+const m___GNUC_STDC_INLINE__ = 1
+const m___GNUC_WIDE_EXECUTION_CHARSET_NAME = "UTF-16LE"
+const m___GNUC__ = 12
+const m___GNU_EXTENSION = "__MINGW_EXTENSION"
+const m___GOT_SECURE_LIB__ = "__STDC_SECURE_LIB__"
+const m___GXX_ABI_VERSION = 1017
+const m___GXX_MERGED_TYPEINFO_NAMES = 0
+const m___GXX_TYPEINFO_EQUALITY_INLINE = 0
+const m___HAVE_SPECULATION_SAFE_VALUE = 1
+const m___INT16_C = "c"
+const m___INT16_MAX__ = 0x7fff
+const m___INT32_C = "c"
+const m___INT32_MAX__ = 0x7fffffff
+const m___INT32_TYPE__ = "int"
+const m___INT64_MAX__ = 0x7fffffffffffffff
+const m___INT8_C = "c"
+const m___INT8_MAX__ = 0x7f
+const m___INTMAX_MAX__ = 0x7fffffffffffffff
+const m___INTMAX_WIDTH__ = 64
+const m___INTPTR_MAX__ = 0x7fffffffffffffff
+const m___INTPTR_WIDTH__ = 64
+const m___INT_FAST16_MAX__ = 0x7fff
+const m___INT_FAST16_WIDTH__ = 16
+const m___INT_FAST32_MAX__ = 0x7fffffff
+const m___INT_FAST32_TYPE__ = "int"
+const m___INT_FAST32_WIDTH__ = 32
+const m___INT_FAST64_MAX__ = 0x7fffffffffffffff
+const m___INT_FAST64_WIDTH__ = 64
+const m___INT_FAST8_MAX__ = 0x7f
+const m___INT_FAST8_WIDTH__ = 8
+const m___INT_LEAST16_MAX__ = 0x7fff
+const m___INT_LEAST16_WIDTH__ = 16
+const m___INT_LEAST32_MAX__ = 0x7fffffff
+const m___INT_LEAST32_TYPE__ = "int"
+const m___INT_LEAST32_WIDTH__ = 32
+const m___INT_LEAST64_MAX__ = 0x7fffffffffffffff
+const m___INT_LEAST64_WIDTH__ = 64
+const m___INT_LEAST8_MAX__ = 0x7f
+const m___INT_LEAST8_WIDTH__ = 8
+const m___INT_MAX__ = 0x7fffffff
+const m___INT_WIDTH__ = 32
+const m___LDBL_DECIMAL_DIG__ = 17
+const m___LDBL_DENORM_MIN__ = 4.94065645841246544176568792868221372e-324
+const m___LDBL_DIG__ = 15
+const m___LDBL_EPSILON__ = 2.22044604925031308084726333618164062e-16
+const m___LDBL_HAS_DENORM__ = 1
+const m___LDBL_HAS_INFINITY__ = 1
+const m___LDBL_HAS_QUIET_NAN__ = 1
+const m___LDBL_IS_IEC_60559__ = 2
+const m___LDBL_MANT_DIG__ = 53
+const m___LDBL_MAX_10_EXP__ = 308
+const m___LDBL_MAX_EXP__ = 1024
+const m___LDBL_MAX__ = 1.79769313486231570814527423731704357e+308
+const m___LDBL_MIN__ = 2.22507385850720138309023271733240406e-308
+const m___LDBL_NORM_MAX__ = 1.79769313486231570814527423731704357e+308
+const m___LONG32 = "long"
+const m___LONG_DOUBLE_64__ = 1
+const m___LONG_LONG_MAX__ = 0x7fffffffffffffff
+const m___LONG_LONG_WIDTH__ = 64
+const m___LONG_MAX__ = 0x7fffffff
+const m___LONG_WIDTH__ = 32
+const m___MINGW32_MAJOR_VERSION = 3
+const m___MINGW32_MINOR_VERSION = 11
+const m___MINGW32__ = 1
+const m___MINGW64_VERSION_BUGFIX = 0
+const m___MINGW64_VERSION_MAJOR = 10
+const m___MINGW64_VERSION_MINOR = 0
+const m___MINGW64_VERSION_RC = 0
+const m___MINGW64_VERSION_STATE = "alpha"
+const m___MINGW64__ = 1
+const m___MINGW_DEBUGBREAK_IMPL = 1
+const m___MINGW_EXTENSION = "__extension__"
+const m___MINGW_FORTIFY_LEVEL = 0
+const m___MINGW_FORTIFY_VA_ARG = 0
+const m___MINGW_HAVE_ANSI_C99_PRINTF = 1
+const m___MINGW_HAVE_ANSI_C99_SCANF = 1
+const m___MINGW_HAVE_WIDE_C99_PRINTF = 1
+const m___MINGW_HAVE_WIDE_C99_SCANF = 1
+const m___MINGW_MSC_PREREQ = 0
+const m___MINGW_MSVC2005_DEPREC_STR = "This POSIX function is deprecated beginning in Visual C++ 2005, use _CRT_NONSTDC_NO_DEPRECATE to disable deprecation"
+const m___MINGW_PRINTF_FORMAT = "gnu_printf"
+const m___MINGW_SCANF_FORMAT = "gnu_scanf"
+const m___MINGW_SEC_WARN_STR = "This function or variable may be unsafe, use _CRT_SECURE_NO_WARNINGS to disable deprecation"
+const m___MINGW_USE_UNDERSCORE_PREFIX = 0
+const m___MINGW_USYMBOL = "sym"
+const m___MSVCRT_VERSION__ = 0x700
+const m___MSVCRT__ = 1
+const m___OPTIMIZE__ = 1
+const m___ORDER_BIG_ENDIAN__ = 4321
+const m___ORDER_LITTLE_ENDIAN__ = 1234
+const m___ORDER_PDP_ENDIAN__ = 3412
+const m___PIC__ = 1
+const m___PRAGMA_REDEFINE_EXTNAME = 1
+const m___PRETTY_FUNCTION__ = "__func__"
+const m___PTRDIFF_MAX__ = 0x7fffffffffffffff
+const m___PTRDIFF_WIDTH__ = 64
+const m___SCHAR_MAX__ = 0x7f
+const m___SCHAR_WIDTH__ = 8
+const m___SEG_FS = 1
+const m___SEG_GS = 1
+const m___SEH__ = 1
+const m___SHRT_MAX__ = 0x7fff
+const m___SHRT_WIDTH__ = 16
+const m___SIG_ATOMIC_MAX__ = 0x7fffffff
+const m___SIG_ATOMIC_TYPE__ = "int"
+const m___SIG_ATOMIC_WIDTH__ = 32
+const m___SIZEOF_DOUBLE__ = 8
+const m___SIZEOF_FLOAT128__ = 16
+const m___SIZEOF_FLOAT80__ = 16
+const m___SIZEOF_FLOAT__ = 4
+const m___SIZEOF_INT128__ = 16
+const m___SIZEOF_INT__ = 4
+const m___SIZEOF_LONG_DOUBLE__ = 8
+const m___SIZEOF_LONG_LONG__ = 8
+const m___SIZEOF_LONG__ = 4
+const m___SIZEOF_POINTER__ = 8
+const m___SIZEOF_PTRDIFF_T__ = 8
+const m___SIZEOF_SHORT__ = 2
+const m___SIZEOF_SIZE_T__ = 8
+const m___SIZEOF_WCHAR_T__ = 2
+const m___SIZEOF_WINT_T__ = 2
+const m___SIZE_MAX__ = "0xffffffffffffffffU"
+const m___SIZE_WIDTH__ = 64
+const m___STDC_HOSTED__ = 1
+const m___STDC_SECURE_LIB__ = 200411
+const m___STDC_UTF_16__ = 1
+const m___STDC_UTF_32__ = 1
+const m___STDC_VERSION__ = 201710
+const m___STDC__ = 1
+const m___UINT16_C = "c"
+const m___UINT16_MAX__ = 0xffff
+const m___UINT32_MAX__ = 0xffffffff
+const m___UINT64_MAX__ = "0xffffffffffffffffU"
+const m___UINT8_C = "c"
+const m___UINT8_MAX__ = 0xff
+const m___UINTMAX_MAX__ = "0xffffffffffffffffU"
+const m___UINTPTR_MAX__ = "0xffffffffffffffffU"
+const m___UINT_FAST16_MAX__ = 0xffff
+const m___UINT_FAST32_MAX__ = 0xffffffff
+const m___UINT_FAST64_MAX__ = "0xffffffffffffffffU"
+const m___UINT_FAST8_MAX__ = 0xff
+const m___UINT_LEAST16_MAX__ = 0xffff
+const m___UINT_LEAST32_MAX__ = 0xffffffff
+const m___UINT_LEAST64_MAX__ = "0xffffffffffffffffU"
+const m___UINT_LEAST8_MAX__ = 0xff
+const m___USE_CRTIMP = 1
+const m___USE_MINGW_ANSI_STDIO = 1
+const m___USE_MINGW_STRTOX = 1
+const m___VERSION__ = "12-win32"
+const m___WCHAR_MAX__ = 0xffff
+const m___WCHAR_MIN__ = 0
+const m___WCHAR_WIDTH__ = 16
+const m___WIN32 = 1
+const m___WIN32__ = 1
+const m___WIN64 = 1
+const m___WIN64__ = 1
+const m___WINNT = 1
+const m___WINNT__ = 1
+const m___WINT_MAX__ = 0xffff
+const m___WINT_MIN__ = 0
+const m___WINT_WIDTH__ = 16
+const m___amd64 = 1
+const m___amd64__ = 1
+const m___builtin_va_list = "__builtin_va_list"
+const m___builtin_vsnprintf = "__mingw_vsnprintf"
+const m___builtin_vsprintf = "__mingw_vsprintf"
+const m___code_model_medium__ = 1
+const m___int16 = "short"
+const m___int32 = "int"
+const m___int8 = "char"
+const m___k8 = 1
+const m___k8__ = 1
+const m___mingw_bos_ovr = "__mingw_ovr"
+const m___mingw_static_ovr = "__mingw_ovr"
+const m___pic__ = 1
+const m___x86_64 = 1
+const m___x86_64__ = 1
+const m__finddata_t = "_finddata64i32_t"
+const m__finddatai64_t = "__finddata64_t"
+const m__findfirst = "_findfirst64i32"
+const m__findfirsti64 = "_findfirst64"
+const m__findnext = "_findnext64i32"
+const m__findnexti64 = "_findnext64"
+const m__inline = "__inline"
+const m__wfinddata_t = "_wfinddata64i32_t"
+const m__wfinddatai64_t = "_wfinddata64_t"
+const m__wfindfirst = "_wfindfirst64i32"
+const m__wfindfirsti64 = "_wfindfirst64"
+const m__wfindnext = "_wfindnext64i32"
+const m__wfindnexti64 = "_wfindnext64"
+const m_environ = "_environ"
+const m_onexit_t = "_onexit_t"
+const m_pclose = "_pclose"
+const m_popen = "_popen"
+const m_sys_errlist = "_sys_errlist"
+const m_sys_nerr = "_sys_nerr"
+const m_wcswcs = "wcsstr"
+const m_wpopen = "_wpopen"
+const m_z_off64_t = "z_off_t"
+const m_z_off_t = "long"
 
 type T__builtin_va_list = uintptr
 
@@ -825,8 +1462,19 @@ func main() {
 }
 
 const m_BASE = 65521
+const m_DEF_MEM_LEVEL = 8
+const m_DEF_WBITS = "MAX_WBITS"
+const m_DYN_TREES = 2
+const m_MAX_MATCH = 258
+const m_MIN_MATCH = 3
 const m_NMAX = 5552
-const m_Z_NULL = 0
+const m_OS_CODE = 10
+const m_PRESET_DICT = 0x20
+const m_STATIC_TREES = 1
+const m_STORED_BLOCK = 0
+const m_local = "static"
+const m_zmemcmp = "memcmp"
+const m_zmemcpy = "memcpy"
 
 type Tuch = uint8
 
@@ -1046,11 +1694,6 @@ func x_adler32_combine(tls *libc.TLS, adler1 TuLong, adler2 TuLong, len2 int32) 
 func x_adler32_combine64(tls *libc.TLS, adler1 TuLong, adler2 TuLong, len2 int32) (r TuLong) {
 	return _adler32_combine_(tls, adler1, adler2, len2)
 }
-
-const m_ZLIB_VERSION = "1.3"
-const m_Z_FINISH = 4
-const m_Z_NO_FLUSH = 0
-const m_Z_STREAM_END = 1
 
 // C documentation
 //
@@ -6218,7 +6861,6 @@ const m_BL_CODES = 19
 const m_BUSY_STATE = 113
 const m_Buf_size = 16
 const m_COMMENT_STATE = 91
-const m_DEF_MEM_LEVEL = 8
 const m_D_CODES = 30
 const m_EXTRA_STATE = 69
 const m_FINISH_STATE = 666
@@ -6228,27 +6870,13 @@ const m_INIT_STATE = 42
 const m_LENGTH_CODES = 29
 const m_LITERALS = 256
 const m_MAX_BITS = 15
-const m_MAX_MATCH = 258
-const m_MAX_MEM_LEVEL = 9
 const m_MAX_STORED = 65535
-const m_MAX_WBITS = 15
-const m_MIN_MATCH = 3
 const m_NAME_STATE = 73
 const m_NIL = 0
-const m_OS_CODE = 10
-const m_PRESET_DICT = 32
+const m_PRESET_DICT1 = 32
 const m_TOO_FAR = 4096
-const m_Z_BLOCK = 5
-const m_Z_DEFAULT_STRATEGY = 0
-const m_Z_DEFLATED = 8
-const m_Z_FILTERED = 1
-const m_Z_FIXED = 4
-const m_Z_FULL_FLUSH = 3
-const m_Z_HUFFMAN_ONLY = 2
-const m_Z_NEED_DICT = 2
-const m_Z_PARTIAL_FLUSH = 1
-const m_Z_RLE = 3
-const m_Z_UNKNOWN = 2
+const m_WIN_INIT = "MAX_MATCH"
+const m_max_insert_length = "max_lazy_match"
 
 type Tinternal_state = struct {
 	Fstrm             Tz_streamp
@@ -7482,7 +8110,7 @@ func x_deflate(tls *libc.TLS, strm Tz_streamp, flush int32) (r int32) {
 		}
 		header |= level_flags << libc.Int32FromInt32(6)
 		if (*Tdeflate_state)(unsafe.Pointer(s)).Fstrstart != uint32(0) {
-			header |= uint32(m_PRESET_DICT)
+			header |= uint32(m_PRESET_DICT1)
 		}
 		header += uint32(31) - header%uint32(31)
 		_putShortMSB(tls, s, header)
@@ -9063,7 +9691,15 @@ func _deflate_huff(tls *libc.TLS, s uintptr, flush int32) (r Tblock_state) {
 	return _block_done
 }
 
+const m_COPY = 1
+const m_GZBUFSIZE = 8192
+const m_GZIP = 2
+const m_GZ_APPEND = 1
+const m_GZ_NONE = 0
 const m_GZ_READ = 7247
+const m_GZ_WRITE = 31153
+const m_LOOK = 0
+const m__O_BINARY1 = 0x8000
 
 /**
  * This file has no copyright assigned and is placed in the Public Domain.
@@ -9146,22 +9782,15 @@ func x_gzclose(tls *libc.TLS, file TgzFile) (r int32) {
 	return v1
 }
 
-const m_COPY = 1
-const m_GZBUFSIZE = 8192
-const m_GZ_APPEND = 1
-const m_GZ_NONE = 0
-const m_GZ_WRITE = 31153
-const m_LOOK = 0
-const m_SEEK_CUR = 1
-const m_SEEK_END = 2
-const m_SEEK_SET = 0
-const m__O_APPEND = 8
-const m__O_CREAT = 256
-const m__O_EXCL = 1024
-const m__O_RDONLY = 0
-const m__O_TRUNC = 512
-const m__O_WRONLY = 1
-const m___INT_MAX__ = 2147483647
+const m_LSEEK = "_lseeki64"
+const m__O_APPEND1 = 8
+const m__O_BINARY2 = 32768
+const m__O_CREAT1 = 256
+const m__O_EXCL1 = 1024
+const m__O_RDONLY1 = 0
+const m__O_TRUNC1 = 512
+const m__O_WRONLY1 = 1
+const m___INT_MAX__1 = 2147483647
 
 /**
  * This file has no copyright assigned and is placed in the Public Domain.
@@ -9322,21 +9951,21 @@ func _gz_open(tls *libc.TLS, path uintptr, fd int32, mode uintptr) (r TgzFile) {
 	}
 	/* compute the flags for open() */
 	if (*Tgz_state)(unsafe.Pointer(state)).Fmode == int32(m_GZ_READ) {
-		v3 = m__O_RDONLY
+		v3 = m__O_RDONLY1
 	} else {
 		if exclusive != 0 {
-			v4 = int32(m__O_EXCL)
+			v4 = int32(m__O_EXCL1)
 		} else {
 			v4 = 0
 		}
 		if (*Tgz_state)(unsafe.Pointer(state)).Fmode == int32(m_GZ_WRITE) {
-			v5 = int32(m__O_TRUNC)
+			v5 = int32(m__O_TRUNC1)
 		} else {
-			v5 = int32(m__O_APPEND)
+			v5 = int32(m__O_APPEND1)
 		}
-		v3 = libc.Int32FromInt32(m__O_WRONLY) | libc.Int32FromInt32(m__O_CREAT) | v4 | v5
+		v3 = libc.Int32FromInt32(m__O_WRONLY1) | libc.Int32FromInt32(m__O_CREAT1) | v4 | v5
 	}
-	oflag = int32(m__O_BINARY) | v3
+	oflag = int32(m__O_BINARY2) | v3
 	/* open the file with the appropriate flags (or just use fd) */
 	if fd > -int32(1) {
 		v6 = fd
@@ -9540,7 +10169,7 @@ func x_gzseek64(tls *libc.TLS, file TgzFile, offset int32, whence int32) (r int3
 	}
 	/* if reading, skip what's in output buffer (one less gzgetc() check) */
 	if (*Tgz_state)(unsafe.Pointer(state)).Fmode == int32(m_GZ_READ) {
-		if libc.Bool(uint64(4) == uint64(4)) && (*Tgz_state)(unsafe.Pointer(state)).Fx.Fhave > uint32(m___INT_MAX__) || int32((*Tgz_state)(unsafe.Pointer(state)).Fx.Fhave) > offset {
+		if libc.Bool(uint64(4) == uint64(4)) && (*Tgz_state)(unsafe.Pointer(state)).Fx.Fhave > uint32(m___INT_MAX__1) || int32((*Tgz_state)(unsafe.Pointer(state)).Fx.Fhave) > offset {
 			v1 = uint32(uint32(offset))
 		} else {
 			v1 = (*Tgz_state)(unsafe.Pointer(state)).Fx.Fhave
@@ -9785,7 +10414,13 @@ func x_gz_error(tls *libc.TLS, state Tgz_statep, err int32, msg uintptr) {
 _3:
 }
 
-const m_GZIP = 2
+const m__O_APPEND2 = 0x0008
+const m__O_BINARY3 = 0x8000
+const m__O_CREAT2 = 0x0100
+const m__O_EXCL2 = 0x0400
+const m__O_RDONLY2 = 0x0000
+const m__O_TRUNC2 = 0x0200
+const m__O_WRONLY2 = 0x0001
 
 /**
  * This file has no copyright assigned and is placed in the Public Domain.
@@ -10093,7 +10728,7 @@ func _gz_skip(tls *libc.TLS, state Tgz_statep, len1 int32) (r int32) {
 	for len1 != 0 {
 		/* skip over whatever is in output buffer */
 		if (*Tgz_state)(unsafe.Pointer(state)).Fx.Fhave != 0 {
-			if libc.Bool(uint64(4) == uint64(4)) && (*Tgz_state)(unsafe.Pointer(state)).Fx.Fhave > uint32(m___INT_MAX__) || int32((*Tgz_state)(unsafe.Pointer(state)).Fx.Fhave) > len1 {
+			if libc.Bool(uint64(4) == uint64(4)) && (*Tgz_state)(unsafe.Pointer(state)).Fx.Fhave > uint32(m___INT_MAX__1) || int32((*Tgz_state)(unsafe.Pointer(state)).Fx.Fhave) > len1 {
 				v1 = uint32(uint32(len1))
 			} else {
 				v1 = (*Tgz_state)(unsafe.Pointer(state)).Fx.Fhave
@@ -10689,7 +11324,7 @@ func _gz_zero(tls *libc.TLS, state Tgz_statep, len1 int32) (r int32) {
 	/* compress len zeros (len guaranteed > 0) */
 	first = int32(1)
 	for len1 != 0 {
-		if libc.Bool(uint64(4) == uint64(4)) && (*Tgz_state)(unsafe.Pointer(state)).Fsize > uint32(m___INT_MAX__) || int32((*Tgz_state)(unsafe.Pointer(state)).Fsize) > len1 {
+		if libc.Bool(uint64(4) == uint64(4)) && (*Tgz_state)(unsafe.Pointer(state)).Fsize > uint32(m___INT_MAX__1) || int32((*Tgz_state)(unsafe.Pointer(state)).Fsize) > len1 {
 			v1 = uint32(uint32(len1))
 		} else {
 			v1 = (*Tgz_state)(unsafe.Pointer(state)).Fsize
@@ -11177,6 +11812,8 @@ func x_gzclose_w(tls *libc.TLS, file TgzFile) (r int32) {
 
 const m_ENOUGH_DISTS = 592
 const m_ENOUGH_LENS = 852
+const m_PRESET_DICT2 = 0x20
+const m___INT_MAX__2 = 0x7fffffff
 
 type Tcode = struct {
 	Fop   uint8
@@ -14732,8 +15369,6 @@ func x_inflate_fast(tls *libc.TLS, strm Tz_streamp, start uint32) {
 	(*Tinflate_state)(unsafe.Pointer(state)).Fbits = bits
 	return
 }
-
-const m_Z_TREES = 6
 
 func _inflateStateCheck(tls *libc.TLS, strm Tz_streamp) (r int32) {
 	var state uintptr
@@ -19291,17 +19926,13 @@ var _dext = [32]uint16{
 }
 
 const m_DIST_CODE_LEN = 512
-const m_DYN_TREES = 2
 const m_END_BLOCK = 256
 const m_MAX_BL_BITS = 7
 const m_REPZ_11_138 = 18
 const m_REPZ_3_10 = 17
 const m_REP_3_6 = 16
 const m_SMALLEST = 1
-const m_STATIC_TREES = 1
-const m_STORED_BLOCK = 0
-const m_Z_BINARY = 0
-const m_Z_TEXT = 1
+const m_TCONST = "const"
 
 type Tstatic_tree_desc = struct {
 	Fstatic_tree uintptr
