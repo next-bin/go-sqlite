@@ -8,12 +8,12 @@
 package libsqlite3 // import "modernc.org/libsqlite3"
 
 import (
-	"golang.org/x/sys/unix"
+	nix "golang.org/x/sys/unix"
 )
 
 func setMaxOpenFiles(n int64) error {
-	var rLimit unix.Rlimit
+	var rLimit nix.Rlimit
 	rLimit.Max = uint64(n)
 	rLimit.Cur = uint64(n)
-	return unix.Setrlimit(unix.RLIMIT_NOFILE, &rLimit)
+	return nix.Setrlimit(nix.RLIMIT_NOFILE, &rLimit)
 }

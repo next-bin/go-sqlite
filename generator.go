@@ -205,6 +205,7 @@ func main() {
 		case "freebsd/amd64", "freebsd/arm64", "openbsd/amd64":
 			config = append(config, "-ltcl8.6")
 		}
+		config = append(config, "-eval-all-macros")
 		if err := ccgo.NewTask(goos, goarch, config, os.Stdout, os.Stderr, nil).Main(); err != nil {
 			return err
 		}
@@ -417,7 +418,7 @@ func main() {
 		if err := ccgo.NewTask(
 			goos, goarch,
 			[]string{
-os.Args[0],
+				os.Args[0],
 				"--cpp", xgcc,
 				"--goarch", goarch,
 				"--goos", goos,

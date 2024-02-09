@@ -46,7 +46,7 @@ generate: download
 	rm -rf $(DIR)/*
 	echo -n > log-generate
 	echo -n > log-generate-errors
-	GO_GENERATE_DIR=$(DIR) go run generator*.go 2> log-generate-errors | tee log-generate
+	GO_GENERATE_DIR=$(DIR) go run generator*.go 2>&1 log-generate-errors | tee log-generate
 	cat log-generate-errors
 	go build -v ./...
 	# go install github.com/mdempsky/unconvert@latest
