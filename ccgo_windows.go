@@ -535,7 +535,6 @@ const m___WINT_MIN__ = 0
 const m___WINT_WIDTH__ = 16
 const m___amd64 = 1
 const m___amd64__ = 1
-const m___builtin_va_list = "__builtin_va_list"
 const m___code_model_medium__ = 1
 const m___int16 = "short"
 const m___int32 = "int"
