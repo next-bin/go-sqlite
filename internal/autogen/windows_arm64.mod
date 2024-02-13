@@ -4,8 +4,8 @@ go 1.20
 
 require (
 	golang.org/x/sys v0.16.0
-	modernc.org/ccgo/v3 v3.16.15
-	modernc.org/ccgo/v4 v4.9.4
+	modernc.org/ccgo/v3 v3.17.0
+	modernc.org/ccgo/v4 v4.9.5
 	modernc.org/libc v1.41.0
 	modernc.org/libtcl8.6 v0.5.5
 	modernc.org/libz v0.5.3

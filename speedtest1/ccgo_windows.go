@@ -1,4 +1,4 @@
-// Code generated for windows/amd64 by 'generator --cpp /usr/bin/x86_64-w64-mingw32-gcc --goarch amd64 --goos windows -DSQLITE_OMIT_SEH -DSQLITE_OS_WIN=1 -I /tmp/libsqlite3/sqlite-src-3450100 -build-lines \/\/go:build windows && (amd64 || arm64)\n\/\/ \x2bbuild windows\n\/\/ \x2bbuild amd64 arm64 -map gcc=x86_64-w64-mingw32-gcc -o speedtest1/ccgo_windows.go /tmp/libsqlite3/sqlite-src-3450100/test/speedtest1.c -lsqlite3', DO NOT EDIT.
+// Code generated for windows/amd64 by 'generator --cpp /usr/bin/x86_64-w64-mingw32-gcc --goarch amd64 --goos windows -DNDEBUG -DSQLITE_OMIT_SEH -DSQLITE_OS_WIN=1 -I /tmp/libsqlite3/sqlite-src-3450100 -build-lines \/\/go:build windows && (amd64 || arm64)\n\/\/ \x2bbuild windows\n\/\/ \x2bbuild amd64 arm64 -map gcc=x86_64-w64-mingw32-gcc -o speedtest1/ccgo_windows.go /tmp/libsqlite3/sqlite-src-3450100/test/speedtest1.c -lsqlite3', DO NOT EDIT.
 
 //go:build windows && (amd64 || arm64)
 // +build windows
@@ -123,6 +123,7 @@ const MB_LEN_MAX = 5
 const MINGW_HAS_DDK_H = 1
 const MINGW_HAS_SECURE_API = 1
 const NAMEWIDTH = 60
+const NDEBUG = 1
 const NOT_WITHIN = 0
 const PARTLY_WITHIN = 1
 const PATH_MAX = 260
@@ -957,7 +958,6 @@ const __WINT_MIN__ = 0
 const __WINT_WIDTH__ = 16
 const __amd64 = 1
 const __amd64__ = 1
-const __builtin_va_list1 = "__builtin_va_list"
 const __builtin_vsnprintf1 = "__mingw_vsnprintf"
 const __builtin_vsprintf = "__mingw_vsprintf"
 const __code_model_medium__ = 1
@@ -2362,37 +2362,32 @@ func speedtest1_end_test(tls *libc.TLS) {
 	var __local_argv, __local_argv1 __builtin_va_list
 	var __retval, __retval1 int32
 	var iElapseTime sqlite3_int64
-	var v1 bool
-	var v2, v4 uintptr
-	_, _, _, _, _, _, _, _ = __local_argv, __local_argv1, __retval, __retval1, iElapseTime, v1, v2, v4
+	var v1, v3 uintptr
+	_, _, _, _, _, _, _ = __local_argv, __local_argv1, __retval, __retval1, iElapseTime, v1, v3
 	iElapseTime = speedtest1_timestamp(tls) - g.iStart
 	if g.doCheckpoint != 0 {
 		speedtest1_exec(tls, __ccgo_ts+354, 0)
 	}
-	if v1 = !!(iTestNumber > libc.Int32FromInt32(0)); !v1 {
-		libc.X_assert(tls, __ccgo_ts+377, __ccgo_ts+393, uint32(422))
-	}
-	_ = v1 || libc.Bool(libc.Int32FromInt32(0) != 0)
 	if g.pScript != 0 {
-		v2 = __ccgo_ts + 446
+		v1 = __ccgo_ts + 377
 		libc.VaList(bp, iTestNumber)
 		__local_argv = bp
-		__retval = libc.X__mingw_vfprintf(tls, g.pScript, v2, __local_argv)
+		__retval = libc.X__mingw_vfprintf(tls, g.pScript, v1, __local_argv)
 		_ = __local_argv
 		_ = __retval
-		goto _3
-	_3:
+		goto _2
+	_2:
 	}
 	if !(g.bSqlOnly != 0) {
 		g.iTotal += iElapseTime
-		v4 = __ccgo_ts + 462
+		v3 = __ccgo_ts + 393
 		libc.VaList(bp, int32(iElapseTime/libc.Int64FromInt32(1000)), int32(iElapseTime%libc.Int64FromInt32(1000)))
 		__local_argv1 = bp
-		__retval1 = libc.X__mingw_vfprintf(tls, libc.X__acrt_iob_func(tls, uint32(1)), v4, __local_argv1)
+		__retval1 = libc.X__mingw_vfprintf(tls, libc.X__acrt_iob_func(tls, uint32(1)), v3, __local_argv1)
 		_ = __local_argv1
 		_ = __retval1
-		goto _5
-	_5:
+		goto _4
+	_4:
 	}
 	if g.pStmt != 0 {
 		libsqlite3.Xsqlite3_finalize(tls, g.pStmt)
@@ -2412,7 +2407,7 @@ func speedtest1_final(tls *libc.TLS) {
 	var v1, v3, v6, v8 uintptr
 	_, _, _, _, _, _, _ = __local_argv, __retval, i, v1, v3, v6, v8
 	if !(g.bSqlOnly != 0) {
-		v1 = __ccgo_ts + 473
+		v1 = __ccgo_ts + 404
 		libc.VaList(bp, libc.Int32FromInt32(NAMEWIDTH)-libc.Int32FromInt32(5), uintptr(unsafe.Pointer(&zDots)), int32(g.iTotal/libc.Int64FromInt32(1000)), int32(g.iTotal%libc.Int64FromInt32(1000)))
 		__local_argv = bp
 		__retval = libc.X__mingw_vfprintf(tls, libc.X__acrt_iob_func(tls, uint32(1)), v1, __local_argv)
@@ -2422,7 +2417,7 @@ func speedtest1_final(tls *libc.TLS) {
 	_2:
 	}
 	if g.bVerify != 0 {
-		v3 = __ccgo_ts + 501
+		v3 = __ccgo_ts + 432
 		libc.VaList(bp, g.nResByte)
 		__local_argv = bp
 		__retval = libc.X__mingw_vfprintf(tls, libc.X__acrt_iob_func(tls, uint32(1)), v3, __local_argv)
@@ -2430,14 +2425,14 @@ func speedtest1_final(tls *libc.TLS) {
 		_ = __retval
 		goto _4
 	_4:
-		HashUpdate(tls, __ccgo_ts+526, uint32(1))
+		HashUpdate(tls, __ccgo_ts+457, uint32(1))
 		HashFinal(tls)
 		i = 0
 		for {
 			if !(i < int32(24)) {
 				break
 			}
-			v6 = __ccgo_ts + 528
+			v6 = __ccgo_ts + 459
 			libc.VaList(bp, int32(*(*uint8)(unsafe.Pointer(uintptr(unsafe.Pointer(&g)) + 3152 + 259 + uintptr(i)))))
 			__local_argv = bp
 			__retval = libc.X__mingw_vfprintf(tls, libc.X__acrt_iob_func(tls, uint32(1)), v6, __local_argv)
@@ -2452,7 +2447,7 @@ func speedtest1_final(tls *libc.TLS) {
 		if g.hashFile != 0 && g.hashFile != libc.X__acrt_iob_func(tls, uint32(1)) {
 			libc.Xfclose(tls, g.hashFile)
 		}
-		v8 = __ccgo_ts + 526
+		v8 = __ccgo_ts + 457
 		__local_argv = bp
 		__retval = libc.X__mingw_vfprintf(tls, libc.X__acrt_iob_func(tls, uint32(1)), v8, __local_argv)
 		_ = __local_argv
@@ -2477,7 +2472,7 @@ func printSql(tls *libc.TLS, zSql uintptr) {
 		n--
 	}
 	if g.bExplain != 0 {
-		v1 = __ccgo_ts + 533
+		v1 = __ccgo_ts + 464
 		__local_argv = bp
 		__retval = libc.X__mingw_vfprintf(tls, libc.X__acrt_iob_func(tls, uint32(1)), v1, __local_argv)
 		_ = __local_argv
@@ -2485,7 +2480,7 @@ func printSql(tls *libc.TLS, zSql uintptr) {
 		goto _2
 	_2:
 	}
-	v3 = __ccgo_ts + 542
+	v3 = __ccgo_ts + 473
 	libc.VaList(bp, n, zSql)
 	__local_argv = bp
 	__retval = libc.X__mingw_vfprintf(tls, libc.X__acrt_iob_func(tls, uint32(1)), v3, __local_argv)
@@ -2493,8 +2488,8 @@ func printSql(tls *libc.TLS, zSql uintptr) {
 	_ = __retval
 	goto _4
 _4:
-	if g.bExplain != 0 && (libsqlite3.Xsqlite3_strglob(tls, __ccgo_ts+549, zSql) == 0 || libsqlite3.Xsqlite3_strglob(tls, __ccgo_ts+558, zSql) == 0 || libsqlite3.Xsqlite3_strglob(tls, __ccgo_ts+565, zSql) == 0) {
-		v5 = __ccgo_ts + 542
+	if g.bExplain != 0 && (libsqlite3.Xsqlite3_strglob(tls, __ccgo_ts+480, zSql) == 0 || libsqlite3.Xsqlite3_strglob(tls, __ccgo_ts+489, zSql) == 0 || libsqlite3.Xsqlite3_strglob(tls, __ccgo_ts+496, zSql) == 0) {
+		v5 = __ccgo_ts + 473
 		libc.VaList(bp, n, zSql)
 		__local_argv = bp
 		__retval = libc.X__mingw_vfprintf(tls, libc.X__acrt_iob_func(tls, uint32(1)), v5, __local_argv)
@@ -2536,7 +2531,7 @@ func speedtest1_exec(tls *libc.TLS, zFormat uintptr, va uintptr) {
 	} else {
 		*(*uintptr)(unsafe.Pointer(bp + 24)) = uintptr(0)
 		if g.pScript != 0 {
-			v1 = __ccgo_ts + 573
+			v1 = __ccgo_ts + 504
 			libc.VaList(bp, zSql)
 			__local_argv = bp
 			__retval = libc.X__mingw_vfprintf(tls, g.pScript, v1, __local_argv)
@@ -2547,10 +2542,10 @@ func speedtest1_exec(tls *libc.TLS, zFormat uintptr, va uintptr) {
 		}
 		rc = libsqlite3.Xsqlite3_exec(tls, g.db, zSql, uintptr(0), uintptr(0), bp+24)
 		if *(*uintptr)(unsafe.Pointer(bp + 24)) != 0 {
-			fatal_error(tls, __ccgo_ts+578, libc.VaList(bp+40, *(*uintptr)(unsafe.Pointer(bp + 24)), zSql))
+			fatal_error(tls, __ccgo_ts+509, libc.VaList(bp+40, *(*uintptr)(unsafe.Pointer(bp + 24)), zSql))
 		}
 		if rc != SQLITE_OK {
-			fatal_error(tls, __ccgo_ts+596, libc.VaList(bp+40, libsqlite3.Xsqlite3_errmsg(tls, g.db)))
+			fatal_error(tls, __ccgo_ts+527, libc.VaList(bp+40, libsqlite3.Xsqlite3_errmsg(tls, g.db)))
 		}
 	}
 	libsqlite3.Xsqlite3_free(tls, zSql)
@@ -2581,11 +2576,11 @@ func speedtest1_once(tls *libc.TLS, zFormat uintptr, va uintptr) (r uintptr) {
 	} else {
 		rc = libsqlite3.Xsqlite3_prepare_v2(tls, g.db, zSql, -int32(1), bp+24, uintptr(0))
 		if rc != 0 {
-			fatal_error(tls, __ccgo_ts+612, libc.VaList(bp+40, libsqlite3.Xsqlite3_errmsg(tls, g.db)))
+			fatal_error(tls, __ccgo_ts+543, libc.VaList(bp+40, libsqlite3.Xsqlite3_errmsg(tls, g.db)))
 		}
 		if g.pScript != 0 {
 			z = libsqlite3.Xsqlite3_expanded_sql(tls, *(*uintptr)(unsafe.Pointer(bp + 24)))
-			v1 = __ccgo_ts + 627
+			v1 = __ccgo_ts + 558
 			libc.VaList(bp, z)
 			__local_argv = bp
 			__retval = libc.X__mingw_vfprintf(tls, g.pScript, v1, __local_argv)
@@ -2629,7 +2624,7 @@ func speedtest1_prepare(tls *libc.TLS, zFormat uintptr, va uintptr) {
 		}
 		rc = libsqlite3.Xsqlite3_prepare_v2(tls, g.db, zSql, -int32(1), uintptr(unsafe.Pointer(&g))+8, uintptr(0))
 		if rc != 0 {
-			fatal_error(tls, __ccgo_ts+612, libc.VaList(bp+8, libsqlite3.Xsqlite3_errmsg(tls, g.db)))
+			fatal_error(tls, __ccgo_ts+543, libc.VaList(bp+8, libsqlite3.Xsqlite3_errmsg(tls, g.db)))
 		}
 	}
 	libsqlite3.Xsqlite3_free(tls, zSql)
@@ -2642,31 +2637,26 @@ func speedtest1_run(tls *libc.TLS) {
 	bp := tls.Alloc(48)
 	defer tls.Free(48)
 	var __local_argv __builtin_va_list
-	var __retval, eType, i, iBlob, len1, n, nBlob, v6 int32
-	var aBlob, z, z1, v2, v7 uintptr
-	var v1 bool
+	var __retval, eType, i, iBlob, len1, n, nBlob, v5 int32
+	var aBlob, z, z1, v1, v6 uintptr
 	var _ /* pNew at bp+32 */ uintptr
 	var _ /* zChar at bp+26 */ [2]uint8
 	var _ /* zPrefix at bp+24 */ [2]uint8
-	_, _, _, _, _, _, _, _, _, _, _, _, _, _, _ = __local_argv, __retval, aBlob, eType, i, iBlob, len1, n, nBlob, z, z1, v1, v2, v6, v7
+	_, _, _, _, _, _, _, _, _, _, _, _, _, _ = __local_argv, __retval, aBlob, eType, i, iBlob, len1, n, nBlob, z, z1, v1, v5, v6
 	if g.bSqlOnly != 0 {
 		return
 	}
-	if v1 = !!(g.pStmt != 0); !v1 {
-		libc.X_assert(tls, __ccgo_ts+631, __ccgo_ts+393, uint32(569))
-	}
-	_ = v1 || libc.Bool(libc.Int32FromInt32(0) != 0)
 	g.nResult = 0
 	if g.pScript != 0 {
 		z = libsqlite3.Xsqlite3_expanded_sql(tls, g.pStmt)
-		v2 = __ccgo_ts + 627
+		v1 = __ccgo_ts + 558
 		libc.VaList(bp, z)
 		__local_argv = bp
-		__retval = libc.X__mingw_vfprintf(tls, g.pScript, v2, __local_argv)
+		__retval = libc.X__mingw_vfprintf(tls, g.pScript, v1, __local_argv)
 		_ = __local_argv
 		_ = __retval
-		goto _3
-	_3:
+		goto _2
+	_2:
 		libsqlite3.Xsqlite3_free(tls, z)
 	}
 	for libsqlite3.Xsqlite3_step(tls, g.pStmt) == int32(SQLITE_ROW) {
@@ -2678,13 +2668,13 @@ func speedtest1_run(tls *libc.TLS) {
 			}
 			z1 = libsqlite3.Xsqlite3_column_text(tls, g.pStmt, i)
 			if z1 == uintptr(0) {
-				z1 = __ccgo_ts + 639
+				z1 = __ccgo_ts + 562
 			}
 			len1 = int32(libc.Xstrlen(tls, z1))
 			if g.bVerify != 0 {
 				eType = libsqlite3.Xsqlite3_column_type(tls, g.pStmt, i)
 				(*(*[2]uint8)(unsafe.Pointer(bp + 24)))[0] = uint8('\n')
-				(*(*[2]uint8)(unsafe.Pointer(bp + 24)))[int32(1)] = uint8(*(*int8)(unsafe.Pointer(__ccgo_ts + 643 + uintptr(eType))))
+				(*(*[2]uint8)(unsafe.Pointer(bp + 24)))[int32(1)] = uint8(*(*int8)(unsafe.Pointer(__ccgo_ts + 566 + uintptr(eType))))
 				if g.nResByte != 0 {
 					HashUpdate(tls, bp+24, uint32(2))
 				} else {
@@ -2704,11 +2694,11 @@ func speedtest1_run(tls *libc.TLS) {
 							if !(iBlob < nBlob) {
 								break
 							}
-							(*(*[2]uint8)(unsafe.Pointer(bp + 26)))[0] = uint8(*(*int8)(unsafe.Pointer(__ccgo_ts + 650 + uintptr(int32(*(*uint8)(unsafe.Pointer(aBlob + uintptr(iBlob))))>>int32(4)))))
-							(*(*[2]uint8)(unsafe.Pointer(bp + 26)))[int32(1)] = uint8(*(*int8)(unsafe.Pointer(__ccgo_ts + 650 + uintptr(int32(*(*uint8)(unsafe.Pointer(aBlob + uintptr(iBlob))))&int32(15)))))
+							(*(*[2]uint8)(unsafe.Pointer(bp + 26)))[0] = uint8(*(*int8)(unsafe.Pointer(__ccgo_ts + 573 + uintptr(int32(*(*uint8)(unsafe.Pointer(aBlob + uintptr(iBlob))))>>int32(4)))))
+							(*(*[2]uint8)(unsafe.Pointer(bp + 26)))[int32(1)] = uint8(*(*int8)(unsafe.Pointer(__ccgo_ts + 573 + uintptr(int32(*(*uint8)(unsafe.Pointer(aBlob + uintptr(iBlob))))&int32(15)))))
 							HashUpdate(tls, bp+26, uint32(2))
-							goto _5
-						_5:
+							goto _4
+						_4:
 							iBlob++
 						}
 						g.nResByte += uint64(nBlob*int32(2) + int32(2))
@@ -2720,16 +2710,16 @@ func speedtest1_run(tls *libc.TLS) {
 			}
 			if uint64(g.nResult+len1) < libc.Uint64FromInt64(3000)-libc.Uint64FromInt32(2) {
 				if g.nResult > 0 {
-					v7 = uintptr(unsafe.Pointer(&g)) + 128
-					v6 = *(*int32)(unsafe.Pointer(v7))
-					*(*int32)(unsafe.Pointer(v7))++
-					*(*int8)(unsafe.Pointer(uintptr(unsafe.Pointer(&g)) + 132 + uintptr(v6))) = int8(' ')
+					v6 = uintptr(unsafe.Pointer(&g)) + 128
+					v5 = *(*int32)(unsafe.Pointer(v6))
+					*(*int32)(unsafe.Pointer(v6))++
+					*(*int8)(unsafe.Pointer(uintptr(unsafe.Pointer(&g)) + 132 + uintptr(v5))) = int8(' ')
 				}
 				libc.Xmemcpy(tls, uintptr(unsafe.Pointer(&g))+132+uintptr(g.nResult), z1, uint64(len1+int32(1)))
 				g.nResult += len1
 			}
-			goto _4
-		_4:
+			goto _3
+		_3:
 			i++
 		}
 	}
@@ -2757,7 +2747,7 @@ func traceCallback(tls *libc.TLS, NotUsed uintptr, zSql uintptr) {
 	for n > 0 && (int32(*(*int8)(unsafe.Pointer(zSql + uintptr(n-int32(1))))) == int32(';') || libc.Xisspace(tls, int32(uint8(*(*int8)(unsafe.Pointer(zSql + uintptr(n-int32(1))))))) != 0) {
 		n--
 	}
-	v1 = __ccgo_ts + 542
+	v1 = __ccgo_ts + 473
 	libc.VaList(bp, n, zSql)
 	__local_argv = bp
 	__retval = libc.X__mingw_vfprintf(tls, libc.X__acrt_iob_func(tls, uint32(2)), v1, __local_argv)
@@ -2820,10 +2810,10 @@ func testset_main(tls *libc.TLS) {
 	sz = v1
 	(*(*[2000]int8)(unsafe.Pointer(bp)))[0] = 0
 	maxb = int32(roundup_allones(tls, uint32(uint32(sz))))
-	speedtest1_begin_test(tls, int32(100), __ccgo_ts+667, libc.VaList(bp+2008, n))
-	speedtest1_exec(tls, __ccgo_ts+703, 0)
-	speedtest1_exec(tls, __ccgo_ts+709, libc.VaList(bp+2008, isTemp(tls, int32(9)), g.zNN, g.zNN, g.zNN))
-	speedtest1_prepare(tls, __ccgo_ts+767, libc.VaList(bp+2008, n))
+	speedtest1_begin_test(tls, int32(100), __ccgo_ts+590, libc.VaList(bp+2008, n))
+	speedtest1_exec(tls, __ccgo_ts+626, 0)
+	speedtest1_exec(tls, __ccgo_ts+632, libc.VaList(bp+2008, isTemp(tls, int32(9)), g.zNN, g.zNN, g.zNN))
+	speedtest1_prepare(tls, __ccgo_ts+690, libc.VaList(bp+2008, n))
 	i = int32(1)
 	for {
 		if !(i <= n) {
@@ -2839,13 +2829,13 @@ func testset_main(tls *libc.TLS) {
 	_2:
 		i++
 	}
-	speedtest1_exec(tls, __ccgo_ts+813, 0)
+	speedtest1_exec(tls, __ccgo_ts+736, 0)
 	speedtest1_end_test(tls)
 	n = sz
-	speedtest1_begin_test(tls, int32(110), __ccgo_ts+820, libc.VaList(bp+2008, n))
-	speedtest1_exec(tls, __ccgo_ts+703, 0)
-	speedtest1_exec(tls, __ccgo_ts+857, libc.VaList(bp+2008, isTemp(tls, int32(5)), g.zNN, g.zPK, g.zNN, g.zNN, g.zWR))
-	speedtest1_prepare(tls, __ccgo_ts+920, libc.VaList(bp+2008, n))
+	speedtest1_begin_test(tls, int32(110), __ccgo_ts+743, libc.VaList(bp+2008, n))
+	speedtest1_exec(tls, __ccgo_ts+626, 0)
+	speedtest1_exec(tls, __ccgo_ts+780, libc.VaList(bp+2008, isTemp(tls, int32(5)), g.zNN, g.zPK, g.zNN, g.zNN, g.zWR))
+	speedtest1_prepare(tls, __ccgo_ts+843, libc.VaList(bp+2008, n))
 	i = int32(1)
 	for {
 		if !(i <= n) {
@@ -2861,13 +2851,13 @@ func testset_main(tls *libc.TLS) {
 	_3:
 		i++
 	}
-	speedtest1_exec(tls, __ccgo_ts+813, 0)
+	speedtest1_exec(tls, __ccgo_ts+736, 0)
 	speedtest1_end_test(tls)
 	n = sz
-	speedtest1_begin_test(tls, int32(120), __ccgo_ts+965, libc.VaList(bp+2008, n))
-	speedtest1_exec(tls, __ccgo_ts+703, 0)
-	speedtest1_exec(tls, __ccgo_ts+1004, libc.VaList(bp+2008, isTemp(tls, int32(3)), g.zNN, g.zPK, g.zNN, g.zNN, g.zWR))
-	speedtest1_prepare(tls, __ccgo_ts+1067, libc.VaList(bp+2008, n))
+	speedtest1_begin_test(tls, int32(120), __ccgo_ts+888, libc.VaList(bp+2008, n))
+	speedtest1_exec(tls, __ccgo_ts+626, 0)
+	speedtest1_exec(tls, __ccgo_ts+927, libc.VaList(bp+2008, isTemp(tls, int32(3)), g.zNN, g.zPK, g.zNN, g.zNN, g.zWR))
+	speedtest1_prepare(tls, __ccgo_ts+990, libc.VaList(bp+2008, n))
 	i = int32(1)
 	for {
 		if !(i <= n) {
@@ -2883,12 +2873,12 @@ func testset_main(tls *libc.TLS) {
 	_4:
 		i++
 	}
-	speedtest1_exec(tls, __ccgo_ts+813, 0)
+	speedtest1_exec(tls, __ccgo_ts+736, 0)
 	speedtest1_end_test(tls)
 	n = int32(25)
-	speedtest1_begin_test(tls, int32(130), __ccgo_ts+1112, libc.VaList(bp+2008, n))
-	speedtest1_exec(tls, __ccgo_ts+703, 0)
-	speedtest1_prepare(tls, __ccgo_ts+1151, libc.VaList(bp+2008, n))
+	speedtest1_begin_test(tls, int32(130), __ccgo_ts+1035, libc.VaList(bp+2008, n))
+	speedtest1_exec(tls, __ccgo_ts+626, 0)
+	speedtest1_prepare(tls, __ccgo_ts+1074, libc.VaList(bp+2008, n))
 	i = int32(1)
 	for {
 		if !(i <= n) {
@@ -2905,12 +2895,12 @@ func testset_main(tls *libc.TLS) {
 	_5:
 		i++
 	}
-	speedtest1_exec(tls, __ccgo_ts+813, 0)
+	speedtest1_exec(tls, __ccgo_ts+736, 0)
 	speedtest1_end_test(tls)
 	n = int32(10)
-	speedtest1_begin_test(tls, int32(140), __ccgo_ts+1256, libc.VaList(bp+2008, n))
-	speedtest1_exec(tls, __ccgo_ts+703, 0)
-	speedtest1_prepare(tls, __ccgo_ts+1284, libc.VaList(bp+2008, n))
+	speedtest1_begin_test(tls, int32(140), __ccgo_ts+1179, libc.VaList(bp+2008, n))
+	speedtest1_exec(tls, __ccgo_ts+626, 0)
+	speedtest1_prepare(tls, __ccgo_ts+1207, libc.VaList(bp+2008, n))
 	i = int32(1)
 	for {
 		if !(i <= n) {
@@ -2929,12 +2919,12 @@ func testset_main(tls *libc.TLS) {
 	_6:
 		i++
 	}
-	speedtest1_exec(tls, __ccgo_ts+813, 0)
+	speedtest1_exec(tls, __ccgo_ts+736, 0)
 	speedtest1_end_test(tls)
 	n = int32(10)
-	speedtest1_begin_test(tls, int32(142), __ccgo_ts+1379, libc.VaList(bp+2008, n))
-	speedtest1_exec(tls, __ccgo_ts+703, 0)
-	speedtest1_prepare(tls, __ccgo_ts+1412, libc.VaList(bp+2008, n))
+	speedtest1_begin_test(tls, int32(142), __ccgo_ts+1302, libc.VaList(bp+2008, n))
+	speedtest1_exec(tls, __ccgo_ts+626, 0)
+	speedtest1_prepare(tls, __ccgo_ts+1335, libc.VaList(bp+2008, n))
 	i = int32(1)
 	for {
 		if !(i <= n) {
@@ -2953,12 +2943,12 @@ func testset_main(tls *libc.TLS) {
 	_7:
 		i++
 	}
-	speedtest1_exec(tls, __ccgo_ts+813, 0)
+	speedtest1_exec(tls, __ccgo_ts+736, 0)
 	speedtest1_end_test(tls)
 	n = int32(10) /* g.szTest/5; */
-	speedtest1_begin_test(tls, int32(145), __ccgo_ts+1476, libc.VaList(bp+2008, n))
-	speedtest1_exec(tls, __ccgo_ts+703, 0)
-	speedtest1_prepare(tls, __ccgo_ts+1519, libc.VaList(bp+2008, n))
+	speedtest1_begin_test(tls, int32(145), __ccgo_ts+1399, libc.VaList(bp+2008, n))
+	speedtest1_exec(tls, __ccgo_ts+626, 0)
+	speedtest1_prepare(tls, __ccgo_ts+1442, libc.VaList(bp+2008, n))
 	i = int32(1)
 	for {
 		if !(i <= n) {
@@ -2977,21 +2967,21 @@ func testset_main(tls *libc.TLS) {
 	_8:
 		i++
 	}
-	speedtest1_exec(tls, __ccgo_ts+813, 0)
+	speedtest1_exec(tls, __ccgo_ts+736, 0)
 	speedtest1_end_test(tls)
-	speedtest1_begin_test(tls, int32(150), __ccgo_ts+1592, 0)
-	speedtest1_exec(tls, __ccgo_ts+1616, 0)
-	speedtest1_exec(tls, __ccgo_ts+1623, 0)
-	speedtest1_exec(tls, __ccgo_ts+1657, 0)
-	speedtest1_exec(tls, __ccgo_ts+1684, 0)
-	speedtest1_exec(tls, __ccgo_ts+1718, 0)
-	speedtest1_exec(tls, __ccgo_ts+1750, 0)
-	speedtest1_exec(tls, __ccgo_ts+1780, 0)
+	speedtest1_begin_test(tls, int32(150), __ccgo_ts+1515, 0)
+	speedtest1_exec(tls, __ccgo_ts+1539, 0)
+	speedtest1_exec(tls, __ccgo_ts+1546, 0)
+	speedtest1_exec(tls, __ccgo_ts+1580, 0)
+	speedtest1_exec(tls, __ccgo_ts+1607, 0)
+	speedtest1_exec(tls, __ccgo_ts+1641, 0)
+	speedtest1_exec(tls, __ccgo_ts+1673, 0)
+	speedtest1_exec(tls, __ccgo_ts+1703, 0)
 	speedtest1_end_test(tls)
 	n = sz / int32(5)
-	speedtest1_begin_test(tls, int32(160), __ccgo_ts+1788, libc.VaList(bp+2008, n))
-	speedtest1_exec(tls, __ccgo_ts+703, 0)
-	speedtest1_prepare(tls, __ccgo_ts+1825, libc.VaList(bp+2008, n))
+	speedtest1_begin_test(tls, int32(160), __ccgo_ts+1711, libc.VaList(bp+2008, n))
+	speedtest1_exec(tls, __ccgo_ts+626, 0)
+	speedtest1_prepare(tls, __ccgo_ts+1748, libc.VaList(bp+2008, n))
 	i = int32(1)
 	for {
 		if !(i <= n) {
@@ -3008,12 +2998,12 @@ func testset_main(tls *libc.TLS) {
 	_9:
 		i++
 	}
-	speedtest1_exec(tls, __ccgo_ts+813, 0)
+	speedtest1_exec(tls, __ccgo_ts+736, 0)
 	speedtest1_end_test(tls)
 	n = sz / int32(5)
-	speedtest1_begin_test(tls, int32(161), __ccgo_ts+1930, libc.VaList(bp+2008, n))
-	speedtest1_exec(tls, __ccgo_ts+703, 0)
-	speedtest1_prepare(tls, __ccgo_ts+1962, libc.VaList(bp+2008, n))
+	speedtest1_begin_test(tls, int32(161), __ccgo_ts+1853, libc.VaList(bp+2008, n))
+	speedtest1_exec(tls, __ccgo_ts+626, 0)
+	speedtest1_prepare(tls, __ccgo_ts+1885, libc.VaList(bp+2008, n))
 	i = int32(1)
 	for {
 		if !(i <= n) {
@@ -3030,12 +3020,12 @@ func testset_main(tls *libc.TLS) {
 	_10:
 		i++
 	}
-	speedtest1_exec(tls, __ccgo_ts+813, 0)
+	speedtest1_exec(tls, __ccgo_ts+736, 0)
 	speedtest1_end_test(tls)
 	n = sz / int32(5)
-	speedtest1_begin_test(tls, int32(170), __ccgo_ts+2067, libc.VaList(bp+2008, n))
-	speedtest1_exec(tls, __ccgo_ts+703, 0)
-	speedtest1_prepare(tls, __ccgo_ts+2101, libc.VaList(bp+2008, n))
+	speedtest1_begin_test(tls, int32(170), __ccgo_ts+1990, libc.VaList(bp+2008, n))
+	speedtest1_exec(tls, __ccgo_ts+626, 0)
+	speedtest1_prepare(tls, __ccgo_ts+2024, libc.VaList(bp+2008, n))
 	i = int32(1)
 	for {
 		if !(i <= n) {
@@ -3051,33 +3041,33 @@ func testset_main(tls *libc.TLS) {
 	_11:
 		i++
 	}
-	speedtest1_exec(tls, __ccgo_ts+813, 0)
+	speedtest1_exec(tls, __ccgo_ts+736, 0)
 	speedtest1_end_test(tls)
 	n = sz
-	speedtest1_begin_test(tls, int32(180), __ccgo_ts+2213, libc.VaList(bp+2008, n))
-	speedtest1_exec(tls, __ccgo_ts+703, 0)
-	speedtest1_exec(tls, __ccgo_ts+2243, libc.VaList(bp+2008, isTemp(tls, int32(1)), g.zNN, g.zPK, g.zNN, g.zNN, g.zWR))
-	speedtest1_exec(tls, __ccgo_ts+2314, 0)
-	speedtest1_exec(tls, __ccgo_ts+2340, 0)
-	speedtest1_exec(tls, __ccgo_ts+2366, 0)
-	speedtest1_exec(tls, __ccgo_ts+813, 0)
+	speedtest1_begin_test(tls, int32(180), __ccgo_ts+2136, libc.VaList(bp+2008, n))
+	speedtest1_exec(tls, __ccgo_ts+626, 0)
+	speedtest1_exec(tls, __ccgo_ts+2166, libc.VaList(bp+2008, isTemp(tls, int32(1)), g.zNN, g.zPK, g.zNN, g.zNN, g.zWR))
+	speedtest1_exec(tls, __ccgo_ts+2237, 0)
+	speedtest1_exec(tls, __ccgo_ts+2263, 0)
+	speedtest1_exec(tls, __ccgo_ts+2289, 0)
+	speedtest1_exec(tls, __ccgo_ts+736, 0)
 	speedtest1_end_test(tls)
 	n = sz
-	speedtest1_begin_test(tls, int32(190), __ccgo_ts+2398, libc.VaList(bp+2008, n))
-	speedtest1_exec(tls, __ccgo_ts+2426, 0)
-	speedtest1_exec(tls, __ccgo_ts+2442, 0)
+	speedtest1_begin_test(tls, int32(190), __ccgo_ts+2321, libc.VaList(bp+2008, n))
+	speedtest1_exec(tls, __ccgo_ts+2349, 0)
+	speedtest1_exec(tls, __ccgo_ts+2365, 0)
 	speedtest1_end_test(tls)
-	speedtest1_begin_test(tls, int32(200), __ccgo_ts+2475, 0)
-	speedtest1_exec(tls, __ccgo_ts+2475, 0)
+	speedtest1_begin_test(tls, int32(200), __ccgo_ts+2398, 0)
+	speedtest1_exec(tls, __ccgo_ts+2398, 0)
 	speedtest1_end_test(tls)
-	speedtest1_begin_test(tls, int32(210), __ccgo_ts+2482, 0)
-	speedtest1_exec(tls, __ccgo_ts+2516, 0)
-	speedtest1_exec(tls, __ccgo_ts+2560, 0)
+	speedtest1_begin_test(tls, int32(210), __ccgo_ts+2405, 0)
+	speedtest1_exec(tls, __ccgo_ts+2439, 0)
+	speedtest1_exec(tls, __ccgo_ts+2483, 0)
 	speedtest1_end_test(tls)
 	n = sz / int32(5)
-	speedtest1_begin_test(tls, int32(230), __ccgo_ts+2582, libc.VaList(bp+2008, n))
-	speedtest1_exec(tls, __ccgo_ts+703, 0)
-	speedtest1_prepare(tls, __ccgo_ts+2619, libc.VaList(bp+2008, n))
+	speedtest1_begin_test(tls, int32(230), __ccgo_ts+2505, libc.VaList(bp+2008, n))
+	speedtest1_exec(tls, __ccgo_ts+626, 0)
+	speedtest1_prepare(tls, __ccgo_ts+2542, libc.VaList(bp+2008, n))
 	i = int32(1)
 	for {
 		if !(i <= n) {
@@ -3092,12 +3082,12 @@ func testset_main(tls *libc.TLS) {
 	_12:
 		i++
 	}
-	speedtest1_exec(tls, __ccgo_ts+813, 0)
+	speedtest1_exec(tls, __ccgo_ts+736, 0)
 	speedtest1_end_test(tls)
 	n = sz
-	speedtest1_begin_test(tls, int32(240), __ccgo_ts+2678, libc.VaList(bp+2008, n))
-	speedtest1_exec(tls, __ccgo_ts+703, 0)
-	speedtest1_prepare(tls, __ccgo_ts+2708, libc.VaList(bp+2008, n))
+	speedtest1_begin_test(tls, int32(240), __ccgo_ts+2601, libc.VaList(bp+2008, n))
+	speedtest1_exec(tls, __ccgo_ts+626, 0)
+	speedtest1_prepare(tls, __ccgo_ts+2631, libc.VaList(bp+2008, n))
 	i = int32(1)
 	for {
 		if !(i <= n) {
@@ -3110,18 +3100,18 @@ func testset_main(tls *libc.TLS) {
 	_13:
 		i++
 	}
-	speedtest1_exec(tls, __ccgo_ts+813, 0)
+	speedtest1_exec(tls, __ccgo_ts+736, 0)
 	speedtest1_end_test(tls)
-	speedtest1_begin_test(tls, int32(250), __ccgo_ts+2752, libc.VaList(bp+2008, sz))
-	speedtest1_exec(tls, __ccgo_ts+2793, 0)
+	speedtest1_begin_test(tls, int32(250), __ccgo_ts+2675, libc.VaList(bp+2008, sz))
+	speedtest1_exec(tls, __ccgo_ts+2716, 0)
 	speedtest1_end_test(tls)
-	speedtest1_begin_test(tls, int32(260), __ccgo_ts+2813, 0)
-	speedtest1_exec(tls, __ccgo_ts+2560, 0)
+	speedtest1_begin_test(tls, int32(260), __ccgo_ts+2736, 0)
+	speedtest1_exec(tls, __ccgo_ts+2483, 0)
 	speedtest1_end_test(tls)
 	n = sz / int32(5)
-	speedtest1_begin_test(tls, int32(270), __ccgo_ts+2846, libc.VaList(bp+2008, n))
-	speedtest1_exec(tls, __ccgo_ts+703, 0)
-	speedtest1_prepare(tls, __ccgo_ts+2883, libc.VaList(bp+2008, n))
+	speedtest1_begin_test(tls, int32(270), __ccgo_ts+2769, libc.VaList(bp+2008, n))
+	speedtest1_exec(tls, __ccgo_ts+626, 0)
+	speedtest1_prepare(tls, __ccgo_ts+2806, libc.VaList(bp+2008, n))
 	i = int32(1)
 	for {
 		if !(i <= n) {
@@ -3136,12 +3126,12 @@ func testset_main(tls *libc.TLS) {
 	_14:
 		i++
 	}
-	speedtest1_exec(tls, __ccgo_ts+813, 0)
+	speedtest1_exec(tls, __ccgo_ts+736, 0)
 	speedtest1_end_test(tls)
 	n = sz
-	speedtest1_begin_test(tls, int32(280), __ccgo_ts+2937, libc.VaList(bp+2008, n))
-	speedtest1_exec(tls, __ccgo_ts+703, 0)
-	speedtest1_prepare(tls, __ccgo_ts+2967, libc.VaList(bp+2008, n))
+	speedtest1_begin_test(tls, int32(280), __ccgo_ts+2860, libc.VaList(bp+2008, n))
+	speedtest1_exec(tls, __ccgo_ts+626, 0)
+	speedtest1_prepare(tls, __ccgo_ts+2890, libc.VaList(bp+2008, n))
 	i = int32(1)
 	for {
 		if !(i <= n) {
@@ -3154,21 +3144,21 @@ func testset_main(tls *libc.TLS) {
 	_15:
 		i++
 	}
-	speedtest1_exec(tls, __ccgo_ts+813, 0)
+	speedtest1_exec(tls, __ccgo_ts+736, 0)
 	speedtest1_end_test(tls)
-	speedtest1_begin_test(tls, int32(290), __ccgo_ts+3006, libc.VaList(bp+2008, sz))
-	speedtest1_exec(tls, __ccgo_ts+3045, 0)
-	speedtest1_exec(tls, __ccgo_ts+3089, 0)
+	speedtest1_begin_test(tls, int32(290), __ccgo_ts+2929, libc.VaList(bp+2008, sz))
+	speedtest1_exec(tls, __ccgo_ts+2968, 0)
+	speedtest1_exec(tls, __ccgo_ts+3012, 0)
 	speedtest1_end_test(tls)
-	speedtest1_begin_test(tls, int32(300), __ccgo_ts+3133, libc.VaList(bp+2008, sz))
-	speedtest1_exec(tls, __ccgo_ts+2426, 0)
-	speedtest1_exec(tls, __ccgo_ts+3174, 0)
-	speedtest1_exec(tls, __ccgo_ts+3239, 0)
+	speedtest1_begin_test(tls, int32(300), __ccgo_ts+3056, libc.VaList(bp+2008, sz))
+	speedtest1_exec(tls, __ccgo_ts+2349, 0)
+	speedtest1_exec(tls, __ccgo_ts+3097, 0)
+	speedtest1_exec(tls, __ccgo_ts+3162, 0)
 	speedtest1_end_test(tls)
 	n = sz / int32(5)
-	speedtest1_begin_test(tls, int32(310), __ccgo_ts+3304, libc.VaList(bp+2008, n))
-	speedtest1_exec(tls, __ccgo_ts+703, 0)
-	speedtest1_prepare(tls, __ccgo_ts+3323, 0)
+	speedtest1_begin_test(tls, int32(310), __ccgo_ts+3227, libc.VaList(bp+2008, n))
+	speedtest1_exec(tls, __ccgo_ts+626, 0)
+	speedtest1_prepare(tls, __ccgo_ts+3246, 0)
 	i = int32(1)
 	for {
 		if !(i <= n) {
@@ -3183,10 +3173,10 @@ func testset_main(tls *libc.TLS) {
 	_16:
 		i++
 	}
-	speedtest1_exec(tls, __ccgo_ts+813, 0)
+	speedtest1_exec(tls, __ccgo_ts+736, 0)
 	speedtest1_end_test(tls)
-	speedtest1_begin_test(tls, int32(320), __ccgo_ts+3437, libc.VaList(bp+2008, n))
-	speedtest1_prepare(tls, __ccgo_ts+3460, 0)
+	speedtest1_begin_test(tls, int32(320), __ccgo_ts+3360, libc.VaList(bp+2008, n))
+	speedtest1_prepare(tls, __ccgo_ts+3383, 0)
 	libsqlite3.Xsqlite3_bind_int(tls, g.pStmt, int32(1), est_square_root(tls, g.szTest)*int32(50))
 	speedtest1_run(tls)
 	speedtest1_end_test(tls)
@@ -3195,10 +3185,10 @@ func testset_main(tls *libc.TLS) {
 	sz = v17
 	(*(*[2000]int8)(unsafe.Pointer(bp)))[0] = 0
 	maxb = int32(roundup_allones(tls, uint32(sz/int32(3))))
-	speedtest1_begin_test(tls, int32(400), __ccgo_ts+3578, libc.VaList(bp+2008, n))
-	speedtest1_exec(tls, __ccgo_ts+703, 0)
-	speedtest1_exec(tls, __ccgo_ts+3603, libc.VaList(bp+2008, isTemp(tls, int32(9)), g.zNN))
-	speedtest1_prepare(tls, __ccgo_ts+3651, libc.VaList(bp+2008, n))
+	speedtest1_begin_test(tls, int32(400), __ccgo_ts+3501, libc.VaList(bp+2008, n))
+	speedtest1_exec(tls, __ccgo_ts+626, 0)
+	speedtest1_exec(tls, __ccgo_ts+3526, libc.VaList(bp+2008, isTemp(tls, int32(9)), g.zNN))
+	speedtest1_prepare(tls, __ccgo_ts+3574, libc.VaList(bp+2008, n))
 	i = int32(1)
 	for {
 		if !(i <= n) {
@@ -3213,9 +3203,9 @@ func testset_main(tls *libc.TLS) {
 	_18:
 		i++
 	}
-	speedtest1_exec(tls, __ccgo_ts+813, 0)
+	speedtest1_exec(tls, __ccgo_ts+736, 0)
 	speedtest1_end_test(tls)
-	speedtest1_begin_test(tls, int32(410), __ccgo_ts+3695, libc.VaList(bp+2008, n))
+	speedtest1_begin_test(tls, int32(410), __ccgo_ts+3618, libc.VaList(bp+2008, n))
 	if g.doBigTransactions != 0 {
 		/* Historical note: tests 410 and 510 have historically not used
 		 ** explicit transactions. The --big-transactions flag was added
@@ -3223,9 +3213,9 @@ func testset_main(tls *libc.TLS) {
 		 ** approach 1 minute for each of these tests if they're not in an
 		 ** explicit transaction. The run-time effect of --big-transaciions
 		 ** on native builds is negligible. */
-		speedtest1_exec(tls, __ccgo_ts+703, 0)
+		speedtest1_exec(tls, __ccgo_ts+626, 0)
 	}
-	speedtest1_prepare(tls, __ccgo_ts+3716, libc.VaList(bp+2008, n))
+	speedtest1_prepare(tls, __ccgo_ts+3639, libc.VaList(bp+2008, n))
 	i = int32(1)
 	for {
 		if !(i <= n) {
@@ -3239,7 +3229,7 @@ func testset_main(tls *libc.TLS) {
 		i++
 	}
 	if g.doBigTransactions != 0 {
-		speedtest1_exec(tls, __ccgo_ts+813, 0)
+		speedtest1_exec(tls, __ccgo_ts+736, 0)
 	}
 	speedtest1_end_test(tls)
 	v20 = g.szTest * libc.Int32FromInt32(700)
@@ -3247,15 +3237,15 @@ func testset_main(tls *libc.TLS) {
 	sz = v20
 	(*(*[2000]int8)(unsafe.Pointer(bp)))[0] = 0
 	maxb = int32(roundup_allones(tls, uint32(sz/int32(3))))
-	speedtest1_begin_test(tls, int32(500), __ccgo_ts+3758, libc.VaList(bp+2008, n))
-	speedtest1_exec(tls, __ccgo_ts+703, 0)
+	speedtest1_begin_test(tls, int32(500), __ccgo_ts+3681, libc.VaList(bp+2008, n))
+	speedtest1_exec(tls, __ccgo_ts+626, 0)
 	if libsqlite3.Xsqlite3_libversion_number(tls) >= int32(3008002) {
-		v21 = __ccgo_ts + 3780
+		v21 = __ccgo_ts + 3703
 	} else {
 		v21 = __ccgo_ts + 6
 	}
-	speedtest1_exec(tls, __ccgo_ts+3794, libc.VaList(bp+2008, isTemp(tls, int32(9)), g.zNN, v21))
-	speedtest1_prepare(tls, __ccgo_ts+3841, libc.VaList(bp+2008, n))
+	speedtest1_exec(tls, __ccgo_ts+3717, libc.VaList(bp+2008, isTemp(tls, int32(9)), g.zNN, v21))
+	speedtest1_prepare(tls, __ccgo_ts+3764, libc.VaList(bp+2008, n))
 	i = int32(1)
 	for {
 		if !(i <= n) {
@@ -3270,14 +3260,14 @@ func testset_main(tls *libc.TLS) {
 	_22:
 		i++
 	}
-	speedtest1_exec(tls, __ccgo_ts+813, 0)
+	speedtest1_exec(tls, __ccgo_ts+736, 0)
 	speedtest1_end_test(tls)
-	speedtest1_begin_test(tls, int32(510), __ccgo_ts+3885, libc.VaList(bp+2008, n))
+	speedtest1_begin_test(tls, int32(510), __ccgo_ts+3808, libc.VaList(bp+2008, n))
 	if g.doBigTransactions != 0 {
 		/* See notes for test 410. */
-		speedtest1_exec(tls, __ccgo_ts+703, 0)
+		speedtest1_exec(tls, __ccgo_ts+626, 0)
 	}
-	speedtest1_prepare(tls, __ccgo_ts+3909, libc.VaList(bp+2008, n))
+	speedtest1_prepare(tls, __ccgo_ts+3832, libc.VaList(bp+2008, n))
 	i = int32(1)
 	for {
 		if !(i <= n) {
@@ -3292,18 +3282,18 @@ func testset_main(tls *libc.TLS) {
 		i++
 	}
 	if g.doBigTransactions != 0 {
-		speedtest1_exec(tls, __ccgo_ts+813, 0)
+		speedtest1_exec(tls, __ccgo_ts+736, 0)
 	}
 	speedtest1_end_test(tls)
-	speedtest1_begin_test(tls, int32(520), __ccgo_ts+3951, libc.VaList(bp+2008, n))
+	speedtest1_begin_test(tls, int32(520), __ccgo_ts+3874, libc.VaList(bp+2008, n))
+	speedtest1_exec(tls, __ccgo_ts+3893, 0)
+	speedtest1_exec(tls, __ccgo_ts+3920, 0)
+	speedtest1_end_test(tls)
+	speedtest1_begin_test(tls, int32(980), __ccgo_ts+3947, 0)
+	speedtest1_exec(tls, __ccgo_ts+3947, 0)
+	speedtest1_end_test(tls)
+	speedtest1_begin_test(tls, int32(990), __ccgo_ts+3970, 0)
 	speedtest1_exec(tls, __ccgo_ts+3970, 0)
-	speedtest1_exec(tls, __ccgo_ts+3997, 0)
-	speedtest1_end_test(tls)
-	speedtest1_begin_test(tls, int32(980), __ccgo_ts+4024, 0)
-	speedtest1_exec(tls, __ccgo_ts+4024, 0)
-	speedtest1_end_test(tls)
-	speedtest1_begin_test(tls, int32(990), __ccgo_ts+4047, 0)
-	speedtest1_exec(tls, __ccgo_ts+4047, 0)
 	speedtest1_end_test(tls)
 }
 
@@ -3329,34 +3319,34 @@ func testset_cte(tls *libc.TLS) {
 			zPuz = azPuzzle[int32(2)]
 		}
 	}
-	speedtest1_begin_test(tls, int32(100), __ccgo_ts+4301, 0)
-	speedtest1_prepare(tls, __ccgo_ts+4332, 0)
+	speedtest1_begin_test(tls, int32(100), __ccgo_ts+4224, 0)
+	speedtest1_prepare(tls, __ccgo_ts+4255, 0)
 	libsqlite3.Xsqlite3_bind_text(tls, g.pStmt, int32(1), zPuz, -int32(1), libc.UintptrFromInt32(0))
 	speedtest1_run(tls)
 	speedtest1_end_test(tls)
-	speedtest1_begin_test(tls, int32(200), __ccgo_ts+5136, 0)
-	speedtest1_prepare(tls, __ccgo_ts+5164, 0)
+	speedtest1_begin_test(tls, int32(200), __ccgo_ts+5059, 0)
+	speedtest1_prepare(tls, __ccgo_ts+5087, 0)
 	libsqlite3.Xsqlite3_bind_text(tls, g.pStmt, int32(1), zPuz, -int32(1), libc.UintptrFromInt32(0))
 	speedtest1_run(tls)
 	speedtest1_end_test(tls)
 	rSpacing = float64(5) / float64(g.szTest)
-	speedtest1_begin_test(tls, int32(300), __ccgo_ts+5976, libc.VaList(bp+8, rSpacing))
-	speedtest1_prepare(tls, __ccgo_ts+6007, 0)
+	speedtest1_begin_test(tls, int32(300), __ccgo_ts+5899, libc.VaList(bp+8, rSpacing))
+	speedtest1_prepare(tls, __ccgo_ts+5930, 0)
 	libsqlite3.Xsqlite3_bind_double(tls, g.pStmt, int32(1), rSpacing*float64(0.05))
 	libsqlite3.Xsqlite3_bind_double(tls, g.pStmt, int32(2), rSpacing)
 	speedtest1_run(tls)
 	speedtest1_end_test(tls)
 	nElem = int32(10000) * g.szTest
-	speedtest1_begin_test(tls, int32(400), __ccgo_ts+6603, libc.VaList(bp+8, nElem))
-	speedtest1_prepare(tls, __ccgo_ts+6640, libc.VaList(bp+8, nElem, nElem))
+	speedtest1_begin_test(tls, int32(400), __ccgo_ts+6526, libc.VaList(bp+8, nElem))
+	speedtest1_prepare(tls, __ccgo_ts+6563, libc.VaList(bp+8, nElem, nElem))
 	speedtest1_run(tls)
 	speedtest1_end_test(tls)
 }
 
 var azPuzzle = [3]uintptr{
-	0: __ccgo_ts + 4055,
-	1: __ccgo_ts + 4137,
-	2: __ccgo_ts + 4219,
+	0: __ccgo_ts + 3978,
+	1: __ccgo_ts + 4060,
+	2: __ccgo_ts + 4142,
 }
 
 // C documentation
@@ -3376,7 +3366,7 @@ func speedtest1_random_ascii_fp(tls *libc.TLS, zFP uintptr) {
 		z = -z
 	}
 	y /= int32(10)
-	libsqlite3.Xsqlite3_snprintf(tls, int32(100), zFP, __ccgo_ts+6871, libc.VaList(bp+8, y, z, x%int32(200)))
+	libsqlite3.Xsqlite3_snprintf(tls, int32(100), zFP, __ccgo_ts+6794, libc.VaList(bp+8, y, z, x%int32(200)))
 }
 
 // C documentation
@@ -3392,10 +3382,10 @@ func testset_fp(tls *libc.TLS) {
 	var _ /* zFP2 at bp+100 */ [100]int8
 	_, _ = i, n
 	n = g.szTest * int32(5000)
-	speedtest1_begin_test(tls, int32(100), __ccgo_ts+6880, libc.VaList(bp+208, n*int32(2)))
-	speedtest1_exec(tls, __ccgo_ts+703, 0)
-	speedtest1_exec(tls, __ccgo_ts+6911, libc.VaList(bp+208, isTemp(tls, int32(1)), g.zNN, g.zNN))
-	speedtest1_prepare(tls, __ccgo_ts+6952, libc.VaList(bp+208, n))
+	speedtest1_begin_test(tls, int32(100), __ccgo_ts+6803, libc.VaList(bp+208, n*int32(2)))
+	speedtest1_exec(tls, __ccgo_ts+626, 0)
+	speedtest1_exec(tls, __ccgo_ts+6834, libc.VaList(bp+208, isTemp(tls, int32(1)), g.zNN, g.zNN))
+	speedtest1_prepare(tls, __ccgo_ts+6875, libc.VaList(bp+208, n))
 	i = int32(1)
 	for {
 		if !(i <= n) {
@@ -3410,11 +3400,11 @@ func testset_fp(tls *libc.TLS) {
 	_1:
 		i++
 	}
-	speedtest1_exec(tls, __ccgo_ts+813, 0)
+	speedtest1_exec(tls, __ccgo_ts+736, 0)
 	speedtest1_end_test(tls)
 	n = g.szTest/int32(25) + int32(2)
-	speedtest1_begin_test(tls, int32(110), __ccgo_ts+6994, libc.VaList(bp+208, n))
-	speedtest1_prepare(tls, __ccgo_ts+7011, 0)
+	speedtest1_begin_test(tls, int32(110), __ccgo_ts+6917, libc.VaList(bp+208, n))
+	speedtest1_prepare(tls, __ccgo_ts+6934, 0)
 	i = int32(1)
 	for {
 		if !(i <= n) {
@@ -3430,16 +3420,16 @@ func testset_fp(tls *libc.TLS) {
 		i++
 	}
 	speedtest1_end_test(tls)
-	speedtest1_begin_test(tls, int32(120), __ccgo_ts+7059, 0)
-	speedtest1_exec(tls, __ccgo_ts+1616, 0)
-	speedtest1_exec(tls, __ccgo_ts+7084, 0)
-	speedtest1_exec(tls, __ccgo_ts+7111, 0)
-	speedtest1_exec(tls, __ccgo_ts+7138, 0)
-	speedtest1_exec(tls, __ccgo_ts+1780, 0)
+	speedtest1_begin_test(tls, int32(120), __ccgo_ts+6982, 0)
+	speedtest1_exec(tls, __ccgo_ts+1539, 0)
+	speedtest1_exec(tls, __ccgo_ts+7007, 0)
+	speedtest1_exec(tls, __ccgo_ts+7034, 0)
+	speedtest1_exec(tls, __ccgo_ts+7061, 0)
+	speedtest1_exec(tls, __ccgo_ts+1703, 0)
 	speedtest1_end_test(tls)
 	n = g.szTest/int32(3) + int32(2)
-	speedtest1_begin_test(tls, int32(130), __ccgo_ts+7168, libc.VaList(bp+208, n))
-	speedtest1_prepare(tls, __ccgo_ts+7011, 0)
+	speedtest1_begin_test(tls, int32(130), __ccgo_ts+7091, libc.VaList(bp+208, n))
+	speedtest1_prepare(tls, __ccgo_ts+6934, 0)
 	i = int32(1)
 	for {
 		if !(i <= n) {
@@ -3456,11 +3446,11 @@ func testset_fp(tls *libc.TLS) {
 	}
 	speedtest1_end_test(tls)
 	n = g.szTest * int32(5000)
-	speedtest1_begin_test(tls, int32(140), __ccgo_ts+7193, libc.VaList(bp+208, n))
-	speedtest1_exec(tls, __ccgo_ts+7213, 0)
+	speedtest1_begin_test(tls, int32(140), __ccgo_ts+7116, libc.VaList(bp+208, n))
+	speedtest1_exec(tls, __ccgo_ts+7136, 0)
 	speedtest1_end_test(tls)
-	speedtest1_begin_test(tls, int32(150), __ccgo_ts+7256, libc.VaList(bp+208, n*int32(4)))
-	speedtest1_exec(tls, __ccgo_ts+7274, 0)
+	speedtest1_begin_test(tls, int32(150), __ccgo_ts+7179, libc.VaList(bp+208, n*int32(4)))
+	speedtest1_exec(tls, __ccgo_ts+7197, 0)
 	speedtest1_end_test(tls)
 }
 
@@ -3479,9 +3469,9 @@ func testset_orm(tls *libc.TLS) {
 	v1 = uint32(g.szTest * libc.Int32FromInt32(250))
 	n = v1
 	nRow = v1
-	speedtest1_begin_test(tls, int32(100), __ccgo_ts+7369, libc.VaList(bp+2008, n))
-	speedtest1_exec(tls, __ccgo_ts+7382, 0)
-	speedtest1_prepare(tls, __ccgo_ts+11282, 0)
+	speedtest1_begin_test(tls, int32(100), __ccgo_ts+7292, libc.VaList(bp+2008, n))
+	speedtest1_exec(tls, __ccgo_ts+7305, 0)
+	speedtest1_prepare(tls, __ccgo_ts+11205, 0)
 	i = uint32(0)
 	for {
 		if !(i < n) {
@@ -3518,11 +3508,11 @@ func testset_orm(tls *libc.TLS) {
 	_2:
 		i++
 	}
-	speedtest1_exec(tls, __ccgo_ts+1780, 0)
+	speedtest1_exec(tls, __ccgo_ts+1703, 0)
 	speedtest1_end_test(tls)
 	n = uint32(g.szTest * int32(250))
-	speedtest1_begin_test(tls, int32(110), __ccgo_ts+14526, libc.VaList(bp+2008, n))
-	speedtest1_prepare(tls, __ccgo_ts+14549, 0)
+	speedtest1_begin_test(tls, int32(110), __ccgo_ts+14449, libc.VaList(bp+2008, n))
+	speedtest1_prepare(tls, __ccgo_ts+14472, 0)
 	i = uint32(0)
 	for {
 		if !(i < n) {
@@ -3552,13 +3542,13 @@ func testset_trigger(tls *libc.TLS) {
 	_, _, _, _, _ = NROW, NROW2, ii, jj, x1 /* A number name */
 	NROW = int32(500) * g.szTest
 	NROW2 = int32(100) * g.szTest
-	speedtest1_exec(tls, __ccgo_ts+17302, 0)
+	speedtest1_exec(tls, __ccgo_ts+17225, 0)
 	jj = int32(1)
 	for {
 		if !(jj <= int32(3)) {
 			break
 		}
-		speedtest1_prepare(tls, __ccgo_ts+17630, libc.VaList(bp+2008, jj))
+		speedtest1_prepare(tls, __ccgo_ts+17553, libc.VaList(bp+2008, jj))
 		ii = 0
 		for {
 			if !(ii < NROW) {
@@ -3577,22 +3567,22 @@ func testset_trigger(tls *libc.TLS) {
 	_1:
 		jj++
 	}
-	speedtest1_exec(tls, __ccgo_ts+17665, 0)
-	speedtest1_begin_test(tls, int32(100), __ccgo_ts+17748, 0)
-	speedtest1_prepare(tls, __ccgo_ts+17762, 0)
+	speedtest1_exec(tls, __ccgo_ts+17588, 0)
+	speedtest1_begin_test(tls, int32(100), __ccgo_ts+17671, 0)
+	speedtest1_prepare(tls, __ccgo_ts+17685, 0)
 	speedtest1_run(tls)
 	speedtest1_end_test(tls)
-	speedtest1_begin_test(tls, int32(110), __ccgo_ts+17829, 0)
-	speedtest1_prepare(tls, __ccgo_ts+17843, 0)
+	speedtest1_begin_test(tls, int32(110), __ccgo_ts+17752, 0)
+	speedtest1_prepare(tls, __ccgo_ts+17766, 0)
 	speedtest1_run(tls)
 	speedtest1_end_test(tls)
-	speedtest1_begin_test(tls, int32(120), __ccgo_ts+17902, 0)
+	speedtest1_begin_test(tls, int32(120), __ccgo_ts+17825, 0)
 	jj = int32(1)
 	for {
 		if !(jj <= int32(3)) {
 			break
 		}
-		speedtest1_prepare(tls, __ccgo_ts+17916, libc.VaList(bp+2008, jj))
+		speedtest1_prepare(tls, __ccgo_ts+17839, libc.VaList(bp+2008, jj))
 		ii = 0
 		for {
 			if !(ii < NROW2) {
@@ -3609,13 +3599,13 @@ func testset_trigger(tls *libc.TLS) {
 		jj++
 	}
 	speedtest1_end_test(tls)
-	speedtest1_begin_test(tls, int32(130), __ccgo_ts+17950, 0)
+	speedtest1_begin_test(tls, int32(130), __ccgo_ts+17873, 0)
 	jj = int32(1)
 	for {
 		if !(jj <= int32(3)) {
 			break
 		}
-		speedtest1_prepare(tls, __ccgo_ts+17965, libc.VaList(bp+2008, jj))
+		speedtest1_prepare(tls, __ccgo_ts+17888, libc.VaList(bp+2008, jj))
 		ii = 0
 		for {
 			if !(ii < NROW2) {
@@ -3632,13 +3622,13 @@ func testset_trigger(tls *libc.TLS) {
 		jj++
 	}
 	speedtest1_end_test(tls)
-	speedtest1_begin_test(tls, int32(140), __ccgo_ts+17950, 0)
+	speedtest1_begin_test(tls, int32(140), __ccgo_ts+17873, 0)
 	jj = int32(1)
 	for {
 		if !(jj <= int32(3)) {
 			break
 		}
-		speedtest1_prepare(tls, __ccgo_ts+17965, libc.VaList(bp+2008, jj))
+		speedtest1_prepare(tls, __ccgo_ts+17888, libc.VaList(bp+2008, jj))
 		ii = 0
 		for {
 			if !(ii < NROW2) {
@@ -3655,8 +3645,8 @@ func testset_trigger(tls *libc.TLS) {
 		jj++
 	}
 	speedtest1_end_test(tls)
-	speedtest1_begin_test(tls, int32(150), __ccgo_ts+17999, 0)
-	speedtest1_prepare(tls, __ccgo_ts+18018, 0)
+	speedtest1_begin_test(tls, int32(150), __ccgo_ts+17922, 0)
+	speedtest1_prepare(tls, __ccgo_ts+17941, 0)
 	jj = 0
 	for {
 		if !(jj < NROW2) {
@@ -3669,9 +3659,9 @@ func testset_trigger(tls *libc.TLS) {
 		jj++
 	}
 	speedtest1_end_test(tls)
-	speedtest1_begin_test(tls, int32(160), __ccgo_ts+18133, 0)
-	speedtest1_exec(tls, __ccgo_ts+703, 0)
-	speedtest1_prepare(tls, __ccgo_ts+18154, 0)
+	speedtest1_begin_test(tls, int32(160), __ccgo_ts+18056, 0)
+	speedtest1_exec(tls, __ccgo_ts+626, 0)
+	speedtest1_prepare(tls, __ccgo_ts+18077, 0)
 	jj = 0
 	for {
 		if !(jj < NROW2) {
@@ -3683,15 +3673,15 @@ func testset_trigger(tls *libc.TLS) {
 	_10:
 		jj++
 	}
-	speedtest1_exec(tls, __ccgo_ts+813, 0)
+	speedtest1_exec(tls, __ccgo_ts+736, 0)
 	speedtest1_end_test(tls)
-	speedtest1_exec(tls, __ccgo_ts+18189, 0)
-	speedtest1_begin_test(tls, int32(170), __ccgo_ts+18237, 0)
-	speedtest1_exec(tls, __ccgo_ts+18259, 0)
+	speedtest1_exec(tls, __ccgo_ts+18112, 0)
+	speedtest1_begin_test(tls, int32(170), __ccgo_ts+18160, 0)
+	speedtest1_exec(tls, __ccgo_ts+18182, 0)
 	speedtest1_end_test(tls)
-	speedtest1_exec(tls, __ccgo_ts+18304, 0)
-	speedtest1_begin_test(tls, int32(180), __ccgo_ts+18794, 0)
-	speedtest1_prepare(tls, __ccgo_ts+18811, 0)
+	speedtest1_exec(tls, __ccgo_ts+18227, 0)
+	speedtest1_begin_test(tls, int32(180), __ccgo_ts+18717, 0)
+	speedtest1_prepare(tls, __ccgo_ts+18734, 0)
 	jj = 0
 	for {
 		if !(jj < NROW2) {
@@ -3711,8 +3701,8 @@ func testset_trigger(tls *libc.TLS) {
 	 ** was copied over from speed4p.test, where it was probably introduced
 	 ** inadvertantly.
 	 */
-	speedtest1_begin_test(tls, int32(190), __ccgo_ts+18847, 0)
-	speedtest1_prepare(tls, __ccgo_ts+18864, 0)
+	speedtest1_begin_test(tls, int32(190), __ccgo_ts+18770, 0)
+	speedtest1_prepare(tls, __ccgo_ts+18787, 0)
 	jj = int32(1)
 	for {
 		if !(jj <= NROW2*int32(2)) {
@@ -3731,8 +3721,8 @@ func testset_trigger(tls *libc.TLS) {
 	/*
 	 ** Note: Same again.
 	 */
-	speedtest1_begin_test(tls, int32(200), __ccgo_ts+18910, 0)
-	speedtest1_prepare(tls, __ccgo_ts+18927, 0)
+	speedtest1_begin_test(tls, int32(200), __ccgo_ts+18833, 0)
+	speedtest1_prepare(tls, __ccgo_ts+18850, 0)
 	jj = int32(1)
 	for {
 		if !(jj <= NROW2*int32(2)) {
@@ -3745,16 +3735,16 @@ func testset_trigger(tls *libc.TLS) {
 		jj += int32(2)
 	}
 	speedtest1_end_test(tls)
-	speedtest1_exec(tls, __ccgo_ts+813, 0)
+	speedtest1_exec(tls, __ccgo_ts+736, 0)
 	/*
 	 ** The following block contains the same tests as the above block that
 	 ** tests triggers, with one crucial difference: no triggers are defined.
 	 ** So the difference in speed between these tests and the preceding ones
 	 ** is the amount of time taken to compile and execute the trigger programs.
 	 */
-	speedtest1_exec(tls, __ccgo_ts+18959, 0)
-	speedtest1_begin_test(tls, int32(210), __ccgo_ts+19064, 0)
-	speedtest1_prepare(tls, __ccgo_ts+18811, 0)
+	speedtest1_exec(tls, __ccgo_ts+18882, 0)
+	speedtest1_begin_test(tls, int32(210), __ccgo_ts+18987, 0)
+	speedtest1_prepare(tls, __ccgo_ts+18734, 0)
 	jj = 0
 	for {
 		if !(jj < NROW2) {
@@ -3769,8 +3759,8 @@ func testset_trigger(tls *libc.TLS) {
 		jj++
 	}
 	speedtest1_end_test(tls)
-	speedtest1_begin_test(tls, int32(210), __ccgo_ts+19083, 0)
-	speedtest1_prepare(tls, __ccgo_ts+18864, 0)
+	speedtest1_begin_test(tls, int32(210), __ccgo_ts+19006, 0)
+	speedtest1_prepare(tls, __ccgo_ts+18787, 0)
 	jj = int32(1)
 	for {
 		if !(jj <= NROW2*int32(2)) {
@@ -3786,8 +3776,8 @@ func testset_trigger(tls *libc.TLS) {
 		jj += int32(2)
 	}
 	speedtest1_end_test(tls)
-	speedtest1_begin_test(tls, int32(220), __ccgo_ts+19102, 0)
-	speedtest1_prepare(tls, __ccgo_ts+18927, 0)
+	speedtest1_begin_test(tls, int32(220), __ccgo_ts+19025, 0)
+	speedtest1_prepare(tls, __ccgo_ts+18850, 0)
 	jj = int32(1)
 	for {
 		if !(jj <= NROW2*int32(2)) {
@@ -3800,7 +3790,7 @@ func testset_trigger(tls *libc.TLS) {
 		jj += int32(2)
 	}
 	speedtest1_end_test(tls)
-	speedtest1_exec(tls, __ccgo_ts+813, 0)
+	speedtest1_exec(tls, __ccgo_ts+736, 0)
 }
 
 // C documentation
@@ -3826,7 +3816,7 @@ func testset_debug1(tls *libc.TLS) {
 		x1 = swizzle(tls, i, n)
 		x2 = swizzle(tls, x1, n)
 		speedtest1_numbername(tls, x1, bp+48, int32(2000))
-		v2 = __ccgo_ts + 19121
+		v2 = __ccgo_ts + 19044
 		libc.VaList(bp, i, x1, x2, bp+48)
 		__local_argv = bp
 		__retval = libc.X__mingw_vfprintf(tls, libc.X__acrt_iob_func(tls, uint32(1)), v2, __local_argv)
@@ -3847,7 +3837,7 @@ func xCompileOptions(tls *libc.TLS, pCtx uintptr, nVal int32, azVal uintptr, azC
 	var __retval int32
 	var v1 uintptr
 	_, _, _ = __local_argv, __retval, v1
-	v1 = __ccgo_ts + 19137
+	v1 = __ccgo_ts + 19060
 	libc.VaList(bp, *(*uintptr)(unsafe.Pointer(azVal)))
 	__local_argv = bp
 	__retval = libc.X__mingw_vfprintf(tls, libc.X__acrt_iob_func(tls, uint32(1)), v1, __local_argv)
@@ -3888,7 +3878,7 @@ func main1(tls *libc.TLS, argc int32, argv uintptr) (r int32) {
 	mmapSize = 0                                                                                     /* How big of a memory map to use */
 	memDb = 0                                                                                        /* --memdb.  Use an in-memory database */
 	openFlags = libc.Int32FromInt32(SQLITE_OPEN_READWRITE) | libc.Int32FromInt32(SQLITE_OPEN_CREATE) /* SQLITE_OPEN_xxx flags. */
-	zTSet = __ccgo_ts + 19160                                                                        /* Which --testset torun */
+	zTSet = __ccgo_ts + 19083                                                                        /* Which --testset torun */
 	zVfs = uintptr(0)                                                                                /* --vfs NAME */
 	doTrace = 0                                                                                      /* True for --trace */
 	zEncoding = uintptr(0)                                                                           /* --utf16be or --utf16le */
@@ -3899,7 +3889,7 @@ func main1(tls *libc.TLS, argc int32, argv uintptr) (r int32) {
 	/*
 	 ** Confirms that argc has at least N arguments following argv[i]. */
 	/* Display the version of SQLite being tested */
-	v1 = __ccgo_ts + 19165
+	v1 = __ccgo_ts + 19088
 	libc.VaList(bp, libsqlite3.Xsqlite3_libversion(tls), libsqlite3.Xsqlite3_sourceid(tls))
 	__local_argv = bp
 	__retval = libc.X__mingw_vfprintf(tls, libc.X__acrt_iob_func(tls, uint32(1)), v1, __local_argv)
@@ -3910,7 +3900,7 @@ _2:
 	/* Process command-line arguments */
 	g.zWR = __ccgo_ts + 6
 	g.zNN = __ccgo_ts + 6
-	g.zPK = __ccgo_ts + 19200
+	g.zPK = __ccgo_ts + 19123
 	g.szTest = int32(100)
 	g.nRepeat = int32(1)
 	i = int32(1)
@@ -3923,261 +3913,261 @@ _2:
 			for cond := true; cond; cond = int32(*(*int8)(unsafe.Pointer(z))) == int32('-') {
 				z++
 			}
-			if libc.Xstrcmp(tls, z, __ccgo_ts+19207) == 0 {
+			if libc.Xstrcmp(tls, z, __ccgo_ts+19130) == 0 {
 				doAutovac = int32(1)
 			} else {
-				if libc.Xstrcmp(tls, z, __ccgo_ts+19218) == 0 {
+				if libc.Xstrcmp(tls, z, __ccgo_ts+19141) == 0 {
 					g.doBigTransactions = int32(1)
 				} else {
-					if libc.Xstrcmp(tls, z, __ccgo_ts+19235) == 0 {
+					if libc.Xstrcmp(tls, z, __ccgo_ts+19158) == 0 {
 						if i >= argc-int32(1) {
-							fatal_error(tls, __ccgo_ts+19245, libc.VaList(bp+504, *(*uintptr)(unsafe.Pointer(argv + uintptr(i)*8))))
+							fatal_error(tls, __ccgo_ts+19168, libc.VaList(bp+504, *(*uintptr)(unsafe.Pointer(argv + uintptr(i)*8))))
 						}
 						i++
 						v4 = i
 						cacheSize = integerValue(tls, *(*uintptr)(unsafe.Pointer(argv + uintptr(v4)*8)))
 					} else {
-						if libc.Xstrcmp(tls, z, __ccgo_ts+19269) == 0 {
+						if libc.Xstrcmp(tls, z, __ccgo_ts+19192) == 0 {
 							doExclusive = int32(1)
 						} else {
-							if libc.Xstrcmp(tls, z, __ccgo_ts+19279) == 0 {
+							if libc.Xstrcmp(tls, z, __ccgo_ts+19202) == 0 {
 								doFullFSync = int32(1)
 							} else {
-								if libc.Xstrcmp(tls, z, __ccgo_ts+19289) == 0 {
+								if libc.Xstrcmp(tls, z, __ccgo_ts+19212) == 0 {
 									g.doCheckpoint = int32(1)
 								} else {
-									if libc.Xstrcmp(tls, z, __ccgo_ts+19300) == 0 {
+									if libc.Xstrcmp(tls, z, __ccgo_ts+19223) == 0 {
 										g.bSqlOnly = int32(1)
 										g.bExplain = int32(1)
 									} else {
-										if libc.Xstrcmp(tls, z, __ccgo_ts+19308) == 0 {
+										if libc.Xstrcmp(tls, z, __ccgo_ts+19231) == 0 {
 											if i >= argc-int32(2) {
-												fatal_error(tls, __ccgo_ts+19245, libc.VaList(bp+504, *(*uintptr)(unsafe.Pointer(argv + uintptr(i)*8))))
+												fatal_error(tls, __ccgo_ts+19168, libc.VaList(bp+504, *(*uintptr)(unsafe.Pointer(argv + uintptr(i)*8))))
 											}
 											nHeap = integerValue(tls, *(*uintptr)(unsafe.Pointer(argv + uintptr(i+int32(1))*8)))
 											mnHeap = integerValue(tls, *(*uintptr)(unsafe.Pointer(argv + uintptr(i+int32(2))*8)))
 											i += int32(2)
 										} else {
-											if libc.Xstrcmp(tls, z, __ccgo_ts+19313) == 0 {
+											if libc.Xstrcmp(tls, z, __ccgo_ts+19236) == 0 {
 												doIncrvac = int32(1)
 											} else {
-												if libc.Xstrcmp(tls, z, __ccgo_ts+19324) == 0 {
+												if libc.Xstrcmp(tls, z, __ccgo_ts+19247) == 0 {
 													if i >= argc-int32(1) {
-														fatal_error(tls, __ccgo_ts+19245, libc.VaList(bp+504, *(*uintptr)(unsafe.Pointer(argv + uintptr(i)*8))))
+														fatal_error(tls, __ccgo_ts+19168, libc.VaList(bp+504, *(*uintptr)(unsafe.Pointer(argv + uintptr(i)*8))))
 													}
 													i++
 													v5 = i
 													zJMode = *(*uintptr)(unsafe.Pointer(argv + uintptr(v5)*8))
 												} else {
-													if libc.Xstrcmp(tls, z, __ccgo_ts+19332) == 0 {
+													if libc.Xstrcmp(tls, z, __ccgo_ts+19255) == 0 {
 														if i >= argc-int32(1) {
-															fatal_error(tls, __ccgo_ts+19245, libc.VaList(bp+504, *(*uintptr)(unsafe.Pointer(argv + uintptr(i)*8))))
+															fatal_error(tls, __ccgo_ts+19168, libc.VaList(bp+504, *(*uintptr)(unsafe.Pointer(argv + uintptr(i)*8))))
 														}
 														i++
 														v6 = i
 														zKey = *(*uintptr)(unsafe.Pointer(argv + uintptr(v6)*8))
 													} else {
-														if libc.Xstrcmp(tls, z, __ccgo_ts+19336) == 0 {
+														if libc.Xstrcmp(tls, z, __ccgo_ts+19259) == 0 {
 															if i >= argc-int32(2) {
-																fatal_error(tls, __ccgo_ts+19245, libc.VaList(bp+504, *(*uintptr)(unsafe.Pointer(argv + uintptr(i)*8))))
+																fatal_error(tls, __ccgo_ts+19168, libc.VaList(bp+504, *(*uintptr)(unsafe.Pointer(argv + uintptr(i)*8))))
 															}
 															nLook = integerValue(tls, *(*uintptr)(unsafe.Pointer(argv + uintptr(i+int32(1))*8)))
 															szLook = integerValue(tls, *(*uintptr)(unsafe.Pointer(argv + uintptr(i+int32(2))*8)))
 															i += int32(2)
 														} else {
-															if libc.Xstrcmp(tls, z, __ccgo_ts+19346) == 0 {
+															if libc.Xstrcmp(tls, z, __ccgo_ts+19269) == 0 {
 																memDb = int32(1)
 															} else {
-																if libc.Xstrcmp(tls, z, __ccgo_ts+19352) == 0 {
+																if libc.Xstrcmp(tls, z, __ccgo_ts+19275) == 0 {
 																	libsqlite3.Xsqlite3_config(tls, int32(SQLITE_CONFIG_MULTITHREAD), 0)
 																} else {
-																	if libc.Xstrcmp(tls, z, __ccgo_ts+19364) == 0 {
+																	if libc.Xstrcmp(tls, z, __ccgo_ts+19287) == 0 {
 																		libsqlite3.Xsqlite3_config(tls, int32(SQLITE_CONFIG_MEMSTATUS), libc.VaList(bp+504, 0))
 																	} else {
-																		if libc.Xstrcmp(tls, z, __ccgo_ts+19374) == 0 {
+																		if libc.Xstrcmp(tls, z, __ccgo_ts+19297) == 0 {
 																			if i >= argc-int32(1) {
-																				fatal_error(tls, __ccgo_ts+19245, libc.VaList(bp+504, *(*uintptr)(unsafe.Pointer(argv + uintptr(i)*8))))
+																				fatal_error(tls, __ccgo_ts+19168, libc.VaList(bp+504, *(*uintptr)(unsafe.Pointer(argv + uintptr(i)*8))))
 																			}
 																			i++
 																			v7 = i
 																			mmapSize = integerValue(tls, *(*uintptr)(unsafe.Pointer(argv + uintptr(v7)*8)))
 																		} else {
-																			if libc.Xstrcmp(tls, z, __ccgo_ts+19379) == 0 {
+																			if libc.Xstrcmp(tls, z, __ccgo_ts+19302) == 0 {
 																				libsqlite3.Xsqlite3_test_control(tls, int32(SQLITE_TESTCTRL_USELONGDOUBLE), libc.VaList(bp+504, 0))
 																			} else {
-																				if libc.Xstrcmp(tls, z, __ccgo_ts+19392) == 0 {
+																				if libc.Xstrcmp(tls, z, __ccgo_ts+19315) == 0 {
 																					openFlags |= int32(SQLITE_OPEN_NOMUTEX)
 																				} else {
-																					if libc.Xstrcmp(tls, z, __ccgo_ts+19400) == 0 {
+																					if libc.Xstrcmp(tls, z, __ccgo_ts+19323) == 0 {
 																						noSync = int32(1)
 																					} else {
-																						if libc.Xstrcmp(tls, z, __ccgo_ts+19407) == 0 {
-																							g.zNN = __ccgo_ts + 19415
+																						if libc.Xstrcmp(tls, z, __ccgo_ts+19330) == 0 {
+																							g.zNN = __ccgo_ts + 19338
 																						} else {
-																							if libc.Xstrcmp(tls, z, __ccgo_ts+19424) == 0 {
+																							if libc.Xstrcmp(tls, z, __ccgo_ts+19347) == 0 {
 																								if i >= argc-int32(1) {
-																									fatal_error(tls, __ccgo_ts+19245, libc.VaList(bp+504, *(*uintptr)(unsafe.Pointer(argv + uintptr(i)*8))))
+																									fatal_error(tls, __ccgo_ts+19168, libc.VaList(bp+504, *(*uintptr)(unsafe.Pointer(argv + uintptr(i)*8))))
 																								}
 																								i++
-																								if libc.Xstrcmp(tls, *(*uintptr)(unsafe.Pointer(argv + uintptr(i)*8)), __ccgo_ts+19431) == 0 {
+																								if libc.Xstrcmp(tls, *(*uintptr)(unsafe.Pointer(argv + uintptr(i)*8)), __ccgo_ts+19354) == 0 {
 																									g.hashFile = libc.X__acrt_iob_func(tls, uint32(1))
 																								} else {
-																									g.hashFile = libc.Xfopen(tls, *(*uintptr)(unsafe.Pointer(argv + uintptr(i)*8)), __ccgo_ts+19433)
+																									g.hashFile = libc.Xfopen(tls, *(*uintptr)(unsafe.Pointer(argv + uintptr(i)*8)), __ccgo_ts+19356)
 																									if g.hashFile == uintptr(0) {
-																										fatal_error(tls, __ccgo_ts+19436, libc.VaList(bp+504, *(*uintptr)(unsafe.Pointer(argv + uintptr(i)*8))))
+																										fatal_error(tls, __ccgo_ts+19359, libc.VaList(bp+504, *(*uintptr)(unsafe.Pointer(argv + uintptr(i)*8))))
 																									}
 																								}
 																							} else {
-																								if libc.Xstrcmp(tls, z, __ccgo_ts+19466) == 0 {
+																								if libc.Xstrcmp(tls, z, __ccgo_ts+19389) == 0 {
 																									if i >= argc-int32(1) {
-																										fatal_error(tls, __ccgo_ts+19245, libc.VaList(bp+504, *(*uintptr)(unsafe.Pointer(argv + uintptr(i)*8))))
+																										fatal_error(tls, __ccgo_ts+19168, libc.VaList(bp+504, *(*uintptr)(unsafe.Pointer(argv + uintptr(i)*8))))
 																									}
 																									i++
 																									v8 = i
 																									pageSize = integerValue(tls, *(*uintptr)(unsafe.Pointer(argv + uintptr(v8)*8)))
 																								} else {
-																									if libc.Xstrcmp(tls, z, __ccgo_ts+19475) == 0 {
+																									if libc.Xstrcmp(tls, z, __ccgo_ts+19398) == 0 {
 																										if i >= argc-int32(2) {
-																											fatal_error(tls, __ccgo_ts+19245, libc.VaList(bp+504, *(*uintptr)(unsafe.Pointer(argv + uintptr(i)*8))))
+																											fatal_error(tls, __ccgo_ts+19168, libc.VaList(bp+504, *(*uintptr)(unsafe.Pointer(argv + uintptr(i)*8))))
 																										}
 																										nPCache = integerValue(tls, *(*uintptr)(unsafe.Pointer(argv + uintptr(i+int32(1))*8)))
 																										szPCache = integerValue(tls, *(*uintptr)(unsafe.Pointer(argv + uintptr(i+int32(2))*8)))
 																										doPCache = int32(1)
 																										i += int32(2)
 																									} else {
-																										if libc.Xstrcmp(tls, z, __ccgo_ts+19482) == 0 {
-																											g.zPK = __ccgo_ts + 19493
+																										if libc.Xstrcmp(tls, z, __ccgo_ts+19405) == 0 {
+																											g.zPK = __ccgo_ts + 19416
 																										} else {
-																											if libc.Xstrcmp(tls, z, __ccgo_ts+19505) == 0 {
+																											if libc.Xstrcmp(tls, z, __ccgo_ts+19428) == 0 {
 																												if i >= argc-int32(1) {
-																													fatal_error(tls, __ccgo_ts+19245, libc.VaList(bp+504, *(*uintptr)(unsafe.Pointer(argv + uintptr(i)*8))))
+																													fatal_error(tls, __ccgo_ts+19168, libc.VaList(bp+504, *(*uintptr)(unsafe.Pointer(argv + uintptr(i)*8))))
 																												}
 																												i++
 																												v9 = i
 																												g.nRepeat = integerValue(tls, *(*uintptr)(unsafe.Pointer(argv + uintptr(v9)*8)))
 																											} else {
-																												if libc.Xstrcmp(tls, z, __ccgo_ts+19512) == 0 {
+																												if libc.Xstrcmp(tls, z, __ccgo_ts+19435) == 0 {
 																													g.bReprepare = int32(1)
 																												} else {
-																													if libc.Xstrcmp(tls, z, __ccgo_ts+19522) == 0 {
+																													if libc.Xstrcmp(tls, z, __ccgo_ts+19445) == 0 {
 																														libsqlite3.Xsqlite3_config(tls, int32(SQLITE_CONFIG_SERIALIZED), 0)
 																													} else {
-																														if libc.Xstrcmp(tls, z, __ccgo_ts+19533) == 0 {
+																														if libc.Xstrcmp(tls, z, __ccgo_ts+19456) == 0 {
 																															libsqlite3.Xsqlite3_config(tls, int32(SQLITE_CONFIG_SINGLETHREAD), 0)
 																														} else {
-																															if libc.Xstrcmp(tls, z, __ccgo_ts+19546) == 0 {
+																															if libc.Xstrcmp(tls, z, __ccgo_ts+19469) == 0 {
 																																if i >= argc-int32(1) {
-																																	fatal_error(tls, __ccgo_ts+19245, libc.VaList(bp+504, *(*uintptr)(unsafe.Pointer(argv + uintptr(i)*8))))
+																																	fatal_error(tls, __ccgo_ts+19168, libc.VaList(bp+504, *(*uintptr)(unsafe.Pointer(argv + uintptr(i)*8))))
 																																}
 																																if g.pScript != 0 {
 																																	libc.Xfclose(tls, g.pScript)
 																																}
 																																i++
 																																v10 = i
-																																g.pScript = libc.Xfopen(tls, *(*uintptr)(unsafe.Pointer(argv + uintptr(v10)*8)), __ccgo_ts+19433)
+																																g.pScript = libc.Xfopen(tls, *(*uintptr)(unsafe.Pointer(argv + uintptr(v10)*8)), __ccgo_ts+19356)
 																																if g.pScript == uintptr(0) {
-																																	fatal_error(tls, __ccgo_ts+19553, libc.VaList(bp+504, *(*uintptr)(unsafe.Pointer(argv + uintptr(i)*8))))
+																																	fatal_error(tls, __ccgo_ts+19476, libc.VaList(bp+504, *(*uintptr)(unsafe.Pointer(argv + uintptr(i)*8))))
 																																}
 																															} else {
-																																if libc.Xstrcmp(tls, z, __ccgo_ts+19586) == 0 {
+																																if libc.Xstrcmp(tls, z, __ccgo_ts+19509) == 0 {
 																																	g.bSqlOnly = int32(1)
 																																} else {
-																																	if libc.Xstrcmp(tls, z, __ccgo_ts+19594) == 0 {
+																																	if libc.Xstrcmp(tls, z, __ccgo_ts+19517) == 0 {
 																																		g.bMemShrink = int32(1)
 																																	} else {
-																																		if libc.Xstrcmp(tls, z, __ccgo_ts+19608) == 0 {
+																																		if libc.Xstrcmp(tls, z, __ccgo_ts+19531) == 0 {
 																																			if i >= argc-int32(1) {
-																																				fatal_error(tls, __ccgo_ts+19245, libc.VaList(bp+504, *(*uintptr)(unsafe.Pointer(argv + uintptr(i)*8))))
+																																				fatal_error(tls, __ccgo_ts+19168, libc.VaList(bp+504, *(*uintptr)(unsafe.Pointer(argv + uintptr(i)*8))))
 																																			}
 																																			i++
 																																			v11 = i
 																																			g.szTest = integerValue(tls, *(*uintptr)(unsafe.Pointer(argv + uintptr(v11)*8)))
 																																		} else {
-																																			if libc.Xstrcmp(tls, z, __ccgo_ts+19613) == 0 {
+																																			if libc.Xstrcmp(tls, z, __ccgo_ts+19536) == 0 {
 																																				showStats = int32(1)
 																																			} else {
-																																				if libc.Xstrcmp(tls, z, __ccgo_ts+19619) == 0 {
+																																				if libc.Xstrcmp(tls, z, __ccgo_ts+19542) == 0 {
 																																					if i >= argc-int32(1) {
-																																						fatal_error(tls, __ccgo_ts+19245, libc.VaList(bp+504, *(*uintptr)(unsafe.Pointer(argv + uintptr(i)*8))))
+																																						fatal_error(tls, __ccgo_ts+19168, libc.VaList(bp+504, *(*uintptr)(unsafe.Pointer(argv + uintptr(i)*8))))
 																																					}
 																																					i++
 																																					if int32(*(*int8)(unsafe.Pointer(*(*uintptr)(unsafe.Pointer(argv + uintptr(i)*8))))) < int32('0') || int32(*(*int8)(unsafe.Pointer(*(*uintptr)(unsafe.Pointer(argv + uintptr(i)*8))))) > int32('9') || int32(*(*int8)(unsafe.Pointer(*(*uintptr)(unsafe.Pointer(argv + uintptr(i)*8)) + 1))) != 0 {
-																																						fatal_error(tls, __ccgo_ts+19624, 0)
+																																						fatal_error(tls, __ccgo_ts+19547, 0)
 																																					}
 																																					g.eTemp = int32(*(*int8)(unsafe.Pointer(*(*uintptr)(unsafe.Pointer(argv + uintptr(i)*8))))) - int32('0')
 																																				} else {
-																																					if libc.Xstrcmp(tls, z, __ccgo_ts+19677) == 0 {
+																																					if libc.Xstrcmp(tls, z, __ccgo_ts+19600) == 0 {
 																																						if i >= argc-int32(1) {
-																																							fatal_error(tls, __ccgo_ts+19245, libc.VaList(bp+504, *(*uintptr)(unsafe.Pointer(argv + uintptr(i)*8))))
+																																							fatal_error(tls, __ccgo_ts+19168, libc.VaList(bp+504, *(*uintptr)(unsafe.Pointer(argv + uintptr(i)*8))))
 																																						}
 																																						i++
 																																						v12 = i
 																																						zTSet = *(*uintptr)(unsafe.Pointer(argv + uintptr(v12)*8))
 																																					} else {
-																																						if libc.Xstrcmp(tls, z, __ccgo_ts+19685) == 0 {
+																																						if libc.Xstrcmp(tls, z, __ccgo_ts+19608) == 0 {
 																																							doTrace = int32(1)
 																																						} else {
-																																							if libc.Xstrcmp(tls, z, __ccgo_ts+19691) == 0 {
+																																							if libc.Xstrcmp(tls, z, __ccgo_ts+19614) == 0 {
 																																								if i >= argc-int32(1) {
-																																									fatal_error(tls, __ccgo_ts+19245, libc.VaList(bp+504, *(*uintptr)(unsafe.Pointer(argv + uintptr(i)*8))))
+																																									fatal_error(tls, __ccgo_ts+19168, libc.VaList(bp+504, *(*uintptr)(unsafe.Pointer(argv + uintptr(i)*8))))
 																																								}
 																																								i++
 																																								v13 = i
 																																								nThread = integerValue(tls, *(*uintptr)(unsafe.Pointer(argv + uintptr(v13)*8)))
 																																							} else {
-																																								if libc.Xstrcmp(tls, z, __ccgo_ts+19699) == 0 {
-																																									zEncoding = __ccgo_ts + 19699
+																																								if libc.Xstrcmp(tls, z, __ccgo_ts+19622) == 0 {
+																																									zEncoding = __ccgo_ts + 19622
 																																								} else {
-																																									if libc.Xstrcmp(tls, z, __ccgo_ts+19707) == 0 {
-																																										zEncoding = __ccgo_ts + 19707
+																																									if libc.Xstrcmp(tls, z, __ccgo_ts+19630) == 0 {
+																																										zEncoding = __ccgo_ts + 19630
 																																									} else {
-																																										if libc.Xstrcmp(tls, z, __ccgo_ts+19715) == 0 {
+																																										if libc.Xstrcmp(tls, z, __ccgo_ts+19638) == 0 {
 																																											g.bVerify = int32(1)
 																																											HashInit(tls)
 																																										} else {
-																																											if libc.Xstrcmp(tls, z, __ccgo_ts+19722) == 0 {
+																																											if libc.Xstrcmp(tls, z, __ccgo_ts+19645) == 0 {
 																																												if i >= argc-int32(1) {
-																																													fatal_error(tls, __ccgo_ts+19245, libc.VaList(bp+504, *(*uintptr)(unsafe.Pointer(argv + uintptr(i)*8))))
+																																													fatal_error(tls, __ccgo_ts+19168, libc.VaList(bp+504, *(*uintptr)(unsafe.Pointer(argv + uintptr(i)*8))))
 																																												}
 																																												i++
 																																												v14 = i
 																																												zVfs = *(*uintptr)(unsafe.Pointer(argv + uintptr(v14)*8))
 																																											} else {
-																																												if libc.Xstrcmp(tls, z, __ccgo_ts+19726) == 0 {
+																																												if libc.Xstrcmp(tls, z, __ccgo_ts+19649) == 0 {
 																																													if i >= argc-int32(1) {
-																																														fatal_error(tls, __ccgo_ts+19245, libc.VaList(bp+504, *(*uintptr)(unsafe.Pointer(argv + uintptr(i)*8))))
+																																														fatal_error(tls, __ccgo_ts+19168, libc.VaList(bp+504, *(*uintptr)(unsafe.Pointer(argv + uintptr(i)*8))))
 																																													}
 																																													i++
 																																													v15 = i
 																																													g.nReserve = libc.Xatoi(tls, *(*uintptr)(unsafe.Pointer(argv + uintptr(v15)*8)))
 																																												} else {
-																																													if libc.Xstrcmp(tls, z, __ccgo_ts+19734) == 0 {
+																																													if libc.Xstrcmp(tls, z, __ccgo_ts+19657) == 0 {
 																																														g.stmtScanStatus = int32(1)
 																																													} else {
-																																														if libc.Xstrcmp(tls, z, __ccgo_ts+19749) == 0 {
-																																															if libc.Xstrstr(tls, g.zWR, __ccgo_ts+19763) != uintptr(0) {
+																																														if libc.Xstrcmp(tls, z, __ccgo_ts+19672) == 0 {
+																																															if libc.Xstrstr(tls, g.zWR, __ccgo_ts+19686) != uintptr(0) {
 																																																/* no-op */
 																																															} else {
-																																																if libc.Xstrstr(tls, g.zWR, __ccgo_ts+19771) != uintptr(0) {
-																																																	g.zWR = __ccgo_ts + 19778
+																																																if libc.Xstrstr(tls, g.zWR, __ccgo_ts+19694) != uintptr(0) {
+																																																	g.zWR = __ccgo_ts + 19701
 																																																} else {
-																																																	g.zWR = __ccgo_ts + 3780
+																																																	g.zWR = __ccgo_ts + 3703
 																																																}
 																																															}
-																																															g.zPK = __ccgo_ts + 19493
+																																															g.zPK = __ccgo_ts + 19416
 																																														} else {
-																																															if libc.Xstrcmp(tls, z, __ccgo_ts+19799) == 0 {
-																																																if libc.Xstrstr(tls, g.zWR, __ccgo_ts+19771) != uintptr(0) {
+																																															if libc.Xstrcmp(tls, z, __ccgo_ts+19722) == 0 {
+																																																if libc.Xstrstr(tls, g.zWR, __ccgo_ts+19694) != uintptr(0) {
 																																																	/* no-op */
 																																																} else {
-																																																	if libc.Xstrstr(tls, g.zWR, __ccgo_ts+19763) != uintptr(0) {
-																																																		g.zWR = __ccgo_ts + 19778
+																																																	if libc.Xstrstr(tls, g.zWR, __ccgo_ts+19686) != uintptr(0) {
+																																																		g.zWR = __ccgo_ts + 19701
 																																																	} else {
-																																																		g.zWR = __ccgo_ts + 19771
+																																																		g.zWR = __ccgo_ts + 19694
 																																																	}
 																																																}
 																																															} else {
-																																																if libc.Xstrcmp(tls, z, __ccgo_ts+19806) == 0 || libc.Xstrcmp(tls, z, __ccgo_ts+19811) == 0 {
+																																																if libc.Xstrcmp(tls, z, __ccgo_ts+19729) == 0 || libc.Xstrcmp(tls, z, __ccgo_ts+19734) == 0 {
 																																																	v16 = uintptr(unsafe.Pointer(&zHelp))
 																																																	libc.VaList(bp, *(*uintptr)(unsafe.Pointer(argv)))
 																																																	__local_argv = bp
@@ -4188,7 +4178,7 @@ _2:
 																																																_17:
 																																																	libc.Xexit(tls, 0)
 																																																} else {
-																																																	fatal_error(tls, __ccgo_ts+19813, libc.VaList(bp+504, *(*uintptr)(unsafe.Pointer(argv + uintptr(i)*8)), *(*uintptr)(unsafe.Pointer(argv))))
+																																																	fatal_error(tls, __ccgo_ts+19736, libc.VaList(bp+504, *(*uintptr)(unsafe.Pointer(argv + uintptr(i)*8)), *(*uintptr)(unsafe.Pointer(argv))))
 																																																}
 																																															}
 																																														}
@@ -4239,7 +4229,7 @@ _2:
 			if zDbName == uintptr(0) {
 				zDbName = *(*uintptr)(unsafe.Pointer(argv + uintptr(i)*8))
 			} else {
-				fatal_error(tls, __ccgo_ts+19854, libc.VaList(bp+504, *(*uintptr)(unsafe.Pointer(argv + uintptr(i)*8)), *(*uintptr)(unsafe.Pointer(argv))))
+				fatal_error(tls, __ccgo_ts+19777, libc.VaList(bp+504, *(*uintptr)(unsafe.Pointer(argv + uintptr(i)*8)), *(*uintptr)(unsafe.Pointer(argv))))
 			}
 		}
 		goto _3
@@ -4249,23 +4239,23 @@ _2:
 	if nHeap > 0 {
 		pHeap = libc.Xmalloc(tls, uint64(uint64(nHeap)))
 		if pHeap == uintptr(0) {
-			fatal_error(tls, __ccgo_ts+19897, libc.VaList(bp+504, nHeap))
+			fatal_error(tls, __ccgo_ts+19820, libc.VaList(bp+504, nHeap))
 		}
 		rc = libsqlite3.Xsqlite3_config(tls, int32(SQLITE_CONFIG_HEAP), libc.VaList(bp+504, pHeap, nHeap, mnHeap))
 		if rc != 0 {
-			fatal_error(tls, __ccgo_ts+19927, libc.VaList(bp+504, rc))
+			fatal_error(tls, __ccgo_ts+19850, libc.VaList(bp+504, rc))
 		}
 	}
 	if doPCache != 0 {
 		if nPCache > 0 && szPCache > 0 {
 			pPCache = libc.Xmalloc(tls, uint64(int64(int64(nPCache))*int64(int64(szPCache))))
 			if pPCache == uintptr(0) {
-				fatal_error(tls, __ccgo_ts+19958, libc.VaList(bp+504, int64(int64(nPCache))*int64(int64(szPCache))))
+				fatal_error(tls, __ccgo_ts+19881, libc.VaList(bp+504, int64(int64(nPCache))*int64(int64(szPCache))))
 			}
 		}
 		rc = libsqlite3.Xsqlite3_config(tls, int32(SQLITE_CONFIG_PAGECACHE), libc.VaList(bp+504, pPCache, szPCache, nPCache))
 		if rc != 0 {
-			fatal_error(tls, __ccgo_ts+19992, libc.VaList(bp+504, rc))
+			fatal_error(tls, __ccgo_ts+19915, libc.VaList(bp+504, rc))
 		}
 	}
 	if nLook >= 0 {
@@ -4287,18 +4277,18 @@ _2:
 	}
 	/* Open the database and the input file */
 	if memDb != 0 {
-		v18 = __ccgo_ts + 20025
+		v18 = __ccgo_ts + 19948
 	} else {
 		v18 = zDbName
 	}
 	if libsqlite3.Xsqlite3_open_v2(tls, v18, uintptr(unsafe.Pointer(&g)), openFlags, zVfs) != 0 {
-		fatal_error(tls, __ccgo_ts+20034, libc.VaList(bp+504, zDbName))
+		fatal_error(tls, __ccgo_ts+19957, libc.VaList(bp+504, zDbName))
 	}
 	if nLook > 0 && szLook > 0 {
 		pLook = libc.Xmalloc(tls, uint64(nLook*szLook))
 		rc = libsqlite3.Xsqlite3_db_config(tls, g.db, int32(SQLITE_DBCONFIG_LOOKASIDE), libc.VaList(bp+504, pLook, szLook, nLook))
 		if rc != 0 {
-			fatal_error(tls, __ccgo_ts+20065, libc.VaList(bp+504, rc))
+			fatal_error(tls, __ccgo_ts+19988, libc.VaList(bp+504, rc))
 		}
 	}
 	if g.nReserve > 0 {
@@ -4308,51 +4298,51 @@ _2:
 		libsqlite3.Xsqlite3_db_config(tls, g.db, int32(SQLITE_DBCONFIG_STMT_SCANSTATUS), libc.VaList(bp+504, int32(1), 0))
 	}
 	/* Set database connection options */
-	libsqlite3.Xsqlite3_create_function(tls, g.db, __ccgo_ts+20101, 0, int32(SQLITE_UTF8), uintptr(0), __ccgo_fp(randomFunc), uintptr(0), uintptr(0))
+	libsqlite3.Xsqlite3_create_function(tls, g.db, __ccgo_ts+20024, 0, int32(SQLITE_UTF8), uintptr(0), __ccgo_fp(randomFunc), uintptr(0), uintptr(0))
 	if doTrace != 0 {
 		libsqlite3.Xsqlite3_trace(tls, g.db, __ccgo_fp(traceCallback), uintptr(0))
 	}
 	if memDb > 0 {
-		speedtest1_exec(tls, __ccgo_ts+20108, 0)
+		speedtest1_exec(tls, __ccgo_ts+20031, 0)
 	}
 	if mmapSize > 0 {
-		speedtest1_exec(tls, __ccgo_ts+20133, libc.VaList(bp+504, mmapSize))
+		speedtest1_exec(tls, __ccgo_ts+20056, libc.VaList(bp+504, mmapSize))
 	}
-	speedtest1_exec(tls, __ccgo_ts+20153, libc.VaList(bp+504, nThread))
+	speedtest1_exec(tls, __ccgo_ts+20076, libc.VaList(bp+504, nThread))
 	if zKey != 0 {
-		speedtest1_exec(tls, __ccgo_ts+20171, libc.VaList(bp+504, zKey))
+		speedtest1_exec(tls, __ccgo_ts+20094, libc.VaList(bp+504, zKey))
 	}
 	if zEncoding != 0 {
-		speedtest1_exec(tls, __ccgo_ts+20188, libc.VaList(bp+504, zEncoding))
+		speedtest1_exec(tls, __ccgo_ts+20111, libc.VaList(bp+504, zEncoding))
 	}
 	if doAutovac != 0 {
-		speedtest1_exec(tls, __ccgo_ts+20207, 0)
+		speedtest1_exec(tls, __ccgo_ts+20130, 0)
 	} else {
 		if doIncrvac != 0 {
-			speedtest1_exec(tls, __ccgo_ts+20231, 0)
+			speedtest1_exec(tls, __ccgo_ts+20154, 0)
 		}
 	}
 	if pageSize != 0 {
-		speedtest1_exec(tls, __ccgo_ts+20262, libc.VaList(bp+504, pageSize))
+		speedtest1_exec(tls, __ccgo_ts+20185, libc.VaList(bp+504, pageSize))
 	}
 	if cacheSize != 0 {
-		speedtest1_exec(tls, __ccgo_ts+20282, libc.VaList(bp+504, cacheSize))
+		speedtest1_exec(tls, __ccgo_ts+20205, libc.VaList(bp+504, cacheSize))
 	}
 	if noSync != 0 {
-		speedtest1_exec(tls, __ccgo_ts+20303, 0)
+		speedtest1_exec(tls, __ccgo_ts+20226, 0)
 	} else {
 		if doFullFSync != 0 {
-			speedtest1_exec(tls, __ccgo_ts+20326, 0)
+			speedtest1_exec(tls, __ccgo_ts+20249, 0)
 		}
 	}
 	if doExclusive != 0 {
-		speedtest1_exec(tls, __ccgo_ts+20346, 0)
+		speedtest1_exec(tls, __ccgo_ts+20269, 0)
 	}
 	if zJMode != 0 {
-		speedtest1_exec(tls, __ccgo_ts+20376, libc.VaList(bp+504, zJMode))
+		speedtest1_exec(tls, __ccgo_ts+20299, libc.VaList(bp+504, zJMode))
 	}
 	if g.bExplain != 0 {
-		v19 = __ccgo_ts + 20399
+		v19 = __ccgo_ts + 20322
 		__local_argv = bp
 		__retval = libc.X__mingw_vfprintf(tls, libc.X__acrt_iob_func(tls, uint32(1)), v19, __local_argv)
 		_ = __local_argv
@@ -4370,7 +4360,7 @@ _2:
 			zTSet = __ccgo_ts + 6
 		}
 		if g.iTotal > 0 || zComma != uintptr(0) {
-			v21 = __ccgo_ts + 20418
+			v21 = __ccgo_ts + 20341
 			libc.VaList(bp, zThisTest)
 			__local_argv = bp
 			__retval = libc.X__mingw_vfprintf(tls, libc.X__acrt_iob_func(tls, uint32(1)), v21, __local_argv)
@@ -4379,28 +4369,28 @@ _2:
 			goto _22
 		_22:
 		}
-		if libc.Xstrcmp(tls, zThisTest, __ccgo_ts+19160) == 0 {
+		if libc.Xstrcmp(tls, zThisTest, __ccgo_ts+19083) == 0 {
 			testset_main(tls)
 		} else {
-			if libc.Xstrcmp(tls, zThisTest, __ccgo_ts+20445) == 0 {
+			if libc.Xstrcmp(tls, zThisTest, __ccgo_ts+20368) == 0 {
 				testset_debug1(tls)
 			} else {
-				if libc.Xstrcmp(tls, zThisTest, __ccgo_ts+20452) == 0 {
+				if libc.Xstrcmp(tls, zThisTest, __ccgo_ts+20375) == 0 {
 					testset_orm(tls)
 				} else {
-					if libc.Xstrcmp(tls, zThisTest, __ccgo_ts+20456) == 0 {
+					if libc.Xstrcmp(tls, zThisTest, __ccgo_ts+20379) == 0 {
 						testset_cte(tls)
 					} else {
-						if libc.Xstrcmp(tls, zThisTest, __ccgo_ts+20460) == 0 {
+						if libc.Xstrcmp(tls, zThisTest, __ccgo_ts+20383) == 0 {
 							testset_fp(tls)
 						} else {
-							if libc.Xstrcmp(tls, zThisTest, __ccgo_ts+20463) == 0 {
+							if libc.Xstrcmp(tls, zThisTest, __ccgo_ts+20386) == 0 {
 								testset_trigger(tls)
 							} else {
-								if libc.Xstrcmp(tls, zThisTest, __ccgo_ts+20471) == 0 {
-									fatal_error(tls, __ccgo_ts+20477, 0)
+								if libc.Xstrcmp(tls, zThisTest, __ccgo_ts+20394) == 0 {
+									fatal_error(tls, __ccgo_ts+20400, 0)
 								} else {
-									fatal_error(tls, __ccgo_ts+20540, libc.VaList(bp+504, zThisTest))
+									fatal_error(tls, __ccgo_ts+20463, libc.VaList(bp+504, zThisTest))
 								}
 							}
 						}
@@ -4409,23 +4399,23 @@ _2:
 			}
 		}
 		if *(*int8)(unsafe.Pointer(zTSet)) != 0 {
-			speedtest1_begin_test(tls, int32(999), __ccgo_ts+20609, 0)
+			speedtest1_begin_test(tls, int32(999), __ccgo_ts+20532, 0)
 			for int32(1) != 0 {
-				zObj = speedtest1_once(tls, __ccgo_ts+20628, 0)
+				zObj = speedtest1_once(tls, __ccgo_ts+20551, 0)
 				if zObj == uintptr(0) {
 					break
 				}
-				zSql = libsqlite3.Xsqlite3_mprintf(tls, __ccgo_ts+20698, libc.VaList(bp+504, zObj))
+				zSql = libsqlite3.Xsqlite3_mprintf(tls, __ccgo_ts+20621, libc.VaList(bp+504, zObj))
 				speedtest1_exec(tls, zSql, 0)
 				libsqlite3.Xsqlite3_free(tls, zSql)
 				libsqlite3.Xsqlite3_free(tls, zObj)
 			}
 			for int32(1) != 0 {
-				zObj = speedtest1_once(tls, __ccgo_ts+20719, 0)
+				zObj = speedtest1_once(tls, __ccgo_ts+20642, 0)
 				if zObj == uintptr(0) {
 					break
 				}
-				zSql = libsqlite3.Xsqlite3_mprintf(tls, __ccgo_ts+20698, libc.VaList(bp+504, zObj))
+				zSql = libsqlite3.Xsqlite3_mprintf(tls, __ccgo_ts+20621, libc.VaList(bp+504, zObj))
 				speedtest1_exec(tls, zSql, 0)
 				libsqlite3.Xsqlite3_free(tls, zSql)
 				libsqlite3.Xsqlite3_free(tls, zObj)
@@ -4435,13 +4425,13 @@ _2:
 	}
 	speedtest1_final(tls)
 	if showStats != 0 {
-		libsqlite3.Xsqlite3_exec(tls, g.db, __ccgo_ts+20789, __ccgo_fp(xCompileOptions), uintptr(0), uintptr(0))
+		libsqlite3.Xsqlite3_exec(tls, g.db, __ccgo_ts+20712, __ccgo_fp(xCompileOptions), uintptr(0), uintptr(0))
 	}
 	/* Database connection statistics printed after both prepared statements
 	 ** have been finalized */
 	if showStats != 0 {
 		libsqlite3.Xsqlite3_db_status(tls, g.db, SQLITE_DBSTATUS_LOOKASIDE_USED, bp+488, bp+492, 0)
-		v23 = __ccgo_ts + 20812
+		v23 = __ccgo_ts + 20735
 		libc.VaList(bp, *(*int32)(unsafe.Pointer(bp + 488)), *(*int32)(unsafe.Pointer(bp + 492)))
 		__local_argv = bp
 		__retval = libc.X__mingw_vfprintf(tls, libc.X__acrt_iob_func(tls, uint32(1)), v23, __local_argv)
@@ -4450,7 +4440,7 @@ _2:
 		goto _24
 	_24:
 		libsqlite3.Xsqlite3_db_status(tls, g.db, int32(SQLITE_DBSTATUS_LOOKASIDE_HIT), bp+488, bp+492, 0)
-		v25 = __ccgo_ts + 20857
+		v25 = __ccgo_ts + 20780
 		libc.VaList(bp, *(*int32)(unsafe.Pointer(bp + 492)))
 		__local_argv = bp
 		__retval = libc.X__mingw_vfprintf(tls, libc.X__acrt_iob_func(tls, uint32(1)), v25, __local_argv)
@@ -4459,7 +4449,7 @@ _2:
 		goto _26
 	_26:
 		libsqlite3.Xsqlite3_db_status(tls, g.db, int32(SQLITE_DBSTATUS_LOOKASIDE_MISS_SIZE), bp+488, bp+492, 0)
-		v27 = __ccgo_ts + 20893
+		v27 = __ccgo_ts + 20816
 		libc.VaList(bp, *(*int32)(unsafe.Pointer(bp + 492)))
 		__local_argv = bp
 		__retval = libc.X__mingw_vfprintf(tls, libc.X__acrt_iob_func(tls, uint32(1)), v27, __local_argv)
@@ -4468,7 +4458,7 @@ _2:
 		goto _28
 	_28:
 		libsqlite3.Xsqlite3_db_status(tls, g.db, int32(SQLITE_DBSTATUS_LOOKASIDE_MISS_FULL), bp+488, bp+492, 0)
-		v29 = __ccgo_ts + 20929
+		v29 = __ccgo_ts + 20852
 		libc.VaList(bp, *(*int32)(unsafe.Pointer(bp + 492)))
 		__local_argv = bp
 		__retval = libc.X__mingw_vfprintf(tls, libc.X__acrt_iob_func(tls, uint32(1)), v29, __local_argv)
@@ -4477,7 +4467,7 @@ _2:
 		goto _30
 	_30:
 		libsqlite3.Xsqlite3_db_status(tls, g.db, int32(SQLITE_DBSTATUS_CACHE_USED), bp+488, bp+492, 0)
-		v31 = __ccgo_ts + 20965
+		v31 = __ccgo_ts + 20888
 		libc.VaList(bp, *(*int32)(unsafe.Pointer(bp + 488)))
 		__local_argv = bp
 		__retval = libc.X__mingw_vfprintf(tls, libc.X__acrt_iob_func(tls, uint32(1)), v31, __local_argv)
@@ -4486,7 +4476,7 @@ _2:
 		goto _32
 	_32:
 		libsqlite3.Xsqlite3_db_status(tls, g.db, int32(SQLITE_DBSTATUS_CACHE_HIT), bp+488, bp+492, int32(1))
-		v33 = __ccgo_ts + 21007
+		v33 = __ccgo_ts + 20930
 		libc.VaList(bp, *(*int32)(unsafe.Pointer(bp + 488)))
 		__local_argv = bp
 		__retval = libc.X__mingw_vfprintf(tls, libc.X__acrt_iob_func(tls, uint32(1)), v33, __local_argv)
@@ -4495,7 +4485,7 @@ _2:
 		goto _34
 	_34:
 		libsqlite3.Xsqlite3_db_status(tls, g.db, int32(SQLITE_DBSTATUS_CACHE_MISS), bp+488, bp+492, int32(1))
-		v35 = __ccgo_ts + 21043
+		v35 = __ccgo_ts + 20966
 		libc.VaList(bp, *(*int32)(unsafe.Pointer(bp + 488)))
 		__local_argv = bp
 		__retval = libc.X__mingw_vfprintf(tls, libc.X__acrt_iob_func(tls, uint32(1)), v35, __local_argv)
@@ -4504,7 +4494,7 @@ _2:
 		goto _36
 	_36:
 		libsqlite3.Xsqlite3_db_status(tls, g.db, int32(SQLITE_DBSTATUS_CACHE_WRITE), bp+488, bp+492, int32(1))
-		v37 = __ccgo_ts + 21079
+		v37 = __ccgo_ts + 21002
 		libc.VaList(bp, *(*int32)(unsafe.Pointer(bp + 488)))
 		__local_argv = bp
 		__retval = libc.X__mingw_vfprintf(tls, libc.X__acrt_iob_func(tls, uint32(1)), v37, __local_argv)
@@ -4513,7 +4503,7 @@ _2:
 		goto _38
 	_38:
 		libsqlite3.Xsqlite3_db_status(tls, g.db, int32(SQLITE_DBSTATUS_SCHEMA_USED), bp+488, bp+492, 0)
-		v39 = __ccgo_ts + 21115
+		v39 = __ccgo_ts + 21038
 		libc.VaList(bp, *(*int32)(unsafe.Pointer(bp + 488)))
 		__local_argv = bp
 		__retval = libc.X__mingw_vfprintf(tls, libc.X__acrt_iob_func(tls, uint32(1)), v39, __local_argv)
@@ -4522,7 +4512,7 @@ _2:
 		goto _40
 	_40:
 		libsqlite3.Xsqlite3_db_status(tls, g.db, int32(SQLITE_DBSTATUS_STMT_USED), bp+488, bp+492, 0)
-		v41 = __ccgo_ts + 21157
+		v41 = __ccgo_ts + 21080
 		libc.VaList(bp, *(*int32)(unsafe.Pointer(bp + 488)))
 		__local_argv = bp
 		__retval = libc.X__mingw_vfprintf(tls, libc.X__acrt_iob_func(tls, uint32(1)), v41, __local_argv)
@@ -4536,7 +4526,7 @@ _2:
 	 ** has closed.  Memory usage should be zero at this point. */
 	if showStats != 0 {
 		libsqlite3.Xsqlite3_status(tls, SQLITE_STATUS_MEMORY_USED, bp+488, bp+492, 0)
-		v43 = __ccgo_ts + 21199
+		v43 = __ccgo_ts + 21122
 		libc.VaList(bp, *(*int32)(unsafe.Pointer(bp + 488)), *(*int32)(unsafe.Pointer(bp + 492)))
 		__local_argv = bp
 		__retval = libc.X__mingw_vfprintf(tls, libc.X__acrt_iob_func(tls, uint32(1)), v43, __local_argv)
@@ -4545,7 +4535,7 @@ _2:
 		goto _44
 	_44:
 		libsqlite3.Xsqlite3_status(tls, int32(SQLITE_STATUS_MALLOC_COUNT), bp+488, bp+492, 0)
-		v45 = __ccgo_ts + 21244
+		v45 = __ccgo_ts + 21167
 		libc.VaList(bp, *(*int32)(unsafe.Pointer(bp + 488)), *(*int32)(unsafe.Pointer(bp + 492)))
 		__local_argv = bp
 		__retval = libc.X__mingw_vfprintf(tls, libc.X__acrt_iob_func(tls, uint32(1)), v45, __local_argv)
@@ -4554,7 +4544,7 @@ _2:
 		goto _46
 	_46:
 		libsqlite3.Xsqlite3_status(tls, int32(SQLITE_STATUS_PAGECACHE_OVERFLOW), bp+488, bp+492, 0)
-		v47 = __ccgo_ts + 21289
+		v47 = __ccgo_ts + 21212
 		libc.VaList(bp, *(*int32)(unsafe.Pointer(bp + 488)), *(*int32)(unsafe.Pointer(bp + 492)))
 		__local_argv = bp
 		__retval = libc.X__mingw_vfprintf(tls, libc.X__acrt_iob_func(tls, uint32(1)), v47, __local_argv)
@@ -4563,7 +4553,7 @@ _2:
 		goto _48
 	_48:
 		libsqlite3.Xsqlite3_status(tls, int32(SQLITE_STATUS_MALLOC_SIZE), bp+488, bp+492, 0)
-		v49 = __ccgo_ts + 21334
+		v49 = __ccgo_ts + 21257
 		libc.VaList(bp, *(*int32)(unsafe.Pointer(bp + 492)))
 		__local_argv = bp
 		__retval = libc.X__mingw_vfprintf(tls, libc.X__acrt_iob_func(tls, uint32(1)), v49, __local_argv)
@@ -4572,7 +4562,7 @@ _2:
 		goto _50
 	_50:
 		libsqlite3.Xsqlite3_status(tls, int32(SQLITE_STATUS_PAGECACHE_SIZE), bp+488, bp+492, 0)
-		v51 = __ccgo_ts + 21376
+		v51 = __ccgo_ts + 21299
 		libc.VaList(bp, *(*int32)(unsafe.Pointer(bp + 492)))
 		__local_argv = bp
 		__retval = libc.X__mingw_vfprintf(tls, libc.X__acrt_iob_func(tls, uint32(1)), v51, __local_argv)
@@ -4602,4 +4592,4 @@ func __ccgo_fp(f interface{}) uintptr {
 
 var __ccgo_ts = (*reflect.StringHeader)(unsafe.Pointer(&__ccgo_ts1)).Data
 
-var __ccgo_ts1 = " TEMP\x00\x00KiB\x00MiB\x00GiB\x00KB\x00MB\x00GB\x00K\x00M\x00G\x00parameter too large - max 2147483648\x00zero\x00one\x00two\x00three\x00four\x00five\x00six\x00seven\x00eight\x00nine\x00ten\x00eleven\x00twelve\x00thirteen\x00fourteen\x00fifteen\x00sixteen\x00seventeen\x00eighteen\x00nineteen\x00twenty\x00thirty\x00forty\x00fifty\x00sixty\x00seventy\x00eighty\x00ninety\x00 billion\x00 million\x00 thousand\x00%s hundred\x00%s\x00-- begin test %d %.*s\n\x00/* %4d - %s%.*s */\n\x00%4d - %s%.*s \x00PRAGMA wal_checkpoint;\x00iTestNumber > 0\x00/tmp/libsqlite3/sqlite-src-3450100/test/speedtest1.c\x00-- end test %d\n\x00%4d.%03ds\n\x00       TOTAL%.*s %4d.%03ds\n\x00Verification Hash: %llu \x00\n\x00%02x\x00EXPLAIN \x00%.*s;\n\x00CREATE *\x00DROP *\x00ALTER *\x00%s;\n\x00SQL error: %s\n%s\n\x00exec error: %s\n\x00SQL error: %s\n\x00%s\n\x00g.pStmt\x00nil\x00-IFTBN\x000123456789abcdef\x00%d INSERTs into table with no index\x00BEGIN\x00CREATE%s TABLE z1(a INTEGER %s, b INTEGER %s, c TEXT %s);\x00INSERT INTO z1 VALUES(?1,?2,?3); --  %d times\x00COMMIT\x00%d ordered INSERTS with one index/PK\x00CREATE%s TABLE z2(a INTEGER %s %s, b INTEGER %s, c TEXT %s) %s\x00INSERT INTO z2 VALUES(?1,?2,?3); -- %d times\x00%d unordered INSERTS with one index/PK\x00CREATE%s TABLE t3(a INTEGER %s %s, b INTEGER %s, c TEXT %s) %s\x00INSERT INTO t3 VALUES(?1,?2,?3); -- %d times\x00%d SELECTS, numeric BETWEEN, unindexed\x00SELECT count(*), avg(b), sum(length(c)), group_concat(c) FROM z1\n WHERE b BETWEEN ?1 AND ?2; -- %d times\x00%d SELECTS, LIKE, unindexed\x00SELECT count(*), avg(b), sum(length(c)), group_concat(c) FROM z1\n WHERE c LIKE ?1; -- %d times\x00%d SELECTS w/ORDER BY, unindexed\x00SELECT a, b, c FROM z1 WHERE c LIKE ?1\n ORDER BY a; -- %d times\x00%d SELECTS w/ORDER BY and LIMIT, unindexed\x00SELECT a, b, c FROM z1 WHERE c LIKE ?1\n ORDER BY a LIMIT 10; -- %d times\x00CREATE INDEX five times\x00BEGIN;\x00CREATE UNIQUE INDEX t1b ON z1(b);\x00CREATE INDEX t1c ON z1(c);\x00CREATE UNIQUE INDEX t2b ON z2(b);\x00CREATE INDEX t2c ON z2(c DESC);\x00CREATE INDEX t3bc ON t3(b,c);\x00COMMIT;\x00%d SELECTS, numeric BETWEEN, indexed\x00SELECT count(*), avg(b), sum(length(c)), group_concat(a) FROM z1\n WHERE b BETWEEN ?1 AND ?2; -- %d times\x00%d SELECTS, numeric BETWEEN, PK\x00SELECT count(*), avg(b), sum(length(c)), group_concat(a) FROM z2\n WHERE a BETWEEN ?1 AND ?2; -- %d times\x00%d SELECTS, text BETWEEN, indexed\x00SELECT count(*), avg(b), sum(length(c)), group_concat(a) FROM z1\n WHERE c BETWEEN ?1 AND (?1||'~'); -- %d times\x00%d INSERTS with three indexes\x00CREATE%s TABLE t4(\n  a INTEGER %s %s,\n  b INTEGER %s,\n  c TEXT %s\n) %s\x00CREATE INDEX t4b ON t4(b)\x00CREATE INDEX t4c ON t4(c)\x00INSERT INTO t4 SELECT * FROM z1\x00DELETE and REFILL one table\x00DELETE FROM z2;\x00INSERT INTO z2 SELECT * FROM z1;\x00VACUUM\x00ALTER TABLE ADD COLUMN, and query\x00ALTER TABLE z2 ADD COLUMN d INT DEFAULT 123\x00SELECT sum(d) FROM z2\x00%d UPDATES, numeric BETWEEN, indexed\x00UPDATE z2 SET d=b*2 WHERE b BETWEEN ?1 AND ?2; -- %d times\x00%d UPDATES of individual rows\x00UPDATE z2 SET d=b*3 WHERE a=?1; -- %d times\x00One big UPDATE of the whole %d-row table\x00UPDATE z2 SET d=b*4\x00Query added column after filling\x00%d DELETEs, numeric BETWEEN, indexed\x00DELETE FROM z2 WHERE b BETWEEN ?1 AND ?2; -- %d times\x00%d DELETEs of individual rows\x00DELETE FROM t3 WHERE a=?1; -- %d times\x00Refill two %d-row tables using REPLACE\x00REPLACE INTO z2(a,b,c) SELECT a,b,c FROM z1\x00REPLACE INTO t3(a,b,c) SELECT a,b,c FROM z1\x00Refill a %d-row table using (b&1)==(a&1)\x00INSERT INTO z2(a,b,c)\n SELECT a,b,c FROM z1  WHERE (b&1)==(a&1);\x00INSERT INTO z2(a,b,c)\n SELECT a,b,c FROM z1  WHERE (b&1)<>(a&1);\x00%d four-ways joins\x00SELECT z1.c FROM z1, z2, t3, t4\n WHERE t4.a BETWEEN ?1 AND ?2\n   AND t3.a=t4.b\n   AND z2.a=t3.b\n   AND z1.c=z2.c;\x00subquery in result set\x00SELECT sum(a), max(c),\n       avg((SELECT a FROM z2 WHERE 5+z2.b=z1.b) AND rowid<?1), max(c)\n FROM z1 WHERE rowid<?1;\x00%d REPLACE ops on an IPK\x00CREATE%s TABLE t5(a INTEGER PRIMARY KEY, b %s);\x00REPLACE INTO t5 VALUES(?1,?2); --  %d times\x00%d SELECTS on an IPK\x00SELECT b FROM t5 WHERE a=?1; --  %d times\x00%d REPLACE on TEXT PK\x00WITHOUT ROWID\x00CREATE%s TABLE t6(a TEXT PRIMARY KEY, b %s)%s;\x00REPLACE INTO t6 VALUES(?1,?2); --  %d times\x00%d SELECTS on a TEXT PK\x00SELECT b FROM t6 WHERE a=?1; --  %d times\x00%d SELECT DISTINCT\x00SELECT DISTINCT b FROM t5;\x00SELECT DISTINCT b FROM t6;\x00PRAGMA integrity_check\x00ANALYZE\x00534...9..67.195....98....6.8...6...34..8.3..1....2...6.6....28....419..5...28..79\x0053....9..6..195....98....6.8...6...34..8.3..1....2...6.6....28....419..5....8..79\x0053.......6..195....98....6.8...6...34..8.3..1....2...6.6....28....419..5....8..79\x00Sudoku with recursive 'digits'\x00WITH RECURSIVE\n  input(sud) AS (VALUES(?1)),\n  digits(z,lp) AS (\n    VALUES('1', 1)\n    UNION ALL\n    SELECT CAST(lp+1 AS TEXT), lp+1 FROM digits WHERE lp<9\n  ),\n  x(s, ind) AS (\n    SELECT sud, instr(sud, '.') FROM input\n    UNION ALL\n    SELECT\n      substr(s, 1, ind-1) || z || substr(s, ind+1),\n      instr( substr(s, 1, ind-1) || z || substr(s, ind+1), '.' )\n     FROM x, digits AS z\n    WHERE ind>0\n      AND NOT EXISTS (\n            SELECT 1\n              FROM digits AS lp\n             WHERE z.z = substr(s, ((ind-1)/9)*9 + lp, 1)\n                OR z.z = substr(s, ((ind-1)%%9) + (lp-1)*9 + 1, 1)\n                OR z.z = substr(s, (((ind-1)/3) %% 3) * 3\n                        + ((ind-1)/27) * 27 + lp\n                        + ((lp-1) / 3) * 6, 1)\n         )\n  )\nSELECT s FROM x WHERE ind=0;\x00Sudoku with VALUES 'digits'\x00WITH RECURSIVE\n  input(sud) AS (VALUES(?1)),\n  digits(z,lp) AS (VALUES('1',1),('2',2),('3',3),('4',4),('5',5),\n                         ('6',6),('7',7),('8',8),('9',9)),\n  x(s, ind) AS (\n    SELECT sud, instr(sud, '.') FROM input\n    UNION ALL\n    SELECT\n      substr(s, 1, ind-1) || z || substr(s, ind+1),\n      instr( substr(s, 1, ind-1) || z || substr(s, ind+1), '.' )\n     FROM x, digits AS z\n    WHERE ind>0\n      AND NOT EXISTS (\n            SELECT 1\n              FROM digits AS lp\n             WHERE z.z = substr(s, ((ind-1)/9)*9 + lp, 1)\n                OR z.z = substr(s, ((ind-1)%%9) + (lp-1)*9 + 1, 1)\n                OR z.z = substr(s, (((ind-1)/3) %% 3) * 3\n                        + ((ind-1)/27) * 27 + lp\n                        + ((lp-1) / 3) * 6, 1)\n         )\n  )\nSELECT s FROM x WHERE ind=0;\x00Mandelbrot Set with spacing=%f\x00WITH RECURSIVE \n  xaxis(x) AS (VALUES(-2.0) UNION ALL SELECT x+?1 FROM xaxis WHERE x<1.2),\n  yaxis(y) AS (VALUES(-1.0) UNION ALL SELECT y+?2 FROM yaxis WHERE y<1.0),\n  m(iter, cx, cy, x, y) AS (\n    SELECT 0, x, y, 0.0, 0.0 FROM xaxis, yaxis\n    UNION ALL\n    SELECT iter+1, cx, cy, x*x-y*y + cx, 2.0*x*y + cy FROM m \n     WHERE (x*x + y*y) < 4.0 AND iter<28\n  ),\n  m2(iter, cx, cy) AS (\n    SELECT max(iter), cx, cy FROM m GROUP BY cx, cy\n  ),\n  a(t) AS (\n    SELECT group_concat( substr(' .+*#', 1+min(iter/7,4), 1), '') \n    FROM m2 GROUP BY cy\n  )\nSELECT group_concat(rtrim(t),x'0a') FROM a;\x00EXCEPT operator on %d-element tables\x00WITH RECURSIVE \n  z1(x) AS (VALUES(2) UNION ALL SELECT x+2 FROM z1 WHERE x<%d),\n  z2(y) AS (VALUES(3) UNION ALL SELECT y+3 FROM z2 WHERE y<%d)\nSELECT count(x), avg(x) FROM (\n  SELECT x FROM z1 EXCEPT SELECT y FROM z2 ORDER BY 1\n);\x00%d.%de%d\x00Fill a table with %d FP values\x00CREATE%s TABLE z1(a REAL %s, b REAL %s);\x00INSERT INTO z1 VALUES(?1,?2); -- %d times\x00%d range queries\x00SELECT sum(b) FROM z1 WHERE a BETWEEN ?1 AND ?2\x00CREATE INDEX three times\x00CREATE INDEX t1a ON z1(a);\x00CREATE INDEX t1b ON z1(b);\x00CREATE INDEX t1ab ON z1(a,b);\x00%d indexed range queries\x00%d calls to round()\x00SELECT sum(round(a,2)+round(b,4)) FROM z1;\x00%d printf() calls\x00WITH c(fmt) AS (VALUES('%%g'),('%%e'),('%%!g'),('%%.20f'))SELECT sum(printf(fmt,a)) FROM z1, c\x00Fill %d rows\x00BEGIN;CREATE TABLE ZLOOKSLIKECOREDATA (  ZPK INTEGER PRIMARY KEY,  ZTERMFITTINGHOUSINGCOMMAND INTEGER,  ZBRIEFGOBYDODGERHEIGHT BLOB,  ZCAPABLETRIPDOORALMOND BLOB,  ZDEPOSITPAIRCOLLEGECOMET INTEGER,  ZFRAMEENTERSIMPLEMOUTH INTEGER,  ZHOPEFULGATEHOLECHALK INTEGER,  ZSLEEPYUSERGRANDBOWL TIMESTAMP,  ZDEWPEACHCAREERCELERY INTEGER,  ZHANGERLITHIUMDINNERMEET VARCHAR,  ZCLUBRELEASELIZARDADVICE VARCHAR,  ZCHARGECLICKHUMANEHIRE INTEGER,  ZFINGERDUEPIZZAOPTION TIMESTAMP,  ZFLYINGDOCTORTABLEMELODY BLOB,  ZLONGFINLEAVEIMAGEOIL TIMESTAMP,  ZFAMILYVISUALOWNERMATTER BLOB,  ZGOLDYOUNGINITIALNOSE FLOAT,  ZCAUSESALAMITERMCYAN BLOB,  ZSPREADMOTORBISCUITBACON FLOAT,  ZGIFTICEFISHGLUEHAIR INTEGER,  ZNOTICEPEARPOLICYJUICE TIMESTAMP,  ZBANKBUFFALORECOVERORBIT TIMESTAMP,  ZLONGDIETESSAYNATURE FLOAT,  ZACTIONRANGEELEGANTNEUTRON BLOB,  ZCADETBRIGHTPLANETBANK TIMESTAMP,  ZAIRFORGIVEHEADFROG BLOB,  ZSHARKJUSTFRUITMOVIE VARCHAR,  ZFARMERMORNINGMIRRORCONCERN BLOB,  ZWOODPOETRYCOBBLERBENCH VARCHAR,  ZHAFNIUMSCRIPTSALADMOTOR INTEGER,  ZPROBLEMCLUBPOPOVERJELLY FLOAT,  ZEIGHTLEADERWORKERMOST TIMESTAMP,  ZGLASSRESERVEBARIUMMEAL BLOB,  ZCLAMBITARUGULAFAJITA BLOB,  ZDECADEJOYOUSWAVEHABIT FLOAT,  ZCOMPANYSUMMERFIBERELF INTEGER,  ZTREATTESTQUILLCHARGE TIMESTAMP,  ZBROWBALANCEKEYCHOWDER FLOAT,  ZPEACHCOPPERDINNERLAKE FLOAT,  ZDRYWALLBEYONDBROWNBOWL VARCHAR,  ZBELLYCRASHITEMLACK BLOB,  ZTENNISCYCLEBILLOFFICER INTEGER,  ZMALLEQUIPTHANKSGLUE FLOAT,  ZMISSREPLYHUMANLIVING INTEGER,  ZKIWIVISUALPRIDEAPPLE VARCHAR,  ZWISHHITSKINMOTOR BLOB,  ZCALMRACCOONPROGRAMDEBIT VARCHAR,  ZSHINYASSISTLIVINGCRAB VARCHAR,  ZRESOLVEWRISTWRAPAPPLE VARCHAR,  ZAPPEALSIMPLESECONDHOUSING BLOB,  ZCORNERANCHORTAPEDIVER TIMESTAMP,  ZMEMORYREQUESTSOURCEBIG VARCHAR,  ZTRYFACTKEEPMILK TIMESTAMP,  ZDIVERPAINTLEATHEREASY INTEGER,  ZSORTMISTYQUOTECABBAGE BLOB,  ZTUNEGASBUFFALOCAPITAL BLOB,  ZFILLSTOPLAWJOYFUL FLOAT,  ZSTEELCAREFULPLATENUMBER FLOAT,  ZGIVEVIVIDDIVINEMEANING INTEGER,  ZTREATPACKFUTURECONVERT VARCHAR,  ZCALMLYGEMFINISHEFFECT INTEGER,  ZCABBAGESOCKEASEMINUTE BLOB,  ZPLANETFAMILYPUREMEMORY TIMESTAMP,  ZMERRYCRACKTRAINLEADER BLOB,  ZMINORWAYPAPERCLASSY TIMESTAMP,  ZEAGLELINEMINEMAIL VARCHAR,  ZRESORTYARDGREENLET TIMESTAMP,  ZYARDOREGANOVIVIDJEWEL TIMESTAMP,  ZPURECAKEVIVIDNEATLY FLOAT,  ZASKCONTACTMONITORFUN TIMESTAMP,  ZMOVEWHOGAMMAINCH VARCHAR,  ZLETTUCEBIRDMEETDEBATE TIMESTAMP,  ZGENENATURALHEARINGKITE VARCHAR,  ZMUFFINDRYERDRAWFORTUNE FLOAT,  ZGRAYSURVEYWIRELOVE FLOAT,  ZPLIERSPRINTASKOREGANO INTEGER,  ZTRAVELDRIVERCONTESTLILY INTEGER,  ZHUMORSPICESANDKIDNEY TIMESTAMP,  ZARSENICSAMPLEWAITMUON INTEGER,  ZLACEADDRESSGROUNDCAREFUL FLOAT,  ZBAMBOOMESSWASABIEVENING BLOB,  ZONERELEASEAVERAGENURSE INTEGER,  ZRADIANTWHENTRYCARD TIMESTAMP,  ZREWARDINSIDEMANGOINTENSE FLOAT,  ZNEATSTEWPARTIRON TIMESTAMP,  ZOUTSIDEPEAHENCOUNTICE TIMESTAMP,  ZCREAMEVENINGLIPBRANCH FLOAT,  ZWHALEMATHAVOCADOCOPPER FLOAT,  ZLIFEUSELEAFYBELL FLOAT,  ZWEALTHLINENGLEEFULDAY VARCHAR,  ZFACEINVITETALKGOLD BLOB,  ZWESTAMOUNTAFFECTHEARING INTEGER,  ZDELAYOUTCOMEHORNAGENCY INTEGER,  ZBIGTHINKCONVERTECONOMY BLOB,  ZBASEGOUDAREGULARFORGIVE TIMESTAMP,  ZPATTERNCLORINEGRANDCOLBY TIMESTAMP,  ZCYANBASEFEEDADROIT INTEGER,  ZCARRYFLOORMINNOWDRAGON TIMESTAMP,  ZIMAGEPENCILOTHERBOTTOM FLOAT,  ZXENONFLIGHTPALEAPPLE TIMESTAMP,  ZHERRINGJOKEFEATUREHOPEFUL FLOAT,  ZCAPYEARLYRIVETBRUSH FLOAT,  ZAGEREEDFROGBASKET VARCHAR,  ZUSUALBODYHALIBUTDIAMOND VARCHAR,  ZFOOTTAPWORDENTRY VARCHAR,  ZDISHKEEPBLESTMONITOR FLOAT,  ZBROADABLESOLIDCASUAL INTEGER,  ZSQUAREGLEEFULCHILDLIGHT INTEGER,  ZHOLIDAYHEADPONYDETAIL INTEGER,  ZGENERALRESORTSKYOPEN TIMESTAMP,  ZGLADSPRAYKIDNEYGUPPY VARCHAR,  ZSWIMHEAVYMENTIONKIND BLOB,  ZMESSYSULFURDREAMFESTIVE BLOB,  ZSKYSKYCLASSICBRIEF VARCHAR,  ZDILLASKHOKILEMON FLOAT,  ZJUNIORSHOWPRESSNOVA FLOAT,  ZSIZETOEAWARDFRESH TIMESTAMP,  ZKEYFAILAPRICOTMETAL VARCHAR,  ZHANDYREPAIRPROTONAIRPORT VARCHAR,  ZPOSTPROTEINHANDLEACTOR BLOB);\x00INSERT INTO ZLOOKSLIKECOREDATA(ZPK,ZAIRFORGIVEHEADFROG,ZGIFTICEFISHGLUEHAIR,ZDELAYOUTCOMEHORNAGENCY,ZSLEEPYUSERGRANDBOWL,ZGLASSRESERVEBARIUMMEAL,ZBRIEFGOBYDODGERHEIGHT,ZBAMBOOMESSWASABIEVENING,ZFARMERMORNINGMIRRORCONCERN,ZTREATPACKFUTURECONVERT,ZCAUSESALAMITERMCYAN,ZCALMRACCOONPROGRAMDEBIT,ZHOLIDAYHEADPONYDETAIL,ZWOODPOETRYCOBBLERBENCH,ZHAFNIUMSCRIPTSALADMOTOR,ZUSUALBODYHALIBUTDIAMOND,ZOUTSIDEPEAHENCOUNTICE,ZDIVERPAINTLEATHEREASY,ZWESTAMOUNTAFFECTHEARING,ZSIZETOEAWARDFRESH,ZDEWPEACHCAREERCELERY,ZSTEELCAREFULPLATENUMBER,ZCYANBASEFEEDADROIT,ZCALMLYGEMFINISHEFFECT,ZHANDYREPAIRPROTONAIRPORT,ZGENENATURALHEARINGKITE,ZBROADABLESOLIDCASUAL,ZPOSTPROTEINHANDLEACTOR,ZLACEADDRESSGROUNDCAREFUL,ZIMAGEPENCILOTHERBOTTOM,ZPROBLEMCLUBPOPOVERJELLY,ZPATTERNCLORINEGRANDCOLBY,ZNEATSTEWPARTIRON,ZAPPEALSIMPLESECONDHOUSING,ZMOVEWHOGAMMAINCH,ZTENNISCYCLEBILLOFFICER,ZSHARKJUSTFRUITMOVIE,ZKEYFAILAPRICOTMETAL,ZCOMPANYSUMMERFIBERELF,ZTERMFITTINGHOUSINGCOMMAND,ZRESORTYARDGREENLET,ZCABBAGESOCKEASEMINUTE,ZSQUAREGLEEFULCHILDLIGHT,ZONERELEASEAVERAGENURSE,ZBIGTHINKCONVERTECONOMY,ZPLIERSPRINTASKOREGANO,ZDECADEJOYOUSWAVEHABIT,ZDRYWALLBEYONDBROWNBOWL,ZCLUBRELEASELIZARDADVICE,ZWHALEMATHAVOCADOCOPPER,ZBELLYCRASHITEMLACK,ZLETTUCEBIRDMEETDEBATE,ZCAPABLETRIPDOORALMOND,ZRADIANTWHENTRYCARD,ZCAPYEARLYRIVETBRUSH,ZAGEREEDFROGBASKET,ZSWIMHEAVYMENTIONKIND,ZTRAVELDRIVERCONTESTLILY,ZGLADSPRAYKIDNEYGUPPY,ZBANKBUFFALORECOVERORBIT,ZFINGERDUEPIZZAOPTION,ZCLAMBITARUGULAFAJITA,ZLONGFINLEAVEIMAGEOIL,ZLONGDIETESSAYNATURE,ZJUNIORSHOWPRESSNOVA,ZHOPEFULGATEHOLECHALK,ZDEPOSITPAIRCOLLEGECOMET,ZWEALTHLINENGLEEFULDAY,ZFILLSTOPLAWJOYFUL,ZTUNEGASBUFFALOCAPITAL,ZGRAYSURVEYWIRELOVE,ZCORNERANCHORTAPEDIVER,ZREWARDINSIDEMANGOINTENSE,ZCADETBRIGHTPLANETBANK,ZPLANETFAMILYPUREMEMORY,ZTREATTESTQUILLCHARGE,ZCREAMEVENINGLIPBRANCH,ZSKYSKYCLASSICBRIEF,ZARSENICSAMPLEWAITMUON,ZBROWBALANCEKEYCHOWDER,ZFLYINGDOCTORTABLEMELODY,ZHANGERLITHIUMDINNERMEET,ZNOTICEPEARPOLICYJUICE,ZSHINYASSISTLIVINGCRAB,ZLIFEUSELEAFYBELL,ZFACEINVITETALKGOLD,ZGENERALRESORTSKYOPEN,ZPURECAKEVIVIDNEATLY,ZKIWIVISUALPRIDEAPPLE,ZMESSYSULFURDREAMFESTIVE,ZCHARGECLICKHUMANEHIRE,ZHERRINGJOKEFEATUREHOPEFUL,ZYARDOREGANOVIVIDJEWEL,ZFOOTTAPWORDENTRY,ZWISHHITSKINMOTOR,ZBASEGOUDAREGULARFORGIVE,ZMUFFINDRYERDRAWFORTUNE,ZACTIONRANGEELEGANTNEUTRON,ZTRYFACTKEEPMILK,ZPEACHCOPPERDINNERLAKE,ZFRAMEENTERSIMPLEMOUTH,ZMERRYCRACKTRAINLEADER,ZMEMORYREQUESTSOURCEBIG,ZCARRYFLOORMINNOWDRAGON,ZMINORWAYPAPERCLASSY,ZDILLASKHOKILEMON,ZRESOLVEWRISTWRAPAPPLE,ZASKCONTACTMONITORFUN,ZGIVEVIVIDDIVINEMEANING,ZEIGHTLEADERWORKERMOST,ZMISSREPLYHUMANLIVING,ZXENONFLIGHTPALEAPPLE,ZSORTMISTYQUOTECABBAGE,ZEAGLELINEMINEMAIL,ZFAMILYVISUALOWNERMATTER,ZSPREADMOTORBISCUITBACON,ZDISHKEEPBLESTMONITOR,ZMALLEQUIPTHANKSGLUE,ZGOLDYOUNGINITIALNOSE,ZHUMORSPICESANDKIDNEY)VALUES(?1,?26,?20,?93,?8,?33,?3,?81,?28,?60,?18,?47,?109,?29,?30,?104,?86,?54,?92,?117,?9,?58,?97,?61,?119,?73,?107,?120,?80,?99,?31,?96,?85,?50,?71,?42,?27,?118,?36,?2,?67,?62,?108,?82,?94,?76,?35,?40,?11,?88,?41,?72,?4,?83,?102,?103,?112,?77,?111,?22,?13,?34,?15,?23,?116,?7,?5,?90,?57,?56,?75,?51,?84,?25,?63,?37,?87,?114,?79,?38,?14,?10,?21,?48,?89,?91,?110,?69,?45,?113,?12,?101,?68,?105,?46,?95,?74,?24,?53,?39,?6,?64,?52,?98,?65,?115,?49,?70,?59,?32,?44,?100,?55,?66,?16,?19,?106,?43,?17,?78);\x00Query %d rows by rowid\x00SELECT ZCYANBASEFEEDADROIT,ZJUNIORSHOWPRESSNOVA,ZCAUSESALAMITERMCYAN,ZHOPEFULGATEHOLECHALK,ZHUMORSPICESANDKIDNEY,ZSWIMHEAVYMENTIONKIND,ZMOVEWHOGAMMAINCH,ZAPPEALSIMPLESECONDHOUSING,ZHAFNIUMSCRIPTSALADMOTOR,ZNEATSTEWPARTIRON,ZLONGFINLEAVEIMAGEOIL,ZDEWPEACHCAREERCELERY,ZXENONFLIGHTPALEAPPLE,ZCALMRACCOONPROGRAMDEBIT,ZUSUALBODYHALIBUTDIAMOND,ZTRYFACTKEEPMILK,ZWEALTHLINENGLEEFULDAY,ZLONGDIETESSAYNATURE,ZLIFEUSELEAFYBELL,ZTREATPACKFUTURECONVERT,ZMEMORYREQUESTSOURCEBIG,ZYARDOREGANOVIVIDJEWEL,ZDEPOSITPAIRCOLLEGECOMET,ZSLEEPYUSERGRANDBOWL,ZBRIEFGOBYDODGERHEIGHT,ZCLUBRELEASELIZARDADVICE,ZCAPABLETRIPDOORALMOND,ZDRYWALLBEYONDBROWNBOWL,ZASKCONTACTMONITORFUN,ZKIWIVISUALPRIDEAPPLE,ZNOTICEPEARPOLICYJUICE,ZPEACHCOPPERDINNERLAKE,ZSTEELCAREFULPLATENUMBER,ZGLADSPRAYKIDNEYGUPPY,ZCOMPANYSUMMERFIBERELF,ZTENNISCYCLEBILLOFFICER,ZIMAGEPENCILOTHERBOTTOM,ZWESTAMOUNTAFFECTHEARING,ZDIVERPAINTLEATHEREASY,ZSKYSKYCLASSICBRIEF,ZMESSYSULFURDREAMFESTIVE,ZMERRYCRACKTRAINLEADER,ZBROADABLESOLIDCASUAL,ZGLASSRESERVEBARIUMMEAL,ZTUNEGASBUFFALOCAPITAL,ZBANKBUFFALORECOVERORBIT,ZTREATTESTQUILLCHARGE,ZBAMBOOMESSWASABIEVENING,ZREWARDINSIDEMANGOINTENSE,ZEAGLELINEMINEMAIL,ZCALMLYGEMFINISHEFFECT,ZKEYFAILAPRICOTMETAL,ZFINGERDUEPIZZAOPTION,ZCADETBRIGHTPLANETBANK,ZGOLDYOUNGINITIALNOSE,ZMISSREPLYHUMANLIVING,ZEIGHTLEADERWORKERMOST,ZFRAMEENTERSIMPLEMOUTH,ZBIGTHINKCONVERTECONOMY,ZFACEINVITETALKGOLD,ZPOSTPROTEINHANDLEACTOR,ZHERRINGJOKEFEATUREHOPEFUL,ZCABBAGESOCKEASEMINUTE,ZMUFFINDRYERDRAWFORTUNE,ZPROBLEMCLUBPOPOVERJELLY,ZGIVEVIVIDDIVINEMEANING,ZGENENATURALHEARINGKITE,ZGENERALRESORTSKYOPEN,ZLETTUCEBIRDMEETDEBATE,ZBASEGOUDAREGULARFORGIVE,ZCHARGECLICKHUMANEHIRE,ZPLANETFAMILYPUREMEMORY,ZMINORWAYPAPERCLASSY,ZCAPYEARLYRIVETBRUSH,ZSIZETOEAWARDFRESH,ZARSENICSAMPLEWAITMUON,ZSQUAREGLEEFULCHILDLIGHT,ZSHINYASSISTLIVINGCRAB,ZCORNERANCHORTAPEDIVER,ZDECADEJOYOUSWAVEHABIT,ZTRAVELDRIVERCONTESTLILY,ZFLYINGDOCTORTABLEMELODY,ZSHARKJUSTFRUITMOVIE,ZFAMILYVISUALOWNERMATTER,ZFARMERMORNINGMIRRORCONCERN,ZGIFTICEFISHGLUEHAIR,ZOUTSIDEPEAHENCOUNTICE,ZSPREADMOTORBISCUITBACON,ZWISHHITSKINMOTOR,ZHOLIDAYHEADPONYDETAIL,ZWOODPOETRYCOBBLERBENCH,ZAIRFORGIVEHEADFROG,ZBROWBALANCEKEYCHOWDER,ZDISHKEEPBLESTMONITOR,ZCLAMBITARUGULAFAJITA,ZPLIERSPRINTASKOREGANO,ZRADIANTWHENTRYCARD,ZDELAYOUTCOMEHORNAGENCY,ZPURECAKEVIVIDNEATLY,ZPATTERNCLORINEGRANDCOLBY,ZHANDYREPAIRPROTONAIRPORT,ZAGEREEDFROGBASKET,ZSORTMISTYQUOTECABBAGE,ZFOOTTAPWORDENTRY,ZRESOLVEWRISTWRAPAPPLE,ZDILLASKHOKILEMON,ZFILLSTOPLAWJOYFUL,ZACTIONRANGEELEGANTNEUTRON,ZRESORTYARDGREENLET,ZCREAMEVENINGLIPBRANCH,ZWHALEMATHAVOCADOCOPPER,ZGRAYSURVEYWIRELOVE,ZBELLYCRASHITEMLACK,ZHANGERLITHIUMDINNERMEET,ZCARRYFLOORMINNOWDRAGON,ZMALLEQUIPTHANKSGLUE,ZTERMFITTINGHOUSINGCOMMAND,ZONERELEASEAVERAGENURSE,ZLACEADDRESSGROUNDCAREFUL FROM ZLOOKSLIKECOREDATA WHERE ZPK=?1;\x00BEGIN;CREATE TABLE z1(rowid INTEGER PRIMARY KEY, i INTEGER, t TEXT);CREATE TABLE z2(rowid INTEGER PRIMARY KEY, i INTEGER, t TEXT);CREATE TABLE t3(rowid INTEGER PRIMARY KEY, i INTEGER, t TEXT);CREATE VIEW v1 AS SELECT rowid, i, t FROM z1;CREATE VIEW v2 AS SELECT rowid, i, t FROM z2;CREATE VIEW v3 AS SELECT rowid, i, t FROM t3;\x00INSERT INTO t%d VALUES(NULL,?1,?2)\x00CREATE INDEX i1 ON z1(t);CREATE INDEX i2 ON z2(t);CREATE INDEX i3 ON t3(t);COMMIT;\x00speed4p-join1\x00SELECT * FROM z1, z2, t3 WHERE z1.oid = z2.oid AND z2.oid = t3.oid\x00speed4p-join2\x00SELECT * FROM z1, z2, t3 WHERE z1.t = z2.t AND z2.t = t3.t\x00speed4p-view1\x00SELECT * FROM v%d WHERE rowid = ?\x00speed4p-table1\x00SELECT * FROM t%d WHERE rowid = ?\x00speed4p-subselect1\x00SELECT (SELECT t FROM z1 WHERE rowid = ?1),(SELECT t FROM z2 WHERE rowid = ?1),(SELECT t FROM t3 WHERE rowid = ?1)\x00speed4p-rowid-update\x00UPDATE z1 SET i=i+1 WHERE rowid=?1\x00CREATE TABLE t5(t TEXT PRIMARY KEY, i INTEGER);\x00speed4p-insert-ignore\x00INSERT OR IGNORE INTO t5 SELECT t, i FROM z1\x00CREATE TABLE log(op TEXT, r INTEGER, i INTEGER, t TEXT);CREATE TABLE t4(rowid INTEGER PRIMARY KEY, i INTEGER, t TEXT);CREATE TRIGGER t4_trigger1 AFTER INSERT ON t4 BEGIN  INSERT INTO log VALUES('INSERT INTO t4', new.rowid, new.i, new.t);END;CREATE TRIGGER t4_trigger2 AFTER UPDATE ON t4 BEGIN  INSERT INTO log VALUES('UPDATE OF t4', new.rowid, new.i, new.t);END;CREATE TRIGGER t4_trigger3 AFTER DELETE ON t4 BEGIN  INSERT INTO log VALUES('DELETE OF t4', old.rowid, old.i, old.t);END;BEGIN;\x00speed4p-trigger1\x00INSERT INTO t4 VALUES(NULL, ?1, ?2)\x00speed4p-trigger2\x00UPDATE t4 SET i = ?1, t = ?2 WHERE rowid = ?3\x00speed4p-trigger3\x00DELETE FROM t4 WHERE rowid = ?1\x00DROP TABLE t4;DROP TABLE log;VACUUM;CREATE TABLE t4(rowid INTEGER PRIMARY KEY, i INTEGER, t TEXT);BEGIN;\x00speed4p-notrigger1\x00speed4p-notrigger2\x00speed4p-notrigger3\x00%5d %5d %5d %s\n\x00-- Compile option: %s\n\x00main\x00-- Speedtest1 for SQLite %s %.48s\n\x00UNIQUE\x00autovacuum\x00big-transactions\x00cachesize\x00missing argument on %s\n\x00exclusive\x00fullfsync\x00checkpoint\x00explain\x00heap\x00incrvacuum\x00journal\x00key\x00lookaside\x00memdb\x00multithread\x00nomemstat\x00mmap\x00nolongdouble\x00nomutex\x00nosync\x00notnull\x00NOT NULL\x00output\x00-\x00wb\x00cannot open \"%s\" for writing\n\x00pagesize\x00pcache\x00primarykey\x00PRIMARY KEY\x00repeat\x00reprepare\x00serialized\x00singlethread\x00script\x00unable to open output file \"%s\"\n\x00sqlonly\x00shrink-memory\x00size\x00stats\x00temp\x00argument to --temp should be integer between 0 and 9\x00testset\x00trace\x00threads\x00utf16le\x00utf16be\x00verify\x00vfs\x00reserve\x00stmtscanstatus\x00without-rowid\x00WITHOUT\x00STRICT\x00WITHOUT ROWID,STRICT\x00strict\x00help\x00?\x00unknown option: %s\nUse \"%s -?\" for help\n\x00surplus argument: %s\nUse \"%s -?\" for help\n\x00cannot allocate %d-byte heap\n\x00heap configuration failed: %d\n\x00cannot allocate %lld-byte pcache\n\x00pcache configuration failed: %d\n\x00:memory:\x00Cannot open database file: %s\n\x00lookaside configuration failed: %d\n\x00random\x00PRAGMA temp_store=memory\x00PRAGMA mmap_size=%d\x00PRAGMA threads=%d\x00PRAGMA key('%s')\x00PRAGMA encoding=%s\x00PRAGMA auto_vacuum=FULL\x00PRAGMA auto_vacuum=INCREMENTAL\x00PRAGMA page_size=%d\x00PRAGMA cache_size=%d\x00PRAGMA synchronous=OFF\x00PRAGMA fullfsync=ON\x00PRAGMA locking_mode=EXCLUSIVE\x00PRAGMA journal_mode=%s\x00.explain\n.echo on\n\x00       Begin testset \"%s\"\n\x00debug1\x00orm\x00cte\x00fp\x00trigger\x00rtree\x00compile with -DSQLITE_ENABLE_RTREE to enable the R-Tree tests\n\x00unknown testset: \"%s\"\nChoices: cte debug1 fp main orm rtree trigger\n\x00Reset the database\x00SELECT name FROM main.sqlite_master WHERE sql LIKE 'CREATE %%TABLE%%'\x00DROP TABLE main.\"%w\"\x00SELECT name FROM temp.sqlite_master WHERE sql LIKE 'CREATE %%TABLE%%'\x00PRAGMA compile_options\x00-- Lookaside Slots Used:        %d (max %d)\n\x00-- Successful lookasides:       %d\n\x00-- Lookaside size faults:       %d\n\x00-- Lookaside OOM faults:        %d\n\x00-- Pager Heap Usage:            %d bytes\n\x00-- Page cache hits:             %d\n\x00-- Page cache misses:           %d\n\x00-- Page cache writes:           %d\n\x00-- Schema Heap Usage:           %d bytes\n\x00-- Statement Heap Usage:        %d bytes\n\x00-- Memory Used (bytes):         %d (max %d)\n\x00-- Outstanding Allocations:     %d (max %d)\n\x00-- Pcache Overflow Bytes:       %d (max %d)\n\x00-- Largest Allocation:          %d bytes\n\x00-- Largest Pcache Allocation:   %d bytes\n\x00"
+var __ccgo_ts1 = " TEMP\x00\x00KiB\x00MiB\x00GiB\x00KB\x00MB\x00GB\x00K\x00M\x00G\x00parameter too large - max 2147483648\x00zero\x00one\x00two\x00three\x00four\x00five\x00six\x00seven\x00eight\x00nine\x00ten\x00eleven\x00twelve\x00thirteen\x00fourteen\x00fifteen\x00sixteen\x00seventeen\x00eighteen\x00nineteen\x00twenty\x00thirty\x00forty\x00fifty\x00sixty\x00seventy\x00eighty\x00ninety\x00 billion\x00 million\x00 thousand\x00%s hundred\x00%s\x00-- begin test %d %.*s\n\x00/* %4d - %s%.*s */\n\x00%4d - %s%.*s \x00PRAGMA wal_checkpoint;\x00-- end test %d\n\x00%4d.%03ds\n\x00       TOTAL%.*s %4d.%03ds\n\x00Verification Hash: %llu \x00\n\x00%02x\x00EXPLAIN \x00%.*s;\n\x00CREATE *\x00DROP *\x00ALTER *\x00%s;\n\x00SQL error: %s\n%s\n\x00exec error: %s\n\x00SQL error: %s\n\x00%s\n\x00nil\x00-IFTBN\x000123456789abcdef\x00%d INSERTs into table with no index\x00BEGIN\x00CREATE%s TABLE z1(a INTEGER %s, b INTEGER %s, c TEXT %s);\x00INSERT INTO z1 VALUES(?1,?2,?3); --  %d times\x00COMMIT\x00%d ordered INSERTS with one index/PK\x00CREATE%s TABLE z2(a INTEGER %s %s, b INTEGER %s, c TEXT %s) %s\x00INSERT INTO z2 VALUES(?1,?2,?3); -- %d times\x00%d unordered INSERTS with one index/PK\x00CREATE%s TABLE t3(a INTEGER %s %s, b INTEGER %s, c TEXT %s) %s\x00INSERT INTO t3 VALUES(?1,?2,?3); -- %d times\x00%d SELECTS, numeric BETWEEN, unindexed\x00SELECT count(*), avg(b), sum(length(c)), group_concat(c) FROM z1\n WHERE b BETWEEN ?1 AND ?2; -- %d times\x00%d SELECTS, LIKE, unindexed\x00SELECT count(*), avg(b), sum(length(c)), group_concat(c) FROM z1\n WHERE c LIKE ?1; -- %d times\x00%d SELECTS w/ORDER BY, unindexed\x00SELECT a, b, c FROM z1 WHERE c LIKE ?1\n ORDER BY a; -- %d times\x00%d SELECTS w/ORDER BY and LIMIT, unindexed\x00SELECT a, b, c FROM z1 WHERE c LIKE ?1\n ORDER BY a LIMIT 10; -- %d times\x00CREATE INDEX five times\x00BEGIN;\x00CREATE UNIQUE INDEX t1b ON z1(b);\x00CREATE INDEX t1c ON z1(c);\x00CREATE UNIQUE INDEX t2b ON z2(b);\x00CREATE INDEX t2c ON z2(c DESC);\x00CREATE INDEX t3bc ON t3(b,c);\x00COMMIT;\x00%d SELECTS, numeric BETWEEN, indexed\x00SELECT count(*), avg(b), sum(length(c)), group_concat(a) FROM z1\n WHERE b BETWEEN ?1 AND ?2; -- %d times\x00%d SELECTS, numeric BETWEEN, PK\x00SELECT count(*), avg(b), sum(length(c)), group_concat(a) FROM z2\n WHERE a BETWEEN ?1 AND ?2; -- %d times\x00%d SELECTS, text BETWEEN, indexed\x00SELECT count(*), avg(b), sum(length(c)), group_concat(a) FROM z1\n WHERE c BETWEEN ?1 AND (?1||'~'); -- %d times\x00%d INSERTS with three indexes\x00CREATE%s TABLE t4(\n  a INTEGER %s %s,\n  b INTEGER %s,\n  c TEXT %s\n) %s\x00CREATE INDEX t4b ON t4(b)\x00CREATE INDEX t4c ON t4(c)\x00INSERT INTO t4 SELECT * FROM z1\x00DELETE and REFILL one table\x00DELETE FROM z2;\x00INSERT INTO z2 SELECT * FROM z1;\x00VACUUM\x00ALTER TABLE ADD COLUMN, and query\x00ALTER TABLE z2 ADD COLUMN d INT DEFAULT 123\x00SELECT sum(d) FROM z2\x00%d UPDATES, numeric BETWEEN, indexed\x00UPDATE z2 SET d=b*2 WHERE b BETWEEN ?1 AND ?2; -- %d times\x00%d UPDATES of individual rows\x00UPDATE z2 SET d=b*3 WHERE a=?1; -- %d times\x00One big UPDATE of the whole %d-row table\x00UPDATE z2 SET d=b*4\x00Query added column after filling\x00%d DELETEs, numeric BETWEEN, indexed\x00DELETE FROM z2 WHERE b BETWEEN ?1 AND ?2; -- %d times\x00%d DELETEs of individual rows\x00DELETE FROM t3 WHERE a=?1; -- %d times\x00Refill two %d-row tables using REPLACE\x00REPLACE INTO z2(a,b,c) SELECT a,b,c FROM z1\x00REPLACE INTO t3(a,b,c) SELECT a,b,c FROM z1\x00Refill a %d-row table using (b&1)==(a&1)\x00INSERT INTO z2(a,b,c)\n SELECT a,b,c FROM z1  WHERE (b&1)==(a&1);\x00INSERT INTO z2(a,b,c)\n SELECT a,b,c FROM z1  WHERE (b&1)<>(a&1);\x00%d four-ways joins\x00SELECT z1.c FROM z1, z2, t3, t4\n WHERE t4.a BETWEEN ?1 AND ?2\n   AND t3.a=t4.b\n   AND z2.a=t3.b\n   AND z1.c=z2.c;\x00subquery in result set\x00SELECT sum(a), max(c),\n       avg((SELECT a FROM z2 WHERE 5+z2.b=z1.b) AND rowid<?1), max(c)\n FROM z1 WHERE rowid<?1;\x00%d REPLACE ops on an IPK\x00CREATE%s TABLE t5(a INTEGER PRIMARY KEY, b %s);\x00REPLACE INTO t5 VALUES(?1,?2); --  %d times\x00%d SELECTS on an IPK\x00SELECT b FROM t5 WHERE a=?1; --  %d times\x00%d REPLACE on TEXT PK\x00WITHOUT ROWID\x00CREATE%s TABLE t6(a TEXT PRIMARY KEY, b %s)%s;\x00REPLACE INTO t6 VALUES(?1,?2); --  %d times\x00%d SELECTS on a TEXT PK\x00SELECT b FROM t6 WHERE a=?1; --  %d times\x00%d SELECT DISTINCT\x00SELECT DISTINCT b FROM t5;\x00SELECT DISTINCT b FROM t6;\x00PRAGMA integrity_check\x00ANALYZE\x00534...9..67.195....98....6.8...6...34..8.3..1....2...6.6....28....419..5...28..79\x0053....9..6..195....98....6.8...6...34..8.3..1....2...6.6....28....419..5....8..79\x0053.......6..195....98....6.8...6...34..8.3..1....2...6.6....28....419..5....8..79\x00Sudoku with recursive 'digits'\x00WITH RECURSIVE\n  input(sud) AS (VALUES(?1)),\n  digits(z,lp) AS (\n    VALUES('1', 1)\n    UNION ALL\n    SELECT CAST(lp+1 AS TEXT), lp+1 FROM digits WHERE lp<9\n  ),\n  x(s, ind) AS (\n    SELECT sud, instr(sud, '.') FROM input\n    UNION ALL\n    SELECT\n      substr(s, 1, ind-1) || z || substr(s, ind+1),\n      instr( substr(s, 1, ind-1) || z || substr(s, ind+1), '.' )\n     FROM x, digits AS z\n    WHERE ind>0\n      AND NOT EXISTS (\n            SELECT 1\n              FROM digits AS lp\n             WHERE z.z = substr(s, ((ind-1)/9)*9 + lp, 1)\n                OR z.z = substr(s, ((ind-1)%%9) + (lp-1)*9 + 1, 1)\n                OR z.z = substr(s, (((ind-1)/3) %% 3) * 3\n                        + ((ind-1)/27) * 27 + lp\n                        + ((lp-1) / 3) * 6, 1)\n         )\n  )\nSELECT s FROM x WHERE ind=0;\x00Sudoku with VALUES 'digits'\x00WITH RECURSIVE\n  input(sud) AS (VALUES(?1)),\n  digits(z,lp) AS (VALUES('1',1),('2',2),('3',3),('4',4),('5',5),\n                         ('6',6),('7',7),('8',8),('9',9)),\n  x(s, ind) AS (\n    SELECT sud, instr(sud, '.') FROM input\n    UNION ALL\n    SELECT\n      substr(s, 1, ind-1) || z || substr(s, ind+1),\n      instr( substr(s, 1, ind-1) || z || substr(s, ind+1), '.' )\n     FROM x, digits AS z\n    WHERE ind>0\n      AND NOT EXISTS (\n            SELECT 1\n              FROM digits AS lp\n             WHERE z.z = substr(s, ((ind-1)/9)*9 + lp, 1)\n                OR z.z = substr(s, ((ind-1)%%9) + (lp-1)*9 + 1, 1)\n                OR z.z = substr(s, (((ind-1)/3) %% 3) * 3\n                        + ((ind-1)/27) * 27 + lp\n                        + ((lp-1) / 3) * 6, 1)\n         )\n  )\nSELECT s FROM x WHERE ind=0;\x00Mandelbrot Set with spacing=%f\x00WITH RECURSIVE \n  xaxis(x) AS (VALUES(-2.0) UNION ALL SELECT x+?1 FROM xaxis WHERE x<1.2),\n  yaxis(y) AS (VALUES(-1.0) UNION ALL SELECT y+?2 FROM yaxis WHERE y<1.0),\n  m(iter, cx, cy, x, y) AS (\n    SELECT 0, x, y, 0.0, 0.0 FROM xaxis, yaxis\n    UNION ALL\n    SELECT iter+1, cx, cy, x*x-y*y + cx, 2.0*x*y + cy FROM m \n     WHERE (x*x + y*y) < 4.0 AND iter<28\n  ),\n  m2(iter, cx, cy) AS (\n    SELECT max(iter), cx, cy FROM m GROUP BY cx, cy\n  ),\n  a(t) AS (\n    SELECT group_concat( substr(' .+*#', 1+min(iter/7,4), 1), '') \n    FROM m2 GROUP BY cy\n  )\nSELECT group_concat(rtrim(t),x'0a') FROM a;\x00EXCEPT operator on %d-element tables\x00WITH RECURSIVE \n  z1(x) AS (VALUES(2) UNION ALL SELECT x+2 FROM z1 WHERE x<%d),\n  z2(y) AS (VALUES(3) UNION ALL SELECT y+3 FROM z2 WHERE y<%d)\nSELECT count(x), avg(x) FROM (\n  SELECT x FROM z1 EXCEPT SELECT y FROM z2 ORDER BY 1\n);\x00%d.%de%d\x00Fill a table with %d FP values\x00CREATE%s TABLE z1(a REAL %s, b REAL %s);\x00INSERT INTO z1 VALUES(?1,?2); -- %d times\x00%d range queries\x00SELECT sum(b) FROM z1 WHERE a BETWEEN ?1 AND ?2\x00CREATE INDEX three times\x00CREATE INDEX t1a ON z1(a);\x00CREATE INDEX t1b ON z1(b);\x00CREATE INDEX t1ab ON z1(a,b);\x00%d indexed range queries\x00%d calls to round()\x00SELECT sum(round(a,2)+round(b,4)) FROM z1;\x00%d printf() calls\x00WITH c(fmt) AS (VALUES('%%g'),('%%e'),('%%!g'),('%%.20f'))SELECT sum(printf(fmt,a)) FROM z1, c\x00Fill %d rows\x00BEGIN;CREATE TABLE ZLOOKSLIKECOREDATA (  ZPK INTEGER PRIMARY KEY,  ZTERMFITTINGHOUSINGCOMMAND INTEGER,  ZBRIEFGOBYDODGERHEIGHT BLOB,  ZCAPABLETRIPDOORALMOND BLOB,  ZDEPOSITPAIRCOLLEGECOMET INTEGER,  ZFRAMEENTERSIMPLEMOUTH INTEGER,  ZHOPEFULGATEHOLECHALK INTEGER,  ZSLEEPYUSERGRANDBOWL TIMESTAMP,  ZDEWPEACHCAREERCELERY INTEGER,  ZHANGERLITHIUMDINNERMEET VARCHAR,  ZCLUBRELEASELIZARDADVICE VARCHAR,  ZCHARGECLICKHUMANEHIRE INTEGER,  ZFINGERDUEPIZZAOPTION TIMESTAMP,  ZFLYINGDOCTORTABLEMELODY BLOB,  ZLONGFINLEAVEIMAGEOIL TIMESTAMP,  ZFAMILYVISUALOWNERMATTER BLOB,  ZGOLDYOUNGINITIALNOSE FLOAT,  ZCAUSESALAMITERMCYAN BLOB,  ZSPREADMOTORBISCUITBACON FLOAT,  ZGIFTICEFISHGLUEHAIR INTEGER,  ZNOTICEPEARPOLICYJUICE TIMESTAMP,  ZBANKBUFFALORECOVERORBIT TIMESTAMP,  ZLONGDIETESSAYNATURE FLOAT,  ZACTIONRANGEELEGANTNEUTRON BLOB,  ZCADETBRIGHTPLANETBANK TIMESTAMP,  ZAIRFORGIVEHEADFROG BLOB,  ZSHARKJUSTFRUITMOVIE VARCHAR,  ZFARMERMORNINGMIRRORCONCERN BLOB,  ZWOODPOETRYCOBBLERBENCH VARCHAR,  ZHAFNIUMSCRIPTSALADMOTOR INTEGER,  ZPROBLEMCLUBPOPOVERJELLY FLOAT,  ZEIGHTLEADERWORKERMOST TIMESTAMP,  ZGLASSRESERVEBARIUMMEAL BLOB,  ZCLAMBITARUGULAFAJITA BLOB,  ZDECADEJOYOUSWAVEHABIT FLOAT,  ZCOMPANYSUMMERFIBERELF INTEGER,  ZTREATTESTQUILLCHARGE TIMESTAMP,  ZBROWBALANCEKEYCHOWDER FLOAT,  ZPEACHCOPPERDINNERLAKE FLOAT,  ZDRYWALLBEYONDBROWNBOWL VARCHAR,  ZBELLYCRASHITEMLACK BLOB,  ZTENNISCYCLEBILLOFFICER INTEGER,  ZMALLEQUIPTHANKSGLUE FLOAT,  ZMISSREPLYHUMANLIVING INTEGER,  ZKIWIVISUALPRIDEAPPLE VARCHAR,  ZWISHHITSKINMOTOR BLOB,  ZCALMRACCOONPROGRAMDEBIT VARCHAR,  ZSHINYASSISTLIVINGCRAB VARCHAR,  ZRESOLVEWRISTWRAPAPPLE VARCHAR,  ZAPPEALSIMPLESECONDHOUSING BLOB,  ZCORNERANCHORTAPEDIVER TIMESTAMP,  ZMEMORYREQUESTSOURCEBIG VARCHAR,  ZTRYFACTKEEPMILK TIMESTAMP,  ZDIVERPAINTLEATHEREASY INTEGER,  ZSORTMISTYQUOTECABBAGE BLOB,  ZTUNEGASBUFFALOCAPITAL BLOB,  ZFILLSTOPLAWJOYFUL FLOAT,  ZSTEELCAREFULPLATENUMBER FLOAT,  ZGIVEVIVIDDIVINEMEANING INTEGER,  ZTREATPACKFUTURECONVERT VARCHAR,  ZCALMLYGEMFINISHEFFECT INTEGER,  ZCABBAGESOCKEASEMINUTE BLOB,  ZPLANETFAMILYPUREMEMORY TIMESTAMP,  ZMERRYCRACKTRAINLEADER BLOB,  ZMINORWAYPAPERCLASSY TIMESTAMP,  ZEAGLELINEMINEMAIL VARCHAR,  ZRESORTYARDGREENLET TIMESTAMP,  ZYARDOREGANOVIVIDJEWEL TIMESTAMP,  ZPURECAKEVIVIDNEATLY FLOAT,  ZASKCONTACTMONITORFUN TIMESTAMP,  ZMOVEWHOGAMMAINCH VARCHAR,  ZLETTUCEBIRDMEETDEBATE TIMESTAMP,  ZGENENATURALHEARINGKITE VARCHAR,  ZMUFFINDRYERDRAWFORTUNE FLOAT,  ZGRAYSURVEYWIRELOVE FLOAT,  ZPLIERSPRINTASKOREGANO INTEGER,  ZTRAVELDRIVERCONTESTLILY INTEGER,  ZHUMORSPICESANDKIDNEY TIMESTAMP,  ZARSENICSAMPLEWAITMUON INTEGER,  ZLACEADDRESSGROUNDCAREFUL FLOAT,  ZBAMBOOMESSWASABIEVENING BLOB,  ZONERELEASEAVERAGENURSE INTEGER,  ZRADIANTWHENTRYCARD TIMESTAMP,  ZREWARDINSIDEMANGOINTENSE FLOAT,  ZNEATSTEWPARTIRON TIMESTAMP,  ZOUTSIDEPEAHENCOUNTICE TIMESTAMP,  ZCREAMEVENINGLIPBRANCH FLOAT,  ZWHALEMATHAVOCADOCOPPER FLOAT,  ZLIFEUSELEAFYBELL FLOAT,  ZWEALTHLINENGLEEFULDAY VARCHAR,  ZFACEINVITETALKGOLD BLOB,  ZWESTAMOUNTAFFECTHEARING INTEGER,  ZDELAYOUTCOMEHORNAGENCY INTEGER,  ZBIGTHINKCONVERTECONOMY BLOB,  ZBASEGOUDAREGULARFORGIVE TIMESTAMP,  ZPATTERNCLORINEGRANDCOLBY TIMESTAMP,  ZCYANBASEFEEDADROIT INTEGER,  ZCARRYFLOORMINNOWDRAGON TIMESTAMP,  ZIMAGEPENCILOTHERBOTTOM FLOAT,  ZXENONFLIGHTPALEAPPLE TIMESTAMP,  ZHERRINGJOKEFEATUREHOPEFUL FLOAT,  ZCAPYEARLYRIVETBRUSH FLOAT,  ZAGEREEDFROGBASKET VARCHAR,  ZUSUALBODYHALIBUTDIAMOND VARCHAR,  ZFOOTTAPWORDENTRY VARCHAR,  ZDISHKEEPBLESTMONITOR FLOAT,  ZBROADABLESOLIDCASUAL INTEGER,  ZSQUAREGLEEFULCHILDLIGHT INTEGER,  ZHOLIDAYHEADPONYDETAIL INTEGER,  ZGENERALRESORTSKYOPEN TIMESTAMP,  ZGLADSPRAYKIDNEYGUPPY VARCHAR,  ZSWIMHEAVYMENTIONKIND BLOB,  ZMESSYSULFURDREAMFESTIVE BLOB,  ZSKYSKYCLASSICBRIEF VARCHAR,  ZDILLASKHOKILEMON FLOAT,  ZJUNIORSHOWPRESSNOVA FLOAT,  ZSIZETOEAWARDFRESH TIMESTAMP,  ZKEYFAILAPRICOTMETAL VARCHAR,  ZHANDYREPAIRPROTONAIRPORT VARCHAR,  ZPOSTPROTEINHANDLEACTOR BLOB);\x00INSERT INTO ZLOOKSLIKECOREDATA(ZPK,ZAIRFORGIVEHEADFROG,ZGIFTICEFISHGLUEHAIR,ZDELAYOUTCOMEHORNAGENCY,ZSLEEPYUSERGRANDBOWL,ZGLASSRESERVEBARIUMMEAL,ZBRIEFGOBYDODGERHEIGHT,ZBAMBOOMESSWASABIEVENING,ZFARMERMORNINGMIRRORCONCERN,ZTREATPACKFUTURECONVERT,ZCAUSESALAMITERMCYAN,ZCALMRACCOONPROGRAMDEBIT,ZHOLIDAYHEADPONYDETAIL,ZWOODPOETRYCOBBLERBENCH,ZHAFNIUMSCRIPTSALADMOTOR,ZUSUALBODYHALIBUTDIAMOND,ZOUTSIDEPEAHENCOUNTICE,ZDIVERPAINTLEATHEREASY,ZWESTAMOUNTAFFECTHEARING,ZSIZETOEAWARDFRESH,ZDEWPEACHCAREERCELERY,ZSTEELCAREFULPLATENUMBER,ZCYANBASEFEEDADROIT,ZCALMLYGEMFINISHEFFECT,ZHANDYREPAIRPROTONAIRPORT,ZGENENATURALHEARINGKITE,ZBROADABLESOLIDCASUAL,ZPOSTPROTEINHANDLEACTOR,ZLACEADDRESSGROUNDCAREFUL,ZIMAGEPENCILOTHERBOTTOM,ZPROBLEMCLUBPOPOVERJELLY,ZPATTERNCLORINEGRANDCOLBY,ZNEATSTEWPARTIRON,ZAPPEALSIMPLESECONDHOUSING,ZMOVEWHOGAMMAINCH,ZTENNISCYCLEBILLOFFICER,ZSHARKJUSTFRUITMOVIE,ZKEYFAILAPRICOTMETAL,ZCOMPANYSUMMERFIBERELF,ZTERMFITTINGHOUSINGCOMMAND,ZRESORTYARDGREENLET,ZCABBAGESOCKEASEMINUTE,ZSQUAREGLEEFULCHILDLIGHT,ZONERELEASEAVERAGENURSE,ZBIGTHINKCONVERTECONOMY,ZPLIERSPRINTASKOREGANO,ZDECADEJOYOUSWAVEHABIT,ZDRYWALLBEYONDBROWNBOWL,ZCLUBRELEASELIZARDADVICE,ZWHALEMATHAVOCADOCOPPER,ZBELLYCRASHITEMLACK,ZLETTUCEBIRDMEETDEBATE,ZCAPABLETRIPDOORALMOND,ZRADIANTWHENTRYCARD,ZCAPYEARLYRIVETBRUSH,ZAGEREEDFROGBASKET,ZSWIMHEAVYMENTIONKIND,ZTRAVELDRIVERCONTESTLILY,ZGLADSPRAYKIDNEYGUPPY,ZBANKBUFFALORECOVERORBIT,ZFINGERDUEPIZZAOPTION,ZCLAMBITARUGULAFAJITA,ZLONGFINLEAVEIMAGEOIL,ZLONGDIETESSAYNATURE,ZJUNIORSHOWPRESSNOVA,ZHOPEFULGATEHOLECHALK,ZDEPOSITPAIRCOLLEGECOMET,ZWEALTHLINENGLEEFULDAY,ZFILLSTOPLAWJOYFUL,ZTUNEGASBUFFALOCAPITAL,ZGRAYSURVEYWIRELOVE,ZCORNERANCHORTAPEDIVER,ZREWARDINSIDEMANGOINTENSE,ZCADETBRIGHTPLANETBANK,ZPLANETFAMILYPUREMEMORY,ZTREATTESTQUILLCHARGE,ZCREAMEVENINGLIPBRANCH,ZSKYSKYCLASSICBRIEF,ZARSENICSAMPLEWAITMUON,ZBROWBALANCEKEYCHOWDER,ZFLYINGDOCTORTABLEMELODY,ZHANGERLITHIUMDINNERMEET,ZNOTICEPEARPOLICYJUICE,ZSHINYASSISTLIVINGCRAB,ZLIFEUSELEAFYBELL,ZFACEINVITETALKGOLD,ZGENERALRESORTSKYOPEN,ZPURECAKEVIVIDNEATLY,ZKIWIVISUALPRIDEAPPLE,ZMESSYSULFURDREAMFESTIVE,ZCHARGECLICKHUMANEHIRE,ZHERRINGJOKEFEATUREHOPEFUL,ZYARDOREGANOVIVIDJEWEL,ZFOOTTAPWORDENTRY,ZWISHHITSKINMOTOR,ZBASEGOUDAREGULARFORGIVE,ZMUFFINDRYERDRAWFORTUNE,ZACTIONRANGEELEGANTNEUTRON,ZTRYFACTKEEPMILK,ZPEACHCOPPERDINNERLAKE,ZFRAMEENTERSIMPLEMOUTH,ZMERRYCRACKTRAINLEADER,ZMEMORYREQUESTSOURCEBIG,ZCARRYFLOORMINNOWDRAGON,ZMINORWAYPAPERCLASSY,ZDILLASKHOKILEMON,ZRESOLVEWRISTWRAPAPPLE,ZASKCONTACTMONITORFUN,ZGIVEVIVIDDIVINEMEANING,ZEIGHTLEADERWORKERMOST,ZMISSREPLYHUMANLIVING,ZXENONFLIGHTPALEAPPLE,ZSORTMISTYQUOTECABBAGE,ZEAGLELINEMINEMAIL,ZFAMILYVISUALOWNERMATTER,ZSPREADMOTORBISCUITBACON,ZDISHKEEPBLESTMONITOR,ZMALLEQUIPTHANKSGLUE,ZGOLDYOUNGINITIALNOSE,ZHUMORSPICESANDKIDNEY)VALUES(?1,?26,?20,?93,?8,?33,?3,?81,?28,?60,?18,?47,?109,?29,?30,?104,?86,?54,?92,?117,?9,?58,?97,?61,?119,?73,?107,?120,?80,?99,?31,?96,?85,?50,?71,?42,?27,?118,?36,?2,?67,?62,?108,?82,?94,?76,?35,?40,?11,?88,?41,?72,?4,?83,?102,?103,?112,?77,?111,?22,?13,?34,?15,?23,?116,?7,?5,?90,?57,?56,?75,?51,?84,?25,?63,?37,?87,?114,?79,?38,?14,?10,?21,?48,?89,?91,?110,?69,?45,?113,?12,?101,?68,?105,?46,?95,?74,?24,?53,?39,?6,?64,?52,?98,?65,?115,?49,?70,?59,?32,?44,?100,?55,?66,?16,?19,?106,?43,?17,?78);\x00Query %d rows by rowid\x00SELECT ZCYANBASEFEEDADROIT,ZJUNIORSHOWPRESSNOVA,ZCAUSESALAMITERMCYAN,ZHOPEFULGATEHOLECHALK,ZHUMORSPICESANDKIDNEY,ZSWIMHEAVYMENTIONKIND,ZMOVEWHOGAMMAINCH,ZAPPEALSIMPLESECONDHOUSING,ZHAFNIUMSCRIPTSALADMOTOR,ZNEATSTEWPARTIRON,ZLONGFINLEAVEIMAGEOIL,ZDEWPEACHCAREERCELERY,ZXENONFLIGHTPALEAPPLE,ZCALMRACCOONPROGRAMDEBIT,ZUSUALBODYHALIBUTDIAMOND,ZTRYFACTKEEPMILK,ZWEALTHLINENGLEEFULDAY,ZLONGDIETESSAYNATURE,ZLIFEUSELEAFYBELL,ZTREATPACKFUTURECONVERT,ZMEMORYREQUESTSOURCEBIG,ZYARDOREGANOVIVIDJEWEL,ZDEPOSITPAIRCOLLEGECOMET,ZSLEEPYUSERGRANDBOWL,ZBRIEFGOBYDODGERHEIGHT,ZCLUBRELEASELIZARDADVICE,ZCAPABLETRIPDOORALMOND,ZDRYWALLBEYONDBROWNBOWL,ZASKCONTACTMONITORFUN,ZKIWIVISUALPRIDEAPPLE,ZNOTICEPEARPOLICYJUICE,ZPEACHCOPPERDINNERLAKE,ZSTEELCAREFULPLATENUMBER,ZGLADSPRAYKIDNEYGUPPY,ZCOMPANYSUMMERFIBERELF,ZTENNISCYCLEBILLOFFICER,ZIMAGEPENCILOTHERBOTTOM,ZWESTAMOUNTAFFECTHEARING,ZDIVERPAINTLEATHEREASY,ZSKYSKYCLASSICBRIEF,ZMESSYSULFURDREAMFESTIVE,ZMERRYCRACKTRAINLEADER,ZBROADABLESOLIDCASUAL,ZGLASSRESERVEBARIUMMEAL,ZTUNEGASBUFFALOCAPITAL,ZBANKBUFFALORECOVERORBIT,ZTREATTESTQUILLCHARGE,ZBAMBOOMESSWASABIEVENING,ZREWARDINSIDEMANGOINTENSE,ZEAGLELINEMINEMAIL,ZCALMLYGEMFINISHEFFECT,ZKEYFAILAPRICOTMETAL,ZFINGERDUEPIZZAOPTION,ZCADETBRIGHTPLANETBANK,ZGOLDYOUNGINITIALNOSE,ZMISSREPLYHUMANLIVING,ZEIGHTLEADERWORKERMOST,ZFRAMEENTERSIMPLEMOUTH,ZBIGTHINKCONVERTECONOMY,ZFACEINVITETALKGOLD,ZPOSTPROTEINHANDLEACTOR,ZHERRINGJOKEFEATUREHOPEFUL,ZCABBAGESOCKEASEMINUTE,ZMUFFINDRYERDRAWFORTUNE,ZPROBLEMCLUBPOPOVERJELLY,ZGIVEVIVIDDIVINEMEANING,ZGENENATURALHEARINGKITE,ZGENERALRESORTSKYOPEN,ZLETTUCEBIRDMEETDEBATE,ZBASEGOUDAREGULARFORGIVE,ZCHARGECLICKHUMANEHIRE,ZPLANETFAMILYPUREMEMORY,ZMINORWAYPAPERCLASSY,ZCAPYEARLYRIVETBRUSH,ZSIZETOEAWARDFRESH,ZARSENICSAMPLEWAITMUON,ZSQUAREGLEEFULCHILDLIGHT,ZSHINYASSISTLIVINGCRAB,ZCORNERANCHORTAPEDIVER,ZDECADEJOYOUSWAVEHABIT,ZTRAVELDRIVERCONTESTLILY,ZFLYINGDOCTORTABLEMELODY,ZSHARKJUSTFRUITMOVIE,ZFAMILYVISUALOWNERMATTER,ZFARMERMORNINGMIRRORCONCERN,ZGIFTICEFISHGLUEHAIR,ZOUTSIDEPEAHENCOUNTICE,ZSPREADMOTORBISCUITBACON,ZWISHHITSKINMOTOR,ZHOLIDAYHEADPONYDETAIL,ZWOODPOETRYCOBBLERBENCH,ZAIRFORGIVEHEADFROG,ZBROWBALANCEKEYCHOWDER,ZDISHKEEPBLESTMONITOR,ZCLAMBITARUGULAFAJITA,ZPLIERSPRINTASKOREGANO,ZRADIANTWHENTRYCARD,ZDELAYOUTCOMEHORNAGENCY,ZPURECAKEVIVIDNEATLY,ZPATTERNCLORINEGRANDCOLBY,ZHANDYREPAIRPROTONAIRPORT,ZAGEREEDFROGBASKET,ZSORTMISTYQUOTECABBAGE,ZFOOTTAPWORDENTRY,ZRESOLVEWRISTWRAPAPPLE,ZDILLASKHOKILEMON,ZFILLSTOPLAWJOYFUL,ZACTIONRANGEELEGANTNEUTRON,ZRESORTYARDGREENLET,ZCREAMEVENINGLIPBRANCH,ZWHALEMATHAVOCADOCOPPER,ZGRAYSURVEYWIRELOVE,ZBELLYCRASHITEMLACK,ZHANGERLITHIUMDINNERMEET,ZCARRYFLOORMINNOWDRAGON,ZMALLEQUIPTHANKSGLUE,ZTERMFITTINGHOUSINGCOMMAND,ZONERELEASEAVERAGENURSE,ZLACEADDRESSGROUNDCAREFUL FROM ZLOOKSLIKECOREDATA WHERE ZPK=?1;\x00BEGIN;CREATE TABLE z1(rowid INTEGER PRIMARY KEY, i INTEGER, t TEXT);CREATE TABLE z2(rowid INTEGER PRIMARY KEY, i INTEGER, t TEXT);CREATE TABLE t3(rowid INTEGER PRIMARY KEY, i INTEGER, t TEXT);CREATE VIEW v1 AS SELECT rowid, i, t FROM z1;CREATE VIEW v2 AS SELECT rowid, i, t FROM z2;CREATE VIEW v3 AS SELECT rowid, i, t FROM t3;\x00INSERT INTO t%d VALUES(NULL,?1,?2)\x00CREATE INDEX i1 ON z1(t);CREATE INDEX i2 ON z2(t);CREATE INDEX i3 ON t3(t);COMMIT;\x00speed4p-join1\x00SELECT * FROM z1, z2, t3 WHERE z1.oid = z2.oid AND z2.oid = t3.oid\x00speed4p-join2\x00SELECT * FROM z1, z2, t3 WHERE z1.t = z2.t AND z2.t = t3.t\x00speed4p-view1\x00SELECT * FROM v%d WHERE rowid = ?\x00speed4p-table1\x00SELECT * FROM t%d WHERE rowid = ?\x00speed4p-subselect1\x00SELECT (SELECT t FROM z1 WHERE rowid = ?1),(SELECT t FROM z2 WHERE rowid = ?1),(SELECT t FROM t3 WHERE rowid = ?1)\x00speed4p-rowid-update\x00UPDATE z1 SET i=i+1 WHERE rowid=?1\x00CREATE TABLE t5(t TEXT PRIMARY KEY, i INTEGER);\x00speed4p-insert-ignore\x00INSERT OR IGNORE INTO t5 SELECT t, i FROM z1\x00CREATE TABLE log(op TEXT, r INTEGER, i INTEGER, t TEXT);CREATE TABLE t4(rowid INTEGER PRIMARY KEY, i INTEGER, t TEXT);CREATE TRIGGER t4_trigger1 AFTER INSERT ON t4 BEGIN  INSERT INTO log VALUES('INSERT INTO t4', new.rowid, new.i, new.t);END;CREATE TRIGGER t4_trigger2 AFTER UPDATE ON t4 BEGIN  INSERT INTO log VALUES('UPDATE OF t4', new.rowid, new.i, new.t);END;CREATE TRIGGER t4_trigger3 AFTER DELETE ON t4 BEGIN  INSERT INTO log VALUES('DELETE OF t4', old.rowid, old.i, old.t);END;BEGIN;\x00speed4p-trigger1\x00INSERT INTO t4 VALUES(NULL, ?1, ?2)\x00speed4p-trigger2\x00UPDATE t4 SET i = ?1, t = ?2 WHERE rowid = ?3\x00speed4p-trigger3\x00DELETE FROM t4 WHERE rowid = ?1\x00DROP TABLE t4;DROP TABLE log;VACUUM;CREATE TABLE t4(rowid INTEGER PRIMARY KEY, i INTEGER, t TEXT);BEGIN;\x00speed4p-notrigger1\x00speed4p-notrigger2\x00speed4p-notrigger3\x00%5d %5d %5d %s\n\x00-- Compile option: %s\n\x00main\x00-- Speedtest1 for SQLite %s %.48s\n\x00UNIQUE\x00autovacuum\x00big-transactions\x00cachesize\x00missing argument on %s\n\x00exclusive\x00fullfsync\x00checkpoint\x00explain\x00heap\x00incrvacuum\x00journal\x00key\x00lookaside\x00memdb\x00multithread\x00nomemstat\x00mmap\x00nolongdouble\x00nomutex\x00nosync\x00notnull\x00NOT NULL\x00output\x00-\x00wb\x00cannot open \"%s\" for writing\n\x00pagesize\x00pcache\x00primarykey\x00PRIMARY KEY\x00repeat\x00reprepare\x00serialized\x00singlethread\x00script\x00unable to open output file \"%s\"\n\x00sqlonly\x00shrink-memory\x00size\x00stats\x00temp\x00argument to --temp should be integer between 0 and 9\x00testset\x00trace\x00threads\x00utf16le\x00utf16be\x00verify\x00vfs\x00reserve\x00stmtscanstatus\x00without-rowid\x00WITHOUT\x00STRICT\x00WITHOUT ROWID,STRICT\x00strict\x00help\x00?\x00unknown option: %s\nUse \"%s -?\" for help\n\x00surplus argument: %s\nUse \"%s -?\" for help\n\x00cannot allocate %d-byte heap\n\x00heap configuration failed: %d\n\x00cannot allocate %lld-byte pcache\n\x00pcache configuration failed: %d\n\x00:memory:\x00Cannot open database file: %s\n\x00lookaside configuration failed: %d\n\x00random\x00PRAGMA temp_store=memory\x00PRAGMA mmap_size=%d\x00PRAGMA threads=%d\x00PRAGMA key('%s')\x00PRAGMA encoding=%s\x00PRAGMA auto_vacuum=FULL\x00PRAGMA auto_vacuum=INCREMENTAL\x00PRAGMA page_size=%d\x00PRAGMA cache_size=%d\x00PRAGMA synchronous=OFF\x00PRAGMA fullfsync=ON\x00PRAGMA locking_mode=EXCLUSIVE\x00PRAGMA journal_mode=%s\x00.explain\n.echo on\n\x00       Begin testset \"%s\"\n\x00debug1\x00orm\x00cte\x00fp\x00trigger\x00rtree\x00compile with -DSQLITE_ENABLE_RTREE to enable the R-Tree tests\n\x00unknown testset: \"%s\"\nChoices: cte debug1 fp main orm rtree trigger\n\x00Reset the database\x00SELECT name FROM main.sqlite_master WHERE sql LIKE 'CREATE %%TABLE%%'\x00DROP TABLE main.\"%w\"\x00SELECT name FROM temp.sqlite_master WHERE sql LIKE 'CREATE %%TABLE%%'\x00PRAGMA compile_options\x00-- Lookaside Slots Used:        %d (max %d)\n\x00-- Successful lookasides:       %d\n\x00-- Lookaside size faults:       %d\n\x00-- Lookaside OOM faults:        %d\n\x00-- Pager Heap Usage:            %d bytes\n\x00-- Page cache hits:             %d\n\x00-- Page cache misses:           %d\n\x00-- Page cache writes:           %d\n\x00-- Schema Heap Usage:           %d bytes\n\x00-- Statement Heap Usage:        %d bytes\n\x00-- Memory Used (bytes):         %d (max %d)\n\x00-- Outstanding Allocations:     %d (max %d)\n\x00-- Pcache Overflow Bytes:       %d (max %d)\n\x00-- Largest Allocation:          %d bytes\n\x00-- Largest Pcache Allocation:   %d bytes\n\x00"
