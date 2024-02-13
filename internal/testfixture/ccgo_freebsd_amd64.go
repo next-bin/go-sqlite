@@ -2490,7 +2490,6 @@ const m___WORD_BIT = 32
 const m___XSI_VISIBLE = 700
 const m___amd64 = 1
 const m___amd64__ = 1
-const m___builtin_va_list = "__builtin_va_list"
 const m___clang__ = 1
 const m___clang_literal_encoding__ = "UTF-8"
 const m___clang_major__ = 16
