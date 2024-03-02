@@ -6,6 +6,7 @@ package libsqlite3 // import "modernc.org/libsqlite3"
 
 import (
 	"bytes"
+	"context"
 	"embed"
 	"flag"
 	"fmt"
@@ -16,20 +17,24 @@ import (
 	"runtime"
 	"strconv"
 	"strings"
+	"sync"
 	"testing"
+	"time"
 
-	util "modernc.org/ccgo/v3/lib"
+	util "modernc.org/fileutil/ccgo"
 	_ "modernc.org/ccgo/v4/lib"
+	"modernc.org/libc"
 	"modernc.org/libtcl8.6/library"
 )
 
 var (
-	oMaxError = flag.Uint("maxerror", 0, "stop after <uint> errors")
+	oInner    = flag.Bool("inner", false, "internal use")
 	oMatch    = flag.String("match", "", "pattern match for tests")
+	oMaxError = flag.Uint("maxerror", 0, "stop after <uint> errors")
+	oQuiet    = flag.Bool("q", true, "reduce output")
 	oStart    = flag.String("start", "", "-start=[$permutation:]$testfile")
 	oSuite    = flag.String("suite", "full", "suite [test-file] to run")
 	oVerbose  = flag.String("verbose", "0", `"0", "1" or "file"`)
-	oQuiet    = flag.Bool("q", true, "reduce output")
 	oXTags    = flag.String("xtags", "", "passed as -tags to go build of testfixture")
 
 	expectedFailures = map[string]struct{}{
@@ -59,6 +64,55 @@ var (
 func TestMain(m *testing.M) {
 	rc := m.Run()
 	os.Exit(rc)
+}
+
+// https://gitlab.com/cznic/sqlite/-/issues/173
+func TestIssueSqlite173(t *testing.T) {
+	// This test should fail in v1.29.1 and v1.29.2 with -race
+	const (
+		N = 100
+		M = 100
+	)
+
+	if *oInner {
+		var wg sync.WaitGroup
+		for i := 0; i < N; i++ {
+			wg.Add(1)
+
+			go func() {
+				defer wg.Done()
+
+				tls := libc.NewTLS()
+				buf := tls.Alloc(100)
+
+				defer tls.Free(100)
+
+				for j := 0; j < M; j++ {
+					_unixRandomness(tls, 0, 100, buf)
+				}
+			}()
+		}
+		wg.Wait()
+		return
+	}
+
+	t.Logf("recursively invoking this test with -race\n")
+	ctx, cancel := context.WithTimeout(context.Background(), time.Hour)
+
+	defer cancel()
+
+	out, err := util.Shell(ctx, "go", "test", "-v", "-timeout", "1h", "-race", "-run", "TestIssueSqlite173", "-inner")
+	switch s := string(out); {
+	case err == nil:
+		t.Logf("recursive test -race: PASS")
+	case
+		strings.Contains(s, "-race is not supported"),
+		strings.Contains(s, "unsupported VMA range"):
+
+		t.Logf("recursive test -race: SKIP: %v", err)
+	default:
+		t.Fatalf("FAIL err=%v out=%s", err, out)
+	}
 }
 
 func TestConcurrentProcesses(t *testing.T) {
@@ -250,18 +304,18 @@ func TestTclTest(t *testing.T) {
 	case goos == "windows":
 		bin += ".exe"
 		src = filepath.Join("internal", "testfixture", "ccgo_windows.go")
-		if out, err := util.Shell("go", "build", "-o", bin, "-tags="+*oXTags, src); err != nil {
+		if out, err := util.Shell(nil, "go", "build", "-o", bin, "-tags="+*oXTags, src); err != nil {
 			t.Fatalf("%s\nFAIL: %v", out, err)
 		}
 	case goos == "darwin":
 		src = filepath.Join("internal", "testfixture", fmt.Sprintf("ccgo_%s_%s.go", runtime.GOOS, runtime.GOARCH))
 		src2 := filepath.Join("internal", "testfixture", "patch_darwin.go")
-		if out, err := util.Shell("go", "build", "-o", bin, "-tags="+*oXTags, src, src2); err != nil {
+		if out, err := util.Shell(nil, "go", "build", "-o", bin, "-tags="+*oXTags, src, src2); err != nil {
 			t.Fatalf("%s\nFAIL: %v", out, err)
 		}
 	default:
 		src = filepath.Join("internal", "testfixture", fmt.Sprintf("ccgo_%s_%s.go", runtime.GOOS, runtime.GOARCH))
-		if out, err := util.Shell("go", "build", "-o", bin, "-tags="+*oXTags, src); err != nil {
+		if out, err := util.Shell(nil, "go", "build", "-o", bin, "-tags="+*oXTags, src); err != nil {
 			t.Fatalf("%s\nFAIL: %v", out, err)
 		}
 	}
@@ -314,7 +368,7 @@ func TestTclTest(t *testing.T) {
 	var out []byte
 	util.InDir(tmpDir, func() error {
 		bin := filepath.Base(bin)
-		if out, err = util.Shell(bin, args...); err != nil {
+		if out, err = util.Shell(nil, bin, args...); err != nil {
 			switch err.Error() {
 			case "exit status 1":
 				t.Logf("fail: %v", err)
