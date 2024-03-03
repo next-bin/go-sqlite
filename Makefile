@@ -4,6 +4,8 @@
 
 .PHONY:	all clean dev download edit editor extraquick generate mptest test work xtest
 
+SHELL=/bin/bash -o pipefail
+
 DIR = /tmp/libsqlite3
 ZIP = sqlite-amalgamation-3450100.zip
 ZIP2 = sqlite-src-3450100.zip

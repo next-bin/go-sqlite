@@ -123,6 +123,8 @@ func main() {
 	mustCopyDir(ccgoInc, filepath.Join("..", "libz", "include", goos, goarch), nil, false)
 	mustCopyDir(ccgoInc, filepath.Join("..", "libtcl8.6", "include", goos, goarch), nil, false)
 	util.MustShell(true, "unzip", archivePath, "-d", tempDir)
+	// https://gitlab.com/cznic/sqlite/-/issues/173
+	util.MustShell(true, "patch", filepath.Join(libRoot, "sqlite3.c"), filepath.Join("internal", "sqlite_issue173.patch"))
 	fixWin(tempDir)
 	result := "sqlite3.go"
 	util.MustInDir(true, makeRoot, func() (err error) {
@@ -251,6 +253,8 @@ func main() {
 	fmt.Fprintf(os.Stderr, "libRoot %s\n", libRoot)
 	fmt.Fprintf(os.Stderr, "makeRoot %s\n", makeRoot)
 	util.MustShell(true, "unzip", archive2Path, "-d", tempDir)
+	// https://gitlab.com/cznic/sqlite/-/issues/173
+	util.MustShell(true, "patch", filepath.Join(makeRoot, "src", "os_unix.c"), filepath.Join("internal", "sqlite_issue173.patch2"))
 	mustCopyDir(makeRoot, filepath.Join("internal", "overlay", "generator"), nil, false)
 	fixWin(tempDir)
 	mustCopyFile("LICENSE-SQLITE.md", filepath.Join(libRoot, "LICENSE.md"), nil)
@@ -431,7 +435,7 @@ func main() {
 				"-build-lines", "//go:build windows && (amd64 || arm64)\n// +build windows\n// +build amd64 arm64",
 				"-map", "gcc=x86_64-w64-mingw32-gcc",
 				"-o", filepath.Join("mptest", fn),
-				filepath.Join(makeRoot, "test", "mptest.c"),
+				filepath.Join(makeRoot, "mptest", "mptest.c"),
 				"-lsqlite3",
 			},
 			os.Stdout, os.Stderr,
