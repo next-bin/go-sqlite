@@ -1,4 +1,4 @@
-// Code generated for darwin/amd64 by 'generator -DNDEBUG -I /var/folders/4f/mc8mts295pqf7gmnfcwh6g8w0000gn/T/libsqlite3/sqlite-src-3450100 -ignore-unsupported-alignment -o mptest/ccgo_darwin_amd64.go /var/folders/4f/mc8mts295pqf7gmnfcwh6g8w0000gn/T/libsqlite3/sqlite-src-3450100/mptest/mptest.c -lsqlite3', DO NOT EDIT.
+// Code generated for darwin/amd64 by 'generator -DNDEBUG -I /tmp/libsqlite3/sqlite-src-3450100 -ignore-unsupported-alignment -o mptest/ccgo_darwin_amd64.go /tmp/libsqlite3/sqlite-src-3450100/mptest/mptest.c -lsqlite3', DO NOT EDIT.
 
 //go:build darwin && amd64
 // +build darwin,amd64
