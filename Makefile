@@ -6,10 +6,7 @@
 
 DIR = /tmp/libz
 TAR = zlib-1.3.tar.gz
-URL = https://www.zlib.net/$(TAR)
-
-https://www.zlib.net/zlib-1.3.tar.gz
-
+URL = https://zlib.net/$(TAR)
 
 
 all: editor
