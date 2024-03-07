@@ -20,7 +20,7 @@ import (
 )
 
 const (
-	archivePath = "zlib-1.3.tar.gz"
+	archivePath = "zlib-1.3.1.tar.gz"
 )
 
 var (
