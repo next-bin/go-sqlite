@@ -17,13 +17,1039 @@ var (
 	_ unsafe.Pointer
 )
 
+const m_ACCESSX_MAX_DESCRIPTORS = 100
+const m_BADSIG = "SIG_ERR"
 const m_BASE = 65521
+const m_BIG_ENDIAN = "__DARWIN_BIG_ENDIAN"
+const m_BUS_ADRALN = 1
+const m_BUS_ADRERR = 2
+const m_BUS_NOOP = 0
+const m_BUS_OBJERR = 3
+const m_BYTE_ORDER = "__DARWIN_BYTE_ORDER"
+const m_CHAR_BIT = "__CHAR_BIT__"
+const m_CHAR_MAX = "__SCHAR_MAX__"
+const m_CHAR_MIN = "SCHAR_MIN"
+const m_CLD_CONTINUED = 6
+const m_CLD_DUMPED = 3
+const m_CLD_EXITED = 1
+const m_CLD_KILLED = 2
+const m_CLD_NOOP = 0
+const m_CLD_STOPPED = 5
+const m_CLD_TRAPPED = 4
+const m_CPUMON_MAKE_FATAL = 0x1000
+const m_DEF_MEM_LEVEL = 8
+const m_DEF_WBITS = "MAX_WBITS"
+const m_DYN_TREES = 2
+const m_EXIT_FAILURE = 1
+const m_EXIT_SUCCESS = 0
+const m_FD_SETSIZE = "__DARWIN_FD_SETSIZE"
+const m_FOOTPRINT_INTERVAL_RESET = 0x1
+const m_FPE_FLTDIV = 1
+const m_FPE_FLTINV = 5
+const m_FPE_FLTOVF = 2
+const m_FPE_FLTRES = 4
+const m_FPE_FLTSUB = 6
+const m_FPE_FLTUND = 3
+const m_FPE_INTDIV = 7
+const m_FPE_INTOVF = 8
+const m_FPE_NOOP = 0
+const m_FP_CHOP = 3
+const m_FP_PREC_24B = 0
+const m_FP_PREC_53B = 2
+const m_FP_PREC_64B = 3
+const m_FP_RND_DOWN = 1
+const m_FP_RND_NEAR = 0
+const m_FP_RND_UP = 2
+const m_FP_STATE_BYTES = 512
+const m_F_LOCK = 1
+const m_F_OK = 0
+const m_F_TEST = 3
+const m_F_TLOCK = 2
+const m_F_ULOCK = 0
+const m_HAVE_HIDDEN = 1
+const m_ILL_BADSTK = 8
+const m_ILL_COPROC = 7
+const m_ILL_ILLADR = 5
+const m_ILL_ILLOPC = 1
+const m_ILL_ILLOPN = 4
+const m_ILL_ILLTRP = 2
+const m_ILL_NOOP = 0
+const m_ILL_PRVOPC = 3
+const m_ILL_PRVREG = 6
+const m_INTMAX_MAX = "__INTMAX_MAX__"
+const m_INTPTR_MAX = "__INTPTR_MAX__"
+const m_INT_FAST16_MAX = "__INT_LEAST16_MAX"
+const m_INT_FAST16_MIN = "__INT_LEAST16_MIN"
+const m_INT_FAST32_MAX = "__INT_LEAST32_MAX"
+const m_INT_FAST32_MIN = "__INT_LEAST32_MIN"
+const m_INT_FAST64_MAX = "__INT_LEAST64_MAX"
+const m_INT_FAST64_MIN = "__INT_LEAST64_MIN"
+const m_INT_FAST8_MAX = "__INT_LEAST8_MAX"
+const m_INT_FAST8_MIN = "__INT_LEAST8_MIN"
+const m_INT_LEAST16_MAX = "__INT_LEAST16_MAX"
+const m_INT_LEAST16_MIN = "__INT_LEAST16_MIN"
+const m_INT_LEAST32_MAX = "__INT_LEAST32_MAX"
+const m_INT_LEAST32_MIN = "__INT_LEAST32_MIN"
+const m_INT_LEAST64_MAX = "__INT_LEAST64_MAX"
+const m_INT_LEAST64_MIN = "__INT_LEAST64_MIN"
+const m_INT_LEAST8_MAX = "__INT_LEAST8_MAX"
+const m_INT_LEAST8_MIN = "__INT_LEAST8_MIN"
+const m_INT_MAX = "__INT_MAX__"
+const m_IOPOL_APPLICATION = "IOPOL_STANDARD"
+const m_IOPOL_ATIME_UPDATES_DEFAULT = 0
+const m_IOPOL_ATIME_UPDATES_OFF = 1
+const m_IOPOL_DEFAULT = 0
+const m_IOPOL_IMPORTANT = 1
+const m_IOPOL_MATERIALIZE_DATALESS_FILES_DEFAULT = 0
+const m_IOPOL_MATERIALIZE_DATALESS_FILES_OFF = 1
+const m_IOPOL_MATERIALIZE_DATALESS_FILES_ON = 2
+const m_IOPOL_NORMAL = "IOPOL_IMPORTANT"
+const m_IOPOL_PASSIVE = 2
+const m_IOPOL_SCOPE_DARWIN_BG = 2
+const m_IOPOL_SCOPE_PROCESS = 0
+const m_IOPOL_SCOPE_THREAD = 1
+const m_IOPOL_STANDARD = 5
+const m_IOPOL_THROTTLE = 3
+const m_IOPOL_TYPE_DISK = 0
+const m_IOPOL_TYPE_VFS_ALLOW_LOW_SPACE_WRITES = 9
+const m_IOPOL_TYPE_VFS_ATIME_UPDATES = 2
+const m_IOPOL_TYPE_VFS_DISALLOW_RW_FOR_O_EVTONLY = 10
+const m_IOPOL_TYPE_VFS_IGNORE_CONTENT_PROTECTION = 6
+const m_IOPOL_TYPE_VFS_IGNORE_PERMISSIONS = 7
+const m_IOPOL_TYPE_VFS_MATERIALIZE_DATALESS_FILES = 3
+const m_IOPOL_TYPE_VFS_SKIP_MTIME_UPDATE = 8
+const m_IOPOL_TYPE_VFS_STATFS_NO_DATA_VOLUME = 4
+const m_IOPOL_TYPE_VFS_TRIGGER_RESOLVE = 5
+const m_IOPOL_UTILITY = 4
+const m_IOPOL_VFS_ALLOW_LOW_SPACE_WRITES_OFF = 0
+const m_IOPOL_VFS_ALLOW_LOW_SPACE_WRITES_ON = 1
+const m_IOPOL_VFS_CONTENT_PROTECTION_DEFAULT = 0
+const m_IOPOL_VFS_CONTENT_PROTECTION_IGNORE = 1
+const m_IOPOL_VFS_DISALLOW_RW_FOR_O_EVTONLY_DEFAULT = 0
+const m_IOPOL_VFS_DISALLOW_RW_FOR_O_EVTONLY_ON = 1
+const m_IOPOL_VFS_IGNORE_PERMISSIONS_OFF = 0
+const m_IOPOL_VFS_IGNORE_PERMISSIONS_ON = 1
+const m_IOPOL_VFS_NOCACHE_WRITE_FS_BLKSIZE_DEFAULT = 0
+const m_IOPOL_VFS_NOCACHE_WRITE_FS_BLKSIZE_ON = 1
+const m_IOPOL_VFS_SKIP_MTIME_UPDATE_OFF = 0
+const m_IOPOL_VFS_SKIP_MTIME_UPDATE_ON = 1
+const m_IOPOL_VFS_STATFS_FORCE_NO_DATA_VOLUME = 1
+const m_IOPOL_VFS_STATFS_NO_DATA_VOLUME_DEFAULT = 0
+const m_IOPOL_VFS_TRIGGER_RESOLVE_DEFAULT = 0
+const m_IOPOL_VFS_TRIGGER_RESOLVE_OFF = 1
+const m_LITTLE_ENDIAN = "__DARWIN_LITTLE_ENDIAN"
+const m_LLONG_MAX = "__LONG_LONG_MAX__"
+const m_LONG_LONG_MAX = "__LONG_LONG_MAX__"
+const m_LONG_MAX = "__LONG_MAX__"
+const m_L_INCR = "SEEK_CUR"
+const m_L_SET = "SEEK_SET"
+const m_L_XTND = "SEEK_END"
+const m_MAC_OS_VERSION_11_0 = "__MAC_11_0"
+const m_MAC_OS_VERSION_11_1 = "__MAC_11_1"
+const m_MAC_OS_VERSION_11_3 = "__MAC_11_3"
+const m_MAC_OS_VERSION_11_4 = "__MAC_11_4"
+const m_MAC_OS_VERSION_11_5 = "__MAC_11_5"
+const m_MAC_OS_VERSION_11_6 = "__MAC_11_6"
+const m_MAC_OS_VERSION_12_0 = "__MAC_12_0"
+const m_MAC_OS_VERSION_12_1 = "__MAC_12_1"
+const m_MAC_OS_VERSION_12_2 = "__MAC_12_2"
+const m_MAC_OS_VERSION_12_3 = "__MAC_12_3"
+const m_MAC_OS_VERSION_12_4 = "__MAC_12_4"
+const m_MAC_OS_VERSION_12_5 = "__MAC_12_5"
+const m_MAC_OS_VERSION_12_6 = "__MAC_12_6"
+const m_MAC_OS_VERSION_12_7 = "__MAC_12_7"
+const m_MAC_OS_VERSION_13_0 = "__MAC_13_0"
+const m_MAC_OS_VERSION_13_1 = "__MAC_13_1"
+const m_MAC_OS_VERSION_13_2 = "__MAC_13_2"
+const m_MAC_OS_VERSION_13_3 = "__MAC_13_3"
+const m_MAC_OS_VERSION_13_4 = "__MAC_13_4"
+const m_MAC_OS_VERSION_13_5 = "__MAC_13_5"
+const m_MAC_OS_VERSION_13_6 = "__MAC_13_6"
+const m_MAC_OS_VERSION_14_0 = "__MAC_14_0"
+const m_MAC_OS_VERSION_14_1 = "__MAC_14_1"
+const m_MAC_OS_VERSION_14_2 = "__MAC_14_2"
+const m_MAC_OS_X_VERSION_10_0 = "__MAC_10_0"
+const m_MAC_OS_X_VERSION_10_1 = "__MAC_10_1"
+const m_MAC_OS_X_VERSION_10_10 = "__MAC_10_10"
+const m_MAC_OS_X_VERSION_10_10_2 = "__MAC_10_10_2"
+const m_MAC_OS_X_VERSION_10_10_3 = "__MAC_10_10_3"
+const m_MAC_OS_X_VERSION_10_11 = "__MAC_10_11"
+const m_MAC_OS_X_VERSION_10_11_2 = "__MAC_10_11_2"
+const m_MAC_OS_X_VERSION_10_11_3 = "__MAC_10_11_3"
+const m_MAC_OS_X_VERSION_10_11_4 = "__MAC_10_11_4"
+const m_MAC_OS_X_VERSION_10_12 = "__MAC_10_12"
+const m_MAC_OS_X_VERSION_10_12_1 = "__MAC_10_12_1"
+const m_MAC_OS_X_VERSION_10_12_2 = "__MAC_10_12_2"
+const m_MAC_OS_X_VERSION_10_12_4 = "__MAC_10_12_4"
+const m_MAC_OS_X_VERSION_10_13 = "__MAC_10_13"
+const m_MAC_OS_X_VERSION_10_13_1 = "__MAC_10_13_1"
+const m_MAC_OS_X_VERSION_10_13_2 = "__MAC_10_13_2"
+const m_MAC_OS_X_VERSION_10_13_4 = "__MAC_10_13_4"
+const m_MAC_OS_X_VERSION_10_14 = "__MAC_10_14"
+const m_MAC_OS_X_VERSION_10_14_1 = "__MAC_10_14_1"
+const m_MAC_OS_X_VERSION_10_14_4 = "__MAC_10_14_4"
+const m_MAC_OS_X_VERSION_10_14_5 = "__MAC_10_14_5"
+const m_MAC_OS_X_VERSION_10_14_6 = "__MAC_10_14_6"
+const m_MAC_OS_X_VERSION_10_15 = "__MAC_10_15"
+const m_MAC_OS_X_VERSION_10_15_1 = "__MAC_10_15_1"
+const m_MAC_OS_X_VERSION_10_15_4 = "__MAC_10_15_4"
+const m_MAC_OS_X_VERSION_10_16 = "__MAC_10_16"
+const m_MAC_OS_X_VERSION_10_2 = "__MAC_10_2"
+const m_MAC_OS_X_VERSION_10_3 = "__MAC_10_3"
+const m_MAC_OS_X_VERSION_10_4 = "__MAC_10_4"
+const m_MAC_OS_X_VERSION_10_5 = "__MAC_10_5"
+const m_MAC_OS_X_VERSION_10_6 = "__MAC_10_6"
+const m_MAC_OS_X_VERSION_10_7 = "__MAC_10_7"
+const m_MAC_OS_X_VERSION_10_8 = "__MAC_10_8"
+const m_MAC_OS_X_VERSION_10_9 = "__MAC_10_9"
+const m_MAX_MATCH = 258
+const m_MAX_MEM_LEVEL = 9
+const m_MAX_WBITS = 15
+const m_MB_CUR_MAX = "__mb_cur_max"
+const m_MB_LEN_MAX = 1
+const m_MINSIGSTKSZ = 32768
+const m_MIN_MATCH = 3
+const m_NBBY = "__DARWIN_NBBY"
+const m_NDEBUG = 1
+const m_NFDBITS = "__DARWIN_NFDBITS"
 const m_NMAX = 5552
+const m_NSIG = "__DARWIN_NSIG"
+const m_OS_CODE = 19
+const m_PDP_ENDIAN = "__DARWIN_PDP_ENDIAN"
+const m_POLL_ERR = 4
+const m_POLL_HUP = 6
+const m_POLL_IN = 1
+const m_POLL_MSG = 3
+const m_POLL_OUT = 2
+const m_POLL_PRI = 5
+const m_PRESET_DICT = 0x20
+const m_PRIO_DARWIN_BG = 0x1000
+const m_PRIO_DARWIN_NONUI = 0x1001
+const m_PRIO_DARWIN_PROCESS = 4
+const m_PRIO_DARWIN_THREAD = 3
+const m_PRIO_MAX = 20
+const m_PRIO_PGRP = 1
+const m_PRIO_PROCESS = 0
+const m_PRIO_USER = 2
+const m_PTRDIFF_MAX = "__PTRDIFF_MAX__"
+const m_RAND_MAX = 0x7fffffff
+const m_RLIMIT_AS = 5
+const m_RLIMIT_CORE = 4
+const m_RLIMIT_CPU = 0
+const m_RLIMIT_CPU_USAGE_MONITOR = 0x2
+const m_RLIMIT_DATA = 2
+const m_RLIMIT_FOOTPRINT_INTERVAL = 0x4
+const m_RLIMIT_FSIZE = 1
+const m_RLIMIT_MEMLOCK = 6
+const m_RLIMIT_NOFILE = 8
+const m_RLIMIT_NPROC = 7
+const m_RLIMIT_RSS = "RLIMIT_AS"
+const m_RLIMIT_STACK = 3
+const m_RLIMIT_THREAD_CPULIMITS = 0x3
+const m_RLIMIT_WAKEUPS_MONITOR = 0x1
+const m_RLIM_NLIMITS = 9
+const m_RLIM_SAVED_CUR = "RLIM_INFINITY"
+const m_RLIM_SAVED_MAX = "RLIM_INFINITY"
+const m_RUSAGE_INFO_CURRENT = "RUSAGE_INFO_V6"
+const m_RUSAGE_INFO_V0 = 0
+const m_RUSAGE_INFO_V1 = 1
+const m_RUSAGE_INFO_V2 = 2
+const m_RUSAGE_INFO_V3 = 3
+const m_RUSAGE_INFO_V4 = 4
+const m_RUSAGE_INFO_V5 = 5
+const m_RUSAGE_INFO_V6 = 6
+const m_RUSAGE_SELF = 0
+const m_RU_PROC_RUNS_RESLIDE = 0x00000001
+const m_SA_64REGSET = 0x0200
+const m_SA_NOCLDSTOP = 0x0008
+const m_SA_NOCLDWAIT = 0x0020
+const m_SA_NODEFER = 0x0010
+const m_SA_ONSTACK = 0x0001
+const m_SA_RESETHAND = 0x0004
+const m_SA_RESTART = 0x0002
+const m_SA_SIGINFO = 0x0040
+const m_SA_USERTRAMP = 0x0100
+const m_SCHAR_MAX = "__SCHAR_MAX__"
+const m_SEEK_CUR = 1
+const m_SEEK_DATA = 4
+const m_SEEK_END = 2
+const m_SEEK_HOLE = 3
+const m_SEEK_SET = 0
+const m_SEGV_ACCERR = 2
+const m_SEGV_MAPERR = 1
+const m_SEGV_NOOP = 0
+const m_SHRT_MAX = "__SHRT_MAX__"
+const m_SIGABRT = 6
+const m_SIGALRM = 14
+const m_SIGBUS = 10
+const m_SIGCHLD = 20
+const m_SIGCONT = 19
+const m_SIGEMT = 7
+const m_SIGEV_NONE = 0
+const m_SIGEV_SIGNAL = 1
+const m_SIGEV_THREAD = 3
+const m_SIGFPE = 8
+const m_SIGHUP = 1
+const m_SIGILL = 4
+const m_SIGINFO = 29
+const m_SIGINT = 2
+const m_SIGIO = 23
+const m_SIGIOT = "SIGABRT"
+const m_SIGKILL = 9
+const m_SIGPIPE = 13
+const m_SIGPROF = 27
+const m_SIGQUIT = 3
+const m_SIGSEGV = 11
+const m_SIGSTKSZ = 131072
+const m_SIGSTOP = 17
+const m_SIGSYS = 12
+const m_SIGTERM = 15
+const m_SIGTRAP = 5
+const m_SIGTSTP = 18
+const m_SIGTTIN = 21
+const m_SIGTTOU = 22
+const m_SIGURG = 16
+const m_SIGUSR1 = 30
+const m_SIGUSR2 = 31
+const m_SIGVTALRM = 26
+const m_SIGWINCH = 28
+const m_SIGXCPU = 24
+const m_SIGXFSZ = 25
+const m_SIG_BLOCK = 1
+const m_SIG_SETMASK = 3
+const m_SIG_UNBLOCK = 2
+const m_SIZE_MAX = "__SIZE_MAX__"
+const m_SI_ASYNCIO = 0x10004
+const m_SI_MESGQ = 0x10005
+const m_SI_QUEUE = 0x10002
+const m_SI_TIMER = 0x10003
+const m_SI_USER = 0x10001
+const m_SS_DISABLE = 0x0004
+const m_SS_ONSTACK = 0x0001
+const m_STATIC_TREES = 1
+const m_STDERR_FILENO = 2
+const m_STDIN_FILENO = 0
+const m_STDOUT_FILENO = 1
+const m_STORED_BLOCK = 0
+const m_SV_INTERRUPT = "SA_RESTART"
+const m_SV_NOCLDSTOP = "SA_NOCLDSTOP"
+const m_SV_NODEFER = "SA_NODEFER"
+const m_SV_ONSTACK = "SA_ONSTACK"
+const m_SV_RESETHAND = "SA_RESETHAND"
+const m_SV_SIGINFO = "SA_SIGINFO"
+const m_SYNC_VOLUME_FULLSYNC = 0x01
+const m_SYNC_VOLUME_WAIT = 0x02
+const m_TRAP_BRKPT = 1
+const m_TRAP_TRACE = 2
+const m_UINTMAX_MAX = "__UINTMAX_MAX__"
+const m_UINTPTR_MAX = "__UINTPTR_MAX__"
+const m_UINT_FAST16_MAX = "__UINT_LEAST16_MAX"
+const m_UINT_FAST32_MAX = "__UINT_LEAST32_MAX"
+const m_UINT_FAST64_MAX = "__UINT_LEAST64_MAX"
+const m_UINT_FAST8_MAX = "__UINT_LEAST8_MAX"
+const m_UINT_LEAST16_MAX = "__UINT_LEAST16_MAX"
+const m_UINT_LEAST32_MAX = "__UINT_LEAST32_MAX"
+const m_UINT_LEAST64_MAX = "__UINT_LEAST64_MAX"
+const m_UINT_LEAST8_MAX = "__UINT_LEAST8_MAX"
+const m_WAIT_MYPGRP = 0
+const m_WAKEMON_DISABLE = 0x02
+const m_WAKEMON_ENABLE = 0x01
+const m_WAKEMON_GET_PARAMS = 0x04
+const m_WAKEMON_MAKE_FATAL = 0x10
+const m_WAKEMON_SET_DEFAULTS = 0x08
+const m_WCHAR_MAX = "__WCHAR_MAX__"
+const m_WCONTINUED = 0x00000010
+const m_WCOREFLAG = 0200
+const m_WEXITED = 0x00000004
+const m_WNOHANG = 0x00000001
+const m_WNOWAIT = 0x00000020
+const m_WSTOPPED = 0x00000008
+const m_WUNTRACED = 0x00000002
+const m_ZEXTERN = "extern"
+const m_ZLIB_VERNUM = 0x1310
+const m_ZLIB_VERSION = "1.3.1"
+const m_ZLIB_VER_MAJOR = 1
+const m_ZLIB_VER_MINOR = 3
+const m_ZLIB_VER_REVISION = 1
+const m_ZLIB_VER_SUBREVISION = 0
+const m_Z_ASCII = "Z_TEXT"
+const m_Z_BEST_COMPRESSION = 9
+const m_Z_BEST_SPEED = 1
+const m_Z_BINARY = 0
+const m_Z_BLOCK = 5
+const m_Z_DEFAULT_STRATEGY = 0
+const m_Z_DEFLATED = 8
+const m_Z_FILTERED = 1
+const m_Z_FINISH = 4
+const m_Z_FIXED = 4
+const m_Z_FULL_FLUSH = 3
+const m_Z_HUFFMAN_ONLY = 2
+const m_Z_NEED_DICT = 2
+const m_Z_NO_COMPRESSION = 0
+const m_Z_NO_FLUSH = 0
 const m_Z_NULL = 0
+const m_Z_OK = 0
+const m_Z_PARTIAL_FLUSH = 1
+const m_Z_RLE = 3
+const m_Z_STREAM_END = 1
+const m_Z_SYNC_FLUSH = 2
+const m_Z_TEXT = 1
+const m_Z_TREES = 6
+const m_Z_U4 = "unsigned"
+const m_Z_UNKNOWN = 2
+const m__CS_DARWIN_USER_CACHE_DIR = 65538
+const m__CS_DARWIN_USER_DIR = 65536
+const m__CS_DARWIN_USER_TEMP_DIR = 65537
+const m__CS_PATH = 1
+const m__CS_POSIX_V6_ILP32_OFF32_CFLAGS = 2
+const m__CS_POSIX_V6_ILP32_OFF32_LDFLAGS = 3
+const m__CS_POSIX_V6_ILP32_OFF32_LIBS = 4
+const m__CS_POSIX_V6_ILP32_OFFBIG_CFLAGS = 5
+const m__CS_POSIX_V6_ILP32_OFFBIG_LDFLAGS = 6
+const m__CS_POSIX_V6_ILP32_OFFBIG_LIBS = 7
+const m__CS_POSIX_V6_LP64_OFF64_CFLAGS = 8
+const m__CS_POSIX_V6_LP64_OFF64_LDFLAGS = 9
+const m__CS_POSIX_V6_LP64_OFF64_LIBS = 10
+const m__CS_POSIX_V6_LPBIG_OFFBIG_CFLAGS = 11
+const m__CS_POSIX_V6_LPBIG_OFFBIG_LDFLAGS = 12
+const m__CS_POSIX_V6_LPBIG_OFFBIG_LIBS = 13
+const m__CS_POSIX_V6_WIDTH_RESTRICTED_ENVS = 14
+const m__CS_XBS5_ILP32_OFF32_CFLAGS = 20
+const m__CS_XBS5_ILP32_OFF32_LDFLAGS = 21
+const m__CS_XBS5_ILP32_OFF32_LIBS = 22
+const m__CS_XBS5_ILP32_OFF32_LINTFLAGS = 23
+const m__CS_XBS5_ILP32_OFFBIG_CFLAGS = 24
+const m__CS_XBS5_ILP32_OFFBIG_LDFLAGS = 25
+const m__CS_XBS5_ILP32_OFFBIG_LIBS = 26
+const m__CS_XBS5_ILP32_OFFBIG_LINTFLAGS = 27
+const m__CS_XBS5_LP64_OFF64_CFLAGS = 28
+const m__CS_XBS5_LP64_OFF64_LDFLAGS = 29
+const m__CS_XBS5_LP64_OFF64_LIBS = 30
+const m__CS_XBS5_LP64_OFF64_LINTFLAGS = 31
+const m__CS_XBS5_LPBIG_OFFBIG_CFLAGS = 32
+const m__CS_XBS5_LPBIG_OFFBIG_LDFLAGS = 33
+const m__CS_XBS5_LPBIG_OFFBIG_LIBS = 34
+const m__CS_XBS5_LPBIG_OFFBIG_LINTFLAGS = 35
+const m__DARWIN_FEATURE_64_BIT_INODE = 1
+const m__DARWIN_FEATURE_ONLY_UNIX_CONFORMANCE = 1
+const m__DARWIN_FEATURE_UNIX_CONFORMANCE = 3
+const m__FORTIFY_SOURCE = 2
+const m__I386_SIGNAL_H_ = 1
+const m__LP64 = 1
+const m__PC_2_SYMLINKS = 15
+const m__PC_ALLOC_SIZE_MIN = 16
+const m__PC_ASYNC_IO = 17
+const m__PC_AUTH_OPAQUE_NP = 14
+const m__PC_CASE_PRESERVING = 12
+const m__PC_CASE_SENSITIVE = 11
+const m__PC_CHOWN_RESTRICTED = 7
+const m__PC_EXTENDED_SECURITY_NP = 13
+const m__PC_FILESIZEBITS = 18
+const m__PC_LINK_MAX = 1
+const m__PC_MAX_CANON = 2
+const m__PC_MAX_INPUT = 3
+const m__PC_MIN_HOLE_SIZE = 27
+const m__PC_NAME_CHARS_MAX = 10
+const m__PC_NAME_MAX = 4
+const m__PC_NO_TRUNC = 8
+const m__PC_PATH_MAX = 5
+const m__PC_PIPE_BUF = 6
+const m__PC_PRIO_IO = 19
+const m__PC_REC_INCR_XFER_SIZE = 20
+const m__PC_REC_MAX_XFER_SIZE = 21
+const m__PC_REC_MIN_XFER_SIZE = 22
+const m__PC_REC_XFER_ALIGN = 23
+const m__PC_SYMLINK_MAX = 24
+const m__PC_SYNC_IO = 25
+const m__PC_VDISABLE = 9
+const m__PC_XATTR_SIZE_BITS = 26
+const m__POSIX2_CHAR_TERM = 200112
+const m__POSIX2_C_BIND = 200112
+const m__POSIX2_C_DEV = 200112
+const m__POSIX2_FORT_RUN = 200112
+const m__POSIX2_LOCALEDEF = 200112
+const m__POSIX2_SW_DEV = 200112
+const m__POSIX2_UPE = 200112
+const m__POSIX2_VERSION = 200112
+const m__POSIX_CHOWN_RESTRICTED = 200112
+const m__POSIX_FSYNC = 200112
+const m__POSIX_IPV6 = 200112
+const m__POSIX_JOB_CONTROL = 200112
+const m__POSIX_MAPPED_FILES = 200112
+const m__POSIX_MEMORY_PROTECTION = 200112
+const m__POSIX_NO_TRUNC = 200112
+const m__POSIX_READER_WRITER_LOCKS = 200112
+const m__POSIX_REGEXP = 200112
+const m__POSIX_SAVED_IDS = 200112
+const m__POSIX_SHELL = 200112
+const m__POSIX_SPAWN = 200112
+const m__POSIX_THREADS = 200112
+const m__POSIX_THREAD_ATTR_STACKADDR = 200112
+const m__POSIX_THREAD_ATTR_STACKSIZE = 200112
+const m__POSIX_THREAD_KEYS_MAX = 128
+const m__POSIX_THREAD_PROCESS_SHARED = 200112
+const m__POSIX_THREAD_SAFE_FUNCTIONS = 200112
+const m__POSIX_V6_ILP32_OFF32 = "__ILP32_OFF32"
+const m__POSIX_V6_ILP32_OFFBIG = "__ILP32_OFFBIG"
+const m__POSIX_V6_LP64_OFF64 = "__LP64_OFF64"
+const m__POSIX_V6_LPBIG_OFFBIG = "__LPBIG_OFFBIG"
+const m__POSIX_V7_ILP32_OFF32 = "__ILP32_OFF32"
+const m__POSIX_V7_ILP32_OFFBIG = "__ILP32_OFFBIG"
+const m__POSIX_V7_LP64_OFF64 = "__LP64_OFF64"
+const m__POSIX_V7_LPBIG_OFFBIG = "__LPBIG_OFFBIG"
+const m__POSIX_VERSION = 200112
+const m__QUAD_HIGHWORD = 1
+const m__QUAD_LOWWORD = 0
+const m__RLIMIT_POSIX_FLAG = 0x1000
+const m__SC_2_CHAR_TERM = 20
+const m__SC_2_C_BIND = 18
+const m__SC_2_C_DEV = 19
+const m__SC_2_FORT_DEV = 21
+const m__SC_2_FORT_RUN = 22
+const m__SC_2_LOCALEDEF = 23
+const m__SC_2_PBS = 59
+const m__SC_2_PBS_ACCOUNTING = 60
+const m__SC_2_PBS_CHECKPOINT = 61
+const m__SC_2_PBS_LOCATE = 62
+const m__SC_2_PBS_MESSAGE = 63
+const m__SC_2_PBS_TRACK = 64
+const m__SC_2_SW_DEV = 24
+const m__SC_2_UPE = 25
+const m__SC_2_VERSION = 17
+const m__SC_ADVISORY_INFO = 65
+const m__SC_AIO_LISTIO_MAX = 42
+const m__SC_AIO_MAX = 43
+const m__SC_AIO_PRIO_DELTA_MAX = 44
+const m__SC_ARG_MAX = 1
+const m__SC_ASYNCHRONOUS_IO = 28
+const m__SC_ATEXIT_MAX = 107
+const m__SC_BARRIERS = 66
+const m__SC_BC_BASE_MAX = 9
+const m__SC_BC_DIM_MAX = 10
+const m__SC_BC_SCALE_MAX = 11
+const m__SC_BC_STRING_MAX = 12
+const m__SC_CHILD_MAX = 2
+const m__SC_CLK_TCK = 3
+const m__SC_CLOCK_SELECTION = 67
+const m__SC_COLL_WEIGHTS_MAX = 13
+const m__SC_CPUTIME = 68
+const m__SC_DELAYTIMER_MAX = 45
+const m__SC_EXPR_NEST_MAX = 14
+const m__SC_FILE_LOCKING = 69
+const m__SC_FSYNC = 38
+const m__SC_GETGR_R_SIZE_MAX = 70
+const m__SC_GETPW_R_SIZE_MAX = 71
+const m__SC_HOST_NAME_MAX = 72
+const m__SC_IOV_MAX = 56
+const m__SC_IPV6 = 118
+const m__SC_JOB_CONTROL = 6
+const m__SC_LINE_MAX = 15
+const m__SC_LOGIN_NAME_MAX = 73
+const m__SC_MAPPED_FILES = 47
+const m__SC_MEMLOCK = 30
+const m__SC_MEMLOCK_RANGE = 31
+const m__SC_MEMORY_PROTECTION = 32
+const m__SC_MESSAGE_PASSING = 33
+const m__SC_MONOTONIC_CLOCK = 74
+const m__SC_MQ_OPEN_MAX = 46
+const m__SC_MQ_PRIO_MAX = 75
+const m__SC_NGROUPS_MAX = 4
+const m__SC_NPROCESSORS_CONF = 57
+const m__SC_NPROCESSORS_ONLN = 58
+const m__SC_OPEN_MAX = 5
+const m__SC_PAGESIZE = 29
+const m__SC_PAGE_SIZE = "_SC_PAGESIZE"
+const m__SC_PASS_MAX = 131
+const m__SC_PHYS_PAGES = 200
+const m__SC_PRIORITIZED_IO = 34
+const m__SC_PRIORITY_SCHEDULING = 35
+const m__SC_RAW_SOCKETS = 119
+const m__SC_READER_WRITER_LOCKS = 76
+const m__SC_REALTIME_SIGNALS = 36
+const m__SC_REGEXP = 77
+const m__SC_RE_DUP_MAX = 16
+const m__SC_RTSIG_MAX = 48
+const m__SC_SAVED_IDS = 7
+const m__SC_SEMAPHORES = 37
+const m__SC_SEM_NSEMS_MAX = 49
+const m__SC_SEM_VALUE_MAX = 50
+const m__SC_SHARED_MEMORY_OBJECTS = 39
+const m__SC_SHELL = 78
+const m__SC_SIGQUEUE_MAX = 51
+const m__SC_SPAWN = 79
+const m__SC_SPIN_LOCKS = 80
+const m__SC_SPORADIC_SERVER = 81
+const m__SC_SS_REPL_MAX = 126
+const m__SC_STREAM_MAX = 26
+const m__SC_SYMLOOP_MAX = 120
+const m__SC_SYNCHRONIZED_IO = 40
+const m__SC_THREADS = 96
+const m__SC_THREAD_ATTR_STACKADDR = 82
+const m__SC_THREAD_ATTR_STACKSIZE = 83
+const m__SC_THREAD_CPUTIME = 84
+const m__SC_THREAD_DESTRUCTOR_ITERATIONS = 85
+const m__SC_THREAD_KEYS_MAX = 86
+const m__SC_THREAD_PRIORITY_SCHEDULING = 89
+const m__SC_THREAD_PRIO_INHERIT = 87
+const m__SC_THREAD_PRIO_PROTECT = 88
+const m__SC_THREAD_PROCESS_SHARED = 90
+const m__SC_THREAD_SAFE_FUNCTIONS = 91
+const m__SC_THREAD_SPORADIC_SERVER = 92
+const m__SC_THREAD_STACK_MIN = 93
+const m__SC_THREAD_THREADS_MAX = 94
+const m__SC_TIMEOUTS = 95
+const m__SC_TIMERS = 41
+const m__SC_TIMER_MAX = 52
+const m__SC_TRACE = 97
+const m__SC_TRACE_EVENT_FILTER = 98
+const m__SC_TRACE_EVENT_NAME_MAX = 127
+const m__SC_TRACE_INHERIT = 99
+const m__SC_TRACE_LOG = 100
+const m__SC_TRACE_NAME_MAX = 128
+const m__SC_TRACE_SYS_MAX = 129
+const m__SC_TRACE_USER_EVENT_MAX = 130
+const m__SC_TTY_NAME_MAX = 101
+const m__SC_TYPED_MEMORY_OBJECTS = 102
+const m__SC_TZNAME_MAX = 27
+const m__SC_V6_ILP32_OFF32 = 103
+const m__SC_V6_ILP32_OFFBIG = 104
+const m__SC_V6_LP64_OFF64 = 105
+const m__SC_V6_LPBIG_OFFBIG = 106
+const m__SC_VERSION = 8
+const m__SC_XBS5_ILP32_OFF32 = 122
+const m__SC_XBS5_ILP32_OFFBIG = 123
+const m__SC_XBS5_LP64_OFF64 = 124
+const m__SC_XBS5_LPBIG_OFFBIG = 125
+const m__SC_XOPEN_CRYPT = 108
+const m__SC_XOPEN_ENH_I18N = 109
+const m__SC_XOPEN_LEGACY = 110
+const m__SC_XOPEN_REALTIME = 111
+const m__SC_XOPEN_REALTIME_THREADS = 112
+const m__SC_XOPEN_SHM = 113
+const m__SC_XOPEN_STREAMS = 114
+const m__SC_XOPEN_UNIX = 115
+const m__SC_XOPEN_VERSION = 116
+const m__SC_XOPEN_XCU_VERSION = 121
+const m__STRUCT_MCONTEXT = "_STRUCT_MCONTEXT64"
+const m__USE_FORTIFY_LEVEL = 2
+const m__V6_ILP32_OFF32 = "__ILP32_OFF32"
+const m__V6_ILP32_OFFBIG = "__ILP32_OFFBIG"
+const m__V6_LP64_OFF64 = "__LP64_OFF64"
+const m__V6_LPBIG_OFFBIG = "__LPBIG_OFFBIG"
+const m__WSTOPPED = 0177
 const m__X86_INSTRUCTION_STATE_CACHELINE_SIZE = 64
+const m__XBS5_ILP32_OFF32 = "__ILP32_OFF32"
+const m__XBS5_ILP32_OFFBIG = "__ILP32_OFFBIG"
+const m__XBS5_LP64_OFF64 = "__LP64_OFF64"
+const m__XBS5_LPBIG_OFFBIG = "__LPBIG_OFFBIG"
+const m__XOPEN_CRYPT = 1
+const m__XOPEN_ENH_I18N = 1
+const m__XOPEN_SHM = 1
+const m__XOPEN_UNIX = 1
+const m__XOPEN_VERSION = 600
+const m__XOPEN_XCU_VERSION = 4
+const m___API_TO_BE_DEPRECATED = 100000
+const m___API_TO_BE_DEPRECATED_DRIVERKIT = 100000
+const m___API_TO_BE_DEPRECATED_IOS = 100000
+const m___API_TO_BE_DEPRECATED_MACCATALYST = 100000
+const m___API_TO_BE_DEPRECATED_MACOS = 100000
+const m___API_TO_BE_DEPRECATED_TVOS = 100000
+const m___API_TO_BE_DEPRECATED_VISIONOS = 100000
+const m___API_TO_BE_DEPRECATED_WATCHOS = 100000
+const m___APPLE_CC__ = 6000
+const m___APPLE__ = 1
+const m___ATOMIC_ACQUIRE = 2
+const m___ATOMIC_ACQ_REL = 4
+const m___ATOMIC_CONSUME = 1
+const m___ATOMIC_RELAXED = 0
+const m___ATOMIC_RELEASE = 3
+const m___ATOMIC_SEQ_CST = 5
+const m___BIGGEST_ALIGNMENT__ = 16
+const m___BITINT_MAXWIDTH__ = 128
+const m___BLOCKS__ = 1
+const m___BOOL_WIDTH__ = 8
+const m___BRIDGEOS_2_0 = 20000
+const m___BRIDGEOS_3_0 = 30000
+const m___BRIDGEOS_3_1 = 30100
+const m___BRIDGEOS_3_4 = 30400
+const m___BRIDGEOS_4_0 = 40000
+const m___BRIDGEOS_4_1 = 40100
+const m___BRIDGEOS_5_0 = 50000
+const m___BRIDGEOS_5_1 = 50100
+const m___BRIDGEOS_5_3 = 50300
+const m___BRIDGEOS_6_0 = 60000
+const m___BRIDGEOS_6_2 = 60200
+const m___BRIDGEOS_6_4 = 60400
+const m___BRIDGEOS_6_5 = 60500
+const m___BRIDGEOS_6_6 = 60600
+const m___BRIDGEOS_7_0 = 70000
+const m___BRIDGEOS_7_1 = 70100
+const m___BRIDGEOS_7_2 = 70200
+const m___BRIDGEOS_7_3 = 70300
+const m___BRIDGEOS_7_4 = 70400
+const m___BRIDGEOS_7_6 = 70600
+const m___BRIDGEOS_8_0 = 80000
+const m___BRIDGEOS_8_1 = 80100
+const m___BRIDGEOS_8_2 = 80200
+const m___BYTE_ORDER__ = "__ORDER_LITTLE_ENDIAN__"
+const m___CCGO__ = 1
+const m___CHAR_BIT__ = 8
+const m___CLANG_ATOMIC_BOOL_LOCK_FREE = 2
+const m___CLANG_ATOMIC_CHAR16_T_LOCK_FREE = 2
+const m___CLANG_ATOMIC_CHAR32_T_LOCK_FREE = 2
+const m___CLANG_ATOMIC_CHAR_LOCK_FREE = 2
+const m___CLANG_ATOMIC_INT_LOCK_FREE = 2
+const m___CLANG_ATOMIC_LLONG_LOCK_FREE = 2
+const m___CLANG_ATOMIC_LONG_LOCK_FREE = 2
+const m___CLANG_ATOMIC_POINTER_LOCK_FREE = 2
+const m___CLANG_ATOMIC_SHORT_LOCK_FREE = 2
+const m___CLANG_ATOMIC_WCHAR_T_LOCK_FREE = 2
+const m___CONSTANT_CFSTRINGS__ = 1
+const m___DARWIN_64_BIT_INO_T = 1
+const m___DARWIN_BIG_ENDIAN = 4321
+const m___DARWIN_BYTE_ORDER = "__DARWIN_LITTLE_ENDIAN"
+const m___DARWIN_C_ANSI = 010000
+const m___DARWIN_C_FULL = 900000
+const m___DARWIN_C_LEVEL = "__DARWIN_C_FULL"
 const m___DARWIN_FD_SETSIZE = 1024
+const m___DARWIN_LITTLE_ENDIAN = 1234
 const m___DARWIN_NBBY = 8
+const m___DARWIN_NON_CANCELABLE = 0
+const m___DARWIN_NO_LONG_LONG = 0
+const m___DARWIN_NSIG = 32
+const m___DARWIN_ONLY_64_BIT_INO_T = 0
+const m___DARWIN_ONLY_UNIX_CONFORMANCE = 1
+const m___DARWIN_ONLY_VERS_1050 = 0
+const m___DARWIN_PDP_ENDIAN = 3412
+const m___DARWIN_SUF_1050 = "$1050"
+const m___DARWIN_SUF_64_BIT_INO_T = "$INODE64"
+const m___DARWIN_SUF_EXTSN = "$DARWIN_EXTSN"
+const m___DARWIN_UNIX03 = 1
+const m___DARWIN_VERS_1050 = 1
+const m___DARWIN_WCHAR_MAX = "__WCHAR_MAX__"
+const m___DBL_DECIMAL_DIG__ = 17
+const m___DBL_DENORM_MIN__ = 4.9406564584124654e-324
+const m___DBL_DIG__ = 15
+const m___DBL_EPSILON__ = 2.2204460492503131e-16
+const m___DBL_HAS_DENORM__ = 1
+const m___DBL_HAS_INFINITY__ = 1
+const m___DBL_HAS_QUIET_NAN__ = 1
+const m___DBL_MANT_DIG__ = 53
+const m___DBL_MAX_10_EXP__ = 308
+const m___DBL_MAX_EXP__ = 1024
+const m___DBL_MAX__ = 1.7976931348623157e+308
+const m___DBL_MIN__ = 2.2250738585072014e-308
+const m___DECIMAL_DIG__ = "__LDBL_DECIMAL_DIG__"
+const m___DRIVERKIT_19_0 = 190000
+const m___DRIVERKIT_20_0 = 200000
+const m___DRIVERKIT_21_0 = 210000
+const m___DRIVERKIT_22_0 = 220000
+const m___DRIVERKIT_22_4 = 220400
+const m___DRIVERKIT_22_5 = 220500
+const m___DRIVERKIT_22_6 = 220600
+const m___DRIVERKIT_23_0 = 230000
+const m___DRIVERKIT_23_1 = 230100
+const m___DRIVERKIT_23_2 = 230200
+const m___DYNAMIC__ = 1
+const m___ENABLE_LEGACY_MAC_AVAILABILITY = 1
+const m___ENVIRONMENT_MAC_OS_X_VERSION_MIN_REQUIRED__ = 140000
+const m___ENVIRONMENT_OS_VERSION_MIN_REQUIRED__ = 140000
+const m___FINITE_MATH_ONLY__ = 0
+const m___FLT16_DECIMAL_DIG__ = 5
+const m___FLT16_DENORM_MIN__ = 5.9604644775390625e-8
+const m___FLT16_DIG__ = 3
+const m___FLT16_EPSILON__ = 9.765625e-4
+const m___FLT16_HAS_DENORM__ = 1
+const m___FLT16_HAS_INFINITY__ = 1
+const m___FLT16_HAS_QUIET_NAN__ = 1
+const m___FLT16_MANT_DIG__ = 11
+const m___FLT16_MAX_10_EXP__ = 4
+const m___FLT16_MAX_EXP__ = 16
+const m___FLT16_MAX__ = 6.5504e+4
+const m___FLT16_MIN__ = 6.103515625e-5
+const m___FLT_DECIMAL_DIG__ = 9
+const m___FLT_DENORM_MIN__ = 1.40129846e-45
+const m___FLT_DIG__ = 6
+const m___FLT_EPSILON__ = 1.19209290e-7
+const m___FLT_HAS_DENORM__ = 1
+const m___FLT_HAS_INFINITY__ = 1
+const m___FLT_HAS_QUIET_NAN__ = 1
+const m___FLT_MANT_DIG__ = 24
+const m___FLT_MAX_10_EXP__ = 38
+const m___FLT_MAX_EXP__ = 128
+const m___FLT_MAX__ = 3.40282347e+38
+const m___FLT_MIN__ = 1.17549435e-38
+const m___FLT_RADIX__ = 2
+const m___FUNCTION__ = "__func__"
+const m___FXSR__ = 1
+const m___GCC_ASM_FLAG_OUTPUTS__ = 1
+const m___GCC_ATOMIC_BOOL_LOCK_FREE = 2
+const m___GCC_ATOMIC_CHAR16_T_LOCK_FREE = 2
+const m___GCC_ATOMIC_CHAR32_T_LOCK_FREE = 2
+const m___GCC_ATOMIC_CHAR_LOCK_FREE = 2
+const m___GCC_ATOMIC_INT_LOCK_FREE = 2
+const m___GCC_ATOMIC_LLONG_LOCK_FREE = 2
+const m___GCC_ATOMIC_LONG_LOCK_FREE = 2
+const m___GCC_ATOMIC_POINTER_LOCK_FREE = 2
+const m___GCC_ATOMIC_SHORT_LOCK_FREE = 2
+const m___GCC_ATOMIC_TEST_AND_SET_TRUEVAL = 1
+const m___GCC_ATOMIC_WCHAR_T_LOCK_FREE = 2
+const m___GCC_HAVE_DWARF2_CFI_ASM = 1
+const m___GCC_HAVE_SYNC_COMPARE_AND_SWAP_1 = 1
+const m___GCC_HAVE_SYNC_COMPARE_AND_SWAP_16 = 1
+const m___GCC_HAVE_SYNC_COMPARE_AND_SWAP_2 = 1
+const m___GCC_HAVE_SYNC_COMPARE_AND_SWAP_4 = 1
+const m___GCC_HAVE_SYNC_COMPARE_AND_SWAP_8 = 1
+const m___GNUC_MINOR__ = 2
+const m___GNUC_PATCHLEVEL__ = 1
+const m___GNUC_STDC_INLINE__ = 1
+const m___GNUC_VA_LIST = 1
+const m___GNUC__ = 4
+const m___GXX_ABI_VERSION = 1002
+const m___INT16_FMTd__ = "hd"
+const m___INT16_FMTi__ = "hi"
+const m___INT16_MAX__ = 32767
+const m___INT16_TYPE__ = "short"
+const m___INT32_FMTd__ = "d"
+const m___INT32_FMTi__ = "i"
+const m___INT32_MAX__ = 2147483647
+const m___INT32_TYPE__ = "int"
+const m___INT64_C_SUFFIX__ = "LL"
+const m___INT64_FMTd__ = "lld"
+const m___INT64_FMTi__ = "lli"
+const m___INT64_MAX__ = 9223372036854775807
+const m___INT8_FMTd__ = "hhd"
+const m___INT8_FMTi__ = "hhi"
+const m___INT8_MAX__ = 127
+const m___INTMAX_C_SUFFIX__ = "L"
+const m___INTMAX_FMTd__ = "ld"
+const m___INTMAX_FMTi__ = "li"
+const m___INTMAX_MAX__ = 9223372036854775807
+const m___INTMAX_WIDTH__ = 64
+const m___INTPTR_FMTd__ = "ld"
+const m___INTPTR_FMTi__ = "li"
+const m___INTPTR_MAX__ = 9223372036854775807
+const m___INTPTR_WIDTH__ = 64
+const m___INT_FAST16_FMTd__ = "hd"
+const m___INT_FAST16_FMTi__ = "hi"
+const m___INT_FAST16_MAX__ = 32767
+const m___INT_FAST16_TYPE__ = "short"
+const m___INT_FAST16_WIDTH__ = 16
+const m___INT_FAST32_FMTd__ = "d"
+const m___INT_FAST32_FMTi__ = "i"
+const m___INT_FAST32_MAX__ = 2147483647
+const m___INT_FAST32_TYPE__ = "int"
+const m___INT_FAST32_WIDTH__ = 32
+const m___INT_FAST64_FMTd__ = "lld"
+const m___INT_FAST64_FMTi__ = "lli"
+const m___INT_FAST64_MAX__ = 9223372036854775807
+const m___INT_FAST64_WIDTH__ = 64
+const m___INT_FAST8_FMTd__ = "hhd"
+const m___INT_FAST8_FMTi__ = "hhi"
+const m___INT_FAST8_MAX__ = 127
+const m___INT_FAST8_WIDTH__ = 8
+const m___INT_LEAST16_FMTd__ = "hd"
+const m___INT_LEAST16_FMTi__ = "hi"
+const m___INT_LEAST16_MAX = "INT16_MAX"
+const m___INT_LEAST16_MAX__ = 32767
+const m___INT_LEAST16_MIN = "INT16_MIN"
+const m___INT_LEAST16_TYPE__ = "short"
+const m___INT_LEAST16_WIDTH__ = 16
+const m___INT_LEAST32_FMTd__ = "d"
+const m___INT_LEAST32_FMTi__ = "i"
+const m___INT_LEAST32_MAX = "INT32_MAX"
+const m___INT_LEAST32_MAX__ = 2147483647
+const m___INT_LEAST32_MIN = "INT32_MIN"
+const m___INT_LEAST32_TYPE__ = "int"
+const m___INT_LEAST32_WIDTH__ = 32
+const m___INT_LEAST64_FMTd__ = "lld"
+const m___INT_LEAST64_FMTi__ = "lli"
+const m___INT_LEAST64_MAX = "INT64_MAX"
+const m___INT_LEAST64_MAX__ = 9223372036854775807
+const m___INT_LEAST64_MIN = "INT64_MIN"
+const m___INT_LEAST64_WIDTH__ = 64
+const m___INT_LEAST8_FMTd__ = "hhd"
+const m___INT_LEAST8_FMTi__ = "hhi"
+const m___INT_LEAST8_MAX = "INT8_MAX"
+const m___INT_LEAST8_MAX__ = 127
+const m___INT_LEAST8_MIN = "INT8_MIN"
+const m___INT_LEAST8_WIDTH__ = 8
+const m___INT_MAX__ = 2147483647
+const m___INT_WIDTH__ = 32
+const m___IPHONE_10_0 = 100000
+const m___IPHONE_10_1 = 100100
+const m___IPHONE_10_2 = 100200
+const m___IPHONE_10_3 = 100300
+const m___IPHONE_11_0 = 110000
+const m___IPHONE_11_1 = 110100
+const m___IPHONE_11_2 = 110200
+const m___IPHONE_11_3 = 110300
+const m___IPHONE_11_4 = 110400
+const m___IPHONE_12_0 = 120000
+const m___IPHONE_12_1 = 120100
+const m___IPHONE_12_2 = 120200
+const m___IPHONE_12_3 = 120300
+const m___IPHONE_12_4 = 120400
+const m___IPHONE_13_0 = 130000
+const m___IPHONE_13_1 = 130100
+const m___IPHONE_13_2 = 130200
+const m___IPHONE_13_3 = 130300
+const m___IPHONE_13_4 = 130400
+const m___IPHONE_13_5 = 130500
+const m___IPHONE_13_6 = 130600
+const m___IPHONE_13_7 = 130700
+const m___IPHONE_14_0 = 140000
+const m___IPHONE_14_1 = 140100
+const m___IPHONE_14_2 = 140200
+const m___IPHONE_14_3 = 140300
+const m___IPHONE_14_4 = 140400
+const m___IPHONE_14_5 = 140500
+const m___IPHONE_14_6 = 140600
+const m___IPHONE_14_7 = 140700
+const m___IPHONE_14_8 = 140800
+const m___IPHONE_15_0 = 150000
+const m___IPHONE_15_1 = 150100
+const m___IPHONE_15_2 = 150200
+const m___IPHONE_15_3 = 150300
+const m___IPHONE_15_4 = 150400
+const m___IPHONE_15_5 = 150500
+const m___IPHONE_15_6 = 150600
+const m___IPHONE_16_0 = 160000
+const m___IPHONE_16_1 = 160100
+const m___IPHONE_16_2 = 160200
+const m___IPHONE_16_3 = 160300
+const m___IPHONE_16_4 = 160400
+const m___IPHONE_16_5 = 160500
+const m___IPHONE_16_6 = 160600
+const m___IPHONE_16_7 = 160700
+const m___IPHONE_17_0 = 170000
+const m___IPHONE_17_1 = 170100
+const m___IPHONE_17_2 = 170200
+const m___IPHONE_2_0 = 20000
+const m___IPHONE_2_1 = 20100
+const m___IPHONE_2_2 = 20200
+const m___IPHONE_3_0 = 30000
+const m___IPHONE_3_1 = 30100
+const m___IPHONE_3_2 = 30200
+const m___IPHONE_4_0 = 40000
+const m___IPHONE_4_1 = 40100
+const m___IPHONE_4_2 = 40200
+const m___IPHONE_4_3 = 40300
+const m___IPHONE_5_0 = 50000
+const m___IPHONE_5_1 = 50100
+const m___IPHONE_6_0 = 60000
+const m___IPHONE_6_1 = 60100
+const m___IPHONE_7_0 = 70000
+const m___IPHONE_7_1 = 70100
+const m___IPHONE_8_0 = 80000
+const m___IPHONE_8_1 = 80100
+const m___IPHONE_8_2 = 80200
+const m___IPHONE_8_3 = 80300
+const m___IPHONE_8_4 = 80400
+const m___IPHONE_9_0 = 90000
+const m___IPHONE_9_1 = 90100
+const m___IPHONE_9_2 = 90200
+const m___IPHONE_9_3 = 90300
+const m___LAHF_SAHF__ = 1
 const m___LASTBRANCH_MAX = 32
+const m___LDBL_DECIMAL_DIG__ = 17
+const m___LDBL_DENORM_MIN__ = 4.9406564584124654e-324
+const m___LDBL_DIG__ = 15
+const m___LDBL_EPSILON__ = 2.2204460492503131e-16
+const m___LDBL_HAS_DENORM__ = 1
+const m___LDBL_HAS_INFINITY__ = 1
+const m___LDBL_HAS_QUIET_NAN__ = 1
+const m___LDBL_MANT_DIG__ = 53
+const m___LDBL_MAX_10_EXP__ = 308
+const m___LDBL_MAX_EXP__ = 1024
+const m___LDBL_MAX__ = 1.7976931348623157e+308
+const m___LDBL_MIN__ = 2.2250738585072014e-308
+const m___LITTLE_ENDIAN__ = 1
+const m___LLONG_WIDTH__ = 64
+const m___LONG_LONG_MAX__ = 9223372036854775807
+const m___LONG_MAX__ = 9223372036854775807
+const m___LONG_WIDTH__ = 64
+const m___LP64_OFF64 = 1
+const m___LP64__ = 1
+const m___LPBIG_OFFBIG = 1
+const m___MACH__ = 1
+const m___MAC_10_0 = 1000
+const m___MAC_10_1 = 1010
+const m___MAC_10_10 = 101000
+const m___MAC_10_10_2 = 101002
+const m___MAC_10_10_3 = 101003
+const m___MAC_10_11 = 101100
+const m___MAC_10_11_2 = 101102
+const m___MAC_10_11_3 = 101103
+const m___MAC_10_11_4 = 101104
+const m___MAC_10_12 = 101200
+const m___MAC_10_12_1 = 101201
+const m___MAC_10_12_2 = 101202
+const m___MAC_10_12_4 = 101204
+const m___MAC_10_13 = 101300
+const m___MAC_10_13_1 = 101301
+const m___MAC_10_13_2 = 101302
+const m___MAC_10_13_4 = 101304
+const m___MAC_10_14 = 101400
+const m___MAC_10_14_1 = 101401
+const m___MAC_10_14_4 = 101404
+const m___MAC_10_14_5 = 101405
+const m___MAC_10_14_6 = 101406
+const m___MAC_10_15 = 101500
+const m___MAC_10_15_1 = 101501
+const m___MAC_10_15_4 = 101504
+const m___MAC_10_16 = 101600
+const m___MAC_10_2 = 1020
+const m___MAC_10_3 = 1030
+const m___MAC_10_4 = 1040
+const m___MAC_10_5 = 1050
+const m___MAC_10_6 = 1060
+const m___MAC_10_7 = 1070
+const m___MAC_10_8 = 1080
+const m___MAC_10_9 = 1090
+const m___MAC_11_0 = 110000
+const m___MAC_11_1 = 110100
+const m___MAC_11_3 = 110300
+const m___MAC_11_4 = 110400
+const m___MAC_11_5 = 110500
+const m___MAC_11_6 = 110600
+const m___MAC_12_0 = 120000
+const m___MAC_12_1 = 120100
+const m___MAC_12_2 = 120200
+const m___MAC_12_3 = 120300
+const m___MAC_12_4 = 120400
+const m___MAC_12_5 = 120500
+const m___MAC_12_6 = 120600
+const m___MAC_12_7 = 120700
+const m___MAC_13_0 = 130000
+const m___MAC_13_1 = 130100
+const m___MAC_13_2 = 130200
+const m___MAC_13_3 = 130300
+const m___MAC_13_4 = 130400
+const m___MAC_13_5 = 130500
+const m___MAC_13_6 = 130600
+const m___MAC_14_0 = 140000
+const m___MAC_14_1 = 140100
+const m___MAC_14_2 = 140200
+const m___MAC_OS_X_VERSION_MAX_ALLOWED = "__MAC_14_2"
+const m___MAC_OS_X_VERSION_MIN_REQUIRED = "__ENVIRONMENT_MAC_OS_X_VERSION_MIN_REQUIRED__"
+const m___MMX__ = 1
+const m___NO_INLINE__ = 1
+const m___NO_MATH_ERRNO__ = 1
+const m___NO_MATH_INLINES = 1
+const m___OBJC_BOOL_IS_BOOL = 0
+const m___OPENCL_MEMORY_SCOPE_ALL_SVM_DEVICES = 3
+const m___OPENCL_MEMORY_SCOPE_DEVICE = 2
+const m___OPENCL_MEMORY_SCOPE_SUB_GROUP = 4
+const m___OPENCL_MEMORY_SCOPE_WORK_GROUP = 1
+const m___OPENCL_MEMORY_SCOPE_WORK_ITEM = 0
+const m___ORDER_BIG_ENDIAN__ = 4321
+const m___ORDER_LITTLE_ENDIAN__ = 1234
+const m___ORDER_PDP_ENDIAN__ = 3412
+const m___PIC__ = 2
+const m___POINTER_WIDTH__ = 64
+const m___PRAGMA_REDEFINE_EXTNAME = 1
+const m___PRETTY_FUNCTION__ = "__func__"
 const m___PTHREAD_ATTR_SIZE__ = 56
 const m___PTHREAD_CONDATTR_SIZE__ = 8
 const m___PTHREAD_COND_SIZE__ = 40
@@ -33,6 +1059,275 @@ const m___PTHREAD_ONCE_SIZE__ = 8
 const m___PTHREAD_RWLOCKATTR_SIZE__ = 16
 const m___PTHREAD_RWLOCK_SIZE__ = 192
 const m___PTHREAD_SIZE__ = 8176
+const m___PTRDIFF_FMTd__ = "ld"
+const m___PTRDIFF_FMTi__ = "li"
+const m___PTRDIFF_MAX__ = 9223372036854775807
+const m___PTRDIFF_WIDTH__ = 64
+const m___SCHAR_MAX__ = 127
+const m___SEG_FS = 1
+const m___SEG_GS = 1
+const m___SHRT_MAX__ = 32767
+const m___SHRT_WIDTH__ = 16
+const m___SIG_ATOMIC_MAX__ = 2147483647
+const m___SIG_ATOMIC_WIDTH__ = 32
+const m___SIZEOF_DOUBLE__ = 8
+const m___SIZEOF_FLOAT__ = 4
+const m___SIZEOF_INT128__ = 16
+const m___SIZEOF_INT__ = 4
+const m___SIZEOF_LONG_DOUBLE__ = 8
+const m___SIZEOF_LONG_LONG__ = 8
+const m___SIZEOF_LONG__ = 8
+const m___SIZEOF_POINTER__ = 8
+const m___SIZEOF_PTRDIFF_T__ = 8
+const m___SIZEOF_SHORT__ = 2
+const m___SIZEOF_SIZE_T__ = 8
+const m___SIZEOF_WCHAR_T__ = 4
+const m___SIZEOF_WINT_T__ = 4
+const m___SIZE_FMTX__ = "lX"
+const m___SIZE_FMTo__ = "lo"
+const m___SIZE_FMTu__ = "lu"
+const m___SIZE_FMTx__ = "lx"
+const m___SIZE_MAX__ = 18446744073709551615
+const m___SIZE_WIDTH__ = 64
+const m___SSE2_MATH__ = 1
+const m___SSE2__ = 1
+const m___SSE3__ = 1
+const m___SSE4_1__ = 1
+const m___SSE_MATH__ = 1
+const m___SSE__ = 1
+const m___SSP__ = 1
+const m___SSSE3__ = 1
+const m___STDC_HOSTED__ = 1
+const m___STDC_NO_THREADS__ = 1
+const m___STDC_UTF_16__ = 1
+const m___STDC_UTF_32__ = 1
+const m___STDC_VERSION__ = 201710
+const m___STDC_WANT_LIB_EXT1__ = 1
+const m___STDC__ = 1
+const m___TVOS_10_0 = 100000
+const m___TVOS_10_0_1 = 100001
+const m___TVOS_10_1 = 100100
+const m___TVOS_10_2 = 100200
+const m___TVOS_11_0 = 110000
+const m___TVOS_11_1 = 110100
+const m___TVOS_11_2 = 110200
+const m___TVOS_11_3 = 110300
+const m___TVOS_11_4 = 110400
+const m___TVOS_12_0 = 120000
+const m___TVOS_12_1 = 120100
+const m___TVOS_12_2 = 120200
+const m___TVOS_12_3 = 120300
+const m___TVOS_12_4 = 120400
+const m___TVOS_13_0 = 130000
+const m___TVOS_13_2 = 130200
+const m___TVOS_13_3 = 130300
+const m___TVOS_13_4 = 130400
+const m___TVOS_14_0 = 140000
+const m___TVOS_14_1 = 140100
+const m___TVOS_14_2 = 140200
+const m___TVOS_14_3 = 140300
+const m___TVOS_14_5 = 140500
+const m___TVOS_14_6 = 140600
+const m___TVOS_14_7 = 140700
+const m___TVOS_15_0 = 150000
+const m___TVOS_15_1 = 150100
+const m___TVOS_15_2 = 150200
+const m___TVOS_15_3 = 150300
+const m___TVOS_15_4 = 150400
+const m___TVOS_15_5 = 150500
+const m___TVOS_15_6 = 150600
+const m___TVOS_16_0 = 160000
+const m___TVOS_16_1 = 160100
+const m___TVOS_16_2 = 160200
+const m___TVOS_16_3 = 160300
+const m___TVOS_16_4 = 160400
+const m___TVOS_16_5 = 160500
+const m___TVOS_16_6 = 160600
+const m___TVOS_17_0 = 170000
+const m___TVOS_17_1 = 170100
+const m___TVOS_17_2 = 170200
+const m___TVOS_9_0 = 90000
+const m___TVOS_9_1 = 90100
+const m___TVOS_9_2 = 90200
+const m___UINT16_FMTX__ = "hX"
+const m___UINT16_FMTo__ = "ho"
+const m___UINT16_FMTu__ = "hu"
+const m___UINT16_FMTx__ = "hx"
+const m___UINT16_MAX__ = 65535
+const m___UINT32_C_SUFFIX__ = "U"
+const m___UINT32_FMTX__ = "X"
+const m___UINT32_FMTo__ = "o"
+const m___UINT32_FMTu__ = "u"
+const m___UINT32_FMTx__ = "x"
+const m___UINT32_MAX__ = 4294967295
+const m___UINT64_C_SUFFIX__ = "ULL"
+const m___UINT64_FMTX__ = "llX"
+const m___UINT64_FMTo__ = "llo"
+const m___UINT64_FMTu__ = "llu"
+const m___UINT64_FMTx__ = "llx"
+const m___UINT64_MAX__ = "18446744073709551615U"
+const m___UINT8_FMTX__ = "hhX"
+const m___UINT8_FMTo__ = "hho"
+const m___UINT8_FMTu__ = "hhu"
+const m___UINT8_FMTx__ = "hhx"
+const m___UINT8_MAX__ = 255
+const m___UINTMAX_C_SUFFIX__ = "UL"
+const m___UINTMAX_FMTX__ = "lX"
+const m___UINTMAX_FMTo__ = "lo"
+const m___UINTMAX_FMTu__ = "lu"
+const m___UINTMAX_FMTx__ = "lx"
+const m___UINTMAX_MAX__ = 18446744073709551615
+const m___UINTMAX_WIDTH__ = 64
+const m___UINTPTR_FMTX__ = "lX"
+const m___UINTPTR_FMTo__ = "lo"
+const m___UINTPTR_FMTu__ = "lu"
+const m___UINTPTR_FMTx__ = "lx"
+const m___UINTPTR_MAX__ = 18446744073709551615
+const m___UINTPTR_WIDTH__ = 64
+const m___UINT_FAST16_FMTX__ = "hX"
+const m___UINT_FAST16_FMTo__ = "ho"
+const m___UINT_FAST16_FMTu__ = "hu"
+const m___UINT_FAST16_FMTx__ = "hx"
+const m___UINT_FAST16_MAX__ = 65535
+const m___UINT_FAST32_FMTX__ = "X"
+const m___UINT_FAST32_FMTo__ = "o"
+const m___UINT_FAST32_FMTu__ = "u"
+const m___UINT_FAST32_FMTx__ = "x"
+const m___UINT_FAST32_MAX__ = 4294967295
+const m___UINT_FAST64_FMTX__ = "llX"
+const m___UINT_FAST64_FMTo__ = "llo"
+const m___UINT_FAST64_FMTu__ = "llu"
+const m___UINT_FAST64_FMTx__ = "llx"
+const m___UINT_FAST64_MAX__ = "18446744073709551615U"
+const m___UINT_FAST8_FMTX__ = "hhX"
+const m___UINT_FAST8_FMTo__ = "hho"
+const m___UINT_FAST8_FMTu__ = "hhu"
+const m___UINT_FAST8_FMTx__ = "hhx"
+const m___UINT_FAST8_MAX__ = 255
+const m___UINT_LEAST16_FMTX__ = "hX"
+const m___UINT_LEAST16_FMTo__ = "ho"
+const m___UINT_LEAST16_FMTu__ = "hu"
+const m___UINT_LEAST16_FMTx__ = "hx"
+const m___UINT_LEAST16_MAX = "UINT16_MAX"
+const m___UINT_LEAST16_MAX__ = 65535
+const m___UINT_LEAST32_FMTX__ = "X"
+const m___UINT_LEAST32_FMTo__ = "o"
+const m___UINT_LEAST32_FMTu__ = "u"
+const m___UINT_LEAST32_FMTx__ = "x"
+const m___UINT_LEAST32_MAX = "UINT32_MAX"
+const m___UINT_LEAST32_MAX__ = 4294967295
+const m___UINT_LEAST64_FMTX__ = "llX"
+const m___UINT_LEAST64_FMTo__ = "llo"
+const m___UINT_LEAST64_FMTu__ = "llu"
+const m___UINT_LEAST64_FMTx__ = "llx"
+const m___UINT_LEAST64_MAX = "UINT64_MAX"
+const m___UINT_LEAST64_MAX__ = "18446744073709551615U"
+const m___UINT_LEAST8_FMTX__ = "hhX"
+const m___UINT_LEAST8_FMTo__ = "hho"
+const m___UINT_LEAST8_FMTu__ = "hhu"
+const m___UINT_LEAST8_FMTx__ = "hhx"
+const m___UINT_LEAST8_MAX = "UINT8_MAX"
+const m___UINT_LEAST8_MAX__ = 255
+const m___USER_LABEL_PREFIX__ = "_"
+const m___VERSION__ = "Apple LLVM 15.0.0 (clang-1500.1.0.2.5)"
+const m___VISIONOS_1_0 = 10000
+const m___WATCHOS_10_0 = 100000
+const m___WATCHOS_10_1 = 100100
+const m___WATCHOS_10_2 = 100200
+const m___WATCHOS_1_0 = 10000
+const m___WATCHOS_2_0 = 20000
+const m___WATCHOS_2_1 = 20100
+const m___WATCHOS_2_2 = 20200
+const m___WATCHOS_3_0 = 30000
+const m___WATCHOS_3_1 = 30100
+const m___WATCHOS_3_1_1 = 30101
+const m___WATCHOS_3_2 = 30200
+const m___WATCHOS_4_0 = 40000
+const m___WATCHOS_4_1 = 40100
+const m___WATCHOS_4_2 = 40200
+const m___WATCHOS_4_3 = 40300
+const m___WATCHOS_5_0 = 50000
+const m___WATCHOS_5_1 = 50100
+const m___WATCHOS_5_2 = 50200
+const m___WATCHOS_5_3 = 50300
+const m___WATCHOS_6_0 = 60000
+const m___WATCHOS_6_1 = 60100
+const m___WATCHOS_6_2 = 60200
+const m___WATCHOS_7_0 = 70000
+const m___WATCHOS_7_1 = 70100
+const m___WATCHOS_7_2 = 70200
+const m___WATCHOS_7_3 = 70300
+const m___WATCHOS_7_4 = 70400
+const m___WATCHOS_7_5 = 70500
+const m___WATCHOS_7_6 = 70600
+const m___WATCHOS_8_0 = 80000
+const m___WATCHOS_8_1 = 80100
+const m___WATCHOS_8_3 = 80300
+const m___WATCHOS_8_4 = 80400
+const m___WATCHOS_8_5 = 80500
+const m___WATCHOS_8_6 = 80600
+const m___WATCHOS_8_7 = 80700
+const m___WATCHOS_9_0 = 90000
+const m___WATCHOS_9_1 = 90100
+const m___WATCHOS_9_2 = 90200
+const m___WATCHOS_9_3 = 90300
+const m___WATCHOS_9_4 = 90400
+const m___WATCHOS_9_5 = 90500
+const m___WATCHOS_9_6 = 90600
+const m___WCHAR_MAX__ = 2147483647
+const m___WCHAR_TYPE__ = "int"
+const m___WCHAR_WIDTH__ = 32
+const m___WINT_MAX__ = 2147483647
+const m___WINT_TYPE__ = "int"
+const m___WINT_WIDTH__ = 32
+const m___amd64 = 1
+const m___amd64__ = 1
+const m___apple_build_version__ = 15000100
+const m___clang__ = 1
+const m___clang_literal_encoding__ = "UTF-8"
+const m___clang_major__ = 15
+const m___clang_minor__ = 0
+const m___clang_patchlevel__ = 0
+const m___clang_version__ = "15.0.0 (clang-1500.1.0.2.5)"
+const m___clang_wide_literal_encoding__ = "UTF-32"
+const m___code_model_small__ = 1
+const m___const = "const"
+const m___core2 = 1
+const m___core2__ = 1
+const m___has_ptrcheck = 0
+const m___header_inline = "inline"
+const m___int16_c_suffix = "__INT16_C_SUFFIX__"
+const m___int32_c_suffix = "__INT32_C_SUFFIX__"
+const m___int64_c_suffix = "__INT64_C_SUFFIX__"
+const m___int8_c_suffix = "__INT8_C_SUFFIX__"
+const m___int_least16_t = "int16_t"
+const m___int_least32_t = "int32_t"
+const m___int_least64_t = "int64_t"
+const m___int_least8_t = "int8_t"
+const m___llvm__ = 1
+const m___nonnull = "_Nonnull"
+const m___null_unspecified = "_Null_unspecified"
+const m___nullable = "_Nullable"
+const m___pic__ = 2
+const m___restrict = "restrict"
+const m___restrict_arr = "restrict"
+const m___signed = "signed"
+const m___tune_core2__ = 1
+const m___uint_least16_t = "uint16_t"
+const m___uint_least32_t = "uint32_t"
+const m___uint_least64_t = "uint64_t"
+const m___uint_least8_t = "uint8_t"
+const m___volatile = "volatile"
+const m___x86_64 = 1
+const m___x86_64__ = 1
+const m_local = "static"
+const m_ru_first = "ru_ixrss"
+const m_ru_last = "ru_nivcsw"
+const m_sv_onstack = "sv_flags"
+const m_z_off64_t = "z_off_t"
+const m_z_off_t = "off_t"
+const m_zmemcmp = "memcmp"
+const m_zmemcpy = "memcpy"
 
 type t__builtin_va_list = uintptr
 
@@ -6828,7 +8123,6 @@ const m_BL_CODES = 19
 const m_BUSY_STATE = 113
 const m_Buf_size = 16
 const m_COMMENT_STATE = 91
-const m_DEF_MEM_LEVEL = 8
 const m_D_CODES = 30
 const m_EXTRA_STATE = 69
 const m_FINISH_STATE = 666
@@ -6837,33 +8131,15 @@ const m_HCRC_STATE = 103
 const m_INIT_STATE = 42
 const m_LENGTH_CODES = 29
 const m_LITERALS = 256
+const m_LIT_BUFS = 4
 const m_MAX_BITS = 15
-const m_MAX_MATCH = 258
-const m_MAX_MEM_LEVEL = 9
 const m_MAX_STORED = 65535
-const m_MAX_WBITS = 15
-const m_MIN_MATCH = 3
 const m_NAME_STATE = 73
 const m_NIL = 0
-const m_OS_CODE = 19
-const m_PRESET_DICT = 32
+const m_PRESET_DICT1 = 32
 const m_TOO_FAR = 4096
-const m_ZLIB_VERSION = "1.3"
-const m_Z_BLOCK = 5
-const m_Z_DEFAULT_STRATEGY = 0
-const m_Z_DEFLATED = 8
-const m_Z_FILTERED = 1
-const m_Z_FINISH = 4
-const m_Z_FIXED = 4
-const m_Z_FULL_FLUSH = 3
-const m_Z_HUFFMAN_ONLY = 2
-const m_Z_NEED_DICT = 2
-const m_Z_NO_FLUSH = 0
-const m_Z_OK = 0
-const m_Z_PARTIAL_FLUSH = 1
-const m_Z_RLE = 3
-const m_Z_STREAM_END = 1
-const m_Z_UNKNOWN = 2
+const m_WIN_INIT = "MAX_MATCH"
+const m_max_insert_length = "max_lazy_match"
 
 type Tinternal_state = struct {
 	Fstrm             Tz_streamp
@@ -7499,11 +8775,11 @@ func XdeflateInit2_(tls *libc.TLS, strm Tz_streamp, level int32, method int32, w
 	 * the compressed data for a dynamic block also cannot overwrite the
 	 * symbols from which it is being constructed.
 	 */
-	(*Tdeflate_state)(unsafe.Pointer(s)).Fpending_buf = (*(*func(*libc.TLS, Tvoidpf, TuInt, TuInt) Tvoidpf)(unsafe.Pointer(&struct{ uintptr }{(*Tz_stream)(unsafe.Pointer(strm)).Fzalloc})))(tls, (*Tz_stream)(unsafe.Pointer(strm)).Fopaque, (*Tdeflate_state)(unsafe.Pointer(s)).Flit_bufsize, uint32(libc.Int32FromInt32(4)))
+	(*Tdeflate_state)(unsafe.Pointer(s)).Fpending_buf = (*(*func(*libc.TLS, Tvoidpf, TuInt, TuInt) Tvoidpf)(unsafe.Pointer(&struct{ uintptr }{(*Tz_stream)(unsafe.Pointer(strm)).Fzalloc})))(tls, (*Tz_stream)(unsafe.Pointer(strm)).Fopaque, (*Tdeflate_state)(unsafe.Pointer(s)).Flit_bufsize, uint32(libc.Int32FromInt32(m_LIT_BUFS)))
 	(*Tdeflate_state)(unsafe.Pointer(s)).Fpending_buf_size = uint64((*Tdeflate_state)(unsafe.Pointer(s)).Flit_bufsize) * uint64(4)
 	if (*Tdeflate_state)(unsafe.Pointer(s)).Fwindow == uintptr(m_Z_NULL) || (*Tdeflate_state)(unsafe.Pointer(s)).Fprev == uintptr(m_Z_NULL) || (*Tdeflate_state)(unsafe.Pointer(s)).Fhead == uintptr(m_Z_NULL) || (*Tdeflate_state)(unsafe.Pointer(s)).Fpending_buf == uintptr(m_Z_NULL) {
 		(*Tdeflate_state)(unsafe.Pointer(s)).Fstatus = int32(m_FINISH_STATE)
-		(*Tz_stream)(unsafe.Pointer(strm)).Fmsg = Xz_errmsg[libc.Int32FromInt32(m_Z_NEED_DICT) - -libc.Int32FromInt32(4)]
+		(*Tz_stream)(unsafe.Pointer(strm)).Fmsg = Xz_errmsg[libc.Int32FromInt32(2) - -libc.Int32FromInt32(4)]
 		XdeflateEnd(tls, strm)
 		return -int32(4)
 	}
@@ -7519,7 +8795,7 @@ func XdeflateInit2_(tls *libc.TLS, strm Tz_streamp, level int32, method int32, w
 	return XdeflateReset(tls, strm)
 }
 
-var _my_version = [4]int8{'1', '.', '3'}
+var _my_version = [6]int8{'1', '.', '3', '.', '1'}
 
 // C documentation
 //
@@ -8026,11 +9302,11 @@ func Xdeflate(tls *libc.TLS, strm Tz_streamp, flush int32) (r int32) {
 	}
 	s = (*Tz_stream)(unsafe.Pointer(strm)).Fstate
 	if (*Tz_stream)(unsafe.Pointer(strm)).Fnext_out == uintptr(m_Z_NULL) || (*Tz_stream)(unsafe.Pointer(strm)).Favail_in != uint32(0) && (*Tz_stream)(unsafe.Pointer(strm)).Fnext_in == uintptr(m_Z_NULL) || (*Tdeflate_state)(unsafe.Pointer(s)).Fstatus == int32(m_FINISH_STATE) && flush != int32(m_Z_FINISH) {
-		(*Tz_stream)(unsafe.Pointer(strm)).Fmsg = Xz_errmsg[libc.Int32FromInt32(m_Z_NEED_DICT) - -libc.Int32FromInt32(2)]
+		(*Tz_stream)(unsafe.Pointer(strm)).Fmsg = Xz_errmsg[libc.Int32FromInt32(2) - -libc.Int32FromInt32(2)]
 		return -libc.Int32FromInt32(2)
 	}
 	if (*Tz_stream)(unsafe.Pointer(strm)).Favail_out == uint32(0) {
-		(*Tz_stream)(unsafe.Pointer(strm)).Fmsg = Xz_errmsg[libc.Int32FromInt32(m_Z_NEED_DICT) - -libc.Int32FromInt32(5)]
+		(*Tz_stream)(unsafe.Pointer(strm)).Fmsg = Xz_errmsg[libc.Int32FromInt32(2) - -libc.Int32FromInt32(5)]
 		return -libc.Int32FromInt32(5)
 	}
 	old_flush = (*Tdeflate_state)(unsafe.Pointer(s)).Flast_flush
@@ -8066,13 +9342,13 @@ func Xdeflate(tls *libc.TLS, strm Tz_streamp, flush int32) (r int32) {
 			}
 		}
 		if v3 && flush*int32(2)-v1 <= old_flush*int32(2)-v2 && flush != int32(m_Z_FINISH) {
-			(*Tz_stream)(unsafe.Pointer(strm)).Fmsg = Xz_errmsg[libc.Int32FromInt32(m_Z_NEED_DICT) - -libc.Int32FromInt32(5)]
+			(*Tz_stream)(unsafe.Pointer(strm)).Fmsg = Xz_errmsg[libc.Int32FromInt32(2) - -libc.Int32FromInt32(5)]
 			return -libc.Int32FromInt32(5)
 		}
 	}
 	/* User must not provide more input after the first FINISH: */
 	if (*Tdeflate_state)(unsafe.Pointer(s)).Fstatus == int32(m_FINISH_STATE) && (*Tz_stream)(unsafe.Pointer(strm)).Favail_in != uint32(0) {
-		(*Tz_stream)(unsafe.Pointer(strm)).Fmsg = Xz_errmsg[libc.Int32FromInt32(m_Z_NEED_DICT) - -libc.Int32FromInt32(5)]
+		(*Tz_stream)(unsafe.Pointer(strm)).Fmsg = Xz_errmsg[libc.Int32FromInt32(2) - -libc.Int32FromInt32(5)]
 		return -libc.Int32FromInt32(5)
 	}
 	/* Write the header */
@@ -8097,7 +9373,7 @@ func Xdeflate(tls *libc.TLS, strm Tz_streamp, flush int32) (r int32) {
 		}
 		header |= level_flags << libc.Int32FromInt32(6)
 		if (*Tdeflate_state)(unsafe.Pointer(s)).Fstrstart != uint32(0) {
-			header |= uint32(m_PRESET_DICT)
+			header |= uint32(m_PRESET_DICT1)
 		}
 		header += uint32(31) - header%uint32(31)
 		_putShortMSB(tls, s, header)
@@ -8553,7 +9829,7 @@ func XdeflateCopy(tls *libc.TLS, dest Tz_streamp, source Tz_streamp) (r int32) {
 	(*Tdeflate_state)(unsafe.Pointer(ds)).Fwindow = (*(*func(*libc.TLS, Tvoidpf, TuInt, TuInt) Tvoidpf)(unsafe.Pointer(&struct{ uintptr }{(*Tz_stream)(unsafe.Pointer(dest)).Fzalloc})))(tls, (*Tz_stream)(unsafe.Pointer(dest)).Fopaque, (*Tdeflate_state)(unsafe.Pointer(ds)).Fw_size, uint32(libc.Uint64FromInt32(2)*libc.Uint64FromInt64(1)))
 	(*Tdeflate_state)(unsafe.Pointer(ds)).Fprev = (*(*func(*libc.TLS, Tvoidpf, TuInt, TuInt) Tvoidpf)(unsafe.Pointer(&struct{ uintptr }{(*Tz_stream)(unsafe.Pointer(dest)).Fzalloc})))(tls, (*Tz_stream)(unsafe.Pointer(dest)).Fopaque, (*Tdeflate_state)(unsafe.Pointer(ds)).Fw_size, uint32(libc.Uint64FromInt64(2)))
 	(*Tdeflate_state)(unsafe.Pointer(ds)).Fhead = (*(*func(*libc.TLS, Tvoidpf, TuInt, TuInt) Tvoidpf)(unsafe.Pointer(&struct{ uintptr }{(*Tz_stream)(unsafe.Pointer(dest)).Fzalloc})))(tls, (*Tz_stream)(unsafe.Pointer(dest)).Fopaque, (*Tdeflate_state)(unsafe.Pointer(ds)).Fhash_size, uint32(libc.Uint64FromInt64(2)))
-	(*Tdeflate_state)(unsafe.Pointer(ds)).Fpending_buf = (*(*func(*libc.TLS, Tvoidpf, TuInt, TuInt) Tvoidpf)(unsafe.Pointer(&struct{ uintptr }{(*Tz_stream)(unsafe.Pointer(dest)).Fzalloc})))(tls, (*Tz_stream)(unsafe.Pointer(dest)).Fopaque, (*Tdeflate_state)(unsafe.Pointer(ds)).Flit_bufsize, uint32(libc.Int32FromInt32(4)))
+	(*Tdeflate_state)(unsafe.Pointer(ds)).Fpending_buf = (*(*func(*libc.TLS, Tvoidpf, TuInt, TuInt) Tvoidpf)(unsafe.Pointer(&struct{ uintptr }{(*Tz_stream)(unsafe.Pointer(dest)).Fzalloc})))(tls, (*Tz_stream)(unsafe.Pointer(dest)).Fopaque, (*Tdeflate_state)(unsafe.Pointer(ds)).Flit_bufsize, uint32(libc.Int32FromInt32(m_LIT_BUFS)))
 	if (*Tdeflate_state)(unsafe.Pointer(ds)).Fwindow == uintptr(m_Z_NULL) || (*Tdeflate_state)(unsafe.Pointer(ds)).Fprev == uintptr(m_Z_NULL) || (*Tdeflate_state)(unsafe.Pointer(ds)).Fhead == uintptr(m_Z_NULL) || (*Tdeflate_state)(unsafe.Pointer(ds)).Fpending_buf == uintptr(m_Z_NULL) {
 		XdeflateEnd(tls, dest)
 		return -int32(4)
@@ -8562,7 +9838,7 @@ func XdeflateCopy(tls *libc.TLS, dest Tz_streamp, source Tz_streamp) (r int32) {
 	libc.X__builtin___memcpy_chk(tls, (*Tdeflate_state)(unsafe.Pointer(ds)).Fwindow, (*Tdeflate_state)(unsafe.Pointer(ss)).Fwindow, uint64((*Tdeflate_state)(unsafe.Pointer(ds)).Fw_size*uint32(2))*uint64(1), libc.X__builtin_object_size(tls, (*Tdeflate_state)(unsafe.Pointer(ds)).Fwindow, 0))
 	libc.X__builtin___memcpy_chk(tls, (*Tdeflate_state)(unsafe.Pointer(ds)).Fprev, (*Tdeflate_state)(unsafe.Pointer(ss)).Fprev, uint64((*Tdeflate_state)(unsafe.Pointer(ds)).Fw_size)*uint64(2), libc.X__builtin_object_size(tls, (*Tdeflate_state)(unsafe.Pointer(ds)).Fprev, 0))
 	libc.X__builtin___memcpy_chk(tls, (*Tdeflate_state)(unsafe.Pointer(ds)).Fhead, (*Tdeflate_state)(unsafe.Pointer(ss)).Fhead, uint64((*Tdeflate_state)(unsafe.Pointer(ds)).Fhash_size)*uint64(2), libc.X__builtin_object_size(tls, (*Tdeflate_state)(unsafe.Pointer(ds)).Fhead, 0))
-	libc.X__builtin___memcpy_chk(tls, (*Tdeflate_state)(unsafe.Pointer(ds)).Fpending_buf, (*Tdeflate_state)(unsafe.Pointer(ss)).Fpending_buf, uint64(uint32((*Tdeflate_state)(unsafe.Pointer(ds)).Fpending_buf_size)), libc.X__builtin_object_size(tls, (*Tdeflate_state)(unsafe.Pointer(ds)).Fpending_buf, 0))
+	libc.X__builtin___memcpy_chk(tls, (*Tdeflate_state)(unsafe.Pointer(ds)).Fpending_buf, (*Tdeflate_state)(unsafe.Pointer(ss)).Fpending_buf, uint64((*Tdeflate_state)(unsafe.Pointer(ds)).Flit_bufsize*uint32(m_LIT_BUFS)), libc.X__builtin_object_size(tls, (*Tdeflate_state)(unsafe.Pointer(ds)).Fpending_buf, 0))
 	(*Tdeflate_state)(unsafe.Pointer(ds)).Fpending_out = (*Tdeflate_state)(unsafe.Pointer(ds)).Fpending_buf + uintptr(int64((*Tdeflate_state)(unsafe.Pointer(ss)).Fpending_out)-int64((*Tdeflate_state)(unsafe.Pointer(ss)).Fpending_buf))
 	(*Tdeflate_state)(unsafe.Pointer(ds)).Fsym_buf = (*Tdeflate_state)(unsafe.Pointer(ds)).Fpending_buf + uintptr((*Tdeflate_state)(unsafe.Pointer(ds)).Flit_bufsize)
 	(*Tdeflate_state)(unsafe.Pointer(ds)).Fl_desc.Fdyn_tree = ds + 212
@@ -9677,6 +10953,7 @@ func _deflate_huff(tls *libc.TLS, s uintptr, flush int32) (r Tblock_state) {
 
 const m_ENOUGH_DISTS = 592
 const m_ENOUGH_LENS = 852
+const m_PRESET_DICT2 = 0x20
 
 type Tcode = struct {
 	Fop   uint8
@@ -12279,7 +13556,7 @@ func XinflateBack(tls *libc.TLS, strm Tz_streamp, in Tin_func, in_desc uintptr, 
 		case uint32(2):
 			(*Tinflate_state)(unsafe.Pointer(state)).Fmode = _TABLE
 		case uint32(3):
-			(*Tz_stream)(unsafe.Pointer(strm)).Fmsg = __ccgo_ts + 4
+			(*Tz_stream)(unsafe.Pointer(strm)).Fmsg = __ccgo_ts + 6
 			(*Tinflate_state)(unsafe.Pointer(state)).Fmode = _BAD
 		}
 		hold >>= uint64(libc.Int32FromInt32(2))
@@ -12313,7 +13590,7 @@ func XinflateBack(tls *libc.TLS, strm Tz_streamp, in Tin_func, in_desc uintptr, 
 			bits += uint32(8)
 		}
 		if hold&uint64(0xffff) != hold>>int32(16)^uint64(0xffff) {
-			(*Tz_stream)(unsafe.Pointer(strm)).Fmsg = __ccgo_ts + 23
+			(*Tz_stream)(unsafe.Pointer(strm)).Fmsg = __ccgo_ts + 25
 			(*Tinflate_state)(unsafe.Pointer(state)).Fmode = _BAD
 			goto _10
 		}
@@ -12382,7 +13659,7 @@ func XinflateBack(tls *libc.TLS, strm Tz_streamp, in Tin_func, in_desc uintptr, 
 		hold >>= uint64(libc.Int32FromInt32(4))
 		bits -= uint32(libc.Int32FromInt32(4))
 		if (*Tinflate_state)(unsafe.Pointer(state)).Fnlen > uint32(286) || (*Tinflate_state)(unsafe.Pointer(state)).Fndist > uint32(30) {
-			(*Tz_stream)(unsafe.Pointer(strm)).Fmsg = __ccgo_ts + 52
+			(*Tz_stream)(unsafe.Pointer(strm)).Fmsg = __ccgo_ts + 54
 			(*Tinflate_state)(unsafe.Pointer(state)).Fmode = _BAD
 			goto _10
 		}
@@ -12422,7 +13699,7 @@ func XinflateBack(tls *libc.TLS, strm Tz_streamp, in Tin_func, in_desc uintptr, 
 		(*Tinflate_state)(unsafe.Pointer(state)).Flenbits = uint32(7)
 		ret = Xinflate_table(tls, _CODES, state+152, uint32(19), state+144, state+120, state+792)
 		if ret != 0 {
-			(*Tz_stream)(unsafe.Pointer(strm)).Fmsg = __ccgo_ts + 88
+			(*Tz_stream)(unsafe.Pointer(strm)).Fmsg = __ccgo_ts + 90
 			(*Tinflate_state)(unsafe.Pointer(state)).Fmode = _BAD
 			goto _10
 		}
@@ -12477,7 +13754,7 @@ func XinflateBack(tls *libc.TLS, strm Tz_streamp, in Tin_func, in_desc uintptr, 
 					hold >>= uint64(here.Fbits)
 					bits -= uint32(here.Fbits)
 					if (*Tinflate_state)(unsafe.Pointer(state)).Fhave == uint32(0) {
-						(*Tz_stream)(unsafe.Pointer(strm)).Fmsg = __ccgo_ts + 113
+						(*Tz_stream)(unsafe.Pointer(strm)).Fmsg = __ccgo_ts + 115
 						(*Tinflate_state)(unsafe.Pointer(state)).Fmode = _BAD
 						break
 					}
@@ -12533,7 +13810,7 @@ func XinflateBack(tls *libc.TLS, strm Tz_streamp, in Tin_func, in_desc uintptr, 
 					}
 				}
 				if (*Tinflate_state)(unsafe.Pointer(state)).Fhave+copy1 > (*Tinflate_state)(unsafe.Pointer(state)).Fnlen+(*Tinflate_state)(unsafe.Pointer(state)).Fndist {
-					(*Tz_stream)(unsafe.Pointer(strm)).Fmsg = __ccgo_ts + 113
+					(*Tz_stream)(unsafe.Pointer(strm)).Fmsg = __ccgo_ts + 115
 					(*Tinflate_state)(unsafe.Pointer(state)).Fmode = _BAD
 					break
 				}
@@ -12556,7 +13833,7 @@ func XinflateBack(tls *libc.TLS, strm Tz_streamp, in Tin_func, in_desc uintptr, 
 		}
 		/* check for end-of-block code (better have one) */
 		if int32(*(*uint16)(unsafe.Pointer(state + 152 + 256*2))) == 0 {
-			(*Tz_stream)(unsafe.Pointer(strm)).Fmsg = __ccgo_ts + 139
+			(*Tz_stream)(unsafe.Pointer(strm)).Fmsg = __ccgo_ts + 141
 			(*Tinflate_state)(unsafe.Pointer(state)).Fmode = _BAD
 			goto _10
 		}
@@ -12568,7 +13845,7 @@ func XinflateBack(tls *libc.TLS, strm Tz_streamp, in Tin_func, in_desc uintptr, 
 		(*Tinflate_state)(unsafe.Pointer(state)).Flenbits = uint32(9)
 		ret = Xinflate_table(tls, _LENS, state+152, (*Tinflate_state)(unsafe.Pointer(state)).Fnlen, state+144, state+120, state+792)
 		if ret != 0 {
-			(*Tz_stream)(unsafe.Pointer(strm)).Fmsg = __ccgo_ts + 176
+			(*Tz_stream)(unsafe.Pointer(strm)).Fmsg = __ccgo_ts + 178
 			(*Tinflate_state)(unsafe.Pointer(state)).Fmode = _BAD
 			goto _10
 		}
@@ -12576,7 +13853,7 @@ func XinflateBack(tls *libc.TLS, strm Tz_streamp, in Tin_func, in_desc uintptr, 
 		(*Tinflate_state)(unsafe.Pointer(state)).Fdistbits = uint32(6)
 		ret = Xinflate_table(tls, _DISTS, state+152+uintptr((*Tinflate_state)(unsafe.Pointer(state)).Fnlen)*2, (*Tinflate_state)(unsafe.Pointer(state)).Fndist, state+144, state+124, state+792)
 		if ret != 0 {
-			(*Tz_stream)(unsafe.Pointer(strm)).Fmsg = __ccgo_ts + 204
+			(*Tz_stream)(unsafe.Pointer(strm)).Fmsg = __ccgo_ts + 206
 			(*Tinflate_state)(unsafe.Pointer(state)).Fmode = _BAD
 			goto _10
 		}
@@ -12679,7 +13956,7 @@ func XinflateBack(tls *libc.TLS, strm Tz_streamp, in Tin_func, in_desc uintptr, 
 		}
 		/* invalid code */
 		if int32(here.Fop)&int32(64) != 0 {
-			(*Tz_stream)(unsafe.Pointer(strm)).Fmsg = __ccgo_ts + 226
+			(*Tz_stream)(unsafe.Pointer(strm)).Fmsg = __ccgo_ts + 228
 			(*Tinflate_state)(unsafe.Pointer(state)).Fmode = _BAD
 			goto _10
 		}
@@ -12756,7 +14033,7 @@ func XinflateBack(tls *libc.TLS, strm Tz_streamp, in Tin_func, in_desc uintptr, 
 		hold >>= uint64(here.Fbits)
 		bits -= uint32(here.Fbits)
 		if int32(here.Fop)&int32(64) != 0 {
-			(*Tz_stream)(unsafe.Pointer(strm)).Fmsg = __ccgo_ts + 254
+			(*Tz_stream)(unsafe.Pointer(strm)).Fmsg = __ccgo_ts + 256
 			(*Tinflate_state)(unsafe.Pointer(state)).Fmode = _BAD
 			goto _10
 		}
@@ -12789,7 +14066,7 @@ func XinflateBack(tls *libc.TLS, strm Tz_streamp, in Tin_func, in_desc uintptr, 
 			v43 = uint32(0)
 		}
 		if (*Tinflate_state)(unsafe.Pointer(state)).Foffset > (*Tinflate_state)(unsafe.Pointer(state)).Fwsize-v43 {
-			(*Tz_stream)(unsafe.Pointer(strm)).Fmsg = __ccgo_ts + 276
+			(*Tz_stream)(unsafe.Pointer(strm)).Fmsg = __ccgo_ts + 278
 			(*Tinflate_state)(unsafe.Pointer(state)).Fmode = _BAD
 			goto _10
 		}
@@ -13027,7 +14304,7 @@ func Xinflate_fast(tls *libc.TLS, strm Tz_streamp, start uint32) {
 						op = dist - op /* distance back in window */
 						if op > whave {
 							if (*Tinflate_state)(unsafe.Pointer(state)).Fsane != 0 {
-								(*Tz_stream)(unsafe.Pointer(strm)).Fmsg = __ccgo_ts + 276
+								(*Tz_stream)(unsafe.Pointer(strm)).Fmsg = __ccgo_ts + 278
 								(*Tinflate_state)(unsafe.Pointer(state)).Fmode = _BAD
 								break
 							}
@@ -13188,7 +14465,7 @@ func Xinflate_fast(tls *libc.TLS, strm Tz_streamp, start uint32) {
 						here = dcode + uintptr((*Tcode)(unsafe.Pointer(here)).Fval)*4 + uintptr(hold&uint64(libc.Uint32FromUint32(1)<<op-libc.Uint32FromInt32(1)))*4
 						goto dodist
 					} else {
-						(*Tz_stream)(unsafe.Pointer(strm)).Fmsg = __ccgo_ts + 254
+						(*Tz_stream)(unsafe.Pointer(strm)).Fmsg = __ccgo_ts + 256
 						(*Tinflate_state)(unsafe.Pointer(state)).Fmode = _BAD
 						break
 					}
@@ -13202,7 +14479,7 @@ func Xinflate_fast(tls *libc.TLS, strm Tz_streamp, start uint32) {
 						(*Tinflate_state)(unsafe.Pointer(state)).Fmode = _TYPE
 						break
 					} else {
-						(*Tz_stream)(unsafe.Pointer(strm)).Fmsg = __ccgo_ts + 226
+						(*Tz_stream)(unsafe.Pointer(strm)).Fmsg = __ccgo_ts + 228
 						(*Tinflate_state)(unsafe.Pointer(state)).Fmode = _BAD
 						break
 					}
@@ -13234,8 +14511,6 @@ func Xinflate_fast(tls *libc.TLS, strm Tz_streamp, start uint32) {
 	(*Tinflate_state)(unsafe.Pointer(state)).Fbits = bits
 	return
 }
-
-const m_Z_TREES = 6
 
 func _inflateStateCheck(tls *libc.TLS, strm Tz_streamp) (r int32) {
 	var state uintptr
@@ -16028,12 +17303,12 @@ func Xinflate(tls *libc.TLS, strm Tz_streamp, flush int32) (r int32) {
 			(*Tgz_header)(unsafe.Pointer((*Tinflate_state)(unsafe.Pointer(state)).Fhead)).Fdone = -int32(1)
 		}
 		if !((*Tinflate_state)(unsafe.Pointer(state)).Fwrap&libc.Int32FromInt32(1) != 0) || (uint64(uint32(hold)&(libc.Uint32FromUint32(1)<<libc.Int32FromInt32(8)-libc.Uint32FromInt32(1))<<libc.Int32FromInt32(8))+hold>>int32(8))%uint64(31) != 0 {
-			(*Tz_stream)(unsafe.Pointer(strm)).Fmsg = __ccgo_ts + 306
+			(*Tz_stream)(unsafe.Pointer(strm)).Fmsg = __ccgo_ts + 308
 			(*Tinflate_state)(unsafe.Pointer(state)).Fmode = _BAD
 			goto _35
 		}
 		if uint32(hold)&(libc.Uint32FromUint32(1)<<libc.Int32FromInt32(4)-libc.Uint32FromInt32(1)) != uint32(m_Z_DEFLATED) {
-			(*Tz_stream)(unsafe.Pointer(strm)).Fmsg = __ccgo_ts + 329
+			(*Tz_stream)(unsafe.Pointer(strm)).Fmsg = __ccgo_ts + 331
 			(*Tinflate_state)(unsafe.Pointer(state)).Fmode = _BAD
 			goto _35
 		}
@@ -16044,7 +17319,7 @@ func Xinflate(tls *libc.TLS, strm Tz_streamp, flush int32) (r int32) {
 			(*Tinflate_state)(unsafe.Pointer(state)).Fwbits = len1
 		}
 		if len1 > uint32(15) || len1 > (*Tinflate_state)(unsafe.Pointer(state)).Fwbits {
-			(*Tz_stream)(unsafe.Pointer(strm)).Fmsg = __ccgo_ts + 356
+			(*Tz_stream)(unsafe.Pointer(strm)).Fmsg = __ccgo_ts + 358
 			(*Tinflate_state)(unsafe.Pointer(state)).Fmode = _BAD
 			goto _35
 		}
@@ -16083,12 +17358,12 @@ func Xinflate(tls *libc.TLS, strm Tz_streamp, flush int32) (r int32) {
 	_39:
 		(*Tinflate_state)(unsafe.Pointer(state)).Fflags = int32(hold)
 		if (*Tinflate_state)(unsafe.Pointer(state)).Fflags&int32(0xff) != int32(m_Z_DEFLATED) {
-			(*Tz_stream)(unsafe.Pointer(strm)).Fmsg = __ccgo_ts + 329
+			(*Tz_stream)(unsafe.Pointer(strm)).Fmsg = __ccgo_ts + 331
 			(*Tinflate_state)(unsafe.Pointer(state)).Fmode = _BAD
 			goto _35
 		}
 		if (*Tinflate_state)(unsafe.Pointer(state)).Fflags&int32(0xe000) != 0 {
-			(*Tz_stream)(unsafe.Pointer(strm)).Fmsg = __ccgo_ts + 376
+			(*Tz_stream)(unsafe.Pointer(strm)).Fmsg = __ccgo_ts + 378
 			(*Tinflate_state)(unsafe.Pointer(state)).Fmode = _BAD
 			goto _35
 		}
@@ -16294,7 +17569,7 @@ func Xinflate(tls *libc.TLS, strm Tz_streamp, flush int32) (r int32) {
 				bits += uint32(8)
 			}
 			if (*Tinflate_state)(unsafe.Pointer(state)).Fwrap&int32(4) != 0 && hold != (*Tinflate_state)(unsafe.Pointer(state)).Fcheck&uint64(0xffff) {
-				(*Tz_stream)(unsafe.Pointer(strm)).Fmsg = __ccgo_ts + 401
+				(*Tz_stream)(unsafe.Pointer(strm)).Fmsg = __ccgo_ts + 403
 				(*Tinflate_state)(unsafe.Pointer(state)).Fmode = _BAD
 				goto _35
 			}
@@ -16382,7 +17657,7 @@ func Xinflate(tls *libc.TLS, strm Tz_streamp, flush int32) (r int32) {
 		case uint32(2):
 			(*Tinflate_state)(unsafe.Pointer(state)).Fmode = _TABLE
 		case uint32(3):
-			(*Tz_stream)(unsafe.Pointer(strm)).Fmsg = __ccgo_ts + 4
+			(*Tz_stream)(unsafe.Pointer(strm)).Fmsg = __ccgo_ts + 6
 			(*Tinflate_state)(unsafe.Pointer(state)).Fmode = _BAD
 		}
 		hold >>= uint64(libc.Int32FromInt32(2))
@@ -16402,7 +17677,7 @@ func Xinflate(tls *libc.TLS, strm Tz_streamp, flush int32) (r int32) {
 			bits += uint32(8)
 		}
 		if hold&uint64(0xffff) != hold>>int32(16)^uint64(0xffff) {
-			(*Tz_stream)(unsafe.Pointer(strm)).Fmsg = __ccgo_ts + 23
+			(*Tz_stream)(unsafe.Pointer(strm)).Fmsg = __ccgo_ts + 25
 			(*Tinflate_state)(unsafe.Pointer(state)).Fmode = _BAD
 			goto _35
 		}
@@ -16460,7 +17735,7 @@ func Xinflate(tls *libc.TLS, strm Tz_streamp, flush int32) (r int32) {
 		hold >>= uint64(libc.Int32FromInt32(4))
 		bits -= uint32(libc.Int32FromInt32(4))
 		if (*Tinflate_state)(unsafe.Pointer(state)).Fnlen > uint32(286) || (*Tinflate_state)(unsafe.Pointer(state)).Fndist > uint32(30) {
-			(*Tz_stream)(unsafe.Pointer(strm)).Fmsg = __ccgo_ts + 52
+			(*Tz_stream)(unsafe.Pointer(strm)).Fmsg = __ccgo_ts + 54
 			(*Tinflate_state)(unsafe.Pointer(state)).Fmode = _BAD
 			goto _35
 		}
@@ -16497,7 +17772,7 @@ func Xinflate(tls *libc.TLS, strm Tz_streamp, flush int32) (r int32) {
 		(*Tinflate_state)(unsafe.Pointer(state)).Flenbits = uint32(7)
 		ret = Xinflate_table(tls, _CODES, state+152, uint32(19), state+144, state+120, state+792)
 		if ret != 0 {
-			(*Tz_stream)(unsafe.Pointer(strm)).Fmsg = __ccgo_ts + 88
+			(*Tz_stream)(unsafe.Pointer(strm)).Fmsg = __ccgo_ts + 90
 			(*Tinflate_state)(unsafe.Pointer(state)).Fmode = _BAD
 			goto _35
 		}
@@ -16544,7 +17819,7 @@ func Xinflate(tls *libc.TLS, strm Tz_streamp, flush int32) (r int32) {
 					hold >>= uint64(here.Fbits)
 					bits -= uint32(here.Fbits)
 					if (*Tinflate_state)(unsafe.Pointer(state)).Fhave == uint32(0) {
-						(*Tz_stream)(unsafe.Pointer(strm)).Fmsg = __ccgo_ts + 113
+						(*Tz_stream)(unsafe.Pointer(strm)).Fmsg = __ccgo_ts + 115
 						(*Tinflate_state)(unsafe.Pointer(state)).Fmode = _BAD
 						break
 					}
@@ -16590,7 +17865,7 @@ func Xinflate(tls *libc.TLS, strm Tz_streamp, flush int32) (r int32) {
 					}
 				}
 				if (*Tinflate_state)(unsafe.Pointer(state)).Fhave+copy1 > (*Tinflate_state)(unsafe.Pointer(state)).Fnlen+(*Tinflate_state)(unsafe.Pointer(state)).Fndist {
-					(*Tz_stream)(unsafe.Pointer(strm)).Fmsg = __ccgo_ts + 113
+					(*Tz_stream)(unsafe.Pointer(strm)).Fmsg = __ccgo_ts + 115
 					(*Tinflate_state)(unsafe.Pointer(state)).Fmode = _BAD
 					break
 				}
@@ -16613,7 +17888,7 @@ func Xinflate(tls *libc.TLS, strm Tz_streamp, flush int32) (r int32) {
 		}
 		/* check for end-of-block code (better have one) */
 		if int32(*(*uint16)(unsafe.Pointer(state + 152 + 256*2))) == 0 {
-			(*Tz_stream)(unsafe.Pointer(strm)).Fmsg = __ccgo_ts + 139
+			(*Tz_stream)(unsafe.Pointer(strm)).Fmsg = __ccgo_ts + 141
 			(*Tinflate_state)(unsafe.Pointer(state)).Fmode = _BAD
 			goto _35
 		}
@@ -16625,7 +17900,7 @@ func Xinflate(tls *libc.TLS, strm Tz_streamp, flush int32) (r int32) {
 		(*Tinflate_state)(unsafe.Pointer(state)).Flenbits = uint32(9)
 		ret = Xinflate_table(tls, _LENS, state+152, (*Tinflate_state)(unsafe.Pointer(state)).Fnlen, state+144, state+120, state+792)
 		if ret != 0 {
-			(*Tz_stream)(unsafe.Pointer(strm)).Fmsg = __ccgo_ts + 176
+			(*Tz_stream)(unsafe.Pointer(strm)).Fmsg = __ccgo_ts + 178
 			(*Tinflate_state)(unsafe.Pointer(state)).Fmode = _BAD
 			goto _35
 		}
@@ -16633,7 +17908,7 @@ func Xinflate(tls *libc.TLS, strm Tz_streamp, flush int32) (r int32) {
 		(*Tinflate_state)(unsafe.Pointer(state)).Fdistbits = uint32(6)
 		ret = Xinflate_table(tls, _DISTS, state+152+uintptr((*Tinflate_state)(unsafe.Pointer(state)).Fnlen)*2, (*Tinflate_state)(unsafe.Pointer(state)).Fndist, state+144, state+124, state+792)
 		if ret != 0 {
-			(*Tz_stream)(unsafe.Pointer(strm)).Fmsg = __ccgo_ts + 204
+			(*Tz_stream)(unsafe.Pointer(strm)).Fmsg = __ccgo_ts + 206
 			(*Tinflate_state)(unsafe.Pointer(state)).Fmode = _BAD
 			goto _35
 		}
@@ -16718,7 +17993,7 @@ func Xinflate(tls *libc.TLS, strm Tz_streamp, flush int32) (r int32) {
 			goto _35
 		}
 		if int32(here.Fop)&int32(64) != 0 {
-			(*Tz_stream)(unsafe.Pointer(strm)).Fmsg = __ccgo_ts + 226
+			(*Tz_stream)(unsafe.Pointer(strm)).Fmsg = __ccgo_ts + 228
 			(*Tinflate_state)(unsafe.Pointer(state)).Fmode = _BAD
 			goto _35
 		}
@@ -16789,7 +18064,7 @@ func Xinflate(tls *libc.TLS, strm Tz_streamp, flush int32) (r int32) {
 		bits -= uint32(here.Fbits)
 		*(*int32)(unsafe.Pointer(state + 7148)) += int32(here.Fbits)
 		if int32(here.Fop)&int32(64) != 0 {
-			(*Tz_stream)(unsafe.Pointer(strm)).Fmsg = __ccgo_ts + 254
+			(*Tz_stream)(unsafe.Pointer(strm)).Fmsg = __ccgo_ts + 256
 			(*Tinflate_state)(unsafe.Pointer(state)).Fmode = _BAD
 			goto _35
 		}
@@ -16826,7 +18101,7 @@ func Xinflate(tls *libc.TLS, strm Tz_streamp, flush int32) (r int32) {
 			copy1 = (*Tinflate_state)(unsafe.Pointer(state)).Foffset - copy1
 			if copy1 > (*Tinflate_state)(unsafe.Pointer(state)).Fwhave {
 				if (*Tinflate_state)(unsafe.Pointer(state)).Fsane != 0 {
-					(*Tz_stream)(unsafe.Pointer(strm)).Fmsg = __ccgo_ts + 276
+					(*Tz_stream)(unsafe.Pointer(strm)).Fmsg = __ccgo_ts + 278
 					(*Tinflate_state)(unsafe.Pointer(state)).Fmode = _BAD
 					goto _35
 				}
@@ -16911,7 +18186,7 @@ func Xinflate(tls *libc.TLS, strm Tz_streamp, flush int32) (r int32) {
 				}
 			}
 			if v99 && v98 != (*Tinflate_state)(unsafe.Pointer(state)).Fcheck {
-				(*Tz_stream)(unsafe.Pointer(strm)).Fmsg = __ccgo_ts + 421
+				(*Tz_stream)(unsafe.Pointer(strm)).Fmsg = __ccgo_ts + 423
 				(*Tinflate_state)(unsafe.Pointer(state)).Fmode = _BAD
 				goto _35
 			}
@@ -16933,7 +18208,7 @@ func Xinflate(tls *libc.TLS, strm Tz_streamp, flush int32) (r int32) {
 				bits += uint32(8)
 			}
 			if (*Tinflate_state)(unsafe.Pointer(state)).Fwrap&int32(4) != 0 && hold != (*Tinflate_state)(unsafe.Pointer(state)).Ftotal&uint64(0xffffffff) {
-				(*Tz_stream)(unsafe.Pointer(strm)).Fmsg = __ccgo_ts + 442
+				(*Tz_stream)(unsafe.Pointer(strm)).Fmsg = __ccgo_ts + 444
 				(*Tinflate_state)(unsafe.Pointer(state)).Fmode = _BAD
 				goto _35
 			}
@@ -17178,7 +18453,7 @@ func XinflateSync(tls *libc.TLS, strm Tz_streamp) (r int32) {
 	/* if first time, start search in bit buffer */
 	if (*Tinflate_state)(unsafe.Pointer(state)).Fmode != _SYNC {
 		(*Tinflate_state)(unsafe.Pointer(state)).Fmode = _SYNC
-		*(*uint64)(unsafe.Pointer(state + 80)) <<= uint64((*Tinflate_state)(unsafe.Pointer(state)).Fbits & uint32(7))
+		*(*uint64)(unsafe.Pointer(state + 80)) >>= uint64((*Tinflate_state)(unsafe.Pointer(state)).Fbits & uint32(7))
 		*(*uint32)(unsafe.Pointer(state + 88)) -= (*Tinflate_state)(unsafe.Pointer(state)).Fbits & uint32(7)
 		len1 = uint32(0)
 		for (*Tinflate_state)(unsafe.Pointer(state)).Fbits >= uint32(8) {
@@ -17722,8 +18997,8 @@ var _lext = [31]uint16{
 	26: uint16(21),
 	27: uint16(21),
 	28: uint16(16),
-	29: uint16(198),
-	30: uint16(203),
+	29: uint16(203),
+	30: uint16(77),
 }
 
 var _dbase = [32]uint16{
@@ -17795,17 +19070,13 @@ var _dext = [32]uint16{
 }
 
 const m_DIST_CODE_LEN = 512
-const m_DYN_TREES = 2
 const m_END_BLOCK = 256
 const m_MAX_BL_BITS = 7
 const m_REPZ_11_138 = 18
 const m_REPZ_3_10 = 17
 const m_REP_3_6 = 16
 const m_SMALLEST = 1
-const m_STATIC_TREES = 1
-const m_STORED_BLOCK = 0
-const m_Z_BINARY = 0
-const m_Z_TEXT = 1
+const m_TCONST = "const"
 
 type Tstatic_tree_desc = struct {
 	Fstatic_tree uintptr
@@ -22414,7 +23685,7 @@ func _compress_block(tls *libc.TLS, s uintptr, ltree uintptr, dtree uintptr) {
 					} /* send the extra distance bits */
 				}
 			} /* literal or match pair ? */
-			/* Check that the overlay between pending_buf and sym_buf is ok: */
+			/* Check for no overlay of pending_buf on needed symbols */
 		}
 	}
 	len5 = int32(*(*Tush)(unsafe.Pointer(ltree + 256*4 + 2)))
@@ -22646,7 +23917,311 @@ func x__tr_tally(tls *libc.TLS, s uintptr, dist uint32, lc uint32) (r int32) {
 }
 
 const m_ATTRIBUTION_NAME_MAX = 255
+const m_AT_EACCESS = 0x0010
+const m_AT_FDONLY = 0x0400
+const m_AT_REALDEV = 0x0200
+const m_AT_REMOVEDIR = 0x0080
+const m_AT_SYMLINK_FOLLOW = 0x0040
+const m_AT_SYMLINK_NOFOLLOW = 0x0020
+const m_AT_SYMLINK_NOFOLLOW_ANY = 0x0800
+const m_BUFSIZ = 1024
+const m_COPY = 1
+const m_CPF_IGNORE_MODE = 0x0002
+const m_CPF_OVERWRITE = 0x0001
+const m_E2BIG = 7
+const m_EACCES = 13
+const m_EADDRINUSE = 48
+const m_EADDRNOTAVAIL = 49
+const m_EAFNOSUPPORT = 47
+const m_EAGAIN = 35
+const m_EALREADY = 37
+const m_EAUTH = 80
+const m_EBADARCH = 86
+const m_EBADEXEC = 85
+const m_EBADF = 9
+const m_EBADMACHO = 88
+const m_EBADMSG = 94
+const m_EBADRPC = 72
+const m_EBUSY = 16
+const m_ECANCELED = 89
+const m_ECHILD = 10
+const m_ECONNABORTED = 53
+const m_ECONNREFUSED = 61
+const m_ECONNRESET = 54
+const m_EDEADLK = 11
+const m_EDESTADDRREQ = 39
+const m_EDEVERR = 83
+const m_EDOM = 33
+const m_EDQUOT = 69
+const m_EEXIST = 17
+const m_EFAULT = 14
+const m_EFBIG = 27
+const m_EFTYPE = 79
+const m_EHOSTDOWN = 64
+const m_EHOSTUNREACH = 65
+const m_EIDRM = 90
+const m_EILSEQ = 92
+const m_EINPROGRESS = 36
+const m_EINTR = 4
+const m_EINVAL = 22
+const m_EIO = 5
+const m_EISCONN = 56
+const m_EISDIR = 21
+const m_ELAST = 106
+const m_ELOOP = 62
+const m_EMFILE = 24
+const m_EMLINK = 31
+const m_EMSGSIZE = 40
+const m_EMULTIHOP = 95
+const m_ENAMETOOLONG = 63
+const m_ENEEDAUTH = 81
+const m_ENETDOWN = 50
+const m_ENETRESET = 52
+const m_ENETUNREACH = 51
+const m_ENFILE = 23
+const m_ENOATTR = 93
+const m_ENOBUFS = 55
+const m_ENODATA = 96
+const m_ENODEV = 19
+const m_ENOENT = 2
+const m_ENOEXEC = 8
+const m_ENOLCK = 77
+const m_ENOLINK = 97
+const m_ENOMEM = 12
+const m_ENOMSG = 91
+const m_ENOPOLICY = 103
+const m_ENOPROTOOPT = 42
+const m_ENOSPC = 28
+const m_ENOSR = 98
+const m_ENOSTR = 99
+const m_ENOSYS = 78
+const m_ENOTBLK = 15
+const m_ENOTCONN = 57
+const m_ENOTDIR = 20
+const m_ENOTEMPTY = 66
+const m_ENOTRECOVERABLE = 104
+const m_ENOTSOCK = 38
+const m_ENOTSUP = 45
+const m_ENOTTY = 25
+const m_ENXIO = 6
+const m_EOPNOTSUPP = 102
+const m_EOVERFLOW = 84
+const m_EOWNERDEAD = 105
+const m_EPERM = 1
+const m_EPFNOSUPPORT = 46
+const m_EPIPE = 32
+const m_EPROCLIM = 67
+const m_EPROCUNAVAIL = 76
+const m_EPROGMISMATCH = 75
+const m_EPROGUNAVAIL = 74
+const m_EPROTO = 100
+const m_EPROTONOSUPPORT = 43
+const m_EPROTOTYPE = 41
+const m_EPWROFF = 82
+const m_EQFULL = 106
+const m_ERANGE = 34
+const m_EREMOTE = 71
+const m_EROFS = 30
+const m_ERPCMISMATCH = 73
+const m_ESHLIBVERS = 87
+const m_ESHUTDOWN = 58
+const m_ESOCKTNOSUPPORT = 44
+const m_ESPIPE = 29
+const m_ESRCH = 3
+const m_ESTALE = 70
+const m_ETIME = 101
+const m_ETIMEDOUT = 60
+const m_ETOOMANYREFS = 59
+const m_ETXTBSY = 26
+const m_EUSERS = 68
+const m_EWOULDBLOCK = "EAGAIN"
+const m_EXDEV = 18
+const m_FAPPEND = "O_APPEND"
+const m_FASYNC = "O_ASYNC"
+const m_FCNTL_FS_SPECIFIC_BASE = 0x00010000
+const m_FD_CLOEXEC = 1
+const m_FFDSYNC = "O_DSYNC"
+const m_FFSYNC = "O_FSYNC"
+const m_FILENAME_MAX = 1024
+const m_FILESEC_GUID = "FILESEC_UUID"
+const m_FNDELAY = "O_NONBLOCK"
+const m_FNONBLOCK = "O_NONBLOCK"
+const m_FOPEN_MAX = 20
+const m_FREAD = 0x00000001
+const m_FWRITE = 0x00000002
+const m_F_ADDFILESIGS = 61
+const m_F_ADDFILESIGS_FOR_DYLD_SIM = 83
+const m_F_ADDFILESIGS_INFO = 103
+const m_F_ADDFILESIGS_RETURN = 97
+const m_F_ADDFILESUPPL = 104
+const m_F_ADDSIGS = 59
+const m_F_ALLOCATEALL = 0x00000004
+const m_F_ALLOCATECONTIG = 0x00000002
+const m_F_ALLOCATEPERSIST = 0x00000008
+const m_F_ATTRIBUTION_TAG = 111
+const m_F_BARRIERFSYNC = 85
+const m_F_CHECK_LV = 98
+const m_F_CHKCLEAN = 41
+const m_F_CREATE_TAG = 0x00000001
+const m_F_DELETE_TAG = 0x00000002
+const m_F_DUPFD = 0
+const m_F_DUPFD_CLOEXEC = 67
+const m_F_FINDSIGS = 78
+const m_F_FLUSH_DATA = 40
+const m_F_FREEZE_FS = 53
+const m_F_FULLFSYNC = 51
+const m_F_GETCODEDIR = 72
+const m_F_GETFD = 1
+const m_F_GETFL = 3
+const m_F_GETLEASE = 107
+const m_F_GETLK = 7
+const m_F_GETLKPID = 66
+const m_F_GETNOSIGPIPE = 74
+const m_F_GETOWN = 5
+const m_F_GETPATH = 50
+const m_F_GETPATH_MTMINFO = 71
+const m_F_GETPATH_NOFIRMLINK = 102
+const m_F_GETPROTECTIONCLASS = 63
+const m_F_GETPROTECTIONLEVEL = 77
+const m_F_GETSIGSINFO = 105
+const m_F_GLOBAL_NOCACHE = 55
+const m_F_LOG2PHYS = 49
+const m_F_LOG2PHYS_EXT = 65
+const m_F_NOCACHE = 48
+const m_F_NODIRECT = 62
+const m_F_OFD_GETLK = 92
+const m_F_OFD_SETLK = 90
+const m_F_OFD_SETLKW = 91
+const m_F_OFD_SETLKWTIMEOUT = 93
+const m_F_PATHPKG_CHECK = 52
+const m_F_PEOFPOSMODE = 3
+const m_F_PREALLOCATE = 42
+const m_F_PUNCHHOLE = 99
+const m_F_QUERY_TAG = 0x00000004
+const m_F_RDADVISE = 44
+const m_F_RDAHEAD = 45
+const m_F_RDLCK = 1
+const m_F_SETBACKINGSTORE = 70
+const m_F_SETFD = 2
+const m_F_SETFL = 4
+const m_F_SETLEASE = 106
+const m_F_SETLK = 8
+const m_F_SETLKW = 9
+const m_F_SETLKWTIMEOUT = 10
+const m_F_SETNOSIGPIPE = 73
+const m_F_SETOWN = 6
+const m_F_SETPROTECTIONCLASS = 64
+const m_F_SETSIZE = 43
+const m_F_SINGLE_WRITER = 76
+const m_F_SPECULATIVE_READ = 101
+const m_F_THAW_FS = 54
+const m_F_TRANSCODEKEY = 75
+const m_F_TRANSFEREXTENTS = 110
+const m_F_TRIM_ACTIVE_FILE = 100
+const m_F_UNLCK = 2
+const m_F_VOLPOSMODE = 4
+const m_F_WRLCK = 3
+const m_GETSIGSINFO_PLATFORM_BINARY = 1
+const m_GZBUFSIZE = 8192
+const m_GZIP = 2
+const m_GZ_APPEND = 1
+const m_GZ_NONE = 0
+const m_GZ_READ = 7247
+const m_GZ_WRITE = 31153
+const m_LOCK_EX = 0x02
+const m_LOCK_NB = 0x04
+const m_LOCK_SH = 0x01
+const m_LOCK_UN = 0x08
+const m_LOOK = 0
+const m_L_ctermid = 1024
+const m_L_tmpnam = 1024
+const m_O_ACCMODE = 0x0003
+const m_O_ALERT = 0x20000000
+const m_O_APPEND = 0x00000008
+const m_O_ASYNC = 0x00000040
+const m_O_CLOEXEC = 0x01000000
+const m_O_CREAT = 0x00000200
+const m_O_DIRECTORY = 0x00100000
+const m_O_DP_AUTHENTICATE = 0x0004
+const m_O_DP_GETRAWENCRYPTED = 0x0001
+const m_O_DP_GETRAWUNENCRYPTED = 0x0002
+const m_O_DSYNC = 0x400000
+const m_O_EVTONLY = 0x00008000
+const m_O_EXCL = 0x00000800
+const m_O_EXEC = 0x40000000
+const m_O_EXLOCK = 0x00000020
+const m_O_FSYNC = "O_SYNC"
+const m_O_NDELAY = "O_NONBLOCK"
+const m_O_NOCTTY = 0x00020000
+const m_O_NOFOLLOW = 0x00000100
+const m_O_NOFOLLOW_ANY = 0x20000000
+const m_O_NONBLOCK = 0x00000004
+const m_O_POPUP = 0x80000000
+const m_O_RDONLY = 0x0000
+const m_O_RDWR = 0x0002
+const m_O_SHLOCK = 0x00000010
+const m_O_SYMLINK = 0x00200000
+const m_O_SYNC = 0x0080
+const m_O_TRUNC = 0x00000400
+const m_O_WRONLY = 0x0001
+const m_P_tmpdir = "/var/tmp/"
+const m_RENAME_EXCL = 0x00000004
+const m_RENAME_NOFOLLOW_ANY = 0x00000010
+const m_RENAME_RESERVED1 = 0x00000008
+const m_RENAME_SECLUDE = 0x00000001
+const m_RENAME_SWAP = 0x00000002
+const m_S_IEXEC = "S_IXUSR"
+const m_S_IFBLK = 0060000
+const m_S_IFCHR = 0020000
+const m_S_IFDIR = 0040000
+const m_S_IFIFO = 0010000
+const m_S_IFLNK = 0120000
+const m_S_IFMT = 0170000
+const m_S_IFREG = 0100000
+const m_S_IFSOCK = 0140000
+const m_S_IFWHT = 0160000
+const m_S_IREAD = "S_IRUSR"
+const m_S_IRGRP = 0000040
+const m_S_IROTH = 0000004
+const m_S_IRUSR = 0000400
+const m_S_IRWXG = 0000070
+const m_S_IRWXO = 0000007
+const m_S_IRWXU = 0000700
+const m_S_ISGID = 0002000
+const m_S_ISTXT = "S_ISVTX"
+const m_S_ISUID = 0004000
+const m_S_ISVTX = 0001000
+const m_S_IWGRP = 0000020
+const m_S_IWOTH = 0000002
+const m_S_IWRITE = "S_IWUSR"
+const m_S_IWUSR = 0000200
+const m_S_IXGRP = 0000010
+const m_S_IXOTH = 0000001
+const m_S_IXUSR = 0000100
+const m_TMP_MAX = 308915776
 const m_USER_FSIGNATURES_CDHASH_LEN = 20
+const m__IOFBF = 0
+const m__IOLBF = 1
+const m__IONBF = 2
+const m___SALC = 0x4000
+const m___SAPP = 0x0100
+const m___SEOF = 0x0020
+const m___SERR = 0x0040
+const m___SIGN = 0x8000
+const m___SLBF = 0x0001
+const m___SMBF = 0x0080
+const m___SMOD = 0x2000
+const m___SNBF = 0x0002
+const m___SNPT = 0x0800
+const m___SOFF = 0x1000
+const m___SOPT = 0x0400
+const m___SRD = 0x0004
+const m___SRW = 0x0010
+const m___SSTR = 0x0200
+const m___SWR = 0x0008
+const m_stderr = "__stderrp"
+const m_stdin = "__stdinp"
+const m_stdout = "__stdoutp"
 
 type Tfpos_t = int64
 
@@ -22880,7 +24455,14 @@ func XzlibCompileFlags(tls *libc.TLS) (r TuLong) {
 //	 * uncompress()
 //	 */
 func XzError(tls *libc.TLS, err int32) (r uintptr) {
-	return Xz_errmsg[int32(m_Z_NEED_DICT)-err]
+	var v1 int32
+	_ = v1
+	if err < -int32(6) || err > int32(2) {
+		v1 = int32(9)
+	} else {
+		v1 = int32(2) - err
+	}
+	return Xz_errmsg[v1]
 }
 
 func Xzcalloc(tls *libc.TLS, opaque Tvoidpf, items uint32, size uint32) (r Tvoidpf) {
@@ -23086,12 +24668,6 @@ func Xuncompress(tls *libc.TLS, dest uintptr, destLen uintptr, source uintptr, _
 	return Xuncompress2(tls, dest, destLen, source, bp)
 }
 
-const m_GZ_READ = 7247
-
-/* GT_OFF(x), where x is an unsigned value, is true if x > maximum z_off64_t
-   value -- needed when comparing unsigned to z_off64_t, which is signed
-   (possible z_off64_t types off_t, off64_t, and long are all signed) */
-
 // C documentation
 //
 //	/* gzclose() is in a separate file so that it is linked in only if it is used.
@@ -23113,28 +24689,14 @@ func Xgzclose(tls *libc.TLS, file TgzFile) (r int32) {
 	return v1
 }
 
-const m_COPY = 1
-const m_GZBUFSIZE = 8192
-const m_GZ_APPEND = 1
-const m_GZ_NONE = 0
-const m_GZ_WRITE = 31153
-const m_LOOK = 0
-const m_O_APPEND = 8
-const m_O_CLOEXEC = 16777216
-const m_O_CREAT = 512
-const m_O_EXCL = 2048
-const m_O_RDONLY = 0
-const m_O_TRUNC = 1024
-const m_O_WRONLY = 1
-const m_SEEK_CUR = 1
-const m_SEEK_END = 2
-const m_SEEK_SET = 0
-const m__USE_FORTIFY_LEVEL = 2
-const m___INT_MAX__ = 2147483647
-
-/* GT_OFF(x), where x is an unsigned value, is true if x > maximum z_off64_t
-   value -- needed when comparing unsigned to z_off64_t, which is signed
-   (possible z_off64_t types off_t, off64_t, and long are all signed) */
+const m_LSEEK = "lseek"
+const m_O_APPEND1 = 8
+const m_O_CLOEXEC1 = 16777216
+const m_O_CREAT1 = 512
+const m_O_EXCL1 = 2048
+const m_O_RDONLY1 = 0
+const m_O_TRUNC1 = 1024
+const m_O_WRONLY1 = 1
 
 // C documentation
 //
@@ -23237,27 +24799,27 @@ func _gz_open(tls *libc.TLS, path uintptr, fd int32, mode uintptr) (r TgzFile) {
 		libc.Xfree(tls, state)
 		return libc.UintptrFromInt32(0)
 	}
-	libc.X__builtin___snprintf_chk(tls, (*Tgz_state)(unsafe.Pointer(state)).Fpath, len1+uint64(1), 0, libc.X__builtin_object_size(tls, (*Tgz_state)(unsafe.Pointer(state)).Fpath, int32(1)), __ccgo_ts+582, libc.VaList(bp+8, path))
+	libc.X__builtin___snprintf_chk(tls, (*Tgz_state)(unsafe.Pointer(state)).Fpath, len1+uint64(1), 0, libc.X__builtin_object_size(tls, (*Tgz_state)(unsafe.Pointer(state)).Fpath, int32(1)), __ccgo_ts+584, libc.VaList(bp+8, path))
 	/* compute the flags for open() */
 	if cloexec != 0 {
-		v1 = int32(m_O_CLOEXEC)
+		v1 = int32(m_O_CLOEXEC1)
 	} else {
 		v1 = 0
 	}
 	if (*Tgz_state)(unsafe.Pointer(state)).Fmode == int32(m_GZ_READ) {
-		v2 = m_O_RDONLY
+		v2 = m_O_RDONLY1
 	} else {
 		if exclusive != 0 {
-			v3 = int32(m_O_EXCL)
+			v3 = int32(m_O_EXCL1)
 		} else {
 			v3 = 0
 		}
 		if (*Tgz_state)(unsafe.Pointer(state)).Fmode == int32(m_GZ_WRITE) {
-			v4 = int32(m_O_TRUNC)
+			v4 = int32(m_O_TRUNC1)
 		} else {
-			v4 = int32(m_O_APPEND)
+			v4 = int32(m_O_APPEND1)
 		}
-		v2 = libc.Int32FromInt32(m_O_WRONLY) | libc.Int32FromInt32(m_O_CREAT) | v3 | v4
+		v2 = libc.Int32FromInt32(m_O_WRONLY1) | libc.Int32FromInt32(m_O_CREAT1) | v3 | v4
 	}
 	oflag = v1 | v2
 	/* open the file with the appropriate flags (or just use fd) */
@@ -23320,7 +24882,7 @@ func Xgzdopen(tls *libc.TLS, fd int32, mode uintptr) (r TgzFile) {
 	if v2 || v1 == libc.UintptrFromInt32(0) {
 		return libc.UintptrFromInt32(0)
 	}
-	libc.X__builtin___snprintf_chk(tls, path, libc.Uint64FromInt32(7)+libc.Uint64FromInt32(3)*libc.Uint64FromInt64(4), 0, libc.X__builtin_object_size(tls, path, int32(1)), __ccgo_ts+585, libc.VaList(bp+8, fd))
+	libc.X__builtin___snprintf_chk(tls, path, libc.Uint64FromInt32(7)+libc.Uint64FromInt32(3)*libc.Uint64FromInt64(4), 0, libc.X__builtin_object_size(tls, path, int32(1)), __ccgo_ts+587, libc.VaList(bp+8, fd))
 	gz = _gz_open(tls, path, fd, mode)
 	libc.Xfree(tls, path)
 	return gz
@@ -23443,7 +25005,7 @@ func Xgzseek64(tls *libc.TLS, file TgzFile, offset Toff_t, whence int32) (r Toff
 	}
 	/* if reading, skip what's in output buffer (one less gzgetc() check) */
 	if (*Tgz_state)(unsafe.Pointer(state)).Fmode == int32(m_GZ_READ) {
-		if libc.Bool(libc.Bool(uint64(4) == uint64(8)) && (*Tgz_state)(unsafe.Pointer(state)).Fx.Fhave > uint32(m___INT_MAX__)) || int64((*Tgz_state)(unsafe.Pointer(state)).Fx.Fhave) > offset {
+		if libc.Bool(libc.Bool(uint64(4) == uint64(8)) && (*Tgz_state)(unsafe.Pointer(state)).Fx.Fhave > Xgz_intmax(tls)) || int64((*Tgz_state)(unsafe.Pointer(state)).Fx.Fhave) > offset {
 			v1 = uint32(offset)
 		} else {
 			v1 = (*Tgz_state)(unsafe.Pointer(state)).Fx.Fhave
@@ -23604,10 +25166,10 @@ func Xgzerror(tls *libc.TLS, file TgzFile, errnum uintptr) (r uintptr) {
 		*(*int32)(unsafe.Pointer(errnum)) = (*Tgz_state)(unsafe.Pointer(state)).Ferr
 	}
 	if (*Tgz_state)(unsafe.Pointer(state)).Ferr == -int32(4) {
-		v1 = __ccgo_ts + 593
+		v1 = __ccgo_ts + 595
 	} else {
 		if (*Tgz_state)(unsafe.Pointer(state)).Fmsg == libc.UintptrFromInt32(0) {
-			v2 = __ccgo_ts + 492
+			v2 = __ccgo_ts + 494
 		} else {
 			v2 = (*Tgz_state)(unsafe.Pointer(state)).Fmsg
 		}
@@ -23678,14 +25240,26 @@ func Xgz_error(tls *libc.TLS, state Tgz_statep, err int32, msg uintptr) {
 		(*Tgz_state)(unsafe.Pointer(state)).Ferr = -int32(4)
 		return
 	}
-	libc.X__builtin___snprintf_chk(tls, (*Tgz_state)(unsafe.Pointer(state)).Fmsg, libc.Xstrlen(tls, (*Tgz_state)(unsafe.Pointer(state)).Fpath)+libc.Xstrlen(tls, msg)+uint64(3), 0, libc.X__builtin_object_size(tls, (*Tgz_state)(unsafe.Pointer(state)).Fmsg, int32(1)), __ccgo_ts+607, libc.VaList(bp+8, (*Tgz_state)(unsafe.Pointer(state)).Fpath, __ccgo_ts+614, msg))
+	libc.X__builtin___snprintf_chk(tls, (*Tgz_state)(unsafe.Pointer(state)).Fmsg, libc.Xstrlen(tls, (*Tgz_state)(unsafe.Pointer(state)).Fpath)+libc.Xstrlen(tls, msg)+uint64(3), 0, libc.X__builtin_object_size(tls, (*Tgz_state)(unsafe.Pointer(state)).Fmsg, int32(1)), __ccgo_ts+609, libc.VaList(bp+8, (*Tgz_state)(unsafe.Pointer(state)).Fpath, __ccgo_ts+616, msg))
 }
 
-const m_GZIP = 2
+// C documentation
+//
+//	/* portably return maximum value for an int (when limits.h presumed not
+//	   available) -- we need to do this to cover cases where 2's complement not
+//	   used, since C standard permits 1's complement and sign-bit representations,
+//	   otherwise we could just use ((unsigned)-1) >> 1 */
+func Xgz_intmax(tls *libc.TLS) (r uint32) {
+	return uint32(m___INT_MAX__)
+}
 
-/* GT_OFF(x), where x is an unsigned value, is true if x > maximum z_off64_t
-   value -- needed when comparing unsigned to z_off64_t, which is signed
-   (possible z_off64_t types off_t, off64_t, and long are all signed) */
+const m_O_APPEND2 = 0x00000008
+const m_O_CLOEXEC2 = 0x01000000
+const m_O_CREAT2 = 0x00000200
+const m_O_EXCL2 = 0x00000800
+const m_O_RDONLY2 = 0x0000
+const m_O_TRUNC2 = 0x00000400
+const m_O_WRONLY2 = 0x0001
 
 // C documentation
 //
@@ -23793,7 +25367,7 @@ func _gz_look(tls *libc.TLS, state Tgz_statep) (r int32) {
 		if (*Tgz_state)(unsafe.Pointer(state)).Fin == libc.UintptrFromInt32(0) || (*Tgz_state)(unsafe.Pointer(state)).Fout == libc.UintptrFromInt32(0) {
 			libc.Xfree(tls, (*Tgz_state)(unsafe.Pointer(state)).Fout)
 			libc.Xfree(tls, (*Tgz_state)(unsafe.Pointer(state)).Fin)
-			Xgz_error(tls, state, -int32(4), __ccgo_ts+593)
+			Xgz_error(tls, state, -int32(4), __ccgo_ts+595)
 			return -int32(1)
 		}
 		(*Tgz_state)(unsafe.Pointer(state)).Fsize = (*Tgz_state)(unsafe.Pointer(state)).Fwant
@@ -23807,7 +25381,7 @@ func _gz_look(tls *libc.TLS, state Tgz_statep) (r int32) {
 			libc.Xfree(tls, (*Tgz_state)(unsafe.Pointer(state)).Fout)
 			libc.Xfree(tls, (*Tgz_state)(unsafe.Pointer(state)).Fin)
 			(*Tgz_state)(unsafe.Pointer(state)).Fsize = uint32(0)
-			Xgz_error(tls, state, -int32(4), __ccgo_ts+593)
+			Xgz_error(tls, state, -int32(4), __ccgo_ts+595)
 			return -int32(1)
 		}
 	}
@@ -23876,22 +25450,22 @@ func _gz_decomp(tls *libc.TLS, state Tgz_statep) (r int32) {
 			return -int32(1)
 		}
 		if (*Tz_stream)(unsafe.Pointer(strm)).Favail_in == uint32(0) {
-			Xgz_error(tls, state, -int32(5), __ccgo_ts+617)
+			Xgz_error(tls, state, -int32(5), __ccgo_ts+619)
 			break
 		}
 		/* decompress and handle errors */
 		ret = Xinflate(tls, strm, m_Z_NO_FLUSH)
 		if ret == -int32(2) || ret == int32(m_Z_NEED_DICT) {
-			Xgz_error(tls, state, -int32(2), __ccgo_ts+640)
+			Xgz_error(tls, state, -int32(2), __ccgo_ts+642)
 			return -int32(1)
 		}
 		if ret == -int32(4) {
-			Xgz_error(tls, state, -int32(4), __ccgo_ts+593)
+			Xgz_error(tls, state, -int32(4), __ccgo_ts+595)
 			return -int32(1)
 		}
 		if ret == -int32(3) { /* deflate stream invalid */
 			if (*Tz_stream)(unsafe.Pointer(strm)).Fmsg == libc.UintptrFromInt32(0) {
-				v1 = __ccgo_ts + 679
+				v1 = __ccgo_ts + 681
 			} else {
 				v1 = (*Tz_stream)(unsafe.Pointer(strm)).Fmsg
 			}
@@ -23958,7 +25532,7 @@ func _gz_skip(tls *libc.TLS, state Tgz_statep, len1 Toff_t) (r int32) {
 	for len1 != 0 {
 		/* skip over whatever is in output buffer */
 		if (*Tgz_state)(unsafe.Pointer(state)).Fx.Fhave != 0 {
-			if libc.Bool(libc.Bool(uint64(4) == uint64(8)) && (*Tgz_state)(unsafe.Pointer(state)).Fx.Fhave > uint32(m___INT_MAX__)) || int64((*Tgz_state)(unsafe.Pointer(state)).Fx.Fhave) > len1 {
+			if libc.Bool(libc.Bool(uint64(4) == uint64(8)) && (*Tgz_state)(unsafe.Pointer(state)).Fx.Fhave > Xgz_intmax(tls)) || int64((*Tgz_state)(unsafe.Pointer(state)).Fx.Fhave) > len1 {
 				v1 = uint32(len1)
 			} else {
 				v1 = (*Tgz_state)(unsafe.Pointer(state)).Fx.Fhave
@@ -24079,7 +25653,7 @@ func Xgzread(tls *libc.TLS, file TgzFile, buf Tvoidp, len1 uint32) (r int32) {
 	/* since an int is returned, make sure len fits in one, otherwise return
 	   with an error (this avoids a flaw in the interface) */
 	if int32(len1) < 0 {
-		Xgz_error(tls, state, -int32(2), __ccgo_ts+701)
+		Xgz_error(tls, state, -int32(2), __ccgo_ts+703)
 		return -int32(1)
 	}
 	/* read len or fewer bytes to buf */
@@ -24112,7 +25686,7 @@ func Xgzfread(tls *libc.TLS, buf Tvoidp, size Tz_size_t, nitems Tz_size_t, file 
 	/* compute bytes to read -- error on overflow */
 	len1 = nitems * size
 	if size != 0 && len1/size != nitems {
-		Xgz_error(tls, state, -int32(2), __ccgo_ts+732)
+		Xgz_error(tls, state, -int32(2), __ccgo_ts+734)
 		return uint64(0)
 	}
 	/* read len or fewer bytes to buf, return the number of full items read */
@@ -24208,7 +25782,7 @@ func Xgzungetc(tls *libc.TLS, c int32, file TgzFile) (r int32) {
 	}
 	/* if no room, give up (must have already done a gzungetc()) */
 	if (*Tgz_state)(unsafe.Pointer(state)).Fx.Fhave == (*Tgz_state)(unsafe.Pointer(state)).Fsize<<int32(1) {
-		Xgz_error(tls, state, -int32(3), __ccgo_ts+765)
+		Xgz_error(tls, state, -int32(3), __ccgo_ts+767)
 		return -int32(1)
 	}
 	/* slide output data if needed and insert byte before existing data */
@@ -24359,10 +25933,6 @@ func Xgzclose_r(tls *libc.TLS, file TgzFile) (r int32) {
 	return v2
 }
 
-/* GT_OFF(x), where x is an unsigned value, is true if x > maximum z_off64_t
-   value -- needed when comparing unsigned to z_off64_t, which is signed
-   (possible z_off64_t types off_t, off64_t, and long are all signed) */
-
 // C documentation
 //
 //	/* Initialize state for writing a gzip file.  Mark initialization by setting
@@ -24376,7 +25946,7 @@ func _gz_init(tls *libc.TLS, state Tgz_statep) (r int32) {
 	/* allocate input buffer (double size for gzprintf) */
 	(*Tgz_state)(unsafe.Pointer(state)).Fin = libc.Xmalloc(tls, uint64((*Tgz_state)(unsafe.Pointer(state)).Fwant<<int32(1)))
 	if (*Tgz_state)(unsafe.Pointer(state)).Fin == libc.UintptrFromInt32(0) {
-		Xgz_error(tls, state, -int32(4), __ccgo_ts+593)
+		Xgz_error(tls, state, -int32(4), __ccgo_ts+595)
 		return -int32(1)
 	}
 	/* only need output buffer and deflate state if compressing */
@@ -24385,7 +25955,7 @@ func _gz_init(tls *libc.TLS, state Tgz_statep) (r int32) {
 		(*Tgz_state)(unsafe.Pointer(state)).Fout = libc.Xmalloc(tls, uint64((*Tgz_state)(unsafe.Pointer(state)).Fwant))
 		if (*Tgz_state)(unsafe.Pointer(state)).Fout == libc.UintptrFromInt32(0) {
 			libc.Xfree(tls, (*Tgz_state)(unsafe.Pointer(state)).Fin)
-			Xgz_error(tls, state, -int32(4), __ccgo_ts+593)
+			Xgz_error(tls, state, -int32(4), __ccgo_ts+595)
 			return -int32(1)
 		}
 		/* allocate deflate memory, set up for gzip compression */
@@ -24396,7 +25966,7 @@ func _gz_init(tls *libc.TLS, state Tgz_statep) (r int32) {
 		if ret != m_Z_OK {
 			libc.Xfree(tls, (*Tgz_state)(unsafe.Pointer(state)).Fout)
 			libc.Xfree(tls, (*Tgz_state)(unsafe.Pointer(state)).Fin)
-			Xgz_error(tls, state, -int32(4), __ccgo_ts+593)
+			Xgz_error(tls, state, -int32(4), __ccgo_ts+595)
 			return -int32(1)
 		}
 		(*Tz_stream)(unsafe.Pointer(strm)).Fnext_in = libc.UintptrFromInt32(0)
@@ -24489,7 +26059,7 @@ func _gz_comp(tls *libc.TLS, state Tgz_statep, flush int32) (r int32) {
 		have = (*Tz_stream)(unsafe.Pointer(strm)).Favail_out
 		ret = Xdeflate(tls, strm, flush)
 		if ret == -int32(2) {
-			Xgz_error(tls, state, -int32(2), __ccgo_ts+796)
+			Xgz_error(tls, state, -int32(2), __ccgo_ts+798)
 			return -int32(1)
 		}
 		have -= (*Tz_stream)(unsafe.Pointer(strm)).Favail_out
@@ -24519,7 +26089,7 @@ func _gz_zero(tls *libc.TLS, state Tgz_statep, len1 Toff_t) (r int32) {
 	/* compress len zeros (len guaranteed > 0) */
 	first = int32(1)
 	for len1 != 0 {
-		if libc.Bool(libc.Bool(uint64(4) == uint64(8)) && (*Tgz_state)(unsafe.Pointer(state)).Fsize > uint32(m___INT_MAX__)) || int64((*Tgz_state)(unsafe.Pointer(state)).Fsize) > len1 {
+		if libc.Bool(libc.Bool(uint64(4) == uint64(8)) && (*Tgz_state)(unsafe.Pointer(state)).Fsize > Xgz_intmax(tls)) || int64((*Tgz_state)(unsafe.Pointer(state)).Fsize) > len1 {
 			v1 = uint32(len1)
 		} else {
 			v1 = (*Tgz_state)(unsafe.Pointer(state)).Fsize
@@ -24627,7 +26197,7 @@ func Xgzwrite(tls *libc.TLS, file TgzFile, buf Tvoidpc, len1 uint32) (r int32) {
 	/* since an int is returned, make sure len fits in one, otherwise return
 	   with an error (this avoids a flaw in the interface) */
 	if int32(len1) < 0 {
-		Xgz_error(tls, state, -int32(3), __ccgo_ts+835)
+		Xgz_error(tls, state, -int32(3), __ccgo_ts+837)
 		return 0
 	}
 	/* write len bytes from buf (the return value will fit in an int) */
@@ -24654,7 +26224,7 @@ func Xgzfwrite(tls *libc.TLS, buf Tvoidpc, size Tz_size_t, nitems Tz_size_t, fil
 	/* compute bytes to read -- error on overflow */
 	len1 = nitems * size
 	if size != 0 && len1/size != nitems {
-		Xgz_error(tls, state, -int32(2), __ccgo_ts+732)
+		Xgz_error(tls, state, -int32(2), __ccgo_ts+734)
 		return uint64(0)
 	}
 	/* write len bytes to buf, return the number of full items written */
@@ -24736,7 +26306,7 @@ func Xgzputs(tls *libc.TLS, file TgzFile, s uintptr) (r int32) {
 	/* write string */
 	len1 = libc.Xstrlen(tls, s)
 	if int32(len1) < 0 || uint64(uint32(len1)) != len1 {
-		Xgz_error(tls, state, -int32(2), __ccgo_ts+872)
+		Xgz_error(tls, state, -int32(2), __ccgo_ts+874)
 		return -int32(1)
 	}
 	put = _gz_write(tls, state, s, len1)
@@ -25718,29 +27288,23 @@ var x__length_code = [256]Tuch{
 	255: uint8(28),
 }
 
-var Xdeflate_copyright = [66]int8{' ', 'd', 'e', 'f', 'l', 'a', 't', 'e', ' ', '1', '.', '3', ' ', 'C', 'o', 'p', 'y', 'r', 'i', 'g', 'h', 't', ' ', '1', '9', '9', '5', '-', '2', '0', '2', '3', ' ', 'J', 'e', 'a', 'n', '-', 'l', 'o', 'u', 'p', ' ', 'G', 'a', 'i', 'l', 'l', 'y', ' ', 'a', 'n', 'd', ' ', 'M', 'a', 'r', 'k', ' ', 'A', 'd', 'l', 'e', 'r', ' '}
+var Xdeflate_copyright = [68]int8{' ', 'd', 'e', 'f', 'l', 'a', 't', 'e', ' ', '1', '.', '3', '.', '1', ' ', 'C', 'o', 'p', 'y', 'r', 'i', 'g', 'h', 't', ' ', '1', '9', '9', '5', '-', '2', '0', '2', '4', ' ', 'J', 'e', 'a', 'n', '-', 'l', 'o', 'u', 'p', ' ', 'G', 'a', 'i', 'l', 'l', 'y', ' ', 'a', 'n', 'd', ' ', 'M', 'a', 'r', 'k', ' ', 'A', 'd', 'l', 'e', 'r', ' '}
 
-var Xinflate_copyright = [45]int8{' ', 'i', 'n', 'f', 'l', 'a', 't', 'e', ' ', '1', '.', '3', ' ', 'C', 'o', 'p', 'y', 'r', 'i', 'g', 'h', 't', ' ', '1', '9', '9', '5', '-', '2', '0', '2', '3', ' ', 'M', 'a', 'r', 'k', ' ', 'A', 'd', 'l', 'e', 'r', ' '}
+var Xinflate_copyright = [47]int8{' ', 'i', 'n', 'f', 'l', 'a', 't', 'e', ' ', '1', '.', '3', '.', '1', ' ', 'C', 'o', 'p', 'y', 'r', 'i', 'g', 'h', 't', ' ', '1', '9', '9', '5', '-', '2', '0', '2', '4', ' ', 'M', 'a', 'r', 'k', ' ', 'A', 'd', 'l', 'e', 'r', ' '}
 
-/*
-GT_OFF(x), where x is an unsigned value, is true if x > maximum z_off64_t
-
-	value -- needed when comparing unsigned to z_off64_t, which is signed
-	(possible z_off64_t types off_t, off64_t, and long are all signed)
-*/
 var Xz_errmsg = [10]uintptr{
-	0: __ccgo_ts + 465,
-	1: __ccgo_ts + 481,
-	2: __ccgo_ts + 492,
-	3: __ccgo_ts + 493,
-	4: __ccgo_ts + 504,
-	5: __ccgo_ts + 517,
-	6: __ccgo_ts + 528,
-	7: __ccgo_ts + 548,
-	8: __ccgo_ts + 561,
-	9: __ccgo_ts + 492,
+	0: __ccgo_ts + 467,
+	1: __ccgo_ts + 483,
+	2: __ccgo_ts + 494,
+	3: __ccgo_ts + 495,
+	4: __ccgo_ts + 506,
+	5: __ccgo_ts + 519,
+	6: __ccgo_ts + 530,
+	7: __ccgo_ts + 550,
+	8: __ccgo_ts + 563,
+	9: __ccgo_ts + 494,
 }
 
 var __ccgo_ts = (*reflect.StringHeader)(unsafe.Pointer(&__ccgo_ts1)).Data
 
-var __ccgo_ts1 = "1.3\x00invalid block type\x00invalid stored block lengths\x00too many length or distance symbols\x00invalid code lengths set\x00invalid bit length repeat\x00invalid code -- missing end-of-block\x00invalid literal/lengths set\x00invalid distances set\x00invalid literal/length code\x00invalid distance code\x00invalid distance too far back\x00incorrect header check\x00unknown compression method\x00invalid window size\x00unknown header flags set\x00header crc mismatch\x00incorrect data check\x00incorrect length check\x00need dictionary\x00stream end\x00\x00file error\x00stream error\x00data error\x00insufficient memory\x00buffer error\x00incompatible version\x00%s\x00<fd:%d>\x00out of memory\x00%s%s%s\x00: \x00unexpected end of file\x00internal error: inflate stream corrupt\x00compressed data error\x00request does not fit in an int\x00request does not fit in a size_t\x00out of room to push characters\x00internal error: deflate stream corrupt\x00requested length does not fit in int\x00string length does not fit in int\x00"
+var __ccgo_ts1 = "1.3.1\x00invalid block type\x00invalid stored block lengths\x00too many length or distance symbols\x00invalid code lengths set\x00invalid bit length repeat\x00invalid code -- missing end-of-block\x00invalid literal/lengths set\x00invalid distances set\x00invalid literal/length code\x00invalid distance code\x00invalid distance too far back\x00incorrect header check\x00unknown compression method\x00invalid window size\x00unknown header flags set\x00header crc mismatch\x00incorrect data check\x00incorrect length check\x00need dictionary\x00stream end\x00\x00file error\x00stream error\x00data error\x00insufficient memory\x00buffer error\x00incompatible version\x00%s\x00<fd:%d>\x00out of memory\x00%s%s%s\x00: \x00unexpected end of file\x00internal error: inflate stream corrupt\x00compressed data error\x00request does not fit in an int\x00request does not fit in a size_t\x00out of room to push characters\x00internal error: deflate stream corrupt\x00requested length does not fit in int\x00string length does not fit in int\x00"
