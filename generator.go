@@ -15,8 +15,8 @@ import (
 	"strings"
 
 	"modernc.org/cc/v4"
-	util "modernc.org/ccgo/v3/lib"
 	ccgo "modernc.org/ccgo/v4/lib"
+	util "modernc.org/fileutil/ccgo"
 )
 
 const (
@@ -29,6 +29,7 @@ var (
 	target = fmt.Sprintf("%s/%s", goos, goarch)
 	sed    = "sed"
 	j      = fmt.Sprint(runtime.GOMAXPROCS(-1))
+	libc   = "modernc.org/libc"
 	win    = os.Getenv("GO_GENERATE_WIN") == "1"
 )
 
@@ -50,9 +51,9 @@ func main() {
 		sed = "gsed"
 	}
 
-	if !win && target == "linux/amd64" {
+	if !win && target == "linux/amd64" && os.Getenv("GO_GENERATE_NOWIN") == "" {
 		defer func() {
-			util.MustShell(true, "make", "windows")
+			util.MustShell(true, nil, "make", "windows")
 			util.MustCopyFile(true, "internal/autogen/windows_amd64.mod", "go.mod", nil)
 			util.MustCopyFile(true, "internal/autogen/windows_arm64.mod", "go.mod", nil)
 		}()
@@ -77,7 +78,7 @@ func main() {
 	dev := os.Getenv("GO_GENERATE_DEV") != ""
 	switch {
 	case tempDir != "":
-		util.MustShell(true, "sh", "-c", fmt.Sprintf("rm -rf %s", filepath.Join(tempDir, extractedArchivePath)))
+		util.MustShell(true, nil, "sh", "-c", fmt.Sprintf("rm -rf %s", filepath.Join(tempDir, extractedArchivePath)))
 	default:
 		var err error
 		if tempDir, err = os.MkdirTemp("", "z-generate"); err != nil {
@@ -112,12 +113,12 @@ func main() {
 		case "darwin/arm64":
 			cflags = append(cflags, "-U__ARM_FEATURE_CRC32")
 		}
-		util.MustShell(true, "sh", "-c", "go mod init example.com/libz ; go get modernc.org/libc@latest")
+		util.MustShell(true, nil, "sh", "-c", fmt.Sprintf("go mod init example.com/libz ; go get %s@latest", libc))
 		if dev {
-			util.MustShell(true, "sh", "-c", "go work init ; go work use . $GOPATH/src/modernc.org/libc")
+			util.MustShell(true, nil, "sh", "-c", fmt.Sprintf("go work init ; go work use . $GOPATH/src/%s", libc))
 		}
 		if !win {
-			util.MustShell(true, "sh", "-c", fmt.Sprintf("CFLAGS='%s' ./configure", strings.Join(cflags, " ")))
+			util.MustShell(true, nil, "sh", "-c", fmt.Sprintf("CFLAGS='%s' ./configure", strings.Join(cflags, " ")))
 		}
 		args := []string{os.Args[0]}
 		if dev {
@@ -140,6 +141,7 @@ func main() {
 			"--prefix-typename=T",
 			"--prefix-undefined=_",
 			"-extended-errors",
+			"--libc", libc,
 		)
 		switch {
 		case win:
@@ -147,7 +149,7 @@ func main() {
 			if err = ccgo.NewTask(
 				goos, goarch,
 				append(args,
-					"--cpp", strings.TrimSpace(string(util.MustShell(true, "which", "x86_64-w64-mingw32-gcc"))),
+					"--cpp", strings.TrimSpace(string(util.MustShell(true, nil, "which", "x86_64-w64-mingw32-gcc"))),
 					"--goarch", goarch,
 					"--goos", goos,
 					"--package-name=main",
@@ -181,19 +183,19 @@ func main() {
 		fn = fmt.Sprintf("ccgo_%s.go", goos)
 	}
 	util.MustCopyFile(true, fn, filepath.Join(libRoot, result), nil)
-	util.MustShell(true, sed, "-i.bak", `s/\<T__\([a-zA-Z0-9][a-zA-Z0-9_]\+\)/t__\1/g`, fn)
-	util.MustShell(true, sed, "-i.bak", `s/\<x_\([a-zA-Z0-9][a-zA-Z0-9_]\+\)/X\1/g`, fn)
-	util.MustShell(true, "sh", "-c", "rm *.bak")
+	util.MustShell(true, nil, sed, "-i.bak", `s/\<T__\([a-zA-Z0-9][a-zA-Z0-9_]\+\)/t__\1/g`, fn)
+	util.MustShell(true, nil, sed, "-i.bak", `s/\<x_\([a-zA-Z0-9][a-zA-Z0-9_]\+\)/X\1/g`, fn)
+	util.MustShell(true, nil, "sh", "-c", "rm *.bak")
 	switch {
 	case win:
-		util.MustShell(true, "cp", filepath.Join(libRoot, "example.exe.go"), filepath.Join("internal", "example", fn))
-		util.MustShell(true, "cp", filepath.Join(libRoot, "minigzip.exe.go"), filepath.Join("internal", "minigzip", fn))
+		util.MustShell(true, nil, "cp", filepath.Join(libRoot, "example.exe.go"), filepath.Join("internal", "example", fn))
+		util.MustShell(true, nil, "cp", filepath.Join(libRoot, "minigzip.exe.go"), filepath.Join("internal", "minigzip", fn))
 	default:
-		util.MustShell(true, "cp", filepath.Join(libRoot, "example64.go"), filepath.Join("internal", "example", fn))
-		util.MustShell(true, "cp", filepath.Join(libRoot, "minigzip64.go"), filepath.Join("internal", "minigzip", fn))
+		util.MustShell(true, nil, "cp", filepath.Join(libRoot, "example64.go"), filepath.Join("internal", "example", fn))
+		util.MustShell(true, nil, "cp", filepath.Join(libRoot, "minigzip64.go"), filepath.Join("internal", "minigzip", fn))
 	}
-	util.Shell("sh", "-c", "./unconvert.sh")
-	util.Shell("git", "status")
+	util.Shell(nil, "sh", "-c", "./unconvert.sh")
+	util.Shell(nil, "git", "status")
 }
 
 func env(name, deflt string) (r string) {
