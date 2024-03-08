@@ -12,8 +12,8 @@ import (
 	"runtime"
 	"testing"
 
-	util "modernc.org/ccgo/v3/lib"
 	_ "modernc.org/ccgo/v4/lib"
+	util "modernc.org/fileutil/ccgo"
 )
 
 var (
@@ -57,11 +57,11 @@ func Test2(t *testing.T) {
 		mgBin += ".exe"
 		exBin += ".exe"
 	}
-	if util.Shell("go", "build", "-o", filepath.Join(tmpDir, mgBin), mg); err != nil {
+	if util.Shell(nil, "go", "build", "-o", filepath.Join(tmpDir, mgBin), mg); err != nil {
 		t.Fatal(err)
 	}
 
-	if util.Shell("go", "build", "-o", filepath.Join(tmpDir, exBin), ex); err != nil {
+	if util.Shell(nil, "go", "build", "-o", filepath.Join(tmpDir, exBin), ex); err != nil {
 		t.Fatal(err)
 	}
 
@@ -69,7 +69,7 @@ func Test2(t *testing.T) {
 		switch {
 		case win:
 			if err := util.InDir(tmpDir, func() error {
-				out, err := util.Shell("cmd.exe", "/c", fmt.Sprintf("echo hello world | %s | %[1]s -d", mgBin, exBin))
+				out, err := util.Shell(nil, "cmd.exe", "/c", fmt.Sprintf("echo hello world | %s | %[1]s -d", mgBin, exBin))
 				if err != nil {
 					return fmt.Errorf("%s\nFAIL: %v", out, err)
 				}
@@ -83,7 +83,7 @@ func Test2(t *testing.T) {
 			if err := util.InDir(tmpDir, func() error {
 				mgBin = "./" + mgBin
 				exBin = "./" + exBin
-				out, err := util.Shell("sh", "-c", fmt.Sprintf("echo hello world | %s | %[1]s -d && %s tmp", mgBin, exBin))
+				out, err := util.Shell(nil, "sh", "-c", fmt.Sprintf("echo hello world | %s | %[1]s -d && %s tmp", mgBin, exBin))
 				if err != nil {
 					return fmt.Errorf("%s\nFAIL: %v", out, err)
 				}
