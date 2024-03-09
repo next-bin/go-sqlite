@@ -19,8 +19,8 @@ import (
 	"strings"
 
 	"modernc.org/cc/v4"
-	util "modernc.org/ccgo/v3/lib"
 	ccgo "modernc.org/ccgo/v4/lib"
+	util "modernc.org/fileutil/ccgo"
 )
 
 const (
@@ -49,9 +49,9 @@ func main() {
 		return
 	}
 
-	if !win && target == "linux/amd64" {
+	if !win && target == "linux/amd64" && os.Getenv("GO_GENERATE_NOWIN") == "" {
 		defer func() {
-			util.MustShell(true, "make", "windows")
+			util.MustShell(true, nil, "make", "windows")
 			util.MustCopyFile(true, "internal/autogen/windows_amd64.mod", "go.mod", nil)
 			util.MustCopyFile(true, "internal/autogen/windows_arm64.mod", "go.mod", nil)
 		}()
@@ -84,7 +84,7 @@ func main() {
 	dev := os.Getenv("GO_GENERATE_DEV") != ""
 	switch {
 	case tempDir != "":
-		util.MustShell(true, "sh", "-c", fmt.Sprintf("rm -rf %s", filepath.Join(tempDir, extractedArchivePath)))
+		util.MustShell(true, nil, "sh", "-c", fmt.Sprintf("rm -rf %s", filepath.Join(tempDir, extractedArchivePath)))
 	default:
 		var err error
 		if tempDir, err = os.MkdirTemp("", "libtcl-generate"); err != nil {
@@ -144,16 +144,18 @@ func main() {
 				"-fPIC",
 			)
 		}
-		util.MustShell(true, "sh", "-c", "go mod init example.com/libtcl8.6 ; go get modernc.org/libc@latest modernc.org/libz@latest")
+		util.MustShell(true, nil, "sh", "-c", "go mod init example.com/libtcl8.6 ; go get modernc.org/libc@latest modernc.org/libz@latest")
 		if dev {
-			util.MustShell(true, "sh", "-c", "go work init ; go work use $GOPATH/src/modernc.org/libc $GOPATH/src/modernc.org/libz")
+			util.MustShell(true, nil, "sh", "-c", "go work init ; go work use $GOPATH/src/modernc.org/libc $GOPATH/src/modernc.org/libz")
 		}
 		switch {
 		case win:
 			cflags = append(cflags, "-DTCL_BROKEN_MAINARGS")
-			util.MustShell(true, "sh", "-c", fmt.Sprintf("CFLAGS='%s' ./configure --build=x86-64_linux --host=x86_64-w64-mingw32 --enable-64bit --disable-threads --disable-shared --disable-load", strings.Join(cflags, " ")))
+			util.MustShell(true, nil, "sh", "-c", fmt.Sprintf("CFLAGS='%s' ./configure --build=x86-64_linux --host=x86_64-w64-mingw32 --enable-64bit --disable-threads --disable-shared --disable-load", strings.Join(cflags, " ")))
+		case target == "linux/amd64":
+			util.MustShell(true, nil, "sh", "-c", fmt.Sprintf("CFLAGS='%s' ./configure --enable-threads --disable-shared --disable-load --disable-corefoundation", strings.Join(cflags, " ")))
 		default:
-			util.MustShell(true, "sh", "-c", fmt.Sprintf("CFLAGS='%s' ./configure --disable-threads --disable-shared --disable-load --disable-corefoundation", strings.Join(cflags, " ")))
+			util.MustShell(true, nil, "sh", "-c", fmt.Sprintf("CFLAGS='%s' ./configure --disable-threads --disable-shared --disable-load --disable-corefoundation", strings.Join(cflags, " ")))
 		}
 		args := []string{os.Args[0]}
 		if dev {
@@ -208,7 +210,7 @@ func main() {
 			if err := ccgo.NewTask(
 				goos, goarch,
 				append(args,
-					"--cpp", strings.TrimSpace(string(util.MustShell(true, "which", "x86_64-w64-mingw32-gcc"))),
+					"--cpp", strings.TrimSpace(string(util.MustShell(true, nil, "which", "x86_64-w64-mingw32-gcc"))),
 					"--goarch", goarch,
 					"--goos", goos,
 					"-map", "ar=x86_64-w64-mingw32-ar,gcc=x86_64-w64-mingw32-gcc",
@@ -247,16 +249,16 @@ func main() {
 		fn = fmt.Sprintf("ccgo_%s.go", goos)
 	}
 	mustCopyFile(fn, filepath.Join(makeRoot, result), nil)
-	util.MustShell(true, sed, "-i", `s/\<T__\([a-zA-Z0-9][a-zA-Z0-9_]\+\)/t__\1/g`, fn)
-	util.MustShell(true, sed, "-i", `s/\<x_\([a-zA-Z0-9][a-zA-Z0-9_]\+\)/X\1/g`, fn)
+	util.MustShell(true, nil, sed, "-i", `s/\<T__\([a-zA-Z0-9][a-zA-Z0-9_]\+\)/t__\1/g`, fn)
+	util.MustShell(true, nil, sed, "-i", `s/\<x_\([a-zA-Z0-9][a-zA-Z0-9_]\+\)/X\1/g`, fn)
 	switch {
 	case win:
 		mustCopyFile(filepath.Join("internal", "tcltest", fn), filepath.Join(makeRoot, "tcltests.exe.go"), nil)
 	default:
 		mustCopyFile(filepath.Join("internal", "tcltest", fn), filepath.Join(makeRoot, "tcltest.go"), nil)
 	}
-	util.Shell("sh", "-c", "./unconvert.sh")
-	util.Shell("git", "status")
+	util.Shell(nil, "sh", "-c", "./unconvert.sh")
+	util.Shell(nil, "git", "status")
 }
 
 func mustCopyDir(dst, src string, canOverwrite func(fn string, fi os.FileInfo) bool, srcNotExistsOk bool) (files int, bytes int64) {

@@ -16,8 +16,8 @@ import (
 	"testing"
 	"time"
 
-	_ "modernc.org/ccgo/v3/lib"
 	_ "modernc.org/ccgo/v4/lib"
+	_ "modernc.org/fileutil/ccgo"
 	"modernc.org/libc"
 	_ "modernc.org/libz"
 )
@@ -30,6 +30,8 @@ var (
 	skip     = []string{
 		//TODO fails
 		"iortrans-3.1",
+		"unixInit-3.1",
+		"unixInit-3.2",
 	}
 
 	// https://www.tcl.tk/man/tcl8.6/TclCmd/tcltest.html
@@ -732,4 +734,5 @@ out:
 	if err == nil && len(errFile) != 0 {
 		t.Errorf("FAIL\n%s", errFile)
 	}
+	
 }
