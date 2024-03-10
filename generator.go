@@ -18,8 +18,8 @@ import (
 	"strings"
 
 	"modernc.org/cc/v4"
-	util "modernc.org/ccgo/v3/lib"
 	ccgo "modernc.org/ccgo/v4/lib"
+	util "modernc.org/fileutil/ccgo"
 )
 
 const (
@@ -52,7 +52,7 @@ func main() {
 
 	if !win && target == "linux/amd64" && os.Getenv("GO_GENERATE_NOWIN") == "" {
 		defer func() {
-			util.MustShell(true, "make", "windows")
+			util.MustShell(true, nil, "make", "windows")
 			util.MustCopyFile(true, "internal/autogen/windows_amd64.mod", "go.mod", nil)
 			util.MustCopyFile(true, "internal/autogen/windows_arm64.mod", "go.mod", nil)
 		}()
@@ -65,7 +65,7 @@ func main() {
 
 		goos = "windows"
 		goarch = "amd64"
-		xgcc = strings.TrimSpace(string(util.MustShell(true, "which", "x86_64-w64-mingw32-gcc")))
+		xgcc = strings.TrimSpace(string(util.MustShell(true, nil, "which", "x86_64-w64-mingw32-gcc")))
 	}
 
 	switch target {
@@ -122,16 +122,16 @@ func main() {
 
 	mustCopyDir(ccgoInc, filepath.Join("..", "libz", "include", goos, goarch), nil, false)
 	mustCopyDir(ccgoInc, filepath.Join("..", "libtcl8.6", "include", goos, goarch), nil, false)
-	util.MustShell(true, "unzip", archivePath, "-d", tempDir)
+	util.MustShell(true, nil, "unzip", archivePath, "-d", tempDir)
 	// https://gitlab.com/cznic/sqlite/-/issues/173
-	util.MustShell(true, "patch", filepath.Join(libRoot, "sqlite3.c"), filepath.Join("internal", "sqlite_issue173.patch"))
+	util.MustShell(true, nil, "patch", filepath.Join(libRoot, "sqlite3.c"), filepath.Join("internal", "sqlite_issue173.patch"))
 	fixWin(tempDir)
 	result := "sqlite3.go"
 	util.MustInDir(true, makeRoot, func() (err error) {
-		util.MustShell(true, "sh", "-c", "go mod init example.com/libsqlite3 ; go get modernc.org/libc@latest modernc.org/libz@latest modernc.org/libtcl8.6@latest")
+		util.MustShell(true, nil, "sh", "-c", "go mod init example.com/libsqlite3 ; go get modernc.org/libc@latest modernc.org/libz@latest modernc.org/libtcl8.6@latest")
 		config := []string{os.Args[0]}
 		if dev {
-			util.MustShell(true, "sh", "-c", "go work init ; go work use $GOPATH/src/modernc.org/libc $GOPATH/src/modernc.org/libz $GOPATH/src/modernc.org/libtcl8.6")
+			util.MustShell(true, nil, "sh", "-c", "go work init ; go work use $GOPATH/src/modernc.org/libc $GOPATH/src/modernc.org/libz $GOPATH/src/modernc.org/libtcl8.6")
 			config = append(config,
 				"-absolute-paths",
 				"-keep-object-files",
@@ -176,7 +176,6 @@ func main() {
 			"-DSQLITE_ENABLE_UNLOCK_NOTIFY",
 			"-DSQLITE_HAVE_ZLIB=1",
 			"-DSQLITE_LIKE_DOESNT_MATCH_BLOBS",
-			"-DSQLITE_MUTEX_NOOP",
 			"-DSQLITE_SOUNDEX",
 			"-DSQLITE_THREADSAFE=1",
 			"-DSQLITE_WITHOUT_ZONEMALLOC",
@@ -188,6 +187,12 @@ func main() {
 			"sqlite3.c",
 			fmt.Sprintf("-I%s", ccgoInc),
 		)
+		switch target {
+		case "linux/amd64":
+			// nop
+		default:
+			config = append(config, "-DSQLITE_MUTEX_NOOP")
+		}
 		switch {
 		case win:
 			config = append(config,
@@ -212,8 +217,8 @@ func main() {
 			return err
 		}
 
-		util.MustShell(true, sed, "-i", `s/\<T__\([a-zA-Z0-9][a-zA-Z0-9_]\+\)/t__\1/g`, result)
-		util.MustShell(true, sed, "-i", `s/\<x_\([a-zA-Z0-9][a-zA-Z0-9_]\+\)/X\1/g`, result)
+		util.MustShell(true, nil, sed, "-i", `s/\<T__\([a-zA-Z0-9][a-zA-Z0-9_]\+\)/t__\1/g`, result)
+		util.MustShell(true, nil, sed, "-i", `s/\<x_\([a-zA-Z0-9][a-zA-Z0-9_]\+\)/X\1/g`, result)
 
 		return nil
 	})
@@ -252,16 +257,16 @@ func main() {
 	fmt.Fprintf(os.Stderr, "tempDir %s\n", tempDir)
 	fmt.Fprintf(os.Stderr, "libRoot %s\n", libRoot)
 	fmt.Fprintf(os.Stderr, "makeRoot %s\n", makeRoot)
-	util.MustShell(true, "unzip", archive2Path, "-d", tempDir)
+	util.MustShell(true, nil, "unzip", archive2Path, "-d", tempDir)
 	// https://gitlab.com/cznic/sqlite/-/issues/173
-	util.MustShell(true, "patch", filepath.Join(makeRoot, "src", "os_unix.c"), filepath.Join("internal", "sqlite_issue173.patch2"))
+	util.MustShell(true, nil, "patch", filepath.Join(makeRoot, "src", "os_unix.c"), filepath.Join("internal", "sqlite_issue173.patch2"))
 	mustCopyDir(makeRoot, filepath.Join("internal", "overlay", "generator"), nil, false)
 	fixWin(tempDir)
 	mustCopyFile("LICENSE-SQLITE.md", filepath.Join(libRoot, "LICENSE.md"), nil)
 	util.MustInDir(true, makeRoot, func() (err error) {
-		util.MustShell(true, "sh", "-c", "go mod init example.com/libsqlite3 ; go get modernc.org/libc@latest modernc.org/libz@latest modernc.org/libtcl8.6@latest")
+		util.MustShell(true, nil, "sh", "-c", "go mod init example.com/libsqlite3 ; go get modernc.org/libc@latest modernc.org/libz@latest modernc.org/libtcl8.6@latest")
 		if dev {
-			util.MustShell(true, "sh", "-c", "go work init ; go work use $GOPATH/src/modernc.org/libc $GOPATH/src/modernc.org/libz $GOPATH/src/modernc.org/libtcl8.6")
+			util.MustShell(true, nil, "sh", "-c", "go work init ; go work use $GOPATH/src/modernc.org/libc $GOPATH/src/modernc.org/libz $GOPATH/src/modernc.org/libtcl8.6")
 		}
 		var config []string
 		if m64Double := cc.LongDouble64Flag(goos, goarch); m64Double != "" {
@@ -289,8 +294,8 @@ func main() {
 			"-DSQLITE_ENABLE_STAT4",
 			"-DSQLITE_ENABLE_UNLOCK_NOTIFY",
 			"-DSQLITE_LIKE_DOESNT_MATCH_BLOBS",
-			"-DSQLITE_MUTEX_NOOP",
 			"-DSQLITE_SOUNDEX",
+			"-DSQLITE_THREADSAFE=1",
 			"-DSQLITE_WITHOUT_ZONEMALLOC",
 			"-Dpread64=pread",
 			"-Dpwrite64=pwrite",
@@ -299,12 +304,12 @@ func main() {
 		switch {
 		case win:
 			config = append(config, "-DSQLITE_OS_WIN=1", "-DHAVE_MALLOC_USABLE_SIZE=1")
-			util.MustShell(true, "sh", "-c", fmt.Sprintf("CFLAGS='%s' ./configure --build=x86-64_gnu-linux --host=x86_64-w64-mingw32 --disable-shared --disable-load-extension", strings.Join(config, " ")))
+			util.MustShell(true, nil, "sh", "-c", fmt.Sprintf("CFLAGS='%s' ./configure --build=x86-64_gnu-linux --host=x86_64-w64-mingw32 --disable-shared --disable-load-extension", strings.Join(config, " ")))
 		default:
 			config = append(config, "-DSQLITE_OS_UNIX=1", "-DHAVE_MALLOC_USABLE_SIZE=1")
-			util.MustShell(true, "sh", "-c", fmt.Sprintf("CFLAGS='%s' ./configure --disable-shared --disable-load-extension", strings.Join(config, " ")))
-			util.MustShell(true, "sh", "-c", "echo '#define HAVE_MALLOC_USABLE_SIZE 1' >> config.h")
-			util.MustShell(true, "sh", "-c", "echo '#define HAVE_MEMORY_H 1' >> config.h")
+			util.MustShell(true, nil, "sh", "-c", fmt.Sprintf("CFLAGS='%s' ./configure --disable-shared --disable-load-extension", strings.Join(config, " ")))
+			util.MustShell(true, nil, "sh", "-c", "echo '#define HAVE_MALLOC_USABLE_SIZE 1' >> config.h")
+			util.MustShell(true, nil, "sh", "-c", "echo '#define HAVE_MEMORY_H 1' >> config.h")
 		}
 		args := []string{os.Args[0]}
 		if dev {
@@ -315,7 +320,6 @@ func main() {
 			)
 		}
 		args = append(args,
-			"--libc", "modernc.org/libc",
 			"--prefix-enumerator=_",
 			"--prefix-external=x_",
 			"--prefix-field=F",
@@ -368,7 +372,7 @@ func main() {
 			err := ccgo.NewTask(goos, goarch, args, os.Stdout, os.Stderr, nil).Exec()
 			switch target {
 			case "darwin/amd64", "darwin/arm64":
-				util.Shell(sed, "-i", `/func _guess_number_of_cores(/,/^}/d`, "testfixture.go")
+				util.Shell(nil, sed, "-i", `/func _guess_number_of_cores(/,/^}/d`, "testfixture.go")
 			}
 			return err
 		}
@@ -418,7 +422,7 @@ func main() {
 		}
 	}
 	os.Mkdir("mptest", 0770)
-	util.MustShell(true, sed, "-i", `s/strcmp(sqlite3_sourceid()/0 \&\& strcmp(sqlite3_sourceid()/`, filepath.Join(makeRoot, "mptest", "mptest.c"))
+	util.MustShell(true, nil, sed, "-i", `s/strcmp(sqlite3_sourceid()/0 \&\& strcmp(sqlite3_sourceid()/`, filepath.Join(makeRoot, "mptest", "mptest.c"))
 	switch {
 	case win:
 		if err := ccgo.NewTask(
@@ -461,7 +465,7 @@ func main() {
 			fail(1, "%s\n", err)
 		}
 	}
-	util.MustShell(true, "sh", "-c", fmt.Sprintf("cp %s %s", filepath.Join(makeRoot, "mptest", "*.*test"), "mptest/"))
+	util.MustShell(true, nil, "sh", "-c", fmt.Sprintf("cp %s %s", filepath.Join(makeRoot, "mptest", "*.*test"), "mptest/"))
 
 	os.RemoveAll(filepath.Join("internal", "test"))
 	util.MustMkdirs(true, "internal/testfixture", "internal/test")
@@ -473,9 +477,9 @@ func main() {
 	}
 	mustCopyDir(filepath.Join("internal", "test"), filepath.Join(makeRoot, "test"), nil, false)
 	mustCopyDir("internal/test", "internal/overlay/test", nil, true)
-	util.Shell("sh", "-c", "./unconvert.sh")
-	util.MustShell(true, "go", "test", "-run", "@")
-	util.Shell("git", "status")
+	util.Shell(nil, "sh", "-c", "./unconvert.sh")
+	util.MustShell(true, nil, "go", "test", "-run", "@")
+	util.Shell(nil, "git", "status")
 }
 
 func fixWin(dir string) {

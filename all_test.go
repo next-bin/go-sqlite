@@ -221,10 +221,6 @@ func TestTclTest(t *testing.T) {
 		blacklist["bigsort.test"] = struct{}{}
 	case "linux/ppc64le":
 		knownCFailures["snapshot_fault-4.1.1"] = struct{}{}
-	case "linux/s390x":
-		// See https://gitlab.com/cznic/sqlite/-/issues/120#note_1362306424
-		// TODO Fixed in SQLite 3.42.0
-		blacklist["sysfault.test"] = struct{}{}
 	}
 
 	if err := setMaxOpenFiles(1024); err != nil { // Avoid misc7.test hanging for a long time.
@@ -310,6 +306,9 @@ func TestTclTest(t *testing.T) {
 		if *oQuiet {
 			args = append(args, "-q")
 		}
+	}
+	if *oMaxError != 0 {
+		args = append(args, fmt.Sprintf("-maxerror=%v", *oMaxError))
 	}
 	var out []byte
 	util.InDir(tmpDir, func() error {
