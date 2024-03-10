@@ -309,12 +309,15 @@ func main() {
 		case win:
 			config = append(config, "-DSQLITE_OS_WIN=1", "-DHAVE_MALLOC_USABLE_SIZE=1")
 			util.MustShell(true, nil, "sh", "-c", fmt.Sprintf("CFLAGS='%s' ./configure --build=x86-64_gnu-linux --host=x86_64-w64-mingw32 --disable-shared --disable-load-extension", strings.Join(config, " ")))
+		case target == "linux/amd64":
+			config = append(config, "-DSQLITE_OS_UNIX=1", "-DHAVE_MALLOC_USABLE_SIZE=1")
+			util.MustShell(true, nil, "sh", "-c", fmt.Sprintf("CFLAGS='%s' ./configure --enable-threads --disable-shared --disable-load-extension", strings.Join(config, " ")))
 		default:
 			config = append(config, "-DSQLITE_OS_UNIX=1", "-DHAVE_MALLOC_USABLE_SIZE=1")
-			util.MustShell(true, nil, "sh", "-c", fmt.Sprintf("CFLAGS='%s' ./configure --disable-shared --disable-load-extension", strings.Join(config, " ")))
-			util.MustShell(true, nil, "sh", "-c", "echo '#define HAVE_MALLOC_USABLE_SIZE 1' >> config.h")
-			util.MustShell(true, nil, "sh", "-c", "echo '#define HAVE_MEMORY_H 1' >> config.h")
+			util.MustShell(true, nil, "sh", "-c", fmt.Sprintf("CFLAGS='%s' ./configure --disable-threads --disable-shared --disable-load-extension", strings.Join(config, " ")))
 		}
+		util.MustShell(true, nil, "sh", "-c", "echo '#define HAVE_MALLOC_USABLE_SIZE 1' >> config.h")
+		util.MustShell(true, nil, "sh", "-c", "echo '#define HAVE_MEMORY_H 1' >> config.h")
 		args := []string{os.Args[0]}
 		if dev {
 			args = append(args,
