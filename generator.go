@@ -295,12 +295,16 @@ func main() {
 			"-DSQLITE_ENABLE_UNLOCK_NOTIFY",
 			"-DSQLITE_LIKE_DOESNT_MATCH_BLOBS",
 			"-DSQLITE_SOUNDEX",
-			"-DSQLITE_THREADSAFE=1",
 			"-DSQLITE_WITHOUT_ZONEMALLOC",
 			"-Dpread64=pread",
 			"-Dpwrite64=pwrite",
 		)
-		//TODO threadsafe
+		switch target {
+		case "linux/amd64":
+			config = append(config, "-DSQLITE_THREADSAFE=1")
+		default:
+			config = append(config, "-DSQLITE_MUTEX_NOOP")
+		}
 		switch {
 		case win:
 			config = append(config, "-DSQLITE_OS_WIN=1", "-DHAVE_MALLOC_USABLE_SIZE=1")
