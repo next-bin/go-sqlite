@@ -1,4 +1,4 @@
-// Code generated for darwin/arm64 by 'gcc -hide __darwin_check_fd_set -hide TclpCreateProcess --prefix-enumerator=_ --prefix-external=x_ --prefix-field=F --prefix-macro=m_ --prefix-static-internal=_ --prefix-static-none=_ --prefix-tagged-enum=_ --prefix-tagged-struct=T --prefix-tagged-union=T --prefix-typename=T --prefix-undefined=_ -extended-errors -ignore-unsupported-alignment -I/var/folders/4f/mc8mts295pqf7gmnfcwh6g8w0000gn/T/libtcl8.6/tcl8.6.13/ccgo -O2 -DNDEBUG -UHAVE_COPYFILE -UHAVE_CPUID -UHAVE_FTS -UHAVE_TERMIOS_H tclTestInit.o.go tclTest.o.go tclTestObj.o.go tclTestProcBodyObj.o.go tclThreadTest.o.go tclUnixTest.o.go -L/private/var/folders/4f/mc8mts295pqf7gmnfcwh6g8w0000gn/T/libtcl8.6/tcl8.6.13/unix -ltcl8.6 libtclstub8.6.a -lz -o tcltest.go', DO NOT EDIT.
+// Code generated for darwin/arm64 by 'gcc -hide __darwin_check_fd_set -hide TclpCreateProcess --prefix-enumerator=_ --prefix-external=x_ --prefix-field=F --prefix-macro=m_ --prefix-static-internal=_ --prefix-static-none=_ --prefix-tagged-enum=_ --prefix-tagged-struct=T --prefix-tagged-union=T --prefix-typename=T --prefix-undefined=_ -extended-errors -ignore-unsupported-alignment -I/tmp/libtcl8.6/tcl8.6.13/ccgo -O2 -DNDEBUG -UHAVE_COPYFILE -UHAVE_CPUID -UHAVE_FTS -UHAVE_TERMIOS_H tclTestInit.o.go tclTest.o.go tclTestObj.o.go tclTestProcBodyObj.o.go tclThreadTest.o.go tclUnixTest.o.go -L/private/tmp/libtcl8.6/tcl8.6.13/unix -ltcl8.6 libtclstub8.6.a -lz -o tcltest.go', DO NOT EDIT.
 
 //go:build darwin && arm64
 // +build darwin,arm64
@@ -170,7 +170,7 @@ const m_TCL_ARGV_REST = 18
 const m_TCL_ARGV_STRING = 17
 const m_TCL_BETA_RELEASE = 1
 const m_TCL_BREAK = 3
-const m_TCL_BUILDTIME_LIBRARY = "/private/var/folders/4f/mc8mts295pqf7gmnfcwh6g8w0000gn/T/libtcl8.6/tcl8.6.13/library"
+const m_TCL_BUILDTIME_LIBRARY = "/private/tmp/libtcl8.6/tcl8.6.13/library"
 const m_TCL_CANCEL_UNWIND = 0x100000
 const m_TCL_CFGVAL_ENCODING = "iso8859-1"
 const m_TCL_CFG_DO64BIT = 1
