@@ -152,7 +152,10 @@ func main() {
 		case win:
 			cflags = append(cflags, "-DTCL_BROKEN_MAINARGS")
 			util.MustShell(true, nil, "sh", "-c", fmt.Sprintf("CFLAGS='%s' ./configure --build=x86-64_linux --host=x86_64-w64-mingw32 --enable-64bit --disable-threads --disable-shared --disable-load", strings.Join(cflags, " ")))
-		case target == "linux/amd64":
+		case
+			target == "linux/amd64",
+			target == "linux/loong64":
+
 			util.MustShell(true, nil, "sh", "-c", fmt.Sprintf("CFLAGS='%s' ./configure --enable-threads --disable-shared --disable-load --disable-corefoundation", strings.Join(cflags, " ")))
 		default:
 			util.MustShell(true, nil, "sh", "-c", fmt.Sprintf("CFLAGS='%s' ./configure --disable-threads --disable-shared --disable-load --disable-corefoundation", strings.Join(cflags, " ")))
