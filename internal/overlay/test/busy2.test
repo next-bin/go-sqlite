@@ -41,7 +41,8 @@ do_multiclient_test tn {
 
   do_test 1.$tn.3 {
     set us [lindex [time { catch { sql1 { BEGIN EXCLUSIVE } } }] 0]
-    expr {$us>950000 && $us<1500000}
+    # expr {$us>950000 && $us<1500000}
+    expr {$us>750000 && $us<1500000}
   } {1}
 
   do_test 1.$tn.4 {

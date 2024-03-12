@@ -73,7 +73,7 @@ dev: download
 	grep 'TRC\|TODO\|ERRORF\|FAIL' /tmp/ccgo.log || true
 
 extraquick:
-	go test -v -timeout 24h -suite=extraquick 2>&1 | tee log-test
+	go test -v -timeout 24h -run Tcl -verbose=1 -suite=extraquick 2>&1 | tee log-test
 
 mptest:
 	go test -v -timeout 24h -run TestConcurrentProcesses 2>&1 | tee log-mptest

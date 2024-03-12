@@ -188,7 +188,9 @@ func main() {
 			fmt.Sprintf("-I%s", ccgoInc),
 		)
 		switch target {
-		case "linux/amd64":
+		case
+			"linux/amd64",
+			"linux/loong64":
 			// nop
 		default:
 			config = append(config, "-DSQLITE_MUTEX_NOOP")
@@ -300,7 +302,9 @@ func main() {
 			"-Dpwrite64=pwrite",
 		)
 		switch target {
-		case "linux/amd64":
+		case
+			"linux/amd64",
+			"linux/loong64":
 			config = append(config, "-DSQLITE_THREADSAFE=1")
 		default:
 			config = append(config, "-DSQLITE_MUTEX_NOOP")

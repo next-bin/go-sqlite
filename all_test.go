@@ -214,7 +214,10 @@ func TestTclTest(t *testing.T) {
 		blacklist["symlink2.test"] = struct{}{}
 	}
 	switch target {
-	case "linux/arm64": // OOM killed on rpi5
+	case
+		"linux/arm64",   // OOM killed on rpi5
+		"linux/loong64": // OOM killed on loong64b
+
 		// # This test causes thrashing on machines with smaller amounts of
 		// # memory.  Make sure the host has at least 8GB available before running
 		// # this test.

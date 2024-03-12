@@ -20,6 +20,7 @@
 //	linux	amd64   3.45.1
 //	linux	arm     3.45.1
 //	linux	arm64   3.45.1
+//	linux	loong64 3.45.1
 //	linux	ppc64le 3.45.1
 //	linux	riscv64 3.45.1
 //	linux	s390x   3.45.1
@@ -33,6 +34,8 @@
 // https://modern-c.appspot.com/-/builder/?importpath=modernc.org%2flibsqlite3
 //
 // # Changelog
+//
+// 2024-03-12: v1.2.0 - Add linux/loong64 support.
 //
 // 2024-02-13: v1.0.0
 package libsqlite3 // import "modernc.org/libsqlite3"
