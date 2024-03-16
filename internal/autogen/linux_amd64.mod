@@ -3,16 +3,16 @@ module modernc.org/libz
 go 1.20
 
 require (
-	modernc.org/ccgo/v4 v4.10.3
+	modernc.org/ccgo/v4 v4.11.0
 	modernc.org/fileutil v1.3.0
-	modernc.org/libc v1.44.1
+	modernc.org/libc v1.45.0
 )
 
 require (
 	github.com/dustin/go-humanize v1.0.1 // indirect
-	github.com/google/uuid v1.3.0 // indirect
+	github.com/google/uuid v1.6.0 // indirect
 	github.com/kballard/go-shellquote v0.0.0-20180428030007-95032a82bc51 // indirect
-	github.com/mattn/go-isatty v0.0.16 // indirect
+	github.com/mattn/go-isatty v0.0.20 // indirect
 	github.com/ncruces/go-strftime v0.1.9 // indirect
 	github.com/remyoudompheng/bigfft v0.0.0-20230129092748-24d4a6f8daec // indirect
 	golang.org/x/mod v0.16.0 // indirect
