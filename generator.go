@@ -23,8 +23,8 @@ import (
 )
 
 const (
-	archivePath  = "sqlite-amalgamation-3450100.zip"
-	archive2Path = "sqlite-src-3450100.zip"
+	archivePath  = "sqlite-amalgamation-3450200.zip"
+	archive2Path = "sqlite-src-3450200.zip"
 )
 
 var (
@@ -363,7 +363,7 @@ func main() {
 					"BEXE=",
 
 					"CFLAGS=-mlong-double-64 -DLONGDOUBLE_TYPE=double -DSQLITE_WITHOUT_ZONEMALLOC -DNDEBUG -DSQLITE_OS_WIN=1 -DSQLITE_OS_UNIX=0 -D_MSC_VER=1 -DSQLITE_OMIT_SEH",
-					"TOP=../sqlite-src-3450100",
+					"TOP=../sqlite-src-3450200",
 					"TEXE=.exe",
 					"testfixture.exe",
 				),
