@@ -166,7 +166,6 @@ const m_EXIT_SUCCESS = 0
 const m_EXPRDUP_REDUCE = 0x0001
 const m_FD_SETSIZE = "__FD_SETSIZE"
 const m_FILENAME_MAX = 4096
-const m_FOPEN_MAX = 16
 const m_FTS5_TOKENIZE_AUX = 0x0008
 const m_FTS5_TOKENIZE_DOCUMENT = 0x0004
 const m_FTS5_TOKENIZE_PREFIX = 0x0002
@@ -1225,10 +1224,7 @@ const m_SQLITE_OPEN_TEMP_JOURNAL = 4096
 const m_SQLITE_OPEN_TRANSIENT_DB = 1024
 const m_SQLITE_OPEN_URI = 64
 const m_SQLITE_OPEN_WAL = 524288
-const m_SQLITE_OS_KV = 0
-const m_SQLITE_OS_OTHER = 0
 const m_SQLITE_OS_UNIX = 1
-const m_SQLITE_OS_WIN = 0
 const m_SQLITE_OmitNoopJoin = 256
 const m_SQLITE_OmitOrderBy = 0x00040000
 const m_SQLITE_OnePass = 134217728
@@ -1556,7 +1552,6 @@ const m_TCL_RETURN = 2
 const m_TCL_SERVICE_ALL = 1
 const m_TCL_SERVICE_NONE = 0
 const m_TCL_SMALL_HASH_TABLE = 4
-const m_TCL_STORAGE_CLASS = "DLLIMPORT"
 const m_TCL_STRING_KEYS = 0
 const m_TCL_SUBST_ALL = 007
 const m_TCL_SUBST_BACKSLASHES = 004
@@ -1889,7 +1884,6 @@ const m_W_OK = 2
 const m_X_OK = 1
 const m__ALLOCA_H = 1
 const m__ASSERT_H = 1
-const m__ATFILE_SOURCE = 1
 const m__BITS_BYTESWAP_H = 1
 const m__BITS_ENDIANNESS_H = 1
 const m__BITS_ENDIAN_H = 1
@@ -1914,8 +1908,6 @@ const m__CS_POSIX_V5_WIDTH_RESTRICTED_ENVS = "_CS_V5_WIDTH_RESTRICTED_ENVS"
 const m__CS_POSIX_V6_WIDTH_RESTRICTED_ENVS = "_CS_V6_WIDTH_RESTRICTED_ENVS"
 const m__CS_POSIX_V7_WIDTH_RESTRICTED_ENVS = "_CS_V7_WIDTH_RESTRICTED_ENVS"
 const m__DARWIN_USE_64_BIT_INODE = 1
-const m__DEFAULT_SOURCE = 1
-const m__DYNAMIC_STACK_SIZE_SOURCE = 1
 const m__ENDIAN_H = 1
 const m__FEATURES_H = 1
 const m__FILE_OFFSET_BITS = 64
@@ -1930,12 +1922,6 @@ const m__IONBF = 2
 const m__IO_EOF_SEEN = 0x0010
 const m__IO_ERR_SEEN = 0x0020
 const m__IO_USER_LOCK = 0x8000
-const m__ISOC11_SOURCE = 1
-const m__ISOC2X_SOURCE = 1
-const m__ISOC95_SOURCE = 1
-const m__ISOC99_SOURCE = 1
-const m__LARGEFILE64_SOURCE = 1
-const m__LARGEFILE_SOURCE = 1
 const m__LARGE_FILE = 1
 const m__LFS64_ASYNCHRONOUS_IO = 1
 const m__LFS64_LARGEFILE = 1
@@ -1956,7 +1942,6 @@ const m__POSIX_BARRIERS = 200809
 const m__POSIX_CHOWN_RESTRICTED = 0
 const m__POSIX_CLOCK_SELECTION = 200809
 const m__POSIX_CPUTIME = 0
-const m__POSIX_C_SOURCE = 200809
 const m__POSIX_FSYNC = 200809
 const m__POSIX_IPV6 = 200809
 const m__POSIX_JOB_CONTROL = 1
@@ -1978,7 +1963,6 @@ const m__POSIX_SAVED_IDS = 1
 const m__POSIX_SEMAPHORES = 200809
 const m__POSIX_SHARED_MEMORY_OBJECTS = 200809
 const m__POSIX_SHELL = 1
-const m__POSIX_SOURCE = 1
 const m__POSIX_SPAWN = 200809
 const m__POSIX_SPIN_LOCKS = 200809
 const m__POSIX_SYNCHRONIZED_IO = 200809
@@ -2025,8 +2009,6 @@ const m__XOPEN_LEGACY = 1
 const m__XOPEN_REALTIME = 1
 const m__XOPEN_REALTIME_THREADS = 1
 const m__XOPEN_SHM = 1
-const m__XOPEN_SOURCE = 700
-const m__XOPEN_SOURCE_EXTENDED = 1
 const m__XOPEN_UNIX = 1
 const m__XOPEN_VERSION = 700
 const m__XOPEN_XCU_VERSION = 4
@@ -2209,16 +2191,6 @@ const m___GCC_IEC_559 = 2
 const m___GCC_IEC_559_COMPLEX = 2
 const m___GID_T_TYPE = "__U32_TYPE"
 const m___GLIBC_MINOR__ = 36
-const m___GLIBC_USE_DEPRECATED_GETS = 0
-const m___GLIBC_USE_DEPRECATED_SCANF = 0
-const m___GLIBC_USE_IEC_60559_BFP_EXT = 1
-const m___GLIBC_USE_IEC_60559_BFP_EXT_C2X = 1
-const m___GLIBC_USE_IEC_60559_EXT = 1
-const m___GLIBC_USE_IEC_60559_FUNCS_EXT = 1
-const m___GLIBC_USE_IEC_60559_FUNCS_EXT_C2X = 1
-const m___GLIBC_USE_IEC_60559_TYPES_EXT = 1
-const m___GLIBC_USE_ISOC2X = 1
-const m___GLIBC_USE_LIB_EXT2 = 1
 const m___GLIBC__ = 2
 const m___GNUC_EXECUTION_CHARSET_NAME = "UTF-8"
 const m___GNUC_MINOR__ = 2
@@ -2226,7 +2198,6 @@ const m___GNUC_PATCHLEVEL__ = 0
 const m___GNUC_STDC_INLINE__ = 1
 const m___GNUC_WIDE_EXECUTION_CHARSET_NAME = "UTF-32LE"
 const m___GNUC__ = 12
-const m___GNU_LIBRARY__ = 6
 const m___GXX_ABI_VERSION = 1017
 const m___HAVE_DISTINCT_FLOAT128 = 1
 const m___HAVE_DISTINCT_FLOAT128X = "__HAVE_FLOAT128X"
@@ -2411,28 +2382,6 @@ const m___UINT_LEAST64_MAX__ = "0xffffffffffffffffU"
 const m___UINT_LEAST8_MAX__ = 0xff
 const m___UQUAD_TYPE = "__uint64_t"
 const m___USECONDS_T_TYPE = "__U32_TYPE"
-const m___USE_ATFILE = 1
-const m___USE_DYNAMIC_STACK_SIZE = 1
-const m___USE_FILE_OFFSET64 = 1
-const m___USE_FORTIFY_LEVEL = 0
-const m___USE_GNU = 1
-const m___USE_ISOC11 = 1
-const m___USE_ISOC95 = 1
-const m___USE_ISOC99 = 1
-const m___USE_LARGEFILE = 1
-const m___USE_LARGEFILE64 = 1
-const m___USE_MISC = 1
-const m___USE_POSIX = 1
-const m___USE_POSIX199309 = 1
-const m___USE_POSIX199506 = 1
-const m___USE_POSIX2 = 1
-const m___USE_UNIX98 = 1
-const m___USE_XOPEN = 1
-const m___USE_XOPEN2K = 1
-const m___USE_XOPEN2K8 = 1
-const m___USE_XOPEN2K8XSI = 1
-const m___USE_XOPEN2KXSI = 1
-const m___USE_XOPEN_EXTENDED = 1
 const m___VERSION__ = "12.2.0"
 const m___WALL = 0x40000000
 const m___WCHAR_MAX = "__WCHAR_MAX__"
@@ -2495,7 +2444,6 @@ const m_putVarint = "sqlite3PutVarint"
 const m_pwrite64 = "pwrite"
 const m_sqlite3GlobalConfig = "sqlite3Config"
 const m_sqlite3StrNICmp = "sqlite3_strnicmp"
-const m_static_assert = "_Static_assert"
 const m_t1ErrorName = "sqlite3ErrName"
 const m_unix = 1
 
@@ -24233,14 +24181,6 @@ func init() {
 	*(*uintptr)(unsafe.Add(p, 28)) = __ccgo_fp(_c_collation_test)
 }
 
-const m___GLIBC_USE_IEC_60559_BFP_EXT1 = 0
-const m___GLIBC_USE_IEC_60559_BFP_EXT_C2X1 = 0
-const m___GLIBC_USE_IEC_60559_EXT1 = 0
-const m___GLIBC_USE_IEC_60559_FUNCS_EXT1 = 0
-const m___GLIBC_USE_IEC_60559_FUNCS_EXT_C2X1 = 0
-const m___GLIBC_USE_IEC_60559_TYPES_EXT1 = 0
-const m___GLIBC_USE_ISOC2X1 = 0
-const m___GLIBC_USE_LIB_EXT21 = 0
 const m___USE_POSIX_IMPLICITLY = 1
 
 type Tsqlite3_api_routines = struct {
@@ -24992,14 +24932,6 @@ func x_Sqlitetestbackup_Init(tls *libc.TLS, interp uintptr) (r int32) {
 }
 
 const m_TCL_EVAL_GLOBAL2 = 131072
-const m___GLIBC_USE_IEC_60559_BFP_EXT2 = 1
-const m___GLIBC_USE_IEC_60559_BFP_EXT_C2X2 = 1
-const m___GLIBC_USE_IEC_60559_EXT2 = 1
-const m___GLIBC_USE_IEC_60559_FUNCS_EXT2 = 1
-const m___GLIBC_USE_IEC_60559_FUNCS_EXT_C2X2 = 1
-const m___GLIBC_USE_IEC_60559_TYPES_EXT2 = 1
-const m___GLIBC_USE_ISOC2X2 = 1
-const m___GLIBC_USE_LIB_EXT22 = 1
 
 /*
  * end block for C++
@@ -26537,7 +26469,7 @@ var _cv_MAX_FUNCTION_ARG = int32(m_SQLITE_MAX_FUNCTION_ARG)
 
 var _cv_MAX_VARIABLE_NUMBER = int32(m_SQLITE_MAX_VARIABLE_NUMBER)
 
-var _cv_MAX_PAGE_SIZE = int32(m_SQLITE_MAX_PAGE_SIZE)
+var _cv_MAX_PAGE_SIZE = int32(65536)
 
 var _cv_MAX_PAGE_COUNT = libc.Int32FromUint32(m_SQLITE_MAX_PAGE_COUNT1)
 
@@ -26714,14 +26646,6 @@ const m_SQLITE_MULTIPLEX_JOURNAL_8_3_OFFSET = 400
 const m_SQLITE_MULTIPLEX_WAL_8_3_OFFSET = 700
 const m__BITS_ERRNO_H = 1
 const m__ERRNO_H = 1
-const m___GLIBC_USE_IEC_60559_BFP_EXT3 = 0
-const m___GLIBC_USE_IEC_60559_BFP_EXT_C2X3 = 0
-const m___GLIBC_USE_IEC_60559_EXT3 = 0
-const m___GLIBC_USE_IEC_60559_FUNCS_EXT3 = 0
-const m___GLIBC_USE_IEC_60559_FUNCS_EXT_C2X3 = 0
-const m___GLIBC_USE_IEC_60559_TYPES_EXT3 = 0
-const m___GLIBC_USE_ISOC2X3 = 0
-const m___GLIBC_USE_LIB_EXT23 = 0
 
 /*
 ** END OF REGISTRATION API
@@ -26935,9 +26859,6 @@ const m_BC_SCALE_MAX = "_POSIX2_BC_SCALE_MAX"
 const m_BC_STRING_MAX = "_POSIX2_BC_STRING_MAX"
 const m_CANBSIZ = "MAX_CANON"
 const m_CHARCLASS_NAME_MAX = 2048
-const m_CHAR_BIT = "__CHAR_BIT__"
-const m_CHAR_MAX = "SCHAR_MAX"
-const m_CHAR_MIN = "SCHAR_MIN"
 const m_COLL_WEIGHTS_MAX = 255
 const m_DELAYTIMER_MAX = 2147483647
 const m_DEV_BSIZE = 512
@@ -26972,15 +26893,12 @@ const m_F_UNLCK = 2
 const m_F_WRLCK = 1
 const m_HOST_NAME_MAX = 64
 const m_HZ = 100
-const m_INT_MAX = "__INT_MAX__"
 const m_LINE_MAX = "_POSIX2_LINE_MAX"
-const m_LLONG_MAX = "__LONG_LONG_MAX__"
 const m_LOCK_EX = 2
 const m_LOCK_NB = 4
 const m_LOCK_SH = 1
 const m_LOCK_UN = 8
 const m_LOGIN_NAME_MAX = 256
-const m_LONG_MAX = "__LONG_MAX__"
 const m_L_INCR1 = 1
 const m_L_SET1 = 0
 const m_L_XTND1 = 2
@@ -27044,9 +26962,7 @@ const m_SA_RESETHAND = 0x80000000
 const m_SA_RESTART = 0x10000000
 const m_SA_SIGINFO = 4
 const m_SA_STACK = "SA_ONSTACK"
-const m_SCHAR_MAX = "__SCHAR_MAX__"
 const m_SEM_VALUE_MAX = 2147483647
-const m_SHRT_MAX = "__SHRT_MAX__"
 const m_SIGABRT = 6
 const m_SIGALRM = 14
 const m_SIGBUS = 7
@@ -28187,14 +28103,6 @@ const m_SQLITE_OPEN_MAIN_JOURNAL3 = 0x00000800
 const m_SQLITE_OPEN_READONLY3 = 0x00000001
 const m_SQLITE_OPEN_READWRITE3 = 0x00000002
 const m_WRITECRASH_NAME = "writecrash"
-const m___GLIBC_USE_IEC_60559_BFP_EXT4 = 1
-const m___GLIBC_USE_IEC_60559_BFP_EXT_C2X4 = 1
-const m___GLIBC_USE_IEC_60559_EXT4 = 1
-const m___GLIBC_USE_IEC_60559_FUNCS_EXT4 = 1
-const m___GLIBC_USE_IEC_60559_FUNCS_EXT_C2X4 = 1
-const m___GLIBC_USE_IEC_60559_TYPES_EXT4 = 1
-const m___GLIBC_USE_ISOC2X4 = 1
-const m___GLIBC_USE_LIB_EXT24 = 1
 
 /*
 ** Maximum pathname length supported by the devsym backend.
@@ -29775,15 +29683,8 @@ const m_MEM_Str2 = 0x0002
 const m_MEM_Term2 = 0x0200
 const m_SQLITE_DETERMINISTIC2 = 2048
 const m_SQLITE_RESULT_SUBTYPE1 = 16777216
-const m__XOPEN_SOURCE1 = 600
-const m___GLIBC_USE_IEC_60559_BFP_EXT5 = 0
-const m___GLIBC_USE_IEC_60559_BFP_EXT_C2X5 = 0
-const m___GLIBC_USE_IEC_60559_EXT5 = 0
-const m___GLIBC_USE_IEC_60559_FUNCS_EXT5 = 0
-const m___GLIBC_USE_IEC_60559_FUNCS_EXT_C2X5 = 0
-const m___GLIBC_USE_IEC_60559_TYPES_EXT5 = 0
-const m___GLIBC_USE_ISOC2X5 = 0
-const m___GLIBC_USE_LIB_EXT25 = 0
+const m__LARGEFILE_SOURCE = 1
+const m__XOPEN_SOURCE = 600
 
 // C documentation
 //
@@ -30885,15 +30786,6 @@ func init() {
 
 const m_SQLITE_DETERMINISTIC3 = 0x000000800
 const m_SQLITE_RESULT_SUBTYPE2 = 0x001000000
-const m__XOPEN_SOURCE2 = 700
-const m___GLIBC_USE_IEC_60559_BFP_EXT6 = 1
-const m___GLIBC_USE_IEC_60559_BFP_EXT_C2X6 = 1
-const m___GLIBC_USE_IEC_60559_EXT6 = 1
-const m___GLIBC_USE_IEC_60559_FUNCS_EXT6 = 1
-const m___GLIBC_USE_IEC_60559_FUNCS_EXT_C2X6 = 1
-const m___GLIBC_USE_IEC_60559_TYPES_EXT6 = 1
-const m___GLIBC_USE_ISOC2X6 = 1
-const m___GLIBC_USE_LIB_EXT26 = 1
 
 /*
  * end block for C++
@@ -31868,15 +31760,6 @@ func init() {
 	*(*uintptr)(unsafe.Add(p, 28)) = __ccgo_fp(_init_wrapper_clear)
 }
 
-const m___GLIBC_USE_IEC_60559_BFP_EXT7 = 0
-const m___GLIBC_USE_IEC_60559_BFP_EXT_C2X7 = 0
-const m___GLIBC_USE_IEC_60559_EXT7 = 0
-const m___GLIBC_USE_IEC_60559_FUNCS_EXT7 = 0
-const m___GLIBC_USE_IEC_60559_FUNCS_EXT_C2X7 = 0
-const m___GLIBC_USE_IEC_60559_TYPES_EXT7 = 0
-const m___GLIBC_USE_ISOC2X7 = 0
-const m___GLIBC_USE_LIB_EXT27 = 0
-
 type Tsqlite3_intarray = struct {
 	Fn     int32
 	Fa     uintptr
@@ -32331,14 +32214,6 @@ const m_JT_MAX_PATHNAME = 512
 const m_JT_VFS_NAME = "jt"
 const m_SQLITE_OPEN_MAIN_DB2 = 256
 const m_SQLITE_OPEN_MAIN_JOURNAL4 = 2048
-const m___GLIBC_USE_IEC_60559_BFP_EXT8 = 1
-const m___GLIBC_USE_IEC_60559_BFP_EXT_C2X8 = 1
-const m___GLIBC_USE_IEC_60559_EXT8 = 1
-const m___GLIBC_USE_IEC_60559_FUNCS_EXT8 = 1
-const m___GLIBC_USE_IEC_60559_FUNCS_EXT_C2X8 = 1
-const m___GLIBC_USE_IEC_60559_TYPES_EXT8 = 1
-const m___GLIBC_USE_ISOC2X8 = 1
-const m___GLIBC_USE_LIB_EXT28 = 1
 
 /*
 ** Maximum pathname length supported by the jt backend.
@@ -35146,15 +35021,6 @@ func init() {
 	*(*uintptr)(unsafe.Add(p, 376)) = __ccgo_fp(_test_vfs_oom_test)
 }
 
-const m___GLIBC_USE_IEC_60559_BFP_EXT9 = 0
-const m___GLIBC_USE_IEC_60559_BFP_EXT_C2X9 = 0
-const m___GLIBC_USE_IEC_60559_EXT9 = 0
-const m___GLIBC_USE_IEC_60559_FUNCS_EXT9 = 0
-const m___GLIBC_USE_IEC_60559_FUNCS_EXT_C2X9 = 0
-const m___GLIBC_USE_IEC_60559_TYPES_EXT9 = 0
-const m___GLIBC_USE_ISOC2X9 = 0
-const m___GLIBC_USE_LIB_EXT29 = 0
-
 /*
  * end block for C++
  */
@@ -37282,7 +37148,6 @@ const m_SQLITE_OPEN_MAIN_JOURNAL7 = 0x00000800
 const m_SQLITE_OPEN_SUPER_JOURNAL3 = 0x00004000
 const m_SQLITE_OPEN_URI3 = 0x00000040
 const m_SQLITE_OPEN_WAL3 = 0x00080000
-const m__XOPEN_SOURCE3 = 600
 
 type Tsqlite3_mutex = struct {
 	FpReal uintptr
@@ -43370,16 +43235,6 @@ type TBox = struct {
 	Fymax float64
 }
 
-const m__XOPEN_SOURCE4 = 700
-const m___GLIBC_USE_IEC_60559_BFP_EXT10 = 1
-const m___GLIBC_USE_IEC_60559_BFP_EXT_C2X10 = 1
-const m___GLIBC_USE_IEC_60559_EXT10 = 1
-const m___GLIBC_USE_IEC_60559_FUNCS_EXT10 = 1
-const m___GLIBC_USE_IEC_60559_FUNCS_EXT_C2X10 = 1
-const m___GLIBC_USE_IEC_60559_TYPES_EXT10 = 1
-const m___GLIBC_USE_ISOC2X10 = 1
-const m___GLIBC_USE_LIB_EXT210 = 1
-
 /*
  * end block for C++
  */
@@ -43829,14 +43684,6 @@ func init() {
 const m_SQLITE_OPEN_CREATE8 = 4
 const m_SQLITE_OPEN_READWRITE6 = 2
 const m_TCL_EVAL_GLOBAL6 = 131072
-const m___GLIBC_USE_IEC_60559_BFP_EXT11 = 0
-const m___GLIBC_USE_IEC_60559_BFP_EXT_C2X11 = 0
-const m___GLIBC_USE_IEC_60559_EXT11 = 0
-const m___GLIBC_USE_IEC_60559_FUNCS_EXT11 = 0
-const m___GLIBC_USE_IEC_60559_FUNCS_EXT_C2X11 = 0
-const m___GLIBC_USE_IEC_60559_TYPES_EXT11 = 0
-const m___GLIBC_USE_ISOC2X11 = 0
-const m___GLIBC_USE_LIB_EXT211 = 0
 
 /* Copyright (C) 1991-2022 Free Software Foundation, Inc.
    This file is part of the GNU C Library.
@@ -44328,14 +44175,6 @@ const m_SQLITE_OPEN_CREATE9 = 0x00000004
 const m_SQLITE_OPEN_READWRITE7 = 0x00000002
 const m_TCL_EVAL_GLOBAL7 = 0x020000
 const m__SYS_MMAN_H = 1
-const m___GLIBC_USE_IEC_60559_BFP_EXT12 = 1
-const m___GLIBC_USE_IEC_60559_BFP_EXT_C2X12 = 1
-const m___GLIBC_USE_IEC_60559_EXT12 = 1
-const m___GLIBC_USE_IEC_60559_FUNCS_EXT12 = 1
-const m___GLIBC_USE_IEC_60559_FUNCS_EXT_C2X12 = 1
-const m___GLIBC_USE_IEC_60559_TYPES_EXT12 = 1
-const m___GLIBC_USE_ISOC2X12 = 1
-const m___GLIBC_USE_LIB_EXT212 = 1
 const m___error_t_defined = 1
 
 type Terror_t = int32
@@ -45104,15 +44943,6 @@ func x_SqlitetestSyscall_Init(tls *libc.TLS, interp uintptr) (r int32) {
 	return m_TCL_OK
 }
 
-const m___GLIBC_USE_IEC_60559_BFP_EXT13 = 0
-const m___GLIBC_USE_IEC_60559_BFP_EXT_C2X13 = 0
-const m___GLIBC_USE_IEC_60559_EXT13 = 0
-const m___GLIBC_USE_IEC_60559_FUNCS_EXT13 = 0
-const m___GLIBC_USE_IEC_60559_FUNCS_EXT_C2X13 = 0
-const m___GLIBC_USE_IEC_60559_TYPES_EXT13 = 0
-const m___GLIBC_USE_ISOC2X13 = 0
-const m___GLIBC_USE_LIB_EXT213 = 0
-
 // C documentation
 //
 //	/*
@@ -45212,14 +45042,6 @@ const m_TCLVAR_VALUE_GLOB = 103
 const m_TCLVAR_VALUE_LIKE = 108
 const m_TCLVAR_VALUE_REGEXP = 114
 const m_TCL_EVAL_GLOBAL8 = 131072
-const m___GLIBC_USE_IEC_60559_BFP_EXT14 = 1
-const m___GLIBC_USE_IEC_60559_BFP_EXT_C2X14 = 1
-const m___GLIBC_USE_IEC_60559_EXT14 = 1
-const m___GLIBC_USE_IEC_60559_FUNCS_EXT14 = 1
-const m___GLIBC_USE_IEC_60559_FUNCS_EXT_C2X14 = 1
-const m___GLIBC_USE_IEC_60559_TYPES_EXT14 = 1
-const m___GLIBC_USE_ISOC2X14 = 1
-const m___GLIBC_USE_LIB_EXT214 = 1
 
 /*
  * end block for C++
@@ -49000,14 +48822,6 @@ func init() {
 }
 
 const m_TCL_EVAL_GLOBAL11 = 0x020000
-const m___GLIBC_USE_IEC_60559_BFP_EXT15 = 0
-const m___GLIBC_USE_IEC_60559_BFP_EXT_C2X15 = 0
-const m___GLIBC_USE_IEC_60559_EXT15 = 0
-const m___GLIBC_USE_IEC_60559_FUNCS_EXT15 = 0
-const m___GLIBC_USE_IEC_60559_FUNCS_EXT_C2X15 = 0
-const m___GLIBC_USE_IEC_60559_TYPES_EXT15 = 0
-const m___GLIBC_USE_ISOC2X15 = 0
-const m___GLIBC_USE_LIB_EXT215 = 0
 const m_SESSION_STREAM_TCL_VAR = "sqlite3session_streams"
 const m_SQLITE_CHANGESETAPPLY_FKNOACTION1 = 8
 const m_SQLITE_CHANGESETAPPLY_IGNORENOOP1 = 4
@@ -55262,14 +55076,6 @@ func x_sqlite3_dbdata_init(tls *libc.TLS, db uintptr, pzErrMsg uintptr, pApi uin
 }
 
 const m_TCL_EVAL_GLOBAL13 = 0x020000
-const m___GLIBC_USE_IEC_60559_BFP_EXT16 = 1
-const m___GLIBC_USE_IEC_60559_BFP_EXT_C2X16 = 1
-const m___GLIBC_USE_IEC_60559_EXT16 = 1
-const m___GLIBC_USE_IEC_60559_FUNCS_EXT16 = 1
-const m___GLIBC_USE_IEC_60559_FUNCS_EXT_C2X16 = 1
-const m___GLIBC_USE_IEC_60559_TYPES_EXT16 = 1
-const m___GLIBC_USE_ISOC2X16 = 1
-const m___GLIBC_USE_LIB_EXT216 = 1
 
 /*
  * end block for C++
@@ -55698,14 +55504,6 @@ const m_SQLITE_RBU_STATE_DONE = 4
 const m_SQLITE_RBU_STATE_ERROR = 5
 const m_SQLITE_RBU_STATE_MOVE = 2
 const m_SQLITE_RBU_STATE_OAL = 1
-const m___GLIBC_USE_IEC_60559_BFP_EXT17 = 0
-const m___GLIBC_USE_IEC_60559_BFP_EXT_C2X17 = 0
-const m___GLIBC_USE_IEC_60559_EXT17 = 0
-const m___GLIBC_USE_IEC_60559_FUNCS_EXT17 = 0
-const m___GLIBC_USE_IEC_60559_FUNCS_EXT_C2X17 = 0
-const m___GLIBC_USE_IEC_60559_TYPES_EXT17 = 0
-const m___GLIBC_USE_ISOC2X17 = 0
-const m___GLIBC_USE_LIB_EXT217 = 0
 
 type TTestRbu = struct {
 	FpRbu    uintptr
@@ -61394,7 +61192,6 @@ const m_SQLITE_OPEN_CREATE13 = 0x00000004
 const m_SQLITE_OPEN_MAIN_DB13 = 0x00000100
 const m_WS = 129
 const m__MEMORY_H = 1
-const m_sqlite3_base_init = "sqlite3_base85_init"
 
 func _init_api_ptr(tls *libc.TLS, pApi uintptr) {
 	_ = pApi
@@ -88120,7 +87917,6 @@ const m_TK_SPACE2 = 183
 const m_TK_STAR2 = 108
 const m_TK_STRING2 = 117
 const m_TK_VARIABLE2 = 156
-const m__XOPEN_SOURCE5 = 600
 
 type TBoxGeomCtx = struct {
 	Finterp  uintptr
@@ -88541,7 +88337,6 @@ const m_TCLSH = 1
 const m_TCLSH_MAIN = "main"
 const m_TCL_EVAL_DIRECT2 = 262144
 const m_TCL_EVAL_GLOBAL14 = 131072
-const m_TCL_STORAGE_CLASS1 = "DLLEXPORT"
 
 /* Define some macros helping to catch buffer overflows.  */
 
@@ -94245,19 +94040,10 @@ const m__IOC_WRITE = 1
 const m__MALLOC_H = 1
 const m__MATH_H = 1
 const m__SYS_IOCTL_H = 1
-const m__XOPEN_SOURCE6 = 700
 const m___FP_LOGB0_IS_MIN = 1
 const m___FP_LOGBNAN_IS_MIN = 1
 const m___FP_LONG_MAX = 0x7fffffff
 const m___GLIBC_FLT_EVAL_METHOD = "__FLT_EVAL_METHOD__"
-const m___GLIBC_USE_IEC_60559_BFP_EXT18 = 1
-const m___GLIBC_USE_IEC_60559_BFP_EXT_C2X18 = 1
-const m___GLIBC_USE_IEC_60559_EXT18 = 1
-const m___GLIBC_USE_IEC_60559_FUNCS_EXT18 = 1
-const m___GLIBC_USE_IEC_60559_FUNCS_EXT_C2X18 = 1
-const m___GLIBC_USE_IEC_60559_TYPES_EXT18 = 1
-const m___GLIBC_USE_ISOC2X18 = 1
-const m___GLIBC_USE_LIB_EXT218 = 1
 const m___MALLOC_DEPRECATED = "__attribute_deprecated__"
 const m___MALLOC_HOOK_VOLATILE = "volatile"
 const m___MATH_DECLARE_LDOUBLE = 1
