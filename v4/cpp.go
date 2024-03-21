@@ -732,6 +732,7 @@ type cpp struct {
 	tok         Token
 	tokenizer   *tokenizer
 	tos         interface{}
+	undefs      map[string]struct{}
 
 	counter      int // __COUNTER__
 	includeLevel int
@@ -760,6 +761,7 @@ func newCPP(cfg *Config, fset *fset, sources []Source, eh errHandler) (*cpp, err
 		macros:  map[string]*Macro{},
 		mstack:  map[string][]*Macro{},
 		sources: sources,
+		undefs:  map[string]struct{}{},
 	}
 	c.tokenizer = newTokenizer(c)
 	c.tok.Ch = eof // Invalidate
@@ -2798,6 +2800,7 @@ func (c *cpp) undef(ln controlLine) {
 
 	nm := ln[2].SrcStr()
 	if _, ok := protectedMacros[nm]; !ok {
+		c.undefs[nm] = struct{}{}
 		delete(c.macros, nm)
 	}
 }
@@ -2923,7 +2926,8 @@ func (c *cpp) newMacro(nm Token, params []Token, replList []cppToken, minArgs, v
 		return
 	}
 
-	if ex := c.macros[s]; ex != nil && (!ex.IsConst || !m.isSame(ex)) {
+	_, undef := c.undefs[s]
+	if ex := c.macros[s]; ex != nil && (undef || !ex.IsConst || !m.isSame(ex)) {
 		m.IsConst = false
 		m.val = nil
 	}
