@@ -2927,7 +2927,7 @@ func (c *cpp) newMacro(nm Token, params []Token, replList []cppToken, minArgs, v
 	}
 
 	_, undef := c.undefs[s]
-	if ex := c.macros[s]; ex != nil && (undef || !ex.IsConst || !m.isSame(ex)) {
+	if ex := c.macros[s]; undef || ex != nil && (!ex.IsConst || !m.isSame(ex)) {
 		m.IsConst = false
 		m.val = nil
 	}
