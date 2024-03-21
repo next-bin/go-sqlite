@@ -509,8 +509,8 @@ const _LOONGARCH_SPFPSET = 32
 const _LOONGARCH_SZINT = 32
 const _LOONGARCH_SZLONG = 64
 const _LOONGARCH_SZPTR = 64
-const _LOONGARCH_TUNE = "la464"
-const _LOONGARCH_TUNE_LA464 = 1
+const _LOONGARCH_TUNE = "loongarch64"
+const _LOONGARCH_TUNE_LOONGARCH64 = 1
 const _LP64 = 1
 const _PC_2_SYMLINKS = 20
 const _PC_ALLOC_SIZE_MIN = 18
@@ -754,6 +754,7 @@ const __DQ_FBIT__ = 63
 const __DQ_IBIT__ = 0
 const __ELF__ = 1
 const __FINITE_MATH_ONLY__ = 0
+const __FLOAT128_TYPE__ = 1
 const __FLOAT_WORD_ORDER__ = "__ORDER_LITTLE_ENDIAN__"
 const __FLT128_DECIMAL_DIG__ = 36
 const __FLT128_DENORM_MIN__ = 6.47517511943802511092443895822764655e-4966
@@ -871,13 +872,13 @@ const __GCC_HAVE_SYNC_COMPARE_AND_SWAP_8 = 1
 const __GCC_IEC_559 = 2
 const __GCC_IEC_559_COMPLEX = 2
 const __GNUC_EXECUTION_CHARSET_NAME = "UTF-8"
-const __GNUC_MINOR__ = 2
+const __GNUC_MINOR__ = 0
 const __GNUC_PATCHLEVEL__ = 1
-const __GNUC_RH_RELEASE__ = 2
+const __GNUC_RH_RELEASE__ = 0
 const __GNUC_STDC_INLINE__ = 1
 const __GNUC_WIDE_EXECUTION_CHARSET_NAME = "UTF-32LE"
-const __GNUC__ = 13
-const __GXX_ABI_VERSION = 1018
+const __GNUC__ = 14
+const __GXX_ABI_VERSION = 1019
 const __HAVE_SPECULATION_SAFE_VALUE = 1
 const __HA_FBIT__ = 7
 const __HA_IBIT__ = 8
@@ -947,6 +948,8 @@ const __LONG_LONG_WIDTH__ = 64
 const __LONG_MAX = 0x7fffffffffffffff
 const __LONG_MAX__ = 0x7fffffffffffffff
 const __LONG_WIDTH__ = 64
+const __LOONGARCH_ARCH_LOONGARCH64 = 1
+const __LOONGARCH_TUNE_LOONGARCH64 = 1
 const __LP64__ = 1
 const __NO_INLINE__ = 1
 const __ORDER_BIG_ENDIAN__ = 4321
@@ -1081,24 +1084,32 @@ const __UTA_FBIT__ = 64
 const __UTA_IBIT__ = 64
 const __UTQ_FBIT__ = 128
 const __UTQ_IBIT__ = 0
-const __VERSION__ = "13.2.1 20230728 (Red Hat 13.2.1-2)"
+const __VERSION__ = "14.0.1 20240228 (Red Hat 14.0.1-0)"
 const __WCHAR_MAX__ = 0x7fffffff
 const __WCHAR_TYPE__ = "int"
 const __WCHAR_WIDTH__ = 32
 const __WINT_MAX__ = 0xffffffff
 const __WINT_MIN__ = 0
 const __WINT_WIDTH__ = 32
+const __builtin_copysignq = "__builtin_copysignf128"
+const __builtin_fabsq = "__builtin_fabsf128"
+const __builtin_huge_valq = "__builtin_huge_valf128"
+const __builtin_infq = "__builtin_inff128"
+const __builtin_nanq = "__builtin_nanf128"
+const __builtin_nansq = "__builtin_nansf128"
 const __gnu_linux__ = 1
 const __inline = "inline"
 const __linux = 1
 const __linux__ = 1
 const __loongarch64 = 1
 const __loongarch__ = 1
+const __loongarch_arch = "loongarch64"
 const __loongarch_double_float = 1
 const __loongarch_frlen = 64
 const __loongarch_grlen = 64
 const __loongarch_hard_float = 1
 const __loongarch_lp64 = 1
+const __loongarch_tune = "loongarch64"
 const __restrict = "restrict"
 const __restrict_arr = "restrict"
 const __unix = 1
@@ -1785,6 +1796,7 @@ func HashInit(tls *libc.TLS) {
 		*(*uint8)(unsafe.Pointer(uintptr(unsafe.Pointer(&g)) + 3152 + 3 + uintptr(k))) = uint8(k)
 		goto _1
 	_1:
+		;
 		k++
 	}
 }
@@ -1816,6 +1828,7 @@ func HashUpdate(tls *libc.TLS, aData uintptr, nData uint32) {
 		i++
 		goto _1
 	_1:
+		;
 		k++
 	}
 	g.hash.i = i
@@ -1848,6 +1861,7 @@ func HashFinal(tls *libc.TLS) {
 		*(*uint8)(unsafe.Pointer(uintptr(unsafe.Pointer(&g)) + 3152 + 259 + uintptr(k))) = *(*uint8)(unsafe.Pointer(uintptr(unsafe.Pointer(&g)) + 3152 + 3 + uintptr(t)))
 		goto _1
 	_1:
+		;
 		k++
 	}
 }
@@ -1925,6 +1939,7 @@ func integerValue(tls *libc.TLS, zArg uintptr) (r int32) {
 		}
 		goto _2
 	_2:
+		;
 		i++
 	}
 	if v > int64(0x7fffffff) {
@@ -2245,6 +2260,7 @@ func speedtest1_final(tls *libc.TLS) {
 			libc.Xprintf(tls, __ccgo_ts+459, libc.VaList(bp+8, int32(*(*uint8)(unsafe.Pointer(uintptr(unsafe.Pointer(&g)) + 3152 + 259 + uintptr(i))))))
 			goto _1
 		_1:
+			;
 			i++
 		}
 		if g.hashFile != 0 && g.hashFile != libc.Xstdout {
@@ -2462,6 +2478,7 @@ func speedtest1_run(tls *libc.TLS) {
 							HashUpdate(tls, bp+2, uint32(2))
 							goto _2
 						_2:
+							;
 							iBlob++
 						}
 						g.nResByte += uint64(nBlob*int32(2) + int32(2))
@@ -2483,6 +2500,7 @@ func speedtest1_run(tls *libc.TLS) {
 			}
 			goto _1
 		_1:
+			;
 			i++
 		}
 	}
@@ -2550,6 +2568,7 @@ func est_square_root(tls *libc.TLS, x int32) (r int32) {
 		y0 = y1
 		goto _1
 	_1:
+		;
 		n++
 	}
 	return y0
@@ -2593,6 +2612,7 @@ func testset_main(tls *libc.TLS) {
 		speedtest1_run(tls)
 		goto _2
 	_2:
+		;
 		i++
 	}
 	speedtest1_exec(tls, __ccgo_ts+736, 0)
@@ -2615,6 +2635,7 @@ func testset_main(tls *libc.TLS) {
 		speedtest1_run(tls)
 		goto _3
 	_3:
+		;
 		i++
 	}
 	speedtest1_exec(tls, __ccgo_ts+736, 0)
@@ -2637,6 +2658,7 @@ func testset_main(tls *libc.TLS) {
 		speedtest1_run(tls)
 		goto _4
 	_4:
+		;
 		i++
 	}
 	speedtest1_exec(tls, __ccgo_ts+736, 0)
@@ -2659,6 +2681,7 @@ func testset_main(tls *libc.TLS) {
 		speedtest1_run(tls)
 		goto _5
 	_5:
+		;
 		i++
 	}
 	speedtest1_exec(tls, __ccgo_ts+736, 0)
@@ -2683,6 +2706,7 @@ func testset_main(tls *libc.TLS) {
 		speedtest1_run(tls)
 		goto _6
 	_6:
+		;
 		i++
 	}
 	speedtest1_exec(tls, __ccgo_ts+736, 0)
@@ -2707,6 +2731,7 @@ func testset_main(tls *libc.TLS) {
 		speedtest1_run(tls)
 		goto _7
 	_7:
+		;
 		i++
 	}
 	speedtest1_exec(tls, __ccgo_ts+736, 0)
@@ -2731,6 +2756,7 @@ func testset_main(tls *libc.TLS) {
 		speedtest1_run(tls)
 		goto _8
 	_8:
+		;
 		i++
 	}
 	speedtest1_exec(tls, __ccgo_ts+736, 0)
@@ -2762,6 +2788,7 @@ func testset_main(tls *libc.TLS) {
 		speedtest1_run(tls)
 		goto _9
 	_9:
+		;
 		i++
 	}
 	speedtest1_exec(tls, __ccgo_ts+736, 0)
@@ -2784,6 +2811,7 @@ func testset_main(tls *libc.TLS) {
 		speedtest1_run(tls)
 		goto _10
 	_10:
+		;
 		i++
 	}
 	speedtest1_exec(tls, __ccgo_ts+736, 0)
@@ -2805,6 +2833,7 @@ func testset_main(tls *libc.TLS) {
 		speedtest1_run(tls)
 		goto _11
 	_11:
+		;
 		i++
 	}
 	speedtest1_exec(tls, __ccgo_ts+736, 0)
@@ -2846,6 +2875,7 @@ func testset_main(tls *libc.TLS) {
 		speedtest1_run(tls)
 		goto _12
 	_12:
+		;
 		i++
 	}
 	speedtest1_exec(tls, __ccgo_ts+736, 0)
@@ -2864,6 +2894,7 @@ func testset_main(tls *libc.TLS) {
 		speedtest1_run(tls)
 		goto _13
 	_13:
+		;
 		i++
 	}
 	speedtest1_exec(tls, __ccgo_ts+736, 0)
@@ -2890,6 +2921,7 @@ func testset_main(tls *libc.TLS) {
 		speedtest1_run(tls)
 		goto _14
 	_14:
+		;
 		i++
 	}
 	speedtest1_exec(tls, __ccgo_ts+736, 0)
@@ -2908,6 +2940,7 @@ func testset_main(tls *libc.TLS) {
 		speedtest1_run(tls)
 		goto _15
 	_15:
+		;
 		i++
 	}
 	speedtest1_exec(tls, __ccgo_ts+736, 0)
@@ -2937,6 +2970,7 @@ func testset_main(tls *libc.TLS) {
 		speedtest1_run(tls)
 		goto _16
 	_16:
+		;
 		i++
 	}
 	speedtest1_exec(tls, __ccgo_ts+736, 0)
@@ -2967,6 +3001,7 @@ func testset_main(tls *libc.TLS) {
 		speedtest1_run(tls)
 		goto _18
 	_18:
+		;
 		i++
 	}
 	speedtest1_exec(tls, __ccgo_ts+736, 0)
@@ -2992,6 +3027,7 @@ func testset_main(tls *libc.TLS) {
 		speedtest1_run(tls)
 		goto _19
 	_19:
+		;
 		i++
 	}
 	if g.doBigTransactions != 0 {
@@ -3024,6 +3060,7 @@ func testset_main(tls *libc.TLS) {
 		speedtest1_run(tls)
 		goto _22
 	_22:
+		;
 		i++
 	}
 	speedtest1_exec(tls, __ccgo_ts+736, 0)
@@ -3045,6 +3082,7 @@ func testset_main(tls *libc.TLS) {
 		speedtest1_run(tls)
 		goto _23
 	_23:
+		;
 		i++
 	}
 	if g.doBigTransactions != 0 {
@@ -3164,6 +3202,7 @@ func testset_fp(tls *libc.TLS) {
 		speedtest1_run(tls)
 		goto _1
 	_1:
+		;
 		i++
 	}
 	speedtest1_exec(tls, __ccgo_ts+736, 0)
@@ -3183,6 +3222,7 @@ func testset_fp(tls *libc.TLS) {
 		speedtest1_run(tls)
 		goto _2
 	_2:
+		;
 		i++
 	}
 	speedtest1_end_test(tls)
@@ -3208,6 +3248,7 @@ func testset_fp(tls *libc.TLS) {
 		speedtest1_run(tls)
 		goto _3
 	_3:
+		;
 		i++
 	}
 	speedtest1_end_test(tls)
@@ -3267,11 +3308,13 @@ func testset_orm(tls *libc.TLS) {
 			}
 			goto _3
 		_3:
+			;
 			j++
 		}
 		speedtest1_run(tls)
 		goto _2
 	_2:
+		;
 		i++
 	}
 	speedtest1_exec(tls, __ccgo_ts+1703, 0)
@@ -3289,6 +3332,7 @@ func testset_orm(tls *libc.TLS) {
 		speedtest1_run(tls)
 		goto _4
 	_4:
+		;
 		i++
 	}
 	speedtest1_end_test(tls)
@@ -3327,10 +3371,12 @@ func testset_trigger(tls *libc.TLS) {
 			speedtest1_run(tls)
 			goto _2
 		_2:
+			;
 			ii++
 		}
 		goto _1
 	_1:
+		;
 		jj++
 	}
 	speedtest1_exec(tls, __ccgo_ts+17588, 0)
@@ -3358,10 +3404,12 @@ func testset_trigger(tls *libc.TLS) {
 			speedtest1_run(tls)
 			goto _4
 		_4:
+			;
 			ii += int32(3)
 		}
 		goto _3
 	_3:
+		;
 		jj++
 	}
 	speedtest1_end_test(tls)
@@ -3381,10 +3429,12 @@ func testset_trigger(tls *libc.TLS) {
 			speedtest1_run(tls)
 			goto _6
 		_6:
+			;
 			ii += int32(3)
 		}
 		goto _5
 	_5:
+		;
 		jj++
 	}
 	speedtest1_end_test(tls)
@@ -3404,10 +3454,12 @@ func testset_trigger(tls *libc.TLS) {
 			speedtest1_run(tls)
 			goto _8
 		_8:
+			;
 			ii += int32(3)
 		}
 		goto _7
 	_7:
+		;
 		jj++
 	}
 	speedtest1_end_test(tls)
@@ -3422,6 +3474,7 @@ func testset_trigger(tls *libc.TLS) {
 		speedtest1_run(tls)
 		goto _9
 	_9:
+		;
 		jj++
 	}
 	speedtest1_end_test(tls)
@@ -3437,6 +3490,7 @@ func testset_trigger(tls *libc.TLS) {
 		speedtest1_run(tls)
 		goto _10
 	_10:
+		;
 		jj++
 	}
 	speedtest1_exec(tls, __ccgo_ts+736, 0)
@@ -3459,6 +3513,7 @@ func testset_trigger(tls *libc.TLS) {
 		speedtest1_run(tls)
 		goto _11
 	_11:
+		;
 		jj++
 	}
 	speedtest1_end_test(tls)
@@ -3481,6 +3536,7 @@ func testset_trigger(tls *libc.TLS) {
 		speedtest1_run(tls)
 		goto _12
 	_12:
+		;
 		jj += int32(2)
 	}
 	speedtest1_end_test(tls)
@@ -3498,6 +3554,7 @@ func testset_trigger(tls *libc.TLS) {
 		speedtest1_run(tls)
 		goto _13
 	_13:
+		;
 		jj += int32(2)
 	}
 	speedtest1_end_test(tls)
@@ -3522,6 +3579,7 @@ func testset_trigger(tls *libc.TLS) {
 		speedtest1_run(tls)
 		goto _14
 	_14:
+		;
 		jj++
 	}
 	speedtest1_end_test(tls)
@@ -3539,6 +3597,7 @@ func testset_trigger(tls *libc.TLS) {
 		speedtest1_run(tls)
 		goto _15
 	_15:
+		;
 		jj += int32(2)
 	}
 	speedtest1_end_test(tls)
@@ -3553,6 +3612,7 @@ func testset_trigger(tls *libc.TLS) {
 		speedtest1_run(tls)
 		goto _16
 	_16:
+		;
 		jj += int32(2)
 	}
 	speedtest1_end_test(tls)
@@ -3582,6 +3642,7 @@ func testset_debug1(tls *libc.TLS) {
 		libc.Xprintf(tls, __ccgo_ts+19044, libc.VaList(bp+2008, i, x1, x2, bp))
 		goto _1
 	_1:
+		;
 		i++
 	}
 }
@@ -3776,6 +3837,7 @@ func displayLinuxIoStats(tls *libc.TLS, out uintptr) {
 			}
 			goto _1
 		_1:
+			;
 			i++
 		}
 	}
@@ -4194,6 +4256,7 @@ func main1(tls *libc.TLS, argc int32, argv uintptr) (r int32) {
 		}
 		goto _1
 	_1:
+		;
 		i++
 	}
 	if nHeap > 0 {
