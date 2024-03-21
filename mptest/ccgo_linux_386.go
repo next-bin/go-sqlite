@@ -2586,6 +2586,7 @@ func printWithPrefix(tls *libc.TLS, pOut uintptr, zPrefix uintptr, zMsg uintptr)
 			}
 			goto _1
 		_1:
+			;
 			i++
 		}
 		libc.Xfprintf(tls, pOut, __ccgo_ts, libc.VaList(bp+8, zPrefix, i, zMsg))
@@ -3126,6 +3127,7 @@ func stringAppendTerm(tls *libc.TLS, p uintptr, z uintptr) {
 		}
 		goto _1
 	_1:
+		;
 		i++
 	}
 	if i > 0 && int32(*(*int8)(unsafe.Pointer(z + uintptr(i)))) == 0 {
@@ -3141,6 +3143,7 @@ func stringAppendTerm(tls *libc.TLS, p uintptr, z uintptr) {
 			}
 			goto _2
 		_2:
+			;
 			i++
 		}
 		if *(*int8)(unsafe.Pointer(z + uintptr(i))) != 0 {
@@ -3174,6 +3177,7 @@ func evalCallback(tls *libc.TLS, pCData uintptr, argc int32, argv uintptr, azCol
 		stringAppendTerm(tls, p, *(*uintptr)(unsafe.Pointer(argv + uintptr(i)*4)))
 		goto _1
 	_1:
+		;
 		i++
 	}
 	return 0
@@ -3454,6 +3458,7 @@ func tokenLength(tls *libc.TLS, z uintptr, pnLine uintptr) (r int32) {
 				}
 				goto _3
 			_3:
+				;
 				n++
 			}
 			if *(*int8)(unsafe.Pointer(z + uintptr(n))) != 0 {
@@ -3479,6 +3484,7 @@ func tokenLength(tls *libc.TLS, z uintptr, pnLine uintptr) (r int32) {
 					}
 					goto _4
 				_4:
+					;
 					n++
 				}
 			} else {
@@ -3491,6 +3497,7 @@ func tokenLength(tls *libc.TLS, z uintptr, pnLine uintptr) (r int32) {
 					}
 					goto _5
 				_5:
+					;
 					n++
 				}
 			}
@@ -3519,6 +3526,7 @@ func extractToken(tls *libc.TLS, zIn uintptr, nIn int32, zOut uintptr, nOut int3
 		*(*int8)(unsafe.Pointer(zOut + uintptr(i))) = *(*int8)(unsafe.Pointer(zIn + uintptr(i)))
 		goto _1
 	_1:
+		;
 		i++
 	}
 	*(*int8)(unsafe.Pointer(zOut + uintptr(i))) = 0
@@ -3626,6 +3634,7 @@ func filenameTail(tls *libc.TLS, z uintptr) (r uintptr) {
 		}
 		goto _1
 	_1:
+		;
 		i++
 	}
 	return z + uintptr(j)
@@ -3651,6 +3660,7 @@ func booleanValue(tls *libc.TLS, zArg uintptr) (r int32) {
 		}
 		goto _1
 	_1:
+		;
 		i++
 	}
 	if i > 0 && int32(*(*int8)(unsafe.Pointer(zArg + uintptr(i)))) == 0 {
@@ -3743,6 +3753,7 @@ func runScript(tls *libc.TLS, iClient int32, taskId int32, zScript uintptr, zFil
 			n += extractToken(tls, zScript+uintptr(ii)+uintptr(2)+uintptr(n), len1-int32(2)-n, bp+1046+uintptr(nArg)*100, int32(100))
 			goto _2
 		_2:
+			;
 			nArg++
 		}
 		j = nArg
@@ -3755,6 +3766,7 @@ func runScript(tls *libc.TLS, iClient int32, taskId int32, zScript uintptr, zFil
 			*(*int8)(unsafe.Pointer(bp + 1046 + uintptr(v4)*100)) = 0
 			goto _3
 		_3:
+			;
 			j++
 		}
 		/*
@@ -3822,6 +3834,7 @@ func runScript(tls *libc.TLS, iClient int32, taskId int32, zScript uintptr, zFil
 									}
 									goto _5
 								_5:
+									;
 									jj++
 								}
 								zAns += uintptr(jj)
@@ -3848,6 +3861,7 @@ func runScript(tls *libc.TLS, iClient int32, taskId int32, zScript uintptr, zFil
 										}
 										goto _6
 									_6:
+										;
 										jj1++
 									}
 									zAns1 += uintptr(jj1)
@@ -3883,6 +3897,7 @@ func runScript(tls *libc.TLS, iClient int32, taskId int32, zScript uintptr, zFil
 													}
 													goto _7
 												_7:
+													;
 													k--
 												}
 												if k > 0 {
@@ -3915,6 +3930,7 @@ func runScript(tls *libc.TLS, iClient int32, taskId int32, zScript uintptr, zFil
 													}
 													goto _9
 												_9:
+													;
 													jj2++
 												}
 												logMessage(tls, __ccgo_ts+1202, libc.VaList(bp+1256, len1-jj2, zScript+uintptr(ii)+uintptr(jj2)))
@@ -3932,6 +3948,7 @@ func runScript(tls *libc.TLS, iClient int32, taskId int32, zScript uintptr, zFil
 														}
 														goto _10
 													_10:
+														;
 														jj3++
 													}
 													pStmt = prepareSql(tls, __ccgo_ts+1414, libc.VaList(bp+1256, len1-jj3, zScript+uintptr(ii)+uintptr(jj3)))
@@ -4128,6 +4145,7 @@ func findOption(tls *libc.TLS, azArg uintptr, pnArg uintptr, zOption uintptr, ha
 		}
 		goto _1
 	_1:
+		;
 		i++
 	}
 	return zReturn
@@ -4153,6 +4171,7 @@ func usage(tls *libc.TLS, argv0 uintptr) {
 		}
 		goto _1
 	_1:
+		;
 		i++
 	}
 	libc.Xfprintf(tls, libc.Xstderr, __ccgo_ts+1678, libc.VaList(bp+8, zTail))
@@ -4177,6 +4196,7 @@ func unrecognizedArguments(tls *libc.TLS, argv0 uintptr, nArg int32, azArg uintp
 		libc.Xfprintf(tls, libc.Xstderr, __ccgo_ts+2317, libc.VaList(bp+8, *(*uintptr)(unsafe.Pointer(azArg + uintptr(i)*4))))
 		goto _1
 	_1:
+		;
 		i++
 	}
 	libc.Xfprintf(tls, libc.Xstderr, __ccgo_ts+2321, 0)
@@ -4266,6 +4286,7 @@ func main1(tls *libc.TLS, argc int32, argv uintptr) (r int32) {
 				libc.Xprintf(tls, __ccgo_ts+2317, libc.VaList(bp+24, *(*uintptr)(unsafe.Pointer(argv + uintptr(i)*4))))
 				goto _1
 			_1:
+				;
 				i++
 			}
 			libc.Xprintf(tls, __ccgo_ts+2321, 0)
@@ -4280,6 +4301,7 @@ func main1(tls *libc.TLS, argc int32, argv uintptr) (r int32) {
 				libc.Xprintf(tls, __ccgo_ts+2722, libc.VaList(bp+24, zCOption))
 				goto _2
 			_2:
+				;
 				i++
 			}
 			libc.Xfflush(tls, libc.Xstdout)
@@ -4300,6 +4322,7 @@ func main1(tls *libc.TLS, argc int32, argv uintptr) (r int32) {
 			}
 			goto _6
 		_6:
+			;
 			if v5 = rc != 0; v5 {
 				nTry++
 				v4 = nTry
@@ -4384,6 +4407,7 @@ func main1(tls *libc.TLS, argc int32, argv uintptr) (r int32) {
 			}
 			goto _8
 		_8:
+			;
 			iRep++
 		}
 		libsqlite3.Xsqlite3_free(tls, *(*uintptr)(unsafe.Pointer(bp + 4)))
@@ -4433,6 +4457,7 @@ func main1(tls *libc.TLS, argc int32, argv uintptr) (r int32) {
 			libc.Xprintf(tls, __ccgo_ts+2317, libc.VaList(bp+24, *(*uintptr)(unsafe.Pointer(argv + uintptr(i)*4))))
 			goto _11
 		_11:
+			;
 			i++
 		}
 		libc.Xprintf(tls, __ccgo_ts+2321, 0)
