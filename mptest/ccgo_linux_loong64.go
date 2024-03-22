@@ -184,11 +184,8 @@ const POSIX_CLOSE_RESTART = 0
 const P_tmpdir = "/tmp"
 const RAND_MAX = 0x7fffffff
 const R_OK = 4
-const SEEK_CUR = 1
 const SEEK_DATA = 3
-const SEEK_END = 2
 const SEEK_HOLE = 4
-const SEEK_SET = 0
 const SQLITE3_TEXT = 3
 const SQLITE_ABORT = 4
 const SQLITE_ACCESS_EXISTS = 0
@@ -2690,7 +2687,7 @@ func readFile(tls *libc.TLS, zFilename uintptr) (r uintptr) {
 	if in == uintptr(0) {
 		fatalError(tls, __ccgo_ts+867, libc.VaList(bp+8, zFilename))
 	}
-	libc.Xfseek(tls, in, 0, int32(SEEK_END))
+	libc.Xfseek(tls, in, 0, int32(2))
 	sz = libc.Xftell(tls, in)
 	libc.Xrewind(tls, in)
 	z = libsqlite3.Xsqlite3_malloc(tls, int32(sz+int64(1)))

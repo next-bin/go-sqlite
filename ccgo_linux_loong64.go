@@ -325,7 +325,6 @@ const ENOTSUP = 95
 const ENOTTY = 25
 const ENOTUNIQ = 76
 const ENXIO = 6
-const EOF = -1
 const EOPNOTSUPP = 95
 const EOVERFLOW = 75
 const EOWNERDEAD = 130
@@ -789,7 +788,6 @@ const MAP_SYNC = 524288
 const MAP_TYPE = 15
 const MATH_ERREXCEPT = 2
 const MATH_ERRNO = 1
-const MAXFLOAT = 0
 const MAX_HANDLE_SZ = 128
 const MAX_PATHNAME = 512
 const MAX_SECTOR_SIZE = 65536
@@ -1436,11 +1434,8 @@ const SCHED_OTHER = 0
 const SCHED_RESET_ON_FORK = 1073741824
 const SCHED_RR = 2
 const SCHEMA_ROOT = 1
-const SEEK_CUR = 1
 const SEEK_DATA = 3
-const SEEK_END = 2
 const SEEK_HOLE = 4
-const SEEK_SET = 0
 const SESSIONS_ROWID = "_rowid_"
 const SESSIONS_STRM_CHUNK_SIZE = 1024
 const SESSION_MAX_BUFFER_SZ = 2147483391
@@ -2087,10 +2082,7 @@ const SQLITE_OPEN_TEMP_JOURNAL = 4096
 const SQLITE_OPEN_TRANSIENT_DB = 1024
 const SQLITE_OPEN_URI = 64
 const SQLITE_OPEN_WAL = 524288
-const SQLITE_OS_KV = 0
-const SQLITE_OS_OTHER = 0
 const SQLITE_OS_UNIX = 1
-const SQLITE_OS_WIN = 0
 const SQLITE_OmitNoopJoin = 256
 const SQLITE_OmitOrderBy = 262144
 const SQLITE_OnePass = 134217728
@@ -24366,7 +24358,7 @@ func _unixCheckReservedLock(tls *libc.TLS, id uintptr, pResOut uintptr) (r int32
 	/* Otherwise see if some other process holds it.
 	 */
 	if !(reserved != 0) && !((*TunixInodeInfo)(unsafe.Pointer((*TunixFile)(unsafe.Pointer(pFile)).FpInode)).FbProcessLock != 0) {
-		(*(*Tflock)(unsafe.Pointer(bp))).Fl_whence = SEEK_SET
+		(*(*Tflock)(unsafe.Pointer(bp))).Fl_whence = 0
 		(*(*Tflock)(unsafe.Pointer(bp))).Fl_start = int64(_sqlite3PendingByte + libc.Int32FromInt32(1))
 		(*(*Tflock)(unsafe.Pointer(bp))).Fl_len = int64(1)
 		(*(*Tflock)(unsafe.Pointer(bp))).Fl_type = int16(F_WRLCK)
@@ -24429,7 +24421,7 @@ func _unixFileLock(tls *libc.TLS, pFile uintptr, pLock uintptr) (r int32) {
 	pInode = (*TunixFile)(unsafe.Pointer(pFile)).FpInode
 	if int32((*TunixFile)(unsafe.Pointer(pFile)).FctrlFlags)&(libc.Int32FromInt32(UNIXFILE_EXCL)|libc.Int32FromInt32(UNIXFILE_RDONLY)) == int32(UNIXFILE_EXCL) {
 		if int32((*TunixInodeInfo)(unsafe.Pointer(pInode)).FbProcessLock) == 0 {
-			(*(*Tflock)(unsafe.Pointer(bp))).Fl_whence = SEEK_SET
+			(*(*Tflock)(unsafe.Pointer(bp))).Fl_whence = 0
 			(*(*Tflock)(unsafe.Pointer(bp))).Fl_start = int64(_sqlite3PendingByte + libc.Int32FromInt32(2))
 			(*(*Tflock)(unsafe.Pointer(bp))).Fl_len = int64(SHARED_SIZE)
 			(*(*Tflock)(unsafe.Pointer(bp))).Fl_type = int16(F_WRLCK)
@@ -24562,7 +24554,7 @@ func _unixLock(tls *libc.TLS, id uintptr, eFileLock int32) (r int32) {
 	 ** be released.
 	 */
 	(*(*Tflock)(unsafe.Pointer(bp))).Fl_len = int64(1)
-	(*(*Tflock)(unsafe.Pointer(bp))).Fl_whence = SEEK_SET
+	(*(*Tflock)(unsafe.Pointer(bp))).Fl_whence = 0
 	if eFileLock == int32(SHARED_LOCK) || eFileLock == int32(EXCLUSIVE_LOCK) && int32((*TunixFile)(unsafe.Pointer(pFile)).FeFileLock) == int32(RESERVED_LOCK) {
 		if eFileLock == int32(SHARED_LOCK) {
 			v1 = F_RDLCK
@@ -24712,7 +24704,7 @@ func _posixUnlock(tls *libc.TLS, id uintptr, eFileLock int32, handleNFSUnlock in
 		if eFileLock == int32(SHARED_LOCK) {
 			_ = handleNFSUnlock
 			(*(*Tflock)(unsafe.Pointer(bp))).Fl_type = F_RDLCK
-			(*(*Tflock)(unsafe.Pointer(bp))).Fl_whence = SEEK_SET
+			(*(*Tflock)(unsafe.Pointer(bp))).Fl_whence = 0
 			(*(*Tflock)(unsafe.Pointer(bp))).Fl_start = int64(_sqlite3PendingByte + libc.Int32FromInt32(2))
 			(*(*Tflock)(unsafe.Pointer(bp))).Fl_len = int64(SHARED_SIZE)
 			if _unixFileLock(tls, pFile, bp) != 0 {
@@ -24728,7 +24720,7 @@ func _posixUnlock(tls *libc.TLS, id uintptr, eFileLock int32, handleNFSUnlock in
 			}
 		}
 		(*(*Tflock)(unsafe.Pointer(bp))).Fl_type = int16(F_UNLCK)
-		(*(*Tflock)(unsafe.Pointer(bp))).Fl_whence = SEEK_SET
+		(*(*Tflock)(unsafe.Pointer(bp))).Fl_whence = 0
 		(*(*Tflock)(unsafe.Pointer(bp))).Fl_start = int64(_sqlite3PendingByte)
 		(*(*Tflock)(unsafe.Pointer(bp))).Fl_len = int64(2)
 		if _unixFileLock(tls, pFile, bp) == 0 {
@@ -24747,7 +24739,7 @@ func _posixUnlock(tls *libc.TLS, id uintptr, eFileLock int32, handleNFSUnlock in
 		(*TunixInodeInfo)(unsafe.Pointer(pInode)).FnShared--
 		if (*TunixInodeInfo)(unsafe.Pointer(pInode)).FnShared == 0 {
 			(*(*Tflock)(unsafe.Pointer(bp))).Fl_type = int16(F_UNLCK)
-			(*(*Tflock)(unsafe.Pointer(bp))).Fl_whence = SEEK_SET
+			(*(*Tflock)(unsafe.Pointer(bp))).Fl_whence = 0
 			v1 = libc.Int64FromInt64(0)
 			(*(*Tflock)(unsafe.Pointer(bp))).Fl_len = v1
 			(*(*Tflock)(unsafe.Pointer(bp))).Fl_start = v1
@@ -25910,7 +25902,7 @@ func _unixFcntlExternalReader(tls *libc.TLS, pFile uintptr, piOut uintptr) (r in
 		pShmNode = (*TunixShm)(unsafe.Pointer((*TunixFile)(unsafe.Pointer(pFile)).FpShm)).FpShmNode
 		libc.Xmemset(tls, bp, 0, uint64(32))
 		(*(*Tflock)(unsafe.Pointer(bp))).Fl_type = int16(F_WRLCK)
-		(*(*Tflock)(unsafe.Pointer(bp))).Fl_whence = SEEK_SET
+		(*(*Tflock)(unsafe.Pointer(bp))).Fl_whence = 0
 		(*(*Tflock)(unsafe.Pointer(bp))).Fl_start = int64((libc.Int32FromInt32(22)+libc.Int32FromInt32(SQLITE_SHM_NLOCK))*libc.Int32FromInt32(4) + libc.Int32FromInt32(3))
 		(*(*Tflock)(unsafe.Pointer(bp))).Fl_len = int64(libc.Int32FromInt32(SQLITE_SHM_NLOCK) - libc.Int32FromInt32(3))
 		Xsqlite3_mutex_enter(tls, (*TunixShmNode)(unsafe.Pointer(pShmNode)).FpShmMutex)
@@ -25951,7 +25943,7 @@ func _unixShmSystemLock(tls *libc.TLS, pFile uintptr, lockType int32, ofst int32
 	if (*TunixShmNode)(unsafe.Pointer(pShmNode)).FhShm >= 0 {
 		/* Initialize the locking parameters */
 		(*(*Tflock)(unsafe.Pointer(bp))).Fl_type = int16(lockType)
-		(*(*Tflock)(unsafe.Pointer(bp))).Fl_whence = SEEK_SET
+		(*(*Tflock)(unsafe.Pointer(bp))).Fl_whence = 0
 		(*(*Tflock)(unsafe.Pointer(bp))).Fl_start = int64(ofst)
 		(*(*Tflock)(unsafe.Pointer(bp))).Fl_len = int64(n)
 		res = (*(*func(*libc.TLS, int32, int32, uintptr) int32)(unsafe.Pointer(&struct{ uintptr }{_aSyscall[int32(7)].FpCurrent})))(tls, (*TunixShmNode)(unsafe.Pointer(pShmNode)).FhShm, int32(F_SETLK), libc.VaList(bp+40, bp))
@@ -26063,7 +26055,7 @@ func _unixLockSharedMemory(tls *libc.TLS, pDbFd uintptr, pShmNode uintptr) (r in
 	 ** process might open and use the *-shm file without truncating it.
 	 ** And if the *-shm file has been corrupted by a power failure or
 	 ** system crash, the database itself may also become corrupt.  */
-	(*(*Tflock)(unsafe.Pointer(bp))).Fl_whence = SEEK_SET
+	(*(*Tflock)(unsafe.Pointer(bp))).Fl_whence = 0
 	(*(*Tflock)(unsafe.Pointer(bp))).Fl_start = int64((libc.Int32FromInt32(22)+libc.Int32FromInt32(SQLITE_SHM_NLOCK))*libc.Int32FromInt32(4) + libc.Int32FromInt32(SQLITE_SHM_NLOCK))
 	(*(*Tflock)(unsafe.Pointer(bp))).Fl_len = int64(1)
 	(*(*Tflock)(unsafe.Pointer(bp))).Fl_type = int16(F_WRLCK)

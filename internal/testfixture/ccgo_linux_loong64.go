@@ -749,11 +749,8 @@ const m_SCNxFAST8 = "hhx"
 const m_SCNxLEAST16 = "hx"
 const m_SCNxLEAST32 = "x"
 const m_SCNxLEAST8 = "hhx"
-const m_SEEK_CUR = 1
 const m_SEEK_DATA = 3
-const m_SEEK_END = 2
 const m_SEEK_HOLE = 4
-const m_SEEK_SET = 0
 const m_SF_Aggregate = 0x0000008
 const m_SF_All = 0x0000002
 const m_SF_ComplexResult = 0x0040000
@@ -1230,10 +1227,7 @@ const m_SQLITE_OPEN_TEMP_JOURNAL = 4096
 const m_SQLITE_OPEN_TRANSIENT_DB = 1024
 const m_SQLITE_OPEN_URI = 64
 const m_SQLITE_OPEN_WAL = 524288
-const m_SQLITE_OS_KV = 0
-const m_SQLITE_OS_OTHER = 0
 const m_SQLITE_OS_UNIX = 1
-const m_SQLITE_OS_WIN = 0
 const m_SQLITE_OmitNoopJoin = 256
 const m_SQLITE_OmitOrderBy = 0x00040000
 const m_SQLITE_OnePass = 134217728
@@ -1545,7 +1539,6 @@ const m_TCL_RETURN = 2
 const m_TCL_SERVICE_ALL = 1
 const m_TCL_SERVICE_NONE = 0
 const m_TCL_SMALL_HASH_TABLE = 4
-const m_TCL_STORAGE_CLASS = "DLLIMPORT"
 const m_TCL_STRING_KEYS = 0
 const m_TCL_SUBST_ALL = 007
 const m_TCL_SUBST_BACKSLASHES = 004
@@ -8458,7 +8451,7 @@ func _blobHandleFromObj(tls *libc.TLS, interp uintptr, pObj uintptr, ppBlob uint
 			return int32(m_TCL_ERROR)
 		}
 		libtcl8_6.XTcl_Flush(tls, channel)
-		libtcl8_6.XTcl_Seek(tls, channel, 0, m_SEEK_SET)
+		libtcl8_6.XTcl_Seek(tls, channel, 0, 0)
 		instanceData = libtcl8_6.XTcl_GetChannelInstanceData(tls, channel)
 		*(*uintptr)(unsafe.Pointer(ppBlob)) = *(*uintptr)(unsafe.Pointer(instanceData))
 	}
@@ -24815,7 +24808,7 @@ func _blobHandleFromObj1(tls *libc.TLS, interp uintptr, pObj uintptr, ppBlob uin
 				return int32(m_TCL_ERROR)
 			}
 			libtcl8_6.XTcl_Flush(tls, channel)
-			libtcl8_6.XTcl_Seek(tls, channel, 0, m_SEEK_SET)
+			libtcl8_6.XTcl_Seek(tls, channel, 0, 0)
 			instanceData = libtcl8_6.XTcl_GetChannelInstanceData(tls, channel)
 			*(*uintptr)(unsafe.Pointer(ppBlob)) = *(*uintptr)(unsafe.Pointer(instanceData))
 		} else {
@@ -25351,7 +25344,7 @@ var _cv_MAX_FUNCTION_ARG = int32(m_SQLITE_MAX_FUNCTION_ARG)
 
 var _cv_MAX_VARIABLE_NUMBER = int32(m_SQLITE_MAX_VARIABLE_NUMBER)
 
-var _cv_MAX_PAGE_SIZE = int32(m_SQLITE_MAX_PAGE_SIZE)
+var _cv_MAX_PAGE_SIZE = int32(65536)
 
 var _cv_MAX_PAGE_COUNT = libc.Int32FromUint32(m_SQLITE_MAX_PAGE_COUNT1)
 
@@ -25524,6 +25517,9 @@ const m_EWOULDBLOCK = "EAGAIN"
 const m_EXDEV = 18
 const m_EXFULL = 54
 const m_MX_CHUNK_NUMBER = 299
+const m_SEEK_CUR = 1
+const m_SEEK_END = 2
+const m_SEEK_SET = 0
 const m_SQLITE_MULTIPLEX_JOURNAL_8_3_OFFSET = 400
 const m_SQLITE_MULTIPLEX_WAL_8_3_OFFSET = 700
 
@@ -26167,7 +26163,7 @@ func _demoDirectWrite(tls *libc.TLS, p uintptr, zBuf uintptr, iAmt int32, iOfst 
 	var nWrite Tsize_t
 	var ofst Toff_t
 	_, _ = nWrite, ofst /* Return value from write() */
-	ofst = libc.Xlseek(tls, (*TDemoFile)(unsafe.Pointer(p)).Ffd, iOfst, m_SEEK_SET)
+	ofst = libc.Xlseek(tls, (*TDemoFile)(unsafe.Pointer(p)).Ffd, iOfst, 0)
 	if ofst != iOfst {
 		return libc.Int32FromInt32(m_SQLITE_IOERR) | libc.Int32FromInt32(3)<<libc.Int32FromInt32(8)
 	}
@@ -26233,7 +26229,7 @@ func _demoRead(tls *libc.TLS, pFile uintptr, zBuf uintptr, iAmt int32, iOfst Tsq
 	if rc != m_SQLITE_OK {
 		return rc
 	}
-	ofst = libc.Xlseek(tls, (*TDemoFile)(unsafe.Pointer(p)).Ffd, iOfst, m_SEEK_SET)
+	ofst = libc.Xlseek(tls, (*TDemoFile)(unsafe.Pointer(p)).Ffd, iOfst, 0)
 	if ofst != iOfst {
 		return libc.Int32FromInt32(m_SQLITE_IOERR) | libc.Int32FromInt32(1)<<libc.Int32FromInt32(8)
 	}
@@ -29356,7 +29352,7 @@ func _hexio_read(tls *libc.TLS, clientData uintptr, interp uintptr, objc int32, 
 		libtcl8_6.XTcl_AppendResult(tls, interp, libc.VaList(bp+16, __ccgo_ts+18165, zFile, 0))
 		return int32(m_TCL_ERROR)
 	}
-	libc.Xfseek(tls, in, int64(*(*int32)(unsafe.Pointer(bp))), m_SEEK_SET)
+	libc.Xfseek(tls, in, int64(*(*int32)(unsafe.Pointer(bp))), 0)
 	got = int32(libc.Xfread(tls, zBuf, uint64(1), uint64(*(*int32)(unsafe.Pointer(bp + 4))), in))
 	libc.Xfclose(tls, in)
 	if got < 0 {
@@ -29406,7 +29402,7 @@ func _hexio_write(tls *libc.TLS, clientData uintptr, interp uintptr, objc int32,
 		libtcl8_6.XTcl_AppendResult(tls, interp, libc.VaList(bp+16, __ccgo_ts+18220, zFile, 0))
 		return int32(m_TCL_ERROR)
 	}
-	libc.Xfseek(tls, out, int64(*(*int32)(unsafe.Pointer(bp))), m_SEEK_SET)
+	libc.Xfseek(tls, out, int64(*(*int32)(unsafe.Pointer(bp))), 0)
 	written = int32(libc.Xfwrite(tls, aOut, uint64(1), uint64(nOut), out))
 	x_sqlite3_free(tls, aOut)
 	libc.Xfclose(tls, out)
@@ -33593,7 +33589,7 @@ func _md5file_cmd(tls *libc.TLS, cd uintptr, interp uintptr, argc int32, argv ui
 		libtcl8_6.XTcl_AppendResult(tls, interp, libc.VaList(bp+10360, __ccgo_ts+20461, *(*uintptr)(unsafe.Pointer(argv + 1*8)), __ccgo_ts+20483, libc.UintptrFromInt32(0)))
 		return int32(m_TCL_ERROR)
 	}
-	libc.Xfseek(tls, in, int64(ofst), m_SEEK_SET)
+	libc.Xfseek(tls, in, int64(ofst), 0)
 	_MD5Init(tls, bp)
 	for amt > 0 {
 		if uint64(10240) <= uint64(amt) {
@@ -39602,7 +39598,7 @@ func x_sqlite3_quota_file_available(tls *libc.TLS, p uintptr) (r int64) {
 	if pos1 < 0 {
 		return int64(-int32(1))
 	}
-	rc = libc.Xfseek(tls, f, 0, int32(m_SEEK_END))
+	rc = libc.Xfseek(tls, f, 0, int32(2))
 	if rc != 0 {
 		return int64(-int32(1))
 	}
@@ -39610,7 +39606,7 @@ func x_sqlite3_quota_file_available(tls *libc.TLS, p uintptr) (r int64) {
 	if pos2 < 0 {
 		return int64(-int32(1))
 	}
-	rc = libc.Xfseek(tls, f, pos1, m_SEEK_SET)
+	rc = libc.Xfseek(tls, f, pos1, 0)
 	if rc != 0 {
 		return int64(-int32(1))
 	}
@@ -40122,13 +40118,13 @@ func _test_quota_fseek(tls *libc.TLS, clientData uintptr, interp uintptr, objc i
 	}
 	zWhence = libtcl8_6.XTcl_GetString(tls, *(*uintptr)(unsafe.Pointer(objv + 3*8)))
 	if libc.Xstrcmp(tls, zWhence, __ccgo_ts+22011) == 0 {
-		whence = m_SEEK_SET
+		whence = 0
 	} else {
 		if libc.Xstrcmp(tls, zWhence, __ccgo_ts+22020) == 0 {
-			whence = int32(m_SEEK_CUR)
+			whence = int32(1)
 		} else {
 			if libc.Xstrcmp(tls, zWhence, __ccgo_ts+22029) == 0 {
-				whence = int32(m_SEEK_END)
+				whence = int32(2)
 			} else {
 				libtcl8_6.XTcl_AppendResult(tls, interp, libc.VaList(bp+16, __ccgo_ts+22038, libc.UintptrFromInt32(0)))
 				return int32(m_TCL_ERROR)
@@ -58509,7 +58505,6 @@ const m_SQLITE_INNOCUOUS1 = 2097152
 const m_SQLITE_OPEN_CREATE13 = 0x00000004
 const m_SQLITE_OPEN_MAIN_DB13 = 0x00000100
 const m_WS = 129
-const m_sqlite3_base_init = "sqlite3_base85_init"
 
 func _init_api_ptr(tls *libc.TLS, pApi uintptr) {
 	_ = pApi
@@ -62536,7 +62531,7 @@ func _csvtabFilter(tls *libc.TLS, pVtabCursor uintptr, idxNum int32, idxStr uint
 	if (*TCsvCursor)(unsafe.Pointer(pCur)).Frdr.Fin == uintptr(0) {
 		(*TCsvCursor)(unsafe.Pointer(pCur)).Frdr.FiIn = uint64((*TCsvTable)(unsafe.Pointer(pTab)).FiStart)
 	} else {
-		libc.Xfseek(tls, (*TCsvCursor)(unsafe.Pointer(pCur)).Frdr.Fin, (*TCsvTable)(unsafe.Pointer(pTab)).FiStart, m_SEEK_SET)
+		libc.Xfseek(tls, (*TCsvCursor)(unsafe.Pointer(pCur)).Frdr.Fin, (*TCsvTable)(unsafe.Pointer(pTab)).FiStart, 0)
 		(*TCsvCursor)(unsafe.Pointer(pCur)).Frdr.FiIn = uint64(0)
 		(*TCsvCursor)(unsafe.Pointer(pCur)).Frdr.FnIn = uint64(0)
 	}
@@ -64255,7 +64250,7 @@ func _readFileContents(tls *libc.TLS, ctx uintptr, zName uintptr) {
 		/* File does not exist or is unreadable. Leave the result set to NULL. */
 		return
 	}
-	libc.Xfseek(tls, in, 0, int32(m_SEEK_END))
+	libc.Xfseek(tls, in, 0, int32(2))
 	nIn = libc.Xftell(tls, in)
 	libc.Xrewind(tls, in)
 	db = x_sqlite3_context_db_handle(tls, ctx)
@@ -81842,7 +81837,7 @@ func _zipfileCursorErr(tls *libc.TLS, pCsr uintptr, zFmt uintptr, va uintptr) {
 func _zipfileReadData(tls *libc.TLS, pFile uintptr, aRead uintptr, nRead int32, iOff Ti64, pzErrmsg uintptr) (r int32) {
 	var n Tsize_t
 	_ = n
-	libc.Xfseek(tls, pFile, iOff, m_SEEK_SET)
+	libc.Xfseek(tls, pFile, iOff, 0)
 	n = libc.Xfread(tls, aRead, uint64(1), uint64(nRead), pFile)
 	if int32(n) != nRead {
 		*(*uintptr)(unsafe.Pointer(pzErrmsg)) = x_sqlite3_mprintf(tls, __ccgo_ts+41649, 0)
@@ -81856,7 +81851,7 @@ func _zipfileAppendData(tls *libc.TLS, pTab uintptr, aWrite uintptr, nWrite int3
 	_ = n
 	if nWrite > 0 {
 		n = uint64(nWrite)
-		libc.Xfseek(tls, (*TZipfileTab)(unsafe.Pointer(pTab)).FpWriteFd, (*TZipfileTab)(unsafe.Pointer(pTab)).FszCurrent, m_SEEK_SET)
+		libc.Xfseek(tls, (*TZipfileTab)(unsafe.Pointer(pTab)).FpWriteFd, (*TZipfileTab)(unsafe.Pointer(pTab)).FszCurrent, 0)
 		n = libc.Xfwrite(tls, aWrite, uint64(1), uint64(nWrite), (*TZipfileTab)(unsafe.Pointer(pTab)).FpWriteFd)
 		if int32(n) != nWrite {
 			(*TZipfileTab)(unsafe.Pointer(pTab)).Fbase.FzErrMsg = x_sqlite3_mprintf(tls, __ccgo_ts+41666, 0)
@@ -82493,7 +82488,7 @@ func _zipfileReadEOCD(tls *libc.TLS, pTab uintptr, aBlob uintptr, nBlob int32, p
 	rc = m_SQLITE_OK
 	libc.Xmemset(tls, pEOCD, 0, uint64(16))
 	if aBlob == uintptr(0) { /* Total size of file in bytes */
-		libc.Xfseek(tls, pFile, 0, int32(m_SEEK_END))
+		libc.Xfseek(tls, pFile, 0, int32(2))
 		szFile = libc.Xftell(tls, pFile)
 		if szFile == 0 {
 			return m_SQLITE_OK
@@ -82934,7 +82929,7 @@ func _zipfileBegin(tls *libc.TLS, pVtab uintptr) (r int32) {
 		(*TZipfileTab)(unsafe.Pointer(pTab)).Fbase.FzErrMsg = x_sqlite3_mprintf(tls, __ccgo_ts+42037, libc.VaList(bp+8, (*TZipfileTab)(unsafe.Pointer(pTab)).FzFile))
 		rc = int32(m_SQLITE_ERROR)
 	} else {
-		libc.Xfseek(tls, (*TZipfileTab)(unsafe.Pointer(pTab)).FpWriteFd, 0, int32(m_SEEK_END))
+		libc.Xfseek(tls, (*TZipfileTab)(unsafe.Pointer(pTab)).FpWriteFd, 0, int32(2))
 		v1 = libc.Xftell(tls, (*TZipfileTab)(unsafe.Pointer(pTab)).FpWriteFd)
 		(*TZipfileTab)(unsafe.Pointer(pTab)).FszOrig = v1
 		(*TZipfileTab)(unsafe.Pointer(pTab)).FszCurrent = v1
@@ -84320,7 +84315,6 @@ const m_TCLSH = 1
 const m_TCLSH_MAIN = "main"
 const m_TCL_EVAL_DIRECT2 = 262144
 const m_TCL_EVAL_GLOBAL14 = 131072
-const m_TCL_STORAGE_CLASS1 = "DLLEXPORT"
 const m_TRAP_BRANCH = 3
 const m_TRAP_BRKPT = 1
 const m_TRAP_HWBKPT = 4
@@ -84777,12 +84771,12 @@ func _incrblobSeek(tls *libc.TLS, instanceData TClientData, offset int64, seekMo
 	_, _ = p, p1
 	p = instanceData
 	switch seekMode {
-	case m_SEEK_SET:
+	case 0:
 		(*TIncrblobChannel)(unsafe.Pointer(p)).FiSeek = int32(offset)
-	case int32(m_SEEK_CUR):
+	case int32(1):
 		p1 = p + 16
 		*(*int32)(unsafe.Pointer(p1)) = int32(int64(*(*int32)(unsafe.Pointer(p1))) + offset)
-	case int32(m_SEEK_END):
+	case int32(2):
 		(*TIncrblobChannel)(unsafe.Pointer(p)).FiSeek = int32(int64(x_sqlite3_blob_bytes(tls, (*TIncrblobChannel)(unsafe.Pointer(p)).FpBlob)) + offset)
 	default:
 	}
@@ -89285,7 +89279,6 @@ const m_LOCATE_VIEW1 = 1
 const m_MAP_SHARED1 = 1
 const m_MATH_ERREXCEPT = 2
 const m_MATH_ERRNO = 1
-const m_MAXFLOAT = 3.40282346638528859812e+38
 const m_MAX_PATHNAME = 512
 const m_MAX_SECTOR_SIZE = 65536
 const m_MEMJOURNAL_DFLT_FILECHUNKSIZE = 1024
@@ -102670,7 +102663,7 @@ func _unixCheckReservedLock(tls *libc.TLS, id uintptr, pResOut uintptr) (r int32
 	/* Otherwise see if some other process holds it.
 	 */
 	if !(reserved != 0) && !((*TunixInodeInfo)(unsafe.Pointer((*TunixFile)(unsafe.Pointer(pFile)).FpInode)).FbProcessLock != 0) {
-		(*(*Tflock)(unsafe.Pointer(bp))).Fl_whence = m_SEEK_SET
+		(*(*Tflock)(unsafe.Pointer(bp))).Fl_whence = 0
 		(*(*Tflock)(unsafe.Pointer(bp))).Fl_start = int64(x_sqlite3PendingByte + libc.Int32FromInt32(1))
 		(*(*Tflock)(unsafe.Pointer(bp))).Fl_len = int64(1)
 		(*(*Tflock)(unsafe.Pointer(bp))).Fl_type = int16(m_F_WRLCK)
@@ -102736,7 +102729,7 @@ func _unixFileLock(tls *libc.TLS, pFile uintptr, pLock uintptr) (r int32) {
 	pInode = (*TunixFile)(unsafe.Pointer(pFile)).FpInode
 	if int32((*TunixFile)(unsafe.Pointer(pFile)).FctrlFlags)&(libc.Int32FromInt32(m_UNIXFILE_EXCL)|libc.Int32FromInt32(m_UNIXFILE_RDONLY)) == int32(m_UNIXFILE_EXCL) {
 		if int32((*TunixInodeInfo)(unsafe.Pointer(pInode)).FbProcessLock) == 0 {
-			(*(*Tflock)(unsafe.Pointer(bp))).Fl_whence = m_SEEK_SET
+			(*(*Tflock)(unsafe.Pointer(bp))).Fl_whence = 0
 			(*(*Tflock)(unsafe.Pointer(bp))).Fl_start = int64(x_sqlite3PendingByte + libc.Int32FromInt32(2))
 			(*(*Tflock)(unsafe.Pointer(bp))).Fl_len = int64(m_SHARED_SIZE)
 			(*(*Tflock)(unsafe.Pointer(bp))).Fl_type = int16(m_F_WRLCK)
@@ -102875,7 +102868,7 @@ func _unixLock(tls *libc.TLS, id uintptr, eFileLock int32) (r int32) {
 	 ** be released.
 	 */
 	(*(*Tflock)(unsafe.Pointer(bp))).Fl_len = int64(1)
-	(*(*Tflock)(unsafe.Pointer(bp))).Fl_whence = m_SEEK_SET
+	(*(*Tflock)(unsafe.Pointer(bp))).Fl_whence = 0
 	if eFileLock == int32(m_SHARED_LOCK) || eFileLock == int32(m_EXCLUSIVE_LOCK) && int32((*TunixFile)(unsafe.Pointer(pFile)).FeFileLock) == int32(m_RESERVED_LOCK) {
 		if eFileLock == int32(m_SHARED_LOCK) {
 			v1 = m_F_RDLCK
@@ -103036,7 +103029,7 @@ func _posixUnlock(tls *libc.TLS, id uintptr, eFileLock int32, handleNFSUnlock in
 		if eFileLock == int32(m_SHARED_LOCK) {
 			_ = handleNFSUnlock
 			(*(*Tflock)(unsafe.Pointer(bp))).Fl_type = m_F_RDLCK
-			(*(*Tflock)(unsafe.Pointer(bp))).Fl_whence = m_SEEK_SET
+			(*(*Tflock)(unsafe.Pointer(bp))).Fl_whence = 0
 			(*(*Tflock)(unsafe.Pointer(bp))).Fl_start = int64(x_sqlite3PendingByte + libc.Int32FromInt32(2))
 			(*(*Tflock)(unsafe.Pointer(bp))).Fl_len = int64(m_SHARED_SIZE)
 			if _unixFileLock(tls, pFile, bp) != 0 {
@@ -103052,7 +103045,7 @@ func _posixUnlock(tls *libc.TLS, id uintptr, eFileLock int32, handleNFSUnlock in
 			}
 		}
 		(*(*Tflock)(unsafe.Pointer(bp))).Fl_type = int16(m_F_UNLCK)
-		(*(*Tflock)(unsafe.Pointer(bp))).Fl_whence = m_SEEK_SET
+		(*(*Tflock)(unsafe.Pointer(bp))).Fl_whence = 0
 		(*(*Tflock)(unsafe.Pointer(bp))).Fl_start = int64(x_sqlite3PendingByte)
 		(*(*Tflock)(unsafe.Pointer(bp))).Fl_len = int64(2)
 		if _unixFileLock(tls, pFile, bp) == 0 {
@@ -103071,7 +103064,7 @@ func _posixUnlock(tls *libc.TLS, id uintptr, eFileLock int32, handleNFSUnlock in
 		(*TunixInodeInfo)(unsafe.Pointer(pInode)).FnShared--
 		if (*TunixInodeInfo)(unsafe.Pointer(pInode)).FnShared == 0 {
 			(*(*Tflock)(unsafe.Pointer(bp))).Fl_type = int16(m_F_UNLCK)
-			(*(*Tflock)(unsafe.Pointer(bp))).Fl_whence = m_SEEK_SET
+			(*(*Tflock)(unsafe.Pointer(bp))).Fl_whence = 0
 			v1 = libc.Int64FromInt64(0)
 			(*(*Tflock)(unsafe.Pointer(bp))).Fl_len = v1
 			(*(*Tflock)(unsafe.Pointer(bp))).Fl_start = v1
@@ -104355,7 +104348,7 @@ func _unixFcntlExternalReader(tls *libc.TLS, pFile uintptr, piOut uintptr) (r in
 		pShmNode = (*TunixShm)(unsafe.Pointer((*TunixFile)(unsafe.Pointer(pFile)).FpShm)).FpShmNode
 		libc.Xmemset(tls, bp, 0, uint64(32))
 		(*(*Tflock)(unsafe.Pointer(bp))).Fl_type = int16(m_F_WRLCK)
-		(*(*Tflock)(unsafe.Pointer(bp))).Fl_whence = m_SEEK_SET
+		(*(*Tflock)(unsafe.Pointer(bp))).Fl_whence = 0
 		(*(*Tflock)(unsafe.Pointer(bp))).Fl_start = int64((libc.Int32FromInt32(22)+libc.Int32FromInt32(m_SQLITE_SHM_NLOCK))*libc.Int32FromInt32(4) + libc.Int32FromInt32(3))
 		(*(*Tflock)(unsafe.Pointer(bp))).Fl_len = int64(libc.Int32FromInt32(m_SQLITE_SHM_NLOCK) - libc.Int32FromInt32(3))
 		x_sqlite3_mutex_enter(tls, (*TunixShmNode)(unsafe.Pointer(pShmNode)).FpShmMutex)
@@ -104396,7 +104389,7 @@ func _unixShmSystemLock(tls *libc.TLS, pFile uintptr, lockType int32, ofst int32
 	if (*TunixShmNode)(unsafe.Pointer(pShmNode)).FhShm >= 0 {
 		/* Initialize the locking parameters */
 		(*(*Tflock)(unsafe.Pointer(bp))).Fl_type = int16(lockType)
-		(*(*Tflock)(unsafe.Pointer(bp))).Fl_whence = m_SEEK_SET
+		(*(*Tflock)(unsafe.Pointer(bp))).Fl_whence = 0
 		(*(*Tflock)(unsafe.Pointer(bp))).Fl_start = int64(ofst)
 		(*(*Tflock)(unsafe.Pointer(bp))).Fl_len = int64(n)
 		res = (*(*func(*libc.TLS, int32, int32, uintptr) int32)(unsafe.Pointer(&struct{ uintptr }{_aSyscall[int32(7)].FpCurrent})))(tls, (*TunixShmNode)(unsafe.Pointer(pShmNode)).FhShm, int32(m_F_SETLK), libc.VaList(bp+40, bp))
@@ -104508,7 +104501,7 @@ func _unixLockSharedMemory(tls *libc.TLS, pDbFd uintptr, pShmNode uintptr) (r in
 	 ** process might open and use the *-shm file without truncating it.
 	 ** And if the *-shm file has been corrupted by a power failure or
 	 ** system crash, the database itself may also become corrupt.  */
-	(*(*Tflock)(unsafe.Pointer(bp))).Fl_whence = m_SEEK_SET
+	(*(*Tflock)(unsafe.Pointer(bp))).Fl_whence = 0
 	(*(*Tflock)(unsafe.Pointer(bp))).Fl_start = int64((libc.Int32FromInt32(22)+libc.Int32FromInt32(m_SQLITE_SHM_NLOCK))*libc.Int32FromInt32(4) + libc.Int32FromInt32(m_SQLITE_SHM_NLOCK))
 	(*(*Tflock)(unsafe.Pointer(bp))).Fl_len = int64(1)
 	(*(*Tflock)(unsafe.Pointer(bp))).Fl_type = int16(m_F_WRLCK)
