@@ -671,9 +671,6 @@ const CF_TEXT = 1
 const CF_TIFF = 6
 const CF_UNICODETEXT = 13
 const CF_WAVE = 12
-const CHAR_BIT = "__CHAR_BIT__"
-const CHAR_MAX = "SCHAR_MAX"
-const CHAR_MIN = "SCHAR_MIN"
 const CHECKJPEGFORMAT = 4119
 const CHECKPNGFORMAT = 4120
 const CHILDID_SELF = 0
@@ -3466,7 +3463,6 @@ const INPUTLANGCHANGE_SYSCHARSET = 0x0001
 const INPUT_HARDWARE = 2
 const INPUT_KEYBOARD = 1
 const INPUT_MOUSE = 0
-const INT_MAX = "__INT_MAX__"
 const INVALID_OS_COUNT = 0xffff
 const IO_COMPLETION_MODIFY_STATE = 0x0002
 const IO_REPARSE_TAG_RESERVED_ONE = 1
@@ -3892,7 +3888,6 @@ const LLKHF_INJECTED = 0x00000010
 const LLKHF_LOWER_IL_INJECTED = 0x00000002
 const LLMHF_INJECTED = 0x00000001
 const LLMHF_LOWER_IL_INJECTED = 0x00000002
-const LLONG_MAX = "__LONG_LONG_MAX__"
 const LMEM_DISCARDABLE = 0xf00
 const LMEM_DISCARDED = 0x4000
 const LMEM_FIXED = 0x0
@@ -4108,8 +4103,6 @@ const LOGON_WITH_PROFILE = 0x00000001
 const LOGON_ZERO_PASSWORD_BUFFER = 0x80000000
 const LOGPIXELSX = 88
 const LOGPIXELSY = 90
-const LONG_LONG_MAX = "__LONG_LONG_MAX__"
-const LONG_MAX = "__LONG_MAX__"
 const LOW_SURROGATE_END = 0xdfff
 const LOW_SURROGATE_START = 0xdc00
 const LPD_DOUBLEBUFFER = 0x00000001
@@ -4433,7 +4426,6 @@ const MFT_OWNERDRAW = "MF_OWNERDRAW"
 const MFT_RIGHTJUSTIFY = "MF_RIGHTJUSTIFY"
 const MFT_SEPARATOR = "MF_SEPARATOR"
 const MFT_STRING = "MF_STRING"
-const MICROSOFT_WINBASE_H_DEFINE_INTERLOCKED_CPLUSPLUS_OVERLOADS = 0
 const MICROSOFT_WINDOWS_WINBASE_H_DEFINE_INTERLOCKED_CPLUSPLUS_OVERLOADS = 1
 const MIIM_BITMAP = 0x00000080
 const MIIM_CHECKMARKS = 0x00000008
@@ -5925,7 +5917,6 @@ const SCALINGFACTORX = 114
 const SCALINGFACTORY = 115
 const SCARD_S_SUCCESS = "NO_ERROR"
 const SCF_ISSECURE = 0x00000001
-const SCHAR_MAX = "__SCHAR_MAX__"
 const SCROLLLOCK_ON = 0x40
 const SCRUB_DATA_INPUT_FLAG_RESUME = 0x00000001
 const SCRUB_DATA_INPUT_FLAG_SKIP_IN_SYNC = 0x00000002
@@ -6274,7 +6265,6 @@ const SHOW_FULLSCREEN = 3
 const SHOW_ICONWINDOW = 2
 const SHOW_OPENNOACTIVATE = 4
 const SHOW_OPENWINDOW = 1
-const SHRT_MAX = "__SHRT_MAX__"
 const SHTDN_REASON_FLAG_CLEAN_UI = 0x04000000
 const SHTDN_REASON_FLAG_COMMENT_REQUIRED = 0x01000000
 const SHTDN_REASON_FLAG_DIRTY_PROBLEM_ID_REQUIRED = 0x02000000
@@ -7898,8 +7888,6 @@ const ULW_ALPHA = 0x00000002
 const ULW_COLORKEY = 0x00000001
 const ULW_EX_NORESIZE = 0x00000008
 const ULW_OPAQUE = 0x00000004
-const UNALIGNED = "__unaligned"
-const UNALIGNED64 = "__unaligned"
 const UNICODE_NOCHAR = 0xFFFF
 const UNICODE_STRING_MAX_CHARS = 32767
 const UNIVERSAL_NAME_INFO_LEVEL = 0x00000001
@@ -8899,13 +8887,6 @@ const _CRT_INTERNAL_PRINTF_STANDARD_SNPRINTF_BEHAVIOR = "0x0002U"
 const _CRT_INTERNAL_SCANF_LEGACY_MSVCRT_COMPATIBILITY = "0x0004U"
 const _CRT_INTERNAL_SCANF_LEGACY_WIDE_SPECIFIERS = "0x0002U"
 const _CRT_INTERNAL_SCANF_SECURECRT = "0x0001U"
-const _CRT_PACKING = 8
-const _CRT_SECURE_CPP_OVERLOAD_SECURE_NAMES = 0
-const _CRT_SECURE_CPP_OVERLOAD_SECURE_NAMES_MEMORY = 0
-const _CRT_SECURE_CPP_OVERLOAD_STANDARD_NAMES = 0
-const _CRT_SECURE_CPP_OVERLOAD_STANDARD_NAMES_COUNT = 0
-const _CRT_SECURE_CPP_OVERLOAD_STANDARD_NAMES_MEMORY = 0
-const _CRT_glob = "_dowildcard"
 const _Check_return_ = "__checkReturn"
 const _DIGIT = 0x4
 const _FREEENTRY = 0
@@ -9106,7 +9087,6 @@ const __CCGO__ = 1
 const __CHAR_BIT__ = 8
 const __CLRCALL_OR_CDECL = "__cdecl"
 const __CRTDECL = "__cdecl"
-const __CRT__NO_INLINE = 1
 const __DBL_DECIMAL_DIG__ = 17
 const __DBL_DIG__ = 15
 const __DBL_HAS_DENORM__ = 1
@@ -9320,7 +9300,6 @@ const __MINGW64_VERSION_RC = 0
 const __MINGW64_VERSION_STATE = "alpha"
 const __MINGW64__ = 1
 const __MINGW_DEBUGBREAK_IMPL = 1
-const __MINGW_EXTENSION = "__extension__"
 const __MINGW_FORTIFY_LEVEL = 0
 const __MINGW_FORTIFY_VA_ARG = 0
 const __MINGW_HAVE_ANSI_C99_PRINTF = 1
@@ -9328,9 +9307,7 @@ const __MINGW_HAVE_ANSI_C99_SCANF = 1
 const __MINGW_HAVE_WIDE_C99_PRINTF = 1
 const __MINGW_HAVE_WIDE_C99_SCANF = 1
 const __MINGW_MSVC2005_DEPREC_STR = "This POSIX function is deprecated beginning in Visual C++ 2005, use _CRT_NONSTDC_NO_DEPRECATE to disable deprecation"
-const __MINGW_PRINTF_FORMAT = "gnu_printf"
 const __MINGW_PROCNAMEEXT_AW = "A"
-const __MINGW_SCANF_FORMAT = "gnu_scanf"
 const __MINGW_SEC_WARN_STR = "This function or variable may be unsafe, use _CRT_SECURE_NO_WARNINGS to disable deprecation"
 const __MINGW_USE_UNDERSCORE_PREFIX = 0
 const __MSVCRT_VERSION__ = 0x700
@@ -9393,7 +9370,6 @@ const __UINT_LEAST16_MAX__ = 0xffff
 const __UINT_LEAST32_MAX__ = 0xffffffff
 const __UINT_LEAST64_MAX__ = "0xffffffffffffffffU"
 const __UINT_LEAST8_MAX__ = 0xff
-const __USE_CRTIMP = 1
 const __USE_MINGW_ANSI_STDIO = 1
 const __USE_MINGW_STRTOX = 1
 const __VERSION__ = "12-win32"
@@ -9422,7 +9398,6 @@ const __int8 = "char"
 const __k8 = 1
 const __k8__ = 1
 const __mingw_bos_ovr = "__mingw_ovr"
-const __mingw_static_ovr = "__mingw_ovr"
 const __pic__ = 1
 const __x86_64 = 1
 const __x86_64__ = 1
@@ -9443,10 +9418,8 @@ const isascii1 = "__isascii"
 const iscsym = "__iscsym"
 const iscsymf = "__iscsymf"
 const onexit_t = "_onexit_t"
-const pascal = "__stdcall"
 const pclose1 = "_pclose"
 const popen1 = "_popen"
-const static_assert = "_Static_assert"
 const strcasecmp1 = "_stricmp"
 const strncasecmp = "_strnicmp"
 const sys_errlist = "_sys_errlist"
@@ -26777,6 +26750,7 @@ func printWithPrefix(tls *libc.TLS, pOut uintptr, zPrefix uintptr, zMsg uintptr)
 			}
 			goto _1
 		_1:
+			;
 			i++
 		}
 		v2 = __ccgo_ts
@@ -26787,6 +26761,7 @@ func printWithPrefix(tls *libc.TLS, pOut uintptr, zPrefix uintptr, zMsg uintptr)
 		_ = __retval
 		goto _3
 	_3:
+		;
 		zMsg += uintptr(i)
 		for int32(*(*int8)(unsafe.Pointer(zMsg))) == int32('\n') || int32(*(*int8)(unsafe.Pointer(zMsg))) == int32('\r') {
 			zMsg++
@@ -27324,6 +27299,7 @@ func stringAppendTerm(tls *libc.TLS, p uintptr, z uintptr) {
 		}
 		goto _1
 	_1:
+		;
 		i++
 	}
 	if i > 0 && int32(*(*int8)(unsafe.Pointer(z + uintptr(i)))) == 0 {
@@ -27339,6 +27315,7 @@ func stringAppendTerm(tls *libc.TLS, p uintptr, z uintptr) {
 			}
 			goto _2
 		_2:
+			;
 			i++
 		}
 		if *(*int8)(unsafe.Pointer(z + uintptr(i))) != 0 {
@@ -27372,6 +27349,7 @@ func evalCallback(tls *libc.TLS, pCData uintptr, argc int32, argv uintptr, azCol
 		stringAppendTerm(tls, p, *(*uintptr)(unsafe.Pointer(argv + uintptr(i)*8)))
 		goto _1
 	_1:
+		;
 		i++
 	}
 	return 0
@@ -27658,6 +27636,7 @@ func tokenLength(tls *libc.TLS, z uintptr, pnLine uintptr) (r int32) {
 				}
 				goto _3
 			_3:
+				;
 				n++
 			}
 			if *(*int8)(unsafe.Pointer(z + uintptr(n))) != 0 {
@@ -27683,6 +27662,7 @@ func tokenLength(tls *libc.TLS, z uintptr, pnLine uintptr) (r int32) {
 					}
 					goto _4
 				_4:
+					;
 					n++
 				}
 			} else {
@@ -27695,6 +27675,7 @@ func tokenLength(tls *libc.TLS, z uintptr, pnLine uintptr) (r int32) {
 					}
 					goto _5
 				_5:
+					;
 					n++
 				}
 			}
@@ -27723,6 +27704,7 @@ func extractToken(tls *libc.TLS, zIn uintptr, nIn int32, zOut uintptr, nOut int3
 		*(*int8)(unsafe.Pointer(zOut + uintptr(i))) = *(*int8)(unsafe.Pointer(zIn + uintptr(i)))
 		goto _1
 	_1:
+		;
 		i++
 	}
 	*(*int8)(unsafe.Pointer(zOut + uintptr(i))) = 0
@@ -27830,6 +27812,7 @@ func filenameTail(tls *libc.TLS, z uintptr) (r uintptr) {
 		}
 		goto _1
 	_1:
+		;
 		i++
 	}
 	return z + uintptr(j)
@@ -27855,6 +27838,7 @@ func booleanValue(tls *libc.TLS, zArg uintptr) (r int32) {
 		}
 		goto _1
 	_1:
+		;
 		i++
 	}
 	if i > 0 && int32(*(*int8)(unsafe.Pointer(zArg + uintptr(i)))) == 0 {
@@ -27947,6 +27931,7 @@ func runScript(tls *libc.TLS, iClient int32, taskId int32, zScript uintptr, zFil
 			n += extractToken(tls, zScript+uintptr(ii)+uintptr(2)+uintptr(n), len1-int32(2)-n, bp+1054+uintptr(nArg)*100, int32(100))
 			goto _2
 		_2:
+			;
 			nArg++
 		}
 		j = nArg
@@ -27959,6 +27944,7 @@ func runScript(tls *libc.TLS, iClient int32, taskId int32, zScript uintptr, zFil
 			*(*int8)(unsafe.Pointer(bp + 1054 + uintptr(v4)*100)) = 0
 			goto _3
 		_3:
+			;
 			j++
 		}
 		/*
@@ -28026,6 +28012,7 @@ func runScript(tls *libc.TLS, iClient int32, taskId int32, zScript uintptr, zFil
 									}
 									goto _5
 								_5:
+									;
 									jj++
 								}
 								zAns += uintptr(jj)
@@ -28052,6 +28039,7 @@ func runScript(tls *libc.TLS, iClient int32, taskId int32, zScript uintptr, zFil
 										}
 										goto _6
 									_6:
+										;
 										jj1++
 									}
 									zAns1 += uintptr(jj1)
@@ -28087,6 +28075,7 @@ func runScript(tls *libc.TLS, iClient int32, taskId int32, zScript uintptr, zFil
 													}
 													goto _7
 												_7:
+													;
 													k--
 												}
 												if k > 0 {
@@ -28119,6 +28108,7 @@ func runScript(tls *libc.TLS, iClient int32, taskId int32, zScript uintptr, zFil
 													}
 													goto _9
 												_9:
+													;
 													jj2++
 												}
 												logMessage(tls, __ccgo_ts+1206, libc.VaList(bp+1264, len1-jj2, zScript+uintptr(ii)+uintptr(jj2)))
@@ -28136,6 +28126,7 @@ func runScript(tls *libc.TLS, iClient int32, taskId int32, zScript uintptr, zFil
 														}
 														goto _10
 													_10:
+														;
 														jj3++
 													}
 													pStmt = prepareSql(tls, __ccgo_ts+1418, libc.VaList(bp+1264, len1-jj3, zScript+uintptr(ii)+uintptr(jj3)))
@@ -28331,6 +28322,7 @@ func findOption(tls *libc.TLS, azArg uintptr, pnArg uintptr, zOption uintptr, ha
 		}
 		goto _1
 	_1:
+		;
 		i++
 	}
 	return zReturn
@@ -28357,6 +28349,7 @@ func usage(tls *libc.TLS, argv0 uintptr) {
 		}
 		goto _1
 	_1:
+		;
 		i++
 	}
 	v2 = __ccgo_ts + 1682
@@ -28367,6 +28360,7 @@ func usage(tls *libc.TLS, argv0 uintptr) {
 	_ = __retval
 	goto _3
 _3:
+	;
 	v4 = __ccgo_ts + 1721
 	__local_argv = bp
 	__retval = libc.X__mingw_vfprintf(tls, libc.X__acrt_iob_func(tls, uint32(2)), v4, __local_argv)
@@ -28374,6 +28368,7 @@ _3:
 	_ = __retval
 	goto _5
 _5:
+	;
 	libc.Xexit(tls, int32(1))
 }
 
@@ -28395,6 +28390,7 @@ func unrecognizedArguments(tls *libc.TLS, argv0 uintptr, nArg int32, azArg uintp
 	_ = __retval
 	goto _2
 _2:
+	;
 	i = 0
 	for {
 		if !(i < nArg) {
@@ -28408,8 +28404,10 @@ _2:
 		_ = __retval
 		goto _5
 	_5:
+		;
 		goto _3
 	_3:
+		;
 		i++
 	}
 	v6 = __ccgo_ts + 2325
@@ -28419,6 +28417,7 @@ _2:
 	_ = __retval
 	goto _7
 _7:
+	;
 	libc.Xexit(tls, int32(1))
 }
 
@@ -28455,6 +28454,7 @@ func main1(tls *libc.TLS, argc int32, argv uintptr) (r int32) {
 		_ = __retval
 		goto _2
 	_2:
+		;
 		libc.Xexit(tls, int32(1))
 	}
 	*(*int32)(unsafe.Pointer(bp + 288)) = argc - int32(2)
@@ -28512,6 +28512,7 @@ func main1(tls *libc.TLS, argc int32, argv uintptr) (r int32) {
 			_ = __retval1
 			goto _4
 		_4:
+			;
 			i = int32(1)
 			for {
 				if !(i < argc) {
@@ -28525,8 +28526,10 @@ func main1(tls *libc.TLS, argc int32, argv uintptr) (r int32) {
 				_ = __retval1
 				goto _7
 			_7:
+				;
 				goto _5
 			_5:
+				;
 				i++
 			}
 			v8 = __ccgo_ts + 2325
@@ -28536,6 +28539,7 @@ func main1(tls *libc.TLS, argc int32, argv uintptr) (r int32) {
 			_ = __retval1
 			goto _9
 		_9:
+			;
 			v10 = __ccgo_ts + 2621
 			__local_argv1 = bp
 			__retval1 = libc.X__mingw_vfprintf(tls, libc.X__acrt_iob_func(tls, uint32(1)), v10, __local_argv1)
@@ -28543,6 +28547,7 @@ func main1(tls *libc.TLS, argc int32, argv uintptr) (r int32) {
 			_ = __retval1
 			goto _11
 		_11:
+			;
 			i = 0
 			for {
 				v13 = libsqlite3.Xsqlite3_compileoption_get(tls, i)
@@ -28558,8 +28563,10 @@ func main1(tls *libc.TLS, argc int32, argv uintptr) (r int32) {
 				_ = __retval1
 				goto _15
 			_15:
+				;
 				goto _12
 			_12:
+				;
 				i++
 			}
 			libc.Xfflush(tls, libc.X__acrt_iob_func(tls, uint32(1)))
@@ -28587,6 +28594,7 @@ func main1(tls *libc.TLS, argc int32, argv uintptr) (r int32) {
 			}
 			goto _18
 		_18:
+			;
 			if v17 = rc != 0; v17 {
 				nTry++
 				v16 = nTry
@@ -28617,6 +28625,7 @@ func main1(tls *libc.TLS, argc int32, argv uintptr) (r int32) {
 			_ = __retval1
 			goto _23
 		_23:
+			;
 			zJMode = __ccgo_ts + 2890
 		}
 		runSql(tls, __ccgo_ts+2897, libc.VaList(bp+328, zJMode))
@@ -28682,6 +28691,7 @@ func main1(tls *libc.TLS, argc int32, argv uintptr) (r int32) {
 			}
 			goto _24
 		_24:
+			;
 			iRep++
 		}
 		libsqlite3.Xsqlite3_free(tls, *(*uintptr)(unsafe.Pointer(bp + 296)))
@@ -28729,6 +28739,7 @@ func main1(tls *libc.TLS, argc int32, argv uintptr) (r int32) {
 		_ = __retval1
 		goto _28
 	_28:
+		;
 		v29 = __ccgo_ts + 3662
 		libc.VaList(bp, *(*uintptr)(unsafe.Pointer(argv)))
 		__local_argv1 = bp
@@ -28737,6 +28748,7 @@ func main1(tls *libc.TLS, argc int32, argv uintptr) (r int32) {
 		_ = __retval1
 		goto _30
 	_30:
+		;
 		i = int32(1)
 		for {
 			if !(i < argc) {
@@ -28750,8 +28762,10 @@ func main1(tls *libc.TLS, argc int32, argv uintptr) (r int32) {
 			_ = __retval1
 			goto _33
 		_33:
+			;
 			goto _31
 		_31:
+			;
 			i++
 		}
 		v34 = __ccgo_ts + 2325

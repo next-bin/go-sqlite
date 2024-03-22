@@ -20,9 +20,6 @@ var (
 )
 
 const BUFSIZ = 512
-const CHAR_BIT = "__CHAR_BIT__"
-const CHAR_MAX = "SCHAR_MAX"
-const CHAR_MIN = "SCHAR_MIN"
 const E2BIG = 7
 const EACCES = 13
 const EADDRINUSE = 100
@@ -114,10 +111,6 @@ const FTS5_TOKENIZE_QUERY = 0x0001
 const FTS5_TOKEN_COLOCATED = 0x0001
 const FULLY_WITHIN = 2
 const F_OK = 0
-const INT_MAX = "__INT_MAX__"
-const LLONG_MAX = "__LONG_LONG_MAX__"
-const LONG_LONG_MAX = "__LONG_LONG_MAX__"
-const LONG_MAX = "__LONG_MAX__"
 const L_tmpnam_s = "L_tmpnam"
 const MB_LEN_MAX = 5
 const MINGW_HAS_DDK_H = 1
@@ -130,11 +123,9 @@ const PATH_MAX = 260
 const P_tmpdir = "_P_tmpdir"
 const RAND_MAX = 0x7fff
 const R_OK = 4
-const SCHAR_MAX = "__SCHAR_MAX__"
 const SEEK_CUR = 1
 const SEEK_END = 2
 const SEEK_SET = 0
-const SHRT_MAX = "__SHRT_MAX__"
 const SIZE_MAX = "_UI64_MAX"
 const SQLITE3_TEXT = 3
 const SQLITE_ABORT = 4
@@ -571,13 +562,6 @@ const _CRT_INTERNAL_PRINTF_STANDARD_SNPRINTF_BEHAVIOR = "0x0002U"
 const _CRT_INTERNAL_SCANF_LEGACY_MSVCRT_COMPATIBILITY = "0x0004U"
 const _CRT_INTERNAL_SCANF_LEGACY_WIDE_SPECIFIERS = "0x0002U"
 const _CRT_INTERNAL_SCANF_SECURECRT = "0x0001U"
-const _CRT_PACKING = 8
-const _CRT_SECURE_CPP_OVERLOAD_SECURE_NAMES = 0
-const _CRT_SECURE_CPP_OVERLOAD_SECURE_NAMES_MEMORY = 0
-const _CRT_SECURE_CPP_OVERLOAD_STANDARD_NAMES = 0
-const _CRT_SECURE_CPP_OVERLOAD_STANDARD_NAMES_COUNT = 0
-const _CRT_SECURE_CPP_OVERLOAD_STANDARD_NAMES_MEMORY = 0
-const _CRT_glob = "_dowildcard"
 const _DIGIT = 0x4
 const _FREEENTRY = 0
 const _HEAP_MAXREQ = 0xFFFFFFFFFFFFFFE0
@@ -657,7 +641,6 @@ const __C89_NAMELESS = "__MINGW_EXTENSION"
 const __CCGO__ = 1
 const __CHAR_BIT__ = 8
 const __CRTDECL = "__cdecl"
-const __CRT__NO_INLINE = 1
 const __DBL_DECIMAL_DIG__ = 17
 const __DBL_DIG__ = 15
 const __DBL_HAS_DENORM__ = 1
@@ -870,7 +853,6 @@ const __MINGW64_VERSION_RC = 0
 const __MINGW64_VERSION_STATE = "alpha"
 const __MINGW64__ = 1
 const __MINGW_DEBUGBREAK_IMPL = 1
-const __MINGW_EXTENSION = "__extension__"
 const __MINGW_FORTIFY_LEVEL = 0
 const __MINGW_FORTIFY_VA_ARG = 0
 const __MINGW_HAVE_ANSI_C99_PRINTF = 1
@@ -878,8 +860,6 @@ const __MINGW_HAVE_ANSI_C99_SCANF = 1
 const __MINGW_HAVE_WIDE_C99_PRINTF = 1
 const __MINGW_HAVE_WIDE_C99_SCANF = 1
 const __MINGW_MSVC2005_DEPREC_STR = "This POSIX function is deprecated beginning in Visual C++ 2005, use _CRT_NONSTDC_NO_DEPRECATE to disable deprecation"
-const __MINGW_PRINTF_FORMAT = "gnu_printf"
-const __MINGW_SCANF_FORMAT = "gnu_scanf"
 const __MINGW_SEC_WARN_STR = "This function or variable may be unsafe, use _CRT_SECURE_NO_WARNINGS to disable deprecation"
 const __MINGW_USE_UNDERSCORE_PREFIX = 0
 const __MSVCRT_VERSION__ = 0x700
@@ -940,7 +920,6 @@ const __UINT_LEAST16_MAX__ = 0xffff
 const __UINT_LEAST32_MAX__ = 0xffffffff
 const __UINT_LEAST64_MAX__ = "0xffffffffffffffffU"
 const __UINT_LEAST8_MAX__ = 0xff
-const __USE_CRTIMP = 1
 const __USE_MINGW_ANSI_STDIO = 1
 const __USE_MINGW_STRTOX = 1
 const __VERSION__ = "12-win32"
@@ -967,7 +946,6 @@ const __int8 = "char"
 const __k8 = 1
 const __k8__ = 1
 const __mingw_bos_ovr = "__mingw_ovr"
-const __mingw_static_ovr = "__mingw_ovr"
 const __pic__ = 1
 const __x86_64 = 1
 const __x86_64__ = 1
@@ -992,7 +970,6 @@ const iscsymf = "__iscsymf"
 const onexit_t = "_onexit_t"
 const pclose1 = "_pclose"
 const popen1 = "_popen"
-const static_assert = "_Static_assert"
 const strcasecmp1 = "_stricmp"
 const strncasecmp = "_strnicmp"
 const sys_errlist = "_sys_errlist"
@@ -1891,6 +1868,7 @@ func fatal_error(tls *libc.TLS, zMsg uintptr, va uintptr) {
 	_ = libc.X__mingw_vfprintf(tls, libc.X__acrt_iob_func(tls, uint32(2)), zMsg, ap)
 	goto _1
 _1:
+	;
 	_ = ap
 	libc.Xexit(tls, int32(1))
 }
@@ -1920,6 +1898,7 @@ func HashInit(tls *libc.TLS) {
 		*(*uint8)(unsafe.Pointer(uintptr(unsafe.Pointer(&g)) + 3152 + 3 + uintptr(k))) = uint8(uint8(k))
 		goto _1
 	_1:
+		;
 		k++
 	}
 }
@@ -1951,6 +1930,7 @@ func HashUpdate(tls *libc.TLS, aData uintptr, nData uint32) {
 		i++
 		goto _1
 	_1:
+		;
 		k++
 	}
 	g.hash.i = i
@@ -1983,6 +1963,7 @@ func HashFinal(tls *libc.TLS) {
 		*(*uint8)(unsafe.Pointer(uintptr(unsafe.Pointer(&g)) + 3152 + 259 + uintptr(k))) = *(*uint8)(unsafe.Pointer(uintptr(unsafe.Pointer(&g)) + 3152 + 3 + uintptr(t)))
 		goto _1
 	_1:
+		;
 		k++
 	}
 }
@@ -2060,6 +2041,7 @@ func integerValue(tls *libc.TLS, zArg uintptr) (r int32) {
 		}
 		goto _2
 	_2:
+		;
 		i++
 	}
 	if v > int64(0x7fffffff) {
@@ -2344,6 +2326,7 @@ func speedtest1_begin_test(tls *libc.TLS, iTestNum int32, zTestName uintptr, va 
 		_ = __retval1
 		goto _6
 	_6:
+		;
 		libc.Xfflush(tls, libc.X__acrt_iob_func(tls, uint32(1)))
 	}
 	libsqlite3.Xsqlite3_free(tls, zName)
@@ -2425,6 +2408,7 @@ func speedtest1_final(tls *libc.TLS) {
 		_ = __retval
 		goto _4
 	_4:
+		;
 		HashUpdate(tls, __ccgo_ts+457, uint32(1))
 		HashFinal(tls)
 		i = 0
@@ -2440,8 +2424,10 @@ func speedtest1_final(tls *libc.TLS) {
 			_ = __retval
 			goto _7
 		_7:
+			;
 			goto _5
 		_5:
+			;
 			i++
 		}
 		if g.hashFile != 0 && g.hashFile != libc.X__acrt_iob_func(tls, uint32(1)) {
@@ -2488,6 +2474,7 @@ func printSql(tls *libc.TLS, zSql uintptr) {
 	_ = __retval
 	goto _4
 _4:
+	;
 	if g.bExplain != 0 && (libsqlite3.Xsqlite3_strglob(tls, __ccgo_ts+480, zSql) == 0 || libsqlite3.Xsqlite3_strglob(tls, __ccgo_ts+489, zSql) == 0 || libsqlite3.Xsqlite3_strglob(tls, __ccgo_ts+496, zSql) == 0) {
 		v5 = __ccgo_ts + 473
 		libc.VaList(bp, n, zSql)
@@ -2588,6 +2575,7 @@ func speedtest1_once(tls *libc.TLS, zFormat uintptr, va uintptr) (r uintptr) {
 			_ = __retval
 			goto _2
 		_2:
+			;
 			libsqlite3.Xsqlite3_free(tls, z)
 		}
 		if libsqlite3.Xsqlite3_step(tls, *(*uintptr)(unsafe.Pointer(bp + 24))) == int32(SQLITE_ROW) {
@@ -2657,6 +2645,7 @@ func speedtest1_run(tls *libc.TLS) {
 		_ = __retval
 		goto _2
 	_2:
+		;
 		libsqlite3.Xsqlite3_free(tls, z)
 	}
 	for libsqlite3.Xsqlite3_step(tls, g.pStmt) == int32(SQLITE_ROW) {
@@ -2699,6 +2688,7 @@ func speedtest1_run(tls *libc.TLS) {
 							HashUpdate(tls, bp+26, uint32(2))
 							goto _4
 						_4:
+							;
 							iBlob++
 						}
 						g.nResByte += uint64(nBlob*int32(2) + int32(2))
@@ -2720,6 +2710,7 @@ func speedtest1_run(tls *libc.TLS) {
 			}
 			goto _3
 		_3:
+			;
 			i++
 		}
 	}
@@ -2784,6 +2775,7 @@ func est_square_root(tls *libc.TLS, x int32) (r int32) {
 		y0 = y1
 		goto _1
 	_1:
+		;
 		n++
 	}
 	return y0
@@ -2827,6 +2819,7 @@ func testset_main(tls *libc.TLS) {
 		speedtest1_run(tls)
 		goto _2
 	_2:
+		;
 		i++
 	}
 	speedtest1_exec(tls, __ccgo_ts+736, 0)
@@ -2849,6 +2842,7 @@ func testset_main(tls *libc.TLS) {
 		speedtest1_run(tls)
 		goto _3
 	_3:
+		;
 		i++
 	}
 	speedtest1_exec(tls, __ccgo_ts+736, 0)
@@ -2871,6 +2865,7 @@ func testset_main(tls *libc.TLS) {
 		speedtest1_run(tls)
 		goto _4
 	_4:
+		;
 		i++
 	}
 	speedtest1_exec(tls, __ccgo_ts+736, 0)
@@ -2893,6 +2888,7 @@ func testset_main(tls *libc.TLS) {
 		speedtest1_run(tls)
 		goto _5
 	_5:
+		;
 		i++
 	}
 	speedtest1_exec(tls, __ccgo_ts+736, 0)
@@ -2917,6 +2913,7 @@ func testset_main(tls *libc.TLS) {
 		speedtest1_run(tls)
 		goto _6
 	_6:
+		;
 		i++
 	}
 	speedtest1_exec(tls, __ccgo_ts+736, 0)
@@ -2941,6 +2938,7 @@ func testset_main(tls *libc.TLS) {
 		speedtest1_run(tls)
 		goto _7
 	_7:
+		;
 		i++
 	}
 	speedtest1_exec(tls, __ccgo_ts+736, 0)
@@ -2965,6 +2963,7 @@ func testset_main(tls *libc.TLS) {
 		speedtest1_run(tls)
 		goto _8
 	_8:
+		;
 		i++
 	}
 	speedtest1_exec(tls, __ccgo_ts+736, 0)
@@ -2996,6 +2995,7 @@ func testset_main(tls *libc.TLS) {
 		speedtest1_run(tls)
 		goto _9
 	_9:
+		;
 		i++
 	}
 	speedtest1_exec(tls, __ccgo_ts+736, 0)
@@ -3018,6 +3018,7 @@ func testset_main(tls *libc.TLS) {
 		speedtest1_run(tls)
 		goto _10
 	_10:
+		;
 		i++
 	}
 	speedtest1_exec(tls, __ccgo_ts+736, 0)
@@ -3039,6 +3040,7 @@ func testset_main(tls *libc.TLS) {
 		speedtest1_run(tls)
 		goto _11
 	_11:
+		;
 		i++
 	}
 	speedtest1_exec(tls, __ccgo_ts+736, 0)
@@ -3080,6 +3082,7 @@ func testset_main(tls *libc.TLS) {
 		speedtest1_run(tls)
 		goto _12
 	_12:
+		;
 		i++
 	}
 	speedtest1_exec(tls, __ccgo_ts+736, 0)
@@ -3098,6 +3101,7 @@ func testset_main(tls *libc.TLS) {
 		speedtest1_run(tls)
 		goto _13
 	_13:
+		;
 		i++
 	}
 	speedtest1_exec(tls, __ccgo_ts+736, 0)
@@ -3124,6 +3128,7 @@ func testset_main(tls *libc.TLS) {
 		speedtest1_run(tls)
 		goto _14
 	_14:
+		;
 		i++
 	}
 	speedtest1_exec(tls, __ccgo_ts+736, 0)
@@ -3142,6 +3147,7 @@ func testset_main(tls *libc.TLS) {
 		speedtest1_run(tls)
 		goto _15
 	_15:
+		;
 		i++
 	}
 	speedtest1_exec(tls, __ccgo_ts+736, 0)
@@ -3171,6 +3177,7 @@ func testset_main(tls *libc.TLS) {
 		speedtest1_run(tls)
 		goto _16
 	_16:
+		;
 		i++
 	}
 	speedtest1_exec(tls, __ccgo_ts+736, 0)
@@ -3201,6 +3208,7 @@ func testset_main(tls *libc.TLS) {
 		speedtest1_run(tls)
 		goto _18
 	_18:
+		;
 		i++
 	}
 	speedtest1_exec(tls, __ccgo_ts+736, 0)
@@ -3226,6 +3234,7 @@ func testset_main(tls *libc.TLS) {
 		speedtest1_run(tls)
 		goto _19
 	_19:
+		;
 		i++
 	}
 	if g.doBigTransactions != 0 {
@@ -3258,6 +3267,7 @@ func testset_main(tls *libc.TLS) {
 		speedtest1_run(tls)
 		goto _22
 	_22:
+		;
 		i++
 	}
 	speedtest1_exec(tls, __ccgo_ts+736, 0)
@@ -3279,6 +3289,7 @@ func testset_main(tls *libc.TLS) {
 		speedtest1_run(tls)
 		goto _23
 	_23:
+		;
 		i++
 	}
 	if g.doBigTransactions != 0 {
@@ -3398,6 +3409,7 @@ func testset_fp(tls *libc.TLS) {
 		speedtest1_run(tls)
 		goto _1
 	_1:
+		;
 		i++
 	}
 	speedtest1_exec(tls, __ccgo_ts+736, 0)
@@ -3417,6 +3429,7 @@ func testset_fp(tls *libc.TLS) {
 		speedtest1_run(tls)
 		goto _2
 	_2:
+		;
 		i++
 	}
 	speedtest1_end_test(tls)
@@ -3442,6 +3455,7 @@ func testset_fp(tls *libc.TLS) {
 		speedtest1_run(tls)
 		goto _3
 	_3:
+		;
 		i++
 	}
 	speedtest1_end_test(tls)
@@ -3501,11 +3515,13 @@ func testset_orm(tls *libc.TLS) {
 			}
 			goto _3
 		_3:
+			;
 			j++
 		}
 		speedtest1_run(tls)
 		goto _2
 	_2:
+		;
 		i++
 	}
 	speedtest1_exec(tls, __ccgo_ts+1703, 0)
@@ -3523,6 +3539,7 @@ func testset_orm(tls *libc.TLS) {
 		speedtest1_run(tls)
 		goto _4
 	_4:
+		;
 		i++
 	}
 	speedtest1_end_test(tls)
@@ -3561,10 +3578,12 @@ func testset_trigger(tls *libc.TLS) {
 			speedtest1_run(tls)
 			goto _2
 		_2:
+			;
 			ii++
 		}
 		goto _1
 	_1:
+		;
 		jj++
 	}
 	speedtest1_exec(tls, __ccgo_ts+17588, 0)
@@ -3592,10 +3611,12 @@ func testset_trigger(tls *libc.TLS) {
 			speedtest1_run(tls)
 			goto _4
 		_4:
+			;
 			ii += int32(3)
 		}
 		goto _3
 	_3:
+		;
 		jj++
 	}
 	speedtest1_end_test(tls)
@@ -3615,10 +3636,12 @@ func testset_trigger(tls *libc.TLS) {
 			speedtest1_run(tls)
 			goto _6
 		_6:
+			;
 			ii += int32(3)
 		}
 		goto _5
 	_5:
+		;
 		jj++
 	}
 	speedtest1_end_test(tls)
@@ -3638,10 +3661,12 @@ func testset_trigger(tls *libc.TLS) {
 			speedtest1_run(tls)
 			goto _8
 		_8:
+			;
 			ii += int32(3)
 		}
 		goto _7
 	_7:
+		;
 		jj++
 	}
 	speedtest1_end_test(tls)
@@ -3656,6 +3681,7 @@ func testset_trigger(tls *libc.TLS) {
 		speedtest1_run(tls)
 		goto _9
 	_9:
+		;
 		jj++
 	}
 	speedtest1_end_test(tls)
@@ -3671,6 +3697,7 @@ func testset_trigger(tls *libc.TLS) {
 		speedtest1_run(tls)
 		goto _10
 	_10:
+		;
 		jj++
 	}
 	speedtest1_exec(tls, __ccgo_ts+736, 0)
@@ -3693,6 +3720,7 @@ func testset_trigger(tls *libc.TLS) {
 		speedtest1_run(tls)
 		goto _11
 	_11:
+		;
 		jj++
 	}
 	speedtest1_end_test(tls)
@@ -3715,6 +3743,7 @@ func testset_trigger(tls *libc.TLS) {
 		speedtest1_run(tls)
 		goto _12
 	_12:
+		;
 		jj += int32(2)
 	}
 	speedtest1_end_test(tls)
@@ -3732,6 +3761,7 @@ func testset_trigger(tls *libc.TLS) {
 		speedtest1_run(tls)
 		goto _13
 	_13:
+		;
 		jj += int32(2)
 	}
 	speedtest1_end_test(tls)
@@ -3756,6 +3786,7 @@ func testset_trigger(tls *libc.TLS) {
 		speedtest1_run(tls)
 		goto _14
 	_14:
+		;
 		jj++
 	}
 	speedtest1_end_test(tls)
@@ -3773,6 +3804,7 @@ func testset_trigger(tls *libc.TLS) {
 		speedtest1_run(tls)
 		goto _15
 	_15:
+		;
 		jj += int32(2)
 	}
 	speedtest1_end_test(tls)
@@ -3787,6 +3819,7 @@ func testset_trigger(tls *libc.TLS) {
 		speedtest1_run(tls)
 		goto _16
 	_16:
+		;
 		jj += int32(2)
 	}
 	speedtest1_end_test(tls)
@@ -3824,8 +3857,10 @@ func testset_debug1(tls *libc.TLS) {
 		_ = __retval
 		goto _3
 	_3:
+		;
 		goto _1
 	_1:
+		;
 		i++
 	}
 }
@@ -3845,6 +3880,7 @@ func xCompileOptions(tls *libc.TLS, pCtx uintptr, nVal int32, azVal uintptr, azC
 	_ = __retval
 	goto _2
 _2:
+	;
 	return SQLITE_OK
 }
 
@@ -3897,6 +3933,7 @@ func main1(tls *libc.TLS, argc int32, argv uintptr) (r int32) {
 	_ = __retval
 	goto _2
 _2:
+	;
 	/* Process command-line arguments */
 	g.zWR = __ccgo_ts + 6
 	g.zNN = __ccgo_ts + 6
@@ -4176,6 +4213,7 @@ _2:
 																																																	_ = __retval
 																																																	goto _17
 																																																_17:
+																																																	;
 																																																	libc.Xexit(tls, 0)
 																																																} else {
 																																																	fatal_error(tls, __ccgo_ts+19736, libc.VaList(bp+504, *(*uintptr)(unsafe.Pointer(argv + uintptr(i)*8)), *(*uintptr)(unsafe.Pointer(argv))))
@@ -4234,6 +4272,7 @@ _2:
 		}
 		goto _3
 	_3:
+		;
 		i++
 	}
 	if nHeap > 0 {
@@ -4439,6 +4478,7 @@ _2:
 		_ = __retval
 		goto _24
 	_24:
+		;
 		libsqlite3.Xsqlite3_db_status(tls, g.db, int32(SQLITE_DBSTATUS_LOOKASIDE_HIT), bp+488, bp+492, 0)
 		v25 = __ccgo_ts + 20780
 		libc.VaList(bp, *(*int32)(unsafe.Pointer(bp + 492)))
@@ -4448,6 +4488,7 @@ _2:
 		_ = __retval
 		goto _26
 	_26:
+		;
 		libsqlite3.Xsqlite3_db_status(tls, g.db, int32(SQLITE_DBSTATUS_LOOKASIDE_MISS_SIZE), bp+488, bp+492, 0)
 		v27 = __ccgo_ts + 20816
 		libc.VaList(bp, *(*int32)(unsafe.Pointer(bp + 492)))
@@ -4457,6 +4498,7 @@ _2:
 		_ = __retval
 		goto _28
 	_28:
+		;
 		libsqlite3.Xsqlite3_db_status(tls, g.db, int32(SQLITE_DBSTATUS_LOOKASIDE_MISS_FULL), bp+488, bp+492, 0)
 		v29 = __ccgo_ts + 20852
 		libc.VaList(bp, *(*int32)(unsafe.Pointer(bp + 492)))
@@ -4466,6 +4508,7 @@ _2:
 		_ = __retval
 		goto _30
 	_30:
+		;
 		libsqlite3.Xsqlite3_db_status(tls, g.db, int32(SQLITE_DBSTATUS_CACHE_USED), bp+488, bp+492, 0)
 		v31 = __ccgo_ts + 20888
 		libc.VaList(bp, *(*int32)(unsafe.Pointer(bp + 488)))
@@ -4475,6 +4518,7 @@ _2:
 		_ = __retval
 		goto _32
 	_32:
+		;
 		libsqlite3.Xsqlite3_db_status(tls, g.db, int32(SQLITE_DBSTATUS_CACHE_HIT), bp+488, bp+492, int32(1))
 		v33 = __ccgo_ts + 20930
 		libc.VaList(bp, *(*int32)(unsafe.Pointer(bp + 488)))
@@ -4484,6 +4528,7 @@ _2:
 		_ = __retval
 		goto _34
 	_34:
+		;
 		libsqlite3.Xsqlite3_db_status(tls, g.db, int32(SQLITE_DBSTATUS_CACHE_MISS), bp+488, bp+492, int32(1))
 		v35 = __ccgo_ts + 20966
 		libc.VaList(bp, *(*int32)(unsafe.Pointer(bp + 488)))
@@ -4493,6 +4538,7 @@ _2:
 		_ = __retval
 		goto _36
 	_36:
+		;
 		libsqlite3.Xsqlite3_db_status(tls, g.db, int32(SQLITE_DBSTATUS_CACHE_WRITE), bp+488, bp+492, int32(1))
 		v37 = __ccgo_ts + 21002
 		libc.VaList(bp, *(*int32)(unsafe.Pointer(bp + 488)))
@@ -4502,6 +4548,7 @@ _2:
 		_ = __retval
 		goto _38
 	_38:
+		;
 		libsqlite3.Xsqlite3_db_status(tls, g.db, int32(SQLITE_DBSTATUS_SCHEMA_USED), bp+488, bp+492, 0)
 		v39 = __ccgo_ts + 21038
 		libc.VaList(bp, *(*int32)(unsafe.Pointer(bp + 488)))
@@ -4511,6 +4558,7 @@ _2:
 		_ = __retval
 		goto _40
 	_40:
+		;
 		libsqlite3.Xsqlite3_db_status(tls, g.db, int32(SQLITE_DBSTATUS_STMT_USED), bp+488, bp+492, 0)
 		v41 = __ccgo_ts + 21080
 		libc.VaList(bp, *(*int32)(unsafe.Pointer(bp + 488)))
@@ -4534,6 +4582,7 @@ _2:
 		_ = __retval
 		goto _44
 	_44:
+		;
 		libsqlite3.Xsqlite3_status(tls, int32(SQLITE_STATUS_MALLOC_COUNT), bp+488, bp+492, 0)
 		v45 = __ccgo_ts + 21167
 		libc.VaList(bp, *(*int32)(unsafe.Pointer(bp + 488)), *(*int32)(unsafe.Pointer(bp + 492)))
@@ -4543,6 +4592,7 @@ _2:
 		_ = __retval
 		goto _46
 	_46:
+		;
 		libsqlite3.Xsqlite3_status(tls, int32(SQLITE_STATUS_PAGECACHE_OVERFLOW), bp+488, bp+492, 0)
 		v47 = __ccgo_ts + 21212
 		libc.VaList(bp, *(*int32)(unsafe.Pointer(bp + 488)), *(*int32)(unsafe.Pointer(bp + 492)))
@@ -4552,6 +4602,7 @@ _2:
 		_ = __retval
 		goto _48
 	_48:
+		;
 		libsqlite3.Xsqlite3_status(tls, int32(SQLITE_STATUS_MALLOC_SIZE), bp+488, bp+492, 0)
 		v49 = __ccgo_ts + 21257
 		libc.VaList(bp, *(*int32)(unsafe.Pointer(bp + 492)))
@@ -4561,6 +4612,7 @@ _2:
 		_ = __retval
 		goto _50
 	_50:
+		;
 		libsqlite3.Xsqlite3_status(tls, int32(SQLITE_STATUS_PAGECACHE_SIZE), bp+488, bp+492, 0)
 		v51 = __ccgo_ts + 21299
 		libc.VaList(bp, *(*int32)(unsafe.Pointer(bp + 492)))

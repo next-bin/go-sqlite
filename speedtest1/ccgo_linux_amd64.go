@@ -53,11 +53,8 @@ const POSIX_CLOSE_RESTART = 0
 const P_tmpdir = "/tmp"
 const RAND_MAX = 0x7fffffff
 const R_OK = 4
-const SEEK_CUR = 1
 const SEEK_DATA = 3
-const SEEK_END = 2
 const SEEK_HOLE = 4
-const SEEK_SET = 0
 const SQLITE3_TEXT = 3
 const SQLITE_ABORT = 4
 const SQLITE_ACCESS_EXISTS = 0
@@ -1710,9 +1707,10 @@ func HashInit(tls *libc.TLS) {
 		if !(k < uint32(256)) {
 			break
 		}
-		*(*uint8)(unsafe.Pointer(uintptr(unsafe.Pointer(&g)) + 3152 + 3 + uintptr(k))) = uint8(uint8(k))
+		*(*uint8)(unsafe.Pointer(uintptr(unsafe.Pointer(&g)) + 3152 + 3 + uintptr(k))) = uint8(k)
 		goto _1
 	_1:
+		;
 		k++
 	}
 }
@@ -1730,7 +1728,7 @@ func HashUpdate(tls *libc.TLS, aData uintptr, nData uint32) {
 	i = g.hash.i
 	j = g.hash.j
 	if g.hashFile != 0 {
-		libc.Xfwrite(tls, aData, uint64(1), uint64(uint64(nData)), g.hashFile)
+		libc.Xfwrite(tls, aData, uint64(1), uint64(nData), g.hashFile)
 	}
 	k = uint32(0)
 	for {
@@ -1744,6 +1742,7 @@ func HashUpdate(tls *libc.TLS, aData uintptr, nData uint32) {
 		i++
 		goto _1
 	_1:
+		;
 		k++
 	}
 	g.hash.i = i
@@ -1769,13 +1768,14 @@ func HashFinal(tls *libc.TLS) {
 		}
 		i++
 		t = *(*uint8)(unsafe.Pointer(uintptr(unsafe.Pointer(&g)) + 3152 + 3 + uintptr(i)))
-		j = uint8(int32(j) + int32(int32(t)))
+		j = uint8(int32(j) + int32(t))
 		*(*uint8)(unsafe.Pointer(uintptr(unsafe.Pointer(&g)) + 3152 + 3 + uintptr(i))) = *(*uint8)(unsafe.Pointer(uintptr(unsafe.Pointer(&g)) + 3152 + 3 + uintptr(j)))
 		*(*uint8)(unsafe.Pointer(uintptr(unsafe.Pointer(&g)) + 3152 + 3 + uintptr(j))) = t
 		t = uint8(int32(t) + int32(*(*uint8)(unsafe.Pointer(uintptr(unsafe.Pointer(&g)) + 3152 + 3 + uintptr(i)))))
 		*(*uint8)(unsafe.Pointer(uintptr(unsafe.Pointer(&g)) + 3152 + 259 + uintptr(k))) = *(*uint8)(unsafe.Pointer(uintptr(unsafe.Pointer(&g)) + 3152 + 3 + uintptr(t)))
 		goto _1
 	_1:
+		;
 		k++
 	}
 }
@@ -1790,14 +1790,14 @@ func HashFinal(tls *libc.TLS) {
 //	** is not a hex digit.
 //	*/
 func hexDigitValue(tls *libc.TLS, c int8) (r int32) {
-	if int32(int32(c)) >= int32('0') && int32(int32(c)) <= int32('9') {
-		return int32(int32(c)) - int32('0')
+	if int32(c) >= int32('0') && int32(c) <= int32('9') {
+		return int32(c) - int32('0')
 	}
-	if int32(int32(c)) >= int32('a') && int32(int32(c)) <= int32('f') {
-		return int32(int32(c)) - int32('a') + int32(10)
+	if int32(c) >= int32('a') && int32(c) <= int32('f') {
+		return int32(c) - int32('a') + int32(10)
 	}
-	if int32(int32(c)) >= int32('A') && int32(int32(c)) <= int32('F') {
-		return int32(int32(c)) - int32('A') + int32(10)
+	if int32(c) >= int32('A') && int32(c) <= int32('F') {
+		return int32(c) - int32('A') + int32(10)
 	}
 	return -int32(1)
 }
@@ -1833,7 +1833,7 @@ func integerValue(tls *libc.TLS, zArg uintptr) (r int32) {
 			if !(v1 >= 0) {
 				break
 			}
-			v = v<<libc.Int32FromInt32(4) + int64(int64(x))
+			v = v<<libc.Int32FromInt32(4) + int64(x)
 			zArg++
 		}
 	} else {
@@ -1844,7 +1844,7 @@ func integerValue(tls *libc.TLS, zArg uintptr) (r int32) {
 	}
 	i = 0
 	for {
-		if !(uint64(uint64(i)) < libc.Uint64FromInt64(144)/libc.Uint64FromInt64(16)) {
+		if !(uint64(i) < libc.Uint64FromInt64(144)/libc.Uint64FromInt64(16)) {
 			break
 		}
 		if libsqlite3.Xsqlite3_stricmp(tls, aMult[i].zSuffix, zArg) == 0 {
@@ -1853,6 +1853,7 @@ func integerValue(tls *libc.TLS, zArg uintptr) (r int32) {
 		}
 		goto _2
 	_2:
+		;
 		i++
 	}
 	if v > int64(0x7fffffff) {
@@ -2173,6 +2174,7 @@ func speedtest1_final(tls *libc.TLS) {
 			libc.Xprintf(tls, __ccgo_ts+459, libc.VaList(bp+8, int32(*(*uint8)(unsafe.Pointer(uintptr(unsafe.Pointer(&g)) + 3152 + 259 + uintptr(i))))))
 			goto _1
 		_1:
+			;
 			i++
 		}
 		if g.hashFile != 0 && g.hashFile != libc.Xstdout {
@@ -2390,11 +2392,12 @@ func speedtest1_run(tls *libc.TLS) {
 							HashUpdate(tls, bp+2, uint32(2))
 							goto _2
 						_2:
+							;
 							iBlob++
 						}
 						g.nResByte += uint64(nBlob*int32(2) + int32(2))
 					} else {
-						HashUpdate(tls, z1, uint32(uint32(len1)))
+						HashUpdate(tls, z1, uint32(len1))
 						g.nResByte += uint64(len1 + int32(2))
 					}
 				}
@@ -2411,6 +2414,7 @@ func speedtest1_run(tls *libc.TLS) {
 			}
 			goto _1
 		_1:
+			;
 			i++
 		}
 	}
@@ -2478,6 +2482,7 @@ func est_square_root(tls *libc.TLS, x int32) (r int32) {
 		y0 = y1
 		goto _1
 	_1:
+		;
 		n++
 	}
 	return y0
@@ -2503,7 +2508,7 @@ func testset_main(tls *libc.TLS) {
 	n = v1
 	sz = v1
 	(*(*[2000]int8)(unsafe.Pointer(bp)))[0] = 0
-	maxb = int32(roundup_allones(tls, uint32(uint32(sz))))
+	maxb = int32(roundup_allones(tls, uint32(sz)))
 	speedtest1_begin_test(tls, int32(100), __ccgo_ts+590, libc.VaList(bp+2008, n))
 	speedtest1_exec(tls, __ccgo_ts+626, 0)
 	speedtest1_exec(tls, __ccgo_ts+632, libc.VaList(bp+2008, isTemp(tls, int32(9)), g.zNN, g.zNN, g.zNN))
@@ -2513,14 +2518,15 @@ func testset_main(tls *libc.TLS) {
 		if !(i <= n) {
 			break
 		}
-		x1 = swizzle(tls, uint32(uint32(i)), uint32(uint32(maxb)))
+		x1 = swizzle(tls, uint32(i), uint32(maxb))
 		speedtest1_numbername(tls, x1, bp, int32(2000))
-		libsqlite3.Xsqlite3_bind_int64(tls, g.pStmt, int32(1), int64(int64(x1)))
+		libsqlite3.Xsqlite3_bind_int64(tls, g.pStmt, int32(1), int64(x1))
 		libsqlite3.Xsqlite3_bind_int(tls, g.pStmt, int32(2), i)
 		libsqlite3.Xsqlite3_bind_text(tls, g.pStmt, int32(3), bp, -int32(1), libc.UintptrFromInt32(0))
 		speedtest1_run(tls)
 		goto _2
 	_2:
+		;
 		i++
 	}
 	speedtest1_exec(tls, __ccgo_ts+736, 0)
@@ -2535,14 +2541,15 @@ func testset_main(tls *libc.TLS) {
 		if !(i <= n) {
 			break
 		}
-		x1 = swizzle(tls, uint32(uint32(i)), uint32(uint32(maxb)))
+		x1 = swizzle(tls, uint32(i), uint32(maxb))
 		speedtest1_numbername(tls, x1, bp, int32(2000))
 		libsqlite3.Xsqlite3_bind_int(tls, g.pStmt, int32(1), i)
-		libsqlite3.Xsqlite3_bind_int64(tls, g.pStmt, int32(2), int64(int64(x1)))
+		libsqlite3.Xsqlite3_bind_int64(tls, g.pStmt, int32(2), int64(x1))
 		libsqlite3.Xsqlite3_bind_text(tls, g.pStmt, int32(3), bp, -int32(1), libc.UintptrFromInt32(0))
 		speedtest1_run(tls)
 		goto _3
 	_3:
+		;
 		i++
 	}
 	speedtest1_exec(tls, __ccgo_ts+736, 0)
@@ -2557,14 +2564,15 @@ func testset_main(tls *libc.TLS) {
 		if !(i <= n) {
 			break
 		}
-		x1 = swizzle(tls, uint32(uint32(i)), uint32(uint32(maxb)))
+		x1 = swizzle(tls, uint32(i), uint32(maxb))
 		speedtest1_numbername(tls, x1, bp, int32(2000))
 		libsqlite3.Xsqlite3_bind_int(tls, g.pStmt, int32(2), i)
-		libsqlite3.Xsqlite3_bind_int64(tls, g.pStmt, int32(1), int64(int64(x1)))
+		libsqlite3.Xsqlite3_bind_int64(tls, g.pStmt, int32(1), int64(x1))
 		libsqlite3.Xsqlite3_bind_text(tls, g.pStmt, int32(3), bp, -int32(1), libc.UintptrFromInt32(0))
 		speedtest1_run(tls)
 		goto _4
 	_4:
+		;
 		i++
 	}
 	speedtest1_exec(tls, __ccgo_ts+736, 0)
@@ -2579,14 +2587,15 @@ func testset_main(tls *libc.TLS) {
 			break
 		}
 		if (i-int32(1))%g.nRepeat == 0 {
-			x1 = speedtest1_random(tls) % uint32(uint32(maxb))
+			x1 = speedtest1_random(tls) % uint32(maxb)
 			x2 = speedtest1_random(tls)%uint32(10) + uint32(sz/int32(5000)) + x1
 		}
-		libsqlite3.Xsqlite3_bind_int(tls, g.pStmt, int32(1), int32(int32(x1)))
-		libsqlite3.Xsqlite3_bind_int(tls, g.pStmt, int32(2), int32(int32(x2)))
+		libsqlite3.Xsqlite3_bind_int(tls, g.pStmt, int32(1), int32(x1))
+		libsqlite3.Xsqlite3_bind_int(tls, g.pStmt, int32(2), int32(x2))
 		speedtest1_run(tls)
 		goto _5
 	_5:
+		;
 		i++
 	}
 	speedtest1_exec(tls, __ccgo_ts+736, 0)
@@ -2601,9 +2610,9 @@ func testset_main(tls *libc.TLS) {
 			break
 		}
 		if (i-int32(1))%g.nRepeat == 0 {
-			x1 = speedtest1_random(tls) % uint32(uint32(maxb))
+			x1 = speedtest1_random(tls) % uint32(maxb)
 			(*(*[2000]int8)(unsafe.Pointer(bp)))[0] = int8('%')
-			len1 = speedtest1_numbername(tls, uint32(uint32(i)), bp+uintptr(1), int32(libc.Uint64FromInt64(2000)-libc.Uint64FromInt32(2)))
+			len1 = speedtest1_numbername(tls, uint32(i), bp+uintptr(1), int32(libc.Uint64FromInt64(2000)-libc.Uint64FromInt32(2)))
 			(*(*[2000]int8)(unsafe.Pointer(bp)))[len1] = int8('%')
 			(*(*[2000]int8)(unsafe.Pointer(bp)))[len1+int32(1)] = 0
 		}
@@ -2611,6 +2620,7 @@ func testset_main(tls *libc.TLS) {
 		speedtest1_run(tls)
 		goto _6
 	_6:
+		;
 		i++
 	}
 	speedtest1_exec(tls, __ccgo_ts+736, 0)
@@ -2625,9 +2635,9 @@ func testset_main(tls *libc.TLS) {
 			break
 		}
 		if (i-int32(1))%g.nRepeat == 0 {
-			x1 = speedtest1_random(tls) % uint32(uint32(maxb))
+			x1 = speedtest1_random(tls) % uint32(maxb)
 			(*(*[2000]int8)(unsafe.Pointer(bp)))[0] = int8('%')
-			len1 = speedtest1_numbername(tls, uint32(uint32(i)), bp+uintptr(1), int32(libc.Uint64FromInt64(2000)-libc.Uint64FromInt32(2)))
+			len1 = speedtest1_numbername(tls, uint32(i), bp+uintptr(1), int32(libc.Uint64FromInt64(2000)-libc.Uint64FromInt32(2)))
 			(*(*[2000]int8)(unsafe.Pointer(bp)))[len1] = int8('%')
 			(*(*[2000]int8)(unsafe.Pointer(bp)))[len1+int32(1)] = 0
 		}
@@ -2635,6 +2645,7 @@ func testset_main(tls *libc.TLS) {
 		speedtest1_run(tls)
 		goto _7
 	_7:
+		;
 		i++
 	}
 	speedtest1_exec(tls, __ccgo_ts+736, 0)
@@ -2649,9 +2660,9 @@ func testset_main(tls *libc.TLS) {
 			break
 		}
 		if (i-int32(1))%g.nRepeat == 0 {
-			x1 = speedtest1_random(tls) % uint32(uint32(maxb))
+			x1 = speedtest1_random(tls) % uint32(maxb)
 			(*(*[2000]int8)(unsafe.Pointer(bp)))[0] = int8('%')
-			len1 = speedtest1_numbername(tls, uint32(uint32(i)), bp+uintptr(1), int32(libc.Uint64FromInt64(2000)-libc.Uint64FromInt32(2)))
+			len1 = speedtest1_numbername(tls, uint32(i), bp+uintptr(1), int32(libc.Uint64FromInt64(2000)-libc.Uint64FromInt32(2)))
 			(*(*[2000]int8)(unsafe.Pointer(bp)))[len1] = int8('%')
 			(*(*[2000]int8)(unsafe.Pointer(bp)))[len1+int32(1)] = 0
 		}
@@ -2659,6 +2670,7 @@ func testset_main(tls *libc.TLS) {
 		speedtest1_run(tls)
 		goto _8
 	_8:
+		;
 		i++
 	}
 	speedtest1_exec(tls, __ccgo_ts+736, 0)
@@ -2682,14 +2694,15 @@ func testset_main(tls *libc.TLS) {
 			break
 		}
 		if (i-int32(1))%g.nRepeat == 0 {
-			x1 = speedtest1_random(tls) % uint32(uint32(maxb))
+			x1 = speedtest1_random(tls) % uint32(maxb)
 			x2 = speedtest1_random(tls)%uint32(10) + uint32(sz/int32(5000)) + x1
 		}
-		libsqlite3.Xsqlite3_bind_int(tls, g.pStmt, int32(1), int32(int32(x1)))
-		libsqlite3.Xsqlite3_bind_int(tls, g.pStmt, int32(2), int32(int32(x2)))
+		libsqlite3.Xsqlite3_bind_int(tls, g.pStmt, int32(1), int32(x1))
+		libsqlite3.Xsqlite3_bind_int(tls, g.pStmt, int32(2), int32(x2))
 		speedtest1_run(tls)
 		goto _9
 	_9:
+		;
 		i++
 	}
 	speedtest1_exec(tls, __ccgo_ts+736, 0)
@@ -2704,14 +2717,15 @@ func testset_main(tls *libc.TLS) {
 			break
 		}
 		if (i-int32(1))%g.nRepeat == 0 {
-			x1 = speedtest1_random(tls) % uint32(uint32(maxb))
+			x1 = speedtest1_random(tls) % uint32(maxb)
 			x2 = speedtest1_random(tls)%uint32(10) + uint32(sz/int32(5000)) + x1
 		}
-		libsqlite3.Xsqlite3_bind_int(tls, g.pStmt, int32(1), int32(int32(x1)))
-		libsqlite3.Xsqlite3_bind_int(tls, g.pStmt, int32(2), int32(int32(x2)))
+		libsqlite3.Xsqlite3_bind_int(tls, g.pStmt, int32(1), int32(x1))
+		libsqlite3.Xsqlite3_bind_int(tls, g.pStmt, int32(2), int32(x2))
 		speedtest1_run(tls)
 		goto _10
 	_10:
+		;
 		i++
 	}
 	speedtest1_exec(tls, __ccgo_ts+736, 0)
@@ -2726,13 +2740,14 @@ func testset_main(tls *libc.TLS) {
 			break
 		}
 		if (i-int32(1))%g.nRepeat == 0 {
-			x1 = swizzle(tls, uint32(uint32(i)), uint32(uint32(maxb)))
+			x1 = swizzle(tls, uint32(i), uint32(maxb))
 			len1 = speedtest1_numbername(tls, x1, bp, int32(libc.Uint64FromInt64(2000)-libc.Uint64FromInt32(1)))
 		}
 		libsqlite3.Xsqlite3_bind_text(tls, g.pStmt, int32(1), bp, len1, libc.UintptrFromInt32(0))
 		speedtest1_run(tls)
 		goto _11
 	_11:
+		;
 		i++
 	}
 	speedtest1_exec(tls, __ccgo_ts+736, 0)
@@ -2767,13 +2782,14 @@ func testset_main(tls *libc.TLS) {
 		if !(i <= n) {
 			break
 		}
-		x1 = speedtest1_random(tls) % uint32(uint32(maxb))
+		x1 = speedtest1_random(tls) % uint32(maxb)
 		x2 = speedtest1_random(tls)%uint32(10) + uint32(sz/int32(5000)) + x1
-		libsqlite3.Xsqlite3_bind_int(tls, g.pStmt, int32(1), int32(int32(x1)))
-		libsqlite3.Xsqlite3_bind_int(tls, g.pStmt, int32(2), int32(int32(x2)))
+		libsqlite3.Xsqlite3_bind_int(tls, g.pStmt, int32(1), int32(x1))
+		libsqlite3.Xsqlite3_bind_int(tls, g.pStmt, int32(2), int32(x2))
 		speedtest1_run(tls)
 		goto _12
 	_12:
+		;
 		i++
 	}
 	speedtest1_exec(tls, __ccgo_ts+736, 0)
@@ -2787,11 +2803,12 @@ func testset_main(tls *libc.TLS) {
 		if !(i <= n) {
 			break
 		}
-		x1 = speedtest1_random(tls)%uint32(uint32(sz)) + uint32(1)
-		libsqlite3.Xsqlite3_bind_int(tls, g.pStmt, int32(1), int32(int32(x1)))
+		x1 = speedtest1_random(tls)%uint32(sz) + uint32(1)
+		libsqlite3.Xsqlite3_bind_int(tls, g.pStmt, int32(1), int32(x1))
 		speedtest1_run(tls)
 		goto _13
 	_13:
+		;
 		i++
 	}
 	speedtest1_exec(tls, __ccgo_ts+736, 0)
@@ -2811,13 +2828,14 @@ func testset_main(tls *libc.TLS) {
 		if !(i <= n) {
 			break
 		}
-		x1 = speedtest1_random(tls)%uint32(uint32(maxb)) + uint32(1)
+		x1 = speedtest1_random(tls)%uint32(maxb) + uint32(1)
 		x2 = speedtest1_random(tls)%uint32(10) + uint32(sz/int32(5000)) + x1
-		libsqlite3.Xsqlite3_bind_int(tls, g.pStmt, int32(1), int32(int32(x1)))
-		libsqlite3.Xsqlite3_bind_int(tls, g.pStmt, int32(2), int32(int32(x2)))
+		libsqlite3.Xsqlite3_bind_int(tls, g.pStmt, int32(1), int32(x1))
+		libsqlite3.Xsqlite3_bind_int(tls, g.pStmt, int32(2), int32(x2))
 		speedtest1_run(tls)
 		goto _14
 	_14:
+		;
 		i++
 	}
 	speedtest1_exec(tls, __ccgo_ts+736, 0)
@@ -2831,11 +2849,12 @@ func testset_main(tls *libc.TLS) {
 		if !(i <= n) {
 			break
 		}
-		x1 = speedtest1_random(tls)%uint32(uint32(sz)) + uint32(1)
-		libsqlite3.Xsqlite3_bind_int(tls, g.pStmt, int32(1), int32(int32(x1)))
+		x1 = speedtest1_random(tls)%uint32(sz) + uint32(1)
+		libsqlite3.Xsqlite3_bind_int(tls, g.pStmt, int32(1), int32(x1))
 		speedtest1_run(tls)
 		goto _15
 	_15:
+		;
 		i++
 	}
 	speedtest1_exec(tls, __ccgo_ts+736, 0)
@@ -2858,13 +2877,14 @@ func testset_main(tls *libc.TLS) {
 		if !(i <= n) {
 			break
 		}
-		x1 = speedtest1_random(tls)%uint32(uint32(sz)) + uint32(1)
+		x1 = speedtest1_random(tls)%uint32(sz) + uint32(1)
 		x2 = speedtest1_random(tls)%uint32(10) + x1 + uint32(4)
-		libsqlite3.Xsqlite3_bind_int(tls, g.pStmt, int32(1), int32(int32(x1)))
-		libsqlite3.Xsqlite3_bind_int(tls, g.pStmt, int32(2), int32(int32(x2)))
+		libsqlite3.Xsqlite3_bind_int(tls, g.pStmt, int32(1), int32(x1))
+		libsqlite3.Xsqlite3_bind_int(tls, g.pStmt, int32(2), int32(x2))
 		speedtest1_run(tls)
 		goto _16
 	_16:
+		;
 		i++
 	}
 	speedtest1_exec(tls, __ccgo_ts+736, 0)
@@ -2888,13 +2908,14 @@ func testset_main(tls *libc.TLS) {
 		if !(i <= n) {
 			break
 		}
-		x1 = swizzle(tls, uint32(uint32(i)), uint32(uint32(maxb)))
-		speedtest1_numbername(tls, uint32(uint32(i)), bp, int32(2000))
-		libsqlite3.Xsqlite3_bind_int(tls, g.pStmt, int32(1), int32(int64(int64(x1))))
+		x1 = swizzle(tls, uint32(i), uint32(maxb))
+		speedtest1_numbername(tls, uint32(i), bp, int32(2000))
+		libsqlite3.Xsqlite3_bind_int(tls, g.pStmt, int32(1), int32(int64(x1)))
 		libsqlite3.Xsqlite3_bind_text(tls, g.pStmt, int32(2), bp, -int32(1), libc.UintptrFromInt32(0))
 		speedtest1_run(tls)
 		goto _18
 	_18:
+		;
 		i++
 	}
 	speedtest1_exec(tls, __ccgo_ts+736, 0)
@@ -2915,11 +2936,12 @@ func testset_main(tls *libc.TLS) {
 		if !(i <= n) {
 			break
 		}
-		x1 = swizzle(tls, uint32(uint32(i)), uint32(uint32(maxb)))
-		libsqlite3.Xsqlite3_bind_int(tls, g.pStmt, int32(1), int32(int64(int64(x1))))
+		x1 = swizzle(tls, uint32(i), uint32(maxb))
+		libsqlite3.Xsqlite3_bind_int(tls, g.pStmt, int32(1), int32(int64(x1)))
 		speedtest1_run(tls)
 		goto _19
 	_19:
+		;
 		i++
 	}
 	if g.doBigTransactions != 0 {
@@ -2945,13 +2967,14 @@ func testset_main(tls *libc.TLS) {
 		if !(i <= n) {
 			break
 		}
-		x1 = swizzle(tls, uint32(uint32(i)), uint32(uint32(maxb)))
+		x1 = swizzle(tls, uint32(i), uint32(maxb))
 		speedtest1_numbername(tls, x1, bp, int32(2000))
 		libsqlite3.Xsqlite3_bind_int(tls, g.pStmt, int32(2), i)
 		libsqlite3.Xsqlite3_bind_text(tls, g.pStmt, int32(1), bp, -int32(1), libc.UintptrFromInt32(0))
 		speedtest1_run(tls)
 		goto _22
 	_22:
+		;
 		i++
 	}
 	speedtest1_exec(tls, __ccgo_ts+736, 0)
@@ -2967,12 +2990,13 @@ func testset_main(tls *libc.TLS) {
 		if !(i <= n) {
 			break
 		}
-		x1 = swizzle(tls, uint32(uint32(i)), uint32(uint32(maxb)))
+		x1 = swizzle(tls, uint32(i), uint32(maxb))
 		speedtest1_numbername(tls, x1, bp, int32(2000))
 		libsqlite3.Xsqlite3_bind_text(tls, g.pStmt, int32(1), bp, -int32(1), libc.UintptrFromInt32(0))
 		speedtest1_run(tls)
 		goto _23
 	_23:
+		;
 		i++
 	}
 	if g.doBigTransactions != 0 {
@@ -3092,6 +3116,7 @@ func testset_fp(tls *libc.TLS) {
 		speedtest1_run(tls)
 		goto _1
 	_1:
+		;
 		i++
 	}
 	speedtest1_exec(tls, __ccgo_ts+736, 0)
@@ -3111,6 +3136,7 @@ func testset_fp(tls *libc.TLS) {
 		speedtest1_run(tls)
 		goto _2
 	_2:
+		;
 		i++
 	}
 	speedtest1_end_test(tls)
@@ -3136,6 +3162,7 @@ func testset_fp(tls *libc.TLS) {
 		speedtest1_run(tls)
 		goto _3
 	_3:
+		;
 		i++
 	}
 	speedtest1_end_test(tls)
@@ -3184,22 +3211,24 @@ func testset_orm(tls *libc.TLS) {
 			case int32('I'):
 				fallthrough
 			case int32('T'):
-				libsqlite3.Xsqlite3_bind_int64(tls, g.pStmt, int32(j+uint32(2)), int64(int64(x1)))
+				libsqlite3.Xsqlite3_bind_int64(tls, g.pStmt, int32(j+uint32(2)), int64(x1))
 			case int32('F'):
-				libsqlite3.Xsqlite3_bind_double(tls, g.pStmt, int32(j+uint32(2)), float64(float64(x1)))
+				libsqlite3.Xsqlite3_bind_double(tls, g.pStmt, int32(j+uint32(2)), float64(x1))
 			case int32('V'):
 				fallthrough
 			case int32('B'):
-				libsqlite3.Xsqlite3_bind_text64(tls, g.pStmt, int32(j+uint32(2)), bp, uint64(uint64(len1)), libc.UintptrFromInt32(0), uint8(SQLITE_UTF8))
+				libsqlite3.Xsqlite3_bind_text64(tls, g.pStmt, int32(j+uint32(2)), bp, uint64(len1), libc.UintptrFromInt32(0), uint8(SQLITE_UTF8))
 				break
 			}
 			goto _3
 		_3:
+			;
 			j++
 		}
 		speedtest1_run(tls)
 		goto _2
 	_2:
+		;
 		i++
 	}
 	speedtest1_exec(tls, __ccgo_ts+1703, 0)
@@ -3213,10 +3242,11 @@ func testset_orm(tls *libc.TLS) {
 			break
 		}
 		x1 = speedtest1_random(tls) % nRow
-		libsqlite3.Xsqlite3_bind_int(tls, g.pStmt, int32(1), int32(int32(x1)))
+		libsqlite3.Xsqlite3_bind_int(tls, g.pStmt, int32(1), int32(x1))
 		speedtest1_run(tls)
 		goto _4
 	_4:
+		;
 		i++
 	}
 	speedtest1_end_test(tls)
@@ -3248,17 +3278,19 @@ func testset_trigger(tls *libc.TLS) {
 			if !(ii < NROW) {
 				break
 			}
-			x1 = int32(speedtest1_random(tls) % uint32(uint32(NROW)))
-			speedtest1_numbername(tls, uint32(uint32(x1)), bp, int32(2000))
+			x1 = int32(speedtest1_random(tls) % uint32(NROW))
+			speedtest1_numbername(tls, uint32(x1), bp, int32(2000))
 			libsqlite3.Xsqlite3_bind_int(tls, g.pStmt, int32(1), x1)
 			libsqlite3.Xsqlite3_bind_text(tls, g.pStmt, int32(2), bp, -int32(1), libc.UintptrFromInt32(0))
 			speedtest1_run(tls)
 			goto _2
 		_2:
+			;
 			ii++
 		}
 		goto _1
 	_1:
+		;
 		jj++
 	}
 	speedtest1_exec(tls, __ccgo_ts+17588, 0)
@@ -3286,10 +3318,12 @@ func testset_trigger(tls *libc.TLS) {
 			speedtest1_run(tls)
 			goto _4
 		_4:
+			;
 			ii += int32(3)
 		}
 		goto _3
 	_3:
+		;
 		jj++
 	}
 	speedtest1_end_test(tls)
@@ -3309,10 +3343,12 @@ func testset_trigger(tls *libc.TLS) {
 			speedtest1_run(tls)
 			goto _6
 		_6:
+			;
 			ii += int32(3)
 		}
 		goto _5
 	_5:
+		;
 		jj++
 	}
 	speedtest1_end_test(tls)
@@ -3332,10 +3368,12 @@ func testset_trigger(tls *libc.TLS) {
 			speedtest1_run(tls)
 			goto _8
 		_8:
+			;
 			ii += int32(3)
 		}
 		goto _7
 	_7:
+		;
 		jj++
 	}
 	speedtest1_end_test(tls)
@@ -3350,6 +3388,7 @@ func testset_trigger(tls *libc.TLS) {
 		speedtest1_run(tls)
 		goto _9
 	_9:
+		;
 		jj++
 	}
 	speedtest1_end_test(tls)
@@ -3365,6 +3404,7 @@ func testset_trigger(tls *libc.TLS) {
 		speedtest1_run(tls)
 		goto _10
 	_10:
+		;
 		jj++
 	}
 	speedtest1_exec(tls, __ccgo_ts+736, 0)
@@ -3381,12 +3421,13 @@ func testset_trigger(tls *libc.TLS) {
 		if !(jj < NROW2) {
 			break
 		}
-		speedtest1_numbername(tls, uint32(uint32(jj)), bp, int32(2000))
+		speedtest1_numbername(tls, uint32(jj), bp, int32(2000))
 		libsqlite3.Xsqlite3_bind_int(tls, g.pStmt, int32(1), jj)
 		libsqlite3.Xsqlite3_bind_text(tls, g.pStmt, int32(2), bp, -int32(1), libc.UintptrFromInt32(0))
 		speedtest1_run(tls)
 		goto _11
 	_11:
+		;
 		jj++
 	}
 	speedtest1_end_test(tls)
@@ -3409,6 +3450,7 @@ func testset_trigger(tls *libc.TLS) {
 		speedtest1_run(tls)
 		goto _12
 	_12:
+		;
 		jj += int32(2)
 	}
 	speedtest1_end_test(tls)
@@ -3426,6 +3468,7 @@ func testset_trigger(tls *libc.TLS) {
 		speedtest1_run(tls)
 		goto _13
 	_13:
+		;
 		jj += int32(2)
 	}
 	speedtest1_end_test(tls)
@@ -3444,12 +3487,13 @@ func testset_trigger(tls *libc.TLS) {
 		if !(jj < NROW2) {
 			break
 		}
-		speedtest1_numbername(tls, uint32(uint32(jj)), bp, int32(2000))
+		speedtest1_numbername(tls, uint32(jj), bp, int32(2000))
 		libsqlite3.Xsqlite3_bind_int(tls, g.pStmt, int32(1), jj)
 		libsqlite3.Xsqlite3_bind_text(tls, g.pStmt, int32(2), bp, -int32(1), libc.UintptrFromInt32(0))
 		speedtest1_run(tls)
 		goto _14
 	_14:
+		;
 		jj++
 	}
 	speedtest1_end_test(tls)
@@ -3467,6 +3511,7 @@ func testset_trigger(tls *libc.TLS) {
 		speedtest1_run(tls)
 		goto _15
 	_15:
+		;
 		jj += int32(2)
 	}
 	speedtest1_end_test(tls)
@@ -3481,6 +3526,7 @@ func testset_trigger(tls *libc.TLS) {
 		speedtest1_run(tls)
 		goto _16
 	_16:
+		;
 		jj += int32(2)
 	}
 	speedtest1_end_test(tls)
@@ -3510,6 +3556,7 @@ func testset_debug1(tls *libc.TLS) {
 		libc.Xprintf(tls, __ccgo_ts+19044, libc.VaList(bp+2008, i, x1, x2, bp))
 		goto _1
 	_1:
+		;
 		i++
 	}
 }
@@ -3694,16 +3741,17 @@ func displayLinuxIoStats(tls *libc.TLS, out uintptr) {
 	for libc.Xfgets(tls, bp, int32(200), in) != uintptr(0) {
 		i = 0
 		for {
-			if !(uint64(uint64(i)) < libc.Uint64FromInt64(112)/libc.Uint64FromInt64(16)) {
+			if !(uint64(i) < libc.Uint64FromInt64(112)/libc.Uint64FromInt64(16)) {
 				break
 			}
 			n = int32(libc.Xstrlen(tls, aTrans[i].zPattern))
-			if libc.Xstrncmp(tls, aTrans[i].zPattern, bp, uint64(uint64(n))) == 0 {
+			if libc.Xstrncmp(tls, aTrans[i].zPattern, bp, uint64(n)) == 0 {
 				libc.Xfprintf(tls, out, __ccgo_ts+19321, libc.VaList(bp+208, aTrans[i].zDesc, bp+uintptr(n)))
 				break
 			}
 			goto _1
 		_1:
+			;
 			i++
 		}
 	}
@@ -3785,9 +3833,9 @@ func main1(tls *libc.TLS, argc int32, argv uintptr) (r int32) {
 	doTrace = 0                                                                                      /* True for --trace */
 	zEncoding = uintptr(0)                                                                           /* --utf16be or --utf16le */
 	zDbName = uintptr(0)                                                                             /* Name of the test database */
-	pHeap = uintptr(0)   /* Allocated heap space */
-	pLook = uintptr(0)   /* Allocated lookaside space */
-	pPCache = uintptr(0) /* API return code */
+	pHeap = uintptr(0)                                                                               /* Allocated heap space */
+	pLook = uintptr(0)                                                                               /* Allocated lookaside space */
+	pPCache = uintptr(0)                                                                             /* API return code */
 	/*
 	 ** Confirms that argc has at least N arguments following argv[i]. */
 	/* Display the version of SQLite being tested */
@@ -4122,10 +4170,11 @@ func main1(tls *libc.TLS, argc int32, argv uintptr) (r int32) {
 		}
 		goto _1
 	_1:
+		;
 		i++
 	}
 	if nHeap > 0 {
-		pHeap = libc.Xmalloc(tls, uint64(uint64(nHeap)))
+		pHeap = libc.Xmalloc(tls, uint64(nHeap))
 		if pHeap == uintptr(0) {
 			fatal_error(tls, __ccgo_ts+20093, libc.VaList(bp+16, nHeap))
 		}
@@ -4136,9 +4185,9 @@ func main1(tls *libc.TLS, argc int32, argv uintptr) (r int32) {
 	}
 	if doPCache != 0 {
 		if nPCache > 0 && szPCache > 0 {
-			pPCache = libc.Xmalloc(tls, uint64(int64(int64(nPCache))*int64(int64(szPCache))))
+			pPCache = libc.Xmalloc(tls, uint64(int64(nPCache)*int64(szPCache)))
 			if pPCache == uintptr(0) {
-				fatal_error(tls, __ccgo_ts+20154, libc.VaList(bp+16, int64(int64(nPCache))*int64(int64(szPCache))))
+				fatal_error(tls, __ccgo_ts+20154, libc.VaList(bp+16, int64(nPCache)*int64(szPCache)))
 			}
 		}
 		rc = libsqlite3.Xsqlite3_config(tls, int32(SQLITE_CONFIG_PAGECACHE), libc.VaList(bp+16, pPCache, szPCache, nPCache))
