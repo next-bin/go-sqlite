@@ -1262,10 +1262,7 @@ const m_SQLITE_OPEN_TEMP_JOURNAL = 4096
 const m_SQLITE_OPEN_TRANSIENT_DB = 1024
 const m_SQLITE_OPEN_URI = 64
 const m_SQLITE_OPEN_WAL = 524288
-const m_SQLITE_OS_KV = 0
-const m_SQLITE_OS_OTHER = 0
 const m_SQLITE_OS_UNIX = 1
-const m_SQLITE_OS_WIN = 0
 const m_SQLITE_OmitNoopJoin = 256
 const m_SQLITE_OmitOrderBy = 0x00040000
 const m_SQLITE_OnePass = 134217728
@@ -1578,7 +1575,6 @@ const m_TCL_RETURN = 2
 const m_TCL_SERVICE_ALL = 1
 const m_TCL_SERVICE_NONE = 0
 const m_TCL_SMALL_HASH_TABLE = 4
-const m_TCL_STORAGE_CLASS = "DLLIMPORT"
 const m_TCL_STRING_KEYS = 0
 const m_TCL_SUBST_ALL = 007
 const m_TCL_SUBST_BACKSLASHES = 004
@@ -1892,7 +1888,6 @@ const m_WRC_Continue = 0
 const m_WRC_Prune = 1
 const m_W_OK = 0x02
 const m_X_OK = 0x01
-const m__BIG_ENDIAN = "__ORDER_BIG_ENDIAN__"
 const m__BYTE_ORDER = "__BYTE_ORDER__"
 const m__CS_PATH = 1
 const m__CS_POSIX_V6_ILP32_OFF32_CFLAGS = 2
@@ -1916,7 +1911,6 @@ const m__IOLBF = 1
 const m__IONBF = 2
 const m__LARGEFILE_SOURCE = 1
 const m__LARGE_FILE = 1
-const m__LITTLE_ENDIAN = "__ORDER_LITTLE_ENDIAN__"
 const m__LP64 = 1
 const m__PC_ACL_EXTENDED = 59
 const m__PC_ACL_NFS4 = 64
@@ -26113,7 +26107,7 @@ var _cv_MAX_FUNCTION_ARG = int32(m_SQLITE_MAX_FUNCTION_ARG)
 
 var _cv_MAX_VARIABLE_NUMBER = int32(m_SQLITE_MAX_VARIABLE_NUMBER)
 
-var _cv_MAX_PAGE_SIZE = int32(m_SQLITE_MAX_PAGE_SIZE)
+var _cv_MAX_PAGE_SIZE = int32(65536)
 
 var _cv_MAX_PAGE_COUNT = libc.Int32FromUint32(m_SQLITE_MAX_PAGE_COUNT1)
 
@@ -26820,7 +26814,6 @@ const m_USHRT_MAX = "__USHRT_MAX"
 const m_WORD_BIT = "__WORD_BIT"
 const m_W_OK1 = 2
 const m__X86_SIGNAL_H = 1
-const m___FreeBSD_version = 1400097
 const m___stack_t = "sigaltstack"
 const m_sigev_notify_kqueue = "sigev_signo"
 const m_st_atimespec = "st_atim"
@@ -60465,7 +60458,6 @@ const m_SQLITE_INNOCUOUS1 = 2097152
 const m_SQLITE_OPEN_CREATE13 = 0x00000004
 const m_SQLITE_OPEN_MAIN_DB13 = 0x00000100
 const m_WS = 129
-const m_sqlite3_base_init = "sqlite3_base85_init"
 
 func _init_api_ptr(tls *libc.TLS, pApi uintptr) {
 	_ = pApi
@@ -86625,7 +86617,6 @@ const m_TCLSH = 1
 const m_TCLSH_MAIN = "main"
 const m_TCL_EVAL_DIRECT2 = 262144
 const m_TCL_EVAL_GLOBAL14 = 131072
-const m_TCL_STORAGE_CLASS1 = "DLLEXPORT"
 const m__MC_FPFMT_NODEV = 0x10000
 const m__MC_FPFMT_XMM = 0x10002
 const m__MC_FPOWNED_FPU = 0x20001
