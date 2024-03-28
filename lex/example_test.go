@@ -137,7 +137,7 @@ func Example_completeGeneratedProgram() { // main
 	// example.go:3:20: IDENT "return"
 	// example.go:3:27: INT "314"
 	// example.go:3:31: '}' "}"
-	// example.go:4:2: EOF "\xff"
+	// example.go:4:2: EOF "�"
 }
 
 func (l *lexer) scan() lex.Char {
