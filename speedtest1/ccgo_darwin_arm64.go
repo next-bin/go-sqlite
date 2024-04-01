@@ -1,4 +1,4 @@
-// Code generated for darwin/arm64 by 'generator -DNDEBUG -ignore-unsupported-alignment -o speedtest1/ccgo_darwin_arm64.go -I /var/folders/4f/mc8mts295pqf7gmnfcwh6g8w0000gn/T/libsqlite3/sqlite-src-3450100 /var/folders/4f/mc8mts295pqf7gmnfcwh6g8w0000gn/T/libsqlite3/sqlite-src-3450100/test/speedtest1.c -lsqlite3', DO NOT EDIT.
+// Code generated for darwin/arm64 by 'generator -DNDEBUG -ignore-unsupported-alignment -o speedtest1/ccgo_darwin_arm64.go -I /tmp/libsqlite3/sqlite-src-3450200 /tmp/libsqlite3/sqlite-src-3450200/test/speedtest1.c -lsqlite3', DO NOT EDIT.
 
 //go:build darwin && arm64
 // +build darwin,arm64
@@ -160,6 +160,8 @@ const MAC_OS_VERSION_13_6 = "__MAC_13_6"
 const MAC_OS_VERSION_14_0 = "__MAC_14_0"
 const MAC_OS_VERSION_14_1 = "__MAC_14_1"
 const MAC_OS_VERSION_14_2 = "__MAC_14_2"
+const MAC_OS_VERSION_14_3 = "__MAC_14_3"
+const MAC_OS_VERSION_14_4 = "__MAC_14_4"
 const MAC_OS_X_VERSION_10_0 = "__MAC_10_0"
 const MAC_OS_X_VERSION_10_1 = "__MAC_10_1"
 const MAC_OS_X_VERSION_10_10 = "__MAC_10_10"
@@ -616,7 +618,7 @@ const SQLITE_SHM_LOCK = 2
 const SQLITE_SHM_NLOCK = 8
 const SQLITE_SHM_SHARED = 4
 const SQLITE_SHM_UNLOCK = 1
-const SQLITE_SOURCE_ID = "2024-01-30 16:01:20 e876e51a0ed5c5b3126f52e532044363a014bc594cfefa87ffb5b82257ccalt1"
+const SQLITE_SOURCE_ID = "2024-03-12 11:06:23 d8cd6d49b46a395b13955387d05e9e1a2a47e54fb99f3c9b59835bbefad6alt1"
 const SQLITE_STATUS_MALLOC_COUNT = 9
 const SQLITE_STATUS_MALLOC_SIZE = 5
 const SQLITE_STATUS_MEMORY_USED = 0
@@ -693,8 +695,8 @@ const SQLITE_UTF16BE = 3
 const SQLITE_UTF16LE = 2
 const SQLITE_UTF16_ALIGNED = 8
 const SQLITE_UTF8 = 1
-const SQLITE_VERSION = "3.45.1"
-const SQLITE_VERSION_NUMBER = 3045001
+const SQLITE_VERSION = "3.45.2"
+const SQLITE_VERSION_NUMBER = 3045002
 const SQLITE_VTAB_CONSTRAINT_SUPPORT = 1
 const SQLITE_VTAB_DIRECTONLY = 3
 const SQLITE_VTAB_INNOCUOUS = 2
@@ -1002,7 +1004,6 @@ const _SC_XOPEN_UNIX = 115
 const _SC_XOPEN_VERSION = 116
 const _SC_XOPEN_XCU_VERSION = 121
 const _STRUCT_MCONTEXT = "_STRUCT_MCONTEXT64"
-const _USE_FORTIFY_LEVEL = 2
 const _V6_ILP32_OFF32 = "__ILP32_OFF32"
 const _V6_ILP32_OFFBIG = "__ILP32_OFFBIG"
 const _V6_LP64_OFF64 = "__LP64_OFF64"
@@ -1109,6 +1110,8 @@ const __BRIDGEOS_7_6 = 70600
 const __BRIDGEOS_8_0 = 80000
 const __BRIDGEOS_8_1 = 80100
 const __BRIDGEOS_8_2 = 80200
+const __BRIDGEOS_8_3 = 80300
+const __BRIDGEOS_8_4 = 80400
 const __BYTE_ORDER__ = "__ORDER_LITTLE_ENDIAN__"
 const __CCGO__ = 1
 const __CHAR_BIT__ = 8
@@ -1169,6 +1172,8 @@ const __DRIVERKIT_22_6 = 220600
 const __DRIVERKIT_23_0 = 230000
 const __DRIVERKIT_23_1 = 230100
 const __DRIVERKIT_23_2 = 230200
+const __DRIVERKIT_23_3 = 230300
+const __DRIVERKIT_23_4 = 230400
 const __DYNAMIC__ = 1
 const __ENABLE_LEGACY_MAC_AVAILABILITY = 1
 const __ENVIRONMENT_MAC_OS_X_VERSION_MIN_REQUIRED__ = 140000
@@ -1268,16 +1273,12 @@ const __INT_FAST8_MAX__ = 127
 const __INT_FAST8_WIDTH__ = 8
 const __INT_LEAST16_FMTd__ = "hd"
 const __INT_LEAST16_FMTi__ = "hi"
-const __INT_LEAST16_MAX = "INT16_MAX"
 const __INT_LEAST16_MAX__ = 32767
-const __INT_LEAST16_MIN = "INT16_MIN"
 const __INT_LEAST16_TYPE__ = "short"
 const __INT_LEAST16_WIDTH__ = 16
 const __INT_LEAST32_FMTd__ = "d"
 const __INT_LEAST32_FMTi__ = "i"
-const __INT_LEAST32_MAX = "INT32_MAX"
 const __INT_LEAST32_MAX__ = 2147483647
-const __INT_LEAST32_MIN = "INT32_MIN"
 const __INT_LEAST32_TYPE__ = "int"
 const __INT_LEAST32_WIDTH__ = 32
 const __INT_LEAST64_FMTd__ = "lld"
@@ -1288,9 +1289,7 @@ const __INT_LEAST64_MIN = "INT64_MIN"
 const __INT_LEAST64_WIDTH__ = 64
 const __INT_LEAST8_FMTd__ = "hhd"
 const __INT_LEAST8_FMTi__ = "hhi"
-const __INT_LEAST8_MAX = "INT8_MAX"
 const __INT_LEAST8_MAX__ = 127
-const __INT_LEAST8_MIN = "INT8_MIN"
 const __INT_LEAST8_WIDTH__ = 8
 const __INT_MAX__ = 2147483647
 const __INT_WIDTH__ = 32
@@ -1332,6 +1331,8 @@ const __IPHONE_15_3 = 150300
 const __IPHONE_15_4 = 150400
 const __IPHONE_15_5 = 150500
 const __IPHONE_15_6 = 150600
+const __IPHONE_15_7 = 150700
+const __IPHONE_15_8 = 150800
 const __IPHONE_16_0 = 160000
 const __IPHONE_16_1 = 160100
 const __IPHONE_16_2 = 160200
@@ -1343,6 +1344,8 @@ const __IPHONE_16_7 = 160700
 const __IPHONE_17_0 = 170000
 const __IPHONE_17_1 = 170100
 const __IPHONE_17_2 = 170200
+const __IPHONE_17_3 = 170300
+const __IPHONE_17_4 = 170400
 const __IPHONE_2_0 = 20000
 const __IPHONE_2_1 = 20100
 const __IPHONE_2_2 = 20200
@@ -1447,7 +1450,9 @@ const __MAC_13_6 = 130600
 const __MAC_14_0 = 140000
 const __MAC_14_1 = 140100
 const __MAC_14_2 = 140200
-const __MAC_OS_X_VERSION_MAX_ALLOWED = "__MAC_14_2"
+const __MAC_14_3 = 140300
+const __MAC_14_4 = 140400
+const __MAC_OS_X_VERSION_MAX_ALLOWED = "__MAC_14_4"
 const __MAC_OS_X_VERSION_MIN_REQUIRED = "__ENVIRONMENT_MAC_OS_X_VERSION_MIN_REQUIRED__"
 const __NO_INLINE__ = 1
 const __NO_MATH_ERRNO__ = 1
@@ -1567,6 +1572,8 @@ const __TVOS_16_6 = 160600
 const __TVOS_17_0 = 170000
 const __TVOS_17_1 = 170100
 const __TVOS_17_2 = 170200
+const __TVOS_17_3 = 170300
+const __TVOS_17_4 = 170400
 const __TVOS_9_0 = 90000
 const __TVOS_9_1 = 90100
 const __TVOS_9_2 = 90200
@@ -1629,13 +1636,11 @@ const __UINT_LEAST16_FMTX__ = "hX"
 const __UINT_LEAST16_FMTo__ = "ho"
 const __UINT_LEAST16_FMTu__ = "hu"
 const __UINT_LEAST16_FMTx__ = "hx"
-const __UINT_LEAST16_MAX = "UINT16_MAX"
 const __UINT_LEAST16_MAX__ = 65535
 const __UINT_LEAST32_FMTX__ = "X"
 const __UINT_LEAST32_FMTo__ = "o"
 const __UINT_LEAST32_FMTu__ = "u"
 const __UINT_LEAST32_FMTx__ = "x"
-const __UINT_LEAST32_MAX = "UINT32_MAX"
 const __UINT_LEAST32_MAX__ = 4294967295
 const __UINT_LEAST64_FMTX__ = "llX"
 const __UINT_LEAST64_FMTo__ = "llo"
@@ -1647,14 +1652,16 @@ const __UINT_LEAST8_FMTX__ = "hhX"
 const __UINT_LEAST8_FMTo__ = "hho"
 const __UINT_LEAST8_FMTu__ = "hhu"
 const __UINT_LEAST8_FMTx__ = "hhx"
-const __UINT_LEAST8_MAX = "UINT8_MAX"
 const __UINT_LEAST8_MAX__ = 255
 const __USER_LABEL_PREFIX__ = "_"
-const __VERSION__ = "Apple LLVM 15.0.0 (clang-1500.1.0.2.5)"
+const __VERSION__ = "Apple LLVM 15.0.0 (clang-1500.3.9.4)"
 const __VISIONOS_1_0 = 10000
+const __VISIONOS_1_1 = 10100
 const __WATCHOS_10_0 = 100000
 const __WATCHOS_10_1 = 100100
 const __WATCHOS_10_2 = 100200
+const __WATCHOS_10_3 = 100300
+const __WATCHOS_10_4 = 100400
 const __WATCHOS_1_0 = 10000
 const __WATCHOS_2_0 = 20000
 const __WATCHOS_2_1 = 20100
@@ -1688,6 +1695,7 @@ const __WATCHOS_8_4 = 80400
 const __WATCHOS_8_5 = 80500
 const __WATCHOS_8_6 = 80600
 const __WATCHOS_8_7 = 80700
+const __WATCHOS_8_8 = 80800
 const __WATCHOS_9_0 = 90000
 const __WATCHOS_9_1 = 90100
 const __WATCHOS_9_2 = 90200
@@ -1702,7 +1710,7 @@ const __WINT_MAX__ = 2147483647
 const __WINT_TYPE__ = "int"
 const __WINT_WIDTH__ = 32
 const __aarch64__ = 1
-const __apple_build_version__ = 15000100
+const __apple_build_version__ = 15000309
 const __arm64 = 1
 const __arm64__ = 1
 const __clang__ = 1
@@ -1710,19 +1718,12 @@ const __clang_literal_encoding__ = "UTF-8"
 const __clang_major__ = 15
 const __clang_minor__ = 0
 const __clang_patchlevel__ = 0
-const __clang_version__ = "15.0.0 (clang-1500.1.0.2.5)"
+const __clang_version__ = "15.0.0 (clang-1500.3.9.4)"
 const __clang_wide_literal_encoding__ = "UTF-32"
 const __const = "const"
 const __has_ptrcheck = 0
+const __has_safe_buffers = 0
 const __header_inline = "inline"
-const __int16_c_suffix = "__INT16_C_SUFFIX__"
-const __int32_c_suffix = "__INT32_C_SUFFIX__"
-const __int64_c_suffix = "__INT64_C_SUFFIX__"
-const __int8_c_suffix = "__INT8_C_SUFFIX__"
-const __int_least16_t = "int16_t"
-const __int_least32_t = "int32_t"
-const __int_least64_t = "int64_t"
-const __int_least8_t = "int8_t"
 const __llvm__ = 1
 const __nonnull = "_Nonnull"
 const __null_unspecified = "_Null_unspecified"
@@ -1731,10 +1732,6 @@ const __pic__ = 2
 const __restrict = "restrict"
 const __restrict_arr = "restrict"
 const __signed = "signed"
-const __uint_least16_t = "uint16_t"
-const __uint_least32_t = "uint32_t"
-const __uint_least64_t = "uint64_t"
-const __uint_least8_t = "uint8_t"
 const __volatile = "volatile"
 const ru_first = "ru_ixrss"
 const ru_last = "ru_nivcsw"
@@ -3015,7 +3012,9 @@ type rusage_info_v6 = struct {
 	ri_pcycles                       uint64_t
 	ri_energy_nj                     uint64_t
 	ri_penergy_nj                    uint64_t
-	ri_reserved                      [14]uint64_t
+	ri_secure_time_in_system         uint64_t
+	ri_secure_ptime_in_system        uint64_t
+	ri_reserved                      [12]uint64_t
 }
 
 type rusage_info_current = struct {
@@ -3062,7 +3061,9 @@ type rusage_info_current = struct {
 	ri_pcycles                       uint64_t
 	ri_energy_nj                     uint64_t
 	ri_penergy_nj                    uint64_t
-	ri_reserved                      [14]uint64_t
+	ri_secure_time_in_system         uint64_t
+	ri_secure_ptime_in_system        uint64_t
+	ri_reserved                      [12]uint64_t
 }
 
 type rlimit = struct {
@@ -3304,6 +3305,7 @@ func HashInit(tls *libc.TLS) {
 		*(*uint8)(unsafe.Pointer(uintptr(unsafe.Pointer(&g)) + 3152 + 3 + uintptr(k))) = uint8(k)
 		goto _1
 	_1:
+		;
 		k++
 	}
 }
@@ -3335,6 +3337,7 @@ func HashUpdate(tls *libc.TLS, aData uintptr, nData uint32) {
 		i++
 		goto _1
 	_1:
+		;
 		k++
 	}
 	g.hash.i = i
@@ -3367,6 +3370,7 @@ func HashFinal(tls *libc.TLS) {
 		*(*uint8)(unsafe.Pointer(uintptr(unsafe.Pointer(&g)) + 3152 + 259 + uintptr(k))) = *(*uint8)(unsafe.Pointer(uintptr(unsafe.Pointer(&g)) + 3152 + 3 + uintptr(t)))
 		goto _1
 	_1:
+		;
 		k++
 	}
 }
@@ -3460,6 +3464,7 @@ func integerValue(tls *libc.TLS, zArg uintptr) (r int32) {
 		}
 		goto _8
 	_8:
+		;
 		i++
 	}
 	if v > int64(0x7fffffff) {
@@ -3780,6 +3785,7 @@ func speedtest1_final(tls *libc.TLS) {
 			libc.Xprintf(tls, __ccgo_ts+459, libc.VaList(bp+8, int32(*(*uint8)(unsafe.Pointer(uintptr(unsafe.Pointer(&g)) + 3152 + 259 + uintptr(i))))))
 			goto _1
 		_1:
+			;
 			i++
 		}
 		if g.hashFile != 0 && g.hashFile != libc.X__stdoutp {
@@ -4011,6 +4017,7 @@ func speedtest1_run(tls *libc.TLS) {
 							HashUpdate(tls, bp+2, uint32(2))
 							goto _2
 						_2:
+							;
 							iBlob++
 						}
 						g.nResByte += uint64(nBlob*int32(2) + int32(2))
@@ -4032,6 +4039,7 @@ func speedtest1_run(tls *libc.TLS) {
 			}
 			goto _1
 		_1:
+			;
 			i++
 		}
 	}
@@ -4113,6 +4121,7 @@ func est_square_root(tls *libc.TLS, x int32) (r int32) {
 		y0 = y1
 		goto _1
 	_1:
+		;
 		n++
 	}
 	return y0
@@ -4156,6 +4165,7 @@ func testset_main(tls *libc.TLS) {
 		speedtest1_run(tls)
 		goto _2
 	_2:
+		;
 		i++
 	}
 	speedtest1_exec(tls, __ccgo_ts+736, 0)
@@ -4178,6 +4188,7 @@ func testset_main(tls *libc.TLS) {
 		speedtest1_run(tls)
 		goto _3
 	_3:
+		;
 		i++
 	}
 	speedtest1_exec(tls, __ccgo_ts+736, 0)
@@ -4200,6 +4211,7 @@ func testset_main(tls *libc.TLS) {
 		speedtest1_run(tls)
 		goto _4
 	_4:
+		;
 		i++
 	}
 	speedtest1_exec(tls, __ccgo_ts+736, 0)
@@ -4222,6 +4234,7 @@ func testset_main(tls *libc.TLS) {
 		speedtest1_run(tls)
 		goto _5
 	_5:
+		;
 		i++
 	}
 	speedtest1_exec(tls, __ccgo_ts+736, 0)
@@ -4246,6 +4259,7 @@ func testset_main(tls *libc.TLS) {
 		speedtest1_run(tls)
 		goto _6
 	_6:
+		;
 		i++
 	}
 	speedtest1_exec(tls, __ccgo_ts+736, 0)
@@ -4270,6 +4284,7 @@ func testset_main(tls *libc.TLS) {
 		speedtest1_run(tls)
 		goto _7
 	_7:
+		;
 		i++
 	}
 	speedtest1_exec(tls, __ccgo_ts+736, 0)
@@ -4294,6 +4309,7 @@ func testset_main(tls *libc.TLS) {
 		speedtest1_run(tls)
 		goto _8
 	_8:
+		;
 		i++
 	}
 	speedtest1_exec(tls, __ccgo_ts+736, 0)
@@ -4325,6 +4341,7 @@ func testset_main(tls *libc.TLS) {
 		speedtest1_run(tls)
 		goto _9
 	_9:
+		;
 		i++
 	}
 	speedtest1_exec(tls, __ccgo_ts+736, 0)
@@ -4347,6 +4364,7 @@ func testset_main(tls *libc.TLS) {
 		speedtest1_run(tls)
 		goto _10
 	_10:
+		;
 		i++
 	}
 	speedtest1_exec(tls, __ccgo_ts+736, 0)
@@ -4368,6 +4386,7 @@ func testset_main(tls *libc.TLS) {
 		speedtest1_run(tls)
 		goto _11
 	_11:
+		;
 		i++
 	}
 	speedtest1_exec(tls, __ccgo_ts+736, 0)
@@ -4409,6 +4428,7 @@ func testset_main(tls *libc.TLS) {
 		speedtest1_run(tls)
 		goto _12
 	_12:
+		;
 		i++
 	}
 	speedtest1_exec(tls, __ccgo_ts+736, 0)
@@ -4427,6 +4447,7 @@ func testset_main(tls *libc.TLS) {
 		speedtest1_run(tls)
 		goto _13
 	_13:
+		;
 		i++
 	}
 	speedtest1_exec(tls, __ccgo_ts+736, 0)
@@ -4453,6 +4474,7 @@ func testset_main(tls *libc.TLS) {
 		speedtest1_run(tls)
 		goto _14
 	_14:
+		;
 		i++
 	}
 	speedtest1_exec(tls, __ccgo_ts+736, 0)
@@ -4471,6 +4493,7 @@ func testset_main(tls *libc.TLS) {
 		speedtest1_run(tls)
 		goto _15
 	_15:
+		;
 		i++
 	}
 	speedtest1_exec(tls, __ccgo_ts+736, 0)
@@ -4500,6 +4523,7 @@ func testset_main(tls *libc.TLS) {
 		speedtest1_run(tls)
 		goto _16
 	_16:
+		;
 		i++
 	}
 	speedtest1_exec(tls, __ccgo_ts+736, 0)
@@ -4530,6 +4554,7 @@ func testset_main(tls *libc.TLS) {
 		speedtest1_run(tls)
 		goto _18
 	_18:
+		;
 		i++
 	}
 	speedtest1_exec(tls, __ccgo_ts+736, 0)
@@ -4555,6 +4580,7 @@ func testset_main(tls *libc.TLS) {
 		speedtest1_run(tls)
 		goto _19
 	_19:
+		;
 		i++
 	}
 	if g.doBigTransactions != 0 {
@@ -4587,6 +4613,7 @@ func testset_main(tls *libc.TLS) {
 		speedtest1_run(tls)
 		goto _22
 	_22:
+		;
 		i++
 	}
 	speedtest1_exec(tls, __ccgo_ts+736, 0)
@@ -4608,6 +4635,7 @@ func testset_main(tls *libc.TLS) {
 		speedtest1_run(tls)
 		goto _23
 	_23:
+		;
 		i++
 	}
 	if g.doBigTransactions != 0 {
@@ -4727,6 +4755,7 @@ func testset_fp(tls *libc.TLS) {
 		speedtest1_run(tls)
 		goto _1
 	_1:
+		;
 		i++
 	}
 	speedtest1_exec(tls, __ccgo_ts+736, 0)
@@ -4746,6 +4775,7 @@ func testset_fp(tls *libc.TLS) {
 		speedtest1_run(tls)
 		goto _2
 	_2:
+		;
 		i++
 	}
 	speedtest1_end_test(tls)
@@ -4771,6 +4801,7 @@ func testset_fp(tls *libc.TLS) {
 		speedtest1_run(tls)
 		goto _3
 	_3:
+		;
 		i++
 	}
 	speedtest1_end_test(tls)
@@ -4830,11 +4861,13 @@ func testset_orm(tls *libc.TLS) {
 			}
 			goto _3
 		_3:
+			;
 			j++
 		}
 		speedtest1_run(tls)
 		goto _2
 	_2:
+		;
 		i++
 	}
 	speedtest1_exec(tls, __ccgo_ts+1703, 0)
@@ -4852,6 +4885,7 @@ func testset_orm(tls *libc.TLS) {
 		speedtest1_run(tls)
 		goto _4
 	_4:
+		;
 		i++
 	}
 	speedtest1_end_test(tls)
@@ -4890,10 +4924,12 @@ func testset_trigger(tls *libc.TLS) {
 			speedtest1_run(tls)
 			goto _2
 		_2:
+			;
 			ii++
 		}
 		goto _1
 	_1:
+		;
 		jj++
 	}
 	speedtest1_exec(tls, __ccgo_ts+17588, 0)
@@ -4921,10 +4957,12 @@ func testset_trigger(tls *libc.TLS) {
 			speedtest1_run(tls)
 			goto _4
 		_4:
+			;
 			ii += int32(3)
 		}
 		goto _3
 	_3:
+		;
 		jj++
 	}
 	speedtest1_end_test(tls)
@@ -4944,10 +4982,12 @@ func testset_trigger(tls *libc.TLS) {
 			speedtest1_run(tls)
 			goto _6
 		_6:
+			;
 			ii += int32(3)
 		}
 		goto _5
 	_5:
+		;
 		jj++
 	}
 	speedtest1_end_test(tls)
@@ -4967,10 +5007,12 @@ func testset_trigger(tls *libc.TLS) {
 			speedtest1_run(tls)
 			goto _8
 		_8:
+			;
 			ii += int32(3)
 		}
 		goto _7
 	_7:
+		;
 		jj++
 	}
 	speedtest1_end_test(tls)
@@ -4985,6 +5027,7 @@ func testset_trigger(tls *libc.TLS) {
 		speedtest1_run(tls)
 		goto _9
 	_9:
+		;
 		jj++
 	}
 	speedtest1_end_test(tls)
@@ -5000,6 +5043,7 @@ func testset_trigger(tls *libc.TLS) {
 		speedtest1_run(tls)
 		goto _10
 	_10:
+		;
 		jj++
 	}
 	speedtest1_exec(tls, __ccgo_ts+736, 0)
@@ -5022,6 +5066,7 @@ func testset_trigger(tls *libc.TLS) {
 		speedtest1_run(tls)
 		goto _11
 	_11:
+		;
 		jj++
 	}
 	speedtest1_end_test(tls)
@@ -5044,6 +5089,7 @@ func testset_trigger(tls *libc.TLS) {
 		speedtest1_run(tls)
 		goto _12
 	_12:
+		;
 		jj += int32(2)
 	}
 	speedtest1_end_test(tls)
@@ -5061,6 +5107,7 @@ func testset_trigger(tls *libc.TLS) {
 		speedtest1_run(tls)
 		goto _13
 	_13:
+		;
 		jj += int32(2)
 	}
 	speedtest1_end_test(tls)
@@ -5085,6 +5132,7 @@ func testset_trigger(tls *libc.TLS) {
 		speedtest1_run(tls)
 		goto _14
 	_14:
+		;
 		jj++
 	}
 	speedtest1_end_test(tls)
@@ -5102,6 +5150,7 @@ func testset_trigger(tls *libc.TLS) {
 		speedtest1_run(tls)
 		goto _15
 	_15:
+		;
 		jj += int32(2)
 	}
 	speedtest1_end_test(tls)
@@ -5116,6 +5165,7 @@ func testset_trigger(tls *libc.TLS) {
 		speedtest1_run(tls)
 		goto _16
 	_16:
+		;
 		jj += int32(2)
 	}
 	speedtest1_end_test(tls)
@@ -5145,6 +5195,7 @@ func testset_debug1(tls *libc.TLS) {
 		libc.Xprintf(tls, __ccgo_ts+19044, libc.VaList(bp+2008, i, x1, x2, bp))
 		goto _1
 	_1:
+		;
 		i++
 	}
 }
@@ -5527,6 +5578,7 @@ func main1(tls *libc.TLS, argc int32, argv uintptr) (r int32) {
 		}
 		goto _1
 	_1:
+		;
 		i++
 	}
 	if nHeap > 0 {
