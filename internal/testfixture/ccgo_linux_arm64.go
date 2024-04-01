@@ -27023,11 +27023,14 @@ const m_S_IWRITE = "S_IWUSR"
 const m_S_IWUSR = "__S_IWRITE"
 const m_S_IXUSR = "__S_IEXEC"
 const m_TCL_LINK_READ_ONLY3 = 0x80
+const m_TPIDR2_MAGIC = 0x54504902
 const m_TTY_NAME_MAX = 32
 const m_XATTR_LIST_MAX = 65536
 const m_XATTR_NAME_MAX = 255
 const m_XATTR_SIZE_MAX = 65536
 const m_ZA_MAGIC = 0x54366345
+const m_ZT_MAGIC = 0x5a544e01
+const m_ZT_SIG_REG_SIZE = 512
 const m__BITS_POSIX1_LIM_H = 1
 const m__BITS_POSIX2_LIM_H = 1
 const m__BITS_SIGACTION_H = 1
@@ -27426,6 +27429,10 @@ type T__kernel_uid16_t = uint16
 
 type T__kernel_gid16_t = uint16
 
+type T__s128 = [2]uint64
+
+type T__u128 = [2]uint64
+
 type T__le16 = uint16
 
 type T__be16 = uint16
@@ -27485,9 +27492,20 @@ type Tsve_context = struct {
 	F__reserved [2]T__u16
 }
 
+type Ttpidr2_context = struct {
+	Fhead   T_aarch64_ctx
+	Ftpidr2 T__u64
+}
+
 type Tza_context = struct {
 	Fhead       T_aarch64_ctx
 	Fvl         T__u16
+	F__reserved [3]T__u16
+}
+
+type Tzt_context = struct {
+	Fhead       T_aarch64_ctx
+	Fnregs      T__u16
 	F__reserved [3]T__u16
 }
 
