@@ -1801,7 +1801,7 @@ func (c *cpp) include(ln controlLine) {
 	}
 }
 
-func (c *cpp) hasInclude(t Token, raw string) bool {
+func (c *cpp) hasInclude(t Token, raw string) (r bool) {
 	switch {
 	case strings.HasPrefix(raw, `"`) && strings.HasSuffix(raw, `"`):
 		nm := raw[1 : len(raw)-1]
@@ -1835,14 +1835,15 @@ func (c *cpp) hasFile(t Token, fn string) bool {
 	case fs != nil:
 		f, err := fs.Open(fn)
 		if err != nil {
-			return false
+			break
 		}
 
 		defer f.Close()
 		if fi, err = f.Stat(); err != nil {
 			return false
 		}
-	default:
+	}
+	if fi == nil {
 		if fi, err = os.Stat(fn); err != nil {
 			return false
 		}
@@ -1905,7 +1906,7 @@ func (c *cpp) ifGroup(ig *ifGroup) bool {
 	}
 }
 
-func (c *cpp) eval(s0 []Token) interface{} {
+func (c *cpp) eval(s0 []Token) (r interface{}) {
 	s1 := cppTokens(tokens2CppTokens(s0, false))
 	p := &cppTokens{}
 	c.expand(false, true, &s1, p)
