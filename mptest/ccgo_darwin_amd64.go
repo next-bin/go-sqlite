@@ -1,4 +1,4 @@
-// Code generated for darwin/amd64 by 'generator -DNDEBUG -I /var/folders/4f/mc8mts295pqf7gmnfcwh6g8w0000gn/T/libsqlite3/sqlite-src-3450100 -ignore-unsupported-alignment -o mptest/ccgo_darwin_amd64.go /var/folders/4f/mc8mts295pqf7gmnfcwh6g8w0000gn/T/libsqlite3/sqlite-src-3450100/mptest/mptest.c -lsqlite3', DO NOT EDIT.
+// Code generated for darwin/amd64 by 'generator -DNDEBUG -I /tmp/libsqlite3/sqlite-src-3450200 -ignore-unsupported-alignment -o mptest/ccgo_darwin_amd64.go /tmp/libsqlite3/sqlite-src-3450200/mptest/mptest.c -lsqlite3', DO NOT EDIT.
 
 //go:build darwin && amd64
 // +build darwin,amd64
@@ -278,6 +278,8 @@ const MAC_OS_VERSION_13_6 = "__MAC_13_6"
 const MAC_OS_VERSION_14_0 = "__MAC_14_0"
 const MAC_OS_VERSION_14_1 = "__MAC_14_1"
 const MAC_OS_VERSION_14_2 = "__MAC_14_2"
+const MAC_OS_VERSION_14_3 = "__MAC_14_3"
+const MAC_OS_VERSION_14_4 = "__MAC_14_4"
 const MAC_OS_X_VERSION_10_0 = "__MAC_10_0"
 const MAC_OS_X_VERSION_10_1 = "__MAC_10_1"
 const MAC_OS_X_VERSION_10_10 = "__MAC_10_10"
@@ -734,7 +736,7 @@ const SQLITE_SHM_LOCK = 2
 const SQLITE_SHM_NLOCK = 8
 const SQLITE_SHM_SHARED = 4
 const SQLITE_SHM_UNLOCK = 1
-const SQLITE_SOURCE_ID = "2024-01-30 16:01:20 e876e51a0ed5c5b3126f52e532044363a014bc594cfefa87ffb5b82257ccalt1"
+const SQLITE_SOURCE_ID = "2024-03-12 11:06:23 d8cd6d49b46a395b13955387d05e9e1a2a47e54fb99f3c9b59835bbefad6alt1"
 const SQLITE_STATUS_MALLOC_COUNT = 9
 const SQLITE_STATUS_MALLOC_SIZE = 5
 const SQLITE_STATUS_MEMORY_USED = 0
@@ -811,8 +813,8 @@ const SQLITE_UTF16BE = 3
 const SQLITE_UTF16LE = 2
 const SQLITE_UTF16_ALIGNED = 8
 const SQLITE_UTF8 = 1
-const SQLITE_VERSION = "3.45.1"
-const SQLITE_VERSION_NUMBER = 3045001
+const SQLITE_VERSION = "3.45.2"
+const SQLITE_VERSION_NUMBER = 3045002
 const SQLITE_VTAB_CONSTRAINT_SUPPORT = 1
 const SQLITE_VTAB_DIRECTONLY = 3
 const SQLITE_VTAB_INNOCUOUS = 2
@@ -1118,7 +1120,6 @@ const _SC_XOPEN_UNIX = 115
 const _SC_XOPEN_VERSION = 116
 const _SC_XOPEN_XCU_VERSION = 121
 const _STRUCT_MCONTEXT = "_STRUCT_MCONTEXT64"
-const _USE_FORTIFY_LEVEL = 2
 const _V6_ILP32_OFF32 = "__ILP32_OFF32"
 const _V6_ILP32_OFFBIG = "__ILP32_OFFBIG"
 const _V6_LP64_OFF64 = "__LP64_OFF64"
@@ -1178,6 +1179,8 @@ const __BRIDGEOS_7_6 = 70600
 const __BRIDGEOS_8_0 = 80000
 const __BRIDGEOS_8_1 = 80100
 const __BRIDGEOS_8_2 = 80200
+const __BRIDGEOS_8_3 = 80300
+const __BRIDGEOS_8_4 = 80400
 const __BYTE_ORDER__ = "__ORDER_LITTLE_ENDIAN__"
 const __CCGO__ = 1
 const __CHAR_BIT__ = 8
@@ -1239,6 +1242,8 @@ const __DRIVERKIT_22_6 = 220600
 const __DRIVERKIT_23_0 = 230000
 const __DRIVERKIT_23_1 = 230100
 const __DRIVERKIT_23_2 = 230200
+const __DRIVERKIT_23_3 = 230300
+const __DRIVERKIT_23_4 = 230400
 const __DYNAMIC__ = 1
 const __ENABLE_LEGACY_MAC_AVAILABILITY = 1
 const __ENVIRONMENT_MAC_OS_X_VERSION_MIN_REQUIRED__ = 140000
@@ -1339,16 +1344,12 @@ const __INT_FAST8_MAX__ = 127
 const __INT_FAST8_WIDTH__ = 8
 const __INT_LEAST16_FMTd__ = "hd"
 const __INT_LEAST16_FMTi__ = "hi"
-const __INT_LEAST16_MAX = "INT16_MAX"
 const __INT_LEAST16_MAX__ = 32767
-const __INT_LEAST16_MIN = "INT16_MIN"
 const __INT_LEAST16_TYPE__ = "short"
 const __INT_LEAST16_WIDTH__ = 16
 const __INT_LEAST32_FMTd__ = "d"
 const __INT_LEAST32_FMTi__ = "i"
-const __INT_LEAST32_MAX = "INT32_MAX"
 const __INT_LEAST32_MAX__ = 2147483647
-const __INT_LEAST32_MIN = "INT32_MIN"
 const __INT_LEAST32_TYPE__ = "int"
 const __INT_LEAST32_WIDTH__ = 32
 const __INT_LEAST64_FMTd__ = "lld"
@@ -1359,9 +1360,7 @@ const __INT_LEAST64_MIN = "INT64_MIN"
 const __INT_LEAST64_WIDTH__ = 64
 const __INT_LEAST8_FMTd__ = "hhd"
 const __INT_LEAST8_FMTi__ = "hhi"
-const __INT_LEAST8_MAX = "INT8_MAX"
 const __INT_LEAST8_MAX__ = 127
-const __INT_LEAST8_MIN = "INT8_MIN"
 const __INT_LEAST8_WIDTH__ = 8
 const __INT_MAX__ = 2147483647
 const __INT_WIDTH__ = 32
@@ -1403,6 +1402,8 @@ const __IPHONE_15_3 = 150300
 const __IPHONE_15_4 = 150400
 const __IPHONE_15_5 = 150500
 const __IPHONE_15_6 = 150600
+const __IPHONE_15_7 = 150700
+const __IPHONE_15_8 = 150800
 const __IPHONE_16_0 = 160000
 const __IPHONE_16_1 = 160100
 const __IPHONE_16_2 = 160200
@@ -1414,6 +1415,8 @@ const __IPHONE_16_7 = 160700
 const __IPHONE_17_0 = 170000
 const __IPHONE_17_1 = 170100
 const __IPHONE_17_2 = 170200
+const __IPHONE_17_3 = 170300
+const __IPHONE_17_4 = 170400
 const __IPHONE_2_0 = 20000
 const __IPHONE_2_1 = 20100
 const __IPHONE_2_2 = 20200
@@ -1520,7 +1523,9 @@ const __MAC_13_6 = 130600
 const __MAC_14_0 = 140000
 const __MAC_14_1 = 140100
 const __MAC_14_2 = 140200
-const __MAC_OS_X_VERSION_MAX_ALLOWED = "__MAC_14_2"
+const __MAC_14_3 = 140300
+const __MAC_14_4 = 140400
+const __MAC_OS_X_VERSION_MAX_ALLOWED = "__MAC_14_4"
 const __MAC_OS_X_VERSION_MIN_REQUIRED = "__ENVIRONMENT_MAC_OS_X_VERSION_MIN_REQUIRED__"
 const __MMX__ = 1
 const __NO_INLINE__ = 1
@@ -1651,6 +1656,8 @@ const __TVOS_16_6 = 160600
 const __TVOS_17_0 = 170000
 const __TVOS_17_1 = 170100
 const __TVOS_17_2 = 170200
+const __TVOS_17_3 = 170300
+const __TVOS_17_4 = 170400
 const __TVOS_9_0 = 90000
 const __TVOS_9_1 = 90100
 const __TVOS_9_2 = 90200
@@ -1713,13 +1720,11 @@ const __UINT_LEAST16_FMTX__ = "hX"
 const __UINT_LEAST16_FMTo__ = "ho"
 const __UINT_LEAST16_FMTu__ = "hu"
 const __UINT_LEAST16_FMTx__ = "hx"
-const __UINT_LEAST16_MAX = "UINT16_MAX"
 const __UINT_LEAST16_MAX__ = 65535
 const __UINT_LEAST32_FMTX__ = "X"
 const __UINT_LEAST32_FMTo__ = "o"
 const __UINT_LEAST32_FMTu__ = "u"
 const __UINT_LEAST32_FMTx__ = "x"
-const __UINT_LEAST32_MAX = "UINT32_MAX"
 const __UINT_LEAST32_MAX__ = 4294967295
 const __UINT_LEAST64_FMTX__ = "llX"
 const __UINT_LEAST64_FMTo__ = "llo"
@@ -1731,14 +1736,16 @@ const __UINT_LEAST8_FMTX__ = "hhX"
 const __UINT_LEAST8_FMTo__ = "hho"
 const __UINT_LEAST8_FMTu__ = "hhu"
 const __UINT_LEAST8_FMTx__ = "hhx"
-const __UINT_LEAST8_MAX = "UINT8_MAX"
 const __UINT_LEAST8_MAX__ = 255
 const __USER_LABEL_PREFIX__ = "_"
-const __VERSION__ = "Apple LLVM 15.0.0 (clang-1500.1.0.2.5)"
+const __VERSION__ = "Apple LLVM 15.0.0 (clang-1500.3.9.4)"
 const __VISIONOS_1_0 = 10000
+const __VISIONOS_1_1 = 10100
 const __WATCHOS_10_0 = 100000
 const __WATCHOS_10_1 = 100100
 const __WATCHOS_10_2 = 100200
+const __WATCHOS_10_3 = 100300
+const __WATCHOS_10_4 = 100400
 const __WATCHOS_1_0 = 10000
 const __WATCHOS_2_0 = 20000
 const __WATCHOS_2_1 = 20100
@@ -1772,6 +1779,7 @@ const __WATCHOS_8_4 = 80400
 const __WATCHOS_8_5 = 80500
 const __WATCHOS_8_6 = 80600
 const __WATCHOS_8_7 = 80700
+const __WATCHOS_8_8 = 80800
 const __WATCHOS_9_0 = 90000
 const __WATCHOS_9_1 = 90100
 const __WATCHOS_9_2 = 90200
@@ -1787,28 +1795,21 @@ const __WINT_TYPE__ = "int"
 const __WINT_WIDTH__ = 32
 const __amd64 = 1
 const __amd64__ = 1
-const __apple_build_version__ = 15000100
+const __apple_build_version__ = 15000309
 const __clang__ = 1
 const __clang_literal_encoding__ = "UTF-8"
 const __clang_major__ = 15
 const __clang_minor__ = 0
 const __clang_patchlevel__ = 0
-const __clang_version__ = "15.0.0 (clang-1500.1.0.2.5)"
+const __clang_version__ = "15.0.0 (clang-1500.3.9.4)"
 const __clang_wide_literal_encoding__ = "UTF-32"
 const __code_model_small__ = 1
 const __const = "const"
 const __core2 = 1
 const __core2__ = 1
 const __has_ptrcheck = 0
+const __has_safe_buffers = 0
 const __header_inline = "inline"
-const __int16_c_suffix = "__INT16_C_SUFFIX__"
-const __int32_c_suffix = "__INT32_C_SUFFIX__"
-const __int64_c_suffix = "__INT64_C_SUFFIX__"
-const __int8_c_suffix = "__INT8_C_SUFFIX__"
-const __int_least16_t = "int16_t"
-const __int_least32_t = "int32_t"
-const __int_least64_t = "int64_t"
-const __int_least8_t = "int8_t"
 const __llvm__ = 1
 const __nonnull = "_Nonnull"
 const __null_unspecified = "_Null_unspecified"
@@ -1818,10 +1819,6 @@ const __restrict = "restrict"
 const __restrict_arr = "restrict"
 const __signed = "signed"
 const __tune_core2__ = 1
-const __uint_least16_t = "uint16_t"
-const __uint_least32_t = "uint32_t"
-const __uint_least64_t = "uint64_t"
-const __uint_least8_t = "uint8_t"
 const __volatile = "volatile"
 const __x86_64 = 1
 const __x86_64__ = 1
@@ -3579,7 +3576,9 @@ type rusage_info_v6 = struct {
 	ri_pcycles                       uint64_t
 	ri_energy_nj                     uint64_t
 	ri_penergy_nj                    uint64_t
-	ri_reserved                      [14]uint64_t
+	ri_secure_time_in_system         uint64_t
+	ri_secure_ptime_in_system        uint64_t
+	ri_reserved                      [12]uint64_t
 }
 
 type rusage_info_current = struct {
@@ -3626,7 +3625,9 @@ type rusage_info_current = struct {
 	ri_pcycles                       uint64_t
 	ri_energy_nj                     uint64_t
 	ri_penergy_nj                    uint64_t
-	ri_reserved                      [14]uint64_t
+	ri_secure_time_in_system         uint64_t
+	ri_secure_ptime_in_system        uint64_t
+	ri_reserved                      [12]uint64_t
 }
 
 type rlimit = struct {
@@ -3773,6 +3774,7 @@ func printWithPrefix(tls *libc.TLS, pOut uintptr, zPrefix uintptr, zMsg uintptr)
 			}
 			goto _1
 		_1:
+			;
 			i++
 		}
 		libc.Xfprintf(tls, pOut, __ccgo_ts, libc.VaList(bp+8, zPrefix, i, zMsg))
@@ -4400,6 +4402,7 @@ func stringAppendTerm(tls *libc.TLS, p uintptr, z uintptr) {
 		}
 		goto _1
 	_1:
+		;
 		i++
 	}
 	if i > 0 && int32(*(*int8)(unsafe.Pointer(z + uintptr(i)))) == 0 {
@@ -4415,6 +4418,7 @@ func stringAppendTerm(tls *libc.TLS, p uintptr, z uintptr) {
 			}
 			goto _12
 		_12:
+			;
 			i++
 		}
 		if *(*int8)(unsafe.Pointer(z + uintptr(i))) != 0 {
@@ -4448,6 +4452,7 @@ func evalCallback(tls *libc.TLS, pCData uintptr, argc int32, argv uintptr, azCol
 		stringAppendTerm(tls, p, *(*uintptr)(unsafe.Pointer(argv + uintptr(i)*8)))
 		goto _1
 	_1:
+		;
 		i++
 	}
 	return 0
@@ -4702,6 +4707,7 @@ _6:
 	v1 = v5
 	goto _2
 _2:
+	;
 	if v1 != 0 || int32(*(*int8)(unsafe.Pointer(z))) == int32('/') && int32(*(*int8)(unsafe.Pointer(z + 1))) == int32('*') {
 		inC = 0
 		if int32(*(*int8)(unsafe.Pointer(z))) == int32('/') {
@@ -4762,6 +4768,7 @@ _2:
 				}
 				goto _21
 			_21:
+				;
 				n++
 			}
 			if *(*int8)(unsafe.Pointer(z + uintptr(n))) != 0 {
@@ -4787,6 +4794,7 @@ _2:
 					}
 					goto _22
 				_22:
+					;
 					n++
 				}
 			} else {
@@ -4817,6 +4825,7 @@ _2:
 					}
 					goto _23
 				_23:
+					;
 					n++
 				}
 			}
@@ -4866,6 +4875,7 @@ func extractToken(tls *libc.TLS, zIn uintptr, nIn int32, zOut uintptr, nOut int3
 		*(*int8)(unsafe.Pointer(zOut + uintptr(i))) = *(*int8)(unsafe.Pointer(zIn + uintptr(i)))
 		goto _1
 	_1:
+		;
 		i++
 	}
 	*(*int8)(unsafe.Pointer(zOut + uintptr(i))) = 0
@@ -5058,6 +5068,7 @@ func filenameTail(tls *libc.TLS, z uintptr) (r uintptr) {
 		}
 		goto _1
 	_1:
+		;
 		i++
 	}
 	return z + uintptr(j)
@@ -5083,6 +5094,7 @@ func booleanValue(tls *libc.TLS, zArg uintptr) (r int32) {
 		}
 		goto _1
 	_1:
+		;
 		i++
 	}
 	if i > 0 && int32(*(*int8)(unsafe.Pointer(zArg + uintptr(i)))) == 0 {
@@ -5160,6 +5172,7 @@ func runScript(tls *libc.TLS, iClient int32, taskId int32, zScript uintptr, zFil
 		v2 = v6
 		goto _3
 	_3:
+		;
 		if v2 != 0 || c == int32('/') && int32(*(*int8)(unsafe.Pointer(zScript + uintptr(ii+int32(1))))) == int32('*') {
 			ii += len1
 			continue
@@ -5233,6 +5246,7 @@ func runScript(tls *libc.TLS, iClient int32, taskId int32, zScript uintptr, zFil
 			n += extractToken(tls, zScript+uintptr(ii)+uintptr(2)+uintptr(n), len1-int32(2)-n, bp+1054+uintptr(nArg)*100, int32(100))
 			goto _21
 		_21:
+			;
 			nArg++
 		}
 		j = nArg
@@ -5245,6 +5259,7 @@ func runScript(tls *libc.TLS, iClient int32, taskId int32, zScript uintptr, zFil
 			*(*int8)(unsafe.Pointer(bp + 1054 + uintptr(v33)*100)) = 0
 			goto _32
 		_32:
+			;
 			j++
 		}
 		/*
@@ -5330,6 +5345,7 @@ func runScript(tls *libc.TLS, iClient int32, taskId int32, zScript uintptr, zFil
 									}
 									goto _34
 								_34:
+									;
 									jj++
 								}
 								zAns += uintptr(jj)
@@ -5374,6 +5390,7 @@ func runScript(tls *libc.TLS, iClient int32, taskId int32, zScript uintptr, zFil
 										}
 										goto _45
 									_45:
+										;
 										jj1++
 									}
 									zAns1 += uintptr(jj1)
@@ -5409,6 +5426,7 @@ func runScript(tls *libc.TLS, iClient int32, taskId int32, zScript uintptr, zFil
 													}
 													goto _56
 												_56:
+													;
 													k--
 												}
 												if k > 0 {
@@ -5459,6 +5477,7 @@ func runScript(tls *libc.TLS, iClient int32, taskId int32, zScript uintptr, zFil
 													}
 													goto _58
 												_58:
+													;
 													jj2++
 												}
 												logMessage(tls, __ccgo_ts+1202, libc.VaList(bp+1264, len1-jj2, zScript+uintptr(ii)+uintptr(jj2)))
@@ -5494,6 +5513,7 @@ func runScript(tls *libc.TLS, iClient int32, taskId int32, zScript uintptr, zFil
 														}
 														goto _69
 													_69:
+														;
 														jj3++
 													}
 													pStmt = prepareSql(tls, __ccgo_ts+1414, libc.VaList(bp+1264, len1-jj3, zScript+uintptr(ii)+uintptr(jj3)))
@@ -5689,6 +5709,7 @@ func findOption(tls *libc.TLS, azArg uintptr, pnArg uintptr, zOption uintptr, ha
 		}
 		goto _1
 	_1:
+		;
 		i++
 	}
 	return zReturn
@@ -5714,6 +5735,7 @@ func usage(tls *libc.TLS, argv0 uintptr) {
 		}
 		goto _1
 	_1:
+		;
 		i++
 	}
 	libc.Xfprintf(tls, libc.X__stderrp, __ccgo_ts+1678, libc.VaList(bp+8, zTail))
@@ -5738,6 +5760,7 @@ func unrecognizedArguments(tls *libc.TLS, argv0 uintptr, nArg int32, azArg uintp
 		libc.Xfprintf(tls, libc.X__stderrp, __ccgo_ts+2317, libc.VaList(bp+8, *(*uintptr)(unsafe.Pointer(azArg + uintptr(i)*8))))
 		goto _1
 	_1:
+		;
 		i++
 	}
 	libc.Xfprintf(tls, libc.X__stderrp, __ccgo_ts+2321, 0)
@@ -5827,6 +5850,7 @@ func main1(tls *libc.TLS, argc int32, argv uintptr) (r int32) {
 				libc.Xprintf(tls, __ccgo_ts+2317, libc.VaList(bp+40, *(*uintptr)(unsafe.Pointer(argv + uintptr(i)*8))))
 				goto _1
 			_1:
+				;
 				i++
 			}
 			libc.Xprintf(tls, __ccgo_ts+2321, 0)
@@ -5841,6 +5865,7 @@ func main1(tls *libc.TLS, argc int32, argv uintptr) (r int32) {
 				libc.Xprintf(tls, __ccgo_ts+2722, libc.VaList(bp+40, zCOption))
 				goto _2
 			_2:
+				;
 				i++
 			}
 			libc.Xfflush(tls, libc.X__stdoutp)
@@ -5861,6 +5886,7 @@ func main1(tls *libc.TLS, argc int32, argv uintptr) (r int32) {
 			}
 			goto _6
 		_6:
+			;
 			if v5 = rc != 0; v5 {
 				nTry++
 				v4 = nTry
@@ -5945,6 +5971,7 @@ func main1(tls *libc.TLS, argc int32, argv uintptr) (r int32) {
 			}
 			goto _8
 		_8:
+			;
 			iRep++
 		}
 		libsqlite3.Xsqlite3_free(tls, *(*uintptr)(unsafe.Pointer(bp + 8)))
@@ -5994,6 +6021,7 @@ func main1(tls *libc.TLS, argc int32, argv uintptr) (r int32) {
 			libc.Xprintf(tls, __ccgo_ts+2317, libc.VaList(bp+40, *(*uintptr)(unsafe.Pointer(argv + uintptr(i)*8))))
 			goto _11
 		_11:
+			;
 			i++
 		}
 		libc.Xprintf(tls, __ccgo_ts+2321, 0)
@@ -6012,4 +6040,4 @@ func __ccgo_fp(f interface{}) uintptr {
 
 var __ccgo_ts = (*reflect.StringHeader)(unsafe.Pointer(&__ccgo_ts1)).Data
 
-var __ccgo_ts1 = "%s%.*s\n\x00%s:ERROR: \x00%s:FATAL: \x00UPDATE client SET wantHalt=1;\x00%s: \x00main\x00timeout after %dms\x00[%.*s]\x00(info) %s\x00(errcode=%d) %s\x00%s\n%s\n\x00out of memory\x00 \x00nil\x00'\x00error(%d)\x00BEGIN IMMEDIATE\x00in startScript: %s\x00UPDATE counters SET nError=nError+%d, nTest=nTest+%d\x00SELECT 1 FROM client WHERE id=%d AND wantHalt\x00DELETE FROM client WHERE id=%d\x00COMMIT TRANSACTION;\x00SELECT script, id, name FROM task WHERE client=%d AND starttime IS NULL ORDER BY id LIMIT 1\x00%s\x00UPDATE task   SET starttime=strftime('%%Y-%%m-%%d %%H:%%M:%%f','now') WHERE id=%d;\x00Waited over 30 seconds with no work.  Giving up.\x00DELETE FROM client WHERE id=%d; COMMIT;\x00COMMIT\x00UPDATE task   SET endtime=strftime('%%Y-%%m-%%d %%H:%%M:%%f','now') WHERE id=%d;\x00INSERT OR IGNORE INTO client VALUES(%d,0)\x00%s \"%s\" --client %d --trace %d\x00%z --sqltrace\x00%z --sync\x00%z --vfs \"%s\"\x00system('%q')\x00%z &\x00system() fails with error code %d\x00rb\x00cannot open \"%s\" for reading\x00--end\x00--endif\x00--else\x00--if\x00SELECT 1 FROM task WHERE client=%d   AND client IN (SELECT id FROM client)  AND endtime IS NULL\x00SELECT 1 FROM task WHERE client IN (SELECT id FROM client)   AND endtime IS NULL\x00\x00%stimeout waiting for client %d\x00%stimeout waiting for all clients\x00on\x00yes\x00off\x00no\x00unknown boolean: [%s]\x00%.*s\x00sleep\x00exit\x00testcase\x00finish\x00reset\x00match\x00line %d of %s:\nExpected [%.*s]\n     Got [%s]\x00glob\x00notglob\x00line %d of %s:\nExpected [%s]\n     Got [%s]\x00output\x00source\x00%.*s/%s\x00begin script [%s]\n\x00end script [%s]\n\x00print\x00if\x00SELECT %.*s\x00else\x00endif\x00start\x00wait\x00line %d of %s\n\x00task\x00line %d of %s: bad client number: %d\x00%s:%d\x00INSERT INTO task(client,script,name) VALUES(%d,'%q',%Q)\x00breakpoint\x00show-sql-errors\x00line %d of %s: unknown command --%s\x00command-line option \"--%s\" requires an argument\x00Usage: %s DATABASE ?OPTIONS? ?SCRIPT?\n\x00Options:\n   --errlog FILENAME           Write errors to FILENAME\n   --journalmode MODE          Use MODE as the journal_mode\n   --log FILENAME              Log messages to FILENAME\n   --quiet                     Suppress unnecessary output\n   --vfs NAME                  Use NAME as the VFS\n   --repeat N                  Repeat the test N times\n   --sqltrace                  Enable SQL tracing\n   --sync                      Enable synchronous disk writes\n   --timeout MILLISEC          Busy timeout is MILLISEC\n   --trace BOOLEAN             Enable or disable tracing\n\x00%s: unrecognized arguments:\x00 %s\x00\n\x00*.test\x002024-01-30 16:01:20 e876e51a0ed5c5b3126f52e532044363a014bc594cfefa87ffb5b82257ccalt1\x00SQLite library and header mismatch\nLibrary: %s\nHeader:  %s\n\x00%05d.mptest\x00journalmode\x00repeat\x00vfs\x00client\x00errlog\x00log\x00trace\x00quiet\x00timeout\x00sqltrace\x00sync\x00a\x00illegal client number: %d\n\x00%05d.client%02d\x00BEGIN: %s\x00With SQLite 3.45.1 2024-01-30 16:01:20 e876e51a0ed5c5b3126f52e532044363a014bc594cfefa87ffb5b82257ccalt1\n\x00-DSQLITE_%s\n\x00still \x00... %strying to unlink '%s'\n\x00unable to unlink '%s' after %d attempts\n\x00cannot open [%s]\x00PRAGMA journal_mode=%Q;\x00PRAGMA synchronous=OFF\x00vfsname\x00eval\x00start-client\x00begin %s (%d)\x00end %s (%d)\x00end-client\x00missing script filename\x00DROP TABLE IF EXISTS task;\nDROP TABLE IF EXISTS counters;\nDROP TABLE IF EXISTS client;\nCREATE TABLE task(\n  id INTEGER PRIMARY KEY,\n  name TEXT,\n  client INTEGER,\n  starttime DATE,\n  endtime DATE,\n  script TEXT\n);CREATE INDEX task_i1 ON task(client, starttime);\nCREATE INDEX task_i2 ON task(client, endtime);\nCREATE TABLE counters(nError,nTest);\nINSERT INTO counters VALUES(0,0);\nCREATE TABLE client(id INTEGER PRIMARY KEY, wantHalt);\n\x00begin script [%s] cycle %d\n\x00end script [%s] cycle %d\n\x00during shutdown...\n\x00UPDATE client SET wantHalt=1\x00SELECT 1 FROM client\x00SELECT nError, nTest FROM counters\x00Summary: %d errors out of %d tests\n\x00END: %s\x00"
+var __ccgo_ts1 = "%s%.*s\n\x00%s:ERROR: \x00%s:FATAL: \x00UPDATE client SET wantHalt=1;\x00%s: \x00main\x00timeout after %dms\x00[%.*s]\x00(info) %s\x00(errcode=%d) %s\x00%s\n%s\n\x00out of memory\x00 \x00nil\x00'\x00error(%d)\x00BEGIN IMMEDIATE\x00in startScript: %s\x00UPDATE counters SET nError=nError+%d, nTest=nTest+%d\x00SELECT 1 FROM client WHERE id=%d AND wantHalt\x00DELETE FROM client WHERE id=%d\x00COMMIT TRANSACTION;\x00SELECT script, id, name FROM task WHERE client=%d AND starttime IS NULL ORDER BY id LIMIT 1\x00%s\x00UPDATE task   SET starttime=strftime('%%Y-%%m-%%d %%H:%%M:%%f','now') WHERE id=%d;\x00Waited over 30 seconds with no work.  Giving up.\x00DELETE FROM client WHERE id=%d; COMMIT;\x00COMMIT\x00UPDATE task   SET endtime=strftime('%%Y-%%m-%%d %%H:%%M:%%f','now') WHERE id=%d;\x00INSERT OR IGNORE INTO client VALUES(%d,0)\x00%s \"%s\" --client %d --trace %d\x00%z --sqltrace\x00%z --sync\x00%z --vfs \"%s\"\x00system('%q')\x00%z &\x00system() fails with error code %d\x00rb\x00cannot open \"%s\" for reading\x00--end\x00--endif\x00--else\x00--if\x00SELECT 1 FROM task WHERE client=%d   AND client IN (SELECT id FROM client)  AND endtime IS NULL\x00SELECT 1 FROM task WHERE client IN (SELECT id FROM client)   AND endtime IS NULL\x00\x00%stimeout waiting for client %d\x00%stimeout waiting for all clients\x00on\x00yes\x00off\x00no\x00unknown boolean: [%s]\x00%.*s\x00sleep\x00exit\x00testcase\x00finish\x00reset\x00match\x00line %d of %s:\nExpected [%.*s]\n     Got [%s]\x00glob\x00notglob\x00line %d of %s:\nExpected [%s]\n     Got [%s]\x00output\x00source\x00%.*s/%s\x00begin script [%s]\n\x00end script [%s]\n\x00print\x00if\x00SELECT %.*s\x00else\x00endif\x00start\x00wait\x00line %d of %s\n\x00task\x00line %d of %s: bad client number: %d\x00%s:%d\x00INSERT INTO task(client,script,name) VALUES(%d,'%q',%Q)\x00breakpoint\x00show-sql-errors\x00line %d of %s: unknown command --%s\x00command-line option \"--%s\" requires an argument\x00Usage: %s DATABASE ?OPTIONS? ?SCRIPT?\n\x00Options:\n   --errlog FILENAME           Write errors to FILENAME\n   --journalmode MODE          Use MODE as the journal_mode\n   --log FILENAME              Log messages to FILENAME\n   --quiet                     Suppress unnecessary output\n   --vfs NAME                  Use NAME as the VFS\n   --repeat N                  Repeat the test N times\n   --sqltrace                  Enable SQL tracing\n   --sync                      Enable synchronous disk writes\n   --timeout MILLISEC          Busy timeout is MILLISEC\n   --trace BOOLEAN             Enable or disable tracing\n\x00%s: unrecognized arguments:\x00 %s\x00\n\x00*.test\x002024-03-12 11:06:23 d8cd6d49b46a395b13955387d05e9e1a2a47e54fb99f3c9b59835bbefad6alt1\x00SQLite library and header mismatch\nLibrary: %s\nHeader:  %s\n\x00%05d.mptest\x00journalmode\x00repeat\x00vfs\x00client\x00errlog\x00log\x00trace\x00quiet\x00timeout\x00sqltrace\x00sync\x00a\x00illegal client number: %d\n\x00%05d.client%02d\x00BEGIN: %s\x00With SQLite 3.45.2 2024-03-12 11:06:23 d8cd6d49b46a395b13955387d05e9e1a2a47e54fb99f3c9b59835bbefad6alt1\n\x00-DSQLITE_%s\n\x00still \x00... %strying to unlink '%s'\n\x00unable to unlink '%s' after %d attempts\n\x00cannot open [%s]\x00PRAGMA journal_mode=%Q;\x00PRAGMA synchronous=OFF\x00vfsname\x00eval\x00start-client\x00begin %s (%d)\x00end %s (%d)\x00end-client\x00missing script filename\x00DROP TABLE IF EXISTS task;\nDROP TABLE IF EXISTS counters;\nDROP TABLE IF EXISTS client;\nCREATE TABLE task(\n  id INTEGER PRIMARY KEY,\n  name TEXT,\n  client INTEGER,\n  starttime DATE,\n  endtime DATE,\n  script TEXT\n);CREATE INDEX task_i1 ON task(client, starttime);\nCREATE INDEX task_i2 ON task(client, endtime);\nCREATE TABLE counters(nError,nTest);\nINSERT INTO counters VALUES(0,0);\nCREATE TABLE client(id INTEGER PRIMARY KEY, wantHalt);\n\x00begin script [%s] cycle %d\n\x00end script [%s] cycle %d\n\x00during shutdown...\n\x00UPDATE client SET wantHalt=1\x00SELECT 1 FROM client\x00SELECT nError, nTest FROM counters\x00Summary: %d errors out of %d tests\n\x00END: %s\x00"
