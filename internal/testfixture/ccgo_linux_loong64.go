@@ -43347,7 +43347,7 @@ func _postToParent(tls *libc.TLS, p uintptr, pScript uintptr) {
 	(*TEvalEvent)(unsafe.Pointer(pEvent)).FzScript = pEvent + 1*32
 	libc.Xmemcpy(tls, (*TEvalEvent)(unsafe.Pointer(pEvent)).FzScript, zMsg, uint64(*(*int32)(unsafe.Pointer(bp))+int32(1)))
 	(*TEvalEvent)(unsafe.Pointer(pEvent)).Finterp = (*TSqlThread)(unsafe.Pointer(p)).Finterp
-	libtcl8_6.XTcl_ThreadQueueEvent(tls, (*TSqlThread)(unsafe.Pointer(p)).Fparent, pEvent, int32(_TCL_QUEUE_TAIL))
+	libtcl8_6.XTcl_ThreadQueueEvent(tls, (*TSqlThread)(unsafe.Pointer(p)).Fparent, pEvent, _TCL_QUEUE_TAIL)
 	libtcl8_6.XTcl_ThreadAlert(tls, (*TSqlThread)(unsafe.Pointer(p)).Fparent)
 }
 
@@ -43489,7 +43489,7 @@ func _sqlthread_parent(tls *libc.TLS, clientData TClientData, interp uintptr, ob
 	(*TEvalEvent)(unsafe.Pointer(pEvent)).FzScript = pEvent + 1*32
 	libc.Xmemcpy(tls, (*TEvalEvent)(unsafe.Pointer(pEvent)).FzScript, zMsg, uint64(*(*int32)(unsafe.Pointer(bp))+int32(1)))
 	(*TEvalEvent)(unsafe.Pointer(pEvent)).Finterp = (*TSqlThread)(unsafe.Pointer(p)).Finterp
-	libtcl8_6.XTcl_ThreadQueueEvent(tls, (*TSqlThread)(unsafe.Pointer(p)).Fparent, pEvent, int32(_TCL_QUEUE_TAIL))
+	libtcl8_6.XTcl_ThreadQueueEvent(tls, (*TSqlThread)(unsafe.Pointer(p)).Fparent, pEvent, _TCL_QUEUE_TAIL)
 	libtcl8_6.XTcl_ThreadAlert(tls, (*TSqlThread)(unsafe.Pointer(p)).Fparent)
 	return m_TCL_OK
 }
