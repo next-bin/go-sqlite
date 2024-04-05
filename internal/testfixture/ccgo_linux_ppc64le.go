@@ -15740,7 +15740,7 @@ func _test_getrusage(tls *libc.TLS, clientData uintptr, interp uintptr, objc int
 	var _ /* buf at bp+0 */ [1024]uint8
 	var _ /* r at bp+1024 */ Trusage
 	libc.Xmemset(tls, bp+1024, 0, uint64(144))
-	libc.Xgetrusage(tls, int32(_RUSAGE_SELF), bp+1024)
+	libc.Xgetrusage(tls, _RUSAGE_SELF, bp+1024)
 	x_sqlite3_snprintf(tls, int32(1024), bp, __ccgo_ts+4091, libc.VaList(bp+1176, int32((*(*Trusage)(unsafe.Pointer(bp + 1024))).Fru_utime.Ftv_sec), int32((*(*Trusage)(unsafe.Pointer(bp + 1024))).Fru_utime.Ftv_usec), int32((*(*Trusage)(unsafe.Pointer(bp + 1024))).Fru_stime.Ftv_sec), int32((*(*Trusage)(unsafe.Pointer(bp + 1024))).Fru_stime.Ftv_usec), int32((*(*Trusage)(unsafe.Pointer(bp + 1024))).F__ccgo6_64.Fru_minflt), int32((*(*Trusage)(unsafe.Pointer(bp + 1024))).F__ccgo7_72.Fru_majflt)))
 	libtcl8_6.XTcl_SetObjResult(tls, interp, libtcl8_6.XTcl_NewStringObj(tls, bp, -int32(1)))
 	return m_TCL_OK
@@ -46230,7 +46230,7 @@ func _postToParent(tls *libc.TLS, p uintptr, pScript uintptr) {
 	(*TEvalEvent)(unsafe.Pointer(pEvent)).FzScript = pEvent + 1*32
 	libc.Xmemcpy(tls, (*TEvalEvent)(unsafe.Pointer(pEvent)).FzScript, zMsg, uint64(*(*int32)(unsafe.Pointer(bp))+int32(1)))
 	(*TEvalEvent)(unsafe.Pointer(pEvent)).Finterp = (*TSqlThread)(unsafe.Pointer(p)).Finterp
-	libtcl8_6.XTcl_ThreadQueueEvent(tls, (*TSqlThread)(unsafe.Pointer(p)).Fparent, pEvent, int32(_TCL_QUEUE_TAIL))
+	libtcl8_6.XTcl_ThreadQueueEvent(tls, (*TSqlThread)(unsafe.Pointer(p)).Fparent, pEvent, _TCL_QUEUE_TAIL)
 	libtcl8_6.XTcl_ThreadAlert(tls, (*TSqlThread)(unsafe.Pointer(p)).Fparent)
 }
 
@@ -46374,7 +46374,7 @@ func _sqlthread_parent(tls *libc.TLS, clientData TClientData, interp uintptr, ob
 	(*TEvalEvent)(unsafe.Pointer(pEvent)).FzScript = pEvent + 1*32
 	libc.Xmemcpy(tls, (*TEvalEvent)(unsafe.Pointer(pEvent)).FzScript, zMsg, uint64(*(*int32)(unsafe.Pointer(bp))+int32(1)))
 	(*TEvalEvent)(unsafe.Pointer(pEvent)).Finterp = (*TSqlThread)(unsafe.Pointer(p)).Finterp
-	libtcl8_6.XTcl_ThreadQueueEvent(tls, (*TSqlThread)(unsafe.Pointer(p)).Fparent, pEvent, int32(_TCL_QUEUE_TAIL))
+	libtcl8_6.XTcl_ThreadQueueEvent(tls, (*TSqlThread)(unsafe.Pointer(p)).Fparent, pEvent, _TCL_QUEUE_TAIL)
 	libtcl8_6.XTcl_ThreadAlert(tls, (*TSqlThread)(unsafe.Pointer(p)).Fparent)
 	return m_TCL_OK
 }
