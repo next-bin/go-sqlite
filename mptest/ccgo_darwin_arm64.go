@@ -1,4 +1,4 @@
-// Code generated for darwin/arm64 by 'generator -DNDEBUG -I /tmp/libsqlite3/sqlite-src-3450200 -ignore-unsupported-alignment -o mptest/ccgo_darwin_arm64.go /tmp/libsqlite3/sqlite-src-3450200/mptest/mptest.c -lsqlite3', DO NOT EDIT.
+// Code generated for darwin/arm64 by 'generator -DNDEBUG -I /var/folders/4f/mc8mts295pqf7gmnfcwh6g8w0000gn/T/libsqlite3/sqlite-src-3450200 -ignore-unsupported-alignment -o mptest/ccgo_darwin_arm64.go /var/folders/4f/mc8mts295pqf7gmnfcwh6g8w0000gn/T/libsqlite3/sqlite-src-3450200/mptest/mptest.c -lsqlite3', DO NOT EDIT.
 
 //go:build darwin && arm64
 // +build darwin,arm64
