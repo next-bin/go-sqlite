@@ -3,9 +3,9 @@ module modernc.org/libz
 go 1.20
 
 require (
-	modernc.org/ccgo/v4 v4.15.0
+	modernc.org/ccgo/v4 v4.16.0
 	modernc.org/fileutil v1.3.0
-	modernc.org/libc v1.49.1
+	modernc.org/libc v1.49.2
 )
 
 require (
