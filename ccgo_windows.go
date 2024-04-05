@@ -85453,7 +85453,7 @@ func _winIsDir(tls *libc.TLS, zConverted uintptr) (r int32) {
 		*(*int32)(unsafe.Pointer(bp + 4)) = 0
 		libc.Xmemset(tls, bp+8, 0, uint64(36))
 		for {
-			v1 = (*(*func(*libc.TLS, TLPCWSTR, TGET_FILEEX_INFO_LEVELS, TLPVOID) TBOOL)(unsafe.Pointer(&struct{ uintptr }{_aSyscall[int32(22)].FpCurrent})))(tls, zConverted, int32(_GetFileExInfoStandard), bp+8)
+			v1 = (*(*func(*libc.TLS, TLPCWSTR, TGET_FILEEX_INFO_LEVELS, TLPVOID) TBOOL)(unsafe.Pointer(&struct{ uintptr }{_aSyscall[int32(22)].FpCurrent})))(tls, zConverted, _GetFileExInfoStandard, bp+8)
 			rc = v1
 			if !(!(v1 != 0) && _winRetryIoerr(tls, bp+4, bp) != 0) {
 				break
@@ -85774,7 +85774,7 @@ func _winAccess(tls *libc.TLS, pVfs uintptr, zFilename uintptr, flags int32, pRe
 		*(*int32)(unsafe.Pointer(bp + 4)) = 0
 		libc.Xmemset(tls, bp+8, 0, uint64(36))
 		for {
-			v1 = (*(*func(*libc.TLS, TLPCWSTR, TGET_FILEEX_INFO_LEVELS, TLPVOID) TBOOL)(unsafe.Pointer(&struct{ uintptr }{_aSyscall[int32(22)].FpCurrent})))(tls, zConverted, int32(_GetFileExInfoStandard), bp+8)
+			v1 = (*(*func(*libc.TLS, TLPCWSTR, TGET_FILEEX_INFO_LEVELS, TLPVOID) TBOOL)(unsafe.Pointer(&struct{ uintptr }{_aSyscall[int32(22)].FpCurrent})))(tls, zConverted, _GetFileExInfoStandard, bp+8)
 			rc = v1
 			if !(!(v1 != 0) && _winRetryIoerr(tls, bp+4, bp) != 0) {
 				break
