@@ -3919,9 +3919,9 @@ func main1(tls *libc.TLS, argc int32, argv uintptr) (r int32) {
 	doTrace = 0                                                                                      /* True for --trace */
 	zEncoding = uintptr(0)                                                                           /* --utf16be or --utf16le */
 	zDbName = uintptr(0)                                                                             /* Name of the test database */
-	pHeap = uintptr(0)                                                                               /* Allocated heap space */
-	pLook = uintptr(0)                                                                               /* Allocated lookaside space */
-	pPCache = uintptr(0)                                                                             /* API return code */
+	pHeap = uintptr(0)   /* Allocated heap space */
+	pLook = uintptr(0)   /* Allocated lookaside space */
+	pPCache = uintptr(0) /* API return code */
 	/*
 	 ** Confirms that argc has at least N arguments following argv[i]. */
 	/* Display the version of SQLite being tested */
