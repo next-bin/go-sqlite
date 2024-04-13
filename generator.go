@@ -154,6 +154,7 @@ func main() {
 			"--prefix-typename=T",
 			"--prefix-undefined=_",
 			"-ignore-unsupported-alignment",
+			"-import", "runtime",
 
 			"-DHAVE_USLEEP",
 			"-DLONGDOUBLE_TYPE=double",
@@ -221,7 +222,8 @@ func main() {
 
 		util.MustShell(true, nil, sed, "-i", `s/\<T__\([a-zA-Z0-9][a-zA-Z0-9_]\+\)/t__\1/g`, result)
 		util.MustShell(true, nil, sed, "-i", `s/\<x_\([a-zA-Z0-9][a-zA-Z0-9_]\+\)/X\1/g`, result)
-
+		// https://gitlab.com/cznic/sqlite/-/issues/180
+		util.MustShell(true, nil, sed, "-i", `/^func Xsqlite3_initialize/a ng := runtime.GOMAXPROCS(1); defer func() { runtime.GOMAXPROCS(ng) }()`, result)
 		return nil
 	})
 
