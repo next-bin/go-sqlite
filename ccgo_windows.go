@@ -1,4 +1,4 @@
-// Code generated for windows/amd64 by 'generator -mlong-double-64 --package-name libsqlite3 --prefix-enumerator=_ --prefix-external=x_ --prefix-field=F --prefix-static-internal=_ --prefix-static-none=_ --prefix-tagged-enum=_ --prefix-tagged-struct=T --prefix-tagged-union=T --prefix-typename=T --prefix-undefined=_ -ignore-unsupported-alignment -DHAVE_USLEEP -DLONGDOUBLE_TYPE=double -DNDEBUG -DSQLITE_DEFAULT_MEMSTATUS=0 -DSQLITE_ENABLE_COLUMN_METADATA -DSQLITE_ENABLE_DBSTAT_VTAB -DSQLITE_ENABLE_FTS5 -DSQLITE_ENABLE_GEOPOLY -DSQLITE_ENABLE_JSON1 -DSQLITE_ENABLE_MATH_FUNCTIONS -DSQLITE_ENABLE_MEMORY_MANAGEMENT -DSQLITE_ENABLE_OFFSET_SQL_FUNC -DSQLITE_ENABLE_PREUPDATE_HOOK -DSQLITE_ENABLE_RBU -DSQLITE_ENABLE_RTREE -DSQLITE_ENABLE_SESSION -DSQLITE_ENABLE_SNAPSHOT -DSQLITE_ENABLE_STAT4 -DSQLITE_ENABLE_UNLOCK_NOTIFY -DSQLITE_HAVE_ZLIB=1 -DSQLITE_LIKE_DOESNT_MATCH_BLOBS -DSQLITE_SOUNDEX -DSQLITE_THREADSAFE=1 -DSQLITE_WITHOUT_ZONEMALLOC -Dpread64=pread -Dpwrite64=pwrite -extended-errors -o sqlite3.go sqlite3.c -I/tmp/libsqlite3/sqlite-amalgamation-3450200/ccgo --cpp /usr/bin/x86_64-w64-mingw32-gcc --goarch amd64 --goos windows -DSQLITE_HAVE_C99_MATH_FUNCS=(1) -DSQLITE_OS_WIN=1 -DSQLITE_OMIT_SEH -build-lines \/\/go:build windows && (amd64 || arm64)\n\/\/ \x2bbuild windows\n\/\/ \x2bbuild amd64 arm64 -map gcc=x86_64-w64-mingw32-gcc -eval-all-macros', DO NOT EDIT.
+// Code generated for windows/amd64 by 'generator -mlong-double-64 --package-name libsqlite3 --prefix-enumerator=_ --prefix-external=x_ --prefix-field=F --prefix-static-internal=_ --prefix-static-none=_ --prefix-tagged-enum=_ --prefix-tagged-struct=T --prefix-tagged-union=T --prefix-typename=T --prefix-undefined=_ -ignore-unsupported-alignment -import runtime -DHAVE_USLEEP -DLONGDOUBLE_TYPE=double -DNDEBUG -DSQLITE_DEFAULT_MEMSTATUS=0 -DSQLITE_ENABLE_COLUMN_METADATA -DSQLITE_ENABLE_DBSTAT_VTAB -DSQLITE_ENABLE_FTS5 -DSQLITE_ENABLE_GEOPOLY -DSQLITE_ENABLE_JSON1 -DSQLITE_ENABLE_MATH_FUNCTIONS -DSQLITE_ENABLE_MEMORY_MANAGEMENT -DSQLITE_ENABLE_OFFSET_SQL_FUNC -DSQLITE_ENABLE_PREUPDATE_HOOK -DSQLITE_ENABLE_RBU -DSQLITE_ENABLE_RTREE -DSQLITE_ENABLE_SESSION -DSQLITE_ENABLE_SNAPSHOT -DSQLITE_ENABLE_STAT4 -DSQLITE_ENABLE_UNLOCK_NOTIFY -DSQLITE_HAVE_ZLIB=1 -DSQLITE_LIKE_DOESNT_MATCH_BLOBS -DSQLITE_SOUNDEX -DSQLITE_THREADSAFE=1 -DSQLITE_WITHOUT_ZONEMALLOC -Dpread64=pread -Dpwrite64=pwrite -extended-errors -o sqlite3.go sqlite3.c -I/tmp/libsqlite3/sqlite-amalgamation-3450200/ccgo --cpp /usr/bin/x86_64-w64-mingw32-gcc --goarch amd64 --goos windows -DSQLITE_HAVE_C99_MATH_FUNCS=(1) -DSQLITE_OS_WIN=1 -DSQLITE_OMIT_SEH -build-lines \/\/go:build windows && (amd64 || arm64)\n\/\/ \x2bbuild windows\n\/\/ \x2bbuild amd64 arm64 -map gcc=x86_64-w64-mingw32-gcc -eval-all-macros', DO NOT EDIT.
 
 //go:build windows && (amd64 || arm64)
 // +build windows
@@ -11,6 +11,8 @@ import (
 	"unsafe"
 
 	"modernc.org/libc"
+
+	"runtime"
 )
 
 var (
@@ -216829,6 +216831,7 @@ func _hasHighPrecisionDouble(tls *libc.TLS, rc int32) (r int32) {
 //	**       without blocking.
 //	*/
 func Xsqlite3_initialize(tls *libc.TLS) (r int32) {
+ng := runtime.GOMAXPROCS(1); defer func() { runtime.GOMAXPROCS(ng) }()
 	var pMainMtx uintptr
 	var rc int32
 	_, _ = pMainMtx, rc /* Result code */
