@@ -10,6 +10,8 @@ import (
 	"unsafe"
 
 	"modernc.org/libc"
+
+	"runtime"
 )
 
 var (
@@ -163937,6 +163939,8 @@ func _hasHighPrecisionDouble(tls *libc.TLS, rc int32) (r int32) {
 //	**       without blocking.
 //	*/
 func Xsqlite3_initialize(tls *libc.TLS) (r int32) {
+	ng := runtime.GOMAXPROCS(1)
+	defer func() { runtime.GOMAXPROCS(ng) }()
 	var pMainMtx uintptr
 	var rc int32
 	_, _ = pMainMtx, rc /* Result code */
