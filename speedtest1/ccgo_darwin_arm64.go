@@ -1,4 +1,4 @@
-// Code generated for darwin/arm64 by 'generator -DNDEBUG -ignore-unsupported-alignment -o speedtest1/ccgo_darwin_arm64.go -I /var/folders/4f/mc8mts295pqf7gmnfcwh6g8w0000gn/T/libsqlite3/sqlite-src-3450200 /var/folders/4f/mc8mts295pqf7gmnfcwh6g8w0000gn/T/libsqlite3/sqlite-src-3450200/test/speedtest1.c -lsqlite3', DO NOT EDIT.
+// Code generated for darwin/arm64 by 'generator -DNDEBUG -ignore-unsupported-alignment -o speedtest1/ccgo_darwin_arm64.go -I /tmp/libsqlite3/sqlite-src-3450300 /tmp/libsqlite3/sqlite-src-3450300/test/speedtest1.c -lsqlite3', DO NOT EDIT.
 
 //go:build darwin && arm64
 // +build darwin,arm64
@@ -352,6 +352,7 @@ const SQLITE_CONFIG_PCACHE = 14
 const SQLITE_CONFIG_PCACHE2 = 18
 const SQLITE_CONFIG_PCACHE_HDRSZ = 24
 const SQLITE_CONFIG_PMASZ = 25
+const SQLITE_CONFIG_ROWID_IN_VIEW = 30
 const SQLITE_CONFIG_SCRATCH = 6
 const SQLITE_CONFIG_SERIALIZED = 3
 const SQLITE_CONFIG_SINGLETHREAD = 1
@@ -618,7 +619,7 @@ const SQLITE_SHM_LOCK = 2
 const SQLITE_SHM_NLOCK = 8
 const SQLITE_SHM_SHARED = 4
 const SQLITE_SHM_UNLOCK = 1
-const SQLITE_SOURCE_ID = "2024-03-12 11:06:23 d8cd6d49b46a395b13955387d05e9e1a2a47e54fb99f3c9b59835bbefad6alt1"
+const SQLITE_SOURCE_ID = "2024-04-15 13:34:05 8653b758870e6ef0c98d46b3ace27849054af85da891eb121e9aaa537f1ealt1"
 const SQLITE_STATUS_MALLOC_COUNT = 9
 const SQLITE_STATUS_MALLOC_SIZE = 5
 const SQLITE_STATUS_MEMORY_USED = 0
@@ -695,8 +696,8 @@ const SQLITE_UTF16BE = 3
 const SQLITE_UTF16LE = 2
 const SQLITE_UTF16_ALIGNED = 8
 const SQLITE_UTF8 = 1
-const SQLITE_VERSION = "3.45.2"
-const SQLITE_VERSION_NUMBER = 3045002
+const SQLITE_VERSION = "3.45.3"
+const SQLITE_VERSION_NUMBER = 3045003
 const SQLITE_VTAB_CONSTRAINT_SUPPORT = 1
 const SQLITE_VTAB_DIRECTONLY = 3
 const SQLITE_VTAB_INNOCUOUS = 2
