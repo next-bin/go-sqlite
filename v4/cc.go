@@ -263,6 +263,11 @@ void __builtin_unreachable();
 #define __has_include(xxx) __has_include(xxx)
 int __darwin_check_fd_set_overflow(int, void *, int);
 #endif
+
+// stdatomic.h
+void __atomic_exchange();
+void __atomic_load();
+void __atomic_store();
 `
 
 // TODO
