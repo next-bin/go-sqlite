@@ -853,10 +853,10 @@ type Tfpos_t = int64
  * This file is part of the mingw-w64 runtime package.
  * No warranty is given; refer to the file DISCLAIMER.PD within this package.
  */
-func _vswprintf(tls *libc.TLS, __stream uintptr, __count Tsize_t, __format uintptr, __local_argv T__builtin_va_list) (r int32) {
+func _vswprintf(tls *libc.TLS, __stream1 uintptr, __count Tsize_t, __format1 uintptr, __local_argv1 T__builtin_va_list) (r int32) {
 	var v1 int32
 	_ = v1
-	v1 = libc.X__mingw_vsnwprintf(tls, __stream, __count, __format, __local_argv)
+	v1 = libc.X__mingw_vsnwprintf(tls, __stream1, __count, __format1, __local_argv1)
 	goto _2
 _2:
 	return v1
@@ -10348,10 +10348,10 @@ const m__wfindnexti64 = "_wfindnext64"
  * This file is part of the mingw-w64 runtime package.
  * No warranty is given; refer to the file DISCLAIMER.PD within this package.
  */
-func _vswprintf1(tls *libc.TLS, __stream uintptr, __count Tsize_t, __format uintptr, __local_argv T__builtin_va_list) (r int32) {
+func _vswprintf1(tls *libc.TLS, __stream1 uintptr, __count Tsize_t, __format1 uintptr, __local_argv1 T__builtin_va_list) (r int32) {
 	var v1 int32
 	_ = v1
-	v1 = libc.X__mingw_vsnwprintf(tls, __stream, __count, __format, __local_argv)
+	v1 = libc.X__mingw_vsnwprintf(tls, __stream1, __count, __format1, __local_argv1)
 	goto _2
 _2:
 	return v1
@@ -10509,10 +10509,10 @@ const m___INT_MAX__1 = 2147483647
  * This file is part of the mingw-w64 runtime package.
  * No warranty is given; refer to the file DISCLAIMER.PD within this package.
  */
-func _vswprintf2(tls *libc.TLS, __stream uintptr, __count Tsize_t, __format uintptr, __local_argv T__builtin_va_list) (r int32) {
+func _vswprintf2(tls *libc.TLS, __stream1 uintptr, __count Tsize_t, __format1 uintptr, __local_argv1 T__builtin_va_list) (r int32) {
 	var v1 int32
 	_ = v1
-	v1 = libc.X__mingw_vsnwprintf(tls, __stream, __count, __format, __local_argv)
+	v1 = libc.X__mingw_vsnwprintf(tls, __stream1, __count, __format1, __local_argv1)
 	goto _2
 _2:
 	return v1
@@ -11147,10 +11147,10 @@ const m___INT_MAX__2 = 0x7fffffff
  * This file is part of the mingw-w64 runtime package.
  * No warranty is given; refer to the file DISCLAIMER.PD within this package.
  */
-func _vswprintf3(tls *libc.TLS, __stream uintptr, __count Tsize_t, __format uintptr, __local_argv T__builtin_va_list) (r int32) {
+func _vswprintf3(tls *libc.TLS, __stream1 uintptr, __count Tsize_t, __format1 uintptr, __local_argv1 T__builtin_va_list) (r int32) {
 	var v1 int32
 	_ = v1
-	v1 = libc.X__mingw_vsnwprintf(tls, __stream, __count, __format, __local_argv)
+	v1 = libc.X__mingw_vsnwprintf(tls, __stream1, __count, __format1, __local_argv1)
 	goto _2
 _2:
 	return v1
@@ -11855,10 +11855,10 @@ func x_gzclose_r(tls *libc.TLS, file TgzFile) (r int32) {
  * This file is part of the mingw-w64 runtime package.
  * No warranty is given; refer to the file DISCLAIMER.PD within this package.
  */
-func _vswprintf4(tls *libc.TLS, __stream uintptr, __count Tsize_t, __format uintptr, __local_argv T__builtin_va_list) (r int32) {
+func _vswprintf4(tls *libc.TLS, __stream1 uintptr, __count Tsize_t, __format1 uintptr, __local_argv1 T__builtin_va_list) (r int32) {
 	var v1 int32
 	_ = v1
-	v1 = libc.X__mingw_vsnwprintf(tls, __stream, __count, __format, __local_argv)
+	v1 = libc.X__mingw_vsnwprintf(tls, __stream1, __count, __format1, __local_argv1)
 	goto _2
 _2:
 	return v1
@@ -25675,10 +25675,10 @@ func x_uncompress(tls *libc.TLS, dest uintptr, destLen uintptr, source uintptr, 
  * This file is part of the mingw-w64 runtime package.
  * No warranty is given; refer to the file DISCLAIMER.PD within this package.
  */
-func _vswprintf5(tls *libc.TLS, __stream uintptr, __count Tsize_t, __format uintptr, __local_argv T__builtin_va_list) (r int32) {
+func _vswprintf5(tls *libc.TLS, __stream1 uintptr, __count Tsize_t, __format1 uintptr, __local_argv1 T__builtin_va_list) (r int32) {
 	var v1 int32
 	_ = v1
-	v1 = libc.X__mingw_vsnwprintf(tls, __stream, __count, __format, __local_argv)
+	v1 = libc.X__mingw_vsnwprintf(tls, __stream1, __count, __format1, __local_argv1)
 	goto _2
 _2:
 	return v1
