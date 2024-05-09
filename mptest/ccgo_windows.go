@@ -10082,10 +10082,10 @@ type fpos_t = int64
  * This file is part of the mingw-w64 runtime package.
  * No warranty is given; refer to the file DISCLAIMER.PD within this package.
  */
-func vswprintf(tls *libc.TLS, __stream uintptr, __count size_t, __format uintptr, __local_argv __builtin_va_list) (r int32) {
+func vswprintf(tls *libc.TLS, __stream1 uintptr, __count size_t, __format1 uintptr, __local_argv1 __builtin_va_list) (r int32) {
 	var v1 int32
 	_ = v1
-	v1 = libc.X__mingw_vsnwprintf(tls, __stream, __count, __format, __local_argv)
+	v1 = libc.X__mingw_vsnwprintf(tls, __stream1, __count, __format1, __local_argv1)
 	goto _2
 _2:
 	return v1

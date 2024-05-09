@@ -17314,10 +17314,10 @@ type Tfpos_t = int64
  * This file is part of the mingw-w64 runtime package.
  * No warranty is given; refer to the file DISCLAIMER.PD within this package.
  */
-func _vswprintf(tls *libc.TLS, __stream uintptr, __count Tsize_t, __format uintptr, __local_argv T__builtin_va_list) (r int32) {
+func _vswprintf(tls *libc.TLS, __stream1 uintptr, __count Tsize_t, __format1 uintptr, __local_argv1 T__builtin_va_list) (r int32) {
 	var v1 int32
 	_ = v1
-	v1 = libc.X__mingw_vsnwprintf(tls, __stream, __count, __format, __local_argv)
+	v1 = libc.X__mingw_vsnwprintf(tls, __stream1, __count, __format1, __local_argv1)
 	goto _2
 _2:
 	return v1
@@ -71388,10 +71388,10 @@ const m___LONG_LONG_MAX__1 = 0x7fffffffffffffff
  * This file is part of the mingw-w64 runtime package.
  * No warranty is given; refer to the file DISCLAIMER.PD within this package.
  */
-func _vswprintf1(tls *libc.TLS, __stream uintptr, __count Tsize_t, __format uintptr, __local_argv T__builtin_va_list) (r int32) {
+func _vswprintf1(tls *libc.TLS, __stream1 uintptr, __count Tsize_t, __format1 uintptr, __local_argv1 T__builtin_va_list) (r int32) {
 	var v1 int32
 	_ = v1
-	v1 = libc.X__mingw_vsnwprintf(tls, __stream, __count, __format, __local_argv)
+	v1 = libc.X__mingw_vsnwprintf(tls, __stream1, __count, __format1, __local_argv1)
 	goto _2
 _2:
 	return v1
@@ -72295,10 +72295,10 @@ const m_put4byte = "sqlite3Put4byte"
  * This file is part of the mingw-w64 runtime package.
  * No warranty is given; refer to the file DISCLAIMER.PD within this package.
  */
-func _vswprintf2(tls *libc.TLS, __stream uintptr, __count Tsize_t, __format uintptr, __local_argv T__builtin_va_list) (r int32) {
+func _vswprintf2(tls *libc.TLS, __stream1 uintptr, __count Tsize_t, __format1 uintptr, __local_argv1 T__builtin_va_list) (r int32) {
 	var v1 int32
 	_ = v1
-	v1 = libc.X__mingw_vsnwprintf(tls, __stream, __count, __format, __local_argv)
+	v1 = libc.X__mingw_vsnwprintf(tls, __stream1, __count, __format1, __local_argv1)
 	goto _2
 _2:
 	return v1
@@ -73325,10 +73325,10 @@ const m_SQLITE_OPEN_READWRITE1 = 0x00000002
  * This file is part of the mingw-w64 runtime package.
  * No warranty is given; refer to the file DISCLAIMER.PD within this package.
  */
-func _vswprintf3(tls *libc.TLS, __stream uintptr, __count Tsize_t, __format uintptr, __local_argv T__builtin_va_list) (r int32) {
+func _vswprintf3(tls *libc.TLS, __stream1 uintptr, __count Tsize_t, __format1 uintptr, __local_argv1 T__builtin_va_list) (r int32) {
 	var v1 int32
 	_ = v1
-	v1 = libc.X__mingw_vsnwprintf(tls, __stream, __count, __format, __local_argv)
+	v1 = libc.X__mingw_vsnwprintf(tls, __stream1, __count, __format1, __local_argv1)
 	goto _2
 _2:
 	return v1
@@ -73376,10 +73376,10 @@ const m_MEM_Term1 = 512
  * This file is part of the mingw-w64 runtime package.
  * No warranty is given; refer to the file DISCLAIMER.PD within this package.
  */
-func _vswprintf4(tls *libc.TLS, __stream uintptr, __count Tsize_t, __format uintptr, __local_argv T__builtin_va_list) (r int32) {
+func _vswprintf4(tls *libc.TLS, __stream1 uintptr, __count Tsize_t, __format1 uintptr, __local_argv1 T__builtin_va_list) (r int32) {
 	var v1 int32
 	_ = v1
-	v1 = libc.X__mingw_vsnwprintf(tls, __stream, __count, __format, __local_argv)
+	v1 = libc.X__mingw_vsnwprintf(tls, __stream1, __count, __format1, __local_argv1)
 	goto _2
 _2:
 	return v1
@@ -73694,10 +73694,10 @@ const m_SQLITE_IOCAP_SEQUENTIAL1 = 1024
  * This file is part of the mingw-w64 runtime package.
  * No warranty is given; refer to the file DISCLAIMER.PD within this package.
  */
-func _vswprintf5(tls *libc.TLS, __stream uintptr, __count Tsize_t, __format uintptr, __local_argv T__builtin_va_list) (r int32) {
+func _vswprintf5(tls *libc.TLS, __stream1 uintptr, __count Tsize_t, __format1 uintptr, __local_argv1 T__builtin_va_list) (r int32) {
 	var v1 int32
 	_ = v1
-	v1 = libc.X__mingw_vsnwprintf(tls, __stream, __count, __format, __local_argv)
+	v1 = libc.X__mingw_vsnwprintf(tls, __stream1, __count, __format1, __local_argv1)
 	goto _2
 _2:
 	return v1
@@ -74943,10 +74943,10 @@ const m_SQLITE_IOCAP_SEQUENTIAL2 = 0x00000400
  * This file is part of the mingw-w64 runtime package.
  * No warranty is given; refer to the file DISCLAIMER.PD within this package.
  */
-func _vswprintf6(tls *libc.TLS, __stream uintptr, __count Tsize_t, __format uintptr, __local_argv T__builtin_va_list) (r int32) {
+func _vswprintf6(tls *libc.TLS, __stream1 uintptr, __count Tsize_t, __format1 uintptr, __local_argv1 T__builtin_va_list) (r int32) {
 	var v1 int32
 	_ = v1
-	v1 = libc.X__mingw_vsnwprintf(tls, __stream, __count, __format, __local_argv)
+	v1 = libc.X__mingw_vsnwprintf(tls, __stream1, __count, __format1, __local_argv1)
 	goto _2
 _2:
 	return v1
@@ -76646,10 +76646,10 @@ type Tsqlite3_index_orderby = struct {
  * This file is part of the mingw-w64 runtime package.
  * No warranty is given; refer to the file DISCLAIMER.PD within this package.
  */
-func _vswprintf7(tls *libc.TLS, __stream uintptr, __count Tsize_t, __format uintptr, __local_argv T__builtin_va_list) (r int32) {
+func _vswprintf7(tls *libc.TLS, __stream1 uintptr, __count Tsize_t, __format1 uintptr, __local_argv1 T__builtin_va_list) (r int32) {
 	var v1 int32
 	_ = v1
-	v1 = libc.X__mingw_vsnwprintf(tls, __stream, __count, __format, __local_argv)
+	v1 = libc.X__mingw_vsnwprintf(tls, __stream1, __count, __format1, __local_argv1)
 	goto _2
 _2:
 	return v1
@@ -76887,10 +76887,10 @@ type Toff_t1 = int32
  * This file is part of the mingw-w64 runtime package.
  * No warranty is given; refer to the file DISCLAIMER.PD within this package.
  */
-func _vswprintf8(tls *libc.TLS, __stream uintptr, __count Tsize_t, __format uintptr, __local_argv T__builtin_va_list) (r int32) {
+func _vswprintf8(tls *libc.TLS, __stream1 uintptr, __count Tsize_t, __format1 uintptr, __local_argv1 T__builtin_va_list) (r int32) {
 	var v1 int32
 	_ = v1
-	v1 = libc.X__mingw_vsnwprintf(tls, __stream, __count, __format, __local_argv)
+	v1 = libc.X__mingw_vsnwprintf(tls, __stream1, __count, __format1, __local_argv1)
 	goto _2
 _2:
 	return v1
@@ -77502,10 +77502,10 @@ func x_Sqlitetest_autoext_Init(tls *libc.TLS, interp uintptr) (r int32) {
  * This file is part of the mingw-w64 runtime package.
  * No warranty is given; refer to the file DISCLAIMER.PD within this package.
  */
-func _vswprintf9(tls *libc.TLS, __stream uintptr, __count Tsize_t, __format uintptr, __local_argv T__builtin_va_list) (r int32) {
+func _vswprintf9(tls *libc.TLS, __stream1 uintptr, __count Tsize_t, __format1 uintptr, __local_argv1 T__builtin_va_list) (r int32) {
 	var v1 int32
 	_ = v1
-	v1 = libc.X__mingw_vsnwprintf(tls, __stream, __count, __format, __local_argv)
+	v1 = libc.X__mingw_vsnwprintf(tls, __stream1, __count, __format1, __local_argv1)
 	goto _2
 _2:
 	return v1
@@ -77555,10 +77555,10 @@ func x_Sqlitetestasync_Init(tls *libc.TLS, interp uintptr) (r int32) {
  * This file is part of the mingw-w64 runtime package.
  * No warranty is given; refer to the file DISCLAIMER.PD within this package.
  */
-func _vswprintf10(tls *libc.TLS, __stream uintptr, __count Tsize_t, __format uintptr, __local_argv T__builtin_va_list) (r int32) {
+func _vswprintf10(tls *libc.TLS, __stream1 uintptr, __count Tsize_t, __format1 uintptr, __local_argv1 T__builtin_va_list) (r int32) {
 	var v1 int32
 	_ = v1
-	v1 = libc.X__mingw_vsnwprintf(tls, __stream, __count, __format, __local_argv)
+	v1 = libc.X__mingw_vsnwprintf(tls, __stream1, __count, __format1, __local_argv1)
 	goto _2
 _2:
 	return v1
@@ -77729,10 +77729,10 @@ type Toff_t2 = int64
  * This file is part of the mingw-w64 runtime package.
  * No warranty is given; refer to the file DISCLAIMER.PD within this package.
  */
-func _vswprintf11(tls *libc.TLS, __stream uintptr, __count Tsize_t, __format uintptr, __local_argv T__builtin_va_list) (r int32) {
+func _vswprintf11(tls *libc.TLS, __stream1 uintptr, __count Tsize_t, __format1 uintptr, __local_argv1 T__builtin_va_list) (r int32) {
 	var v1 int32
 	_ = v1
-	v1 = libc.X__mingw_vsnwprintf(tls, __stream, __count, __format, __local_argv)
+	v1 = libc.X__mingw_vsnwprintf(tls, __stream1, __count, __format1, __local_argv1)
 	goto _2
 _2:
 	return v1
@@ -78661,10 +78661,10 @@ const m_TCL_EVAL_GLOBAL3 = 0x020000
  * This file is part of the mingw-w64 runtime package.
  * No warranty is given; refer to the file DISCLAIMER.PD within this package.
  */
-func _vswprintf12(tls *libc.TLS, __stream uintptr, __count Tsize_t, __format uintptr, __local_argv T__builtin_va_list) (r int32) {
+func _vswprintf12(tls *libc.TLS, __stream1 uintptr, __count Tsize_t, __format1 uintptr, __local_argv1 T__builtin_va_list) (r int32) {
 	var v1 int32
 	_ = v1
-	v1 = libc.X__mingw_vsnwprintf(tls, __stream, __count, __format, __local_argv)
+	v1 = libc.X__mingw_vsnwprintf(tls, __stream1, __count, __format1, __local_argv1)
 	goto _2
 _2:
 	return v1
@@ -79035,10 +79035,10 @@ func init() {
  * This file is part of the mingw-w64 runtime package.
  * No warranty is given; refer to the file DISCLAIMER.PD within this package.
  */
-func _vswprintf13(tls *libc.TLS, __stream uintptr, __count Tsize_t, __format uintptr, __local_argv T__builtin_va_list) (r int32) {
+func _vswprintf13(tls *libc.TLS, __stream1 uintptr, __count Tsize_t, __format1 uintptr, __local_argv1 T__builtin_va_list) (r int32) {
 	var v1 int32
 	_ = v1
-	v1 = libc.X__mingw_vsnwprintf(tls, __stream, __count, __format, __local_argv)
+	v1 = libc.X__mingw_vsnwprintf(tls, __stream1, __count, __format1, __local_argv1)
 	goto _2
 _2:
 	return v1
@@ -79123,10 +79123,10 @@ const m___LONG_LONG_MAX__2 = 9223372036854775807
  * This file is part of the mingw-w64 runtime package.
  * No warranty is given; refer to the file DISCLAIMER.PD within this package.
  */
-func _vswprintf14(tls *libc.TLS, __stream uintptr, __count Tsize_t, __format uintptr, __local_argv T__builtin_va_list) (r int32) {
+func _vswprintf14(tls *libc.TLS, __stream1 uintptr, __count Tsize_t, __format1 uintptr, __local_argv1 T__builtin_va_list) (r int32) {
 	var v1 int32
 	_ = v1
-	v1 = libc.X__mingw_vsnwprintf(tls, __stream, __count, __format, __local_argv)
+	v1 = libc.X__mingw_vsnwprintf(tls, __stream1, __count, __format1, __local_argv1)
 	goto _2
 _2:
 	return v1
@@ -79602,10 +79602,10 @@ type Toff_t3 = int32
  * This file is part of the mingw-w64 runtime package.
  * No warranty is given; refer to the file DISCLAIMER.PD within this package.
  */
-func _vswprintf15(tls *libc.TLS, __stream uintptr, __count Tsize_t, __format uintptr, __local_argv T__builtin_va_list) (r int32) {
+func _vswprintf15(tls *libc.TLS, __stream1 uintptr, __count Tsize_t, __format1 uintptr, __local_argv1 T__builtin_va_list) (r int32) {
 	var v1 int32
 	_ = v1
-	v1 = libc.X__mingw_vsnwprintf(tls, __stream, __count, __format, __local_argv)
+	v1 = libc.X__mingw_vsnwprintf(tls, __stream1, __count, __format1, __local_argv1)
 	goto _2
 _2:
 	return v1
@@ -79655,10 +79655,10 @@ type Toff_t4 = int64
  * This file is part of the mingw-w64 runtime package.
  * No warranty is given; refer to the file DISCLAIMER.PD within this package.
  */
-func _vswprintf16(tls *libc.TLS, __stream uintptr, __count Tsize_t, __format uintptr, __local_argv T__builtin_va_list) (r int32) {
+func _vswprintf16(tls *libc.TLS, __stream1 uintptr, __count Tsize_t, __format1 uintptr, __local_argv1 T__builtin_va_list) (r int32) {
 	var v1 int32
 	_ = v1
-	v1 = libc.X__mingw_vsnwprintf(tls, __stream, __count, __format, __local_argv)
+	v1 = libc.X__mingw_vsnwprintf(tls, __stream1, __count, __format1, __local_argv1)
 	goto _2
 _2:
 	return v1
@@ -80247,10 +80247,10 @@ const m_stat64 = "_stat64"
  * This file is part of the mingw-w64 runtime package.
  * No warranty is given; refer to the file DISCLAIMER.PD within this package.
  */
-func _vswprintf17(tls *libc.TLS, __stream uintptr, __count Tsize_t, __format uintptr, __local_argv T__builtin_va_list) (r int32) {
+func _vswprintf17(tls *libc.TLS, __stream1 uintptr, __count Tsize_t, __format1 uintptr, __local_argv1 T__builtin_va_list) (r int32) {
 	var v1 int32
 	_ = v1
-	v1 = libc.X__mingw_vsnwprintf(tls, __stream, __count, __format, __local_argv)
+	v1 = libc.X__mingw_vsnwprintf(tls, __stream1, __count, __format1, __local_argv1)
 	goto _2
 _2:
 	return v1
@@ -81360,10 +81360,10 @@ type Toff_t5 = int32
  * This file is part of the mingw-w64 runtime package.
  * No warranty is given; refer to the file DISCLAIMER.PD within this package.
  */
-func _vswprintf18(tls *libc.TLS, __stream uintptr, __count Tsize_t, __format uintptr, __local_argv T__builtin_va_list) (r int32) {
+func _vswprintf18(tls *libc.TLS, __stream1 uintptr, __count Tsize_t, __format1 uintptr, __local_argv1 T__builtin_va_list) (r int32) {
 	var v1 int32
 	_ = v1
-	v1 = libc.X__mingw_vsnwprintf(tls, __stream, __count, __format, __local_argv)
+	v1 = libc.X__mingw_vsnwprintf(tls, __stream1, __count, __format1, __local_argv1)
 	goto _2
 _2:
 	return v1
@@ -82480,10 +82480,10 @@ type Toff_t6 = int64
  * This file is part of the mingw-w64 runtime package.
  * No warranty is given; refer to the file DISCLAIMER.PD within this package.
  */
-func _vswprintf19(tls *libc.TLS, __stream uintptr, __count Tsize_t, __format uintptr, __local_argv T__builtin_va_list) (r int32) {
+func _vswprintf19(tls *libc.TLS, __stream1 uintptr, __count Tsize_t, __format1 uintptr, __local_argv1 T__builtin_va_list) (r int32) {
 	var v1 int32
 	_ = v1
-	v1 = libc.X__mingw_vsnwprintf(tls, __stream, __count, __format, __local_argv)
+	v1 = libc.X__mingw_vsnwprintf(tls, __stream1, __count, __format1, __local_argv1)
 	goto _2
 _2:
 	return v1
@@ -83062,10 +83062,10 @@ func init() {
  * This file is part of the mingw-w64 runtime package.
  * No warranty is given; refer to the file DISCLAIMER.PD within this package.
  */
-func _vswprintf20(tls *libc.TLS, __stream uintptr, __count Tsize_t, __format uintptr, __local_argv T__builtin_va_list) (r int32) {
+func _vswprintf20(tls *libc.TLS, __stream1 uintptr, __count Tsize_t, __format1 uintptr, __local_argv1 T__builtin_va_list) (r int32) {
 	var v1 int32
 	_ = v1
-	v1 = libc.X__mingw_vsnwprintf(tls, __stream, __count, __format, __local_argv)
+	v1 = libc.X__mingw_vsnwprintf(tls, __stream1, __count, __format1, __local_argv1)
 	goto _2
 _2:
 	return v1
@@ -83722,10 +83722,10 @@ type Toff_t7 = int32
  * This file is part of the mingw-w64 runtime package.
  * No warranty is given; refer to the file DISCLAIMER.PD within this package.
  */
-func _vswprintf21(tls *libc.TLS, __stream uintptr, __count Tsize_t, __format uintptr, __local_argv T__builtin_va_list) (r int32) {
+func _vswprintf21(tls *libc.TLS, __stream1 uintptr, __count Tsize_t, __format1 uintptr, __local_argv1 T__builtin_va_list) (r int32) {
 	var v1 int32
 	_ = v1
-	v1 = libc.X__mingw_vsnwprintf(tls, __stream, __count, __format, __local_argv)
+	v1 = libc.X__mingw_vsnwprintf(tls, __stream1, __count, __format1, __local_argv1)
 	goto _2
 _2:
 	return v1
@@ -83883,10 +83883,10 @@ type Toff_t8 = int64
  * This file is part of the mingw-w64 runtime package.
  * No warranty is given; refer to the file DISCLAIMER.PD within this package.
  */
-func _vswprintf22(tls *libc.TLS, __stream uintptr, __count Tsize_t, __format uintptr, __local_argv T__builtin_va_list) (r int32) {
+func _vswprintf22(tls *libc.TLS, __stream1 uintptr, __count Tsize_t, __format1 uintptr, __local_argv1 T__builtin_va_list) (r int32) {
 	var v1 int32
 	_ = v1
-	v1 = libc.X__mingw_vsnwprintf(tls, __stream, __count, __format, __local_argv)
+	v1 = libc.X__mingw_vsnwprintf(tls, __stream1, __count, __format1, __local_argv1)
 	goto _2
 _2:
 	return v1
@@ -84803,10 +84803,10 @@ const m_SQLITE_OPEN_MAIN_JOURNAL3 = 0x00000800
  * This file is part of the mingw-w64 runtime package.
  * No warranty is given; refer to the file DISCLAIMER.PD within this package.
  */
-func _vswprintf23(tls *libc.TLS, __stream uintptr, __count Tsize_t, __format uintptr, __local_argv T__builtin_va_list) (r int32) {
+func _vswprintf23(tls *libc.TLS, __stream1 uintptr, __count Tsize_t, __format1 uintptr, __local_argv1 T__builtin_va_list) (r int32) {
 	var v1 int32
 	_ = v1
-	v1 = libc.X__mingw_vsnwprintf(tls, __stream, __count, __format, __local_argv)
+	v1 = libc.X__mingw_vsnwprintf(tls, __stream1, __count, __format1, __local_argv1)
 	goto _2
 _2:
 	return v1
@@ -86599,10 +86599,10 @@ type Toff_t9 = int32
  * This file is part of the mingw-w64 runtime package.
  * No warranty is given; refer to the file DISCLAIMER.PD within this package.
  */
-func _vswprintf24(tls *libc.TLS, __stream uintptr, __count Tsize_t, __format uintptr, __local_argv T__builtin_va_list) (r int32) {
+func _vswprintf24(tls *libc.TLS, __stream1 uintptr, __count Tsize_t, __format1 uintptr, __local_argv1 T__builtin_va_list) (r int32) {
 	var v1 int32
 	_ = v1
-	v1 = libc.X__mingw_vsnwprintf(tls, __stream, __count, __format, __local_argv)
+	v1 = libc.X__mingw_vsnwprintf(tls, __stream1, __count, __format1, __local_argv1)
 	goto _2
 _2:
 	return v1
@@ -88553,10 +88553,10 @@ func x_sqlite3_multiplex_shutdown(tls *libc.TLS, eForce int32) (r int32) {
  * This file is part of the mingw-w64 runtime package.
  * No warranty is given; refer to the file DISCLAIMER.PD within this package.
  */
-func _vswprintf25(tls *libc.TLS, __stream uintptr, __count Tsize_t, __format uintptr, __local_argv T__builtin_va_list) (r int32) {
+func _vswprintf25(tls *libc.TLS, __stream1 uintptr, __count Tsize_t, __format1 uintptr, __local_argv1 T__builtin_va_list) (r int32) {
 	var v1 int32
 	_ = v1
-	v1 = libc.X__mingw_vsnwprintf(tls, __stream, __count, __format, __local_argv)
+	v1 = libc.X__mingw_vsnwprintf(tls, __stream1, __count, __format1, __local_argv1)
 	goto _2
 _2:
 	return v1
@@ -88785,10 +88785,10 @@ const m_SQLITE_OPEN_WAL3 = 0x00080000
  * This file is part of the mingw-w64 runtime package.
  * No warranty is given; refer to the file DISCLAIMER.PD within this package.
  */
-func _vswprintf26(tls *libc.TLS, __stream uintptr, __count Tsize_t, __format uintptr, __local_argv T__builtin_va_list) (r int32) {
+func _vswprintf26(tls *libc.TLS, __stream1 uintptr, __count Tsize_t, __format1 uintptr, __local_argv1 T__builtin_va_list) (r int32) {
 	var v1 int32
 	_ = v1
-	v1 = libc.X__mingw_vsnwprintf(tls, __stream, __count, __format, __local_argv)
+	v1 = libc.X__mingw_vsnwprintf(tls, __stream1, __count, __format1, __local_argv1)
 	goto _2
 _2:
 	return v1
@@ -91300,10 +91300,10 @@ func init() {
  * This file is part of the mingw-w64 runtime package.
  * No warranty is given; refer to the file DISCLAIMER.PD within this package.
  */
-func _vswprintf27(tls *libc.TLS, __stream uintptr, __count Tsize_t, __format uintptr, __local_argv T__builtin_va_list) (r int32) {
+func _vswprintf27(tls *libc.TLS, __stream1 uintptr, __count Tsize_t, __format1 uintptr, __local_argv1 T__builtin_va_list) (r int32) {
 	var v1 int32
 	_ = v1
-	v1 = libc.X__mingw_vsnwprintf(tls, __stream, __count, __format, __local_argv)
+	v1 = libc.X__mingw_vsnwprintf(tls, __stream1, __count, __format1, __local_argv1)
 	goto _2
 _2:
 	return v1
@@ -91948,10 +91948,10 @@ const m___LONG_LONG_MAX__8 = 9223372036854775807
  * This file is part of the mingw-w64 runtime package.
  * No warranty is given; refer to the file DISCLAIMER.PD within this package.
  */
-func _vswprintf28(tls *libc.TLS, __stream uintptr, __count Tsize_t, __format uintptr, __local_argv T__builtin_va_list) (r int32) {
+func _vswprintf28(tls *libc.TLS, __stream1 uintptr, __count Tsize_t, __format1 uintptr, __local_argv1 T__builtin_va_list) (r int32) {
 	var v1 int32
 	_ = v1
-	v1 = libc.X__mingw_vsnwprintf(tls, __stream, __count, __format, __local_argv)
+	v1 = libc.X__mingw_vsnwprintf(tls, __stream1, __count, __format1, __local_argv1)
 	goto _2
 _2:
 	return v1
@@ -94268,10 +94268,10 @@ const m___LONG_LONG_MAX__9 = 0x7fffffffffffffff
  * This file is part of the mingw-w64 runtime package.
  * No warranty is given; refer to the file DISCLAIMER.PD within this package.
  */
-func _vswprintf29(tls *libc.TLS, __stream uintptr, __count Tsize_t, __format uintptr, __local_argv T__builtin_va_list) (r int32) {
+func _vswprintf29(tls *libc.TLS, __stream1 uintptr, __count Tsize_t, __format1 uintptr, __local_argv1 T__builtin_va_list) (r int32) {
 	var v1 int32
 	_ = v1
-	v1 = libc.X__mingw_vsnwprintf(tls, __stream, __count, __format, __local_argv)
+	v1 = libc.X__mingw_vsnwprintf(tls, __stream1, __count, __format1, __local_argv1)
 	goto _2
 _2:
 	return v1
@@ -94873,10 +94873,10 @@ type Toff_t10 = int64
  * This file is part of the mingw-w64 runtime package.
  * No warranty is given; refer to the file DISCLAIMER.PD within this package.
  */
-func _vswprintf30(tls *libc.TLS, __stream uintptr, __count Tsize_t, __format uintptr, __local_argv T__builtin_va_list) (r int32) {
+func _vswprintf30(tls *libc.TLS, __stream1 uintptr, __count Tsize_t, __format1 uintptr, __local_argv1 T__builtin_va_list) (r int32) {
 	var v1 int32
 	_ = v1
-	v1 = libc.X__mingw_vsnwprintf(tls, __stream, __count, __format, __local_argv)
+	v1 = libc.X__mingw_vsnwprintf(tls, __stream1, __count, __format1, __local_argv1)
 	goto _2
 _2:
 	return v1
@@ -95543,10 +95543,10 @@ type Toff_t11 = int32
  * This file is part of the mingw-w64 runtime package.
  * No warranty is given; refer to the file DISCLAIMER.PD within this package.
  */
-func _vswprintf31(tls *libc.TLS, __stream uintptr, __count Tsize_t, __format uintptr, __local_argv T__builtin_va_list) (r int32) {
+func _vswprintf31(tls *libc.TLS, __stream1 uintptr, __count Tsize_t, __format1 uintptr, __local_argv1 T__builtin_va_list) (r int32) {
 	var v1 int32
 	_ = v1
-	v1 = libc.X__mingw_vsnwprintf(tls, __stream, __count, __format, __local_argv)
+	v1 = libc.X__mingw_vsnwprintf(tls, __stream1, __count, __format1, __local_argv1)
 	goto _2
 _2:
 	return v1
@@ -95686,10 +95686,10 @@ type Toff_t12 = int64
  * This file is part of the mingw-w64 runtime package.
  * No warranty is given; refer to the file DISCLAIMER.PD within this package.
  */
-func _vswprintf32(tls *libc.TLS, __stream uintptr, __count Tsize_t, __format uintptr, __local_argv T__builtin_va_list) (r int32) {
+func _vswprintf32(tls *libc.TLS, __stream1 uintptr, __count Tsize_t, __format1 uintptr, __local_argv1 T__builtin_va_list) (r int32) {
 	var v1 int32
 	_ = v1
-	v1 = libc.X__mingw_vsnwprintf(tls, __stream, __count, __format, __local_argv)
+	v1 = libc.X__mingw_vsnwprintf(tls, __stream1, __count, __format1, __local_argv1)
 	goto _2
 _2:
 	return v1
@@ -95755,10 +95755,10 @@ type Toff_t13 = int32
  * This file is part of the mingw-w64 runtime package.
  * No warranty is given; refer to the file DISCLAIMER.PD within this package.
  */
-func _vswprintf33(tls *libc.TLS, __stream uintptr, __count Tsize_t, __format uintptr, __local_argv T__builtin_va_list) (r int32) {
+func _vswprintf33(tls *libc.TLS, __stream1 uintptr, __count Tsize_t, __format1 uintptr, __local_argv1 T__builtin_va_list) (r int32) {
 	var v1 int32
 	_ = v1
-	v1 = libc.X__mingw_vsnwprintf(tls, __stream, __count, __format, __local_argv)
+	v1 = libc.X__mingw_vsnwprintf(tls, __stream1, __count, __format1, __local_argv1)
 	goto _2
 _2:
 	return v1
@@ -95883,10 +95883,10 @@ type Toff_t14 = int64
  * This file is part of the mingw-w64 runtime package.
  * No warranty is given; refer to the file DISCLAIMER.PD within this package.
  */
-func _vswprintf34(tls *libc.TLS, __stream uintptr, __count Tsize_t, __format uintptr, __local_argv T__builtin_va_list) (r int32) {
+func _vswprintf34(tls *libc.TLS, __stream1 uintptr, __count Tsize_t, __format1 uintptr, __local_argv1 T__builtin_va_list) (r int32) {
 	var v1 int32
 	_ = v1
-	v1 = libc.X__mingw_vsnwprintf(tls, __stream, __count, __format, __local_argv)
+	v1 = libc.X__mingw_vsnwprintf(tls, __stream1, __count, __format1, __local_argv1)
 	goto _2
 _2:
 	return v1
@@ -96526,10 +96526,10 @@ const m_TCL_THREAD_NOFLAGS1 = 0
  * This file is part of the mingw-w64 runtime package.
  * No warranty is given; refer to the file DISCLAIMER.PD within this package.
  */
-func _vswprintf35(tls *libc.TLS, __stream uintptr, __count Tsize_t, __format uintptr, __local_argv T__builtin_va_list) (r int32) {
+func _vswprintf35(tls *libc.TLS, __stream1 uintptr, __count Tsize_t, __format1 uintptr, __local_argv1 T__builtin_va_list) (r int32) {
 	var v1 int32
 	_ = v1
-	v1 = libc.X__mingw_vsnwprintf(tls, __stream, __count, __format, __local_argv)
+	v1 = libc.X__mingw_vsnwprintf(tls, __stream1, __count, __format1, __local_argv1)
 	goto _2
 _2:
 	return v1
@@ -97040,10 +97040,10 @@ const m_TCL_THREAD_NOFLAGS2 = 0000
  * This file is part of the mingw-w64 runtime package.
  * No warranty is given; refer to the file DISCLAIMER.PD within this package.
  */
-func _vswprintf36(tls *libc.TLS, __stream uintptr, __count Tsize_t, __format uintptr, __local_argv T__builtin_va_list) (r int32) {
+func _vswprintf36(tls *libc.TLS, __stream1 uintptr, __count Tsize_t, __format1 uintptr, __local_argv1 T__builtin_va_list) (r int32) {
 	var v1 int32
 	_ = v1
-	v1 = libc.X__mingw_vsnwprintf(tls, __stream, __count, __format, __local_argv)
+	v1 = libc.X__mingw_vsnwprintf(tls, __stream1, __count, __format1, __local_argv1)
 	goto _2
 _2:
 	return v1
@@ -97130,10 +97130,10 @@ const m_TESTVFS_WRITE_MASK = 4096
  * This file is part of the mingw-w64 runtime package.
  * No warranty is given; refer to the file DISCLAIMER.PD within this package.
  */
-func _vswprintf37(tls *libc.TLS, __stream uintptr, __count Tsize_t, __format uintptr, __local_argv T__builtin_va_list) (r int32) {
+func _vswprintf37(tls *libc.TLS, __stream1 uintptr, __count Tsize_t, __format1 uintptr, __local_argv1 T__builtin_va_list) (r int32) {
 	var v1 int32
 	_ = v1
-	v1 = libc.X__mingw_vsnwprintf(tls, __stream, __count, __format, __local_argv)
+	v1 = libc.X__mingw_vsnwprintf(tls, __stream1, __count, __format1, __local_argv1)
 	goto _2
 _2:
 	return v1
@@ -99137,10 +99137,10 @@ type Toff_t15 = int32
  * This file is part of the mingw-w64 runtime package.
  * No warranty is given; refer to the file DISCLAIMER.PD within this package.
  */
-func _vswprintf38(tls *libc.TLS, __stream uintptr, __count Tsize_t, __format uintptr, __local_argv T__builtin_va_list) (r int32) {
+func _vswprintf38(tls *libc.TLS, __stream1 uintptr, __count Tsize_t, __format1 uintptr, __local_argv1 T__builtin_va_list) (r int32) {
 	var v1 int32
 	_ = v1
-	v1 = libc.X__mingw_vsnwprintf(tls, __stream, __count, __format, __local_argv)
+	v1 = libc.X__mingw_vsnwprintf(tls, __stream1, __count, __format1, __local_argv1)
 	goto _2
 _2:
 	return v1
@@ -99346,10 +99346,10 @@ type Toff_t16 = int64
  * This file is part of the mingw-w64 runtime package.
  * No warranty is given; refer to the file DISCLAIMER.PD within this package.
  */
-func _vswprintf39(tls *libc.TLS, __stream uintptr, __count Tsize_t, __format uintptr, __local_argv T__builtin_va_list) (r int32) {
+func _vswprintf39(tls *libc.TLS, __stream1 uintptr, __count Tsize_t, __format1 uintptr, __local_argv1 T__builtin_va_list) (r int32) {
 	var v1 int32
 	_ = v1
-	v1 = libc.X__mingw_vsnwprintf(tls, __stream, __count, __format, __local_argv)
+	v1 = libc.X__mingw_vsnwprintf(tls, __stream1, __count, __format1, __local_argv1)
 	goto _2
 _2:
 	return v1
@@ -99758,10 +99758,10 @@ type Toff_t17 = int32
  * This file is part of the mingw-w64 runtime package.
  * No warranty is given; refer to the file DISCLAIMER.PD within this package.
  */
-func _vswprintf40(tls *libc.TLS, __stream uintptr, __count Tsize_t, __format uintptr, __local_argv T__builtin_va_list) (r int32) {
+func _vswprintf40(tls *libc.TLS, __stream1 uintptr, __count Tsize_t, __format1 uintptr, __local_argv1 T__builtin_va_list) (r int32) {
 	var v1 int32
 	_ = v1
-	v1 = libc.X__mingw_vsnwprintf(tls, __stream, __count, __format, __local_argv)
+	v1 = libc.X__mingw_vsnwprintf(tls, __stream1, __count, __format1, __local_argv1)
 	goto _2
 _2:
 	return v1
@@ -99796,10 +99796,10 @@ const m_TCL_EVAL_GLOBAL12 = 131072
  * This file is part of the mingw-w64 runtime package.
  * No warranty is given; refer to the file DISCLAIMER.PD within this package.
  */
-func _vswprintf41(tls *libc.TLS, __stream uintptr, __count Tsize_t, __format uintptr, __local_argv T__builtin_va_list) (r int32) {
+func _vswprintf41(tls *libc.TLS, __stream1 uintptr, __count Tsize_t, __format1 uintptr, __local_argv1 T__builtin_va_list) (r int32) {
 	var v1 int32
 	_ = v1
-	v1 = libc.X__mingw_vsnwprintf(tls, __stream, __count, __format, __local_argv)
+	v1 = libc.X__mingw_vsnwprintf(tls, __stream1, __count, __format1, __local_argv1)
 	goto _2
 _2:
 	return v1
@@ -105987,10 +105987,10 @@ type Toff_t18 = int64
  * This file is part of the mingw-w64 runtime package.
  * No warranty is given; refer to the file DISCLAIMER.PD within this package.
  */
-func _vswprintf42(tls *libc.TLS, __stream uintptr, __count Tsize_t, __format uintptr, __local_argv T__builtin_va_list) (r int32) {
+func _vswprintf42(tls *libc.TLS, __stream1 uintptr, __count Tsize_t, __format1 uintptr, __local_argv1 T__builtin_va_list) (r int32) {
 	var v1 int32
 	_ = v1
-	v1 = libc.X__mingw_vsnwprintf(tls, __stream, __count, __format, __local_argv)
+	v1 = libc.X__mingw_vsnwprintf(tls, __stream1, __count, __format1, __local_argv1)
 	goto _2
 _2:
 	return v1
@@ -106412,10 +106412,10 @@ type Toff_t19 = int32
  * This file is part of the mingw-w64 runtime package.
  * No warranty is given; refer to the file DISCLAIMER.PD within this package.
  */
-func _vswprintf43(tls *libc.TLS, __stream uintptr, __count Tsize_t, __format uintptr, __local_argv T__builtin_va_list) (r int32) {
+func _vswprintf43(tls *libc.TLS, __stream1 uintptr, __count Tsize_t, __format1 uintptr, __local_argv1 T__builtin_va_list) (r int32) {
 	var v1 int32
 	_ = v1
-	v1 = libc.X__mingw_vsnwprintf(tls, __stream, __count, __format, __local_argv)
+	v1 = libc.X__mingw_vsnwprintf(tls, __stream1, __count, __format1, __local_argv1)
 	goto _2
 _2:
 	return v1
@@ -106966,10 +106966,10 @@ type Tsqlite3expert = struct {
  * This file is part of the mingw-w64 runtime package.
  * No warranty is given; refer to the file DISCLAIMER.PD within this package.
  */
-func _vswprintf44(tls *libc.TLS, __stream uintptr, __count Tsize_t, __format uintptr, __local_argv T__builtin_va_list) (r int32) {
+func _vswprintf44(tls *libc.TLS, __stream1 uintptr, __count Tsize_t, __format1 uintptr, __local_argv1 T__builtin_va_list) (r int32) {
 	var v1 int32
 	_ = v1
-	v1 = libc.X__mingw_vsnwprintf(tls, __stream, __count, __format, __local_argv)
+	v1 = libc.X__mingw_vsnwprintf(tls, __stream1, __count, __format1, __local_argv1)
 	goto _2
 _2:
 	return v1
@@ -109567,10 +109567,10 @@ const m_SQLITE_DIRECTONLY2 = 0x000080000
  * This file is part of the mingw-w64 runtime package.
  * No warranty is given; refer to the file DISCLAIMER.PD within this package.
  */
-func _vswprintf45(tls *libc.TLS, __stream uintptr, __count Tsize_t, __format uintptr, __local_argv T__builtin_va_list) (r int32) {
+func _vswprintf45(tls *libc.TLS, __stream1 uintptr, __count Tsize_t, __format1 uintptr, __local_argv1 T__builtin_va_list) (r int32) {
 	var v1 int32
 	_ = v1
-	v1 = libc.X__mingw_vsnwprintf(tls, __stream, __count, __format, __local_argv)
+	v1 = libc.X__mingw_vsnwprintf(tls, __stream1, __count, __format1, __local_argv1)
 	goto _2
 _2:
 	return v1
@@ -109851,10 +109851,10 @@ const m_SIZE_MAX9 = "_UI64_MAX"
  * This file is part of the mingw-w64 runtime package.
  * No warranty is given; refer to the file DISCLAIMER.PD within this package.
  */
-func _vswprintf46(tls *libc.TLS, __stream uintptr, __count Tsize_t, __format uintptr, __local_argv T__builtin_va_list) (r int32) {
+func _vswprintf46(tls *libc.TLS, __stream1 uintptr, __count Tsize_t, __format1 uintptr, __local_argv1 T__builtin_va_list) (r int32) {
 	var v1 int32
 	_ = v1
-	v1 = libc.X__mingw_vsnwprintf(tls, __stream, __count, __format, __local_argv)
+	v1 = libc.X__mingw_vsnwprintf(tls, __stream1, __count, __format1, __local_argv1)
 	goto _2
 _2:
 	return v1
@@ -112549,10 +112549,10 @@ func x_sqlite3_base64_init(tls *libc.TLS, db uintptr, pzErr uintptr, pApi uintpt
  * This file is part of the mingw-w64 runtime package.
  * No warranty is given; refer to the file DISCLAIMER.PD within this package.
  */
-func _vswprintf47(tls *libc.TLS, __stream uintptr, __count Tsize_t, __format uintptr, __local_argv T__builtin_va_list) (r int32) {
+func _vswprintf47(tls *libc.TLS, __stream1 uintptr, __count Tsize_t, __format1 uintptr, __local_argv1 T__builtin_va_list) (r int32) {
 	var v1 int32
 	_ = v1
-	v1 = libc.X__mingw_vsnwprintf(tls, __stream, __count, __format, __local_argv)
+	v1 = libc.X__mingw_vsnwprintf(tls, __stream1, __count, __format1, __local_argv1)
 	goto _2
 _2:
 	return v1
@@ -114210,10 +114210,10 @@ const m_SQLITE_OPEN_WAL7 = 0x00080000
  * This file is part of the mingw-w64 runtime package.
  * No warranty is given; refer to the file DISCLAIMER.PD within this package.
  */
-func _vswprintf48(tls *libc.TLS, __stream uintptr, __count Tsize_t, __format uintptr, __local_argv T__builtin_va_list) (r int32) {
+func _vswprintf48(tls *libc.TLS, __stream1 uintptr, __count Tsize_t, __format1 uintptr, __local_argv1 T__builtin_va_list) (r int32) {
 	var v1 int32
 	_ = v1
-	v1 = libc.X__mingw_vsnwprintf(tls, __stream, __count, __format, __local_argv)
+	v1 = libc.X__mingw_vsnwprintf(tls, __stream1, __count, __format1, __local_argv1)
 	goto _2
 _2:
 	return v1
@@ -115248,10 +115248,10 @@ const m_CSV_MXERR = 200
  * This file is part of the mingw-w64 runtime package.
  * No warranty is given; refer to the file DISCLAIMER.PD within this package.
  */
-func _vswprintf49(tls *libc.TLS, __stream uintptr, __count Tsize_t, __format uintptr, __local_argv T__builtin_va_list) (r int32) {
+func _vswprintf49(tls *libc.TLS, __stream1 uintptr, __count Tsize_t, __format1 uintptr, __local_argv1 T__builtin_va_list) (r int32) {
 	var v1 int32
 	_ = v1
-	v1 = libc.X__mingw_vsnwprintf(tls, __stream, __count, __format, __local_argv)
+	v1 = libc.X__mingw_vsnwprintf(tls, __stream1, __count, __format1, __local_argv1)
 	goto _2
 _2:
 	return v1
@@ -117893,10 +117893,10 @@ const m_stat1 = "_stat"
  * This file is part of the mingw-w64 runtime package.
  * No warranty is given; refer to the file DISCLAIMER.PD within this package.
  */
-func _vswprintf50(tls *libc.TLS, __stream uintptr, __count Tsize_t, __format uintptr, __local_argv T__builtin_va_list) (r int32) {
+func _vswprintf50(tls *libc.TLS, __stream1 uintptr, __count Tsize_t, __format1 uintptr, __local_argv1 T__builtin_va_list) (r int32) {
 	var v1 int32
 	_ = v1
-	v1 = libc.X__mingw_vsnwprintf(tls, __stream, __count, __format, __local_argv)
+	v1 = libc.X__mingw_vsnwprintf(tls, __stream1, __count, __format1, __local_argv1)
 	goto _2
 _2:
 	return v1
@@ -118861,10 +118861,10 @@ const m___LONG_LONG_MAX__13 = 0x7fffffffffffffff
  * This file is part of the mingw-w64 runtime package.
  * No warranty is given; refer to the file DISCLAIMER.PD within this package.
  */
-func _vswprintf51(tls *libc.TLS, __stream uintptr, __count Tsize_t, __format uintptr, __local_argv T__builtin_va_list) (r int32) {
+func _vswprintf51(tls *libc.TLS, __stream1 uintptr, __count Tsize_t, __format1 uintptr, __local_argv1 T__builtin_va_list) (r int32) {
 	var v1 int32
 	_ = v1
-	v1 = libc.X__mingw_vsnwprintf(tls, __stream, __count, __format, __local_argv)
+	v1 = libc.X__mingw_vsnwprintf(tls, __stream1, __count, __format1, __local_argv1)
 	goto _2
 _2:
 	return v1
@@ -120063,10 +120063,10 @@ const m_FTS5_TOKEN_COLOCATED1 = 1
  * This file is part of the mingw-w64 runtime package.
  * No warranty is given; refer to the file DISCLAIMER.PD within this package.
  */
-func _vswprintf52(tls *libc.TLS, __stream uintptr, __count Tsize_t, __format uintptr, __local_argv T__builtin_va_list) (r int32) {
+func _vswprintf52(tls *libc.TLS, __stream1 uintptr, __count Tsize_t, __format1 uintptr, __local_argv1 T__builtin_va_list) (r int32) {
 	var v1 int32
 	_ = v1
-	v1 = libc.X__mingw_vsnwprintf(tls, __stream, __count, __format, __local_argv)
+	v1 = libc.X__mingw_vsnwprintf(tls, __stream1, __count, __format1, __local_argv1)
 	goto _2
 _2:
 	return v1
@@ -127872,10 +127872,10 @@ const m___LONG_MAX__2 = 0x7fffffff
  * This file is part of the mingw-w64 runtime package.
  * No warranty is given; refer to the file DISCLAIMER.PD within this package.
  */
-func _vswprintf53(tls *libc.TLS, __stream uintptr, __count Tsize_t, __format uintptr, __local_argv T__builtin_va_list) (r int32) {
+func _vswprintf53(tls *libc.TLS, __stream1 uintptr, __count Tsize_t, __format1 uintptr, __local_argv1 T__builtin_va_list) (r int32) {
 	var v1 int32
 	_ = v1
-	v1 = libc.X__mingw_vsnwprintf(tls, __stream, __count, __format, __local_argv)
+	v1 = libc.X__mingw_vsnwprintf(tls, __stream1, __count, __format1, __local_argv1)
 	goto _2
 _2:
 	return v1
@@ -135183,10 +135183,10 @@ const m_z_off_t = "long"
  * This file is part of the mingw-w64 runtime package.
  * No warranty is given; refer to the file DISCLAIMER.PD within this package.
  */
-func _vswprintf54(tls *libc.TLS, __stream uintptr, __count Tsize_t, __format uintptr, __local_argv T__builtin_va_list) (r int32) {
+func _vswprintf54(tls *libc.TLS, __stream1 uintptr, __count Tsize_t, __format1 uintptr, __local_argv1 T__builtin_va_list) (r int32) {
 	var v1 int32
 	_ = v1
-	v1 = libc.X__mingw_vsnwprintf(tls, __stream, __count, __format, __local_argv)
+	v1 = libc.X__mingw_vsnwprintf(tls, __stream1, __count, __format1, __local_argv1)
 	goto _2
 _2:
 	return v1
@@ -137801,10 +137801,10 @@ const m_TK_VARIABLE2 = 156
  * This file is part of the mingw-w64 runtime package.
  * No warranty is given; refer to the file DISCLAIMER.PD within this package.
  */
-func _vswprintf55(tls *libc.TLS, __stream uintptr, __count Tsize_t, __format uintptr, __local_argv T__builtin_va_list) (r int32) {
+func _vswprintf55(tls *libc.TLS, __stream1 uintptr, __count Tsize_t, __format1 uintptr, __local_argv1 T__builtin_va_list) (r int32) {
 	var v1 int32
 	_ = v1
-	v1 = libc.X__mingw_vsnwprintf(tls, __stream, __count, __format, __local_argv)
+	v1 = libc.X__mingw_vsnwprintf(tls, __stream1, __count, __format1, __local_argv1)
 	goto _2
 _2:
 	return v1
@@ -138254,10 +138254,10 @@ const m___LONG_LONG_MAX__16 = 9223372036854775807
  * This file is part of the mingw-w64 runtime package.
  * No warranty is given; refer to the file DISCLAIMER.PD within this package.
  */
-func _vswprintf56(tls *libc.TLS, __stream uintptr, __count Tsize_t, __format uintptr, __local_argv T__builtin_va_list) (r int32) {
+func _vswprintf56(tls *libc.TLS, __stream1 uintptr, __count Tsize_t, __format1 uintptr, __local_argv1 T__builtin_va_list) (r int32) {
 	var v1 int32
 	_ = v1
-	v1 = libc.X__mingw_vsnwprintf(tls, __stream, __count, __format, __local_argv)
+	v1 = libc.X__mingw_vsnwprintf(tls, __stream1, __count, __format1, __local_argv1)
 	goto _2
 _2:
 	return v1
@@ -144556,10 +144556,10 @@ type Toff_t20 = int64
  * This file is part of the mingw-w64 runtime package.
  * No warranty is given; refer to the file DISCLAIMER.PD within this package.
  */
-func _vswprintf57(tls *libc.TLS, __stream uintptr, __count Tsize_t, __format uintptr, __local_argv T__builtin_va_list) (r int32) {
+func _vswprintf57(tls *libc.TLS, __stream1 uintptr, __count Tsize_t, __format1 uintptr, __local_argv1 T__builtin_va_list) (r int32) {
 	var v1 int32
 	_ = v1
-	v1 = libc.X__mingw_vsnwprintf(tls, __stream, __count, __format, __local_argv)
+	v1 = libc.X__mingw_vsnwprintf(tls, __stream1, __count, __format1, __local_argv1)
 	goto _2
 _2:
 	return v1
