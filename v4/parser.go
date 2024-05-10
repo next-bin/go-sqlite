@@ -931,9 +931,8 @@ func (p *parser) iterationStatement() (r *IterationStatement) {
 func (p *parser) expressionStatement() *ExpressionStatement {
 	switch p.rune(false) {
 	case rune(ATTRIBUTE):
-		t := p.shift(false)
-		p.cpp.eh("%v: internal error: TODO", t.Position(), runeName(t.Ch))
-		return nil
+		p.attributeSpecifier() // Not supported yet, ignored.
+		fallthrough
 	default:
 		return &ExpressionStatement{ExpressionList: p.expression(true), Token: p.must(';')}
 	}
