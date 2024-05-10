@@ -1,4 +1,4 @@
-// Code generated for freebsd/arm64 by 'generator --package-name libsqlite3 --prefix-enumerator=_ --prefix-external=x_ --prefix-field=F --prefix-static-internal=_ --prefix-static-none=_ --prefix-tagged-enum=_ --prefix-tagged-struct=T --prefix-tagged-union=T --prefix-typename=T --prefix-undefined=_ -ignore-unsupported-alignment -import runtime -DHAVE_USLEEP -DLONGDOUBLE_TYPE=double -DNDEBUG -DSQLITE_DEFAULT_MEMSTATUS=0 -DSQLITE_ENABLE_COLUMN_METADATA -DSQLITE_ENABLE_DBSTAT_VTAB -DSQLITE_ENABLE_FTS5 -DSQLITE_ENABLE_GEOPOLY -DSQLITE_ENABLE_JSON1 -DSQLITE_ENABLE_MATH_FUNCTIONS -DSQLITE_ENABLE_MEMORY_MANAGEMENT -DSQLITE_ENABLE_OFFSET_SQL_FUNC -DSQLITE_ENABLE_PREUPDATE_HOOK -DSQLITE_ENABLE_RBU -DSQLITE_ENABLE_RTREE -DSQLITE_ENABLE_SESSION -DSQLITE_ENABLE_SNAPSHOT -DSQLITE_ENABLE_STAT4 -DSQLITE_ENABLE_UNLOCK_NOTIFY -DSQLITE_HAVE_ZLIB=1 -DSQLITE_LIKE_DOESNT_MATCH_BLOBS -DSQLITE_SOUNDEX -DSQLITE_THREADSAFE=1 -DSQLITE_WITHOUT_ZONEMALLOC -Dpread64=pread -Dpwrite64=pwrite -extended-errors -o sqlite3.go sqlite3.c -I/tmp/libsqlite3/sqlite-amalgamation-3450300/ccgo -DSQLITE_MUTEX_NOOP -DSQLITE_OS_UNIX=1 -ltcl8.6 -eval-all-macros', DO NOT EDIT.
+// Code generated for freebsd/arm64 by 'generator --package-name libsqlite3 --prefix-enumerator=_ --prefix-external=x_ --prefix-field=F --prefix-static-internal=_ --prefix-static-none=_ --prefix-tagged-enum=_ --prefix-tagged-struct=T --prefix-tagged-union=T --prefix-typename=T --prefix-undefined=_ -ignore-unsupported-alignment -DHAVE_USLEEP -DLONGDOUBLE_TYPE=double -DNDEBUG -DSQLITE_DEFAULT_MEMSTATUS=0 -DSQLITE_ENABLE_COLUMN_METADATA -DSQLITE_ENABLE_DBSTAT_VTAB -DSQLITE_ENABLE_FTS5 -DSQLITE_ENABLE_GEOPOLY -DSQLITE_ENABLE_JSON1 -DSQLITE_ENABLE_MATH_FUNCTIONS -DSQLITE_ENABLE_MEMORY_MANAGEMENT -DSQLITE_ENABLE_OFFSET_SQL_FUNC -DSQLITE_ENABLE_PREUPDATE_HOOK -DSQLITE_ENABLE_RBU -DSQLITE_ENABLE_RTREE -DSQLITE_ENABLE_SESSION -DSQLITE_ENABLE_SNAPSHOT -DSQLITE_ENABLE_STAT4 -DSQLITE_ENABLE_UNLOCK_NOTIFY -DSQLITE_HAVE_ZLIB=1 -DSQLITE_LIKE_DOESNT_MATCH_BLOBS -DSQLITE_SOUNDEX -DSQLITE_THREADSAFE=1 -DSQLITE_WITHOUT_ZONEMALLOC -Dpread64=pread -Dpwrite64=pwrite -extended-errors -o sqlite3.go sqlite3.c -I/tmp/libsqlite3/sqlite-amalgamation-3450300/ccgo -DSQLITE_MUTEX_NOOP -DSQLITE_OS_UNIX=1 -ltcl8.6 -eval-all-macros', DO NOT EDIT.
 
 //go:build freebsd && arm64
 // +build freebsd,arm64
@@ -10,8 +10,6 @@ import (
 	"unsafe"
 
 	"modernc.org/libc"
-
-	"runtime"
 )
 
 var (
@@ -30612,7 +30610,7 @@ func _sqlite3PCacheBufferSetup(tls *libc.TLS, pBuf uintptr, sz int32, n int32) {
 	var p uintptr
 	var v1, v2, v3, v4 int32
 	_, _, _, _, _ = p, v1, v2, v3, v4
-	if _pcache1_g.FisInit != 0 {
+	if libc.AtomicLoadPInt32(uintptr(unsafe.Pointer(&_pcache1_g))+80) != 0 {
 		if pBuf == uintptr(0) {
 			v1 = libc.Int32FromInt32(0)
 			n = v1
@@ -31133,7 +31131,7 @@ func _pcache1Init(tls *libc.TLS, NotUsed uintptr) (r int32) {
 		_pcache1_g.FnInitPage = 0
 	}
 	_pcache1_g.Fgrp.FmxPinned = uint32(10)
-	_pcache1_g.FisInit = int32(1)
+	libc.AtomicStorePInt32(uintptr(unsafe.Pointer(&_pcache1_g))+80, int32(1))
 	return SQLITE_OK
 }
 
@@ -158392,8 +158390,6 @@ func _hasHighPrecisionDouble(tls *libc.TLS, rc int32) (r int32) {
 //	**       without blocking.
 //	*/
 func Xsqlite3_initialize(tls *libc.TLS) (r int32) {
-	ng := runtime.GOMAXPROCS(1)
-	defer func() { runtime.GOMAXPROCS(ng) }()
 	var pMainMtx uintptr
 	var rc int32
 	_, _ = pMainMtx, rc /* Result code */
@@ -158405,7 +158401,7 @@ func Xsqlite3_initialize(tls *libc.TLS) (r int32) {
 	 ** must be complete.  So isInit must not be set until the very end
 	 ** of this routine.
 	 */
-	if _sqlite3Config.FisInit != 0 {
+	if libc.AtomicLoadPInt32(uintptr(unsafe.Pointer(&_sqlite3Config))+340) != 0 {
 		return SQLITE_OK
 	}
 	/* Make sure the mutex subsystem is initialized.  If unable to
@@ -158465,7 +158461,7 @@ func Xsqlite3_initialize(tls *libc.TLS) (r int32) {
 	 ** call to sqlite3PcacheInitialize().
 	 */
 	Xsqlite3_mutex_enter(tls, _sqlite3Config.FpInitMutex)
-	if _sqlite3Config.FisInit == 0 && _sqlite3Config.FinProgress == 0 {
+	if libc.AtomicLoadPInt32(uintptr(unsafe.Pointer(&_sqlite3Config))+340) == 0 && _sqlite3Config.FinProgress == 0 {
 		_sqlite3Config.FinProgress = int32(1)
 		libc.Xmemset(tls, uintptr(unsafe.Pointer(&_sqlite3BuiltinFunctions)), 0, uint64(184))
 		_sqlite3RegisterBuiltinFunctions(tls)
@@ -158481,7 +158477,7 @@ func Xsqlite3_initialize(tls *libc.TLS) (r int32) {
 		}
 		if rc == SQLITE_OK {
 			_sqlite3PCacheBufferSetup(tls, _sqlite3Config.FpPage, _sqlite3Config.FszPage, _sqlite3Config.FnPage)
-			_sqlite3Config.FisInit = int32(1)
+			libc.AtomicStorePInt32(uintptr(unsafe.Pointer(&_sqlite3Config))+340, int32(1))
 		}
 		_sqlite3Config.FinProgress = 0
 	}
@@ -158506,7 +158502,7 @@ func Xsqlite3_initialize(tls *libc.TLS) (r int32) {
 	 */
 	/* Experimentally determine if high-precision floating point is
 	 ** available. */
-	_sqlite3Config.FbUseLongDouble = uint8(_hasHighPrecisionDouble(tls, rc))
+	// disabled
 	return rc
 }
 
@@ -158521,10 +158517,10 @@ func Xsqlite3_initialize(tls *libc.TLS) (r int32) {
 //	** when this routine is invoked, then this routine is a harmless no-op.
 //	*/
 func Xsqlite3_shutdown(tls *libc.TLS) (r int32) {
-	if _sqlite3Config.FisInit != 0 {
+	if libc.AtomicLoadPInt32(uintptr(unsafe.Pointer(&_sqlite3Config))+340) != 0 {
 		Xsqlite3_os_end(tls)
 		Xsqlite3_reset_auto_extension(tls)
-		_sqlite3Config.FisInit = 0
+		libc.AtomicStorePInt32(uintptr(unsafe.Pointer(&_sqlite3Config))+340, 0)
 	}
 	if _sqlite3Config.FisPCacheInit != 0 {
 		_sqlite3PcacheShutdown(tls)
@@ -158572,7 +158568,7 @@ func Xsqlite3_config(tls *libc.TLS, op int32, va uintptr) (r int32) {
 	 ** the SQLite library is in use.  Except, a few selected opcodes
 	 ** are allowed.
 	 */
-	if _sqlite3Config.FisInit != 0 {
+	if libc.AtomicLoadPInt32(uintptr(unsafe.Pointer(&_sqlite3Config))+340) != 0 {
 		if op < 0 || op > int32(63) || libc.Uint64FromInt32(1)<<op&_mAnytimeConfigOption == uint64(0) {
 			return _sqlite3MisuseError(tls, int32(178789))
 		}
@@ -162158,7 +162154,7 @@ func Xsqlite3_test_control(tls *libc.TLS, op int32, va uintptr) (r int32) {
 		 */
 		fallthrough
 	case int32(SQLITE_TESTCTRL_ISINIT):
-		if _sqlite3Config.FisInit == 0 {
+		if libc.AtomicLoadPInt32(uintptr(unsafe.Pointer(&_sqlite3Config))+340) == 0 {
 			rc = int32(SQLITE_ERROR)
 		}
 		break
@@ -176052,8 +176048,8 @@ func _geopolyBBoxStep(tls *libc.TLS, context uintptr, argc int32, argv uintptr) 
 		if pBBox == uintptr(0) {
 			return
 		}
-		if (*TGeoBBox)(unsafe.Pointer(pBBox)).FisInit == 0 {
-			(*TGeoBBox)(unsafe.Pointer(pBBox)).FisInit = int32(1)
+		if libc.AtomicLoadPInt32(pBBox) == 0 {
+			libc.AtomicStorePInt32(pBBox, int32(1))
 			libc.Xmemcpy(tls, pBBox+4, bp, libc.Uint64FromInt64(4)*libc.Uint64FromInt32(4))
 		} else {
 			if *(*TRtreeValue)(unsafe.Pointer(bp)) < *(*TRtreeValue)(unsafe.Pointer(pBBox + 4)) {
