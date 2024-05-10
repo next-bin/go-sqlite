@@ -123,8 +123,16 @@ func main() {
 	mustCopyDir(ccgoInc, filepath.Join("..", "libz", "include", goos, goarch), nil, false)
 	mustCopyDir(ccgoInc, filepath.Join("..", "libtcl8.6", "include", goos, goarch), nil, false)
 	util.MustShell(true, nil, "unzip", archivePath, "-d", tempDir)
+
 	// https://gitlab.com/cznic/sqlite/-/issues/173
 	util.MustShell(true, nil, "patch", filepath.Join(libRoot, "sqlite3.c"), filepath.Join("internal", "sqlite_issue173.patch"))
+
+	// https://gitlab.com/cznic/sqlite/-/issues/180
+	// We do not have long double, the field is already zero, skip the C-racy test altogether.
+	util.MustShell(true, nil, sed, "-i", `s/sqlite3Config.bUseLongDouble = hasHighPrecisionDouble(rc);/\/\/ disabled/`, filepath.Join(libRoot, "sqlite3.c"))
+	// Another C-race, enforce atomic access.
+	util.MustShell(true, nil, sed, "-i", `0,/int isInit;*True after/{s/int isInit/volatile int isInit/}`, filepath.Join(libRoot, "sqlite3.c"))
+
 	fixWin(tempDir)
 	result := "sqlite3.go"
 	util.MustInDir(true, makeRoot, func() (err error) {
@@ -154,7 +162,6 @@ func main() {
 			"--prefix-typename=T",
 			"--prefix-undefined=_",
 			"-ignore-unsupported-alignment",
-			"-import", "runtime",
 
 			"-DHAVE_USLEEP",
 			"-DLONGDOUBLE_TYPE=double",
@@ -222,8 +229,6 @@ func main() {
 
 		util.MustShell(true, nil, sed, "-i", `s/\<T__\([a-zA-Z0-9][a-zA-Z0-9_]\+\)/t__\1/g`, result)
 		util.MustShell(true, nil, sed, "-i", `s/\<x_\([a-zA-Z0-9][a-zA-Z0-9_]\+\)/X\1/g`, result)
-		// https://gitlab.com/cznic/sqlite/-/issues/180
-		util.MustShell(true, nil, sed, "-i", `/^func Xsqlite3_initialize/a ng := runtime.GOMAXPROCS(1); defer func() { runtime.GOMAXPROCS(ng) }()`, result)
 		return nil
 	})
 
