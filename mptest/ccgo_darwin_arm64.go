@@ -1875,483 +1875,483 @@ type sqlite3_uint64 = uint64
 type sqlite3_callback = uintptr
 
 type sqlite3_file = struct {
-	pMethods uintptr
+	FpMethods uintptr
 }
 
 type sqlite3_file1 = struct {
-	pMethods uintptr
+	FpMethods uintptr
 }
 
 type sqlite3_io_methods = struct {
-	iVersion               int32
-	xClose                 uintptr
-	xRead                  uintptr
-	xWrite                 uintptr
-	xTruncate              uintptr
-	xSync                  uintptr
-	xFileSize              uintptr
-	xLock                  uintptr
-	xUnlock                uintptr
-	xCheckReservedLock     uintptr
-	xFileControl           uintptr
-	xSectorSize            uintptr
-	xDeviceCharacteristics uintptr
-	xShmMap                uintptr
-	xShmLock               uintptr
-	xShmBarrier            uintptr
-	xShmUnmap              uintptr
-	xFetch                 uintptr
-	xUnfetch               uintptr
+	FiVersion               int32
+	FxClose                 uintptr
+	FxRead                  uintptr
+	FxWrite                 uintptr
+	FxTruncate              uintptr
+	FxSync                  uintptr
+	FxFileSize              uintptr
+	FxLock                  uintptr
+	FxUnlock                uintptr
+	FxCheckReservedLock     uintptr
+	FxFileControl           uintptr
+	FxSectorSize            uintptr
+	FxDeviceCharacteristics uintptr
+	FxShmMap                uintptr
+	FxShmLock               uintptr
+	FxShmBarrier            uintptr
+	FxShmUnmap              uintptr
+	FxFetch                 uintptr
+	FxUnfetch               uintptr
 }
 
 type sqlite3_io_methods1 = struct {
-	iVersion               int32
-	xClose                 uintptr
-	xRead                  uintptr
-	xWrite                 uintptr
-	xTruncate              uintptr
-	xSync                  uintptr
-	xFileSize              uintptr
-	xLock                  uintptr
-	xUnlock                uintptr
-	xCheckReservedLock     uintptr
-	xFileControl           uintptr
-	xSectorSize            uintptr
-	xDeviceCharacteristics uintptr
-	xShmMap                uintptr
-	xShmLock               uintptr
-	xShmBarrier            uintptr
-	xShmUnmap              uintptr
-	xFetch                 uintptr
-	xUnfetch               uintptr
+	FiVersion               int32
+	FxClose                 uintptr
+	FxRead                  uintptr
+	FxWrite                 uintptr
+	FxTruncate              uintptr
+	FxSync                  uintptr
+	FxFileSize              uintptr
+	FxLock                  uintptr
+	FxUnlock                uintptr
+	FxCheckReservedLock     uintptr
+	FxFileControl           uintptr
+	FxSectorSize            uintptr
+	FxDeviceCharacteristics uintptr
+	FxShmMap                uintptr
+	FxShmLock               uintptr
+	FxShmBarrier            uintptr
+	FxShmUnmap              uintptr
+	FxFetch                 uintptr
+	FxUnfetch               uintptr
 }
 
 type sqlite3_filename = uintptr
 
 type sqlite3_vfs = struct {
-	iVersion          int32
-	szOsFile          int32
-	mxPathname        int32
-	pNext             uintptr
-	zName             uintptr
-	pAppData          uintptr
-	xOpen             uintptr
-	xDelete           uintptr
-	xAccess           uintptr
-	xFullPathname     uintptr
-	xDlOpen           uintptr
-	xDlError          uintptr
-	xDlSym            uintptr
-	xDlClose          uintptr
-	xRandomness       uintptr
-	xSleep            uintptr
-	xCurrentTime      uintptr
-	xGetLastError     uintptr
-	xCurrentTimeInt64 uintptr
-	xSetSystemCall    uintptr
-	xGetSystemCall    uintptr
-	xNextSystemCall   uintptr
+	FiVersion          int32
+	FszOsFile          int32
+	FmxPathname        int32
+	FpNext             uintptr
+	FzName             uintptr
+	FpAppData          uintptr
+	FxOpen             uintptr
+	FxDelete           uintptr
+	FxAccess           uintptr
+	FxFullPathname     uintptr
+	FxDlOpen           uintptr
+	FxDlError          uintptr
+	FxDlSym            uintptr
+	FxDlClose          uintptr
+	FxRandomness       uintptr
+	FxSleep            uintptr
+	FxCurrentTime      uintptr
+	FxGetLastError     uintptr
+	FxCurrentTimeInt64 uintptr
+	FxSetSystemCall    uintptr
+	FxGetSystemCall    uintptr
+	FxNextSystemCall   uintptr
 }
 
 type sqlite3_syscall_ptr = uintptr
 
 type sqlite3_vfs1 = struct {
-	iVersion          int32
-	szOsFile          int32
-	mxPathname        int32
-	pNext             uintptr
-	zName             uintptr
-	pAppData          uintptr
-	xOpen             uintptr
-	xDelete           uintptr
-	xAccess           uintptr
-	xFullPathname     uintptr
-	xDlOpen           uintptr
-	xDlError          uintptr
-	xDlSym            uintptr
-	xDlClose          uintptr
-	xRandomness       uintptr
-	xSleep            uintptr
-	xCurrentTime      uintptr
-	xGetLastError     uintptr
-	xCurrentTimeInt64 uintptr
-	xSetSystemCall    uintptr
-	xGetSystemCall    uintptr
-	xNextSystemCall   uintptr
+	FiVersion          int32
+	FszOsFile          int32
+	FmxPathname        int32
+	FpNext             uintptr
+	FzName             uintptr
+	FpAppData          uintptr
+	FxOpen             uintptr
+	FxDelete           uintptr
+	FxAccess           uintptr
+	FxFullPathname     uintptr
+	FxDlOpen           uintptr
+	FxDlError          uintptr
+	FxDlSym            uintptr
+	FxDlClose          uintptr
+	FxRandomness       uintptr
+	FxSleep            uintptr
+	FxCurrentTime      uintptr
+	FxGetLastError     uintptr
+	FxCurrentTimeInt64 uintptr
+	FxSetSystemCall    uintptr
+	FxGetSystemCall    uintptr
+	FxNextSystemCall   uintptr
 }
 
 type sqlite3_mem_methods = struct {
-	xMalloc   uintptr
-	xFree     uintptr
-	xRealloc  uintptr
-	xSize     uintptr
-	xRoundup  uintptr
-	xInit     uintptr
-	xShutdown uintptr
-	pAppData  uintptr
+	FxMalloc   uintptr
+	FxFree     uintptr
+	FxRealloc  uintptr
+	FxSize     uintptr
+	FxRoundup  uintptr
+	FxInit     uintptr
+	FxShutdown uintptr
+	FpAppData  uintptr
 }
 
 type sqlite3_mem_methods1 = struct {
-	xMalloc   uintptr
-	xFree     uintptr
-	xRealloc  uintptr
-	xSize     uintptr
-	xRoundup  uintptr
-	xInit     uintptr
-	xShutdown uintptr
-	pAppData  uintptr
+	FxMalloc   uintptr
+	FxFree     uintptr
+	FxRealloc  uintptr
+	FxSize     uintptr
+	FxRoundup  uintptr
+	FxInit     uintptr
+	FxShutdown uintptr
+	FpAppData  uintptr
 }
 
 type sqlite3_destructor_type = uintptr
 
 type sqlite3_vtab = struct {
-	pModule uintptr
-	nRef    int32
-	zErrMsg uintptr
+	FpModule uintptr
+	FnRef    int32
+	FzErrMsg uintptr
 }
 
 type sqlite3_index_info = struct {
-	nConstraint      int32
-	aConstraint      uintptr
-	nOrderBy         int32
-	aOrderBy         uintptr
-	aConstraintUsage uintptr
-	idxNum           int32
-	idxStr           uintptr
-	needToFreeIdxStr int32
-	orderByConsumed  int32
-	estimatedCost    float64
-	estimatedRows    sqlite3_int64
-	idxFlags         int32
-	colUsed          sqlite3_uint64
+	FnConstraint      int32
+	FaConstraint      uintptr
+	FnOrderBy         int32
+	FaOrderBy         uintptr
+	FaConstraintUsage uintptr
+	FidxNum           int32
+	FidxStr           uintptr
+	FneedToFreeIdxStr int32
+	ForderByConsumed  int32
+	FestimatedCost    float64
+	FestimatedRows    sqlite3_int64
+	FidxFlags         int32
+	FcolUsed          sqlite3_uint64
 }
 
 type sqlite3_vtab_cursor = struct {
-	pVtab uintptr
+	FpVtab uintptr
 }
 
 type sqlite3_module = struct {
-	iVersion      int32
-	xCreate       uintptr
-	xConnect      uintptr
-	xBestIndex    uintptr
-	xDisconnect   uintptr
-	xDestroy      uintptr
-	xOpen         uintptr
-	xClose        uintptr
-	xFilter       uintptr
-	xNext         uintptr
-	xEof          uintptr
-	xColumn       uintptr
-	xRowid        uintptr
-	xUpdate       uintptr
-	xBegin        uintptr
-	xSync         uintptr
-	xCommit       uintptr
-	xRollback     uintptr
-	xFindFunction uintptr
-	xRename       uintptr
-	xSavepoint    uintptr
-	xRelease      uintptr
-	xRollbackTo   uintptr
-	xShadowName   uintptr
-	xIntegrity    uintptr
+	FiVersion      int32
+	FxCreate       uintptr
+	FxConnect      uintptr
+	FxBestIndex    uintptr
+	FxDisconnect   uintptr
+	FxDestroy      uintptr
+	FxOpen         uintptr
+	FxClose        uintptr
+	FxFilter       uintptr
+	FxNext         uintptr
+	FxEof          uintptr
+	FxColumn       uintptr
+	FxRowid        uintptr
+	FxUpdate       uintptr
+	FxBegin        uintptr
+	FxSync         uintptr
+	FxCommit       uintptr
+	FxRollback     uintptr
+	FxFindFunction uintptr
+	FxRename       uintptr
+	FxSavepoint    uintptr
+	FxRelease      uintptr
+	FxRollbackTo   uintptr
+	FxShadowName   uintptr
+	FxIntegrity    uintptr
 }
 
 type sqlite3_module1 = struct {
-	iVersion      int32
-	xCreate       uintptr
-	xConnect      uintptr
-	xBestIndex    uintptr
-	xDisconnect   uintptr
-	xDestroy      uintptr
-	xOpen         uintptr
-	xClose        uintptr
-	xFilter       uintptr
-	xNext         uintptr
-	xEof          uintptr
-	xColumn       uintptr
-	xRowid        uintptr
-	xUpdate       uintptr
-	xBegin        uintptr
-	xSync         uintptr
-	xCommit       uintptr
-	xRollback     uintptr
-	xFindFunction uintptr
-	xRename       uintptr
-	xSavepoint    uintptr
-	xRelease      uintptr
-	xRollbackTo   uintptr
-	xShadowName   uintptr
-	xIntegrity    uintptr
+	FiVersion      int32
+	FxCreate       uintptr
+	FxConnect      uintptr
+	FxBestIndex    uintptr
+	FxDisconnect   uintptr
+	FxDestroy      uintptr
+	FxOpen         uintptr
+	FxClose        uintptr
+	FxFilter       uintptr
+	FxNext         uintptr
+	FxEof          uintptr
+	FxColumn       uintptr
+	FxRowid        uintptr
+	FxUpdate       uintptr
+	FxBegin        uintptr
+	FxSync         uintptr
+	FxCommit       uintptr
+	FxRollback     uintptr
+	FxFindFunction uintptr
+	FxRename       uintptr
+	FxSavepoint    uintptr
+	FxRelease      uintptr
+	FxRollbackTo   uintptr
+	FxShadowName   uintptr
+	FxIntegrity    uintptr
 }
 
 type sqlite3_index_info1 = struct {
-	nConstraint      int32
-	aConstraint      uintptr
-	nOrderBy         int32
-	aOrderBy         uintptr
-	aConstraintUsage uintptr
-	idxNum           int32
-	idxStr           uintptr
-	needToFreeIdxStr int32
-	orderByConsumed  int32
-	estimatedCost    float64
-	estimatedRows    sqlite3_int64
-	idxFlags         int32
-	colUsed          sqlite3_uint64
+	FnConstraint      int32
+	FaConstraint      uintptr
+	FnOrderBy         int32
+	FaOrderBy         uintptr
+	FaConstraintUsage uintptr
+	FidxNum           int32
+	FidxStr           uintptr
+	FneedToFreeIdxStr int32
+	ForderByConsumed  int32
+	FestimatedCost    float64
+	FestimatedRows    sqlite3_int64
+	FidxFlags         int32
+	FcolUsed          sqlite3_uint64
 }
 
 type sqlite3_vtab1 = struct {
-	pModule uintptr
-	nRef    int32
-	zErrMsg uintptr
+	FpModule uintptr
+	FnRef    int32
+	FzErrMsg uintptr
 }
 
 type sqlite3_vtab_cursor1 = struct {
-	pVtab uintptr
+	FpVtab uintptr
 }
 
 type sqlite3_mutex_methods = struct {
-	xMutexInit    uintptr
-	xMutexEnd     uintptr
-	xMutexAlloc   uintptr
-	xMutexFree    uintptr
-	xMutexEnter   uintptr
-	xMutexTry     uintptr
-	xMutexLeave   uintptr
-	xMutexHeld    uintptr
-	xMutexNotheld uintptr
+	FxMutexInit    uintptr
+	FxMutexEnd     uintptr
+	FxMutexAlloc   uintptr
+	FxMutexFree    uintptr
+	FxMutexEnter   uintptr
+	FxMutexTry     uintptr
+	FxMutexLeave   uintptr
+	FxMutexHeld    uintptr
+	FxMutexNotheld uintptr
 }
 
 type sqlite3_mutex_methods1 = struct {
-	xMutexInit    uintptr
-	xMutexEnd     uintptr
-	xMutexAlloc   uintptr
-	xMutexFree    uintptr
-	xMutexEnter   uintptr
-	xMutexTry     uintptr
-	xMutexLeave   uintptr
-	xMutexHeld    uintptr
-	xMutexNotheld uintptr
+	FxMutexInit    uintptr
+	FxMutexEnd     uintptr
+	FxMutexAlloc   uintptr
+	FxMutexFree    uintptr
+	FxMutexEnter   uintptr
+	FxMutexTry     uintptr
+	FxMutexLeave   uintptr
+	FxMutexHeld    uintptr
+	FxMutexNotheld uintptr
 }
 
 type sqlite3_pcache_page = struct {
-	pBuf   uintptr
-	pExtra uintptr
+	FpBuf   uintptr
+	FpExtra uintptr
 }
 
 type sqlite3_pcache_page1 = struct {
-	pBuf   uintptr
-	pExtra uintptr
+	FpBuf   uintptr
+	FpExtra uintptr
 }
 
 type sqlite3_pcache_methods2 = struct {
-	iVersion   int32
-	pArg       uintptr
-	xInit      uintptr
-	xShutdown  uintptr
-	xCreate    uintptr
-	xCachesize uintptr
-	xPagecount uintptr
-	xFetch     uintptr
-	xUnpin     uintptr
-	xRekey     uintptr
-	xTruncate  uintptr
-	xDestroy   uintptr
-	xShrink    uintptr
+	FiVersion   int32
+	FpArg       uintptr
+	FxInit      uintptr
+	FxShutdown  uintptr
+	FxCreate    uintptr
+	FxCachesize uintptr
+	FxPagecount uintptr
+	FxFetch     uintptr
+	FxUnpin     uintptr
+	FxRekey     uintptr
+	FxTruncate  uintptr
+	FxDestroy   uintptr
+	FxShrink    uintptr
 }
 
 type sqlite3_pcache_methods21 = struct {
-	iVersion   int32
-	pArg       uintptr
-	xInit      uintptr
-	xShutdown  uintptr
-	xCreate    uintptr
-	xCachesize uintptr
-	xPagecount uintptr
-	xFetch     uintptr
-	xUnpin     uintptr
-	xRekey     uintptr
-	xTruncate  uintptr
-	xDestroy   uintptr
-	xShrink    uintptr
+	FiVersion   int32
+	FpArg       uintptr
+	FxInit      uintptr
+	FxShutdown  uintptr
+	FxCreate    uintptr
+	FxCachesize uintptr
+	FxPagecount uintptr
+	FxFetch     uintptr
+	FxUnpin     uintptr
+	FxRekey     uintptr
+	FxTruncate  uintptr
+	FxDestroy   uintptr
+	FxShrink    uintptr
 }
 
 type sqlite3_pcache_methods = struct {
-	pArg       uintptr
-	xInit      uintptr
-	xShutdown  uintptr
-	xCreate    uintptr
-	xCachesize uintptr
-	xPagecount uintptr
-	xFetch     uintptr
-	xUnpin     uintptr
-	xRekey     uintptr
-	xTruncate  uintptr
-	xDestroy   uintptr
+	FpArg       uintptr
+	FxInit      uintptr
+	FxShutdown  uintptr
+	FxCreate    uintptr
+	FxCachesize uintptr
+	FxPagecount uintptr
+	FxFetch     uintptr
+	FxUnpin     uintptr
+	FxRekey     uintptr
+	FxTruncate  uintptr
+	FxDestroy   uintptr
 }
 
 type sqlite3_pcache_methods1 = struct {
-	pArg       uintptr
-	xInit      uintptr
-	xShutdown  uintptr
-	xCreate    uintptr
-	xCachesize uintptr
-	xPagecount uintptr
-	xFetch     uintptr
-	xUnpin     uintptr
-	xRekey     uintptr
-	xTruncate  uintptr
-	xDestroy   uintptr
+	FpArg       uintptr
+	FxInit      uintptr
+	FxShutdown  uintptr
+	FxCreate    uintptr
+	FxCachesize uintptr
+	FxPagecount uintptr
+	FxFetch     uintptr
+	FxUnpin     uintptr
+	FxRekey     uintptr
+	FxTruncate  uintptr
+	FxDestroy   uintptr
 }
 
 type sqlite3_snapshot = struct {
-	hidden [48]uint8
+	Fhidden [48]uint8
 }
 
 type sqlite3_rtree_geometry = struct {
-	pContext uintptr
-	nParam   int32
-	aParam   uintptr
-	pUser    uintptr
-	xDelUser uintptr
+	FpContext uintptr
+	FnParam   int32
+	FaParam   uintptr
+	FpUser    uintptr
+	FxDelUser uintptr
 }
 
 type sqlite3_rtree_query_info = struct {
-	pContext      uintptr
-	nParam        int32
-	aParam        uintptr
-	pUser         uintptr
-	xDelUser      uintptr
-	aCoord        uintptr
-	anQueue       uintptr
-	nCoord        int32
-	iLevel        int32
-	mxLevel       int32
-	iRowid        sqlite3_int64
-	rParentScore  sqlite3_rtree_dbl
-	eParentWithin int32
-	eWithin       int32
-	rScore        sqlite3_rtree_dbl
-	apSqlParam    uintptr
+	FpContext      uintptr
+	FnParam        int32
+	FaParam        uintptr
+	FpUser         uintptr
+	FxDelUser      uintptr
+	FaCoord        uintptr
+	FanQueue       uintptr
+	FnCoord        int32
+	FiLevel        int32
+	FmxLevel       int32
+	FiRowid        sqlite3_int64
+	FrParentScore  sqlite3_rtree_dbl
+	FeParentWithin int32
+	FeWithin       int32
+	FrScore        sqlite3_rtree_dbl
+	FapSqlParam    uintptr
 }
 
 type sqlite3_rtree_dbl = float64
 
 type sqlite3_rtree_geometry1 = struct {
-	pContext uintptr
-	nParam   int32
-	aParam   uintptr
-	pUser    uintptr
-	xDelUser uintptr
+	FpContext uintptr
+	FnParam   int32
+	FaParam   uintptr
+	FpUser    uintptr
+	FxDelUser uintptr
 }
 
 type sqlite3_rtree_query_info1 = struct {
-	pContext      uintptr
-	nParam        int32
-	aParam        uintptr
-	pUser         uintptr
-	xDelUser      uintptr
-	aCoord        uintptr
-	anQueue       uintptr
-	nCoord        int32
-	iLevel        int32
-	mxLevel       int32
-	iRowid        sqlite3_int64
-	rParentScore  sqlite3_rtree_dbl
-	eParentWithin int32
-	eWithin       int32
-	rScore        sqlite3_rtree_dbl
-	apSqlParam    uintptr
+	FpContext      uintptr
+	FnParam        int32
+	FaParam        uintptr
+	FpUser         uintptr
+	FxDelUser      uintptr
+	FaCoord        uintptr
+	FanQueue       uintptr
+	FnCoord        int32
+	FiLevel        int32
+	FmxLevel       int32
+	FiRowid        sqlite3_int64
+	FrParentScore  sqlite3_rtree_dbl
+	FeParentWithin int32
+	FeWithin       int32
+	FrScore        sqlite3_rtree_dbl
+	FapSqlParam    uintptr
 }
 
 type Fts5ExtensionApi = struct {
-	iVersion           int32
-	xUserData          uintptr
-	xColumnCount       uintptr
-	xRowCount          uintptr
-	xColumnTotalSize   uintptr
-	xTokenize          uintptr
-	xPhraseCount       uintptr
-	xPhraseSize        uintptr
-	xInstCount         uintptr
-	xInst              uintptr
-	xRowid             uintptr
-	xColumnText        uintptr
-	xColumnSize        uintptr
-	xQueryPhrase       uintptr
-	xSetAuxdata        uintptr
-	xGetAuxdata        uintptr
-	xPhraseFirst       uintptr
-	xPhraseNext        uintptr
-	xPhraseFirstColumn uintptr
-	xPhraseNextColumn  uintptr
-	xQueryToken        uintptr
-	xInstToken         uintptr
+	FiVersion           int32
+	FxUserData          uintptr
+	FxColumnCount       uintptr
+	FxRowCount          uintptr
+	FxColumnTotalSize   uintptr
+	FxTokenize          uintptr
+	FxPhraseCount       uintptr
+	FxPhraseSize        uintptr
+	FxInstCount         uintptr
+	FxInst              uintptr
+	FxRowid             uintptr
+	FxColumnText        uintptr
+	FxColumnSize        uintptr
+	FxQueryPhrase       uintptr
+	FxSetAuxdata        uintptr
+	FxGetAuxdata        uintptr
+	FxPhraseFirst       uintptr
+	FxPhraseNext        uintptr
+	FxPhraseFirstColumn uintptr
+	FxPhraseNextColumn  uintptr
+	FxQueryToken        uintptr
+	FxInstToken         uintptr
 }
 
 type Fts5PhraseIter = struct {
-	a uintptr
-	b uintptr
+	Fa uintptr
+	Fb uintptr
 }
 
 type fts5_extension_function = uintptr
 
 type Fts5PhraseIter1 = struct {
-	a uintptr
-	b uintptr
+	Fa uintptr
+	Fb uintptr
 }
 
 type Fts5ExtensionApi1 = struct {
-	iVersion           int32
-	xUserData          uintptr
-	xColumnCount       uintptr
-	xRowCount          uintptr
-	xColumnTotalSize   uintptr
-	xTokenize          uintptr
-	xPhraseCount       uintptr
-	xPhraseSize        uintptr
-	xInstCount         uintptr
-	xInst              uintptr
-	xRowid             uintptr
-	xColumnText        uintptr
-	xColumnSize        uintptr
-	xQueryPhrase       uintptr
-	xSetAuxdata        uintptr
-	xGetAuxdata        uintptr
-	xPhraseFirst       uintptr
-	xPhraseNext        uintptr
-	xPhraseFirstColumn uintptr
-	xPhraseNextColumn  uintptr
-	xQueryToken        uintptr
-	xInstToken         uintptr
+	FiVersion           int32
+	FxUserData          uintptr
+	FxColumnCount       uintptr
+	FxRowCount          uintptr
+	FxColumnTotalSize   uintptr
+	FxTokenize          uintptr
+	FxPhraseCount       uintptr
+	FxPhraseSize        uintptr
+	FxInstCount         uintptr
+	FxInst              uintptr
+	FxRowid             uintptr
+	FxColumnText        uintptr
+	FxColumnSize        uintptr
+	FxQueryPhrase       uintptr
+	FxSetAuxdata        uintptr
+	FxGetAuxdata        uintptr
+	FxPhraseFirst       uintptr
+	FxPhraseNext        uintptr
+	FxPhraseFirstColumn uintptr
+	FxPhraseNextColumn  uintptr
+	FxQueryToken        uintptr
+	FxInstToken         uintptr
 }
 
 type fts5_tokenizer = struct {
-	xCreate   uintptr
-	xDelete   uintptr
-	xTokenize uintptr
+	FxCreate   uintptr
+	FxDelete   uintptr
+	FxTokenize uintptr
 }
 
 type fts5_tokenizer1 = struct {
-	xCreate   uintptr
-	xDelete   uintptr
-	xTokenize uintptr
+	FxCreate   uintptr
+	FxDelete   uintptr
+	FxTokenize uintptr
 }
 
 type fts5_api = struct {
-	iVersion         int32
-	xCreateTokenizer uintptr
-	xFindTokenizer   uintptr
-	xCreateFunction  uintptr
+	FiVersion         int32
+	FxCreateTokenizer uintptr
+	FxFindTokenizer   uintptr
+	FxCreateFunction  uintptr
 }
 
 type fts5_api1 = struct {
-	iVersion         int32
-	xCreateTokenizer uintptr
-	xFindTokenizer   uintptr
-	xCreateFunction  uintptr
+	FiVersion         int32
+	FxCreateTokenizer uintptr
+	FxFindTokenizer   uintptr
+	FxCreateFunction  uintptr
 }
 
 type __int8_t = int8
@@ -2377,13 +2377,13 @@ type __darwin_natural_t = uint32
 type __darwin_ct_rune_t = int32
 
 type __mbstate_t = struct {
-	_mbstateL  [0]int64
-	__mbstate8 [128]int8
+	F_mbstateL  [0]int64
+	F__mbstate8 [128]int8
 }
 
 type __darwin_mbstate_t = struct {
-	_mbstateL  [0]int64
-	__mbstate8 [128]int8
+	F_mbstateL  [0]int64
+	F__mbstate8 [128]int8
 }
 
 type __darwin_ptrdiff_t = int64
@@ -2447,97 +2447,97 @@ type __darwin_uuid_t = [16]uint8
 type __darwin_uuid_string_t = [37]int8
 
 type __darwin_pthread_handler_rec = struct {
-	__routine uintptr
-	__arg     uintptr
-	__next    uintptr
+	F__routine uintptr
+	F__arg     uintptr
+	F__next    uintptr
 }
 
 type _opaque_pthread_attr_t = struct {
-	__sig    int64
-	__opaque [56]int8
+	F__sig    int64
+	F__opaque [56]int8
 }
 
 type _opaque_pthread_cond_t = struct {
-	__sig    int64
-	__opaque [40]int8
+	F__sig    int64
+	F__opaque [40]int8
 }
 
 type _opaque_pthread_condattr_t = struct {
-	__sig    int64
-	__opaque [8]int8
+	F__sig    int64
+	F__opaque [8]int8
 }
 
 type _opaque_pthread_mutex_t = struct {
-	__sig    int64
-	__opaque [56]int8
+	F__sig    int64
+	F__opaque [56]int8
 }
 
 type _opaque_pthread_mutexattr_t = struct {
-	__sig    int64
-	__opaque [8]int8
+	F__sig    int64
+	F__opaque [8]int8
 }
 
 type _opaque_pthread_once_t = struct {
-	__sig    int64
-	__opaque [8]int8
+	F__sig    int64
+	F__opaque [8]int8
 }
 
 type _opaque_pthread_rwlock_t = struct {
-	__sig    int64
-	__opaque [192]int8
+	F__sig    int64
+	F__opaque [192]int8
 }
 
 type _opaque_pthread_rwlockattr_t = struct {
-	__sig    int64
-	__opaque [16]int8
+	F__sig    int64
+	F__opaque [16]int8
 }
 
 type _opaque_pthread_t = struct {
-	__sig           int64
-	__cleanup_stack uintptr
-	__opaque        [8176]int8
+	F__sig           int64
+	F__cleanup_stack uintptr
+	F__opaque        [8176]int8
 }
 
 type __darwin_pthread_attr_t = struct {
-	__sig    int64
-	__opaque [56]int8
+	F__sig    int64
+	F__opaque [56]int8
 }
 
 type __darwin_pthread_cond_t = struct {
-	__sig    int64
-	__opaque [40]int8
+	F__sig    int64
+	F__opaque [40]int8
 }
 
 type __darwin_pthread_condattr_t = struct {
-	__sig    int64
-	__opaque [8]int8
+	F__sig    int64
+	F__opaque [8]int8
 }
 
 type __darwin_pthread_key_t = uint64
 
 type __darwin_pthread_mutex_t = struct {
-	__sig    int64
-	__opaque [56]int8
+	F__sig    int64
+	F__opaque [56]int8
 }
 
 type __darwin_pthread_mutexattr_t = struct {
-	__sig    int64
-	__opaque [8]int8
+	F__sig    int64
+	F__opaque [8]int8
 }
 
 type __darwin_pthread_once_t = struct {
-	__sig    int64
-	__opaque [8]int8
+	F__sig    int64
+	F__opaque [8]int8
 }
 
 type __darwin_pthread_rwlock_t = struct {
-	__sig    int64
-	__opaque [192]int8
+	F__sig    int64
+	F__opaque [192]int8
 }
 
 type __darwin_pthread_rwlockattr_t = struct {
-	__sig    int64
-	__opaque [16]int8
+	F__sig    int64
+	F__opaque [16]int8
 }
 
 type __darwin_pthread_t = uintptr
@@ -2591,31 +2591,31 @@ type size_t = uint64
 type fpos_t = int64
 
 type __sbuf = struct {
-	_base uintptr
-	_size int32
+	F_base uintptr
+	F_size int32
 }
 
 type FILE = struct {
-	_p       uintptr
-	_r       int32
-	_w       int32
-	_flags   int16
-	_file    int16
-	_bf      __sbuf
-	_lbfsize int32
-	_cookie  uintptr
-	_close   uintptr
-	_read    uintptr
-	_seek    uintptr
-	_write   uintptr
-	_ub      __sbuf
-	_extra   uintptr
-	_ur      int32
-	_ubuf    [3]uint8
-	_nbuf    [1]uint8
-	_lb      __sbuf
-	_blksize int32
-	_offset  fpos_t
+	F_p       uintptr
+	F_r       int32
+	F_w       int32
+	F_flags   int16
+	F_file    int16
+	F_bf      __sbuf
+	F_lbfsize int32
+	F_cookie  uintptr
+	F_close   uintptr
+	F_read    uintptr
+	F_seek    uintptr
+	F_write   uintptr
+	F_ub      __sbuf
+	F_extra   uintptr
+	F_ur      int32
+	F_ubuf    [3]uint8
+	F_nbuf    [1]uint8
+	F_lb      __sbuf
+	F_blksize int32
+	F_offset  fpos_t
 }
 
 type __sFILE = FILE
@@ -2625,9 +2625,9 @@ type off_t = int64
 type ssize_t = int64
 
 type accessx_descriptor = struct {
-	ad_name_offset uint32
-	ad_flags       int32
-	ad_pad         [2]int32
+	Fad_name_offset uint32
+	Fad_flags       int32
+	Fad_pad         [2]int32
 }
 
 type uint64_t = uint64
@@ -2643,17 +2643,17 @@ type pid_t = int32
 type useconds_t = uint32
 
 type fd_set = struct {
-	fds_bits [32]__int32_t
+	Ffds_bits [32]__int32_t
 }
 
 type timespec = struct {
-	tv_sec  __darwin_time_t
-	tv_nsec int64
+	Ftv_sec  __darwin_time_t
+	Ftv_nsec int64
 }
 
 type timeval = struct {
-	tv_sec  __darwin_time_t
-	tv_usec __darwin_suseconds_t
+	Ftv_sec  __darwin_time_t
+	Ftv_usec __darwin_suseconds_t
 }
 
 type time_t = int64
@@ -2681,195 +2681,195 @@ type id_t = uint32
 type sig_atomic_t = int32
 
 type __darwin_arm_exception_state = struct {
-	__exception __uint32_t
-	__fsr       __uint32_t
-	__far       __uint32_t
+	F__exception __uint32_t
+	F__fsr       __uint32_t
+	F__far       __uint32_t
 }
 
 type __darwin_arm_exception_state64 = struct {
-	__far       __uint64_t
-	__esr       __uint32_t
-	__exception __uint32_t
+	F__far       __uint64_t
+	F__esr       __uint32_t
+	F__exception __uint32_t
 }
 
 type __darwin_arm_thread_state = struct {
-	__r    [13]__uint32_t
-	__sp   __uint32_t
-	__lr   __uint32_t
-	__pc   __uint32_t
-	__cpsr __uint32_t
+	F__r    [13]__uint32_t
+	F__sp   __uint32_t
+	F__lr   __uint32_t
+	F__pc   __uint32_t
+	F__cpsr __uint32_t
 }
 
 type __darwin_arm_thread_state64 = struct {
-	__x    [29]__uint64_t
-	__fp   __uint64_t
-	__lr   __uint64_t
-	__sp   __uint64_t
-	__pc   __uint64_t
-	__cpsr __uint32_t
-	__pad  __uint32_t
+	F__x    [29]__uint64_t
+	F__fp   __uint64_t
+	F__lr   __uint64_t
+	F__sp   __uint64_t
+	F__pc   __uint64_t
+	F__cpsr __uint32_t
+	F__pad  __uint32_t
 }
 
 type __darwin_arm_vfp_state = struct {
-	__r     [64]__uint32_t
-	__fpscr __uint32_t
+	F__r     [64]__uint32_t
+	F__fpscr __uint32_t
 }
 
 type __darwin_arm_neon_state64 = struct {
-	__ccgo_align [0]uint64
-	__v          [32][2]uint64
-	__fpsr       __uint32_t
-	__fpcr       __uint32_t
-	__ccgo_pad3  [8]byte
+	F__ccgo_align [0]uint64
+	F__v          [32][2]uint64
+	F__fpsr       __uint32_t
+	F__fpcr       __uint32_t
+	F__ccgo_pad3  [8]byte
 }
 
 type __darwin_arm_neon_state = struct {
-	__ccgo_align [0]uint64
-	__v          [16][2]uint64
-	__fpsr       __uint32_t
-	__fpcr       __uint32_t
-	__ccgo_pad3  [8]byte
+	F__ccgo_align [0]uint64
+	F__v          [16][2]uint64
+	F__fpsr       __uint32_t
+	F__fpcr       __uint32_t
+	F__ccgo_pad3  [8]byte
 }
 
 type __arm_pagein_state = struct {
-	__pagein_error int32
+	F__pagein_error int32
 }
 
 type __arm_legacy_debug_state = struct {
-	__bvr [16]__uint32_t
-	__bcr [16]__uint32_t
-	__wvr [16]__uint32_t
-	__wcr [16]__uint32_t
+	F__bvr [16]__uint32_t
+	F__bcr [16]__uint32_t
+	F__wvr [16]__uint32_t
+	F__wcr [16]__uint32_t
 }
 
 type __darwin_arm_debug_state32 = struct {
-	__bvr       [16]__uint32_t
-	__bcr       [16]__uint32_t
-	__wvr       [16]__uint32_t
-	__wcr       [16]__uint32_t
-	__mdscr_el1 __uint64_t
+	F__bvr       [16]__uint32_t
+	F__bcr       [16]__uint32_t
+	F__wvr       [16]__uint32_t
+	F__wcr       [16]__uint32_t
+	F__mdscr_el1 __uint64_t
 }
 
 type __darwin_arm_debug_state64 = struct {
-	__bvr       [16]__uint64_t
-	__bcr       [16]__uint64_t
-	__wvr       [16]__uint64_t
-	__wcr       [16]__uint64_t
-	__mdscr_el1 __uint64_t
+	F__bvr       [16]__uint64_t
+	F__bcr       [16]__uint64_t
+	F__wvr       [16]__uint64_t
+	F__wcr       [16]__uint64_t
+	F__mdscr_el1 __uint64_t
 }
 
 type __darwin_arm_cpmu_state64 = struct {
-	__ctrs [16]__uint64_t
+	F__ctrs [16]__uint64_t
 }
 
 type __darwin_mcontext32 = struct {
-	__es __darwin_arm_exception_state
-	__ss __darwin_arm_thread_state
-	__fs __darwin_arm_vfp_state
+	F__es __darwin_arm_exception_state
+	F__ss __darwin_arm_thread_state
+	F__fs __darwin_arm_vfp_state
 }
 
 type __darwin_mcontext64 = struct {
-	__ccgo_align [0]uint64
-	__es         __darwin_arm_exception_state64
-	__ss         __darwin_arm_thread_state64
-	__ns         __darwin_arm_neon_state64
+	F__ccgo_align [0]uint64
+	F__es         __darwin_arm_exception_state64
+	F__ss         __darwin_arm_thread_state64
+	F__ns         __darwin_arm_neon_state64
 }
 
 type mcontext_t = uintptr
 
 type pthread_attr_t = struct {
-	__sig    int64
-	__opaque [56]int8
+	F__sig    int64
+	F__opaque [56]int8
 }
 
 type __darwin_sigaltstack = struct {
-	ss_sp    uintptr
-	ss_size  __darwin_size_t
-	ss_flags int32
+	Fss_sp    uintptr
+	Fss_size  __darwin_size_t
+	Fss_flags int32
 }
 
 type stack_t = struct {
-	ss_sp    uintptr
-	ss_size  __darwin_size_t
-	ss_flags int32
+	Fss_sp    uintptr
+	Fss_size  __darwin_size_t
+	Fss_flags int32
 }
 
 type __darwin_ucontext = struct {
-	uc_onstack  int32
-	uc_sigmask  __darwin_sigset_t
-	uc_stack    __darwin_sigaltstack
-	uc_link     uintptr
-	uc_mcsize   __darwin_size_t
-	uc_mcontext uintptr
+	Fuc_onstack  int32
+	Fuc_sigmask  __darwin_sigset_t
+	Fuc_stack    __darwin_sigaltstack
+	Fuc_link     uintptr
+	Fuc_mcsize   __darwin_size_t
+	Fuc_mcontext uintptr
 }
 
 type ucontext_t = struct {
-	uc_onstack  int32
-	uc_sigmask  __darwin_sigset_t
-	uc_stack    __darwin_sigaltstack
-	uc_link     uintptr
-	uc_mcsize   __darwin_size_t
-	uc_mcontext uintptr
+	Fuc_onstack  int32
+	Fuc_sigmask  __darwin_sigset_t
+	Fuc_stack    __darwin_sigaltstack
+	Fuc_link     uintptr
+	Fuc_mcsize   __darwin_size_t
+	Fuc_mcontext uintptr
 }
 
 type sigval = struct {
-	sival_ptr   [0]uintptr
-	sival_int   int32
-	__ccgo_pad2 [4]byte
+	Fsival_ptr   [0]uintptr
+	Fsival_int   int32
+	F__ccgo_pad2 [4]byte
 }
 
 type sigevent = struct {
-	sigev_notify            int32
-	sigev_signo             int32
-	sigev_value             sigval
-	sigev_notify_function   uintptr
-	sigev_notify_attributes uintptr
+	Fsigev_notify            int32
+	Fsigev_signo             int32
+	Fsigev_value             sigval
+	Fsigev_notify_function   uintptr
+	Fsigev_notify_attributes uintptr
 }
 
 type siginfo_t = struct {
-	si_signo  int32
-	si_errno  int32
-	si_code   int32
-	si_pid    pid_t
-	si_uid    uid_t
-	si_status int32
-	si_addr   uintptr
-	si_value  sigval
-	si_band   int64
-	__pad     [7]uint64
+	Fsi_signo  int32
+	Fsi_errno  int32
+	Fsi_code   int32
+	Fsi_pid    pid_t
+	Fsi_uid    uid_t
+	Fsi_status int32
+	Fsi_addr   uintptr
+	Fsi_value  sigval
+	Fsi_band   int64
+	F__pad     [7]uint64
 }
 
 type __siginfo = siginfo_t
 
 type __sigaction_u = struct {
-	__sa_sigaction [0]uintptr
-	__sa_handler   uintptr
+	F__sa_sigaction [0]uintptr
+	F__sa_handler   uintptr
 }
 
 type __sigaction = struct {
-	__sigaction_u __sigaction_u
-	sa_tramp      uintptr
-	sa_mask       sigset_t
-	sa_flags      int32
+	F__sigaction_u __sigaction_u
+	Fsa_tramp      uintptr
+	Fsa_mask       sigset_t
+	Fsa_flags      int32
 }
 
 type sigaction1 = struct {
-	__sigaction_u __sigaction_u
-	sa_mask       sigset_t
-	sa_flags      int32
+	F__sigaction_u __sigaction_u
+	Fsa_mask       sigset_t
+	Fsa_flags      int32
 }
 
 type sig_t = uintptr
 
 type sigvec = struct {
-	sv_handler uintptr
-	sv_mask    int32
-	sv_flags   int32
+	Fsv_handler uintptr
+	Fsv_mask    int32
+	Fsv_flags   int32
 }
 
 type sigstack = struct {
-	ss_sp      uintptr
-	ss_onstack int32
+	Fss_sp      uintptr
+	Fss_onstack int32
 }
 
 type int_least64_t = int64
@@ -2915,320 +2915,320 @@ type uintmax_t = uint64
 type rlim_t = uint64
 
 type rusage = struct {
-	ru_utime    timeval
-	ru_stime    timeval
-	ru_maxrss   int64
-	ru_ixrss    int64
-	ru_idrss    int64
-	ru_isrss    int64
-	ru_minflt   int64
-	ru_majflt   int64
-	ru_nswap    int64
-	ru_inblock  int64
-	ru_oublock  int64
-	ru_msgsnd   int64
-	ru_msgrcv   int64
-	ru_nsignals int64
-	ru_nvcsw    int64
-	ru_nivcsw   int64
+	Fru_utime    timeval
+	Fru_stime    timeval
+	Fru_maxrss   int64
+	Fru_ixrss    int64
+	Fru_idrss    int64
+	Fru_isrss    int64
+	Fru_minflt   int64
+	Fru_majflt   int64
+	Fru_nswap    int64
+	Fru_inblock  int64
+	Fru_oublock  int64
+	Fru_msgsnd   int64
+	Fru_msgrcv   int64
+	Fru_nsignals int64
+	Fru_nvcsw    int64
+	Fru_nivcsw   int64
 }
 
 type rusage_info_t = uintptr
 
 type rusage_info_v0 = struct {
-	ri_uuid               [16]uint8_t
-	ri_user_time          uint64_t
-	ri_system_time        uint64_t
-	ri_pkg_idle_wkups     uint64_t
-	ri_interrupt_wkups    uint64_t
-	ri_pageins            uint64_t
-	ri_wired_size         uint64_t
-	ri_resident_size      uint64_t
-	ri_phys_footprint     uint64_t
-	ri_proc_start_abstime uint64_t
-	ri_proc_exit_abstime  uint64_t
+	Fri_uuid               [16]uint8_t
+	Fri_user_time          uint64_t
+	Fri_system_time        uint64_t
+	Fri_pkg_idle_wkups     uint64_t
+	Fri_interrupt_wkups    uint64_t
+	Fri_pageins            uint64_t
+	Fri_wired_size         uint64_t
+	Fri_resident_size      uint64_t
+	Fri_phys_footprint     uint64_t
+	Fri_proc_start_abstime uint64_t
+	Fri_proc_exit_abstime  uint64_t
 }
 
 type rusage_info_v1 = struct {
-	ri_uuid                  [16]uint8_t
-	ri_user_time             uint64_t
-	ri_system_time           uint64_t
-	ri_pkg_idle_wkups        uint64_t
-	ri_interrupt_wkups       uint64_t
-	ri_pageins               uint64_t
-	ri_wired_size            uint64_t
-	ri_resident_size         uint64_t
-	ri_phys_footprint        uint64_t
-	ri_proc_start_abstime    uint64_t
-	ri_proc_exit_abstime     uint64_t
-	ri_child_user_time       uint64_t
-	ri_child_system_time     uint64_t
-	ri_child_pkg_idle_wkups  uint64_t
-	ri_child_interrupt_wkups uint64_t
-	ri_child_pageins         uint64_t
-	ri_child_elapsed_abstime uint64_t
+	Fri_uuid                  [16]uint8_t
+	Fri_user_time             uint64_t
+	Fri_system_time           uint64_t
+	Fri_pkg_idle_wkups        uint64_t
+	Fri_interrupt_wkups       uint64_t
+	Fri_pageins               uint64_t
+	Fri_wired_size            uint64_t
+	Fri_resident_size         uint64_t
+	Fri_phys_footprint        uint64_t
+	Fri_proc_start_abstime    uint64_t
+	Fri_proc_exit_abstime     uint64_t
+	Fri_child_user_time       uint64_t
+	Fri_child_system_time     uint64_t
+	Fri_child_pkg_idle_wkups  uint64_t
+	Fri_child_interrupt_wkups uint64_t
+	Fri_child_pageins         uint64_t
+	Fri_child_elapsed_abstime uint64_t
 }
 
 type rusage_info_v2 = struct {
-	ri_uuid                  [16]uint8_t
-	ri_user_time             uint64_t
-	ri_system_time           uint64_t
-	ri_pkg_idle_wkups        uint64_t
-	ri_interrupt_wkups       uint64_t
-	ri_pageins               uint64_t
-	ri_wired_size            uint64_t
-	ri_resident_size         uint64_t
-	ri_phys_footprint        uint64_t
-	ri_proc_start_abstime    uint64_t
-	ri_proc_exit_abstime     uint64_t
-	ri_child_user_time       uint64_t
-	ri_child_system_time     uint64_t
-	ri_child_pkg_idle_wkups  uint64_t
-	ri_child_interrupt_wkups uint64_t
-	ri_child_pageins         uint64_t
-	ri_child_elapsed_abstime uint64_t
-	ri_diskio_bytesread      uint64_t
-	ri_diskio_byteswritten   uint64_t
+	Fri_uuid                  [16]uint8_t
+	Fri_user_time             uint64_t
+	Fri_system_time           uint64_t
+	Fri_pkg_idle_wkups        uint64_t
+	Fri_interrupt_wkups       uint64_t
+	Fri_pageins               uint64_t
+	Fri_wired_size            uint64_t
+	Fri_resident_size         uint64_t
+	Fri_phys_footprint        uint64_t
+	Fri_proc_start_abstime    uint64_t
+	Fri_proc_exit_abstime     uint64_t
+	Fri_child_user_time       uint64_t
+	Fri_child_system_time     uint64_t
+	Fri_child_pkg_idle_wkups  uint64_t
+	Fri_child_interrupt_wkups uint64_t
+	Fri_child_pageins         uint64_t
+	Fri_child_elapsed_abstime uint64_t
+	Fri_diskio_bytesread      uint64_t
+	Fri_diskio_byteswritten   uint64_t
 }
 
 type rusage_info_v3 = struct {
-	ri_uuid                          [16]uint8_t
-	ri_user_time                     uint64_t
-	ri_system_time                   uint64_t
-	ri_pkg_idle_wkups                uint64_t
-	ri_interrupt_wkups               uint64_t
-	ri_pageins                       uint64_t
-	ri_wired_size                    uint64_t
-	ri_resident_size                 uint64_t
-	ri_phys_footprint                uint64_t
-	ri_proc_start_abstime            uint64_t
-	ri_proc_exit_abstime             uint64_t
-	ri_child_user_time               uint64_t
-	ri_child_system_time             uint64_t
-	ri_child_pkg_idle_wkups          uint64_t
-	ri_child_interrupt_wkups         uint64_t
-	ri_child_pageins                 uint64_t
-	ri_child_elapsed_abstime         uint64_t
-	ri_diskio_bytesread              uint64_t
-	ri_diskio_byteswritten           uint64_t
-	ri_cpu_time_qos_default          uint64_t
-	ri_cpu_time_qos_maintenance      uint64_t
-	ri_cpu_time_qos_background       uint64_t
-	ri_cpu_time_qos_utility          uint64_t
-	ri_cpu_time_qos_legacy           uint64_t
-	ri_cpu_time_qos_user_initiated   uint64_t
-	ri_cpu_time_qos_user_interactive uint64_t
-	ri_billed_system_time            uint64_t
-	ri_serviced_system_time          uint64_t
+	Fri_uuid                          [16]uint8_t
+	Fri_user_time                     uint64_t
+	Fri_system_time                   uint64_t
+	Fri_pkg_idle_wkups                uint64_t
+	Fri_interrupt_wkups               uint64_t
+	Fri_pageins                       uint64_t
+	Fri_wired_size                    uint64_t
+	Fri_resident_size                 uint64_t
+	Fri_phys_footprint                uint64_t
+	Fri_proc_start_abstime            uint64_t
+	Fri_proc_exit_abstime             uint64_t
+	Fri_child_user_time               uint64_t
+	Fri_child_system_time             uint64_t
+	Fri_child_pkg_idle_wkups          uint64_t
+	Fri_child_interrupt_wkups         uint64_t
+	Fri_child_pageins                 uint64_t
+	Fri_child_elapsed_abstime         uint64_t
+	Fri_diskio_bytesread              uint64_t
+	Fri_diskio_byteswritten           uint64_t
+	Fri_cpu_time_qos_default          uint64_t
+	Fri_cpu_time_qos_maintenance      uint64_t
+	Fri_cpu_time_qos_background       uint64_t
+	Fri_cpu_time_qos_utility          uint64_t
+	Fri_cpu_time_qos_legacy           uint64_t
+	Fri_cpu_time_qos_user_initiated   uint64_t
+	Fri_cpu_time_qos_user_interactive uint64_t
+	Fri_billed_system_time            uint64_t
+	Fri_serviced_system_time          uint64_t
 }
 
 type rusage_info_v4 = struct {
-	ri_uuid                          [16]uint8_t
-	ri_user_time                     uint64_t
-	ri_system_time                   uint64_t
-	ri_pkg_idle_wkups                uint64_t
-	ri_interrupt_wkups               uint64_t
-	ri_pageins                       uint64_t
-	ri_wired_size                    uint64_t
-	ri_resident_size                 uint64_t
-	ri_phys_footprint                uint64_t
-	ri_proc_start_abstime            uint64_t
-	ri_proc_exit_abstime             uint64_t
-	ri_child_user_time               uint64_t
-	ri_child_system_time             uint64_t
-	ri_child_pkg_idle_wkups          uint64_t
-	ri_child_interrupt_wkups         uint64_t
-	ri_child_pageins                 uint64_t
-	ri_child_elapsed_abstime         uint64_t
-	ri_diskio_bytesread              uint64_t
-	ri_diskio_byteswritten           uint64_t
-	ri_cpu_time_qos_default          uint64_t
-	ri_cpu_time_qos_maintenance      uint64_t
-	ri_cpu_time_qos_background       uint64_t
-	ri_cpu_time_qos_utility          uint64_t
-	ri_cpu_time_qos_legacy           uint64_t
-	ri_cpu_time_qos_user_initiated   uint64_t
-	ri_cpu_time_qos_user_interactive uint64_t
-	ri_billed_system_time            uint64_t
-	ri_serviced_system_time          uint64_t
-	ri_logical_writes                uint64_t
-	ri_lifetime_max_phys_footprint   uint64_t
-	ri_instructions                  uint64_t
-	ri_cycles                        uint64_t
-	ri_billed_energy                 uint64_t
-	ri_serviced_energy               uint64_t
-	ri_interval_max_phys_footprint   uint64_t
-	ri_runnable_time                 uint64_t
+	Fri_uuid                          [16]uint8_t
+	Fri_user_time                     uint64_t
+	Fri_system_time                   uint64_t
+	Fri_pkg_idle_wkups                uint64_t
+	Fri_interrupt_wkups               uint64_t
+	Fri_pageins                       uint64_t
+	Fri_wired_size                    uint64_t
+	Fri_resident_size                 uint64_t
+	Fri_phys_footprint                uint64_t
+	Fri_proc_start_abstime            uint64_t
+	Fri_proc_exit_abstime             uint64_t
+	Fri_child_user_time               uint64_t
+	Fri_child_system_time             uint64_t
+	Fri_child_pkg_idle_wkups          uint64_t
+	Fri_child_interrupt_wkups         uint64_t
+	Fri_child_pageins                 uint64_t
+	Fri_child_elapsed_abstime         uint64_t
+	Fri_diskio_bytesread              uint64_t
+	Fri_diskio_byteswritten           uint64_t
+	Fri_cpu_time_qos_default          uint64_t
+	Fri_cpu_time_qos_maintenance      uint64_t
+	Fri_cpu_time_qos_background       uint64_t
+	Fri_cpu_time_qos_utility          uint64_t
+	Fri_cpu_time_qos_legacy           uint64_t
+	Fri_cpu_time_qos_user_initiated   uint64_t
+	Fri_cpu_time_qos_user_interactive uint64_t
+	Fri_billed_system_time            uint64_t
+	Fri_serviced_system_time          uint64_t
+	Fri_logical_writes                uint64_t
+	Fri_lifetime_max_phys_footprint   uint64_t
+	Fri_instructions                  uint64_t
+	Fri_cycles                        uint64_t
+	Fri_billed_energy                 uint64_t
+	Fri_serviced_energy               uint64_t
+	Fri_interval_max_phys_footprint   uint64_t
+	Fri_runnable_time                 uint64_t
 }
 
 type rusage_info_v5 = struct {
-	ri_uuid                          [16]uint8_t
-	ri_user_time                     uint64_t
-	ri_system_time                   uint64_t
-	ri_pkg_idle_wkups                uint64_t
-	ri_interrupt_wkups               uint64_t
-	ri_pageins                       uint64_t
-	ri_wired_size                    uint64_t
-	ri_resident_size                 uint64_t
-	ri_phys_footprint                uint64_t
-	ri_proc_start_abstime            uint64_t
-	ri_proc_exit_abstime             uint64_t
-	ri_child_user_time               uint64_t
-	ri_child_system_time             uint64_t
-	ri_child_pkg_idle_wkups          uint64_t
-	ri_child_interrupt_wkups         uint64_t
-	ri_child_pageins                 uint64_t
-	ri_child_elapsed_abstime         uint64_t
-	ri_diskio_bytesread              uint64_t
-	ri_diskio_byteswritten           uint64_t
-	ri_cpu_time_qos_default          uint64_t
-	ri_cpu_time_qos_maintenance      uint64_t
-	ri_cpu_time_qos_background       uint64_t
-	ri_cpu_time_qos_utility          uint64_t
-	ri_cpu_time_qos_legacy           uint64_t
-	ri_cpu_time_qos_user_initiated   uint64_t
-	ri_cpu_time_qos_user_interactive uint64_t
-	ri_billed_system_time            uint64_t
-	ri_serviced_system_time          uint64_t
-	ri_logical_writes                uint64_t
-	ri_lifetime_max_phys_footprint   uint64_t
-	ri_instructions                  uint64_t
-	ri_cycles                        uint64_t
-	ri_billed_energy                 uint64_t
-	ri_serviced_energy               uint64_t
-	ri_interval_max_phys_footprint   uint64_t
-	ri_runnable_time                 uint64_t
-	ri_flags                         uint64_t
+	Fri_uuid                          [16]uint8_t
+	Fri_user_time                     uint64_t
+	Fri_system_time                   uint64_t
+	Fri_pkg_idle_wkups                uint64_t
+	Fri_interrupt_wkups               uint64_t
+	Fri_pageins                       uint64_t
+	Fri_wired_size                    uint64_t
+	Fri_resident_size                 uint64_t
+	Fri_phys_footprint                uint64_t
+	Fri_proc_start_abstime            uint64_t
+	Fri_proc_exit_abstime             uint64_t
+	Fri_child_user_time               uint64_t
+	Fri_child_system_time             uint64_t
+	Fri_child_pkg_idle_wkups          uint64_t
+	Fri_child_interrupt_wkups         uint64_t
+	Fri_child_pageins                 uint64_t
+	Fri_child_elapsed_abstime         uint64_t
+	Fri_diskio_bytesread              uint64_t
+	Fri_diskio_byteswritten           uint64_t
+	Fri_cpu_time_qos_default          uint64_t
+	Fri_cpu_time_qos_maintenance      uint64_t
+	Fri_cpu_time_qos_background       uint64_t
+	Fri_cpu_time_qos_utility          uint64_t
+	Fri_cpu_time_qos_legacy           uint64_t
+	Fri_cpu_time_qos_user_initiated   uint64_t
+	Fri_cpu_time_qos_user_interactive uint64_t
+	Fri_billed_system_time            uint64_t
+	Fri_serviced_system_time          uint64_t
+	Fri_logical_writes                uint64_t
+	Fri_lifetime_max_phys_footprint   uint64_t
+	Fri_instructions                  uint64_t
+	Fri_cycles                        uint64_t
+	Fri_billed_energy                 uint64_t
+	Fri_serviced_energy               uint64_t
+	Fri_interval_max_phys_footprint   uint64_t
+	Fri_runnable_time                 uint64_t
+	Fri_flags                         uint64_t
 }
 
 type rusage_info_v6 = struct {
-	ri_uuid                          [16]uint8_t
-	ri_user_time                     uint64_t
-	ri_system_time                   uint64_t
-	ri_pkg_idle_wkups                uint64_t
-	ri_interrupt_wkups               uint64_t
-	ri_pageins                       uint64_t
-	ri_wired_size                    uint64_t
-	ri_resident_size                 uint64_t
-	ri_phys_footprint                uint64_t
-	ri_proc_start_abstime            uint64_t
-	ri_proc_exit_abstime             uint64_t
-	ri_child_user_time               uint64_t
-	ri_child_system_time             uint64_t
-	ri_child_pkg_idle_wkups          uint64_t
-	ri_child_interrupt_wkups         uint64_t
-	ri_child_pageins                 uint64_t
-	ri_child_elapsed_abstime         uint64_t
-	ri_diskio_bytesread              uint64_t
-	ri_diskio_byteswritten           uint64_t
-	ri_cpu_time_qos_default          uint64_t
-	ri_cpu_time_qos_maintenance      uint64_t
-	ri_cpu_time_qos_background       uint64_t
-	ri_cpu_time_qos_utility          uint64_t
-	ri_cpu_time_qos_legacy           uint64_t
-	ri_cpu_time_qos_user_initiated   uint64_t
-	ri_cpu_time_qos_user_interactive uint64_t
-	ri_billed_system_time            uint64_t
-	ri_serviced_system_time          uint64_t
-	ri_logical_writes                uint64_t
-	ri_lifetime_max_phys_footprint   uint64_t
-	ri_instructions                  uint64_t
-	ri_cycles                        uint64_t
-	ri_billed_energy                 uint64_t
-	ri_serviced_energy               uint64_t
-	ri_interval_max_phys_footprint   uint64_t
-	ri_runnable_time                 uint64_t
-	ri_flags                         uint64_t
-	ri_user_ptime                    uint64_t
-	ri_system_ptime                  uint64_t
-	ri_pinstructions                 uint64_t
-	ri_pcycles                       uint64_t
-	ri_energy_nj                     uint64_t
-	ri_penergy_nj                    uint64_t
-	ri_secure_time_in_system         uint64_t
-	ri_secure_ptime_in_system        uint64_t
-	ri_reserved                      [12]uint64_t
+	Fri_uuid                          [16]uint8_t
+	Fri_user_time                     uint64_t
+	Fri_system_time                   uint64_t
+	Fri_pkg_idle_wkups                uint64_t
+	Fri_interrupt_wkups               uint64_t
+	Fri_pageins                       uint64_t
+	Fri_wired_size                    uint64_t
+	Fri_resident_size                 uint64_t
+	Fri_phys_footprint                uint64_t
+	Fri_proc_start_abstime            uint64_t
+	Fri_proc_exit_abstime             uint64_t
+	Fri_child_user_time               uint64_t
+	Fri_child_system_time             uint64_t
+	Fri_child_pkg_idle_wkups          uint64_t
+	Fri_child_interrupt_wkups         uint64_t
+	Fri_child_pageins                 uint64_t
+	Fri_child_elapsed_abstime         uint64_t
+	Fri_diskio_bytesread              uint64_t
+	Fri_diskio_byteswritten           uint64_t
+	Fri_cpu_time_qos_default          uint64_t
+	Fri_cpu_time_qos_maintenance      uint64_t
+	Fri_cpu_time_qos_background       uint64_t
+	Fri_cpu_time_qos_utility          uint64_t
+	Fri_cpu_time_qos_legacy           uint64_t
+	Fri_cpu_time_qos_user_initiated   uint64_t
+	Fri_cpu_time_qos_user_interactive uint64_t
+	Fri_billed_system_time            uint64_t
+	Fri_serviced_system_time          uint64_t
+	Fri_logical_writes                uint64_t
+	Fri_lifetime_max_phys_footprint   uint64_t
+	Fri_instructions                  uint64_t
+	Fri_cycles                        uint64_t
+	Fri_billed_energy                 uint64_t
+	Fri_serviced_energy               uint64_t
+	Fri_interval_max_phys_footprint   uint64_t
+	Fri_runnable_time                 uint64_t
+	Fri_flags                         uint64_t
+	Fri_user_ptime                    uint64_t
+	Fri_system_ptime                  uint64_t
+	Fri_pinstructions                 uint64_t
+	Fri_pcycles                       uint64_t
+	Fri_energy_nj                     uint64_t
+	Fri_penergy_nj                    uint64_t
+	Fri_secure_time_in_system         uint64_t
+	Fri_secure_ptime_in_system        uint64_t
+	Fri_reserved                      [12]uint64_t
 }
 
 type rusage_info_current = struct {
-	ri_uuid                          [16]uint8_t
-	ri_user_time                     uint64_t
-	ri_system_time                   uint64_t
-	ri_pkg_idle_wkups                uint64_t
-	ri_interrupt_wkups               uint64_t
-	ri_pageins                       uint64_t
-	ri_wired_size                    uint64_t
-	ri_resident_size                 uint64_t
-	ri_phys_footprint                uint64_t
-	ri_proc_start_abstime            uint64_t
-	ri_proc_exit_abstime             uint64_t
-	ri_child_user_time               uint64_t
-	ri_child_system_time             uint64_t
-	ri_child_pkg_idle_wkups          uint64_t
-	ri_child_interrupt_wkups         uint64_t
-	ri_child_pageins                 uint64_t
-	ri_child_elapsed_abstime         uint64_t
-	ri_diskio_bytesread              uint64_t
-	ri_diskio_byteswritten           uint64_t
-	ri_cpu_time_qos_default          uint64_t
-	ri_cpu_time_qos_maintenance      uint64_t
-	ri_cpu_time_qos_background       uint64_t
-	ri_cpu_time_qos_utility          uint64_t
-	ri_cpu_time_qos_legacy           uint64_t
-	ri_cpu_time_qos_user_initiated   uint64_t
-	ri_cpu_time_qos_user_interactive uint64_t
-	ri_billed_system_time            uint64_t
-	ri_serviced_system_time          uint64_t
-	ri_logical_writes                uint64_t
-	ri_lifetime_max_phys_footprint   uint64_t
-	ri_instructions                  uint64_t
-	ri_cycles                        uint64_t
-	ri_billed_energy                 uint64_t
-	ri_serviced_energy               uint64_t
-	ri_interval_max_phys_footprint   uint64_t
-	ri_runnable_time                 uint64_t
-	ri_flags                         uint64_t
-	ri_user_ptime                    uint64_t
-	ri_system_ptime                  uint64_t
-	ri_pinstructions                 uint64_t
-	ri_pcycles                       uint64_t
-	ri_energy_nj                     uint64_t
-	ri_penergy_nj                    uint64_t
-	ri_secure_time_in_system         uint64_t
-	ri_secure_ptime_in_system        uint64_t
-	ri_reserved                      [12]uint64_t
+	Fri_uuid                          [16]uint8_t
+	Fri_user_time                     uint64_t
+	Fri_system_time                   uint64_t
+	Fri_pkg_idle_wkups                uint64_t
+	Fri_interrupt_wkups               uint64_t
+	Fri_pageins                       uint64_t
+	Fri_wired_size                    uint64_t
+	Fri_resident_size                 uint64_t
+	Fri_phys_footprint                uint64_t
+	Fri_proc_start_abstime            uint64_t
+	Fri_proc_exit_abstime             uint64_t
+	Fri_child_user_time               uint64_t
+	Fri_child_system_time             uint64_t
+	Fri_child_pkg_idle_wkups          uint64_t
+	Fri_child_interrupt_wkups         uint64_t
+	Fri_child_pageins                 uint64_t
+	Fri_child_elapsed_abstime         uint64_t
+	Fri_diskio_bytesread              uint64_t
+	Fri_diskio_byteswritten           uint64_t
+	Fri_cpu_time_qos_default          uint64_t
+	Fri_cpu_time_qos_maintenance      uint64_t
+	Fri_cpu_time_qos_background       uint64_t
+	Fri_cpu_time_qos_utility          uint64_t
+	Fri_cpu_time_qos_legacy           uint64_t
+	Fri_cpu_time_qos_user_initiated   uint64_t
+	Fri_cpu_time_qos_user_interactive uint64_t
+	Fri_billed_system_time            uint64_t
+	Fri_serviced_system_time          uint64_t
+	Fri_logical_writes                uint64_t
+	Fri_lifetime_max_phys_footprint   uint64_t
+	Fri_instructions                  uint64_t
+	Fri_cycles                        uint64_t
+	Fri_billed_energy                 uint64_t
+	Fri_serviced_energy               uint64_t
+	Fri_interval_max_phys_footprint   uint64_t
+	Fri_runnable_time                 uint64_t
+	Fri_flags                         uint64_t
+	Fri_user_ptime                    uint64_t
+	Fri_system_ptime                  uint64_t
+	Fri_pinstructions                 uint64_t
+	Fri_pcycles                       uint64_t
+	Fri_energy_nj                     uint64_t
+	Fri_penergy_nj                    uint64_t
+	Fri_secure_time_in_system         uint64_t
+	Fri_secure_ptime_in_system        uint64_t
+	Fri_reserved                      [12]uint64_t
 }
 
 type rlimit = struct {
-	rlim_cur rlim_t
-	rlim_max rlim_t
+	Frlim_cur rlim_t
+	Frlim_max rlim_t
 }
 
 type proc_rlimit_control_wakeupmon = struct {
-	wm_flags uint32_t
-	wm_rate  int32_t
+	Fwm_flags uint32_t
+	Fwm_rate  int32_t
 }
 
 type _OSUnalignedU16 = struct {
-	__val uint16_t
+	F__val uint16_t
 }
 
 type _OSUnalignedU32 = struct {
-	__val uint32_t
+	F__val uint32_t
 }
 
 type _OSUnalignedU64 = struct {
-	__val uint64_t
+	F__val uint64_t
 }
 
 type wait = struct {
-	w_T [0]struct {
-		__ccgo0 uint32
+	Fw_T [0]struct {
+		F__ccgo0 uint32
 	}
-	w_S [0]struct {
-		__ccgo0 uint32
+	Fw_S [0]struct {
+		F__ccgo0 uint32
 	}
-	w_status int32
+	Fw_status int32
 }
 
 type ct_rune_t = int32
@@ -3238,18 +3238,18 @@ type rune_t = int32
 type wchar_t = int32
 
 type div_t = struct {
-	quot int32
-	rem  int32
+	Fquot int32
+	Frem  int32
 }
 
 type ldiv_t = struct {
-	quot int64
-	rem  int64
+	Fquot int64
+	Frem  int64
 }
 
 type lldiv_t = struct {
-	quot int64
-	rem  int64
+	Fquot int64
+	Frem  int64
 }
 
 type malloc_type_id_t = uint64
@@ -3259,38 +3259,38 @@ type rsize_t = uint64
 type wint_t = int32
 
 type _RuneEntry = struct {
-	__min   __darwin_rune_t
-	__max   __darwin_rune_t
-	__map   __darwin_rune_t
-	__types uintptr
+	F__min   __darwin_rune_t
+	F__max   __darwin_rune_t
+	F__map   __darwin_rune_t
+	F__types uintptr
 }
 
 type _RuneRange = struct {
-	__nranges int32
-	__ranges  uintptr
+	F__nranges int32
+	F__ranges  uintptr
 }
 
 type _RuneCharClass = struct {
-	__name [14]int8
-	__mask __uint32_t
+	F__name [14]int8
+	F__mask __uint32_t
 }
 
 type _RuneLocale = struct {
-	__magic        [8]int8
-	__encoding     [32]int8
-	__sgetrune     uintptr
-	__sputrune     uintptr
-	__invalid_rune __darwin_rune_t
-	__runetype     [256]__uint32_t
-	__maplower     [256]__darwin_rune_t
-	__mapupper     [256]__darwin_rune_t
-	__runetype_ext _RuneRange
-	__maplower_ext _RuneRange
-	__mapupper_ext _RuneRange
-	__variable     uintptr
-	__variable_len int32
-	__ncharclasses int32
-	__charclasses  uintptr
+	F__magic        [8]int8
+	F__encoding     [32]int8
+	F__sgetrune     uintptr
+	F__sputrune     uintptr
+	F__invalid_rune __darwin_rune_t
+	F__runetype     [256]__uint32_t
+	F__maplower     [256]__darwin_rune_t
+	F__mapupper     [256]__darwin_rune_t
+	F__runetype_ext _RuneRange
+	F__maplower_ext _RuneRange
+	F__mapupper_ext _RuneRange
+	F__variable     uintptr
+	F__variable_len int32
+	F__ncharclasses int32
+	F__charclasses  uintptr
 }
 
 /* The suffix to append to the child command lines, if any */
@@ -3304,23 +3304,23 @@ type _RuneLocale = struct {
 //	/* Global data
 //	*/
 type Global = struct {
-	argv0            uintptr
-	zVfs             uintptr
-	zDbFile          uintptr
-	db               uintptr
-	zErrLog          uintptr
-	pErrLog          uintptr
-	zLog             uintptr
-	pLog             uintptr
-	zName            [32]int8
-	taskId           int32
-	iTrace           int32
-	bSqlTrace        int32
-	bIgnoreSqlErrors int32
-	nError           int32
-	nTest            int32
-	iTimeout         int32
-	bSync            int32
+	Fargv0            uintptr
+	FzVfs             uintptr
+	FzDbFile          uintptr
+	Fdb               uintptr
+	FzErrLog          uintptr
+	FpErrLog          uintptr
+	FzLog             uintptr
+	FpLog             uintptr
+	FzName            [32]int8
+	FtaskId           int32
+	FiTrace           int32
+	FbSqlTrace        int32
+	FbIgnoreSqlErrors int32
+	FnError           int32
+	FnTest            int32
+	FiTimeout         int32
+	FbSync            int32
 }
 
 /* The suffix to append to the child command lines, if any */
@@ -3617,16 +3617,16 @@ func errorMessage(tls *libc.TLS, zFormat uintptr, va uintptr) {
 	zMsg = libsqlite3.Xsqlite3_vmprintf(tls, zFormat, ap)
 	_ = ap
 	libsqlite3.Xsqlite3_snprintf(tls, int32(30), bp, __ccgo_ts+8, libc.VaList(bp+40, uintptr(unsafe.Pointer(&g))+64))
-	if g.pLog != 0 {
-		printWithPrefix(tls, g.pLog, bp, zMsg)
-		libc.Xfflush(tls, g.pLog)
+	if g.FpLog != 0 {
+		printWithPrefix(tls, g.FpLog, bp, zMsg)
+		libc.Xfflush(tls, g.FpLog)
 	}
-	if g.pErrLog != 0 && safe_strcmp(tls, g.zErrLog, g.zLog) != 0 {
-		printWithPrefix(tls, g.pErrLog, bp, zMsg)
-		libc.Xfflush(tls, g.pErrLog)
+	if g.FpErrLog != 0 && safe_strcmp(tls, g.FzErrLog, g.FzLog) != 0 {
+		printWithPrefix(tls, g.FpErrLog, bp, zMsg)
+		libc.Xfflush(tls, g.FpErrLog)
 	}
 	libsqlite3.Xsqlite3_free(tls, zMsg)
-	g.nError++
+	g.FnError++
 }
 
 // C documentation
@@ -3647,20 +3647,20 @@ func fatalError(tls *libc.TLS, zFormat uintptr, va uintptr) {
 	zMsg = libsqlite3.Xsqlite3_vmprintf(tls, zFormat, ap)
 	_ = ap
 	libsqlite3.Xsqlite3_snprintf(tls, int32(30), bp, __ccgo_ts+19, libc.VaList(bp+40, uintptr(unsafe.Pointer(&g))+64))
-	if g.pLog != 0 {
-		printWithPrefix(tls, g.pLog, bp, zMsg)
-		libc.Xfflush(tls, g.pLog)
-		maybeClose(tls, g.pLog)
+	if g.FpLog != 0 {
+		printWithPrefix(tls, g.FpLog, bp, zMsg)
+		libc.Xfflush(tls, g.FpLog)
+		maybeClose(tls, g.FpLog)
 	}
-	if g.pErrLog != 0 && safe_strcmp(tls, g.zErrLog, g.zLog) != 0 {
-		printWithPrefix(tls, g.pErrLog, bp, zMsg)
-		libc.Xfflush(tls, g.pErrLog)
-		maybeClose(tls, g.pErrLog)
+	if g.FpErrLog != 0 && safe_strcmp(tls, g.FzErrLog, g.FzLog) != 0 {
+		printWithPrefix(tls, g.FpErrLog, bp, zMsg)
+		libc.Xfflush(tls, g.FpErrLog)
+		maybeClose(tls, g.FpErrLog)
 	}
 	libsqlite3.Xsqlite3_free(tls, zMsg)
-	if g.db != 0 {
+	if g.Fdb != 0 {
 		nTry = 0
-		g.iTimeout = 0
+		g.FiTimeout = 0
 		for {
 			if v2 = trySql(tls, __ccgo_ts+30, 0) == int32(SQLITE_BUSY); v2 {
 				v1 = nTry
@@ -3672,7 +3672,7 @@ func fatalError(tls *libc.TLS, zFormat uintptr, va uintptr) {
 			libsqlite3.Xsqlite3_sleep(tls, int32(10))
 		}
 	}
-	libsqlite3.Xsqlite3_close(tls, g.db)
+	libsqlite3.Xsqlite3_close(tls, g.Fdb)
 	libc.Xexit(tls, int32(1))
 }
 
@@ -3692,9 +3692,9 @@ func logMessage(tls *libc.TLS, zFormat uintptr, va uintptr) {
 	zMsg = libsqlite3.Xsqlite3_vmprintf(tls, zFormat, ap)
 	_ = ap
 	libsqlite3.Xsqlite3_snprintf(tls, int32(30), bp, __ccgo_ts+60, libc.VaList(bp+40, uintptr(unsafe.Pointer(&g))+64))
-	if g.pLog != 0 {
-		printWithPrefix(tls, g.pLog, bp, zMsg)
-		libc.Xfflush(tls, g.pLog)
+	if g.FpLog != 0 {
+		printWithPrefix(tls, g.FpLog, bp, zMsg)
+		libc.Xfflush(tls, g.FpLog)
 	}
 	libsqlite3.Xsqlite3_free(tls, zMsg)
 }
@@ -3768,9 +3768,9 @@ func busyHandler(tls *libc.TLS, pCD uintptr, count int32) (r int32) {
 	bp := tls.Alloc(16)
 	defer tls.Free(16)
 	_ = pCD
-	if count*int32(10) > g.iTimeout {
-		if g.iTimeout > 0 {
-			errorMessage(tls, __ccgo_ts+70, libc.VaList(bp+8, g.iTimeout))
+	if count*int32(10) > g.FiTimeout {
+		if g.FiTimeout > 0 {
+			errorMessage(tls, __ccgo_ts+70, libc.VaList(bp+8, g.FiTimeout))
 		}
 		return 0
 	}
@@ -3799,13 +3799,13 @@ func sqlErrorCallback(tls *libc.TLS, pArg uintptr, iErrCode int32, zMsg uintptr)
 	bp := tls.Alloc(32)
 	defer tls.Free(32)
 	_ = pArg
-	if iErrCode == int32(SQLITE_ERROR) && g.bIgnoreSqlErrors != 0 {
+	if iErrCode == int32(SQLITE_ERROR) && g.FbIgnoreSqlErrors != 0 {
 		return
 	}
-	if iErrCode&int32(0xff) == int32(SQLITE_SCHEMA) && g.iTrace < int32(3) {
+	if iErrCode&int32(0xff) == int32(SQLITE_SCHEMA) && g.FiTrace < int32(3) {
 		return
 	}
-	if g.iTimeout == 0 && iErrCode&int32(0xff) == int32(SQLITE_BUSY) && g.iTrace < int32(3) {
+	if g.FiTimeout == 0 && iErrCode&int32(0xff) == int32(SQLITE_BUSY) && g.FiTrace < int32(3) {
 		return
 	}
 	if iErrCode&int32(0xff) == int32(SQLITE_NOTICE) {
@@ -3832,10 +3832,10 @@ func prepareSql(tls *libc.TLS, zFormat uintptr, va uintptr) (r uintptr) {
 	ap = va
 	zSql = libsqlite3.Xsqlite3_vmprintf(tls, zFormat, ap)
 	_ = ap
-	rc = libsqlite3.Xsqlite3_prepare_v2(tls, g.db, zSql, -int32(1), bp, uintptr(0))
+	rc = libsqlite3.Xsqlite3_prepare_v2(tls, g.Fdb, zSql, -int32(1), bp, uintptr(0))
 	if rc != SQLITE_OK {
 		libsqlite3.Xsqlite3_finalize(tls, *(*uintptr)(unsafe.Pointer(bp)))
-		fatalError(tls, __ccgo_ts+122, libc.VaList(bp+16, libsqlite3.Xsqlite3_errmsg(tls, g.db), zSql))
+		fatalError(tls, __ccgo_ts+122, libc.VaList(bp+16, libsqlite3.Xsqlite3_errmsg(tls, g.Fdb), zSql))
 	}
 	libsqlite3.Xsqlite3_free(tls, zSql)
 	return *(*uintptr)(unsafe.Pointer(bp))
@@ -3856,9 +3856,9 @@ func runSql(tls *libc.TLS, zFormat uintptr, va uintptr) {
 	ap = va
 	zSql = libsqlite3.Xsqlite3_vmprintf(tls, zFormat, ap)
 	_ = ap
-	rc = libsqlite3.Xsqlite3_exec(tls, g.db, zSql, uintptr(0), uintptr(0), uintptr(0))
+	rc = libsqlite3.Xsqlite3_exec(tls, g.Fdb, zSql, uintptr(0), uintptr(0), uintptr(0))
 	if rc != SQLITE_OK {
-		fatalError(tls, __ccgo_ts+122, libc.VaList(bp+8, libsqlite3.Xsqlite3_errmsg(tls, g.db), zSql))
+		fatalError(tls, __ccgo_ts+122, libc.VaList(bp+8, libsqlite3.Xsqlite3_errmsg(tls, g.Fdb), zSql))
 	}
 	libsqlite3.Xsqlite3_free(tls, zSql)
 }
@@ -3876,7 +3876,7 @@ func trySql(tls *libc.TLS, zFormat uintptr, va uintptr) (r int32) {
 	ap = va
 	zSql = libsqlite3.Xsqlite3_vmprintf(tls, zFormat, ap)
 	_ = ap
-	rc = libsqlite3.Xsqlite3_exec(tls, g.db, zSql, uintptr(0), uintptr(0), uintptr(0))
+	rc = libsqlite3.Xsqlite3_exec(tls, g.Fdb, zSql, uintptr(0), uintptr(0), uintptr(0))
 	libsqlite3.Xsqlite3_free(tls, zSql)
 	return rc
 }
@@ -3886,23 +3886,23 @@ func trySql(tls *libc.TLS, zFormat uintptr, va uintptr) (r int32) {
 //	/* Structure for holding an arbitrary length string
 //	*/
 type String = struct {
-	z      uintptr
-	n      int32
-	nAlloc int32
+	Fz      uintptr
+	Fn      int32
+	FnAlloc int32
 }
 
 type String1 = struct {
-	z      uintptr
-	n      int32
-	nAlloc int32
+	Fz      uintptr
+	Fn      int32
+	FnAlloc int32
 }
 
 // C documentation
 //
 //	/* Free a string */
 func stringFree(tls *libc.TLS, p uintptr) {
-	if (*String)(unsafe.Pointer(p)).z != 0 {
-		libsqlite3.Xsqlite3_free(tls, (*String)(unsafe.Pointer(p)).z)
+	if (*String)(unsafe.Pointer(p)).Fz != 0 {
+		libsqlite3.Xsqlite3_free(tls, (*String)(unsafe.Pointer(p)).Fz)
 	}
 	libc.X__builtin___memset_chk(tls, p, 0, uint64(16), libc.X__builtin_object_size(tls, p, 0))
 }
@@ -3917,29 +3917,29 @@ func stringAppend(tls *libc.TLS, p uintptr, z uintptr, n int32) {
 	if n < 0 {
 		n = int32(libc.Xstrlen(tls, z))
 	}
-	if (*String)(unsafe.Pointer(p)).n+n >= (*String)(unsafe.Pointer(p)).nAlloc {
-		nAlloc = (*String)(unsafe.Pointer(p)).nAlloc*int32(2) + n + int32(100)
-		zNew = libsqlite3.Xsqlite3_realloc(tls, (*String)(unsafe.Pointer(p)).z, nAlloc)
+	if (*String)(unsafe.Pointer(p)).Fn+n >= (*String)(unsafe.Pointer(p)).FnAlloc {
+		nAlloc = (*String)(unsafe.Pointer(p)).FnAlloc*int32(2) + n + int32(100)
+		zNew = libsqlite3.Xsqlite3_realloc(tls, (*String)(unsafe.Pointer(p)).Fz, nAlloc)
 		if zNew == uintptr(0) {
 			fatalError(tls, __ccgo_ts+129, 0)
 		}
-		(*String)(unsafe.Pointer(p)).z = zNew
-		(*String)(unsafe.Pointer(p)).nAlloc = nAlloc
+		(*String)(unsafe.Pointer(p)).Fz = zNew
+		(*String)(unsafe.Pointer(p)).FnAlloc = nAlloc
 	}
-	libc.X__builtin___memcpy_chk(tls, (*String)(unsafe.Pointer(p)).z+uintptr((*String)(unsafe.Pointer(p)).n), z, uint64(n), libc.X__builtin_object_size(tls, (*String)(unsafe.Pointer(p)).z+uintptr((*String)(unsafe.Pointer(p)).n), 0))
+	libc.X__builtin___memcpy_chk(tls, (*String)(unsafe.Pointer(p)).Fz+uintptr((*String)(unsafe.Pointer(p)).Fn), z, uint64(n), libc.X__builtin_object_size(tls, (*String)(unsafe.Pointer(p)).Fz+uintptr((*String)(unsafe.Pointer(p)).Fn), 0))
 	*(*int32)(unsafe.Pointer(p + 8)) += n
-	*(*int8)(unsafe.Pointer((*String)(unsafe.Pointer(p)).z + uintptr((*String)(unsafe.Pointer(p)).n))) = 0
+	*(*int8)(unsafe.Pointer((*String)(unsafe.Pointer(p)).Fz + uintptr((*String)(unsafe.Pointer(p)).Fn))) = 0
 }
 
 // C documentation
 //
 //	/* Reset a string to an empty string */
 func stringReset(tls *libc.TLS, p uintptr) {
-	if (*String)(unsafe.Pointer(p)).z == uintptr(0) {
+	if (*String)(unsafe.Pointer(p)).Fz == uintptr(0) {
 		stringAppend(tls, p, __ccgo_ts+143, int32(1))
 	}
-	(*String)(unsafe.Pointer(p)).n = 0
-	*(*int8)(unsafe.Pointer((*String)(unsafe.Pointer(p)).z)) = 0
+	(*String)(unsafe.Pointer(p)).Fn = 0
+	*(*int8)(unsafe.Pointer((*String)(unsafe.Pointer(p)).Fz)) = 0
 }
 
 // C documentation
@@ -3951,7 +3951,7 @@ func stringAppendTerm(tls *libc.TLS, p uintptr, z uintptr) {
 	var v4 __darwin_ct_rune_t
 	var v5 uint64
 	_, _, _, _, _, _, _, _ = i, v11, v2, v4, v5, v6, v8, v9
-	if (*String)(unsafe.Pointer(p)).n != 0 {
+	if (*String)(unsafe.Pointer(p)).Fn != 0 {
 		stringAppend(tls, p, __ccgo_ts+143, int32(1))
 	}
 	if z == uintptr(0) {
@@ -4058,7 +4058,7 @@ func evalSql(tls *libc.TLS, p uintptr, zFormat uintptr, va uintptr) (r int32) {
 	ap = va
 	zSql = libsqlite3.Xsqlite3_vmprintf(tls, zFormat, ap)
 	_ = ap
-	rc = libsqlite3.Xsqlite3_exec(tls, g.db, zSql, __ccgo_fp(evalCallback), p, bp)
+	rc = libsqlite3.Xsqlite3_exec(tls, g.Fdb, zSql, __ccgo_fp(evalCallback), p, bp)
 	libsqlite3.Xsqlite3_free(tls, zSql)
 	if rc != 0 {
 		libsqlite3.Xsqlite3_snprintf(tls, int32(30), bp+8, __ccgo_ts+151, libc.VaList(bp+48, rc))
@@ -4097,7 +4097,7 @@ func evalFunc(tls *libc.TLS, context uintptr, argc int32, argv uintptr) {
 		if rc != 0 {
 			libsqlite3.Xsqlite3_result_error_code(tls, context, rc)
 		} else {
-			libsqlite3.Xsqlite3_result_text(tls, context, (*(*String)(unsafe.Pointer(bp))).z, -int32(1), uintptr(-libc.Int32FromInt32(1)))
+			libsqlite3.Xsqlite3_result_text(tls, context, (*(*String)(unsafe.Pointer(bp))).Fz, -int32(1), uintptr(-libc.Int32FromInt32(1)))
 		}
 	}
 	stringFree(tls, bp)
@@ -4119,7 +4119,7 @@ func startScript(tls *libc.TLS, iClient int32, pzScript uintptr, pTaskId uintptr
 	pStmt = uintptr(0)
 	totalTime = 0
 	*(*uintptr)(unsafe.Pointer(pzScript)) = uintptr(0)
-	g.iTimeout = 0
+	g.FiTimeout = 0
 	for int32(1) != 0 {
 		rc = trySql(tls, __ccgo_ts+161, 0)
 		if rc == int32(SQLITE_BUSY) {
@@ -4128,19 +4128,19 @@ func startScript(tls *libc.TLS, iClient int32, pzScript uintptr, pTaskId uintptr
 			continue
 		}
 		if rc != SQLITE_OK {
-			fatalError(tls, __ccgo_ts+177, libc.VaList(bp+8, libsqlite3.Xsqlite3_errmsg(tls, g.db)))
+			fatalError(tls, __ccgo_ts+177, libc.VaList(bp+8, libsqlite3.Xsqlite3_errmsg(tls, g.Fdb)))
 		}
-		if g.nError != 0 || g.nTest != 0 {
-			runSql(tls, __ccgo_ts+196, libc.VaList(bp+8, g.nError, g.nTest))
-			g.nError = 0
-			g.nTest = 0
+		if g.FnError != 0 || g.FnTest != 0 {
+			runSql(tls, __ccgo_ts+196, libc.VaList(bp+8, g.FnError, g.FnTest))
+			g.FnError = 0
+			g.FnTest = 0
 		}
 		pStmt = prepareSql(tls, __ccgo_ts+249, libc.VaList(bp+8, iClient))
 		rc = libsqlite3.Xsqlite3_step(tls, pStmt)
 		libsqlite3.Xsqlite3_finalize(tls, pStmt)
 		if rc == int32(SQLITE_ROW) {
 			runSql(tls, __ccgo_ts+295, libc.VaList(bp+8, iClient))
-			g.iTimeout = int32(DEFAULT_TIMEOUT)
+			g.FiTimeout = int32(DEFAULT_TIMEOUT)
 			runSql(tls, __ccgo_ts+326, 0)
 			return int32(SQLITE_DONE)
 		}
@@ -4156,7 +4156,7 @@ func startScript(tls *libc.TLS, iClient int32, pzScript uintptr, pTaskId uintptr
 			*(*uintptr)(unsafe.Pointer(pzTaskName)) = libsqlite3.Xsqlite3_mprintf(tls, __ccgo_ts+438, libc.VaList(bp+8, libsqlite3.Xsqlite3_column_text(tls, pStmt, int32(2))))
 			libsqlite3.Xsqlite3_finalize(tls, pStmt)
 			runSql(tls, __ccgo_ts+441, libc.VaList(bp+8, taskId))
-			g.iTimeout = int32(DEFAULT_TIMEOUT)
+			g.FiTimeout = int32(DEFAULT_TIMEOUT)
 			runSql(tls, __ccgo_ts+326, 0)
 			return SQLITE_OK
 		}
@@ -4165,7 +4165,7 @@ func startScript(tls *libc.TLS, iClient int32, pzScript uintptr, pTaskId uintptr
 			if totalTime > int32(30000) {
 				errorMessage(tls, __ccgo_ts+524, 0)
 				runSql(tls, __ccgo_ts+573, libc.VaList(bp+8, iClient))
-				libsqlite3.Xsqlite3_close(tls, g.db)
+				libsqlite3.Xsqlite3_close(tls, g.Fdb)
 				libc.Xexit(tls, int32(1))
 			}
 			for trySql(tls, __ccgo_ts+613, 0) == int32(SQLITE_BUSY) {
@@ -4176,9 +4176,9 @@ func startScript(tls *libc.TLS, iClient int32, pzScript uintptr, pTaskId uintptr
 			totalTime += int32(100)
 			continue
 		}
-		fatalError(tls, __ccgo_ts+438, libc.VaList(bp+8, libsqlite3.Xsqlite3_errmsg(tls, g.db)))
+		fatalError(tls, __ccgo_ts+438, libc.VaList(bp+8, libsqlite3.Xsqlite3_errmsg(tls, g.Fdb)))
 	}
-	g.iTimeout = int32(DEFAULT_TIMEOUT)
+	g.FiTimeout = int32(DEFAULT_TIMEOUT)
 	return r
 }
 
@@ -4212,18 +4212,18 @@ func startClient(tls *libc.TLS, iClient int32) {
 	var zSys uintptr
 	_, _ = rc, zSys
 	runSql(tls, __ccgo_ts+701, libc.VaList(bp+8, iClient))
-	if libsqlite3.Xsqlite3_changes(tls, g.db) != 0 {
-		zSys = libsqlite3.Xsqlite3_mprintf(tls, __ccgo_ts+743, libc.VaList(bp+8, g.argv0, g.zDbFile, iClient, g.iTrace))
-		if g.bSqlTrace != 0 {
+	if libsqlite3.Xsqlite3_changes(tls, g.Fdb) != 0 {
+		zSys = libsqlite3.Xsqlite3_mprintf(tls, __ccgo_ts+743, libc.VaList(bp+8, g.Fargv0, g.FzDbFile, iClient, g.FiTrace))
+		if g.FbSqlTrace != 0 {
 			zSys = libsqlite3.Xsqlite3_mprintf(tls, __ccgo_ts+774, libc.VaList(bp+8, zSys))
 		}
-		if g.bSync != 0 {
+		if g.FbSync != 0 {
 			zSys = libsqlite3.Xsqlite3_mprintf(tls, __ccgo_ts+788, libc.VaList(bp+8, zSys))
 		}
-		if g.zVfs != 0 {
-			zSys = libsqlite3.Xsqlite3_mprintf(tls, __ccgo_ts+798, libc.VaList(bp+8, zSys, g.zVfs))
+		if g.FzVfs != 0 {
+			zSys = libsqlite3.Xsqlite3_mprintf(tls, __ccgo_ts+798, libc.VaList(bp+8, zSys, g.FzVfs))
 		}
-		if g.iTrace >= int32(2) {
+		if g.FiTrace >= int32(2) {
 			logMessage(tls, __ccgo_ts+812, libc.VaList(bp+8, zSys))
 		}
 		zSys = libsqlite3.Xsqlite3_mprintf(tls, __ccgo_ts+825, libc.VaList(bp+8, zSys))
@@ -4605,7 +4605,7 @@ func waitForClient(tls *libc.TLS, iClient int32, iTimeout int32, zErrPrefix uint
 	} else {
 		pStmt = prepareSql(tls, __ccgo_ts+1018, 0)
 	}
-	g.iTimeout = 0
+	g.FiTimeout = 0
 	for {
 		v1 = libsqlite3.Xsqlite3_step(tls, pStmt)
 		rc = v1
@@ -4617,7 +4617,7 @@ func waitForClient(tls *libc.TLS, iClient int32, iTimeout int32, zErrPrefix uint
 		iTimeout -= int32(50)
 	}
 	libsqlite3.Xsqlite3_finalize(tls, pStmt)
-	g.iTimeout = int32(DEFAULT_TIMEOUT)
+	g.FiTimeout = int32(DEFAULT_TIMEOUT)
 	if rc != int32(SQLITE_DONE) {
 		if zErrPrefix == uintptr(0) {
 			zErrPrefix = __ccgo_ts + 1099
@@ -4788,7 +4788,7 @@ func runScript(tls *libc.TLS, iClient int32, taskId int32, zScript uintptr, zFil
 			iBegin = ii + len1
 		}
 		/* Parse the --command */
-		if g.iTrace >= int32(2) {
+		if g.FiTrace >= int32(2) {
 			logMessage(tls, __ccgo_ts+1202, libc.VaList(bp+1264, len1, zScript+uintptr(ii)))
 		}
 		n = extractToken(tls, zScript+uintptr(ii)+uintptr(2), len1-int32(2), bp+24, int32(30))
@@ -4861,7 +4861,7 @@ func runScript(tls *libc.TLS, iClient int32, taskId int32, zScript uintptr, zFil
 				rc = libc.Xatoi(tls, bp+1054)
 				finishScript(tls, iClient, taskId, int32(1))
 				if rc == 0 {
-					libsqlite3.Xsqlite3_close(tls, g.db)
+					libsqlite3.Xsqlite3_close(tls, g.Fdb)
 				}
 				libc.Xexit(tls, rc)
 			} else {
@@ -4872,7 +4872,7 @@ func runScript(tls *libc.TLS, iClient int32, taskId int32, zScript uintptr, zFil
 				 ** has begun.
 				 */
 				if libc.Xstrcmp(tls, bp+24, __ccgo_ts+1218) == 0 {
-					if g.iTrace == int32(1) {
+					if g.FiTrace == int32(1) {
 						logMessage(tls, __ccgo_ts+1202, libc.VaList(bp+1264, len1-int32(1), zScript+uintptr(ii)))
 					}
 					stringReset(tls, bp+8)
@@ -4930,10 +4930,10 @@ func runScript(tls *libc.TLS, iClient int32, taskId int32, zScript uintptr, zFil
 									jj++
 								}
 								zAns += uintptr(jj)
-								if len1-jj-int32(1) != (*(*String)(unsafe.Pointer(bp + 8))).n || libc.Xstrncmp(tls, (*(*String)(unsafe.Pointer(bp + 8))).z, zAns, uint64(len1-jj-int32(1))) != 0 {
-									errorMessage(tls, __ccgo_ts+1246, libc.VaList(bp+1264, prevLine, zFilename, len1-jj-int32(1), zAns, (*(*String)(unsafe.Pointer(bp + 8))).z))
+								if len1-jj-int32(1) != (*(*String)(unsafe.Pointer(bp + 8))).Fn || libc.Xstrncmp(tls, (*(*String)(unsafe.Pointer(bp + 8))).Fz, zAns, uint64(len1-jj-int32(1))) != 0 {
+									errorMessage(tls, __ccgo_ts+1246, libc.VaList(bp+1264, prevLine, zFilename, len1-jj-int32(1), zAns, (*(*String)(unsafe.Pointer(bp + 8))).Fz))
 								}
-								g.nTest++
+								g.FnTest++
 								stringReset(tls, bp+8)
 							} else {
 								/*
@@ -4976,11 +4976,11 @@ func runScript(tls *libc.TLS, iClient int32, taskId int32, zScript uintptr, zFil
 									}
 									zAns1 += uintptr(jj1)
 									zCopy = libsqlite3.Xsqlite3_mprintf(tls, __ccgo_ts+1202, libc.VaList(bp+1264, len1-jj1-int32(1), zAns1))
-									if libc.BoolInt32(libsqlite3.Xsqlite3_strglob(tls, zCopy, (*(*String)(unsafe.Pointer(bp + 8))).z) == 0)^isGlob != 0 {
-										errorMessage(tls, __ccgo_ts+1304, libc.VaList(bp+1264, prevLine, zFilename, zCopy, (*(*String)(unsafe.Pointer(bp + 8))).z))
+									if libc.BoolInt32(libsqlite3.Xsqlite3_strglob(tls, zCopy, (*(*String)(unsafe.Pointer(bp + 8))).Fz) == 0)^isGlob != 0 {
+										errorMessage(tls, __ccgo_ts+1304, libc.VaList(bp+1264, prevLine, zFilename, zCopy, (*(*String)(unsafe.Pointer(bp + 8))).Fz))
 									}
 									libsqlite3.Xsqlite3_free(tls, zCopy)
-									g.nTest++
+									g.FnTest++
 									stringReset(tls, bp+8)
 								} else {
 									/*
@@ -4989,7 +4989,7 @@ func runScript(tls *libc.TLS, iClient int32, taskId int32, zScript uintptr, zFil
 									 ** Output the result of the previous SQL.
 									 */
 									if libc.Xstrcmp(tls, bp+24, __ccgo_ts+1347) == 0 {
-										logMessage(tls, __ccgo_ts+438, libc.VaList(bp+1264, (*(*String)(unsafe.Pointer(bp + 8))).z))
+										logMessage(tls, __ccgo_ts+438, libc.VaList(bp+1264, (*(*String)(unsafe.Pointer(bp + 8))).Fz))
 									} else {
 										/*
 										 **  --source FILENAME
@@ -5017,12 +5017,12 @@ func runScript(tls *libc.TLS, iClient int32, taskId int32, zScript uintptr, zFil
 												}
 											}
 											zNewScript = readFile(tls, zNewFile)
-											if g.iTrace != 0 {
+											if g.FiTrace != 0 {
 												logMessage(tls, __ccgo_ts+1369, libc.VaList(bp+1264, zNewFile))
 											}
 											runScript(tls, 0, 0, zNewScript, zNewFile)
 											libsqlite3.Xsqlite3_free(tls, zNewScript)
-											if g.iTrace != 0 {
+											if g.FiTrace != 0 {
 												logMessage(tls, __ccgo_ts+1388, libc.VaList(bp+1264, zNewFile))
 											}
 											libsqlite3.Xsqlite3_free(tls, zToDel)
@@ -5199,7 +5199,7 @@ func runScript(tls *libc.TLS, iClient int32, taskId int32, zScript uintptr, zFil
 																				} else {
 																					v81 = int32(1)
 																				}
-																				g.bIgnoreSqlErrors = v81
+																				g.FbIgnoreSqlErrors = v81
 																			} else {
 																				/* error */
 																				errorMessage(tls, __ccgo_ts+1594, libc.VaList(bp+1264, prevLine, zFilename, bp+24))
@@ -5362,13 +5362,13 @@ func main1(tls *libc.TLS, argc int32, argv uintptr) (r int32) {
 	openFlags = int32(SQLITE_OPEN_READWRITE)
 	nRep = int32(1)
 	iTmout = 0
-	g.argv0 = *(*uintptr)(unsafe.Pointer(argv))
-	g.iTrace = int32(1)
+	g.Fargv0 = *(*uintptr)(unsafe.Pointer(argv))
+	g.FiTrace = int32(1)
 	if argc < int32(2) {
 		usage(tls, *(*uintptr)(unsafe.Pointer(argv)))
 	}
-	g.zDbFile = *(*uintptr)(unsafe.Pointer(argv + 1*8))
-	if strglob(tls, __ccgo_ts+2323, g.zDbFile) != 0 {
+	g.FzDbFile = *(*uintptr)(unsafe.Pointer(argv + 1*8))
+	if strglob(tls, __ccgo_ts+2323, g.FzDbFile) != 0 {
 		usage(tls, *(*uintptr)(unsafe.Pointer(argv)))
 	}
 	if libc.Bool(0 != 0) && libc.Xstrcmp(tls, libsqlite3.Xsqlite3_sourceid(tls), __ccgo_ts+2330) != 0 {
@@ -5385,32 +5385,32 @@ func main1(tls *libc.TLS, argc int32, argv uintptr) (r int32) {
 	if nRep < int32(1) {
 		nRep = int32(1)
 	}
-	g.zVfs = findOption(tls, argv+uintptr(2)*8, bp, __ccgo_ts+2506, int32(1))
+	g.FzVfs = findOption(tls, argv+uintptr(2)*8, bp, __ccgo_ts+2506, int32(1))
 	zClient = findOption(tls, argv+uintptr(2)*8, bp, __ccgo_ts+2510, int32(1))
-	g.zErrLog = findOption(tls, argv+uintptr(2)*8, bp, __ccgo_ts+2517, int32(1))
-	g.zLog = findOption(tls, argv+uintptr(2)*8, bp, __ccgo_ts+2524, int32(1))
+	g.FzErrLog = findOption(tls, argv+uintptr(2)*8, bp, __ccgo_ts+2517, int32(1))
+	g.FzLog = findOption(tls, argv+uintptr(2)*8, bp, __ccgo_ts+2524, int32(1))
 	zTrace = findOption(tls, argv+uintptr(2)*8, bp, __ccgo_ts+2528, int32(1))
 	if zTrace != 0 {
-		g.iTrace = libc.Xatoi(tls, zTrace)
+		g.FiTrace = libc.Xatoi(tls, zTrace)
 	}
 	if findOption(tls, argv+uintptr(2)*8, bp, __ccgo_ts+2534, 0) != uintptr(0) {
-		g.iTrace = 0
+		g.FiTrace = 0
 	}
 	zTmout = findOption(tls, argv+uintptr(2)*8, bp, __ccgo_ts+2540, int32(1))
 	if zTmout != 0 {
 		iTmout = libc.Xatoi(tls, zTmout)
 	}
-	g.bSqlTrace = libc.BoolInt32(findOption(tls, argv+uintptr(2)*8, bp, __ccgo_ts+2548, 0) != uintptr(0))
-	g.bSync = libc.BoolInt32(findOption(tls, argv+uintptr(2)*8, bp, __ccgo_ts+2557, 0) != uintptr(0))
-	if g.zErrLog != 0 {
-		g.pErrLog = libc.Xfopen(tls, g.zErrLog, __ccgo_ts+2562)
+	g.FbSqlTrace = libc.BoolInt32(findOption(tls, argv+uintptr(2)*8, bp, __ccgo_ts+2548, 0) != uintptr(0))
+	g.FbSync = libc.BoolInt32(findOption(tls, argv+uintptr(2)*8, bp, __ccgo_ts+2557, 0) != uintptr(0))
+	if g.FzErrLog != 0 {
+		g.FpErrLog = libc.Xfopen(tls, g.FzErrLog, __ccgo_ts+2562)
 	} else {
-		g.pErrLog = libc.X__stderrp
+		g.FpErrLog = libc.X__stderrp
 	}
-	if g.zLog != 0 {
-		g.pLog = libc.Xfopen(tls, g.zLog, __ccgo_ts+2562)
+	if g.FzLog != 0 {
+		g.FpLog = libc.Xfopen(tls, g.FzLog, __ccgo_ts+2562)
 	} else {
-		g.pLog = libc.X__stdoutp
+		g.FpLog = libc.X__stdoutp
 	}
 	libsqlite3.Xsqlite3_config(tls, int32(SQLITE_CONFIG_LOG), libc.VaList(bp+40, __ccgo_fp(sqlErrorCallback), 0))
 	if zClient != 0 {
@@ -5421,7 +5421,7 @@ func main1(tls *libc.TLS, argc int32, argv uintptr) (r int32) {
 		libsqlite3.Xsqlite3_snprintf(tls, int32(32), uintptr(unsafe.Pointer(&g))+64, __ccgo_ts+2591, libc.VaList(bp+40, libc.Xgetpid(tls), iClient))
 	} else {
 		nTry = 0
-		if g.iTrace > 0 {
+		if g.FiTrace > 0 {
 			libc.Xprintf(tls, __ccgo_ts+2607, libc.VaList(bp+40, *(*uintptr)(unsafe.Pointer(argv))))
 			i = int32(1)
 			for {
@@ -5459,9 +5459,9 @@ func main1(tls *libc.TLS, argc int32, argv uintptr) (r int32) {
 				} else {
 					v7 = __ccgo_ts + 1099
 				}
-				libc.Xprintf(tls, __ccgo_ts+2742, libc.VaList(bp+40, v7, g.zDbFile))
+				libc.Xprintf(tls, __ccgo_ts+2742, libc.VaList(bp+40, v7, g.FzDbFile))
 			}
-			rc = libc.Xunlink(tls, g.zDbFile)
+			rc = libc.Xunlink(tls, g.FzDbFile)
 			if rc != 0 && *(*int32)(unsafe.Pointer(libc.X__error(tls))) == int32(ENOENT) {
 				rc = 0
 			}
@@ -5477,36 +5477,36 @@ func main1(tls *libc.TLS, argc int32, argv uintptr) (r int32) {
 			}
 		}
 		if rc != 0 {
-			fatalError(tls, __ccgo_ts+2771, libc.VaList(bp+40, g.zDbFile, nTry))
+			fatalError(tls, __ccgo_ts+2771, libc.VaList(bp+40, g.FzDbFile, nTry))
 		}
 		openFlags |= int32(SQLITE_OPEN_CREATE)
 	}
-	rc = libsqlite3.Xsqlite3_open_v2(tls, g.zDbFile, uintptr(unsafe.Pointer(&g))+24, openFlags, g.zVfs)
+	rc = libsqlite3.Xsqlite3_open_v2(tls, g.FzDbFile, uintptr(unsafe.Pointer(&g))+24, openFlags, g.FzVfs)
 	if rc != 0 {
-		fatalError(tls, __ccgo_ts+2812, libc.VaList(bp+40, g.zDbFile))
+		fatalError(tls, __ccgo_ts+2812, libc.VaList(bp+40, g.FzDbFile))
 	}
 	if iTmout > 0 {
-		libsqlite3.Xsqlite3_busy_timeout(tls, g.db, iTmout)
+		libsqlite3.Xsqlite3_busy_timeout(tls, g.Fdb, iTmout)
 	}
 	if zJMode != 0 {
 		runSql(tls, __ccgo_ts+2829, libc.VaList(bp+40, zJMode))
 	}
-	if !(g.bSync != 0) {
+	if !(g.FbSync != 0) {
 		trySql(tls, __ccgo_ts+2853, 0)
 	}
-	libsqlite3.Xsqlite3_enable_load_extension(tls, g.db, int32(1))
-	libsqlite3.Xsqlite3_busy_handler(tls, g.db, __ccgo_fp(busyHandler), uintptr(0))
-	libsqlite3.Xsqlite3_create_function(tls, g.db, __ccgo_ts+2876, 0, int32(SQLITE_UTF8), uintptr(0), __ccgo_fp(vfsNameFunc), uintptr(0), uintptr(0))
-	libsqlite3.Xsqlite3_create_function(tls, g.db, __ccgo_ts+2884, int32(1), int32(SQLITE_UTF8), uintptr(0), __ccgo_fp(evalFunc), uintptr(0), uintptr(0))
-	g.iTimeout = int32(DEFAULT_TIMEOUT)
-	if g.bSqlTrace != 0 {
-		libsqlite3.Xsqlite3_trace(tls, g.db, __ccgo_fp(sqlTraceCallback), uintptr(0))
+	libsqlite3.Xsqlite3_enable_load_extension(tls, g.Fdb, int32(1))
+	libsqlite3.Xsqlite3_busy_handler(tls, g.Fdb, __ccgo_fp(busyHandler), uintptr(0))
+	libsqlite3.Xsqlite3_create_function(tls, g.Fdb, __ccgo_ts+2876, 0, int32(SQLITE_UTF8), uintptr(0), __ccgo_fp(vfsNameFunc), uintptr(0), uintptr(0))
+	libsqlite3.Xsqlite3_create_function(tls, g.Fdb, __ccgo_ts+2884, int32(1), int32(SQLITE_UTF8), uintptr(0), __ccgo_fp(evalFunc), uintptr(0), uintptr(0))
+	g.FiTimeout = int32(DEFAULT_TIMEOUT)
+	if g.FbSqlTrace != 0 {
+		libsqlite3.Xsqlite3_trace(tls, g.Fdb, __ccgo_fp(sqlTraceCallback), uintptr(0))
 	}
 	if iClient > 0 {
 		if *(*int32)(unsafe.Pointer(bp)) > 0 {
 			unrecognizedArguments(tls, *(*uintptr)(unsafe.Pointer(argv)), *(*int32)(unsafe.Pointer(bp)), argv+uintptr(2)*8)
 		}
-		if g.iTrace != 0 {
+		if g.FiTrace != 0 {
 			logMessage(tls, __ccgo_ts+2889, 0)
 		}
 		for int32(1) != 0 {
@@ -5515,18 +5515,18 @@ func main1(tls *libc.TLS, argc int32, argv uintptr) (r int32) {
 			if rc == int32(SQLITE_DONE) {
 				break
 			}
-			if g.iTrace != 0 {
+			if g.FiTrace != 0 {
 				logMessage(tls, __ccgo_ts+2902, libc.VaList(bp+40, *(*uintptr)(unsafe.Pointer(bp + 24)), *(*int32)(unsafe.Pointer(bp + 16))))
 			}
 			runScript(tls, iClient, *(*int32)(unsafe.Pointer(bp + 16)), *(*uintptr)(unsafe.Pointer(bp + 8)), *(*uintptr)(unsafe.Pointer(bp + 24)))
-			if g.iTrace != 0 {
+			if g.FiTrace != 0 {
 				logMessage(tls, __ccgo_ts+2916, libc.VaList(bp+40, *(*uintptr)(unsafe.Pointer(bp + 24)), *(*int32)(unsafe.Pointer(bp + 16))))
 			}
 			finishScript(tls, iClient, *(*int32)(unsafe.Pointer(bp + 16)), 0)
 			libsqlite3.Xsqlite3_free(tls, *(*uintptr)(unsafe.Pointer(bp + 24)))
 			libsqlite3.Xsqlite3_sleep(tls, int32(10))
 		}
-		if g.iTrace != 0 {
+		if g.FiTrace != 0 {
 			logMessage(tls, __ccgo_ts+2928, 0)
 		}
 	} else {
@@ -5543,11 +5543,11 @@ func main1(tls *libc.TLS, argc int32, argv uintptr) (r int32) {
 			if !(iRep <= nRep) {
 				break
 			}
-			if g.iTrace != 0 {
+			if g.FiTrace != 0 {
 				logMessage(tls, __ccgo_ts+3399, libc.VaList(bp+40, *(*uintptr)(unsafe.Pointer(argv + 2*8)), iRep))
 			}
 			runScript(tls, 0, 0, *(*uintptr)(unsafe.Pointer(bp + 8)), *(*uintptr)(unsafe.Pointer(argv + 2*8)))
-			if g.iTrace != 0 {
+			if g.FiTrace != 0 {
 				logMessage(tls, __ccgo_ts+3427, libc.VaList(bp+40, *(*uintptr)(unsafe.Pointer(argv + 2*8)), iRep))
 			}
 			goto _8
@@ -5559,7 +5559,7 @@ func main1(tls *libc.TLS, argc int32, argv uintptr) (r int32) {
 		waitForClient(tls, 0, int32(2000), __ccgo_ts+3453)
 		trySql(tls, __ccgo_ts+3473, 0)
 		libsqlite3.Xsqlite3_sleep(tls, int32(10))
-		g.iTimeout = 0
+		g.FiTimeout = 0
 		iTimeout = int32(1000)
 		for {
 			v9 = trySql(tls, __ccgo_ts+3502, 0)
@@ -5583,16 +5583,16 @@ func main1(tls *libc.TLS, argc int32, argv uintptr) (r int32) {
 			iTimeout -= int32(10)
 		}
 		if rc == int32(SQLITE_ROW) {
-			g.nError += libsqlite3.Xsqlite3_column_int(tls, pStmt, 0)
-			g.nTest += libsqlite3.Xsqlite3_column_int(tls, pStmt, int32(1))
+			g.FnError += libsqlite3.Xsqlite3_column_int(tls, pStmt, 0)
+			g.FnTest += libsqlite3.Xsqlite3_column_int(tls, pStmt, int32(1))
 		}
 		libsqlite3.Xsqlite3_finalize(tls, pStmt)
 	}
-	libsqlite3.Xsqlite3_close(tls, g.db)
-	maybeClose(tls, g.pLog)
-	maybeClose(tls, g.pErrLog)
+	libsqlite3.Xsqlite3_close(tls, g.Fdb)
+	maybeClose(tls, g.FpLog)
+	maybeClose(tls, g.FpErrLog)
 	if iClient == 0 {
-		libc.Xprintf(tls, __ccgo_ts+3558, libc.VaList(bp+40, g.nError, g.nTest))
+		libc.Xprintf(tls, __ccgo_ts+3558, libc.VaList(bp+40, g.FnError, g.FnTest))
 		libc.Xprintf(tls, __ccgo_ts+3594, libc.VaList(bp+40, *(*uintptr)(unsafe.Pointer(argv))))
 		i = int32(1)
 		for {
@@ -5607,7 +5607,7 @@ func main1(tls *libc.TLS, argc int32, argv uintptr) (r int32) {
 		}
 		libc.Xprintf(tls, __ccgo_ts+2321, 0)
 	}
-	return libc.BoolInt32(g.nError > 0)
+	return libc.BoolInt32(g.FnError > 0)
 }
 
 func main() {
