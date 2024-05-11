@@ -9457,483 +9457,483 @@ type sqlite3_uint64 = uint64
 type sqlite3_callback = uintptr
 
 type sqlite3_file = struct {
-	pMethods uintptr
+	FpMethods uintptr
 }
 
 type sqlite3_file1 = struct {
-	pMethods uintptr
+	FpMethods uintptr
 }
 
 type sqlite3_io_methods = struct {
-	iVersion               int32
-	xClose                 uintptr
-	xRead                  uintptr
-	xWrite                 uintptr
-	xTruncate              uintptr
-	xSync                  uintptr
-	xFileSize              uintptr
-	xLock                  uintptr
-	xUnlock                uintptr
-	xCheckReservedLock     uintptr
-	xFileControl           uintptr
-	xSectorSize            uintptr
-	xDeviceCharacteristics uintptr
-	xShmMap                uintptr
-	xShmLock               uintptr
-	xShmBarrier            uintptr
-	xShmUnmap              uintptr
-	xFetch                 uintptr
-	xUnfetch               uintptr
+	FiVersion               int32
+	FxClose                 uintptr
+	FxRead                  uintptr
+	FxWrite                 uintptr
+	FxTruncate              uintptr
+	FxSync                  uintptr
+	FxFileSize              uintptr
+	FxLock                  uintptr
+	FxUnlock                uintptr
+	FxCheckReservedLock     uintptr
+	FxFileControl           uintptr
+	FxSectorSize            uintptr
+	FxDeviceCharacteristics uintptr
+	FxShmMap                uintptr
+	FxShmLock               uintptr
+	FxShmBarrier            uintptr
+	FxShmUnmap              uintptr
+	FxFetch                 uintptr
+	FxUnfetch               uintptr
 }
 
 type sqlite3_io_methods1 = struct {
-	iVersion               int32
-	xClose                 uintptr
-	xRead                  uintptr
-	xWrite                 uintptr
-	xTruncate              uintptr
-	xSync                  uintptr
-	xFileSize              uintptr
-	xLock                  uintptr
-	xUnlock                uintptr
-	xCheckReservedLock     uintptr
-	xFileControl           uintptr
-	xSectorSize            uintptr
-	xDeviceCharacteristics uintptr
-	xShmMap                uintptr
-	xShmLock               uintptr
-	xShmBarrier            uintptr
-	xShmUnmap              uintptr
-	xFetch                 uintptr
-	xUnfetch               uintptr
+	FiVersion               int32
+	FxClose                 uintptr
+	FxRead                  uintptr
+	FxWrite                 uintptr
+	FxTruncate              uintptr
+	FxSync                  uintptr
+	FxFileSize              uintptr
+	FxLock                  uintptr
+	FxUnlock                uintptr
+	FxCheckReservedLock     uintptr
+	FxFileControl           uintptr
+	FxSectorSize            uintptr
+	FxDeviceCharacteristics uintptr
+	FxShmMap                uintptr
+	FxShmLock               uintptr
+	FxShmBarrier            uintptr
+	FxShmUnmap              uintptr
+	FxFetch                 uintptr
+	FxUnfetch               uintptr
 }
 
 type sqlite3_filename = uintptr
 
 type sqlite3_vfs = struct {
-	iVersion          int32
-	szOsFile          int32
-	mxPathname        int32
-	pNext             uintptr
-	zName             uintptr
-	pAppData          uintptr
-	xOpen             uintptr
-	xDelete           uintptr
-	xAccess           uintptr
-	xFullPathname     uintptr
-	xDlOpen           uintptr
-	xDlError          uintptr
-	xDlSym            uintptr
-	xDlClose          uintptr
-	xRandomness       uintptr
-	xSleep            uintptr
-	xCurrentTime      uintptr
-	xGetLastError     uintptr
-	xCurrentTimeInt64 uintptr
-	xSetSystemCall    uintptr
-	xGetSystemCall    uintptr
-	xNextSystemCall   uintptr
+	FiVersion          int32
+	FszOsFile          int32
+	FmxPathname        int32
+	FpNext             uintptr
+	FzName             uintptr
+	FpAppData          uintptr
+	FxOpen             uintptr
+	FxDelete           uintptr
+	FxAccess           uintptr
+	FxFullPathname     uintptr
+	FxDlOpen           uintptr
+	FxDlError          uintptr
+	FxDlSym            uintptr
+	FxDlClose          uintptr
+	FxRandomness       uintptr
+	FxSleep            uintptr
+	FxCurrentTime      uintptr
+	FxGetLastError     uintptr
+	FxCurrentTimeInt64 uintptr
+	FxSetSystemCall    uintptr
+	FxGetSystemCall    uintptr
+	FxNextSystemCall   uintptr
 }
 
 type sqlite3_syscall_ptr = uintptr
 
 type sqlite3_vfs1 = struct {
-	iVersion          int32
-	szOsFile          int32
-	mxPathname        int32
-	pNext             uintptr
-	zName             uintptr
-	pAppData          uintptr
-	xOpen             uintptr
-	xDelete           uintptr
-	xAccess           uintptr
-	xFullPathname     uintptr
-	xDlOpen           uintptr
-	xDlError          uintptr
-	xDlSym            uintptr
-	xDlClose          uintptr
-	xRandomness       uintptr
-	xSleep            uintptr
-	xCurrentTime      uintptr
-	xGetLastError     uintptr
-	xCurrentTimeInt64 uintptr
-	xSetSystemCall    uintptr
-	xGetSystemCall    uintptr
-	xNextSystemCall   uintptr
+	FiVersion          int32
+	FszOsFile          int32
+	FmxPathname        int32
+	FpNext             uintptr
+	FzName             uintptr
+	FpAppData          uintptr
+	FxOpen             uintptr
+	FxDelete           uintptr
+	FxAccess           uintptr
+	FxFullPathname     uintptr
+	FxDlOpen           uintptr
+	FxDlError          uintptr
+	FxDlSym            uintptr
+	FxDlClose          uintptr
+	FxRandomness       uintptr
+	FxSleep            uintptr
+	FxCurrentTime      uintptr
+	FxGetLastError     uintptr
+	FxCurrentTimeInt64 uintptr
+	FxSetSystemCall    uintptr
+	FxGetSystemCall    uintptr
+	FxNextSystemCall   uintptr
 }
 
 type sqlite3_mem_methods = struct {
-	xMalloc   uintptr
-	xFree     uintptr
-	xRealloc  uintptr
-	xSize     uintptr
-	xRoundup  uintptr
-	xInit     uintptr
-	xShutdown uintptr
-	pAppData  uintptr
+	FxMalloc   uintptr
+	FxFree     uintptr
+	FxRealloc  uintptr
+	FxSize     uintptr
+	FxRoundup  uintptr
+	FxInit     uintptr
+	FxShutdown uintptr
+	FpAppData  uintptr
 }
 
 type sqlite3_mem_methods1 = struct {
-	xMalloc   uintptr
-	xFree     uintptr
-	xRealloc  uintptr
-	xSize     uintptr
-	xRoundup  uintptr
-	xInit     uintptr
-	xShutdown uintptr
-	pAppData  uintptr
+	FxMalloc   uintptr
+	FxFree     uintptr
+	FxRealloc  uintptr
+	FxSize     uintptr
+	FxRoundup  uintptr
+	FxInit     uintptr
+	FxShutdown uintptr
+	FpAppData  uintptr
 }
 
 type sqlite3_destructor_type = uintptr
 
 type sqlite3_vtab = struct {
-	pModule uintptr
-	nRef    int32
-	zErrMsg uintptr
+	FpModule uintptr
+	FnRef    int32
+	FzErrMsg uintptr
 }
 
 type sqlite3_index_info = struct {
-	nConstraint      int32
-	aConstraint      uintptr
-	nOrderBy         int32
-	aOrderBy         uintptr
-	aConstraintUsage uintptr
-	idxNum           int32
-	idxStr           uintptr
-	needToFreeIdxStr int32
-	orderByConsumed  int32
-	estimatedCost    float64
-	estimatedRows    sqlite3_int64
-	idxFlags         int32
-	colUsed          sqlite3_uint64
+	FnConstraint      int32
+	FaConstraint      uintptr
+	FnOrderBy         int32
+	FaOrderBy         uintptr
+	FaConstraintUsage uintptr
+	FidxNum           int32
+	FidxStr           uintptr
+	FneedToFreeIdxStr int32
+	ForderByConsumed  int32
+	FestimatedCost    float64
+	FestimatedRows    sqlite3_int64
+	FidxFlags         int32
+	FcolUsed          sqlite3_uint64
 }
 
 type sqlite3_vtab_cursor = struct {
-	pVtab uintptr
+	FpVtab uintptr
 }
 
 type sqlite3_module = struct {
-	iVersion      int32
-	xCreate       uintptr
-	xConnect      uintptr
-	xBestIndex    uintptr
-	xDisconnect   uintptr
-	xDestroy      uintptr
-	xOpen         uintptr
-	xClose        uintptr
-	xFilter       uintptr
-	xNext         uintptr
-	xEof          uintptr
-	xColumn       uintptr
-	xRowid        uintptr
-	xUpdate       uintptr
-	xBegin        uintptr
-	xSync         uintptr
-	xCommit       uintptr
-	xRollback     uintptr
-	xFindFunction uintptr
-	xRename       uintptr
-	xSavepoint    uintptr
-	xRelease      uintptr
-	xRollbackTo   uintptr
-	xShadowName   uintptr
-	xIntegrity    uintptr
+	FiVersion      int32
+	FxCreate       uintptr
+	FxConnect      uintptr
+	FxBestIndex    uintptr
+	FxDisconnect   uintptr
+	FxDestroy      uintptr
+	FxOpen         uintptr
+	FxClose        uintptr
+	FxFilter       uintptr
+	FxNext         uintptr
+	FxEof          uintptr
+	FxColumn       uintptr
+	FxRowid        uintptr
+	FxUpdate       uintptr
+	FxBegin        uintptr
+	FxSync         uintptr
+	FxCommit       uintptr
+	FxRollback     uintptr
+	FxFindFunction uintptr
+	FxRename       uintptr
+	FxSavepoint    uintptr
+	FxRelease      uintptr
+	FxRollbackTo   uintptr
+	FxShadowName   uintptr
+	FxIntegrity    uintptr
 }
 
 type sqlite3_module1 = struct {
-	iVersion      int32
-	xCreate       uintptr
-	xConnect      uintptr
-	xBestIndex    uintptr
-	xDisconnect   uintptr
-	xDestroy      uintptr
-	xOpen         uintptr
-	xClose        uintptr
-	xFilter       uintptr
-	xNext         uintptr
-	xEof          uintptr
-	xColumn       uintptr
-	xRowid        uintptr
-	xUpdate       uintptr
-	xBegin        uintptr
-	xSync         uintptr
-	xCommit       uintptr
-	xRollback     uintptr
-	xFindFunction uintptr
-	xRename       uintptr
-	xSavepoint    uintptr
-	xRelease      uintptr
-	xRollbackTo   uintptr
-	xShadowName   uintptr
-	xIntegrity    uintptr
+	FiVersion      int32
+	FxCreate       uintptr
+	FxConnect      uintptr
+	FxBestIndex    uintptr
+	FxDisconnect   uintptr
+	FxDestroy      uintptr
+	FxOpen         uintptr
+	FxClose        uintptr
+	FxFilter       uintptr
+	FxNext         uintptr
+	FxEof          uintptr
+	FxColumn       uintptr
+	FxRowid        uintptr
+	FxUpdate       uintptr
+	FxBegin        uintptr
+	FxSync         uintptr
+	FxCommit       uintptr
+	FxRollback     uintptr
+	FxFindFunction uintptr
+	FxRename       uintptr
+	FxSavepoint    uintptr
+	FxRelease      uintptr
+	FxRollbackTo   uintptr
+	FxShadowName   uintptr
+	FxIntegrity    uintptr
 }
 
 type sqlite3_index_info1 = struct {
-	nConstraint      int32
-	aConstraint      uintptr
-	nOrderBy         int32
-	aOrderBy         uintptr
-	aConstraintUsage uintptr
-	idxNum           int32
-	idxStr           uintptr
-	needToFreeIdxStr int32
-	orderByConsumed  int32
-	estimatedCost    float64
-	estimatedRows    sqlite3_int64
-	idxFlags         int32
-	colUsed          sqlite3_uint64
+	FnConstraint      int32
+	FaConstraint      uintptr
+	FnOrderBy         int32
+	FaOrderBy         uintptr
+	FaConstraintUsage uintptr
+	FidxNum           int32
+	FidxStr           uintptr
+	FneedToFreeIdxStr int32
+	ForderByConsumed  int32
+	FestimatedCost    float64
+	FestimatedRows    sqlite3_int64
+	FidxFlags         int32
+	FcolUsed          sqlite3_uint64
 }
 
 type sqlite3_vtab1 = struct {
-	pModule uintptr
-	nRef    int32
-	zErrMsg uintptr
+	FpModule uintptr
+	FnRef    int32
+	FzErrMsg uintptr
 }
 
 type sqlite3_vtab_cursor1 = struct {
-	pVtab uintptr
+	FpVtab uintptr
 }
 
 type sqlite3_mutex_methods = struct {
-	xMutexInit    uintptr
-	xMutexEnd     uintptr
-	xMutexAlloc   uintptr
-	xMutexFree    uintptr
-	xMutexEnter   uintptr
-	xMutexTry     uintptr
-	xMutexLeave   uintptr
-	xMutexHeld    uintptr
-	xMutexNotheld uintptr
+	FxMutexInit    uintptr
+	FxMutexEnd     uintptr
+	FxMutexAlloc   uintptr
+	FxMutexFree    uintptr
+	FxMutexEnter   uintptr
+	FxMutexTry     uintptr
+	FxMutexLeave   uintptr
+	FxMutexHeld    uintptr
+	FxMutexNotheld uintptr
 }
 
 type sqlite3_mutex_methods1 = struct {
-	xMutexInit    uintptr
-	xMutexEnd     uintptr
-	xMutexAlloc   uintptr
-	xMutexFree    uintptr
-	xMutexEnter   uintptr
-	xMutexTry     uintptr
-	xMutexLeave   uintptr
-	xMutexHeld    uintptr
-	xMutexNotheld uintptr
+	FxMutexInit    uintptr
+	FxMutexEnd     uintptr
+	FxMutexAlloc   uintptr
+	FxMutexFree    uintptr
+	FxMutexEnter   uintptr
+	FxMutexTry     uintptr
+	FxMutexLeave   uintptr
+	FxMutexHeld    uintptr
+	FxMutexNotheld uintptr
 }
 
 type sqlite3_pcache_page = struct {
-	pBuf   uintptr
-	pExtra uintptr
+	FpBuf   uintptr
+	FpExtra uintptr
 }
 
 type sqlite3_pcache_page1 = struct {
-	pBuf   uintptr
-	pExtra uintptr
+	FpBuf   uintptr
+	FpExtra uintptr
 }
 
 type sqlite3_pcache_methods2 = struct {
-	iVersion   int32
-	pArg       uintptr
-	xInit      uintptr
-	xShutdown  uintptr
-	xCreate    uintptr
-	xCachesize uintptr
-	xPagecount uintptr
-	xFetch     uintptr
-	xUnpin     uintptr
-	xRekey     uintptr
-	xTruncate  uintptr
-	xDestroy   uintptr
-	xShrink    uintptr
+	FiVersion   int32
+	FpArg       uintptr
+	FxInit      uintptr
+	FxShutdown  uintptr
+	FxCreate    uintptr
+	FxCachesize uintptr
+	FxPagecount uintptr
+	FxFetch     uintptr
+	FxUnpin     uintptr
+	FxRekey     uintptr
+	FxTruncate  uintptr
+	FxDestroy   uintptr
+	FxShrink    uintptr
 }
 
 type sqlite3_pcache_methods21 = struct {
-	iVersion   int32
-	pArg       uintptr
-	xInit      uintptr
-	xShutdown  uintptr
-	xCreate    uintptr
-	xCachesize uintptr
-	xPagecount uintptr
-	xFetch     uintptr
-	xUnpin     uintptr
-	xRekey     uintptr
-	xTruncate  uintptr
-	xDestroy   uintptr
-	xShrink    uintptr
+	FiVersion   int32
+	FpArg       uintptr
+	FxInit      uintptr
+	FxShutdown  uintptr
+	FxCreate    uintptr
+	FxCachesize uintptr
+	FxPagecount uintptr
+	FxFetch     uintptr
+	FxUnpin     uintptr
+	FxRekey     uintptr
+	FxTruncate  uintptr
+	FxDestroy   uintptr
+	FxShrink    uintptr
 }
 
 type sqlite3_pcache_methods = struct {
-	pArg       uintptr
-	xInit      uintptr
-	xShutdown  uintptr
-	xCreate    uintptr
-	xCachesize uintptr
-	xPagecount uintptr
-	xFetch     uintptr
-	xUnpin     uintptr
-	xRekey     uintptr
-	xTruncate  uintptr
-	xDestroy   uintptr
+	FpArg       uintptr
+	FxInit      uintptr
+	FxShutdown  uintptr
+	FxCreate    uintptr
+	FxCachesize uintptr
+	FxPagecount uintptr
+	FxFetch     uintptr
+	FxUnpin     uintptr
+	FxRekey     uintptr
+	FxTruncate  uintptr
+	FxDestroy   uintptr
 }
 
 type sqlite3_pcache_methods1 = struct {
-	pArg       uintptr
-	xInit      uintptr
-	xShutdown  uintptr
-	xCreate    uintptr
-	xCachesize uintptr
-	xPagecount uintptr
-	xFetch     uintptr
-	xUnpin     uintptr
-	xRekey     uintptr
-	xTruncate  uintptr
-	xDestroy   uintptr
+	FpArg       uintptr
+	FxInit      uintptr
+	FxShutdown  uintptr
+	FxCreate    uintptr
+	FxCachesize uintptr
+	FxPagecount uintptr
+	FxFetch     uintptr
+	FxUnpin     uintptr
+	FxRekey     uintptr
+	FxTruncate  uintptr
+	FxDestroy   uintptr
 }
 
 type sqlite3_snapshot = struct {
-	hidden [48]uint8
+	Fhidden [48]uint8
 }
 
 type sqlite3_rtree_geometry = struct {
-	pContext uintptr
-	nParam   int32
-	aParam   uintptr
-	pUser    uintptr
-	xDelUser uintptr
+	FpContext uintptr
+	FnParam   int32
+	FaParam   uintptr
+	FpUser    uintptr
+	FxDelUser uintptr
 }
 
 type sqlite3_rtree_query_info = struct {
-	pContext      uintptr
-	nParam        int32
-	aParam        uintptr
-	pUser         uintptr
-	xDelUser      uintptr
-	aCoord        uintptr
-	anQueue       uintptr
-	nCoord        int32
-	iLevel        int32
-	mxLevel       int32
-	iRowid        sqlite3_int64
-	rParentScore  sqlite3_rtree_dbl
-	eParentWithin int32
-	eWithin       int32
-	rScore        sqlite3_rtree_dbl
-	apSqlParam    uintptr
+	FpContext      uintptr
+	FnParam        int32
+	FaParam        uintptr
+	FpUser         uintptr
+	FxDelUser      uintptr
+	FaCoord        uintptr
+	FanQueue       uintptr
+	FnCoord        int32
+	FiLevel        int32
+	FmxLevel       int32
+	FiRowid        sqlite3_int64
+	FrParentScore  sqlite3_rtree_dbl
+	FeParentWithin int32
+	FeWithin       int32
+	FrScore        sqlite3_rtree_dbl
+	FapSqlParam    uintptr
 }
 
 type sqlite3_rtree_dbl = float64
 
 type sqlite3_rtree_geometry1 = struct {
-	pContext uintptr
-	nParam   int32
-	aParam   uintptr
-	pUser    uintptr
-	xDelUser uintptr
+	FpContext uintptr
+	FnParam   int32
+	FaParam   uintptr
+	FpUser    uintptr
+	FxDelUser uintptr
 }
 
 type sqlite3_rtree_query_info1 = struct {
-	pContext      uintptr
-	nParam        int32
-	aParam        uintptr
-	pUser         uintptr
-	xDelUser      uintptr
-	aCoord        uintptr
-	anQueue       uintptr
-	nCoord        int32
-	iLevel        int32
-	mxLevel       int32
-	iRowid        sqlite3_int64
-	rParentScore  sqlite3_rtree_dbl
-	eParentWithin int32
-	eWithin       int32
-	rScore        sqlite3_rtree_dbl
-	apSqlParam    uintptr
+	FpContext      uintptr
+	FnParam        int32
+	FaParam        uintptr
+	FpUser         uintptr
+	FxDelUser      uintptr
+	FaCoord        uintptr
+	FanQueue       uintptr
+	FnCoord        int32
+	FiLevel        int32
+	FmxLevel       int32
+	FiRowid        sqlite3_int64
+	FrParentScore  sqlite3_rtree_dbl
+	FeParentWithin int32
+	FeWithin       int32
+	FrScore        sqlite3_rtree_dbl
+	FapSqlParam    uintptr
 }
 
 type Fts5ExtensionApi = struct {
-	iVersion           int32
-	xUserData          uintptr
-	xColumnCount       uintptr
-	xRowCount          uintptr
-	xColumnTotalSize   uintptr
-	xTokenize          uintptr
-	xPhraseCount       uintptr
-	xPhraseSize        uintptr
-	xInstCount         uintptr
-	xInst              uintptr
-	xRowid             uintptr
-	xColumnText        uintptr
-	xColumnSize        uintptr
-	xQueryPhrase       uintptr
-	xSetAuxdata        uintptr
-	xGetAuxdata        uintptr
-	xPhraseFirst       uintptr
-	xPhraseNext        uintptr
-	xPhraseFirstColumn uintptr
-	xPhraseNextColumn  uintptr
-	xQueryToken        uintptr
-	xInstToken         uintptr
+	FiVersion           int32
+	FxUserData          uintptr
+	FxColumnCount       uintptr
+	FxRowCount          uintptr
+	FxColumnTotalSize   uintptr
+	FxTokenize          uintptr
+	FxPhraseCount       uintptr
+	FxPhraseSize        uintptr
+	FxInstCount         uintptr
+	FxInst              uintptr
+	FxRowid             uintptr
+	FxColumnText        uintptr
+	FxColumnSize        uintptr
+	FxQueryPhrase       uintptr
+	FxSetAuxdata        uintptr
+	FxGetAuxdata        uintptr
+	FxPhraseFirst       uintptr
+	FxPhraseNext        uintptr
+	FxPhraseFirstColumn uintptr
+	FxPhraseNextColumn  uintptr
+	FxQueryToken        uintptr
+	FxInstToken         uintptr
 }
 
 type Fts5PhraseIter = struct {
-	a uintptr
-	b uintptr
+	Fa uintptr
+	Fb uintptr
 }
 
 type fts5_extension_function = uintptr
 
 type Fts5PhraseIter1 = struct {
-	a uintptr
-	b uintptr
+	Fa uintptr
+	Fb uintptr
 }
 
 type Fts5ExtensionApi1 = struct {
-	iVersion           int32
-	xUserData          uintptr
-	xColumnCount       uintptr
-	xRowCount          uintptr
-	xColumnTotalSize   uintptr
-	xTokenize          uintptr
-	xPhraseCount       uintptr
-	xPhraseSize        uintptr
-	xInstCount         uintptr
-	xInst              uintptr
-	xRowid             uintptr
-	xColumnText        uintptr
-	xColumnSize        uintptr
-	xQueryPhrase       uintptr
-	xSetAuxdata        uintptr
-	xGetAuxdata        uintptr
-	xPhraseFirst       uintptr
-	xPhraseNext        uintptr
-	xPhraseFirstColumn uintptr
-	xPhraseNextColumn  uintptr
-	xQueryToken        uintptr
-	xInstToken         uintptr
+	FiVersion           int32
+	FxUserData          uintptr
+	FxColumnCount       uintptr
+	FxRowCount          uintptr
+	FxColumnTotalSize   uintptr
+	FxTokenize          uintptr
+	FxPhraseCount       uintptr
+	FxPhraseSize        uintptr
+	FxInstCount         uintptr
+	FxInst              uintptr
+	FxRowid             uintptr
+	FxColumnText        uintptr
+	FxColumnSize        uintptr
+	FxQueryPhrase       uintptr
+	FxSetAuxdata        uintptr
+	FxGetAuxdata        uintptr
+	FxPhraseFirst       uintptr
+	FxPhraseNext        uintptr
+	FxPhraseFirstColumn uintptr
+	FxPhraseNextColumn  uintptr
+	FxQueryToken        uintptr
+	FxInstToken         uintptr
 }
 
 type fts5_tokenizer = struct {
-	xCreate   uintptr
-	xDelete   uintptr
-	xTokenize uintptr
+	FxCreate   uintptr
+	FxDelete   uintptr
+	FxTokenize uintptr
 }
 
 type fts5_tokenizer1 = struct {
-	xCreate   uintptr
-	xDelete   uintptr
-	xTokenize uintptr
+	FxCreate   uintptr
+	FxDelete   uintptr
+	FxTokenize uintptr
 }
 
 type fts5_api = struct {
-	iVersion         int32
-	xCreateTokenizer uintptr
-	xFindTokenizer   uintptr
-	xCreateFunction  uintptr
+	FiVersion         int32
+	FxCreateTokenizer uintptr
+	FxFindTokenizer   uintptr
+	FxCreateFunction  uintptr
 }
 
 type fts5_api1 = struct {
-	iVersion         int32
-	xCreateTokenizer uintptr
-	xFindTokenizer   uintptr
-	xCreateFunction  uintptr
+	FiVersion         int32
+	FxCreateTokenizer uintptr
+	FxFindTokenizer   uintptr
+	FxCreateFunction  uintptr
 }
 
 type size_t = uint64
@@ -9963,29 +9963,29 @@ type __time64_t = int64
 type time_t = int64
 
 type threadlocaleinfostruct = struct {
-	refcount      int32
-	lc_codepage   uint32
-	lc_collate_cp uint32
-	lc_handle     [6]uint32
-	lc_id         [6]LC_ID
-	lc_category   [6]struct {
-		locale    uintptr
-		wlocale   uintptr
-		refcount  uintptr
-		wrefcount uintptr
+	Frefcount      int32
+	Flc_codepage   uint32
+	Flc_collate_cp uint32
+	Flc_handle     [6]uint32
+	Flc_id         [6]LC_ID
+	Flc_category   [6]struct {
+		Flocale    uintptr
+		Fwlocale   uintptr
+		Frefcount  uintptr
+		Fwrefcount uintptr
 	}
-	lc_clike            int32
-	mb_cur_max          int32
-	lconv_intl_refcount uintptr
-	lconv_num_refcount  uintptr
-	lconv_mon_refcount  uintptr
-	lconv               uintptr
-	ctype1_refcount     uintptr
-	ctype1              uintptr
-	pctype              uintptr
-	pclmap              uintptr
-	pcumap              uintptr
-	lc_time_curr        uintptr
+	Flc_clike            int32
+	Fmb_cur_max          int32
+	Flconv_intl_refcount uintptr
+	Flconv_num_refcount  uintptr
+	Flconv_mon_refcount  uintptr
+	Flconv               uintptr
+	Fctype1_refcount     uintptr
+	Fctype1              uintptr
+	Fpctype              uintptr
+	Fpclmap              uintptr
+	Fpcumap              uintptr
+	Flc_time_curr        uintptr
 }
 
 type pthreadlocinfo = uintptr
@@ -9993,8 +9993,8 @@ type pthreadlocinfo = uintptr
 type pthreadmbcinfo = uintptr
 
 type _locale_tstruct = struct {
-	locinfo pthreadlocinfo
-	mbcinfo pthreadmbcinfo
+	Flocinfo pthreadlocinfo
+	Fmbcinfo pthreadmbcinfo
 }
 
 type localeinfo_struct = _locale_tstruct
@@ -10002,9 +10002,9 @@ type localeinfo_struct = _locale_tstruct
 type _locale_t = uintptr
 
 type LC_ID = struct {
-	wLanguage uint16
-	wCountry  uint16
-	wCodePage uint16
+	FwLanguage uint16
+	FwCountry  uint16
+	FwCodePage uint16
 }
 
 type tagLC_ID = LC_ID
@@ -10012,51 +10012,51 @@ type tagLC_ID = LC_ID
 type LPLC_ID = uintptr
 
 type threadlocinfo = struct {
-	refcount      int32
-	lc_codepage   uint32
-	lc_collate_cp uint32
-	lc_handle     [6]uint32
-	lc_id         [6]LC_ID
-	lc_category   [6]struct {
-		locale    uintptr
-		wlocale   uintptr
-		refcount  uintptr
-		wrefcount uintptr
+	Frefcount      int32
+	Flc_codepage   uint32
+	Flc_collate_cp uint32
+	Flc_handle     [6]uint32
+	Flc_id         [6]LC_ID
+	Flc_category   [6]struct {
+		Flocale    uintptr
+		Fwlocale   uintptr
+		Frefcount  uintptr
+		Fwrefcount uintptr
 	}
-	lc_clike            int32
-	mb_cur_max          int32
-	lconv_intl_refcount uintptr
-	lconv_num_refcount  uintptr
-	lconv_mon_refcount  uintptr
-	lconv               uintptr
-	ctype1_refcount     uintptr
-	ctype1              uintptr
-	pctype              uintptr
-	pclmap              uintptr
-	pcumap              uintptr
-	lc_time_curr        uintptr
+	Flc_clike            int32
+	Fmb_cur_max          int32
+	Flconv_intl_refcount uintptr
+	Flconv_num_refcount  uintptr
+	Flconv_mon_refcount  uintptr
+	Flconv               uintptr
+	Fctype1_refcount     uintptr
+	Fctype1              uintptr
+	Fpctype              uintptr
+	Fpclmap              uintptr
+	Fpcumap              uintptr
+	Flc_time_curr        uintptr
 }
 
 type _iobuf = struct {
-	_ptr      uintptr
-	_cnt      int32
-	_base     uintptr
-	_flag     int32
-	_file     int32
-	_charbuf  int32
-	_bufsiz   int32
-	_tmpfname uintptr
+	F_ptr      uintptr
+	F_cnt      int32
+	F_base     uintptr
+	F_flag     int32
+	F_file     int32
+	F_charbuf  int32
+	F_bufsiz   int32
+	F_tmpfname uintptr
 }
 
 type FILE = struct {
-	_ptr      uintptr
-	_cnt      int32
-	_base     uintptr
-	_flag     int32
-	_file     int32
-	_charbuf  int32
-	_bufsiz   int32
-	_tmpfname uintptr
+	F_ptr      uintptr
+	F_cnt      int32
+	F_base     uintptr
+	F_flag     int32
+	F_file     int32
+	F_charbuf  int32
+	F_bufsiz   int32
+	F_tmpfname uintptr
 }
 
 type _off_t = int32
@@ -10102,111 +10102,111 @@ func swprintf(tls *libc.TLS, __stream uintptr, __count size_t, __format uintptr,
 }
 
 type _EXCEPTION_POINTERS = struct {
-	ExceptionRecord PEXCEPTION_RECORD
-	ContextRecord   PCONTEXT
+	FExceptionRecord PEXCEPTION_RECORD
+	FContextRecord   PCONTEXT
 }
 
 type _EXCEPTION_RECORD = struct {
-	ExceptionCode        DWORD
-	ExceptionFlags       DWORD
-	ExceptionRecord      uintptr
-	ExceptionAddress     PVOID
-	NumberParameters     DWORD
-	ExceptionInformation [15]ULONG_PTR
+	FExceptionCode        DWORD
+	FExceptionFlags       DWORD
+	FExceptionRecord      uintptr
+	FExceptionAddress     PVOID
+	FNumberParameters     DWORD
+	FExceptionInformation [15]ULONG_PTR
 }
 
 type _CONTEXT = struct {
-	P1Home       DWORD64
-	P2Home       DWORD64
-	P3Home       DWORD64
-	P4Home       DWORD64
-	P5Home       DWORD64
-	P6Home       DWORD64
-	ContextFlags DWORD
-	MxCsr        DWORD
-	SegCs        WORD
-	SegDs        WORD
-	SegEs        WORD
-	SegFs        WORD
-	SegGs        WORD
-	SegSs        WORD
-	EFlags       DWORD
-	Dr0          DWORD64
-	Dr1          DWORD64
-	Dr2          DWORD64
-	Dr3          DWORD64
-	Dr6          DWORD64
-	Dr7          DWORD64
-	Rax          DWORD64
-	Rcx          DWORD64
-	Rdx          DWORD64
-	Rbx          DWORD64
-	Rsp          DWORD64
-	Rbp          DWORD64
-	Rsi          DWORD64
-	Rdi          DWORD64
-	R8           DWORD64
-	R9           DWORD64
-	R10          DWORD64
-	R11          DWORD64
-	R12          DWORD64
-	R13          DWORD64
-	R14          DWORD64
-	R15          DWORD64
-	Rip          DWORD64
-	__ccgo38_256 struct {
-		FloatSave [0]XMM_SAVE_AREA32
-		__ccgo2_0 [0]struct {
-			Header [2]M128A
-			Legacy [8]M128A
-			Xmm0   M128A
-			Xmm1   M128A
-			Xmm2   M128A
-			Xmm3   M128A
-			Xmm4   M128A
-			Xmm5   M128A
-			Xmm6   M128A
-			Xmm7   M128A
-			Xmm8   M128A
-			Xmm9   M128A
-			Xmm10  M128A
-			Xmm11  M128A
-			Xmm12  M128A
-			Xmm13  M128A
-			Xmm14  M128A
-			Xmm15  M128A
+	FP1Home       DWORD64
+	FP2Home       DWORD64
+	FP3Home       DWORD64
+	FP4Home       DWORD64
+	FP5Home       DWORD64
+	FP6Home       DWORD64
+	FContextFlags DWORD
+	FMxCsr        DWORD
+	FSegCs        WORD
+	FSegDs        WORD
+	FSegEs        WORD
+	FSegFs        WORD
+	FSegGs        WORD
+	FSegSs        WORD
+	FEFlags       DWORD
+	FDr0          DWORD64
+	FDr1          DWORD64
+	FDr2          DWORD64
+	FDr3          DWORD64
+	FDr6          DWORD64
+	FDr7          DWORD64
+	FRax          DWORD64
+	FRcx          DWORD64
+	FRdx          DWORD64
+	FRbx          DWORD64
+	FRsp          DWORD64
+	FRbp          DWORD64
+	FRsi          DWORD64
+	FRdi          DWORD64
+	FR8           DWORD64
+	FR9           DWORD64
+	FR10          DWORD64
+	FR11          DWORD64
+	FR12          DWORD64
+	FR13          DWORD64
+	FR14          DWORD64
+	FR15          DWORD64
+	FRip          DWORD64
+	F__ccgo38_256 struct {
+		FFloatSave [0]XMM_SAVE_AREA32
+		F__ccgo2_0 [0]struct {
+			FHeader [2]M128A
+			FLegacy [8]M128A
+			FXmm0   M128A
+			FXmm1   M128A
+			FXmm2   M128A
+			FXmm3   M128A
+			FXmm4   M128A
+			FXmm5   M128A
+			FXmm6   M128A
+			FXmm7   M128A
+			FXmm8   M128A
+			FXmm9   M128A
+			FXmm10  M128A
+			FXmm11  M128A
+			FXmm12  M128A
+			FXmm13  M128A
+			FXmm14  M128A
+			FXmm15  M128A
 		}
-		FltSave XMM_SAVE_AREA32
+		FFltSave XMM_SAVE_AREA32
 	}
-	VectorRegister       [26]M128A
-	VectorControl        DWORD64
-	DebugControl         DWORD64
-	LastBranchToRip      DWORD64
-	LastBranchFromRip    DWORD64
-	LastExceptionToRip   DWORD64
-	LastExceptionFromRip DWORD64
+	FVectorRegister       [26]M128A
+	FVectorControl        DWORD64
+	FDebugControl         DWORD64
+	FLastBranchToRip      DWORD64
+	FLastBranchFromRip    DWORD64
+	FLastExceptionToRip   DWORD64
+	FLastExceptionFromRip DWORD64
 }
 
 type _DISPATCHER_CONTEXT = struct {
-	ControlPc        ULONG64
-	ImageBase        ULONG64
-	FunctionEntry    PRUNTIME_FUNCTION
-	EstablisherFrame ULONG64
-	TargetIp         ULONG64
-	ContextRecord    PCONTEXT
-	LanguageHandler  PEXCEPTION_ROUTINE
-	HandlerData      PVOID
-	HistoryTable     PUNWIND_HISTORY_TABLE
-	ScopeIndex       ULONG
-	Fill0            ULONG
+	FControlPc        ULONG64
+	FImageBase        ULONG64
+	FFunctionEntry    PRUNTIME_FUNCTION
+	FEstablisherFrame ULONG64
+	FTargetIp         ULONG64
+	FContextRecord    PCONTEXT
+	FLanguageHandler  PEXCEPTION_ROUTINE
+	FHandlerData      PVOID
+	FHistoryTable     PUNWIND_HISTORY_TABLE
+	FScopeIndex       ULONG
+	FFill0            ULONG
 }
 
 type _PHNDLR = uintptr
 
 type _XCPT_ACTION = struct {
-	XcptNum    uint32
-	SigNum     int32
-	XcptAction _PHNDLR
+	FXcptNum    uint32
+	FSigNum     int32
+	FXcptAction _PHNDLR
 }
 
 type PEXCEPTION_HANDLER = uintptr
@@ -10550,9 +10550,9 @@ type PSHORT = uintptr
 type PLONG = uintptr
 
 type GROUP_AFFINITY = struct {
-	Mask     KAFFINITY
-	Group    WORD
-	Reserved [3]WORD
+	FMask     KAFFINITY
+	FGroup    WORD
+	FReserved [3]WORD
 }
 
 type _GROUP_AFFINITY = GROUP_AFFINITY
@@ -10587,8 +10587,8 @@ const DEFAULT_COMPARTMENT_ID = 1
 type PCOMPARTMENT_ID = uintptr
 
 type FLOAT128 = struct {
-	LowPart  int64
-	HighPart int64
+	FLowPart  int64
+	FHighPart int64
 }
 
 type _FLOAT128 = FLOAT128
@@ -10606,14 +10606,14 @@ type PULONGLONG = uintptr
 type USN = int64
 
 type LARGE_INTEGER = struct {
-	u [0]struct {
-		LowPart  DWORD
-		HighPart LONG
+	Fu [0]struct {
+		FLowPart  DWORD
+		FHighPart LONG
 	}
-	QuadPart  [0]LONGLONG
-	__ccgo0_0 struct {
-		LowPart  DWORD
-		HighPart LONG
+	FQuadPart  [0]LONGLONG
+	F__ccgo0_0 struct {
+		FLowPart  DWORD
+		FHighPart LONG
 	}
 }
 
@@ -10622,14 +10622,14 @@ type _LARGE_INTEGER = LARGE_INTEGER
 type PLARGE_INTEGER = uintptr
 
 type ULARGE_INTEGER = struct {
-	u [0]struct {
-		LowPart  DWORD
-		HighPart DWORD
+	Fu [0]struct {
+		FLowPart  DWORD
+		FHighPart DWORD
 	}
-	QuadPart  [0]ULONGLONG
-	__ccgo0_0 struct {
-		LowPart  DWORD
-		HighPart DWORD
+	FQuadPart  [0]ULONGLONG
+	F__ccgo0_0 struct {
+		FLowPart  DWORD
+		FHighPart DWORD
 	}
 }
 
@@ -10638,8 +10638,8 @@ type _ULARGE_INTEGER = ULARGE_INTEGER
 type PULARGE_INTEGER = uintptr
 
 type LUID = struct {
-	LowPart  DWORD
-	HighPart LONG
+	FLowPart  DWORD
+	FHighPart LONG
 }
 
 type _LUID = LUID
@@ -10655,8 +10655,8 @@ type BOOLEAN = uint8
 type PBOOLEAN = uintptr
 
 type LIST_ENTRY = struct {
-	Flink uintptr
-	Blink uintptr
+	FFlink uintptr
+	FBlink uintptr
 }
 
 type _LIST_ENTRY = LIST_ENTRY
@@ -10666,7 +10666,7 @@ type PLIST_ENTRY = uintptr
 type PRLIST_ENTRY = uintptr
 
 type SINGLE_LIST_ENTRY = struct {
-	Next uintptr
+	FNext uintptr
 }
 
 type _SINGLE_LIST_ENTRY = SINGLE_LIST_ENTRY
@@ -10674,24 +10674,24 @@ type _SINGLE_LIST_ENTRY = SINGLE_LIST_ENTRY
 type PSINGLE_LIST_ENTRY = uintptr
 
 type LIST_ENTRY32 = struct {
-	Flink DWORD
-	Blink DWORD
+	FFlink DWORD
+	FBlink DWORD
 }
 
 type PLIST_ENTRY32 = uintptr
 
 type LIST_ENTRY64 = struct {
-	Flink ULONGLONG
-	Blink ULONGLONG
+	FFlink ULONGLONG
+	FBlink ULONGLONG
 }
 
 type PLIST_ENTRY64 = uintptr
 
 type GUID = struct {
-	Data1 uint32
-	Data2 uint16
-	Data3 uint16
-	Data4 [8]uint8
+	FData1 uint32
+	FData2 uint16
+	FData3 uint16
+	FData4 [8]uint8
 }
 
 type _GUID = GUID
@@ -10701,35 +10701,35 @@ type LPGUID = uintptr
 type LPCGUID = uintptr
 
 type IID = struct {
-	Data1 uint32
-	Data2 uint16
-	Data3 uint16
-	Data4 [8]uint8
+	FData1 uint32
+	FData2 uint16
+	FData3 uint16
+	FData4 [8]uint8
 }
 
 type LPIID = uintptr
 
 type CLSID = struct {
-	Data1 uint32
-	Data2 uint16
-	Data3 uint16
-	Data4 [8]uint8
+	FData1 uint32
+	FData2 uint16
+	FData3 uint16
+	FData4 [8]uint8
 }
 
 type LPCLSID = uintptr
 
 type FMTID = struct {
-	Data1 uint32
-	Data2 uint16
-	Data3 uint16
-	Data4 [8]uint8
+	FData1 uint32
+	FData2 uint16
+	FData3 uint16
+	FData4 [8]uint8
 }
 
 type LPFMTID = uintptr
 
 type OBJECTID = struct {
-	Lineage    GUID
-	Uniquifier DWORD
+	FLineage    GUID
+	FUniquifier DWORD
 }
 
 type _OBJECTID = OBJECTID
@@ -10741,8 +10741,8 @@ type KSPIN_LOCK = uint64
 type PKSPIN_LOCK = uintptr
 
 type M128A = struct {
-	Low  ULONGLONG
-	High LONGLONG
+	FLow  ULONGLONG
+	FHigh LONGLONG
 }
 
 type _M128A = M128A
@@ -10750,22 +10750,22 @@ type _M128A = M128A
 type PM128A = uintptr
 
 type XSAVE_FORMAT = struct {
-	ControlWord    WORD
-	StatusWord     WORD
-	TagWord        BYTE
-	Reserved1      BYTE
-	ErrorOpcode    WORD
-	ErrorOffset    DWORD
-	ErrorSelector  WORD
-	Reserved2      WORD
-	DataOffset     DWORD
-	DataSelector   WORD
-	Reserved3      WORD
-	MxCsr          DWORD
-	MxCsr_Mask     DWORD
-	FloatRegisters [8]M128A
-	XmmRegisters   [16]M128A
-	Reserved4      [96]BYTE
+	FControlWord    WORD
+	FStatusWord     WORD
+	FTagWord        BYTE
+	FReserved1      BYTE
+	FErrorOpcode    WORD
+	FErrorOffset    DWORD
+	FErrorSelector  WORD
+	FReserved2      WORD
+	FDataOffset     DWORD
+	FDataSelector   WORD
+	FReserved3      WORD
+	FMxCsr          DWORD
+	FMxCsr_Mask     DWORD
+	FFloatRegisters [8]M128A
+	FXmmRegisters   [16]M128A
+	FReserved4      [96]BYTE
 }
 
 type _XSAVE_FORMAT = XSAVE_FORMAT
@@ -10773,8 +10773,8 @@ type _XSAVE_FORMAT = XSAVE_FORMAT
 type PXSAVE_FORMAT = uintptr
 
 type XSAVE_AREA_HEADER = struct {
-	Mask     DWORD64
-	Reserved [7]DWORD64
+	FMask     DWORD64
+	FReserved [7]DWORD64
 }
 
 type _XSAVE_AREA_HEADER = XSAVE_AREA_HEADER
@@ -10782,8 +10782,8 @@ type _XSAVE_AREA_HEADER = XSAVE_AREA_HEADER
 type PXSAVE_AREA_HEADER = uintptr
 
 type XSAVE_AREA = struct {
-	LegacyState XSAVE_FORMAT
-	Header      XSAVE_AREA_HEADER
+	FLegacyState XSAVE_FORMAT
+	FHeader      XSAVE_AREA_HEADER
 }
 
 type _XSAVE_AREA = XSAVE_AREA
@@ -10791,11 +10791,11 @@ type _XSAVE_AREA = XSAVE_AREA
 type PXSAVE_AREA = uintptr
 
 type XSTATE_CONTEXT = struct {
-	Mask      DWORD64
-	Length    DWORD
-	Reserved1 DWORD
-	Area      PXSAVE_AREA
-	Buffer    PVOID
+	FMask      DWORD64
+	FLength    DWORD
+	FReserved1 DWORD
+	FArea      PXSAVE_AREA
+	FBuffer    PVOID
 }
 
 type _XSTATE_CONTEXT = XSTATE_CONTEXT
@@ -10803,12 +10803,12 @@ type _XSTATE_CONTEXT = XSTATE_CONTEXT
 type PXSTATE_CONTEXT = uintptr
 
 type SCOPE_TABLE_AMD64 = struct {
-	Count       DWORD
-	ScopeRecord [1]struct {
-		BeginAddress   DWORD
-		EndAddress     DWORD
-		HandlerAddress DWORD
-		JumpTarget     DWORD
+	FCount       DWORD
+	FScopeRecord [1]struct {
+		FBeginAddress   DWORD
+		FEndAddress     DWORD
+		FHandlerAddress DWORD
+		FJumpTarget     DWORD
 	}
 }
 
@@ -10817,50 +10817,50 @@ type _SCOPE_TABLE_AMD64 = SCOPE_TABLE_AMD64
 type PSCOPE_TABLE_AMD64 = uintptr
 
 type max_align_t = struct {
-	__max_align_ll int64
-	__max_align_ld float64
+	F__max_align_ll int64
+	F__max_align_ld float64
 }
 
 type __uintr_frame = struct {
-	rip    uint64
-	rflags uint64
-	rsp    uint64
+	Frip    uint64
+	Frflags uint64
+	Frsp    uint64
 }
 
 type _onexit_t = uintptr
 
 type div_t = struct {
-	quot int32
-	rem  int32
+	Fquot int32
+	Frem  int32
 }
 
 type _div_t = div_t
 
 type ldiv_t = struct {
-	quot int32
-	rem  int32
+	Fquot int32
+	Frem  int32
 }
 
 type _ldiv_t = ldiv_t
 
 type _LDOUBLE = struct {
-	ld [10]uint8
+	Fld [10]uint8
 }
 
 type _CRT_DOUBLE = struct {
-	x float64
+	Fx float64
 }
 
 type _CRT_FLOAT = struct {
-	f float32
+	Ff float32
 }
 
 type _LONGDOUBLE = struct {
-	x float64
+	Fx float64
 }
 
 type _LDBL12 = struct {
-	ld12 [12]uint8
+	Fld12 [12]uint8
 }
 
 type _purecall_handler = uintptr
@@ -10868,14 +10868,14 @@ type _purecall_handler = uintptr
 type _invalid_parameter_handler = uintptr
 
 type lldiv_t = struct {
-	quot int64
-	rem  int64
+	Fquot int64
+	Frem  int64
 }
 
 type _HEAPINFO = struct {
-	_pentry  uintptr
-	_size    size_t
-	_useflag int32
+	F_pentry  uintptr
+	F_size    size_t
+	F_useflag int32
 }
 
 type _heapinfo = _HEAPINFO
@@ -11178,22 +11178,22 @@ type __mmask64 = uint64
 type __bfloat16 = uint16
 
 type XMM_SAVE_AREA32 = struct {
-	ControlWord    WORD
-	StatusWord     WORD
-	TagWord        BYTE
-	Reserved1      BYTE
-	ErrorOpcode    WORD
-	ErrorOffset    DWORD
-	ErrorSelector  WORD
-	Reserved2      WORD
-	DataOffset     DWORD
-	DataSelector   WORD
-	Reserved3      WORD
-	MxCsr          DWORD
-	MxCsr_Mask     DWORD
-	FloatRegisters [8]M128A
-	XmmRegisters   [16]M128A
-	Reserved4      [96]BYTE
+	FControlWord    WORD
+	FStatusWord     WORD
+	FTagWord        BYTE
+	FReserved1      BYTE
+	FErrorOpcode    WORD
+	FErrorOffset    DWORD
+	FErrorSelector  WORD
+	FReserved2      WORD
+	FDataOffset     DWORD
+	FDataSelector   WORD
+	FReserved3      WORD
+	FMxCsr          DWORD
+	FMxCsr_Mask     DWORD
+	FFloatRegisters [8]M128A
+	FXmmRegisters   [16]M128A
+	FReserved4      [96]BYTE
 }
 
 type _XMM_SAVE_AREA32 = XMM_SAVE_AREA32
@@ -11201,83 +11201,83 @@ type _XMM_SAVE_AREA32 = XMM_SAVE_AREA32
 type PXMM_SAVE_AREA32 = uintptr
 
 type CONTEXT = struct {
-	P1Home       DWORD64
-	P2Home       DWORD64
-	P3Home       DWORD64
-	P4Home       DWORD64
-	P5Home       DWORD64
-	P6Home       DWORD64
-	ContextFlags DWORD
-	MxCsr        DWORD
-	SegCs        WORD
-	SegDs        WORD
-	SegEs        WORD
-	SegFs        WORD
-	SegGs        WORD
-	SegSs        WORD
-	EFlags       DWORD
-	Dr0          DWORD64
-	Dr1          DWORD64
-	Dr2          DWORD64
-	Dr3          DWORD64
-	Dr6          DWORD64
-	Dr7          DWORD64
-	Rax          DWORD64
-	Rcx          DWORD64
-	Rdx          DWORD64
-	Rbx          DWORD64
-	Rsp          DWORD64
-	Rbp          DWORD64
-	Rsi          DWORD64
-	Rdi          DWORD64
-	R8           DWORD64
-	R9           DWORD64
-	R10          DWORD64
-	R11          DWORD64
-	R12          DWORD64
-	R13          DWORD64
-	R14          DWORD64
-	R15          DWORD64
-	Rip          DWORD64
-	__ccgo38_256 struct {
-		FloatSave [0]XMM_SAVE_AREA32
-		__ccgo2_0 [0]struct {
-			Header [2]M128A
-			Legacy [8]M128A
-			Xmm0   M128A
-			Xmm1   M128A
-			Xmm2   M128A
-			Xmm3   M128A
-			Xmm4   M128A
-			Xmm5   M128A
-			Xmm6   M128A
-			Xmm7   M128A
-			Xmm8   M128A
-			Xmm9   M128A
-			Xmm10  M128A
-			Xmm11  M128A
-			Xmm12  M128A
-			Xmm13  M128A
-			Xmm14  M128A
-			Xmm15  M128A
+	FP1Home       DWORD64
+	FP2Home       DWORD64
+	FP3Home       DWORD64
+	FP4Home       DWORD64
+	FP5Home       DWORD64
+	FP6Home       DWORD64
+	FContextFlags DWORD
+	FMxCsr        DWORD
+	FSegCs        WORD
+	FSegDs        WORD
+	FSegEs        WORD
+	FSegFs        WORD
+	FSegGs        WORD
+	FSegSs        WORD
+	FEFlags       DWORD
+	FDr0          DWORD64
+	FDr1          DWORD64
+	FDr2          DWORD64
+	FDr3          DWORD64
+	FDr6          DWORD64
+	FDr7          DWORD64
+	FRax          DWORD64
+	FRcx          DWORD64
+	FRdx          DWORD64
+	FRbx          DWORD64
+	FRsp          DWORD64
+	FRbp          DWORD64
+	FRsi          DWORD64
+	FRdi          DWORD64
+	FR8           DWORD64
+	FR9           DWORD64
+	FR10          DWORD64
+	FR11          DWORD64
+	FR12          DWORD64
+	FR13          DWORD64
+	FR14          DWORD64
+	FR15          DWORD64
+	FRip          DWORD64
+	F__ccgo38_256 struct {
+		FFloatSave [0]XMM_SAVE_AREA32
+		F__ccgo2_0 [0]struct {
+			FHeader [2]M128A
+			FLegacy [8]M128A
+			FXmm0   M128A
+			FXmm1   M128A
+			FXmm2   M128A
+			FXmm3   M128A
+			FXmm4   M128A
+			FXmm5   M128A
+			FXmm6   M128A
+			FXmm7   M128A
+			FXmm8   M128A
+			FXmm9   M128A
+			FXmm10  M128A
+			FXmm11  M128A
+			FXmm12  M128A
+			FXmm13  M128A
+			FXmm14  M128A
+			FXmm15  M128A
 		}
-		FltSave XMM_SAVE_AREA32
+		FFltSave XMM_SAVE_AREA32
 	}
-	VectorRegister       [26]M128A
-	VectorControl        DWORD64
-	DebugControl         DWORD64
-	LastBranchToRip      DWORD64
-	LastBranchFromRip    DWORD64
-	LastExceptionToRip   DWORD64
-	LastExceptionFromRip DWORD64
+	FVectorRegister       [26]M128A
+	FVectorControl        DWORD64
+	FDebugControl         DWORD64
+	FLastBranchToRip      DWORD64
+	FLastBranchFromRip    DWORD64
+	FLastExceptionToRip   DWORD64
+	FLastExceptionFromRip DWORD64
 }
 
 type PCONTEXT = uintptr
 
 type RUNTIME_FUNCTION = struct {
-	BeginAddress DWORD
-	EndAddress   DWORD
-	UnwindData   DWORD
+	FBeginAddress DWORD
+	FEndAddress   DWORD
+	FUnwindData   DWORD
 }
 
 type _RUNTIME_FUNCTION = RUNTIME_FUNCTION
@@ -11289,17 +11289,17 @@ type PGET_RUNTIME_FUNCTION_CALLBACK = uintptr
 type POUT_OF_PROCESS_FUNCTION_TABLE_CALLBACK = uintptr
 
 type LDT_ENTRY = struct {
-	LimitLow WORD
-	BaseLow  WORD
-	HighWord struct {
-		Bits [0]struct {
-			__ccgo0 uint32
+	FLimitLow WORD
+	FBaseLow  WORD
+	FHighWord struct {
+		FBits [0]struct {
+			F__ccgo0 uint32
 		}
-		Bytes struct {
-			BaseMid BYTE
-			Flags1  BYTE
-			Flags2  BYTE
-			BaseHi  BYTE
+		FBytes struct {
+			FBaseMid BYTE
+			FFlags1  BYTE
+			FFlags2  BYTE
+			FBaseHi  BYTE
 		}
 	}
 }
@@ -11309,23 +11309,23 @@ type _LDT_ENTRY = LDT_ENTRY
 type PLDT_ENTRY = uintptr
 
 type EXCEPTION_RECORD = struct {
-	ExceptionCode        DWORD
-	ExceptionFlags       DWORD
-	ExceptionRecord      uintptr
-	ExceptionAddress     PVOID
-	NumberParameters     DWORD
-	ExceptionInformation [15]ULONG_PTR
+	FExceptionCode        DWORD
+	FExceptionFlags       DWORD
+	FExceptionRecord      uintptr
+	FExceptionAddress     PVOID
+	FNumberParameters     DWORD
+	FExceptionInformation [15]ULONG_PTR
 }
 
 type PEXCEPTION_RECORD = uintptr
 
 type EXCEPTION_RECORD32 = struct {
-	ExceptionCode        DWORD
-	ExceptionFlags       DWORD
-	ExceptionRecord      DWORD
-	ExceptionAddress     DWORD
-	NumberParameters     DWORD
-	ExceptionInformation [15]DWORD
+	FExceptionCode        DWORD
+	FExceptionFlags       DWORD
+	FExceptionRecord      DWORD
+	FExceptionAddress     DWORD
+	FNumberParameters     DWORD
+	FExceptionInformation [15]DWORD
 }
 
 type _EXCEPTION_RECORD32 = EXCEPTION_RECORD32
@@ -11333,13 +11333,13 @@ type _EXCEPTION_RECORD32 = EXCEPTION_RECORD32
 type PEXCEPTION_RECORD32 = uintptr
 
 type EXCEPTION_RECORD64 = struct {
-	ExceptionCode        DWORD
-	ExceptionFlags       DWORD
-	ExceptionRecord      DWORD64
-	ExceptionAddress     DWORD64
-	NumberParameters     DWORD
-	__unusedAlignment    DWORD
-	ExceptionInformation [15]DWORD64
+	FExceptionCode        DWORD
+	FExceptionFlags       DWORD
+	FExceptionRecord      DWORD64
+	FExceptionAddress     DWORD64
+	FNumberParameters     DWORD
+	F__unusedAlignment    DWORD
+	FExceptionInformation [15]DWORD64
 }
 
 type _EXCEPTION_RECORD64 = EXCEPTION_RECORD64
@@ -11347,15 +11347,15 @@ type _EXCEPTION_RECORD64 = EXCEPTION_RECORD64
 type PEXCEPTION_RECORD64 = uintptr
 
 type EXCEPTION_POINTERS = struct {
-	ExceptionRecord PEXCEPTION_RECORD
-	ContextRecord   PCONTEXT
+	FExceptionRecord PEXCEPTION_RECORD
+	FContextRecord   PCONTEXT
 }
 
 type PEXCEPTION_POINTERS = uintptr
 
 type UNWIND_HISTORY_TABLE_ENTRY = struct {
-	ImageBase     ULONG64
-	FunctionEntry PRUNTIME_FUNCTION
+	FImageBase     ULONG64
+	FFunctionEntry PRUNTIME_FUNCTION
 }
 
 type _UNWIND_HISTORY_TABLE_ENTRY = UNWIND_HISTORY_TABLE_ENTRY
@@ -11363,14 +11363,14 @@ type _UNWIND_HISTORY_TABLE_ENTRY = UNWIND_HISTORY_TABLE_ENTRY
 type PUNWIND_HISTORY_TABLE_ENTRY = uintptr
 
 type UNWIND_HISTORY_TABLE = struct {
-	Count       ULONG
-	LocalHint   BYTE
-	GlobalHint  BYTE
-	Search      BYTE
-	Once        BYTE
-	LowAddress  ULONG64
-	HighAddress ULONG64
-	Entry       [12]UNWIND_HISTORY_TABLE_ENTRY
+	FCount       ULONG
+	FLocalHint   BYTE
+	FGlobalHint  BYTE
+	FSearch      BYTE
+	FOnce        BYTE
+	FLowAddress  ULONG64
+	FHighAddress ULONG64
+	FEntry       [12]UNWIND_HISTORY_TABLE_ENTRY
 }
 
 type _UNWIND_HISTORY_TABLE = UNWIND_HISTORY_TABLE
@@ -11378,24 +11378,24 @@ type _UNWIND_HISTORY_TABLE = UNWIND_HISTORY_TABLE
 type PUNWIND_HISTORY_TABLE = uintptr
 
 type DISPATCHER_CONTEXT = struct {
-	ControlPc        ULONG64
-	ImageBase        ULONG64
-	FunctionEntry    PRUNTIME_FUNCTION
-	EstablisherFrame ULONG64
-	TargetIp         ULONG64
-	ContextRecord    PCONTEXT
-	LanguageHandler  PEXCEPTION_ROUTINE
-	HandlerData      PVOID
-	HistoryTable     PUNWIND_HISTORY_TABLE
-	ScopeIndex       ULONG
-	Fill0            ULONG
+	FControlPc        ULONG64
+	FImageBase        ULONG64
+	FFunctionEntry    PRUNTIME_FUNCTION
+	FEstablisherFrame ULONG64
+	FTargetIp         ULONG64
+	FContextRecord    PCONTEXT
+	FLanguageHandler  PEXCEPTION_ROUTINE
+	FHandlerData      PVOID
+	FHistoryTable     PUNWIND_HISTORY_TABLE
+	FScopeIndex       ULONG
+	FFill0            ULONG
 }
 
 type PDISPATCHER_CONTEXT = uintptr
 
 type KNONVOLATILE_CONTEXT_POINTERS = struct {
-	FloatingContext [16]PM128A
-	IntegerContext  [16]PULONG64
+	FFloatingContext [16]PM128A
+	FIntegerContext  [16]PULONG64
 }
 
 type _KNONVOLATILE_CONTEXT_POINTERS = KNONVOLATILE_CONTEXT_POINTERS
@@ -11415,10 +11415,10 @@ type ACCESS_MASK = uint32
 type PACCESS_MASK = uintptr
 
 type GENERIC_MAPPING = struct {
-	GenericRead    ACCESS_MASK
-	GenericWrite   ACCESS_MASK
-	GenericExecute ACCESS_MASK
-	GenericAll     ACCESS_MASK
+	FGenericRead    ACCESS_MASK
+	FGenericWrite   ACCESS_MASK
+	FGenericExecute ACCESS_MASK
+	FGenericAll     ACCESS_MASK
 }
 
 type _GENERIC_MAPPING = GENERIC_MAPPING
@@ -11426,8 +11426,8 @@ type _GENERIC_MAPPING = GENERIC_MAPPING
 type PGENERIC_MAPPING = uintptr
 
 type LUID_AND_ATTRIBUTES = struct {
-	Luid       LUID
-	Attributes DWORD
+	FLuid       LUID
+	FAttributes DWORD
 }
 
 type _LUID_AND_ATTRIBUTES = LUID_AND_ATTRIBUTES
@@ -11439,7 +11439,7 @@ type LUID_AND_ATTRIBUTES_ARRAY = [1]LUID_AND_ATTRIBUTES
 type PLUID_AND_ATTRIBUTES_ARRAY = uintptr
 
 type SID_IDENTIFIER_AUTHORITY = struct {
-	Value [6]BYTE
+	FValue [6]BYTE
 }
 
 type _SID_IDENTIFIER_AUTHORITY = SID_IDENTIFIER_AUTHORITY
@@ -11447,10 +11447,10 @@ type _SID_IDENTIFIER_AUTHORITY = SID_IDENTIFIER_AUTHORITY
 type PSID_IDENTIFIER_AUTHORITY = uintptr
 
 type SID = struct {
-	Revision            BYTE
-	SubAuthorityCount   BYTE
-	IdentifierAuthority SID_IDENTIFIER_AUTHORITY
-	SubAuthority        [1]DWORD
+	FRevision            BYTE
+	FSubAuthorityCount   BYTE
+	FIdentifierAuthority SID_IDENTIFIER_AUTHORITY
+	FSubAuthority        [1]DWORD
 }
 
 type _SID = SID
@@ -11476,8 +11476,8 @@ const SidTypeLogonSession = 11
 type PSID_NAME_USE = uintptr
 
 type SID_AND_ATTRIBUTES = struct {
-	Sid        PSID
-	Attributes DWORD
+	FSid        PSID
+	FAttributes DWORD
 }
 
 type _SID_AND_ATTRIBUTES = SID_AND_ATTRIBUTES
@@ -11493,9 +11493,9 @@ type SID_HASH_ENTRY = uint64
 type PSID_HASH_ENTRY = uintptr
 
 type SID_AND_ATTRIBUTES_HASH = struct {
-	SidCount DWORD
-	SidAttr  PSID_AND_ATTRIBUTES
-	Hash     [32]SID_HASH_ENTRY
+	FSidCount DWORD
+	FSidAttr  PSID_AND_ATTRIBUTES
+	FHash     [32]SID_HASH_ENTRY
 }
 
 type _SID_AND_ATTRIBUTES_HASH = SID_AND_ATTRIBUTES_HASH
@@ -11624,11 +11624,11 @@ const WinAuthenticationKeyPropertyMFASid = 116
 const WinAuthenticationKeyPropertyAttestationSid = 117
 
 type ACL = struct {
-	AclRevision BYTE
-	Sbz1        BYTE
-	AclSize     WORD
-	AceCount    WORD
-	Sbz2        WORD
+	FAclRevision BYTE
+	FSbz1        BYTE
+	FAclSize     WORD
+	FAceCount    WORD
+	FSbz2        WORD
 }
 
 type _ACL = ACL
@@ -11636,9 +11636,9 @@ type _ACL = ACL
 type PACL = uintptr
 
 type ACE_HEADER = struct {
-	AceType  BYTE
-	AceFlags BYTE
-	AceSize  WORD
+	FAceType  BYTE
+	FAceFlags BYTE
+	FAceSize  WORD
 }
 
 type _ACE_HEADER = ACE_HEADER
@@ -11646,9 +11646,9 @@ type _ACE_HEADER = ACE_HEADER
 type PACE_HEADER = uintptr
 
 type ACCESS_ALLOWED_ACE = struct {
-	Header   ACE_HEADER
-	Mask     ACCESS_MASK
-	SidStart DWORD
+	FHeader   ACE_HEADER
+	FMask     ACCESS_MASK
+	FSidStart DWORD
 }
 
 type _ACCESS_ALLOWED_ACE = ACCESS_ALLOWED_ACE
@@ -11656,9 +11656,9 @@ type _ACCESS_ALLOWED_ACE = ACCESS_ALLOWED_ACE
 type PACCESS_ALLOWED_ACE = uintptr
 
 type ACCESS_DENIED_ACE = struct {
-	Header   ACE_HEADER
-	Mask     ACCESS_MASK
-	SidStart DWORD
+	FHeader   ACE_HEADER
+	FMask     ACCESS_MASK
+	FSidStart DWORD
 }
 
 type _ACCESS_DENIED_ACE = ACCESS_DENIED_ACE
@@ -11666,9 +11666,9 @@ type _ACCESS_DENIED_ACE = ACCESS_DENIED_ACE
 type PACCESS_DENIED_ACE = uintptr
 
 type SYSTEM_AUDIT_ACE = struct {
-	Header   ACE_HEADER
-	Mask     ACCESS_MASK
-	SidStart DWORD
+	FHeader   ACE_HEADER
+	FMask     ACCESS_MASK
+	FSidStart DWORD
 }
 
 type _SYSTEM_AUDIT_ACE = SYSTEM_AUDIT_ACE
@@ -11676,9 +11676,9 @@ type _SYSTEM_AUDIT_ACE = SYSTEM_AUDIT_ACE
 type PSYSTEM_AUDIT_ACE = uintptr
 
 type SYSTEM_ALARM_ACE = struct {
-	Header   ACE_HEADER
-	Mask     ACCESS_MASK
-	SidStart DWORD
+	FHeader   ACE_HEADER
+	FMask     ACCESS_MASK
+	FSidStart DWORD
 }
 
 type _SYSTEM_ALARM_ACE = SYSTEM_ALARM_ACE
@@ -11686,9 +11686,9 @@ type _SYSTEM_ALARM_ACE = SYSTEM_ALARM_ACE
 type PSYSTEM_ALARM_ACE = uintptr
 
 type SYSTEM_RESOURCE_ATTRIBUTE_ACE = struct {
-	Header   ACE_HEADER
-	Mask     ACCESS_MASK
-	SidStart DWORD
+	FHeader   ACE_HEADER
+	FMask     ACCESS_MASK
+	FSidStart DWORD
 }
 
 type _SYSTEM_RESOURCE_ATTRIBUTE_ACE = SYSTEM_RESOURCE_ATTRIBUTE_ACE
@@ -11696,9 +11696,9 @@ type _SYSTEM_RESOURCE_ATTRIBUTE_ACE = SYSTEM_RESOURCE_ATTRIBUTE_ACE
 type PSYSTEM_RESOURCE_ATTRIBUTE_ACE = uintptr
 
 type SYSTEM_SCOPED_POLICY_ID_ACE = struct {
-	Header   ACE_HEADER
-	Mask     ACCESS_MASK
-	SidStart DWORD
+	FHeader   ACE_HEADER
+	FMask     ACCESS_MASK
+	FSidStart DWORD
 }
 
 type _SYSTEM_SCOPED_POLICY_ID_ACE = SYSTEM_SCOPED_POLICY_ID_ACE
@@ -11706,9 +11706,9 @@ type _SYSTEM_SCOPED_POLICY_ID_ACE = SYSTEM_SCOPED_POLICY_ID_ACE
 type PSYSTEM_SCOPED_POLICY_ID_ACE = uintptr
 
 type SYSTEM_MANDATORY_LABEL_ACE = struct {
-	Header   ACE_HEADER
-	Mask     ACCESS_MASK
-	SidStart DWORD
+	FHeader   ACE_HEADER
+	FMask     ACCESS_MASK
+	FSidStart DWORD
 }
 
 type _SYSTEM_MANDATORY_LABEL_ACE = SYSTEM_MANDATORY_LABEL_ACE
@@ -11716,12 +11716,12 @@ type _SYSTEM_MANDATORY_LABEL_ACE = SYSTEM_MANDATORY_LABEL_ACE
 type PSYSTEM_MANDATORY_LABEL_ACE = uintptr
 
 type ACCESS_ALLOWED_OBJECT_ACE = struct {
-	Header              ACE_HEADER
-	Mask                ACCESS_MASK
-	Flags               DWORD
-	ObjectType          GUID
-	InheritedObjectType GUID
-	SidStart            DWORD
+	FHeader              ACE_HEADER
+	FMask                ACCESS_MASK
+	FFlags               DWORD
+	FObjectType          GUID
+	FInheritedObjectType GUID
+	FSidStart            DWORD
 }
 
 type _ACCESS_ALLOWED_OBJECT_ACE = ACCESS_ALLOWED_OBJECT_ACE
@@ -11729,12 +11729,12 @@ type _ACCESS_ALLOWED_OBJECT_ACE = ACCESS_ALLOWED_OBJECT_ACE
 type PACCESS_ALLOWED_OBJECT_ACE = uintptr
 
 type ACCESS_DENIED_OBJECT_ACE = struct {
-	Header              ACE_HEADER
-	Mask                ACCESS_MASK
-	Flags               DWORD
-	ObjectType          GUID
-	InheritedObjectType GUID
-	SidStart            DWORD
+	FHeader              ACE_HEADER
+	FMask                ACCESS_MASK
+	FFlags               DWORD
+	FObjectType          GUID
+	FInheritedObjectType GUID
+	FSidStart            DWORD
 }
 
 type _ACCESS_DENIED_OBJECT_ACE = ACCESS_DENIED_OBJECT_ACE
@@ -11742,12 +11742,12 @@ type _ACCESS_DENIED_OBJECT_ACE = ACCESS_DENIED_OBJECT_ACE
 type PACCESS_DENIED_OBJECT_ACE = uintptr
 
 type SYSTEM_AUDIT_OBJECT_ACE = struct {
-	Header              ACE_HEADER
-	Mask                ACCESS_MASK
-	Flags               DWORD
-	ObjectType          GUID
-	InheritedObjectType GUID
-	SidStart            DWORD
+	FHeader              ACE_HEADER
+	FMask                ACCESS_MASK
+	FFlags               DWORD
+	FObjectType          GUID
+	FInheritedObjectType GUID
+	FSidStart            DWORD
 }
 
 type _SYSTEM_AUDIT_OBJECT_ACE = SYSTEM_AUDIT_OBJECT_ACE
@@ -11755,12 +11755,12 @@ type _SYSTEM_AUDIT_OBJECT_ACE = SYSTEM_AUDIT_OBJECT_ACE
 type PSYSTEM_AUDIT_OBJECT_ACE = uintptr
 
 type SYSTEM_ALARM_OBJECT_ACE = struct {
-	Header              ACE_HEADER
-	Mask                ACCESS_MASK
-	Flags               DWORD
-	ObjectType          GUID
-	InheritedObjectType GUID
-	SidStart            DWORD
+	FHeader              ACE_HEADER
+	FMask                ACCESS_MASK
+	FFlags               DWORD
+	FObjectType          GUID
+	FInheritedObjectType GUID
+	FSidStart            DWORD
 }
 
 type _SYSTEM_ALARM_OBJECT_ACE = SYSTEM_ALARM_OBJECT_ACE
@@ -11768,9 +11768,9 @@ type _SYSTEM_ALARM_OBJECT_ACE = SYSTEM_ALARM_OBJECT_ACE
 type PSYSTEM_ALARM_OBJECT_ACE = uintptr
 
 type ACCESS_ALLOWED_CALLBACK_ACE = struct {
-	Header   ACE_HEADER
-	Mask     ACCESS_MASK
-	SidStart DWORD
+	FHeader   ACE_HEADER
+	FMask     ACCESS_MASK
+	FSidStart DWORD
 }
 
 type _ACCESS_ALLOWED_CALLBACK_ACE = ACCESS_ALLOWED_CALLBACK_ACE
@@ -11778,9 +11778,9 @@ type _ACCESS_ALLOWED_CALLBACK_ACE = ACCESS_ALLOWED_CALLBACK_ACE
 type PACCESS_ALLOWED_CALLBACK_ACE = uintptr
 
 type ACCESS_DENIED_CALLBACK_ACE = struct {
-	Header   ACE_HEADER
-	Mask     ACCESS_MASK
-	SidStart DWORD
+	FHeader   ACE_HEADER
+	FMask     ACCESS_MASK
+	FSidStart DWORD
 }
 
 type _ACCESS_DENIED_CALLBACK_ACE = ACCESS_DENIED_CALLBACK_ACE
@@ -11788,9 +11788,9 @@ type _ACCESS_DENIED_CALLBACK_ACE = ACCESS_DENIED_CALLBACK_ACE
 type PACCESS_DENIED_CALLBACK_ACE = uintptr
 
 type SYSTEM_AUDIT_CALLBACK_ACE = struct {
-	Header   ACE_HEADER
-	Mask     ACCESS_MASK
-	SidStart DWORD
+	FHeader   ACE_HEADER
+	FMask     ACCESS_MASK
+	FSidStart DWORD
 }
 
 type _SYSTEM_AUDIT_CALLBACK_ACE = SYSTEM_AUDIT_CALLBACK_ACE
@@ -11798,9 +11798,9 @@ type _SYSTEM_AUDIT_CALLBACK_ACE = SYSTEM_AUDIT_CALLBACK_ACE
 type PSYSTEM_AUDIT_CALLBACK_ACE = uintptr
 
 type SYSTEM_ALARM_CALLBACK_ACE = struct {
-	Header   ACE_HEADER
-	Mask     ACCESS_MASK
-	SidStart DWORD
+	FHeader   ACE_HEADER
+	FMask     ACCESS_MASK
+	FSidStart DWORD
 }
 
 type _SYSTEM_ALARM_CALLBACK_ACE = SYSTEM_ALARM_CALLBACK_ACE
@@ -11808,12 +11808,12 @@ type _SYSTEM_ALARM_CALLBACK_ACE = SYSTEM_ALARM_CALLBACK_ACE
 type PSYSTEM_ALARM_CALLBACK_ACE = uintptr
 
 type ACCESS_ALLOWED_CALLBACK_OBJECT_ACE = struct {
-	Header              ACE_HEADER
-	Mask                ACCESS_MASK
-	Flags               DWORD
-	ObjectType          GUID
-	InheritedObjectType GUID
-	SidStart            DWORD
+	FHeader              ACE_HEADER
+	FMask                ACCESS_MASK
+	FFlags               DWORD
+	FObjectType          GUID
+	FInheritedObjectType GUID
+	FSidStart            DWORD
 }
 
 type _ACCESS_ALLOWED_CALLBACK_OBJECT_ACE = ACCESS_ALLOWED_CALLBACK_OBJECT_ACE
@@ -11821,12 +11821,12 @@ type _ACCESS_ALLOWED_CALLBACK_OBJECT_ACE = ACCESS_ALLOWED_CALLBACK_OBJECT_ACE
 type PACCESS_ALLOWED_CALLBACK_OBJECT_ACE = uintptr
 
 type ACCESS_DENIED_CALLBACK_OBJECT_ACE = struct {
-	Header              ACE_HEADER
-	Mask                ACCESS_MASK
-	Flags               DWORD
-	ObjectType          GUID
-	InheritedObjectType GUID
-	SidStart            DWORD
+	FHeader              ACE_HEADER
+	FMask                ACCESS_MASK
+	FFlags               DWORD
+	FObjectType          GUID
+	FInheritedObjectType GUID
+	FSidStart            DWORD
 }
 
 type _ACCESS_DENIED_CALLBACK_OBJECT_ACE = ACCESS_DENIED_CALLBACK_OBJECT_ACE
@@ -11834,12 +11834,12 @@ type _ACCESS_DENIED_CALLBACK_OBJECT_ACE = ACCESS_DENIED_CALLBACK_OBJECT_ACE
 type PACCESS_DENIED_CALLBACK_OBJECT_ACE = uintptr
 
 type SYSTEM_AUDIT_CALLBACK_OBJECT_ACE = struct {
-	Header              ACE_HEADER
-	Mask                ACCESS_MASK
-	Flags               DWORD
-	ObjectType          GUID
-	InheritedObjectType GUID
-	SidStart            DWORD
+	FHeader              ACE_HEADER
+	FMask                ACCESS_MASK
+	FFlags               DWORD
+	FObjectType          GUID
+	FInheritedObjectType GUID
+	FSidStart            DWORD
 }
 
 type _SYSTEM_AUDIT_CALLBACK_OBJECT_ACE = SYSTEM_AUDIT_CALLBACK_OBJECT_ACE
@@ -11847,12 +11847,12 @@ type _SYSTEM_AUDIT_CALLBACK_OBJECT_ACE = SYSTEM_AUDIT_CALLBACK_OBJECT_ACE
 type PSYSTEM_AUDIT_CALLBACK_OBJECT_ACE = uintptr
 
 type SYSTEM_ALARM_CALLBACK_OBJECT_ACE = struct {
-	Header              ACE_HEADER
-	Mask                ACCESS_MASK
-	Flags               DWORD
-	ObjectType          GUID
-	InheritedObjectType GUID
-	SidStart            DWORD
+	FHeader              ACE_HEADER
+	FMask                ACCESS_MASK
+	FFlags               DWORD
+	FObjectType          GUID
+	FInheritedObjectType GUID
+	FSidStart            DWORD
 }
 
 type _SYSTEM_ALARM_CALLBACK_OBJECT_ACE = SYSTEM_ALARM_CALLBACK_OBJECT_ACE
@@ -11867,7 +11867,7 @@ const AclRevisionInformation = 1
 const AclSizeInformation = 2
 
 type ACL_REVISION_INFORMATION = struct {
-	AclRevision DWORD
+	FAclRevision DWORD
 }
 
 type _ACL_REVISION_INFORMATION = ACL_REVISION_INFORMATION
@@ -11875,9 +11875,9 @@ type _ACL_REVISION_INFORMATION = ACL_REVISION_INFORMATION
 type PACL_REVISION_INFORMATION = uintptr
 
 type ACL_SIZE_INFORMATION = struct {
-	AceCount      DWORD
-	AclBytesInUse DWORD
-	AclBytesFree  DWORD
+	FAceCount      DWORD
+	FAclBytesInUse DWORD
+	FAclBytesFree  DWORD
 }
 
 type _ACL_SIZE_INFORMATION = ACL_SIZE_INFORMATION
@@ -11889,13 +11889,13 @@ type SECURITY_DESCRIPTOR_CONTROL = uint16
 type PSECURITY_DESCRIPTOR_CONTROL = uintptr
 
 type SECURITY_DESCRIPTOR_RELATIVE = struct {
-	Revision BYTE
-	Sbz1     BYTE
-	Control  SECURITY_DESCRIPTOR_CONTROL
-	Owner    DWORD
-	Group    DWORD
-	Sacl     DWORD
-	Dacl     DWORD
+	FRevision BYTE
+	FSbz1     BYTE
+	FControl  SECURITY_DESCRIPTOR_CONTROL
+	FOwner    DWORD
+	FGroup    DWORD
+	FSacl     DWORD
+	FDacl     DWORD
 }
 
 type _SECURITY_DESCRIPTOR_RELATIVE = SECURITY_DESCRIPTOR_RELATIVE
@@ -11903,13 +11903,13 @@ type _SECURITY_DESCRIPTOR_RELATIVE = SECURITY_DESCRIPTOR_RELATIVE
 type PISECURITY_DESCRIPTOR_RELATIVE = uintptr
 
 type SECURITY_DESCRIPTOR = struct {
-	Revision BYTE
-	Sbz1     BYTE
-	Control  SECURITY_DESCRIPTOR_CONTROL
-	Owner    PSID
-	Group    PSID
-	Sacl     PACL
-	Dacl     PACL
+	FRevision BYTE
+	FSbz1     BYTE
+	FControl  SECURITY_DESCRIPTOR_CONTROL
+	FOwner    PSID
+	FGroup    PSID
+	FSacl     PACL
+	FDacl     PACL
 }
 
 type _SECURITY_DESCRIPTOR = SECURITY_DESCRIPTOR
@@ -11917,9 +11917,9 @@ type _SECURITY_DESCRIPTOR = SECURITY_DESCRIPTOR
 type PISECURITY_DESCRIPTOR = uintptr
 
 type OBJECT_TYPE_LIST = struct {
-	Level      WORD
-	Sbz        WORD
-	ObjectType uintptr
+	FLevel      WORD
+	FSbz        WORD
+	FObjectType uintptr
 }
 
 type _OBJECT_TYPE_LIST = OBJECT_TYPE_LIST
@@ -11936,9 +11936,9 @@ const AuditEventDirectoryServiceAccess = 1
 type PAUDIT_EVENT_TYPE = uintptr
 
 type PRIVILEGE_SET = struct {
-	PrivilegeCount DWORD
-	Control        DWORD
-	Privilege      [1]LUID_AND_ATTRIBUTES
+	FPrivilegeCount DWORD
+	FControl        DWORD
+	FPrivilege      [1]LUID_AND_ATTRIBUTES
 }
 
 type _PRIVILEGE_SET = PRIVILEGE_SET
@@ -11969,7 +11969,7 @@ const AccessReasonNoGrant = 8388608
 type ACCESS_REASON = uint32
 
 type ACCESS_REASONS = struct {
-	Data [32]ACCESS_REASON
+	FData [32]ACCESS_REASON
 }
 
 type _ACCESS_REASONS = ACCESS_REASONS
@@ -11977,9 +11977,9 @@ type _ACCESS_REASONS = ACCESS_REASONS
 type PACCESS_REASONS = uintptr
 
 type SE_SECURITY_DESCRIPTOR = struct {
-	Size               DWORD
-	Flags              DWORD
-	SecurityDescriptor PSECURITY_DESCRIPTOR
+	FSize               DWORD
+	FFlags              DWORD
+	FSecurityDescriptor PSECURITY_DESCRIPTOR
 }
 
 type _SE_SECURITY_DESCRIPTOR = SE_SECURITY_DESCRIPTOR
@@ -11987,14 +11987,14 @@ type _SE_SECURITY_DESCRIPTOR = SE_SECURITY_DESCRIPTOR
 type PSE_SECURITY_DESCRIPTOR = uintptr
 
 type SE_ACCESS_REQUEST = struct {
-	Size                    DWORD
-	SeSecurityDescriptor    PSE_SECURITY_DESCRIPTOR
-	DesiredAccess           ACCESS_MASK
-	PreviouslyGrantedAccess ACCESS_MASK
-	PrincipalSelfSid        PSID
-	GenericMapping          PGENERIC_MAPPING
-	ObjectTypeListCount     DWORD
-	ObjectTypeList          POBJECT_TYPE_LIST
+	FSize                    DWORD
+	FSeSecurityDescriptor    PSE_SECURITY_DESCRIPTOR
+	FDesiredAccess           ACCESS_MASK
+	FPreviouslyGrantedAccess ACCESS_MASK
+	FPrincipalSelfSid        PSID
+	FGenericMapping          PGENERIC_MAPPING
+	FObjectTypeListCount     DWORD
+	FObjectTypeList          POBJECT_TYPE_LIST
 }
 
 type _SE_ACCESS_REQUEST = SE_ACCESS_REQUEST
@@ -12002,12 +12002,12 @@ type _SE_ACCESS_REQUEST = SE_ACCESS_REQUEST
 type PSE_ACCESS_REQUEST = uintptr
 
 type SE_ACCESS_REPLY = struct {
-	Size            DWORD
-	ResultListCount DWORD
-	GrantedAccess   PACCESS_MASK
-	AccessStatus    PDWORD
-	AccessReason    PACCESS_REASONS
-	Privileges      uintptr
+	FSize            DWORD
+	FResultListCount DWORD
+	FGrantedAccess   PACCESS_MASK
+	FAccessStatus    PDWORD
+	FAccessReason    PACCESS_REASONS
+	FPrivileges      uintptr
 }
 
 type _SE_ACCESS_REPLY = SE_ACCESS_REPLY
@@ -12093,7 +12093,7 @@ const MaxTokenInfoClass = 41
 type PTOKEN_INFORMATION_CLASS = uintptr
 
 type TOKEN_USER = struct {
-	User SID_AND_ATTRIBUTES
+	FUser SID_AND_ATTRIBUTES
 }
 
 type _TOKEN_USER = TOKEN_USER
@@ -12101,8 +12101,8 @@ type _TOKEN_USER = TOKEN_USER
 type PTOKEN_USER = uintptr
 
 type TOKEN_GROUPS = struct {
-	GroupCount DWORD
-	Groups     [1]SID_AND_ATTRIBUTES
+	FGroupCount DWORD
+	FGroups     [1]SID_AND_ATTRIBUTES
 }
 
 type _TOKEN_GROUPS = TOKEN_GROUPS
@@ -12110,8 +12110,8 @@ type _TOKEN_GROUPS = TOKEN_GROUPS
 type PTOKEN_GROUPS = uintptr
 
 type TOKEN_PRIVILEGES = struct {
-	PrivilegeCount DWORD
-	Privileges     [1]LUID_AND_ATTRIBUTES
+	FPrivilegeCount DWORD
+	FPrivileges     [1]LUID_AND_ATTRIBUTES
 }
 
 type _TOKEN_PRIVILEGES = TOKEN_PRIVILEGES
@@ -12119,7 +12119,7 @@ type _TOKEN_PRIVILEGES = TOKEN_PRIVILEGES
 type PTOKEN_PRIVILEGES = uintptr
 
 type TOKEN_OWNER = struct {
-	Owner PSID
+	FOwner PSID
 }
 
 type _TOKEN_OWNER = TOKEN_OWNER
@@ -12127,7 +12127,7 @@ type _TOKEN_OWNER = TOKEN_OWNER
 type PTOKEN_OWNER = uintptr
 
 type TOKEN_PRIMARY_GROUP = struct {
-	PrimaryGroup PSID
+	FPrimaryGroup PSID
 }
 
 type _TOKEN_PRIMARY_GROUP = TOKEN_PRIMARY_GROUP
@@ -12135,7 +12135,7 @@ type _TOKEN_PRIMARY_GROUP = TOKEN_PRIMARY_GROUP
 type PTOKEN_PRIMARY_GROUP = uintptr
 
 type TOKEN_DEFAULT_DACL = struct {
-	DefaultDacl PACL
+	FDefaultDacl PACL
 }
 
 type _TOKEN_DEFAULT_DACL = TOKEN_DEFAULT_DACL
@@ -12143,7 +12143,7 @@ type _TOKEN_DEFAULT_DACL = TOKEN_DEFAULT_DACL
 type PTOKEN_DEFAULT_DACL = uintptr
 
 type TOKEN_USER_CLAIMS = struct {
-	UserClaims PCLAIMS_BLOB
+	FUserClaims PCLAIMS_BLOB
 }
 
 type _TOKEN_USER_CLAIMS = TOKEN_USER_CLAIMS
@@ -12151,7 +12151,7 @@ type _TOKEN_USER_CLAIMS = TOKEN_USER_CLAIMS
 type PTOKEN_USER_CLAIMS = uintptr
 
 type TOKEN_DEVICE_CLAIMS = struct {
-	DeviceClaims PCLAIMS_BLOB
+	FDeviceClaims PCLAIMS_BLOB
 }
 
 type _TOKEN_DEVICE_CLAIMS = TOKEN_DEVICE_CLAIMS
@@ -12159,16 +12159,16 @@ type _TOKEN_DEVICE_CLAIMS = TOKEN_DEVICE_CLAIMS
 type PTOKEN_DEVICE_CLAIMS = uintptr
 
 type TOKEN_GROUPS_AND_PRIVILEGES = struct {
-	SidCount            DWORD
-	SidLength           DWORD
-	Sids                PSID_AND_ATTRIBUTES
-	RestrictedSidCount  DWORD
-	RestrictedSidLength DWORD
-	RestrictedSids      PSID_AND_ATTRIBUTES
-	PrivilegeCount      DWORD
-	PrivilegeLength     DWORD
-	Privileges          PLUID_AND_ATTRIBUTES
-	AuthenticationId    LUID
+	FSidCount            DWORD
+	FSidLength           DWORD
+	FSids                PSID_AND_ATTRIBUTES
+	FRestrictedSidCount  DWORD
+	FRestrictedSidLength DWORD
+	FRestrictedSids      PSID_AND_ATTRIBUTES
+	FPrivilegeCount      DWORD
+	FPrivilegeLength     DWORD
+	FPrivileges          PLUID_AND_ATTRIBUTES
+	FAuthenticationId    LUID
 }
 
 type _TOKEN_GROUPS_AND_PRIVILEGES = TOKEN_GROUPS_AND_PRIVILEGES
@@ -12176,7 +12176,7 @@ type _TOKEN_GROUPS_AND_PRIVILEGES = TOKEN_GROUPS_AND_PRIVILEGES
 type PTOKEN_GROUPS_AND_PRIVILEGES = uintptr
 
 type TOKEN_LINKED_TOKEN = struct {
-	LinkedToken HANDLE
+	FLinkedToken HANDLE
 }
 
 type _TOKEN_LINKED_TOKEN = TOKEN_LINKED_TOKEN
@@ -12184,7 +12184,7 @@ type _TOKEN_LINKED_TOKEN = TOKEN_LINKED_TOKEN
 type PTOKEN_LINKED_TOKEN = uintptr
 
 type TOKEN_ELEVATION = struct {
-	TokenIsElevated DWORD
+	FTokenIsElevated DWORD
 }
 
 type _TOKEN_ELEVATION = TOKEN_ELEVATION
@@ -12192,7 +12192,7 @@ type _TOKEN_ELEVATION = TOKEN_ELEVATION
 type PTOKEN_ELEVATION = uintptr
 
 type TOKEN_MANDATORY_LABEL = struct {
-	Label SID_AND_ATTRIBUTES
+	FLabel SID_AND_ATTRIBUTES
 }
 
 type _TOKEN_MANDATORY_LABEL = TOKEN_MANDATORY_LABEL
@@ -12200,7 +12200,7 @@ type _TOKEN_MANDATORY_LABEL = TOKEN_MANDATORY_LABEL
 type PTOKEN_MANDATORY_LABEL = uintptr
 
 type TOKEN_MANDATORY_POLICY = struct {
-	Policy DWORD
+	FPolicy DWORD
 }
 
 type _TOKEN_MANDATORY_POLICY = TOKEN_MANDATORY_POLICY
@@ -12208,17 +12208,17 @@ type _TOKEN_MANDATORY_POLICY = TOKEN_MANDATORY_POLICY
 type PTOKEN_MANDATORY_POLICY = uintptr
 
 type TOKEN_ACCESS_INFORMATION = struct {
-	SidHash            PSID_AND_ATTRIBUTES_HASH
-	RestrictedSidHash  PSID_AND_ATTRIBUTES_HASH
-	Privileges         PTOKEN_PRIVILEGES
-	AuthenticationId   LUID
-	TokenType          TOKEN_TYPE
-	ImpersonationLevel SECURITY_IMPERSONATION_LEVEL
-	MandatoryPolicy    TOKEN_MANDATORY_POLICY
-	Flags              DWORD
-	AppContainerNumber DWORD
-	PackageSid         PSID
-	CapabilitiesHash   PSID_AND_ATTRIBUTES_HASH
+	FSidHash            PSID_AND_ATTRIBUTES_HASH
+	FRestrictedSidHash  PSID_AND_ATTRIBUTES_HASH
+	FPrivileges         PTOKEN_PRIVILEGES
+	FAuthenticationId   LUID
+	FTokenType          TOKEN_TYPE
+	FImpersonationLevel SECURITY_IMPERSONATION_LEVEL
+	FMandatoryPolicy    TOKEN_MANDATORY_POLICY
+	FFlags              DWORD
+	FAppContainerNumber DWORD
+	FPackageSid         PSID
+	FCapabilitiesHash   PSID_AND_ATTRIBUTES_HASH
 }
 
 type _TOKEN_ACCESS_INFORMATION = TOKEN_ACCESS_INFORMATION
@@ -12226,7 +12226,7 @@ type _TOKEN_ACCESS_INFORMATION = TOKEN_ACCESS_INFORMATION
 type PTOKEN_ACCESS_INFORMATION = uintptr
 
 type TOKEN_AUDIT_POLICY = struct {
-	PerUserPolicy [29]UCHAR
+	FPerUserPolicy [29]UCHAR
 }
 
 type _TOKEN_AUDIT_POLICY = TOKEN_AUDIT_POLICY
@@ -12234,8 +12234,8 @@ type _TOKEN_AUDIT_POLICY = TOKEN_AUDIT_POLICY
 type PTOKEN_AUDIT_POLICY = uintptr
 
 type TOKEN_SOURCE = struct {
-	SourceName       [8]CHAR
-	SourceIdentifier LUID
+	FSourceName       [8]CHAR
+	FSourceIdentifier LUID
 }
 
 type _TOKEN_SOURCE = TOKEN_SOURCE
@@ -12243,16 +12243,16 @@ type _TOKEN_SOURCE = TOKEN_SOURCE
 type PTOKEN_SOURCE = uintptr
 
 type TOKEN_STATISTICS = struct {
-	TokenId            LUID
-	AuthenticationId   LUID
-	ExpirationTime     LARGE_INTEGER
-	TokenType          TOKEN_TYPE
-	ImpersonationLevel SECURITY_IMPERSONATION_LEVEL
-	DynamicCharged     DWORD
-	DynamicAvailable   DWORD
-	GroupCount         DWORD
-	PrivilegeCount     DWORD
-	ModifiedId         LUID
+	FTokenId            LUID
+	FAuthenticationId   LUID
+	FExpirationTime     LARGE_INTEGER
+	FTokenType          TOKEN_TYPE
+	FImpersonationLevel SECURITY_IMPERSONATION_LEVEL
+	FDynamicCharged     DWORD
+	FDynamicAvailable   DWORD
+	FGroupCount         DWORD
+	FPrivilegeCount     DWORD
+	FModifiedId         LUID
 }
 
 type _TOKEN_STATISTICS = TOKEN_STATISTICS
@@ -12260,10 +12260,10 @@ type _TOKEN_STATISTICS = TOKEN_STATISTICS
 type PTOKEN_STATISTICS = uintptr
 
 type TOKEN_CONTROL = struct {
-	TokenId          LUID
-	AuthenticationId LUID
-	ModifiedId       LUID
-	TokenSource      TOKEN_SOURCE
+	FTokenId          LUID
+	FAuthenticationId LUID
+	FModifiedId       LUID
+	FTokenSource      TOKEN_SOURCE
 }
 
 type _TOKEN_CONTROL = TOKEN_CONTROL
@@ -12271,7 +12271,7 @@ type _TOKEN_CONTROL = TOKEN_CONTROL
 type PTOKEN_CONTROL = uintptr
 
 type TOKEN_ORIGIN = struct {
-	OriginatingLogonSession LUID
+	FOriginatingLogonSession LUID
 }
 
 type _TOKEN_ORIGIN = TOKEN_ORIGIN
@@ -12293,7 +12293,7 @@ const MandatoryLevelCount = 6
 type PMANDATORY_LEVEL = uintptr
 
 type TOKEN_APPCONTAINER_INFORMATION = struct {
-	TokenAppContainer PSID
+	FTokenAppContainer PSID
 }
 
 type _TOKEN_APPCONTAINER_INFORMATION = TOKEN_APPCONTAINER_INFORMATION
@@ -12301,8 +12301,8 @@ type _TOKEN_APPCONTAINER_INFORMATION = TOKEN_APPCONTAINER_INFORMATION
 type PTOKEN_APPCONTAINER_INFORMATION = uintptr
 
 type CLAIM_SECURITY_ATTRIBUTE_FQBN_VALUE = struct {
-	Version DWORD64
-	Name    PWSTR
+	FVersion DWORD64
+	FName    PWSTR
 }
 
 type _CLAIM_SECURITY_ATTRIBUTE_FQBN_VALUE = CLAIM_SECURITY_ATTRIBUTE_FQBN_VALUE
@@ -12310,8 +12310,8 @@ type _CLAIM_SECURITY_ATTRIBUTE_FQBN_VALUE = CLAIM_SECURITY_ATTRIBUTE_FQBN_VALUE
 type PCLAIM_SECURITY_ATTRIBUTE_FQBN_VALUE = uintptr
 
 type CLAIM_SECURITY_ATTRIBUTE_OCTET_STRING_VALUE = struct {
-	pValue      PVOID
-	ValueLength DWORD
+	FpValue      PVOID
+	FValueLength DWORD
 }
 
 type _CLAIM_SECURITY_ATTRIBUTE_OCTET_STRING_VALUE = CLAIM_SECURITY_ATTRIBUTE_OCTET_STRING_VALUE
@@ -12319,17 +12319,17 @@ type _CLAIM_SECURITY_ATTRIBUTE_OCTET_STRING_VALUE = CLAIM_SECURITY_ATTRIBUTE_OCT
 type PCLAIM_SECURITY_ATTRIBUTE_OCTET_STRING_VALUE = uintptr
 
 type CLAIM_SECURITY_ATTRIBUTE_V1 = struct {
-	Name       PWSTR
-	ValueType  WORD
-	Reserved   WORD
-	Flags      DWORD
-	ValueCount DWORD
-	Values     struct {
-		pUint64      [0]PDWORD64
-		ppString     [0]uintptr
-		pFqbn        [0]PCLAIM_SECURITY_ATTRIBUTE_FQBN_VALUE
-		pOctetString [0]PCLAIM_SECURITY_ATTRIBUTE_OCTET_STRING_VALUE
-		pInt64       PLONG64
+	FName       PWSTR
+	FValueType  WORD
+	FReserved   WORD
+	FFlags      DWORD
+	FValueCount DWORD
+	FValues     struct {
+		FpUint64      [0]PDWORD64
+		FppString     [0]uintptr
+		FpFqbn        [0]PCLAIM_SECURITY_ATTRIBUTE_FQBN_VALUE
+		FpOctetString [0]PCLAIM_SECURITY_ATTRIBUTE_OCTET_STRING_VALUE
+		FpInt64       PLONG64
 	}
 }
 
@@ -12338,17 +12338,17 @@ type _CLAIM_SECURITY_ATTRIBUTE_V1 = CLAIM_SECURITY_ATTRIBUTE_V1
 type PCLAIM_SECURITY_ATTRIBUTE_V1 = uintptr
 
 type CLAIM_SECURITY_ATTRIBUTE_RELATIVE_V1 = struct {
-	Name       DWORD
-	ValueType  WORD
-	Reserved   WORD
-	Flags      DWORD
-	ValueCount DWORD
-	Values     struct {
-		pUint64      [0][1]DWORD
-		ppString     [0][1]DWORD
-		pFqbn        [0][1]DWORD
-		pOctetString [0][1]DWORD
-		pInt64       [1]DWORD
+	FName       DWORD
+	FValueType  WORD
+	FReserved   WORD
+	FFlags      DWORD
+	FValueCount DWORD
+	FValues     struct {
+		FpUint64      [0][1]DWORD
+		FppString     [0][1]DWORD
+		FpFqbn        [0][1]DWORD
+		FpOctetString [0][1]DWORD
+		FpInt64       [1]DWORD
 	}
 }
 
@@ -12357,11 +12357,11 @@ type _CLAIM_SECURITY_ATTRIBUTE_RELATIVE_V1 = CLAIM_SECURITY_ATTRIBUTE_RELATIVE_V
 type PCLAIM_SECURITY_ATTRIBUTE_RELATIVE_V1 = uintptr
 
 type CLAIM_SECURITY_ATTRIBUTES_INFORMATION = struct {
-	Version        WORD
-	Reserved       WORD
-	AttributeCount DWORD
-	Attribute      struct {
-		pAttributeV1 PCLAIM_SECURITY_ATTRIBUTE_V1
+	FVersion        WORD
+	FReserved       WORD
+	FAttributeCount DWORD
+	FAttribute      struct {
+		FpAttributeV1 PCLAIM_SECURITY_ATTRIBUTE_V1
 	}
 }
 
@@ -12374,10 +12374,10 @@ type SECURITY_CONTEXT_TRACKING_MODE = uint8
 type PSECURITY_CONTEXT_TRACKING_MODE = uintptr
 
 type SECURITY_QUALITY_OF_SERVICE = struct {
-	Length              DWORD
-	ImpersonationLevel  SECURITY_IMPERSONATION_LEVEL
-	ContextTrackingMode SECURITY_CONTEXT_TRACKING_MODE
-	EffectiveOnly       BOOLEAN
+	FLength              DWORD
+	FImpersonationLevel  SECURITY_IMPERSONATION_LEVEL
+	FContextTrackingMode SECURITY_CONTEXT_TRACKING_MODE
+	FEffectiveOnly       BOOLEAN
 }
 
 type _SECURITY_QUALITY_OF_SERVICE = SECURITY_QUALITY_OF_SERVICE
@@ -12385,10 +12385,10 @@ type _SECURITY_QUALITY_OF_SERVICE = SECURITY_QUALITY_OF_SERVICE
 type PSECURITY_QUALITY_OF_SERVICE = uintptr
 
 type SE_IMPERSONATION_STATE = struct {
-	Token         PACCESS_TOKEN
-	CopyOnOpen    BOOLEAN
-	EffectiveOnly BOOLEAN
-	Level         SECURITY_IMPERSONATION_LEVEL
+	FToken         PACCESS_TOKEN
+	FCopyOnOpen    BOOLEAN
+	FEffectiveOnly BOOLEAN
+	FLevel         SECURITY_IMPERSONATION_LEVEL
 }
 
 type _SE_IMPERSONATION_STATE = SE_IMPERSONATION_STATE
@@ -12408,10 +12408,10 @@ const SeLearningModeSettings = 1
 const SeLearningModeMax = 2
 
 type SECURITY_CAPABILITIES = struct {
-	AppContainerSid PSID
-	Capabilities    PSID_AND_ATTRIBUTES
-	CapabilityCount DWORD
-	Reserved        DWORD
+	FAppContainerSid PSID
+	FCapabilities    PSID_AND_ATTRIBUTES
+	FCapabilityCount DWORD
+	FReserved        DWORD
 }
 
 type _SECURITY_CAPABILITIES = SECURITY_CAPABILITIES
@@ -12421,9 +12421,9 @@ type PSECURITY_CAPABILITIES = uintptr
 type LPSECURITY_CAPABILITIES = uintptr
 
 type JOB_SET_ARRAY = struct {
-	JobHandle   HANDLE
-	MemberLevel DWORD
-	Flags       DWORD
+	FJobHandle   HANDLE
+	FMemberLevel DWORD
+	FFlags       DWORD
 }
 
 type _JOB_SET_ARRAY = JOB_SET_ARRAY
@@ -12431,13 +12431,13 @@ type _JOB_SET_ARRAY = JOB_SET_ARRAY
 type PJOB_SET_ARRAY = uintptr
 
 type EXCEPTION_REGISTRATION_RECORD = struct {
-	__ccgo0_0 struct {
-		prev [0]uintptr
-		Next uintptr
+	F__ccgo0_0 struct {
+		Fprev [0]uintptr
+		FNext uintptr
 	}
-	__ccgo1_8 struct {
-		handler [0]PEXCEPTION_ROUTINE
-		Handler PEXCEPTION_ROUTINE
+	F__ccgo1_8 struct {
+		Fhandler [0]PEXCEPTION_ROUTINE
+		FHandler PEXCEPTION_ROUTINE
 	}
 }
 
@@ -12446,29 +12446,29 @@ type _EXCEPTION_REGISTRATION_RECORD = EXCEPTION_REGISTRATION_RECORD
 type PEXCEPTION_REGISTRATION_RECORD = uintptr
 
 type EXCEPTION_REGISTRATION = struct {
-	__ccgo0_0 struct {
-		prev [0]uintptr
-		Next uintptr
+	F__ccgo0_0 struct {
+		Fprev [0]uintptr
+		FNext uintptr
 	}
-	__ccgo1_8 struct {
-		handler [0]PEXCEPTION_ROUTINE
-		Handler PEXCEPTION_ROUTINE
+	F__ccgo1_8 struct {
+		Fhandler [0]PEXCEPTION_ROUTINE
+		FHandler PEXCEPTION_ROUTINE
 	}
 }
 
 type PEXCEPTION_REGISTRATION = uintptr
 
 type NT_TIB = struct {
-	ExceptionList uintptr
-	StackBase     PVOID
-	StackLimit    PVOID
-	SubSystemTib  PVOID
-	__ccgo4_32    struct {
-		Version   [0]DWORD
-		FiberData PVOID
+	FExceptionList uintptr
+	FStackBase     PVOID
+	FStackLimit    PVOID
+	FSubSystemTib  PVOID
+	F__ccgo4_32    struct {
+		FVersion   [0]DWORD
+		FFiberData PVOID
 	}
-	ArbitraryUserPointer PVOID
-	Self                 uintptr
+	FArbitraryUserPointer PVOID
+	FSelf                 uintptr
 }
 
 type _NT_TIB = NT_TIB
@@ -12476,16 +12476,16 @@ type _NT_TIB = NT_TIB
 type PNT_TIB = uintptr
 
 type NT_TIB32 = struct {
-	ExceptionList DWORD
-	StackBase     DWORD
-	StackLimit    DWORD
-	SubSystemTib  DWORD
-	__ccgo4_16    struct {
-		Version   [0]DWORD
-		FiberData DWORD
+	FExceptionList DWORD
+	FStackBase     DWORD
+	FStackLimit    DWORD
+	FSubSystemTib  DWORD
+	F__ccgo4_16    struct {
+		FVersion   [0]DWORD
+		FFiberData DWORD
 	}
-	ArbitraryUserPointer DWORD
-	Self                 DWORD
+	FArbitraryUserPointer DWORD
+	FSelf                 DWORD
 }
 
 type _NT_TIB32 = NT_TIB32
@@ -12493,16 +12493,16 @@ type _NT_TIB32 = NT_TIB32
 type PNT_TIB32 = uintptr
 
 type NT_TIB64 = struct {
-	ExceptionList DWORD64
-	StackBase     DWORD64
-	StackLimit    DWORD64
-	SubSystemTib  DWORD64
-	__ccgo4_32    struct {
-		Version   [0]DWORD
-		FiberData DWORD64
+	FExceptionList DWORD64
+	FStackBase     DWORD64
+	FStackLimit    DWORD64
+	FSubSystemTib  DWORD64
+	F__ccgo4_32    struct {
+		FVersion   [0]DWORD
+		FFiberData DWORD64
 	}
-	ArbitraryUserPointer DWORD64
-	Self                 DWORD64
+	FArbitraryUserPointer DWORD64
+	FSelf                 DWORD64
 }
 
 type _NT_TIB64 = NT_TIB64
@@ -12510,9 +12510,9 @@ type _NT_TIB64 = NT_TIB64
 type PNT_TIB64 = uintptr
 
 type UMS_CREATE_THREAD_ATTRIBUTES = struct {
-	UmsVersion        DWORD
-	UmsContext        PVOID
-	UmsCompletionList PVOID
+	FUmsVersion        DWORD
+	FUmsContext        PVOID
+	FUmsCompletionList PVOID
 }
 
 type _UMS_CREATE_THREAD_ATTRIBUTES = UMS_CREATE_THREAD_ATTRIBUTES
@@ -12520,7 +12520,7 @@ type _UMS_CREATE_THREAD_ATTRIBUTES = UMS_CREATE_THREAD_ATTRIBUTES
 type PUMS_CREATE_THREAD_ATTRIBUTES = uintptr
 
 type COMPONENT_FILTER = struct {
-	ComponentFlags DWORD
+	FComponentFlags DWORD
 }
 
 type _COMPONENT_FILTER = COMPONENT_FILTER
@@ -12528,8 +12528,8 @@ type _COMPONENT_FILTER = COMPONENT_FILTER
 type PCOMPONENT_FILTER = uintptr
 
 type PROCESS_DYNAMIC_EH_CONTINUATION_TARGET = struct {
-	TargetAddress ULONG_PTR
-	Flags         ULONG_PTR
+	FTargetAddress ULONG_PTR
+	FFlags         ULONG_PTR
 }
 
 type _PROCESS_DYNAMIC_EH_CONTINUATION_TARGET = PROCESS_DYNAMIC_EH_CONTINUATION_TARGET
@@ -12537,10 +12537,10 @@ type _PROCESS_DYNAMIC_EH_CONTINUATION_TARGET = PROCESS_DYNAMIC_EH_CONTINUATION_T
 type PPROCESS_DYNAMIC_EH_CONTINUATION_TARGET = uintptr
 
 type PROCESS_DYNAMIC_EH_CONTINUATION_TARGETS_INFORMATION = struct {
-	NumberOfTargets WORD
-	Reserved        WORD
-	Reserved2       DWORD
-	Targets         PPROCESS_DYNAMIC_EH_CONTINUATION_TARGET
+	FNumberOfTargets WORD
+	FReserved        WORD
+	FReserved2       DWORD
+	FTargets         PPROCESS_DYNAMIC_EH_CONTINUATION_TARGET
 }
 
 type _PROCESS_DYNAMIC_EH_CONTINUATION_TARGETS_INFORMATION = PROCESS_DYNAMIC_EH_CONTINUATION_TARGETS_INFORMATION
@@ -12548,9 +12548,9 @@ type _PROCESS_DYNAMIC_EH_CONTINUATION_TARGETS_INFORMATION = PROCESS_DYNAMIC_EH_C
 type PPROCESS_DYNAMIC_EH_CONTINUATION_TARGETS_INFORMATION = uintptr
 
 type PROCESS_DYNAMIC_ENFORCED_ADDRESS_RANGE = struct {
-	BaseAddress ULONG_PTR
-	Size        SIZE_T
-	Flags       DWORD
+	FBaseAddress ULONG_PTR
+	FSize        SIZE_T
+	FFlags       DWORD
 }
 
 type _PROCESS_DYNAMIC_ENFORCED_ADDRESS_RANGE = PROCESS_DYNAMIC_ENFORCED_ADDRESS_RANGE
@@ -12558,10 +12558,10 @@ type _PROCESS_DYNAMIC_ENFORCED_ADDRESS_RANGE = PROCESS_DYNAMIC_ENFORCED_ADDRESS_
 type PPROCESS_DYNAMIC_ENFORCED_ADDRESS_RANGE = uintptr
 
 type PROCESS_DYNAMIC_ENFORCED_ADDRESS_RANGES_INFORMATION = struct {
-	NumberOfRanges WORD
-	Reserved       WORD
-	Reserved2      DWORD
-	Ranges         PPROCESS_DYNAMIC_ENFORCED_ADDRESS_RANGE
+	FNumberOfRanges WORD
+	FReserved       WORD
+	FReserved2      DWORD
+	FRanges         PPROCESS_DYNAMIC_ENFORCED_ADDRESS_RANGE
 }
 
 type _PROCESS_DYNAMIC_ENFORCED_ADDRESS_RANGES_INFORMATION = PROCESS_DYNAMIC_ENFORCED_ADDRESS_RANGES_INFORMATION
@@ -12569,12 +12569,12 @@ type _PROCESS_DYNAMIC_ENFORCED_ADDRESS_RANGES_INFORMATION = PROCESS_DYNAMIC_ENFO
 type PPROCESS_DYNAMIC_ENFORCED_ADDRESS_RANGES_INFORMATION = uintptr
 
 type QUOTA_LIMITS = struct {
-	PagedPoolLimit        SIZE_T
-	NonPagedPoolLimit     SIZE_T
-	MinimumWorkingSetSize SIZE_T
-	MaximumWorkingSetSize SIZE_T
-	PagefileLimit         SIZE_T
-	TimeLimit             LARGE_INTEGER
+	FPagedPoolLimit        SIZE_T
+	FNonPagedPoolLimit     SIZE_T
+	FMinimumWorkingSetSize SIZE_T
+	FMaximumWorkingSetSize SIZE_T
+	FPagefileLimit         SIZE_T
+	FTimeLimit             LARGE_INTEGER
 }
 
 type _QUOTA_LIMITS = QUOTA_LIMITS
@@ -12582,10 +12582,10 @@ type _QUOTA_LIMITS = QUOTA_LIMITS
 type PQUOTA_LIMITS = uintptr
 
 type RATE_QUOTA_LIMIT = struct {
-	__ccgo1_0 [0]struct {
-		__ccgo0 uint32
+	F__ccgo1_0 [0]struct {
+		F__ccgo0 uint32
 	}
-	RateData DWORD
+	FRateData DWORD
 }
 
 type _RATE_QUOTA_LIMIT = RATE_QUOTA_LIMIT
@@ -12593,18 +12593,18 @@ type _RATE_QUOTA_LIMIT = RATE_QUOTA_LIMIT
 type PRATE_QUOTA_LIMIT = uintptr
 
 type QUOTA_LIMITS_EX = struct {
-	PagedPoolLimit        SIZE_T
-	NonPagedPoolLimit     SIZE_T
-	MinimumWorkingSetSize SIZE_T
-	MaximumWorkingSetSize SIZE_T
-	PagefileLimit         SIZE_T
-	TimeLimit             LARGE_INTEGER
-	WorkingSetLimit       SIZE_T
-	Reserved2             SIZE_T
-	Reserved3             SIZE_T
-	Reserved4             SIZE_T
-	Flags                 DWORD
-	CpuRateLimit          RATE_QUOTA_LIMIT
+	FPagedPoolLimit        SIZE_T
+	FNonPagedPoolLimit     SIZE_T
+	FMinimumWorkingSetSize SIZE_T
+	FMaximumWorkingSetSize SIZE_T
+	FPagefileLimit         SIZE_T
+	FTimeLimit             LARGE_INTEGER
+	FWorkingSetLimit       SIZE_T
+	FReserved2             SIZE_T
+	FReserved3             SIZE_T
+	FReserved4             SIZE_T
+	FFlags                 DWORD
+	FCpuRateLimit          RATE_QUOTA_LIMIT
 }
 
 type _QUOTA_LIMITS_EX = QUOTA_LIMITS_EX
@@ -12612,12 +12612,12 @@ type _QUOTA_LIMITS_EX = QUOTA_LIMITS_EX
 type PQUOTA_LIMITS_EX = uintptr
 
 type IO_COUNTERS = struct {
-	ReadOperationCount  ULONGLONG
-	WriteOperationCount ULONGLONG
-	OtherOperationCount ULONGLONG
-	ReadTransferCount   ULONGLONG
-	WriteTransferCount  ULONGLONG
-	OtherTransferCount  ULONGLONG
+	FReadOperationCount  ULONGLONG
+	FWriteOperationCount ULONGLONG
+	FOtherOperationCount ULONGLONG
+	FReadTransferCount   ULONGLONG
+	FWriteTransferCount  ULONGLONG
+	FOtherTransferCount  ULONGLONG
 }
 
 type _IO_COUNTERS = IO_COUNTERS
@@ -12659,11 +12659,11 @@ const MaxProcessMitigationPolicy = 17
 type PPROCESS_MITIGATION_POLICY = uintptr
 
 type PROCESS_MITIGATION_ASLR_POLICY = struct {
-	__ccgo0_0 struct {
-		__ccgo1_0 [0]struct {
-			__ccgo0 uint32
+	F__ccgo0_0 struct {
+		F__ccgo1_0 [0]struct {
+			F__ccgo0 uint32
 		}
-		Flags DWORD
+		FFlags DWORD
 	}
 }
 
@@ -12672,13 +12672,13 @@ type _PROCESS_MITIGATION_ASLR_POLICY = PROCESS_MITIGATION_ASLR_POLICY
 type PPROCESS_MITIGATION_ASLR_POLICY = uintptr
 
 type PROCESS_MITIGATION_DEP_POLICY = struct {
-	__ccgo0_0 struct {
-		__ccgo1_0 [0]struct {
-			__ccgo0 uint32
+	F__ccgo0_0 struct {
+		F__ccgo1_0 [0]struct {
+			F__ccgo0 uint32
 		}
-		Flags DWORD
+		FFlags DWORD
 	}
-	Permanent BOOLEAN
+	FPermanent BOOLEAN
 }
 
 type _PROCESS_MITIGATION_DEP_POLICY = PROCESS_MITIGATION_DEP_POLICY
@@ -12686,11 +12686,11 @@ type _PROCESS_MITIGATION_DEP_POLICY = PROCESS_MITIGATION_DEP_POLICY
 type PPROCESS_MITIGATION_DEP_POLICY = uintptr
 
 type PROCESS_MITIGATION_STRICT_HANDLE_CHECK_POLICY = struct {
-	__ccgo0_0 struct {
-		__ccgo1_0 [0]struct {
-			__ccgo0 uint32
+	F__ccgo0_0 struct {
+		F__ccgo1_0 [0]struct {
+			F__ccgo0 uint32
 		}
-		Flags DWORD
+		FFlags DWORD
 	}
 }
 
@@ -12699,11 +12699,11 @@ type _PROCESS_MITIGATION_STRICT_HANDLE_CHECK_POLICY = PROCESS_MITIGATION_STRICT_
 type PPROCESS_MITIGATION_STRICT_HANDLE_CHECK_POLICY = uintptr
 
 type PROCESS_MITIGATION_SYSTEM_CALL_DISABLE_POLICY = struct {
-	__ccgo0_0 struct {
-		__ccgo1_0 [0]struct {
-			__ccgo0 uint32
+	F__ccgo0_0 struct {
+		F__ccgo1_0 [0]struct {
+			F__ccgo0 uint32
 		}
-		Flags DWORD
+		FFlags DWORD
 	}
 }
 
@@ -12712,11 +12712,11 @@ type _PROCESS_MITIGATION_SYSTEM_CALL_DISABLE_POLICY = PROCESS_MITIGATION_SYSTEM_
 type PPROCESS_MITIGATION_SYSTEM_CALL_DISABLE_POLICY = uintptr
 
 type PROCESS_MITIGATION_EXTENSION_POINT_DISABLE_POLICY = struct {
-	__ccgo0_0 struct {
-		__ccgo1_0 [0]struct {
-			__ccgo0 uint32
+	F__ccgo0_0 struct {
+		F__ccgo1_0 [0]struct {
+			F__ccgo0 uint32
 		}
-		Flags DWORD
+		FFlags DWORD
 	}
 }
 
@@ -12725,11 +12725,11 @@ type _PROCESS_MITIGATION_EXTENSION_POINT_DISABLE_POLICY = PROCESS_MITIGATION_EXT
 type PPROCESS_MITIGATION_EXTENSION_POINT_DISABLE_POLICY = uintptr
 
 type PROCESS_MITIGATION_CONTROL_FLOW_GUARD_POLICY = struct {
-	__ccgo0_0 struct {
-		__ccgo1_0 [0]struct {
-			__ccgo0 uint32
+	F__ccgo0_0 struct {
+		F__ccgo1_0 [0]struct {
+			F__ccgo0 uint32
 		}
-		Flags DWORD
+		FFlags DWORD
 	}
 }
 
@@ -12738,11 +12738,11 @@ type _PROCESS_MITIGATION_CONTROL_FLOW_GUARD_POLICY = PROCESS_MITIGATION_CONTROL_
 type PPROCESS_MITIGATION_CONTROL_FLOW_GUARD_POLICY = uintptr
 
 type PROCESS_MITIGATION_BINARY_SIGNATURE_POLICY = struct {
-	__ccgo0_0 struct {
-		__ccgo1_0 [0]struct {
-			__ccgo0 uint32
+	F__ccgo0_0 struct {
+		F__ccgo1_0 [0]struct {
+			F__ccgo0 uint32
 		}
-		Flags DWORD
+		FFlags DWORD
 	}
 }
 
@@ -12751,13 +12751,13 @@ type _PROCESS_MITIGATION_BINARY_SIGNATURE_POLICY = PROCESS_MITIGATION_BINARY_SIG
 type PPROCESS_MITIGATION_BINARY_SIGNATURE_POLICY = uintptr
 
 type PROCESS_MITIGATION_DYNAMIC_CODE_POLICY = struct {
-	__ccgo0_0 struct {
-		__ccgo1_0 [0]struct {
-			__ccgo0 uint8
-			__ccgo4 uint32
+	F__ccgo0_0 struct {
+		F__ccgo1_0 [0]struct {
+			F__ccgo0 uint8
+			F__ccgo4 uint32
 		}
-		Flags       DWORD
-		__ccgo_pad2 [4]byte
+		FFlags       DWORD
+		F__ccgo_pad2 [4]byte
 	}
 }
 
@@ -12766,11 +12766,11 @@ type _PROCESS_MITIGATION_DYNAMIC_CODE_POLICY = PROCESS_MITIGATION_DYNAMIC_CODE_P
 type PPROCESS_MITIGATION_DYNAMIC_CODE_POLICY = uintptr
 
 type PROCESS_MITIGATION_FONT_DISABLE_POLICY = struct {
-	__ccgo0_0 struct {
-		__ccgo1_0 [0]struct {
-			__ccgo0 uint32
+	F__ccgo0_0 struct {
+		F__ccgo1_0 [0]struct {
+			F__ccgo0 uint32
 		}
-		Flags DWORD
+		FFlags DWORD
 	}
 }
 
@@ -12779,11 +12779,11 @@ type _PROCESS_MITIGATION_FONT_DISABLE_POLICY = PROCESS_MITIGATION_FONT_DISABLE_P
 type PPROCESS_MITIGATION_FONT_DISABLE_POLICY = uintptr
 
 type PROCESS_MITIGATION_IMAGE_LOAD_POLICY = struct {
-	__ccgo0_0 struct {
-		__ccgo1_0 [0]struct {
-			__ccgo0 uint32
+	F__ccgo0_0 struct {
+		F__ccgo1_0 [0]struct {
+			F__ccgo0 uint32
 		}
-		Flags DWORD
+		FFlags DWORD
 	}
 }
 
@@ -12792,11 +12792,11 @@ type _PROCESS_MITIGATION_IMAGE_LOAD_POLICY = PROCESS_MITIGATION_IMAGE_LOAD_POLIC
 type PPROCESS_MITIGATION_IMAGE_LOAD_POLICY = uintptr
 
 type PROCESS_MITIGATION_SYSTEM_CALL_FILTER_POLICY = struct {
-	__ccgo0_0 struct {
-		__ccgo1_0 [0]struct {
-			__ccgo0 uint32
+	F__ccgo0_0 struct {
+		F__ccgo1_0 [0]struct {
+			F__ccgo0 uint32
 		}
-		Flags DWORD
+		FFlags DWORD
 	}
 }
 
@@ -12805,11 +12805,11 @@ type _PROCESS_MITIGATION_SYSTEM_CALL_FILTER_POLICY = PROCESS_MITIGATION_SYSTEM_C
 type PPROCESS_MITIGATION_SYSTEM_CALL_FILTER_POLICY = uintptr
 
 type PROCESS_MITIGATION_PAYLOAD_RESTRICTION_POLICY = struct {
-	__ccgo0_0 struct {
-		__ccgo1_0 [0]struct {
-			__ccgo0 uint32
+	F__ccgo0_0 struct {
+		F__ccgo1_0 [0]struct {
+			F__ccgo0 uint32
 		}
-		Flags DWORD
+		FFlags DWORD
 	}
 }
 
@@ -12818,11 +12818,11 @@ type _PROCESS_MITIGATION_PAYLOAD_RESTRICTION_POLICY = PROCESS_MITIGATION_PAYLOAD
 type PPROCESS_MITIGATION_PAYLOAD_RESTRICTION_POLICY = uintptr
 
 type PROCESS_MITIGATION_CHILD_PROCESS_POLICY = struct {
-	__ccgo0_0 struct {
-		__ccgo1_0 [0]struct {
-			__ccgo0 uint32
+	F__ccgo0_0 struct {
+		F__ccgo1_0 [0]struct {
+			F__ccgo0 uint32
 		}
-		Flags DWORD
+		FFlags DWORD
 	}
 }
 
@@ -12831,11 +12831,11 @@ type _PROCESS_MITIGATION_CHILD_PROCESS_POLICY = PROCESS_MITIGATION_CHILD_PROCESS
 type PPROCESS_MITIGATION_CHILD_PROCESS_POLICY = uintptr
 
 type PROCESS_MITIGATION_SIDE_CHANNEL_ISOLATION_POLICY = struct {
-	__ccgo0_0 struct {
-		__ccgo1_0 [0]struct {
-			__ccgo0 uint32
+	F__ccgo0_0 struct {
+		F__ccgo1_0 [0]struct {
+			F__ccgo0 uint32
 		}
-		Flags DWORD
+		FFlags DWORD
 	}
 }
 
@@ -12844,11 +12844,11 @@ type _PROCESS_MITIGATION_SIDE_CHANNEL_ISOLATION_POLICY = PROCESS_MITIGATION_SIDE
 type PPROCESS_MITIGATION_SIDE_CHANNEL_ISOLATION_POLICY = uintptr
 
 type PROCESS_MITIGATION_USER_SHADOW_STACK_POLICY = struct {
-	__ccgo0_0 struct {
-		__ccgo1_0 [0]struct {
-			__ccgo0 uint32
+	F__ccgo0_0 struct {
+		F__ccgo1_0 [0]struct {
+			F__ccgo0 uint32
 		}
-		Flags DWORD
+		FFlags DWORD
 	}
 }
 
@@ -12857,11 +12857,11 @@ type _PROCESS_MITIGATION_USER_SHADOW_STACK_POLICY = PROCESS_MITIGATION_USER_SHAD
 type PPROCESS_MITIGATION_USER_SHADOW_STACK_POLICY = uintptr
 
 type PROCESS_MITIGATION_REDIRECTION_TRUST_POLICY = struct {
-	__ccgo0_0 struct {
-		__ccgo1_0 [0]struct {
-			__ccgo0 uint32
+	F__ccgo0_0 struct {
+		F__ccgo1_0 [0]struct {
+			F__ccgo0 uint32
 		}
-		Flags DWORD
+		FFlags DWORD
 	}
 }
 
@@ -12870,14 +12870,14 @@ type _PROCESS_MITIGATION_REDIRECTION_TRUST_POLICY = PROCESS_MITIGATION_REDIRECTI
 type PPROCESS_MITIGATION_REDIRECTION_TRUST_POLICY = uintptr
 
 type JOBOBJECT_BASIC_ACCOUNTING_INFORMATION = struct {
-	TotalUserTime             LARGE_INTEGER
-	TotalKernelTime           LARGE_INTEGER
-	ThisPeriodTotalUserTime   LARGE_INTEGER
-	ThisPeriodTotalKernelTime LARGE_INTEGER
-	TotalPageFaultCount       DWORD
-	TotalProcesses            DWORD
-	ActiveProcesses           DWORD
-	TotalTerminatedProcesses  DWORD
+	FTotalUserTime             LARGE_INTEGER
+	FTotalKernelTime           LARGE_INTEGER
+	FThisPeriodTotalUserTime   LARGE_INTEGER
+	FThisPeriodTotalKernelTime LARGE_INTEGER
+	FTotalPageFaultCount       DWORD
+	FTotalProcesses            DWORD
+	FActiveProcesses           DWORD
+	FTotalTerminatedProcesses  DWORD
 }
 
 type _JOBOBJECT_BASIC_ACCOUNTING_INFORMATION = JOBOBJECT_BASIC_ACCOUNTING_INFORMATION
@@ -12885,15 +12885,15 @@ type _JOBOBJECT_BASIC_ACCOUNTING_INFORMATION = JOBOBJECT_BASIC_ACCOUNTING_INFORM
 type PJOBOBJECT_BASIC_ACCOUNTING_INFORMATION = uintptr
 
 type JOBOBJECT_BASIC_LIMIT_INFORMATION = struct {
-	PerProcessUserTimeLimit LARGE_INTEGER
-	PerJobUserTimeLimit     LARGE_INTEGER
-	LimitFlags              DWORD
-	MinimumWorkingSetSize   SIZE_T
-	MaximumWorkingSetSize   SIZE_T
-	ActiveProcessLimit      DWORD
-	Affinity                ULONG_PTR
-	PriorityClass           DWORD
-	SchedulingClass         DWORD
+	FPerProcessUserTimeLimit LARGE_INTEGER
+	FPerJobUserTimeLimit     LARGE_INTEGER
+	FLimitFlags              DWORD
+	FMinimumWorkingSetSize   SIZE_T
+	FMaximumWorkingSetSize   SIZE_T
+	FActiveProcessLimit      DWORD
+	FAffinity                ULONG_PTR
+	FPriorityClass           DWORD
+	FSchedulingClass         DWORD
 }
 
 type _JOBOBJECT_BASIC_LIMIT_INFORMATION = JOBOBJECT_BASIC_LIMIT_INFORMATION
@@ -12901,12 +12901,12 @@ type _JOBOBJECT_BASIC_LIMIT_INFORMATION = JOBOBJECT_BASIC_LIMIT_INFORMATION
 type PJOBOBJECT_BASIC_LIMIT_INFORMATION = uintptr
 
 type JOBOBJECT_EXTENDED_LIMIT_INFORMATION = struct {
-	BasicLimitInformation JOBOBJECT_BASIC_LIMIT_INFORMATION
-	IoInfo                IO_COUNTERS
-	ProcessMemoryLimit    SIZE_T
-	JobMemoryLimit        SIZE_T
-	PeakProcessMemoryUsed SIZE_T
-	PeakJobMemoryUsed     SIZE_T
+	FBasicLimitInformation JOBOBJECT_BASIC_LIMIT_INFORMATION
+	FIoInfo                IO_COUNTERS
+	FProcessMemoryLimit    SIZE_T
+	FJobMemoryLimit        SIZE_T
+	FPeakProcessMemoryUsed SIZE_T
+	FPeakJobMemoryUsed     SIZE_T
 }
 
 type _JOBOBJECT_EXTENDED_LIMIT_INFORMATION = JOBOBJECT_EXTENDED_LIMIT_INFORMATION
@@ -12914,9 +12914,9 @@ type _JOBOBJECT_EXTENDED_LIMIT_INFORMATION = JOBOBJECT_EXTENDED_LIMIT_INFORMATIO
 type PJOBOBJECT_EXTENDED_LIMIT_INFORMATION = uintptr
 
 type JOBOBJECT_BASIC_PROCESS_ID_LIST = struct {
-	NumberOfAssignedProcesses DWORD
-	NumberOfProcessIdsInList  DWORD
-	ProcessIdList             [1]ULONG_PTR
+	FNumberOfAssignedProcesses DWORD
+	FNumberOfProcessIdsInList  DWORD
+	FProcessIdList             [1]ULONG_PTR
 }
 
 type _JOBOBJECT_BASIC_PROCESS_ID_LIST = JOBOBJECT_BASIC_PROCESS_ID_LIST
@@ -12924,7 +12924,7 @@ type _JOBOBJECT_BASIC_PROCESS_ID_LIST = JOBOBJECT_BASIC_PROCESS_ID_LIST
 type PJOBOBJECT_BASIC_PROCESS_ID_LIST = uintptr
 
 type JOBOBJECT_BASIC_UI_RESTRICTIONS = struct {
-	UIRestrictionsClass DWORD
+	FUIRestrictionsClass DWORD
 }
 
 type _JOBOBJECT_BASIC_UI_RESTRICTIONS = JOBOBJECT_BASIC_UI_RESTRICTIONS
@@ -12932,11 +12932,11 @@ type _JOBOBJECT_BASIC_UI_RESTRICTIONS = JOBOBJECT_BASIC_UI_RESTRICTIONS
 type PJOBOBJECT_BASIC_UI_RESTRICTIONS = uintptr
 
 type JOBOBJECT_SECURITY_LIMIT_INFORMATION = struct {
-	SecurityLimitFlags DWORD
-	JobToken           HANDLE
-	SidsToDisable      PTOKEN_GROUPS
-	PrivilegesToDelete PTOKEN_PRIVILEGES
-	RestrictedSids     PTOKEN_GROUPS
+	FSecurityLimitFlags DWORD
+	FJobToken           HANDLE
+	FSidsToDisable      PTOKEN_GROUPS
+	FPrivilegesToDelete PTOKEN_PRIVILEGES
+	FRestrictedSids     PTOKEN_GROUPS
 }
 
 type _JOBOBJECT_SECURITY_LIMIT_INFORMATION = JOBOBJECT_SECURITY_LIMIT_INFORMATION
@@ -12944,7 +12944,7 @@ type _JOBOBJECT_SECURITY_LIMIT_INFORMATION = JOBOBJECT_SECURITY_LIMIT_INFORMATIO
 type PJOBOBJECT_SECURITY_LIMIT_INFORMATION = uintptr
 
 type JOBOBJECT_END_OF_JOB_TIME_INFORMATION = struct {
-	EndOfJobTimeAction DWORD
+	FEndOfJobTimeAction DWORD
 }
 
 type _JOBOBJECT_END_OF_JOB_TIME_INFORMATION = JOBOBJECT_END_OF_JOB_TIME_INFORMATION
@@ -12952,8 +12952,8 @@ type _JOBOBJECT_END_OF_JOB_TIME_INFORMATION = JOBOBJECT_END_OF_JOB_TIME_INFORMAT
 type PJOBOBJECT_END_OF_JOB_TIME_INFORMATION = uintptr
 
 type JOBOBJECT_ASSOCIATE_COMPLETION_PORT = struct {
-	CompletionKey  PVOID
-	CompletionPort HANDLE
+	FCompletionKey  PVOID
+	FCompletionPort HANDLE
 }
 
 type _JOBOBJECT_ASSOCIATE_COMPLETION_PORT = JOBOBJECT_ASSOCIATE_COMPLETION_PORT
@@ -12961,8 +12961,8 @@ type _JOBOBJECT_ASSOCIATE_COMPLETION_PORT = JOBOBJECT_ASSOCIATE_COMPLETION_PORT
 type PJOBOBJECT_ASSOCIATE_COMPLETION_PORT = uintptr
 
 type JOBOBJECT_BASIC_AND_IO_ACCOUNTING_INFORMATION = struct {
-	BasicInfo JOBOBJECT_BASIC_ACCOUNTING_INFORMATION
-	IoInfo    IO_COUNTERS
+	FBasicInfo JOBOBJECT_BASIC_ACCOUNTING_INFORMATION
+	FIoInfo    IO_COUNTERS
 }
 
 type _JOBOBJECT_BASIC_AND_IO_ACCOUNTING_INFORMATION = JOBOBJECT_BASIC_AND_IO_ACCOUNTING_INFORMATION
@@ -12970,7 +12970,7 @@ type _JOBOBJECT_BASIC_AND_IO_ACCOUNTING_INFORMATION = JOBOBJECT_BASIC_AND_IO_ACC
 type PJOBOBJECT_BASIC_AND_IO_ACCOUNTING_INFORMATION = uintptr
 
 type JOBOBJECT_JOBSET_INFORMATION = struct {
-	MemberLevel DWORD
+	FMemberLevel DWORD
 }
 
 type _JOBOBJECT_JOBSET_INFORMATION = JOBOBJECT_JOBSET_INFORMATION
@@ -12994,13 +12994,13 @@ const ToleranceIntervalMedium = 2
 const ToleranceIntervalLong = 3
 
 type JOBOBJECT_NOTIFICATION_LIMIT_INFORMATION = struct {
-	IoReadBytesLimit             DWORD64
-	IoWriteBytesLimit            DWORD64
-	PerJobUserTimeLimit          LARGE_INTEGER
-	JobMemoryLimit               DWORD64
-	RateControlTolerance         JOBOBJECT_RATE_CONTROL_TOLERANCE
-	RateControlToleranceInterval JOBOBJECT_RATE_CONTROL_TOLERANCE_INTERVAL
-	LimitFlags                   DWORD
+	FIoReadBytesLimit             DWORD64
+	FIoWriteBytesLimit            DWORD64
+	FPerJobUserTimeLimit          LARGE_INTEGER
+	FJobMemoryLimit               DWORD64
+	FRateControlTolerance         JOBOBJECT_RATE_CONTROL_TOLERANCE
+	FRateControlToleranceInterval JOBOBJECT_RATE_CONTROL_TOLERANCE_INTERVAL
+	FLimitFlags                   DWORD
 }
 
 type _JOBOBJECT_NOTIFICATION_LIMIT_INFORMATION = JOBOBJECT_NOTIFICATION_LIMIT_INFORMATION
@@ -13008,18 +13008,18 @@ type _JOBOBJECT_NOTIFICATION_LIMIT_INFORMATION = JOBOBJECT_NOTIFICATION_LIMIT_IN
 type PJOBOBJECT_NOTIFICATION_LIMIT_INFORMATION = uintptr
 
 type JOBOBJECT_LIMIT_VIOLATION_INFORMATION = struct {
-	LimitFlags                DWORD
-	ViolationLimitFlags       DWORD
-	IoReadBytes               DWORD64
-	IoReadBytesLimit          DWORD64
-	IoWriteBytes              DWORD64
-	IoWriteBytesLimit         DWORD64
-	PerJobUserTime            LARGE_INTEGER
-	PerJobUserTimeLimit       LARGE_INTEGER
-	JobMemory                 DWORD64
-	JobMemoryLimit            DWORD64
-	RateControlTolerance      JOBOBJECT_RATE_CONTROL_TOLERANCE
-	RateControlToleranceLimit JOBOBJECT_RATE_CONTROL_TOLERANCE_INTERVAL
+	FLimitFlags                DWORD
+	FViolationLimitFlags       DWORD
+	FIoReadBytes               DWORD64
+	FIoReadBytesLimit          DWORD64
+	FIoWriteBytes              DWORD64
+	FIoWriteBytesLimit         DWORD64
+	FPerJobUserTime            LARGE_INTEGER
+	FPerJobUserTimeLimit       LARGE_INTEGER
+	FJobMemory                 DWORD64
+	FJobMemoryLimit            DWORD64
+	FRateControlTolerance      JOBOBJECT_RATE_CONTROL_TOLERANCE
+	FRateControlToleranceLimit JOBOBJECT_RATE_CONTROL_TOLERANCE_INTERVAL
 }
 
 type _JOBOBJECT_LIMIT_VIOLATION_INFORMATION = JOBOBJECT_LIMIT_VIOLATION_INFORMATION
@@ -13027,10 +13027,10 @@ type _JOBOBJECT_LIMIT_VIOLATION_INFORMATION = JOBOBJECT_LIMIT_VIOLATION_INFORMAT
 type PJOBOBJECT_LIMIT_VIOLATION_INFORMATION = uintptr
 
 type JOBOBJECT_CPU_RATE_CONTROL_INFORMATION = struct {
-	ControlFlags DWORD
-	__ccgo1_4    struct {
-		Weight  [0]DWORD
-		CpuRate DWORD
+	FControlFlags DWORD
+	F__ccgo1_4    struct {
+		FWeight  [0]DWORD
+		FCpuRate DWORD
 	}
 }
 
@@ -13101,11 +13101,11 @@ const CacheData = 2
 const CacheTrace = 3
 
 type CACHE_DESCRIPTOR = struct {
-	Level         BYTE
-	Associativity BYTE
-	LineSize      WORD
-	Size          DWORD
-	Type          PROCESSOR_CACHE_TYPE
+	FLevel         BYTE
+	FAssociativity BYTE
+	FLineSize      WORD
+	FSize          DWORD
+	FType          PROCESSOR_CACHE_TYPE
 }
 
 type _CACHE_DESCRIPTOR = CACHE_DESCRIPTOR
@@ -13113,18 +13113,18 @@ type _CACHE_DESCRIPTOR = CACHE_DESCRIPTOR
 type PCACHE_DESCRIPTOR = uintptr
 
 type SYSTEM_LOGICAL_PROCESSOR_INFORMATION = struct {
-	ProcessorMask ULONG_PTR
-	Relationship  LOGICAL_PROCESSOR_RELATIONSHIP
-	__ccgo2_16    struct {
-		NumaNode [0]struct {
-			NodeNumber DWORD
+	FProcessorMask ULONG_PTR
+	FRelationship  LOGICAL_PROCESSOR_RELATIONSHIP
+	F__ccgo2_16    struct {
+		FNumaNode [0]struct {
+			FNodeNumber DWORD
 		}
-		Cache         [0]CACHE_DESCRIPTOR
-		Reserved      [0][2]ULONGLONG
-		ProcessorCore struct {
-			Flags BYTE
+		FCache         [0]CACHE_DESCRIPTOR
+		FReserved      [0][2]ULONGLONG
+		FProcessorCore struct {
+			FFlags BYTE
 		}
-		__ccgo_pad4 [15]byte
+		F__ccgo_pad4 [15]byte
 	}
 }
 
@@ -13133,10 +13133,10 @@ type _SYSTEM_LOGICAL_PROCESSOR_INFORMATION = SYSTEM_LOGICAL_PROCESSOR_INFORMATIO
 type PSYSTEM_LOGICAL_PROCESSOR_INFORMATION = uintptr
 
 type PROCESSOR_RELATIONSHIP = struct {
-	Flags      BYTE
-	Reserved   [21]BYTE
-	GroupCount WORD
-	GroupMask  [1]GROUP_AFFINITY
+	FFlags      BYTE
+	FReserved   [21]BYTE
+	FGroupCount WORD
+	FGroupMask  [1]GROUP_AFFINITY
 }
 
 type _PROCESSOR_RELATIONSHIP = PROCESSOR_RELATIONSHIP
@@ -13144,9 +13144,9 @@ type _PROCESSOR_RELATIONSHIP = PROCESSOR_RELATIONSHIP
 type PPROCESSOR_RELATIONSHIP = uintptr
 
 type NUMA_NODE_RELATIONSHIP = struct {
-	NodeNumber DWORD
-	Reserved   [20]BYTE
-	GroupMask  GROUP_AFFINITY
+	FNodeNumber DWORD
+	FReserved   [20]BYTE
+	FGroupMask  GROUP_AFFINITY
 }
 
 type _NUMA_NODE_RELATIONSHIP = NUMA_NODE_RELATIONSHIP
@@ -13154,13 +13154,13 @@ type _NUMA_NODE_RELATIONSHIP = NUMA_NODE_RELATIONSHIP
 type PNUMA_NODE_RELATIONSHIP = uintptr
 
 type CACHE_RELATIONSHIP = struct {
-	Level         BYTE
-	Associativity BYTE
-	LineSize      WORD
-	CacheSize     DWORD
-	Type          PROCESSOR_CACHE_TYPE
-	Reserved      [20]BYTE
-	GroupMask     GROUP_AFFINITY
+	FLevel         BYTE
+	FAssociativity BYTE
+	FLineSize      WORD
+	FCacheSize     DWORD
+	FType          PROCESSOR_CACHE_TYPE
+	FReserved      [20]BYTE
+	FGroupMask     GROUP_AFFINITY
 }
 
 type _CACHE_RELATIONSHIP = CACHE_RELATIONSHIP
@@ -13168,10 +13168,10 @@ type _CACHE_RELATIONSHIP = CACHE_RELATIONSHIP
 type PCACHE_RELATIONSHIP = uintptr
 
 type PROCESSOR_GROUP_INFO = struct {
-	MaximumProcessorCount BYTE
-	ActiveProcessorCount  BYTE
-	Reserved              [38]BYTE
-	ActiveProcessorMask   KAFFINITY
+	FMaximumProcessorCount BYTE
+	FActiveProcessorCount  BYTE
+	FReserved              [38]BYTE
+	FActiveProcessorMask   KAFFINITY
 }
 
 type _PROCESSOR_GROUP_INFO = PROCESSOR_GROUP_INFO
@@ -13179,10 +13179,10 @@ type _PROCESSOR_GROUP_INFO = PROCESSOR_GROUP_INFO
 type PPROCESSOR_GROUP_INFO = uintptr
 
 type GROUP_RELATIONSHIP = struct {
-	MaximumGroupCount WORD
-	ActiveGroupCount  WORD
-	Reserved          [20]BYTE
-	GroupInfo         [1]PROCESSOR_GROUP_INFO
+	FMaximumGroupCount WORD
+	FActiveGroupCount  WORD
+	FReserved          [20]BYTE
+	FGroupInfo         [1]PROCESSOR_GROUP_INFO
 }
 
 type _GROUP_RELATIONSHIP = GROUP_RELATIONSHIP
@@ -13190,33 +13190,33 @@ type _GROUP_RELATIONSHIP = GROUP_RELATIONSHIP
 type PGROUP_RELATIONSHIP = uintptr
 
 type _SYSTEM_LOGICAL_PROCESSOR_INFORMATION_EX = struct {
-	Relationship LOGICAL_PROCESSOR_RELATIONSHIP
-	Size         DWORD
-	__ccgo2_8    struct {
-		NumaNode    [0]NUMA_NODE_RELATIONSHIP
-		Cache       [0]CACHE_RELATIONSHIP
-		Group       [0]GROUP_RELATIONSHIP
-		Processor   PROCESSOR_RELATIONSHIP
-		__ccgo_pad4 [32]byte
+	FRelationship LOGICAL_PROCESSOR_RELATIONSHIP
+	FSize         DWORD
+	F__ccgo2_8    struct {
+		FNumaNode    [0]NUMA_NODE_RELATIONSHIP
+		FCache       [0]CACHE_RELATIONSHIP
+		FGroup       [0]GROUP_RELATIONSHIP
+		FProcessor   PROCESSOR_RELATIONSHIP
+		F__ccgo_pad4 [32]byte
 	}
 }
 
 type SYSTEM_LOGICAL_PROCESSOR_INFORMATION_EX = struct {
-	Relationship LOGICAL_PROCESSOR_RELATIONSHIP
-	Size         DWORD
-	__ccgo2_8    struct {
-		NumaNode    [0]NUMA_NODE_RELATIONSHIP
-		Cache       [0]CACHE_RELATIONSHIP
-		Group       [0]GROUP_RELATIONSHIP
-		Processor   PROCESSOR_RELATIONSHIP
-		__ccgo_pad4 [32]byte
+	FRelationship LOGICAL_PROCESSOR_RELATIONSHIP
+	FSize         DWORD
+	F__ccgo2_8    struct {
+		FNumaNode    [0]NUMA_NODE_RELATIONSHIP
+		FCache       [0]CACHE_RELATIONSHIP
+		FGroup       [0]GROUP_RELATIONSHIP
+		FProcessor   PROCESSOR_RELATIONSHIP
+		F__ccgo_pad4 [32]byte
 	}
 }
 
 type PSYSTEM_LOGICAL_PROCESSOR_INFORMATION_EX = uintptr
 
 type SYSTEM_PROCESSOR_CYCLE_TIME_INFORMATION = struct {
-	CycleTime DWORD64
+	FCycleTime DWORD64
 }
 
 type _SYSTEM_PROCESSOR_CYCLE_TIME_INFORMATION = SYSTEM_PROCESSOR_CYCLE_TIME_INFORMATION
@@ -13224,7 +13224,7 @@ type _SYSTEM_PROCESSOR_CYCLE_TIME_INFORMATION = SYSTEM_PROCESSOR_CYCLE_TIME_INFO
 type PSYSTEM_PROCESSOR_CYCLE_TIME_INFORMATION = uintptr
 
 type SYSTEM_SUPPORTED_PROCESSOR_ARCHITECTURES_INFORMATION = struct {
-	__ccgo0 uint32
+	F__ccgo0 uint32
 }
 
 type _SYSTEM_SUPPORTED_PROCESSOR_ARCHITECTURES_INFORMATION = SYSTEM_SUPPORTED_PROCESSOR_ARCHITECTURES_INFORMATION
@@ -13232,8 +13232,8 @@ type _SYSTEM_SUPPORTED_PROCESSOR_ARCHITECTURES_INFORMATION = SYSTEM_SUPPORTED_PR
 type PSYSTEM_SUPPORTED_PROCESSOR_ARCHITECTURES_INFORMATION = uintptr
 
 type XSTATE_FEATURE = struct {
-	Offset DWORD
-	Size   DWORD
+	FOffset DWORD
+	FSize   DWORD
 }
 
 type _XSTATE_FEATURE = XSTATE_FEATURE
@@ -13241,11 +13241,11 @@ type _XSTATE_FEATURE = XSTATE_FEATURE
 type PXSTATE_FEATURE = uintptr
 
 type XSTATE_CONFIGURATION = struct {
-	EnabledFeatures         DWORD64
-	EnabledVolatileFeatures DWORD64
-	Size                    DWORD
-	__ccgo20                uint8
-	Features                [64]XSTATE_FEATURE
+	FEnabledFeatures         DWORD64
+	FEnabledVolatileFeatures DWORD64
+	FSize                    DWORD
+	F__ccgo20                uint8
+	FFeatures                [64]XSTATE_FEATURE
 }
 
 type _XSTATE_CONFIGURATION = XSTATE_CONFIGURATION
@@ -13253,13 +13253,13 @@ type _XSTATE_CONFIGURATION = XSTATE_CONFIGURATION
 type PXSTATE_CONFIGURATION = uintptr
 
 type MEMORY_BASIC_INFORMATION = struct {
-	BaseAddress       PVOID
-	AllocationBase    PVOID
-	AllocationProtect DWORD
-	RegionSize        SIZE_T
-	State             DWORD
-	Protect           DWORD
-	Type              DWORD
+	FBaseAddress       PVOID
+	FAllocationBase    PVOID
+	FAllocationProtect DWORD
+	FRegionSize        SIZE_T
+	FState             DWORD
+	FProtect           DWORD
+	FType              DWORD
 }
 
 type _MEMORY_BASIC_INFORMATION = MEMORY_BASIC_INFORMATION
@@ -13267,13 +13267,13 @@ type _MEMORY_BASIC_INFORMATION = MEMORY_BASIC_INFORMATION
 type PMEMORY_BASIC_INFORMATION = uintptr
 
 type MEMORY_BASIC_INFORMATION32 = struct {
-	BaseAddress       DWORD
-	AllocationBase    DWORD
-	AllocationProtect DWORD
-	RegionSize        DWORD
-	State             DWORD
-	Protect           DWORD
-	Type              DWORD
+	FBaseAddress       DWORD
+	FAllocationBase    DWORD
+	FAllocationProtect DWORD
+	FRegionSize        DWORD
+	FState             DWORD
+	FProtect           DWORD
+	FType              DWORD
 }
 
 type _MEMORY_BASIC_INFORMATION32 = MEMORY_BASIC_INFORMATION32
@@ -13281,15 +13281,15 @@ type _MEMORY_BASIC_INFORMATION32 = MEMORY_BASIC_INFORMATION32
 type PMEMORY_BASIC_INFORMATION32 = uintptr
 
 type MEMORY_BASIC_INFORMATION64 = struct {
-	BaseAddress       ULONGLONG
-	AllocationBase    ULONGLONG
-	AllocationProtect DWORD
-	__alignment1      DWORD
-	RegionSize        ULONGLONG
-	State             DWORD
-	Protect           DWORD
-	Type              DWORD
-	__alignment2      DWORD
+	FBaseAddress       ULONGLONG
+	FAllocationBase    ULONGLONG
+	FAllocationProtect DWORD
+	F__alignment1      DWORD
+	FRegionSize        ULONGLONG
+	FState             DWORD
+	FProtect           DWORD
+	FType              DWORD
+	F__alignment2      DWORD
 }
 
 type _MEMORY_BASIC_INFORMATION64 = MEMORY_BASIC_INFORMATION64
@@ -13297,8 +13297,8 @@ type _MEMORY_BASIC_INFORMATION64 = MEMORY_BASIC_INFORMATION64
 type PMEMORY_BASIC_INFORMATION64 = uintptr
 
 type CFG_CALL_TARGET_INFO = struct {
-	Offset ULONG_PTR
-	Flags  ULONG_PTR
+	FOffset ULONG_PTR
+	FFlags  ULONG_PTR
 }
 
 type _CFG_CALL_TARGET_INFO = CFG_CALL_TARGET_INFO
@@ -13306,9 +13306,9 @@ type _CFG_CALL_TARGET_INFO = CFG_CALL_TARGET_INFO
 type PCFG_CALL_TARGET_INFO = uintptr
 
 type MEM_ADDRESS_REQUIREMENTS = struct {
-	LowestStartingAddress PVOID
-	HighestEndingAddress  PVOID
-	Alignment             SIZE_T
+	FLowestStartingAddress PVOID
+	FHighestEndingAddress  PVOID
+	FAlignment             SIZE_T
 }
 
 type _MEM_ADDRESS_REQUIREMENTS = MEM_ADDRESS_REQUIREMENTS
@@ -13330,30 +13330,30 @@ const MemExtendedParameterMax = 6
 type PMEM_EXTENDED_PARAMETER_TYPE = uintptr
 
 type MEM_EXTENDED_PARAMETER = struct {
-	__ccgo0_0 struct {
-		__ccgo0 uint64
+	F__ccgo0_0 struct {
+		F__ccgo0 uint64
 	}
-	__ccgo1_8 struct {
-		Pointer [0]PVOID
-		Size    [0]SIZE_T
-		Handle  [0]HANDLE
-		ULong   [0]DWORD
-		ULong64 DWORD64
+	F__ccgo1_8 struct {
+		FPointer [0]PVOID
+		FSize    [0]SIZE_T
+		FHandle  [0]HANDLE
+		FULong   [0]DWORD
+		FULong64 DWORD64
 	}
 }
 
 type PMEM_EXTENDED_PARAMETER = uintptr
 
 type MEM_EXTENDED_PARAMETER1 = struct {
-	__ccgo0_0 struct {
-		__ccgo0 uint64
+	F__ccgo0_0 struct {
+		F__ccgo0 uint64
 	}
-	__ccgo1_8 struct {
-		Pointer [0]PVOID
-		Size    [0]SIZE_T
-		Handle  [0]HANDLE
-		ULong   [0]DWORD
-		ULong64 DWORD64
+	F__ccgo1_8 struct {
+		FPointer [0]PVOID
+		FSize    [0]SIZE_T
+		FHandle  [0]HANDLE
+		FULong   [0]DWORD
+		FULong64 DWORD64
 	}
 }
 
@@ -13369,20 +13369,20 @@ const MemSectionExtendedParameterMax = 3
 type PMEM_SECTION_EXTENDED_PARAMETER_TYPE = uintptr
 
 type FILE_ID_128 = struct {
-	Identifier [16]BYTE
+	FIdentifier [16]BYTE
 }
 
 type PFILE_ID_128 = uintptr
 
 type FILE_ID_1281 = struct {
-	Identifier [16]BYTE
+	FIdentifier [16]BYTE
 }
 
 type FILE_NOTIFY_INFORMATION = struct {
-	NextEntryOffset DWORD
-	Action          DWORD
-	FileNameLength  DWORD
-	FileName        [1]WCHAR
+	FNextEntryOffset DWORD
+	FAction          DWORD
+	FFileNameLength  DWORD
+	FFileName        [1]WCHAR
 }
 
 type _FILE_NOTIFY_INFORMATION = FILE_NOTIFY_INFORMATION
@@ -13390,8 +13390,8 @@ type _FILE_NOTIFY_INFORMATION = FILE_NOTIFY_INFORMATION
 type PFILE_NOTIFY_INFORMATION = uintptr
 
 type FILE_SEGMENT_ELEMENT = struct {
-	Alignment [0]ULONGLONG
-	Buffer    PVOID64
+	FAlignment [0]ULONGLONG
+	FBuffer    PVOID64
 }
 
 type _FILE_SEGMENT_ELEMENT = FILE_SEGMENT_ELEMENT
@@ -13399,12 +13399,12 @@ type _FILE_SEGMENT_ELEMENT = FILE_SEGMENT_ELEMENT
 type PFILE_SEGMENT_ELEMENT = uintptr
 
 type REPARSE_GUID_DATA_BUFFER = struct {
-	ReparseTag           DWORD
-	ReparseDataLength    WORD
-	Reserved             WORD
-	ReparseGuid          GUID
-	GenericReparseBuffer struct {
-		DataBuffer [1]BYTE
+	FReparseTag           DWORD
+	FReparseDataLength    WORD
+	FReserved             WORD
+	FReparseGuid          GUID
+	FGenericReparseBuffer struct {
+		FDataBuffer [1]BYTE
 	}
 }
 
@@ -13413,11 +13413,11 @@ type _REPARSE_GUID_DATA_BUFFER = REPARSE_GUID_DATA_BUFFER
 type PREPARSE_GUID_DATA_BUFFER = uintptr
 
 type SCRUB_DATA_INPUT = struct {
-	Size          DWORD
-	Flags         DWORD
-	MaximumIos    DWORD
-	Reserved      [17]DWORD
-	ResumeContext [816]BYTE
+	FSize          DWORD
+	FFlags         DWORD
+	FMaximumIos    DWORD
+	FReserved      [17]DWORD
+	FResumeContext [816]BYTE
 }
 
 type _SCRUB_DATA_INPUT = SCRUB_DATA_INPUT
@@ -13425,16 +13425,16 @@ type _SCRUB_DATA_INPUT = SCRUB_DATA_INPUT
 type PSCRUB_DATA_INPUT = uintptr
 
 type SCRUB_DATA_OUTPUT = struct {
-	Size                  DWORD
-	Flags                 DWORD
-	Status                DWORD
-	ErrorFileOffset       ULONGLONG
-	ErrorLength           ULONGLONG
-	NumberOfBytesRepaired ULONGLONG
-	NumberOfBytesFailed   ULONGLONG
-	InternalFileReference ULONGLONG
-	Reserved              [6]DWORD
-	ResumeContext         [816]BYTE
+	FSize                  DWORD
+	FFlags                 DWORD
+	FStatus                DWORD
+	FErrorFileOffset       ULONGLONG
+	FErrorLength           ULONGLONG
+	FNumberOfBytesRepaired ULONGLONG
+	FNumberOfBytesFailed   ULONGLONG
+	FInternalFileReference ULONGLONG
+	FReserved              [6]DWORD
+	FResumeContext         [816]BYTE
 }
 
 type _SCRUB_DATA_OUTPUT = SCRUB_DATA_OUTPUT
@@ -13525,14 +13525,14 @@ const PowerRequestExecutionRequired = 3
 type PPOWER_REQUEST_TYPE = uintptr
 
 type CM_POWER_DATA = struct {
-	PD_Size                 DWORD
-	PD_MostRecentPowerState DEVICE_POWER_STATE
-	PD_Capabilities         DWORD
-	PD_D1Latency            DWORD
-	PD_D2Latency            DWORD
-	PD_D3Latency            DWORD
-	PD_PowerStateMapping    [7]DEVICE_POWER_STATE
-	PD_DeepestSystemWake    SYSTEM_POWER_STATE
+	FPD_Size                 DWORD
+	FPD_MostRecentPowerState DEVICE_POWER_STATE
+	FPD_Capabilities         DWORD
+	FPD_D1Latency            DWORD
+	FPD_D2Latency            DWORD
+	FPD_D3Latency            DWORD
+	FPD_PowerStateMapping    [7]DEVICE_POWER_STATE
+	FPD_DeepestSystemWake    SYSTEM_POWER_STATE
 }
 
 type CM_Power_Data_s = CM_POWER_DATA
@@ -13632,7 +13632,7 @@ const UserUnknown = 255
 type PPOWER_USER_PRESENCE_TYPE = uintptr
 
 type POWER_USER_PRESENCE = struct {
-	UserPresence POWER_USER_PRESENCE_TYPE
+	FUserPresence POWER_USER_PRESENCE_TYPE
 }
 
 type _POWER_USER_PRESENCE = POWER_USER_PRESENCE
@@ -13640,8 +13640,8 @@ type _POWER_USER_PRESENCE = POWER_USER_PRESENCE
 type PPOWER_USER_PRESENCE = uintptr
 
 type POWER_SESSION_CONNECT = struct {
-	Connected BOOLEAN
-	Console   BOOLEAN
+	FConnected BOOLEAN
+	FConsole   BOOLEAN
 }
 
 type _POWER_SESSION_CONNECT = POWER_SESSION_CONNECT
@@ -13649,8 +13649,8 @@ type _POWER_SESSION_CONNECT = POWER_SESSION_CONNECT
 type PPOWER_SESSION_CONNECT = uintptr
 
 type POWER_SESSION_TIMEOUTS = struct {
-	InputTimeout   DWORD
-	DisplayTimeout DWORD
+	FInputTimeout   DWORD
+	FDisplayTimeout DWORD
 }
 
 type _POWER_SESSION_TIMEOUTS = POWER_SESSION_TIMEOUTS
@@ -13658,8 +13658,8 @@ type _POWER_SESSION_TIMEOUTS = POWER_SESSION_TIMEOUTS
 type PPOWER_SESSION_TIMEOUTS = uintptr
 
 type POWER_SESSION_RIT_STATE = struct {
-	Active        BOOLEAN
-	LastInputTime DWORD
+	FActive        BOOLEAN
+	FLastInputTime DWORD
 }
 
 type _POWER_SESSION_RIT_STATE = POWER_SESSION_RIT_STATE
@@ -13667,9 +13667,9 @@ type _POWER_SESSION_RIT_STATE = POWER_SESSION_RIT_STATE
 type PPOWER_SESSION_RIT_STATE = uintptr
 
 type POWER_SESSION_WINLOGON = struct {
-	SessionId DWORD
-	Console   BOOLEAN
-	Locked    BOOLEAN
+	FSessionId DWORD
+	FConsole   BOOLEAN
+	FLocked    BOOLEAN
 }
 
 type _POWER_SESSION_WINLOGON = POWER_SESSION_WINLOGON
@@ -13677,8 +13677,8 @@ type _POWER_SESSION_WINLOGON = POWER_SESSION_WINLOGON
 type PPOWER_SESSION_WINLOGON = uintptr
 
 type POWER_IDLE_RESILIENCY = struct {
-	CoalescingTimeout    DWORD
-	IdleResiliencyPeriod DWORD
+	FCoalescingTimeout    DWORD
+	FIdleResiliencyPeriod DWORD
 }
 
 type _POWER_IDLE_RESILIENCY = POWER_IDLE_RESILIENCY
@@ -13704,9 +13704,9 @@ const MonitorRequestReasonPolicyChange = 13
 const MonitorRequestReasonMax = 14
 
 type POWER_MONITOR_INVOCATION = struct {
-	On            BOOLEAN
-	Console       BOOLEAN
-	RequestReason POWER_MONITOR_REQUEST_REASON
+	FOn            BOOLEAN
+	FConsole       BOOLEAN
+	FRequestReason POWER_MONITOR_REQUEST_REASON
 }
 
 type _POWER_MONITOR_INVOCATION = POWER_MONITOR_INVOCATION
@@ -13714,9 +13714,9 @@ type _POWER_MONITOR_INVOCATION = POWER_MONITOR_INVOCATION
 type PPOWER_MONITOR_INVOCATION = uintptr
 
 type RESUME_PERFORMANCE = struct {
-	PostTimeMs              DWORD
-	TotalResumeTimeMs       ULONGLONG
-	ResumeCompleteTimestamp ULONGLONG
+	FPostTimeMs              DWORD
+	FTotalResumeTimeMs       ULONGLONG
+	FResumeCompleteTimestamp ULONGLONG
 }
 
 type _RESUME_PERFORMANCE = RESUME_PERFORMANCE
@@ -13731,25 +13731,25 @@ const PoHot = 2
 const PoConditionMaximum = 3
 
 type SET_POWER_SETTING_VALUE = struct {
-	Version        DWORD
-	Guid           GUID
-	PowerCondition SYSTEM_POWER_CONDITION
-	DataLength     DWORD
-	Data           [1]BYTE
+	FVersion        DWORD
+	FGuid           GUID
+	FPowerCondition SYSTEM_POWER_CONDITION
+	FDataLength     DWORD
+	FData           [1]BYTE
 }
 
 type PSET_POWER_SETTING_VALUE = uintptr
 
 type NOTIFY_USER_POWER_SETTING = struct {
-	Guid GUID
+	FGuid GUID
 }
 
 type PNOTIFY_USER_POWER_SETTING = uintptr
 
 type APPLICATIONLAUNCH_SETTING_VALUE = struct {
-	ActivationTime   LARGE_INTEGER
-	Flags            DWORD
-	ButtonInstanceID DWORD
+	FActivationTime   LARGE_INTEGER
+	FFlags            DWORD
+	FButtonInstanceID DWORD
 }
 
 type _APPLICATIONLAUNCH_SETTING_VALUE = APPLICATIONLAUNCH_SETTING_VALUE
@@ -13774,7 +13774,7 @@ const PlatformRoleMaximum = 9
 type PPOWER_PLATFORM_ROLE = uintptr
 
 type POWER_PLATFORM_INFORMATION = struct {
-	AoAc BOOLEAN
+	FAoAc BOOLEAN
 }
 
 type _POWER_PLATFORM_INFORMATION = POWER_PLATFORM_INFORMATION
@@ -13782,279 +13782,279 @@ type _POWER_PLATFORM_INFORMATION = POWER_PLATFORM_INFORMATION
 type PPOWER_PLATFORM_INFORMATION = uintptr
 
 type BATTERY_REPORTING_SCALE = struct {
-	Granularity DWORD
-	Capacity    DWORD
+	FGranularity DWORD
+	FCapacity    DWORD
 }
 
 type PBATTERY_REPORTING_SCALE = uintptr
 
 type PPM_WMI_LEGACY_PERFSTATE = struct {
-	Frequency        DWORD
-	Flags            DWORD
-	PercentFrequency DWORD
+	FFrequency        DWORD
+	FFlags            DWORD
+	FPercentFrequency DWORD
 }
 
 type PPPM_WMI_LEGACY_PERFSTATE = uintptr
 
 type PPM_WMI_IDLE_STATE = struct {
-	Latency        DWORD
-	Power          DWORD
-	TimeCheck      DWORD
-	PromotePercent BYTE
-	DemotePercent  BYTE
-	StateType      BYTE
-	Reserved       BYTE
-	StateFlags     DWORD
-	Context        DWORD
-	IdleHandler    DWORD
-	Reserved1      DWORD
+	FLatency        DWORD
+	FPower          DWORD
+	FTimeCheck      DWORD
+	FPromotePercent BYTE
+	FDemotePercent  BYTE
+	FStateType      BYTE
+	FReserved       BYTE
+	FStateFlags     DWORD
+	FContext        DWORD
+	FIdleHandler    DWORD
+	FReserved1      DWORD
 }
 
 type PPPM_WMI_IDLE_STATE = uintptr
 
 type PPM_WMI_IDLE_STATES = struct {
-	Type             DWORD
-	Count            DWORD
-	TargetState      DWORD
-	OldState         DWORD
-	TargetProcessors DWORD64
-	State            [1]PPM_WMI_IDLE_STATE
+	FType             DWORD
+	FCount            DWORD
+	FTargetState      DWORD
+	FOldState         DWORD
+	FTargetProcessors DWORD64
+	FState            [1]PPM_WMI_IDLE_STATE
 }
 
 type PPPM_WMI_IDLE_STATES = uintptr
 
 type PPM_WMI_IDLE_STATES_EX = struct {
-	Type             DWORD
-	Count            DWORD
-	TargetState      DWORD
-	OldState         DWORD
-	TargetProcessors PVOID
-	State            [1]PPM_WMI_IDLE_STATE
+	FType             DWORD
+	FCount            DWORD
+	FTargetState      DWORD
+	FOldState         DWORD
+	FTargetProcessors PVOID
+	FState            [1]PPM_WMI_IDLE_STATE
 }
 
 type PPPM_WMI_IDLE_STATES_EX = uintptr
 
 type PPM_WMI_PERF_STATE = struct {
-	Frequency        DWORD
-	Power            DWORD
-	PercentFrequency BYTE
-	IncreaseLevel    BYTE
-	DecreaseLevel    BYTE
-	Type             BYTE
-	IncreaseTime     DWORD
-	DecreaseTime     DWORD
-	Control          DWORD64
-	Status           DWORD64
-	HitCount         DWORD
-	Reserved1        DWORD
-	Reserved2        DWORD64
-	Reserved3        DWORD64
+	FFrequency        DWORD
+	FPower            DWORD
+	FPercentFrequency BYTE
+	FIncreaseLevel    BYTE
+	FDecreaseLevel    BYTE
+	FType             BYTE
+	FIncreaseTime     DWORD
+	FDecreaseTime     DWORD
+	FControl          DWORD64
+	FStatus           DWORD64
+	FHitCount         DWORD
+	FReserved1        DWORD
+	FReserved2        DWORD64
+	FReserved3        DWORD64
 }
 
 type PPPM_WMI_PERF_STATE = uintptr
 
 type PPM_WMI_PERF_STATES = struct {
-	Count             DWORD
-	MaxFrequency      DWORD
-	CurrentState      DWORD
-	MaxPerfState      DWORD
-	MinPerfState      DWORD
-	LowestPerfState   DWORD
-	ThermalConstraint DWORD
-	BusyAdjThreshold  BYTE
-	PolicyType        BYTE
-	Type              BYTE
-	Reserved          BYTE
-	TimerInterval     DWORD
-	TargetProcessors  DWORD64
-	PStateHandler     DWORD
-	PStateContext     DWORD
-	TStateHandler     DWORD
-	TStateContext     DWORD
-	FeedbackHandler   DWORD
-	Reserved1         DWORD
-	Reserved2         DWORD64
-	State             [1]PPM_WMI_PERF_STATE
+	FCount             DWORD
+	FMaxFrequency      DWORD
+	FCurrentState      DWORD
+	FMaxPerfState      DWORD
+	FMinPerfState      DWORD
+	FLowestPerfState   DWORD
+	FThermalConstraint DWORD
+	FBusyAdjThreshold  BYTE
+	FPolicyType        BYTE
+	FType              BYTE
+	FReserved          BYTE
+	FTimerInterval     DWORD
+	FTargetProcessors  DWORD64
+	FPStateHandler     DWORD
+	FPStateContext     DWORD
+	FTStateHandler     DWORD
+	FTStateContext     DWORD
+	FFeedbackHandler   DWORD
+	FReserved1         DWORD
+	FReserved2         DWORD64
+	FState             [1]PPM_WMI_PERF_STATE
 }
 
 type PPPM_WMI_PERF_STATES = uintptr
 
 type PPM_WMI_PERF_STATES_EX = struct {
-	Count             DWORD
-	MaxFrequency      DWORD
-	CurrentState      DWORD
-	MaxPerfState      DWORD
-	MinPerfState      DWORD
-	LowestPerfState   DWORD
-	ThermalConstraint DWORD
-	BusyAdjThreshold  BYTE
-	PolicyType        BYTE
-	Type              BYTE
-	Reserved          BYTE
-	TimerInterval     DWORD
-	TargetProcessors  PVOID
-	PStateHandler     DWORD
-	PStateContext     DWORD
-	TStateHandler     DWORD
-	TStateContext     DWORD
-	FeedbackHandler   DWORD
-	Reserved1         DWORD
-	Reserved2         DWORD64
-	State             [1]PPM_WMI_PERF_STATE
+	FCount             DWORD
+	FMaxFrequency      DWORD
+	FCurrentState      DWORD
+	FMaxPerfState      DWORD
+	FMinPerfState      DWORD
+	FLowestPerfState   DWORD
+	FThermalConstraint DWORD
+	FBusyAdjThreshold  BYTE
+	FPolicyType        BYTE
+	FType              BYTE
+	FReserved          BYTE
+	FTimerInterval     DWORD
+	FTargetProcessors  PVOID
+	FPStateHandler     DWORD
+	FPStateContext     DWORD
+	FTStateHandler     DWORD
+	FTStateContext     DWORD
+	FFeedbackHandler   DWORD
+	FReserved1         DWORD
+	FReserved2         DWORD64
+	FState             [1]PPM_WMI_PERF_STATE
 }
 
 type PPPM_WMI_PERF_STATES_EX = uintptr
 
 type PPM_IDLE_STATE_ACCOUNTING = struct {
-	IdleTransitions    DWORD
-	FailedTransitions  DWORD
-	InvalidBucketIndex DWORD
-	TotalTime          DWORD64
-	IdleTimeBuckets    [6]DWORD
+	FIdleTransitions    DWORD
+	FFailedTransitions  DWORD
+	FInvalidBucketIndex DWORD
+	FTotalTime          DWORD64
+	FIdleTimeBuckets    [6]DWORD
 }
 
 type PPPM_IDLE_STATE_ACCOUNTING = uintptr
 
 type PPM_IDLE_ACCOUNTING = struct {
-	StateCount       DWORD
-	TotalTransitions DWORD
-	ResetCount       DWORD
-	StartTime        DWORD64
-	State            [1]PPM_IDLE_STATE_ACCOUNTING
+	FStateCount       DWORD
+	FTotalTransitions DWORD
+	FResetCount       DWORD
+	FStartTime        DWORD64
+	FState            [1]PPM_IDLE_STATE_ACCOUNTING
 }
 
 type PPPM_IDLE_ACCOUNTING = uintptr
 
 type PPM_IDLE_STATE_BUCKET_EX = struct {
-	TotalTimeUs DWORD64
-	MinTimeUs   DWORD
-	MaxTimeUs   DWORD
-	Count       DWORD
+	FTotalTimeUs DWORD64
+	FMinTimeUs   DWORD
+	FMaxTimeUs   DWORD
+	FCount       DWORD
 }
 
 type PPPM_IDLE_STATE_BUCKET_EX = uintptr
 
 type PPM_IDLE_STATE_ACCOUNTING_EX = struct {
-	TotalTime            DWORD64
-	IdleTransitions      DWORD
-	FailedTransitions    DWORD
-	InvalidBucketIndex   DWORD
-	MinTimeUs            DWORD
-	MaxTimeUs            DWORD
-	CancelledTransitions DWORD
-	IdleTimeBuckets      [16]PPM_IDLE_STATE_BUCKET_EX
+	FTotalTime            DWORD64
+	FIdleTransitions      DWORD
+	FFailedTransitions    DWORD
+	FInvalidBucketIndex   DWORD
+	FMinTimeUs            DWORD
+	FMaxTimeUs            DWORD
+	FCancelledTransitions DWORD
+	FIdleTimeBuckets      [16]PPM_IDLE_STATE_BUCKET_EX
 }
 
 type PPPM_IDLE_STATE_ACCOUNTING_EX = uintptr
 
 type PPM_IDLE_ACCOUNTING_EX = struct {
-	StateCount       DWORD
-	TotalTransitions DWORD
-	ResetCount       DWORD
-	AbortCount       DWORD
-	StartTime        DWORD64
-	State            [1]PPM_IDLE_STATE_ACCOUNTING_EX
+	FStateCount       DWORD
+	FTotalTransitions DWORD
+	FResetCount       DWORD
+	FAbortCount       DWORD
+	FStartTime        DWORD64
+	FState            [1]PPM_IDLE_STATE_ACCOUNTING_EX
 }
 
 type PPPM_IDLE_ACCOUNTING_EX = uintptr
 
 type PPM_PERFSTATE_EVENT = struct {
-	State     DWORD
-	Status    DWORD
-	Latency   DWORD
-	Speed     DWORD
-	Processor DWORD
+	FState     DWORD
+	FStatus    DWORD
+	FLatency   DWORD
+	FSpeed     DWORD
+	FProcessor DWORD
 }
 
 type PPPM_PERFSTATE_EVENT = uintptr
 
 type PPM_PERFSTATE_DOMAIN_EVENT = struct {
-	State      DWORD
-	Latency    DWORD
-	Speed      DWORD
-	Processors DWORD64
+	FState      DWORD
+	FLatency    DWORD
+	FSpeed      DWORD
+	FProcessors DWORD64
 }
 
 type PPPM_PERFSTATE_DOMAIN_EVENT = uintptr
 
 type PPM_IDLESTATE_EVENT = struct {
-	NewState   DWORD
-	OldState   DWORD
-	Processors DWORD64
+	FNewState   DWORD
+	FOldState   DWORD
+	FProcessors DWORD64
 }
 
 type PPPM_IDLESTATE_EVENT = uintptr
 
 type PPM_THERMALCHANGE_EVENT = struct {
-	ThermalConstraint DWORD
-	Processors        DWORD64
+	FThermalConstraint DWORD
+	FProcessors        DWORD64
 }
 
 type PPPM_THERMALCHANGE_EVENT = uintptr
 
 type PPM_THERMAL_POLICY_EVENT = struct {
-	Mode       BYTE
-	Processors DWORD64
+	FMode       BYTE
+	FProcessors DWORD64
 }
 
 type PPPM_THERMAL_POLICY_EVENT = uintptr
 
 type POWER_ACTION_POLICY = struct {
-	Action    POWER_ACTION
-	Flags     DWORD
-	EventCode DWORD
+	FAction    POWER_ACTION
+	FFlags     DWORD
+	FEventCode DWORD
 }
 
 type PPOWER_ACTION_POLICY = uintptr
 
 type PROCESSOR_IDLESTATE_INFO = struct {
-	TimeCheck      DWORD
-	DemotePercent  BYTE
-	PromotePercent BYTE
-	Spare          [2]BYTE
+	FTimeCheck      DWORD
+	FDemotePercent  BYTE
+	FPromotePercent BYTE
+	FSpare          [2]BYTE
 }
 
 type PPROCESSOR_IDLESTATE_INFO = uintptr
 
 type SYSTEM_POWER_LEVEL = struct {
-	Enable         BOOLEAN
-	Spare          [3]BYTE
-	BatteryLevel   DWORD
-	PowerPolicy    POWER_ACTION_POLICY
-	MinSystemState SYSTEM_POWER_STATE
+	FEnable         BOOLEAN
+	FSpare          [3]BYTE
+	FBatteryLevel   DWORD
+	FPowerPolicy    POWER_ACTION_POLICY
+	FMinSystemState SYSTEM_POWER_STATE
 }
 
 type PSYSTEM_POWER_LEVEL = uintptr
 
 type SYSTEM_POWER_POLICY = struct {
-	Revision                    DWORD
-	PowerButton                 POWER_ACTION_POLICY
-	SleepButton                 POWER_ACTION_POLICY
-	LidClose                    POWER_ACTION_POLICY
-	LidOpenWake                 SYSTEM_POWER_STATE
-	Reserved                    DWORD
-	Idle                        POWER_ACTION_POLICY
-	IdleTimeout                 DWORD
-	IdleSensitivity             BYTE
-	DynamicThrottle             BYTE
-	Spare2                      [2]BYTE
-	MinSleep                    SYSTEM_POWER_STATE
-	MaxSleep                    SYSTEM_POWER_STATE
-	ReducedLatencySleep         SYSTEM_POWER_STATE
-	WinLogonFlags               DWORD
-	Spare3                      DWORD
-	DozeS4Timeout               DWORD
-	BroadcastCapacityResolution DWORD
-	DischargePolicy             [4]SYSTEM_POWER_LEVEL
-	VideoTimeout                DWORD
-	VideoDimDisplay             BOOLEAN
-	VideoReserved               [3]DWORD
-	SpindownTimeout             DWORD
-	OptimizeForPower            BOOLEAN
-	FanThrottleTolerance        BYTE
-	ForcedThrottle              BYTE
-	MinThrottle                 BYTE
-	OverThrottled               POWER_ACTION_POLICY
+	FRevision                    DWORD
+	FPowerButton                 POWER_ACTION_POLICY
+	FSleepButton                 POWER_ACTION_POLICY
+	FLidClose                    POWER_ACTION_POLICY
+	FLidOpenWake                 SYSTEM_POWER_STATE
+	FReserved                    DWORD
+	FIdle                        POWER_ACTION_POLICY
+	FIdleTimeout                 DWORD
+	FIdleSensitivity             BYTE
+	FDynamicThrottle             BYTE
+	FSpare2                      [2]BYTE
+	FMinSleep                    SYSTEM_POWER_STATE
+	FMaxSleep                    SYSTEM_POWER_STATE
+	FReducedLatencySleep         SYSTEM_POWER_STATE
+	FWinLogonFlags               DWORD
+	FSpare3                      DWORD
+	FDozeS4Timeout               DWORD
+	FBroadcastCapacityResolution DWORD
+	FDischargePolicy             [4]SYSTEM_POWER_LEVEL
+	FVideoTimeout                DWORD
+	FVideoDimDisplay             BOOLEAN
+	FVideoReserved               [3]DWORD
+	FSpindownTimeout             DWORD
+	FOptimizeForPower            BOOLEAN
+	FFanThrottleTolerance        BYTE
+	FForcedThrottle              BYTE
+	FMinThrottle                 BYTE
+	FOverThrottled               POWER_ACTION_POLICY
 }
 
 type _SYSTEM_POWER_POLICY = SYSTEM_POWER_POLICY
@@ -14062,27 +14062,27 @@ type _SYSTEM_POWER_POLICY = SYSTEM_POWER_POLICY
 type PSYSTEM_POWER_POLICY = uintptr
 
 type PROCESSOR_IDLESTATE_POLICY = struct {
-	Revision WORD
-	Flags    struct {
-		__ccgo1_0 [0]struct {
-			__ccgo0 uint16
+	FRevision WORD
+	FFlags    struct {
+		F__ccgo1_0 [0]struct {
+			F__ccgo0 uint16
 		}
-		AsWORD WORD
+		FAsWORD WORD
 	}
-	PolicyCount DWORD
-	Policy      [3]PROCESSOR_IDLESTATE_INFO
+	FPolicyCount DWORD
+	FPolicy      [3]PROCESSOR_IDLESTATE_INFO
 }
 
 type PPROCESSOR_IDLESTATE_POLICY = uintptr
 
 type PROCESSOR_POWER_POLICY_INFO = struct {
-	TimeCheck      DWORD
-	DemoteLimit    DWORD
-	PromoteLimit   DWORD
-	DemotePercent  BYTE
-	PromotePercent BYTE
-	Spare          [2]BYTE
-	__ccgo16       uint32
+	FTimeCheck      DWORD
+	FDemoteLimit    DWORD
+	FPromoteLimit   DWORD
+	FDemotePercent  BYTE
+	FPromotePercent BYTE
+	FSpare          [2]BYTE
+	F__ccgo16       uint32
 }
 
 type _PROCESSOR_POWER_POLICY_INFO = PROCESSOR_POWER_POLICY_INFO
@@ -14090,12 +14090,12 @@ type _PROCESSOR_POWER_POLICY_INFO = PROCESSOR_POWER_POLICY_INFO
 type PPROCESSOR_POWER_POLICY_INFO = uintptr
 
 type PROCESSOR_POWER_POLICY = struct {
-	Revision        DWORD
-	DynamicThrottle BYTE
-	Spare           [3]BYTE
-	__ccgo8         uint32
-	PolicyCount     DWORD
-	Policy          [3]PROCESSOR_POWER_POLICY_INFO
+	FRevision        DWORD
+	FDynamicThrottle BYTE
+	FSpare           [3]BYTE
+	F__ccgo8         uint32
+	FPolicyCount     DWORD
+	FPolicy          [3]PROCESSOR_POWER_POLICY_INFO
 }
 
 type _PROCESSOR_POWER_POLICY = PROCESSOR_POWER_POLICY
@@ -14103,35 +14103,35 @@ type _PROCESSOR_POWER_POLICY = PROCESSOR_POWER_POLICY
 type PPROCESSOR_POWER_POLICY = uintptr
 
 type PROCESSOR_PERFSTATE_POLICY = struct {
-	Revision         DWORD
-	MaxThrottle      BYTE
-	MinThrottle      BYTE
-	BusyAdjThreshold BYTE
-	__ccgo4_7        struct {
-		Flags [0]struct {
-			__ccgo1_0 [0]struct {
-				__ccgo0 uint8
+	FRevision         DWORD
+	FMaxThrottle      BYTE
+	FMinThrottle      BYTE
+	FBusyAdjThreshold BYTE
+	F__ccgo4_7        struct {
+		FFlags [0]struct {
+			F__ccgo1_0 [0]struct {
+				F__ccgo0 uint8
 			}
-			AsBYTE BYTE
+			FAsBYTE BYTE
 		}
-		Spare BYTE
+		FSpare BYTE
 	}
-	TimeCheck       DWORD
-	IncreaseTime    DWORD
-	DecreaseTime    DWORD
-	IncreasePercent DWORD
-	DecreasePercent DWORD
+	FTimeCheck       DWORD
+	FIncreaseTime    DWORD
+	FDecreaseTime    DWORD
+	FIncreasePercent DWORD
+	FDecreasePercent DWORD
 }
 
 type PPROCESSOR_PERFSTATE_POLICY = uintptr
 
 type ADMINISTRATOR_POWER_POLICY = struct {
-	MinSleep           SYSTEM_POWER_STATE
-	MaxSleep           SYSTEM_POWER_STATE
-	MinVideoTimeout    DWORD
-	MaxVideoTimeout    DWORD
-	MinSpindownTimeout DWORD
-	MaxSpindownTimeout DWORD
+	FMinSleep           SYSTEM_POWER_STATE
+	FMaxSleep           SYSTEM_POWER_STATE
+	FMinVideoTimeout    DWORD
+	FMaxVideoTimeout    DWORD
+	FMinSpindownTimeout DWORD
+	FMaxSpindownTimeout DWORD
 }
 
 type _ADMINISTRATOR_POWER_POLICY = ADMINISTRATOR_POWER_POLICY
@@ -14139,75 +14139,75 @@ type _ADMINISTRATOR_POWER_POLICY = ADMINISTRATOR_POWER_POLICY
 type PADMINISTRATOR_POWER_POLICY = uintptr
 
 type SYSTEM_POWER_CAPABILITIES = struct {
-	PowerButtonPresent     BOOLEAN
-	SleepButtonPresent     BOOLEAN
-	LidPresent             BOOLEAN
-	SystemS1               BOOLEAN
-	SystemS2               BOOLEAN
-	SystemS3               BOOLEAN
-	SystemS4               BOOLEAN
-	SystemS5               BOOLEAN
-	HiberFilePresent       BOOLEAN
-	FullWake               BOOLEAN
-	VideoDimPresent        BOOLEAN
-	ApmPresent             BOOLEAN
-	UpsPresent             BOOLEAN
-	ThermalControl         BOOLEAN
-	ProcessorThrottle      BOOLEAN
-	ProcessorMinThrottle   BYTE
-	ProcessorMaxThrottle   BYTE
-	FastSystemS4           BOOLEAN
-	spare2                 [3]BYTE
-	DiskSpinDown           BOOLEAN
-	spare3                 [8]BYTE
-	SystemBatteriesPresent BOOLEAN
-	BatteriesAreShortTerm  BOOLEAN
-	BatteryScale           [3]BATTERY_REPORTING_SCALE
-	AcOnLineWake           SYSTEM_POWER_STATE
-	SoftLidWake            SYSTEM_POWER_STATE
-	RtcWake                SYSTEM_POWER_STATE
-	MinDeviceWakeState     SYSTEM_POWER_STATE
-	DefaultLowLatencyWake  SYSTEM_POWER_STATE
+	FPowerButtonPresent     BOOLEAN
+	FSleepButtonPresent     BOOLEAN
+	FLidPresent             BOOLEAN
+	FSystemS1               BOOLEAN
+	FSystemS2               BOOLEAN
+	FSystemS3               BOOLEAN
+	FSystemS4               BOOLEAN
+	FSystemS5               BOOLEAN
+	FHiberFilePresent       BOOLEAN
+	FFullWake               BOOLEAN
+	FVideoDimPresent        BOOLEAN
+	FApmPresent             BOOLEAN
+	FUpsPresent             BOOLEAN
+	FThermalControl         BOOLEAN
+	FProcessorThrottle      BOOLEAN
+	FProcessorMinThrottle   BYTE
+	FProcessorMaxThrottle   BYTE
+	FFastSystemS4           BOOLEAN
+	Fspare2                 [3]BYTE
+	FDiskSpinDown           BOOLEAN
+	Fspare3                 [8]BYTE
+	FSystemBatteriesPresent BOOLEAN
+	FBatteriesAreShortTerm  BOOLEAN
+	FBatteryScale           [3]BATTERY_REPORTING_SCALE
+	FAcOnLineWake           SYSTEM_POWER_STATE
+	FSoftLidWake            SYSTEM_POWER_STATE
+	FRtcWake                SYSTEM_POWER_STATE
+	FMinDeviceWakeState     SYSTEM_POWER_STATE
+	FDefaultLowLatencyWake  SYSTEM_POWER_STATE
 }
 
 type PSYSTEM_POWER_CAPABILITIES = uintptr
 
 type SYSTEM_BATTERY_STATE = struct {
-	AcOnLine          BOOLEAN
-	BatteryPresent    BOOLEAN
-	Charging          BOOLEAN
-	Discharging       BOOLEAN
-	Spare1            [4]BOOLEAN
-	MaxCapacity       DWORD
-	RemainingCapacity DWORD
-	Rate              DWORD
-	EstimatedTime     DWORD
-	DefaultAlert1     DWORD
-	DefaultAlert2     DWORD
+	FAcOnLine          BOOLEAN
+	FBatteryPresent    BOOLEAN
+	FCharging          BOOLEAN
+	FDischarging       BOOLEAN
+	FSpare1            [4]BOOLEAN
+	FMaxCapacity       DWORD
+	FRemainingCapacity DWORD
+	FRate              DWORD
+	FEstimatedTime     DWORD
+	FDefaultAlert1     DWORD
+	FDefaultAlert2     DWORD
 }
 
 type PSYSTEM_BATTERY_STATE = uintptr
 
 type IMAGE_DOS_HEADER = struct {
-	e_magic    WORD
-	e_cblp     WORD
-	e_cp       WORD
-	e_crlc     WORD
-	e_cparhdr  WORD
-	e_minalloc WORD
-	e_maxalloc WORD
-	e_ss       WORD
-	e_sp       WORD
-	e_csum     WORD
-	e_ip       WORD
-	e_cs       WORD
-	e_lfarlc   WORD
-	e_ovno     WORD
-	e_res      [4]WORD
-	e_oemid    WORD
-	e_oeminfo  WORD
-	e_res2     [10]WORD
-	e_lfanew   LONG
+	Fe_magic    WORD
+	Fe_cblp     WORD
+	Fe_cp       WORD
+	Fe_crlc     WORD
+	Fe_cparhdr  WORD
+	Fe_minalloc WORD
+	Fe_maxalloc WORD
+	Fe_ss       WORD
+	Fe_sp       WORD
+	Fe_csum     WORD
+	Fe_ip       WORD
+	Fe_cs       WORD
+	Fe_lfarlc   WORD
+	Fe_ovno     WORD
+	Fe_res      [4]WORD
+	Fe_oemid    WORD
+	Fe_oeminfo  WORD
+	Fe_res2     [10]WORD
+	Fe_lfanew   LONG
 }
 
 type _IMAGE_DOS_HEADER = IMAGE_DOS_HEADER
@@ -14215,36 +14215,36 @@ type _IMAGE_DOS_HEADER = IMAGE_DOS_HEADER
 type PIMAGE_DOS_HEADER = uintptr
 
 type IMAGE_OS2_HEADER = struct {
-	ne_magic        WORD
-	ne_ver          CHAR
-	ne_rev          CHAR
-	ne_enttab       WORD
-	ne_cbenttab     WORD
-	ne_crc          LONG
-	ne_flags        WORD
-	ne_autodata     WORD
-	ne_heap         WORD
-	ne_stack        WORD
-	ne_csip         LONG
-	ne_sssp         LONG
-	ne_cseg         WORD
-	ne_cmod         WORD
-	ne_cbnrestab    WORD
-	ne_segtab       WORD
-	ne_rsrctab      WORD
-	ne_restab       WORD
-	ne_modtab       WORD
-	ne_imptab       WORD
-	ne_nrestab      LONG
-	ne_cmovent      WORD
-	ne_align        WORD
-	ne_cres         WORD
-	ne_exetyp       BYTE
-	ne_flagsothers  BYTE
-	ne_pretthunks   WORD
-	ne_psegrefbytes WORD
-	ne_swaparea     WORD
-	ne_expver       WORD
+	Fne_magic        WORD
+	Fne_ver          CHAR
+	Fne_rev          CHAR
+	Fne_enttab       WORD
+	Fne_cbenttab     WORD
+	Fne_crc          LONG
+	Fne_flags        WORD
+	Fne_autodata     WORD
+	Fne_heap         WORD
+	Fne_stack        WORD
+	Fne_csip         LONG
+	Fne_sssp         LONG
+	Fne_cseg         WORD
+	Fne_cmod         WORD
+	Fne_cbnrestab    WORD
+	Fne_segtab       WORD
+	Fne_rsrctab      WORD
+	Fne_restab       WORD
+	Fne_modtab       WORD
+	Fne_imptab       WORD
+	Fne_nrestab      LONG
+	Fne_cmovent      WORD
+	Fne_align        WORD
+	Fne_cres         WORD
+	Fne_exetyp       BYTE
+	Fne_flagsothers  BYTE
+	Fne_pretthunks   WORD
+	Fne_psegrefbytes WORD
+	Fne_swaparea     WORD
+	Fne_expver       WORD
 }
 
 type _IMAGE_OS2_HEADER = IMAGE_OS2_HEADER
@@ -14252,57 +14252,57 @@ type _IMAGE_OS2_HEADER = IMAGE_OS2_HEADER
 type PIMAGE_OS2_HEADER = uintptr
 
 type IMAGE_VXD_HEADER = struct {
-	e32_magic        WORD
-	e32_border       BYTE
-	e32_worder       BYTE
-	e32_level        DWORD
-	e32_cpu          WORD
-	e32_os           WORD
-	e32_ver          DWORD
-	e32_mflags       DWORD
-	e32_mpages       DWORD
-	e32_startobj     DWORD
-	e32_eip          DWORD
-	e32_stackobj     DWORD
-	e32_esp          DWORD
-	e32_pagesize     DWORD
-	e32_lastpagesize DWORD
-	e32_fixupsize    DWORD
-	e32_fixupsum     DWORD
-	e32_ldrsize      DWORD
-	e32_ldrsum       DWORD
-	e32_objtab       DWORD
-	e32_objcnt       DWORD
-	e32_objmap       DWORD
-	e32_itermap      DWORD
-	e32_rsrctab      DWORD
-	e32_rsrccnt      DWORD
-	e32_restab       DWORD
-	e32_enttab       DWORD
-	e32_dirtab       DWORD
-	e32_dircnt       DWORD
-	e32_fpagetab     DWORD
-	e32_frectab      DWORD
-	e32_impmod       DWORD
-	e32_impmodcnt    DWORD
-	e32_impproc      DWORD
-	e32_pagesum      DWORD
-	e32_datapage     DWORD
-	e32_preload      DWORD
-	e32_nrestab      DWORD
-	e32_cbnrestab    DWORD
-	e32_nressum      DWORD
-	e32_autodata     DWORD
-	e32_debuginfo    DWORD
-	e32_debuglen     DWORD
-	e32_instpreload  DWORD
-	e32_instdemand   DWORD
-	e32_heapsize     DWORD
-	e32_res3         [12]BYTE
-	e32_winresoff    DWORD
-	e32_winreslen    DWORD
-	e32_devid        WORD
-	e32_ddkver       WORD
+	Fe32_magic        WORD
+	Fe32_border       BYTE
+	Fe32_worder       BYTE
+	Fe32_level        DWORD
+	Fe32_cpu          WORD
+	Fe32_os           WORD
+	Fe32_ver          DWORD
+	Fe32_mflags       DWORD
+	Fe32_mpages       DWORD
+	Fe32_startobj     DWORD
+	Fe32_eip          DWORD
+	Fe32_stackobj     DWORD
+	Fe32_esp          DWORD
+	Fe32_pagesize     DWORD
+	Fe32_lastpagesize DWORD
+	Fe32_fixupsize    DWORD
+	Fe32_fixupsum     DWORD
+	Fe32_ldrsize      DWORD
+	Fe32_ldrsum       DWORD
+	Fe32_objtab       DWORD
+	Fe32_objcnt       DWORD
+	Fe32_objmap       DWORD
+	Fe32_itermap      DWORD
+	Fe32_rsrctab      DWORD
+	Fe32_rsrccnt      DWORD
+	Fe32_restab       DWORD
+	Fe32_enttab       DWORD
+	Fe32_dirtab       DWORD
+	Fe32_dircnt       DWORD
+	Fe32_fpagetab     DWORD
+	Fe32_frectab      DWORD
+	Fe32_impmod       DWORD
+	Fe32_impmodcnt    DWORD
+	Fe32_impproc      DWORD
+	Fe32_pagesum      DWORD
+	Fe32_datapage     DWORD
+	Fe32_preload      DWORD
+	Fe32_nrestab      DWORD
+	Fe32_cbnrestab    DWORD
+	Fe32_nressum      DWORD
+	Fe32_autodata     DWORD
+	Fe32_debuginfo    DWORD
+	Fe32_debuglen     DWORD
+	Fe32_instpreload  DWORD
+	Fe32_instdemand   DWORD
+	Fe32_heapsize     DWORD
+	Fe32_res3         [12]BYTE
+	Fe32_winresoff    DWORD
+	Fe32_winreslen    DWORD
+	Fe32_devid        WORD
+	Fe32_ddkver       WORD
 }
 
 type _IMAGE_VXD_HEADER = IMAGE_VXD_HEADER
@@ -14310,13 +14310,13 @@ type _IMAGE_VXD_HEADER = IMAGE_VXD_HEADER
 type PIMAGE_VXD_HEADER = uintptr
 
 type IMAGE_FILE_HEADER = struct {
-	Machine              WORD
-	NumberOfSections     WORD
-	TimeDateStamp        DWORD
-	PointerToSymbolTable DWORD
-	NumberOfSymbols      DWORD
-	SizeOfOptionalHeader WORD
-	Characteristics      WORD
+	FMachine              WORD
+	FNumberOfSections     WORD
+	FTimeDateStamp        DWORD
+	FPointerToSymbolTable DWORD
+	FNumberOfSymbols      DWORD
+	FSizeOfOptionalHeader WORD
+	FCharacteristics      WORD
 }
 
 type _IMAGE_FILE_HEADER = IMAGE_FILE_HEADER
@@ -14324,8 +14324,8 @@ type _IMAGE_FILE_HEADER = IMAGE_FILE_HEADER
 type PIMAGE_FILE_HEADER = uintptr
 
 type IMAGE_DATA_DIRECTORY = struct {
-	VirtualAddress DWORD
-	Size           DWORD
+	FVirtualAddress DWORD
+	FSize           DWORD
 }
 
 type _IMAGE_DATA_DIRECTORY = IMAGE_DATA_DIRECTORY
@@ -14333,37 +14333,37 @@ type _IMAGE_DATA_DIRECTORY = IMAGE_DATA_DIRECTORY
 type PIMAGE_DATA_DIRECTORY = uintptr
 
 type IMAGE_OPTIONAL_HEADER32 = struct {
-	Magic                       WORD
-	MajorLinkerVersion          BYTE
-	MinorLinkerVersion          BYTE
-	SizeOfCode                  DWORD
-	SizeOfInitializedData       DWORD
-	SizeOfUninitializedData     DWORD
-	AddressOfEntryPoint         DWORD
-	BaseOfCode                  DWORD
-	BaseOfData                  DWORD
-	ImageBase                   DWORD
-	SectionAlignment            DWORD
-	FileAlignment               DWORD
-	MajorOperatingSystemVersion WORD
-	MinorOperatingSystemVersion WORD
-	MajorImageVersion           WORD
-	MinorImageVersion           WORD
-	MajorSubsystemVersion       WORD
-	MinorSubsystemVersion       WORD
-	Win32VersionValue           DWORD
-	SizeOfImage                 DWORD
-	SizeOfHeaders               DWORD
-	CheckSum                    DWORD
-	Subsystem                   WORD
-	DllCharacteristics          WORD
-	SizeOfStackReserve          DWORD
-	SizeOfStackCommit           DWORD
-	SizeOfHeapReserve           DWORD
-	SizeOfHeapCommit            DWORD
-	LoaderFlags                 DWORD
-	NumberOfRvaAndSizes         DWORD
-	DataDirectory               [16]IMAGE_DATA_DIRECTORY
+	FMagic                       WORD
+	FMajorLinkerVersion          BYTE
+	FMinorLinkerVersion          BYTE
+	FSizeOfCode                  DWORD
+	FSizeOfInitializedData       DWORD
+	FSizeOfUninitializedData     DWORD
+	FAddressOfEntryPoint         DWORD
+	FBaseOfCode                  DWORD
+	FBaseOfData                  DWORD
+	FImageBase                   DWORD
+	FSectionAlignment            DWORD
+	FFileAlignment               DWORD
+	FMajorOperatingSystemVersion WORD
+	FMinorOperatingSystemVersion WORD
+	FMajorImageVersion           WORD
+	FMinorImageVersion           WORD
+	FMajorSubsystemVersion       WORD
+	FMinorSubsystemVersion       WORD
+	FWin32VersionValue           DWORD
+	FSizeOfImage                 DWORD
+	FSizeOfHeaders               DWORD
+	FCheckSum                    DWORD
+	FSubsystem                   WORD
+	FDllCharacteristics          WORD
+	FSizeOfStackReserve          DWORD
+	FSizeOfStackCommit           DWORD
+	FSizeOfHeapReserve           DWORD
+	FSizeOfHeapCommit            DWORD
+	FLoaderFlags                 DWORD
+	FNumberOfRvaAndSizes         DWORD
+	FDataDirectory               [16]IMAGE_DATA_DIRECTORY
 }
 
 type _IMAGE_OPTIONAL_HEADER = IMAGE_OPTIONAL_HEADER32
@@ -14371,19 +14371,19 @@ type _IMAGE_OPTIONAL_HEADER = IMAGE_OPTIONAL_HEADER32
 type PIMAGE_OPTIONAL_HEADER32 = uintptr
 
 type IMAGE_ROM_OPTIONAL_HEADER = struct {
-	Magic                   WORD
-	MajorLinkerVersion      BYTE
-	MinorLinkerVersion      BYTE
-	SizeOfCode              DWORD
-	SizeOfInitializedData   DWORD
-	SizeOfUninitializedData DWORD
-	AddressOfEntryPoint     DWORD
-	BaseOfCode              DWORD
-	BaseOfData              DWORD
-	BaseOfBss               DWORD
-	GprMask                 DWORD
-	CprMask                 [4]DWORD
-	GpValue                 DWORD
+	FMagic                   WORD
+	FMajorLinkerVersion      BYTE
+	FMinorLinkerVersion      BYTE
+	FSizeOfCode              DWORD
+	FSizeOfInitializedData   DWORD
+	FSizeOfUninitializedData DWORD
+	FAddressOfEntryPoint     DWORD
+	FBaseOfCode              DWORD
+	FBaseOfData              DWORD
+	FBaseOfBss               DWORD
+	FGprMask                 DWORD
+	FCprMask                 [4]DWORD
+	FGpValue                 DWORD
 }
 
 type _IMAGE_ROM_OPTIONAL_HEADER = IMAGE_ROM_OPTIONAL_HEADER
@@ -14391,36 +14391,36 @@ type _IMAGE_ROM_OPTIONAL_HEADER = IMAGE_ROM_OPTIONAL_HEADER
 type PIMAGE_ROM_OPTIONAL_HEADER = uintptr
 
 type IMAGE_OPTIONAL_HEADER64 = struct {
-	Magic                       WORD
-	MajorLinkerVersion          BYTE
-	MinorLinkerVersion          BYTE
-	SizeOfCode                  DWORD
-	SizeOfInitializedData       DWORD
-	SizeOfUninitializedData     DWORD
-	AddressOfEntryPoint         DWORD
-	BaseOfCode                  DWORD
-	ImageBase                   ULONGLONG
-	SectionAlignment            DWORD
-	FileAlignment               DWORD
-	MajorOperatingSystemVersion WORD
-	MinorOperatingSystemVersion WORD
-	MajorImageVersion           WORD
-	MinorImageVersion           WORD
-	MajorSubsystemVersion       WORD
-	MinorSubsystemVersion       WORD
-	Win32VersionValue           DWORD
-	SizeOfImage                 DWORD
-	SizeOfHeaders               DWORD
-	CheckSum                    DWORD
-	Subsystem                   WORD
-	DllCharacteristics          WORD
-	SizeOfStackReserve          ULONGLONG
-	SizeOfStackCommit           ULONGLONG
-	SizeOfHeapReserve           ULONGLONG
-	SizeOfHeapCommit            ULONGLONG
-	LoaderFlags                 DWORD
-	NumberOfRvaAndSizes         DWORD
-	DataDirectory               [16]IMAGE_DATA_DIRECTORY
+	FMagic                       WORD
+	FMajorLinkerVersion          BYTE
+	FMinorLinkerVersion          BYTE
+	FSizeOfCode                  DWORD
+	FSizeOfInitializedData       DWORD
+	FSizeOfUninitializedData     DWORD
+	FAddressOfEntryPoint         DWORD
+	FBaseOfCode                  DWORD
+	FImageBase                   ULONGLONG
+	FSectionAlignment            DWORD
+	FFileAlignment               DWORD
+	FMajorOperatingSystemVersion WORD
+	FMinorOperatingSystemVersion WORD
+	FMajorImageVersion           WORD
+	FMinorImageVersion           WORD
+	FMajorSubsystemVersion       WORD
+	FMinorSubsystemVersion       WORD
+	FWin32VersionValue           DWORD
+	FSizeOfImage                 DWORD
+	FSizeOfHeaders               DWORD
+	FCheckSum                    DWORD
+	FSubsystem                   WORD
+	FDllCharacteristics          WORD
+	FSizeOfStackReserve          ULONGLONG
+	FSizeOfStackCommit           ULONGLONG
+	FSizeOfHeapReserve           ULONGLONG
+	FSizeOfHeapCommit            ULONGLONG
+	FLoaderFlags                 DWORD
+	FNumberOfRvaAndSizes         DWORD
+	FDataDirectory               [16]IMAGE_DATA_DIRECTORY
 }
 
 type _IMAGE_OPTIONAL_HEADER64 = IMAGE_OPTIONAL_HEADER64
@@ -14428,44 +14428,44 @@ type _IMAGE_OPTIONAL_HEADER64 = IMAGE_OPTIONAL_HEADER64
 type PIMAGE_OPTIONAL_HEADER64 = uintptr
 
 type IMAGE_OPTIONAL_HEADER = struct {
-	Magic                       WORD
-	MajorLinkerVersion          BYTE
-	MinorLinkerVersion          BYTE
-	SizeOfCode                  DWORD
-	SizeOfInitializedData       DWORD
-	SizeOfUninitializedData     DWORD
-	AddressOfEntryPoint         DWORD
-	BaseOfCode                  DWORD
-	ImageBase                   ULONGLONG
-	SectionAlignment            DWORD
-	FileAlignment               DWORD
-	MajorOperatingSystemVersion WORD
-	MinorOperatingSystemVersion WORD
-	MajorImageVersion           WORD
-	MinorImageVersion           WORD
-	MajorSubsystemVersion       WORD
-	MinorSubsystemVersion       WORD
-	Win32VersionValue           DWORD
-	SizeOfImage                 DWORD
-	SizeOfHeaders               DWORD
-	CheckSum                    DWORD
-	Subsystem                   WORD
-	DllCharacteristics          WORD
-	SizeOfStackReserve          ULONGLONG
-	SizeOfStackCommit           ULONGLONG
-	SizeOfHeapReserve           ULONGLONG
-	SizeOfHeapCommit            ULONGLONG
-	LoaderFlags                 DWORD
-	NumberOfRvaAndSizes         DWORD
-	DataDirectory               [16]IMAGE_DATA_DIRECTORY
+	FMagic                       WORD
+	FMajorLinkerVersion          BYTE
+	FMinorLinkerVersion          BYTE
+	FSizeOfCode                  DWORD
+	FSizeOfInitializedData       DWORD
+	FSizeOfUninitializedData     DWORD
+	FAddressOfEntryPoint         DWORD
+	FBaseOfCode                  DWORD
+	FImageBase                   ULONGLONG
+	FSectionAlignment            DWORD
+	FFileAlignment               DWORD
+	FMajorOperatingSystemVersion WORD
+	FMinorOperatingSystemVersion WORD
+	FMajorImageVersion           WORD
+	FMinorImageVersion           WORD
+	FMajorSubsystemVersion       WORD
+	FMinorSubsystemVersion       WORD
+	FWin32VersionValue           DWORD
+	FSizeOfImage                 DWORD
+	FSizeOfHeaders               DWORD
+	FCheckSum                    DWORD
+	FSubsystem                   WORD
+	FDllCharacteristics          WORD
+	FSizeOfStackReserve          ULONGLONG
+	FSizeOfStackCommit           ULONGLONG
+	FSizeOfHeapReserve           ULONGLONG
+	FSizeOfHeapCommit            ULONGLONG
+	FLoaderFlags                 DWORD
+	FNumberOfRvaAndSizes         DWORD
+	FDataDirectory               [16]IMAGE_DATA_DIRECTORY
 }
 
 type PIMAGE_OPTIONAL_HEADER = uintptr
 
 type IMAGE_NT_HEADERS64 = struct {
-	Signature      DWORD
-	FileHeader     IMAGE_FILE_HEADER
-	OptionalHeader IMAGE_OPTIONAL_HEADER64
+	FSignature      DWORD
+	FFileHeader     IMAGE_FILE_HEADER
+	FOptionalHeader IMAGE_OPTIONAL_HEADER64
 }
 
 type _IMAGE_NT_HEADERS64 = IMAGE_NT_HEADERS64
@@ -14473,9 +14473,9 @@ type _IMAGE_NT_HEADERS64 = IMAGE_NT_HEADERS64
 type PIMAGE_NT_HEADERS64 = uintptr
 
 type IMAGE_NT_HEADERS32 = struct {
-	Signature      DWORD
-	FileHeader     IMAGE_FILE_HEADER
-	OptionalHeader IMAGE_OPTIONAL_HEADER32
+	FSignature      DWORD
+	FFileHeader     IMAGE_FILE_HEADER
+	FOptionalHeader IMAGE_OPTIONAL_HEADER32
 }
 
 type _IMAGE_NT_HEADERS = IMAGE_NT_HEADERS32
@@ -14483,8 +14483,8 @@ type _IMAGE_NT_HEADERS = IMAGE_NT_HEADERS32
 type PIMAGE_NT_HEADERS32 = uintptr
 
 type IMAGE_ROM_HEADERS = struct {
-	FileHeader     IMAGE_FILE_HEADER
-	OptionalHeader IMAGE_ROM_OPTIONAL_HEADER
+	FFileHeader     IMAGE_FILE_HEADER
+	FOptionalHeader IMAGE_ROM_OPTIONAL_HEADER
 }
 
 type _IMAGE_ROM_HEADERS = IMAGE_ROM_HEADERS
@@ -14492,66 +14492,66 @@ type _IMAGE_ROM_HEADERS = IMAGE_ROM_HEADERS
 type PIMAGE_ROM_HEADERS = uintptr
 
 type IMAGE_NT_HEADERS = struct {
-	Signature      DWORD
-	FileHeader     IMAGE_FILE_HEADER
-	OptionalHeader IMAGE_OPTIONAL_HEADER64
+	FSignature      DWORD
+	FFileHeader     IMAGE_FILE_HEADER
+	FOptionalHeader IMAGE_OPTIONAL_HEADER64
 }
 
 type PIMAGE_NT_HEADERS = uintptr
 
 type ANON_OBJECT_HEADER = struct {
-	Sig1          WORD
-	Sig2          WORD
-	Version       WORD
-	Machine       WORD
-	TimeDateStamp DWORD
-	ClassID       CLSID
-	SizeOfData    DWORD
+	FSig1          WORD
+	FSig2          WORD
+	FVersion       WORD
+	FMachine       WORD
+	FTimeDateStamp DWORD
+	FClassID       CLSID
+	FSizeOfData    DWORD
 }
 
 type ANON_OBJECT_HEADER_V2 = struct {
-	Sig1           WORD
-	Sig2           WORD
-	Version        WORD
-	Machine        WORD
-	TimeDateStamp  DWORD
-	ClassID        CLSID
-	SizeOfData     DWORD
-	Flags          DWORD
-	MetaDataSize   DWORD
-	MetaDataOffset DWORD
+	FSig1           WORD
+	FSig2           WORD
+	FVersion        WORD
+	FMachine        WORD
+	FTimeDateStamp  DWORD
+	FClassID        CLSID
+	FSizeOfData     DWORD
+	FFlags          DWORD
+	FMetaDataSize   DWORD
+	FMetaDataOffset DWORD
 }
 
 type ANON_OBJECT_HEADER_BIGOBJ = struct {
-	Sig1                 WORD
-	Sig2                 WORD
-	Version              WORD
-	Machine              WORD
-	TimeDateStamp        DWORD
-	ClassID              CLSID
-	SizeOfData           DWORD
-	Flags                DWORD
-	MetaDataSize         DWORD
-	MetaDataOffset       DWORD
-	NumberOfSections     DWORD
-	PointerToSymbolTable DWORD
-	NumberOfSymbols      DWORD
+	FSig1                 WORD
+	FSig2                 WORD
+	FVersion              WORD
+	FMachine              WORD
+	FTimeDateStamp        DWORD
+	FClassID              CLSID
+	FSizeOfData           DWORD
+	FFlags                DWORD
+	FMetaDataSize         DWORD
+	FMetaDataOffset       DWORD
+	FNumberOfSections     DWORD
+	FPointerToSymbolTable DWORD
+	FNumberOfSymbols      DWORD
 }
 
 type IMAGE_SECTION_HEADER = struct {
-	Name [8]BYTE
-	Misc struct {
-		VirtualSize     [0]DWORD
-		PhysicalAddress DWORD
+	FName [8]BYTE
+	FMisc struct {
+		FVirtualSize     [0]DWORD
+		FPhysicalAddress DWORD
 	}
-	VirtualAddress       DWORD
-	SizeOfRawData        DWORD
-	PointerToRawData     DWORD
-	PointerToRelocations DWORD
-	PointerToLinenumbers DWORD
-	NumberOfRelocations  WORD
-	NumberOfLinenumbers  WORD
-	Characteristics      DWORD
+	FVirtualAddress       DWORD
+	FSizeOfRawData        DWORD
+	FPointerToRawData     DWORD
+	FPointerToRelocations DWORD
+	FPointerToLinenumbers DWORD
+	FNumberOfRelocations  WORD
+	FNumberOfLinenumbers  WORD
+	FCharacteristics      DWORD
 }
 
 type _IMAGE_SECTION_HEADER = IMAGE_SECTION_HEADER
@@ -14559,19 +14559,19 @@ type _IMAGE_SECTION_HEADER = IMAGE_SECTION_HEADER
 type PIMAGE_SECTION_HEADER = uintptr
 
 type IMAGE_SYMBOL = struct {
-	N struct {
-		Name [0]struct {
-			Short DWORD
-			Long  DWORD
+	FN struct {
+		FName [0]struct {
+			FShort DWORD
+			FLong  DWORD
 		}
-		LongName  [0][2]DWORD
-		ShortName [8]BYTE
+		FLongName  [0][2]DWORD
+		FShortName [8]BYTE
 	}
-	Value              DWORD
-	SectionNumber      SHORT
-	Type               WORD
-	StorageClass       BYTE
-	NumberOfAuxSymbols BYTE
+	FValue              DWORD
+	FSectionNumber      SHORT
+	FType               WORD
+	FStorageClass       BYTE
+	FNumberOfAuxSymbols BYTE
 }
 
 type _IMAGE_SYMBOL = IMAGE_SYMBOL
@@ -14579,19 +14579,19 @@ type _IMAGE_SYMBOL = IMAGE_SYMBOL
 type PIMAGE_SYMBOL = uintptr
 
 type IMAGE_SYMBOL_EX = struct {
-	N struct {
-		Name [0]struct {
-			Short DWORD
-			Long  DWORD
+	FN struct {
+		FName [0]struct {
+			FShort DWORD
+			FLong  DWORD
 		}
-		LongName  [0][2]DWORD
-		ShortName [8]BYTE
+		FLongName  [0][2]DWORD
+		FShortName [8]BYTE
 	}
-	Value              DWORD
-	SectionNumber      LONG
-	Type               WORD
-	StorageClass       BYTE
-	NumberOfAuxSymbols BYTE
+	FValue              DWORD
+	FSectionNumber      LONG
+	FType               WORD
+	FStorageClass       BYTE
+	FNumberOfAuxSymbols BYTE
 }
 
 type _IMAGE_SYMBOL_EX = IMAGE_SYMBOL_EX
@@ -14599,57 +14599,57 @@ type _IMAGE_SYMBOL_EX = IMAGE_SYMBOL_EX
 type PIMAGE_SYMBOL_EX = uintptr
 
 type IMAGE_AUX_SYMBOL_TOKEN_DEF = struct {
-	bAuxType         BYTE
-	bReserved        BYTE
-	SymbolTableIndex DWORD
-	rgbReserved      [12]BYTE
+	FbAuxType         BYTE
+	FbReserved        BYTE
+	FSymbolTableIndex DWORD
+	FrgbReserved      [12]BYTE
 }
 
 type PIMAGE_AUX_SYMBOL_TOKEN_DEF = uintptr
 
 type IMAGE_AUX_SYMBOL_TOKEN_DEF1 = struct {
-	bAuxType         BYTE
-	bReserved        BYTE
-	SymbolTableIndex DWORD
-	rgbReserved      [12]BYTE
+	FbAuxType         BYTE
+	FbReserved        BYTE
+	FSymbolTableIndex DWORD
+	FrgbReserved      [12]BYTE
 }
 
 type IMAGE_AUX_SYMBOL = struct {
-	File [0]struct {
-		Name [18]BYTE
+	FFile [0]struct {
+		FName [18]BYTE
 	}
-	Section [0]struct {
-		Length              DWORD
-		NumberOfRelocations WORD
-		NumberOfLinenumbers WORD
-		CheckSum            DWORD
-		Number              SHORT
-		Selection           BYTE
+	FSection [0]struct {
+		FLength              DWORD
+		FNumberOfRelocations WORD
+		FNumberOfLinenumbers WORD
+		FCheckSum            DWORD
+		FNumber              SHORT
+		FSelection           BYTE
 	}
-	TokenDef [0]IMAGE_AUX_SYMBOL_TOKEN_DEF
-	CRC      [0]struct {
-		crc         DWORD
-		rgbReserved [14]BYTE
+	FTokenDef [0]IMAGE_AUX_SYMBOL_TOKEN_DEF
+	FCRC      [0]struct {
+		Fcrc         DWORD
+		FrgbReserved [14]BYTE
 	}
-	Sym struct {
-		TagIndex DWORD
-		Misc     struct {
-			TotalSize [0]DWORD
-			LnSz      struct {
-				Linenumber WORD
-				Size       WORD
+	FSym struct {
+		FTagIndex DWORD
+		FMisc     struct {
+			FTotalSize [0]DWORD
+			FLnSz      struct {
+				FLinenumber WORD
+				FSize       WORD
 			}
 		}
-		FcnAry struct {
-			Array [0]struct {
-				Dimension [4]WORD
+		FFcnAry struct {
+			FArray [0]struct {
+				FDimension [4]WORD
 			}
-			Function struct {
-				PointerToLinenumber   DWORD
-				PointerToNextFunction DWORD
+			FFunction struct {
+				FPointerToLinenumber   DWORD
+				FPointerToNextFunction DWORD
 			}
 		}
-		TvIndex WORD
+		FTvIndex WORD
 	}
 }
 
@@ -14658,34 +14658,34 @@ type _IMAGE_AUX_SYMBOL = IMAGE_AUX_SYMBOL
 type PIMAGE_AUX_SYMBOL = uintptr
 
 type IMAGE_AUX_SYMBOL_EX = struct {
-	File [0]struct {
-		Name [20]BYTE
+	FFile [0]struct {
+		FName [20]BYTE
 	}
-	Section [0]struct {
-		Length              DWORD
-		NumberOfRelocations WORD
-		NumberOfLinenumbers WORD
-		CheckSum            DWORD
-		Number              SHORT
-		Selection           BYTE
-		bReserved           BYTE
-		HighNumber          SHORT
-		rgbReserved         [2]BYTE
+	FSection [0]struct {
+		FLength              DWORD
+		FNumberOfRelocations WORD
+		FNumberOfLinenumbers WORD
+		FCheckSum            DWORD
+		FNumber              SHORT
+		FSelection           BYTE
+		FbReserved           BYTE
+		FHighNumber          SHORT
+		FrgbReserved         [2]BYTE
 	}
-	__ccgo3_0 [0]struct {
-		TokenDef    IMAGE_AUX_SYMBOL_TOKEN_DEF
-		rgbReserved [2]BYTE
+	F__ccgo3_0 [0]struct {
+		FTokenDef    IMAGE_AUX_SYMBOL_TOKEN_DEF
+		FrgbReserved [2]BYTE
 	}
-	CRC [0]struct {
-		crc         DWORD
-		rgbReserved [16]BYTE
+	FCRC [0]struct {
+		Fcrc         DWORD
+		FrgbReserved [16]BYTE
 	}
-	Sym struct {
-		WeakDefaultSymIndex DWORD
-		WeakSearchType      DWORD
-		rgbReserved         [12]BYTE
+	FSym struct {
+		FWeakDefaultSymIndex DWORD
+		FWeakSearchType      DWORD
+		FrgbReserved         [12]BYTE
 	}
-	__ccgo_pad5 [4]byte
+	F__ccgo_pad5 [4]byte
 }
 
 type _IMAGE_AUX_SYMBOL_EX = IMAGE_AUX_SYMBOL_EX
@@ -14699,12 +14699,12 @@ type IMAGE_AUX_SYMBOL_TYPE = int32
 const IMAGE_AUX_SYMBOL_TYPE_TOKEN_DEF = 1
 
 type IMAGE_RELOCATION = struct {
-	__ccgo0_0 struct {
-		RelocCount     [0]DWORD
-		VirtualAddress DWORD
+	F__ccgo0_0 struct {
+		FRelocCount     [0]DWORD
+		FVirtualAddress DWORD
 	}
-	SymbolTableIndex DWORD
-	Type             WORD
+	FSymbolTableIndex DWORD
+	FType             WORD
 }
 
 type _IMAGE_RELOCATION = IMAGE_RELOCATION
@@ -14712,11 +14712,11 @@ type _IMAGE_RELOCATION = IMAGE_RELOCATION
 type PIMAGE_RELOCATION = uintptr
 
 type IMAGE_LINENUMBER = struct {
-	Type struct {
-		VirtualAddress   [0]DWORD
-		SymbolTableIndex DWORD
+	FType struct {
+		FVirtualAddress   [0]DWORD
+		FSymbolTableIndex DWORD
 	}
-	Linenumber WORD
+	FLinenumber WORD
 }
 
 type _IMAGE_LINENUMBER = IMAGE_LINENUMBER
@@ -14724,8 +14724,8 @@ type _IMAGE_LINENUMBER = IMAGE_LINENUMBER
 type PIMAGE_LINENUMBER = uintptr
 
 type IMAGE_BASE_RELOCATION = struct {
-	VirtualAddress DWORD
-	SizeOfBlock    DWORD
+	FVirtualAddress DWORD
+	FSizeOfBlock    DWORD
 }
 
 type _IMAGE_BASE_RELOCATION = IMAGE_BASE_RELOCATION
@@ -14733,13 +14733,13 @@ type _IMAGE_BASE_RELOCATION = IMAGE_BASE_RELOCATION
 type PIMAGE_BASE_RELOCATION = uintptr
 
 type IMAGE_ARCHIVE_MEMBER_HEADER = struct {
-	Name      [16]BYTE
-	Date      [12]BYTE
-	UserID    [6]BYTE
-	GroupID   [6]BYTE
-	Mode      [8]BYTE
-	Size      [10]BYTE
-	EndHeader [2]BYTE
+	FName      [16]BYTE
+	FDate      [12]BYTE
+	FUserID    [6]BYTE
+	FGroupID   [6]BYTE
+	FMode      [8]BYTE
+	FSize      [10]BYTE
+	FEndHeader [2]BYTE
 }
 
 type _IMAGE_ARCHIVE_MEMBER_HEADER = IMAGE_ARCHIVE_MEMBER_HEADER
@@ -14747,17 +14747,17 @@ type _IMAGE_ARCHIVE_MEMBER_HEADER = IMAGE_ARCHIVE_MEMBER_HEADER
 type PIMAGE_ARCHIVE_MEMBER_HEADER = uintptr
 
 type IMAGE_EXPORT_DIRECTORY = struct {
-	Characteristics       DWORD
-	TimeDateStamp         DWORD
-	MajorVersion          WORD
-	MinorVersion          WORD
-	Name                  DWORD
-	Base                  DWORD
-	NumberOfFunctions     DWORD
-	NumberOfNames         DWORD
-	AddressOfFunctions    DWORD
-	AddressOfNames        DWORD
-	AddressOfNameOrdinals DWORD
+	FCharacteristics       DWORD
+	FTimeDateStamp         DWORD
+	FMajorVersion          WORD
+	FMinorVersion          WORD
+	FName                  DWORD
+	FBase                  DWORD
+	FNumberOfFunctions     DWORD
+	FNumberOfNames         DWORD
+	FAddressOfFunctions    DWORD
+	FAddressOfNames        DWORD
+	FAddressOfNameOrdinals DWORD
 }
 
 type _IMAGE_EXPORT_DIRECTORY = IMAGE_EXPORT_DIRECTORY
@@ -14765,8 +14765,8 @@ type _IMAGE_EXPORT_DIRECTORY = IMAGE_EXPORT_DIRECTORY
 type PIMAGE_EXPORT_DIRECTORY = uintptr
 
 type IMAGE_IMPORT_BY_NAME = struct {
-	Hint WORD
-	Name [1]CHAR
+	FHint WORD
+	FName [1]CHAR
 }
 
 type _IMAGE_IMPORT_BY_NAME = IMAGE_IMPORT_BY_NAME
@@ -14774,11 +14774,11 @@ type _IMAGE_IMPORT_BY_NAME = IMAGE_IMPORT_BY_NAME
 type PIMAGE_IMPORT_BY_NAME = uintptr
 
 type IMAGE_THUNK_DATA64 = struct {
-	u1 struct {
-		Function        [0]ULONGLONG
-		Ordinal         [0]ULONGLONG
-		AddressOfData   [0]ULONGLONG
-		ForwarderString ULONGLONG
+	Fu1 struct {
+		FFunction        [0]ULONGLONG
+		FOrdinal         [0]ULONGLONG
+		FAddressOfData   [0]ULONGLONG
+		FForwarderString ULONGLONG
 	}
 }
 
@@ -14787,11 +14787,11 @@ type _IMAGE_THUNK_DATA64 = IMAGE_THUNK_DATA64
 type PIMAGE_THUNK_DATA64 = uintptr
 
 type IMAGE_THUNK_DATA32 = struct {
-	u1 struct {
-		Function        [0]DWORD
-		Ordinal         [0]DWORD
-		AddressOfData   [0]DWORD
-		ForwarderString DWORD
+	Fu1 struct {
+		FFunction        [0]DWORD
+		FOrdinal         [0]DWORD
+		FAddressOfData   [0]DWORD
+		FForwarderString DWORD
 	}
 }
 
@@ -14802,12 +14802,12 @@ type PIMAGE_THUNK_DATA32 = uintptr
 type PIMAGE_TLS_CALLBACK = uintptr
 
 type IMAGE_TLS_DIRECTORY64 = struct {
-	StartAddressOfRawData ULONGLONG
-	EndAddressOfRawData   ULONGLONG
-	AddressOfIndex        ULONGLONG
-	AddressOfCallBacks    ULONGLONG
-	SizeOfZeroFill        DWORD
-	Characteristics       DWORD
+	FStartAddressOfRawData ULONGLONG
+	FEndAddressOfRawData   ULONGLONG
+	FAddressOfIndex        ULONGLONG
+	FAddressOfCallBacks    ULONGLONG
+	FSizeOfZeroFill        DWORD
+	FCharacteristics       DWORD
 }
 
 type _IMAGE_TLS_DIRECTORY64 = IMAGE_TLS_DIRECTORY64
@@ -14815,12 +14815,12 @@ type _IMAGE_TLS_DIRECTORY64 = IMAGE_TLS_DIRECTORY64
 type PIMAGE_TLS_DIRECTORY64 = uintptr
 
 type IMAGE_TLS_DIRECTORY32 = struct {
-	StartAddressOfRawData DWORD
-	EndAddressOfRawData   DWORD
-	AddressOfIndex        DWORD
-	AddressOfCallBacks    DWORD
-	SizeOfZeroFill        DWORD
-	Characteristics       DWORD
+	FStartAddressOfRawData DWORD
+	FEndAddressOfRawData   DWORD
+	FAddressOfIndex        DWORD
+	FAddressOfCallBacks    DWORD
+	FSizeOfZeroFill        DWORD
+	FCharacteristics       DWORD
 }
 
 type _IMAGE_TLS_DIRECTORY32 = IMAGE_TLS_DIRECTORY32
@@ -14828,36 +14828,36 @@ type _IMAGE_TLS_DIRECTORY32 = IMAGE_TLS_DIRECTORY32
 type PIMAGE_TLS_DIRECTORY32 = uintptr
 
 type IMAGE_THUNK_DATA = struct {
-	u1 struct {
-		Function        [0]ULONGLONG
-		Ordinal         [0]ULONGLONG
-		AddressOfData   [0]ULONGLONG
-		ForwarderString ULONGLONG
+	Fu1 struct {
+		FFunction        [0]ULONGLONG
+		FOrdinal         [0]ULONGLONG
+		FAddressOfData   [0]ULONGLONG
+		FForwarderString ULONGLONG
 	}
 }
 
 type PIMAGE_THUNK_DATA = uintptr
 
 type IMAGE_TLS_DIRECTORY = struct {
-	StartAddressOfRawData ULONGLONG
-	EndAddressOfRawData   ULONGLONG
-	AddressOfIndex        ULONGLONG
-	AddressOfCallBacks    ULONGLONG
-	SizeOfZeroFill        DWORD
-	Characteristics       DWORD
+	FStartAddressOfRawData ULONGLONG
+	FEndAddressOfRawData   ULONGLONG
+	FAddressOfIndex        ULONGLONG
+	FAddressOfCallBacks    ULONGLONG
+	FSizeOfZeroFill        DWORD
+	FCharacteristics       DWORD
 }
 
 type PIMAGE_TLS_DIRECTORY = uintptr
 
 type IMAGE_IMPORT_DESCRIPTOR = struct {
-	__ccgo0_0 struct {
-		OriginalFirstThunk [0]DWORD
-		Characteristics    DWORD
+	F__ccgo0_0 struct {
+		FOriginalFirstThunk [0]DWORD
+		FCharacteristics    DWORD
 	}
-	TimeDateStamp  DWORD
-	ForwarderChain DWORD
-	Name           DWORD
-	FirstThunk     DWORD
+	FTimeDateStamp  DWORD
+	FForwarderChain DWORD
+	FName           DWORD
+	FFirstThunk     DWORD
 }
 
 type _IMAGE_IMPORT_DESCRIPTOR = IMAGE_IMPORT_DESCRIPTOR
@@ -14865,9 +14865,9 @@ type _IMAGE_IMPORT_DESCRIPTOR = IMAGE_IMPORT_DESCRIPTOR
 type PIMAGE_IMPORT_DESCRIPTOR = uintptr
 
 type IMAGE_BOUND_IMPORT_DESCRIPTOR = struct {
-	TimeDateStamp               DWORD
-	OffsetModuleName            WORD
-	NumberOfModuleForwarderRefs WORD
+	FTimeDateStamp               DWORD
+	FOffsetModuleName            WORD
+	FNumberOfModuleForwarderRefs WORD
 }
 
 type _IMAGE_BOUND_IMPORT_DESCRIPTOR = IMAGE_BOUND_IMPORT_DESCRIPTOR
@@ -14875,9 +14875,9 @@ type _IMAGE_BOUND_IMPORT_DESCRIPTOR = IMAGE_BOUND_IMPORT_DESCRIPTOR
 type PIMAGE_BOUND_IMPORT_DESCRIPTOR = uintptr
 
 type IMAGE_BOUND_FORWARDER_REF = struct {
-	TimeDateStamp    DWORD
-	OffsetModuleName WORD
-	Reserved         WORD
+	FTimeDateStamp    DWORD
+	FOffsetModuleName WORD
+	FReserved         WORD
 }
 
 type _IMAGE_BOUND_FORWARDER_REF = IMAGE_BOUND_FORWARDER_REF
@@ -14885,19 +14885,19 @@ type _IMAGE_BOUND_FORWARDER_REF = IMAGE_BOUND_FORWARDER_REF
 type PIMAGE_BOUND_FORWARDER_REF = uintptr
 
 type IMAGE_DELAYLOAD_DESCRIPTOR = struct {
-	Attributes struct {
-		__ccgo1_0 [0]struct {
-			__ccgo0 uint32
+	FAttributes struct {
+		F__ccgo1_0 [0]struct {
+			F__ccgo0 uint32
 		}
-		AllAttributes DWORD
+		FAllAttributes DWORD
 	}
-	DllNameRVA                 DWORD
-	ModuleHandleRVA            DWORD
-	ImportAddressTableRVA      DWORD
-	ImportNameTableRVA         DWORD
-	BoundImportAddressTableRVA DWORD
-	UnloadInformationTableRVA  DWORD
-	TimeDateStamp              DWORD
+	FDllNameRVA                 DWORD
+	FModuleHandleRVA            DWORD
+	FImportAddressTableRVA      DWORD
+	FImportNameTableRVA         DWORD
+	FBoundImportAddressTableRVA DWORD
+	FUnloadInformationTableRVA  DWORD
+	FTimeDateStamp              DWORD
 }
 
 type _IMAGE_DELAYLOAD_DESCRIPTOR = IMAGE_DELAYLOAD_DESCRIPTOR
@@ -14907,12 +14907,12 @@ type PIMAGE_DELAYLOAD_DESCRIPTOR = uintptr
 type PCIMAGE_DELAYLOAD_DESCRIPTOR = uintptr
 
 type IMAGE_RESOURCE_DIRECTORY = struct {
-	Characteristics      DWORD
-	TimeDateStamp        DWORD
-	MajorVersion         WORD
-	MinorVersion         WORD
-	NumberOfNamedEntries WORD
-	NumberOfIdEntries    WORD
+	FCharacteristics      DWORD
+	FTimeDateStamp        DWORD
+	FMajorVersion         WORD
+	FMinorVersion         WORD
+	FNumberOfNamedEntries WORD
+	FNumberOfIdEntries    WORD
 }
 
 type _IMAGE_RESOURCE_DIRECTORY = IMAGE_RESOURCE_DIRECTORY
@@ -14920,18 +14920,18 @@ type _IMAGE_RESOURCE_DIRECTORY = IMAGE_RESOURCE_DIRECTORY
 type PIMAGE_RESOURCE_DIRECTORY = uintptr
 
 type IMAGE_RESOURCE_DIRECTORY_ENTRY = struct {
-	__ccgo0_0 struct {
-		Name      [0]DWORD
-		Id        [0]WORD
-		__ccgo0_0 struct {
-			__ccgo0 uint32
+	F__ccgo0_0 struct {
+		FName      [0]DWORD
+		FId        [0]WORD
+		F__ccgo0_0 struct {
+			F__ccgo0 uint32
 		}
 	}
-	__ccgo1_4 struct {
-		__ccgo1_0 [0]struct {
-			__ccgo0 uint32
+	F__ccgo1_4 struct {
+		F__ccgo1_0 [0]struct {
+			F__ccgo0 uint32
 		}
-		OffsetToData DWORD
+		FOffsetToData DWORD
 	}
 }
 
@@ -14940,8 +14940,8 @@ type _IMAGE_RESOURCE_DIRECTORY_ENTRY = IMAGE_RESOURCE_DIRECTORY_ENTRY
 type PIMAGE_RESOURCE_DIRECTORY_ENTRY = uintptr
 
 type IMAGE_RESOURCE_DIRECTORY_STRING = struct {
-	Length     WORD
-	NameString [1]CHAR
+	FLength     WORD
+	FNameString [1]CHAR
 }
 
 type _IMAGE_RESOURCE_DIRECTORY_STRING = IMAGE_RESOURCE_DIRECTORY_STRING
@@ -14949,8 +14949,8 @@ type _IMAGE_RESOURCE_DIRECTORY_STRING = IMAGE_RESOURCE_DIRECTORY_STRING
 type PIMAGE_RESOURCE_DIRECTORY_STRING = uintptr
 
 type IMAGE_RESOURCE_DIR_STRING_U = struct {
-	Length     WORD
-	NameString [1]WCHAR
+	FLength     WORD
+	FNameString [1]WCHAR
 }
 
 type _IMAGE_RESOURCE_DIR_STRING_U = IMAGE_RESOURCE_DIR_STRING_U
@@ -14958,10 +14958,10 @@ type _IMAGE_RESOURCE_DIR_STRING_U = IMAGE_RESOURCE_DIR_STRING_U
 type PIMAGE_RESOURCE_DIR_STRING_U = uintptr
 
 type IMAGE_RESOURCE_DATA_ENTRY = struct {
-	OffsetToData DWORD
-	Size         DWORD
-	CodePage     DWORD
-	Reserved     DWORD
+	FOffsetToData DWORD
+	FSize         DWORD
+	FCodePage     DWORD
+	FReserved     DWORD
 }
 
 type _IMAGE_RESOURCE_DATA_ENTRY = IMAGE_RESOURCE_DATA_ENTRY
@@ -14969,83 +14969,83 @@ type _IMAGE_RESOURCE_DATA_ENTRY = IMAGE_RESOURCE_DATA_ENTRY
 type PIMAGE_RESOURCE_DATA_ENTRY = uintptr
 
 type IMAGE_LOAD_CONFIG_DIRECTORY32 = struct {
-	Size                          DWORD
-	TimeDateStamp                 DWORD
-	MajorVersion                  WORD
-	MinorVersion                  WORD
-	GlobalFlagsClear              DWORD
-	GlobalFlagsSet                DWORD
-	CriticalSectionDefaultTimeout DWORD
-	DeCommitFreeBlockThreshold    DWORD
-	DeCommitTotalFreeThreshold    DWORD
-	LockPrefixTable               DWORD
-	MaximumAllocationSize         DWORD
-	VirtualMemoryThreshold        DWORD
-	ProcessHeapFlags              DWORD
-	ProcessAffinityMask           DWORD
-	CSDVersion                    WORD
-	Reserved1                     WORD
-	EditList                      DWORD
-	SecurityCookie                DWORD
-	SEHandlerTable                DWORD
-	SEHandlerCount                DWORD
+	FSize                          DWORD
+	FTimeDateStamp                 DWORD
+	FMajorVersion                  WORD
+	FMinorVersion                  WORD
+	FGlobalFlagsClear              DWORD
+	FGlobalFlagsSet                DWORD
+	FCriticalSectionDefaultTimeout DWORD
+	FDeCommitFreeBlockThreshold    DWORD
+	FDeCommitTotalFreeThreshold    DWORD
+	FLockPrefixTable               DWORD
+	FMaximumAllocationSize         DWORD
+	FVirtualMemoryThreshold        DWORD
+	FProcessHeapFlags              DWORD
+	FProcessAffinityMask           DWORD
+	FCSDVersion                    WORD
+	FReserved1                     WORD
+	FEditList                      DWORD
+	FSecurityCookie                DWORD
+	FSEHandlerTable                DWORD
+	FSEHandlerCount                DWORD
 }
 
 type PIMAGE_LOAD_CONFIG_DIRECTORY32 = uintptr
 
 type IMAGE_LOAD_CONFIG_DIRECTORY64 = struct {
-	Size                          DWORD
-	TimeDateStamp                 DWORD
-	MajorVersion                  WORD
-	MinorVersion                  WORD
-	GlobalFlagsClear              DWORD
-	GlobalFlagsSet                DWORD
-	CriticalSectionDefaultTimeout DWORD
-	DeCommitFreeBlockThreshold    ULONGLONG
-	DeCommitTotalFreeThreshold    ULONGLONG
-	LockPrefixTable               ULONGLONG
-	MaximumAllocationSize         ULONGLONG
-	VirtualMemoryThreshold        ULONGLONG
-	ProcessAffinityMask           ULONGLONG
-	ProcessHeapFlags              DWORD
-	CSDVersion                    WORD
-	Reserved1                     WORD
-	EditList                      ULONGLONG
-	SecurityCookie                ULONGLONG
-	SEHandlerTable                ULONGLONG
-	SEHandlerCount                ULONGLONG
+	FSize                          DWORD
+	FTimeDateStamp                 DWORD
+	FMajorVersion                  WORD
+	FMinorVersion                  WORD
+	FGlobalFlagsClear              DWORD
+	FGlobalFlagsSet                DWORD
+	FCriticalSectionDefaultTimeout DWORD
+	FDeCommitFreeBlockThreshold    ULONGLONG
+	FDeCommitTotalFreeThreshold    ULONGLONG
+	FLockPrefixTable               ULONGLONG
+	FMaximumAllocationSize         ULONGLONG
+	FVirtualMemoryThreshold        ULONGLONG
+	FProcessAffinityMask           ULONGLONG
+	FProcessHeapFlags              DWORD
+	FCSDVersion                    WORD
+	FReserved1                     WORD
+	FEditList                      ULONGLONG
+	FSecurityCookie                ULONGLONG
+	FSEHandlerTable                ULONGLONG
+	FSEHandlerCount                ULONGLONG
 }
 
 type PIMAGE_LOAD_CONFIG_DIRECTORY64 = uintptr
 
 type IMAGE_LOAD_CONFIG_DIRECTORY = struct {
-	Size                          DWORD
-	TimeDateStamp                 DWORD
-	MajorVersion                  WORD
-	MinorVersion                  WORD
-	GlobalFlagsClear              DWORD
-	GlobalFlagsSet                DWORD
-	CriticalSectionDefaultTimeout DWORD
-	DeCommitFreeBlockThreshold    ULONGLONG
-	DeCommitTotalFreeThreshold    ULONGLONG
-	LockPrefixTable               ULONGLONG
-	MaximumAllocationSize         ULONGLONG
-	VirtualMemoryThreshold        ULONGLONG
-	ProcessAffinityMask           ULONGLONG
-	ProcessHeapFlags              DWORD
-	CSDVersion                    WORD
-	Reserved1                     WORD
-	EditList                      ULONGLONG
-	SecurityCookie                ULONGLONG
-	SEHandlerTable                ULONGLONG
-	SEHandlerCount                ULONGLONG
+	FSize                          DWORD
+	FTimeDateStamp                 DWORD
+	FMajorVersion                  WORD
+	FMinorVersion                  WORD
+	FGlobalFlagsClear              DWORD
+	FGlobalFlagsSet                DWORD
+	FCriticalSectionDefaultTimeout DWORD
+	FDeCommitFreeBlockThreshold    ULONGLONG
+	FDeCommitTotalFreeThreshold    ULONGLONG
+	FLockPrefixTable               ULONGLONG
+	FMaximumAllocationSize         ULONGLONG
+	FVirtualMemoryThreshold        ULONGLONG
+	FProcessAffinityMask           ULONGLONG
+	FProcessHeapFlags              DWORD
+	FCSDVersion                    WORD
+	FReserved1                     WORD
+	FEditList                      ULONGLONG
+	FSecurityCookie                ULONGLONG
+	FSEHandlerTable                ULONGLONG
+	FSEHandlerCount                ULONGLONG
 }
 
 type PIMAGE_LOAD_CONFIG_DIRECTORY = uintptr
 
 type IMAGE_CE_RUNTIME_FUNCTION_ENTRY = struct {
-	FuncStart DWORD
-	__ccgo4   uint32
+	FFuncStart DWORD
+	F__ccgo4   uint32
 }
 
 type _IMAGE_CE_RUNTIME_FUNCTION_ENTRY = IMAGE_CE_RUNTIME_FUNCTION_ENTRY
@@ -15053,11 +15053,11 @@ type _IMAGE_CE_RUNTIME_FUNCTION_ENTRY = IMAGE_CE_RUNTIME_FUNCTION_ENTRY
 type PIMAGE_CE_RUNTIME_FUNCTION_ENTRY = uintptr
 
 type IMAGE_ALPHA64_RUNTIME_FUNCTION_ENTRY = struct {
-	BeginAddress     ULONGLONG
-	EndAddress       ULONGLONG
-	ExceptionHandler ULONGLONG
-	HandlerData      ULONGLONG
-	PrologEndAddress ULONGLONG
+	FBeginAddress     ULONGLONG
+	FEndAddress       ULONGLONG
+	FExceptionHandler ULONGLONG
+	FHandlerData      ULONGLONG
+	FPrologEndAddress ULONGLONG
 }
 
 type _IMAGE_ALPHA64_RUNTIME_FUNCTION_ENTRY = IMAGE_ALPHA64_RUNTIME_FUNCTION_ENTRY
@@ -15065,11 +15065,11 @@ type _IMAGE_ALPHA64_RUNTIME_FUNCTION_ENTRY = IMAGE_ALPHA64_RUNTIME_FUNCTION_ENTR
 type PIMAGE_ALPHA64_RUNTIME_FUNCTION_ENTRY = uintptr
 
 type IMAGE_ALPHA_RUNTIME_FUNCTION_ENTRY = struct {
-	BeginAddress     DWORD
-	EndAddress       DWORD
-	ExceptionHandler DWORD
-	HandlerData      DWORD
-	PrologEndAddress DWORD
+	FBeginAddress     DWORD
+	FEndAddress       DWORD
+	FExceptionHandler DWORD
+	FHandlerData      DWORD
+	FPrologEndAddress DWORD
 }
 
 type _IMAGE_ALPHA_RUNTIME_FUNCTION_ENTRY = IMAGE_ALPHA_RUNTIME_FUNCTION_ENTRY
@@ -15077,12 +15077,12 @@ type _IMAGE_ALPHA_RUNTIME_FUNCTION_ENTRY = IMAGE_ALPHA_RUNTIME_FUNCTION_ENTRY
 type PIMAGE_ALPHA_RUNTIME_FUNCTION_ENTRY = uintptr
 
 type IMAGE_ARM_RUNTIME_FUNCTION_ENTRY = struct {
-	BeginAddress DWORD
-	__ccgo1_4    struct {
-		__ccgo1_0 [0]struct {
-			__ccgo0 uint32
+	FBeginAddress DWORD
+	F__ccgo1_4    struct {
+		F__ccgo1_0 [0]struct {
+			F__ccgo0 uint32
 		}
-		UnwindData DWORD
+		FUnwindData DWORD
 	}
 }
 
@@ -15091,12 +15091,12 @@ type _IMAGE_ARM_RUNTIME_FUNCTION_ENTRY = IMAGE_ARM_RUNTIME_FUNCTION_ENTRY
 type PIMAGE_ARM_RUNTIME_FUNCTION_ENTRY = uintptr
 
 type IMAGE_ARM64_RUNTIME_FUNCTION_ENTRY = struct {
-	BeginAddress DWORD
-	__ccgo1_4    struct {
-		__ccgo1_0 [0]struct {
-			__ccgo0 uint32
+	FBeginAddress DWORD
+	F__ccgo1_4    struct {
+		F__ccgo1_0 [0]struct {
+			F__ccgo0 uint32
 		}
-		UnwindData DWORD
+		FUnwindData DWORD
 	}
 }
 
@@ -15105,56 +15105,56 @@ type _IMAGE_ARM64_RUNTIME_FUNCTION_ENTRY = IMAGE_ARM64_RUNTIME_FUNCTION_ENTRY
 type PIMAGE_ARM64_RUNTIME_FUNCTION_ENTRY = uintptr
 
 type _IMAGE_RUNTIME_FUNCTION_ENTRY = struct {
-	BeginAddress DWORD
-	EndAddress   DWORD
-	__ccgo2_8    struct {
-		UnwindData        [0]DWORD
-		UnwindInfoAddress DWORD
+	FBeginAddress DWORD
+	FEndAddress   DWORD
+	F__ccgo2_8    struct {
+		FUnwindData        [0]DWORD
+		FUnwindInfoAddress DWORD
 	}
 }
 
 type _PIMAGE_RUNTIME_FUNCTION_ENTRY = uintptr
 
 type _IMAGE_RUNTIME_FUNCTION_ENTRY1 = struct {
-	BeginAddress DWORD
-	EndAddress   DWORD
-	__ccgo2_8    struct {
-		UnwindData        [0]DWORD
-		UnwindInfoAddress DWORD
+	FBeginAddress DWORD
+	FEndAddress   DWORD
+	F__ccgo2_8    struct {
+		FUnwindData        [0]DWORD
+		FUnwindInfoAddress DWORD
 	}
 }
 
 type IMAGE_IA64_RUNTIME_FUNCTION_ENTRY = struct {
-	BeginAddress DWORD
-	EndAddress   DWORD
-	__ccgo2_8    struct {
-		UnwindData        [0]DWORD
-		UnwindInfoAddress DWORD
+	FBeginAddress DWORD
+	FEndAddress   DWORD
+	F__ccgo2_8    struct {
+		FUnwindData        [0]DWORD
+		FUnwindInfoAddress DWORD
 	}
 }
 
 type PIMAGE_IA64_RUNTIME_FUNCTION_ENTRY = uintptr
 
 type IMAGE_RUNTIME_FUNCTION_ENTRY = struct {
-	BeginAddress DWORD
-	EndAddress   DWORD
-	__ccgo2_8    struct {
-		UnwindData        [0]DWORD
-		UnwindInfoAddress DWORD
+	FBeginAddress DWORD
+	FEndAddress   DWORD
+	F__ccgo2_8    struct {
+		FUnwindData        [0]DWORD
+		FUnwindInfoAddress DWORD
 	}
 }
 
 type PIMAGE_RUNTIME_FUNCTION_ENTRY = uintptr
 
 type IMAGE_DEBUG_DIRECTORY = struct {
-	Characteristics  DWORD
-	TimeDateStamp    DWORD
-	MajorVersion     WORD
-	MinorVersion     WORD
-	Type             DWORD
-	SizeOfData       DWORD
-	AddressOfRawData DWORD
-	PointerToRawData DWORD
+	FCharacteristics  DWORD
+	FTimeDateStamp    DWORD
+	FMajorVersion     WORD
+	FMinorVersion     WORD
+	FType             DWORD
+	FSizeOfData       DWORD
+	FAddressOfRawData DWORD
+	FPointerToRawData DWORD
 }
 
 type _IMAGE_DEBUG_DIRECTORY = IMAGE_DEBUG_DIRECTORY
@@ -15162,14 +15162,14 @@ type _IMAGE_DEBUG_DIRECTORY = IMAGE_DEBUG_DIRECTORY
 type PIMAGE_DEBUG_DIRECTORY = uintptr
 
 type IMAGE_COFF_SYMBOLS_HEADER = struct {
-	NumberOfSymbols      DWORD
-	LvaToFirstSymbol     DWORD
-	NumberOfLinenumbers  DWORD
-	LvaToFirstLinenumber DWORD
-	RvaToFirstByteOfCode DWORD
-	RvaToLastByteOfCode  DWORD
-	RvaToFirstByteOfData DWORD
-	RvaToLastByteOfData  DWORD
+	FNumberOfSymbols      DWORD
+	FLvaToFirstSymbol     DWORD
+	FNumberOfLinenumbers  DWORD
+	FLvaToFirstLinenumber DWORD
+	FRvaToFirstByteOfCode DWORD
+	FRvaToLastByteOfCode  DWORD
+	FRvaToFirstByteOfData DWORD
+	FRvaToLastByteOfData  DWORD
 }
 
 type _IMAGE_COFF_SYMBOLS_HEADER = IMAGE_COFF_SYMBOLS_HEADER
@@ -15177,11 +15177,11 @@ type _IMAGE_COFF_SYMBOLS_HEADER = IMAGE_COFF_SYMBOLS_HEADER
 type PIMAGE_COFF_SYMBOLS_HEADER = uintptr
 
 type FPO_DATA = struct {
-	ulOffStart DWORD
-	cbProcSize DWORD
-	cdwLocals  DWORD
-	cdwParams  WORD
-	__ccgo14   uint16
+	FulOffStart DWORD
+	FcbProcSize DWORD
+	FcdwLocals  DWORD
+	FcdwParams  WORD
+	F__ccgo14   uint16
 }
 
 type _FPO_DATA = FPO_DATA
@@ -15189,11 +15189,11 @@ type _FPO_DATA = FPO_DATA
 type PFPO_DATA = uintptr
 
 type IMAGE_DEBUG_MISC = struct {
-	DataType DWORD
-	Length   DWORD
-	Unicode  BOOLEAN
-	Reserved [3]BYTE
-	Data     [1]BYTE
+	FDataType DWORD
+	FLength   DWORD
+	FUnicode  BOOLEAN
+	FReserved [3]BYTE
+	FData     [1]BYTE
 }
 
 type _IMAGE_DEBUG_MISC = IMAGE_DEBUG_MISC
@@ -15201,9 +15201,9 @@ type _IMAGE_DEBUG_MISC = IMAGE_DEBUG_MISC
 type PIMAGE_DEBUG_MISC = uintptr
 
 type IMAGE_FUNCTION_ENTRY = struct {
-	StartingAddress DWORD
-	EndingAddress   DWORD
-	EndOfPrologue   DWORD
+	FStartingAddress DWORD
+	FEndingAddress   DWORD
+	FEndOfPrologue   DWORD
 }
 
 type _IMAGE_FUNCTION_ENTRY = IMAGE_FUNCTION_ENTRY
@@ -15211,11 +15211,11 @@ type _IMAGE_FUNCTION_ENTRY = IMAGE_FUNCTION_ENTRY
 type PIMAGE_FUNCTION_ENTRY = uintptr
 
 type IMAGE_FUNCTION_ENTRY64 = struct {
-	StartingAddress ULONGLONG
-	EndingAddress   ULONGLONG
-	__ccgo2_16      struct {
-		UnwindInfoAddress [0]ULONGLONG
-		EndOfPrologue     ULONGLONG
+	FStartingAddress ULONGLONG
+	FEndingAddress   ULONGLONG
+	F__ccgo2_16      struct {
+		FUnwindInfoAddress [0]ULONGLONG
+		FEndOfPrologue     ULONGLONG
 	}
 }
 
@@ -15224,19 +15224,19 @@ type _IMAGE_FUNCTION_ENTRY64 = IMAGE_FUNCTION_ENTRY64
 type PIMAGE_FUNCTION_ENTRY64 = uintptr
 
 type IMAGE_SEPARATE_DEBUG_HEADER = struct {
-	Signature          WORD
-	Flags              WORD
-	Machine            WORD
-	Characteristics    WORD
-	TimeDateStamp      DWORD
-	CheckSum           DWORD
-	ImageBase          DWORD
-	SizeOfImage        DWORD
-	NumberOfSections   DWORD
-	ExportedNamesSize  DWORD
-	DebugDirectorySize DWORD
-	SectionAlignment   DWORD
-	Reserved           [2]DWORD
+	FSignature          WORD
+	FFlags              WORD
+	FMachine            WORD
+	FCharacteristics    WORD
+	FTimeDateStamp      DWORD
+	FCheckSum           DWORD
+	FImageBase          DWORD
+	FSizeOfImage        DWORD
+	FNumberOfSections   DWORD
+	FExportedNamesSize  DWORD
+	FDebugDirectorySize DWORD
+	FSectionAlignment   DWORD
+	FReserved           [2]DWORD
 }
 
 type _IMAGE_SEPARATE_DEBUG_HEADER = IMAGE_SEPARATE_DEBUG_HEADER
@@ -15244,15 +15244,15 @@ type _IMAGE_SEPARATE_DEBUG_HEADER = IMAGE_SEPARATE_DEBUG_HEADER
 type PIMAGE_SEPARATE_DEBUG_HEADER = uintptr
 
 type NON_PAGED_DEBUG_INFO = struct {
-	Signature       WORD
-	Flags           WORD
-	Size            DWORD
-	Machine         WORD
-	Characteristics WORD
-	TimeDateStamp   DWORD
-	CheckSum        DWORD
-	SizeOfImage     DWORD
-	ImageBase       ULONGLONG
+	FSignature       WORD
+	FFlags           WORD
+	FSize            DWORD
+	FMachine         WORD
+	FCharacteristics WORD
+	FTimeDateStamp   DWORD
+	FCheckSum        DWORD
+	FSizeOfImage     DWORD
+	FImageBase       ULONGLONG
 }
 
 type _NON_PAGED_DEBUG_INFO = NON_PAGED_DEBUG_INFO
@@ -15260,8 +15260,8 @@ type _NON_PAGED_DEBUG_INFO = NON_PAGED_DEBUG_INFO
 type PNON_PAGED_DEBUG_INFO = uintptr
 
 type IMAGE_ARCHITECTURE_HEADER = struct {
-	__ccgo0       uint32
-	FirstEntryRVA DWORD
+	F__ccgo0       uint32
+	FFirstEntryRVA DWORD
 }
 
 type _ImageArchitectureHeader = IMAGE_ARCHITECTURE_HEADER
@@ -15269,8 +15269,8 @@ type _ImageArchitectureHeader = IMAGE_ARCHITECTURE_HEADER
 type PIMAGE_ARCHITECTURE_HEADER = uintptr
 
 type IMAGE_ARCHITECTURE_ENTRY = struct {
-	FixupInstRVA DWORD
-	NewInst      DWORD
+	FFixupInstRVA DWORD
+	FNewInst      DWORD
 }
 
 type _ImageArchitectureEntry = IMAGE_ARCHITECTURE_ENTRY
@@ -15278,17 +15278,17 @@ type _ImageArchitectureEntry = IMAGE_ARCHITECTURE_ENTRY
 type PIMAGE_ARCHITECTURE_ENTRY = uintptr
 
 type IMPORT_OBJECT_HEADER = struct {
-	Sig1          WORD
-	Sig2          WORD
-	Version       WORD
-	Machine       WORD
-	TimeDateStamp DWORD
-	SizeOfData    DWORD
-	__ccgo6_16    struct {
-		Hint    [0]WORD
-		Ordinal WORD
+	FSig1          WORD
+	FSig2          WORD
+	FVersion       WORD
+	FMachine       WORD
+	FTimeDateStamp DWORD
+	FSizeOfData    DWORD
+	F__ccgo6_16    struct {
+		FHint    [0]WORD
+		FOrdinal WORD
 	}
-	__ccgo18 uint16
+	F__ccgo18 uint16
 }
 
 type IMPORT_OBJECT_TYPE1 = int32
@@ -15336,45 +15336,45 @@ const MAX_CLASS_NAME = 1024
 const MAX_PACKAGE_NAME = 1024
 
 type IMAGE_COR20_HEADER = struct {
-	cb                  DWORD
-	MajorRuntimeVersion WORD
-	MinorRuntimeVersion WORD
-	MetaData            IMAGE_DATA_DIRECTORY
-	Flags               DWORD
-	__ccgo5_20          struct {
-		EntryPointRVA   [0]DWORD
-		EntryPointToken DWORD
+	Fcb                  DWORD
+	FMajorRuntimeVersion WORD
+	FMinorRuntimeVersion WORD
+	FMetaData            IMAGE_DATA_DIRECTORY
+	FFlags               DWORD
+	F__ccgo5_20          struct {
+		FEntryPointRVA   [0]DWORD
+		FEntryPointToken DWORD
 	}
-	Resources               IMAGE_DATA_DIRECTORY
-	StrongNameSignature     IMAGE_DATA_DIRECTORY
-	CodeManagerTable        IMAGE_DATA_DIRECTORY
-	VTableFixups            IMAGE_DATA_DIRECTORY
-	ExportAddressTableJumps IMAGE_DATA_DIRECTORY
-	ManagedNativeHeader     IMAGE_DATA_DIRECTORY
+	FResources               IMAGE_DATA_DIRECTORY
+	FStrongNameSignature     IMAGE_DATA_DIRECTORY
+	FCodeManagerTable        IMAGE_DATA_DIRECTORY
+	FVTableFixups            IMAGE_DATA_DIRECTORY
+	FExportAddressTableJumps IMAGE_DATA_DIRECTORY
+	FManagedNativeHeader     IMAGE_DATA_DIRECTORY
 }
 
 type PIMAGE_COR20_HEADER = uintptr
 
 type IMAGE_COR20_HEADER1 = struct {
-	cb                  DWORD
-	MajorRuntimeVersion WORD
-	MinorRuntimeVersion WORD
-	MetaData            IMAGE_DATA_DIRECTORY
-	Flags               DWORD
-	__ccgo5_20          struct {
-		EntryPointRVA   [0]DWORD
-		EntryPointToken DWORD
+	Fcb                  DWORD
+	FMajorRuntimeVersion WORD
+	FMinorRuntimeVersion WORD
+	FMetaData            IMAGE_DATA_DIRECTORY
+	FFlags               DWORD
+	F__ccgo5_20          struct {
+		FEntryPointRVA   [0]DWORD
+		FEntryPointToken DWORD
 	}
-	Resources               IMAGE_DATA_DIRECTORY
-	StrongNameSignature     IMAGE_DATA_DIRECTORY
-	CodeManagerTable        IMAGE_DATA_DIRECTORY
-	VTableFixups            IMAGE_DATA_DIRECTORY
-	ExportAddressTableJumps IMAGE_DATA_DIRECTORY
-	ManagedNativeHeader     IMAGE_DATA_DIRECTORY
+	FResources               IMAGE_DATA_DIRECTORY
+	FStrongNameSignature     IMAGE_DATA_DIRECTORY
+	FCodeManagerTable        IMAGE_DATA_DIRECTORY
+	FVTableFixups            IMAGE_DATA_DIRECTORY
+	FExportAddressTableJumps IMAGE_DATA_DIRECTORY
+	FManagedNativeHeader     IMAGE_DATA_DIRECTORY
 }
 
 type SLIST_ENTRY = struct {
-	Next uintptr
+	FNext uintptr
 }
 
 type _SLIST_ENTRY = SLIST_ENTRY
@@ -15382,17 +15382,17 @@ type _SLIST_ENTRY = SLIST_ENTRY
 type PSLIST_ENTRY = uintptr
 
 type SLIST_HEADER = struct {
-	Header8 [0]struct {
-		__ccgo0 uint64
-		__ccgo8 uint64
+	FHeader8 [0]struct {
+		F__ccgo0 uint64
+		F__ccgo8 uint64
 	}
-	HeaderX64 [0]struct {
-		__ccgo0 uint64
-		__ccgo8 uint64
+	FHeaderX64 [0]struct {
+		F__ccgo0 uint64
+		F__ccgo8 uint64
 	}
-	__ccgo0_0 struct {
-		Alignment ULONGLONG
-		Region    ULONGLONG
+	F__ccgo0_0 struct {
+		FAlignment ULONGLONG
+		FRegion    ULONGLONG
 	}
 }
 
@@ -15401,7 +15401,7 @@ type _SLIST_HEADER = SLIST_HEADER
 type PSLIST_HEADER = uintptr
 
 type RTL_RUN_ONCE = struct {
-	Ptr PVOID
+	FPtr PVOID
 }
 
 type _RTL_RUN_ONCE = RTL_RUN_ONCE
@@ -15411,11 +15411,11 @@ type PRTL_RUN_ONCE = uintptr
 type PRTL_RUN_ONCE_INIT_FN = uintptr
 
 type RTL_BARRIER = struct {
-	Reserved1 DWORD
-	Reserved2 DWORD
-	Reserved3 [2]ULONG_PTR
-	Reserved4 DWORD
-	Reserved5 DWORD
+	FReserved1 DWORD
+	FReserved2 DWORD
+	FReserved3 [2]ULONG_PTR
+	FReserved4 DWORD
+	FReserved5 DWORD
 }
 
 type _RTL_BARRIER = RTL_BARRIER
@@ -15423,9 +15423,9 @@ type _RTL_BARRIER = RTL_BARRIER
 type PRTL_BARRIER = uintptr
 
 type MESSAGE_RESOURCE_ENTRY = struct {
-	Length WORD
-	Flags  WORD
-	Text   [1]BYTE
+	FLength WORD
+	FFlags  WORD
+	FText   [1]BYTE
 }
 
 type _MESSAGE_RESOURCE_ENTRY = MESSAGE_RESOURCE_ENTRY
@@ -15433,9 +15433,9 @@ type _MESSAGE_RESOURCE_ENTRY = MESSAGE_RESOURCE_ENTRY
 type PMESSAGE_RESOURCE_ENTRY = uintptr
 
 type MESSAGE_RESOURCE_BLOCK = struct {
-	LowId           DWORD
-	HighId          DWORD
-	OffsetToEntries DWORD
+	FLowId           DWORD
+	FHighId          DWORD
+	FOffsetToEntries DWORD
 }
 
 type _MESSAGE_RESOURCE_BLOCK = MESSAGE_RESOURCE_BLOCK
@@ -15443,8 +15443,8 @@ type _MESSAGE_RESOURCE_BLOCK = MESSAGE_RESOURCE_BLOCK
 type PMESSAGE_RESOURCE_BLOCK = uintptr
 
 type MESSAGE_RESOURCE_DATA = struct {
-	NumberOfBlocks DWORD
-	Blocks         [1]MESSAGE_RESOURCE_BLOCK
+	FNumberOfBlocks DWORD
+	FBlocks         [1]MESSAGE_RESOURCE_BLOCK
 }
 
 type _MESSAGE_RESOURCE_DATA = MESSAGE_RESOURCE_DATA
@@ -15452,12 +15452,12 @@ type _MESSAGE_RESOURCE_DATA = MESSAGE_RESOURCE_DATA
 type PMESSAGE_RESOURCE_DATA = uintptr
 
 type OSVERSIONINFOA = struct {
-	dwOSVersionInfoSize DWORD
-	dwMajorVersion      DWORD
-	dwMinorVersion      DWORD
-	dwBuildNumber       DWORD
-	dwPlatformId        DWORD
-	szCSDVersion        [128]CHAR
+	FdwOSVersionInfoSize DWORD
+	FdwMajorVersion      DWORD
+	FdwMinorVersion      DWORD
+	FdwBuildNumber       DWORD
+	FdwPlatformId        DWORD
+	FszCSDVersion        [128]CHAR
 }
 
 type _OSVERSIONINFOA = OSVERSIONINFOA
@@ -15467,12 +15467,12 @@ type POSVERSIONINFOA = uintptr
 type LPOSVERSIONINFOA = uintptr
 
 type OSVERSIONINFOW = struct {
-	dwOSVersionInfoSize DWORD
-	dwMajorVersion      DWORD
-	dwMinorVersion      DWORD
-	dwBuildNumber       DWORD
-	dwPlatformId        DWORD
-	szCSDVersion        [128]WCHAR
+	FdwOSVersionInfoSize DWORD
+	FdwMajorVersion      DWORD
+	FdwMinorVersion      DWORD
+	FdwBuildNumber       DWORD
+	FdwPlatformId        DWORD
+	FszCSDVersion        [128]WCHAR
 }
 
 type _OSVERSIONINFOW = OSVERSIONINFOW
@@ -15482,23 +15482,23 @@ type POSVERSIONINFOW = uintptr
 type LPOSVERSIONINFOW = uintptr
 
 type RTL_OSVERSIONINFOW = struct {
-	dwOSVersionInfoSize DWORD
-	dwMajorVersion      DWORD
-	dwMinorVersion      DWORD
-	dwBuildNumber       DWORD
-	dwPlatformId        DWORD
-	szCSDVersion        [128]WCHAR
+	FdwOSVersionInfoSize DWORD
+	FdwMajorVersion      DWORD
+	FdwMinorVersion      DWORD
+	FdwBuildNumber       DWORD
+	FdwPlatformId        DWORD
+	FszCSDVersion        [128]WCHAR
 }
 
 type PRTL_OSVERSIONINFOW = uintptr
 
 type OSVERSIONINFO = struct {
-	dwOSVersionInfoSize DWORD
-	dwMajorVersion      DWORD
-	dwMinorVersion      DWORD
-	dwBuildNumber       DWORD
-	dwPlatformId        DWORD
-	szCSDVersion        [128]CHAR
+	FdwOSVersionInfoSize DWORD
+	FdwMajorVersion      DWORD
+	FdwMinorVersion      DWORD
+	FdwBuildNumber       DWORD
+	FdwPlatformId        DWORD
+	FszCSDVersion        [128]CHAR
 }
 
 type POSVERSIONINFO = uintptr
@@ -15506,17 +15506,17 @@ type POSVERSIONINFO = uintptr
 type LPOSVERSIONINFO = uintptr
 
 type OSVERSIONINFOEXA = struct {
-	dwOSVersionInfoSize DWORD
-	dwMajorVersion      DWORD
-	dwMinorVersion      DWORD
-	dwBuildNumber       DWORD
-	dwPlatformId        DWORD
-	szCSDVersion        [128]CHAR
-	wServicePackMajor   WORD
-	wServicePackMinor   WORD
-	wSuiteMask          WORD
-	wProductType        BYTE
-	wReserved           BYTE
+	FdwOSVersionInfoSize DWORD
+	FdwMajorVersion      DWORD
+	FdwMinorVersion      DWORD
+	FdwBuildNumber       DWORD
+	FdwPlatformId        DWORD
+	FszCSDVersion        [128]CHAR
+	FwServicePackMajor   WORD
+	FwServicePackMinor   WORD
+	FwSuiteMask          WORD
+	FwProductType        BYTE
+	FwReserved           BYTE
 }
 
 type _OSVERSIONINFOEXA = OSVERSIONINFOEXA
@@ -15526,17 +15526,17 @@ type POSVERSIONINFOEXA = uintptr
 type LPOSVERSIONINFOEXA = uintptr
 
 type OSVERSIONINFOEXW = struct {
-	dwOSVersionInfoSize DWORD
-	dwMajorVersion      DWORD
-	dwMinorVersion      DWORD
-	dwBuildNumber       DWORD
-	dwPlatformId        DWORD
-	szCSDVersion        [128]WCHAR
-	wServicePackMajor   WORD
-	wServicePackMinor   WORD
-	wSuiteMask          WORD
-	wProductType        BYTE
-	wReserved           BYTE
+	FdwOSVersionInfoSize DWORD
+	FdwMajorVersion      DWORD
+	FdwMinorVersion      DWORD
+	FdwBuildNumber       DWORD
+	FdwPlatformId        DWORD
+	FszCSDVersion        [128]WCHAR
+	FwServicePackMajor   WORD
+	FwServicePackMinor   WORD
+	FwSuiteMask          WORD
+	FwProductType        BYTE
+	FwReserved           BYTE
 }
 
 type _OSVERSIONINFOEXW = OSVERSIONINFOEXW
@@ -15546,33 +15546,33 @@ type POSVERSIONINFOEXW = uintptr
 type LPOSVERSIONINFOEXW = uintptr
 
 type RTL_OSVERSIONINFOEXW = struct {
-	dwOSVersionInfoSize DWORD
-	dwMajorVersion      DWORD
-	dwMinorVersion      DWORD
-	dwBuildNumber       DWORD
-	dwPlatformId        DWORD
-	szCSDVersion        [128]WCHAR
-	wServicePackMajor   WORD
-	wServicePackMinor   WORD
-	wSuiteMask          WORD
-	wProductType        BYTE
-	wReserved           BYTE
+	FdwOSVersionInfoSize DWORD
+	FdwMajorVersion      DWORD
+	FdwMinorVersion      DWORD
+	FdwBuildNumber       DWORD
+	FdwPlatformId        DWORD
+	FszCSDVersion        [128]WCHAR
+	FwServicePackMajor   WORD
+	FwServicePackMinor   WORD
+	FwSuiteMask          WORD
+	FwProductType        BYTE
+	FwReserved           BYTE
 }
 
 type PRTL_OSVERSIONINFOEXW = uintptr
 
 type OSVERSIONINFOEX = struct {
-	dwOSVersionInfoSize DWORD
-	dwMajorVersion      DWORD
-	dwMinorVersion      DWORD
-	dwBuildNumber       DWORD
-	dwPlatformId        DWORD
-	szCSDVersion        [128]CHAR
-	wServicePackMajor   WORD
-	wServicePackMinor   WORD
-	wSuiteMask          WORD
-	wProductType        BYTE
-	wReserved           BYTE
+	FdwOSVersionInfoSize DWORD
+	FdwMajorVersion      DWORD
+	FdwMinorVersion      DWORD
+	FdwBuildNumber       DWORD
+	FdwPlatformId        DWORD
+	FszCSDVersion        [128]CHAR
+	FwServicePackMajor   WORD
+	FwServicePackMinor   WORD
+	FwSuiteMask          WORD
+	FwProductType        BYTE
+	FwReserved           BYTE
 }
 
 type POSVERSIONINFOEX = uintptr
@@ -15607,15 +15607,15 @@ type PRTL_UMS_SCHEDULER_REASON = uintptr
 type PRTL_UMS_SCHEDULER_ENTRY_POINT = uintptr
 
 type RTL_CRITICAL_SECTION_DEBUG = struct {
-	Type                      WORD
-	CreatorBackTraceIndex     WORD
-	CriticalSection           uintptr
-	ProcessLocksList          LIST_ENTRY
-	EntryCount                DWORD
-	ContentionCount           DWORD
-	Flags                     DWORD
-	CreatorBackTraceIndexHigh WORD
-	SpareWORD                 WORD
+	FType                      WORD
+	FCreatorBackTraceIndex     WORD
+	FCriticalSection           uintptr
+	FProcessLocksList          LIST_ENTRY
+	FEntryCount                DWORD
+	FContentionCount           DWORD
+	FFlags                     DWORD
+	FCreatorBackTraceIndexHigh WORD
+	FSpareWORD                 WORD
 }
 
 type _RTL_CRITICAL_SECTION_DEBUG = RTL_CRITICAL_SECTION_DEBUG
@@ -15623,26 +15623,26 @@ type _RTL_CRITICAL_SECTION_DEBUG = RTL_CRITICAL_SECTION_DEBUG
 type PRTL_CRITICAL_SECTION_DEBUG = uintptr
 
 type RTL_RESOURCE_DEBUG = struct {
-	Type                      WORD
-	CreatorBackTraceIndex     WORD
-	CriticalSection           uintptr
-	ProcessLocksList          LIST_ENTRY
-	EntryCount                DWORD
-	ContentionCount           DWORD
-	Flags                     DWORD
-	CreatorBackTraceIndexHigh WORD
-	SpareWORD                 WORD
+	FType                      WORD
+	FCreatorBackTraceIndex     WORD
+	FCriticalSection           uintptr
+	FProcessLocksList          LIST_ENTRY
+	FEntryCount                DWORD
+	FContentionCount           DWORD
+	FFlags                     DWORD
+	FCreatorBackTraceIndexHigh WORD
+	FSpareWORD                 WORD
 }
 
 type PRTL_RESOURCE_DEBUG = uintptr
 
 type RTL_CRITICAL_SECTION = struct {
-	DebugInfo      PRTL_CRITICAL_SECTION_DEBUG
-	LockCount      LONG
-	RecursionCount LONG
-	OwningThread   HANDLE
-	LockSemaphore  HANDLE
-	SpinCount      ULONG_PTR
+	FDebugInfo      PRTL_CRITICAL_SECTION_DEBUG
+	FLockCount      LONG
+	FRecursionCount LONG
+	FOwningThread   HANDLE
+	FLockSemaphore  HANDLE
+	FSpinCount      ULONG_PTR
 }
 
 type _RTL_CRITICAL_SECTION = RTL_CRITICAL_SECTION
@@ -15650,7 +15650,7 @@ type _RTL_CRITICAL_SECTION = RTL_CRITICAL_SECTION
 type PRTL_CRITICAL_SECTION = uintptr
 
 type RTL_SRWLOCK = struct {
-	Ptr PVOID
+	FPtr PVOID
 }
 
 type _RTL_SRWLOCK = RTL_SRWLOCK
@@ -15658,7 +15658,7 @@ type _RTL_SRWLOCK = RTL_SRWLOCK
 type PRTL_SRWLOCK = uintptr
 
 type RTL_CONDITION_VARIABLE = struct {
-	Ptr PVOID
+	FPtr PVOID
 }
 
 type _RTL_CONDITION_VARIABLE = RTL_CONDITION_VARIABLE
@@ -15718,8 +15718,8 @@ const ACTCTX_COMPATIBILITY_ELEMENT_TYPE_OS = 1
 const ACTCTX_COMPATIBILITY_ELEMENT_TYPE_MITIGATION = 2
 
 type ACTIVATION_CONTEXT_QUERY_INDEX = struct {
-	ulAssemblyIndex       DWORD
-	ulFileIndexInAssembly DWORD
+	FulAssemblyIndex       DWORD
+	FulFileIndexInAssembly DWORD
 }
 
 type _ACTIVATION_CONTEXT_QUERY_INDEX = ACTIVATION_CONTEXT_QUERY_INDEX
@@ -15727,11 +15727,11 @@ type _ACTIVATION_CONTEXT_QUERY_INDEX = ACTIVATION_CONTEXT_QUERY_INDEX
 type PACTIVATION_CONTEXT_QUERY_INDEX = uintptr
 
 type ASSEMBLY_FILE_DETAILED_INFORMATION = struct {
-	ulFlags          DWORD
-	ulFilenameLength DWORD
-	ulPathLength     DWORD
-	lpFileName       PCWSTR
-	lpFilePath       PCWSTR
+	FulFlags          DWORD
+	FulFilenameLength DWORD
+	FulPathLength     DWORD
+	FlpFileName       PCWSTR
+	FlpFilePath       PCWSTR
 }
 
 type _ASSEMBLY_FILE_DETAILED_INFORMATION = ASSEMBLY_FILE_DETAILED_INFORMATION
@@ -15739,25 +15739,25 @@ type _ASSEMBLY_FILE_DETAILED_INFORMATION = ASSEMBLY_FILE_DETAILED_INFORMATION
 type PASSEMBLY_FILE_DETAILED_INFORMATION = uintptr
 
 type ACTIVATION_CONTEXT_ASSEMBLY_DETAILED_INFORMATION = struct {
-	ulFlags                           DWORD
-	ulEncodedAssemblyIdentityLength   DWORD
-	ulManifestPathType                DWORD
-	ulManifestPathLength              DWORD
-	liManifestLastWriteTime           LARGE_INTEGER
-	ulPolicyPathType                  DWORD
-	ulPolicyPathLength                DWORD
-	liPolicyLastWriteTime             LARGE_INTEGER
-	ulMetadataSatelliteRosterIndex    DWORD
-	ulManifestVersionMajor            DWORD
-	ulManifestVersionMinor            DWORD
-	ulPolicyVersionMajor              DWORD
-	ulPolicyVersionMinor              DWORD
-	ulAssemblyDirectoryNameLength     DWORD
-	lpAssemblyEncodedAssemblyIdentity PCWSTR
-	lpAssemblyManifestPath            PCWSTR
-	lpAssemblyPolicyPath              PCWSTR
-	lpAssemblyDirectoryName           PCWSTR
-	ulFileCount                       DWORD
+	FulFlags                           DWORD
+	FulEncodedAssemblyIdentityLength   DWORD
+	FulManifestPathType                DWORD
+	FulManifestPathLength              DWORD
+	FliManifestLastWriteTime           LARGE_INTEGER
+	FulPolicyPathType                  DWORD
+	FulPolicyPathLength                DWORD
+	FliPolicyLastWriteTime             LARGE_INTEGER
+	FulMetadataSatelliteRosterIndex    DWORD
+	FulManifestVersionMajor            DWORD
+	FulManifestVersionMinor            DWORD
+	FulPolicyVersionMajor              DWORD
+	FulPolicyVersionMinor              DWORD
+	FulAssemblyDirectoryNameLength     DWORD
+	FlpAssemblyEncodedAssemblyIdentity PCWSTR
+	FlpAssemblyManifestPath            PCWSTR
+	FlpAssemblyPolicyPath              PCWSTR
+	FlpAssemblyDirectoryName           PCWSTR
+	FulFileCount                       DWORD
 }
 
 type _ACTIVATION_CONTEXT_ASSEMBLY_DETAILED_INFORMATION = ACTIVATION_CONTEXT_ASSEMBLY_DETAILED_INFORMATION
@@ -15765,9 +15765,9 @@ type _ACTIVATION_CONTEXT_ASSEMBLY_DETAILED_INFORMATION = ACTIVATION_CONTEXT_ASSE
 type PACTIVATION_CONTEXT_ASSEMBLY_DETAILED_INFORMATION = uintptr
 
 type ACTIVATION_CONTEXT_RUN_LEVEL_INFORMATION = struct {
-	ulFlags  DWORD
-	RunLevel ACTCTX_REQUESTED_RUN_LEVEL
-	UiAccess DWORD
+	FulFlags  DWORD
+	FRunLevel ACTCTX_REQUESTED_RUN_LEVEL
+	FUiAccess DWORD
 }
 
 type _ACTIVATION_CONTEXT_RUN_LEVEL_INFORMATION = ACTIVATION_CONTEXT_RUN_LEVEL_INFORMATION
@@ -15775,8 +15775,8 @@ type _ACTIVATION_CONTEXT_RUN_LEVEL_INFORMATION = ACTIVATION_CONTEXT_RUN_LEVEL_IN
 type PACTIVATION_CONTEXT_RUN_LEVEL_INFORMATION = uintptr
 
 type COMPATIBILITY_CONTEXT_ELEMENT = struct {
-	Id   GUID
-	Type ACTCTX_COMPATIBILITY_ELEMENT_TYPE
+	FId   GUID
+	FType ACTCTX_COMPATIBILITY_ELEMENT_TYPE
 }
 
 type _COMPATIBILITY_CONTEXT_ELEMENT = COMPATIBILITY_CONTEXT_ELEMENT
@@ -15784,7 +15784,7 @@ type _COMPATIBILITY_CONTEXT_ELEMENT = COMPATIBILITY_CONTEXT_ELEMENT
 type PCOMPATIBILITY_CONTEXT_ELEMENT = uintptr
 
 type ACTIVATION_CONTEXT_COMPATIBILITY_INFORMATION = struct {
-	ElementCount DWORD
+	FElementCount DWORD
 }
 
 type _ACTIVATION_CONTEXT_COMPATIBILITY_INFORMATION = ACTIVATION_CONTEXT_COMPATIBILITY_INFORMATION
@@ -15792,9 +15792,9 @@ type _ACTIVATION_CONTEXT_COMPATIBILITY_INFORMATION = ACTIVATION_CONTEXT_COMPATIB
 type PACTIVATION_CONTEXT_COMPATIBILITY_INFORMATION = uintptr
 
 type SUPPORTED_OS_INFO = struct {
-	OsCount         WORD
-	MitigationExist WORD
-	OsList          [4]WORD
+	FOsCount         WORD
+	FMitigationExist WORD
+	FOsList          [4]WORD
 }
 
 type _SUPPORTED_OS_INFO = SUPPORTED_OS_INFO
@@ -15802,18 +15802,18 @@ type _SUPPORTED_OS_INFO = SUPPORTED_OS_INFO
 type PSUPPORTED_OS_INFO = uintptr
 
 type ACTIVATION_CONTEXT_DETAILED_INFORMATION = struct {
-	dwFlags                      DWORD
-	ulFormatVersion              DWORD
-	ulAssemblyCount              DWORD
-	ulRootManifestPathType       DWORD
-	ulRootManifestPathChars      DWORD
-	ulRootConfigurationPathType  DWORD
-	ulRootConfigurationPathChars DWORD
-	ulAppDirPathType             DWORD
-	ulAppDirPathChars            DWORD
-	lpRootManifestPath           PCWSTR
-	lpRootConfigurationPath      PCWSTR
-	lpAppDirPath                 PCWSTR
+	FdwFlags                      DWORD
+	FulFormatVersion              DWORD
+	FulAssemblyCount              DWORD
+	FulRootManifestPathType       DWORD
+	FulRootManifestPathChars      DWORD
+	FulRootConfigurationPathType  DWORD
+	FulRootConfigurationPathChars DWORD
+	FulAppDirPathType             DWORD
+	FulAppDirPathChars            DWORD
+	FlpRootManifestPath           PCWSTR
+	FlpRootConfigurationPath      PCWSTR
+	FlpAppDirPath                 PCWSTR
 }
 
 type _ACTIVATION_CONTEXT_DETAILED_INFORMATION = ACTIVATION_CONTEXT_DETAILED_INFORMATION
@@ -15841,9 +15841,9 @@ type RTL_VERIFIER_DLL_UNLOAD_CALLBACK = uintptr
 type RTL_VERIFIER_NTDLLHEAPFREE_CALLBACK = uintptr
 
 type RTL_VERIFIER_THUNK_DESCRIPTOR = struct {
-	ThunkName       PCHAR
-	ThunkOldAddress PVOID
-	ThunkNewAddress PVOID
+	FThunkName       PCHAR
+	FThunkOldAddress PVOID
+	FThunkNewAddress PVOID
 }
 
 type _RTL_VERIFIER_THUNK_DESCRIPTOR = RTL_VERIFIER_THUNK_DESCRIPTOR
@@ -15851,10 +15851,10 @@ type _RTL_VERIFIER_THUNK_DESCRIPTOR = RTL_VERIFIER_THUNK_DESCRIPTOR
 type PRTL_VERIFIER_THUNK_DESCRIPTOR = uintptr
 
 type RTL_VERIFIER_DLL_DESCRIPTOR = struct {
-	DllName    PWCHAR
-	DllFlags   DWORD
-	DllAddress PVOID
-	DllThunks  PRTL_VERIFIER_THUNK_DESCRIPTOR
+	FDllName    PWCHAR
+	FDllFlags   DWORD
+	FDllAddress PVOID
+	FDllThunks  PRTL_VERIFIER_THUNK_DESCRIPTOR
 }
 
 type _RTL_VERIFIER_DLL_DESCRIPTOR = RTL_VERIFIER_DLL_DESCRIPTOR
@@ -15862,17 +15862,17 @@ type _RTL_VERIFIER_DLL_DESCRIPTOR = RTL_VERIFIER_DLL_DESCRIPTOR
 type PRTL_VERIFIER_DLL_DESCRIPTOR = uintptr
 
 type RTL_VERIFIER_PROVIDER_DESCRIPTOR = struct {
-	Length                        DWORD
-	ProviderDlls                  PRTL_VERIFIER_DLL_DESCRIPTOR
-	ProviderDllLoadCallback       RTL_VERIFIER_DLL_LOAD_CALLBACK
-	ProviderDllUnloadCallback     RTL_VERIFIER_DLL_UNLOAD_CALLBACK
-	VerifierImage                 PWSTR
-	VerifierFlags                 DWORD
-	VerifierDebug                 DWORD
-	RtlpGetStackTraceAddress      PVOID
-	RtlpDebugPageHeapCreate       PVOID
-	RtlpDebugPageHeapDestroy      PVOID
-	ProviderNtdllHeapFreeCallback RTL_VERIFIER_NTDLLHEAPFREE_CALLBACK
+	FLength                        DWORD
+	FProviderDlls                  PRTL_VERIFIER_DLL_DESCRIPTOR
+	FProviderDllLoadCallback       RTL_VERIFIER_DLL_LOAD_CALLBACK
+	FProviderDllUnloadCallback     RTL_VERIFIER_DLL_UNLOAD_CALLBACK
+	FVerifierImage                 PWSTR
+	FVerifierFlags                 DWORD
+	FVerifierDebug                 DWORD
+	FRtlpGetStackTraceAddress      PVOID
+	FRtlpDebugPageHeapCreate       PVOID
+	FRtlpDebugPageHeapDestroy      PVOID
+	FProviderNtdllHeapFreeCallback RTL_VERIFIER_NTDLLHEAPFREE_CALLBACK
 }
 
 type _RTL_VERIFIER_PROVIDER_DESCRIPTOR = RTL_VERIFIER_PROVIDER_DESCRIPTOR
@@ -15880,9 +15880,9 @@ type _RTL_VERIFIER_PROVIDER_DESCRIPTOR = RTL_VERIFIER_PROVIDER_DESCRIPTOR
 type PRTL_VERIFIER_PROVIDER_DESCRIPTOR = uintptr
 
 type HARDWARE_COUNTER_DATA = struct {
-	Type     HARDWARE_COUNTER_TYPE
-	Reserved DWORD
-	Value    DWORD64
+	FType     HARDWARE_COUNTER_TYPE
+	FReserved DWORD
+	FValue    DWORD64
 }
 
 type _HARDWARE_COUNTER_DATA = HARDWARE_COUNTER_DATA
@@ -15890,15 +15890,15 @@ type _HARDWARE_COUNTER_DATA = HARDWARE_COUNTER_DATA
 type PHARDWARE_COUNTER_DATA = uintptr
 
 type PERFORMANCE_DATA = struct {
-	Size               WORD
-	Version            BYTE
-	HwCountersCount    BYTE
-	ContextSwitchCount DWORD
-	WaitReasonBitMap   DWORD64
-	CycleTime          DWORD64
-	RetryCount         DWORD
-	Reserved           DWORD
-	HwCounters         [16]HARDWARE_COUNTER_DATA
+	FSize               WORD
+	FVersion            BYTE
+	FHwCountersCount    BYTE
+	FContextSwitchCount DWORD
+	FWaitReasonBitMap   DWORD64
+	FCycleTime          DWORD64
+	FRetryCount         DWORD
+	FReserved           DWORD
+	FHwCounters         [16]HARDWARE_COUNTER_DATA
 }
 
 type _PERFORMANCE_DATA = PERFORMANCE_DATA
@@ -15906,22 +15906,22 @@ type _PERFORMANCE_DATA = PERFORMANCE_DATA
 type PPERFORMANCE_DATA = uintptr
 
 type EVENTLOGRECORD = struct {
-	Length              DWORD
-	Reserved            DWORD
-	RecordNumber        DWORD
-	TimeGenerated       DWORD
-	TimeWritten         DWORD
-	EventID             DWORD
-	EventType           WORD
-	NumStrings          WORD
-	EventCategory       WORD
-	ReservedFlags       WORD
-	ClosingRecordNumber DWORD
-	StringOffset        DWORD
-	UserSidLength       DWORD
-	UserSidOffset       DWORD
-	DataLength          DWORD
-	DataOffset          DWORD
+	FLength              DWORD
+	FReserved            DWORD
+	FRecordNumber        DWORD
+	FTimeGenerated       DWORD
+	FTimeWritten         DWORD
+	FEventID             DWORD
+	FEventType           WORD
+	FNumStrings          WORD
+	FEventCategory       WORD
+	FReservedFlags       WORD
+	FClosingRecordNumber DWORD
+	FStringOffset        DWORD
+	FUserSidLength       DWORD
+	FUserSidOffset       DWORD
+	FDataLength          DWORD
+	FDataOffset          DWORD
 }
 
 type _EVENTLOGRECORD = EVENTLOGRECORD
@@ -15929,9 +15929,9 @@ type _EVENTLOGRECORD = EVENTLOGRECORD
 type PEVENTLOGRECORD = uintptr
 
 type EVENTSFORLOGFILE = struct {
-	ulSize           DWORD
-	szLogicalLogFile [256]WCHAR
-	ulNumRecords     DWORD
+	FulSize           DWORD
+	FszLogicalLogFile [256]WCHAR
+	FulNumRecords     DWORD
 }
 
 type _EVENTSFORLOGFILE = EVENTSFORLOGFILE
@@ -15939,8 +15939,8 @@ type _EVENTSFORLOGFILE = EVENTSFORLOGFILE
 type PEVENTSFORLOGFILE = uintptr
 
 type PACKEDEVENTINFO = struct {
-	ulSize                DWORD
-	ulNumEventsForLogFile DWORD
+	FulSize                DWORD
+	FulNumEventsForLogFile DWORD
 }
 
 type _PACKEDEVENTINFO = PACKEDEVENTINFO
@@ -15978,8 +15978,8 @@ const SevereError = 2
 const CriticalError = 3
 
 type TAPE_ERASE = struct {
-	Type      DWORD
-	Immediate BOOLEAN
+	FType      DWORD
+	FImmediate BOOLEAN
 }
 
 type _TAPE_ERASE = TAPE_ERASE
@@ -15987,8 +15987,8 @@ type _TAPE_ERASE = TAPE_ERASE
 type PTAPE_ERASE = uintptr
 
 type TAPE_PREPARE = struct {
-	Operation DWORD
-	Immediate BOOLEAN
+	FOperation DWORD
+	FImmediate BOOLEAN
 }
 
 type _TAPE_PREPARE = TAPE_PREPARE
@@ -15996,9 +15996,9 @@ type _TAPE_PREPARE = TAPE_PREPARE
 type PTAPE_PREPARE = uintptr
 
 type TAPE_WRITE_MARKS = struct {
-	Type      DWORD
-	Count     DWORD
-	Immediate BOOLEAN
+	FType      DWORD
+	FCount     DWORD
+	FImmediate BOOLEAN
 }
 
 type _TAPE_WRITE_MARKS = TAPE_WRITE_MARKS
@@ -16006,9 +16006,9 @@ type _TAPE_WRITE_MARKS = TAPE_WRITE_MARKS
 type PTAPE_WRITE_MARKS = uintptr
 
 type TAPE_GET_POSITION = struct {
-	Type      DWORD
-	Partition DWORD
-	Offset    LARGE_INTEGER
+	FType      DWORD
+	FPartition DWORD
+	FOffset    LARGE_INTEGER
 }
 
 type _TAPE_GET_POSITION = TAPE_GET_POSITION
@@ -16016,10 +16016,10 @@ type _TAPE_GET_POSITION = TAPE_GET_POSITION
 type PTAPE_GET_POSITION = uintptr
 
 type TAPE_SET_POSITION = struct {
-	Method    DWORD
-	Partition DWORD
-	Offset    LARGE_INTEGER
-	Immediate BOOLEAN
+	FMethod    DWORD
+	FPartition DWORD
+	FOffset    LARGE_INTEGER
+	FImmediate BOOLEAN
 }
 
 type _TAPE_SET_POSITION = TAPE_SET_POSITION
@@ -16027,17 +16027,17 @@ type _TAPE_SET_POSITION = TAPE_SET_POSITION
 type PTAPE_SET_POSITION = uintptr
 
 type TAPE_GET_DRIVE_PARAMETERS = struct {
-	ECC                   BOOLEAN
-	Compression           BOOLEAN
-	DataPadding           BOOLEAN
-	ReportSetmarks        BOOLEAN
-	DefaultBlockSize      DWORD
-	MaximumBlockSize      DWORD
-	MinimumBlockSize      DWORD
-	MaximumPartitionCount DWORD
-	FeaturesLow           DWORD
-	FeaturesHigh          DWORD
-	EOTWarningZoneSize    DWORD
+	FECC                   BOOLEAN
+	FCompression           BOOLEAN
+	FDataPadding           BOOLEAN
+	FReportSetmarks        BOOLEAN
+	FDefaultBlockSize      DWORD
+	FMaximumBlockSize      DWORD
+	FMinimumBlockSize      DWORD
+	FMaximumPartitionCount DWORD
+	FFeaturesLow           DWORD
+	FFeaturesHigh          DWORD
+	FEOTWarningZoneSize    DWORD
 }
 
 type _TAPE_GET_DRIVE_PARAMETERS = TAPE_GET_DRIVE_PARAMETERS
@@ -16045,11 +16045,11 @@ type _TAPE_GET_DRIVE_PARAMETERS = TAPE_GET_DRIVE_PARAMETERS
 type PTAPE_GET_DRIVE_PARAMETERS = uintptr
 
 type TAPE_SET_DRIVE_PARAMETERS = struct {
-	ECC                BOOLEAN
-	Compression        BOOLEAN
-	DataPadding        BOOLEAN
-	ReportSetmarks     BOOLEAN
-	EOTWarningZoneSize DWORD
+	FECC                BOOLEAN
+	FCompression        BOOLEAN
+	FDataPadding        BOOLEAN
+	FReportSetmarks     BOOLEAN
+	FEOTWarningZoneSize DWORD
 }
 
 type _TAPE_SET_DRIVE_PARAMETERS = TAPE_SET_DRIVE_PARAMETERS
@@ -16057,11 +16057,11 @@ type _TAPE_SET_DRIVE_PARAMETERS = TAPE_SET_DRIVE_PARAMETERS
 type PTAPE_SET_DRIVE_PARAMETERS = uintptr
 
 type TAPE_GET_MEDIA_PARAMETERS = struct {
-	Capacity       LARGE_INTEGER
-	Remaining      LARGE_INTEGER
-	BlockSize      DWORD
-	PartitionCount DWORD
-	WriteProtected BOOLEAN
+	FCapacity       LARGE_INTEGER
+	FRemaining      LARGE_INTEGER
+	FBlockSize      DWORD
+	FPartitionCount DWORD
+	FWriteProtected BOOLEAN
 }
 
 type _TAPE_GET_MEDIA_PARAMETERS = TAPE_GET_MEDIA_PARAMETERS
@@ -16069,7 +16069,7 @@ type _TAPE_GET_MEDIA_PARAMETERS = TAPE_GET_MEDIA_PARAMETERS
 type PTAPE_GET_MEDIA_PARAMETERS = uintptr
 
 type TAPE_SET_MEDIA_PARAMETERS = struct {
-	BlockSize DWORD
+	FBlockSize DWORD
 }
 
 type _TAPE_SET_MEDIA_PARAMETERS = TAPE_SET_MEDIA_PARAMETERS
@@ -16077,9 +16077,9 @@ type _TAPE_SET_MEDIA_PARAMETERS = TAPE_SET_MEDIA_PARAMETERS
 type PTAPE_SET_MEDIA_PARAMETERS = uintptr
 
 type TAPE_CREATE_PARTITION = struct {
-	Method DWORD
-	Count  DWORD
-	Size   DWORD
+	FMethod DWORD
+	FCount  DWORD
+	FSize   DWORD
 }
 
 type _TAPE_CREATE_PARTITION = TAPE_CREATE_PARTITION
@@ -16087,9 +16087,9 @@ type _TAPE_CREATE_PARTITION = TAPE_CREATE_PARTITION
 type PTAPE_CREATE_PARTITION = uintptr
 
 type TAPE_WMI_OPERATIONS = struct {
-	Method         DWORD
-	DataBufferSize DWORD
-	DataBuffer     PVOID
+	FMethod         DWORD
+	FDataBufferSize DWORD
+	FDataBuffer     PVOID
 }
 
 type _TAPE_WMI_OPERATIONS = TAPE_WMI_OPERATIONS
@@ -16136,8 +16136,8 @@ const TP_CALLBACK_PRIORITY_INVALID = 3
 const TP_CALLBACK_PRIORITY_COUNT = 3
 
 type TP_POOL_STACK_INFORMATION = struct {
-	StackReserve SIZE_T
-	StackCommit  SIZE_T
+	FStackReserve SIZE_T
+	FStackCommit  SIZE_T
 }
 
 type _TP_POOL_STACK_INFORMATION = TP_POOL_STACK_INFORMATION
@@ -16149,41 +16149,41 @@ type PTP_CLEANUP_GROUP = uintptr
 type PTP_CLEANUP_GROUP_CANCEL_CALLBACK = uintptr
 
 type TP_CALLBACK_ENVIRON_V3 = struct {
-	Version                    TP_VERSION
-	Pool                       PTP_POOL
-	CleanupGroup               PTP_CLEANUP_GROUP
-	CleanupGroupCancelCallback PTP_CLEANUP_GROUP_CANCEL_CALLBACK
-	RaceDll                    PVOID
-	ActivationContext          uintptr
-	FinalizationCallback       PTP_SIMPLE_CALLBACK
-	u                          struct {
-		s [0]struct {
-			__ccgo0 uint32
+	FVersion                    TP_VERSION
+	FPool                       PTP_POOL
+	FCleanupGroup               PTP_CLEANUP_GROUP
+	FCleanupGroupCancelCallback PTP_CLEANUP_GROUP_CANCEL_CALLBACK
+	FRaceDll                    PVOID
+	FActivationContext          uintptr
+	FFinalizationCallback       PTP_SIMPLE_CALLBACK
+	Fu                          struct {
+		Fs [0]struct {
+			F__ccgo0 uint32
 		}
-		Flags DWORD
+		FFlags DWORD
 	}
-	CallbackPriority TP_CALLBACK_PRIORITY
-	Size             DWORD
+	FCallbackPriority TP_CALLBACK_PRIORITY
+	FSize             DWORD
 }
 
 type _TP_CALLBACK_ENVIRON_V3 = TP_CALLBACK_ENVIRON_V3
 
 type TP_CALLBACK_ENVIRON = struct {
-	Version                    TP_VERSION
-	Pool                       PTP_POOL
-	CleanupGroup               PTP_CLEANUP_GROUP
-	CleanupGroupCancelCallback PTP_CLEANUP_GROUP_CANCEL_CALLBACK
-	RaceDll                    PVOID
-	ActivationContext          uintptr
-	FinalizationCallback       PTP_SIMPLE_CALLBACK
-	u                          struct {
-		s [0]struct {
-			__ccgo0 uint32
+	FVersion                    TP_VERSION
+	FPool                       PTP_POOL
+	FCleanupGroup               PTP_CLEANUP_GROUP
+	FCleanupGroupCancelCallback PTP_CLEANUP_GROUP_CANCEL_CALLBACK
+	FRaceDll                    PVOID
+	FActivationContext          uintptr
+	FFinalizationCallback       PTP_SIMPLE_CALLBACK
+	Fu                          struct {
+		Fs [0]struct {
+			F__ccgo0 uint32
 		}
-		Flags DWORD
+		FFlags DWORD
 	}
-	CallbackPriority TP_CALLBACK_PRIORITY
-	Size             DWORD
+	FCallbackPriority TP_CALLBACK_PRIORITY
+	FSize             DWORD
 }
 
 type PTP_CALLBACK_ENVIRON = uintptr
@@ -16205,10 +16205,10 @@ type PTP_WAIT_CALLBACK = uintptr
 type PTP_IO = uintptr
 
 type CRM_PROTOCOL_ID = struct {
-	Data1 uint32
-	Data2 uint16
-	Data3 uint16
-	Data4 [8]uint8
+	FData1 uint32
+	FData2 uint16
+	FData3 uint16
+	FData4 [8]uint8
 }
 
 type PCRM_PROTOCOL_ID = uintptr
@@ -16216,10 +16216,10 @@ type PCRM_PROTOCOL_ID = uintptr
 type NOTIFICATION_MASK = uint32
 
 type TRANSACTION_NOTIFICATION = struct {
-	TransactionKey          PVOID
-	TransactionNotification ULONG
-	TmVirtualClock          LARGE_INTEGER
-	ArgumentLength          ULONG
+	FTransactionKey          PVOID
+	FTransactionNotification ULONG
+	FTmVirtualClock          LARGE_INTEGER
+	FArgumentLength          ULONG
 }
 
 type _TRANSACTION_NOTIFICATION = TRANSACTION_NOTIFICATION
@@ -16227,8 +16227,8 @@ type _TRANSACTION_NOTIFICATION = TRANSACTION_NOTIFICATION
 type PTRANSACTION_NOTIFICATION = uintptr
 
 type TRANSACTION_NOTIFICATION_RECOVERY_ARGUMENT = struct {
-	EnlistmentId GUID
-	UOW          GUID
+	FEnlistmentId GUID
+	FUOW          GUID
 }
 
 type _TRANSACTION_NOTIFICATION_RECOVERY_ARGUMENT = TRANSACTION_NOTIFICATION_RECOVERY_ARGUMENT
@@ -16236,8 +16236,8 @@ type _TRANSACTION_NOTIFICATION_RECOVERY_ARGUMENT = TRANSACTION_NOTIFICATION_RECO
 type PTRANSACTION_NOTIFICATION_RECOVERY_ARGUMENT = uintptr
 
 type TRANSACTION_NOTIFICATION_TM_ONLINE_ARGUMENT = struct {
-	TmIdentity GUID
-	Flags      ULONG
+	FTmIdentity GUID
+	FFlags      ULONG
 }
 
 type _TRANSACTION_NOTIFICATION_TM_ONLINE_ARGUMENT = TRANSACTION_NOTIFICATION_TM_ONLINE_ARGUMENT
@@ -16249,7 +16249,7 @@ type SAVEPOINT_ID = uint32
 type PSAVEPOINT_ID = uintptr
 
 type TRANSACTION_NOTIFICATION_SAVEPOINT_ARGUMENT = struct {
-	SavepointId SAVEPOINT_ID
+	FSavepointId SAVEPOINT_ID
 }
 
 type _TRANSACTION_NOTIFICATION_SAVEPOINT_ARGUMENT = TRANSACTION_NOTIFICATION_SAVEPOINT_ARGUMENT
@@ -16257,10 +16257,10 @@ type _TRANSACTION_NOTIFICATION_SAVEPOINT_ARGUMENT = TRANSACTION_NOTIFICATION_SAV
 type PTRANSACTION_NOTIFICATION_SAVEPOINT_ARGUMENT = uintptr
 
 type TRANSACTION_NOTIFICATION_PROPAGATE_ARGUMENT = struct {
-	PropagationCookie ULONG
-	UOW               GUID
-	TmIdentity        GUID
-	BufferLength      ULONG
+	FPropagationCookie ULONG
+	FUOW               GUID
+	FTmIdentity        GUID
+	FBufferLength      ULONG
 }
 
 type _TRANSACTION_NOTIFICATION_PROPAGATE_ARGUMENT = TRANSACTION_NOTIFICATION_PROPAGATE_ARGUMENT
@@ -16268,8 +16268,8 @@ type _TRANSACTION_NOTIFICATION_PROPAGATE_ARGUMENT = TRANSACTION_NOTIFICATION_PRO
 type PTRANSACTION_NOTIFICATION_PROPAGATE_ARGUMENT = uintptr
 
 type TRANSACTION_NOTIFICATION_MARSHAL_ARGUMENT = struct {
-	MarshalCookie ULONG
-	UOW           GUID
+	FMarshalCookie ULONG
+	FUOW           GUID
 }
 
 type _TRANSACTION_NOTIFICATION_MARSHAL_ARGUMENT = TRANSACTION_NOTIFICATION_MARSHAL_ARGUMENT
@@ -16277,19 +16277,19 @@ type _TRANSACTION_NOTIFICATION_MARSHAL_ARGUMENT = TRANSACTION_NOTIFICATION_MARSH
 type PTRANSACTION_NOTIFICATION_MARSHAL_ARGUMENT = uintptr
 
 type TRANSACTION_NOTIFICATION_PROMOTE_ARGUMENT = struct {
-	PropagationCookie ULONG
-	UOW               GUID
-	TmIdentity        GUID
-	BufferLength      ULONG
+	FPropagationCookie ULONG
+	FUOW               GUID
+	FTmIdentity        GUID
+	FBufferLength      ULONG
 }
 
 type PTRANSACTION_NOTIFICATION_PROMOTE_ARGUMENT = uintptr
 
 type KCRM_MARSHAL_HEADER = struct {
-	VersionMajor ULONG
-	VersionMinor ULONG
-	NumProtocols ULONG
-	Unused       ULONG
+	FVersionMajor ULONG
+	FVersionMinor ULONG
+	FNumProtocols ULONG
+	FUnused       ULONG
 }
 
 type _KCRM_MARSHAL_HEADER = KCRM_MARSHAL_HEADER
@@ -16299,12 +16299,12 @@ type PKCRM_MARSHAL_HEADER = uintptr
 type PRKCRM_MARSHAL_HEADER = uintptr
 
 type KCRM_TRANSACTION_BLOB = struct {
-	UOW            GUID
-	TmIdentity     GUID
-	IsolationLevel ULONG
-	IsolationFlags ULONG
-	Timeout        ULONG
-	Description    [64]WCHAR
+	FUOW            GUID
+	FTmIdentity     GUID
+	FIsolationLevel ULONG
+	FIsolationFlags ULONG
+	FTimeout        ULONG
+	FDescription    [64]WCHAR
 }
 
 type _KCRM_TRANSACTION_BLOB = KCRM_TRANSACTION_BLOB
@@ -16314,11 +16314,11 @@ type PKCRM_TRANSACTION_BLOB = uintptr
 type PRKCRM_TRANSACTION_BLOB = uintptr
 
 type KCRM_PROTOCOL_BLOB = struct {
-	ProtocolId              CRM_PROTOCOL_ID
-	StaticInfoLength        ULONG
-	TransactionIdInfoLength ULONG
-	Unused1                 ULONG
-	Unused2                 ULONG
+	FProtocolId              CRM_PROTOCOL_ID
+	FStaticInfoLength        ULONG
+	FTransactionIdInfoLength ULONG
+	FUnused1                 ULONG
+	FUnused2                 ULONG
 }
 
 type _KCRM_PROTOCOL_BLOB = KCRM_PROTOCOL_BLOB
@@ -16344,9 +16344,9 @@ const TransactionStateIndoubt = 2
 const TransactionStateCommittedNotify = 3
 
 type TRANSACTION_BASIC_INFORMATION = struct {
-	TransactionId GUID
-	State         DWORD
-	Outcome       DWORD
+	FTransactionId GUID
+	FState         DWORD
+	FOutcome       DWORD
 }
 
 type _TRANSACTION_BASIC_INFORMATION = TRANSACTION_BASIC_INFORMATION
@@ -16354,8 +16354,8 @@ type _TRANSACTION_BASIC_INFORMATION = TRANSACTION_BASIC_INFORMATION
 type PTRANSACTION_BASIC_INFORMATION = uintptr
 
 type TRANSACTIONMANAGER_BASIC_INFORMATION = struct {
-	TmIdentity   GUID
-	VirtualClock LARGE_INTEGER
+	FTmIdentity   GUID
+	FVirtualClock LARGE_INTEGER
 }
 
 type _TRANSACTIONMANAGER_BASIC_INFORMATION = TRANSACTIONMANAGER_BASIC_INFORMATION
@@ -16363,7 +16363,7 @@ type _TRANSACTIONMANAGER_BASIC_INFORMATION = TRANSACTIONMANAGER_BASIC_INFORMATIO
 type PTRANSACTIONMANAGER_BASIC_INFORMATION = uintptr
 
 type TRANSACTIONMANAGER_LOG_INFORMATION = struct {
-	LogIdentity GUID
+	FLogIdentity GUID
 }
 
 type _TRANSACTIONMANAGER_LOG_INFORMATION = TRANSACTIONMANAGER_LOG_INFORMATION
@@ -16371,8 +16371,8 @@ type _TRANSACTIONMANAGER_LOG_INFORMATION = TRANSACTIONMANAGER_LOG_INFORMATION
 type PTRANSACTIONMANAGER_LOG_INFORMATION = uintptr
 
 type TRANSACTIONMANAGER_LOGPATH_INFORMATION = struct {
-	LogPathLength DWORD
-	LogPath       [1]WCHAR
+	FLogPathLength DWORD
+	FLogPath       [1]WCHAR
 }
 
 type _TRANSACTIONMANAGER_LOGPATH_INFORMATION = TRANSACTIONMANAGER_LOGPATH_INFORMATION
@@ -16380,7 +16380,7 @@ type _TRANSACTIONMANAGER_LOGPATH_INFORMATION = TRANSACTIONMANAGER_LOGPATH_INFORM
 type PTRANSACTIONMANAGER_LOGPATH_INFORMATION = uintptr
 
 type TRANSACTIONMANAGER_RECOVERY_INFORMATION = struct {
-	LastRecoveredLsn ULONGLONG
+	FLastRecoveredLsn ULONGLONG
 }
 
 type _TRANSACTIONMANAGER_RECOVERY_INFORMATION = TRANSACTIONMANAGER_RECOVERY_INFORMATION
@@ -16388,7 +16388,7 @@ type _TRANSACTIONMANAGER_RECOVERY_INFORMATION = TRANSACTIONMANAGER_RECOVERY_INFO
 type PTRANSACTIONMANAGER_RECOVERY_INFORMATION = uintptr
 
 type TRANSACTIONMANAGER_OLDEST_INFORMATION = struct {
-	OldestTransactionGuid GUID
+	FOldestTransactionGuid GUID
 }
 
 type _TRANSACTIONMANAGER_OLDEST_INFORMATION = TRANSACTIONMANAGER_OLDEST_INFORMATION
@@ -16396,12 +16396,12 @@ type _TRANSACTIONMANAGER_OLDEST_INFORMATION = TRANSACTIONMANAGER_OLDEST_INFORMAT
 type PTRANSACTIONMANAGER_OLDEST_INFORMATION = uintptr
 
 type TRANSACTION_PROPERTIES_INFORMATION = struct {
-	IsolationLevel    DWORD
-	IsolationFlags    DWORD
-	Timeout           LARGE_INTEGER
-	Outcome           DWORD
-	DescriptionLength DWORD
-	Description       [1]WCHAR
+	FIsolationLevel    DWORD
+	FIsolationFlags    DWORD
+	FTimeout           LARGE_INTEGER
+	FOutcome           DWORD
+	FDescriptionLength DWORD
+	FDescription       [1]WCHAR
 }
 
 type _TRANSACTION_PROPERTIES_INFORMATION = TRANSACTION_PROPERTIES_INFORMATION
@@ -16409,7 +16409,7 @@ type _TRANSACTION_PROPERTIES_INFORMATION = TRANSACTION_PROPERTIES_INFORMATION
 type PTRANSACTION_PROPERTIES_INFORMATION = uintptr
 
 type TRANSACTION_BIND_INFORMATION = struct {
-	TmHandle HANDLE
+	FTmHandle HANDLE
 }
 
 type _TRANSACTION_BIND_INFORMATION = TRANSACTION_BIND_INFORMATION
@@ -16417,8 +16417,8 @@ type _TRANSACTION_BIND_INFORMATION = TRANSACTION_BIND_INFORMATION
 type PTRANSACTION_BIND_INFORMATION = uintptr
 
 type TRANSACTION_ENLISTMENT_PAIR = struct {
-	EnlistmentId      GUID
-	ResourceManagerId GUID
+	FEnlistmentId      GUID
+	FResourceManagerId GUID
 }
 
 type _TRANSACTION_ENLISTMENT_PAIR = TRANSACTION_ENLISTMENT_PAIR
@@ -16426,8 +16426,8 @@ type _TRANSACTION_ENLISTMENT_PAIR = TRANSACTION_ENLISTMENT_PAIR
 type PTRANSACTION_ENLISTMENT_PAIR = uintptr
 
 type TRANSACTION_ENLISTMENTS_INFORMATION = struct {
-	NumberOfEnlistments DWORD
-	EnlistmentPair      [1]TRANSACTION_ENLISTMENT_PAIR
+	FNumberOfEnlistments DWORD
+	FEnlistmentPair      [1]TRANSACTION_ENLISTMENT_PAIR
 }
 
 type _TRANSACTION_ENLISTMENTS_INFORMATION = TRANSACTION_ENLISTMENTS_INFORMATION
@@ -16435,7 +16435,7 @@ type _TRANSACTION_ENLISTMENTS_INFORMATION = TRANSACTION_ENLISTMENTS_INFORMATION
 type PTRANSACTION_ENLISTMENTS_INFORMATION = uintptr
 
 type TRANSACTION_SUPERIOR_ENLISTMENT_INFORMATION = struct {
-	SuperiorEnlistmentPair TRANSACTION_ENLISTMENT_PAIR
+	FSuperiorEnlistmentPair TRANSACTION_ENLISTMENT_PAIR
 }
 
 type _TRANSACTION_SUPERIOR_ENLISTMENT_INFORMATION = TRANSACTION_SUPERIOR_ENLISTMENT_INFORMATION
@@ -16443,9 +16443,9 @@ type _TRANSACTION_SUPERIOR_ENLISTMENT_INFORMATION = TRANSACTION_SUPERIOR_ENLISTM
 type PTRANSACTION_SUPERIOR_ENLISTMENT_INFORMATION = uintptr
 
 type RESOURCEMANAGER_BASIC_INFORMATION = struct {
-	ResourceManagerId GUID
-	DescriptionLength DWORD
-	Description       [1]WCHAR
+	FResourceManagerId GUID
+	FDescriptionLength DWORD
+	FDescription       [1]WCHAR
 }
 
 type _RESOURCEMANAGER_BASIC_INFORMATION = RESOURCEMANAGER_BASIC_INFORMATION
@@ -16453,8 +16453,8 @@ type _RESOURCEMANAGER_BASIC_INFORMATION = RESOURCEMANAGER_BASIC_INFORMATION
 type PRESOURCEMANAGER_BASIC_INFORMATION = uintptr
 
 type RESOURCEMANAGER_COMPLETION_INFORMATION = struct {
-	IoCompletionPortHandle HANDLE
-	CompletionKey          ULONG_PTR
+	FIoCompletionPortHandle HANDLE
+	FCompletionKey          ULONG_PTR
 }
 
 type _RESOURCEMANAGER_COMPLETION_INFORMATION = RESOURCEMANAGER_COMPLETION_INFORMATION
@@ -16491,9 +16491,9 @@ const ResourceManagerBasicInformation = 0
 const ResourceManagerCompletionInformation = 1
 
 type ENLISTMENT_BASIC_INFORMATION = struct {
-	EnlistmentId      GUID
-	TransactionId     GUID
-	ResourceManagerId GUID
+	FEnlistmentId      GUID
+	FTransactionId     GUID
+	FResourceManagerId GUID
 }
 
 type _ENLISTMENT_BASIC_INFORMATION = ENLISTMENT_BASIC_INFORMATION
@@ -16501,9 +16501,9 @@ type _ENLISTMENT_BASIC_INFORMATION = ENLISTMENT_BASIC_INFORMATION
 type PENLISTMENT_BASIC_INFORMATION = uintptr
 
 type ENLISTMENT_CRM_INFORMATION = struct {
-	CrmTransactionManagerId GUID
-	CrmResourceManagerId    GUID
-	CrmEnlistmentId         GUID
+	FCrmTransactionManagerId GUID
+	FCrmResourceManagerId    GUID
+	FCrmEnlistmentId         GUID
 }
 
 type _ENLISTMENT_CRM_INFORMATION = ENLISTMENT_CRM_INFORMATION
@@ -16519,7 +16519,7 @@ const EnlistmentRecoveryInformation = 1
 const EnlistmentCrmInformation = 2
 
 type TRANSACTION_LIST_ENTRY = struct {
-	UOW GUID
+	FUOW GUID
 }
 
 type _TRANSACTION_LIST_ENTRY = TRANSACTION_LIST_ENTRY
@@ -16527,8 +16527,8 @@ type _TRANSACTION_LIST_ENTRY = TRANSACTION_LIST_ENTRY
 type PTRANSACTION_LIST_ENTRY = uintptr
 
 type TRANSACTION_LIST_INFORMATION = struct {
-	NumberOfTransactions   DWORD
-	TransactionInformation [1]TRANSACTION_LIST_ENTRY
+	FNumberOfTransactions   DWORD
+	FTransactionInformation [1]TRANSACTION_LIST_ENTRY
 }
 
 type _TRANSACTION_LIST_INFORMATION = TRANSACTION_LIST_INFORMATION
@@ -16548,9 +16548,9 @@ const KTMOBJECT_INVALID = 4
 type PKTMOBJECT_TYPE = uintptr
 
 type KTMOBJECT_CURSOR = struct {
-	LastQuery     GUID
-	ObjectIdCount DWORD
-	ObjectIds     [1]GUID
+	FLastQuery     GUID
+	FObjectIdCount DWORD
+	FObjectIds     [1]GUID
 }
 
 type _KTMOBJECT_CURSOR = KTMOBJECT_CURSOR
@@ -16558,15 +16558,15 @@ type _KTMOBJECT_CURSOR = KTMOBJECT_CURSOR
 type PKTMOBJECT_CURSOR = uintptr
 
 type WOW64_FLOATING_SAVE_AREA = struct {
-	ControlWord   DWORD
-	StatusWord    DWORD
-	TagWord       DWORD
-	ErrorOffset   DWORD
-	ErrorSelector DWORD
-	DataOffset    DWORD
-	DataSelector  DWORD
-	RegisterArea  [80]BYTE
-	Cr0NpxState   DWORD
+	FControlWord   DWORD
+	FStatusWord    DWORD
+	FTagWord       DWORD
+	FErrorOffset   DWORD
+	FErrorSelector DWORD
+	FDataOffset    DWORD
+	FDataSelector  DWORD
+	FRegisterArea  [80]BYTE
+	FCr0NpxState   DWORD
 }
 
 type _WOW64_FLOATING_SAVE_AREA = WOW64_FLOATING_SAVE_AREA
@@ -16574,31 +16574,31 @@ type _WOW64_FLOATING_SAVE_AREA = WOW64_FLOATING_SAVE_AREA
 type PWOW64_FLOATING_SAVE_AREA = uintptr
 
 type WOW64_CONTEXT = struct {
-	ContextFlags      DWORD
-	Dr0               DWORD
-	Dr1               DWORD
-	Dr2               DWORD
-	Dr3               DWORD
-	Dr6               DWORD
-	Dr7               DWORD
-	FloatSave         WOW64_FLOATING_SAVE_AREA
-	SegGs             DWORD
-	SegFs             DWORD
-	SegEs             DWORD
-	SegDs             DWORD
-	Edi               DWORD
-	Esi               DWORD
-	Ebx               DWORD
-	Edx               DWORD
-	Ecx               DWORD
-	Eax               DWORD
-	Ebp               DWORD
-	Eip               DWORD
-	SegCs             DWORD
-	EFlags            DWORD
-	Esp               DWORD
-	SegSs             DWORD
-	ExtendedRegisters [512]BYTE
+	FContextFlags      DWORD
+	FDr0               DWORD
+	FDr1               DWORD
+	FDr2               DWORD
+	FDr3               DWORD
+	FDr6               DWORD
+	FDr7               DWORD
+	FFloatSave         WOW64_FLOATING_SAVE_AREA
+	FSegGs             DWORD
+	FSegFs             DWORD
+	FSegEs             DWORD
+	FSegDs             DWORD
+	FEdi               DWORD
+	FEsi               DWORD
+	FEbx               DWORD
+	FEdx               DWORD
+	FEcx               DWORD
+	FEax               DWORD
+	FEbp               DWORD
+	FEip               DWORD
+	FSegCs             DWORD
+	FEFlags            DWORD
+	FEsp               DWORD
+	FSegSs             DWORD
+	FExtendedRegisters [512]BYTE
 }
 
 type _WOW64_CONTEXT = WOW64_CONTEXT
@@ -16606,17 +16606,17 @@ type _WOW64_CONTEXT = WOW64_CONTEXT
 type PWOW64_CONTEXT = uintptr
 
 type WOW64_LDT_ENTRY = struct {
-	LimitLow WORD
-	BaseLow  WORD
-	HighWord struct {
-		Bits [0]struct {
-			__ccgo0 uint32
+	FLimitLow WORD
+	FBaseLow  WORD
+	FHighWord struct {
+		FBits [0]struct {
+			F__ccgo0 uint32
 		}
-		Bytes struct {
-			BaseMid BYTE
-			Flags1  BYTE
-			Flags2  BYTE
-			BaseHi  BYTE
+		FBytes struct {
+			FBaseMid BYTE
+			FFlags1  BYTE
+			FFlags2  BYTE
+			FBaseHi  BYTE
 		}
 	}
 }
@@ -16626,8 +16626,8 @@ type _WOW64_LDT_ENTRY = WOW64_LDT_ENTRY
 type PWOW64_LDT_ENTRY = uintptr
 
 type WOW64_DESCRIPTOR_TABLE_ENTRY = struct {
-	Selector   DWORD
-	Descriptor WOW64_LDT_ENTRY
+	FSelector   DWORD
+	FDescriptor WOW64_LDT_ENTRY
 }
 
 type _WOW64_DESCRIPTOR_TABLE_ENTRY = WOW64_DESCRIPTOR_TABLE_ENTRY
@@ -16635,9 +16635,9 @@ type _WOW64_DESCRIPTOR_TABLE_ENTRY = WOW64_DESCRIPTOR_TABLE_ENTRY
 type PWOW64_DESCRIPTOR_TABLE_ENTRY = uintptr
 
 type PROCESSOR_NUMBER = struct {
-	Group    WORD
-	Number   BYTE
-	Reserved BYTE
+	FGroup    WORD
+	FNumber   BYTE
+	FReserved BYTE
 }
 
 type _PROCESSOR_NUMBER = PROCESSOR_NUMBER
@@ -16673,13 +16673,13 @@ type ATOM = uint16
 type HFILE = int32
 
 type HINSTANCE__ = struct {
-	unused int32
+	Funused int32
 }
 
 type HINSTANCE = uintptr
 
 type HKEY__ = struct {
-	unused int32
+	Funused int32
 }
 
 type HKEY = uintptr
@@ -16687,19 +16687,19 @@ type HKEY = uintptr
 type PHKEY = uintptr
 
 type HKL__ = struct {
-	unused int32
+	Funused int32
 }
 
 type HKL = uintptr
 
 type HLSURF__ = struct {
-	unused int32
+	Funused int32
 }
 
 type HLSURF = uintptr
 
 type HMETAFILE__ = struct {
-	unused int32
+	Funused int32
 }
 
 type HMETAFILE = uintptr
@@ -16707,44 +16707,44 @@ type HMETAFILE = uintptr
 type HMODULE = uintptr
 
 type HRGN__ = struct {
-	unused int32
+	Funused int32
 }
 
 type HRGN = uintptr
 
 type HRSRC__ = struct {
-	unused int32
+	Funused int32
 }
 
 type HRSRC = uintptr
 
 type HSPRITE__ = struct {
-	unused int32
+	Funused int32
 }
 
 type HSPRITE = uintptr
 
 type HSTR__ = struct {
-	unused int32
+	Funused int32
 }
 
 type HSTR = uintptr
 
 type HTASK__ = struct {
-	unused int32
+	Funused int32
 }
 
 type HTASK = uintptr
 
 type HWINSTA__ = struct {
-	unused int32
+	Funused int32
 }
 
 type HWINSTA = uintptr
 
 type FILETIME = struct {
-	dwLowDateTime  DWORD
-	dwHighDateTime DWORD
+	FdwLowDateTime  DWORD
+	FdwHighDateTime DWORD
 }
 
 type _FILETIME = FILETIME
@@ -16754,13 +16754,13 @@ type PFILETIME = uintptr
 type LPFILETIME = uintptr
 
 type HWND__ = struct {
-	unused int32
+	Funused int32
 }
 
 type HWND = uintptr
 
 type HHOOK__ = struct {
-	unused int32
+	Funused int32
 }
 
 type HHOOK = uintptr
@@ -16768,91 +16768,91 @@ type HHOOK = uintptr
 type HGDIOBJ = uintptr
 
 type HACCEL__ = struct {
-	unused int32
+	Funused int32
 }
 
 type HACCEL = uintptr
 
 type HBITMAP__ = struct {
-	unused int32
+	Funused int32
 }
 
 type HBITMAP = uintptr
 
 type HBRUSH__ = struct {
-	unused int32
+	Funused int32
 }
 
 type HBRUSH = uintptr
 
 type HCOLORSPACE__ = struct {
-	unused int32
+	Funused int32
 }
 
 type HCOLORSPACE = uintptr
 
 type HDC__ = struct {
-	unused int32
+	Funused int32
 }
 
 type HDC = uintptr
 
 type HGLRC__ = struct {
-	unused int32
+	Funused int32
 }
 
 type HGLRC = uintptr
 
 type HDESK__ = struct {
-	unused int32
+	Funused int32
 }
 
 type HDESK = uintptr
 
 type HENHMETAFILE__ = struct {
-	unused int32
+	Funused int32
 }
 
 type HENHMETAFILE = uintptr
 
 type HFONT__ = struct {
-	unused int32
+	Funused int32
 }
 
 type HFONT = uintptr
 
 type HICON__ = struct {
-	unused int32
+	Funused int32
 }
 
 type HICON = uintptr
 
 type HMENU__ = struct {
-	unused int32
+	Funused int32
 }
 
 type HMENU = uintptr
 
 type HPALETTE__ = struct {
-	unused int32
+	Funused int32
 }
 
 type HPALETTE = uintptr
 
 type HPEN__ = struct {
-	unused int32
+	Funused int32
 }
 
 type HPEN = uintptr
 
 type HMONITOR__ = struct {
-	unused int32
+	Funused int32
 }
 
 type HMONITOR = uintptr
 
 type HWINEVENTHOOK__ = struct {
-	unused int32
+	Funused int32
 }
 
 type HWINEVENTHOOK = uintptr
@@ -16862,7 +16862,7 @@ type HCURSOR = uintptr
 type COLORREF = uint32
 
 type HUMPD__ = struct {
-	unused int32
+	Funused int32
 }
 
 type HUMPD = uintptr
@@ -16870,10 +16870,10 @@ type HUMPD = uintptr
 type LPCOLORREF = uintptr
 
 type RECT = struct {
-	left   LONG
-	top    LONG
-	right  LONG
-	bottom LONG
+	Fleft   LONG
+	Ftop    LONG
+	Fright  LONG
+	Fbottom LONG
 }
 
 type tagRECT = RECT
@@ -16887,10 +16887,10 @@ type LPRECT = uintptr
 type LPCRECT = uintptr
 
 type RECTL = struct {
-	left   LONG
-	top    LONG
-	right  LONG
-	bottom LONG
+	Fleft   LONG
+	Ftop    LONG
+	Fright  LONG
+	Fbottom LONG
 }
 
 type _RECTL = RECTL
@@ -16902,8 +16902,8 @@ type LPRECTL = uintptr
 type LPCRECTL = uintptr
 
 type POINT = struct {
-	x LONG
-	y LONG
+	Fx LONG
+	Fy LONG
 }
 
 type tagPOINT = POINT
@@ -16915,8 +16915,8 @@ type NPPOINT = uintptr
 type LPPOINT = uintptr
 
 type POINTL = struct {
-	x LONG
-	y LONG
+	Fx LONG
+	Fy LONG
 }
 
 type _POINTL = POINTL
@@ -16924,8 +16924,8 @@ type _POINTL = POINTL
 type PPOINTL = uintptr
 
 type SIZE = struct {
-	cx LONG
-	cy LONG
+	Fcx LONG
+	Fcy LONG
 }
 
 type tagSIZE = SIZE
@@ -16935,8 +16935,8 @@ type PSIZE = uintptr
 type LPSIZE = uintptr
 
 type SIZEL = struct {
-	cx LONG
-	cy LONG
+	Fcx LONG
+	Fcy LONG
 }
 
 type PSIZEL = uintptr
@@ -16944,8 +16944,8 @@ type PSIZEL = uintptr
 type LPSIZEL = uintptr
 
 type POINTS = struct {
-	x SHORT
-	y SHORT
+	Fx SHORT
+	Fy SHORT
 }
 
 type tagPOINTS = POINTS
@@ -16955,11 +16955,11 @@ type PPOINTS = uintptr
 type LPPOINTS = uintptr
 
 type APP_LOCAL_DEVICE_ID = struct {
-	value [32]BYTE
+	Fvalue [32]BYTE
 }
 
 type DPI_AWARENESS_CONTEXT__ = struct {
-	unused int32
+	Funused int32
 }
 
 type DPI_AWARENESS_CONTEXT = uintptr
@@ -16982,9 +16982,9 @@ const DPI_HOSTING_BEHAVIOR_DEFAULT = 0
 const DPI_HOSTING_BEHAVIOR_MIXED = 1
 
 type SECURITY_ATTRIBUTES = struct {
-	nLength              DWORD
-	lpSecurityDescriptor LPVOID
-	bInheritHandle       WINBOOL
+	FnLength              DWORD
+	FlpSecurityDescriptor LPVOID
+	FbInheritHandle       WINBOOL
 }
 
 type _SECURITY_ATTRIBUTES = SECURITY_ATTRIBUTES
@@ -16994,16 +16994,16 @@ type PSECURITY_ATTRIBUTES = uintptr
 type LPSECURITY_ATTRIBUTES = uintptr
 
 type OVERLAPPED = struct {
-	Internal     ULONG_PTR
-	InternalHigh ULONG_PTR
-	__ccgo2_16   struct {
-		Pointer   [0]PVOID
-		__ccgo0_0 struct {
-			Offset     DWORD
-			OffsetHigh DWORD
+	FInternal     ULONG_PTR
+	FInternalHigh ULONG_PTR
+	F__ccgo2_16   struct {
+		FPointer   [0]PVOID
+		F__ccgo0_0 struct {
+			FOffset     DWORD
+			FOffsetHigh DWORD
 		}
 	}
-	hEvent HANDLE
+	FhEvent HANDLE
 }
 
 type _OVERLAPPED = OVERLAPPED
@@ -17011,10 +17011,10 @@ type _OVERLAPPED = OVERLAPPED
 type LPOVERLAPPED = uintptr
 
 type OVERLAPPED_ENTRY = struct {
-	lpCompletionKey            ULONG_PTR
-	lpOverlapped               LPOVERLAPPED
-	Internal                   ULONG_PTR
-	dwNumberOfBytesTransferred DWORD
+	FlpCompletionKey            ULONG_PTR
+	FlpOverlapped               LPOVERLAPPED
+	FInternal                   ULONG_PTR
+	FdwNumberOfBytesTransferred DWORD
 }
 
 type _OVERLAPPED_ENTRY = OVERLAPPED_ENTRY
@@ -17022,14 +17022,14 @@ type _OVERLAPPED_ENTRY = OVERLAPPED_ENTRY
 type LPOVERLAPPED_ENTRY = uintptr
 
 type SYSTEMTIME = struct {
-	wYear         WORD
-	wMonth        WORD
-	wDayOfWeek    WORD
-	wDay          WORD
-	wHour         WORD
-	wMinute       WORD
-	wSecond       WORD
-	wMilliseconds WORD
+	FwYear         WORD
+	FwMonth        WORD
+	FwDayOfWeek    WORD
+	FwDay          WORD
+	FwHour         WORD
+	FwMinute       WORD
+	FwSecond       WORD
+	FwMilliseconds WORD
 }
 
 type _SYSTEMTIME = SYSTEMTIME
@@ -17039,16 +17039,16 @@ type PSYSTEMTIME = uintptr
 type LPSYSTEMTIME = uintptr
 
 type WIN32_FIND_DATAA = struct {
-	dwFileAttributes   DWORD
-	ftCreationTime     FILETIME
-	ftLastAccessTime   FILETIME
-	ftLastWriteTime    FILETIME
-	nFileSizeHigh      DWORD
-	nFileSizeLow       DWORD
-	dwReserved0        DWORD
-	dwReserved1        DWORD
-	cFileName          [260]CHAR
-	cAlternateFileName [14]CHAR
+	FdwFileAttributes   DWORD
+	FftCreationTime     FILETIME
+	FftLastAccessTime   FILETIME
+	FftLastWriteTime    FILETIME
+	FnFileSizeHigh      DWORD
+	FnFileSizeLow       DWORD
+	FdwReserved0        DWORD
+	FdwReserved1        DWORD
+	FcFileName          [260]CHAR
+	FcAlternateFileName [14]CHAR
 }
 
 type _WIN32_FIND_DATAA = WIN32_FIND_DATAA
@@ -17058,16 +17058,16 @@ type PWIN32_FIND_DATAA = uintptr
 type LPWIN32_FIND_DATAA = uintptr
 
 type WIN32_FIND_DATAW = struct {
-	dwFileAttributes   DWORD
-	ftCreationTime     FILETIME
-	ftLastAccessTime   FILETIME
-	ftLastWriteTime    FILETIME
-	nFileSizeHigh      DWORD
-	nFileSizeLow       DWORD
-	dwReserved0        DWORD
-	dwReserved1        DWORD
-	cFileName          [260]WCHAR
-	cAlternateFileName [14]WCHAR
+	FdwFileAttributes   DWORD
+	FftCreationTime     FILETIME
+	FftLastAccessTime   FILETIME
+	FftLastWriteTime    FILETIME
+	FnFileSizeHigh      DWORD
+	FnFileSizeLow       DWORD
+	FdwReserved0        DWORD
+	FdwReserved1        DWORD
+	FcFileName          [260]WCHAR
+	FcAlternateFileName [14]WCHAR
 }
 
 type _WIN32_FIND_DATAW = WIN32_FIND_DATAW
@@ -17077,16 +17077,16 @@ type PWIN32_FIND_DATAW = uintptr
 type LPWIN32_FIND_DATAW = uintptr
 
 type WIN32_FIND_DATA = struct {
-	dwFileAttributes   DWORD
-	ftCreationTime     FILETIME
-	ftLastAccessTime   FILETIME
-	ftLastWriteTime    FILETIME
-	nFileSizeHigh      DWORD
-	nFileSizeLow       DWORD
-	dwReserved0        DWORD
-	dwReserved1        DWORD
-	cFileName          [260]CHAR
-	cAlternateFileName [14]CHAR
+	FdwFileAttributes   DWORD
+	FftCreationTime     FILETIME
+	FftLastAccessTime   FILETIME
+	FftLastWriteTime    FILETIME
+	FnFileSizeHigh      DWORD
+	FnFileSizeLow       DWORD
+	FdwReserved0        DWORD
+	FdwReserved1        DWORD
+	FcFileName          [260]CHAR
+	FcAlternateFileName [14]CHAR
 }
 
 type PWIN32_FIND_DATA = uintptr
@@ -17149,12 +17149,12 @@ const MaximumFileInfoByHandleClass = 23
 type PFILE_INFO_BY_HANDLE_CLASS = uintptr
 
 type CRITICAL_SECTION = struct {
-	DebugInfo      PRTL_CRITICAL_SECTION_DEBUG
-	LockCount      LONG
-	RecursionCount LONG
-	OwningThread   HANDLE
-	LockSemaphore  HANDLE
-	SpinCount      ULONG_PTR
+	FDebugInfo      PRTL_CRITICAL_SECTION_DEBUG
+	FLockCount      LONG
+	FRecursionCount LONG
+	FOwningThread   HANDLE
+	FLockSemaphore  HANDLE
+	FSpinCount      ULONG_PTR
 }
 
 type PCRITICAL_SECTION = uintptr
@@ -17162,15 +17162,15 @@ type PCRITICAL_SECTION = uintptr
 type LPCRITICAL_SECTION = uintptr
 
 type CRITICAL_SECTION_DEBUG = struct {
-	Type                      WORD
-	CreatorBackTraceIndex     WORD
-	CriticalSection           uintptr
-	ProcessLocksList          LIST_ENTRY
-	EntryCount                DWORD
-	ContentionCount           DWORD
-	Flags                     DWORD
-	CreatorBackTraceIndexHigh WORD
-	SpareWORD                 WORD
+	FType                      WORD
+	FCreatorBackTraceIndex     WORD
+	FCriticalSection           uintptr
+	FProcessLocksList          LIST_ENTRY
+	FEntryCount                DWORD
+	FContentionCount           DWORD
+	FFlags                     DWORD
+	FCreatorBackTraceIndexHigh WORD
+	FSpareWORD                 WORD
 }
 
 type PCRITICAL_SECTION_DEBUG = uintptr
@@ -17180,21 +17180,21 @@ type LPCRITICAL_SECTION_DEBUG = uintptr
 type LPOVERLAPPED_COMPLETION_ROUTINE = uintptr
 
 type PROCESS_HEAP_ENTRY = struct {
-	lpData       PVOID
-	cbData       DWORD
-	cbOverhead   BYTE
-	iRegionIndex BYTE
-	wFlags       WORD
-	__ccgo5_16   struct {
-		Region [0]struct {
-			dwCommittedSize   DWORD
-			dwUnCommittedSize DWORD
-			lpFirstBlock      LPVOID
-			lpLastBlock       LPVOID
+	FlpData       PVOID
+	FcbData       DWORD
+	FcbOverhead   BYTE
+	FiRegionIndex BYTE
+	FwFlags       WORD
+	F__ccgo5_16   struct {
+		FRegion [0]struct {
+			FdwCommittedSize   DWORD
+			FdwUnCommittedSize DWORD
+			FlpFirstBlock      LPVOID
+			FlpLastBlock       LPVOID
 		}
-		Block struct {
-			hMem       HANDLE
-			dwReserved [3]DWORD
+		FBlock struct {
+			FhMem       HANDLE
+			FdwReserved [3]DWORD
 		}
 	}
 }
@@ -17206,15 +17206,15 @@ type LPPROCESS_HEAP_ENTRY = uintptr
 type PPROCESS_HEAP_ENTRY = uintptr
 
 type REASON_CONTEXT = struct {
-	Version ULONG
-	Flags   DWORD
-	Reason  struct {
-		SimpleReasonString [0]LPWSTR
-		Detailed           struct {
-			LocalizedReasonModule HMODULE
-			LocalizedReasonId     ULONG
-			ReasonStringCount     ULONG
-			ReasonStrings         uintptr
+	FVersion ULONG
+	FFlags   DWORD
+	FReason  struct {
+		FSimpleReasonString [0]LPWSTR
+		FDetailed           struct {
+			FLocalizedReasonModule HMODULE
+			FLocalizedReasonId     ULONG
+			FReasonStringCount     ULONG
+			FReasonStrings         uintptr
 		}
 	}
 }
@@ -17232,8 +17232,8 @@ type PENCLAVE_ROUTINE = uintptr
 type LPENCLAVE_ROUTINE = uintptr
 
 type EXCEPTION_DEBUG_INFO = struct {
-	ExceptionRecord EXCEPTION_RECORD
-	dwFirstChance   DWORD
+	FExceptionRecord EXCEPTION_RECORD
+	FdwFirstChance   DWORD
 }
 
 type _EXCEPTION_DEBUG_INFO = EXCEPTION_DEBUG_INFO
@@ -17241,9 +17241,9 @@ type _EXCEPTION_DEBUG_INFO = EXCEPTION_DEBUG_INFO
 type LPEXCEPTION_DEBUG_INFO = uintptr
 
 type CREATE_THREAD_DEBUG_INFO = struct {
-	hThread           HANDLE
-	lpThreadLocalBase LPVOID
-	lpStartAddress    LPTHREAD_START_ROUTINE
+	FhThread           HANDLE
+	FlpThreadLocalBase LPVOID
+	FlpStartAddress    LPTHREAD_START_ROUTINE
 }
 
 type _CREATE_THREAD_DEBUG_INFO = CREATE_THREAD_DEBUG_INFO
@@ -17251,16 +17251,16 @@ type _CREATE_THREAD_DEBUG_INFO = CREATE_THREAD_DEBUG_INFO
 type LPCREATE_THREAD_DEBUG_INFO = uintptr
 
 type CREATE_PROCESS_DEBUG_INFO = struct {
-	hFile                 HANDLE
-	hProcess              HANDLE
-	hThread               HANDLE
-	lpBaseOfImage         LPVOID
-	dwDebugInfoFileOffset DWORD
-	nDebugInfoSize        DWORD
-	lpThreadLocalBase     LPVOID
-	lpStartAddress        LPTHREAD_START_ROUTINE
-	lpImageName           LPVOID
-	fUnicode              WORD
+	FhFile                 HANDLE
+	FhProcess              HANDLE
+	FhThread               HANDLE
+	FlpBaseOfImage         LPVOID
+	FdwDebugInfoFileOffset DWORD
+	FnDebugInfoSize        DWORD
+	FlpThreadLocalBase     LPVOID
+	FlpStartAddress        LPTHREAD_START_ROUTINE
+	FlpImageName           LPVOID
+	FfUnicode              WORD
 }
 
 type _CREATE_PROCESS_DEBUG_INFO = CREATE_PROCESS_DEBUG_INFO
@@ -17268,7 +17268,7 @@ type _CREATE_PROCESS_DEBUG_INFO = CREATE_PROCESS_DEBUG_INFO
 type LPCREATE_PROCESS_DEBUG_INFO = uintptr
 
 type EXIT_THREAD_DEBUG_INFO = struct {
-	dwExitCode DWORD
+	FdwExitCode DWORD
 }
 
 type _EXIT_THREAD_DEBUG_INFO = EXIT_THREAD_DEBUG_INFO
@@ -17276,7 +17276,7 @@ type _EXIT_THREAD_DEBUG_INFO = EXIT_THREAD_DEBUG_INFO
 type LPEXIT_THREAD_DEBUG_INFO = uintptr
 
 type EXIT_PROCESS_DEBUG_INFO = struct {
-	dwExitCode DWORD
+	FdwExitCode DWORD
 }
 
 type _EXIT_PROCESS_DEBUG_INFO = EXIT_PROCESS_DEBUG_INFO
@@ -17284,12 +17284,12 @@ type _EXIT_PROCESS_DEBUG_INFO = EXIT_PROCESS_DEBUG_INFO
 type LPEXIT_PROCESS_DEBUG_INFO = uintptr
 
 type LOAD_DLL_DEBUG_INFO = struct {
-	hFile                 HANDLE
-	lpBaseOfDll           LPVOID
-	dwDebugInfoFileOffset DWORD
-	nDebugInfoSize        DWORD
-	lpImageName           LPVOID
-	fUnicode              WORD
+	FhFile                 HANDLE
+	FlpBaseOfDll           LPVOID
+	FdwDebugInfoFileOffset DWORD
+	FnDebugInfoSize        DWORD
+	FlpImageName           LPVOID
+	FfUnicode              WORD
 }
 
 type _LOAD_DLL_DEBUG_INFO = LOAD_DLL_DEBUG_INFO
@@ -17297,7 +17297,7 @@ type _LOAD_DLL_DEBUG_INFO = LOAD_DLL_DEBUG_INFO
 type LPLOAD_DLL_DEBUG_INFO = uintptr
 
 type UNLOAD_DLL_DEBUG_INFO = struct {
-	lpBaseOfDll LPVOID
+	FlpBaseOfDll LPVOID
 }
 
 type _UNLOAD_DLL_DEBUG_INFO = UNLOAD_DLL_DEBUG_INFO
@@ -17305,9 +17305,9 @@ type _UNLOAD_DLL_DEBUG_INFO = UNLOAD_DLL_DEBUG_INFO
 type LPUNLOAD_DLL_DEBUG_INFO = uintptr
 
 type OUTPUT_DEBUG_STRING_INFO = struct {
-	lpDebugStringData  LPSTR
-	fUnicode           WORD
-	nDebugStringLength WORD
+	FlpDebugStringData  LPSTR
+	FfUnicode           WORD
+	FnDebugStringLength WORD
 }
 
 type _OUTPUT_DEBUG_STRING_INFO = OUTPUT_DEBUG_STRING_INFO
@@ -17315,8 +17315,8 @@ type _OUTPUT_DEBUG_STRING_INFO = OUTPUT_DEBUG_STRING_INFO
 type LPOUTPUT_DEBUG_STRING_INFO = uintptr
 
 type RIP_INFO = struct {
-	dwError DWORD
-	dwType  DWORD
+	FdwError DWORD
+	FdwType  DWORD
 }
 
 type _RIP_INFO = RIP_INFO
@@ -17324,19 +17324,19 @@ type _RIP_INFO = RIP_INFO
 type LPRIP_INFO = uintptr
 
 type DEBUG_EVENT = struct {
-	dwDebugEventCode DWORD
-	dwProcessId      DWORD
-	dwThreadId       DWORD
-	u                struct {
-		CreateThread      [0]CREATE_THREAD_DEBUG_INFO
-		CreateProcessInfo [0]CREATE_PROCESS_DEBUG_INFO
-		ExitThread        [0]EXIT_THREAD_DEBUG_INFO
-		ExitProcess       [0]EXIT_PROCESS_DEBUG_INFO
-		LoadDll           [0]LOAD_DLL_DEBUG_INFO
-		UnloadDll         [0]UNLOAD_DLL_DEBUG_INFO
-		DebugString       [0]OUTPUT_DEBUG_STRING_INFO
-		RipInfo           [0]RIP_INFO
-		Exception         EXCEPTION_DEBUG_INFO
+	FdwDebugEventCode DWORD
+	FdwProcessId      DWORD
+	FdwThreadId       DWORD
+	Fu                struct {
+		FCreateThread      [0]CREATE_THREAD_DEBUG_INFO
+		FCreateProcessInfo [0]CREATE_PROCESS_DEBUG_INFO
+		FExitThread        [0]EXIT_THREAD_DEBUG_INFO
+		FExitProcess       [0]EXIT_PROCESS_DEBUG_INFO
+		FLoadDll           [0]LOAD_DLL_DEBUG_INFO
+		FUnloadDll         [0]UNLOAD_DLL_DEBUG_INFO
+		FDebugString       [0]OUTPUT_DEBUG_STRING_INFO
+		FRipInfo           [0]RIP_INFO
+		FException         EXCEPTION_DEBUG_INFO
 	}
 }
 
@@ -17353,16 +17353,16 @@ type PTOP_LEVEL_EXCEPTION_FILTER = uintptr
 type LPTOP_LEVEL_EXCEPTION_FILTER = uintptr
 
 type BY_HANDLE_FILE_INFORMATION = struct {
-	dwFileAttributes     DWORD
-	ftCreationTime       FILETIME
-	ftLastAccessTime     FILETIME
-	ftLastWriteTime      FILETIME
-	dwVolumeSerialNumber DWORD
-	nFileSizeHigh        DWORD
-	nFileSizeLow         DWORD
-	nNumberOfLinks       DWORD
-	nFileIndexHigh       DWORD
-	nFileIndexLow        DWORD
+	FdwFileAttributes     DWORD
+	FftCreationTime       FILETIME
+	FftLastAccessTime     FILETIME
+	FftLastWriteTime      FILETIME
+	FdwVolumeSerialNumber DWORD
+	FnFileSizeHigh        DWORD
+	FnFileSizeLow         DWORD
+	FnNumberOfLinks       DWORD
+	FnFileIndexHigh       DWORD
+	FnFileIndexLow        DWORD
 }
 
 type _BY_HANDLE_FILE_INFORMATION = BY_HANDLE_FILE_INFORMATION
@@ -17372,12 +17372,12 @@ type PBY_HANDLE_FILE_INFORMATION = uintptr
 type LPBY_HANDLE_FILE_INFORMATION = uintptr
 
 type WIN32_FILE_ATTRIBUTE_DATA = struct {
-	dwFileAttributes DWORD
-	ftCreationTime   FILETIME
-	ftLastAccessTime FILETIME
-	ftLastWriteTime  FILETIME
-	nFileSizeHigh    DWORD
-	nFileSizeLow     DWORD
+	FdwFileAttributes DWORD
+	FftCreationTime   FILETIME
+	FftLastAccessTime FILETIME
+	FftLastWriteTime  FILETIME
+	FnFileSizeHigh    DWORD
+	FnFileSizeLow     DWORD
 }
 
 type _WIN32_FILE_ATTRIBUTE_DATA = WIN32_FILE_ATTRIBUTE_DATA
@@ -17385,12 +17385,12 @@ type _WIN32_FILE_ATTRIBUTE_DATA = WIN32_FILE_ATTRIBUTE_DATA
 type LPWIN32_FILE_ATTRIBUTE_DATA = uintptr
 
 type CREATEFILE2_EXTENDED_PARAMETERS = struct {
-	dwSize               DWORD
-	dwFileAttributes     DWORD
-	dwFileFlags          DWORD
-	dwSecurityQosFlags   DWORD
-	lpSecurityAttributes LPSECURITY_ATTRIBUTES
-	hTemplateFile        HANDLE
+	FdwSize               DWORD
+	FdwFileAttributes     DWORD
+	FdwFileFlags          DWORD
+	FdwSecurityQosFlags   DWORD
+	FlpSecurityAttributes LPSECURITY_ATTRIBUTES
+	FhTemplateFile        HANDLE
 }
 
 type _CREATEFILE2_EXTENDED_PARAMETERS = CREATEFILE2_EXTENDED_PARAMETERS
@@ -17400,11 +17400,11 @@ type PCREATEFILE2_EXTENDED_PARAMETERS = uintptr
 type LPCREATEFILE2_EXTENDED_PARAMETERS = uintptr
 
 type HEAP_SUMMARY = struct {
-	cb           DWORD
-	cbAllocated  SIZE_T
-	cbCommitted  SIZE_T
-	cbReserved   SIZE_T
-	cbMaxReserve SIZE_T
+	Fcb           DWORD
+	FcbAllocated  SIZE_T
+	FcbCommitted  SIZE_T
+	FcbReserved   SIZE_T
+	FcbMaxReserve SIZE_T
 }
 
 type _HEAP_SUMMARY = HEAP_SUMMARY
@@ -17414,9 +17414,9 @@ type PHEAP_SUMMARY = uintptr
 type LPHEAP_SUMMARY = uintptr
 
 type ENUMUILANG = struct {
-	NumOfEnumUILang    ULONG
-	SizeOfEnumUIBuffer ULONG
-	pEnumUIBuffer      uintptr
+	FNumOfEnumUILang    ULONG
+	FSizeOfEnumUIBuffer ULONG
+	FpEnumUIBuffer      uintptr
 }
 
 type tagENUMUILANG = ENUMUILANG
@@ -17444,9 +17444,9 @@ type DLL_DIRECTORY_COOKIE = uintptr
 type PDLL_DIRECTORY_COOKIE = uintptr
 
 type REDIRECTION_FUNCTION_DESCRIPTOR = struct {
-	DllName           PCSTR
-	FunctionName      PCSTR
-	RedirectionTarget PVOID
+	FDllName           PCSTR
+	FFunctionName      PCSTR
+	FRedirectionTarget PVOID
 }
 
 type _REDIRECTION_FUNCTION_DESCRIPTOR = REDIRECTION_FUNCTION_DESCRIPTOR
@@ -17456,9 +17456,9 @@ type PREDIRECTION_FUNCTION_DESCRIPTOR = uintptr
 type PCREDIRECTION_FUNCTION_DESCRIPTOR = uintptr
 
 type REDIRECTION_DESCRIPTOR = struct {
-	Version       ULONG
-	FunctionCount ULONG
-	Redirections  PCREDIRECTION_FUNCTION_DESCRIPTOR
+	FVersion       ULONG
+	FFunctionCount ULONG
+	FRedirections  PCREDIRECTION_FUNCTION_DESCRIPTOR
 }
 
 type _REDIRECTION_DESCRIPTOR = REDIRECTION_DESCRIPTOR
@@ -17475,8 +17475,8 @@ const LowMemoryResourceNotification = 0
 const HighMemoryResourceNotification = 1
 
 type WIN32_MEMORY_RANGE_ENTRY = struct {
-	VirtualAddress PVOID
-	NumberOfBytes  SIZE_T
+	FVirtualAddress PVOID
+	FNumberOfBytes  SIZE_T
 }
 
 type _WIN32_MEMORY_RANGE_ENTRY = WIN32_MEMORY_RANGE_ENTRY
@@ -17495,24 +17495,24 @@ const VmOfferPriorityBelowNormal = 3
 const VmOfferPriorityNormal = 4
 
 type STARTUPINFOA = struct {
-	cb              DWORD
-	lpReserved      LPSTR
-	lpDesktop       LPSTR
-	lpTitle         LPSTR
-	dwX             DWORD
-	dwY             DWORD
-	dwXSize         DWORD
-	dwYSize         DWORD
-	dwXCountChars   DWORD
-	dwYCountChars   DWORD
-	dwFillAttribute DWORD
-	dwFlags         DWORD
-	wShowWindow     WORD
-	cbReserved2     WORD
-	lpReserved2     LPBYTE
-	hStdInput       HANDLE
-	hStdOutput      HANDLE
-	hStdError       HANDLE
+	Fcb              DWORD
+	FlpReserved      LPSTR
+	FlpDesktop       LPSTR
+	FlpTitle         LPSTR
+	FdwX             DWORD
+	FdwY             DWORD
+	FdwXSize         DWORD
+	FdwYSize         DWORD
+	FdwXCountChars   DWORD
+	FdwYCountChars   DWORD
+	FdwFillAttribute DWORD
+	FdwFlags         DWORD
+	FwShowWindow     WORD
+	FcbReserved2     WORD
+	FlpReserved2     LPBYTE
+	FhStdInput       HANDLE
+	FhStdOutput      HANDLE
+	FhStdError       HANDLE
 }
 
 type _STARTUPINFOA = STARTUPINFOA
@@ -17520,24 +17520,24 @@ type _STARTUPINFOA = STARTUPINFOA
 type LPSTARTUPINFOA = uintptr
 
 type STARTUPINFOW = struct {
-	cb              DWORD
-	lpReserved      LPWSTR
-	lpDesktop       LPWSTR
-	lpTitle         LPWSTR
-	dwX             DWORD
-	dwY             DWORD
-	dwXSize         DWORD
-	dwYSize         DWORD
-	dwXCountChars   DWORD
-	dwYCountChars   DWORD
-	dwFillAttribute DWORD
-	dwFlags         DWORD
-	wShowWindow     WORD
-	cbReserved2     WORD
-	lpReserved2     LPBYTE
-	hStdInput       HANDLE
-	hStdOutput      HANDLE
-	hStdError       HANDLE
+	Fcb              DWORD
+	FlpReserved      LPWSTR
+	FlpDesktop       LPWSTR
+	FlpTitle         LPWSTR
+	FdwX             DWORD
+	FdwY             DWORD
+	FdwXSize         DWORD
+	FdwYSize         DWORD
+	FdwXCountChars   DWORD
+	FdwYCountChars   DWORD
+	FdwFillAttribute DWORD
+	FdwFlags         DWORD
+	FwShowWindow     WORD
+	FcbReserved2     WORD
+	FlpReserved2     LPBYTE
+	FhStdInput       HANDLE
+	FhStdOutput      HANDLE
+	FhStdError       HANDLE
 }
 
 type _STARTUPINFOW = STARTUPINFOW
@@ -17545,33 +17545,33 @@ type _STARTUPINFOW = STARTUPINFOW
 type LPSTARTUPINFOW = uintptr
 
 type STARTUPINFO = struct {
-	cb              DWORD
-	lpReserved      LPSTR
-	lpDesktop       LPSTR
-	lpTitle         LPSTR
-	dwX             DWORD
-	dwY             DWORD
-	dwXSize         DWORD
-	dwYSize         DWORD
-	dwXCountChars   DWORD
-	dwYCountChars   DWORD
-	dwFillAttribute DWORD
-	dwFlags         DWORD
-	wShowWindow     WORD
-	cbReserved2     WORD
-	lpReserved2     LPBYTE
-	hStdInput       HANDLE
-	hStdOutput      HANDLE
-	hStdError       HANDLE
+	Fcb              DWORD
+	FlpReserved      LPSTR
+	FlpDesktop       LPSTR
+	FlpTitle         LPSTR
+	FdwX             DWORD
+	FdwY             DWORD
+	FdwXSize         DWORD
+	FdwYSize         DWORD
+	FdwXCountChars   DWORD
+	FdwYCountChars   DWORD
+	FdwFillAttribute DWORD
+	FdwFlags         DWORD
+	FwShowWindow     WORD
+	FcbReserved2     WORD
+	FlpReserved2     LPBYTE
+	FhStdInput       HANDLE
+	FhStdOutput      HANDLE
+	FhStdError       HANDLE
 }
 
 type LPSTARTUPINFO = uintptr
 
 type PROCESS_INFORMATION = struct {
-	hProcess    HANDLE
-	hThread     HANDLE
-	dwProcessId DWORD
-	dwThreadId  DWORD
+	FhProcess    HANDLE
+	FhThread     HANDLE
+	FdwProcessId DWORD
+	FdwThreadId  DWORD
 }
 
 type _PROCESS_INFORMATION = PROCESS_INFORMATION
@@ -17597,10 +17597,10 @@ const ProcessMachineTypeInfo = 9
 const ProcessInformationClassMax = 10
 
 type APP_MEMORY_INFORMATION = struct {
-	AvailableCommit        ULONG64
-	PrivateCommitUsage     ULONG64
-	PeakPrivateCommitUsage ULONG64
-	TotalCommitUsage       ULONG64
+	FAvailableCommit        ULONG64
+	FPrivateCommitUsage     ULONG64
+	FPeakPrivateCommitUsage ULONG64
+	FTotalCommitUsage       ULONG64
 }
 
 type _APP_MEMORY_INFORMATION = APP_MEMORY_INFORMATION
@@ -17616,9 +17616,9 @@ const KernelEnabled = 2
 const Wow64Container = 4
 
 type PROCESS_MACHINE_INFORMATION = struct {
-	ProcessMachine    USHORT
-	Res0              USHORT
-	MachineAttributes MACHINE_ATTRIBUTES
+	FProcessMachine    USHORT
+	FRes0              USHORT
+	FMachineAttributes MACHINE_ATTRIBUTES
 }
 
 type _PROCESS_MACHINE_INFORMATION = PROCESS_MACHINE_INFORMATION
@@ -17633,10 +17633,10 @@ const PMETypeMax = 1
 type PPROCESS_MEMORY_EXHAUSTION_TYPE = uintptr
 
 type PROCESS_MEMORY_EXHAUSTION_INFO = struct {
-	Version  USHORT
-	Reserved USHORT
-	Type     PROCESS_MEMORY_EXHAUSTION_TYPE
-	Value    ULONG_PTR
+	FVersion  USHORT
+	FReserved USHORT
+	FType     PROCESS_MEMORY_EXHAUSTION_TYPE
+	FValue    ULONG_PTR
 }
 
 type _PROCESS_MEMORY_EXHAUSTION_INFO = PROCESS_MEMORY_EXHAUSTION_INFO
@@ -17644,9 +17644,9 @@ type _PROCESS_MEMORY_EXHAUSTION_INFO = PROCESS_MEMORY_EXHAUSTION_INFO
 type PPROCESS_MEMORY_EXHAUSTION_INFO = uintptr
 
 type PROCESS_POWER_THROTTLING_STATE = struct {
-	Version     ULONG
-	ControlMask ULONG
-	StateMask   ULONG
+	FVersion     ULONG
+	FControlMask ULONG
+	FStateMask   ULONG
 }
 
 type _PROCESS_POWER_THROTTLING_STATE = PROCESS_POWER_THROTTLING_STATE
@@ -17654,12 +17654,12 @@ type _PROCESS_POWER_THROTTLING_STATE = PROCESS_POWER_THROTTLING_STATE
 type PPROCESS_POWER_THROTTLING_STATE = uintptr
 
 type PROCESS_PROTECTION_LEVEL_INFORMATION = struct {
-	ProtectionLevel DWORD
+	FProtectionLevel DWORD
 }
 
 type PROCESS_LEAP_SECOND_INFO = struct {
-	Flags    ULONG
-	Reserved ULONG
+	FFlags    ULONG
+	FReserved ULONG
 }
 
 type _PROCESS_LEAP_SECOND_INFO = PROCESS_LEAP_SECOND_INFO
@@ -17671,7 +17671,7 @@ type PPROC_THREAD_ATTRIBUTE_LIST = uintptr
 type LPPROC_THREAD_ATTRIBUTE_LIST = uintptr
 
 type MEMORY_PRIORITY_INFORMATION = struct {
-	MemoryPriority ULONG
+	FMemoryPriority ULONG
 }
 
 type _MEMORY_PRIORITY_INFORMATION = MEMORY_PRIORITY_INFORMATION
@@ -17679,13 +17679,13 @@ type _MEMORY_PRIORITY_INFORMATION = MEMORY_PRIORITY_INFORMATION
 type PMEMORY_PRIORITY_INFORMATION = uintptr
 
 type SRWLOCK = struct {
-	Ptr PVOID
+	FPtr PVOID
 }
 
 type PSRWLOCK = uintptr
 
 type INIT_ONCE = struct {
-	Ptr PVOID
+	FPtr PVOID
 }
 
 type PINIT_ONCE = uintptr
@@ -17695,7 +17695,7 @@ type LPINIT_ONCE = uintptr
 type PINIT_ONCE_FN = uintptr
 
 type CONDITION_VARIABLE = struct {
-	Ptr PVOID
+	FPtr PVOID
 }
 
 type PCONDITION_VARIABLE = uintptr
@@ -17703,11 +17703,11 @@ type PCONDITION_VARIABLE = uintptr
 type PTIMERAPCROUTINE = uintptr
 
 type SYNCHRONIZATION_BARRIER = struct {
-	Reserved1 DWORD
-	Reserved2 DWORD
-	Reserved3 [2]ULONG_PTR
-	Reserved4 DWORD
-	Reserved5 DWORD
+	FReserved1 DWORD
+	FReserved2 DWORD
+	FReserved3 [2]ULONG_PTR
+	FReserved4 DWORD
+	FReserved5 DWORD
 }
 
 type PSYNCHRONIZATION_BARRIER = uintptr
@@ -17715,22 +17715,22 @@ type PSYNCHRONIZATION_BARRIER = uintptr
 type LPSYNCHRONIZATION_BARRIER = uintptr
 
 type SYSTEM_INFO = struct {
-	__ccgo0_0 struct {
-		__ccgo1_0 [0]struct {
-			wProcessorArchitecture WORD
-			wReserved              WORD
+	F__ccgo0_0 struct {
+		F__ccgo1_0 [0]struct {
+			FwProcessorArchitecture WORD
+			FwReserved              WORD
 		}
-		dwOemId DWORD
+		FdwOemId DWORD
 	}
-	dwPageSize                  DWORD
-	lpMinimumApplicationAddress LPVOID
-	lpMaximumApplicationAddress LPVOID
-	dwActiveProcessorMask       DWORD_PTR
-	dwNumberOfProcessors        DWORD
-	dwProcessorType             DWORD
-	dwAllocationGranularity     DWORD
-	wProcessorLevel             WORD
-	wProcessorRevision          WORD
+	FdwPageSize                  DWORD
+	FlpMinimumApplicationAddress LPVOID
+	FlpMaximumApplicationAddress LPVOID
+	FdwActiveProcessorMask       DWORD_PTR
+	FdwNumberOfProcessors        DWORD
+	FdwProcessorType             DWORD
+	FdwAllocationGranularity     DWORD
+	FwProcessorLevel             WORD
+	FwProcessorRevision          WORD
 }
 
 type _SYSTEM_INFO = SYSTEM_INFO
@@ -17738,15 +17738,15 @@ type _SYSTEM_INFO = SYSTEM_INFO
 type LPSYSTEM_INFO = uintptr
 
 type MEMORYSTATUSEX = struct {
-	dwLength                DWORD
-	dwMemoryLoad            DWORD
-	ullTotalPhys            DWORDLONG
-	ullAvailPhys            DWORDLONG
-	ullTotalPageFile        DWORDLONG
-	ullAvailPageFile        DWORDLONG
-	ullTotalVirtual         DWORDLONG
-	ullAvailVirtual         DWORDLONG
-	ullAvailExtendedVirtual DWORDLONG
+	FdwLength                DWORD
+	FdwMemoryLoad            DWORD
+	FullTotalPhys            DWORDLONG
+	FullAvailPhys            DWORDLONG
+	FullTotalPageFile        DWORDLONG
+	FullAvailPageFile        DWORDLONG
+	FullTotalVirtual         DWORDLONG
+	FullAvailVirtual         DWORDLONG
+	FullAvailExtendedVirtual DWORDLONG
 }
 
 type _MEMORYSTATUSEX = MEMORYSTATUSEX
@@ -17778,24 +17778,24 @@ type PFIBER_CALLOUT_ROUTINE = uintptr
 type LPLDT_ENTRY = uintptr
 
 type COMMPROP = struct {
-	wPacketLength       WORD
-	wPacketVersion      WORD
-	dwServiceMask       DWORD
-	dwReserved1         DWORD
-	dwMaxTxQueue        DWORD
-	dwMaxRxQueue        DWORD
-	dwMaxBaud           DWORD
-	dwProvSubType       DWORD
-	dwProvCapabilities  DWORD
-	dwSettableParams    DWORD
-	dwSettableBaud      DWORD
-	wSettableData       WORD
-	wSettableStopParity WORD
-	dwCurrentTxQueue    DWORD
-	dwCurrentRxQueue    DWORD
-	dwProvSpec1         DWORD
-	dwProvSpec2         DWORD
-	wcProvChar          [1]WCHAR
+	FwPacketLength       WORD
+	FwPacketVersion      WORD
+	FdwServiceMask       DWORD
+	FdwReserved1         DWORD
+	FdwMaxTxQueue        DWORD
+	FdwMaxRxQueue        DWORD
+	FdwMaxBaud           DWORD
+	FdwProvSubType       DWORD
+	FdwProvCapabilities  DWORD
+	FdwSettableParams    DWORD
+	FdwSettableBaud      DWORD
+	FwSettableData       WORD
+	FwSettableStopParity WORD
+	FdwCurrentTxQueue    DWORD
+	FdwCurrentRxQueue    DWORD
+	FdwProvSpec1         DWORD
+	FdwProvSpec2         DWORD
+	FwcProvChar          [1]WCHAR
 }
 
 type _COMMPROP = COMMPROP
@@ -17803,9 +17803,9 @@ type _COMMPROP = COMMPROP
 type LPCOMMPROP = uintptr
 
 type COMSTAT = struct {
-	__ccgo0  uint32
-	cbInQue  DWORD
-	cbOutQue DWORD
+	F__ccgo0  uint32
+	FcbInQue  DWORD
+	FcbOutQue DWORD
 }
 
 type _COMSTAT = COMSTAT
@@ -17813,21 +17813,21 @@ type _COMSTAT = COMSTAT
 type LPCOMSTAT = uintptr
 
 type DCB = struct {
-	DCBlength  DWORD
-	BaudRate   DWORD
-	__ccgo8    uint32
-	wReserved  WORD
-	XonLim     WORD
-	XoffLim    WORD
-	ByteSize   BYTE
-	Parity     BYTE
-	StopBits   BYTE
-	XonChar    int8
-	XoffChar   int8
-	ErrorChar  int8
-	EofChar    int8
-	EvtChar    int8
-	wReserved1 WORD
+	FDCBlength  DWORD
+	FBaudRate   DWORD
+	F__ccgo8    uint32
+	FwReserved  WORD
+	FXonLim     WORD
+	FXoffLim    WORD
+	FByteSize   BYTE
+	FParity     BYTE
+	FStopBits   BYTE
+	FXonChar    int8
+	FXoffChar   int8
+	FErrorChar  int8
+	FEofChar    int8
+	FEvtChar    int8
+	FwReserved1 WORD
 }
 
 type _DCB = DCB
@@ -17835,11 +17835,11 @@ type _DCB = DCB
 type LPDCB = uintptr
 
 type COMMTIMEOUTS = struct {
-	ReadIntervalTimeout         DWORD
-	ReadTotalTimeoutMultiplier  DWORD
-	ReadTotalTimeoutConstant    DWORD
-	WriteTotalTimeoutMultiplier DWORD
-	WriteTotalTimeoutConstant   DWORD
+	FReadIntervalTimeout         DWORD
+	FReadTotalTimeoutMultiplier  DWORD
+	FReadTotalTimeoutConstant    DWORD
+	FWriteTotalTimeoutMultiplier DWORD
+	FWriteTotalTimeoutConstant   DWORD
 }
 
 type _COMMTIMEOUTS = COMMTIMEOUTS
@@ -17847,14 +17847,14 @@ type _COMMTIMEOUTS = COMMTIMEOUTS
 type LPCOMMTIMEOUTS = uintptr
 
 type COMMCONFIG = struct {
-	dwSize            DWORD
-	wVersion          WORD
-	wReserved         WORD
-	dcb               DCB
-	dwProviderSubType DWORD
-	dwProviderOffset  DWORD
-	dwProviderSize    DWORD
-	wcProviderData    [1]WCHAR
+	FdwSize            DWORD
+	FwVersion          WORD
+	FwReserved         WORD
+	Fdcb               DCB
+	FdwProviderSubType DWORD
+	FdwProviderOffset  DWORD
+	FdwProviderSize    DWORD
+	FwcProviderData    [1]WCHAR
 }
 
 type _COMMCONFIG = COMMCONFIG
@@ -17862,14 +17862,14 @@ type _COMMCONFIG = COMMCONFIG
 type LPCOMMCONFIG = uintptr
 
 type MEMORYSTATUS = struct {
-	dwLength        DWORD
-	dwMemoryLoad    DWORD
-	dwTotalPhys     SIZE_T
-	dwAvailPhys     SIZE_T
-	dwTotalPageFile SIZE_T
-	dwAvailPageFile SIZE_T
-	dwTotalVirtual  SIZE_T
-	dwAvailVirtual  SIZE_T
+	FdwLength        DWORD
+	FdwMemoryLoad    DWORD
+	FdwTotalPhys     SIZE_T
+	FdwAvailPhys     SIZE_T
+	FdwTotalPageFile SIZE_T
+	FdwAvailPageFile SIZE_T
+	FdwTotalVirtual  SIZE_T
+	FdwAvailVirtual  SIZE_T
 }
 
 type _MEMORYSTATUS = MEMORYSTATUS
@@ -17877,13 +17877,13 @@ type _MEMORYSTATUS = MEMORYSTATUS
 type LPMEMORYSTATUS = uintptr
 
 type JIT_DEBUG_INFO = struct {
-	dwSize                  DWORD
-	dwProcessorArchitecture DWORD
-	dwThreadID              DWORD
-	dwReserved0             DWORD
-	lpExceptionAddress      ULONG64
-	lpExceptionRecord       ULONG64
-	lpContextRecord         ULONG64
+	FdwSize                  DWORD
+	FdwProcessorArchitecture DWORD
+	FdwThreadID              DWORD
+	FdwReserved0             DWORD
+	FlpExceptionAddress      ULONG64
+	FlpExceptionRecord       ULONG64
+	FlpContextRecord         ULONG64
 }
 
 type _JIT_DEBUG_INFO = JIT_DEBUG_INFO
@@ -17891,25 +17891,25 @@ type _JIT_DEBUG_INFO = JIT_DEBUG_INFO
 type LPJIT_DEBUG_INFO = uintptr
 
 type JIT_DEBUG_INFO32 = struct {
-	dwSize                  DWORD
-	dwProcessorArchitecture DWORD
-	dwThreadID              DWORD
-	dwReserved0             DWORD
-	lpExceptionAddress      ULONG64
-	lpExceptionRecord       ULONG64
-	lpContextRecord         ULONG64
+	FdwSize                  DWORD
+	FdwProcessorArchitecture DWORD
+	FdwThreadID              DWORD
+	FdwReserved0             DWORD
+	FlpExceptionAddress      ULONG64
+	FlpExceptionRecord       ULONG64
+	FlpContextRecord         ULONG64
 }
 
 type LPJIT_DEBUG_INFO32 = uintptr
 
 type JIT_DEBUG_INFO64 = struct {
-	dwSize                  DWORD
-	dwProcessorArchitecture DWORD
-	dwThreadID              DWORD
-	dwReserved0             DWORD
-	lpExceptionAddress      ULONG64
-	lpExceptionRecord       ULONG64
-	lpContextRecord         ULONG64
+	FdwSize                  DWORD
+	FdwProcessorArchitecture DWORD
+	FdwThreadID              DWORD
+	FdwReserved0             DWORD
+	FlpExceptionAddress      ULONG64
+	FlpExceptionRecord       ULONG64
+	FlpContextRecord         ULONG64
 }
 
 type LPJIT_DEBUG_INFO64 = uintptr
@@ -17919,12 +17919,12 @@ type LPEXCEPTION_RECORD = uintptr
 type LPEXCEPTION_POINTERS = uintptr
 
 type OFSTRUCT = struct {
-	cBytes     BYTE
-	fFixedDisk BYTE
-	nErrCode   WORD
-	Reserved1  WORD
-	Reserved2  WORD
-	szPathName [128]CHAR
+	FcBytes     BYTE
+	FfFixedDisk BYTE
+	FnErrCode   WORD
+	FReserved1  WORD
+	FReserved2  WORD
+	FszPathName [128]CHAR
 }
 
 type _OFSTRUCT = OFSTRUCT
@@ -17944,15 +17944,15 @@ const ThreadPowerThrottling = 3
 const ThreadInformationClassMax = 4
 
 type POWER_REQUEST_CONTEXT = struct {
-	Version ULONG
-	Flags   DWORD
-	Reason  struct {
-		SimpleReasonString [0]LPWSTR
-		Detailed           struct {
-			LocalizedReasonModule HMODULE
-			LocalizedReasonId     ULONG
-			ReasonStringCount     ULONG
-			ReasonStrings         uintptr
+	FVersion ULONG
+	FFlags   DWORD
+	FReason  struct {
+		FSimpleReasonString [0]LPWSTR
+		FDetailed           struct {
+			FLocalizedReasonModule HMODULE
+			FLocalizedReasonId     ULONG
+			FReasonStringCount     ULONG
+			FReasonStrings         uintptr
 		}
 	}
 }
@@ -17976,11 +17976,11 @@ type PFE_EXPORT_FUNC = uintptr
 type PFE_IMPORT_FUNC = uintptr
 
 type WIN32_STREAM_ID = struct {
-	dwStreamId         DWORD
-	dwStreamAttributes DWORD
-	Size               LARGE_INTEGER
-	dwStreamNameSize   DWORD
-	cStreamName        [1]WCHAR
+	FdwStreamId         DWORD
+	FdwStreamAttributes DWORD
+	FSize               LARGE_INTEGER
+	FdwStreamNameSize   DWORD
+	FcStreamName        [1]WCHAR
 }
 
 type _WIN32_STREAM_ID = WIN32_STREAM_ID
@@ -17988,8 +17988,8 @@ type _WIN32_STREAM_ID = WIN32_STREAM_ID
 type LPWIN32_STREAM_ID = uintptr
 
 type STARTUPINFOEXA = struct {
-	StartupInfo     STARTUPINFOA
-	lpAttributeList LPPROC_THREAD_ATTRIBUTE_LIST
+	FStartupInfo     STARTUPINFOA
+	FlpAttributeList LPPROC_THREAD_ATTRIBUTE_LIST
 }
 
 type _STARTUPINFOEXA = STARTUPINFOEXA
@@ -17997,8 +17997,8 @@ type _STARTUPINFOEXA = STARTUPINFOEXA
 type LPSTARTUPINFOEXA = uintptr
 
 type STARTUPINFOEXW = struct {
-	StartupInfo     STARTUPINFOW
-	lpAttributeList LPPROC_THREAD_ATTRIBUTE_LIST
+	FStartupInfo     STARTUPINFOW
+	FlpAttributeList LPPROC_THREAD_ATTRIBUTE_LIST
 }
 
 type _STARTUPINFOEXW = STARTUPINFOEXW
@@ -18006,8 +18006,8 @@ type _STARTUPINFOEXW = STARTUPINFOEXW
 type LPSTARTUPINFOEXW = uintptr
 
 type STARTUPINFOEX = struct {
-	StartupInfo     STARTUPINFOA
-	lpAttributeList LPPROC_THREAD_ATTRIBUTE_LIST
+	FStartupInfo     STARTUPINFOA
+	FlpAttributeList LPPROC_THREAD_ATTRIBUTE_LIST
 }
 
 type LPSTARTUPINFOEX = uintptr
@@ -18073,75 +18073,75 @@ const COPYFILE2_PHASE_NAMEGRAFT_COPY = 6
 const COPYFILE2_PHASE_MAX = 7
 
 type COPYFILE2_MESSAGE = struct {
-	Type      COPYFILE2_MESSAGE_TYPE
-	dwPadding DWORD
-	Info      struct {
-		ChunkFinished [0]struct {
-			dwStreamNumber            DWORD
-			dwFlags                   DWORD
-			hSourceFile               HANDLE
-			hDestinationFile          HANDLE
-			uliChunkNumber            ULARGE_INTEGER
-			uliChunkSize              ULARGE_INTEGER
-			uliStreamSize             ULARGE_INTEGER
-			uliStreamBytesTransferred ULARGE_INTEGER
-			uliTotalFileSize          ULARGE_INTEGER
-			uliTotalBytesTransferred  ULARGE_INTEGER
+	FType      COPYFILE2_MESSAGE_TYPE
+	FdwPadding DWORD
+	FInfo      struct {
+		FChunkFinished [0]struct {
+			FdwStreamNumber            DWORD
+			FdwFlags                   DWORD
+			FhSourceFile               HANDLE
+			FhDestinationFile          HANDLE
+			FuliChunkNumber            ULARGE_INTEGER
+			FuliChunkSize              ULARGE_INTEGER
+			FuliStreamSize             ULARGE_INTEGER
+			FuliStreamBytesTransferred ULARGE_INTEGER
+			FuliTotalFileSize          ULARGE_INTEGER
+			FuliTotalBytesTransferred  ULARGE_INTEGER
 		}
-		StreamStarted [0]struct {
-			dwStreamNumber   DWORD
-			dwReserved       DWORD
-			hSourceFile      HANDLE
-			hDestinationFile HANDLE
-			uliStreamSize    ULARGE_INTEGER
-			uliTotalFileSize ULARGE_INTEGER
+		FStreamStarted [0]struct {
+			FdwStreamNumber   DWORD
+			FdwReserved       DWORD
+			FhSourceFile      HANDLE
+			FhDestinationFile HANDLE
+			FuliStreamSize    ULARGE_INTEGER
+			FuliTotalFileSize ULARGE_INTEGER
 		}
-		StreamFinished [0]struct {
-			dwStreamNumber            DWORD
-			dwReserved                DWORD
-			hSourceFile               HANDLE
-			hDestinationFile          HANDLE
-			uliStreamSize             ULARGE_INTEGER
-			uliStreamBytesTransferred ULARGE_INTEGER
-			uliTotalFileSize          ULARGE_INTEGER
-			uliTotalBytesTransferred  ULARGE_INTEGER
+		FStreamFinished [0]struct {
+			FdwStreamNumber            DWORD
+			FdwReserved                DWORD
+			FhSourceFile               HANDLE
+			FhDestinationFile          HANDLE
+			FuliStreamSize             ULARGE_INTEGER
+			FuliStreamBytesTransferred ULARGE_INTEGER
+			FuliTotalFileSize          ULARGE_INTEGER
+			FuliTotalBytesTransferred  ULARGE_INTEGER
 		}
-		PollContinue [0]struct {
-			dwReserved DWORD
+		FPollContinue [0]struct {
+			FdwReserved DWORD
 		}
-		Error [0]struct {
-			CopyPhase                 COPYFILE2_COPY_PHASE
-			dwStreamNumber            DWORD
-			hrFailure                 HRESULT
-			dwReserved                DWORD
-			uliChunkNumber            ULARGE_INTEGER
-			uliStreamSize             ULARGE_INTEGER
-			uliStreamBytesTransferred ULARGE_INTEGER
-			uliTotalFileSize          ULARGE_INTEGER
-			uliTotalBytesTransferred  ULARGE_INTEGER
+		FError [0]struct {
+			FCopyPhase                 COPYFILE2_COPY_PHASE
+			FdwStreamNumber            DWORD
+			FhrFailure                 HRESULT
+			FdwReserved                DWORD
+			FuliChunkNumber            ULARGE_INTEGER
+			FuliStreamSize             ULARGE_INTEGER
+			FuliStreamBytesTransferred ULARGE_INTEGER
+			FuliTotalFileSize          ULARGE_INTEGER
+			FuliTotalBytesTransferred  ULARGE_INTEGER
 		}
-		ChunkStarted struct {
-			dwStreamNumber   DWORD
-			dwReserved       DWORD
-			hSourceFile      HANDLE
-			hDestinationFile HANDLE
-			uliChunkNumber   ULARGE_INTEGER
-			uliChunkSize     ULARGE_INTEGER
-			uliStreamSize    ULARGE_INTEGER
-			uliTotalFileSize ULARGE_INTEGER
+		FChunkStarted struct {
+			FdwStreamNumber   DWORD
+			FdwReserved       DWORD
+			FhSourceFile      HANDLE
+			FhDestinationFile HANDLE
+			FuliChunkNumber   ULARGE_INTEGER
+			FuliChunkSize     ULARGE_INTEGER
+			FuliStreamSize    ULARGE_INTEGER
+			FuliTotalFileSize ULARGE_INTEGER
 		}
-		__ccgo_pad6 [16]byte
+		F__ccgo_pad6 [16]byte
 	}
 }
 
 type PCOPYFILE2_PROGRESS_ROUTINE = uintptr
 
 type COPYFILE2_EXTENDED_PARAMETERS = struct {
-	dwSize            DWORD
-	dwCopyFlags       DWORD
-	pfCancel          uintptr
-	pProgressRoutine  PCOPYFILE2_PROGRESS_ROUTINE
-	pvCallbackContext PVOID
+	FdwSize            DWORD
+	FdwCopyFlags       DWORD
+	FpfCancel          uintptr
+	FpProgressRoutine  PCOPYFILE2_PROGRESS_ROUTINE
+	FpvCallbackContext PVOID
 }
 
 type STREAM_INFO_LEVELS = int32
@@ -18152,8 +18152,8 @@ const FindStreamInfoStandard = 0
 const FindStreamInfoMaxInfoLevel = 1
 
 type WIN32_FIND_STREAM_DATA = struct {
-	StreamSize  LARGE_INTEGER
-	cStreamName [296]WCHAR
+	FStreamSize  LARGE_INTEGER
+	FcStreamName [296]WCHAR
 }
 
 type _WIN32_FIND_STREAM_DATA = WIN32_FIND_STREAM_DATA
@@ -18161,7 +18161,7 @@ type _WIN32_FIND_STREAM_DATA = WIN32_FIND_STREAM_DATA
 type PWIN32_FIND_STREAM_DATA = uintptr
 
 type EVENTLOG_FULL_INFORMATION = struct {
-	dwFull DWORD
+	FdwFull DWORD
 }
 
 type _EVENTLOG_FULL_INFORMATION = EVENTLOG_FULL_INFORMATION
@@ -18171,9 +18171,9 @@ type LPEVENTLOG_FULL_INFORMATION = uintptr
 type OPERATION_ID = uint32
 
 type OPERATION_START_PARAMETERS = struct {
-	Version     ULONG
-	OperationId OPERATION_ID
-	Flags       ULONG
+	FVersion     ULONG
+	FOperationId OPERATION_ID
+	FFlags       ULONG
 }
 
 type _OPERATION_START_PARAMETERS = OPERATION_START_PARAMETERS
@@ -18181,9 +18181,9 @@ type _OPERATION_START_PARAMETERS = OPERATION_START_PARAMETERS
 type POPERATION_START_PARAMETERS = uintptr
 
 type OPERATION_END_PARAMETERS = struct {
-	Version     ULONG
-	OperationId OPERATION_ID
-	Flags       ULONG
+	FVersion     ULONG
+	FOperationId OPERATION_ID
+	FFlags       ULONG
 }
 
 type _OPERATION_END_PARAMETERS = OPERATION_END_PARAMETERS
@@ -18191,9 +18191,9 @@ type _OPERATION_END_PARAMETERS = OPERATION_END_PARAMETERS
 type POPERATION_END_PARAMETERS = uintptr
 
 type HW_PROFILE_INFOA = struct {
-	dwDockInfo      DWORD
-	szHwProfileGuid [39]CHAR
-	szHwProfileName [80]CHAR
+	FdwDockInfo      DWORD
+	FszHwProfileGuid [39]CHAR
+	FszHwProfileName [80]CHAR
 }
 
 type tagHW_PROFILE_INFOA = HW_PROFILE_INFOA
@@ -18201,9 +18201,9 @@ type tagHW_PROFILE_INFOA = HW_PROFILE_INFOA
 type LPHW_PROFILE_INFOA = uintptr
 
 type HW_PROFILE_INFOW = struct {
-	dwDockInfo      DWORD
-	szHwProfileGuid [39]WCHAR
-	szHwProfileName [80]WCHAR
+	FdwDockInfo      DWORD
+	FszHwProfileGuid [39]WCHAR
+	FszHwProfileName [80]WCHAR
 }
 
 type tagHW_PROFILE_INFOW = HW_PROFILE_INFOW
@@ -18211,21 +18211,21 @@ type tagHW_PROFILE_INFOW = HW_PROFILE_INFOW
 type LPHW_PROFILE_INFOW = uintptr
 
 type HW_PROFILE_INFO = struct {
-	dwDockInfo      DWORD
-	szHwProfileGuid [39]CHAR
-	szHwProfileName [80]CHAR
+	FdwDockInfo      DWORD
+	FszHwProfileGuid [39]CHAR
+	FszHwProfileName [80]CHAR
 }
 
 type LPHW_PROFILE_INFO = uintptr
 
 type TIME_ZONE_INFORMATION = struct {
-	Bias         LONG
-	StandardName [32]WCHAR
-	StandardDate SYSTEMTIME
-	StandardBias LONG
-	DaylightName [32]WCHAR
-	DaylightDate SYSTEMTIME
-	DaylightBias LONG
+	FBias         LONG
+	FStandardName [32]WCHAR
+	FStandardDate SYSTEMTIME
+	FStandardBias LONG
+	FDaylightName [32]WCHAR
+	FDaylightDate SYSTEMTIME
+	FDaylightBias LONG
 }
 
 type _TIME_ZONE_INFORMATION = TIME_ZONE_INFORMATION
@@ -18235,15 +18235,15 @@ type PTIME_ZONE_INFORMATION = uintptr
 type LPTIME_ZONE_INFORMATION = uintptr
 
 type DYNAMIC_TIME_ZONE_INFORMATION = struct {
-	Bias                        LONG
-	StandardName                [32]WCHAR
-	StandardDate                SYSTEMTIME
-	StandardBias                LONG
-	DaylightName                [32]WCHAR
-	DaylightDate                SYSTEMTIME
-	DaylightBias                LONG
-	TimeZoneKeyName             [128]WCHAR
-	DynamicDaylightTimeDisabled BOOLEAN
+	FBias                        LONG
+	FStandardName                [32]WCHAR
+	FStandardDate                SYSTEMTIME
+	FStandardBias                LONG
+	FDaylightName                [32]WCHAR
+	FDaylightDate                SYSTEMTIME
+	FDaylightBias                LONG
+	FTimeZoneKeyName             [128]WCHAR
+	FDynamicDaylightTimeDisabled BOOLEAN
 }
 
 type _TIME_DYNAMIC_ZONE_INFORMATION = DYNAMIC_TIME_ZONE_INFORMATION
@@ -18251,12 +18251,12 @@ type _TIME_DYNAMIC_ZONE_INFORMATION = DYNAMIC_TIME_ZONE_INFORMATION
 type PDYNAMIC_TIME_ZONE_INFORMATION = uintptr
 
 type SYSTEM_POWER_STATUS = struct {
-	ACLineStatus        BYTE
-	BatteryFlag         BYTE
-	BatteryLifePercent  BYTE
-	Reserved1           BYTE
-	BatteryLifeTime     DWORD
-	BatteryFullLifeTime DWORD
+	FACLineStatus        BYTE
+	FBatteryFlag         BYTE
+	FBatteryLifePercent  BYTE
+	FReserved1           BYTE
+	FBatteryLifeTime     DWORD
+	FBatteryFullLifeTime DWORD
 }
 
 type _SYSTEM_POWER_STATUS = SYSTEM_POWER_STATUS
@@ -18264,15 +18264,15 @@ type _SYSTEM_POWER_STATUS = SYSTEM_POWER_STATUS
 type LPSYSTEM_POWER_STATUS = uintptr
 
 type ACTCTXA = struct {
-	cbSize                 ULONG
-	dwFlags                DWORD
-	lpSource               LPCSTR
-	wProcessorArchitecture USHORT
-	wLangId                LANGID
-	lpAssemblyDirectory    LPCSTR
-	lpResourceName         LPCSTR
-	lpApplicationName      LPCSTR
-	hModule                HMODULE
+	FcbSize                 ULONG
+	FdwFlags                DWORD
+	FlpSource               LPCSTR
+	FwProcessorArchitecture USHORT
+	FwLangId                LANGID
+	FlpAssemblyDirectory    LPCSTR
+	FlpResourceName         LPCSTR
+	FlpApplicationName      LPCSTR
+	FhModule                HMODULE
 }
 
 type tagACTCTXA = ACTCTXA
@@ -18280,15 +18280,15 @@ type tagACTCTXA = ACTCTXA
 type PACTCTXA = uintptr
 
 type ACTCTXW = struct {
-	cbSize                 ULONG
-	dwFlags                DWORD
-	lpSource               LPCWSTR
-	wProcessorArchitecture USHORT
-	wLangId                LANGID
-	lpAssemblyDirectory    LPCWSTR
-	lpResourceName         LPCWSTR
-	lpApplicationName      LPCWSTR
-	hModule                HMODULE
+	FcbSize                 ULONG
+	FdwFlags                DWORD
+	FlpSource               LPCWSTR
+	FwProcessorArchitecture USHORT
+	FwLangId                LANGID
+	FlpAssemblyDirectory    LPCWSTR
+	FlpResourceName         LPCWSTR
+	FlpApplicationName      LPCWSTR
+	FhModule                HMODULE
 }
 
 type tagACTCTXW = ACTCTXW
@@ -18296,15 +18296,15 @@ type tagACTCTXW = ACTCTXW
 type PACTCTXW = uintptr
 
 type ACTCTX = struct {
-	cbSize                 ULONG
-	dwFlags                DWORD
-	lpSource               LPCSTR
-	wProcessorArchitecture USHORT
-	wLangId                LANGID
-	lpAssemblyDirectory    LPCSTR
-	lpResourceName         LPCSTR
-	lpApplicationName      LPCSTR
-	hModule                HMODULE
+	FcbSize                 ULONG
+	FdwFlags                DWORD
+	FlpSource               LPCSTR
+	FwProcessorArchitecture USHORT
+	FwLangId                LANGID
+	FlpAssemblyDirectory    LPCSTR
+	FlpResourceName         LPCSTR
+	FlpApplicationName      LPCSTR
+	FhModule                HMODULE
 }
 
 type PACTCTX = uintptr
@@ -18316,16 +18316,16 @@ type PCACTCTXW = uintptr
 type PCACTCTX = uintptr
 
 type ACTCTX_SECTION_KEYED_DATA_2600 = struct {
-	cbSize                    ULONG
-	ulDataFormatVersion       ULONG
-	lpData                    PVOID
-	ulLength                  ULONG
-	lpSectionGlobalData       PVOID
-	ulSectionGlobalDataLength ULONG
-	lpSectionBase             PVOID
-	ulSectionTotalLength      ULONG
-	hActCtx                   HANDLE
-	ulAssemblyRosterIndex     ULONG
+	FcbSize                    ULONG
+	FulDataFormatVersion       ULONG
+	FlpData                    PVOID
+	FulLength                  ULONG
+	FlpSectionGlobalData       PVOID
+	FulSectionGlobalDataLength ULONG
+	FlpSectionBase             PVOID
+	FulSectionTotalLength      ULONG
+	FhActCtx                   HANDLE
+	FulAssemblyRosterIndex     ULONG
 }
 
 type tagACTCTX_SECTION_KEYED_DATA_2600 = ACTCTX_SECTION_KEYED_DATA_2600
@@ -18335,11 +18335,11 @@ type PACTCTX_SECTION_KEYED_DATA_2600 = uintptr
 type PCACTCTX_SECTION_KEYED_DATA_2600 = uintptr
 
 type ACTCTX_SECTION_KEYED_DATA_ASSEMBLY_METADATA = struct {
-	lpInformation             PVOID
-	lpSectionBase             PVOID
-	ulSectionLength           ULONG
-	lpSectionGlobalDataBase   PVOID
-	ulSectionGlobalDataLength ULONG
+	FlpInformation             PVOID
+	FlpSectionBase             PVOID
+	FulSectionLength           ULONG
+	FlpSectionGlobalDataBase   PVOID
+	FulSectionGlobalDataLength ULONG
 }
 
 type tagACTCTX_SECTION_KEYED_DATA_ASSEMBLY_METADATA = ACTCTX_SECTION_KEYED_DATA_ASSEMBLY_METADATA
@@ -18349,18 +18349,18 @@ type PACTCTX_SECTION_KEYED_DATA_ASSEMBLY_METADATA = uintptr
 type PCACTCTX_SECTION_KEYED_DATA_ASSEMBLY_METADATA = uintptr
 
 type ACTCTX_SECTION_KEYED_DATA = struct {
-	cbSize                    ULONG
-	ulDataFormatVersion       ULONG
-	lpData                    PVOID
-	ulLength                  ULONG
-	lpSectionGlobalData       PVOID
-	ulSectionGlobalDataLength ULONG
-	lpSectionBase             PVOID
-	ulSectionTotalLength      ULONG
-	hActCtx                   HANDLE
-	ulAssemblyRosterIndex     ULONG
-	ulFlags                   ULONG
-	AssemblyMetadata          ACTCTX_SECTION_KEYED_DATA_ASSEMBLY_METADATA
+	FcbSize                    ULONG
+	FulDataFormatVersion       ULONG
+	FlpData                    PVOID
+	FulLength                  ULONG
+	FlpSectionGlobalData       PVOID
+	FulSectionGlobalDataLength ULONG
+	FlpSectionBase             PVOID
+	FulSectionTotalLength      ULONG
+	FhActCtx                   HANDLE
+	FulAssemblyRosterIndex     ULONG
+	FulFlags                   ULONG
+	FAssemblyMetadata          ACTCTX_SECTION_KEYED_DATA_ASSEMBLY_METADATA
 }
 
 type tagACTCTX_SECTION_KEYED_DATA = ACTCTX_SECTION_KEYED_DATA
@@ -18370,8 +18370,8 @@ type PACTCTX_SECTION_KEYED_DATA = uintptr
 type PCACTCTX_SECTION_KEYED_DATA = uintptr
 
 type ACTIVATION_CONTEXT_BASIC_INFORMATION = struct {
-	hActCtx HANDLE
-	dwFlags DWORD
+	FhActCtx HANDLE
+	FdwFlags DWORD
 }
 
 type _ACTIVATION_CONTEXT_BASIC_INFORMATION = ACTIVATION_CONTEXT_BASIC_INFORMATION
@@ -18385,11 +18385,11 @@ type PQUERYACTCTXW_FUNC = uintptr
 type APPLICATION_RECOVERY_CALLBACK = uintptr
 
 type FILE_BASIC_INFO = struct {
-	CreationTime   LARGE_INTEGER
-	LastAccessTime LARGE_INTEGER
-	LastWriteTime  LARGE_INTEGER
-	ChangeTime     LARGE_INTEGER
-	FileAttributes DWORD
+	FCreationTime   LARGE_INTEGER
+	FLastAccessTime LARGE_INTEGER
+	FLastWriteTime  LARGE_INTEGER
+	FChangeTime     LARGE_INTEGER
+	FFileAttributes DWORD
 }
 
 type _FILE_BASIC_INFO = FILE_BASIC_INFO
@@ -18397,11 +18397,11 @@ type _FILE_BASIC_INFO = FILE_BASIC_INFO
 type PFILE_BASIC_INFO = uintptr
 
 type FILE_STANDARD_INFO = struct {
-	AllocationSize LARGE_INTEGER
-	EndOfFile      LARGE_INTEGER
-	NumberOfLinks  DWORD
-	DeletePending  BOOLEAN
-	Directory      BOOLEAN
+	FAllocationSize LARGE_INTEGER
+	FEndOfFile      LARGE_INTEGER
+	FNumberOfLinks  DWORD
+	FDeletePending  BOOLEAN
+	FDirectory      BOOLEAN
 }
 
 type _FILE_STANDARD_INFO = FILE_STANDARD_INFO
@@ -18409,8 +18409,8 @@ type _FILE_STANDARD_INFO = FILE_STANDARD_INFO
 type PFILE_STANDARD_INFO = uintptr
 
 type FILE_NAME_INFO = struct {
-	FileNameLength DWORD
-	FileName       [1]WCHAR
+	FFileNameLength DWORD
+	FFileName       [1]WCHAR
 }
 
 type _FILE_NAME_INFO = FILE_NAME_INFO
@@ -18418,7 +18418,7 @@ type _FILE_NAME_INFO = FILE_NAME_INFO
 type PFILE_NAME_INFO = uintptr
 
 type FILE_CASE_SENSITIVE_INFO = struct {
-	Flags ULONG
+	FFlags ULONG
 }
 
 type _FILE_CASE_SENSITIVE_INFO = FILE_CASE_SENSITIVE_INFO
@@ -18426,14 +18426,14 @@ type _FILE_CASE_SENSITIVE_INFO = FILE_CASE_SENSITIVE_INFO
 type PFILE_CASE_SENSITIVE_INFO = uintptr
 
 type FILE_RENAME_INFO = struct {
-	__ccgo0_0 struct {
-		Flags           [0]DWORD
-		ReplaceIfExists BOOLEAN
-		__ccgo_pad2     [3]byte
+	F__ccgo0_0 struct {
+		FFlags           [0]DWORD
+		FReplaceIfExists BOOLEAN
+		F__ccgo_pad2     [3]byte
 	}
-	RootDirectory  HANDLE
-	FileNameLength DWORD
-	FileName       [1]WCHAR
+	FRootDirectory  HANDLE
+	FFileNameLength DWORD
+	FFileName       [1]WCHAR
 }
 
 type _FILE_RENAME_INFO = FILE_RENAME_INFO
@@ -18441,7 +18441,7 @@ type _FILE_RENAME_INFO = FILE_RENAME_INFO
 type PFILE_RENAME_INFO = uintptr
 
 type FILE_ALLOCATION_INFO = struct {
-	AllocationSize LARGE_INTEGER
+	FAllocationSize LARGE_INTEGER
 }
 
 type _FILE_ALLOCATION_INFO = FILE_ALLOCATION_INFO
@@ -18449,7 +18449,7 @@ type _FILE_ALLOCATION_INFO = FILE_ALLOCATION_INFO
 type PFILE_ALLOCATION_INFO = uintptr
 
 type FILE_END_OF_FILE_INFO = struct {
-	EndOfFile LARGE_INTEGER
+	FEndOfFile LARGE_INTEGER
 }
 
 type _FILE_END_OF_FILE_INFO = FILE_END_OF_FILE_INFO
@@ -18457,11 +18457,11 @@ type _FILE_END_OF_FILE_INFO = FILE_END_OF_FILE_INFO
 type PFILE_END_OF_FILE_INFO = uintptr
 
 type FILE_STREAM_INFO = struct {
-	NextEntryOffset      DWORD
-	StreamNameLength     DWORD
-	StreamSize           LARGE_INTEGER
-	StreamAllocationSize LARGE_INTEGER
-	StreamName           [1]WCHAR
+	FNextEntryOffset      DWORD
+	FStreamNameLength     DWORD
+	FStreamSize           LARGE_INTEGER
+	FStreamAllocationSize LARGE_INTEGER
+	FStreamName           [1]WCHAR
 }
 
 type _FILE_STREAM_INFO = FILE_STREAM_INFO
@@ -18469,12 +18469,12 @@ type _FILE_STREAM_INFO = FILE_STREAM_INFO
 type PFILE_STREAM_INFO = uintptr
 
 type FILE_COMPRESSION_INFO = struct {
-	CompressedFileSize   LARGE_INTEGER
-	CompressionFormat    WORD
-	CompressionUnitShift UCHAR
-	ChunkShift           UCHAR
-	ClusterShift         UCHAR
-	Reserved             [3]UCHAR
+	FCompressedFileSize   LARGE_INTEGER
+	FCompressionFormat    WORD
+	FCompressionUnitShift UCHAR
+	FChunkShift           UCHAR
+	FClusterShift         UCHAR
+	FReserved             [3]UCHAR
 }
 
 type _FILE_COMPRESSION_INFO = FILE_COMPRESSION_INFO
@@ -18482,8 +18482,8 @@ type _FILE_COMPRESSION_INFO = FILE_COMPRESSION_INFO
 type PFILE_COMPRESSION_INFO = uintptr
 
 type FILE_ATTRIBUTE_TAG_INFO = struct {
-	FileAttributes DWORD
-	ReparseTag     DWORD
+	FFileAttributes DWORD
+	FReparseTag     DWORD
 }
 
 type _FILE_ATTRIBUTE_TAG_INFO = FILE_ATTRIBUTE_TAG_INFO
@@ -18491,7 +18491,7 @@ type _FILE_ATTRIBUTE_TAG_INFO = FILE_ATTRIBUTE_TAG_INFO
 type PFILE_ATTRIBUTE_TAG_INFO = uintptr
 
 type FILE_DISPOSITION_INFO = struct {
-	DeleteFileA BOOLEAN
+	FDeleteFileA BOOLEAN
 }
 
 type _FILE_DISPOSITION_INFO = FILE_DISPOSITION_INFO
@@ -18499,7 +18499,7 @@ type _FILE_DISPOSITION_INFO = FILE_DISPOSITION_INFO
 type PFILE_DISPOSITION_INFO = uintptr
 
 type FILE_DISPOSITION_INFO_EX = struct {
-	Flags DWORD
+	FFlags DWORD
 }
 
 type _FILE_DISPOSITION_INFO_EX = FILE_DISPOSITION_INFO_EX
@@ -18507,21 +18507,21 @@ type _FILE_DISPOSITION_INFO_EX = FILE_DISPOSITION_INFO_EX
 type PFILE_DISPOSITION_INFO_EX = uintptr
 
 type FILE_ID_BOTH_DIR_INFO = struct {
-	NextEntryOffset DWORD
-	FileIndex       DWORD
-	CreationTime    LARGE_INTEGER
-	LastAccessTime  LARGE_INTEGER
-	LastWriteTime   LARGE_INTEGER
-	ChangeTime      LARGE_INTEGER
-	EndOfFile       LARGE_INTEGER
-	AllocationSize  LARGE_INTEGER
-	FileAttributes  DWORD
-	FileNameLength  DWORD
-	EaSize          DWORD
-	ShortNameLength CCHAR
-	ShortName       [12]WCHAR
-	FileId          LARGE_INTEGER
-	FileName        [1]WCHAR
+	FNextEntryOffset DWORD
+	FFileIndex       DWORD
+	FCreationTime    LARGE_INTEGER
+	FLastAccessTime  LARGE_INTEGER
+	FLastWriteTime   LARGE_INTEGER
+	FChangeTime      LARGE_INTEGER
+	FEndOfFile       LARGE_INTEGER
+	FAllocationSize  LARGE_INTEGER
+	FFileAttributes  DWORD
+	FFileNameLength  DWORD
+	FEaSize          DWORD
+	FShortNameLength CCHAR
+	FShortName       [12]WCHAR
+	FFileId          LARGE_INTEGER
+	FFileName        [1]WCHAR
 }
 
 type _FILE_ID_BOTH_DIR_INFO = FILE_ID_BOTH_DIR_INFO
@@ -18529,18 +18529,18 @@ type _FILE_ID_BOTH_DIR_INFO = FILE_ID_BOTH_DIR_INFO
 type PFILE_ID_BOTH_DIR_INFO = uintptr
 
 type FILE_FULL_DIR_INFO = struct {
-	NextEntryOffset ULONG
-	FileIndex       ULONG
-	CreationTime    LARGE_INTEGER
-	LastAccessTime  LARGE_INTEGER
-	LastWriteTime   LARGE_INTEGER
-	ChangeTime      LARGE_INTEGER
-	EndOfFile       LARGE_INTEGER
-	AllocationSize  LARGE_INTEGER
-	FileAttributes  ULONG
-	FileNameLength  ULONG
-	EaSize          ULONG
-	FileName        [1]WCHAR
+	FNextEntryOffset ULONG
+	FFileIndex       ULONG
+	FCreationTime    LARGE_INTEGER
+	FLastAccessTime  LARGE_INTEGER
+	FLastWriteTime   LARGE_INTEGER
+	FChangeTime      LARGE_INTEGER
+	FEndOfFile       LARGE_INTEGER
+	FAllocationSize  LARGE_INTEGER
+	FFileAttributes  ULONG
+	FFileNameLength  ULONG
+	FEaSize          ULONG
+	FFileName        [1]WCHAR
 }
 
 type _FILE_FULL_DIR_INFO = FILE_FULL_DIR_INFO
@@ -18557,7 +18557,7 @@ const IoPriorityHintNormal = 2
 const MaximumIoPriorityHintType = 3
 
 type FILE_IO_PRIORITY_HINT_INFO = struct {
-	PriorityHint PRIORITY_HINT
+	FPriorityHint PRIORITY_HINT
 }
 
 type _FILE_IO_PRIORITY_HINT_INFO = FILE_IO_PRIORITY_HINT_INFO
@@ -18565,7 +18565,7 @@ type _FILE_IO_PRIORITY_HINT_INFO = FILE_IO_PRIORITY_HINT_INFO
 type PFILE_IO_PRIORITY_HINT_INFO = uintptr
 
 type FILE_ALIGNMENT_INFO = struct {
-	AlignmentRequirement ULONG
+	FAlignmentRequirement ULONG
 }
 
 type _FILE_ALIGNMENT_INFO = FILE_ALIGNMENT_INFO
@@ -18573,13 +18573,13 @@ type _FILE_ALIGNMENT_INFO = FILE_ALIGNMENT_INFO
 type PFILE_ALIGNMENT_INFO = uintptr
 
 type FILE_STORAGE_INFO = struct {
-	LogicalBytesPerSector                                 ULONG
-	PhysicalBytesPerSectorForAtomicity                    ULONG
-	PhysicalBytesPerSectorForPerformance                  ULONG
-	FileSystemEffectivePhysicalBytesPerSectorForAtomicity ULONG
-	Flags                                                 ULONG
-	ByteOffsetForSectorAlignment                          ULONG
-	ByteOffsetForPartitionAlignment                       ULONG
+	FLogicalBytesPerSector                                 ULONG
+	FPhysicalBytesPerSectorForAtomicity                    ULONG
+	FPhysicalBytesPerSectorForPerformance                  ULONG
+	FFileSystemEffectivePhysicalBytesPerSectorForAtomicity ULONG
+	FFlags                                                 ULONG
+	FByteOffsetForSectorAlignment                          ULONG
+	FByteOffsetForPartitionAlignment                       ULONG
 }
 
 type _FILE_STORAGE_INFO = FILE_STORAGE_INFO
@@ -18587,8 +18587,8 @@ type _FILE_STORAGE_INFO = FILE_STORAGE_INFO
 type PFILE_STORAGE_INFO = uintptr
 
 type FILE_ID_INFO = struct {
-	VolumeSerialNumber ULONGLONG
-	FileId             FILE_ID_128
+	FVolumeSerialNumber ULONGLONG
+	FFileId             FILE_ID_128
 }
 
 type _FILE_ID_INFO = FILE_ID_INFO
@@ -18596,20 +18596,20 @@ type _FILE_ID_INFO = FILE_ID_INFO
 type PFILE_ID_INFO = uintptr
 
 type FILE_ID_EXTD_DIR_INFO = struct {
-	NextEntryOffset ULONG
-	FileIndex       ULONG
-	CreationTime    LARGE_INTEGER
-	LastAccessTime  LARGE_INTEGER
-	LastWriteTime   LARGE_INTEGER
-	ChangeTime      LARGE_INTEGER
-	EndOfFile       LARGE_INTEGER
-	AllocationSize  LARGE_INTEGER
-	FileAttributes  ULONG
-	FileNameLength  ULONG
-	EaSize          ULONG
-	ReparsePointTag ULONG
-	FileId          FILE_ID_128
-	FileName        [1]WCHAR
+	FNextEntryOffset ULONG
+	FFileIndex       ULONG
+	FCreationTime    LARGE_INTEGER
+	FLastAccessTime  LARGE_INTEGER
+	FLastWriteTime   LARGE_INTEGER
+	FChangeTime      LARGE_INTEGER
+	FEndOfFile       LARGE_INTEGER
+	FAllocationSize  LARGE_INTEGER
+	FFileAttributes  ULONG
+	FFileNameLength  ULONG
+	FEaSize          ULONG
+	FReparsePointTag ULONG
+	FFileId          FILE_ID_128
+	FFileName        [1]WCHAR
 }
 
 type _FILE_ID_EXTD_DIR_INFO = FILE_ID_EXTD_DIR_INFO
@@ -18617,29 +18617,29 @@ type _FILE_ID_EXTD_DIR_INFO = FILE_ID_EXTD_DIR_INFO
 type PFILE_ID_EXTD_DIR_INFO = uintptr
 
 type FILE_REMOTE_PROTOCOL_INFO = struct {
-	StructureVersion     USHORT
-	StructureSize        USHORT
-	Protocol             ULONG
-	ProtocolMajorVersion USHORT
-	ProtocolMinorVersion USHORT
-	ProtocolRevision     USHORT
-	Reserved             USHORT
-	Flags                ULONG
-	GenericReserved      struct {
-		Reserved [8]ULONG
+	FStructureVersion     USHORT
+	FStructureSize        USHORT
+	FProtocol             ULONG
+	FProtocolMajorVersion USHORT
+	FProtocolMinorVersion USHORT
+	FProtocolRevision     USHORT
+	FReserved             USHORT
+	FFlags                ULONG
+	FGenericReserved      struct {
+		FReserved [8]ULONG
 	}
-	ProtocolSpecific struct {
-		Reserved [0][16]ULONG
-		Smb2     struct {
-			Server struct {
-				Capabilities ULONG
+	FProtocolSpecific struct {
+		FReserved [0][16]ULONG
+		FSmb2     struct {
+			FServer struct {
+				FCapabilities ULONG
 			}
-			Share struct {
-				Capabilities ULONG
-				CachingFlags ULONG
+			FShare struct {
+				FCapabilities ULONG
+				FCachingFlags ULONG
 			}
 		}
-		__ccgo_pad2 [52]byte
+		F__ccgo_pad2 [52]byte
 	}
 }
 
@@ -18659,34 +18659,34 @@ const MaximumFileIdType = 3
 type PFILE_ID_TYPE = uintptr
 
 type FILE_ID_DESCRIPTOR = struct {
-	dwSize    DWORD
-	Type      FILE_ID_TYPE
-	__ccgo2_8 struct {
-		ObjectId       [0]GUID
-		ExtendedFileId [0]FILE_ID_128
-		FileId         LARGE_INTEGER
-		__ccgo_pad3    [8]byte
+	FdwSize    DWORD
+	FType      FILE_ID_TYPE
+	F__ccgo2_8 struct {
+		FObjectId       [0]GUID
+		FExtendedFileId [0]FILE_ID_128
+		FFileId         LARGE_INTEGER
+		F__ccgo_pad3    [8]byte
 	}
 }
 
 type LPFILE_ID_DESCRIPTOR = uintptr
 
 type FILE_ID_DESCRIPTOR1 = struct {
-	dwSize    DWORD
-	Type      FILE_ID_TYPE
-	__ccgo2_8 struct {
-		ObjectId       [0]GUID
-		ExtendedFileId [0]FILE_ID_128
-		FileId         LARGE_INTEGER
-		__ccgo_pad3    [8]byte
+	FdwSize    DWORD
+	FType      FILE_ID_TYPE
+	F__ccgo2_8 struct {
+		FObjectId       [0]GUID
+		FExtendedFileId [0]FILE_ID_128
+		FFileId         LARGE_INTEGER
+		F__ccgo_pad3    [8]byte
 	}
 }
 
 type DRAWPATRECT = struct {
-	ptPosition POINT
-	ptSize     POINT
-	wStyle     WORD
-	wPattern   WORD
+	FptPosition POINT
+	FptSize     POINT
+	FwStyle     WORD
+	FwPattern   WORD
 }
 
 type _DRAWPATRECT = DRAWPATRECT
@@ -18694,9 +18694,9 @@ type _DRAWPATRECT = DRAWPATRECT
 type PDRAWPATRECT = uintptr
 
 type PSINJECTDATA = struct {
-	DataBytes      DWORD
-	InjectionPoint WORD
-	PageNumber     WORD
+	FDataBytes      DWORD
+	FInjectionPoint WORD
+	FPageNumber     WORD
 }
 
 type _PSINJECTDATA = PSINJECTDATA
@@ -18704,8 +18704,8 @@ type _PSINJECTDATA = PSINJECTDATA
 type PPSINJECTDATA = uintptr
 
 type PSFEATURE_OUTPUT = struct {
-	bPageIndependent WINBOOL
-	bSetPageDevice   WINBOOL
+	FbPageIndependent WINBOOL
+	FbSetPageDevice   WINBOOL
 }
 
 type _PSFEATURE_OUTPUT = PSFEATURE_OUTPUT
@@ -18713,11 +18713,11 @@ type _PSFEATURE_OUTPUT = PSFEATURE_OUTPUT
 type PPSFEATURE_OUTPUT = uintptr
 
 type PSFEATURE_CUSTPAPER = struct {
-	lOrientation  LONG
-	lWidth        LONG
-	lHeight       LONG
-	lWidthOffset  LONG
-	lHeightOffset LONG
+	FlOrientation  LONG
+	FlWidth        LONG
+	FlHeight       LONG
+	FlWidthOffset  LONG
+	FlHeightOffset LONG
 }
 
 type _PSFEATURE_CUSTPAPER = PSFEATURE_CUSTPAPER
@@ -18725,12 +18725,12 @@ type _PSFEATURE_CUSTPAPER = PSFEATURE_CUSTPAPER
 type PPSFEATURE_CUSTPAPER = uintptr
 
 type XFORM = struct {
-	eM11 FLOAT
-	eM12 FLOAT
-	eM21 FLOAT
-	eM22 FLOAT
-	eDx  FLOAT
-	eDy  FLOAT
+	FeM11 FLOAT
+	FeM12 FLOAT
+	FeM21 FLOAT
+	FeM22 FLOAT
+	FeDx  FLOAT
+	FeDy  FLOAT
 }
 
 type tagXFORM = XFORM
@@ -18740,13 +18740,13 @@ type PXFORM = uintptr
 type LPXFORM = uintptr
 
 type BITMAP = struct {
-	bmType       LONG
-	bmWidth      LONG
-	bmHeight     LONG
-	bmWidthBytes LONG
-	bmPlanes     WORD
-	bmBitsPixel  WORD
-	bmBits       LPVOID
+	FbmType       LONG
+	FbmWidth      LONG
+	FbmHeight     LONG
+	FbmWidthBytes LONG
+	FbmPlanes     WORD
+	FbmBitsPixel  WORD
+	FbmBits       LPVOID
 }
 
 type tagBITMAP = BITMAP
@@ -18758,9 +18758,9 @@ type NPBITMAP = uintptr
 type LPBITMAP = uintptr
 
 type RGBTRIPLE = struct {
-	rgbtBlue  BYTE
-	rgbtGreen BYTE
-	rgbtRed   BYTE
+	FrgbtBlue  BYTE
+	FrgbtGreen BYTE
+	FrgbtRed   BYTE
 }
 
 type tagRGBTRIPLE = RGBTRIPLE
@@ -18772,10 +18772,10 @@ type NPRGBTRIPLE = uintptr
 type LPRGBTRIPLE = uintptr
 
 type RGBQUAD = struct {
-	rgbBlue     BYTE
-	rgbGreen    BYTE
-	rgbRed      BYTE
-	rgbReserved BYTE
+	FrgbBlue     BYTE
+	FrgbGreen    BYTE
+	FrgbRed      BYTE
+	FrgbReserved BYTE
 }
 
 type tagRGBQUAD = RGBQUAD
@@ -18795,9 +18795,9 @@ type FXPT2DOT30 = int32
 type LPFXPT2DOT30 = uintptr
 
 type CIEXYZ = struct {
-	ciexyzX FXPT2DOT30
-	ciexyzY FXPT2DOT30
-	ciexyzZ FXPT2DOT30
+	FciexyzX FXPT2DOT30
+	FciexyzY FXPT2DOT30
+	FciexyzZ FXPT2DOT30
 }
 
 type tagCIEXYZ = CIEXYZ
@@ -18805,9 +18805,9 @@ type tagCIEXYZ = CIEXYZ
 type LPCIEXYZ = uintptr
 
 type CIEXYZTRIPLE = struct {
-	ciexyzRed   CIEXYZ
-	ciexyzGreen CIEXYZ
-	ciexyzBlue  CIEXYZ
+	FciexyzRed   CIEXYZ
+	FciexyzGreen CIEXYZ
+	FciexyzBlue  CIEXYZ
 }
 
 type tagICEXYZTRIPLE = CIEXYZTRIPLE
@@ -18815,16 +18815,16 @@ type tagICEXYZTRIPLE = CIEXYZTRIPLE
 type LPCIEXYZTRIPLE = uintptr
 
 type LOGCOLORSPACEA = struct {
-	lcsSignature  DWORD
-	lcsVersion    DWORD
-	lcsSize       DWORD
-	lcsCSType     LCSCSTYPE
-	lcsIntent     LCSGAMUTMATCH
-	lcsEndpoints  CIEXYZTRIPLE
-	lcsGammaRed   DWORD
-	lcsGammaGreen DWORD
-	lcsGammaBlue  DWORD
-	lcsFilename   [260]CHAR
+	FlcsSignature  DWORD
+	FlcsVersion    DWORD
+	FlcsSize       DWORD
+	FlcsCSType     LCSCSTYPE
+	FlcsIntent     LCSGAMUTMATCH
+	FlcsEndpoints  CIEXYZTRIPLE
+	FlcsGammaRed   DWORD
+	FlcsGammaGreen DWORD
+	FlcsGammaBlue  DWORD
+	FlcsFilename   [260]CHAR
 }
 
 type tagLOGCOLORSPACEA = LOGCOLORSPACEA
@@ -18832,16 +18832,16 @@ type tagLOGCOLORSPACEA = LOGCOLORSPACEA
 type LPLOGCOLORSPACEA = uintptr
 
 type LOGCOLORSPACEW = struct {
-	lcsSignature  DWORD
-	lcsVersion    DWORD
-	lcsSize       DWORD
-	lcsCSType     LCSCSTYPE
-	lcsIntent     LCSGAMUTMATCH
-	lcsEndpoints  CIEXYZTRIPLE
-	lcsGammaRed   DWORD
-	lcsGammaGreen DWORD
-	lcsGammaBlue  DWORD
-	lcsFilename   [260]WCHAR
+	FlcsSignature  DWORD
+	FlcsVersion    DWORD
+	FlcsSize       DWORD
+	FlcsCSType     LCSCSTYPE
+	FlcsIntent     LCSGAMUTMATCH
+	FlcsEndpoints  CIEXYZTRIPLE
+	FlcsGammaRed   DWORD
+	FlcsGammaGreen DWORD
+	FlcsGammaBlue  DWORD
+	FlcsFilename   [260]WCHAR
 }
 
 type tagLOGCOLORSPACEW = LOGCOLORSPACEW
@@ -18849,26 +18849,26 @@ type tagLOGCOLORSPACEW = LOGCOLORSPACEW
 type LPLOGCOLORSPACEW = uintptr
 
 type LOGCOLORSPACE = struct {
-	lcsSignature  DWORD
-	lcsVersion    DWORD
-	lcsSize       DWORD
-	lcsCSType     LCSCSTYPE
-	lcsIntent     LCSGAMUTMATCH
-	lcsEndpoints  CIEXYZTRIPLE
-	lcsGammaRed   DWORD
-	lcsGammaGreen DWORD
-	lcsGammaBlue  DWORD
-	lcsFilename   [260]CHAR
+	FlcsSignature  DWORD
+	FlcsVersion    DWORD
+	FlcsSize       DWORD
+	FlcsCSType     LCSCSTYPE
+	FlcsIntent     LCSGAMUTMATCH
+	FlcsEndpoints  CIEXYZTRIPLE
+	FlcsGammaRed   DWORD
+	FlcsGammaGreen DWORD
+	FlcsGammaBlue  DWORD
+	FlcsFilename   [260]CHAR
 }
 
 type LPLOGCOLORSPACE = uintptr
 
 type BITMAPCOREHEADER = struct {
-	bcSize     DWORD
-	bcWidth    WORD
-	bcHeight   WORD
-	bcPlanes   WORD
-	bcBitCount WORD
+	FbcSize     DWORD
+	FbcWidth    WORD
+	FbcHeight   WORD
+	FbcPlanes   WORD
+	FbcBitCount WORD
 }
 
 type tagBITMAPCOREHEADER = BITMAPCOREHEADER
@@ -18878,17 +18878,17 @@ type LPBITMAPCOREHEADER = uintptr
 type PBITMAPCOREHEADER = uintptr
 
 type BITMAPINFOHEADER = struct {
-	biSize          DWORD
-	biWidth         LONG
-	biHeight        LONG
-	biPlanes        WORD
-	biBitCount      WORD
-	biCompression   DWORD
-	biSizeImage     DWORD
-	biXPelsPerMeter LONG
-	biYPelsPerMeter LONG
-	biClrUsed       DWORD
-	biClrImportant  DWORD
+	FbiSize          DWORD
+	FbiWidth         LONG
+	FbiHeight        LONG
+	FbiPlanes        WORD
+	FbiBitCount      WORD
+	FbiCompression   DWORD
+	FbiSizeImage     DWORD
+	FbiXPelsPerMeter LONG
+	FbiYPelsPerMeter LONG
+	FbiClrUsed       DWORD
+	FbiClrImportant  DWORD
 }
 
 type tagBITMAPINFOHEADER = BITMAPINFOHEADER
@@ -18898,26 +18898,26 @@ type LPBITMAPINFOHEADER = uintptr
 type PBITMAPINFOHEADER = uintptr
 
 type BITMAPV4HEADER = struct {
-	bV4Size          DWORD
-	bV4Width         LONG
-	bV4Height        LONG
-	bV4Planes        WORD
-	bV4BitCount      WORD
-	bV4V4Compression DWORD
-	bV4SizeImage     DWORD
-	bV4XPelsPerMeter LONG
-	bV4YPelsPerMeter LONG
-	bV4ClrUsed       DWORD
-	bV4ClrImportant  DWORD
-	bV4RedMask       DWORD
-	bV4GreenMask     DWORD
-	bV4BlueMask      DWORD
-	bV4AlphaMask     DWORD
-	bV4CSType        DWORD
-	bV4Endpoints     CIEXYZTRIPLE
-	bV4GammaRed      DWORD
-	bV4GammaGreen    DWORD
-	bV4GammaBlue     DWORD
+	FbV4Size          DWORD
+	FbV4Width         LONG
+	FbV4Height        LONG
+	FbV4Planes        WORD
+	FbV4BitCount      WORD
+	FbV4V4Compression DWORD
+	FbV4SizeImage     DWORD
+	FbV4XPelsPerMeter LONG
+	FbV4YPelsPerMeter LONG
+	FbV4ClrUsed       DWORD
+	FbV4ClrImportant  DWORD
+	FbV4RedMask       DWORD
+	FbV4GreenMask     DWORD
+	FbV4BlueMask      DWORD
+	FbV4AlphaMask     DWORD
+	FbV4CSType        DWORD
+	FbV4Endpoints     CIEXYZTRIPLE
+	FbV4GammaRed      DWORD
+	FbV4GammaGreen    DWORD
+	FbV4GammaBlue     DWORD
 }
 
 type LPBITMAPV4HEADER = uintptr
@@ -18925,30 +18925,30 @@ type LPBITMAPV4HEADER = uintptr
 type PBITMAPV4HEADER = uintptr
 
 type BITMAPV5HEADER = struct {
-	bV5Size          DWORD
-	bV5Width         LONG
-	bV5Height        LONG
-	bV5Planes        WORD
-	bV5BitCount      WORD
-	bV5Compression   DWORD
-	bV5SizeImage     DWORD
-	bV5XPelsPerMeter LONG
-	bV5YPelsPerMeter LONG
-	bV5ClrUsed       DWORD
-	bV5ClrImportant  DWORD
-	bV5RedMask       DWORD
-	bV5GreenMask     DWORD
-	bV5BlueMask      DWORD
-	bV5AlphaMask     DWORD
-	bV5CSType        DWORD
-	bV5Endpoints     CIEXYZTRIPLE
-	bV5GammaRed      DWORD
-	bV5GammaGreen    DWORD
-	bV5GammaBlue     DWORD
-	bV5Intent        DWORD
-	bV5ProfileData   DWORD
-	bV5ProfileSize   DWORD
-	bV5Reserved      DWORD
+	FbV5Size          DWORD
+	FbV5Width         LONG
+	FbV5Height        LONG
+	FbV5Planes        WORD
+	FbV5BitCount      WORD
+	FbV5Compression   DWORD
+	FbV5SizeImage     DWORD
+	FbV5XPelsPerMeter LONG
+	FbV5YPelsPerMeter LONG
+	FbV5ClrUsed       DWORD
+	FbV5ClrImportant  DWORD
+	FbV5RedMask       DWORD
+	FbV5GreenMask     DWORD
+	FbV5BlueMask      DWORD
+	FbV5AlphaMask     DWORD
+	FbV5CSType        DWORD
+	FbV5Endpoints     CIEXYZTRIPLE
+	FbV5GammaRed      DWORD
+	FbV5GammaGreen    DWORD
+	FbV5GammaBlue     DWORD
+	FbV5Intent        DWORD
+	FbV5ProfileData   DWORD
+	FbV5ProfileSize   DWORD
+	FbV5Reserved      DWORD
 }
 
 type LPBITMAPV5HEADER = uintptr
@@ -18956,8 +18956,8 @@ type LPBITMAPV5HEADER = uintptr
 type PBITMAPV5HEADER = uintptr
 
 type BITMAPINFO = struct {
-	bmiHeader BITMAPINFOHEADER
-	bmiColors [1]RGBQUAD
+	FbmiHeader BITMAPINFOHEADER
+	FbmiColors [1]RGBQUAD
 }
 
 type tagBITMAPINFO = BITMAPINFO
@@ -18967,8 +18967,8 @@ type LPBITMAPINFO = uintptr
 type PBITMAPINFO = uintptr
 
 type BITMAPCOREINFO = struct {
-	bmciHeader BITMAPCOREHEADER
-	bmciColors [1]RGBTRIPLE
+	FbmciHeader BITMAPCOREHEADER
+	FbmciColors [1]RGBTRIPLE
 }
 
 type tagBITMAPCOREINFO = BITMAPCOREINFO
@@ -18978,11 +18978,11 @@ type LPBITMAPCOREINFO = uintptr
 type PBITMAPCOREINFO = uintptr
 
 type BITMAPFILEHEADER = struct {
-	bfType      WORD
-	bfSize      DWORD
-	bfReserved1 WORD
-	bfReserved2 WORD
-	bfOffBits   DWORD
+	FbfType      WORD
+	FbfSize      DWORD
+	FbfReserved1 WORD
+	FbfReserved2 WORD
+	FbfOffBits   DWORD
 }
 
 type tagBITMAPFILEHEADER = BITMAPFILEHEADER
@@ -18992,8 +18992,8 @@ type LPBITMAPFILEHEADER = uintptr
 type PBITMAPFILEHEADER = uintptr
 
 type FONTSIGNATURE = struct {
-	fsUsb [4]DWORD
-	fsCsb [2]DWORD
+	FfsUsb [4]DWORD
+	FfsCsb [2]DWORD
 }
 
 type tagFONTSIGNATURE = FONTSIGNATURE
@@ -19003,9 +19003,9 @@ type PFONTSIGNATURE = uintptr
 type LPFONTSIGNATURE = uintptr
 
 type CHARSETINFO = struct {
-	ciCharset UINT
-	ciACP     UINT
-	fs        FONTSIGNATURE
+	FciCharset UINT
+	FciACP     UINT
+	Ffs        FONTSIGNATURE
 }
 
 type tagCHARSETINFO = CHARSETINFO
@@ -19017,9 +19017,9 @@ type NPCHARSETINFO = uintptr
 type LPCHARSETINFO = uintptr
 
 type LOCALESIGNATURE = struct {
-	lsUsb          [4]DWORD
-	lsCsbDefault   [2]DWORD
-	lsCsbSupported [2]DWORD
+	FlsUsb          [4]DWORD
+	FlsCsbDefault   [2]DWORD
+	FlsCsbSupported [2]DWORD
 }
 
 type tagLOCALESIGNATURE = LOCALESIGNATURE
@@ -19029,7 +19029,7 @@ type PLOCALESIGNATURE = uintptr
 type LPLOCALESIGNATURE = uintptr
 
 type HANDLETABLE = struct {
-	objectHandle [1]HGDIOBJ
+	FobjectHandle [1]HGDIOBJ
 }
 
 type tagHANDLETABLE = HANDLETABLE
@@ -19039,9 +19039,9 @@ type PHANDLETABLE = uintptr
 type LPHANDLETABLE = uintptr
 
 type METARECORD = struct {
-	rdSize     DWORD
-	rdFunction WORD
-	rdParm     [1]WORD
+	FrdSize     DWORD
+	FrdFunction WORD
+	FrdParm     [1]WORD
 }
 
 type tagMETARECORD = METARECORD
@@ -19051,10 +19051,10 @@ type PMETARECORD = uintptr
 type LPMETARECORD = uintptr
 
 type METAFILEPICT = struct {
-	mm   LONG
-	xExt LONG
-	yExt LONG
-	hMF  HMETAFILE
+	Fmm   LONG
+	FxExt LONG
+	FyExt LONG
+	FhMF  HMETAFILE
 }
 
 type tagMETAFILEPICT = METAFILEPICT
@@ -19062,13 +19062,13 @@ type tagMETAFILEPICT = METAFILEPICT
 type LPMETAFILEPICT = uintptr
 
 type METAHEADER = struct {
-	mtType         WORD
-	mtHeaderSize   WORD
-	mtVersion      WORD
-	mtSize         DWORD
-	mtNoObjects    WORD
-	mtMaxRecord    DWORD
-	mtNoParameters WORD
+	FmtType         WORD
+	FmtHeaderSize   WORD
+	FmtVersion      WORD
+	FmtSize         DWORD
+	FmtNoObjects    WORD
+	FmtMaxRecord    DWORD
+	FmtNoParameters WORD
 }
 
 type tagMETAHEADER = METAHEADER
@@ -19078,9 +19078,9 @@ type PMETAHEADER = uintptr
 type LPMETAHEADER = uintptr
 
 type ENHMETARECORD = struct {
-	iType DWORD
-	nSize DWORD
-	dParm [1]DWORD
+	FiType DWORD
+	FnSize DWORD
+	FdParm [1]DWORD
 }
 
 type tagENHMETARECORD = ENHMETARECORD
@@ -19090,25 +19090,25 @@ type PENHMETARECORD = uintptr
 type LPENHMETARECORD = uintptr
 
 type ENHMETAHEADER = struct {
-	iType          DWORD
-	nSize          DWORD
-	rclBounds      RECTL
-	rclFrame       RECTL
-	dSignature     DWORD
-	nVersion       DWORD
-	nBytes         DWORD
-	nRecords       DWORD
-	nHandles       WORD
-	sReserved      WORD
-	nDescription   DWORD
-	offDescription DWORD
-	nPalEntries    DWORD
-	szlDevice      SIZEL
-	szlMillimeters SIZEL
-	cbPixelFormat  DWORD
-	offPixelFormat DWORD
-	bOpenGL        DWORD
-	szlMicrometers SIZEL
+	FiType          DWORD
+	FnSize          DWORD
+	FrclBounds      RECTL
+	FrclFrame       RECTL
+	FdSignature     DWORD
+	FnVersion       DWORD
+	FnBytes         DWORD
+	FnRecords       DWORD
+	FnHandles       WORD
+	FsReserved      WORD
+	FnDescription   DWORD
+	FoffDescription DWORD
+	FnPalEntries    DWORD
+	FszlDevice      SIZEL
+	FszlMillimeters SIZEL
+	FcbPixelFormat  DWORD
+	FoffPixelFormat DWORD
+	FbOpenGL        DWORD
+	FszlMicrometers SIZEL
 }
 
 type tagENHMETAHEADER = ENHMETAHEADER
@@ -19120,26 +19120,26 @@ type LPENHMETAHEADER = uintptr
 type BCHAR = uint8
 
 type TEXTMETRICA = struct {
-	tmHeight           LONG
-	tmAscent           LONG
-	tmDescent          LONG
-	tmInternalLeading  LONG
-	tmExternalLeading  LONG
-	tmAveCharWidth     LONG
-	tmMaxCharWidth     LONG
-	tmWeight           LONG
-	tmOverhang         LONG
-	tmDigitizedAspectX LONG
-	tmDigitizedAspectY LONG
-	tmFirstChar        BYTE
-	tmLastChar         BYTE
-	tmDefaultChar      BYTE
-	tmBreakChar        BYTE
-	tmItalic           BYTE
-	tmUnderlined       BYTE
-	tmStruckOut        BYTE
-	tmPitchAndFamily   BYTE
-	tmCharSet          BYTE
+	FtmHeight           LONG
+	FtmAscent           LONG
+	FtmDescent          LONG
+	FtmInternalLeading  LONG
+	FtmExternalLeading  LONG
+	FtmAveCharWidth     LONG
+	FtmMaxCharWidth     LONG
+	FtmWeight           LONG
+	FtmOverhang         LONG
+	FtmDigitizedAspectX LONG
+	FtmDigitizedAspectY LONG
+	FtmFirstChar        BYTE
+	FtmLastChar         BYTE
+	FtmDefaultChar      BYTE
+	FtmBreakChar        BYTE
+	FtmItalic           BYTE
+	FtmUnderlined       BYTE
+	FtmStruckOut        BYTE
+	FtmPitchAndFamily   BYTE
+	FtmCharSet          BYTE
 }
 
 type tagTEXTMETRICA = TEXTMETRICA
@@ -19151,26 +19151,26 @@ type NPTEXTMETRICA = uintptr
 type LPTEXTMETRICA = uintptr
 
 type TEXTMETRICW = struct {
-	tmHeight           LONG
-	tmAscent           LONG
-	tmDescent          LONG
-	tmInternalLeading  LONG
-	tmExternalLeading  LONG
-	tmAveCharWidth     LONG
-	tmMaxCharWidth     LONG
-	tmWeight           LONG
-	tmOverhang         LONG
-	tmDigitizedAspectX LONG
-	tmDigitizedAspectY LONG
-	tmFirstChar        WCHAR
-	tmLastChar         WCHAR
-	tmDefaultChar      WCHAR
-	tmBreakChar        WCHAR
-	tmItalic           BYTE
-	tmUnderlined       BYTE
-	tmStruckOut        BYTE
-	tmPitchAndFamily   BYTE
-	tmCharSet          BYTE
+	FtmHeight           LONG
+	FtmAscent           LONG
+	FtmDescent          LONG
+	FtmInternalLeading  LONG
+	FtmExternalLeading  LONG
+	FtmAveCharWidth     LONG
+	FtmMaxCharWidth     LONG
+	FtmWeight           LONG
+	FtmOverhang         LONG
+	FtmDigitizedAspectX LONG
+	FtmDigitizedAspectY LONG
+	FtmFirstChar        WCHAR
+	FtmLastChar         WCHAR
+	FtmDefaultChar      WCHAR
+	FtmBreakChar        WCHAR
+	FtmItalic           BYTE
+	FtmUnderlined       BYTE
+	FtmStruckOut        BYTE
+	FtmPitchAndFamily   BYTE
+	FtmCharSet          BYTE
 }
 
 type tagTEXTMETRICW = TEXTMETRICW
@@ -19182,26 +19182,26 @@ type NPTEXTMETRICW = uintptr
 type LPTEXTMETRICW = uintptr
 
 type TEXTMETRIC = struct {
-	tmHeight           LONG
-	tmAscent           LONG
-	tmDescent          LONG
-	tmInternalLeading  LONG
-	tmExternalLeading  LONG
-	tmAveCharWidth     LONG
-	tmMaxCharWidth     LONG
-	tmWeight           LONG
-	tmOverhang         LONG
-	tmDigitizedAspectX LONG
-	tmDigitizedAspectY LONG
-	tmFirstChar        BYTE
-	tmLastChar         BYTE
-	tmDefaultChar      BYTE
-	tmBreakChar        BYTE
-	tmItalic           BYTE
-	tmUnderlined       BYTE
-	tmStruckOut        BYTE
-	tmPitchAndFamily   BYTE
-	tmCharSet          BYTE
+	FtmHeight           LONG
+	FtmAscent           LONG
+	FtmDescent          LONG
+	FtmInternalLeading  LONG
+	FtmExternalLeading  LONG
+	FtmAveCharWidth     LONG
+	FtmMaxCharWidth     LONG
+	FtmWeight           LONG
+	FtmOverhang         LONG
+	FtmDigitizedAspectX LONG
+	FtmDigitizedAspectY LONG
+	FtmFirstChar        BYTE
+	FtmLastChar         BYTE
+	FtmDefaultChar      BYTE
+	FtmBreakChar        BYTE
+	FtmItalic           BYTE
+	FtmUnderlined       BYTE
+	FtmStruckOut        BYTE
+	FtmPitchAndFamily   BYTE
+	FtmCharSet          BYTE
 }
 
 type PTEXTMETRIC = uintptr
@@ -19211,30 +19211,30 @@ type NPTEXTMETRIC = uintptr
 type LPTEXTMETRIC = uintptr
 
 type NEWTEXTMETRICA = struct {
-	tmHeight           LONG
-	tmAscent           LONG
-	tmDescent          LONG
-	tmInternalLeading  LONG
-	tmExternalLeading  LONG
-	tmAveCharWidth     LONG
-	tmMaxCharWidth     LONG
-	tmWeight           LONG
-	tmOverhang         LONG
-	tmDigitizedAspectX LONG
-	tmDigitizedAspectY LONG
-	tmFirstChar        BYTE
-	tmLastChar         BYTE
-	tmDefaultChar      BYTE
-	tmBreakChar        BYTE
-	tmItalic           BYTE
-	tmUnderlined       BYTE
-	tmStruckOut        BYTE
-	tmPitchAndFamily   BYTE
-	tmCharSet          BYTE
-	ntmFlags           DWORD
-	ntmSizeEM          UINT
-	ntmCellHeight      UINT
-	ntmAvgWidth        UINT
+	FtmHeight           LONG
+	FtmAscent           LONG
+	FtmDescent          LONG
+	FtmInternalLeading  LONG
+	FtmExternalLeading  LONG
+	FtmAveCharWidth     LONG
+	FtmMaxCharWidth     LONG
+	FtmWeight           LONG
+	FtmOverhang         LONG
+	FtmDigitizedAspectX LONG
+	FtmDigitizedAspectY LONG
+	FtmFirstChar        BYTE
+	FtmLastChar         BYTE
+	FtmDefaultChar      BYTE
+	FtmBreakChar        BYTE
+	FtmItalic           BYTE
+	FtmUnderlined       BYTE
+	FtmStruckOut        BYTE
+	FtmPitchAndFamily   BYTE
+	FtmCharSet          BYTE
+	FntmFlags           DWORD
+	FntmSizeEM          UINT
+	FntmCellHeight      UINT
+	FntmAvgWidth        UINT
 }
 
 type tagNEWTEXTMETRICA = NEWTEXTMETRICA
@@ -19246,30 +19246,30 @@ type NPNEWTEXTMETRICA = uintptr
 type LPNEWTEXTMETRICA = uintptr
 
 type NEWTEXTMETRICW = struct {
-	tmHeight           LONG
-	tmAscent           LONG
-	tmDescent          LONG
-	tmInternalLeading  LONG
-	tmExternalLeading  LONG
-	tmAveCharWidth     LONG
-	tmMaxCharWidth     LONG
-	tmWeight           LONG
-	tmOverhang         LONG
-	tmDigitizedAspectX LONG
-	tmDigitizedAspectY LONG
-	tmFirstChar        WCHAR
-	tmLastChar         WCHAR
-	tmDefaultChar      WCHAR
-	tmBreakChar        WCHAR
-	tmItalic           BYTE
-	tmUnderlined       BYTE
-	tmStruckOut        BYTE
-	tmPitchAndFamily   BYTE
-	tmCharSet          BYTE
-	ntmFlags           DWORD
-	ntmSizeEM          UINT
-	ntmCellHeight      UINT
-	ntmAvgWidth        UINT
+	FtmHeight           LONG
+	FtmAscent           LONG
+	FtmDescent          LONG
+	FtmInternalLeading  LONG
+	FtmExternalLeading  LONG
+	FtmAveCharWidth     LONG
+	FtmMaxCharWidth     LONG
+	FtmWeight           LONG
+	FtmOverhang         LONG
+	FtmDigitizedAspectX LONG
+	FtmDigitizedAspectY LONG
+	FtmFirstChar        WCHAR
+	FtmLastChar         WCHAR
+	FtmDefaultChar      WCHAR
+	FtmBreakChar        WCHAR
+	FtmItalic           BYTE
+	FtmUnderlined       BYTE
+	FtmStruckOut        BYTE
+	FtmPitchAndFamily   BYTE
+	FtmCharSet          BYTE
+	FntmFlags           DWORD
+	FntmSizeEM          UINT
+	FntmCellHeight      UINT
+	FntmAvgWidth        UINT
 }
 
 type tagNEWTEXTMETRICW = NEWTEXTMETRICW
@@ -19281,30 +19281,30 @@ type NPNEWTEXTMETRICW = uintptr
 type LPNEWTEXTMETRICW = uintptr
 
 type NEWTEXTMETRIC = struct {
-	tmHeight           LONG
-	tmAscent           LONG
-	tmDescent          LONG
-	tmInternalLeading  LONG
-	tmExternalLeading  LONG
-	tmAveCharWidth     LONG
-	tmMaxCharWidth     LONG
-	tmWeight           LONG
-	tmOverhang         LONG
-	tmDigitizedAspectX LONG
-	tmDigitizedAspectY LONG
-	tmFirstChar        BYTE
-	tmLastChar         BYTE
-	tmDefaultChar      BYTE
-	tmBreakChar        BYTE
-	tmItalic           BYTE
-	tmUnderlined       BYTE
-	tmStruckOut        BYTE
-	tmPitchAndFamily   BYTE
-	tmCharSet          BYTE
-	ntmFlags           DWORD
-	ntmSizeEM          UINT
-	ntmCellHeight      UINT
-	ntmAvgWidth        UINT
+	FtmHeight           LONG
+	FtmAscent           LONG
+	FtmDescent          LONG
+	FtmInternalLeading  LONG
+	FtmExternalLeading  LONG
+	FtmAveCharWidth     LONG
+	FtmMaxCharWidth     LONG
+	FtmWeight           LONG
+	FtmOverhang         LONG
+	FtmDigitizedAspectX LONG
+	FtmDigitizedAspectY LONG
+	FtmFirstChar        BYTE
+	FtmLastChar         BYTE
+	FtmDefaultChar      BYTE
+	FtmBreakChar        BYTE
+	FtmItalic           BYTE
+	FtmUnderlined       BYTE
+	FtmStruckOut        BYTE
+	FtmPitchAndFamily   BYTE
+	FtmCharSet          BYTE
+	FntmFlags           DWORD
+	FntmSizeEM          UINT
+	FntmCellHeight      UINT
+	FntmAvgWidth        UINT
 }
 
 type PNEWTEXTMETRIC = uintptr
@@ -19314,30 +19314,30 @@ type NPNEWTEXTMETRIC = uintptr
 type LPNEWTEXTMETRIC = uintptr
 
 type NEWTEXTMETRICEXA = struct {
-	ntmTm      NEWTEXTMETRICA
-	ntmFontSig FONTSIGNATURE
+	FntmTm      NEWTEXTMETRICA
+	FntmFontSig FONTSIGNATURE
 }
 
 type tagNEWTEXTMETRICEXA = NEWTEXTMETRICEXA
 
 type NEWTEXTMETRICEXW = struct {
-	ntmTm      NEWTEXTMETRICW
-	ntmFontSig FONTSIGNATURE
+	FntmTm      NEWTEXTMETRICW
+	FntmFontSig FONTSIGNATURE
 }
 
 type tagNEWTEXTMETRICEXW = NEWTEXTMETRICEXW
 
 type NEWTEXTMETRICEX = struct {
-	ntmTm      NEWTEXTMETRICA
-	ntmFontSig FONTSIGNATURE
+	FntmTm      NEWTEXTMETRICA
+	FntmFontSig FONTSIGNATURE
 }
 
 type PELARRAY = struct {
-	paXCount LONG
-	paYCount LONG
-	paXExt   LONG
-	paYExt   LONG
-	paRGBs   BYTE
+	FpaXCount LONG
+	FpaYCount LONG
+	FpaXExt   LONG
+	FpaYExt   LONG
+	FpaRGBs   BYTE
 }
 
 type tagPELARRAY = PELARRAY
@@ -19349,9 +19349,9 @@ type NPPELARRAY = uintptr
 type LPPELARRAY = uintptr
 
 type LOGBRUSH = struct {
-	lbStyle UINT
-	lbColor COLORREF
-	lbHatch ULONG_PTR
+	FlbStyle UINT
+	FlbColor COLORREF
+	FlbHatch ULONG_PTR
 }
 
 type tagLOGBRUSH = LOGBRUSH
@@ -19363,9 +19363,9 @@ type NPLOGBRUSH = uintptr
 type LPLOGBRUSH = uintptr
 
 type LOGBRUSH32 = struct {
-	lbStyle UINT
-	lbColor COLORREF
-	lbHatch ULONG
+	FlbStyle UINT
+	FlbColor COLORREF
+	FlbHatch ULONG
 }
 
 type tagLOGBRUSH32 = LOGBRUSH32
@@ -19377,9 +19377,9 @@ type NPLOGBRUSH32 = uintptr
 type LPLOGBRUSH32 = uintptr
 
 type PATTERN = struct {
-	lbStyle UINT
-	lbColor COLORREF
-	lbHatch ULONG_PTR
+	FlbStyle UINT
+	FlbColor COLORREF
+	FlbHatch ULONG_PTR
 }
 
 type PPATTERN = uintptr
@@ -19389,9 +19389,9 @@ type NPPATTERN = uintptr
 type LPPATTERN = uintptr
 
 type LOGPEN = struct {
-	lopnStyle UINT
-	lopnWidth POINT
-	lopnColor COLORREF
+	FlopnStyle UINT
+	FlopnWidth POINT
+	FlopnColor COLORREF
 }
 
 type tagLOGPEN = LOGPEN
@@ -19403,13 +19403,13 @@ type NPLOGPEN = uintptr
 type LPLOGPEN = uintptr
 
 type EXTLOGPEN = struct {
-	elpPenStyle   DWORD
-	elpWidth      DWORD
-	elpBrushStyle UINT
-	elpColor      COLORREF
-	elpHatch      ULONG_PTR
-	elpNumEntries DWORD
-	elpStyleEntry [1]DWORD
+	FelpPenStyle   DWORD
+	FelpWidth      DWORD
+	FelpBrushStyle UINT
+	FelpColor      COLORREF
+	FelpHatch      ULONG_PTR
+	FelpNumEntries DWORD
+	FelpStyleEntry [1]DWORD
 }
 
 type tagEXTLOGPEN = EXTLOGPEN
@@ -19421,13 +19421,13 @@ type NPEXTLOGPEN = uintptr
 type LPEXTLOGPEN = uintptr
 
 type EXTLOGPEN32 = struct {
-	elpPenStyle   DWORD
-	elpWidth      DWORD
-	elpBrushStyle UINT
-	elpColor      COLORREF
-	elpHatch      ULONG
-	elpNumEntries DWORD
-	elpStyleEntry [1]DWORD
+	FelpPenStyle   DWORD
+	FelpWidth      DWORD
+	FelpBrushStyle UINT
+	FelpColor      COLORREF
+	FelpHatch      ULONG
+	FelpNumEntries DWORD
+	FelpStyleEntry [1]DWORD
 }
 
 type tagEXTLOGPEN32 = EXTLOGPEN32
@@ -19439,10 +19439,10 @@ type NPEXTLOGPEN32 = uintptr
 type LPEXTLOGPEN32 = uintptr
 
 type PALETTEENTRY = struct {
-	peRed   BYTE
-	peGreen BYTE
-	peBlue  BYTE
-	peFlags BYTE
+	FpeRed   BYTE
+	FpeGreen BYTE
+	FpeBlue  BYTE
+	FpeFlags BYTE
 }
 
 type tagPALETTEENTRY = PALETTEENTRY
@@ -19452,9 +19452,9 @@ type PPALETTEENTRY = uintptr
 type LPPALETTEENTRY = uintptr
 
 type LOGPALETTE = struct {
-	palVersion    WORD
-	palNumEntries WORD
-	palPalEntry   [1]PALETTEENTRY
+	FpalVersion    WORD
+	FpalNumEntries WORD
+	FpalPalEntry   [1]PALETTEENTRY
 }
 
 type tagLOGPALETTE = LOGPALETTE
@@ -19466,20 +19466,20 @@ type NPLOGPALETTE = uintptr
 type LPLOGPALETTE = uintptr
 
 type LOGFONTA = struct {
-	lfHeight         LONG
-	lfWidth          LONG
-	lfEscapement     LONG
-	lfOrientation    LONG
-	lfWeight         LONG
-	lfItalic         BYTE
-	lfUnderline      BYTE
-	lfStrikeOut      BYTE
-	lfCharSet        BYTE
-	lfOutPrecision   BYTE
-	lfClipPrecision  BYTE
-	lfQuality        BYTE
-	lfPitchAndFamily BYTE
-	lfFaceName       [32]CHAR
+	FlfHeight         LONG
+	FlfWidth          LONG
+	FlfEscapement     LONG
+	FlfOrientation    LONG
+	FlfWeight         LONG
+	FlfItalic         BYTE
+	FlfUnderline      BYTE
+	FlfStrikeOut      BYTE
+	FlfCharSet        BYTE
+	FlfOutPrecision   BYTE
+	FlfClipPrecision  BYTE
+	FlfQuality        BYTE
+	FlfPitchAndFamily BYTE
+	FlfFaceName       [32]CHAR
 }
 
 type tagLOGFONTA = LOGFONTA
@@ -19491,20 +19491,20 @@ type NPLOGFONTA = uintptr
 type LPLOGFONTA = uintptr
 
 type LOGFONTW = struct {
-	lfHeight         LONG
-	lfWidth          LONG
-	lfEscapement     LONG
-	lfOrientation    LONG
-	lfWeight         LONG
-	lfItalic         BYTE
-	lfUnderline      BYTE
-	lfStrikeOut      BYTE
-	lfCharSet        BYTE
-	lfOutPrecision   BYTE
-	lfClipPrecision  BYTE
-	lfQuality        BYTE
-	lfPitchAndFamily BYTE
-	lfFaceName       [32]WCHAR
+	FlfHeight         LONG
+	FlfWidth          LONG
+	FlfEscapement     LONG
+	FlfOrientation    LONG
+	FlfWeight         LONG
+	FlfItalic         BYTE
+	FlfUnderline      BYTE
+	FlfStrikeOut      BYTE
+	FlfCharSet        BYTE
+	FlfOutPrecision   BYTE
+	FlfClipPrecision  BYTE
+	FlfQuality        BYTE
+	FlfPitchAndFamily BYTE
+	FlfFaceName       [32]WCHAR
 }
 
 type tagLOGFONTW = LOGFONTW
@@ -19516,20 +19516,20 @@ type NPLOGFONTW = uintptr
 type LPLOGFONTW = uintptr
 
 type LOGFONT = struct {
-	lfHeight         LONG
-	lfWidth          LONG
-	lfEscapement     LONG
-	lfOrientation    LONG
-	lfWeight         LONG
-	lfItalic         BYTE
-	lfUnderline      BYTE
-	lfStrikeOut      BYTE
-	lfCharSet        BYTE
-	lfOutPrecision   BYTE
-	lfClipPrecision  BYTE
-	lfQuality        BYTE
-	lfPitchAndFamily BYTE
-	lfFaceName       [32]CHAR
+	FlfHeight         LONG
+	FlfWidth          LONG
+	FlfEscapement     LONG
+	FlfOrientation    LONG
+	FlfWeight         LONG
+	FlfItalic         BYTE
+	FlfUnderline      BYTE
+	FlfStrikeOut      BYTE
+	FlfCharSet        BYTE
+	FlfOutPrecision   BYTE
+	FlfClipPrecision  BYTE
+	FlfQuality        BYTE
+	FlfPitchAndFamily BYTE
+	FlfFaceName       [32]CHAR
 }
 
 type PLOGFONT = uintptr
@@ -19539,9 +19539,9 @@ type NPLOGFONT = uintptr
 type LPLOGFONT = uintptr
 
 type ENUMLOGFONTA = struct {
-	elfLogFont  LOGFONTA
-	elfFullName [64]BYTE
-	elfStyle    [32]BYTE
+	FelfLogFont  LOGFONTA
+	FelfFullName [64]BYTE
+	FelfStyle    [32]BYTE
 }
 
 type tagENUMLOGFONTA = ENUMLOGFONTA
@@ -19549,9 +19549,9 @@ type tagENUMLOGFONTA = ENUMLOGFONTA
 type LPENUMLOGFONTA = uintptr
 
 type ENUMLOGFONTW = struct {
-	elfLogFont  LOGFONTW
-	elfFullName [64]WCHAR
-	elfStyle    [32]WCHAR
+	FelfLogFont  LOGFONTW
+	FelfFullName [64]WCHAR
+	FelfStyle    [32]WCHAR
 }
 
 type tagENUMLOGFONTW = ENUMLOGFONTW
@@ -19559,18 +19559,18 @@ type tagENUMLOGFONTW = ENUMLOGFONTW
 type LPENUMLOGFONTW = uintptr
 
 type ENUMLOGFONT = struct {
-	elfLogFont  LOGFONTA
-	elfFullName [64]BYTE
-	elfStyle    [32]BYTE
+	FelfLogFont  LOGFONTA
+	FelfFullName [64]BYTE
+	FelfStyle    [32]BYTE
 }
 
 type LPENUMLOGFONT = uintptr
 
 type ENUMLOGFONTEXA = struct {
-	elfLogFont  LOGFONTA
-	elfFullName [64]BYTE
-	elfStyle    [32]BYTE
-	elfScript   [32]BYTE
+	FelfLogFont  LOGFONTA
+	FelfFullName [64]BYTE
+	FelfStyle    [32]BYTE
+	FelfScript   [32]BYTE
 }
 
 type tagENUMLOGFONTEXA = ENUMLOGFONTEXA
@@ -19578,10 +19578,10 @@ type tagENUMLOGFONTEXA = ENUMLOGFONTEXA
 type LPENUMLOGFONTEXA = uintptr
 
 type ENUMLOGFONTEXW = struct {
-	elfLogFont  LOGFONTW
-	elfFullName [64]WCHAR
-	elfStyle    [32]WCHAR
-	elfScript   [32]WCHAR
+	FelfLogFont  LOGFONTW
+	FelfFullName [64]WCHAR
+	FelfStyle    [32]WCHAR
+	FelfScript   [32]WCHAR
 }
 
 type tagENUMLOGFONTEXW = ENUMLOGFONTEXW
@@ -19589,25 +19589,25 @@ type tagENUMLOGFONTEXW = ENUMLOGFONTEXW
 type LPENUMLOGFONTEXW = uintptr
 
 type ENUMLOGFONTEX = struct {
-	elfLogFont  LOGFONTA
-	elfFullName [64]BYTE
-	elfStyle    [32]BYTE
-	elfScript   [32]BYTE
+	FelfLogFont  LOGFONTA
+	FelfFullName [64]BYTE
+	FelfStyle    [32]BYTE
+	FelfScript   [32]BYTE
 }
 
 type LPENUMLOGFONTEX = uintptr
 
 type PANOSE = struct {
-	bFamilyType      BYTE
-	bSerifStyle      BYTE
-	bWeight          BYTE
-	bProportion      BYTE
-	bContrast        BYTE
-	bStrokeVariation BYTE
-	bArmStyle        BYTE
-	bLetterform      BYTE
-	bMidline         BYTE
-	bXHeight         BYTE
+	FbFamilyType      BYTE
+	FbSerifStyle      BYTE
+	FbWeight          BYTE
+	FbProportion      BYTE
+	FbContrast        BYTE
+	FbStrokeVariation BYTE
+	FbArmStyle        BYTE
+	FbLetterform      BYTE
+	FbMidline         BYTE
+	FbXHeight         BYTE
 }
 
 type tagPANOSE = PANOSE
@@ -19615,16 +19615,16 @@ type tagPANOSE = PANOSE
 type LPPANOSE = uintptr
 
 type EXTLOGFONTA = struct {
-	elfLogFont   LOGFONTA
-	elfFullName  [64]BYTE
-	elfStyle     [32]BYTE
-	elfVersion   DWORD
-	elfStyleSize DWORD
-	elfMatch     DWORD
-	elfReserved  DWORD
-	elfVendorId  [4]BYTE
-	elfCulture   DWORD
-	elfPanose    PANOSE
+	FelfLogFont   LOGFONTA
+	FelfFullName  [64]BYTE
+	FelfStyle     [32]BYTE
+	FelfVersion   DWORD
+	FelfStyleSize DWORD
+	FelfMatch     DWORD
+	FelfReserved  DWORD
+	FelfVendorId  [4]BYTE
+	FelfCulture   DWORD
+	FelfPanose    PANOSE
 }
 
 type tagEXTLOGFONTA = EXTLOGFONTA
@@ -19636,16 +19636,16 @@ type NPEXTLOGFONTA = uintptr
 type LPEXTLOGFONTA = uintptr
 
 type EXTLOGFONTW = struct {
-	elfLogFont   LOGFONTW
-	elfFullName  [64]WCHAR
-	elfStyle     [32]WCHAR
-	elfVersion   DWORD
-	elfStyleSize DWORD
-	elfMatch     DWORD
-	elfReserved  DWORD
-	elfVendorId  [4]BYTE
-	elfCulture   DWORD
-	elfPanose    PANOSE
+	FelfLogFont   LOGFONTW
+	FelfFullName  [64]WCHAR
+	FelfStyle     [32]WCHAR
+	FelfVersion   DWORD
+	FelfStyleSize DWORD
+	FelfMatch     DWORD
+	FelfReserved  DWORD
+	FelfVendorId  [4]BYTE
+	FelfCulture   DWORD
+	FelfPanose    PANOSE
 }
 
 type tagEXTLOGFONTW = EXTLOGFONTW
@@ -19657,16 +19657,16 @@ type NPEXTLOGFONTW = uintptr
 type LPEXTLOGFONTW = uintptr
 
 type EXTLOGFONT = struct {
-	elfLogFont   LOGFONTA
-	elfFullName  [64]BYTE
-	elfStyle     [32]BYTE
-	elfVersion   DWORD
-	elfStyleSize DWORD
-	elfMatch     DWORD
-	elfReserved  DWORD
-	elfVendorId  [4]BYTE
-	elfCulture   DWORD
-	elfPanose    PANOSE
+	FelfLogFont   LOGFONTA
+	FelfFullName  [64]BYTE
+	FelfStyle     [32]BYTE
+	FelfVersion   DWORD
+	FelfStyleSize DWORD
+	FelfMatch     DWORD
+	FelfReserved  DWORD
+	FelfVendorId  [4]BYTE
+	FelfCulture   DWORD
+	FelfPanose    PANOSE
 }
 
 type PEXTLOGFONT = uintptr
@@ -19676,52 +19676,52 @@ type NPEXTLOGFONT = uintptr
 type LPEXTLOGFONT = uintptr
 
 type DEVMODEA = struct {
-	dmDeviceName    [32]BYTE
-	dmSpecVersion   WORD
-	dmDriverVersion WORD
-	dmSize          WORD
-	dmDriverExtra   WORD
-	dmFields        DWORD
-	__ccgo6_44      struct {
-		__ccgo1_0 [0]struct {
-			dmPosition           POINTL
-			dmDisplayOrientation DWORD
-			dmDisplayFixedOutput DWORD
+	FdmDeviceName    [32]BYTE
+	FdmSpecVersion   WORD
+	FdmDriverVersion WORD
+	FdmSize          WORD
+	FdmDriverExtra   WORD
+	FdmFields        DWORD
+	F__ccgo6_44      struct {
+		F__ccgo1_0 [0]struct {
+			FdmPosition           POINTL
+			FdmDisplayOrientation DWORD
+			FdmDisplayFixedOutput DWORD
 		}
-		__ccgo0_0 struct {
-			dmOrientation   int16
-			dmPaperSize     int16
-			dmPaperLength   int16
-			dmPaperWidth    int16
-			dmScale         int16
-			dmCopies        int16
-			dmDefaultSource int16
-			dmPrintQuality  int16
+		F__ccgo0_0 struct {
+			FdmOrientation   int16
+			FdmPaperSize     int16
+			FdmPaperLength   int16
+			FdmPaperWidth    int16
+			FdmScale         int16
+			FdmCopies        int16
+			FdmDefaultSource int16
+			FdmPrintQuality  int16
 		}
 	}
-	dmColor       int16
-	dmDuplex      int16
-	dmYResolution int16
-	dmTTOption    int16
-	dmCollate     int16
-	dmFormName    [32]BYTE
-	dmLogPixels   WORD
-	dmBitsPerPel  DWORD
-	dmPelsWidth   DWORD
-	dmPelsHeight  DWORD
-	__ccgo17_116  struct {
-		dmNup          [0]DWORD
-		dmDisplayFlags DWORD
+	FdmColor       int16
+	FdmDuplex      int16
+	FdmYResolution int16
+	FdmTTOption    int16
+	FdmCollate     int16
+	FdmFormName    [32]BYTE
+	FdmLogPixels   WORD
+	FdmBitsPerPel  DWORD
+	FdmPelsWidth   DWORD
+	FdmPelsHeight  DWORD
+	F__ccgo17_116  struct {
+		FdmNup          [0]DWORD
+		FdmDisplayFlags DWORD
 	}
-	dmDisplayFrequency DWORD
-	dmICMMethod        DWORD
-	dmICMIntent        DWORD
-	dmMediaType        DWORD
-	dmDitherType       DWORD
-	dmReserved1        DWORD
-	dmReserved2        DWORD
-	dmPanningWidth     DWORD
-	dmPanningHeight    DWORD
+	FdmDisplayFrequency DWORD
+	FdmICMMethod        DWORD
+	FdmICMIntent        DWORD
+	FdmMediaType        DWORD
+	FdmDitherType       DWORD
+	FdmReserved1        DWORD
+	FdmReserved2        DWORD
+	FdmPanningWidth     DWORD
+	FdmPanningHeight    DWORD
 }
 
 type _devicemodeA = DEVMODEA
@@ -19733,52 +19733,52 @@ type NPDEVMODEA = uintptr
 type LPDEVMODEA = uintptr
 
 type DEVMODEW = struct {
-	dmDeviceName    [32]WCHAR
-	dmSpecVersion   WORD
-	dmDriverVersion WORD
-	dmSize          WORD
-	dmDriverExtra   WORD
-	dmFields        DWORD
-	__ccgo6_76      struct {
-		__ccgo1_0 [0]struct {
-			dmPosition           POINTL
-			dmDisplayOrientation DWORD
-			dmDisplayFixedOutput DWORD
+	FdmDeviceName    [32]WCHAR
+	FdmSpecVersion   WORD
+	FdmDriverVersion WORD
+	FdmSize          WORD
+	FdmDriverExtra   WORD
+	FdmFields        DWORD
+	F__ccgo6_76      struct {
+		F__ccgo1_0 [0]struct {
+			FdmPosition           POINTL
+			FdmDisplayOrientation DWORD
+			FdmDisplayFixedOutput DWORD
 		}
-		__ccgo0_0 struct {
-			dmOrientation   int16
-			dmPaperSize     int16
-			dmPaperLength   int16
-			dmPaperWidth    int16
-			dmScale         int16
-			dmCopies        int16
-			dmDefaultSource int16
-			dmPrintQuality  int16
+		F__ccgo0_0 struct {
+			FdmOrientation   int16
+			FdmPaperSize     int16
+			FdmPaperLength   int16
+			FdmPaperWidth    int16
+			FdmScale         int16
+			FdmCopies        int16
+			FdmDefaultSource int16
+			FdmPrintQuality  int16
 		}
 	}
-	dmColor       int16
-	dmDuplex      int16
-	dmYResolution int16
-	dmTTOption    int16
-	dmCollate     int16
-	dmFormName    [32]WCHAR
-	dmLogPixels   WORD
-	dmBitsPerPel  DWORD
-	dmPelsWidth   DWORD
-	dmPelsHeight  DWORD
-	__ccgo17_180  struct {
-		dmNup          [0]DWORD
-		dmDisplayFlags DWORD
+	FdmColor       int16
+	FdmDuplex      int16
+	FdmYResolution int16
+	FdmTTOption    int16
+	FdmCollate     int16
+	FdmFormName    [32]WCHAR
+	FdmLogPixels   WORD
+	FdmBitsPerPel  DWORD
+	FdmPelsWidth   DWORD
+	FdmPelsHeight  DWORD
+	F__ccgo17_180  struct {
+		FdmNup          [0]DWORD
+		FdmDisplayFlags DWORD
 	}
-	dmDisplayFrequency DWORD
-	dmICMMethod        DWORD
-	dmICMIntent        DWORD
-	dmMediaType        DWORD
-	dmDitherType       DWORD
-	dmReserved1        DWORD
-	dmReserved2        DWORD
-	dmPanningWidth     DWORD
-	dmPanningHeight    DWORD
+	FdmDisplayFrequency DWORD
+	FdmICMMethod        DWORD
+	FdmICMIntent        DWORD
+	FdmMediaType        DWORD
+	FdmDitherType       DWORD
+	FdmReserved1        DWORD
+	FdmReserved2        DWORD
+	FdmPanningWidth     DWORD
+	FdmPanningHeight    DWORD
 }
 
 type _devicemodeW = DEVMODEW
@@ -19790,52 +19790,52 @@ type NPDEVMODEW = uintptr
 type LPDEVMODEW = uintptr
 
 type DEVMODE = struct {
-	dmDeviceName    [32]BYTE
-	dmSpecVersion   WORD
-	dmDriverVersion WORD
-	dmSize          WORD
-	dmDriverExtra   WORD
-	dmFields        DWORD
-	__ccgo6_44      struct {
-		__ccgo1_0 [0]struct {
-			dmPosition           POINTL
-			dmDisplayOrientation DWORD
-			dmDisplayFixedOutput DWORD
+	FdmDeviceName    [32]BYTE
+	FdmSpecVersion   WORD
+	FdmDriverVersion WORD
+	FdmSize          WORD
+	FdmDriverExtra   WORD
+	FdmFields        DWORD
+	F__ccgo6_44      struct {
+		F__ccgo1_0 [0]struct {
+			FdmPosition           POINTL
+			FdmDisplayOrientation DWORD
+			FdmDisplayFixedOutput DWORD
 		}
-		__ccgo0_0 struct {
-			dmOrientation   int16
-			dmPaperSize     int16
-			dmPaperLength   int16
-			dmPaperWidth    int16
-			dmScale         int16
-			dmCopies        int16
-			dmDefaultSource int16
-			dmPrintQuality  int16
+		F__ccgo0_0 struct {
+			FdmOrientation   int16
+			FdmPaperSize     int16
+			FdmPaperLength   int16
+			FdmPaperWidth    int16
+			FdmScale         int16
+			FdmCopies        int16
+			FdmDefaultSource int16
+			FdmPrintQuality  int16
 		}
 	}
-	dmColor       int16
-	dmDuplex      int16
-	dmYResolution int16
-	dmTTOption    int16
-	dmCollate     int16
-	dmFormName    [32]BYTE
-	dmLogPixels   WORD
-	dmBitsPerPel  DWORD
-	dmPelsWidth   DWORD
-	dmPelsHeight  DWORD
-	__ccgo17_116  struct {
-		dmNup          [0]DWORD
-		dmDisplayFlags DWORD
+	FdmColor       int16
+	FdmDuplex      int16
+	FdmYResolution int16
+	FdmTTOption    int16
+	FdmCollate     int16
+	FdmFormName    [32]BYTE
+	FdmLogPixels   WORD
+	FdmBitsPerPel  DWORD
+	FdmPelsWidth   DWORD
+	FdmPelsHeight  DWORD
+	F__ccgo17_116  struct {
+		FdmNup          [0]DWORD
+		FdmDisplayFlags DWORD
 	}
-	dmDisplayFrequency DWORD
-	dmICMMethod        DWORD
-	dmICMIntent        DWORD
-	dmMediaType        DWORD
-	dmDitherType       DWORD
-	dmReserved1        DWORD
-	dmReserved2        DWORD
-	dmPanningWidth     DWORD
-	dmPanningHeight    DWORD
+	FdmDisplayFrequency DWORD
+	FdmICMMethod        DWORD
+	FdmICMIntent        DWORD
+	FdmMediaType        DWORD
+	FdmDitherType       DWORD
+	FdmReserved1        DWORD
+	FdmReserved2        DWORD
+	FdmPanningWidth     DWORD
+	FdmPanningHeight    DWORD
 }
 
 type PDEVMODE = uintptr
@@ -19845,12 +19845,12 @@ type NPDEVMODE = uintptr
 type LPDEVMODE = uintptr
 
 type DISPLAY_DEVICEA = struct {
-	cb           DWORD
-	DeviceName   [32]CHAR
-	DeviceString [128]CHAR
-	StateFlags   DWORD
-	DeviceID     [128]CHAR
-	DeviceKey    [128]CHAR
+	Fcb           DWORD
+	FDeviceName   [32]CHAR
+	FDeviceString [128]CHAR
+	FStateFlags   DWORD
+	FDeviceID     [128]CHAR
+	FDeviceKey    [128]CHAR
 }
 
 type _DISPLAY_DEVICEA = DISPLAY_DEVICEA
@@ -19860,12 +19860,12 @@ type PDISPLAY_DEVICEA = uintptr
 type LPDISPLAY_DEVICEA = uintptr
 
 type DISPLAY_DEVICEW = struct {
-	cb           DWORD
-	DeviceName   [32]WCHAR
-	DeviceString [128]WCHAR
-	StateFlags   DWORD
-	DeviceID     [128]WCHAR
-	DeviceKey    [128]WCHAR
+	Fcb           DWORD
+	FDeviceName   [32]WCHAR
+	FDeviceString [128]WCHAR
+	FStateFlags   DWORD
+	FDeviceID     [128]WCHAR
+	FDeviceKey    [128]WCHAR
 }
 
 type _DISPLAY_DEVICEW = DISPLAY_DEVICEW
@@ -19875,12 +19875,12 @@ type PDISPLAY_DEVICEW = uintptr
 type LPDISPLAY_DEVICEW = uintptr
 
 type DISPLAY_DEVICE = struct {
-	cb           DWORD
-	DeviceName   [32]CHAR
-	DeviceString [128]CHAR
-	StateFlags   DWORD
-	DeviceID     [128]CHAR
-	DeviceKey    [128]CHAR
+	Fcb           DWORD
+	FDeviceName   [32]CHAR
+	FDeviceString [128]CHAR
+	FStateFlags   DWORD
+	FDeviceID     [128]CHAR
+	FDeviceKey    [128]CHAR
 }
 
 type PDISPLAY_DEVICE = uintptr
@@ -19888,8 +19888,8 @@ type PDISPLAY_DEVICE = uintptr
 type LPDISPLAY_DEVICE = uintptr
 
 type DISPLAYCONFIG_RATIONAL = struct {
-	Numerator   UINT32
-	Denominator UINT32
+	FNumerator   UINT32
+	FDenominator UINT32
 }
 
 type DISPLAYCONFIG_VIDEO_OUTPUT_TECHNOLOGY = int32
@@ -19925,23 +19925,23 @@ const DISPLAYCONFIG_SCANLINE_ORDERING_INTERLACED_LOWERFIELDFIRST = 3
 const DISPLAYCONFIG_SCANLINE_ORDERING_FORCE_UINT32 = 4294967295
 
 type DISPLAYCONFIG_2DREGION = struct {
-	cx UINT32
-	cy UINT32
+	Fcx UINT32
+	Fcy UINT32
 }
 
 type DISPLAYCONFIG_VIDEO_SIGNAL_INFO = struct {
-	pixelRate  UINT64
-	hSyncFreq  DISPLAYCONFIG_RATIONAL
-	vSyncFreq  DISPLAYCONFIG_RATIONAL
-	activeSize DISPLAYCONFIG_2DREGION
-	totalSize  DISPLAYCONFIG_2DREGION
-	__ccgo5_40 struct {
-		videoStandard        [0]UINT32
-		AdditionalSignalInfo struct {
-			__ccgo0 uint32
+	FpixelRate  UINT64
+	FhSyncFreq  DISPLAYCONFIG_RATIONAL
+	FvSyncFreq  DISPLAYCONFIG_RATIONAL
+	FactiveSize DISPLAYCONFIG_2DREGION
+	FtotalSize  DISPLAYCONFIG_2DREGION
+	F__ccgo5_40 struct {
+		FvideoStandard        [0]UINT32
+		FAdditionalSignalInfo struct {
+			F__ccgo0 uint32
 		}
 	}
-	scanLineOrdering DISPLAYCONFIG_SCANLINE_ORDERING
+	FscanLineOrdering DISPLAYCONFIG_SCANLINE_ORDERING
 }
 
 type DISPLAYCONFIG_SCALING = uint32
@@ -19979,66 +19979,66 @@ const DISPLAYCONFIG_PIXELFORMAT_NONGDI = 5
 const DISPLAYCONFIG_PIXELFORMAT_FORCE_UINT32 = 4294967295
 
 type DISPLAYCONFIG_SOURCE_MODE = struct {
-	width       UINT32
-	height      UINT32
-	pixelFormat DISPLAYCONFIG_PIXELFORMAT
-	position    POINTL
+	Fwidth       UINT32
+	Fheight      UINT32
+	FpixelFormat DISPLAYCONFIG_PIXELFORMAT
+	Fposition    POINTL
 }
 
 type DISPLAYCONFIG_TARGET_MODE = struct {
-	targetVideoSignalInfo DISPLAYCONFIG_VIDEO_SIGNAL_INFO
+	FtargetVideoSignalInfo DISPLAYCONFIG_VIDEO_SIGNAL_INFO
 }
 
 type DISPLAYCONFIG_DESKTOP_IMAGE_INFO = struct {
-	PathSourceSize     POINTL
-	DesktopImageRegion RECTL
-	DesktopImageClip   RECTL
+	FPathSourceSize     POINTL
+	FDesktopImageRegion RECTL
+	FDesktopImageClip   RECTL
 }
 
 type DISPLAYCONFIG_MODE_INFO = struct {
-	infoType   DISPLAYCONFIG_MODE_INFO_TYPE
-	id         UINT32
-	adapterId  LUID
-	__ccgo3_16 struct {
-		sourceMode [0]DISPLAYCONFIG_SOURCE_MODE
-		targetMode DISPLAYCONFIG_TARGET_MODE
+	FinfoType   DISPLAYCONFIG_MODE_INFO_TYPE
+	Fid         UINT32
+	FadapterId  LUID
+	F__ccgo3_16 struct {
+		FsourceMode [0]DISPLAYCONFIG_SOURCE_MODE
+		FtargetMode DISPLAYCONFIG_TARGET_MODE
 	}
 }
 
 type DISPLAYCONFIG_PATH_SOURCE_INFO = struct {
-	adapterId  LUID
-	id         UINT32
-	__ccgo2_12 struct {
-		__ccgo1_0 [0]struct {
-			__ccgo0 uint32
+	FadapterId  LUID
+	Fid         UINT32
+	F__ccgo2_12 struct {
+		F__ccgo1_0 [0]struct {
+			F__ccgo0 uint32
 		}
-		modeInfoIdx UINT32
+		FmodeInfoIdx UINT32
 	}
-	statusFlags UINT32
+	FstatusFlags UINT32
 }
 
 type DISPLAYCONFIG_PATH_TARGET_INFO = struct {
-	adapterId  LUID
-	id         UINT32
-	__ccgo2_12 struct {
-		__ccgo1_0 [0]struct {
-			__ccgo0 uint32
+	FadapterId  LUID
+	Fid         UINT32
+	F__ccgo2_12 struct {
+		F__ccgo1_0 [0]struct {
+			F__ccgo0 uint32
 		}
-		modeInfoIdx UINT32
+		FmodeInfoIdx UINT32
 	}
-	outputTechnology DISPLAYCONFIG_VIDEO_OUTPUT_TECHNOLOGY
-	rotation         DISPLAYCONFIG_ROTATION
-	scaling          DISPLAYCONFIG_SCALING
-	refreshRate      DISPLAYCONFIG_RATIONAL
-	scanLineOrdering DISPLAYCONFIG_SCANLINE_ORDERING
-	targetAvailable  WINBOOL
-	statusFlags      UINT32
+	FoutputTechnology DISPLAYCONFIG_VIDEO_OUTPUT_TECHNOLOGY
+	Frotation         DISPLAYCONFIG_ROTATION
+	Fscaling          DISPLAYCONFIG_SCALING
+	FrefreshRate      DISPLAYCONFIG_RATIONAL
+	FscanLineOrdering DISPLAYCONFIG_SCANLINE_ORDERING
+	FtargetAvailable  WINBOOL
+	FstatusFlags      UINT32
 }
 
 type DISPLAYCONFIG_PATH_INFO = struct {
-	sourceInfo DISPLAYCONFIG_PATH_SOURCE_INFO
-	targetInfo DISPLAYCONFIG_PATH_TARGET_INFO
-	flags      UINT32
+	FsourceInfo DISPLAYCONFIG_PATH_SOURCE_INFO
+	FtargetInfo DISPLAYCONFIG_PATH_TARGET_INFO
+	Fflags      UINT32
 }
 
 type DISPLAYCONFIG_TOPOLOGY_ID = uint32
@@ -20065,70 +20065,70 @@ const DISPLAYCONFIG_DEVICE_INFO_GET_SDR_WHITE_LEVEL = 11
 const DISPLAYCONFIG_DEVICE_INFO_FORCE_UINT32 = 4294967295
 
 type DISPLAYCONFIG_DEVICE_INFO_HEADER = struct {
-	type1     DISPLAYCONFIG_DEVICE_INFO_TYPE
-	size      UINT32
-	adapterId LUID
-	id        UINT32
+	Ftype1     DISPLAYCONFIG_DEVICE_INFO_TYPE
+	Fsize      UINT32
+	FadapterId LUID
+	Fid        UINT32
 }
 
 type DISPLAYCONFIG_SOURCE_DEVICE_NAME = struct {
-	header            DISPLAYCONFIG_DEVICE_INFO_HEADER
-	viewGdiDeviceName [32]WCHAR
+	Fheader            DISPLAYCONFIG_DEVICE_INFO_HEADER
+	FviewGdiDeviceName [32]WCHAR
 }
 
 type DISPLAYCONFIG_TARGET_DEVICE_NAME_FLAGS = struct {
-	__ccgo0_0 struct {
-		value     [0]UINT32
-		__ccgo0_0 struct {
-			__ccgo0 uint32
+	F__ccgo0_0 struct {
+		Fvalue     [0]UINT32
+		F__ccgo0_0 struct {
+			F__ccgo0 uint32
 		}
 	}
 }
 
 type DISPLAYCONFIG_TARGET_DEVICE_NAME = struct {
-	header                    DISPLAYCONFIG_DEVICE_INFO_HEADER
-	flags                     DISPLAYCONFIG_TARGET_DEVICE_NAME_FLAGS
-	outputTechnology          DISPLAYCONFIG_VIDEO_OUTPUT_TECHNOLOGY
-	edidManufactureId         UINT16
-	edidProductCodeId         UINT16
-	connectorInstance         UINT32
-	monitorFriendlyDeviceName [64]WCHAR
-	monitorDevicePath         [128]WCHAR
+	Fheader                    DISPLAYCONFIG_DEVICE_INFO_HEADER
+	Fflags                     DISPLAYCONFIG_TARGET_DEVICE_NAME_FLAGS
+	FoutputTechnology          DISPLAYCONFIG_VIDEO_OUTPUT_TECHNOLOGY
+	FedidManufactureId         UINT16
+	FedidProductCodeId         UINT16
+	FconnectorInstance         UINT32
+	FmonitorFriendlyDeviceName [64]WCHAR
+	FmonitorDevicePath         [128]WCHAR
 }
 
 type DISPLAYCONFIG_TARGET_PREFERRED_MODE = struct {
-	header     DISPLAYCONFIG_DEVICE_INFO_HEADER
-	width      UINT32
-	height     UINT32
-	targetMode DISPLAYCONFIG_TARGET_MODE
+	Fheader     DISPLAYCONFIG_DEVICE_INFO_HEADER
+	Fwidth      UINT32
+	Fheight     UINT32
+	FtargetMode DISPLAYCONFIG_TARGET_MODE
 }
 
 type DISPLAYCONFIG_ADAPTER_NAME = struct {
-	header            DISPLAYCONFIG_DEVICE_INFO_HEADER
-	adapterDevicePath [128]WCHAR
+	Fheader            DISPLAYCONFIG_DEVICE_INFO_HEADER
+	FadapterDevicePath [128]WCHAR
 }
 
 type DISPLAYCONFIG_TARGET_BASE_TYPE = struct {
-	header               DISPLAYCONFIG_DEVICE_INFO_HEADER
-	baseOutputTechnology DISPLAYCONFIG_VIDEO_OUTPUT_TECHNOLOGY
+	Fheader               DISPLAYCONFIG_DEVICE_INFO_HEADER
+	FbaseOutputTechnology DISPLAYCONFIG_VIDEO_OUTPUT_TECHNOLOGY
 }
 
 type DISPLAYCONFIG_SET_TARGET_PERSISTENCE = struct {
-	header     DISPLAYCONFIG_DEVICE_INFO_HEADER
-	__ccgo1_20 struct {
-		value     [0]UINT32
-		__ccgo0_0 struct {
-			__ccgo0 uint32
+	Fheader     DISPLAYCONFIG_DEVICE_INFO_HEADER
+	F__ccgo1_20 struct {
+		Fvalue     [0]UINT32
+		F__ccgo0_0 struct {
+			F__ccgo0 uint32
 		}
 	}
 }
 
 type DISPLAYCONFIG_SUPPORT_VIRTUAL_RESOLUTION = struct {
-	header     DISPLAYCONFIG_DEVICE_INFO_HEADER
-	__ccgo1_20 struct {
-		value     [0]UINT32
-		__ccgo0_0 struct {
-			__ccgo0 uint32
+	Fheader     DISPLAYCONFIG_DEVICE_INFO_HEADER
+	F__ccgo1_20 struct {
+		Fvalue     [0]UINT32
+		F__ccgo0_0 struct {
+			F__ccgo0 uint32
 		}
 	}
 }
@@ -20145,25 +20145,25 @@ const DISPLAYCONFIG_COLOR_ENCODING_INTENSITY = 4
 const DISPLAYCONFIG_COLOR_ENCODING_FORCE_UINT32 = 4294967295
 
 type DISPLAYCONFIG_GET_ADVANCED_COLOR_INFO = struct {
-	header     DISPLAYCONFIG_DEVICE_INFO_HEADER
-	__ccgo1_20 struct {
-		value     [0]UINT32
-		__ccgo0_0 struct {
-			__ccgo0 uint32
+	Fheader     DISPLAYCONFIG_DEVICE_INFO_HEADER
+	F__ccgo1_20 struct {
+		Fvalue     [0]UINT32
+		F__ccgo0_0 struct {
+			F__ccgo0 uint32
 		}
 	}
-	colorEncoding       DISPLAYCONFIG_COLOR_ENCODING
-	bitsPerColorChannel UINT32
+	FcolorEncoding       DISPLAYCONFIG_COLOR_ENCODING
+	FbitsPerColorChannel UINT32
 }
 
 type _DISPLAYCONFIG_GET_ADVANCED_COLOR_INFO = DISPLAYCONFIG_GET_ADVANCED_COLOR_INFO
 
 type DISPLAYCONFIG_SET_ADVANCED_COLOR_STATE = struct {
-	header     DISPLAYCONFIG_DEVICE_INFO_HEADER
-	__ccgo1_20 struct {
-		value     [0]UINT32
-		__ccgo0_0 struct {
-			__ccgo0 uint32
+	Fheader     DISPLAYCONFIG_DEVICE_INFO_HEADER
+	F__ccgo1_20 struct {
+		Fvalue     [0]UINT32
+		F__ccgo0_0 struct {
+			F__ccgo0 uint32
 		}
 	}
 }
@@ -20171,18 +20171,18 @@ type DISPLAYCONFIG_SET_ADVANCED_COLOR_STATE = struct {
 type _DISPLAYCONFIG_SET_ADVANCED_COLOR_STATE = DISPLAYCONFIG_SET_ADVANCED_COLOR_STATE
 
 type DISPLAYCONFIG_SDR_WHITE_LEVEL = struct {
-	header        DISPLAYCONFIG_DEVICE_INFO_HEADER
-	SDRWhiteLevel ULONG
+	Fheader        DISPLAYCONFIG_DEVICE_INFO_HEADER
+	FSDRWhiteLevel ULONG
 }
 
 type _DISPLAYCONFIG_SDR_WHITE_LEVEL = DISPLAYCONFIG_SDR_WHITE_LEVEL
 
 type RGNDATAHEADER = struct {
-	dwSize   DWORD
-	iType    DWORD
-	nCount   DWORD
-	nRgnSize DWORD
-	rcBound  RECT
+	FdwSize   DWORD
+	FiType    DWORD
+	FnCount   DWORD
+	FnRgnSize DWORD
+	FrcBound  RECT
 }
 
 type _RGNDATAHEADER = RGNDATAHEADER
@@ -20190,8 +20190,8 @@ type _RGNDATAHEADER = RGNDATAHEADER
 type PRGNDATAHEADER = uintptr
 
 type RGNDATA = struct {
-	rdh    RGNDATAHEADER
-	Buffer [1]int8
+	Frdh    RGNDATAHEADER
+	FBuffer [1]int8
 }
 
 type _RGNDATA = RGNDATA
@@ -20203,9 +20203,9 @@ type NPRGNDATA = uintptr
 type LPRGNDATA = uintptr
 
 type ABC = struct {
-	abcA int32
-	abcB UINT
-	abcC int32
+	FabcA int32
+	FabcB UINT
+	FabcC int32
 }
 
 type _ABC = ABC
@@ -20217,9 +20217,9 @@ type NPABC = uintptr
 type LPABC = uintptr
 
 type ABCFLOAT = struct {
-	abcfA FLOAT
-	abcfB FLOAT
-	abcfC FLOAT
+	FabcfA FLOAT
+	FabcfB FLOAT
+	FabcfC FLOAT
 }
 
 type _ABCFLOAT = ABCFLOAT
@@ -20231,38 +20231,38 @@ type NPABCFLOAT = uintptr
 type LPABCFLOAT = uintptr
 
 type OUTLINETEXTMETRICA = struct {
-	otmSize                UINT
-	otmTextMetrics         TEXTMETRICA
-	otmFiller              BYTE
-	otmPanoseNumber        PANOSE
-	otmfsSelection         UINT
-	otmfsType              UINT
-	otmsCharSlopeRise      int32
-	otmsCharSlopeRun       int32
-	otmItalicAngle         int32
-	otmEMSquare            UINT
-	otmAscent              int32
-	otmDescent             int32
-	otmLineGap             UINT
-	otmsCapEmHeight        UINT
-	otmsXHeight            UINT
-	otmrcFontBox           RECT
-	otmMacAscent           int32
-	otmMacDescent          int32
-	otmMacLineGap          UINT
-	otmusMinimumPPEM       UINT
-	otmptSubscriptSize     POINT
-	otmptSubscriptOffset   POINT
-	otmptSuperscriptSize   POINT
-	otmptSuperscriptOffset POINT
-	otmsStrikeoutSize      UINT
-	otmsStrikeoutPosition  int32
-	otmsUnderscoreSize     int32
-	otmsUnderscorePosition int32
-	otmpFamilyName         PSTR
-	otmpFaceName           PSTR
-	otmpStyleName          PSTR
-	otmpFullName           PSTR
+	FotmSize                UINT
+	FotmTextMetrics         TEXTMETRICA
+	FotmFiller              BYTE
+	FotmPanoseNumber        PANOSE
+	FotmfsSelection         UINT
+	FotmfsType              UINT
+	FotmsCharSlopeRise      int32
+	FotmsCharSlopeRun       int32
+	FotmItalicAngle         int32
+	FotmEMSquare            UINT
+	FotmAscent              int32
+	FotmDescent             int32
+	FotmLineGap             UINT
+	FotmsCapEmHeight        UINT
+	FotmsXHeight            UINT
+	FotmrcFontBox           RECT
+	FotmMacAscent           int32
+	FotmMacDescent          int32
+	FotmMacLineGap          UINT
+	FotmusMinimumPPEM       UINT
+	FotmptSubscriptSize     POINT
+	FotmptSubscriptOffset   POINT
+	FotmptSuperscriptSize   POINT
+	FotmptSuperscriptOffset POINT
+	FotmsStrikeoutSize      UINT
+	FotmsStrikeoutPosition  int32
+	FotmsUnderscoreSize     int32
+	FotmsUnderscorePosition int32
+	FotmpFamilyName         PSTR
+	FotmpFaceName           PSTR
+	FotmpStyleName          PSTR
+	FotmpFullName           PSTR
 }
 
 type _OUTLINETEXTMETRICA = OUTLINETEXTMETRICA
@@ -20274,38 +20274,38 @@ type NPOUTLINETEXTMETRICA = uintptr
 type LPOUTLINETEXTMETRICA = uintptr
 
 type OUTLINETEXTMETRICW = struct {
-	otmSize                UINT
-	otmTextMetrics         TEXTMETRICW
-	otmFiller              BYTE
-	otmPanoseNumber        PANOSE
-	otmfsSelection         UINT
-	otmfsType              UINT
-	otmsCharSlopeRise      int32
-	otmsCharSlopeRun       int32
-	otmItalicAngle         int32
-	otmEMSquare            UINT
-	otmAscent              int32
-	otmDescent             int32
-	otmLineGap             UINT
-	otmsCapEmHeight        UINT
-	otmsXHeight            UINT
-	otmrcFontBox           RECT
-	otmMacAscent           int32
-	otmMacDescent          int32
-	otmMacLineGap          UINT
-	otmusMinimumPPEM       UINT
-	otmptSubscriptSize     POINT
-	otmptSubscriptOffset   POINT
-	otmptSuperscriptSize   POINT
-	otmptSuperscriptOffset POINT
-	otmsStrikeoutSize      UINT
-	otmsStrikeoutPosition  int32
-	otmsUnderscoreSize     int32
-	otmsUnderscorePosition int32
-	otmpFamilyName         PSTR
-	otmpFaceName           PSTR
-	otmpStyleName          PSTR
-	otmpFullName           PSTR
+	FotmSize                UINT
+	FotmTextMetrics         TEXTMETRICW
+	FotmFiller              BYTE
+	FotmPanoseNumber        PANOSE
+	FotmfsSelection         UINT
+	FotmfsType              UINT
+	FotmsCharSlopeRise      int32
+	FotmsCharSlopeRun       int32
+	FotmItalicAngle         int32
+	FotmEMSquare            UINT
+	FotmAscent              int32
+	FotmDescent             int32
+	FotmLineGap             UINT
+	FotmsCapEmHeight        UINT
+	FotmsXHeight            UINT
+	FotmrcFontBox           RECT
+	FotmMacAscent           int32
+	FotmMacDescent          int32
+	FotmMacLineGap          UINT
+	FotmusMinimumPPEM       UINT
+	FotmptSubscriptSize     POINT
+	FotmptSubscriptOffset   POINT
+	FotmptSuperscriptSize   POINT
+	FotmptSuperscriptOffset POINT
+	FotmsStrikeoutSize      UINT
+	FotmsStrikeoutPosition  int32
+	FotmsUnderscoreSize     int32
+	FotmsUnderscorePosition int32
+	FotmpFamilyName         PSTR
+	FotmpFaceName           PSTR
+	FotmpStyleName          PSTR
+	FotmpFullName           PSTR
 }
 
 type _OUTLINETEXTMETRICW = OUTLINETEXTMETRICW
@@ -20317,38 +20317,38 @@ type NPOUTLINETEXTMETRICW = uintptr
 type LPOUTLINETEXTMETRICW = uintptr
 
 type OUTLINETEXTMETRIC = struct {
-	otmSize                UINT
-	otmTextMetrics         TEXTMETRICA
-	otmFiller              BYTE
-	otmPanoseNumber        PANOSE
-	otmfsSelection         UINT
-	otmfsType              UINT
-	otmsCharSlopeRise      int32
-	otmsCharSlopeRun       int32
-	otmItalicAngle         int32
-	otmEMSquare            UINT
-	otmAscent              int32
-	otmDescent             int32
-	otmLineGap             UINT
-	otmsCapEmHeight        UINT
-	otmsXHeight            UINT
-	otmrcFontBox           RECT
-	otmMacAscent           int32
-	otmMacDescent          int32
-	otmMacLineGap          UINT
-	otmusMinimumPPEM       UINT
-	otmptSubscriptSize     POINT
-	otmptSubscriptOffset   POINT
-	otmptSuperscriptSize   POINT
-	otmptSuperscriptOffset POINT
-	otmsStrikeoutSize      UINT
-	otmsStrikeoutPosition  int32
-	otmsUnderscoreSize     int32
-	otmsUnderscorePosition int32
-	otmpFamilyName         PSTR
-	otmpFaceName           PSTR
-	otmpStyleName          PSTR
-	otmpFullName           PSTR
+	FotmSize                UINT
+	FotmTextMetrics         TEXTMETRICA
+	FotmFiller              BYTE
+	FotmPanoseNumber        PANOSE
+	FotmfsSelection         UINT
+	FotmfsType              UINT
+	FotmsCharSlopeRise      int32
+	FotmsCharSlopeRun       int32
+	FotmItalicAngle         int32
+	FotmEMSquare            UINT
+	FotmAscent              int32
+	FotmDescent             int32
+	FotmLineGap             UINT
+	FotmsCapEmHeight        UINT
+	FotmsXHeight            UINT
+	FotmrcFontBox           RECT
+	FotmMacAscent           int32
+	FotmMacDescent          int32
+	FotmMacLineGap          UINT
+	FotmusMinimumPPEM       UINT
+	FotmptSubscriptSize     POINT
+	FotmptSubscriptOffset   POINT
+	FotmptSuperscriptSize   POINT
+	FotmptSuperscriptOffset POINT
+	FotmsStrikeoutSize      UINT
+	FotmsStrikeoutPosition  int32
+	FotmsUnderscoreSize     int32
+	FotmsUnderscorePosition int32
+	FotmpFamilyName         PSTR
+	FotmpFaceName           PSTR
+	FotmpStyleName          PSTR
+	FotmpFullName           PSTR
 }
 
 type POUTLINETEXTMETRIC = uintptr
@@ -20358,13 +20358,13 @@ type NPOUTLINETEXTMETRIC = uintptr
 type LPOUTLINETEXTMETRIC = uintptr
 
 type POLYTEXTA = struct {
-	x       int32
-	y       int32
-	n       UINT
-	lpstr   LPCSTR
-	uiFlags UINT
-	rcl     RECT
-	pdx     uintptr
+	Fx       int32
+	Fy       int32
+	Fn       UINT
+	Flpstr   LPCSTR
+	FuiFlags UINT
+	Frcl     RECT
+	Fpdx     uintptr
 }
 
 type tagPOLYTEXTA = POLYTEXTA
@@ -20376,13 +20376,13 @@ type NPPOLYTEXTA = uintptr
 type LPPOLYTEXTA = uintptr
 
 type POLYTEXTW = struct {
-	x       int32
-	y       int32
-	n       UINT
-	lpstr   LPCWSTR
-	uiFlags UINT
-	rcl     RECT
-	pdx     uintptr
+	Fx       int32
+	Fy       int32
+	Fn       UINT
+	Flpstr   LPCWSTR
+	FuiFlags UINT
+	Frcl     RECT
+	Fpdx     uintptr
 }
 
 type tagPOLYTEXTW = POLYTEXTW
@@ -20394,13 +20394,13 @@ type NPPOLYTEXTW = uintptr
 type LPPOLYTEXTW = uintptr
 
 type POLYTEXT = struct {
-	x       int32
-	y       int32
-	n       UINT
-	lpstr   LPCSTR
-	uiFlags UINT
-	rcl     RECT
-	pdx     uintptr
+	Fx       int32
+	Fy       int32
+	Fn       UINT
+	Flpstr   LPCSTR
+	FuiFlags UINT
+	Frcl     RECT
+	Fpdx     uintptr
 }
 
 type PPOLYTEXT = uintptr
@@ -20410,17 +20410,17 @@ type NPPOLYTEXT = uintptr
 type LPPOLYTEXT = uintptr
 
 type FIXED = struct {
-	fract WORD
-	value int16
+	Ffract WORD
+	Fvalue int16
 }
 
 type _FIXED = FIXED
 
 type MAT2 = struct {
-	eM11 FIXED
-	eM12 FIXED
-	eM21 FIXED
-	eM22 FIXED
+	FeM11 FIXED
+	FeM12 FIXED
+	FeM21 FIXED
+	FeM22 FIXED
 }
 
 type _MAT2 = MAT2
@@ -20428,11 +20428,11 @@ type _MAT2 = MAT2
 type LPMAT2 = uintptr
 
 type GLYPHMETRICS = struct {
-	gmBlackBoxX     UINT
-	gmBlackBoxY     UINT
-	gmptGlyphOrigin POINT
-	gmCellIncX      int16
-	gmCellIncY      int16
+	FgmBlackBoxX     UINT
+	FgmBlackBoxY     UINT
+	FgmptGlyphOrigin POINT
+	FgmCellIncX      int16
+	FgmCellIncY      int16
 }
 
 type _GLYPHMETRICS = GLYPHMETRICS
@@ -20440,8 +20440,8 @@ type _GLYPHMETRICS = GLYPHMETRICS
 type LPGLYPHMETRICS = uintptr
 
 type POINTFX = struct {
-	x FIXED
-	y FIXED
+	Fx FIXED
+	Fy FIXED
 }
 
 type tagPOINTFX = POINTFX
@@ -20449,9 +20449,9 @@ type tagPOINTFX = POINTFX
 type LPPOINTFX = uintptr
 
 type TTPOLYCURVE = struct {
-	wType WORD
-	cpfx  WORD
-	apfx  [1]POINTFX
+	FwType WORD
+	Fcpfx  WORD
+	Fapfx  [1]POINTFX
 }
 
 type tagTTPOLYCURVE = TTPOLYCURVE
@@ -20459,9 +20459,9 @@ type tagTTPOLYCURVE = TTPOLYCURVE
 type LPTTPOLYCURVE = uintptr
 
 type TTPOLYGONHEADER = struct {
-	cb       DWORD
-	dwType   DWORD
-	pfxStart POINTFX
+	Fcb       DWORD
+	FdwType   DWORD
+	FpfxStart POINTFX
 }
 
 type tagTTPOLYGONHEADER = TTPOLYGONHEADER
@@ -20469,15 +20469,15 @@ type tagTTPOLYGONHEADER = TTPOLYGONHEADER
 type LPTTPOLYGONHEADER = uintptr
 
 type GCP_RESULTSA = struct {
-	lStructSize DWORD
-	lpOutString LPSTR
-	lpOrder     uintptr
-	lpDx        uintptr
-	lpCaretPos  uintptr
-	lpClass     LPSTR
-	lpGlyphs    LPWSTR
-	nGlyphs     UINT
-	nMaxFit     int32
+	FlStructSize DWORD
+	FlpOutString LPSTR
+	FlpOrder     uintptr
+	FlpDx        uintptr
+	FlpCaretPos  uintptr
+	FlpClass     LPSTR
+	FlpGlyphs    LPWSTR
+	FnGlyphs     UINT
+	FnMaxFit     int32
 }
 
 type tagGCP_RESULTSA = GCP_RESULTSA
@@ -20485,15 +20485,15 @@ type tagGCP_RESULTSA = GCP_RESULTSA
 type LPGCP_RESULTSA = uintptr
 
 type GCP_RESULTSW = struct {
-	lStructSize DWORD
-	lpOutString LPWSTR
-	lpOrder     uintptr
-	lpDx        uintptr
-	lpCaretPos  uintptr
-	lpClass     LPSTR
-	lpGlyphs    LPWSTR
-	nGlyphs     UINT
-	nMaxFit     int32
+	FlStructSize DWORD
+	FlpOutString LPWSTR
+	FlpOrder     uintptr
+	FlpDx        uintptr
+	FlpCaretPos  uintptr
+	FlpClass     LPSTR
+	FlpGlyphs    LPWSTR
+	FnGlyphs     UINT
+	FnMaxFit     int32
 }
 
 type tagGCP_RESULTSW = GCP_RESULTSW
@@ -20501,23 +20501,23 @@ type tagGCP_RESULTSW = GCP_RESULTSW
 type LPGCP_RESULTSW = uintptr
 
 type GCP_RESULTS = struct {
-	lStructSize DWORD
-	lpOutString LPSTR
-	lpOrder     uintptr
-	lpDx        uintptr
-	lpCaretPos  uintptr
-	lpClass     LPSTR
-	lpGlyphs    LPWSTR
-	nGlyphs     UINT
-	nMaxFit     int32
+	FlStructSize DWORD
+	FlpOutString LPSTR
+	FlpOrder     uintptr
+	FlpDx        uintptr
+	FlpCaretPos  uintptr
+	FlpClass     LPSTR
+	FlpGlyphs    LPWSTR
+	FnGlyphs     UINT
+	FnMaxFit     int32
 }
 
 type LPGCP_RESULTS = uintptr
 
 type RASTERIZER_STATUS = struct {
-	nSize       int16
-	wFlags      int16
-	nLanguageID int16
+	FnSize       int16
+	FwFlags      int16
+	FnLanguageID int16
 }
 
 type _RASTERIZER_STATUS = RASTERIZER_STATUS
@@ -20525,32 +20525,32 @@ type _RASTERIZER_STATUS = RASTERIZER_STATUS
 type LPRASTERIZER_STATUS = uintptr
 
 type PIXELFORMATDESCRIPTOR = struct {
-	nSize           WORD
-	nVersion        WORD
-	dwFlags         DWORD
-	iPixelType      BYTE
-	cColorBits      BYTE
-	cRedBits        BYTE
-	cRedShift       BYTE
-	cGreenBits      BYTE
-	cGreenShift     BYTE
-	cBlueBits       BYTE
-	cBlueShift      BYTE
-	cAlphaBits      BYTE
-	cAlphaShift     BYTE
-	cAccumBits      BYTE
-	cAccumRedBits   BYTE
-	cAccumGreenBits BYTE
-	cAccumBlueBits  BYTE
-	cAccumAlphaBits BYTE
-	cDepthBits      BYTE
-	cStencilBits    BYTE
-	cAuxBuffers     BYTE
-	iLayerType      BYTE
-	bReserved       BYTE
-	dwLayerMask     DWORD
-	dwVisibleMask   DWORD
-	dwDamageMask    DWORD
+	FnSize           WORD
+	FnVersion        WORD
+	FdwFlags         DWORD
+	FiPixelType      BYTE
+	FcColorBits      BYTE
+	FcRedBits        BYTE
+	FcRedShift       BYTE
+	FcGreenBits      BYTE
+	FcGreenShift     BYTE
+	FcBlueBits       BYTE
+	FcBlueShift      BYTE
+	FcAlphaBits      BYTE
+	FcAlphaShift     BYTE
+	FcAccumBits      BYTE
+	FcAccumRedBits   BYTE
+	FcAccumGreenBits BYTE
+	FcAccumBlueBits  BYTE
+	FcAccumAlphaBits BYTE
+	FcDepthBits      BYTE
+	FcStencilBits    BYTE
+	FcAuxBuffers     BYTE
+	FiLayerType      BYTE
+	FbReserved       BYTE
+	FdwLayerMask     DWORD
+	FdwVisibleMask   DWORD
+	FdwDamageMask    DWORD
 }
 
 type tagPIXELFORMATDESCRIPTOR = PIXELFORMATDESCRIPTOR
@@ -20578,8 +20578,8 @@ type LPFNDEVMODE = uintptr
 type LPFNDEVCAPS = uintptr
 
 type WCRANGE = struct {
-	wcLow   WCHAR
-	cGlyphs USHORT
+	FwcLow   WCHAR
+	FcGlyphs USHORT
 }
 
 type tagWCRANGE = WCRANGE
@@ -20589,11 +20589,11 @@ type PWCRANGE = uintptr
 type LPWCRANGE = uintptr
 
 type GLYPHSET = struct {
-	cbThis           DWORD
-	flAccel          DWORD
-	cGlyphsSupported DWORD
-	cRanges          DWORD
-	ranges           [1]WCRANGE
+	FcbThis           DWORD
+	FflAccel          DWORD
+	FcGlyphsSupported DWORD
+	FcRanges          DWORD
+	Franges           [1]WCRANGE
 }
 
 type tagGLYPHSET = GLYPHSET
@@ -20603,9 +20603,9 @@ type PGLYPHSET = uintptr
 type LPGLYPHSET = uintptr
 
 type DESIGNVECTOR = struct {
-	dvReserved DWORD
-	dvNumAxes  DWORD
-	dvValues   [16]LONG
+	FdvReserved DWORD
+	FdvNumAxes  DWORD
+	FdvValues   [16]LONG
 }
 
 type tagDESIGNVECTOR = DESIGNVECTOR
@@ -20615,9 +20615,9 @@ type PDESIGNVECTOR = uintptr
 type LPDESIGNVECTOR = uintptr
 
 type AXISINFOA = struct {
-	axMinValue LONG
-	axMaxValue LONG
-	axAxisName [16]BYTE
+	FaxMinValue LONG
+	FaxMaxValue LONG
+	FaxAxisName [16]BYTE
 }
 
 type tagAXISINFOA = AXISINFOA
@@ -20627,9 +20627,9 @@ type PAXISINFOA = uintptr
 type LPAXISINFOA = uintptr
 
 type AXISINFOW = struct {
-	axMinValue LONG
-	axMaxValue LONG
-	axAxisName [16]WCHAR
+	FaxMinValue LONG
+	FaxMaxValue LONG
+	FaxAxisName [16]WCHAR
 }
 
 type tagAXISINFOW = AXISINFOW
@@ -20639,9 +20639,9 @@ type PAXISINFOW = uintptr
 type LPAXISINFOW = uintptr
 
 type AXISINFO = struct {
-	axMinValue LONG
-	axMaxValue LONG
-	axAxisName [16]BYTE
+	FaxMinValue LONG
+	FaxMaxValue LONG
+	FaxAxisName [16]BYTE
 }
 
 type PAXISINFO = uintptr
@@ -20649,9 +20649,9 @@ type PAXISINFO = uintptr
 type LPAXISINFO = uintptr
 
 type AXESLISTA = struct {
-	axlReserved DWORD
-	axlNumAxes  DWORD
-	axlAxisInfo [16]AXISINFOA
+	FaxlReserved DWORD
+	FaxlNumAxes  DWORD
+	FaxlAxisInfo [16]AXISINFOA
 }
 
 type tagAXESLISTA = AXESLISTA
@@ -20661,9 +20661,9 @@ type PAXESLISTA = uintptr
 type LPAXESLISTA = uintptr
 
 type AXESLISTW = struct {
-	axlReserved DWORD
-	axlNumAxes  DWORD
-	axlAxisInfo [16]AXISINFOW
+	FaxlReserved DWORD
+	FaxlNumAxes  DWORD
+	FaxlAxisInfo [16]AXISINFOW
 }
 
 type tagAXESLISTW = AXESLISTW
@@ -20673,9 +20673,9 @@ type PAXESLISTW = uintptr
 type LPAXESLISTW = uintptr
 
 type AXESLIST = struct {
-	axlReserved DWORD
-	axlNumAxes  DWORD
-	axlAxisInfo [16]AXISINFOA
+	FaxlReserved DWORD
+	FaxlNumAxes  DWORD
+	FaxlAxisInfo [16]AXISINFOA
 }
 
 type PAXESLIST = uintptr
@@ -20683,8 +20683,8 @@ type PAXESLIST = uintptr
 type LPAXESLIST = uintptr
 
 type ENUMLOGFONTEXDVA = struct {
-	elfEnumLogfontEx ENUMLOGFONTEXA
-	elfDesignVector  DESIGNVECTOR
+	FelfEnumLogfontEx ENUMLOGFONTEXA
+	FelfDesignVector  DESIGNVECTOR
 }
 
 type tagENUMLOGFONTEXDVA = ENUMLOGFONTEXDVA
@@ -20694,8 +20694,8 @@ type PENUMLOGFONTEXDVA = uintptr
 type LPENUMLOGFONTEXDVA = uintptr
 
 type ENUMLOGFONTEXDVW = struct {
-	elfEnumLogfontEx ENUMLOGFONTEXW
-	elfDesignVector  DESIGNVECTOR
+	FelfEnumLogfontEx ENUMLOGFONTEXW
+	FelfDesignVector  DESIGNVECTOR
 }
 
 type tagENUMLOGFONTEXDVW = ENUMLOGFONTEXDVW
@@ -20705,8 +20705,8 @@ type PENUMLOGFONTEXDVW = uintptr
 type LPENUMLOGFONTEXDVW = uintptr
 
 type ENUMLOGFONTEXDV = struct {
-	elfEnumLogfontEx ENUMLOGFONTEXA
-	elfDesignVector  DESIGNVECTOR
+	FelfEnumLogfontEx ENUMLOGFONTEXA
+	FelfDesignVector  DESIGNVECTOR
 }
 
 type PENUMLOGFONTEXDV = uintptr
@@ -20714,8 +20714,8 @@ type PENUMLOGFONTEXDV = uintptr
 type LPENUMLOGFONTEXDV = uintptr
 
 type ENUMTEXTMETRICA = struct {
-	etmNewTextMetricEx NEWTEXTMETRICEXA
-	etmAxesList        AXESLISTA
+	FetmNewTextMetricEx NEWTEXTMETRICEXA
+	FetmAxesList        AXESLISTA
 }
 
 type tagENUMTEXTMETRICA = ENUMTEXTMETRICA
@@ -20725,8 +20725,8 @@ type PENUMTEXTMETRICA = uintptr
 type LPENUMTEXTMETRICA = uintptr
 
 type ENUMTEXTMETRICW = struct {
-	etmNewTextMetricEx NEWTEXTMETRICEXW
-	etmAxesList        AXESLISTW
+	FetmNewTextMetricEx NEWTEXTMETRICEXW
+	FetmAxesList        AXESLISTW
 }
 
 type tagENUMTEXTMETRICW = ENUMTEXTMETRICW
@@ -20736,8 +20736,8 @@ type PENUMTEXTMETRICW = uintptr
 type LPENUMTEXTMETRICW = uintptr
 
 type ENUMTEXTMETRIC = struct {
-	etmNewTextMetricEx NEWTEXTMETRICEXA
-	etmAxesList        AXESLISTA
+	FetmNewTextMetricEx NEWTEXTMETRICEXA
+	FetmAxesList        AXESLISTA
 }
 
 type PENUMTEXTMETRIC = uintptr
@@ -20747,12 +20747,12 @@ type LPENUMTEXTMETRIC = uintptr
 type COLOR16 = uint16
 
 type TRIVERTEX = struct {
-	x     LONG
-	y     LONG
-	Red   COLOR16
-	Green COLOR16
-	Blue  COLOR16
-	Alpha COLOR16
+	Fx     LONG
+	Fy     LONG
+	FRed   COLOR16
+	FGreen COLOR16
+	FBlue  COLOR16
+	FAlpha COLOR16
 }
 
 type _TRIVERTEX = TRIVERTEX
@@ -20762,9 +20762,9 @@ type PTRIVERTEX = uintptr
 type LPTRIVERTEX = uintptr
 
 type GRADIENT_TRIANGLE = struct {
-	Vertex1 ULONG
-	Vertex2 ULONG
-	Vertex3 ULONG
+	FVertex1 ULONG
+	FVertex2 ULONG
+	FVertex3 ULONG
 }
 
 type _GRADIENT_TRIANGLE = GRADIENT_TRIANGLE
@@ -20774,8 +20774,8 @@ type PGRADIENT_TRIANGLE = uintptr
 type LPGRADIENT_TRIANGLE = uintptr
 
 type GRADIENT_RECT = struct {
-	UpperLeft  ULONG
-	LowerRight ULONG
+	FUpperLeft  ULONG
+	FLowerRight ULONG
 }
 
 type _GRADIENT_RECT = GRADIENT_RECT
@@ -20785,10 +20785,10 @@ type PGRADIENT_RECT = uintptr
 type LPGRADIENT_RECT = uintptr
 
 type BLENDFUNCTION = struct {
-	BlendOp             BYTE
-	BlendFlags          BYTE
-	SourceConstantAlpha BYTE
-	AlphaFormat         BYTE
+	FBlendOp             BYTE
+	FBlendFlags          BYTE
+	FSourceConstantAlpha BYTE
+	FAlphaFormat         BYTE
 }
 
 type _BLENDFUNCTION = BLENDFUNCTION
@@ -20800,11 +20800,11 @@ type MFENUMPROC = uintptr
 type ENHMFENUMPROC = uintptr
 
 type DIBSECTION = struct {
-	dsBm        BITMAP
-	dsBmih      BITMAPINFOHEADER
-	dsBitfields [3]DWORD
-	dshSection  HANDLE
-	dsOffset    DWORD
+	FdsBm        BITMAP
+	FdsBmih      BITMAPINFOHEADER
+	FdsBitfields [3]DWORD
+	FdshSection  HANDLE
+	FdsOffset    DWORD
 }
 
 type tagDIBSECTION = DIBSECTION
@@ -20814,18 +20814,18 @@ type LPDIBSECTION = uintptr
 type PDIBSECTION = uintptr
 
 type COLORADJUSTMENT = struct {
-	caSize            WORD
-	caFlags           WORD
-	caIlluminantIndex WORD
-	caRedGamma        WORD
-	caGreenGamma      WORD
-	caBlueGamma       WORD
-	caReferenceBlack  WORD
-	caReferenceWhite  WORD
-	caContrast        SHORT
-	caBrightness      SHORT
-	caColorfulness    SHORT
-	caRedGreenTint    SHORT
+	FcaSize            WORD
+	FcaFlags           WORD
+	FcaIlluminantIndex WORD
+	FcaRedGamma        WORD
+	FcaGreenGamma      WORD
+	FcaBlueGamma       WORD
+	FcaReferenceBlack  WORD
+	FcaReferenceWhite  WORD
+	FcaContrast        SHORT
+	FcaBrightness      SHORT
+	FcaColorfulness    SHORT
+	FcaRedGreenTint    SHORT
 }
 
 type tagCOLORADJUSTMENT = COLORADJUSTMENT
@@ -20837,11 +20837,11 @@ type LPCOLORADJUSTMENT = uintptr
 type ABORTPROC = uintptr
 
 type DOCINFOA = struct {
-	cbSize       int32
-	lpszDocName  LPCSTR
-	lpszOutput   LPCSTR
-	lpszDatatype LPCSTR
-	fwType       DWORD
+	FcbSize       int32
+	FlpszDocName  LPCSTR
+	FlpszOutput   LPCSTR
+	FlpszDatatype LPCSTR
+	FfwType       DWORD
 }
 
 type _DOCINFOA = DOCINFOA
@@ -20849,11 +20849,11 @@ type _DOCINFOA = DOCINFOA
 type LPDOCINFOA = uintptr
 
 type DOCINFOW = struct {
-	cbSize       int32
-	lpszDocName  LPCWSTR
-	lpszOutput   LPCWSTR
-	lpszDatatype LPCWSTR
-	fwType       DWORD
+	FcbSize       int32
+	FlpszDocName  LPCWSTR
+	FlpszOutput   LPCWSTR
+	FlpszDatatype LPCWSTR
+	FfwType       DWORD
 }
 
 type _DOCINFOW = DOCINFOW
@@ -20861,19 +20861,19 @@ type _DOCINFOW = DOCINFOW
 type LPDOCINFOW = uintptr
 
 type DOCINFO = struct {
-	cbSize       int32
-	lpszDocName  LPCSTR
-	lpszOutput   LPCSTR
-	lpszDatatype LPCSTR
-	fwType       DWORD
+	FcbSize       int32
+	FlpszDocName  LPCSTR
+	FlpszOutput   LPCSTR
+	FlpszDatatype LPCSTR
+	FfwType       DWORD
 }
 
 type LPDOCINFO = uintptr
 
 type KERNINGPAIR = struct {
-	wFirst      WORD
-	wSecond     WORD
-	iKernAmount int32
+	FwFirst      WORD
+	FwSecond     WORD
+	FiKernAmount int32
 }
 
 type tagKERNINGPAIR = KERNINGPAIR
@@ -20885,8 +20885,8 @@ type ICMENUMPROCA = uintptr
 type ICMENUMPROCW = uintptr
 
 type EMR = struct {
-	iType DWORD
-	nSize DWORD
+	FiType DWORD
+	FnSize DWORD
 }
 
 type tagEMR = EMR
@@ -20894,12 +20894,12 @@ type tagEMR = EMR
 type PEMR = uintptr
 
 type EMRTEXT = struct {
-	ptlReference POINTL
-	nChars       DWORD
-	offString    DWORD
-	fOptions     DWORD
-	rcl          RECTL
-	offDx        DWORD
+	FptlReference POINTL
+	FnChars       DWORD
+	FoffString    DWORD
+	FfOptions     DWORD
+	Frcl          RECTL
+	FoffDx        DWORD
 }
 
 type tagEMRTEXT = EMRTEXT
@@ -20907,7 +20907,7 @@ type tagEMRTEXT = EMRTEXT
 type PEMRTEXT = uintptr
 
 type EMRABORTPATH = struct {
-	emr EMR
+	Femr EMR
 }
 
 type tagABORTPATH = EMRABORTPATH
@@ -20915,56 +20915,56 @@ type tagABORTPATH = EMRABORTPATH
 type PEMRABORTPATH = uintptr
 
 type EMRBEGINPATH = struct {
-	emr EMR
+	Femr EMR
 }
 
 type PEMRBEGINPATH = uintptr
 
 type EMRENDPATH = struct {
-	emr EMR
+	Femr EMR
 }
 
 type PEMRENDPATH = uintptr
 
 type EMRCLOSEFIGURE = struct {
-	emr EMR
+	Femr EMR
 }
 
 type PEMRCLOSEFIGURE = uintptr
 
 type EMRFLATTENPATH = struct {
-	emr EMR
+	Femr EMR
 }
 
 type PEMRFLATTENPATH = uintptr
 
 type EMRWIDENPATH = struct {
-	emr EMR
+	Femr EMR
 }
 
 type PEMRWIDENPATH = uintptr
 
 type EMRSETMETARGN = struct {
-	emr EMR
+	Femr EMR
 }
 
 type PEMRSETMETARGN = uintptr
 
 type EMRSAVEDC = struct {
-	emr EMR
+	Femr EMR
 }
 
 type PEMRSAVEDC = uintptr
 
 type EMRREALIZEPALETTE = struct {
-	emr EMR
+	Femr EMR
 }
 
 type PEMRREALIZEPALETTE = uintptr
 
 type EMRSELECTCLIPPATH = struct {
-	emr   EMR
-	iMode DWORD
+	Femr   EMR
+	FiMode DWORD
 }
 
 type tagEMRSELECTCLIPPATH = EMRSELECTCLIPPATH
@@ -20972,64 +20972,64 @@ type tagEMRSELECTCLIPPATH = EMRSELECTCLIPPATH
 type PEMRSELECTCLIPPATH = uintptr
 
 type EMRSETBKMODE = struct {
-	emr   EMR
-	iMode DWORD
+	Femr   EMR
+	FiMode DWORD
 }
 
 type PEMRSETBKMODE = uintptr
 
 type EMRSETMAPMODE = struct {
-	emr   EMR
-	iMode DWORD
+	Femr   EMR
+	FiMode DWORD
 }
 
 type PEMRSETMAPMODE = uintptr
 
 type EMRSETLAYOUT = struct {
-	emr   EMR
-	iMode DWORD
+	Femr   EMR
+	FiMode DWORD
 }
 
 type PEMRSETLAYOUT = uintptr
 
 type EMRSETPOLYFILLMODE = struct {
-	emr   EMR
-	iMode DWORD
+	Femr   EMR
+	FiMode DWORD
 }
 
 type PEMRSETPOLYFILLMODE = uintptr
 
 type EMRSETROP2 = struct {
-	emr   EMR
-	iMode DWORD
+	Femr   EMR
+	FiMode DWORD
 }
 
 type PEMRSETROP2 = uintptr
 
 type EMRSETSTRETCHBLTMODE = struct {
-	emr   EMR
-	iMode DWORD
+	Femr   EMR
+	FiMode DWORD
 }
 
 type PEMRSETSTRETCHBLTMODE = uintptr
 
 type EMRSETICMMODE = struct {
-	emr   EMR
-	iMode DWORD
+	Femr   EMR
+	FiMode DWORD
 }
 
 type PEMRSETICMMODE = uintptr
 
 type EMRSETTEXTALIGN = struct {
-	emr   EMR
-	iMode DWORD
+	Femr   EMR
+	FiMode DWORD
 }
 
 type PEMRSETTEXTALIGN = uintptr
 
 type EMRSETMITERLIMIT = struct {
-	emr         EMR
-	eMiterLimit FLOAT
+	Femr         EMR
+	FeMiterLimit FLOAT
 }
 
 type tagEMRSETMITERLIMIT = EMRSETMITERLIMIT
@@ -21037,8 +21037,8 @@ type tagEMRSETMITERLIMIT = EMRSETMITERLIMIT
 type PEMRSETMITERLIMIT = uintptr
 
 type EMRRESTOREDC = struct {
-	emr       EMR
-	iRelative LONG
+	Femr       EMR
+	FiRelative LONG
 }
 
 type tagEMRRESTOREDC = EMRRESTOREDC
@@ -21046,8 +21046,8 @@ type tagEMRRESTOREDC = EMRRESTOREDC
 type PEMRRESTOREDC = uintptr
 
 type EMRSETARCDIRECTION = struct {
-	emr           EMR
-	iArcDirection DWORD
+	Femr           EMR
+	FiArcDirection DWORD
 }
 
 type tagEMRSETARCDIRECTION = EMRSETARCDIRECTION
@@ -21055,8 +21055,8 @@ type tagEMRSETARCDIRECTION = EMRSETARCDIRECTION
 type PEMRSETARCDIRECTION = uintptr
 
 type EMRSETMAPPERFLAGS = struct {
-	emr     EMR
-	dwFlags DWORD
+	Femr     EMR
+	FdwFlags DWORD
 }
 
 type tagEMRSETMAPPERFLAGS = EMRSETMAPPERFLAGS
@@ -21064,8 +21064,8 @@ type tagEMRSETMAPPERFLAGS = EMRSETMAPPERFLAGS
 type PEMRSETMAPPERFLAGS = uintptr
 
 type EMRSETBKCOLOR = struct {
-	emr     EMR
-	crColor COLORREF
+	Femr     EMR
+	FcrColor COLORREF
 }
 
 type tagEMRSETTEXTCOLOR = EMRSETBKCOLOR
@@ -21073,15 +21073,15 @@ type tagEMRSETTEXTCOLOR = EMRSETBKCOLOR
 type PEMRSETBKCOLOR = uintptr
 
 type EMRSETTEXTCOLOR = struct {
-	emr     EMR
-	crColor COLORREF
+	Femr     EMR
+	FcrColor COLORREF
 }
 
 type PEMRSETTEXTCOLOR = uintptr
 
 type EMRSELECTOBJECT = struct {
-	emr      EMR
-	ihObject DWORD
+	Femr      EMR
+	FihObject DWORD
 }
 
 type tagEMRSELECTOBJECT = EMRSELECTOBJECT
@@ -21089,15 +21089,15 @@ type tagEMRSELECTOBJECT = EMRSELECTOBJECT
 type PEMRSELECTOBJECT = uintptr
 
 type EMRDELETEOBJECT = struct {
-	emr      EMR
-	ihObject DWORD
+	Femr      EMR
+	FihObject DWORD
 }
 
 type PEMRDELETEOBJECT = uintptr
 
 type EMRSELECTPALETTE = struct {
-	emr   EMR
-	ihPal DWORD
+	Femr   EMR
+	FihPal DWORD
 }
 
 type tagEMRSELECTPALETTE = EMRSELECTPALETTE
@@ -21105,9 +21105,9 @@ type tagEMRSELECTPALETTE = EMRSELECTPALETTE
 type PEMRSELECTPALETTE = uintptr
 
 type EMRRESIZEPALETTE = struct {
-	emr      EMR
-	ihPal    DWORD
-	cEntries DWORD
+	Femr      EMR
+	FihPal    DWORD
+	FcEntries DWORD
 }
 
 type tagEMRRESIZEPALETTE = EMRRESIZEPALETTE
@@ -21115,11 +21115,11 @@ type tagEMRRESIZEPALETTE = EMRRESIZEPALETTE
 type PEMRRESIZEPALETTE = uintptr
 
 type EMRSETPALETTEENTRIES = struct {
-	emr         EMR
-	ihPal       DWORD
-	iStart      DWORD
-	cEntries    DWORD
-	aPalEntries [1]PALETTEENTRY
+	Femr         EMR
+	FihPal       DWORD
+	FiStart      DWORD
+	FcEntries    DWORD
+	FaPalEntries [1]PALETTEENTRY
 }
 
 type tagEMRSETPALETTEENTRIES = EMRSETPALETTEENTRIES
@@ -21127,8 +21127,8 @@ type tagEMRSETPALETTEENTRIES = EMRSETPALETTEENTRIES
 type PEMRSETPALETTEENTRIES = uintptr
 
 type EMRSETCOLORADJUSTMENT = struct {
-	emr             EMR
-	ColorAdjustment COLORADJUSTMENT
+	Femr             EMR
+	FColorAdjustment COLORADJUSTMENT
 }
 
 type tagEMRSETCOLORADJUSTMENT = EMRSETCOLORADJUSTMENT
@@ -21136,9 +21136,9 @@ type tagEMRSETCOLORADJUSTMENT = EMRSETCOLORADJUSTMENT
 type PEMRSETCOLORADJUSTMENT = uintptr
 
 type EMRGDICOMMENT = struct {
-	emr    EMR
-	cbData DWORD
-	Data   [1]BYTE
+	Femr    EMR
+	FcbData DWORD
+	FData   [1]BYTE
 }
 
 type tagEMRGDICOMMENT = EMRGDICOMMENT
@@ -21146,10 +21146,10 @@ type tagEMRGDICOMMENT = EMRGDICOMMENT
 type PEMRGDICOMMENT = uintptr
 
 type EMREOF = struct {
-	emr           EMR
-	nPalEntries   DWORD
-	offPalEntries DWORD
-	nSizeLast     DWORD
+	Femr           EMR
+	FnPalEntries   DWORD
+	FoffPalEntries DWORD
+	FnSizeLast     DWORD
 }
 
 type tagEMREOF = EMREOF
@@ -21157,8 +21157,8 @@ type tagEMREOF = EMREOF
 type PEMREOF = uintptr
 
 type EMRLINETO = struct {
-	emr EMR
-	ptl POINTL
+	Femr EMR
+	Fptl POINTL
 }
 
 type tagEMRLINETO = EMRLINETO
@@ -21166,15 +21166,15 @@ type tagEMRLINETO = EMRLINETO
 type PEMRLINETO = uintptr
 
 type EMRMOVETOEX = struct {
-	emr EMR
-	ptl POINTL
+	Femr EMR
+	Fptl POINTL
 }
 
 type PEMRMOVETOEX = uintptr
 
 type EMROFFSETCLIPRGN = struct {
-	emr       EMR
-	ptlOffset POINTL
+	Femr       EMR
+	FptlOffset POINTL
 }
 
 type tagEMROFFSETCLIPRGN = EMROFFSETCLIPRGN
@@ -21182,8 +21182,8 @@ type tagEMROFFSETCLIPRGN = EMROFFSETCLIPRGN
 type PEMROFFSETCLIPRGN = uintptr
 
 type EMRFILLPATH = struct {
-	emr       EMR
-	rclBounds RECTL
+	Femr       EMR
+	FrclBounds RECTL
 }
 
 type tagEMRFILLPATH = EMRFILLPATH
@@ -21191,22 +21191,22 @@ type tagEMRFILLPATH = EMRFILLPATH
 type PEMRFILLPATH = uintptr
 
 type EMRSTROKEANDFILLPATH = struct {
-	emr       EMR
-	rclBounds RECTL
+	Femr       EMR
+	FrclBounds RECTL
 }
 
 type PEMRSTROKEANDFILLPATH = uintptr
 
 type EMRSTROKEPATH = struct {
-	emr       EMR
-	rclBounds RECTL
+	Femr       EMR
+	FrclBounds RECTL
 }
 
 type PEMRSTROKEPATH = uintptr
 
 type EMREXCLUDECLIPRECT = struct {
-	emr     EMR
-	rclClip RECTL
+	Femr     EMR
+	FrclClip RECTL
 }
 
 type tagEMREXCLUDECLIPRECT = EMREXCLUDECLIPRECT
@@ -21214,15 +21214,15 @@ type tagEMREXCLUDECLIPRECT = EMREXCLUDECLIPRECT
 type PEMREXCLUDECLIPRECT = uintptr
 
 type EMRINTERSECTCLIPRECT = struct {
-	emr     EMR
-	rclClip RECTL
+	Femr     EMR
+	FrclClip RECTL
 }
 
 type PEMRINTERSECTCLIPRECT = uintptr
 
 type EMRSETVIEWPORTORGEX = struct {
-	emr       EMR
-	ptlOrigin POINTL
+	Femr       EMR
+	FptlOrigin POINTL
 }
 
 type tagEMRSETVIEWPORTORGEX = EMRSETVIEWPORTORGEX
@@ -21230,22 +21230,22 @@ type tagEMRSETVIEWPORTORGEX = EMRSETVIEWPORTORGEX
 type PEMRSETVIEWPORTORGEX = uintptr
 
 type EMRSETWINDOWORGEX = struct {
-	emr       EMR
-	ptlOrigin POINTL
+	Femr       EMR
+	FptlOrigin POINTL
 }
 
 type PEMRSETWINDOWORGEX = uintptr
 
 type EMRSETBRUSHORGEX = struct {
-	emr       EMR
-	ptlOrigin POINTL
+	Femr       EMR
+	FptlOrigin POINTL
 }
 
 type PEMRSETBRUSHORGEX = uintptr
 
 type EMRSETVIEWPORTEXTEX = struct {
-	emr       EMR
-	szlExtent SIZEL
+	Femr       EMR
+	FszlExtent SIZEL
 }
 
 type tagEMRSETVIEWPORTEXTEX = EMRSETVIEWPORTEXTEX
@@ -21253,18 +21253,18 @@ type tagEMRSETVIEWPORTEXTEX = EMRSETVIEWPORTEXTEX
 type PEMRSETVIEWPORTEXTEX = uintptr
 
 type EMRSETWINDOWEXTEX = struct {
-	emr       EMR
-	szlExtent SIZEL
+	Femr       EMR
+	FszlExtent SIZEL
 }
 
 type PEMRSETWINDOWEXTEX = uintptr
 
 type EMRSCALEVIEWPORTEXTEX = struct {
-	emr    EMR
-	xNum   LONG
-	xDenom LONG
-	yNum   LONG
-	yDenom LONG
+	Femr    EMR
+	FxNum   LONG
+	FxDenom LONG
+	FyNum   LONG
+	FyDenom LONG
 }
 
 type tagEMRSCALEVIEWPORTEXTEX = EMRSCALEVIEWPORTEXTEX
@@ -21272,18 +21272,18 @@ type tagEMRSCALEVIEWPORTEXTEX = EMRSCALEVIEWPORTEXTEX
 type PEMRSCALEVIEWPORTEXTEX = uintptr
 
 type EMRSCALEWINDOWEXTEX = struct {
-	emr    EMR
-	xNum   LONG
-	xDenom LONG
-	yNum   LONG
-	yDenom LONG
+	Femr    EMR
+	FxNum   LONG
+	FxDenom LONG
+	FyNum   LONG
+	FyDenom LONG
 }
 
 type PEMRSCALEWINDOWEXTEX = uintptr
 
 type EMRSETWORLDTRANSFORM = struct {
-	emr   EMR
-	xform XFORM
+	Femr   EMR
+	Fxform XFORM
 }
 
 type tagEMRSETWORLDTRANSFORM = EMRSETWORLDTRANSFORM
@@ -21291,9 +21291,9 @@ type tagEMRSETWORLDTRANSFORM = EMRSETWORLDTRANSFORM
 type PEMRSETWORLDTRANSFORM = uintptr
 
 type EMRMODIFYWORLDTRANSFORM = struct {
-	emr   EMR
-	xform XFORM
-	iMode DWORD
+	Femr   EMR
+	Fxform XFORM
+	FiMode DWORD
 }
 
 type tagEMRMODIFYWORLDTRANSFORM = EMRMODIFYWORLDTRANSFORM
@@ -21301,9 +21301,9 @@ type tagEMRMODIFYWORLDTRANSFORM = EMRMODIFYWORLDTRANSFORM
 type PEMRMODIFYWORLDTRANSFORM = uintptr
 
 type EMRSETPIXELV = struct {
-	emr      EMR
-	ptlPixel POINTL
-	crColor  COLORREF
+	Femr      EMR
+	FptlPixel POINTL
+	FcrColor  COLORREF
 }
 
 type tagEMRSETPIXELV = EMRSETPIXELV
@@ -21311,10 +21311,10 @@ type tagEMRSETPIXELV = EMRSETPIXELV
 type PEMRSETPIXELV = uintptr
 
 type EMREXTFLOODFILL = struct {
-	emr      EMR
-	ptlStart POINTL
-	crColor  COLORREF
-	iMode    DWORD
+	Femr      EMR
+	FptlStart POINTL
+	FcrColor  COLORREF
+	FiMode    DWORD
 }
 
 type tagEMREXTFLOODFILL = EMREXTFLOODFILL
@@ -21322,8 +21322,8 @@ type tagEMREXTFLOODFILL = EMREXTFLOODFILL
 type PEMREXTFLOODFILL = uintptr
 
 type EMRELLIPSE = struct {
-	emr    EMR
-	rclBox RECTL
+	Femr    EMR
+	FrclBox RECTL
 }
 
 type tagEMRELLIPSE = EMRELLIPSE
@@ -21331,16 +21331,16 @@ type tagEMRELLIPSE = EMRELLIPSE
 type PEMRELLIPSE = uintptr
 
 type EMRRECTANGLE = struct {
-	emr    EMR
-	rclBox RECTL
+	Femr    EMR
+	FrclBox RECTL
 }
 
 type PEMRRECTANGLE = uintptr
 
 type EMRROUNDRECT = struct {
-	emr       EMR
-	rclBox    RECTL
-	szlCorner SIZEL
+	Femr       EMR
+	FrclBox    RECTL
+	FszlCorner SIZEL
 }
 
 type tagEMRROUNDRECT = EMRROUNDRECT
@@ -21348,10 +21348,10 @@ type tagEMRROUNDRECT = EMRROUNDRECT
 type PEMRROUNDRECT = uintptr
 
 type EMRARC = struct {
-	emr      EMR
-	rclBox   RECTL
-	ptlStart POINTL
-	ptlEnd   POINTL
+	Femr      EMR
+	FrclBox   RECTL
+	FptlStart POINTL
+	FptlEnd   POINTL
 }
 
 type tagEMRARC = EMRARC
@@ -21359,38 +21359,38 @@ type tagEMRARC = EMRARC
 type PEMRARC = uintptr
 
 type EMRARCTO = struct {
-	emr      EMR
-	rclBox   RECTL
-	ptlStart POINTL
-	ptlEnd   POINTL
+	Femr      EMR
+	FrclBox   RECTL
+	FptlStart POINTL
+	FptlEnd   POINTL
 }
 
 type PEMRARCTO = uintptr
 
 type EMRCHORD = struct {
-	emr      EMR
-	rclBox   RECTL
-	ptlStart POINTL
-	ptlEnd   POINTL
+	Femr      EMR
+	FrclBox   RECTL
+	FptlStart POINTL
+	FptlEnd   POINTL
 }
 
 type PEMRCHORD = uintptr
 
 type EMRPIE = struct {
-	emr      EMR
-	rclBox   RECTL
-	ptlStart POINTL
-	ptlEnd   POINTL
+	Femr      EMR
+	FrclBox   RECTL
+	FptlStart POINTL
+	FptlEnd   POINTL
 }
 
 type PEMRPIE = uintptr
 
 type EMRANGLEARC = struct {
-	emr         EMR
-	ptlCenter   POINTL
-	nRadius     DWORD
-	eStartAngle FLOAT
-	eSweepAngle FLOAT
+	Femr         EMR
+	FptlCenter   POINTL
+	FnRadius     DWORD
+	FeStartAngle FLOAT
+	FeSweepAngle FLOAT
 }
 
 type tagEMRANGLEARC = EMRANGLEARC
@@ -21398,10 +21398,10 @@ type tagEMRANGLEARC = EMRANGLEARC
 type PEMRANGLEARC = uintptr
 
 type EMRPOLYLINE = struct {
-	emr       EMR
-	rclBounds RECTL
-	cptl      DWORD
-	aptl      [1]POINTL
+	Femr       EMR
+	FrclBounds RECTL
+	Fcptl      DWORD
+	Faptl      [1]POINTL
 }
 
 type tagEMRPOLYLINE = EMRPOLYLINE
@@ -21409,46 +21409,46 @@ type tagEMRPOLYLINE = EMRPOLYLINE
 type PEMRPOLYLINE = uintptr
 
 type EMRPOLYBEZIER = struct {
-	emr       EMR
-	rclBounds RECTL
-	cptl      DWORD
-	aptl      [1]POINTL
+	Femr       EMR
+	FrclBounds RECTL
+	Fcptl      DWORD
+	Faptl      [1]POINTL
 }
 
 type PEMRPOLYBEZIER = uintptr
 
 type EMRPOLYGON = struct {
-	emr       EMR
-	rclBounds RECTL
-	cptl      DWORD
-	aptl      [1]POINTL
+	Femr       EMR
+	FrclBounds RECTL
+	Fcptl      DWORD
+	Faptl      [1]POINTL
 }
 
 type PEMRPOLYGON = uintptr
 
 type EMRPOLYBEZIERTO = struct {
-	emr       EMR
-	rclBounds RECTL
-	cptl      DWORD
-	aptl      [1]POINTL
+	Femr       EMR
+	FrclBounds RECTL
+	Fcptl      DWORD
+	Faptl      [1]POINTL
 }
 
 type PEMRPOLYBEZIERTO = uintptr
 
 type EMRPOLYLINETO = struct {
-	emr       EMR
-	rclBounds RECTL
-	cptl      DWORD
-	aptl      [1]POINTL
+	Femr       EMR
+	FrclBounds RECTL
+	Fcptl      DWORD
+	Faptl      [1]POINTL
 }
 
 type PEMRPOLYLINETO = uintptr
 
 type EMRPOLYLINE16 = struct {
-	emr       EMR
-	rclBounds RECTL
-	cpts      DWORD
-	apts      [1]POINTS
+	Femr       EMR
+	FrclBounds RECTL
+	Fcpts      DWORD
+	Fapts      [1]POINTS
 }
 
 type tagEMRPOLYLINE16 = EMRPOLYLINE16
@@ -21456,47 +21456,47 @@ type tagEMRPOLYLINE16 = EMRPOLYLINE16
 type PEMRPOLYLINE16 = uintptr
 
 type EMRPOLYBEZIER16 = struct {
-	emr       EMR
-	rclBounds RECTL
-	cpts      DWORD
-	apts      [1]POINTS
+	Femr       EMR
+	FrclBounds RECTL
+	Fcpts      DWORD
+	Fapts      [1]POINTS
 }
 
 type PEMRPOLYBEZIER16 = uintptr
 
 type EMRPOLYGON16 = struct {
-	emr       EMR
-	rclBounds RECTL
-	cpts      DWORD
-	apts      [1]POINTS
+	Femr       EMR
+	FrclBounds RECTL
+	Fcpts      DWORD
+	Fapts      [1]POINTS
 }
 
 type PEMRPOLYGON16 = uintptr
 
 type EMRPOLYBEZIERTO16 = struct {
-	emr       EMR
-	rclBounds RECTL
-	cpts      DWORD
-	apts      [1]POINTS
+	Femr       EMR
+	FrclBounds RECTL
+	Fcpts      DWORD
+	Fapts      [1]POINTS
 }
 
 type PEMRPOLYBEZIERTO16 = uintptr
 
 type EMRPOLYLINETO16 = struct {
-	emr       EMR
-	rclBounds RECTL
-	cpts      DWORD
-	apts      [1]POINTS
+	Femr       EMR
+	FrclBounds RECTL
+	Fcpts      DWORD
+	Fapts      [1]POINTS
 }
 
 type PEMRPOLYLINETO16 = uintptr
 
 type EMRPOLYDRAW = struct {
-	emr       EMR
-	rclBounds RECTL
-	cptl      DWORD
-	aptl      [1]POINTL
-	abTypes   [1]BYTE
+	Femr       EMR
+	FrclBounds RECTL
+	Fcptl      DWORD
+	Faptl      [1]POINTL
+	FabTypes   [1]BYTE
 }
 
 type tagEMRPOLYDRAW = EMRPOLYDRAW
@@ -21504,11 +21504,11 @@ type tagEMRPOLYDRAW = EMRPOLYDRAW
 type PEMRPOLYDRAW = uintptr
 
 type EMRPOLYDRAW16 = struct {
-	emr       EMR
-	rclBounds RECTL
-	cpts      DWORD
-	apts      [1]POINTS
-	abTypes   [1]BYTE
+	Femr       EMR
+	FrclBounds RECTL
+	Fcpts      DWORD
+	Fapts      [1]POINTS
+	FabTypes   [1]BYTE
 }
 
 type tagEMRPOLYDRAW16 = EMRPOLYDRAW16
@@ -21516,12 +21516,12 @@ type tagEMRPOLYDRAW16 = EMRPOLYDRAW16
 type PEMRPOLYDRAW16 = uintptr
 
 type EMRPOLYPOLYLINE = struct {
-	emr         EMR
-	rclBounds   RECTL
-	nPolys      DWORD
-	cptl        DWORD
-	aPolyCounts [1]DWORD
-	aptl        [1]POINTL
+	Femr         EMR
+	FrclBounds   RECTL
+	FnPolys      DWORD
+	Fcptl        DWORD
+	FaPolyCounts [1]DWORD
+	Faptl        [1]POINTL
 }
 
 type tagEMRPOLYPOLYLINE = EMRPOLYPOLYLINE
@@ -21529,23 +21529,23 @@ type tagEMRPOLYPOLYLINE = EMRPOLYPOLYLINE
 type PEMRPOLYPOLYLINE = uintptr
 
 type EMRPOLYPOLYGON = struct {
-	emr         EMR
-	rclBounds   RECTL
-	nPolys      DWORD
-	cptl        DWORD
-	aPolyCounts [1]DWORD
-	aptl        [1]POINTL
+	Femr         EMR
+	FrclBounds   RECTL
+	FnPolys      DWORD
+	Fcptl        DWORD
+	FaPolyCounts [1]DWORD
+	Faptl        [1]POINTL
 }
 
 type PEMRPOLYPOLYGON = uintptr
 
 type EMRPOLYPOLYLINE16 = struct {
-	emr         EMR
-	rclBounds   RECTL
-	nPolys      DWORD
-	cpts        DWORD
-	aPolyCounts [1]DWORD
-	apts        [1]POINTS
+	Femr         EMR
+	FrclBounds   RECTL
+	FnPolys      DWORD
+	Fcpts        DWORD
+	FaPolyCounts [1]DWORD
+	Fapts        [1]POINTS
 }
 
 type tagEMRPOLYPOLYLINE16 = EMRPOLYPOLYLINE16
@@ -21553,21 +21553,21 @@ type tagEMRPOLYPOLYLINE16 = EMRPOLYPOLYLINE16
 type PEMRPOLYPOLYLINE16 = uintptr
 
 type EMRPOLYPOLYGON16 = struct {
-	emr         EMR
-	rclBounds   RECTL
-	nPolys      DWORD
-	cpts        DWORD
-	aPolyCounts [1]DWORD
-	apts        [1]POINTS
+	Femr         EMR
+	FrclBounds   RECTL
+	FnPolys      DWORD
+	Fcpts        DWORD
+	FaPolyCounts [1]DWORD
+	Fapts        [1]POINTS
 }
 
 type PEMRPOLYPOLYGON16 = uintptr
 
 type EMRINVERTRGN = struct {
-	emr       EMR
-	rclBounds RECTL
-	cbRgnData DWORD
-	RgnData   [1]BYTE
+	Femr       EMR
+	FrclBounds RECTL
+	FcbRgnData DWORD
+	FRgnData   [1]BYTE
 }
 
 type tagEMRINVERTRGN = EMRINVERTRGN
@@ -21575,20 +21575,20 @@ type tagEMRINVERTRGN = EMRINVERTRGN
 type PEMRINVERTRGN = uintptr
 
 type EMRPAINTRGN = struct {
-	emr       EMR
-	rclBounds RECTL
-	cbRgnData DWORD
-	RgnData   [1]BYTE
+	Femr       EMR
+	FrclBounds RECTL
+	FcbRgnData DWORD
+	FRgnData   [1]BYTE
 }
 
 type PEMRPAINTRGN = uintptr
 
 type EMRFILLRGN = struct {
-	emr       EMR
-	rclBounds RECTL
-	cbRgnData DWORD
-	ihBrush   DWORD
-	RgnData   [1]BYTE
+	Femr       EMR
+	FrclBounds RECTL
+	FcbRgnData DWORD
+	FihBrush   DWORD
+	FRgnData   [1]BYTE
 }
 
 type tagEMRFILLRGN = EMRFILLRGN
@@ -21596,12 +21596,12 @@ type tagEMRFILLRGN = EMRFILLRGN
 type PEMRFILLRGN = uintptr
 
 type EMRFRAMERGN = struct {
-	emr       EMR
-	rclBounds RECTL
-	cbRgnData DWORD
-	ihBrush   DWORD
-	szlStroke SIZEL
-	RgnData   [1]BYTE
+	Femr       EMR
+	FrclBounds RECTL
+	FcbRgnData DWORD
+	FihBrush   DWORD
+	FszlStroke SIZEL
+	FRgnData   [1]BYTE
 }
 
 type tagEMRFRAMERGN = EMRFRAMERGN
@@ -21609,10 +21609,10 @@ type tagEMRFRAMERGN = EMRFRAMERGN
 type PEMRFRAMERGN = uintptr
 
 type EMREXTSELECTCLIPRGN = struct {
-	emr       EMR
-	cbRgnData DWORD
-	iMode     DWORD
-	RgnData   [1]BYTE
+	Femr       EMR
+	FcbRgnData DWORD
+	FiMode     DWORD
+	FRgnData   [1]BYTE
 }
 
 type tagEMREXTSELECTCLIPRGN = EMREXTSELECTCLIPRGN
@@ -21620,12 +21620,12 @@ type tagEMREXTSELECTCLIPRGN = EMREXTSELECTCLIPRGN
 type PEMREXTSELECTCLIPRGN = uintptr
 
 type EMREXTTEXTOUTA = struct {
-	emr           EMR
-	rclBounds     RECTL
-	iGraphicsMode DWORD
-	exScale       FLOAT
-	eyScale       FLOAT
-	emrtext       EMRTEXT
+	Femr           EMR
+	FrclBounds     RECTL
+	FiGraphicsMode DWORD
+	FexScale       FLOAT
+	FeyScale       FLOAT
+	Femrtext       EMRTEXT
 }
 
 type tagEMREXTTEXTOUTA = EMREXTTEXTOUTA
@@ -21633,24 +21633,24 @@ type tagEMREXTTEXTOUTA = EMREXTTEXTOUTA
 type PEMREXTTEXTOUTA = uintptr
 
 type EMREXTTEXTOUTW = struct {
-	emr           EMR
-	rclBounds     RECTL
-	iGraphicsMode DWORD
-	exScale       FLOAT
-	eyScale       FLOAT
-	emrtext       EMRTEXT
+	Femr           EMR
+	FrclBounds     RECTL
+	FiGraphicsMode DWORD
+	FexScale       FLOAT
+	FeyScale       FLOAT
+	Femrtext       EMRTEXT
 }
 
 type PEMREXTTEXTOUTW = uintptr
 
 type EMRPOLYTEXTOUTA = struct {
-	emr           EMR
-	rclBounds     RECTL
-	iGraphicsMode DWORD
-	exScale       FLOAT
-	eyScale       FLOAT
-	cStrings      LONG
-	aemrtext      [1]EMRTEXT
+	Femr           EMR
+	FrclBounds     RECTL
+	FiGraphicsMode DWORD
+	FexScale       FLOAT
+	FeyScale       FLOAT
+	FcStrings      LONG
+	Faemrtext      [1]EMRTEXT
 }
 
 type tagEMRPOLYTEXTOUTA = EMRPOLYTEXTOUTA
@@ -21658,34 +21658,34 @@ type tagEMRPOLYTEXTOUTA = EMRPOLYTEXTOUTA
 type PEMRPOLYTEXTOUTA = uintptr
 
 type EMRPOLYTEXTOUTW = struct {
-	emr           EMR
-	rclBounds     RECTL
-	iGraphicsMode DWORD
-	exScale       FLOAT
-	eyScale       FLOAT
-	cStrings      LONG
-	aemrtext      [1]EMRTEXT
+	Femr           EMR
+	FrclBounds     RECTL
+	FiGraphicsMode DWORD
+	FexScale       FLOAT
+	FeyScale       FLOAT
+	FcStrings      LONG
+	Faemrtext      [1]EMRTEXT
 }
 
 type PEMRPOLYTEXTOUTW = uintptr
 
 type EMRBITBLT = struct {
-	emr          EMR
-	rclBounds    RECTL
-	xDest        LONG
-	yDest        LONG
-	cxDest       LONG
-	cyDest       LONG
-	dwRop        DWORD
-	xSrc         LONG
-	ySrc         LONG
-	xformSrc     XFORM
-	crBkColorSrc COLORREF
-	iUsageSrc    DWORD
-	offBmiSrc    DWORD
-	cbBmiSrc     DWORD
-	offBitsSrc   DWORD
-	cbBitsSrc    DWORD
+	Femr          EMR
+	FrclBounds    RECTL
+	FxDest        LONG
+	FyDest        LONG
+	FcxDest       LONG
+	FcyDest       LONG
+	FdwRop        DWORD
+	FxSrc         LONG
+	FySrc         LONG
+	FxformSrc     XFORM
+	FcrBkColorSrc COLORREF
+	FiUsageSrc    DWORD
+	FoffBmiSrc    DWORD
+	FcbBmiSrc     DWORD
+	FoffBitsSrc   DWORD
+	FcbBitsSrc    DWORD
 }
 
 type tagEMRBITBLT = EMRBITBLT
@@ -21693,24 +21693,24 @@ type tagEMRBITBLT = EMRBITBLT
 type PEMRBITBLT = uintptr
 
 type EMRSTRETCHBLT = struct {
-	emr          EMR
-	rclBounds    RECTL
-	xDest        LONG
-	yDest        LONG
-	cxDest       LONG
-	cyDest       LONG
-	dwRop        DWORD
-	xSrc         LONG
-	ySrc         LONG
-	xformSrc     XFORM
-	crBkColorSrc COLORREF
-	iUsageSrc    DWORD
-	offBmiSrc    DWORD
-	cbBmiSrc     DWORD
-	offBitsSrc   DWORD
-	cbBitsSrc    DWORD
-	cxSrc        LONG
-	cySrc        LONG
+	Femr          EMR
+	FrclBounds    RECTL
+	FxDest        LONG
+	FyDest        LONG
+	FcxDest       LONG
+	FcyDest       LONG
+	FdwRop        DWORD
+	FxSrc         LONG
+	FySrc         LONG
+	FxformSrc     XFORM
+	FcrBkColorSrc COLORREF
+	FiUsageSrc    DWORD
+	FoffBmiSrc    DWORD
+	FcbBmiSrc     DWORD
+	FoffBitsSrc   DWORD
+	FcbBitsSrc    DWORD
+	FcxSrc        LONG
+	FcySrc        LONG
 }
 
 type tagEMRSTRETCHBLT = EMRSTRETCHBLT
@@ -21718,29 +21718,29 @@ type tagEMRSTRETCHBLT = EMRSTRETCHBLT
 type PEMRSTRETCHBLT = uintptr
 
 type EMRMASKBLT = struct {
-	emr          EMR
-	rclBounds    RECTL
-	xDest        LONG
-	yDest        LONG
-	cxDest       LONG
-	cyDest       LONG
-	dwRop        DWORD
-	xSrc         LONG
-	ySrc         LONG
-	xformSrc     XFORM
-	crBkColorSrc COLORREF
-	iUsageSrc    DWORD
-	offBmiSrc    DWORD
-	cbBmiSrc     DWORD
-	offBitsSrc   DWORD
-	cbBitsSrc    DWORD
-	xMask        LONG
-	yMask        LONG
-	iUsageMask   DWORD
-	offBmiMask   DWORD
-	cbBmiMask    DWORD
-	offBitsMask  DWORD
-	cbBitsMask   DWORD
+	Femr          EMR
+	FrclBounds    RECTL
+	FxDest        LONG
+	FyDest        LONG
+	FcxDest       LONG
+	FcyDest       LONG
+	FdwRop        DWORD
+	FxSrc         LONG
+	FySrc         LONG
+	FxformSrc     XFORM
+	FcrBkColorSrc COLORREF
+	FiUsageSrc    DWORD
+	FoffBmiSrc    DWORD
+	FcbBmiSrc     DWORD
+	FoffBitsSrc   DWORD
+	FcbBitsSrc    DWORD
+	FxMask        LONG
+	FyMask        LONG
+	FiUsageMask   DWORD
+	FoffBmiMask   DWORD
+	FcbBmiMask    DWORD
+	FoffBitsMask  DWORD
+	FcbBitsMask   DWORD
 }
 
 type tagEMRMASKBLT = EMRMASKBLT
@@ -21748,27 +21748,27 @@ type tagEMRMASKBLT = EMRMASKBLT
 type PEMRMASKBLT = uintptr
 
 type EMRPLGBLT = struct {
-	emr          EMR
-	rclBounds    RECTL
-	aptlDest     [3]POINTL
-	xSrc         LONG
-	ySrc         LONG
-	cxSrc        LONG
-	cySrc        LONG
-	xformSrc     XFORM
-	crBkColorSrc COLORREF
-	iUsageSrc    DWORD
-	offBmiSrc    DWORD
-	cbBmiSrc     DWORD
-	offBitsSrc   DWORD
-	cbBitsSrc    DWORD
-	xMask        LONG
-	yMask        LONG
-	iUsageMask   DWORD
-	offBmiMask   DWORD
-	cbBmiMask    DWORD
-	offBitsMask  DWORD
-	cbBitsMask   DWORD
+	Femr          EMR
+	FrclBounds    RECTL
+	FaptlDest     [3]POINTL
+	FxSrc         LONG
+	FySrc         LONG
+	FcxSrc        LONG
+	FcySrc        LONG
+	FxformSrc     XFORM
+	FcrBkColorSrc COLORREF
+	FiUsageSrc    DWORD
+	FoffBmiSrc    DWORD
+	FcbBmiSrc     DWORD
+	FoffBitsSrc   DWORD
+	FcbBitsSrc    DWORD
+	FxMask        LONG
+	FyMask        LONG
+	FiUsageMask   DWORD
+	FoffBmiMask   DWORD
+	FcbBmiMask    DWORD
+	FoffBitsMask  DWORD
+	FcbBitsMask   DWORD
 }
 
 type tagEMRPLGBLT = EMRPLGBLT
@@ -21776,21 +21776,21 @@ type tagEMRPLGBLT = EMRPLGBLT
 type PEMRPLGBLT = uintptr
 
 type EMRSETDIBITSTODEVICE = struct {
-	emr        EMR
-	rclBounds  RECTL
-	xDest      LONG
-	yDest      LONG
-	xSrc       LONG
-	ySrc       LONG
-	cxSrc      LONG
-	cySrc      LONG
-	offBmiSrc  DWORD
-	cbBmiSrc   DWORD
-	offBitsSrc DWORD
-	cbBitsSrc  DWORD
-	iUsageSrc  DWORD
-	iStartScan DWORD
-	cScans     DWORD
+	Femr        EMR
+	FrclBounds  RECTL
+	FxDest      LONG
+	FyDest      LONG
+	FxSrc       LONG
+	FySrc       LONG
+	FcxSrc      LONG
+	FcySrc      LONG
+	FoffBmiSrc  DWORD
+	FcbBmiSrc   DWORD
+	FoffBitsSrc DWORD
+	FcbBitsSrc  DWORD
+	FiUsageSrc  DWORD
+	FiStartScan DWORD
+	FcScans     DWORD
 }
 
 type tagEMRSETDIBITSTODEVICE = EMRSETDIBITSTODEVICE
@@ -21798,22 +21798,22 @@ type tagEMRSETDIBITSTODEVICE = EMRSETDIBITSTODEVICE
 type PEMRSETDIBITSTODEVICE = uintptr
 
 type EMRSTRETCHDIBITS = struct {
-	emr        EMR
-	rclBounds  RECTL
-	xDest      LONG
-	yDest      LONG
-	xSrc       LONG
-	ySrc       LONG
-	cxSrc      LONG
-	cySrc      LONG
-	offBmiSrc  DWORD
-	cbBmiSrc   DWORD
-	offBitsSrc DWORD
-	cbBitsSrc  DWORD
-	iUsageSrc  DWORD
-	dwRop      DWORD
-	cxDest     LONG
-	cyDest     LONG
+	Femr        EMR
+	FrclBounds  RECTL
+	FxDest      LONG
+	FyDest      LONG
+	FxSrc       LONG
+	FySrc       LONG
+	FcxSrc      LONG
+	FcySrc      LONG
+	FoffBmiSrc  DWORD
+	FcbBmiSrc   DWORD
+	FoffBitsSrc DWORD
+	FcbBitsSrc  DWORD
+	FiUsageSrc  DWORD
+	FdwRop      DWORD
+	FcxDest     LONG
+	FcyDest     LONG
 }
 
 type tagEMRSTRETCHDIBITS = EMRSTRETCHDIBITS
@@ -21821,9 +21821,9 @@ type tagEMRSTRETCHDIBITS = EMRSTRETCHDIBITS
 type PEMRSTRETCHDIBITS = uintptr
 
 type EMREXTCREATEFONTINDIRECTW = struct {
-	emr    EMR
-	ihFont DWORD
-	elfw   EXTLOGFONTW
+	Femr    EMR
+	FihFont DWORD
+	Felfw   EXTLOGFONTW
 }
 
 type tagEMREXTCREATEFONTINDIRECTW = EMREXTCREATEFONTINDIRECTW
@@ -21831,9 +21831,9 @@ type tagEMREXTCREATEFONTINDIRECTW = EMREXTCREATEFONTINDIRECTW
 type PEMREXTCREATEFONTINDIRECTW = uintptr
 
 type EMRCREATEPALETTE = struct {
-	emr   EMR
-	ihPal DWORD
-	lgpl  LOGPALETTE
+	Femr   EMR
+	FihPal DWORD
+	Flgpl  LOGPALETTE
 }
 
 type tagEMRCREATEPALETTE = EMRCREATEPALETTE
@@ -21841,9 +21841,9 @@ type tagEMRCREATEPALETTE = EMRCREATEPALETTE
 type PEMRCREATEPALETTE = uintptr
 
 type EMRCREATEPEN = struct {
-	emr   EMR
-	ihPen DWORD
-	lopn  LOGPEN
+	Femr   EMR
+	FihPen DWORD
+	Flopn  LOGPEN
 }
 
 type tagEMRCREATEPEN = EMRCREATEPEN
@@ -21851,13 +21851,13 @@ type tagEMRCREATEPEN = EMRCREATEPEN
 type PEMRCREATEPEN = uintptr
 
 type EMREXTCREATEPEN = struct {
-	emr     EMR
-	ihPen   DWORD
-	offBmi  DWORD
-	cbBmi   DWORD
-	offBits DWORD
-	cbBits  DWORD
-	elp     EXTLOGPEN
+	Femr     EMR
+	FihPen   DWORD
+	FoffBmi  DWORD
+	FcbBmi   DWORD
+	FoffBits DWORD
+	FcbBits  DWORD
+	Felp     EXTLOGPEN
 }
 
 type tagEMREXTCREATEPEN = EMREXTCREATEPEN
@@ -21865,9 +21865,9 @@ type tagEMREXTCREATEPEN = EMREXTCREATEPEN
 type PEMREXTCREATEPEN = uintptr
 
 type EMRCREATEBRUSHINDIRECT = struct {
-	emr     EMR
-	ihBrush DWORD
-	lb      LOGBRUSH32
+	Femr     EMR
+	FihBrush DWORD
+	Flb      LOGBRUSH32
 }
 
 type tagEMRCREATEBRUSHINDIRECT = EMRCREATEBRUSHINDIRECT
@@ -21875,13 +21875,13 @@ type tagEMRCREATEBRUSHINDIRECT = EMRCREATEBRUSHINDIRECT
 type PEMRCREATEBRUSHINDIRECT = uintptr
 
 type EMRCREATEMONOBRUSH = struct {
-	emr     EMR
-	ihBrush DWORD
-	iUsage  DWORD
-	offBmi  DWORD
-	cbBmi   DWORD
-	offBits DWORD
-	cbBits  DWORD
+	Femr     EMR
+	FihBrush DWORD
+	FiUsage  DWORD
+	FoffBmi  DWORD
+	FcbBmi   DWORD
+	FoffBits DWORD
+	FcbBits  DWORD
 }
 
 type tagEMRCREATEMONOBRUSH = EMRCREATEMONOBRUSH
@@ -21889,13 +21889,13 @@ type tagEMRCREATEMONOBRUSH = EMRCREATEMONOBRUSH
 type PEMRCREATEMONOBRUSH = uintptr
 
 type EMRCREATEDIBPATTERNBRUSHPT = struct {
-	emr     EMR
-	ihBrush DWORD
-	iUsage  DWORD
-	offBmi  DWORD
-	cbBmi   DWORD
-	offBits DWORD
-	cbBits  DWORD
+	Femr     EMR
+	FihBrush DWORD
+	FiUsage  DWORD
+	FoffBmi  DWORD
+	FcbBmi   DWORD
+	FoffBits DWORD
+	FcbBits  DWORD
 }
 
 type tagEMRCREATEDIBPATTERNBRUSHPT = EMRCREATEDIBPATTERNBRUSHPT
@@ -21903,10 +21903,10 @@ type tagEMRCREATEDIBPATTERNBRUSHPT = EMRCREATEDIBPATTERNBRUSHPT
 type PEMRCREATEDIBPATTERNBRUSHPT = uintptr
 
 type EMRFORMAT = struct {
-	dSignature DWORD
-	nVersion   DWORD
-	cbData     DWORD
-	offData    DWORD
+	FdSignature DWORD
+	FnVersion   DWORD
+	FcbData     DWORD
+	FoffData    DWORD
 }
 
 type tagEMRFORMAT = EMRFORMAT
@@ -21914,9 +21914,9 @@ type tagEMRFORMAT = EMRFORMAT
 type PEMRFORMAT = uintptr
 
 type EMRGLSRECORD = struct {
-	emr    EMR
-	cbData DWORD
-	Data   [1]BYTE
+	Femr    EMR
+	FcbData DWORD
+	FData   [1]BYTE
 }
 
 type tagEMRGLSRECORD = EMRGLSRECORD
@@ -21924,10 +21924,10 @@ type tagEMRGLSRECORD = EMRGLSRECORD
 type PEMRGLSRECORD = uintptr
 
 type EMRGLSBOUNDEDRECORD = struct {
-	emr       EMR
-	rclBounds RECTL
-	cbData    DWORD
-	Data      [1]BYTE
+	Femr       EMR
+	FrclBounds RECTL
+	FcbData    DWORD
+	FData      [1]BYTE
 }
 
 type tagEMRGLSBOUNDEDRECORD = EMRGLSBOUNDEDRECORD
@@ -21935,8 +21935,8 @@ type tagEMRGLSBOUNDEDRECORD = EMRGLSBOUNDEDRECORD
 type PEMRGLSBOUNDEDRECORD = uintptr
 
 type EMRPIXELFORMAT = struct {
-	emr EMR
-	pfd PIXELFORMATDESCRIPTOR
+	Femr EMR
+	Fpfd PIXELFORMATDESCRIPTOR
 }
 
 type tagEMRPIXELFORMAT = EMRPIXELFORMAT
@@ -21944,9 +21944,9 @@ type tagEMRPIXELFORMAT = EMRPIXELFORMAT
 type PEMRPIXELFORMAT = uintptr
 
 type EMRCREATECOLORSPACE = struct {
-	emr  EMR
-	ihCS DWORD
-	lcs  LOGCOLORSPACEA
+	Femr  EMR
+	FihCS DWORD
+	Flcs  LOGCOLORSPACEA
 }
 
 type tagEMRCREATECOLORSPACE = EMRCREATECOLORSPACE
@@ -21954,8 +21954,8 @@ type tagEMRCREATECOLORSPACE = EMRCREATECOLORSPACE
 type PEMRCREATECOLORSPACE = uintptr
 
 type EMRSETCOLORSPACE = struct {
-	emr  EMR
-	ihCS DWORD
+	Femr  EMR
+	FihCS DWORD
 }
 
 type tagEMRSETCOLORSPACE = EMRSETCOLORSPACE
@@ -21963,24 +21963,24 @@ type tagEMRSETCOLORSPACE = EMRSETCOLORSPACE
 type PEMRSETCOLORSPACE = uintptr
 
 type EMRSELECTCOLORSPACE = struct {
-	emr  EMR
-	ihCS DWORD
+	Femr  EMR
+	FihCS DWORD
 }
 
 type PEMRSELECTCOLORSPACE = uintptr
 
 type EMRDELETECOLORSPACE = struct {
-	emr  EMR
-	ihCS DWORD
+	Femr  EMR
+	FihCS DWORD
 }
 
 type PEMRDELETECOLORSPACE = uintptr
 
 type EMREXTESCAPE = struct {
-	emr       EMR
-	iEscape   INT
-	cbEscData INT
-	EscData   [1]BYTE
+	Femr       EMR
+	FiEscape   INT
+	FcbEscData INT
+	FEscData   [1]BYTE
 }
 
 type tagEMREXTESCAPE = EMREXTESCAPE
@@ -21988,20 +21988,20 @@ type tagEMREXTESCAPE = EMREXTESCAPE
 type PEMREXTESCAPE = uintptr
 
 type EMRDRAWESCAPE = struct {
-	emr       EMR
-	iEscape   INT
-	cbEscData INT
-	EscData   [1]BYTE
+	Femr       EMR
+	FiEscape   INT
+	FcbEscData INT
+	FEscData   [1]BYTE
 }
 
 type PEMRDRAWESCAPE = uintptr
 
 type EMRNAMEDESCAPE = struct {
-	emr       EMR
-	iEscape   INT
-	cbDriver  INT
-	cbEscData INT
-	EscData   [1]BYTE
+	Femr       EMR
+	FiEscape   INT
+	FcbDriver  INT
+	FcbEscData INT
+	FEscData   [1]BYTE
 }
 
 type tagEMRNAMEDESCAPE = EMRNAMEDESCAPE
@@ -22009,11 +22009,11 @@ type tagEMRNAMEDESCAPE = EMRNAMEDESCAPE
 type PEMRNAMEDESCAPE = uintptr
 
 type EMRSETICMPROFILE = struct {
-	emr     EMR
-	dwFlags DWORD
-	cbName  DWORD
-	cbData  DWORD
-	Data    [1]BYTE
+	Femr     EMR
+	FdwFlags DWORD
+	FcbName  DWORD
+	FcbData  DWORD
+	FData    [1]BYTE
 }
 
 type tagEMRSETICMPROFILE = EMRSETICMPROFILE
@@ -22021,32 +22021,32 @@ type tagEMRSETICMPROFILE = EMRSETICMPROFILE
 type PEMRSETICMPROFILE = uintptr
 
 type EMRSETICMPROFILEA = struct {
-	emr     EMR
-	dwFlags DWORD
-	cbName  DWORD
-	cbData  DWORD
-	Data    [1]BYTE
+	Femr     EMR
+	FdwFlags DWORD
+	FcbName  DWORD
+	FcbData  DWORD
+	FData    [1]BYTE
 }
 
 type PEMRSETICMPROFILEA = uintptr
 
 type EMRSETICMPROFILEW = struct {
-	emr     EMR
-	dwFlags DWORD
-	cbName  DWORD
-	cbData  DWORD
-	Data    [1]BYTE
+	Femr     EMR
+	FdwFlags DWORD
+	FcbName  DWORD
+	FcbData  DWORD
+	FData    [1]BYTE
 }
 
 type PEMRSETICMPROFILEW = uintptr
 
 type EMRCREATECOLORSPACEW = struct {
-	emr     EMR
-	ihCS    DWORD
-	lcs     LOGCOLORSPACEW
-	dwFlags DWORD
-	cbData  DWORD
-	Data    [1]BYTE
+	Femr     EMR
+	FihCS    DWORD
+	Flcs     LOGCOLORSPACEW
+	FdwFlags DWORD
+	FcbData  DWORD
+	FData    [1]BYTE
 }
 
 type tagEMRCREATECOLORSPACEW = EMRCREATECOLORSPACEW
@@ -22054,12 +22054,12 @@ type tagEMRCREATECOLORSPACEW = EMRCREATECOLORSPACEW
 type PEMRCREATECOLORSPACEW = uintptr
 
 type EMRCOLORMATCHTOTARGET = struct {
-	emr      EMR
-	dwAction DWORD
-	dwFlags  DWORD
-	cbName   DWORD
-	cbData   DWORD
-	Data     [1]BYTE
+	Femr      EMR
+	FdwAction DWORD
+	FdwFlags  DWORD
+	FcbName   DWORD
+	FcbData   DWORD
+	FData     [1]BYTE
 }
 
 type tagCOLORMATCHTOTARGET = EMRCOLORMATCHTOTARGET
@@ -22067,11 +22067,11 @@ type tagCOLORMATCHTOTARGET = EMRCOLORMATCHTOTARGET
 type PEMRCOLORMATCHTOTARGET = uintptr
 
 type EMRCOLORCORRECTPALETTE = struct {
-	emr         EMR
-	ihPalette   DWORD
-	nFirstEntry DWORD
-	nPalEntries DWORD
-	nReserved   DWORD
+	Femr         EMR
+	FihPalette   DWORD
+	FnFirstEntry DWORD
+	FnPalEntries DWORD
+	FnReserved   DWORD
 }
 
 type tagCOLORCORRECTPALETTE = EMRCOLORCORRECTPALETTE
@@ -22079,24 +22079,24 @@ type tagCOLORCORRECTPALETTE = EMRCOLORCORRECTPALETTE
 type PEMRCOLORCORRECTPALETTE = uintptr
 
 type EMRALPHABLEND = struct {
-	emr          EMR
-	rclBounds    RECTL
-	xDest        LONG
-	yDest        LONG
-	cxDest       LONG
-	cyDest       LONG
-	dwRop        DWORD
-	xSrc         LONG
-	ySrc         LONG
-	xformSrc     XFORM
-	crBkColorSrc COLORREF
-	iUsageSrc    DWORD
-	offBmiSrc    DWORD
-	cbBmiSrc     DWORD
-	offBitsSrc   DWORD
-	cbBitsSrc    DWORD
-	cxSrc        LONG
-	cySrc        LONG
+	Femr          EMR
+	FrclBounds    RECTL
+	FxDest        LONG
+	FyDest        LONG
+	FcxDest       LONG
+	FcyDest       LONG
+	FdwRop        DWORD
+	FxSrc         LONG
+	FySrc         LONG
+	FxformSrc     XFORM
+	FcrBkColorSrc COLORREF
+	FiUsageSrc    DWORD
+	FoffBmiSrc    DWORD
+	FcbBmiSrc     DWORD
+	FoffBitsSrc   DWORD
+	FcbBitsSrc    DWORD
+	FcxSrc        LONG
+	FcySrc        LONG
 }
 
 type tagEMRALPHABLEND = EMRALPHABLEND
@@ -22104,12 +22104,12 @@ type tagEMRALPHABLEND = EMRALPHABLEND
 type PEMRALPHABLEND = uintptr
 
 type EMRGRADIENTFILL = struct {
-	emr       EMR
-	rclBounds RECTL
-	nVer      DWORD
-	nTri      DWORD
-	ulMode    ULONG
-	Ver       [1]TRIVERTEX
+	Femr       EMR
+	FrclBounds RECTL
+	FnVer      DWORD
+	FnTri      DWORD
+	FulMode    ULONG
+	FVer       [1]TRIVERTEX
 }
 
 type tagEMRGRADIENTFILL = EMRGRADIENTFILL
@@ -22117,24 +22117,24 @@ type tagEMRGRADIENTFILL = EMRGRADIENTFILL
 type PEMRGRADIENTFILL = uintptr
 
 type EMRTRANSPARENTBLT = struct {
-	emr          EMR
-	rclBounds    RECTL
-	xDest        LONG
-	yDest        LONG
-	cxDest       LONG
-	cyDest       LONG
-	dwRop        DWORD
-	xSrc         LONG
-	ySrc         LONG
-	xformSrc     XFORM
-	crBkColorSrc COLORREF
-	iUsageSrc    DWORD
-	offBmiSrc    DWORD
-	cbBmiSrc     DWORD
-	offBitsSrc   DWORD
-	cbBitsSrc    DWORD
-	cxSrc        LONG
-	cySrc        LONG
+	Femr          EMR
+	FrclBounds    RECTL
+	FxDest        LONG
+	FyDest        LONG
+	FcxDest       LONG
+	FcyDest       LONG
+	FdwRop        DWORD
+	FxSrc         LONG
+	FySrc         LONG
+	FxformSrc     XFORM
+	FcrBkColorSrc COLORREF
+	FiUsageSrc    DWORD
+	FoffBmiSrc    DWORD
+	FcbBmiSrc     DWORD
+	FoffBitsSrc   DWORD
+	FcbBitsSrc    DWORD
+	FcxSrc        LONG
+	FcySrc        LONG
 }
 
 type tagEMRTRANSPARENTBLT = EMRTRANSPARENTBLT
@@ -22142,8 +22142,8 @@ type tagEMRTRANSPARENTBLT = EMRTRANSPARENTBLT
 type PEMRTRANSPARENTBLT = uintptr
 
 type POINTFLOAT = struct {
-	x FLOAT
-	y FLOAT
+	Fx FLOAT
+	Fy FLOAT
 }
 
 type _POINTFLOAT = POINTFLOAT
@@ -22151,11 +22151,11 @@ type _POINTFLOAT = POINTFLOAT
 type PPOINTFLOAT = uintptr
 
 type GLYPHMETRICSFLOAT = struct {
-	gmfBlackBoxX     FLOAT
-	gmfBlackBoxY     FLOAT
-	gmfptGlyphOrigin POINTFLOAT
-	gmfCellIncX      FLOAT
-	gmfCellIncY      FLOAT
+	FgmfBlackBoxX     FLOAT
+	FgmfBlackBoxY     FLOAT
+	FgmfptGlyphOrigin POINTFLOAT
+	FgmfCellIncX      FLOAT
+	FgmfCellIncY      FLOAT
 }
 
 type _GLYPHMETRICSFLOAT = GLYPHMETRICSFLOAT
@@ -22165,30 +22165,30 @@ type PGLYPHMETRICSFLOAT = uintptr
 type LPGLYPHMETRICSFLOAT = uintptr
 
 type LAYERPLANEDESCRIPTOR = struct {
-	nSize           WORD
-	nVersion        WORD
-	dwFlags         DWORD
-	iPixelType      BYTE
-	cColorBits      BYTE
-	cRedBits        BYTE
-	cRedShift       BYTE
-	cGreenBits      BYTE
-	cGreenShift     BYTE
-	cBlueBits       BYTE
-	cBlueShift      BYTE
-	cAlphaBits      BYTE
-	cAlphaShift     BYTE
-	cAccumBits      BYTE
-	cAccumRedBits   BYTE
-	cAccumGreenBits BYTE
-	cAccumBlueBits  BYTE
-	cAccumAlphaBits BYTE
-	cDepthBits      BYTE
-	cStencilBits    BYTE
-	cAuxBuffers     BYTE
-	iLayerPlane     BYTE
-	bReserved       BYTE
-	crTransparent   COLORREF
+	FnSize           WORD
+	FnVersion        WORD
+	FdwFlags         DWORD
+	FiPixelType      BYTE
+	FcColorBits      BYTE
+	FcRedBits        BYTE
+	FcRedShift       BYTE
+	FcGreenBits      BYTE
+	FcGreenShift     BYTE
+	FcBlueBits       BYTE
+	FcBlueShift      BYTE
+	FcAlphaBits      BYTE
+	FcAlphaShift     BYTE
+	FcAccumBits      BYTE
+	FcAccumRedBits   BYTE
+	FcAccumGreenBits BYTE
+	FcAccumBlueBits  BYTE
+	FcAccumAlphaBits BYTE
+	FcDepthBits      BYTE
+	FcStencilBits    BYTE
+	FcAuxBuffers     BYTE
+	FiLayerPlane     BYTE
+	FbReserved       BYTE
+	FcrTransparent   COLORREF
 }
 
 type tagLAYERPLANEDESCRIPTOR = LAYERPLANEDESCRIPTOR
@@ -22198,8 +22198,8 @@ type PLAYERPLANEDESCRIPTOR = uintptr
 type LPLAYERPLANEDESCRIPTOR = uintptr
 
 type WGLSWAP = struct {
-	hdc     HDC
-	uiFlags UINT
+	Fhdc     HDC
+	FuiFlags UINT
 }
 
 type _WGLSWAP = WGLSWAP
@@ -22273,8 +22273,8 @@ type WINSTAENUMPROC = uintptr
 type DESKTOPENUMPROC = uintptr
 
 type CBT_CREATEWNDA = struct {
-	lpcs            uintptr
-	hwndInsertAfter HWND
+	Flpcs            uintptr
+	FhwndInsertAfter HWND
 }
 
 type tagCBT_CREATEWNDA = CBT_CREATEWNDA
@@ -22282,8 +22282,8 @@ type tagCBT_CREATEWNDA = CBT_CREATEWNDA
 type LPCBT_CREATEWNDA = uintptr
 
 type CBT_CREATEWNDW = struct {
-	lpcs            uintptr
-	hwndInsertAfter HWND
+	Flpcs            uintptr
+	FhwndInsertAfter HWND
 }
 
 type tagCBT_CREATEWNDW = CBT_CREATEWNDW
@@ -22291,15 +22291,15 @@ type tagCBT_CREATEWNDW = CBT_CREATEWNDW
 type LPCBT_CREATEWNDW = uintptr
 
 type CBT_CREATEWND = struct {
-	lpcs            uintptr
-	hwndInsertAfter HWND
+	Flpcs            uintptr
+	FhwndInsertAfter HWND
 }
 
 type LPCBT_CREATEWND = uintptr
 
 type CBTACTIVATESTRUCT = struct {
-	fMouse     WINBOOL
-	hWndActive HWND
+	FfMouse     WINBOOL
+	FhWndActive HWND
 }
 
 type tagCBTACTIVATESTRUCT = CBTACTIVATESTRUCT
@@ -22307,8 +22307,8 @@ type tagCBTACTIVATESTRUCT = CBTACTIVATESTRUCT
 type LPCBTACTIVATESTRUCT = uintptr
 
 type WTSSESSION_NOTIFICATION = struct {
-	cbSize      DWORD
-	dwSessionId DWORD
+	FcbSize      DWORD
+	FdwSessionId DWORD
 }
 
 type tagWTSSESSION_NOTIFICATION = WTSSESSION_NOTIFICATION
@@ -22316,18 +22316,18 @@ type tagWTSSESSION_NOTIFICATION = WTSSESSION_NOTIFICATION
 type PWTSSESSION_NOTIFICATION = uintptr
 
 type SHELLHOOKINFO = struct {
-	hwnd HWND
-	rc   RECT
+	Fhwnd HWND
+	Frc   RECT
 }
 
 type LPSHELLHOOKINFO = uintptr
 
 type EVENTMSG = struct {
-	message UINT
-	paramL  UINT
-	paramH  UINT
-	time    DWORD
-	hwnd    HWND
+	Fmessage UINT
+	FparamL  UINT
+	FparamH  UINT
+	Ftime    DWORD
+	Fhwnd    HWND
 }
 
 type tagEVENTMSG = EVENTMSG
@@ -22345,10 +22345,10 @@ type NPEVENTMSG = uintptr
 type LPEVENTMSG = uintptr
 
 type CWPSTRUCT = struct {
-	lParam  LPARAM
-	wParam  WPARAM
-	message UINT
-	hwnd    HWND
+	FlParam  LPARAM
+	FwParam  WPARAM
+	Fmessage UINT
+	Fhwnd    HWND
 }
 
 type tagCWPSTRUCT = CWPSTRUCT
@@ -22360,11 +22360,11 @@ type NPCWPSTRUCT = uintptr
 type LPCWPSTRUCT = uintptr
 
 type CWPRETSTRUCT = struct {
-	lResult LRESULT
-	lParam  LPARAM
-	wParam  WPARAM
-	message UINT
-	hwnd    HWND
+	FlResult LRESULT
+	FlParam  LPARAM
+	FwParam  WPARAM
+	Fmessage UINT
+	Fhwnd    HWND
 }
 
 type tagCWPRETSTRUCT = CWPRETSTRUCT
@@ -22376,11 +22376,11 @@ type NPCWPRETSTRUCT = uintptr
 type LPCWPRETSTRUCT = uintptr
 
 type KBDLLHOOKSTRUCT = struct {
-	vkCode      DWORD
-	scanCode    DWORD
-	flags       DWORD
-	time        DWORD
-	dwExtraInfo ULONG_PTR
+	FvkCode      DWORD
+	FscanCode    DWORD
+	Fflags       DWORD
+	Ftime        DWORD
+	FdwExtraInfo ULONG_PTR
 }
 
 type tagKBDLLHOOKSTRUCT = KBDLLHOOKSTRUCT
@@ -22390,11 +22390,11 @@ type LPKBDLLHOOKSTRUCT = uintptr
 type PKBDLLHOOKSTRUCT = uintptr
 
 type MSLLHOOKSTRUCT = struct {
-	pt          POINT
-	mouseData   DWORD
-	flags       DWORD
-	time        DWORD
-	dwExtraInfo ULONG_PTR
+	Fpt          POINT
+	FmouseData   DWORD
+	Fflags       DWORD
+	Ftime        DWORD
+	FdwExtraInfo ULONG_PTR
 }
 
 type tagMSLLHOOKSTRUCT = MSLLHOOKSTRUCT
@@ -22404,11 +22404,11 @@ type LPMSLLHOOKSTRUCT = uintptr
 type PMSLLHOOKSTRUCT = uintptr
 
 type DEBUGHOOKINFO = struct {
-	idThread          DWORD
-	idThreadInstaller DWORD
-	lParam            LPARAM
-	wParam            WPARAM
-	code              int32
+	FidThread          DWORD
+	FidThreadInstaller DWORD
+	FlParam            LPARAM
+	FwParam            WPARAM
+	Fcode              int32
 }
 
 type tagDEBUGHOOKINFO = DEBUGHOOKINFO
@@ -22420,10 +22420,10 @@ type NPDEBUGHOOKINFO = uintptr
 type LPDEBUGHOOKINFO = uintptr
 
 type MOUSEHOOKSTRUCT = struct {
-	pt           POINT
-	hwnd         HWND
-	wHitTestCode UINT
-	dwExtraInfo  ULONG_PTR
+	Fpt           POINT
+	Fhwnd         HWND
+	FwHitTestCode UINT
+	FdwExtraInfo  ULONG_PTR
 }
 
 type tagMOUSEHOOKSTRUCT = MOUSEHOOKSTRUCT
@@ -22433,8 +22433,8 @@ type LPMOUSEHOOKSTRUCT = uintptr
 type PMOUSEHOOKSTRUCT = uintptr
 
 type MOUSEHOOKSTRUCTEX = struct {
-	__unnamed MOUSEHOOKSTRUCT
-	mouseData DWORD
+	F__unnamed MOUSEHOOKSTRUCT
+	FmouseData DWORD
 }
 
 type tagMOUSEHOOKSTRUCTEX = MOUSEHOOKSTRUCTEX
@@ -22444,10 +22444,10 @@ type LPMOUSEHOOKSTRUCTEX = uintptr
 type PMOUSEHOOKSTRUCTEX = uintptr
 
 type HARDWAREHOOKSTRUCT = struct {
-	hwnd    HWND
-	message UINT
-	wParam  WPARAM
-	lParam  LPARAM
+	Fhwnd    HWND
+	Fmessage UINT
+	FwParam  WPARAM
+	FlParam  LPARAM
 }
 
 type tagHARDWAREHOOKSTRUCT = HARDWAREHOOKSTRUCT
@@ -22457,10 +22457,10 @@ type LPHARDWAREHOOKSTRUCT = uintptr
 type PHARDWAREHOOKSTRUCT = uintptr
 
 type MOUSEMOVEPOINT = struct {
-	x           int32
-	y           int32
-	time        DWORD
-	dwExtraInfo ULONG_PTR
+	Fx           int32
+	Fy           int32
+	Ftime        DWORD
+	FdwExtraInfo ULONG_PTR
 }
 
 type tagMOUSEMOVEPOINT = MOUSEMOVEPOINT
@@ -22470,9 +22470,9 @@ type PMOUSEMOVEPOINT = uintptr
 type LPMOUSEMOVEPOINT = uintptr
 
 type USEROBJECTFLAGS = struct {
-	fInherit  WINBOOL
-	fReserved WINBOOL
-	dwFlags   DWORD
+	FfInherit  WINBOOL
+	FfReserved WINBOOL
+	FdwFlags   DWORD
 }
 
 type tagUSEROBJECTFLAGS = USEROBJECTFLAGS
@@ -22480,18 +22480,18 @@ type tagUSEROBJECTFLAGS = USEROBJECTFLAGS
 type PUSEROBJECTFLAGS = uintptr
 
 type WNDCLASSEXA = struct {
-	cbSize        UINT
-	style         UINT
-	lpfnWndProc   WNDPROC
-	cbClsExtra    int32
-	cbWndExtra    int32
-	hInstance     HINSTANCE
-	hIcon         HICON
-	hCursor       HCURSOR
-	hbrBackground HBRUSH
-	lpszMenuName  LPCSTR
-	lpszClassName LPCSTR
-	hIconSm       HICON
+	FcbSize        UINT
+	Fstyle         UINT
+	FlpfnWndProc   WNDPROC
+	FcbClsExtra    int32
+	FcbWndExtra    int32
+	FhInstance     HINSTANCE
+	FhIcon         HICON
+	FhCursor       HCURSOR
+	FhbrBackground HBRUSH
+	FlpszMenuName  LPCSTR
+	FlpszClassName LPCSTR
+	FhIconSm       HICON
 }
 
 type tagWNDCLASSEXA = WNDCLASSEXA
@@ -22503,18 +22503,18 @@ type NPWNDCLASSEXA = uintptr
 type LPWNDCLASSEXA = uintptr
 
 type WNDCLASSEXW = struct {
-	cbSize        UINT
-	style         UINT
-	lpfnWndProc   WNDPROC
-	cbClsExtra    int32
-	cbWndExtra    int32
-	hInstance     HINSTANCE
-	hIcon         HICON
-	hCursor       HCURSOR
-	hbrBackground HBRUSH
-	lpszMenuName  LPCWSTR
-	lpszClassName LPCWSTR
-	hIconSm       HICON
+	FcbSize        UINT
+	Fstyle         UINT
+	FlpfnWndProc   WNDPROC
+	FcbClsExtra    int32
+	FcbWndExtra    int32
+	FhInstance     HINSTANCE
+	FhIcon         HICON
+	FhCursor       HCURSOR
+	FhbrBackground HBRUSH
+	FlpszMenuName  LPCWSTR
+	FlpszClassName LPCWSTR
+	FhIconSm       HICON
 }
 
 type tagWNDCLASSEXW = WNDCLASSEXW
@@ -22526,18 +22526,18 @@ type NPWNDCLASSEXW = uintptr
 type LPWNDCLASSEXW = uintptr
 
 type WNDCLASSEX = struct {
-	cbSize        UINT
-	style         UINT
-	lpfnWndProc   WNDPROC
-	cbClsExtra    int32
-	cbWndExtra    int32
-	hInstance     HINSTANCE
-	hIcon         HICON
-	hCursor       HCURSOR
-	hbrBackground HBRUSH
-	lpszMenuName  LPCSTR
-	lpszClassName LPCSTR
-	hIconSm       HICON
+	FcbSize        UINT
+	Fstyle         UINT
+	FlpfnWndProc   WNDPROC
+	FcbClsExtra    int32
+	FcbWndExtra    int32
+	FhInstance     HINSTANCE
+	FhIcon         HICON
+	FhCursor       HCURSOR
+	FhbrBackground HBRUSH
+	FlpszMenuName  LPCSTR
+	FlpszClassName LPCSTR
+	FhIconSm       HICON
 }
 
 type PWNDCLASSEX = uintptr
@@ -22547,16 +22547,16 @@ type NPWNDCLASSEX = uintptr
 type LPWNDCLASSEX = uintptr
 
 type WNDCLASSA = struct {
-	style         UINT
-	lpfnWndProc   WNDPROC
-	cbClsExtra    int32
-	cbWndExtra    int32
-	hInstance     HINSTANCE
-	hIcon         HICON
-	hCursor       HCURSOR
-	hbrBackground HBRUSH
-	lpszMenuName  LPCSTR
-	lpszClassName LPCSTR
+	Fstyle         UINT
+	FlpfnWndProc   WNDPROC
+	FcbClsExtra    int32
+	FcbWndExtra    int32
+	FhInstance     HINSTANCE
+	FhIcon         HICON
+	FhCursor       HCURSOR
+	FhbrBackground HBRUSH
+	FlpszMenuName  LPCSTR
+	FlpszClassName LPCSTR
 }
 
 type tagWNDCLASSA = WNDCLASSA
@@ -22568,16 +22568,16 @@ type NPWNDCLASSA = uintptr
 type LPWNDCLASSA = uintptr
 
 type WNDCLASSW = struct {
-	style         UINT
-	lpfnWndProc   WNDPROC
-	cbClsExtra    int32
-	cbWndExtra    int32
-	hInstance     HINSTANCE
-	hIcon         HICON
-	hCursor       HCURSOR
-	hbrBackground HBRUSH
-	lpszMenuName  LPCWSTR
-	lpszClassName LPCWSTR
+	Fstyle         UINT
+	FlpfnWndProc   WNDPROC
+	FcbClsExtra    int32
+	FcbWndExtra    int32
+	FhInstance     HINSTANCE
+	FhIcon         HICON
+	FhCursor       HCURSOR
+	FhbrBackground HBRUSH
+	FlpszMenuName  LPCWSTR
+	FlpszClassName LPCWSTR
 }
 
 type tagWNDCLASSW = WNDCLASSW
@@ -22589,16 +22589,16 @@ type NPWNDCLASSW = uintptr
 type LPWNDCLASSW = uintptr
 
 type WNDCLASS = struct {
-	style         UINT
-	lpfnWndProc   WNDPROC
-	cbClsExtra    int32
-	cbWndExtra    int32
-	hInstance     HINSTANCE
-	hIcon         HICON
-	hCursor       HCURSOR
-	hbrBackground HBRUSH
-	lpszMenuName  LPCSTR
-	lpszClassName LPCSTR
+	Fstyle         UINT
+	FlpfnWndProc   WNDPROC
+	FcbClsExtra    int32
+	FcbWndExtra    int32
+	FhInstance     HINSTANCE
+	FhIcon         HICON
+	FhCursor       HCURSOR
+	FhbrBackground HBRUSH
+	FlpszMenuName  LPCSTR
+	FlpszClassName LPCSTR
 }
 
 type PWNDCLASS = uintptr
@@ -22608,12 +22608,12 @@ type NPWNDCLASS = uintptr
 type LPWNDCLASS = uintptr
 
 type MSG = struct {
-	hwnd    HWND
-	message UINT
-	wParam  WPARAM
-	lParam  LPARAM
-	time    DWORD
-	pt      POINT
+	Fhwnd    HWND
+	Fmessage UINT
+	FwParam  WPARAM
+	FlParam  LPARAM
+	Ftime    DWORD
+	Fpt      POINT
 }
 
 type tagMSG = MSG
@@ -22625,11 +22625,11 @@ type NPMSG = uintptr
 type LPMSG = uintptr
 
 type MINMAXINFO = struct {
-	ptReserved     POINT
-	ptMaxSize      POINT
-	ptMaxPosition  POINT
-	ptMinTrackSize POINT
-	ptMaxTrackSize POINT
+	FptReserved     POINT
+	FptMaxSize      POINT
+	FptMaxPosition  POINT
+	FptMinTrackSize POINT
+	FptMaxTrackSize POINT
 }
 
 type tagMINMAXINFO = MINMAXINFO
@@ -22639,9 +22639,9 @@ type PMINMAXINFO = uintptr
 type LPMINMAXINFO = uintptr
 
 type COPYDATASTRUCT = struct {
-	dwData ULONG_PTR
-	cbData DWORD
-	lpData PVOID
+	FdwData ULONG_PTR
+	FcbData DWORD
+	FlpData PVOID
 }
 
 type tagCOPYDATASTRUCT = COPYDATASTRUCT
@@ -22649,9 +22649,9 @@ type tagCOPYDATASTRUCT = COPYDATASTRUCT
 type PCOPYDATASTRUCT = uintptr
 
 type MDINEXTMENU = struct {
-	hmenuIn   HMENU
-	hmenuNext HMENU
-	hwndNext  HWND
+	FhmenuIn   HMENU
+	FhmenuNext HMENU
+	FhwndNext  HWND
 }
 
 type tagMDINEXTMENU = MDINEXTMENU
@@ -22661,21 +22661,21 @@ type PMDINEXTMENU = uintptr
 type LPMDINEXTMENU = uintptr
 
 type POWERBROADCAST_SETTING = struct {
-	PowerSetting GUID
-	DataLength   DWORD
-	Data         [1]UCHAR
+	FPowerSetting GUID
+	FDataLength   DWORD
+	FData         [1]UCHAR
 }
 
 type PPOWERBROADCAST_SETTING = uintptr
 
 type WINDOWPOS = struct {
-	hwnd            HWND
-	hwndInsertAfter HWND
-	x               int32
-	y               int32
-	cx              int32
-	cy              int32
-	flags           UINT
+	Fhwnd            HWND
+	FhwndInsertAfter HWND
+	Fx               int32
+	Fy               int32
+	Fcx              int32
+	Fcy              int32
+	Fflags           UINT
 }
 
 type tagWINDOWPOS = WINDOWPOS
@@ -22685,8 +22685,8 @@ type LPWINDOWPOS = uintptr
 type PWINDOWPOS = uintptr
 
 type NCCALCSIZE_PARAMS = struct {
-	rgrc  [3]RECT
-	lppos PWINDOWPOS
+	Frgrc  [3]RECT
+	Flppos PWINDOWPOS
 }
 
 type tagNCCALCSIZE_PARAMS = NCCALCSIZE_PARAMS
@@ -22694,10 +22694,10 @@ type tagNCCALCSIZE_PARAMS = NCCALCSIZE_PARAMS
 type LPNCCALCSIZE_PARAMS = uintptr
 
 type TRACKMOUSEEVENT = struct {
-	cbSize      DWORD
-	dwFlags     DWORD
-	hwndTrack   HWND
-	dwHoverTime DWORD
+	FcbSize      DWORD
+	FdwFlags     DWORD
+	FhwndTrack   HWND
+	FdwHoverTime DWORD
 }
 
 type tagTRACKMOUSEEVENT = TRACKMOUSEEVENT
@@ -22705,9 +22705,9 @@ type tagTRACKMOUSEEVENT = TRACKMOUSEEVENT
 type LPTRACKMOUSEEVENT = uintptr
 
 type ACCEL = struct {
-	fVirt BYTE
-	key   WORD
-	cmd   WORD
+	FfVirt BYTE
+	Fkey   WORD
+	Fcmd   WORD
 }
 
 type tagACCEL = ACCEL
@@ -22715,12 +22715,12 @@ type tagACCEL = ACCEL
 type LPACCEL = uintptr
 
 type PAINTSTRUCT = struct {
-	hdc         HDC
-	fErase      WINBOOL
-	rcPaint     RECT
-	fRestore    WINBOOL
-	fIncUpdate  WINBOOL
-	rgbReserved [32]BYTE
+	Fhdc         HDC
+	FfErase      WINBOOL
+	FrcPaint     RECT
+	FfRestore    WINBOOL
+	FfIncUpdate  WINBOOL
+	FrgbReserved [32]BYTE
 }
 
 type tagPAINTSTRUCT = PAINTSTRUCT
@@ -22732,18 +22732,18 @@ type NPPAINTSTRUCT = uintptr
 type LPPAINTSTRUCT = uintptr
 
 type CREATESTRUCTA = struct {
-	lpCreateParams LPVOID
-	hInstance      HINSTANCE
-	hMenu          HMENU
-	hwndParent     HWND
-	cy             int32
-	cx             int32
-	y              int32
-	x              int32
-	style          LONG
-	lpszName       LPCSTR
-	lpszClass      LPCSTR
-	dwExStyle      DWORD
+	FlpCreateParams LPVOID
+	FhInstance      HINSTANCE
+	FhMenu          HMENU
+	FhwndParent     HWND
+	Fcy             int32
+	Fcx             int32
+	Fy              int32
+	Fx              int32
+	Fstyle          LONG
+	FlpszName       LPCSTR
+	FlpszClass      LPCSTR
+	FdwExStyle      DWORD
 }
 
 type tagCREATESTRUCTA = CREATESTRUCTA
@@ -22751,18 +22751,18 @@ type tagCREATESTRUCTA = CREATESTRUCTA
 type LPCREATESTRUCTA = uintptr
 
 type CREATESTRUCTW = struct {
-	lpCreateParams LPVOID
-	hInstance      HINSTANCE
-	hMenu          HMENU
-	hwndParent     HWND
-	cy             int32
-	cx             int32
-	y              int32
-	x              int32
-	style          LONG
-	lpszName       LPCWSTR
-	lpszClass      LPCWSTR
-	dwExStyle      DWORD
+	FlpCreateParams LPVOID
+	FhInstance      HINSTANCE
+	FhMenu          HMENU
+	FhwndParent     HWND
+	Fcy             int32
+	Fcx             int32
+	Fy              int32
+	Fx              int32
+	Fstyle          LONG
+	FlpszName       LPCWSTR
+	FlpszClass      LPCWSTR
+	FdwExStyle      DWORD
 }
 
 type tagCREATESTRUCTW = CREATESTRUCTW
@@ -22770,29 +22770,29 @@ type tagCREATESTRUCTW = CREATESTRUCTW
 type LPCREATESTRUCTW = uintptr
 
 type CREATESTRUCT = struct {
-	lpCreateParams LPVOID
-	hInstance      HINSTANCE
-	hMenu          HMENU
-	hwndParent     HWND
-	cy             int32
-	cx             int32
-	y              int32
-	x              int32
-	style          LONG
-	lpszName       LPCSTR
-	lpszClass      LPCSTR
-	dwExStyle      DWORD
+	FlpCreateParams LPVOID
+	FhInstance      HINSTANCE
+	FhMenu          HMENU
+	FhwndParent     HWND
+	Fcy             int32
+	Fcx             int32
+	Fy              int32
+	Fx              int32
+	Fstyle          LONG
+	FlpszName       LPCSTR
+	FlpszClass      LPCSTR
+	FdwExStyle      DWORD
 }
 
 type LPCREATESTRUCT = uintptr
 
 type WINDOWPLACEMENT = struct {
-	length           UINT
-	flags            UINT
-	showCmd          UINT
-	ptMinPosition    POINT
-	ptMaxPosition    POINT
-	rcNormalPosition RECT
+	Flength           UINT
+	Fflags            UINT
+	FshowCmd          UINT
+	FptMinPosition    POINT
+	FptMaxPosition    POINT
+	FrcNormalPosition RECT
 }
 
 type tagWINDOWPLACEMENT = WINDOWPLACEMENT
@@ -22802,9 +22802,9 @@ type PWINDOWPLACEMENT = uintptr
 type LPWINDOWPLACEMENT = uintptr
 
 type NMHDR = struct {
-	hwndFrom HWND
-	idFrom   UINT_PTR
-	code     UINT
+	FhwndFrom HWND
+	FidFrom   UINT_PTR
+	Fcode     UINT
 }
 
 type tagNMHDR = NMHDR
@@ -22812,8 +22812,8 @@ type tagNMHDR = NMHDR
 type LPNMHDR = uintptr
 
 type STYLESTRUCT = struct {
-	styleOld DWORD
-	styleNew DWORD
+	FstyleOld DWORD
+	FstyleNew DWORD
 }
 
 type tagSTYLESTRUCT = STYLESTRUCT
@@ -22821,12 +22821,12 @@ type tagSTYLESTRUCT = STYLESTRUCT
 type LPSTYLESTRUCT = uintptr
 
 type MEASUREITEMSTRUCT = struct {
-	CtlType    UINT
-	CtlID      UINT
-	itemID     UINT
-	itemWidth  UINT
-	itemHeight UINT
-	itemData   ULONG_PTR
+	FCtlType    UINT
+	FCtlID      UINT
+	FitemID     UINT
+	FitemWidth  UINT
+	FitemHeight UINT
+	FitemData   ULONG_PTR
 }
 
 type tagMEASUREITEMSTRUCT = MEASUREITEMSTRUCT
@@ -22836,15 +22836,15 @@ type PMEASUREITEMSTRUCT = uintptr
 type LPMEASUREITEMSTRUCT = uintptr
 
 type DRAWITEMSTRUCT = struct {
-	CtlType    UINT
-	CtlID      UINT
-	itemID     UINT
-	itemAction UINT
-	itemState  UINT
-	hwndItem   HWND
-	hDC        HDC
-	rcItem     RECT
-	itemData   ULONG_PTR
+	FCtlType    UINT
+	FCtlID      UINT
+	FitemID     UINT
+	FitemAction UINT
+	FitemState  UINT
+	FhwndItem   HWND
+	FhDC        HDC
+	FrcItem     RECT
+	FitemData   ULONG_PTR
 }
 
 type tagDRAWITEMSTRUCT = DRAWITEMSTRUCT
@@ -22854,11 +22854,11 @@ type PDRAWITEMSTRUCT = uintptr
 type LPDRAWITEMSTRUCT = uintptr
 
 type DELETEITEMSTRUCT = struct {
-	CtlType  UINT
-	CtlID    UINT
-	itemID   UINT
-	hwndItem HWND
-	itemData ULONG_PTR
+	FCtlType  UINT
+	FCtlID    UINT
+	FitemID   UINT
+	FhwndItem HWND
+	FitemData ULONG_PTR
 }
 
 type tagDELETEITEMSTRUCT = DELETEITEMSTRUCT
@@ -22868,14 +22868,14 @@ type PDELETEITEMSTRUCT = uintptr
 type LPDELETEITEMSTRUCT = uintptr
 
 type COMPAREITEMSTRUCT = struct {
-	CtlType    UINT
-	CtlID      UINT
-	hwndItem   HWND
-	itemID1    UINT
-	itemData1  ULONG_PTR
-	itemID2    UINT
-	itemData2  ULONG_PTR
-	dwLocaleId DWORD
+	FCtlType    UINT
+	FCtlID      UINT
+	FhwndItem   HWND
+	FitemID1    UINT
+	FitemData1  ULONG_PTR
+	FitemID2    UINT
+	FitemData2  ULONG_PTR
+	FdwLocaleId DWORD
 }
 
 type tagCOMPAREITEMSTRUCT = COMPAREITEMSTRUCT
@@ -22885,10 +22885,10 @@ type PCOMPAREITEMSTRUCT = uintptr
 type LPCOMPAREITEMSTRUCT = uintptr
 
 type BSMINFO = struct {
-	cbSize UINT
-	hdesk  HDESK
-	hwnd   HWND
-	luid   LUID
+	FcbSize UINT
+	Fhdesk  HDESK
+	Fhwnd   HWND
+	Fluid   LUID
 }
 
 type PBSMINFO = uintptr
@@ -22904,16 +22904,16 @@ type PHPOWERNOTIFY = uintptr
 type PREGISTERCLASSNAMEW = uintptr
 
 type UPDATELAYEREDWINDOWINFO = struct {
-	cbSize   DWORD
-	hdcDst   HDC
-	pptDst   uintptr
-	psize    uintptr
-	hdcSrc   HDC
-	pptSrc   uintptr
-	crKey    COLORREF
-	pblend   uintptr
-	dwFlags  DWORD
-	prcDirty uintptr
+	FcbSize   DWORD
+	FhdcDst   HDC
+	FpptDst   uintptr
+	Fpsize    uintptr
+	FhdcSrc   HDC
+	FpptSrc   uintptr
+	FcrKey    COLORREF
+	Fpblend   uintptr
+	FdwFlags  DWORD
+	FprcDirty uintptr
 }
 
 type tagUPDATELAYEREDWINDOWINFO = UPDATELAYEREDWINDOWINFO
@@ -22921,23 +22921,23 @@ type tagUPDATELAYEREDWINDOWINFO = UPDATELAYEREDWINDOWINFO
 type PUPDATELAYEREDWINDOWINFO = uintptr
 
 type FLASHWINFO = struct {
-	cbSize    UINT
-	hwnd      HWND
-	dwFlags   DWORD
-	uCount    UINT
-	dwTimeout DWORD
+	FcbSize    UINT
+	Fhwnd      HWND
+	FdwFlags   DWORD
+	FuCount    UINT
+	FdwTimeout DWORD
 }
 
 type PFLASHWINFO = uintptr
 
 type DLGTEMPLATE = struct {
-	style           DWORD
-	dwExtendedStyle DWORD
-	cdit            WORD
-	x               int16
-	y               int16
-	cx              int16
-	cy              int16
+	Fstyle           DWORD
+	FdwExtendedStyle DWORD
+	Fcdit            WORD
+	Fx               int16
+	Fy               int16
+	Fcx              int16
+	Fcy              int16
 }
 
 type LPDLGTEMPLATEA = uintptr
@@ -22953,13 +22953,13 @@ type LPCDLGTEMPLATEW = uintptr
 type LPCDLGTEMPLATE = uintptr
 
 type DLGITEMTEMPLATE = struct {
-	style           DWORD
-	dwExtendedStyle DWORD
-	x               int16
-	y               int16
-	cx              int16
-	cy              int16
-	id              WORD
+	Fstyle           DWORD
+	FdwExtendedStyle DWORD
+	Fx               int16
+	Fy               int16
+	Fcx              int16
+	Fcy              int16
+	Fid              WORD
 }
 
 type PDLGITEMTEMPLATEA = uintptr
@@ -22992,12 +22992,12 @@ const DDC_DISABLE_RESIZE = 2
 const DDC_DISABLE_CONTROL_RELAYOUT = 4
 
 type MOUSEINPUT = struct {
-	dx          LONG
-	dy          LONG
-	mouseData   DWORD
-	dwFlags     DWORD
-	time        DWORD
-	dwExtraInfo ULONG_PTR
+	Fdx          LONG
+	Fdy          LONG
+	FmouseData   DWORD
+	FdwFlags     DWORD
+	Ftime        DWORD
+	FdwExtraInfo ULONG_PTR
 }
 
 type tagMOUSEINPUT = MOUSEINPUT
@@ -23007,11 +23007,11 @@ type PMOUSEINPUT = uintptr
 type LPMOUSEINPUT = uintptr
 
 type KEYBDINPUT = struct {
-	wVk         WORD
-	wScan       WORD
-	dwFlags     DWORD
-	time        DWORD
-	dwExtraInfo ULONG_PTR
+	FwVk         WORD
+	FwScan       WORD
+	FdwFlags     DWORD
+	Ftime        DWORD
+	FdwExtraInfo ULONG_PTR
 }
 
 type tagKEYBDINPUT = KEYBDINPUT
@@ -23021,9 +23021,9 @@ type PKEYBDINPUT = uintptr
 type LPKEYBDINPUT = uintptr
 
 type HARDWAREINPUT = struct {
-	uMsg    DWORD
-	wParamL WORD
-	wParamH WORD
+	FuMsg    DWORD
+	FwParamL WORD
+	FwParamH WORD
 }
 
 type tagHARDWAREINPUT = HARDWAREINPUT
@@ -23033,11 +23033,11 @@ type PHARDWAREINPUT = uintptr
 type LPHARDWAREINPUT = uintptr
 
 type INPUT = struct {
-	type1     DWORD
-	__ccgo1_8 struct {
-		ki [0]KEYBDINPUT
-		hi [0]HARDWAREINPUT
-		mi MOUSEINPUT
+	Ftype1     DWORD
+	F__ccgo1_8 struct {
+		Fki [0]KEYBDINPUT
+		Fhi [0]HARDWAREINPUT
+		Fmi MOUSEINPUT
 	}
 }
 
@@ -23048,22 +23048,22 @@ type PINPUT = uintptr
 type LPINPUT = uintptr
 
 type HTOUCHINPUT__ = struct {
-	unused int32
+	Funused int32
 }
 
 type HTOUCHINPUT = uintptr
 
 type TOUCHINPUT = struct {
-	x           LONG
-	y           LONG
-	hSource     HANDLE
-	dwID        DWORD
-	dwFlags     DWORD
-	dwMask      DWORD
-	dwTime      DWORD
-	dwExtraInfo ULONG_PTR
-	cxContact   DWORD
-	cyContact   DWORD
+	Fx           LONG
+	Fy           LONG
+	FhSource     HANDLE
+	FdwID        DWORD
+	FdwFlags     DWORD
+	FdwMask      DWORD
+	FdwTime      DWORD
+	FdwExtraInfo ULONG_PTR
+	FcxContact   DWORD
+	FcyContact   DWORD
 }
 
 type tagTOUCHINPUT = TOUCHINPUT
@@ -23126,46 +23126,46 @@ const POINTER_CHANGE_FIFTHBUTTON_DOWN = 9
 const POINTER_CHANGE_FIFTHBUTTON_UP = 10
 
 type POINTER_INFO = struct {
-	pointerType           POINTER_INPUT_TYPE
-	pointerId             UINT32
-	frameId               UINT32
-	pointerFlags          POINTER_FLAGS
-	sourceDevice          HANDLE
-	hwndTarget            HWND
-	ptPixelLocation       POINT
-	ptHimetricLocation    POINT
-	ptPixelLocationRaw    POINT
-	ptHimetricLocationRaw POINT
-	dwTime                DWORD
-	historyCount          UINT32
-	InputData             INT32
-	dwKeyStates           DWORD
-	PerformanceCount      UINT64
-	ButtonChangeType      POINTER_BUTTON_CHANGE_TYPE
+	FpointerType           POINTER_INPUT_TYPE
+	FpointerId             UINT32
+	FframeId               UINT32
+	FpointerFlags          POINTER_FLAGS
+	FsourceDevice          HANDLE
+	FhwndTarget            HWND
+	FptPixelLocation       POINT
+	FptHimetricLocation    POINT
+	FptPixelLocationRaw    POINT
+	FptHimetricLocationRaw POINT
+	FdwTime                DWORD
+	FhistoryCount          UINT32
+	FInputData             INT32
+	FdwKeyStates           DWORD
+	FPerformanceCount      UINT64
+	FButtonChangeType      POINTER_BUTTON_CHANGE_TYPE
 }
 
 type tagPOINTER_INFO = POINTER_INFO
 
 type POINTER_TOUCH_INFO = struct {
-	pointerInfo  POINTER_INFO
-	touchFlags   TOUCH_FLAGS
-	touchMask    TOUCH_MASK
-	rcContact    RECT
-	rcContactRaw RECT
-	orientation  UINT32
-	pressure     UINT32
+	FpointerInfo  POINTER_INFO
+	FtouchFlags   TOUCH_FLAGS
+	FtouchMask    TOUCH_MASK
+	FrcContact    RECT
+	FrcContactRaw RECT
+	Forientation  UINT32
+	Fpressure     UINT32
 }
 
 type tagPOINTER_TOUCH_INFO = POINTER_TOUCH_INFO
 
 type POINTER_PEN_INFO = struct {
-	pointerInfo POINTER_INFO
-	penFlags    PEN_FLAGS
-	penMask     PEN_MASK
-	pressure    UINT32
-	rotation    UINT32
-	tiltX       INT32
-	tiltY       INT32
+	FpointerInfo POINTER_INFO
+	FpenFlags    PEN_FLAGS
+	FpenMask     PEN_MASK
+	Fpressure    UINT32
+	Frotation    UINT32
+	FtiltX       INT32
+	FtiltY       INT32
 }
 
 type tagPOINTER_PEN_INFO = POINTER_PEN_INFO
@@ -23177,16 +23177,16 @@ const POINTER_FEEDBACK_INDIRECT = 2
 const POINTER_FEEDBACK_NONE = 3
 
 type USAGE_PROPERTIES = struct {
-	level           USHORT
-	page            USHORT
-	usage           USHORT
-	logicalMinimum  INT32
-	logicalMaximum  INT32
-	unit            USHORT
-	exponent        USHORT
-	count           BYTE
-	physicalMinimum INT32
-	physicalMaximum INT32
+	Flevel           USHORT
+	Fpage            USHORT
+	Fusage           USHORT
+	FlogicalMinimum  INT32
+	FlogicalMaximum  INT32
+	Funit            USHORT
+	Fexponent        USHORT
+	Fcount           BYTE
+	FphysicalMinimum INT32
+	FphysicalMaximum INT32
 }
 
 type tagUSAGE_PROPERTIES = USAGE_PROPERTIES
@@ -23194,10 +23194,10 @@ type tagUSAGE_PROPERTIES = USAGE_PROPERTIES
 type PUSAGE_PROPERTIES = uintptr
 
 type POINTER_TYPE_INFO = struct {
-	type1     POINTER_INPUT_TYPE
-	__ccgo1_8 struct {
-		penInfo   [0]POINTER_PEN_INFO
-		touchInfo POINTER_TOUCH_INFO
+	Ftype1     POINTER_INPUT_TYPE
+	F__ccgo1_8 struct {
+		FpenInfo   [0]POINTER_PEN_INFO
+		FtouchInfo POINTER_TOUCH_INFO
 	}
 }
 
@@ -23206,10 +23206,10 @@ type tagPOINTER_TYPE_INFO = POINTER_TYPE_INFO
 type PPOINTER_TYPE_INFO = uintptr
 
 type INPUT_INJECTION_VALUE = struct {
-	page  USHORT
-	usage USHORT
-	value INT32
-	index USHORT
+	Fpage  USHORT
+	Fusage USHORT
+	Fvalue INT32
+	Findex USHORT
 }
 
 type tagINPUT_INJECTION_VALUE = INPUT_INJECTION_VALUE
@@ -23217,8 +23217,8 @@ type tagINPUT_INJECTION_VALUE = INPUT_INJECTION_VALUE
 type PINPUT_INJECTION_VALUE = uintptr
 
 type TOUCH_HIT_TESTING_PROXIMITY_EVALUATION = struct {
-	score         UINT16
-	adjustedPoint POINT
+	Fscore         UINT16
+	FadjustedPoint POINT
 }
 
 type tagTOUCH_HIT_TESTING_PROXIMITY_EVALUATION = TOUCH_HIT_TESTING_PROXIMITY_EVALUATION
@@ -23226,11 +23226,11 @@ type tagTOUCH_HIT_TESTING_PROXIMITY_EVALUATION = TOUCH_HIT_TESTING_PROXIMITY_EVA
 type PTOUCH_HIT_TESTING_PROXIMITY_EVALUATION = uintptr
 
 type TOUCH_HIT_TESTING_INPUT = struct {
-	pointerId              UINT32
-	point                  POINT
-	boundingBox            RECT
-	nonOccludedBoundingBox RECT
-	orientation            UINT32
+	FpointerId              UINT32
+	Fpoint                  POINT
+	FboundingBox            RECT
+	FnonOccludedBoundingBox RECT
+	Forientation            UINT32
 }
 
 type tagTOUCH_HIT_TESTING_INPUT = TOUCH_HIT_TESTING_INPUT
@@ -23238,8 +23238,8 @@ type tagTOUCH_HIT_TESTING_INPUT = TOUCH_HIT_TESTING_INPUT
 type PTOUCH_HIT_TESTING_INPUT = uintptr
 
 type LASTINPUTINFO = struct {
-	cbSize UINT
-	dwTime DWORD
+	FcbSize UINT
+	FdwTime DWORD
 }
 
 type tagLASTINPUTINFO = LASTINPUTINFO
@@ -23247,20 +23247,20 @@ type tagLASTINPUTINFO = LASTINPUTINFO
 type PLASTINPUTINFO = uintptr
 
 type TPMPARAMS = struct {
-	cbSize    UINT
-	rcExclude RECT
+	FcbSize    UINT
+	FrcExclude RECT
 }
 
 type tagTPMPARAMS = TPMPARAMS
 
 type MENUINFO = struct {
-	cbSize          DWORD
-	fMask           DWORD
-	dwStyle         DWORD
-	cyMax           UINT
-	hbrBack         HBRUSH
-	dwContextHelpID DWORD
-	dwMenuData      ULONG_PTR
+	FcbSize          DWORD
+	FfMask           DWORD
+	FdwStyle         DWORD
+	FcyMax           UINT
+	FhbrBack         HBRUSH
+	FdwContextHelpID DWORD
+	FdwMenuData      ULONG_PTR
 }
 
 type tagMENUINFO = MENUINFO
@@ -23272,11 +23272,11 @@ type LPTPMPARAMS = uintptr
 type LPCMENUINFO = uintptr
 
 type MENUGETOBJECTINFO = struct {
-	dwFlags DWORD
-	uPos    UINT
-	hmenu   HMENU
-	riid    PVOID
-	pvObj   PVOID
+	FdwFlags DWORD
+	FuPos    UINT
+	Fhmenu   HMENU
+	Friid    PVOID
+	FpvObj   PVOID
 }
 
 type tagMENUGETOBJECTINFO = MENUGETOBJECTINFO
@@ -23284,18 +23284,18 @@ type tagMENUGETOBJECTINFO = MENUGETOBJECTINFO
 type PMENUGETOBJECTINFO = uintptr
 
 type MENUITEMINFOA = struct {
-	cbSize        UINT
-	fMask         UINT
-	fType         UINT
-	fState        UINT
-	wID           UINT
-	hSubMenu      HMENU
-	hbmpChecked   HBITMAP
-	hbmpUnchecked HBITMAP
-	dwItemData    ULONG_PTR
-	dwTypeData    LPSTR
-	cch           UINT
-	hbmpItem      HBITMAP
+	FcbSize        UINT
+	FfMask         UINT
+	FfType         UINT
+	FfState        UINT
+	FwID           UINT
+	FhSubMenu      HMENU
+	FhbmpChecked   HBITMAP
+	FhbmpUnchecked HBITMAP
+	FdwItemData    ULONG_PTR
+	FdwTypeData    LPSTR
+	Fcch           UINT
+	FhbmpItem      HBITMAP
 }
 
 type tagMENUITEMINFOA = MENUITEMINFOA
@@ -23303,18 +23303,18 @@ type tagMENUITEMINFOA = MENUITEMINFOA
 type LPMENUITEMINFOA = uintptr
 
 type MENUITEMINFOW = struct {
-	cbSize        UINT
-	fMask         UINT
-	fType         UINT
-	fState        UINT
-	wID           UINT
-	hSubMenu      HMENU
-	hbmpChecked   HBITMAP
-	hbmpUnchecked HBITMAP
-	dwItemData    ULONG_PTR
-	dwTypeData    LPWSTR
-	cch           UINT
-	hbmpItem      HBITMAP
+	FcbSize        UINT
+	FfMask         UINT
+	FfType         UINT
+	FfState        UINT
+	FwID           UINT
+	FhSubMenu      HMENU
+	FhbmpChecked   HBITMAP
+	FhbmpUnchecked HBITMAP
+	FdwItemData    ULONG_PTR
+	FdwTypeData    LPWSTR
+	Fcch           UINT
+	FhbmpItem      HBITMAP
 }
 
 type tagMENUITEMINFOW = MENUITEMINFOW
@@ -23322,18 +23322,18 @@ type tagMENUITEMINFOW = MENUITEMINFOW
 type LPMENUITEMINFOW = uintptr
 
 type MENUITEMINFO = struct {
-	cbSize        UINT
-	fMask         UINT
-	fType         UINT
-	fState        UINT
-	wID           UINT
-	hSubMenu      HMENU
-	hbmpChecked   HBITMAP
-	hbmpUnchecked HBITMAP
-	dwItemData    ULONG_PTR
-	dwTypeData    LPSTR
-	cch           UINT
-	hbmpItem      HBITMAP
+	FcbSize        UINT
+	FfMask         UINT
+	FfType         UINT
+	FfState        UINT
+	FwID           UINT
+	FhSubMenu      HMENU
+	FhbmpChecked   HBITMAP
+	FhbmpUnchecked HBITMAP
+	FdwItemData    ULONG_PTR
+	FdwTypeData    LPSTR
+	Fcch           UINT
+	FhbmpItem      HBITMAP
 }
 
 type LPMENUITEMINFO = uintptr
@@ -23345,12 +23345,12 @@ type LPCMENUITEMINFOW = uintptr
 type LPCMENUITEMINFO = uintptr
 
 type DROPSTRUCT = struct {
-	hwndSource    HWND
-	hwndSink      HWND
-	wFmt          DWORD
-	dwData        ULONG_PTR
-	ptDrop        POINT
-	dwControlData DWORD
+	FhwndSource    HWND
+	FhwndSink      HWND
+	FwFmt          DWORD
+	FdwData        ULONG_PTR
+	FptDrop        POINT
+	FdwControlData DWORD
 }
 
 type tagDROPSTRUCT = DROPSTRUCT
@@ -23360,11 +23360,11 @@ type PDROPSTRUCT = uintptr
 type LPDROPSTRUCT = uintptr
 
 type DRAWTEXTPARAMS = struct {
-	cbSize        UINT
-	iTabLength    int32
-	iLeftMargin   int32
-	iRightMargin  int32
-	uiLengthDrawn UINT
+	FcbSize        UINT
+	FiTabLength    int32
+	FiLeftMargin   int32
+	FiRightMargin  int32
+	FuiLengthDrawn UINT
 }
 
 type tagDRAWTEXTPARAMS = DRAWTEXTPARAMS
@@ -23372,12 +23372,12 @@ type tagDRAWTEXTPARAMS = DRAWTEXTPARAMS
 type LPDRAWTEXTPARAMS = uintptr
 
 type HELPINFO = struct {
-	cbSize       UINT
-	iContextType int32
-	iCtrlId      int32
-	hItemHandle  HANDLE
-	dwContextId  DWORD_PTR
-	MousePos     POINT
+	FcbSize       UINT
+	FiContextType int32
+	FiCtrlId      int32
+	FhItemHandle  HANDLE
+	FdwContextId  DWORD_PTR
+	FMousePos     POINT
 }
 
 type tagHELPINFO = HELPINFO
@@ -23387,16 +23387,16 @@ type LPHELPINFO = uintptr
 type MSGBOXCALLBACK = uintptr
 
 type MSGBOXPARAMSA = struct {
-	cbSize             UINT
-	hwndOwner          HWND
-	hInstance          HINSTANCE
-	lpszText           LPCSTR
-	lpszCaption        LPCSTR
-	dwStyle            DWORD
-	lpszIcon           LPCSTR
-	dwContextHelpId    DWORD_PTR
-	lpfnMsgBoxCallback MSGBOXCALLBACK
-	dwLanguageId       DWORD
+	FcbSize             UINT
+	FhwndOwner          HWND
+	FhInstance          HINSTANCE
+	FlpszText           LPCSTR
+	FlpszCaption        LPCSTR
+	FdwStyle            DWORD
+	FlpszIcon           LPCSTR
+	FdwContextHelpId    DWORD_PTR
+	FlpfnMsgBoxCallback MSGBOXCALLBACK
+	FdwLanguageId       DWORD
 }
 
 type tagMSGBOXPARAMSA = MSGBOXPARAMSA
@@ -23406,16 +23406,16 @@ type PMSGBOXPARAMSA = uintptr
 type LPMSGBOXPARAMSA = uintptr
 
 type MSGBOXPARAMSW = struct {
-	cbSize             UINT
-	hwndOwner          HWND
-	hInstance          HINSTANCE
-	lpszText           LPCWSTR
-	lpszCaption        LPCWSTR
-	dwStyle            DWORD
-	lpszIcon           LPCWSTR
-	dwContextHelpId    DWORD_PTR
-	lpfnMsgBoxCallback MSGBOXCALLBACK
-	dwLanguageId       DWORD
+	FcbSize             UINT
+	FhwndOwner          HWND
+	FhInstance          HINSTANCE
+	FlpszText           LPCWSTR
+	FlpszCaption        LPCWSTR
+	FdwStyle            DWORD
+	FlpszIcon           LPCWSTR
+	FdwContextHelpId    DWORD_PTR
+	FlpfnMsgBoxCallback MSGBOXCALLBACK
+	FdwLanguageId       DWORD
 }
 
 type tagMSGBOXPARAMSW = MSGBOXPARAMSW
@@ -23425,16 +23425,16 @@ type PMSGBOXPARAMSW = uintptr
 type LPMSGBOXPARAMSW = uintptr
 
 type MSGBOXPARAMS = struct {
-	cbSize             UINT
-	hwndOwner          HWND
-	hInstance          HINSTANCE
-	lpszText           LPCSTR
-	lpszCaption        LPCSTR
-	dwStyle            DWORD
-	lpszIcon           LPCSTR
-	dwContextHelpId    DWORD_PTR
-	lpfnMsgBoxCallback MSGBOXCALLBACK
-	dwLanguageId       DWORD
+	FcbSize             UINT
+	FhwndOwner          HWND
+	FhInstance          HINSTANCE
+	FlpszText           LPCSTR
+	FlpszCaption        LPCSTR
+	FdwStyle            DWORD
+	FlpszIcon           LPCSTR
+	FdwContextHelpId    DWORD_PTR
+	FlpfnMsgBoxCallback MSGBOXCALLBACK
+	FdwLanguageId       DWORD
 }
 
 type PMSGBOXPARAMS = uintptr
@@ -23442,26 +23442,26 @@ type PMSGBOXPARAMS = uintptr
 type LPMSGBOXPARAMS = uintptr
 
 type MENUITEMTEMPLATEHEADER = struct {
-	versionNumber WORD
-	offset        WORD
+	FversionNumber WORD
+	Foffset        WORD
 }
 
 type PMENUITEMTEMPLATEHEADER = uintptr
 
 type MENUITEMTEMPLATE = struct {
-	mtOption WORD
-	mtID     WORD
-	mtString [1]WCHAR
+	FmtOption WORD
+	FmtID     WORD
+	FmtString [1]WCHAR
 }
 
 type PMENUITEMTEMPLATE = uintptr
 
 type ICONINFO = struct {
-	fIcon    WINBOOL
-	xHotspot DWORD
-	yHotspot DWORD
-	hbmMask  HBITMAP
-	hbmColor HBITMAP
+	FfIcon    WINBOOL
+	FxHotspot DWORD
+	FyHotspot DWORD
+	FhbmMask  HBITMAP
+	FhbmColor HBITMAP
 }
 
 type _ICONINFO = ICONINFO
@@ -23469,13 +23469,13 @@ type _ICONINFO = ICONINFO
 type PICONINFO = uintptr
 
 type CURSORSHAPE = struct {
-	xHotSpot  int32
-	yHotSpot  int32
-	cx        int32
-	cy        int32
-	cbWidth   int32
-	Planes    BYTE
-	BitsPixel BYTE
+	FxHotSpot  int32
+	FyHotSpot  int32
+	Fcx        int32
+	Fcy        int32
+	FcbWidth   int32
+	FPlanes    BYTE
+	FBitsPixel BYTE
 }
 
 type tagCURSORSHAPE = CURSORSHAPE
@@ -23483,15 +23483,15 @@ type tagCURSORSHAPE = CURSORSHAPE
 type LPCURSORSHAPE = uintptr
 
 type ICONINFOEXA = struct {
-	cbSize    DWORD
-	fIcon     WINBOOL
-	xHotspot  DWORD
-	yHotspot  DWORD
-	hbmMask   HBITMAP
-	hbmColor  HBITMAP
-	wResID    WORD
-	szModName [260]CHAR
-	szResName [260]CHAR
+	FcbSize    DWORD
+	FfIcon     WINBOOL
+	FxHotspot  DWORD
+	FyHotspot  DWORD
+	FhbmMask   HBITMAP
+	FhbmColor  HBITMAP
+	FwResID    WORD
+	FszModName [260]CHAR
+	FszResName [260]CHAR
 }
 
 type _ICONINFOEXA = ICONINFOEXA
@@ -23499,15 +23499,15 @@ type _ICONINFOEXA = ICONINFOEXA
 type PICONINFOEXA = uintptr
 
 type ICONINFOEXW = struct {
-	cbSize    DWORD
-	fIcon     WINBOOL
-	xHotspot  DWORD
-	yHotspot  DWORD
-	hbmMask   HBITMAP
-	hbmColor  HBITMAP
-	wResID    WORD
-	szModName [260]WCHAR
-	szResName [260]WCHAR
+	FcbSize    DWORD
+	FfIcon     WINBOOL
+	FxHotspot  DWORD
+	FyHotspot  DWORD
+	FhbmMask   HBITMAP
+	FhbmColor  HBITMAP
+	FwResID    WORD
+	FszModName [260]WCHAR
+	FszResName [260]WCHAR
 }
 
 type _ICONINFOEXW = ICONINFOEXW
@@ -23515,27 +23515,27 @@ type _ICONINFOEXW = ICONINFOEXW
 type PICONINFOEXW = uintptr
 
 type ICONINFOEX = struct {
-	cbSize    DWORD
-	fIcon     WINBOOL
-	xHotspot  DWORD
-	yHotspot  DWORD
-	hbmMask   HBITMAP
-	hbmColor  HBITMAP
-	wResID    WORD
-	szModName [260]CHAR
-	szResName [260]CHAR
+	FcbSize    DWORD
+	FfIcon     WINBOOL
+	FxHotspot  DWORD
+	FyHotspot  DWORD
+	FhbmMask   HBITMAP
+	FhbmColor  HBITMAP
+	FwResID    WORD
+	FszModName [260]CHAR
+	FszResName [260]CHAR
 }
 
 type PICONINFOEX = uintptr
 
 type SCROLLINFO = struct {
-	cbSize    UINT
-	fMask     UINT
-	nMin      int32
-	nMax      int32
-	nPage     UINT
-	nPos      int32
-	nTrackPos int32
+	FcbSize    UINT
+	FfMask     UINT
+	FnMin      int32
+	FnMax      int32
+	FnPage     UINT
+	FnPos      int32
+	FnTrackPos int32
 }
 
 type tagSCROLLINFO = SCROLLINFO
@@ -23545,15 +23545,15 @@ type LPSCROLLINFO = uintptr
 type LPCSCROLLINFO = uintptr
 
 type MDICREATESTRUCTA = struct {
-	szClass LPCSTR
-	szTitle LPCSTR
-	hOwner  HANDLE
-	x       int32
-	y       int32
-	cx      int32
-	cy      int32
-	style   DWORD
-	lParam  LPARAM
+	FszClass LPCSTR
+	FszTitle LPCSTR
+	FhOwner  HANDLE
+	Fx       int32
+	Fy       int32
+	Fcx      int32
+	Fcy      int32
+	Fstyle   DWORD
+	FlParam  LPARAM
 }
 
 type tagMDICREATESTRUCTA = MDICREATESTRUCTA
@@ -23561,15 +23561,15 @@ type tagMDICREATESTRUCTA = MDICREATESTRUCTA
 type LPMDICREATESTRUCTA = uintptr
 
 type MDICREATESTRUCTW = struct {
-	szClass LPCWSTR
-	szTitle LPCWSTR
-	hOwner  HANDLE
-	x       int32
-	y       int32
-	cx      int32
-	cy      int32
-	style   DWORD
-	lParam  LPARAM
+	FszClass LPCWSTR
+	FszTitle LPCWSTR
+	FhOwner  HANDLE
+	Fx       int32
+	Fy       int32
+	Fcx      int32
+	Fcy      int32
+	Fstyle   DWORD
+	FlParam  LPARAM
 }
 
 type tagMDICREATESTRUCTW = MDICREATESTRUCTW
@@ -23577,22 +23577,22 @@ type tagMDICREATESTRUCTW = MDICREATESTRUCTW
 type LPMDICREATESTRUCTW = uintptr
 
 type MDICREATESTRUCT = struct {
-	szClass LPCSTR
-	szTitle LPCSTR
-	hOwner  HANDLE
-	x       int32
-	y       int32
-	cx      int32
-	cy      int32
-	style   DWORD
-	lParam  LPARAM
+	FszClass LPCSTR
+	FszTitle LPCSTR
+	FhOwner  HANDLE
+	Fx       int32
+	Fy       int32
+	Fcx      int32
+	Fcy      int32
+	Fstyle   DWORD
+	FlParam  LPARAM
 }
 
 type LPMDICREATESTRUCT = uintptr
 
 type CLIENTCREATESTRUCT = struct {
-	hWindowMenu  HANDLE
-	idFirstChild UINT
+	FhWindowMenu  HANDLE
+	FidFirstChild UINT
 }
 
 type tagCLIENTCREATESTRUCT = CLIENTCREATESTRUCT
@@ -23602,9 +23602,9 @@ type LPCLIENTCREATESTRUCT = uintptr
 type HELPPOLY = uint32
 
 type MULTIKEYHELPA = struct {
-	mkSize      DWORD
-	mkKeylist   CHAR
-	szKeyphrase [1]CHAR
+	FmkSize      DWORD
+	FmkKeylist   CHAR
+	FszKeyphrase [1]CHAR
 }
 
 type tagMULTIKEYHELPA = MULTIKEYHELPA
@@ -23614,9 +23614,9 @@ type PMULTIKEYHELPA = uintptr
 type LPMULTIKEYHELPA = uintptr
 
 type MULTIKEYHELPW = struct {
-	mkSize      DWORD
-	mkKeylist   WCHAR
-	szKeyphrase [1]WCHAR
+	FmkSize      DWORD
+	FmkKeylist   WCHAR
+	FszKeyphrase [1]WCHAR
 }
 
 type tagMULTIKEYHELPW = MULTIKEYHELPW
@@ -23626,9 +23626,9 @@ type PMULTIKEYHELPW = uintptr
 type LPMULTIKEYHELPW = uintptr
 
 type MULTIKEYHELP = struct {
-	mkSize      DWORD
-	mkKeylist   CHAR
-	szKeyphrase [1]CHAR
+	FmkSize      DWORD
+	FmkKeylist   CHAR
+	FszKeyphrase [1]CHAR
 }
 
 type PMULTIKEYHELP = uintptr
@@ -23636,13 +23636,13 @@ type PMULTIKEYHELP = uintptr
 type LPMULTIKEYHELP = uintptr
 
 type HELPWININFOA = struct {
-	wStructSize int32
-	x           int32
-	y           int32
-	dx          int32
-	dy          int32
-	wMax        int32
-	rgchMember  [2]CHAR
+	FwStructSize int32
+	Fx           int32
+	Fy           int32
+	Fdx          int32
+	Fdy          int32
+	FwMax        int32
+	FrgchMember  [2]CHAR
 }
 
 type tagHELPWININFOA = HELPWININFOA
@@ -23652,13 +23652,13 @@ type PHELPWININFOA = uintptr
 type LPHELPWININFOA = uintptr
 
 type HELPWININFOW = struct {
-	wStructSize int32
-	x           int32
-	y           int32
-	dx          int32
-	dy          int32
-	wMax        int32
-	rgchMember  [2]WCHAR
+	FwStructSize int32
+	Fx           int32
+	Fy           int32
+	Fdx          int32
+	Fdy          int32
+	FwMax        int32
+	FrgchMember  [2]WCHAR
 }
 
 type tagHELPWININFOW = HELPWININFOW
@@ -23668,13 +23668,13 @@ type PHELPWININFOW = uintptr
 type LPHELPWININFOW = uintptr
 
 type HELPWININFO = struct {
-	wStructSize int32
-	x           int32
-	y           int32
-	dx          int32
-	dy          int32
-	wMax        int32
-	rgchMember  [2]CHAR
+	FwStructSize int32
+	Fx           int32
+	Fy           int32
+	Fdx          int32
+	Fdy          int32
+	FwMax        int32
+	FrgchMember  [2]CHAR
 }
 
 type PHELPWININFO = uintptr
@@ -23682,10 +23682,10 @@ type PHELPWININFO = uintptr
 type LPHELPWININFO = uintptr
 
 type TOUCHPREDICTIONPARAMETERS = struct {
-	cbSize          UINT
-	dwLatency       UINT
-	dwSampleTime    UINT
-	bUseHWTimeStamp UINT
+	FcbSize          UINT
+	FdwLatency       UINT
+	FdwSampleTime    UINT
+	FbUseHWTimeStamp UINT
 }
 
 type tagTouchPredictionParameters = TOUCHPREDICTIONPARAMETERS
@@ -23693,22 +23693,22 @@ type tagTouchPredictionParameters = TOUCHPREDICTIONPARAMETERS
 type PTOUCHPREDICTIONPARAMETERS = uintptr
 
 type NONCLIENTMETRICSA = struct {
-	cbSize             UINT
-	iBorderWidth       int32
-	iScrollWidth       int32
-	iScrollHeight      int32
-	iCaptionWidth      int32
-	iCaptionHeight     int32
-	lfCaptionFont      LOGFONTA
-	iSmCaptionWidth    int32
-	iSmCaptionHeight   int32
-	lfSmCaptionFont    LOGFONTA
-	iMenuWidth         int32
-	iMenuHeight        int32
-	lfMenuFont         LOGFONTA
-	lfStatusFont       LOGFONTA
-	lfMessageFont      LOGFONTA
-	iPaddedBorderWidth int32
+	FcbSize             UINT
+	FiBorderWidth       int32
+	FiScrollWidth       int32
+	FiScrollHeight      int32
+	FiCaptionWidth      int32
+	FiCaptionHeight     int32
+	FlfCaptionFont      LOGFONTA
+	FiSmCaptionWidth    int32
+	FiSmCaptionHeight   int32
+	FlfSmCaptionFont    LOGFONTA
+	FiMenuWidth         int32
+	FiMenuHeight        int32
+	FlfMenuFont         LOGFONTA
+	FlfStatusFont       LOGFONTA
+	FlfMessageFont      LOGFONTA
+	FiPaddedBorderWidth int32
 }
 
 type tagNONCLIENTMETRICSA = NONCLIENTMETRICSA
@@ -23718,22 +23718,22 @@ type PNONCLIENTMETRICSA = uintptr
 type LPNONCLIENTMETRICSA = uintptr
 
 type NONCLIENTMETRICSW = struct {
-	cbSize             UINT
-	iBorderWidth       int32
-	iScrollWidth       int32
-	iScrollHeight      int32
-	iCaptionWidth      int32
-	iCaptionHeight     int32
-	lfCaptionFont      LOGFONTW
-	iSmCaptionWidth    int32
-	iSmCaptionHeight   int32
-	lfSmCaptionFont    LOGFONTW
-	iMenuWidth         int32
-	iMenuHeight        int32
-	lfMenuFont         LOGFONTW
-	lfStatusFont       LOGFONTW
-	lfMessageFont      LOGFONTW
-	iPaddedBorderWidth int32
+	FcbSize             UINT
+	FiBorderWidth       int32
+	FiScrollWidth       int32
+	FiScrollHeight      int32
+	FiCaptionWidth      int32
+	FiCaptionHeight     int32
+	FlfCaptionFont      LOGFONTW
+	FiSmCaptionWidth    int32
+	FiSmCaptionHeight   int32
+	FlfSmCaptionFont    LOGFONTW
+	FiMenuWidth         int32
+	FiMenuHeight        int32
+	FlfMenuFont         LOGFONTW
+	FlfStatusFont       LOGFONTW
+	FlfMessageFont      LOGFONTW
+	FiPaddedBorderWidth int32
 }
 
 type tagNONCLIENTMETRICSW = NONCLIENTMETRICSW
@@ -23743,22 +23743,22 @@ type PNONCLIENTMETRICSW = uintptr
 type LPNONCLIENTMETRICSW = uintptr
 
 type NONCLIENTMETRICS = struct {
-	cbSize             UINT
-	iBorderWidth       int32
-	iScrollWidth       int32
-	iScrollHeight      int32
-	iCaptionWidth      int32
-	iCaptionHeight     int32
-	lfCaptionFont      LOGFONTA
-	iSmCaptionWidth    int32
-	iSmCaptionHeight   int32
-	lfSmCaptionFont    LOGFONTA
-	iMenuWidth         int32
-	iMenuHeight        int32
-	lfMenuFont         LOGFONTA
-	lfStatusFont       LOGFONTA
-	lfMessageFont      LOGFONTA
-	iPaddedBorderWidth int32
+	FcbSize             UINT
+	FiBorderWidth       int32
+	FiScrollWidth       int32
+	FiScrollHeight      int32
+	FiCaptionWidth      int32
+	FiCaptionHeight     int32
+	FlfCaptionFont      LOGFONTA
+	FiSmCaptionWidth    int32
+	FiSmCaptionHeight   int32
+	FlfSmCaptionFont    LOGFONTA
+	FiMenuWidth         int32
+	FiMenuHeight        int32
+	FlfMenuFont         LOGFONTA
+	FlfStatusFont       LOGFONTA
+	FlfMessageFont      LOGFONTA
+	FiPaddedBorderWidth int32
 }
 
 type PNONCLIENTMETRICS = uintptr
@@ -23766,11 +23766,11 @@ type PNONCLIENTMETRICS = uintptr
 type LPNONCLIENTMETRICS = uintptr
 
 type MINIMIZEDMETRICS = struct {
-	cbSize   UINT
-	iWidth   int32
-	iHorzGap int32
-	iVertGap int32
-	iArrange int32
+	FcbSize   UINT
+	FiWidth   int32
+	FiHorzGap int32
+	FiVertGap int32
+	FiArrange int32
 }
 
 type tagMINIMIZEDMETRICS = MINIMIZEDMETRICS
@@ -23780,11 +23780,11 @@ type PMINIMIZEDMETRICS = uintptr
 type LPMINIMIZEDMETRICS = uintptr
 
 type ICONMETRICSA = struct {
-	cbSize       UINT
-	iHorzSpacing int32
-	iVertSpacing int32
-	iTitleWrap   int32
-	lfFont       LOGFONTA
+	FcbSize       UINT
+	FiHorzSpacing int32
+	FiVertSpacing int32
+	FiTitleWrap   int32
+	FlfFont       LOGFONTA
 }
 
 type tagICONMETRICSA = ICONMETRICSA
@@ -23794,11 +23794,11 @@ type PICONMETRICSA = uintptr
 type LPICONMETRICSA = uintptr
 
 type ICONMETRICSW = struct {
-	cbSize       UINT
-	iHorzSpacing int32
-	iVertSpacing int32
-	iTitleWrap   int32
-	lfFont       LOGFONTW
+	FcbSize       UINT
+	FiHorzSpacing int32
+	FiVertSpacing int32
+	FiTitleWrap   int32
+	FlfFont       LOGFONTW
 }
 
 type tagICONMETRICSW = ICONMETRICSW
@@ -23808,11 +23808,11 @@ type PICONMETRICSW = uintptr
 type LPICONMETRICSW = uintptr
 
 type ICONMETRICS = struct {
-	cbSize       UINT
-	iHorzSpacing int32
-	iVertSpacing int32
-	iTitleWrap   int32
-	lfFont       LOGFONTA
+	FcbSize       UINT
+	FiHorzSpacing int32
+	FiVertSpacing int32
+	FiTitleWrap   int32
+	FlfFont       LOGFONTA
 }
 
 type PICONMETRICS = uintptr
@@ -23820,8 +23820,8 @@ type PICONMETRICS = uintptr
 type LPICONMETRICS = uintptr
 
 type ANIMATIONINFO = struct {
-	cbSize      UINT
-	iMinAnimate int32
+	FcbSize      UINT
+	FiMinAnimate int32
 }
 
 type tagANIMATIONINFO = ANIMATIONINFO
@@ -23829,13 +23829,13 @@ type tagANIMATIONINFO = ANIMATIONINFO
 type LPANIMATIONINFO = uintptr
 
 type SERIALKEYSA = struct {
-	cbSize         UINT
-	dwFlags        DWORD
-	lpszActivePort LPSTR
-	lpszPort       LPSTR
-	iBaudRate      UINT
-	iPortState     UINT
-	iActive        UINT
+	FcbSize         UINT
+	FdwFlags        DWORD
+	FlpszActivePort LPSTR
+	FlpszPort       LPSTR
+	FiBaudRate      UINT
+	FiPortState     UINT
+	FiActive        UINT
 }
 
 type tagSERIALKEYSA = SERIALKEYSA
@@ -23843,13 +23843,13 @@ type tagSERIALKEYSA = SERIALKEYSA
 type LPSERIALKEYSA = uintptr
 
 type SERIALKEYSW = struct {
-	cbSize         UINT
-	dwFlags        DWORD
-	lpszActivePort LPWSTR
-	lpszPort       LPWSTR
-	iBaudRate      UINT
-	iPortState     UINT
-	iActive        UINT
+	FcbSize         UINT
+	FdwFlags        DWORD
+	FlpszActivePort LPWSTR
+	FlpszPort       LPWSTR
+	FiBaudRate      UINT
+	FiPortState     UINT
+	FiActive        UINT
 }
 
 type tagSERIALKEYSW = SERIALKEYSW
@@ -23857,21 +23857,21 @@ type tagSERIALKEYSW = SERIALKEYSW
 type LPSERIALKEYSW = uintptr
 
 type SERIALKEYS = struct {
-	cbSize         UINT
-	dwFlags        DWORD
-	lpszActivePort LPSTR
-	lpszPort       LPSTR
-	iBaudRate      UINT
-	iPortState     UINT
-	iActive        UINT
+	FcbSize         UINT
+	FdwFlags        DWORD
+	FlpszActivePort LPSTR
+	FlpszPort       LPSTR
+	FiBaudRate      UINT
+	FiPortState     UINT
+	FiActive        UINT
 }
 
 type LPSERIALKEYS = uintptr
 
 type HIGHCONTRASTA = struct {
-	cbSize            UINT
-	dwFlags           DWORD
-	lpszDefaultScheme LPSTR
+	FcbSize            UINT
+	FdwFlags           DWORD
+	FlpszDefaultScheme LPSTR
 }
 
 type tagHIGHCONTRASTA = HIGHCONTRASTA
@@ -23879,9 +23879,9 @@ type tagHIGHCONTRASTA = HIGHCONTRASTA
 type LPHIGHCONTRASTA = uintptr
 
 type HIGHCONTRASTW = struct {
-	cbSize            UINT
-	dwFlags           DWORD
-	lpszDefaultScheme LPWSTR
+	FcbSize            UINT
+	FdwFlags           DWORD
+	FlpszDefaultScheme LPWSTR
 }
 
 type tagHIGHCONTRASTW = HIGHCONTRASTW
@@ -23889,37 +23889,37 @@ type tagHIGHCONTRASTW = HIGHCONTRASTW
 type LPHIGHCONTRASTW = uintptr
 
 type HIGHCONTRAST = struct {
-	cbSize            UINT
-	dwFlags           DWORD
-	lpszDefaultScheme LPSTR
+	FcbSize            UINT
+	FdwFlags           DWORD
+	FlpszDefaultScheme LPSTR
 }
 
 type LPHIGHCONTRAST = uintptr
 
 type VIDEOPARAMETERS = struct {
-	Guid                  GUID
-	dwOffset              ULONG
-	dwCommand             ULONG
-	dwFlags               ULONG
-	dwMode                ULONG
-	dwTVStandard          ULONG
-	dwAvailableModes      ULONG
-	dwAvailableTVStandard ULONG
-	dwFlickerFilter       ULONG
-	dwOverScanX           ULONG
-	dwOverScanY           ULONG
-	dwMaxUnscaledX        ULONG
-	dwMaxUnscaledY        ULONG
-	dwPositionX           ULONG
-	dwPositionY           ULONG
-	dwBrightness          ULONG
-	dwContrast            ULONG
-	dwCPType              ULONG
-	dwCPCommand           ULONG
-	dwCPStandard          ULONG
-	dwCPKey               ULONG
-	bCP_APSTriggerBits    ULONG
-	bOEMCopyProtection    [256]UCHAR
+	FGuid                  GUID
+	FdwOffset              ULONG
+	FdwCommand             ULONG
+	FdwFlags               ULONG
+	FdwMode                ULONG
+	FdwTVStandard          ULONG
+	FdwAvailableModes      ULONG
+	FdwAvailableTVStandard ULONG
+	FdwFlickerFilter       ULONG
+	FdwOverScanX           ULONG
+	FdwOverScanY           ULONG
+	FdwMaxUnscaledX        ULONG
+	FdwMaxUnscaledY        ULONG
+	FdwPositionX           ULONG
+	FdwPositionY           ULONG
+	FdwBrightness          ULONG
+	FdwContrast            ULONG
+	FdwCPType              ULONG
+	FdwCPCommand           ULONG
+	FdwCPStandard          ULONG
+	FdwCPKey               ULONG
+	FbCP_APSTriggerBits    ULONG
+	FbOEMCopyProtection    [256]UCHAR
 }
 
 type _VIDEOPARAMETERS = VIDEOPARAMETERS
@@ -23929,12 +23929,12 @@ type PVIDEOPARAMETERS = uintptr
 type LPVIDEOPARAMETERS = uintptr
 
 type FILTERKEYS = struct {
-	cbSize      UINT
-	dwFlags     DWORD
-	iWaitMSec   DWORD
-	iDelayMSec  DWORD
-	iRepeatMSec DWORD
-	iBounceMSec DWORD
+	FcbSize      UINT
+	FdwFlags     DWORD
+	FiWaitMSec   DWORD
+	FiDelayMSec  DWORD
+	FiRepeatMSec DWORD
+	FiBounceMSec DWORD
 }
 
 type tagFILTERKEYS = FILTERKEYS
@@ -23942,8 +23942,8 @@ type tagFILTERKEYS = FILTERKEYS
 type LPFILTERKEYS = uintptr
 
 type STICKYKEYS = struct {
-	cbSize  UINT
-	dwFlags DWORD
+	FcbSize  UINT
+	FdwFlags DWORD
 }
 
 type tagSTICKYKEYS = STICKYKEYS
@@ -23951,13 +23951,13 @@ type tagSTICKYKEYS = STICKYKEYS
 type LPSTICKYKEYS = uintptr
 
 type MOUSEKEYS = struct {
-	cbSize          UINT
-	dwFlags         DWORD
-	iMaxSpeed       DWORD
-	iTimeToMaxSpeed DWORD
-	iCtrlSpeed      DWORD
-	dwReserved1     DWORD
-	dwReserved2     DWORD
+	FcbSize          UINT
+	FdwFlags         DWORD
+	FiMaxSpeed       DWORD
+	FiTimeToMaxSpeed DWORD
+	FiCtrlSpeed      DWORD
+	FdwReserved1     DWORD
+	FdwReserved2     DWORD
 }
 
 type tagMOUSEKEYS = MOUSEKEYS
@@ -23965,9 +23965,9 @@ type tagMOUSEKEYS = MOUSEKEYS
 type LPMOUSEKEYS = uintptr
 
 type ACCESSTIMEOUT = struct {
-	cbSize       UINT
-	dwFlags      DWORD
-	iTimeOutMSec DWORD
+	FcbSize       UINT
+	FdwFlags      DWORD
+	FiTimeOutMSec DWORD
 }
 
 type tagACCESSTIMEOUT = ACCESSTIMEOUT
@@ -23975,18 +23975,18 @@ type tagACCESSTIMEOUT = ACCESSTIMEOUT
 type LPACCESSTIMEOUT = uintptr
 
 type SOUNDSENTRYA = struct {
-	cbSize                 UINT
-	dwFlags                DWORD
-	iFSTextEffect          DWORD
-	iFSTextEffectMSec      DWORD
-	iFSTextEffectColorBits DWORD
-	iFSGrafEffect          DWORD
-	iFSGrafEffectMSec      DWORD
-	iFSGrafEffectColor     DWORD
-	iWindowsEffect         DWORD
-	iWindowsEffectMSec     DWORD
-	lpszWindowsEffectDLL   LPSTR
-	iWindowsEffectOrdinal  DWORD
+	FcbSize                 UINT
+	FdwFlags                DWORD
+	FiFSTextEffect          DWORD
+	FiFSTextEffectMSec      DWORD
+	FiFSTextEffectColorBits DWORD
+	FiFSGrafEffect          DWORD
+	FiFSGrafEffectMSec      DWORD
+	FiFSGrafEffectColor     DWORD
+	FiWindowsEffect         DWORD
+	FiWindowsEffectMSec     DWORD
+	FlpszWindowsEffectDLL   LPSTR
+	FiWindowsEffectOrdinal  DWORD
 }
 
 type tagSOUNDSENTRYA = SOUNDSENTRYA
@@ -23994,18 +23994,18 @@ type tagSOUNDSENTRYA = SOUNDSENTRYA
 type LPSOUNDSENTRYA = uintptr
 
 type SOUNDSENTRYW = struct {
-	cbSize                 UINT
-	dwFlags                DWORD
-	iFSTextEffect          DWORD
-	iFSTextEffectMSec      DWORD
-	iFSTextEffectColorBits DWORD
-	iFSGrafEffect          DWORD
-	iFSGrafEffectMSec      DWORD
-	iFSGrafEffectColor     DWORD
-	iWindowsEffect         DWORD
-	iWindowsEffectMSec     DWORD
-	lpszWindowsEffectDLL   LPWSTR
-	iWindowsEffectOrdinal  DWORD
+	FcbSize                 UINT
+	FdwFlags                DWORD
+	FiFSTextEffect          DWORD
+	FiFSTextEffectMSec      DWORD
+	FiFSTextEffectColorBits DWORD
+	FiFSGrafEffect          DWORD
+	FiFSGrafEffectMSec      DWORD
+	FiFSGrafEffectColor     DWORD
+	FiWindowsEffect         DWORD
+	FiWindowsEffectMSec     DWORD
+	FlpszWindowsEffectDLL   LPWSTR
+	FiWindowsEffectOrdinal  DWORD
 }
 
 type tagSOUNDSENTRYW = SOUNDSENTRYW
@@ -24013,25 +24013,25 @@ type tagSOUNDSENTRYW = SOUNDSENTRYW
 type LPSOUNDSENTRYW = uintptr
 
 type SOUNDSENTRY = struct {
-	cbSize                 UINT
-	dwFlags                DWORD
-	iFSTextEffect          DWORD
-	iFSTextEffectMSec      DWORD
-	iFSTextEffectColorBits DWORD
-	iFSGrafEffect          DWORD
-	iFSGrafEffectMSec      DWORD
-	iFSGrafEffectColor     DWORD
-	iWindowsEffect         DWORD
-	iWindowsEffectMSec     DWORD
-	lpszWindowsEffectDLL   LPSTR
-	iWindowsEffectOrdinal  DWORD
+	FcbSize                 UINT
+	FdwFlags                DWORD
+	FiFSTextEffect          DWORD
+	FiFSTextEffectMSec      DWORD
+	FiFSTextEffectColorBits DWORD
+	FiFSGrafEffect          DWORD
+	FiFSGrafEffectMSec      DWORD
+	FiFSGrafEffectColor     DWORD
+	FiWindowsEffect         DWORD
+	FiWindowsEffectMSec     DWORD
+	FlpszWindowsEffectDLL   LPSTR
+	FiWindowsEffectOrdinal  DWORD
 }
 
 type LPSOUNDSENTRY = uintptr
 
 type TOGGLEKEYS = struct {
-	cbSize  UINT
-	dwFlags DWORD
+	FcbSize  UINT
+	FdwFlags DWORD
 }
 
 type tagTOGGLEKEYS = TOGGLEKEYS
@@ -24039,10 +24039,10 @@ type tagTOGGLEKEYS = TOGGLEKEYS
 type LPTOGGLEKEYS = uintptr
 
 type MONITORINFO = struct {
-	cbSize    DWORD
-	rcMonitor RECT
-	rcWork    RECT
-	dwFlags   DWORD
+	FcbSize    DWORD
+	FrcMonitor RECT
+	FrcWork    RECT
+	FdwFlags   DWORD
 }
 
 type tagMONITORINFO = MONITORINFO
@@ -24050,9 +24050,9 @@ type tagMONITORINFO = MONITORINFO
 type LPMONITORINFO = uintptr
 
 type AUDIODESCRIPTION = struct {
-	cbSize  UINT
-	Enabled WINBOOL
-	Locale  LCID
+	FcbSize  UINT
+	FEnabled WINBOOL
+	FLocale  LCID
 }
 
 type tagAUDIODESCRIPTION = AUDIODESCRIPTION
@@ -24060,13 +24060,13 @@ type tagAUDIODESCRIPTION = AUDIODESCRIPTION
 type LPAUDIODESCRIPTION = uintptr
 
 type MONITORINFOEXA = struct {
-	__ccgo0_0 struct {
-		cbSize    DWORD
-		rcMonitor RECT
-		rcWork    RECT
-		dwFlags   DWORD
+	F__ccgo0_0 struct {
+		FcbSize    DWORD
+		FrcMonitor RECT
+		FrcWork    RECT
+		FdwFlags   DWORD
 	}
-	szDevice [32]CHAR
+	FszDevice [32]CHAR
 }
 
 type tagMONITORINFOEXA = MONITORINFOEXA
@@ -24074,13 +24074,13 @@ type tagMONITORINFOEXA = MONITORINFOEXA
 type LPMONITORINFOEXA = uintptr
 
 type MONITORINFOEXW = struct {
-	__ccgo0_0 struct {
-		cbSize    DWORD
-		rcMonitor RECT
-		rcWork    RECT
-		dwFlags   DWORD
+	F__ccgo0_0 struct {
+		FcbSize    DWORD
+		FrcMonitor RECT
+		FrcWork    RECT
+		FdwFlags   DWORD
 	}
-	szDevice [32]WCHAR
+	FszDevice [32]WCHAR
 }
 
 type tagMONITORINFOEXW = MONITORINFOEXW
@@ -24088,13 +24088,13 @@ type tagMONITORINFOEXW = MONITORINFOEXW
 type LPMONITORINFOEXW = uintptr
 
 type MONITORINFOEX = struct {
-	__ccgo0_0 struct {
-		cbSize    DWORD
-		rcMonitor RECT
-		rcWork    RECT
-		dwFlags   DWORD
+	F__ccgo0_0 struct {
+		FcbSize    DWORD
+		FrcMonitor RECT
+		FrcWork    RECT
+		FdwFlags   DWORD
 	}
-	szDevice [32]CHAR
+	FszDevice [32]CHAR
 }
 
 type LPMONITORINFOEX = uintptr
@@ -24104,15 +24104,15 @@ type MONITORENUMPROC = uintptr
 type WINEVENTPROC = uintptr
 
 type GUITHREADINFO = struct {
-	cbSize        DWORD
-	flags         DWORD
-	hwndActive    HWND
-	hwndFocus     HWND
-	hwndCapture   HWND
-	hwndMenuOwner HWND
-	hwndMoveSize  HWND
-	hwndCaret     HWND
-	rcCaret       RECT
+	FcbSize        DWORD
+	Fflags         DWORD
+	FhwndActive    HWND
+	FhwndFocus     HWND
+	FhwndCapture   HWND
+	FhwndMenuOwner HWND
+	FhwndMoveSize  HWND
+	FhwndCaret     HWND
+	FrcCaret       RECT
 }
 
 type tagGUITHREADINFO = GUITHREADINFO
@@ -24122,10 +24122,10 @@ type PGUITHREADINFO = uintptr
 type LPGUITHREADINFO = uintptr
 
 type CURSORINFO = struct {
-	cbSize      DWORD
-	flags       DWORD
-	hCursor     HCURSOR
-	ptScreenPos POINT
+	FcbSize      DWORD
+	Fflags       DWORD
+	FhCursor     HCURSOR
+	FptScreenPos POINT
 }
 
 type tagCURSORINFO = CURSORINFO
@@ -24135,16 +24135,16 @@ type PCURSORINFO = uintptr
 type LPCURSORINFO = uintptr
 
 type WINDOWINFO = struct {
-	cbSize          DWORD
-	rcWindow        RECT
-	rcClient        RECT
-	dwStyle         DWORD
-	dwExStyle       DWORD
-	dwWindowStatus  DWORD
-	cxWindowBorders UINT
-	cyWindowBorders UINT
-	atomWindowType  ATOM
-	wCreatorVersion WORD
+	FcbSize          DWORD
+	FrcWindow        RECT
+	FrcClient        RECT
+	FdwStyle         DWORD
+	FdwExStyle       DWORD
+	FdwWindowStatus  DWORD
+	FcxWindowBorders UINT
+	FcyWindowBorders UINT
+	FatomWindowType  ATOM
+	FwCreatorVersion WORD
 }
 
 type tagWINDOWINFO = WINDOWINFO
@@ -24154,9 +24154,9 @@ type PWINDOWINFO = uintptr
 type LPWINDOWINFO = uintptr
 
 type TITLEBARINFO = struct {
-	cbSize     DWORD
-	rcTitleBar RECT
-	rgstate    [6]DWORD
+	FcbSize     DWORD
+	FrcTitleBar RECT
+	Frgstate    [6]DWORD
 }
 
 type tagTITLEBARINFO = TITLEBARINFO
@@ -24166,10 +24166,10 @@ type PTITLEBARINFO = uintptr
 type LPTITLEBARINFO = uintptr
 
 type TITLEBARINFOEX = struct {
-	cbSize     DWORD
-	rcTitleBar RECT
-	rgstate    [6]DWORD
-	rgrect     [6]RECT
+	FcbSize     DWORD
+	FrcTitleBar RECT
+	Frgstate    [6]DWORD
+	Frgrect     [6]RECT
 }
 
 type tagTITLEBARINFOEX = TITLEBARINFOEX
@@ -24179,11 +24179,11 @@ type PTITLEBARINFOEX = uintptr
 type LPTITLEBARINFOEX = uintptr
 
 type MENUBARINFO = struct {
-	cbSize   DWORD
-	rcBar    RECT
-	hMenu    HMENU
-	hwndMenu HWND
-	__ccgo40 uint8
+	FcbSize   DWORD
+	FrcBar    RECT
+	FhMenu    HMENU
+	FhwndMenu HWND
+	F__ccgo40 uint8
 }
 
 type tagMENUBARINFO = MENUBARINFO
@@ -24193,13 +24193,13 @@ type PMENUBARINFO = uintptr
 type LPMENUBARINFO = uintptr
 
 type SCROLLBARINFO = struct {
-	cbSize        DWORD
-	rcScrollBar   RECT
-	dxyLineButton int32
-	xyThumbTop    int32
-	xyThumbBottom int32
-	reserved      int32
-	rgstate       [6]DWORD
+	FcbSize        DWORD
+	FrcScrollBar   RECT
+	FdxyLineButton int32
+	FxyThumbTop    int32
+	FxyThumbBottom int32
+	Freserved      int32
+	Frgstate       [6]DWORD
 }
 
 type tagSCROLLBARINFO = SCROLLBARINFO
@@ -24209,13 +24209,13 @@ type PSCROLLBARINFO = uintptr
 type LPSCROLLBARINFO = uintptr
 
 type COMBOBOXINFO = struct {
-	cbSize      DWORD
-	rcItem      RECT
-	rcButton    RECT
-	stateButton DWORD
-	hwndCombo   HWND
-	hwndItem    HWND
-	hwndList    HWND
+	FcbSize      DWORD
+	FrcItem      RECT
+	FrcButton    RECT
+	FstateButton DWORD
+	FhwndCombo   HWND
+	FhwndItem    HWND
+	FhwndList    HWND
 }
 
 type tagCOMBOBOXINFO = COMBOBOXINFO
@@ -24225,15 +24225,15 @@ type PCOMBOBOXINFO = uintptr
 type LPCOMBOBOXINFO = uintptr
 
 type ALTTABINFO = struct {
-	cbSize    DWORD
-	cItems    int32
-	cColumns  int32
-	cRows     int32
-	iColFocus int32
-	iRowFocus int32
-	cxItem    int32
-	cyItem    int32
-	ptStart   POINT
+	FcbSize    DWORD
+	FcItems    int32
+	FcColumns  int32
+	FcRows     int32
+	FiColFocus int32
+	FiRowFocus int32
+	FcxItem    int32
+	FcyItem    int32
+	FptStart   POINT
 }
 
 type tagALTTABINFO = ALTTABINFO
@@ -24243,16 +24243,16 @@ type PALTTABINFO = uintptr
 type LPALTTABINFO = uintptr
 
 type HRAWINPUT__ = struct {
-	unused int32
+	Funused int32
 }
 
 type HRAWINPUT = uintptr
 
 type RAWINPUTHEADER = struct {
-	dwType  DWORD
-	dwSize  DWORD
-	hDevice HANDLE
-	wParam  WPARAM
+	FdwType  DWORD
+	FdwSize  DWORD
+	FhDevice HANDLE
+	FwParam  WPARAM
 }
 
 type tagRAWINPUTHEADER = RAWINPUTHEADER
@@ -24262,18 +24262,18 @@ type PRAWINPUTHEADER = uintptr
 type LPRAWINPUTHEADER = uintptr
 
 type RAWMOUSE = struct {
-	usFlags   USHORT
-	__ccgo1_4 struct {
-		__ccgo1_0 [0]struct {
-			usButtonFlags USHORT
-			usButtonData  USHORT
+	FusFlags   USHORT
+	F__ccgo1_4 struct {
+		F__ccgo1_0 [0]struct {
+			FusButtonFlags USHORT
+			FusButtonData  USHORT
 		}
-		ulButtons ULONG
+		FulButtons ULONG
 	}
-	ulRawButtons       ULONG
-	lLastX             LONG
-	lLastY             LONG
-	ulExtraInformation ULONG
+	FulRawButtons       ULONG
+	FlLastX             LONG
+	FlLastY             LONG
+	FulExtraInformation ULONG
 }
 
 type tagRAWMOUSE = RAWMOUSE
@@ -24283,12 +24283,12 @@ type PRAWMOUSE = uintptr
 type LPRAWMOUSE = uintptr
 
 type RAWKEYBOARD = struct {
-	MakeCode         USHORT
-	Flags            USHORT
-	Reserved         USHORT
-	VKey             USHORT
-	Message          UINT
-	ExtraInformation ULONG
+	FMakeCode         USHORT
+	FFlags            USHORT
+	FReserved         USHORT
+	FVKey             USHORT
+	FMessage          UINT
+	FExtraInformation ULONG
 }
 
 type tagRAWKEYBOARD = RAWKEYBOARD
@@ -24298,9 +24298,9 @@ type PRAWKEYBOARD = uintptr
 type LPRAWKEYBOARD = uintptr
 
 type RAWHID = struct {
-	dwSizeHid DWORD
-	dwCount   DWORD
-	bRawData  [1]BYTE
+	FdwSizeHid DWORD
+	FdwCount   DWORD
+	FbRawData  [1]BYTE
 }
 
 type tagRAWHID = RAWHID
@@ -24310,11 +24310,11 @@ type PRAWHID = uintptr
 type LPRAWHID = uintptr
 
 type RAWINPUT = struct {
-	header RAWINPUTHEADER
-	data   struct {
-		keyboard [0]RAWKEYBOARD
-		hid      [0]RAWHID
-		mouse    RAWMOUSE
+	Fheader RAWINPUTHEADER
+	Fdata   struct {
+		Fkeyboard [0]RAWKEYBOARD
+		Fhid      [0]RAWHID
+		Fmouse    RAWMOUSE
 	}
 }
 
@@ -24325,10 +24325,10 @@ type PRAWINPUT = uintptr
 type LPRAWINPUT = uintptr
 
 type RID_DEVICE_INFO_MOUSE = struct {
-	dwId                DWORD
-	dwNumberOfButtons   DWORD
-	dwSampleRate        DWORD
-	fHasHorizontalWheel WINBOOL
+	FdwId                DWORD
+	FdwNumberOfButtons   DWORD
+	FdwSampleRate        DWORD
+	FfHasHorizontalWheel WINBOOL
 }
 
 type tagRID_DEVICE_INFO_MOUSE = RID_DEVICE_INFO_MOUSE
@@ -24336,12 +24336,12 @@ type tagRID_DEVICE_INFO_MOUSE = RID_DEVICE_INFO_MOUSE
 type PRID_DEVICE_INFO_MOUSE = uintptr
 
 type RID_DEVICE_INFO_KEYBOARD = struct {
-	dwType                 DWORD
-	dwSubType              DWORD
-	dwKeyboardMode         DWORD
-	dwNumberOfFunctionKeys DWORD
-	dwNumberOfIndicators   DWORD
-	dwNumberOfKeysTotal    DWORD
+	FdwType                 DWORD
+	FdwSubType              DWORD
+	FdwKeyboardMode         DWORD
+	FdwNumberOfFunctionKeys DWORD
+	FdwNumberOfIndicators   DWORD
+	FdwNumberOfKeysTotal    DWORD
 }
 
 type tagRID_DEVICE_INFO_KEYBOARD = RID_DEVICE_INFO_KEYBOARD
@@ -24349,11 +24349,11 @@ type tagRID_DEVICE_INFO_KEYBOARD = RID_DEVICE_INFO_KEYBOARD
 type PRID_DEVICE_INFO_KEYBOARD = uintptr
 
 type RID_DEVICE_INFO_HID = struct {
-	dwVendorId      DWORD
-	dwProductId     DWORD
-	dwVersionNumber DWORD
-	usUsagePage     USHORT
-	usUsage         USHORT
+	FdwVendorId      DWORD
+	FdwProductId     DWORD
+	FdwVersionNumber DWORD
+	FusUsagePage     USHORT
+	FusUsage         USHORT
 }
 
 type tagRID_DEVICE_INFO_HID = RID_DEVICE_INFO_HID
@@ -24361,13 +24361,13 @@ type tagRID_DEVICE_INFO_HID = RID_DEVICE_INFO_HID
 type PRID_DEVICE_INFO_HID = uintptr
 
 type RID_DEVICE_INFO = struct {
-	cbSize    DWORD
-	dwType    DWORD
-	__ccgo2_8 struct {
-		keyboard    [0]RID_DEVICE_INFO_KEYBOARD
-		hid         [0]RID_DEVICE_INFO_HID
-		mouse       RID_DEVICE_INFO_MOUSE
-		__ccgo_pad3 [8]byte
+	FcbSize    DWORD
+	FdwType    DWORD
+	F__ccgo2_8 struct {
+		Fkeyboard    [0]RID_DEVICE_INFO_KEYBOARD
+		Fhid         [0]RID_DEVICE_INFO_HID
+		Fmouse       RID_DEVICE_INFO_MOUSE
+		F__ccgo_pad3 [8]byte
 	}
 }
 
@@ -24378,10 +24378,10 @@ type PRID_DEVICE_INFO = uintptr
 type LPRID_DEVICE_INFO = uintptr
 
 type RAWINPUTDEVICE = struct {
-	usUsagePage USHORT
-	usUsage     USHORT
-	dwFlags     DWORD
-	hwndTarget  HWND
+	FusUsagePage USHORT
+	FusUsage     USHORT
+	FdwFlags     DWORD
+	FhwndTarget  HWND
 }
 
 type tagRAWINPUTDEVICE = RAWINPUTDEVICE
@@ -24393,8 +24393,8 @@ type LPRAWINPUTDEVICE = uintptr
 type PCRAWINPUTDEVICE = uintptr
 
 type RAWINPUTDEVICELIST = struct {
-	hDevice HANDLE
-	dwType  DWORD
+	FhDevice HANDLE
+	FdwType  DWORD
 }
 
 type tagRAWINPUTDEVICELIST = RAWINPUTDEVICELIST
@@ -24412,26 +24412,26 @@ const POINTER_DEVICE_TYPE_TOUCH_PAD = 4
 const POINTER_DEVICE_TYPE_MAX = 4294967295
 
 type POINTER_DEVICE_INFO = struct {
-	displayOrientation DWORD
-	device             HANDLE
-	pointerDeviceType  POINTER_DEVICE_TYPE
-	monitor            HMONITOR
-	startingCursorId   ULONG
-	maxActiveContacts  USHORT
-	productString      [520]WCHAR
+	FdisplayOrientation DWORD
+	Fdevice             HANDLE
+	FpointerDeviceType  POINTER_DEVICE_TYPE
+	Fmonitor            HMONITOR
+	FstartingCursorId   ULONG
+	FmaxActiveContacts  USHORT
+	FproductString      [520]WCHAR
 }
 
 type tagPOINTER_DEVICE_INFO = POINTER_DEVICE_INFO
 
 type POINTER_DEVICE_PROPERTY = struct {
-	logicalMin   INT32
-	logicalMax   INT32
-	physicalMin  INT32
-	physicalMax  INT32
-	unit         UINT32
-	unitExponent UINT32
-	usagePageId  USHORT
-	usageId      USHORT
+	FlogicalMin   INT32
+	FlogicalMax   INT32
+	FphysicalMin  INT32
+	FphysicalMax  INT32
+	Funit         UINT32
+	FunitExponent UINT32
+	FusagePageId  USHORT
+	FusageId      USHORT
 }
 
 type tagPOINTER_DEVICE_PROPERTY = POINTER_DEVICE_PROPERTY
@@ -24446,15 +24446,15 @@ const POINTER_DEVICE_CURSOR_TYPE_ERASER = 2
 const POINTER_DEVICE_CURSOR_TYPE_MAX = 4294967295
 
 type POINTER_DEVICE_CURSOR_INFO = struct {
-	cursorId UINT32
-	cursor   POINTER_DEVICE_CURSOR_TYPE
+	FcursorId UINT32
+	Fcursor   POINTER_DEVICE_CURSOR_TYPE
 }
 
 type tagPOINTER_DEVICE_CURSOR_INFO = POINTER_DEVICE_CURSOR_INFO
 
 type CHANGEFILTERSTRUCT = struct {
-	cbSize    DWORD
-	ExtStatus DWORD
+	FcbSize    DWORD
+	FExtStatus DWORD
 }
 
 type tagCHANGEFILTERSTRUCT = CHANGEFILTERSTRUCT
@@ -24462,21 +24462,21 @@ type tagCHANGEFILTERSTRUCT = CHANGEFILTERSTRUCT
 type PCHANGEFILTERSTRUCT = uintptr
 
 type HGESTUREINFO__ = struct {
-	unused int32
+	Funused int32
 }
 
 type HGESTUREINFO = uintptr
 
 type GESTUREINFO = struct {
-	cbSize       UINT
-	dwFlags      DWORD
-	dwID         DWORD
-	hwndTarget   HWND
-	ptsLocation  POINTS
-	dwInstanceID DWORD
-	dwSequenceID DWORD
-	ullArguments ULONGLONG
-	cbExtraArgs  UINT
+	FcbSize       UINT
+	FdwFlags      DWORD
+	FdwID         DWORD
+	FhwndTarget   HWND
+	FptsLocation  POINTS
+	FdwInstanceID DWORD
+	FdwSequenceID DWORD
+	FullArguments ULONGLONG
+	FcbExtraArgs  UINT
 }
 
 type tagGESTUREINFO = GESTUREINFO
@@ -24486,11 +24486,11 @@ type PGESTUREINFO = uintptr
 type PCGESTUREINFO = uintptr
 
 type GESTURENOTIFYSTRUCT = struct {
-	cbSize       UINT
-	dwFlags      DWORD
-	hwndTarget   HWND
-	ptsLocation  POINTS
-	dwInstanceID DWORD
+	FcbSize       UINT
+	FdwFlags      DWORD
+	FhwndTarget   HWND
+	FptsLocation  POINTS
+	FdwInstanceID DWORD
 }
 
 type tagGESTURENOTIFYSTRUCT = GESTURENOTIFYSTRUCT
@@ -24498,9 +24498,9 @@ type tagGESTURENOTIFYSTRUCT = GESTURENOTIFYSTRUCT
 type PGESTURENOTIFYSTRUCT = uintptr
 
 type GESTURECONFIG = struct {
-	dwID    DWORD
-	dwWant  DWORD
-	dwBlock DWORD
+	FdwID    DWORD
+	FdwWant  DWORD
+	FdwBlock DWORD
 }
 
 type tagGESTURECONFIG = GESTURECONFIG
@@ -24528,8 +24528,8 @@ const IMO_INJECTED = 2
 const IMO_SYSTEM = 4
 
 type INPUT_MESSAGE_SOURCE = struct {
-	deviceType INPUT_MESSAGE_DEVICE_TYPE
-	originId   INPUT_MESSAGE_ORIGIN_ID
+	FdeviceType INPUT_MESSAGE_DEVICE_TYPE
+	ForiginId   INPUT_MESSAGE_ORIGIN_ID
 }
 
 type tagINPUT_MESSAGE_SOURCE = INPUT_MESSAGE_SOURCE
@@ -24561,25 +24561,25 @@ const ORIENTATION_PREFERENCE_LANDSCAPE_FLIPPED = 4
 const ORIENTATION_PREFERENCE_PORTRAIT_FLIPPED = 8
 
 type INPUT_TRANSFORM = struct {
-	__ccgo0_0 struct {
-		m         [0][4][4]float32
-		__ccgo0_0 struct {
-			_11 float32
-			_12 float32
-			_13 float32
-			_14 float32
-			_21 float32
-			_22 float32
-			_23 float32
-			_24 float32
-			_31 float32
-			_32 float32
-			_33 float32
-			_34 float32
-			_41 float32
-			_42 float32
-			_43 float32
-			_44 float32
+	F__ccgo0_0 struct {
+		Fm         [0][4][4]float32
+		F__ccgo0_0 struct {
+			F_11 float32
+			F_12 float32
+			F_13 float32
+			F_14 float32
+			F_21 float32
+			F_22 float32
+			F_23 float32
+			F_24 float32
+			F_31 float32
+			F_32 float32
+			F_33 float32
+			F_34 float32
+			F_41 float32
+			F_42 float32
+			F_43 float32
+			F_44 float32
 		}
 	}
 }
@@ -24595,9 +24595,9 @@ type CALTYPE = uint32
 type CALID = uint32
 
 type CPINFO = struct {
-	MaxCharSize UINT
-	DefaultChar [2]BYTE
-	LeadByte    [12]BYTE
+	FMaxCharSize UINT
+	FDefaultChar [2]BYTE
+	FLeadByte    [12]BYTE
 }
 
 type _cpinfo = CPINFO
@@ -24605,12 +24605,12 @@ type _cpinfo = CPINFO
 type LPCPINFO = uintptr
 
 type CPINFOEXA = struct {
-	MaxCharSize        UINT
-	DefaultChar        [2]BYTE
-	LeadByte           [12]BYTE
-	UnicodeDefaultChar WCHAR
-	CodePage           UINT
-	CodePageName       [260]CHAR
+	FMaxCharSize        UINT
+	FDefaultChar        [2]BYTE
+	FLeadByte           [12]BYTE
+	FUnicodeDefaultChar WCHAR
+	FCodePage           UINT
+	FCodePageName       [260]CHAR
 }
 
 type _cpinfoexA = CPINFOEXA
@@ -24618,12 +24618,12 @@ type _cpinfoexA = CPINFOEXA
 type LPCPINFOEXA = uintptr
 
 type CPINFOEXW = struct {
-	MaxCharSize        UINT
-	DefaultChar        [2]BYTE
-	LeadByte           [12]BYTE
-	UnicodeDefaultChar WCHAR
-	CodePage           UINT
-	CodePageName       [260]WCHAR
+	FMaxCharSize        UINT
+	FDefaultChar        [2]BYTE
+	FLeadByte           [12]BYTE
+	FUnicodeDefaultChar WCHAR
+	FCodePage           UINT
+	FCodePageName       [260]WCHAR
 }
 
 type _cpinfoexW = CPINFOEXW
@@ -24631,23 +24631,23 @@ type _cpinfoexW = CPINFOEXW
 type LPCPINFOEXW = uintptr
 
 type CPINFOEX = struct {
-	MaxCharSize        UINT
-	DefaultChar        [2]BYTE
-	LeadByte           [12]BYTE
-	UnicodeDefaultChar WCHAR
-	CodePage           UINT
-	CodePageName       [260]CHAR
+	FMaxCharSize        UINT
+	FDefaultChar        [2]BYTE
+	FLeadByte           [12]BYTE
+	FUnicodeDefaultChar WCHAR
+	FCodePage           UINT
+	FCodePageName       [260]CHAR
 }
 
 type LPCPINFOEX = uintptr
 
 type NUMBERFMTA = struct {
-	NumDigits     UINT
-	LeadingZero   UINT
-	Grouping      UINT
-	lpDecimalSep  LPSTR
-	lpThousandSep LPSTR
-	NegativeOrder UINT
+	FNumDigits     UINT
+	FLeadingZero   UINT
+	FGrouping      UINT
+	FlpDecimalSep  LPSTR
+	FlpThousandSep LPSTR
+	FNegativeOrder UINT
 }
 
 type _numberfmtA = NUMBERFMTA
@@ -24655,12 +24655,12 @@ type _numberfmtA = NUMBERFMTA
 type LPNUMBERFMTA = uintptr
 
 type NUMBERFMTW = struct {
-	NumDigits     UINT
-	LeadingZero   UINT
-	Grouping      UINT
-	lpDecimalSep  LPWSTR
-	lpThousandSep LPWSTR
-	NegativeOrder UINT
+	FNumDigits     UINT
+	FLeadingZero   UINT
+	FGrouping      UINT
+	FlpDecimalSep  LPWSTR
+	FlpThousandSep LPWSTR
+	FNegativeOrder UINT
 }
 
 type _numberfmtW = NUMBERFMTW
@@ -24668,25 +24668,25 @@ type _numberfmtW = NUMBERFMTW
 type LPNUMBERFMTW = uintptr
 
 type NUMBERFMT = struct {
-	NumDigits     UINT
-	LeadingZero   UINT
-	Grouping      UINT
-	lpDecimalSep  LPSTR
-	lpThousandSep LPSTR
-	NegativeOrder UINT
+	FNumDigits     UINT
+	FLeadingZero   UINT
+	FGrouping      UINT
+	FlpDecimalSep  LPSTR
+	FlpThousandSep LPSTR
+	FNegativeOrder UINT
 }
 
 type LPNUMBERFMT = uintptr
 
 type CURRENCYFMTA = struct {
-	NumDigits        UINT
-	LeadingZero      UINT
-	Grouping         UINT
-	lpDecimalSep     LPSTR
-	lpThousandSep    LPSTR
-	NegativeOrder    UINT
-	PositiveOrder    UINT
-	lpCurrencySymbol LPSTR
+	FNumDigits        UINT
+	FLeadingZero      UINT
+	FGrouping         UINT
+	FlpDecimalSep     LPSTR
+	FlpThousandSep    LPSTR
+	FNegativeOrder    UINT
+	FPositiveOrder    UINT
+	FlpCurrencySymbol LPSTR
 }
 
 type _currencyfmtA = CURRENCYFMTA
@@ -24694,14 +24694,14 @@ type _currencyfmtA = CURRENCYFMTA
 type LPCURRENCYFMTA = uintptr
 
 type CURRENCYFMTW = struct {
-	NumDigits        UINT
-	LeadingZero      UINT
-	Grouping         UINT
-	lpDecimalSep     LPWSTR
-	lpThousandSep    LPWSTR
-	NegativeOrder    UINT
-	PositiveOrder    UINT
-	lpCurrencySymbol LPWSTR
+	FNumDigits        UINT
+	FLeadingZero      UINT
+	FGrouping         UINT
+	FlpDecimalSep     LPWSTR
+	FlpThousandSep    LPWSTR
+	FNegativeOrder    UINT
+	FPositiveOrder    UINT
+	FlpCurrencySymbol LPWSTR
 }
 
 type _currencyfmtW = CURRENCYFMTW
@@ -24709,14 +24709,14 @@ type _currencyfmtW = CURRENCYFMTW
 type LPCURRENCYFMTW = uintptr
 
 type CURRENCYFMT = struct {
-	NumDigits        UINT
-	LeadingZero      UINT
-	Grouping         UINT
-	lpDecimalSep     LPSTR
-	lpThousandSep    LPSTR
-	NegativeOrder    UINT
-	PositiveOrder    UINT
-	lpCurrencySymbol LPSTR
+	FNumDigits        UINT
+	FLeadingZero      UINT
+	FGrouping         UINT
+	FlpDecimalSep     LPSTR
+	FlpThousandSep    LPSTR
+	FNegativeOrder    UINT
+	FPositiveOrder    UINT
+	FlpCurrencySymbol LPSTR
 }
 
 type LPCURRENCYFMT = uintptr
@@ -24728,11 +24728,11 @@ const COMPARE_STRING = 1
 type NLS_FUNCTION = uint32
 
 type NLSVERSIONINFO = struct {
-	dwNLSVersionInfoSize DWORD
-	dwNLSVersion         DWORD
-	dwDefinedVersion     DWORD
-	dwEffectiveId        DWORD
-	guidCustomVersion    GUID
+	FdwNLSVersionInfoSize DWORD
+	FdwNLSVersion         DWORD
+	FdwDefinedVersion     DWORD
+	FdwEffectiveId        DWORD
+	FguidCustomVersion    GUID
 }
 
 type _nlsversioninfo = NLSVERSIONINFO
@@ -24740,11 +24740,11 @@ type _nlsversioninfo = NLSVERSIONINFO
 type LPNLSVERSIONINFO = uintptr
 
 type NLSVERSIONINFOEX = struct {
-	dwNLSVersionInfoSize DWORD
-	dwNLSVersion         DWORD
-	dwDefinedVersion     DWORD
-	dwEffectiveId        DWORD
-	guidCustomVersion    GUID
+	FdwNLSVersionInfoSize DWORD
+	FdwNLSVersion         DWORD
+	FdwDefinedVersion     DWORD
+	FdwEffectiveId        DWORD
+	FguidCustomVersion    GUID
 }
 
 type _nlsversioninfoex = NLSVERSIONINFOEX
@@ -24835,19 +24835,19 @@ type CALINFO_ENUMPROCEXW = uintptr
 type GEO_ENUMPROC = uintptr
 
 type FILEMUIINFO = struct {
-	dwSize               DWORD
-	dwVersion            DWORD
-	dwFileType           DWORD
-	pChecksum            [16]BYTE
-	pServiceChecksum     [16]BYTE
-	dwLanguageNameOffset DWORD
-	dwTypeIDMainSize     DWORD
-	dwTypeIDMainOffset   DWORD
-	dwTypeNameMainOffset DWORD
-	dwTypeIDMUISize      DWORD
-	dwTypeIDMUIOffset    DWORD
-	dwTypeNameMUIOffset  DWORD
-	abBuffer             [8]BYTE
+	FdwSize               DWORD
+	FdwVersion            DWORD
+	FdwFileType           DWORD
+	FpChecksum            [16]BYTE
+	FpServiceChecksum     [16]BYTE
+	FdwLanguageNameOffset DWORD
+	FdwTypeIDMainSize     DWORD
+	FdwTypeIDMainOffset   DWORD
+	FdwTypeNameMainOffset DWORD
+	FdwTypeIDMUISize      DWORD
+	FdwTypeIDMUIOffset    DWORD
+	FdwTypeNameMUIOffset  DWORD
+	FabBuffer             [8]BYTE
 }
 
 type _FILEMUIINFO = FILEMUIINFO
@@ -24863,8 +24863,8 @@ type TIMEFMT_ENUMPROCEX = uintptr
 type LOCALE_ENUMPROCEX = uintptr
 
 type COORD = struct {
-	X SHORT
-	Y SHORT
+	FX SHORT
+	FY SHORT
 }
 
 type _COORD = COORD
@@ -24872,10 +24872,10 @@ type _COORD = COORD
 type PCOORD = uintptr
 
 type SMALL_RECT = struct {
-	Left   SHORT
-	Top    SHORT
-	Right  SHORT
-	Bottom SHORT
+	FLeft   SHORT
+	FTop    SHORT
+	FRight  SHORT
+	FBottom SHORT
 }
 
 type _SMALL_RECT = SMALL_RECT
@@ -24883,15 +24883,15 @@ type _SMALL_RECT = SMALL_RECT
 type PSMALL_RECT = uintptr
 
 type KEY_EVENT_RECORD = struct {
-	bKeyDown         WINBOOL
-	wRepeatCount     WORD
-	wVirtualKeyCode  WORD
-	wVirtualScanCode WORD
-	uChar            struct {
-		AsciiChar   [0]CHAR
-		UnicodeChar WCHAR
+	FbKeyDown         WINBOOL
+	FwRepeatCount     WORD
+	FwVirtualKeyCode  WORD
+	FwVirtualScanCode WORD
+	FuChar            struct {
+		FAsciiChar   [0]CHAR
+		FUnicodeChar WCHAR
 	}
-	dwControlKeyState DWORD
+	FdwControlKeyState DWORD
 }
 
 type _KEY_EVENT_RECORD = KEY_EVENT_RECORD
@@ -24899,10 +24899,10 @@ type _KEY_EVENT_RECORD = KEY_EVENT_RECORD
 type PKEY_EVENT_RECORD = uintptr
 
 type MOUSE_EVENT_RECORD = struct {
-	dwMousePosition   COORD
-	dwButtonState     DWORD
-	dwControlKeyState DWORD
-	dwEventFlags      DWORD
+	FdwMousePosition   COORD
+	FdwButtonState     DWORD
+	FdwControlKeyState DWORD
+	FdwEventFlags      DWORD
 }
 
 type _MOUSE_EVENT_RECORD = MOUSE_EVENT_RECORD
@@ -24910,7 +24910,7 @@ type _MOUSE_EVENT_RECORD = MOUSE_EVENT_RECORD
 type PMOUSE_EVENT_RECORD = uintptr
 
 type WINDOW_BUFFER_SIZE_RECORD = struct {
-	dwSize COORD
+	FdwSize COORD
 }
 
 type _WINDOW_BUFFER_SIZE_RECORD = WINDOW_BUFFER_SIZE_RECORD
@@ -24918,7 +24918,7 @@ type _WINDOW_BUFFER_SIZE_RECORD = WINDOW_BUFFER_SIZE_RECORD
 type PWINDOW_BUFFER_SIZE_RECORD = uintptr
 
 type MENU_EVENT_RECORD = struct {
-	dwCommandId UINT
+	FdwCommandId UINT
 }
 
 type _MENU_EVENT_RECORD = MENU_EVENT_RECORD
@@ -24926,7 +24926,7 @@ type _MENU_EVENT_RECORD = MENU_EVENT_RECORD
 type PMENU_EVENT_RECORD = uintptr
 
 type FOCUS_EVENT_RECORD = struct {
-	bSetFocus WINBOOL
+	FbSetFocus WINBOOL
 }
 
 type _FOCUS_EVENT_RECORD = FOCUS_EVENT_RECORD
@@ -24934,13 +24934,13 @@ type _FOCUS_EVENT_RECORD = FOCUS_EVENT_RECORD
 type PFOCUS_EVENT_RECORD = uintptr
 
 type INPUT_RECORD = struct {
-	EventType WORD
-	Event     struct {
-		MouseEvent            [0]MOUSE_EVENT_RECORD
-		WindowBufferSizeEvent [0]WINDOW_BUFFER_SIZE_RECORD
-		MenuEvent             [0]MENU_EVENT_RECORD
-		FocusEvent            [0]FOCUS_EVENT_RECORD
-		KeyEvent              KEY_EVENT_RECORD
+	FEventType WORD
+	FEvent     struct {
+		FMouseEvent            [0]MOUSE_EVENT_RECORD
+		FWindowBufferSizeEvent [0]WINDOW_BUFFER_SIZE_RECORD
+		FMenuEvent             [0]MENU_EVENT_RECORD
+		FFocusEvent            [0]FOCUS_EVENT_RECORD
+		FKeyEvent              KEY_EVENT_RECORD
 	}
 }
 
@@ -24949,11 +24949,11 @@ type _INPUT_RECORD = INPUT_RECORD
 type PINPUT_RECORD = uintptr
 
 type CHAR_INFO = struct {
-	Char struct {
-		AsciiChar   [0]CHAR
-		UnicodeChar WCHAR
+	FChar struct {
+		FAsciiChar   [0]CHAR
+		FUnicodeChar WCHAR
 	}
-	Attributes WORD
+	FAttributes WORD
 }
 
 type _CHAR_INFO = CHAR_INFO
@@ -24961,11 +24961,11 @@ type _CHAR_INFO = CHAR_INFO
 type PCHAR_INFO = uintptr
 
 type CONSOLE_SCREEN_BUFFER_INFO = struct {
-	dwSize              COORD
-	dwCursorPosition    COORD
-	wAttributes         WORD
-	srWindow            SMALL_RECT
-	dwMaximumWindowSize COORD
+	FdwSize              COORD
+	FdwCursorPosition    COORD
+	FwAttributes         WORD
+	FsrWindow            SMALL_RECT
+	FdwMaximumWindowSize COORD
 }
 
 type _CONSOLE_SCREEN_BUFFER_INFO = CONSOLE_SCREEN_BUFFER_INFO
@@ -24973,8 +24973,8 @@ type _CONSOLE_SCREEN_BUFFER_INFO = CONSOLE_SCREEN_BUFFER_INFO
 type PCONSOLE_SCREEN_BUFFER_INFO = uintptr
 
 type CONSOLE_CURSOR_INFO = struct {
-	dwSize   DWORD
-	bVisible WINBOOL
+	FdwSize   DWORD
+	FbVisible WINBOOL
 }
 
 type _CONSOLE_CURSOR_INFO = CONSOLE_CURSOR_INFO
@@ -24982,8 +24982,8 @@ type _CONSOLE_CURSOR_INFO = CONSOLE_CURSOR_INFO
 type PCONSOLE_CURSOR_INFO = uintptr
 
 type CONSOLE_FONT_INFO = struct {
-	nFont      DWORD
-	dwFontSize COORD
+	FnFont      DWORD
+	FdwFontSize COORD
 }
 
 type _CONSOLE_FONT_INFO = CONSOLE_FONT_INFO
@@ -24991,9 +24991,9 @@ type _CONSOLE_FONT_INFO = CONSOLE_FONT_INFO
 type PCONSOLE_FONT_INFO = uintptr
 
 type CONSOLE_SELECTION_INFO = struct {
-	dwFlags           DWORD
-	dwSelectionAnchor COORD
-	srSelection       SMALL_RECT
+	FdwFlags           DWORD
+	FdwSelectionAnchor COORD
+	FsrSelection       SMALL_RECT
 }
 
 type _CONSOLE_SELECTION_INFO = CONSOLE_SELECTION_INFO
@@ -25003,12 +25003,12 @@ type PCONSOLE_SELECTION_INFO = uintptr
 type PHANDLER_ROUTINE = uintptr
 
 type CONSOLE_FONT_INFOEX = struct {
-	cbSize     ULONG
-	nFont      DWORD
-	dwFontSize COORD
-	FontFamily UINT
-	FontWeight UINT
-	FaceName   [32]WCHAR
+	FcbSize     ULONG
+	FnFont      DWORD
+	FdwFontSize COORD
+	FFontFamily UINT
+	FFontWeight UINT
+	FFaceName   [32]WCHAR
 }
 
 type _CONSOLE_FONT_INFOEX = CONSOLE_FONT_INFOEX
@@ -25016,10 +25016,10 @@ type _CONSOLE_FONT_INFOEX = CONSOLE_FONT_INFOEX
 type PCONSOLE_FONT_INFOEX = uintptr
 
 type CONSOLE_HISTORY_INFO = struct {
-	cbSize                 UINT
-	HistoryBufferSize      UINT
-	NumberOfHistoryBuffers UINT
-	dwFlags                DWORD
+	FcbSize                 UINT
+	FHistoryBufferSize      UINT
+	FNumberOfHistoryBuffers UINT
+	FdwFlags                DWORD
 }
 
 type _CONSOLE_HISTORY_INFO = CONSOLE_HISTORY_INFO
@@ -25027,10 +25027,10 @@ type _CONSOLE_HISTORY_INFO = CONSOLE_HISTORY_INFO
 type PCONSOLE_HISTORY_INFO = uintptr
 
 type CONSOLE_READCONSOLE_CONTROL = struct {
-	nLength           ULONG
-	nInitialChars     ULONG
-	dwCtrlWakeupMask  ULONG
-	dwControlKeyState ULONG
+	FnLength           ULONG
+	FnInitialChars     ULONG
+	FdwCtrlWakeupMask  ULONG
+	FdwControlKeyState ULONG
 }
 
 type _CONSOLE_READCONSOLE_CONTROL = CONSOLE_READCONSOLE_CONTROL
@@ -25038,15 +25038,15 @@ type _CONSOLE_READCONSOLE_CONTROL = CONSOLE_READCONSOLE_CONTROL
 type PCONSOLE_READCONSOLE_CONTROL = uintptr
 
 type CONSOLE_SCREEN_BUFFER_INFOEX = struct {
-	cbSize               ULONG
-	dwSize               COORD
-	dwCursorPosition     COORD
-	wAttributes          WORD
-	srWindow             SMALL_RECT
-	dwMaximumWindowSize  COORD
-	wPopupAttributes     WORD
-	bFullscreenSupported WINBOOL
-	ColorTable           [16]COLORREF
+	FcbSize               ULONG
+	FdwSize               COORD
+	FdwCursorPosition     COORD
+	FwAttributes          WORD
+	FsrWindow             SMALL_RECT
+	FdwMaximumWindowSize  COORD
+	FwPopupAttributes     WORD
+	FbFullscreenSupported WINBOOL
+	FColorTable           [16]COLORREF
 }
 
 type _CONSOLE_SCREEN_BUFFER_INFOEX = CONSOLE_SCREEN_BUFFER_INFOEX
@@ -25054,19 +25054,19 @@ type _CONSOLE_SCREEN_BUFFER_INFOEX = CONSOLE_SCREEN_BUFFER_INFOEX
 type PCONSOLE_SCREEN_BUFFER_INFOEX = uintptr
 
 type VS_FIXEDFILEINFO = struct {
-	dwSignature        DWORD
-	dwStrucVersion     DWORD
-	dwFileVersionMS    DWORD
-	dwFileVersionLS    DWORD
-	dwProductVersionMS DWORD
-	dwProductVersionLS DWORD
-	dwFileFlagsMask    DWORD
-	dwFileFlags        DWORD
-	dwFileOS           DWORD
-	dwFileType         DWORD
-	dwFileSubtype      DWORD
-	dwFileDateMS       DWORD
-	dwFileDateLS       DWORD
+	FdwSignature        DWORD
+	FdwStrucVersion     DWORD
+	FdwFileVersionMS    DWORD
+	FdwFileVersionLS    DWORD
+	FdwProductVersionMS DWORD
+	FdwProductVersionLS DWORD
+	FdwFileFlagsMask    DWORD
+	FdwFileFlags        DWORD
+	FdwFileOS           DWORD
+	FdwFileType         DWORD
+	FdwFileSubtype      DWORD
+	FdwFileDateMS       DWORD
+	FdwFileDateLS       DWORD
 }
 
 type tagVS_FIXEDFILEINFO = VS_FIXEDFILEINFO
@@ -25076,18 +25076,18 @@ type REGSAM = uint32
 type LSTATUS = int32
 
 type val_context = struct {
-	valuelen      int32
-	value_context LPVOID
-	val_buff_ptr  LPVOID
+	Fvaluelen      int32
+	Fvalue_context LPVOID
+	Fval_buff_ptr  LPVOID
 }
 
 type PVALCONTEXT = uintptr
 
 type PVALUEA = struct {
-	pv_valuename     LPSTR
-	pv_valuelen      int32
-	pv_value_context LPVOID
-	pv_type          DWORD
+	Fpv_valuename     LPSTR
+	Fpv_valuelen      int32
+	Fpv_value_context LPVOID
+	Fpv_type          DWORD
 }
 
 type pvalueA = PVALUEA
@@ -25095,10 +25095,10 @@ type pvalueA = PVALUEA
 type PPVALUEA = uintptr
 
 type PVALUEW = struct {
-	pv_valuename     LPWSTR
-	pv_valuelen      int32
-	pv_value_context LPVOID
-	pv_type          DWORD
+	Fpv_valuename     LPWSTR
+	Fpv_valuelen      int32
+	Fpv_value_context LPVOID
+	Fpv_type          DWORD
 }
 
 type pvalueW = PVALUEW
@@ -25106,10 +25106,10 @@ type pvalueW = PVALUEW
 type PPVALUEW = uintptr
 
 type PVALUE = struct {
-	pv_valuename     LPSTR
-	pv_valuelen      int32
-	pv_value_context LPVOID
-	pv_type          DWORD
+	Fpv_valuename     LPSTR
+	Fpv_valuelen      int32
+	Fpv_value_context LPVOID
+	Fpv_type          DWORD
 }
 
 type PPVALUE = uintptr
@@ -25117,12 +25117,12 @@ type PPVALUE = uintptr
 type PQUERYHANDLER = uintptr
 
 type REG_PROVIDER = struct {
-	pi_R0_1val     PQUERYHANDLER
-	pi_R0_allvals  PQUERYHANDLER
-	pi_R3_1val     PQUERYHANDLER
-	pi_R3_allvals  PQUERYHANDLER
-	pi_flags       DWORD
-	pi_key_context LPVOID
+	Fpi_R0_1val     PQUERYHANDLER
+	Fpi_R0_allvals  PQUERYHANDLER
+	Fpi_R3_1val     PQUERYHANDLER
+	Fpi_R3_allvals  PQUERYHANDLER
+	Fpi_flags       DWORD
+	Fpi_key_context LPVOID
 }
 
 type provider_info = REG_PROVIDER
@@ -25130,10 +25130,10 @@ type provider_info = REG_PROVIDER
 type PPROVIDER = uintptr
 
 type VALENTA = struct {
-	ve_valuename LPSTR
-	ve_valuelen  DWORD
-	ve_valueptr  DWORD_PTR
-	ve_type      DWORD
+	Fve_valuename LPSTR
+	Fve_valuelen  DWORD
+	Fve_valueptr  DWORD_PTR
+	Fve_type      DWORD
 }
 
 type value_entA = VALENTA
@@ -25141,10 +25141,10 @@ type value_entA = VALENTA
 type PVALENTA = uintptr
 
 type VALENTW = struct {
-	ve_valuename LPWSTR
-	ve_valuelen  DWORD
-	ve_valueptr  DWORD_PTR
-	ve_type      DWORD
+	Fve_valuename LPWSTR
+	Fve_valuelen  DWORD
+	Fve_valueptr  DWORD_PTR
+	Fve_type      DWORD
 }
 
 type value_entW = VALENTW
@@ -25152,23 +25152,23 @@ type value_entW = VALENTW
 type PVALENTW = uintptr
 
 type VALENT = struct {
-	ve_valuename LPSTR
-	ve_valuelen  DWORD
-	ve_valueptr  DWORD_PTR
-	ve_type      DWORD
+	Fve_valuename LPSTR
+	Fve_valuelen  DWORD
+	Fve_valueptr  DWORD_PTR
+	Fve_type      DWORD
 }
 
 type PVALENT = uintptr
 
 type NETRESOURCEA = struct {
-	dwScope       DWORD
-	dwType        DWORD
-	dwDisplayType DWORD
-	dwUsage       DWORD
-	lpLocalName   LPSTR
-	lpRemoteName  LPSTR
-	lpComment     LPSTR
-	lpProvider    LPSTR
+	FdwScope       DWORD
+	FdwType        DWORD
+	FdwDisplayType DWORD
+	FdwUsage       DWORD
+	FlpLocalName   LPSTR
+	FlpRemoteName  LPSTR
+	FlpComment     LPSTR
+	FlpProvider    LPSTR
 }
 
 type _NETRESOURCEA = NETRESOURCEA
@@ -25176,14 +25176,14 @@ type _NETRESOURCEA = NETRESOURCEA
 type LPNETRESOURCEA = uintptr
 
 type NETRESOURCEW = struct {
-	dwScope       DWORD
-	dwType        DWORD
-	dwDisplayType DWORD
-	dwUsage       DWORD
-	lpLocalName   LPWSTR
-	lpRemoteName  LPWSTR
-	lpComment     LPWSTR
-	lpProvider    LPWSTR
+	FdwScope       DWORD
+	FdwType        DWORD
+	FdwDisplayType DWORD
+	FdwUsage       DWORD
+	FlpLocalName   LPWSTR
+	FlpRemoteName  LPWSTR
+	FlpComment     LPWSTR
+	FlpProvider    LPWSTR
 }
 
 type _NETRESOURCEW = NETRESOURCEW
@@ -25191,24 +25191,24 @@ type _NETRESOURCEW = NETRESOURCEW
 type LPNETRESOURCEW = uintptr
 
 type NETRESOURCE = struct {
-	dwScope       DWORD
-	dwType        DWORD
-	dwDisplayType DWORD
-	dwUsage       DWORD
-	lpLocalName   LPSTR
-	lpRemoteName  LPSTR
-	lpComment     LPSTR
-	lpProvider    LPSTR
+	FdwScope       DWORD
+	FdwType        DWORD
+	FdwDisplayType DWORD
+	FdwUsage       DWORD
+	FlpLocalName   LPSTR
+	FlpRemoteName  LPSTR
+	FlpComment     LPSTR
+	FlpProvider    LPSTR
 }
 
 type LPNETRESOURCE = uintptr
 
 type CONNECTDLGSTRUCTA = struct {
-	cbStructure DWORD
-	hwndOwner   HWND
-	lpConnRes   LPNETRESOURCEA
-	dwFlags     DWORD
-	dwDevNum    DWORD
+	FcbStructure DWORD
+	FhwndOwner   HWND
+	FlpConnRes   LPNETRESOURCEA
+	FdwFlags     DWORD
+	FdwDevNum    DWORD
 }
 
 type _CONNECTDLGSTRUCTA = CONNECTDLGSTRUCTA
@@ -25216,11 +25216,11 @@ type _CONNECTDLGSTRUCTA = CONNECTDLGSTRUCTA
 type LPCONNECTDLGSTRUCTA = uintptr
 
 type CONNECTDLGSTRUCTW = struct {
-	cbStructure DWORD
-	hwndOwner   HWND
-	lpConnRes   LPNETRESOURCEW
-	dwFlags     DWORD
-	dwDevNum    DWORD
+	FcbStructure DWORD
+	FhwndOwner   HWND
+	FlpConnRes   LPNETRESOURCEW
+	FdwFlags     DWORD
+	FdwDevNum    DWORD
 }
 
 type _CONNECTDLGSTRUCTW = CONNECTDLGSTRUCTW
@@ -25228,21 +25228,21 @@ type _CONNECTDLGSTRUCTW = CONNECTDLGSTRUCTW
 type LPCONNECTDLGSTRUCTW = uintptr
 
 type CONNECTDLGSTRUCT = struct {
-	cbStructure DWORD
-	hwndOwner   HWND
-	lpConnRes   LPNETRESOURCEA
-	dwFlags     DWORD
-	dwDevNum    DWORD
+	FcbStructure DWORD
+	FhwndOwner   HWND
+	FlpConnRes   LPNETRESOURCEA
+	FdwFlags     DWORD
+	FdwDevNum    DWORD
 }
 
 type LPCONNECTDLGSTRUCT = uintptr
 
 type DISCDLGSTRUCTA = struct {
-	cbStructure  DWORD
-	hwndOwner    HWND
-	lpLocalName  LPSTR
-	lpRemoteName LPSTR
-	dwFlags      DWORD
+	FcbStructure  DWORD
+	FhwndOwner    HWND
+	FlpLocalName  LPSTR
+	FlpRemoteName LPSTR
+	FdwFlags      DWORD
 }
 
 type _DISCDLGSTRUCTA = DISCDLGSTRUCTA
@@ -25250,11 +25250,11 @@ type _DISCDLGSTRUCTA = DISCDLGSTRUCTA
 type LPDISCDLGSTRUCTA = uintptr
 
 type DISCDLGSTRUCTW = struct {
-	cbStructure  DWORD
-	hwndOwner    HWND
-	lpLocalName  LPWSTR
-	lpRemoteName LPWSTR
-	dwFlags      DWORD
+	FcbStructure  DWORD
+	FhwndOwner    HWND
+	FlpLocalName  LPWSTR
+	FlpRemoteName LPWSTR
+	FdwFlags      DWORD
 }
 
 type _DISCDLGSTRUCTW = DISCDLGSTRUCTW
@@ -25262,17 +25262,17 @@ type _DISCDLGSTRUCTW = DISCDLGSTRUCTW
 type LPDISCDLGSTRUCTW = uintptr
 
 type DISCDLGSTRUCT = struct {
-	cbStructure  DWORD
-	hwndOwner    HWND
-	lpLocalName  LPSTR
-	lpRemoteName LPSTR
-	dwFlags      DWORD
+	FcbStructure  DWORD
+	FhwndOwner    HWND
+	FlpLocalName  LPSTR
+	FlpRemoteName LPSTR
+	FdwFlags      DWORD
 }
 
 type LPDISCDLGSTRUCT = uintptr
 
 type UNIVERSAL_NAME_INFOA = struct {
-	lpUniversalName LPSTR
+	FlpUniversalName LPSTR
 }
 
 type _UNIVERSAL_NAME_INFOA = UNIVERSAL_NAME_INFOA
@@ -25280,7 +25280,7 @@ type _UNIVERSAL_NAME_INFOA = UNIVERSAL_NAME_INFOA
 type LPUNIVERSAL_NAME_INFOA = uintptr
 
 type UNIVERSAL_NAME_INFOW = struct {
-	lpUniversalName LPWSTR
+	FlpUniversalName LPWSTR
 }
 
 type _UNIVERSAL_NAME_INFOW = UNIVERSAL_NAME_INFOW
@@ -25288,15 +25288,15 @@ type _UNIVERSAL_NAME_INFOW = UNIVERSAL_NAME_INFOW
 type LPUNIVERSAL_NAME_INFOW = uintptr
 
 type UNIVERSAL_NAME_INFO = struct {
-	lpUniversalName LPSTR
+	FlpUniversalName LPSTR
 }
 
 type LPUNIVERSAL_NAME_INFO = uintptr
 
 type REMOTE_NAME_INFOA = struct {
-	lpUniversalName  LPSTR
-	lpConnectionName LPSTR
-	lpRemainingPath  LPSTR
+	FlpUniversalName  LPSTR
+	FlpConnectionName LPSTR
+	FlpRemainingPath  LPSTR
 }
 
 type _REMOTE_NAME_INFOA = REMOTE_NAME_INFOA
@@ -25304,9 +25304,9 @@ type _REMOTE_NAME_INFOA = REMOTE_NAME_INFOA
 type LPREMOTE_NAME_INFOA = uintptr
 
 type REMOTE_NAME_INFOW = struct {
-	lpUniversalName  LPWSTR
-	lpConnectionName LPWSTR
-	lpRemainingPath  LPWSTR
+	FlpUniversalName  LPWSTR
+	FlpConnectionName LPWSTR
+	FlpRemainingPath  LPWSTR
 }
 
 type _REMOTE_NAME_INFOW = REMOTE_NAME_INFOW
@@ -25314,22 +25314,22 @@ type _REMOTE_NAME_INFOW = REMOTE_NAME_INFOW
 type LPREMOTE_NAME_INFOW = uintptr
 
 type REMOTE_NAME_INFO = struct {
-	lpUniversalName  LPSTR
-	lpConnectionName LPSTR
-	lpRemainingPath  LPSTR
+	FlpUniversalName  LPSTR
+	FlpConnectionName LPSTR
+	FlpRemainingPath  LPSTR
 }
 
 type LPREMOTE_NAME_INFO = uintptr
 
 type NETINFOSTRUCT = struct {
-	cbStructure       DWORD
-	dwProviderVersion DWORD
-	dwStatus          DWORD
-	dwCharacteristics DWORD
-	dwHandle          ULONG_PTR
-	wNetType          WORD
-	dwPrinters        DWORD
-	dwDrives          DWORD
+	FcbStructure       DWORD
+	FdwProviderVersion DWORD
+	FdwStatus          DWORD
+	FdwCharacteristics DWORD
+	FdwHandle          ULONG_PTR
+	FwNetType          WORD
+	FdwPrinters        DWORD
+	FdwDrives          DWORD
 }
 
 type _NETINFOSTRUCT = NETINFOSTRUCT
@@ -25349,11 +25349,11 @@ type PFNPROCESSPOLICIESA = uintptr
 type PFNPROCESSPOLICIESW = uintptr
 
 type NETCONNECTINFOSTRUCT = struct {
-	cbStructure   DWORD
-	dwFlags       DWORD
-	dwSpeed       DWORD
-	dwDelay       DWORD
-	dwOptDataSize DWORD
+	FcbStructure   DWORD
+	FdwFlags       DWORD
+	FdwSpeed       DWORD
+	FdwDelay       DWORD
+	FdwOptDataSize DWORD
 }
 
 type _NETCONNECTINFOSTRUCT = NETCONNECTINFOSTRUCT
@@ -25645,8 +25645,8 @@ const TAKE_SNAPSHOT_VHDSET_VERSION_UNSPECIFIED = 0
 const TAKE_SNAPSHOT_VHDSET_VERSION_1 = 1
 
 type VIRTUAL_STORAGE_TYPE = struct {
-	DeviceId ULONG
-	VendorId GUID
+	FDeviceId ULONG
+	FVendorId GUID
 }
 
 type _VIRTUAL_STORAGE_TYPE = VIRTUAL_STORAGE_TYPE
@@ -25654,10 +25654,10 @@ type _VIRTUAL_STORAGE_TYPE = VIRTUAL_STORAGE_TYPE
 type PVIRTUAL_STORAGE_TYPE = uintptr
 
 type ATTACH_VIRTUAL_DISK_PARAMETERS = struct {
-	Version   ATTACH_VIRTUAL_DISK_VERSION
-	__ccgo1_4 struct {
-		Version1 struct {
-			Reserved ULONG
+	FVersion   ATTACH_VIRTUAL_DISK_VERSION
+	F__ccgo1_4 struct {
+		FVersion1 struct {
+			FReserved ULONG
 		}
 	}
 }
@@ -25667,10 +25667,10 @@ type _ATTACH_VIRTUAL_DISK_PARAMETERS = ATTACH_VIRTUAL_DISK_PARAMETERS
 type PATTACH_VIRTUAL_DISK_PARAMETERS = uintptr
 
 type COMPACT_VIRTUAL_DISK_PARAMETERS = struct {
-	Version   COMPACT_VIRTUAL_DISK_VERSION
-	__ccgo1_4 struct {
-		Version1 struct {
-			Reserved ULONG
+	FVersion   COMPACT_VIRTUAL_DISK_VERSION
+	F__ccgo1_4 struct {
+		FVersion1 struct {
+			FReserved ULONG
 		}
 	}
 }
@@ -25680,29 +25680,29 @@ type _COMPACT_VIRTUAL_DISK_PARAMETERS = COMPACT_VIRTUAL_DISK_PARAMETERS
 type PCOMPACT_VIRTUAL_DISK_PARAMETERS = uintptr
 
 type CREATE_VIRTUAL_DISK_PARAMETERS = struct {
-	Version   CREATE_VIRTUAL_DISK_VERSION
-	__ccgo1_8 struct {
-		Version2 [0]struct {
-			UniqueId                 GUID
-			MaximumSize              ULONGLONG
-			BlockSizeInBytes         ULONG
-			SectorSizeInBytes        ULONG
-			ParentPath               PCWSTR
-			SourcePath               PCWSTR
-			OpenFlags                OPEN_VIRTUAL_DISK_FLAG
-			ParentVirtualStorageType VIRTUAL_STORAGE_TYPE
-			SourceVirtualStorageType VIRTUAL_STORAGE_TYPE
-			ResiliencyGuid           GUID
+	FVersion   CREATE_VIRTUAL_DISK_VERSION
+	F__ccgo1_8 struct {
+		FVersion2 [0]struct {
+			FUniqueId                 GUID
+			FMaximumSize              ULONGLONG
+			FBlockSizeInBytes         ULONG
+			FSectorSizeInBytes        ULONG
+			FParentPath               PCWSTR
+			FSourcePath               PCWSTR
+			FOpenFlags                OPEN_VIRTUAL_DISK_FLAG
+			FParentVirtualStorageType VIRTUAL_STORAGE_TYPE
+			FSourceVirtualStorageType VIRTUAL_STORAGE_TYPE
+			FResiliencyGuid           GUID
 		}
-		Version1 struct {
-			UniqueId          GUID
-			MaximumSize       ULONGLONG
-			BlockSizeInBytes  ULONG
-			SectorSizeInBytes ULONG
-			ParentPath        PCWSTR
-			SourcePath        PCWSTR
+		FVersion1 struct {
+			FUniqueId          GUID
+			FMaximumSize       ULONGLONG
+			FBlockSizeInBytes  ULONG
+			FSectorSizeInBytes ULONG
+			FParentPath        PCWSTR
+			FSourcePath        PCWSTR
 		}
-		__ccgo_pad2 [64]byte
+		F__ccgo_pad2 [64]byte
 	}
 }
 
@@ -25711,10 +25711,10 @@ type _CREATE_VIRTUAL_DISK_PARAMETERS = CREATE_VIRTUAL_DISK_PARAMETERS
 type PCREATE_VIRTUAL_DISK_PARAMETERS = uintptr
 
 type EXPAND_VIRTUAL_DISK_PARAMETERS = struct {
-	Version   EXPAND_VIRTUAL_DISK_VERSION
-	__ccgo1_8 struct {
-		Version1 struct {
-			NewSize ULONGLONG
+	FVersion   EXPAND_VIRTUAL_DISK_VERSION
+	F__ccgo1_8 struct {
+		FVersion1 struct {
+			FNewSize ULONGLONG
 		}
 	}
 }
@@ -25724,38 +25724,38 @@ type _EXPAND_VIRTUAL_DISK_PARAMETERS = EXPAND_VIRTUAL_DISK_PARAMETERS
 type PEXPAND_VIRTUAL_DISK_PARAMETERS = uintptr
 
 type GET_VIRTUAL_DISK_INFO = struct {
-	Version   GET_VIRTUAL_DISK_INFO_VERSION
-	__ccgo1_8 struct {
-		Identifier     [0]GUID
-		ParentLocation [0]struct {
-			ParentResolved       WINBOOL
-			ParentLocationBuffer [1]WCHAR
+	FVersion   GET_VIRTUAL_DISK_INFO_VERSION
+	F__ccgo1_8 struct {
+		FIdentifier     [0]GUID
+		FParentLocation [0]struct {
+			FParentResolved       WINBOOL
+			FParentLocationBuffer [1]WCHAR
 		}
-		ParentIdentifier   [0]GUID
-		ParentTimestamp    [0]ULONG
-		VirtualStorageType [0]VIRTUAL_STORAGE_TYPE
-		ProviderSubtype    [0]ULONG
-		Is4kAligned        [0]WINBOOL
-		IsLoaded           [0]WINBOOL
-		PhysicalDisk       [0]struct {
-			LogicalSectorSize  ULONG
-			PhysicalSectorSize ULONG
-			IsRemote           WINBOOL
+		FParentIdentifier   [0]GUID
+		FParentTimestamp    [0]ULONG
+		FVirtualStorageType [0]VIRTUAL_STORAGE_TYPE
+		FProviderSubtype    [0]ULONG
+		FIs4kAligned        [0]WINBOOL
+		FIsLoaded           [0]WINBOOL
+		FPhysicalDisk       [0]struct {
+			FLogicalSectorSize  ULONG
+			FPhysicalSectorSize ULONG
+			FIsRemote           WINBOOL
 		}
-		VhdPhysicalSectorSize   [0]ULONG
-		SmallestSafeVirtualSize [0]ULONGLONG
-		FragmentationPercentage [0]ULONG
-		VirtualDiskId           [0]GUID
-		ChangeTrackingState     [0]struct {
-			Enabled      WINBOOL
-			NewerChanges WINBOOL
-			MostRecentId [1]WCHAR
+		FVhdPhysicalSectorSize   [0]ULONG
+		FSmallestSafeVirtualSize [0]ULONGLONG
+		FFragmentationPercentage [0]ULONG
+		FVirtualDiskId           [0]GUID
+		FChangeTrackingState     [0]struct {
+			FEnabled      WINBOOL
+			FNewerChanges WINBOOL
+			FMostRecentId [1]WCHAR
 		}
-		Size struct {
-			VirtualSize  ULONGLONG
-			PhysicalSize ULONGLONG
-			BlockSize    ULONG
-			SectorSize   ULONG
+		FSize struct {
+			FVirtualSize  ULONGLONG
+			FPhysicalSize ULONGLONG
+			FBlockSize    ULONG
+			FSectorSize   ULONG
 		}
 	}
 }
@@ -25765,16 +25765,16 @@ type _GET_VIRTUAL_DISK_INFO = GET_VIRTUAL_DISK_INFO
 type PGET_VIRTUAL_DISK_INFO = uintptr
 
 type MERGE_VIRTUAL_DISK_PARAMETERS = struct {
-	Version   MERGE_VIRTUAL_DISK_VERSION
-	__ccgo1_4 struct {
-		Version2 [0]struct {
-			MergeSourceDepth ULONG
-			MergeTargetDepth ULONG
+	FVersion   MERGE_VIRTUAL_DISK_VERSION
+	F__ccgo1_4 struct {
+		FVersion2 [0]struct {
+			FMergeSourceDepth ULONG
+			FMergeTargetDepth ULONG
 		}
-		Version1 struct {
-			MergeDepth ULONG
+		FVersion1 struct {
+			FMergeDepth ULONG
 		}
-		__ccgo_pad2 [4]byte
+		F__ccgo_pad2 [4]byte
 	}
 }
 
@@ -25783,17 +25783,17 @@ type _MERGE_VIRTUAL_DISK_PARAMETERS = MERGE_VIRTUAL_DISK_PARAMETERS
 type PMERGE_VIRTUAL_DISK_PARAMETERS = uintptr
 
 type OPEN_VIRTUAL_DISK_PARAMETERS = struct {
-	Version   OPEN_VIRTUAL_DISK_VERSION
-	__ccgo1_4 struct {
-		Version2 [0]struct {
-			GetInfoOnly    WINBOOL
-			ReadOnly       WINBOOL
-			ResiliencyGuid GUID
+	FVersion   OPEN_VIRTUAL_DISK_VERSION
+	F__ccgo1_4 struct {
+		FVersion2 [0]struct {
+			FGetInfoOnly    WINBOOL
+			FReadOnly       WINBOOL
+			FResiliencyGuid GUID
 		}
-		Version1 struct {
-			RWDepth ULONG
+		FVersion1 struct {
+			FRWDepth ULONG
 		}
-		__ccgo_pad2 [20]byte
+		F__ccgo_pad2 [20]byte
 	}
 }
 
@@ -25802,22 +25802,22 @@ type _OPEN_VIRTUAL_DISK_PARAMETERS = OPEN_VIRTUAL_DISK_PARAMETERS
 type POPEN_VIRTUAL_DISK_PARAMETERS = uintptr
 
 type SET_VIRTUAL_DISK_INFO = struct {
-	Version   SET_VIRTUAL_DISK_INFO_VERSION
-	__ccgo1_8 struct {
-		UniqueIdentifier        [0]GUID
-		ParentPathWithDepthInfo [0]struct {
-			ChildDepth     ULONG
-			ParentFilePath PCWSTR
+	FVersion   SET_VIRTUAL_DISK_INFO_VERSION
+	F__ccgo1_8 struct {
+		FUniqueIdentifier        [0]GUID
+		FParentPathWithDepthInfo [0]struct {
+			FChildDepth     ULONG
+			FParentFilePath PCWSTR
 		}
-		VhdPhysicalSectorSize [0]ULONG
-		VirtualDiskId         [0]GUID
-		ChangeTrackingEnabled [0]WINBOOL
-		ParentLocator         [0]struct {
-			LinkageId      GUID
-			ParentFilePath PCWSTR
+		FVhdPhysicalSectorSize [0]ULONG
+		FVirtualDiskId         [0]GUID
+		FChangeTrackingEnabled [0]WINBOOL
+		FParentLocator         [0]struct {
+			FLinkageId      GUID
+			FParentFilePath PCWSTR
 		}
-		ParentFilePath PCWSTR
-		__ccgo_pad7    [16]byte
+		FParentFilePath PCWSTR
+		F__ccgo_pad7    [16]byte
 	}
 }
 
@@ -25826,9 +25826,9 @@ type _SET_VIRTUAL_DISK_INFO = SET_VIRTUAL_DISK_INFO
 type PSET_VIRTUAL_DISK_INFO = uintptr
 
 type STORAGE_DEPENDENCY_INFO_TYPE_1 = struct {
-	DependencyTypeFlags   DEPENDENT_DISK_FLAG
-	ProviderSpecificFlags ULONG
-	VirtualStorageType    VIRTUAL_STORAGE_TYPE
+	FDependencyTypeFlags   DEPENDENT_DISK_FLAG
+	FProviderSpecificFlags ULONG
+	FVirtualStorageType    VIRTUAL_STORAGE_TYPE
 }
 
 type _STORAGE_DEPENDENCY_INFO_TYPE_1 = STORAGE_DEPENDENCY_INFO_TYPE_1
@@ -25836,14 +25836,14 @@ type _STORAGE_DEPENDENCY_INFO_TYPE_1 = STORAGE_DEPENDENCY_INFO_TYPE_1
 type PSTORAGE_DEPENDENCY_INFO_TYPE_1 = uintptr
 
 type STORAGE_DEPENDENCY_INFO_TYPE_2 = struct {
-	DependencyTypeFlags         DEPENDENT_DISK_FLAG
-	ProviderSpecificFlags       ULONG
-	VirtualStorageType          VIRTUAL_STORAGE_TYPE
-	AncestorLevel               ULONG
-	DependencyDeviceName        PWSTR
-	HostVolumeName              PWSTR
-	DependentVolumeName         PWSTR
-	DependentVolumeRelativePath PWSTR
+	FDependencyTypeFlags         DEPENDENT_DISK_FLAG
+	FProviderSpecificFlags       ULONG
+	FVirtualStorageType          VIRTUAL_STORAGE_TYPE
+	FAncestorLevel               ULONG
+	FDependencyDeviceName        PWSTR
+	FHostVolumeName              PWSTR
+	FDependentVolumeName         PWSTR
+	FDependentVolumeRelativePath PWSTR
 }
 
 type _STORAGE_DEPENDENCY_INFO_TYPE_2 = STORAGE_DEPENDENCY_INFO_TYPE_2
@@ -25851,12 +25851,12 @@ type _STORAGE_DEPENDENCY_INFO_TYPE_2 = STORAGE_DEPENDENCY_INFO_TYPE_2
 type PSTORAGE_DEPENDENCY_INFO_TYPE_2 = uintptr
 
 type STORAGE_DEPENDENCY_INFO = struct {
-	Version       STORAGE_DEPENDENCY_INFO_VERSION
-	NumberEntries ULONG
-	__ccgo2_8     struct {
-		Version2Entries [0][1]STORAGE_DEPENDENCY_INFO_TYPE_2
-		Version1Entries [1]STORAGE_DEPENDENCY_INFO_TYPE_1
-		__ccgo_pad2     [36]byte
+	FVersion       STORAGE_DEPENDENCY_INFO_VERSION
+	FNumberEntries ULONG
+	F__ccgo2_8     struct {
+		FVersion2Entries [0][1]STORAGE_DEPENDENCY_INFO_TYPE_2
+		FVersion1Entries [1]STORAGE_DEPENDENCY_INFO_TYPE_1
+		F__ccgo_pad2     [36]byte
 	}
 }
 
@@ -25865,9 +25865,9 @@ type _STORAGE_DEPENDENCY_INFO = STORAGE_DEPENDENCY_INFO
 type PSTORAGE_DEPENDENCY_INFO = uintptr
 
 type VIRTUAL_DISK_PROGRESS = struct {
-	OperationStatus DWORD
-	CurrentValue    ULONGLONG
-	CompletionValue ULONGLONG
+	FOperationStatus DWORD
+	FCurrentValue    ULONGLONG
+	FCompletionValue ULONGLONG
 }
 
 type _VIRTUAL_DISK_PROGRESS = VIRTUAL_DISK_PROGRESS
@@ -25875,10 +25875,10 @@ type _VIRTUAL_DISK_PROGRESS = VIRTUAL_DISK_PROGRESS
 type PVIRTUAL_DISK_PROGRESS = uintptr
 
 type MIRROR_VIRTUAL_DISK_PARAMETERS = struct {
-	Version   MIRROR_VIRTUAL_DISK_VERSION
-	__ccgo1_8 struct {
-		Version1 struct {
-			MirrorVirtualDiskPath PCWSTR
+	FVersion   MIRROR_VIRTUAL_DISK_VERSION
+	F__ccgo1_8 struct {
+		FVersion1 struct {
+			FMirrorVirtualDiskPath PCWSTR
 		}
 	}
 }
@@ -25888,10 +25888,10 @@ type _MIRROR_VIRTUAL_DISK_PARAMETERS = MIRROR_VIRTUAL_DISK_PARAMETERS
 type PMIRROR_VIRTUAL_DISK_PARAMETERS = uintptr
 
 type RESIZE_VIRTUAL_DISK_PARAMETERS = struct {
-	Version   RESIZE_VIRTUAL_DISK_VERSION
-	__ccgo1_8 struct {
-		Version1 struct {
-			NewSize ULONGLONG
+	FVersion   RESIZE_VIRTUAL_DISK_VERSION
+	F__ccgo1_8 struct {
+		FVersion1 struct {
+			FNewSize ULONGLONG
 		}
 	}
 }
@@ -25901,11 +25901,11 @@ type _RESIZE_VIRTUAL_DISK_PARAMETERS = RESIZE_VIRTUAL_DISK_PARAMETERS
 type PRESIZE_VIRTUAL_DISK_PARAMETERS = uintptr
 
 type APPLY_SNAPSHOT_VHDSET_PARAMETERS = struct {
-	Version   APPLY_SNAPSHOT_VHDSET_VERSION
-	__ccgo1_4 struct {
-		Version1 struct {
-			SnapshotId     GUID
-			LeafSnapshotId GUID
+	FVersion   APPLY_SNAPSHOT_VHDSET_VERSION
+	F__ccgo1_4 struct {
+		FVersion1 struct {
+			FSnapshotId     GUID
+			FLeafSnapshotId GUID
 		}
 	}
 }
@@ -25915,10 +25915,10 @@ type _APPLY_SNAPSHOT_VHDSET_PARAMETERS = APPLY_SNAPSHOT_VHDSET_PARAMETERS
 type PAPPLY_SNAPSHOT_VHDSET_PARAMETERS = uintptr
 
 type DELETE_SNAPSHOT_VHDSET_PARAMETERS = struct {
-	Version   DELETE_SNAPSHOT_VHDSET_VERSION
-	__ccgo1_4 struct {
-		Version1 struct {
-			SnapshotId GUID
+	FVersion   DELETE_SNAPSHOT_VHDSET_VERSION
+	F__ccgo1_4 struct {
+		FVersion1 struct {
+			FSnapshotId GUID
 		}
 	}
 }
@@ -25928,13 +25928,13 @@ type _DELETE_SNAPSHOT_VHDSET_PARAMETERS = DELETE_SNAPSHOT_VHDSET_PARAMETERS
 type PDELETE_SNAPSHOT_VHDSET_PARAMETERS = uintptr
 
 type MODIFY_VHDSET_PARAMETERS = struct {
-	Version   MODIFY_VHDSET_VERSION
-	__ccgo1_8 struct {
-		SnapshotId      [0]GUID
-		DefaultFilePath [0]PCWSTR
-		SnapshotPath    struct {
-			SnapshotId       GUID
-			SnapshotFilePath PCWSTR
+	FVersion   MODIFY_VHDSET_VERSION
+	F__ccgo1_8 struct {
+		FSnapshotId      [0]GUID
+		FDefaultFilePath [0]PCWSTR
+		FSnapshotPath    struct {
+			FSnapshotId       GUID
+			FSnapshotFilePath PCWSTR
 		}
 	}
 }
@@ -25944,9 +25944,9 @@ type _MODIFY_VHDSET_PARAMETERS = MODIFY_VHDSET_PARAMETERS
 type PMODIFY_VHDSET_PARAMETERS = uintptr
 
 type QUERY_CHANGES_VIRTUAL_DISK_RANGE = struct {
-	ByteOffset ULONG64
-	ByteLength ULONG64
-	Reserved   ULONG64
+	FByteOffset ULONG64
+	FByteLength ULONG64
+	FReserved   ULONG64
 }
 
 type _QUERY_CHANGES_VIRTUAL_DISK_RANGE = QUERY_CHANGES_VIRTUAL_DISK_RANGE
@@ -25954,10 +25954,10 @@ type _QUERY_CHANGES_VIRTUAL_DISK_RANGE = QUERY_CHANGES_VIRTUAL_DISK_RANGE
 type PQUERY_CHANGES_VIRTUAL_DISK_RANGE = uintptr
 
 type TAKE_SNAPSHOT_VHDSET_PARAMETERS = struct {
-	Version   TAKE_SNAPSHOT_VHDSET_VERSION
-	__ccgo1_4 struct {
-		Version1 struct {
-			SnapshotId GUID
+	FVersion   TAKE_SNAPSHOT_VHDSET_VERSION
+	F__ccgo1_4 struct {
+		FVersion1 struct {
+			FSnapshotId GUID
 		}
 	}
 }
@@ -25969,7 +25969,7 @@ type PTAKE_SNAPSHOT_VHDSET_PARAMETERS = uintptr
 type PUWSTR_C = uintptr
 
 type SERVICE_DESCRIPTIONA = struct {
-	lpDescription LPSTR
+	FlpDescription LPSTR
 }
 
 type _SERVICE_DESCRIPTIONA = SERVICE_DESCRIPTIONA
@@ -25977,7 +25977,7 @@ type _SERVICE_DESCRIPTIONA = SERVICE_DESCRIPTIONA
 type LPSERVICE_DESCRIPTIONA = uintptr
 
 type SERVICE_DESCRIPTIONW = struct {
-	lpDescription LPWSTR
+	FlpDescription LPWSTR
 }
 
 type _SERVICE_DESCRIPTIONW = SERVICE_DESCRIPTIONW
@@ -25985,7 +25985,7 @@ type _SERVICE_DESCRIPTIONW = SERVICE_DESCRIPTIONW
 type LPSERVICE_DESCRIPTIONW = uintptr
 
 type SERVICE_DESCRIPTION = struct {
-	lpDescription LPSTR
+	FlpDescription LPSTR
 }
 
 type LPSERVICE_DESCRIPTION = uintptr
@@ -26000,8 +26000,8 @@ const SC_ACTION_REBOOT = 2
 const SC_ACTION_RUN_COMMAND = 3
 
 type SC_ACTION = struct {
-	Type  SC_ACTION_TYPE
-	Delay DWORD
+	FType  SC_ACTION_TYPE
+	FDelay DWORD
 }
 
 type _SC_ACTION = SC_ACTION
@@ -26009,11 +26009,11 @@ type _SC_ACTION = SC_ACTION
 type LPSC_ACTION = uintptr
 
 type SERVICE_FAILURE_ACTIONSA = struct {
-	dwResetPeriod DWORD
-	lpRebootMsg   LPSTR
-	lpCommand     LPSTR
-	cActions      DWORD
-	lpsaActions   uintptr
+	FdwResetPeriod DWORD
+	FlpRebootMsg   LPSTR
+	FlpCommand     LPSTR
+	FcActions      DWORD
+	FlpsaActions   uintptr
 }
 
 type _SERVICE_FAILURE_ACTIONSA = SERVICE_FAILURE_ACTIONSA
@@ -26021,11 +26021,11 @@ type _SERVICE_FAILURE_ACTIONSA = SERVICE_FAILURE_ACTIONSA
 type LPSERVICE_FAILURE_ACTIONSA = uintptr
 
 type SERVICE_FAILURE_ACTIONSW = struct {
-	dwResetPeriod DWORD
-	lpRebootMsg   LPWSTR
-	lpCommand     LPWSTR
-	cActions      DWORD
-	lpsaActions   uintptr
+	FdwResetPeriod DWORD
+	FlpRebootMsg   LPWSTR
+	FlpCommand     LPWSTR
+	FcActions      DWORD
+	FlpsaActions   uintptr
 }
 
 type _SERVICE_FAILURE_ACTIONSW = SERVICE_FAILURE_ACTIONSW
@@ -26033,17 +26033,17 @@ type _SERVICE_FAILURE_ACTIONSW = SERVICE_FAILURE_ACTIONSW
 type LPSERVICE_FAILURE_ACTIONSW = uintptr
 
 type SERVICE_FAILURE_ACTIONS = struct {
-	dwResetPeriod DWORD
-	lpRebootMsg   LPSTR
-	lpCommand     LPSTR
-	cActions      DWORD
-	lpsaActions   uintptr
+	FdwResetPeriod DWORD
+	FlpRebootMsg   LPSTR
+	FlpCommand     LPSTR
+	FcActions      DWORD
+	FlpsaActions   uintptr
 }
 
 type LPSERVICE_FAILURE_ACTIONS = uintptr
 
 type SC_HANDLE__ = struct {
-	unused int32
+	Funused int32
 }
 
 type SC_HANDLE = uintptr
@@ -26051,7 +26051,7 @@ type SC_HANDLE = uintptr
 type LPSC_HANDLE = uintptr
 
 type SERVICE_STATUS_HANDLE__ = struct {
-	unused int32
+	Funused int32
 }
 
 type SERVICE_STATUS_HANDLE = uintptr
@@ -26069,13 +26069,13 @@ type _SC_ENUM_TYPE = int32
 const SC_ENUM_PROCESS_INFO = 0
 
 type SERVICE_STATUS = struct {
-	dwServiceType             DWORD
-	dwCurrentState            DWORD
-	dwControlsAccepted        DWORD
-	dwWin32ExitCode           DWORD
-	dwServiceSpecificExitCode DWORD
-	dwCheckPoint              DWORD
-	dwWaitHint                DWORD
+	FdwServiceType             DWORD
+	FdwCurrentState            DWORD
+	FdwControlsAccepted        DWORD
+	FdwWin32ExitCode           DWORD
+	FdwServiceSpecificExitCode DWORD
+	FdwCheckPoint              DWORD
+	FdwWaitHint                DWORD
 }
 
 type _SERVICE_STATUS = SERVICE_STATUS
@@ -26083,15 +26083,15 @@ type _SERVICE_STATUS = SERVICE_STATUS
 type LPSERVICE_STATUS = uintptr
 
 type SERVICE_STATUS_PROCESS = struct {
-	dwServiceType             DWORD
-	dwCurrentState            DWORD
-	dwControlsAccepted        DWORD
-	dwWin32ExitCode           DWORD
-	dwServiceSpecificExitCode DWORD
-	dwCheckPoint              DWORD
-	dwWaitHint                DWORD
-	dwProcessId               DWORD
-	dwServiceFlags            DWORD
+	FdwServiceType             DWORD
+	FdwCurrentState            DWORD
+	FdwControlsAccepted        DWORD
+	FdwWin32ExitCode           DWORD
+	FdwServiceSpecificExitCode DWORD
+	FdwCheckPoint              DWORD
+	FdwWaitHint                DWORD
+	FdwProcessId               DWORD
+	FdwServiceFlags            DWORD
 }
 
 type _SERVICE_STATUS_PROCESS = SERVICE_STATUS_PROCESS
@@ -26099,9 +26099,9 @@ type _SERVICE_STATUS_PROCESS = SERVICE_STATUS_PROCESS
 type LPSERVICE_STATUS_PROCESS = uintptr
 
 type ENUM_SERVICE_STATUSA = struct {
-	lpServiceName LPSTR
-	lpDisplayName LPSTR
-	ServiceStatus SERVICE_STATUS
+	FlpServiceName LPSTR
+	FlpDisplayName LPSTR
+	FServiceStatus SERVICE_STATUS
 }
 
 type _ENUM_SERVICE_STATUSA = ENUM_SERVICE_STATUSA
@@ -26109,9 +26109,9 @@ type _ENUM_SERVICE_STATUSA = ENUM_SERVICE_STATUSA
 type LPENUM_SERVICE_STATUSA = uintptr
 
 type ENUM_SERVICE_STATUSW = struct {
-	lpServiceName LPWSTR
-	lpDisplayName LPWSTR
-	ServiceStatus SERVICE_STATUS
+	FlpServiceName LPWSTR
+	FlpDisplayName LPWSTR
+	FServiceStatus SERVICE_STATUS
 }
 
 type _ENUM_SERVICE_STATUSW = ENUM_SERVICE_STATUSW
@@ -26119,17 +26119,17 @@ type _ENUM_SERVICE_STATUSW = ENUM_SERVICE_STATUSW
 type LPENUM_SERVICE_STATUSW = uintptr
 
 type ENUM_SERVICE_STATUS = struct {
-	lpServiceName LPSTR
-	lpDisplayName LPSTR
-	ServiceStatus SERVICE_STATUS
+	FlpServiceName LPSTR
+	FlpDisplayName LPSTR
+	FServiceStatus SERVICE_STATUS
 }
 
 type LPENUM_SERVICE_STATUS = uintptr
 
 type ENUM_SERVICE_STATUS_PROCESSA = struct {
-	lpServiceName        LPSTR
-	lpDisplayName        LPSTR
-	ServiceStatusProcess SERVICE_STATUS_PROCESS
+	FlpServiceName        LPSTR
+	FlpDisplayName        LPSTR
+	FServiceStatusProcess SERVICE_STATUS_PROCESS
 }
 
 type _ENUM_SERVICE_STATUS_PROCESSA = ENUM_SERVICE_STATUS_PROCESSA
@@ -26137,9 +26137,9 @@ type _ENUM_SERVICE_STATUS_PROCESSA = ENUM_SERVICE_STATUS_PROCESSA
 type LPENUM_SERVICE_STATUS_PROCESSA = uintptr
 
 type ENUM_SERVICE_STATUS_PROCESSW = struct {
-	lpServiceName        LPWSTR
-	lpDisplayName        LPWSTR
-	ServiceStatusProcess SERVICE_STATUS_PROCESS
+	FlpServiceName        LPWSTR
+	FlpDisplayName        LPWSTR
+	FServiceStatusProcess SERVICE_STATUS_PROCESS
 }
 
 type _ENUM_SERVICE_STATUS_PROCESSW = ENUM_SERVICE_STATUS_PROCESSW
@@ -26147,9 +26147,9 @@ type _ENUM_SERVICE_STATUS_PROCESSW = ENUM_SERVICE_STATUS_PROCESSW
 type LPENUM_SERVICE_STATUS_PROCESSW = uintptr
 
 type ENUM_SERVICE_STATUS_PROCESS = struct {
-	lpServiceName        LPSTR
-	lpDisplayName        LPSTR
-	ServiceStatusProcess SERVICE_STATUS_PROCESS
+	FlpServiceName        LPSTR
+	FlpDisplayName        LPSTR
+	FServiceStatusProcess SERVICE_STATUS_PROCESS
 }
 
 type LPENUM_SERVICE_STATUS_PROCESS = uintptr
@@ -26157,9 +26157,9 @@ type LPENUM_SERVICE_STATUS_PROCESS = uintptr
 type SC_LOCK = uintptr
 
 type QUERY_SERVICE_LOCK_STATUSA = struct {
-	fIsLocked      DWORD
-	lpLockOwner    LPSTR
-	dwLockDuration DWORD
+	FfIsLocked      DWORD
+	FlpLockOwner    LPSTR
+	FdwLockDuration DWORD
 }
 
 type _QUERY_SERVICE_LOCK_STATUSA = QUERY_SERVICE_LOCK_STATUSA
@@ -26167,9 +26167,9 @@ type _QUERY_SERVICE_LOCK_STATUSA = QUERY_SERVICE_LOCK_STATUSA
 type LPQUERY_SERVICE_LOCK_STATUSA = uintptr
 
 type QUERY_SERVICE_LOCK_STATUSW = struct {
-	fIsLocked      DWORD
-	lpLockOwner    LPWSTR
-	dwLockDuration DWORD
+	FfIsLocked      DWORD
+	FlpLockOwner    LPWSTR
+	FdwLockDuration DWORD
 }
 
 type _QUERY_SERVICE_LOCK_STATUSW = QUERY_SERVICE_LOCK_STATUSW
@@ -26177,23 +26177,23 @@ type _QUERY_SERVICE_LOCK_STATUSW = QUERY_SERVICE_LOCK_STATUSW
 type LPQUERY_SERVICE_LOCK_STATUSW = uintptr
 
 type QUERY_SERVICE_LOCK_STATUS = struct {
-	fIsLocked      DWORD
-	lpLockOwner    LPSTR
-	dwLockDuration DWORD
+	FfIsLocked      DWORD
+	FlpLockOwner    LPSTR
+	FdwLockDuration DWORD
 }
 
 type LPQUERY_SERVICE_LOCK_STATUS = uintptr
 
 type QUERY_SERVICE_CONFIGA = struct {
-	dwServiceType      DWORD
-	dwStartType        DWORD
-	dwErrorControl     DWORD
-	lpBinaryPathName   LPSTR
-	lpLoadOrderGroup   LPSTR
-	dwTagId            DWORD
-	lpDependencies     LPSTR
-	lpServiceStartName LPSTR
-	lpDisplayName      LPSTR
+	FdwServiceType      DWORD
+	FdwStartType        DWORD
+	FdwErrorControl     DWORD
+	FlpBinaryPathName   LPSTR
+	FlpLoadOrderGroup   LPSTR
+	FdwTagId            DWORD
+	FlpDependencies     LPSTR
+	FlpServiceStartName LPSTR
+	FlpDisplayName      LPSTR
 }
 
 type _QUERY_SERVICE_CONFIGA = QUERY_SERVICE_CONFIGA
@@ -26201,15 +26201,15 @@ type _QUERY_SERVICE_CONFIGA = QUERY_SERVICE_CONFIGA
 type LPQUERY_SERVICE_CONFIGA = uintptr
 
 type QUERY_SERVICE_CONFIGW = struct {
-	dwServiceType      DWORD
-	dwStartType        DWORD
-	dwErrorControl     DWORD
-	lpBinaryPathName   LPWSTR
-	lpLoadOrderGroup   LPWSTR
-	dwTagId            DWORD
-	lpDependencies     LPWSTR
-	lpServiceStartName LPWSTR
-	lpDisplayName      LPWSTR
+	FdwServiceType      DWORD
+	FdwStartType        DWORD
+	FdwErrorControl     DWORD
+	FlpBinaryPathName   LPWSTR
+	FlpLoadOrderGroup   LPWSTR
+	FdwTagId            DWORD
+	FlpDependencies     LPWSTR
+	FlpServiceStartName LPWSTR
+	FlpDisplayName      LPWSTR
 }
 
 type _QUERY_SERVICE_CONFIGW = QUERY_SERVICE_CONFIGW
@@ -26217,15 +26217,15 @@ type _QUERY_SERVICE_CONFIGW = QUERY_SERVICE_CONFIGW
 type LPQUERY_SERVICE_CONFIGW = uintptr
 
 type QUERY_SERVICE_CONFIG = struct {
-	dwServiceType      DWORD
-	dwStartType        DWORD
-	dwErrorControl     DWORD
-	lpBinaryPathName   LPSTR
-	lpLoadOrderGroup   LPSTR
-	dwTagId            DWORD
-	lpDependencies     LPSTR
-	lpServiceStartName LPSTR
-	lpDisplayName      LPSTR
+	FdwServiceType      DWORD
+	FdwStartType        DWORD
+	FdwErrorControl     DWORD
+	FlpBinaryPathName   LPSTR
+	FlpLoadOrderGroup   LPSTR
+	FdwTagId            DWORD
+	FlpDependencies     LPSTR
+	FlpServiceStartName LPSTR
+	FlpDisplayName      LPSTR
 }
 
 type LPQUERY_SERVICE_CONFIG = uintptr
@@ -26235,8 +26235,8 @@ type LPSERVICE_MAIN_FUNCTIONW = uintptr
 type LPSERVICE_MAIN_FUNCTIONA = uintptr
 
 type SERVICE_TABLE_ENTRYA = struct {
-	lpServiceName LPSTR
-	lpServiceProc LPSERVICE_MAIN_FUNCTIONA
+	FlpServiceName LPSTR
+	FlpServiceProc LPSERVICE_MAIN_FUNCTIONA
 }
 
 type _SERVICE_TABLE_ENTRYA = SERVICE_TABLE_ENTRYA
@@ -26244,8 +26244,8 @@ type _SERVICE_TABLE_ENTRYA = SERVICE_TABLE_ENTRYA
 type LPSERVICE_TABLE_ENTRYA = uintptr
 
 type SERVICE_TABLE_ENTRYW = struct {
-	lpServiceName LPWSTR
-	lpServiceProc LPSERVICE_MAIN_FUNCTIONW
+	FlpServiceName LPWSTR
+	FlpServiceProc LPSERVICE_MAIN_FUNCTIONW
 }
 
 type _SERVICE_TABLE_ENTRYW = SERVICE_TABLE_ENTRYW
@@ -26253,8 +26253,8 @@ type _SERVICE_TABLE_ENTRYW = SERVICE_TABLE_ENTRYW
 type LPSERVICE_TABLE_ENTRYW = uintptr
 
 type SERVICE_TABLE_ENTRY = struct {
-	lpServiceName LPSTR
-	lpServiceProc LPSERVICE_MAIN_FUNCTIONA
+	FlpServiceName LPSTR
+	FlpServiceProc LPSERVICE_MAIN_FUNCTIONA
 }
 
 type LPSERVICE_TABLE_ENTRY = uintptr
@@ -26266,9 +26266,9 @@ type LPHANDLER_FUNCTION_EX = uintptr
 type PFN_SC_NOTIFY_CALLBACK = uintptr
 
 type SERVICE_CONTROL_STATUS_REASON_PARAMSA = struct {
-	dwReason      DWORD
-	pszComment    LPSTR
-	ServiceStatus SERVICE_STATUS_PROCESS
+	FdwReason      DWORD
+	FpszComment    LPSTR
+	FServiceStatus SERVICE_STATUS_PROCESS
 }
 
 type _SERVICE_CONTROL_STATUS_REASON_PARAMSA = SERVICE_CONTROL_STATUS_REASON_PARAMSA
@@ -26276,9 +26276,9 @@ type _SERVICE_CONTROL_STATUS_REASON_PARAMSA = SERVICE_CONTROL_STATUS_REASON_PARA
 type PSERVICE_CONTROL_STATUS_REASON_PARAMSA = uintptr
 
 type SERVICE_CONTROL_STATUS_REASON_PARAMSW = struct {
-	dwReason      DWORD
-	pszComment    LPWSTR
-	ServiceStatus SERVICE_STATUS_PROCESS
+	FdwReason      DWORD
+	FpszComment    LPWSTR
+	FServiceStatus SERVICE_STATUS_PROCESS
 }
 
 type _SERVICE_CONTROL_STATUS_REASON_PARAMSW = SERVICE_CONTROL_STATUS_REASON_PARAMSW
@@ -26286,21 +26286,21 @@ type _SERVICE_CONTROL_STATUS_REASON_PARAMSW = SERVICE_CONTROL_STATUS_REASON_PARA
 type PSERVICE_CONTROL_STATUS_REASON_PARAMSW = uintptr
 
 type SERVICE_CONTROL_STATUS_REASON_PARAMS = struct {
-	dwReason      DWORD
-	pszComment    LPSTR
-	ServiceStatus SERVICE_STATUS_PROCESS
+	FdwReason      DWORD
+	FpszComment    LPSTR
+	FServiceStatus SERVICE_STATUS_PROCESS
 }
 
 type PSERVICE_CONTROL_STATUS_REASON_PARAMS = uintptr
 
 type SERVICE_NOTIFYA = struct {
-	dwVersion               DWORD
-	pfnNotifyCallback       PFN_SC_NOTIFY_CALLBACK
-	pContext                PVOID
-	dwNotificationStatus    DWORD
-	ServiceStatus           SERVICE_STATUS_PROCESS
-	dwNotificationTriggered DWORD
-	pszServiceNames         LPSTR
+	FdwVersion               DWORD
+	FpfnNotifyCallback       PFN_SC_NOTIFY_CALLBACK
+	FpContext                PVOID
+	FdwNotificationStatus    DWORD
+	FServiceStatus           SERVICE_STATUS_PROCESS
+	FdwNotificationTriggered DWORD
+	FpszServiceNames         LPSTR
 }
 
 type _SERVICE_NOTIFYA = SERVICE_NOTIFYA
@@ -26308,13 +26308,13 @@ type _SERVICE_NOTIFYA = SERVICE_NOTIFYA
 type PSERVICE_NOTIFYA = uintptr
 
 type SERVICE_NOTIFYW = struct {
-	dwVersion               DWORD
-	pfnNotifyCallback       PFN_SC_NOTIFY_CALLBACK
-	pContext                PVOID
-	dwNotificationStatus    DWORD
-	ServiceStatus           SERVICE_STATUS_PROCESS
-	dwNotificationTriggered DWORD
-	pszServiceNames         LPWSTR
+	FdwVersion               DWORD
+	FpfnNotifyCallback       PFN_SC_NOTIFY_CALLBACK
+	FpContext                PVOID
+	FdwNotificationStatus    DWORD
+	FServiceStatus           SERVICE_STATUS_PROCESS
+	FdwNotificationTriggered DWORD
+	FpszServiceNames         LPWSTR
 }
 
 type _SERVICE_NOTIFYW = SERVICE_NOTIFYW
@@ -26322,19 +26322,19 @@ type _SERVICE_NOTIFYW = SERVICE_NOTIFYW
 type PSERVICE_NOTIFYW = uintptr
 
 type SERVICE_NOTIFY = struct {
-	dwVersion               DWORD
-	pfnNotifyCallback       PFN_SC_NOTIFY_CALLBACK
-	pContext                PVOID
-	dwNotificationStatus    DWORD
-	ServiceStatus           SERVICE_STATUS_PROCESS
-	dwNotificationTriggered DWORD
-	pszServiceNames         LPSTR
+	FdwVersion               DWORD
+	FpfnNotifyCallback       PFN_SC_NOTIFY_CALLBACK
+	FpContext                PVOID
+	FdwNotificationStatus    DWORD
+	FServiceStatus           SERVICE_STATUS_PROCESS
+	FdwNotificationTriggered DWORD
+	FpszServiceNames         LPSTR
 }
 
 type PSERVICE_NOTIFY = uintptr
 
 type SERVICE_DELAYED_AUTO_START_INFO = struct {
-	fDelayedAutostart WINBOOL
+	FfDelayedAutostart WINBOOL
 }
 
 type _SERVICE_DELAYED_AUTO_START_INFO = SERVICE_DELAYED_AUTO_START_INFO
@@ -26342,7 +26342,7 @@ type _SERVICE_DELAYED_AUTO_START_INFO = SERVICE_DELAYED_AUTO_START_INFO
 type LPSERVICE_DELAYED_AUTO_START_INFO = uintptr
 
 type SERVICE_FAILURE_ACTIONS_FLAG = struct {
-	fFailureActionsOnNonCrashFailures WINBOOL
+	FfFailureActionsOnNonCrashFailures WINBOOL
 }
 
 type _SERVICE_FAILURE_ACTIONS_FLAG = SERVICE_FAILURE_ACTIONS_FLAG
@@ -26350,7 +26350,7 @@ type _SERVICE_FAILURE_ACTIONS_FLAG = SERVICE_FAILURE_ACTIONS_FLAG
 type LPSERVICE_FAILURE_ACTIONS_FLAG = uintptr
 
 type SERVICE_PRESHUTDOWN_INFO = struct {
-	dwPreshutdownTimeout DWORD
+	FdwPreshutdownTimeout DWORD
 }
 
 type _SERVICE_PRESHUTDOWN_INFO = SERVICE_PRESHUTDOWN_INFO
@@ -26358,7 +26358,7 @@ type _SERVICE_PRESHUTDOWN_INFO = SERVICE_PRESHUTDOWN_INFO
 type LPSERVICE_PRESHUTDOWN_INFO = uintptr
 
 type SERVICE_REQUIRED_PRIVILEGES_INFOA = struct {
-	pmszRequiredPrivileges LPSTR
+	FpmszRequiredPrivileges LPSTR
 }
 
 type _SERVICE_REQUIRED_PRIVILEGES_INFOA = SERVICE_REQUIRED_PRIVILEGES_INFOA
@@ -26366,7 +26366,7 @@ type _SERVICE_REQUIRED_PRIVILEGES_INFOA = SERVICE_REQUIRED_PRIVILEGES_INFOA
 type LPSERVICE_REQUIRED_PRIVILEGES_INFOA = uintptr
 
 type SERVICE_REQUIRED_PRIVILEGES_INFOW = struct {
-	pmszRequiredPrivileges LPWSTR
+	FpmszRequiredPrivileges LPWSTR
 }
 
 type _SERVICE_REQUIRED_PRIVILEGES_INFOW = SERVICE_REQUIRED_PRIVILEGES_INFOW
@@ -26374,11 +26374,11 @@ type _SERVICE_REQUIRED_PRIVILEGES_INFOW = SERVICE_REQUIRED_PRIVILEGES_INFOW
 type LPSERVICE_REQUIRED_PRIVILEGES_INFOW = uintptr
 
 type SERVICE_REQUIRED_PRIVILEGES_INFO = struct {
-	pmszRequiredPrivileges LPSTR
+	FpmszRequiredPrivileges LPSTR
 }
 
 type SERVICE_SID_INFO = struct {
-	dwServiceSidType DWORD
+	FdwServiceSidType DWORD
 }
 
 type _SERVICE_SID_INFO = SERVICE_SID_INFO
@@ -26386,26 +26386,26 @@ type _SERVICE_SID_INFO = SERVICE_SID_INFO
 type LPSERVICE_SID_INFO = uintptr
 
 type MODEMDEVCAPS = struct {
-	dwActualSize              DWORD
-	dwRequiredSize            DWORD
-	dwDevSpecificOffset       DWORD
-	dwDevSpecificSize         DWORD
-	dwModemProviderVersion    DWORD
-	dwModemManufacturerOffset DWORD
-	dwModemManufacturerSize   DWORD
-	dwModemModelOffset        DWORD
-	dwModemModelSize          DWORD
-	dwModemVersionOffset      DWORD
-	dwModemVersionSize        DWORD
-	dwDialOptions             DWORD
-	dwCallSetupFailTimer      DWORD
-	dwInactivityTimeout       DWORD
-	dwSpeakerVolume           DWORD
-	dwSpeakerMode             DWORD
-	dwModemOptions            DWORD
-	dwMaxDTERate              DWORD
-	dwMaxDCERate              DWORD
-	abVariablePortion         [1]BYTE
+	FdwActualSize              DWORD
+	FdwRequiredSize            DWORD
+	FdwDevSpecificOffset       DWORD
+	FdwDevSpecificSize         DWORD
+	FdwModemProviderVersion    DWORD
+	FdwModemManufacturerOffset DWORD
+	FdwModemManufacturerSize   DWORD
+	FdwModemModelOffset        DWORD
+	FdwModemModelSize          DWORD
+	FdwModemVersionOffset      DWORD
+	FdwModemVersionSize        DWORD
+	FdwDialOptions             DWORD
+	FdwCallSetupFailTimer      DWORD
+	FdwInactivityTimeout       DWORD
+	FdwSpeakerVolume           DWORD
+	FdwSpeakerMode             DWORD
+	FdwModemOptions            DWORD
+	FdwMaxDTERate              DWORD
+	FdwMaxDCERate              DWORD
+	FabVariablePortion         [1]BYTE
 }
 
 type _MODEMDEVCAPS = MODEMDEVCAPS
@@ -26415,18 +26415,18 @@ type PMODEMDEVCAPS = uintptr
 type LPMODEMDEVCAPS = uintptr
 
 type MODEMSETTINGS = struct {
-	dwActualSize             DWORD
-	dwRequiredSize           DWORD
-	dwDevSpecificOffset      DWORD
-	dwDevSpecificSize        DWORD
-	dwCallSetupFailTimer     DWORD
-	dwInactivityTimeout      DWORD
-	dwSpeakerVolume          DWORD
-	dwSpeakerMode            DWORD
-	dwPreferredModemOptions  DWORD
-	dwNegotiatedModemOptions DWORD
-	dwNegotiatedDCERate      DWORD
-	abVariablePortion        [1]BYTE
+	FdwActualSize             DWORD
+	FdwRequiredSize           DWORD
+	FdwDevSpecificOffset      DWORD
+	FdwDevSpecificSize        DWORD
+	FdwCallSetupFailTimer     DWORD
+	FdwInactivityTimeout      DWORD
+	FdwSpeakerVolume          DWORD
+	FdwSpeakerMode            DWORD
+	FdwPreferredModemOptions  DWORD
+	FdwNegotiatedModemOptions DWORD
+	FdwNegotiatedDCERate      DWORD
+	FabVariablePortion        [1]BYTE
 }
 
 type _MODEMSETTINGS = MODEMSETTINGS
@@ -26436,13 +26436,13 @@ type PMODEMSETTINGS = uintptr
 type LPMODEMSETTINGS = uintptr
 
 type HIMC__ = struct {
-	unused int32
+	Funused int32
 }
 
 type HIMC = uintptr
 
 type HIMCC__ = struct {
-	unused int32
+	Funused int32
 }
 
 type HIMCC = uintptr
@@ -26452,9 +26452,9 @@ type LPHKL = uintptr
 type LPUINT = uintptr
 
 type COMPOSITIONFORM = struct {
-	dwStyle      DWORD
-	ptCurrentPos POINT
-	rcArea       RECT
+	FdwStyle      DWORD
+	FptCurrentPos POINT
+	FrcArea       RECT
 }
 
 type tagCOMPOSITIONFORM = COMPOSITIONFORM
@@ -26466,10 +26466,10 @@ type NPCOMPOSITIONFORM = uintptr
 type LPCOMPOSITIONFORM = uintptr
 
 type CANDIDATEFORM = struct {
-	dwIndex      DWORD
-	dwStyle      DWORD
-	ptCurrentPos POINT
-	rcArea       RECT
+	FdwIndex      DWORD
+	FdwStyle      DWORD
+	FptCurrentPos POINT
+	FrcArea       RECT
 }
 
 type tagCANDIDATEFORM = CANDIDATEFORM
@@ -26481,13 +26481,13 @@ type NPCANDIDATEFORM = uintptr
 type LPCANDIDATEFORM = uintptr
 
 type CANDIDATELIST = struct {
-	dwSize      DWORD
-	dwStyle     DWORD
-	dwCount     DWORD
-	dwSelection DWORD
-	dwPageStart DWORD
-	dwPageSize  DWORD
-	dwOffset    [1]DWORD
+	FdwSize      DWORD
+	FdwStyle     DWORD
+	FdwCount     DWORD
+	FdwSelection DWORD
+	FdwPageStart DWORD
+	FdwPageSize  DWORD
+	FdwOffset    [1]DWORD
 }
 
 type tagCANDIDATELIST = CANDIDATELIST
@@ -26499,8 +26499,8 @@ type NPCANDIDATELIST = uintptr
 type LPCANDIDATELIST = uintptr
 
 type REGISTERWORDA = struct {
-	lpReading LPSTR
-	lpWord    LPSTR
+	FlpReading LPSTR
+	FlpWord    LPSTR
 }
 
 type tagREGISTERWORDA = REGISTERWORDA
@@ -26512,8 +26512,8 @@ type NPREGISTERWORDA = uintptr
 type LPREGISTERWORDA = uintptr
 
 type REGISTERWORDW = struct {
-	lpReading LPWSTR
-	lpWord    LPWSTR
+	FlpReading LPWSTR
+	FlpWord    LPWSTR
 }
 
 type tagREGISTERWORDW = REGISTERWORDW
@@ -26525,8 +26525,8 @@ type NPREGISTERWORDW = uintptr
 type LPREGISTERWORDW = uintptr
 
 type REGISTERWORD = struct {
-	lpReading LPSTR
-	lpWord    LPSTR
+	FlpReading LPSTR
+	FlpWord    LPSTR
 }
 
 type PREGISTERWORD = uintptr
@@ -26536,14 +26536,14 @@ type NPREGISTERWORD = uintptr
 type LPREGISTERWORD = uintptr
 
 type RECONVERTSTRING = struct {
-	dwSize            DWORD
-	dwVersion         DWORD
-	dwStrLen          DWORD
-	dwStrOffset       DWORD
-	dwCompStrLen      DWORD
-	dwCompStrOffset   DWORD
-	dwTargetStrLen    DWORD
-	dwTargetStrOffset DWORD
+	FdwSize            DWORD
+	FdwVersion         DWORD
+	FdwStrLen          DWORD
+	FdwStrOffset       DWORD
+	FdwCompStrLen      DWORD
+	FdwCompStrOffset   DWORD
+	FdwTargetStrLen    DWORD
+	FdwTargetStrOffset DWORD
 }
 
 type tagRECONVERTSTRING = RECONVERTSTRING
@@ -26555,8 +26555,8 @@ type NPRECONVERTSTRING = uintptr
 type LPRECONVERTSTRING = uintptr
 
 type STYLEBUFA = struct {
-	dwStyle       DWORD
-	szDescription [32]CHAR
+	FdwStyle       DWORD
+	FszDescription [32]CHAR
 }
 
 type tagSTYLEBUFA = STYLEBUFA
@@ -26568,8 +26568,8 @@ type NPSTYLEBUFA = uintptr
 type LPSTYLEBUFA = uintptr
 
 type STYLEBUFW = struct {
-	dwStyle       DWORD
-	szDescription [32]WCHAR
+	FdwStyle       DWORD
+	FszDescription [32]WCHAR
 }
 
 type tagSTYLEBUFW = STYLEBUFW
@@ -26581,8 +26581,8 @@ type NPSTYLEBUFW = uintptr
 type LPSTYLEBUFW = uintptr
 
 type STYLEBUF = struct {
-	dwStyle       DWORD
-	szDescription [32]CHAR
+	FdwStyle       DWORD
+	FszDescription [32]CHAR
 }
 
 type PSTYLEBUF = uintptr
@@ -26592,15 +26592,15 @@ type NPSTYLEBUF = uintptr
 type LPSTYLEBUF = uintptr
 
 type IMEMENUITEMINFOA = struct {
-	cbSize        UINT
-	fType         UINT
-	fState        UINT
-	wID           UINT
-	hbmpChecked   HBITMAP
-	hbmpUnchecked HBITMAP
-	dwItemData    DWORD
-	szString      [80]CHAR
-	hbmpItem      HBITMAP
+	FcbSize        UINT
+	FfType         UINT
+	FfState        UINT
+	FwID           UINT
+	FhbmpChecked   HBITMAP
+	FhbmpUnchecked HBITMAP
+	FdwItemData    DWORD
+	FszString      [80]CHAR
+	FhbmpItem      HBITMAP
 }
 
 type tagIMEMENUITEMINFOA = IMEMENUITEMINFOA
@@ -26612,15 +26612,15 @@ type NPIMEMENUITEMINFOA = uintptr
 type LPIMEMENUITEMINFOA = uintptr
 
 type IMEMENUITEMINFOW = struct {
-	cbSize        UINT
-	fType         UINT
-	fState        UINT
-	wID           UINT
-	hbmpChecked   HBITMAP
-	hbmpUnchecked HBITMAP
-	dwItemData    DWORD
-	szString      [80]WCHAR
-	hbmpItem      HBITMAP
+	FcbSize        UINT
+	FfType         UINT
+	FfState        UINT
+	FwID           UINT
+	FhbmpChecked   HBITMAP
+	FhbmpUnchecked HBITMAP
+	FdwItemData    DWORD
+	FszString      [80]WCHAR
+	FhbmpItem      HBITMAP
 }
 
 type tagIMEMENUITEMINFOW = IMEMENUITEMINFOW
@@ -26632,15 +26632,15 @@ type NPIMEMENUITEMINFOW = uintptr
 type LPIMEMENUITEMINFOW = uintptr
 
 type IMEMENUITEMINFO = struct {
-	cbSize        UINT
-	fType         UINT
-	fState        UINT
-	wID           UINT
-	hbmpChecked   HBITMAP
-	hbmpUnchecked HBITMAP
-	dwItemData    DWORD
-	szString      [80]CHAR
-	hbmpItem      HBITMAP
+	FcbSize        UINT
+	FfType         UINT
+	FfState        UINT
+	FwID           UINT
+	FhbmpChecked   HBITMAP
+	FhbmpUnchecked HBITMAP
+	FdwItemData    DWORD
+	FszString      [80]CHAR
+	FhbmpItem      HBITMAP
 }
 
 type PIMEMENUITEMINFO = uintptr
@@ -26650,11 +26650,11 @@ type NPIMEMENUITEMINFO = uintptr
 type LPIMEMENUITEMINFO = uintptr
 
 type IMECHARPOSITION = struct {
-	dwSize      DWORD
-	dwCharPos   DWORD
-	pt          POINT
-	cLineHeight UINT
-	rcDocument  RECT
+	FdwSize      DWORD
+	FdwCharPos   DWORD
+	Fpt          POINT
+	FcLineHeight UINT
+	FrcDocument  RECT
 }
 
 type tagIMECHARPOSITION = IMECHARPOSITION
@@ -26690,23 +26690,23 @@ type REGISTERWORDENUMPROCW = uintptr
 //	/* Global data
 //	*/
 type Global = struct {
-	argv0            uintptr
-	zVfs             uintptr
-	zDbFile          uintptr
-	db               uintptr
-	zErrLog          uintptr
-	pErrLog          uintptr
-	zLog             uintptr
-	pLog             uintptr
-	zName            [32]int8
-	taskId           int32
-	iTrace           int32
-	bSqlTrace        int32
-	bIgnoreSqlErrors int32
-	nError           int32
-	nTest            int32
-	iTimeout         int32
-	bSync            int32
+	Fargv0            uintptr
+	FzVfs             uintptr
+	FzDbFile          uintptr
+	Fdb               uintptr
+	FzErrLog          uintptr
+	FpErrLog          uintptr
+	FzLog             uintptr
+	FpLog             uintptr
+	FzName            [32]int8
+	FtaskId           int32
+	FiTrace           int32
+	FbSqlTrace        int32
+	FbIgnoreSqlErrors int32
+	FnError           int32
+	FnTest            int32
+	FiTimeout         int32
+	FbSync            int32
 }
 
 /* Static assertion.  Requires support in the compiler.  */
@@ -26979,16 +26979,16 @@ func errorMessage(tls *libc.TLS, zFormat uintptr, va uintptr) {
 	zMsg = libsqlite3.Xsqlite3_vmprintf(tls, zFormat, ap)
 	_ = ap
 	libsqlite3.Xsqlite3_snprintf(tls, int32(30), bp, __ccgo_ts+8, libc.VaList(bp+40, uintptr(unsafe.Pointer(&g))+64))
-	if g.pLog != 0 {
-		printWithPrefix(tls, g.pLog, bp, zMsg)
-		libc.Xfflush(tls, g.pLog)
+	if g.FpLog != 0 {
+		printWithPrefix(tls, g.FpLog, bp, zMsg)
+		libc.Xfflush(tls, g.FpLog)
 	}
-	if g.pErrLog != 0 && safe_strcmp(tls, g.zErrLog, g.zLog) != 0 {
-		printWithPrefix(tls, g.pErrLog, bp, zMsg)
-		libc.Xfflush(tls, g.pErrLog)
+	if g.FpErrLog != 0 && safe_strcmp(tls, g.FzErrLog, g.FzLog) != 0 {
+		printWithPrefix(tls, g.FpErrLog, bp, zMsg)
+		libc.Xfflush(tls, g.FpErrLog)
 	}
 	libsqlite3.Xsqlite3_free(tls, zMsg)
-	g.nError++
+	g.FnError++
 }
 
 // C documentation
@@ -27009,20 +27009,20 @@ func fatalError(tls *libc.TLS, zFormat uintptr, va uintptr) {
 	zMsg = libsqlite3.Xsqlite3_vmprintf(tls, zFormat, ap)
 	_ = ap
 	libsqlite3.Xsqlite3_snprintf(tls, int32(30), bp, __ccgo_ts+19, libc.VaList(bp+40, uintptr(unsafe.Pointer(&g))+64))
-	if g.pLog != 0 {
-		printWithPrefix(tls, g.pLog, bp, zMsg)
-		libc.Xfflush(tls, g.pLog)
-		maybeClose(tls, g.pLog)
+	if g.FpLog != 0 {
+		printWithPrefix(tls, g.FpLog, bp, zMsg)
+		libc.Xfflush(tls, g.FpLog)
+		maybeClose(tls, g.FpLog)
 	}
-	if g.pErrLog != 0 && safe_strcmp(tls, g.zErrLog, g.zLog) != 0 {
-		printWithPrefix(tls, g.pErrLog, bp, zMsg)
-		libc.Xfflush(tls, g.pErrLog)
-		maybeClose(tls, g.pErrLog)
+	if g.FpErrLog != 0 && safe_strcmp(tls, g.FzErrLog, g.FzLog) != 0 {
+		printWithPrefix(tls, g.FpErrLog, bp, zMsg)
+		libc.Xfflush(tls, g.FpErrLog)
+		maybeClose(tls, g.FpErrLog)
 	}
 	libsqlite3.Xsqlite3_free(tls, zMsg)
-	if g.db != 0 {
+	if g.Fdb != 0 {
 		nTry = 0
-		g.iTimeout = 0
+		g.FiTimeout = 0
 		for {
 			if v2 = trySql(tls, __ccgo_ts+30, 0) == int32(SQLITE_BUSY); v2 {
 				v1 = nTry
@@ -27034,7 +27034,7 @@ func fatalError(tls *libc.TLS, zFormat uintptr, va uintptr) {
 			libsqlite3.Xsqlite3_sleep(tls, int32(10))
 		}
 	}
-	libsqlite3.Xsqlite3_close(tls, g.db)
+	libsqlite3.Xsqlite3_close(tls, g.Fdb)
 	libc.Xexit(tls, int32(1))
 }
 
@@ -27054,9 +27054,9 @@ func logMessage(tls *libc.TLS, zFormat uintptr, va uintptr) {
 	zMsg = libsqlite3.Xsqlite3_vmprintf(tls, zFormat, ap)
 	_ = ap
 	libsqlite3.Xsqlite3_snprintf(tls, int32(30), bp, __ccgo_ts+60, libc.VaList(bp+40, uintptr(unsafe.Pointer(&g))+64))
-	if g.pLog != 0 {
-		printWithPrefix(tls, g.pLog, bp, zMsg)
-		libc.Xfflush(tls, g.pLog)
+	if g.FpLog != 0 {
+		printWithPrefix(tls, g.FpLog, bp, zMsg)
+		libc.Xfflush(tls, g.FpLog)
 	}
 	libsqlite3.Xsqlite3_free(tls, zMsg)
 }
@@ -27106,9 +27106,9 @@ func busyHandler(tls *libc.TLS, pCD uintptr, count int32) (r int32) {
 	bp := tls.Alloc(16)
 	defer tls.Free(16)
 	_ = pCD
-	if count*int32(10) > g.iTimeout {
-		if g.iTimeout > 0 {
-			errorMessage(tls, __ccgo_ts+70, libc.VaList(bp+8, g.iTimeout))
+	if count*int32(10) > g.FiTimeout {
+		if g.FiTimeout > 0 {
+			errorMessage(tls, __ccgo_ts+70, libc.VaList(bp+8, g.FiTimeout))
 		}
 		return 0
 	}
@@ -27137,13 +27137,13 @@ func sqlErrorCallback(tls *libc.TLS, pArg uintptr, iErrCode int32, zMsg uintptr)
 	bp := tls.Alloc(32)
 	defer tls.Free(32)
 	_ = pArg
-	if iErrCode == int32(SQLITE_ERROR) && g.bIgnoreSqlErrors != 0 {
+	if iErrCode == int32(SQLITE_ERROR) && g.FbIgnoreSqlErrors != 0 {
 		return
 	}
-	if iErrCode&int32(0xff) == int32(SQLITE_SCHEMA) && g.iTrace < int32(3) {
+	if iErrCode&int32(0xff) == int32(SQLITE_SCHEMA) && g.FiTrace < int32(3) {
 		return
 	}
-	if g.iTimeout == 0 && iErrCode&int32(0xff) == int32(SQLITE_BUSY) && g.iTrace < int32(3) {
+	if g.FiTimeout == 0 && iErrCode&int32(0xff) == int32(SQLITE_BUSY) && g.FiTrace < int32(3) {
 		return
 	}
 	if iErrCode&int32(0xff) == int32(SQLITE_NOTICE) {
@@ -27170,10 +27170,10 @@ func prepareSql(tls *libc.TLS, zFormat uintptr, va uintptr) (r uintptr) {
 	ap = va
 	zSql = libsqlite3.Xsqlite3_vmprintf(tls, zFormat, ap)
 	_ = ap
-	rc = libsqlite3.Xsqlite3_prepare_v2(tls, g.db, zSql, -int32(1), bp, uintptr(0))
+	rc = libsqlite3.Xsqlite3_prepare_v2(tls, g.Fdb, zSql, -int32(1), bp, uintptr(0))
 	if rc != SQLITE_OK {
 		libsqlite3.Xsqlite3_finalize(tls, *(*uintptr)(unsafe.Pointer(bp)))
-		fatalError(tls, __ccgo_ts+122, libc.VaList(bp+16, libsqlite3.Xsqlite3_errmsg(tls, g.db), zSql))
+		fatalError(tls, __ccgo_ts+122, libc.VaList(bp+16, libsqlite3.Xsqlite3_errmsg(tls, g.Fdb), zSql))
 	}
 	libsqlite3.Xsqlite3_free(tls, zSql)
 	return *(*uintptr)(unsafe.Pointer(bp))
@@ -27194,9 +27194,9 @@ func runSql(tls *libc.TLS, zFormat uintptr, va uintptr) {
 	ap = va
 	zSql = libsqlite3.Xsqlite3_vmprintf(tls, zFormat, ap)
 	_ = ap
-	rc = libsqlite3.Xsqlite3_exec(tls, g.db, zSql, uintptr(0), uintptr(0), uintptr(0))
+	rc = libsqlite3.Xsqlite3_exec(tls, g.Fdb, zSql, uintptr(0), uintptr(0), uintptr(0))
 	if rc != SQLITE_OK {
-		fatalError(tls, __ccgo_ts+122, libc.VaList(bp+8, libsqlite3.Xsqlite3_errmsg(tls, g.db), zSql))
+		fatalError(tls, __ccgo_ts+122, libc.VaList(bp+8, libsqlite3.Xsqlite3_errmsg(tls, g.Fdb), zSql))
 	}
 	libsqlite3.Xsqlite3_free(tls, zSql)
 }
@@ -27214,7 +27214,7 @@ func trySql(tls *libc.TLS, zFormat uintptr, va uintptr) (r int32) {
 	ap = va
 	zSql = libsqlite3.Xsqlite3_vmprintf(tls, zFormat, ap)
 	_ = ap
-	rc = libsqlite3.Xsqlite3_exec(tls, g.db, zSql, uintptr(0), uintptr(0), uintptr(0))
+	rc = libsqlite3.Xsqlite3_exec(tls, g.Fdb, zSql, uintptr(0), uintptr(0), uintptr(0))
 	libsqlite3.Xsqlite3_free(tls, zSql)
 	return rc
 }
@@ -27224,23 +27224,23 @@ func trySql(tls *libc.TLS, zFormat uintptr, va uintptr) (r int32) {
 //	/* Structure for holding an arbitrary length string
 //	*/
 type String = struct {
-	z      uintptr
-	n      int32
-	nAlloc int32
+	Fz      uintptr
+	Fn      int32
+	FnAlloc int32
 }
 
 type String1 = struct {
-	z      uintptr
-	n      int32
-	nAlloc int32
+	Fz      uintptr
+	Fn      int32
+	FnAlloc int32
 }
 
 // C documentation
 //
 //	/* Free a string */
 func stringFree(tls *libc.TLS, p uintptr) {
-	if (*String)(unsafe.Pointer(p)).z != 0 {
-		libsqlite3.Xsqlite3_free(tls, (*String)(unsafe.Pointer(p)).z)
+	if (*String)(unsafe.Pointer(p)).Fz != 0 {
+		libsqlite3.Xsqlite3_free(tls, (*String)(unsafe.Pointer(p)).Fz)
 	}
 	libc.Xmemset(tls, p, 0, uint64(16))
 }
@@ -27255,29 +27255,29 @@ func stringAppend(tls *libc.TLS, p uintptr, z uintptr, n int32) {
 	if n < 0 {
 		n = int32(libc.Xstrlen(tls, z))
 	}
-	if (*String)(unsafe.Pointer(p)).n+n >= (*String)(unsafe.Pointer(p)).nAlloc {
-		nAlloc = (*String)(unsafe.Pointer(p)).nAlloc*int32(2) + n + int32(100)
-		zNew = libsqlite3.Xsqlite3_realloc(tls, (*String)(unsafe.Pointer(p)).z, nAlloc)
+	if (*String)(unsafe.Pointer(p)).Fn+n >= (*String)(unsafe.Pointer(p)).FnAlloc {
+		nAlloc = (*String)(unsafe.Pointer(p)).FnAlloc*int32(2) + n + int32(100)
+		zNew = libsqlite3.Xsqlite3_realloc(tls, (*String)(unsafe.Pointer(p)).Fz, nAlloc)
 		if zNew == uintptr(0) {
 			fatalError(tls, __ccgo_ts+129, 0)
 		}
-		(*String)(unsafe.Pointer(p)).z = zNew
-		(*String)(unsafe.Pointer(p)).nAlloc = nAlloc
+		(*String)(unsafe.Pointer(p)).Fz = zNew
+		(*String)(unsafe.Pointer(p)).FnAlloc = nAlloc
 	}
-	libc.Xmemcpy(tls, (*String)(unsafe.Pointer(p)).z+uintptr((*String)(unsafe.Pointer(p)).n), z, uint64(uint64(n)))
+	libc.Xmemcpy(tls, (*String)(unsafe.Pointer(p)).Fz+uintptr((*String)(unsafe.Pointer(p)).Fn), z, uint64(uint64(n)))
 	*(*int32)(unsafe.Pointer(p + 8)) += n
-	*(*int8)(unsafe.Pointer((*String)(unsafe.Pointer(p)).z + uintptr((*String)(unsafe.Pointer(p)).n))) = 0
+	*(*int8)(unsafe.Pointer((*String)(unsafe.Pointer(p)).Fz + uintptr((*String)(unsafe.Pointer(p)).Fn))) = 0
 }
 
 // C documentation
 //
 //	/* Reset a string to an empty string */
 func stringReset(tls *libc.TLS, p uintptr) {
-	if (*String)(unsafe.Pointer(p)).z == uintptr(0) {
+	if (*String)(unsafe.Pointer(p)).Fz == uintptr(0) {
 		stringAppend(tls, p, __ccgo_ts+143, int32(1))
 	}
-	(*String)(unsafe.Pointer(p)).n = 0
-	*(*int8)(unsafe.Pointer((*String)(unsafe.Pointer(p)).z)) = 0
+	(*String)(unsafe.Pointer(p)).Fn = 0
+	*(*int8)(unsafe.Pointer((*String)(unsafe.Pointer(p)).Fz)) = 0
 }
 
 // C documentation
@@ -27286,7 +27286,7 @@ func stringReset(tls *libc.TLS, p uintptr) {
 func stringAppendTerm(tls *libc.TLS, p uintptr, z uintptr) {
 	var i int32
 	_ = i
-	if (*String)(unsafe.Pointer(p)).n != 0 {
+	if (*String)(unsafe.Pointer(p)).Fn != 0 {
 		stringAppend(tls, p, __ccgo_ts+143, int32(1))
 	}
 	if z == uintptr(0) {
@@ -27375,7 +27375,7 @@ func evalSql(tls *libc.TLS, p uintptr, zFormat uintptr, va uintptr) (r int32) {
 	ap = va
 	zSql = libsqlite3.Xsqlite3_vmprintf(tls, zFormat, ap)
 	_ = ap
-	rc = libsqlite3.Xsqlite3_exec(tls, g.db, zSql, __ccgo_fp(evalCallback), p, bp)
+	rc = libsqlite3.Xsqlite3_exec(tls, g.Fdb, zSql, __ccgo_fp(evalCallback), p, bp)
 	libsqlite3.Xsqlite3_free(tls, zSql)
 	if rc != 0 {
 		libsqlite3.Xsqlite3_snprintf(tls, int32(30), bp+8, __ccgo_ts+151, libc.VaList(bp+48, rc))
@@ -27414,7 +27414,7 @@ func evalFunc(tls *libc.TLS, context uintptr, argc int32, argv uintptr) {
 		if rc != 0 {
 			libsqlite3.Xsqlite3_result_error_code(tls, context, rc)
 		} else {
-			libsqlite3.Xsqlite3_result_text(tls, context, (*(*String)(unsafe.Pointer(bp))).z, -int32(1), uintptr(-libc.Int32FromInt32(1)))
+			libsqlite3.Xsqlite3_result_text(tls, context, (*(*String)(unsafe.Pointer(bp))).Fz, -int32(1), uintptr(-libc.Int32FromInt32(1)))
 		}
 	}
 	stringFree(tls, bp)
@@ -27436,7 +27436,7 @@ func startScript(tls *libc.TLS, iClient int32, pzScript uintptr, pTaskId uintptr
 	pStmt = uintptr(0)
 	totalTime = 0
 	*(*uintptr)(unsafe.Pointer(pzScript)) = uintptr(0)
-	g.iTimeout = 0
+	g.FiTimeout = 0
 	for int32(1) != 0 {
 		rc = trySql(tls, __ccgo_ts+161, 0)
 		if rc == int32(SQLITE_BUSY) {
@@ -27445,19 +27445,19 @@ func startScript(tls *libc.TLS, iClient int32, pzScript uintptr, pTaskId uintptr
 			continue
 		}
 		if rc != SQLITE_OK {
-			fatalError(tls, __ccgo_ts+177, libc.VaList(bp+8, libsqlite3.Xsqlite3_errmsg(tls, g.db)))
+			fatalError(tls, __ccgo_ts+177, libc.VaList(bp+8, libsqlite3.Xsqlite3_errmsg(tls, g.Fdb)))
 		}
-		if g.nError != 0 || g.nTest != 0 {
-			runSql(tls, __ccgo_ts+196, libc.VaList(bp+8, g.nError, g.nTest))
-			g.nError = 0
-			g.nTest = 0
+		if g.FnError != 0 || g.FnTest != 0 {
+			runSql(tls, __ccgo_ts+196, libc.VaList(bp+8, g.FnError, g.FnTest))
+			g.FnError = 0
+			g.FnTest = 0
 		}
 		pStmt = prepareSql(tls, __ccgo_ts+249, libc.VaList(bp+8, iClient))
 		rc = libsqlite3.Xsqlite3_step(tls, pStmt)
 		libsqlite3.Xsqlite3_finalize(tls, pStmt)
 		if rc == int32(SQLITE_ROW) {
 			runSql(tls, __ccgo_ts+295, libc.VaList(bp+8, iClient))
-			g.iTimeout = int32(DEFAULT_TIMEOUT)
+			g.FiTimeout = int32(DEFAULT_TIMEOUT)
 			runSql(tls, __ccgo_ts+326, 0)
 			return int32(SQLITE_DONE)
 		}
@@ -27473,7 +27473,7 @@ func startScript(tls *libc.TLS, iClient int32, pzScript uintptr, pTaskId uintptr
 			*(*uintptr)(unsafe.Pointer(pzTaskName)) = libsqlite3.Xsqlite3_mprintf(tls, __ccgo_ts+438, libc.VaList(bp+8, libsqlite3.Xsqlite3_column_text(tls, pStmt, int32(2))))
 			libsqlite3.Xsqlite3_finalize(tls, pStmt)
 			runSql(tls, __ccgo_ts+441, libc.VaList(bp+8, taskId))
-			g.iTimeout = int32(DEFAULT_TIMEOUT)
+			g.FiTimeout = int32(DEFAULT_TIMEOUT)
 			runSql(tls, __ccgo_ts+326, 0)
 			return SQLITE_OK
 		}
@@ -27482,7 +27482,7 @@ func startScript(tls *libc.TLS, iClient int32, pzScript uintptr, pTaskId uintptr
 			if totalTime > int32(30000) {
 				errorMessage(tls, __ccgo_ts+524, 0)
 				runSql(tls, __ccgo_ts+573, libc.VaList(bp+8, iClient))
-				libsqlite3.Xsqlite3_close(tls, g.db)
+				libsqlite3.Xsqlite3_close(tls, g.Fdb)
 				libc.Xexit(tls, int32(1))
 			}
 			for trySql(tls, __ccgo_ts+613, 0) == int32(SQLITE_BUSY) {
@@ -27493,9 +27493,9 @@ func startScript(tls *libc.TLS, iClient int32, pzScript uintptr, pTaskId uintptr
 			totalTime += int32(100)
 			continue
 		}
-		fatalError(tls, __ccgo_ts+438, libc.VaList(bp+8, libsqlite3.Xsqlite3_errmsg(tls, g.db)))
+		fatalError(tls, __ccgo_ts+438, libc.VaList(bp+8, libsqlite3.Xsqlite3_errmsg(tls, g.Fdb)))
 	}
-	g.iTimeout = int32(DEFAULT_TIMEOUT)
+	g.FiTimeout = int32(DEFAULT_TIMEOUT)
 	return r
 }
 
@@ -27531,27 +27531,27 @@ func startClient(tls *libc.TLS, iClient int32) {
 	var _ /* startupInfo at bp+0 */ STARTUPINFOA
 	_, _ = rc, zSys
 	runSql(tls, __ccgo_ts+701, libc.VaList(bp+136, iClient))
-	if libsqlite3.Xsqlite3_changes(tls, g.db) != 0 {
-		zSys = libsqlite3.Xsqlite3_mprintf(tls, __ccgo_ts+743, libc.VaList(bp+136, g.argv0, g.zDbFile, iClient, g.iTrace))
-		if g.bSqlTrace != 0 {
+	if libsqlite3.Xsqlite3_changes(tls, g.Fdb) != 0 {
+		zSys = libsqlite3.Xsqlite3_mprintf(tls, __ccgo_ts+743, libc.VaList(bp+136, g.Fargv0, g.FzDbFile, iClient, g.FiTrace))
+		if g.FbSqlTrace != 0 {
 			zSys = libsqlite3.Xsqlite3_mprintf(tls, __ccgo_ts+774, libc.VaList(bp+136, zSys))
 		}
-		if g.bSync != 0 {
+		if g.FbSync != 0 {
 			zSys = libsqlite3.Xsqlite3_mprintf(tls, __ccgo_ts+788, libc.VaList(bp+136, zSys))
 		}
-		if g.zVfs != 0 {
-			zSys = libsqlite3.Xsqlite3_mprintf(tls, __ccgo_ts+798, libc.VaList(bp+136, zSys, g.zVfs))
+		if g.FzVfs != 0 {
+			zSys = libsqlite3.Xsqlite3_mprintf(tls, __ccgo_ts+798, libc.VaList(bp+136, zSys, g.FzVfs))
 		}
-		if g.iTrace >= int32(2) {
+		if g.FiTrace >= int32(2) {
 			logMessage(tls, __ccgo_ts+812, libc.VaList(bp+136, zSys))
 		}
 		libc.Xmemset(tls, bp, 0, uint64(104))
-		(*(*STARTUPINFOA)(unsafe.Pointer(bp))).cb = uint32(104)
+		(*(*STARTUPINFOA)(unsafe.Pointer(bp))).Fcb = uint32(104)
 		libc.Xmemset(tls, bp+104, 0, uint64(24))
 		rc = libc.XCreateProcessA(tls, libc.UintptrFromInt32(0), zSys, libc.UintptrFromInt32(0), libc.UintptrFromInt32(0), FALSE, uint32(0), libc.UintptrFromInt32(0), libc.UintptrFromInt32(0), bp, bp+104)
 		if rc != 0 {
-			libc.XCloseHandle(tls, (*(*PROCESS_INFORMATION)(unsafe.Pointer(bp + 104))).hThread)
-			libc.XCloseHandle(tls, (*(*PROCESS_INFORMATION)(unsafe.Pointer(bp + 104))).hProcess)
+			libc.XCloseHandle(tls, (*(*PROCESS_INFORMATION)(unsafe.Pointer(bp + 104))).FhThread)
+			libc.XCloseHandle(tls, (*(*PROCESS_INFORMATION)(unsafe.Pointer(bp + 104))).FhProcess)
 		} else {
 			errorMessage(tls, __ccgo_ts+825, libc.VaList(bp+136, libc.XGetLastError(tls)))
 		}
@@ -27769,7 +27769,7 @@ func waitForClient(tls *libc.TLS, iClient int32, iTimeout int32, zErrPrefix uint
 	} else {
 		pStmt = prepareSql(tls, __ccgo_ts+1022, 0)
 	}
-	g.iTimeout = 0
+	g.FiTimeout = 0
 	for {
 		v1 = libsqlite3.Xsqlite3_step(tls, pStmt)
 		rc = v1
@@ -27781,7 +27781,7 @@ func waitForClient(tls *libc.TLS, iClient int32, iTimeout int32, zErrPrefix uint
 		iTimeout -= int32(50)
 	}
 	libsqlite3.Xsqlite3_finalize(tls, pStmt)
-	g.iTimeout = int32(DEFAULT_TIMEOUT)
+	g.FiTimeout = int32(DEFAULT_TIMEOUT)
 	if rc != int32(SQLITE_DONE) {
 		if zErrPrefix == uintptr(0) {
 			zErrPrefix = __ccgo_ts + 1103
@@ -27914,7 +27914,7 @@ func runScript(tls *libc.TLS, iClient int32, taskId int32, zScript uintptr, zFil
 			iBegin = ii + len1
 		}
 		/* Parse the --command */
-		if g.iTrace >= int32(2) {
+		if g.FiTrace >= int32(2) {
 			logMessage(tls, __ccgo_ts+1206, libc.VaList(bp+1264, len1, zScript+uintptr(ii)))
 		}
 		n = extractToken(tls, zScript+uintptr(ii)+uintptr(2), len1-int32(2), bp+24, int32(30))
@@ -27966,7 +27966,7 @@ func runScript(tls *libc.TLS, iClient int32, taskId int32, zScript uintptr, zFil
 				rc = libc.Xatoi(tls, bp+1054)
 				finishScript(tls, iClient, taskId, int32(1))
 				if rc == 0 {
-					libsqlite3.Xsqlite3_close(tls, g.db)
+					libsqlite3.Xsqlite3_close(tls, g.Fdb)
 				}
 				libc.Xexit(tls, rc)
 			} else {
@@ -27977,7 +27977,7 @@ func runScript(tls *libc.TLS, iClient int32, taskId int32, zScript uintptr, zFil
 				 ** has begun.
 				 */
 				if libc.Xstrcmp(tls, bp+24, __ccgo_ts+1222) == 0 {
-					if g.iTrace == int32(1) {
+					if g.FiTrace == int32(1) {
 						logMessage(tls, __ccgo_ts+1206, libc.VaList(bp+1264, len1-int32(1), zScript+uintptr(ii)))
 					}
 					stringReset(tls, bp+8)
@@ -28017,10 +28017,10 @@ func runScript(tls *libc.TLS, iClient int32, taskId int32, zScript uintptr, zFil
 									jj++
 								}
 								zAns += uintptr(jj)
-								if len1-jj-int32(1) != (*(*String)(unsafe.Pointer(bp + 8))).n || libc.Xstrncmp(tls, (*(*String)(unsafe.Pointer(bp + 8))).z, zAns, uint64(len1-jj-int32(1))) != 0 {
-									errorMessage(tls, __ccgo_ts+1250, libc.VaList(bp+1264, prevLine, zFilename, len1-jj-int32(1), zAns, (*(*String)(unsafe.Pointer(bp + 8))).z))
+								if len1-jj-int32(1) != (*(*String)(unsafe.Pointer(bp + 8))).Fn || libc.Xstrncmp(tls, (*(*String)(unsafe.Pointer(bp + 8))).Fz, zAns, uint64(len1-jj-int32(1))) != 0 {
+									errorMessage(tls, __ccgo_ts+1250, libc.VaList(bp+1264, prevLine, zFilename, len1-jj-int32(1), zAns, (*(*String)(unsafe.Pointer(bp + 8))).Fz))
 								}
-								g.nTest++
+								g.FnTest++
 								stringReset(tls, bp+8)
 							} else {
 								/*
@@ -28045,11 +28045,11 @@ func runScript(tls *libc.TLS, iClient int32, taskId int32, zScript uintptr, zFil
 									}
 									zAns1 += uintptr(jj1)
 									zCopy = libsqlite3.Xsqlite3_mprintf(tls, __ccgo_ts+1206, libc.VaList(bp+1264, len1-jj1-int32(1), zAns1))
-									if libc.BoolInt32(libsqlite3.Xsqlite3_strglob(tls, zCopy, (*(*String)(unsafe.Pointer(bp + 8))).z) == 0)^isGlob != 0 {
-										errorMessage(tls, __ccgo_ts+1308, libc.VaList(bp+1264, prevLine, zFilename, zCopy, (*(*String)(unsafe.Pointer(bp + 8))).z))
+									if libc.BoolInt32(libsqlite3.Xsqlite3_strglob(tls, zCopy, (*(*String)(unsafe.Pointer(bp + 8))).Fz) == 0)^isGlob != 0 {
+										errorMessage(tls, __ccgo_ts+1308, libc.VaList(bp+1264, prevLine, zFilename, zCopy, (*(*String)(unsafe.Pointer(bp + 8))).Fz))
 									}
 									libsqlite3.Xsqlite3_free(tls, zCopy)
-									g.nTest++
+									g.FnTest++
 									stringReset(tls, bp+8)
 								} else {
 									/*
@@ -28058,7 +28058,7 @@ func runScript(tls *libc.TLS, iClient int32, taskId int32, zScript uintptr, zFil
 									 ** Output the result of the previous SQL.
 									 */
 									if libc.Xstrcmp(tls, bp+24, __ccgo_ts+1351) == 0 {
-										logMessage(tls, __ccgo_ts+438, libc.VaList(bp+1264, (*(*String)(unsafe.Pointer(bp + 8))).z))
+										logMessage(tls, __ccgo_ts+438, libc.VaList(bp+1264, (*(*String)(unsafe.Pointer(bp + 8))).Fz))
 									} else {
 										/*
 										 **  --source FILENAME
@@ -28086,12 +28086,12 @@ func runScript(tls *libc.TLS, iClient int32, taskId int32, zScript uintptr, zFil
 												}
 											}
 											zNewScript = readFile(tls, zNewFile)
-											if g.iTrace != 0 {
+											if g.FiTrace != 0 {
 												logMessage(tls, __ccgo_ts+1373, libc.VaList(bp+1264, zNewFile))
 											}
 											runScript(tls, 0, 0, zNewScript, zNewFile)
 											libsqlite3.Xsqlite3_free(tls, zNewScript)
-											if g.iTrace != 0 {
+											if g.FiTrace != 0 {
 												logMessage(tls, __ccgo_ts+1392, libc.VaList(bp+1264, zNewFile))
 											}
 											libsqlite3.Xsqlite3_free(tls, zToDel)
@@ -28232,7 +28232,7 @@ func runScript(tls *libc.TLS, iClient int32, taskId int32, zScript uintptr, zFil
 																				} else {
 																					v12 = int32(1)
 																				}
-																				g.bIgnoreSqlErrors = v12
+																				g.FbIgnoreSqlErrors = v12
 																			} else {
 																				/* error */
 																				errorMessage(tls, __ccgo_ts+1598, libc.VaList(bp+1264, prevLine, zFilename, bp+24))
@@ -28437,13 +28437,13 @@ func main1(tls *libc.TLS, argc int32, argv uintptr) (r int32) {
 	openFlags = int32(SQLITE_OPEN_READWRITE)
 	nRep = int32(1)
 	iTmout = 0
-	g.argv0 = *(*uintptr)(unsafe.Pointer(argv))
-	g.iTrace = int32(1)
+	g.Fargv0 = *(*uintptr)(unsafe.Pointer(argv))
+	g.FiTrace = int32(1)
 	if argc < int32(2) {
 		usage(tls, *(*uintptr)(unsafe.Pointer(argv)))
 	}
-	g.zDbFile = *(*uintptr)(unsafe.Pointer(argv + 1*8))
-	if strglob(tls, __ccgo_ts+2327, g.zDbFile) != 0 {
+	g.FzDbFile = *(*uintptr)(unsafe.Pointer(argv + 1*8))
+	if strglob(tls, __ccgo_ts+2327, g.FzDbFile) != 0 {
 		usage(tls, *(*uintptr)(unsafe.Pointer(argv)))
 	}
 	if libc.Bool(0 != 0) && libc.Xstrcmp(tls, libsqlite3.Xsqlite3_sourceid(tls), __ccgo_ts+2334) != 0 {
@@ -28468,32 +28468,32 @@ func main1(tls *libc.TLS, argc int32, argv uintptr) (r int32) {
 	if nRep < int32(1) {
 		nRep = int32(1)
 	}
-	g.zVfs = findOption(tls, argv+uintptr(2)*8, bp+288, __ccgo_ts+2510, int32(1))
+	g.FzVfs = findOption(tls, argv+uintptr(2)*8, bp+288, __ccgo_ts+2510, int32(1))
 	zClient = findOption(tls, argv+uintptr(2)*8, bp+288, __ccgo_ts+2514, int32(1))
-	g.zErrLog = findOption(tls, argv+uintptr(2)*8, bp+288, __ccgo_ts+2521, int32(1))
-	g.zLog = findOption(tls, argv+uintptr(2)*8, bp+288, __ccgo_ts+2528, int32(1))
+	g.FzErrLog = findOption(tls, argv+uintptr(2)*8, bp+288, __ccgo_ts+2521, int32(1))
+	g.FzLog = findOption(tls, argv+uintptr(2)*8, bp+288, __ccgo_ts+2528, int32(1))
 	zTrace = findOption(tls, argv+uintptr(2)*8, bp+288, __ccgo_ts+2532, int32(1))
 	if zTrace != 0 {
-		g.iTrace = libc.Xatoi(tls, zTrace)
+		g.FiTrace = libc.Xatoi(tls, zTrace)
 	}
 	if findOption(tls, argv+uintptr(2)*8, bp+288, __ccgo_ts+2538, 0) != uintptr(0) {
-		g.iTrace = 0
+		g.FiTrace = 0
 	}
 	zTmout = findOption(tls, argv+uintptr(2)*8, bp+288, __ccgo_ts+2544, int32(1))
 	if zTmout != 0 {
 		iTmout = libc.Xatoi(tls, zTmout)
 	}
-	g.bSqlTrace = libc.BoolInt32(findOption(tls, argv+uintptr(2)*8, bp+288, __ccgo_ts+2552, 0) != uintptr(0))
-	g.bSync = libc.BoolInt32(findOption(tls, argv+uintptr(2)*8, bp+288, __ccgo_ts+2561, 0) != uintptr(0))
-	if g.zErrLog != 0 {
-		g.pErrLog = libc.Xfopen(tls, g.zErrLog, __ccgo_ts+2566)
+	g.FbSqlTrace = libc.BoolInt32(findOption(tls, argv+uintptr(2)*8, bp+288, __ccgo_ts+2552, 0) != uintptr(0))
+	g.FbSync = libc.BoolInt32(findOption(tls, argv+uintptr(2)*8, bp+288, __ccgo_ts+2561, 0) != uintptr(0))
+	if g.FzErrLog != 0 {
+		g.FpErrLog = libc.Xfopen(tls, g.FzErrLog, __ccgo_ts+2566)
 	} else {
-		g.pErrLog = libc.X__acrt_iob_func(tls, uint32(2))
+		g.FpErrLog = libc.X__acrt_iob_func(tls, uint32(2))
 	}
-	if g.zLog != 0 {
-		g.pLog = libc.Xfopen(tls, g.zLog, __ccgo_ts+2566)
+	if g.FzLog != 0 {
+		g.FpLog = libc.Xfopen(tls, g.FzLog, __ccgo_ts+2566)
 	} else {
-		g.pLog = libc.X__acrt_iob_func(tls, uint32(1))
+		g.FpLog = libc.X__acrt_iob_func(tls, uint32(1))
 	}
 	libsqlite3.Xsqlite3_config(tls, int32(SQLITE_CONFIG_LOG), libc.VaList(bp+328, __ccgo_fp(sqlErrorCallback), 0))
 	if zClient != 0 {
@@ -28504,7 +28504,7 @@ func main1(tls *libc.TLS, argc int32, argv uintptr) (r int32) {
 		libsqlite3.Xsqlite3_snprintf(tls, int32(32), uintptr(unsafe.Pointer(&g))+64, __ccgo_ts+2595, libc.VaList(bp+328, int32(libc.XGetCurrentProcessId(tls)), iClient))
 	} else {
 		nTry = 0
-		if g.iTrace > 0 {
+		if g.FiTrace > 0 {
 			v3 = __ccgo_ts + 2611
 			libc.VaList(bp, *(*uintptr)(unsafe.Pointer(argv)))
 			__local_argv1 = bp
@@ -28581,7 +28581,7 @@ func main1(tls *libc.TLS, argc int32, argv uintptr) (r int32) {
 					v19 = __ccgo_ts + 1103
 				}
 				v20 = __ccgo_ts + 2746
-				libc.VaList(bp, v19, g.zDbFile)
+				libc.VaList(bp, v19, g.FzDbFile)
 				__local_argv1 = bp
 				__retval1 = libc.X__mingw_vfprintf(tls, libc.X__acrt_iob_func(tls, uint32(1)), v20, __local_argv1)
 				_ = __local_argv1
@@ -28589,7 +28589,7 @@ func main1(tls *libc.TLS, argc int32, argv uintptr) (r int32) {
 				goto _21
 			_21:
 			}
-			rc = libc.Xunlink(tls, g.zDbFile)
+			rc = libc.Xunlink(tls, g.FzDbFile)
 			if rc != 0 && *(*int32)(unsafe.Pointer(libc.X_errno(tls))) == int32(ENOENT) {
 				rc = 0
 			}
@@ -28605,16 +28605,16 @@ func main1(tls *libc.TLS, argc int32, argv uintptr) (r int32) {
 			}
 		}
 		if rc != 0 {
-			fatalError(tls, __ccgo_ts+2775, libc.VaList(bp+328, g.zDbFile, nTry))
+			fatalError(tls, __ccgo_ts+2775, libc.VaList(bp+328, g.FzDbFile, nTry))
 		}
 		openFlags |= int32(SQLITE_OPEN_CREATE)
 	}
-	rc = libsqlite3.Xsqlite3_open_v2(tls, g.zDbFile, uintptr(unsafe.Pointer(&g))+24, openFlags, g.zVfs)
+	rc = libsqlite3.Xsqlite3_open_v2(tls, g.FzDbFile, uintptr(unsafe.Pointer(&g))+24, openFlags, g.FzVfs)
 	if rc != 0 {
-		fatalError(tls, __ccgo_ts+2816, libc.VaList(bp+328, g.zDbFile))
+		fatalError(tls, __ccgo_ts+2816, libc.VaList(bp+328, g.FzDbFile))
 	}
 	if iTmout > 0 {
-		libsqlite3.Xsqlite3_busy_timeout(tls, g.db, iTmout)
+		libsqlite3.Xsqlite3_busy_timeout(tls, g.Fdb, iTmout)
 	}
 	if zJMode != 0 {
 		if libsqlite3.Xsqlite3_stricmp(tls, zJMode, __ccgo_ts+2833) == 0 || libsqlite3.Xsqlite3_stricmp(tls, zJMode, __ccgo_ts+2841) == 0 {
@@ -28631,22 +28631,22 @@ func main1(tls *libc.TLS, argc int32, argv uintptr) (r int32) {
 		}
 		runSql(tls, __ccgo_ts+2897, libc.VaList(bp+328, zJMode))
 	}
-	if !(g.bSync != 0) {
+	if !(g.FbSync != 0) {
 		trySql(tls, __ccgo_ts+2921, 0)
 	}
-	libsqlite3.Xsqlite3_enable_load_extension(tls, g.db, int32(1))
-	libsqlite3.Xsqlite3_busy_handler(tls, g.db, __ccgo_fp(busyHandler), uintptr(0))
-	libsqlite3.Xsqlite3_create_function(tls, g.db, __ccgo_ts+2944, 0, int32(SQLITE_UTF8), uintptr(0), __ccgo_fp(vfsNameFunc), uintptr(0), uintptr(0))
-	libsqlite3.Xsqlite3_create_function(tls, g.db, __ccgo_ts+2952, int32(1), int32(SQLITE_UTF8), uintptr(0), __ccgo_fp(evalFunc), uintptr(0), uintptr(0))
-	g.iTimeout = int32(DEFAULT_TIMEOUT)
-	if g.bSqlTrace != 0 {
-		libsqlite3.Xsqlite3_trace(tls, g.db, __ccgo_fp(sqlTraceCallback), uintptr(0))
+	libsqlite3.Xsqlite3_enable_load_extension(tls, g.Fdb, int32(1))
+	libsqlite3.Xsqlite3_busy_handler(tls, g.Fdb, __ccgo_fp(busyHandler), uintptr(0))
+	libsqlite3.Xsqlite3_create_function(tls, g.Fdb, __ccgo_ts+2944, 0, int32(SQLITE_UTF8), uintptr(0), __ccgo_fp(vfsNameFunc), uintptr(0), uintptr(0))
+	libsqlite3.Xsqlite3_create_function(tls, g.Fdb, __ccgo_ts+2952, int32(1), int32(SQLITE_UTF8), uintptr(0), __ccgo_fp(evalFunc), uintptr(0), uintptr(0))
+	g.FiTimeout = int32(DEFAULT_TIMEOUT)
+	if g.FbSqlTrace != 0 {
+		libsqlite3.Xsqlite3_trace(tls, g.Fdb, __ccgo_fp(sqlTraceCallback), uintptr(0))
 	}
 	if iClient > 0 {
 		if *(*int32)(unsafe.Pointer(bp + 288)) > 0 {
 			unrecognizedArguments(tls, *(*uintptr)(unsafe.Pointer(argv)), *(*int32)(unsafe.Pointer(bp + 288)), argv+uintptr(2)*8)
 		}
-		if g.iTrace != 0 {
+		if g.FiTrace != 0 {
 			logMessage(tls, __ccgo_ts+2957, 0)
 		}
 		for int32(1) != 0 {
@@ -28655,18 +28655,18 @@ func main1(tls *libc.TLS, argc int32, argv uintptr) (r int32) {
 			if rc == int32(SQLITE_DONE) {
 				break
 			}
-			if g.iTrace != 0 {
+			if g.FiTrace != 0 {
 				logMessage(tls, __ccgo_ts+2970, libc.VaList(bp+328, *(*uintptr)(unsafe.Pointer(bp + 312)), *(*int32)(unsafe.Pointer(bp + 304))))
 			}
 			runScript(tls, iClient, *(*int32)(unsafe.Pointer(bp + 304)), *(*uintptr)(unsafe.Pointer(bp + 296)), *(*uintptr)(unsafe.Pointer(bp + 312)))
-			if g.iTrace != 0 {
+			if g.FiTrace != 0 {
 				logMessage(tls, __ccgo_ts+2984, libc.VaList(bp+328, *(*uintptr)(unsafe.Pointer(bp + 312)), *(*int32)(unsafe.Pointer(bp + 304))))
 			}
 			finishScript(tls, iClient, *(*int32)(unsafe.Pointer(bp + 304)), 0)
 			libsqlite3.Xsqlite3_free(tls, *(*uintptr)(unsafe.Pointer(bp + 312)))
 			libsqlite3.Xsqlite3_sleep(tls, int32(10))
 		}
-		if g.iTrace != 0 {
+		if g.FiTrace != 0 {
 			logMessage(tls, __ccgo_ts+2996, 0)
 		}
 	} else {
@@ -28683,11 +28683,11 @@ func main1(tls *libc.TLS, argc int32, argv uintptr) (r int32) {
 			if !(iRep <= nRep) {
 				break
 			}
-			if g.iTrace != 0 {
+			if g.FiTrace != 0 {
 				logMessage(tls, __ccgo_ts+3467, libc.VaList(bp+328, *(*uintptr)(unsafe.Pointer(argv + 2*8)), iRep))
 			}
 			runScript(tls, 0, 0, *(*uintptr)(unsafe.Pointer(bp + 296)), *(*uintptr)(unsafe.Pointer(argv + 2*8)))
-			if g.iTrace != 0 {
+			if g.FiTrace != 0 {
 				logMessage(tls, __ccgo_ts+3495, libc.VaList(bp+328, *(*uintptr)(unsafe.Pointer(argv + 2*8)), iRep))
 			}
 			goto _24
@@ -28699,7 +28699,7 @@ func main1(tls *libc.TLS, argc int32, argv uintptr) (r int32) {
 		waitForClient(tls, 0, int32(2000), __ccgo_ts+3521)
 		trySql(tls, __ccgo_ts+3541, 0)
 		libsqlite3.Xsqlite3_sleep(tls, int32(10))
-		g.iTimeout = 0
+		g.FiTimeout = 0
 		iTimeout = int32(1000)
 		for {
 			v25 = trySql(tls, __ccgo_ts+3570, 0)
@@ -28723,17 +28723,17 @@ func main1(tls *libc.TLS, argc int32, argv uintptr) (r int32) {
 			iTimeout -= int32(10)
 		}
 		if rc == int32(SQLITE_ROW) {
-			g.nError += libsqlite3.Xsqlite3_column_int(tls, pStmt, 0)
-			g.nTest += libsqlite3.Xsqlite3_column_int(tls, pStmt, int32(1))
+			g.FnError += libsqlite3.Xsqlite3_column_int(tls, pStmt, 0)
+			g.FnTest += libsqlite3.Xsqlite3_column_int(tls, pStmt, int32(1))
 		}
 		libsqlite3.Xsqlite3_finalize(tls, pStmt)
 	}
-	libsqlite3.Xsqlite3_close(tls, g.db)
-	maybeClose(tls, g.pLog)
-	maybeClose(tls, g.pErrLog)
+	libsqlite3.Xsqlite3_close(tls, g.Fdb)
+	maybeClose(tls, g.FpLog)
+	maybeClose(tls, g.FpErrLog)
 	if iClient == 0 {
 		v27 = __ccgo_ts + 3626
-		libc.VaList(bp, g.nError, g.nTest)
+		libc.VaList(bp, g.FnError, g.FnTest)
 		__local_argv1 = bp
 		__retval1 = libc.X__mingw_vfprintf(tls, libc.X__acrt_iob_func(tls, uint32(1)), v27, __local_argv1)
 		_ = __local_argv1
@@ -28777,7 +28777,7 @@ func main1(tls *libc.TLS, argc int32, argv uintptr) (r int32) {
 		goto _35
 	_35:
 	}
-	return libc.BoolInt32(g.nError > 0)
+	return libc.BoolInt32(g.FnError > 0)
 }
 
 func main() {
