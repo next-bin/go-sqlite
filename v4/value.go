@@ -925,7 +925,7 @@ func (n *UnaryExpression) eval(c *ctx, mode flags) (r Value) {
 		case UnaryExpressionDec: // "--" UnaryExpression
 			c.errors.add(errorf("TODO %T %v", n, n.Case))
 		case UnaryExpressionAddrof: // '&' CastExpression
-			c.errors.add(errorf("TODO %T %v", n, n.Case))
+			// ok
 		case UnaryExpressionDeref: // '*' CastExpression
 			switch x := n.CastExpression.eval(c, mode.del(addrOf)).(type) {
 			case *UnknownValue:
