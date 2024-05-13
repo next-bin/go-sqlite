@@ -13397,6 +13397,7 @@ func x_inflateBack(tls *libc.TLS, strm Tz_streamp, in Tin_func, in_desc uintptr,
 	_2:
 	}
 	/* Write leftover output and return unused input */
+	goto inf_leave
 inf_leave:
 	;
 	if left < (*Tinflate_state)(unsafe.Pointer(state)).Fwsize {
@@ -13513,6 +13514,7 @@ func x_inflate_fast(tls *libc.TLS, strm Tz_streamp, start uint32) {
 			bits += uint32(8)
 		}
 		here = lcode + uintptr(hold&uint64(lmask))*4
+		goto dolen
 	dolen:
 		;
 		op = uint32((*Tcode)(unsafe.Pointer(here)).Fbits)
@@ -13549,6 +13551,7 @@ func x_inflate_fast(tls *libc.TLS, strm Tz_streamp, start uint32) {
 					bits += uint32(8)
 				}
 				here = dcode + uintptr(hold&uint64(dmask))*4
+				goto dodist
 			dodist:
 				;
 				op = uint32((*Tcode)(unsafe.Pointer(here)).Fbits)
@@ -17555,6 +17558,7 @@ func x_inflate(tls *libc.TLS, strm Tz_streamp, flush int32) (r int32) {
 	   error.  Call updatewindow() to create and/or update the window state.
 	   Note: a memory error from inflate() is non-recoverable.
 	*/
+	goto inf_leave
 inf_leave:
 	;
 	(*Tz_stream)(unsafe.Pointer(strm)).Fnext_out = put
