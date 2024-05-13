@@ -3,7 +3,7 @@ module modernc.org/libtcl8.6
 go 1.20
 
 require (
-	modernc.org/ccgo/v4 v4.17.4
+	modernc.org/ccgo/v4 v4.17.6
 	modernc.org/fileutil v1.3.0
 	modernc.org/libc v1.50.5
 	modernc.org/libz v0.10.2
@@ -21,7 +21,7 @@ require (
 	golang.org/x/tools v0.19.0 // indirect
 	lukechampine.com/uint128 v1.2.0 // indirect
 	modernc.org/cc/v3 v3.41.0 // indirect
-	modernc.org/cc/v4 v4.21.1 // indirect
+	modernc.org/cc/v4 v4.21.2 // indirect
 	modernc.org/ccgo/v3 v3.17.0 // indirect
 	modernc.org/gc/v2 v2.4.1 // indirect
 	modernc.org/mathutil v1.6.0 // indirect
