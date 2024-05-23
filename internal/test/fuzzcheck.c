@@ -979,8 +979,7 @@ extern int fuzz_invariant(
   int iRow,               /* The row number for pStmt */
   int nRow,               /* Total number of output rows */
   int *pbCorrupt,         /* IN/OUT: Flag indicating a corrupt database file */
-  int eVerbosity,         /* How much debugging output */
-  unsigned int dbOpt      /* Default optimization flags */
+  int eVerbosity          /* How much debugging output */
 );
 
 /* Implementation of sqlite_dbdata and sqlite_dbptr */
@@ -1032,12 +1031,7 @@ static int recoverDatabase(sqlite3 *db){
 /*
 ** Run the SQL text
 */
-static int runDbSql(
-  sqlite3 *db,                /* Run SQL on this database connection */
-  const char *zSql,           /* The SQL to be run */
-  unsigned int *pBtsFlags,
-  unsigned int dbOpt          /* Default optimization flags */
-){
+static int runDbSql(sqlite3 *db, const char *zSql, unsigned int *pBtsFlags){
   int rc;
   sqlite3_stmt *pStmt;
   int bCorrupt = 0;
@@ -1113,7 +1107,7 @@ static int runDbSql(
           iRow++;
           for(iCnt=0; iCnt<99999; iCnt++){
             rc = fuzz_invariant(db, pStmt, iCnt, iRow, nRow,
-                                &bCorrupt, eVerbosity, dbOpt);
+                                &bCorrupt, eVerbosity);
             if( rc==SQLITE_DONE ) break;
             if( rc!=SQLITE_ERROR ) g.nInvariant++;
             if( eVerbosity>0 ){
@@ -1336,7 +1330,7 @@ int runCombinedDbSqlInput(
         char cSaved = zSql[i+1];
         zSql[i+1] = 0;
         if( sqlite3_complete(zSql+j) ){
-          rc = runDbSql(cx.db, zSql+j, &btsFlags, dbOpt);
+          rc = runDbSql(cx.db, zSql+j, &btsFlags);
           j = i+1;
         }
         zSql[i+1] = cSaved;
@@ -1346,7 +1340,7 @@ int runCombinedDbSqlInput(
       }
     }
     if( j<i ){
-      runDbSql(cx.db, zSql+j, &btsFlags, dbOpt);
+      runDbSql(cx.db, zSql+j, &btsFlags);
     }
   }
 testrun_finished:

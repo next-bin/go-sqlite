@@ -23,8 +23,8 @@ import (
 )
 
 const (
-	archivePath  = "sqlite-amalgamation-3460000.zip"
-	archive2Path = "sqlite-src-3460000.zip"
+	archivePath  = "sqlite-amalgamation-3450300.zip"
+	archive2Path = "sqlite-src-3450300.zip"
 )
 
 var (
