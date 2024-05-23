@@ -7,8 +7,8 @@
 SHELL=/bin/bash -o pipefail
 
 DIR = /tmp/libsqlite3
-ZIP = sqlite-amalgamation-3450300.zip
-ZIP2 = sqlite-src-3450300.zip
+ZIP = sqlite-amalgamation-3460000.zip
+ZIP2 = sqlite-src-3460000.zip
 URL = https://www.sqlite.org/2024/$(ZIP)
 URL2 = https://www.sqlite.org/2024/$(ZIP2)
 
@@ -31,7 +31,7 @@ clean-dev:
 
 edit:
 	@touch log
-	@if [ -f "Session.vim" ]; then novim -S & else novim -p Makefile all_test.go generator.go & fi
+	@if [ -f "Session.vim" ]; then novim -S & else novim -p Makefile go.mod builder.json all_test.go generator.go & fi
 
 editor:
 	gofmt -l -s -w . 2>&1 | tee log-editor
