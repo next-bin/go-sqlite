@@ -49,6 +49,10 @@ var (
 		// will free 4K, failing the tests
 		"malloc5-6.2.2": {},
 		"malloc5-6.2.3": {},
+
+		// 2024-05-25: Reported at https://sqlite.org/forum/forumpost/8caab936c9
+		"values-11.0": {},
+		"values-11.1": {},
 	}
 	knownCFailures = map[string]struct{}{}
 

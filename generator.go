@@ -23,8 +23,9 @@ import (
 )
 
 const (
-	archivePath  = "sqlite-amalgamation-3450300.zip"
-	archive2Path = "sqlite-src-3450300.zip"
+	archivePath  = "sqlite-amalgamation-" + versionTag + ".zip"
+	archive2Path = "sqlite-src-" + versionTag + ".zip"
+	versionTag   = "3460000"
 )
 
 var (
@@ -115,13 +116,6 @@ func main() {
 	fmt.Fprintf(os.Stderr, "tempDir %s\n", tempDir)
 	fmt.Fprintf(os.Stderr, "libRoot %s\n", libRoot)
 	fmt.Fprintf(os.Stderr, "makeRoot %s\n", makeRoot)
-	ccgoInc, err := filepath.Abs(filepath.Join(libRoot, "ccgo"))
-	if err != nil {
-		fail(1, "%s\n", err)
-	}
-
-	mustCopyDir(ccgoInc, filepath.Join("..", "libz", "include", goos, goarch), nil, false)
-	mustCopyDir(ccgoInc, filepath.Join("..", "libtcl8.6", "include", goos, goarch), nil, false)
 	util.MustShell(true, nil, "unzip", archivePath, "-d", tempDir)
 
 	// https://gitlab.com/cznic/sqlite/-/issues/173
@@ -134,6 +128,9 @@ func main() {
 	util.MustShell(true, nil, sed, "-i", `0,/int isInit;*True after/{s/int isInit/volatile int isInit/}`, filepath.Join(libRoot, "sqlite3.c"))
 
 	fixWin(tempDir)
+	cwd := util.MustAbsCwd(true)
+	ilibz := filepath.Join(cwd, "..", "libz", "include", goos, goarch)
+	ilibtcl := filepath.Join(cwd, "..", "libtcl8.6", "include", goos, goarch)
 	result := "sqlite3.go"
 	util.MustInDir(true, makeRoot, func() (err error) {
 		util.MustShell(true, nil, "sh", "-c", "go mod init example.com/libsqlite3 ; go get modernc.org/libc@latest modernc.org/libz@latest modernc.org/libtcl8.6@latest")
@@ -189,11 +186,12 @@ func main() {
 			"-DSQLITE_WITHOUT_ZONEMALLOC",
 			"-Dpread64=pread",
 			"-Dpwrite64=pwrite",
+			"-I", ilibz,
+			"-I", ilibtcl,
 
 			"-extended-errors",
 			"-o", result,
 			"sqlite3.c",
-			fmt.Sprintf("-I%s", ccgoInc),
 		)
 		switch target {
 		case
@@ -348,7 +346,8 @@ func main() {
 			"--prefix-undefined=_",
 			"-extended-errors",
 			"-ignore-unsupported-alignment",
-			fmt.Sprintf("-I%s", ccgoInc),
+			"-I", ilibz,
+			"-I", ilibtcl,
 		)
 		switch target {
 		case "freebsd/amd64", "freebsd/arm64", "openbsd/amd64":
@@ -370,7 +369,7 @@ func main() {
 					"BEXE=",
 
 					"CFLAGS=-mlong-double-64 -DLONGDOUBLE_TYPE=double -DSQLITE_WITHOUT_ZONEMALLOC -DNDEBUG -DSQLITE_OS_WIN=1 -DSQLITE_OS_UNIX=0 -D_MSC_VER=1 -DSQLITE_OMIT_SEH",
-					"TOP=../sqlite-src-3450300",
+					"TOP=../sqlite-src-"+versionTag,
 					"TEXE=.exe",
 					"testfixture.exe",
 				),
@@ -490,6 +489,7 @@ func main() {
 	default:
 		mustCopyFile(filepath.Join("internal", "testfixture", fn), filepath.Join(makeRoot, "testfixture.go"), nil)
 	}
+	util.Shell(nil, "rm", "-rf", filepath.Join("internal", "test"))
 	mustCopyDir(filepath.Join("internal", "test"), filepath.Join(makeRoot, "test"), nil, false)
 	mustCopyDir("internal/test", "internal/overlay/test", nil, true)
 	util.Shell(nil, "sh", "-c", "./unconvert.sh")

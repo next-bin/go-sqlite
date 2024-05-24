@@ -6,9 +6,11 @@
 
 SHELL=/bin/bash -o pipefail
 
+GREP = 'TRC\|TODO\|ERRORF\|FAIL\|undefined:'
+
 DIR = /tmp/libsqlite3
-ZIP = sqlite-amalgamation-3450300.zip
-ZIP2 = sqlite-src-3450300.zip
+ZIP = sqlite-amalgamation-3460000.zip
+ZIP2 = sqlite-src-3460000.zip
 URL = https://www.sqlite.org/2024/$(ZIP)
 URL2 = https://www.sqlite.org/2024/$(ZIP2)
 
@@ -31,7 +33,7 @@ clean-dev:
 
 edit:
 	@touch log
-	@if [ -f "Session.vim" ]; then novim -S & else novim -p Makefile all_test.go generator.go & fi
+	@if [ -f "Session.vim" ]; then novim -S & else novim -p Makefile go.mod builder.json all_test.go generator.go & fi
 
 editor:
 	gofmt -l -s -w . 2>&1 | tee log-editor
@@ -54,8 +56,8 @@ generate: download
 	# go install github.com/mdempsky/unconvert@latest
 	go build -v ./...  | tee -a log-generate
 	git status
-	grep 'TRC\|TODO\|ERRORF\|FAIL' log-generate || true
-	grep 'TRC\|TODO\|ERRORF\|FAIL' log-generate-errors || true
+	grep $(GREP) log-generate || true
+	grep $(GREP) log-generate-errors || true
 
 dev: download
 	mkdir -p $(DIR) || true
@@ -68,9 +70,9 @@ dev: download
 	date 2>&1 | tee -a log-generate
 	go build -v ./...  | tee -a log-generate
 	git status
-	grep 'TRC\|TODO\|ERRORF\|FAIL' log-generate || true
-	grep 'TRC\|TODO\|ERRORF\|FAIL' log-generate-errors || true
-	grep 'TRC\|TODO\|ERRORF\|FAIL' /tmp/ccgo.log || true
+	grep $(GREP) log-generate || true
+	grep $(GREP) log-generate-errors || true
+	grep $(GREP) /tmp/ccgo.log || true
 
 extraquick:
 	go test -v -timeout 24h -run Tcl -verbose=1 -suite=extraquick 2>&1 | tee log-test
