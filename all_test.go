@@ -216,6 +216,8 @@ func TestTclTest(t *testing.T) {
 	case "windows":
 		// See https://gitlab.com/cznic/sqlite/-/issues/23#note_599920077 for details.
 		blacklist["symlink2.test"] = struct{}{}
+		// This test should not nun on windows but the platform test fails.
+		blacklist["readonly.test"] = struct{}{}
 	}
 	switch target {
 	case
