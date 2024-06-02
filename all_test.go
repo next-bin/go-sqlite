@@ -16,6 +16,7 @@ import (
 	"testing"
 	"time"
 
+	_ "github.com/adrg/xdg"
 	_ "modernc.org/ccgo/v4/lib"
 	_ "modernc.org/fileutil/ccgo"
 	"modernc.org/libc"
@@ -709,5 +710,5 @@ out:
 	if err == nil && len(errFile) != 0 {
 		t.Errorf("FAIL\n%s", errFile)
 	}
-	
+
 }

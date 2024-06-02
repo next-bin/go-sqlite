@@ -18,6 +18,7 @@ import (
 	"runtime"
 	"strings"
 
+	"github.com/adrg/xdg"
 	"modernc.org/cc/v4"
 	ccgo "modernc.org/ccgo/v4/lib"
 	util "modernc.org/fileutil/ccgo"
@@ -105,6 +106,9 @@ func main() {
 	if win {
 		makeRoot = filepath.Join(libRoot, "win")
 	}
+	xdgDir := filepath.Join(xdg.ConfigHome, "ccgo", "v4", "libtcl8.6", goos, goarch)
+	os.MkdirAll(xdgDir, 0770)
+	fmt.Fprintf(os.Stderr, "xdgDir %s\n", xdgDir)
 	fmt.Fprintf(os.Stderr, "archivePath %s\n", archivePath)
 	fmt.Fprintf(os.Stderr, "extractedArchivePath %s\n", extractedArchivePath)
 	fmt.Fprintf(os.Stderr, "tempDir %s\n", tempDir)
@@ -118,13 +122,9 @@ func main() {
 	mustCopyDir(libRoot, filepath.Join("overlay", "all"), nil, true)
 	mustCopyDir(libRoot, filepath.Join("overlay", goos, goarch), nil, true)
 	mustCopyFile("LICENSE-TCL", filepath.Join(libRoot, "license.terms"), nil)
-	ccgoInc, err := filepath.Abs(filepath.Join(libRoot, "ccgo"))
-	if err != nil {
-		fail(1, "%s\n", err)
-	}
-
-	mustCopyDir(ccgoInc, filepath.Join("..", "libz", "include", goos, goarch), nil, false)
 	result := "libtcl.a.go"
+	cwd := util.MustAbsCwd(true)
+	ilibz := filepath.Join(cwd, "..", "libz", "include", goos, goarch)
 	util.MustInDir(true, makeRoot, func() (err error) {
 		os.RemoveAll("pkgs")
 		cflags := []string{
@@ -206,7 +206,7 @@ func main() {
 			"--prefix-undefined=_",
 			"-extended-errors",
 			"-ignore-unsupported-alignment",
-			fmt.Sprintf("-I%s", ccgoInc),
+			"-I", ilibz,
 		)
 		switch {
 		case win:
@@ -236,6 +236,8 @@ func main() {
 		}
 	})
 
+	util.MustShell(true, nil, "sh", "-c", fmt.Sprintf("rm -rf %s", filepath.Join(xdgDir)))
+	mustCopyDir(xdgDir, libRoot, nil, false)
 	mustCopyFile(filepath.Join("include", goos, goarch, "tcl.h"), filepath.Join(libRoot, "generic", "tcl.h"), nil)
 	mustCopyFile(filepath.Join("include", goos, goarch, "tclDecls.h"), filepath.Join(libRoot, "generic", "tclDecls.h"), nil)
 	mustCopyFile(filepath.Join("include", goos, goarch, "tclPlatDecls.h"), filepath.Join(libRoot, "generic", "tclPlatDecls.h"), nil)
