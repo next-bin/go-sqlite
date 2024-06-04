@@ -8,7 +8,7 @@ require (
 	modernc.org/fileutil v1.3.0
 	modernc.org/libc v1.51.0
 	modernc.org/libtcl8.6 v0.8.6
-	modernc.org/libz v0.10.6
+	modernc.org/libz v0.10.7
 )
 
 require (
