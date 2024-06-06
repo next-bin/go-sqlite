@@ -5,6 +5,7 @@
 package cc // import "modernc.org/cc/v4"
 
 import (
+	"fmt"
 	"math/big"
 )
 
@@ -651,6 +652,11 @@ func (n *ShiftExpression) eval(c *ctx, mode flags) (r Value) {
 			case *UnknownValue:
 				// nop
 			case Int64Value:
+				if y < 0 {
+					c.errors.add(fmt.Errorf("%v: negative shift amount: %v << %v", position(n), x, y))
+					break
+				}
+
 				n.val = convert(x<<y, n.Type())
 			case UInt64Value:
 				n.val = convert(x<<y, n.Type())
@@ -662,6 +668,11 @@ func (n *ShiftExpression) eval(c *ctx, mode flags) (r Value) {
 			case *UnknownValue:
 				// nop
 			case Int64Value:
+				if y < 0 {
+					c.errors.add(fmt.Errorf("%v: negative shift amount: %v << %v", position(n), x, y))
+					break
+				}
+
 				n.val = convert(x<<y, n.Type())
 			case UInt64Value:
 				n.val = convert(x<<y, n.Type())
@@ -680,6 +691,11 @@ func (n *ShiftExpression) eval(c *ctx, mode flags) (r Value) {
 			case *UnknownValue:
 				// nop
 			case Int64Value:
+				if y < 0 {
+					c.errors.add(fmt.Errorf("%v: negative shift amount: %v >> %v", position(n), x, y))
+					break
+				}
+
 				n.val = convert(x>>y, n.Type())
 			case UInt64Value:
 				n.val = convert(x>>y, n.Type())
@@ -691,6 +707,11 @@ func (n *ShiftExpression) eval(c *ctx, mode flags) (r Value) {
 			case *UnknownValue:
 				// nop
 			case Int64Value:
+				if y < 0 {
+					c.errors.add(fmt.Errorf("%v: negative shift amount: %v >> %v", position(n), x, y))
+					break
+				}
+
 				n.val = convert(x>>y, n.Type())
 			case UInt64Value:
 				n.val = convert(x>>y, n.Type())
