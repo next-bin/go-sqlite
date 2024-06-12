@@ -1625,36 +1625,6 @@ type off_t = int32
 
 type fpos_t = int64
 
-/**
- * This file has no copyright assigned and is placed in the Public Domain.
- * This file is part of the mingw-w64 runtime package.
- * No warranty is given; refer to the file DISCLAIMER.PD within this package.
- */
-
-/**
- * This file has no copyright assigned and is placed in the Public Domain.
- * This file is part of the mingw-w64 runtime package.
- * No warranty is given; refer to the file DISCLAIMER.PD within this package.
- */
-func vswprintf(tls *libc.TLS, __stream1 uintptr, __count size_t, __format1 uintptr, __local_argv1 __builtin_va_list) (r int32) {
-	var v1 int32
-	_ = v1
-	v1 = libc.X__mingw_vsnwprintf(tls, __stream1, __count, __format1, __local_argv1)
-	goto _2
-_2:
-	return v1
-}
-
-func swprintf(tls *libc.TLS, __stream uintptr, __count size_t, __format uintptr, va uintptr) (r int32) {
-	var __local_argv __builtin_va_list
-	var __retval int32
-	_, _ = __local_argv, __retval
-	__local_argv = va
-	__retval = vswprintf(tls, __stream, __count, __format, __local_argv)
-	_ = __local_argv
-	return __retval
-}
-
 type _onexit_t = uintptr
 
 type div_t = struct {
