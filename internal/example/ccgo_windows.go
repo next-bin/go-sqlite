@@ -842,36 +842,6 @@ type TFILE = struct {
 
 type Tfpos_t = int64
 
-/**
- * This file has no copyright assigned and is placed in the Public Domain.
- * This file is part of the mingw-w64 runtime package.
- * No warranty is given; refer to the file DISCLAIMER.PD within this package.
- */
-
-/**
- * This file has no copyright assigned and is placed in the Public Domain.
- * This file is part of the mingw-w64 runtime package.
- * No warranty is given; refer to the file DISCLAIMER.PD within this package.
- */
-func _vswprintf(tls *libc.TLS, __stream1 uintptr, __count Tsize_t, __format1 uintptr, __local_argv1 T__builtin_va_list) (r int32) {
-	var v1 int32
-	_ = v1
-	v1 = libc.X__mingw_vsnwprintf(tls, __stream1, __count, __format1, __local_argv1)
-	goto _2
-_2:
-	return v1
-}
-
-func _swprintf(tls *libc.TLS, __stream uintptr, __count Tsize_t, __format uintptr, va uintptr) (r int32) {
-	var __local_argv T__builtin_va_list
-	var __retval int32
-	_, _ = __local_argv, __retval
-	__local_argv = va
-	__retval = _vswprintf(tls, __stream, __count, __format, __local_argv)
-	_ = __local_argv
-	return __retval
-}
-
 type T_onexit_t = uintptr
 
 type Tdiv_t = struct {
@@ -10337,36 +10307,6 @@ const m__wfindfirsti64 = "_wfindfirst64"
 const m__wfindnext = "_wfindnext64i32"
 const m__wfindnexti64 = "_wfindnext64"
 
-/**
- * This file has no copyright assigned and is placed in the Public Domain.
- * This file is part of the mingw-w64 runtime package.
- * No warranty is given; refer to the file DISCLAIMER.PD within this package.
- */
-
-/**
- * This file has no copyright assigned and is placed in the Public Domain.
- * This file is part of the mingw-w64 runtime package.
- * No warranty is given; refer to the file DISCLAIMER.PD within this package.
- */
-func _vswprintf1(tls *libc.TLS, __stream1 uintptr, __count Tsize_t, __format1 uintptr, __local_argv1 T__builtin_va_list) (r int32) {
-	var v1 int32
-	_ = v1
-	v1 = libc.X__mingw_vsnwprintf(tls, __stream1, __count, __format1, __local_argv1)
-	goto _2
-_2:
-	return v1
-}
-
-func _swprintf1(tls *libc.TLS, __stream uintptr, __count Tsize_t, __format uintptr, va uintptr) (r int32) {
-	var __local_argv T__builtin_va_list
-	var __retval int32
-	_, _ = __local_argv, __retval
-	__local_argv = va
-	__retval = _vswprintf1(tls, __stream, __count, __format, __local_argv)
-	_ = __local_argv
-	return __retval
-}
-
 type T_fsize_t = uint32
 
 type T_finddata32_t = struct {
@@ -10497,36 +10437,6 @@ const m__O_RDONLY1 = 0
 const m__O_TRUNC1 = 512
 const m__O_WRONLY1 = 1
 const m___INT_MAX__1 = 2147483647
-
-/**
- * This file has no copyright assigned and is placed in the Public Domain.
- * This file is part of the mingw-w64 runtime package.
- * No warranty is given; refer to the file DISCLAIMER.PD within this package.
- */
-
-/**
- * This file has no copyright assigned and is placed in the Public Domain.
- * This file is part of the mingw-w64 runtime package.
- * No warranty is given; refer to the file DISCLAIMER.PD within this package.
- */
-func _vswprintf2(tls *libc.TLS, __stream1 uintptr, __count Tsize_t, __format1 uintptr, __local_argv1 T__builtin_va_list) (r int32) {
-	var v1 int32
-	_ = v1
-	v1 = libc.X__mingw_vsnwprintf(tls, __stream1, __count, __format1, __local_argv1)
-	goto _2
-_2:
-	return v1
-}
-
-func _swprintf2(tls *libc.TLS, __stream uintptr, __count Tsize_t, __format uintptr, va uintptr) (r int32) {
-	var __local_argv T__builtin_va_list
-	var __retval int32
-	_, _ = __local_argv, __retval
-	__local_argv = va
-	__retval = _vswprintf2(tls, __stream, __count, __format, __local_argv)
-	_ = __local_argv
-	return __retval
-}
 
 // C documentation
 //
@@ -11135,36 +11045,6 @@ const m__O_RDONLY2 = 0x0000
 const m__O_TRUNC2 = 0x0200
 const m__O_WRONLY2 = 0x0001
 const m___INT_MAX__2 = 0x7fffffff
-
-/**
- * This file has no copyright assigned and is placed in the Public Domain.
- * This file is part of the mingw-w64 runtime package.
- * No warranty is given; refer to the file DISCLAIMER.PD within this package.
- */
-
-/**
- * This file has no copyright assigned and is placed in the Public Domain.
- * This file is part of the mingw-w64 runtime package.
- * No warranty is given; refer to the file DISCLAIMER.PD within this package.
- */
-func _vswprintf3(tls *libc.TLS, __stream1 uintptr, __count Tsize_t, __format1 uintptr, __local_argv1 T__builtin_va_list) (r int32) {
-	var v1 int32
-	_ = v1
-	v1 = libc.X__mingw_vsnwprintf(tls, __stream1, __count, __format1, __local_argv1)
-	goto _2
-_2:
-	return v1
-}
-
-func _swprintf3(tls *libc.TLS, __stream uintptr, __count Tsize_t, __format uintptr, va uintptr) (r int32) {
-	var __local_argv T__builtin_va_list
-	var __retval int32
-	_, _ = __local_argv, __retval
-	__local_argv = va
-	__retval = _vswprintf3(tls, __stream, __count, __format, __local_argv)
-	_ = __local_argv
-	return __retval
-}
 
 // C documentation
 //
@@ -11842,36 +11722,6 @@ func x_gzclose_r(tls *libc.TLS, file TgzFile) (r int32) {
 		v2 = err
 	}
 	return v2
-}
-
-/**
- * This file has no copyright assigned and is placed in the Public Domain.
- * This file is part of the mingw-w64 runtime package.
- * No warranty is given; refer to the file DISCLAIMER.PD within this package.
- */
-
-/**
- * This file has no copyright assigned and is placed in the Public Domain.
- * This file is part of the mingw-w64 runtime package.
- * No warranty is given; refer to the file DISCLAIMER.PD within this package.
- */
-func _vswprintf4(tls *libc.TLS, __stream1 uintptr, __count Tsize_t, __format1 uintptr, __local_argv1 T__builtin_va_list) (r int32) {
-	var v1 int32
-	_ = v1
-	v1 = libc.X__mingw_vsnwprintf(tls, __stream1, __count, __format1, __local_argv1)
-	goto _2
-_2:
-	return v1
-}
-
-func _swprintf4(tls *libc.TLS, __stream uintptr, __count Tsize_t, __format uintptr, va uintptr) (r int32) {
-	var __local_argv T__builtin_va_list
-	var __retval int32
-	_, _ = __local_argv, __retval
-	__local_argv = va
-	__retval = _vswprintf4(tls, __stream, __count, __format, __local_argv)
-	_ = __local_argv
-	return __retval
 }
 
 // C documentation
@@ -25666,36 +25516,6 @@ func x_uncompress(tls *libc.TLS, dest uintptr, destLen uintptr, source uintptr, 
 	defer tls.Free(16)
 	*(*TuLong)(unsafe.Pointer(bp)) = _sourceLen
 	return x_uncompress2(tls, dest, destLen, source, bp)
-}
-
-/**
- * This file has no copyright assigned and is placed in the Public Domain.
- * This file is part of the mingw-w64 runtime package.
- * No warranty is given; refer to the file DISCLAIMER.PD within this package.
- */
-
-/**
- * This file has no copyright assigned and is placed in the Public Domain.
- * This file is part of the mingw-w64 runtime package.
- * No warranty is given; refer to the file DISCLAIMER.PD within this package.
- */
-func _vswprintf5(tls *libc.TLS, __stream1 uintptr, __count Tsize_t, __format1 uintptr, __local_argv1 T__builtin_va_list) (r int32) {
-	var v1 int32
-	_ = v1
-	v1 = libc.X__mingw_vsnwprintf(tls, __stream1, __count, __format1, __local_argv1)
-	goto _2
-_2:
-	return v1
-}
-
-func _swprintf5(tls *libc.TLS, __stream uintptr, __count Tsize_t, __format uintptr, va uintptr) (r int32) {
-	var __local_argv T__builtin_va_list
-	var __retval int32
-	_, _ = __local_argv, __retval
-	__local_argv = va
-	__retval = _vswprintf5(tls, __stream, __count, __format, __local_argv)
-	_ = __local_argv
-	return __retval
 }
 
 func x_zlibVersion(tls *libc.TLS) (r uintptr) {
