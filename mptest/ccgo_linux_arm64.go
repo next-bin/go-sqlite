@@ -1,7 +1,6 @@
 // Code generated for linux/arm64 by 'generator -DNDEBUG -I /tmp/libsqlite3/sqlite-src-3460000 -ignore-unsupported-alignment -o mptest/ccgo_linux_arm64.go /tmp/libsqlite3/sqlite-src-3460000/mptest/mptest.c -lsqlite3', DO NOT EDIT.
 
 //go:build linux && arm64
-// +build linux,arm64
 
 package main
 
