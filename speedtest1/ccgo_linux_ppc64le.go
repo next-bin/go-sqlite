@@ -1,7 +1,6 @@
 // Code generated for linux/ppc64le by 'generator -DNDEBUG -ignore-unsupported-alignment -o speedtest1/ccgo_linux_ppc64le.go -I /tmp/libsqlite3/sqlite-src-3460000 /tmp/libsqlite3/sqlite-src-3460000/test/speedtest1.c -lsqlite3', DO NOT EDIT.
 
 //go:build linux && ppc64le
-// +build linux,ppc64le
 
 package main
 
