@@ -1,7 +1,6 @@
 // Code generated for linux/386 by 'generator -DNDEBUG -ignore-unsupported-alignment -o speedtest1/ccgo_linux_386.go -I /tmp/libsqlite3/sqlite-src-3460000 /tmp/libsqlite3/sqlite-src-3460000/test/speedtest1.c -lsqlite3', DO NOT EDIT.
 
 //go:build linux && 386
-// +build linux,386
 
 package main
 
