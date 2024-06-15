@@ -1,7 +1,6 @@
 // Code generated for freebsd/arm64 by 'generator --prefix-enumerator=_ --prefix-external=x_ --prefix-field=F --prefix-macro=m_ --prefix-static-internal=_ --prefix-static-none=_ --prefix-tagged-enum=_ --prefix-tagged-struct=T --prefix-tagged-union=T --prefix-typename=T --prefix-undefined=_ -extended-errors --libc modernc.org/libc --package-name=libz -o libz.a.go libz.a', DO NOT EDIT.
 
 //go:build freebsd && arm64
-// +build freebsd,arm64
 
 package libz
 
