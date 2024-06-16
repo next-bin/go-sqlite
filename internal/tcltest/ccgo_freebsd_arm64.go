@@ -1,7 +1,6 @@
 // Code generated for freebsd/arm64 by 'gcc -hide TclpCreateProcess --prefix-enumerator=_ --prefix-external=x_ --prefix-field=F --prefix-macro=m_ --prefix-static-internal=_ --prefix-static-none=_ --prefix-tagged-enum=_ --prefix-tagged-struct=T --prefix-tagged-union=T --prefix-typename=T --prefix-undefined=_ -extended-errors -ignore-unsupported-alignment -I /home/jnml/src/modernc.org/builder/.exclude/modernc.org/libz/include/freebsd/arm64 -O2 -DNDEBUG -UHAVE_COPYFILE -UHAVE_CPUID -UHAVE_FTS -UHAVE_TERMIOS_H tclTestInit.o.go tclTest.o.go tclTestObj.o.go tclTestProcBodyObj.o.go tclThreadTest.o.go tclUnixTest.o.go -L/tmp/libtcl8.6/tcl8.6.13/unix -ltcl8.6 libtclstub8.6.a -lz -lm -o tcltest.go', DO NOT EDIT.
 
 //go:build freebsd && arm64
-// +build freebsd,arm64
 
 package main
 
