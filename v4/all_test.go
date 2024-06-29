@@ -1413,6 +1413,8 @@ func TestTranslate(t *testing.T) {
 		blacklistGCC["pr93213.c"] = struct{}{}     //TODO
 		blacklistGCC["pr98474.c"] = struct{}{}     //TODO
 		blacklistMakarov["setjmp2.c"] = struct{}{} //TODO
+	case "windows/386":
+		blacklistGCC["pr30704.c"] = struct{}{} // '__int128' is not supported on this target
 	case "freebsd/amd64":
 		blacklistDebian["mandelbrot-6.c"] = struct{}{}
 		blacklistDebian["spectral-norm-5.c"] = struct{}{}
@@ -1558,7 +1560,7 @@ func testTranslate(t *testing.T, cfg *Config, dir string, blacklist map[string]s
 
 	p.wg.Wait()
 	for _, v := range fails {
-		t.Log(v)
+		t.Logf("FAIL: %v", v)
 	}
 	// fmt.Fprintf(os.Stderr, "%v: files %v, skip %v, ok %v, fails %v\n", dir, files, skip, ok, len(fails))
 	t.Logf("files %v, skip %v, ok %v, fails %v", files, skip, ok, len(fails))
