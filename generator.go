@@ -35,6 +35,7 @@ var (
 	sed    = "sed"
 	j      = fmt.Sprint(runtime.GOMAXPROCS(-1))
 	win    = os.Getenv("GO_GENERATE_WIN") == "1"
+	win32  = os.Getenv("GO_GENERATE_WIN32") == "1"
 )
 
 func fail(rc int, msg string, args ...any) {
@@ -50,21 +51,29 @@ func main() {
 		return
 	}
 
-	if !win && target == "linux/amd64" && os.Getenv("GO_GENERATE_NOWIN") == "" {
+	if !win && !win32 && target == "linux/amd64" && os.Getenv("GO_GENERATE_NOWIN") == "" {
 		defer func() {
-			util.MustShell(true, nil, "make", "windows")
+			util.MustShell(true, nil, "make", "windows", "windows_386")
 			util.MustCopyFile(true, "internal/autogen/windows_amd64.mod", "go.mod", nil)
 			util.MustCopyFile(true, "internal/autogen/windows_arm64.mod", "go.mod", nil)
+			util.MustCopyFile(true, "internal/autogen/windows_386.mod", "go.mod", nil)
 		}()
 	}
 
-	if win {
+	switch {
+	case win:
 		if target != "linux/amd64" {
 			fail(1, "cross compiling for windows is supported only on linux/amd64 (+Wine)")
 		}
 
 		goos = "windows"
 		goarch = "amd64"
+	case win32:
+		if target != "linux/amd64" {
+			fail(1, "cross compiling for windows supported only on linux/amd64 (+Wine)")
+		}
+		goos = "windows"
+		goarch = "386"
 	}
 
 	switch target {
@@ -103,20 +112,23 @@ func main() {
 	}
 	libRoot := filepath.Join(tempDir, extractedArchivePath)
 	makeRoot := filepath.Join(libRoot, "unix")
-	if win {
+	if win || win32 {
 		makeRoot = filepath.Join(libRoot, "win")
 	}
 	xdgDir := filepath.Join(xdg.ConfigHome, "ccgo", "v4", "libtcl8.6", goos, goarch)
 	os.MkdirAll(xdgDir, 0770)
+	fmt.Fprintf(os.Stderr, "dev %v\n", dev)
 	fmt.Fprintf(os.Stderr, "xdgDir %s\n", xdgDir)
 	fmt.Fprintf(os.Stderr, "archivePath %s\n", archivePath)
 	fmt.Fprintf(os.Stderr, "extractedArchivePath %s\n", extractedArchivePath)
 	fmt.Fprintf(os.Stderr, "tempDir %s\n", tempDir)
 	fmt.Fprintf(os.Stderr, "libRoot %s\n", libRoot)
 	fmt.Fprintf(os.Stderr, "makeRoot %s\n", makeRoot)
-	os.RemoveAll(filepath.Join("library", "assets"))
 	os.RemoveAll(filepath.Join("include", goos, goarch))
-	os.Remove(filepath.Join("internal/tests"))
+	if !win && !win32 {
+		os.RemoveAll(filepath.Join("library", "assets"))
+		os.Remove(filepath.Join("internal/tests"))
+	}
 	util.MustUntar(true, tempDir, f, nil)
 	os.RemoveAll(filepath.Join(libRoot, "pkgs"))
 	mustCopyDir(libRoot, filepath.Join("overlay", "all"), nil, true)
@@ -128,7 +140,6 @@ func main() {
 	util.MustInDir(true, makeRoot, func() (err error) {
 		os.RemoveAll("pkgs")
 		cflags := []string{
-			// "-DTCL_MEM_DEBUG", //TODO-
 			"-DNDEBUG",
 			"-UHAVE_COPYFILE",
 			"-UHAVE_CPUID",
@@ -144,14 +155,39 @@ func main() {
 				"-fPIC",
 			)
 		}
-		util.MustShell(true, nil, "sh", "-c", "go mod init example.com/libtcl8.6 ; go get modernc.org/libc@latest modernc.org/libz@latest")
+		util.MustShell(true, nil, "sh", "-c", `
+go mod init example.com/libtcl8.6
+go get \
+	modernc.org/libadvapi32@latest \
+	modernc.org/libc@latest \
+	modernc.org/libkernel32@latest \
+	modernc.org/libnetapi32@latest \
+	modernc.org/libuser32@latest \
+	modernc.org/libuserenv@latest \
+	modernc.org/libws2_32@latest \
+	modernc.org/libz@latest
+`)
 		if dev {
-			util.MustShell(true, nil, "sh", "-c", "go work init ; go work use $GOPATH/src/modernc.org/libc $GOPATH/src/modernc.org/libz")
+			util.MustShell(true, nil, "sh", "-c", `
+go work init
+go work use \
+	$GOPATH/src/modernc.org/libadvapi32 \
+	$GOPATH/src/modernc.org/libc \
+	$GOPATH/src/modernc.org/libkernel32 \
+	$GOPATH/src/modernc.org/libnetapi32 \
+	$GOPATH/src/modernc.org/libuser32 \
+	$GOPATH/src/modernc.org/libuserenv \
+	$GOPATH/src/modernc.org/libws2_32 \
+	$GOPATH/src/modernc.org/libz
+`)
 		}
 		switch {
 		case win:
 			cflags = append(cflags, "-DTCL_BROKEN_MAINARGS")
 			util.MustShell(true, nil, "sh", "-c", fmt.Sprintf("CFLAGS='%s' ./configure --build=x86-64_linux --host=x86_64-w64-mingw32 --enable-64bit --disable-threads --disable-shared --disable-load", strings.Join(cflags, " ")))
+		case win32:
+			cflags = append(cflags, "-DTCL_BROKEN_MAINARGS", "-D__CRT__NO_INLINE")
+			util.MustShell(true, nil, "sh", "-c", fmt.Sprintf("CFLAGS='%s' ./configure --build=x86-64_linux --host=i686-w64-mingw32 --enable-64bit --disable-threads --disable-shared --disable-load", strings.Join(cflags, " ")))
 		case
 			target == "linux/amd64",
 			target == "linux/loong64":
@@ -182,14 +218,19 @@ func main() {
 				"-hide", "__darwin_check_fd_set",
 			)
 		}
-		if !win {
+		if !win && !win32 {
 			args = append(args,
 				"-hide", "TclpCreateProcess",
 			)
 		}
-		if win {
+		switch {
+		case win:
 			args = append(args,
-				"-build-lines", "//go:build windows && (amd64 || arm64)\n// +build windows\n// +build amd64 arm64",
+				"-build-lines", "//go:build windows && (amd64 || arm64)\n",
+			)
+		case win32:
+			args = append(args,
+				"-build-lines", "//go:build windows && 386\n",
 			)
 		}
 		args = append(args,
@@ -217,7 +258,21 @@ func main() {
 					"--goarch", goarch,
 					"--goos", goos,
 					"-map", "ar=x86_64-w64-mingw32-ar,gcc=x86_64-w64-mingw32-gcc",
-					"-exec", "make", "-j", j, "binaries", "tcltests.exe",
+					"-exec", "make", "binaries", "tcltests.exe",
+				),
+				os.Stdout, os.Stderr, nil,
+			).Exec(); err != nil {
+				return err
+			}
+		case win32:
+			if err := ccgo.NewTask(
+				goos, goarch,
+				append(args,
+					"--cpp", strings.TrimSpace(string(util.MustShell(true, nil, "which", "i686-w64-mingw32-gcc"))),
+					"--goarch", goarch,
+					"--goos", goos,
+					"-map", "ar=i686-w64-mingw32-ar,gcc=i686-w64-mingw32-gcc",
+					"-exec", "make", "binaries", "tcltests.exe",
 				),
 				os.Stdout, os.Stderr, nil,
 			).Exec(); err != nil {
@@ -227,8 +282,20 @@ func main() {
 			ccgo.NewTask(goos, goarch, append(args, "-exec", "make", "-j", j, "test"), os.Stdout, os.Stderr, nil).Exec()
 		}
 		switch {
-		case win:
-			return ccgo.NewTask(goos, goarch, append(args, "-o", result, "--package-name", "libtcl8_6", "-ignore-link-errors", "libtcl86.a", "libtclstub86.a", "-lz"), os.Stdout, os.Stderr, nil).Main()
+		case win, win32:
+			return ccgo.NewTask(goos, goarch, append(args,
+				"-o", result,
+				"--package-name", "libtcl8_6",
+				"-ignore-link-errors",
+				"libtcl86.a",
+				"libtclstub86.a",
+				"-ladvapi32",
+				"-lkernel32",
+				"-lnetapi32",
+				"-luser32",
+				"-luserenv",
+				"-lws2_32",
+			), os.Stdout, os.Stderr, nil).Main()
 		case target == "openbsd/amd64":
 			return ccgo.NewTask(goos, goarch, append(args, "-o", result, "--package-name", "libtcl8_6", "-ignore-link-errors", "libtcl86.a", "-lz"), os.Stdout, os.Stderr, nil).Main()
 		default:
@@ -241,7 +308,8 @@ func main() {
 	mustCopyFile(filepath.Join("include", goos, goarch, "tcl.h"), filepath.Join(libRoot, "generic", "tcl.h"), nil)
 	mustCopyFile(filepath.Join("include", goos, goarch, "tclDecls.h"), filepath.Join(libRoot, "generic", "tclDecls.h"), nil)
 	mustCopyFile(filepath.Join("include", goos, goarch, "tclPlatDecls.h"), filepath.Join(libRoot, "generic", "tclPlatDecls.h"), nil)
-	if win {
+	switch {
+	case win:
 		mustCopyFile(filepath.Join("include", "windows", "arm64", "tcl.h"), filepath.Join(libRoot, "generic", "tcl.h"), nil)
 		mustCopyFile(filepath.Join("include", "windows", "arm64", "tclDecls.h"), filepath.Join(libRoot, "generic", "tclDecls.h"), nil)
 		mustCopyFile(filepath.Join("include", "windows", "arm64", "tclPlatDecls.h"), filepath.Join(libRoot, "generic", "tclPlatDecls.h"), nil)
@@ -257,7 +325,7 @@ func main() {
 	util.MustShell(true, nil, sed, "-i", `s/\<T__\([a-zA-Z0-9][a-zA-Z0-9_]\+\)/t__\1/g`, fn)
 	util.MustShell(true, nil, sed, "-i", `s/\<x_\([a-zA-Z0-9][a-zA-Z0-9_]\+\)/X\1/g`, fn)
 	switch {
-	case win:
+	case win || win32:
 		mustCopyFile(filepath.Join("internal", "tcltest", fn), filepath.Join(makeRoot, "tcltests.exe.go"), nil)
 	default:
 		mustCopyFile(filepath.Join("internal", "tcltest", fn), filepath.Join(makeRoot, "tcltest.go"), nil)
