@@ -1,8 +1,6 @@
-// Code generated for windows/amd64 by 'x86_64-w64-mingw32-gcc --prefix-enumerator=_ --prefix-external=x_ --prefix-field=F --prefix-macro=m_ --prefix-static-internal=_ --prefix-static-none=_ --prefix-tagged-enum=_ --prefix-tagged-struct=T --prefix-tagged-union=T --prefix-typename=T --prefix-undefined=_ -extended-errors --libc modernc.org/libc -build-lines \/\/go:build windows && (amd64 || arm64)\n\/\/ \x2bbuild windows\n\/\/ \x2bbuild amd64 arm64 --cpp /usr/bin/x86_64-w64-mingw32-gcc --goarch amd64 --goos windows --package-name=main -map ar=x86_64-w64-mingw32-ar,gcc=x86_64-w64-mingw32-gcc -o example.exe.go example.o.go libz.a', DO NOT EDIT.
+// Code generated for windows/amd64 by 'x86_64-w64-mingw32-gcc --prefix-enumerator=_ --prefix-external=x_ --prefix-field=F --prefix-macro=m_ --prefix-static-internal=_ --prefix-static-none=_ --prefix-tagged-enum=_ --prefix-tagged-struct=T --prefix-tagged-union=T --prefix-typename=T --prefix-undefined=_ -extended-errors --libc modernc.org/libc -D_UCRT -build-lines \/\/go:build windows && (amd64 || arm64)\n --cpp /usr/bin/x86_64-w64-mingw32-gcc --goarch amd64 --goos windows --package-name=main -map ar=x86_64-w64-mingw32-ar,gcc=x86_64-w64-mingw32-gcc -o example.exe.go example.o.go libz.a', DO NOT EDIT.
 
 //go:build windows && (amd64 || arm64)
-// +build windows
-// +build amd64 arm64
 
 package main
 
@@ -178,12 +176,12 @@ const m__CRT_INTERNAL_LOCAL_PRINTF_OPTIONS = "_CRT_INTERNAL_PRINTF_LEGACY_WIDE_S
 const m__CRT_INTERNAL_LOCAL_SCANF_OPTIONS = "_CRT_INTERNAL_SCANF_LEGACY_WIDE_SPECIFIERS"
 const m__CRT_INTERNAL_PRINTF_LEGACY_MSVCRT_COMPATIBILITY = "0x0008U"
 const m__CRT_INTERNAL_PRINTF_LEGACY_THREE_DIGIT_EXPONENTS = "0x0010U"
-const m__CRT_INTERNAL_PRINTF_LEGACY_VSPRINTF_NULL_TERMINATION = "0x0001U"
-const m__CRT_INTERNAL_PRINTF_LEGACY_WIDE_SPECIFIERS = "0x0004U"
-const m__CRT_INTERNAL_PRINTF_STANDARD_SNPRINTF_BEHAVIOR = "0x0002U"
+const m__CRT_INTERNAL_PRINTF_LEGACY_VSPRINTF_NULL_TERMINATION = 1
+const m__CRT_INTERNAL_PRINTF_LEGACY_WIDE_SPECIFIERS = 4
+const m__CRT_INTERNAL_PRINTF_STANDARD_SNPRINTF_BEHAVIOR = 2
 const m__CRT_INTERNAL_SCANF_LEGACY_MSVCRT_COMPATIBILITY = "0x0004U"
-const m__CRT_INTERNAL_SCANF_LEGACY_WIDE_SPECIFIERS = "0x0002U"
-const m__CRT_INTERNAL_SCANF_SECURECRT = "0x0001U"
+const m__CRT_INTERNAL_SCANF_LEGACY_WIDE_SPECIFIERS = 2
+const m__CRT_INTERNAL_SCANF_SECURECRT = 1
 const m__FREEENTRY = 0
 const m__HEAP_MAXREQ = 0xFFFFFFFFFFFFFFE0
 const m__I16_MAX = 32767
@@ -192,16 +190,9 @@ const m__I64_MAX = "9223372036854775807ll"
 const m__I8_MAX = 127
 const m__INTEGRAL_MAX_BITS = 64
 const m__IOB_ENTRIES = 20
-const m__IOEOF = 0x0010
-const m__IOERR = 0x0020
 const m__IOFBF = 0x0000
 const m__IOLBF = 0x0040
-const m__IOMYBUF = 0x0008
 const m__IONBF = 0x0004
-const m__IOREAD = 0x0001
-const m__IORW = 0x0080
-const m__IOSTRG = 0x0040
-const m__IOWRT = 0x0002
 const m__MAX_DIR = 256
 const m__MAX_DRIVE = 3
 const m__MAX_ENV = 32767
@@ -230,6 +221,7 @@ const m__REPORT_ERRMODE = 3
 const m__SECURECRT_FILL_BUFFER_PATTERN = 0xFD
 const m__SYS_OPEN = 20
 const m__TWO_DIGIT_EXPONENT = 0x1
+const m__UCRT = 1
 const m__UI16_MAX = "0xffffu"
 const m__UI32_MAX = "0xffffffffu"
 const m__UI64_MAX = "0xffffffffffffffffull"
@@ -477,7 +469,7 @@ const m___MINGW_HAVE_WIDE_C99_SCANF = 1
 const m___MINGW_MSVC2005_DEPREC_STR = "This POSIX function is deprecated beginning in Visual C++ 2005, use _CRT_NONSTDC_NO_DEPRECATE to disable deprecation"
 const m___MINGW_SEC_WARN_STR = "This function or variable may be unsafe, use _CRT_SECURE_NO_WARNINGS to disable deprecation"
 const m___MINGW_USE_UNDERSCORE_PREFIX = 0
-const m___MSVCRT_VERSION__ = 0x700
+const m___MSVCRT_VERSION__ = 0xE00
 const m___MSVCRT__ = 1
 const m___OPTIMIZE__ = 1
 const m___ORDER_BIG_ENDIAN__ = 4321
@@ -535,8 +527,7 @@ const m___UINT_LEAST16_MAX__ = 0xffff
 const m___UINT_LEAST32_MAX__ = 0xffffffff
 const m___UINT_LEAST64_MAX__ = "0xffffffffffffffffU"
 const m___UINT_LEAST8_MAX__ = 0xff
-const m___USE_MINGW_ANSI_STDIO = 1
-const m___USE_MINGW_STRTOX = 1
+const m___USE_MINGW_ANSI_STDIO = 0
 const m___VERSION__ = "12-win32"
 const m___WCHAR_MAX__ = 0xffff
 const m___WCHAR_MIN__ = 0
@@ -552,8 +543,6 @@ const m___WINT_MIN__ = 0
 const m___WINT_WIDTH__ = 16
 const m___amd64 = 1
 const m___amd64__ = 1
-const m___builtin_vsnprintf = "__mingw_vsnprintf"
-const m___builtin_vsprintf = "__mingw_vsprintf"
 const m___code_model_medium__ = 1
 const m___int16 = "short"
 const m___int32 = "int"
@@ -616,29 +605,9 @@ type T__time64_t = int64
 type Ttime_t = int64
 
 type Tthreadlocaleinfostruct = struct {
-	Frefcount      int32
-	Flc_codepage   uint32
-	Flc_collate_cp uint32
-	Flc_handle     [6]uint32
-	Flc_id         [6]TLC_ID
-	Flc_category   [6]struct {
-		Flocale    uintptr
-		Fwlocale   uintptr
-		Frefcount  uintptr
-		Fwrefcount uintptr
-	}
-	Flc_clike            int32
-	Fmb_cur_max          int32
-	Flconv_intl_refcount uintptr
-	Flconv_num_refcount  uintptr
-	Flconv_mon_refcount  uintptr
-	Flconv               uintptr
-	Fctype1_refcount     uintptr
-	Fctype1              uintptr
-	Fpctype              uintptr
-	Fpclmap              uintptr
-	Fpcumap              uintptr
-	Flc_time_curr        uintptr
+	F_locale_pctype      uintptr
+	F_locale_mb_cur_max  int32
+	F_locale_lc_codepage uint32
 }
 
 type Tpthreadlocinfo = uintptr
@@ -665,29 +634,9 @@ type TtagLC_ID = TLC_ID
 type TLPLC_ID = uintptr
 
 type Tthreadlocinfo = struct {
-	Frefcount      int32
-	Flc_codepage   uint32
-	Flc_collate_cp uint32
-	Flc_handle     [6]uint32
-	Flc_id         [6]TLC_ID
-	Flc_category   [6]struct {
-		Flocale    uintptr
-		Fwlocale   uintptr
-		Frefcount  uintptr
-		Fwrefcount uintptr
-	}
-	Flc_clike            int32
-	Fmb_cur_max          int32
-	Flconv_intl_refcount uintptr
-	Flconv_num_refcount  uintptr
-	Flconv_mon_refcount  uintptr
-	Flconv               uintptr
-	Fctype1_refcount     uintptr
-	Fctype1              uintptr
-	Fpctype              uintptr
-	Fpclmap              uintptr
-	Fpcumap              uintptr
-	Flc_time_curr        uintptr
+	F_locale_pctype      uintptr
+	F_locale_mb_cur_max  int32
+	F_locale_lc_codepage uint32
 }
 
 type Tmax_align_t = struct {
@@ -819,25 +768,11 @@ type TgzFile_s = struct {
 }
 
 type T_iobuf = struct {
-	F_ptr      uintptr
-	F_cnt      int32
-	F_base     uintptr
-	F_flag     int32
-	F_file     int32
-	F_charbuf  int32
-	F_bufsiz   int32
-	F_tmpfname uintptr
+	F_Placeholder uintptr
 }
 
 type TFILE = struct {
-	F_ptr      uintptr
-	F_cnt      int32
-	F_base     uintptr
-	F_flag     int32
-	F_file     int32
-	F_charbuf  int32
-	F_bufsiz   int32
-	F_tmpfname uintptr
+	F_Placeholder uintptr
 }
 
 type Tfpos_t = int64
@@ -924,62 +859,30 @@ func init() {
 //	 * Test compress() and uncompress()
 //	 */
 func _test_compress(tls *libc.TLS, compr uintptr, _comprLen TuLong, uncompr uintptr, _uncomprLen TuLong) {
-	bp := tls.Alloc(112)
-	defer tls.Free(112)
-	*(*TuLong)(unsafe.Pointer(bp + 104)) = _comprLen
-	*(*TuLong)(unsafe.Pointer(bp + 108)) = _uncomprLen
-	var __local_argv, __local_argv1 T__builtin_va_list
-	var __retval, __retval1, err int32
+	bp := tls.Alloc(32)
+	defer tls.Free(32)
+	*(*TuLong)(unsafe.Pointer(bp)) = _comprLen
+	*(*TuLong)(unsafe.Pointer(bp + 4)) = _uncomprLen
+	var err int32
 	var len1 TuLong
-	var v1, v3, v5, v7 uintptr
-	_, _, _, _, _, _, _, _, _, _ = __local_argv, __local_argv1, __retval, __retval1, err, len1, v1, v3, v5, v7
+	_, _ = err, len1
 	len1 = uint32(libc.Xstrlen(tls, uintptr(unsafe.Pointer(&_hello)))) + uint32(1)
-	err = x_compress(tls, compr, bp+104, uintptr(unsafe.Pointer(&_hello)), len1)
+	err = x_compress(tls, compr, bp, uintptr(unsafe.Pointer(&_hello)), len1)
 	if err != m_Z_OK {
-		v1 = __ccgo_ts
-		libc.VaList(bp, __ccgo_ts+14, err)
-		__local_argv = bp
-		__retval = libc.X__mingw_vfprintf(tls, libc.X__acrt_iob_func(tls, uint32(2)), v1, __local_argv)
-		_ = __local_argv
-		_ = __retval
-		goto _2
-	_2:
-		;
+		libc.Xfprintf(tls, libc.X__acrt_iob_func(tls, uint32(2)), __ccgo_ts, libc.VaList(bp+16, __ccgo_ts+14, err))
 		libc.Xexit(tls, int32(1))
 	}
 	libc.Xstrcpy(tls, uncompr, __ccgo_ts+23)
-	err = x_uncompress(tls, uncompr, bp+108, compr, *(*TuLong)(unsafe.Pointer(bp + 104)))
+	err = x_uncompress(tls, uncompr, bp+4, compr, *(*TuLong)(unsafe.Pointer(bp)))
 	if err != m_Z_OK {
-		v3 = __ccgo_ts
-		libc.VaList(bp, __ccgo_ts+31, err)
-		__local_argv = bp
-		__retval = libc.X__mingw_vfprintf(tls, libc.X__acrt_iob_func(tls, uint32(2)), v3, __local_argv)
-		_ = __local_argv
-		_ = __retval
-		goto _4
-	_4:
-		;
+		libc.Xfprintf(tls, libc.X__acrt_iob_func(tls, uint32(2)), __ccgo_ts, libc.VaList(bp+16, __ccgo_ts+31, err))
 		libc.Xexit(tls, int32(1))
 	}
 	if libc.Xstrcmp(tls, uncompr, uintptr(unsafe.Pointer(&_hello))) != 0 {
-		v5 = __ccgo_ts + 42
-		__local_argv = bp
-		__retval = libc.X__mingw_vfprintf(tls, libc.X__acrt_iob_func(tls, uint32(2)), v5, __local_argv)
-		_ = __local_argv
-		_ = __retval
-		goto _6
-	_6:
-		;
+		libc.Xfprintf(tls, libc.X__acrt_iob_func(tls, uint32(2)), __ccgo_ts+42, 0)
 		libc.Xexit(tls, int32(1))
 	} else {
-		v7 = __ccgo_ts + 58
-		libc.VaList(bp, uncompr)
-		__local_argv1 = bp
-		__retval1 = libc.X__mingw_vfprintf(tls, libc.X__acrt_iob_func(tls, uint32(1)), v7, __local_argv1)
-		_ = __local_argv1
-		_ = __retval1
-		goto _8
-	_8:
+		libc.Xprintf(tls, __ccgo_ts+58, libc.VaList(bp+16, uncompr))
 	}
 }
 
@@ -989,177 +892,79 @@ func _test_compress(tls *libc.TLS, compr uintptr, _comprLen TuLong, uncompr uint
 //	 * Test read/write of .gz files
 //	 */
 func _test_gzio(tls *libc.TLS, fname uintptr, uncompr uintptr, uncomprLen TuLong) {
-	bp := tls.Alloc(304)
-	defer tls.Free(304)
-	var __local_argv, __local_argv1 T__builtin_va_list
-	var __retval, __retval1, len1, pos, v17 int32
+	bp := tls.Alloc(32)
+	defer tls.Free(32)
 	var file TgzFile
-	var v1, v11, v13, v15, v18, v19, v20, v22, v24, v26, v28, v3, v5, v7, v9 uintptr
-	var _ /* err at bp+280 */ int32
-	_, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _ = __local_argv, __local_argv1, __retval, __retval1, file, len1, pos, v1, v11, v13, v15, v17, v18, v19, v20, v22, v24, v26, v28, v3, v5, v7, v9
+	var len1, pos, v1 int32
+	var v2, v3 uintptr
+	var _ /* err at bp+0 */ int32
+	_, _, _, _, _, _ = file, len1, pos, v1, v2, v3
 	len1 = int32(libc.Xstrlen(tls, uintptr(unsafe.Pointer(&_hello)))) + int32(1)
 	file = x_gzopen(tls, fname, __ccgo_ts+76)
 	if file == libc.UintptrFromInt32(0) {
-		v1 = __ccgo_ts + 79
-		__local_argv = bp
-		__retval = libc.X__mingw_vfprintf(tls, libc.X__acrt_iob_func(tls, uint32(2)), v1, __local_argv)
-		_ = __local_argv
-		_ = __retval
-		goto _2
-	_2:
-		;
+		libc.Xfprintf(tls, libc.X__acrt_iob_func(tls, uint32(2)), __ccgo_ts+79, 0)
 		libc.Xexit(tls, int32(1))
 	}
 	x_gzputc(tls, file, int32('h'))
 	if x_gzputs(tls, file, __ccgo_ts+93) != int32(4) {
-		v3 = __ccgo_ts + 98
-		libc.VaList(bp, x_gzerror(tls, file, bp+280))
-		__local_argv = bp
-		__retval = libc.X__mingw_vfprintf(tls, libc.X__acrt_iob_func(tls, uint32(2)), v3, __local_argv)
-		_ = __local_argv
-		_ = __retval
-		goto _4
-	_4:
-		;
+		libc.Xfprintf(tls, libc.X__acrt_iob_func(tls, uint32(2)), __ccgo_ts+98, libc.VaList(bp+16, x_gzerror(tls, file, bp)))
 		libc.Xexit(tls, int32(1))
 	}
-	if x_gzprintf(tls, file, __ccgo_ts+114, libc.VaList(bp+296, __ccgo_ts+120)) != int32(8) {
-		v5 = __ccgo_ts + 126
-		libc.VaList(bp, x_gzerror(tls, file, bp+280))
-		__local_argv = bp
-		__retval = libc.X__mingw_vfprintf(tls, libc.X__acrt_iob_func(tls, uint32(2)), v5, __local_argv)
-		_ = __local_argv
-		_ = __retval
-		goto _6
-	_6:
-		;
+	if x_gzprintf(tls, file, __ccgo_ts+114, libc.VaList(bp+16, __ccgo_ts+120)) != int32(8) {
+		libc.Xfprintf(tls, libc.X__acrt_iob_func(tls, uint32(2)), __ccgo_ts+126, libc.VaList(bp+16, x_gzerror(tls, file, bp)))
 		libc.Xexit(tls, int32(1))
 	}
 	x_gzseek(tls, file, int32(1), int32(m_SEEK_CUR)) /* add one zero byte */
 	x_gzclose(tls, file)
 	file = x_gzopen(tls, fname, __ccgo_ts+144)
 	if file == libc.UintptrFromInt32(0) {
-		v7 = __ccgo_ts + 79
-		__local_argv = bp
-		__retval = libc.X__mingw_vfprintf(tls, libc.X__acrt_iob_func(tls, uint32(2)), v7, __local_argv)
-		_ = __local_argv
-		_ = __retval
-		goto _8
-	_8:
-		;
+		libc.Xfprintf(tls, libc.X__acrt_iob_func(tls, uint32(2)), __ccgo_ts+79, 0)
 		libc.Xexit(tls, int32(1))
 	}
 	libc.Xstrcpy(tls, uncompr, __ccgo_ts+23)
 	if x_gzread(tls, file, uncompr, uint32(uint32(uncomprLen))) != len1 {
-		v9 = __ccgo_ts + 147
-		libc.VaList(bp, x_gzerror(tls, file, bp+280))
-		__local_argv = bp
-		__retval = libc.X__mingw_vfprintf(tls, libc.X__acrt_iob_func(tls, uint32(2)), v9, __local_argv)
-		_ = __local_argv
-		_ = __retval
-		goto _10
-	_10:
-		;
+		libc.Xfprintf(tls, libc.X__acrt_iob_func(tls, uint32(2)), __ccgo_ts+147, libc.VaList(bp+16, x_gzerror(tls, file, bp)))
 		libc.Xexit(tls, int32(1))
 	}
 	if libc.Xstrcmp(tls, uncompr, uintptr(unsafe.Pointer(&_hello))) != 0 {
-		v11 = __ccgo_ts + 163
-		libc.VaList(bp, uncompr)
-		__local_argv = bp
-		__retval = libc.X__mingw_vfprintf(tls, libc.X__acrt_iob_func(tls, uint32(2)), v11, __local_argv)
-		_ = __local_argv
-		_ = __retval
-		goto _12
-	_12:
-		;
+		libc.Xfprintf(tls, libc.X__acrt_iob_func(tls, uint32(2)), __ccgo_ts+163, libc.VaList(bp+16, uncompr))
 		libc.Xexit(tls, int32(1))
 	} else {
-		v13 = __ccgo_ts + 179
-		libc.VaList(bp, uncompr)
-		__local_argv1 = bp
-		__retval1 = libc.X__mingw_vfprintf(tls, libc.X__acrt_iob_func(tls, uint32(1)), v13, __local_argv1)
-		_ = __local_argv1
-		_ = __retval1
-		goto _14
-	_14:
+		libc.Xprintf(tls, __ccgo_ts+179, libc.VaList(bp+16, uncompr))
 	}
 	pos = x_gzseek(tls, file, -int32(8), int32(m_SEEK_CUR))
 	if pos != int32(6) || x_gztell(tls, file) != pos {
-		v15 = __ccgo_ts + 193
-		libc.VaList(bp, pos, x_gztell(tls, file))
-		__local_argv = bp
-		__retval = libc.X__mingw_vfprintf(tls, libc.X__acrt_iob_func(tls, uint32(2)), v15, __local_argv)
-		_ = __local_argv
-		_ = __retval
-		goto _16
-	_16:
-		;
+		libc.Xfprintf(tls, libc.X__acrt_iob_func(tls, uint32(2)), __ccgo_ts+193, libc.VaList(bp+16, pos, x_gztell(tls, file)))
 		libc.Xexit(tls, int32(1))
 	}
 	if (*TgzFile_s)(unsafe.Pointer(file)).Fhave != 0 {
 		(*TgzFile_s)(unsafe.Pointer(file)).Fhave--
 		(*TgzFile_s)(unsafe.Pointer(file)).Fpos++
-		v19 = file + 8
-		v18 = *(*uintptr)(unsafe.Pointer(v19))
-		*(*uintptr)(unsafe.Pointer(v19))++
-		v17 = int32(*(*uint8)(unsafe.Pointer(v18)))
+		v3 = file + 8
+		v2 = *(*uintptr)(unsafe.Pointer(v3))
+		*(*uintptr)(unsafe.Pointer(v3))++
+		v1 = int32(*(*uint8)(unsafe.Pointer(v2)))
 	} else {
-		v17 = x_gzgetc(tls, file)
+		v1 = x_gzgetc(tls, file)
 	}
-	if v17 != int32(' ') {
-		v20 = __ccgo_ts + 228
-		__local_argv = bp
-		__retval = libc.X__mingw_vfprintf(tls, libc.X__acrt_iob_func(tls, uint32(2)), v20, __local_argv)
-		_ = __local_argv
-		_ = __retval
-		goto _21
-	_21:
-		;
+	if v1 != int32(' ') {
+		libc.Xfprintf(tls, libc.X__acrt_iob_func(tls, uint32(2)), __ccgo_ts+228, 0)
 		libc.Xexit(tls, int32(1))
 	}
 	if x_gzungetc(tls, int32(' '), file) != int32(' ') {
-		v22 = __ccgo_ts + 242
-		__local_argv = bp
-		__retval = libc.X__mingw_vfprintf(tls, libc.X__acrt_iob_func(tls, uint32(2)), v22, __local_argv)
-		_ = __local_argv
-		_ = __retval
-		goto _23
-	_23:
-		;
+		libc.Xfprintf(tls, libc.X__acrt_iob_func(tls, uint32(2)), __ccgo_ts+242, 0)
 		libc.Xexit(tls, int32(1))
 	}
 	x_gzgets(tls, file, uncompr, int32(int32(uncomprLen)))
 	if libc.Xstrlen(tls, uncompr) != uint64(7) { /* " hello!" */
-		v24 = __ccgo_ts + 258
-		libc.VaList(bp, x_gzerror(tls, file, bp+280))
-		__local_argv = bp
-		__retval = libc.X__mingw_vfprintf(tls, libc.X__acrt_iob_func(tls, uint32(2)), v24, __local_argv)
-		_ = __local_argv
-		_ = __retval
-		goto _25
-	_25:
-		;
+		libc.Xfprintf(tls, libc.X__acrt_iob_func(tls, uint32(2)), __ccgo_ts+258, libc.VaList(bp+16, x_gzerror(tls, file, bp)))
 		libc.Xexit(tls, int32(1))
 	}
 	if libc.Xstrcmp(tls, uncompr, uintptr(unsafe.Pointer(&_hello))+uintptr(6)) != 0 {
-		v26 = __ccgo_ts + 287
-		__local_argv = bp
-		__retval = libc.X__mingw_vfprintf(tls, libc.X__acrt_iob_func(tls, uint32(2)), v26, __local_argv)
-		_ = __local_argv
-		_ = __retval
-		goto _27
-	_27:
-		;
+		libc.Xfprintf(tls, libc.X__acrt_iob_func(tls, uint32(2)), __ccgo_ts+287, 0)
 		libc.Xexit(tls, int32(1))
 	} else {
-		v28 = __ccgo_ts + 312
-		libc.VaList(bp, uncompr)
-		__local_argv1 = bp
-		__retval1 = libc.X__mingw_vfprintf(tls, libc.X__acrt_iob_func(tls, uint32(1)), v28, __local_argv1)
-		_ = __local_argv1
-		_ = __retval1
-		goto _29
-	_29:
+		libc.Xprintf(tls, __ccgo_ts+312, libc.VaList(bp+16, uncompr))
 	}
 	x_gzclose(tls, file)
 }
@@ -1170,85 +975,51 @@ func _test_gzio(tls *libc.TLS, fname uintptr, uncompr uintptr, uncomprLen TuLong
 //	 * Test deflate() with small buffers
 //	 */
 func _test_deflate(tls *libc.TLS, compr uintptr, comprLen TuLong) {
-	bp := tls.Alloc(224)
-	defer tls.Free(224)
-	var __local_argv T__builtin_va_list
-	var __retval, err int32
+	bp := tls.Alloc(112)
+	defer tls.Free(112)
+	var err int32
 	var len1 TuLong
-	var v1, v4, v7, v9 uintptr
-	var v3 TuInt
-	var _ /* c_stream at bp+128 */ Tz_stream
-	_, _, _, _, _, _, _, _, _ = __local_argv, __retval, err, len1, v1, v3, v4, v7, v9
+	var v1 TuInt
+	var _ /* c_stream at bp+0 */ Tz_stream
+	_, _, _ = err, len1, v1
 	len1 = uint32(libc.Xstrlen(tls, uintptr(unsafe.Pointer(&_hello)))) + uint32(1)
-	(*(*Tz_stream)(unsafe.Pointer(bp + 128))).Fzalloc = _zalloc
-	(*(*Tz_stream)(unsafe.Pointer(bp + 128))).Fzfree = _zfree
-	(*(*Tz_stream)(unsafe.Pointer(bp + 128))).Fopaque = libc.UintptrFromInt32(0)
-	err = x_deflateInit_(tls, bp+128, -int32(1), __ccgo_ts+339, libc.Int32FromInt64(88))
+	(*(*Tz_stream)(unsafe.Pointer(bp))).Fzalloc = _zalloc
+	(*(*Tz_stream)(unsafe.Pointer(bp))).Fzfree = _zfree
+	(*(*Tz_stream)(unsafe.Pointer(bp))).Fopaque = libc.UintptrFromInt32(0)
+	err = x_deflateInit_(tls, bp, -int32(1), __ccgo_ts+339, libc.Int32FromInt64(88))
 	if err != m_Z_OK {
-		v1 = __ccgo_ts
-		libc.VaList(bp, __ccgo_ts+345, err)
-		__local_argv = bp
-		__retval = libc.X__mingw_vfprintf(tls, libc.X__acrt_iob_func(tls, uint32(2)), v1, __local_argv)
-		_ = __local_argv
-		_ = __retval
-		goto _2
-	_2:
-		;
+		libc.Xfprintf(tls, libc.X__acrt_iob_func(tls, uint32(2)), __ccgo_ts, libc.VaList(bp+96, __ccgo_ts+345, err))
 		libc.Xexit(tls, int32(1))
 	}
-	(*(*Tz_stream)(unsafe.Pointer(bp + 128))).Fnext_in = uintptr(unsafe.Pointer(&_hello))
-	(*(*Tz_stream)(unsafe.Pointer(bp + 128))).Fnext_out = compr
-	for (*(*Tz_stream)(unsafe.Pointer(bp + 128))).Ftotal_in != len1 && (*(*Tz_stream)(unsafe.Pointer(bp + 128))).Ftotal_out < comprLen {
-		v3 = libc.Uint32FromInt32(1)
-		(*(*Tz_stream)(unsafe.Pointer(bp + 128))).Favail_out = v3
-		(*(*Tz_stream)(unsafe.Pointer(bp + 128))).Favail_in = v3 /* force small buffers */
-		err = x_deflate(tls, bp+128, m_Z_NO_FLUSH)
+	(*(*Tz_stream)(unsafe.Pointer(bp))).Fnext_in = uintptr(unsafe.Pointer(&_hello))
+	(*(*Tz_stream)(unsafe.Pointer(bp))).Fnext_out = compr
+	for (*(*Tz_stream)(unsafe.Pointer(bp))).Ftotal_in != len1 && (*(*Tz_stream)(unsafe.Pointer(bp))).Ftotal_out < comprLen {
+		v1 = libc.Uint32FromInt32(1)
+		(*(*Tz_stream)(unsafe.Pointer(bp))).Favail_out = v1
+		(*(*Tz_stream)(unsafe.Pointer(bp))).Favail_in = v1 /* force small buffers */
+		err = x_deflate(tls, bp, m_Z_NO_FLUSH)
 		if err != m_Z_OK {
-			v4 = __ccgo_ts
-			libc.VaList(bp, __ccgo_ts+357, err)
-			__local_argv = bp
-			__retval = libc.X__mingw_vfprintf(tls, libc.X__acrt_iob_func(tls, uint32(2)), v4, __local_argv)
-			_ = __local_argv
-			_ = __retval
-			goto _5
-		_5:
-			;
+			libc.Xfprintf(tls, libc.X__acrt_iob_func(tls, uint32(2)), __ccgo_ts, libc.VaList(bp+96, __ccgo_ts+357, err))
 			libc.Xexit(tls, int32(1))
 		}
 	}
 	/* Finish the stream, still forcing small buffers: */
 	for {
-		(*(*Tz_stream)(unsafe.Pointer(bp + 128))).Favail_out = uint32(1)
-		err = x_deflate(tls, bp+128, int32(m_Z_FINISH))
+		(*(*Tz_stream)(unsafe.Pointer(bp))).Favail_out = uint32(1)
+		err = x_deflate(tls, bp, int32(m_Z_FINISH))
 		if err == int32(m_Z_STREAM_END) {
 			break
 		}
 		if err != m_Z_OK {
-			v7 = __ccgo_ts
-			libc.VaList(bp, __ccgo_ts+357, err)
-			__local_argv = bp
-			__retval = libc.X__mingw_vfprintf(tls, libc.X__acrt_iob_func(tls, uint32(2)), v7, __local_argv)
-			_ = __local_argv
-			_ = __retval
-			goto _8
-		_8:
-			;
+			libc.Xfprintf(tls, libc.X__acrt_iob_func(tls, uint32(2)), __ccgo_ts, libc.VaList(bp+96, __ccgo_ts+357, err))
 			libc.Xexit(tls, int32(1))
 		}
-		goto _6
-	_6:
+		goto _2
+	_2:
 	}
-	err = x_deflateEnd(tls, bp+128)
+	err = x_deflateEnd(tls, bp)
 	if err != m_Z_OK {
-		v9 = __ccgo_ts
-		libc.VaList(bp, __ccgo_ts+365, err)
-		__local_argv = bp
-		__retval = libc.X__mingw_vfprintf(tls, libc.X__acrt_iob_func(tls, uint32(2)), v9, __local_argv)
-		_ = __local_argv
-		_ = __retval
-		goto _10
-	_10:
-		;
+		libc.Xfprintf(tls, libc.X__acrt_iob_func(tls, uint32(2)), __ccgo_ts, libc.VaList(bp+96, __ccgo_ts+365, err))
 		libc.Xexit(tls, int32(1))
 	}
 }
@@ -1259,87 +1030,47 @@ func _test_deflate(tls *libc.TLS, compr uintptr, comprLen TuLong) {
 //	 * Test inflate() with small buffers
 //	 */
 func _test_inflate(tls *libc.TLS, compr uintptr, comprLen TuLong, uncompr uintptr, uncomprLen TuLong) {
-	bp := tls.Alloc(224)
-	defer tls.Free(224)
-	var __local_argv, __local_argv1 T__builtin_va_list
-	var __retval, __retval1, err int32
-	var v1, v10, v4, v6, v8 uintptr
-	var v3 TuInt
-	var _ /* d_stream at bp+136 */ Tz_stream
-	_, _, _, _, _, _, _, _, _, _, _ = __local_argv, __local_argv1, __retval, __retval1, err, v1, v10, v3, v4, v6, v8 /* decompression stream */
+	bp := tls.Alloc(112)
+	defer tls.Free(112)
+	var err int32
+	var v1 TuInt
+	var _ /* d_stream at bp+0 */ Tz_stream
+	_, _ = err, v1 /* decompression stream */
 	libc.Xstrcpy(tls, uncompr, __ccgo_ts+23)
-	(*(*Tz_stream)(unsafe.Pointer(bp + 136))).Fzalloc = _zalloc
-	(*(*Tz_stream)(unsafe.Pointer(bp + 136))).Fzfree = _zfree
-	(*(*Tz_stream)(unsafe.Pointer(bp + 136))).Fopaque = libc.UintptrFromInt32(0)
-	(*(*Tz_stream)(unsafe.Pointer(bp + 136))).Fnext_in = compr
-	(*(*Tz_stream)(unsafe.Pointer(bp + 136))).Favail_in = uint32(0)
-	(*(*Tz_stream)(unsafe.Pointer(bp + 136))).Fnext_out = uncompr
-	err = x_inflateInit_(tls, bp+136, __ccgo_ts+339, libc.Int32FromInt64(88))
+	(*(*Tz_stream)(unsafe.Pointer(bp))).Fzalloc = _zalloc
+	(*(*Tz_stream)(unsafe.Pointer(bp))).Fzfree = _zfree
+	(*(*Tz_stream)(unsafe.Pointer(bp))).Fopaque = libc.UintptrFromInt32(0)
+	(*(*Tz_stream)(unsafe.Pointer(bp))).Fnext_in = compr
+	(*(*Tz_stream)(unsafe.Pointer(bp))).Favail_in = uint32(0)
+	(*(*Tz_stream)(unsafe.Pointer(bp))).Fnext_out = uncompr
+	err = x_inflateInit_(tls, bp, __ccgo_ts+339, libc.Int32FromInt64(88))
 	if err != m_Z_OK {
-		v1 = __ccgo_ts
-		libc.VaList(bp, __ccgo_ts+376, err)
-		__local_argv = bp
-		__retval = libc.X__mingw_vfprintf(tls, libc.X__acrt_iob_func(tls, uint32(2)), v1, __local_argv)
-		_ = __local_argv
-		_ = __retval
-		goto _2
-	_2:
-		;
+		libc.Xfprintf(tls, libc.X__acrt_iob_func(tls, uint32(2)), __ccgo_ts, libc.VaList(bp+96, __ccgo_ts+376, err))
 		libc.Xexit(tls, int32(1))
 	}
-	for (*(*Tz_stream)(unsafe.Pointer(bp + 136))).Ftotal_out < uncomprLen && (*(*Tz_stream)(unsafe.Pointer(bp + 136))).Ftotal_in < comprLen {
-		v3 = libc.Uint32FromInt32(1)
-		(*(*Tz_stream)(unsafe.Pointer(bp + 136))).Favail_out = v3
-		(*(*Tz_stream)(unsafe.Pointer(bp + 136))).Favail_in = v3 /* force small buffers */
-		err = x_inflate(tls, bp+136, m_Z_NO_FLUSH)
+	for (*(*Tz_stream)(unsafe.Pointer(bp))).Ftotal_out < uncomprLen && (*(*Tz_stream)(unsafe.Pointer(bp))).Ftotal_in < comprLen {
+		v1 = libc.Uint32FromInt32(1)
+		(*(*Tz_stream)(unsafe.Pointer(bp))).Favail_out = v1
+		(*(*Tz_stream)(unsafe.Pointer(bp))).Favail_in = v1 /* force small buffers */
+		err = x_inflate(tls, bp, m_Z_NO_FLUSH)
 		if err == int32(m_Z_STREAM_END) {
 			break
 		}
 		if err != m_Z_OK {
-			v4 = __ccgo_ts
-			libc.VaList(bp, __ccgo_ts+388, err)
-			__local_argv = bp
-			__retval = libc.X__mingw_vfprintf(tls, libc.X__acrt_iob_func(tls, uint32(2)), v4, __local_argv)
-			_ = __local_argv
-			_ = __retval
-			goto _5
-		_5:
-			;
+			libc.Xfprintf(tls, libc.X__acrt_iob_func(tls, uint32(2)), __ccgo_ts, libc.VaList(bp+96, __ccgo_ts+388, err))
 			libc.Xexit(tls, int32(1))
 		}
 	}
-	err = x_inflateEnd(tls, bp+136)
+	err = x_inflateEnd(tls, bp)
 	if err != m_Z_OK {
-		v6 = __ccgo_ts
-		libc.VaList(bp, __ccgo_ts+396, err)
-		__local_argv = bp
-		__retval = libc.X__mingw_vfprintf(tls, libc.X__acrt_iob_func(tls, uint32(2)), v6, __local_argv)
-		_ = __local_argv
-		_ = __retval
-		goto _7
-	_7:
-		;
+		libc.Xfprintf(tls, libc.X__acrt_iob_func(tls, uint32(2)), __ccgo_ts, libc.VaList(bp+96, __ccgo_ts+396, err))
 		libc.Xexit(tls, int32(1))
 	}
 	if libc.Xstrcmp(tls, uncompr, uintptr(unsafe.Pointer(&_hello))) != 0 {
-		v8 = __ccgo_ts + 407
-		__local_argv = bp
-		__retval = libc.X__mingw_vfprintf(tls, libc.X__acrt_iob_func(tls, uint32(2)), v8, __local_argv)
-		_ = __local_argv
-		_ = __retval
-		goto _9
-	_9:
-		;
+		libc.Xfprintf(tls, libc.X__acrt_iob_func(tls, uint32(2)), __ccgo_ts+407, 0)
 		libc.Xexit(tls, int32(1))
 	} else {
-		v10 = __ccgo_ts + 420
-		libc.VaList(bp, uncompr)
-		__local_argv1 = bp
-		__retval1 = libc.X__mingw_vfprintf(tls, libc.X__acrt_iob_func(tls, uint32(1)), v10, __local_argv1)
-		_ = __local_argv1
-		_ = __retval1
-		goto _11
-	_11:
+		libc.Xprintf(tls, __ccgo_ts+420, libc.VaList(bp+96, uncompr))
 	}
 }
 
@@ -1349,117 +1080,61 @@ func _test_inflate(tls *libc.TLS, compr uintptr, comprLen TuLong, uncompr uintpt
 //	 * Test deflate() with large buffers and dynamic change of compression level
 //	 */
 func _test_large_deflate(tls *libc.TLS, compr uintptr, comprLen TuLong, uncompr uintptr, uncomprLen TuLong) {
-	bp := tls.Alloc(288)
-	defer tls.Free(288)
-	var __local_argv T__builtin_va_list
-	var __retval, err int32
-	var v1, v11, v13, v3, v5, v7, v9 uintptr
-	var _ /* c_stream at bp+192 */ Tz_stream
-	_, _, _, _, _, _, _, _, _, _ = __local_argv, __retval, err, v1, v11, v13, v3, v5, v7, v9
-	(*(*Tz_stream)(unsafe.Pointer(bp + 192))).Fzalloc = _zalloc
-	(*(*Tz_stream)(unsafe.Pointer(bp + 192))).Fzfree = _zfree
-	(*(*Tz_stream)(unsafe.Pointer(bp + 192))).Fopaque = libc.UintptrFromInt32(0)
-	err = x_deflateInit_(tls, bp+192, int32(m_Z_BEST_SPEED), __ccgo_ts+339, libc.Int32FromInt64(88))
+	bp := tls.Alloc(112)
+	defer tls.Free(112)
+	var err int32
+	var _ /* c_stream at bp+0 */ Tz_stream
+	_ = err
+	(*(*Tz_stream)(unsafe.Pointer(bp))).Fzalloc = _zalloc
+	(*(*Tz_stream)(unsafe.Pointer(bp))).Fzfree = _zfree
+	(*(*Tz_stream)(unsafe.Pointer(bp))).Fopaque = libc.UintptrFromInt32(0)
+	err = x_deflateInit_(tls, bp, int32(m_Z_BEST_SPEED), __ccgo_ts+339, libc.Int32FromInt64(88))
 	if err != m_Z_OK {
-		v1 = __ccgo_ts
-		libc.VaList(bp, __ccgo_ts+345, err)
-		__local_argv = bp
-		__retval = libc.X__mingw_vfprintf(tls, libc.X__acrt_iob_func(tls, uint32(2)), v1, __local_argv)
-		_ = __local_argv
-		_ = __retval
-		goto _2
-	_2:
-		;
+		libc.Xfprintf(tls, libc.X__acrt_iob_func(tls, uint32(2)), __ccgo_ts, libc.VaList(bp+96, __ccgo_ts+345, err))
 		libc.Xexit(tls, int32(1))
 	}
-	(*(*Tz_stream)(unsafe.Pointer(bp + 192))).Fnext_out = compr
-	(*(*Tz_stream)(unsafe.Pointer(bp + 192))).Favail_out = uint32(uint32(comprLen))
+	(*(*Tz_stream)(unsafe.Pointer(bp))).Fnext_out = compr
+	(*(*Tz_stream)(unsafe.Pointer(bp))).Favail_out = uint32(uint32(comprLen))
 	/* At this point, uncompr is still mostly zeroes, so it should compress
 	 * very well:
 	 */
-	(*(*Tz_stream)(unsafe.Pointer(bp + 192))).Fnext_in = uncompr
-	(*(*Tz_stream)(unsafe.Pointer(bp + 192))).Favail_in = uint32(uint32(uncomprLen))
-	err = x_deflate(tls, bp+192, m_Z_NO_FLUSH)
+	(*(*Tz_stream)(unsafe.Pointer(bp))).Fnext_in = uncompr
+	(*(*Tz_stream)(unsafe.Pointer(bp))).Favail_in = uint32(uint32(uncomprLen))
+	err = x_deflate(tls, bp, m_Z_NO_FLUSH)
 	if err != m_Z_OK {
-		v3 = __ccgo_ts
-		libc.VaList(bp, __ccgo_ts+357, err)
-		__local_argv = bp
-		__retval = libc.X__mingw_vfprintf(tls, libc.X__acrt_iob_func(tls, uint32(2)), v3, __local_argv)
-		_ = __local_argv
-		_ = __retval
-		goto _4
-	_4:
-		;
+		libc.Xfprintf(tls, libc.X__acrt_iob_func(tls, uint32(2)), __ccgo_ts, libc.VaList(bp+96, __ccgo_ts+357, err))
 		libc.Xexit(tls, int32(1))
 	}
-	if (*(*Tz_stream)(unsafe.Pointer(bp + 192))).Favail_in != uint32(0) {
-		v5 = __ccgo_ts + 435
-		__local_argv = bp
-		__retval = libc.X__mingw_vfprintf(tls, libc.X__acrt_iob_func(tls, uint32(2)), v5, __local_argv)
-		_ = __local_argv
-		_ = __retval
-		goto _6
-	_6:
-		;
+	if (*(*Tz_stream)(unsafe.Pointer(bp))).Favail_in != uint32(0) {
+		libc.Xfprintf(tls, libc.X__acrt_iob_func(tls, uint32(2)), __ccgo_ts+435, 0)
 		libc.Xexit(tls, int32(1))
 	}
 	/* Feed in already compressed data and switch to no compression: */
-	x_deflateParams(tls, bp+192, m_Z_NO_COMPRESSION, m_Z_DEFAULT_STRATEGY)
-	(*(*Tz_stream)(unsafe.Pointer(bp + 192))).Fnext_in = compr
-	(*(*Tz_stream)(unsafe.Pointer(bp + 192))).Favail_in = uint32(uint32(uncomprLen)) / uint32(2)
-	err = x_deflate(tls, bp+192, m_Z_NO_FLUSH)
+	x_deflateParams(tls, bp, m_Z_NO_COMPRESSION, m_Z_DEFAULT_STRATEGY)
+	(*(*Tz_stream)(unsafe.Pointer(bp))).Fnext_in = compr
+	(*(*Tz_stream)(unsafe.Pointer(bp))).Favail_in = uint32(uint32(uncomprLen)) / uint32(2)
+	err = x_deflate(tls, bp, m_Z_NO_FLUSH)
 	if err != m_Z_OK {
-		v7 = __ccgo_ts
-		libc.VaList(bp, __ccgo_ts+357, err)
-		__local_argv = bp
-		__retval = libc.X__mingw_vfprintf(tls, libc.X__acrt_iob_func(tls, uint32(2)), v7, __local_argv)
-		_ = __local_argv
-		_ = __retval
-		goto _8
-	_8:
-		;
+		libc.Xfprintf(tls, libc.X__acrt_iob_func(tls, uint32(2)), __ccgo_ts, libc.VaList(bp+96, __ccgo_ts+357, err))
 		libc.Xexit(tls, int32(1))
 	}
 	/* Switch back to compressing mode: */
-	x_deflateParams(tls, bp+192, int32(m_Z_BEST_COMPRESSION), int32(m_Z_FILTERED))
-	(*(*Tz_stream)(unsafe.Pointer(bp + 192))).Fnext_in = uncompr
-	(*(*Tz_stream)(unsafe.Pointer(bp + 192))).Favail_in = uint32(uint32(uncomprLen))
-	err = x_deflate(tls, bp+192, m_Z_NO_FLUSH)
+	x_deflateParams(tls, bp, int32(m_Z_BEST_COMPRESSION), int32(m_Z_FILTERED))
+	(*(*Tz_stream)(unsafe.Pointer(bp))).Fnext_in = uncompr
+	(*(*Tz_stream)(unsafe.Pointer(bp))).Favail_in = uint32(uint32(uncomprLen))
+	err = x_deflate(tls, bp, m_Z_NO_FLUSH)
 	if err != m_Z_OK {
-		v9 = __ccgo_ts
-		libc.VaList(bp, __ccgo_ts+357, err)
-		__local_argv = bp
-		__retval = libc.X__mingw_vfprintf(tls, libc.X__acrt_iob_func(tls, uint32(2)), v9, __local_argv)
-		_ = __local_argv
-		_ = __retval
-		goto _10
-	_10:
-		;
+		libc.Xfprintf(tls, libc.X__acrt_iob_func(tls, uint32(2)), __ccgo_ts, libc.VaList(bp+96, __ccgo_ts+357, err))
 		libc.Xexit(tls, int32(1))
 	}
-	err = x_deflate(tls, bp+192, int32(m_Z_FINISH))
+	err = x_deflate(tls, bp, int32(m_Z_FINISH))
 	if err != int32(m_Z_STREAM_END) {
-		v11 = __ccgo_ts + 455
-		__local_argv = bp
-		__retval = libc.X__mingw_vfprintf(tls, libc.X__acrt_iob_func(tls, uint32(2)), v11, __local_argv)
-		_ = __local_argv
-		_ = __retval
-		goto _12
-	_12:
-		;
+		libc.Xfprintf(tls, libc.X__acrt_iob_func(tls, uint32(2)), __ccgo_ts+455, 0)
 		libc.Xexit(tls, int32(1))
 	}
-	err = x_deflateEnd(tls, bp+192)
+	err = x_deflateEnd(tls, bp)
 	if err != m_Z_OK {
-		v13 = __ccgo_ts
-		libc.VaList(bp, __ccgo_ts+365, err)
-		__local_argv = bp
-		__retval = libc.X__mingw_vfprintf(tls, libc.X__acrt_iob_func(tls, uint32(2)), v13, __local_argv)
-		_ = __local_argv
-		_ = __retval
-		goto _14
-	_14:
-		;
+		libc.Xfprintf(tls, libc.X__acrt_iob_func(tls, uint32(2)), __ccgo_ts, libc.VaList(bp+96, __ccgo_ts+365, err))
 		libc.Xexit(tls, int32(1))
 	}
 }
@@ -1470,86 +1145,46 @@ func _test_large_deflate(tls *libc.TLS, compr uintptr, comprLen TuLong, uncompr 
 //	 * Test inflate() with large buffers
 //	 */
 func _test_large_inflate(tls *libc.TLS, compr uintptr, comprLen TuLong, uncompr uintptr, uncomprLen TuLong) {
-	bp := tls.Alloc(224)
-	defer tls.Free(224)
-	var __local_argv, __local_argv1 T__builtin_va_list
-	var __retval, __retval1, err int32
-	var v1, v10, v4, v6, v8 uintptr
-	var _ /* d_stream at bp+136 */ Tz_stream
-	_, _, _, _, _, _, _, _, _, _ = __local_argv, __local_argv1, __retval, __retval1, err, v1, v10, v4, v6, v8 /* decompression stream */
+	bp := tls.Alloc(112)
+	defer tls.Free(112)
+	var err int32
+	var _ /* d_stream at bp+0 */ Tz_stream
+	_ = err /* decompression stream */
 	libc.Xstrcpy(tls, uncompr, __ccgo_ts+23)
-	(*(*Tz_stream)(unsafe.Pointer(bp + 136))).Fzalloc = _zalloc
-	(*(*Tz_stream)(unsafe.Pointer(bp + 136))).Fzfree = _zfree
-	(*(*Tz_stream)(unsafe.Pointer(bp + 136))).Fopaque = libc.UintptrFromInt32(0)
-	(*(*Tz_stream)(unsafe.Pointer(bp + 136))).Fnext_in = compr
-	(*(*Tz_stream)(unsafe.Pointer(bp + 136))).Favail_in = uint32(uint32(comprLen))
-	err = x_inflateInit_(tls, bp+136, __ccgo_ts+339, libc.Int32FromInt64(88))
+	(*(*Tz_stream)(unsafe.Pointer(bp))).Fzalloc = _zalloc
+	(*(*Tz_stream)(unsafe.Pointer(bp))).Fzfree = _zfree
+	(*(*Tz_stream)(unsafe.Pointer(bp))).Fopaque = libc.UintptrFromInt32(0)
+	(*(*Tz_stream)(unsafe.Pointer(bp))).Fnext_in = compr
+	(*(*Tz_stream)(unsafe.Pointer(bp))).Favail_in = uint32(uint32(comprLen))
+	err = x_inflateInit_(tls, bp, __ccgo_ts+339, libc.Int32FromInt64(88))
 	if err != m_Z_OK {
-		v1 = __ccgo_ts
-		libc.VaList(bp, __ccgo_ts+376, err)
-		__local_argv = bp
-		__retval = libc.X__mingw_vfprintf(tls, libc.X__acrt_iob_func(tls, uint32(2)), v1, __local_argv)
-		_ = __local_argv
-		_ = __retval
-		goto _2
-	_2:
-		;
+		libc.Xfprintf(tls, libc.X__acrt_iob_func(tls, uint32(2)), __ccgo_ts, libc.VaList(bp+96, __ccgo_ts+376, err))
 		libc.Xexit(tls, int32(1))
 	}
 	for {
-		(*(*Tz_stream)(unsafe.Pointer(bp + 136))).Fnext_out = uncompr /* discard the output */
-		(*(*Tz_stream)(unsafe.Pointer(bp + 136))).Favail_out = uint32(uint32(uncomprLen))
-		err = x_inflate(tls, bp+136, m_Z_NO_FLUSH)
+		(*(*Tz_stream)(unsafe.Pointer(bp))).Fnext_out = uncompr /* discard the output */
+		(*(*Tz_stream)(unsafe.Pointer(bp))).Favail_out = uint32(uint32(uncomprLen))
+		err = x_inflate(tls, bp, m_Z_NO_FLUSH)
 		if err == int32(m_Z_STREAM_END) {
 			break
 		}
 		if err != m_Z_OK {
-			v4 = __ccgo_ts
-			libc.VaList(bp, __ccgo_ts+491, err)
-			__local_argv = bp
-			__retval = libc.X__mingw_vfprintf(tls, libc.X__acrt_iob_func(tls, uint32(2)), v4, __local_argv)
-			_ = __local_argv
-			_ = __retval
-			goto _5
-		_5:
-			;
+			libc.Xfprintf(tls, libc.X__acrt_iob_func(tls, uint32(2)), __ccgo_ts, libc.VaList(bp+96, __ccgo_ts+491, err))
 			libc.Xexit(tls, int32(1))
 		}
-		goto _3
-	_3:
+		goto _1
+	_1:
 	}
-	err = x_inflateEnd(tls, bp+136)
+	err = x_inflateEnd(tls, bp)
 	if err != m_Z_OK {
-		v6 = __ccgo_ts
-		libc.VaList(bp, __ccgo_ts+396, err)
-		__local_argv = bp
-		__retval = libc.X__mingw_vfprintf(tls, libc.X__acrt_iob_func(tls, uint32(2)), v6, __local_argv)
-		_ = __local_argv
-		_ = __retval
-		goto _7
-	_7:
-		;
+		libc.Xfprintf(tls, libc.X__acrt_iob_func(tls, uint32(2)), __ccgo_ts, libc.VaList(bp+96, __ccgo_ts+396, err))
 		libc.Xexit(tls, int32(1))
 	}
-	if (*(*Tz_stream)(unsafe.Pointer(bp + 136))).Ftotal_out != uint32(2)*uncomprLen+uncomprLen/uint32(2) {
-		v8 = __ccgo_ts + 505
-		libc.VaList(bp, (*(*Tz_stream)(unsafe.Pointer(bp + 136))).Ftotal_out)
-		__local_argv = bp
-		__retval = libc.X__mingw_vfprintf(tls, libc.X__acrt_iob_func(tls, uint32(2)), v8, __local_argv)
-		_ = __local_argv
-		_ = __retval
-		goto _9
-	_9:
-		;
+	if (*(*Tz_stream)(unsafe.Pointer(bp))).Ftotal_out != uint32(2)*uncomprLen+uncomprLen/uint32(2) {
+		libc.Xfprintf(tls, libc.X__acrt_iob_func(tls, uint32(2)), __ccgo_ts+505, libc.VaList(bp+96, (*(*Tz_stream)(unsafe.Pointer(bp))).Ftotal_out))
 		libc.Xexit(tls, int32(1))
 	} else {
-		v10 = __ccgo_ts + 529
-		__local_argv1 = bp
-		__retval1 = libc.X__mingw_vfprintf(tls, libc.X__acrt_iob_func(tls, uint32(1)), v10, __local_argv1)
-		_ = __local_argv1
-		_ = __retval1
-		goto _11
-	_11:
+		libc.Xprintf(tls, __ccgo_ts+529, 0)
 	}
 }
 
@@ -1559,79 +1194,45 @@ func _test_large_inflate(tls *libc.TLS, compr uintptr, comprLen TuLong, uncompr 
 //	 * Test deflate() with full flush
 //	 */
 func _test_flush(tls *libc.TLS, compr uintptr, comprLen uintptr) {
-	bp := tls.Alloc(224)
-	defer tls.Free(224)
-	var __local_argv T__builtin_va_list
-	var __retval, err int32
+	bp := tls.Alloc(112)
+	defer tls.Free(112)
+	var err int32
 	var len1 TuInt
-	var v1, v3, v5, v7 uintptr
-	var _ /* c_stream at bp+128 */ Tz_stream
-	_, _, _, _, _, _, _, _ = __local_argv, __retval, err, len1, v1, v3, v5, v7
+	var _ /* c_stream at bp+0 */ Tz_stream
+	_, _ = err, len1
 	len1 = uint32(libc.Xstrlen(tls, uintptr(unsafe.Pointer(&_hello)))) + uint32(1)
-	(*(*Tz_stream)(unsafe.Pointer(bp + 128))).Fzalloc = _zalloc
-	(*(*Tz_stream)(unsafe.Pointer(bp + 128))).Fzfree = _zfree
-	(*(*Tz_stream)(unsafe.Pointer(bp + 128))).Fopaque = libc.UintptrFromInt32(0)
-	err = x_deflateInit_(tls, bp+128, -int32(1), __ccgo_ts+339, libc.Int32FromInt64(88))
+	(*(*Tz_stream)(unsafe.Pointer(bp))).Fzalloc = _zalloc
+	(*(*Tz_stream)(unsafe.Pointer(bp))).Fzfree = _zfree
+	(*(*Tz_stream)(unsafe.Pointer(bp))).Fopaque = libc.UintptrFromInt32(0)
+	err = x_deflateInit_(tls, bp, -int32(1), __ccgo_ts+339, libc.Int32FromInt64(88))
 	if err != m_Z_OK {
-		v1 = __ccgo_ts
-		libc.VaList(bp, __ccgo_ts+345, err)
-		__local_argv = bp
-		__retval = libc.X__mingw_vfprintf(tls, libc.X__acrt_iob_func(tls, uint32(2)), v1, __local_argv)
-		_ = __local_argv
-		_ = __retval
-		goto _2
-	_2:
-		;
+		libc.Xfprintf(tls, libc.X__acrt_iob_func(tls, uint32(2)), __ccgo_ts, libc.VaList(bp+96, __ccgo_ts+345, err))
 		libc.Xexit(tls, int32(1))
 	}
-	(*(*Tz_stream)(unsafe.Pointer(bp + 128))).Fnext_in = uintptr(unsafe.Pointer(&_hello))
-	(*(*Tz_stream)(unsafe.Pointer(bp + 128))).Fnext_out = compr
-	(*(*Tz_stream)(unsafe.Pointer(bp + 128))).Favail_in = uint32(3)
-	(*(*Tz_stream)(unsafe.Pointer(bp + 128))).Favail_out = uint32(*(*TuLong)(unsafe.Pointer(comprLen)))
-	err = x_deflate(tls, bp+128, int32(m_Z_FULL_FLUSH))
+	(*(*Tz_stream)(unsafe.Pointer(bp))).Fnext_in = uintptr(unsafe.Pointer(&_hello))
+	(*(*Tz_stream)(unsafe.Pointer(bp))).Fnext_out = compr
+	(*(*Tz_stream)(unsafe.Pointer(bp))).Favail_in = uint32(3)
+	(*(*Tz_stream)(unsafe.Pointer(bp))).Favail_out = uint32(*(*TuLong)(unsafe.Pointer(comprLen)))
+	err = x_deflate(tls, bp, int32(m_Z_FULL_FLUSH))
 	if err != m_Z_OK {
-		v3 = __ccgo_ts
-		libc.VaList(bp, __ccgo_ts+357, err)
-		__local_argv = bp
-		__retval = libc.X__mingw_vfprintf(tls, libc.X__acrt_iob_func(tls, uint32(2)), v3, __local_argv)
-		_ = __local_argv
-		_ = __retval
-		goto _4
-	_4:
-		;
+		libc.Xfprintf(tls, libc.X__acrt_iob_func(tls, uint32(2)), __ccgo_ts, libc.VaList(bp+96, __ccgo_ts+357, err))
 		libc.Xexit(tls, int32(1))
 	}
 	*(*TByte)(unsafe.Pointer(compr + 3))++ /* force an error in first compressed block */
-	(*(*Tz_stream)(unsafe.Pointer(bp + 128))).Favail_in = len1 - uint32(3)
-	err = x_deflate(tls, bp+128, int32(m_Z_FINISH))
+	(*(*Tz_stream)(unsafe.Pointer(bp))).Favail_in = len1 - uint32(3)
+	err = x_deflate(tls, bp, int32(m_Z_FINISH))
 	if err != int32(m_Z_STREAM_END) {
 		if err != m_Z_OK {
-			v5 = __ccgo_ts
-			libc.VaList(bp, __ccgo_ts+357, err)
-			__local_argv = bp
-			__retval = libc.X__mingw_vfprintf(tls, libc.X__acrt_iob_func(tls, uint32(2)), v5, __local_argv)
-			_ = __local_argv
-			_ = __retval
-			goto _6
-		_6:
-			;
+			libc.Xfprintf(tls, libc.X__acrt_iob_func(tls, uint32(2)), __ccgo_ts, libc.VaList(bp+96, __ccgo_ts+357, err))
 			libc.Xexit(tls, int32(1))
 		}
 	}
-	err = x_deflateEnd(tls, bp+128)
+	err = x_deflateEnd(tls, bp)
 	if err != m_Z_OK {
-		v7 = __ccgo_ts
-		libc.VaList(bp, __ccgo_ts+365, err)
-		__local_argv = bp
-		__retval = libc.X__mingw_vfprintf(tls, libc.X__acrt_iob_func(tls, uint32(2)), v7, __local_argv)
-		_ = __local_argv
-		_ = __retval
-		goto _8
-	_8:
-		;
+		libc.Xfprintf(tls, libc.X__acrt_iob_func(tls, uint32(2)), __ccgo_ts, libc.VaList(bp+96, __ccgo_ts+365, err))
 		libc.Xexit(tls, int32(1))
 	}
-	*(*TuLong)(unsafe.Pointer(comprLen)) = (*(*Tz_stream)(unsafe.Pointer(bp + 128))).Ftotal_out
+	*(*TuLong)(unsafe.Pointer(comprLen)) = (*(*Tz_stream)(unsafe.Pointer(bp))).Ftotal_out
 }
 
 // C documentation
@@ -1640,94 +1241,46 @@ func _test_flush(tls *libc.TLS, compr uintptr, comprLen uintptr) {
 //	 * Test inflateSync()
 //	 */
 func _test_sync(tls *libc.TLS, compr uintptr, comprLen TuLong, uncompr uintptr, uncomprLen TuLong) {
-	bp := tls.Alloc(256)
-	defer tls.Free(256)
-	var __local_argv, __local_argv1 T__builtin_va_list
-	var __retval, __retval1, err int32
-	var v1, v11, v3, v5, v7, v9 uintptr
-	var _ /* d_stream at bp+168 */ Tz_stream
-	_, _, _, _, _, _, _, _, _, _, _ = __local_argv, __local_argv1, __retval, __retval1, err, v1, v11, v3, v5, v7, v9 /* decompression stream */
+	bp := tls.Alloc(112)
+	defer tls.Free(112)
+	var err int32
+	var _ /* d_stream at bp+0 */ Tz_stream
+	_ = err /* decompression stream */
 	libc.Xstrcpy(tls, uncompr, __ccgo_ts+23)
-	(*(*Tz_stream)(unsafe.Pointer(bp + 168))).Fzalloc = _zalloc
-	(*(*Tz_stream)(unsafe.Pointer(bp + 168))).Fzfree = _zfree
-	(*(*Tz_stream)(unsafe.Pointer(bp + 168))).Fopaque = libc.UintptrFromInt32(0)
-	(*(*Tz_stream)(unsafe.Pointer(bp + 168))).Fnext_in = compr
-	(*(*Tz_stream)(unsafe.Pointer(bp + 168))).Favail_in = uint32(2) /* just read the zlib header */
-	err = x_inflateInit_(tls, bp+168, __ccgo_ts+339, libc.Int32FromInt64(88))
+	(*(*Tz_stream)(unsafe.Pointer(bp))).Fzalloc = _zalloc
+	(*(*Tz_stream)(unsafe.Pointer(bp))).Fzfree = _zfree
+	(*(*Tz_stream)(unsafe.Pointer(bp))).Fopaque = libc.UintptrFromInt32(0)
+	(*(*Tz_stream)(unsafe.Pointer(bp))).Fnext_in = compr
+	(*(*Tz_stream)(unsafe.Pointer(bp))).Favail_in = uint32(2) /* just read the zlib header */
+	err = x_inflateInit_(tls, bp, __ccgo_ts+339, libc.Int32FromInt64(88))
 	if err != m_Z_OK {
-		v1 = __ccgo_ts
-		libc.VaList(bp, __ccgo_ts+376, err)
-		__local_argv = bp
-		__retval = libc.X__mingw_vfprintf(tls, libc.X__acrt_iob_func(tls, uint32(2)), v1, __local_argv)
-		_ = __local_argv
-		_ = __retval
-		goto _2
-	_2:
-		;
+		libc.Xfprintf(tls, libc.X__acrt_iob_func(tls, uint32(2)), __ccgo_ts, libc.VaList(bp+96, __ccgo_ts+376, err))
 		libc.Xexit(tls, int32(1))
 	}
-	(*(*Tz_stream)(unsafe.Pointer(bp + 168))).Fnext_out = uncompr
-	(*(*Tz_stream)(unsafe.Pointer(bp + 168))).Favail_out = uint32(uint32(uncomprLen))
-	err = x_inflate(tls, bp+168, m_Z_NO_FLUSH)
+	(*(*Tz_stream)(unsafe.Pointer(bp))).Fnext_out = uncompr
+	(*(*Tz_stream)(unsafe.Pointer(bp))).Favail_out = uint32(uint32(uncomprLen))
+	err = x_inflate(tls, bp, m_Z_NO_FLUSH)
 	if err != m_Z_OK {
-		v3 = __ccgo_ts
-		libc.VaList(bp, __ccgo_ts+388, err)
-		__local_argv = bp
-		__retval = libc.X__mingw_vfprintf(tls, libc.X__acrt_iob_func(tls, uint32(2)), v3, __local_argv)
-		_ = __local_argv
-		_ = __retval
-		goto _4
-	_4:
-		;
+		libc.Xfprintf(tls, libc.X__acrt_iob_func(tls, uint32(2)), __ccgo_ts, libc.VaList(bp+96, __ccgo_ts+388, err))
 		libc.Xexit(tls, int32(1))
 	}
-	(*(*Tz_stream)(unsafe.Pointer(bp + 168))).Favail_in = uint32(uint32(comprLen)) - uint32(2) /* read all compressed data */
-	err = x_inflateSync(tls, bp+168)                                                           /* but skip the damaged part */
+	(*(*Tz_stream)(unsafe.Pointer(bp))).Favail_in = uint32(uint32(comprLen)) - uint32(2) /* read all compressed data */
+	err = x_inflateSync(tls, bp)                                                         /* but skip the damaged part */
 	if err != m_Z_OK {
-		v5 = __ccgo_ts
-		libc.VaList(bp, __ccgo_ts+550, err)
-		__local_argv = bp
-		__retval = libc.X__mingw_vfprintf(tls, libc.X__acrt_iob_func(tls, uint32(2)), v5, __local_argv)
-		_ = __local_argv
-		_ = __retval
-		goto _6
-	_6:
-		;
+		libc.Xfprintf(tls, libc.X__acrt_iob_func(tls, uint32(2)), __ccgo_ts, libc.VaList(bp+96, __ccgo_ts+550, err))
 		libc.Xexit(tls, int32(1))
 	}
-	err = x_inflate(tls, bp+168, int32(m_Z_FINISH))
+	err = x_inflate(tls, bp, int32(m_Z_FINISH))
 	if err != int32(m_Z_STREAM_END) {
-		v7 = __ccgo_ts + 562
-		__local_argv = bp
-		__retval = libc.X__mingw_vfprintf(tls, libc.X__acrt_iob_func(tls, uint32(2)), v7, __local_argv)
-		_ = __local_argv
-		_ = __retval
-		goto _8
-	_8:
-		;
+		libc.Xfprintf(tls, libc.X__acrt_iob_func(tls, uint32(2)), __ccgo_ts+562, 0)
 		libc.Xexit(tls, int32(1))
 	}
-	err = x_inflateEnd(tls, bp+168)
+	err = x_inflateEnd(tls, bp)
 	if err != m_Z_OK {
-		v9 = __ccgo_ts
-		libc.VaList(bp, __ccgo_ts+396, err)
-		__local_argv = bp
-		__retval = libc.X__mingw_vfprintf(tls, libc.X__acrt_iob_func(tls, uint32(2)), v9, __local_argv)
-		_ = __local_argv
-		_ = __retval
-		goto _10
-	_10:
-		;
+		libc.Xfprintf(tls, libc.X__acrt_iob_func(tls, uint32(2)), __ccgo_ts, libc.VaList(bp+96, __ccgo_ts+396, err))
 		libc.Xexit(tls, int32(1))
 	}
-	v11 = __ccgo_ts + 598
-	libc.VaList(bp, uncompr)
-	__local_argv1 = bp
-	__retval1 = libc.X__mingw_vfprintf(tls, libc.X__acrt_iob_func(tls, uint32(1)), v11, __local_argv1)
-	_ = __local_argv1
-	_ = __retval1
-	goto _12
-_12:
+	libc.Xprintf(tls, __ccgo_ts+598, libc.VaList(bp+96, uncompr))
 }
 
 // C documentation
@@ -1736,70 +1289,37 @@ _12:
 //	 * Test deflate() with preset dictionary
 //	 */
 func _test_dict_deflate(tls *libc.TLS, compr uintptr, comprLen TuLong) {
-	bp := tls.Alloc(208)
-	defer tls.Free(208)
-	var __local_argv T__builtin_va_list
-	var __retval, err int32
-	var v1, v3, v5, v7 uintptr
-	var _ /* c_stream at bp+112 */ Tz_stream
-	_, _, _, _, _, _, _ = __local_argv, __retval, err, v1, v3, v5, v7
-	(*(*Tz_stream)(unsafe.Pointer(bp + 112))).Fzalloc = _zalloc
-	(*(*Tz_stream)(unsafe.Pointer(bp + 112))).Fzfree = _zfree
-	(*(*Tz_stream)(unsafe.Pointer(bp + 112))).Fopaque = libc.UintptrFromInt32(0)
-	err = x_deflateInit_(tls, bp+112, int32(m_Z_BEST_COMPRESSION), __ccgo_ts+339, libc.Int32FromInt64(88))
+	bp := tls.Alloc(112)
+	defer tls.Free(112)
+	var err int32
+	var _ /* c_stream at bp+0 */ Tz_stream
+	_ = err
+	(*(*Tz_stream)(unsafe.Pointer(bp))).Fzalloc = _zalloc
+	(*(*Tz_stream)(unsafe.Pointer(bp))).Fzfree = _zfree
+	(*(*Tz_stream)(unsafe.Pointer(bp))).Fopaque = libc.UintptrFromInt32(0)
+	err = x_deflateInit_(tls, bp, int32(m_Z_BEST_COMPRESSION), __ccgo_ts+339, libc.Int32FromInt64(88))
 	if err != m_Z_OK {
-		v1 = __ccgo_ts
-		libc.VaList(bp, __ccgo_ts+345, err)
-		__local_argv = bp
-		__retval = libc.X__mingw_vfprintf(tls, libc.X__acrt_iob_func(tls, uint32(2)), v1, __local_argv)
-		_ = __local_argv
-		_ = __retval
-		goto _2
-	_2:
-		;
+		libc.Xfprintf(tls, libc.X__acrt_iob_func(tls, uint32(2)), __ccgo_ts, libc.VaList(bp+96, __ccgo_ts+345, err))
 		libc.Xexit(tls, int32(1))
 	}
-	err = x_deflateSetDictionary(tls, bp+112, uintptr(unsafe.Pointer(&_dictionary)), uint32(libc.Int32FromInt64(6)))
+	err = x_deflateSetDictionary(tls, bp, uintptr(unsafe.Pointer(&_dictionary)), uint32(libc.Int32FromInt64(6)))
 	if err != m_Z_OK {
-		v3 = __ccgo_ts
-		libc.VaList(bp, __ccgo_ts+626, err)
-		__local_argv = bp
-		__retval = libc.X__mingw_vfprintf(tls, libc.X__acrt_iob_func(tls, uint32(2)), v3, __local_argv)
-		_ = __local_argv
-		_ = __retval
-		goto _4
-	_4:
-		;
+		libc.Xfprintf(tls, libc.X__acrt_iob_func(tls, uint32(2)), __ccgo_ts, libc.VaList(bp+96, __ccgo_ts+626, err))
 		libc.Xexit(tls, int32(1))
 	}
-	_dictId = (*(*Tz_stream)(unsafe.Pointer(bp + 112))).Fadler
-	(*(*Tz_stream)(unsafe.Pointer(bp + 112))).Fnext_out = compr
-	(*(*Tz_stream)(unsafe.Pointer(bp + 112))).Favail_out = uint32(uint32(comprLen))
-	(*(*Tz_stream)(unsafe.Pointer(bp + 112))).Fnext_in = uintptr(unsafe.Pointer(&_hello))
-	(*(*Tz_stream)(unsafe.Pointer(bp + 112))).Favail_in = uint32(libc.Xstrlen(tls, uintptr(unsafe.Pointer(&_hello)))) + uint32(1)
-	err = x_deflate(tls, bp+112, int32(m_Z_FINISH))
+	_dictId = (*(*Tz_stream)(unsafe.Pointer(bp))).Fadler
+	(*(*Tz_stream)(unsafe.Pointer(bp))).Fnext_out = compr
+	(*(*Tz_stream)(unsafe.Pointer(bp))).Favail_out = uint32(uint32(comprLen))
+	(*(*Tz_stream)(unsafe.Pointer(bp))).Fnext_in = uintptr(unsafe.Pointer(&_hello))
+	(*(*Tz_stream)(unsafe.Pointer(bp))).Favail_in = uint32(libc.Xstrlen(tls, uintptr(unsafe.Pointer(&_hello)))) + uint32(1)
+	err = x_deflate(tls, bp, int32(m_Z_FINISH))
 	if err != int32(m_Z_STREAM_END) {
-		v5 = __ccgo_ts + 455
-		__local_argv = bp
-		__retval = libc.X__mingw_vfprintf(tls, libc.X__acrt_iob_func(tls, uint32(2)), v5, __local_argv)
-		_ = __local_argv
-		_ = __retval
-		goto _6
-	_6:
-		;
+		libc.Xfprintf(tls, libc.X__acrt_iob_func(tls, uint32(2)), __ccgo_ts+455, 0)
 		libc.Xexit(tls, int32(1))
 	}
-	err = x_deflateEnd(tls, bp+112)
+	err = x_deflateEnd(tls, bp)
 	if err != m_Z_OK {
-		v7 = __ccgo_ts
-		libc.VaList(bp, __ccgo_ts+365, err)
-		__local_argv = bp
-		__retval = libc.X__mingw_vfprintf(tls, libc.X__acrt_iob_func(tls, uint32(2)), v7, __local_argv)
-		_ = __local_argv
-		_ = __retval
-		goto _8
-	_8:
-		;
+		libc.Xfprintf(tls, libc.X__acrt_iob_func(tls, uint32(2)), __ccgo_ts, libc.VaList(bp+96, __ccgo_ts+365, err))
 		libc.Xexit(tls, int32(1))
 	}
 }
@@ -1810,100 +1330,53 @@ func _test_dict_deflate(tls *libc.TLS, compr uintptr, comprLen TuLong) {
 //	 * Test inflate() with a preset dictionary
 //	 */
 func _test_dict_inflate(tls *libc.TLS, compr uintptr, comprLen TuLong, uncompr uintptr, uncomprLen TuLong) {
-	bp := tls.Alloc(240)
-	defer tls.Free(240)
-	var __local_argv, __local_argv1 T__builtin_va_list
-	var __retval, __retval1, err int32
-	var v1, v10, v12, v4, v6, v8 uintptr
-	var _ /* d_stream at bp+152 */ Tz_stream
-	_, _, _, _, _, _, _, _, _, _, _ = __local_argv, __local_argv1, __retval, __retval1, err, v1, v10, v12, v4, v6, v8 /* decompression stream */
+	bp := tls.Alloc(112)
+	defer tls.Free(112)
+	var err int32
+	var _ /* d_stream at bp+0 */ Tz_stream
+	_ = err /* decompression stream */
 	libc.Xstrcpy(tls, uncompr, __ccgo_ts+23)
-	(*(*Tz_stream)(unsafe.Pointer(bp + 152))).Fzalloc = _zalloc
-	(*(*Tz_stream)(unsafe.Pointer(bp + 152))).Fzfree = _zfree
-	(*(*Tz_stream)(unsafe.Pointer(bp + 152))).Fopaque = libc.UintptrFromInt32(0)
-	(*(*Tz_stream)(unsafe.Pointer(bp + 152))).Fnext_in = compr
-	(*(*Tz_stream)(unsafe.Pointer(bp + 152))).Favail_in = uint32(uint32(comprLen))
-	err = x_inflateInit_(tls, bp+152, __ccgo_ts+339, libc.Int32FromInt64(88))
+	(*(*Tz_stream)(unsafe.Pointer(bp))).Fzalloc = _zalloc
+	(*(*Tz_stream)(unsafe.Pointer(bp))).Fzfree = _zfree
+	(*(*Tz_stream)(unsafe.Pointer(bp))).Fopaque = libc.UintptrFromInt32(0)
+	(*(*Tz_stream)(unsafe.Pointer(bp))).Fnext_in = compr
+	(*(*Tz_stream)(unsafe.Pointer(bp))).Favail_in = uint32(uint32(comprLen))
+	err = x_inflateInit_(tls, bp, __ccgo_ts+339, libc.Int32FromInt64(88))
 	if err != m_Z_OK {
-		v1 = __ccgo_ts
-		libc.VaList(bp, __ccgo_ts+376, err)
-		__local_argv = bp
-		__retval = libc.X__mingw_vfprintf(tls, libc.X__acrt_iob_func(tls, uint32(2)), v1, __local_argv)
-		_ = __local_argv
-		_ = __retval
-		goto _2
-	_2:
-		;
+		libc.Xfprintf(tls, libc.X__acrt_iob_func(tls, uint32(2)), __ccgo_ts, libc.VaList(bp+96, __ccgo_ts+376, err))
 		libc.Xexit(tls, int32(1))
 	}
-	(*(*Tz_stream)(unsafe.Pointer(bp + 152))).Fnext_out = uncompr
-	(*(*Tz_stream)(unsafe.Pointer(bp + 152))).Favail_out = uint32(uint32(uncomprLen))
+	(*(*Tz_stream)(unsafe.Pointer(bp))).Fnext_out = uncompr
+	(*(*Tz_stream)(unsafe.Pointer(bp))).Favail_out = uint32(uint32(uncomprLen))
 	for {
-		err = x_inflate(tls, bp+152, m_Z_NO_FLUSH)
+		err = x_inflate(tls, bp, m_Z_NO_FLUSH)
 		if err == int32(m_Z_STREAM_END) {
 			break
 		}
 		if err == int32(m_Z_NEED_DICT) {
-			if (*(*Tz_stream)(unsafe.Pointer(bp + 152))).Fadler != _dictId {
-				v4 = __ccgo_ts + 647
-				__local_argv = bp
-				__retval = libc.X__mingw_vfprintf(tls, libc.X__acrt_iob_func(tls, uint32(2)), v4, __local_argv)
-				_ = __local_argv
-				_ = __retval
-				goto _5
-			_5:
-				;
+			if (*(*Tz_stream)(unsafe.Pointer(bp))).Fadler != _dictId {
+				libc.Xfprintf(tls, libc.X__acrt_iob_func(tls, uint32(2)), __ccgo_ts+647, 0)
 				libc.Xexit(tls, int32(1))
 			}
-			err = x_inflateSetDictionary(tls, bp+152, uintptr(unsafe.Pointer(&_dictionary)), uint32(libc.Int32FromInt64(6)))
+			err = x_inflateSetDictionary(tls, bp, uintptr(unsafe.Pointer(&_dictionary)), uint32(libc.Int32FromInt64(6)))
 		}
 		if err != m_Z_OK {
-			v6 = __ccgo_ts
-			libc.VaList(bp, __ccgo_ts+669, err)
-			__local_argv = bp
-			__retval = libc.X__mingw_vfprintf(tls, libc.X__acrt_iob_func(tls, uint32(2)), v6, __local_argv)
-			_ = __local_argv
-			_ = __retval
-			goto _7
-		_7:
-			;
+			libc.Xfprintf(tls, libc.X__acrt_iob_func(tls, uint32(2)), __ccgo_ts, libc.VaList(bp+96, __ccgo_ts+669, err))
 			libc.Xexit(tls, int32(1))
 		}
-		goto _3
-	_3:
+		goto _1
+	_1:
 	}
-	err = x_inflateEnd(tls, bp+152)
+	err = x_inflateEnd(tls, bp)
 	if err != m_Z_OK {
-		v8 = __ccgo_ts
-		libc.VaList(bp, __ccgo_ts+396, err)
-		__local_argv = bp
-		__retval = libc.X__mingw_vfprintf(tls, libc.X__acrt_iob_func(tls, uint32(2)), v8, __local_argv)
-		_ = __local_argv
-		_ = __retval
-		goto _9
-	_9:
-		;
+		libc.Xfprintf(tls, libc.X__acrt_iob_func(tls, uint32(2)), __ccgo_ts, libc.VaList(bp+96, __ccgo_ts+396, err))
 		libc.Xexit(tls, int32(1))
 	}
 	if libc.Xstrcmp(tls, uncompr, uintptr(unsafe.Pointer(&_hello))) != 0 {
-		v10 = __ccgo_ts + 687
-		__local_argv = bp
-		__retval = libc.X__mingw_vfprintf(tls, libc.X__acrt_iob_func(tls, uint32(2)), v10, __local_argv)
-		_ = __local_argv
-		_ = __retval
-		goto _11
-	_11:
-		;
+		libc.Xfprintf(tls, libc.X__acrt_iob_func(tls, uint32(2)), __ccgo_ts+687, 0)
 		libc.Xexit(tls, int32(1))
 	} else {
-		v12 = __ccgo_ts + 710
-		libc.VaList(bp, uncompr)
-		__local_argv1 = bp
-		__retval1 = libc.X__mingw_vfprintf(tls, libc.X__acrt_iob_func(tls, uint32(1)), v12, __local_argv1)
-		_ = __local_argv1
-		_ = __retval1
-		goto _13
-	_13:
+		libc.Xprintf(tls, __ccgo_ts+710, libc.VaList(bp+96, uncompr))
 	}
 }
 
@@ -1912,79 +1385,48 @@ func _test_dict_inflate(tls *libc.TLS, compr uintptr, comprLen TuLong, uncompr u
  */
 
 func x_main(tls *libc.TLS, argc int32, argv uintptr) (r int32) {
-	bp := tls.Alloc(112)
-	defer tls.Free(112)
-	var __local_argv, __local_argv1 T__builtin_va_list
-	var __retval, __retval1 int32
-	var compr, uncompr, v1, v3, v5, v7, v9 uintptr
+	bp := tls.Alloc(48)
+	defer tls.Free(48)
+	var compr, uncompr, v1 uintptr
 	var uncomprLen TuLong
-	var _ /* comprLen at bp+96 */ TuLong
-	_, _, _, _, _, _, _, _, _, _, _, _ = __local_argv, __local_argv1, __retval, __retval1, compr, uncompr, uncomprLen, v1, v3, v5, v7, v9
+	var _ /* comprLen at bp+0 */ TuLong
+	_, _, _, _ = compr, uncompr, uncomprLen, v1
 	uncomprLen = uint32(20000)
-	*(*TuLong)(unsafe.Pointer(bp + 96)) = uint32(3) * uncomprLen
+	*(*TuLong)(unsafe.Pointer(bp)) = uint32(3) * uncomprLen
 	if int32(*(*int8)(unsafe.Pointer(x_zlibVersion(tls)))) != int32(*(*int8)(unsafe.Pointer(_myVersion))) {
-		v1 = __ccgo_ts + 739
-		__local_argv = bp
-		__retval = libc.X__mingw_vfprintf(tls, libc.X__acrt_iob_func(tls, uint32(2)), v1, __local_argv)
-		_ = __local_argv
-		_ = __retval
-		goto _2
-	_2:
-		;
+		libc.Xfprintf(tls, libc.X__acrt_iob_func(tls, uint32(2)), __ccgo_ts+739, 0)
 		libc.Xexit(tls, int32(1))
 	} else {
 		if libc.Xstrcmp(tls, x_zlibVersion(tls), __ccgo_ts+339) != 0 {
-			v3 = __ccgo_ts + 766
-			libc.VaList(bp, x_zlibVersion(tls))
-			__local_argv = bp
-			__retval = libc.X__mingw_vfprintf(tls, libc.X__acrt_iob_func(tls, uint32(2)), v3, __local_argv)
-			_ = __local_argv
-			_ = __retval
-			goto _4
-		_4:
+			libc.Xfprintf(tls, libc.X__acrt_iob_func(tls, uint32(2)), __ccgo_ts+766, libc.VaList(bp+16, x_zlibVersion(tls)))
 		}
 	}
-	v5 = __ccgo_ts + 810
-	libc.VaList(bp, __ccgo_ts+339, int32(m_ZLIB_VERNUM), x_zlibCompileFlags(tls))
-	__local_argv1 = bp
-	__retval1 = libc.X__mingw_vfprintf(tls, libc.X__acrt_iob_func(tls, uint32(1)), v5, __local_argv1)
-	_ = __local_argv1
-	_ = __retval1
-	goto _6
-_6:
-	;
-	compr = libc.Xcalloc(tls, uint64(uint32(*(*TuLong)(unsafe.Pointer(bp + 96)))), uint64(1))
+	libc.Xprintf(tls, __ccgo_ts+810, libc.VaList(bp+16, __ccgo_ts+339, int32(m_ZLIB_VERNUM), x_zlibCompileFlags(tls)))
+	compr = libc.Xcalloc(tls, uint64(uint32(*(*TuLong)(unsafe.Pointer(bp)))), uint64(1))
 	uncompr = libc.Xcalloc(tls, uint64(uint32(uint32(uncomprLen))), uint64(1))
 	/* compr and uncompr are cleared to avoid reading uninitialized
 	 * data and to ensure that uncompr compresses well.
 	 */
 	if compr == uintptr(m_Z_NULL) || uncompr == uintptr(m_Z_NULL) {
-		v7 = __ccgo_ts + 859
-		__local_argv1 = bp
-		__retval1 = libc.X__mingw_vfprintf(tls, libc.X__acrt_iob_func(tls, uint32(1)), v7, __local_argv1)
-		_ = __local_argv1
-		_ = __retval1
-		goto _8
-	_8:
-		;
+		libc.Xprintf(tls, __ccgo_ts+859, 0)
 		libc.Xexit(tls, int32(1))
 	}
-	_test_compress(tls, compr, *(*TuLong)(unsafe.Pointer(bp + 96)), uncompr, uncomprLen)
+	_test_compress(tls, compr, *(*TuLong)(unsafe.Pointer(bp)), uncompr, uncomprLen)
 	if argc > int32(1) {
-		v9 = *(*uintptr)(unsafe.Pointer(argv + 1*8))
+		v1 = *(*uintptr)(unsafe.Pointer(argv + 1*8))
 	} else {
-		v9 = __ccgo_ts + 874
+		v1 = __ccgo_ts + 874
 	}
-	_test_gzio(tls, v9, uncompr, uncomprLen)
-	_test_deflate(tls, compr, *(*TuLong)(unsafe.Pointer(bp + 96)))
-	_test_inflate(tls, compr, *(*TuLong)(unsafe.Pointer(bp + 96)), uncompr, uncomprLen)
-	_test_large_deflate(tls, compr, *(*TuLong)(unsafe.Pointer(bp + 96)), uncompr, uncomprLen)
-	_test_large_inflate(tls, compr, *(*TuLong)(unsafe.Pointer(bp + 96)), uncompr, uncomprLen)
-	_test_flush(tls, compr, bp+96)
-	_test_sync(tls, compr, *(*TuLong)(unsafe.Pointer(bp + 96)), uncompr, uncomprLen)
-	*(*TuLong)(unsafe.Pointer(bp + 96)) = uint32(3) * uncomprLen
-	_test_dict_deflate(tls, compr, *(*TuLong)(unsafe.Pointer(bp + 96)))
-	_test_dict_inflate(tls, compr, *(*TuLong)(unsafe.Pointer(bp + 96)), uncompr, uncomprLen)
+	_test_gzio(tls, v1, uncompr, uncomprLen)
+	_test_deflate(tls, compr, *(*TuLong)(unsafe.Pointer(bp)))
+	_test_inflate(tls, compr, *(*TuLong)(unsafe.Pointer(bp)), uncompr, uncomprLen)
+	_test_large_deflate(tls, compr, *(*TuLong)(unsafe.Pointer(bp)), uncompr, uncomprLen)
+	_test_large_inflate(tls, compr, *(*TuLong)(unsafe.Pointer(bp)), uncompr, uncomprLen)
+	_test_flush(tls, compr, bp)
+	_test_sync(tls, compr, *(*TuLong)(unsafe.Pointer(bp)), uncompr, uncomprLen)
+	*(*TuLong)(unsafe.Pointer(bp)) = uint32(3) * uncomprLen
+	_test_dict_deflate(tls, compr, *(*TuLong)(unsafe.Pointer(bp)))
+	_test_dict_inflate(tls, compr, *(*TuLong)(unsafe.Pointer(bp)), uncompr, uncomprLen)
 	libc.Xfree(tls, compr)
 	libc.Xfree(tls, uncompr)
 	return 0
@@ -10460,14 +9902,12 @@ func _gz_reset(tls *libc.TLS, state Tgz_statep) {
 //
 //	/* Open a gzip file either by name or file descriptor. */
 func _gz_open(tls *libc.TLS, path uintptr, fd int32, mode uintptr) (r TgzFile) {
-	bp := tls.Alloc(48)
-	defer tls.Free(48)
-	var __local_argv T__builtin_va_list
-	var __retval, exclusive, oflag, v3, v4, v5, v6, v7 int32
+	bp := tls.Alloc(16)
+	defer tls.Free(16)
+	var exclusive, oflag, v1, v2, v3, v4, v5 int32
 	var len1 Tz_size_t
 	var state Tgz_statep
-	var v1 uintptr
-	_, _, _, _, _, _, _, _, _, _, _, _ = __local_argv, __retval, exclusive, len1, oflag, state, v1, v3, v4, v5, v6, v7
+	_, _, _, _, _, _, _, _, _ = exclusive, len1, oflag, state, v1, v2, v3, v4, v5
 	exclusive = 0
 	/* check input */
 	if path == libc.UintptrFromInt32(0) {
@@ -10552,44 +9992,37 @@ func _gz_open(tls *libc.TLS, path uintptr, fd int32, mode uintptr) (r TgzFile) {
 			*(*int8)(unsafe.Pointer((*Tgz_state)(unsafe.Pointer(state)).Fpath)) = 0
 		}
 	} else {
-		v1 = __ccgo_ts + 881
-		libc.VaList(bp, path)
-		__local_argv = bp
-		__retval = libc.X__mingw_vsnprintf(tls, (*Tgz_state)(unsafe.Pointer(state)).Fpath, len1+uint64(1), v1, __local_argv)
-		_ = __local_argv
-		_ = __retval
-		goto _2
-	_2:
+		libc.X__builtin_snprintf(tls, (*Tgz_state)(unsafe.Pointer(state)).Fpath, len1+uint64(1), __ccgo_ts+881, libc.VaList(bp+8, path))
 	}
 	/* compute the flags for open() */
 	if (*Tgz_state)(unsafe.Pointer(state)).Fmode == int32(m_GZ_READ) {
-		v3 = m__O_RDONLY1
+		v1 = m__O_RDONLY1
 	} else {
 		if exclusive != 0 {
-			v4 = int32(m__O_EXCL1)
+			v2 = int32(m__O_EXCL1)
 		} else {
-			v4 = 0
+			v2 = 0
 		}
 		if (*Tgz_state)(unsafe.Pointer(state)).Fmode == int32(m_GZ_WRITE) {
-			v5 = int32(m__O_TRUNC1)
+			v3 = int32(m__O_TRUNC1)
 		} else {
-			v5 = int32(m__O_APPEND1)
+			v3 = int32(m__O_APPEND1)
 		}
-		v3 = libc.Int32FromInt32(m__O_WRONLY1) | libc.Int32FromInt32(m__O_CREAT1) | v4 | v5
+		v1 = libc.Int32FromInt32(m__O_WRONLY1) | libc.Int32FromInt32(m__O_CREAT1) | v2 | v3
 	}
-	oflag = int32(m__O_BINARY1) | v3
+	oflag = int32(m__O_BINARY1) | v1
 	/* open the file with the appropriate flags (or just use fd) */
 	if fd > -int32(1) {
-		v6 = fd
+		v4 = fd
 	} else {
 		if fd == -int32(2) {
-			v7 = libc.X_wopen(tls, path, oflag, libc.VaList(bp+32, int32(0666)))
+			v5 = libc.X_wopen(tls, path, oflag, libc.VaList(bp+8, int32(0666)))
 		} else {
-			v7 = libc.Xopen(tls, path, oflag, libc.VaList(bp+32, int32(0666)))
+			v5 = libc.Xopen(tls, path, oflag, libc.VaList(bp+8, int32(0666)))
 		}
-		v6 = v7
+		v4 = v5
 	}
-	(*Tgz_state)(unsafe.Pointer(state)).Ffd = v6
+	(*Tgz_state)(unsafe.Pointer(state)).Ffd = v4
 	if (*Tgz_state)(unsafe.Pointer(state)).Ffd == -int32(1) {
 		libc.Xfree(tls, (*Tgz_state)(unsafe.Pointer(state)).Fpath)
 		libc.Xfree(tls, state)
@@ -10630,14 +10063,12 @@ func x_gzopen64(tls *libc.TLS, path uintptr, mode uintptr) (r TgzFile) {
 //
 //	/* -- see zlib.h -- */
 func x_gzdopen(tls *libc.TLS, fd int32, mode uintptr) (r TgzFile) {
-	bp := tls.Alloc(32)
-	defer tls.Free(32)
-	var __local_argv T__builtin_va_list
-	var __retval int32
+	bp := tls.Alloc(16)
+	defer tls.Free(16)
 	var gz TgzFile
-	var path, v1, v3 uintptr
+	var path, v1 uintptr
 	var v2 bool
-	_, _, _, _, _, _, _ = __local_argv, __retval, gz, path, v1, v2, v3
+	_, _, _, _ = gz, path, v1, v2
 	if v2 = fd == -int32(1); !v2 {
 		v1 = libc.Xmalloc(tls, libc.Uint64FromInt32(7)+libc.Uint64FromInt32(3)*libc.Uint64FromInt64(4))
 		path = v1
@@ -10645,15 +10076,7 @@ func x_gzdopen(tls *libc.TLS, fd int32, mode uintptr) (r TgzFile) {
 	if v2 || v1 == libc.UintptrFromInt32(0) {
 		return libc.UintptrFromInt32(0)
 	}
-	v3 = __ccgo_ts + 884
-	libc.VaList(bp, fd)
-	__local_argv = bp
-	__retval = libc.X__mingw_vsnprintf(tls, path, libc.Uint64FromInt32(7)+libc.Uint64FromInt32(3)*libc.Uint64FromInt64(4), v3, __local_argv)
-	_ = __local_argv
-	_ = __retval
-	goto _4
-_4:
-	;
+	libc.X__builtin_snprintf(tls, path, libc.Uint64FromInt32(7)+libc.Uint64FromInt32(3)*libc.Uint64FromInt64(4), __ccgo_ts+884, libc.VaList(bp+8, fd))
 	gz = _gz_open(tls, path, fd, mode)
 	libc.Xfree(tls, path)
 	return gz
@@ -10984,12 +10407,10 @@ func x_gzclearerr(tls *libc.TLS, file TgzFile) {
 //	   allocation failure constructing the error message, then convert the error to
 //	   out of memory. */
 func x_gz_error(tls *libc.TLS, state Tgz_statep, err int32, msg uintptr) {
-	bp := tls.Alloc(48)
-	defer tls.Free(48)
-	var __local_argv T__builtin_va_list
-	var __retval int32
-	var v1, v2 uintptr
-	_, _, _, _ = __local_argv, __retval, v1, v2
+	bp := tls.Alloc(32)
+	defer tls.Free(32)
+	var v1 uintptr
+	_ = v1
 	/* free previously allocated message and clear */
 	if (*Tgz_state)(unsafe.Pointer(state)).Fmsg != libc.UintptrFromInt32(0) {
 		if (*Tgz_state)(unsafe.Pointer(state)).Ferr != -int32(4) {
@@ -11017,14 +10438,7 @@ func x_gz_error(tls *libc.TLS, state Tgz_statep, err int32, msg uintptr) {
 		(*Tgz_state)(unsafe.Pointer(state)).Ferr = -int32(4)
 		return
 	}
-	v2 = __ccgo_ts + 907
-	libc.VaList(bp, (*Tgz_state)(unsafe.Pointer(state)).Fpath, __ccgo_ts+914, msg)
-	__local_argv = bp
-	__retval = libc.X__mingw_vsnprintf(tls, (*Tgz_state)(unsafe.Pointer(state)).Fmsg, libc.Xstrlen(tls, (*Tgz_state)(unsafe.Pointer(state)).Fpath)+libc.Xstrlen(tls, msg)+uint64(3), v2, __local_argv)
-	_ = __local_argv
-	_ = __retval
-	goto _3
-_3:
+	libc.X__builtin_snprintf(tls, (*Tgz_state)(unsafe.Pointer(state)).Fmsg, libc.Xstrlen(tls, (*Tgz_state)(unsafe.Pointer(state)).Fpath)+libc.Xstrlen(tls, msg)+uint64(3), __ccgo_ts+907, libc.VaList(bp+8, (*Tgz_state)(unsafe.Pointer(state)).Fpath, __ccgo_ts+914, msg))
 }
 
 // C documentation
@@ -12183,11 +11597,11 @@ see the files COPYING3 and COPYING.RUNTIME respectively.  If not, see
 //	/* -- see zlib.h -- */
 func x_gzvprintf(tls *libc.TLS, file TgzFile, format uintptr, va Tva_list) (r int32) {
 	var left uint32
-	var len1, v1 int32
+	var len1 int32
 	var next uintptr
 	var state Tgz_statep
 	var strm Tz_streamp
-	_, _, _, _, _, _ = left, len1, next, state, strm, v1
+	_, _, _, _, _ = left, len1, next, state, strm
 	/* get internal structure */
 	if file == libc.UintptrFromInt32(0) {
 		return -int32(2)
@@ -12217,10 +11631,7 @@ func x_gzvprintf(tls *libc.TLS, file TgzFile, format uintptr, va Tva_list) (r in
 	}
 	next = (*Tgz_state)(unsafe.Pointer(state)).Fin + uintptr(int64((*Tz_stream)(unsafe.Pointer(strm)).Fnext_in)-int64((*Tgz_state)(unsafe.Pointer(state)).Fin)) + uintptr((*Tz_stream)(unsafe.Pointer(strm)).Favail_in)
 	*(*int8)(unsafe.Pointer(next + uintptr((*Tgz_state)(unsafe.Pointer(state)).Fsize-uint32(1)))) = 0
-	v1 = libc.X__mingw_vsnprintf(tls, next, uint64((*Tgz_state)(unsafe.Pointer(state)).Fsize), format, va)
-	goto _2
-_2:
-	len1 = v1
+	len1 = libc.X__builtin_vsnprintf(tls, next, uint64((*Tgz_state)(unsafe.Pointer(state)).Fsize), format, va)
 	/* check that printf() results fit in buffer */
 	if len1 == 0 || uint32(uint32(len1)) >= (*Tgz_state)(unsafe.Pointer(state)).Fsize || int32(*(*int8)(unsafe.Pointer(next + uintptr((*Tgz_state)(unsafe.Pointer(state)).Fsize-uint32(1))))) != 0 {
 		return 0

@@ -1,6 +1,6 @@
-// Code generated for windows/amd64 by 'x86_64-w64-mingw32-gcc --prefix-enumerator=_ --prefix-external=x_ --prefix-field=F --prefix-macro=m_ --prefix-static-internal=_ --prefix-static-none=_ --prefix-tagged-enum=_ --prefix-tagged-struct=T --prefix-tagged-union=T --prefix-typename=T --prefix-undefined=_ -extended-errors --libc modernc.org/libc -D_UCRT -build-lines \/\/go:build windows && (amd64 || arm64)\n --cpp /usr/bin/x86_64-w64-mingw32-gcc --goarch amd64 --goos windows --package-name=main -map ar=x86_64-w64-mingw32-ar,gcc=x86_64-w64-mingw32-gcc -o minigzip.exe.go minigzip.o.go libz.a', DO NOT EDIT.
+// Code generated for windows/386 by 'i686-w64-mingw32-gcc --prefix-enumerator=_ --prefix-external=x_ --prefix-field=F --prefix-macro=m_ --prefix-static-internal=_ --prefix-static-none=_ --prefix-tagged-enum=_ --prefix-tagged-struct=T --prefix-tagged-union=T --prefix-typename=T --prefix-undefined=_ -extended-errors --libc modernc.org/libc -D_UCRT --cpp /usr/bin/i686-w64-mingw32-gcc --goarch 386 --goos windows --package-name=main -map ar=i686-w64-mingw32-ar,gcc=i686-w64-mingw32-gcc -o example.exe.go example.o.go libz.a', DO NOT EDIT.
 
-//go:build windows && (amd64 || arm64)
+//go:build windows && 386
 
 package main
 
@@ -16,7 +16,6 @@ var (
 	_ unsafe.Pointer
 )
 
-const m_BUFLEN = 16384
 const m_BUFSIZ = 512
 const m_E2BIG = 7
 const m_EACCES = 13
@@ -102,55 +101,33 @@ const m_EXIT_FAILURE = 1
 const m_EXIT_SUCCESS = 0
 const m_FILENAME_MAX = 260
 const m_FOPEN_MAX = 20
-const m_F_OK = 0
-const m_GZ_SUFFIX = ".gz"
 const m_L_tmpnam_s = "L_tmpnam"
 const m_MAX_MEM_LEVEL = 9
-const m_MAX_NAME_LEN = 1024
 const m_MAX_WBITS = 15
 const m_MB_LEN_MAX = 5
 const m_MINGW_HAS_DDK_H = 1
 const m_MINGW_HAS_SECURE_API = 1
-const m_O_ACCMODE = "_O_ACCMODE"
-const m_O_APPEND = "_O_APPEND"
-const m_O_BINARY = "_O_BINARY"
-const m_O_CREAT = "_O_CREAT"
-const m_O_EXCL = "_O_EXCL"
-const m_O_NOINHERIT = "_O_NOINHERIT"
-const m_O_RANDOM = "_O_RANDOM"
-const m_O_RAW = "_O_BINARY"
-const m_O_RDONLY = "_O_RDONLY"
-const m_O_RDWR = "_O_RDWR"
-const m_O_SEQUENTIAL = "_O_SEQUENTIAL"
-const m_O_TEMPORARY = "_O_TEMPORARY"
-const m_O_TEXT = "_O_TEXT"
-const m_O_TRUNC = "_O_TRUNC"
-const m_O_WRONLY = "_O_WRONLY"
 const m_PATH_MAX = 260
 const m_P_tmpdir = "_P_tmpdir"
 const m_RAND_MAX = 0x7fff
-const m_R_OK = 4
 const m_SEEK_CUR = 1
 const m_SEEK_END = 2
 const m_SEEK_SET = 0
-const m_SIZE_MAX = "_UI64_MAX"
-const m_SSIZE_MAX = "_I64_MAX"
+const m_SIZE_MAX = "UINT_MAX"
+const m_SSIZE_MAX = "INT_MAX"
 const m_STDERR_FILENO = 2
 const m_STDIN_FILENO = 0
 const m_STDOUT_FILENO = 1
 const m_STRUNCATE = 80
 const m_SYS_OPEN = "_SYS_OPEN"
+const m_TESTFILE = "foo.gz"
 const m_TMP_MAX = 32767
 const m_TMP_MAX_S = "TMP_MAX"
-const m_UNALIGNED = "__unaligned"
 const m_USE___UUIDOF = 0
 const m_WIN32 = 1
-const m_WIN64 = 1
 const m_WINNT = 1
-const m_W_OK = 2
-const m_X_OK = 1
 const m_ZEXTERN = "extern"
-const m_ZLIB_VERNUM = 0x1310
+const m_ZLIB_VERNUM = 4880
 const m_ZLIB_VERSION = "1.3.1"
 const m_ZLIB_VER_MAJOR = 1
 const m_ZLIB_VER_MINOR = 3
@@ -182,18 +159,12 @@ const m_Z_TREES = 6
 const m_Z_U4 = "unsigned"
 const m_Z_UNKNOWN = 2
 const m__ALLOCA_S_HEAP_MARKER = 56797
-const m__ALLOCA_S_MARKER_SIZE = 16
+const m__ALLOCA_S_MARKER_SIZE = 8
 const m__ALLOCA_S_STACK_MARKER = 0xCCCC
 const m__ALLOCA_S_THRESHOLD = 1024
 const m__ANONYMOUS_STRUCT = "__MINGW_EXTENSION"
 const m__ANONYMOUS_UNION = "__MINGW_EXTENSION"
 const m__ARGMAX = 100
-const m__A_ARCH = 0x20
-const m__A_HIDDEN = 0x02
-const m__A_NORMAL = 0x00
-const m__A_RDONLY = 0x01
-const m__A_SUBDIR = 0x10
-const m__A_SYSTEM = 0x04
 const m__CALL_REPORTFAULT = 0x2
 const m__CRTIMP2 = "_CRTIMP"
 const m__CRTIMP_ALTERNATIVE = "_CRTIMP"
@@ -209,12 +180,14 @@ const m__CRT_INTERNAL_PRINTF_STANDARD_SNPRINTF_BEHAVIOR = 2
 const m__CRT_INTERNAL_SCANF_LEGACY_MSVCRT_COMPATIBILITY = "0x0004U"
 const m__CRT_INTERNAL_SCANF_LEGACY_WIDE_SPECIFIERS = 2
 const m__CRT_INTERNAL_SCANF_SECURECRT = 1
+const m__FILE_OFFSET_BITS = 64
 const m__FREEENTRY = 0
-const m__HEAP_MAXREQ = 0xFFFFFFFFFFFFFFE0
+const m__HEAP_MAXREQ = 0xFFFFFFE0
 const m__I16_MAX = 32767
 const m__I32_MAX = 2147483647
 const m__I64_MAX = "9223372036854775807ll"
 const m__I8_MAX = 127
+const m__ILP32 = 1
 const m__INTEGRAL_MAX_BITS = 64
 const m__IOB_ENTRIES = 20
 const m__IOFBF = 0x0000
@@ -229,8 +202,7 @@ const m__MAX_PATH = 260
 const m__MAX_WAIT_MALLOC_CRT = 60000
 const m__MCRTIMP = "_CRTIMP"
 const m__MRTIMP2 = "_CRTIMP"
-const m__M_AMD64 = 100
-const m__M_X64 = 100
+const m__M_IX86 = 600
 const m__NFILE = "_NSTREAM_"
 const m__NLSCMPERROR = 2147483647
 const m__NSTREAM_ = 512
@@ -238,24 +210,6 @@ const m__OLD_P_OVERLAY = 2
 const m__OUT_TO_DEFAULT = 0
 const m__OUT_TO_MSGBOX = 2
 const m__OUT_TO_STDERR = 1
-const m__O_APPEND = 0x0008
-const m__O_BINARY = 32768
-const m__O_CREAT = 0x0100
-const m__O_EXCL = 0x0400
-const m__O_NOINHERIT = 0x0080
-const m__O_RANDOM = 0x0010
-const m__O_RAW = "_O_BINARY"
-const m__O_RDONLY = 0x0000
-const m__O_RDWR = 0x0002
-const m__O_SEQUENTIAL = 0x0020
-const m__O_SHORT_LIVED = 0x1000
-const m__O_TEMPORARY = 0x0040
-const m__O_TEXT = 0x4000
-const m__O_TRUNC = 0x0200
-const m__O_U16TEXT = 0x20000
-const m__O_U8TEXT = 0x40000
-const m__O_WRONLY = 0x0001
-const m__O_WTEXT = 0x10000
 const m__P_DETACH = 4
 const m__P_NOWAIT = 1
 const m__P_NOWAITO = 3
@@ -277,8 +231,8 @@ const m__WAIT_GRANDCHILD = 1
 const m__WConst_return = "_CONST_RETURN"
 const m__WIN32 = 1
 const m__WIN32_WINNT = 0xa00
-const m__WIN64 = 1
 const m__WRITE_ABORT_MSG = 0x1
+const m__X86_ = 1
 const m___ATOMIC_ACQUIRE = 2
 const m___ATOMIC_ACQ_REL = 4
 const m___ATOMIC_CONSUME = 1
@@ -413,7 +367,6 @@ const m___FLT_MIN__ = 1.17549435082228750796873653722224568e-38
 const m___FLT_NORM_MAX__ = 3.40282346638528859811704183484516925e+38
 const m___FLT_RADIX__ = 2
 const m___FUNCTION__ = "__func__"
-const m___FXSR__ = 1
 const m___GCC_ASM_FLAG_OUTPUTS__ = 1
 const m___GCC_ATOMIC_BOOL_LOCK_FREE = 2
 const m___GCC_ATOMIC_CHAR16_T_LOCK_FREE = 2
@@ -428,6 +381,7 @@ const m___GCC_ATOMIC_TEST_AND_SET_TRUEVAL = 1
 const m___GCC_ATOMIC_WCHAR_T_LOCK_FREE = 2
 const m___GCC_CONSTRUCTIVE_SIZE = 64
 const m___GCC_DESTRUCTIVE_SIZE = 64
+const m___GCC_HAVE_DWARF2_CFI_ASM = 1
 const m___GCC_HAVE_SYNC_COMPARE_AND_SWAP_1 = 1
 const m___GCC_HAVE_SYNC_COMPARE_AND_SWAP_2 = 1
 const m___GCC_HAVE_SYNC_COMPARE_AND_SWAP_4 = 1
@@ -446,6 +400,7 @@ const m___GXX_ABI_VERSION = 1017
 const m___GXX_MERGED_TYPEINFO_NAMES = 0
 const m___GXX_TYPEINFO_EQUALITY_INLINE = 0
 const m___HAVE_SPECULATION_SAFE_VALUE = 1
+const m___ILP32__ = 1
 const m___INT16_MAX__ = 0x7fff
 const m___INT32_MAX__ = 0x7fffffff
 const m___INT32_TYPE__ = "int"
@@ -453,8 +408,9 @@ const m___INT64_MAX__ = 0x7fffffffffffffff
 const m___INT8_MAX__ = 0x7f
 const m___INTMAX_MAX__ = 0x7fffffffffffffff
 const m___INTMAX_WIDTH__ = 64
-const m___INTPTR_MAX__ = 0x7fffffffffffffff
-const m___INTPTR_WIDTH__ = 64
+const m___INTPTR_MAX__ = 0x7fffffff
+const m___INTPTR_TYPE__ = "int"
+const m___INTPTR_WIDTH__ = 32
 const m___INT_FAST16_MAX__ = 0x7fff
 const m___INT_FAST16_WIDTH__ = 16
 const m___INT_FAST32_MAX__ = 0x7fffffff
@@ -475,6 +431,7 @@ const m___INT_LEAST8_MAX__ = 0x7f
 const m___INT_LEAST8_WIDTH__ = 8
 const m___INT_MAX__ = 0x7fffffff
 const m___INT_WIDTH__ = 32
+const m___LAHF_SAHF__ = 1
 const m___LDBL_DECIMAL_DIG__ = 17
 const m___LDBL_DENORM_MIN__ = 4.94065645841246544176568792868221372e-324
 const m___LDBL_DIG__ = 15
@@ -503,7 +460,6 @@ const m___MINGW64_VERSION_MAJOR = 10
 const m___MINGW64_VERSION_MINOR = 0
 const m___MINGW64_VERSION_RC = 0
 const m___MINGW64_VERSION_STATE = "alpha"
-const m___MINGW64__ = 1
 const m___MINGW_DEBUGBREAK_IMPL = 1
 const m___MINGW_FORTIFY_LEVEL = 0
 const m___MINGW_FORTIFY_VA_ARG = 0
@@ -513,23 +469,21 @@ const m___MINGW_HAVE_WIDE_C99_PRINTF = 1
 const m___MINGW_HAVE_WIDE_C99_SCANF = 1
 const m___MINGW_MSVC2005_DEPREC_STR = "This POSIX function is deprecated beginning in Visual C++ 2005, use _CRT_NONSTDC_NO_DEPRECATE to disable deprecation"
 const m___MINGW_SEC_WARN_STR = "This function or variable may be unsafe, use _CRT_SECURE_NO_WARNINGS to disable deprecation"
-const m___MINGW_USE_UNDERSCORE_PREFIX = 0
 const m___MSVCRT_VERSION__ = 0xE00
 const m___MSVCRT__ = 1
 const m___OPTIMIZE__ = 1
 const m___ORDER_BIG_ENDIAN__ = 4321
 const m___ORDER_LITTLE_ENDIAN__ = 1234
 const m___ORDER_PDP_ENDIAN__ = 3412
-const m___PIC__ = 1
 const m___PRAGMA_REDEFINE_EXTNAME = 1
 const m___PRETTY_FUNCTION__ = "__func__"
-const m___PTRDIFF_MAX__ = 0x7fffffffffffffff
-const m___PTRDIFF_WIDTH__ = 64
+const m___PTRDIFF_MAX__ = 0x7fffffff
+const m___PTRDIFF_TYPE__ = "int"
+const m___PTRDIFF_WIDTH__ = 32
 const m___SCHAR_MAX__ = 0x7f
 const m___SCHAR_WIDTH__ = 8
 const m___SEG_FS = 1
 const m___SEG_GS = 1
-const m___SEH__ = 1
 const m___SHRT_MAX__ = 0x7fff
 const m___SHRT_WIDTH__ = 16
 const m___SIG_ATOMIC_MAX__ = 0x7fffffff
@@ -537,21 +491,20 @@ const m___SIG_ATOMIC_TYPE__ = "int"
 const m___SIG_ATOMIC_WIDTH__ = 32
 const m___SIZEOF_DOUBLE__ = 8
 const m___SIZEOF_FLOAT128__ = 16
-const m___SIZEOF_FLOAT80__ = 16
+const m___SIZEOF_FLOAT80__ = 12
 const m___SIZEOF_FLOAT__ = 4
-const m___SIZEOF_INT128__ = 16
 const m___SIZEOF_INT__ = 4
 const m___SIZEOF_LONG_DOUBLE__ = 8
 const m___SIZEOF_LONG_LONG__ = 8
 const m___SIZEOF_LONG__ = 4
-const m___SIZEOF_POINTER__ = 8
-const m___SIZEOF_PTRDIFF_T__ = 8
+const m___SIZEOF_POINTER__ = 4
+const m___SIZEOF_PTRDIFF_T__ = 4
 const m___SIZEOF_SHORT__ = 2
-const m___SIZEOF_SIZE_T__ = 8
+const m___SIZEOF_SIZE_T__ = 4
 const m___SIZEOF_WCHAR_T__ = 2
 const m___SIZEOF_WINT_T__ = 2
-const m___SIZE_MAX__ = "0xffffffffffffffffU"
-const m___SIZE_WIDTH__ = 64
+const m___SIZE_MAX__ = 0xffffffff
+const m___SIZE_WIDTH__ = 32
 const m___STDC_HOSTED__ = 1
 const m___STDC_SECURE_LIB__ = 200411
 const m___STDC_UTF_16__ = 1
@@ -563,7 +516,7 @@ const m___UINT32_MAX__ = 0xffffffff
 const m___UINT64_MAX__ = "0xffffffffffffffffU"
 const m___UINT8_MAX__ = 0xff
 const m___UINTMAX_MAX__ = "0xffffffffffffffffU"
-const m___UINTPTR_MAX__ = "0xffffffffffffffffU"
+const m___UINTPTR_MAX__ = 0xffffffff
 const m___UINT_FAST16_MAX__ = 0xffff
 const m___UINT_FAST32_MAX__ = 0xffffffff
 const m___UINT_FAST64_MAX__ = "0xffffffffffffffffU"
@@ -572,6 +525,7 @@ const m___UINT_LEAST16_MAX__ = 0xffff
 const m___UINT_LEAST32_MAX__ = 0xffffffff
 const m___UINT_LEAST64_MAX__ = "0xffffffffffffffffU"
 const m___UINT_LEAST8_MAX__ = 0xff
+const m___USER_LABEL_PREFIX__ = "_"
 const m___USE_MINGW_ANSI_STDIO = 0
 const m___VERSION__ = "12-win32"
 const m___WCHAR_MAX__ = 0xffff
@@ -579,40 +533,28 @@ const m___WCHAR_MIN__ = 0
 const m___WCHAR_WIDTH__ = 16
 const m___WIN32 = 1
 const m___WIN32__ = 1
-const m___WIN64 = 1
-const m___WIN64__ = 1
 const m___WINNT = 1
 const m___WINNT__ = 1
 const m___WINT_MAX__ = 0xffff
 const m___WINT_MIN__ = 0
 const m___WINT_WIDTH__ = 16
-const m___amd64 = 1
-const m___amd64__ = 1
-const m___code_model_medium__ = 1
+const m___code_model_32__ = 1
+const m___i386 = 1
+const m___i386__ = 1
+const m___i686 = 1
+const m___i686__ = 1
 const m___int16 = "short"
 const m___int32 = "int"
 const m___int8 = "char"
-const m___k8 = 1
-const m___k8__ = 1
 const m___mingw_bos_ovr = "__mingw_ovr"
-const m___pic__ = 1
-const m___x86_64 = 1
-const m___x86_64__ = 1
-const m__finddata_t = "_finddata64i32_t"
-const m__finddatai64_t = "__finddata64_t"
-const m__findfirst = "_findfirst64i32"
-const m__findfirsti64 = "_findfirst64"
-const m__findnext = "_findnext64i32"
-const m__findnexti64 = "_findnext64"
+const m___pentiumpro = 1
+const m___pentiumpro__ = 1
 const m__inline = "__inline"
 const m__wP_tmpdir = "\\\\"
-const m__wfinddata_t = "_wfinddata64i32_t"
-const m__wfinddatai64_t = "_wfinddata64_t"
-const m__wfindfirst = "_wfindfirst64i32"
-const m__wfindfirsti64 = "_wfindfirst64"
-const m__wfindnext = "_wfindnext64i32"
-const m__wfindnexti64 = "_wfindnext64"
 const m_environ = "_environ"
+const m_fseeko = "fseeko64"
+const m_ftello = "ftello64"
+const m_i386 = 1
 const m_onexit_t = "_onexit_t"
 const m_pclose = "_pclose"
 const m_popen = "_popen"
@@ -625,27 +567,27 @@ const m_z_off_t = "long"
 
 type T__builtin_va_list = uintptr
 
-type T__predefined_size_t = uint64
+type T__predefined_size_t = uint32
 
 type T__predefined_wchar_t = uint16
 
-type T__predefined_ptrdiff_t = int64
+type T__predefined_ptrdiff_t = int32
 
 type T__gnuc_va_list = uintptr
 
 type Tva_list = uintptr
 
-type Tsize_t = uint64
+type Tsize_t = uint32
 
-type Tssize_t = int64
+type Tssize_t = int32
 
-type Trsize_t = uint64
+type Trsize_t = uint32
 
-type Tintptr_t = int64
+type Tintptr_t = int32
 
-type Tuintptr_t = uint64
+type Tuintptr_t = uint32
 
-type Tptrdiff_t = int64
+type Tptrdiff_t = int32
 
 type Twchar_t = uint16
 
@@ -697,11 +639,12 @@ type Tthreadlocinfo = struct {
 }
 
 type Tmax_align_t = struct {
+	F__ccgo_align   [0]uint32
 	F__max_align_ll int64
 	F__max_align_ld float64
 }
 
-type Tz_size_t = uint64
+type Tz_size_t = uint32
 
 type TByte = uint8
 
@@ -735,9 +678,9 @@ type T_dev_t = uint32
 
 type Tdev_t = uint32
 
-type T_pid_t = int64
+type T_pid_t = int32
 
-type Tpid_t = int64
+type Tpid_t = int32
 
 type T_mode_t = uint16
 
@@ -751,21 +694,24 @@ type T_off64_t = int64
 
 type Toff64_t = int64
 
-type Toff_t = int32
+type Toff_t = int64
 
 type Tuseconds_t = uint32
 
 type Ttimespec = struct {
-	Ftv_sec  Ttime_t
-	Ftv_nsec int32
+	F__ccgo_align [0]uint32
+	Ftv_sec       Ttime_t
+	Ftv_nsec      int32
+	F__ccgo_pad2  [4]byte
 }
 
 type Titimerspec = struct {
-	Fit_interval Ttimespec
-	Fit_value    Ttimespec
+	F__ccgo_align [0]uint32
+	Fit_interval  Ttimespec
+	Fit_value     Ttimespec
 }
 
-type T_sigset_t = uint64
+type T_sigset_t = uint32
 
 type Talloc_func = uintptr
 
@@ -855,7 +801,8 @@ type T_LDOUBLE = struct {
 }
 
 type T_CRT_DOUBLE = struct {
-	Fx float64
+	F__ccgo_align [0]uint32
+	Fx            float64
 }
 
 type T_CRT_FLOAT = struct {
@@ -863,7 +810,8 @@ type T_CRT_FLOAT = struct {
 }
 
 type T_LONGDOUBLE = struct {
-	Fx float64
+	F__ccgo_align [0]uint32
+	Fx            float64
 }
 
 type T_LDBL12 = struct {
@@ -875,8 +823,9 @@ type T_purecall_handler = uintptr
 type T_invalid_parameter_handler = uintptr
 
 type Tlldiv_t = struct {
-	Fquot int64
-	Frem  int64
+	F__ccgo_align [0]uint32
+	Fquot         int64
+	Frem          int64
 }
 
 type T_HEAPINFO = struct {
@@ -887,372 +836,609 @@ type T_HEAPINFO = struct {
 
 type T_heapinfo = T_HEAPINFO
 
-type T_fsize_t = uint32
+var _hello = [14]int8{'h', 'e', 'l', 'l', 'o', ',', ' ', 'h', 'e', 'l', 'l', 'o', '!'}
 
-type T_finddata32_t = struct {
-	Fattrib      uint32
-	Ftime_create T__time32_t
-	Ftime_access T__time32_t
-	Ftime_write  T__time32_t
-	Fsize        T_fsize_t
-	Fname        [260]int8
-}
-
-type T_finddata32i64_t = struct {
-	Fattrib      uint32
-	Ftime_create T__time32_t
-	Ftime_access T__time32_t
-	Ftime_write  T__time32_t
-	Fsize        int64
-	Fname        [260]int8
-}
-
-type T_finddata64i32_t = struct {
-	Fattrib      uint32
-	Ftime_create T__time64_t
-	Ftime_access T__time64_t
-	Ftime_write  T__time64_t
-	Fsize        T_fsize_t
-	Fname        [260]int8
-}
-
-type T__finddata64_t = struct {
-	Fattrib      uint32
-	Ftime_create T__time64_t
-	Ftime_access T__time64_t
-	Ftime_write  T__time64_t
-	Fsize        int64
-	Fname        [260]int8
-}
-
-type T_wfinddata32_t = struct {
-	Fattrib      uint32
-	Ftime_create T__time32_t
-	Ftime_access T__time32_t
-	Ftime_write  T__time32_t
-	Fsize        T_fsize_t
-	Fname        [260]Twchar_t
-}
-
-type T_wfinddata32i64_t = struct {
-	Fattrib      uint32
-	Ftime_create T__time32_t
-	Ftime_access T__time32_t
-	Ftime_write  T__time32_t
-	Fsize        int64
-	Fname        [260]Twchar_t
-}
-
-type T_wfinddata64i32_t = struct {
-	Fattrib      uint32
-	Ftime_create T__time64_t
-	Ftime_access T__time64_t
-	Ftime_write  T__time64_t
-	Fsize        T_fsize_t
-	Fname        [260]Twchar_t
-}
-
-type T_wfinddata64_t = struct {
-	Fattrib      uint32
-	Ftime_create T__time64_t
-	Ftime_access T__time64_t
-	Ftime_write  T__time64_t
-	Fsize        int64
-	Fname        [260]Twchar_t
-}
-
-/**
- * This file has no copyright assigned and is placed in the Public Domain.
- * This file is part of the mingw-w64 runtime package.
- * No warranty is given; refer to the file DISCLAIMER.PD within this package.
+/* "hello world" would be more standard, but the repeated "hello"
+ * stresses the compression code better, sorry...
  */
 
-var _prog uintptr
+var _dictionary = [6]int8{'h', 'e', 'l', 'l', 'o'}
+var _dictId TuLong /* Adler32 value of the dictionary */
+
+var _zalloc = uintptr(0)
+
+func init() {
+	p := unsafe.Pointer(&_zalloc)
+	*(*uintptr)(unsafe.Add(p, 0)) = libc.UintptrFromInt32(0)
+}
+
+var _zfree = uintptr(0)
+
+func init() {
+	p := unsafe.Pointer(&_zfree)
+	*(*uintptr)(unsafe.Add(p, 0)) = libc.UintptrFromInt32(0)
+}
 
 // C documentation
 //
 //	/* ===========================================================================
-//	 * Display error message and exit
+//	 * Test compress() and uncompress()
 //	 */
-func _error(tls *libc.TLS, msg uintptr) {
+func _test_compress(tls *libc.TLS, compr uintptr, _comprLen TuLong, uncompr uintptr, _uncomprLen TuLong) {
 	bp := tls.Alloc(32)
 	defer tls.Free(32)
-	libc.Xfprintf(tls, libc.X__acrt_iob_func(tls, uint32(2)), __ccgo_ts, libc.VaList(bp+8, _prog, msg))
-	libc.Xexit(tls, int32(1))
+	*(*TuLong)(unsafe.Pointer(bp)) = _comprLen
+	*(*TuLong)(unsafe.Pointer(bp + 4)) = _uncomprLen
+	var err int32
+	var len1 TuLong
+	_, _ = err, len1
+	len1 = uint32(libc.Xstrlen(tls, uintptr(unsafe.Pointer(&_hello)))) + uint32(1)
+	err = x_compress(tls, compr, bp, uintptr(unsafe.Pointer(&_hello)), len1)
+	if err != m_Z_OK {
+		libc.Xfprintf(tls, libc.X__acrt_iob_func(tls, uint32(2)), __ccgo_ts, libc.VaList(bp+16, __ccgo_ts+14, err))
+		libc.Xexit(tls, int32(1))
+	}
+	libc.Xstrcpy(tls, uncompr, __ccgo_ts+23)
+	err = x_uncompress(tls, uncompr, bp+4, compr, *(*TuLong)(unsafe.Pointer(bp)))
+	if err != m_Z_OK {
+		libc.Xfprintf(tls, libc.X__acrt_iob_func(tls, uint32(2)), __ccgo_ts, libc.VaList(bp+16, __ccgo_ts+31, err))
+		libc.Xexit(tls, int32(1))
+	}
+	if libc.Xstrcmp(tls, uncompr, uintptr(unsafe.Pointer(&_hello))) != 0 {
+		libc.Xfprintf(tls, libc.X__acrt_iob_func(tls, uint32(2)), __ccgo_ts+42, 0)
+		libc.Xexit(tls, int32(1))
+	} else {
+		libc.Xprintf(tls, __ccgo_ts+58, libc.VaList(bp+16, uncompr))
+	}
 }
 
-/* ===========================================================================
- * Compress input to output then close both files.
- */
+// C documentation
+//
+//	/* ===========================================================================
+//	 * Test read/write of .gz files
+//	 */
+func _test_gzio(tls *libc.TLS, fname uintptr, uncompr uintptr, uncomprLen TuLong) {
+	bp := tls.Alloc(32)
+	defer tls.Free(32)
+	var file TgzFile
+	var len1, pos, v1 int32
+	var v2, v3 uintptr
+	var _ /* err at bp+0 */ int32
+	_, _, _, _, _, _ = file, len1, pos, v1, v2, v3
+	len1 = int32(libc.Xstrlen(tls, uintptr(unsafe.Pointer(&_hello)))) + int32(1)
+	file = x_gzopen(tls, fname, __ccgo_ts+76)
+	if file == libc.UintptrFromInt32(0) {
+		libc.Xfprintf(tls, libc.X__acrt_iob_func(tls, uint32(2)), __ccgo_ts+79, 0)
+		libc.Xexit(tls, int32(1))
+	}
+	x_gzputc(tls, file, int32('h'))
+	if x_gzputs(tls, file, __ccgo_ts+93) != int32(4) {
+		libc.Xfprintf(tls, libc.X__acrt_iob_func(tls, uint32(2)), __ccgo_ts+98, libc.VaList(bp+16, x_gzerror(tls, file, bp)))
+		libc.Xexit(tls, int32(1))
+	}
+	if x_gzprintf(tls, file, __ccgo_ts+114, libc.VaList(bp+16, __ccgo_ts+120)) != int32(8) {
+		libc.Xfprintf(tls, libc.X__acrt_iob_func(tls, uint32(2)), __ccgo_ts+126, libc.VaList(bp+16, x_gzerror(tls, file, bp)))
+		libc.Xexit(tls, int32(1))
+	}
+	x_gzseek(tls, file, int32(1), int32(m_SEEK_CUR)) /* add one zero byte */
+	x_gzclose(tls, file)
+	file = x_gzopen(tls, fname, __ccgo_ts+144)
+	if file == libc.UintptrFromInt32(0) {
+		libc.Xfprintf(tls, libc.X__acrt_iob_func(tls, uint32(2)), __ccgo_ts+79, 0)
+		libc.Xexit(tls, int32(1))
+	}
+	libc.Xstrcpy(tls, uncompr, __ccgo_ts+23)
+	if x_gzread(tls, file, uncompr, uint32(uint32(uncomprLen))) != len1 {
+		libc.Xfprintf(tls, libc.X__acrt_iob_func(tls, uint32(2)), __ccgo_ts+147, libc.VaList(bp+16, x_gzerror(tls, file, bp)))
+		libc.Xexit(tls, int32(1))
+	}
+	if libc.Xstrcmp(tls, uncompr, uintptr(unsafe.Pointer(&_hello))) != 0 {
+		libc.Xfprintf(tls, libc.X__acrt_iob_func(tls, uint32(2)), __ccgo_ts+163, libc.VaList(bp+16, uncompr))
+		libc.Xexit(tls, int32(1))
+	} else {
+		libc.Xprintf(tls, __ccgo_ts+179, libc.VaList(bp+16, uncompr))
+	}
+	pos = x_gzseek(tls, file, -int32(8), int32(m_SEEK_CUR))
+	if pos != int32(6) || x_gztell(tls, file) != pos {
+		libc.Xfprintf(tls, libc.X__acrt_iob_func(tls, uint32(2)), __ccgo_ts+193, libc.VaList(bp+16, pos, x_gztell(tls, file)))
+		libc.Xexit(tls, int32(1))
+	}
+	if (*TgzFile_s)(unsafe.Pointer(file)).Fhave != 0 {
+		(*TgzFile_s)(unsafe.Pointer(file)).Fhave--
+		(*TgzFile_s)(unsafe.Pointer(file)).Fpos++
+		v3 = file + 4
+		v2 = *(*uintptr)(unsafe.Pointer(v3))
+		*(*uintptr)(unsafe.Pointer(v3))++
+		v1 = int32(*(*uint8)(unsafe.Pointer(v2)))
+	} else {
+		v1 = x_gzgetc(tls, file)
+	}
+	if v1 != int32(' ') {
+		libc.Xfprintf(tls, libc.X__acrt_iob_func(tls, uint32(2)), __ccgo_ts+228, 0)
+		libc.Xexit(tls, int32(1))
+	}
+	if x_gzungetc(tls, int32(' '), file) != int32(' ') {
+		libc.Xfprintf(tls, libc.X__acrt_iob_func(tls, uint32(2)), __ccgo_ts+242, 0)
+		libc.Xexit(tls, int32(1))
+	}
+	x_gzgets(tls, file, uncompr, int32(int32(uncomprLen)))
+	if libc.Xstrlen(tls, uncompr) != uint32(7) { /* " hello!" */
+		libc.Xfprintf(tls, libc.X__acrt_iob_func(tls, uint32(2)), __ccgo_ts+258, libc.VaList(bp+16, x_gzerror(tls, file, bp)))
+		libc.Xexit(tls, int32(1))
+	}
+	if libc.Xstrcmp(tls, uncompr, uintptr(unsafe.Pointer(&_hello))+uintptr(6)) != 0 {
+		libc.Xfprintf(tls, libc.X__acrt_iob_func(tls, uint32(2)), __ccgo_ts+287, 0)
+		libc.Xexit(tls, int32(1))
+	} else {
+		libc.Xprintf(tls, __ccgo_ts+312, libc.VaList(bp+16, uncompr))
+	}
+	x_gzclose(tls, file)
+}
 
-func _gz_compress(tls *libc.TLS, in uintptr, out TgzFile) {
-	bp := tls.Alloc(16400)
-	defer tls.Free(16400)
-	var len1 int32
-	var _ /* buf at bp+0 */ [16384]int8
-	var _ /* err at bp+16384 */ int32
-	_ = len1
-	for {
-		len1 = int32(libc.Xfread(tls, bp, uint64(1), uint64(16384), in))
-		if libc.Xferror(tls, in) != 0 {
-			libc.Xperror(tls, __ccgo_ts+8)
+// C documentation
+//
+//	/* ===========================================================================
+//	 * Test deflate() with small buffers
+//	 */
+func _test_deflate(tls *libc.TLS, compr uintptr, comprLen TuLong) {
+	bp := tls.Alloc(80)
+	defer tls.Free(80)
+	var err int32
+	var len1 TuLong
+	var v1 TuInt
+	var _ /* c_stream at bp+0 */ Tz_stream
+	_, _, _ = err, len1, v1
+	len1 = uint32(libc.Xstrlen(tls, uintptr(unsafe.Pointer(&_hello)))) + uint32(1)
+	(*(*Tz_stream)(unsafe.Pointer(bp))).Fzalloc = _zalloc
+	(*(*Tz_stream)(unsafe.Pointer(bp))).Fzfree = _zfree
+	(*(*Tz_stream)(unsafe.Pointer(bp))).Fopaque = libc.UintptrFromInt32(0)
+	err = x_deflateInit_(tls, bp, -int32(1), __ccgo_ts+339, libc.Int32FromInt64(56))
+	if err != m_Z_OK {
+		libc.Xfprintf(tls, libc.X__acrt_iob_func(tls, uint32(2)), __ccgo_ts, libc.VaList(bp+64, __ccgo_ts+345, err))
+		libc.Xexit(tls, int32(1))
+	}
+	(*(*Tz_stream)(unsafe.Pointer(bp))).Fnext_in = uintptr(unsafe.Pointer(&_hello))
+	(*(*Tz_stream)(unsafe.Pointer(bp))).Fnext_out = compr
+	for (*(*Tz_stream)(unsafe.Pointer(bp))).Ftotal_in != len1 && (*(*Tz_stream)(unsafe.Pointer(bp))).Ftotal_out < comprLen {
+		v1 = libc.Uint32FromInt32(1)
+		(*(*Tz_stream)(unsafe.Pointer(bp))).Favail_out = v1
+		(*(*Tz_stream)(unsafe.Pointer(bp))).Favail_in = v1 /* force small buffers */
+		err = x_deflate(tls, bp, m_Z_NO_FLUSH)
+		if err != m_Z_OK {
+			libc.Xfprintf(tls, libc.X__acrt_iob_func(tls, uint32(2)), __ccgo_ts, libc.VaList(bp+64, __ccgo_ts+357, err))
 			libc.Xexit(tls, int32(1))
 		}
-		if len1 == 0 {
-			break
-		}
-		if x_gzwrite(tls, out, bp, uint32(uint32(len1))) != len1 {
-			_error(tls, x_gzerror(tls, out, bp+16384))
-		}
-		goto _1
-	_1:
 	}
-	libc.Xfclose(tls, in)
-	if x_gzclose(tls, out) != m_Z_OK {
-		_error(tls, __ccgo_ts+14)
-	}
-}
-
-// C documentation
-//
-//	/* ===========================================================================
-//	 * Uncompress input to output then close both files.
-//	 */
-func _gz_uncompress(tls *libc.TLS, in TgzFile, out uintptr) {
-	bp := tls.Alloc(16400)
-	defer tls.Free(16400)
-	var len1 int32
-	var _ /* buf at bp+0 */ [16384]int8
-	var _ /* err at bp+16384 */ int32
-	_ = len1
+	/* Finish the stream, still forcing small buffers: */
 	for {
-		len1 = x_gzread(tls, in, bp, uint32(16384))
-		if len1 < 0 {
-			_error(tls, x_gzerror(tls, in, bp+16384))
-		}
-		if len1 == 0 {
+		(*(*Tz_stream)(unsafe.Pointer(bp))).Favail_out = uint32(1)
+		err = x_deflate(tls, bp, int32(m_Z_FINISH))
+		if err == int32(m_Z_STREAM_END) {
 			break
 		}
-		if int32(libc.Xfwrite(tls, bp, uint64(1), uint64(uint32(uint32(len1))), out)) != len1 {
-			_error(tls, __ccgo_ts+29)
+		if err != m_Z_OK {
+			libc.Xfprintf(tls, libc.X__acrt_iob_func(tls, uint32(2)), __ccgo_ts, libc.VaList(bp+64, __ccgo_ts+357, err))
+			libc.Xexit(tls, int32(1))
+		}
+		goto _2
+	_2:
+	}
+	err = x_deflateEnd(tls, bp)
+	if err != m_Z_OK {
+		libc.Xfprintf(tls, libc.X__acrt_iob_func(tls, uint32(2)), __ccgo_ts, libc.VaList(bp+64, __ccgo_ts+365, err))
+		libc.Xexit(tls, int32(1))
+	}
+}
+
+// C documentation
+//
+//	/* ===========================================================================
+//	 * Test inflate() with small buffers
+//	 */
+func _test_inflate(tls *libc.TLS, compr uintptr, comprLen TuLong, uncompr uintptr, uncomprLen TuLong) {
+	bp := tls.Alloc(80)
+	defer tls.Free(80)
+	var err int32
+	var v1 TuInt
+	var _ /* d_stream at bp+0 */ Tz_stream
+	_, _ = err, v1 /* decompression stream */
+	libc.Xstrcpy(tls, uncompr, __ccgo_ts+23)
+	(*(*Tz_stream)(unsafe.Pointer(bp))).Fzalloc = _zalloc
+	(*(*Tz_stream)(unsafe.Pointer(bp))).Fzfree = _zfree
+	(*(*Tz_stream)(unsafe.Pointer(bp))).Fopaque = libc.UintptrFromInt32(0)
+	(*(*Tz_stream)(unsafe.Pointer(bp))).Fnext_in = compr
+	(*(*Tz_stream)(unsafe.Pointer(bp))).Favail_in = uint32(0)
+	(*(*Tz_stream)(unsafe.Pointer(bp))).Fnext_out = uncompr
+	err = x_inflateInit_(tls, bp, __ccgo_ts+339, libc.Int32FromInt64(56))
+	if err != m_Z_OK {
+		libc.Xfprintf(tls, libc.X__acrt_iob_func(tls, uint32(2)), __ccgo_ts, libc.VaList(bp+64, __ccgo_ts+376, err))
+		libc.Xexit(tls, int32(1))
+	}
+	for (*(*Tz_stream)(unsafe.Pointer(bp))).Ftotal_out < uncomprLen && (*(*Tz_stream)(unsafe.Pointer(bp))).Ftotal_in < comprLen {
+		v1 = libc.Uint32FromInt32(1)
+		(*(*Tz_stream)(unsafe.Pointer(bp))).Favail_out = v1
+		(*(*Tz_stream)(unsafe.Pointer(bp))).Favail_in = v1 /* force small buffers */
+		err = x_inflate(tls, bp, m_Z_NO_FLUSH)
+		if err == int32(m_Z_STREAM_END) {
+			break
+		}
+		if err != m_Z_OK {
+			libc.Xfprintf(tls, libc.X__acrt_iob_func(tls, uint32(2)), __ccgo_ts, libc.VaList(bp+64, __ccgo_ts+388, err))
+			libc.Xexit(tls, int32(1))
+		}
+	}
+	err = x_inflateEnd(tls, bp)
+	if err != m_Z_OK {
+		libc.Xfprintf(tls, libc.X__acrt_iob_func(tls, uint32(2)), __ccgo_ts, libc.VaList(bp+64, __ccgo_ts+396, err))
+		libc.Xexit(tls, int32(1))
+	}
+	if libc.Xstrcmp(tls, uncompr, uintptr(unsafe.Pointer(&_hello))) != 0 {
+		libc.Xfprintf(tls, libc.X__acrt_iob_func(tls, uint32(2)), __ccgo_ts+407, 0)
+		libc.Xexit(tls, int32(1))
+	} else {
+		libc.Xprintf(tls, __ccgo_ts+420, libc.VaList(bp+64, uncompr))
+	}
+}
+
+// C documentation
+//
+//	/* ===========================================================================
+//	 * Test deflate() with large buffers and dynamic change of compression level
+//	 */
+func _test_large_deflate(tls *libc.TLS, compr uintptr, comprLen TuLong, uncompr uintptr, uncomprLen TuLong) {
+	bp := tls.Alloc(80)
+	defer tls.Free(80)
+	var err int32
+	var _ /* c_stream at bp+0 */ Tz_stream
+	_ = err
+	(*(*Tz_stream)(unsafe.Pointer(bp))).Fzalloc = _zalloc
+	(*(*Tz_stream)(unsafe.Pointer(bp))).Fzfree = _zfree
+	(*(*Tz_stream)(unsafe.Pointer(bp))).Fopaque = libc.UintptrFromInt32(0)
+	err = x_deflateInit_(tls, bp, int32(m_Z_BEST_SPEED), __ccgo_ts+339, libc.Int32FromInt64(56))
+	if err != m_Z_OK {
+		libc.Xfprintf(tls, libc.X__acrt_iob_func(tls, uint32(2)), __ccgo_ts, libc.VaList(bp+64, __ccgo_ts+345, err))
+		libc.Xexit(tls, int32(1))
+	}
+	(*(*Tz_stream)(unsafe.Pointer(bp))).Fnext_out = compr
+	(*(*Tz_stream)(unsafe.Pointer(bp))).Favail_out = uint32(uint32(comprLen))
+	/* At this point, uncompr is still mostly zeroes, so it should compress
+	 * very well:
+	 */
+	(*(*Tz_stream)(unsafe.Pointer(bp))).Fnext_in = uncompr
+	(*(*Tz_stream)(unsafe.Pointer(bp))).Favail_in = uint32(uint32(uncomprLen))
+	err = x_deflate(tls, bp, m_Z_NO_FLUSH)
+	if err != m_Z_OK {
+		libc.Xfprintf(tls, libc.X__acrt_iob_func(tls, uint32(2)), __ccgo_ts, libc.VaList(bp+64, __ccgo_ts+357, err))
+		libc.Xexit(tls, int32(1))
+	}
+	if (*(*Tz_stream)(unsafe.Pointer(bp))).Favail_in != uint32(0) {
+		libc.Xfprintf(tls, libc.X__acrt_iob_func(tls, uint32(2)), __ccgo_ts+435, 0)
+		libc.Xexit(tls, int32(1))
+	}
+	/* Feed in already compressed data and switch to no compression: */
+	x_deflateParams(tls, bp, m_Z_NO_COMPRESSION, m_Z_DEFAULT_STRATEGY)
+	(*(*Tz_stream)(unsafe.Pointer(bp))).Fnext_in = compr
+	(*(*Tz_stream)(unsafe.Pointer(bp))).Favail_in = uint32(uint32(uncomprLen)) / uint32(2)
+	err = x_deflate(tls, bp, m_Z_NO_FLUSH)
+	if err != m_Z_OK {
+		libc.Xfprintf(tls, libc.X__acrt_iob_func(tls, uint32(2)), __ccgo_ts, libc.VaList(bp+64, __ccgo_ts+357, err))
+		libc.Xexit(tls, int32(1))
+	}
+	/* Switch back to compressing mode: */
+	x_deflateParams(tls, bp, int32(m_Z_BEST_COMPRESSION), int32(m_Z_FILTERED))
+	(*(*Tz_stream)(unsafe.Pointer(bp))).Fnext_in = uncompr
+	(*(*Tz_stream)(unsafe.Pointer(bp))).Favail_in = uint32(uint32(uncomprLen))
+	err = x_deflate(tls, bp, m_Z_NO_FLUSH)
+	if err != m_Z_OK {
+		libc.Xfprintf(tls, libc.X__acrt_iob_func(tls, uint32(2)), __ccgo_ts, libc.VaList(bp+64, __ccgo_ts+357, err))
+		libc.Xexit(tls, int32(1))
+	}
+	err = x_deflate(tls, bp, int32(m_Z_FINISH))
+	if err != int32(m_Z_STREAM_END) {
+		libc.Xfprintf(tls, libc.X__acrt_iob_func(tls, uint32(2)), __ccgo_ts+455, 0)
+		libc.Xexit(tls, int32(1))
+	}
+	err = x_deflateEnd(tls, bp)
+	if err != m_Z_OK {
+		libc.Xfprintf(tls, libc.X__acrt_iob_func(tls, uint32(2)), __ccgo_ts, libc.VaList(bp+64, __ccgo_ts+365, err))
+		libc.Xexit(tls, int32(1))
+	}
+}
+
+// C documentation
+//
+//	/* ===========================================================================
+//	 * Test inflate() with large buffers
+//	 */
+func _test_large_inflate(tls *libc.TLS, compr uintptr, comprLen TuLong, uncompr uintptr, uncomprLen TuLong) {
+	bp := tls.Alloc(80)
+	defer tls.Free(80)
+	var err int32
+	var _ /* d_stream at bp+0 */ Tz_stream
+	_ = err /* decompression stream */
+	libc.Xstrcpy(tls, uncompr, __ccgo_ts+23)
+	(*(*Tz_stream)(unsafe.Pointer(bp))).Fzalloc = _zalloc
+	(*(*Tz_stream)(unsafe.Pointer(bp))).Fzfree = _zfree
+	(*(*Tz_stream)(unsafe.Pointer(bp))).Fopaque = libc.UintptrFromInt32(0)
+	(*(*Tz_stream)(unsafe.Pointer(bp))).Fnext_in = compr
+	(*(*Tz_stream)(unsafe.Pointer(bp))).Favail_in = uint32(uint32(comprLen))
+	err = x_inflateInit_(tls, bp, __ccgo_ts+339, libc.Int32FromInt64(56))
+	if err != m_Z_OK {
+		libc.Xfprintf(tls, libc.X__acrt_iob_func(tls, uint32(2)), __ccgo_ts, libc.VaList(bp+64, __ccgo_ts+376, err))
+		libc.Xexit(tls, int32(1))
+	}
+	for {
+		(*(*Tz_stream)(unsafe.Pointer(bp))).Fnext_out = uncompr /* discard the output */
+		(*(*Tz_stream)(unsafe.Pointer(bp))).Favail_out = uint32(uint32(uncomprLen))
+		err = x_inflate(tls, bp, m_Z_NO_FLUSH)
+		if err == int32(m_Z_STREAM_END) {
+			break
+		}
+		if err != m_Z_OK {
+			libc.Xfprintf(tls, libc.X__acrt_iob_func(tls, uint32(2)), __ccgo_ts, libc.VaList(bp+64, __ccgo_ts+491, err))
+			libc.Xexit(tls, int32(1))
 		}
 		goto _1
 	_1:
 	}
-	if libc.Xfclose(tls, out) != 0 {
-		_error(tls, __ccgo_ts+43)
-	}
-	if x_gzclose(tls, in) != m_Z_OK {
-		_error(tls, __ccgo_ts+14)
-	}
-}
-
-// C documentation
-//
-//	/* ===========================================================================
-//	 * Compress the given file: create a corresponding .gz file and remove the
-//	 * original.
-//	 */
-func _file_compress(tls *libc.TLS, file uintptr, mode uintptr) {
-	bp := tls.Alloc(1056)
-	defer tls.Free(1056)
-	var in uintptr
-	var out TgzFile
-	var _ /* outfile at bp+0 */ [1024]int8
-	_, _ = in, out
-	if libc.Xstrlen(tls, file)+libc.Xstrlen(tls, __ccgo_ts+57) >= uint64(1024) {
-		libc.Xfprintf(tls, libc.X__acrt_iob_func(tls, uint32(2)), __ccgo_ts+61, libc.VaList(bp+1032, _prog))
+	err = x_inflateEnd(tls, bp)
+	if err != m_Z_OK {
+		libc.Xfprintf(tls, libc.X__acrt_iob_func(tls, uint32(2)), __ccgo_ts, libc.VaList(bp+64, __ccgo_ts+396, err))
 		libc.Xexit(tls, int32(1))
 	}
-	libc.X__builtin_snprintf(tls, bp, uint64(1024), __ccgo_ts+84, libc.VaList(bp+1032, file, __ccgo_ts+57))
-	in = libc.Xfopen(tls, file, __ccgo_ts+89)
-	if in == libc.UintptrFromInt32(0) {
-		libc.Xperror(tls, file)
+	if (*(*Tz_stream)(unsafe.Pointer(bp))).Ftotal_out != uint32(2)*uncomprLen+uncomprLen/uint32(2) {
+		libc.Xfprintf(tls, libc.X__acrt_iob_func(tls, uint32(2)), __ccgo_ts+505, libc.VaList(bp+64, (*(*Tz_stream)(unsafe.Pointer(bp))).Ftotal_out))
 		libc.Xexit(tls, int32(1))
-	}
-	out = x_gzopen(tls, bp, mode)
-	if out == libc.UintptrFromInt32(0) {
-		libc.Xfprintf(tls, libc.X__acrt_iob_func(tls, uint32(2)), __ccgo_ts+92, libc.VaList(bp+1032, _prog, bp))
-		libc.Xexit(tls, int32(1))
-	}
-	_gz_compress(tls, in, out)
-	libc.Xunlink(tls, file)
-}
-
-// C documentation
-//
-//	/* ===========================================================================
-//	 * Uncompress the given file and remove the original.
-//	 */
-func _file_uncompress(tls *libc.TLS, file uintptr) {
-	bp := tls.Alloc(1056)
-	defer tls.Free(1056)
-	var in TgzFile
-	var infile, out, outfile uintptr
-	var len1 Tz_size_t
-	var _ /* buf at bp+0 */ [1024]int8
-	_, _, _, _, _ = in, infile, len1, out, outfile
-	len1 = libc.Xstrlen(tls, file)
-	if len1+libc.Xstrlen(tls, __ccgo_ts+57) >= uint64(1024) {
-		libc.Xfprintf(tls, libc.X__acrt_iob_func(tls, uint32(2)), __ccgo_ts+61, libc.VaList(bp+1032, _prog))
-		libc.Xexit(tls, int32(1))
-	}
-	libc.X__builtin_snprintf(tls, bp, uint64(1024), __ccgo_ts+113, libc.VaList(bp+1032, file))
-	if len1 > libc.Uint64FromInt64(4)-libc.Uint64FromInt32(1) && libc.Xstrcmp(tls, file+uintptr(len1)-uintptr(libc.Uint64FromInt64(4)-libc.Uint64FromInt32(1)), __ccgo_ts+57) == 0 {
-		infile = file
-		outfile = bp
-		*(*int8)(unsafe.Pointer(outfile + uintptr(len1-uint64(3)))) = int8('\000')
 	} else {
-		outfile = file
-		infile = bp
-		libc.X__builtin_snprintf(tls, bp+uintptr(len1), uint64(1024)-len1, __ccgo_ts+113, libc.VaList(bp+1032, __ccgo_ts+57))
+		libc.Xprintf(tls, __ccgo_ts+529, 0)
 	}
-	in = x_gzopen(tls, infile, __ccgo_ts+89)
-	if in == libc.UintptrFromInt32(0) {
-		libc.Xfprintf(tls, libc.X__acrt_iob_func(tls, uint32(2)), __ccgo_ts+92, libc.VaList(bp+1032, _prog, infile))
+}
+
+// C documentation
+//
+//	/* ===========================================================================
+//	 * Test deflate() with full flush
+//	 */
+func _test_flush(tls *libc.TLS, compr uintptr, comprLen uintptr) {
+	bp := tls.Alloc(80)
+	defer tls.Free(80)
+	var err int32
+	var len1 TuInt
+	var _ /* c_stream at bp+0 */ Tz_stream
+	_, _ = err, len1
+	len1 = libc.Xstrlen(tls, uintptr(unsafe.Pointer(&_hello))) + uint32(1)
+	(*(*Tz_stream)(unsafe.Pointer(bp))).Fzalloc = _zalloc
+	(*(*Tz_stream)(unsafe.Pointer(bp))).Fzfree = _zfree
+	(*(*Tz_stream)(unsafe.Pointer(bp))).Fopaque = libc.UintptrFromInt32(0)
+	err = x_deflateInit_(tls, bp, -int32(1), __ccgo_ts+339, libc.Int32FromInt64(56))
+	if err != m_Z_OK {
+		libc.Xfprintf(tls, libc.X__acrt_iob_func(tls, uint32(2)), __ccgo_ts, libc.VaList(bp+64, __ccgo_ts+345, err))
 		libc.Xexit(tls, int32(1))
 	}
-	out = libc.Xfopen(tls, outfile, __ccgo_ts+116)
-	if out == libc.UintptrFromInt32(0) {
-		libc.Xperror(tls, file)
+	(*(*Tz_stream)(unsafe.Pointer(bp))).Fnext_in = uintptr(unsafe.Pointer(&_hello))
+	(*(*Tz_stream)(unsafe.Pointer(bp))).Fnext_out = compr
+	(*(*Tz_stream)(unsafe.Pointer(bp))).Favail_in = uint32(3)
+	(*(*Tz_stream)(unsafe.Pointer(bp))).Favail_out = uint32(*(*TuLong)(unsafe.Pointer(comprLen)))
+	err = x_deflate(tls, bp, int32(m_Z_FULL_FLUSH))
+	if err != m_Z_OK {
+		libc.Xfprintf(tls, libc.X__acrt_iob_func(tls, uint32(2)), __ccgo_ts, libc.VaList(bp+64, __ccgo_ts+357, err))
 		libc.Xexit(tls, int32(1))
 	}
-	_gz_uncompress(tls, in, out)
-	libc.Xunlink(tls, infile)
+	*(*TByte)(unsafe.Pointer(compr + 3))++ /* force an error in first compressed block */
+	(*(*Tz_stream)(unsafe.Pointer(bp))).Favail_in = len1 - uint32(3)
+	err = x_deflate(tls, bp, int32(m_Z_FINISH))
+	if err != int32(m_Z_STREAM_END) {
+		if err != m_Z_OK {
+			libc.Xfprintf(tls, libc.X__acrt_iob_func(tls, uint32(2)), __ccgo_ts, libc.VaList(bp+64, __ccgo_ts+357, err))
+			libc.Xexit(tls, int32(1))
+		}
+	}
+	err = x_deflateEnd(tls, bp)
+	if err != m_Z_OK {
+		libc.Xfprintf(tls, libc.X__acrt_iob_func(tls, uint32(2)), __ccgo_ts, libc.VaList(bp+64, __ccgo_ts+365, err))
+		libc.Xexit(tls, int32(1))
+	}
+	*(*TuLong)(unsafe.Pointer(comprLen)) = (*(*Tz_stream)(unsafe.Pointer(bp))).Ftotal_out
+}
+
+// C documentation
+//
+//	/* ===========================================================================
+//	 * Test inflateSync()
+//	 */
+func _test_sync(tls *libc.TLS, compr uintptr, comprLen TuLong, uncompr uintptr, uncomprLen TuLong) {
+	bp := tls.Alloc(80)
+	defer tls.Free(80)
+	var err int32
+	var _ /* d_stream at bp+0 */ Tz_stream
+	_ = err /* decompression stream */
+	libc.Xstrcpy(tls, uncompr, __ccgo_ts+23)
+	(*(*Tz_stream)(unsafe.Pointer(bp))).Fzalloc = _zalloc
+	(*(*Tz_stream)(unsafe.Pointer(bp))).Fzfree = _zfree
+	(*(*Tz_stream)(unsafe.Pointer(bp))).Fopaque = libc.UintptrFromInt32(0)
+	(*(*Tz_stream)(unsafe.Pointer(bp))).Fnext_in = compr
+	(*(*Tz_stream)(unsafe.Pointer(bp))).Favail_in = uint32(2) /* just read the zlib header */
+	err = x_inflateInit_(tls, bp, __ccgo_ts+339, libc.Int32FromInt64(56))
+	if err != m_Z_OK {
+		libc.Xfprintf(tls, libc.X__acrt_iob_func(tls, uint32(2)), __ccgo_ts, libc.VaList(bp+64, __ccgo_ts+376, err))
+		libc.Xexit(tls, int32(1))
+	}
+	(*(*Tz_stream)(unsafe.Pointer(bp))).Fnext_out = uncompr
+	(*(*Tz_stream)(unsafe.Pointer(bp))).Favail_out = uint32(uint32(uncomprLen))
+	err = x_inflate(tls, bp, m_Z_NO_FLUSH)
+	if err != m_Z_OK {
+		libc.Xfprintf(tls, libc.X__acrt_iob_func(tls, uint32(2)), __ccgo_ts, libc.VaList(bp+64, __ccgo_ts+388, err))
+		libc.Xexit(tls, int32(1))
+	}
+	(*(*Tz_stream)(unsafe.Pointer(bp))).Favail_in = uint32(uint32(comprLen)) - uint32(2) /* read all compressed data */
+	err = x_inflateSync(tls, bp)                                                         /* but skip the damaged part */
+	if err != m_Z_OK {
+		libc.Xfprintf(tls, libc.X__acrt_iob_func(tls, uint32(2)), __ccgo_ts, libc.VaList(bp+64, __ccgo_ts+550, err))
+		libc.Xexit(tls, int32(1))
+	}
+	err = x_inflate(tls, bp, int32(m_Z_FINISH))
+	if err != int32(m_Z_STREAM_END) {
+		libc.Xfprintf(tls, libc.X__acrt_iob_func(tls, uint32(2)), __ccgo_ts+562, 0)
+		libc.Xexit(tls, int32(1))
+	}
+	err = x_inflateEnd(tls, bp)
+	if err != m_Z_OK {
+		libc.Xfprintf(tls, libc.X__acrt_iob_func(tls, uint32(2)), __ccgo_ts, libc.VaList(bp+64, __ccgo_ts+396, err))
+		libc.Xexit(tls, int32(1))
+	}
+	libc.Xprintf(tls, __ccgo_ts+598, libc.VaList(bp+64, uncompr))
+}
+
+// C documentation
+//
+//	/* ===========================================================================
+//	 * Test deflate() with preset dictionary
+//	 */
+func _test_dict_deflate(tls *libc.TLS, compr uintptr, comprLen TuLong) {
+	bp := tls.Alloc(80)
+	defer tls.Free(80)
+	var err int32
+	var _ /* c_stream at bp+0 */ Tz_stream
+	_ = err
+	(*(*Tz_stream)(unsafe.Pointer(bp))).Fzalloc = _zalloc
+	(*(*Tz_stream)(unsafe.Pointer(bp))).Fzfree = _zfree
+	(*(*Tz_stream)(unsafe.Pointer(bp))).Fopaque = libc.UintptrFromInt32(0)
+	err = x_deflateInit_(tls, bp, int32(m_Z_BEST_COMPRESSION), __ccgo_ts+339, libc.Int32FromInt64(56))
+	if err != m_Z_OK {
+		libc.Xfprintf(tls, libc.X__acrt_iob_func(tls, uint32(2)), __ccgo_ts, libc.VaList(bp+64, __ccgo_ts+345, err))
+		libc.Xexit(tls, int32(1))
+	}
+	err = x_deflateSetDictionary(tls, bp, uintptr(unsafe.Pointer(&_dictionary)), uint32(libc.Int32FromInt64(6)))
+	if err != m_Z_OK {
+		libc.Xfprintf(tls, libc.X__acrt_iob_func(tls, uint32(2)), __ccgo_ts, libc.VaList(bp+64, __ccgo_ts+626, err))
+		libc.Xexit(tls, int32(1))
+	}
+	_dictId = (*(*Tz_stream)(unsafe.Pointer(bp))).Fadler
+	(*(*Tz_stream)(unsafe.Pointer(bp))).Fnext_out = compr
+	(*(*Tz_stream)(unsafe.Pointer(bp))).Favail_out = uint32(uint32(comprLen))
+	(*(*Tz_stream)(unsafe.Pointer(bp))).Fnext_in = uintptr(unsafe.Pointer(&_hello))
+	(*(*Tz_stream)(unsafe.Pointer(bp))).Favail_in = libc.Xstrlen(tls, uintptr(unsafe.Pointer(&_hello))) + uint32(1)
+	err = x_deflate(tls, bp, int32(m_Z_FINISH))
+	if err != int32(m_Z_STREAM_END) {
+		libc.Xfprintf(tls, libc.X__acrt_iob_func(tls, uint32(2)), __ccgo_ts+455, 0)
+		libc.Xexit(tls, int32(1))
+	}
+	err = x_deflateEnd(tls, bp)
+	if err != m_Z_OK {
+		libc.Xfprintf(tls, libc.X__acrt_iob_func(tls, uint32(2)), __ccgo_ts, libc.VaList(bp+64, __ccgo_ts+365, err))
+		libc.Xexit(tls, int32(1))
+	}
+}
+
+// C documentation
+//
+//	/* ===========================================================================
+//	 * Test inflate() with a preset dictionary
+//	 */
+func _test_dict_inflate(tls *libc.TLS, compr uintptr, comprLen TuLong, uncompr uintptr, uncomprLen TuLong) {
+	bp := tls.Alloc(80)
+	defer tls.Free(80)
+	var err int32
+	var _ /* d_stream at bp+0 */ Tz_stream
+	_ = err /* decompression stream */
+	libc.Xstrcpy(tls, uncompr, __ccgo_ts+23)
+	(*(*Tz_stream)(unsafe.Pointer(bp))).Fzalloc = _zalloc
+	(*(*Tz_stream)(unsafe.Pointer(bp))).Fzfree = _zfree
+	(*(*Tz_stream)(unsafe.Pointer(bp))).Fopaque = libc.UintptrFromInt32(0)
+	(*(*Tz_stream)(unsafe.Pointer(bp))).Fnext_in = compr
+	(*(*Tz_stream)(unsafe.Pointer(bp))).Favail_in = uint32(uint32(comprLen))
+	err = x_inflateInit_(tls, bp, __ccgo_ts+339, libc.Int32FromInt64(56))
+	if err != m_Z_OK {
+		libc.Xfprintf(tls, libc.X__acrt_iob_func(tls, uint32(2)), __ccgo_ts, libc.VaList(bp+64, __ccgo_ts+376, err))
+		libc.Xexit(tls, int32(1))
+	}
+	(*(*Tz_stream)(unsafe.Pointer(bp))).Fnext_out = uncompr
+	(*(*Tz_stream)(unsafe.Pointer(bp))).Favail_out = uint32(uint32(uncomprLen))
+	for {
+		err = x_inflate(tls, bp, m_Z_NO_FLUSH)
+		if err == int32(m_Z_STREAM_END) {
+			break
+		}
+		if err == int32(m_Z_NEED_DICT) {
+			if (*(*Tz_stream)(unsafe.Pointer(bp))).Fadler != _dictId {
+				libc.Xfprintf(tls, libc.X__acrt_iob_func(tls, uint32(2)), __ccgo_ts+647, 0)
+				libc.Xexit(tls, int32(1))
+			}
+			err = x_inflateSetDictionary(tls, bp, uintptr(unsafe.Pointer(&_dictionary)), uint32(libc.Int32FromInt64(6)))
+		}
+		if err != m_Z_OK {
+			libc.Xfprintf(tls, libc.X__acrt_iob_func(tls, uint32(2)), __ccgo_ts, libc.VaList(bp+64, __ccgo_ts+669, err))
+			libc.Xexit(tls, int32(1))
+		}
+		goto _1
+	_1:
+	}
+	err = x_inflateEnd(tls, bp)
+	if err != m_Z_OK {
+		libc.Xfprintf(tls, libc.X__acrt_iob_func(tls, uint32(2)), __ccgo_ts, libc.VaList(bp+64, __ccgo_ts+396, err))
+		libc.Xexit(tls, int32(1))
+	}
+	if libc.Xstrcmp(tls, uncompr, uintptr(unsafe.Pointer(&_hello))) != 0 {
+		libc.Xfprintf(tls, libc.X__acrt_iob_func(tls, uint32(2)), __ccgo_ts+687, 0)
+		libc.Xexit(tls, int32(1))
+	} else {
+		libc.Xprintf(tls, __ccgo_ts+710, libc.VaList(bp+64, uncompr))
+	}
 }
 
 /* ===========================================================================
- * Usage:  minigzip [-c] [-d] [-f] [-h] [-r] [-1 to -9] [files...]
- *   -c : write to standard output
- *   -d : decompress
- *   -f : compress with Z_FILTERED
- *   -h : compress with Z_HUFFMAN_ONLY
- *   -r : compress with Z_RLE
- *   -1 to -9 : compression level
+ * Usage:  example [output.gz  [input.gz]]
  */
 
 func x_main(tls *libc.TLS, argc int32, argv uintptr) (r int32) {
 	bp := tls.Alloc(48)
 	defer tls.Free(48)
-	var bname, in uintptr
-	var copyout, uncompr, v1, v2 int32
-	var file TgzFile
-	var _ /* outmode at bp+0 */ [20]int8
-	_, _, _, _, _, _, _ = bname, copyout, file, in, uncompr, v1, v2
-	copyout = 0
-	uncompr = 0
-	libc.X__builtin_snprintf(tls, bp, uint64(20), __ccgo_ts+113, libc.VaList(bp+32, __ccgo_ts+119))
-	_prog = *(*uintptr)(unsafe.Pointer(argv))
-	bname = libc.Xstrrchr(tls, *(*uintptr)(unsafe.Pointer(argv)), int32('/'))
-	if bname != 0 {
-		bname++
+	var compr, uncompr, v1 uintptr
+	var uncomprLen TuLong
+	var _ /* comprLen at bp+0 */ TuLong
+	_, _, _, _ = compr, uncompr, uncomprLen, v1
+	uncomprLen = uint32(20000)
+	*(*TuLong)(unsafe.Pointer(bp)) = uint32(3) * uncomprLen
+	if int32(*(*int8)(unsafe.Pointer(x_zlibVersion(tls)))) != int32(*(*int8)(unsafe.Pointer(_myVersion))) {
+		libc.Xfprintf(tls, libc.X__acrt_iob_func(tls, uint32(2)), __ccgo_ts+739, 0)
+		libc.Xexit(tls, int32(1))
 	} else {
-		bname = *(*uintptr)(unsafe.Pointer(argv))
+		if libc.Xstrcmp(tls, x_zlibVersion(tls), __ccgo_ts+339) != 0 {
+			libc.Xfprintf(tls, libc.X__acrt_iob_func(tls, uint32(2)), __ccgo_ts+766, libc.VaList(bp+16, x_zlibVersion(tls)))
+		}
 	}
-	argc--
-	argv += 8
-	if !(libc.Xstrcmp(tls, bname, __ccgo_ts+124) != 0) {
-		uncompr = int32(1)
+	libc.Xprintf(tls, __ccgo_ts+810, libc.VaList(bp+16, __ccgo_ts+339, int32(m_ZLIB_VERNUM), x_zlibCompileFlags(tls)))
+	compr = libc.Xcalloc(tls, uint32(*(*TuLong)(unsafe.Pointer(bp))), uint32(1))
+	uncompr = libc.Xcalloc(tls, uint32(uint32(uncomprLen)), uint32(1))
+	/* compr and uncompr are cleared to avoid reading uninitialized
+	 * data and to ensure that uncompr compresses well.
+	 */
+	if compr == uintptr(m_Z_NULL) || uncompr == uintptr(m_Z_NULL) {
+		libc.Xprintf(tls, __ccgo_ts+859, 0)
+		libc.Xexit(tls, int32(1))
+	}
+	_test_compress(tls, compr, *(*TuLong)(unsafe.Pointer(bp)), uncompr, uncomprLen)
+	if argc > int32(1) {
+		v1 = *(*uintptr)(unsafe.Pointer(argv + 1*4))
 	} else {
-		if !(libc.Xstrcmp(tls, bname, __ccgo_ts+131) != 0) {
-			v1 = libc.Int32FromInt32(1)
-			uncompr = v1
-			copyout = v1
-		}
+		v1 = __ccgo_ts + 874
 	}
-	for argc > 0 {
-		if libc.Xstrcmp(tls, *(*uintptr)(unsafe.Pointer(argv)), __ccgo_ts+136) == 0 {
-			copyout = int32(1)
-		} else {
-			if libc.Xstrcmp(tls, *(*uintptr)(unsafe.Pointer(argv)), __ccgo_ts+139) == 0 {
-				uncompr = int32(1)
-			} else {
-				if libc.Xstrcmp(tls, *(*uintptr)(unsafe.Pointer(argv)), __ccgo_ts+142) == 0 {
-					(*(*[20]int8)(unsafe.Pointer(bp)))[int32(3)] = int8('f')
-				} else {
-					if libc.Xstrcmp(tls, *(*uintptr)(unsafe.Pointer(argv)), __ccgo_ts+145) == 0 {
-						(*(*[20]int8)(unsafe.Pointer(bp)))[int32(3)] = int8('h')
-					} else {
-						if libc.Xstrcmp(tls, *(*uintptr)(unsafe.Pointer(argv)), __ccgo_ts+148) == 0 {
-							(*(*[20]int8)(unsafe.Pointer(bp)))[int32(3)] = int8('R')
-						} else {
-							if int32(*(*int8)(unsafe.Pointer(*(*uintptr)(unsafe.Pointer(argv))))) == int32('-') && int32(*(*int8)(unsafe.Pointer(*(*uintptr)(unsafe.Pointer(argv)) + 1))) >= int32('1') && int32(*(*int8)(unsafe.Pointer(*(*uintptr)(unsafe.Pointer(argv)) + 1))) <= int32('9') && int32(*(*int8)(unsafe.Pointer(*(*uintptr)(unsafe.Pointer(argv)) + 2))) == 0 {
-								(*(*[20]int8)(unsafe.Pointer(bp)))[int32(2)] = *(*int8)(unsafe.Pointer(*(*uintptr)(unsafe.Pointer(argv)) + 1))
-							} else {
-								break
-							}
-						}
-					}
-				}
-			}
-		}
-		argc--
-		argv += 8
-	}
-	if int32((*(*[20]int8)(unsafe.Pointer(bp)))[int32(3)]) == int32(' ') {
-		(*(*[20]int8)(unsafe.Pointer(bp)))[int32(3)] = 0
-	}
-	if argc == 0 {
-		libc.Xsetmode(tls, libc.Xfileno(tls, libc.X__acrt_iob_func(tls, uint32(0))), int32(m__O_BINARY))
-		libc.Xsetmode(tls, libc.Xfileno(tls, libc.X__acrt_iob_func(tls, uint32(1))), int32(m__O_BINARY))
-		if uncompr != 0 {
-			file = x_gzdopen(tls, libc.Xfileno(tls, libc.X__acrt_iob_func(tls, uint32(0))), __ccgo_ts+89)
-			if file == libc.UintptrFromInt32(0) {
-				_error(tls, __ccgo_ts+151)
-			}
-			_gz_uncompress(tls, file, libc.X__acrt_iob_func(tls, uint32(1)))
-		} else {
-			file = x_gzdopen(tls, libc.Xfileno(tls, libc.X__acrt_iob_func(tls, uint32(1))), bp)
-			if file == libc.UintptrFromInt32(0) {
-				_error(tls, __ccgo_ts+171)
-			}
-			_gz_compress(tls, libc.X__acrt_iob_func(tls, uint32(0)), file)
-		}
-	} else {
-		if copyout != 0 {
-			libc.Xsetmode(tls, libc.Xfileno(tls, libc.X__acrt_iob_func(tls, uint32(1))), int32(m__O_BINARY))
-		}
-		for {
-			if uncompr != 0 {
-				if copyout != 0 {
-					file = x_gzopen(tls, *(*uintptr)(unsafe.Pointer(argv)), __ccgo_ts+89)
-					if file == libc.UintptrFromInt32(0) {
-						libc.Xfprintf(tls, libc.X__acrt_iob_func(tls, uint32(2)), __ccgo_ts+92, libc.VaList(bp+32, _prog, *(*uintptr)(unsafe.Pointer(argv))))
-					} else {
-						_gz_uncompress(tls, file, libc.X__acrt_iob_func(tls, uint32(1)))
-					}
-				} else {
-					_file_uncompress(tls, *(*uintptr)(unsafe.Pointer(argv)))
-				}
-			} else {
-				if copyout != 0 {
-					in = libc.Xfopen(tls, *(*uintptr)(unsafe.Pointer(argv)), __ccgo_ts+89)
-					if in == libc.UintptrFromInt32(0) {
-						libc.Xperror(tls, *(*uintptr)(unsafe.Pointer(argv)))
-					} else {
-						file = x_gzdopen(tls, libc.Xfileno(tls, libc.X__acrt_iob_func(tls, uint32(1))), bp)
-						if file == libc.UintptrFromInt32(0) {
-							_error(tls, __ccgo_ts+171)
-						}
-						_gz_compress(tls, in, file)
-					}
-				} else {
-					_file_compress(tls, *(*uintptr)(unsafe.Pointer(argv)), bp)
-				}
-			}
-			goto _3
-		_3:
-			;
-			argv += 8
-			argc--
-			v2 = argc
-			if !(v2 != 0) {
-				break
-			}
-		}
-	}
+	_test_gzio(tls, v1, uncompr, uncomprLen)
+	_test_deflate(tls, compr, *(*TuLong)(unsafe.Pointer(bp)))
+	_test_inflate(tls, compr, *(*TuLong)(unsafe.Pointer(bp)), uncompr, uncomprLen)
+	_test_large_deflate(tls, compr, *(*TuLong)(unsafe.Pointer(bp)), uncompr, uncomprLen)
+	_test_large_inflate(tls, compr, *(*TuLong)(unsafe.Pointer(bp)), uncompr, uncomprLen)
+	_test_flush(tls, compr, bp)
+	_test_sync(tls, compr, *(*TuLong)(unsafe.Pointer(bp)), uncompr, uncomprLen)
+	*(*TuLong)(unsafe.Pointer(bp)) = uint32(3) * uncomprLen
+	_test_dict_deflate(tls, compr, *(*TuLong)(unsafe.Pointer(bp)))
+	_test_dict_inflate(tls, compr, *(*TuLong)(unsafe.Pointer(bp)), uncompr, uncomprLen)
+	libc.Xfree(tls, compr)
+	libc.Xfree(tls, uncompr)
 	return 0
 }
+
+var _myVersion = __ccgo_ts + 339
 
 func main() {
 	libc.Start(x_main)
@@ -1269,6 +1455,7 @@ const m_OS_CODE = 10
 const m_PRESET_DICT = 0x20
 const m_STATIC_TREES = 1
 const m_STORED_BLOCK = 0
+const m_ZLIB_VERNUM1 = 0x1310
 const m_local = "static"
 const m_zmemcmp = "memcmp"
 const m_zmemcpy = "memcpy"
@@ -1302,7 +1489,7 @@ func x_adler32_z(tls *libc.TLS, adler TuLong, buf uintptr, len1 Tz_size_t) (r Tu
 	sum2 = adler >> libc.Int32FromInt32(16) & uint32(0xffff)
 	adler &= uint32(0xffff)
 	/* in case user likes doing a byte at a time, keep it fast */
-	if len1 == uint64(1) {
+	if len1 == uint32(1) {
 		adler += uint32(*(*TBytef)(unsafe.Pointer(buf)))
 		if adler >= uint32(65521) {
 			adler -= uint32(65521)
@@ -1318,7 +1505,7 @@ func x_adler32_z(tls *libc.TLS, adler TuLong, buf uintptr, len1 Tz_size_t) (r Tu
 		return uint32(1)
 	}
 	/* in case short lengths are provided, keep it somewhat fast */
-	if len1 < uint64(16) {
+	if len1 < uint32(16) {
 		for {
 			v1 = len1
 			len1--
@@ -1337,8 +1524,8 @@ func x_adler32_z(tls *libc.TLS, adler TuLong, buf uintptr, len1 Tz_size_t) (r Tu
 		return adler | sum2<<int32(16)
 	}
 	/* do length NMAX blocks -- requires just one modulo operation */
-	for len1 >= uint64(m_NMAX) {
-		len1 -= uint64(m_NMAX)
+	for len1 >= uint32(m_NMAX) {
+		len1 -= uint32(m_NMAX)
 		n = uint32(libc.Int32FromInt32(m_NMAX) / libc.Int32FromInt32(16)) /* NMAX is divisible by 16 */
 		for {
 			adler += uint32(*(*TBytef)(unsafe.Pointer(buf)))
@@ -1388,8 +1575,8 @@ func x_adler32_z(tls *libc.TLS, adler TuLong, buf uintptr, len1 Tz_size_t) (r Tu
 	}
 	/* do remaining bytes (less than NMAX, still just one modulo) */
 	if len1 != 0 { /* avoid modulos if none remaining */
-		for len1 >= uint64(16) {
-			len1 -= uint64(16)
+		for len1 >= uint32(16) {
+			len1 -= uint32(16)
 			adler += uint32(*(*TBytef)(unsafe.Pointer(buf)))
 			sum2 += adler
 			adler += uint32(*(*TBytef)(unsafe.Pointer(buf + uintptr(libc.Int32FromInt32(0)+libc.Int32FromInt32(1)))))
@@ -1446,7 +1633,7 @@ func x_adler32_z(tls *libc.TLS, adler TuLong, buf uintptr, len1 Tz_size_t) (r Tu
 //
 //	/* ========================================================================= */
 func x_adler32(tls *libc.TLS, adler TuLong, buf uintptr, len1 TuInt) (r TuLong) {
-	return x_adler32_z(tls, adler, buf, uint64(uint64(len1)))
+	return x_adler32_z(tls, adler, buf, len1)
 }
 
 // C documentation
@@ -1507,8 +1694,8 @@ func x_adler32_combine64(tls *libc.TLS, adler1 TuLong, adler2 TuLong, len2 int32
 //	   Z_STREAM_ERROR if the level parameter is invalid.
 //	*/
 func x_compress2(tls *libc.TLS, dest uintptr, destLen uintptr, source uintptr, sourceLen TuLong, level int32) (r int32) {
-	bp := tls.Alloc(96)
-	defer tls.Free(96)
+	bp := tls.Alloc(64)
+	defer tls.Free(64)
 	var err, v3, v4 int32
 	var left TuLong
 	var max TuInt
@@ -1521,7 +1708,7 @@ func x_compress2(tls *libc.TLS, dest uintptr, destLen uintptr, source uintptr, s
 	(*(*Tz_stream)(unsafe.Pointer(bp))).Fzalloc = libc.UintptrFromInt32(0)
 	(*(*Tz_stream)(unsafe.Pointer(bp))).Fzfree = libc.UintptrFromInt32(0)
 	(*(*Tz_stream)(unsafe.Pointer(bp))).Fopaque = libc.UintptrFromInt32(0)
-	err = x_deflateInit_(tls, bp, level, __ccgo_ts+192, libc.Int32FromInt64(88))
+	err = x_deflateInit_(tls, bp, level, __ccgo_ts+339, libc.Int32FromInt64(56))
 	if err != m_Z_OK {
 		return err
 	}
@@ -1585,7 +1772,6 @@ func x_compressBound(tls *libc.TLS, sourceLen TuLong) (r TuLong) {
 
 const m_N = 5
 const m_POLY = 3988292384
-const m_W = 8
 
 /* Reverse the bytes in a 32-bit value */
 
@@ -1625,7 +1811,7 @@ const m_W = 8
 //	  braided calculation is not used, and the associated tables and code are not
 //	  compiled.
 //	 */
-type Tz_word_t = uint64
+type Tz_word_t = uint32
 
 /* If available, use the ARM processor CRC32 instruction. */
 
@@ -1638,7 +1824,7 @@ type Tz_word_t = uint64
 //	  or 64 bits.
 //	 */
 func _byte_swap(tls *libc.TLS, word Tz_word_t) (r Tz_word_t) {
-	return word&uint64(0xff00000000000000)>>int32(56) | word&uint64(0xff000000000000)>>int32(40) | word&uint64(0xff0000000000)>>int32(24) | word&uint64(0xff00000000)>>int32(8) | word&uint64(0xff000000)<<int32(8) | word&uint64(0xff0000)<<int32(24) | word&uint64(0xff00)<<int32(40) | word&uint64(0xff)<<int32(56)
+	return word&uint32(0xff000000)>>int32(24) | word&uint32(0xff0000)>>int32(8) | word&uint32(0xff00)<<int32(8) | word&uint32(0xff)<<int32(24)
 }
 
 var _crc_table = [256]Tz_crc_t{
@@ -1899,4376 +2085,2320 @@ var _crc_table = [256]Tz_crc_t{
 	255: uint32(0x2d02ef8d),
 }
 var _crc_big_table = [256]Tz_word_t{
-	1:   uint64(0x9630077700000000),
-	2:   uint64(0x2c610eee00000000),
-	3:   uint64(0xba51099900000000),
-	4:   uint64(0x19c46d0700000000),
-	5:   uint64(0x8ff46a7000000000),
-	6:   uint64(0x35a563e900000000),
-	7:   uint64(0xa395649e00000000),
-	8:   uint64(0x3288db0e00000000),
-	9:   uint64(0xa4b8dc7900000000),
-	10:  uint64(0x1ee9d5e000000000),
-	11:  uint64(0x88d9d29700000000),
-	12:  uint64(0x2b4cb60900000000),
-	13:  uint64(0xbd7cb17e00000000),
-	14:  uint64(0x072db8e700000000),
-	15:  uint64(0x911dbf9000000000),
-	16:  uint64(0x6410b71d00000000),
-	17:  uint64(0xf220b06a00000000),
-	18:  uint64(0x4871b9f300000000),
-	19:  uint64(0xde41be8400000000),
-	20:  uint64(0x7dd4da1a00000000),
-	21:  uint64(0xebe4dd6d00000000),
-	22:  uint64(0x51b5d4f400000000),
-	23:  uint64(0xc785d38300000000),
-	24:  uint64(0x56986c1300000000),
-	25:  uint64(0xc0a86b6400000000),
-	26:  uint64(0x7af962fd00000000),
-	27:  uint64(0xecc9658a00000000),
-	28:  uint64(0x4f5c011400000000),
-	29:  uint64(0xd96c066300000000),
-	30:  uint64(0x633d0ffa00000000),
-	31:  uint64(0xf50d088d00000000),
-	32:  uint64(0xc8206e3b00000000),
-	33:  uint64(0x5e10694c00000000),
-	34:  uint64(0xe44160d500000000),
-	35:  uint64(0x727167a200000000),
-	36:  uint64(0xd1e4033c00000000),
-	37:  uint64(0x47d4044b00000000),
-	38:  uint64(0xfd850dd200000000),
-	39:  uint64(0x6bb50aa500000000),
-	40:  uint64(0xfaa8b53500000000),
-	41:  uint64(0x6c98b24200000000),
-	42:  uint64(0xd6c9bbdb00000000),
-	43:  uint64(0x40f9bcac00000000),
-	44:  uint64(0xe36cd83200000000),
-	45:  uint64(0x755cdf4500000000),
-	46:  uint64(0xcf0dd6dc00000000),
-	47:  uint64(0x593dd1ab00000000),
-	48:  uint64(0xac30d92600000000),
-	49:  uint64(0x3a00de5100000000),
-	50:  uint64(0x8051d7c800000000),
-	51:  uint64(0x1661d0bf00000000),
-	52:  uint64(0xb5f4b42100000000),
-	53:  uint64(0x23c4b35600000000),
-	54:  uint64(0x9995bacf00000000),
-	55:  uint64(0x0fa5bdb800000000),
-	56:  uint64(0x9eb8022800000000),
-	57:  uint64(0x0888055f00000000),
-	58:  uint64(0xb2d90cc600000000),
-	59:  uint64(0x24e90bb100000000),
-	60:  uint64(0x877c6f2f00000000),
-	61:  uint64(0x114c685800000000),
-	62:  uint64(0xab1d61c100000000),
-	63:  uint64(0x3d2d66b600000000),
-	64:  uint64(0x9041dc7600000000),
-	65:  uint64(0x0671db0100000000),
-	66:  uint64(0xbc20d29800000000),
-	67:  uint64(0x2a10d5ef00000000),
-	68:  uint64(0x8985b17100000000),
-	69:  uint64(0x1fb5b60600000000),
-	70:  uint64(0xa5e4bf9f00000000),
-	71:  uint64(0x33d4b8e800000000),
-	72:  uint64(0xa2c9077800000000),
-	73:  uint64(0x34f9000f00000000),
-	74:  uint64(0x8ea8099600000000),
-	75:  uint64(0x18980ee100000000),
-	76:  uint64(0xbb0d6a7f00000000),
-	77:  uint64(0x2d3d6d0800000000),
-	78:  uint64(0x976c649100000000),
-	79:  uint64(0x015c63e600000000),
-	80:  uint64(0xf4516b6b00000000),
-	81:  uint64(0x62616c1c00000000),
-	82:  uint64(0xd830658500000000),
-	83:  uint64(0x4e0062f200000000),
-	84:  uint64(0xed95066c00000000),
-	85:  uint64(0x7ba5011b00000000),
-	86:  uint64(0xc1f4088200000000),
-	87:  uint64(0x57c40ff500000000),
-	88:  uint64(0xc6d9b06500000000),
-	89:  uint64(0x50e9b71200000000),
-	90:  uint64(0xeab8be8b00000000),
-	91:  uint64(0x7c88b9fc00000000),
-	92:  uint64(0xdf1ddd6200000000),
-	93:  uint64(0x492dda1500000000),
-	94:  uint64(0xf37cd38c00000000),
-	95:  uint64(0x654cd4fb00000000),
-	96:  uint64(0x5861b24d00000000),
-	97:  uint64(0xce51b53a00000000),
-	98:  uint64(0x7400bca300000000),
-	99:  uint64(0xe230bbd400000000),
-	100: uint64(0x41a5df4a00000000),
-	101: uint64(0xd795d83d00000000),
-	102: uint64(0x6dc4d1a400000000),
-	103: uint64(0xfbf4d6d300000000),
-	104: uint64(0x6ae9694300000000),
-	105: uint64(0xfcd96e3400000000),
-	106: uint64(0x468867ad00000000),
-	107: uint64(0xd0b860da00000000),
-	108: uint64(0x732d044400000000),
-	109: uint64(0xe51d033300000000),
-	110: uint64(0x5f4c0aaa00000000),
-	111: uint64(0xc97c0ddd00000000),
-	112: uint64(0x3c71055000000000),
-	113: uint64(0xaa41022700000000),
-	114: uint64(0x10100bbe00000000),
-	115: uint64(0x86200cc900000000),
-	116: uint64(0x25b5685700000000),
-	117: uint64(0xb3856f2000000000),
-	118: uint64(0x09d466b900000000),
-	119: uint64(0x9fe461ce00000000),
-	120: uint64(0x0ef9de5e00000000),
-	121: uint64(0x98c9d92900000000),
-	122: uint64(0x2298d0b000000000),
-	123: uint64(0xb4a8d7c700000000),
-	124: uint64(0x173db35900000000),
-	125: uint64(0x810db42e00000000),
-	126: uint64(0x3b5cbdb700000000),
-	127: uint64(0xad6cbac000000000),
-	128: uint64(0x2083b8ed00000000),
-	129: uint64(0xb6b3bf9a00000000),
-	130: uint64(0x0ce2b60300000000),
-	131: uint64(0x9ad2b17400000000),
-	132: uint64(0x3947d5ea00000000),
-	133: uint64(0xaf77d29d00000000),
-	134: uint64(0x1526db0400000000),
-	135: uint64(0x8316dc7300000000),
-	136: uint64(0x120b63e300000000),
-	137: uint64(0x843b649400000000),
-	138: uint64(0x3e6a6d0d00000000),
-	139: uint64(0xa85a6a7a00000000),
-	140: uint64(0x0bcf0ee400000000),
-	141: uint64(0x9dff099300000000),
-	142: uint64(0x27ae000a00000000),
-	143: uint64(0xb19e077d00000000),
-	144: uint64(0x44930ff000000000),
-	145: uint64(0xd2a3088700000000),
-	146: uint64(0x68f2011e00000000),
-	147: uint64(0xfec2066900000000),
-	148: uint64(0x5d5762f700000000),
-	149: uint64(0xcb67658000000000),
-	150: uint64(0x71366c1900000000),
-	151: uint64(0xe7066b6e00000000),
-	152: uint64(0x761bd4fe00000000),
-	153: uint64(0xe02bd38900000000),
-	154: uint64(0x5a7ada1000000000),
-	155: uint64(0xcc4add6700000000),
-	156: uint64(0x6fdfb9f900000000),
-	157: uint64(0xf9efbe8e00000000),
-	158: uint64(0x43beb71700000000),
-	159: uint64(0xd58eb06000000000),
-	160: uint64(0xe8a3d6d600000000),
-	161: uint64(0x7e93d1a100000000),
-	162: uint64(0xc4c2d83800000000),
-	163: uint64(0x52f2df4f00000000),
-	164: uint64(0xf167bbd100000000),
-	165: uint64(0x6757bca600000000),
-	166: uint64(0xdd06b53f00000000),
-	167: uint64(0x4b36b24800000000),
-	168: uint64(0xda2b0dd800000000),
-	169: uint64(0x4c1b0aaf00000000),
-	170: uint64(0xf64a033600000000),
-	171: uint64(0x607a044100000000),
-	172: uint64(0xc3ef60df00000000),
-	173: uint64(0x55df67a800000000),
-	174: uint64(0xef8e6e3100000000),
-	175: uint64(0x79be694600000000),
-	176: uint64(0x8cb361cb00000000),
-	177: uint64(0x1a8366bc00000000),
-	178: uint64(0xa0d26f2500000000),
-	179: uint64(0x36e2685200000000),
-	180: uint64(0x95770ccc00000000),
-	181: uint64(0x03470bbb00000000),
-	182: uint64(0xb916022200000000),
-	183: uint64(0x2f26055500000000),
-	184: uint64(0xbe3bbac500000000),
-	185: uint64(0x280bbdb200000000),
-	186: uint64(0x925ab42b00000000),
-	187: uint64(0x046ab35c00000000),
-	188: uint64(0xa7ffd7c200000000),
-	189: uint64(0x31cfd0b500000000),
-	190: uint64(0x8b9ed92c00000000),
-	191: uint64(0x1daede5b00000000),
-	192: uint64(0xb0c2649b00000000),
-	193: uint64(0x26f263ec00000000),
-	194: uint64(0x9ca36a7500000000),
-	195: uint64(0x0a936d0200000000),
-	196: uint64(0xa906099c00000000),
-	197: uint64(0x3f360eeb00000000),
-	198: uint64(0x8567077200000000),
-	199: uint64(0x1357000500000000),
-	200: uint64(0x824abf9500000000),
-	201: uint64(0x147ab8e200000000),
-	202: uint64(0xae2bb17b00000000),
-	203: uint64(0x381bb60c00000000),
-	204: uint64(0x9b8ed29200000000),
-	205: uint64(0x0dbed5e500000000),
-	206: uint64(0xb7efdc7c00000000),
-	207: uint64(0x21dfdb0b00000000),
-	208: uint64(0xd4d2d38600000000),
-	209: uint64(0x42e2d4f100000000),
-	210: uint64(0xf8b3dd6800000000),
-	211: uint64(0x6e83da1f00000000),
-	212: uint64(0xcd16be8100000000),
-	213: uint64(0x5b26b9f600000000),
-	214: uint64(0xe177b06f00000000),
-	215: uint64(0x7747b71800000000),
-	216: uint64(0xe65a088800000000),
-	217: uint64(0x706a0fff00000000),
-	218: uint64(0xca3b066600000000),
-	219: uint64(0x5c0b011100000000),
-	220: uint64(0xff9e658f00000000),
-	221: uint64(0x69ae62f800000000),
-	222: uint64(0xd3ff6b6100000000),
-	223: uint64(0x45cf6c1600000000),
-	224: uint64(0x78e20aa000000000),
-	225: uint64(0xeed20dd700000000),
-	226: uint64(0x5483044e00000000),
-	227: uint64(0xc2b3033900000000),
-	228: uint64(0x612667a700000000),
-	229: uint64(0xf71660d000000000),
-	230: uint64(0x4d47694900000000),
-	231: uint64(0xdb776e3e00000000),
-	232: uint64(0x4a6ad1ae00000000),
-	233: uint64(0xdc5ad6d900000000),
-	234: uint64(0x660bdf4000000000),
-	235: uint64(0xf03bd83700000000),
-	236: uint64(0x53aebca900000000),
-	237: uint64(0xc59ebbde00000000),
-	238: uint64(0x7fcfb24700000000),
-	239: uint64(0xe9ffb53000000000),
-	240: uint64(0x1cf2bdbd00000000),
-	241: uint64(0x8ac2baca00000000),
-	242: uint64(0x3093b35300000000),
-	243: uint64(0xa6a3b42400000000),
-	244: uint64(0x0536d0ba00000000),
-	245: uint64(0x9306d7cd00000000),
-	246: uint64(0x2957de5400000000),
-	247: uint64(0xbf67d92300000000),
-	248: uint64(0x2e7a66b300000000),
-	249: uint64(0xb84a61c400000000),
-	250: uint64(0x021b685d00000000),
-	251: uint64(0x942b6f2a00000000),
-	252: uint64(0x37be0bb400000000),
-	253: uint64(0xa18e0cc300000000),
-	254: uint64(0x1bdf055a00000000),
-	255: uint64(0x8def022d00000000),
+	1:   uint32(0x96300777),
+	2:   uint32(0x2c610eee),
+	3:   uint32(0xba510999),
+	4:   uint32(0x19c46d07),
+	5:   uint32(0x8ff46a70),
+	6:   uint32(0x35a563e9),
+	7:   uint32(0xa395649e),
+	8:   uint32(0x3288db0e),
+	9:   uint32(0xa4b8dc79),
+	10:  uint32(0x1ee9d5e0),
+	11:  uint32(0x88d9d297),
+	12:  uint32(0x2b4cb609),
+	13:  uint32(0xbd7cb17e),
+	14:  uint32(0x072db8e7),
+	15:  uint32(0x911dbf90),
+	16:  uint32(0x6410b71d),
+	17:  uint32(0xf220b06a),
+	18:  uint32(0x4871b9f3),
+	19:  uint32(0xde41be84),
+	20:  uint32(0x7dd4da1a),
+	21:  uint32(0xebe4dd6d),
+	22:  uint32(0x51b5d4f4),
+	23:  uint32(0xc785d383),
+	24:  uint32(0x56986c13),
+	25:  uint32(0xc0a86b64),
+	26:  uint32(0x7af962fd),
+	27:  uint32(0xecc9658a),
+	28:  uint32(0x4f5c0114),
+	29:  uint32(0xd96c0663),
+	30:  uint32(0x633d0ffa),
+	31:  uint32(0xf50d088d),
+	32:  uint32(0xc8206e3b),
+	33:  uint32(0x5e10694c),
+	34:  uint32(0xe44160d5),
+	35:  uint32(0x727167a2),
+	36:  uint32(0xd1e4033c),
+	37:  uint32(0x47d4044b),
+	38:  uint32(0xfd850dd2),
+	39:  uint32(0x6bb50aa5),
+	40:  uint32(0xfaa8b535),
+	41:  uint32(0x6c98b242),
+	42:  uint32(0xd6c9bbdb),
+	43:  uint32(0x40f9bcac),
+	44:  uint32(0xe36cd832),
+	45:  uint32(0x755cdf45),
+	46:  uint32(0xcf0dd6dc),
+	47:  uint32(0x593dd1ab),
+	48:  uint32(0xac30d926),
+	49:  uint32(0x3a00de51),
+	50:  uint32(0x8051d7c8),
+	51:  uint32(0x1661d0bf),
+	52:  uint32(0xb5f4b421),
+	53:  uint32(0x23c4b356),
+	54:  uint32(0x9995bacf),
+	55:  uint32(0x0fa5bdb8),
+	56:  uint32(0x9eb80228),
+	57:  uint32(0x0888055f),
+	58:  uint32(0xb2d90cc6),
+	59:  uint32(0x24e90bb1),
+	60:  uint32(0x877c6f2f),
+	61:  uint32(0x114c6858),
+	62:  uint32(0xab1d61c1),
+	63:  uint32(0x3d2d66b6),
+	64:  uint32(0x9041dc76),
+	65:  uint32(0x0671db01),
+	66:  uint32(0xbc20d298),
+	67:  uint32(0x2a10d5ef),
+	68:  uint32(0x8985b171),
+	69:  uint32(0x1fb5b606),
+	70:  uint32(0xa5e4bf9f),
+	71:  uint32(0x33d4b8e8),
+	72:  uint32(0xa2c90778),
+	73:  uint32(0x34f9000f),
+	74:  uint32(0x8ea80996),
+	75:  uint32(0x18980ee1),
+	76:  uint32(0xbb0d6a7f),
+	77:  uint32(0x2d3d6d08),
+	78:  uint32(0x976c6491),
+	79:  uint32(0x015c63e6),
+	80:  uint32(0xf4516b6b),
+	81:  uint32(0x62616c1c),
+	82:  uint32(0xd8306585),
+	83:  uint32(0x4e0062f2),
+	84:  uint32(0xed95066c),
+	85:  uint32(0x7ba5011b),
+	86:  uint32(0xc1f40882),
+	87:  uint32(0x57c40ff5),
+	88:  uint32(0xc6d9b065),
+	89:  uint32(0x50e9b712),
+	90:  uint32(0xeab8be8b),
+	91:  uint32(0x7c88b9fc),
+	92:  uint32(0xdf1ddd62),
+	93:  uint32(0x492dda15),
+	94:  uint32(0xf37cd38c),
+	95:  uint32(0x654cd4fb),
+	96:  uint32(0x5861b24d),
+	97:  uint32(0xce51b53a),
+	98:  uint32(0x7400bca3),
+	99:  uint32(0xe230bbd4),
+	100: uint32(0x41a5df4a),
+	101: uint32(0xd795d83d),
+	102: uint32(0x6dc4d1a4),
+	103: uint32(0xfbf4d6d3),
+	104: uint32(0x6ae96943),
+	105: uint32(0xfcd96e34),
+	106: uint32(0x468867ad),
+	107: uint32(0xd0b860da),
+	108: uint32(0x732d0444),
+	109: uint32(0xe51d0333),
+	110: uint32(0x5f4c0aaa),
+	111: uint32(0xc97c0ddd),
+	112: uint32(0x3c710550),
+	113: uint32(0xaa410227),
+	114: uint32(0x10100bbe),
+	115: uint32(0x86200cc9),
+	116: uint32(0x25b56857),
+	117: uint32(0xb3856f20),
+	118: uint32(0x09d466b9),
+	119: uint32(0x9fe461ce),
+	120: uint32(0x0ef9de5e),
+	121: uint32(0x98c9d929),
+	122: uint32(0x2298d0b0),
+	123: uint32(0xb4a8d7c7),
+	124: uint32(0x173db359),
+	125: uint32(0x810db42e),
+	126: uint32(0x3b5cbdb7),
+	127: uint32(0xad6cbac0),
+	128: uint32(0x2083b8ed),
+	129: uint32(0xb6b3bf9a),
+	130: uint32(0x0ce2b603),
+	131: uint32(0x9ad2b174),
+	132: uint32(0x3947d5ea),
+	133: uint32(0xaf77d29d),
+	134: uint32(0x1526db04),
+	135: uint32(0x8316dc73),
+	136: uint32(0x120b63e3),
+	137: uint32(0x843b6494),
+	138: uint32(0x3e6a6d0d),
+	139: uint32(0xa85a6a7a),
+	140: uint32(0x0bcf0ee4),
+	141: uint32(0x9dff0993),
+	142: uint32(0x27ae000a),
+	143: uint32(0xb19e077d),
+	144: uint32(0x44930ff0),
+	145: uint32(0xd2a30887),
+	146: uint32(0x68f2011e),
+	147: uint32(0xfec20669),
+	148: uint32(0x5d5762f7),
+	149: uint32(0xcb676580),
+	150: uint32(0x71366c19),
+	151: uint32(0xe7066b6e),
+	152: uint32(0x761bd4fe),
+	153: uint32(0xe02bd389),
+	154: uint32(0x5a7ada10),
+	155: uint32(0xcc4add67),
+	156: uint32(0x6fdfb9f9),
+	157: uint32(0xf9efbe8e),
+	158: uint32(0x43beb717),
+	159: uint32(0xd58eb060),
+	160: uint32(0xe8a3d6d6),
+	161: uint32(0x7e93d1a1),
+	162: uint32(0xc4c2d838),
+	163: uint32(0x52f2df4f),
+	164: uint32(0xf167bbd1),
+	165: uint32(0x6757bca6),
+	166: uint32(0xdd06b53f),
+	167: uint32(0x4b36b248),
+	168: uint32(0xda2b0dd8),
+	169: uint32(0x4c1b0aaf),
+	170: uint32(0xf64a0336),
+	171: uint32(0x607a0441),
+	172: uint32(0xc3ef60df),
+	173: uint32(0x55df67a8),
+	174: uint32(0xef8e6e31),
+	175: uint32(0x79be6946),
+	176: uint32(0x8cb361cb),
+	177: uint32(0x1a8366bc),
+	178: uint32(0xa0d26f25),
+	179: uint32(0x36e26852),
+	180: uint32(0x95770ccc),
+	181: uint32(0x03470bbb),
+	182: uint32(0xb9160222),
+	183: uint32(0x2f260555),
+	184: uint32(0xbe3bbac5),
+	185: uint32(0x280bbdb2),
+	186: uint32(0x925ab42b),
+	187: uint32(0x046ab35c),
+	188: uint32(0xa7ffd7c2),
+	189: uint32(0x31cfd0b5),
+	190: uint32(0x8b9ed92c),
+	191: uint32(0x1daede5b),
+	192: uint32(0xb0c2649b),
+	193: uint32(0x26f263ec),
+	194: uint32(0x9ca36a75),
+	195: uint32(0x0a936d02),
+	196: uint32(0xa906099c),
+	197: uint32(0x3f360eeb),
+	198: uint32(0x85670772),
+	199: uint32(0x13570005),
+	200: uint32(0x824abf95),
+	201: uint32(0x147ab8e2),
+	202: uint32(0xae2bb17b),
+	203: uint32(0x381bb60c),
+	204: uint32(0x9b8ed292),
+	205: uint32(0x0dbed5e5),
+	206: uint32(0xb7efdc7c),
+	207: uint32(0x21dfdb0b),
+	208: uint32(0xd4d2d386),
+	209: uint32(0x42e2d4f1),
+	210: uint32(0xf8b3dd68),
+	211: uint32(0x6e83da1f),
+	212: uint32(0xcd16be81),
+	213: uint32(0x5b26b9f6),
+	214: uint32(0xe177b06f),
+	215: uint32(0x7747b718),
+	216: uint32(0xe65a0888),
+	217: uint32(0x706a0fff),
+	218: uint32(0xca3b0666),
+	219: uint32(0x5c0b0111),
+	220: uint32(0xff9e658f),
+	221: uint32(0x69ae62f8),
+	222: uint32(0xd3ff6b61),
+	223: uint32(0x45cf6c16),
+	224: uint32(0x78e20aa0),
+	225: uint32(0xeed20dd7),
+	226: uint32(0x5483044e),
+	227: uint32(0xc2b30339),
+	228: uint32(0x612667a7),
+	229: uint32(0xf71660d0),
+	230: uint32(0x4d476949),
+	231: uint32(0xdb776e3e),
+	232: uint32(0x4a6ad1ae),
+	233: uint32(0xdc5ad6d9),
+	234: uint32(0x660bdf40),
+	235: uint32(0xf03bd837),
+	236: uint32(0x53aebca9),
+	237: uint32(0xc59ebbde),
+	238: uint32(0x7fcfb247),
+	239: uint32(0xe9ffb530),
+	240: uint32(0x1cf2bdbd),
+	241: uint32(0x8ac2baca),
+	242: uint32(0x3093b353),
+	243: uint32(0xa6a3b424),
+	244: uint32(0x0536d0ba),
+	245: uint32(0x9306d7cd),
+	246: uint32(0x2957de54),
+	247: uint32(0xbf67d923),
+	248: uint32(0x2e7a66b3),
+	249: uint32(0xb84a61c4),
+	250: uint32(0x021b685d),
+	251: uint32(0x942b6f2a),
+	252: uint32(0x37be0bb4),
+	253: uint32(0xa18e0cc3),
+	254: uint32(0x1bdf055a),
+	255: uint32(0x8def022d),
 }
-var _crc_braid_table = [8][256]Tz_crc_t{
+var _crc_braid_table = [4][256]Tz_crc_t{
 	0: {
-		1:   uint32(0xaf449247),
-		2:   uint32(0x85f822cf),
-		3:   uint32(0x2abcb088),
-		4:   uint32(0xd08143df),
-		5:   uint32(0x7fc5d198),
-		6:   uint32(0x55796110),
-		7:   uint32(0xfa3df357),
-		8:   uint32(0x7a7381ff),
-		9:   uint32(0xd53713b8),
-		10:  uint32(0xff8ba330),
-		11:  uint32(0x50cf3177),
-		12:  uint32(0xaaf2c220),
-		13:  uint32(0x05b65067),
-		14:  uint32(0x2f0ae0ef),
-		15:  uint32(0x804e72a8),
-		16:  uint32(0xf4e703fe),
-		17:  uint32(0x5ba391b9),
-		18:  uint32(0x711f2131),
-		19:  uint32(0xde5bb376),
-		20:  uint32(0x24664021),
-		21:  uint32(0x8b22d266),
-		22:  uint32(0xa19e62ee),
-		23:  uint32(0x0edaf0a9),
-		24:  uint32(0x8e948201),
-		25:  uint32(0x21d01046),
-		26:  uint32(0x0b6ca0ce),
-		27:  uint32(0xa4283289),
-		28:  uint32(0x5e15c1de),
-		29:  uint32(0xf1515399),
-		30:  uint32(0xdbede311),
-		31:  uint32(0x74a97156),
-		32:  uint32(0x32bf01bd),
-		33:  uint32(0x9dfb93fa),
-		34:  uint32(0xb7472372),
-		35:  uint32(0x1803b135),
-		36:  uint32(0xe23e4262),
-		37:  uint32(0x4d7ad025),
-		38:  uint32(0x67c660ad),
-		39:  uint32(0xc882f2ea),
-		40:  uint32(0x48cc8042),
-		41:  uint32(0xe7881205),
-		42:  uint32(0xcd34a28d),
-		43:  uint32(0x627030ca),
-		44:  uint32(0x984dc39d),
-		45:  uint32(0x370951da),
-		46:  uint32(0x1db5e152),
-		47:  uint32(0xb2f17315),
-		48:  uint32(0xc6580243),
-		49:  uint32(0x691c9004),
-		50:  uint32(0x43a0208c),
-		51:  uint32(0xece4b2cb),
-		52:  uint32(0x16d9419c),
-		53:  uint32(0xb99dd3db),
-		54:  uint32(0x93216353),
-		55:  uint32(0x3c65f114),
-		56:  uint32(0xbc2b83bc),
-		57:  uint32(0x136f11fb),
-		58:  uint32(0x39d3a173),
-		59:  uint32(0x96973334),
-		60:  uint32(0x6caac063),
-		61:  uint32(0xc3ee5224),
-		62:  uint32(0xe952e2ac),
-		63:  uint32(0x461670eb),
-		64:  uint32(0x657e037a),
-		65:  uint32(0xca3a913d),
-		66:  uint32(0xe08621b5),
-		67:  uint32(0x4fc2b3f2),
-		68:  uint32(0xb5ff40a5),
-		69:  uint32(0x1abbd2e2),
-		70:  uint32(0x3007626a),
-		71:  uint32(0x9f43f02d),
-		72:  uint32(0x1f0d8285),
-		73:  uint32(0xb04910c2),
-		74:  uint32(0x9af5a04a),
-		75:  uint32(0x35b1320d),
-		76:  uint32(0xcf8cc15a),
-		77:  uint32(0x60c8531d),
-		78:  uint32(0x4a74e395),
-		79:  uint32(0xe53071d2),
-		80:  uint32(0x91990084),
-		81:  uint32(0x3edd92c3),
-		82:  uint32(0x1461224b),
-		83:  uint32(0xbb25b00c),
-		84:  uint32(0x4118435b),
-		85:  uint32(0xee5cd11c),
-		86:  uint32(0xc4e06194),
-		87:  uint32(0x6ba4f3d3),
-		88:  uint32(0xebea817b),
-		89:  uint32(0x44ae133c),
-		90:  uint32(0x6e12a3b4),
-		91:  uint32(0xc15631f3),
-		92:  uint32(0x3b6bc2a4),
-		93:  uint32(0x942f50e3),
-		94:  uint32(0xbe93e06b),
-		95:  uint32(0x11d7722c),
-		96:  uint32(0x57c102c7),
-		97:  uint32(0xf8859080),
-		98:  uint32(0xd2392008),
-		99:  uint32(0x7d7db24f),
-		100: uint32(0x87404118),
-		101: uint32(0x2804d35f),
-		102: uint32(0x02b863d7),
-		103: uint32(0xadfcf190),
-		104: uint32(0x2db28338),
-		105: uint32(0x82f6117f),
-		106: uint32(0xa84aa1f7),
-		107: uint32(0x070e33b0),
-		108: uint32(0xfd33c0e7),
-		109: uint32(0x527752a0),
-		110: uint32(0x78cbe228),
-		111: uint32(0xd78f706f),
-		112: uint32(0xa3260139),
-		113: uint32(0x0c62937e),
-		114: uint32(0x26de23f6),
-		115: uint32(0x899ab1b1),
-		116: uint32(0x73a742e6),
-		117: uint32(0xdce3d0a1),
-		118: uint32(0xf65f6029),
-		119: uint32(0x591bf26e),
-		120: uint32(0xd95580c6),
-		121: uint32(0x76111281),
-		122: uint32(0x5cada209),
-		123: uint32(0xf3e9304e),
-		124: uint32(0x09d4c319),
-		125: uint32(0xa690515e),
-		126: uint32(0x8c2ce1d6),
-		127: uint32(0x23687391),
-		128: uint32(0xcafc06f4),
-		129: uint32(0x65b894b3),
-		130: uint32(0x4f04243b),
-		131: uint32(0xe040b67c),
-		132: uint32(0x1a7d452b),
-		133: uint32(0xb539d76c),
-		134: uint32(0x9f8567e4),
-		135: uint32(0x30c1f5a3),
-		136: uint32(0xb08f870b),
-		137: uint32(0x1fcb154c),
-		138: uint32(0x3577a5c4),
-		139: uint32(0x9a333783),
-		140: uint32(0x600ec4d4),
-		141: uint32(0xcf4a5693),
-		142: uint32(0xe5f6e61b),
-		143: uint32(0x4ab2745c),
-		144: uint32(0x3e1b050a),
-		145: uint32(0x915f974d),
-		146: uint32(0xbbe327c5),
-		147: uint32(0x14a7b582),
-		148: uint32(0xee9a46d5),
-		149: uint32(0x41ded492),
-		150: uint32(0x6b62641a),
-		151: uint32(0xc426f65d),
-		152: uint32(0x446884f5),
-		153: uint32(0xeb2c16b2),
-		154: uint32(0xc190a63a),
-		155: uint32(0x6ed4347d),
-		156: uint32(0x94e9c72a),
-		157: uint32(0x3bad556d),
-		158: uint32(0x1111e5e5),
-		159: uint32(0xbe5577a2),
-		160: uint32(0xf8430749),
-		161: uint32(0x5707950e),
-		162: uint32(0x7dbb2586),
-		163: uint32(0xd2ffb7c1),
-		164: uint32(0x28c24496),
-		165: uint32(0x8786d6d1),
-		166: uint32(0xad3a6659),
-		167: uint32(0x027ef41e),
-		168: uint32(0x823086b6),
-		169: uint32(0x2d7414f1),
-		170: uint32(0x07c8a479),
-		171: uint32(0xa88c363e),
-		172: uint32(0x52b1c569),
-		173: uint32(0xfdf5572e),
-		174: uint32(0xd749e7a6),
-		175: uint32(0x780d75e1),
-		176: uint32(0x0ca404b7),
-		177: uint32(0xa3e096f0),
-		178: uint32(0x895c2678),
-		179: uint32(0x2618b43f),
-		180: uint32(0xdc254768),
-		181: uint32(0x7361d52f),
-		182: uint32(0x59dd65a7),
-		183: uint32(0xf699f7e0),
-		184: uint32(0x76d78548),
-		185: uint32(0xd993170f),
-		186: uint32(0xf32fa787),
-		187: uint32(0x5c6b35c0),
-		188: uint32(0xa656c697),
-		189: uint32(0x091254d0),
-		190: uint32(0x23aee458),
-		191: uint32(0x8cea761f),
-		192: uint32(0xaf82058e),
-		193: uint32(0x00c697c9),
-		194: uint32(0x2a7a2741),
-		195: uint32(0x853eb506),
-		196: uint32(0x7f034651),
-		197: uint32(0xd047d416),
-		198: uint32(0xfafb649e),
-		199: uint32(0x55bff6d9),
-		200: uint32(0xd5f18471),
-		201: uint32(0x7ab51636),
-		202: uint32(0x5009a6be),
-		203: uint32(0xff4d34f9),
-		204: uint32(0x0570c7ae),
-		205: uint32(0xaa3455e9),
-		206: uint32(0x8088e561),
-		207: uint32(0x2fcc7726),
-		208: uint32(0x5b650670),
-		209: uint32(0xf4219437),
-		210: uint32(0xde9d24bf),
-		211: uint32(0x71d9b6f8),
-		212: uint32(0x8be445af),
-		213: uint32(0x24a0d7e8),
-		214: uint32(0x0e1c6760),
-		215: uint32(0xa158f527),
-		216: uint32(0x2116878f),
-		217: uint32(0x8e5215c8),
-		218: uint32(0xa4eea540),
-		219: uint32(0x0baa3707),
-		220: uint32(0xf197c450),
-		221: uint32(0x5ed35617),
-		222: uint32(0x746fe69f),
-		223: uint32(0xdb2b74d8),
-		224: uint32(0x9d3d0433),
-		225: uint32(0x32799674),
-		226: uint32(0x18c526fc),
-		227: uint32(0xb781b4bb),
-		228: uint32(0x4dbc47ec),
-		229: uint32(0xe2f8d5ab),
-		230: uint32(0xc8446523),
-		231: uint32(0x6700f764),
-		232: uint32(0xe74e85cc),
-		233: uint32(0x480a178b),
-		234: uint32(0x62b6a703),
-		235: uint32(0xcdf23544),
-		236: uint32(0x37cfc613),
-		237: uint32(0x988b5454),
-		238: uint32(0xb237e4dc),
-		239: uint32(0x1d73769b),
-		240: uint32(0x69da07cd),
-		241: uint32(0xc69e958a),
-		242: uint32(0xec222502),
-		243: uint32(0x4366b745),
-		244: uint32(0xb95b4412),
-		245: uint32(0x161fd655),
-		246: uint32(0x3ca366dd),
-		247: uint32(0x93e7f49a),
-		248: uint32(0x13a98632),
-		249: uint32(0xbced1475),
-		250: uint32(0x9651a4fd),
-		251: uint32(0x391536ba),
-		252: uint32(0xc328c5ed),
-		253: uint32(0x6c6c57aa),
-		254: uint32(0x46d0e722),
-		255: uint32(0xe9947565),
+		1:   uint32(0x65673b46),
+		2:   uint32(0xcace768c),
+		3:   uint32(0xafa94dca),
+		4:   uint32(0x4eedeb59),
+		5:   uint32(0x2b8ad01f),
+		6:   uint32(0x84239dd5),
+		7:   uint32(0xe144a693),
+		8:   uint32(0x9ddbd6b2),
+		9:   uint32(0xf8bcedf4),
+		10:  uint32(0x5715a03e),
+		11:  uint32(0x32729b78),
+		12:  uint32(0xd3363deb),
+		13:  uint32(0xb65106ad),
+		14:  uint32(0x19f84b67),
+		15:  uint32(0x7c9f7021),
+		16:  uint32(0xe0c6ab25),
+		17:  uint32(0x85a19063),
+		18:  uint32(0x2a08dda9),
+		19:  uint32(0x4f6fe6ef),
+		20:  uint32(0xae2b407c),
+		21:  uint32(0xcb4c7b3a),
+		22:  uint32(0x64e536f0),
+		23:  uint32(0x01820db6),
+		24:  uint32(0x7d1d7d97),
+		25:  uint32(0x187a46d1),
+		26:  uint32(0xb7d30b1b),
+		27:  uint32(0xd2b4305d),
+		28:  uint32(0x33f096ce),
+		29:  uint32(0x5697ad88),
+		30:  uint32(0xf93ee042),
+		31:  uint32(0x9c59db04),
+		32:  uint32(0x1afc500b),
+		33:  uint32(0x7f9b6b4d),
+		34:  uint32(0xd0322687),
+		35:  uint32(0xb5551dc1),
+		36:  uint32(0x5411bb52),
+		37:  uint32(0x31768014),
+		38:  uint32(0x9edfcdde),
+		39:  uint32(0xfbb8f698),
+		40:  uint32(0x872786b9),
+		41:  uint32(0xe240bdff),
+		42:  uint32(0x4de9f035),
+		43:  uint32(0x288ecb73),
+		44:  uint32(0xc9ca6de0),
+		45:  uint32(0xacad56a6),
+		46:  uint32(0x03041b6c),
+		47:  uint32(0x6663202a),
+		48:  uint32(0xfa3afb2e),
+		49:  uint32(0x9f5dc068),
+		50:  uint32(0x30f48da2),
+		51:  uint32(0x5593b6e4),
+		52:  uint32(0xb4d71077),
+		53:  uint32(0xd1b02b31),
+		54:  uint32(0x7e1966fb),
+		55:  uint32(0x1b7e5dbd),
+		56:  uint32(0x67e12d9c),
+		57:  uint32(0x028616da),
+		58:  uint32(0xad2f5b10),
+		59:  uint32(0xc8486056),
+		60:  uint32(0x290cc6c5),
+		61:  uint32(0x4c6bfd83),
+		62:  uint32(0xe3c2b049),
+		63:  uint32(0x86a58b0f),
+		64:  uint32(0x35f8a016),
+		65:  uint32(0x509f9b50),
+		66:  uint32(0xff36d69a),
+		67:  uint32(0x9a51eddc),
+		68:  uint32(0x7b154b4f),
+		69:  uint32(0x1e727009),
+		70:  uint32(0xb1db3dc3),
+		71:  uint32(0xd4bc0685),
+		72:  uint32(0xa82376a4),
+		73:  uint32(0xcd444de2),
+		74:  uint32(0x62ed0028),
+		75:  uint32(0x078a3b6e),
+		76:  uint32(0xe6ce9dfd),
+		77:  uint32(0x83a9a6bb),
+		78:  uint32(0x2c00eb71),
+		79:  uint32(0x4967d037),
+		80:  uint32(0xd53e0b33),
+		81:  uint32(0xb0593075),
+		82:  uint32(0x1ff07dbf),
+		83:  uint32(0x7a9746f9),
+		84:  uint32(0x9bd3e06a),
+		85:  uint32(0xfeb4db2c),
+		86:  uint32(0x511d96e6),
+		87:  uint32(0x347aada0),
+		88:  uint32(0x48e5dd81),
+		89:  uint32(0x2d82e6c7),
+		90:  uint32(0x822bab0d),
+		91:  uint32(0xe74c904b),
+		92:  uint32(0x060836d8),
+		93:  uint32(0x636f0d9e),
+		94:  uint32(0xccc64054),
+		95:  uint32(0xa9a17b12),
+		96:  uint32(0x2f04f01d),
+		97:  uint32(0x4a63cb5b),
+		98:  uint32(0xe5ca8691),
+		99:  uint32(0x80adbdd7),
+		100: uint32(0x61e91b44),
+		101: uint32(0x048e2002),
+		102: uint32(0xab276dc8),
+		103: uint32(0xce40568e),
+		104: uint32(0xb2df26af),
+		105: uint32(0xd7b81de9),
+		106: uint32(0x78115023),
+		107: uint32(0x1d766b65),
+		108: uint32(0xfc32cdf6),
+		109: uint32(0x9955f6b0),
+		110: uint32(0x36fcbb7a),
+		111: uint32(0x539b803c),
+		112: uint32(0xcfc25b38),
+		113: uint32(0xaaa5607e),
+		114: uint32(0x050c2db4),
+		115: uint32(0x606b16f2),
+		116: uint32(0x812fb061),
+		117: uint32(0xe4488b27),
+		118: uint32(0x4be1c6ed),
+		119: uint32(0x2e86fdab),
+		120: uint32(0x52198d8a),
+		121: uint32(0x377eb6cc),
+		122: uint32(0x98d7fb06),
+		123: uint32(0xfdb0c040),
+		124: uint32(0x1cf466d3),
+		125: uint32(0x79935d95),
+		126: uint32(0xd63a105f),
+		127: uint32(0xb35d2b19),
+		128: uint32(0x6bf1402c),
+		129: uint32(0x0e967b6a),
+		130: uint32(0xa13f36a0),
+		131: uint32(0xc4580de6),
+		132: uint32(0x251cab75),
+		133: uint32(0x407b9033),
+		134: uint32(0xefd2ddf9),
+		135: uint32(0x8ab5e6bf),
+		136: uint32(0xf62a969e),
+		137: uint32(0x934dadd8),
+		138: uint32(0x3ce4e012),
+		139: uint32(0x5983db54),
+		140: uint32(0xb8c77dc7),
+		141: uint32(0xdda04681),
+		142: uint32(0x72090b4b),
+		143: uint32(0x176e300d),
+		144: uint32(0x8b37eb09),
+		145: uint32(0xee50d04f),
+		146: uint32(0x41f99d85),
+		147: uint32(0x249ea6c3),
+		148: uint32(0xc5da0050),
+		149: uint32(0xa0bd3b16),
+		150: uint32(0x0f1476dc),
+		151: uint32(0x6a734d9a),
+		152: uint32(0x16ec3dbb),
+		153: uint32(0x738b06fd),
+		154: uint32(0xdc224b37),
+		155: uint32(0xb9457071),
+		156: uint32(0x5801d6e2),
+		157: uint32(0x3d66eda4),
+		158: uint32(0x92cfa06e),
+		159: uint32(0xf7a89b28),
+		160: uint32(0x710d1027),
+		161: uint32(0x146a2b61),
+		162: uint32(0xbbc366ab),
+		163: uint32(0xdea45ded),
+		164: uint32(0x3fe0fb7e),
+		165: uint32(0x5a87c038),
+		166: uint32(0xf52e8df2),
+		167: uint32(0x9049b6b4),
+		168: uint32(0xecd6c695),
+		169: uint32(0x89b1fdd3),
+		170: uint32(0x2618b019),
+		171: uint32(0x437f8b5f),
+		172: uint32(0xa23b2dcc),
+		173: uint32(0xc75c168a),
+		174: uint32(0x68f55b40),
+		175: uint32(0x0d926006),
+		176: uint32(0x91cbbb02),
+		177: uint32(0xf4ac8044),
+		178: uint32(0x5b05cd8e),
+		179: uint32(0x3e62f6c8),
+		180: uint32(0xdf26505b),
+		181: uint32(0xba416b1d),
+		182: uint32(0x15e826d7),
+		183: uint32(0x708f1d91),
+		184: uint32(0x0c106db0),
+		185: uint32(0x697756f6),
+		186: uint32(0xc6de1b3c),
+		187: uint32(0xa3b9207a),
+		188: uint32(0x42fd86e9),
+		189: uint32(0x279abdaf),
+		190: uint32(0x8833f065),
+		191: uint32(0xed54cb23),
+		192: uint32(0x5e09e03a),
+		193: uint32(0x3b6edb7c),
+		194: uint32(0x94c796b6),
+		195: uint32(0xf1a0adf0),
+		196: uint32(0x10e40b63),
+		197: uint32(0x75833025),
+		198: uint32(0xda2a7def),
+		199: uint32(0xbf4d46a9),
+		200: uint32(0xc3d23688),
+		201: uint32(0xa6b50dce),
+		202: uint32(0x091c4004),
+		203: uint32(0x6c7b7b42),
+		204: uint32(0x8d3fddd1),
+		205: uint32(0xe858e697),
+		206: uint32(0x47f1ab5d),
+		207: uint32(0x2296901b),
+		208: uint32(0xbecf4b1f),
+		209: uint32(0xdba87059),
+		210: uint32(0x74013d93),
+		211: uint32(0x116606d5),
+		212: uint32(0xf022a046),
+		213: uint32(0x95459b00),
+		214: uint32(0x3aecd6ca),
+		215: uint32(0x5f8bed8c),
+		216: uint32(0x23149dad),
+		217: uint32(0x4673a6eb),
+		218: uint32(0xe9daeb21),
+		219: uint32(0x8cbdd067),
+		220: uint32(0x6df976f4),
+		221: uint32(0x089e4db2),
+		222: uint32(0xa7370078),
+		223: uint32(0xc2503b3e),
+		224: uint32(0x44f5b031),
+		225: uint32(0x21928b77),
+		226: uint32(0x8e3bc6bd),
+		227: uint32(0xeb5cfdfb),
+		228: uint32(0x0a185b68),
+		229: uint32(0x6f7f602e),
+		230: uint32(0xc0d62de4),
+		231: uint32(0xa5b116a2),
+		232: uint32(0xd92e6683),
+		233: uint32(0xbc495dc5),
+		234: uint32(0x13e0100f),
+		235: uint32(0x76872b49),
+		236: uint32(0x97c38dda),
+		237: uint32(0xf2a4b69c),
+		238: uint32(0x5d0dfb56),
+		239: uint32(0x386ac010),
+		240: uint32(0xa4331b14),
+		241: uint32(0xc1542052),
+		242: uint32(0x6efd6d98),
+		243: uint32(0x0b9a56de),
+		244: uint32(0xeadef04d),
+		245: uint32(0x8fb9cb0b),
+		246: uint32(0x201086c1),
+		247: uint32(0x4577bd87),
+		248: uint32(0x39e8cda6),
+		249: uint32(0x5c8ff6e0),
+		250: uint32(0xf326bb2a),
+		251: uint32(0x9641806c),
+		252: uint32(0x770526ff),
+		253: uint32(0x12621db9),
+		254: uint32(0xbdcb5073),
+		255: uint32(0xd8ac6b35),
 	},
 	1: {
-		1:   uint32(0x4e890ba9),
-		2:   uint32(0x9d121752),
-		3:   uint32(0xd39b1cfb),
-		4:   uint32(0xe15528e5),
-		5:   uint32(0xafdc234c),
-		6:   uint32(0x7c473fb7),
-		7:   uint32(0x32ce341e),
-		8:   uint32(0x19db578b),
-		9:   uint32(0x57525c22),
-		10:  uint32(0x84c940d9),
-		11:  uint32(0xca404b70),
-		12:  uint32(0xf88e7f6e),
-		13:  uint32(0xb60774c7),
-		14:  uint32(0x659c683c),
-		15:  uint32(0x2b156395),
-		16:  uint32(0x33b6af16),
-		17:  uint32(0x7d3fa4bf),
-		18:  uint32(0xaea4b844),
-		19:  uint32(0xe02db3ed),
-		20:  uint32(0xd2e387f3),
-		21:  uint32(0x9c6a8c5a),
-		22:  uint32(0x4ff190a1),
-		23:  uint32(0x01789b08),
-		24:  uint32(0x2a6df89d),
-		25:  uint32(0x64e4f334),
-		26:  uint32(0xb77fefcf),
-		27:  uint32(0xf9f6e466),
-		28:  uint32(0xcb38d078),
-		29:  uint32(0x85b1dbd1),
-		30:  uint32(0x562ac72a),
-		31:  uint32(0x18a3cc83),
-		32:  uint32(0x676d5e2c),
-		33:  uint32(0x29e45585),
-		34:  uint32(0xfa7f497e),
-		35:  uint32(0xb4f642d7),
-		36:  uint32(0x863876c9),
-		37:  uint32(0xc8b17d60),
-		38:  uint32(0x1b2a619b),
-		39:  uint32(0x55a36a32),
-		40:  uint32(0x7eb609a7),
-		41:  uint32(0x303f020e),
-		42:  uint32(0xe3a41ef5),
-		43:  uint32(0xad2d155c),
-		44:  uint32(0x9fe32142),
-		45:  uint32(0xd16a2aeb),
-		46:  uint32(0x02f13610),
-		47:  uint32(0x4c783db9),
-		48:  uint32(0x54dbf13a),
-		49:  uint32(0x1a52fa93),
-		50:  uint32(0xc9c9e668),
-		51:  uint32(0x8740edc1),
-		52:  uint32(0xb58ed9df),
-		53:  uint32(0xfb07d276),
-		54:  uint32(0x289cce8d),
-		55:  uint32(0x6615c524),
-		56:  uint32(0x4d00a6b1),
-		57:  uint32(0x0389ad18),
-		58:  uint32(0xd012b1e3),
-		59:  uint32(0x9e9bba4a),
-		60:  uint32(0xac558e54),
-		61:  uint32(0xe2dc85fd),
-		62:  uint32(0x31479906),
-		63:  uint32(0x7fce92af),
-		64:  uint32(0xcedabc58),
-		65:  uint32(0x8053b7f1),
-		66:  uint32(0x53c8ab0a),
-		67:  uint32(0x1d41a0a3),
-		68:  uint32(0x2f8f94bd),
-		69:  uint32(0x61069f14),
-		70:  uint32(0xb29d83ef),
-		71:  uint32(0xfc148846),
-		72:  uint32(0xd701ebd3),
-		73:  uint32(0x9988e07a),
-		74:  uint32(0x4a13fc81),
-		75:  uint32(0x049af728),
-		76:  uint32(0x3654c336),
-		77:  uint32(0x78ddc89f),
-		78:  uint32(0xab46d464),
-		79:  uint32(0xe5cfdfcd),
-		80:  uint32(0xfd6c134e),
-		81:  uint32(0xb3e518e7),
-		82:  uint32(0x607e041c),
-		83:  uint32(0x2ef70fb5),
-		84:  uint32(0x1c393bab),
-		85:  uint32(0x52b03002),
-		86:  uint32(0x812b2cf9),
-		87:  uint32(0xcfa22750),
-		88:  uint32(0xe4b744c5),
-		89:  uint32(0xaa3e4f6c),
-		90:  uint32(0x79a55397),
-		91:  uint32(0x372c583e),
-		92:  uint32(0x05e26c20),
-		93:  uint32(0x4b6b6789),
-		94:  uint32(0x98f07b72),
-		95:  uint32(0xd67970db),
-		96:  uint32(0xa9b7e274),
-		97:  uint32(0xe73ee9dd),
-		98:  uint32(0x34a5f526),
-		99:  uint32(0x7a2cfe8f),
-		100: uint32(0x48e2ca91),
-		101: uint32(0x066bc138),
-		102: uint32(0xd5f0ddc3),
-		103: uint32(0x9b79d66a),
-		104: uint32(0xb06cb5ff),
-		105: uint32(0xfee5be56),
-		106: uint32(0x2d7ea2ad),
-		107: uint32(0x63f7a904),
-		108: uint32(0x51399d1a),
-		109: uint32(0x1fb096b3),
-		110: uint32(0xcc2b8a48),
-		111: uint32(0x82a281e1),
-		112: uint32(0x9a014d62),
-		113: uint32(0xd48846cb),
-		114: uint32(0x07135a30),
-		115: uint32(0x499a5199),
-		116: uint32(0x7b546587),
-		117: uint32(0x35dd6e2e),
-		118: uint32(0xe64672d5),
-		119: uint32(0xa8cf797c),
-		120: uint32(0x83da1ae9),
-		121: uint32(0xcd531140),
-		122: uint32(0x1ec80dbb),
-		123: uint32(0x50410612),
-		124: uint32(0x628f320c),
-		125: uint32(0x2c0639a5),
-		126: uint32(0xff9d255e),
-		127: uint32(0xb1142ef7),
-		128: uint32(0x46c47ef1),
-		129: uint32(0x084d7558),
-		130: uint32(0xdbd669a3),
-		131: uint32(0x955f620a),
-		132: uint32(0xa7915614),
-		133: uint32(0xe9185dbd),
-		134: uint32(0x3a834146),
-		135: uint32(0x740a4aef),
-		136: uint32(0x5f1f297a),
-		137: uint32(0x119622d3),
-		138: uint32(0xc20d3e28),
-		139: uint32(0x8c843581),
-		140: uint32(0xbe4a019f),
-		141: uint32(0xf0c30a36),
-		142: uint32(0x235816cd),
-		143: uint32(0x6dd11d64),
-		144: uint32(0x7572d1e7),
-		145: uint32(0x3bfbda4e),
-		146: uint32(0xe860c6b5),
-		147: uint32(0xa6e9cd1c),
-		148: uint32(0x9427f902),
-		149: uint32(0xdaaef2ab),
-		150: uint32(0x0935ee50),
-		151: uint32(0x47bce5f9),
-		152: uint32(0x6ca9866c),
-		153: uint32(0x22208dc5),
-		154: uint32(0xf1bb913e),
-		155: uint32(0xbf329a97),
-		156: uint32(0x8dfcae89),
-		157: uint32(0xc375a520),
-		158: uint32(0x10eeb9db),
-		159: uint32(0x5e67b272),
-		160: uint32(0x21a920dd),
-		161: uint32(0x6f202b74),
-		162: uint32(0xbcbb378f),
-		163: uint32(0xf2323c26),
-		164: uint32(0xc0fc0838),
-		165: uint32(0x8e750391),
-		166: uint32(0x5dee1f6a),
-		167: uint32(0x136714c3),
-		168: uint32(0x38727756),
-		169: uint32(0x76fb7cff),
-		170: uint32(0xa5606004),
-		171: uint32(0xebe96bad),
-		172: uint32(0xd9275fb3),
-		173: uint32(0x97ae541a),
-		174: uint32(0x443548e1),
-		175: uint32(0x0abc4348),
-		176: uint32(0x121f8fcb),
-		177: uint32(0x5c968462),
-		178: uint32(0x8f0d9899),
-		179: uint32(0xc1849330),
-		180: uint32(0xf34aa72e),
-		181: uint32(0xbdc3ac87),
-		182: uint32(0x6e58b07c),
-		183: uint32(0x20d1bbd5),
-		184: uint32(0x0bc4d840),
-		185: uint32(0x454dd3e9),
-		186: uint32(0x96d6cf12),
-		187: uint32(0xd85fc4bb),
-		188: uint32(0xea91f0a5),
-		189: uint32(0xa418fb0c),
-		190: uint32(0x7783e7f7),
-		191: uint32(0x390aec5e),
-		192: uint32(0x881ec2a9),
-		193: uint32(0xc697c900),
-		194: uint32(0x150cd5fb),
-		195: uint32(0x5b85de52),
-		196: uint32(0x694bea4c),
-		197: uint32(0x27c2e1e5),
-		198: uint32(0xf459fd1e),
-		199: uint32(0xbad0f6b7),
-		200: uint32(0x91c59522),
-		201: uint32(0xdf4c9e8b),
-		202: uint32(0x0cd78270),
-		203: uint32(0x425e89d9),
-		204: uint32(0x7090bdc7),
-		205: uint32(0x3e19b66e),
-		206: uint32(0xed82aa95),
-		207: uint32(0xa30ba13c),
-		208: uint32(0xbba86dbf),
-		209: uint32(0xf5216616),
-		210: uint32(0x26ba7aed),
-		211: uint32(0x68337144),
-		212: uint32(0x5afd455a),
-		213: uint32(0x14744ef3),
-		214: uint32(0xc7ef5208),
-		215: uint32(0x896659a1),
-		216: uint32(0xa2733a34),
-		217: uint32(0xecfa319d),
-		218: uint32(0x3f612d66),
-		219: uint32(0x71e826cf),
-		220: uint32(0x432612d1),
-		221: uint32(0x0daf1978),
-		222: uint32(0xde340583),
-		223: uint32(0x90bd0e2a),
-		224: uint32(0xef739c85),
-		225: uint32(0xa1fa972c),
-		226: uint32(0x72618bd7),
-		227: uint32(0x3ce8807e),
-		228: uint32(0x0e26b460),
-		229: uint32(0x40afbfc9),
-		230: uint32(0x9334a332),
-		231: uint32(0xddbda89b),
-		232: uint32(0xf6a8cb0e),
-		233: uint32(0xb821c0a7),
-		234: uint32(0x6bbadc5c),
-		235: uint32(0x2533d7f5),
-		236: uint32(0x17fde3eb),
-		237: uint32(0x5974e842),
-		238: uint32(0x8aeff4b9),
-		239: uint32(0xc466ff10),
-		240: uint32(0xdcc53393),
-		241: uint32(0x924c383a),
-		242: uint32(0x41d724c1),
-		243: uint32(0x0f5e2f68),
-		244: uint32(0x3d901b76),
-		245: uint32(0x731910df),
-		246: uint32(0xa0820c24),
-		247: uint32(0xee0b078d),
-		248: uint32(0xc51e6418),
-		249: uint32(0x8b976fb1),
-		250: uint32(0x580c734a),
-		251: uint32(0x168578e3),
-		252: uint32(0x244b4cfd),
-		253: uint32(0x6ac24754),
-		254: uint32(0xb9595baf),
-		255: uint32(0xf7d05006),
+		1:   uint32(0xd7e28058),
+		2:   uint32(0x74b406f1),
+		3:   uint32(0xa35686a9),
+		4:   uint32(0xe9680de2),
+		5:   uint32(0x3e8a8dba),
+		6:   uint32(0x9ddc0b13),
+		7:   uint32(0x4a3e8b4b),
+		8:   uint32(0x09a11d85),
+		9:   uint32(0xde439ddd),
+		10:  uint32(0x7d151b74),
+		11:  uint32(0xaaf79b2c),
+		12:  uint32(0xe0c91067),
+		13:  uint32(0x372b903f),
+		14:  uint32(0x947d1696),
+		15:  uint32(0x439f96ce),
+		16:  uint32(0x13423b0a),
+		17:  uint32(0xc4a0bb52),
+		18:  uint32(0x67f63dfb),
+		19:  uint32(0xb014bda3),
+		20:  uint32(0xfa2a36e8),
+		21:  uint32(0x2dc8b6b0),
+		22:  uint32(0x8e9e3019),
+		23:  uint32(0x597cb041),
+		24:  uint32(0x1ae3268f),
+		25:  uint32(0xcd01a6d7),
+		26:  uint32(0x6e57207e),
+		27:  uint32(0xb9b5a026),
+		28:  uint32(0xf38b2b6d),
+		29:  uint32(0x2469ab35),
+		30:  uint32(0x873f2d9c),
+		31:  uint32(0x50ddadc4),
+		32:  uint32(0x26847614),
+		33:  uint32(0xf166f64c),
+		34:  uint32(0x523070e5),
+		35:  uint32(0x85d2f0bd),
+		36:  uint32(0xcfec7bf6),
+		37:  uint32(0x180efbae),
+		38:  uint32(0xbb587d07),
+		39:  uint32(0x6cbafd5f),
+		40:  uint32(0x2f256b91),
+		41:  uint32(0xf8c7ebc9),
+		42:  uint32(0x5b916d60),
+		43:  uint32(0x8c73ed38),
+		44:  uint32(0xc64d6673),
+		45:  uint32(0x11afe62b),
+		46:  uint32(0xb2f96082),
+		47:  uint32(0x651be0da),
+		48:  uint32(0x35c64d1e),
+		49:  uint32(0xe224cd46),
+		50:  uint32(0x41724bef),
+		51:  uint32(0x9690cbb7),
+		52:  uint32(0xdcae40fc),
+		53:  uint32(0x0b4cc0a4),
+		54:  uint32(0xa81a460d),
+		55:  uint32(0x7ff8c655),
+		56:  uint32(0x3c67509b),
+		57:  uint32(0xeb85d0c3),
+		58:  uint32(0x48d3566a),
+		59:  uint32(0x9f31d632),
+		60:  uint32(0xd50f5d79),
+		61:  uint32(0x02eddd21),
+		62:  uint32(0xa1bb5b88),
+		63:  uint32(0x7659dbd0),
+		64:  uint32(0x4d08ec28),
+		65:  uint32(0x9aea6c70),
+		66:  uint32(0x39bcead9),
+		67:  uint32(0xee5e6a81),
+		68:  uint32(0xa460e1ca),
+		69:  uint32(0x73826192),
+		70:  uint32(0xd0d4e73b),
+		71:  uint32(0x07366763),
+		72:  uint32(0x44a9f1ad),
+		73:  uint32(0x934b71f5),
+		74:  uint32(0x301df75c),
+		75:  uint32(0xe7ff7704),
+		76:  uint32(0xadc1fc4f),
+		77:  uint32(0x7a237c17),
+		78:  uint32(0xd975fabe),
+		79:  uint32(0x0e977ae6),
+		80:  uint32(0x5e4ad722),
+		81:  uint32(0x89a8577a),
+		82:  uint32(0x2afed1d3),
+		83:  uint32(0xfd1c518b),
+		84:  uint32(0xb722dac0),
+		85:  uint32(0x60c05a98),
+		86:  uint32(0xc396dc31),
+		87:  uint32(0x14745c69),
+		88:  uint32(0x57ebcaa7),
+		89:  uint32(0x80094aff),
+		90:  uint32(0x235fcc56),
+		91:  uint32(0xf4bd4c0e),
+		92:  uint32(0xbe83c745),
+		93:  uint32(0x6961471d),
+		94:  uint32(0xca37c1b4),
+		95:  uint32(0x1dd541ec),
+		96:  uint32(0x6b8c9a3c),
+		97:  uint32(0xbc6e1a64),
+		98:  uint32(0x1f389ccd),
+		99:  uint32(0xc8da1c95),
+		100: uint32(0x82e497de),
+		101: uint32(0x55061786),
+		102: uint32(0xf650912f),
+		103: uint32(0x21b21177),
+		104: uint32(0x622d87b9),
+		105: uint32(0xb5cf07e1),
+		106: uint32(0x16998148),
+		107: uint32(0xc17b0110),
+		108: uint32(0x8b458a5b),
+		109: uint32(0x5ca70a03),
+		110: uint32(0xfff18caa),
+		111: uint32(0x28130cf2),
+		112: uint32(0x78cea136),
+		113: uint32(0xaf2c216e),
+		114: uint32(0x0c7aa7c7),
+		115: uint32(0xdb98279f),
+		116: uint32(0x91a6acd4),
+		117: uint32(0x46442c8c),
+		118: uint32(0xe512aa25),
+		119: uint32(0x32f02a7d),
+		120: uint32(0x716fbcb3),
+		121: uint32(0xa68d3ceb),
+		122: uint32(0x05dbba42),
+		123: uint32(0xd2393a1a),
+		124: uint32(0x9807b151),
+		125: uint32(0x4fe53109),
+		126: uint32(0xecb3b7a0),
+		127: uint32(0x3b5137f8),
+		128: uint32(0x9a11d850),
+		129: uint32(0x4df35808),
+		130: uint32(0xeea5dea1),
+		131: uint32(0x39475ef9),
+		132: uint32(0x7379d5b2),
+		133: uint32(0xa49b55ea),
+		134: uint32(0x07cdd343),
+		135: uint32(0xd02f531b),
+		136: uint32(0x93b0c5d5),
+		137: uint32(0x4452458d),
+		138: uint32(0xe704c324),
+		139: uint32(0x30e6437c),
+		140: uint32(0x7ad8c837),
+		141: uint32(0xad3a486f),
+		142: uint32(0x0e6ccec6),
+		143: uint32(0xd98e4e9e),
+		144: uint32(0x8953e35a),
+		145: uint32(0x5eb16302),
+		146: uint32(0xfde7e5ab),
+		147: uint32(0x2a0565f3),
+		148: uint32(0x603beeb8),
+		149: uint32(0xb7d96ee0),
+		150: uint32(0x148fe849),
+		151: uint32(0xc36d6811),
+		152: uint32(0x80f2fedf),
+		153: uint32(0x57107e87),
+		154: uint32(0xf446f82e),
+		155: uint32(0x23a47876),
+		156: uint32(0x699af33d),
+		157: uint32(0xbe787365),
+		158: uint32(0x1d2ef5cc),
+		159: uint32(0xcacc7594),
+		160: uint32(0xbc95ae44),
+		161: uint32(0x6b772e1c),
+		162: uint32(0xc821a8b5),
+		163: uint32(0x1fc328ed),
+		164: uint32(0x55fda3a6),
+		165: uint32(0x821f23fe),
+		166: uint32(0x2149a557),
+		167: uint32(0xf6ab250f),
+		168: uint32(0xb534b3c1),
+		169: uint32(0x62d63399),
+		170: uint32(0xc180b530),
+		171: uint32(0x16623568),
+		172: uint32(0x5c5cbe23),
+		173: uint32(0x8bbe3e7b),
+		174: uint32(0x28e8b8d2),
+		175: uint32(0xff0a388a),
+		176: uint32(0xafd7954e),
+		177: uint32(0x78351516),
+		178: uint32(0xdb6393bf),
+		179: uint32(0x0c8113e7),
+		180: uint32(0x46bf98ac),
+		181: uint32(0x915d18f4),
+		182: uint32(0x320b9e5d),
+		183: uint32(0xe5e91e05),
+		184: uint32(0xa67688cb),
+		185: uint32(0x71940893),
+		186: uint32(0xd2c28e3a),
+		187: uint32(0x05200e62),
+		188: uint32(0x4f1e8529),
+		189: uint32(0x98fc0571),
+		190: uint32(0x3baa83d8),
+		191: uint32(0xec480380),
+		192: uint32(0xd7193478),
+		193: uint32(0x00fbb420),
+		194: uint32(0xa3ad3289),
+		195: uint32(0x744fb2d1),
+		196: uint32(0x3e71399a),
+		197: uint32(0xe993b9c2),
+		198: uint32(0x4ac53f6b),
+		199: uint32(0x9d27bf33),
+		200: uint32(0xdeb829fd),
+		201: uint32(0x095aa9a5),
+		202: uint32(0xaa0c2f0c),
+		203: uint32(0x7deeaf54),
+		204: uint32(0x37d0241f),
+		205: uint32(0xe032a447),
+		206: uint32(0x436422ee),
+		207: uint32(0x9486a2b6),
+		208: uint32(0xc45b0f72),
+		209: uint32(0x13b98f2a),
+		210: uint32(0xb0ef0983),
+		211: uint32(0x670d89db),
+		212: uint32(0x2d330290),
+		213: uint32(0xfad182c8),
+		214: uint32(0x59870461),
+		215: uint32(0x8e658439),
+		216: uint32(0xcdfa12f7),
+		217: uint32(0x1a1892af),
+		218: uint32(0xb94e1406),
+		219: uint32(0x6eac945e),
+		220: uint32(0x24921f15),
+		221: uint32(0xf3709f4d),
+		222: uint32(0x502619e4),
+		223: uint32(0x87c499bc),
+		224: uint32(0xf19d426c),
+		225: uint32(0x267fc234),
+		226: uint32(0x8529449d),
+		227: uint32(0x52cbc4c5),
+		228: uint32(0x18f54f8e),
+		229: uint32(0xcf17cfd6),
+		230: uint32(0x6c41497f),
+		231: uint32(0xbba3c927),
+		232: uint32(0xf83c5fe9),
+		233: uint32(0x2fdedfb1),
+		234: uint32(0x8c885918),
+		235: uint32(0x5b6ad940),
+		236: uint32(0x1154520b),
+		237: uint32(0xc6b6d253),
+		238: uint32(0x65e054fa),
+		239: uint32(0xb202d4a2),
+		240: uint32(0xe2df7966),
+		241: uint32(0x353df93e),
+		242: uint32(0x966b7f97),
+		243: uint32(0x4189ffcf),
+		244: uint32(0x0bb77484),
+		245: uint32(0xdc55f4dc),
+		246: uint32(0x7f037275),
+		247: uint32(0xa8e1f22d),
+		248: uint32(0xeb7e64e3),
+		249: uint32(0x3c9ce4bb),
+		250: uint32(0x9fca6212),
+		251: uint32(0x4828e24a),
+		252: uint32(0x02166901),
+		253: uint32(0xd5f4e959),
+		254: uint32(0x76a26ff0),
+		255: uint32(0xa140efa8),
 	},
 	2: {
-		1:   uint32(0x8d88fde2),
-		2:   uint32(0xc060fd85),
-		3:   uint32(0x4de80067),
-		4:   uint32(0x5bb0fd4b),
-		5:   uint32(0xd63800a9),
-		6:   uint32(0x9bd000ce),
-		7:   uint32(0x1658fd2c),
-		8:   uint32(0xb761fa96),
-		9:   uint32(0x3ae90774),
-		10:  uint32(0x77010713),
-		11:  uint32(0xfa89faf1),
-		12:  uint32(0xecd107dd),
-		13:  uint32(0x6159fa3f),
-		14:  uint32(0x2cb1fa58),
-		15:  uint32(0xa13907ba),
-		16:  uint32(0xb5b2f36d),
-		17:  uint32(0x383a0e8f),
-		18:  uint32(0x75d20ee8),
-		19:  uint32(0xf85af30a),
-		20:  uint32(0xee020e26),
-		21:  uint32(0x638af3c4),
-		22:  uint32(0x2e62f3a3),
-		23:  uint32(0xa3ea0e41),
-		24:  uint32(0x02d309fb),
-		25:  uint32(0x8f5bf419),
-		26:  uint32(0xc2b3f47e),
-		27:  uint32(0x4f3b099c),
-		28:  uint32(0x5963f4b0),
-		29:  uint32(0xd4eb0952),
-		30:  uint32(0x99030935),
-		31:  uint32(0x148bf4d7),
-		32:  uint32(0xb014e09b),
-		33:  uint32(0x3d9c1d79),
-		34:  uint32(0x70741d1e),
-		35:  uint32(0xfdfce0fc),
-		36:  uint32(0xeba41dd0),
-		37:  uint32(0x662ce032),
-		38:  uint32(0x2bc4e055),
-		39:  uint32(0xa64c1db7),
-		40:  uint32(0x07751a0d),
-		41:  uint32(0x8afde7ef),
-		42:  uint32(0xc715e788),
-		43:  uint32(0x4a9d1a6a),
-		44:  uint32(0x5cc5e746),
-		45:  uint32(0xd14d1aa4),
-		46:  uint32(0x9ca51ac3),
-		47:  uint32(0x112de721),
-		48:  uint32(0x05a613f6),
-		49:  uint32(0x882eee14),
-		50:  uint32(0xc5c6ee73),
-		51:  uint32(0x484e1391),
-		52:  uint32(0x5e16eebd),
-		53:  uint32(0xd39e135f),
-		54:  uint32(0x9e761338),
-		55:  uint32(0x13feeeda),
-		56:  uint32(0xb2c7e960),
-		57:  uint32(0x3f4f1482),
-		58:  uint32(0x72a714e5),
-		59:  uint32(0xff2fe907),
-		60:  uint32(0xe977142b),
-		61:  uint32(0x64ffe9c9),
-		62:  uint32(0x2917e9ae),
-		63:  uint32(0xa49f144c),
-		64:  uint32(0xbb58c777),
-		65:  uint32(0x36d03a95),
-		66:  uint32(0x7b383af2),
-		67:  uint32(0xf6b0c710),
-		68:  uint32(0xe0e83a3c),
-		69:  uint32(0x6d60c7de),
-		70:  uint32(0x2088c7b9),
-		71:  uint32(0xad003a5b),
-		72:  uint32(0x0c393de1),
-		73:  uint32(0x81b1c003),
-		74:  uint32(0xcc59c064),
-		75:  uint32(0x41d13d86),
-		76:  uint32(0x5789c0aa),
-		77:  uint32(0xda013d48),
-		78:  uint32(0x97e93d2f),
-		79:  uint32(0x1a61c0cd),
-		80:  uint32(0x0eea341a),
-		81:  uint32(0x8362c9f8),
-		82:  uint32(0xce8ac99f),
-		83:  uint32(0x4302347d),
-		84:  uint32(0x555ac951),
-		85:  uint32(0xd8d234b3),
-		86:  uint32(0x953a34d4),
-		87:  uint32(0x18b2c936),
-		88:  uint32(0xb98bce8c),
-		89:  uint32(0x3403336e),
-		90:  uint32(0x79eb3309),
-		91:  uint32(0xf463ceeb),
-		92:  uint32(0xe23b33c7),
-		93:  uint32(0x6fb3ce25),
-		94:  uint32(0x225bce42),
-		95:  uint32(0xafd333a0),
-		96:  uint32(0x0b4c27ec),
-		97:  uint32(0x86c4da0e),
-		98:  uint32(0xcb2cda69),
-		99:  uint32(0x46a4278b),
-		100: uint32(0x50fcdaa7),
-		101: uint32(0xdd742745),
-		102: uint32(0x909c2722),
-		103: uint32(0x1d14dac0),
-		104: uint32(0xbc2ddd7a),
-		105: uint32(0x31a52098),
-		106: uint32(0x7c4d20ff),
-		107: uint32(0xf1c5dd1d),
-		108: uint32(0xe79d2031),
-		109: uint32(0x6a15ddd3),
-		110: uint32(0x27fdddb4),
-		111: uint32(0xaa752056),
-		112: uint32(0xbefed481),
-		113: uint32(0x33762963),
-		114: uint32(0x7e9e2904),
-		115: uint32(0xf316d4e6),
-		116: uint32(0xe54e29ca),
-		117: uint32(0x68c6d428),
-		118: uint32(0x252ed44f),
-		119: uint32(0xa8a629ad),
-		120: uint32(0x099f2e17),
-		121: uint32(0x8417d3f5),
-		122: uint32(0xc9ffd392),
-		123: uint32(0x44772e70),
-		124: uint32(0x522fd35c),
-		125: uint32(0xdfa72ebe),
-		126: uint32(0x924f2ed9),
-		127: uint32(0x1fc7d33b),
-		128: uint32(0xadc088af),
-		129: uint32(0x2048754d),
-		130: uint32(0x6da0752a),
-		131: uint32(0xe02888c8),
-		132: uint32(0xf67075e4),
-		133: uint32(0x7bf88806),
-		134: uint32(0x36108861),
-		135: uint32(0xbb987583),
-		136: uint32(0x1aa17239),
-		137: uint32(0x97298fdb),
-		138: uint32(0xdac18fbc),
-		139: uint32(0x5749725e),
-		140: uint32(0x41118f72),
-		141: uint32(0xcc997290),
-		142: uint32(0x817172f7),
-		143: uint32(0x0cf98f15),
-		144: uint32(0x18727bc2),
-		145: uint32(0x95fa8620),
-		146: uint32(0xd8128647),
-		147: uint32(0x559a7ba5),
-		148: uint32(0x43c28689),
-		149: uint32(0xce4a7b6b),
-		150: uint32(0x83a27b0c),
-		151: uint32(0x0e2a86ee),
-		152: uint32(0xaf138154),
-		153: uint32(0x229b7cb6),
-		154: uint32(0x6f737cd1),
-		155: uint32(0xe2fb8133),
-		156: uint32(0xf4a37c1f),
-		157: uint32(0x792b81fd),
-		158: uint32(0x34c3819a),
-		159: uint32(0xb94b7c78),
-		160: uint32(0x1dd46834),
-		161: uint32(0x905c95d6),
-		162: uint32(0xddb495b1),
-		163: uint32(0x503c6853),
-		164: uint32(0x4664957f),
-		165: uint32(0xcbec689d),
-		166: uint32(0x860468fa),
-		167: uint32(0x0b8c9518),
-		168: uint32(0xaab592a2),
-		169: uint32(0x273d6f40),
-		170: uint32(0x6ad56f27),
-		171: uint32(0xe75d92c5),
-		172: uint32(0xf1056fe9),
-		173: uint32(0x7c8d920b),
-		174: uint32(0x3165926c),
-		175: uint32(0xbced6f8e),
-		176: uint32(0xa8669b59),
-		177: uint32(0x25ee66bb),
-		178: uint32(0x680666dc),
-		179: uint32(0xe58e9b3e),
-		180: uint32(0xf3d66612),
-		181: uint32(0x7e5e9bf0),
-		182: uint32(0x33b69b97),
-		183: uint32(0xbe3e6675),
-		184: uint32(0x1f0761cf),
-		185: uint32(0x928f9c2d),
-		186: uint32(0xdf679c4a),
-		187: uint32(0x52ef61a8),
-		188: uint32(0x44b79c84),
-		189: uint32(0xc93f6166),
-		190: uint32(0x84d76101),
-		191: uint32(0x095f9ce3),
-		192: uint32(0x16984fd8),
-		193: uint32(0x9b10b23a),
-		194: uint32(0xd6f8b25d),
-		195: uint32(0x5b704fbf),
-		196: uint32(0x4d28b293),
-		197: uint32(0xc0a04f71),
-		198: uint32(0x8d484f16),
-		199: uint32(0x00c0b2f4),
-		200: uint32(0xa1f9b54e),
-		201: uint32(0x2c7148ac),
-		202: uint32(0x619948cb),
-		203: uint32(0xec11b529),
-		204: uint32(0xfa494805),
-		205: uint32(0x77c1b5e7),
-		206: uint32(0x3a29b580),
-		207: uint32(0xb7a14862),
-		208: uint32(0xa32abcb5),
-		209: uint32(0x2ea24157),
-		210: uint32(0x634a4130),
-		211: uint32(0xeec2bcd2),
-		212: uint32(0xf89a41fe),
-		213: uint32(0x7512bc1c),
-		214: uint32(0x38fabc7b),
-		215: uint32(0xb5724199),
-		216: uint32(0x144b4623),
-		217: uint32(0x99c3bbc1),
-		218: uint32(0xd42bbba6),
-		219: uint32(0x59a34644),
-		220: uint32(0x4ffbbb68),
-		221: uint32(0xc273468a),
-		222: uint32(0x8f9b46ed),
-		223: uint32(0x0213bb0f),
-		224: uint32(0xa68caf43),
-		225: uint32(0x2b0452a1),
-		226: uint32(0x66ec52c6),
-		227: uint32(0xeb64af24),
-		228: uint32(0xfd3c5208),
-		229: uint32(0x70b4afea),
-		230: uint32(0x3d5caf8d),
-		231: uint32(0xb0d4526f),
-		232: uint32(0x11ed55d5),
-		233: uint32(0x9c65a837),
-		234: uint32(0xd18da850),
-		235: uint32(0x5c0555b2),
-		236: uint32(0x4a5da89e),
-		237: uint32(0xc7d5557c),
-		238: uint32(0x8a3d551b),
-		239: uint32(0x07b5a8f9),
-		240: uint32(0x133e5c2e),
-		241: uint32(0x9eb6a1cc),
-		242: uint32(0xd35ea1ab),
-		243: uint32(0x5ed65c49),
-		244: uint32(0x488ea165),
-		245: uint32(0xc5065c87),
-		246: uint32(0x88ee5ce0),
-		247: uint32(0x0566a102),
-		248: uint32(0xa45fa6b8),
-		249: uint32(0x29d75b5a),
-		250: uint32(0x643f5b3d),
-		251: uint32(0xe9b7a6df),
-		252: uint32(0xffef5bf3),
-		253: uint32(0x7267a611),
-		254: uint32(0x3f8fa676),
-		255: uint32(0xb2075b94),
+		1:   uint32(0xef52b6e1),
+		2:   uint32(0x05d46b83),
+		3:   uint32(0xea86dd62),
+		4:   uint32(0x0ba8d706),
+		5:   uint32(0xe4fa61e7),
+		6:   uint32(0x0e7cbc85),
+		7:   uint32(0xe12e0a64),
+		8:   uint32(0x1751ae0c),
+		9:   uint32(0xf80318ed),
+		10:  uint32(0x1285c58f),
+		11:  uint32(0xfdd7736e),
+		12:  uint32(0x1cf9790a),
+		13:  uint32(0xf3abcfeb),
+		14:  uint32(0x192d1289),
+		15:  uint32(0xf67fa468),
+		16:  uint32(0x2ea35c18),
+		17:  uint32(0xc1f1eaf9),
+		18:  uint32(0x2b77379b),
+		19:  uint32(0xc425817a),
+		20:  uint32(0x250b8b1e),
+		21:  uint32(0xca593dff),
+		22:  uint32(0x20dfe09d),
+		23:  uint32(0xcf8d567c),
+		24:  uint32(0x39f2f214),
+		25:  uint32(0xd6a044f5),
+		26:  uint32(0x3c269997),
+		27:  uint32(0xd3742f76),
+		28:  uint32(0x325a2512),
+		29:  uint32(0xdd0893f3),
+		30:  uint32(0x378e4e91),
+		31:  uint32(0xd8dcf870),
+		32:  uint32(0x5d46b830),
+		33:  uint32(0xb2140ed1),
+		34:  uint32(0x5892d3b3),
+		35:  uint32(0xb7c06552),
+		36:  uint32(0x56ee6f36),
+		37:  uint32(0xb9bcd9d7),
+		38:  uint32(0x533a04b5),
+		39:  uint32(0xbc68b254),
+		40:  uint32(0x4a17163c),
+		41:  uint32(0xa545a0dd),
+		42:  uint32(0x4fc37dbf),
+		43:  uint32(0xa091cb5e),
+		44:  uint32(0x41bfc13a),
+		45:  uint32(0xaeed77db),
+		46:  uint32(0x446baab9),
+		47:  uint32(0xab391c58),
+		48:  uint32(0x73e5e428),
+		49:  uint32(0x9cb752c9),
+		50:  uint32(0x76318fab),
+		51:  uint32(0x9963394a),
+		52:  uint32(0x784d332e),
+		53:  uint32(0x971f85cf),
+		54:  uint32(0x7d9958ad),
+		55:  uint32(0x92cbee4c),
+		56:  uint32(0x64b44a24),
+		57:  uint32(0x8be6fcc5),
+		58:  uint32(0x616021a7),
+		59:  uint32(0x8e329746),
+		60:  uint32(0x6f1c9d22),
+		61:  uint32(0x804e2bc3),
+		62:  uint32(0x6ac8f6a1),
+		63:  uint32(0x859a4040),
+		64:  uint32(0xba8d7060),
+		65:  uint32(0x55dfc681),
+		66:  uint32(0xbf591be3),
+		67:  uint32(0x500bad02),
+		68:  uint32(0xb125a766),
+		69:  uint32(0x5e771187),
+		70:  uint32(0xb4f1cce5),
+		71:  uint32(0x5ba37a04),
+		72:  uint32(0xaddcde6c),
+		73:  uint32(0x428e688d),
+		74:  uint32(0xa808b5ef),
+		75:  uint32(0x475a030e),
+		76:  uint32(0xa674096a),
+		77:  uint32(0x4926bf8b),
+		78:  uint32(0xa3a062e9),
+		79:  uint32(0x4cf2d408),
+		80:  uint32(0x942e2c78),
+		81:  uint32(0x7b7c9a99),
+		82:  uint32(0x91fa47fb),
+		83:  uint32(0x7ea8f11a),
+		84:  uint32(0x9f86fb7e),
+		85:  uint32(0x70d44d9f),
+		86:  uint32(0x9a5290fd),
+		87:  uint32(0x7500261c),
+		88:  uint32(0x837f8274),
+		89:  uint32(0x6c2d3495),
+		90:  uint32(0x86abe9f7),
+		91:  uint32(0x69f95f16),
+		92:  uint32(0x88d75572),
+		93:  uint32(0x6785e393),
+		94:  uint32(0x8d033ef1),
+		95:  uint32(0x62518810),
+		96:  uint32(0xe7cbc850),
+		97:  uint32(0x08997eb1),
+		98:  uint32(0xe21fa3d3),
+		99:  uint32(0x0d4d1532),
+		100: uint32(0xec631f56),
+		101: uint32(0x0331a9b7),
+		102: uint32(0xe9b774d5),
+		103: uint32(0x06e5c234),
+		104: uint32(0xf09a665c),
+		105: uint32(0x1fc8d0bd),
+		106: uint32(0xf54e0ddf),
+		107: uint32(0x1a1cbb3e),
+		108: uint32(0xfb32b15a),
+		109: uint32(0x146007bb),
+		110: uint32(0xfee6dad9),
+		111: uint32(0x11b46c38),
+		112: uint32(0xc9689448),
+		113: uint32(0x263a22a9),
+		114: uint32(0xccbcffcb),
+		115: uint32(0x23ee492a),
+		116: uint32(0xc2c0434e),
+		117: uint32(0x2d92f5af),
+		118: uint32(0xc71428cd),
+		119: uint32(0x28469e2c),
+		120: uint32(0xde393a44),
+		121: uint32(0x316b8ca5),
+		122: uint32(0xdbed51c7),
+		123: uint32(0x34bfe726),
+		124: uint32(0xd591ed42),
+		125: uint32(0x3ac35ba3),
+		126: uint32(0xd04586c1),
+		127: uint32(0x3f173020),
+		128: uint32(0xae6be681),
+		129: uint32(0x41395060),
+		130: uint32(0xabbf8d02),
+		131: uint32(0x44ed3be3),
+		132: uint32(0xa5c33187),
+		133: uint32(0x4a918766),
+		134: uint32(0xa0175a04),
+		135: uint32(0x4f45ece5),
+		136: uint32(0xb93a488d),
+		137: uint32(0x5668fe6c),
+		138: uint32(0xbcee230e),
+		139: uint32(0x53bc95ef),
+		140: uint32(0xb2929f8b),
+		141: uint32(0x5dc0296a),
+		142: uint32(0xb746f408),
+		143: uint32(0x581442e9),
+		144: uint32(0x80c8ba99),
+		145: uint32(0x6f9a0c78),
+		146: uint32(0x851cd11a),
+		147: uint32(0x6a4e67fb),
+		148: uint32(0x8b606d9f),
+		149: uint32(0x6432db7e),
+		150: uint32(0x8eb4061c),
+		151: uint32(0x61e6b0fd),
+		152: uint32(0x97991495),
+		153: uint32(0x78cba274),
+		154: uint32(0x924d7f16),
+		155: uint32(0x7d1fc9f7),
+		156: uint32(0x9c31c393),
+		157: uint32(0x73637572),
+		158: uint32(0x99e5a810),
+		159: uint32(0x76b71ef1),
+		160: uint32(0xf32d5eb1),
+		161: uint32(0x1c7fe850),
+		162: uint32(0xf6f93532),
+		163: uint32(0x19ab83d3),
+		164: uint32(0xf88589b7),
+		165: uint32(0x17d73f56),
+		166: uint32(0xfd51e234),
+		167: uint32(0x120354d5),
+		168: uint32(0xe47cf0bd),
+		169: uint32(0x0b2e465c),
+		170: uint32(0xe1a89b3e),
+		171: uint32(0x0efa2ddf),
+		172: uint32(0xefd427bb),
+		173: uint32(0x0086915a),
+		174: uint32(0xea004c38),
+		175: uint32(0x0552fad9),
+		176: uint32(0xdd8e02a9),
+		177: uint32(0x32dcb448),
+		178: uint32(0xd85a692a),
+		179: uint32(0x3708dfcb),
+		180: uint32(0xd626d5af),
+		181: uint32(0x3974634e),
+		182: uint32(0xd3f2be2c),
+		183: uint32(0x3ca008cd),
+		184: uint32(0xcadfaca5),
+		185: uint32(0x258d1a44),
+		186: uint32(0xcf0bc726),
+		187: uint32(0x205971c7),
+		188: uint32(0xc1777ba3),
+		189: uint32(0x2e25cd42),
+		190: uint32(0xc4a31020),
+		191: uint32(0x2bf1a6c1),
+		192: uint32(0x14e696e1),
+		193: uint32(0xfbb42000),
+		194: uint32(0x1132fd62),
+		195: uint32(0xfe604b83),
+		196: uint32(0x1f4e41e7),
+		197: uint32(0xf01cf706),
+		198: uint32(0x1a9a2a64),
+		199: uint32(0xf5c89c85),
+		200: uint32(0x03b738ed),
+		201: uint32(0xece58e0c),
+		202: uint32(0x0663536e),
+		203: uint32(0xe931e58f),
+		204: uint32(0x081fefeb),
+		205: uint32(0xe74d590a),
+		206: uint32(0x0dcb8468),
+		207: uint32(0xe2993289),
+		208: uint32(0x3a45caf9),
+		209: uint32(0xd5177c18),
+		210: uint32(0x3f91a17a),
+		211: uint32(0xd0c3179b),
+		212: uint32(0x31ed1dff),
+		213: uint32(0xdebfab1e),
+		214: uint32(0x3439767c),
+		215: uint32(0xdb6bc09d),
+		216: uint32(0x2d1464f5),
+		217: uint32(0xc246d214),
+		218: uint32(0x28c00f76),
+		219: uint32(0xc792b997),
+		220: uint32(0x26bcb3f3),
+		221: uint32(0xc9ee0512),
+		222: uint32(0x2368d870),
+		223: uint32(0xcc3a6e91),
+		224: uint32(0x49a02ed1),
+		225: uint32(0xa6f29830),
+		226: uint32(0x4c744552),
+		227: uint32(0xa326f3b3),
+		228: uint32(0x4208f9d7),
+		229: uint32(0xad5a4f36),
+		230: uint32(0x47dc9254),
+		231: uint32(0xa88e24b5),
+		232: uint32(0x5ef180dd),
+		233: uint32(0xb1a3363c),
+		234: uint32(0x5b25eb5e),
+		235: uint32(0xb4775dbf),
+		236: uint32(0x555957db),
+		237: uint32(0xba0be13a),
+		238: uint32(0x508d3c58),
+		239: uint32(0xbfdf8ab9),
+		240: uint32(0x670372c9),
+		241: uint32(0x8851c428),
+		242: uint32(0x62d7194a),
+		243: uint32(0x8d85afab),
+		244: uint32(0x6caba5cf),
+		245: uint32(0x83f9132e),
+		246: uint32(0x697fce4c),
+		247: uint32(0x862d78ad),
+		248: uint32(0x7052dcc5),
+		249: uint32(0x9f006a24),
+		250: uint32(0x7586b746),
+		251: uint32(0x9ad401a7),
+		252: uint32(0x7bfa0bc3),
+		253: uint32(0x94a8bd22),
+		254: uint32(0x7e2e6040),
+		255: uint32(0x917cd6a1),
 	},
 	3: {
-		1:   uint32(0x80f0171f),
-		2:   uint32(0xda91287f),
-		3:   uint32(0x5a613f60),
-		4:   uint32(0x6e5356bf),
-		5:   uint32(0xeea341a0),
-		6:   uint32(0xb4c27ec0),
-		7:   uint32(0x343269df),
-		8:   uint32(0xdca6ad7e),
-		9:   uint32(0x5c56ba61),
-		10:  uint32(0x06378501),
-		11:  uint32(0x86c7921e),
-		12:  uint32(0xb2f5fbc1),
-		13:  uint32(0x3205ecde),
-		14:  uint32(0x6864d3be),
-		15:  uint32(0xe894c4a1),
-		16:  uint32(0x623c5cbd),
-		17:  uint32(0xe2cc4ba2),
-		18:  uint32(0xb8ad74c2),
-		19:  uint32(0x385d63dd),
-		20:  uint32(0x0c6f0a02),
-		21:  uint32(0x8c9f1d1d),
-		22:  uint32(0xd6fe227d),
-		23:  uint32(0x560e3562),
-		24:  uint32(0xbe9af1c3),
-		25:  uint32(0x3e6ae6dc),
-		26:  uint32(0x640bd9bc),
-		27:  uint32(0xe4fbcea3),
-		28:  uint32(0xd0c9a77c),
-		29:  uint32(0x5039b063),
-		30:  uint32(0x0a588f03),
-		31:  uint32(0x8aa8981c),
-		32:  uint32(0xc478b97a),
-		33:  uint32(0x4488ae65),
-		34:  uint32(0x1ee99105),
-		35:  uint32(0x9e19861a),
-		36:  uint32(0xaa2befc5),
-		37:  uint32(0x2adbf8da),
-		38:  uint32(0x70bac7ba),
-		39:  uint32(0xf04ad0a5),
-		40:  uint32(0x18de1404),
-		41:  uint32(0x982e031b),
-		42:  uint32(0xc24f3c7b),
-		43:  uint32(0x42bf2b64),
-		44:  uint32(0x768d42bb),
-		45:  uint32(0xf67d55a4),
-		46:  uint32(0xac1c6ac4),
-		47:  uint32(0x2cec7ddb),
-		48:  uint32(0xa644e5c7),
-		49:  uint32(0x26b4f2d8),
-		50:  uint32(0x7cd5cdb8),
-		51:  uint32(0xfc25daa7),
-		52:  uint32(0xc817b378),
-		53:  uint32(0x48e7a467),
-		54:  uint32(0x12869b07),
-		55:  uint32(0x92768c18),
-		56:  uint32(0x7ae248b9),
-		57:  uint32(0xfa125fa6),
-		58:  uint32(0xa07360c6),
-		59:  uint32(0x208377d9),
-		60:  uint32(0x14b11e06),
-		61:  uint32(0x94410919),
-		62:  uint32(0xce203679),
-		63:  uint32(0x4ed02166),
-		64:  uint32(0x538074b5),
-		65:  uint32(0xd37063aa),
-		66:  uint32(0x89115cca),
-		67:  uint32(0x09e14bd5),
-		68:  uint32(0x3dd3220a),
-		69:  uint32(0xbd233515),
-		70:  uint32(0xe7420a75),
-		71:  uint32(0x67b21d6a),
-		72:  uint32(0x8f26d9cb),
-		73:  uint32(0x0fd6ced4),
-		74:  uint32(0x55b7f1b4),
-		75:  uint32(0xd547e6ab),
-		76:  uint32(0xe1758f74),
-		77:  uint32(0x6185986b),
-		78:  uint32(0x3be4a70b),
-		79:  uint32(0xbb14b014),
-		80:  uint32(0x31bc2808),
-		81:  uint32(0xb14c3f17),
-		82:  uint32(0xeb2d0077),
-		83:  uint32(0x6bdd1768),
-		84:  uint32(0x5fef7eb7),
-		85:  uint32(0xdf1f69a8),
-		86:  uint32(0x857e56c8),
-		87:  uint32(0x058e41d7),
-		88:  uint32(0xed1a8576),
-		89:  uint32(0x6dea9269),
-		90:  uint32(0x378bad09),
-		91:  uint32(0xb77bba16),
-		92:  uint32(0x8349d3c9),
-		93:  uint32(0x03b9c4d6),
-		94:  uint32(0x59d8fbb6),
-		95:  uint32(0xd928eca9),
-		96:  uint32(0x97f8cdcf),
-		97:  uint32(0x1708dad0),
-		98:  uint32(0x4d69e5b0),
-		99:  uint32(0xcd99f2af),
-		100: uint32(0xf9ab9b70),
-		101: uint32(0x795b8c6f),
-		102: uint32(0x233ab30f),
-		103: uint32(0xa3caa410),
-		104: uint32(0x4b5e60b1),
-		105: uint32(0xcbae77ae),
-		106: uint32(0x91cf48ce),
-		107: uint32(0x113f5fd1),
-		108: uint32(0x250d360e),
-		109: uint32(0xa5fd2111),
-		110: uint32(0xff9c1e71),
-		111: uint32(0x7f6c096e),
-		112: uint32(0xf5c49172),
-		113: uint32(0x7534866d),
-		114: uint32(0x2f55b90d),
-		115: uint32(0xafa5ae12),
-		116: uint32(0x9b97c7cd),
-		117: uint32(0x1b67d0d2),
-		118: uint32(0x4106efb2),
-		119: uint32(0xc1f6f8ad),
-		120: uint32(0x29623c0c),
-		121: uint32(0xa9922b13),
-		122: uint32(0xf3f31473),
-		123: uint32(0x7303036c),
-		124: uint32(0x47316ab3),
-		125: uint32(0xc7c17dac),
-		126: uint32(0x9da042cc),
-		127: uint32(0x1d5055d3),
-		128: uint32(0xa700e96a),
-		129: uint32(0x27f0fe75),
-		130: uint32(0x7d91c115),
-		131: uint32(0xfd61d60a),
-		132: uint32(0xc953bfd5),
-		133: uint32(0x49a3a8ca),
-		134: uint32(0x13c297aa),
-		135: uint32(0x933280b5),
-		136: uint32(0x7ba64414),
-		137: uint32(0xfb56530b),
-		138: uint32(0xa1376c6b),
-		139: uint32(0x21c77b74),
-		140: uint32(0x15f512ab),
-		141: uint32(0x950505b4),
-		142: uint32(0xcf643ad4),
-		143: uint32(0x4f942dcb),
-		144: uint32(0xc53cb5d7),
-		145: uint32(0x45cca2c8),
-		146: uint32(0x1fad9da8),
-		147: uint32(0x9f5d8ab7),
-		148: uint32(0xab6fe368),
-		149: uint32(0x2b9ff477),
-		150: uint32(0x71fecb17),
-		151: uint32(0xf10edc08),
-		152: uint32(0x199a18a9),
-		153: uint32(0x996a0fb6),
-		154: uint32(0xc30b30d6),
-		155: uint32(0x43fb27c9),
-		156: uint32(0x77c94e16),
-		157: uint32(0xf7395909),
-		158: uint32(0xad586669),
-		159: uint32(0x2da87176),
-		160: uint32(0x63785010),
-		161: uint32(0xe388470f),
-		162: uint32(0xb9e9786f),
-		163: uint32(0x39196f70),
-		164: uint32(0x0d2b06af),
-		165: uint32(0x8ddb11b0),
-		166: uint32(0xd7ba2ed0),
-		167: uint32(0x574a39cf),
-		168: uint32(0xbfdefd6e),
-		169: uint32(0x3f2eea71),
-		170: uint32(0x654fd511),
-		171: uint32(0xe5bfc20e),
-		172: uint32(0xd18dabd1),
-		173: uint32(0x517dbcce),
-		174: uint32(0x0b1c83ae),
-		175: uint32(0x8bec94b1),
-		176: uint32(0x01440cad),
-		177: uint32(0x81b41bb2),
-		178: uint32(0xdbd524d2),
-		179: uint32(0x5b2533cd),
-		180: uint32(0x6f175a12),
-		181: uint32(0xefe74d0d),
-		182: uint32(0xb586726d),
-		183: uint32(0x35766572),
-		184: uint32(0xdde2a1d3),
-		185: uint32(0x5d12b6cc),
-		186: uint32(0x077389ac),
-		187: uint32(0x87839eb3),
-		188: uint32(0xb3b1f76c),
-		189: uint32(0x3341e073),
-		190: uint32(0x6920df13),
-		191: uint32(0xe9d0c80c),
-		192: uint32(0xf4809ddf),
-		193: uint32(0x74708ac0),
-		194: uint32(0x2e11b5a0),
-		195: uint32(0xaee1a2bf),
-		196: uint32(0x9ad3cb60),
-		197: uint32(0x1a23dc7f),
-		198: uint32(0x4042e31f),
-		199: uint32(0xc0b2f400),
-		200: uint32(0x282630a1),
-		201: uint32(0xa8d627be),
-		202: uint32(0xf2b718de),
-		203: uint32(0x72470fc1),
-		204: uint32(0x4675661e),
-		205: uint32(0xc6857101),
-		206: uint32(0x9ce44e61),
-		207: uint32(0x1c14597e),
-		208: uint32(0x96bcc162),
-		209: uint32(0x164cd67d),
-		210: uint32(0x4c2de91d),
-		211: uint32(0xccddfe02),
-		212: uint32(0xf8ef97dd),
-		213: uint32(0x781f80c2),
-		214: uint32(0x227ebfa2),
-		215: uint32(0xa28ea8bd),
-		216: uint32(0x4a1a6c1c),
-		217: uint32(0xcaea7b03),
-		218: uint32(0x908b4463),
-		219: uint32(0x107b537c),
-		220: uint32(0x24493aa3),
-		221: uint32(0xa4b92dbc),
-		222: uint32(0xfed812dc),
-		223: uint32(0x7e2805c3),
-		224: uint32(0x30f824a5),
-		225: uint32(0xb00833ba),
-		226: uint32(0xea690cda),
-		227: uint32(0x6a991bc5),
-		228: uint32(0x5eab721a),
-		229: uint32(0xde5b6505),
-		230: uint32(0x843a5a65),
-		231: uint32(0x04ca4d7a),
-		232: uint32(0xec5e89db),
-		233: uint32(0x6cae9ec4),
-		234: uint32(0x36cfa1a4),
-		235: uint32(0xb63fb6bb),
-		236: uint32(0x820ddf64),
-		237: uint32(0x02fdc87b),
-		238: uint32(0x589cf71b),
-		239: uint32(0xd86ce004),
-		240: uint32(0x52c47818),
-		241: uint32(0xd2346f07),
-		242: uint32(0x88555067),
-		243: uint32(0x08a54778),
-		244: uint32(0x3c972ea7),
-		245: uint32(0xbc6739b8),
-		246: uint32(0xe60606d8),
-		247: uint32(0x66f611c7),
-		248: uint32(0x8e62d566),
-		249: uint32(0x0e92c279),
-		250: uint32(0x54f3fd19),
-		251: uint32(0xd403ea06),
-		252: uint32(0xe03183d9),
-		253: uint32(0x60c194c6),
-		254: uint32(0x3aa0aba6),
-		255: uint32(0xba50bcb9),
-	},
-	4: {
-		1:   uint32(0x9570d495),
-		2:   uint32(0xf190af6b),
-		3:   uint32(0x64e07bfe),
-		4:   uint32(0x38505897),
-		5:   uint32(0xad208c02),
-		6:   uint32(0xc9c0f7fc),
-		7:   uint32(0x5cb02369),
-		8:   uint32(0x70a0b12e),
-		9:   uint32(0xe5d065bb),
-		10:  uint32(0x81301e45),
-		11:  uint32(0x1440cad0),
-		12:  uint32(0x48f0e9b9),
-		13:  uint32(0xdd803d2c),
-		14:  uint32(0xb96046d2),
-		15:  uint32(0x2c109247),
-		16:  uint32(0xe141625c),
-		17:  uint32(0x7431b6c9),
-		18:  uint32(0x10d1cd37),
-		19:  uint32(0x85a119a2),
-		20:  uint32(0xd9113acb),
-		21:  uint32(0x4c61ee5e),
-		22:  uint32(0x288195a0),
-		23:  uint32(0xbdf14135),
-		24:  uint32(0x91e1d372),
-		25:  uint32(0x049107e7),
-		26:  uint32(0x60717c19),
-		27:  uint32(0xf501a88c),
-		28:  uint32(0xa9b18be5),
-		29:  uint32(0x3cc15f70),
-		30:  uint32(0x5821248e),
-		31:  uint32(0xcd51f01b),
-		32:  uint32(0x19f3c2f9),
-		33:  uint32(0x8c83166c),
-		34:  uint32(0xe8636d92),
-		35:  uint32(0x7d13b907),
-		36:  uint32(0x21a39a6e),
-		37:  uint32(0xb4d34efb),
-		38:  uint32(0xd0333505),
-		39:  uint32(0x4543e190),
-		40:  uint32(0x695373d7),
-		41:  uint32(0xfc23a742),
-		42:  uint32(0x98c3dcbc),
-		43:  uint32(0x0db30829),
-		44:  uint32(0x51032b40),
-		45:  uint32(0xc473ffd5),
-		46:  uint32(0xa093842b),
-		47:  uint32(0x35e350be),
-		48:  uint32(0xf8b2a0a5),
-		49:  uint32(0x6dc27430),
-		50:  uint32(0x09220fce),
-		51:  uint32(0x9c52db5b),
-		52:  uint32(0xc0e2f832),
-		53:  uint32(0x55922ca7),
-		54:  uint32(0x31725759),
-		55:  uint32(0xa40283cc),
-		56:  uint32(0x8812118b),
-		57:  uint32(0x1d62c51e),
-		58:  uint32(0x7982bee0),
-		59:  uint32(0xecf26a75),
-		60:  uint32(0xb042491c),
-		61:  uint32(0x25329d89),
-		62:  uint32(0x41d2e677),
-		63:  uint32(0xd4a232e2),
-		64:  uint32(0x33e785f2),
-		65:  uint32(0xa6975167),
-		66:  uint32(0xc2772a99),
-		67:  uint32(0x5707fe0c),
-		68:  uint32(0x0bb7dd65),
-		69:  uint32(0x9ec709f0),
-		70:  uint32(0xfa27720e),
-		71:  uint32(0x6f57a69b),
-		72:  uint32(0x434734dc),
-		73:  uint32(0xd637e049),
-		74:  uint32(0xb2d79bb7),
-		75:  uint32(0x27a74f22),
-		76:  uint32(0x7b176c4b),
-		77:  uint32(0xee67b8de),
-		78:  uint32(0x8a87c320),
-		79:  uint32(0x1ff717b5),
-		80:  uint32(0xd2a6e7ae),
-		81:  uint32(0x47d6333b),
-		82:  uint32(0x233648c5),
-		83:  uint32(0xb6469c50),
-		84:  uint32(0xeaf6bf39),
-		85:  uint32(0x7f866bac),
-		86:  uint32(0x1b661052),
-		87:  uint32(0x8e16c4c7),
-		88:  uint32(0xa2065680),
-		89:  uint32(0x37768215),
-		90:  uint32(0x5396f9eb),
-		91:  uint32(0xc6e62d7e),
-		92:  uint32(0x9a560e17),
-		93:  uint32(0x0f26da82),
-		94:  uint32(0x6bc6a17c),
-		95:  uint32(0xfeb675e9),
-		96:  uint32(0x2a14470b),
-		97:  uint32(0xbf64939e),
-		98:  uint32(0xdb84e860),
-		99:  uint32(0x4ef43cf5),
-		100: uint32(0x12441f9c),
-		101: uint32(0x8734cb09),
-		102: uint32(0xe3d4b0f7),
-		103: uint32(0x76a46462),
-		104: uint32(0x5ab4f625),
-		105: uint32(0xcfc422b0),
-		106: uint32(0xab24594e),
-		107: uint32(0x3e548ddb),
-		108: uint32(0x62e4aeb2),
-		109: uint32(0xf7947a27),
-		110: uint32(0x937401d9),
-		111: uint32(0x0604d54c),
-		112: uint32(0xcb552557),
-		113: uint32(0x5e25f1c2),
-		114: uint32(0x3ac58a3c),
-		115: uint32(0xafb55ea9),
-		116: uint32(0xf3057dc0),
-		117: uint32(0x6675a955),
-		118: uint32(0x0295d2ab),
-		119: uint32(0x97e5063e),
-		120: uint32(0xbbf59479),
-		121: uint32(0x2e8540ec),
-		122: uint32(0x4a653b12),
-		123: uint32(0xdf15ef87),
-		124: uint32(0x83a5ccee),
-		125: uint32(0x16d5187b),
-		126: uint32(0x72356385),
-		127: uint32(0xe745b710),
-		128: uint32(0x67cf0be4),
-		129: uint32(0xf2bfdf71),
-		130: uint32(0x965fa48f),
-		131: uint32(0x032f701a),
-		132: uint32(0x5f9f5373),
-		133: uint32(0xcaef87e6),
-		134: uint32(0xae0ffc18),
-		135: uint32(0x3b7f288d),
-		136: uint32(0x176fbaca),
-		137: uint32(0x821f6e5f),
-		138: uint32(0xe6ff15a1),
-		139: uint32(0x738fc134),
-		140: uint32(0x2f3fe25d),
-		141: uint32(0xba4f36c8),
-		142: uint32(0xdeaf4d36),
-		143: uint32(0x4bdf99a3),
-		144: uint32(0x868e69b8),
-		145: uint32(0x13febd2d),
-		146: uint32(0x771ec6d3),
-		147: uint32(0xe26e1246),
-		148: uint32(0xbede312f),
-		149: uint32(0x2baee5ba),
-		150: uint32(0x4f4e9e44),
-		151: uint32(0xda3e4ad1),
-		152: uint32(0xf62ed896),
-		153: uint32(0x635e0c03),
-		154: uint32(0x07be77fd),
-		155: uint32(0x92cea368),
-		156: uint32(0xce7e8001),
-		157: uint32(0x5b0e5494),
-		158: uint32(0x3fee2f6a),
-		159: uint32(0xaa9efbff),
-		160: uint32(0x7e3cc91d),
-		161: uint32(0xeb4c1d88),
-		162: uint32(0x8fac6676),
-		163: uint32(0x1adcb2e3),
-		164: uint32(0x466c918a),
-		165: uint32(0xd31c451f),
-		166: uint32(0xb7fc3ee1),
-		167: uint32(0x228cea74),
-		168: uint32(0x0e9c7833),
-		169: uint32(0x9becaca6),
-		170: uint32(0xff0cd758),
-		171: uint32(0x6a7c03cd),
-		172: uint32(0x36cc20a4),
-		173: uint32(0xa3bcf431),
-		174: uint32(0xc75c8fcf),
-		175: uint32(0x522c5b5a),
-		176: uint32(0x9f7dab41),
-		177: uint32(0x0a0d7fd4),
-		178: uint32(0x6eed042a),
-		179: uint32(0xfb9dd0bf),
-		180: uint32(0xa72df3d6),
-		181: uint32(0x325d2743),
-		182: uint32(0x56bd5cbd),
-		183: uint32(0xc3cd8828),
-		184: uint32(0xefdd1a6f),
-		185: uint32(0x7aadcefa),
-		186: uint32(0x1e4db504),
-		187: uint32(0x8b3d6191),
-		188: uint32(0xd78d42f8),
-		189: uint32(0x42fd966d),
-		190: uint32(0x261ded93),
-		191: uint32(0xb36d3906),
-		192: uint32(0x54288e16),
-		193: uint32(0xc1585a83),
-		194: uint32(0xa5b8217d),
-		195: uint32(0x30c8f5e8),
-		196: uint32(0x6c78d681),
-		197: uint32(0xf9080214),
-		198: uint32(0x9de879ea),
-		199: uint32(0x0898ad7f),
-		200: uint32(0x24883f38),
-		201: uint32(0xb1f8ebad),
-		202: uint32(0xd5189053),
-		203: uint32(0x406844c6),
-		204: uint32(0x1cd867af),
-		205: uint32(0x89a8b33a),
-		206: uint32(0xed48c8c4),
-		207: uint32(0x78381c51),
-		208: uint32(0xb569ec4a),
-		209: uint32(0x201938df),
-		210: uint32(0x44f94321),
-		211: uint32(0xd18997b4),
-		212: uint32(0x8d39b4dd),
-		213: uint32(0x18496048),
-		214: uint32(0x7ca91bb6),
-		215: uint32(0xe9d9cf23),
-		216: uint32(0xc5c95d64),
-		217: uint32(0x50b989f1),
-		218: uint32(0x3459f20f),
-		219: uint32(0xa129269a),
-		220: uint32(0xfd9905f3),
-		221: uint32(0x68e9d166),
-		222: uint32(0x0c09aa98),
-		223: uint32(0x99797e0d),
-		224: uint32(0x4ddb4cef),
-		225: uint32(0xd8ab987a),
-		226: uint32(0xbc4be384),
-		227: uint32(0x293b3711),
-		228: uint32(0x758b1478),
-		229: uint32(0xe0fbc0ed),
-		230: uint32(0x841bbb13),
-		231: uint32(0x116b6f86),
-		232: uint32(0x3d7bfdc1),
-		233: uint32(0xa80b2954),
-		234: uint32(0xcceb52aa),
-		235: uint32(0x599b863f),
-		236: uint32(0x052ba556),
-		237: uint32(0x905b71c3),
-		238: uint32(0xf4bb0a3d),
-		239: uint32(0x61cbdea8),
-		240: uint32(0xac9a2eb3),
-		241: uint32(0x39eafa26),
-		242: uint32(0x5d0a81d8),
-		243: uint32(0xc87a554d),
-		244: uint32(0x94ca7624),
-		245: uint32(0x01baa2b1),
-		246: uint32(0x655ad94f),
-		247: uint32(0xf02a0dda),
-		248: uint32(0xdc3a9f9d),
-		249: uint32(0x494a4b08),
-		250: uint32(0x2daa30f6),
-		251: uint32(0xb8dae463),
-		252: uint32(0xe46ac70a),
-		253: uint32(0x711a139f),
-		254: uint32(0x15fa6861),
-		255: uint32(0x808abcf4),
-	},
-	5: {
-		1:   uint32(0xcf9e17c8),
-		2:   uint32(0x444d29d1),
-		3:   uint32(0x8bd33e19),
-		4:   uint32(0x889a53a2),
-		5:   uint32(0x4704446a),
-		6:   uint32(0xccd77a73),
-		7:   uint32(0x03496dbb),
-		8:   uint32(0xca45a105),
-		9:   uint32(0x05dbb6cd),
-		10:  uint32(0x8e0888d4),
-		11:  uint32(0x41969f1c),
-		12:  uint32(0x42dff2a7),
-		13:  uint32(0x8d41e56f),
-		14:  uint32(0x0692db76),
-		15:  uint32(0xc90cccbe),
-		16:  uint32(0x4ffa444b),
-		17:  uint32(0x80645383),
-		18:  uint32(0x0bb76d9a),
-		19:  uint32(0xc4297a52),
-		20:  uint32(0xc76017e9),
-		21:  uint32(0x08fe0021),
-		22:  uint32(0x832d3e38),
-		23:  uint32(0x4cb329f0),
-		24:  uint32(0x85bfe54e),
-		25:  uint32(0x4a21f286),
-		26:  uint32(0xc1f2cc9f),
-		27:  uint32(0x0e6cdb57),
-		28:  uint32(0x0d25b6ec),
-		29:  uint32(0xc2bba124),
-		30:  uint32(0x49689f3d),
-		31:  uint32(0x86f688f5),
-		32:  uint32(0x9ff48896),
-		33:  uint32(0x506a9f5e),
-		34:  uint32(0xdbb9a147),
-		35:  uint32(0x1427b68f),
-		36:  uint32(0x176edb34),
-		37:  uint32(0xd8f0ccfc),
-		38:  uint32(0x5323f2e5),
-		39:  uint32(0x9cbde52d),
-		40:  uint32(0x55b12993),
-		41:  uint32(0x9a2f3e5b),
-		42:  uint32(0x11fc0042),
-		43:  uint32(0xde62178a),
-		44:  uint32(0xdd2b7a31),
-		45:  uint32(0x12b56df9),
-		46:  uint32(0x996653e0),
-		47:  uint32(0x56f84428),
-		48:  uint32(0xd00eccdd),
-		49:  uint32(0x1f90db15),
-		50:  uint32(0x9443e50c),
-		51:  uint32(0x5bddf2c4),
-		52:  uint32(0x58949f7f),
-		53:  uint32(0x970a88b7),
-		54:  uint32(0x1cd9b6ae),
-		55:  uint32(0xd347a166),
-		56:  uint32(0x1a4b6dd8),
-		57:  uint32(0xd5d57a10),
-		58:  uint32(0x5e064409),
-		59:  uint32(0x919853c1),
-		60:  uint32(0x92d13e7a),
-		61:  uint32(0x5d4f29b2),
-		62:  uint32(0xd69c17ab),
-		63:  uint32(0x19020063),
-		64:  uint32(0xe498176d),
-		65:  uint32(0x2b0600a5),
-		66:  uint32(0xa0d53ebc),
-		67:  uint32(0x6f4b2974),
-		68:  uint32(0x6c0244cf),
-		69:  uint32(0xa39c5307),
-		70:  uint32(0x284f6d1e),
-		71:  uint32(0xe7d17ad6),
-		72:  uint32(0x2eddb668),
-		73:  uint32(0xe143a1a0),
-		74:  uint32(0x6a909fb9),
-		75:  uint32(0xa50e8871),
-		76:  uint32(0xa647e5ca),
-		77:  uint32(0x69d9f202),
-		78:  uint32(0xe20acc1b),
-		79:  uint32(0x2d94dbd3),
-		80:  uint32(0xab625326),
-		81:  uint32(0x64fc44ee),
-		82:  uint32(0xef2f7af7),
-		83:  uint32(0x20b16d3f),
-		84:  uint32(0x23f80084),
-		85:  uint32(0xec66174c),
-		86:  uint32(0x67b52955),
-		87:  uint32(0xa82b3e9d),
-		88:  uint32(0x6127f223),
-		89:  uint32(0xaeb9e5eb),
-		90:  uint32(0x256adbf2),
-		91:  uint32(0xeaf4cc3a),
-		92:  uint32(0xe9bda181),
-		93:  uint32(0x2623b649),
-		94:  uint32(0xadf08850),
-		95:  uint32(0x626e9f98),
-		96:  uint32(0x7b6c9ffb),
-		97:  uint32(0xb4f28833),
-		98:  uint32(0x3f21b62a),
-		99:  uint32(0xf0bfa1e2),
-		100: uint32(0xf3f6cc59),
-		101: uint32(0x3c68db91),
-		102: uint32(0xb7bbe588),
-		103: uint32(0x7825f240),
-		104: uint32(0xb1293efe),
-		105: uint32(0x7eb72936),
-		106: uint32(0xf564172f),
-		107: uint32(0x3afa00e7),
-		108: uint32(0x39b36d5c),
-		109: uint32(0xf62d7a94),
-		110: uint32(0x7dfe448d),
-		111: uint32(0xb2605345),
-		112: uint32(0x3496dbb0),
-		113: uint32(0xfb08cc78),
-		114: uint32(0x70dbf261),
-		115: uint32(0xbf45e5a9),
-		116: uint32(0xbc0c8812),
-		117: uint32(0x73929fda),
-		118: uint32(0xf841a1c3),
-		119: uint32(0x37dfb60b),
-		120: uint32(0xfed37ab5),
-		121: uint32(0x314d6d7d),
-		122: uint32(0xba9e5364),
-		123: uint32(0x750044ac),
-		124: uint32(0x76492917),
-		125: uint32(0xb9d73edf),
-		126: uint32(0x320400c6),
-		127: uint32(0xfd9a170e),
-		128: uint32(0x1241289b),
-		129: uint32(0xdddf3f53),
-		130: uint32(0x560c014a),
-		131: uint32(0x99921682),
-		132: uint32(0x9adb7b39),
-		133: uint32(0x55456cf1),
-		134: uint32(0xde9652e8),
-		135: uint32(0x11084520),
-		136: uint32(0xd804899e),
-		137: uint32(0x179a9e56),
-		138: uint32(0x9c49a04f),
-		139: uint32(0x53d7b787),
-		140: uint32(0x509eda3c),
-		141: uint32(0x9f00cdf4),
-		142: uint32(0x14d3f3ed),
-		143: uint32(0xdb4de425),
-		144: uint32(0x5dbb6cd0),
-		145: uint32(0x92257b18),
-		146: uint32(0x19f64501),
-		147: uint32(0xd66852c9),
-		148: uint32(0xd5213f72),
-		149: uint32(0x1abf28ba),
-		150: uint32(0x916c16a3),
-		151: uint32(0x5ef2016b),
-		152: uint32(0x97fecdd5),
-		153: uint32(0x5860da1d),
-		154: uint32(0xd3b3e404),
-		155: uint32(0x1c2df3cc),
-		156: uint32(0x1f649e77),
-		157: uint32(0xd0fa89bf),
-		158: uint32(0x5b29b7a6),
-		159: uint32(0x94b7a06e),
-		160: uint32(0x8db5a00d),
-		161: uint32(0x422bb7c5),
-		162: uint32(0xc9f889dc),
-		163: uint32(0x06669e14),
-		164: uint32(0x052ff3af),
-		165: uint32(0xcab1e467),
-		166: uint32(0x4162da7e),
-		167: uint32(0x8efccdb6),
-		168: uint32(0x47f00108),
-		169: uint32(0x886e16c0),
-		170: uint32(0x03bd28d9),
-		171: uint32(0xcc233f11),
-		172: uint32(0xcf6a52aa),
-		173: uint32(0x00f44562),
-		174: uint32(0x8b277b7b),
-		175: uint32(0x44b96cb3),
-		176: uint32(0xc24fe446),
-		177: uint32(0x0dd1f38e),
-		178: uint32(0x8602cd97),
-		179: uint32(0x499cda5f),
-		180: uint32(0x4ad5b7e4),
-		181: uint32(0x854ba02c),
-		182: uint32(0x0e989e35),
-		183: uint32(0xc10689fd),
-		184: uint32(0x080a4543),
-		185: uint32(0xc794528b),
-		186: uint32(0x4c476c92),
-		187: uint32(0x83d97b5a),
-		188: uint32(0x809016e1),
-		189: uint32(0x4f0e0129),
-		190: uint32(0xc4dd3f30),
-		191: uint32(0x0b4328f8),
-		192: uint32(0xf6d93ff6),
-		193: uint32(0x3947283e),
-		194: uint32(0xb2941627),
-		195: uint32(0x7d0a01ef),
-		196: uint32(0x7e436c54),
-		197: uint32(0xb1dd7b9c),
-		198: uint32(0x3a0e4585),
-		199: uint32(0xf590524d),
-		200: uint32(0x3c9c9ef3),
-		201: uint32(0xf302893b),
-		202: uint32(0x78d1b722),
-		203: uint32(0xb74fa0ea),
-		204: uint32(0xb406cd51),
-		205: uint32(0x7b98da99),
-		206: uint32(0xf04be480),
-		207: uint32(0x3fd5f348),
-		208: uint32(0xb9237bbd),
-		209: uint32(0x76bd6c75),
-		210: uint32(0xfd6e526c),
-		211: uint32(0x32f045a4),
-		212: uint32(0x31b9281f),
-		213: uint32(0xfe273fd7),
-		214: uint32(0x75f401ce),
-		215: uint32(0xba6a1606),
-		216: uint32(0x7366dab8),
-		217: uint32(0xbcf8cd70),
-		218: uint32(0x372bf369),
-		219: uint32(0xf8b5e4a1),
-		220: uint32(0xfbfc891a),
-		221: uint32(0x34629ed2),
-		222: uint32(0xbfb1a0cb),
-		223: uint32(0x702fb703),
-		224: uint32(0x692db760),
-		225: uint32(0xa6b3a0a8),
-		226: uint32(0x2d609eb1),
-		227: uint32(0xe2fe8979),
-		228: uint32(0xe1b7e4c2),
-		229: uint32(0x2e29f30a),
-		230: uint32(0xa5facd13),
-		231: uint32(0x6a64dadb),
-		232: uint32(0xa3681665),
-		233: uint32(0x6cf601ad),
-		234: uint32(0xe7253fb4),
-		235: uint32(0x28bb287c),
-		236: uint32(0x2bf245c7),
-		237: uint32(0xe46c520f),
-		238: uint32(0x6fbf6c16),
-		239: uint32(0xa0217bde),
-		240: uint32(0x26d7f32b),
-		241: uint32(0xe949e4e3),
-		242: uint32(0x629adafa),
-		243: uint32(0xad04cd32),
-		244: uint32(0xae4da089),
-		245: uint32(0x61d3b741),
-		246: uint32(0xea008958),
-		247: uint32(0x259e9e90),
-		248: uint32(0xec92522e),
-		249: uint32(0x230c45e6),
-		250: uint32(0xa8df7bff),
-		251: uint32(0x67416c37),
-		252: uint32(0x6408018c),
-		253: uint32(0xab961644),
-		254: uint32(0x2045285d),
-		255: uint32(0xefdb3f95),
-	},
-	6: {
-		1:   uint32(0x24825136),
-		2:   uint32(0x4904a26c),
-		3:   uint32(0x6d86f35a),
-		4:   uint32(0x920944d8),
-		5:   uint32(0xb68b15ee),
-		6:   uint32(0xdb0de6b4),
-		7:   uint32(0xff8fb782),
-		8:   uint32(0xff638ff1),
-		9:   uint32(0xdbe1dec7),
-		10:  uint32(0xb6672d9d),
-		11:  uint32(0x92e57cab),
-		12:  uint32(0x6d6acb29),
-		13:  uint32(0x49e89a1f),
-		14:  uint32(0x246e6945),
-		15:  uint32(0x00ec3873),
-		16:  uint32(0x25b619a3),
-		17:  uint32(0x01344895),
-		18:  uint32(0x6cb2bbcf),
-		19:  uint32(0x4830eaf9),
-		20:  uint32(0xb7bf5d7b),
-		21:  uint32(0x933d0c4d),
-		22:  uint32(0xfebbff17),
-		23:  uint32(0xda39ae21),
-		24:  uint32(0xdad59652),
-		25:  uint32(0xfe57c764),
-		26:  uint32(0x93d1343e),
-		27:  uint32(0xb7536508),
-		28:  uint32(0x48dcd28a),
-		29:  uint32(0x6c5e83bc),
-		30:  uint32(0x01d870e6),
-		31:  uint32(0x255a21d0),
-		32:  uint32(0x4b6c3346),
-		33:  uint32(0x6fee6270),
-		34:  uint32(0x0268912a),
-		35:  uint32(0x26eac01c),
-		36:  uint32(0xd965779e),
-		37:  uint32(0xfde726a8),
-		38:  uint32(0x9061d5f2),
-		39:  uint32(0xb4e384c4),
-		40:  uint32(0xb40fbcb7),
-		41:  uint32(0x908ded81),
-		42:  uint32(0xfd0b1edb),
-		43:  uint32(0xd9894fed),
-		44:  uint32(0x2606f86f),
-		45:  uint32(0x0284a959),
-		46:  uint32(0x6f025a03),
-		47:  uint32(0x4b800b35),
-		48:  uint32(0x6eda2ae5),
-		49:  uint32(0x4a587bd3),
-		50:  uint32(0x27de8889),
-		51:  uint32(0x035cd9bf),
-		52:  uint32(0xfcd36e3d),
-		53:  uint32(0xd8513f0b),
-		54:  uint32(0xb5d7cc51),
-		55:  uint32(0x91559d67),
-		56:  uint32(0x91b9a514),
-		57:  uint32(0xb53bf422),
-		58:  uint32(0xd8bd0778),
-		59:  uint32(0xfc3f564e),
-		60:  uint32(0x03b0e1cc),
-		61:  uint32(0x2732b0fa),
-		62:  uint32(0x4ab443a0),
-		63:  uint32(0x6e361296),
-		64:  uint32(0x96d8668c),
-		65:  uint32(0xb25a37ba),
-		66:  uint32(0xdfdcc4e0),
-		67:  uint32(0xfb5e95d6),
-		68:  uint32(0x04d12254),
-		69:  uint32(0x20537362),
-		70:  uint32(0x4dd58038),
-		71:  uint32(0x6957d10e),
-		72:  uint32(0x69bbe97d),
-		73:  uint32(0x4d39b84b),
-		74:  uint32(0x20bf4b11),
-		75:  uint32(0x043d1a27),
-		76:  uint32(0xfbb2ada5),
-		77:  uint32(0xdf30fc93),
-		78:  uint32(0xb2b60fc9),
-		79:  uint32(0x96345eff),
-		80:  uint32(0xb36e7f2f),
-		81:  uint32(0x97ec2e19),
-		82:  uint32(0xfa6add43),
-		83:  uint32(0xdee88c75),
-		84:  uint32(0x21673bf7),
-		85:  uint32(0x05e56ac1),
-		86:  uint32(0x6863999b),
-		87:  uint32(0x4ce1c8ad),
-		88:  uint32(0x4c0df0de),
-		89:  uint32(0x688fa1e8),
-		90:  uint32(0x050952b2),
-		91:  uint32(0x218b0384),
-		92:  uint32(0xde04b406),
-		93:  uint32(0xfa86e530),
-		94:  uint32(0x9700166a),
-		95:  uint32(0xb382475c),
-		96:  uint32(0xddb455ca),
-		97:  uint32(0xf93604fc),
-		98:  uint32(0x94b0f7a6),
-		99:  uint32(0xb032a690),
-		100: uint32(0x4fbd1112),
-		101: uint32(0x6b3f4024),
-		102: uint32(0x06b9b37e),
-		103: uint32(0x223be248),
-		104: uint32(0x22d7da3b),
-		105: uint32(0x06558b0d),
-		106: uint32(0x6bd37857),
-		107: uint32(0x4f512961),
-		108: uint32(0xb0de9ee3),
-		109: uint32(0x945ccfd5),
-		110: uint32(0xf9da3c8f),
-		111: uint32(0xdd586db9),
-		112: uint32(0xf8024c69),
-		113: uint32(0xdc801d5f),
-		114: uint32(0xb106ee05),
-		115: uint32(0x9584bf33),
-		116: uint32(0x6a0b08b1),
-		117: uint32(0x4e895987),
-		118: uint32(0x230faadd),
-		119: uint32(0x078dfbeb),
-		120: uint32(0x0761c398),
-		121: uint32(0x23e392ae),
-		122: uint32(0x4e6561f4),
-		123: uint32(0x6ae730c2),
-		124: uint32(0x95688740),
-		125: uint32(0xb1ead676),
-		126: uint32(0xdc6c252c),
-		127: uint32(0xf8ee741a),
-		128: uint32(0xf6c1cb59),
-		129: uint32(0xd2439a6f),
-		130: uint32(0xbfc56935),
-		131: uint32(0x9b473803),
-		132: uint32(0x64c88f81),
-		133: uint32(0x404adeb7),
-		134: uint32(0x2dcc2ded),
-		135: uint32(0x094e7cdb),
-		136: uint32(0x09a244a8),
-		137: uint32(0x2d20159e),
-		138: uint32(0x40a6e6c4),
-		139: uint32(0x6424b7f2),
-		140: uint32(0x9bab0070),
-		141: uint32(0xbf295146),
-		142: uint32(0xd2afa21c),
-		143: uint32(0xf62df32a),
-		144: uint32(0xd377d2fa),
-		145: uint32(0xf7f583cc),
-		146: uint32(0x9a737096),
-		147: uint32(0xbef121a0),
-		148: uint32(0x417e9622),
-		149: uint32(0x65fcc714),
-		150: uint32(0x087a344e),
-		151: uint32(0x2cf86578),
-		152: uint32(0x2c145d0b),
-		153: uint32(0x08960c3d),
-		154: uint32(0x6510ff67),
-		155: uint32(0x4192ae51),
-		156: uint32(0xbe1d19d3),
-		157: uint32(0x9a9f48e5),
-		158: uint32(0xf719bbbf),
-		159: uint32(0xd39bea89),
-		160: uint32(0xbdadf81f),
-		161: uint32(0x992fa929),
-		162: uint32(0xf4a95a73),
-		163: uint32(0xd02b0b45),
-		164: uint32(0x2fa4bcc7),
-		165: uint32(0x0b26edf1),
-		166: uint32(0x66a01eab),
-		167: uint32(0x42224f9d),
-		168: uint32(0x42ce77ee),
-		169: uint32(0x664c26d8),
-		170: uint32(0x0bcad582),
-		171: uint32(0x2f4884b4),
-		172: uint32(0xd0c73336),
-		173: uint32(0xf4456200),
-		174: uint32(0x99c3915a),
-		175: uint32(0xbd41c06c),
-		176: uint32(0x981be1bc),
-		177: uint32(0xbc99b08a),
-		178: uint32(0xd11f43d0),
-		179: uint32(0xf59d12e6),
-		180: uint32(0x0a12a564),
-		181: uint32(0x2e90f452),
-		182: uint32(0x43160708),
-		183: uint32(0x6794563e),
-		184: uint32(0x67786e4d),
-		185: uint32(0x43fa3f7b),
-		186: uint32(0x2e7ccc21),
-		187: uint32(0x0afe9d17),
-		188: uint32(0xf5712a95),
-		189: uint32(0xd1f37ba3),
-		190: uint32(0xbc7588f9),
-		191: uint32(0x98f7d9cf),
-		192: uint32(0x6019add5),
-		193: uint32(0x449bfce3),
-		194: uint32(0x291d0fb9),
-		195: uint32(0x0d9f5e8f),
-		196: uint32(0xf210e90d),
-		197: uint32(0xd692b83b),
-		198: uint32(0xbb144b61),
-		199: uint32(0x9f961a57),
-		200: uint32(0x9f7a2224),
-		201: uint32(0xbbf87312),
-		202: uint32(0xd67e8048),
-		203: uint32(0xf2fcd17e),
-		204: uint32(0x0d7366fc),
-		205: uint32(0x29f137ca),
-		206: uint32(0x4477c490),
-		207: uint32(0x60f595a6),
-		208: uint32(0x45afb476),
-		209: uint32(0x612de540),
-		210: uint32(0x0cab161a),
-		211: uint32(0x2829472c),
-		212: uint32(0xd7a6f0ae),
-		213: uint32(0xf324a198),
-		214: uint32(0x9ea252c2),
-		215: uint32(0xba2003f4),
-		216: uint32(0xbacc3b87),
-		217: uint32(0x9e4e6ab1),
-		218: uint32(0xf3c899eb),
-		219: uint32(0xd74ac8dd),
-		220: uint32(0x28c57f5f),
-		221: uint32(0x0c472e69),
-		222: uint32(0x61c1dd33),
-		223: uint32(0x45438c05),
-		224: uint32(0x2b759e93),
-		225: uint32(0x0ff7cfa5),
-		226: uint32(0x62713cff),
-		227: uint32(0x46f36dc9),
-		228: uint32(0xb97cda4b),
-		229: uint32(0x9dfe8b7d),
-		230: uint32(0xf0787827),
-		231: uint32(0xd4fa2911),
-		232: uint32(0xd4161162),
-		233: uint32(0xf0944054),
-		234: uint32(0x9d12b30e),
-		235: uint32(0xb990e238),
-		236: uint32(0x461f55ba),
-		237: uint32(0x629d048c),
-		238: uint32(0x0f1bf7d6),
-		239: uint32(0x2b99a6e0),
-		240: uint32(0x0ec38730),
-		241: uint32(0x2a41d606),
-		242: uint32(0x47c7255c),
-		243: uint32(0x6345746a),
-		244: uint32(0x9ccac3e8),
-		245: uint32(0xb84892de),
-		246: uint32(0xd5ce6184),
-		247: uint32(0xf14c30b2),
-		248: uint32(0xf1a008c1),
-		249: uint32(0xd52259f7),
-		250: uint32(0xb8a4aaad),
-		251: uint32(0x9c26fb9b),
-		252: uint32(0x63a94c19),
-		253: uint32(0x472b1d2f),
-		254: uint32(0x2aadee75),
-		255: uint32(0x0e2fbf43),
-	},
-	7: {
-		1:   uint32(0x36f290f3),
-		2:   uint32(0x6de521e6),
-		3:   uint32(0x5b17b115),
-		4:   uint32(0xdbca43cc),
-		5:   uint32(0xed38d33f),
-		6:   uint32(0xb62f622a),
-		7:   uint32(0x80ddf2d9),
-		8:   uint32(0x6ce581d9),
-		9:   uint32(0x5a17112a),
-		10:  uint32(0x0100a03f),
-		11:  uint32(0x37f230cc),
-		12:  uint32(0xb72fc215),
-		13:  uint32(0x81dd52e6),
-		14:  uint32(0xdacae3f3),
-		15:  uint32(0xec387300),
-		16:  uint32(0xd9cb03b2),
-		17:  uint32(0xef399341),
-		18:  uint32(0xb42e2254),
-		19:  uint32(0x82dcb2a7),
-		20:  uint32(0x0201407e),
-		21:  uint32(0x34f3d08d),
-		22:  uint32(0x6fe46198),
-		23:  uint32(0x5916f16b),
-		24:  uint32(0xb52e826b),
-		25:  uint32(0x83dc1298),
-		26:  uint32(0xd8cba38d),
-		27:  uint32(0xee39337e),
-		28:  uint32(0x6ee4c1a7),
-		29:  uint32(0x58165154),
-		30:  uint32(0x0301e041),
-		31:  uint32(0x35f370b2),
-		32:  uint32(0x68e70125),
-		33:  uint32(0x5e1591d6),
-		34:  uint32(0x050220c3),
-		35:  uint32(0x33f0b030),
-		36:  uint32(0xb32d42e9),
-		37:  uint32(0x85dfd21a),
-		38:  uint32(0xdec8630f),
-		39:  uint32(0xe83af3fc),
-		40:  uint32(0x040280fc),
-		41:  uint32(0x32f0100f),
-		42:  uint32(0x69e7a11a),
-		43:  uint32(0x5f1531e9),
-		44:  uint32(0xdfc8c330),
-		45:  uint32(0xe93a53c3),
-		46:  uint32(0xb22de2d6),
-		47:  uint32(0x84df7225),
-		48:  uint32(0xb12c0297),
-		49:  uint32(0x87de9264),
-		50:  uint32(0xdcc92371),
-		51:  uint32(0xea3bb382),
-		52:  uint32(0x6ae6415b),
-		53:  uint32(0x5c14d1a8),
-		54:  uint32(0x070360bd),
-		55:  uint32(0x31f1f04e),
-		56:  uint32(0xddc9834e),
-		57:  uint32(0xeb3b13bd),
-		58:  uint32(0xb02ca2a8),
-		59:  uint32(0x86de325b),
-		60:  uint32(0x0603c082),
-		61:  uint32(0x30f15071),
-		62:  uint32(0x6be6e164),
-		63:  uint32(0x5d147197),
-		64:  uint32(0xd1ce024a),
-		65:  uint32(0xe73c92b9),
-		66:  uint32(0xbc2b23ac),
-		67:  uint32(0x8ad9b35f),
-		68:  uint32(0x0a044186),
-		69:  uint32(0x3cf6d175),
-		70:  uint32(0x67e16060),
-		71:  uint32(0x5113f093),
-		72:  uint32(0xbd2b8393),
-		73:  uint32(0x8bd91360),
-		74:  uint32(0xd0cea275),
-		75:  uint32(0xe63c3286),
-		76:  uint32(0x66e1c05f),
-		77:  uint32(0x501350ac),
-		78:  uint32(0x0b04e1b9),
-		79:  uint32(0x3df6714a),
-		80:  uint32(0x080501f8),
-		81:  uint32(0x3ef7910b),
-		82:  uint32(0x65e0201e),
-		83:  uint32(0x5312b0ed),
-		84:  uint32(0xd3cf4234),
-		85:  uint32(0xe53dd2c7),
-		86:  uint32(0xbe2a63d2),
-		87:  uint32(0x88d8f321),
-		88:  uint32(0x64e08021),
-		89:  uint32(0x521210d2),
-		90:  uint32(0x0905a1c7),
-		91:  uint32(0x3ff73134),
-		92:  uint32(0xbf2ac3ed),
-		93:  uint32(0x89d8531e),
-		94:  uint32(0xd2cfe20b),
-		95:  uint32(0xe43d72f8),
-		96:  uint32(0xb929036f),
-		97:  uint32(0x8fdb939c),
-		98:  uint32(0xd4cc2289),
-		99:  uint32(0xe23eb27a),
-		100: uint32(0x62e340a3),
-		101: uint32(0x5411d050),
-		102: uint32(0x0f066145),
-		103: uint32(0x39f4f1b6),
-		104: uint32(0xd5cc82b6),
-		105: uint32(0xe33e1245),
-		106: uint32(0xb829a350),
-		107: uint32(0x8edb33a3),
-		108: uint32(0x0e06c17a),
-		109: uint32(0x38f45189),
-		110: uint32(0x63e3e09c),
-		111: uint32(0x5511706f),
-		112: uint32(0x60e200dd),
-		113: uint32(0x5610902e),
-		114: uint32(0x0d07213b),
-		115: uint32(0x3bf5b1c8),
-		116: uint32(0xbb284311),
-		117: uint32(0x8ddad3e2),
-		118: uint32(0xd6cd62f7),
-		119: uint32(0xe03ff204),
-		120: uint32(0x0c078104),
-		121: uint32(0x3af511f7),
-		122: uint32(0x61e2a0e2),
-		123: uint32(0x57103011),
-		124: uint32(0xd7cdc2c8),
-		125: uint32(0xe13f523b),
-		126: uint32(0xba28e32e),
-		127: uint32(0x8cda73dd),
-		128: uint32(0x78ed02d5),
-		129: uint32(0x4e1f9226),
-		130: uint32(0x15082333),
-		131: uint32(0x23fab3c0),
-		132: uint32(0xa3274119),
-		133: uint32(0x95d5d1ea),
-		134: uint32(0xcec260ff),
-		135: uint32(0xf830f00c),
-		136: uint32(0x1408830c),
-		137: uint32(0x22fa13ff),
-		138: uint32(0x79eda2ea),
-		139: uint32(0x4f1f3219),
-		140: uint32(0xcfc2c0c0),
-		141: uint32(0xf9305033),
-		142: uint32(0xa227e126),
-		143: uint32(0x94d571d5),
-		144: uint32(0xa1260167),
-		145: uint32(0x97d49194),
-		146: uint32(0xccc32081),
-		147: uint32(0xfa31b072),
-		148: uint32(0x7aec42ab),
-		149: uint32(0x4c1ed258),
-		150: uint32(0x1709634d),
-		151: uint32(0x21fbf3be),
-		152: uint32(0xcdc380be),
-		153: uint32(0xfb31104d),
-		154: uint32(0xa026a158),
-		155: uint32(0x96d431ab),
-		156: uint32(0x1609c372),
-		157: uint32(0x20fb5381),
-		158: uint32(0x7bece294),
-		159: uint32(0x4d1e7267),
-		160: uint32(0x100a03f0),
-		161: uint32(0x26f89303),
-		162: uint32(0x7def2216),
-		163: uint32(0x4b1db2e5),
-		164: uint32(0xcbc0403c),
-		165: uint32(0xfd32d0cf),
-		166: uint32(0xa62561da),
-		167: uint32(0x90d7f129),
-		168: uint32(0x7cef8229),
-		169: uint32(0x4a1d12da),
-		170: uint32(0x110aa3cf),
-		171: uint32(0x27f8333c),
-		172: uint32(0xa725c1e5),
-		173: uint32(0x91d75116),
-		174: uint32(0xcac0e003),
-		175: uint32(0xfc3270f0),
-		176: uint32(0xc9c10042),
-		177: uint32(0xff3390b1),
-		178: uint32(0xa42421a4),
-		179: uint32(0x92d6b157),
-		180: uint32(0x120b438e),
-		181: uint32(0x24f9d37d),
-		182: uint32(0x7fee6268),
-		183: uint32(0x491cf29b),
-		184: uint32(0xa524819b),
-		185: uint32(0x93d61168),
-		186: uint32(0xc8c1a07d),
-		187: uint32(0xfe33308e),
-		188: uint32(0x7eeec257),
-		189: uint32(0x481c52a4),
-		190: uint32(0x130be3b1),
-		191: uint32(0x25f97342),
-		192: uint32(0xa923009f),
-		193: uint32(0x9fd1906c),
-		194: uint32(0xc4c62179),
-		195: uint32(0xf234b18a),
-		196: uint32(0x72e94353),
-		197: uint32(0x441bd3a0),
-		198: uint32(0x1f0c62b5),
-		199: uint32(0x29fef246),
-		200: uint32(0xc5c68146),
-		201: uint32(0xf33411b5),
-		202: uint32(0xa823a0a0),
-		203: uint32(0x9ed13053),
-		204: uint32(0x1e0cc28a),
-		205: uint32(0x28fe5279),
-		206: uint32(0x73e9e36c),
-		207: uint32(0x451b739f),
-		208: uint32(0x70e8032d),
-		209: uint32(0x461a93de),
-		210: uint32(0x1d0d22cb),
-		211: uint32(0x2bffb238),
-		212: uint32(0xab2240e1),
-		213: uint32(0x9dd0d012),
-		214: uint32(0xc6c76107),
-		215: uint32(0xf035f1f4),
-		216: uint32(0x1c0d82f4),
-		217: uint32(0x2aff1207),
-		218: uint32(0x71e8a312),
-		219: uint32(0x471a33e1),
-		220: uint32(0xc7c7c138),
-		221: uint32(0xf13551cb),
-		222: uint32(0xaa22e0de),
-		223: uint32(0x9cd0702d),
-		224: uint32(0xc1c401ba),
-		225: uint32(0xf7369149),
-		226: uint32(0xac21205c),
-		227: uint32(0x9ad3b0af),
-		228: uint32(0x1a0e4276),
-		229: uint32(0x2cfcd285),
-		230: uint32(0x77eb6390),
-		231: uint32(0x4119f363),
-		232: uint32(0xad218063),
-		233: uint32(0x9bd31090),
-		234: uint32(0xc0c4a185),
-		235: uint32(0xf6363176),
-		236: uint32(0x76ebc3af),
-		237: uint32(0x4019535c),
-		238: uint32(0x1b0ee249),
-		239: uint32(0x2dfc72ba),
-		240: uint32(0x180f0208),
-		241: uint32(0x2efd92fb),
-		242: uint32(0x75ea23ee),
-		243: uint32(0x4318b31d),
-		244: uint32(0xc3c541c4),
-		245: uint32(0xf537d137),
-		246: uint32(0xae206022),
-		247: uint32(0x98d2f0d1),
-		248: uint32(0x74ea83d1),
-		249: uint32(0x42181322),
-		250: uint32(0x190fa237),
-		251: uint32(0x2ffd32c4),
-		252: uint32(0xaf20c01d),
-		253: uint32(0x99d250ee),
-		254: uint32(0xc2c5e1fb),
-		255: uint32(0xf4377108),
+		1:   uint32(0x87a6cb43),
+		2:   uint32(0xd43c90c7),
+		3:   uint32(0x539a5b84),
+		4:   uint32(0x730827cf),
+		5:   uint32(0xf4aeec8c),
+		6:   uint32(0xa734b708),
+		7:   uint32(0x20927c4b),
+		8:   uint32(0xe6104f9e),
+		9:   uint32(0x61b684dd),
+		10:  uint32(0x322cdf59),
+		11:  uint32(0xb58a141a),
+		12:  uint32(0x95186851),
+		13:  uint32(0x12bea312),
+		14:  uint32(0x4124f896),
+		15:  uint32(0xc68233d5),
+		16:  uint32(0x1751997d),
+		17:  uint32(0x90f7523e),
+		18:  uint32(0xc36d09ba),
+		19:  uint32(0x44cbc2f9),
+		20:  uint32(0x6459beb2),
+		21:  uint32(0xe3ff75f1),
+		22:  uint32(0xb0652e75),
+		23:  uint32(0x37c3e536),
+		24:  uint32(0xf141d6e3),
+		25:  uint32(0x76e71da0),
+		26:  uint32(0x257d4624),
+		27:  uint32(0xa2db8d67),
+		28:  uint32(0x8249f12c),
+		29:  uint32(0x05ef3a6f),
+		30:  uint32(0x567561eb),
+		31:  uint32(0xd1d3aaa8),
+		32:  uint32(0x2ea332fa),
+		33:  uint32(0xa905f9b9),
+		34:  uint32(0xfa9fa23d),
+		35:  uint32(0x7d39697e),
+		36:  uint32(0x5dab1535),
+		37:  uint32(0xda0dde76),
+		38:  uint32(0x899785f2),
+		39:  uint32(0x0e314eb1),
+		40:  uint32(0xc8b37d64),
+		41:  uint32(0x4f15b627),
+		42:  uint32(0x1c8feda3),
+		43:  uint32(0x9b2926e0),
+		44:  uint32(0xbbbb5aab),
+		45:  uint32(0x3c1d91e8),
+		46:  uint32(0x6f87ca6c),
+		47:  uint32(0xe821012f),
+		48:  uint32(0x39f2ab87),
+		49:  uint32(0xbe5460c4),
+		50:  uint32(0xedce3b40),
+		51:  uint32(0x6a68f003),
+		52:  uint32(0x4afa8c48),
+		53:  uint32(0xcd5c470b),
+		54:  uint32(0x9ec61c8f),
+		55:  uint32(0x1960d7cc),
+		56:  uint32(0xdfe2e419),
+		57:  uint32(0x58442f5a),
+		58:  uint32(0x0bde74de),
+		59:  uint32(0x8c78bf9d),
+		60:  uint32(0xaceac3d6),
+		61:  uint32(0x2b4c0895),
+		62:  uint32(0x78d65311),
+		63:  uint32(0xff709852),
+		64:  uint32(0x5d4665f4),
+		65:  uint32(0xdae0aeb7),
+		66:  uint32(0x897af533),
+		67:  uint32(0x0edc3e70),
+		68:  uint32(0x2e4e423b),
+		69:  uint32(0xa9e88978),
+		70:  uint32(0xfa72d2fc),
+		71:  uint32(0x7dd419bf),
+		72:  uint32(0xbb562a6a),
+		73:  uint32(0x3cf0e129),
+		74:  uint32(0x6f6abaad),
+		75:  uint32(0xe8cc71ee),
+		76:  uint32(0xc85e0da5),
+		77:  uint32(0x4ff8c6e6),
+		78:  uint32(0x1c629d62),
+		79:  uint32(0x9bc45621),
+		80:  uint32(0x4a17fc89),
+		81:  uint32(0xcdb137ca),
+		82:  uint32(0x9e2b6c4e),
+		83:  uint32(0x198da70d),
+		84:  uint32(0x391fdb46),
+		85:  uint32(0xbeb91005),
+		86:  uint32(0xed234b81),
+		87:  uint32(0x6a8580c2),
+		88:  uint32(0xac07b317),
+		89:  uint32(0x2ba17854),
+		90:  uint32(0x783b23d0),
+		91:  uint32(0xff9de893),
+		92:  uint32(0xdf0f94d8),
+		93:  uint32(0x58a95f9b),
+		94:  uint32(0x0b33041f),
+		95:  uint32(0x8c95cf5c),
+		96:  uint32(0x73e5570e),
+		97:  uint32(0xf4439c4d),
+		98:  uint32(0xa7d9c7c9),
+		99:  uint32(0x207f0c8a),
+		100: uint32(0x00ed70c1),
+		101: uint32(0x874bbb82),
+		102: uint32(0xd4d1e006),
+		103: uint32(0x53772b45),
+		104: uint32(0x95f51890),
+		105: uint32(0x1253d3d3),
+		106: uint32(0x41c98857),
+		107: uint32(0xc66f4314),
+		108: uint32(0xe6fd3f5f),
+		109: uint32(0x615bf41c),
+		110: uint32(0x32c1af98),
+		111: uint32(0xb56764db),
+		112: uint32(0x64b4ce73),
+		113: uint32(0xe3120530),
+		114: uint32(0xb0885eb4),
+		115: uint32(0x372e95f7),
+		116: uint32(0x17bce9bc),
+		117: uint32(0x901a22ff),
+		118: uint32(0xc380797b),
+		119: uint32(0x4426b238),
+		120: uint32(0x82a481ed),
+		121: uint32(0x05024aae),
+		122: uint32(0x5698112a),
+		123: uint32(0xd13eda69),
+		124: uint32(0xf1aca622),
+		125: uint32(0x760a6d61),
+		126: uint32(0x259036e5),
+		127: uint32(0xa236fda6),
+		128: uint32(0xba8ccbe8),
+		129: uint32(0x3d2a00ab),
+		130: uint32(0x6eb05b2f),
+		131: uint32(0xe916906c),
+		132: uint32(0xc984ec27),
+		133: uint32(0x4e222764),
+		134: uint32(0x1db87ce0),
+		135: uint32(0x9a1eb7a3),
+		136: uint32(0x5c9c8476),
+		137: uint32(0xdb3a4f35),
+		138: uint32(0x88a014b1),
+		139: uint32(0x0f06dff2),
+		140: uint32(0x2f94a3b9),
+		141: uint32(0xa83268fa),
+		142: uint32(0xfba8337e),
+		143: uint32(0x7c0ef83d),
+		144: uint32(0xaddd5295),
+		145: uint32(0x2a7b99d6),
+		146: uint32(0x79e1c252),
+		147: uint32(0xfe470911),
+		148: uint32(0xded5755a),
+		149: uint32(0x5973be19),
+		150: uint32(0x0ae9e59d),
+		151: uint32(0x8d4f2ede),
+		152: uint32(0x4bcd1d0b),
+		153: uint32(0xcc6bd648),
+		154: uint32(0x9ff18dcc),
+		155: uint32(0x1857468f),
+		156: uint32(0x38c53ac4),
+		157: uint32(0xbf63f187),
+		158: uint32(0xecf9aa03),
+		159: uint32(0x6b5f6140),
+		160: uint32(0x942ff912),
+		161: uint32(0x13893251),
+		162: uint32(0x401369d5),
+		163: uint32(0xc7b5a296),
+		164: uint32(0xe727dedd),
+		165: uint32(0x6081159e),
+		166: uint32(0x331b4e1a),
+		167: uint32(0xb4bd8559),
+		168: uint32(0x723fb68c),
+		169: uint32(0xf5997dcf),
+		170: uint32(0xa603264b),
+		171: uint32(0x21a5ed08),
+		172: uint32(0x01379143),
+		173: uint32(0x86915a00),
+		174: uint32(0xd50b0184),
+		175: uint32(0x52adcac7),
+		176: uint32(0x837e606f),
+		177: uint32(0x04d8ab2c),
+		178: uint32(0x5742f0a8),
+		179: uint32(0xd0e43beb),
+		180: uint32(0xf07647a0),
+		181: uint32(0x77d08ce3),
+		182: uint32(0x244ad767),
+		183: uint32(0xa3ec1c24),
+		184: uint32(0x656e2ff1),
+		185: uint32(0xe2c8e4b2),
+		186: uint32(0xb152bf36),
+		187: uint32(0x36f47475),
+		188: uint32(0x1666083e),
+		189: uint32(0x91c0c37d),
+		190: uint32(0xc25a98f9),
+		191: uint32(0x45fc53ba),
+		192: uint32(0xe7caae1c),
+		193: uint32(0x606c655f),
+		194: uint32(0x33f63edb),
+		195: uint32(0xb450f598),
+		196: uint32(0x94c289d3),
+		197: uint32(0x13644290),
+		198: uint32(0x40fe1914),
+		199: uint32(0xc758d257),
+		200: uint32(0x01dae182),
+		201: uint32(0x867c2ac1),
+		202: uint32(0xd5e67145),
+		203: uint32(0x5240ba06),
+		204: uint32(0x72d2c64d),
+		205: uint32(0xf5740d0e),
+		206: uint32(0xa6ee568a),
+		207: uint32(0x21489dc9),
+		208: uint32(0xf09b3761),
+		209: uint32(0x773dfc22),
+		210: uint32(0x24a7a7a6),
+		211: uint32(0xa3016ce5),
+		212: uint32(0x839310ae),
+		213: uint32(0x0435dbed),
+		214: uint32(0x57af8069),
+		215: uint32(0xd0094b2a),
+		216: uint32(0x168b78ff),
+		217: uint32(0x912db3bc),
+		218: uint32(0xc2b7e838),
+		219: uint32(0x4511237b),
+		220: uint32(0x65835f30),
+		221: uint32(0xe2259473),
+		222: uint32(0xb1bfcff7),
+		223: uint32(0x361904b4),
+		224: uint32(0xc9699ce6),
+		225: uint32(0x4ecf57a5),
+		226: uint32(0x1d550c21),
+		227: uint32(0x9af3c762),
+		228: uint32(0xba61bb29),
+		229: uint32(0x3dc7706a),
+		230: uint32(0x6e5d2bee),
+		231: uint32(0xe9fbe0ad),
+		232: uint32(0x2f79d378),
+		233: uint32(0xa8df183b),
+		234: uint32(0xfb4543bf),
+		235: uint32(0x7ce388fc),
+		236: uint32(0x5c71f4b7),
+		237: uint32(0xdbd73ff4),
+		238: uint32(0x884d6470),
+		239: uint32(0x0febaf33),
+		240: uint32(0xde38059b),
+		241: uint32(0x599eced8),
+		242: uint32(0x0a04955c),
+		243: uint32(0x8da25e1f),
+		244: uint32(0xad302254),
+		245: uint32(0x2a96e917),
+		246: uint32(0x790cb293),
+		247: uint32(0xfeaa79d0),
+		248: uint32(0x38284a05),
+		249: uint32(0xbf8e8146),
+		250: uint32(0xec14dac2),
+		251: uint32(0x6bb21181),
+		252: uint32(0x4b206dca),
+		253: uint32(0xcc86a689),
+		254: uint32(0x9f1cfd0d),
+		255: uint32(0x18ba364e),
 	},
 }
-var _crc_braid_big_table = [8][256]Tz_word_t{
+var _crc_braid_big_table = [4][256]Tz_word_t{
 	0: {
-		1:   uint64(0xf390f23600000000),
-		2:   uint64(0xe621e56d00000000),
-		3:   uint64(0x15b1175b00000000),
-		4:   uint64(0xcc43cadb00000000),
-		5:   uint64(0x3fd338ed00000000),
-		6:   uint64(0x2a622fb600000000),
-		7:   uint64(0xd9f2dd8000000000),
-		8:   uint64(0xd981e56c00000000),
-		9:   uint64(0x2a11175a00000000),
-		10:  uint64(0x3fa0000100000000),
-		11:  uint64(0xcc30f23700000000),
-		12:  uint64(0x15c22fb700000000),
-		13:  uint64(0xe652dd8100000000),
-		14:  uint64(0xf3e3cada00000000),
-		15:  uint64(0x007338ec00000000),
-		16:  uint64(0xb203cbd900000000),
-		17:  uint64(0x419339ef00000000),
-		18:  uint64(0x54222eb400000000),
-		19:  uint64(0xa7b2dc8200000000),
-		20:  uint64(0x7e40010200000000),
-		21:  uint64(0x8dd0f33400000000),
-		22:  uint64(0x9861e46f00000000),
-		23:  uint64(0x6bf1165900000000),
-		24:  uint64(0x6b822eb500000000),
-		25:  uint64(0x9812dc8300000000),
-		26:  uint64(0x8da3cbd800000000),
-		27:  uint64(0x7e3339ee00000000),
-		28:  uint64(0xa7c1e46e00000000),
-		29:  uint64(0x5451165800000000),
-		30:  uint64(0x41e0010300000000),
-		31:  uint64(0xb270f33500000000),
-		32:  uint64(0x2501e76800000000),
-		33:  uint64(0xd691155e00000000),
-		34:  uint64(0xc320020500000000),
-		35:  uint64(0x30b0f03300000000),
-		36:  uint64(0xe9422db300000000),
-		37:  uint64(0x1ad2df8500000000),
-		38:  uint64(0x0f63c8de00000000),
-		39:  uint64(0xfcf33ae800000000),
-		40:  uint64(0xfc80020400000000),
-		41:  uint64(0x0f10f03200000000),
-		42:  uint64(0x1aa1e76900000000),
-		43:  uint64(0xe931155f00000000),
-		44:  uint64(0x30c3c8df00000000),
-		45:  uint64(0xc3533ae900000000),
-		46:  uint64(0xd6e22db200000000),
-		47:  uint64(0x2572df8400000000),
-		48:  uint64(0x97022cb100000000),
-		49:  uint64(0x6492de8700000000),
-		50:  uint64(0x7123c9dc00000000),
-		51:  uint64(0x82b33bea00000000),
-		52:  uint64(0x5b41e66a00000000),
-		53:  uint64(0xa8d1145c00000000),
-		54:  uint64(0xbd60030700000000),
-		55:  uint64(0x4ef0f13100000000),
-		56:  uint64(0x4e83c9dd00000000),
-		57:  uint64(0xbd133beb00000000),
-		58:  uint64(0xa8a22cb000000000),
-		59:  uint64(0x5b32de8600000000),
-		60:  uint64(0x82c0030600000000),
-		61:  uint64(0x7150f13000000000),
-		62:  uint64(0x64e1e66b00000000),
-		63:  uint64(0x9771145d00000000),
-		64:  uint64(0x4a02ced100000000),
-		65:  uint64(0xb9923ce700000000),
-		66:  uint64(0xac232bbc00000000),
-		67:  uint64(0x5fb3d98a00000000),
-		68:  uint64(0x8641040a00000000),
-		69:  uint64(0x75d1f63c00000000),
-		70:  uint64(0x6060e16700000000),
-		71:  uint64(0x93f0135100000000),
-		72:  uint64(0x93832bbd00000000),
-		73:  uint64(0x6013d98b00000000),
-		74:  uint64(0x75a2ced000000000),
-		75:  uint64(0x86323ce600000000),
-		76:  uint64(0x5fc0e16600000000),
-		77:  uint64(0xac50135000000000),
-		78:  uint64(0xb9e1040b00000000),
-		79:  uint64(0x4a71f63d00000000),
-		80:  uint64(0xf801050800000000),
-		81:  uint64(0x0b91f73e00000000),
-		82:  uint64(0x1e20e06500000000),
-		83:  uint64(0xedb0125300000000),
-		84:  uint64(0x3442cfd300000000),
-		85:  uint64(0xc7d23de500000000),
-		86:  uint64(0xd2632abe00000000),
-		87:  uint64(0x21f3d88800000000),
-		88:  uint64(0x2180e06400000000),
-		89:  uint64(0xd210125200000000),
-		90:  uint64(0xc7a1050900000000),
-		91:  uint64(0x3431f73f00000000),
-		92:  uint64(0xedc32abf00000000),
-		93:  uint64(0x1e53d88900000000),
-		94:  uint64(0x0be2cfd200000000),
-		95:  uint64(0xf8723de400000000),
-		96:  uint64(0x6f0329b900000000),
-		97:  uint64(0x9c93db8f00000000),
-		98:  uint64(0x8922ccd400000000),
-		99:  uint64(0x7ab23ee200000000),
-		100: uint64(0xa340e36200000000),
-		101: uint64(0x50d0115400000000),
-		102: uint64(0x4561060f00000000),
-		103: uint64(0xb6f1f43900000000),
-		104: uint64(0xb682ccd500000000),
-		105: uint64(0x45123ee300000000),
-		106: uint64(0x50a329b800000000),
-		107: uint64(0xa333db8e00000000),
-		108: uint64(0x7ac1060e00000000),
-		109: uint64(0x8951f43800000000),
-		110: uint64(0x9ce0e36300000000),
-		111: uint64(0x6f70115500000000),
-		112: uint64(0xdd00e26000000000),
-		113: uint64(0x2e90105600000000),
-		114: uint64(0x3b21070d00000000),
-		115: uint64(0xc8b1f53b00000000),
-		116: uint64(0x114328bb00000000),
-		117: uint64(0xe2d3da8d00000000),
-		118: uint64(0xf762cdd600000000),
-		119: uint64(0x04f23fe000000000),
-		120: uint64(0x0481070c00000000),
-		121: uint64(0xf711f53a00000000),
-		122: uint64(0xe2a0e26100000000),
-		123: uint64(0x1130105700000000),
-		124: uint64(0xc8c2cdd700000000),
-		125: uint64(0x3b523fe100000000),
-		126: uint64(0x2ee328ba00000000),
-		127: uint64(0xdd73da8c00000000),
-		128: uint64(0xd502ed7800000000),
-		129: uint64(0x26921f4e00000000),
-		130: uint64(0x3323081500000000),
-		131: uint64(0xc0b3fa2300000000),
-		132: uint64(0x194127a300000000),
-		133: uint64(0xead1d59500000000),
-		134: uint64(0xff60c2ce00000000),
-		135: uint64(0x0cf030f800000000),
-		136: uint64(0x0c83081400000000),
-		137: uint64(0xff13fa2200000000),
-		138: uint64(0xeaa2ed7900000000),
-		139: uint64(0x19321f4f00000000),
-		140: uint64(0xc0c0c2cf00000000),
-		141: uint64(0x335030f900000000),
-		142: uint64(0x26e127a200000000),
-		143: uint64(0xd571d59400000000),
-		144: uint64(0x670126a100000000),
-		145: uint64(0x9491d49700000000),
-		146: uint64(0x8120c3cc00000000),
-		147: uint64(0x72b031fa00000000),
-		148: uint64(0xab42ec7a00000000),
-		149: uint64(0x58d21e4c00000000),
-		150: uint64(0x4d63091700000000),
-		151: uint64(0xbef3fb2100000000),
-		152: uint64(0xbe80c3cd00000000),
-		153: uint64(0x4d1031fb00000000),
-		154: uint64(0x58a126a000000000),
-		155: uint64(0xab31d49600000000),
-		156: uint64(0x72c3091600000000),
-		157: uint64(0x8153fb2000000000),
-		158: uint64(0x94e2ec7b00000000),
-		159: uint64(0x67721e4d00000000),
-		160: uint64(0xf0030a1000000000),
-		161: uint64(0x0393f82600000000),
-		162: uint64(0x1622ef7d00000000),
-		163: uint64(0xe5b21d4b00000000),
-		164: uint64(0x3c40c0cb00000000),
-		165: uint64(0xcfd032fd00000000),
-		166: uint64(0xda6125a600000000),
-		167: uint64(0x29f1d79000000000),
-		168: uint64(0x2982ef7c00000000),
-		169: uint64(0xda121d4a00000000),
-		170: uint64(0xcfa30a1100000000),
-		171: uint64(0x3c33f82700000000),
-		172: uint64(0xe5c125a700000000),
-		173: uint64(0x1651d79100000000),
-		174: uint64(0x03e0c0ca00000000),
-		175: uint64(0xf07032fc00000000),
-		176: uint64(0x4200c1c900000000),
-		177: uint64(0xb19033ff00000000),
-		178: uint64(0xa42124a400000000),
-		179: uint64(0x57b1d69200000000),
-		180: uint64(0x8e430b1200000000),
-		181: uint64(0x7dd3f92400000000),
-		182: uint64(0x6862ee7f00000000),
-		183: uint64(0x9bf21c4900000000),
-		184: uint64(0x9b8124a500000000),
-		185: uint64(0x6811d69300000000),
-		186: uint64(0x7da0c1c800000000),
-		187: uint64(0x8e3033fe00000000),
-		188: uint64(0x57c2ee7e00000000),
-		189: uint64(0xa4521c4800000000),
-		190: uint64(0xb1e30b1300000000),
-		191: uint64(0x4273f92500000000),
-		192: uint64(0x9f0023a900000000),
-		193: uint64(0x6c90d19f00000000),
-		194: uint64(0x7921c6c400000000),
-		195: uint64(0x8ab134f200000000),
-		196: uint64(0x5343e97200000000),
-		197: uint64(0xa0d31b4400000000),
-		198: uint64(0xb5620c1f00000000),
-		199: uint64(0x46f2fe2900000000),
-		200: uint64(0x4681c6c500000000),
-		201: uint64(0xb51134f300000000),
-		202: uint64(0xa0a023a800000000),
-		203: uint64(0x5330d19e00000000),
-		204: uint64(0x8ac20c1e00000000),
-		205: uint64(0x7952fe2800000000),
-		206: uint64(0x6ce3e97300000000),
-		207: uint64(0x9f731b4500000000),
-		208: uint64(0x2d03e87000000000),
-		209: uint64(0xde931a4600000000),
-		210: uint64(0xcb220d1d00000000),
-		211: uint64(0x38b2ff2b00000000),
-		212: uint64(0xe14022ab00000000),
-		213: uint64(0x12d0d09d00000000),
-		214: uint64(0x0761c7c600000000),
-		215: uint64(0xf4f135f000000000),
-		216: uint64(0xf4820d1c00000000),
-		217: uint64(0x0712ff2a00000000),
-		218: uint64(0x12a3e87100000000),
-		219: uint64(0xe1331a4700000000),
-		220: uint64(0x38c1c7c700000000),
-		221: uint64(0xcb5135f100000000),
-		222: uint64(0xdee022aa00000000),
-		223: uint64(0x2d70d09c00000000),
-		224: uint64(0xba01c4c100000000),
-		225: uint64(0x499136f700000000),
-		226: uint64(0x5c2021ac00000000),
-		227: uint64(0xafb0d39a00000000),
-		228: uint64(0x76420e1a00000000),
-		229: uint64(0x85d2fc2c00000000),
-		230: uint64(0x9063eb7700000000),
-		231: uint64(0x63f3194100000000),
-		232: uint64(0x638021ad00000000),
-		233: uint64(0x9010d39b00000000),
-		234: uint64(0x85a1c4c000000000),
-		235: uint64(0x763136f600000000),
-		236: uint64(0xafc3eb7600000000),
-		237: uint64(0x5c53194000000000),
-		238: uint64(0x49e20e1b00000000),
-		239: uint64(0xba72fc2d00000000),
-		240: uint64(0x08020f1800000000),
-		241: uint64(0xfb92fd2e00000000),
-		242: uint64(0xee23ea7500000000),
-		243: uint64(0x1db3184300000000),
-		244: uint64(0xc441c5c300000000),
-		245: uint64(0x37d137f500000000),
-		246: uint64(0x226020ae00000000),
-		247: uint64(0xd1f0d29800000000),
-		248: uint64(0xd183ea7400000000),
-		249: uint64(0x2213184200000000),
-		250: uint64(0x37a20f1900000000),
-		251: uint64(0xc432fd2f00000000),
-		252: uint64(0x1dc020af00000000),
-		253: uint64(0xee50d29900000000),
-		254: uint64(0xfbe1c5c200000000),
-		255: uint64(0x087137f400000000),
+		1:   uint32(0x43cba687),
+		2:   uint32(0xc7903cd4),
+		3:   uint32(0x845b9a53),
+		4:   uint32(0xcf270873),
+		5:   uint32(0x8cecaef4),
+		6:   uint32(0x08b734a7),
+		7:   uint32(0x4b7c9220),
+		8:   uint32(0x9e4f10e6),
+		9:   uint32(0xdd84b661),
+		10:  uint32(0x59df2c32),
+		11:  uint32(0x1a148ab5),
+		12:  uint32(0x51681895),
+		13:  uint32(0x12a3be12),
+		14:  uint32(0x96f82441),
+		15:  uint32(0xd53382c6),
+		16:  uint32(0x7d995117),
+		17:  uint32(0x3e52f790),
+		18:  uint32(0xba096dc3),
+		19:  uint32(0xf9c2cb44),
+		20:  uint32(0xb2be5964),
+		21:  uint32(0xf175ffe3),
+		22:  uint32(0x752e65b0),
+		23:  uint32(0x36e5c337),
+		24:  uint32(0xe3d641f1),
+		25:  uint32(0xa01de776),
+		26:  uint32(0x24467d25),
+		27:  uint32(0x678ddba2),
+		28:  uint32(0x2cf14982),
+		29:  uint32(0x6f3aef05),
+		30:  uint32(0xeb617556),
+		31:  uint32(0xa8aad3d1),
+		32:  uint32(0xfa32a32e),
+		33:  uint32(0xb9f905a9),
+		34:  uint32(0x3da29ffa),
+		35:  uint32(0x7e69397d),
+		36:  uint32(0x3515ab5d),
+		37:  uint32(0x76de0dda),
+		38:  uint32(0xf2859789),
+		39:  uint32(0xb14e310e),
+		40:  uint32(0x647db3c8),
+		41:  uint32(0x27b6154f),
+		42:  uint32(0xa3ed8f1c),
+		43:  uint32(0xe026299b),
+		44:  uint32(0xab5abbbb),
+		45:  uint32(0xe8911d3c),
+		46:  uint32(0x6cca876f),
+		47:  uint32(0x2f0121e8),
+		48:  uint32(0x87abf239),
+		49:  uint32(0xc46054be),
+		50:  uint32(0x403bceed),
+		51:  uint32(0x03f0686a),
+		52:  uint32(0x488cfa4a),
+		53:  uint32(0x0b475ccd),
+		54:  uint32(0x8f1cc69e),
+		55:  uint32(0xccd76019),
+		56:  uint32(0x19e4e2df),
+		57:  uint32(0x5a2f4458),
+		58:  uint32(0xde74de0b),
+		59:  uint32(0x9dbf788c),
+		60:  uint32(0xd6c3eaac),
+		61:  uint32(0x95084c2b),
+		62:  uint32(0x1153d678),
+		63:  uint32(0x529870ff),
+		64:  uint32(0xf465465d),
+		65:  uint32(0xb7aee0da),
+		66:  uint32(0x33f57a89),
+		67:  uint32(0x703edc0e),
+		68:  uint32(0x3b424e2e),
+		69:  uint32(0x7889e8a9),
+		70:  uint32(0xfcd272fa),
+		71:  uint32(0xbf19d47d),
+		72:  uint32(0x6a2a56bb),
+		73:  uint32(0x29e1f03c),
+		74:  uint32(0xadba6a6f),
+		75:  uint32(0xee71cce8),
+		76:  uint32(0xa50d5ec8),
+		77:  uint32(0xe6c6f84f),
+		78:  uint32(0x629d621c),
+		79:  uint32(0x2156c49b),
+		80:  uint32(0x89fc174a),
+		81:  uint32(0xca37b1cd),
+		82:  uint32(0x4e6c2b9e),
+		83:  uint32(0x0da78d19),
+		84:  uint32(0x46db1f39),
+		85:  uint32(0x0510b9be),
+		86:  uint32(0x814b23ed),
+		87:  uint32(0xc280856a),
+		88:  uint32(0x17b307ac),
+		89:  uint32(0x5478a12b),
+		90:  uint32(0xd0233b78),
+		91:  uint32(0x93e89dff),
+		92:  uint32(0xd8940fdf),
+		93:  uint32(0x9b5fa958),
+		94:  uint32(0x1f04330b),
+		95:  uint32(0x5ccf958c),
+		96:  uint32(0x0e57e573),
+		97:  uint32(0x4d9c43f4),
+		98:  uint32(0xc9c7d9a7),
+		99:  uint32(0x8a0c7f20),
+		100: uint32(0xc170ed00),
+		101: uint32(0x82bb4b87),
+		102: uint32(0x06e0d1d4),
+		103: uint32(0x452b7753),
+		104: uint32(0x9018f595),
+		105: uint32(0xd3d35312),
+		106: uint32(0x5788c941),
+		107: uint32(0x14436fc6),
+		108: uint32(0x5f3ffde6),
+		109: uint32(0x1cf45b61),
+		110: uint32(0x98afc132),
+		111: uint32(0xdb6467b5),
+		112: uint32(0x73ceb464),
+		113: uint32(0x300512e3),
+		114: uint32(0xb45e88b0),
+		115: uint32(0xf7952e37),
+		116: uint32(0xbce9bc17),
+		117: uint32(0xff221a90),
+		118: uint32(0x7b7980c3),
+		119: uint32(0x38b22644),
+		120: uint32(0xed81a482),
+		121: uint32(0xae4a0205),
+		122: uint32(0x2a119856),
+		123: uint32(0x69da3ed1),
+		124: uint32(0x22a6acf1),
+		125: uint32(0x616d0a76),
+		126: uint32(0xe5369025),
+		127: uint32(0xa6fd36a2),
+		128: uint32(0xe8cb8cba),
+		129: uint32(0xab002a3d),
+		130: uint32(0x2f5bb06e),
+		131: uint32(0x6c9016e9),
+		132: uint32(0x27ec84c9),
+		133: uint32(0x6427224e),
+		134: uint32(0xe07cb81d),
+		135: uint32(0xa3b71e9a),
+		136: uint32(0x76849c5c),
+		137: uint32(0x354f3adb),
+		138: uint32(0xb114a088),
+		139: uint32(0xf2df060f),
+		140: uint32(0xb9a3942f),
+		141: uint32(0xfa6832a8),
+		142: uint32(0x7e33a8fb),
+		143: uint32(0x3df80e7c),
+		144: uint32(0x9552ddad),
+		145: uint32(0xd6997b2a),
+		146: uint32(0x52c2e179),
+		147: uint32(0x110947fe),
+		148: uint32(0x5a75d5de),
+		149: uint32(0x19be7359),
+		150: uint32(0x9de5e90a),
+		151: uint32(0xde2e4f8d),
+		152: uint32(0x0b1dcd4b),
+		153: uint32(0x48d66bcc),
+		154: uint32(0xcc8df19f),
+		155: uint32(0x8f465718),
+		156: uint32(0xc43ac538),
+		157: uint32(0x87f163bf),
+		158: uint32(0x03aaf9ec),
+		159: uint32(0x40615f6b),
+		160: uint32(0x12f92f94),
+		161: uint32(0x51328913),
+		162: uint32(0xd5691340),
+		163: uint32(0x96a2b5c7),
+		164: uint32(0xddde27e7),
+		165: uint32(0x9e158160),
+		166: uint32(0x1a4e1b33),
+		167: uint32(0x5985bdb4),
+		168: uint32(0x8cb63f72),
+		169: uint32(0xcf7d99f5),
+		170: uint32(0x4b2603a6),
+		171: uint32(0x08eda521),
+		172: uint32(0x43913701),
+		173: uint32(0x005a9186),
+		174: uint32(0x84010bd5),
+		175: uint32(0xc7caad52),
+		176: uint32(0x6f607e83),
+		177: uint32(0x2cabd804),
+		178: uint32(0xa8f04257),
+		179: uint32(0xeb3be4d0),
+		180: uint32(0xa04776f0),
+		181: uint32(0xe38cd077),
+		182: uint32(0x67d74a24),
+		183: uint32(0x241ceca3),
+		184: uint32(0xf12f6e65),
+		185: uint32(0xb2e4c8e2),
+		186: uint32(0x36bf52b1),
+		187: uint32(0x7574f436),
+		188: uint32(0x3e086616),
+		189: uint32(0x7dc3c091),
+		190: uint32(0xf9985ac2),
+		191: uint32(0xba53fc45),
+		192: uint32(0x1caecae7),
+		193: uint32(0x5f656c60),
+		194: uint32(0xdb3ef633),
+		195: uint32(0x98f550b4),
+		196: uint32(0xd389c294),
+		197: uint32(0x90426413),
+		198: uint32(0x1419fe40),
+		199: uint32(0x57d258c7),
+		200: uint32(0x82e1da01),
+		201: uint32(0xc12a7c86),
+		202: uint32(0x4571e6d5),
+		203: uint32(0x06ba4052),
+		204: uint32(0x4dc6d272),
+		205: uint32(0x0e0d74f5),
+		206: uint32(0x8a56eea6),
+		207: uint32(0xc99d4821),
+		208: uint32(0x61379bf0),
+		209: uint32(0x22fc3d77),
+		210: uint32(0xa6a7a724),
+		211: uint32(0xe56c01a3),
+		212: uint32(0xae109383),
+		213: uint32(0xeddb3504),
+		214: uint32(0x6980af57),
+		215: uint32(0x2a4b09d0),
+		216: uint32(0xff788b16),
+		217: uint32(0xbcb32d91),
+		218: uint32(0x38e8b7c2),
+		219: uint32(0x7b231145),
+		220: uint32(0x305f8365),
+		221: uint32(0x739425e2),
+		222: uint32(0xf7cfbfb1),
+		223: uint32(0xb4041936),
+		224: uint32(0xe69c69c9),
+		225: uint32(0xa557cf4e),
+		226: uint32(0x210c551d),
+		227: uint32(0x62c7f39a),
+		228: uint32(0x29bb61ba),
+		229: uint32(0x6a70c73d),
+		230: uint32(0xee2b5d6e),
+		231: uint32(0xade0fbe9),
+		232: uint32(0x78d3792f),
+		233: uint32(0x3b18dfa8),
+		234: uint32(0xbf4345fb),
+		235: uint32(0xfc88e37c),
+		236: uint32(0xb7f4715c),
+		237: uint32(0xf43fd7db),
+		238: uint32(0x70644d88),
+		239: uint32(0x33afeb0f),
+		240: uint32(0x9b0538de),
+		241: uint32(0xd8ce9e59),
+		242: uint32(0x5c95040a),
+		243: uint32(0x1f5ea28d),
+		244: uint32(0x542230ad),
+		245: uint32(0x17e9962a),
+		246: uint32(0x93b20c79),
+		247: uint32(0xd079aafe),
+		248: uint32(0x054a2838),
+		249: uint32(0x46818ebf),
+		250: uint32(0xc2da14ec),
+		251: uint32(0x8111b26b),
+		252: uint32(0xca6d204b),
+		253: uint32(0x89a686cc),
+		254: uint32(0x0dfd1c9f),
+		255: uint32(0x4e36ba18),
 	},
 	1: {
-		1:   uint64(0x3651822400000000),
-		2:   uint64(0x6ca2044900000000),
-		3:   uint64(0x5af3866d00000000),
-		4:   uint64(0xd844099200000000),
-		5:   uint64(0xee158bb600000000),
-		6:   uint64(0xb4e60ddb00000000),
-		7:   uint64(0x82b78fff00000000),
-		8:   uint64(0xf18f63ff00000000),
-		9:   uint64(0xc7dee1db00000000),
-		10:  uint64(0x9d2d67b600000000),
-		11:  uint64(0xab7ce59200000000),
-		12:  uint64(0x29cb6a6d00000000),
-		13:  uint64(0x1f9ae84900000000),
-		14:  uint64(0x45696e2400000000),
-		15:  uint64(0x7338ec0000000000),
-		16:  uint64(0xa319b62500000000),
-		17:  uint64(0x9548340100000000),
-		18:  uint64(0xcfbbb26c00000000),
-		19:  uint64(0xf9ea304800000000),
-		20:  uint64(0x7b5dbfb700000000),
-		21:  uint64(0x4d0c3d9300000000),
-		22:  uint64(0x17ffbbfe00000000),
-		23:  uint64(0x21ae39da00000000),
-		24:  uint64(0x5296d5da00000000),
-		25:  uint64(0x64c757fe00000000),
-		26:  uint64(0x3e34d19300000000),
-		27:  uint64(0x086553b700000000),
-		28:  uint64(0x8ad2dc4800000000),
-		29:  uint64(0xbc835e6c00000000),
-		30:  uint64(0xe670d80100000000),
-		31:  uint64(0xd0215a2500000000),
-		32:  uint64(0x46336c4b00000000),
-		33:  uint64(0x7062ee6f00000000),
-		34:  uint64(0x2a91680200000000),
-		35:  uint64(0x1cc0ea2600000000),
-		36:  uint64(0x9e7765d900000000),
-		37:  uint64(0xa826e7fd00000000),
-		38:  uint64(0xf2d5619000000000),
-		39:  uint64(0xc484e3b400000000),
-		40:  uint64(0xb7bc0fb400000000),
-		41:  uint64(0x81ed8d9000000000),
-		42:  uint64(0xdb1e0bfd00000000),
-		43:  uint64(0xed4f89d900000000),
-		44:  uint64(0x6ff8062600000000),
-		45:  uint64(0x59a9840200000000),
-		46:  uint64(0x035a026f00000000),
-		47:  uint64(0x350b804b00000000),
-		48:  uint64(0xe52ada6e00000000),
-		49:  uint64(0xd37b584a00000000),
-		50:  uint64(0x8988de2700000000),
-		51:  uint64(0xbfd95c0300000000),
-		52:  uint64(0x3d6ed3fc00000000),
-		53:  uint64(0x0b3f51d800000000),
-		54:  uint64(0x51ccd7b500000000),
-		55:  uint64(0x679d559100000000),
-		56:  uint64(0x14a5b99100000000),
-		57:  uint64(0x22f43bb500000000),
-		58:  uint64(0x7807bdd800000000),
-		59:  uint64(0x4e563ffc00000000),
-		60:  uint64(0xcce1b00300000000),
-		61:  uint64(0xfab0322700000000),
-		62:  uint64(0xa043b44a00000000),
-		63:  uint64(0x9612366e00000000),
-		64:  uint64(0x8c66d89600000000),
-		65:  uint64(0xba375ab200000000),
-		66:  uint64(0xe0c4dcdf00000000),
-		67:  uint64(0xd6955efb00000000),
-		68:  uint64(0x5422d10400000000),
-		69:  uint64(0x6273532000000000),
-		70:  uint64(0x3880d54d00000000),
-		71:  uint64(0x0ed1576900000000),
-		72:  uint64(0x7de9bb6900000000),
-		73:  uint64(0x4bb8394d00000000),
-		74:  uint64(0x114bbf2000000000),
-		75:  uint64(0x271a3d0400000000),
-		76:  uint64(0xa5adb2fb00000000),
-		77:  uint64(0x93fc30df00000000),
-		78:  uint64(0xc90fb6b200000000),
-		79:  uint64(0xff5e349600000000),
-		80:  uint64(0x2f7f6eb300000000),
-		81:  uint64(0x192eec9700000000),
-		82:  uint64(0x43dd6afa00000000),
-		83:  uint64(0x758ce8de00000000),
-		84:  uint64(0xf73b672100000000),
-		85:  uint64(0xc16ae50500000000),
-		86:  uint64(0x9b99636800000000),
-		87:  uint64(0xadc8e14c00000000),
-		88:  uint64(0xdef00d4c00000000),
-		89:  uint64(0xe8a18f6800000000),
-		90:  uint64(0xb252090500000000),
-		91:  uint64(0x84038b2100000000),
-		92:  uint64(0x06b404de00000000),
-		93:  uint64(0x30e586fa00000000),
-		94:  uint64(0x6a16009700000000),
-		95:  uint64(0x5c4782b300000000),
-		96:  uint64(0xca55b4dd00000000),
-		97:  uint64(0xfc0436f900000000),
-		98:  uint64(0xa6f7b09400000000),
-		99:  uint64(0x90a632b000000000),
-		100: uint64(0x1211bd4f00000000),
-		101: uint64(0x24403f6b00000000),
-		102: uint64(0x7eb3b90600000000),
-		103: uint64(0x48e23b2200000000),
-		104: uint64(0x3bdad72200000000),
-		105: uint64(0x0d8b550600000000),
-		106: uint64(0x5778d36b00000000),
-		107: uint64(0x6129514f00000000),
-		108: uint64(0xe39edeb000000000),
-		109: uint64(0xd5cf5c9400000000),
-		110: uint64(0x8f3cdaf900000000),
-		111: uint64(0xb96d58dd00000000),
-		112: uint64(0x694c02f800000000),
-		113: uint64(0x5f1d80dc00000000),
-		114: uint64(0x05ee06b100000000),
-		115: uint64(0x33bf849500000000),
-		116: uint64(0xb1080b6a00000000),
-		117: uint64(0x8759894e00000000),
-		118: uint64(0xddaa0f2300000000),
-		119: uint64(0xebfb8d0700000000),
-		120: uint64(0x98c3610700000000),
-		121: uint64(0xae92e32300000000),
-		122: uint64(0xf461654e00000000),
-		123: uint64(0xc230e76a00000000),
-		124: uint64(0x4087689500000000),
-		125: uint64(0x76d6eab100000000),
-		126: uint64(0x2c256cdc00000000),
-		127: uint64(0x1a74eef800000000),
-		128: uint64(0x59cbc1f600000000),
-		129: uint64(0x6f9a43d200000000),
-		130: uint64(0x3569c5bf00000000),
-		131: uint64(0x0338479b00000000),
-		132: uint64(0x818fc86400000000),
-		133: uint64(0xb7de4a4000000000),
-		134: uint64(0xed2dcc2d00000000),
-		135: uint64(0xdb7c4e0900000000),
-		136: uint64(0xa844a20900000000),
-		137: uint64(0x9e15202d00000000),
-		138: uint64(0xc4e6a64000000000),
-		139: uint64(0xf2b7246400000000),
-		140: uint64(0x7000ab9b00000000),
-		141: uint64(0x465129bf00000000),
-		142: uint64(0x1ca2afd200000000),
-		143: uint64(0x2af32df600000000),
-		144: uint64(0xfad277d300000000),
-		145: uint64(0xcc83f5f700000000),
-		146: uint64(0x9670739a00000000),
-		147: uint64(0xa021f1be00000000),
-		148: uint64(0x22967e4100000000),
-		149: uint64(0x14c7fc6500000000),
-		150: uint64(0x4e347a0800000000),
-		151: uint64(0x7865f82c00000000),
-		152: uint64(0x0b5d142c00000000),
-		153: uint64(0x3d0c960800000000),
-		154: uint64(0x67ff106500000000),
-		155: uint64(0x51ae924100000000),
-		156: uint64(0xd3191dbe00000000),
-		157: uint64(0xe5489f9a00000000),
-		158: uint64(0xbfbb19f700000000),
-		159: uint64(0x89ea9bd300000000),
-		160: uint64(0x1ff8adbd00000000),
-		161: uint64(0x29a92f9900000000),
-		162: uint64(0x735aa9f400000000),
-		163: uint64(0x450b2bd000000000),
-		164: uint64(0xc7bca42f00000000),
-		165: uint64(0xf1ed260b00000000),
-		166: uint64(0xab1ea06600000000),
-		167: uint64(0x9d4f224200000000),
-		168: uint64(0xee77ce4200000000),
-		169: uint64(0xd8264c6600000000),
-		170: uint64(0x82d5ca0b00000000),
-		171: uint64(0xb484482f00000000),
-		172: uint64(0x3633c7d000000000),
-		173: uint64(0x006245f400000000),
-		174: uint64(0x5a91c39900000000),
-		175: uint64(0x6cc041bd00000000),
-		176: uint64(0xbce11b9800000000),
-		177: uint64(0x8ab099bc00000000),
-		178: uint64(0xd0431fd100000000),
-		179: uint64(0xe6129df500000000),
-		180: uint64(0x64a5120a00000000),
-		181: uint64(0x52f4902e00000000),
-		182: uint64(0x0807164300000000),
-		183: uint64(0x3e56946700000000),
-		184: uint64(0x4d6e786700000000),
-		185: uint64(0x7b3ffa4300000000),
-		186: uint64(0x21cc7c2e00000000),
-		187: uint64(0x179dfe0a00000000),
-		188: uint64(0x952a71f500000000),
-		189: uint64(0xa37bf3d100000000),
-		190: uint64(0xf98875bc00000000),
-		191: uint64(0xcfd9f79800000000),
-		192: uint64(0xd5ad196000000000),
-		193: uint64(0xe3fc9b4400000000),
-		194: uint64(0xb90f1d2900000000),
-		195: uint64(0x8f5e9f0d00000000),
-		196: uint64(0x0de910f200000000),
-		197: uint64(0x3bb892d600000000),
-		198: uint64(0x614b14bb00000000),
-		199: uint64(0x571a969f00000000),
-		200: uint64(0x24227a9f00000000),
-		201: uint64(0x1273f8bb00000000),
-		202: uint64(0x48807ed600000000),
-		203: uint64(0x7ed1fcf200000000),
-		204: uint64(0xfc66730d00000000),
-		205: uint64(0xca37f12900000000),
-		206: uint64(0x90c4774400000000),
-		207: uint64(0xa695f56000000000),
-		208: uint64(0x76b4af4500000000),
-		209: uint64(0x40e52d6100000000),
-		210: uint64(0x1a16ab0c00000000),
-		211: uint64(0x2c47292800000000),
-		212: uint64(0xaef0a6d700000000),
-		213: uint64(0x98a124f300000000),
-		214: uint64(0xc252a29e00000000),
-		215: uint64(0xf40320ba00000000),
-		216: uint64(0x873bccba00000000),
-		217: uint64(0xb16a4e9e00000000),
-		218: uint64(0xeb99c8f300000000),
-		219: uint64(0xddc84ad700000000),
-		220: uint64(0x5f7fc52800000000),
-		221: uint64(0x692e470c00000000),
-		222: uint64(0x33ddc16100000000),
-		223: uint64(0x058c434500000000),
-		224: uint64(0x939e752b00000000),
-		225: uint64(0xa5cff70f00000000),
-		226: uint64(0xff3c716200000000),
-		227: uint64(0xc96df34600000000),
-		228: uint64(0x4bda7cb900000000),
-		229: uint64(0x7d8bfe9d00000000),
-		230: uint64(0x277878f000000000),
-		231: uint64(0x1129fad400000000),
-		232: uint64(0x621116d400000000),
-		233: uint64(0x544094f000000000),
-		234: uint64(0x0eb3129d00000000),
-		235: uint64(0x38e290b900000000),
-		236: uint64(0xba551f4600000000),
-		237: uint64(0x8c049d6200000000),
-		238: uint64(0xd6f71b0f00000000),
-		239: uint64(0xe0a6992b00000000),
-		240: uint64(0x3087c30e00000000),
-		241: uint64(0x06d6412a00000000),
-		242: uint64(0x5c25c74700000000),
-		243: uint64(0x6a74456300000000),
-		244: uint64(0xe8c3ca9c00000000),
-		245: uint64(0xde9248b800000000),
-		246: uint64(0x8461ced500000000),
-		247: uint64(0xb2304cf100000000),
-		248: uint64(0xc108a0f100000000),
-		249: uint64(0xf75922d500000000),
-		250: uint64(0xadaaa4b800000000),
-		251: uint64(0x9bfb269c00000000),
-		252: uint64(0x194ca96300000000),
-		253: uint64(0x2f1d2b4700000000),
-		254: uint64(0x75eead2a00000000),
-		255: uint64(0x43bf2f0e00000000),
+		1:   uint32(0xe1b652ef),
+		2:   uint32(0x836bd405),
+		3:   uint32(0x62dd86ea),
+		4:   uint32(0x06d7a80b),
+		5:   uint32(0xe761fae4),
+		6:   uint32(0x85bc7c0e),
+		7:   uint32(0x640a2ee1),
+		8:   uint32(0x0cae5117),
+		9:   uint32(0xed1803f8),
+		10:  uint32(0x8fc58512),
+		11:  uint32(0x6e73d7fd),
+		12:  uint32(0x0a79f91c),
+		13:  uint32(0xebcfabf3),
+		14:  uint32(0x89122d19),
+		15:  uint32(0x68a47ff6),
+		16:  uint32(0x185ca32e),
+		17:  uint32(0xf9eaf1c1),
+		18:  uint32(0x9b37772b),
+		19:  uint32(0x7a8125c4),
+		20:  uint32(0x1e8b0b25),
+		21:  uint32(0xff3d59ca),
+		22:  uint32(0x9de0df20),
+		23:  uint32(0x7c568dcf),
+		24:  uint32(0x14f2f239),
+		25:  uint32(0xf544a0d6),
+		26:  uint32(0x9799263c),
+		27:  uint32(0x762f74d3),
+		28:  uint32(0x12255a32),
+		29:  uint32(0xf39308dd),
+		30:  uint32(0x914e8e37),
+		31:  uint32(0x70f8dcd8),
+		32:  uint32(0x30b8465d),
+		33:  uint32(0xd10e14b2),
+		34:  uint32(0xb3d39258),
+		35:  uint32(0x5265c0b7),
+		36:  uint32(0x366fee56),
+		37:  uint32(0xd7d9bcb9),
+		38:  uint32(0xb5043a53),
+		39:  uint32(0x54b268bc),
+		40:  uint32(0x3c16174a),
+		41:  uint32(0xdda045a5),
+		42:  uint32(0xbf7dc34f),
+		43:  uint32(0x5ecb91a0),
+		44:  uint32(0x3ac1bf41),
+		45:  uint32(0xdb77edae),
+		46:  uint32(0xb9aa6b44),
+		47:  uint32(0x581c39ab),
+		48:  uint32(0x28e4e573),
+		49:  uint32(0xc952b79c),
+		50:  uint32(0xab8f3176),
+		51:  uint32(0x4a396399),
+		52:  uint32(0x2e334d78),
+		53:  uint32(0xcf851f97),
+		54:  uint32(0xad58997d),
+		55:  uint32(0x4ceecb92),
+		56:  uint32(0x244ab464),
+		57:  uint32(0xc5fce68b),
+		58:  uint32(0xa7216061),
+		59:  uint32(0x4697328e),
+		60:  uint32(0x229d1c6f),
+		61:  uint32(0xc32b4e80),
+		62:  uint32(0xa1f6c86a),
+		63:  uint32(0x40409a85),
+		64:  uint32(0x60708dba),
+		65:  uint32(0x81c6df55),
+		66:  uint32(0xe31b59bf),
+		67:  uint32(0x02ad0b50),
+		68:  uint32(0x66a725b1),
+		69:  uint32(0x8711775e),
+		70:  uint32(0xe5ccf1b4),
+		71:  uint32(0x047aa35b),
+		72:  uint32(0x6cdedcad),
+		73:  uint32(0x8d688e42),
+		74:  uint32(0xefb508a8),
+		75:  uint32(0x0e035a47),
+		76:  uint32(0x6a0974a6),
+		77:  uint32(0x8bbf2649),
+		78:  uint32(0xe962a0a3),
+		79:  uint32(0x08d4f24c),
+		80:  uint32(0x782c2e94),
+		81:  uint32(0x999a7c7b),
+		82:  uint32(0xfb47fa91),
+		83:  uint32(0x1af1a87e),
+		84:  uint32(0x7efb869f),
+		85:  uint32(0x9f4dd470),
+		86:  uint32(0xfd90529a),
+		87:  uint32(0x1c260075),
+		88:  uint32(0x74827f83),
+		89:  uint32(0x95342d6c),
+		90:  uint32(0xf7e9ab86),
+		91:  uint32(0x165ff969),
+		92:  uint32(0x7255d788),
+		93:  uint32(0x93e38567),
+		94:  uint32(0xf13e038d),
+		95:  uint32(0x10885162),
+		96:  uint32(0x50c8cbe7),
+		97:  uint32(0xb17e9908),
+		98:  uint32(0xd3a31fe2),
+		99:  uint32(0x32154d0d),
+		100: uint32(0x561f63ec),
+		101: uint32(0xb7a93103),
+		102: uint32(0xd574b7e9),
+		103: uint32(0x34c2e506),
+		104: uint32(0x5c669af0),
+		105: uint32(0xbdd0c81f),
+		106: uint32(0xdf0d4ef5),
+		107: uint32(0x3ebb1c1a),
+		108: uint32(0x5ab132fb),
+		109: uint32(0xbb076014),
+		110: uint32(0xd9dae6fe),
+		111: uint32(0x386cb411),
+		112: uint32(0x489468c9),
+		113: uint32(0xa9223a26),
+		114: uint32(0xcbffbccc),
+		115: uint32(0x2a49ee23),
+		116: uint32(0x4e43c0c2),
+		117: uint32(0xaff5922d),
+		118: uint32(0xcd2814c7),
+		119: uint32(0x2c9e4628),
+		120: uint32(0x443a39de),
+		121: uint32(0xa58c6b31),
+		122: uint32(0xc751eddb),
+		123: uint32(0x26e7bf34),
+		124: uint32(0x42ed91d5),
+		125: uint32(0xa35bc33a),
+		126: uint32(0xc18645d0),
+		127: uint32(0x2030173f),
+		128: uint32(0x81e66bae),
+		129: uint32(0x60503941),
+		130: uint32(0x028dbfab),
+		131: uint32(0xe33bed44),
+		132: uint32(0x8731c3a5),
+		133: uint32(0x6687914a),
+		134: uint32(0x045a17a0),
+		135: uint32(0xe5ec454f),
+		136: uint32(0x8d483ab9),
+		137: uint32(0x6cfe6856),
+		138: uint32(0x0e23eebc),
+		139: uint32(0xef95bc53),
+		140: uint32(0x8b9f92b2),
+		141: uint32(0x6a29c05d),
+		142: uint32(0x08f446b7),
+		143: uint32(0xe9421458),
+		144: uint32(0x99bac880),
+		145: uint32(0x780c9a6f),
+		146: uint32(0x1ad11c85),
+		147: uint32(0xfb674e6a),
+		148: uint32(0x9f6d608b),
+		149: uint32(0x7edb3264),
+		150: uint32(0x1c06b48e),
+		151: uint32(0xfdb0e661),
+		152: uint32(0x95149997),
+		153: uint32(0x74a2cb78),
+		154: uint32(0x167f4d92),
+		155: uint32(0xf7c91f7d),
+		156: uint32(0x93c3319c),
+		157: uint32(0x72756373),
+		158: uint32(0x10a8e599),
+		159: uint32(0xf11eb776),
+		160: uint32(0xb15e2df3),
+		161: uint32(0x50e87f1c),
+		162: uint32(0x3235f9f6),
+		163: uint32(0xd383ab19),
+		164: uint32(0xb78985f8),
+		165: uint32(0x563fd717),
+		166: uint32(0x34e251fd),
+		167: uint32(0xd5540312),
+		168: uint32(0xbdf07ce4),
+		169: uint32(0x5c462e0b),
+		170: uint32(0x3e9ba8e1),
+		171: uint32(0xdf2dfa0e),
+		172: uint32(0xbb27d4ef),
+		173: uint32(0x5a918600),
+		174: uint32(0x384c00ea),
+		175: uint32(0xd9fa5205),
+		176: uint32(0xa9028edd),
+		177: uint32(0x48b4dc32),
+		178: uint32(0x2a695ad8),
+		179: uint32(0xcbdf0837),
+		180: uint32(0xafd526d6),
+		181: uint32(0x4e637439),
+		182: uint32(0x2cbef2d3),
+		183: uint32(0xcd08a03c),
+		184: uint32(0xa5acdfca),
+		185: uint32(0x441a8d25),
+		186: uint32(0x26c70bcf),
+		187: uint32(0xc7715920),
+		188: uint32(0xa37b77c1),
+		189: uint32(0x42cd252e),
+		190: uint32(0x2010a3c4),
+		191: uint32(0xc1a6f12b),
+		192: uint32(0xe196e614),
+		193: uint32(0x0020b4fb),
+		194: uint32(0x62fd3211),
+		195: uint32(0x834b60fe),
+		196: uint32(0xe7414e1f),
+		197: uint32(0x06f71cf0),
+		198: uint32(0x642a9a1a),
+		199: uint32(0x859cc8f5),
+		200: uint32(0xed38b703),
+		201: uint32(0x0c8ee5ec),
+		202: uint32(0x6e536306),
+		203: uint32(0x8fe531e9),
+		204: uint32(0xebef1f08),
+		205: uint32(0x0a594de7),
+		206: uint32(0x6884cb0d),
+		207: uint32(0x893299e2),
+		208: uint32(0xf9ca453a),
+		209: uint32(0x187c17d5),
+		210: uint32(0x7aa1913f),
+		211: uint32(0x9b17c3d0),
+		212: uint32(0xff1ded31),
+		213: uint32(0x1eabbfde),
+		214: uint32(0x7c763934),
+		215: uint32(0x9dc06bdb),
+		216: uint32(0xf564142d),
+		217: uint32(0x14d246c2),
+		218: uint32(0x760fc028),
+		219: uint32(0x97b992c7),
+		220: uint32(0xf3b3bc26),
+		221: uint32(0x1205eec9),
+		222: uint32(0x70d86823),
+		223: uint32(0x916e3acc),
+		224: uint32(0xd12ea049),
+		225: uint32(0x3098f2a6),
+		226: uint32(0x5245744c),
+		227: uint32(0xb3f326a3),
+		228: uint32(0xd7f90842),
+		229: uint32(0x364f5aad),
+		230: uint32(0x5492dc47),
+		231: uint32(0xb5248ea8),
+		232: uint32(0xdd80f15e),
+		233: uint32(0x3c36a3b1),
+		234: uint32(0x5eeb255b),
+		235: uint32(0xbf5d77b4),
+		236: uint32(0xdb575955),
+		237: uint32(0x3ae10bba),
+		238: uint32(0x583c8d50),
+		239: uint32(0xb98adfbf),
+		240: uint32(0xc9720367),
+		241: uint32(0x28c45188),
+		242: uint32(0x4a19d762),
+		243: uint32(0xabaf858d),
+		244: uint32(0xcfa5ab6c),
+		245: uint32(0x2e13f983),
+		246: uint32(0x4cce7f69),
+		247: uint32(0xad782d86),
+		248: uint32(0xc5dc5270),
+		249: uint32(0x246a009f),
+		250: uint32(0x46b78675),
+		251: uint32(0xa701d49a),
+		252: uint32(0xc30bfa7b),
+		253: uint32(0x22bda894),
+		254: uint32(0x40602e7e),
+		255: uint32(0xa1d67c91),
 	},
 	2: {
-		1:   uint64(0xc8179ecf00000000),
-		2:   uint64(0xd1294d4400000000),
-		3:   uint64(0x193ed38b00000000),
-		4:   uint64(0xa2539a8800000000),
-		5:   uint64(0x6a44044700000000),
-		6:   uint64(0x737ad7cc00000000),
-		7:   uint64(0xbb6d490300000000),
-		8:   uint64(0x05a145ca00000000),
-		9:   uint64(0xcdb6db0500000000),
-		10:  uint64(0xd488088e00000000),
-		11:  uint64(0x1c9f964100000000),
-		12:  uint64(0xa7f2df4200000000),
-		13:  uint64(0x6fe5418d00000000),
-		14:  uint64(0x76db920600000000),
-		15:  uint64(0xbecc0cc900000000),
-		16:  uint64(0x4b44fa4f00000000),
-		17:  uint64(0x8353648000000000),
-		18:  uint64(0x9a6db70b00000000),
-		19:  uint64(0x527a29c400000000),
-		20:  uint64(0xe91760c700000000),
-		21:  uint64(0x2100fe0800000000),
-		22:  uint64(0x383e2d8300000000),
-		23:  uint64(0xf029b34c00000000),
-		24:  uint64(0x4ee5bf8500000000),
-		25:  uint64(0x86f2214a00000000),
-		26:  uint64(0x9fccf2c100000000),
-		27:  uint64(0x57db6c0e00000000),
-		28:  uint64(0xecb6250d00000000),
-		29:  uint64(0x24a1bbc200000000),
-		30:  uint64(0x3d9f684900000000),
-		31:  uint64(0xf588f68600000000),
-		32:  uint64(0x9688f49f00000000),
-		33:  uint64(0x5e9f6a5000000000),
-		34:  uint64(0x47a1b9db00000000),
-		35:  uint64(0x8fb6271400000000),
-		36:  uint64(0x34db6e1700000000),
-		37:  uint64(0xfcccf0d800000000),
-		38:  uint64(0xe5f2235300000000),
-		39:  uint64(0x2de5bd9c00000000),
-		40:  uint64(0x9329b15500000000),
-		41:  uint64(0x5b3e2f9a00000000),
-		42:  uint64(0x4200fc1100000000),
-		43:  uint64(0x8a1762de00000000),
-		44:  uint64(0x317a2bdd00000000),
-		45:  uint64(0xf96db51200000000),
-		46:  uint64(0xe053669900000000),
-		47:  uint64(0x2844f85600000000),
-		48:  uint64(0xddcc0ed000000000),
-		49:  uint64(0x15db901f00000000),
-		50:  uint64(0x0ce5439400000000),
-		51:  uint64(0xc4f2dd5b00000000),
-		52:  uint64(0x7f9f945800000000),
-		53:  uint64(0xb7880a9700000000),
-		54:  uint64(0xaeb6d91c00000000),
-		55:  uint64(0x66a147d300000000),
-		56:  uint64(0xd86d4b1a00000000),
-		57:  uint64(0x107ad5d500000000),
-		58:  uint64(0x0944065e00000000),
-		59:  uint64(0xc153989100000000),
-		60:  uint64(0x7a3ed19200000000),
-		61:  uint64(0xb2294f5d00000000),
-		62:  uint64(0xab179cd600000000),
-		63:  uint64(0x6300021900000000),
-		64:  uint64(0x6d1798e400000000),
-		65:  uint64(0xa500062b00000000),
-		66:  uint64(0xbc3ed5a000000000),
-		67:  uint64(0x74294b6f00000000),
-		68:  uint64(0xcf44026c00000000),
-		69:  uint64(0x07539ca300000000),
-		70:  uint64(0x1e6d4f2800000000),
-		71:  uint64(0xd67ad1e700000000),
-		72:  uint64(0x68b6dd2e00000000),
-		73:  uint64(0xa0a143e100000000),
-		74:  uint64(0xb99f906a00000000),
-		75:  uint64(0x71880ea500000000),
-		76:  uint64(0xcae547a600000000),
-		77:  uint64(0x02f2d96900000000),
-		78:  uint64(0x1bcc0ae200000000),
-		79:  uint64(0xd3db942d00000000),
-		80:  uint64(0x265362ab00000000),
-		81:  uint64(0xee44fc6400000000),
-		82:  uint64(0xf77a2fef00000000),
-		83:  uint64(0x3f6db12000000000),
-		84:  uint64(0x8400f82300000000),
-		85:  uint64(0x4c1766ec00000000),
-		86:  uint64(0x5529b56700000000),
-		87:  uint64(0x9d3e2ba800000000),
-		88:  uint64(0x23f2276100000000),
-		89:  uint64(0xebe5b9ae00000000),
-		90:  uint64(0xf2db6a2500000000),
-		91:  uint64(0x3accf4ea00000000),
-		92:  uint64(0x81a1bde900000000),
-		93:  uint64(0x49b6232600000000),
-		94:  uint64(0x5088f0ad00000000),
-		95:  uint64(0x989f6e6200000000),
-		96:  uint64(0xfb9f6c7b00000000),
-		97:  uint64(0x3388f2b400000000),
-		98:  uint64(0x2ab6213f00000000),
-		99:  uint64(0xe2a1bff000000000),
-		100: uint64(0x59ccf6f300000000),
-		101: uint64(0x91db683c00000000),
-		102: uint64(0x88e5bbb700000000),
-		103: uint64(0x40f2257800000000),
-		104: uint64(0xfe3e29b100000000),
-		105: uint64(0x3629b77e00000000),
-		106: uint64(0x2f1764f500000000),
-		107: uint64(0xe700fa3a00000000),
-		108: uint64(0x5c6db33900000000),
-		109: uint64(0x947a2df600000000),
-		110: uint64(0x8d44fe7d00000000),
-		111: uint64(0x455360b200000000),
-		112: uint64(0xb0db963400000000),
-		113: uint64(0x78cc08fb00000000),
-		114: uint64(0x61f2db7000000000),
-		115: uint64(0xa9e545bf00000000),
-		116: uint64(0x12880cbc00000000),
-		117: uint64(0xda9f927300000000),
-		118: uint64(0xc3a141f800000000),
-		119: uint64(0x0bb6df3700000000),
-		120: uint64(0xb57ad3fe00000000),
-		121: uint64(0x7d6d4d3100000000),
-		122: uint64(0x64539eba00000000),
-		123: uint64(0xac44007500000000),
-		124: uint64(0x1729497600000000),
-		125: uint64(0xdf3ed7b900000000),
-		126: uint64(0xc600043200000000),
-		127: uint64(0x0e179afd00000000),
-		128: uint64(0x9b28411200000000),
-		129: uint64(0x533fdfdd00000000),
-		130: uint64(0x4a010c5600000000),
-		131: uint64(0x8216929900000000),
-		132: uint64(0x397bdb9a00000000),
-		133: uint64(0xf16c455500000000),
-		134: uint64(0xe85296de00000000),
-		135: uint64(0x2045081100000000),
-		136: uint64(0x9e8904d800000000),
-		137: uint64(0x569e9a1700000000),
-		138: uint64(0x4fa0499c00000000),
-		139: uint64(0x87b7d75300000000),
-		140: uint64(0x3cda9e5000000000),
-		141: uint64(0xf4cd009f00000000),
-		142: uint64(0xedf3d31400000000),
-		143: uint64(0x25e44ddb00000000),
-		144: uint64(0xd06cbb5d00000000),
-		145: uint64(0x187b259200000000),
-		146: uint64(0x0145f61900000000),
-		147: uint64(0xc95268d600000000),
-		148: uint64(0x723f21d500000000),
-		149: uint64(0xba28bf1a00000000),
-		150: uint64(0xa3166c9100000000),
-		151: uint64(0x6b01f25e00000000),
-		152: uint64(0xd5cdfe9700000000),
-		153: uint64(0x1dda605800000000),
-		154: uint64(0x04e4b3d300000000),
-		155: uint64(0xccf32d1c00000000),
-		156: uint64(0x779e641f00000000),
-		157: uint64(0xbf89fad000000000),
-		158: uint64(0xa6b7295b00000000),
-		159: uint64(0x6ea0b79400000000),
-		160: uint64(0x0da0b58d00000000),
-		161: uint64(0xc5b72b4200000000),
-		162: uint64(0xdc89f8c900000000),
-		163: uint64(0x149e660600000000),
-		164: uint64(0xaff32f0500000000),
-		165: uint64(0x67e4b1ca00000000),
-		166: uint64(0x7eda624100000000),
-		167: uint64(0xb6cdfc8e00000000),
-		168: uint64(0x0801f04700000000),
-		169: uint64(0xc0166e8800000000),
-		170: uint64(0xd928bd0300000000),
-		171: uint64(0x113f23cc00000000),
-		172: uint64(0xaa526acf00000000),
-		173: uint64(0x6245f40000000000),
-		174: uint64(0x7b7b278b00000000),
-		175: uint64(0xb36cb94400000000),
-		176: uint64(0x46e44fc200000000),
-		177: uint64(0x8ef3d10d00000000),
-		178: uint64(0x97cd028600000000),
-		179: uint64(0x5fda9c4900000000),
-		180: uint64(0xe4b7d54a00000000),
-		181: uint64(0x2ca04b8500000000),
-		182: uint64(0x359e980e00000000),
-		183: uint64(0xfd8906c100000000),
-		184: uint64(0x43450a0800000000),
-		185: uint64(0x8b5294c700000000),
-		186: uint64(0x926c474c00000000),
-		187: uint64(0x5a7bd98300000000),
-		188: uint64(0xe116908000000000),
-		189: uint64(0x29010e4f00000000),
-		190: uint64(0x303fddc400000000),
-		191: uint64(0xf828430b00000000),
-		192: uint64(0xf63fd9f600000000),
-		193: uint64(0x3e28473900000000),
-		194: uint64(0x271694b200000000),
-		195: uint64(0xef010a7d00000000),
-		196: uint64(0x546c437e00000000),
-		197: uint64(0x9c7bddb100000000),
-		198: uint64(0x85450e3a00000000),
-		199: uint64(0x4d5290f500000000),
-		200: uint64(0xf39e9c3c00000000),
-		201: uint64(0x3b8902f300000000),
-		202: uint64(0x22b7d17800000000),
-		203: uint64(0xeaa04fb700000000),
-		204: uint64(0x51cd06b400000000),
-		205: uint64(0x99da987b00000000),
-		206: uint64(0x80e44bf000000000),
-		207: uint64(0x48f3d53f00000000),
-		208: uint64(0xbd7b23b900000000),
-		209: uint64(0x756cbd7600000000),
-		210: uint64(0x6c526efd00000000),
-		211: uint64(0xa445f03200000000),
-		212: uint64(0x1f28b93100000000),
-		213: uint64(0xd73f27fe00000000),
-		214: uint64(0xce01f47500000000),
-		215: uint64(0x06166aba00000000),
-		216: uint64(0xb8da667300000000),
-		217: uint64(0x70cdf8bc00000000),
-		218: uint64(0x69f32b3700000000),
-		219: uint64(0xa1e4b5f800000000),
-		220: uint64(0x1a89fcfb00000000),
-		221: uint64(0xd29e623400000000),
-		222: uint64(0xcba0b1bf00000000),
-		223: uint64(0x03b72f7000000000),
-		224: uint64(0x60b72d6900000000),
-		225: uint64(0xa8a0b3a600000000),
-		226: uint64(0xb19e602d00000000),
-		227: uint64(0x7989fee200000000),
-		228: uint64(0xc2e4b7e100000000),
-		229: uint64(0x0af3292e00000000),
-		230: uint64(0x13cdfaa500000000),
-		231: uint64(0xdbda646a00000000),
-		232: uint64(0x651668a300000000),
-		233: uint64(0xad01f66c00000000),
-		234: uint64(0xb43f25e700000000),
-		235: uint64(0x7c28bb2800000000),
-		236: uint64(0xc745f22b00000000),
-		237: uint64(0x0f526ce400000000),
-		238: uint64(0x166cbf6f00000000),
-		239: uint64(0xde7b21a000000000),
-		240: uint64(0x2bf3d72600000000),
-		241: uint64(0xe3e449e900000000),
-		242: uint64(0xfada9a6200000000),
-		243: uint64(0x32cd04ad00000000),
-		244: uint64(0x89a04dae00000000),
-		245: uint64(0x41b7d36100000000),
-		246: uint64(0x588900ea00000000),
-		247: uint64(0x909e9e2500000000),
-		248: uint64(0x2e5292ec00000000),
-		249: uint64(0xe6450c2300000000),
-		250: uint64(0xff7bdfa800000000),
-		251: uint64(0x376c416700000000),
-		252: uint64(0x8c01086400000000),
-		253: uint64(0x441696ab00000000),
-		254: uint64(0x5d28452000000000),
-		255: uint64(0x953fdbef00000000),
+		1:   uint32(0x5880e2d7),
+		2:   uint32(0xf106b474),
+		3:   uint32(0xa98656a3),
+		4:   uint32(0xe20d68e9),
+		5:   uint32(0xba8d8a3e),
+		6:   uint32(0x130bdc9d),
+		7:   uint32(0x4b8b3e4a),
+		8:   uint32(0x851da109),
+		9:   uint32(0xdd9d43de),
+		10:  uint32(0x741b157d),
+		11:  uint32(0x2c9bf7aa),
+		12:  uint32(0x6710c9e0),
+		13:  uint32(0x3f902b37),
+		14:  uint32(0x96167d94),
+		15:  uint32(0xce969f43),
+		16:  uint32(0x0a3b4213),
+		17:  uint32(0x52bba0c4),
+		18:  uint32(0xfb3df667),
+		19:  uint32(0xa3bd14b0),
+		20:  uint32(0xe8362afa),
+		21:  uint32(0xb0b6c82d),
+		22:  uint32(0x19309e8e),
+		23:  uint32(0x41b07c59),
+		24:  uint32(0x8f26e31a),
+		25:  uint32(0xd7a601cd),
+		26:  uint32(0x7e20576e),
+		27:  uint32(0x26a0b5b9),
+		28:  uint32(0x6d2b8bf3),
+		29:  uint32(0x35ab6924),
+		30:  uint32(0x9c2d3f87),
+		31:  uint32(0xc4addd50),
+		32:  uint32(0x14768426),
+		33:  uint32(0x4cf666f1),
+		34:  uint32(0xe5703052),
+		35:  uint32(0xbdf0d285),
+		36:  uint32(0xf67beccf),
+		37:  uint32(0xaefb0e18),
+		38:  uint32(0x077d58bb),
+		39:  uint32(0x5ffdba6c),
+		40:  uint32(0x916b252f),
+		41:  uint32(0xc9ebc7f8),
+		42:  uint32(0x606d915b),
+		43:  uint32(0x38ed738c),
+		44:  uint32(0x73664dc6),
+		45:  uint32(0x2be6af11),
+		46:  uint32(0x8260f9b2),
+		47:  uint32(0xdae01b65),
+		48:  uint32(0x1e4dc635),
+		49:  uint32(0x46cd24e2),
+		50:  uint32(0xef4b7241),
+		51:  uint32(0xb7cb9096),
+		52:  uint32(0xfc40aedc),
+		53:  uint32(0xa4c04c0b),
+		54:  uint32(0x0d461aa8),
+		55:  uint32(0x55c6f87f),
+		56:  uint32(0x9b50673c),
+		57:  uint32(0xc3d085eb),
+		58:  uint32(0x6a56d348),
+		59:  uint32(0x32d6319f),
+		60:  uint32(0x795d0fd5),
+		61:  uint32(0x21dded02),
+		62:  uint32(0x885bbba1),
+		63:  uint32(0xd0db5976),
+		64:  uint32(0x28ec084d),
+		65:  uint32(0x706cea9a),
+		66:  uint32(0xd9eabc39),
+		67:  uint32(0x816a5eee),
+		68:  uint32(0xcae160a4),
+		69:  uint32(0x92618273),
+		70:  uint32(0x3be7d4d0),
+		71:  uint32(0x63673607),
+		72:  uint32(0xadf1a944),
+		73:  uint32(0xf5714b93),
+		74:  uint32(0x5cf71d30),
+		75:  uint32(0x0477ffe7),
+		76:  uint32(0x4ffcc1ad),
+		77:  uint32(0x177c237a),
+		78:  uint32(0xbefa75d9),
+		79:  uint32(0xe67a970e),
+		80:  uint32(0x22d74a5e),
+		81:  uint32(0x7a57a889),
+		82:  uint32(0xd3d1fe2a),
+		83:  uint32(0x8b511cfd),
+		84:  uint32(0xc0da22b7),
+		85:  uint32(0x985ac060),
+		86:  uint32(0x31dc96c3),
+		87:  uint32(0x695c7414),
+		88:  uint32(0xa7caeb57),
+		89:  uint32(0xff4a0980),
+		90:  uint32(0x56cc5f23),
+		91:  uint32(0x0e4cbdf4),
+		92:  uint32(0x45c783be),
+		93:  uint32(0x1d476169),
+		94:  uint32(0xb4c137ca),
+		95:  uint32(0xec41d51d),
+		96:  uint32(0x3c9a8c6b),
+		97:  uint32(0x641a6ebc),
+		98:  uint32(0xcd9c381f),
+		99:  uint32(0x951cdac8),
+		100: uint32(0xde97e482),
+		101: uint32(0x86170655),
+		102: uint32(0x2f9150f6),
+		103: uint32(0x7711b221),
+		104: uint32(0xb9872d62),
+		105: uint32(0xe107cfb5),
+		106: uint32(0x48819916),
+		107: uint32(0x10017bc1),
+		108: uint32(0x5b8a458b),
+		109: uint32(0x030aa75c),
+		110: uint32(0xaa8cf1ff),
+		111: uint32(0xf20c1328),
+		112: uint32(0x36a1ce78),
+		113: uint32(0x6e212caf),
+		114: uint32(0xc7a77a0c),
+		115: uint32(0x9f2798db),
+		116: uint32(0xd4aca691),
+		117: uint32(0x8c2c4446),
+		118: uint32(0x25aa12e5),
+		119: uint32(0x7d2af032),
+		120: uint32(0xb3bc6f71),
+		121: uint32(0xeb3c8da6),
+		122: uint32(0x42badb05),
+		123: uint32(0x1a3a39d2),
+		124: uint32(0x51b10798),
+		125: uint32(0x0931e54f),
+		126: uint32(0xa0b7b3ec),
+		127: uint32(0xf837513b),
+		128: uint32(0x50d8119a),
+		129: uint32(0x0858f34d),
+		130: uint32(0xa1dea5ee),
+		131: uint32(0xf95e4739),
+		132: uint32(0xb2d57973),
+		133: uint32(0xea559ba4),
+		134: uint32(0x43d3cd07),
+		135: uint32(0x1b532fd0),
+		136: uint32(0xd5c5b093),
+		137: uint32(0x8d455244),
+		138: uint32(0x24c304e7),
+		139: uint32(0x7c43e630),
+		140: uint32(0x37c8d87a),
+		141: uint32(0x6f483aad),
+		142: uint32(0xc6ce6c0e),
+		143: uint32(0x9e4e8ed9),
+		144: uint32(0x5ae35389),
+		145: uint32(0x0263b15e),
+		146: uint32(0xabe5e7fd),
+		147: uint32(0xf365052a),
+		148: uint32(0xb8ee3b60),
+		149: uint32(0xe06ed9b7),
+		150: uint32(0x49e88f14),
+		151: uint32(0x11686dc3),
+		152: uint32(0xdffef280),
+		153: uint32(0x877e1057),
+		154: uint32(0x2ef846f4),
+		155: uint32(0x7678a423),
+		156: uint32(0x3df39a69),
+		157: uint32(0x657378be),
+		158: uint32(0xccf52e1d),
+		159: uint32(0x9475ccca),
+		160: uint32(0x44ae95bc),
+		161: uint32(0x1c2e776b),
+		162: uint32(0xb5a821c8),
+		163: uint32(0xed28c31f),
+		164: uint32(0xa6a3fd55),
+		165: uint32(0xfe231f82),
+		166: uint32(0x57a54921),
+		167: uint32(0x0f25abf6),
+		168: uint32(0xc1b334b5),
+		169: uint32(0x9933d662),
+		170: uint32(0x30b580c1),
+		171: uint32(0x68356216),
+		172: uint32(0x23be5c5c),
+		173: uint32(0x7b3ebe8b),
+		174: uint32(0xd2b8e828),
+		175: uint32(0x8a380aff),
+		176: uint32(0x4e95d7af),
+		177: uint32(0x16153578),
+		178: uint32(0xbf9363db),
+		179: uint32(0xe713810c),
+		180: uint32(0xac98bf46),
+		181: uint32(0xf4185d91),
+		182: uint32(0x5d9e0b32),
+		183: uint32(0x051ee9e5),
+		184: uint32(0xcb8876a6),
+		185: uint32(0x93089471),
+		186: uint32(0x3a8ec2d2),
+		187: uint32(0x620e2005),
+		188: uint32(0x29851e4f),
+		189: uint32(0x7105fc98),
+		190: uint32(0xd883aa3b),
+		191: uint32(0x800348ec),
+		192: uint32(0x783419d7),
+		193: uint32(0x20b4fb00),
+		194: uint32(0x8932ada3),
+		195: uint32(0xd1b24f74),
+		196: uint32(0x9a39713e),
+		197: uint32(0xc2b993e9),
+		198: uint32(0x6b3fc54a),
+		199: uint32(0x33bf279d),
+		200: uint32(0xfd29b8de),
+		201: uint32(0xa5a95a09),
+		202: uint32(0x0c2f0caa),
+		203: uint32(0x54afee7d),
+		204: uint32(0x1f24d037),
+		205: uint32(0x47a432e0),
+		206: uint32(0xee226443),
+		207: uint32(0xb6a28694),
+		208: uint32(0x720f5bc4),
+		209: uint32(0x2a8fb913),
+		210: uint32(0x8309efb0),
+		211: uint32(0xdb890d67),
+		212: uint32(0x9002332d),
+		213: uint32(0xc882d1fa),
+		214: uint32(0x61048759),
+		215: uint32(0x3984658e),
+		216: uint32(0xf712facd),
+		217: uint32(0xaf92181a),
+		218: uint32(0x06144eb9),
+		219: uint32(0x5e94ac6e),
+		220: uint32(0x151f9224),
+		221: uint32(0x4d9f70f3),
+		222: uint32(0xe4192650),
+		223: uint32(0xbc99c487),
+		224: uint32(0x6c429df1),
+		225: uint32(0x34c27f26),
+		226: uint32(0x9d442985),
+		227: uint32(0xc5c4cb52),
+		228: uint32(0x8e4ff518),
+		229: uint32(0xd6cf17cf),
+		230: uint32(0x7f49416c),
+		231: uint32(0x27c9a3bb),
+		232: uint32(0xe95f3cf8),
+		233: uint32(0xb1dfde2f),
+		234: uint32(0x1859888c),
+		235: uint32(0x40d96a5b),
+		236: uint32(0x0b525411),
+		237: uint32(0x53d2b6c6),
+		238: uint32(0xfa54e065),
+		239: uint32(0xa2d402b2),
+		240: uint32(0x6679dfe2),
+		241: uint32(0x3ef93d35),
+		242: uint32(0x977f6b96),
+		243: uint32(0xcfff8941),
+		244: uint32(0x8474b70b),
+		245: uint32(0xdcf455dc),
+		246: uint32(0x7572037f),
+		247: uint32(0x2df2e1a8),
+		248: uint32(0xe3647eeb),
+		249: uint32(0xbbe49c3c),
+		250: uint32(0x1262ca9f),
+		251: uint32(0x4ae22848),
+		252: uint32(0x01691602),
+		253: uint32(0x59e9f4d5),
+		254: uint32(0xf06fa276),
+		255: uint32(0xa8ef40a1),
 	},
 	3: {
-		1:   uint64(0x95d4709500000000),
-		2:   uint64(0x6baf90f100000000),
-		3:   uint64(0xfe7be06400000000),
-		4:   uint64(0x9758503800000000),
-		5:   uint64(0x028c20ad00000000),
-		6:   uint64(0xfcf7c0c900000000),
-		7:   uint64(0x6923b05c00000000),
-		8:   uint64(0x2eb1a07000000000),
-		9:   uint64(0xbb65d0e500000000),
-		10:  uint64(0x451e308100000000),
-		11:  uint64(0xd0ca401400000000),
-		12:  uint64(0xb9e9f04800000000),
-		13:  uint64(0x2c3d80dd00000000),
-		14:  uint64(0xd24660b900000000),
-		15:  uint64(0x4792102c00000000),
-		16:  uint64(0x5c6241e100000000),
-		17:  uint64(0xc9b6317400000000),
-		18:  uint64(0x37cdd11000000000),
-		19:  uint64(0xa219a18500000000),
-		20:  uint64(0xcb3a11d900000000),
-		21:  uint64(0x5eee614c00000000),
-		22:  uint64(0xa095812800000000),
-		23:  uint64(0x3541f1bd00000000),
-		24:  uint64(0x72d3e19100000000),
-		25:  uint64(0xe707910400000000),
-		26:  uint64(0x197c716000000000),
-		27:  uint64(0x8ca801f500000000),
-		28:  uint64(0xe58bb1a900000000),
-		29:  uint64(0x705fc13c00000000),
-		30:  uint64(0x8e24215800000000),
-		31:  uint64(0x1bf051cd00000000),
-		32:  uint64(0xf9c2f31900000000),
-		33:  uint64(0x6c16838c00000000),
-		34:  uint64(0x926d63e800000000),
-		35:  uint64(0x07b9137d00000000),
-		36:  uint64(0x6e9aa32100000000),
-		37:  uint64(0xfb4ed3b400000000),
-		38:  uint64(0x053533d000000000),
-		39:  uint64(0x90e1434500000000),
-		40:  uint64(0xd773536900000000),
-		41:  uint64(0x42a723fc00000000),
-		42:  uint64(0xbcdcc39800000000),
-		43:  uint64(0x2908b30d00000000),
-		44:  uint64(0x402b035100000000),
-		45:  uint64(0xd5ff73c400000000),
-		46:  uint64(0x2b8493a000000000),
-		47:  uint64(0xbe50e33500000000),
-		48:  uint64(0xa5a0b2f800000000),
-		49:  uint64(0x3074c26d00000000),
-		50:  uint64(0xce0f220900000000),
-		51:  uint64(0x5bdb529c00000000),
-		52:  uint64(0x32f8e2c000000000),
-		53:  uint64(0xa72c925500000000),
-		54:  uint64(0x5957723100000000),
-		55:  uint64(0xcc8302a400000000),
-		56:  uint64(0x8b11128800000000),
-		57:  uint64(0x1ec5621d00000000),
-		58:  uint64(0xe0be827900000000),
-		59:  uint64(0x756af2ec00000000),
-		60:  uint64(0x1c4942b000000000),
-		61:  uint64(0x899d322500000000),
-		62:  uint64(0x77e6d24100000000),
-		63:  uint64(0xe232a2d400000000),
-		64:  uint64(0xf285e73300000000),
-		65:  uint64(0x675197a600000000),
-		66:  uint64(0x992a77c200000000),
-		67:  uint64(0x0cfe075700000000),
-		68:  uint64(0x65ddb70b00000000),
-		69:  uint64(0xf009c79e00000000),
-		70:  uint64(0x0e7227fa00000000),
-		71:  uint64(0x9ba6576f00000000),
-		72:  uint64(0xdc34474300000000),
-		73:  uint64(0x49e037d600000000),
-		74:  uint64(0xb79bd7b200000000),
-		75:  uint64(0x224fa72700000000),
-		76:  uint64(0x4b6c177b00000000),
-		77:  uint64(0xdeb867ee00000000),
-		78:  uint64(0x20c3878a00000000),
-		79:  uint64(0xb517f71f00000000),
-		80:  uint64(0xaee7a6d200000000),
-		81:  uint64(0x3b33d64700000000),
-		82:  uint64(0xc548362300000000),
-		83:  uint64(0x509c46b600000000),
-		84:  uint64(0x39bff6ea00000000),
-		85:  uint64(0xac6b867f00000000),
-		86:  uint64(0x5210661b00000000),
-		87:  uint64(0xc7c4168e00000000),
-		88:  uint64(0x805606a200000000),
-		89:  uint64(0x1582763700000000),
-		90:  uint64(0xebf9965300000000),
-		91:  uint64(0x7e2de6c600000000),
-		92:  uint64(0x170e569a00000000),
-		93:  uint64(0x82da260f00000000),
-		94:  uint64(0x7ca1c66b00000000),
-		95:  uint64(0xe975b6fe00000000),
-		96:  uint64(0x0b47142a00000000),
-		97:  uint64(0x9e9364bf00000000),
-		98:  uint64(0x60e884db00000000),
-		99:  uint64(0xf53cf44e00000000),
-		100: uint64(0x9c1f441200000000),
-		101: uint64(0x09cb348700000000),
-		102: uint64(0xf7b0d4e300000000),
-		103: uint64(0x6264a47600000000),
-		104: uint64(0x25f6b45a00000000),
-		105: uint64(0xb022c4cf00000000),
-		106: uint64(0x4e5924ab00000000),
-		107: uint64(0xdb8d543e00000000),
-		108: uint64(0xb2aee46200000000),
-		109: uint64(0x277a94f700000000),
-		110: uint64(0xd901749300000000),
-		111: uint64(0x4cd5040600000000),
-		112: uint64(0x572555cb00000000),
-		113: uint64(0xc2f1255e00000000),
-		114: uint64(0x3c8ac53a00000000),
-		115: uint64(0xa95eb5af00000000),
-		116: uint64(0xc07d05f300000000),
-		117: uint64(0x55a9756600000000),
-		118: uint64(0xabd2950200000000),
-		119: uint64(0x3e06e59700000000),
-		120: uint64(0x7994f5bb00000000),
-		121: uint64(0xec40852e00000000),
-		122: uint64(0x123b654a00000000),
-		123: uint64(0x87ef15df00000000),
-		124: uint64(0xeecca58300000000),
-		125: uint64(0x7b18d51600000000),
-		126: uint64(0x8563357200000000),
-		127: uint64(0x10b745e700000000),
-		128: uint64(0xe40bcf6700000000),
-		129: uint64(0x71dfbff200000000),
-		130: uint64(0x8fa45f9600000000),
-		131: uint64(0x1a702f0300000000),
-		132: uint64(0x73539f5f00000000),
-		133: uint64(0xe687efca00000000),
-		134: uint64(0x18fc0fae00000000),
-		135: uint64(0x8d287f3b00000000),
-		136: uint64(0xcaba6f1700000000),
-		137: uint64(0x5f6e1f8200000000),
-		138: uint64(0xa115ffe600000000),
-		139: uint64(0x34c18f7300000000),
-		140: uint64(0x5de23f2f00000000),
-		141: uint64(0xc8364fba00000000),
-		142: uint64(0x364dafde00000000),
-		143: uint64(0xa399df4b00000000),
-		144: uint64(0xb8698e8600000000),
-		145: uint64(0x2dbdfe1300000000),
-		146: uint64(0xd3c61e7700000000),
-		147: uint64(0x46126ee200000000),
-		148: uint64(0x2f31debe00000000),
-		149: uint64(0xbae5ae2b00000000),
-		150: uint64(0x449e4e4f00000000),
-		151: uint64(0xd14a3eda00000000),
-		152: uint64(0x96d82ef600000000),
-		153: uint64(0x030c5e6300000000),
-		154: uint64(0xfd77be0700000000),
-		155: uint64(0x68a3ce9200000000),
-		156: uint64(0x01807ece00000000),
-		157: uint64(0x94540e5b00000000),
-		158: uint64(0x6a2fee3f00000000),
-		159: uint64(0xfffb9eaa00000000),
-		160: uint64(0x1dc93c7e00000000),
-		161: uint64(0x881d4ceb00000000),
-		162: uint64(0x7666ac8f00000000),
-		163: uint64(0xe3b2dc1a00000000),
-		164: uint64(0x8a916c4600000000),
-		165: uint64(0x1f451cd300000000),
-		166: uint64(0xe13efcb700000000),
-		167: uint64(0x74ea8c2200000000),
-		168: uint64(0x33789c0e00000000),
-		169: uint64(0xa6acec9b00000000),
-		170: uint64(0x58d70cff00000000),
-		171: uint64(0xcd037c6a00000000),
-		172: uint64(0xa420cc3600000000),
-		173: uint64(0x31f4bca300000000),
-		174: uint64(0xcf8f5cc700000000),
-		175: uint64(0x5a5b2c5200000000),
-		176: uint64(0x41ab7d9f00000000),
-		177: uint64(0xd47f0d0a00000000),
-		178: uint64(0x2a04ed6e00000000),
-		179: uint64(0xbfd09dfb00000000),
-		180: uint64(0xd6f32da700000000),
-		181: uint64(0x43275d3200000000),
-		182: uint64(0xbd5cbd5600000000),
-		183: uint64(0x2888cdc300000000),
-		184: uint64(0x6f1addef00000000),
-		185: uint64(0xfacead7a00000000),
-		186: uint64(0x04b54d1e00000000),
-		187: uint64(0x91613d8b00000000),
-		188: uint64(0xf8428dd700000000),
-		189: uint64(0x6d96fd4200000000),
-		190: uint64(0x93ed1d2600000000),
-		191: uint64(0x06396db300000000),
-		192: uint64(0x168e285400000000),
-		193: uint64(0x835a58c100000000),
-		194: uint64(0x7d21b8a500000000),
-		195: uint64(0xe8f5c83000000000),
-		196: uint64(0x81d6786c00000000),
-		197: uint64(0x140208f900000000),
-		198: uint64(0xea79e89d00000000),
-		199: uint64(0x7fad980800000000),
-		200: uint64(0x383f882400000000),
-		201: uint64(0xadebf8b100000000),
-		202: uint64(0x539018d500000000),
-		203: uint64(0xc644684000000000),
-		204: uint64(0xaf67d81c00000000),
-		205: uint64(0x3ab3a88900000000),
-		206: uint64(0xc4c848ed00000000),
-		207: uint64(0x511c387800000000),
-		208: uint64(0x4aec69b500000000),
-		209: uint64(0xdf38192000000000),
-		210: uint64(0x2143f94400000000),
-		211: uint64(0xb49789d100000000),
-		212: uint64(0xddb4398d00000000),
-		213: uint64(0x4860491800000000),
-		214: uint64(0xb61ba97c00000000),
-		215: uint64(0x23cfd9e900000000),
-		216: uint64(0x645dc9c500000000),
-		217: uint64(0xf189b95000000000),
-		218: uint64(0x0ff2593400000000),
-		219: uint64(0x9a2629a100000000),
-		220: uint64(0xf30599fd00000000),
-		221: uint64(0x66d1e96800000000),
-		222: uint64(0x98aa090c00000000),
-		223: uint64(0x0d7e799900000000),
-		224: uint64(0xef4cdb4d00000000),
-		225: uint64(0x7a98abd800000000),
-		226: uint64(0x84e34bbc00000000),
-		227: uint64(0x11373b2900000000),
-		228: uint64(0x78148b7500000000),
-		229: uint64(0xedc0fbe000000000),
-		230: uint64(0x13bb1b8400000000),
-		231: uint64(0x866f6b1100000000),
-		232: uint64(0xc1fd7b3d00000000),
-		233: uint64(0x54290ba800000000),
-		234: uint64(0xaa52ebcc00000000),
-		235: uint64(0x3f869b5900000000),
-		236: uint64(0x56a52b0500000000),
-		237: uint64(0xc3715b9000000000),
-		238: uint64(0x3d0abbf400000000),
-		239: uint64(0xa8decb6100000000),
-		240: uint64(0xb32e9aac00000000),
-		241: uint64(0x26faea3900000000),
-		242: uint64(0xd8810a5d00000000),
-		243: uint64(0x4d557ac800000000),
-		244: uint64(0x2476ca9400000000),
-		245: uint64(0xb1a2ba0100000000),
-		246: uint64(0x4fd95a6500000000),
-		247: uint64(0xda0d2af000000000),
-		248: uint64(0x9d9f3adc00000000),
-		249: uint64(0x084b4a4900000000),
-		250: uint64(0xf630aa2d00000000),
-		251: uint64(0x63e4dab800000000),
-		252: uint64(0x0ac76ae400000000),
-		253: uint64(0x9f131a7100000000),
-		254: uint64(0x6168fa1500000000),
-		255: uint64(0xf4bc8a8000000000),
-	},
-	4: {
-		1:   uint64(0x1f17f08000000000),
-		2:   uint64(0x7f2891da00000000),
-		3:   uint64(0x603f615a00000000),
-		4:   uint64(0xbf56536e00000000),
-		5:   uint64(0xa041a3ee00000000),
-		6:   uint64(0xc07ec2b400000000),
-		7:   uint64(0xdf69323400000000),
-		8:   uint64(0x7eada6dc00000000),
-		9:   uint64(0x61ba565c00000000),
-		10:  uint64(0x0185370600000000),
-		11:  uint64(0x1e92c78600000000),
-		12:  uint64(0xc1fbf5b200000000),
-		13:  uint64(0xdeec053200000000),
-		14:  uint64(0xbed3646800000000),
-		15:  uint64(0xa1c494e800000000),
-		16:  uint64(0xbd5c3c6200000000),
-		17:  uint64(0xa24bcce200000000),
-		18:  uint64(0xc274adb800000000),
-		19:  uint64(0xdd635d3800000000),
-		20:  uint64(0x020a6f0c00000000),
-		21:  uint64(0x1d1d9f8c00000000),
-		22:  uint64(0x7d22fed600000000),
-		23:  uint64(0x62350e5600000000),
-		24:  uint64(0xc3f19abe00000000),
-		25:  uint64(0xdce66a3e00000000),
-		26:  uint64(0xbcd90b6400000000),
-		27:  uint64(0xa3cefbe400000000),
-		28:  uint64(0x7ca7c9d000000000),
-		29:  uint64(0x63b0395000000000),
-		30:  uint64(0x038f580a00000000),
-		31:  uint64(0x1c98a88a00000000),
-		32:  uint64(0x7ab978c400000000),
-		33:  uint64(0x65ae884400000000),
-		34:  uint64(0x0591e91e00000000),
-		35:  uint64(0x1a86199e00000000),
-		36:  uint64(0xc5ef2baa00000000),
-		37:  uint64(0xdaf8db2a00000000),
-		38:  uint64(0xbac7ba7000000000),
-		39:  uint64(0xa5d04af000000000),
-		40:  uint64(0x0414de1800000000),
-		41:  uint64(0x1b032e9800000000),
-		42:  uint64(0x7b3c4fc200000000),
-		43:  uint64(0x642bbf4200000000),
-		44:  uint64(0xbb428d7600000000),
-		45:  uint64(0xa4557df600000000),
-		46:  uint64(0xc46a1cac00000000),
-		47:  uint64(0xdb7dec2c00000000),
-		48:  uint64(0xc7e544a600000000),
-		49:  uint64(0xd8f2b42600000000),
-		50:  uint64(0xb8cdd57c00000000),
-		51:  uint64(0xa7da25fc00000000),
-		52:  uint64(0x78b317c800000000),
-		53:  uint64(0x67a4e74800000000),
-		54:  uint64(0x079b861200000000),
-		55:  uint64(0x188c769200000000),
-		56:  uint64(0xb948e27a00000000),
-		57:  uint64(0xa65f12fa00000000),
-		58:  uint64(0xc66073a000000000),
-		59:  uint64(0xd977832000000000),
-		60:  uint64(0x061eb11400000000),
-		61:  uint64(0x1909419400000000),
-		62:  uint64(0x793620ce00000000),
-		63:  uint64(0x6621d04e00000000),
-		64:  uint64(0xb574805300000000),
-		65:  uint64(0xaa6370d300000000),
-		66:  uint64(0xca5c118900000000),
-		67:  uint64(0xd54be10900000000),
-		68:  uint64(0x0a22d33d00000000),
-		69:  uint64(0x153523bd00000000),
-		70:  uint64(0x750a42e700000000),
-		71:  uint64(0x6a1db26700000000),
-		72:  uint64(0xcbd9268f00000000),
-		73:  uint64(0xd4ced60f00000000),
-		74:  uint64(0xb4f1b75500000000),
-		75:  uint64(0xabe647d500000000),
-		76:  uint64(0x748f75e100000000),
-		77:  uint64(0x6b98856100000000),
-		78:  uint64(0x0ba7e43b00000000),
-		79:  uint64(0x14b014bb00000000),
-		80:  uint64(0x0828bc3100000000),
-		81:  uint64(0x173f4cb100000000),
-		82:  uint64(0x77002deb00000000),
-		83:  uint64(0x6817dd6b00000000),
-		84:  uint64(0xb77eef5f00000000),
-		85:  uint64(0xa8691fdf00000000),
-		86:  uint64(0xc8567e8500000000),
-		87:  uint64(0xd7418e0500000000),
-		88:  uint64(0x76851aed00000000),
-		89:  uint64(0x6992ea6d00000000),
-		90:  uint64(0x09ad8b3700000000),
-		91:  uint64(0x16ba7bb700000000),
-		92:  uint64(0xc9d3498300000000),
-		93:  uint64(0xd6c4b90300000000),
-		94:  uint64(0xb6fbd85900000000),
-		95:  uint64(0xa9ec28d900000000),
-		96:  uint64(0xcfcdf89700000000),
-		97:  uint64(0xd0da081700000000),
-		98:  uint64(0xb0e5694d00000000),
-		99:  uint64(0xaff299cd00000000),
-		100: uint64(0x709babf900000000),
-		101: uint64(0x6f8c5b7900000000),
-		102: uint64(0x0fb33a2300000000),
-		103: uint64(0x10a4caa300000000),
-		104: uint64(0xb1605e4b00000000),
-		105: uint64(0xae77aecb00000000),
-		106: uint64(0xce48cf9100000000),
-		107: uint64(0xd15f3f1100000000),
-		108: uint64(0x0e360d2500000000),
-		109: uint64(0x1121fda500000000),
-		110: uint64(0x711e9cff00000000),
-		111: uint64(0x6e096c7f00000000),
-		112: uint64(0x7291c4f500000000),
-		113: uint64(0x6d86347500000000),
-		114: uint64(0x0db9552f00000000),
-		115: uint64(0x12aea5af00000000),
-		116: uint64(0xcdc7979b00000000),
-		117: uint64(0xd2d0671b00000000),
-		118: uint64(0xb2ef064100000000),
-		119: uint64(0xadf8f6c100000000),
-		120: uint64(0x0c3c622900000000),
-		121: uint64(0x132b92a900000000),
-		122: uint64(0x7314f3f300000000),
-		123: uint64(0x6c03037300000000),
-		124: uint64(0xb36a314700000000),
-		125: uint64(0xac7dc1c700000000),
-		126: uint64(0xcc42a09d00000000),
-		127: uint64(0xd355501d00000000),
-		128: uint64(0x6ae900a700000000),
-		129: uint64(0x75fef02700000000),
-		130: uint64(0x15c1917d00000000),
-		131: uint64(0x0ad661fd00000000),
-		132: uint64(0xd5bf53c900000000),
-		133: uint64(0xcaa8a34900000000),
-		134: uint64(0xaa97c21300000000),
-		135: uint64(0xb580329300000000),
-		136: uint64(0x1444a67b00000000),
-		137: uint64(0x0b5356fb00000000),
-		138: uint64(0x6b6c37a100000000),
-		139: uint64(0x747bc72100000000),
-		140: uint64(0xab12f51500000000),
-		141: uint64(0xb405059500000000),
-		142: uint64(0xd43a64cf00000000),
-		143: uint64(0xcb2d944f00000000),
-		144: uint64(0xd7b53cc500000000),
-		145: uint64(0xc8a2cc4500000000),
-		146: uint64(0xa89dad1f00000000),
-		147: uint64(0xb78a5d9f00000000),
-		148: uint64(0x68e36fab00000000),
-		149: uint64(0x77f49f2b00000000),
-		150: uint64(0x17cbfe7100000000),
-		151: uint64(0x08dc0ef100000000),
-		152: uint64(0xa9189a1900000000),
-		153: uint64(0xb60f6a9900000000),
-		154: uint64(0xd6300bc300000000),
-		155: uint64(0xc927fb4300000000),
-		156: uint64(0x164ec97700000000),
-		157: uint64(0x095939f700000000),
-		158: uint64(0x696658ad00000000),
-		159: uint64(0x7671a82d00000000),
-		160: uint64(0x1050786300000000),
-		161: uint64(0x0f4788e300000000),
-		162: uint64(0x6f78e9b900000000),
-		163: uint64(0x706f193900000000),
-		164: uint64(0xaf062b0d00000000),
-		165: uint64(0xb011db8d00000000),
-		166: uint64(0xd02ebad700000000),
-		167: uint64(0xcf394a5700000000),
-		168: uint64(0x6efddebf00000000),
-		169: uint64(0x71ea2e3f00000000),
-		170: uint64(0x11d54f6500000000),
-		171: uint64(0x0ec2bfe500000000),
-		172: uint64(0xd1ab8dd100000000),
-		173: uint64(0xcebc7d5100000000),
-		174: uint64(0xae831c0b00000000),
-		175: uint64(0xb194ec8b00000000),
-		176: uint64(0xad0c440100000000),
-		177: uint64(0xb21bb48100000000),
-		178: uint64(0xd224d5db00000000),
-		179: uint64(0xcd33255b00000000),
-		180: uint64(0x125a176f00000000),
-		181: uint64(0x0d4de7ef00000000),
-		182: uint64(0x6d7286b500000000),
-		183: uint64(0x7265763500000000),
-		184: uint64(0xd3a1e2dd00000000),
-		185: uint64(0xccb6125d00000000),
-		186: uint64(0xac89730700000000),
-		187: uint64(0xb39e838700000000),
-		188: uint64(0x6cf7b1b300000000),
-		189: uint64(0x73e0413300000000),
-		190: uint64(0x13df206900000000),
-		191: uint64(0x0cc8d0e900000000),
-		192: uint64(0xdf9d80f400000000),
-		193: uint64(0xc08a707400000000),
-		194: uint64(0xa0b5112e00000000),
-		195: uint64(0xbfa2e1ae00000000),
-		196: uint64(0x60cbd39a00000000),
-		197: uint64(0x7fdc231a00000000),
-		198: uint64(0x1fe3424000000000),
-		199: uint64(0x00f4b2c000000000),
-		200: uint64(0xa130262800000000),
-		201: uint64(0xbe27d6a800000000),
-		202: uint64(0xde18b7f200000000),
-		203: uint64(0xc10f477200000000),
-		204: uint64(0x1e66754600000000),
-		205: uint64(0x017185c600000000),
-		206: uint64(0x614ee49c00000000),
-		207: uint64(0x7e59141c00000000),
-		208: uint64(0x62c1bc9600000000),
-		209: uint64(0x7dd64c1600000000),
-		210: uint64(0x1de92d4c00000000),
-		211: uint64(0x02feddcc00000000),
-		212: uint64(0xdd97eff800000000),
-		213: uint64(0xc2801f7800000000),
-		214: uint64(0xa2bf7e2200000000),
-		215: uint64(0xbda88ea200000000),
-		216: uint64(0x1c6c1a4a00000000),
-		217: uint64(0x037beaca00000000),
-		218: uint64(0x63448b9000000000),
-		219: uint64(0x7c537b1000000000),
-		220: uint64(0xa33a492400000000),
-		221: uint64(0xbc2db9a400000000),
-		222: uint64(0xdc12d8fe00000000),
-		223: uint64(0xc305287e00000000),
-		224: uint64(0xa524f83000000000),
-		225: uint64(0xba3308b000000000),
-		226: uint64(0xda0c69ea00000000),
-		227: uint64(0xc51b996a00000000),
-		228: uint64(0x1a72ab5e00000000),
-		229: uint64(0x05655bde00000000),
-		230: uint64(0x655a3a8400000000),
-		231: uint64(0x7a4dca0400000000),
-		232: uint64(0xdb895eec00000000),
-		233: uint64(0xc49eae6c00000000),
-		234: uint64(0xa4a1cf3600000000),
-		235: uint64(0xbbb63fb600000000),
-		236: uint64(0x64df0d8200000000),
-		237: uint64(0x7bc8fd0200000000),
-		238: uint64(0x1bf79c5800000000),
-		239: uint64(0x04e06cd800000000),
-		240: uint64(0x1878c45200000000),
-		241: uint64(0x076f34d200000000),
-		242: uint64(0x6750558800000000),
-		243: uint64(0x7847a50800000000),
-		244: uint64(0xa72e973c00000000),
-		245: uint64(0xb83967bc00000000),
-		246: uint64(0xd80606e600000000),
-		247: uint64(0xc711f66600000000),
-		248: uint64(0x66d5628e00000000),
-		249: uint64(0x79c2920e00000000),
-		250: uint64(0x19fdf35400000000),
-		251: uint64(0x06ea03d400000000),
-		252: uint64(0xd98331e000000000),
-		253: uint64(0xc694c16000000000),
-		254: uint64(0xa6aba03a00000000),
-		255: uint64(0xb9bc50ba00000000),
-	},
-	5: {
-		1:   uint64(0xe2fd888d00000000),
-		2:   uint64(0x85fd60c000000000),
-		3:   uint64(0x6700e84d00000000),
-		4:   uint64(0x4bfdb05b00000000),
-		5:   uint64(0xa90038d600000000),
-		6:   uint64(0xce00d09b00000000),
-		7:   uint64(0x2cfd581600000000),
-		8:   uint64(0x96fa61b700000000),
-		9:   uint64(0x7407e93a00000000),
-		10:  uint64(0x1307017700000000),
-		11:  uint64(0xf1fa89fa00000000),
-		12:  uint64(0xdd07d1ec00000000),
-		13:  uint64(0x3ffa596100000000),
-		14:  uint64(0x58fab12c00000000),
-		15:  uint64(0xba0739a100000000),
-		16:  uint64(0x6df3b2b500000000),
-		17:  uint64(0x8f0e3a3800000000),
-		18:  uint64(0xe80ed27500000000),
-		19:  uint64(0x0af35af800000000),
-		20:  uint64(0x260e02ee00000000),
-		21:  uint64(0xc4f38a6300000000),
-		22:  uint64(0xa3f3622e00000000),
-		23:  uint64(0x410eeaa300000000),
-		24:  uint64(0xfb09d30200000000),
-		25:  uint64(0x19f45b8f00000000),
-		26:  uint64(0x7ef4b3c200000000),
-		27:  uint64(0x9c093b4f00000000),
-		28:  uint64(0xb0f4635900000000),
-		29:  uint64(0x5209ebd400000000),
-		30:  uint64(0x3509039900000000),
-		31:  uint64(0xd7f48b1400000000),
-		32:  uint64(0x9be014b000000000),
-		33:  uint64(0x791d9c3d00000000),
-		34:  uint64(0x1e1d747000000000),
-		35:  uint64(0xfce0fcfd00000000),
-		36:  uint64(0xd01da4eb00000000),
-		37:  uint64(0x32e02c6600000000),
-		38:  uint64(0x55e0c42b00000000),
-		39:  uint64(0xb71d4ca600000000),
-		40:  uint64(0x0d1a750700000000),
-		41:  uint64(0xefe7fd8a00000000),
-		42:  uint64(0x88e715c700000000),
-		43:  uint64(0x6a1a9d4a00000000),
-		44:  uint64(0x46e7c55c00000000),
-		45:  uint64(0xa41a4dd100000000),
-		46:  uint64(0xc31aa59c00000000),
-		47:  uint64(0x21e72d1100000000),
-		48:  uint64(0xf613a60500000000),
-		49:  uint64(0x14ee2e8800000000),
-		50:  uint64(0x73eec6c500000000),
-		51:  uint64(0x91134e4800000000),
-		52:  uint64(0xbdee165e00000000),
-		53:  uint64(0x5f139ed300000000),
-		54:  uint64(0x3813769e00000000),
-		55:  uint64(0xdaeefe1300000000),
-		56:  uint64(0x60e9c7b200000000),
-		57:  uint64(0x82144f3f00000000),
-		58:  uint64(0xe514a77200000000),
-		59:  uint64(0x07e92fff00000000),
-		60:  uint64(0x2b1477e900000000),
-		61:  uint64(0xc9e9ff6400000000),
-		62:  uint64(0xaee9172900000000),
-		63:  uint64(0x4c149fa400000000),
-		64:  uint64(0x77c758bb00000000),
-		65:  uint64(0x953ad03600000000),
-		66:  uint64(0xf23a387b00000000),
-		67:  uint64(0x10c7b0f600000000),
-		68:  uint64(0x3c3ae8e000000000),
-		69:  uint64(0xdec7606d00000000),
-		70:  uint64(0xb9c7882000000000),
-		71:  uint64(0x5b3a00ad00000000),
-		72:  uint64(0xe13d390c00000000),
-		73:  uint64(0x03c0b18100000000),
-		74:  uint64(0x64c059cc00000000),
-		75:  uint64(0x863dd14100000000),
-		76:  uint64(0xaac0895700000000),
-		77:  uint64(0x483d01da00000000),
-		78:  uint64(0x2f3de99700000000),
-		79:  uint64(0xcdc0611a00000000),
-		80:  uint64(0x1a34ea0e00000000),
-		81:  uint64(0xf8c9628300000000),
-		82:  uint64(0x9fc98ace00000000),
-		83:  uint64(0x7d34024300000000),
-		84:  uint64(0x51c95a5500000000),
-		85:  uint64(0xb334d2d800000000),
-		86:  uint64(0xd4343a9500000000),
-		87:  uint64(0x36c9b21800000000),
-		88:  uint64(0x8cce8bb900000000),
-		89:  uint64(0x6e33033400000000),
-		90:  uint64(0x0933eb7900000000),
-		91:  uint64(0xebce63f400000000),
-		92:  uint64(0xc7333be200000000),
-		93:  uint64(0x25ceb36f00000000),
-		94:  uint64(0x42ce5b2200000000),
-		95:  uint64(0xa033d3af00000000),
-		96:  uint64(0xec274c0b00000000),
-		97:  uint64(0x0edac48600000000),
-		98:  uint64(0x69da2ccb00000000),
-		99:  uint64(0x8b27a44600000000),
-		100: uint64(0xa7dafc5000000000),
-		101: uint64(0x452774dd00000000),
-		102: uint64(0x22279c9000000000),
-		103: uint64(0xc0da141d00000000),
-		104: uint64(0x7add2dbc00000000),
-		105: uint64(0x9820a53100000000),
-		106: uint64(0xff204d7c00000000),
-		107: uint64(0x1dddc5f100000000),
-		108: uint64(0x31209de700000000),
-		109: uint64(0xd3dd156a00000000),
-		110: uint64(0xb4ddfd2700000000),
-		111: uint64(0x562075aa00000000),
-		112: uint64(0x81d4febe00000000),
-		113: uint64(0x6329763300000000),
-		114: uint64(0x04299e7e00000000),
-		115: uint64(0xe6d416f300000000),
-		116: uint64(0xca294ee500000000),
-		117: uint64(0x28d4c66800000000),
-		118: uint64(0x4fd42e2500000000),
-		119: uint64(0xad29a6a800000000),
-		120: uint64(0x172e9f0900000000),
-		121: uint64(0xf5d3178400000000),
-		122: uint64(0x92d3ffc900000000),
-		123: uint64(0x702e774400000000),
-		124: uint64(0x5cd32f5200000000),
-		125: uint64(0xbe2ea7df00000000),
-		126: uint64(0xd92e4f9200000000),
-		127: uint64(0x3bd3c71f00000000),
-		128: uint64(0xaf88c0ad00000000),
-		129: uint64(0x4d75482000000000),
-		130: uint64(0x2a75a06d00000000),
-		131: uint64(0xc88828e000000000),
-		132: uint64(0xe47570f600000000),
-		133: uint64(0x0688f87b00000000),
-		134: uint64(0x6188103600000000),
-		135: uint64(0x837598bb00000000),
-		136: uint64(0x3972a11a00000000),
-		137: uint64(0xdb8f299700000000),
-		138: uint64(0xbc8fc1da00000000),
-		139: uint64(0x5e72495700000000),
-		140: uint64(0x728f114100000000),
-		141: uint64(0x907299cc00000000),
-		142: uint64(0xf772718100000000),
-		143: uint64(0x158ff90c00000000),
-		144: uint64(0xc27b721800000000),
-		145: uint64(0x2086fa9500000000),
-		146: uint64(0x478612d800000000),
-		147: uint64(0xa57b9a5500000000),
-		148: uint64(0x8986c24300000000),
-		149: uint64(0x6b7b4ace00000000),
-		150: uint64(0x0c7ba28300000000),
-		151: uint64(0xee862a0e00000000),
-		152: uint64(0x548113af00000000),
-		153: uint64(0xb67c9b2200000000),
-		154: uint64(0xd17c736f00000000),
-		155: uint64(0x3381fbe200000000),
-		156: uint64(0x1f7ca3f400000000),
-		157: uint64(0xfd812b7900000000),
-		158: uint64(0x9a81c33400000000),
-		159: uint64(0x787c4bb900000000),
-		160: uint64(0x3468d41d00000000),
-		161: uint64(0xd6955c9000000000),
-		162: uint64(0xb195b4dd00000000),
-		163: uint64(0x53683c5000000000),
-		164: uint64(0x7f95644600000000),
-		165: uint64(0x9d68eccb00000000),
-		166: uint64(0xfa68048600000000),
-		167: uint64(0x18958c0b00000000),
-		168: uint64(0xa292b5aa00000000),
-		169: uint64(0x406f3d2700000000),
-		170: uint64(0x276fd56a00000000),
-		171: uint64(0xc5925de700000000),
-		172: uint64(0xe96f05f100000000),
-		173: uint64(0x0b928d7c00000000),
-		174: uint64(0x6c92653100000000),
-		175: uint64(0x8e6fedbc00000000),
-		176: uint64(0x599b66a800000000),
-		177: uint64(0xbb66ee2500000000),
-		178: uint64(0xdc66066800000000),
-		179: uint64(0x3e9b8ee500000000),
-		180: uint64(0x1266d6f300000000),
-		181: uint64(0xf09b5e7e00000000),
-		182: uint64(0x979bb63300000000),
-		183: uint64(0x75663ebe00000000),
-		184: uint64(0xcf61071f00000000),
-		185: uint64(0x2d9c8f9200000000),
-		186: uint64(0x4a9c67df00000000),
-		187: uint64(0xa861ef5200000000),
-		188: uint64(0x849cb74400000000),
-		189: uint64(0x66613fc900000000),
-		190: uint64(0x0161d78400000000),
-		191: uint64(0xe39c5f0900000000),
-		192: uint64(0xd84f981600000000),
-		193: uint64(0x3ab2109b00000000),
-		194: uint64(0x5db2f8d600000000),
-		195: uint64(0xbf4f705b00000000),
-		196: uint64(0x93b2284d00000000),
-		197: uint64(0x714fa0c000000000),
-		198: uint64(0x164f488d00000000),
-		199: uint64(0xf4b2c00000000000),
-		200: uint64(0x4eb5f9a100000000),
-		201: uint64(0xac48712c00000000),
-		202: uint64(0xcb48996100000000),
-		203: uint64(0x29b511ec00000000),
-		204: uint64(0x054849fa00000000),
-		205: uint64(0xe7b5c17700000000),
-		206: uint64(0x80b5293a00000000),
-		207: uint64(0x6248a1b700000000),
-		208: uint64(0xb5bc2aa300000000),
-		209: uint64(0x5741a22e00000000),
-		210: uint64(0x30414a6300000000),
-		211: uint64(0xd2bcc2ee00000000),
-		212: uint64(0xfe419af800000000),
-		213: uint64(0x1cbc127500000000),
-		214: uint64(0x7bbcfa3800000000),
-		215: uint64(0x994172b500000000),
-		216: uint64(0x23464b1400000000),
-		217: uint64(0xc1bbc39900000000),
-		218: uint64(0xa6bb2bd400000000),
-		219: uint64(0x4446a35900000000),
-		220: uint64(0x68bbfb4f00000000),
-		221: uint64(0x8a4673c200000000),
-		222: uint64(0xed469b8f00000000),
-		223: uint64(0x0fbb130200000000),
-		224: uint64(0x43af8ca600000000),
-		225: uint64(0xa152042b00000000),
-		226: uint64(0xc652ec6600000000),
-		227: uint64(0x24af64eb00000000),
-		228: uint64(0x08523cfd00000000),
-		229: uint64(0xeaafb47000000000),
-		230: uint64(0x8daf5c3d00000000),
-		231: uint64(0x6f52d4b000000000),
-		232: uint64(0xd555ed1100000000),
-		233: uint64(0x37a8659c00000000),
-		234: uint64(0x50a88dd100000000),
-		235: uint64(0xb255055c00000000),
-		236: uint64(0x9ea85d4a00000000),
-		237: uint64(0x7c55d5c700000000),
-		238: uint64(0x1b553d8a00000000),
-		239: uint64(0xf9a8b50700000000),
-		240: uint64(0x2e5c3e1300000000),
-		241: uint64(0xcca1b69e00000000),
-		242: uint64(0xaba15ed300000000),
-		243: uint64(0x495cd65e00000000),
-		244: uint64(0x65a18e4800000000),
-		245: uint64(0x875c06c500000000),
-		246: uint64(0xe05cee8800000000),
-		247: uint64(0x02a1660500000000),
-		248: uint64(0xb8a65fa400000000),
-		249: uint64(0x5a5bd72900000000),
-		250: uint64(0x3d5b3f6400000000),
-		251: uint64(0xdfa6b7e900000000),
-		252: uint64(0xf35befff00000000),
-		253: uint64(0x11a6677200000000),
-		254: uint64(0x76a68f3f00000000),
-		255: uint64(0x945b07b200000000),
-	},
-	6: {
-		1:   uint64(0xa90b894e00000000),
-		2:   uint64(0x5217129d00000000),
-		3:   uint64(0xfb1c9bd300000000),
-		4:   uint64(0xe52855e100000000),
-		5:   uint64(0x4c23dcaf00000000),
-		6:   uint64(0xb73f477c00000000),
-		7:   uint64(0x1e34ce3200000000),
-		8:   uint64(0x8b57db1900000000),
-		9:   uint64(0x225c525700000000),
-		10:  uint64(0xd940c98400000000),
-		11:  uint64(0x704b40ca00000000),
-		12:  uint64(0x6e7f8ef800000000),
-		13:  uint64(0xc77407b600000000),
-		14:  uint64(0x3c689c6500000000),
-		15:  uint64(0x9563152b00000000),
-		16:  uint64(0x16afb63300000000),
-		17:  uint64(0xbfa43f7d00000000),
-		18:  uint64(0x44b8a4ae00000000),
-		19:  uint64(0xedb32de000000000),
-		20:  uint64(0xf387e3d200000000),
-		21:  uint64(0x5a8c6a9c00000000),
-		22:  uint64(0xa190f14f00000000),
-		23:  uint64(0x089b780100000000),
-		24:  uint64(0x9df86d2a00000000),
-		25:  uint64(0x34f3e46400000000),
-		26:  uint64(0xcfef7fb700000000),
-		27:  uint64(0x66e4f6f900000000),
-		28:  uint64(0x78d038cb00000000),
-		29:  uint64(0xd1dbb18500000000),
-		30:  uint64(0x2ac72a5600000000),
-		31:  uint64(0x83cca31800000000),
-		32:  uint64(0x2c5e6d6700000000),
-		33:  uint64(0x8555e42900000000),
-		34:  uint64(0x7e497ffa00000000),
-		35:  uint64(0xd742f6b400000000),
-		36:  uint64(0xc976388600000000),
-		37:  uint64(0x607db1c800000000),
-		38:  uint64(0x9b612a1b00000000),
-		39:  uint64(0x326aa35500000000),
-		40:  uint64(0xa709b67e00000000),
-		41:  uint64(0x0e023f3000000000),
-		42:  uint64(0xf51ea4e300000000),
-		43:  uint64(0x5c152dad00000000),
-		44:  uint64(0x4221e39f00000000),
-		45:  uint64(0xeb2a6ad100000000),
-		46:  uint64(0x1036f10200000000),
-		47:  uint64(0xb93d784c00000000),
-		48:  uint64(0x3af1db5400000000),
-		49:  uint64(0x93fa521a00000000),
-		50:  uint64(0x68e6c9c900000000),
-		51:  uint64(0xc1ed408700000000),
-		52:  uint64(0xdfd98eb500000000),
-		53:  uint64(0x76d207fb00000000),
-		54:  uint64(0x8dce9c2800000000),
-		55:  uint64(0x24c5156600000000),
-		56:  uint64(0xb1a6004d00000000),
-		57:  uint64(0x18ad890300000000),
-		58:  uint64(0xe3b112d000000000),
-		59:  uint64(0x4aba9b9e00000000),
-		60:  uint64(0x548e55ac00000000),
-		61:  uint64(0xfd85dce200000000),
-		62:  uint64(0x0699473100000000),
-		63:  uint64(0xaf92ce7f00000000),
-		64:  uint64(0x58bcdace00000000),
-		65:  uint64(0xf1b7538000000000),
-		66:  uint64(0x0aabc85300000000),
-		67:  uint64(0xa3a0411d00000000),
-		68:  uint64(0xbd948f2f00000000),
-		69:  uint64(0x149f066100000000),
-		70:  uint64(0xef839db200000000),
-		71:  uint64(0x468814fc00000000),
-		72:  uint64(0xd3eb01d700000000),
-		73:  uint64(0x7ae0889900000000),
-		74:  uint64(0x81fc134a00000000),
-		75:  uint64(0x28f79a0400000000),
-		76:  uint64(0x36c3543600000000),
-		77:  uint64(0x9fc8dd7800000000),
-		78:  uint64(0x64d446ab00000000),
-		79:  uint64(0xcddfcfe500000000),
-		80:  uint64(0x4e136cfd00000000),
-		81:  uint64(0xe718e5b300000000),
-		82:  uint64(0x1c047e6000000000),
-		83:  uint64(0xb50ff72e00000000),
-		84:  uint64(0xab3b391c00000000),
-		85:  uint64(0x0230b05200000000),
-		86:  uint64(0xf92c2b8100000000),
-		87:  uint64(0x5027a2cf00000000),
-		88:  uint64(0xc544b7e400000000),
-		89:  uint64(0x6c4f3eaa00000000),
-		90:  uint64(0x9753a57900000000),
-		91:  uint64(0x3e582c3700000000),
-		92:  uint64(0x206ce20500000000),
-		93:  uint64(0x89676b4b00000000),
-		94:  uint64(0x727bf09800000000),
-		95:  uint64(0xdb7079d600000000),
-		96:  uint64(0x74e2b7a900000000),
-		97:  uint64(0xdde93ee700000000),
-		98:  uint64(0x26f5a53400000000),
-		99:  uint64(0x8ffe2c7a00000000),
-		100: uint64(0x91cae24800000000),
-		101: uint64(0x38c16b0600000000),
-		102: uint64(0xc3ddf0d500000000),
-		103: uint64(0x6ad6799b00000000),
-		104: uint64(0xffb56cb000000000),
-		105: uint64(0x56bee5fe00000000),
-		106: uint64(0xada27e2d00000000),
-		107: uint64(0x04a9f76300000000),
-		108: uint64(0x1a9d395100000000),
-		109: uint64(0xb396b01f00000000),
-		110: uint64(0x488a2bcc00000000),
-		111: uint64(0xe181a28200000000),
-		112: uint64(0x624d019a00000000),
-		113: uint64(0xcb4688d400000000),
-		114: uint64(0x305a130700000000),
-		115: uint64(0x99519a4900000000),
-		116: uint64(0x8765547b00000000),
-		117: uint64(0x2e6edd3500000000),
-		118: uint64(0xd57246e600000000),
-		119: uint64(0x7c79cfa800000000),
-		120: uint64(0xe91ada8300000000),
-		121: uint64(0x401153cd00000000),
-		122: uint64(0xbb0dc81e00000000),
-		123: uint64(0x1206415000000000),
-		124: uint64(0x0c328f6200000000),
-		125: uint64(0xa539062c00000000),
-		126: uint64(0x5e259dff00000000),
-		127: uint64(0xf72e14b100000000),
-		128: uint64(0xf17ec44600000000),
-		129: uint64(0x58754d0800000000),
-		130: uint64(0xa369d6db00000000),
-		131: uint64(0x0a625f9500000000),
-		132: uint64(0x145691a700000000),
-		133: uint64(0xbd5d18e900000000),
-		134: uint64(0x4641833a00000000),
-		135: uint64(0xef4a0a7400000000),
-		136: uint64(0x7a291f5f00000000),
-		137: uint64(0xd322961100000000),
-		138: uint64(0x283e0dc200000000),
-		139: uint64(0x8135848c00000000),
-		140: uint64(0x9f014abe00000000),
-		141: uint64(0x360ac3f000000000),
-		142: uint64(0xcd16582300000000),
-		143: uint64(0x641dd16d00000000),
-		144: uint64(0xe7d1727500000000),
-		145: uint64(0x4edafb3b00000000),
-		146: uint64(0xb5c660e800000000),
-		147: uint64(0x1ccde9a600000000),
-		148: uint64(0x02f9279400000000),
-		149: uint64(0xabf2aeda00000000),
-		150: uint64(0x50ee350900000000),
-		151: uint64(0xf9e5bc4700000000),
-		152: uint64(0x6c86a96c00000000),
-		153: uint64(0xc58d202200000000),
-		154: uint64(0x3e91bbf100000000),
-		155: uint64(0x979a32bf00000000),
-		156: uint64(0x89aefc8d00000000),
-		157: uint64(0x20a575c300000000),
-		158: uint64(0xdbb9ee1000000000),
-		159: uint64(0x72b2675e00000000),
-		160: uint64(0xdd20a92100000000),
-		161: uint64(0x742b206f00000000),
-		162: uint64(0x8f37bbbc00000000),
-		163: uint64(0x263c32f200000000),
-		164: uint64(0x3808fcc000000000),
-		165: uint64(0x9103758e00000000),
-		166: uint64(0x6a1fee5d00000000),
-		167: uint64(0xc314671300000000),
-		168: uint64(0x5677723800000000),
-		169: uint64(0xff7cfb7600000000),
-		170: uint64(0x046060a500000000),
-		171: uint64(0xad6be9eb00000000),
-		172: uint64(0xb35f27d900000000),
-		173: uint64(0x1a54ae9700000000),
-		174: uint64(0xe148354400000000),
-		175: uint64(0x4843bc0a00000000),
-		176: uint64(0xcb8f1f1200000000),
-		177: uint64(0x6284965c00000000),
-		178: uint64(0x99980d8f00000000),
-		179: uint64(0x309384c100000000),
-		180: uint64(0x2ea74af300000000),
-		181: uint64(0x87acc3bd00000000),
-		182: uint64(0x7cb0586e00000000),
-		183: uint64(0xd5bbd12000000000),
-		184: uint64(0x40d8c40b00000000),
-		185: uint64(0xe9d34d4500000000),
-		186: uint64(0x12cfd69600000000),
-		187: uint64(0xbbc45fd800000000),
-		188: uint64(0xa5f091ea00000000),
-		189: uint64(0x0cfb18a400000000),
-		190: uint64(0xf7e7837700000000),
-		191: uint64(0x5eec0a3900000000),
-		192: uint64(0xa9c21e8800000000),
-		193: uint64(0x00c997c600000000),
-		194: uint64(0xfbd50c1500000000),
-		195: uint64(0x52de855b00000000),
-		196: uint64(0x4cea4b6900000000),
-		197: uint64(0xe5e1c22700000000),
-		198: uint64(0x1efd59f400000000),
-		199: uint64(0xb7f6d0ba00000000),
-		200: uint64(0x2295c59100000000),
-		201: uint64(0x8b9e4cdf00000000),
-		202: uint64(0x7082d70c00000000),
-		203: uint64(0xd9895e4200000000),
-		204: uint64(0xc7bd907000000000),
-		205: uint64(0x6eb6193e00000000),
-		206: uint64(0x95aa82ed00000000),
-		207: uint64(0x3ca10ba300000000),
-		208: uint64(0xbf6da8bb00000000),
-		209: uint64(0x166621f500000000),
-		210: uint64(0xed7aba2600000000),
-		211: uint64(0x4471336800000000),
-		212: uint64(0x5a45fd5a00000000),
-		213: uint64(0xf34e741400000000),
-		214: uint64(0x0852efc700000000),
-		215: uint64(0xa159668900000000),
-		216: uint64(0x343a73a200000000),
-		217: uint64(0x9d31faec00000000),
-		218: uint64(0x662d613f00000000),
-		219: uint64(0xcf26e87100000000),
-		220: uint64(0xd112264300000000),
-		221: uint64(0x7819af0d00000000),
-		222: uint64(0x830534de00000000),
-		223: uint64(0x2a0ebd9000000000),
-		224: uint64(0x859c73ef00000000),
-		225: uint64(0x2c97faa100000000),
-		226: uint64(0xd78b617200000000),
-		227: uint64(0x7e80e83c00000000),
-		228: uint64(0x60b4260e00000000),
-		229: uint64(0xc9bfaf4000000000),
-		230: uint64(0x32a3349300000000),
-		231: uint64(0x9ba8bddd00000000),
-		232: uint64(0x0ecba8f600000000),
-		233: uint64(0xa7c021b800000000),
-		234: uint64(0x5cdcba6b00000000),
-		235: uint64(0xf5d7332500000000),
-		236: uint64(0xebe3fd1700000000),
-		237: uint64(0x42e8745900000000),
-		238: uint64(0xb9f4ef8a00000000),
-		239: uint64(0x10ff66c400000000),
-		240: uint64(0x9333c5dc00000000),
-		241: uint64(0x3a384c9200000000),
-		242: uint64(0xc124d74100000000),
-		243: uint64(0x682f5e0f00000000),
-		244: uint64(0x761b903d00000000),
-		245: uint64(0xdf10197300000000),
-		246: uint64(0x240c82a000000000),
-		247: uint64(0x8d070bee00000000),
-		248: uint64(0x18641ec500000000),
-		249: uint64(0xb16f978b00000000),
-		250: uint64(0x4a730c5800000000),
-		251: uint64(0xe378851600000000),
-		252: uint64(0xfd4c4b2400000000),
-		253: uint64(0x5447c26a00000000),
-		254: uint64(0xaf5b59b900000000),
-		255: uint64(0x0650d0f700000000),
-	},
-	7: {
-		1:   uint64(0x479244af00000000),
-		2:   uint64(0xcf22f88500000000),
-		3:   uint64(0x88b0bc2a00000000),
-		4:   uint64(0xdf4381d000000000),
-		5:   uint64(0x98d1c57f00000000),
-		6:   uint64(0x1061795500000000),
-		7:   uint64(0x57f33dfa00000000),
-		8:   uint64(0xff81737a00000000),
-		9:   uint64(0xb81337d500000000),
-		10:  uint64(0x30a38bff00000000),
-		11:  uint64(0x7731cf5000000000),
-		12:  uint64(0x20c2f2aa00000000),
-		13:  uint64(0x6750b60500000000),
-		14:  uint64(0xefe00a2f00000000),
-		15:  uint64(0xa8724e8000000000),
-		16:  uint64(0xfe03e7f400000000),
-		17:  uint64(0xb991a35b00000000),
-		18:  uint64(0x31211f7100000000),
-		19:  uint64(0x76b35bde00000000),
-		20:  uint64(0x2140662400000000),
-		21:  uint64(0x66d2228b00000000),
-		22:  uint64(0xee629ea100000000),
-		23:  uint64(0xa9f0da0e00000000),
-		24:  uint64(0x0182948e00000000),
-		25:  uint64(0x4610d02100000000),
-		26:  uint64(0xcea06c0b00000000),
-		27:  uint64(0x893228a400000000),
-		28:  uint64(0xdec1155e00000000),
-		29:  uint64(0x995351f100000000),
-		30:  uint64(0x11e3eddb00000000),
-		31:  uint64(0x5671a97400000000),
-		32:  uint64(0xbd01bf3200000000),
-		33:  uint64(0xfa93fb9d00000000),
-		34:  uint64(0x722347b700000000),
-		35:  uint64(0x35b1031800000000),
-		36:  uint64(0x62423ee200000000),
-		37:  uint64(0x25d07a4d00000000),
-		38:  uint64(0xad60c66700000000),
-		39:  uint64(0xeaf282c800000000),
-		40:  uint64(0x4280cc4800000000),
-		41:  uint64(0x051288e700000000),
-		42:  uint64(0x8da234cd00000000),
-		43:  uint64(0xca30706200000000),
-		44:  uint64(0x9dc34d9800000000),
-		45:  uint64(0xda51093700000000),
-		46:  uint64(0x52e1b51d00000000),
-		47:  uint64(0x1573f1b200000000),
-		48:  uint64(0x430258c600000000),
-		49:  uint64(0x04901c6900000000),
-		50:  uint64(0x8c20a04300000000),
-		51:  uint64(0xcbb2e4ec00000000),
-		52:  uint64(0x9c41d91600000000),
-		53:  uint64(0xdbd39db900000000),
-		54:  uint64(0x5363219300000000),
-		55:  uint64(0x14f1653c00000000),
-		56:  uint64(0xbc832bbc00000000),
-		57:  uint64(0xfb116f1300000000),
-		58:  uint64(0x73a1d33900000000),
-		59:  uint64(0x3433979600000000),
-		60:  uint64(0x63c0aa6c00000000),
-		61:  uint64(0x2452eec300000000),
-		62:  uint64(0xace252e900000000),
-		63:  uint64(0xeb70164600000000),
-		64:  uint64(0x7a037e6500000000),
-		65:  uint64(0x3d913aca00000000),
-		66:  uint64(0xb52186e000000000),
-		67:  uint64(0xf2b3c24f00000000),
-		68:  uint64(0xa540ffb500000000),
-		69:  uint64(0xe2d2bb1a00000000),
-		70:  uint64(0x6a62073000000000),
-		71:  uint64(0x2df0439f00000000),
-		72:  uint64(0x85820d1f00000000),
-		73:  uint64(0xc21049b000000000),
-		74:  uint64(0x4aa0f59a00000000),
-		75:  uint64(0x0d32b13500000000),
-		76:  uint64(0x5ac18ccf00000000),
-		77:  uint64(0x1d53c86000000000),
-		78:  uint64(0x95e3744a00000000),
-		79:  uint64(0xd27130e500000000),
-		80:  uint64(0x8400999100000000),
-		81:  uint64(0xc392dd3e00000000),
-		82:  uint64(0x4b22611400000000),
-		83:  uint64(0x0cb025bb00000000),
-		84:  uint64(0x5b43184100000000),
-		85:  uint64(0x1cd15cee00000000),
-		86:  uint64(0x9461e0c400000000),
-		87:  uint64(0xd3f3a46b00000000),
-		88:  uint64(0x7b81eaeb00000000),
-		89:  uint64(0x3c13ae4400000000),
-		90:  uint64(0xb4a3126e00000000),
-		91:  uint64(0xf33156c100000000),
-		92:  uint64(0xa4c26b3b00000000),
-		93:  uint64(0xe3502f9400000000),
-		94:  uint64(0x6be093be00000000),
-		95:  uint64(0x2c72d71100000000),
-		96:  uint64(0xc702c15700000000),
-		97:  uint64(0x809085f800000000),
-		98:  uint64(0x082039d200000000),
-		99:  uint64(0x4fb27d7d00000000),
-		100: uint64(0x1841408700000000),
-		101: uint64(0x5fd3042800000000),
-		102: uint64(0xd763b80200000000),
-		103: uint64(0x90f1fcad00000000),
-		104: uint64(0x3883b22d00000000),
-		105: uint64(0x7f11f68200000000),
-		106: uint64(0xf7a14aa800000000),
-		107: uint64(0xb0330e0700000000),
-		108: uint64(0xe7c033fd00000000),
-		109: uint64(0xa052775200000000),
-		110: uint64(0x28e2cb7800000000),
-		111: uint64(0x6f708fd700000000),
-		112: uint64(0x390126a300000000),
-		113: uint64(0x7e93620c00000000),
-		114: uint64(0xf623de2600000000),
-		115: uint64(0xb1b19a8900000000),
-		116: uint64(0xe642a77300000000),
-		117: uint64(0xa1d0e3dc00000000),
-		118: uint64(0x29605ff600000000),
-		119: uint64(0x6ef21b5900000000),
-		120: uint64(0xc68055d900000000),
-		121: uint64(0x8112117600000000),
-		122: uint64(0x09a2ad5c00000000),
-		123: uint64(0x4e30e9f300000000),
-		124: uint64(0x19c3d40900000000),
-		125: uint64(0x5e5190a600000000),
-		126: uint64(0xd6e12c8c00000000),
-		127: uint64(0x9173682300000000),
-		128: uint64(0xf406fcca00000000),
-		129: uint64(0xb394b86500000000),
-		130: uint64(0x3b24044f00000000),
-		131: uint64(0x7cb640e000000000),
-		132: uint64(0x2b457d1a00000000),
-		133: uint64(0x6cd739b500000000),
-		134: uint64(0xe467859f00000000),
-		135: uint64(0xa3f5c13000000000),
-		136: uint64(0x0b878fb000000000),
-		137: uint64(0x4c15cb1f00000000),
-		138: uint64(0xc4a5773500000000),
-		139: uint64(0x8337339a00000000),
-		140: uint64(0xd4c40e6000000000),
-		141: uint64(0x93564acf00000000),
-		142: uint64(0x1be6f6e500000000),
-		143: uint64(0x5c74b24a00000000),
-		144: uint64(0x0a051b3e00000000),
-		145: uint64(0x4d975f9100000000),
-		146: uint64(0xc527e3bb00000000),
-		147: uint64(0x82b5a71400000000),
-		148: uint64(0xd5469aee00000000),
-		149: uint64(0x92d4de4100000000),
-		150: uint64(0x1a64626b00000000),
-		151: uint64(0x5df626c400000000),
-		152: uint64(0xf584684400000000),
-		153: uint64(0xb2162ceb00000000),
-		154: uint64(0x3aa690c100000000),
-		155: uint64(0x7d34d46e00000000),
-		156: uint64(0x2ac7e99400000000),
-		157: uint64(0x6d55ad3b00000000),
-		158: uint64(0xe5e5111100000000),
-		159: uint64(0xa27755be00000000),
-		160: uint64(0x490743f800000000),
-		161: uint64(0x0e95075700000000),
-		162: uint64(0x8625bb7d00000000),
-		163: uint64(0xc1b7ffd200000000),
-		164: uint64(0x9644c22800000000),
-		165: uint64(0xd1d6868700000000),
-		166: uint64(0x59663aad00000000),
-		167: uint64(0x1ef47e0200000000),
-		168: uint64(0xb686308200000000),
-		169: uint64(0xf114742d00000000),
-		170: uint64(0x79a4c80700000000),
-		171: uint64(0x3e368ca800000000),
-		172: uint64(0x69c5b15200000000),
-		173: uint64(0x2e57f5fd00000000),
-		174: uint64(0xa6e749d700000000),
-		175: uint64(0xe1750d7800000000),
-		176: uint64(0xb704a40c00000000),
-		177: uint64(0xf096e0a300000000),
-		178: uint64(0x78265c8900000000),
-		179: uint64(0x3fb4182600000000),
-		180: uint64(0x684725dc00000000),
-		181: uint64(0x2fd5617300000000),
-		182: uint64(0xa765dd5900000000),
-		183: uint64(0xe0f799f600000000),
-		184: uint64(0x4885d77600000000),
-		185: uint64(0x0f1793d900000000),
-		186: uint64(0x87a72ff300000000),
-		187: uint64(0xc0356b5c00000000),
-		188: uint64(0x97c656a600000000),
-		189: uint64(0xd054120900000000),
-		190: uint64(0x58e4ae2300000000),
-		191: uint64(0x1f76ea8c00000000),
-		192: uint64(0x8e0582af00000000),
-		193: uint64(0xc997c60000000000),
-		194: uint64(0x41277a2a00000000),
-		195: uint64(0x06b53e8500000000),
-		196: uint64(0x5146037f00000000),
-		197: uint64(0x16d447d000000000),
-		198: uint64(0x9e64fbfa00000000),
-		199: uint64(0xd9f6bf5500000000),
-		200: uint64(0x7184f1d500000000),
-		201: uint64(0x3616b57a00000000),
-		202: uint64(0xbea6095000000000),
-		203: uint64(0xf9344dff00000000),
-		204: uint64(0xaec7700500000000),
-		205: uint64(0xe95534aa00000000),
-		206: uint64(0x61e5888000000000),
-		207: uint64(0x2677cc2f00000000),
-		208: uint64(0x7006655b00000000),
-		209: uint64(0x379421f400000000),
-		210: uint64(0xbf249dde00000000),
-		211: uint64(0xf8b6d97100000000),
-		212: uint64(0xaf45e48b00000000),
-		213: uint64(0xe8d7a02400000000),
-		214: uint64(0x60671c0e00000000),
-		215: uint64(0x27f558a100000000),
-		216: uint64(0x8f87162100000000),
-		217: uint64(0xc815528e00000000),
-		218: uint64(0x40a5eea400000000),
-		219: uint64(0x0737aa0b00000000),
-		220: uint64(0x50c497f100000000),
-		221: uint64(0x1756d35e00000000),
-		222: uint64(0x9fe66f7400000000),
-		223: uint64(0xd8742bdb00000000),
-		224: uint64(0x33043d9d00000000),
-		225: uint64(0x7496793200000000),
-		226: uint64(0xfc26c51800000000),
-		227: uint64(0xbbb481b700000000),
-		228: uint64(0xec47bc4d00000000),
-		229: uint64(0xabd5f8e200000000),
-		230: uint64(0x236544c800000000),
-		231: uint64(0x64f7006700000000),
-		232: uint64(0xcc854ee700000000),
-		233: uint64(0x8b170a4800000000),
-		234: uint64(0x03a7b66200000000),
-		235: uint64(0x4435f2cd00000000),
-		236: uint64(0x13c6cf3700000000),
-		237: uint64(0x54548b9800000000),
-		238: uint64(0xdce437b200000000),
-		239: uint64(0x9b76731d00000000),
-		240: uint64(0xcd07da6900000000),
-		241: uint64(0x8a959ec600000000),
-		242: uint64(0x022522ec00000000),
-		243: uint64(0x45b7664300000000),
-		244: uint64(0x12445bb900000000),
-		245: uint64(0x55d61f1600000000),
-		246: uint64(0xdd66a33c00000000),
-		247: uint64(0x9af4e79300000000),
-		248: uint64(0x3286a91300000000),
-		249: uint64(0x7514edbc00000000),
-		250: uint64(0xfda4519600000000),
-		251: uint64(0xba36153900000000),
-		252: uint64(0xedc528c300000000),
-		253: uint64(0xaa576c6c00000000),
-		254: uint64(0x22e7d04600000000),
-		255: uint64(0x657594e900000000),
+		1:   uint32(0x463b6765),
+		2:   uint32(0x8c76ceca),
+		3:   uint32(0xca4da9af),
+		4:   uint32(0x59ebed4e),
+		5:   uint32(0x1fd08a2b),
+		6:   uint32(0xd59d2384),
+		7:   uint32(0x93a644e1),
+		8:   uint32(0xb2d6db9d),
+		9:   uint32(0xf4edbcf8),
+		10:  uint32(0x3ea01557),
+		11:  uint32(0x789b7232),
+		12:  uint32(0xeb3d36d3),
+		13:  uint32(0xad0651b6),
+		14:  uint32(0x674bf819),
+		15:  uint32(0x21709f7c),
+		16:  uint32(0x25abc6e0),
+		17:  uint32(0x6390a185),
+		18:  uint32(0xa9dd082a),
+		19:  uint32(0xefe66f4f),
+		20:  uint32(0x7c402bae),
+		21:  uint32(0x3a7b4ccb),
+		22:  uint32(0xf036e564),
+		23:  uint32(0xb60d8201),
+		24:  uint32(0x977d1d7d),
+		25:  uint32(0xd1467a18),
+		26:  uint32(0x1b0bd3b7),
+		27:  uint32(0x5d30b4d2),
+		28:  uint32(0xce96f033),
+		29:  uint32(0x88ad9756),
+		30:  uint32(0x42e03ef9),
+		31:  uint32(0x04db599c),
+		32:  uint32(0x0b50fc1a),
+		33:  uint32(0x4d6b9b7f),
+		34:  uint32(0x872632d0),
+		35:  uint32(0xc11d55b5),
+		36:  uint32(0x52bb1154),
+		37:  uint32(0x14807631),
+		38:  uint32(0xdecddf9e),
+		39:  uint32(0x98f6b8fb),
+		40:  uint32(0xb9862787),
+		41:  uint32(0xffbd40e2),
+		42:  uint32(0x35f0e94d),
+		43:  uint32(0x73cb8e28),
+		44:  uint32(0xe06dcac9),
+		45:  uint32(0xa656adac),
+		46:  uint32(0x6c1b0403),
+		47:  uint32(0x2a206366),
+		48:  uint32(0x2efb3afa),
+		49:  uint32(0x68c05d9f),
+		50:  uint32(0xa28df430),
+		51:  uint32(0xe4b69355),
+		52:  uint32(0x7710d7b4),
+		53:  uint32(0x312bb0d1),
+		54:  uint32(0xfb66197e),
+		55:  uint32(0xbd5d7e1b),
+		56:  uint32(0x9c2de167),
+		57:  uint32(0xda168602),
+		58:  uint32(0x105b2fad),
+		59:  uint32(0x566048c8),
+		60:  uint32(0xc5c60c29),
+		61:  uint32(0x83fd6b4c),
+		62:  uint32(0x49b0c2e3),
+		63:  uint32(0x0f8ba586),
+		64:  uint32(0x16a0f835),
+		65:  uint32(0x509b9f50),
+		66:  uint32(0x9ad636ff),
+		67:  uint32(0xdced519a),
+		68:  uint32(0x4f4b157b),
+		69:  uint32(0x0970721e),
+		70:  uint32(0xc33ddbb1),
+		71:  uint32(0x8506bcd4),
+		72:  uint32(0xa47623a8),
+		73:  uint32(0xe24d44cd),
+		74:  uint32(0x2800ed62),
+		75:  uint32(0x6e3b8a07),
+		76:  uint32(0xfd9dcee6),
+		77:  uint32(0xbba6a983),
+		78:  uint32(0x71eb002c),
+		79:  uint32(0x37d06749),
+		80:  uint32(0x330b3ed5),
+		81:  uint32(0x753059b0),
+		82:  uint32(0xbf7df01f),
+		83:  uint32(0xf946977a),
+		84:  uint32(0x6ae0d39b),
+		85:  uint32(0x2cdbb4fe),
+		86:  uint32(0xe6961d51),
+		87:  uint32(0xa0ad7a34),
+		88:  uint32(0x81dde548),
+		89:  uint32(0xc7e6822d),
+		90:  uint32(0x0dab2b82),
+		91:  uint32(0x4b904ce7),
+		92:  uint32(0xd8360806),
+		93:  uint32(0x9e0d6f63),
+		94:  uint32(0x5440c6cc),
+		95:  uint32(0x127ba1a9),
+		96:  uint32(0x1df0042f),
+		97:  uint32(0x5bcb634a),
+		98:  uint32(0x9186cae5),
+		99:  uint32(0xd7bdad80),
+		100: uint32(0x441be961),
+		101: uint32(0x02208e04),
+		102: uint32(0xc86d27ab),
+		103: uint32(0x8e5640ce),
+		104: uint32(0xaf26dfb2),
+		105: uint32(0xe91db8d7),
+		106: uint32(0x23501178),
+		107: uint32(0x656b761d),
+		108: uint32(0xf6cd32fc),
+		109: uint32(0xb0f65599),
+		110: uint32(0x7abbfc36),
+		111: uint32(0x3c809b53),
+		112: uint32(0x385bc2cf),
+		113: uint32(0x7e60a5aa),
+		114: uint32(0xb42d0c05),
+		115: uint32(0xf2166b60),
+		116: uint32(0x61b02f81),
+		117: uint32(0x278b48e4),
+		118: uint32(0xedc6e14b),
+		119: uint32(0xabfd862e),
+		120: uint32(0x8a8d1952),
+		121: uint32(0xccb67e37),
+		122: uint32(0x06fbd798),
+		123: uint32(0x40c0b0fd),
+		124: uint32(0xd366f41c),
+		125: uint32(0x955d9379),
+		126: uint32(0x5f103ad6),
+		127: uint32(0x192b5db3),
+		128: uint32(0x2c40f16b),
+		129: uint32(0x6a7b960e),
+		130: uint32(0xa0363fa1),
+		131: uint32(0xe60d58c4),
+		132: uint32(0x75ab1c25),
+		133: uint32(0x33907b40),
+		134: uint32(0xf9ddd2ef),
+		135: uint32(0xbfe6b58a),
+		136: uint32(0x9e962af6),
+		137: uint32(0xd8ad4d93),
+		138: uint32(0x12e0e43c),
+		139: uint32(0x54db8359),
+		140: uint32(0xc77dc7b8),
+		141: uint32(0x8146a0dd),
+		142: uint32(0x4b0b0972),
+		143: uint32(0x0d306e17),
+		144: uint32(0x09eb378b),
+		145: uint32(0x4fd050ee),
+		146: uint32(0x859df941),
+		147: uint32(0xc3a69e24),
+		148: uint32(0x5000dac5),
+		149: uint32(0x163bbda0),
+		150: uint32(0xdc76140f),
+		151: uint32(0x9a4d736a),
+		152: uint32(0xbb3dec16),
+		153: uint32(0xfd068b73),
+		154: uint32(0x374b22dc),
+		155: uint32(0x717045b9),
+		156: uint32(0xe2d60158),
+		157: uint32(0xa4ed663d),
+		158: uint32(0x6ea0cf92),
+		159: uint32(0x289ba8f7),
+		160: uint32(0x27100d71),
+		161: uint32(0x612b6a14),
+		162: uint32(0xab66c3bb),
+		163: uint32(0xed5da4de),
+		164: uint32(0x7efbe03f),
+		165: uint32(0x38c0875a),
+		166: uint32(0xf28d2ef5),
+		167: uint32(0xb4b64990),
+		168: uint32(0x95c6d6ec),
+		169: uint32(0xd3fdb189),
+		170: uint32(0x19b01826),
+		171: uint32(0x5f8b7f43),
+		172: uint32(0xcc2d3ba2),
+		173: uint32(0x8a165cc7),
+		174: uint32(0x405bf568),
+		175: uint32(0x0660920d),
+		176: uint32(0x02bbcb91),
+		177: uint32(0x4480acf4),
+		178: uint32(0x8ecd055b),
+		179: uint32(0xc8f6623e),
+		180: uint32(0x5b5026df),
+		181: uint32(0x1d6b41ba),
+		182: uint32(0xd726e815),
+		183: uint32(0x911d8f70),
+		184: uint32(0xb06d100c),
+		185: uint32(0xf6567769),
+		186: uint32(0x3c1bdec6),
+		187: uint32(0x7a20b9a3),
+		188: uint32(0xe986fd42),
+		189: uint32(0xafbd9a27),
+		190: uint32(0x65f03388),
+		191: uint32(0x23cb54ed),
+		192: uint32(0x3ae0095e),
+		193: uint32(0x7cdb6e3b),
+		194: uint32(0xb696c794),
+		195: uint32(0xf0ada0f1),
+		196: uint32(0x630be410),
+		197: uint32(0x25308375),
+		198: uint32(0xef7d2ada),
+		199: uint32(0xa9464dbf),
+		200: uint32(0x8836d2c3),
+		201: uint32(0xce0db5a6),
+		202: uint32(0x04401c09),
+		203: uint32(0x427b7b6c),
+		204: uint32(0xd1dd3f8d),
+		205: uint32(0x97e658e8),
+		206: uint32(0x5dabf147),
+		207: uint32(0x1b909622),
+		208: uint32(0x1f4bcfbe),
+		209: uint32(0x5970a8db),
+		210: uint32(0x933d0174),
+		211: uint32(0xd5066611),
+		212: uint32(0x46a022f0),
+		213: uint32(0x009b4595),
+		214: uint32(0xcad6ec3a),
+		215: uint32(0x8ced8b5f),
+		216: uint32(0xad9d1423),
+		217: uint32(0xeba67346),
+		218: uint32(0x21ebdae9),
+		219: uint32(0x67d0bd8c),
+		220: uint32(0xf476f96d),
+		221: uint32(0xb24d9e08),
+		222: uint32(0x780037a7),
+		223: uint32(0x3e3b50c2),
+		224: uint32(0x31b0f544),
+		225: uint32(0x778b9221),
+		226: uint32(0xbdc63b8e),
+		227: uint32(0xfbfd5ceb),
+		228: uint32(0x685b180a),
+		229: uint32(0x2e607f6f),
+		230: uint32(0xe42dd6c0),
+		231: uint32(0xa216b1a5),
+		232: uint32(0x83662ed9),
+		233: uint32(0xc55d49bc),
+		234: uint32(0x0f10e013),
+		235: uint32(0x492b8776),
+		236: uint32(0xda8dc397),
+		237: uint32(0x9cb6a4f2),
+		238: uint32(0x56fb0d5d),
+		239: uint32(0x10c06a38),
+		240: uint32(0x141b33a4),
+		241: uint32(0x522054c1),
+		242: uint32(0x986dfd6e),
+		243: uint32(0xde569a0b),
+		244: uint32(0x4df0deea),
+		245: uint32(0x0bcbb98f),
+		246: uint32(0xc1861020),
+		247: uint32(0x87bd7745),
+		248: uint32(0xa6cde839),
+		249: uint32(0xe0f68f5c),
+		250: uint32(0x2abb26f3),
+		251: uint32(0x6c804196),
+		252: uint32(0xff260577),
+		253: uint32(0xb91d6212),
+		254: uint32(0x7350cbbd),
+		255: uint32(0x356bacd8),
 	},
 }
 var _x2n_table = [32]Tz_crc_t{
@@ -6392,16 +4522,16 @@ func _crc_word(tls *libc.TLS, data Tz_word_t) (r Tz_crc_t) {
 	_ = k
 	k = 0
 	for {
-		if !(k < int32(m_W)) {
+		if !(k < int32(4)) {
 			break
 		}
-		data = data>>libc.Int32FromInt32(8) ^ uint64(_crc_table[data&uint64(0xff)])
+		data = data>>libc.Int32FromInt32(8) ^ _crc_table[data&uint32(0xff)]
 		goto _1
 	_1:
 		;
 		k++
 	}
-	return uint32(uint32(data))
+	return data
 }
 
 func _crc_word_big(tls *libc.TLS, data Tz_word_t) (r Tz_word_t) {
@@ -6409,10 +4539,10 @@ func _crc_word_big(tls *libc.TLS, data Tz_word_t) (r Tz_word_t) {
 	_ = k
 	k = 0
 	for {
-		if !(k < int32(m_W)) {
+		if !(k < int32(4)) {
 			break
 		}
-		data = data<<libc.Int32FromInt32(8) ^ _crc_big_table[data>>((libc.Int32FromInt32(m_W)-libc.Int32FromInt32(1))<<libc.Int32FromInt32(3))&uint64(0xff)]
+		data = data<<libc.Int32FromInt32(8) ^ _crc_big_table[data>>((libc.Int32FromInt32(4)-libc.Int32FromInt32(1))<<libc.Int32FromInt32(3))&uint32(0xff)]
 		goto _1
 	_1:
 		;
@@ -6441,17 +4571,17 @@ func x_crc32_z(tls *libc.TLS, crc uint32, buf uintptr, len1 Tz_size_t) (r uint32
 	/* Pre-condition the CRC */
 	crc = ^crc & uint32(0xffffffff)
 	/* If provided enough bytes, do a braided CRC calculation. */
-	if len1 >= uint64(libc.Int32FromInt32(m_N)*libc.Int32FromInt32(m_W)+libc.Int32FromInt32(m_W)-libc.Int32FromInt32(1)) {
+	if len1 >= uint32(libc.Int32FromInt32(m_N)*libc.Int32FromInt32(4)+libc.Int32FromInt32(4)-libc.Int32FromInt32(1)) {
 		/* Compute the CRC up to a z_word_t boundary. */
-		for len1 != 0 && uint64(uint64(buf))&uint64(libc.Int32FromInt32(m_W)-libc.Int32FromInt32(1)) != uint64(0) {
+		for len1 != 0 && uint32(uint32(buf))&uint32(libc.Int32FromInt32(4)-libc.Int32FromInt32(1)) != uint32(0) {
 			len1--
 			v1 = buf
 			buf++
 			crc = crc>>int32(8) ^ uint32(_crc_table[(crc^uint32(*(*uint8)(unsafe.Pointer(v1))))&uint32(0xff)])
 		}
 		/* Compute the CRC on as many N z_word_t blocks as are available. */
-		blks = len1 / uint64(libc.Int32FromInt32(m_N)*libc.Int32FromInt32(m_W))
-		len1 -= blks * uint64(m_N) * uint64(m_W)
+		blks = len1 / uint32(libc.Int32FromInt32(m_N)*libc.Int32FromInt32(4))
+		len1 -= blks * uint32(m_N) * uint32(4)
 		words = buf
 		/* Do endian check at execution time instead of compile time, since ARM
 		   processors can change the endianness at execution time. If the
@@ -6476,29 +4606,29 @@ func x_crc32_z(tls *libc.TLS, crc uint32, buf uintptr, len1 Tz_size_t) (r uint32
 					break
 				}
 				/* Load the word for each braid into registers. */
-				word0 = uint64(uint64(crc0)) ^ *(*Tz_word_t)(unsafe.Pointer(words))
-				word1 = uint64(uint64(crc1)) ^ *(*Tz_word_t)(unsafe.Pointer(words + 1*8))
-				word2 = uint64(uint64(crc2)) ^ *(*Tz_word_t)(unsafe.Pointer(words + 2*8))
-				word3 = uint64(uint64(crc3)) ^ *(*Tz_word_t)(unsafe.Pointer(words + 3*8))
-				word4 = uint64(uint64(crc4)) ^ *(*Tz_word_t)(unsafe.Pointer(words + 4*8))
-				words += uintptr(m_N) * 8
+				word0 = crc0 ^ *(*Tz_word_t)(unsafe.Pointer(words))
+				word1 = crc1 ^ *(*Tz_word_t)(unsafe.Pointer(words + 1*4))
+				word2 = crc2 ^ *(*Tz_word_t)(unsafe.Pointer(words + 2*4))
+				word3 = crc3 ^ *(*Tz_word_t)(unsafe.Pointer(words + 3*4))
+				word4 = crc4 ^ *(*Tz_word_t)(unsafe.Pointer(words + 4*4))
+				words += uintptr(m_N) * 4
 				/* Compute and update the CRC for each word. The loop should
 				   get unrolled. */
-				crc0 = *(*Tz_crc_t)(unsafe.Pointer(uintptr(unsafe.Pointer(&_crc_braid_table)) + uintptr(word0&uint64(0xff))*4))
-				crc1 = *(*Tz_crc_t)(unsafe.Pointer(uintptr(unsafe.Pointer(&_crc_braid_table)) + uintptr(word1&uint64(0xff))*4))
-				crc2 = *(*Tz_crc_t)(unsafe.Pointer(uintptr(unsafe.Pointer(&_crc_braid_table)) + uintptr(word2&uint64(0xff))*4))
-				crc3 = *(*Tz_crc_t)(unsafe.Pointer(uintptr(unsafe.Pointer(&_crc_braid_table)) + uintptr(word3&uint64(0xff))*4))
-				crc4 = *(*Tz_crc_t)(unsafe.Pointer(uintptr(unsafe.Pointer(&_crc_braid_table)) + uintptr(word4&uint64(0xff))*4))
+				crc0 = *(*Tz_crc_t)(unsafe.Pointer(uintptr(unsafe.Pointer(&_crc_braid_table)) + uintptr(word0&uint32(0xff))*4))
+				crc1 = *(*Tz_crc_t)(unsafe.Pointer(uintptr(unsafe.Pointer(&_crc_braid_table)) + uintptr(word1&uint32(0xff))*4))
+				crc2 = *(*Tz_crc_t)(unsafe.Pointer(uintptr(unsafe.Pointer(&_crc_braid_table)) + uintptr(word2&uint32(0xff))*4))
+				crc3 = *(*Tz_crc_t)(unsafe.Pointer(uintptr(unsafe.Pointer(&_crc_braid_table)) + uintptr(word3&uint32(0xff))*4))
+				crc4 = *(*Tz_crc_t)(unsafe.Pointer(uintptr(unsafe.Pointer(&_crc_braid_table)) + uintptr(word4&uint32(0xff))*4))
 				k = int32(1)
 				for {
-					if !(k < int32(m_W)) {
+					if !(k < int32(4)) {
 						break
 					}
-					crc0 ^= *(*Tz_crc_t)(unsafe.Pointer(uintptr(unsafe.Pointer(&_crc_braid_table)) + uintptr(k)*1024 + uintptr(word0>>(k<<libc.Int32FromInt32(3))&uint64(0xff))*4))
-					crc1 ^= *(*Tz_crc_t)(unsafe.Pointer(uintptr(unsafe.Pointer(&_crc_braid_table)) + uintptr(k)*1024 + uintptr(word1>>(k<<libc.Int32FromInt32(3))&uint64(0xff))*4))
-					crc2 ^= *(*Tz_crc_t)(unsafe.Pointer(uintptr(unsafe.Pointer(&_crc_braid_table)) + uintptr(k)*1024 + uintptr(word2>>(k<<libc.Int32FromInt32(3))&uint64(0xff))*4))
-					crc3 ^= *(*Tz_crc_t)(unsafe.Pointer(uintptr(unsafe.Pointer(&_crc_braid_table)) + uintptr(k)*1024 + uintptr(word3>>(k<<libc.Int32FromInt32(3))&uint64(0xff))*4))
-					crc4 ^= *(*Tz_crc_t)(unsafe.Pointer(uintptr(unsafe.Pointer(&_crc_braid_table)) + uintptr(k)*1024 + uintptr(word4>>(k<<libc.Int32FromInt32(3))&uint64(0xff))*4))
+					crc0 ^= *(*Tz_crc_t)(unsafe.Pointer(uintptr(unsafe.Pointer(&_crc_braid_table)) + uintptr(k)*1024 + uintptr(word0>>(k<<libc.Int32FromInt32(3))&uint32(0xff))*4))
+					crc1 ^= *(*Tz_crc_t)(unsafe.Pointer(uintptr(unsafe.Pointer(&_crc_braid_table)) + uintptr(k)*1024 + uintptr(word1>>(k<<libc.Int32FromInt32(3))&uint32(0xff))*4))
+					crc2 ^= *(*Tz_crc_t)(unsafe.Pointer(uintptr(unsafe.Pointer(&_crc_braid_table)) + uintptr(k)*1024 + uintptr(word2>>(k<<libc.Int32FromInt32(3))&uint32(0xff))*4))
+					crc3 ^= *(*Tz_crc_t)(unsafe.Pointer(uintptr(unsafe.Pointer(&_crc_braid_table)) + uintptr(k)*1024 + uintptr(word3>>(k<<libc.Int32FromInt32(3))&uint32(0xff))*4))
+					crc4 ^= *(*Tz_crc_t)(unsafe.Pointer(uintptr(unsafe.Pointer(&_crc_braid_table)) + uintptr(k)*1024 + uintptr(word4>>(k<<libc.Int32FromInt32(3))&uint32(0xff))*4))
 					goto _3
 				_3:
 					;
@@ -6509,19 +4639,19 @@ func x_crc32_z(tls *libc.TLS, crc uint32, buf uintptr, len1 Tz_size_t) (r uint32
 			   Process the last block, combining the CRCs of the N braids at the
 			   same time.
 			*/
-			crc = uint32(_crc_word(tls, uint64(uint64(crc0))^*(*Tz_word_t)(unsafe.Pointer(words))))
-			crc = uint32(_crc_word(tls, uint64(uint64(crc1))^*(*Tz_word_t)(unsafe.Pointer(words + 1*8))^uint64(uint64(crc))))
-			crc = uint32(_crc_word(tls, uint64(uint64(crc2))^*(*Tz_word_t)(unsafe.Pointer(words + 2*8))^uint64(uint64(crc))))
-			crc = uint32(_crc_word(tls, uint64(uint64(crc3))^*(*Tz_word_t)(unsafe.Pointer(words + 3*8))^uint64(uint64(crc))))
-			crc = uint32(_crc_word(tls, uint64(uint64(crc4))^*(*Tz_word_t)(unsafe.Pointer(words + 4*8))^uint64(uint64(crc))))
-			words += uintptr(m_N) * 8
+			crc = uint32(_crc_word(tls, crc0^*(*Tz_word_t)(unsafe.Pointer(words))))
+			crc = uint32(_crc_word(tls, uint32(uint32(crc1^*(*Tz_word_t)(unsafe.Pointer(words + 1*4)))^crc)))
+			crc = uint32(_crc_word(tls, uint32(uint32(crc2^*(*Tz_word_t)(unsafe.Pointer(words + 2*4)))^crc)))
+			crc = uint32(_crc_word(tls, uint32(uint32(crc3^*(*Tz_word_t)(unsafe.Pointer(words + 3*4)))^crc)))
+			crc = uint32(_crc_word(tls, uint32(uint32(crc4^*(*Tz_word_t)(unsafe.Pointer(words + 4*4)))^crc)))
+			words += uintptr(m_N) * 4
 		} else {
 			/* Initialize the CRC for each braid. */
-			crc01 = _byte_swap(tls, uint64(uint64(crc)))
-			crc11 = uint64(0)
-			crc21 = uint64(0)
-			crc31 = uint64(0)
-			crc41 = uint64(0)
+			crc01 = _byte_swap(tls, uint32(uint32(crc)))
+			crc11 = uint32(0)
+			crc21 = uint32(0)
+			crc31 = uint32(0)
+			crc41 = uint32(0)
 			/*
 			   Process the first blks-1 blocks, computing the CRCs on each braid
 			   independently.
@@ -6534,28 +4664,28 @@ func x_crc32_z(tls *libc.TLS, crc uint32, buf uintptr, len1 Tz_size_t) (r uint32
 				}
 				/* Load the word for each braid into registers. */
 				word01 = crc01 ^ *(*Tz_word_t)(unsafe.Pointer(words))
-				word11 = crc11 ^ *(*Tz_word_t)(unsafe.Pointer(words + 1*8))
-				word21 = crc21 ^ *(*Tz_word_t)(unsafe.Pointer(words + 2*8))
-				word31 = crc31 ^ *(*Tz_word_t)(unsafe.Pointer(words + 3*8))
-				word41 = crc41 ^ *(*Tz_word_t)(unsafe.Pointer(words + 4*8))
-				words += uintptr(m_N) * 8
+				word11 = crc11 ^ *(*Tz_word_t)(unsafe.Pointer(words + 1*4))
+				word21 = crc21 ^ *(*Tz_word_t)(unsafe.Pointer(words + 2*4))
+				word31 = crc31 ^ *(*Tz_word_t)(unsafe.Pointer(words + 3*4))
+				word41 = crc41 ^ *(*Tz_word_t)(unsafe.Pointer(words + 4*4))
+				words += uintptr(m_N) * 4
 				/* Compute and update the CRC for each word. The loop should
 				   get unrolled. */
-				crc01 = *(*Tz_word_t)(unsafe.Pointer(uintptr(unsafe.Pointer(&_crc_braid_big_table)) + uintptr(word01&uint64(0xff))*8))
-				crc11 = *(*Tz_word_t)(unsafe.Pointer(uintptr(unsafe.Pointer(&_crc_braid_big_table)) + uintptr(word11&uint64(0xff))*8))
-				crc21 = *(*Tz_word_t)(unsafe.Pointer(uintptr(unsafe.Pointer(&_crc_braid_big_table)) + uintptr(word21&uint64(0xff))*8))
-				crc31 = *(*Tz_word_t)(unsafe.Pointer(uintptr(unsafe.Pointer(&_crc_braid_big_table)) + uintptr(word31&uint64(0xff))*8))
-				crc41 = *(*Tz_word_t)(unsafe.Pointer(uintptr(unsafe.Pointer(&_crc_braid_big_table)) + uintptr(word41&uint64(0xff))*8))
+				crc01 = *(*Tz_word_t)(unsafe.Pointer(uintptr(unsafe.Pointer(&_crc_braid_big_table)) + uintptr(word01&uint32(0xff))*4))
+				crc11 = *(*Tz_word_t)(unsafe.Pointer(uintptr(unsafe.Pointer(&_crc_braid_big_table)) + uintptr(word11&uint32(0xff))*4))
+				crc21 = *(*Tz_word_t)(unsafe.Pointer(uintptr(unsafe.Pointer(&_crc_braid_big_table)) + uintptr(word21&uint32(0xff))*4))
+				crc31 = *(*Tz_word_t)(unsafe.Pointer(uintptr(unsafe.Pointer(&_crc_braid_big_table)) + uintptr(word31&uint32(0xff))*4))
+				crc41 = *(*Tz_word_t)(unsafe.Pointer(uintptr(unsafe.Pointer(&_crc_braid_big_table)) + uintptr(word41&uint32(0xff))*4))
 				k = int32(1)
 				for {
-					if !(k < int32(m_W)) {
+					if !(k < int32(4)) {
 						break
 					}
-					crc01 ^= *(*Tz_word_t)(unsafe.Pointer(uintptr(unsafe.Pointer(&_crc_braid_big_table)) + uintptr(k)*2048 + uintptr(word01>>(k<<libc.Int32FromInt32(3))&uint64(0xff))*8))
-					crc11 ^= *(*Tz_word_t)(unsafe.Pointer(uintptr(unsafe.Pointer(&_crc_braid_big_table)) + uintptr(k)*2048 + uintptr(word11>>(k<<libc.Int32FromInt32(3))&uint64(0xff))*8))
-					crc21 ^= *(*Tz_word_t)(unsafe.Pointer(uintptr(unsafe.Pointer(&_crc_braid_big_table)) + uintptr(k)*2048 + uintptr(word21>>(k<<libc.Int32FromInt32(3))&uint64(0xff))*8))
-					crc31 ^= *(*Tz_word_t)(unsafe.Pointer(uintptr(unsafe.Pointer(&_crc_braid_big_table)) + uintptr(k)*2048 + uintptr(word31>>(k<<libc.Int32FromInt32(3))&uint64(0xff))*8))
-					crc41 ^= *(*Tz_word_t)(unsafe.Pointer(uintptr(unsafe.Pointer(&_crc_braid_big_table)) + uintptr(k)*2048 + uintptr(word41>>(k<<libc.Int32FromInt32(3))&uint64(0xff))*8))
+					crc01 ^= *(*Tz_word_t)(unsafe.Pointer(uintptr(unsafe.Pointer(&_crc_braid_big_table)) + uintptr(k)*1024 + uintptr(word01>>(k<<libc.Int32FromInt32(3))&uint32(0xff))*4))
+					crc11 ^= *(*Tz_word_t)(unsafe.Pointer(uintptr(unsafe.Pointer(&_crc_braid_big_table)) + uintptr(k)*1024 + uintptr(word11>>(k<<libc.Int32FromInt32(3))&uint32(0xff))*4))
+					crc21 ^= *(*Tz_word_t)(unsafe.Pointer(uintptr(unsafe.Pointer(&_crc_braid_big_table)) + uintptr(k)*1024 + uintptr(word21>>(k<<libc.Int32FromInt32(3))&uint32(0xff))*4))
+					crc31 ^= *(*Tz_word_t)(unsafe.Pointer(uintptr(unsafe.Pointer(&_crc_braid_big_table)) + uintptr(k)*1024 + uintptr(word31>>(k<<libc.Int32FromInt32(3))&uint32(0xff))*4))
+					crc41 ^= *(*Tz_word_t)(unsafe.Pointer(uintptr(unsafe.Pointer(&_crc_braid_big_table)) + uintptr(k)*1024 + uintptr(word41>>(k<<libc.Int32FromInt32(3))&uint32(0xff))*4))
 					goto _5
 				_5:
 					;
@@ -6567,11 +4697,11 @@ func x_crc32_z(tls *libc.TLS, crc uint32, buf uintptr, len1 Tz_size_t) (r uint32
 			   same time.
 			*/
 			comb = _crc_word_big(tls, crc01^*(*Tz_word_t)(unsafe.Pointer(words)))
-			comb = _crc_word_big(tls, crc11^*(*Tz_word_t)(unsafe.Pointer(words + 1*8))^comb)
-			comb = _crc_word_big(tls, crc21^*(*Tz_word_t)(unsafe.Pointer(words + 2*8))^comb)
-			comb = _crc_word_big(tls, crc31^*(*Tz_word_t)(unsafe.Pointer(words + 3*8))^comb)
-			comb = _crc_word_big(tls, crc41^*(*Tz_word_t)(unsafe.Pointer(words + 4*8))^comb)
-			words += uintptr(m_N) * 8
+			comb = _crc_word_big(tls, crc11^*(*Tz_word_t)(unsafe.Pointer(words + 1*4))^comb)
+			comb = _crc_word_big(tls, crc21^*(*Tz_word_t)(unsafe.Pointer(words + 2*4))^comb)
+			comb = _crc_word_big(tls, crc31^*(*Tz_word_t)(unsafe.Pointer(words + 3*4))^comb)
+			comb = _crc_word_big(tls, crc41^*(*Tz_word_t)(unsafe.Pointer(words + 4*4))^comb)
+			words += uintptr(m_N) * 4
 			crc = uint32(_byte_swap(tls, comb))
 		}
 		/*
@@ -6580,8 +4710,8 @@ func x_crc32_z(tls *libc.TLS, crc uint32, buf uintptr, len1 Tz_size_t) (r uint32
 		buf = words
 	}
 	/* Complete the computation of the CRC on any remaining bytes. */
-	for len1 >= uint64(8) {
-		len1 -= uint64(8)
+	for len1 >= uint32(8) {
+		len1 -= uint32(8)
 		v6 = buf
 		buf++
 		crc = crc>>int32(8) ^ uint32(_crc_table[(crc^uint32(*(*uint8)(unsafe.Pointer(v6))))&uint32(0xff)])
@@ -6621,7 +4751,7 @@ func x_crc32_z(tls *libc.TLS, crc uint32, buf uintptr, len1 Tz_size_t) (r uint32
 //
 //	/* ========================================================================= */
 func x_crc32(tls *libc.TLS, crc uint32, buf uintptr, len1 TuInt) (r uint32) {
-	return x_crc32_z(tls, crc, buf, uint64(uint64(len1)))
+	return x_crc32_z(tls, crc, buf, len1)
 }
 
 // C documentation
@@ -6952,15 +5082,15 @@ var _configuration_table = [10]Tconfig{
 func init() {
 	p := unsafe.Pointer(&_configuration_table)
 	*(*uintptr)(unsafe.Add(p, 8)) = __ccgo_fp(_deflate_stored)
-	*(*uintptr)(unsafe.Add(p, 24)) = __ccgo_fp(_deflate_fast)
-	*(*uintptr)(unsafe.Add(p, 40)) = __ccgo_fp(_deflate_fast)
-	*(*uintptr)(unsafe.Add(p, 56)) = __ccgo_fp(_deflate_fast)
-	*(*uintptr)(unsafe.Add(p, 72)) = __ccgo_fp(_deflate_slow)
-	*(*uintptr)(unsafe.Add(p, 88)) = __ccgo_fp(_deflate_slow)
+	*(*uintptr)(unsafe.Add(p, 20)) = __ccgo_fp(_deflate_fast)
+	*(*uintptr)(unsafe.Add(p, 32)) = __ccgo_fp(_deflate_fast)
+	*(*uintptr)(unsafe.Add(p, 44)) = __ccgo_fp(_deflate_fast)
+	*(*uintptr)(unsafe.Add(p, 56)) = __ccgo_fp(_deflate_slow)
+	*(*uintptr)(unsafe.Add(p, 68)) = __ccgo_fp(_deflate_slow)
+	*(*uintptr)(unsafe.Add(p, 80)) = __ccgo_fp(_deflate_slow)
+	*(*uintptr)(unsafe.Add(p, 92)) = __ccgo_fp(_deflate_slow)
 	*(*uintptr)(unsafe.Add(p, 104)) = __ccgo_fp(_deflate_slow)
-	*(*uintptr)(unsafe.Add(p, 120)) = __ccgo_fp(_deflate_slow)
-	*(*uintptr)(unsafe.Add(p, 136)) = __ccgo_fp(_deflate_slow)
-	*(*uintptr)(unsafe.Add(p, 152)) = __ccgo_fp(_deflate_slow)
+	*(*uintptr)(unsafe.Add(p, 116)) = __ccgo_fp(_deflate_slow)
 }
 
 /* max compression */
@@ -7074,8 +5204,8 @@ func _read_buf(tls *libc.TLS, strm Tz_streamp, buf uintptr, size uint32) (r uint
 	if len1 == uint32(0) {
 		return uint32(0)
 	}
-	*(*TuInt)(unsafe.Pointer(strm + 8)) -= len1
-	libc.Xmemcpy(tls, buf, (*Tz_stream)(unsafe.Pointer(strm)).Fnext_in, uint64(uint64(len1)))
+	*(*TuInt)(unsafe.Pointer(strm + 4)) -= len1
+	libc.Xmemcpy(tls, buf, (*Tz_stream)(unsafe.Pointer(strm)).Fnext_in, len1)
 	if (*Tinternal_state)(unsafe.Pointer((*Tz_stream)(unsafe.Pointer(strm)).Fstate)).Fwrap == int32(1) {
 		(*Tz_stream)(unsafe.Pointer(strm)).Fadler = x_adler32(tls, (*Tz_stream)(unsafe.Pointer(strm)).Fadler, buf, len1)
 	} else {
@@ -7084,7 +5214,7 @@ func _read_buf(tls *libc.TLS, strm Tz_streamp, buf uintptr, size uint32) (r uint
 		}
 	}
 	*(*uintptr)(unsafe.Pointer(strm)) += uintptr(len1)
-	*(*TuLong)(unsafe.Pointer(strm + 12)) += uint32(uint32(len1))
+	*(*TuLong)(unsafe.Pointer(strm + 8)) += uint32(uint32(len1))
 	return len1
 }
 
@@ -7109,7 +5239,7 @@ func _fill_window(tls *libc.TLS, s uintptr) {
 	for cond := true; cond; cond = (*Tdeflate_state)(unsafe.Pointer(s)).Flookahead < uint32(libc.Int32FromInt32(m_MAX_MATCH)+libc.Int32FromInt32(m_MIN_MATCH)+libc.Int32FromInt32(1)) && (*Tz_stream)(unsafe.Pointer((*Tdeflate_state)(unsafe.Pointer(s)).Fstrm)).Favail_in != uint32(0) {
 		more = uint32((*Tdeflate_state)(unsafe.Pointer(s)).Fwindow_size - uint32((*Tdeflate_state)(unsafe.Pointer(s)).Flookahead) - uint32((*Tdeflate_state)(unsafe.Pointer(s)).Fstrstart))
 		/* Deal with !@#$% 64K limit: */
-		if uint64(4) <= uint64(2) {
+		if uint32(4) <= uint32(2) {
 			if more == uint32(0) && (*Tdeflate_state)(unsafe.Pointer(s)).Fstrstart == uint32(0) && (*Tdeflate_state)(unsafe.Pointer(s)).Flookahead == uint32(0) {
 				more = wsize
 			} else {
@@ -7125,10 +5255,10 @@ func _fill_window(tls *libc.TLS, s uintptr) {
 		 * move the upper half to the lower one to make room in the upper half.
 		 */
 		if (*Tdeflate_state)(unsafe.Pointer(s)).Fstrstart >= wsize+((*Tdeflate_state)(unsafe.Pointer(s)).Fw_size-uint32(libc.Int32FromInt32(m_MAX_MATCH)+libc.Int32FromInt32(m_MIN_MATCH)+libc.Int32FromInt32(1))) {
-			libc.Xmemcpy(tls, (*Tdeflate_state)(unsafe.Pointer(s)).Fwindow, (*Tdeflate_state)(unsafe.Pointer(s)).Fwindow+uintptr(wsize), uint64(wsize-more))
-			*(*TuInt)(unsafe.Pointer(s + 152)) -= wsize
-			*(*TuInt)(unsafe.Pointer(s + 148)) -= wsize /* we now have strstart >= MAX_DIST */
-			*(*int32)(unsafe.Pointer(s + 132)) -= int32(int32(wsize))
+			libc.Xmemcpy(tls, (*Tdeflate_state)(unsafe.Pointer(s)).Fwindow, (*Tdeflate_state)(unsafe.Pointer(s)).Fwindow+uintptr(wsize), wsize-more)
+			*(*TuInt)(unsafe.Pointer(s + 112)) -= wsize
+			*(*TuInt)(unsafe.Pointer(s + 108)) -= wsize /* we now have strstart >= MAX_DIST */
+			*(*int32)(unsafe.Pointer(s + 92)) -= int32(int32(wsize))
 			if (*Tdeflate_state)(unsafe.Pointer(s)).Finsert > (*Tdeflate_state)(unsafe.Pointer(s)).Fstrstart {
 				(*Tdeflate_state)(unsafe.Pointer(s)).Finsert = (*Tdeflate_state)(unsafe.Pointer(s)).Fstrstart
 			}
@@ -7150,7 +5280,7 @@ func _fill_window(tls *libc.TLS, s uintptr) {
 		 * If there was sliding, more >= WSIZE. So in all cases, more >= 2.
 		 */
 		n = _read_buf(tls, (*Tdeflate_state)(unsafe.Pointer(s)).Fstrm, (*Tdeflate_state)(unsafe.Pointer(s)).Fwindow+uintptr((*Tdeflate_state)(unsafe.Pointer(s)).Fstrstart)+uintptr((*Tdeflate_state)(unsafe.Pointer(s)).Flookahead), more)
-		*(*TuInt)(unsafe.Pointer(s + 156)) += n
+		*(*TuInt)(unsafe.Pointer(s + 116)) += n
 		/* Initialize the hash value now that we have some input: */
 		if (*Tdeflate_state)(unsafe.Pointer(s)).Flookahead+(*Tdeflate_state)(unsafe.Pointer(s)).Finsert >= uint32(m_MIN_MATCH) {
 			str = (*Tdeflate_state)(unsafe.Pointer(s)).Fstrstart - (*Tdeflate_state)(unsafe.Pointer(s)).Finsert
@@ -7188,7 +5318,7 @@ func _fill_window(tls *libc.TLS, s uintptr) {
 			if init1 > uint32(m_MAX_MATCH) {
 				init1 = uint32(m_MAX_MATCH)
 			}
-			libc.Xmemset(tls, (*Tdeflate_state)(unsafe.Pointer(s)).Fwindow+uintptr(curr), 0, uint64(uint32(uint32(init1))))
+			libc.Xmemset(tls, (*Tdeflate_state)(unsafe.Pointer(s)).Fwindow+uintptr(curr), 0, uint32(uint32(init1)))
 			(*Tdeflate_state)(unsafe.Pointer(s)).Fhigh_water = curr + init1
 		} else {
 			if (*Tdeflate_state)(unsafe.Pointer(s)).Fhigh_water < curr+uint32(m_MAX_MATCH) {
@@ -7200,8 +5330,8 @@ func _fill_window(tls *libc.TLS, s uintptr) {
 				if init1 > (*Tdeflate_state)(unsafe.Pointer(s)).Fwindow_size-(*Tdeflate_state)(unsafe.Pointer(s)).Fhigh_water {
 					init1 = (*Tdeflate_state)(unsafe.Pointer(s)).Fwindow_size - (*Tdeflate_state)(unsafe.Pointer(s)).Fhigh_water
 				}
-				libc.Xmemset(tls, (*Tdeflate_state)(unsafe.Pointer(s)).Fwindow+uintptr((*Tdeflate_state)(unsafe.Pointer(s)).Fhigh_water), 0, uint64(uint32(uint32(init1))))
-				*(*Tulg)(unsafe.Pointer(s + 5908)) += init1
+				libc.Xmemset(tls, (*Tdeflate_state)(unsafe.Pointer(s)).Fwindow+uintptr((*Tdeflate_state)(unsafe.Pointer(s)).Fhigh_water), 0, uint32(uint32(init1)))
+				*(*Tulg)(unsafe.Pointer(s + 5824)) += init1
 			}
 		}
 	}
@@ -7223,7 +5353,7 @@ func x_deflateInit2_(tls *libc.TLS, strm Tz_streamp, level int32, method int32, 
 	var wrap int32
 	_, _ = s, wrap
 	wrap = int32(1)
-	if version == uintptr(m_Z_NULL) || int32(*(*int8)(unsafe.Pointer(version))) != int32(_my_version[0]) || uint64(uint64(stream_size)) != uint64(88) {
+	if version == uintptr(m_Z_NULL) || int32(*(*int8)(unsafe.Pointer(version))) != int32(_my_version[0]) || uint32(uint32(stream_size)) != uint32(56) {
 		return -int32(6)
 	}
 	if strm == uintptr(m_Z_NULL) {
@@ -7258,7 +5388,7 @@ func x_deflateInit2_(tls *libc.TLS, strm Tz_streamp, level int32, method int32, 
 	if windowBits == int32(8) {
 		windowBits = int32(9)
 	} /* until 256-byte window bug fixed */
-	s = (*(*func(*libc.TLS, Tvoidpf, TuInt, TuInt) Tvoidpf)(unsafe.Pointer(&struct{ uintptr }{(*Tz_stream)(unsafe.Pointer(strm)).Fzalloc})))(tls, (*Tz_stream)(unsafe.Pointer(strm)).Fopaque, uint32(libc.Int32FromInt32(1)), uint32(libc.Uint64FromInt64(5912)))
+	s = (*(*func(*libc.TLS, Tvoidpf, TuInt, TuInt) Tvoidpf)(unsafe.Pointer(&struct{ uintptr }{(*Tz_stream)(unsafe.Pointer(strm)).Fzalloc})))(tls, (*Tz_stream)(unsafe.Pointer(strm)).Fopaque, uint32(libc.Int32FromInt32(1)), libc.Uint32FromInt64(5828))
 	if s == uintptr(m_Z_NULL) {
 		return -int32(4)
 	}
@@ -7274,9 +5404,9 @@ func x_deflateInit2_(tls *libc.TLS, strm Tz_streamp, level int32, method int32, 
 	(*Tdeflate_state)(unsafe.Pointer(s)).Fhash_size = uint32(int32(1) << (*Tdeflate_state)(unsafe.Pointer(s)).Fhash_bits)
 	(*Tdeflate_state)(unsafe.Pointer(s)).Fhash_mask = (*Tdeflate_state)(unsafe.Pointer(s)).Fhash_size - uint32(1)
 	(*Tdeflate_state)(unsafe.Pointer(s)).Fhash_shift = ((*Tdeflate_state)(unsafe.Pointer(s)).Fhash_bits + libc.Uint32FromInt32(m_MIN_MATCH) - libc.Uint32FromInt32(1)) / libc.Uint32FromInt32(m_MIN_MATCH)
-	(*Tdeflate_state)(unsafe.Pointer(s)).Fwindow = (*(*func(*libc.TLS, Tvoidpf, TuInt, TuInt) Tvoidpf)(unsafe.Pointer(&struct{ uintptr }{(*Tz_stream)(unsafe.Pointer(strm)).Fzalloc})))(tls, (*Tz_stream)(unsafe.Pointer(strm)).Fopaque, (*Tdeflate_state)(unsafe.Pointer(s)).Fw_size, uint32(libc.Uint64FromInt32(2)*libc.Uint64FromInt64(1)))
-	(*Tdeflate_state)(unsafe.Pointer(s)).Fprev = (*(*func(*libc.TLS, Tvoidpf, TuInt, TuInt) Tvoidpf)(unsafe.Pointer(&struct{ uintptr }{(*Tz_stream)(unsafe.Pointer(strm)).Fzalloc})))(tls, (*Tz_stream)(unsafe.Pointer(strm)).Fopaque, (*Tdeflate_state)(unsafe.Pointer(s)).Fw_size, uint32(libc.Uint64FromInt64(2)))
-	(*Tdeflate_state)(unsafe.Pointer(s)).Fhead = (*(*func(*libc.TLS, Tvoidpf, TuInt, TuInt) Tvoidpf)(unsafe.Pointer(&struct{ uintptr }{(*Tz_stream)(unsafe.Pointer(strm)).Fzalloc})))(tls, (*Tz_stream)(unsafe.Pointer(strm)).Fopaque, (*Tdeflate_state)(unsafe.Pointer(s)).Fhash_size, uint32(libc.Uint64FromInt64(2)))
+	(*Tdeflate_state)(unsafe.Pointer(s)).Fwindow = (*(*func(*libc.TLS, Tvoidpf, TuInt, TuInt) Tvoidpf)(unsafe.Pointer(&struct{ uintptr }{(*Tz_stream)(unsafe.Pointer(strm)).Fzalloc})))(tls, (*Tz_stream)(unsafe.Pointer(strm)).Fopaque, (*Tdeflate_state)(unsafe.Pointer(s)).Fw_size, libc.Uint32FromInt32(2)*libc.Uint32FromInt64(1))
+	(*Tdeflate_state)(unsafe.Pointer(s)).Fprev = (*(*func(*libc.TLS, Tvoidpf, TuInt, TuInt) Tvoidpf)(unsafe.Pointer(&struct{ uintptr }{(*Tz_stream)(unsafe.Pointer(strm)).Fzalloc})))(tls, (*Tz_stream)(unsafe.Pointer(strm)).Fopaque, (*Tdeflate_state)(unsafe.Pointer(s)).Fw_size, libc.Uint32FromInt64(2))
+	(*Tdeflate_state)(unsafe.Pointer(s)).Fhead = (*(*func(*libc.TLS, Tvoidpf, TuInt, TuInt) Tvoidpf)(unsafe.Pointer(&struct{ uintptr }{(*Tz_stream)(unsafe.Pointer(strm)).Fzalloc})))(tls, (*Tz_stream)(unsafe.Pointer(strm)).Fopaque, (*Tdeflate_state)(unsafe.Pointer(s)).Fhash_size, libc.Uint32FromInt64(2))
 	(*Tdeflate_state)(unsafe.Pointer(s)).Fhigh_water = uint32(0) /* nothing written to s->window yet */
 	(*Tdeflate_state)(unsafe.Pointer(s)).Flit_bufsize = uint32(int32(1) << (memLevel + int32(6))) /* 16K elements by default */
 	/* We overlay pending_buf and sym_buf. This works since the average size
@@ -7383,7 +5513,7 @@ func x_deflateSetDictionary(tls *libc.TLS, strm Tz_streamp, dictionary uintptr, 
 	if dictLength >= (*Tdeflate_state)(unsafe.Pointer(s)).Fw_size {
 		if wrap == 0 { /* already empty otherwise */
 			*(*TPosf)(unsafe.Pointer((*Tdeflate_state)(unsafe.Pointer(s)).Fhead + uintptr((*Tdeflate_state)(unsafe.Pointer(s)).Fhash_size-uint32(1))*2)) = uint16(m_NIL)
-			libc.Xmemset(tls, (*Tdeflate_state)(unsafe.Pointer(s)).Fhead, 0, uint64((*Tdeflate_state)(unsafe.Pointer(s)).Fhash_size-libc.Uint32FromInt32(1))*uint64(2))
+			libc.Xmemset(tls, (*Tdeflate_state)(unsafe.Pointer(s)).Fhead, 0, ((*Tdeflate_state)(unsafe.Pointer(s)).Fhash_size-libc.Uint32FromInt32(1))*uint32(2))
 			(*Tdeflate_state)(unsafe.Pointer(s)).Fstrstart = uint32(0)
 			(*Tdeflate_state)(unsafe.Pointer(s)).Fblock_start = 0
 			(*Tdeflate_state)(unsafe.Pointer(s)).Finsert = uint32(0)
@@ -7418,7 +5548,7 @@ func x_deflateSetDictionary(tls *libc.TLS, strm Tz_streamp, dictionary uintptr, 
 		(*Tdeflate_state)(unsafe.Pointer(s)).Flookahead = uint32(libc.Int32FromInt32(m_MIN_MATCH) - libc.Int32FromInt32(1))
 		_fill_window(tls, s)
 	}
-	*(*TuInt)(unsafe.Pointer(s + 148)) += (*Tdeflate_state)(unsafe.Pointer(s)).Flookahead
+	*(*TuInt)(unsafe.Pointer(s + 108)) += (*Tdeflate_state)(unsafe.Pointer(s)).Flookahead
 	(*Tdeflate_state)(unsafe.Pointer(s)).Fblock_start = int32((*Tdeflate_state)(unsafe.Pointer(s)).Fstrstart)
 	(*Tdeflate_state)(unsafe.Pointer(s)).Finsert = (*Tdeflate_state)(unsafe.Pointer(s)).Flookahead
 	(*Tdeflate_state)(unsafe.Pointer(s)).Flookahead = uint32(0)
@@ -7448,7 +5578,7 @@ func x_deflateGetDictionary(tls *libc.TLS, strm Tz_streamp, dictionary uintptr, 
 		len1 = (*Tdeflate_state)(unsafe.Pointer(s)).Fw_size
 	}
 	if dictionary != uintptr(m_Z_NULL) && len1 != 0 {
-		libc.Xmemcpy(tls, dictionary, (*Tdeflate_state)(unsafe.Pointer(s)).Fwindow+uintptr((*Tdeflate_state)(unsafe.Pointer(s)).Fstrstart)+uintptr((*Tdeflate_state)(unsafe.Pointer(s)).Flookahead)-uintptr(len1), uint64(uint64(len1)))
+		libc.Xmemcpy(tls, dictionary, (*Tdeflate_state)(unsafe.Pointer(s)).Fwindow+uintptr((*Tdeflate_state)(unsafe.Pointer(s)).Fstrstart)+uintptr((*Tdeflate_state)(unsafe.Pointer(s)).Flookahead)-uintptr(len1), len1)
 	}
 	if dictLength != uintptr(m_Z_NULL) {
 		*(*TuInt)(unsafe.Pointer(dictLength)) = len1
@@ -7506,7 +5636,7 @@ func _lm_init(tls *libc.TLS, s uintptr) {
 	_ = v1
 	(*Tdeflate_state)(unsafe.Pointer(s)).Fwindow_size = libc.Uint32FromInt32(2) * uint32((*Tdeflate_state)(unsafe.Pointer(s)).Fw_size)
 	*(*TPosf)(unsafe.Pointer((*Tdeflate_state)(unsafe.Pointer(s)).Fhead + uintptr((*Tdeflate_state)(unsafe.Pointer(s)).Fhash_size-uint32(1))*2)) = uint16(m_NIL)
-	libc.Xmemset(tls, (*Tdeflate_state)(unsafe.Pointer(s)).Fhead, 0, uint64((*Tdeflate_state)(unsafe.Pointer(s)).Fhash_size-libc.Uint32FromInt32(1))*uint64(2))
+	libc.Xmemset(tls, (*Tdeflate_state)(unsafe.Pointer(s)).Fhead, 0, ((*Tdeflate_state)(unsafe.Pointer(s)).Fhash_size-libc.Uint32FromInt32(1))*uint32(2))
 	/* Set the default configuration parameters:
 	 */
 	(*Tdeflate_state)(unsafe.Pointer(s)).Fmax_lazy_match = uint32(_configuration_table[(*Tdeflate_state)(unsafe.Pointer(s)).Flevel].Fmax_lazy)
@@ -7583,9 +5713,9 @@ func x_deflatePrime(tls *libc.TLS, strm Tz_streamp, bits int32, value int32) (r 
 		if put > bits {
 			put = bits
 		}
-		p1 = s + 5900
+		p1 = s + 5816
 		*(*Tush)(unsafe.Pointer(p1)) = Tush(int32(*(*Tush)(unsafe.Pointer(p1))) | int32(uint16(value&(libc.Int32FromInt32(1)<<put-libc.Int32FromInt32(1))<<(*Tdeflate_state)(unsafe.Pointer(s)).Fbi_valid)))
-		*(*int32)(unsafe.Pointer(s + 5904)) += put
+		*(*int32)(unsafe.Pointer(s + 5820)) += put
 		x__tr_flush_bits(tls, s)
 		value >>= put
 		bits -= put
@@ -7628,7 +5758,7 @@ func x_deflateParams(tls *libc.TLS, strm Tz_streamp, level int32, strategy int32
 				_slide_hash(tls, s)
 			} else {
 				*(*TPosf)(unsafe.Pointer((*Tdeflate_state)(unsafe.Pointer(s)).Fhead + uintptr((*Tdeflate_state)(unsafe.Pointer(s)).Fhash_size-uint32(1))*2)) = uint16(m_NIL)
-				libc.Xmemset(tls, (*Tdeflate_state)(unsafe.Pointer(s)).Fhead, 0, uint64((*Tdeflate_state)(unsafe.Pointer(s)).Fhash_size-libc.Uint32FromInt32(1))*uint64(2))
+				libc.Xmemset(tls, (*Tdeflate_state)(unsafe.Pointer(s)).Fhead, 0, ((*Tdeflate_state)(unsafe.Pointer(s)).Fhash_size-libc.Uint32FromInt32(1))*uint32(2))
 			}
 			(*Tdeflate_state)(unsafe.Pointer(s)).Fmatches = uint32(0)
 		}
@@ -7785,11 +5915,11 @@ func _putShortMSB(tls *libc.TLS, s uintptr, b TuInt) {
 	var v1, v3 Tulg
 	var v2, v4 uintptr
 	_, _, _, _ = v1, v2, v3, v4
-	v2 = s + 40
+	v2 = s + 20
 	v1 = *(*Tulg)(unsafe.Pointer(v2))
 	*(*Tulg)(unsafe.Pointer(v2))++
 	*(*TBytef)(unsafe.Pointer((*Tdeflate_state)(unsafe.Pointer(s)).Fpending_buf + uintptr(v1))) = uint8(b >> libc.Int32FromInt32(8))
-	v4 = s + 40
+	v4 = s + 20
 	v3 = *(*Tulg)(unsafe.Pointer(v4))
 	*(*Tulg)(unsafe.Pointer(v4))++
 	*(*TBytef)(unsafe.Pointer((*Tdeflate_state)(unsafe.Pointer(s)).Fpending_buf + uintptr(v3))) = uint8(b & libc.Uint32FromInt32(0xff))
@@ -7816,12 +5946,12 @@ func _flush_pending(tls *libc.TLS, strm Tz_streamp) {
 	if len1 == uint32(0) {
 		return
 	}
-	libc.Xmemcpy(tls, (*Tz_stream)(unsafe.Pointer(strm)).Fnext_out, (*Tdeflate_state)(unsafe.Pointer(s)).Fpending_out, uint64(uint64(len1)))
-	*(*uintptr)(unsafe.Pointer(strm + 16)) += uintptr(len1)
-	*(*uintptr)(unsafe.Pointer(s + 32)) += uintptr(len1)
-	*(*TuLong)(unsafe.Pointer(strm + 28)) += uint32(uint32(len1))
-	*(*TuInt)(unsafe.Pointer(strm + 24)) -= len1
-	*(*Tulg)(unsafe.Pointer(s + 40)) -= uint32(uint32(len1))
+	libc.Xmemcpy(tls, (*Tz_stream)(unsafe.Pointer(strm)).Fnext_out, (*Tdeflate_state)(unsafe.Pointer(s)).Fpending_out, len1)
+	*(*uintptr)(unsafe.Pointer(strm + 12)) += uintptr(len1)
+	*(*uintptr)(unsafe.Pointer(s + 16)) += uintptr(len1)
+	*(*TuLong)(unsafe.Pointer(strm + 20)) += uint32(uint32(len1))
+	*(*TuInt)(unsafe.Pointer(strm + 16)) -= len1
+	*(*Tulg)(unsafe.Pointer(s + 20)) -= uint32(uint32(len1))
 	if (*Tdeflate_state)(unsafe.Pointer(s)).Fpending == uint32(0) {
 		(*Tdeflate_state)(unsafe.Pointer(s)).Fpending_out = (*Tdeflate_state)(unsafe.Pointer(s)).Fpending_buf
 	}
@@ -7939,40 +6069,40 @@ func x_deflate(tls *libc.TLS, strm Tz_streamp, flush int32) (r int32) {
 	if (*Tdeflate_state)(unsafe.Pointer(s)).Fstatus == int32(m_GZIP_STATE) {
 		/* gzip header */
 		(*Tz_stream)(unsafe.Pointer(strm)).Fadler = x_crc32(tls, uint32(0), uintptr(m_Z_NULL), uint32(0))
-		v5 = s + 40
+		v5 = s + 20
 		v4 = *(*Tulg)(unsafe.Pointer(v5))
 		*(*Tulg)(unsafe.Pointer(v5))++
 		*(*TBytef)(unsafe.Pointer((*Tdeflate_state)(unsafe.Pointer(s)).Fpending_buf + uintptr(v4))) = uint8(libc.Int32FromInt32(31))
-		v7 = s + 40
+		v7 = s + 20
 		v6 = *(*Tulg)(unsafe.Pointer(v7))
 		*(*Tulg)(unsafe.Pointer(v7))++
 		*(*TBytef)(unsafe.Pointer((*Tdeflate_state)(unsafe.Pointer(s)).Fpending_buf + uintptr(v6))) = uint8(libc.Int32FromInt32(139))
-		v9 = s + 40
+		v9 = s + 20
 		v8 = *(*Tulg)(unsafe.Pointer(v9))
 		*(*Tulg)(unsafe.Pointer(v9))++
 		*(*TBytef)(unsafe.Pointer((*Tdeflate_state)(unsafe.Pointer(s)).Fpending_buf + uintptr(v8))) = uint8(libc.Int32FromInt32(8))
 		if (*Tdeflate_state)(unsafe.Pointer(s)).Fgzhead == uintptr(m_Z_NULL) {
-			v11 = s + 40
+			v11 = s + 20
 			v10 = *(*Tulg)(unsafe.Pointer(v11))
 			*(*Tulg)(unsafe.Pointer(v11))++
 			*(*TBytef)(unsafe.Pointer((*Tdeflate_state)(unsafe.Pointer(s)).Fpending_buf + uintptr(v10))) = uint8(libc.Int32FromInt32(0))
-			v13 = s + 40
+			v13 = s + 20
 			v12 = *(*Tulg)(unsafe.Pointer(v13))
 			*(*Tulg)(unsafe.Pointer(v13))++
 			*(*TBytef)(unsafe.Pointer((*Tdeflate_state)(unsafe.Pointer(s)).Fpending_buf + uintptr(v12))) = uint8(libc.Int32FromInt32(0))
-			v15 = s + 40
+			v15 = s + 20
 			v14 = *(*Tulg)(unsafe.Pointer(v15))
 			*(*Tulg)(unsafe.Pointer(v15))++
 			*(*TBytef)(unsafe.Pointer((*Tdeflate_state)(unsafe.Pointer(s)).Fpending_buf + uintptr(v14))) = uint8(libc.Int32FromInt32(0))
-			v17 = s + 40
+			v17 = s + 20
 			v16 = *(*Tulg)(unsafe.Pointer(v17))
 			*(*Tulg)(unsafe.Pointer(v17))++
 			*(*TBytef)(unsafe.Pointer((*Tdeflate_state)(unsafe.Pointer(s)).Fpending_buf + uintptr(v16))) = uint8(libc.Int32FromInt32(0))
-			v19 = s + 40
+			v19 = s + 20
 			v18 = *(*Tulg)(unsafe.Pointer(v19))
 			*(*Tulg)(unsafe.Pointer(v19))++
 			*(*TBytef)(unsafe.Pointer((*Tdeflate_state)(unsafe.Pointer(s)).Fpending_buf + uintptr(v18))) = uint8(libc.Int32FromInt32(0))
-			v21 = s + 40
+			v21 = s + 20
 			v20 = *(*Tulg)(unsafe.Pointer(v21))
 			*(*Tulg)(unsafe.Pointer(v21))++
 			if (*Tdeflate_state)(unsafe.Pointer(s)).Flevel == int32(9) {
@@ -7986,7 +6116,7 @@ func x_deflate(tls *libc.TLS, strm Tz_streamp, flush int32) (r int32) {
 				v22 = v23
 			}
 			*(*TBytef)(unsafe.Pointer((*Tdeflate_state)(unsafe.Pointer(s)).Fpending_buf + uintptr(v20))) = uint8(v22)
-			v25 = s + 40
+			v25 = s + 20
 			v24 = *(*Tulg)(unsafe.Pointer(v25))
 			*(*Tulg)(unsafe.Pointer(v25))++
 			*(*TBytef)(unsafe.Pointer((*Tdeflate_state)(unsafe.Pointer(s)).Fpending_buf + uintptr(v24))) = uint8(libc.Int32FromInt32(m_OS_CODE))
@@ -7998,7 +6128,7 @@ func x_deflate(tls *libc.TLS, strm Tz_streamp, flush int32) (r int32) {
 				return m_Z_OK
 			}
 		} else {
-			v27 = s + 40
+			v27 = s + 20
 			v26 = *(*Tulg)(unsafe.Pointer(v27))
 			*(*Tulg)(unsafe.Pointer(v27))++
 			if (*Tgz_header)(unsafe.Pointer((*Tdeflate_state)(unsafe.Pointer(s)).Fgzhead)).Ftext != 0 {
@@ -8027,23 +6157,23 @@ func x_deflate(tls *libc.TLS, strm Tz_streamp, flush int32) (r int32) {
 				v32 = int32(16)
 			}
 			*(*TBytef)(unsafe.Pointer((*Tdeflate_state)(unsafe.Pointer(s)).Fpending_buf + uintptr(v26))) = uint8(v28 + v29 + v30 + v31 + v32)
-			v34 = s + 40
+			v34 = s + 20
 			v33 = *(*Tulg)(unsafe.Pointer(v34))
 			*(*Tulg)(unsafe.Pointer(v34))++
 			*(*TBytef)(unsafe.Pointer((*Tdeflate_state)(unsafe.Pointer(s)).Fpending_buf + uintptr(v33))) = uint8((*Tgz_header)(unsafe.Pointer((*Tdeflate_state)(unsafe.Pointer(s)).Fgzhead)).Ftime & libc.Uint32FromInt32(0xff))
-			v36 = s + 40
+			v36 = s + 20
 			v35 = *(*Tulg)(unsafe.Pointer(v36))
 			*(*Tulg)(unsafe.Pointer(v36))++
 			*(*TBytef)(unsafe.Pointer((*Tdeflate_state)(unsafe.Pointer(s)).Fpending_buf + uintptr(v35))) = uint8((*Tgz_header)(unsafe.Pointer((*Tdeflate_state)(unsafe.Pointer(s)).Fgzhead)).Ftime >> libc.Int32FromInt32(8) & libc.Uint32FromInt32(0xff))
-			v38 = s + 40
+			v38 = s + 20
 			v37 = *(*Tulg)(unsafe.Pointer(v38))
 			*(*Tulg)(unsafe.Pointer(v38))++
 			*(*TBytef)(unsafe.Pointer((*Tdeflate_state)(unsafe.Pointer(s)).Fpending_buf + uintptr(v37))) = uint8((*Tgz_header)(unsafe.Pointer((*Tdeflate_state)(unsafe.Pointer(s)).Fgzhead)).Ftime >> libc.Int32FromInt32(16) & libc.Uint32FromInt32(0xff))
-			v40 = s + 40
+			v40 = s + 20
 			v39 = *(*Tulg)(unsafe.Pointer(v40))
 			*(*Tulg)(unsafe.Pointer(v40))++
 			*(*TBytef)(unsafe.Pointer((*Tdeflate_state)(unsafe.Pointer(s)).Fpending_buf + uintptr(v39))) = uint8((*Tgz_header)(unsafe.Pointer((*Tdeflate_state)(unsafe.Pointer(s)).Fgzhead)).Ftime >> libc.Int32FromInt32(24) & libc.Uint32FromInt32(0xff))
-			v42 = s + 40
+			v42 = s + 20
 			v41 = *(*Tulg)(unsafe.Pointer(v42))
 			*(*Tulg)(unsafe.Pointer(v42))++
 			if (*Tdeflate_state)(unsafe.Pointer(s)).Flevel == int32(9) {
@@ -8057,16 +6187,16 @@ func x_deflate(tls *libc.TLS, strm Tz_streamp, flush int32) (r int32) {
 				v43 = v44
 			}
 			*(*TBytef)(unsafe.Pointer((*Tdeflate_state)(unsafe.Pointer(s)).Fpending_buf + uintptr(v41))) = uint8(v43)
-			v46 = s + 40
+			v46 = s + 20
 			v45 = *(*Tulg)(unsafe.Pointer(v46))
 			*(*Tulg)(unsafe.Pointer(v46))++
 			*(*TBytef)(unsafe.Pointer((*Tdeflate_state)(unsafe.Pointer(s)).Fpending_buf + uintptr(v45))) = uint8((*Tgz_header)(unsafe.Pointer((*Tdeflate_state)(unsafe.Pointer(s)).Fgzhead)).Fos & libc.Int32FromInt32(0xff))
 			if (*Tgz_header)(unsafe.Pointer((*Tdeflate_state)(unsafe.Pointer(s)).Fgzhead)).Fextra != uintptr(m_Z_NULL) {
-				v48 = s + 40
+				v48 = s + 20
 				v47 = *(*Tulg)(unsafe.Pointer(v48))
 				*(*Tulg)(unsafe.Pointer(v48))++
 				*(*TBytef)(unsafe.Pointer((*Tdeflate_state)(unsafe.Pointer(s)).Fpending_buf + uintptr(v47))) = uint8((*Tgz_header)(unsafe.Pointer((*Tdeflate_state)(unsafe.Pointer(s)).Fgzhead)).Fextra_len & libc.Uint32FromInt32(0xff))
-				v50 = s + 40
+				v50 = s + 20
 				v49 = *(*Tulg)(unsafe.Pointer(v50))
 				*(*Tulg)(unsafe.Pointer(v50))++
 				*(*TBytef)(unsafe.Pointer((*Tdeflate_state)(unsafe.Pointer(s)).Fpending_buf + uintptr(v49))) = uint8((*Tgz_header)(unsafe.Pointer((*Tdeflate_state)(unsafe.Pointer(s)).Fgzhead)).Fextra_len >> libc.Int32FromInt32(8) & libc.Uint32FromInt32(0xff))
@@ -8084,12 +6214,12 @@ func x_deflate(tls *libc.TLS, strm Tz_streamp, flush int32) (r int32) {
 			left = uint32(uint32((*Tgz_header)(unsafe.Pointer((*Tdeflate_state)(unsafe.Pointer(s)).Fgzhead)).Fextra_len&libc.Uint32FromInt32(0xffff)) - (*Tdeflate_state)(unsafe.Pointer(s)).Fgzindex)
 			for (*Tdeflate_state)(unsafe.Pointer(s)).Fpending+uint32(uint32(left)) > (*Tdeflate_state)(unsafe.Pointer(s)).Fpending_buf_size {
 				copy1 = uint32((*Tdeflate_state)(unsafe.Pointer(s)).Fpending_buf_size - (*Tdeflate_state)(unsafe.Pointer(s)).Fpending)
-				libc.Xmemcpy(tls, (*Tdeflate_state)(unsafe.Pointer(s)).Fpending_buf+uintptr((*Tdeflate_state)(unsafe.Pointer(s)).Fpending), (*Tgz_header)(unsafe.Pointer((*Tdeflate_state)(unsafe.Pointer(s)).Fgzhead)).Fextra+uintptr((*Tdeflate_state)(unsafe.Pointer(s)).Fgzindex), uint64(uint64(copy1)))
+				libc.Xmemcpy(tls, (*Tdeflate_state)(unsafe.Pointer(s)).Fpending_buf+uintptr((*Tdeflate_state)(unsafe.Pointer(s)).Fpending), (*Tgz_header)(unsafe.Pointer((*Tdeflate_state)(unsafe.Pointer(s)).Fgzhead)).Fextra+uintptr((*Tdeflate_state)(unsafe.Pointer(s)).Fgzindex), copy1)
 				(*Tdeflate_state)(unsafe.Pointer(s)).Fpending = (*Tdeflate_state)(unsafe.Pointer(s)).Fpending_buf_size
 				if (*Tgz_header)(unsafe.Pointer((*Tdeflate_state)(unsafe.Pointer(s)).Fgzhead)).Fhcrc != 0 && (*Tdeflate_state)(unsafe.Pointer(s)).Fpending > beg {
 					(*Tz_stream)(unsafe.Pointer(strm)).Fadler = x_crc32(tls, (*Tz_stream)(unsafe.Pointer(strm)).Fadler, (*Tdeflate_state)(unsafe.Pointer(s)).Fpending_buf+uintptr(beg), uint32((*Tdeflate_state)(unsafe.Pointer(s)).Fpending-beg))
 				}
-				*(*Tulg)(unsafe.Pointer(s + 56)) += uint32(uint32(copy1))
+				*(*Tulg)(unsafe.Pointer(s + 32)) += uint32(uint32(copy1))
 				_flush_pending(tls, strm)
 				if (*Tdeflate_state)(unsafe.Pointer(s)).Fpending != uint32(0) {
 					(*Tdeflate_state)(unsafe.Pointer(s)).Flast_flush = -int32(1)
@@ -8098,8 +6228,8 @@ func x_deflate(tls *libc.TLS, strm Tz_streamp, flush int32) (r int32) {
 				beg = uint32(0)
 				left -= copy1
 			}
-			libc.Xmemcpy(tls, (*Tdeflate_state)(unsafe.Pointer(s)).Fpending_buf+uintptr((*Tdeflate_state)(unsafe.Pointer(s)).Fpending), (*Tgz_header)(unsafe.Pointer((*Tdeflate_state)(unsafe.Pointer(s)).Fgzhead)).Fextra+uintptr((*Tdeflate_state)(unsafe.Pointer(s)).Fgzindex), uint64(uint64(left)))
-			*(*Tulg)(unsafe.Pointer(s + 40)) += uint32(uint32(left))
+			libc.Xmemcpy(tls, (*Tdeflate_state)(unsafe.Pointer(s)).Fpending_buf+uintptr((*Tdeflate_state)(unsafe.Pointer(s)).Fpending), (*Tgz_header)(unsafe.Pointer((*Tdeflate_state)(unsafe.Pointer(s)).Fgzhead)).Fextra+uintptr((*Tdeflate_state)(unsafe.Pointer(s)).Fgzindex), left)
+			*(*Tulg)(unsafe.Pointer(s + 20)) += uint32(uint32(left))
 			if (*Tgz_header)(unsafe.Pointer((*Tdeflate_state)(unsafe.Pointer(s)).Fgzhead)).Fhcrc != 0 && (*Tdeflate_state)(unsafe.Pointer(s)).Fpending > beg {
 				(*Tz_stream)(unsafe.Pointer(strm)).Fadler = x_crc32(tls, (*Tz_stream)(unsafe.Pointer(strm)).Fadler, (*Tdeflate_state)(unsafe.Pointer(s)).Fpending_buf+uintptr(beg), uint32((*Tdeflate_state)(unsafe.Pointer(s)).Fpending-beg))
 			}
@@ -8122,11 +6252,11 @@ func x_deflate(tls *libc.TLS, strm Tz_streamp, flush int32) (r int32) {
 					}
 					beg1 = uint32(0)
 				}
-				v52 = s + 56
+				v52 = s + 32
 				v51 = *(*Tulg)(unsafe.Pointer(v52))
 				*(*Tulg)(unsafe.Pointer(v52))++
 				val = int32(*(*TBytef)(unsafe.Pointer((*Tgz_header)(unsafe.Pointer((*Tdeflate_state)(unsafe.Pointer(s)).Fgzhead)).Fname + uintptr(v51))))
-				v54 = s + 40
+				v54 = s + 20
 				v53 = *(*Tulg)(unsafe.Pointer(v54))
 				*(*Tulg)(unsafe.Pointer(v54))++
 				*(*TBytef)(unsafe.Pointer((*Tdeflate_state)(unsafe.Pointer(s)).Fpending_buf + uintptr(v53))) = uint8(val)
@@ -8153,11 +6283,11 @@ func x_deflate(tls *libc.TLS, strm Tz_streamp, flush int32) (r int32) {
 					}
 					beg2 = uint32(0)
 				}
-				v56 = s + 56
+				v56 = s + 32
 				v55 = *(*Tulg)(unsafe.Pointer(v56))
 				*(*Tulg)(unsafe.Pointer(v56))++
 				val1 = int32(*(*TBytef)(unsafe.Pointer((*Tgz_header)(unsafe.Pointer((*Tdeflate_state)(unsafe.Pointer(s)).Fgzhead)).Fcomment + uintptr(v55))))
-				v58 = s + 40
+				v58 = s + 20
 				v57 = *(*Tulg)(unsafe.Pointer(v58))
 				*(*Tulg)(unsafe.Pointer(v58))++
 				*(*TBytef)(unsafe.Pointer((*Tdeflate_state)(unsafe.Pointer(s)).Fpending_buf + uintptr(v57))) = uint8(val1)
@@ -8177,11 +6307,11 @@ func x_deflate(tls *libc.TLS, strm Tz_streamp, flush int32) (r int32) {
 					return m_Z_OK
 				}
 			}
-			v60 = s + 40
+			v60 = s + 20
 			v59 = *(*Tulg)(unsafe.Pointer(v60))
 			*(*Tulg)(unsafe.Pointer(v60))++
 			*(*TBytef)(unsafe.Pointer((*Tdeflate_state)(unsafe.Pointer(s)).Fpending_buf + uintptr(v59))) = uint8((*Tz_stream)(unsafe.Pointer(strm)).Fadler & libc.Uint32FromInt32(0xff))
-			v62 = s + 40
+			v62 = s + 20
 			v61 = *(*Tulg)(unsafe.Pointer(v62))
 			*(*Tulg)(unsafe.Pointer(v62))++
 			*(*TBytef)(unsafe.Pointer((*Tdeflate_state)(unsafe.Pointer(s)).Fpending_buf + uintptr(v61))) = uint8((*Tz_stream)(unsafe.Pointer(strm)).Fadler >> libc.Int32FromInt32(8) & libc.Uint32FromInt32(0xff))
@@ -8241,7 +6371,7 @@ func x_deflate(tls *libc.TLS, strm Tz_streamp, flush int32) (r int32) {
 					 */
 					if flush == int32(m_Z_FULL_FLUSH) {
 						*(*TPosf)(unsafe.Pointer((*Tdeflate_state)(unsafe.Pointer(s)).Fhead + uintptr((*Tdeflate_state)(unsafe.Pointer(s)).Fhash_size-uint32(1))*2)) = uint16(m_NIL)
-						libc.Xmemset(tls, (*Tdeflate_state)(unsafe.Pointer(s)).Fhead, 0, uint64((*Tdeflate_state)(unsafe.Pointer(s)).Fhash_size-libc.Uint32FromInt32(1))*uint64(2)) /* forget history */
+						libc.Xmemset(tls, (*Tdeflate_state)(unsafe.Pointer(s)).Fhead, 0, ((*Tdeflate_state)(unsafe.Pointer(s)).Fhash_size-libc.Uint32FromInt32(1))*uint32(2)) /* forget history */
 						if (*Tdeflate_state)(unsafe.Pointer(s)).Flookahead == uint32(0) {
 							(*Tdeflate_state)(unsafe.Pointer(s)).Fstrstart = uint32(0)
 							(*Tdeflate_state)(unsafe.Pointer(s)).Fblock_start = 0
@@ -8265,35 +6395,35 @@ func x_deflate(tls *libc.TLS, strm Tz_streamp, flush int32) (r int32) {
 	}
 	/* Write the trailer */
 	if (*Tdeflate_state)(unsafe.Pointer(s)).Fwrap == int32(2) {
-		v67 = s + 40
+		v67 = s + 20
 		v66 = *(*Tulg)(unsafe.Pointer(v67))
 		*(*Tulg)(unsafe.Pointer(v67))++
 		*(*TBytef)(unsafe.Pointer((*Tdeflate_state)(unsafe.Pointer(s)).Fpending_buf + uintptr(v66))) = uint8((*Tz_stream)(unsafe.Pointer(strm)).Fadler & libc.Uint32FromInt32(0xff))
-		v69 = s + 40
+		v69 = s + 20
 		v68 = *(*Tulg)(unsafe.Pointer(v69))
 		*(*Tulg)(unsafe.Pointer(v69))++
 		*(*TBytef)(unsafe.Pointer((*Tdeflate_state)(unsafe.Pointer(s)).Fpending_buf + uintptr(v68))) = uint8((*Tz_stream)(unsafe.Pointer(strm)).Fadler >> libc.Int32FromInt32(8) & libc.Uint32FromInt32(0xff))
-		v71 = s + 40
+		v71 = s + 20
 		v70 = *(*Tulg)(unsafe.Pointer(v71))
 		*(*Tulg)(unsafe.Pointer(v71))++
 		*(*TBytef)(unsafe.Pointer((*Tdeflate_state)(unsafe.Pointer(s)).Fpending_buf + uintptr(v70))) = uint8((*Tz_stream)(unsafe.Pointer(strm)).Fadler >> libc.Int32FromInt32(16) & libc.Uint32FromInt32(0xff))
-		v73 = s + 40
+		v73 = s + 20
 		v72 = *(*Tulg)(unsafe.Pointer(v73))
 		*(*Tulg)(unsafe.Pointer(v73))++
 		*(*TBytef)(unsafe.Pointer((*Tdeflate_state)(unsafe.Pointer(s)).Fpending_buf + uintptr(v72))) = uint8((*Tz_stream)(unsafe.Pointer(strm)).Fadler >> libc.Int32FromInt32(24) & libc.Uint32FromInt32(0xff))
-		v75 = s + 40
+		v75 = s + 20
 		v74 = *(*Tulg)(unsafe.Pointer(v75))
 		*(*Tulg)(unsafe.Pointer(v75))++
 		*(*TBytef)(unsafe.Pointer((*Tdeflate_state)(unsafe.Pointer(s)).Fpending_buf + uintptr(v74))) = uint8((*Tz_stream)(unsafe.Pointer(strm)).Ftotal_in & libc.Uint32FromInt32(0xff))
-		v77 = s + 40
+		v77 = s + 20
 		v76 = *(*Tulg)(unsafe.Pointer(v77))
 		*(*Tulg)(unsafe.Pointer(v77))++
 		*(*TBytef)(unsafe.Pointer((*Tdeflate_state)(unsafe.Pointer(s)).Fpending_buf + uintptr(v76))) = uint8((*Tz_stream)(unsafe.Pointer(strm)).Ftotal_in >> libc.Int32FromInt32(8) & libc.Uint32FromInt32(0xff))
-		v79 = s + 40
+		v79 = s + 20
 		v78 = *(*Tulg)(unsafe.Pointer(v79))
 		*(*Tulg)(unsafe.Pointer(v79))++
 		*(*TBytef)(unsafe.Pointer((*Tdeflate_state)(unsafe.Pointer(s)).Fpending_buf + uintptr(v78))) = uint8((*Tz_stream)(unsafe.Pointer(strm)).Ftotal_in >> libc.Int32FromInt32(16) & libc.Uint32FromInt32(0xff))
-		v81 = s + 40
+		v81 = s + 20
 		v80 = *(*Tulg)(unsafe.Pointer(v81))
 		*(*Tulg)(unsafe.Pointer(v81))++
 		*(*TBytef)(unsafe.Pointer((*Tdeflate_state)(unsafe.Pointer(s)).Fpending_buf + uintptr(v80))) = uint8((*Tz_stream)(unsafe.Pointer(strm)).Ftotal_in >> libc.Int32FromInt32(24) & libc.Uint32FromInt32(0xff))
@@ -8363,32 +6493,32 @@ func x_deflateCopy(tls *libc.TLS, dest Tz_streamp, source Tz_streamp) (r int32) 
 		return -int32(2)
 	}
 	ss = (*Tz_stream)(unsafe.Pointer(source)).Fstate
-	libc.Xmemcpy(tls, dest, source, uint64(88))
-	ds = (*(*func(*libc.TLS, Tvoidpf, TuInt, TuInt) Tvoidpf)(unsafe.Pointer(&struct{ uintptr }{(*Tz_stream)(unsafe.Pointer(dest)).Fzalloc})))(tls, (*Tz_stream)(unsafe.Pointer(dest)).Fopaque, uint32(libc.Int32FromInt32(1)), uint32(libc.Uint64FromInt64(5912)))
+	libc.Xmemcpy(tls, dest, source, uint32(56))
+	ds = (*(*func(*libc.TLS, Tvoidpf, TuInt, TuInt) Tvoidpf)(unsafe.Pointer(&struct{ uintptr }{(*Tz_stream)(unsafe.Pointer(dest)).Fzalloc})))(tls, (*Tz_stream)(unsafe.Pointer(dest)).Fopaque, uint32(libc.Int32FromInt32(1)), libc.Uint32FromInt64(5828))
 	if ds == uintptr(m_Z_NULL) {
 		return -int32(4)
 	}
 	(*Tz_stream)(unsafe.Pointer(dest)).Fstate = ds
-	libc.Xmemcpy(tls, ds, ss, uint64(5912))
+	libc.Xmemcpy(tls, ds, ss, uint32(5828))
 	(*Tdeflate_state)(unsafe.Pointer(ds)).Fstrm = dest
-	(*Tdeflate_state)(unsafe.Pointer(ds)).Fwindow = (*(*func(*libc.TLS, Tvoidpf, TuInt, TuInt) Tvoidpf)(unsafe.Pointer(&struct{ uintptr }{(*Tz_stream)(unsafe.Pointer(dest)).Fzalloc})))(tls, (*Tz_stream)(unsafe.Pointer(dest)).Fopaque, (*Tdeflate_state)(unsafe.Pointer(ds)).Fw_size, uint32(libc.Uint64FromInt32(2)*libc.Uint64FromInt64(1)))
-	(*Tdeflate_state)(unsafe.Pointer(ds)).Fprev = (*(*func(*libc.TLS, Tvoidpf, TuInt, TuInt) Tvoidpf)(unsafe.Pointer(&struct{ uintptr }{(*Tz_stream)(unsafe.Pointer(dest)).Fzalloc})))(tls, (*Tz_stream)(unsafe.Pointer(dest)).Fopaque, (*Tdeflate_state)(unsafe.Pointer(ds)).Fw_size, uint32(libc.Uint64FromInt64(2)))
-	(*Tdeflate_state)(unsafe.Pointer(ds)).Fhead = (*(*func(*libc.TLS, Tvoidpf, TuInt, TuInt) Tvoidpf)(unsafe.Pointer(&struct{ uintptr }{(*Tz_stream)(unsafe.Pointer(dest)).Fzalloc})))(tls, (*Tz_stream)(unsafe.Pointer(dest)).Fopaque, (*Tdeflate_state)(unsafe.Pointer(ds)).Fhash_size, uint32(libc.Uint64FromInt64(2)))
+	(*Tdeflate_state)(unsafe.Pointer(ds)).Fwindow = (*(*func(*libc.TLS, Tvoidpf, TuInt, TuInt) Tvoidpf)(unsafe.Pointer(&struct{ uintptr }{(*Tz_stream)(unsafe.Pointer(dest)).Fzalloc})))(tls, (*Tz_stream)(unsafe.Pointer(dest)).Fopaque, (*Tdeflate_state)(unsafe.Pointer(ds)).Fw_size, libc.Uint32FromInt32(2)*libc.Uint32FromInt64(1))
+	(*Tdeflate_state)(unsafe.Pointer(ds)).Fprev = (*(*func(*libc.TLS, Tvoidpf, TuInt, TuInt) Tvoidpf)(unsafe.Pointer(&struct{ uintptr }{(*Tz_stream)(unsafe.Pointer(dest)).Fzalloc})))(tls, (*Tz_stream)(unsafe.Pointer(dest)).Fopaque, (*Tdeflate_state)(unsafe.Pointer(ds)).Fw_size, libc.Uint32FromInt64(2))
+	(*Tdeflate_state)(unsafe.Pointer(ds)).Fhead = (*(*func(*libc.TLS, Tvoidpf, TuInt, TuInt) Tvoidpf)(unsafe.Pointer(&struct{ uintptr }{(*Tz_stream)(unsafe.Pointer(dest)).Fzalloc})))(tls, (*Tz_stream)(unsafe.Pointer(dest)).Fopaque, (*Tdeflate_state)(unsafe.Pointer(ds)).Fhash_size, libc.Uint32FromInt64(2))
 	(*Tdeflate_state)(unsafe.Pointer(ds)).Fpending_buf = (*(*func(*libc.TLS, Tvoidpf, TuInt, TuInt) Tvoidpf)(unsafe.Pointer(&struct{ uintptr }{(*Tz_stream)(unsafe.Pointer(dest)).Fzalloc})))(tls, (*Tz_stream)(unsafe.Pointer(dest)).Fopaque, (*Tdeflate_state)(unsafe.Pointer(ds)).Flit_bufsize, uint32(libc.Int32FromInt32(m_LIT_BUFS)))
 	if (*Tdeflate_state)(unsafe.Pointer(ds)).Fwindow == uintptr(m_Z_NULL) || (*Tdeflate_state)(unsafe.Pointer(ds)).Fprev == uintptr(m_Z_NULL) || (*Tdeflate_state)(unsafe.Pointer(ds)).Fhead == uintptr(m_Z_NULL) || (*Tdeflate_state)(unsafe.Pointer(ds)).Fpending_buf == uintptr(m_Z_NULL) {
 		x_deflateEnd(tls, dest)
 		return -int32(4)
 	}
 	/* following zmemcpy do not work for 16-bit MSDOS */
-	libc.Xmemcpy(tls, (*Tdeflate_state)(unsafe.Pointer(ds)).Fwindow, (*Tdeflate_state)(unsafe.Pointer(ss)).Fwindow, uint64((*Tdeflate_state)(unsafe.Pointer(ds)).Fw_size*uint32(2))*uint64(1))
-	libc.Xmemcpy(tls, (*Tdeflate_state)(unsafe.Pointer(ds)).Fprev, (*Tdeflate_state)(unsafe.Pointer(ss)).Fprev, uint64((*Tdeflate_state)(unsafe.Pointer(ds)).Fw_size)*uint64(2))
-	libc.Xmemcpy(tls, (*Tdeflate_state)(unsafe.Pointer(ds)).Fhead, (*Tdeflate_state)(unsafe.Pointer(ss)).Fhead, uint64((*Tdeflate_state)(unsafe.Pointer(ds)).Fhash_size)*uint64(2))
-	libc.Xmemcpy(tls, (*Tdeflate_state)(unsafe.Pointer(ds)).Fpending_buf, (*Tdeflate_state)(unsafe.Pointer(ss)).Fpending_buf, uint64((*Tdeflate_state)(unsafe.Pointer(ds)).Flit_bufsize*uint32(m_LIT_BUFS)))
-	(*Tdeflate_state)(unsafe.Pointer(ds)).Fpending_out = (*Tdeflate_state)(unsafe.Pointer(ds)).Fpending_buf + uintptr(int64((*Tdeflate_state)(unsafe.Pointer(ss)).Fpending_out)-int64((*Tdeflate_state)(unsafe.Pointer(ss)).Fpending_buf))
+	libc.Xmemcpy(tls, (*Tdeflate_state)(unsafe.Pointer(ds)).Fwindow, (*Tdeflate_state)(unsafe.Pointer(ss)).Fwindow, (*Tdeflate_state)(unsafe.Pointer(ds)).Fw_size*uint32(2)*uint32(1))
+	libc.Xmemcpy(tls, (*Tdeflate_state)(unsafe.Pointer(ds)).Fprev, (*Tdeflate_state)(unsafe.Pointer(ss)).Fprev, (*Tdeflate_state)(unsafe.Pointer(ds)).Fw_size*uint32(2))
+	libc.Xmemcpy(tls, (*Tdeflate_state)(unsafe.Pointer(ds)).Fhead, (*Tdeflate_state)(unsafe.Pointer(ss)).Fhead, (*Tdeflate_state)(unsafe.Pointer(ds)).Fhash_size*uint32(2))
+	libc.Xmemcpy(tls, (*Tdeflate_state)(unsafe.Pointer(ds)).Fpending_buf, (*Tdeflate_state)(unsafe.Pointer(ss)).Fpending_buf, (*Tdeflate_state)(unsafe.Pointer(ds)).Flit_bufsize*uint32(m_LIT_BUFS))
+	(*Tdeflate_state)(unsafe.Pointer(ds)).Fpending_out = (*Tdeflate_state)(unsafe.Pointer(ds)).Fpending_buf + uintptr(int32((*Tdeflate_state)(unsafe.Pointer(ss)).Fpending_out)-int32((*Tdeflate_state)(unsafe.Pointer(ss)).Fpending_buf))
 	(*Tdeflate_state)(unsafe.Pointer(ds)).Fsym_buf = (*Tdeflate_state)(unsafe.Pointer(ds)).Fpending_buf + uintptr((*Tdeflate_state)(unsafe.Pointer(ds)).Flit_bufsize)
-	(*Tdeflate_state)(unsafe.Pointer(ds)).Fl_desc.Fdyn_tree = ds + 188
-	(*Tdeflate_state)(unsafe.Pointer(ds)).Fd_desc.Fdyn_tree = ds + 2480
-	(*Tdeflate_state)(unsafe.Pointer(ds)).Fbl_desc.Fdyn_tree = ds + 2724
+	(*Tdeflate_state)(unsafe.Pointer(ds)).Fl_desc.Fdyn_tree = ds + 148
+	(*Tdeflate_state)(unsafe.Pointer(ds)).Fd_desc.Fdyn_tree = ds + 2440
+	(*Tdeflate_state)(unsafe.Pointer(ds)).Fbl_desc.Fdyn_tree = ds + 2684
 	return m_Z_OK
 }
 
@@ -8531,7 +6661,7 @@ func _longest_match(tls *libc.TLS, s uintptr, cur_match TIPos) (r TuInt) {
 				break
 			}
 		}
-		len1 = int32(m_MAX_MATCH) - int32(int64(int64(strend))-int64(int64(scan)))
+		len1 = int32(m_MAX_MATCH) - (int32(int32(strend)) - int32(int32(scan)))
 		scan = strend - uintptr(m_MAX_MATCH)
 		if len1 > best_len {
 			(*Tdeflate_state)(unsafe.Pointer(s)).Fmatch_start = cur_match
@@ -8655,11 +6785,11 @@ func _deflate_stored(tls *libc.TLS, s uintptr, flush int32) (r Tblock_state) {
 			if left > len1 {
 				left = len1
 			}
-			libc.Xmemcpy(tls, (*Tz_stream)(unsafe.Pointer((*Tdeflate_state)(unsafe.Pointer(s)).Fstrm)).Fnext_out, (*Tdeflate_state)(unsafe.Pointer(s)).Fwindow+uintptr((*Tdeflate_state)(unsafe.Pointer(s)).Fblock_start), uint64(uint64(left)))
-			*(*uintptr)(unsafe.Pointer((*Tdeflate_state)(unsafe.Pointer(s)).Fstrm + 16)) += uintptr(left)
-			*(*TuInt)(unsafe.Pointer((*Tdeflate_state)(unsafe.Pointer(s)).Fstrm + 24)) -= left
-			*(*TuLong)(unsafe.Pointer((*Tdeflate_state)(unsafe.Pointer(s)).Fstrm + 28)) += uint32(uint32(left))
-			p3 = s + 132
+			libc.Xmemcpy(tls, (*Tz_stream)(unsafe.Pointer((*Tdeflate_state)(unsafe.Pointer(s)).Fstrm)).Fnext_out, (*Tdeflate_state)(unsafe.Pointer(s)).Fwindow+uintptr((*Tdeflate_state)(unsafe.Pointer(s)).Fblock_start), left)
+			*(*uintptr)(unsafe.Pointer((*Tdeflate_state)(unsafe.Pointer(s)).Fstrm + 12)) += uintptr(left)
+			*(*TuInt)(unsafe.Pointer((*Tdeflate_state)(unsafe.Pointer(s)).Fstrm + 16)) -= left
+			*(*TuLong)(unsafe.Pointer((*Tdeflate_state)(unsafe.Pointer(s)).Fstrm + 20)) += uint32(uint32(left))
+			p3 = s + 92
 			*(*int32)(unsafe.Pointer(p3)) = int32(uint32(*(*int32)(unsafe.Pointer(p3))) + uint32(uint32(left)))
 			len1 -= left
 		}
@@ -8668,9 +6798,9 @@ func _deflate_stored(tls *libc.TLS, s uintptr, flush int32) (r Tblock_state) {
 		 */
 		if len1 != 0 {
 			_read_buf(tls, (*Tdeflate_state)(unsafe.Pointer(s)).Fstrm, (*Tz_stream)(unsafe.Pointer((*Tdeflate_state)(unsafe.Pointer(s)).Fstrm)).Fnext_out, len1)
-			*(*uintptr)(unsafe.Pointer((*Tdeflate_state)(unsafe.Pointer(s)).Fstrm + 16)) += uintptr(len1)
-			*(*TuInt)(unsafe.Pointer((*Tdeflate_state)(unsafe.Pointer(s)).Fstrm + 24)) -= len1
-			*(*TuLong)(unsafe.Pointer((*Tdeflate_state)(unsafe.Pointer(s)).Fstrm + 28)) += uint32(uint32(len1))
+			*(*uintptr)(unsafe.Pointer((*Tdeflate_state)(unsafe.Pointer(s)).Fstrm + 12)) += uintptr(len1)
+			*(*TuInt)(unsafe.Pointer((*Tdeflate_state)(unsafe.Pointer(s)).Fstrm + 16)) -= len1
+			*(*TuLong)(unsafe.Pointer((*Tdeflate_state)(unsafe.Pointer(s)).Fstrm + 20)) += uint32(uint32(len1))
 		}
 	}
 	/* Update the sliding window with the last s->w_size bytes of the copied
@@ -8686,14 +6816,14 @@ func _deflate_stored(tls *libc.TLS, s uintptr, flush int32) (r Tblock_state) {
 		 */
 		if used >= (*Tdeflate_state)(unsafe.Pointer(s)).Fw_size { /* supplant the previous history */
 			(*Tdeflate_state)(unsafe.Pointer(s)).Fmatches = uint32(2) /* clear hash */
-			libc.Xmemcpy(tls, (*Tdeflate_state)(unsafe.Pointer(s)).Fwindow, (*Tz_stream)(unsafe.Pointer((*Tdeflate_state)(unsafe.Pointer(s)).Fstrm)).Fnext_in-uintptr((*Tdeflate_state)(unsafe.Pointer(s)).Fw_size), uint64((*Tdeflate_state)(unsafe.Pointer(s)).Fw_size))
+			libc.Xmemcpy(tls, (*Tdeflate_state)(unsafe.Pointer(s)).Fwindow, (*Tz_stream)(unsafe.Pointer((*Tdeflate_state)(unsafe.Pointer(s)).Fstrm)).Fnext_in-uintptr((*Tdeflate_state)(unsafe.Pointer(s)).Fw_size), (*Tdeflate_state)(unsafe.Pointer(s)).Fw_size)
 			(*Tdeflate_state)(unsafe.Pointer(s)).Fstrstart = (*Tdeflate_state)(unsafe.Pointer(s)).Fw_size
 			(*Tdeflate_state)(unsafe.Pointer(s)).Finsert = (*Tdeflate_state)(unsafe.Pointer(s)).Fstrstart
 		} else {
 			if (*Tdeflate_state)(unsafe.Pointer(s)).Fwindow_size-uint32((*Tdeflate_state)(unsafe.Pointer(s)).Fstrstart) <= uint32(uint32(used)) {
 				/* Slide the window down. */
-				*(*TuInt)(unsafe.Pointer(s + 148)) -= (*Tdeflate_state)(unsafe.Pointer(s)).Fw_size
-				libc.Xmemcpy(tls, (*Tdeflate_state)(unsafe.Pointer(s)).Fwindow, (*Tdeflate_state)(unsafe.Pointer(s)).Fwindow+uintptr((*Tdeflate_state)(unsafe.Pointer(s)).Fw_size), uint64((*Tdeflate_state)(unsafe.Pointer(s)).Fstrstart))
+				*(*TuInt)(unsafe.Pointer(s + 108)) -= (*Tdeflate_state)(unsafe.Pointer(s)).Fw_size
+				libc.Xmemcpy(tls, (*Tdeflate_state)(unsafe.Pointer(s)).Fwindow, (*Tdeflate_state)(unsafe.Pointer(s)).Fwindow+uintptr((*Tdeflate_state)(unsafe.Pointer(s)).Fw_size), (*Tdeflate_state)(unsafe.Pointer(s)).Fstrstart)
 				if (*Tdeflate_state)(unsafe.Pointer(s)).Fmatches < uint32(2) {
 					(*Tdeflate_state)(unsafe.Pointer(s)).Fmatches++
 				} /* add a pending slide_hash() */
@@ -8701,14 +6831,14 @@ func _deflate_stored(tls *libc.TLS, s uintptr, flush int32) (r Tblock_state) {
 					(*Tdeflate_state)(unsafe.Pointer(s)).Finsert = (*Tdeflate_state)(unsafe.Pointer(s)).Fstrstart
 				}
 			}
-			libc.Xmemcpy(tls, (*Tdeflate_state)(unsafe.Pointer(s)).Fwindow+uintptr((*Tdeflate_state)(unsafe.Pointer(s)).Fstrstart), (*Tz_stream)(unsafe.Pointer((*Tdeflate_state)(unsafe.Pointer(s)).Fstrm)).Fnext_in-uintptr(used), uint64(uint64(used)))
-			*(*TuInt)(unsafe.Pointer(s + 148)) += used
+			libc.Xmemcpy(tls, (*Tdeflate_state)(unsafe.Pointer(s)).Fwindow+uintptr((*Tdeflate_state)(unsafe.Pointer(s)).Fstrstart), (*Tz_stream)(unsafe.Pointer((*Tdeflate_state)(unsafe.Pointer(s)).Fstrm)).Fnext_in-uintptr(used), used)
+			*(*TuInt)(unsafe.Pointer(s + 108)) += used
 			if used > (*Tdeflate_state)(unsafe.Pointer(s)).Fw_size-(*Tdeflate_state)(unsafe.Pointer(s)).Finsert {
 				v4 = (*Tdeflate_state)(unsafe.Pointer(s)).Fw_size - (*Tdeflate_state)(unsafe.Pointer(s)).Finsert
 			} else {
 				v4 = used
 			}
-			*(*TuInt)(unsafe.Pointer(s + 5896)) += v4
+			*(*TuInt)(unsafe.Pointer(s + 5812)) += v4
 		}
 		(*Tdeflate_state)(unsafe.Pointer(s)).Fblock_start = int32((*Tdeflate_state)(unsafe.Pointer(s)).Fstrstart)
 	}
@@ -8727,10 +6857,10 @@ func _deflate_stored(tls *libc.TLS, s uintptr, flush int32) (r Tblock_state) {
 	have = uint32((*Tdeflate_state)(unsafe.Pointer(s)).Fwindow_size - uint32((*Tdeflate_state)(unsafe.Pointer(s)).Fstrstart))
 	if (*Tz_stream)(unsafe.Pointer((*Tdeflate_state)(unsafe.Pointer(s)).Fstrm)).Favail_in > have && (*Tdeflate_state)(unsafe.Pointer(s)).Fblock_start >= int32((*Tdeflate_state)(unsafe.Pointer(s)).Fw_size) {
 		/* Slide the window down. */
-		p5 = s + 132
+		p5 = s + 92
 		*(*int32)(unsafe.Pointer(p5)) = int32(uint32(*(*int32)(unsafe.Pointer(p5))) - uint32((*Tdeflate_state)(unsafe.Pointer(s)).Fw_size))
-		*(*TuInt)(unsafe.Pointer(s + 148)) -= (*Tdeflate_state)(unsafe.Pointer(s)).Fw_size
-		libc.Xmemcpy(tls, (*Tdeflate_state)(unsafe.Pointer(s)).Fwindow, (*Tdeflate_state)(unsafe.Pointer(s)).Fwindow+uintptr((*Tdeflate_state)(unsafe.Pointer(s)).Fw_size), uint64((*Tdeflate_state)(unsafe.Pointer(s)).Fstrstart))
+		*(*TuInt)(unsafe.Pointer(s + 108)) -= (*Tdeflate_state)(unsafe.Pointer(s)).Fw_size
+		libc.Xmemcpy(tls, (*Tdeflate_state)(unsafe.Pointer(s)).Fwindow, (*Tdeflate_state)(unsafe.Pointer(s)).Fwindow+uintptr((*Tdeflate_state)(unsafe.Pointer(s)).Fw_size), (*Tdeflate_state)(unsafe.Pointer(s)).Fstrstart)
 		if (*Tdeflate_state)(unsafe.Pointer(s)).Fmatches < uint32(2) {
 			(*Tdeflate_state)(unsafe.Pointer(s)).Fmatches++
 		} /* add a pending slide_hash() */
@@ -8744,13 +6874,13 @@ func _deflate_stored(tls *libc.TLS, s uintptr, flush int32) (r Tblock_state) {
 	}
 	if have != 0 {
 		_read_buf(tls, (*Tdeflate_state)(unsafe.Pointer(s)).Fstrm, (*Tdeflate_state)(unsafe.Pointer(s)).Fwindow+uintptr((*Tdeflate_state)(unsafe.Pointer(s)).Fstrstart), have)
-		*(*TuInt)(unsafe.Pointer(s + 148)) += have
+		*(*TuInt)(unsafe.Pointer(s + 108)) += have
 		if have > (*Tdeflate_state)(unsafe.Pointer(s)).Fw_size-(*Tdeflate_state)(unsafe.Pointer(s)).Finsert {
 			v6 = (*Tdeflate_state)(unsafe.Pointer(s)).Fw_size - (*Tdeflate_state)(unsafe.Pointer(s)).Finsert
 		} else {
 			v6 = have
 		}
-		*(*TuInt)(unsafe.Pointer(s + 5896)) += v6
+		*(*TuInt)(unsafe.Pointer(s + 5812)) += v6
 	}
 	if (*Tdeflate_state)(unsafe.Pointer(s)).Fhigh_water < uint32((*Tdeflate_state)(unsafe.Pointer(s)).Fstrstart) {
 		(*Tdeflate_state)(unsafe.Pointer(s)).Fhigh_water = uint32((*Tdeflate_state)(unsafe.Pointer(s)).Fstrstart)
@@ -8789,7 +6919,7 @@ func _deflate_stored(tls *libc.TLS, s uintptr, flush int32) (r Tblock_state) {
 		}
 		last = uint32(v10)
 		x__tr_stored_block(tls, s, (*Tdeflate_state)(unsafe.Pointer(s)).Fwindow+uintptr((*Tdeflate_state)(unsafe.Pointer(s)).Fblock_start), uint32(uint32(len1)), int32(int32(last)))
-		p11 = s + 132
+		p11 = s + 92
 		*(*int32)(unsafe.Pointer(p11)) = int32(uint32(*(*int32)(unsafe.Pointer(p11))) + uint32(uint32(len1)))
 		_flush_pending(tls, (*Tdeflate_state)(unsafe.Pointer(s)).Fstrm)
 	}
@@ -8861,28 +6991,28 @@ func _deflate_fast(tls *libc.TLS, s uintptr, flush int32) (r Tblock_state) {
 		if (*Tdeflate_state)(unsafe.Pointer(s)).Fmatch_length >= uint32(m_MIN_MATCH) {
 			len1 = uint8((*Tdeflate_state)(unsafe.Pointer(s)).Fmatch_length - libc.Uint32FromInt32(m_MIN_MATCH))
 			dist = uint16((*Tdeflate_state)(unsafe.Pointer(s)).Fstrstart - (*Tdeflate_state)(unsafe.Pointer(s)).Fmatch_start)
-			v4 = s + 5876
+			v4 = s + 5792
 			v3 = *(*TuInt)(unsafe.Pointer(v4))
 			*(*TuInt)(unsafe.Pointer(v4))++
 			*(*Tuchf)(unsafe.Pointer((*Tdeflate_state)(unsafe.Pointer(s)).Fsym_buf + uintptr(v3))) = uint8(uint8(dist))
-			v6 = s + 5876
+			v6 = s + 5792
 			v5 = *(*TuInt)(unsafe.Pointer(v6))
 			*(*TuInt)(unsafe.Pointer(v6))++
 			*(*Tuchf)(unsafe.Pointer((*Tdeflate_state)(unsafe.Pointer(s)).Fsym_buf + uintptr(v5))) = uint8(int32(int32(dist)) >> libc.Int32FromInt32(8))
-			v8 = s + 5876
+			v8 = s + 5792
 			v7 = *(*TuInt)(unsafe.Pointer(v8))
 			*(*TuInt)(unsafe.Pointer(v8))++
 			*(*Tuchf)(unsafe.Pointer((*Tdeflate_state)(unsafe.Pointer(s)).Fsym_buf + uintptr(v7))) = len1
 			dist--
-			*(*Tush)(unsafe.Pointer(s + 188 + uintptr(int32(x__length_code[len1])+int32(m_LITERALS)+int32(1))*4))++
+			*(*Tush)(unsafe.Pointer(s + 148 + uintptr(int32(x__length_code[len1])+int32(m_LITERALS)+int32(1))*4))++
 			if int32(dist) < int32(256) {
 				v9 = int32(x__dist_code[dist])
 			} else {
 				v9 = int32(x__dist_code[int32(256)+int32(dist)>>int32(7)])
 			}
-			*(*Tush)(unsafe.Pointer(s + 2480 + uintptr(v9)*4))++
+			*(*Tush)(unsafe.Pointer(s + 2440 + uintptr(v9)*4))++
 			bflush = libc.BoolInt32((*Tdeflate_state)(unsafe.Pointer(s)).Fsym_next == (*Tdeflate_state)(unsafe.Pointer(s)).Fsym_end)
-			*(*TuInt)(unsafe.Pointer(s + 156)) -= (*Tdeflate_state)(unsafe.Pointer(s)).Fmatch_length
+			*(*TuInt)(unsafe.Pointer(s + 116)) -= (*Tdeflate_state)(unsafe.Pointer(s)).Fmatch_length
 			/* Insert new strings in the hash table only if the match length
 			 * is not too large. This saves time but degrades compression.
 			 */
@@ -8901,7 +7031,7 @@ func _deflate_fast(tls *libc.TLS, s uintptr, flush int32) (r Tblock_state) {
 					goto _12
 				_12:
 					;
-					v11 = s + 136
+					v11 = s + 96
 					*(*TuInt)(unsafe.Pointer(v11))--
 					v10 = *(*TuInt)(unsafe.Pointer(v11))
 					if !(v10 != uint32(0)) {
@@ -8910,7 +7040,7 @@ func _deflate_fast(tls *libc.TLS, s uintptr, flush int32) (r Tblock_state) {
 				}
 				(*Tdeflate_state)(unsafe.Pointer(s)).Fstrstart++
 			} else {
-				*(*TuInt)(unsafe.Pointer(s + 148)) += (*Tdeflate_state)(unsafe.Pointer(s)).Fmatch_length
+				*(*TuInt)(unsafe.Pointer(s + 108)) += (*Tdeflate_state)(unsafe.Pointer(s)).Fmatch_length
 				(*Tdeflate_state)(unsafe.Pointer(s)).Fmatch_length = uint32(0)
 				(*Tdeflate_state)(unsafe.Pointer(s)).Fins_h = uint32(*(*TBytef)(unsafe.Pointer((*Tdeflate_state)(unsafe.Pointer(s)).Fwindow + uintptr((*Tdeflate_state)(unsafe.Pointer(s)).Fstrstart))))
 				(*Tdeflate_state)(unsafe.Pointer(s)).Fins_h = ((*Tdeflate_state)(unsafe.Pointer(s)).Fins_h<<(*Tdeflate_state)(unsafe.Pointer(s)).Fhash_shift ^ uint32(*(*TBytef)(unsafe.Pointer((*Tdeflate_state)(unsafe.Pointer(s)).Fwindow + uintptr((*Tdeflate_state)(unsafe.Pointer(s)).Fstrstart+uint32(1)))))) & (*Tdeflate_state)(unsafe.Pointer(s)).Fhash_mask
@@ -8921,19 +7051,19 @@ func _deflate_fast(tls *libc.TLS, s uintptr, flush int32) (r Tblock_state) {
 		} else {
 			/* No match, output a literal byte */
 			cc = *(*TBytef)(unsafe.Pointer((*Tdeflate_state)(unsafe.Pointer(s)).Fwindow + uintptr((*Tdeflate_state)(unsafe.Pointer(s)).Fstrstart)))
-			v15 = s + 5876
+			v15 = s + 5792
 			v14 = *(*TuInt)(unsafe.Pointer(v15))
 			*(*TuInt)(unsafe.Pointer(v15))++
 			*(*Tuchf)(unsafe.Pointer((*Tdeflate_state)(unsafe.Pointer(s)).Fsym_buf + uintptr(v14))) = uint8(0)
-			v17 = s + 5876
+			v17 = s + 5792
 			v16 = *(*TuInt)(unsafe.Pointer(v17))
 			*(*TuInt)(unsafe.Pointer(v17))++
 			*(*Tuchf)(unsafe.Pointer((*Tdeflate_state)(unsafe.Pointer(s)).Fsym_buf + uintptr(v16))) = uint8(0)
-			v19 = s + 5876
+			v19 = s + 5792
 			v18 = *(*TuInt)(unsafe.Pointer(v19))
 			*(*TuInt)(unsafe.Pointer(v19))++
 			*(*Tuchf)(unsafe.Pointer((*Tdeflate_state)(unsafe.Pointer(s)).Fsym_buf + uintptr(v18))) = cc
-			*(*Tush)(unsafe.Pointer(s + 188 + uintptr(cc)*4))++
+			*(*Tush)(unsafe.Pointer(s + 148 + uintptr(cc)*4))++
 			bflush = libc.BoolInt32((*Tdeflate_state)(unsafe.Pointer(s)).Fsym_next == (*Tdeflate_state)(unsafe.Pointer(s)).Fsym_end)
 			(*Tdeflate_state)(unsafe.Pointer(s)).Flookahead--
 			(*Tdeflate_state)(unsafe.Pointer(s)).Fstrstart++
@@ -9063,36 +7193,36 @@ func _deflate_slow(tls *libc.TLS, s uintptr, flush int32) (r Tblock_state) {
 			/* Do not insert strings in hash table beyond this. */
 			len1 = uint8((*Tdeflate_state)(unsafe.Pointer(s)).Fprev_length - libc.Uint32FromInt32(m_MIN_MATCH))
 			dist = uint16((*Tdeflate_state)(unsafe.Pointer(s)).Fstrstart - libc.Uint32FromInt32(1) - (*Tdeflate_state)(unsafe.Pointer(s)).Fprev_match)
-			v4 = s + 5876
+			v4 = s + 5792
 			v3 = *(*TuInt)(unsafe.Pointer(v4))
 			*(*TuInt)(unsafe.Pointer(v4))++
 			*(*Tuchf)(unsafe.Pointer((*Tdeflate_state)(unsafe.Pointer(s)).Fsym_buf + uintptr(v3))) = uint8(uint8(dist))
-			v6 = s + 5876
+			v6 = s + 5792
 			v5 = *(*TuInt)(unsafe.Pointer(v6))
 			*(*TuInt)(unsafe.Pointer(v6))++
 			*(*Tuchf)(unsafe.Pointer((*Tdeflate_state)(unsafe.Pointer(s)).Fsym_buf + uintptr(v5))) = uint8(int32(int32(dist)) >> libc.Int32FromInt32(8))
-			v8 = s + 5876
+			v8 = s + 5792
 			v7 = *(*TuInt)(unsafe.Pointer(v8))
 			*(*TuInt)(unsafe.Pointer(v8))++
 			*(*Tuchf)(unsafe.Pointer((*Tdeflate_state)(unsafe.Pointer(s)).Fsym_buf + uintptr(v7))) = len1
 			dist--
-			*(*Tush)(unsafe.Pointer(s + 188 + uintptr(int32(x__length_code[len1])+int32(m_LITERALS)+int32(1))*4))++
+			*(*Tush)(unsafe.Pointer(s + 148 + uintptr(int32(x__length_code[len1])+int32(m_LITERALS)+int32(1))*4))++
 			if int32(dist) < int32(256) {
 				v9 = int32(x__dist_code[dist])
 			} else {
 				v9 = int32(x__dist_code[int32(256)+int32(dist)>>int32(7)])
 			}
-			*(*Tush)(unsafe.Pointer(s + 2480 + uintptr(v9)*4))++
+			*(*Tush)(unsafe.Pointer(s + 2440 + uintptr(v9)*4))++
 			bflush = libc.BoolInt32((*Tdeflate_state)(unsafe.Pointer(s)).Fsym_next == (*Tdeflate_state)(unsafe.Pointer(s)).Fsym_end)
 			/* Insert in hash table all strings up to the end of the match.
 			 * strstart - 1 and strstart are already inserted. If there is not
 			 * enough lookahead, the last two strings are not inserted in
 			 * the hash table.
 			 */
-			*(*TuInt)(unsafe.Pointer(s + 156)) -= (*Tdeflate_state)(unsafe.Pointer(s)).Fprev_length - uint32(1)
-			*(*TuInt)(unsafe.Pointer(s + 160)) -= uint32(2)
+			*(*TuInt)(unsafe.Pointer(s + 116)) -= (*Tdeflate_state)(unsafe.Pointer(s)).Fprev_length - uint32(1)
+			*(*TuInt)(unsafe.Pointer(s + 120)) -= uint32(2)
 			for {
-				v14 = s + 148
+				v14 = s + 108
 				*(*TuInt)(unsafe.Pointer(v14))++
 				v13 = *(*TuInt)(unsafe.Pointer(v14))
 				if v13 <= max_insert {
@@ -9105,7 +7235,7 @@ func _deflate_slow(tls *libc.TLS, s uintptr, flush int32) (r Tblock_state) {
 				goto _12
 			_12:
 				;
-				v11 = s + 160
+				v11 = s + 120
 				*(*TuInt)(unsafe.Pointer(v11))--
 				v10 = *(*TuInt)(unsafe.Pointer(v11))
 				if !(v10 != uint32(0)) {
@@ -9135,19 +7265,19 @@ func _deflate_slow(tls *libc.TLS, s uintptr, flush int32) (r Tblock_state) {
 				 * is longer, truncate the previous match to a single literal.
 				 */
 				cc = *(*TBytef)(unsafe.Pointer((*Tdeflate_state)(unsafe.Pointer(s)).Fwindow + uintptr((*Tdeflate_state)(unsafe.Pointer(s)).Fstrstart-uint32(1))))
-				v18 = s + 5876
+				v18 = s + 5792
 				v17 = *(*TuInt)(unsafe.Pointer(v18))
 				*(*TuInt)(unsafe.Pointer(v18))++
 				*(*Tuchf)(unsafe.Pointer((*Tdeflate_state)(unsafe.Pointer(s)).Fsym_buf + uintptr(v17))) = uint8(0)
-				v20 = s + 5876
+				v20 = s + 5792
 				v19 = *(*TuInt)(unsafe.Pointer(v20))
 				*(*TuInt)(unsafe.Pointer(v20))++
 				*(*Tuchf)(unsafe.Pointer((*Tdeflate_state)(unsafe.Pointer(s)).Fsym_buf + uintptr(v19))) = uint8(0)
-				v22 = s + 5876
+				v22 = s + 5792
 				v21 = *(*TuInt)(unsafe.Pointer(v22))
 				*(*TuInt)(unsafe.Pointer(v22))++
 				*(*Tuchf)(unsafe.Pointer((*Tdeflate_state)(unsafe.Pointer(s)).Fsym_buf + uintptr(v21))) = cc
-				*(*Tush)(unsafe.Pointer(s + 188 + uintptr(cc)*4))++
+				*(*Tush)(unsafe.Pointer(s + 148 + uintptr(cc)*4))++
 				bflush = libc.BoolInt32((*Tdeflate_state)(unsafe.Pointer(s)).Fsym_next == (*Tdeflate_state)(unsafe.Pointer(s)).Fsym_end)
 				if bflush != 0 {
 					if (*Tdeflate_state)(unsafe.Pointer(s)).Fblock_start >= 0 {
@@ -9178,19 +7308,19 @@ func _deflate_slow(tls *libc.TLS, s uintptr, flush int32) (r Tblock_state) {
 	}
 	if (*Tdeflate_state)(unsafe.Pointer(s)).Fmatch_available != 0 {
 		cc1 = *(*TBytef)(unsafe.Pointer((*Tdeflate_state)(unsafe.Pointer(s)).Fwindow + uintptr((*Tdeflate_state)(unsafe.Pointer(s)).Fstrstart-uint32(1))))
-		v25 = s + 5876
+		v25 = s + 5792
 		v24 = *(*TuInt)(unsafe.Pointer(v25))
 		*(*TuInt)(unsafe.Pointer(v25))++
 		*(*Tuchf)(unsafe.Pointer((*Tdeflate_state)(unsafe.Pointer(s)).Fsym_buf + uintptr(v24))) = uint8(0)
-		v27 = s + 5876
+		v27 = s + 5792
 		v26 = *(*TuInt)(unsafe.Pointer(v27))
 		*(*TuInt)(unsafe.Pointer(v27))++
 		*(*Tuchf)(unsafe.Pointer((*Tdeflate_state)(unsafe.Pointer(s)).Fsym_buf + uintptr(v26))) = uint8(0)
-		v29 = s + 5876
+		v29 = s + 5792
 		v28 = *(*TuInt)(unsafe.Pointer(v29))
 		*(*TuInt)(unsafe.Pointer(v29))++
 		*(*Tuchf)(unsafe.Pointer((*Tdeflate_state)(unsafe.Pointer(s)).Fsym_buf + uintptr(v28))) = cc1
-		*(*Tush)(unsafe.Pointer(s + 188 + uintptr(cc1)*4))++
+		*(*Tush)(unsafe.Pointer(s + 148 + uintptr(cc1)*4))++
 		bflush = libc.BoolInt32((*Tdeflate_state)(unsafe.Pointer(s)).Fsym_next == (*Tdeflate_state)(unsafe.Pointer(s)).Fsym_end)
 		(*Tdeflate_state)(unsafe.Pointer(s)).Fmatch_available = 0
 	}
@@ -9314,7 +7444,7 @@ func _deflate_rle(tls *libc.TLS, s uintptr, flush int32) (r Tblock_state) {
 						break
 					}
 				}
-				(*Tdeflate_state)(unsafe.Pointer(s)).Fmatch_length = uint32(m_MAX_MATCH) - uint32(int64(int64(strend))-int64(int64(scan)))
+				(*Tdeflate_state)(unsafe.Pointer(s)).Fmatch_length = uint32(m_MAX_MATCH) - uint32(int32(int32(strend))-int32(int32(scan)))
 				if (*Tdeflate_state)(unsafe.Pointer(s)).Fmatch_length > (*Tdeflate_state)(unsafe.Pointer(s)).Flookahead {
 					(*Tdeflate_state)(unsafe.Pointer(s)).Fmatch_length = (*Tdeflate_state)(unsafe.Pointer(s)).Flookahead
 				}
@@ -9324,46 +7454,46 @@ func _deflate_rle(tls *libc.TLS, s uintptr, flush int32) (r Tblock_state) {
 		if (*Tdeflate_state)(unsafe.Pointer(s)).Fmatch_length >= uint32(m_MIN_MATCH) {
 			len1 = uint8((*Tdeflate_state)(unsafe.Pointer(s)).Fmatch_length - libc.Uint32FromInt32(m_MIN_MATCH))
 			dist = uint16(libc.Int32FromInt32(1))
-			v24 = s + 5876
+			v24 = s + 5792
 			v23 = *(*TuInt)(unsafe.Pointer(v24))
 			*(*TuInt)(unsafe.Pointer(v24))++
 			*(*Tuchf)(unsafe.Pointer((*Tdeflate_state)(unsafe.Pointer(s)).Fsym_buf + uintptr(v23))) = uint8(uint8(dist))
-			v26 = s + 5876
+			v26 = s + 5792
 			v25 = *(*TuInt)(unsafe.Pointer(v26))
 			*(*TuInt)(unsafe.Pointer(v26))++
 			*(*Tuchf)(unsafe.Pointer((*Tdeflate_state)(unsafe.Pointer(s)).Fsym_buf + uintptr(v25))) = uint8(int32(int32(dist)) >> libc.Int32FromInt32(8))
-			v28 = s + 5876
+			v28 = s + 5792
 			v27 = *(*TuInt)(unsafe.Pointer(v28))
 			*(*TuInt)(unsafe.Pointer(v28))++
 			*(*Tuchf)(unsafe.Pointer((*Tdeflate_state)(unsafe.Pointer(s)).Fsym_buf + uintptr(v27))) = len1
 			dist--
-			*(*Tush)(unsafe.Pointer(s + 188 + uintptr(int32(x__length_code[len1])+int32(m_LITERALS)+int32(1))*4))++
+			*(*Tush)(unsafe.Pointer(s + 148 + uintptr(int32(x__length_code[len1])+int32(m_LITERALS)+int32(1))*4))++
 			if int32(dist) < int32(256) {
 				v29 = int32(x__dist_code[dist])
 			} else {
 				v29 = int32(x__dist_code[int32(256)+int32(dist)>>int32(7)])
 			}
-			*(*Tush)(unsafe.Pointer(s + 2480 + uintptr(v29)*4))++
+			*(*Tush)(unsafe.Pointer(s + 2440 + uintptr(v29)*4))++
 			bflush = libc.BoolInt32((*Tdeflate_state)(unsafe.Pointer(s)).Fsym_next == (*Tdeflate_state)(unsafe.Pointer(s)).Fsym_end)
-			*(*TuInt)(unsafe.Pointer(s + 156)) -= (*Tdeflate_state)(unsafe.Pointer(s)).Fmatch_length
-			*(*TuInt)(unsafe.Pointer(s + 148)) += (*Tdeflate_state)(unsafe.Pointer(s)).Fmatch_length
+			*(*TuInt)(unsafe.Pointer(s + 116)) -= (*Tdeflate_state)(unsafe.Pointer(s)).Fmatch_length
+			*(*TuInt)(unsafe.Pointer(s + 108)) += (*Tdeflate_state)(unsafe.Pointer(s)).Fmatch_length
 			(*Tdeflate_state)(unsafe.Pointer(s)).Fmatch_length = uint32(0)
 		} else {
 			/* No match, output a literal byte */
 			cc = *(*TBytef)(unsafe.Pointer((*Tdeflate_state)(unsafe.Pointer(s)).Fwindow + uintptr((*Tdeflate_state)(unsafe.Pointer(s)).Fstrstart)))
-			v31 = s + 5876
+			v31 = s + 5792
 			v30 = *(*TuInt)(unsafe.Pointer(v31))
 			*(*TuInt)(unsafe.Pointer(v31))++
 			*(*Tuchf)(unsafe.Pointer((*Tdeflate_state)(unsafe.Pointer(s)).Fsym_buf + uintptr(v30))) = uint8(0)
-			v33 = s + 5876
+			v33 = s + 5792
 			v32 = *(*TuInt)(unsafe.Pointer(v33))
 			*(*TuInt)(unsafe.Pointer(v33))++
 			*(*Tuchf)(unsafe.Pointer((*Tdeflate_state)(unsafe.Pointer(s)).Fsym_buf + uintptr(v32))) = uint8(0)
-			v35 = s + 5876
+			v35 = s + 5792
 			v34 = *(*TuInt)(unsafe.Pointer(v35))
 			*(*TuInt)(unsafe.Pointer(v35))++
 			*(*Tuchf)(unsafe.Pointer((*Tdeflate_state)(unsafe.Pointer(s)).Fsym_buf + uintptr(v34))) = cc
-			*(*Tush)(unsafe.Pointer(s + 188 + uintptr(cc)*4))++
+			*(*Tush)(unsafe.Pointer(s + 148 + uintptr(cc)*4))++
 			bflush = libc.BoolInt32((*Tdeflate_state)(unsafe.Pointer(s)).Fsym_next == (*Tdeflate_state)(unsafe.Pointer(s)).Fsym_end)
 			(*Tdeflate_state)(unsafe.Pointer(s)).Flookahead--
 			(*Tdeflate_state)(unsafe.Pointer(s)).Fstrstart++
@@ -9441,19 +7571,19 @@ func _deflate_huff(tls *libc.TLS, s uintptr, flush int32) (r Tblock_state) {
 		/* Output a literal byte */
 		(*Tdeflate_state)(unsafe.Pointer(s)).Fmatch_length = uint32(0)
 		cc = *(*TBytef)(unsafe.Pointer((*Tdeflate_state)(unsafe.Pointer(s)).Fwindow + uintptr((*Tdeflate_state)(unsafe.Pointer(s)).Fstrstart)))
-		v3 = s + 5876
+		v3 = s + 5792
 		v2 = *(*TuInt)(unsafe.Pointer(v3))
 		*(*TuInt)(unsafe.Pointer(v3))++
 		*(*Tuchf)(unsafe.Pointer((*Tdeflate_state)(unsafe.Pointer(s)).Fsym_buf + uintptr(v2))) = uint8(0)
-		v5 = s + 5876
+		v5 = s + 5792
 		v4 = *(*TuInt)(unsafe.Pointer(v5))
 		*(*TuInt)(unsafe.Pointer(v5))++
 		*(*Tuchf)(unsafe.Pointer((*Tdeflate_state)(unsafe.Pointer(s)).Fsym_buf + uintptr(v4))) = uint8(0)
-		v7 = s + 5876
+		v7 = s + 5792
 		v6 = *(*TuInt)(unsafe.Pointer(v7))
 		*(*TuInt)(unsafe.Pointer(v7))++
 		*(*Tuchf)(unsafe.Pointer((*Tdeflate_state)(unsafe.Pointer(s)).Fsym_buf + uintptr(v6))) = cc
-		*(*Tush)(unsafe.Pointer(s + 188 + uintptr(cc)*4))++
+		*(*Tush)(unsafe.Pointer(s + 148 + uintptr(cc)*4))++
 		bflush = libc.BoolInt32((*Tdeflate_state)(unsafe.Pointer(s)).Fsym_next == (*Tdeflate_state)(unsafe.Pointer(s)).Fsym_end)
 		(*Tdeflate_state)(unsafe.Pointer(s)).Flookahead--
 		(*Tdeflate_state)(unsafe.Pointer(s)).Fstrstart++
@@ -9505,6 +7635,7 @@ func _deflate_huff(tls *libc.TLS, s uintptr, flush int32) (r Tblock_state) {
 }
 
 const m_COPY = 1
+const m_F_OK = 0
 const m_GZBUFSIZE = 8192
 const m_GZIP = 2
 const m_GZ_APPEND = 1
@@ -9512,7 +7643,148 @@ const m_GZ_NONE = 0
 const m_GZ_READ = 7247
 const m_GZ_WRITE = 31153
 const m_LOOK = 0
-const m__O_BINARY1 = 0x8000
+const m_O_ACCMODE = "_O_ACCMODE"
+const m_O_APPEND = "_O_APPEND"
+const m_O_BINARY = "_O_BINARY"
+const m_O_CREAT = "_O_CREAT"
+const m_O_EXCL = "_O_EXCL"
+const m_O_NOINHERIT = "_O_NOINHERIT"
+const m_O_RANDOM = "_O_RANDOM"
+const m_O_RAW = "_O_BINARY"
+const m_O_RDONLY = "_O_RDONLY"
+const m_O_RDWR = "_O_RDWR"
+const m_O_SEQUENTIAL = "_O_SEQUENTIAL"
+const m_O_TEMPORARY = "_O_TEMPORARY"
+const m_O_TEXT = "_O_TEXT"
+const m_O_TRUNC = "_O_TRUNC"
+const m_O_WRONLY = "_O_WRONLY"
+const m_R_OK = 4
+const m_W_OK = 2
+const m_X_OK = 1
+const m__A_ARCH = 0x20
+const m__A_HIDDEN = 0x02
+const m__A_NORMAL = 0x00
+const m__A_RDONLY = 0x01
+const m__A_SUBDIR = 0x10
+const m__A_SYSTEM = 0x04
+const m__O_APPEND = 0x0008
+const m__O_BINARY = 0x8000
+const m__O_CREAT = 0x0100
+const m__O_EXCL = 0x0400
+const m__O_NOINHERIT = 0x0080
+const m__O_RANDOM = 0x0010
+const m__O_RAW = "_O_BINARY"
+const m__O_RDONLY = 0x0000
+const m__O_RDWR = 0x0002
+const m__O_SEQUENTIAL = 0x0020
+const m__O_SHORT_LIVED = 0x1000
+const m__O_TEMPORARY = 0x0040
+const m__O_TEXT = 0x4000
+const m__O_TRUNC = 0x0200
+const m__O_U16TEXT = 0x20000
+const m__O_U8TEXT = 0x40000
+const m__O_WRONLY = 0x0001
+const m__O_WTEXT = 0x10000
+const m__finddata_t = "_finddata64i32_t"
+const m__finddatai64_t = "__finddata64_t"
+const m__findfirst = "_findfirst64i32"
+const m__findfirsti64 = "_findfirst64"
+const m__findnext = "_findnext64i32"
+const m__findnexti64 = "_findnext64"
+const m__wfinddata_t = "_wfinddata64i32_t"
+const m__wfinddatai64_t = "_wfinddata64_t"
+const m__wfindfirst = "_wfindfirst64i32"
+const m__wfindfirsti64 = "_wfindfirst64"
+const m__wfindnext = "_wfindnext64i32"
+const m__wfindnexti64 = "_wfindnext64"
+const m_lseek = "lseek64"
+
+type T_fsize_t = uint32
+
+type T_finddata32_t = struct {
+	Fattrib      uint32
+	Ftime_create T__time32_t
+	Ftime_access T__time32_t
+	Ftime_write  T__time32_t
+	Fsize        T_fsize_t
+	Fname        [260]int8
+}
+
+type T_finddata32i64_t = struct {
+	F__ccgo_align [0]uint32
+	Fattrib       uint32
+	Ftime_create  T__time32_t
+	Ftime_access  T__time32_t
+	Ftime_write   T__time32_t
+	Fsize         int64
+	Fname         [260]int8
+	F__ccgo_pad6  [4]byte
+}
+
+type T_finddata64i32_t = struct {
+	F__ccgo_align  [0]uint32
+	Fattrib        uint32
+	F__ccgo_align1 [4]byte
+	Ftime_create   T__time64_t
+	Ftime_access   T__time64_t
+	Ftime_write    T__time64_t
+	Fsize          T_fsize_t
+	Fname          [260]int8
+}
+
+type T__finddata64_t = struct {
+	F__ccgo_align  [0]uint32
+	Fattrib        uint32
+	F__ccgo_align1 [4]byte
+	Ftime_create   T__time64_t
+	Ftime_access   T__time64_t
+	Ftime_write    T__time64_t
+	Fsize          int64
+	Fname          [260]int8
+	F__ccgo_pad6   [4]byte
+}
+
+type T_wfinddata32_t = struct {
+	Fattrib      uint32
+	Ftime_create T__time32_t
+	Ftime_access T__time32_t
+	Ftime_write  T__time32_t
+	Fsize        T_fsize_t
+	Fname        [260]Twchar_t
+}
+
+type T_wfinddata32i64_t = struct {
+	F__ccgo_align [0]uint32
+	Fattrib       uint32
+	Ftime_create  T__time32_t
+	Ftime_access  T__time32_t
+	Ftime_write   T__time32_t
+	Fsize         int64
+	Fname         [260]Twchar_t
+}
+
+type T_wfinddata64i32_t = struct {
+	F__ccgo_align  [0]uint32
+	Fattrib        uint32
+	F__ccgo_align1 [4]byte
+	Ftime_create   T__time64_t
+	Ftime_access   T__time64_t
+	Ftime_write    T__time64_t
+	Fsize          T_fsize_t
+	Fname          [260]Twchar_t
+	F__ccgo_pad6   [4]byte
+}
+
+type T_wfinddata64_t = struct {
+	F__ccgo_align  [0]uint32
+	Fattrib        uint32
+	F__ccgo_align1 [4]byte
+	Ftime_create   T__time64_t
+	Ftime_access   T__time64_t
+	Ftime_write    T__time64_t
+	Fsize          int64
+	Fname          [260]Twchar_t
+}
 
 type Tgz_state = struct {
 	Fx        TgzFile_s
@@ -9563,7 +7835,7 @@ func x_gzclose(tls *libc.TLS, file TgzFile) (r int32) {
 
 const m_LSEEK = "_lseeki64"
 const m__O_APPEND1 = 8
-const m__O_BINARY2 = 32768
+const m__O_BINARY1 = 32768
 const m__O_CREAT1 = 256
 const m__O_EXCL1 = 1024
 const m__O_RDONLY1 = 0
@@ -9605,7 +7877,7 @@ func _gz_open(tls *libc.TLS, path uintptr, fd int32, mode uintptr) (r TgzFile) {
 		return libc.UintptrFromInt32(0)
 	}
 	/* allocate gzFile structure to return */
-	state = libc.Xmalloc(tls, uint64(208))
+	state = libc.Xmalloc(tls, uint32(144))
 	if state == libc.UintptrFromInt32(0) {
 		return libc.UintptrFromInt32(0)
 	}
@@ -9664,26 +7936,26 @@ func _gz_open(tls *libc.TLS, path uintptr, fd int32, mode uintptr) (r TgzFile) {
 	}
 	/* save the path name for error messages */
 	if fd == -int32(2) {
-		len1 = libc.Xwcstombs(tls, libc.UintptrFromInt32(0), path, uint64(0))
-		if len1 == uint64(-libc.Int32FromInt32(1)) {
-			len1 = uint64(0)
+		len1 = libc.Xwcstombs(tls, libc.UintptrFromInt32(0), path, uint32(0))
+		if len1 == uint32(-libc.Int32FromInt32(1)) {
+			len1 = uint32(0)
 		}
 	} else {
 		len1 = libc.Xstrlen(tls, path)
 	}
-	(*Tgz_state)(unsafe.Pointer(state)).Fpath = libc.Xmalloc(tls, len1+uint64(1))
+	(*Tgz_state)(unsafe.Pointer(state)).Fpath = libc.Xmalloc(tls, len1+uint32(1))
 	if (*Tgz_state)(unsafe.Pointer(state)).Fpath == libc.UintptrFromInt32(0) {
 		libc.Xfree(tls, state)
 		return libc.UintptrFromInt32(0)
 	}
 	if fd == -int32(2) {
 		if len1 != 0 {
-			libc.Xwcstombs(tls, (*Tgz_state)(unsafe.Pointer(state)).Fpath, path, len1+uint64(1))
+			libc.Xwcstombs(tls, (*Tgz_state)(unsafe.Pointer(state)).Fpath, path, len1+uint32(1))
 		} else {
 			*(*int8)(unsafe.Pointer((*Tgz_state)(unsafe.Pointer(state)).Fpath)) = 0
 		}
 	} else {
-		libc.X__builtin_snprintf(tls, (*Tgz_state)(unsafe.Pointer(state)).Fpath, len1+uint64(1), __ccgo_ts+113, libc.VaList(bp+8, path))
+		libc.X__builtin_snprintf(tls, (*Tgz_state)(unsafe.Pointer(state)).Fpath, len1+uint32(1), __ccgo_ts+881, libc.VaList(bp+8, path))
 	}
 	/* compute the flags for open() */
 	if (*Tgz_state)(unsafe.Pointer(state)).Fmode == int32(m_GZ_READ) {
@@ -9701,7 +7973,7 @@ func _gz_open(tls *libc.TLS, path uintptr, fd int32, mode uintptr) (r TgzFile) {
 		}
 		v1 = libc.Int32FromInt32(m__O_WRONLY1) | libc.Int32FromInt32(m__O_CREAT1) | v2 | v3
 	}
-	oflag = int32(m__O_BINARY2) | v1
+	oflag = int32(m__O_BINARY1) | v1
 	/* open the file with the appropriate flags (or just use fd) */
 	if fd > -int32(1) {
 		v4 = fd
@@ -9761,13 +8033,13 @@ func x_gzdopen(tls *libc.TLS, fd int32, mode uintptr) (r TgzFile) {
 	var v2 bool
 	_, _, _, _ = gz, path, v1, v2
 	if v2 = fd == -int32(1); !v2 {
-		v1 = libc.Xmalloc(tls, libc.Uint64FromInt32(7)+libc.Uint64FromInt32(3)*libc.Uint64FromInt64(4))
+		v1 = libc.Xmalloc(tls, libc.Uint32FromInt32(7)+libc.Uint32FromInt32(3)*libc.Uint32FromInt64(4))
 		path = v1
 	}
 	if v2 || v1 == libc.UintptrFromInt32(0) {
 		return libc.UintptrFromInt32(0)
 	}
-	libc.X__builtin_snprintf(tls, path, libc.Uint64FromInt32(7)+libc.Uint64FromInt32(3)*libc.Uint64FromInt64(4), __ccgo_ts+198, libc.VaList(bp+8, fd))
+	libc.X__builtin_snprintf(tls, path, libc.Uint32FromInt32(7)+libc.Uint32FromInt32(3)*libc.Uint32FromInt64(4), __ccgo_ts+884, libc.VaList(bp+8, fd))
 	gz = _gz_open(tls, path, fd, mode)
 	libc.Xfree(tls, path)
 	return gz
@@ -9896,7 +8168,7 @@ func x_gzseek64(tls *libc.TLS, file TgzFile, offset int32, whence int32) (r int3
 	}
 	/* if reading, skip what's in output buffer (one less gzgetc() check) */
 	if (*Tgz_state)(unsafe.Pointer(state)).Fmode == int32(m_GZ_READ) {
-		if libc.Bool(uint64(4) == uint64(4)) && (*Tgz_state)(unsafe.Pointer(state)).Fx.Fhave > x_gz_intmax(tls) || int32((*Tgz_state)(unsafe.Pointer(state)).Fx.Fhave) > offset {
+		if libc.Bool(uint32(4) == uint32(4)) && (*Tgz_state)(unsafe.Pointer(state)).Fx.Fhave > x_gz_intmax(tls) || int32((*Tgz_state)(unsafe.Pointer(state)).Fx.Fhave) > offset {
 			v1 = uint32(uint32(offset))
 		} else {
 			v1 = (*Tgz_state)(unsafe.Pointer(state)).Fx.Fhave
@@ -9904,7 +8176,7 @@ func x_gzseek64(tls *libc.TLS, file TgzFile, offset int32, whence int32) (r int3
 		n = v1
 		(*Tgz_state)(unsafe.Pointer(state)).Fx.Fhave -= n
 		(*Tgz_state)(unsafe.Pointer(state)).Fx.Fnext += uintptr(n)
-		p2 = state + 16
+		p2 = state + 8
 		*(*int32)(unsafe.Pointer(p2)) = int32(uint32(*(*int32)(unsafe.Pointer(p2))) + uint32(uint32(n)))
 		offset = int32(uint32(offset) - uint32(uint32(n)))
 	}
@@ -10055,10 +8327,10 @@ func x_gzerror(tls *libc.TLS, file TgzFile, errnum uintptr) (r uintptr) {
 		*(*int32)(unsafe.Pointer(errnum)) = (*Tgz_state)(unsafe.Pointer(state)).Ferr
 	}
 	if (*Tgz_state)(unsafe.Pointer(state)).Ferr == -int32(4) {
-		v1 = __ccgo_ts + 206
+		v1 = __ccgo_ts + 892
 	} else {
 		if (*Tgz_state)(unsafe.Pointer(state)).Fmsg == libc.UintptrFromInt32(0) {
-			v2 = __ccgo_ts + 220
+			v2 = __ccgo_ts + 906
 		} else {
 			v2 = (*Tgz_state)(unsafe.Pointer(state)).Fmsg
 		}
@@ -10123,13 +8395,13 @@ func x_gz_error(tls *libc.TLS, state Tgz_statep, err int32, msg uintptr) {
 		return
 	}
 	/* construct error message with path */
-	v1 = libc.Xmalloc(tls, libc.Xstrlen(tls, (*Tgz_state)(unsafe.Pointer(state)).Fpath)+libc.Xstrlen(tls, msg)+uint64(3))
+	v1 = libc.Xmalloc(tls, libc.Xstrlen(tls, (*Tgz_state)(unsafe.Pointer(state)).Fpath)+libc.Xstrlen(tls, msg)+uint32(3))
 	(*Tgz_state)(unsafe.Pointer(state)).Fmsg = v1
 	if v1 == libc.UintptrFromInt32(0) {
 		(*Tgz_state)(unsafe.Pointer(state)).Ferr = -int32(4)
 		return
 	}
-	libc.X__builtin_snprintf(tls, (*Tgz_state)(unsafe.Pointer(state)).Fmsg, libc.Xstrlen(tls, (*Tgz_state)(unsafe.Pointer(state)).Fpath)+libc.Xstrlen(tls, msg)+uint64(3), __ccgo_ts+221, libc.VaList(bp+8, (*Tgz_state)(unsafe.Pointer(state)).Fpath, __ccgo_ts+228, msg))
+	libc.X__builtin_snprintf(tls, (*Tgz_state)(unsafe.Pointer(state)).Fmsg, libc.Xstrlen(tls, (*Tgz_state)(unsafe.Pointer(state)).Fpath)+libc.Xstrlen(tls, msg)+uint32(3), __ccgo_ts+907, libc.VaList(bp+8, (*Tgz_state)(unsafe.Pointer(state)).Fpath, __ccgo_ts+914, msg))
 }
 
 // C documentation
@@ -10143,7 +8415,7 @@ func x_gz_intmax(tls *libc.TLS) (r uint32) {
 }
 
 const m__O_APPEND2 = 0x0008
-const m__O_BINARY3 = 0x8000
+const m__O_BINARY2 = 0x8000
 const m__O_CREAT2 = 0x0100
 const m__O_EXCL2 = 0x0400
 const m__O_RDONLY2 = 0x0000
@@ -10201,7 +8473,7 @@ func _gz_avail(tls *libc.TLS, state Tgz_statep) (r int32) {
 	var strm Tz_streamp
 	var _ /* got at bp+0 */ uint32
 	_, _, _, _, _, _, _ = n, p, q, strm, v1, v3, v4
-	strm = state + 120
+	strm = state + 88
 	if (*Tgz_state)(unsafe.Pointer(state)).Ferr != m_Z_OK && (*Tgz_state)(unsafe.Pointer(state)).Ferr != -int32(5) {
 		return -int32(1)
 	}
@@ -10229,7 +8501,7 @@ func _gz_avail(tls *libc.TLS, state Tgz_statep) (r int32) {
 		if _gz_load(tls, state, (*Tgz_state)(unsafe.Pointer(state)).Fin+uintptr((*Tz_stream)(unsafe.Pointer(strm)).Favail_in), (*Tgz_state)(unsafe.Pointer(state)).Fsize-(*Tz_stream)(unsafe.Pointer(strm)).Favail_in, bp) == -int32(1) {
 			return -int32(1)
 		}
-		*(*TuInt)(unsafe.Pointer(strm + 8)) += *(*uint32)(unsafe.Pointer(bp))
+		*(*TuInt)(unsafe.Pointer(strm + 4)) += *(*uint32)(unsafe.Pointer(bp))
 		(*Tz_stream)(unsafe.Pointer(strm)).Fnext_in = (*Tgz_state)(unsafe.Pointer(state)).Fin
 	}
 	return 0
@@ -10249,16 +8521,16 @@ func _gz_avail(tls *libc.TLS, state Tgz_statep) (r int32) {
 func _gz_look(tls *libc.TLS, state Tgz_statep) (r int32) {
 	var strm Tz_streamp
 	_ = strm
-	strm = state + 120
+	strm = state + 88
 	/* allocate read buffers and inflate memory */
 	if (*Tgz_state)(unsafe.Pointer(state)).Fsize == uint32(0) {
 		/* allocate buffers */
-		(*Tgz_state)(unsafe.Pointer(state)).Fin = libc.Xmalloc(tls, uint64((*Tgz_state)(unsafe.Pointer(state)).Fwant))
-		(*Tgz_state)(unsafe.Pointer(state)).Fout = libc.Xmalloc(tls, uint64((*Tgz_state)(unsafe.Pointer(state)).Fwant<<int32(1)))
+		(*Tgz_state)(unsafe.Pointer(state)).Fin = libc.Xmalloc(tls, (*Tgz_state)(unsafe.Pointer(state)).Fwant)
+		(*Tgz_state)(unsafe.Pointer(state)).Fout = libc.Xmalloc(tls, (*Tgz_state)(unsafe.Pointer(state)).Fwant<<int32(1))
 		if (*Tgz_state)(unsafe.Pointer(state)).Fin == libc.UintptrFromInt32(0) || (*Tgz_state)(unsafe.Pointer(state)).Fout == libc.UintptrFromInt32(0) {
 			libc.Xfree(tls, (*Tgz_state)(unsafe.Pointer(state)).Fout)
 			libc.Xfree(tls, (*Tgz_state)(unsafe.Pointer(state)).Fin)
-			x_gz_error(tls, state, -int32(4), __ccgo_ts+206)
+			x_gz_error(tls, state, -int32(4), __ccgo_ts+892)
 			return -int32(1)
 		}
 		(*Tgz_state)(unsafe.Pointer(state)).Fsize = (*Tgz_state)(unsafe.Pointer(state)).Fwant
@@ -10268,11 +8540,11 @@ func _gz_look(tls *libc.TLS, state Tgz_statep) (r int32) {
 		(*Tgz_state)(unsafe.Pointer(state)).Fstrm.Fopaque = uintptr(m_Z_NULL)
 		(*Tgz_state)(unsafe.Pointer(state)).Fstrm.Favail_in = uint32(0)
 		(*Tgz_state)(unsafe.Pointer(state)).Fstrm.Fnext_in = uintptr(m_Z_NULL)
-		if x_inflateInit2_(tls, state+120, libc.Int32FromInt32(15)+libc.Int32FromInt32(16), __ccgo_ts+192, libc.Int32FromInt64(88)) != m_Z_OK { /* gunzip */
+		if x_inflateInit2_(tls, state+88, libc.Int32FromInt32(15)+libc.Int32FromInt32(16), __ccgo_ts+339, libc.Int32FromInt64(56)) != m_Z_OK { /* gunzip */
 			libc.Xfree(tls, (*Tgz_state)(unsafe.Pointer(state)).Fout)
 			libc.Xfree(tls, (*Tgz_state)(unsafe.Pointer(state)).Fin)
 			(*Tgz_state)(unsafe.Pointer(state)).Fsize = uint32(0)
-			x_gz_error(tls, state, -int32(4), __ccgo_ts+206)
+			x_gz_error(tls, state, -int32(4), __ccgo_ts+892)
 			return -int32(1)
 		}
 	}
@@ -10310,7 +8582,7 @@ func _gz_look(tls *libc.TLS, state Tgz_statep) (r int32) {
 	   the output buffer is larger than the input buffer, which also assures
 	   space for gzungetc() */
 	(*Tgz_state)(unsafe.Pointer(state)).Fx.Fnext = (*Tgz_state)(unsafe.Pointer(state)).Fout
-	libc.Xmemcpy(tls, (*Tgz_state)(unsafe.Pointer(state)).Fx.Fnext, (*Tz_stream)(unsafe.Pointer(strm)).Fnext_in, uint64((*Tz_stream)(unsafe.Pointer(strm)).Favail_in))
+	libc.Xmemcpy(tls, (*Tgz_state)(unsafe.Pointer(state)).Fx.Fnext, (*Tz_stream)(unsafe.Pointer(strm)).Fnext_in, (*Tz_stream)(unsafe.Pointer(strm)).Favail_in)
 	(*Tgz_state)(unsafe.Pointer(state)).Fx.Fhave = (*Tz_stream)(unsafe.Pointer(strm)).Favail_in
 	(*Tz_stream)(unsafe.Pointer(strm)).Favail_in = uint32(0)
 	(*Tgz_state)(unsafe.Pointer(state)).Fhow = int32(m_COPY)
@@ -10332,7 +8604,7 @@ func _gz_decomp(tls *libc.TLS, state Tgz_statep) (r int32) {
 	var v1 uintptr
 	_, _, _, _ = had, ret, strm, v1
 	ret = m_Z_OK
-	strm = state + 120
+	strm = state + 88
 	/* fill output buffer up to end of deflate stream */
 	had = (*Tz_stream)(unsafe.Pointer(strm)).Favail_out
 	for cond := true; cond; cond = (*Tz_stream)(unsafe.Pointer(strm)).Favail_out != 0 && ret != int32(m_Z_STREAM_END) {
@@ -10341,22 +8613,22 @@ func _gz_decomp(tls *libc.TLS, state Tgz_statep) (r int32) {
 			return -int32(1)
 		}
 		if (*Tz_stream)(unsafe.Pointer(strm)).Favail_in == uint32(0) {
-			x_gz_error(tls, state, -int32(5), __ccgo_ts+231)
+			x_gz_error(tls, state, -int32(5), __ccgo_ts+917)
 			break
 		}
 		/* decompress and handle errors */
 		ret = x_inflate(tls, strm, m_Z_NO_FLUSH)
 		if ret == -int32(2) || ret == int32(m_Z_NEED_DICT) {
-			x_gz_error(tls, state, -int32(2), __ccgo_ts+254)
+			x_gz_error(tls, state, -int32(2), __ccgo_ts+940)
 			return -int32(1)
 		}
 		if ret == -int32(4) {
-			x_gz_error(tls, state, -int32(4), __ccgo_ts+206)
+			x_gz_error(tls, state, -int32(4), __ccgo_ts+892)
 			return -int32(1)
 		}
 		if ret == -int32(3) { /* deflate stream invalid */
 			if (*Tz_stream)(unsafe.Pointer(strm)).Fmsg == libc.UintptrFromInt32(0) {
-				v1 = __ccgo_ts + 293
+				v1 = __ccgo_ts + 979
 			} else {
 				v1 = (*Tz_stream)(unsafe.Pointer(strm)).Fmsg
 			}
@@ -10386,7 +8658,7 @@ func _gz_decomp(tls *libc.TLS, state Tgz_statep) (r int32) {
 func _gz_fetch(tls *libc.TLS, state Tgz_statep) (r int32) {
 	var strm Tz_streamp
 	_ = strm
-	strm = state + 120
+	strm = state + 88
 	for cond := true; cond; cond = (*Tgz_state)(unsafe.Pointer(state)).Fx.Fhave == uint32(0) && (!((*Tgz_state)(unsafe.Pointer(state)).Feof != 0) || (*Tz_stream)(unsafe.Pointer(strm)).Favail_in != 0) {
 		switch (*Tgz_state)(unsafe.Pointer(state)).Fhow {
 		case m_LOOK: /* -> LOOK, COPY (only if never GZIP), or GZIP */
@@ -10424,7 +8696,7 @@ func _gz_skip(tls *libc.TLS, state Tgz_statep, len1 int32) (r int32) {
 	for len1 != 0 {
 		/* skip over whatever is in output buffer */
 		if (*Tgz_state)(unsafe.Pointer(state)).Fx.Fhave != 0 {
-			if libc.Bool(uint64(4) == uint64(4)) && (*Tgz_state)(unsafe.Pointer(state)).Fx.Fhave > x_gz_intmax(tls) || int32((*Tgz_state)(unsafe.Pointer(state)).Fx.Fhave) > len1 {
+			if libc.Bool(uint32(4) == uint32(4)) && (*Tgz_state)(unsafe.Pointer(state)).Fx.Fhave > x_gz_intmax(tls) || int32((*Tgz_state)(unsafe.Pointer(state)).Fx.Fhave) > len1 {
 				v1 = uint32(uint32(len1))
 			} else {
 				v1 = (*Tgz_state)(unsafe.Pointer(state)).Fx.Fhave
@@ -10432,7 +8704,7 @@ func _gz_skip(tls *libc.TLS, state Tgz_statep, len1 int32) (r int32) {
 			n = v1
 			(*Tgz_state)(unsafe.Pointer(state)).Fx.Fhave -= n
 			(*Tgz_state)(unsafe.Pointer(state)).Fx.Fnext += uintptr(n)
-			p2 = state + 16
+			p2 = state + 8
 			*(*int32)(unsafe.Pointer(p2)) = int32(uint32(*(*int32)(unsafe.Pointer(p2))) + uint32(uint32(n)))
 			len1 = int32(uint32(len1) - uint32(uint32(n)))
 		} else {
@@ -10463,30 +8735,30 @@ func _gz_read(tls *libc.TLS, state Tgz_statep, buf Tvoidp, len1 Tz_size_t) (r Tz
 	var _ /* n at bp+0 */ uint32
 	_, _ = got, p1
 	/* if len is zero, avoid unnecessary operations */
-	if len1 == uint64(0) {
-		return uint64(0)
+	if len1 == uint32(0) {
+		return uint32(0)
 	}
 	/* process a skip request */
 	if (*Tgz_state)(unsafe.Pointer(state)).Fseek != 0 {
 		(*Tgz_state)(unsafe.Pointer(state)).Fseek = 0
 		if _gz_skip(tls, state, (*Tgz_state)(unsafe.Pointer(state)).Fskip) == -int32(1) {
-			return uint64(0)
+			return uint32(0)
 		}
 	}
 	/* get len bytes to buf, or less than len if at the end */
-	got = uint64(0)
+	got = uint32(0)
 	for cond := true; cond; cond = len1 != 0 {
 		/* set n to the maximum amount of len that fits in an unsigned int */
 		*(*uint32)(unsafe.Pointer(bp)) = uint32(-libc.Int32FromInt32(1))
-		if uint64(*(*uint32)(unsafe.Pointer(bp))) > len1 {
-			*(*uint32)(unsafe.Pointer(bp)) = uint32(uint32(len1))
+		if *(*uint32)(unsafe.Pointer(bp)) > len1 {
+			*(*uint32)(unsafe.Pointer(bp)) = len1
 		}
 		/* first just try copying data from the output buffer */
 		if (*Tgz_state)(unsafe.Pointer(state)).Fx.Fhave != 0 {
 			if (*Tgz_state)(unsafe.Pointer(state)).Fx.Fhave < *(*uint32)(unsafe.Pointer(bp)) {
 				*(*uint32)(unsafe.Pointer(bp)) = (*Tgz_state)(unsafe.Pointer(state)).Fx.Fhave
 			}
-			libc.Xmemcpy(tls, buf, (*Tgz_state)(unsafe.Pointer(state)).Fx.Fnext, uint64(*(*uint32)(unsafe.Pointer(bp))))
+			libc.Xmemcpy(tls, buf, (*Tgz_state)(unsafe.Pointer(state)).Fx.Fnext, *(*uint32)(unsafe.Pointer(bp)))
 			(*Tgz_state)(unsafe.Pointer(state)).Fx.Fnext += uintptr(*(*uint32)(unsafe.Pointer(bp)))
 			(*Tgz_state)(unsafe.Pointer(state)).Fx.Fhave -= *(*uint32)(unsafe.Pointer(bp))
 		} else {
@@ -10497,7 +8769,7 @@ func _gz_read(tls *libc.TLS, state Tgz_statep, buf Tvoidp, len1 Tz_size_t) (r Tz
 				if (*Tgz_state)(unsafe.Pointer(state)).Fhow == m_LOOK || *(*uint32)(unsafe.Pointer(bp)) < (*Tgz_state)(unsafe.Pointer(state)).Fsize<<int32(1) {
 					/* get more output, looking for header if required */
 					if _gz_fetch(tls, state) == -int32(1) {
-						return uint64(0)
+						return uint32(0)
 					}
 					continue /* no progress yet -- go back to copy above */
 					/* the copy above assures that we will leave with space in the
@@ -10505,13 +8777,13 @@ func _gz_read(tls *libc.TLS, state Tgz_statep, buf Tvoidp, len1 Tz_size_t) (r Tz
 				} else {
 					if (*Tgz_state)(unsafe.Pointer(state)).Fhow == int32(m_COPY) { /* read directly */
 						if _gz_load(tls, state, buf, *(*uint32)(unsafe.Pointer(bp)), bp) == -int32(1) {
-							return uint64(0)
+							return uint32(0)
 						}
 					} else { /* state->how == GZIP */
 						(*Tgz_state)(unsafe.Pointer(state)).Fstrm.Favail_out = *(*uint32)(unsafe.Pointer(bp))
 						(*Tgz_state)(unsafe.Pointer(state)).Fstrm.Fnext_out = buf
 						if _gz_decomp(tls, state) == -int32(1) {
-							return uint64(0)
+							return uint32(0)
 						}
 						*(*uint32)(unsafe.Pointer(bp)) = (*Tgz_state)(unsafe.Pointer(state)).Fx.Fhave
 						(*Tgz_state)(unsafe.Pointer(state)).Fx.Fhave = uint32(0)
@@ -10520,10 +8792,10 @@ func _gz_read(tls *libc.TLS, state Tgz_statep, buf Tvoidp, len1 Tz_size_t) (r Tz
 			}
 		}
 		/* update progress */
-		len1 -= uint64(*(*uint32)(unsafe.Pointer(bp)))
+		len1 -= *(*uint32)(unsafe.Pointer(bp))
 		buf = buf + uintptr(*(*uint32)(unsafe.Pointer(bp)))
-		got += uint64(*(*uint32)(unsafe.Pointer(bp)))
-		p1 = state + 16
+		got += *(*uint32)(unsafe.Pointer(bp))
+		p1 = state + 8
 		*(*int32)(unsafe.Pointer(p1)) = int32(uint32(*(*int32)(unsafe.Pointer(p1))) + uint32(*(*uint32)(unsafe.Pointer(bp))))
 	}
 	/* return number of bytes read into user buffer */
@@ -10548,11 +8820,11 @@ func x_gzread(tls *libc.TLS, file TgzFile, buf Tvoidp, len1 uint32) (r int32) {
 	/* since an int is returned, make sure len fits in one, otherwise return
 	   with an error (this avoids a flaw in the interface) */
 	if int32(int32(len1)) < 0 {
-		x_gz_error(tls, state, -int32(2), __ccgo_ts+315)
+		x_gz_error(tls, state, -int32(2), __ccgo_ts+1001)
 		return -int32(1)
 	}
 	/* read len or fewer bytes to buf */
-	len1 = uint32(_gz_read(tls, state, buf, uint64(uint64(len1))))
+	len1 = _gz_read(tls, state, buf, len1)
 	/* check for an error */
 	if len1 == uint32(0) && (*Tgz_state)(unsafe.Pointer(state)).Ferr != m_Z_OK && (*Tgz_state)(unsafe.Pointer(state)).Ferr != -int32(5) {
 		return -int32(1)
@@ -10567,28 +8839,28 @@ func x_gzread(tls *libc.TLS, file TgzFile, buf Tvoidp, len1 uint32) (r int32) {
 func x_gzfread(tls *libc.TLS, buf Tvoidp, size Tz_size_t, nitems Tz_size_t, file TgzFile) (r Tz_size_t) {
 	var len1 Tz_size_t
 	var state Tgz_statep
-	var v1 uint64
+	var v1 uint32
 	_, _, _ = len1, state, v1
 	/* get internal structure */
 	if file == libc.UintptrFromInt32(0) {
-		return uint64(0)
+		return uint32(0)
 	}
 	state = file
 	/* check that we're reading and that there's no (serious) error */
 	if (*Tgz_state)(unsafe.Pointer(state)).Fmode != int32(m_GZ_READ) || (*Tgz_state)(unsafe.Pointer(state)).Ferr != m_Z_OK && (*Tgz_state)(unsafe.Pointer(state)).Ferr != -int32(5) {
-		return uint64(0)
+		return uint32(0)
 	}
 	/* compute bytes to read -- error on overflow */
 	len1 = nitems * size
 	if size != 0 && len1/size != nitems {
-		x_gz_error(tls, state, -int32(2), __ccgo_ts+346)
-		return uint64(0)
+		x_gz_error(tls, state, -int32(2), __ccgo_ts+1032)
+		return uint32(0)
 	}
 	/* read len or fewer bytes to buf, return the number of full items read */
 	if len1 != 0 {
 		v1 = _gz_read(tls, state, buf, len1) / size
 	} else {
-		v1 = uint64(0)
+		v1 = uint32(0)
 	}
 	return v1
 }
@@ -10617,13 +8889,13 @@ func x_gzgetc(tls *libc.TLS, file TgzFile) (r int32) {
 	if (*Tgz_state)(unsafe.Pointer(state)).Fx.Fhave != 0 {
 		(*Tgz_state)(unsafe.Pointer(state)).Fx.Fhave--
 		(*Tgz_state)(unsafe.Pointer(state)).Fx.Fpos++
-		v2 = state + 8
+		v2 = state + 4
 		v1 = *(*uintptr)(unsafe.Pointer(v2))
 		*(*uintptr)(unsafe.Pointer(v2))++
 		return int32(*(*uint8)(unsafe.Pointer(v1)))
 	}
 	/* nothing there -- try gz_read() */
-	if _gz_read(tls, state, bp, uint64(1)) < uint64(1) {
+	if _gz_read(tls, state, bp, uint32(1)) < uint32(1) {
 		v3 = -int32(1)
 	} else {
 		v3 = int32((*(*[1]uint8)(unsafe.Pointer(bp)))[0])
@@ -10677,7 +8949,7 @@ func x_gzungetc(tls *libc.TLS, c int32, file TgzFile) (r int32) {
 	}
 	/* if no room, give up (must have already done a gzungetc()) */
 	if (*Tgz_state)(unsafe.Pointer(state)).Fx.Fhave == (*Tgz_state)(unsafe.Pointer(state)).Fsize<<int32(1) {
-		x_gz_error(tls, state, -int32(3), __ccgo_ts+379)
+		x_gz_error(tls, state, -int32(3), __ccgo_ts+1065)
 		return -int32(1)
 	}
 	/* slide output data if needed and insert byte before existing data */
@@ -10747,15 +9019,15 @@ func x_gzgets(tls *libc.TLS, file TgzFile, buf uintptr, len1 int32) (r uintptr) 
 				v1 = (*Tgz_state)(unsafe.Pointer(state)).Fx.Fhave
 			}
 			n = v1
-			eol = libc.Xmemchr(tls, (*Tgz_state)(unsafe.Pointer(state)).Fx.Fnext, int32('\n'), uint64(uint64(n)))
+			eol = libc.Xmemchr(tls, (*Tgz_state)(unsafe.Pointer(state)).Fx.Fnext, int32('\n'), n)
 			if eol != libc.UintptrFromInt32(0) {
-				n = uint32(int64(int64(eol))-int64((*Tgz_state)(unsafe.Pointer(state)).Fx.Fnext)) + uint32(1)
+				n = uint32(int32(int32(eol))-int32((*Tgz_state)(unsafe.Pointer(state)).Fx.Fnext)) + uint32(1)
 			}
 			/* copy through end-of-line, or remainder if not found */
-			libc.Xmemcpy(tls, buf, (*Tgz_state)(unsafe.Pointer(state)).Fx.Fnext, uint64(uint64(n)))
+			libc.Xmemcpy(tls, buf, (*Tgz_state)(unsafe.Pointer(state)).Fx.Fnext, n)
 			(*Tgz_state)(unsafe.Pointer(state)).Fx.Fhave -= n
 			(*Tgz_state)(unsafe.Pointer(state)).Fx.Fnext += uintptr(n)
-			p2 = state + 16
+			p2 = state + 8
 			*(*int32)(unsafe.Pointer(p2)) = int32(uint32(*(*int32)(unsafe.Pointer(p2))) + uint32(uint32(n)))
 			left -= n
 			buf += uintptr(n)
@@ -10807,7 +9079,7 @@ func x_gzclose_r(tls *libc.TLS, file TgzFile) (r int32) {
 	}
 	/* free memory and close file */
 	if (*Tgz_state)(unsafe.Pointer(state)).Fsize != 0 {
-		x_inflateEnd(tls, state+120)
+		x_inflateEnd(tls, state+88)
 		libc.Xfree(tls, (*Tgz_state)(unsafe.Pointer(state)).Fout)
 		libc.Xfree(tls, (*Tgz_state)(unsafe.Pointer(state)).Fin)
 	}
@@ -10838,31 +9110,31 @@ func _gz_init(tls *libc.TLS, state Tgz_statep) (r int32) {
 	var ret int32
 	var strm Tz_streamp
 	_, _ = ret, strm
-	strm = state + 120
+	strm = state + 88
 	/* allocate input buffer (double size for gzprintf) */
-	(*Tgz_state)(unsafe.Pointer(state)).Fin = libc.Xmalloc(tls, uint64((*Tgz_state)(unsafe.Pointer(state)).Fwant<<int32(1)))
+	(*Tgz_state)(unsafe.Pointer(state)).Fin = libc.Xmalloc(tls, (*Tgz_state)(unsafe.Pointer(state)).Fwant<<int32(1))
 	if (*Tgz_state)(unsafe.Pointer(state)).Fin == libc.UintptrFromInt32(0) {
-		x_gz_error(tls, state, -int32(4), __ccgo_ts+206)
+		x_gz_error(tls, state, -int32(4), __ccgo_ts+892)
 		return -int32(1)
 	}
 	/* only need output buffer and deflate state if compressing */
 	if !((*Tgz_state)(unsafe.Pointer(state)).Fdirect != 0) {
 		/* allocate output buffer */
-		(*Tgz_state)(unsafe.Pointer(state)).Fout = libc.Xmalloc(tls, uint64((*Tgz_state)(unsafe.Pointer(state)).Fwant))
+		(*Tgz_state)(unsafe.Pointer(state)).Fout = libc.Xmalloc(tls, (*Tgz_state)(unsafe.Pointer(state)).Fwant)
 		if (*Tgz_state)(unsafe.Pointer(state)).Fout == libc.UintptrFromInt32(0) {
 			libc.Xfree(tls, (*Tgz_state)(unsafe.Pointer(state)).Fin)
-			x_gz_error(tls, state, -int32(4), __ccgo_ts+206)
+			x_gz_error(tls, state, -int32(4), __ccgo_ts+892)
 			return -int32(1)
 		}
 		/* allocate deflate memory, set up for gzip compression */
 		(*Tz_stream)(unsafe.Pointer(strm)).Fzalloc = uintptr(m_Z_NULL)
 		(*Tz_stream)(unsafe.Pointer(strm)).Fzfree = uintptr(m_Z_NULL)
 		(*Tz_stream)(unsafe.Pointer(strm)).Fopaque = uintptr(m_Z_NULL)
-		ret = x_deflateInit2_(tls, strm, (*Tgz_state)(unsafe.Pointer(state)).Flevel, int32(m_Z_DEFLATED), libc.Int32FromInt32(m_MAX_WBITS)+libc.Int32FromInt32(16), int32(m_DEF_MEM_LEVEL), (*Tgz_state)(unsafe.Pointer(state)).Fstrategy, __ccgo_ts+192, libc.Int32FromInt64(88))
+		ret = x_deflateInit2_(tls, strm, (*Tgz_state)(unsafe.Pointer(state)).Flevel, int32(m_Z_DEFLATED), libc.Int32FromInt32(m_MAX_WBITS)+libc.Int32FromInt32(16), int32(m_DEF_MEM_LEVEL), (*Tgz_state)(unsafe.Pointer(state)).Fstrategy, __ccgo_ts+339, libc.Int32FromInt64(56))
 		if ret != m_Z_OK {
 			libc.Xfree(tls, (*Tgz_state)(unsafe.Pointer(state)).Fout)
 			libc.Xfree(tls, (*Tgz_state)(unsafe.Pointer(state)).Fin)
-			x_gz_error(tls, state, -int32(4), __ccgo_ts+206)
+			x_gz_error(tls, state, -int32(4), __ccgo_ts+892)
 			return -int32(1)
 		}
 		(*Tz_stream)(unsafe.Pointer(strm)).Fnext_in = libc.UintptrFromInt32(0)
@@ -10892,7 +9164,7 @@ func _gz_comp(tls *libc.TLS, state Tgz_statep, flush int32) (r int32) {
 	var strm Tz_streamp
 	_, _, _, _, _, _, _, _ = have, max, put, ret, strm, writ, v1, v2
 	max = uint32(-libc.Int32FromInt32(1))>>libc.Int32FromInt32(2) + libc.Uint32FromInt32(1)
-	strm = state + 120
+	strm = state + 88
 	/* allocate memory if this is the first time through */
 	if (*Tgz_state)(unsafe.Pointer(state)).Fsize == uint32(0) && _gz_init(tls, state) == -int32(1) {
 		return -int32(1)
@@ -10911,7 +9183,7 @@ func _gz_comp(tls *libc.TLS, state Tgz_statep, flush int32) (r int32) {
 				x_gz_error(tls, state, -int32(1), libc.Xstrerror(tls, *(*int32)(unsafe.Pointer(libc.X_errno(tls)))))
 				return -int32(1)
 			}
-			*(*TuInt)(unsafe.Pointer(strm + 8)) -= uint32(uint32(writ))
+			*(*TuInt)(unsafe.Pointer(strm + 4)) -= uint32(uint32(writ))
 			*(*uintptr)(unsafe.Pointer(strm)) += uintptr(writ)
 		}
 		return 0
@@ -10932,10 +9204,10 @@ func _gz_comp(tls *libc.TLS, state Tgz_statep, flush int32) (r int32) {
 		   doing Z_FINISH then don't write until we get to Z_STREAM_END */
 		if (*Tz_stream)(unsafe.Pointer(strm)).Favail_out == uint32(0) || flush != m_Z_NO_FLUSH && (flush != int32(m_Z_FINISH) || ret == int32(m_Z_STREAM_END)) {
 			for (*Tz_stream)(unsafe.Pointer(strm)).Fnext_out > (*Tgz_state)(unsafe.Pointer(state)).Fx.Fnext {
-				if int64((*Tz_stream)(unsafe.Pointer(strm)).Fnext_out)-int64((*Tgz_state)(unsafe.Pointer(state)).Fx.Fnext) > int64(int32(int32(max))) {
+				if int32((*Tz_stream)(unsafe.Pointer(strm)).Fnext_out)-int32((*Tgz_state)(unsafe.Pointer(state)).Fx.Fnext) > int32(int32(max)) {
 					v2 = max
 				} else {
-					v2 = uint32(int64((*Tz_stream)(unsafe.Pointer(strm)).Fnext_out) - int64((*Tgz_state)(unsafe.Pointer(state)).Fx.Fnext))
+					v2 = uint32(int32((*Tz_stream)(unsafe.Pointer(strm)).Fnext_out) - int32((*Tgz_state)(unsafe.Pointer(state)).Fx.Fnext))
 				}
 				put = v2
 				writ = libc.Xwrite(tls, (*Tgz_state)(unsafe.Pointer(state)).Ffd, (*Tgz_state)(unsafe.Pointer(state)).Fx.Fnext, put)
@@ -10955,7 +9227,7 @@ func _gz_comp(tls *libc.TLS, state Tgz_statep, flush int32) (r int32) {
 		have = (*Tz_stream)(unsafe.Pointer(strm)).Favail_out
 		ret = x_deflate(tls, strm, flush)
 		if ret == -int32(2) {
-			x_gz_error(tls, state, -int32(2), __ccgo_ts+410)
+			x_gz_error(tls, state, -int32(2), __ccgo_ts+1096)
 			return -int32(1)
 		}
 		have -= (*Tz_stream)(unsafe.Pointer(strm)).Favail_out
@@ -10978,7 +9250,7 @@ func _gz_zero(tls *libc.TLS, state Tgz_statep, len1 int32) (r int32) {
 	var strm Tz_streamp
 	var p2 uintptr
 	_, _, _, _, _ = first, n, strm, v1, p2
-	strm = state + 120
+	strm = state + 88
 	/* consume whatever's left in the input buffer */
 	if (*Tz_stream)(unsafe.Pointer(strm)).Favail_in != 0 && _gz_comp(tls, state, m_Z_NO_FLUSH) == -int32(1) {
 		return -int32(1)
@@ -10986,19 +9258,19 @@ func _gz_zero(tls *libc.TLS, state Tgz_statep, len1 int32) (r int32) {
 	/* compress len zeros (len guaranteed > 0) */
 	first = int32(1)
 	for len1 != 0 {
-		if libc.Bool(uint64(4) == uint64(4)) && (*Tgz_state)(unsafe.Pointer(state)).Fsize > x_gz_intmax(tls) || int32((*Tgz_state)(unsafe.Pointer(state)).Fsize) > len1 {
+		if libc.Bool(uint32(4) == uint32(4)) && (*Tgz_state)(unsafe.Pointer(state)).Fsize > x_gz_intmax(tls) || int32((*Tgz_state)(unsafe.Pointer(state)).Fsize) > len1 {
 			v1 = uint32(uint32(len1))
 		} else {
 			v1 = (*Tgz_state)(unsafe.Pointer(state)).Fsize
 		}
 		n = v1
 		if first != 0 {
-			libc.Xmemset(tls, (*Tgz_state)(unsafe.Pointer(state)).Fin, 0, uint64(uint64(n)))
+			libc.Xmemset(tls, (*Tgz_state)(unsafe.Pointer(state)).Fin, 0, n)
 			first = 0
 		}
 		(*Tz_stream)(unsafe.Pointer(strm)).Favail_in = n
 		(*Tz_stream)(unsafe.Pointer(strm)).Fnext_in = (*Tgz_state)(unsafe.Pointer(state)).Fin
-		p2 = state + 16
+		p2 = state + 8
 		*(*int32)(unsafe.Pointer(p2)) = int32(uint32(*(*int32)(unsafe.Pointer(p2))) + uint32(uint32(n)))
 		if _gz_comp(tls, state, m_Z_NO_FLUSH) == -int32(1) {
 			return -int32(1)
@@ -11019,61 +9291,61 @@ func _gz_write(tls *libc.TLS, state Tgz_statep, buf Tvoidpc, len1 Tz_size_t) (r 
 	_, _, _, _, _, _ = copy1, have, n, put, p1, p2
 	put = len1
 	/* if len is zero, avoid unnecessary operations */
-	if len1 == uint64(0) {
-		return uint64(0)
+	if len1 == uint32(0) {
+		return uint32(0)
 	}
 	/* allocate memory if this is the first time through */
 	if (*Tgz_state)(unsafe.Pointer(state)).Fsize == uint32(0) && _gz_init(tls, state) == -int32(1) {
-		return uint64(0)
+		return uint32(0)
 	}
 	/* check for seek request */
 	if (*Tgz_state)(unsafe.Pointer(state)).Fseek != 0 {
 		(*Tgz_state)(unsafe.Pointer(state)).Fseek = 0
 		if _gz_zero(tls, state, (*Tgz_state)(unsafe.Pointer(state)).Fskip) == -int32(1) {
-			return uint64(0)
+			return uint32(0)
 		}
 	}
 	/* for small len, copy to input buffer, otherwise compress directly */
-	if len1 < uint64((*Tgz_state)(unsafe.Pointer(state)).Fsize) {
+	if len1 < (*Tgz_state)(unsafe.Pointer(state)).Fsize {
 		/* copy to input buffer, compress when full */
 		for cond := true; cond; cond = len1 != 0 {
 			if (*Tgz_state)(unsafe.Pointer(state)).Fstrm.Favail_in == uint32(0) {
 				(*Tgz_state)(unsafe.Pointer(state)).Fstrm.Fnext_in = (*Tgz_state)(unsafe.Pointer(state)).Fin
 			}
-			have = uint32(int64((*Tgz_state)(unsafe.Pointer(state)).Fstrm.Fnext_in+uintptr((*Tgz_state)(unsafe.Pointer(state)).Fstrm.Favail_in)) - int64((*Tgz_state)(unsafe.Pointer(state)).Fin))
+			have = uint32(int32((*Tgz_state)(unsafe.Pointer(state)).Fstrm.Fnext_in+uintptr((*Tgz_state)(unsafe.Pointer(state)).Fstrm.Favail_in)) - int32((*Tgz_state)(unsafe.Pointer(state)).Fin))
 			copy1 = (*Tgz_state)(unsafe.Pointer(state)).Fsize - have
-			if uint64(uint64(copy1)) > len1 {
-				copy1 = uint32(uint32(len1))
+			if copy1 > len1 {
+				copy1 = len1
 			}
-			libc.Xmemcpy(tls, (*Tgz_state)(unsafe.Pointer(state)).Fin+uintptr(have), buf, uint64(uint64(copy1)))
+			libc.Xmemcpy(tls, (*Tgz_state)(unsafe.Pointer(state)).Fin+uintptr(have), buf, copy1)
 			(*Tgz_state)(unsafe.Pointer(state)).Fstrm.Favail_in += copy1
-			p1 = state + 16
+			p1 = state + 8
 			*(*int32)(unsafe.Pointer(p1)) = int32(uint32(*(*int32)(unsafe.Pointer(p1))) + uint32(uint32(copy1)))
 			buf = buf + uintptr(copy1)
-			len1 -= uint64(uint64(copy1))
+			len1 -= copy1
 			if len1 != 0 && _gz_comp(tls, state, m_Z_NO_FLUSH) == -int32(1) {
-				return uint64(0)
+				return uint32(0)
 			}
 		}
 	} else {
 		/* consume whatever's left in the input buffer */
 		if (*Tgz_state)(unsafe.Pointer(state)).Fstrm.Favail_in != 0 && _gz_comp(tls, state, m_Z_NO_FLUSH) == -int32(1) {
-			return uint64(0)
+			return uint32(0)
 		}
 		/* directly compress user buffer to file */
 		(*Tgz_state)(unsafe.Pointer(state)).Fstrm.Fnext_in = buf
 		for cond := true; cond; cond = len1 != 0 {
 			n = uint32(-libc.Int32FromInt32(1))
-			if uint64(uint64(n)) > len1 {
-				n = uint32(uint32(len1))
+			if n > len1 {
+				n = len1
 			}
 			(*Tgz_state)(unsafe.Pointer(state)).Fstrm.Favail_in = n
-			p2 = state + 16
+			p2 = state + 8
 			*(*int32)(unsafe.Pointer(p2)) = int32(uint32(*(*int32)(unsafe.Pointer(p2))) + uint32(uint32(n)))
 			if _gz_comp(tls, state, m_Z_NO_FLUSH) == -int32(1) {
-				return uint64(0)
+				return uint32(0)
 			}
-			len1 -= uint64(uint64(n))
+			len1 -= n
 		}
 	}
 	/* input was all buffered or compressed */
@@ -11098,11 +9370,11 @@ func x_gzwrite(tls *libc.TLS, file TgzFile, buf Tvoidpc, len1 uint32) (r int32) 
 	/* since an int is returned, make sure len fits in one, otherwise return
 	   with an error (this avoids a flaw in the interface) */
 	if int32(int32(len1)) < 0 {
-		x_gz_error(tls, state, -int32(3), __ccgo_ts+449)
+		x_gz_error(tls, state, -int32(3), __ccgo_ts+1135)
 		return 0
 	}
 	/* write len bytes from buf (the return value will fit in an int) */
-	return int32(_gz_write(tls, state, buf, uint64(uint64(len1))))
+	return int32(_gz_write(tls, state, buf, len1))
 }
 
 // C documentation
@@ -11111,28 +9383,28 @@ func x_gzwrite(tls *libc.TLS, file TgzFile, buf Tvoidpc, len1 uint32) (r int32) 
 func x_gzfwrite(tls *libc.TLS, buf Tvoidpc, size Tz_size_t, nitems Tz_size_t, file TgzFile) (r Tz_size_t) {
 	var len1 Tz_size_t
 	var state Tgz_statep
-	var v1 uint64
+	var v1 uint32
 	_, _, _ = len1, state, v1
 	/* get internal structure */
 	if file == libc.UintptrFromInt32(0) {
-		return uint64(0)
+		return uint32(0)
 	}
 	state = file
 	/* check that we're writing and that there's no error */
 	if (*Tgz_state)(unsafe.Pointer(state)).Fmode != int32(m_GZ_WRITE) || (*Tgz_state)(unsafe.Pointer(state)).Ferr != m_Z_OK {
-		return uint64(0)
+		return uint32(0)
 	}
 	/* compute bytes to read -- error on overflow */
 	len1 = nitems * size
 	if size != 0 && len1/size != nitems {
-		x_gz_error(tls, state, -int32(2), __ccgo_ts+346)
-		return uint64(0)
+		x_gz_error(tls, state, -int32(2), __ccgo_ts+1032)
+		return uint32(0)
 	}
 	/* write len bytes to buf, return the number of full items written */
 	if len1 != 0 {
 		v1 = _gz_write(tls, state, buf, len1) / size
 	} else {
-		v1 = uint64(0)
+		v1 = uint32(0)
 	}
 	return v1
 }
@@ -11153,7 +9425,7 @@ func x_gzputc(tls *libc.TLS, file TgzFile, c int32) (r int32) {
 		return -int32(1)
 	}
 	state = file
-	strm = state + 120
+	strm = state + 88
 	/* check that we're writing and that there's no error */
 	if (*Tgz_state)(unsafe.Pointer(state)).Fmode != int32(m_GZ_WRITE) || (*Tgz_state)(unsafe.Pointer(state)).Ferr != m_Z_OK {
 		return -int32(1)
@@ -11171,7 +9443,7 @@ func x_gzputc(tls *libc.TLS, file TgzFile, c int32) (r int32) {
 		if (*Tz_stream)(unsafe.Pointer(strm)).Favail_in == uint32(0) {
 			(*Tz_stream)(unsafe.Pointer(strm)).Fnext_in = (*Tgz_state)(unsafe.Pointer(state)).Fin
 		}
-		have = uint32(int64((*Tz_stream)(unsafe.Pointer(strm)).Fnext_in+uintptr((*Tz_stream)(unsafe.Pointer(strm)).Favail_in)) - int64((*Tgz_state)(unsafe.Pointer(state)).Fin))
+		have = uint32(int32((*Tz_stream)(unsafe.Pointer(strm)).Fnext_in+uintptr((*Tz_stream)(unsafe.Pointer(strm)).Favail_in)) - int32((*Tgz_state)(unsafe.Pointer(state)).Fin))
 		if have < (*Tgz_state)(unsafe.Pointer(state)).Fsize {
 			*(*uint8)(unsafe.Pointer((*Tgz_state)(unsafe.Pointer(state)).Fin + uintptr(have))) = uint8(uint8(c))
 			(*Tz_stream)(unsafe.Pointer(strm)).Favail_in++
@@ -11181,7 +9453,7 @@ func x_gzputc(tls *libc.TLS, file TgzFile, c int32) (r int32) {
 	}
 	/* no room in buffer or not initialized, use gz_write() */
 	(*(*[1]uint8)(unsafe.Pointer(bp)))[0] = uint8(uint8(c))
-	if _gz_write(tls, state, bp, uint64(1)) != uint64(1) {
+	if _gz_write(tls, state, bp, uint32(1)) != uint32(1) {
 		return -int32(1)
 	}
 	return c & int32(0xff)
@@ -11206,8 +9478,8 @@ func x_gzputs(tls *libc.TLS, file TgzFile, s uintptr) (r int32) {
 	}
 	/* write string */
 	len1 = libc.Xstrlen(tls, s)
-	if int32(int32(len1)) < 0 || uint64(uint32(uint32(len1))) != len1 {
-		x_gz_error(tls, state, -int32(2), __ccgo_ts+486)
+	if int32(int32(len1)) < 0 || len1 != len1 {
+		x_gz_error(tls, state, -int32(2), __ccgo_ts+1172)
 		return -int32(1)
 	}
 	put = _gz_write(tls, state, s, len1)
@@ -11298,7 +9570,7 @@ func x_gzvprintf(tls *libc.TLS, file TgzFile, format uintptr, va Tva_list) (r in
 		return -int32(2)
 	}
 	state = file
-	strm = state + 120
+	strm = state + 88
 	/* check that we're writing and that there's no error */
 	if (*Tgz_state)(unsafe.Pointer(state)).Fmode != int32(m_GZ_WRITE) || (*Tgz_state)(unsafe.Pointer(state)).Ferr != m_Z_OK {
 		return -int32(2)
@@ -11320,15 +9592,15 @@ func x_gzvprintf(tls *libc.TLS, file TgzFile, format uintptr, va Tva_list) (r in
 	if (*Tz_stream)(unsafe.Pointer(strm)).Favail_in == uint32(0) {
 		(*Tz_stream)(unsafe.Pointer(strm)).Fnext_in = (*Tgz_state)(unsafe.Pointer(state)).Fin
 	}
-	next = (*Tgz_state)(unsafe.Pointer(state)).Fin + uintptr(int64((*Tz_stream)(unsafe.Pointer(strm)).Fnext_in)-int64((*Tgz_state)(unsafe.Pointer(state)).Fin)) + uintptr((*Tz_stream)(unsafe.Pointer(strm)).Favail_in)
+	next = (*Tgz_state)(unsafe.Pointer(state)).Fin + uintptr(int32((*Tz_stream)(unsafe.Pointer(strm)).Fnext_in)-int32((*Tgz_state)(unsafe.Pointer(state)).Fin)) + uintptr((*Tz_stream)(unsafe.Pointer(strm)).Favail_in)
 	*(*int8)(unsafe.Pointer(next + uintptr((*Tgz_state)(unsafe.Pointer(state)).Fsize-uint32(1)))) = 0
-	len1 = libc.X__builtin_vsnprintf(tls, next, uint64((*Tgz_state)(unsafe.Pointer(state)).Fsize), format, va)
+	len1 = libc.X__builtin_vsnprintf(tls, next, (*Tgz_state)(unsafe.Pointer(state)).Fsize, format, va)
 	/* check that printf() results fit in buffer */
 	if len1 == 0 || uint32(uint32(len1)) >= (*Tgz_state)(unsafe.Pointer(state)).Fsize || int32(*(*int8)(unsafe.Pointer(next + uintptr((*Tgz_state)(unsafe.Pointer(state)).Fsize-uint32(1))))) != 0 {
 		return 0
 	}
 	/* update buffer and position, compress first half if past that */
-	*(*TuInt)(unsafe.Pointer(strm + 8)) += uint32(uint32(len1))
+	*(*TuInt)(unsafe.Pointer(strm + 4)) += uint32(uint32(len1))
 	(*Tgz_state)(unsafe.Pointer(state)).Fx.Fpos += int32(int32(len1))
 	if (*Tz_stream)(unsafe.Pointer(strm)).Favail_in >= (*Tgz_state)(unsafe.Pointer(state)).Fsize {
 		left = (*Tz_stream)(unsafe.Pointer(strm)).Favail_in - (*Tgz_state)(unsafe.Pointer(state)).Fsize
@@ -11336,7 +9608,7 @@ func x_gzvprintf(tls *libc.TLS, file TgzFile, format uintptr, va Tva_list) (r in
 		if _gz_comp(tls, state, m_Z_NO_FLUSH) == -int32(1) {
 			return (*Tgz_state)(unsafe.Pointer(state)).Ferr
 		}
-		libc.Xmemmove(tls, (*Tgz_state)(unsafe.Pointer(state)).Fin, (*Tgz_state)(unsafe.Pointer(state)).Fin+uintptr((*Tgz_state)(unsafe.Pointer(state)).Fsize), uint64(uint64(left)))
+		libc.Xmemmove(tls, (*Tgz_state)(unsafe.Pointer(state)).Fin, (*Tgz_state)(unsafe.Pointer(state)).Fin+uintptr((*Tgz_state)(unsafe.Pointer(state)).Fsize), left)
 		(*Tz_stream)(unsafe.Pointer(strm)).Fnext_in = (*Tgz_state)(unsafe.Pointer(state)).Fin
 		(*Tz_stream)(unsafe.Pointer(strm)).Favail_in = left
 	}
@@ -11396,7 +9668,7 @@ func x_gzsetparams(tls *libc.TLS, file TgzFile, level int32, strategy int32) (r 
 		return -int32(2)
 	}
 	state = file
-	strm = state + 120
+	strm = state + 88
 	/* check that we're writing and that there's no error */
 	if (*Tgz_state)(unsafe.Pointer(state)).Fmode != int32(m_GZ_WRITE) || (*Tgz_state)(unsafe.Pointer(state)).Ferr != m_Z_OK || (*Tgz_state)(unsafe.Pointer(state)).Fdirect != 0 {
 		return -int32(2)
@@ -11455,7 +9727,7 @@ func x_gzclose_w(tls *libc.TLS, file TgzFile) (r int32) {
 	}
 	if (*Tgz_state)(unsafe.Pointer(state)).Fsize != 0 {
 		if !((*Tgz_state)(unsafe.Pointer(state)).Fdirect != 0) {
-			x_deflateEnd(tls, state+120)
+			x_deflateEnd(tls, state+88)
 			libc.Xfree(tls, (*Tgz_state)(unsafe.Pointer(state)).Fout)
 		}
 		libc.Xfree(tls, (*Tgz_state)(unsafe.Pointer(state)).Fin)
@@ -11570,7 +9842,7 @@ type Tinflate_state = struct {
 func x_inflateBackInit_(tls *libc.TLS, strm Tz_streamp, windowBits int32, window uintptr, version uintptr, stream_size int32) (r int32) {
 	var state uintptr
 	_ = state
-	if version == uintptr(m_Z_NULL) || int32(*(*int8)(unsafe.Pointer(version))) != int32(*(*int8)(unsafe.Pointer(__ccgo_ts + 192))) || stream_size != int32(libc.Uint64FromInt64(88)) {
+	if version == uintptr(m_Z_NULL) || int32(*(*int8)(unsafe.Pointer(version))) != int32(*(*int8)(unsafe.Pointer(__ccgo_ts + 339))) || stream_size != int32(libc.Uint32FromInt64(56)) {
 		return -int32(6)
 	}
 	if strm == uintptr(m_Z_NULL) || window == uintptr(m_Z_NULL) || windowBits < int32(8) || windowBits > int32(15) {
@@ -11584,7 +9856,7 @@ func x_inflateBackInit_(tls *libc.TLS, strm Tz_streamp, windowBits int32, window
 	if (*Tz_stream)(unsafe.Pointer(strm)).Fzfree == libc.UintptrFromInt32(0) {
 		(*Tz_stream)(unsafe.Pointer(strm)).Fzfree = __ccgo_fp(x_zcfree)
 	}
-	state = (*(*func(*libc.TLS, Tvoidpf, TuInt, TuInt) Tvoidpf)(unsafe.Pointer(&struct{ uintptr }{(*Tz_stream)(unsafe.Pointer(strm)).Fzalloc})))(tls, (*Tz_stream)(unsafe.Pointer(strm)).Fopaque, uint32(libc.Int32FromInt32(1)), uint32(libc.Uint64FromInt64(7152)))
+	state = (*(*func(*libc.TLS, Tvoidpf, TuInt, TuInt) Tvoidpf)(unsafe.Pointer(&struct{ uintptr }{(*Tz_stream)(unsafe.Pointer(strm)).Fzalloc})))(tls, (*Tz_stream)(unsafe.Pointer(strm)).Fopaque, uint32(libc.Int32FromInt32(1)), libc.Uint32FromInt64(7120))
 	if state == uintptr(m_Z_NULL) {
 		return -int32(4)
 	}
@@ -14074,7 +12346,7 @@ func x_inflateBack(tls *libc.TLS, strm Tz_streamp, in Tin_func, in_desc uintptr,
 		case uint32(2): /* dynamic block */
 			(*Tinflate_state)(unsafe.Pointer(state)).Fmode = int32(_TABLE)
 		case uint32(3):
-			(*Tz_stream)(unsafe.Pointer(strm)).Fmsg = __ccgo_ts + 520
+			(*Tz_stream)(unsafe.Pointer(strm)).Fmsg = __ccgo_ts + 1206
 			(*Tinflate_state)(unsafe.Pointer(state)).Fmode = int32(_BAD)
 		}
 		hold >>= uint32(libc.Int32FromInt32(2))
@@ -14112,7 +12384,7 @@ func x_inflateBack(tls *libc.TLS, strm Tz_streamp, in Tin_func, in_desc uintptr,
 			bits += uint32(8)
 		}
 		if hold&uint32(0xffff) != hold>>int32(16)^uint32(0xffff) {
-			(*Tz_stream)(unsafe.Pointer(strm)).Fmsg = __ccgo_ts + 539
+			(*Tz_stream)(unsafe.Pointer(strm)).Fmsg = __ccgo_ts + 1225
 			(*Tinflate_state)(unsafe.Pointer(state)).Fmode = int32(_BAD)
 			goto _10
 		}
@@ -14145,12 +12417,12 @@ func x_inflateBack(tls *libc.TLS, strm Tz_streamp, in Tin_func, in_desc uintptr,
 			if copy1 > left {
 				copy1 = left
 			}
-			libc.Xmemcpy(tls, put, *(*uintptr)(unsafe.Pointer(bp)), uint64(uint64(copy1)))
+			libc.Xmemcpy(tls, put, *(*uintptr)(unsafe.Pointer(bp)), copy1)
 			have -= copy1
 			*(*uintptr)(unsafe.Pointer(bp)) += uintptr(copy1)
 			left -= copy1
 			put += uintptr(copy1)
-			*(*uint32)(unsafe.Pointer(state + 80)) -= copy1
+			*(*uint32)(unsafe.Pointer(state + 68)) -= copy1
 		}
 		(*Tinflate_state)(unsafe.Pointer(state)).Fmode = int32(_TYPE)
 		goto _10
@@ -14182,7 +12454,7 @@ func x_inflateBack(tls *libc.TLS, strm Tz_streamp, in Tin_func, in_desc uintptr,
 		hold >>= uint32(libc.Int32FromInt32(4))
 		bits -= uint32(libc.Int32FromInt32(4))
 		if (*Tinflate_state)(unsafe.Pointer(state)).Fnlen > uint32(286) || (*Tinflate_state)(unsafe.Pointer(state)).Fndist > uint32(30) {
-			(*Tz_stream)(unsafe.Pointer(strm)).Fmsg = __ccgo_ts + 568
+			(*Tz_stream)(unsafe.Pointer(strm)).Fmsg = __ccgo_ts + 1254
 			(*Tinflate_state)(unsafe.Pointer(state)).Fmode = int32(_BAD)
 			goto _10
 		}
@@ -14204,25 +12476,25 @@ func x_inflateBack(tls *libc.TLS, strm Tz_streamp, in Tin_func, in_desc uintptr,
 				hold += uint32(*(*uint8)(unsafe.Pointer(v17))) << bits
 				bits += uint32(8)
 			}
-			v19 = state + 132
+			v19 = state + 108
 			v18 = *(*uint32)(unsafe.Pointer(v19))
 			*(*uint32)(unsafe.Pointer(v19))++
-			*(*uint16)(unsafe.Pointer(state + 144 + uintptr(_order[v18])*2)) = uint16(uint32(uint32(hold)) & (libc.Uint32FromUint32(1)<<libc.Int32FromInt32(3) - libc.Uint32FromInt32(1)))
+			*(*uint16)(unsafe.Pointer(state + 116 + uintptr(_order[v18])*2)) = uint16(uint32(uint32(hold)) & (libc.Uint32FromUint32(1)<<libc.Int32FromInt32(3) - libc.Uint32FromInt32(1)))
 			hold >>= uint32(libc.Int32FromInt32(3))
 			bits -= uint32(libc.Int32FromInt32(3))
 		}
 		for (*Tinflate_state)(unsafe.Pointer(state)).Fhave < uint32(19) {
-			v21 = state + 132
+			v21 = state + 108
 			v20 = *(*uint32)(unsafe.Pointer(v21))
 			*(*uint32)(unsafe.Pointer(v21))++
-			*(*uint16)(unsafe.Pointer(state + 144 + uintptr(_order[v20])*2)) = uint16(0)
+			*(*uint16)(unsafe.Pointer(state + 116 + uintptr(_order[v20])*2)) = uint16(0)
 		}
-		(*Tinflate_state)(unsafe.Pointer(state)).Fnext = state + 1360
+		(*Tinflate_state)(unsafe.Pointer(state)).Fnext = state + 1332
 		(*Tinflate_state)(unsafe.Pointer(state)).Flencode = (*Tinflate_state)(unsafe.Pointer(state)).Fnext
 		(*Tinflate_state)(unsafe.Pointer(state)).Flenbits = uint32(7)
-		ret = x_inflate_table(tls, _CODES, state+144, uint32(19), state+136, state+112, state+784)
+		ret = x_inflate_table(tls, _CODES, state+116, uint32(19), state+112, state+88, state+756)
 		if ret != 0 {
-			(*Tz_stream)(unsafe.Pointer(strm)).Fmsg = __ccgo_ts + 604
+			(*Tz_stream)(unsafe.Pointer(strm)).Fmsg = __ccgo_ts + 1290
 			(*Tinflate_state)(unsafe.Pointer(state)).Fmode = int32(_BAD)
 			goto _10
 		}
@@ -14253,10 +12525,10 @@ func x_inflateBack(tls *libc.TLS, strm Tz_streamp, in Tin_func, in_desc uintptr,
 			if int32(here.Fval) < int32(16) {
 				hold >>= uint32(here.Fbits)
 				bits -= uint32(here.Fbits)
-				v25 = state + 132
+				v25 = state + 108
 				v24 = *(*uint32)(unsafe.Pointer(v25))
 				*(*uint32)(unsafe.Pointer(v25))++
-				*(*uint16)(unsafe.Pointer(state + 144 + uintptr(v24)*2)) = here.Fval
+				*(*uint16)(unsafe.Pointer(state + 116 + uintptr(v24)*2)) = here.Fval
 			} else {
 				if int32(here.Fval) == int32(16) {
 					for bits < uint32(int32(here.Fbits)+libc.Int32FromInt32(2)) {
@@ -14277,11 +12549,11 @@ func x_inflateBack(tls *libc.TLS, strm Tz_streamp, in Tin_func, in_desc uintptr,
 					hold >>= uint32(here.Fbits)
 					bits -= uint32(here.Fbits)
 					if (*Tinflate_state)(unsafe.Pointer(state)).Fhave == uint32(0) {
-						(*Tz_stream)(unsafe.Pointer(strm)).Fmsg = __ccgo_ts + 629
+						(*Tz_stream)(unsafe.Pointer(strm)).Fmsg = __ccgo_ts + 1315
 						(*Tinflate_state)(unsafe.Pointer(state)).Fmode = int32(_BAD)
 						break
 					}
-					len1 = uint32(*(*uint16)(unsafe.Pointer(state + 144 + uintptr((*Tinflate_state)(unsafe.Pointer(state)).Fhave-uint32(1))*2)))
+					len1 = uint32(*(*uint16)(unsafe.Pointer(state + 116 + uintptr((*Tinflate_state)(unsafe.Pointer(state)).Fhave-uint32(1))*2)))
 					copy1 = uint32(3) + uint32(uint32(hold))&(libc.Uint32FromUint32(1)<<libc.Int32FromInt32(2)-libc.Uint32FromInt32(1))
 					hold >>= uint32(libc.Int32FromInt32(2))
 					bits -= uint32(libc.Int32FromInt32(2))
@@ -14333,7 +12605,7 @@ func x_inflateBack(tls *libc.TLS, strm Tz_streamp, in Tin_func, in_desc uintptr,
 					}
 				}
 				if (*Tinflate_state)(unsafe.Pointer(state)).Fhave+copy1 > (*Tinflate_state)(unsafe.Pointer(state)).Fnlen+(*Tinflate_state)(unsafe.Pointer(state)).Fndist {
-					(*Tz_stream)(unsafe.Pointer(strm)).Fmsg = __ccgo_ts + 629
+					(*Tz_stream)(unsafe.Pointer(strm)).Fmsg = __ccgo_ts + 1315
 					(*Tinflate_state)(unsafe.Pointer(state)).Fmode = int32(_BAD)
 					break
 				}
@@ -14343,10 +12615,10 @@ func x_inflateBack(tls *libc.TLS, strm Tz_streamp, in Tin_func, in_desc uintptr,
 					if !(v29 != 0) {
 						break
 					}
-					v31 = state + 132
+					v31 = state + 108
 					v30 = *(*uint32)(unsafe.Pointer(v31))
 					*(*uint32)(unsafe.Pointer(v31))++
-					*(*uint16)(unsafe.Pointer(state + 144 + uintptr(v30)*2)) = uint16(uint16(len1))
+					*(*uint16)(unsafe.Pointer(state + 116 + uintptr(v30)*2)) = uint16(uint16(len1))
 				}
 			}
 		}
@@ -14355,28 +12627,28 @@ func x_inflateBack(tls *libc.TLS, strm Tz_streamp, in Tin_func, in_desc uintptr,
 			goto _10
 		}
 		/* check for end-of-block code (better have one) */
-		if int32(*(*uint16)(unsafe.Pointer(state + 144 + 256*2))) == 0 {
-			(*Tz_stream)(unsafe.Pointer(strm)).Fmsg = __ccgo_ts + 655
+		if int32(*(*uint16)(unsafe.Pointer(state + 116 + 256*2))) == 0 {
+			(*Tz_stream)(unsafe.Pointer(strm)).Fmsg = __ccgo_ts + 1341
 			(*Tinflate_state)(unsafe.Pointer(state)).Fmode = int32(_BAD)
 			goto _10
 		}
 		/* build code tables -- note: do not change the lenbits or distbits
 		   values here (9 and 6) without reading the comments in inftrees.h
 		   concerning the ENOUGH constants, which depend on those values */
-		(*Tinflate_state)(unsafe.Pointer(state)).Fnext = state + 1360
+		(*Tinflate_state)(unsafe.Pointer(state)).Fnext = state + 1332
 		(*Tinflate_state)(unsafe.Pointer(state)).Flencode = (*Tinflate_state)(unsafe.Pointer(state)).Fnext
 		(*Tinflate_state)(unsafe.Pointer(state)).Flenbits = uint32(9)
-		ret = x_inflate_table(tls, _LENS, state+144, (*Tinflate_state)(unsafe.Pointer(state)).Fnlen, state+136, state+112, state+784)
+		ret = x_inflate_table(tls, _LENS, state+116, (*Tinflate_state)(unsafe.Pointer(state)).Fnlen, state+112, state+88, state+756)
 		if ret != 0 {
-			(*Tz_stream)(unsafe.Pointer(strm)).Fmsg = __ccgo_ts + 692
+			(*Tz_stream)(unsafe.Pointer(strm)).Fmsg = __ccgo_ts + 1378
 			(*Tinflate_state)(unsafe.Pointer(state)).Fmode = int32(_BAD)
 			goto _10
 		}
 		(*Tinflate_state)(unsafe.Pointer(state)).Fdistcode = (*Tinflate_state)(unsafe.Pointer(state)).Fnext
 		(*Tinflate_state)(unsafe.Pointer(state)).Fdistbits = uint32(6)
-		ret = x_inflate_table(tls, _DISTS, state+144+uintptr((*Tinflate_state)(unsafe.Pointer(state)).Fnlen)*2, (*Tinflate_state)(unsafe.Pointer(state)).Fndist, state+136, state+116, state+784)
+		ret = x_inflate_table(tls, _DISTS, state+116+uintptr((*Tinflate_state)(unsafe.Pointer(state)).Fnlen)*2, (*Tinflate_state)(unsafe.Pointer(state)).Fndist, state+112, state+92, state+756)
 		if ret != 0 {
-			(*Tz_stream)(unsafe.Pointer(strm)).Fmsg = __ccgo_ts + 720
+			(*Tz_stream)(unsafe.Pointer(strm)).Fmsg = __ccgo_ts + 1406
 			(*Tinflate_state)(unsafe.Pointer(state)).Fmode = int32(_BAD)
 			goto _10
 		}
@@ -14480,7 +12752,7 @@ func x_inflateBack(tls *libc.TLS, strm Tz_streamp, in Tin_func, in_desc uintptr,
 		}
 		/* invalid code */
 		if int32(here.Fop)&int32(64) != 0 {
-			(*Tz_stream)(unsafe.Pointer(strm)).Fmsg = __ccgo_ts + 742
+			(*Tz_stream)(unsafe.Pointer(strm)).Fmsg = __ccgo_ts + 1428
 			(*Tinflate_state)(unsafe.Pointer(state)).Fmode = int32(_BAD)
 			goto _10
 		}
@@ -14502,7 +12774,7 @@ func x_inflateBack(tls *libc.TLS, strm Tz_streamp, in Tin_func, in_desc uintptr,
 				hold += uint32(*(*uint8)(unsafe.Pointer(v37))) << bits
 				bits += uint32(8)
 			}
-			*(*uint32)(unsafe.Pointer(state + 80)) += uint32(uint32(hold)) & (uint32(1)<<(*Tinflate_state)(unsafe.Pointer(state)).Fextra - uint32(1))
+			*(*uint32)(unsafe.Pointer(state + 68)) += uint32(uint32(hold)) & (uint32(1)<<(*Tinflate_state)(unsafe.Pointer(state)).Fextra - uint32(1))
 			hold >>= uint32((*Tinflate_state)(unsafe.Pointer(state)).Fextra)
 			bits -= (*Tinflate_state)(unsafe.Pointer(state)).Fextra
 		}
@@ -14557,7 +12829,7 @@ func x_inflateBack(tls *libc.TLS, strm Tz_streamp, in Tin_func, in_desc uintptr,
 		hold >>= uint32(here.Fbits)
 		bits -= uint32(here.Fbits)
 		if int32(here.Fop)&int32(64) != 0 {
-			(*Tz_stream)(unsafe.Pointer(strm)).Fmsg = __ccgo_ts + 770
+			(*Tz_stream)(unsafe.Pointer(strm)).Fmsg = __ccgo_ts + 1456
 			(*Tinflate_state)(unsafe.Pointer(state)).Fmode = int32(_BAD)
 			goto _10
 		}
@@ -14580,7 +12852,7 @@ func x_inflateBack(tls *libc.TLS, strm Tz_streamp, in Tin_func, in_desc uintptr,
 				hold += uint32(*(*uint8)(unsafe.Pointer(v42))) << bits
 				bits += uint32(8)
 			}
-			*(*uint32)(unsafe.Pointer(state + 84)) += uint32(uint32(hold)) & (uint32(1)<<(*Tinflate_state)(unsafe.Pointer(state)).Fextra - uint32(1))
+			*(*uint32)(unsafe.Pointer(state + 72)) += uint32(uint32(hold)) & (uint32(1)<<(*Tinflate_state)(unsafe.Pointer(state)).Fextra - uint32(1))
 			hold >>= uint32((*Tinflate_state)(unsafe.Pointer(state)).Fextra)
 			bits -= (*Tinflate_state)(unsafe.Pointer(state)).Fextra
 		}
@@ -14590,7 +12862,7 @@ func x_inflateBack(tls *libc.TLS, strm Tz_streamp, in Tin_func, in_desc uintptr,
 			v43 = uint32(0)
 		}
 		if (*Tinflate_state)(unsafe.Pointer(state)).Foffset > (*Tinflate_state)(unsafe.Pointer(state)).Fwsize-v43 {
-			(*Tz_stream)(unsafe.Pointer(strm)).Fmsg = __ccgo_ts + 792
+			(*Tz_stream)(unsafe.Pointer(strm)).Fmsg = __ccgo_ts + 1478
 			(*Tinflate_state)(unsafe.Pointer(state)).Fmode = int32(_BAD)
 			goto _10
 		}
@@ -14616,7 +12888,7 @@ func x_inflateBack(tls *libc.TLS, strm Tz_streamp, in Tin_func, in_desc uintptr,
 			if copy1 > (*Tinflate_state)(unsafe.Pointer(state)).Flength {
 				copy1 = (*Tinflate_state)(unsafe.Pointer(state)).Flength
 			}
-			*(*uint32)(unsafe.Pointer(state + 80)) -= copy1
+			*(*uint32)(unsafe.Pointer(state + 68)) -= copy1
 			left -= copy1
 			for {
 				v46 = put
@@ -14738,7 +13010,7 @@ func x_inflateBackEnd(tls *libc.TLS, strm Tz_streamp) (r int32) {
 func x_inflate_fast(tls *libc.TLS, strm Tz_streamp, start uint32) {
 	var beg, dcode, end, from, here, in, last, lcode, out, state, window, v1, v11, v12, v15, v16, v19, v2, v20, v23, v24, v25, v26, v27, v28, v29, v3, v30, v31, v32, v33, v34, v35, v36, v37, v38, v39, v4, v40, v41, v42, v43, v44, v5, v6, v7, v8 uintptr
 	var bits, dist, dmask, hold, len1, lmask, op, whave, wnext, wsize, v13, v17, v21, v9 uint32
-	var v45, v46 int64
+	var v45, v46 int32
 	_, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _ = beg, bits, dcode, dist, dmask, end, from, here, hold, in, last, lcode, len1, lmask, op, out, state, whave, window, wnext, wsize, v1, v11, v12, v13, v15, v16, v17, v19, v2, v20, v21, v23, v24, v25, v26, v27, v28, v29, v3, v30, v31, v32, v33, v34, v35, v36, v37, v38, v39, v4, v40, v41, v42, v43, v44, v45, v46, v5, v6, v7, v8, v9 /* where to copy match from */
 	/* copy state to local variables */
 	state = (*Tz_stream)(unsafe.Pointer(strm)).Fstate
@@ -14833,12 +13105,12 @@ func x_inflate_fast(tls *libc.TLS, strm Tz_streamp, start uint32) {
 					dist += uint32(uint32(hold)) & (uint32(1)<<op - uint32(1))
 					hold >>= uint32(uint32(op))
 					bits -= op
-					op = uint32(int64(int64(out)) - int64(int64(beg))) /* max distance in output */
+					op = uint32(int32(int32(out)) - int32(int32(beg))) /* max distance in output */
 					if dist > op {                                     /* see if copy from window */
 						op = dist - op /* distance back in window */
 						if op > whave {
 							if (*Tinflate_state)(unsafe.Pointer(state)).Fsane != 0 {
-								(*Tz_stream)(unsafe.Pointer(strm)).Fmsg = __ccgo_ts + 792
+								(*Tz_stream)(unsafe.Pointer(strm)).Fmsg = __ccgo_ts + 1478
 								(*Tinflate_state)(unsafe.Pointer(state)).Fmode = int32(_BAD)
 								break
 							}
@@ -15003,7 +13275,7 @@ func x_inflate_fast(tls *libc.TLS, strm Tz_streamp, start uint32) {
 						here = dcode + uintptr((*Tcode)(unsafe.Pointer(here)).Fval)*4 + uintptr(hold&uint32(libc.Uint32FromUint32(1)<<op-libc.Uint32FromInt32(1)))*4
 						goto dodist
 					} else {
-						(*Tz_stream)(unsafe.Pointer(strm)).Fmsg = __ccgo_ts + 770
+						(*Tz_stream)(unsafe.Pointer(strm)).Fmsg = __ccgo_ts + 1456
 						(*Tinflate_state)(unsafe.Pointer(state)).Fmode = int32(_BAD)
 						break
 					}
@@ -15017,7 +13289,7 @@ func x_inflate_fast(tls *libc.TLS, strm Tz_streamp, start uint32) {
 						(*Tinflate_state)(unsafe.Pointer(state)).Fmode = int32(_TYPE)
 						break
 					} else {
-						(*Tz_stream)(unsafe.Pointer(strm)).Fmsg = __ccgo_ts + 742
+						(*Tz_stream)(unsafe.Pointer(strm)).Fmsg = __ccgo_ts + 1428
 						(*Tinflate_state)(unsafe.Pointer(state)).Fmode = int32(_BAD)
 						break
 					}
@@ -15034,15 +13306,15 @@ func x_inflate_fast(tls *libc.TLS, strm Tz_streamp, start uint32) {
 	(*Tz_stream)(unsafe.Pointer(strm)).Fnext_in = in
 	(*Tz_stream)(unsafe.Pointer(strm)).Fnext_out = out
 	if in < last {
-		v45 = int64(5) + (int64(int64(last)) - int64(int64(in)))
+		v45 = int32(5) + (int32(int32(last)) - int32(int32(in)))
 	} else {
-		v45 = int64(5) - (int64(int64(in)) - int64(int64(last)))
+		v45 = int32(5) - (int32(int32(in)) - int32(int32(last)))
 	}
 	(*Tz_stream)(unsafe.Pointer(strm)).Favail_in = uint32(v45)
 	if out < end {
-		v46 = int64(257) + (int64(int64(end)) - int64(int64(out)))
+		v46 = int32(257) + (int32(int32(end)) - int32(int32(out)))
 	} else {
-		v46 = int64(257) - (int64(int64(out)) - int64(int64(end)))
+		v46 = int32(257) - (int32(int32(out)) - int32(int32(end)))
 	}
 	(*Tz_stream)(unsafe.Pointer(strm)).Favail_out = uint32(v46)
 	(*Tinflate_state)(unsafe.Pointer(state)).Fhold = hold
@@ -15089,7 +13361,7 @@ func x_inflateResetKeep(tls *libc.TLS, strm Tz_streamp) (r int32) {
 	(*Tinflate_state)(unsafe.Pointer(state)).Fhead = uintptr(m_Z_NULL)
 	(*Tinflate_state)(unsafe.Pointer(state)).Fhold = uint32(0)
 	(*Tinflate_state)(unsafe.Pointer(state)).Fbits = uint32(0)
-	v4 = state + 1360
+	v4 = state + 1332
 	(*Tinflate_state)(unsafe.Pointer(state)).Fnext = v4
 	v3 = v4
 	(*Tinflate_state)(unsafe.Pointer(state)).Fdistcode = v3
@@ -15152,7 +13424,7 @@ func x_inflateInit2_(tls *libc.TLS, strm Tz_streamp, windowBits int32, version u
 	var ret int32
 	var state uintptr
 	_, _ = ret, state
-	if version == uintptr(m_Z_NULL) || int32(*(*int8)(unsafe.Pointer(version))) != int32(*(*int8)(unsafe.Pointer(__ccgo_ts + 192))) || stream_size != int32(libc.Uint64FromInt64(88)) {
+	if version == uintptr(m_Z_NULL) || int32(*(*int8)(unsafe.Pointer(version))) != int32(*(*int8)(unsafe.Pointer(__ccgo_ts + 339))) || stream_size != int32(libc.Uint32FromInt64(56)) {
 		return -int32(6)
 	}
 	if strm == uintptr(m_Z_NULL) {
@@ -15166,7 +13438,7 @@ func x_inflateInit2_(tls *libc.TLS, strm Tz_streamp, windowBits int32, version u
 	if (*Tz_stream)(unsafe.Pointer(strm)).Fzfree == libc.UintptrFromInt32(0) {
 		(*Tz_stream)(unsafe.Pointer(strm)).Fzfree = __ccgo_fp(x_zcfree)
 	}
-	state = (*(*func(*libc.TLS, Tvoidpf, TuInt, TuInt) Tvoidpf)(unsafe.Pointer(&struct{ uintptr }{(*Tz_stream)(unsafe.Pointer(strm)).Fzalloc})))(tls, (*Tz_stream)(unsafe.Pointer(strm)).Fopaque, uint32(libc.Int32FromInt32(1)), uint32(libc.Uint64FromInt64(7152)))
+	state = (*(*func(*libc.TLS, Tvoidpf, TuInt, TuInt) Tvoidpf)(unsafe.Pointer(&struct{ uintptr }{(*Tz_stream)(unsafe.Pointer(strm)).Fzalloc})))(tls, (*Tz_stream)(unsafe.Pointer(strm)).Fopaque, uint32(libc.Int32FromInt32(1)), libc.Uint32FromInt64(7120))
 	if state == uintptr(m_Z_NULL) {
 		return -int32(4)
 	}
@@ -15205,8 +13477,8 @@ func x_inflatePrime(tls *libc.TLS, strm Tz_streamp, bits int32, value int32) (r 
 		return -int32(2)
 	}
 	value = int32(int32(value) & (libc.Int32FromInt32(1)<<bits - libc.Int32FromInt32(1)))
-	*(*uint32)(unsafe.Pointer(state + 72)) += uint32(uint32(uint32(value)) << (*Tinflate_state)(unsafe.Pointer(state)).Fbits)
-	*(*uint32)(unsafe.Pointer(state + 76)) += uint32(uint32(bits))
+	*(*uint32)(unsafe.Pointer(state + 60)) += uint32(uint32(uint32(value)) << (*Tinflate_state)(unsafe.Pointer(state)).Fbits)
+	*(*uint32)(unsafe.Pointer(state + 64)) += uint32(uint32(bits))
 	return m_Z_OK
 }
 
@@ -17566,7 +15838,7 @@ func _updatewindow(tls *libc.TLS, strm Tz_streamp, end uintptr, copy1 uint32) (r
 	state = (*Tz_stream)(unsafe.Pointer(strm)).Fstate
 	/* if it hasn't been done already, allocate space for the window */
 	if (*Tinflate_state)(unsafe.Pointer(state)).Fwindow == uintptr(m_Z_NULL) {
-		(*Tinflate_state)(unsafe.Pointer(state)).Fwindow = (*(*func(*libc.TLS, Tvoidpf, TuInt, TuInt) Tvoidpf)(unsafe.Pointer(&struct{ uintptr }{(*Tz_stream)(unsafe.Pointer(strm)).Fzalloc})))(tls, (*Tz_stream)(unsafe.Pointer(strm)).Fopaque, libc.Uint32FromUint32(1)<<(*Tinflate_state)(unsafe.Pointer(state)).Fwbits, uint32(libc.Uint64FromInt64(1)))
+		(*Tinflate_state)(unsafe.Pointer(state)).Fwindow = (*(*func(*libc.TLS, Tvoidpf, TuInt, TuInt) Tvoidpf)(unsafe.Pointer(&struct{ uintptr }{(*Tz_stream)(unsafe.Pointer(strm)).Fzalloc})))(tls, (*Tz_stream)(unsafe.Pointer(strm)).Fopaque, libc.Uint32FromUint32(1)<<(*Tinflate_state)(unsafe.Pointer(state)).Fwbits, libc.Uint32FromInt64(1))
 		if (*Tinflate_state)(unsafe.Pointer(state)).Fwindow == uintptr(m_Z_NULL) {
 			return int32(1)
 		}
@@ -17579,7 +15851,7 @@ func _updatewindow(tls *libc.TLS, strm Tz_streamp, end uintptr, copy1 uint32) (r
 	}
 	/* copy state->wsize or less output bytes into the circular window */
 	if copy1 >= (*Tinflate_state)(unsafe.Pointer(state)).Fwsize {
-		libc.Xmemcpy(tls, (*Tinflate_state)(unsafe.Pointer(state)).Fwindow, end-uintptr((*Tinflate_state)(unsafe.Pointer(state)).Fwsize), uint64((*Tinflate_state)(unsafe.Pointer(state)).Fwsize))
+		libc.Xmemcpy(tls, (*Tinflate_state)(unsafe.Pointer(state)).Fwindow, end-uintptr((*Tinflate_state)(unsafe.Pointer(state)).Fwsize), (*Tinflate_state)(unsafe.Pointer(state)).Fwsize)
 		(*Tinflate_state)(unsafe.Pointer(state)).Fwnext = uint32(0)
 		(*Tinflate_state)(unsafe.Pointer(state)).Fwhave = (*Tinflate_state)(unsafe.Pointer(state)).Fwsize
 	} else {
@@ -17587,19 +15859,19 @@ func _updatewindow(tls *libc.TLS, strm Tz_streamp, end uintptr, copy1 uint32) (r
 		if dist > copy1 {
 			dist = copy1
 		}
-		libc.Xmemcpy(tls, (*Tinflate_state)(unsafe.Pointer(state)).Fwindow+uintptr((*Tinflate_state)(unsafe.Pointer(state)).Fwnext), end-uintptr(copy1), uint64(uint64(dist)))
+		libc.Xmemcpy(tls, (*Tinflate_state)(unsafe.Pointer(state)).Fwindow+uintptr((*Tinflate_state)(unsafe.Pointer(state)).Fwnext), end-uintptr(copy1), dist)
 		copy1 -= dist
 		if copy1 != 0 {
-			libc.Xmemcpy(tls, (*Tinflate_state)(unsafe.Pointer(state)).Fwindow, end-uintptr(copy1), uint64(uint64(copy1)))
+			libc.Xmemcpy(tls, (*Tinflate_state)(unsafe.Pointer(state)).Fwindow, end-uintptr(copy1), copy1)
 			(*Tinflate_state)(unsafe.Pointer(state)).Fwnext = copy1
 			(*Tinflate_state)(unsafe.Pointer(state)).Fwhave = (*Tinflate_state)(unsafe.Pointer(state)).Fwsize
 		} else {
-			*(*uint32)(unsafe.Pointer(state + 60)) += dist
+			*(*uint32)(unsafe.Pointer(state + 52)) += dist
 			if (*Tinflate_state)(unsafe.Pointer(state)).Fwnext == (*Tinflate_state)(unsafe.Pointer(state)).Fwsize {
 				(*Tinflate_state)(unsafe.Pointer(state)).Fwnext = uint32(0)
 			}
 			if (*Tinflate_state)(unsafe.Pointer(state)).Fwhave < (*Tinflate_state)(unsafe.Pointer(state)).Fwsize {
-				*(*uint32)(unsafe.Pointer(state + 56)) += dist
+				*(*uint32)(unsafe.Pointer(state + 48)) += dist
 			}
 		}
 	}
@@ -17841,12 +16113,12 @@ func x_inflate(tls *libc.TLS, strm Tz_streamp, flush int32) (r int32) {
 			(*Tgz_header)(unsafe.Pointer((*Tinflate_state)(unsafe.Pointer(state)).Fhead)).Fdone = -int32(1)
 		}
 		if !((*Tinflate_state)(unsafe.Pointer(state)).Fwrap&libc.Int32FromInt32(1) != 0) || (uint32(uint32(uint32(hold))&(libc.Uint32FromUint32(1)<<libc.Int32FromInt32(8)-libc.Uint32FromInt32(1))<<libc.Int32FromInt32(8))+hold>>int32(8))%uint32(31) != 0 {
-			(*Tz_stream)(unsafe.Pointer(strm)).Fmsg = __ccgo_ts + 822
+			(*Tz_stream)(unsafe.Pointer(strm)).Fmsg = __ccgo_ts + 1508
 			(*Tinflate_state)(unsafe.Pointer(state)).Fmode = int32(_BAD)
 			goto _35
 		}
 		if uint32(uint32(hold))&(libc.Uint32FromUint32(1)<<libc.Int32FromInt32(4)-libc.Uint32FromInt32(1)) != uint32(m_Z_DEFLATED) {
-			(*Tz_stream)(unsafe.Pointer(strm)).Fmsg = __ccgo_ts + 845
+			(*Tz_stream)(unsafe.Pointer(strm)).Fmsg = __ccgo_ts + 1531
 			(*Tinflate_state)(unsafe.Pointer(state)).Fmode = int32(_BAD)
 			goto _35
 		}
@@ -17857,7 +16129,7 @@ func x_inflate(tls *libc.TLS, strm Tz_streamp, flush int32) (r int32) {
 			(*Tinflate_state)(unsafe.Pointer(state)).Fwbits = len1
 		}
 		if len1 > uint32(15) || len1 > (*Tinflate_state)(unsafe.Pointer(state)).Fwbits {
-			(*Tz_stream)(unsafe.Pointer(strm)).Fmsg = __ccgo_ts + 872
+			(*Tz_stream)(unsafe.Pointer(strm)).Fmsg = __ccgo_ts + 1558
 			(*Tinflate_state)(unsafe.Pointer(state)).Fmode = int32(_BAD)
 			goto _35
 		}
@@ -17900,12 +16172,12 @@ func x_inflate(tls *libc.TLS, strm Tz_streamp, flush int32) (r int32) {
 		;
 		(*Tinflate_state)(unsafe.Pointer(state)).Fflags = int32(hold)
 		if (*Tinflate_state)(unsafe.Pointer(state)).Fflags&int32(0xff) != int32(m_Z_DEFLATED) {
-			(*Tz_stream)(unsafe.Pointer(strm)).Fmsg = __ccgo_ts + 845
+			(*Tz_stream)(unsafe.Pointer(strm)).Fmsg = __ccgo_ts + 1531
 			(*Tinflate_state)(unsafe.Pointer(state)).Fmode = int32(_BAD)
 			goto _35
 		}
 		if (*Tinflate_state)(unsafe.Pointer(state)).Fflags&int32(0xe000) != 0 {
-			(*Tz_stream)(unsafe.Pointer(strm)).Fmsg = __ccgo_ts + 892
+			(*Tz_stream)(unsafe.Pointer(strm)).Fmsg = __ccgo_ts + 1578
 			(*Tinflate_state)(unsafe.Pointer(state)).Fmode = int32(_BAD)
 			goto _35
 		}
@@ -18021,14 +16293,14 @@ func x_inflate(tls *libc.TLS, strm Tz_streamp, flush int32) (r int32) {
 					} else {
 						v48 = copy1
 					}
-					libc.Xmemcpy(tls, (*Tgz_header)(unsafe.Pointer((*Tinflate_state)(unsafe.Pointer(state)).Fhead)).Fextra+uintptr(len1), next, uint64(v48))
+					libc.Xmemcpy(tls, (*Tgz_header)(unsafe.Pointer((*Tinflate_state)(unsafe.Pointer(state)).Fhead)).Fextra+uintptr(len1), next, v48)
 				}
 				if (*Tinflate_state)(unsafe.Pointer(state)).Fflags&int32(0x0200) != 0 && (*Tinflate_state)(unsafe.Pointer(state)).Fwrap&int32(4) != 0 {
 					(*Tinflate_state)(unsafe.Pointer(state)).Fcheck = x_crc32(tls, (*Tinflate_state)(unsafe.Pointer(state)).Fcheck, next, copy1)
 				}
 				have -= copy1
 				next += uintptr(copy1)
-				*(*uint32)(unsafe.Pointer(state + 80)) -= copy1
+				*(*uint32)(unsafe.Pointer(state + 68)) -= copy1
 			}
 			if (*Tinflate_state)(unsafe.Pointer(state)).Flength != 0 {
 				goto inf_leave
@@ -18049,7 +16321,7 @@ func x_inflate(tls *libc.TLS, strm Tz_streamp, flush int32) (r int32) {
 				copy1++
 				len1 = uint32(*(*uint8)(unsafe.Pointer(next + uintptr(v49))))
 				if (*Tinflate_state)(unsafe.Pointer(state)).Fhead != uintptr(m_Z_NULL) && (*Tgz_header)(unsafe.Pointer((*Tinflate_state)(unsafe.Pointer(state)).Fhead)).Fname != uintptr(m_Z_NULL) && (*Tinflate_state)(unsafe.Pointer(state)).Flength < (*Tgz_header)(unsafe.Pointer((*Tinflate_state)(unsafe.Pointer(state)).Fhead)).Fname_max {
-					v51 = state + 80
+					v51 = state + 68
 					v50 = *(*uint32)(unsafe.Pointer(v51))
 					*(*uint32)(unsafe.Pointer(v51))++
 					*(*TBytef)(unsafe.Pointer((*Tgz_header)(unsafe.Pointer((*Tinflate_state)(unsafe.Pointer(state)).Fhead)).Fname + uintptr(v50))) = uint8(uint8(len1))
@@ -18083,7 +16355,7 @@ func x_inflate(tls *libc.TLS, strm Tz_streamp, flush int32) (r int32) {
 				copy1++
 				len1 = uint32(*(*uint8)(unsafe.Pointer(next + uintptr(v52))))
 				if (*Tinflate_state)(unsafe.Pointer(state)).Fhead != uintptr(m_Z_NULL) && (*Tgz_header)(unsafe.Pointer((*Tinflate_state)(unsafe.Pointer(state)).Fhead)).Fcomment != uintptr(m_Z_NULL) && (*Tinflate_state)(unsafe.Pointer(state)).Flength < (*Tgz_header)(unsafe.Pointer((*Tinflate_state)(unsafe.Pointer(state)).Fhead)).Fcomm_max {
-					v54 = state + 80
+					v54 = state + 68
 					v53 = *(*uint32)(unsafe.Pointer(v54))
 					*(*uint32)(unsafe.Pointer(v54))++
 					*(*TBytef)(unsafe.Pointer((*Tgz_header)(unsafe.Pointer((*Tinflate_state)(unsafe.Pointer(state)).Fhead)).Fcomment + uintptr(v53))) = uint8(uint8(len1))
@@ -18118,7 +16390,7 @@ func x_inflate(tls *libc.TLS, strm Tz_streamp, flush int32) (r int32) {
 				bits += uint32(8)
 			}
 			if (*Tinflate_state)(unsafe.Pointer(state)).Fwrap&int32(4) != 0 && hold != (*Tinflate_state)(unsafe.Pointer(state)).Fcheck&uint32(0xffff) {
-				(*Tz_stream)(unsafe.Pointer(strm)).Fmsg = __ccgo_ts + 917
+				(*Tz_stream)(unsafe.Pointer(strm)).Fmsg = __ccgo_ts + 1603
 				(*Tinflate_state)(unsafe.Pointer(state)).Fmode = int32(_BAD)
 				goto _35
 			}
@@ -18210,7 +16482,7 @@ func x_inflate(tls *libc.TLS, strm Tz_streamp, flush int32) (r int32) {
 		case uint32(2): /* dynamic block */
 			(*Tinflate_state)(unsafe.Pointer(state)).Fmode = int32(_TABLE)
 		case uint32(3):
-			(*Tz_stream)(unsafe.Pointer(strm)).Fmsg = __ccgo_ts + 520
+			(*Tz_stream)(unsafe.Pointer(strm)).Fmsg = __ccgo_ts + 1206
 			(*Tinflate_state)(unsafe.Pointer(state)).Fmode = int32(_BAD)
 		}
 		hold >>= uint32(libc.Int32FromInt32(2))
@@ -18231,7 +16503,7 @@ func x_inflate(tls *libc.TLS, strm Tz_streamp, flush int32) (r int32) {
 			bits += uint32(8)
 		}
 		if hold&uint32(0xffff) != hold>>int32(16)^uint32(0xffff) {
-			(*Tz_stream)(unsafe.Pointer(strm)).Fmsg = __ccgo_ts + 539
+			(*Tz_stream)(unsafe.Pointer(strm)).Fmsg = __ccgo_ts + 1225
 			(*Tinflate_state)(unsafe.Pointer(state)).Fmode = int32(_BAD)
 			goto _35
 		}
@@ -18260,12 +16532,12 @@ func x_inflate(tls *libc.TLS, strm Tz_streamp, flush int32) (r int32) {
 			if copy1 == uint32(0) {
 				goto inf_leave
 			}
-			libc.Xmemcpy(tls, put, next, uint64(uint64(copy1)))
+			libc.Xmemcpy(tls, put, next, copy1)
 			have -= copy1
 			next += uintptr(copy1)
 			left -= copy1
 			put += uintptr(copy1)
-			*(*uint32)(unsafe.Pointer(state + 80)) -= copy1
+			*(*uint32)(unsafe.Pointer(state + 68)) -= copy1
 			goto _35
 		}
 		(*Tinflate_state)(unsafe.Pointer(state)).Fmode = int32(_TYPE)
@@ -18292,7 +16564,7 @@ func x_inflate(tls *libc.TLS, strm Tz_streamp, flush int32) (r int32) {
 		hold >>= uint32(libc.Int32FromInt32(4))
 		bits -= uint32(libc.Int32FromInt32(4))
 		if (*Tinflate_state)(unsafe.Pointer(state)).Fnlen > uint32(286) || (*Tinflate_state)(unsafe.Pointer(state)).Fndist > uint32(30) {
-			(*Tz_stream)(unsafe.Pointer(strm)).Fmsg = __ccgo_ts + 568
+			(*Tz_stream)(unsafe.Pointer(strm)).Fmsg = __ccgo_ts + 1254
 			(*Tinflate_state)(unsafe.Pointer(state)).Fmode = int32(_BAD)
 			goto _35
 		}
@@ -18312,25 +16584,25 @@ func x_inflate(tls *libc.TLS, strm Tz_streamp, flush int32) (r int32) {
 				hold += uint32(*(*uint8)(unsafe.Pointer(v63))) << bits
 				bits += uint32(8)
 			}
-			v65 = state + 132
+			v65 = state + 108
 			v64 = *(*uint32)(unsafe.Pointer(v65))
 			*(*uint32)(unsafe.Pointer(v65))++
-			*(*uint16)(unsafe.Pointer(state + 144 + uintptr(_order1[v64])*2)) = uint16(uint32(uint32(hold)) & (libc.Uint32FromUint32(1)<<libc.Int32FromInt32(3) - libc.Uint32FromInt32(1)))
+			*(*uint16)(unsafe.Pointer(state + 116 + uintptr(_order1[v64])*2)) = uint16(uint32(uint32(hold)) & (libc.Uint32FromUint32(1)<<libc.Int32FromInt32(3) - libc.Uint32FromInt32(1)))
 			hold >>= uint32(libc.Int32FromInt32(3))
 			bits -= uint32(libc.Int32FromInt32(3))
 		}
 		for (*Tinflate_state)(unsafe.Pointer(state)).Fhave < uint32(19) {
-			v67 = state + 132
+			v67 = state + 108
 			v66 = *(*uint32)(unsafe.Pointer(v67))
 			*(*uint32)(unsafe.Pointer(v67))++
-			*(*uint16)(unsafe.Pointer(state + 144 + uintptr(_order1[v66])*2)) = uint16(0)
+			*(*uint16)(unsafe.Pointer(state + 116 + uintptr(_order1[v66])*2)) = uint16(0)
 		}
-		(*Tinflate_state)(unsafe.Pointer(state)).Fnext = state + 1360
+		(*Tinflate_state)(unsafe.Pointer(state)).Fnext = state + 1332
 		(*Tinflate_state)(unsafe.Pointer(state)).Flencode = (*Tinflate_state)(unsafe.Pointer(state)).Fnext
 		(*Tinflate_state)(unsafe.Pointer(state)).Flenbits = uint32(7)
-		ret = x_inflate_table(tls, _CODES, state+144, uint32(19), state+136, state+112, state+784)
+		ret = x_inflate_table(tls, _CODES, state+116, uint32(19), state+112, state+88, state+756)
 		if ret != 0 {
-			(*Tz_stream)(unsafe.Pointer(strm)).Fmsg = __ccgo_ts + 604
+			(*Tz_stream)(unsafe.Pointer(strm)).Fmsg = __ccgo_ts + 1290
 			(*Tinflate_state)(unsafe.Pointer(state)).Fmode = int32(_BAD)
 			goto _35
 		}
@@ -18359,10 +16631,10 @@ func x_inflate(tls *libc.TLS, strm Tz_streamp, flush int32) (r int32) {
 			if int32(here.Fval) < int32(16) {
 				hold >>= uint32(here.Fbits)
 				bits -= uint32(here.Fbits)
-				v71 = state + 132
+				v71 = state + 108
 				v70 = *(*uint32)(unsafe.Pointer(v71))
 				*(*uint32)(unsafe.Pointer(v71))++
-				*(*uint16)(unsafe.Pointer(state + 144 + uintptr(v70)*2)) = here.Fval
+				*(*uint16)(unsafe.Pointer(state + 116 + uintptr(v70)*2)) = here.Fval
 			} else {
 				if int32(here.Fval) == int32(16) {
 					for bits < uint32(int32(here.Fbits)+libc.Int32FromInt32(2)) {
@@ -18378,11 +16650,11 @@ func x_inflate(tls *libc.TLS, strm Tz_streamp, flush int32) (r int32) {
 					hold >>= uint32(here.Fbits)
 					bits -= uint32(here.Fbits)
 					if (*Tinflate_state)(unsafe.Pointer(state)).Fhave == uint32(0) {
-						(*Tz_stream)(unsafe.Pointer(strm)).Fmsg = __ccgo_ts + 629
+						(*Tz_stream)(unsafe.Pointer(strm)).Fmsg = __ccgo_ts + 1315
 						(*Tinflate_state)(unsafe.Pointer(state)).Fmode = int32(_BAD)
 						break
 					}
-					len1 = uint32(*(*uint16)(unsafe.Pointer(state + 144 + uintptr((*Tinflate_state)(unsafe.Pointer(state)).Fhave-uint32(1))*2)))
+					len1 = uint32(*(*uint16)(unsafe.Pointer(state + 116 + uintptr((*Tinflate_state)(unsafe.Pointer(state)).Fhave-uint32(1))*2)))
 					copy1 = uint32(3) + uint32(uint32(hold))&(libc.Uint32FromUint32(1)<<libc.Int32FromInt32(2)-libc.Uint32FromInt32(1))
 					hold >>= uint32(libc.Int32FromInt32(2))
 					bits -= uint32(libc.Int32FromInt32(2))
@@ -18424,7 +16696,7 @@ func x_inflate(tls *libc.TLS, strm Tz_streamp, flush int32) (r int32) {
 					}
 				}
 				if (*Tinflate_state)(unsafe.Pointer(state)).Fhave+copy1 > (*Tinflate_state)(unsafe.Pointer(state)).Fnlen+(*Tinflate_state)(unsafe.Pointer(state)).Fndist {
-					(*Tz_stream)(unsafe.Pointer(strm)).Fmsg = __ccgo_ts + 629
+					(*Tz_stream)(unsafe.Pointer(strm)).Fmsg = __ccgo_ts + 1315
 					(*Tinflate_state)(unsafe.Pointer(state)).Fmode = int32(_BAD)
 					break
 				}
@@ -18434,10 +16706,10 @@ func x_inflate(tls *libc.TLS, strm Tz_streamp, flush int32) (r int32) {
 					if !(v75 != 0) {
 						break
 					}
-					v77 = state + 132
+					v77 = state + 108
 					v76 = *(*uint32)(unsafe.Pointer(v77))
 					*(*uint32)(unsafe.Pointer(v77))++
-					*(*uint16)(unsafe.Pointer(state + 144 + uintptr(v76)*2)) = uint16(uint16(len1))
+					*(*uint16)(unsafe.Pointer(state + 116 + uintptr(v76)*2)) = uint16(uint16(len1))
 				}
 			}
 		}
@@ -18446,28 +16718,28 @@ func x_inflate(tls *libc.TLS, strm Tz_streamp, flush int32) (r int32) {
 			goto _35
 		}
 		/* check for end-of-block code (better have one) */
-		if int32(*(*uint16)(unsafe.Pointer(state + 144 + 256*2))) == 0 {
-			(*Tz_stream)(unsafe.Pointer(strm)).Fmsg = __ccgo_ts + 655
+		if int32(*(*uint16)(unsafe.Pointer(state + 116 + 256*2))) == 0 {
+			(*Tz_stream)(unsafe.Pointer(strm)).Fmsg = __ccgo_ts + 1341
 			(*Tinflate_state)(unsafe.Pointer(state)).Fmode = int32(_BAD)
 			goto _35
 		}
 		/* build code tables -- note: do not change the lenbits or distbits
 		   values here (9 and 6) without reading the comments in inftrees.h
 		   concerning the ENOUGH constants, which depend on those values */
-		(*Tinflate_state)(unsafe.Pointer(state)).Fnext = state + 1360
+		(*Tinflate_state)(unsafe.Pointer(state)).Fnext = state + 1332
 		(*Tinflate_state)(unsafe.Pointer(state)).Flencode = (*Tinflate_state)(unsafe.Pointer(state)).Fnext
 		(*Tinflate_state)(unsafe.Pointer(state)).Flenbits = uint32(9)
-		ret = x_inflate_table(tls, _LENS, state+144, (*Tinflate_state)(unsafe.Pointer(state)).Fnlen, state+136, state+112, state+784)
+		ret = x_inflate_table(tls, _LENS, state+116, (*Tinflate_state)(unsafe.Pointer(state)).Fnlen, state+112, state+88, state+756)
 		if ret != 0 {
-			(*Tz_stream)(unsafe.Pointer(strm)).Fmsg = __ccgo_ts + 692
+			(*Tz_stream)(unsafe.Pointer(strm)).Fmsg = __ccgo_ts + 1378
 			(*Tinflate_state)(unsafe.Pointer(state)).Fmode = int32(_BAD)
 			goto _35
 		}
 		(*Tinflate_state)(unsafe.Pointer(state)).Fdistcode = (*Tinflate_state)(unsafe.Pointer(state)).Fnext
 		(*Tinflate_state)(unsafe.Pointer(state)).Fdistbits = uint32(6)
-		ret = x_inflate_table(tls, _DISTS, state+144+uintptr((*Tinflate_state)(unsafe.Pointer(state)).Fnlen)*2, (*Tinflate_state)(unsafe.Pointer(state)).Fndist, state+136, state+116, state+784)
+		ret = x_inflate_table(tls, _DISTS, state+116+uintptr((*Tinflate_state)(unsafe.Pointer(state)).Fnlen)*2, (*Tinflate_state)(unsafe.Pointer(state)).Fndist, state+112, state+92, state+756)
 		if ret != 0 {
-			(*Tz_stream)(unsafe.Pointer(strm)).Fmsg = __ccgo_ts + 720
+			(*Tz_stream)(unsafe.Pointer(strm)).Fmsg = __ccgo_ts + 1406
 			(*Tinflate_state)(unsafe.Pointer(state)).Fmode = int32(_BAD)
 			goto _35
 		}
@@ -18538,11 +16810,11 @@ func x_inflate(tls *libc.TLS, strm Tz_streamp, flush int32) (r int32) {
 			}
 			hold >>= uint32(last.Fbits)
 			bits -= uint32(last.Fbits)
-			*(*int32)(unsafe.Pointer(state + 7140)) += int32(last.Fbits)
+			*(*int32)(unsafe.Pointer(state + 7112)) += int32(last.Fbits)
 		}
 		hold >>= uint32(here.Fbits)
 		bits -= uint32(here.Fbits)
-		*(*int32)(unsafe.Pointer(state + 7140)) += int32(here.Fbits)
+		*(*int32)(unsafe.Pointer(state + 7112)) += int32(here.Fbits)
 		(*Tinflate_state)(unsafe.Pointer(state)).Flength = uint32(here.Fval)
 		if int32(here.Fop) == 0 {
 			(*Tinflate_state)(unsafe.Pointer(state)).Fmode = int32(_LIT)
@@ -18554,7 +16826,7 @@ func x_inflate(tls *libc.TLS, strm Tz_streamp, flush int32) (r int32) {
 			goto _35
 		}
 		if int32(here.Fop)&int32(64) != 0 {
-			(*Tz_stream)(unsafe.Pointer(strm)).Fmsg = __ccgo_ts + 742
+			(*Tz_stream)(unsafe.Pointer(strm)).Fmsg = __ccgo_ts + 1428
 			(*Tinflate_state)(unsafe.Pointer(state)).Fmode = int32(_BAD)
 			goto _35
 		}
@@ -18574,10 +16846,10 @@ func x_inflate(tls *libc.TLS, strm Tz_streamp, flush int32) (r int32) {
 				hold += uint32(*(*uint8)(unsafe.Pointer(v82))) << bits
 				bits += uint32(8)
 			}
-			*(*uint32)(unsafe.Pointer(state + 80)) += uint32(uint32(hold)) & (uint32(1)<<(*Tinflate_state)(unsafe.Pointer(state)).Fextra - uint32(1))
+			*(*uint32)(unsafe.Pointer(state + 68)) += uint32(uint32(hold)) & (uint32(1)<<(*Tinflate_state)(unsafe.Pointer(state)).Fextra - uint32(1))
 			hold >>= uint32((*Tinflate_state)(unsafe.Pointer(state)).Fextra)
 			bits -= (*Tinflate_state)(unsafe.Pointer(state)).Fextra
-			p83 = state + 7140
+			p83 = state + 7112
 			*(*int32)(unsafe.Pointer(p83)) = int32(uint32(*(*int32)(unsafe.Pointer(p83))) + (*Tinflate_state)(unsafe.Pointer(state)).Fextra)
 		}
 		(*Tinflate_state)(unsafe.Pointer(state)).Fwas = (*Tinflate_state)(unsafe.Pointer(state)).Flength
@@ -18621,13 +16893,13 @@ func x_inflate(tls *libc.TLS, strm Tz_streamp, flush int32) (r int32) {
 			}
 			hold >>= uint32(last.Fbits)
 			bits -= uint32(last.Fbits)
-			*(*int32)(unsafe.Pointer(state + 7140)) += int32(last.Fbits)
+			*(*int32)(unsafe.Pointer(state + 7112)) += int32(last.Fbits)
 		}
 		hold >>= uint32(here.Fbits)
 		bits -= uint32(here.Fbits)
-		*(*int32)(unsafe.Pointer(state + 7140)) += int32(here.Fbits)
+		*(*int32)(unsafe.Pointer(state + 7112)) += int32(here.Fbits)
 		if int32(here.Fop)&int32(64) != 0 {
-			(*Tz_stream)(unsafe.Pointer(strm)).Fmsg = __ccgo_ts + 770
+			(*Tz_stream)(unsafe.Pointer(strm)).Fmsg = __ccgo_ts + 1456
 			(*Tinflate_state)(unsafe.Pointer(state)).Fmode = int32(_BAD)
 			goto _35
 		}
@@ -18648,10 +16920,10 @@ func x_inflate(tls *libc.TLS, strm Tz_streamp, flush int32) (r int32) {
 				hold += uint32(*(*uint8)(unsafe.Pointer(v88))) << bits
 				bits += uint32(8)
 			}
-			*(*uint32)(unsafe.Pointer(state + 84)) += uint32(uint32(hold)) & (uint32(1)<<(*Tinflate_state)(unsafe.Pointer(state)).Fextra - uint32(1))
+			*(*uint32)(unsafe.Pointer(state + 72)) += uint32(uint32(hold)) & (uint32(1)<<(*Tinflate_state)(unsafe.Pointer(state)).Fextra - uint32(1))
 			hold >>= uint32((*Tinflate_state)(unsafe.Pointer(state)).Fextra)
 			bits -= (*Tinflate_state)(unsafe.Pointer(state)).Fextra
-			p89 = state + 7140
+			p89 = state + 7112
 			*(*int32)(unsafe.Pointer(p89)) = int32(uint32(*(*int32)(unsafe.Pointer(p89))) + (*Tinflate_state)(unsafe.Pointer(state)).Fextra)
 		}
 		(*Tinflate_state)(unsafe.Pointer(state)).Fmode = int32(_MATCH)
@@ -18666,7 +16938,7 @@ func x_inflate(tls *libc.TLS, strm Tz_streamp, flush int32) (r int32) {
 			copy1 = (*Tinflate_state)(unsafe.Pointer(state)).Foffset - copy1
 			if copy1 > (*Tinflate_state)(unsafe.Pointer(state)).Fwhave {
 				if (*Tinflate_state)(unsafe.Pointer(state)).Fsane != 0 {
-					(*Tz_stream)(unsafe.Pointer(strm)).Fmsg = __ccgo_ts + 792
+					(*Tz_stream)(unsafe.Pointer(strm)).Fmsg = __ccgo_ts + 1478
 					(*Tinflate_state)(unsafe.Pointer(state)).Fmode = int32(_BAD)
 					goto _35
 				}
@@ -18688,7 +16960,7 @@ func x_inflate(tls *libc.TLS, strm Tz_streamp, flush int32) (r int32) {
 			copy1 = left
 		}
 		left -= copy1
-		*(*uint32)(unsafe.Pointer(state + 80)) -= copy1
+		*(*uint32)(unsafe.Pointer(state + 68)) -= copy1
 		for {
 			v92 = put
 			put++
@@ -18733,8 +17005,8 @@ func x_inflate(tls *libc.TLS, strm Tz_streamp, flush int32) (r int32) {
 				bits += uint32(8)
 			}
 			out -= left
-			*(*TuLong)(unsafe.Pointer(strm + 28)) += uint32(uint32(out))
-			*(*uint32)(unsafe.Pointer(state + 36)) += uint32(uint32(out))
+			*(*TuLong)(unsafe.Pointer(strm + 20)) += uint32(uint32(out))
+			*(*uint32)(unsafe.Pointer(state + 32)) += uint32(uint32(out))
 			if (*Tinflate_state)(unsafe.Pointer(state)).Fwrap&int32(4) != 0 && out != 0 {
 				if (*Tinflate_state)(unsafe.Pointer(state)).Fflags != 0 {
 					v97 = x_crc32(tls, (*Tinflate_state)(unsafe.Pointer(state)).Fcheck, put-uintptr(out), out)
@@ -18754,7 +17026,7 @@ func x_inflate(tls *libc.TLS, strm Tz_streamp, flush int32) (r int32) {
 				}
 			}
 			if v99 && v98 != (*Tinflate_state)(unsafe.Pointer(state)).Fcheck {
-				(*Tz_stream)(unsafe.Pointer(strm)).Fmsg = __ccgo_ts + 937
+				(*Tz_stream)(unsafe.Pointer(strm)).Fmsg = __ccgo_ts + 1623
 				(*Tinflate_state)(unsafe.Pointer(state)).Fmode = int32(_BAD)
 				goto _35
 			}
@@ -18777,7 +17049,7 @@ func x_inflate(tls *libc.TLS, strm Tz_streamp, flush int32) (r int32) {
 				bits += uint32(8)
 			}
 			if (*Tinflate_state)(unsafe.Pointer(state)).Fwrap&int32(4) != 0 && hold != (*Tinflate_state)(unsafe.Pointer(state)).Ftotal&uint32(0xffffffff) {
-				(*Tz_stream)(unsafe.Pointer(strm)).Fmsg = __ccgo_ts + 958
+				(*Tz_stream)(unsafe.Pointer(strm)).Fmsg = __ccgo_ts + 1644
 				(*Tinflate_state)(unsafe.Pointer(state)).Fmode = int32(_BAD)
 				goto _35
 			}
@@ -18831,9 +17103,9 @@ inf_leave:
 	}
 	in -= (*Tz_stream)(unsafe.Pointer(strm)).Favail_in
 	out -= (*Tz_stream)(unsafe.Pointer(strm)).Favail_out
-	*(*TuLong)(unsafe.Pointer(strm + 12)) += uint32(uint32(in))
-	*(*TuLong)(unsafe.Pointer(strm + 28)) += uint32(uint32(out))
-	*(*uint32)(unsafe.Pointer(state + 36)) += uint32(uint32(out))
+	*(*TuLong)(unsafe.Pointer(strm + 8)) += uint32(uint32(in))
+	*(*TuLong)(unsafe.Pointer(strm + 20)) += uint32(uint32(out))
+	*(*uint32)(unsafe.Pointer(state + 32)) += uint32(uint32(out))
 	if (*Tinflate_state)(unsafe.Pointer(state)).Fwrap&int32(4) != 0 && out != 0 {
 		if (*Tinflate_state)(unsafe.Pointer(state)).Fflags != 0 {
 			v102 = x_crc32(tls, (*Tinflate_state)(unsafe.Pointer(state)).Fcheck, (*Tz_stream)(unsafe.Pointer(strm)).Fnext_out-uintptr(out), out)
@@ -18912,8 +17184,8 @@ func x_inflateGetDictionary(tls *libc.TLS, strm Tz_streamp, dictionary uintptr, 
 	state = (*Tz_stream)(unsafe.Pointer(strm)).Fstate
 	/* copy dictionary */
 	if (*Tinflate_state)(unsafe.Pointer(state)).Fwhave != 0 && dictionary != uintptr(m_Z_NULL) {
-		libc.Xmemcpy(tls, dictionary, (*Tinflate_state)(unsafe.Pointer(state)).Fwindow+uintptr((*Tinflate_state)(unsafe.Pointer(state)).Fwnext), uint64((*Tinflate_state)(unsafe.Pointer(state)).Fwhave-(*Tinflate_state)(unsafe.Pointer(state)).Fwnext))
-		libc.Xmemcpy(tls, dictionary+uintptr((*Tinflate_state)(unsafe.Pointer(state)).Fwhave)-uintptr((*Tinflate_state)(unsafe.Pointer(state)).Fwnext), (*Tinflate_state)(unsafe.Pointer(state)).Fwindow, uint64((*Tinflate_state)(unsafe.Pointer(state)).Fwnext))
+		libc.Xmemcpy(tls, dictionary, (*Tinflate_state)(unsafe.Pointer(state)).Fwindow+uintptr((*Tinflate_state)(unsafe.Pointer(state)).Fwnext), (*Tinflate_state)(unsafe.Pointer(state)).Fwhave-(*Tinflate_state)(unsafe.Pointer(state)).Fwnext)
+		libc.Xmemcpy(tls, dictionary+uintptr((*Tinflate_state)(unsafe.Pointer(state)).Fwhave)-uintptr((*Tinflate_state)(unsafe.Pointer(state)).Fwnext), (*Tinflate_state)(unsafe.Pointer(state)).Fwindow, (*Tinflate_state)(unsafe.Pointer(state)).Fwnext)
 	}
 	if dictLength != uintptr(m_Z_NULL) {
 		*(*TuInt)(unsafe.Pointer(dictLength)) = (*Tinflate_state)(unsafe.Pointer(state)).Fwhave
@@ -19029,24 +17301,24 @@ func x_inflateSync(tls *libc.TLS, strm Tz_streamp) (r int32) {
 	/* if first time, start search in bit buffer */
 	if (*Tinflate_state)(unsafe.Pointer(state)).Fmode != int32(_SYNC) {
 		(*Tinflate_state)(unsafe.Pointer(state)).Fmode = int32(_SYNC)
-		*(*uint32)(unsafe.Pointer(state + 72)) >>= uint32((*Tinflate_state)(unsafe.Pointer(state)).Fbits & uint32(7))
-		*(*uint32)(unsafe.Pointer(state + 76)) -= (*Tinflate_state)(unsafe.Pointer(state)).Fbits & uint32(7)
+		*(*uint32)(unsafe.Pointer(state + 60)) >>= uint32((*Tinflate_state)(unsafe.Pointer(state)).Fbits & uint32(7))
+		*(*uint32)(unsafe.Pointer(state + 64)) -= (*Tinflate_state)(unsafe.Pointer(state)).Fbits & uint32(7)
 		len1 = uint32(0)
 		for (*Tinflate_state)(unsafe.Pointer(state)).Fbits >= uint32(8) {
 			v1 = len1
 			len1++
 			(*(*[4]uint8)(unsafe.Pointer(bp)))[v1] = uint8((*Tinflate_state)(unsafe.Pointer(state)).Fhold)
-			*(*uint32)(unsafe.Pointer(state + 72)) >>= uint32(8)
-			*(*uint32)(unsafe.Pointer(state + 76)) -= uint32(8)
+			*(*uint32)(unsafe.Pointer(state + 60)) >>= uint32(8)
+			*(*uint32)(unsafe.Pointer(state + 64)) -= uint32(8)
 		}
 		(*Tinflate_state)(unsafe.Pointer(state)).Fhave = uint32(0)
-		_syncsearch(tls, state+132, bp, len1)
+		_syncsearch(tls, state+108, bp, len1)
 	}
 	/* search available input */
-	len1 = _syncsearch(tls, state+132, (*Tz_stream)(unsafe.Pointer(strm)).Fnext_in, (*Tz_stream)(unsafe.Pointer(strm)).Favail_in)
-	*(*TuInt)(unsafe.Pointer(strm + 8)) -= len1
+	len1 = _syncsearch(tls, state+108, (*Tz_stream)(unsafe.Pointer(strm)).Fnext_in, (*Tz_stream)(unsafe.Pointer(strm)).Favail_in)
+	*(*TuInt)(unsafe.Pointer(strm + 4)) -= len1
 	*(*uintptr)(unsafe.Pointer(strm)) += uintptr(len1)
-	*(*TuLong)(unsafe.Pointer(strm + 12)) += uint32(uint32(len1))
+	*(*TuLong)(unsafe.Pointer(strm + 8)) += uint32(uint32(len1))
 	/* return no joy or set up to restart inflate() on a new block */
 	if (*Tinflate_state)(unsafe.Pointer(state)).Fhave != uint32(4) {
 		return -int32(3)
@@ -19054,7 +17326,7 @@ func x_inflateSync(tls *libc.TLS, strm Tz_streamp) (r int32) {
 	if (*Tinflate_state)(unsafe.Pointer(state)).Fflags == -int32(1) {
 		(*Tinflate_state)(unsafe.Pointer(state)).Fwrap = 0
 	} else {
-		*(*int32)(unsafe.Pointer(state + 16)) &= ^libc.Int32FromInt32(4)
+		*(*int32)(unsafe.Pointer(state + 12)) &= ^libc.Int32FromInt32(4)
 	} /* no point in computing a check value now */
 	flags = (*Tinflate_state)(unsafe.Pointer(state)).Fflags
 	in = (*Tz_stream)(unsafe.Pointer(strm)).Ftotal_in
@@ -19097,30 +17369,30 @@ func x_inflateCopy(tls *libc.TLS, dest Tz_streamp, source Tz_streamp) (r int32) 
 	}
 	state = (*Tz_stream)(unsafe.Pointer(source)).Fstate
 	/* allocate space */
-	copy1 = (*(*func(*libc.TLS, Tvoidpf, TuInt, TuInt) Tvoidpf)(unsafe.Pointer(&struct{ uintptr }{(*Tz_stream)(unsafe.Pointer(source)).Fzalloc})))(tls, (*Tz_stream)(unsafe.Pointer(source)).Fopaque, uint32(libc.Int32FromInt32(1)), uint32(libc.Uint64FromInt64(7152)))
+	copy1 = (*(*func(*libc.TLS, Tvoidpf, TuInt, TuInt) Tvoidpf)(unsafe.Pointer(&struct{ uintptr }{(*Tz_stream)(unsafe.Pointer(source)).Fzalloc})))(tls, (*Tz_stream)(unsafe.Pointer(source)).Fopaque, uint32(libc.Int32FromInt32(1)), libc.Uint32FromInt64(7120))
 	if copy1 == uintptr(m_Z_NULL) {
 		return -int32(4)
 	}
 	window = uintptr(m_Z_NULL)
 	if (*Tinflate_state)(unsafe.Pointer(state)).Fwindow != uintptr(m_Z_NULL) {
-		window = (*(*func(*libc.TLS, Tvoidpf, TuInt, TuInt) Tvoidpf)(unsafe.Pointer(&struct{ uintptr }{(*Tz_stream)(unsafe.Pointer(source)).Fzalloc})))(tls, (*Tz_stream)(unsafe.Pointer(source)).Fopaque, libc.Uint32FromUint32(1)<<(*Tinflate_state)(unsafe.Pointer(state)).Fwbits, uint32(libc.Uint64FromInt64(1)))
+		window = (*(*func(*libc.TLS, Tvoidpf, TuInt, TuInt) Tvoidpf)(unsafe.Pointer(&struct{ uintptr }{(*Tz_stream)(unsafe.Pointer(source)).Fzalloc})))(tls, (*Tz_stream)(unsafe.Pointer(source)).Fopaque, libc.Uint32FromUint32(1)<<(*Tinflate_state)(unsafe.Pointer(state)).Fwbits, libc.Uint32FromInt64(1))
 		if window == uintptr(m_Z_NULL) {
 			(*(*func(*libc.TLS, Tvoidpf, Tvoidpf))(unsafe.Pointer(&struct{ uintptr }{(*Tz_stream)(unsafe.Pointer(source)).Fzfree})))(tls, (*Tz_stream)(unsafe.Pointer(source)).Fopaque, copy1)
 			return -int32(4)
 		}
 	}
 	/* copy state */
-	libc.Xmemcpy(tls, dest, source, uint64(88))
-	libc.Xmemcpy(tls, copy1, state, uint64(7152))
+	libc.Xmemcpy(tls, dest, source, uint32(56))
+	libc.Xmemcpy(tls, copy1, state, uint32(7120))
 	(*Tinflate_state)(unsafe.Pointer(copy1)).Fstrm = dest
-	if (*Tinflate_state)(unsafe.Pointer(state)).Flencode >= state+1360 && (*Tinflate_state)(unsafe.Pointer(state)).Flencode <= state+1360+uintptr(libc.Int32FromInt32(m_ENOUGH_LENS)+libc.Int32FromInt32(m_ENOUGH_DISTS))*4-uintptr(1)*4 {
-		(*Tinflate_state)(unsafe.Pointer(copy1)).Flencode = copy1 + 1360 + uintptr((int64((*Tinflate_state)(unsafe.Pointer(state)).Flencode)-T__predefined_ptrdiff_t(state+1360))/4)*4
-		(*Tinflate_state)(unsafe.Pointer(copy1)).Fdistcode = copy1 + 1360 + uintptr((int64((*Tinflate_state)(unsafe.Pointer(state)).Fdistcode)-T__predefined_ptrdiff_t(state+1360))/4)*4
+	if (*Tinflate_state)(unsafe.Pointer(state)).Flencode >= state+1332 && (*Tinflate_state)(unsafe.Pointer(state)).Flencode <= state+1332+uintptr(libc.Int32FromInt32(m_ENOUGH_LENS)+libc.Int32FromInt32(m_ENOUGH_DISTS))*4-uintptr(1)*4 {
+		(*Tinflate_state)(unsafe.Pointer(copy1)).Flencode = copy1 + 1332 + uintptr((int32((*Tinflate_state)(unsafe.Pointer(state)).Flencode)-T__predefined_ptrdiff_t(state+1332))/4)*4
+		(*Tinflate_state)(unsafe.Pointer(copy1)).Fdistcode = copy1 + 1332 + uintptr((int32((*Tinflate_state)(unsafe.Pointer(state)).Fdistcode)-T__predefined_ptrdiff_t(state+1332))/4)*4
 	}
-	(*Tinflate_state)(unsafe.Pointer(copy1)).Fnext = copy1 + 1360 + uintptr((int64((*Tinflate_state)(unsafe.Pointer(state)).Fnext)-T__predefined_ptrdiff_t(state+1360))/4)*4
+	(*Tinflate_state)(unsafe.Pointer(copy1)).Fnext = copy1 + 1332 + uintptr((int32((*Tinflate_state)(unsafe.Pointer(state)).Fnext)-T__predefined_ptrdiff_t(state+1332))/4)*4
 	if window != uintptr(m_Z_NULL) {
 		wsize = uint32(1) << (*Tinflate_state)(unsafe.Pointer(state)).Fwbits
-		libc.Xmemcpy(tls, window, (*Tinflate_state)(unsafe.Pointer(state)).Fwindow, uint64(uint64(wsize)))
+		libc.Xmemcpy(tls, window, (*Tinflate_state)(unsafe.Pointer(state)).Fwindow, wsize)
 	}
 	(*Tinflate_state)(unsafe.Pointer(copy1)).Fwindow = window
 	(*Tz_stream)(unsafe.Pointer(dest)).Fstate = copy1
@@ -19147,9 +17419,9 @@ func x_inflateValidate(tls *libc.TLS, strm Tz_streamp, check int32) (r int32) {
 	}
 	state = (*Tz_stream)(unsafe.Pointer(strm)).Fstate
 	if check != 0 && (*Tinflate_state)(unsafe.Pointer(state)).Fwrap != 0 {
-		*(*int32)(unsafe.Pointer(state + 16)) |= int32(4)
+		*(*int32)(unsafe.Pointer(state + 12)) |= int32(4)
 	} else {
-		*(*int32)(unsafe.Pointer(state + 16)) &= ^libc.Int32FromInt32(4)
+		*(*int32)(unsafe.Pointer(state + 12)) &= ^libc.Int32FromInt32(4)
 	}
 	return m_Z_OK
 }
@@ -19182,7 +17454,7 @@ func x_inflateCodesUsed(tls *libc.TLS, strm Tz_streamp) (r uint32) {
 		return uint32(-libc.Int32FromInt32(1))
 	}
 	state = (*Tz_stream)(unsafe.Pointer(strm)).Fstate
-	return uint32((int64((*Tinflate_state)(unsafe.Pointer(state)).Fnext) - T__predefined_ptrdiff_t(state+1360)) / 4)
+	return uint32((int32((*Tinflate_state)(unsafe.Pointer(state)).Fnext) - T__predefined_ptrdiff_t(state+1332)) / 4)
 }
 
 const m_MAXBITS = 15
@@ -19498,7 +17770,7 @@ func x_inflate_table(tls *libc.TLS, type1 Tcodetype, lens uintptr, codes uint32,
 			low = huff & mask
 			(*(*Tcode)(unsafe.Pointer(*(*uintptr)(unsafe.Pointer(table)) + uintptr(low)*4))).Fop = uint8(uint8(curr))
 			(*(*Tcode)(unsafe.Pointer(*(*uintptr)(unsafe.Pointer(table)) + uintptr(low)*4))).Fbits = uint8(uint8(root))
-			(*(*Tcode)(unsafe.Pointer(*(*uintptr)(unsafe.Pointer(table)) + uintptr(low)*4))).Fval = uint16((int64(int64(next)) - int64(*(*uintptr)(unsafe.Pointer(table)))) / 4)
+			(*(*Tcode)(unsafe.Pointer(*(*uintptr)(unsafe.Pointer(table)) + uintptr(low)*4))).Fval = uint16((int32(int32(next)) - int32(*(*uintptr)(unsafe.Pointer(table)))) / 4)
 		}
 		goto _15
 	_15:
@@ -23063,11 +21335,11 @@ func _bi_flush(tls *libc.TLS, s uintptr) {
 	var v2, v4, v6, p7 uintptr
 	_, _, _, _, _, _, _ = v1, v2, v3, v4, v5, v6, p7
 	if (*Tdeflate_state)(unsafe.Pointer(s)).Fbi_valid == int32(16) {
-		v2 = s + 40
+		v2 = s + 20
 		v1 = *(*Tulg)(unsafe.Pointer(v2))
 		*(*Tulg)(unsafe.Pointer(v2))++
 		*(*TBytef)(unsafe.Pointer((*Tdeflate_state)(unsafe.Pointer(s)).Fpending_buf + uintptr(v1))) = uint8(int32((*Tdeflate_state)(unsafe.Pointer(s)).Fbi_buf) & libc.Int32FromInt32(0xff))
-		v4 = s + 40
+		v4 = s + 20
 		v3 = *(*Tulg)(unsafe.Pointer(v4))
 		*(*Tulg)(unsafe.Pointer(v4))++
 		*(*TBytef)(unsafe.Pointer((*Tdeflate_state)(unsafe.Pointer(s)).Fpending_buf + uintptr(v3))) = uint8(int32((*Tdeflate_state)(unsafe.Pointer(s)).Fbi_buf) >> libc.Int32FromInt32(8))
@@ -23075,13 +21347,13 @@ func _bi_flush(tls *libc.TLS, s uintptr) {
 		(*Tdeflate_state)(unsafe.Pointer(s)).Fbi_valid = 0
 	} else {
 		if (*Tdeflate_state)(unsafe.Pointer(s)).Fbi_valid >= int32(8) {
-			v6 = s + 40
+			v6 = s + 20
 			v5 = *(*Tulg)(unsafe.Pointer(v6))
 			*(*Tulg)(unsafe.Pointer(v6))++
 			*(*TBytef)(unsafe.Pointer((*Tdeflate_state)(unsafe.Pointer(s)).Fpending_buf + uintptr(v5))) = uint8((*Tdeflate_state)(unsafe.Pointer(s)).Fbi_buf)
-			p7 = s + 5900
+			p7 = s + 5816
 			*(*Tush)(unsafe.Pointer(p7)) = Tush(int32(*(*Tush)(unsafe.Pointer(p7))) >> libc.Int32FromInt32(8))
-			*(*int32)(unsafe.Pointer(s + 5904)) -= int32(8)
+			*(*int32)(unsafe.Pointer(s + 5820)) -= int32(8)
 		}
 	}
 }
@@ -23096,17 +21368,17 @@ func _bi_windup(tls *libc.TLS, s uintptr) {
 	var v2, v4, v6 uintptr
 	_, _, _, _, _, _ = v1, v2, v3, v4, v5, v6
 	if (*Tdeflate_state)(unsafe.Pointer(s)).Fbi_valid > int32(8) {
-		v2 = s + 40
+		v2 = s + 20
 		v1 = *(*Tulg)(unsafe.Pointer(v2))
 		*(*Tulg)(unsafe.Pointer(v2))++
 		*(*TBytef)(unsafe.Pointer((*Tdeflate_state)(unsafe.Pointer(s)).Fpending_buf + uintptr(v1))) = uint8(int32((*Tdeflate_state)(unsafe.Pointer(s)).Fbi_buf) & libc.Int32FromInt32(0xff))
-		v4 = s + 40
+		v4 = s + 20
 		v3 = *(*Tulg)(unsafe.Pointer(v4))
 		*(*Tulg)(unsafe.Pointer(v4))++
 		*(*TBytef)(unsafe.Pointer((*Tdeflate_state)(unsafe.Pointer(s)).Fpending_buf + uintptr(v3))) = uint8(int32((*Tdeflate_state)(unsafe.Pointer(s)).Fbi_buf) >> libc.Int32FromInt32(8))
 	} else {
 		if (*Tdeflate_state)(unsafe.Pointer(s)).Fbi_valid > 0 {
-			v6 = s + 40
+			v6 = s + 20
 			v5 = *(*Tulg)(unsafe.Pointer(v6))
 			*(*Tulg)(unsafe.Pointer(v6))++
 			*(*TBytef)(unsafe.Pointer((*Tdeflate_state)(unsafe.Pointer(s)).Fpending_buf + uintptr(v5))) = uint8((*Tdeflate_state)(unsafe.Pointer(s)).Fbi_buf)
@@ -23212,7 +21484,7 @@ func _init_block(tls *libc.TLS, s uintptr) {
 		if !(n < libc.Int32FromInt32(m_LITERALS)+libc.Int32FromInt32(1)+libc.Int32FromInt32(m_LENGTH_CODES)) {
 			break
 		}
-		*(*Tush)(unsafe.Pointer(s + 188 + uintptr(n)*4)) = uint16(0)
+		*(*Tush)(unsafe.Pointer(s + 148 + uintptr(n)*4)) = uint16(0)
 		goto _1
 	_1:
 		;
@@ -23223,7 +21495,7 @@ func _init_block(tls *libc.TLS, s uintptr) {
 		if !(n < int32(m_D_CODES)) {
 			break
 		}
-		*(*Tush)(unsafe.Pointer(s + 2480 + uintptr(n)*4)) = uint16(0)
+		*(*Tush)(unsafe.Pointer(s + 2440 + uintptr(n)*4)) = uint16(0)
 		goto _2
 	_2:
 		;
@@ -23234,13 +21506,13 @@ func _init_block(tls *libc.TLS, s uintptr) {
 		if !(n < int32(m_BL_CODES)) {
 			break
 		}
-		*(*Tush)(unsafe.Pointer(s + 2724 + uintptr(n)*4)) = uint16(0)
+		*(*Tush)(unsafe.Pointer(s + 2684 + uintptr(n)*4)) = uint16(0)
 		goto _3
 	_3:
 		;
 		n++
 	}
-	*(*Tush)(unsafe.Pointer(s + 188 + 256*4)) = uint16(1)
+	*(*Tush)(unsafe.Pointer(s + 148 + 256*4)) = uint16(1)
 	v4 = libc.Uint32FromInt32(0)
 	(*Tdeflate_state)(unsafe.Pointer(s)).Fstatic_len = v4
 	(*Tdeflate_state)(unsafe.Pointer(s)).Fopt_len = v4
@@ -23256,11 +21528,11 @@ func _init_block(tls *libc.TLS, s uintptr) {
 //	 */
 func x__tr_init(tls *libc.TLS, s uintptr) {
 	_tr_static_init(tls)
-	(*Tdeflate_state)(unsafe.Pointer(s)).Fl_desc.Fdyn_tree = s + 188
+	(*Tdeflate_state)(unsafe.Pointer(s)).Fl_desc.Fdyn_tree = s + 148
 	(*Tdeflate_state)(unsafe.Pointer(s)).Fl_desc.Fstat_desc = uintptr(unsafe.Pointer(&_static_l_desc))
-	(*Tdeflate_state)(unsafe.Pointer(s)).Fd_desc.Fdyn_tree = s + 2480
+	(*Tdeflate_state)(unsafe.Pointer(s)).Fd_desc.Fdyn_tree = s + 2440
 	(*Tdeflate_state)(unsafe.Pointer(s)).Fd_desc.Fstat_desc = uintptr(unsafe.Pointer(&_static_d_desc))
-	(*Tdeflate_state)(unsafe.Pointer(s)).Fbl_desc.Fdyn_tree = s + 2724
+	(*Tdeflate_state)(unsafe.Pointer(s)).Fbl_desc.Fdyn_tree = s + 2684
 	(*Tdeflate_state)(unsafe.Pointer(s)).Fbl_desc.Fstat_desc = uintptr(unsafe.Pointer(&_static_bl_desc))
 	(*Tdeflate_state)(unsafe.Pointer(s)).Fbi_buf = uint16(0)
 	(*Tdeflate_state)(unsafe.Pointer(s)).Fbi_valid = 0
@@ -23291,24 +21563,24 @@ func x__tr_init(tls *libc.TLS, s uintptr) {
 func _pqdownheap(tls *libc.TLS, s uintptr, tree uintptr, k int32) {
 	var j, v int32
 	_, _ = j, v
-	v = *(*int32)(unsafe.Pointer(s + 2984 + uintptr(k)*4))
+	v = *(*int32)(unsafe.Pointer(s + 2908 + uintptr(k)*4))
 	j = k << int32(1) /* left son of k */
 	for j <= (*Tdeflate_state)(unsafe.Pointer(s)).Fheap_len {
 		/* Set j to the smallest of the two sons: */
-		if j < (*Tdeflate_state)(unsafe.Pointer(s)).Fheap_len && (int32(*(*Tush)(unsafe.Pointer(tree + uintptr(*(*int32)(unsafe.Pointer(s + 2984 + uintptr(j+int32(1))*4)))*4))) < int32(*(*Tush)(unsafe.Pointer(tree + uintptr(*(*int32)(unsafe.Pointer(s + 2984 + uintptr(j)*4)))*4))) || int32(*(*Tush)(unsafe.Pointer(tree + uintptr(*(*int32)(unsafe.Pointer(s + 2984 + uintptr(j+int32(1))*4)))*4))) == int32(*(*Tush)(unsafe.Pointer(tree + uintptr(*(*int32)(unsafe.Pointer(s + 2984 + uintptr(j)*4)))*4))) && int32(*(*Tuch)(unsafe.Pointer(s + 5284 + uintptr(*(*int32)(unsafe.Pointer(s + 2984 + uintptr(j+int32(1))*4)))))) <= int32(*(*Tuch)(unsafe.Pointer(s + 5284 + uintptr(*(*int32)(unsafe.Pointer(s + 2984 + uintptr(j)*4))))))) {
+		if j < (*Tdeflate_state)(unsafe.Pointer(s)).Fheap_len && (int32(*(*Tush)(unsafe.Pointer(tree + uintptr(*(*int32)(unsafe.Pointer(s + 2908 + uintptr(j+int32(1))*4)))*4))) < int32(*(*Tush)(unsafe.Pointer(tree + uintptr(*(*int32)(unsafe.Pointer(s + 2908 + uintptr(j)*4)))*4))) || int32(*(*Tush)(unsafe.Pointer(tree + uintptr(*(*int32)(unsafe.Pointer(s + 2908 + uintptr(j+int32(1))*4)))*4))) == int32(*(*Tush)(unsafe.Pointer(tree + uintptr(*(*int32)(unsafe.Pointer(s + 2908 + uintptr(j)*4)))*4))) && int32(*(*Tuch)(unsafe.Pointer(s + 5208 + uintptr(*(*int32)(unsafe.Pointer(s + 2908 + uintptr(j+int32(1))*4)))))) <= int32(*(*Tuch)(unsafe.Pointer(s + 5208 + uintptr(*(*int32)(unsafe.Pointer(s + 2908 + uintptr(j)*4))))))) {
 			j++
 		}
 		/* Exit if v is smaller than both sons */
-		if int32(*(*Tush)(unsafe.Pointer(tree + uintptr(v)*4))) < int32(*(*Tush)(unsafe.Pointer(tree + uintptr(*(*int32)(unsafe.Pointer(s + 2984 + uintptr(j)*4)))*4))) || int32(*(*Tush)(unsafe.Pointer(tree + uintptr(v)*4))) == int32(*(*Tush)(unsafe.Pointer(tree + uintptr(*(*int32)(unsafe.Pointer(s + 2984 + uintptr(j)*4)))*4))) && int32(*(*Tuch)(unsafe.Pointer(s + 5284 + uintptr(v)))) <= int32(*(*Tuch)(unsafe.Pointer(s + 5284 + uintptr(*(*int32)(unsafe.Pointer(s + 2984 + uintptr(j)*4)))))) {
+		if int32(*(*Tush)(unsafe.Pointer(tree + uintptr(v)*4))) < int32(*(*Tush)(unsafe.Pointer(tree + uintptr(*(*int32)(unsafe.Pointer(s + 2908 + uintptr(j)*4)))*4))) || int32(*(*Tush)(unsafe.Pointer(tree + uintptr(v)*4))) == int32(*(*Tush)(unsafe.Pointer(tree + uintptr(*(*int32)(unsafe.Pointer(s + 2908 + uintptr(j)*4)))*4))) && int32(*(*Tuch)(unsafe.Pointer(s + 5208 + uintptr(v)))) <= int32(*(*Tuch)(unsafe.Pointer(s + 5208 + uintptr(*(*int32)(unsafe.Pointer(s + 2908 + uintptr(j)*4)))))) {
 			break
 		}
 		/* Exchange v with the smallest son */
-		*(*int32)(unsafe.Pointer(s + 2984 + uintptr(k)*4)) = *(*int32)(unsafe.Pointer(s + 2984 + uintptr(j)*4))
+		*(*int32)(unsafe.Pointer(s + 2908 + uintptr(k)*4)) = *(*int32)(unsafe.Pointer(s + 2908 + uintptr(j)*4))
 		k = j
 		/* And continue down the tree, setting j to the left son of k */
 		j <<= int32(1)
 	}
-	*(*int32)(unsafe.Pointer(s + 2984 + uintptr(k)*4)) = v
+	*(*int32)(unsafe.Pointer(s + 2908 + uintptr(k)*4)) = v
 }
 
 // C documentation
@@ -23340,7 +21612,7 @@ func _gen_bitlen(tls *libc.TLS, s uintptr, desc uintptr) {
 		if !(bits <= int32(m_MAX_BITS)) {
 			break
 		}
-		*(*Tush)(unsafe.Pointer(s + 2952 + uintptr(bits)*2)) = uint16(0)
+		*(*Tush)(unsafe.Pointer(s + 2876 + uintptr(bits)*2)) = uint16(0)
 		goto _1
 	_1:
 		;
@@ -23349,13 +21621,13 @@ func _gen_bitlen(tls *libc.TLS, s uintptr, desc uintptr) {
 	/* In a first pass, compute the optimal bit lengths (which may
 	 * overflow in the case of the bit length tree).
 	 */
-	*(*Tush)(unsafe.Pointer(tree + uintptr(*(*int32)(unsafe.Pointer(s + 2984 + uintptr((*Tdeflate_state)(unsafe.Pointer(s)).Fheap_max)*4)))*4 + 2)) = uint16(0) /* root of the heap */
+	*(*Tush)(unsafe.Pointer(tree + uintptr(*(*int32)(unsafe.Pointer(s + 2908 + uintptr((*Tdeflate_state)(unsafe.Pointer(s)).Fheap_max)*4)))*4 + 2)) = uint16(0) /* root of the heap */
 	h = (*Tdeflate_state)(unsafe.Pointer(s)).Fheap_max + int32(1)
 	for {
 		if !(h < libc.Int32FromInt32(2)*(libc.Int32FromInt32(m_LITERALS)+libc.Int32FromInt32(1)+libc.Int32FromInt32(m_LENGTH_CODES))+libc.Int32FromInt32(1)) {
 			break
 		}
-		n = *(*int32)(unsafe.Pointer(s + 2984 + uintptr(h)*4))
+		n = *(*int32)(unsafe.Pointer(s + 2908 + uintptr(h)*4))
 		bits = int32(*(*Tush)(unsafe.Pointer(tree + uintptr(*(*Tush)(unsafe.Pointer(tree + uintptr(n)*4 + 2)))*4 + 2))) + int32(1)
 		if bits > max_length {
 			bits = max_length
@@ -23366,15 +21638,15 @@ func _gen_bitlen(tls *libc.TLS, s uintptr, desc uintptr) {
 		if n > max_code {
 			goto _2
 		} /* not a leaf node */
-		*(*Tush)(unsafe.Pointer(s + 2952 + uintptr(bits)*2))++
+		*(*Tush)(unsafe.Pointer(s + 2876 + uintptr(bits)*2))++
 		xbits = 0
 		if n >= base {
 			xbits = *(*Tintf)(unsafe.Pointer(extra + uintptr(n-base)*4))
 		}
 		f = *(*Tush)(unsafe.Pointer(tree + uintptr(n)*4))
-		*(*Tulg)(unsafe.Pointer(s + 5884)) += uint32(uint32(f)) * uint32(uint32(bits+xbits))
+		*(*Tulg)(unsafe.Pointer(s + 5800)) += uint32(uint32(f)) * uint32(uint32(bits+xbits))
 		if stree != 0 {
-			*(*Tulg)(unsafe.Pointer(s + 5888)) += uint32(uint32(f)) * uint32(uint32(int32(*(*Tush)(unsafe.Pointer(stree + uintptr(n)*4 + 2)))+xbits))
+			*(*Tulg)(unsafe.Pointer(s + 5804)) += uint32(uint32(f)) * uint32(uint32(int32(*(*Tush)(unsafe.Pointer(stree + uintptr(n)*4 + 2)))+xbits))
 		}
 		goto _2
 	_2:
@@ -23388,13 +21660,13 @@ func _gen_bitlen(tls *libc.TLS, s uintptr, desc uintptr) {
 	/* Find the first bit length which could increase: */
 	for cond := true; cond; cond = overflow > 0 {
 		bits = max_length - int32(1)
-		for int32(*(*Tush)(unsafe.Pointer(s + 2952 + uintptr(bits)*2))) == 0 {
+		for int32(*(*Tush)(unsafe.Pointer(s + 2876 + uintptr(bits)*2))) == 0 {
 			bits--
 		}
-		*(*Tush)(unsafe.Pointer(s + 2952 + uintptr(bits)*2))-- /* move one leaf down the tree */
-		p3 = s + 2952 + uintptr(bits+int32(1))*2
+		*(*Tush)(unsafe.Pointer(s + 2876 + uintptr(bits)*2))-- /* move one leaf down the tree */
+		p3 = s + 2876 + uintptr(bits+int32(1))*2
 		*(*Tush)(unsafe.Pointer(p3)) = Tush(int32(*(*Tush)(unsafe.Pointer(p3))) + libc.Int32FromInt32(2)) /* move one overflow item as its brother */
-		*(*Tush)(unsafe.Pointer(s + 2952 + uintptr(max_length)*2))--
+		*(*Tush)(unsafe.Pointer(s + 2876 + uintptr(max_length)*2))--
 		/* The brother of the overflow item also moves one step up,
 		 * but this does not affect bl_count[max_length]
 		 */
@@ -23410,16 +21682,16 @@ func _gen_bitlen(tls *libc.TLS, s uintptr, desc uintptr) {
 		if !(bits != 0) {
 			break
 		}
-		n = int32(*(*Tush)(unsafe.Pointer(s + 2952 + uintptr(bits)*2)))
+		n = int32(*(*Tush)(unsafe.Pointer(s + 2876 + uintptr(bits)*2)))
 		for n != 0 {
 			h--
 			v5 = h
-			m = *(*int32)(unsafe.Pointer(s + 2984 + uintptr(v5)*4))
+			m = *(*int32)(unsafe.Pointer(s + 2908 + uintptr(v5)*4))
 			if m > max_code {
 				continue
 			}
 			if uint32(*(*Tush)(unsafe.Pointer(tree + uintptr(m)*4 + 2))) != uint32(uint32(bits)) {
-				*(*Tulg)(unsafe.Pointer(s + 5884)) += (uint32(uint32(bits)) - uint32(*(*Tush)(unsafe.Pointer(tree + uintptr(m)*4 + 2)))) * uint32(*(*Tush)(unsafe.Pointer(tree + uintptr(m)*4)))
+				*(*Tulg)(unsafe.Pointer(s + 5800)) += (uint32(uint32(bits)) - uint32(*(*Tush)(unsafe.Pointer(tree + uintptr(m)*4 + 2)))) * uint32(*(*Tush)(unsafe.Pointer(tree + uintptr(m)*4)))
 				*(*Tush)(unsafe.Pointer(tree + uintptr(m)*4 + 2)) = uint16(uint16(bits))
 			}
 			n--
@@ -23466,13 +21738,13 @@ func _build_tree(tls *libc.TLS, s uintptr, desc uintptr) {
 			break
 		}
 		if int32(*(*Tush)(unsafe.Pointer(tree + uintptr(n)*4))) != 0 {
-			v3 = s + 5276
+			v3 = s + 5200
 			*(*int32)(unsafe.Pointer(v3))++
 			v2 = *(*int32)(unsafe.Pointer(v3))
 			v4 = n
 			max_code = v4
-			*(*int32)(unsafe.Pointer(s + 2984 + uintptr(v2)*4)) = v4
-			*(*Tuch)(unsafe.Pointer(s + 5284 + uintptr(n))) = uint8(0)
+			*(*int32)(unsafe.Pointer(s + 2908 + uintptr(v2)*4)) = v4
+			*(*Tuch)(unsafe.Pointer(s + 5208 + uintptr(n))) = uint8(0)
 		} else {
 			*(*Tush)(unsafe.Pointer(tree + uintptr(n)*4 + 2)) = uint16(0)
 		}
@@ -23495,16 +21767,16 @@ func _build_tree(tls *libc.TLS, s uintptr, desc uintptr) {
 			v6 = 0
 		}
 		v5 = v6
-		v9 = s + 5276
+		v9 = s + 5200
 		*(*int32)(unsafe.Pointer(v9))++
 		v8 = *(*int32)(unsafe.Pointer(v9))
-		*(*int32)(unsafe.Pointer(s + 2984 + uintptr(v8)*4)) = v5
+		*(*int32)(unsafe.Pointer(s + 2908 + uintptr(v8)*4)) = v5
 		node = v5
 		*(*Tush)(unsafe.Pointer(tree + uintptr(node)*4)) = uint16(1)
-		*(*Tuch)(unsafe.Pointer(s + 5284 + uintptr(node))) = uint8(0)
+		*(*Tuch)(unsafe.Pointer(s + 5208 + uintptr(node))) = uint8(0)
 		(*Tdeflate_state)(unsafe.Pointer(s)).Fopt_len--
 		if stree != 0 {
-			*(*Tulg)(unsafe.Pointer(s + 5888)) -= uint32(*(*Tush)(unsafe.Pointer(stree + uintptr(node)*4 + 2)))
+			*(*Tulg)(unsafe.Pointer(s + 5804)) -= uint32(*(*Tush)(unsafe.Pointer(stree + uintptr(node)*4 + 2)))
 		}
 		/* node is 0 or 1 so it does not have extra bits */
 	}
@@ -23528,48 +21800,48 @@ func _build_tree(tls *libc.TLS, s uintptr, desc uintptr) {
 	 */
 	node = elems /* next internal node of the tree */
 	for cond := true; cond; cond = (*Tdeflate_state)(unsafe.Pointer(s)).Fheap_len >= int32(2) {
-		n = *(*int32)(unsafe.Pointer(s + 2984 + 1*4))
-		v12 = s + 5276
+		n = *(*int32)(unsafe.Pointer(s + 2908 + 1*4))
+		v12 = s + 5200
 		v11 = *(*int32)(unsafe.Pointer(v12))
 		*(*int32)(unsafe.Pointer(v12))--
-		*(*int32)(unsafe.Pointer(s + 2984 + 1*4)) = *(*int32)(unsafe.Pointer(s + 2984 + uintptr(v11)*4))
+		*(*int32)(unsafe.Pointer(s + 2908 + 1*4)) = *(*int32)(unsafe.Pointer(s + 2908 + uintptr(v11)*4))
 		_pqdownheap(tls, s, tree, int32(m_SMALLEST))  /* n = node of least frequency */
-		m = *(*int32)(unsafe.Pointer(s + 2984 + 1*4)) /* m = node of next least frequency */
-		v14 = s + 5280
+		m = *(*int32)(unsafe.Pointer(s + 2908 + 1*4)) /* m = node of next least frequency */
+		v14 = s + 5204
 		*(*int32)(unsafe.Pointer(v14))--
 		v13 = *(*int32)(unsafe.Pointer(v14))
-		*(*int32)(unsafe.Pointer(s + 2984 + uintptr(v13)*4)) = n /* keep the nodes sorted by frequency */
-		v16 = s + 5280
+		*(*int32)(unsafe.Pointer(s + 2908 + uintptr(v13)*4)) = n /* keep the nodes sorted by frequency */
+		v16 = s + 5204
 		*(*int32)(unsafe.Pointer(v16))--
 		v15 = *(*int32)(unsafe.Pointer(v16))
-		*(*int32)(unsafe.Pointer(s + 2984 + uintptr(v15)*4)) = m
+		*(*int32)(unsafe.Pointer(s + 2908 + uintptr(v15)*4)) = m
 		/* Create a new node father of n and m */
 		*(*Tush)(unsafe.Pointer(tree + uintptr(node)*4)) = uint16(int32(*(*Tush)(unsafe.Pointer(tree + uintptr(n)*4))) + int32(*(*Tush)(unsafe.Pointer(tree + uintptr(m)*4))))
-		if int32(*(*Tuch)(unsafe.Pointer(s + 5284 + uintptr(n)))) >= int32(*(*Tuch)(unsafe.Pointer(s + 5284 + uintptr(m)))) {
-			v17 = int32(*(*Tuch)(unsafe.Pointer(s + 5284 + uintptr(n))))
+		if int32(*(*Tuch)(unsafe.Pointer(s + 5208 + uintptr(n)))) >= int32(*(*Tuch)(unsafe.Pointer(s + 5208 + uintptr(m)))) {
+			v17 = int32(*(*Tuch)(unsafe.Pointer(s + 5208 + uintptr(n))))
 		} else {
-			v17 = int32(*(*Tuch)(unsafe.Pointer(s + 5284 + uintptr(m))))
+			v17 = int32(*(*Tuch)(unsafe.Pointer(s + 5208 + uintptr(m))))
 		}
-		*(*Tuch)(unsafe.Pointer(s + 5284 + uintptr(node))) = uint8(v17 + libc.Int32FromInt32(1))
+		*(*Tuch)(unsafe.Pointer(s + 5208 + uintptr(node))) = uint8(v17 + libc.Int32FromInt32(1))
 		v18 = uint16(uint16(node))
 		*(*Tush)(unsafe.Pointer(tree + uintptr(m)*4 + 2)) = v18
 		*(*Tush)(unsafe.Pointer(tree + uintptr(n)*4 + 2)) = v18
 		/* and insert the new node in the heap */
 		v19 = node
 		node++
-		*(*int32)(unsafe.Pointer(s + 2984 + 1*4)) = v19
+		*(*int32)(unsafe.Pointer(s + 2908 + 1*4)) = v19
 		_pqdownheap(tls, s, tree, int32(m_SMALLEST))
 	}
-	v21 = s + 5280
+	v21 = s + 5204
 	*(*int32)(unsafe.Pointer(v21))--
 	v20 = *(*int32)(unsafe.Pointer(v21))
-	*(*int32)(unsafe.Pointer(s + 2984 + uintptr(v20)*4)) = *(*int32)(unsafe.Pointer(s + 2984 + 1*4))
+	*(*int32)(unsafe.Pointer(s + 2908 + uintptr(v20)*4)) = *(*int32)(unsafe.Pointer(s + 2908 + 1*4))
 	/* At this point, the fields freq and dad are set. We can now
 	 * generate the bit lengths.
 	 */
 	_gen_bitlen(tls, s, desc)
 	/* The field len is now set, we can generate the bit codes */
-	_gen_codes(tls, tree, max_code, s+2952)
+	_gen_codes(tls, tree, max_code, s+2876)
 }
 
 // C documentation
@@ -23605,19 +21877,19 @@ func _scan_tree(tls *libc.TLS, s uintptr, tree uintptr, max_code int32) {
 			goto _1
 		} else {
 			if count < min_count {
-				p3 = s + 2724 + uintptr(curlen)*4
+				p3 = s + 2684 + uintptr(curlen)*4
 				*(*Tush)(unsafe.Pointer(p3)) = Tush(int32(*(*Tush)(unsafe.Pointer(p3))) + count)
 			} else {
 				if curlen != 0 {
 					if curlen != prevlen {
-						*(*Tush)(unsafe.Pointer(s + 2724 + uintptr(curlen)*4))++
+						*(*Tush)(unsafe.Pointer(s + 2684 + uintptr(curlen)*4))++
 					}
-					*(*Tush)(unsafe.Pointer(s + 2724 + 16*4))++
+					*(*Tush)(unsafe.Pointer(s + 2684 + 16*4))++
 				} else {
 					if count <= int32(10) {
-						*(*Tush)(unsafe.Pointer(s + 2724 + 17*4))++
+						*(*Tush)(unsafe.Pointer(s + 2684 + 17*4))++
 					} else {
-						*(*Tush)(unsafe.Pointer(s + 2724 + 18*4))++
+						*(*Tush)(unsafe.Pointer(s + 2684 + 18*4))++
 					}
 				}
 			}
@@ -23678,25 +21950,25 @@ func _send_tree(tls *libc.TLS, s uintptr, tree uintptr, max_code int32) {
 		} else {
 			if count < min_count {
 				for {
-					len1 = int32(*(*Tush)(unsafe.Pointer(s + 2724 + uintptr(curlen)*4 + 2)))
+					len1 = int32(*(*Tush)(unsafe.Pointer(s + 2684 + uintptr(curlen)*4 + 2)))
 					if (*Tdeflate_state)(unsafe.Pointer(s)).Fbi_valid > libc.Int32FromInt32(m_Buf_size)-len1 {
-						val = int32(*(*Tush)(unsafe.Pointer(s + 2724 + uintptr(curlen)*4)))
-						p5 = s + 5900
+						val = int32(*(*Tush)(unsafe.Pointer(s + 2684 + uintptr(curlen)*4)))
+						p5 = s + 5816
 						*(*Tush)(unsafe.Pointer(p5)) = Tush(int32(*(*Tush)(unsafe.Pointer(p5))) | int32(uint16(uint16(val)))<<(*Tdeflate_state)(unsafe.Pointer(s)).Fbi_valid)
-						v7 = s + 40
+						v7 = s + 20
 						v6 = *(*Tulg)(unsafe.Pointer(v7))
 						*(*Tulg)(unsafe.Pointer(v7))++
 						*(*TBytef)(unsafe.Pointer((*Tdeflate_state)(unsafe.Pointer(s)).Fpending_buf + uintptr(v6))) = uint8(int32((*Tdeflate_state)(unsafe.Pointer(s)).Fbi_buf) & libc.Int32FromInt32(0xff))
-						v9 = s + 40
+						v9 = s + 20
 						v8 = *(*Tulg)(unsafe.Pointer(v9))
 						*(*Tulg)(unsafe.Pointer(v9))++
 						*(*TBytef)(unsafe.Pointer((*Tdeflate_state)(unsafe.Pointer(s)).Fpending_buf + uintptr(v8))) = uint8(int32((*Tdeflate_state)(unsafe.Pointer(s)).Fbi_buf) >> libc.Int32FromInt32(8))
 						(*Tdeflate_state)(unsafe.Pointer(s)).Fbi_buf = uint16(int32(uint16(uint16(val))) >> (int32(m_Buf_size) - (*Tdeflate_state)(unsafe.Pointer(s)).Fbi_valid))
-						*(*int32)(unsafe.Pointer(s + 5904)) += len1 - int32(m_Buf_size)
+						*(*int32)(unsafe.Pointer(s + 5820)) += len1 - int32(m_Buf_size)
 					} else {
-						p10 = s + 5900
-						*(*Tush)(unsafe.Pointer(p10)) = Tush(int32(*(*Tush)(unsafe.Pointer(p10))) | int32(*(*Tush)(unsafe.Pointer(s + 2724 + uintptr(curlen)*4)))<<(*Tdeflate_state)(unsafe.Pointer(s)).Fbi_valid)
-						*(*int32)(unsafe.Pointer(s + 5904)) += len1
+						p10 = s + 5816
+						*(*Tush)(unsafe.Pointer(p10)) = Tush(int32(*(*Tush)(unsafe.Pointer(p10))) | int32(*(*Tush)(unsafe.Pointer(s + 2684 + uintptr(curlen)*4)))<<(*Tdeflate_state)(unsafe.Pointer(s)).Fbi_valid)
+						*(*int32)(unsafe.Pointer(s + 5820)) += len1
 					}
 					goto _4
 				_4:
@@ -23710,150 +21982,150 @@ func _send_tree(tls *libc.TLS, s uintptr, tree uintptr, max_code int32) {
 			} else {
 				if curlen != 0 {
 					if curlen != prevlen {
-						len11 = int32(*(*Tush)(unsafe.Pointer(s + 2724 + uintptr(curlen)*4 + 2)))
+						len11 = int32(*(*Tush)(unsafe.Pointer(s + 2684 + uintptr(curlen)*4 + 2)))
 						if (*Tdeflate_state)(unsafe.Pointer(s)).Fbi_valid > libc.Int32FromInt32(m_Buf_size)-len11 {
-							val1 = int32(*(*Tush)(unsafe.Pointer(s + 2724 + uintptr(curlen)*4)))
-							p11 = s + 5900
+							val1 = int32(*(*Tush)(unsafe.Pointer(s + 2684 + uintptr(curlen)*4)))
+							p11 = s + 5816
 							*(*Tush)(unsafe.Pointer(p11)) = Tush(int32(*(*Tush)(unsafe.Pointer(p11))) | int32(uint16(uint16(val1)))<<(*Tdeflate_state)(unsafe.Pointer(s)).Fbi_valid)
-							v13 = s + 40
+							v13 = s + 20
 							v12 = *(*Tulg)(unsafe.Pointer(v13))
 							*(*Tulg)(unsafe.Pointer(v13))++
 							*(*TBytef)(unsafe.Pointer((*Tdeflate_state)(unsafe.Pointer(s)).Fpending_buf + uintptr(v12))) = uint8(int32((*Tdeflate_state)(unsafe.Pointer(s)).Fbi_buf) & libc.Int32FromInt32(0xff))
-							v15 = s + 40
+							v15 = s + 20
 							v14 = *(*Tulg)(unsafe.Pointer(v15))
 							*(*Tulg)(unsafe.Pointer(v15))++
 							*(*TBytef)(unsafe.Pointer((*Tdeflate_state)(unsafe.Pointer(s)).Fpending_buf + uintptr(v14))) = uint8(int32((*Tdeflate_state)(unsafe.Pointer(s)).Fbi_buf) >> libc.Int32FromInt32(8))
 							(*Tdeflate_state)(unsafe.Pointer(s)).Fbi_buf = uint16(int32(uint16(uint16(val1))) >> (int32(m_Buf_size) - (*Tdeflate_state)(unsafe.Pointer(s)).Fbi_valid))
-							*(*int32)(unsafe.Pointer(s + 5904)) += len11 - int32(m_Buf_size)
+							*(*int32)(unsafe.Pointer(s + 5820)) += len11 - int32(m_Buf_size)
 						} else {
-							p16 = s + 5900
-							*(*Tush)(unsafe.Pointer(p16)) = Tush(int32(*(*Tush)(unsafe.Pointer(p16))) | int32(*(*Tush)(unsafe.Pointer(s + 2724 + uintptr(curlen)*4)))<<(*Tdeflate_state)(unsafe.Pointer(s)).Fbi_valid)
-							*(*int32)(unsafe.Pointer(s + 5904)) += len11
+							p16 = s + 5816
+							*(*Tush)(unsafe.Pointer(p16)) = Tush(int32(*(*Tush)(unsafe.Pointer(p16))) | int32(*(*Tush)(unsafe.Pointer(s + 2684 + uintptr(curlen)*4)))<<(*Tdeflate_state)(unsafe.Pointer(s)).Fbi_valid)
+							*(*int32)(unsafe.Pointer(s + 5820)) += len11
 						}
 						count--
 					}
-					len2 = int32(*(*Tush)(unsafe.Pointer(s + 2724 + 16*4 + 2)))
+					len2 = int32(*(*Tush)(unsafe.Pointer(s + 2684 + 16*4 + 2)))
 					if (*Tdeflate_state)(unsafe.Pointer(s)).Fbi_valid > libc.Int32FromInt32(m_Buf_size)-len2 {
-						val2 = int32(*(*Tush)(unsafe.Pointer(s + 2724 + 16*4)))
-						p17 = s + 5900
+						val2 = int32(*(*Tush)(unsafe.Pointer(s + 2684 + 16*4)))
+						p17 = s + 5816
 						*(*Tush)(unsafe.Pointer(p17)) = Tush(int32(*(*Tush)(unsafe.Pointer(p17))) | int32(uint16(uint16(val2)))<<(*Tdeflate_state)(unsafe.Pointer(s)).Fbi_valid)
-						v19 = s + 40
+						v19 = s + 20
 						v18 = *(*Tulg)(unsafe.Pointer(v19))
 						*(*Tulg)(unsafe.Pointer(v19))++
 						*(*TBytef)(unsafe.Pointer((*Tdeflate_state)(unsafe.Pointer(s)).Fpending_buf + uintptr(v18))) = uint8(int32((*Tdeflate_state)(unsafe.Pointer(s)).Fbi_buf) & libc.Int32FromInt32(0xff))
-						v21 = s + 40
+						v21 = s + 20
 						v20 = *(*Tulg)(unsafe.Pointer(v21))
 						*(*Tulg)(unsafe.Pointer(v21))++
 						*(*TBytef)(unsafe.Pointer((*Tdeflate_state)(unsafe.Pointer(s)).Fpending_buf + uintptr(v20))) = uint8(int32((*Tdeflate_state)(unsafe.Pointer(s)).Fbi_buf) >> libc.Int32FromInt32(8))
 						(*Tdeflate_state)(unsafe.Pointer(s)).Fbi_buf = uint16(int32(uint16(uint16(val2))) >> (int32(m_Buf_size) - (*Tdeflate_state)(unsafe.Pointer(s)).Fbi_valid))
-						*(*int32)(unsafe.Pointer(s + 5904)) += len2 - int32(m_Buf_size)
+						*(*int32)(unsafe.Pointer(s + 5820)) += len2 - int32(m_Buf_size)
 					} else {
-						p22 = s + 5900
-						*(*Tush)(unsafe.Pointer(p22)) = Tush(int32(*(*Tush)(unsafe.Pointer(p22))) | int32(*(*Tush)(unsafe.Pointer(s + 2724 + 16*4)))<<(*Tdeflate_state)(unsafe.Pointer(s)).Fbi_valid)
-						*(*int32)(unsafe.Pointer(s + 5904)) += len2
+						p22 = s + 5816
+						*(*Tush)(unsafe.Pointer(p22)) = Tush(int32(*(*Tush)(unsafe.Pointer(p22))) | int32(*(*Tush)(unsafe.Pointer(s + 2684 + 16*4)))<<(*Tdeflate_state)(unsafe.Pointer(s)).Fbi_valid)
+						*(*int32)(unsafe.Pointer(s + 5820)) += len2
 					}
 					len3 = int32(2)
 					if (*Tdeflate_state)(unsafe.Pointer(s)).Fbi_valid > libc.Int32FromInt32(m_Buf_size)-len3 {
 						val3 = count - int32(3)
-						p23 = s + 5900
+						p23 = s + 5816
 						*(*Tush)(unsafe.Pointer(p23)) = Tush(int32(*(*Tush)(unsafe.Pointer(p23))) | int32(uint16(uint16(val3)))<<(*Tdeflate_state)(unsafe.Pointer(s)).Fbi_valid)
-						v25 = s + 40
+						v25 = s + 20
 						v24 = *(*Tulg)(unsafe.Pointer(v25))
 						*(*Tulg)(unsafe.Pointer(v25))++
 						*(*TBytef)(unsafe.Pointer((*Tdeflate_state)(unsafe.Pointer(s)).Fpending_buf + uintptr(v24))) = uint8(int32((*Tdeflate_state)(unsafe.Pointer(s)).Fbi_buf) & libc.Int32FromInt32(0xff))
-						v27 = s + 40
+						v27 = s + 20
 						v26 = *(*Tulg)(unsafe.Pointer(v27))
 						*(*Tulg)(unsafe.Pointer(v27))++
 						*(*TBytef)(unsafe.Pointer((*Tdeflate_state)(unsafe.Pointer(s)).Fpending_buf + uintptr(v26))) = uint8(int32((*Tdeflate_state)(unsafe.Pointer(s)).Fbi_buf) >> libc.Int32FromInt32(8))
 						(*Tdeflate_state)(unsafe.Pointer(s)).Fbi_buf = uint16(int32(uint16(uint16(val3))) >> (int32(m_Buf_size) - (*Tdeflate_state)(unsafe.Pointer(s)).Fbi_valid))
-						*(*int32)(unsafe.Pointer(s + 5904)) += len3 - int32(m_Buf_size)
+						*(*int32)(unsafe.Pointer(s + 5820)) += len3 - int32(m_Buf_size)
 					} else {
-						p28 = s + 5900
+						p28 = s + 5816
 						*(*Tush)(unsafe.Pointer(p28)) = Tush(int32(*(*Tush)(unsafe.Pointer(p28))) | int32(uint16(count-libc.Int32FromInt32(3)))<<(*Tdeflate_state)(unsafe.Pointer(s)).Fbi_valid)
-						*(*int32)(unsafe.Pointer(s + 5904)) += len3
+						*(*int32)(unsafe.Pointer(s + 5820)) += len3
 					}
 				} else {
 					if count <= int32(10) {
-						len4 = int32(*(*Tush)(unsafe.Pointer(s + 2724 + 17*4 + 2)))
+						len4 = int32(*(*Tush)(unsafe.Pointer(s + 2684 + 17*4 + 2)))
 						if (*Tdeflate_state)(unsafe.Pointer(s)).Fbi_valid > libc.Int32FromInt32(m_Buf_size)-len4 {
-							val4 = int32(*(*Tush)(unsafe.Pointer(s + 2724 + 17*4)))
-							p29 = s + 5900
+							val4 = int32(*(*Tush)(unsafe.Pointer(s + 2684 + 17*4)))
+							p29 = s + 5816
 							*(*Tush)(unsafe.Pointer(p29)) = Tush(int32(*(*Tush)(unsafe.Pointer(p29))) | int32(uint16(uint16(val4)))<<(*Tdeflate_state)(unsafe.Pointer(s)).Fbi_valid)
-							v31 = s + 40
+							v31 = s + 20
 							v30 = *(*Tulg)(unsafe.Pointer(v31))
 							*(*Tulg)(unsafe.Pointer(v31))++
 							*(*TBytef)(unsafe.Pointer((*Tdeflate_state)(unsafe.Pointer(s)).Fpending_buf + uintptr(v30))) = uint8(int32((*Tdeflate_state)(unsafe.Pointer(s)).Fbi_buf) & libc.Int32FromInt32(0xff))
-							v33 = s + 40
+							v33 = s + 20
 							v32 = *(*Tulg)(unsafe.Pointer(v33))
 							*(*Tulg)(unsafe.Pointer(v33))++
 							*(*TBytef)(unsafe.Pointer((*Tdeflate_state)(unsafe.Pointer(s)).Fpending_buf + uintptr(v32))) = uint8(int32((*Tdeflate_state)(unsafe.Pointer(s)).Fbi_buf) >> libc.Int32FromInt32(8))
 							(*Tdeflate_state)(unsafe.Pointer(s)).Fbi_buf = uint16(int32(uint16(uint16(val4))) >> (int32(m_Buf_size) - (*Tdeflate_state)(unsafe.Pointer(s)).Fbi_valid))
-							*(*int32)(unsafe.Pointer(s + 5904)) += len4 - int32(m_Buf_size)
+							*(*int32)(unsafe.Pointer(s + 5820)) += len4 - int32(m_Buf_size)
 						} else {
-							p34 = s + 5900
-							*(*Tush)(unsafe.Pointer(p34)) = Tush(int32(*(*Tush)(unsafe.Pointer(p34))) | int32(*(*Tush)(unsafe.Pointer(s + 2724 + 17*4)))<<(*Tdeflate_state)(unsafe.Pointer(s)).Fbi_valid)
-							*(*int32)(unsafe.Pointer(s + 5904)) += len4
+							p34 = s + 5816
+							*(*Tush)(unsafe.Pointer(p34)) = Tush(int32(*(*Tush)(unsafe.Pointer(p34))) | int32(*(*Tush)(unsafe.Pointer(s + 2684 + 17*4)))<<(*Tdeflate_state)(unsafe.Pointer(s)).Fbi_valid)
+							*(*int32)(unsafe.Pointer(s + 5820)) += len4
 						}
 						len5 = int32(3)
 						if (*Tdeflate_state)(unsafe.Pointer(s)).Fbi_valid > libc.Int32FromInt32(m_Buf_size)-len5 {
 							val5 = count - int32(3)
-							p35 = s + 5900
+							p35 = s + 5816
 							*(*Tush)(unsafe.Pointer(p35)) = Tush(int32(*(*Tush)(unsafe.Pointer(p35))) | int32(uint16(uint16(val5)))<<(*Tdeflate_state)(unsafe.Pointer(s)).Fbi_valid)
-							v37 = s + 40
+							v37 = s + 20
 							v36 = *(*Tulg)(unsafe.Pointer(v37))
 							*(*Tulg)(unsafe.Pointer(v37))++
 							*(*TBytef)(unsafe.Pointer((*Tdeflate_state)(unsafe.Pointer(s)).Fpending_buf + uintptr(v36))) = uint8(int32((*Tdeflate_state)(unsafe.Pointer(s)).Fbi_buf) & libc.Int32FromInt32(0xff))
-							v39 = s + 40
+							v39 = s + 20
 							v38 = *(*Tulg)(unsafe.Pointer(v39))
 							*(*Tulg)(unsafe.Pointer(v39))++
 							*(*TBytef)(unsafe.Pointer((*Tdeflate_state)(unsafe.Pointer(s)).Fpending_buf + uintptr(v38))) = uint8(int32((*Tdeflate_state)(unsafe.Pointer(s)).Fbi_buf) >> libc.Int32FromInt32(8))
 							(*Tdeflate_state)(unsafe.Pointer(s)).Fbi_buf = uint16(int32(uint16(uint16(val5))) >> (int32(m_Buf_size) - (*Tdeflate_state)(unsafe.Pointer(s)).Fbi_valid))
-							*(*int32)(unsafe.Pointer(s + 5904)) += len5 - int32(m_Buf_size)
+							*(*int32)(unsafe.Pointer(s + 5820)) += len5 - int32(m_Buf_size)
 						} else {
-							p40 = s + 5900
+							p40 = s + 5816
 							*(*Tush)(unsafe.Pointer(p40)) = Tush(int32(*(*Tush)(unsafe.Pointer(p40))) | int32(uint16(count-libc.Int32FromInt32(3)))<<(*Tdeflate_state)(unsafe.Pointer(s)).Fbi_valid)
-							*(*int32)(unsafe.Pointer(s + 5904)) += len5
+							*(*int32)(unsafe.Pointer(s + 5820)) += len5
 						}
 					} else {
-						len6 = int32(*(*Tush)(unsafe.Pointer(s + 2724 + 18*4 + 2)))
+						len6 = int32(*(*Tush)(unsafe.Pointer(s + 2684 + 18*4 + 2)))
 						if (*Tdeflate_state)(unsafe.Pointer(s)).Fbi_valid > libc.Int32FromInt32(m_Buf_size)-len6 {
-							val6 = int32(*(*Tush)(unsafe.Pointer(s + 2724 + 18*4)))
-							p41 = s + 5900
+							val6 = int32(*(*Tush)(unsafe.Pointer(s + 2684 + 18*4)))
+							p41 = s + 5816
 							*(*Tush)(unsafe.Pointer(p41)) = Tush(int32(*(*Tush)(unsafe.Pointer(p41))) | int32(uint16(uint16(val6)))<<(*Tdeflate_state)(unsafe.Pointer(s)).Fbi_valid)
-							v43 = s + 40
+							v43 = s + 20
 							v42 = *(*Tulg)(unsafe.Pointer(v43))
 							*(*Tulg)(unsafe.Pointer(v43))++
 							*(*TBytef)(unsafe.Pointer((*Tdeflate_state)(unsafe.Pointer(s)).Fpending_buf + uintptr(v42))) = uint8(int32((*Tdeflate_state)(unsafe.Pointer(s)).Fbi_buf) & libc.Int32FromInt32(0xff))
-							v45 = s + 40
+							v45 = s + 20
 							v44 = *(*Tulg)(unsafe.Pointer(v45))
 							*(*Tulg)(unsafe.Pointer(v45))++
 							*(*TBytef)(unsafe.Pointer((*Tdeflate_state)(unsafe.Pointer(s)).Fpending_buf + uintptr(v44))) = uint8(int32((*Tdeflate_state)(unsafe.Pointer(s)).Fbi_buf) >> libc.Int32FromInt32(8))
 							(*Tdeflate_state)(unsafe.Pointer(s)).Fbi_buf = uint16(int32(uint16(uint16(val6))) >> (int32(m_Buf_size) - (*Tdeflate_state)(unsafe.Pointer(s)).Fbi_valid))
-							*(*int32)(unsafe.Pointer(s + 5904)) += len6 - int32(m_Buf_size)
+							*(*int32)(unsafe.Pointer(s + 5820)) += len6 - int32(m_Buf_size)
 						} else {
-							p46 = s + 5900
-							*(*Tush)(unsafe.Pointer(p46)) = Tush(int32(*(*Tush)(unsafe.Pointer(p46))) | int32(*(*Tush)(unsafe.Pointer(s + 2724 + 18*4)))<<(*Tdeflate_state)(unsafe.Pointer(s)).Fbi_valid)
-							*(*int32)(unsafe.Pointer(s + 5904)) += len6
+							p46 = s + 5816
+							*(*Tush)(unsafe.Pointer(p46)) = Tush(int32(*(*Tush)(unsafe.Pointer(p46))) | int32(*(*Tush)(unsafe.Pointer(s + 2684 + 18*4)))<<(*Tdeflate_state)(unsafe.Pointer(s)).Fbi_valid)
+							*(*int32)(unsafe.Pointer(s + 5820)) += len6
 						}
 						len7 = int32(7)
 						if (*Tdeflate_state)(unsafe.Pointer(s)).Fbi_valid > libc.Int32FromInt32(m_Buf_size)-len7 {
 							val7 = count - int32(11)
-							p47 = s + 5900
+							p47 = s + 5816
 							*(*Tush)(unsafe.Pointer(p47)) = Tush(int32(*(*Tush)(unsafe.Pointer(p47))) | int32(uint16(uint16(val7)))<<(*Tdeflate_state)(unsafe.Pointer(s)).Fbi_valid)
-							v49 = s + 40
+							v49 = s + 20
 							v48 = *(*Tulg)(unsafe.Pointer(v49))
 							*(*Tulg)(unsafe.Pointer(v49))++
 							*(*TBytef)(unsafe.Pointer((*Tdeflate_state)(unsafe.Pointer(s)).Fpending_buf + uintptr(v48))) = uint8(int32((*Tdeflate_state)(unsafe.Pointer(s)).Fbi_buf) & libc.Int32FromInt32(0xff))
-							v51 = s + 40
+							v51 = s + 20
 							v50 = *(*Tulg)(unsafe.Pointer(v51))
 							*(*Tulg)(unsafe.Pointer(v51))++
 							*(*TBytef)(unsafe.Pointer((*Tdeflate_state)(unsafe.Pointer(s)).Fpending_buf + uintptr(v50))) = uint8(int32((*Tdeflate_state)(unsafe.Pointer(s)).Fbi_buf) >> libc.Int32FromInt32(8))
 							(*Tdeflate_state)(unsafe.Pointer(s)).Fbi_buf = uint16(int32(uint16(uint16(val7))) >> (int32(m_Buf_size) - (*Tdeflate_state)(unsafe.Pointer(s)).Fbi_valid))
-							*(*int32)(unsafe.Pointer(s + 5904)) += len7 - int32(m_Buf_size)
+							*(*int32)(unsafe.Pointer(s + 5820)) += len7 - int32(m_Buf_size)
 						} else {
-							p52 = s + 5900
+							p52 = s + 5816
 							*(*Tush)(unsafe.Pointer(p52)) = Tush(int32(*(*Tush)(unsafe.Pointer(p52))) | int32(uint16(count-libc.Int32FromInt32(11)))<<(*Tdeflate_state)(unsafe.Pointer(s)).Fbi_valid)
-							*(*int32)(unsafe.Pointer(s + 5904)) += len7
+							*(*int32)(unsafe.Pointer(s + 5820)) += len7
 						}
 					}
 				}
@@ -23890,10 +22162,10 @@ func _build_bl_tree(tls *libc.TLS, s uintptr) (r int32) {
 	var max_blindex int32
 	_ = max_blindex /* index of last bit length code of non zero freq */
 	/* Determine the bit length frequencies for literal and distance trees */
-	_scan_tree(tls, s, s+188, (*Tdeflate_state)(unsafe.Pointer(s)).Fl_desc.Fmax_code)
-	_scan_tree(tls, s, s+2480, (*Tdeflate_state)(unsafe.Pointer(s)).Fd_desc.Fmax_code)
+	_scan_tree(tls, s, s+148, (*Tdeflate_state)(unsafe.Pointer(s)).Fl_desc.Fmax_code)
+	_scan_tree(tls, s, s+2440, (*Tdeflate_state)(unsafe.Pointer(s)).Fd_desc.Fmax_code)
 	/* Build the bit length tree: */
-	_build_tree(tls, s, s+2928)
+	_build_tree(tls, s, s+2864)
 	/* opt_len now includes the length of the tree representations, except the
 	 * lengths of the bit lengths codes and the 5 + 5 + 4 bits for the counts.
 	 */
@@ -23906,7 +22178,7 @@ func _build_bl_tree(tls *libc.TLS, s uintptr) (r int32) {
 		if !(max_blindex >= int32(3)) {
 			break
 		}
-		if int32(*(*Tush)(unsafe.Pointer(s + 2724 + uintptr(_bl_order[max_blindex])*4 + 2))) != 0 {
+		if int32(*(*Tush)(unsafe.Pointer(s + 2684 + uintptr(_bl_order[max_blindex])*4 + 2))) != 0 {
 			break
 		}
 		goto _1
@@ -23915,7 +22187,7 @@ func _build_bl_tree(tls *libc.TLS, s uintptr) (r int32) {
 		max_blindex--
 	}
 	/* Update opt_len to include the bit length tree and counts */
-	*(*Tulg)(unsafe.Pointer(s + 5884)) += uint32(3)*(uint32(uint32(max_blindex))+uint32(1)) + uint32(5) + uint32(5) + uint32(4)
+	*(*Tulg)(unsafe.Pointer(s + 5800)) += uint32(3)*(uint32(uint32(max_blindex))+uint32(1)) + uint32(5) + uint32(5) + uint32(4)
 	return max_blindex
 }
 
@@ -23934,62 +22206,62 @@ func _send_all_trees(tls *libc.TLS, s uintptr, lcodes int32, dcodes int32, blcod
 	len1 = int32(5)
 	if (*Tdeflate_state)(unsafe.Pointer(s)).Fbi_valid > libc.Int32FromInt32(m_Buf_size)-len1 {
 		val = lcodes - int32(257)
-		p1 = s + 5900
+		p1 = s + 5816
 		*(*Tush)(unsafe.Pointer(p1)) = Tush(int32(*(*Tush)(unsafe.Pointer(p1))) | int32(uint16(uint16(val)))<<(*Tdeflate_state)(unsafe.Pointer(s)).Fbi_valid)
-		v3 = s + 40
+		v3 = s + 20
 		v2 = *(*Tulg)(unsafe.Pointer(v3))
 		*(*Tulg)(unsafe.Pointer(v3))++
 		*(*TBytef)(unsafe.Pointer((*Tdeflate_state)(unsafe.Pointer(s)).Fpending_buf + uintptr(v2))) = uint8(int32((*Tdeflate_state)(unsafe.Pointer(s)).Fbi_buf) & libc.Int32FromInt32(0xff))
-		v5 = s + 40
+		v5 = s + 20
 		v4 = *(*Tulg)(unsafe.Pointer(v5))
 		*(*Tulg)(unsafe.Pointer(v5))++
 		*(*TBytef)(unsafe.Pointer((*Tdeflate_state)(unsafe.Pointer(s)).Fpending_buf + uintptr(v4))) = uint8(int32((*Tdeflate_state)(unsafe.Pointer(s)).Fbi_buf) >> libc.Int32FromInt32(8))
 		(*Tdeflate_state)(unsafe.Pointer(s)).Fbi_buf = uint16(int32(uint16(uint16(val))) >> (int32(m_Buf_size) - (*Tdeflate_state)(unsafe.Pointer(s)).Fbi_valid))
-		*(*int32)(unsafe.Pointer(s + 5904)) += len1 - int32(m_Buf_size)
+		*(*int32)(unsafe.Pointer(s + 5820)) += len1 - int32(m_Buf_size)
 	} else {
-		p6 = s + 5900
+		p6 = s + 5816
 		*(*Tush)(unsafe.Pointer(p6)) = Tush(int32(*(*Tush)(unsafe.Pointer(p6))) | int32(uint16(lcodes-libc.Int32FromInt32(257)))<<(*Tdeflate_state)(unsafe.Pointer(s)).Fbi_valid)
-		*(*int32)(unsafe.Pointer(s + 5904)) += len1
+		*(*int32)(unsafe.Pointer(s + 5820)) += len1
 	} /* not +255 as stated in appnote.txt */
 	len11 = int32(5)
 	if (*Tdeflate_state)(unsafe.Pointer(s)).Fbi_valid > libc.Int32FromInt32(m_Buf_size)-len11 {
 		val1 = dcodes - int32(1)
-		p7 = s + 5900
+		p7 = s + 5816
 		*(*Tush)(unsafe.Pointer(p7)) = Tush(int32(*(*Tush)(unsafe.Pointer(p7))) | int32(uint16(uint16(val1)))<<(*Tdeflate_state)(unsafe.Pointer(s)).Fbi_valid)
-		v9 = s + 40
+		v9 = s + 20
 		v8 = *(*Tulg)(unsafe.Pointer(v9))
 		*(*Tulg)(unsafe.Pointer(v9))++
 		*(*TBytef)(unsafe.Pointer((*Tdeflate_state)(unsafe.Pointer(s)).Fpending_buf + uintptr(v8))) = uint8(int32((*Tdeflate_state)(unsafe.Pointer(s)).Fbi_buf) & libc.Int32FromInt32(0xff))
-		v11 = s + 40
+		v11 = s + 20
 		v10 = *(*Tulg)(unsafe.Pointer(v11))
 		*(*Tulg)(unsafe.Pointer(v11))++
 		*(*TBytef)(unsafe.Pointer((*Tdeflate_state)(unsafe.Pointer(s)).Fpending_buf + uintptr(v10))) = uint8(int32((*Tdeflate_state)(unsafe.Pointer(s)).Fbi_buf) >> libc.Int32FromInt32(8))
 		(*Tdeflate_state)(unsafe.Pointer(s)).Fbi_buf = uint16(int32(uint16(uint16(val1))) >> (int32(m_Buf_size) - (*Tdeflate_state)(unsafe.Pointer(s)).Fbi_valid))
-		*(*int32)(unsafe.Pointer(s + 5904)) += len11 - int32(m_Buf_size)
+		*(*int32)(unsafe.Pointer(s + 5820)) += len11 - int32(m_Buf_size)
 	} else {
-		p12 = s + 5900
+		p12 = s + 5816
 		*(*Tush)(unsafe.Pointer(p12)) = Tush(int32(*(*Tush)(unsafe.Pointer(p12))) | int32(uint16(dcodes-libc.Int32FromInt32(1)))<<(*Tdeflate_state)(unsafe.Pointer(s)).Fbi_valid)
-		*(*int32)(unsafe.Pointer(s + 5904)) += len11
+		*(*int32)(unsafe.Pointer(s + 5820)) += len11
 	}
 	len2 = int32(4)
 	if (*Tdeflate_state)(unsafe.Pointer(s)).Fbi_valid > libc.Int32FromInt32(m_Buf_size)-len2 {
 		val2 = blcodes - int32(4)
-		p13 = s + 5900
+		p13 = s + 5816
 		*(*Tush)(unsafe.Pointer(p13)) = Tush(int32(*(*Tush)(unsafe.Pointer(p13))) | int32(uint16(uint16(val2)))<<(*Tdeflate_state)(unsafe.Pointer(s)).Fbi_valid)
-		v15 = s + 40
+		v15 = s + 20
 		v14 = *(*Tulg)(unsafe.Pointer(v15))
 		*(*Tulg)(unsafe.Pointer(v15))++
 		*(*TBytef)(unsafe.Pointer((*Tdeflate_state)(unsafe.Pointer(s)).Fpending_buf + uintptr(v14))) = uint8(int32((*Tdeflate_state)(unsafe.Pointer(s)).Fbi_buf) & libc.Int32FromInt32(0xff))
-		v17 = s + 40
+		v17 = s + 20
 		v16 = *(*Tulg)(unsafe.Pointer(v17))
 		*(*Tulg)(unsafe.Pointer(v17))++
 		*(*TBytef)(unsafe.Pointer((*Tdeflate_state)(unsafe.Pointer(s)).Fpending_buf + uintptr(v16))) = uint8(int32((*Tdeflate_state)(unsafe.Pointer(s)).Fbi_buf) >> libc.Int32FromInt32(8))
 		(*Tdeflate_state)(unsafe.Pointer(s)).Fbi_buf = uint16(int32(uint16(uint16(val2))) >> (int32(m_Buf_size) - (*Tdeflate_state)(unsafe.Pointer(s)).Fbi_valid))
-		*(*int32)(unsafe.Pointer(s + 5904)) += len2 - int32(m_Buf_size)
+		*(*int32)(unsafe.Pointer(s + 5820)) += len2 - int32(m_Buf_size)
 	} else {
-		p18 = s + 5900
+		p18 = s + 5816
 		*(*Tush)(unsafe.Pointer(p18)) = Tush(int32(*(*Tush)(unsafe.Pointer(p18))) | int32(uint16(blcodes-libc.Int32FromInt32(4)))<<(*Tdeflate_state)(unsafe.Pointer(s)).Fbi_valid)
-		*(*int32)(unsafe.Pointer(s + 5904)) += len2
+		*(*int32)(unsafe.Pointer(s + 5820)) += len2
 	} /* not -3 as stated in appnote.txt */
 	rank = 0
 	for {
@@ -23998,31 +22270,31 @@ func _send_all_trees(tls *libc.TLS, s uintptr, lcodes int32, dcodes int32, blcod
 		}
 		len3 = int32(3)
 		if (*Tdeflate_state)(unsafe.Pointer(s)).Fbi_valid > libc.Int32FromInt32(m_Buf_size)-len3 {
-			val3 = int32(*(*Tush)(unsafe.Pointer(s + 2724 + uintptr(_bl_order[rank])*4 + 2)))
-			p20 = s + 5900
+			val3 = int32(*(*Tush)(unsafe.Pointer(s + 2684 + uintptr(_bl_order[rank])*4 + 2)))
+			p20 = s + 5816
 			*(*Tush)(unsafe.Pointer(p20)) = Tush(int32(*(*Tush)(unsafe.Pointer(p20))) | int32(uint16(uint16(val3)))<<(*Tdeflate_state)(unsafe.Pointer(s)).Fbi_valid)
-			v22 = s + 40
+			v22 = s + 20
 			v21 = *(*Tulg)(unsafe.Pointer(v22))
 			*(*Tulg)(unsafe.Pointer(v22))++
 			*(*TBytef)(unsafe.Pointer((*Tdeflate_state)(unsafe.Pointer(s)).Fpending_buf + uintptr(v21))) = uint8(int32((*Tdeflate_state)(unsafe.Pointer(s)).Fbi_buf) & libc.Int32FromInt32(0xff))
-			v24 = s + 40
+			v24 = s + 20
 			v23 = *(*Tulg)(unsafe.Pointer(v24))
 			*(*Tulg)(unsafe.Pointer(v24))++
 			*(*TBytef)(unsafe.Pointer((*Tdeflate_state)(unsafe.Pointer(s)).Fpending_buf + uintptr(v23))) = uint8(int32((*Tdeflate_state)(unsafe.Pointer(s)).Fbi_buf) >> libc.Int32FromInt32(8))
 			(*Tdeflate_state)(unsafe.Pointer(s)).Fbi_buf = uint16(int32(uint16(uint16(val3))) >> (int32(m_Buf_size) - (*Tdeflate_state)(unsafe.Pointer(s)).Fbi_valid))
-			*(*int32)(unsafe.Pointer(s + 5904)) += len3 - int32(m_Buf_size)
+			*(*int32)(unsafe.Pointer(s + 5820)) += len3 - int32(m_Buf_size)
 		} else {
-			p25 = s + 5900
-			*(*Tush)(unsafe.Pointer(p25)) = Tush(int32(*(*Tush)(unsafe.Pointer(p25))) | int32(*(*Tush)(unsafe.Pointer(s + 2724 + uintptr(_bl_order[rank])*4 + 2)))<<(*Tdeflate_state)(unsafe.Pointer(s)).Fbi_valid)
-			*(*int32)(unsafe.Pointer(s + 5904)) += len3
+			p25 = s + 5816
+			*(*Tush)(unsafe.Pointer(p25)) = Tush(int32(*(*Tush)(unsafe.Pointer(p25))) | int32(*(*Tush)(unsafe.Pointer(s + 2684 + uintptr(_bl_order[rank])*4 + 2)))<<(*Tdeflate_state)(unsafe.Pointer(s)).Fbi_valid)
+			*(*int32)(unsafe.Pointer(s + 5820)) += len3
 		}
 		goto _19
 	_19:
 		;
 		rank++
 	}
-	_send_tree(tls, s, s+188, lcodes-int32(1)) /* literal tree */
-	_send_tree(tls, s, s+2480, dcodes-int32(1)) /* distance tree */
+	_send_tree(tls, s, s+148, lcodes-int32(1)) /* literal tree */
+	_send_tree(tls, s, s+2440, dcodes-int32(1)) /* distance tree */
 }
 
 // C documentation
@@ -24038,44 +22310,44 @@ func x__tr_stored_block(tls *libc.TLS, s uintptr, buf uintptr, stored_len Tulg, 
 	len1 = int32(3)
 	if (*Tdeflate_state)(unsafe.Pointer(s)).Fbi_valid > libc.Int32FromInt32(m_Buf_size)-len1 {
 		val = libc.Int32FromInt32(m_STORED_BLOCK)<<libc.Int32FromInt32(1) + last
-		p1 = s + 5900
+		p1 = s + 5816
 		*(*Tush)(unsafe.Pointer(p1)) = Tush(int32(*(*Tush)(unsafe.Pointer(p1))) | int32(uint16(uint16(val)))<<(*Tdeflate_state)(unsafe.Pointer(s)).Fbi_valid)
-		v3 = s + 40
+		v3 = s + 20
 		v2 = *(*Tulg)(unsafe.Pointer(v3))
 		*(*Tulg)(unsafe.Pointer(v3))++
 		*(*TBytef)(unsafe.Pointer((*Tdeflate_state)(unsafe.Pointer(s)).Fpending_buf + uintptr(v2))) = uint8(int32((*Tdeflate_state)(unsafe.Pointer(s)).Fbi_buf) & libc.Int32FromInt32(0xff))
-		v5 = s + 40
+		v5 = s + 20
 		v4 = *(*Tulg)(unsafe.Pointer(v5))
 		*(*Tulg)(unsafe.Pointer(v5))++
 		*(*TBytef)(unsafe.Pointer((*Tdeflate_state)(unsafe.Pointer(s)).Fpending_buf + uintptr(v4))) = uint8(int32((*Tdeflate_state)(unsafe.Pointer(s)).Fbi_buf) >> libc.Int32FromInt32(8))
 		(*Tdeflate_state)(unsafe.Pointer(s)).Fbi_buf = uint16(int32(uint16(uint16(val))) >> (int32(m_Buf_size) - (*Tdeflate_state)(unsafe.Pointer(s)).Fbi_valid))
-		*(*int32)(unsafe.Pointer(s + 5904)) += len1 - int32(m_Buf_size)
+		*(*int32)(unsafe.Pointer(s + 5820)) += len1 - int32(m_Buf_size)
 	} else {
-		p6 = s + 5900
+		p6 = s + 5816
 		*(*Tush)(unsafe.Pointer(p6)) = Tush(int32(*(*Tush)(unsafe.Pointer(p6))) | int32(uint16(libc.Int32FromInt32(m_STORED_BLOCK)<<libc.Int32FromInt32(1)+last))<<(*Tdeflate_state)(unsafe.Pointer(s)).Fbi_valid)
-		*(*int32)(unsafe.Pointer(s + 5904)) += len1
+		*(*int32)(unsafe.Pointer(s + 5820)) += len1
 	} /* send block type */
 	_bi_windup(tls, s) /* align on byte boundary */
-	v8 = s + 40
+	v8 = s + 20
 	v7 = *(*Tulg)(unsafe.Pointer(v8))
 	*(*Tulg)(unsafe.Pointer(v8))++
 	*(*TBytef)(unsafe.Pointer((*Tdeflate_state)(unsafe.Pointer(s)).Fpending_buf + uintptr(v7))) = uint8(int32(uint16(uint16(stored_len))) & libc.Int32FromInt32(0xff))
-	v10 = s + 40
+	v10 = s + 20
 	v9 = *(*Tulg)(unsafe.Pointer(v10))
 	*(*Tulg)(unsafe.Pointer(v10))++
 	*(*TBytef)(unsafe.Pointer((*Tdeflate_state)(unsafe.Pointer(s)).Fpending_buf + uintptr(v9))) = uint8(int32(uint16(uint16(stored_len))) >> libc.Int32FromInt32(8))
-	v12 = s + 40
+	v12 = s + 20
 	v11 = *(*Tulg)(unsafe.Pointer(v12))
 	*(*Tulg)(unsafe.Pointer(v12))++
 	*(*TBytef)(unsafe.Pointer((*Tdeflate_state)(unsafe.Pointer(s)).Fpending_buf + uintptr(v11))) = uint8(int32(uint16(^stored_len)) & libc.Int32FromInt32(0xff))
-	v14 = s + 40
+	v14 = s + 20
 	v13 = *(*Tulg)(unsafe.Pointer(v14))
 	*(*Tulg)(unsafe.Pointer(v14))++
 	*(*TBytef)(unsafe.Pointer((*Tdeflate_state)(unsafe.Pointer(s)).Fpending_buf + uintptr(v13))) = uint8(int32(uint16(^stored_len)) >> libc.Int32FromInt32(8))
 	if stored_len != 0 {
-		libc.Xmemcpy(tls, (*Tdeflate_state)(unsafe.Pointer(s)).Fpending_buf+uintptr((*Tdeflate_state)(unsafe.Pointer(s)).Fpending), buf, uint64(uint64(stored_len)))
+		libc.Xmemcpy(tls, (*Tdeflate_state)(unsafe.Pointer(s)).Fpending_buf+uintptr((*Tdeflate_state)(unsafe.Pointer(s)).Fpending), buf, uint32(uint32(stored_len)))
 	}
-	*(*Tulg)(unsafe.Pointer(s + 40)) += stored_len
+	*(*Tulg)(unsafe.Pointer(s + 20)) += stored_len
 }
 
 // C documentation
@@ -24101,42 +22373,42 @@ func x__tr_align(tls *libc.TLS, s uintptr) {
 	len1 = int32(3)
 	if (*Tdeflate_state)(unsafe.Pointer(s)).Fbi_valid > libc.Int32FromInt32(m_Buf_size)-len1 {
 		val = libc.Int32FromInt32(m_STATIC_TREES) << libc.Int32FromInt32(1)
-		p1 = s + 5900
+		p1 = s + 5816
 		*(*Tush)(unsafe.Pointer(p1)) = Tush(int32(*(*Tush)(unsafe.Pointer(p1))) | int32(uint16(uint16(val)))<<(*Tdeflate_state)(unsafe.Pointer(s)).Fbi_valid)
-		v3 = s + 40
+		v3 = s + 20
 		v2 = *(*Tulg)(unsafe.Pointer(v3))
 		*(*Tulg)(unsafe.Pointer(v3))++
 		*(*TBytef)(unsafe.Pointer((*Tdeflate_state)(unsafe.Pointer(s)).Fpending_buf + uintptr(v2))) = uint8(int32((*Tdeflate_state)(unsafe.Pointer(s)).Fbi_buf) & libc.Int32FromInt32(0xff))
-		v5 = s + 40
+		v5 = s + 20
 		v4 = *(*Tulg)(unsafe.Pointer(v5))
 		*(*Tulg)(unsafe.Pointer(v5))++
 		*(*TBytef)(unsafe.Pointer((*Tdeflate_state)(unsafe.Pointer(s)).Fpending_buf + uintptr(v4))) = uint8(int32((*Tdeflate_state)(unsafe.Pointer(s)).Fbi_buf) >> libc.Int32FromInt32(8))
 		(*Tdeflate_state)(unsafe.Pointer(s)).Fbi_buf = uint16(int32(uint16(uint16(val))) >> (int32(m_Buf_size) - (*Tdeflate_state)(unsafe.Pointer(s)).Fbi_valid))
-		*(*int32)(unsafe.Pointer(s + 5904)) += len1 - int32(m_Buf_size)
+		*(*int32)(unsafe.Pointer(s + 5820)) += len1 - int32(m_Buf_size)
 	} else {
-		p6 = s + 5900
+		p6 = s + 5816
 		*(*Tush)(unsafe.Pointer(p6)) = Tush(int32(*(*Tush)(unsafe.Pointer(p6))) | int32(uint16(libc.Int32FromInt32(m_STATIC_TREES)<<libc.Int32FromInt32(1)))<<(*Tdeflate_state)(unsafe.Pointer(s)).Fbi_valid)
-		*(*int32)(unsafe.Pointer(s + 5904)) += len1
+		*(*int32)(unsafe.Pointer(s + 5820)) += len1
 	}
 	len11 = int32(*(*Tush)(unsafe.Pointer(uintptr(unsafe.Pointer(&_static_ltree)) + 256*4 + 2)))
 	if (*Tdeflate_state)(unsafe.Pointer(s)).Fbi_valid > libc.Int32FromInt32(m_Buf_size)-len11 {
 		val1 = int32(*(*Tush)(unsafe.Pointer(uintptr(unsafe.Pointer(&_static_ltree)) + 256*4)))
-		p7 = s + 5900
+		p7 = s + 5816
 		*(*Tush)(unsafe.Pointer(p7)) = Tush(int32(*(*Tush)(unsafe.Pointer(p7))) | int32(uint16(uint16(val1)))<<(*Tdeflate_state)(unsafe.Pointer(s)).Fbi_valid)
-		v9 = s + 40
+		v9 = s + 20
 		v8 = *(*Tulg)(unsafe.Pointer(v9))
 		*(*Tulg)(unsafe.Pointer(v9))++
 		*(*TBytef)(unsafe.Pointer((*Tdeflate_state)(unsafe.Pointer(s)).Fpending_buf + uintptr(v8))) = uint8(int32((*Tdeflate_state)(unsafe.Pointer(s)).Fbi_buf) & libc.Int32FromInt32(0xff))
-		v11 = s + 40
+		v11 = s + 20
 		v10 = *(*Tulg)(unsafe.Pointer(v11))
 		*(*Tulg)(unsafe.Pointer(v11))++
 		*(*TBytef)(unsafe.Pointer((*Tdeflate_state)(unsafe.Pointer(s)).Fpending_buf + uintptr(v10))) = uint8(int32((*Tdeflate_state)(unsafe.Pointer(s)).Fbi_buf) >> libc.Int32FromInt32(8))
 		(*Tdeflate_state)(unsafe.Pointer(s)).Fbi_buf = uint16(int32(uint16(uint16(val1))) >> (int32(m_Buf_size) - (*Tdeflate_state)(unsafe.Pointer(s)).Fbi_valid))
-		*(*int32)(unsafe.Pointer(s + 5904)) += len11 - int32(m_Buf_size)
+		*(*int32)(unsafe.Pointer(s + 5820)) += len11 - int32(m_Buf_size)
 	} else {
-		p12 = s + 5900
+		p12 = s + 5816
 		*(*Tush)(unsafe.Pointer(p12)) = Tush(int32(*(*Tush)(unsafe.Pointer(p12))) | int32(*(*Tush)(unsafe.Pointer(uintptr(unsafe.Pointer(&_static_ltree)) + 256*4)))<<(*Tdeflate_state)(unsafe.Pointer(s)).Fbi_valid)
-		*(*int32)(unsafe.Pointer(s + 5904)) += len11
+		*(*int32)(unsafe.Pointer(s + 5820)) += len11
 	}
 	_bi_flush(tls, s)
 }
@@ -24168,22 +22440,22 @@ func _compress_block(tls *libc.TLS, s uintptr, ltree uintptr, dtree uintptr) {
 				len1 = int32(*(*Tush)(unsafe.Pointer(ltree + uintptr(lc)*4 + 2)))
 				if (*Tdeflate_state)(unsafe.Pointer(s)).Fbi_valid > libc.Int32FromInt32(m_Buf_size)-len1 {
 					val = int32(*(*Tush)(unsafe.Pointer(ltree + uintptr(lc)*4)))
-					p4 = s + 5900
+					p4 = s + 5816
 					*(*Tush)(unsafe.Pointer(p4)) = Tush(int32(*(*Tush)(unsafe.Pointer(p4))) | int32(uint16(uint16(val)))<<(*Tdeflate_state)(unsafe.Pointer(s)).Fbi_valid)
-					v6 = s + 40
+					v6 = s + 20
 					v5 = *(*Tulg)(unsafe.Pointer(v6))
 					*(*Tulg)(unsafe.Pointer(v6))++
 					*(*TBytef)(unsafe.Pointer((*Tdeflate_state)(unsafe.Pointer(s)).Fpending_buf + uintptr(v5))) = uint8(int32((*Tdeflate_state)(unsafe.Pointer(s)).Fbi_buf) & libc.Int32FromInt32(0xff))
-					v8 = s + 40
+					v8 = s + 20
 					v7 = *(*Tulg)(unsafe.Pointer(v8))
 					*(*Tulg)(unsafe.Pointer(v8))++
 					*(*TBytef)(unsafe.Pointer((*Tdeflate_state)(unsafe.Pointer(s)).Fpending_buf + uintptr(v7))) = uint8(int32((*Tdeflate_state)(unsafe.Pointer(s)).Fbi_buf) >> libc.Int32FromInt32(8))
 					(*Tdeflate_state)(unsafe.Pointer(s)).Fbi_buf = uint16(int32(uint16(uint16(val))) >> (int32(m_Buf_size) - (*Tdeflate_state)(unsafe.Pointer(s)).Fbi_valid))
-					*(*int32)(unsafe.Pointer(s + 5904)) += len1 - int32(m_Buf_size)
+					*(*int32)(unsafe.Pointer(s + 5820)) += len1 - int32(m_Buf_size)
 				} else {
-					p9 = s + 5900
+					p9 = s + 5816
 					*(*Tush)(unsafe.Pointer(p9)) = Tush(int32(*(*Tush)(unsafe.Pointer(p9))) | int32(*(*Tush)(unsafe.Pointer(ltree + uintptr(lc)*4)))<<(*Tdeflate_state)(unsafe.Pointer(s)).Fbi_valid)
-					*(*int32)(unsafe.Pointer(s + 5904)) += len1
+					*(*int32)(unsafe.Pointer(s + 5820)) += len1
 				} /* send a literal byte */
 			} else {
 				/* Here, lc is the match length - MIN_MATCH */
@@ -24191,22 +22463,22 @@ func _compress_block(tls *libc.TLS, s uintptr, ltree uintptr, dtree uintptr) {
 				len11 = int32(*(*Tush)(unsafe.Pointer(ltree + uintptr(code+uint32(m_LITERALS)+uint32(1))*4 + 2)))
 				if (*Tdeflate_state)(unsafe.Pointer(s)).Fbi_valid > libc.Int32FromInt32(m_Buf_size)-len11 {
 					val1 = int32(*(*Tush)(unsafe.Pointer(ltree + uintptr(code+uint32(m_LITERALS)+uint32(1))*4)))
-					p10 = s + 5900
+					p10 = s + 5816
 					*(*Tush)(unsafe.Pointer(p10)) = Tush(int32(*(*Tush)(unsafe.Pointer(p10))) | int32(uint16(uint16(val1)))<<(*Tdeflate_state)(unsafe.Pointer(s)).Fbi_valid)
-					v12 = s + 40
+					v12 = s + 20
 					v11 = *(*Tulg)(unsafe.Pointer(v12))
 					*(*Tulg)(unsafe.Pointer(v12))++
 					*(*TBytef)(unsafe.Pointer((*Tdeflate_state)(unsafe.Pointer(s)).Fpending_buf + uintptr(v11))) = uint8(int32((*Tdeflate_state)(unsafe.Pointer(s)).Fbi_buf) & libc.Int32FromInt32(0xff))
-					v14 = s + 40
+					v14 = s + 20
 					v13 = *(*Tulg)(unsafe.Pointer(v14))
 					*(*Tulg)(unsafe.Pointer(v14))++
 					*(*TBytef)(unsafe.Pointer((*Tdeflate_state)(unsafe.Pointer(s)).Fpending_buf + uintptr(v13))) = uint8(int32((*Tdeflate_state)(unsafe.Pointer(s)).Fbi_buf) >> libc.Int32FromInt32(8))
 					(*Tdeflate_state)(unsafe.Pointer(s)).Fbi_buf = uint16(int32(uint16(uint16(val1))) >> (int32(m_Buf_size) - (*Tdeflate_state)(unsafe.Pointer(s)).Fbi_valid))
-					*(*int32)(unsafe.Pointer(s + 5904)) += len11 - int32(m_Buf_size)
+					*(*int32)(unsafe.Pointer(s + 5820)) += len11 - int32(m_Buf_size)
 				} else {
-					p15 = s + 5900
+					p15 = s + 5816
 					*(*Tush)(unsafe.Pointer(p15)) = Tush(int32(*(*Tush)(unsafe.Pointer(p15))) | int32(*(*Tush)(unsafe.Pointer(ltree + uintptr(code+uint32(m_LITERALS)+uint32(1))*4)))<<(*Tdeflate_state)(unsafe.Pointer(s)).Fbi_valid)
-					*(*int32)(unsafe.Pointer(s + 5904)) += len11
+					*(*int32)(unsafe.Pointer(s + 5820)) += len11
 				} /* send length code */
 				extra = _extra_lbits[code]
 				if extra != 0 {
@@ -24214,22 +22486,22 @@ func _compress_block(tls *libc.TLS, s uintptr, ltree uintptr, dtree uintptr) {
 					len2 = extra
 					if (*Tdeflate_state)(unsafe.Pointer(s)).Fbi_valid > libc.Int32FromInt32(m_Buf_size)-len2 {
 						val2 = lc
-						p16 = s + 5900
+						p16 = s + 5816
 						*(*Tush)(unsafe.Pointer(p16)) = Tush(int32(*(*Tush)(unsafe.Pointer(p16))) | int32(uint16(uint16(val2)))<<(*Tdeflate_state)(unsafe.Pointer(s)).Fbi_valid)
-						v18 = s + 40
+						v18 = s + 20
 						v17 = *(*Tulg)(unsafe.Pointer(v18))
 						*(*Tulg)(unsafe.Pointer(v18))++
 						*(*TBytef)(unsafe.Pointer((*Tdeflate_state)(unsafe.Pointer(s)).Fpending_buf + uintptr(v17))) = uint8(int32((*Tdeflate_state)(unsafe.Pointer(s)).Fbi_buf) & libc.Int32FromInt32(0xff))
-						v20 = s + 40
+						v20 = s + 20
 						v19 = *(*Tulg)(unsafe.Pointer(v20))
 						*(*Tulg)(unsafe.Pointer(v20))++
 						*(*TBytef)(unsafe.Pointer((*Tdeflate_state)(unsafe.Pointer(s)).Fpending_buf + uintptr(v19))) = uint8(int32((*Tdeflate_state)(unsafe.Pointer(s)).Fbi_buf) >> libc.Int32FromInt32(8))
 						(*Tdeflate_state)(unsafe.Pointer(s)).Fbi_buf = uint16(int32(uint16(uint16(val2))) >> (int32(m_Buf_size) - (*Tdeflate_state)(unsafe.Pointer(s)).Fbi_valid))
-						*(*int32)(unsafe.Pointer(s + 5904)) += len2 - int32(m_Buf_size)
+						*(*int32)(unsafe.Pointer(s + 5820)) += len2 - int32(m_Buf_size)
 					} else {
-						p21 = s + 5900
+						p21 = s + 5816
 						*(*Tush)(unsafe.Pointer(p21)) = Tush(int32(*(*Tush)(unsafe.Pointer(p21))) | int32(uint16(lc))<<(*Tdeflate_state)(unsafe.Pointer(s)).Fbi_valid)
-						*(*int32)(unsafe.Pointer(s + 5904)) += len2
+						*(*int32)(unsafe.Pointer(s + 5820)) += len2
 					} /* send the extra length bits */
 				}
 				dist-- /* dist is now the match distance - 1 */
@@ -24242,22 +22514,22 @@ func _compress_block(tls *libc.TLS, s uintptr, ltree uintptr, dtree uintptr) {
 				len3 = int32(*(*Tush)(unsafe.Pointer(dtree + uintptr(code)*4 + 2)))
 				if (*Tdeflate_state)(unsafe.Pointer(s)).Fbi_valid > libc.Int32FromInt32(m_Buf_size)-len3 {
 					val3 = int32(*(*Tush)(unsafe.Pointer(dtree + uintptr(code)*4)))
-					p23 = s + 5900
+					p23 = s + 5816
 					*(*Tush)(unsafe.Pointer(p23)) = Tush(int32(*(*Tush)(unsafe.Pointer(p23))) | int32(uint16(uint16(val3)))<<(*Tdeflate_state)(unsafe.Pointer(s)).Fbi_valid)
-					v25 = s + 40
+					v25 = s + 20
 					v24 = *(*Tulg)(unsafe.Pointer(v25))
 					*(*Tulg)(unsafe.Pointer(v25))++
 					*(*TBytef)(unsafe.Pointer((*Tdeflate_state)(unsafe.Pointer(s)).Fpending_buf + uintptr(v24))) = uint8(int32((*Tdeflate_state)(unsafe.Pointer(s)).Fbi_buf) & libc.Int32FromInt32(0xff))
-					v27 = s + 40
+					v27 = s + 20
 					v26 = *(*Tulg)(unsafe.Pointer(v27))
 					*(*Tulg)(unsafe.Pointer(v27))++
 					*(*TBytef)(unsafe.Pointer((*Tdeflate_state)(unsafe.Pointer(s)).Fpending_buf + uintptr(v26))) = uint8(int32((*Tdeflate_state)(unsafe.Pointer(s)).Fbi_buf) >> libc.Int32FromInt32(8))
 					(*Tdeflate_state)(unsafe.Pointer(s)).Fbi_buf = uint16(int32(uint16(uint16(val3))) >> (int32(m_Buf_size) - (*Tdeflate_state)(unsafe.Pointer(s)).Fbi_valid))
-					*(*int32)(unsafe.Pointer(s + 5904)) += len3 - int32(m_Buf_size)
+					*(*int32)(unsafe.Pointer(s + 5820)) += len3 - int32(m_Buf_size)
 				} else {
-					p28 = s + 5900
+					p28 = s + 5816
 					*(*Tush)(unsafe.Pointer(p28)) = Tush(int32(*(*Tush)(unsafe.Pointer(p28))) | int32(*(*Tush)(unsafe.Pointer(dtree + uintptr(code)*4)))<<(*Tdeflate_state)(unsafe.Pointer(s)).Fbi_valid)
-					*(*int32)(unsafe.Pointer(s + 5904)) += len3
+					*(*int32)(unsafe.Pointer(s + 5820)) += len3
 				} /* send the distance code */
 				extra = _extra_dbits[code]
 				if extra != 0 {
@@ -24265,22 +22537,22 @@ func _compress_block(tls *libc.TLS, s uintptr, ltree uintptr, dtree uintptr) {
 					len4 = extra
 					if (*Tdeflate_state)(unsafe.Pointer(s)).Fbi_valid > libc.Int32FromInt32(m_Buf_size)-len4 {
 						val4 = int32(int32(dist))
-						p29 = s + 5900
+						p29 = s + 5816
 						*(*Tush)(unsafe.Pointer(p29)) = Tush(int32(*(*Tush)(unsafe.Pointer(p29))) | int32(uint16(uint16(val4)))<<(*Tdeflate_state)(unsafe.Pointer(s)).Fbi_valid)
-						v31 = s + 40
+						v31 = s + 20
 						v30 = *(*Tulg)(unsafe.Pointer(v31))
 						*(*Tulg)(unsafe.Pointer(v31))++
 						*(*TBytef)(unsafe.Pointer((*Tdeflate_state)(unsafe.Pointer(s)).Fpending_buf + uintptr(v30))) = uint8(int32((*Tdeflate_state)(unsafe.Pointer(s)).Fbi_buf) & libc.Int32FromInt32(0xff))
-						v33 = s + 40
+						v33 = s + 20
 						v32 = *(*Tulg)(unsafe.Pointer(v33))
 						*(*Tulg)(unsafe.Pointer(v33))++
 						*(*TBytef)(unsafe.Pointer((*Tdeflate_state)(unsafe.Pointer(s)).Fpending_buf + uintptr(v32))) = uint8(int32((*Tdeflate_state)(unsafe.Pointer(s)).Fbi_buf) >> libc.Int32FromInt32(8))
 						(*Tdeflate_state)(unsafe.Pointer(s)).Fbi_buf = uint16(int32(uint16(uint16(val4))) >> (int32(m_Buf_size) - (*Tdeflate_state)(unsafe.Pointer(s)).Fbi_valid))
-						*(*int32)(unsafe.Pointer(s + 5904)) += len4 - int32(m_Buf_size)
+						*(*int32)(unsafe.Pointer(s + 5820)) += len4 - int32(m_Buf_size)
 					} else {
-						p34 = s + 5900
+						p34 = s + 5816
 						*(*Tush)(unsafe.Pointer(p34)) = Tush(int32(*(*Tush)(unsafe.Pointer(p34))) | int32(uint16(dist))<<(*Tdeflate_state)(unsafe.Pointer(s)).Fbi_valid)
-						*(*int32)(unsafe.Pointer(s + 5904)) += len4
+						*(*int32)(unsafe.Pointer(s + 5820)) += len4
 					} /* send the extra distance bits */
 				}
 			} /* literal or match pair ? */
@@ -24290,22 +22562,22 @@ func _compress_block(tls *libc.TLS, s uintptr, ltree uintptr, dtree uintptr) {
 	len5 = int32(*(*Tush)(unsafe.Pointer(ltree + 256*4 + 2)))
 	if (*Tdeflate_state)(unsafe.Pointer(s)).Fbi_valid > libc.Int32FromInt32(m_Buf_size)-len5 {
 		val5 = int32(*(*Tush)(unsafe.Pointer(ltree + 256*4)))
-		p35 = s + 5900
+		p35 = s + 5816
 		*(*Tush)(unsafe.Pointer(p35)) = Tush(int32(*(*Tush)(unsafe.Pointer(p35))) | int32(uint16(uint16(val5)))<<(*Tdeflate_state)(unsafe.Pointer(s)).Fbi_valid)
-		v37 = s + 40
+		v37 = s + 20
 		v36 = *(*Tulg)(unsafe.Pointer(v37))
 		*(*Tulg)(unsafe.Pointer(v37))++
 		*(*TBytef)(unsafe.Pointer((*Tdeflate_state)(unsafe.Pointer(s)).Fpending_buf + uintptr(v36))) = uint8(int32((*Tdeflate_state)(unsafe.Pointer(s)).Fbi_buf) & libc.Int32FromInt32(0xff))
-		v39 = s + 40
+		v39 = s + 20
 		v38 = *(*Tulg)(unsafe.Pointer(v39))
 		*(*Tulg)(unsafe.Pointer(v39))++
 		*(*TBytef)(unsafe.Pointer((*Tdeflate_state)(unsafe.Pointer(s)).Fpending_buf + uintptr(v38))) = uint8(int32((*Tdeflate_state)(unsafe.Pointer(s)).Fbi_buf) >> libc.Int32FromInt32(8))
 		(*Tdeflate_state)(unsafe.Pointer(s)).Fbi_buf = uint16(int32(uint16(uint16(val5))) >> (int32(m_Buf_size) - (*Tdeflate_state)(unsafe.Pointer(s)).Fbi_valid))
-		*(*int32)(unsafe.Pointer(s + 5904)) += len5 - int32(m_Buf_size)
+		*(*int32)(unsafe.Pointer(s + 5820)) += len5 - int32(m_Buf_size)
 	} else {
-		p40 = s + 5900
+		p40 = s + 5816
 		*(*Tush)(unsafe.Pointer(p40)) = Tush(int32(*(*Tush)(unsafe.Pointer(p40))) | int32(*(*Tush)(unsafe.Pointer(ltree + 256*4)))<<(*Tdeflate_state)(unsafe.Pointer(s)).Fbi_valid)
-		*(*int32)(unsafe.Pointer(s + 5904)) += len5
+		*(*int32)(unsafe.Pointer(s + 5820)) += len5
 	}
 }
 
@@ -24339,7 +22611,7 @@ func _detect_data_type(tls *libc.TLS, s uintptr) (r int32) {
 		if !(n <= int32(31)) {
 			break
 		}
-		if block_mask&uint32(1) != 0 && int32(*(*Tush)(unsafe.Pointer(s + 188 + uintptr(n)*4))) != 0 {
+		if block_mask&uint32(1) != 0 && int32(*(*Tush)(unsafe.Pointer(s + 148 + uintptr(n)*4))) != 0 {
 			return m_Z_BINARY
 		}
 		goto _1
@@ -24349,7 +22621,7 @@ func _detect_data_type(tls *libc.TLS, s uintptr) (r int32) {
 		block_mask >>= uint32(1)
 	}
 	/* Check for textual ("allow-listed") bytes. */
-	if int32(*(*Tush)(unsafe.Pointer(s + 188 + 9*4))) != 0 || int32(*(*Tush)(unsafe.Pointer(s + 188 + 10*4))) != 0 || int32(*(*Tush)(unsafe.Pointer(s + 188 + 13*4))) != 0 {
+	if int32(*(*Tush)(unsafe.Pointer(s + 148 + 9*4))) != 0 || int32(*(*Tush)(unsafe.Pointer(s + 148 + 10*4))) != 0 || int32(*(*Tush)(unsafe.Pointer(s + 148 + 13*4))) != 0 {
 		return int32(m_Z_TEXT)
 	}
 	n = int32(32)
@@ -24357,7 +22629,7 @@ func _detect_data_type(tls *libc.TLS, s uintptr) (r int32) {
 		if !(n < int32(m_LITERALS)) {
 			break
 		}
-		if int32(*(*Tush)(unsafe.Pointer(s + 188 + uintptr(n)*4))) != 0 {
+		if int32(*(*Tush)(unsafe.Pointer(s + 148 + uintptr(n)*4))) != 0 {
 			return int32(m_Z_TEXT)
 		}
 		goto _2
@@ -24390,8 +22662,8 @@ func x__tr_flush_block(tls *libc.TLS, s uintptr, buf uintptr, stored_len Tulg, l
 			(*Tz_stream)(unsafe.Pointer((*Tdeflate_state)(unsafe.Pointer(s)).Fstrm)).Fdata_type = _detect_data_type(tls, s)
 		}
 		/* Construct the literal and distance trees */
-		_build_tree(tls, s, s+2880)
-		_build_tree(tls, s, s+2904)
+		_build_tree(tls, s, s+2840)
+		_build_tree(tls, s, s+2852)
 		/* At this point, opt_len and static_len are the total bit lengths of
 		 * the compressed block data, excluding the tree representations.
 		 */
@@ -24424,47 +22696,47 @@ func x__tr_flush_block(tls *libc.TLS, s uintptr, buf uintptr, stored_len Tulg, l
 			len1 = int32(3)
 			if (*Tdeflate_state)(unsafe.Pointer(s)).Fbi_valid > libc.Int32FromInt32(m_Buf_size)-len1 {
 				val = libc.Int32FromInt32(m_STATIC_TREES)<<libc.Int32FromInt32(1) + last
-				p2 = s + 5900
+				p2 = s + 5816
 				*(*Tush)(unsafe.Pointer(p2)) = Tush(int32(*(*Tush)(unsafe.Pointer(p2))) | int32(uint16(uint16(val)))<<(*Tdeflate_state)(unsafe.Pointer(s)).Fbi_valid)
-				v4 = s + 40
+				v4 = s + 20
 				v3 = *(*Tulg)(unsafe.Pointer(v4))
 				*(*Tulg)(unsafe.Pointer(v4))++
 				*(*TBytef)(unsafe.Pointer((*Tdeflate_state)(unsafe.Pointer(s)).Fpending_buf + uintptr(v3))) = uint8(int32((*Tdeflate_state)(unsafe.Pointer(s)).Fbi_buf) & libc.Int32FromInt32(0xff))
-				v6 = s + 40
+				v6 = s + 20
 				v5 = *(*Tulg)(unsafe.Pointer(v6))
 				*(*Tulg)(unsafe.Pointer(v6))++
 				*(*TBytef)(unsafe.Pointer((*Tdeflate_state)(unsafe.Pointer(s)).Fpending_buf + uintptr(v5))) = uint8(int32((*Tdeflate_state)(unsafe.Pointer(s)).Fbi_buf) >> libc.Int32FromInt32(8))
 				(*Tdeflate_state)(unsafe.Pointer(s)).Fbi_buf = uint16(int32(uint16(uint16(val))) >> (int32(m_Buf_size) - (*Tdeflate_state)(unsafe.Pointer(s)).Fbi_valid))
-				*(*int32)(unsafe.Pointer(s + 5904)) += len1 - int32(m_Buf_size)
+				*(*int32)(unsafe.Pointer(s + 5820)) += len1 - int32(m_Buf_size)
 			} else {
-				p7 = s + 5900
+				p7 = s + 5816
 				*(*Tush)(unsafe.Pointer(p7)) = Tush(int32(*(*Tush)(unsafe.Pointer(p7))) | int32(uint16(libc.Int32FromInt32(m_STATIC_TREES)<<libc.Int32FromInt32(1)+last))<<(*Tdeflate_state)(unsafe.Pointer(s)).Fbi_valid)
-				*(*int32)(unsafe.Pointer(s + 5904)) += len1
+				*(*int32)(unsafe.Pointer(s + 5820)) += len1
 			}
 			_compress_block(tls, s, uintptr(unsafe.Pointer(&_static_ltree)), uintptr(unsafe.Pointer(&_static_dtree)))
 		} else {
 			len11 = int32(3)
 			if (*Tdeflate_state)(unsafe.Pointer(s)).Fbi_valid > libc.Int32FromInt32(m_Buf_size)-len11 {
 				val1 = libc.Int32FromInt32(m_DYN_TREES)<<libc.Int32FromInt32(1) + last
-				p8 = s + 5900
+				p8 = s + 5816
 				*(*Tush)(unsafe.Pointer(p8)) = Tush(int32(*(*Tush)(unsafe.Pointer(p8))) | int32(uint16(uint16(val1)))<<(*Tdeflate_state)(unsafe.Pointer(s)).Fbi_valid)
-				v10 = s + 40
+				v10 = s + 20
 				v9 = *(*Tulg)(unsafe.Pointer(v10))
 				*(*Tulg)(unsafe.Pointer(v10))++
 				*(*TBytef)(unsafe.Pointer((*Tdeflate_state)(unsafe.Pointer(s)).Fpending_buf + uintptr(v9))) = uint8(int32((*Tdeflate_state)(unsafe.Pointer(s)).Fbi_buf) & libc.Int32FromInt32(0xff))
-				v12 = s + 40
+				v12 = s + 20
 				v11 = *(*Tulg)(unsafe.Pointer(v12))
 				*(*Tulg)(unsafe.Pointer(v12))++
 				*(*TBytef)(unsafe.Pointer((*Tdeflate_state)(unsafe.Pointer(s)).Fpending_buf + uintptr(v11))) = uint8(int32((*Tdeflate_state)(unsafe.Pointer(s)).Fbi_buf) >> libc.Int32FromInt32(8))
 				(*Tdeflate_state)(unsafe.Pointer(s)).Fbi_buf = uint16(int32(uint16(uint16(val1))) >> (int32(m_Buf_size) - (*Tdeflate_state)(unsafe.Pointer(s)).Fbi_valid))
-				*(*int32)(unsafe.Pointer(s + 5904)) += len11 - int32(m_Buf_size)
+				*(*int32)(unsafe.Pointer(s + 5820)) += len11 - int32(m_Buf_size)
 			} else {
-				p13 = s + 5900
+				p13 = s + 5816
 				*(*Tush)(unsafe.Pointer(p13)) = Tush(int32(*(*Tush)(unsafe.Pointer(p13))) | int32(uint16(libc.Int32FromInt32(m_DYN_TREES)<<libc.Int32FromInt32(1)+last))<<(*Tdeflate_state)(unsafe.Pointer(s)).Fbi_valid)
-				*(*int32)(unsafe.Pointer(s + 5904)) += len11
+				*(*int32)(unsafe.Pointer(s + 5820)) += len11
 			}
 			_send_all_trees(tls, s, (*Tdeflate_state)(unsafe.Pointer(s)).Fl_desc.Fmax_code+int32(1), (*Tdeflate_state)(unsafe.Pointer(s)).Fd_desc.Fmax_code+int32(1), max_blindex+int32(1))
-			_compress_block(tls, s, s+188, s+2480)
+			_compress_block(tls, s, s+148, s+2440)
 		}
 	}
 	/* The above check is made mod 2^32, for files larger than 512 MB
@@ -24487,32 +22759,32 @@ func x__tr_tally(tls *libc.TLS, s uintptr, dist uint32, lc uint32) (r int32) {
 	var v2, v4, v6 uintptr
 	var v7 int32
 	_, _, _, _, _, _, _ = v1, v2, v3, v4, v5, v6, v7
-	v2 = s + 5876
+	v2 = s + 5792
 	v1 = *(*TuInt)(unsafe.Pointer(v2))
 	*(*TuInt)(unsafe.Pointer(v2))++
 	*(*Tuchf)(unsafe.Pointer((*Tdeflate_state)(unsafe.Pointer(s)).Fsym_buf + uintptr(v1))) = uint8(uint8(dist))
-	v4 = s + 5876
+	v4 = s + 5792
 	v3 = *(*TuInt)(unsafe.Pointer(v4))
 	*(*TuInt)(unsafe.Pointer(v4))++
 	*(*Tuchf)(unsafe.Pointer((*Tdeflate_state)(unsafe.Pointer(s)).Fsym_buf + uintptr(v3))) = uint8(dist >> libc.Int32FromInt32(8))
-	v6 = s + 5876
+	v6 = s + 5792
 	v5 = *(*TuInt)(unsafe.Pointer(v6))
 	*(*TuInt)(unsafe.Pointer(v6))++
 	*(*Tuchf)(unsafe.Pointer((*Tdeflate_state)(unsafe.Pointer(s)).Fsym_buf + uintptr(v5))) = uint8(uint8(lc))
 	if dist == uint32(0) {
 		/* lc is the unmatched char */
-		*(*Tush)(unsafe.Pointer(s + 188 + uintptr(lc)*4))++
+		*(*Tush)(unsafe.Pointer(s + 148 + uintptr(lc)*4))++
 	} else {
 		(*Tdeflate_state)(unsafe.Pointer(s)).Fmatches++
 		/* Here, lc is the match length - MIN_MATCH */
 		dist-- /* dist = match distance - 1 */
-		*(*Tush)(unsafe.Pointer(s + 188 + uintptr(int32(x__length_code[lc])+int32(m_LITERALS)+int32(1))*4))++
+		*(*Tush)(unsafe.Pointer(s + 148 + uintptr(int32(x__length_code[lc])+int32(m_LITERALS)+int32(1))*4))++
 		if dist < uint32(256) {
 			v7 = int32(x__dist_code[dist])
 		} else {
 			v7 = int32(x__dist_code[uint32(256)+dist>>int32(7)])
 		}
-		*(*Tush)(unsafe.Pointer(s + 2480 + uintptr(v7)*4))++
+		*(*Tush)(unsafe.Pointer(s + 2440 + uintptr(v7)*4))++
 	}
 	return libc.BoolInt32((*Tdeflate_state)(unsafe.Pointer(s)).Fsym_next == (*Tdeflate_state)(unsafe.Pointer(s)).Fsym_end)
 }
@@ -24536,13 +22808,13 @@ func x__tr_tally(tls *libc.TLS, s uintptr, dist uint32, lc uint32) (r int32) {
 //	   an incomplete zlib stream.
 //	*/
 func x_uncompress2(tls *libc.TLS, dest uintptr, destLen uintptr, source uintptr, sourceLen uintptr) (r int32) {
-	bp := tls.Alloc(96)
-	defer tls.Free(96)
+	bp := tls.Alloc(64)
+	defer tls.Free(64)
 	var err, v3, v4, v5 int32
 	var left, len1 TuLong
 	var max TuInt
 	var v1, v2 uint32
-	var _ /* buf at bp+88 */ [1]TByte
+	var _ /* buf at bp+56 */ [1]TByte
 	var _ /* stream at bp+0 */ Tz_stream
 	_, _, _, _, _, _, _, _, _ = err, left, len1, max, v1, v2, v3, v4, v5
 	max = uint32(-libc.Int32FromInt32(1)) /* for detection of incomplete stream when *destLen == 0 */
@@ -24552,14 +22824,14 @@ func x_uncompress2(tls *libc.TLS, dest uintptr, destLen uintptr, source uintptr,
 		*(*TuLongf)(unsafe.Pointer(destLen)) = uint32(0)
 	} else {
 		left = uint32(1)
-		dest = bp + 88
+		dest = bp + 56
 	}
 	(*(*Tz_stream)(unsafe.Pointer(bp))).Fnext_in = source
 	(*(*Tz_stream)(unsafe.Pointer(bp))).Favail_in = uint32(0)
 	(*(*Tz_stream)(unsafe.Pointer(bp))).Fzalloc = libc.UintptrFromInt32(0)
 	(*(*Tz_stream)(unsafe.Pointer(bp))).Fzfree = libc.UintptrFromInt32(0)
 	(*(*Tz_stream)(unsafe.Pointer(bp))).Fopaque = libc.UintptrFromInt32(0)
-	err = x_inflateInit_(tls, bp, __ccgo_ts+192, libc.Int32FromInt64(88))
+	err = x_inflateInit_(tls, bp, __ccgo_ts+339, libc.Int32FromInt64(56))
 	if err != m_Z_OK {
 		return err
 	}
@@ -24587,7 +22859,7 @@ func x_uncompress2(tls *libc.TLS, dest uintptr, destLen uintptr, source uintptr,
 		err = x_inflate(tls, bp, m_Z_NO_FLUSH)
 	}
 	*(*TuLong)(unsafe.Pointer(sourceLen)) -= len1 + uint32((*(*Tz_stream)(unsafe.Pointer(bp))).Favail_in)
-	if dest != bp+88 {
+	if dest != bp+56 {
 		*(*TuLongf)(unsafe.Pointer(destLen)) = (*(*Tz_stream)(unsafe.Pointer(bp))).Ftotal_out
 	} else {
 		if (*(*Tz_stream)(unsafe.Pointer(bp))).Ftotal_out != 0 && err == -int32(5) {
@@ -24621,14 +22893,14 @@ func x_uncompress(tls *libc.TLS, dest uintptr, destLen uintptr, source uintptr, 
 }
 
 func x_zlibVersion(tls *libc.TLS) (r uintptr) {
-	return __ccgo_ts + 192
+	return __ccgo_ts + 339
 }
 
 func x_zlibCompileFlags(tls *libc.TLS) (r TuLong) {
 	var flags TuLong
 	_ = flags
 	flags = uint32(0)
-	switch int32(libc.Uint64FromInt64(4)) {
+	switch int32(libc.Uint32FromInt64(4)) {
 	case int32(2):
 	case int32(4):
 		flags += uint32(1)
@@ -24637,7 +22909,7 @@ func x_zlibCompileFlags(tls *libc.TLS) (r TuLong) {
 	default:
 		flags += uint32(3)
 	}
-	switch int32(libc.Uint64FromInt64(4)) {
+	switch int32(libc.Uint32FromInt64(4)) {
 	case int32(2):
 	case int32(4):
 		flags += uint32(libc.Int32FromInt32(1) << libc.Int32FromInt32(2))
@@ -24646,7 +22918,7 @@ func x_zlibCompileFlags(tls *libc.TLS) (r TuLong) {
 	default:
 		flags += uint32(libc.Int32FromInt32(3) << libc.Int32FromInt32(2))
 	}
-	switch int32(libc.Uint64FromInt64(8)) {
+	switch int32(libc.Uint32FromInt64(4)) {
 	case int32(2):
 	case int32(4):
 		flags += uint32(libc.Int32FromInt32(1) << libc.Int32FromInt32(4))
@@ -24655,7 +22927,7 @@ func x_zlibCompileFlags(tls *libc.TLS) (r TuLong) {
 	default:
 		flags += uint32(libc.Int32FromInt32(3) << libc.Int32FromInt32(4))
 	}
-	switch int32(libc.Uint64FromInt64(4)) {
+	switch int32(libc.Uint32FromInt64(4)) {
 	case int32(2):
 	case int32(4):
 		flags += uint32(libc.Int32FromInt32(1) << libc.Int32FromInt32(6))
@@ -24690,7 +22962,7 @@ func x_zError(tls *libc.TLS, err int32) (r uintptr) {
 
 func x_zcalloc(tls *libc.TLS, opaque Tvoidpf, items uint32, size uint32) (r Tvoidpf) {
 	_ = opaque
-	return libc.Xmalloc(tls, uint64(items*size))
+	return libc.Xmalloc(tls, items*size)
 }
 
 func x_zcfree(tls *libc.TLS, opaque Tvoidpf, ptr Tvoidpf) {
@@ -25478,18 +23750,18 @@ var x_deflate_copyright = [68]int8{' ', 'd', 'e', 'f', 'l', 'a', 't', 'e', ' ', 
 var x_inflate_copyright = [47]int8{' ', 'i', 'n', 'f', 'l', 'a', 't', 'e', ' ', '1', '.', '3', '.', '1', ' ', 'C', 'o', 'p', 'y', 'r', 'i', 'g', 'h', 't', ' ', '1', '9', '9', '5', '-', '2', '0', '2', '4', ' ', 'M', 'a', 'r', 'k', ' ', 'A', 'd', 'l', 'e', 'r', ' '}
 
 var x_z_errmsg = [10]uintptr{
-	0: __ccgo_ts + 981,
-	1: __ccgo_ts + 997,
-	2: __ccgo_ts + 220,
-	3: __ccgo_ts + 1008,
-	4: __ccgo_ts + 1019,
-	5: __ccgo_ts + 1032,
-	6: __ccgo_ts + 1043,
-	7: __ccgo_ts + 1063,
-	8: __ccgo_ts + 1076,
-	9: __ccgo_ts + 220,
+	0: __ccgo_ts + 1667,
+	1: __ccgo_ts + 1683,
+	2: __ccgo_ts + 906,
+	3: __ccgo_ts + 1694,
+	4: __ccgo_ts + 1705,
+	5: __ccgo_ts + 1718,
+	6: __ccgo_ts + 1729,
+	7: __ccgo_ts + 1749,
+	8: __ccgo_ts + 1762,
+	9: __ccgo_ts + 906,
 }
 
 var __ccgo_ts = (*reflect.StringHeader)(unsafe.Pointer(&__ccgo_ts1)).Data
 
-var __ccgo_ts1 = "%s: %s\n\x00fread\x00failed gzclose\x00failed fwrite\x00failed fclose\x00.gz\x00%s: filename too long\n\x00%s%s\x00rb\x00%s: can't gzopen %s\n\x00%s\x00wb\x00wb6 \x00gunzip\x00zcat\x00-c\x00-d\x00-f\x00-h\x00-r\x00can't gzdopen stdin\x00can't gzdopen stdout\x001.3.1\x00<fd:%d>\x00out of memory\x00\x00%s%s%s\x00: \x00unexpected end of file\x00internal error: inflate stream corrupt\x00compressed data error\x00request does not fit in an int\x00request does not fit in a size_t\x00out of room to push characters\x00internal error: deflate stream corrupt\x00requested length does not fit in int\x00string length does not fit in int\x00invalid block type\x00invalid stored block lengths\x00too many length or distance symbols\x00invalid code lengths set\x00invalid bit length repeat\x00invalid code -- missing end-of-block\x00invalid literal/lengths set\x00invalid distances set\x00invalid literal/length code\x00invalid distance code\x00invalid distance too far back\x00incorrect header check\x00unknown compression method\x00invalid window size\x00unknown header flags set\x00header crc mismatch\x00incorrect data check\x00incorrect length check\x00need dictionary\x00stream end\x00file error\x00stream error\x00data error\x00insufficient memory\x00buffer error\x00incompatible version\x00"
+var __ccgo_ts1 = "%s error: %d\n\x00compress\x00garbage\x00uncompress\x00bad uncompress\n\x00uncompress(): %s\n\x00wb\x00gzopen error\n\x00ello\x00gzputs err: %s\n\x00, %s!\x00hello\x00gzprintf err: %s\n\x00rb\x00gzread err: %s\n\x00bad gzread: %s\n\x00gzread(): %s\n\x00gzseek error, pos=%ld, gztell=%ld\n\x00gzgetc error\n\x00gzungetc error\n\x00gzgets err after gzseek: %s\n\x00bad gzgets after gzseek\n\x00gzgets() after gzseek: %s\n\x001.3.1\x00deflateInit\x00deflate\x00deflateEnd\x00inflateInit\x00inflate\x00inflateEnd\x00bad inflate\n\x00inflate(): %s\n\x00deflate not greedy\n\x00deflate should report Z_STREAM_END\n\x00large inflate\x00bad large inflate: %ld\n\x00large_inflate(): OK\n\x00inflateSync\x00inflate should report Z_STREAM_END\n\x00after inflateSync(): hel%s\n\x00deflateSetDictionary\x00unexpected dictionary\x00inflate with dict\x00bad inflate with dict\n\x00inflate with dictionary: %s\n\x00incompatible zlib version\n\x00warning: different zlib version linked: %s\n\x00zlib version %s = 0x%04x, compile flags = 0x%lx\n\x00out of memory\n\x00foo.gz\x00%s\x00<fd:%d>\x00out of memory\x00\x00%s%s%s\x00: \x00unexpected end of file\x00internal error: inflate stream corrupt\x00compressed data error\x00request does not fit in an int\x00request does not fit in a size_t\x00out of room to push characters\x00internal error: deflate stream corrupt\x00requested length does not fit in int\x00string length does not fit in int\x00invalid block type\x00invalid stored block lengths\x00too many length or distance symbols\x00invalid code lengths set\x00invalid bit length repeat\x00invalid code -- missing end-of-block\x00invalid literal/lengths set\x00invalid distances set\x00invalid literal/length code\x00invalid distance code\x00invalid distance too far back\x00incorrect header check\x00unknown compression method\x00invalid window size\x00unknown header flags set\x00header crc mismatch\x00incorrect data check\x00incorrect length check\x00need dictionary\x00stream end\x00file error\x00stream error\x00data error\x00insufficient memory\x00buffer error\x00incompatible version\x00"
