@@ -45,6 +45,7 @@ var (
 	goos        = runtime.GOOS
 	goarch      = runtime.GOARCH
 	target      = fmt.Sprintf("%s/%s", goos, goarch)
+	nogcc       = goos == "windows" && goarch == "arm64" // We have no 32b mingw-gcc binary targeting windows/amd64 bit yet.
 
 	oTrace = flag.Bool("trc", false, "Print tested paths.")
 )
@@ -1374,6 +1375,10 @@ func testTranslateBug(t *testing.T, dir string, blacklist map[string]struct{}) {
 }
 
 func TestTranslate(t *testing.T) {
+	if nogcc {
+		t.Skip()
+	}
+
 	cfg := defaultCfg()
 	cfg.SysIncludePaths = append(cfg.SysIncludePaths, "Include") // benchmarksgame
 	cfg.FS = cfs
