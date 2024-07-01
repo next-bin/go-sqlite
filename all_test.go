@@ -32,8 +32,8 @@ import (
 var (
 	goarch   = runtime.GOARCH
 	goos     = runtime.GOOS
-	notFiles = []string{}
-	skip     []string
+	notFiles = []string{"__none__"}
+	skip     = []string{"__none__"}
 	target   = fmt.Sprintf("%s/%s", goos, goarch)
 
 	// https://www.tcl.tk/man/tcl8.6/TclCmd/tcltest.html
@@ -184,6 +184,28 @@ func TestMain(m *testing.M) {
 	case "linux/riscv64":
 		skip = append(skip,
 			"binary-40.3",
+			"cmdIL-5.7",
+			"iortrans-3.1",
+		)
+	case "linux/loong64":
+		skip = append(skip,
+			"iortrans-3.1",
+		)
+	case "linux/386":
+		skip = append(skip,
+			"iortrans-3.1",
+		)
+	case "linux/ppc64le":
+		skip = append(skip,
+			"iortrans-3.1",
+		)
+	case "linux/arm":
+		skip = append(skip,
+			"iortrans-3.1",
+		)
+	case "linux/arm64":
+		skip = append(skip,
+			"iortrans-3.1",
 		)
 	case "linux/s390x":
 		skip = append(skip,
@@ -278,9 +300,6 @@ func TestMain(m *testing.M) {
 		)
 	case "darwin/amd64":
 		skip = append(skip,
-			"iortrans-3.1",
-			"unixInit-3.1",
-			"unixInit-3.2",
 			"chan-16.9",
 			"chan-io-28.7",
 			"chan-io-29.34",
@@ -298,9 +317,13 @@ func TestMain(m *testing.M) {
 			"chan-io-54.2",
 			"chan-io-57.1",
 			"chan-io-57.2",
+			"cmdMZ-6.5a",
 			"event-11.5",
 			"io-29.34",
 			"io-29.35",
+			"iortrans-3.1",
+			"unixInit-3.1",
+			"unixInit-3.2",
 			"io-29.36.1",
 			"io-29.36.2",
 			"io-39.18",
@@ -348,6 +371,7 @@ func TestMain(m *testing.M) {
 		)
 	case "darwin/arm64":
 		skip = append(skip,
+			"iortrans-3.1",
 			"chan-16.9",
 			"chan-io-28.7",
 			"chan-io-29.34",
