@@ -7,7 +7,7 @@ require (
 	modernc.org/ccgo/v4 v4.19.0
 	modernc.org/fileutil v1.3.0
 	modernc.org/libadvapi32 v0.1.0
-	modernc.org/libc v1.54.0
+	modernc.org/libc v1.54.1
 	modernc.org/libkernel32 v0.1.0
 	modernc.org/libnetapi32 v0.1.0
 	modernc.org/libuser32 v0.1.0
