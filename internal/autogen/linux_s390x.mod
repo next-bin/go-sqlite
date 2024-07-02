@@ -4,11 +4,11 @@ go 1.20
 
 require (
 	golang.org/x/sys v0.18.0
-	modernc.org/ccgo/v4 v4.18.2
+	modernc.org/ccgo/v4 v4.19.0
 	modernc.org/fileutil v1.3.0
-	modernc.org/libc v1.53.4
-	modernc.org/libtcl8.6 v0.9.1
-	modernc.org/libz v0.10.9
+	modernc.org/libc v1.54.0
+	modernc.org/libtcl8.6 v0.10.0
+	modernc.org/libz v0.11.0
 )
 
 require (
@@ -22,9 +22,15 @@ require (
 	golang.org/x/tools v0.19.0 // indirect
 	lukechampine.com/uint128 v1.2.0 // indirect
 	modernc.org/cc/v3 v3.41.0 // indirect
-	modernc.org/cc/v4 v4.21.3 // indirect
+	modernc.org/cc/v4 v4.21.4 // indirect
 	modernc.org/ccgo/v3 v3.17.0 // indirect
 	modernc.org/gc/v2 v2.4.1 // indirect
+	modernc.org/libadvapi32 v0.1.0 // indirect
+	modernc.org/libkernel32 v0.1.0 // indirect
+	modernc.org/libnetapi32 v0.1.0 // indirect
+	modernc.org/libuser32 v0.1.0 // indirect
+	modernc.org/libuserenv v0.1.0 // indirect
+	modernc.org/libws2_32 v0.1.0 // indirect
 	modernc.org/mathutil v1.6.0 // indirect
 	modernc.org/memory v1.8.0 // indirect
 	modernc.org/opt v0.1.3 // indirect
