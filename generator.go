@@ -35,6 +35,7 @@ var (
 	sed    = "sed"
 	j      = fmt.Sprint(runtime.GOMAXPROCS(-1))
 	win    = os.Getenv("GO_GENERATE_WIN") == "1"
+	win32  = os.Getenv("GO_GENERATE_WIN32") == "1"
 	xgcc   string
 )
 
@@ -51,15 +52,16 @@ func main() {
 		return
 	}
 
-	if !win && target == "linux/amd64" && os.Getenv("GO_GENERATE_NOWIN") == "" {
+	if !win && !win32 && target == "linux/amd64" && os.Getenv("GO_GENERATE_NOWIN") == "" {
 		defer func() {
-			util.MustShell(true, nil, "make", "windows")
+			util.MustShell(true, nil, "make", "windows", "windows_386")
 			util.MustCopyFile(true, "internal/autogen/windows_amd64.mod", "go.mod", nil)
 			util.MustCopyFile(true, "internal/autogen/windows_arm64.mod", "go.mod", nil)
 		}()
 	}
 
-	if win {
+	switch {
+	case win:
 		if target != "linux/amd64" {
 			fail(1, "cross compiling for windows is supported only on linux/amd64 (+Wine)")
 		}
@@ -67,6 +69,14 @@ func main() {
 		goos = "windows"
 		goarch = "amd64"
 		xgcc = strings.TrimSpace(string(util.MustShell(true, nil, "which", "x86_64-w64-mingw32-gcc")))
+	case win32:
+		if target != "linux/amd64" {
+			fail(1, "cross compiling for windows is supported only on linux/amd64 (+Wine)")
+		}
+
+		goos = "windows"
+		goarch = "386"
+		xgcc = strings.TrimSpace(string(util.MustShell(true, nil, "which", "i686-w64-mingw32-gcc")))
 	}
 
 	switch target {
@@ -133,10 +143,30 @@ func main() {
 	ilibtcl := filepath.Join(cwd, "..", "libtcl8.6", "include", goos, goarch)
 	result := "sqlite3.go"
 	util.MustInDir(true, makeRoot, func() (err error) {
-		util.MustShell(true, nil, "sh", "-c", "go mod init example.com/libsqlite3 ; go get modernc.org/libc@latest modernc.org/libz@latest modernc.org/libtcl8.6@latest")
+		util.MustShell(true, nil, "sh", "-c", `
+go mod init example.com/libsqlite3
+go get \
+	modernc.org/libc@latest \
+	modernc.org/libadvapi32@latest \
+	modernc.org/libkernel32@latest \
+	modernc.org/libtcl8.6@latest \
+	modernc.org/libuser32@latest \
+	modernc.org/libws2_32@latest \
+	modernc.org/libz@latest \
+`)
 		config := []string{os.Args[0]}
 		if dev {
-			util.MustShell(true, nil, "sh", "-c", "go work init ; go work use $GOPATH/src/modernc.org/libc $GOPATH/src/modernc.org/libz $GOPATH/src/modernc.org/libtcl8.6")
+			util.MustShell(true, nil, "sh", "-c", `
+go work init
+go work use \
+	$GOPATH/src/modernc.org/libc \
+	$GOPATH/src/modernc.org/libadvapi32 \
+	$GOPATH/src/modernc.org/libkernel32 \
+	$GOPATH/src/modernc.org/libtcl8.6 \
+	$GOPATH/src/modernc.org/libuser32 \
+	$GOPATH/src/modernc.org/libws2_32 \
+	$GOPATH/src/modernc.org/libz \
+`)
 			config = append(config,
 				"-absolute-paths",
 				"-keep-object-files",
@@ -210,8 +240,20 @@ func main() {
 				"-DSQLITE_HAVE_C99_MATH_FUNCS=(1)",
 				"-DSQLITE_OS_WIN=1",
 				"-DSQLITE_OMIT_SEH",
-				"-build-lines", "//go:build windows && (amd64 || arm64)\n// +build windows\n// +build amd64 arm64",
+				"-build-lines", "//go:build windows && (amd64 || arm64)\n",
 				"-map", "gcc=x86_64-w64-mingw32-gcc",
+				"-lkernel32",
+			)
+		case win32:
+			config = append(config,
+				"--cpp", xgcc,
+				"--goarch", goarch,
+				"--goos", goos,
+				"-DSQLITE_HAVE_C99_MATH_FUNCS=(1)",
+				"-DSQLITE_OS_WIN=1",
+				"-DSQLITE_OMIT_SEH",
+				"-map", "gcc=i686-w64-mingw32-gcc",
+				"-lkernel32",
 			)
 		default:
 			config = append(config, "-DSQLITE_OS_UNIX=1")
@@ -271,9 +313,29 @@ func main() {
 	fixWin(tempDir)
 	mustCopyFile("LICENSE-SQLITE.md", filepath.Join(libRoot, "LICENSE.md"), nil)
 	util.MustInDir(true, makeRoot, func() (err error) {
-		util.MustShell(true, nil, "sh", "-c", "go mod init example.com/libsqlite3 ; go get modernc.org/libc@latest modernc.org/libz@latest modernc.org/libtcl8.6@latest")
+		util.MustShell(true, nil, "sh", "-c", `
+go mod init example.com/libsqlite3
+go get \
+	modernc.org/libc@latest \
+	modernc.org/libadvapi32@latest \
+	modernc.org/libkernel32@latest \
+	modernc.org/libtcl8.6@latest \
+	modernc.org/libuser32@latest \
+	modernc.org/libws2_32@latest \
+	modernc.org/libz@latest \
+`)
 		if dev {
-			util.MustShell(true, nil, "sh", "-c", "go work init ; go work use $GOPATH/src/modernc.org/libc $GOPATH/src/modernc.org/libz $GOPATH/src/modernc.org/libtcl8.6")
+			util.MustShell(true, nil, "sh", "-c", `
+go work init
+go work use \
+	$GOPATH/src/modernc.org/libc \
+	$GOPATH/src/modernc.org/libadvapi32 \
+	$GOPATH/src/modernc.org/libkernel32 \
+	$GOPATH/src/modernc.org/libtcl8.6 \
+	$GOPATH/src/modernc.org/libuser32 \
+	$GOPATH/src/modernc.org/libws2_32 \
+	$GOPATH/src/modernc.org/libz \
+`)
 		}
 		var config []string
 		if m64Double := cc.LongDouble64Flag(goos, goarch); m64Double != "" {
@@ -316,8 +378,15 @@ func main() {
 		}
 		switch {
 		case win:
-			config = append(config, "-DSQLITE_OS_WIN=1", "-DHAVE_MALLOC_USABLE_SIZE=1")
+			config = append(config,
+				"-DSQLITE_OS_WIN=1",
+			)
 			util.MustShell(true, nil, "sh", "-c", fmt.Sprintf("CFLAGS='%s' ./configure --build=x86-64_gnu-linux --host=x86_64-w64-mingw32 --disable-shared --disable-load-extension", strings.Join(config, " ")))
+		case win32:
+			config = append(config,
+				"-DSQLITE_OS_WIN=1",
+			)
+			util.MustShell(true, nil, "sh", "-c", fmt.Sprintf("CFLAGS='%s' ./configure --build=x86-64_gnu-linux --host=i686-w64-mingw32 --disable-shared --disable-load-extension", strings.Join(config, " ")))
 		default:
 			config = append(config, "-DSQLITE_OS_UNIX=1", "-DHAVE_MALLOC_USABLE_SIZE=1")
 			util.MustShell(true, nil, "sh", "-c", fmt.Sprintf("CFLAGS='%s' ./configure --disable-shared --disable-load-extension", strings.Join(config, " ")))
@@ -365,10 +434,37 @@ func main() {
 					"-Dmalloc_usable_size(x)=( (int) ( unsigned long long ) ( malloc_usable_size ( x ) ) )",
 					"-build-lines", "//go:build windows && (amd64 || arm64)\n// +build windows\n// +build amd64 arm64",
 					"-map", "gcc=x86_64-w64-mingw32-gcc",
+					"-ladvapi32",
+					"-lkernel32",
+					"-luser32",
 					"-exec", "make", "-j", j,
 					"BEXE=",
 
-					"CFLAGS=-mlong-double-64 -DLONGDOUBLE_TYPE=double -DSQLITE_WITHOUT_ZONEMALLOC -DNDEBUG -DSQLITE_OS_WIN=1 -DSQLITE_OS_UNIX=0 -D_MSC_VER=1 -DSQLITE_OMIT_SEH",
+					"CFLAGS=-mlong-double-64 -DLONGDOUBLE_TYPE=double -DNDEBUG -DSQLITE_OS_WIN=1 -DSQLITE_OS_UNIX=0 -D_MSC_VER=1 -DSQLITE_OMIT_SEH",
+					"TOP=../sqlite-src-"+versionTag,
+					"TEXE=.exe",
+					"testfixture.exe",
+				),
+				os.Stdout, os.Stderr, nil,
+			).Exec()
+			return nil
+		case win32:
+			ccgo.NewTask(
+				goos, goarch,
+				append(args,
+					"--cpp", xgcc,
+					"--goarch", goarch,
+					"--goos", goos,
+					"-DSQLITE_HAVE_C99_MATH_FUNCS=(1)",
+					"-Dmalloc_usable_size(x)=( (int) ( unsigned long long ) ( malloc_usable_size ( x ) ) )",
+					"-map", "gcc=i686-w64-mingw32-gcc",
+					"-ladvapi32",
+					"-lkernel32",
+					"-luser32",
+					"-exec", "make", "-j", j,
+					"BEXE=",
+
+					"CFLAGS=-mlong-double-64 -DLONGDOUBLE_TYPE=double -DNDEBUG -DSQLITE_OS_WIN=1 -DSQLITE_OS_UNIX=0 -D_MSC_VER=1 -DSQLITE_OMIT_SEH",
 					"TOP=../sqlite-src-"+versionTag,
 					"TEXE=.exe",
 					"testfixture.exe",
@@ -417,6 +513,28 @@ func main() {
 		).Main(); err != nil {
 			fail(1, "%s\n", err)
 		}
+	case win32:
+		if err := ccgo.NewTask(
+			goos, goarch,
+			[]string{
+				os.Args[0],
+				"--cpp", xgcc,
+				"--goarch", goarch,
+				"--goos", goos,
+				"-DNDEBUG",
+				"-DSQLITE_OMIT_SEH",
+				"-DSQLITE_OS_WIN=1",
+				"-I", makeRoot,
+				"-map", "gcc=i686-w64-mingw32-gcc",
+				"-o", filepath.Join("speedtest1", fn),
+				filepath.Join(makeRoot, "test", "speedtest1.c"),
+				"-lsqlite3",
+			},
+			os.Stdout, os.Stderr,
+			nil,
+		).Main(); err != nil {
+			fail(1, "%s\n", err)
+		}
 	default:
 		if err := ccgo.NewTask(
 			goos, goarch,
@@ -452,6 +570,30 @@ func main() {
 				"-I", makeRoot,
 				"-build-lines", "//go:build windows && (amd64 || arm64)\n// +build windows\n// +build amd64 arm64",
 				"-map", "gcc=x86_64-w64-mingw32-gcc",
+				"-lkernel32",
+				"-o", filepath.Join("mptest", fn),
+				filepath.Join(makeRoot, "mptest", "mptest.c"),
+				"-lsqlite3",
+			},
+			os.Stdout, os.Stderr,
+			nil,
+		).Main(); err != nil {
+			fail(1, "%s\n", err)
+		}
+	case win32:
+		if err := ccgo.NewTask(
+			goos, goarch,
+			[]string{
+				os.Args[0],
+				"--cpp", xgcc,
+				"--goarch", goarch,
+				"--goos", goos,
+				"-DNDEBUG",
+				"-DSQLITE_OMIT_SEH",
+				"-DSQLITE_OS_WIN=1",
+				"-I", makeRoot,
+				"-map", "gcc=i686-w64-mingw32-gcc",
+				"-lkernel32",
 				"-o", filepath.Join("mptest", fn),
 				filepath.Join(makeRoot, "mptest", "mptest.c"),
 				"-lsqlite3",
@@ -484,7 +626,7 @@ func main() {
 	os.RemoveAll(filepath.Join("internal", "test"))
 	util.MustMkdirs(true, "internal/testfixture", "internal/test")
 	switch {
-	case win:
+	case win || win32:
 		mustCopyFile(filepath.Join("internal", "testfixture", fn), filepath.Join(makeRoot, "testfixture.exe.go"), nil)
 	default:
 		mustCopyFile(filepath.Join("internal", "testfixture", fn), filepath.Join(makeRoot, "testfixture.go"), nil)
