@@ -57,6 +57,7 @@ func main() {
 			util.MustShell(true, nil, "make", "windows", "windows_386")
 			util.MustCopyFile(true, "internal/autogen/windows_amd64.mod", "go.mod", nil)
 			util.MustCopyFile(true, "internal/autogen/windows_arm64.mod", "go.mod", nil)
+			util.MustCopyFile(true, "internal/autogen/windows_386.mod", "go.mod", nil)
 		}()
 	}
 
