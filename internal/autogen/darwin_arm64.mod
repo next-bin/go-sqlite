@@ -10,7 +10,7 @@ require (
 	modernc.org/libc v1.54.2
 	modernc.org/libkernel32 v0.1.2
 	modernc.org/libnetapi32 v0.1.0
-	modernc.org/libuser32 v0.1.3
+	modernc.org/libuser32 v0.1.4
 	modernc.org/libuserenv v0.1.1
 	modernc.org/libws2_32 v0.1.1
 	modernc.org/libz v0.11.0
