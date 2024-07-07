@@ -1,8 +1,6 @@
-// Code generated for windows/amd64 by 'generator --cpp /usr/bin/x86_64-w64-mingw32-gcc --goarch amd64 --goos windows -DNDEBUG -DSQLITE_OMIT_SEH -DSQLITE_OS_WIN=1 -I /tmp/libsqlite3/sqlite-src-3460000 -build-lines \/\/go:build windows && (amd64 || arm64)\n\/\/ \x2bbuild windows\n\/\/ \x2bbuild amd64 arm64 -map gcc=x86_64-w64-mingw32-gcc -o speedtest1/ccgo_windows.go /tmp/libsqlite3/sqlite-src-3460000/test/speedtest1.c -lsqlite3', DO NOT EDIT.
+// Code generated for windows/amd64 by 'generator --cpp /usr/bin/x86_64-w64-mingw32-gcc --goarch amd64 --goos windows -DNDEBUG -DSQLITE_OMIT_SEH -DSQLITE_OS_WIN=1 -I /tmp/libsqlite3/sqlite-src-3460000 -build-lines \/\/go:build windows && (amd64 || arm64)\n -map gcc=x86_64-w64-mingw32-gcc -o speedtest1/ccgo_windows.go /tmp/libsqlite3/sqlite-src-3460000/test/speedtest1.c -lsqlite3', DO NOT EDIT.
 
 //go:build windows && (amd64 || arm64)
-// +build windows
-// +build amd64 arm64
 
 package main
 
@@ -3961,9 +3959,9 @@ func main1(tls *libc.TLS, argc int32, argv uintptr) (r int32) {
 	doTrace = 0                                                                                      /* True for --trace */
 	zEncoding = uintptr(0)                                                                           /* --utf16be or --utf16le */
 	zDbName = uintptr(0)                                                                             /* Name of the test database */
-	pHeap = uintptr(0)                                                                               /* Allocated heap space */
-	pLook = uintptr(0)                                                                               /* Allocated lookaside space */
-	pPCache = uintptr(0)                                                                             /* API return code */
+	pHeap = uintptr(0)   /* Allocated heap space */
+	pLook = uintptr(0)   /* Allocated lookaside space */
+	pPCache = uintptr(0) /* API return code */
 	/*
 	 ** Confirms that argc has at least N arguments following argv[i]. */
 	/* Display the version of SQLite being tested */
