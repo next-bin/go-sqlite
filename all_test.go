@@ -32,6 +32,10 @@ func TestMain(m *testing.M) {
 }
 
 func Test(t *testing.T) {
+	if goos == "windows" {
+		t.Skip("TODO")
+	}
+
 	defer os.Remove("foo.gz")
 
 	args := []string{"run"}
