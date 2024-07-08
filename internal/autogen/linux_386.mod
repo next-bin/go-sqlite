@@ -13,7 +13,7 @@ require (
 	modernc.org/libuser32 v0.1.4
 	modernc.org/libuserenv v0.1.1
 	modernc.org/libws2_32 v0.1.1
-	modernc.org/libz v0.11.0
+	modernc.org/libz v0.11.1
 )
 
 require (
