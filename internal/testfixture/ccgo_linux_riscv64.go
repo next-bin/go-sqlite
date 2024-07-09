@@ -1554,7 +1554,7 @@ const m_TCL_PARSE_PART1 = 0x400
 const m_TCL_PARSE_QUOTE_EXTRA = 1
 const m_TCL_PARSE_SUCCESS = 0
 const m_TCL_PARSE_SYNTAX = 8
-const m_TCL_PATCH_LEVEL = "8.6.14"
+const m_TCL_PATCH_LEVEL = "8.6.13"
 const m_TCL_REG_ADVANCED = 000003
 const m_TCL_REG_ADVF = 000002
 const m_TCL_REG_BASIC = 000000
@@ -1570,7 +1570,7 @@ const m_TCL_REG_NOTBOL = 0001
 const m_TCL_REG_NOTEOL = 0002
 const m_TCL_REG_QUOTE = 000004
 const m_TCL_RELEASE_LEVEL = "TCL_FINAL_RELEASE"
-const m_TCL_RELEASE_SERIAL = 14
+const m_TCL_RELEASE_SERIAL = 13
 const m_TCL_RESULT_SIZE = 200
 const m_TCL_RETURN = 2
 const m_TCL_SERVICE_ALL = 1
@@ -7241,11 +7241,6 @@ type TTclStubs = struct {
 	Freserved680                            uintptr
 	Freserved681                            uintptr
 	Freserved682                            uintptr
-	Freserved683                            uintptr
-	Freserved684                            uintptr
-	Freserved685                            uintptr
-	Freserved686                            uintptr
-	Freserved687                            uintptr
 	FtclUnusedStubEntry                     uintptr
 }
 
