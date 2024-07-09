@@ -3,17 +3,11 @@ module modernc.org/libtcl8.6
 go 1.20
 
 require (
-	github.com/adrg/xdg v0.4.0
-	modernc.org/ccgo/v4 v4.19.0
+	github.com/adrg/xdg v0.5.0
+	modernc.org/ccgo/v4 v4.19.2
 	modernc.org/fileutil v1.3.0
-	modernc.org/libadvapi32 v0.1.1
-	modernc.org/libc v1.54.2
-	modernc.org/libkernel32 v0.1.2
-	modernc.org/libnetapi32 v0.1.1
-	modernc.org/libuser32 v0.1.4
-	modernc.org/libuserenv v0.1.1
-	modernc.org/libws2_32 v0.1.1
-	modernc.org/libz v0.11.1
+	modernc.org/libc v1.54.3
+	modernc.org/libz v0.11.2
 )
 
 require (
@@ -23,7 +17,7 @@ require (
 	github.com/ncruces/go-strftime v0.1.9 // indirect
 	github.com/remyoudompheng/bigfft v0.0.0-20230129092748-24d4a6f8daec // indirect
 	golang.org/x/mod v0.16.0 // indirect
-	golang.org/x/sys v0.18.0 // indirect
+	golang.org/x/sys v0.22.0 // indirect
 	golang.org/x/tools v0.19.0 // indirect
 	modernc.org/cc/v4 v4.21.4 // indirect
 	modernc.org/gc/v2 v2.4.1 // indirect
