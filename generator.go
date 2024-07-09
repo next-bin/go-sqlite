@@ -158,26 +158,14 @@ func main() {
 		util.MustShell(true, nil, "sh", "-c", `
 go mod init example.com/libtcl8.6
 go get \
-	modernc.org/libadvapi32@latest \
 	modernc.org/libc@latest \
-	modernc.org/libkernel32@latest \
-	modernc.org/libnetapi32@latest \
-	modernc.org/libuser32@latest \
-	modernc.org/libuserenv@latest \
-	modernc.org/libws2_32@latest \
 	modernc.org/libz@latest
 `)
 		if dev {
 			util.MustShell(true, nil, "sh", "-c", `
 go work init
 go work use \
-	$GOPATH/src/modernc.org/libadvapi32 \
 	$GOPATH/src/modernc.org/libc \
-	$GOPATH/src/modernc.org/libkernel32 \
-	$GOPATH/src/modernc.org/libnetapi32 \
-	$GOPATH/src/modernc.org/libuser32 \
-	$GOPATH/src/modernc.org/libuserenv \
-	$GOPATH/src/modernc.org/libws2_32 \
 	$GOPATH/src/modernc.org/libz
 `)
 		}

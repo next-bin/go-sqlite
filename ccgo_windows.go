@@ -1,4 +1,4 @@
-// Code generated for windows/amd64 by 'generator -build-lines \/\/go:build windows && (amd64 || arm64)\n --prefix-enumerator=_ --prefix-external=x_ --prefix-field=F --prefix-macro=m_ --prefix-static-internal=_ --prefix-static-none=_ --prefix-tagged-enum=_ --prefix-tagged-struct=T --prefix-tagged-union=T --prefix-typename=T --prefix-undefined=_ -extended-errors -ignore-unsupported-alignment -I /home/jnml/src/modernc.org/builder/.exclude/modernc.org/libz/include/windows/amd64 -o libtcl.a.go --package-name libtcl8_6 -ignore-link-errors libtcl86.a libtclstub86.a -ladvapi32 -lkernel32 -lnetapi32 -luser32 -luserenv -lws2_32', DO NOT EDIT.
+// Code generated for windows/amd64 by 'generator -build-lines \/\/go:build windows && (amd64 || arm64)\n --prefix-enumerator=_ --prefix-external=x_ --prefix-field=F --prefix-macro=m_ --prefix-static-internal=_ --prefix-static-none=_ --prefix-tagged-enum=_ --prefix-tagged-struct=T --prefix-tagged-union=T --prefix-typename=T --prefix-undefined=_ -extended-errors -ignore-unsupported-alignment -I /home/jnml/src/modernc.org/libz/include/windows/amd64 -o libtcl.a.go --package-name libtcl8_6 -ignore-link-errors libtcl86.a libtclstub86.a -ladvapi32 -lkernel32 -lnetapi32 -luser32 -luserenv -lws2_32', DO NOT EDIT.
 
 //go:build windows && (amd64 || arm64)
 
@@ -8,13 +8,7 @@ import (
 	"reflect"
 	"unsafe"
 
-	"modernc.org/libadvapi32"
 	"modernc.org/libc"
-	"modernc.org/libkernel32"
-	"modernc.org/libnetapi32"
-	"modernc.org/libuser32"
-	"modernc.org/libuserenv"
-	"modernc.org/libws2_32"
 )
 
 var (
@@ -192438,7 +192432,7 @@ func XTcl_DeleteHashTable(tls *libc.TLS, tablePtr uintptr) {
 	 */
 	if (*TTcl_HashTable)(unsafe.Pointer(tablePtr)).Fbuckets != tablePtr+8 {
 		if (*TTcl_HashKeyType)(unsafe.Pointer(typePtr)).Fflags&int32(m_TCL_HASH_KEY_SYSTEM_HASH1) != 0 {
-			libkernel32.XHeapFree(tls, libkernel32.XGetProcessHeap(tls), libc.Uint32FromInt32(0), (*TTcl_HashTable)(unsafe.Pointer(tablePtr)).Fbuckets)
+			libc.XHeapFree(tls, libc.XGetProcessHeap(tls), libc.Uint32FromInt32(0), (*TTcl_HashTable)(unsafe.Pointer(tablePtr)).Fbuckets)
 		} else {
 			XTclpFree(tls, (*TTcl_HashTable)(unsafe.Pointer(tablePtr)).Fbuckets)
 		}
@@ -192984,7 +192978,7 @@ func _RebuildTable(tls *libc.TLS, tablePtr uintptr) {
 	 */
 	*(*int32)(unsafe.Pointer(tablePtr + 40)) *= int32(4)
 	if (*TTcl_HashKeyType)(unsafe.Pointer(typePtr)).Fflags&int32(m_TCL_HASH_KEY_SYSTEM_HASH1) != 0 {
-		(*TTcl_HashTable)(unsafe.Pointer(tablePtr)).Fbuckets = libkernel32.XHeapAlloc(tls, libkernel32.XGetProcessHeap(tls), libc.Uint32FromInt32(0), uint64(uint32(uint32(uint64((*TTcl_HashTable)(unsafe.Pointer(tablePtr)).FnumBuckets)*libc.Uint64FromInt64(8)))))
+		(*TTcl_HashTable)(unsafe.Pointer(tablePtr)).Fbuckets = libc.XHeapAlloc(tls, libc.XGetProcessHeap(tls), libc.Uint32FromInt32(0), uint64(uint32(uint32(uint64((*TTcl_HashTable)(unsafe.Pointer(tablePtr)).FnumBuckets)*libc.Uint64FromInt64(8)))))
 	} else {
 		(*TTcl_HashTable)(unsafe.Pointer(tablePtr)).Fbuckets = XTcl_Alloc(tls, uint32(uint64((*TTcl_HashTable)(unsafe.Pointer(tablePtr)).FnumBuckets)*libc.Uint64FromInt64(8)))
 	}
@@ -193041,7 +193035,7 @@ func _RebuildTable(tls *libc.TLS, tablePtr uintptr) {
 	 */
 	if oldBuckets != tablePtr+8 {
 		if (*TTcl_HashKeyType)(unsafe.Pointer(typePtr)).Fflags&int32(m_TCL_HASH_KEY_SYSTEM_HASH1) != 0 {
-			libkernel32.XHeapFree(tls, libkernel32.XGetProcessHeap(tls), libc.Uint32FromInt32(0), oldBuckets)
+			libc.XHeapFree(tls, libc.XGetProcessHeap(tls), libc.Uint32FromInt32(0), oldBuckets)
 		} else {
 			XTclpFree(tls, oldBuckets)
 		}
@@ -218010,7 +218004,7 @@ func _gai_strerror(tls *libc.TLS, code int32) (r uintptr) {
 	} else {
 		(*TThreadSpecificData5)(unsafe.Pointer(tsdPtr)).Finitialized = int32(1)
 	}
-	XTcl_WinTCharToUtf(tls, libws2_32.Xgai_strerrorW(tls, code), -int32(1), tsdPtr+8)
+	XTcl_WinTCharToUtf(tls, libc.Xgai_strerrorW(tls, code), -int32(1), tsdPtr+8)
 	return (*TTcl_DString)(unsafe.Pointer(tsdPtr + 8)).Fstring1
 }
 
@@ -218044,10 +218038,10 @@ func XTclSockGetPort(tls *libc.TLS, interp uintptr, string1 uintptr, proto uintp
 		 * Don't bother translating 'proto' to native.
 		 */
 		native = XTcl_UtfToExternalDString(tls, libc.UintptrFromInt32(0), string1, -int32(1), bp)
-		sp = libws2_32.Xgetservbyname(tls, native, proto) /* INTL: Native. */
+		sp = libc.Xgetservbyname(tls, native, proto) /* INTL: Native. */
 		XTcl_DStringFree(tls, bp)
 		if sp != libc.UintptrFromInt32(0) {
-			*(*int32)(unsafe.Pointer(portPtr)) = int32(libws2_32.Xntohs(tls, uint16((*Tservent)(unsafe.Pointer(sp)).Fs_port)))
+			*(*int32)(unsafe.Pointer(portPtr)) = int32(libc.Xntohs(tls, uint16((*Tservent)(unsafe.Pointer(sp)).Fs_port)))
 			return m_TCL_OK
 		}
 	}
@@ -218084,16 +218078,16 @@ func XTclSockMinimumBuffers(tls *libc.TLS, sock uintptr, _size int32) (r int32) 
 	var _ /* current at bp+4 */ int32
 	var _ /* len at bp+8 */ int32
 	*(*int32)(unsafe.Pointer(bp + 8)) = int32(4)
-	libws2_32.Xgetsockopt(tls, uint64(uint64(sock)), int32(0xffff), int32(0x1001), bp+4, bp+8)
+	libc.Xgetsockopt(tls, uint64(uint64(sock)), int32(0xffff), int32(0x1001), bp+4, bp+8)
 	if *(*int32)(unsafe.Pointer(bp + 4)) < *(*int32)(unsafe.Pointer(bp)) {
 		*(*int32)(unsafe.Pointer(bp + 8)) = int32(4)
-		libws2_32.Xsetsockopt(tls, uint64(uint64(sock)), int32(0xffff), int32(0x1001), bp, *(*int32)(unsafe.Pointer(bp + 8)))
+		libc.Xsetsockopt(tls, uint64(uint64(sock)), int32(0xffff), int32(0x1001), bp, *(*int32)(unsafe.Pointer(bp + 8)))
 	}
 	*(*int32)(unsafe.Pointer(bp + 8)) = int32(4)
-	libws2_32.Xgetsockopt(tls, uint64(uint64(sock)), int32(0xffff), int32(0x1002), bp+4, bp+8)
+	libc.Xgetsockopt(tls, uint64(uint64(sock)), int32(0xffff), int32(0x1002), bp+4, bp+8)
 	if *(*int32)(unsafe.Pointer(bp + 4)) < *(*int32)(unsafe.Pointer(bp)) {
 		*(*int32)(unsafe.Pointer(bp + 8)) = int32(4)
-		libws2_32.Xsetsockopt(tls, uint64(uint64(sock)), int32(0xffff), int32(0x1002), bp, *(*int32)(unsafe.Pointer(bp + 8)))
+		libc.Xsetsockopt(tls, uint64(uint64(sock)), int32(0xffff), int32(0x1002), bp, *(*int32)(unsafe.Pointer(bp + 8)))
 	}
 	return m_TCL_OK
 }
@@ -218166,7 +218160,7 @@ func XTclCreateSocketAddress(tls *libc.TLS, interp uintptr, addrlist uintptr, ho
 	if willBind != 0 {
 		(*(*Taddrinfo)(unsafe.Pointer(bp))).Fai_flags |= int32(m_AI_PASSIVE1)
 	}
-	result = libws2_32.XWspiapiGetAddrInfo(tls, native, portstring, bp, addrlist)
+	result = libc.XWspiapiGetAddrInfo(tls, native, portstring, bp, addrlist)
 	if host != libc.UintptrFromInt32(0) {
 		XTcl_DStringFree(tls, bp+72)
 	}
@@ -256330,14 +256324,14 @@ func XTcl_PanicVA(tls *libc.TLS, format uintptr, argList Tva_list) {
 	if _panicProc != libc.UintptrFromInt32(0) {
 		(*(*func(*libc.TLS, uintptr, uintptr))(unsafe.Pointer(&struct{ uintptr }{_panicProc})))(tls, format, libc.VaList(bp+8, arg1, arg2, arg3, arg4, arg5, arg6, arg7, arg8))
 	} else {
-		if libkernel32.XIsDebuggerPresent(tls) != 0 {
+		if libc.XIsDebuggerPresent(tls) != 0 {
 			XtclWinDebugPanic(tls, format, libc.VaList(bp+8, arg1, arg2, arg3, arg4, arg5, arg6, arg7, arg8))
 		} else {
 			libc.Xfprintf(tls, libc.X__acrt_iob_func(tls, uint32(2)), format, libc.VaList(bp+8, arg1, arg2, arg3, arg4, arg5, arg6, arg7, arg8))
 			libc.Xfprintf(tls, libc.X__acrt_iob_func(tls, uint32(2)), __ccgo_ts+285, 0)
 			libc.Xfflush(tls, libc.X__acrt_iob_func(tls, uint32(2)))
 			libc.X__builtin_trap(tls)
-			libkernel32.XExitProcess(tls, uint32(1))
+			libc.XExitProcess(tls, uint32(1))
 		}
 	}
 }
@@ -283390,7 +283384,7 @@ func _getStartupScriptFileName(tls *libc.TLS) (r uintptr) {
 }
 
 func _winNToHS(tls *libc.TLS, ns uint16) (r uint16) {
-	return libws2_32.Xntohs(tls, ns)
+	return libc.Xntohs(tls, ns)
 }
 
 func XTclBN_mp_to_unsigned_bin(tls *libc.TLS, a uintptr, b uintptr) (r Tmp_err) {
@@ -320241,7 +320235,7 @@ func XTclWinInit(tls *libc.TLS, hInst THINSTANCE) {
 	var _ /* os at bp+0 */ TOSVERSIONINFOW
 	_hInstance = hInst
 	(*(*TOSVERSIONINFOW)(unsafe.Pointer(bp))).FdwOSVersionInfoSize = uint32(276)
-	libkernel32.XGetVersionExW(tls, bp)
+	libc.XGetVersionExW(tls, bp)
 	/*
 	 * We no longer support Win32s or Win9x or Windows CE, so just in case
 	 * someone manages to get a runtime there, make sure they know that.
@@ -320410,7 +320404,7 @@ func XTclWinDriveLetterForVolMountPoint(tls *libc.TLS, mountPoint uintptr) (r in
 			/*
 			 * Try to read the volume mount point and see where it points.
 			 */
-			if libkernel32.XGetVolumeNameForVolumeMountPointW(tls, bp+112, bp, uint32(55)) != 0 {
+			if libc.XGetVolumeNameForVolumeMountPointW(tls, bp+112, bp, uint32(55)) != 0 {
 				if libc.Xwcscmp(tls, (*TMountPointMap)(unsafe.Pointer(dlIter)).FvolumeName, bp) == 0 {
 					/*
 					 * Nothing has changed.
@@ -320468,7 +320462,7 @@ func XTclWinDriveLetterForVolMountPoint(tls *libc.TLS, mountPoint uintptr) (r in
 		/*
 		 * Try to read the volume mount point and see where it points.
 		 */
-		if libkernel32.XGetVolumeNameForVolumeMountPointW(tls, bp+112, bp, uint32(55)) != 0 {
+		if libc.XGetVolumeNameForVolumeMountPointW(tls, bp+112, bp, uint32(55)) != 0 {
 			alreadyStored = 0
 			dlIter = XdriveLetterLookup
 			for {
@@ -320990,9 +320984,9 @@ func _FileCloseProc(tls *libc.TLS, instanceData TClientData, interp uintptr) (r 
 	 * the thread exit process. Otherwise, one thread may kill the stdio of
 	 * another.
 	 */
-	if !(XTclInThreadExit(tls) != 0) || libkernel32.XGetStdHandle(tls, uint32(-libc.Int32FromInt32(10))) != (*TFileInfo)(unsafe.Pointer(fileInfoPtr)).Fhandle && libkernel32.XGetStdHandle(tls, uint32(-libc.Int32FromInt32(11))) != (*TFileInfo)(unsafe.Pointer(fileInfoPtr)).Fhandle && libkernel32.XGetStdHandle(tls, uint32(-libc.Int32FromInt32(12))) != (*TFileInfo)(unsafe.Pointer(fileInfoPtr)).Fhandle {
-		if libkernel32.XCloseHandle(tls, (*TFileInfo)(unsafe.Pointer(fileInfoPtr)).Fhandle) == m_FALSE {
-			XTclWinConvertError(tls, libkernel32.XGetLastError(tls))
+	if !(XTclInThreadExit(tls) != 0) || libc.XGetStdHandle(tls, uint32(-libc.Int32FromInt32(10))) != (*TFileInfo)(unsafe.Pointer(fileInfoPtr)).Fhandle && libc.XGetStdHandle(tls, uint32(-libc.Int32FromInt32(11))) != (*TFileInfo)(unsafe.Pointer(fileInfoPtr)).Fhandle && libc.XGetStdHandle(tls, uint32(-libc.Int32FromInt32(12))) != (*TFileInfo)(unsafe.Pointer(fileInfoPtr)).Fhandle {
+		if libc.XCloseHandle(tls, (*TFileInfo)(unsafe.Pointer(fileInfoPtr)).Fhandle) == m_FALSE {
+			XTclWinConvertError(tls, libc.XGetLastError(tls))
 			errorCode = *(*int32)(unsafe.Pointer(libc.X_errno(tls)))
 		}
 	}
@@ -321074,9 +321068,9 @@ func _FileSeekProc(tls *libc.TLS, instanceData TClientData, offset int32, mode i
 	 * Save our current place in case we need to roll-back the seek.
 	 */
 	*(*TLONG)(unsafe.Pointer(bp + 4)) = 0
-	oldPos = int32(libkernel32.XSetFilePointer(tls, (*TFileInfo)(unsafe.Pointer(infoPtr)).Fhandle, 0, bp+4, uint32(m_FILE_CURRENT)))
+	oldPos = int32(libc.XSetFilePointer(tls, (*TFileInfo)(unsafe.Pointer(infoPtr)).Fhandle, 0, bp+4, uint32(m_FILE_CURRENT)))
 	if oldPos == int32(uint32(-libc.Int32FromInt32(1))) {
-		winError = libkernel32.XGetLastError(tls)
+		winError = libc.XGetLastError(tls)
 		if winError != uint32(0) {
 			XTclWinConvertError(tls, winError)
 			*(*int32)(unsafe.Pointer(errorCodePtr)) = *(*int32)(unsafe.Pointer(libc.X_errno(tls)))
@@ -321089,9 +321083,9 @@ func _FileSeekProc(tls *libc.TLS, instanceData TClientData, offset int32, mode i
 		v1 = 0
 	}
 	*(*TLONG)(unsafe.Pointer(bp)) = int32(v1)
-	newPos = int32(libkernel32.XSetFilePointer(tls, (*TFileInfo)(unsafe.Pointer(infoPtr)).Fhandle, offset, bp, moveMethod))
+	newPos = int32(libc.XSetFilePointer(tls, (*TFileInfo)(unsafe.Pointer(infoPtr)).Fhandle, offset, bp, moveMethod))
 	if newPos == int32(uint32(-libc.Int32FromInt32(1))) {
-		winError1 = libkernel32.XGetLastError(tls)
+		winError1 = libc.XGetLastError(tls)
 		if winError1 != uint32(0) {
 			XTclWinConvertError(tls, winError1)
 			*(*int32)(unsafe.Pointer(errorCodePtr)) = *(*int32)(unsafe.Pointer(libc.X_errno(tls)))
@@ -321103,7 +321097,7 @@ func _FileSeekProc(tls *libc.TLS, instanceData TClientData, offset int32, mode i
 	 */
 	if *(*TLONG)(unsafe.Pointer(bp)) != 0 {
 		*(*int32)(unsafe.Pointer(errorCodePtr)) = int32(m_EOVERFLOW)
-		libkernel32.XSetFilePointer(tls, (*TFileInfo)(unsafe.Pointer(infoPtr)).Fhandle, oldPos, bp+4, uint32(m_FILE_BEGIN))
+		libc.XSetFilePointer(tls, (*TFileInfo)(unsafe.Pointer(infoPtr)).Fhandle, oldPos, bp+4, uint32(m_FILE_BEGIN))
 		return -int32(1)
 	}
 	return int32(int32(newPos))
@@ -321147,9 +321141,9 @@ func _FileWideSeekProc(tls *libc.TLS, instanceData TClientData, offset TTcl_Wide
 		}
 	}
 	*(*TLONG)(unsafe.Pointer(bp)) = int32(offset >> libc.Int32FromInt32(32))
-	newPos = int32(libkernel32.XSetFilePointer(tls, (*TFileInfo)(unsafe.Pointer(infoPtr)).Fhandle, int32(offset), bp, moveMethod))
+	newPos = int32(libc.XSetFilePointer(tls, (*TFileInfo)(unsafe.Pointer(infoPtr)).Fhandle, int32(offset), bp, moveMethod))
 	if newPos == int32(uint32(-libc.Int32FromInt32(1))) {
-		winError = libkernel32.XGetLastError(tls)
+		winError = libc.XGetLastError(tls)
 		if winError != uint32(0) {
 			XTclWinConvertError(tls, winError)
 			*(*int32)(unsafe.Pointer(errorCodePtr)) = *(*int32)(unsafe.Pointer(libc.X_errno(tls)))
@@ -321189,9 +321183,9 @@ func _FileTruncateProc(tls *libc.TLS, instanceData TClientData, length TTcl_Wide
 	 * Save where we were...
 	 */
 	*(*TLONG)(unsafe.Pointer(bp + 4)) = 0
-	oldPos = int32(libkernel32.XSetFilePointer(tls, (*TFileInfo)(unsafe.Pointer(infoPtr)).Fhandle, 0, bp+4, uint32(m_FILE_CURRENT)))
+	oldPos = int32(libc.XSetFilePointer(tls, (*TFileInfo)(unsafe.Pointer(infoPtr)).Fhandle, 0, bp+4, uint32(m_FILE_CURRENT)))
 	if oldPos == int32(uint32(-libc.Int32FromInt32(1))) {
-		winError = libkernel32.XGetLastError(tls)
+		winError = libc.XGetLastError(tls)
 		if winError != uint32(0) {
 			XTclWinConvertError(tls, winError)
 			return *(*int32)(unsafe.Pointer(libc.X_errno(tls)))
@@ -321201,9 +321195,9 @@ func _FileTruncateProc(tls *libc.TLS, instanceData TClientData, length TTcl_Wide
 	 * Move to where we want to truncate
 	 */
 	*(*TLONG)(unsafe.Pointer(bp)) = int32(length >> libc.Int32FromInt32(32))
-	newPos = int32(libkernel32.XSetFilePointer(tls, (*TFileInfo)(unsafe.Pointer(infoPtr)).Fhandle, int32(length), bp, uint32(m_FILE_BEGIN)))
+	newPos = int32(libc.XSetFilePointer(tls, (*TFileInfo)(unsafe.Pointer(infoPtr)).Fhandle, int32(length), bp, uint32(m_FILE_BEGIN)))
 	if newPos == int32(uint32(-libc.Int32FromInt32(1))) {
-		winError1 = libkernel32.XGetLastError(tls)
+		winError1 = libc.XGetLastError(tls)
 		if winError1 != uint32(0) {
 			XTclWinConvertError(tls, winError1)
 			return *(*int32)(unsafe.Pointer(libc.X_errno(tls)))
@@ -321213,15 +321207,15 @@ func _FileTruncateProc(tls *libc.TLS, instanceData TClientData, length TTcl_Wide
 	 * Perform the truncation (unlike POSIX ftruncate(), we needed to move to
 	 * the location to truncate at first).
 	 */
-	if !(libkernel32.XSetEndOfFile(tls, (*TFileInfo)(unsafe.Pointer(infoPtr)).Fhandle) != 0) {
-		XTclWinConvertError(tls, libkernel32.XGetLastError(tls))
+	if !(libc.XSetEndOfFile(tls, (*TFileInfo)(unsafe.Pointer(infoPtr)).Fhandle) != 0) {
+		XTclWinConvertError(tls, libc.XGetLastError(tls))
 		return *(*int32)(unsafe.Pointer(libc.X_errno(tls)))
 	}
 	/*
 	 * Move back. If this last step fails, we don't care; it's just a "best
 	 * effort" attempt to restore our file pointer to where it was.
 	 */
-	libkernel32.XSetFilePointer(tls, (*TFileInfo)(unsafe.Pointer(infoPtr)).Fhandle, oldPos, bp+4, uint32(m_FILE_BEGIN))
+	libc.XSetFilePointer(tls, (*TFileInfo)(unsafe.Pointer(infoPtr)).Fhandle, oldPos, bp+4, uint32(m_FILE_BEGIN))
 	return 0
 }
 
@@ -321262,10 +321256,10 @@ func _FileInputProc(tls *libc.TLS, instanceData TClientData, buf uintptr, bufSiz
 	 * for now, we just block. The same problem exists for files being read
 	 * over the network.
 	 */
-	if libkernel32.XReadFile(tls, (*TFileInfo)(unsafe.Pointer(infoPtr)).Fhandle, buf, uint32(uint32(bufSize)), bp, libc.UintptrFromInt32(0)) != m_FALSE {
+	if libc.XReadFile(tls, (*TFileInfo)(unsafe.Pointer(infoPtr)).Fhandle, buf, uint32(uint32(bufSize)), bp, libc.UintptrFromInt32(0)) != m_FALSE {
 		return int32(*(*TDWORD)(unsafe.Pointer(bp)))
 	}
-	XTclWinConvertError(tls, libkernel32.XGetLastError(tls))
+	XTclWinConvertError(tls, libc.XGetLastError(tls))
 	*(*int32)(unsafe.Pointer(errorCode)) = *(*int32)(unsafe.Pointer(libc.X_errno(tls)))
 	if *(*int32)(unsafe.Pointer(libc.X_errno(tls))) == int32(m_EPIPE) {
 		return 0
@@ -321304,10 +321298,10 @@ func _FileOutputProc(tls *libc.TLS, instanceData TClientData, buf uintptr, toWri
 	 * seek to the end of the file before writing the current buffer.
 	 */
 	if (*TFileInfo)(unsafe.Pointer(infoPtr)).Fflags&(libc.Int32FromInt32(1)<<libc.Int32FromInt32(2)) != 0 {
-		libkernel32.XSetFilePointer(tls, (*TFileInfo)(unsafe.Pointer(infoPtr)).Fhandle, 0, libc.UintptrFromInt32(0), uint32(m_FILE_END))
+		libc.XSetFilePointer(tls, (*TFileInfo)(unsafe.Pointer(infoPtr)).Fhandle, 0, libc.UintptrFromInt32(0), uint32(m_FILE_END))
 	}
-	if libkernel32.XWriteFile(tls, (*TFileInfo)(unsafe.Pointer(infoPtr)).Fhandle, buf, uint32(uint32(toWrite)), bp, libc.UintptrFromInt32(0)) == m_FALSE {
-		XTclWinConvertError(tls, libkernel32.XGetLastError(tls))
+	if libc.XWriteFile(tls, (*TFileInfo)(unsafe.Pointer(infoPtr)).Fhandle, buf, uint32(uint32(toWrite)), bp, libc.UintptrFromInt32(0)) == m_FALSE {
+		XTclWinConvertError(tls, libc.XGetLastError(tls))
 		*(*int32)(unsafe.Pointer(errorCode)) = *(*int32)(unsafe.Pointer(libc.X_errno(tls)))
 		return -int32(1)
 	}
@@ -321472,7 +321466,7 @@ func XTclpOpenFileChannel(tls *libc.TLS, interp uintptr, pathPtr uintptr, mode i
 	if _NativeIsComPort(tls, nativeName) != 0 {
 		handle = XTclWinSerialOpen(tls, uintptr(int64(-libc.Int32FromInt32(1))), nativeName, accessMode)
 		if handle == uintptr(int64(-libc.Int32FromInt32(1))) {
-			XTclWinConvertError(tls, libkernel32.XGetLastError(tls))
+			XTclWinConvertError(tls, libc.XGetLastError(tls))
 			if interp != libc.UintptrFromInt32(0) {
 				if (*TTcl_Obj)(unsafe.Pointer(pathPtr)).Fbytes != 0 {
 					v2 = (*TTcl_Obj)(unsafe.Pointer(pathPtr)).Fbytes
@@ -321500,7 +321494,7 @@ func XTclpOpenFileChannel(tls *libc.TLS, interp uintptr, pathPtr uintptr, mode i
 			flags = uint32(m_FILE_ATTRIBUTE_READONLY1)
 		}
 	} else {
-		flags = libkernel32.XGetFileAttributesW(tls, nativeName)
+		flags = libc.XGetFileAttributesW(tls, nativeName)
 		if flags == uint32(0xFFFFFFFF) {
 			flags = uint32(0)
 		}
@@ -321512,9 +321506,9 @@ func XTclpOpenFileChannel(tls *libc.TLS, interp uintptr, pathPtr uintptr, mode i
 	/*
 	 * Now we get to create the file.
 	 */
-	handle = libkernel32.XCreateFileW(tls, nativeName, accessMode, shareMode, libc.UintptrFromInt32(0), createMode, flags, libc.UintptrFromInt32(0))
+	handle = libc.XCreateFileW(tls, nativeName, accessMode, shareMode, libc.UintptrFromInt32(0), createMode, flags, libc.UintptrFromInt32(0))
 	if handle == uintptr(int64(-libc.Int32FromInt32(1))) {
-		err = libkernel32.XGetLastError(tls)
+		err = libc.XGetLastError(tls)
 		if err&uint32(0xFFFF) == uint32(110) {
 			if mode&int32(m__O_CREAT5) != 0 {
 				v3 = int32(80)
@@ -321547,7 +321541,7 @@ func XTclpOpenFileChannel(tls *libc.TLS, interp uintptr, pathPtr uintptr, mode i
 		 */
 		handle = XTclWinSerialOpen(tls, handle, nativeName, accessMode)
 		if handle == uintptr(int64(-libc.Int32FromInt32(1))) {
-			XTclWinConvertError(tls, libkernel32.XGetLastError(tls))
+			XTclWinConvertError(tls, libc.XGetLastError(tls))
 			if interp != libc.UintptrFromInt32(0) {
 				if (*TTcl_Obj)(unsafe.Pointer(pathPtr)).Fbytes != 0 {
 					v5 = (*TTcl_Obj)(unsafe.Pointer(pathPtr)).Fbytes
@@ -321660,7 +321654,7 @@ func XTcl_MakeFileChannel(tls *libc.TLS, rawHandle TClientData, mode int32) (r T
 		 * which is why we can't test every handle that comes into this
 		 * function in this way.
 		 */
-		result = libkernel32.XDuplicateHandle(tls, libkernel32.XGetCurrentProcess(tls), handle, libkernel32.XGetCurrentProcess(tls), bp+40, uint32(0), m_FALSE, uint32(m_DUPLICATE_SAME_ACCESS1))
+		result = libc.XDuplicateHandle(tls, libc.XGetCurrentProcess(tls), handle, libc.XGetCurrentProcess(tls), bp+40, uint32(0), m_FALSE, uint32(m_DUPLICATE_SAME_ACCESS1))
 		if result == 0 {
 			/*
 			 * Unable to make a duplicate. It's definitely invalid at this
@@ -321673,7 +321667,7 @@ func XTcl_MakeFileChannel(tls *libc.TLS, rawHandle TClientData, mode int32) (r T
 		 * of this duped handle which might throw EXCEPTION_INVALID_HANDLE.
 		 */
 		result = 0
-		libkernel32.XCloseHandle(tls, *(*THANDLE)(unsafe.Pointer(bp + 40)))
+		libc.XCloseHandle(tls, *(*THANDLE)(unsafe.Pointer(bp + 40)))
 		result = int32(1)
 		if result == m_FALSE {
 			return libc.UintptrFromInt32(0)
@@ -321735,7 +321729,7 @@ func XTclpGetDefaultStdChannel(tls *libc.TLS, type1 int32) (r TTcl_Channel) {
 		XTcl_Panic(tls, __ccgo_ts+68833, 0)
 		break
 	}
-	handle = libkernel32.XGetStdHandle(tls, handleId)
+	handle = libc.XGetStdHandle(tls, handleId)
 	/*
 	 * Note that we need to check for 0 because Windows may return 0 if this
 	 * is not a console mode application, even though this is not a valid
@@ -321863,7 +321857,7 @@ func XTclWinFlushDirtyChannels(tls *libc.TLS) {
 			break
 		}
 		if (*TFileInfo)(unsafe.Pointer(infoPtr)).Fdirty != 0 {
-			libkernel32.XFlushFileBuffers(tls, (*TFileInfo)(unsafe.Pointer(infoPtr)).Fhandle)
+			libc.XFlushFileBuffers(tls, (*TFileInfo)(unsafe.Pointer(infoPtr)).Fhandle)
 			(*TFileInfo)(unsafe.Pointer(infoPtr)).Fdirty = 0
 		}
 		goto _1
@@ -321949,18 +321943,18 @@ func _FileGetType(tls *libc.TLS, handle THANDLE) (r TDWORD) {
 	var _ /* consoleParams at bp+0 */ TDWORD
 	var _ /* dcb at bp+4 */ TDCB
 	_ = type1
-	type1 = libkernel32.XGetFileType(tls, handle)
+	type1 = libc.XGetFileType(tls, handle)
 	/*
 	 * If the file is a character device, we need to try to figure out whether
 	 * it is a serial port, a console, or something else. We test for the
 	 * console case first because this is more common.
 	 */
-	if type1 == uint32(m_FILE_TYPE_CHAR1) || type1 == uint32(m_FILE_TYPE_UNKNOWN1) && !(libkernel32.XGetLastError(tls) != 0) {
-		if libkernel32.XGetConsoleMode(tls, handle, bp) != 0 {
+	if type1 == uint32(m_FILE_TYPE_CHAR1) || type1 == uint32(m_FILE_TYPE_UNKNOWN1) && !(libc.XGetLastError(tls) != 0) {
+		if libc.XGetConsoleMode(tls, handle, bp) != 0 {
 			type1 = uint32(libc.Int32FromInt32(m_FILE_TYPE_PIPE1) + libc.Int32FromInt32(2))
 		} else {
 			(*(*TDCB)(unsafe.Pointer(bp + 4))).FDCBlength = uint32(28)
-			if libkernel32.XGetCommState(tls, handle, bp+4) != 0 {
+			if libc.XGetCommState(tls, handle, bp+4) != 0 {
 				type1 = uint32(libc.Int32FromInt32(m_FILE_TYPE_PIPE1) + libc.Int32FromInt32(1))
 			}
 		}
@@ -322175,8 +322169,8 @@ func _ReadConsoleBytes(tls *libc.TLS, hConsole THANDLE, lpBuffer TLPVOID, nbytes
 	 * has been established (through an extension for example), it
 	 * will run and take whatever action it deems appropriate.
 	 */
-	for cond := true; cond; cond = result != 0 && *(*TDWORD)(unsafe.Pointer(bp)) == uint32(0) && libkernel32.XGetLastError(tls) == uint32(995) {
-		result = libkernel32.XReadConsoleW(tls, hConsole, lpBuffer, uint32(uint64(uint64(nbytes))/uint64(2)), bp, libc.UintptrFromInt32(0))
+	for cond := true; cond; cond = result != 0 && *(*TDWORD)(unsafe.Pointer(bp)) == uint32(0) && libc.XGetLastError(tls) == uint32(995) {
+		result = libc.XReadConsoleW(tls, hConsole, lpBuffer, uint32(uint64(uint64(nbytes))/uint64(2)), bp, libc.UintptrFromInt32(0))
 	}
 	if nbytesread != libc.UintptrFromInt32(0) {
 		*(*TDWORD)(unsafe.Pointer(nbytesread)) = uint32(uint64(*(*TDWORD)(unsafe.Pointer(bp))) * uint64(2))
@@ -322190,7 +322184,7 @@ func _WriteConsoleBytes(tls *libc.TLS, hConsole THANDLE, lpBuffer uintptr, nbyte
 	var result TBOOL
 	var _ /* ntchars at bp+0 */ TDWORD
 	_ = result
-	result = libkernel32.XWriteConsoleW(tls, hConsole, lpBuffer, uint32(uint64(uint64(nbytes))/uint64(2)), bp, libc.UintptrFromInt32(0))
+	result = libc.XWriteConsoleW(tls, hConsole, lpBuffer, uint32(uint64(uint64(nbytes))/uint64(2)), bp, libc.UintptrFromInt32(0))
 	if nbyteswritten != libc.UintptrFromInt32(0) {
 		*(*TDWORD)(unsafe.Pointer(nbyteswritten)) = uint32(uint64(*(*TDWORD)(unsafe.Pointer(bp))) * uint64(2))
 	}
@@ -322317,7 +322311,7 @@ func _ConsoleSetupProc(tls *libc.TLS, data TClientData, flags int32) {
 			break
 		}
 		if (*TConsoleInfo)(unsafe.Pointer(infoPtr)).FwatchMask&(libc.Int32FromInt32(1)<<libc.Int32FromInt32(2)) != 0 {
-			if libkernel32.XWaitForSingleObject(tls, (*TConsoleInfo)(unsafe.Pointer(infoPtr)).Fwriter.FreadyEvent, uint32(0)) != uint32(258) {
+			if libc.XWaitForSingleObject(tls, (*TConsoleInfo)(unsafe.Pointer(infoPtr)).Fwriter.FreadyEvent, uint32(0)) != uint32(258) {
 				block = 0
 			}
 		}
@@ -322379,7 +322373,7 @@ func _ConsoleCheckProc(tls *libc.TLS, data TClientData, flags int32) {
 		 */
 		needEvent = 0
 		if (*TConsoleInfo)(unsafe.Pointer(infoPtr)).FwatchMask&(libc.Int32FromInt32(1)<<libc.Int32FromInt32(2)) != 0 {
-			if libkernel32.XWaitForSingleObject(tls, (*TConsoleInfo)(unsafe.Pointer(infoPtr)).Fwriter.FreadyEvent, uint32(0)) != uint32(258) {
+			if libc.XWaitForSingleObject(tls, (*TConsoleInfo)(unsafe.Pointer(infoPtr)).Fwriter.FreadyEvent, uint32(0)) != uint32(258) {
 				needEvent = int32(1)
 			}
 		}
@@ -322470,8 +322464,8 @@ func _ConsoleCloseProc(tls *libc.TLS, instanceData TClientData, interp uintptr) 
 	 */
 	if (*TConsoleInfo)(unsafe.Pointer(consolePtr)).Freader.Fthread != 0 {
 		XTclPipeThreadStop(tls, consolePtr+80+16, (*TConsoleInfo)(unsafe.Pointer(consolePtr)).Freader.Fthread)
-		libkernel32.XCloseHandle(tls, (*TConsoleInfo)(unsafe.Pointer(consolePtr)).Freader.Fthread)
-		libkernel32.XCloseHandle(tls, (*TConsoleInfo)(unsafe.Pointer(consolePtr)).Freader.FreadyEvent)
+		libc.XCloseHandle(tls, (*TConsoleInfo)(unsafe.Pointer(consolePtr)).Freader.Fthread)
+		libc.XCloseHandle(tls, (*TConsoleInfo)(unsafe.Pointer(consolePtr)).Freader.FreadyEvent)
 		(*TConsoleInfo)(unsafe.Pointer(consolePtr)).Freader.Fthread = libc.UintptrFromInt32(0)
 	}
 	*(*int32)(unsafe.Pointer(consolePtr + 32)) &= ^(libc.Int32FromInt32(1) << libc.Int32FromInt32(1))
@@ -322486,11 +322480,11 @@ func _ConsoleCloseProc(tls *libc.TLS, instanceData TClientData, interp uintptr) 
 			 * We only need to wait if there is something to write. This may
 			 * prevent infinite wait on exit. [Python Bug 216289]
 			 */
-			libkernel32.XWaitForSingleObject(tls, (*TConsoleInfo)(unsafe.Pointer(consolePtr)).Fwriter.FreadyEvent, uint32(5000))
+			libc.XWaitForSingleObject(tls, (*TConsoleInfo)(unsafe.Pointer(consolePtr)).Fwriter.FreadyEvent, uint32(5000))
 		}
 		XTclPipeThreadStop(tls, consolePtr+56+16, (*TConsoleInfo)(unsafe.Pointer(consolePtr)).Fwriter.Fthread)
-		libkernel32.XCloseHandle(tls, (*TConsoleInfo)(unsafe.Pointer(consolePtr)).Fwriter.Fthread)
-		libkernel32.XCloseHandle(tls, (*TConsoleInfo)(unsafe.Pointer(consolePtr)).Fwriter.FreadyEvent)
+		libc.XCloseHandle(tls, (*TConsoleInfo)(unsafe.Pointer(consolePtr)).Fwriter.Fthread)
+		libc.XCloseHandle(tls, (*TConsoleInfo)(unsafe.Pointer(consolePtr)).Fwriter.FreadyEvent)
 		(*TConsoleInfo)(unsafe.Pointer(consolePtr)).Fwriter.Fthread = libc.UintptrFromInt32(0)
 	}
 	*(*int32)(unsafe.Pointer(consolePtr + 32)) &= ^(libc.Int32FromInt32(1) << libc.Int32FromInt32(2))
@@ -322499,9 +322493,9 @@ func _ConsoleCloseProc(tls *libc.TLS, instanceData TClientData, interp uintptr) 
 	 * the thread exit process. Otherwise, one thread may kill the stdio of
 	 * another.
 	 */
-	if !(XTclInThreadExit(tls) != 0) || libkernel32.XGetStdHandle(tls, uint32(-libc.Int32FromInt32(10))) != (*TConsoleInfo)(unsafe.Pointer(consolePtr)).Fhandle && libkernel32.XGetStdHandle(tls, uint32(-libc.Int32FromInt32(11))) != (*TConsoleInfo)(unsafe.Pointer(consolePtr)).Fhandle && libkernel32.XGetStdHandle(tls, uint32(-libc.Int32FromInt32(12))) != (*TConsoleInfo)(unsafe.Pointer(consolePtr)).Fhandle {
-		if libkernel32.XCloseHandle(tls, (*TConsoleInfo)(unsafe.Pointer(consolePtr)).Fhandle) == m_FALSE {
-			XTclWinConvertError(tls, libkernel32.XGetLastError(tls))
+	if !(XTclInThreadExit(tls) != 0) || libc.XGetStdHandle(tls, uint32(-libc.Int32FromInt32(10))) != (*TConsoleInfo)(unsafe.Pointer(consolePtr)).Fhandle && libc.XGetStdHandle(tls, uint32(-libc.Int32FromInt32(11))) != (*TConsoleInfo)(unsafe.Pointer(consolePtr)).Fhandle && libc.XGetStdHandle(tls, uint32(-libc.Int32FromInt32(12))) != (*TConsoleInfo)(unsafe.Pointer(consolePtr)).Fhandle {
+		if libc.XCloseHandle(tls, (*TConsoleInfo)(unsafe.Pointer(consolePtr)).Fhandle) == m_FALSE {
+			XTclWinConvertError(tls, libc.XGetLastError(tls))
 			errorCode = *(*int32)(unsafe.Pointer(libc.X_errno(tls)))
 		}
 	}
@@ -322667,7 +322661,7 @@ func _ConsoleOutputProc(tls *libc.TLS, instanceData TClientData, buf uintptr, to
 		v1 = uint32(m_INFINITE1)
 	}
 	timeout = uint32(v1)
-	if libkernel32.XWaitForSingleObject(tls, (*TConsoleThreadInfo)(unsafe.Pointer(threadInfo)).FreadyEvent, timeout) == uint32(258) {
+	if libc.XWaitForSingleObject(tls, (*TConsoleThreadInfo)(unsafe.Pointer(threadInfo)).FreadyEvent, timeout) == uint32(258) {
 		/*
 		 * The writer thread is blocked waiting for a write to complete and
 		 * the channel is in non-blocking mode.
@@ -322700,10 +322694,10 @@ func _ConsoleOutputProc(tls *libc.TLS, instanceData TClientData, buf uintptr, to
 		}
 		libc.Xmemcpy(tls, (*TConsoleInfo)(unsafe.Pointer(infoPtr)).FwriteBuf, buf, uint64(uint64(toWrite)))
 		(*TConsoleInfo)(unsafe.Pointer(infoPtr)).FtoWrite = toWrite
-		libkernel32.XResetEvent(tls, (*TConsoleThreadInfo)(unsafe.Pointer(threadInfo)).FreadyEvent)
+		libc.XResetEvent(tls, (*TConsoleThreadInfo)(unsafe.Pointer(threadInfo)).FreadyEvent)
 		pipeTI = *(*uintptr)(unsafe.Pointer(threadInfo + 16))
 		if pipeTI != 0 {
-			libkernel32.XSetEvent(tls, (*TTclPipeThreadInfo)(unsafe.Pointer(pipeTI)).FevControl)
+			libc.XSetEvent(tls, (*TTclPipeThreadInfo)(unsafe.Pointer(pipeTI)).FevControl)
 		}
 		*(*TDWORD)(unsafe.Pointer(bp)) = uint32(uint32(toWrite))
 	} else {
@@ -322712,7 +322706,7 @@ func _ConsoleOutputProc(tls *libc.TLS, instanceData TClientData, buf uintptr, to
 		 * avoids an unnecessary copy.
 		 */
 		if _WriteConsoleBytes(tls, (*TConsoleInfo)(unsafe.Pointer(infoPtr)).Fhandle, buf, uint32(uint32(toWrite)), bp) == m_FALSE {
-			XTclWinConvertError(tls, libkernel32.XGetLastError(tls))
+			XTclWinConvertError(tls, libc.XGetLastError(tls))
 			goto error
 		}
 	}
@@ -322789,7 +322783,7 @@ func _ConsoleEventProc(tls *libc.TLS, evPtr uintptr, flags int32) (r int32) {
 	 */
 	mask = 0
 	if (*TConsoleInfo)(unsafe.Pointer(infoPtr)).FwatchMask&(libc.Int32FromInt32(1)<<libc.Int32FromInt32(2)) != 0 {
-		if libkernel32.XWaitForSingleObject(tls, (*TConsoleInfo)(unsafe.Pointer(infoPtr)).Fwriter.FreadyEvent, uint32(0)) != uint32(258) {
+		if libc.XWaitForSingleObject(tls, (*TConsoleInfo)(unsafe.Pointer(infoPtr)).Fwriter.FreadyEvent, uint32(0)) != uint32(258) {
 			mask = libc.Int32FromInt32(1) << libc.Int32FromInt32(2)
 		}
 	}
@@ -322953,7 +322947,7 @@ func _WaitForRead(tls *libc.TLS, infoPtr uintptr, blocking int32) (r int32) {
 			v1 = uint32(m_INFINITE1)
 		}
 		timeout = uint32(v1)
-		if libkernel32.XWaitForSingleObject(tls, (*TConsoleThreadInfo)(unsafe.Pointer(threadInfo)).FreadyEvent, timeout) == uint32(258) {
+		if libc.XWaitForSingleObject(tls, (*TConsoleThreadInfo)(unsafe.Pointer(threadInfo)).FreadyEvent, timeout) == uint32(258) {
 			/*
 			 * The reader thread is blocked waiting for data and the channel
 			 * is in non-blocking mode.
@@ -322971,11 +322965,11 @@ func _WaitForRead(tls *libc.TLS, infoPtr uintptr, blocking int32) (r int32) {
 		if (*TConsoleInfo)(unsafe.Pointer(infoPtr)).FreadFlags&(libc.Int32FromInt32(1)<<libc.Int32FromInt32(2)) != 0 {
 			return int32(1)
 		}
-		if libkernel32.XPeekConsoleInputW(tls, handle, bp+4, uint32(1), bp) == m_FALSE {
+		if libc.XPeekConsoleInputW(tls, handle, bp+4, uint32(1), bp) == m_FALSE {
 			/*
 			 * Check to see if the peek failed because of EOF.
 			 */
-			XTclWinConvertError(tls, libkernel32.XGetLastError(tls))
+			XTclWinConvertError(tls, libc.XGetLastError(tls))
 			if *(*int32)(unsafe.Pointer(libc.X_errno(tls))) == -int32(1) {
 				*(*int32)(unsafe.Pointer(infoPtr + 128)) |= libc.Int32FromInt32(1) << libc.Int32FromInt32(2)
 				return int32(1)
@@ -322999,10 +322993,10 @@ func _WaitForRead(tls *libc.TLS, infoPtr uintptr, blocking int32) (r int32) {
 		/*
 		 * There wasn't any data available, so reset the thread and try again.
 		 */
-		libkernel32.XResetEvent(tls, (*TConsoleThreadInfo)(unsafe.Pointer(threadInfo)).FreadyEvent)
+		libc.XResetEvent(tls, (*TConsoleThreadInfo)(unsafe.Pointer(threadInfo)).FreadyEvent)
 		pipeTI = *(*uintptr)(unsafe.Pointer(threadInfo + 16))
 		if pipeTI != 0 {
-			libkernel32.XSetEvent(tls, (*TTclPipeThreadInfo)(unsafe.Pointer(pipeTI)).FevControl)
+			libc.XSetEvent(tls, (*TTclPipeThreadInfo)(unsafe.Pointer(pipeTI)).FevControl)
 		}
 	}
 	return r
@@ -323063,7 +323057,7 @@ func _ConsoleReaderThread(tls *libc.TLS, arg TLPVOID) (r TDWORD) {
 			 */
 			*(*int32)(unsafe.Pointer(infoPtr + 128)) |= libc.Int32FromInt32(1) << libc.Int32FromInt32(3)
 		} else {
-			err = libkernel32.XGetLastError(tls)
+			err = libc.XGetLastError(tls)
 			if err == uint32(-libc.Int32FromInt32(1)) {
 				(*TConsoleInfo)(unsafe.Pointer(infoPtr)).FreadFlags = libc.Int32FromInt32(1) << libc.Int32FromInt32(2)
 			}
@@ -323073,7 +323067,7 @@ func _ConsoleReaderThread(tls *libc.TLS, arg TLPVOID) (r TDWORD) {
 		 * Signal the main thread by signalling the readable event and then
 		 * waking up the notifier thread.
 		 */
-		libkernel32.XSetEvent(tls, (*TConsoleThreadInfo)(unsafe.Pointer(threadInfo)).FreadyEvent)
+		libc.XSetEvent(tls, (*TConsoleThreadInfo)(unsafe.Pointer(threadInfo)).FreadyEvent)
 		/*
 		 * Alert the foreground thread. Note that we need to treat this like a
 		 * critical section so the foreground thread does not terminate this
@@ -323145,7 +323139,7 @@ func _ConsoleWriterThread(tls *libc.TLS, arg TLPVOID) (r TDWORD) {
 		 */
 		for toWrite > uint32(0) {
 			if _WriteConsoleBytes(tls, handle, buf, toWrite, bp+8) == m_FALSE {
-				(*TConsoleInfo)(unsafe.Pointer(infoPtr)).FwriteError = libkernel32.XGetLastError(tls)
+				(*TConsoleInfo)(unsafe.Pointer(infoPtr)).FwriteError = libc.XGetLastError(tls)
 				done = int32(1)
 				break
 			}
@@ -323156,7 +323150,7 @@ func _ConsoleWriterThread(tls *libc.TLS, arg TLPVOID) (r TDWORD) {
 		 * Signal the main thread by signalling the writable event and then
 		 * waking up the notifier thread.
 		 */
-		libkernel32.XSetEvent(tls, (*TConsoleThreadInfo)(unsafe.Pointer(threadInfo)).FreadyEvent)
+		libc.XSetEvent(tls, (*TConsoleThreadInfo)(unsafe.Pointer(threadInfo)).FreadyEvent)
 		/*
 		 * Alert the foreground thread. Note that we need to treat this like a
 		 * critical section so the foreground thread does not terminate this
@@ -323209,7 +323203,7 @@ func XTclWinOpenConsoleChannel(tls *libc.TLS, handle THANDLE, channelName uintpt
 	(*TConsoleInfo)(unsafe.Pointer(infoPtr)).FvalidMask = permissions
 	(*TConsoleInfo)(unsafe.Pointer(infoPtr)).Fhandle = handle
 	(*TConsoleInfo)(unsafe.Pointer(infoPtr)).Fchannel = libc.UintptrFromInt32(0)
-	libuser32.XwsprintfA(tls, bp, __ccgo_ts+68963, libc.VaList(bp+40, libkernel32.XGetConsoleCP(tls)))
+	libc.XwsprintfA(tls, bp, __ccgo_ts+68963, libc.VaList(bp+40, libc.XGetConsoleCP(tls)))
 	(*TConsoleInfo)(unsafe.Pointer(infoPtr)).FthreadId = XTcl_GetCurrentThread(tls)
 	/*
 	 * Use the pointer for the name of the result channel. This keeps the
@@ -323224,18 +323218,18 @@ func XTclWinOpenConsoleChannel(tls *libc.TLS, handle THANDLE, channelName uintpt
 		 * input notifications and the buffer is set for line buffering. IOW,
 		 * we only want to catch when complete lines are ready for reading.
 		 */
-		libkernel32.XGetConsoleMode(tls, (*TConsoleInfo)(unsafe.Pointer(infoPtr)).Fhandle, bp+28)
+		libc.XGetConsoleMode(tls, (*TConsoleInfo)(unsafe.Pointer(infoPtr)).Fhandle, bp+28)
 		*(*TDWORD)(unsafe.Pointer(bp + 28)) &= uint32(^(libc.Int32FromInt32(m_ENABLE_WINDOW_INPUT1) | libc.Int32FromInt32(m_ENABLE_MOUSE_INPUT1)))
 		*(*TDWORD)(unsafe.Pointer(bp + 28)) |= uint32(m_ENABLE_LINE_INPUT1)
-		libkernel32.XSetConsoleMode(tls, (*TConsoleInfo)(unsafe.Pointer(infoPtr)).Fhandle, *(*TDWORD)(unsafe.Pointer(bp + 28)))
-		(*TConsoleInfo)(unsafe.Pointer(infoPtr)).Freader.FreadyEvent = libkernel32.XCreateEventW(tls, libc.UintptrFromInt32(0), int32(m_TRUE), int32(m_TRUE), libc.UintptrFromInt32(0))
-		(*TConsoleInfo)(unsafe.Pointer(infoPtr)).Freader.Fthread = libkernel32.XCreateThread(tls, libc.UintptrFromInt32(0), uint64(256), __ccgo_fp(_ConsoleReaderThread), XTclPipeThreadCreateTI(tls, infoPtr+80+16, infoPtr, (*TConsoleInfo)(unsafe.Pointer(infoPtr)).Freader.FreadyEvent), uint32(0), libc.UintptrFromInt32(0))
-		libkernel32.XSetThreadPriority(tls, (*TConsoleInfo)(unsafe.Pointer(infoPtr)).Freader.Fthread, int32(m_THREAD_BASE_PRIORITY_MAX))
+		libc.XSetConsoleMode(tls, (*TConsoleInfo)(unsafe.Pointer(infoPtr)).Fhandle, *(*TDWORD)(unsafe.Pointer(bp + 28)))
+		(*TConsoleInfo)(unsafe.Pointer(infoPtr)).Freader.FreadyEvent = libc.XCreateEventW(tls, libc.UintptrFromInt32(0), int32(m_TRUE), int32(m_TRUE), libc.UintptrFromInt32(0))
+		(*TConsoleInfo)(unsafe.Pointer(infoPtr)).Freader.Fthread = libc.XCreateThread(tls, libc.UintptrFromInt32(0), uint64(256), __ccgo_fp(_ConsoleReaderThread), XTclPipeThreadCreateTI(tls, infoPtr+80+16, infoPtr, (*TConsoleInfo)(unsafe.Pointer(infoPtr)).Freader.FreadyEvent), uint32(0), libc.UintptrFromInt32(0))
+		libc.XSetThreadPriority(tls, (*TConsoleInfo)(unsafe.Pointer(infoPtr)).Freader.Fthread, int32(m_THREAD_BASE_PRIORITY_MAX))
 	}
 	if permissions&(libc.Int32FromInt32(1)<<libc.Int32FromInt32(2)) != 0 {
-		(*TConsoleInfo)(unsafe.Pointer(infoPtr)).Fwriter.FreadyEvent = libkernel32.XCreateEventW(tls, libc.UintptrFromInt32(0), int32(m_TRUE), int32(m_TRUE), libc.UintptrFromInt32(0))
-		(*TConsoleInfo)(unsafe.Pointer(infoPtr)).Fwriter.Fthread = libkernel32.XCreateThread(tls, libc.UintptrFromInt32(0), uint64(256), __ccgo_fp(_ConsoleWriterThread), XTclPipeThreadCreateTI(tls, infoPtr+56+16, infoPtr, (*TConsoleInfo)(unsafe.Pointer(infoPtr)).Fwriter.FreadyEvent), uint32(0), libc.UintptrFromInt32(0))
-		libkernel32.XSetThreadPriority(tls, (*TConsoleInfo)(unsafe.Pointer(infoPtr)).Fwriter.Fthread, int32(m_THREAD_BASE_PRIORITY_MAX))
+		(*TConsoleInfo)(unsafe.Pointer(infoPtr)).Fwriter.FreadyEvent = libc.XCreateEventW(tls, libc.UintptrFromInt32(0), int32(m_TRUE), int32(m_TRUE), libc.UintptrFromInt32(0))
+		(*TConsoleInfo)(unsafe.Pointer(infoPtr)).Fwriter.Fthread = libc.XCreateThread(tls, libc.UintptrFromInt32(0), uint64(256), __ccgo_fp(_ConsoleWriterThread), XTclPipeThreadCreateTI(tls, infoPtr+56+16, infoPtr, (*TConsoleInfo)(unsafe.Pointer(infoPtr)).Fwriter.FreadyEvent), uint32(0), libc.UintptrFromInt32(0))
+		libc.XSetThreadPriority(tls, (*TConsoleInfo)(unsafe.Pointer(infoPtr)).Fwriter.Fthread, int32(m_THREAD_BASE_PRIORITY_MAX))
 	}
 	/*
 	 * Files have default translation of AUTO and ^Z eof char, which means
@@ -323490,7 +323484,7 @@ func _SerialExitHandler(tls *libc.TLS, clientData TClientData) {
 		if !(infoPtr != libc.UintptrFromInt32(0)) {
 			break
 		}
-		libkernel32.XPurgeComm(tls, (*TSerialInfo)(unsafe.Pointer(infoPtr)).Fhandle, uint32(libc.Int32FromInt32(m_PURGE_TXABORT1)|libc.Int32FromInt32(m_PURGE_RXABORT1)|libc.Int32FromInt32(m_PURGE_TXCLEAR1)|libc.Int32FromInt32(m_PURGE_RXCLEAR1)))
+		libc.XPurgeComm(tls, (*TSerialInfo)(unsafe.Pointer(infoPtr)).Fhandle, uint32(libc.Int32FromInt32(m_PURGE_TXABORT1)|libc.Int32FromInt32(m_PURGE_RXABORT1)|libc.Int32FromInt32(m_PURGE_TXCLEAR1)|libc.Int32FromInt32(m_PURGE_RXCLEAR1)))
 		goto _1
 	_1:
 		;
@@ -323608,7 +323602,7 @@ func _SerialSetupProc(tls *libc.TLS, data TClientData, flags int32) {
 			break
 		}
 		if (*TSerialInfo)(unsafe.Pointer(infoPtr)).FwatchMask&(libc.Int32FromInt32(1)<<libc.Int32FromInt32(2)) != 0 {
-			if libkernel32.XWaitForSingleObject(tls, (*TSerialInfo)(unsafe.Pointer(infoPtr)).FevWritable, uint32(0)) != uint32(258) {
+			if libc.XWaitForSingleObject(tls, (*TSerialInfo)(unsafe.Pointer(infoPtr)).FevWritable, uint32(0)) != uint32(258) {
 				block = 0
 				if msec < (*TSerialInfo)(unsafe.Pointer(infoPtr)).FblockTime {
 					v2 = msec
@@ -323682,7 +323676,7 @@ func _SerialCheckProc(tls *libc.TLS, data TClientData, flags int32) {
 		/*
 		 * If WRITABLE watch mask is set look for infoPtr->evWritable object.
 		 */
-		if (*TSerialInfo)(unsafe.Pointer(infoPtr)).FwatchMask&(libc.Int32FromInt32(1)<<libc.Int32FromInt32(2)) != 0 && libkernel32.XWaitForSingleObject(tls, (*TSerialInfo)(unsafe.Pointer(infoPtr)).FevWritable, uint32(0)) != uint32(258) {
+		if (*TSerialInfo)(unsafe.Pointer(infoPtr)).FwatchMask&(libc.Int32FromInt32(1)<<libc.Int32FromInt32(2)) != 0 && libc.XWaitForSingleObject(tls, (*TSerialInfo)(unsafe.Pointer(infoPtr)).FevWritable, uint32(0)) != uint32(258) {
 			(*TSerialInfo)(unsafe.Pointer(infoPtr)).Fwritable = int32(1)
 			needEvent = int32(1)
 		}
@@ -323691,7 +323685,7 @@ func _SerialCheckProc(tls *libc.TLS, data TClientData, flags int32) {
 		 * Window errors are ignored here.
 		 */
 		if (*TSerialInfo)(unsafe.Pointer(infoPtr)).FwatchMask&(libc.Int32FromInt32(1)<<libc.Int32FromInt32(1)) != 0 {
-			if libkernel32.XClearCommError(tls, (*TSerialInfo)(unsafe.Pointer(infoPtr)).Fhandle, infoPtr+52, bp) != 0 {
+			if libc.XClearCommError(tls, (*TSerialInfo)(unsafe.Pointer(infoPtr)).Fhandle, infoPtr+52, bp) != 0 {
 				/*
 				 * Look for characters already pending in windows queue. If
 				 * they are, poll.
@@ -323791,28 +323785,28 @@ func _SerialCloseProc(tls *libc.TLS, instanceData TClientData, interp uintptr) (
 	tsdPtr = XTcl_GetThreadData(tls, uintptr(unsafe.Pointer(&_dataKey13)), int32(8))
 	errorCode = 0
 	if (*TSerialInfo)(unsafe.Pointer(serialPtr)).FvalidMask&(libc.Int32FromInt32(1)<<libc.Int32FromInt32(1)) != 0 {
-		libkernel32.XPurgeComm(tls, (*TSerialInfo)(unsafe.Pointer(serialPtr)).Fhandle, uint32(libc.Int32FromInt32(m_PURGE_RXABORT1)|libc.Int32FromInt32(m_PURGE_RXCLEAR1)))
-		libkernel32.XCloseHandle(tls, (*TSerialInfo)(unsafe.Pointer(serialPtr)).FosRead.FhEvent)
+		libc.XPurgeComm(tls, (*TSerialInfo)(unsafe.Pointer(serialPtr)).Fhandle, uint32(libc.Int32FromInt32(m_PURGE_RXABORT1)|libc.Int32FromInt32(m_PURGE_RXCLEAR1)))
+		libc.XCloseHandle(tls, (*TSerialInfo)(unsafe.Pointer(serialPtr)).FosRead.FhEvent)
 	}
 	*(*int32)(unsafe.Pointer(serialPtr + 24)) &= ^(libc.Int32FromInt32(1) << libc.Int32FromInt32(1))
 	if (*TSerialInfo)(unsafe.Pointer(serialPtr)).FwriteThread != 0 {
 		XTclPipeThreadStop(tls, serialPtr+144, (*TSerialInfo)(unsafe.Pointer(serialPtr)).FwriteThread)
-		libkernel32.XCloseHandle(tls, (*TSerialInfo)(unsafe.Pointer(serialPtr)).FosWrite.FhEvent)
-		libkernel32.XCloseHandle(tls, (*TSerialInfo)(unsafe.Pointer(serialPtr)).FevWritable)
-		libkernel32.XCloseHandle(tls, (*TSerialInfo)(unsafe.Pointer(serialPtr)).FwriteThread)
+		libc.XCloseHandle(tls, (*TSerialInfo)(unsafe.Pointer(serialPtr)).FosWrite.FhEvent)
+		libc.XCloseHandle(tls, (*TSerialInfo)(unsafe.Pointer(serialPtr)).FevWritable)
+		libc.XCloseHandle(tls, (*TSerialInfo)(unsafe.Pointer(serialPtr)).FwriteThread)
 		(*TSerialInfo)(unsafe.Pointer(serialPtr)).FwriteThread = libc.UintptrFromInt32(0)
-		libkernel32.XPurgeComm(tls, (*TSerialInfo)(unsafe.Pointer(serialPtr)).Fhandle, uint32(libc.Int32FromInt32(m_PURGE_TXABORT1)|libc.Int32FromInt32(m_PURGE_TXCLEAR1)))
+		libc.XPurgeComm(tls, (*TSerialInfo)(unsafe.Pointer(serialPtr)).Fhandle, uint32(libc.Int32FromInt32(m_PURGE_TXABORT1)|libc.Int32FromInt32(m_PURGE_TXCLEAR1)))
 	}
 	*(*int32)(unsafe.Pointer(serialPtr + 24)) &= ^(libc.Int32FromInt32(1) << libc.Int32FromInt32(2))
-	libkernel32.XDeleteCriticalSection(tls, serialPtr+160)
+	libc.XDeleteCriticalSection(tls, serialPtr+160)
 	/*
 	 * Don't close the Win32 handle if the handle is a standard channel during
 	 * the thread exit process. Otherwise, one thread may kill the stdio of
 	 * another.
 	 */
-	if !(XTclInThreadExit(tls) != 0) || libkernel32.XGetStdHandle(tls, uint32(-libc.Int32FromInt32(10))) != (*TSerialInfo)(unsafe.Pointer(serialPtr)).Fhandle && libkernel32.XGetStdHandle(tls, uint32(-libc.Int32FromInt32(11))) != (*TSerialInfo)(unsafe.Pointer(serialPtr)).Fhandle && libkernel32.XGetStdHandle(tls, uint32(-libc.Int32FromInt32(12))) != (*TSerialInfo)(unsafe.Pointer(serialPtr)).Fhandle {
-		if libkernel32.XCloseHandle(tls, (*TSerialInfo)(unsafe.Pointer(serialPtr)).Fhandle) == m_FALSE {
-			XTclWinConvertError(tls, libkernel32.XGetLastError(tls))
+	if !(XTclInThreadExit(tls) != 0) || libc.XGetStdHandle(tls, uint32(-libc.Int32FromInt32(10))) != (*TSerialInfo)(unsafe.Pointer(serialPtr)).Fhandle && libc.XGetStdHandle(tls, uint32(-libc.Int32FromInt32(11))) != (*TSerialInfo)(unsafe.Pointer(serialPtr)).Fhandle && libc.XGetStdHandle(tls, uint32(-libc.Int32FromInt32(12))) != (*TSerialInfo)(unsafe.Pointer(serialPtr)).Fhandle {
+		if libc.XCloseHandle(tls, (*TSerialInfo)(unsafe.Pointer(serialPtr)).Fhandle) == m_FALSE {
+			XTclWinConvertError(tls, libc.XGetLastError(tls))
 			errorCode = *(*int32)(unsafe.Pointer(libc.X_errno(tls)))
 		}
 	}
@@ -323891,9 +323885,9 @@ func _SerialBlockingRead(tls *libc.TLS, infoPtr uintptr, buf TLPVOID, bufSize TD
 	v1 = libc.Uint32FromInt32(0)
 	(*T_OVERLAPPED)(unsafe.Pointer(osPtr)).F__ccgo2_16.F__ccgo0_0.FOffsetHigh = v1
 	(*T_OVERLAPPED)(unsafe.Pointer(osPtr)).F__ccgo2_16.F__ccgo0_0.FOffset = v1
-	libkernel32.XResetEvent(tls, (*T_OVERLAPPED)(unsafe.Pointer(osPtr)).FhEvent)
-	if !(libkernel32.XReadFile(tls, (*TSerialInfo)(unsafe.Pointer(infoPtr)).Fhandle, buf, bufSize, lpRead, osPtr) != 0) {
-		if libkernel32.XGetLastError(tls) != uint32(997) {
+	libc.XResetEvent(tls, (*T_OVERLAPPED)(unsafe.Pointer(osPtr)).FhEvent)
+	if !(libc.XReadFile(tls, (*TSerialInfo)(unsafe.Pointer(infoPtr)).Fhandle, buf, bufSize, lpRead, osPtr) != 0) {
+		if libc.XGetLastError(tls) != uint32(997) {
 			/*
 			 * ReadFile failed, but it isn't delayed. Report error.
 			 */
@@ -323902,7 +323896,7 @@ func _SerialBlockingRead(tls *libc.TLS, infoPtr uintptr, buf TLPVOID, bufSize TD
 			/*
 			 * Read is pending, wait for completion, timeout?
 			 */
-			if !(libkernel32.XGetOverlappedResult(tls, (*TSerialInfo)(unsafe.Pointer(infoPtr)).Fhandle, osPtr, lpRead, int32(m_TRUE)) != 0) {
+			if !(libc.XGetOverlappedResult(tls, (*TSerialInfo)(unsafe.Pointer(infoPtr)).Fhandle, osPtr, lpRead, int32(m_TRUE)) != 0) {
 				return m_FALSE
 			}
 		}
@@ -323947,8 +323941,8 @@ func _SerialBlockingWrite(tls *libc.TLS, infoPtr uintptr, buf TLPVOID, bufSize T
 	 *  4. Wait for completion
 	 *  5. Adjust the output queue counter
 	 */
-	libkernel32.XResetEvent(tls, (*T_OVERLAPPED)(unsafe.Pointer(osPtr)).FhEvent)
-	libkernel32.XEnterCriticalSection(tls, infoPtr+160)
+	libc.XResetEvent(tls, (*T_OVERLAPPED)(unsafe.Pointer(osPtr)).FhEvent)
+	libc.XEnterCriticalSection(tls, infoPtr+160)
 	p1 = infoPtr + 232
 	*(*int32)(unsafe.Pointer(p1)) = int32(uint32(*(*int32)(unsafe.Pointer(p1))) - bufSize)
 	/*
@@ -323957,16 +323951,16 @@ func _SerialBlockingWrite(tls *libc.TLS, infoPtr uintptr, buf TLPVOID, bufSize T
 	v2 = libc.Uint32FromInt32(0)
 	(*T_OVERLAPPED)(unsafe.Pointer(osPtr)).F__ccgo2_16.F__ccgo0_0.FOffsetHigh = v2
 	(*T_OVERLAPPED)(unsafe.Pointer(osPtr)).F__ccgo2_16.F__ccgo0_0.FOffset = v2
-	result = libkernel32.XWriteFile(tls, (*TSerialInfo)(unsafe.Pointer(infoPtr)).Fhandle, buf, bufSize, lpWritten, osPtr)
-	libkernel32.XLeaveCriticalSection(tls, infoPtr+160)
+	result = libc.XWriteFile(tls, (*TSerialInfo)(unsafe.Pointer(infoPtr)).Fhandle, buf, bufSize, lpWritten, osPtr)
+	libc.XLeaveCriticalSection(tls, infoPtr+160)
 	if result == m_FALSE {
-		err = int32(libkernel32.XGetLastError(tls))
+		err = int32(libc.XGetLastError(tls))
 		switch err {
 		case int32(997):
 			/*
 			 * Write is pending, wait for completion.
 			 */
-			if !(libkernel32.XGetOverlappedResult(tls, (*TSerialInfo)(unsafe.Pointer(infoPtr)).Fhandle, osPtr, lpWritten, int32(m_TRUE)) != 0) {
+			if !(libc.XGetOverlappedResult(tls, (*TSerialInfo)(unsafe.Pointer(infoPtr)).Fhandle, osPtr, lpWritten, int32(m_TRUE)) != 0) {
 				return m_FALSE
 			}
 		case int32(1121):
@@ -323984,10 +323978,10 @@ func _SerialBlockingWrite(tls *libc.TLS, infoPtr uintptr, buf TLPVOID, bufSize T
 		 * WriteFile completed immediately.
 		 */
 	}
-	libkernel32.XEnterCriticalSection(tls, infoPtr+160)
+	libc.XEnterCriticalSection(tls, infoPtr+160)
 	p3 = infoPtr + 232
 	*(*int32)(unsafe.Pointer(p3)) = int32(uint32(*(*int32)(unsafe.Pointer(p3))) + (*(*TDWORD)(unsafe.Pointer(lpWritten)) - bufSize))
-	libkernel32.XLeaveCriticalSection(tls, infoPtr+160)
+	libc.XLeaveCriticalSection(tls, infoPtr+160)
 	return int32(m_TRUE)
 }
 
@@ -324031,7 +324025,7 @@ func _SerialInputProc(tls *libc.TLS, instanceData TClientData, buf uintptr, bufS
 	 * Look for characters already pending in windows queue. This is the
 	 * mainly restored good old code from Tcl8.0
 	 */
-	if libkernel32.XClearCommError(tls, (*TSerialInfo)(unsafe.Pointer(infoPtr)).Fhandle, infoPtr+52, bp+4) != 0 {
+	if libc.XClearCommError(tls, (*TSerialInfo)(unsafe.Pointer(infoPtr)).Fhandle, infoPtr+52, bp+4) != 0 {
 		/*
 		 * Check for errors here, but not in the evSetup/Check procedures.
 		 */
@@ -324076,7 +324070,7 @@ func _SerialInputProc(tls *libc.TLS, instanceData TClientData, buf uintptr, bufS
 	 * checked the number of available bytes.
 	 */
 	if _SerialBlockingRead(tls, infoPtr, buf, uint32(uint32(bufSize)), bp, infoPtr+80) == m_FALSE {
-		XTclWinConvertError(tls, libkernel32.XGetLastError(tls))
+		XTclWinConvertError(tls, libc.XGetLastError(tls))
 		*(*int32)(unsafe.Pointer(errorCode)) = *(*int32)(unsafe.Pointer(libc.X_errno(tls)))
 		return -int32(1)
 	}
@@ -324143,7 +324137,7 @@ func _SerialOutputProc(tls *libc.TLS, instanceData TClientData, buf uintptr, toW
 		v1 = uint32(m_INFINITE1)
 	}
 	timeout = uint32(v1)
-	if libkernel32.XWaitForSingleObject(tls, (*TSerialInfo)(unsafe.Pointer(infoPtr)).FevWritable, timeout) == uint32(258) {
+	if libc.XWaitForSingleObject(tls, (*TSerialInfo)(unsafe.Pointer(infoPtr)).FevWritable, timeout) == uint32(258) {
 		/*
 		 * The writer thread is blocked waiting for a write to complete and
 		 * the channel is in non-blocking mode.
@@ -324162,9 +324156,9 @@ func _SerialOutputProc(tls *libc.TLS, instanceData TClientData, buf uintptr, toW
 	/*
 	 * Remember the number of bytes in output queue
 	 */
-	libkernel32.XEnterCriticalSection(tls, infoPtr+160)
+	libc.XEnterCriticalSection(tls, infoPtr+160)
 	*(*int32)(unsafe.Pointer(infoPtr + 232)) += toWrite
-	libkernel32.XLeaveCriticalSection(tls, infoPtr+160)
+	libc.XLeaveCriticalSection(tls, infoPtr+160)
 	if (*TSerialInfo)(unsafe.Pointer(infoPtr)).Fflags&(libc.Int32FromInt32(1)<<libc.Int32FromInt32(1)) != 0 {
 		/*
 		 * The serial is non-blocking, so copy the data into the output buffer
@@ -324182,10 +324176,10 @@ func _SerialOutputProc(tls *libc.TLS, instanceData TClientData, buf uintptr, toW
 		}
 		libc.Xmemcpy(tls, (*TSerialInfo)(unsafe.Pointer(infoPtr)).FwriteBuf, buf, uint64(uint64(toWrite)))
 		(*TSerialInfo)(unsafe.Pointer(infoPtr)).FtoWrite = toWrite
-		libkernel32.XResetEvent(tls, (*TSerialInfo)(unsafe.Pointer(infoPtr)).FevWritable)
+		libc.XResetEvent(tls, (*TSerialInfo)(unsafe.Pointer(infoPtr)).FevWritable)
 		pipeTI = *(*uintptr)(unsafe.Pointer(infoPtr + 144))
 		if pipeTI != 0 {
-			libkernel32.XSetEvent(tls, (*TTclPipeThreadInfo)(unsafe.Pointer(pipeTI)).FevControl)
+			libc.XSetEvent(tls, (*TTclPipeThreadInfo)(unsafe.Pointer(pipeTI)).FevControl)
 		}
 		*(*TDWORD)(unsafe.Pointer(bp)) = uint32(uint32(toWrite))
 	} else {
@@ -324209,7 +324203,7 @@ func _SerialOutputProc(tls *libc.TLS, instanceData TClientData, buf uintptr, toW
 	goto writeError
 writeError:
 	;
-	XTclWinConvertError(tls, libkernel32.XGetLastError(tls))
+	XTclWinConvertError(tls, libc.XGetLastError(tls))
 	goto error
 error:
 	;
@@ -324439,7 +324433,7 @@ func _SerialWriterThread(tls *libc.TLS, arg TLPVOID) (r TDWORD) {
 		infoPtr = (*TTclPipeThreadInfo)(unsafe.Pointer(*(*uintptr)(unsafe.Pointer(bp)))).FclientData
 		buf = (*TSerialInfo)(unsafe.Pointer(infoPtr)).FwriteBuf
 		toWrite = uint32((*TSerialInfo)(unsafe.Pointer(infoPtr)).FtoWrite)
-		(*(*TOVERLAPPED)(unsafe.Pointer(bp + 16))).FhEvent = libkernel32.XCreateEventW(tls, libc.UintptrFromInt32(0), int32(m_TRUE), m_FALSE, libc.UintptrFromInt32(0))
+		(*(*TOVERLAPPED)(unsafe.Pointer(bp + 16))).FhEvent = libc.XCreateEventW(tls, libc.UintptrFromInt32(0), int32(m_TRUE), m_FALSE, libc.UintptrFromInt32(0))
 		/*
 		 * Loop until all of the bytes are written or an error occurs.
 		 */
@@ -324452,7 +324446,7 @@ func _SerialWriterThread(tls *libc.TLS, arg TLPVOID) (r TDWORD) {
 				break
 			}
 			if _SerialBlockingWrite(tls, infoPtr, buf, toWrite, bp+8, bp+16) == m_FALSE {
-				(*TSerialInfo)(unsafe.Pointer(infoPtr)).FwriteError = libkernel32.XGetLastError(tls)
+				(*TSerialInfo)(unsafe.Pointer(infoPtr)).FwriteError = libc.XGetLastError(tls)
 				break
 			}
 			if *(*TDWORD)(unsafe.Pointer(bp + 8)) != toWrite {
@@ -324465,12 +324459,12 @@ func _SerialWriterThread(tls *libc.TLS, arg TLPVOID) (r TDWORD) {
 			toWrite -= *(*TDWORD)(unsafe.Pointer(bp + 8))
 			buf += uintptr(*(*TDWORD)(unsafe.Pointer(bp + 8)))
 		}
-		libkernel32.XCloseHandle(tls, (*(*TOVERLAPPED)(unsafe.Pointer(bp + 16))).FhEvent)
+		libc.XCloseHandle(tls, (*(*TOVERLAPPED)(unsafe.Pointer(bp + 16))).FhEvent)
 		/*
 		 * Signal the main thread by signalling the evWritable event and then
 		 * waking up the notifier thread.
 		 */
-		libkernel32.XSetEvent(tls, (*TSerialInfo)(unsafe.Pointer(infoPtr)).FevWritable)
+		libc.XSetEvent(tls, (*TSerialInfo)(unsafe.Pointer(infoPtr)).FevWritable)
 		/*
 		 * Alert the foreground thread. Note that we need to treat this like a
 		 * critical section so the foreground thread does not terminate this
@@ -324513,7 +324507,7 @@ func XTclWinSerialOpen(tls *libc.TLS, handle THANDLE, name uintptr, access TDWOR
 	/*
 	 * If an open channel is specified, close it
 	 */
-	if handle != uintptr(int64(-libc.Int32FromInt32(1))) && libkernel32.XCloseHandle(tls, handle) == m_FALSE {
+	if handle != uintptr(int64(-libc.Int32FromInt32(1))) && libc.XCloseHandle(tls, handle) == m_FALSE {
 		return uintptr(int64(-libc.Int32FromInt32(1)))
 	}
 	/*
@@ -324521,7 +324515,7 @@ func XTclWinSerialOpen(tls *libc.TLS, handle THANDLE, name uintptr, access TDWOR
 	 * ClearCommError blocks under Windows NT/2000 until serial output is
 	 * finished
 	 */
-	handle = libkernel32.XCreateFileW(tls, name, access, uint32(0), uintptr(0), uint32(m_OPEN_EXISTING), uint32(m_FILE_FLAG_OVERLAPPED1), uintptr(0))
+	handle = libc.XCreateFileW(tls, name, access, uint32(0), uintptr(0), uint32(m_OPEN_EXISTING), uint32(m_FILE_FLAG_OVERLAPPED1), uintptr(0))
 	return handle
 }
 
@@ -324575,23 +324569,23 @@ func XTclWinOpenSerialChannel(tls *libc.TLS, handle THANDLE, channelName uintptr
 	 */
 	libc.Xsprintf(tls, channelName, __ccgo_ts+68882, libc.VaList(bp+8, uint64(uint64(infoPtr))))
 	(*TSerialInfo)(unsafe.Pointer(infoPtr)).Fchannel = XTcl_CreateChannel(tls, uintptr(unsafe.Pointer(&_serialChannelType)), channelName, infoPtr, permissions)
-	libkernel32.XSetupComm(tls, handle, (*TSerialInfo)(unsafe.Pointer(infoPtr)).FsysBufRead, (*TSerialInfo)(unsafe.Pointer(infoPtr)).FsysBufWrite)
-	libkernel32.XPurgeComm(tls, handle, uint32(libc.Int32FromInt32(m_PURGE_TXABORT1)|libc.Int32FromInt32(m_PURGE_RXABORT1)|libc.Int32FromInt32(m_PURGE_TXCLEAR1)|libc.Int32FromInt32(m_PURGE_RXCLEAR1)))
+	libc.XSetupComm(tls, handle, (*TSerialInfo)(unsafe.Pointer(infoPtr)).FsysBufRead, (*TSerialInfo)(unsafe.Pointer(infoPtr)).FsysBufWrite)
+	libc.XPurgeComm(tls, handle, uint32(libc.Int32FromInt32(m_PURGE_TXABORT1)|libc.Int32FromInt32(m_PURGE_RXABORT1)|libc.Int32FromInt32(m_PURGE_TXCLEAR1)|libc.Int32FromInt32(m_PURGE_RXCLEAR1)))
 	/*
 	 * Default is blocking.
 	 */
-	libkernel32.XSetCommTimeouts(tls, handle, uintptr(unsafe.Pointer(&_no_timeout)))
-	libkernel32.XInitializeCriticalSection(tls, infoPtr+160)
+	libc.XSetCommTimeouts(tls, handle, uintptr(unsafe.Pointer(&_no_timeout)))
+	libc.XInitializeCriticalSection(tls, infoPtr+160)
 	if permissions&(libc.Int32FromInt32(1)<<libc.Int32FromInt32(1)) != 0 {
-		(*TSerialInfo)(unsafe.Pointer(infoPtr)).FosRead.FhEvent = libkernel32.XCreateEventW(tls, libc.UintptrFromInt32(0), int32(m_TRUE), m_FALSE, libc.UintptrFromInt32(0))
+		(*TSerialInfo)(unsafe.Pointer(infoPtr)).FosRead.FhEvent = libc.XCreateEventW(tls, libc.UintptrFromInt32(0), int32(m_TRUE), m_FALSE, libc.UintptrFromInt32(0))
 	}
 	if permissions&(libc.Int32FromInt32(1)<<libc.Int32FromInt32(2)) != 0 {
 		/*
 		 * Initially the channel is writable and the writeThread is idle.
 		 */
-		(*TSerialInfo)(unsafe.Pointer(infoPtr)).FosWrite.FhEvent = libkernel32.XCreateEventW(tls, libc.UintptrFromInt32(0), int32(m_TRUE), m_FALSE, libc.UintptrFromInt32(0))
-		(*TSerialInfo)(unsafe.Pointer(infoPtr)).FevWritable = libkernel32.XCreateEventW(tls, libc.UintptrFromInt32(0), int32(m_TRUE), int32(m_TRUE), libc.UintptrFromInt32(0))
-		(*TSerialInfo)(unsafe.Pointer(infoPtr)).FwriteThread = libkernel32.XCreateThread(tls, libc.UintptrFromInt32(0), uint64(256), __ccgo_fp(_SerialWriterThread), XTclPipeThreadCreateTI(tls, infoPtr+144, infoPtr, (*TSerialInfo)(unsafe.Pointer(infoPtr)).FevWritable), uint32(0), libc.UintptrFromInt32(0))
+		(*TSerialInfo)(unsafe.Pointer(infoPtr)).FosWrite.FhEvent = libc.XCreateEventW(tls, libc.UintptrFromInt32(0), int32(m_TRUE), m_FALSE, libc.UintptrFromInt32(0))
+		(*TSerialInfo)(unsafe.Pointer(infoPtr)).FevWritable = libc.XCreateEventW(tls, libc.UintptrFromInt32(0), int32(m_TRUE), int32(m_TRUE), libc.UintptrFromInt32(0))
+		(*TSerialInfo)(unsafe.Pointer(infoPtr)).FwriteThread = libc.XCreateThread(tls, libc.UintptrFromInt32(0), uint64(256), __ccgo_fp(_SerialWriterThread), XTclPipeThreadCreateTI(tls, infoPtr+144, infoPtr, (*TSerialInfo)(unsafe.Pointer(infoPtr)).FevWritable), uint32(0), libc.UintptrFromInt32(0))
 	}
 	/*
 	 * Files have default translation of AUTO and ^Z eof char, which means
@@ -324644,7 +324638,7 @@ func _SerialErrorStr(tls *libc.TLS, error1 TDWORD, dsPtr uintptr) {
 		XTcl_DStringAppendElement(tls, dsPtr, __ccgo_ts+69018)
 	}
 	if error1 & ^uint32(libc.Int32FromInt32(m_CE_RXOVER1)|libc.Int32FromInt32(m_CE_OVERRUN1)|libc.Int32FromInt32(m_CE_RXPARITY1)|libc.Int32FromInt32(m_CE_FRAME1)|libc.Int32FromInt32(m_CE_BREAK1)|(libc.Int32FromInt32(m_CE_TXFULL1)|libc.Int32FromInt32(m_CE_PTO1))) != 0 {
-		libuser32.XwsprintfA(tls, bp, __ccgo_ts+259, libc.VaList(bp+40, error1))
+		libc.XwsprintfA(tls, bp, __ccgo_ts+259, libc.VaList(bp+40, error1))
 		XTcl_DStringAppendElement(tls, dsPtr, bp)
 	}
 }
@@ -324743,11 +324737,11 @@ func _SerialSetOptionProc(tls *libc.TLS, instanceData TClientData, interp uintpt
 	 * Option -mode baud,parity,databits,stopbits
 	 */
 	if len1 > uint64(2) && libc.Xstrncmp(tls, optionName, __ccgo_ts+69043, len1) == 0 {
-		if !(libkernel32.XGetCommState(tls, (*TSerialInfo)(unsafe.Pointer(infoPtr)).Fhandle, bp) != 0) {
+		if !(libc.XGetCommState(tls, (*TSerialInfo)(unsafe.Pointer(infoPtr)).Fhandle, bp) != 0) {
 			goto getStateFailed
 		}
 		native = XTcl_WinUtfToTChar(tls, value, -int32(1), bp+32)
-		result = libkernel32.XBuildCommDCBW(tls, native, bp)
+		result = libc.XBuildCommDCBW(tls, native, bp)
 		XTcl_DStringFree(tls, bp+32)
 		if result == m_FALSE {
 			if interp != libc.UintptrFromInt32(0) {
@@ -324763,7 +324757,7 @@ func _SerialSetOptionProc(tls *libc.TLS, instanceData TClientData, interp uintpt
 		libc.SetBitFieldPtr32Uint32(bp+8, libc.Uint32FromInt32(m_FALSE), 10, 0x400)
 		libc.SetBitFieldPtr32Uint32(bp+8, libc.Uint32FromInt32(m_FALSE), 11, 0x800)
 		libc.SetBitFieldPtr32Uint32(bp+8, libc.Uint32FromInt32(m_FALSE), 14, 0x4000)
-		if !(libkernel32.XSetCommState(tls, (*TSerialInfo)(unsafe.Pointer(infoPtr)).Fhandle, bp) != 0) {
+		if !(libc.XSetCommState(tls, (*TSerialInfo)(unsafe.Pointer(infoPtr)).Fhandle, bp) != 0) {
 			goto setStateFailed
 		}
 		return m_TCL_OK
@@ -324772,7 +324766,7 @@ func _SerialSetOptionProc(tls *libc.TLS, instanceData TClientData, interp uintpt
 	 * Option -handshake none|xonxoff|rtscts|dtrdsr
 	 */
 	if len1 > uint64(1) && libc.Xstrncmp(tls, optionName, __ccgo_ts+69118, len1) == 0 {
-		if !(libkernel32.XGetCommState(tls, (*TSerialInfo)(unsafe.Pointer(infoPtr)).Fhandle, bp) != 0) {
+		if !(libc.XGetCommState(tls, (*TSerialInfo)(unsafe.Pointer(infoPtr)).Fhandle, bp) != 0) {
 			goto getStateFailed
 		}
 		/*
@@ -324826,7 +324820,7 @@ func _SerialSetOptionProc(tls *libc.TLS, instanceData TClientData, interp uintpt
 				}
 			}
 		}
-		if !(libkernel32.XSetCommState(tls, (*TSerialInfo)(unsafe.Pointer(infoPtr)).Fhandle, bp) != 0) {
+		if !(libc.XSetCommState(tls, (*TSerialInfo)(unsafe.Pointer(infoPtr)).Fhandle, bp) != 0) {
 			goto setStateFailed
 		}
 		return m_TCL_OK
@@ -324837,7 +324831,7 @@ func _SerialSetOptionProc(tls *libc.TLS, instanceData TClientData, interp uintpt
 	if !(len1 > uint64(1) && libc.Xstrncmp(tls, optionName, __ccgo_ts+69239, len1) == 0) {
 		goto _9
 	}
-	if !(libkernel32.XGetCommState(tls, (*TSerialInfo)(unsafe.Pointer(infoPtr)).Fhandle, bp) != 0) {
+	if !(libc.XGetCommState(tls, (*TSerialInfo)(unsafe.Pointer(infoPtr)).Fhandle, bp) != 0) {
 		goto getStateFailed
 	}
 	if XTcl_SplitList(tls, interp, value, bp+248, bp+256) == int32(m_TCL_ERROR) {
@@ -324881,7 +324875,7 @@ _10:
 		(*(*TDCB)(unsafe.Pointer(bp))).FXoffChar = int8(*(*int32)(unsafe.Pointer(bp + 264)))
 	}
 	XTclpFree(tls, *(*uintptr)(unsafe.Pointer(bp + 256)))
-	if !(libkernel32.XSetCommState(tls, (*TSerialInfo)(unsafe.Pointer(infoPtr)).Fhandle, bp) != 0) {
+	if !(libc.XSetCommState(tls, (*TSerialInfo)(unsafe.Pointer(infoPtr)).Fhandle, bp) != 0) {
 		goto setStateFailed
 	}
 	return m_TCL_OK
@@ -324921,7 +324915,7 @@ _9:
 				} else {
 					v14 = int32(m_CLRDTR)
 				}
-				if !(libkernel32.XEscapeCommFunction(tls, (*TSerialInfo)(unsafe.Pointer(infoPtr)).Fhandle, uint32(v14)) != 0) {
+				if !(libc.XEscapeCommFunction(tls, (*TSerialInfo)(unsafe.Pointer(infoPtr)).Fhandle, uint32(v14)) != 0) {
 					if interp != libc.UintptrFromInt32(0) {
 						XTcl_SetObjResult(tls, interp, XTcl_NewStringObj(tls, __ccgo_ts+69434, -int32(1)))
 						XTcl_SetErrorCode(tls, interp, libc.VaList(bp+304, __ccgo_ts+3490, __ccgo_ts+7351, __ccgo_ts+69455, __ccgo_ts+69466, libc.UintptrFromInt32(0)))
@@ -324939,7 +324933,7 @@ _9:
 					} else {
 						v17 = int32(m_CLRRTS)
 					}
-					if !(libkernel32.XEscapeCommFunction(tls, (*TSerialInfo)(unsafe.Pointer(infoPtr)).Fhandle, uint32(v17)) != 0) {
+					if !(libc.XEscapeCommFunction(tls, (*TSerialInfo)(unsafe.Pointer(infoPtr)).Fhandle, uint32(v17)) != 0) {
 						if interp != libc.UintptrFromInt32(0) {
 							XTcl_SetObjResult(tls, interp, XTcl_NewStringObj(tls, __ccgo_ts+69481, -int32(1)))
 							XTcl_SetErrorCode(tls, interp, libc.VaList(bp+304, __ccgo_ts+3490, __ccgo_ts+7351, __ccgo_ts+69455, __ccgo_ts+69466, libc.UintptrFromInt32(0)))
@@ -324957,7 +324951,7 @@ _9:
 						} else {
 							v20 = int32(m_CLRBREAK)
 						}
-						if !(libkernel32.XEscapeCommFunction(tls, (*TSerialInfo)(unsafe.Pointer(infoPtr)).Fhandle, uint32(v20)) != 0) {
+						if !(libc.XEscapeCommFunction(tls, (*TSerialInfo)(unsafe.Pointer(infoPtr)).Fhandle, uint32(v20)) != 0) {
 							if interp != libc.UintptrFromInt32(0) {
 								XTcl_SetObjResult(tls, interp, XTcl_NewStringObj(tls, __ccgo_ts+69502, -int32(1)))
 								XTcl_SetErrorCode(tls, interp, libc.VaList(bp+304, __ccgo_ts+3490, __ccgo_ts+7351, __ccgo_ts+69455, __ccgo_ts+69466, libc.UintptrFromInt32(0)))
@@ -325013,9 +325007,9 @@ _9:
 			}
 			return int32(m_TCL_ERROR)
 		}
-		if !(libkernel32.XSetupComm(tls, (*TSerialInfo)(unsafe.Pointer(infoPtr)).Fhandle, uint32(uint32(inSize)), uint32(uint32(outSize))) != 0) {
+		if !(libc.XSetupComm(tls, (*TSerialInfo)(unsafe.Pointer(infoPtr)).Fhandle, uint32(uint32(inSize)), uint32(uint32(outSize))) != 0) {
 			if interp != libc.UintptrFromInt32(0) {
-				XTclWinConvertError(tls, libkernel32.XGetLastError(tls))
+				XTclWinConvertError(tls, libc.XGetLastError(tls))
 				XTcl_SetObjResult(tls, interp, XTcl_ObjPrintf(tls, __ccgo_ts+69686, libc.VaList(bp+304, XTcl_PosixError(tls, interp))))
 			}
 			return int32(m_TCL_ERROR)
@@ -325026,12 +325020,12 @@ _9:
 		 * Adjust the handshake limits. Yes, the XonXoff limits seem to
 		 * influence even hardware handshake.
 		 */
-		if !(libkernel32.XGetCommState(tls, (*TSerialInfo)(unsafe.Pointer(infoPtr)).Fhandle, bp) != 0) {
+		if !(libc.XGetCommState(tls, (*TSerialInfo)(unsafe.Pointer(infoPtr)).Fhandle, bp) != 0) {
 			goto getStateFailed
 		}
 		(*(*TDCB)(unsafe.Pointer(bp))).FXonLim = uint16((*TSerialInfo)(unsafe.Pointer(infoPtr)).FsysBufRead * libc.Uint32FromInt32(1) / libc.Uint32FromInt32(2))
 		(*(*TDCB)(unsafe.Pointer(bp))).FXoffLim = uint16((*TSerialInfo)(unsafe.Pointer(infoPtr)).FsysBufRead * libc.Uint32FromInt32(1) / libc.Uint32FromInt32(4))
-		if !(libkernel32.XSetCommState(tls, (*TSerialInfo)(unsafe.Pointer(infoPtr)).Fhandle, bp) != 0) {
+		if !(libc.XSetCommState(tls, (*TSerialInfo)(unsafe.Pointer(infoPtr)).Fhandle, bp) != 0) {
 			goto setStateFailed
 		}
 		return m_TCL_OK
@@ -325054,9 +325048,9 @@ _9:
 			return int32(m_TCL_ERROR)
 		}
 		(*(*TCOMMTIMEOUTS)(unsafe.Pointer(bp + 272))).FReadTotalTimeoutConstant = uint32(*(*int32)(unsafe.Pointer(bp + 268)))
-		if !(libkernel32.XSetCommTimeouts(tls, (*TSerialInfo)(unsafe.Pointer(infoPtr)).Fhandle, bp+272) != 0) {
+		if !(libc.XSetCommTimeouts(tls, (*TSerialInfo)(unsafe.Pointer(infoPtr)).Fhandle, bp+272) != 0) {
 			if interp != libc.UintptrFromInt32(0) {
-				XTclWinConvertError(tls, libkernel32.XGetLastError(tls))
+				XTclWinConvertError(tls, libc.XGetLastError(tls))
 				XTcl_SetObjResult(tls, interp, XTcl_ObjPrintf(tls, __ccgo_ts+69738, libc.VaList(bp+304, XTcl_PosixError(tls, interp))))
 			}
 			return int32(m_TCL_ERROR)
@@ -325068,7 +325062,7 @@ _9:
 getStateFailed:
 	;
 	if interp != libc.UintptrFromInt32(0) {
-		XTclWinConvertError(tls, libkernel32.XGetLastError(tls))
+		XTclWinConvertError(tls, libc.XGetLastError(tls))
 		XTcl_SetObjResult(tls, interp, XTcl_ObjPrintf(tls, __ccgo_ts+69829, libc.VaList(bp+304, XTcl_PosixError(tls, interp))))
 	}
 	return int32(m_TCL_ERROR)
@@ -325076,7 +325070,7 @@ getStateFailed:
 setStateFailed:
 	;
 	if interp != libc.UintptrFromInt32(0) {
-		XTclWinConvertError(tls, libkernel32.XGetLastError(tls))
+		XTclWinConvertError(tls, libc.XGetLastError(tls))
 		XTcl_SetObjResult(tls, interp, XTcl_ObjPrintf(tls, __ccgo_ts+69854, libc.VaList(bp+304, XTcl_PosixError(tls, interp))))
 	}
 	return int32(m_TCL_ERROR)
@@ -325134,9 +325128,9 @@ func _SerialGetOptionProc(tls *libc.TLS, instanceData TClientData, interp uintpt
 		XTcl_DStringAppendElement(tls, dsPtr, __ccgo_ts+69043)
 	}
 	if len1 == uint64(0) || len1 > uint64(2) && libc.Xstrncmp(tls, optionName, __ccgo_ts+69043, len1) == 0 {
-		if !(libkernel32.XGetCommState(tls, (*TSerialInfo)(unsafe.Pointer(infoPtr)).Fhandle, bp) != 0) {
+		if !(libc.XGetCommState(tls, (*TSerialInfo)(unsafe.Pointer(infoPtr)).Fhandle, bp) != 0) {
 			if interp != libc.UintptrFromInt32(0) {
-				XTclWinConvertError(tls, libkernel32.XGetLastError(tls))
+				XTclWinConvertError(tls, libc.XGetLastError(tls))
 				XTcl_SetObjResult(tls, interp, XTcl_ObjPrintf(tls, __ccgo_ts+69829, libc.VaList(bp+208, XTcl_PosixError(tls, interp))))
 			}
 			return int32(m_TCL_ERROR)
@@ -325157,7 +325151,7 @@ func _SerialGetOptionProc(tls *libc.TLS, instanceData TClientData, interp uintpt
 			v1 = v2
 		}
 		stop = v1
-		libuser32.XwsprintfA(tls, bp+28, __ccgo_ts+69889, libc.VaList(bp+208, (*(*TDCB)(unsafe.Pointer(bp))).FBaudRate, int32(int32(parity)), int32((*(*TDCB)(unsafe.Pointer(bp))).FByteSize), stop))
+		libc.XwsprintfA(tls, bp+28, __ccgo_ts+69889, libc.VaList(bp+208, (*(*TDCB)(unsafe.Pointer(bp))).FBaudRate, int32(int32(parity)), int32((*(*TDCB)(unsafe.Pointer(bp))).FByteSize), stop))
 		XTcl_DStringAppendElement(tls, dsPtr, bp+28)
 	}
 	/*
@@ -325168,7 +325162,7 @@ func _SerialGetOptionProc(tls *libc.TLS, instanceData TClientData, interp uintpt
 	}
 	if len1 == uint64(0) || len1 > uint64(1) && libc.Xstrncmp(tls, optionName, __ccgo_ts+69715, len1) == 0 {
 		valid = int32(1)
-		libuser32.XwsprintfA(tls, bp+92, __ccgo_ts+259, libc.VaList(bp+208, (*TSerialInfo)(unsafe.Pointer(infoPtr)).FblockTime))
+		libc.XwsprintfA(tls, bp+92, __ccgo_ts+259, libc.VaList(bp+208, (*TSerialInfo)(unsafe.Pointer(infoPtr)).FblockTime))
 		XTcl_DStringAppendElement(tls, dsPtr, bp+92)
 	}
 	/*
@@ -325180,9 +325174,9 @@ func _SerialGetOptionProc(tls *libc.TLS, instanceData TClientData, interp uintpt
 	}
 	if len1 == uint64(0) || len1 > uint64(1) && libc.Xstrncmp(tls, optionName, __ccgo_ts+69589, len1) == 0 {
 		valid = int32(1)
-		libuser32.XwsprintfA(tls, bp+117, __ccgo_ts+259, libc.VaList(bp+208, (*TSerialInfo)(unsafe.Pointer(infoPtr)).FsysBufRead))
+		libc.XwsprintfA(tls, bp+117, __ccgo_ts+259, libc.VaList(bp+208, (*TSerialInfo)(unsafe.Pointer(infoPtr)).FsysBufRead))
 		XTcl_DStringAppendElement(tls, dsPtr, bp+117)
-		libuser32.XwsprintfA(tls, bp+117, __ccgo_ts+259, libc.VaList(bp+208, (*TSerialInfo)(unsafe.Pointer(infoPtr)).FsysBufWrite))
+		libc.XwsprintfA(tls, bp+117, __ccgo_ts+259, libc.VaList(bp+208, (*TSerialInfo)(unsafe.Pointer(infoPtr)).FsysBufWrite))
 		XTcl_DStringAppendElement(tls, dsPtr, bp+117)
 	}
 	if len1 == uint64(0) {
@@ -325197,9 +325191,9 @@ func _SerialGetOptionProc(tls *libc.TLS, instanceData TClientData, interp uintpt
 	}
 	if len1 == uint64(0) || len1 > uint64(1) && libc.Xstrncmp(tls, optionName, __ccgo_ts+69239, len1) == 0 {
 		valid = int32(1)
-		if !(libkernel32.XGetCommState(tls, (*TSerialInfo)(unsafe.Pointer(infoPtr)).Fhandle, bp) != 0) {
+		if !(libc.XGetCommState(tls, (*TSerialInfo)(unsafe.Pointer(infoPtr)).Fhandle, bp) != 0) {
 			if interp != libc.UintptrFromInt32(0) {
-				XTclWinConvertError(tls, libkernel32.XGetLastError(tls))
+				XTclWinConvertError(tls, libc.XGetLastError(tls))
 				XTcl_SetObjResult(tls, interp, XTcl_ObjPrintf(tls, __ccgo_ts+69829, libc.VaList(bp+208, XTcl_PosixError(tls, interp))))
 			}
 			return int32(m_TCL_ERROR)
@@ -325240,13 +325234,13 @@ func _SerialGetOptionProc(tls *libc.TLS, instanceData TClientData, interp uintpt
 		 *     2. The bytes in the system drivers buffer
 		 * The writer thread should not interfere this action.
 		 */
-		libkernel32.XEnterCriticalSection(tls, infoPtr+160)
-		libkernel32.XClearCommError(tls, (*TSerialInfo)(unsafe.Pointer(infoPtr)).Fhandle, bp+188, bp+176)
+		libc.XEnterCriticalSection(tls, infoPtr+160)
+		libc.XClearCommError(tls, (*TSerialInfo)(unsafe.Pointer(infoPtr)).Fhandle, bp+188, bp+176)
 		count = int32((*(*TCOMSTAT)(unsafe.Pointer(bp + 176))).FcbOutQue) + (*TSerialInfo)(unsafe.Pointer(infoPtr)).FwriteQueue
-		libkernel32.XLeaveCriticalSection(tls, infoPtr+160)
-		libuser32.XwsprintfA(tls, bp+148, __ccgo_ts+259, libc.VaList(bp+208, uint32(uint32(inBuffered))+(*(*TCOMSTAT)(unsafe.Pointer(bp + 176))).FcbInQue))
+		libc.XLeaveCriticalSection(tls, infoPtr+160)
+		libc.XwsprintfA(tls, bp+148, __ccgo_ts+259, libc.VaList(bp+208, uint32(uint32(inBuffered))+(*(*TCOMSTAT)(unsafe.Pointer(bp + 176))).FcbInQue))
 		XTcl_DStringAppendElement(tls, dsPtr, bp+148)
-		libuser32.XwsprintfA(tls, bp+148, __ccgo_ts+259, libc.VaList(bp+208, outBuffered+count))
+		libc.XwsprintfA(tls, bp+148, __ccgo_ts+259, libc.VaList(bp+208, outBuffered+count))
 		XTcl_DStringAppendElement(tls, dsPtr, bp+148)
 	}
 	/*
@@ -325256,9 +325250,9 @@ func _SerialGetOptionProc(tls *libc.TLS, instanceData TClientData, interp uintpt
 	 * returned by unnamed [fconfigure chan].
 	 */
 	if len1 > uint64(4) && libc.Xstrncmp(tls, optionName, __ccgo_ts+69919, len1) == 0 {
-		if !(libkernel32.XGetCommModemStatus(tls, (*TSerialInfo)(unsafe.Pointer(infoPtr)).Fhandle, bp+192) != 0) {
+		if !(libc.XGetCommModemStatus(tls, (*TSerialInfo)(unsafe.Pointer(infoPtr)).Fhandle, bp+192) != 0) {
 			if interp != libc.UintptrFromInt32(0) {
-				XTclWinConvertError(tls, libkernel32.XGetLastError(tls))
+				XTclWinConvertError(tls, libc.XGetLastError(tls))
 				XTcl_SetObjResult(tls, interp, XTcl_ObjPrintf(tls, __ccgo_ts+69930, libc.VaList(bp+208, XTcl_PosixError(tls, interp))))
 			}
 			return int32(m_TCL_ERROR)
@@ -325809,24 +325803,24 @@ func _DoRenameFile(tls *libc.TLS, nativeSrc uintptr, nativeDst uintptr) (r int32
 	 * The MoveFileW API would throw an exception under NT if one of the
 	 * arguments is a char block device.
 	 */
-	if libkernel32.XMoveFileW(tls, nativeSrc, nativeDst) != m_FALSE {
+	if libc.XMoveFileW(tls, nativeSrc, nativeDst) != m_FALSE {
 		retval = m_TCL_OK
 	}
 	if retval != -int32(1) {
 		return retval
 	}
-	XTclWinConvertError(tls, libkernel32.XGetLastError(tls))
-	srcAttr = libkernel32.XGetFileAttributesW(tls, nativeSrc)
-	dstAttr = libkernel32.XGetFileAttributesW(tls, nativeDst)
+	XTclWinConvertError(tls, libc.XGetLastError(tls))
+	srcAttr = libc.XGetFileAttributesW(tls, nativeSrc)
+	dstAttr = libc.XGetFileAttributesW(tls, nativeDst)
 	if srcAttr == uint32(0xFFFFFFFF) {
-		if libkernel32.XGetFullPathNameW(tls, nativeSrc, uint32(0), libc.UintptrFromInt32(0), libc.UintptrFromInt32(0)) >= uint32(m_MAX_PATH) {
+		if libc.XGetFullPathNameW(tls, nativeSrc, uint32(0), libc.UintptrFromInt32(0), libc.UintptrFromInt32(0)) >= uint32(m_MAX_PATH) {
 			*(*int32)(unsafe.Pointer(libc.X_errno(tls))) = int32(m_ENAMETOOLONG)
 			return int32(m_TCL_ERROR)
 		}
 		srcAttr = uint32(0)
 	}
 	if dstAttr == uint32(0xFFFFFFFF) {
-		if libkernel32.XGetFullPathNameW(tls, nativeDst, uint32(0), libc.UintptrFromInt32(0), libc.UintptrFromInt32(0)) >= uint32(m_MAX_PATH) {
+		if libc.XGetFullPathNameW(tls, nativeDst, uint32(0), libc.UintptrFromInt32(0), libc.UintptrFromInt32(0)) >= uint32(m_MAX_PATH) {
 			*(*int32)(unsafe.Pointer(libc.X_errno(tls))) = int32(m_ENAMETOOLONG)
 			return int32(m_TCL_ERROR)
 		}
@@ -325843,16 +325837,16 @@ func _DoRenameFile(tls *libc.TLS, nativeSrc uintptr, nativeDst uintptr) (r int32
 decode:
 	;
 	if srcAttr&uint32(m_FILE_ATTRIBUTE_DIRECTORY1) != 0 {
-		size = int32(libkernel32.XGetFullPathNameW(tls, nativeSrc, uint32(m_MAX_PATH), bp+40, bp))
+		size = int32(libc.XGetFullPathNameW(tls, nativeSrc, uint32(m_MAX_PATH), bp+40, bp))
 		if size == 0 || size > int32(m_MAX_PATH) {
 			return int32(m_TCL_ERROR)
 		}
-		size = int32(libkernel32.XGetFullPathNameW(tls, nativeDst, uint32(m_MAX_PATH), bp+560, bp+8))
+		size = int32(libc.XGetFullPathNameW(tls, nativeDst, uint32(m_MAX_PATH), bp+560, bp+8))
 		if size == 0 || size > int32(m_MAX_PATH) {
 			return int32(m_TCL_ERROR)
 		}
-		libuser32.XCharLowerW(tls, bp+40)
-		libuser32.XCharLowerW(tls, bp+560)
+		libc.XCharLowerW(tls, bp+40)
+		libc.XCharLowerW(tls, bp+560)
 		src = XTcl_WinTCharToUtf(tls, bp+40, -int32(1), bp+1080)
 		dst = XTcl_WinTCharToUtf(tls, bp+560, -int32(1), bp+1296)
 		/*
@@ -325922,16 +325916,16 @@ _1:
 					 * renaming again. If that fails, we'll put this empty
 					 * directory back, for completeness.
 					 */
-					if libkernel32.XMoveFileW(tls, nativeSrc, nativeDst) != m_FALSE {
+					if libc.XMoveFileW(tls, nativeSrc, nativeDst) != m_FALSE {
 						return m_TCL_OK
 					}
 					/*
 					 * Some new error has occurred. Don't know what it could
 					 * be, but report this one.
 					 */
-					XTclWinConvertError(tls, libkernel32.XGetLastError(tls))
-					libkernel32.XCreateDirectoryW(tls, nativeDst, libc.UintptrFromInt32(0))
-					libkernel32.XSetFileAttributesW(tls, nativeDst, dstAttr)
+					XTclWinConvertError(tls, libc.XGetLastError(tls))
+					libc.XCreateDirectoryW(tls, nativeDst, libc.UintptrFromInt32(0))
+					libc.XSetFileAttributesW(tls, nativeDst, dstAttr)
 					if XTcl_GetErrno(tls) == int32(m_EACCES) {
 						/*
 						 * Decode the EACCES to a more meaningful error.
@@ -325946,7 +325940,7 @@ _1:
 			if dstAttr&uint32(m_FILE_ATTRIBUTE_DIRECTORY1) != 0 {
 				XTcl_SetErrno(tls, int32(m_EISDIR))
 			} else {
-				size1 = int32(libkernel32.XGetFullPathNameW(tls, nativeDst, uint32(m_MAX_PATH), bp+1520, bp+1512))
+				size1 = int32(libc.XGetFullPathNameW(tls, nativeDst, uint32(m_MAX_PATH), bp+1520, bp+1512))
 				if size1 == 0 || size1 > int32(m_MAX_PATH) || *(*uintptr)(unsafe.Pointer(bp + 1512)) == libc.UintptrFromInt32(0) {
 					return int32(m_TCL_ERROR)
 				}
@@ -325954,7 +325948,7 @@ _1:
 				*(*TWCHAR)(unsafe.Pointer(*(*uintptr)(unsafe.Pointer(bp + 1512)))) = uint16('\000')
 				result = int32(m_TCL_ERROR)
 				nativePrefix = __ccgo_ts + 70071
-				if libkernel32.XGetTempFileNameW(tls, nativeTmp, nativePrefix, uint32(0), bp+1520) != uint32(0) {
+				if libc.XGetTempFileNameW(tls, nativeTmp, nativePrefix, uint32(0), bp+1520) != uint32(0) {
 					/*
 					 * Strictly speaking, need the following DeleteFile and
 					 * MoveFileW to be joined as an atomic operation so no
@@ -325962,22 +325956,22 @@ _1:
 					 * same temp file.
 					 */
 					nativeTmp = bp + 1520
-					libkernel32.XDeleteFileW(tls, nativeTmp)
-					if libkernel32.XMoveFileW(tls, nativeDst, nativeTmp) != m_FALSE {
-						if libkernel32.XMoveFileW(tls, nativeSrc, nativeDst) != m_FALSE {
-							libkernel32.XSetFileAttributesW(tls, nativeTmp, uint32(m_FILE_ATTRIBUTE_NORMAL3))
-							libkernel32.XDeleteFileW(tls, nativeTmp)
+					libc.XDeleteFileW(tls, nativeTmp)
+					if libc.XMoveFileW(tls, nativeDst, nativeTmp) != m_FALSE {
+						if libc.XMoveFileW(tls, nativeSrc, nativeDst) != m_FALSE {
+							libc.XSetFileAttributesW(tls, nativeTmp, uint32(m_FILE_ATTRIBUTE_NORMAL3))
+							libc.XDeleteFileW(tls, nativeTmp)
 							return m_TCL_OK
 						} else {
-							libkernel32.XDeleteFileW(tls, nativeDst)
-							libkernel32.XMoveFileW(tls, nativeTmp, nativeDst)
+							libc.XDeleteFileW(tls, nativeDst)
+							libc.XMoveFileW(tls, nativeTmp, nativeDst)
 						}
 					}
 					/*
 					 * Can't backup dst file or move src file. Return that
 					 * error. Could happen if an open file refers to dst.
 					 */
-					XTclWinConvertError(tls, libkernel32.XGetLastError(tls))
+					XTclWinConvertError(tls, libc.XGetLastError(tls))
 					if XTcl_GetErrno(tls) == int32(m_EACCES) {
 						/*
 						 * Decode the EACCES to a more meaningful error.
@@ -326043,20 +326037,20 @@ func _DoCopyFile(tls *libc.TLS, nativeSrc uintptr, nativeDst uintptr) (r int32) 
 	 * The CopyFile API would throw an exception under NT if one of the
 	 * arguments is a char block device.
 	 */
-	if libkernel32.XCopyFileW(tls, nativeSrc, nativeDst, 0) != m_FALSE {
+	if libc.XCopyFileW(tls, nativeSrc, nativeDst, 0) != m_FALSE {
 		retval = m_TCL_OK
 	}
 	if retval != -int32(1) {
 		return retval
 	}
-	XTclWinConvertError(tls, libkernel32.XGetLastError(tls))
+	XTclWinConvertError(tls, libc.XGetLastError(tls))
 	if XTcl_GetErrno(tls) == int32(m_EBADF) {
 		XTcl_SetErrno(tls, int32(m_EACCES))
 		return int32(m_TCL_ERROR)
 	}
 	if XTcl_GetErrno(tls) == int32(m_EACCES) {
-		srcAttr = libkernel32.XGetFileAttributesW(tls, nativeSrc)
-		dstAttr = libkernel32.XGetFileAttributesW(tls, nativeDst)
+		srcAttr = libc.XGetFileAttributesW(tls, nativeSrc)
+		dstAttr = libc.XGetFileAttributesW(tls, nativeDst)
 		if srcAttr != uint32(0xFFFFFFFF) {
 			if dstAttr == uint32(0xFFFFFFFF) {
 				dstAttr = uint32(0)
@@ -326071,16 +326065,16 @@ func _DoCopyFile(tls *libc.TLS, nativeSrc uintptr, nativeDst uintptr) (r int32) 
 				XTcl_SetErrno(tls, int32(m_EISDIR))
 			}
 			if dstAttr&uint32(m_FILE_ATTRIBUTE_READONLY3) != 0 {
-				libkernel32.XSetFileAttributesW(tls, nativeDst, dstAttr & ^libc.Uint32FromInt32(m_FILE_ATTRIBUTE_READONLY3))
-				if libkernel32.XCopyFileW(tls, nativeSrc, nativeDst, 0) != m_FALSE {
+				libc.XSetFileAttributesW(tls, nativeDst, dstAttr & ^libc.Uint32FromInt32(m_FILE_ATTRIBUTE_READONLY3))
+				if libc.XCopyFileW(tls, nativeSrc, nativeDst, 0) != m_FALSE {
 					return m_TCL_OK
 				}
 				/*
 				 * Still can't copy onto dst. Return that error, and restore
 				 * attributes of dst.
 				 */
-				XTclWinConvertError(tls, libkernel32.XGetLastError(tls))
-				libkernel32.XSetFileAttributesW(tls, nativeDst, dstAttr)
+				XTclWinConvertError(tls, libc.XGetLastError(tls))
+				libc.XSetFileAttributesW(tls, nativeDst, dstAttr)
 			}
 		}
 	}
@@ -326131,12 +326125,12 @@ func XTclpDeleteFile(tls *libc.TLS, nativePath uintptr) (r int32) {
 		XTcl_SetErrno(tls, int32(m_ENOENT))
 		return int32(m_TCL_ERROR)
 	}
-	if libkernel32.XDeleteFileW(tls, path) != m_FALSE {
+	if libc.XDeleteFileW(tls, path) != m_FALSE {
 		return m_TCL_OK
 	}
-	XTclWinConvertError(tls, libkernel32.XGetLastError(tls))
+	XTclWinConvertError(tls, libc.XGetLastError(tls))
 	if XTcl_GetErrno(tls) == int32(m_EACCES) {
-		attr = libkernel32.XGetFileAttributesW(tls, path)
+		attr = libc.XGetFileAttributesW(tls, path)
 		if attr != uint32(0xFFFFFFFF) {
 			if attr&uint32(m_FILE_ATTRIBUTE_DIRECTORY1) != 0 {
 				if attr&uint32(m_FILE_ATTRIBUTE_REPARSE_POINT1) != 0 {
@@ -326156,20 +326150,20 @@ func XTclpDeleteFile(tls *libc.TLS, nativePath uintptr) (r int32) {
 				XTcl_SetErrno(tls, int32(m_EISDIR))
 			} else {
 				if attr&uint32(m_FILE_ATTRIBUTE_READONLY3) != 0 {
-					res = libkernel32.XSetFileAttributesW(tls, path, attr & ^libc.Uint32FromInt32(m_FILE_ATTRIBUTE_READONLY3))
-					if res != 0 && libkernel32.XDeleteFileW(tls, path) != m_FALSE {
+					res = libc.XSetFileAttributesW(tls, path, attr & ^libc.Uint32FromInt32(m_FILE_ATTRIBUTE_READONLY3))
+					if res != 0 && libc.XDeleteFileW(tls, path) != m_FALSE {
 						return m_TCL_OK
 					}
-					XTclWinConvertError(tls, libkernel32.XGetLastError(tls))
+					XTclWinConvertError(tls, libc.XGetLastError(tls))
 					if res != 0 {
-						libkernel32.XSetFileAttributesW(tls, path, attr)
+						libc.XSetFileAttributesW(tls, path, attr)
 					}
 				}
 			}
 		}
 	} else {
 		if XTcl_GetErrno(tls) == int32(m_ENOENT) {
-			attr = libkernel32.XGetFileAttributesW(tls, path)
+			attr = libc.XGetFileAttributesW(tls, path)
 			if attr != uint32(0xFFFFFFFF) {
 				if attr&uint32(m_FILE_ATTRIBUTE_DIRECTORY1) != 0 {
 					/*
@@ -326225,8 +326219,8 @@ func _DoCreateDirectory(tls *libc.TLS, nativePath uintptr) (r int32) {
 	/* Pathname of directory to create (native). */
 	var error1 TDWORD
 	_ = error1
-	if libkernel32.XCreateDirectoryW(tls, nativePath, libc.UintptrFromInt32(0)) == 0 {
-		error1 = libkernel32.XGetLastError(tls)
+	if libc.XCreateDirectoryW(tls, nativePath, libc.UintptrFromInt32(0)) == 0 {
+		error1 = libc.XGetLastError(tls)
 		XTclWinConvertError(tls, error1)
 		return int32(m_TCL_ERROR)
 	}
@@ -326389,7 +326383,7 @@ func _DoRemoveJustDirectory(tls *libc.TLS, nativePath uintptr, ignoreError int32
 		XTcl_DStringInit(tls, errorPtr)
 		return int32(m_TCL_ERROR)
 	}
-	attr = libkernel32.XGetFileAttributesW(tls, nativePath)
+	attr = libc.XGetFileAttributesW(tls, nativePath)
 	if attr&uint32(m_FILE_ATTRIBUTE_REPARSE_POINT1) != 0 {
 		/*
 		 * It is a symbolic link - remove it.
@@ -326401,13 +326395,13 @@ func _DoRemoveJustDirectory(tls *libc.TLS, nativePath uintptr, ignoreError int32
 		/*
 		 * Ordinary directory.
 		 */
-		if libkernel32.XRemoveDirectoryW(tls, nativePath) != m_FALSE {
+		if libc.XRemoveDirectoryW(tls, nativePath) != m_FALSE {
 			return m_TCL_OK
 		}
 	}
-	XTclWinConvertError(tls, libkernel32.XGetLastError(tls))
+	XTclWinConvertError(tls, libc.XGetLastError(tls))
 	if XTcl_GetErrno(tls) == int32(m_EACCES) {
-		attr = libkernel32.XGetFileAttributesW(tls, nativePath)
+		attr = libc.XGetFileAttributesW(tls, nativePath)
 		if attr != uint32(0xFFFFFFFF) {
 			if attr&uint32(m_FILE_ATTRIBUTE_DIRECTORY1) == uint32(0) {
 				/*
@@ -326427,14 +326421,14 @@ func _DoRemoveJustDirectory(tls *libc.TLS, nativePath uintptr, ignoreError int32
 			}
 			if attr&uint32(m_FILE_ATTRIBUTE_READONLY3) != 0 {
 				attr &= uint32(^libc.Int32FromInt32(m_FILE_ATTRIBUTE_READONLY3))
-				if libkernel32.XSetFileAttributesW(tls, nativePath, attr) == m_FALSE {
+				if libc.XSetFileAttributesW(tls, nativePath, attr) == m_FALSE {
 					goto end
 				}
-				if libkernel32.XRemoveDirectoryW(tls, nativePath) != m_FALSE {
+				if libc.XRemoveDirectoryW(tls, nativePath) != m_FALSE {
 					return m_TCL_OK
 				}
-				XTclWinConvertError(tls, libkernel32.XGetLastError(tls))
-				libkernel32.XSetFileAttributesW(tls, nativePath, attr|uint32(m_FILE_ATTRIBUTE_READONLY3))
+				XTclWinConvertError(tls, libc.XGetLastError(tls))
+				libc.XSetFileAttributesW(tls, nativePath, attr|uint32(m_FILE_ATTRIBUTE_READONLY3))
 			}
 		}
 	}
@@ -326538,7 +326532,7 @@ func _TraverseWinTree(tls *libc.TLS, traverseProc uintptr, sourcePtr uintptr, ta
 	}
 	nativeTarget = v1
 	oldSourceLen = (*TTcl_DString)(unsafe.Pointer(sourcePtr)).Flength
-	sourceAttr = libkernel32.XGetFileAttributesW(tls, nativeSource)
+	sourceAttr = libc.XGetFileAttributesW(tls, nativeSource)
 	if sourceAttr == uint32(0xFFFFFFFF) {
 		nativeErrfile = nativeSource
 		goto end
@@ -326558,12 +326552,12 @@ func _TraverseWinTree(tls *libc.TLS, traverseProc uintptr, sourcePtr uintptr, ta
 	XTcl_DStringAppend(tls, sourcePtr, __ccgo_ts+70081, int32(libc.Uint64FromInt32(4)*libc.Uint64FromInt64(2)+libc.Uint64FromInt32(1)))
 	XTcl_DStringSetLength(tls, sourcePtr, (*TTcl_DString)(unsafe.Pointer(sourcePtr)).Flength-int32(1))
 	nativeSource = (*TTcl_DString)(unsafe.Pointer(sourcePtr)).Fstring1
-	handle = libkernel32.XFindFirstFileW(tls, nativeSource, bp)
+	handle = libc.XFindFirstFileW(tls, nativeSource, bp)
 	if handle == uintptr(int64(-libc.Int32FromInt32(1))) {
 		/*
 		 * Can't read directory.
 		 */
-		XTclWinConvertError(tls, libkernel32.XGetLastError(tls))
+		XTclWinConvertError(tls, libc.XGetLastError(tls))
 		nativeErrfile = nativeSource
 		goto end
 	}
@@ -326571,7 +326565,7 @@ func _TraverseWinTree(tls *libc.TLS, traverseProc uintptr, sourcePtr uintptr, ta
 	XTcl_DStringSetLength(tls, sourcePtr, oldSourceLen)
 	result = (*(*func(*libc.TLS, uintptr, uintptr, int32, uintptr) int32)(unsafe.Pointer(&struct{ uintptr }{traverseProc})))(tls, nativeSource, nativeTarget, int32(m_DOTREE_PRED), errorPtr)
 	if result != m_TCL_OK {
-		libkernel32.XFindClose(tls, handle)
+		libc.XFindClose(tls, handle)
 		return result
 	}
 	sourceLen = int32(uint64(uint64(oldSourceLen)) + uint64(2))
@@ -326624,9 +326618,9 @@ func _TraverseWinTree(tls *libc.TLS, traverseProc uintptr, sourcePtr uintptr, ta
 		goto _2
 	_2:
 		;
-		found = libkernel32.XFindNextFileW(tls, handle, bp)
+		found = libc.XFindNextFileW(tls, handle, bp)
 	}
-	libkernel32.XFindClose(tls, handle)
+	libc.XFindClose(tls, handle)
 	/*
 	 * Strip off the trailing slash we added.
 	 */
@@ -326652,7 +326646,7 @@ func _TraverseWinTree(tls *libc.TLS, traverseProc uintptr, sourcePtr uintptr, ta
 end:
 	;
 	if nativeErrfile != libc.UintptrFromInt32(0) {
-		XTclWinConvertError(tls, libkernel32.XGetLastError(tls))
+		XTclWinConvertError(tls, libc.XGetLastError(tls))
 		if errorPtr != libc.UintptrFromInt32(0) {
 			XTcl_WinTCharToUtf(tls, nativeErrfile, -int32(1), errorPtr)
 		}
@@ -326694,11 +326688,11 @@ func _TraversalCopy(tls *libc.TLS, nativeSrc uintptr, nativeDst uintptr, type1 i
 		}
 	case int32(m_DOTREE_PRED):
 		if _DoCreateDirectory(tls, nativeDst) == m_TCL_OK {
-			attr = libkernel32.XGetFileAttributesW(tls, nativeSrc)
-			if libkernel32.XSetFileAttributesW(tls, nativeDst, attr) != m_FALSE {
+			attr = libc.XGetFileAttributesW(tls, nativeSrc)
+			if libc.XSetFileAttributesW(tls, nativeDst, attr) != m_FALSE {
 				return m_TCL_OK
 			}
-			XTclWinConvertError(tls, libkernel32.XGetLastError(tls))
+			XTclWinConvertError(tls, libc.XGetLastError(tls))
 		}
 	case int32(m_DOTREE_POSTD):
 		return m_TCL_OK
@@ -326783,7 +326777,7 @@ func _StatError(tls *libc.TLS, interp uintptr, fileName uintptr) {
 	 * error. */
 	var v1 uintptr
 	_ = v1
-	XTclWinConvertError(tls, libkernel32.XGetLastError(tls))
+	XTclWinConvertError(tls, libc.XGetLastError(tls))
 	if (*TTcl_Obj)(unsafe.Pointer(fileName)).Fbytes != 0 {
 		v1 = (*TTcl_Obj)(unsafe.Pointer(fileName)).Fbytes
 	} else {
@@ -326820,7 +326814,7 @@ func _GetWinFileAttributes(tls *libc.TLS, interp uintptr, objIndex int32, fileNa
 	var _ /* len at bp+0 */ int32
 	_, _, _, _ = attr, nativeName, result, str
 	nativeName = XTcl_FSGetNativePath(tls, fileName)
-	result = libkernel32.XGetFileAttributesW(tls, nativeName)
+	result = libc.XGetFileAttributesW(tls, nativeName)
 	if result == uint32(0xFFFFFFFF) {
 		_StatError(tls, interp, fileName)
 		return int32(m_TCL_ERROR)
@@ -326951,7 +326945,7 @@ func _ConvertFileNameFormat(tls *libc.TLS, interp uintptr, objIndex int32, fileN
 		if v4 <= int32(1) {
 			XTclFreeObj(tls, _objPtr)
 		}
-		handle = libkernel32.XFindFirstFileW(tls, nativeName, bp+468)
+		handle = libc.XFindFirstFileW(tls, nativeName, bp+468)
 		if handle == uintptr(int64(-libc.Int32FromInt32(1))) {
 			/*
 			 * FindFirstFileW() doesn't like root directories. We would
@@ -326959,7 +326953,7 @@ func _ConvertFileNameFormat(tls *libc.TLS, interp uintptr, objIndex int32, fileN
 			 * or "c:." and the current directory on the drive was the
 			 * root directory
 			 */
-			attr = libkernel32.XGetFileAttributesW(tls, nativeName)
+			attr = libc.XGetFileAttributesW(tls, nativeName)
 			if attr != uint32(0xFFFFFFFF) && attr&uint32(m_FILE_ATTRIBUTE_DIRECTORY1) != 0 {
 				XTcl_DStringFree(tls, bp+32)
 				goto simple
@@ -327025,7 +327019,7 @@ func _ConvertFileNameFormat(tls *libc.TLS, interp uintptr, objIndex int32, fileN
 			*(*uintptr)(unsafe.Pointer(bp + 24)) = XTclDStringToObj(tls, bp+248)
 		}
 		XTcl_ListObjReplace(tls, libc.UintptrFromInt32(0), splitPath, i, int32(1), int32(1), bp+24)
-		libkernel32.XFindClose(tls, handle)
+		libc.XFindClose(tls, handle)
 	_3:
 		;
 		goto _1
@@ -327140,7 +327134,7 @@ func _SetWinFileAttributes(tls *libc.TLS, interp uintptr, objIndex int32, fileNa
 	var _ /* yesNo at bp+0 */ int32
 	_, _, _, _, _ = fileAttributes, nativeName, old, result, v1
 	nativeName = XTcl_FSGetNativePath(tls, fileName)
-	v1 = libkernel32.XGetFileAttributesW(tls, nativeName)
+	v1 = libc.XGetFileAttributesW(tls, nativeName)
 	old = v1
 	fileAttributes = v1
 	if fileAttributes == uint32(0xFFFFFFFF) {
@@ -327156,7 +327150,7 @@ func _SetWinFileAttributes(tls *libc.TLS, interp uintptr, objIndex int32, fileNa
 	} else {
 		fileAttributes &= uint32(^_attributeArray[objIndex])
 	}
-	if fileAttributes != old && !(libkernel32.XSetFileAttributesW(tls, nativeName, fileAttributes) != 0) {
+	if fileAttributes != old && !(libc.XSetFileAttributesW(tls, nativeName, fileAttributes) != 0) {
 		_StatError(tls, interp, fileName)
 		return int32(m_TCL_ERROR)
 	}
@@ -327228,7 +327222,7 @@ func XTclpObjListVolumes(tls *libc.TLS) (r uintptr) {
 	 * GetLogicalDriveStrings() isn't implemented.
 	 * GetLogicalDrives() returns incorrect information.
 	 */
-	if libkernel32.XGetLogicalDriveStringsA(tls, uint32(160), bp) == uint32(0) {
+	if libc.XGetLogicalDriveStringsA(tls, uint32(160), bp) == uint32(0) {
 		/*
 		 * GetVolumeInformationW() will detect all drives, but causes
 		 * chattering on empty floppy drives. We only do this if
@@ -327246,7 +327240,7 @@ func XTclpObjListVolumes(tls *libc.TLS) (r uintptr) {
 				break
 			}
 			(*(*[160]int8)(unsafe.Pointer(bp)))[0] = int8(libc.Int32FromUint8('a') + i)
-			if libkernel32.XGetVolumeInformationA(tls, bp, libc.UintptrFromInt32(0), uint32(0), libc.UintptrFromInt32(0), libc.UintptrFromInt32(0), libc.UintptrFromInt32(0), libc.UintptrFromInt32(0), uint32(0)) != 0 || libkernel32.XGetLastError(tls) == uint32(21) {
+			if libc.XGetVolumeInformationA(tls, bp, libc.UintptrFromInt32(0), uint32(0), libc.UintptrFromInt32(0), libc.UintptrFromInt32(0), libc.UintptrFromInt32(0), libc.UintptrFromInt32(0), uint32(0)) != 0 || libc.XGetLastError(tls) == uint32(21) {
 				elemPtr = XTcl_NewStringObj(tls, bp, -int32(1))
 				XTcl_ListObjAppendElement(tls, libc.UintptrFromInt32(0), resultPtr, elemPtr)
 			}
@@ -366216,17 +366210,17 @@ func _WinLink(tls *libc.TLS, linkSourcePath uintptr, linkTargetPath uintptr, lin
 	/*
 	 * Get the full path referenced by the target.
 	 */
-	if !(libkernel32.XGetFullPathNameW(tls, linkTargetPath, uint32(m_MAX_PATH), bp, bp+520) != 0) {
+	if !(libc.XGetFullPathNameW(tls, linkTargetPath, uint32(m_MAX_PATH), bp, bp+520) != 0) {
 		/*
 		 * Invalid file.
 		 */
-		XTclWinConvertError(tls, libkernel32.XGetLastError(tls))
+		XTclWinConvertError(tls, libc.XGetLastError(tls))
 		return -int32(1)
 	}
 	/*
 	 * Make sure source file doesn't exist.
 	 */
-	attr = libkernel32.XGetFileAttributesW(tls, linkSourcePath)
+	attr = libc.XGetFileAttributesW(tls, linkSourcePath)
 	if attr != uint32(-libc.Int32FromInt32(1)) {
 		XTcl_SetErrno(tls, int32(m_EEXIST))
 		return -int32(1)
@@ -366234,35 +366228,35 @@ func _WinLink(tls *libc.TLS, linkSourcePath uintptr, linkTargetPath uintptr, lin
 	/*
 	 * Get the full path referenced by the source file/directory.
 	 */
-	if !(libkernel32.XGetFullPathNameW(tls, linkSourcePath, uint32(m_MAX_PATH), bp, bp+520) != 0) {
+	if !(libc.XGetFullPathNameW(tls, linkSourcePath, uint32(m_MAX_PATH), bp, bp+520) != 0) {
 		/*
 		 * Invalid file.
 		 */
-		XTclWinConvertError(tls, libkernel32.XGetLastError(tls))
+		XTclWinConvertError(tls, libc.XGetLastError(tls))
 		return -int32(1)
 	}
 	/*
 	 * Check the target.
 	 */
-	attr = libkernel32.XGetFileAttributesW(tls, linkTargetPath)
+	attr = libc.XGetFileAttributesW(tls, linkTargetPath)
 	if attr == uint32(-libc.Int32FromInt32(1)) {
 		/*
 		 * The target doesn't exist.
 		 */
-		XTclWinConvertError(tls, libkernel32.XGetLastError(tls))
+		XTclWinConvertError(tls, libc.XGetLastError(tls))
 	} else {
 		if attr&uint32(m_FILE_ATTRIBUTE_DIRECTORY1) == uint32(0) {
 			/*
 			 * It is a file.
 			 */
 			if linkAction&int32(m_TCL_CREATE_HARD_LINK3) != 0 {
-				if libkernel32.XCreateHardLinkW(tls, linkSourcePath, linkTargetPath, libc.UintptrFromInt32(0)) != 0 {
+				if libc.XCreateHardLinkW(tls, linkSourcePath, linkTargetPath, libc.UintptrFromInt32(0)) != 0 {
 					/*
 					 * Success!
 					 */
 					return 0
 				}
-				XTclWinConvertError(tls, libkernel32.XGetLastError(tls))
+				XTclWinConvertError(tls, libc.XGetLastError(tls))
 			} else {
 				if linkAction&int32(m_TCL_CREATE_SYMBOLIC_LINK3) != 0 {
 					if !(XtclWinProcs.FcreateSymbolicLink != 0) {
@@ -366277,7 +366271,7 @@ func _WinLink(tls *libc.TLS, linkSourcePath uintptr, linkTargetPath uintptr, lin
 							 */
 							return 0
 						} else {
-							XTclWinConvertError(tls, libkernel32.XGetLastError(tls))
+							XTclWinConvertError(tls, libc.XGetLastError(tls))
 						}
 					}
 				} else {
@@ -366326,22 +366320,22 @@ func _WinReadLink(tls *libc.TLS, linkSourcePath uintptr) (r uintptr) {
 	/*
 	 * Get the full path referenced by the target.
 	 */
-	if !(libkernel32.XGetFullPathNameW(tls, linkSourcePath, uint32(m_MAX_PATH), bp, bp+520) != 0) {
+	if !(libc.XGetFullPathNameW(tls, linkSourcePath, uint32(m_MAX_PATH), bp, bp+520) != 0) {
 		/*
 		 * Invalid file.
 		 */
-		XTclWinConvertError(tls, libkernel32.XGetLastError(tls))
+		XTclWinConvertError(tls, libc.XGetLastError(tls))
 		return libc.UintptrFromInt32(0)
 	}
 	/*
 	 * Make sure source file does exist.
 	 */
-	attr = libkernel32.XGetFileAttributesW(tls, linkSourcePath)
+	attr = libc.XGetFileAttributesW(tls, linkSourcePath)
 	if attr == uint32(-libc.Int32FromInt32(1)) {
 		/*
 		 * The source doesn't exist.
 		 */
-		XTclWinConvertError(tls, libkernel32.XGetLastError(tls))
+		XTclWinConvertError(tls, libc.XGetLastError(tls))
 		return libc.UintptrFromInt32(0)
 	} else {
 		if attr&uint32(m_FILE_ATTRIBUTE_DIRECTORY1) == uint32(0) {
@@ -366514,18 +366508,18 @@ func XTclWinSymLinkDelete(tls *libc.TLS, linkOrigPath uintptr, linkOnly int32) (
 	reparseBuffer = bp
 	libc.Xmemset(tls, reparseBuffer, 0, uint64(1584))
 	(*TREPARSE_DATA_BUFFER)(unsafe.Pointer(reparseBuffer)).FReparseTag = libc.Uint32FromUint32(0xA0000003)
-	hFile = libkernel32.XCreateFileW(tls, linkOrigPath, uint32(libc.Int32FromInt32(0x40000000)), uint32(0), libc.UintptrFromInt32(0), uint32(m_OPEN_EXISTING), uint32(libc.Int32FromInt32(m_FILE_FLAG_OPEN_REPARSE_POINT1)|libc.Int32FromInt32(m_FILE_FLAG_BACKUP_SEMANTICS1)), libc.UintptrFromInt32(0))
+	hFile = libc.XCreateFileW(tls, linkOrigPath, uint32(libc.Int32FromInt32(0x40000000)), uint32(0), libc.UintptrFromInt32(0), uint32(m_OPEN_EXISTING), uint32(libc.Int32FromInt32(m_FILE_FLAG_OPEN_REPARSE_POINT1)|libc.Int32FromInt32(m_FILE_FLAG_BACKUP_SEMANTICS1)), libc.UintptrFromInt32(0))
 	if hFile != uintptr(int64(-libc.Int32FromInt32(1))) {
-		if !(libkernel32.XDeviceIoControl(tls, hFile, uint32(libc.Int32FromInt32(m_FILE_DEVICE_FILE_SYSTEM)<<libc.Int32FromInt32(16)|libc.Int32FromInt32(m_FILE_ANY_ACCESS)<<libc.Int32FromInt32(14)|libc.Int32FromInt32(43)<<libc.Int32FromInt32(2)|libc.Int32FromInt32(m_METHOD_BUFFERED)), reparseBuffer, uint32(m_REPARSE_MOUNTPOINT_HEADER_SIZE), libc.UintptrFromInt32(0), uint32(0), bp+1584, libc.UintptrFromInt32(0)) != 0) {
+		if !(libc.XDeviceIoControl(tls, hFile, uint32(libc.Int32FromInt32(m_FILE_DEVICE_FILE_SYSTEM)<<libc.Int32FromInt32(16)|libc.Int32FromInt32(m_FILE_ANY_ACCESS)<<libc.Int32FromInt32(14)|libc.Int32FromInt32(43)<<libc.Int32FromInt32(2)|libc.Int32FromInt32(m_METHOD_BUFFERED)), reparseBuffer, uint32(m_REPARSE_MOUNTPOINT_HEADER_SIZE), libc.UintptrFromInt32(0), uint32(0), bp+1584, libc.UintptrFromInt32(0)) != 0) {
 			/*
 			 * Error setting junction.
 			 */
-			XTclWinConvertError(tls, libkernel32.XGetLastError(tls))
-			libkernel32.XCloseHandle(tls, hFile)
+			XTclWinConvertError(tls, libc.XGetLastError(tls))
+			libc.XCloseHandle(tls, hFile)
 		} else {
-			libkernel32.XCloseHandle(tls, hFile)
+			libc.XCloseHandle(tls, hFile)
 			if !(linkOnly != 0) {
-				libkernel32.XRemoveDirectoryW(tls, linkOrigPath)
+				libc.XRemoveDirectoryW(tls, linkOrigPath)
 			}
 			return 0
 		}
@@ -366565,7 +366559,7 @@ func _WinReadLinkDirectory(tls *libc.TLS, linkDirPath uintptr) (r uintptr) {
 	var _ /* dummy at bp+0 */ TDUMMY_REPARSE_BUFFER
 	_, _, _, _, _, _, _ = attr, copy1, drive, len1, offset, reparseBuffer, retVal
 	reparseBuffer = bp
-	attr = int32(libkernel32.XGetFileAttributesW(tls, linkDirPath))
+	attr = int32(libc.XGetFileAttributesW(tls, linkDirPath))
 	if !(attr&libc.Int32FromInt32(m_FILE_ATTRIBUTE_REPARSE_POINT1) != 0) {
 		goto invalidError
 	}
@@ -366682,26 +366676,26 @@ func _NativeReadReparse(tls *libc.TLS, linkDirPath uintptr, buffer uintptr, desi
 	var hFile THANDLE
 	var _ /* returnedLength at bp+0 */ TDWORD
 	_ = hFile
-	hFile = libkernel32.XCreateFileW(tls, linkDirPath, desiredAccess, uint32(m_FILE_SHARE_READ3), libc.UintptrFromInt32(0), uint32(m_OPEN_EXISTING), uint32(libc.Int32FromInt32(m_FILE_FLAG_OPEN_REPARSE_POINT1)|libc.Int32FromInt32(m_FILE_FLAG_BACKUP_SEMANTICS1)), libc.UintptrFromInt32(0))
+	hFile = libc.XCreateFileW(tls, linkDirPath, desiredAccess, uint32(m_FILE_SHARE_READ3), libc.UintptrFromInt32(0), uint32(m_OPEN_EXISTING), uint32(libc.Int32FromInt32(m_FILE_FLAG_OPEN_REPARSE_POINT1)|libc.Int32FromInt32(m_FILE_FLAG_BACKUP_SEMANTICS1)), libc.UintptrFromInt32(0))
 	if hFile == uintptr(int64(-libc.Int32FromInt32(1))) {
 		/*
 		 * Error creating directory.
 		 */
-		XTclWinConvertError(tls, libkernel32.XGetLastError(tls))
+		XTclWinConvertError(tls, libc.XGetLastError(tls))
 		return -int32(1)
 	}
 	/*
 	 * Get the link.
 	 */
-	if !(libkernel32.XDeviceIoControl(tls, hFile, uint32(libc.Int32FromInt32(m_FILE_DEVICE_FILE_SYSTEM)<<libc.Int32FromInt32(16)|libc.Int32FromInt32(m_FILE_ANY_ACCESS)<<libc.Int32FromInt32(14)|libc.Int32FromInt32(42)<<libc.Int32FromInt32(2)|libc.Int32FromInt32(m_METHOD_BUFFERED)), libc.UintptrFromInt32(0), uint32(0), buffer, uint32(1584), bp, libc.UintptrFromInt32(0)) != 0) {
+	if !(libc.XDeviceIoControl(tls, hFile, uint32(libc.Int32FromInt32(m_FILE_DEVICE_FILE_SYSTEM)<<libc.Int32FromInt32(16)|libc.Int32FromInt32(m_FILE_ANY_ACCESS)<<libc.Int32FromInt32(14)|libc.Int32FromInt32(42)<<libc.Int32FromInt32(2)|libc.Int32FromInt32(m_METHOD_BUFFERED)), libc.UintptrFromInt32(0), uint32(0), buffer, uint32(1584), bp, libc.UintptrFromInt32(0)) != 0) {
 		/*
 		 * Error setting junction.
 		 */
-		XTclWinConvertError(tls, libkernel32.XGetLastError(tls))
-		libkernel32.XCloseHandle(tls, hFile)
+		XTclWinConvertError(tls, libc.XGetLastError(tls))
+		libc.XCloseHandle(tls, hFile)
 		return -int32(1)
 	}
-	libkernel32.XCloseHandle(tls, hFile)
+	libc.XCloseHandle(tls, hFile)
 	if !(!((*TREPARSE_DATA_BUFFER)(unsafe.Pointer(buffer)).FReparseTag&uint32(^libc.Uint32FromUint32(m_IO_REPARSE_TAG_VALID_VALUES)) != 0) && (*TREPARSE_DATA_BUFFER)(unsafe.Pointer(buffer)).FReparseTag > uint32(libc.Int32FromInt32(m_IO_REPARSE_TAG_RESERVED_ONE))) {
 		XTcl_SetErrno(tls, int32(m_EINVAL))
 		return -int32(1)
@@ -366730,34 +366724,34 @@ func _NativeWriteReparse(tls *libc.TLS, linkDirPath uintptr, buffer uintptr) (r 
 	/*
 	 * Create the directory - it must not already exist.
 	 */
-	if libkernel32.XCreateDirectoryW(tls, linkDirPath, libc.UintptrFromInt32(0)) == 0 {
+	if libc.XCreateDirectoryW(tls, linkDirPath, libc.UintptrFromInt32(0)) == 0 {
 		/*
 		 * Error creating directory.
 		 */
-		XTclWinConvertError(tls, libkernel32.XGetLastError(tls))
+		XTclWinConvertError(tls, libc.XGetLastError(tls))
 		return -int32(1)
 	}
-	hFile = libkernel32.XCreateFileW(tls, linkDirPath, uint32(libc.Int32FromInt32(0x40000000)), uint32(0), libc.UintptrFromInt32(0), uint32(m_OPEN_EXISTING), uint32(libc.Int32FromInt32(m_FILE_FLAG_OPEN_REPARSE_POINT1)|libc.Int32FromInt32(m_FILE_FLAG_BACKUP_SEMANTICS1)), libc.UintptrFromInt32(0))
+	hFile = libc.XCreateFileW(tls, linkDirPath, uint32(libc.Int32FromInt32(0x40000000)), uint32(0), libc.UintptrFromInt32(0), uint32(m_OPEN_EXISTING), uint32(libc.Int32FromInt32(m_FILE_FLAG_OPEN_REPARSE_POINT1)|libc.Int32FromInt32(m_FILE_FLAG_BACKUP_SEMANTICS1)), libc.UintptrFromInt32(0))
 	if hFile == uintptr(int64(-libc.Int32FromInt32(1))) {
 		/*
 		 * Error creating directory.
 		 */
-		XTclWinConvertError(tls, libkernel32.XGetLastError(tls))
+		XTclWinConvertError(tls, libc.XGetLastError(tls))
 		return -int32(1)
 	}
 	/*
 	 * Set the link.
 	 */
-	if !(libkernel32.XDeviceIoControl(tls, hFile, uint32(libc.Int32FromInt32(m_FILE_DEVICE_FILE_SYSTEM)<<libc.Int32FromInt32(16)|libc.Int32FromInt32(m_FILE_ANY_ACCESS)<<libc.Int32FromInt32(14)|libc.Int32FromInt32(41)<<libc.Int32FromInt32(2)|libc.Int32FromInt32(m_METHOD_BUFFERED)), buffer, uint32((*TREPARSE_DATA_BUFFER)(unsafe.Pointer(buffer)).FReparseDataLength)+uint32(m_REPARSE_MOUNTPOINT_HEADER_SIZE), libc.UintptrFromInt32(0), uint32(0), bp, libc.UintptrFromInt32(0)) != 0) {
+	if !(libc.XDeviceIoControl(tls, hFile, uint32(libc.Int32FromInt32(m_FILE_DEVICE_FILE_SYSTEM)<<libc.Int32FromInt32(16)|libc.Int32FromInt32(m_FILE_ANY_ACCESS)<<libc.Int32FromInt32(14)|libc.Int32FromInt32(41)<<libc.Int32FromInt32(2)|libc.Int32FromInt32(m_METHOD_BUFFERED)), buffer, uint32((*TREPARSE_DATA_BUFFER)(unsafe.Pointer(buffer)).FReparseDataLength)+uint32(m_REPARSE_MOUNTPOINT_HEADER_SIZE), libc.UintptrFromInt32(0), uint32(0), bp, libc.UintptrFromInt32(0)) != 0) {
 		/*
 		 * Error setting junction.
 		 */
-		XTclWinConvertError(tls, libkernel32.XGetLastError(tls))
-		libkernel32.XCloseHandle(tls, hFile)
-		libkernel32.XRemoveDirectoryW(tls, linkDirPath)
+		XTclWinConvertError(tls, libc.XGetLastError(tls))
+		libc.XCloseHandle(tls, hFile)
+		libc.XRemoveDirectoryW(tls, linkDirPath)
 		return -int32(1)
 	}
-	libkernel32.XCloseHandle(tls, hFile)
+	libc.XCloseHandle(tls, hFile)
 	/*
 	 * We succeeded.
 	 */
@@ -366802,7 +366796,7 @@ func XtclWinDebugPanic(tls *libc.TLS, format uintptr, va uintptr) {
 _4:
 	;
 	(*(*[1024]TWCHAR)(unsafe.Pointer(bp + 3072)))[libc.Int32FromInt32(m_TCL_MAX_WARN_LEN)-libc.Int32FromInt32(1)] = uint16('\000')
-	libkernel32.XMultiByteToWideChar(tls, uint32(m_CP_UTF8), uint32(0), bp, -int32(1), bp+3072, int32(m_TCL_MAX_WARN_LEN))
+	libc.XMultiByteToWideChar(tls, uint32(m_CP_UTF8), uint32(0), bp, -int32(1), bp+3072, int32(m_TCL_MAX_WARN_LEN))
 	/*
 	 * Truncate MessageBox string if it is too long to not overflow the screen
 	 * and cause possible oversized window error.
@@ -366810,11 +366804,11 @@ _4:
 	if int32((*(*[1024]TWCHAR)(unsafe.Pointer(bp + 3072)))[libc.Int32FromInt32(m_TCL_MAX_WARN_LEN)-libc.Int32FromInt32(1)]) != int32('\000') {
 		libc.Xmemcpy(tls, bp+3072+uintptr(libc.Int32FromInt32(m_TCL_MAX_WARN_LEN)-libc.Int32FromInt32(5))*2, __ccgo_ts+70205, libc.Uint64FromInt32(5)*libc.Uint64FromInt64(2))
 	}
-	if libkernel32.XIsDebuggerPresent(tls) != 0 {
-		libkernel32.XOutputDebugStringW(tls, bp+3072)
+	if libc.XIsDebuggerPresent(tls) != 0 {
+		libc.XOutputDebugStringW(tls, bp+3072)
 	} else {
-		libuser32.XMessageBeep(tls, uint32(0x00000030))
-		libuser32.XMessageBoxW(tls, libc.UintptrFromInt32(0), bp+3072, __ccgo_ts+70215, uint32(libc.Int32FromInt32(0x00000010)|libc.Int32FromInt32(0x00000000)|libc.Int32FromInt32(0x00002000)|libc.Int32FromInt32(0x00010000)))
+		libc.XMessageBeep(tls, uint32(0x00000030))
+		libc.XMessageBoxW(tls, libc.UintptrFromInt32(0), bp+3072, __ccgo_ts+70215, uint32(libc.Int32FromInt32(0x00000010)|libc.Int32FromInt32(0x00000000)|libc.Int32FromInt32(0x00002000)|libc.Int32FromInt32(0x00010000)))
 	}
 	libc.X__builtin_trap(tls)
 	libc.Xabort(tls)
@@ -366850,8 +366844,8 @@ func XTclpFindExecutable(tls *libc.TLS, argv0 uintptr) {
 	if argv0 == libc.UintptrFromInt32(0) {
 		XTcl_SetPanicProc(tls, __ccgo_fp(XtclWinDebugPanic))
 	}
-	libkernel32.XGetModuleFileNameW(tls, libc.UintptrFromInt32(0), bp, uint32(libc.Uint64FromInt64(520)/libc.Uint64FromInt64(2)))
-	libkernel32.XWideCharToMultiByte(tls, uint32(m_CP_UTF8), uint32(0), bp, -int32(1), bp+520, int32(780), libc.UintptrFromInt32(0), libc.UintptrFromInt32(0))
+	libc.XGetModuleFileNameW(tls, libc.UintptrFromInt32(0), bp, uint32(libc.Uint64FromInt64(520)/libc.Uint64FromInt64(2)))
+	libc.XWideCharToMultiByte(tls, uint32(m_CP_UTF8), uint32(0), bp, -int32(1), bp+520, int32(780), libc.UintptrFromInt32(0), libc.UintptrFromInt32(0))
 	XTclWinNoBackslash(tls, bp+520)
 	XTclSetObjNameOfExecutable(tls, XTcl_NewStringObj(tls, bp+520, -int32(1)), libc.UintptrFromInt32(0))
 }
@@ -366903,7 +366897,7 @@ func XTclpMatchInDirectory(tls *libc.TLS, interp uintptr, resultPtr uintptr, pat
 		if norm != libc.UintptrFromInt32(0) {
 			str = XTcl_GetStringFromObj(tls, norm, bp)
 			native = XTcl_FSGetNativePath(tls, pathPtr)
-			if libkernel32.XGetFileAttributesExW(tls, native, _GetFileExInfoStandard, bp+4) != int32(m_TRUE) {
+			if libc.XGetFileAttributesExW(tls, native, _GetFileExInfoStandard, bp+4) != int32(m_TRUE) {
 				return m_TCL_OK
 			}
 			attr = (*(*TWIN32_FILE_ATTRIBUTE_DATA)(unsafe.Pointer(bp + 4))).FdwFileAttributes
@@ -366928,7 +366922,7 @@ func XTclpMatchInDirectory(tls *libc.TLS, interp uintptr, resultPtr uintptr, pat
 		if native == libc.UintptrFromInt32(0) {
 			return m_TCL_OK
 		}
-		attr1 = libkernel32.XGetFileAttributesW(tls, native)
+		attr1 = libc.XGetFileAttributesW(tls, native)
 		if attr1 == uint32(-libc.Int32FromInt32(1)) || attr1&uint32(m_FILE_ATTRIBUTE_DIRECTORY1) == uint32(0) {
 			return m_TCL_OK
 		}
@@ -366962,15 +366956,15 @@ func XTclpMatchInDirectory(tls *libc.TLS, interp uintptr, resultPtr uintptr, pat
 		}
 		native = XTcl_WinUtfToTChar(tls, dirName, -int32(1), bp+640)
 		if types == libc.UintptrFromInt32(0) || (*TTcl_GlobTypeData)(unsafe.Pointer(types)).Ftype1 != libc.Int32FromInt32(1)<<libc.Int32FromInt32(2) {
-			handle = libkernel32.XFindFirstFileW(tls, native, bp+40)
+			handle = libc.XFindFirstFileW(tls, native, bp+40)
 		} else {
 			/*
 			 * We can be more efficient, for pure directory requests.
 			 */
-			handle = libkernel32.XFindFirstFileExW(tls, native, _FindExInfoStandard, bp+40, _FindExSearchLimitToDirectories, libc.UintptrFromInt32(0), uint32(0))
+			handle = libc.XFindFirstFileExW(tls, native, _FindExInfoStandard, bp+40, _FindExSearchLimitToDirectories, libc.UintptrFromInt32(0), uint32(0))
 		}
 		if handle == uintptr(int64(-libc.Int32FromInt32(1))) {
-			err = libkernel32.XGetLastError(tls)
+			err = libc.XGetLastError(tls)
 			XTcl_DStringFree(tls, bp+640)
 			if err == uint32(2) {
 				/*
@@ -367010,7 +367004,7 @@ func XTclpMatchInDirectory(tls *libc.TLS, interp uintptr, resultPtr uintptr, pat
 		 * Now iterate over all of the files in the directory, starting with
 		 * the first one we found.
 		 */
-		for cond := true; cond; cond = libkernel32.XFindNextFileW(tls, handle, bp+40) == int32(m_TRUE) {
+		for cond := true; cond; cond = libc.XFindNextFileW(tls, handle, bp+40) == int32(m_TRUE) {
 			checkDrive = 0
 			native = bp + 40 + 44
 			attr1 = (*(*TWIN32_FIND_DATAW)(unsafe.Pointer(bp + 40))).FdwFileAttributes
@@ -367063,7 +367057,7 @@ func XTclpMatchInDirectory(tls *libc.TLS, interp uintptr, resultPtr uintptr, pat
 			 */
 			XTcl_DStringFree(tls, bp+640)
 		}
-		libkernel32.XFindClose(tls, handle)
+		libc.XFindClose(tls, handle)
 		XTcl_DStringFree(tls, bp+856)
 		return m_TCL_OK
 	}
@@ -367357,13 +367351,13 @@ func XTclpGetUserHome(tls *libc.TLS, name uintptr, bufferPtr uintptr) (r uintptr
 		XTcl_DStringFree(tls, bp+8)
 	} else {
 		wName = XTcl_WinUtfToTChar(tls, domain+uintptr(1), -int32(1), bp+8)
-		rc = int32(libnetapi32.XNetGetDCName(tls, libc.UintptrFromInt32(0), wName, bp+224))
+		rc = int32(libc.XNetGetDCName(tls, libc.UintptrFromInt32(0), wName, bp+224))
 		XTcl_DStringFree(tls, bp+8)
 		nameLen = int32(int64(int64(domain)) - int64(int64(name)))
 	}
 	if rc == 0 {
 		wName = XTcl_WinUtfToTChar(tls, name, nameLen, bp+8)
-		for libnetapi32.XNetUserGetInfo(tls, *(*uintptr)(unsafe.Pointer(bp + 224)), wName, uint32(1), bp) != uint32(0) {
+		for libc.XNetUserGetInfo(tls, *(*uintptr)(unsafe.Pointer(bp + 224)), wName, uint32(1), bp) != uint32(0) {
 			/*
 			 * User does not exist; if domain was not specified, try again
 			 * using current domain.
@@ -367375,7 +367369,7 @@ func XTclpGetUserHome(tls *libc.TLS, name uintptr, bufferPtr uintptr) (r uintptr
 			/*
 			 * Get current domain
 			 */
-			rc = int32(libnetapi32.XNetGetDCName(tls, libc.UintptrFromInt32(0), libc.UintptrFromInt32(0), bp+224))
+			rc = int32(libc.XNetGetDCName(tls, libc.UintptrFromInt32(0), libc.UintptrFromInt32(0), bp+224))
 			if rc != 0 {
 				break
 			}
@@ -367385,14 +367379,14 @@ func XTclpGetUserHome(tls *libc.TLS, name uintptr, bufferPtr uintptr) (r uintptr
 			*(*TDWORD)(unsafe.Pointer(bp + 240)) = uint32(m_MAX_PATH)
 			wHomeDir = (*TUSER_INFO_1)(unsafe.Pointer(*(*uintptr)(unsafe.Pointer(bp)))).Fusri1_home_dir
 			if wHomeDir != libc.UintptrFromInt32(0) && int32(*(*TWCHAR)(unsafe.Pointer(wHomeDir))) != int32('\000') {
-				*(*TDWORD)(unsafe.Pointer(bp + 240)) = uint32(libkernel32.XlstrlenW(tls, wHomeDir))
+				*(*TDWORD)(unsafe.Pointer(bp + 240)) = uint32(libc.XlstrlenW(tls, wHomeDir))
 				XTcl_WinTCharToUtf(tls, wHomeDir, int32(uint64(*(*TDWORD)(unsafe.Pointer(bp + 240)))*uint64(2)), bufferPtr)
 			} else {
 				/*
 				 * User exists but has no home dir. Return
 				 * "{GetProfilesDirectory}/<user>".
 				 */
-				libuserenv.XGetProfilesDirectoryW(tls, bp+244, bp+240)
+				libc.XGetProfilesDirectoryW(tls, bp+244, bp+240)
 				XTcl_WinTCharToUtf(tls, bp+244, int32(uint64(*(*TDWORD)(unsafe.Pointer(bp + 240))-libc.Uint32FromInt32(1))*uint64(2)), bufferPtr)
 				XTcl_DStringAppend(tls, bufferPtr, __ccgo_ts+5689, int32(1))
 				XTcl_DStringAppend(tls, bufferPtr, name, nameLen)
@@ -367414,21 +367408,21 @@ func XTclpGetUserHome(tls *libc.TLS, name uintptr, bufferPtr uintptr) (r uintptr
 				;
 				i++
 			}
-			libnetapi32.XNetApiBufferFree(tls, *(*uintptr)(unsafe.Pointer(bp)))
+			libc.XNetApiBufferFree(tls, *(*uintptr)(unsafe.Pointer(bp)))
 		}
 		XTcl_DStringFree(tls, bp+8)
 	}
 	if *(*uintptr)(unsafe.Pointer(bp + 224)) != libc.UintptrFromInt32(0) {
-		libnetapi32.XNetApiBufferFree(tls, *(*uintptr)(unsafe.Pointer(bp + 224)))
+		libc.XNetApiBufferFree(tls, *(*uintptr)(unsafe.Pointer(bp + 224)))
 	}
 	if result == libc.UintptrFromInt32(0) {
 		if int32(*(*int8)(unsafe.Pointer(name))) != int32('*') {
-			if libkernel32.XGetPrivateProfileStringA(tls, __ccgo_ts+70292, name, __ccgo_ts+1943, bp+764, uint32(m_MAX_PATH), __ccgo_ts+70307) > uint32(0) {
+			if libc.XGetPrivateProfileStringA(tls, __ccgo_ts+70292, name, __ccgo_ts+1943, bp+764, uint32(m_MAX_PATH), __ccgo_ts+70307) > uint32(0) {
 				/*
 				 * User exists, but there is no such thing as a home directory
 				 * in system.ini. Return "{Windows drive}:/".
 				 */
-				libkernel32.XGetWindowsDirectoryA(tls, bp+764, uint32(m_MAX_PATH))
+				libc.XGetWindowsDirectoryA(tls, bp+764, uint32(m_MAX_PATH))
 				XTcl_DStringAppend(tls, bufferPtr, bp+764, int32(3))
 				result = (*TTcl_DString)(unsafe.Pointer(bufferPtr)).Fstring1
 			}
@@ -367474,12 +367468,12 @@ func _NativeAccess(tls *libc.TLS, nativePath uintptr, mode int32) (r int32) {
 	var _ /* samba_unmapped at bp+24 */ TSID_IDENTIFIER_AUTHORITY
 	var _ /* size at bp+0 */ uint32
 	_, _, _, _, _, _, _ = attr, desiredAccess, error1, hFile, lasterror, mask, sdPtr
-	attr = libkernel32.XGetFileAttributesW(tls, nativePath)
+	attr = libc.XGetFileAttributesW(tls, nativePath)
 	if attr == uint32(-libc.Int32FromInt32(1)) {
 		/*
 		 * File might not exist.
 		 */
-		lasterror = libkernel32.XGetLastError(tls)
+		lasterror = libc.XGetLastError(tls)
 		if lasterror != uint32(32) {
 			XTclWinConvertError(tls, lasterror)
 			return -int32(1)
@@ -367529,15 +367523,15 @@ func _NativeAccess(tls *libc.TLS, nativePath uintptr, mode int32) (r int32) {
 			if mode&int32(m_X_OK) != 0 {
 				mask |= uint32(libc.Int32FromInt32(0x20000000))
 			}
-			hFile = libkernel32.XCreateFileW(tls, nativePath, mask, uint32(libc.Int32FromInt32(m_FILE_SHARE_READ3)|libc.Int32FromInt32(m_FILE_SHARE_WRITE3)|libc.Int32FromInt32(m_FILE_SHARE_DELETE1)), libc.UintptrFromInt32(0), uint32(m_OPEN_EXISTING), uint32(m_FILE_FLAG_NO_BUFFERING1), libc.UintptrFromInt32(0))
+			hFile = libc.XCreateFileW(tls, nativePath, mask, uint32(libc.Int32FromInt32(m_FILE_SHARE_READ3)|libc.Int32FromInt32(m_FILE_SHARE_WRITE3)|libc.Int32FromInt32(m_FILE_SHARE_DELETE1)), libc.UintptrFromInt32(0), uint32(m_OPEN_EXISTING), uint32(m_FILE_FLAG_NO_BUFFERING1), libc.UintptrFromInt32(0))
 			if hFile != uintptr(int64(-libc.Int32FromInt32(1))) {
-				libkernel32.XCloseHandle(tls, hFile)
+				libc.XCloseHandle(tls, hFile)
 				return 0
 			}
 			/*
 			 * Fast exit if access was denied
 			 */
-			if libkernel32.XGetLastError(tls) == uint32(5) {
+			if libc.XGetLastError(tls) == uint32(5) {
 				XTcl_SetErrno(tls, int32(m_EACCES))
 				return -int32(1)
 			}
@@ -367569,11 +367563,11 @@ func _NativeAccess(tls *libc.TLS, nativePath uintptr, mode int32) (r int32) {
 	 * First find out how big the buffer needs to be.
 	 */
 	*(*uint32)(unsafe.Pointer(bp)) = uint32(0)
-	libadvapi32.XGetFileSecurityW(tls, nativePath, uint32(libc.Int32FromInt32(0x00000001)|libc.Int32FromInt32(0x00000002)|libc.Int32FromInt32(0x00000004)|libc.Int32FromInt32(0x00000010)), uintptr(0), uint32(0), bp)
+	libc.XGetFileSecurityW(tls, nativePath, uint32(libc.Int32FromInt32(0x00000001)|libc.Int32FromInt32(0x00000002)|libc.Int32FromInt32(0x00000004)|libc.Int32FromInt32(0x00000010)), uintptr(0), uint32(0), bp)
 	/*
 	 * Should have failed with ERROR_INSUFFICIENT_BUFFER
 	 */
-	error1 = int32(libkernel32.XGetLastError(tls))
+	error1 = int32(libc.XGetLastError(tls))
 	if int32(int32(error1)) != int32(122) {
 		/*
 		 * Most likely case is ERROR_ACCESS_DENIED, which we will convert
@@ -367585,14 +367579,14 @@ func _NativeAccess(tls *libc.TLS, nativePath uintptr, mode int32) (r int32) {
 	/*
 	 * Now size contains the size of buffer needed.
 	 */
-	sdPtr = libkernel32.XHeapAlloc(tls, libkernel32.XGetProcessHeap(tls), uint32(0), uint64(*(*uint32)(unsafe.Pointer(bp))))
+	sdPtr = libc.XHeapAlloc(tls, libc.XGetProcessHeap(tls), uint32(0), uint64(*(*uint32)(unsafe.Pointer(bp))))
 	if sdPtr == libc.UintptrFromInt32(0) {
 		goto accessError
 	}
 	/*
 	 * Call GetFileSecurityW() for real.
 	 */
-	if !(libadvapi32.XGetFileSecurityW(tls, nativePath, uint32(libc.Int32FromInt32(0x00000001)|libc.Int32FromInt32(0x00000002)|libc.Int32FromInt32(0x00000004)|libc.Int32FromInt32(0x00000010)), sdPtr, *(*uint32)(unsafe.Pointer(bp)), bp) != 0) {
+	if !(libc.XGetFileSecurityW(tls, nativePath, uint32(libc.Int32FromInt32(0x00000001)|libc.Int32FromInt32(0x00000002)|libc.Int32FromInt32(0x00000004)|libc.Int32FromInt32(0x00000010)), sdPtr, *(*uint32)(unsafe.Pointer(bp)), bp) != 0) {
 		/*
 		 * Error getting owner SD
 		 */
@@ -367610,27 +367604,27 @@ func _NativeAccess(tls *libc.TLS, nativePath uintptr, mode int32) (r int32) {
 	 * file owner then the attrib checks above are correct (as far as they
 	 * go).
 	 */
-	if !(libadvapi32.XGetSecurityDescriptorOwner(tls, sdPtr, bp+8, bp+16) != 0) || libc.Xmemcmp(tls, libadvapi32.XGetSidIdentifierAuthority(tls, *(*TPSID)(unsafe.Pointer(bp + 8))), bp+24, uint64(6)) == 0 {
-		libkernel32.XHeapFree(tls, libkernel32.XGetProcessHeap(tls), uint32(0), sdPtr)
+	if !(libc.XGetSecurityDescriptorOwner(tls, sdPtr, bp+8, bp+16) != 0) || libc.Xmemcmp(tls, libc.XGetSidIdentifierAuthority(tls, *(*TPSID)(unsafe.Pointer(bp + 8))), bp+24, uint64(6)) == 0 {
+		libc.XHeapFree(tls, libc.XGetProcessHeap(tls), uint32(0), sdPtr)
 		return 0 /* Attrib tests say access allowed. */
 	}
 	/*
 	 * Perform security impersonation of the user and open the resulting
 	 * thread token.
 	 */
-	if !(libadvapi32.XImpersonateSelf(tls, _SecurityImpersonation) != 0) {
+	if !(libc.XImpersonateSelf(tls, _SecurityImpersonation) != 0) {
 		/*
 		 * Unable to perform security impersonation.
 		 */
 		goto accessError
 	}
-	if !(libkernel32.XOpenThreadToken(tls, libkernel32.XGetCurrentThread(tls), uint32(libc.Int32FromInt32(m_TOKEN_DUPLICATE1)|libc.Int32FromInt32(m_TOKEN_QUERY1)), m_FALSE, bp+48) != 0) {
+	if !(libc.XOpenThreadToken(tls, libc.XGetCurrentThread(tls), uint32(libc.Int32FromInt32(m_TOKEN_DUPLICATE1)|libc.Int32FromInt32(m_TOKEN_QUERY1)), m_FALSE, bp+48) != 0) {
 		/*
 		 * Unable to get current thread's token.
 		 */
 		goto accessError
 	}
-	libadvapi32.XRevertToSelf(tls)
+	libc.XRevertToSelf(tls)
 	/*
 	 * Setup desiredAccess according to the access priveleges we are
 	 * checking.
@@ -367652,7 +367646,7 @@ func _NativeAccess(tls *libc.TLS, nativePath uintptr, mode int32) (r int32) {
 	/*
 	 * Perform access check using the token.
 	 */
-	if !!(libadvapi32.XAccessCheck(tls, sdPtr, *(*THANDLE)(unsafe.Pointer(bp + 48)), desiredAccess, bp+32, bp+64, bp+84, bp+56, bp+60) != 0) {
+	if !!(libc.XAccessCheck(tls, sdPtr, *(*THANDLE)(unsafe.Pointer(bp + 48)), desiredAccess, bp+32, bp+64, bp+84, bp+56, bp+60) != 0) {
 		goto _1
 	}
 	/*
@@ -367661,12 +367655,12 @@ func _NativeAccess(tls *libc.TLS, nativePath uintptr, mode int32) (r int32) {
 	goto accessError
 accessError:
 	;
-	XTclWinConvertError(tls, libkernel32.XGetLastError(tls))
+	XTclWinConvertError(tls, libc.XGetLastError(tls))
 	if sdPtr != libc.UintptrFromInt32(0) {
-		libkernel32.XHeapFree(tls, libkernel32.XGetProcessHeap(tls), uint32(0), sdPtr)
+		libc.XHeapFree(tls, libc.XGetProcessHeap(tls), uint32(0), sdPtr)
 	}
 	if *(*THANDLE)(unsafe.Pointer(bp + 48)) != libc.UintptrFromInt32(0) {
-		libkernel32.XCloseHandle(tls, *(*THANDLE)(unsafe.Pointer(bp + 48)))
+		libc.XCloseHandle(tls, *(*THANDLE)(unsafe.Pointer(bp + 48)))
 	}
 	return -int32(1)
 _1:
@@ -367674,8 +367668,8 @@ _1:
 	/*
 	 * Clean up.
 	 */
-	libkernel32.XHeapFree(tls, libkernel32.XGetProcessHeap(tls), uint32(0), sdPtr)
-	libkernel32.XCloseHandle(tls, *(*THANDLE)(unsafe.Pointer(bp + 48)))
+	libc.XHeapFree(tls, libc.XGetProcessHeap(tls), uint32(0), sdPtr)
+	libc.XCloseHandle(tls, *(*THANDLE)(unsafe.Pointer(bp + 48)))
 	if !(*(*TBOOL)(unsafe.Pointer(bp + 60)) != 0) {
 		XTcl_SetErrno(tls, int32(m_EACCES))
 		return -int32(1)
@@ -367739,9 +367733,9 @@ func XTclpObjChdir(tls *libc.TLS, pathPtr uintptr) (r int32) {
 	if !(nativePath != 0) {
 		return -int32(1)
 	}
-	result = libkernel32.XSetCurrentDirectoryW(tls, nativePath)
+	result = libc.XSetCurrentDirectoryW(tls, nativePath)
 	if result == 0 {
-		XTclWinConvertError(tls, libkernel32.XGetLastError(tls))
+		XTclWinConvertError(tls, libc.XGetLastError(tls))
 		return -int32(1)
 	}
 	return 0
@@ -367776,8 +367770,8 @@ func XTclpGetCwd(tls *libc.TLS, interp uintptr, bufferPtr uintptr) (r uintptr) {
 	var native, p uintptr
 	var _ /* buffer at bp+0 */ [260]TWCHAR
 	_, _ = native, p
-	if libkernel32.XGetCurrentDirectoryW(tls, uint32(m_MAX_PATH), bp) == uint32(0) {
-		XTclWinConvertError(tls, libkernel32.XGetLastError(tls))
+	if libc.XGetCurrentDirectoryW(tls, uint32(m_MAX_PATH), bp) == uint32(0) {
+		XTclWinConvertError(tls, libc.XGetLastError(tls))
 		if interp != libc.UintptrFromInt32(0) {
 			XTcl_SetObjResult(tls, interp, XTcl_ObjPrintf(tls, __ccgo_ts+43259, libc.VaList(bp+528, XTcl_PosixError(tls, interp))))
 		}
@@ -367873,11 +367867,11 @@ func _NativeStat(tls *libc.TLS, nativePath uintptr, statPtr uintptr, checkLinks 
 	 * fail. We do a WinIsReserved to see if it is one of the special names,
 	 * and if successful, mock up a BY_HANDLE_FILE_INFORMATION structure.
 	 */
-	fileHandle = libkernel32.XCreateFileW(tls, nativePath, libc.Uint32FromUint32(0x80000000), uint32(libc.Int32FromInt32(m_FILE_SHARE_READ3)|libc.Int32FromInt32(m_FILE_SHARE_WRITE3)|libc.Int32FromInt32(m_FILE_SHARE_DELETE1)), libc.UintptrFromInt32(0), uint32(m_OPEN_EXISTING), uint32(libc.Int32FromInt32(m_FILE_FLAG_BACKUP_SEMANTICS1)|libc.Int32FromInt32(m_FILE_FLAG_OPEN_REPARSE_POINT1)), libc.UintptrFromInt32(0))
+	fileHandle = libc.XCreateFileW(tls, nativePath, libc.Uint32FromUint32(0x80000000), uint32(libc.Int32FromInt32(m_FILE_SHARE_READ3)|libc.Int32FromInt32(m_FILE_SHARE_WRITE3)|libc.Int32FromInt32(m_FILE_SHARE_DELETE1)), libc.UintptrFromInt32(0), uint32(m_OPEN_EXISTING), uint32(libc.Int32FromInt32(m_FILE_FLAG_BACKUP_SEMANTICS1)|libc.Int32FromInt32(m_FILE_FLAG_OPEN_REPARSE_POINT1)), libc.UintptrFromInt32(0))
 	if fileHandle != uintptr(int64(-libc.Int32FromInt32(1))) {
-		if libkernel32.XGetFileInformationByHandle(tls, fileHandle, bp) != int32(m_TRUE) {
-			fileType = libkernel32.XGetFileType(tls, fileHandle)
-			libkernel32.XCloseHandle(tls, fileHandle)
+		if libc.XGetFileInformationByHandle(tls, fileHandle, bp) != int32(m_TRUE) {
+			fileType = libc.XGetFileType(tls, fileHandle)
+			libc.XCloseHandle(tls, fileHandle)
 			if fileType != uint32(m_FILE_TYPE_CHAR3) && fileType != uint32(m_FILE_TYPE_DISK3) {
 				XTcl_SetErrno(tls, int32(m_ENOENT))
 				return -int32(1)
@@ -367890,7 +367884,7 @@ func _NativeStat(tls *libc.TLS, nativePath uintptr, statPtr uintptr, checkLinks 
 			(*TTcl_StatBuf)(unsafe.Pointer(statPtr)).Fst_mtime = 0
 			(*TTcl_StatBuf)(unsafe.Pointer(statPtr)).Fst_ctime = 0
 		} else {
-			libkernel32.XCloseHandle(tls, fileHandle)
+			libc.XCloseHandle(tls, fileHandle)
 			(*TTcl_StatBuf)(unsafe.Pointer(statPtr)).Fst_atime = _ToCTime(tls, (*(*TBY_HANDLE_FILE_INFORMATION)(unsafe.Pointer(bp))).FftLastAccessTime)
 			(*TTcl_StatBuf)(unsafe.Pointer(statPtr)).Fst_mtime = _ToCTime(tls, (*(*TBY_HANDLE_FILE_INFORMATION)(unsafe.Pointer(bp))).FftLastWriteTime)
 			(*TTcl_StatBuf)(unsafe.Pointer(statPtr)).Fst_ctime = _ToCTime(tls, (*(*TBY_HANDLE_FILE_INFORMATION)(unsafe.Pointer(bp))).FftCreationTime)
@@ -367912,19 +367906,19 @@ func _NativeStat(tls *libc.TLS, nativePath uintptr, statPtr uintptr, checkLinks 
 		 */
 		inode = uint32((*(*TBY_HANDLE_FILE_INFORMATION)(unsafe.Pointer(bp))).FnFileIndexHigh | (*(*TBY_HANDLE_FILE_INFORMATION)(unsafe.Pointer(bp))).FnFileIndexLow)
 	} else {
-		if libkernel32.XGetFileAttributesExW(tls, nativePath, _GetFileExInfoStandard, bp+52) != int32(m_TRUE) {
-			lasterror = libkernel32.XGetLastError(tls)
+		if libc.XGetFileAttributesExW(tls, nativePath, _GetFileExInfoStandard, bp+52) != int32(m_TRUE) {
+			lasterror = libc.XGetLastError(tls)
 			if lasterror != uint32(32) {
 				XTclWinConvertError(tls, lasterror)
 				return -int32(1)
 			}
-			hFind = libkernel32.XFindFirstFileW(tls, nativePath, bp+88)
+			hFind = libc.XFindFirstFileW(tls, nativePath, bp+88)
 			if hFind == uintptr(int64(-libc.Int32FromInt32(1))) {
-				XTclWinConvertError(tls, libkernel32.XGetLastError(tls))
+				XTclWinConvertError(tls, libc.XGetLastError(tls))
 				return -int32(1)
 			}
 			libc.Xmemcpy(tls, bp+52, bp+88, uint64(36))
-			libkernel32.XFindClose(tls, hFind)
+			libc.XFindClose(tls, hFind)
 		}
 		attr = (*(*TWIN32_FILE_ATTRIBUTE_DATA)(unsafe.Pointer(bp + 52))).FdwFileAttributes
 		(*TTcl_StatBuf)(unsafe.Pointer(statPtr)).Fst_size = int64((*(*TWIN32_FILE_ATTRIBUTE_DATA)(unsafe.Pointer(bp + 52))).FnFileSizeLow) | int64((*(*TWIN32_FILE_ATTRIBUTE_DATA)(unsafe.Pointer(bp + 52))).FnFileSizeHigh)<<libc.Int32FromInt32(32)
@@ -367974,7 +367968,7 @@ func _NativeDev(tls *libc.TLS, nativePath uintptr) (r int32) {
 	var _ /* nativePart at bp+736 */ uintptr
 	var _ /* volString at bp+752 */ TTcl_DString
 	_, _, _, _ = dev, fullPath, nativeVol, p
-	libkernel32.XGetFullPathNameW(tls, nativePath, uint32(m_MAX_PATH), bp+216, bp+736)
+	libc.XGetFullPathNameW(tls, nativePath, uint32(m_MAX_PATH), bp+216, bp+736)
 	fullPath = XTcl_WinTCharToUtf(tls, bp+216, -int32(1), bp)
 	if int32(*(*int8)(unsafe.Pointer(fullPath))) == int32('\\') && int32(*(*int8)(unsafe.Pointer(fullPath + 1))) == int32('\\') {
 		p = libc.Xstrchr(tls, fullPath+uintptr(2), int32('\\'))
@@ -367991,7 +367985,7 @@ func _NativeDev(tls *libc.TLS, nativePath uintptr) (r int32) {
 		}
 		nativeVol = XTcl_WinUtfToTChar(tls, fullPath, int32(int64(int64(p))-int64(int64(fullPath))), bp+752)
 		*(*TDWORD)(unsafe.Pointer(bp + 744)) = uint32(-libc.Int32FromInt32(1))
-		libkernel32.XGetVolumeInformationW(tls, nativeVol, libc.UintptrFromInt32(0), uint32(0), bp+744, libc.UintptrFromInt32(0), libc.UintptrFromInt32(0), libc.UintptrFromInt32(0), uint32(0))
+		libc.XGetVolumeInformationW(tls, nativeVol, libc.UintptrFromInt32(0), uint32(0), bp+744, libc.UintptrFromInt32(0), libc.UintptrFromInt32(0), libc.UintptrFromInt32(0), uint32(0))
 		/*
 		 * GetFullPathNameW() turns special devices like "NUL" into "\\.\NUL",
 		 * but GetVolumeInformationW() returns failure for "\\.\NUL". This will
@@ -368128,8 +368122,8 @@ func XTclpGetNativeCwd(tls *libc.TLS, clientData TClientData) (r TClientData) {
 	bp := tls.Alloc(528)
 	defer tls.Free(528)
 	var _ /* buffer at bp+0 */ [260]TWCHAR
-	if libkernel32.XGetCurrentDirectoryW(tls, uint32(m_MAX_PATH), bp) == uint32(0) {
-		XTclWinConvertError(tls, libkernel32.XGetLastError(tls))
+	if libc.XGetCurrentDirectoryW(tls, uint32(m_MAX_PATH), bp) == uint32(0) {
+		XTclWinConvertError(tls, libc.XGetLastError(tls))
 		return libc.UintptrFromInt32(0)
 	}
 	if clientData != libc.UintptrFromInt32(0) {
@@ -368220,11 +368214,11 @@ func XTclpFilesystemPathType(tls *libc.TLS, pathPtr uintptr) (r uintptr) {
 	}
 	firstSeparator = libc.Xstrchr(tls, path, int32('/'))
 	if firstSeparator == libc.UintptrFromInt32(0) {
-		found = libkernel32.XGetVolumeInformationW(tls, XTcl_FSGetNativePath(tls, pathPtr), libc.UintptrFromInt32(0), uint32(0), libc.UintptrFromInt32(0), libc.UintptrFromInt32(0), libc.UintptrFromInt32(0), bp, uint32(32))
+		found = libc.XGetVolumeInformationW(tls, XTcl_FSGetNativePath(tls, pathPtr), libc.UintptrFromInt32(0), uint32(0), libc.UintptrFromInt32(0), libc.UintptrFromInt32(0), libc.UintptrFromInt32(0), bp, uint32(32))
 	} else {
 		driveName = XTcl_NewStringObj(tls, path, int32(int64(int64(firstSeparator))-int64(int64(path))+int64(1)))
 		(*TTcl_Obj)(unsafe.Pointer(driveName)).FrefCount++
-		found = libkernel32.XGetVolumeInformationW(tls, XTcl_FSGetNativePath(tls, driveName), libc.UintptrFromInt32(0), uint32(0), libc.UintptrFromInt32(0), libc.UintptrFromInt32(0), libc.UintptrFromInt32(0), bp, uint32(32))
+		found = libc.XGetVolumeInformationW(tls, XTcl_FSGetNativePath(tls, driveName), libc.UintptrFromInt32(0), uint32(0), libc.UintptrFromInt32(0), libc.UintptrFromInt32(0), libc.UintptrFromInt32(0), bp, uint32(32))
 		_objPtr = driveName
 		v2 = _objPtr
 		v1 = *(*int32)(unsafe.Pointer(v2))
@@ -368304,7 +368298,7 @@ func XTclpObjNormalizePath(tls *libc.TLS, interp uintptr, pathPtr uintptr, nextC
 		cur = *(*int8)(unsafe.Pointer(currentPathEndPosition))
 		if (int32(int32(cur)) == int32('/') || int32(int32(cur)) == 0) && path != currentPathEndPosition {
 			nativePath = XTcl_WinUtfToTChar(tls, path, int32(int64(int64(currentPathEndPosition))-int64(int64(path))), bp+216)
-			if libkernel32.XGetFileAttributesExW(tls, nativePath, _GetFileExInfoStandard, bp+432) != int32(m_TRUE) {
+			if libc.XGetFileAttributesExW(tls, nativePath, _GetFileExInfoStandard, bp+432) != int32(m_TRUE) {
 				/*
 				 * File doesn't exist.
 				 */
@@ -368438,7 +368432,7 @@ func XTclpObjNormalizePath(tls *libc.TLS, interp uintptr, pathPtr uintptr, nextC
 					 */
 					XTcl_DStringAppend(tls, bp, nativePath+uintptr((*TTcl_DString)(unsafe.Pointer(bp+216)).Flength)-uintptr(uint64(uint64(dotLen))*libc.Uint64FromInt64(2)), int32(uint64(uint64(dotLen))*uint64(2)))
 				} else {
-					handle = libkernel32.XFindFirstFileW(tls, nativePath, bp+468)
+					handle = libc.XFindFirstFileW(tls, nativePath, bp+468)
 					if handle == uintptr(int64(-libc.Int32FromInt32(1))) {
 						/*
 						 * This is usually the '/' in 'c:/' at end of string.
@@ -368450,7 +368444,7 @@ func XTclpObjNormalizePath(tls *libc.TLS, interp uintptr, pathPtr uintptr, nextC
 						} else {
 							nativeName = bp + 468 + 564
 						}
-						libkernel32.XFindClose(tls, handle)
+						libc.XFindClose(tls, handle)
 						XTcl_DStringAppend(tls, bp, __ccgo_ts+70342, int32(2))
 						XTcl_DStringAppend(tls, bp, nativeName, int32(libc.Xwcslen(tls, nativeName)*libc.Uint64FromInt64(2)))
 					}
@@ -368749,7 +368743,7 @@ func XTclNativeCreateNativeRep(tls *libc.TLS, pathPtr uintptr) (r TClientData) {
 		 * Let MultiByteToWideChar check for other invalid sequences, like
 		 * 0xC0 0x80 (== overlong NUL). See bug [3118489]: NUL in filenames
 		 */
-		len1 = uint64(libkernel32.XMultiByteToWideChar(tls, uint32(m_CP_UTF8), uint32(m_MB_ERR_INVALID_CHARS1), str, -int32(1), uintptr(0), 0))
+		len1 = uint64(libc.XMultiByteToWideChar(tls, uint32(m_CP_UTF8), uint32(m_MB_ERR_INVALID_CHARS1), str, -int32(1), uintptr(0), 0))
 		if len1 == uint64(0) {
 			goto done
 		}
@@ -368763,7 +368757,7 @@ func XTclNativeCreateNativeRep(tls *libc.TLS, pathPtr uintptr) (r TClientData) {
 	if nativePathPtr == uintptr(0) {
 		goto done
 	}
-	libkernel32.XMultiByteToWideChar(tls, uint32(m_CP_UTF8), uint32(m_MB_ERR_INVALID_CHARS1), str, -int32(1), nativePathPtr, int32(len1+uint64(2)))
+	libc.XMultiByteToWideChar(tls, uint32(m_CP_UTF8), uint32(m_MB_ERR_INVALID_CHARS1), str, -int32(1), nativePathPtr, int32(len1+uint64(2)))
 	*(*TWCHAR)(unsafe.Pointer(nativePathPtr + uintptr(len1)*2)) = uint16(0)
 	/*
 	 * If path starts with "//?/" or "\\?\" (extended path), translate any
@@ -368904,7 +368898,7 @@ func XTclpUtime(tls *libc.TLS, pathPtr uintptr, tval uintptr) (r int32) {
 	_FromCTime(tls, (*Tutimbuf)(unsafe.Pointer(tval)).Factime, bp)
 	_FromCTime(tls, (*Tutimbuf)(unsafe.Pointer(tval)).Fmodtime, bp+8)
 	native = XTcl_FSGetNativePath(tls, pathPtr)
-	attr = libkernel32.XGetFileAttributesW(tls, native)
+	attr = libc.XGetFileAttributesW(tls, native)
 	if attr != uint32(-libc.Int32FromInt32(1)) && attr&uint32(m_FILE_ATTRIBUTE_DIRECTORY1) != 0 {
 		flags = uint32(m_FILE_FLAG_BACKUP_SEMANTICS1)
 	}
@@ -368912,13 +368906,13 @@ func XTclpUtime(tls *libc.TLS, pathPtr uintptr, tval uintptr) (r int32) {
 	 * We use the native APIs (not 'utime') because there are some daylight
 	 * savings complications that utime gets wrong.
 	 */
-	fileHandle = libkernel32.XCreateFileW(tls, native, uint32(libc.Int32FromInt32(m_FILE_WRITE_ATTRIBUTES1)), uint32(0), libc.UintptrFromInt32(0), uint32(m_OPEN_EXISTING), flags, libc.UintptrFromInt32(0))
-	if fileHandle == uintptr(int64(-libc.Int32FromInt32(1))) || !(libkernel32.XSetFileTime(tls, fileHandle, libc.UintptrFromInt32(0), bp, bp+8) != 0) {
-		XTclWinConvertError(tls, libkernel32.XGetLastError(tls))
+	fileHandle = libc.XCreateFileW(tls, native, uint32(libc.Int32FromInt32(m_FILE_WRITE_ATTRIBUTES1)), uint32(0), libc.UintptrFromInt32(0), uint32(m_OPEN_EXISTING), flags, libc.UintptrFromInt32(0))
+	if fileHandle == uintptr(int64(-libc.Int32FromInt32(1))) || !(libc.XSetFileTime(tls, fileHandle, libc.UintptrFromInt32(0), bp, bp+8) != 0) {
+		XTclWinConvertError(tls, libc.XGetLastError(tls))
 		res = -int32(1)
 	}
 	if fileHandle != uintptr(int64(-libc.Int32FromInt32(1))) {
-		libkernel32.XCloseHandle(tls, fileHandle)
+		libc.XCloseHandle(tls, fileHandle)
 	}
 	return res
 }
@@ -368951,7 +368945,7 @@ func XTclWinFileOwned(tls *libc.TLS, pathPtr uintptr) (r int32) {
 	buf = libc.UintptrFromInt32(0)
 	owned = 0
 	native = XTcl_FSGetNativePath(tls, pathPtr)
-	if libadvapi32.XGetNamedSecurityInfoW(tls, native, _SE_FILE_OBJECT, uint32(libc.Int32FromInt32(0x00000001)), bp, libc.UintptrFromInt32(0), libc.UintptrFromInt32(0), libc.UintptrFromInt32(0), bp+8) != uint32(0) {
+	if libc.XGetNamedSecurityInfoW(tls, native, _SE_FILE_OBJECT, uint32(libc.Int32FromInt32(0x00000001)), bp, libc.UintptrFromInt32(0), libc.UintptrFromInt32(0), libc.UintptrFromInt32(0), bp+8) != uint32(0) {
 		/*
 		 * Either not a file, or we do not have access to it in which case we
 		 * are in all likelihood not the owner.
@@ -368964,25 +368958,25 @@ func XTclWinFileOwned(tls *libc.TLS, pathPtr uintptr) (r int32) {
 	 * could not possibly own anything. Normally a process can *always* look
 	 * up its own token.
 	 */
-	if libkernel32.XOpenProcessToken(tls, libkernel32.XGetCurrentProcess(tls), uint32(libc.Int32FromInt32(m_TOKEN_QUERY1)), bp+16) != 0 {
+	if libc.XOpenProcessToken(tls, libc.XGetCurrentProcess(tls), uint32(libc.Int32FromInt32(m_TOKEN_QUERY1)), bp+16) != 0 {
 		/*
 		 * Find out how big the buffer needs to be.
 		 */
 		*(*TDWORD)(unsafe.Pointer(bp + 24)) = uint32(0)
-		libadvapi32.XGetTokenInformation(tls, *(*THANDLE)(unsafe.Pointer(bp + 16)), _TokenUser, libc.UintptrFromInt32(0), uint32(0), bp+24)
+		libc.XGetTokenInformation(tls, *(*THANDLE)(unsafe.Pointer(bp + 16)), _TokenUser, libc.UintptrFromInt32(0), uint32(0), bp+24)
 		if *(*TDWORD)(unsafe.Pointer(bp + 24)) != 0 {
 			buf = XTcl_Alloc(tls, uint32(*(*TDWORD)(unsafe.Pointer(bp + 24))))
-			if libadvapi32.XGetTokenInformation(tls, *(*THANDLE)(unsafe.Pointer(bp + 16)), _TokenUser, buf, *(*TDWORD)(unsafe.Pointer(bp + 24)), bp+24) != 0 {
-				owned = libadvapi32.XEqualSid(tls, *(*TPSID)(unsafe.Pointer(bp)), (*T_TOKEN_USER)(unsafe.Pointer(buf)).FUser.FSid)
+			if libc.XGetTokenInformation(tls, *(*THANDLE)(unsafe.Pointer(bp + 16)), _TokenUser, buf, *(*TDWORD)(unsafe.Pointer(bp + 24)), bp+24) != 0 {
+				owned = libc.XEqualSid(tls, *(*TPSID)(unsafe.Pointer(bp)), (*T_TOKEN_USER)(unsafe.Pointer(buf)).FUser.FSid)
 			}
 		}
-		libkernel32.XCloseHandle(tls, *(*THANDLE)(unsafe.Pointer(bp + 16)))
+		libc.XCloseHandle(tls, *(*THANDLE)(unsafe.Pointer(bp + 16)))
 	}
 	/*
 	 * Free allocations and be done.
 	 */
 	if *(*TPSECURITY_DESCRIPTOR)(unsafe.Pointer(bp + 8)) != 0 {
-		libkernel32.XLocalFree(tls, *(*TPSECURITY_DESCRIPTOR)(unsafe.Pointer(bp + 8))) /* Also frees ownerSid */
+		libc.XLocalFree(tls, *(*TPSECURITY_DESCRIPTOR)(unsafe.Pointer(bp + 8))) /* Also frees ownerSid */
 	}
 	if buf != 0 {
 		XTclpFree(tls, buf)
@@ -369241,19 +369235,19 @@ func XTclpInitPlatform(tls *libc.TLS) {
 	 * Initialize the winsock library. On Windows XP and higher this
 	 * can never fail.
 	 */
-	libws2_32.XWSAStartup(tls, wVersionRequested, bp)
+	libc.XWSAStartup(tls, wVersionRequested, bp)
 	/*
 	 * If we are in a statically linked executable, then we need to explicitly
 	 * initialize the Windows function tables here since DllMain() will not be
 	 * invoked.
 	 */
-	XTclWinInit(tls, libkernel32.XGetModuleHandleW(tls, libc.UintptrFromInt32(0)))
+	XTclWinInit(tls, libc.XGetModuleHandleW(tls, libc.UintptrFromInt32(0)))
 	/*
 	 * Fill available functions depending on windows version
 	 */
-	handle = libkernel32.XGetModuleHandleW(tls, __ccgo_ts+70492)
-	XtclWinProcs.FcancelSynchronousIo = libkernel32.XGetProcAddress(tls, handle, __ccgo_ts+70510)
-	XtclWinProcs.FcreateSymbolicLink = libkernel32.XGetProcAddress(tls, handle, __ccgo_ts+70530)
+	handle = libc.XGetModuleHandleW(tls, __ccgo_ts+70492)
+	XtclWinProcs.FcancelSynchronousIo = libc.XGetProcAddress(tls, handle, __ccgo_ts+70510)
+	XtclWinProcs.FcreateSymbolicLink = libc.XGetProcAddress(tls, handle, __ccgo_ts+70530)
 }
 
 /*
@@ -369383,9 +369377,9 @@ func _AppendEnvironment(tls *libc.TLS, pathPtr uintptr, lib uintptr) {
 	 * The "L" preceeding the TCL_LIBRARY string is used to tell VC++ that
 	 * this is a unicode string.
 	 */
-	if libkernel32.XGetEnvironmentVariableW(tls, __ccgo_ts+70626, bp+4, uint32(m_MAX_PATH)) == uint32(0) {
+	if libc.XGetEnvironmentVariableW(tls, __ccgo_ts+70626, bp+4, uint32(m_MAX_PATH)) == uint32(0) {
 		(*(*[780]int8)(unsafe.Pointer(bp + 524)))[0] = int8('\000')
-		libkernel32.XGetEnvironmentVariableA(tls, __ccgo_ts+70650, bp+524, uint32(m_MAX_PATH))
+		libc.XGetEnvironmentVariableA(tls, __ccgo_ts+70650, bp+524, uint32(m_MAX_PATH))
 	} else {
 		_ToUtf(tls, bp+4, bp+524)
 	}
@@ -369398,7 +369392,7 @@ func _AppendEnvironment(tls *libc.TLS, pathPtr uintptr, lib uintptr) {
 		 * The lstrcmpiA() will work even if pathv[pathc-1] is random UTF-8
 		 * chars because I know shortlib is ascii.
 		 */
-		if *(*int32)(unsafe.Pointer(bp)) > 0 && libkernel32.XlstrcmpiA(tls, shortlib, *(*uintptr)(unsafe.Pointer(*(*uintptr)(unsafe.Pointer(bp + 1520)) + uintptr(*(*int32)(unsafe.Pointer(bp))-int32(1))*8))) != 0 {
+		if *(*int32)(unsafe.Pointer(bp)) > 0 && libc.XlstrcmpiA(tls, shortlib, *(*uintptr)(unsafe.Pointer(*(*uintptr)(unsafe.Pointer(bp + 1520)) + uintptr(*(*int32)(unsafe.Pointer(bp))-int32(1))*8))) != 0 {
 			/*
 			 * TCL_LIBRARY is set but refers to a different tcl installation
 			 * than the current version. Try fiddling with the specified
@@ -369443,8 +369437,8 @@ func _InitializeDefaultLibraryDir(tls *libc.TLS, valuePtr uintptr, lengthPtr uin
 	var _ /* wName at bp+0 */ [324]TWCHAR
 	_, _, _ = end, hModule, p
 	hModule = XTclWinGetTclInstance(tls)
-	if libkernel32.XGetModuleFileNameW(tls, hModule, bp, uint32(libc.Uint64FromInt64(648)/libc.Uint64FromInt64(2))) == uint32(0) {
-		libkernel32.XGetModuleFileNameA(tls, hModule, bp+648, uint32(972))
+	if libc.XGetModuleFileNameW(tls, hModule, bp, uint32(libc.Uint64FromInt64(648)/libc.Uint64FromInt64(2))) == uint32(0) {
+		libc.XGetModuleFileNameA(tls, hModule, bp+648, uint32(972))
 	} else {
 		_ToUtf(tls, bp, bp+648)
 	}
@@ -369490,8 +369484,8 @@ func _InitializeSourceLibraryDir(tls *libc.TLS, valuePtr uintptr, lengthPtr uint
 	var _ /* wName at bp+0 */ [324]TWCHAR
 	_, _, _ = end, hModule, p
 	hModule = XTclWinGetTclInstance(tls)
-	if libkernel32.XGetModuleFileNameW(tls, hModule, bp, uint32(libc.Uint64FromInt64(648)/libc.Uint64FromInt64(2))) == uint32(0) {
-		libkernel32.XGetModuleFileNameA(tls, hModule, bp+648, uint32(972))
+	if libc.XGetModuleFileNameW(tls, hModule, bp, uint32(libc.Uint64FromInt64(648)/libc.Uint64FromInt64(2))) == uint32(0) {
+		libc.XGetModuleFileNameA(tls, hModule, bp+648, uint32(972))
 	} else {
 		_ToUtf(tls, bp, bp+648)
 	}
@@ -369576,13 +369570,13 @@ func XTcl_GetEncodingNameFromEnvironment(tls *libc.TLS, bufPtr uintptr) (r uintp
 	defer tls.Free(16)
 	var acp TUINT
 	_ = acp
-	acp = libkernel32.XGetACP(tls)
+	acp = libc.XGetACP(tls)
 	XTcl_DStringInit(tls, bufPtr)
 	if acp == uint32(m_CP_UTF8) {
 		XTcl_DStringAppend(tls, bufPtr, __ccgo_ts+25859, int32(5))
 	} else {
 		XTcl_DStringSetLength(tls, bufPtr, libc.Int32FromInt32(2)+libc.Int32FromInt32(m_TCL_INTEGER_SPACE))
-		libuser32.XwsprintfA(tls, (*TTcl_DString)(unsafe.Pointer(bufPtr)).Fstring1, __ccgo_ts+68963, libc.VaList(bp+8, libkernel32.XGetACP(tls)))
+		libc.XwsprintfA(tls, (*TTcl_DString)(unsafe.Pointer(bufPtr)).Fstring1, __ccgo_ts+68963, libc.VaList(bp+8, libc.XGetACP(tls)))
 		XTcl_DStringSetLength(tls, bufPtr, int32(libc.Xstrlen(tls, (*TTcl_DString)(unsafe.Pointer(bufPtr)).Fstring1)))
 	}
 	return (*TTcl_DString)(unsafe.Pointer(bufPtr)).Fstring1
@@ -369597,7 +369591,7 @@ func XTclpGetUserName(tls *libc.TLS, bufferPtr uintptr) (r uintptr) {
 	XTcl_DStringInit(tls, bufferPtr)
 	if XTclGetEnv(tls, __ccgo_ts+70673, bufferPtr) == libc.UintptrFromInt32(0) {
 		*(*TDWORD)(unsafe.Pointer(bp + 516)) = uint32(m_UNLEN)
-		if !(libadvapi32.XGetUserNameW(tls, bp, bp+516) != 0) {
+		if !(libc.XGetUserNameW(tls, bp, bp+516) != 0) {
 			return libc.UintptrFromInt32(0)
 		}
 		*(*TDWORD)(unsafe.Pointer(bp + 516))--
@@ -369638,21 +369632,21 @@ func XTclpSetVariables(tls *libc.TLS, interp uintptr) {
 	_, _, _, _ = getversion, handle, ptr, v1
 	XTcl_SetVar2Ex(tls, interp, __ccgo_ts+36510, libc.UintptrFromInt32(0), XTclGetProcessGlobalValue(tls, uintptr(unsafe.Pointer(&_defaultLibraryDir))), int32(m_TCL_GLOBAL_ONLY))
 	if !(_osInfoInitialized != 0) {
-		handle = libkernel32.XGetModuleHandleW(tls, __ccgo_ts+70682)
-		getversion = libkernel32.XGetProcAddress(tls, handle, __ccgo_ts+70694)
+		handle = libc.XGetModuleHandleW(tls, __ccgo_ts+70682)
+		getversion = libc.XGetProcAddress(tls, handle, __ccgo_ts+70694)
 		_osInfo.FdwOSVersionInfoSize = uint32(276)
 		if !(getversion != 0) || (*(*func(*libc.TLS, uintptr) int32)(unsafe.Pointer(&struct{ uintptr }{getversion})))(tls, uintptr(unsafe.Pointer(&_osInfo))) != 0 {
-			libkernel32.XGetVersionExW(tls, uintptr(unsafe.Pointer(&_osInfo)))
+			libc.XGetVersionExW(tls, uintptr(unsafe.Pointer(&_osInfo)))
 		}
 		_osInfoInitialized = int32(1)
 	}
-	libkernel32.XGetSystemInfo(tls, bp+48)
+	libc.XGetSystemInfo(tls, bp+48)
 	/*
 	 * Define the tcl_platform array.
 	 */
 	XTcl_SetVar2(tls, interp, __ccgo_ts+6418, __ccgo_ts+39163, __ccgo_ts+70708, int32(m_TCL_GLOBAL_ONLY))
 	XTcl_SetVar2(tls, interp, __ccgo_ts+6418, __ccgo_ts+36484, __ccgo_ts+70716, int32(m_TCL_GLOBAL_ONLY))
-	libuser32.XwsprintfA(tls, bp, __ccgo_ts+70727, libc.VaList(bp+320, _osInfo.FdwMajorVersion, _osInfo.FdwMinorVersion))
+	libc.XwsprintfA(tls, bp, __ccgo_ts+70727, libc.VaList(bp+320, _osInfo.FdwMajorVersion, _osInfo.FdwMinorVersion))
 	XTcl_SetVar2(tls, interp, __ccgo_ts+6418, __ccgo_ts+36487, bp, int32(m_TCL_GLOBAL_ONLY))
 	if int32((*(*TOemId)(unsafe.Pointer(&*(*struct {
 		FoemId [0]TOemId
@@ -369854,7 +369848,7 @@ func XTclpDlopen(tls *libc.TLS, interp uintptr, pathPtr uintptr, loadHandle uint
 	 */
 	nativeName = XTcl_FSGetNativePath(tls, pathPtr)
 	if nativeName != libc.UintptrFromInt32(0) {
-		hInstance = libkernel32.XLoadLibraryExW(tls, nativeName, libc.UintptrFromInt32(0), uint32(m_LOAD_WITH_ALTERED_SEARCH_PATH1))
+		hInstance = libc.XLoadLibraryExW(tls, nativeName, libc.UintptrFromInt32(0), uint32(m_LOAD_WITH_ALTERED_SEARCH_PATH1))
 	}
 	if hInstance == libc.UintptrFromInt32(0) {
 		/*
@@ -369864,11 +369858,11 @@ func XTclpDlopen(tls *libc.TLS, interp uintptr, pathPtr uintptr, loadHandle uint
 		if nativeName == libc.UintptrFromInt32(0) {
 			v1 = uint32(126)
 		} else {
-			v1 = libkernel32.XGetLastError(tls)
+			v1 = libc.XGetLastError(tls)
 		}
 		firstError = v1
 		nativeName = XTcl_WinUtfToTChar(tls, XTcl_GetString(tls, pathPtr), -int32(1), bp)
-		hInstance = libkernel32.XLoadLibraryExW(tls, nativeName, libc.UintptrFromInt32(0), uint32(m_LOAD_WITH_ALTERED_SEARCH_PATH1))
+		hInstance = libc.XLoadLibraryExW(tls, nativeName, libc.UintptrFromInt32(0), uint32(m_LOAD_WITH_ALTERED_SEARCH_PATH1))
 		XTcl_DStringFree(tls, bp)
 	}
 	if hInstance == libc.UintptrFromInt32(0) {
@@ -369878,7 +369872,7 @@ func XTclpDlopen(tls *libc.TLS, interp uintptr, pathPtr uintptr, loadHandle uint
 		 * first error for reporting purposes.
 		 */
 		if firstError == uint32(126) || firstError == uint32(1157) {
-			lastError = libkernel32.XGetLastError(tls)
+			lastError = libc.XGetLastError(tls)
 		} else {
 			lastError = firstError
 		}
@@ -369990,12 +369984,12 @@ func _FindSymbol(tls *libc.TLS, interp uintptr, loadHandle TTcl_LoadHandle, symb
 	 * For each symbol, check for both Symbol and _Symbol, since Borland
 	 * generates C symbols with a leading '_' by default.
 	 */
-	proc = libkernel32.XGetProcAddress(tls, hInstance, symbol)
+	proc = libc.XGetProcAddress(tls, hInstance, symbol)
 	if proc == libc.UintptrFromInt32(0) {
 		XTcl_DStringInit(tls, bp)
 		XTcl_DStringAppend(tls, bp, __ccgo_ts+71238, int32(libc.Uint64FromInt64(2)-libc.Uint64FromInt32(1)))
 		sym2 = XTcl_DStringAppend(tls, bp, symbol, -int32(1))
-		proc = libkernel32.XGetProcAddress(tls, hInstance, sym2)
+		proc = libc.XGetProcAddress(tls, hInstance, sym2)
 		XTcl_DStringFree(tls, bp)
 	}
 	if proc == libc.UintptrFromInt32(0) && interp != libc.UintptrFromInt32(0) {
@@ -370030,7 +370024,7 @@ func _UnloadFile(tls *libc.TLS, loadHandle TTcl_LoadHandle) {
 	var hInstance THINSTANCE
 	_ = hInstance
 	hInstance = (*TTcl_LoadHandle_)(unsafe.Pointer(loadHandle)).FclientData
-	libkernel32.XFreeLibrary(tls, hInstance)
+	libc.XFreeLibrary(tls, hInstance)
 	XTclpFree(tls, loadHandle)
 }
 
@@ -370146,22 +370140,22 @@ func _InitDLLDirectoryName(tls *libc.TLS) (r int32) {
 	 * trying with new names until an attempt to create the directory
 	 * succeeds)
 	 */
-	nameLen = uint64(libkernel32.XGetTempPathW(tls, uint32(m_MAX_PATH), bp))
+	nameLen = uint64(libc.XGetTempPathW(tls, uint32(m_MAX_PATH), bp))
 	if nameLen >= uint64(libc.Int32FromInt32(m_MAX_PATH)-libc.Int32FromInt32(12)) {
 		XTcl_SetErrno(tls, int32(m_ENAMETOOLONG))
 		return int32(m_TCL_ERROR)
 	}
 	libc.Xwcscpy(tls, bp+uintptr(nameLen)*2, __ccgo_ts+71316)
 	nameLen += uint64(11)
-	id = libkernel32.XGetCurrentProcessId(tls)
+	id = libc.XGetCurrentProcessId(tls)
 	lastError = uint32(183)
 	i = 0
 	for {
 		if !(i < int32(256)) {
 			break
 		}
-		libuser32.XwsprintfW(tls, bp+uintptr(nameLen)*2-uintptr(8)*2, __ccgo_ts+71340, libc.VaList(bp+528, id))
-		if libkernel32.XCreateDirectoryW(tls, bp, libc.UintptrFromInt32(0)) != 0 {
+		libc.XwsprintfW(tls, bp+uintptr(nameLen)*2-uintptr(8)*2, __ccgo_ts+71340, libc.VaList(bp+528, id))
+		if libc.XCreateDirectoryW(tls, bp, libc.UintptrFromInt32(0)) != 0 {
 			/*
 			 * Issue: we don't schedule this directory for deletion by anyone.
 			 * Can we ask the OS to do this for us?  There appears to be
@@ -370170,7 +370164,7 @@ func _InitDLLDirectoryName(tls *libc.TLS) (r int32) {
 			 */
 			goto copyToGlobalBuffer
 		}
-		lastError = libkernel32.XGetLastError(tls)
+		lastError = libc.XGetLastError(tls)
 		if lastError != uint32(183) {
 			break
 		}
@@ -370295,17 +370289,17 @@ func XTcl_InitNotifier(tls *libc.TLS) (r TClientData) {
 			(*(*TWNDCLASSW)(unsafe.Pointer(bp))).FlpfnWndProc = __ccgo_fp(_NotifierProc)
 			(*(*TWNDCLASSW)(unsafe.Pointer(bp))).FhIcon = libc.UintptrFromInt32(0)
 			(*(*TWNDCLASSW)(unsafe.Pointer(bp))).FhCursor = libc.UintptrFromInt32(0)
-			if !(libuser32.XRegisterClassW(tls, bp) != 0) {
+			if !(libc.XRegisterClassW(tls, bp) != 0) {
 				XTcl_Panic(tls, __ccgo_ts+71350, 0)
 			}
 		}
 		_notifierCount++
 		(*TThreadSpecificData16)(unsafe.Pointer(tsdPtr)).Fpending = 0
 		(*TThreadSpecificData16)(unsafe.Pointer(tsdPtr)).FtimerActive = 0
-		libkernel32.XInitializeCriticalSection(tls, tsdPtr)
+		libc.XInitializeCriticalSection(tls, tsdPtr)
 		(*TThreadSpecificData16)(unsafe.Pointer(tsdPtr)).Fhwnd = libc.UintptrFromInt32(0)
-		(*TThreadSpecificData16)(unsafe.Pointer(tsdPtr)).Fthread = libkernel32.XGetCurrentThreadId(tls)
-		(*TThreadSpecificData16)(unsafe.Pointer(tsdPtr)).Fevent = libkernel32.XCreateEventW(tls, libc.UintptrFromInt32(0), int32(m_TRUE), m_FALSE, libc.UintptrFromInt32(0))
+		(*TThreadSpecificData16)(unsafe.Pointer(tsdPtr)).Fthread = libc.XGetCurrentThreadId(tls)
+		(*TThreadSpecificData16)(unsafe.Pointer(tsdPtr)).Fevent = libc.XCreateEventW(tls, libc.UintptrFromInt32(0), int32(m_TRUE), m_FALSE, libc.UintptrFromInt32(0))
 		return tsdPtr
 	}
 	return r
@@ -370350,14 +370344,14 @@ func XTcl_FinalizeNotifier(tls *libc.TLS, clientData TClientData) {
 		if tsdPtr == libc.UintptrFromInt32(0) {
 			return
 		}
-		libkernel32.XDeleteCriticalSection(tls, tsdPtr)
-		libkernel32.XCloseHandle(tls, (*TThreadSpecificData16)(unsafe.Pointer(tsdPtr)).Fevent)
+		libc.XDeleteCriticalSection(tls, tsdPtr)
+		libc.XCloseHandle(tls, (*TThreadSpecificData16)(unsafe.Pointer(tsdPtr)).Fevent)
 		/*
 		 * Clean up the timer and messaging window for this thread.
 		 */
 		if (*TThreadSpecificData16)(unsafe.Pointer(tsdPtr)).Fhwnd != 0 {
-			libuser32.XKillTimer(tls, (*TThreadSpecificData16)(unsafe.Pointer(tsdPtr)).Fhwnd, uint64(m_INTERVAL_TIMER))
-			libuser32.XDestroyWindow(tls, (*TThreadSpecificData16)(unsafe.Pointer(tsdPtr)).Fhwnd)
+			libc.XKillTimer(tls, (*TThreadSpecificData16)(unsafe.Pointer(tsdPtr)).Fhwnd, uint64(m_INTERVAL_TIMER))
+			libc.XDestroyWindow(tls, (*TThreadSpecificData16)(unsafe.Pointer(tsdPtr)).Fhwnd)
 		}
 		/*
 		 * If this is the last thread to use the notifier, unregister the
@@ -370365,7 +370359,7 @@ func XTcl_FinalizeNotifier(tls *libc.TLS, clientData TClientData) {
 		 */
 		_notifierCount--
 		if _notifierCount == 0 {
-			libuser32.XUnregisterClassW(tls, uintptr(unsafe.Pointer(&_classname)), XTclWinGetTclInstance(tls))
+			libc.XUnregisterClassW(tls, uintptr(unsafe.Pointer(&_classname)), XTclWinGetTclInstance(tls))
 		}
 	}
 }
@@ -370410,14 +370404,14 @@ func XTcl_AlertNotifier(tls *libc.TLS, clientData TClientData) {
 			/*
 			 * We do need to lock around access to the pending flag.
 			 */
-			libkernel32.XEnterCriticalSection(tls, tsdPtr)
+			libc.XEnterCriticalSection(tls, tsdPtr)
 			if !((*TThreadSpecificData16)(unsafe.Pointer(tsdPtr)).Fpending != 0) {
-				libuser32.XPostMessageW(tls, (*TThreadSpecificData16)(unsafe.Pointer(tsdPtr)).Fhwnd, uint32(m_WM_USER1), uint64(0), 0)
+				libc.XPostMessageW(tls, (*TThreadSpecificData16)(unsafe.Pointer(tsdPtr)).Fhwnd, uint32(m_WM_USER1), uint64(0), 0)
 			}
 			(*TThreadSpecificData16)(unsafe.Pointer(tsdPtr)).Fpending = int32(1)
-			libkernel32.XLeaveCriticalSection(tls, tsdPtr)
+			libc.XLeaveCriticalSection(tls, tsdPtr)
 		} else {
-			libkernel32.XSetEvent(tls, (*TThreadSpecificData16)(unsafe.Pointer(tsdPtr)).Fevent)
+			libc.XSetEvent(tls, (*TThreadSpecificData16)(unsafe.Pointer(tsdPtr)).Fevent)
 		}
 	}
 }
@@ -370473,10 +370467,10 @@ func XTcl_SetTimer(tls *libc.TLS, timePtr uintptr) {
 		(*TThreadSpecificData16)(unsafe.Pointer(tsdPtr)).Ftimeout = int32(int32(timeout))
 		if timeout != uint32(0) {
 			(*TThreadSpecificData16)(unsafe.Pointer(tsdPtr)).FtimerActive = int32(1)
-			libuser32.XSetTimer(tls, (*TThreadSpecificData16)(unsafe.Pointer(tsdPtr)).Fhwnd, uint64(m_INTERVAL_TIMER), uint32(uint32((*TThreadSpecificData16)(unsafe.Pointer(tsdPtr)).Ftimeout)), libc.UintptrFromInt32(0))
+			libc.XSetTimer(tls, (*TThreadSpecificData16)(unsafe.Pointer(tsdPtr)).Fhwnd, uint64(m_INTERVAL_TIMER), uint32(uint32((*TThreadSpecificData16)(unsafe.Pointer(tsdPtr)).Ftimeout)), libc.UintptrFromInt32(0))
 		} else {
 			(*TThreadSpecificData16)(unsafe.Pointer(tsdPtr)).FtimerActive = 0
-			libuser32.XKillTimer(tls, (*TThreadSpecificData16)(unsafe.Pointer(tsdPtr)).Fhwnd, uint64(m_INTERVAL_TIMER))
+			libc.XKillTimer(tls, (*TThreadSpecificData16)(unsafe.Pointer(tsdPtr)).Fhwnd, uint64(m_INTERVAL_TIMER))
 		}
 	}
 }
@@ -370518,7 +370512,7 @@ func XTcl_ServiceModeHook(tls *libc.TLS, mode int32) {
 		 * leave it around.
 		 */
 		if mode == int32(m_TCL_SERVICE_ALL) && !((*TThreadSpecificData16)(unsafe.Pointer(tsdPtr)).Fhwnd != 0) {
-			(*TThreadSpecificData16)(unsafe.Pointer(tsdPtr)).Fhwnd = libuser32.XCreateWindowExW(tls, libc.Uint32FromInt32(0), uintptr(unsafe.Pointer(&_classname)), uintptr(unsafe.Pointer(&_classname)), uint32(0x00000000), 0, 0, 0, 0, libc.UintptrFromInt32(0), libc.UintptrFromInt32(0), XTclWinGetTclInstance(tls), libc.UintptrFromInt32(0))
+			(*TThreadSpecificData16)(unsafe.Pointer(tsdPtr)).Fhwnd = libc.XCreateWindowExW(tls, libc.Uint32FromInt32(0), uintptr(unsafe.Pointer(&_classname)), uintptr(unsafe.Pointer(&_classname)), uint32(0x00000000), 0, 0, 0, 0, libc.UintptrFromInt32(0), libc.UintptrFromInt32(0), XTclWinGetTclInstance(tls), libc.UintptrFromInt32(0))
 			/*
 			 * Send an initial message to the window to ensure that we wake up
 			 * the notifier once we get into the modal loop. This will force
@@ -370554,12 +370548,12 @@ func _NotifierProc(tls *libc.TLS, hwnd THWND, message TUINT, wParam TWPARAM, lPa
 	_ = tsdPtr
 	tsdPtr = XTcl_GetThreadData(tls, uintptr(unsafe.Pointer(&_dataKey14)), int32(80))
 	if message == uint32(m_WM_USER1) {
-		libkernel32.XEnterCriticalSection(tls, tsdPtr)
+		libc.XEnterCriticalSection(tls, tsdPtr)
 		(*TThreadSpecificData16)(unsafe.Pointer(tsdPtr)).Fpending = 0
-		libkernel32.XLeaveCriticalSection(tls, tsdPtr)
+		libc.XLeaveCriticalSection(tls, tsdPtr)
 	} else {
 		if message != uint32(m_WM_TIMER1) {
-			return libuser32.XDefWindowProcW(tls, hwnd, message, wParam, lParam)
+			return libc.XDefWindowProcW(tls, hwnd, message, wParam, lParam)
 		}
 	}
 	/*
@@ -370619,7 +370613,7 @@ func XTcl_WaitForEvent(tls *libc.TLS, timePtr uintptr) (r int32) {
 		 * because MsgWaitForMultipleObjects will not wake up if there are
 		 * events currently sitting in the queue.
 		 */
-		if !(libuser32.XPeekMessageW(tls, bp, libc.UintptrFromInt32(0), uint32(0), uint32(0), uint32(m_PM_NOREMOVE1)) != 0) {
+		if !(libc.XPeekMessageW(tls, bp, libc.UintptrFromInt32(0), uint32(0), uint32(0), uint32(m_PM_NOREMOVE1)) != 0) {
 			/*
 			 * Wait for something to happen (a signal from another thread, a
 			 * message, or timeout) or loop servicing asynchronous procedure
@@ -370628,7 +370622,7 @@ func XTcl_WaitForEvent(tls *libc.TLS, timePtr uintptr) (r int32) {
 			goto again
 		again:
 			;
-			result = libuser32.XMsgWaitForMultipleObjectsEx(tls, uint32(1), tsdPtr+48, timeout, uint32(libc.Int32FromInt32(m_QS_MOUSEMOVE1)|libc.Int32FromInt32(m_QS_MOUSEBUTTON1)|libc.Int32FromInt32(m_QS_KEY1)|libc.Int32FromInt32(m_QS_RAWINPUT1)|libc.Int32FromInt32(m_QS_POSTMESSAGE1)|libc.Int32FromInt32(m_QS_TIMER1)|libc.Int32FromInt32(m_QS_PAINT1)|libc.Int32FromInt32(m_QS_HOTKEY1)|libc.Int32FromInt32(m_QS_SENDMESSAGE1)), uint32(m_MWMO_ALERTABLE1))
+			result = libc.XMsgWaitForMultipleObjectsEx(tls, uint32(1), tsdPtr+48, timeout, uint32(libc.Int32FromInt32(m_QS_MOUSEMOVE1)|libc.Int32FromInt32(m_QS_MOUSEBUTTON1)|libc.Int32FromInt32(m_QS_KEY1)|libc.Int32FromInt32(m_QS_RAWINPUT1)|libc.Int32FromInt32(m_QS_POSTMESSAGE1)|libc.Int32FromInt32(m_QS_TIMER1)|libc.Int32FromInt32(m_QS_PAINT1)|libc.Int32FromInt32(m_QS_HOTKEY1)|libc.Int32FromInt32(m_QS_SENDMESSAGE1)), uint32(m_MWMO_ALERTABLE1))
 			if result == libc.Uint32FromInt32(0x000000C0) {
 				goto again
 			} else {
@@ -370641,17 +370635,17 @@ func XTcl_WaitForEvent(tls *libc.TLS, timePtr uintptr) (r int32) {
 		/*
 		 * Check to see if there are any messages to process.
 		 */
-		if libuser32.XPeekMessageW(tls, bp, libc.UintptrFromInt32(0), uint32(0), uint32(0), uint32(m_PM_NOREMOVE1)) != 0 {
+		if libc.XPeekMessageW(tls, bp, libc.UintptrFromInt32(0), uint32(0), uint32(0), uint32(m_PM_NOREMOVE1)) != 0 {
 			/*
 			 * Retrieve and dispatch the first message.
 			 */
-			result = uint32(libuser32.XGetMessageW(tls, bp, libc.UintptrFromInt32(0), uint32(0), uint32(0)))
+			result = uint32(libc.XGetMessageW(tls, bp, libc.UintptrFromInt32(0), uint32(0), uint32(0)))
 			if result == uint32(0) {
 				/*
 				 * We received a request to exit this thread (WM_QUIT), so
 				 * propagate the quit message and start unwinding.
 				 */
-				libuser32.XPostQuitMessage(tls, int32((*(*TMSG)(unsafe.Pointer(bp))).FwParam))
+				libc.XPostQuitMessage(tls, int32((*(*TMSG)(unsafe.Pointer(bp))).FwParam))
 				status = -int32(1)
 			} else {
 				if result == uint32(-libc.Int32FromInt32(1)) {
@@ -370661,8 +370655,8 @@ func XTcl_WaitForEvent(tls *libc.TLS, timePtr uintptr) (r int32) {
 					 */
 					status = -int32(1)
 				} else {
-					libuser32.XTranslateMessage(tls, bp)
-					libuser32.XDispatchMessageW(tls, bp)
+					libc.XTranslateMessage(tls, bp)
+					libc.XDispatchMessageW(tls, bp)
 					status = int32(1)
 				}
 			}
@@ -370672,7 +370666,7 @@ func XTcl_WaitForEvent(tls *libc.TLS, timePtr uintptr) (r int32) {
 		goto end
 	end:
 		;
-		libkernel32.XResetEvent(tls, (*TThreadSpecificData16)(unsafe.Pointer(tsdPtr)).Fevent)
+		libc.XResetEvent(tls, (*TThreadSpecificData16)(unsafe.Pointer(tsdPtr)).Fevent)
 		return status
 	}
 	return r
@@ -370717,7 +370711,7 @@ func XTcl_Sleep(tls *libc.TLS, ms int32) {
 	(*(*func(*libc.TLS, uintptr, TClientData))(unsafe.Pointer(&struct{ uintptr }{XtclScaleTimeProcPtr})))(tls, bp+8, XtclTimeClientData)
 	sleepTime = uint32((*(*TTcl_Time)(unsafe.Pointer(bp + 8))).Fsec*int32(1000) + (*(*TTcl_Time)(unsafe.Pointer(bp + 8))).Fusec/int32(1000))
 	for {
-		libkernel32.XSleepEx(tls, sleepTime, int32(m_TRUE))
+		libc.XSleepEx(tls, sleepTime, int32(m_TRUE))
 		XTcl_GetTime(tls, bp)
 		if (*(*TTcl_Time)(unsafe.Pointer(bp))).Fsec > desired.Fsec {
 			break
@@ -371003,7 +370997,7 @@ func _PipeSetupProc(tls *libc.TLS, data TClientData, flags int32) {
 			break
 		}
 		if (*TPipeInfo)(unsafe.Pointer(infoPtr)).FwatchMask&(libc.Int32FromInt32(1)<<libc.Int32FromInt32(2)) != 0 {
-			if libkernel32.XWaitForSingleObject(tls, (*TPipeInfo)(unsafe.Pointer(infoPtr)).Fwritable, uint32(0)) != uint32(258) {
+			if libc.XWaitForSingleObject(tls, (*TPipeInfo)(unsafe.Pointer(infoPtr)).Fwritable, uint32(0)) != uint32(258) {
 				block = 0
 			}
 		}
@@ -371063,7 +371057,7 @@ func _PipeCheckProc(tls *libc.TLS, data TClientData, flags int32) {
 		 * Queue an event if the pipe is signaled for reading or writing.
 		 */
 		needEvent = 0
-		if (*TPipeInfo)(unsafe.Pointer(infoPtr)).FwatchMask&(libc.Int32FromInt32(1)<<libc.Int32FromInt32(2)) != 0 && libkernel32.XWaitForSingleObject(tls, (*TPipeInfo)(unsafe.Pointer(infoPtr)).Fwritable, uint32(0)) != uint32(258) {
+		if (*TPipeInfo)(unsafe.Pointer(infoPtr)).FwatchMask&(libc.Int32FromInt32(1)<<libc.Int32FromInt32(2)) != 0 && libc.XWaitForSingleObject(tls, (*TPipeInfo)(unsafe.Pointer(infoPtr)).Fwritable, uint32(0)) != uint32(258) {
 			needEvent = int32(1)
 		}
 		if (*TPipeInfo)(unsafe.Pointer(infoPtr)).FwatchMask&(libc.Int32FromInt32(1)<<libc.Int32FromInt32(1)) != 0 && _WaitForRead1(tls, infoPtr, 0) >= 0 {
@@ -371136,14 +371130,14 @@ func _TempFileName(tls *libc.TLS, name uintptr) (r int32) {
 	var prefix uintptr
 	_ = prefix
 	prefix = __ccgo_ts + 71394
-	if libkernel32.XGetTempPathW(tls, uint32(m_MAX_PATH), name) != uint32(0) {
-		if libkernel32.XGetTempFileNameW(tls, name, prefix, uint32(0), name) != uint32(0) {
+	if libc.XGetTempPathW(tls, uint32(m_MAX_PATH), name) != uint32(0) {
+		if libc.XGetTempFileNameW(tls, name, prefix, uint32(0), name) != uint32(0) {
 			return int32(1)
 		}
 	}
 	*(*TWCHAR)(unsafe.Pointer(name)) = uint16('.')
 	*(*TWCHAR)(unsafe.Pointer(name + 1*2)) = uint16('\000')
-	return int32(libkernel32.XGetTempFileNameW(tls, name, prefix, uint32(0), name))
+	return int32(libc.XGetTempFileNameW(tls, name, prefix, uint32(0), name))
 }
 
 /*
@@ -371240,7 +371234,7 @@ func XTclpOpenFile(tls *libc.TLS, path uintptr, mode int32) (r TTclFile) {
 	 */
 	flags = uint32(0)
 	if !(mode&libc.Int32FromInt32(m__O_CREAT7) != 0) {
-		flags = libkernel32.XGetFileAttributesW(tls, nativePath)
+		flags = libc.XGetFileAttributesW(tls, nativePath)
 		if flags == uint32(0xFFFFFFFF) {
 			flags = uint32(0)
 		}
@@ -371252,10 +371246,10 @@ func XTclpOpenFile(tls *libc.TLS, path uintptr, mode int32) (r TTclFile) {
 	/*
 	 * Now we get to create the file.
 	 */
-	handle = libkernel32.XCreateFileW(tls, nativePath, accessMode, shareMode, libc.UintptrFromInt32(0), createMode, flags, libc.UintptrFromInt32(0))
+	handle = libc.XCreateFileW(tls, nativePath, accessMode, shareMode, libc.UintptrFromInt32(0), createMode, flags, libc.UintptrFromInt32(0))
 	XTcl_DStringFree(tls, bp)
 	if handle == uintptr(int64(-libc.Int32FromInt32(1))) {
-		err = libkernel32.XGetLastError(tls)
+		err = libc.XGetLastError(tls)
 		if err&uint32(0xFFFF) == uint32(110) {
 			if mode&int32(m__O_CREAT7) != 0 {
 				v1 = int32(80)
@@ -371271,7 +371265,7 @@ func XTclpOpenFile(tls *libc.TLS, path uintptr, mode int32) (r TTclFile) {
 	 * Seek to the end of file if we are writing.
 	 */
 	if mode&(libc.Int32FromInt32(m__O_WRONLY9)|libc.Int32FromInt32(m__O_APPEND7)) != 0 {
-		libkernel32.XSetFilePointer(tls, handle, 0, libc.UintptrFromInt32(0), uint32(m_FILE_END))
+		libc.XSetFilePointer(tls, handle, 0, libc.UintptrFromInt32(0), uint32(m_FILE_END))
 	}
 	return XTclWinMakeFile(tls, handle)
 }
@@ -371308,7 +371302,7 @@ func XTclpCreateTempFile(tls *libc.TLS, contents uintptr) (r TTclFile) {
 	if _TempFileName(tls, bp) == 0 {
 		return libc.UintptrFromInt32(0)
 	}
-	handle = libkernel32.XCreateFileW(tls, bp, libc.Uint32FromUint32(0x80000000)|uint32(libc.Int32FromInt32(0x40000000)), uint32(0), libc.UintptrFromInt32(0), uint32(m_CREATE_ALWAYS), uint32(libc.Int32FromInt32(m_FILE_ATTRIBUTE_TEMPORARY1)|libc.Int32FromInt32(m_FILE_FLAG_DELETE_ON_CLOSE1)), libc.UintptrFromInt32(0))
+	handle = libc.XCreateFileW(tls, bp, libc.Uint32FromUint32(0x80000000)|uint32(libc.Int32FromInt32(0x40000000)), uint32(0), libc.UintptrFromInt32(0), uint32(m_CREATE_ALWAYS), uint32(libc.Int32FromInt32(m_FILE_ATTRIBUTE_TEMPORARY1)|libc.Int32FromInt32(m_FILE_FLAG_DELETE_ON_CLOSE1)), libc.UintptrFromInt32(0))
 	if handle == uintptr(int64(-libc.Int32FromInt32(1))) {
 		goto error
 	}
@@ -371329,11 +371323,11 @@ func XTclpCreateTempFile(tls *libc.TLS, contents uintptr) (r TTclFile) {
 			if int32(*(*int8)(unsafe.Pointer(p))) == int32('\n') {
 				length = uint32(int64(int64(p)) - int64(int64(native)))
 				if length > uint32(0) {
-					if !(libkernel32.XWriteFile(tls, handle, native, length, bp+736, libc.UintptrFromInt32(0)) != 0) {
+					if !(libc.XWriteFile(tls, handle, native, length, bp+736, libc.UintptrFromInt32(0)) != 0) {
 						goto error
 					}
 				}
-				if !(libkernel32.XWriteFile(tls, handle, __ccgo_ts+71402, uint32(2), bp+736, libc.UintptrFromInt32(0)) != 0) {
+				if !(libc.XWriteFile(tls, handle, __ccgo_ts+71402, uint32(2), bp+736, libc.UintptrFromInt32(0)) != 0) {
 					goto error
 				}
 				native = p + uintptr(1)
@@ -371346,12 +371340,12 @@ func XTclpCreateTempFile(tls *libc.TLS, contents uintptr) (r TTclFile) {
 		}
 		length = uint32(int64(int64(p)) - int64(int64(native)))
 		if length > uint32(0) {
-			if !(libkernel32.XWriteFile(tls, handle, native, length, bp+736, libc.UintptrFromInt32(0)) != 0) {
+			if !(libc.XWriteFile(tls, handle, native, length, bp+736, libc.UintptrFromInt32(0)) != 0) {
 				goto error
 			}
 		}
 		XTcl_DStringFree(tls, bp+520)
-		if libkernel32.XSetFilePointer(tls, handle, 0, libc.UintptrFromInt32(0), uint32(m_FILE_BEGIN)) == uint32(0xFFFFFFFF) {
+		if libc.XSetFilePointer(tls, handle, 0, libc.UintptrFromInt32(0), uint32(m_FILE_BEGIN)) == uint32(0xFFFFFFFF) {
 			goto error
 		}
 	}
@@ -371365,9 +371359,9 @@ error:
 	if contents != libc.UintptrFromInt32(0) {
 		XTcl_DStringFree(tls, bp+520)
 	}
-	XTclWinConvertError(tls, libkernel32.XGetLastError(tls))
-	libkernel32.XCloseHandle(tls, handle)
-	libkernel32.XDeleteFileW(tls, bp)
+	XTclWinConvertError(tls, libc.XGetLastError(tls))
+	libc.XCloseHandle(tls, handle)
+	libc.XDeleteFileW(tls, bp)
 	return libc.UintptrFromInt32(0)
 }
 
@@ -371419,12 +371413,12 @@ func XTclpCreatePipe(tls *libc.TLS, readPipe uintptr, writePipe uintptr) (r int3
 	 * side of pipe. */
 	var _ /* readHandle at bp+0 */ THANDLE
 	var _ /* writeHandle at bp+8 */ THANDLE
-	if libkernel32.XCreatePipe(tls, bp, bp+8, libc.UintptrFromInt32(0), uint32(0)) != 0 {
+	if libc.XCreatePipe(tls, bp, bp+8, libc.UintptrFromInt32(0), uint32(0)) != 0 {
 		*(*TTclFile)(unsafe.Pointer(readPipe)) = XTclWinMakeFile(tls, *(*THANDLE)(unsafe.Pointer(bp)))
 		*(*TTclFile)(unsafe.Pointer(writePipe)) = XTclWinMakeFile(tls, *(*THANDLE)(unsafe.Pointer(bp + 8)))
 		return int32(1)
 	}
-	XTclWinConvertError(tls, libkernel32.XGetLastError(tls))
+	XTclWinConvertError(tls, libc.XGetLastError(tls))
 	return 0
 }
 
@@ -371457,9 +371451,9 @@ func XTclpCloseFile(tls *libc.TLS, file TTclFile) (r int32) {
 		 * during the thread exit process. Otherwise, one thread may kill the
 		 * stdio of another.
 		 */
-		if !(XTclInThreadExit(tls) != 0) || libkernel32.XGetStdHandle(tls, uint32(-libc.Int32FromInt32(10))) != (*TWinFile)(unsafe.Pointer(filePtr)).Fhandle && libkernel32.XGetStdHandle(tls, uint32(-libc.Int32FromInt32(11))) != (*TWinFile)(unsafe.Pointer(filePtr)).Fhandle && libkernel32.XGetStdHandle(tls, uint32(-libc.Int32FromInt32(12))) != (*TWinFile)(unsafe.Pointer(filePtr)).Fhandle {
-			if (*TWinFile)(unsafe.Pointer(filePtr)).Fhandle != libc.UintptrFromInt32(0) && libkernel32.XCloseHandle(tls, (*TWinFile)(unsafe.Pointer(filePtr)).Fhandle) == m_FALSE {
-				XTclWinConvertError(tls, libkernel32.XGetLastError(tls))
+		if !(XTclInThreadExit(tls) != 0) || libc.XGetStdHandle(tls, uint32(-libc.Int32FromInt32(10))) != (*TWinFile)(unsafe.Pointer(filePtr)).Fhandle && libc.XGetStdHandle(tls, uint32(-libc.Int32FromInt32(11))) != (*TWinFile)(unsafe.Pointer(filePtr)).Fhandle && libc.XGetStdHandle(tls, uint32(-libc.Int32FromInt32(12))) != (*TWinFile)(unsafe.Pointer(filePtr)).Fhandle {
+			if (*TWinFile)(unsafe.Pointer(filePtr)).Fhandle != libc.UintptrFromInt32(0) && libc.XCloseHandle(tls, (*TWinFile)(unsafe.Pointer(filePtr)).Fhandle) == m_FALSE {
+				XTclWinConvertError(tls, libc.XGetLastError(tls))
 				XTclpFree(tls, filePtr)
 				return -int32(1)
 			}
@@ -371560,7 +371554,7 @@ func XTclpCreateProcess(tls *libc.TLS, interp uintptr, argc int32, argv uintptr,
 	}
 	result = int32(m_TCL_ERROR)
 	XTcl_DStringInit(tls, bp)
-	hProcess = libkernel32.XGetCurrentProcess(tls)
+	hProcess = libc.XGetCurrentProcess(tls)
 	/*
 	 * STARTF_USESTDHANDLES must be used to pass handles to child process.
 	 * Using SetStdHandle() and/or dup2() only works when a console mode
@@ -371617,14 +371611,14 @@ func XTclpCreateProcess(tls *libc.TLS, interp uintptr, argc int32, argv uintptr,
 		 * Fortunately, the helper application detects a closed pipe as an
 		 * immediate EOF and can pass that information to the child process.
 		 */
-		if libkernel32.XCreatePipe(tls, bp+216+80, bp+368, bp+344, uint32(0)) != m_FALSE {
-			libkernel32.XCloseHandle(tls, *(*THANDLE)(unsafe.Pointer(bp + 368)))
+		if libc.XCreatePipe(tls, bp+216+80, bp+368, bp+344, uint32(0)) != m_FALSE {
+			libc.XCloseHandle(tls, *(*THANDLE)(unsafe.Pointer(bp + 368)))
 		}
 	} else {
-		libkernel32.XDuplicateHandle(tls, hProcess, inputHandle, hProcess, bp+216+80, uint32(0), int32(m_TRUE), uint32(m_DUPLICATE_SAME_ACCESS3))
+		libc.XDuplicateHandle(tls, hProcess, inputHandle, hProcess, bp+216+80, uint32(0), int32(m_TRUE), uint32(m_DUPLICATE_SAME_ACCESS3))
 	}
 	if (*(*TSTARTUPINFOW)(unsafe.Pointer(bp + 216))).FhStdInput == uintptr(int64(-libc.Int32FromInt32(1))) {
-		XTclWinConvertError(tls, libkernel32.XGetLastError(tls))
+		XTclWinConvertError(tls, libc.XGetLastError(tls))
 		XTcl_SetObjResult(tls, interp, XTcl_ObjPrintf(tls, __ccgo_ts+71441, libc.VaList(bp+1168, XTcl_PosixError(tls, interp))))
 		goto end
 	}
@@ -371642,12 +371636,12 @@ func XTclpCreateProcess(tls *libc.TLS, interp uintptr, argc int32, argv uintptr,
 		 * Fortunately, the helper application will detect a closed pipe as a
 		 * sink.
 		 */
-		(*(*TSTARTUPINFOW)(unsafe.Pointer(bp + 216))).FhStdOutput = libkernel32.XCreateFileW(tls, __ccgo_ts+71477, uint32(libc.Int32FromInt32(0x40000000)), uint32(0), bp+344, uint32(m_OPEN_ALWAYS), uint32(m_FILE_ATTRIBUTE_NORMAL5), libc.UintptrFromInt32(0))
+		(*(*TSTARTUPINFOW)(unsafe.Pointer(bp + 216))).FhStdOutput = libc.XCreateFileW(tls, __ccgo_ts+71477, uint32(libc.Int32FromInt32(0x40000000)), uint32(0), bp+344, uint32(m_OPEN_ALWAYS), uint32(m_FILE_ATTRIBUTE_NORMAL5), libc.UintptrFromInt32(0))
 	} else {
-		libkernel32.XDuplicateHandle(tls, hProcess, outputHandle, hProcess, bp+216+88, uint32(0), int32(m_TRUE), uint32(m_DUPLICATE_SAME_ACCESS3))
+		libc.XDuplicateHandle(tls, hProcess, outputHandle, hProcess, bp+216+88, uint32(0), int32(m_TRUE), uint32(m_DUPLICATE_SAME_ACCESS3))
 	}
 	if (*(*TSTARTUPINFOW)(unsafe.Pointer(bp + 216))).FhStdOutput == uintptr(int64(-libc.Int32FromInt32(1))) {
-		XTclWinConvertError(tls, libkernel32.XGetLastError(tls))
+		XTclWinConvertError(tls, libc.XGetLastError(tls))
 		XTcl_SetObjResult(tls, interp, XTcl_ObjPrintf(tls, __ccgo_ts+71487, libc.VaList(bp+1168, XTcl_PosixError(tls, interp))))
 		goto end
 	}
@@ -371656,12 +371650,12 @@ func XTclpCreateProcess(tls *libc.TLS, interp uintptr, argc int32, argv uintptr,
 		 * If handle was not set, errors should be sent to an infinitely deep
 		 * sink.
 		 */
-		(*(*TSTARTUPINFOW)(unsafe.Pointer(bp + 216))).FhStdError = libkernel32.XCreateFileW(tls, __ccgo_ts+71477, uint32(libc.Int32FromInt32(0x40000000)), uint32(0), bp+344, uint32(m_OPEN_EXISTING), uint32(m_FILE_ATTRIBUTE_NORMAL5), libc.UintptrFromInt32(0))
+		(*(*TSTARTUPINFOW)(unsafe.Pointer(bp + 216))).FhStdError = libc.XCreateFileW(tls, __ccgo_ts+71477, uint32(libc.Int32FromInt32(0x40000000)), uint32(0), bp+344, uint32(m_OPEN_EXISTING), uint32(m_FILE_ATTRIBUTE_NORMAL5), libc.UintptrFromInt32(0))
 	} else {
-		libkernel32.XDuplicateHandle(tls, hProcess, errorHandle, hProcess, bp+216+96, uint32(0), int32(m_TRUE), uint32(m_DUPLICATE_SAME_ACCESS3))
+		libc.XDuplicateHandle(tls, hProcess, errorHandle, hProcess, bp+216+96, uint32(0), int32(m_TRUE), uint32(m_DUPLICATE_SAME_ACCESS3))
 	}
 	if (*(*TSTARTUPINFOW)(unsafe.Pointer(bp + 216))).FhStdError == uintptr(int64(-libc.Int32FromInt32(1))) {
-		XTclWinConvertError(tls, libkernel32.XGetLastError(tls))
+		XTclWinConvertError(tls, libc.XGetLastError(tls))
 		XTcl_SetObjResult(tls, interp, XTcl_ObjPrintf(tls, __ccgo_ts+71524, libc.VaList(bp+1168, XTcl_PosixError(tls, interp))))
 		goto end
 	}
@@ -371727,8 +371721,8 @@ func XTclpCreateProcess(tls *libc.TLS, interp uintptr, argc int32, argv uintptr,
 	 * ab~1.def instead of "a b.default").
 	 */
 	_BuildCommandLine(tls, bp+376, argc, argv, bp)
-	if libkernel32.XCreateProcessW(tls, libc.UintptrFromInt32(0), (*TTcl_DString)(unsafe.Pointer(bp)).Fstring1, libc.UintptrFromInt32(0), libc.UintptrFromInt32(0), int32(m_TRUE), uint32(uint32(createFlags)), libc.UintptrFromInt32(0), libc.UintptrFromInt32(0), bp+216, bp+320) == 0 {
-		XTclWinConvertError(tls, libkernel32.XGetLastError(tls))
+	if libc.XCreateProcessW(tls, libc.UintptrFromInt32(0), (*TTcl_DString)(unsafe.Pointer(bp)).Fstring1, libc.UintptrFromInt32(0), libc.UintptrFromInt32(0), int32(m_TRUE), uint32(uint32(createFlags)), libc.UintptrFromInt32(0), libc.UintptrFromInt32(0), bp+216, bp+320) == 0 {
+		XTclWinConvertError(tls, libc.XGetLastError(tls))
 		XTcl_SetObjResult(tls, interp, XTcl_ObjPrintf(tls, __ccgo_ts+71634, libc.VaList(bp+1168, *(*uintptr)(unsafe.Pointer(argv)), XTcl_PosixError(tls, interp))))
 		goto end
 	}
@@ -371736,7 +371730,7 @@ func XTclpCreateProcess(tls *libc.TLS, interp uintptr, argc int32, argv uintptr,
 	 * This wait is used to force the OS to give some time to the DOS process.
 	 */
 	if applType == int32(m_APPL_DOS) {
-		libkernel32.XWaitForSingleObject(tls, (*(*TPROCESS_INFORMATION)(unsafe.Pointer(bp + 320))).FhProcess, uint32(50))
+		libc.XWaitForSingleObject(tls, (*(*TPROCESS_INFORMATION)(unsafe.Pointer(bp + 320))).FhProcess, uint32(50))
 	}
 	/*
 	 * "When an application spawns a process repeatedly, a new thread instance
@@ -371746,8 +371740,8 @@ func XTclpCreateProcess(tls *libc.TLS, interp uintptr, argc int32, argv uintptr,
 	 * CreateProcess() and CloseHandle(), the problem does not occur." PSS ID
 	 * Number: Q124121
 	 */
-	libuser32.XWaitForInputIdle(tls, (*(*TPROCESS_INFORMATION)(unsafe.Pointer(bp + 320))).FhProcess, uint32(5000))
-	libkernel32.XCloseHandle(tls, (*(*TPROCESS_INFORMATION)(unsafe.Pointer(bp + 320))).FhThread)
+	libc.XWaitForInputIdle(tls, (*(*TPROCESS_INFORMATION)(unsafe.Pointer(bp + 320))).FhProcess, uint32(5000))
+	libc.XCloseHandle(tls, (*(*TPROCESS_INFORMATION)(unsafe.Pointer(bp + 320))).FhThread)
 	*(*TTcl_Pid)(unsafe.Pointer(pidPtr)) = (*(*TPROCESS_INFORMATION)(unsafe.Pointer(bp + 320))).FhProcess
 	if *(*TTcl_Pid)(unsafe.Pointer(pidPtr)) != uintptr(0) {
 		XTclWinAddProcess(tls, (*(*TPROCESS_INFORMATION)(unsafe.Pointer(bp + 320))).FhProcess, (*(*TPROCESS_INFORMATION)(unsafe.Pointer(bp + 320))).FdwProcessId)
@@ -371758,13 +371752,13 @@ end:
 	;
 	XTcl_DStringFree(tls, bp)
 	if (*(*TSTARTUPINFOW)(unsafe.Pointer(bp + 216))).FhStdInput != uintptr(int64(-libc.Int32FromInt32(1))) {
-		libkernel32.XCloseHandle(tls, (*(*TSTARTUPINFOW)(unsafe.Pointer(bp + 216))).FhStdInput)
+		libc.XCloseHandle(tls, (*(*TSTARTUPINFOW)(unsafe.Pointer(bp + 216))).FhStdInput)
 	}
 	if (*(*TSTARTUPINFOW)(unsafe.Pointer(bp + 216))).FhStdOutput != uintptr(int64(-libc.Int32FromInt32(1))) {
-		libkernel32.XCloseHandle(tls, (*(*TSTARTUPINFOW)(unsafe.Pointer(bp + 216))).FhStdOutput)
+		libc.XCloseHandle(tls, (*(*TSTARTUPINFOW)(unsafe.Pointer(bp + 216))).FhStdOutput)
 	}
 	if (*(*TSTARTUPINFOW)(unsafe.Pointer(bp + 216))).FhStdError != uintptr(int64(-libc.Int32FromInt32(1))) {
-		libkernel32.XCloseHandle(tls, (*(*TSTARTUPINFOW)(unsafe.Pointer(bp + 216))).FhStdError)
+		libc.XCloseHandle(tls, (*(*TSTARTUPINFOW)(unsafe.Pointer(bp + 216))).FhStdError)
 	}
 	return result
 }
@@ -371788,9 +371782,9 @@ end:
 func _HasConsole(tls *libc.TLS) (r TBOOL) {
 	var handle THANDLE
 	_ = handle
-	handle = libkernel32.XCreateFileW(tls, __ccgo_ts+71660, uint32(libc.Int32FromInt32(0x40000000)), uint32(m_FILE_SHARE_WRITE5), libc.UintptrFromInt32(0), uint32(m_OPEN_EXISTING), uint32(m_FILE_ATTRIBUTE_NORMAL5), libc.UintptrFromInt32(0))
+	handle = libc.XCreateFileW(tls, __ccgo_ts+71660, uint32(libc.Int32FromInt32(0x40000000)), uint32(m_FILE_SHARE_WRITE5), libc.UintptrFromInt32(0), uint32(m_OPEN_EXISTING), uint32(m_FILE_ATTRIBUTE_NORMAL5), libc.UintptrFromInt32(0))
 	if handle != uintptr(int64(-libc.Int32FromInt32(1))) {
-		libkernel32.XCloseHandle(tls, handle)
+		libc.XCloseHandle(tls, handle)
 		return int32(m_TRUE)
 	} else {
 		return m_FALSE
@@ -371874,7 +371868,7 @@ func _ApplicationType(tls *libc.TLS, interp uintptr, originalName uintptr, fullN
 		XTcl_DStringSetLength(tls, bp+80, nameLen)
 		XTcl_DStringAppend(tls, bp+80, uintptr(unsafe.Pointer(&_extensions))+uintptr(i)*5, -int32(1))
 		nativeName = XTcl_WinUtfToTChar(tls, (*TTcl_DString)(unsafe.Pointer(bp+80)).Fstring1, (*TTcl_DString)(unsafe.Pointer(bp+80)).Flength, bp+296)
-		found = int32(libkernel32.XSearchPathW(tls, libc.UintptrFromInt32(0), nativeName, libc.UintptrFromInt32(0), uint32(m_MAX_PATH), bp+512, bp))
+		found = int32(libc.XSearchPathW(tls, libc.UintptrFromInt32(0), nativeName, libc.UintptrFromInt32(0), uint32(m_MAX_PATH), bp+512, bp))
 		XTcl_DStringFree(tls, bp+296)
 		if found == 0 {
 			goto _1
@@ -371883,7 +371877,7 @@ func _ApplicationType(tls *libc.TLS, interp uintptr, originalName uintptr, fullN
 		 * Ignore matches on directories or data files, return if identified a
 		 * known type.
 		 */
-		attr = libkernel32.XGetFileAttributesW(tls, bp+512)
+		attr = libc.XGetFileAttributesW(tls, bp+512)
 		if attr == uint32(0xFFFFFFFF) || attr&uint32(m_FILE_ATTRIBUTE_DIRECTORY3) != 0 {
 			goto _1
 		}
@@ -371905,12 +371899,12 @@ func _ApplicationType(tls *libc.TLS, interp uintptr, originalName uintptr, fullN
 			applType = int32(m_APPL_DOS)
 			break
 		}
-		hFile = libkernel32.XCreateFileW(tls, bp+512, libc.Uint32FromUint32(0x80000000), uint32(m_FILE_SHARE_READ5), libc.UintptrFromInt32(0), uint32(m_OPEN_EXISTING), uint32(m_FILE_ATTRIBUTE_NORMAL5), libc.UintptrFromInt32(0))
+		hFile = libc.XCreateFileW(tls, bp+512, libc.Uint32FromUint32(0x80000000), uint32(m_FILE_SHARE_READ5), libc.UintptrFromInt32(0), uint32(m_OPEN_EXISTING), uint32(m_FILE_ATTRIBUTE_NORMAL5), libc.UintptrFromInt32(0))
 		if hFile == uintptr(int64(-libc.Int32FromInt32(1))) {
 			goto _1
 		}
 		(*(*TIMAGE_DOS_HEADER)(unsafe.Pointer(bp + 16))).Fe_magic = uint16(0)
-		libkernel32.XReadFile(tls, hFile, bp+16, uint32(64), bp+12, libc.UintptrFromInt32(0))
+		libc.XReadFile(tls, hFile, bp+16, uint32(64), bp+12, libc.UintptrFromInt32(0))
 		if int32((*(*TIMAGE_DOS_HEADER)(unsafe.Pointer(bp + 16))).Fe_magic) != int32(m_IMAGE_DOS_SIGNATURE1) {
 			/*
 			 * Doesn't have the magic number for relocatable executables. If
@@ -371919,7 +371913,7 @@ func _ApplicationType(tls *libc.TLS, interp uintptr, originalName uintptr, fullN
 			 * supposed .com files are really 32-bit executables with all the
 			 * magic numbers and everything.
 			 */
-			libkernel32.XCloseHandle(tls, hFile)
+			libc.XCloseHandle(tls, hFile)
 			if v10 = ext != libc.UintptrFromInt32(0); v10 {
 				v8 = libc.X_stricmp(tls, ext, __ccgo_ts+71686)
 				goto _9
@@ -371937,7 +371931,7 @@ func _ApplicationType(tls *libc.TLS, interp uintptr, originalName uintptr, fullN
 			 * set here. If it doesn't, assume that since it already had the
 			 * other magic number it was a DOS application.
 			 */
-			libkernel32.XCloseHandle(tls, hFile)
+			libc.XCloseHandle(tls, hFile)
 			applType = int32(m_APPL_DOS)
 			break
 		}
@@ -371945,9 +371939,9 @@ func _ApplicationType(tls *libc.TLS, interp uintptr, originalName uintptr, fullN
 		 * The DWORD at header.e_lfanew points to yet another magic number.
 		 */
 		(*(*[2]int8)(unsafe.Pointer(bp + 8)))[0] = int8('\000')
-		libkernel32.XSetFilePointer(tls, hFile, (*(*TIMAGE_DOS_HEADER)(unsafe.Pointer(bp + 16))).Fe_lfanew, libc.UintptrFromInt32(0), uint32(m_FILE_BEGIN))
-		libkernel32.XReadFile(tls, hFile, bp+8, uint32(2), bp+12, libc.UintptrFromInt32(0))
-		libkernel32.XCloseHandle(tls, hFile)
+		libc.XSetFilePointer(tls, hFile, (*(*TIMAGE_DOS_HEADER)(unsafe.Pointer(bp + 16))).Fe_lfanew, libc.UintptrFromInt32(0), uint32(m_FILE_BEGIN))
+		libc.XReadFile(tls, hFile, bp+8, uint32(2), bp+12, libc.UintptrFromInt32(0))
+		libc.XCloseHandle(tls, hFile)
 		if int32((*(*[2]int8)(unsafe.Pointer(bp + 8)))[0]) == int32('N') && int32((*(*[2]int8)(unsafe.Pointer(bp + 8)))[int32(1)]) == int32('E') {
 			applType = int32(m_APPL_WIN3X)
 		} else {
@@ -371972,7 +371966,7 @@ func _ApplicationType(tls *libc.TLS, interp uintptr, originalName uintptr, fullN
 	}
 	XTcl_DStringFree(tls, bp+80)
 	if applType == m_APPL_NONE {
-		XTclWinConvertError(tls, libkernel32.XGetLastError(tls))
+		XTclWinConvertError(tls, libc.XGetLastError(tls))
 		XTcl_SetObjResult(tls, interp, XTcl_ObjPrintf(tls, __ccgo_ts+71634, libc.VaList(bp+1040, originalName, XTcl_PosixError(tls, interp))))
 		return m_APPL_NONE
 	}
@@ -371983,7 +371977,7 @@ func _ApplicationType(tls *libc.TLS, interp uintptr, originalName uintptr, fullN
 		 * correctly parse its own command line to separate off the
 		 * application name from the arguments.
 		 */
-		libkernel32.XGetShortPathNameW(tls, bp+512, bp+512, uint32(m_MAX_PATH))
+		libc.XGetShortPathNameW(tls, bp+512, bp+512, uint32(m_MAX_PATH))
 		libc.Xstrcpy(tls, fullName, XTcl_WinTCharToUtf(tls, bp+512, -int32(1), bp+296))
 		XTcl_DStringFree(tls, bp+296)
 	}
@@ -372346,9 +372340,9 @@ func XTclpCreateCommandChannel(tls *libc.TLS, readFile TTclFile, writeFile TTclF
 		/*
 		 * Start the background reader thread.
 		 */
-		(*TPipeInfo)(unsafe.Pointer(infoPtr)).Freadable = libkernel32.XCreateEventW(tls, libc.UintptrFromInt32(0), int32(m_TRUE), int32(m_TRUE), libc.UintptrFromInt32(0))
-		(*TPipeInfo)(unsafe.Pointer(infoPtr)).FreadThread = libkernel32.XCreateThread(tls, libc.UintptrFromInt32(0), uint64(256), __ccgo_fp(_PipeReaderThread), XTclPipeThreadCreateTI(tls, infoPtr+88, infoPtr, (*TPipeInfo)(unsafe.Pointer(infoPtr)).Freadable), uint32(0), libc.UintptrFromInt32(0))
-		libkernel32.XSetThreadPriority(tls, (*TPipeInfo)(unsafe.Pointer(infoPtr)).FreadThread, int32(m_THREAD_BASE_PRIORITY_MAX))
+		(*TPipeInfo)(unsafe.Pointer(infoPtr)).Freadable = libc.XCreateEventW(tls, libc.UintptrFromInt32(0), int32(m_TRUE), int32(m_TRUE), libc.UintptrFromInt32(0))
+		(*TPipeInfo)(unsafe.Pointer(infoPtr)).FreadThread = libc.XCreateThread(tls, libc.UintptrFromInt32(0), uint64(256), __ccgo_fp(_PipeReaderThread), XTclPipeThreadCreateTI(tls, infoPtr+88, infoPtr, (*TPipeInfo)(unsafe.Pointer(infoPtr)).Freadable), uint32(0), libc.UintptrFromInt32(0))
+		libc.XSetThreadPriority(tls, (*TPipeInfo)(unsafe.Pointer(infoPtr)).FreadThread, int32(m_THREAD_BASE_PRIORITY_MAX))
 		*(*int32)(unsafe.Pointer(infoPtr + 16)) |= libc.Int32FromInt32(1) << libc.Int32FromInt32(1)
 	} else {
 		(*TPipeInfo)(unsafe.Pointer(infoPtr)).FreadTI = libc.UintptrFromInt32(0)
@@ -372358,9 +372352,9 @@ func XTclpCreateCommandChannel(tls *libc.TLS, readFile TTclFile, writeFile TTclF
 		/*
 		 * Start the background writer thread.
 		 */
-		(*TPipeInfo)(unsafe.Pointer(infoPtr)).Fwritable = libkernel32.XCreateEventW(tls, libc.UintptrFromInt32(0), int32(m_TRUE), int32(m_TRUE), libc.UintptrFromInt32(0))
-		(*TPipeInfo)(unsafe.Pointer(infoPtr)).FwriteThread = libkernel32.XCreateThread(tls, libc.UintptrFromInt32(0), uint64(256), __ccgo_fp(_PipeWriterThread), XTclPipeThreadCreateTI(tls, infoPtr+80, infoPtr, (*TPipeInfo)(unsafe.Pointer(infoPtr)).Fwritable), uint32(0), libc.UintptrFromInt32(0))
-		libkernel32.XSetThreadPriority(tls, (*TPipeInfo)(unsafe.Pointer(infoPtr)).FwriteThread, int32(m_THREAD_BASE_PRIORITY_MAX))
+		(*TPipeInfo)(unsafe.Pointer(infoPtr)).Fwritable = libc.XCreateEventW(tls, libc.UintptrFromInt32(0), int32(m_TRUE), int32(m_TRUE), libc.UintptrFromInt32(0))
+		(*TPipeInfo)(unsafe.Pointer(infoPtr)).FwriteThread = libc.XCreateThread(tls, libc.UintptrFromInt32(0), uint64(256), __ccgo_fp(_PipeWriterThread), XTclPipeThreadCreateTI(tls, infoPtr+80, infoPtr, (*TPipeInfo)(unsafe.Pointer(infoPtr)).Fwritable), uint32(0), libc.UintptrFromInt32(0))
+		libc.XSetThreadPriority(tls, (*TPipeInfo)(unsafe.Pointer(infoPtr)).FwriteThread, int32(m_THREAD_BASE_PRIORITY_MAX))
 		*(*int32)(unsafe.Pointer(infoPtr + 16)) |= libc.Int32FromInt32(1) << libc.Int32FromInt32(2)
 	} else {
 		(*TPipeInfo)(unsafe.Pointer(infoPtr)).FwriteTI = libc.UintptrFromInt32(0)
@@ -372407,8 +372401,8 @@ func XTcl_CreatePipe(tls *libc.TLS, interp uintptr, rchan uintptr, wchan uintptr
 	(*(*TSECURITY_ATTRIBUTES)(unsafe.Pointer(bp + 16))).FnLength = uint32(24)
 	(*(*TSECURITY_ATTRIBUTES)(unsafe.Pointer(bp + 16))).FlpSecurityDescriptor = libc.UintptrFromInt32(0)
 	(*(*TSECURITY_ATTRIBUTES)(unsafe.Pointer(bp + 16))).FbInheritHandle = m_FALSE
-	if !(libkernel32.XCreatePipe(tls, bp, bp+8, bp+16, uint32(0)) != 0) {
-		XTclWinConvertError(tls, libkernel32.XGetLastError(tls))
+	if !(libc.XCreatePipe(tls, bp, bp+8, bp+16, uint32(0)) != 0) {
+		XTclWinConvertError(tls, libc.XGetLastError(tls))
 		XTcl_SetObjResult(tls, interp, XTcl_ObjPrintf(tls, __ccgo_ts+71694, libc.VaList(bp+48, XTcl_PosixError(tls, interp))))
 		return int32(m_TCL_ERROR)
 	}
@@ -372551,8 +372545,8 @@ func _PipeClose2Proc(tls *libc.TLS, instanceData TClientData, interp uintptr, fl
 		 */
 		if (*TPipeInfo)(unsafe.Pointer(pipePtr)).FreadThread != 0 {
 			XTclPipeThreadStop(tls, pipePtr+88, (*TPipeInfo)(unsafe.Pointer(pipePtr)).FreadThread)
-			libkernel32.XCloseHandle(tls, (*TPipeInfo)(unsafe.Pointer(pipePtr)).FreadThread)
-			libkernel32.XCloseHandle(tls, (*TPipeInfo)(unsafe.Pointer(pipePtr)).Freadable)
+			libc.XCloseHandle(tls, (*TPipeInfo)(unsafe.Pointer(pipePtr)).FreadThread)
+			libc.XCloseHandle(tls, (*TPipeInfo)(unsafe.Pointer(pipePtr)).Freadable)
 			(*TPipeInfo)(unsafe.Pointer(pipePtr)).FreadThread = libc.UintptrFromInt32(0)
 		}
 		if XTclpCloseFile(tls, (*TPipeInfo)(unsafe.Pointer(pipePtr)).FreadFile) != 0 {
@@ -372572,7 +372566,7 @@ func _PipeClose2Proc(tls *libc.TLS, instanceData TClientData, interp uintptr, fl
 			if (*TPipeInfo)(unsafe.Pointer(pipePtr)).Fflags&(libc.Int32FromInt32(1)<<libc.Int32FromInt32(1)) != 0 && inExit != 0 {
 				/* give it a chance to leave honorably */
 				XTclPipeThreadStopSignal(tls, pipePtr+80, (*TPipeInfo)(unsafe.Pointer(pipePtr)).Fwritable)
-				if libkernel32.XWaitForSingleObject(tls, (*TPipeInfo)(unsafe.Pointer(pipePtr)).Fwritable, uint32(20)) == uint32(258) {
+				if libc.XWaitForSingleObject(tls, (*TPipeInfo)(unsafe.Pointer(pipePtr)).Fwritable, uint32(20)) == uint32(258) {
 					return int32(m_EWOULDBLOCK)
 				}
 			} else {
@@ -372581,11 +372575,11 @@ func _PipeClose2Proc(tls *libc.TLS, instanceData TClientData, interp uintptr, fl
 				} else {
 					v1 = uint32(m_INFINITE3)
 				}
-				libkernel32.XWaitForSingleObject(tls, (*TPipeInfo)(unsafe.Pointer(pipePtr)).Fwritable, uint32(v1))
+				libc.XWaitForSingleObject(tls, (*TPipeInfo)(unsafe.Pointer(pipePtr)).Fwritable, uint32(v1))
 			}
 			XTclPipeThreadStop(tls, pipePtr+80, (*TPipeInfo)(unsafe.Pointer(pipePtr)).FwriteThread)
-			libkernel32.XCloseHandle(tls, (*TPipeInfo)(unsafe.Pointer(pipePtr)).Fwritable)
-			libkernel32.XCloseHandle(tls, (*TPipeInfo)(unsafe.Pointer(pipePtr)).FwriteThread)
+			libc.XCloseHandle(tls, (*TPipeInfo)(unsafe.Pointer(pipePtr)).Fwritable)
+			libc.XCloseHandle(tls, (*TPipeInfo)(unsafe.Pointer(pipePtr)).FwriteThread)
 			(*TPipeInfo)(unsafe.Pointer(pipePtr)).FwriteThread = libc.UintptrFromInt32(0)
 		}
 		if XTclpCloseFile(tls, (*TPipeInfo)(unsafe.Pointer(pipePtr)).FwriteFile) != 0 {
@@ -372733,7 +372727,7 @@ func _PipeInputProc(tls *libc.TLS, instanceData TClientData, buf uintptr, bufSiz
 	 * there is any data available. Otherwise it will block until at least one
 	 * byte is available or an EOF occurs.
 	 */
-	if libkernel32.XReadFile(tls, (*TWinFile)(unsafe.Pointer(filePtr)).Fhandle, buf, uint32(uint32(bufSize)), bp, libc.UintptrFromInt32(0)) == int32(m_TRUE) {
+	if libc.XReadFile(tls, (*TWinFile)(unsafe.Pointer(filePtr)).Fhandle, buf, uint32(uint32(bufSize)), bp, libc.UintptrFromInt32(0)) == int32(m_TRUE) {
 		return int32(bytesRead + *(*TDWORD)(unsafe.Pointer(bp)))
 	} else {
 		if bytesRead != 0 {
@@ -372743,7 +372737,7 @@ func _PipeInputProc(tls *libc.TLS, instanceData TClientData, buf uintptr, bufSiz
 			return int32(int32(bytesRead))
 		}
 	}
-	XTclWinConvertError(tls, libkernel32.XGetLastError(tls))
+	XTclWinConvertError(tls, libc.XGetLastError(tls))
 	if *(*int32)(unsafe.Pointer(libc.X_errno(tls))) == int32(m_EPIPE) {
 		*(*int32)(unsafe.Pointer(infoPtr + 152)) |= libc.Int32FromInt32(1) << libc.Int32FromInt32(2)
 		return 0
@@ -372796,7 +372790,7 @@ func _PipeOutputProc(tls *libc.TLS, instanceData TClientData, buf uintptr, toWri
 		v1 = uint32(m_INFINITE3)
 	}
 	timeout = uint32(v1)
-	if libkernel32.XWaitForSingleObject(tls, (*TPipeInfo)(unsafe.Pointer(infoPtr)).Fwritable, timeout) == uint32(258) {
+	if libc.XWaitForSingleObject(tls, (*TPipeInfo)(unsafe.Pointer(infoPtr)).Fwritable, timeout) == uint32(258) {
 		/*
 		 * The writer thread is blocked waiting for a write to complete and
 		 * the channel is in non-blocking mode.
@@ -372829,10 +372823,10 @@ func _PipeOutputProc(tls *libc.TLS, instanceData TClientData, buf uintptr, toWri
 		}
 		libc.Xmemcpy(tls, (*TPipeInfo)(unsafe.Pointer(infoPtr)).FwriteBuf, buf, uint64(uint64(toWrite)))
 		(*TPipeInfo)(unsafe.Pointer(infoPtr)).FtoWrite = toWrite
-		libkernel32.XResetEvent(tls, (*TPipeInfo)(unsafe.Pointer(infoPtr)).Fwritable)
+		libc.XResetEvent(tls, (*TPipeInfo)(unsafe.Pointer(infoPtr)).Fwritable)
 		pipeTI = *(*uintptr)(unsafe.Pointer(infoPtr + 80))
 		if pipeTI != 0 {
-			libkernel32.XSetEvent(tls, (*TTclPipeThreadInfo)(unsafe.Pointer(pipeTI)).FevControl)
+			libc.XSetEvent(tls, (*TTclPipeThreadInfo)(unsafe.Pointer(pipeTI)).FevControl)
 		}
 		*(*TDWORD)(unsafe.Pointer(bp)) = uint32(uint32(toWrite))
 	} else {
@@ -372840,8 +372834,8 @@ func _PipeOutputProc(tls *libc.TLS, instanceData TClientData, buf uintptr, toWri
 		 * In the blocking case, just try to write the buffer directly. This
 		 * avoids an unnecessary copy.
 		 */
-		if libkernel32.XWriteFile(tls, (*TWinFile)(unsafe.Pointer(filePtr)).Fhandle, buf, uint32(uint32(toWrite)), bp, libc.UintptrFromInt32(0)) == m_FALSE {
-			XTclWinConvertError(tls, libkernel32.XGetLastError(tls))
+		if libc.XWriteFile(tls, (*TWinFile)(unsafe.Pointer(filePtr)).Fhandle, buf, uint32(uint32(toWrite)), bp, libc.UintptrFromInt32(0)) == m_FALSE {
+			XTclWinConvertError(tls, libc.XGetLastError(tls))
 			goto error
 		}
 	}
@@ -372917,7 +372911,7 @@ func _PipeEventProc(tls *libc.TLS, evPtr uintptr, flags int32) (r int32) {
 	 * detected EOF.
 	 */
 	mask = 0
-	if (*TPipeInfo)(unsafe.Pointer(infoPtr)).FwatchMask&(libc.Int32FromInt32(1)<<libc.Int32FromInt32(2)) != 0 && libkernel32.XWaitForSingleObject(tls, (*TPipeInfo)(unsafe.Pointer(infoPtr)).Fwritable, uint32(0)) != uint32(258) {
+	if (*TPipeInfo)(unsafe.Pointer(infoPtr)).FwatchMask&(libc.Int32FromInt32(1)<<libc.Int32FromInt32(2)) != 0 && libc.XWaitForSingleObject(tls, (*TPipeInfo)(unsafe.Pointer(infoPtr)).Fwritable, uint32(0)) != uint32(258) {
 		mask = libc.Int32FromInt32(1) << libc.Int32FromInt32(2)
 	}
 	if (*TPipeInfo)(unsafe.Pointer(infoPtr)).FwatchMask&(libc.Int32FromInt32(1)<<libc.Int32FromInt32(1)) != 0 && _WaitForRead1(tls, infoPtr, 0) >= 0 {
@@ -373106,7 +373100,7 @@ func XTcl_WaitPid(tls *libc.TLS, pid TTcl_Pid, statPtr uintptr, options int32) (
 	} else {
 		flags = uint32(m_INFINITE3)
 	}
-	ret = libkernel32.XWaitForSingleObject(tls, (*TProcInfo)(unsafe.Pointer(infoPtr)).FhProcess, flags)
+	ret = libc.XWaitForSingleObject(tls, (*TProcInfo)(unsafe.Pointer(infoPtr)).FhProcess, flags)
 	if ret == uint32(258) {
 		*(*int32)(unsafe.Pointer(statPtr)) = 0
 		if options&int32(m_WNOHANG) != 0 {
@@ -373121,7 +373115,7 @@ func XTcl_WaitPid(tls *libc.TLS, pid TTcl_Pid, statPtr uintptr, options int32) (
 		}
 	} else {
 		if ret == libc.Uint32FromInt32(0x00000000)+libc.Uint32FromInt32(0) {
-			libkernel32.XGetExitCodeProcess(tls, (*TProcInfo)(unsafe.Pointer(infoPtr)).FhProcess, bp)
+			libc.XGetExitCodeProcess(tls, (*TProcInfo)(unsafe.Pointer(infoPtr)).FhProcess, bp)
 			/*
 			 * Does the exit code look like one of the exception codes?
 			 */
@@ -373194,7 +373188,7 @@ func XTcl_WaitPid(tls *libc.TLS, pid TTcl_Pid, statPtr uintptr, options int32) (
 	/*
 	 * Officially close the process handle.
 	 */
-	libkernel32.XCloseHandle(tls, (*TProcInfo)(unsafe.Pointer(infoPtr)).FhProcess)
+	libc.XCloseHandle(tls, (*TProcInfo)(unsafe.Pointer(infoPtr)).FhProcess)
 	XTclpFree(tls, infoPtr)
 	return result
 }
@@ -373347,7 +373341,7 @@ func _WaitForRead1(tls *libc.TLS, infoPtr uintptr, blocking int32) (r int32) {
 			v1 = uint32(m_INFINITE3)
 		}
 		timeout = uint32(v1)
-		if libkernel32.XWaitForSingleObject(tls, (*TPipeInfo)(unsafe.Pointer(infoPtr)).Freadable, timeout) == uint32(258) {
+		if libc.XWaitForSingleObject(tls, (*TPipeInfo)(unsafe.Pointer(infoPtr)).Freadable, timeout) == uint32(258) {
 			/*
 			 * The reader thread is blocked waiting for data and the channel
 			 * is in non-blocking mode.
@@ -373368,8 +373362,8 @@ func _WaitForRead1(tls *libc.TLS, infoPtr uintptr, blocking int32) (r int32) {
 		/*
 		 * Check to see if there is any data sitting in the pipe.
 		 */
-		if libkernel32.XPeekNamedPipe(tls, handle, libc.UintptrFromInt32(0), libc.Uint32FromInt32(0), libc.UintptrFromInt32(0), bp, libc.UintptrFromInt32(0)) != int32(m_TRUE) {
-			XTclWinConvertError(tls, libkernel32.XGetLastError(tls))
+		if libc.XPeekNamedPipe(tls, handle, libc.UintptrFromInt32(0), libc.Uint32FromInt32(0), libc.UintptrFromInt32(0), bp, libc.UintptrFromInt32(0)) != int32(m_TRUE) {
+			XTclWinConvertError(tls, libc.XGetLastError(tls))
 			/*
 			 * Check to see if the peek failed because of EOF.
 			 */
@@ -373402,10 +373396,10 @@ func _WaitForRead1(tls *libc.TLS, infoPtr uintptr, blocking int32) (r int32) {
 		/*
 		 * There wasn't any data available, so reset the thread and try again.
 		 */
-		libkernel32.XResetEvent(tls, (*TPipeInfo)(unsafe.Pointer(infoPtr)).Freadable)
+		libc.XResetEvent(tls, (*TPipeInfo)(unsafe.Pointer(infoPtr)).Freadable)
 		pipeTI = *(*uintptr)(unsafe.Pointer(infoPtr + 88))
 		if pipeTI != 0 {
-			libkernel32.XSetEvent(tls, (*TTclPipeThreadInfo)(unsafe.Pointer(pipeTI)).FevControl)
+			libc.XSetEvent(tls, (*TTclPipeThreadInfo)(unsafe.Pointer(pipeTI)).FevControl)
 		}
 	}
 	return r
@@ -373464,12 +373458,12 @@ func _PipeReaderThread(tls *libc.TLS, arg TLPVOID) (r TDWORD) {
 		 * data is available after the first read, we block until we can read
 		 * a single byte off of the pipe.
 		 */
-		if libkernel32.XReadFile(tls, handle, libc.UintptrFromInt32(0), uint32(0), bp+8, libc.UintptrFromInt32(0)) == m_FALSE || libkernel32.XPeekNamedPipe(tls, handle, libc.UintptrFromInt32(0), uint32(0), libc.UintptrFromInt32(0), bp+8, libc.UintptrFromInt32(0)) == m_FALSE {
+		if libc.XReadFile(tls, handle, libc.UintptrFromInt32(0), uint32(0), bp+8, libc.UintptrFromInt32(0)) == m_FALSE || libc.XPeekNamedPipe(tls, handle, libc.UintptrFromInt32(0), uint32(0), libc.UintptrFromInt32(0), bp+8, libc.UintptrFromInt32(0)) == m_FALSE {
 			/*
 			 * The error is a result of an EOF condition, so set the EOF bit
 			 * before signalling the main thread.
 			 */
-			err = libkernel32.XGetLastError(tls)
+			err = libc.XGetLastError(tls)
 			if err == uint32(109) {
 				*(*int32)(unsafe.Pointer(infoPtr + 152)) |= libc.Int32FromInt32(1) << libc.Int32FromInt32(2)
 				done = int32(1)
@@ -373480,14 +373474,14 @@ func _PipeReaderThread(tls *libc.TLS, arg TLPVOID) (r TDWORD) {
 			}
 		} else {
 			if *(*TDWORD)(unsafe.Pointer(bp + 8)) == uint32(0) {
-				if libkernel32.XReadFile(tls, handle, infoPtr+156, uint32(1), bp+8, libc.UintptrFromInt32(0)) != m_FALSE {
+				if libc.XReadFile(tls, handle, infoPtr+156, uint32(1), bp+8, libc.UintptrFromInt32(0)) != m_FALSE {
 					/*
 					 * One byte was consumed as a side effect of waiting for the
 					 * pipe to become readable.
 					 */
 					*(*int32)(unsafe.Pointer(infoPtr + 152)) |= libc.Int32FromInt32(1) << libc.Int32FromInt32(3)
 				} else {
-					err = libkernel32.XGetLastError(tls)
+					err = libc.XGetLastError(tls)
 					if err == uint32(109) {
 						/*
 						 * The error is a result of an EOF condition, so set the
@@ -373507,7 +373501,7 @@ func _PipeReaderThread(tls *libc.TLS, arg TLPVOID) (r TDWORD) {
 		 * Signal the main thread by signalling the readable event and then
 		 * waking up the notifier thread.
 		 */
-		libkernel32.XSetEvent(tls, (*TPipeInfo)(unsafe.Pointer(infoPtr)).Freadable)
+		libc.XSetEvent(tls, (*TPipeInfo)(unsafe.Pointer(infoPtr)).Freadable)
 		/*
 		 * Alert the foreground thread. Note that we need to treat this like a
 		 * critical section so the foreground thread does not terminate this
@@ -373578,8 +373572,8 @@ func _PipeWriterThread(tls *libc.TLS, arg TLPVOID) (r TDWORD) {
 		 * Loop until all of the bytes are written or an error occurs.
 		 */
 		for toWrite > uint32(0) {
-			if libkernel32.XWriteFile(tls, handle, buf, toWrite, bp+8, libc.UintptrFromInt32(0)) == m_FALSE {
-				(*TPipeInfo)(unsafe.Pointer(infoPtr)).FwriteError = libkernel32.XGetLastError(tls)
+			if libc.XWriteFile(tls, handle, buf, toWrite, bp+8, libc.UintptrFromInt32(0)) == m_FALSE {
+				(*TPipeInfo)(unsafe.Pointer(infoPtr)).FwriteError = libc.XGetLastError(tls)
 				done = int32(1)
 				break
 			} else {
@@ -373591,7 +373585,7 @@ func _PipeWriterThread(tls *libc.TLS, arg TLPVOID) (r TDWORD) {
 		 * Signal the main thread by signalling the writable event and then
 		 * waking up the notifier thread.
 		 */
-		libkernel32.XSetEvent(tls, (*TPipeInfo)(unsafe.Pointer(infoPtr)).Fwritable)
+		libc.XSetEvent(tls, (*TPipeInfo)(unsafe.Pointer(infoPtr)).Fwritable)
 		/*
 		 * Alert the foreground thread. Note that we need to treat this like a
 		 * critical section so the foreground thread does not terminate this
@@ -373691,7 +373685,7 @@ func XTclpOpenTemporaryFile(tls *libc.TLS, dirObj uintptr, basenameObj uintptr, 
 		flags |= uint32(m_FILE_FLAG_DELETE_ON_CLOSE1)
 	}
 	namePtr = bp
-	length = int32(libkernel32.XGetTempPathW(tls, uint32(m_MAX_PATH), bp))
+	length = int32(libc.XGetTempPathW(tls, uint32(m_MAX_PATH), bp))
 	if length == 0 {
 		goto gotError
 	}
@@ -373718,7 +373712,7 @@ func XTclpOpenTemporaryFile(tls *libc.TLS, dirObj uintptr, basenameObj uintptr, 
 		XTcl_DStringSetLength(tls, bp+520, (*TTcl_DString)(unsafe.Pointer(bp+520)).Flength+int32(1))
 		libc.Xmemcpy(tls, namePtr, (*TTcl_DString)(unsafe.Pointer(bp+520)).Fstring1, uint64((*TTcl_DString)(unsafe.Pointer(bp+520)).Flength+int32(1)))
 		XTcl_DStringFree(tls, bp+520)
-		handle = libkernel32.XCreateFileW(tls, bp, libc.Uint32FromUint32(0x80000000)|uint32(libc.Int32FromInt32(0x40000000)), uint32(0), libc.UintptrFromInt32(0), uint32(m_CREATE_NEW), flags, libc.UintptrFromInt32(0))
+		handle = libc.XCreateFileW(tls, bp, libc.Uint32FromUint32(0x80000000)|uint32(libc.Int32FromInt32(0x40000000)), uint32(0), libc.UintptrFromInt32(0), uint32(m_CREATE_NEW), flags, libc.UintptrFromInt32(0))
 		goto _3
 	_3:
 		;
@@ -373726,7 +373720,7 @@ func XTclpOpenTemporaryFile(tls *libc.TLS, dirObj uintptr, basenameObj uintptr, 
 			counter2--
 			v1 = counter2
 		}
-		if !(v2 && v1 > 0 && libkernel32.XGetLastError(tls) == uint32(80)) {
+		if !(v2 && v1 > 0 && libc.XGetLastError(tls) == uint32(80)) {
 			break
 		}
 	}
@@ -373759,7 +373753,7 @@ func XTclpOpenTemporaryFile(tls *libc.TLS, dirObj uintptr, basenameObj uintptr, 
 	goto gotError
 gotError:
 	;
-	XTclWinConvertError(tls, libkernel32.XGetLastError(tls))
+	XTclWinConvertError(tls, libc.XGetLastError(tls))
 	return libc.UintptrFromInt32(0)
 }
 
@@ -373780,7 +373774,7 @@ func XTclPipeThreadCreateTI(tls *libc.TLS, pipeTIPtr uintptr, clientData TClient
 	var pipeTI, v1 uintptr
 	_, _ = pipeTI, v1
 	pipeTI = libc.Xmalloc(tls, uint64(32))
-	(*TTclPipeThreadInfo)(unsafe.Pointer(pipeTI)).FevControl = libkernel32.XCreateEventW(tls, libc.UintptrFromInt32(0), m_FALSE, m_FALSE, libc.UintptrFromInt32(0))
+	(*TTclPipeThreadInfo)(unsafe.Pointer(pipeTI)).FevControl = libc.XCreateEventW(tls, libc.UintptrFromInt32(0), m_FALSE, m_FALSE, libc.UintptrFromInt32(0))
 	libc.AtomicStorePInt32(pipeTI+8, m_PTI_STATE_IDLE)
 	(*TTclPipeThreadInfo)(unsafe.Pointer(pipeTI)).FclientData = clientData
 	(*TTclPipeThreadInfo)(unsafe.Pointer(pipeTI)).FevWakeUp = wakeEvent
@@ -373823,7 +373817,7 @@ func XTclPipeThreadWaitForSignal(tls *libc.TLS, pipeTIPtr uintptr) (r int32) {
 	/*
 	 * Reset work state of thread (idle/waiting)
 	 */
-	state = libkernel32.X_InterlockedCompareExchange(tls, pipeTI+8, m_PTI_STATE_IDLE, int32(m_PTI_STATE_WORK))
+	state = libc.X_InterlockedCompareExchange(tls, pipeTI+8, m_PTI_STATE_IDLE, int32(m_PTI_STATE_WORK))
 	if state&int32(libc.Int32FromInt32(m_PTI_STATE_STOP)|libc.Int32FromInt32(m_PTI_STATE_END)) != 0 {
 		/*
 		 * End of work, check the owner of structure.
@@ -373833,7 +373827,7 @@ func XTclPipeThreadWaitForSignal(tls *libc.TLS, pipeTIPtr uintptr) (r int32) {
 	/*
 	 * Entering wait
 	 */
-	waitResult = libkernel32.XWaitForSingleObject(tls, (*TTclPipeThreadInfo)(unsafe.Pointer(pipeTI)).FevControl, uint32(m_INFINITE3))
+	waitResult = libc.XWaitForSingleObject(tls, (*TTclPipeThreadInfo)(unsafe.Pointer(pipeTI)).FevControl, uint32(m_INFINITE3))
 	if waitResult != libc.Uint32FromInt32(0x00000000)+libc.Uint32FromInt32(0) {
 		/*
 		 * The control event was not signaled, so end of work (unexpected
@@ -373844,7 +373838,7 @@ func XTclPipeThreadWaitForSignal(tls *libc.TLS, pipeTIPtr uintptr) (r int32) {
 	/*
 	 * Try to set work state of thread
 	 */
-	state = libkernel32.X_InterlockedCompareExchange(tls, pipeTI+8, int32(m_PTI_STATE_WORK), m_PTI_STATE_IDLE)
+	state = libc.X_InterlockedCompareExchange(tls, pipeTI+8, int32(m_PTI_STATE_WORK), m_PTI_STATE_IDLE)
 	if state&int32(libc.Int32FromInt32(m_PTI_STATE_STOP)|libc.Int32FromInt32(m_PTI_STATE_END)) != 0 {
 		/*
 		 * End of work
@@ -373867,7 +373861,7 @@ end:
 		(*TTclPipeThreadInfo)(unsafe.Pointer(pipeTI)).FevWakeUp = libc.UintptrFromInt32(0)
 	}
 	if wakeEvent != 0 {
-		libkernel32.XSetEvent(tls, wakeEvent)
+		libc.XSetEvent(tls, wakeEvent)
 	}
 	return 0
 }
@@ -373899,13 +373893,13 @@ func XTclPipeThreadStopSignal(tls *libc.TLS, pipeTIPtr uintptr, wakeEvent THANDL
 	}
 	evControl = (*TTclPipeThreadInfo)(unsafe.Pointer(pipeTI)).FevControl
 	(*TTclPipeThreadInfo)(unsafe.Pointer(pipeTI)).FevWakeUp = wakeEvent
-	state = int32(libkernel32.X_InterlockedCompareExchange(tls, pipeTI+8, int32(m_PTI_STATE_STOP), m_PTI_STATE_IDLE))
+	state = int32(libc.X_InterlockedCompareExchange(tls, pipeTI+8, int32(m_PTI_STATE_STOP), m_PTI_STATE_IDLE))
 	switch state {
 	case m_PTI_STATE_IDLE:
 		/*
 		 * Thread was idle/waiting, notify it goes teardown
 		 */
-		libkernel32.XSetEvent(tls, evControl)
+		libc.XSetEvent(tls, evControl)
 		*(*uintptr)(unsafe.Pointer(pipeTIPtr)) = libc.UintptrFromInt32(0)
 		/* FALLTHRU */
 		fallthrough
@@ -373917,7 +373911,7 @@ func XTclPipeThreadStopSignal(tls *libc.TLS, pipeTIPtr uintptr, wakeEvent THANDL
 		 * structure (because of possible sharing the joint structures with
 		 * thread)
 		 */
-		libkernel32.X_InterlockedExchange(tls, pipeTI+8, int32(m_PTI_STATE_END))
+		libc.X_InterlockedExchange(tls, pipeTI+8, int32(m_PTI_STATE_END))
 		break
 	}
 	return 0
@@ -373963,13 +373957,13 @@ func XTclPipeThreadStop(tls *libc.TLS, pipeTIPtr uintptr, hThread THANDLE) {
 	/*
 	 * Try to sane stop the pipe worker, corresponding its current state
 	 */
-	state = int32(libkernel32.X_InterlockedCompareExchange(tls, pipeTI+8, int32(m_PTI_STATE_STOP), m_PTI_STATE_IDLE))
+	state = int32(libc.X_InterlockedCompareExchange(tls, pipeTI+8, int32(m_PTI_STATE_STOP), m_PTI_STATE_IDLE))
 	switch state {
 	case m_PTI_STATE_IDLE:
 		/*
 		 * Thread was idle/waiting, notify it goes teardown
 		 */
-		libkernel32.XSetEvent(tls, evControl)
+		libc.XSetEvent(tls, evControl)
 		/*
 		 * We don't need to wait for it at all, thread frees himself (owns the
 		 * TI structure)
@@ -373997,7 +373991,7 @@ func XTclPipeThreadStop(tls *libc.TLS, pipeTIPtr uintptr, hThread THANDLE) {
 		 * structure (because of possible sharing the joint structures with
 		 * thread)
 		 */
-		state = int32(libkernel32.X_InterlockedCompareExchange(tls, pipeTI+8, int32(m_PTI_STATE_END), int32(m_PTI_STATE_WORK)))
+		state = int32(libc.X_InterlockedCompareExchange(tls, pipeTI+8, int32(m_PTI_STATE_END), int32(m_PTI_STATE_WORK)))
 		if state == int32(m_PTI_STATE_DOWN) {
 			/*
 			 * We don't need to wait for it, but we should free pipeTI
@@ -374011,14 +374005,14 @@ func XTclPipeThreadStop(tls *libc.TLS, pipeTIPtr uintptr, hThread THANDLE) {
 		 * The thread may already have closed on its own. Check its exit
 		 * code.
 		 */
-		libkernel32.XGetExitCodeThread(tls, hThread, bp)
+		libc.XGetExitCodeThread(tls, hThread, bp)
 		if *(*TDWORD)(unsafe.Pointer(bp)) == libc.Uint32FromInt32(0x00000103) {
 			inExit = libc.BoolInt32(XTclInExit(tls) != 0 || XTclInThreadExit(tls) != 0)
 			/*
 			 * Set the stop event so that if the pipe thread is blocked
 			 * somewhere, it may hereafter sane exit cleanly.
 			 */
-			libkernel32.XSetEvent(tls, evControl)
+			libc.XSetEvent(tls, evControl)
 			/*
 			 * Cancel all sync-IO of this thread (may be blocked there).
 			 */
@@ -374037,7 +374031,7 @@ func XTclPipeThreadStop(tls *libc.TLS, pipeTIPtr uintptr, hThread THANDLE) {
 			} else {
 				v1 = int32(20)
 			}
-			if libkernel32.XWaitForSingleObject(tls, hThread, uint32(v1)) == uint32(258) {
+			if libc.XWaitForSingleObject(tls, hThread, uint32(v1)) == uint32(258) {
 				/*
 				 * The thread must be blocked waiting for the pipe to become
 				 * readable in ReadFile(). There isn't a clean way to exit the
@@ -374077,14 +374071,14 @@ func XTclPipeThreadStop(tls *libc.TLS, pipeTIPtr uintptr, hThread THANDLE) {
 						v2 = int32(5000)
 					}
 				}
-				if v3 && libkernel32.XWaitForSingleObject(tls, hThread, uint32(v2)) != libc.Uint32FromInt32(0x00000000)+libc.Uint32FromInt32(0) {
+				if v3 && libc.XWaitForSingleObject(tls, hThread, uint32(v2)) != libc.Uint32FromInt32(0x00000000)+libc.Uint32FromInt32(0) {
 					/* BUG: this leaks memory */
-					if inExit != 0 || !(libkernel32.XTerminateThread(tls, hThread, uint32(0)) != 0) {
+					if inExit != 0 || !(libc.XTerminateThread(tls, hThread, uint32(0)) != 0) {
 						/*
 						 * in exit or terminate fails, just give thread a
 						 * chance to exit
 						 */
-						if libkernel32.X_InterlockedExchange(tls, pipeTI+8, int32(m_PTI_STATE_STOP)) != int32(m_PTI_STATE_DOWN) {
+						if libc.X_InterlockedExchange(tls, pipeTI+8, int32(m_PTI_STATE_STOP)) != int32(m_PTI_STATE_DOWN) {
 							pipeTI = libc.UintptrFromInt32(0)
 						}
 					}
@@ -374095,9 +374089,9 @@ func XTclPipeThreadStop(tls *libc.TLS, pipeTIPtr uintptr, hThread THANDLE) {
 	*(*uintptr)(unsafe.Pointer(pipeTIPtr)) = libc.UintptrFromInt32(0)
 	if pipeTI != 0 {
 		if (*TTclPipeThreadInfo)(unsafe.Pointer(pipeTI)).FevWakeUp != 0 {
-			libkernel32.XSetEvent(tls, (*TTclPipeThreadInfo)(unsafe.Pointer(pipeTI)).FevWakeUp)
+			libc.XSetEvent(tls, (*TTclPipeThreadInfo)(unsafe.Pointer(pipeTI)).FevWakeUp)
 		}
-		libkernel32.XCloseHandle(tls, (*TTclPipeThreadInfo)(unsafe.Pointer(pipeTI)).FevControl)
+		libc.XCloseHandle(tls, (*TTclPipeThreadInfo)(unsafe.Pointer(pipeTI)).FevControl)
 		libc.Xfree(tls, pipeTI)
 	}
 }
@@ -374135,11 +374129,11 @@ func XTclPipeThreadExit(tls *libc.TLS, pipeTIPtr uintptr) {
 		return
 	}
 	*(*uintptr)(unsafe.Pointer(pipeTIPtr)) = libc.UintptrFromInt32(0)
-	state = libkernel32.X_InterlockedExchange(tls, pipeTI+8, int32(m_PTI_STATE_DOWN))
+	state = libc.X_InterlockedExchange(tls, pipeTI+8, int32(m_PTI_STATE_DOWN))
 	if state == int32(m_PTI_STATE_STOP) {
-		libkernel32.XCloseHandle(tls, (*TTclPipeThreadInfo)(unsafe.Pointer(pipeTI)).FevControl)
+		libc.XCloseHandle(tls, (*TTclPipeThreadInfo)(unsafe.Pointer(pipeTI)).FevControl)
 		if (*TTclPipeThreadInfo)(unsafe.Pointer(pipeTI)).FevWakeUp != 0 {
-			libkernel32.XSetEvent(tls, (*TTclPipeThreadInfo)(unsafe.Pointer(pipeTI)).FevWakeUp)
+			libc.XSetEvent(tls, (*TTclPipeThreadInfo)(unsafe.Pointer(pipeTI)).FevWakeUp)
 		}
 		libc.Xfree(tls, pipeTI)
 	}
@@ -374365,7 +374359,7 @@ func _InitializeHostName(tls *libc.TLS, valuePtr uintptr, lengthPtr uintptr, enc
 	var _ /* length at bp+512 */ TDWORD
 	var _ /* wbuf at bp+0 */ [256]TWCHAR
 	*(*TDWORD)(unsafe.Pointer(bp + 512)) = uint32(libc.Uint64FromInt64(512) / libc.Uint64FromInt64(2))
-	if libkernel32.XGetComputerNameExW(tls, _ComputerNamePhysicalDnsFullyQualified, bp, bp+512) != 0 {
+	if libc.XGetComputerNameExW(tls, _ComputerNamePhysicalDnsFullyQualified, bp, bp+512) != 0 {
 		/*
 		 * Convert string from native to UTF then change to lowercase.
 		 */
@@ -374375,7 +374369,7 @@ func _InitializeHostName(tls *libc.TLS, valuePtr uintptr, lengthPtr uintptr, enc
 		if XTclpHasSockets(tls, libc.UintptrFromInt32(0)) == m_TCL_OK {
 			XTcl_DStringInit(tls, bp+736)
 			XTcl_DStringSetLength(tls, bp+736, int32(256))
-			if libws2_32.Xgethostname(tls, (*TTcl_DString)(unsafe.Pointer(bp+736)).Fstring1, (*TTcl_DString)(unsafe.Pointer(bp+736)).Flength) == 0 {
+			if libc.Xgethostname(tls, (*TTcl_DString)(unsafe.Pointer(bp+736)).Fstring1, (*TTcl_DString)(unsafe.Pointer(bp+736)).Flength) == 0 {
 				XTcl_ExternalToUtfDString(tls, libc.UintptrFromInt32(0), (*TTcl_DString)(unsafe.Pointer(bp+736)).Fstring1, -int32(1), bp+520)
 			}
 			XTcl_DStringFree(tls, bp+736)
@@ -374476,23 +374470,23 @@ func XTclpFinalizeSockets(tls *libc.TLS) {
 	}
 	if (*TThreadSpecificData18)(unsafe.Pointer(tsdPtr)).FsocketThread != libc.UintptrFromInt32(0) {
 		if (*TThreadSpecificData18)(unsafe.Pointer(tsdPtr)).Fhwnd != libc.UintptrFromInt32(0) {
-			libuser32.XPostMessageW(tls, (*TThreadSpecificData18)(unsafe.Pointer(tsdPtr)).Fhwnd, uint32(libc.Int32FromInt32(m_WM_USER3)+libc.Int32FromInt32(3)), uint64(0), 0)
+			libc.XPostMessageW(tls, (*TThreadSpecificData18)(unsafe.Pointer(tsdPtr)).Fhwnd, uint32(libc.Int32FromInt32(m_WM_USER3)+libc.Int32FromInt32(3)), uint64(0), 0)
 			/*
 			 * Wait for the thread to exit. This ensures that we are
 			 * completely cleaned up before we leave this function.
 			 */
-			libkernel32.XWaitForSingleObject(tls, (*TThreadSpecificData18)(unsafe.Pointer(tsdPtr)).FreadyEvent, uint32(m_INFINITE3))
+			libc.XWaitForSingleObject(tls, (*TThreadSpecificData18)(unsafe.Pointer(tsdPtr)).FreadyEvent, uint32(m_INFINITE3))
 			(*TThreadSpecificData18)(unsafe.Pointer(tsdPtr)).Fhwnd = libc.UintptrFromInt32(0)
 		}
-		libkernel32.XCloseHandle(tls, (*TThreadSpecificData18)(unsafe.Pointer(tsdPtr)).FsocketThread)
+		libc.XCloseHandle(tls, (*TThreadSpecificData18)(unsafe.Pointer(tsdPtr)).FsocketThread)
 		(*TThreadSpecificData18)(unsafe.Pointer(tsdPtr)).FsocketThread = libc.UintptrFromInt32(0)
 	}
 	if (*TThreadSpecificData18)(unsafe.Pointer(tsdPtr)).FreadyEvent != libc.UintptrFromInt32(0) {
-		libkernel32.XCloseHandle(tls, (*TThreadSpecificData18)(unsafe.Pointer(tsdPtr)).FreadyEvent)
+		libc.XCloseHandle(tls, (*TThreadSpecificData18)(unsafe.Pointer(tsdPtr)).FreadyEvent)
 		(*TThreadSpecificData18)(unsafe.Pointer(tsdPtr)).FreadyEvent = libc.UintptrFromInt32(0)
 	}
 	if (*TThreadSpecificData18)(unsafe.Pointer(tsdPtr)).FsocketListLock != libc.UintptrFromInt32(0) {
-		libkernel32.XCloseHandle(tls, (*TThreadSpecificData18)(unsafe.Pointer(tsdPtr)).FsocketListLock)
+		libc.XCloseHandle(tls, (*TThreadSpecificData18)(unsafe.Pointer(tsdPtr)).FsocketListLock)
 		(*TThreadSpecificData18)(unsafe.Pointer(tsdPtr)).FsocketListLock = libc.UintptrFromInt32(0)
 	}
 	XTcl_DeleteEventSource(tls, __ccgo_fp(_SocketSetupProc), __ccgo_fp(_SocketCheckProc), libc.UintptrFromInt32(0))
@@ -374593,7 +374587,7 @@ func _WaitForConnect(tls *libc.TLS, statePtr uintptr, errorCodePtr uintptr) (r i
 		 * Get the statePtr lock.
 		 */
 		tsdPtr = XTclThreadDataKeyGet(tls, uintptr(unsafe.Pointer(&_dataKey16)))
-		libkernel32.XWaitForSingleObject(tls, (*TThreadSpecificData18)(unsafe.Pointer(tsdPtr)).FsocketListLock, uint32(m_INFINITE3))
+		libc.XWaitForSingleObject(tls, (*TThreadSpecificData18)(unsafe.Pointer(tsdPtr)).FsocketListLock, uint32(m_INFINITE3))
 		/*
 		 * Check for connect event.
 		 */
@@ -374612,7 +374606,7 @@ func _WaitForConnect(tls *libc.TLS, statePtr uintptr, errorCodePtr uintptr) (r i
 			/*
 			 * Free list lock.
 			 */
-			libkernel32.XSetEvent(tls, (*TThreadSpecificData18)(unsafe.Pointer(tsdPtr)).FsocketListLock)
+			libc.XSetEvent(tls, (*TThreadSpecificData18)(unsafe.Pointer(tsdPtr)).FsocketListLock)
 			/*
 			 * Continue connect. If switched to synchroneous connect, the
 			 * connect is terminated.
@@ -374650,7 +374644,7 @@ func _WaitForConnect(tls *libc.TLS, statePtr uintptr, errorCodePtr uintptr) (r i
 		/*
 		 * Free list lock.
 		 */
-		libkernel32.XSetEvent(tls, (*TThreadSpecificData18)(unsafe.Pointer(tsdPtr)).FsocketListLock)
+		libc.XSetEvent(tls, (*TThreadSpecificData18)(unsafe.Pointer(tsdPtr)).FsocketListLock)
 		/*
 		 * Background operation returns with no action as there was no connect
 		 * event
@@ -374669,7 +374663,7 @@ func _WaitForConnect(tls *libc.TLS, statePtr uintptr, errorCodePtr uintptr) (r i
 		/*
 		 * Wait until something happens.
 		 */
-		libkernel32.XWaitForSingleObject(tls, (*TThreadSpecificData18)(unsafe.Pointer(tsdPtr)).FreadyEvent, uint32(m_INFINITE3))
+		libc.XWaitForSingleObject(tls, (*TThreadSpecificData18)(unsafe.Pointer(tsdPtr)).FreadyEvent, uint32(m_INFINITE3))
 	}
 	return r
 }
@@ -374734,12 +374728,12 @@ func _TcpInputProc(tls *libc.TLS, instanceData uintptr, buf uintptr, bufSize int
 	 * using non-blocking sockets.
 	 */
 	for int32(1) != 0 {
-		libuser32.XSendMessageW(tls, (*TThreadSpecificData18)(unsafe.Pointer(tsdPtr)).Fhwnd, uint32(libc.Int32FromInt32(m_WM_USER3)+libc.Int32FromInt32(2)), uint64(libc.Int32FromInt32(m_FALSE)), int64(statePtr))
+		libc.XSendMessageW(tls, (*TThreadSpecificData18)(unsafe.Pointer(tsdPtr)).Fhwnd, uint32(libc.Int32FromInt32(m_WM_USER3)+libc.Int32FromInt32(2)), uint64(libc.Int32FromInt32(m_FALSE)), int64(statePtr))
 		/*
 		 * Single fd operation: this proc is only called for a connected
 		 * socket.
 		 */
-		bytesRead = libws2_32.Xrecv(tls, (*TTcpFdList1)(unsafe.Pointer((*TTcpState)(unsafe.Pointer(statePtr)).Fsockets)).Ffd, buf, bufSize, 0)
+		bytesRead = libc.Xrecv(tls, (*TTcpFdList1)(unsafe.Pointer((*TTcpState)(unsafe.Pointer(statePtr)).Fsockets)).Ffd, buf, bufSize, 0)
 		*(*int32)(unsafe.Pointer(statePtr + 24)) &= ^(libc.Int32FromInt32(1) << libc.Int32FromInt32(m_FD_READ_BIT))
 		/*
 		 * Check for end-of-file condition or successful read.
@@ -374759,7 +374753,7 @@ func _TcpInputProc(tls *libc.TLS, instanceData uintptr, buf uintptr, bufSize int
 			bytesRead = 0
 			break
 		}
-		error1 = uint32(libws2_32.XWSAGetLastError(tls))
+		error1 = uint32(libc.XWSAGetLastError(tls))
 		/*
 		 * If an RST comes, then ignore the error and report an EOF just like
 		 * on unix.
@@ -374787,7 +374781,7 @@ func _TcpInputProc(tls *libc.TLS, instanceData uintptr, buf uintptr, bufSize int
 			break
 		}
 	}
-	libuser32.XSendMessageW(tls, (*TThreadSpecificData18)(unsafe.Pointer(tsdPtr)).Fhwnd, uint32(libc.Int32FromInt32(m_WM_USER3)+libc.Int32FromInt32(2)), uint64(libc.Int32FromInt32(m_TRUE)), int64(statePtr))
+	libc.XSendMessageW(tls, (*TThreadSpecificData18)(unsafe.Pointer(tsdPtr)).Fhwnd, uint32(libc.Int32FromInt32(m_WM_USER3)+libc.Int32FromInt32(2)), uint64(libc.Int32FromInt32(m_TRUE)), int64(statePtr))
 	return bytesRead
 }
 
@@ -374837,12 +374831,12 @@ func _TcpOutputProc(tls *libc.TLS, instanceData uintptr, buf uintptr, toWrite in
 		return -int32(1)
 	}
 	for int32(1) != 0 {
-		libuser32.XSendMessageW(tls, (*TThreadSpecificData18)(unsafe.Pointer(tsdPtr)).Fhwnd, uint32(libc.Int32FromInt32(m_WM_USER3)+libc.Int32FromInt32(2)), uint64(libc.Int32FromInt32(m_FALSE)), int64(statePtr))
+		libc.XSendMessageW(tls, (*TThreadSpecificData18)(unsafe.Pointer(tsdPtr)).Fhwnd, uint32(libc.Int32FromInt32(m_WM_USER3)+libc.Int32FromInt32(2)), uint64(libc.Int32FromInt32(m_FALSE)), int64(statePtr))
 		/*
 		 * Single fd operation: this proc is only called for a connected
 		 * socket.
 		 */
-		written = libws2_32.Xsend(tls, (*TTcpFdList1)(unsafe.Pointer((*TTcpState)(unsafe.Pointer(statePtr)).Fsockets)).Ffd, buf, toWrite, 0)
+		written = libc.Xsend(tls, (*TTcpFdList1)(unsafe.Pointer((*TTcpState)(unsafe.Pointer(statePtr)).Fsockets)).Ffd, buf, toWrite, 0)
 		if written != -int32(1) {
 			/*
 			 * Since Windows won't generate a new write event until we hit an
@@ -374861,7 +374855,7 @@ func _TcpOutputProc(tls *libc.TLS, instanceData uintptr, buf uintptr, toWrite in
 		 * event. Note that Windows only sends a new writable event after a
 		 * send fails with WSAEWOULDBLOCK.
 		 */
-		error1 = uint32(libws2_32.XWSAGetLastError(tls))
+		error1 = uint32(libc.XWSAGetLastError(tls))
 		if error1 == uint32(libc.Int32FromInt32(m_WSABASEERR)+libc.Int32FromInt32(35)) {
 			*(*int32)(unsafe.Pointer(statePtr + 24)) &= ^(libc.Int32FromInt32(1) << libc.Int32FromInt32(m_FD_WRITE_BIT))
 			if (*TTcpState)(unsafe.Pointer(statePtr)).Fflags&(libc.Int32FromInt32(1)<<libc.Int32FromInt32(0)) != 0 {
@@ -374884,7 +374878,7 @@ func _TcpOutputProc(tls *libc.TLS, instanceData uintptr, buf uintptr, toWrite in
 			break
 		}
 	}
-	libuser32.XSendMessageW(tls, (*TThreadSpecificData18)(unsafe.Pointer(tsdPtr)).Fhwnd, uint32(libc.Int32FromInt32(m_WM_USER3)+libc.Int32FromInt32(2)), uint64(libc.Int32FromInt32(m_TRUE)), int64(statePtr))
+	libc.XSendMessageW(tls, (*TThreadSpecificData18)(unsafe.Pointer(tsdPtr)).Fhwnd, uint32(libc.Int32FromInt32(m_WM_USER3)+libc.Int32FromInt32(2)), uint64(libc.Int32FromInt32(m_TRUE)), int64(statePtr))
 	return written
 }
 
@@ -374929,18 +374923,18 @@ func _TcpCloseProc(tls *libc.TLS, instanceData uintptr, interp uintptr) (r int32
 		for (*TTcpState)(unsafe.Pointer(statePtr)).Fsockets != libc.UintptrFromInt32(0) {
 			thisfd = (*TTcpState)(unsafe.Pointer(statePtr)).Fsockets
 			(*TTcpState)(unsafe.Pointer(statePtr)).Fsockets = (*TTcpFdList)(unsafe.Pointer(thisfd)).Fnext
-			if libws2_32.Xclosesocket(tls, (*TTcpFdList)(unsafe.Pointer(thisfd)).Ffd) == -int32(1) {
-				XTclWinConvertError(tls, uint32(libws2_32.XWSAGetLastError(tls)))
+			if libc.Xclosesocket(tls, (*TTcpFdList)(unsafe.Pointer(thisfd)).Ffd) == -int32(1) {
+				XTclWinConvertError(tls, uint32(libc.XWSAGetLastError(tls)))
 				errorCode = XTcl_GetErrno(tls)
 			}
 			XTclpFree(tls, thisfd)
 		}
 	}
 	if (*TTcpState)(unsafe.Pointer(statePtr)).Faddrlist != libc.UintptrFromInt32(0) {
-		libws2_32.XWspiapiFreeAddrInfo(tls, (*TTcpState)(unsafe.Pointer(statePtr)).Faddrlist)
+		libc.XWspiapiFreeAddrInfo(tls, (*TTcpState)(unsafe.Pointer(statePtr)).Faddrlist)
 	}
 	if (*TTcpState)(unsafe.Pointer(statePtr)).Fmyaddrlist != libc.UintptrFromInt32(0) {
-		libws2_32.XWspiapiFreeAddrInfo(tls, (*TTcpState)(unsafe.Pointer(statePtr)).Fmyaddrlist)
+		libc.XWspiapiFreeAddrInfo(tls, (*TTcpState)(unsafe.Pointer(statePtr)).Fmyaddrlist)
 	}
 	/*
 	 * Clear an eventual tsd info list pointer.
@@ -374952,12 +374946,12 @@ func _TcpCloseProc(tls *libc.TLS, instanceData uintptr, interp uintptr) (r int32
 		/*
 		 * Get infoPtr lock, because this concerns the notifier thread.
 		 */
-		libkernel32.XWaitForSingleObject(tls, (*TThreadSpecificData18)(unsafe.Pointer(tsdPtr)).FsocketListLock, uint32(m_INFINITE3))
+		libc.XWaitForSingleObject(tls, (*TThreadSpecificData18)(unsafe.Pointer(tsdPtr)).FsocketListLock, uint32(m_INFINITE3))
 		(*TThreadSpecificData18)(unsafe.Pointer(tsdPtr)).FpendingTcpState = libc.UintptrFromInt32(0)
 		/*
 		 * Free list lock.
 		 */
-		libkernel32.XSetEvent(tls, (*TThreadSpecificData18)(unsafe.Pointer(tsdPtr)).FsocketListLock)
+		libc.XSetEvent(tls, (*TThreadSpecificData18)(unsafe.Pointer(tsdPtr)).FsocketListLock)
 	}
 	/*
 	 * TIP #218. Removed the code removing the structure from the global
@@ -375004,12 +374998,12 @@ func _TcpClose2Proc(tls *libc.TLS, instanceData uintptr, interp uintptr, flags i
 	 * Single fd operation: Tcl_OpenTcpServer() does not set TCL_READABLE or
 	 * TCL_WRITABLE so this should never be called for a server socket.
 	 */
-	if flags&(libc.Int32FromInt32(1)<<libc.Int32FromInt32(1)) != 0 && libws2_32.Xshutdown(tls, (*TTcpFdList1)(unsafe.Pointer((*TTcpState)(unsafe.Pointer(statePtr)).Fsockets)).Ffd, m_SD_RECEIVE1) == -int32(1) {
-		XTclWinConvertError(tls, uint32(libws2_32.XWSAGetLastError(tls)))
+	if flags&(libc.Int32FromInt32(1)<<libc.Int32FromInt32(1)) != 0 && libc.Xshutdown(tls, (*TTcpFdList1)(unsafe.Pointer((*TTcpState)(unsafe.Pointer(statePtr)).Fsockets)).Ffd, m_SD_RECEIVE1) == -int32(1) {
+		XTclWinConvertError(tls, uint32(libc.XWSAGetLastError(tls)))
 		readError = XTcl_GetErrno(tls)
 	}
-	if flags&(libc.Int32FromInt32(1)<<libc.Int32FromInt32(2)) != 0 && libws2_32.Xshutdown(tls, (*TTcpFdList1)(unsafe.Pointer((*TTcpState)(unsafe.Pointer(statePtr)).Fsockets)).Ffd, int32(m_SD_SEND1)) == -int32(1) {
-		XTclWinConvertError(tls, uint32(libws2_32.XWSAGetLastError(tls)))
+	if flags&(libc.Int32FromInt32(1)<<libc.Int32FromInt32(2)) != 0 && libc.Xshutdown(tls, (*TTcpFdList1)(unsafe.Pointer((*TTcpState)(unsafe.Pointer(statePtr)).Fsockets)).Ffd, int32(m_SD_SEND1)) == -int32(1) {
+		XTclWinConvertError(tls, uint32(libc.XWSAGetLastError(tls)))
 		writeError = XTcl_GetErrno(tls)
 	}
 	if readError != 0 {
@@ -375136,13 +375130,13 @@ func _TcpGetOptionProc(tls *libc.TLS, instanceData uintptr, interp uintptr, opti
 				 * Populate the err variable with a POSIX error
 				 */
 				*(*int32)(unsafe.Pointer(bp + 1060)) = int32(4)
-				ret = libws2_32.Xgetsockopt(tls, sock, int32(0xffff), int32(0x1007), bp+1064, bp+1060)
+				ret = libc.Xgetsockopt(tls, sock, int32(0xffff), int32(0x1007), bp+1064, bp+1060)
 				/*
 				 * The error was not returned directly but should be taken
 				 * from WSA.
 				 */
 				if ret == -int32(1) {
-					*(*TDWORD)(unsafe.Pointer(bp + 1064)) = uint32(libws2_32.XWSAGetLastError(tls))
+					*(*TDWORD)(unsafe.Pointer(bp + 1064)) = uint32(libc.XWSAGetLastError(tls))
 				}
 				/*
 				 * Return error message.
@@ -375180,7 +375174,7 @@ func _TcpGetOptionProc(tls *libc.TLS, instanceData uintptr, interp uintptr, opti
 				return m_TCL_OK
 			}
 		} else {
-			if libws2_32.Xgetpeername(tls, sock, bp+1072, bp+1200) == 0 {
+			if libc.Xgetpeername(tls, sock, bp+1072, bp+1200) == 0 {
 				/*
 				 * Peername fetch succeeded - output list
 				 */
@@ -375188,9 +375182,9 @@ func _TcpGetOptionProc(tls *libc.TLS, instanceData uintptr, interp uintptr, opti
 					XTcl_DStringAppendElement(tls, dsPtr, __ccgo_ts+71851)
 					XTcl_DStringStartSublist(tls, dsPtr)
 				}
-				libws2_32.XWspiapiGetNameInfo(tls, bp+1072, *(*int32)(unsafe.Pointer(bp + 1200)), bp, uint64(1025), libc.UintptrFromInt32(0), uint64(0), int32(m_NI_NUMERICHOST1))
+				libc.XWspiapiGetNameInfo(tls, bp+1072, *(*int32)(unsafe.Pointer(bp + 1200)), bp, uint64(1025), libc.UintptrFromInt32(0), uint64(0), int32(m_NI_NUMERICHOST1))
 				XTcl_DStringAppendElement(tls, dsPtr, bp)
-				libws2_32.XWspiapiGetNameInfo(tls, bp+1072, *(*int32)(unsafe.Pointer(bp + 1200)), bp, uint64(1025), bp+1025, uint64(32), reverseDNS|int32(m_NI_NUMERICSERV1))
+				libc.XWspiapiGetNameInfo(tls, bp+1072, *(*int32)(unsafe.Pointer(bp + 1200)), bp, uint64(1025), bp+1025, uint64(32), reverseDNS|int32(m_NI_NUMERICSERV1))
 				XTcl_DStringAppendElement(tls, dsPtr, bp)
 				XTcl_DStringAppendElement(tls, dsPtr, bp+1025)
 				if len1 == uint64(0) {
@@ -375206,7 +375200,7 @@ func _TcpGetOptionProc(tls *libc.TLS, instanceData uintptr, interp uintptr, opti
 				 * peer). {Copied from unix/tclUnixChan.c}
 				 */
 				if len1 != 0 {
-					XTclWinConvertError(tls, uint32(libws2_32.XWSAGetLastError(tls)))
+					XTclWinConvertError(tls, uint32(libc.XWSAGetLastError(tls)))
 					if interp != 0 {
 						XTcl_SetObjResult(tls, interp, XTcl_ObjPrintf(tls, __ccgo_ts+71861, libc.VaList(bp+1352, XTcl_PosixError(tls, interp))))
 					}
@@ -375234,10 +375228,10 @@ func _TcpGetOptionProc(tls *libc.TLS, instanceData uintptr, interp uintptr, opti
 				}
 				sock = (*TTcpFdList)(unsafe.Pointer(fds)).Ffd
 				*(*int32)(unsafe.Pointer(bp + 1336)) = int32(128)
-				if libws2_32.Xgetsockname(tls, sock, bp+1208, bp+1336) >= 0 {
+				if libc.Xgetsockname(tls, sock, bp+1208, bp+1336) >= 0 {
 					flags = reverseDNS
 					found = int32(1)
-					libws2_32.XWspiapiGetNameInfo(tls, bp+1208, *(*int32)(unsafe.Pointer(bp + 1336)), bp, uint64(1025), libc.UintptrFromInt32(0), uint64(0), int32(m_NI_NUMERICHOST1))
+					libc.XWspiapiGetNameInfo(tls, bp+1208, *(*int32)(unsafe.Pointer(bp + 1336)), bp, uint64(1025), libc.UintptrFromInt32(0), uint64(0), int32(m_NI_NUMERICHOST1))
 					XTcl_DStringAppendElement(tls, dsPtr, bp)
 					/*
 					 * We don't want to resolve INADDR_ANY and sin6addr_any;
@@ -375266,7 +375260,7 @@ func _TcpGetOptionProc(tls *libc.TLS, instanceData uintptr, interp uintptr, opti
 							}
 						}
 					}
-					libws2_32.XWspiapiGetNameInfo(tls, bp+1208, *(*int32)(unsafe.Pointer(bp + 1336)), bp, uint64(1025), bp+1025, uint64(32), flags)
+					libc.XWspiapiGetNameInfo(tls, bp+1208, *(*int32)(unsafe.Pointer(bp + 1336)), bp, uint64(1025), bp+1025, uint64(32), flags)
 					XTcl_DStringAppendElement(tls, dsPtr, bp)
 					XTcl_DStringAppendElement(tls, dsPtr, bp+1025)
 				}
@@ -375283,7 +375277,7 @@ func _TcpGetOptionProc(tls *libc.TLS, instanceData uintptr, interp uintptr, opti
 			XTcl_DStringEndSublist(tls, dsPtr)
 		} else {
 			if interp != 0 {
-				XTclWinConvertError(tls, uint32(libws2_32.XWSAGetLastError(tls)))
+				XTclWinConvertError(tls, uint32(libc.XWSAGetLastError(tls)))
 				XTcl_SetObjResult(tls, interp, XTcl_ObjPrintf(tls, __ccgo_ts+71894, libc.VaList(bp+1352, XTcl_PosixError(tls, interp))))
 			}
 			return int32(m_TCL_ERROR)
@@ -375450,34 +375444,34 @@ _6:
 	 * iteration.
 	 */
 	if (*TTcpFdList1)(unsafe.Pointer((*TTcpState)(unsafe.Pointer(statePtr)).Fsockets)).Ffd != uint64(^libc.Int32FromInt32(0)) {
-		libws2_32.Xclosesocket(tls, (*TTcpFdList1)(unsafe.Pointer((*TTcpState)(unsafe.Pointer(statePtr)).Fsockets)).Ffd)
+		libc.Xclosesocket(tls, (*TTcpFdList1)(unsafe.Pointer((*TTcpState)(unsafe.Pointer(statePtr)).Fsockets)).Ffd)
 	}
 	/*
 	 * Get statePtr lock.
 	 */
-	libkernel32.XWaitForSingleObject(tls, (*TThreadSpecificData18)(unsafe.Pointer(tsdPtr)).FsocketListLock, uint32(m_INFINITE3))
+	libc.XWaitForSingleObject(tls, (*TThreadSpecificData18)(unsafe.Pointer(tsdPtr)).FsocketListLock, uint32(m_INFINITE3))
 	/*
 	 * Reset last error from last try
 	 */
 	libc.AtomicStorePInt32(statePtr+96, 0)
 	XTcl_SetErrno(tls, 0)
-	(*TTcpFdList1)(unsafe.Pointer((*TTcpState)(unsafe.Pointer(statePtr)).Fsockets)).Ffd = libws2_32.Xsocket(tls, (*Taddrinfo)(unsafe.Pointer((*TTcpState)(unsafe.Pointer(statePtr)).Fmyaddr)).Fai_family, int32(1), 0)
+	(*TTcpFdList1)(unsafe.Pointer((*TTcpState)(unsafe.Pointer(statePtr)).Fsockets)).Ffd = libc.Xsocket(tls, (*Taddrinfo)(unsafe.Pointer((*TTcpState)(unsafe.Pointer(statePtr)).Fmyaddr)).Fai_family, int32(1), 0)
 	/*
 	 * Free list lock.
 	 */
-	libkernel32.XSetEvent(tls, (*TThreadSpecificData18)(unsafe.Pointer(tsdPtr)).FsocketListLock)
+	libc.XSetEvent(tls, (*TThreadSpecificData18)(unsafe.Pointer(tsdPtr)).FsocketListLock)
 	/*
 	 * Continue on socket creation error.
 	 */
 	if (*TTcpFdList1)(unsafe.Pointer((*TTcpState)(unsafe.Pointer(statePtr)).Fsockets)).Ffd == uint64(^libc.Int32FromInt32(0)) {
-		XTclWinConvertError(tls, uint32(libws2_32.XWSAGetLastError(tls)))
+		XTclWinConvertError(tls, uint32(libc.XWSAGetLastError(tls)))
 		goto _5
 	}
 	/*
 	 * Win-NT has a misfeature that sockets are inherited in child
 	 * processes by default. Turn off the inherit bit.
 	 */
-	libkernel32.XSetHandleInformation(tls, uintptr((*TTcpFdList1)(unsafe.Pointer((*TTcpState)(unsafe.Pointer(statePtr)).Fsockets)).Ffd), uint32(m_HANDLE_FLAG_INHERIT1), uint32(0))
+	libc.XSetHandleInformation(tls, uintptr((*TTcpFdList1)(unsafe.Pointer((*TTcpState)(unsafe.Pointer(statePtr)).Fsockets)).Ffd), uint32(m_HANDLE_FLAG_INHERIT1), uint32(0))
 	/*
 	 * Set kernel space buffering
 	 */
@@ -375485,8 +375479,8 @@ _6:
 	/*
 	 * Try to bind to a local port.
 	 */
-	if libws2_32.Xbind(tls, (*TTcpFdList1)(unsafe.Pointer((*TTcpState)(unsafe.Pointer(statePtr)).Fsockets)).Ffd, (*Taddrinfo)(unsafe.Pointer((*TTcpState)(unsafe.Pointer(statePtr)).Fmyaddr)).Fai_addr, int32((*Taddrinfo)(unsafe.Pointer((*TTcpState)(unsafe.Pointer(statePtr)).Fmyaddr)).Fai_addrlen)) == -int32(1) {
-		XTclWinConvertError(tls, uint32(libws2_32.XWSAGetLastError(tls)))
+	if libc.Xbind(tls, (*TTcpFdList1)(unsafe.Pointer((*TTcpState)(unsafe.Pointer(statePtr)).Fsockets)).Ffd, (*Taddrinfo)(unsafe.Pointer((*TTcpState)(unsafe.Pointer(statePtr)).Fmyaddr)).Fai_addr, int32((*Taddrinfo)(unsafe.Pointer((*TTcpState)(unsafe.Pointer(statePtr)).Fmyaddr)).Fai_addrlen)) == -int32(1) {
+		XTclWinConvertError(tls, uint32(libc.XWSAGetLastError(tls)))
 		goto _5
 	}
 	/*
@@ -375498,7 +375492,7 @@ _6:
 		/*
 		 * Get statePtr lock.
 		 */
-		libkernel32.XWaitForSingleObject(tls, (*TThreadSpecificData18)(unsafe.Pointer(tsdPtr)).FsocketListLock, uint32(m_INFINITE3))
+		libc.XWaitForSingleObject(tls, (*TThreadSpecificData18)(unsafe.Pointer(tsdPtr)).FsocketListLock, uint32(m_INFINITE3))
 		/*
 		 * Bugfig for 336441ed59 to not ignore notifications until the
 		 * infoPtr is in the list.
@@ -375536,17 +375530,17 @@ _6:
 		/*
 		 * Free list lock.
 		 */
-		libkernel32.XSetEvent(tls, (*TThreadSpecificData18)(unsafe.Pointer(tsdPtr)).FsocketListLock)
+		libc.XSetEvent(tls, (*TThreadSpecificData18)(unsafe.Pointer(tsdPtr)).FsocketListLock)
 		/*
 		 * Activate accept notification.
 		 */
-		libuser32.XSendMessageW(tls, (*TThreadSpecificData18)(unsafe.Pointer(tsdPtr)).Fhwnd, uint32(libc.Int32FromInt32(m_WM_USER3)+libc.Int32FromInt32(2)), uint64(libc.Int32FromInt32(m_TRUE)), int64(statePtr))
+		libc.XSendMessageW(tls, (*TThreadSpecificData18)(unsafe.Pointer(tsdPtr)).Fhwnd, uint32(libc.Int32FromInt32(m_WM_USER3)+libc.Int32FromInt32(2)), uint64(libc.Int32FromInt32(m_TRUE)), int64(statePtr))
 	}
 	/*
 	 * Attempt to connect to the remote socket.
 	 */
-	libws2_32.Xconnect(tls, (*TTcpFdList1)(unsafe.Pointer((*TTcpState)(unsafe.Pointer(statePtr)).Fsockets)).Ffd, (*Taddrinfo)(unsafe.Pointer((*TTcpState)(unsafe.Pointer(statePtr)).Faddr)).Fai_addr, int32((*Taddrinfo)(unsafe.Pointer((*TTcpState)(unsafe.Pointer(statePtr)).Faddr)).Fai_addrlen))
-	error1 = uint32(libws2_32.XWSAGetLastError(tls))
+	libc.Xconnect(tls, (*TTcpFdList1)(unsafe.Pointer((*TTcpState)(unsafe.Pointer(statePtr)).Fsockets)).Ffd, (*Taddrinfo)(unsafe.Pointer((*TTcpState)(unsafe.Pointer(statePtr)).Faddr)).Fai_addr, int32((*Taddrinfo)(unsafe.Pointer((*TTcpState)(unsafe.Pointer(statePtr)).Faddr)).Fai_addrlen))
+	error1 = uint32(libc.XWSAGetLastError(tls))
 	XTclWinConvertError(tls, error1)
 	if !(async_connect != 0 && error1 == uint32(libc.Int32FromInt32(m_WSABASEERR)+libc.Int32FromInt32(35))) {
 		goto _8
@@ -375571,7 +375565,7 @@ reenter:
 	/*
 	 * Get statePtr lock.
 	 */
-	libkernel32.XWaitForSingleObject(tls, (*TThreadSpecificData18)(unsafe.Pointer(tsdPtr)).FsocketListLock, uint32(m_INFINITE3))
+	libc.XWaitForSingleObject(tls, (*TThreadSpecificData18)(unsafe.Pointer(tsdPtr)).FsocketListLock, uint32(m_INFINITE3))
 	/*
 	 * Get signaled connect error.
 	 */
@@ -375583,7 +375577,7 @@ reenter:
 	/*
 	 * Free list lock.
 	 */
-	libkernel32.XSetEvent(tls, (*TThreadSpecificData18)(unsafe.Pointer(tsdPtr)).FsocketListLock)
+	libc.XSetEvent(tls, (*TThreadSpecificData18)(unsafe.Pointer(tsdPtr)).FsocketListLock)
 _8:
 	;
 	/*
@@ -375631,7 +375625,7 @@ out:
 		 * Register for interest in events in the select mask. Note that this
 		 * automatically places the socket into non-blocking mode.
 		 */
-		libuser32.XSendMessageW(tls, (*TThreadSpecificData18)(unsafe.Pointer(tsdPtr)).Fhwnd, uint32(libc.Int32FromInt32(m_WM_USER3)+libc.Int32FromInt32(2)), uint64(libc.Int32FromInt32(m_TRUE)), int64(statePtr))
+		libc.XSendMessageW(tls, (*TThreadSpecificData18)(unsafe.Pointer(tsdPtr)).Fhwnd, uint32(libc.Int32FromInt32(m_WM_USER3)+libc.Int32FromInt32(2)), uint64(libc.Int32FromInt32(m_TRUE)), int64(statePtr))
 	} else {
 		/*
 		 * Connect failed
@@ -375646,7 +375640,7 @@ out:
 			/*
 			 * Get statePtr lock.
 			 */
-			libkernel32.XWaitForSingleObject(tls, (*TThreadSpecificData18)(unsafe.Pointer(tsdPtr)).FsocketListLock, uint32(m_INFINITE3))
+			libc.XWaitForSingleObject(tls, (*TThreadSpecificData18)(unsafe.Pointer(tsdPtr)).FsocketListLock, uint32(m_INFINITE3))
 			/*
 			 * Signal ready readable and writable events.
 			 */
@@ -375662,7 +375656,7 @@ out:
 			/*
 			 * Free list lock.
 			 */
-			libkernel32.XSetEvent(tls, (*TThreadSpecificData18)(unsafe.Pointer(tsdPtr)).FsocketListLock)
+			libc.XSetEvent(tls, (*TThreadSpecificData18)(unsafe.Pointer(tsdPtr)).FsocketListLock)
 		}
 		/*
 		 * Error message on synchroneous connect
@@ -375722,7 +375716,7 @@ func XTcl_OpenTcpClient(tls *libc.TLS, interp uintptr, port int32, host uintptr,
 	 */
 	if !(XTclCreateSocketAddress(tls, interp, bp+8, host, port, 0, bp) != 0) || !(XTclCreateSocketAddress(tls, interp, bp+16, myaddr, myport, int32(1), bp) != 0) {
 		if *(*uintptr)(unsafe.Pointer(bp + 8)) != libc.UintptrFromInt32(0) {
-			libws2_32.XWspiapiFreeAddrInfo(tls, *(*uintptr)(unsafe.Pointer(bp + 8)))
+			libc.XWspiapiFreeAddrInfo(tls, *(*uintptr)(unsafe.Pointer(bp + 8)))
 		}
 		if interp != libc.UintptrFromInt32(0) {
 			XTcl_SetObjResult(tls, interp, XTcl_ObjPrintf(tls, __ccgo_ts+71946, libc.VaList(bp+56, *(*uintptr)(unsafe.Pointer(bp)))))
@@ -375791,7 +375785,7 @@ func XTcl_MakeTcpClientChannel(tls *libc.TLS, sock uintptr) (r TTcl_Channel) {
 	 * Start watching for read/write events on the socket.
 	 */
 	(*TTcpState)(unsafe.Pointer(statePtr)).FselectEvents = libc.Int32FromInt32(1)<<libc.Int32FromInt32(m_FD_READ_BIT) | libc.Int32FromInt32(1)<<libc.Int32FromInt32(m_FD_CLOSE_BIT) | libc.Int32FromInt32(1)<<libc.Int32FromInt32(m_FD_WRITE_BIT)
-	libuser32.XSendMessageW(tls, (*TThreadSpecificData18)(unsafe.Pointer(tsdPtr)).Fhwnd, uint32(libc.Int32FromInt32(m_WM_USER3)+libc.Int32FromInt32(2)), uint64(libc.Int32FromInt32(m_TRUE)), int64(statePtr))
+	libc.XSendMessageW(tls, (*TThreadSpecificData18)(unsafe.Pointer(tsdPtr)).Fhwnd, uint32(libc.Int32FromInt32(m_WM_USER3)+libc.Int32FromInt32(2)), uint64(libc.Int32FromInt32(m_TRUE)), int64(statePtr))
 	libc.Xsprintf(tls, bp, __ccgo_ts+71971, libc.VaList(bp+32, statePtr))
 	(*TTcpState)(unsafe.Pointer(statePtr)).Fchannel = XTcl_CreateChannel(tls, uintptr(unsafe.Pointer(&_tcpChannelType)), bp, statePtr, libc.Int32FromInt32(1)<<libc.Int32FromInt32(1)|libc.Int32FromInt32(1)<<libc.Int32FromInt32(2))
 	XTcl_SetChannelOption(tls, libc.UintptrFromInt32(0), (*TTcpState)(unsafe.Pointer(statePtr)).Fchannel, __ccgo_ts+38825, __ccgo_ts+71978)
@@ -375856,16 +375850,16 @@ func XTcl_OpenTcpServer(tls *libc.TLS, interp uintptr, port int32, myHost uintpt
 		if !(addrPtr != libc.UintptrFromInt32(0)) {
 			break
 		}
-		sock = libws2_32.Xsocket(tls, (*Taddrinfo)(unsafe.Pointer(addrPtr)).Fai_family, (*Taddrinfo)(unsafe.Pointer(addrPtr)).Fai_socktype, (*Taddrinfo)(unsafe.Pointer(addrPtr)).Fai_protocol)
+		sock = libc.Xsocket(tls, (*Taddrinfo)(unsafe.Pointer(addrPtr)).Fai_family, (*Taddrinfo)(unsafe.Pointer(addrPtr)).Fai_socktype, (*Taddrinfo)(unsafe.Pointer(addrPtr)).Fai_protocol)
 		if sock == uint64(^libc.Int32FromInt32(0)) {
-			XTclWinConvertError(tls, uint32(libws2_32.XWSAGetLastError(tls)))
+			XTclWinConvertError(tls, uint32(libc.XWSAGetLastError(tls)))
 			goto _1
 		}
 		/*
 		 * Win-NT has a misfeature that sockets are inherited in child
 		 * processes by default. Turn off the inherit bit.
 		 */
-		libkernel32.XSetHandleInformation(tls, uintptr(sock), uint32(m_HANDLE_FLAG_INHERIT1), uint32(0))
+		libc.XSetHandleInformation(tls, uintptr(sock), uint32(m_HANDLE_FLAG_INHERIT1), uint32(0))
 		/*
 		 * Set kernel space buffering
 		 */
@@ -375878,7 +375872,7 @@ func XTcl_OpenTcpServer(tls *libc.TLS, interp uintptr, port int32, myHost uintpt
 		 * member as sockaddr_in, we can handle both through the IPv4 API.
 		 */
 		if port == 0 && int32(int32(chosenport)) != 0 {
-			(*Tsockaddr_in)(unsafe.Pointer((*Taddrinfo)(unsafe.Pointer(addrPtr)).Fai_addr)).Fsin_port = libws2_32.Xhtons(tls, chosenport)
+			(*Tsockaddr_in)(unsafe.Pointer((*Taddrinfo)(unsafe.Pointer(addrPtr)).Fai_addr)).Fsin_port = libc.Xhtons(tls, chosenport)
 		}
 		/*
 		 * Bind to the specified port. Note that we must not call
@@ -375889,9 +375883,9 @@ func XTcl_OpenTcpServer(tls *libc.TLS, interp uintptr, port int32, myHost uintpt
 		 * set into nonblocking mode. If there is trouble, this is one
 		 * place to look for bugs.
 		 */
-		if libws2_32.Xbind(tls, sock, (*Taddrinfo)(unsafe.Pointer(addrPtr)).Fai_addr, int32((*Taddrinfo)(unsafe.Pointer(addrPtr)).Fai_addrlen)) == -int32(1) {
-			XTclWinConvertError(tls, uint32(libws2_32.XWSAGetLastError(tls)))
-			libws2_32.Xclosesocket(tls, sock)
+		if libc.Xbind(tls, sock, (*Taddrinfo)(unsafe.Pointer(addrPtr)).Fai_addr, int32((*Taddrinfo)(unsafe.Pointer(addrPtr)).Fai_addrlen)) == -int32(1) {
+			XTclWinConvertError(tls, uint32(libc.XWSAGetLastError(tls)))
+			libc.Xclosesocket(tls, sock)
 			goto _1
 		}
 		if port == 0 && int32(int32(chosenport)) == 0 {
@@ -375900,8 +375894,8 @@ func XTcl_OpenTcpServer(tls *libc.TLS, interp uintptr, port int32, myHost uintpt
 			 * Synchronize port numbers when binding to port 0 of multiple
 			 * addresses.
 			 */
-			if libws2_32.Xgetsockname(tls, sock, bp+48, bp+176) >= 0 {
-				chosenport = libws2_32.Xntohs(tls, (*(*Tsockaddr_in)(unsafe.Pointer(&*(*Taddress)(unsafe.Pointer(bp + 48))))).Fsin_port)
+			if libc.Xgetsockname(tls, sock, bp+48, bp+176) >= 0 {
+				chosenport = libc.Xntohs(tls, (*(*Tsockaddr_in)(unsafe.Pointer(&*(*Taddress)(unsafe.Pointer(bp + 48))))).Fsin_port)
 			}
 		}
 		/*
@@ -375909,9 +375903,9 @@ func XTcl_OpenTcpServer(tls *libc.TLS, interp uintptr, port int32, myHost uintpt
 		 * value allowed on each platform (Win32 and Win32s may be
 		 * different, and there may be differences between TCP/IP stacks).
 		 */
-		if libws2_32.Xlisten(tls, sock, int32(0x7fffffff)) == -int32(1) {
-			XTclWinConvertError(tls, uint32(libws2_32.XWSAGetLastError(tls)))
-			libws2_32.Xclosesocket(tls, sock)
+		if libc.Xlisten(tls, sock, int32(0x7fffffff)) == -int32(1) {
+			XTclWinConvertError(tls, uint32(libc.XWSAGetLastError(tls)))
+			libc.Xclosesocket(tls, sock)
 			goto _1
 		}
 		if statePtr == libc.UintptrFromInt32(0) {
@@ -375931,7 +375925,7 @@ func XTcl_OpenTcpServer(tls *libc.TLS, interp uintptr, port int32, myHost uintpt
 error:
 	;
 	if *(*uintptr)(unsafe.Pointer(bp)) != libc.UintptrFromInt32(0) {
-		libws2_32.XWspiapiFreeAddrInfo(tls, *(*uintptr)(unsafe.Pointer(bp)))
+		libc.XWspiapiFreeAddrInfo(tls, *(*uintptr)(unsafe.Pointer(bp)))
 	}
 	if statePtr != libc.UintptrFromInt32(0) {
 		tsdPtr = XTclThreadDataKeyGet(tls, uintptr(unsafe.Pointer(&_dataKey16)))
@@ -375947,8 +375941,8 @@ error:
 		 * Register for interest in events in the select mask. Note that this
 		 * automatically places the socket into non-blocking mode.
 		 */
-		libws2_32.Xioctlsocket(tls, sock, int32(libc.Uint32FromUint32(0x80000000)|uint32(libc.Int32FromInt64(4)&libc.Int32FromInt32(0x7f)<<libc.Int32FromInt32(16))|uint32(libc.Int32FromUint8('f')<<libc.Int32FromInt32(8))|uint32(libc.Int32FromInt32(126))), bp+32)
-		libuser32.XSendMessageW(tls, (*TThreadSpecificData18)(unsafe.Pointer(tsdPtr)).Fhwnd, uint32(libc.Int32FromInt32(m_WM_USER3)+libc.Int32FromInt32(2)), uint64(libc.Int32FromInt32(m_TRUE)), int64(statePtr))
+		libc.Xioctlsocket(tls, sock, int32(libc.Uint32FromUint32(0x80000000)|uint32(libc.Int32FromInt64(4)&libc.Int32FromInt32(0x7f)<<libc.Int32FromInt32(16))|uint32(libc.Int32FromUint8('f')<<libc.Int32FromInt32(8))|uint32(libc.Int32FromInt32(126))), bp+32)
+		libc.XSendMessageW(tls, (*TThreadSpecificData18)(unsafe.Pointer(tsdPtr)).Fhwnd, uint32(libc.Int32FromInt32(m_WM_USER3)+libc.Int32FromInt32(2)), uint64(libc.Int32FromInt32(m_TRUE)), int64(statePtr))
 		if XTcl_SetChannelOption(tls, interp, (*TTcpState)(unsafe.Pointer(statePtr)).Fchannel, __ccgo_ts+38816, __ccgo_ts+1943) == int32(m_TCL_ERROR) {
 			XTcl_Close(tls, libc.UintptrFromInt32(0), (*TTcpState)(unsafe.Pointer(statePtr)).Fchannel)
 			return libc.UintptrFromInt32(0)
@@ -375964,7 +375958,7 @@ error:
 		XTcl_SetObjResult(tls, interp, XTcl_ObjPrintf(tls, __ccgo_ts+71946, libc.VaList(bp+192, v2)))
 	}
 	if sock != uint64(^libc.Int32FromInt32(0)) {
-		libws2_32.Xclosesocket(tls, sock)
+		libc.Xclosesocket(tls, sock)
 	}
 	return libc.UintptrFromInt32(0)
 }
@@ -376002,7 +375996,7 @@ func _TcpAccept(tls *libc.TLS, fds uintptr, newSocket TSOCKET, _addr Taddress) {
 	 * Win-NT has a misfeature that sockets are inherited in child processes
 	 * by default. Turn off the inherit bit.
 	 */
-	libkernel32.XSetHandleInformation(tls, uintptr(newSocket), uint32(m_HANDLE_FLAG_INHERIT1), uint32(0))
+	libc.XSetHandleInformation(tls, uintptr(newSocket), uint32(m_HANDLE_FLAG_INHERIT1), uint32(0))
 	/*
 	 * Add this socket to the global list of sockets.
 	 */
@@ -376011,7 +376005,7 @@ func _TcpAccept(tls *libc.TLS, fds uintptr, newSocket TSOCKET, _addr Taddress) {
 	 * Select on read/write events and create the channel.
 	 */
 	(*TTcpState)(unsafe.Pointer(newInfoPtr)).FselectEvents = libc.Int32FromInt32(1)<<libc.Int32FromInt32(m_FD_READ_BIT) | libc.Int32FromInt32(1)<<libc.Int32FromInt32(m_FD_WRITE_BIT) | libc.Int32FromInt32(1)<<libc.Int32FromInt32(m_FD_CLOSE_BIT)
-	libuser32.XSendMessageW(tls, (*TThreadSpecificData18)(unsafe.Pointer(tsdPtr)).Fhwnd, uint32(libc.Int32FromInt32(m_WM_USER3)+libc.Int32FromInt32(2)), uint64(libc.Int32FromInt32(m_TRUE)), int64(newInfoPtr))
+	libc.XSendMessageW(tls, (*TThreadSpecificData18)(unsafe.Pointer(tsdPtr)).Fhwnd, uint32(libc.Int32FromInt32(m_WM_USER3)+libc.Int32FromInt32(2)), uint64(libc.Int32FromInt32(m_TRUE)), int64(newInfoPtr))
 	libc.Xsprintf(tls, bp+128, __ccgo_ts+71971, libc.VaList(bp+1216, newInfoPtr))
 	(*TTcpState)(unsafe.Pointer(newInfoPtr)).Fchannel = XTcl_CreateChannel(tls, uintptr(unsafe.Pointer(&_tcpChannelType)), bp+128, newInfoPtr, libc.Int32FromInt32(1)<<libc.Int32FromInt32(1)|libc.Int32FromInt32(1)<<libc.Int32FromInt32(2))
 	if XTcl_SetChannelOption(tls, libc.UintptrFromInt32(0), (*TTcpState)(unsafe.Pointer(newInfoPtr)).Fchannel, __ccgo_ts+38825, __ccgo_ts+71978) == int32(m_TCL_ERROR) {
@@ -376026,7 +376020,7 @@ func _TcpAccept(tls *libc.TLS, fds uintptr, newSocket TSOCKET, _addr Taddress) {
 	 * Invoke the accept callback function.
 	 */
 	if (*TTcpState)(unsafe.Pointer(statePtr)).FacceptProc != libc.UintptrFromInt32(0) {
-		libws2_32.XWspiapiGetNameInfo(tls, bp, len1, bp+149, uint64(1025), bp+1174, uint64(32), libc.Int32FromInt32(m_NI_NUMERICHOST1)|libc.Int32FromInt32(m_NI_NUMERICSERV1))
+		libc.XWspiapiGetNameInfo(tls, bp, len1, bp+149, uint64(1025), bp+1174, uint64(32), libc.Int32FromInt32(m_NI_NUMERICHOST1)|libc.Int32FromInt32(m_NI_NUMERICSERV1))
 		(*(*func(*libc.TLS, TClientData, TTcl_Channel, uintptr, int32))(unsafe.Pointer(&struct{ uintptr }{(*TTcpState)(unsafe.Pointer(statePtr)).FacceptProc})))(tls, (*TTcpState)(unsafe.Pointer(statePtr)).FacceptProcData, (*TTcpState)(unsafe.Pointer(newInfoPtr)).Fchannel, bp+149, libc.Xatoi(tls, bp+1174))
 	}
 }
@@ -376076,8 +376070,8 @@ func _InitSockets(tls *libc.TLS) {
 		_windowClass.FlpfnWndProc = __ccgo_fp(_SocketProc)
 		_windowClass.FhIcon = libc.UintptrFromInt32(0)
 		_windowClass.FhCursor = libc.UintptrFromInt32(0)
-		if !(libuser32.XRegisterClassW(tls, uintptr(unsafe.Pointer(&_windowClass))) != 0) {
-			XTclWinConvertError(tls, libkernel32.XGetLastError(tls))
+		if !(libc.XRegisterClassW(tls, uintptr(unsafe.Pointer(&_windowClass))) != 0) {
+			XTclWinConvertError(tls, libc.XGetLastError(tls))
 			goto initFailure
 		}
 	}
@@ -376097,24 +376091,24 @@ func _InitSockets(tls *libc.TLS) {
 	(*TThreadSpecificData18)(unsafe.Pointer(tsdPtr)).FsocketList = libc.UintptrFromInt32(0)
 	(*TThreadSpecificData18)(unsafe.Pointer(tsdPtr)).Fhwnd = libc.UintptrFromInt32(0)
 	(*TThreadSpecificData18)(unsafe.Pointer(tsdPtr)).FthreadId = XTcl_GetCurrentThread(tls)
-	(*TThreadSpecificData18)(unsafe.Pointer(tsdPtr)).FreadyEvent = libkernel32.XCreateEventW(tls, libc.UintptrFromInt32(0), m_FALSE, m_FALSE, libc.UintptrFromInt32(0))
+	(*TThreadSpecificData18)(unsafe.Pointer(tsdPtr)).FreadyEvent = libc.XCreateEventW(tls, libc.UintptrFromInt32(0), m_FALSE, m_FALSE, libc.UintptrFromInt32(0))
 	if (*TThreadSpecificData18)(unsafe.Pointer(tsdPtr)).FreadyEvent == libc.UintptrFromInt32(0) {
 		goto initFailure
 	}
-	(*TThreadSpecificData18)(unsafe.Pointer(tsdPtr)).FsocketListLock = libkernel32.XCreateEventW(tls, libc.UintptrFromInt32(0), m_FALSE, int32(m_TRUE), libc.UintptrFromInt32(0))
+	(*TThreadSpecificData18)(unsafe.Pointer(tsdPtr)).FsocketListLock = libc.XCreateEventW(tls, libc.UintptrFromInt32(0), m_FALSE, int32(m_TRUE), libc.UintptrFromInt32(0))
 	if (*TThreadSpecificData18)(unsafe.Pointer(tsdPtr)).FsocketListLock == libc.UintptrFromInt32(0) {
 		goto initFailure
 	}
-	(*TThreadSpecificData18)(unsafe.Pointer(tsdPtr)).FsocketThread = libkernel32.XCreateThread(tls, libc.UintptrFromInt32(0), uint64(256), __ccgo_fp(_SocketThread), tsdPtr, uint32(0), bp)
+	(*TThreadSpecificData18)(unsafe.Pointer(tsdPtr)).FsocketThread = libc.XCreateThread(tls, libc.UintptrFromInt32(0), uint64(256), __ccgo_fp(_SocketThread), tsdPtr, uint32(0), bp)
 	if (*TThreadSpecificData18)(unsafe.Pointer(tsdPtr)).FsocketThread == libc.UintptrFromInt32(0) {
 		goto initFailure
 	}
-	libkernel32.XSetThreadPriority(tls, (*TThreadSpecificData18)(unsafe.Pointer(tsdPtr)).FsocketThread, int32(m_THREAD_BASE_PRIORITY_MAX))
+	libc.XSetThreadPriority(tls, (*TThreadSpecificData18)(unsafe.Pointer(tsdPtr)).FsocketThread, int32(m_THREAD_BASE_PRIORITY_MAX))
 	/*
 	 * Wait for the thread to signal when the window has been created and if
 	 * it is ready to go.
 	 */
-	libkernel32.XWaitForSingleObject(tls, (*TThreadSpecificData18)(unsafe.Pointer(tsdPtr)).FreadyEvent, uint32(m_INFINITE3))
+	libc.XWaitForSingleObject(tls, (*TThreadSpecificData18)(unsafe.Pointer(tsdPtr)).FreadyEvent, uint32(m_INFINITE3))
 	if (*TThreadSpecificData18)(unsafe.Pointer(tsdPtr)).Fhwnd == libc.UintptrFromInt32(0) {
 		goto initFailure /* Trouble creating the window. */
 	}
@@ -376180,7 +376174,7 @@ func _SocketExitHandler(tls *libc.TLS, clientData uintptr) {
 	 * most, this thread.
 	 */
 	XTclpFinalizeSockets(tls)
-	libuser32.XUnregisterClassW(tls, uintptr(unsafe.Pointer(&_className)), XTclWinGetTclInstance(tls))
+	libc.XUnregisterClassW(tls, uintptr(unsafe.Pointer(&_className)), XTclWinGetTclInstance(tls))
 	_initialized3 = 0
 }
 
@@ -376215,7 +376209,7 @@ func _SocketSetupProc(tls *libc.TLS, data uintptr, flags int32) {
 	/*
 	 * Check to see if there is a ready socket.	 If so, poll.
 	 */
-	libkernel32.XWaitForSingleObject(tls, (*TThreadSpecificData18)(unsafe.Pointer(tsdPtr)).FsocketListLock, uint32(m_INFINITE3))
+	libc.XWaitForSingleObject(tls, (*TThreadSpecificData18)(unsafe.Pointer(tsdPtr)).FsocketListLock, uint32(m_INFINITE3))
 	statePtr = (*TThreadSpecificData18)(unsafe.Pointer(tsdPtr)).FsocketList
 	for {
 		if !(statePtr != libc.UintptrFromInt32(0)) {
@@ -376230,7 +376224,7 @@ func _SocketSetupProc(tls *libc.TLS, data uintptr, flags int32) {
 		;
 		statePtr = (*TTcpState)(unsafe.Pointer(statePtr)).FnextPtr
 	}
-	libkernel32.XSetEvent(tls, (*TThreadSpecificData18)(unsafe.Pointer(tsdPtr)).FsocketListLock)
+	libc.XSetEvent(tls, (*TThreadSpecificData18)(unsafe.Pointer(tsdPtr)).FsocketListLock)
 }
 
 /*
@@ -376263,7 +376257,7 @@ func _SocketCheckProc(tls *libc.TLS, data uintptr, flags int32) {
 	 * queued (caused by persistent states that won't generate WinSock
 	 * events).
 	 */
-	libkernel32.XWaitForSingleObject(tls, (*TThreadSpecificData18)(unsafe.Pointer(tsdPtr)).FsocketListLock, uint32(m_INFINITE3))
+	libc.XWaitForSingleObject(tls, (*TThreadSpecificData18)(unsafe.Pointer(tsdPtr)).FsocketListLock, uint32(m_INFINITE3))
 	statePtr = (*TThreadSpecificData18)(unsafe.Pointer(tsdPtr)).FsocketList
 	for {
 		if !(statePtr != libc.UintptrFromInt32(0)) {
@@ -376281,7 +376275,7 @@ func _SocketCheckProc(tls *libc.TLS, data uintptr, flags int32) {
 		;
 		statePtr = (*TTcpState)(unsafe.Pointer(statePtr)).FnextPtr
 	}
-	libkernel32.XSetEvent(tls, (*TThreadSpecificData18)(unsafe.Pointer(tsdPtr)).FsocketListLock)
+	libc.XSetEvent(tls, (*TThreadSpecificData18)(unsafe.Pointer(tsdPtr)).FsocketListLock)
 }
 
 /*
@@ -376328,7 +376322,7 @@ func _SocketEventProc(tls *libc.TLS, evPtr uintptr, flags int32) (r int32) {
 	/*
 	 * Find the specified socket on the socket list.
 	 */
-	libkernel32.XWaitForSingleObject(tls, (*TThreadSpecificData18)(unsafe.Pointer(tsdPtr)).FsocketListLock, uint32(m_INFINITE3))
+	libc.XWaitForSingleObject(tls, (*TThreadSpecificData18)(unsafe.Pointer(tsdPtr)).FsocketListLock, uint32(m_INFINITE3))
 	statePtr = (*TThreadSpecificData18)(unsafe.Pointer(tsdPtr)).FsocketList
 	for {
 		if !(statePtr != libc.UintptrFromInt32(0)) {
@@ -376346,7 +376340,7 @@ func _SocketEventProc(tls *libc.TLS, evPtr uintptr, flags int32) (r int32) {
 	 * Discard events that have gone stale.
 	 */
 	if !(statePtr != 0) {
-		libkernel32.XSetEvent(tls, (*TThreadSpecificData18)(unsafe.Pointer(tsdPtr)).FsocketListLock)
+		libc.XSetEvent(tls, (*TThreadSpecificData18)(unsafe.Pointer(tsdPtr)).FsocketListLock)
 		return int32(1)
 	}
 	/*
@@ -376361,14 +376355,14 @@ func _SocketEventProc(tls *libc.TLS, evPtr uintptr, flags int32) (r int32) {
 			/*
 			 * Do one step and save eventual connect error
 			 */
-			libkernel32.XSetEvent(tls, (*TThreadSpecificData18)(unsafe.Pointer(tsdPtr)).FsocketListLock)
+			libc.XSetEvent(tls, (*TThreadSpecificData18)(unsafe.Pointer(tsdPtr)).FsocketListLock)
 			_WaitForConnect(tls, statePtr, libc.UintptrFromInt32(0))
 		} else {
 			/*
 			 * No async connect reenter pending. Just clear event.
 			 */
 			*(*int32)(unsafe.Pointer(statePtr + 24)) &= ^(libc.Int32FromInt32(1) << libc.Int32FromInt32(m_FD_CONNECT_BIT))
-			libkernel32.XSetEvent(tls, (*TThreadSpecificData18)(unsafe.Pointer(tsdPtr)).FsocketListLock)
+			libc.XSetEvent(tls, (*TThreadSpecificData18)(unsafe.Pointer(tsdPtr)).FsocketListLock)
 		}
 		return int32(1)
 	}
@@ -376385,7 +376379,7 @@ func _SocketEventProc(tls *libc.TLS, evPtr uintptr, flags int32) (r int32) {
 			 * Accept the incoming connection request.
 			 */
 			*(*int32)(unsafe.Pointer(bp + 128)) = int32(128)
-			newSocket = libws2_32.Xaccept(tls, (*TTcpFdList)(unsafe.Pointer(fds)).Ffd, bp, bp+128)
+			newSocket = libc.Xaccept(tls, (*TTcpFdList)(unsafe.Pointer(fds)).Ffd, bp, bp+128)
 			/*
 			 * On Tcl server sockets with multiple OS fds we loop over the fds
 			 * trying an accept() on each, so we expect INVALID_SOCKET.  There
@@ -376410,7 +376404,7 @@ func _SocketEventProc(tls *libc.TLS, evPtr uintptr, flags int32) (r int32) {
 			if libc.AtomicLoadPInt32(statePtr+32) <= 0 {
 				*(*int32)(unsafe.Pointer(statePtr + 24)) &= ^(libc.Int32FromInt32(1) << libc.Int32FromInt32(m_FD_ACCEPT_BIT))
 			}
-			libkernel32.XSetEvent(tls, (*TThreadSpecificData18)(unsafe.Pointer(tsdPtr)).FsocketListLock)
+			libc.XSetEvent(tls, (*TThreadSpecificData18)(unsafe.Pointer(tsdPtr)).FsocketListLock)
 			/*
 			 * Caution: TcpAccept() has the side-effect of evaluating the
 			 * server accept script (via AcceptCallbackProc() in tclIOCmd.c),
@@ -376433,10 +376427,10 @@ func _SocketEventProc(tls *libc.TLS, evPtr uintptr, flags int32) (r int32) {
 		 */
 		libc.AtomicStorePInt32(statePtr+32, 0)
 		*(*int32)(unsafe.Pointer(statePtr + 24)) &= ^(libc.Int32FromInt32(1) << libc.Int32FromInt32(m_FD_ACCEPT_BIT))
-		libkernel32.XSetEvent(tls, (*TThreadSpecificData18)(unsafe.Pointer(tsdPtr)).FsocketListLock)
+		libc.XSetEvent(tls, (*TThreadSpecificData18)(unsafe.Pointer(tsdPtr)).FsocketListLock)
 		return int32(1)
 	}
-	libkernel32.XSetEvent(tls, (*TThreadSpecificData18)(unsafe.Pointer(tsdPtr)).FsocketListLock)
+	libc.XSetEvent(tls, (*TThreadSpecificData18)(unsafe.Pointer(tsdPtr)).FsocketListLock)
 	/*
 	 * Mask off unwanted events and compute the read/write mask so we can
 	 * notify the channel.
@@ -376470,7 +376464,7 @@ func _SocketEventProc(tls *libc.TLS, evPtr uintptr, flags int32) (r int32) {
 				 * still readable, notify the channel driver, otherwise reset the
 				 * async select handler and keep waiting.
 				 */
-				libuser32.XSendMessageW(tls, (*TThreadSpecificData18)(unsafe.Pointer(tsdPtr)).Fhwnd, uint32(libc.Int32FromInt32(m_WM_USER3)+libc.Int32FromInt32(2)), uint64(libc.Int32FromInt32(m_FALSE)), int64(statePtr))
+				libc.XSendMessageW(tls, (*TThreadSpecificData18)(unsafe.Pointer(tsdPtr)).Fhwnd, uint32(libc.Int32FromInt32(m_WM_USER3)+libc.Int32FromInt32(2)), uint64(libc.Int32FromInt32(m_FALSE)), int64(statePtr))
 				(*Tfd_set)(unsafe.Pointer(bp + 144)).Ffd_count = uint32(0)
 				__i = uint32(0)
 				for {
@@ -376493,11 +376487,11 @@ func _SocketEventProc(tls *libc.TLS, evPtr uintptr, flags int32) (r int32) {
 				}
 				(*(*Ttimeval)(unsafe.Pointer(bp + 664))).Ftv_usec = 0
 				(*(*Ttimeval)(unsafe.Pointer(bp + 664))).Ftv_sec = 0
-				if libws2_32.Xselect(tls, 0, bp+144, libc.UintptrFromInt32(0), libc.UintptrFromInt32(0), bp+664) != 0 {
+				if libc.Xselect(tls, 0, bp+144, libc.UintptrFromInt32(0), libc.UintptrFromInt32(0), bp+664) != 0 {
 					mask |= libc.Int32FromInt32(1) << libc.Int32FromInt32(1)
 				} else {
 					*(*int32)(unsafe.Pointer(statePtr + 24)) &= ^(libc.Int32FromInt32(1) << libc.Int32FromInt32(m_FD_READ_BIT))
-					libuser32.XSendMessageW(tls, (*TThreadSpecificData18)(unsafe.Pointer(tsdPtr)).Fhwnd, uint32(libc.Int32FromInt32(m_WM_USER3)+libc.Int32FromInt32(2)), uint64(libc.Int32FromInt32(m_TRUE)), int64(statePtr))
+					libc.XSendMessageW(tls, (*TThreadSpecificData18)(unsafe.Pointer(tsdPtr)).Fhwnd, uint32(libc.Int32FromInt32(m_WM_USER3)+libc.Int32FromInt32(2)), uint64(libc.Int32FromInt32(m_TRUE)), int64(statePtr))
 				}
 			}
 		}
@@ -376624,13 +376618,13 @@ func _WaitForSocketEvent(tls *libc.TLS, statePtr uintptr, events int32, errorCod
 	/*
 	 * Reset WSAAsyncSelect so we have a fresh set of events pending.
 	 */
-	libuser32.XSendMessageW(tls, (*TThreadSpecificData18)(unsafe.Pointer(tsdPtr)).Fhwnd, uint32(libc.Int32FromInt32(m_WM_USER3)+libc.Int32FromInt32(2)), uint64(libc.Int32FromInt32(m_FALSE)), int64(statePtr))
-	libuser32.XSendMessageW(tls, (*TThreadSpecificData18)(unsafe.Pointer(tsdPtr)).Fhwnd, uint32(libc.Int32FromInt32(m_WM_USER3)+libc.Int32FromInt32(2)), uint64(libc.Int32FromInt32(m_TRUE)), int64(statePtr))
+	libc.XSendMessageW(tls, (*TThreadSpecificData18)(unsafe.Pointer(tsdPtr)).Fhwnd, uint32(libc.Int32FromInt32(m_WM_USER3)+libc.Int32FromInt32(2)), uint64(libc.Int32FromInt32(m_FALSE)), int64(statePtr))
+	libc.XSendMessageW(tls, (*TThreadSpecificData18)(unsafe.Pointer(tsdPtr)).Fhwnd, uint32(libc.Int32FromInt32(m_WM_USER3)+libc.Int32FromInt32(2)), uint64(libc.Int32FromInt32(m_TRUE)), int64(statePtr))
 	for int32(1) != 0 {
 		/*
 		 * Get statePtr lock.
 		 */
-		libkernel32.XWaitForSingleObject(tls, (*TThreadSpecificData18)(unsafe.Pointer(tsdPtr)).FsocketListLock, uint32(m_INFINITE3))
+		libc.XWaitForSingleObject(tls, (*TThreadSpecificData18)(unsafe.Pointer(tsdPtr)).FsocketListLock, uint32(m_INFINITE3))
 		/*
 		 * Check if event occured.
 		 */
@@ -376638,7 +376632,7 @@ func _WaitForSocketEvent(tls *libc.TLS, statePtr uintptr, events int32, errorCod
 		/*
 		 * Free list lock.
 		 */
-		libkernel32.XSetEvent(tls, (*TThreadSpecificData18)(unsafe.Pointer(tsdPtr)).FsocketListLock)
+		libc.XSetEvent(tls, (*TThreadSpecificData18)(unsafe.Pointer(tsdPtr)).FsocketListLock)
 		/*
 		 * Exit loop if event occured.
 		 */
@@ -376656,7 +376650,7 @@ func _WaitForSocketEvent(tls *libc.TLS, statePtr uintptr, events int32, errorCod
 		/*
 		 * Wait until something happens.
 		 */
-		libkernel32.XWaitForSingleObject(tls, (*TThreadSpecificData18)(unsafe.Pointer(tsdPtr)).FreadyEvent, uint32(m_INFINITE3))
+		libc.XWaitForSingleObject(tls, (*TThreadSpecificData18)(unsafe.Pointer(tsdPtr)).FreadyEvent, uint32(m_INFINITE3))
 	}
 	XTcl_SetServiceMode(tls, oldMode)
 	return result
@@ -376688,11 +376682,11 @@ func _SocketThread(tls *libc.TLS, arg TLPVOID) (r TDWORD) {
 	/*
 	 * Create a dummy window receiving socket events.
 	 */
-	(*TThreadSpecificData18)(unsafe.Pointer(tsdPtr)).Fhwnd = libuser32.XCreateWindowExW(tls, libc.Uint32FromInt32(0), uintptr(unsafe.Pointer(&_className)), uintptr(unsafe.Pointer(&_className)), uint32(0x00000000), 0, 0, 0, 0, libc.UintptrFromInt32(0), libc.UintptrFromInt32(0), _windowClass.FhInstance, arg)
+	(*TThreadSpecificData18)(unsafe.Pointer(tsdPtr)).Fhwnd = libc.XCreateWindowExW(tls, libc.Uint32FromInt32(0), uintptr(unsafe.Pointer(&_className)), uintptr(unsafe.Pointer(&_className)), uint32(0x00000000), 0, 0, 0, 0, libc.UintptrFromInt32(0), libc.UintptrFromInt32(0), _windowClass.FhInstance, arg)
 	/*
 	 * Signalize thread creator that we are done creating the window.
 	 */
-	libkernel32.XSetEvent(tls, (*TThreadSpecificData18)(unsafe.Pointer(tsdPtr)).FreadyEvent)
+	libc.XSetEvent(tls, (*TThreadSpecificData18)(unsafe.Pointer(tsdPtr)).FreadyEvent)
 	/*
 	 * If unable to create the window, exit this thread immediately.
 	 */
@@ -376704,13 +376698,13 @@ func _SocketThread(tls *libc.TLS, arg TLPVOID) (r TDWORD) {
 	 * exits only when instructed to do so by the call to
 	 * PostMessageW(SOCKET_TERMINATE) in TclpFinalizeSockets().
 	 */
-	for libuser32.XGetMessageW(tls, bp, libc.UintptrFromInt32(0), uint32(0), uint32(0)) > 0 {
-		libuser32.XDispatchMessageW(tls, bp)
+	for libc.XGetMessageW(tls, bp, libc.UintptrFromInt32(0), uint32(0), uint32(0)) > 0 {
+		libc.XDispatchMessageW(tls, bp)
 	}
 	/*
 	 * This releases waiters on thread exit in TclpFinalizeSockets()
 	 */
-	libkernel32.XSetEvent(tls, (*TThreadSpecificData18)(unsafe.Pointer(tsdPtr)).FreadyEvent)
+	libc.XSetEvent(tls, (*TThreadSpecificData18)(unsafe.Pointer(tsdPtr)).FreadyEvent)
 	return uint32((*(*TMSG)(unsafe.Pointer(bp))).FwParam)
 }
 
@@ -376739,23 +376733,23 @@ func _SocketProc(tls *libc.TLS, hwnd THWND, message TUINT, wParam TWPARAM, lPara
 	_, _, _, _, _, _, _ = error1, event, fds, info_found, socket, statePtr, tsdPtr
 	info_found = 0
 	fds = libc.UintptrFromInt32(0)
-	tsdPtr = uintptr(libuser32.XGetWindowLongPtrW(tls, hwnd, -int32(21)))
+	tsdPtr = uintptr(libc.XGetWindowLongPtrW(tls, hwnd, -int32(21)))
 	switch message {
 	default:
-		return libuser32.XDefWindowProcW(tls, hwnd, message, wParam, lParam)
+		return libc.XDefWindowProcW(tls, hwnd, message, wParam, lParam)
 	case uint32(m_WM_CREATE1):
 		/*
 		 * Store the initial tsdPtr, it's from a different thread, so it's not
 		 * directly accessible, but needed.
 		 */
-		libuser32.XSetWindowLongPtrW(tls, hwnd, -int32(21), int64((*TtagCREATESTRUCTA)(unsafe.Pointer(uintptr(lParam))).FlpCreateParams))
+		libc.XSetWindowLongPtrW(tls, hwnd, -int32(21), int64((*TtagCREATESTRUCTA)(unsafe.Pointer(uintptr(lParam))).FlpCreateParams))
 	case uint32(m_WM_DESTROY1):
-		libuser32.XPostQuitMessage(tls, 0)
+		libc.XPostQuitMessage(tls, 0)
 	case uint32(libc.Int32FromInt32(m_WM_USER3) + libc.Int32FromInt32(1)):
 		event = int32(uint16(uint64(lParam) & libc.Uint64FromInt32(0xffff)))
 		error1 = int32(uint16(uint64(lParam) >> libc.Int32FromInt32(16) & libc.Uint64FromInt32(0xffff)))
 		socket = wParam
-		libkernel32.XWaitForSingleObject(tls, (*TThreadSpecificData18)(unsafe.Pointer(tsdPtr)).FsocketListLock, uint32(m_INFINITE3))
+		libc.XWaitForSingleObject(tls, (*TThreadSpecificData18)(unsafe.Pointer(tsdPtr)).FsocketListLock, uint32(m_INFINITE3))
 		/*
 		 * Find the specified socket on the socket list and update its
 		 * eventState flag.
@@ -376813,10 +376807,10 @@ func _SocketProc(tls *libc.TLS, hwnd THWND, message TUINT, wParam TWPARAM, lPara
 			/*
 			 * Wake up the Main Thread.
 			 */
-			libkernel32.XSetEvent(tls, (*TThreadSpecificData18)(unsafe.Pointer(tsdPtr)).FreadyEvent)
+			libc.XSetEvent(tls, (*TThreadSpecificData18)(unsafe.Pointer(tsdPtr)).FreadyEvent)
 			XTcl_ThreadAlert(tls, (*TThreadSpecificData18)(unsafe.Pointer(tsdPtr)).FthreadId)
 		}
-		libkernel32.XSetEvent(tls, (*TThreadSpecificData18)(unsafe.Pointer(tsdPtr)).FsocketListLock)
+		libc.XSetEvent(tls, (*TThreadSpecificData18)(unsafe.Pointer(tsdPtr)).FsocketListLock)
 	case uint32(libc.Int32FromInt32(m_WM_USER3) + libc.Int32FromInt32(2)):
 		statePtr = uintptr(lParam)
 		fds = (*TTcpState)(unsafe.Pointer(statePtr)).Fsockets
@@ -376825,12 +376819,12 @@ func _SocketProc(tls *libc.TLS, hwnd THWND, message TUINT, wParam TWPARAM, lPara
 				break
 			}
 			if wParam == uint64(m_TRUE) {
-				libws2_32.XWSAAsyncSelect(tls, (*TTcpFdList)(unsafe.Pointer(fds)).Ffd, hwnd, uint32(libc.Int32FromInt32(m_WM_USER3)+libc.Int32FromInt32(1)), int32((*TTcpState)(unsafe.Pointer(statePtr)).FselectEvents))
+				libc.XWSAAsyncSelect(tls, (*TTcpFdList)(unsafe.Pointer(fds)).Ffd, hwnd, uint32(libc.Int32FromInt32(m_WM_USER3)+libc.Int32FromInt32(1)), int32((*TTcpState)(unsafe.Pointer(statePtr)).FselectEvents))
 			} else {
 				/*
 				 * Clear the selection mask
 				 */
-				libws2_32.XWSAAsyncSelect(tls, (*TTcpFdList)(unsafe.Pointer(fds)).Ffd, hwnd, uint32(0), 0)
+				libc.XWSAAsyncSelect(tls, (*TTcpFdList)(unsafe.Pointer(fds)).Ffd, hwnd, uint32(0), 0)
 			}
 			goto _2
 		_2:
@@ -376838,7 +376832,7 @@ func _SocketProc(tls *libc.TLS, hwnd THWND, message TUINT, wParam TWPARAM, lPara
 			fds = (*TTcpFdList)(unsafe.Pointer(fds)).Fnext
 		}
 	case uint32(libc.Int32FromInt32(m_WM_USER3) + libc.Int32FromInt32(3)):
-		libuser32.XDestroyWindow(tls, hwnd)
+		libc.XDestroyWindow(tls, hwnd)
 		break
 	}
 	return 0
@@ -376900,19 +376894,19 @@ func _FindFDInList(tls *libc.TLS, statePtr uintptr, socket TSOCKET) (r int32) {
  */
 
 func XTclWinGetSockOpt(tls *libc.TLS, s TSOCKET, level int32, optname int32, optval uintptr, optlen uintptr) (r int32) {
-	return libws2_32.Xgetsockopt(tls, s, level, optname, optval, optlen)
+	return libc.Xgetsockopt(tls, s, level, optname, optval, optlen)
 }
 
 func XTclWinSetSockOpt(tls *libc.TLS, s TSOCKET, level int32, optname int32, optval uintptr, optlen int32) (r int32) {
-	return libws2_32.Xsetsockopt(tls, s, level, optname, optval, optlen)
+	return libc.Xsetsockopt(tls, s, level, optname, optval, optlen)
 }
 
 func XTclpInetNtoa(tls *libc.TLS, addr Tin_addr) (r uintptr) {
-	return libws2_32.Xinet_ntoa(tls, addr)
+	return libc.Xinet_ntoa(tls, addr)
 }
 
 func XTclWinGetServByName(tls *libc.TLS, name uintptr, proto uintptr) (r uintptr) {
-	return libws2_32.Xgetservbyname(tls, name, proto)
+	return libc.Xgetservbyname(tls, name, proto)
 }
 
 /*
@@ -376943,13 +376937,13 @@ func _TcpThreadActionProc(tls *libc.TLS, instanceData uintptr, action int32) {
 		 */
 		_InitSockets(tls)
 		tsdPtr = XTcl_GetThreadData(tls, uintptr(unsafe.Pointer(&_dataKey16)), int32(56))
-		libkernel32.XWaitForSingleObject(tls, (*TThreadSpecificData18)(unsafe.Pointer(tsdPtr)).FsocketListLock, uint32(m_INFINITE3))
+		libc.XWaitForSingleObject(tls, (*TThreadSpecificData18)(unsafe.Pointer(tsdPtr)).FsocketListLock, uint32(m_INFINITE3))
 		(*TTcpState)(unsafe.Pointer(statePtr)).FnextPtr = (*TThreadSpecificData18)(unsafe.Pointer(tsdPtr)).FsocketList
 		(*TThreadSpecificData18)(unsafe.Pointer(tsdPtr)).FsocketList = statePtr
 		if statePtr == (*TThreadSpecificData18)(unsafe.Pointer(tsdPtr)).FpendingTcpState {
 			(*TThreadSpecificData18)(unsafe.Pointer(tsdPtr)).FpendingTcpState = libc.UintptrFromInt32(0)
 		}
-		libkernel32.XSetEvent(tls, (*TThreadSpecificData18)(unsafe.Pointer(tsdPtr)).FsocketListLock)
+		libc.XSetEvent(tls, (*TThreadSpecificData18)(unsafe.Pointer(tsdPtr)).FsocketListLock)
 		notifyCmd = int32(m_TRUE)
 	} else {
 		removed = 0
@@ -376958,7 +376952,7 @@ func _TcpThreadActionProc(tls *libc.TLS, instanceData uintptr, action int32) {
 		 * TIP #218, Bugfix: All access to socketList has to be protected by
 		 * the lock.
 		 */
-		libkernel32.XWaitForSingleObject(tls, (*TThreadSpecificData18)(unsafe.Pointer(tsdPtr)).FsocketListLock, uint32(m_INFINITE3))
+		libc.XWaitForSingleObject(tls, (*TThreadSpecificData18)(unsafe.Pointer(tsdPtr)).FsocketListLock, uint32(m_INFINITE3))
 		nextPtrPtr = tsdPtr + 48
 		for {
 			if !(*(*uintptr)(unsafe.Pointer(nextPtrPtr)) != libc.UintptrFromInt32(0)) {
@@ -376974,7 +376968,7 @@ func _TcpThreadActionProc(tls *libc.TLS, instanceData uintptr, action int32) {
 			;
 			nextPtrPtr = *(*uintptr)(unsafe.Pointer(nextPtrPtr)) + 104
 		}
-		libkernel32.XSetEvent(tls, (*TThreadSpecificData18)(unsafe.Pointer(tsdPtr)).FsocketListLock)
+		libc.XSetEvent(tls, (*TThreadSpecificData18)(unsafe.Pointer(tsdPtr)).FsocketListLock)
 		/*
 		 * This could happen if the channel was created in one thread and then
 		 * moved to another without updating the thread local data in each
@@ -376989,7 +376983,7 @@ func _TcpThreadActionProc(tls *libc.TLS, instanceData uintptr, action int32) {
 	 * Ensure that, or stop, notifications for the socket occur in this
 	 * thread.
 	 */
-	libuser32.XSendMessageW(tls, (*TThreadSpecificData18)(unsafe.Pointer(tsdPtr)).Fhwnd, uint32(libc.Int32FromInt32(m_WM_USER3)+libc.Int32FromInt32(2)), uint64(notifyCmd), int64(statePtr))
+	libc.XSendMessageW(tls, (*TThreadSpecificData18)(unsafe.Pointer(tsdPtr)).Fhwnd, uint32(libc.Int32FromInt32(m_WM_USER3)+libc.Int32FromInt32(2)), uint64(notifyCmd), int64(statePtr))
 }
 
 type TTcpFdList1 = struct {
@@ -377198,13 +377192,13 @@ func XTclpThreadCreate(tls *libc.TLS, idPtr uintptr, proc uintptr, clientData TC
 	(*TWinThread)(unsafe.Pointer(winThreadPtr)).FlpStartAddress = proc
 	(*TWinThread)(unsafe.Pointer(winThreadPtr)).FlpParameter = clientData
 	(*TWinThread)(unsafe.Pointer(winThreadPtr)).FfpControl = libc.X_controlfp(tls, uint32(0), uint32(0))
-	libkernel32.XEnterCriticalSection(tls, uintptr(unsafe.Pointer(&_joinLock)))
+	libc.XEnterCriticalSection(tls, uintptr(unsafe.Pointer(&_joinLock)))
 	*(*TTcl_ThreadId)(unsafe.Pointer(idPtr)) = uintptr(0) /* must initialize as Tcl_Thread is a pointer and
 	 * on WIN64 sizeof void* != sizeof unsigned
 	 */
 	tHandle = uintptr(libc.X_beginthreadex(tls, libc.UintptrFromInt32(0), uint32(uint32(stackSize)), __ccgo_fp(_TclWinThreadStart), winThreadPtr, uint32(0), idPtr))
 	if tHandle == libc.UintptrFromInt32(0) {
-		libkernel32.XLeaveCriticalSection(tls, uintptr(unsafe.Pointer(&_joinLock)))
+		libc.XLeaveCriticalSection(tls, uintptr(unsafe.Pointer(&_joinLock)))
 		return int32(m_TCL_ERROR)
 	} else {
 		if flags&int32(m_TCL_THREAD_JOINABLE1) != 0 {
@@ -377214,8 +377208,8 @@ func XTclpThreadCreate(tls *libc.TLS, idPtr uintptr, proc uintptr, clientData TC
 		 * The only purpose of this is to decrement the reference count so the
 		 * OS resources will be reacquired when the thread closes.
 		 */
-		libkernel32.XCloseHandle(tls, tHandle)
-		libkernel32.XLeaveCriticalSection(tls, uintptr(unsafe.Pointer(&_joinLock)))
+		libc.XCloseHandle(tls, tHandle)
+		libc.XLeaveCriticalSection(tls, uintptr(unsafe.Pointer(&_joinLock)))
 		return m_TCL_OK
 	}
 	return r
@@ -377261,9 +377255,9 @@ func XTcl_JoinThread(tls *libc.TLS, threadId TTcl_ThreadId, result uintptr) (r i
  */
 
 func XTclpThreadExit(tls *libc.TLS, status int32) {
-	libkernel32.XEnterCriticalSection(tls, uintptr(unsafe.Pointer(&_joinLock)))
+	libc.XEnterCriticalSection(tls, uintptr(unsafe.Pointer(&_joinLock)))
 	XTclSignalExitThread(tls, XTcl_GetCurrentThread(tls), status)
-	libkernel32.XLeaveCriticalSection(tls, uintptr(unsafe.Pointer(&_joinLock)))
+	libc.XLeaveCriticalSection(tls, uintptr(unsafe.Pointer(&_joinLock)))
 	libc.X_endthreadex(tls, uint32(uint32(status)))
 }
 
@@ -377284,7 +377278,7 @@ func XTclpThreadExit(tls *libc.TLS, status int32) {
  */
 
 func XTcl_GetCurrentThread(tls *libc.TLS) (r TTcl_ThreadId) {
-	return uintptr(uint64(libkernel32.XGetCurrentThreadId(tls)))
+	return uintptr(uint64(libc.XGetCurrentThreadId(tls)))
 }
 
 /*
@@ -377315,11 +377309,11 @@ func XTclpInitLock(tls *libc.TLS) {
 		 * that create interpreters in parallel.
 		 */
 		_init = int32(1)
-		libkernel32.XInitializeCriticalSection(tls, uintptr(unsafe.Pointer(&_joinLock)))
-		libkernel32.XInitializeCriticalSection(tls, uintptr(unsafe.Pointer(&_initLock)))
-		libkernel32.XInitializeCriticalSection(tls, uintptr(unsafe.Pointer(&_globalLock)))
+		libc.XInitializeCriticalSection(tls, uintptr(unsafe.Pointer(&_joinLock)))
+		libc.XInitializeCriticalSection(tls, uintptr(unsafe.Pointer(&_initLock)))
+		libc.XInitializeCriticalSection(tls, uintptr(unsafe.Pointer(&_globalLock)))
 	}
-	libkernel32.XEnterCriticalSection(tls, uintptr(unsafe.Pointer(&_initLock)))
+	libc.XEnterCriticalSection(tls, uintptr(unsafe.Pointer(&_initLock)))
 }
 
 /*
@@ -377340,7 +377334,7 @@ func XTclpInitLock(tls *libc.TLS) {
  */
 
 func XTclpInitUnlock(tls *libc.TLS) {
-	libkernel32.XLeaveCriticalSection(tls, uintptr(unsafe.Pointer(&_initLock)))
+	libc.XLeaveCriticalSection(tls, uintptr(unsafe.Pointer(&_initLock)))
 }
 
 /*
@@ -377372,11 +377366,11 @@ func XTclpGlobalLock(tls *libc.TLS) {
 		 * that create interpreters in parallel.
 		 */
 		_init = int32(1)
-		libkernel32.XInitializeCriticalSection(tls, uintptr(unsafe.Pointer(&_joinLock)))
-		libkernel32.XInitializeCriticalSection(tls, uintptr(unsafe.Pointer(&_initLock)))
-		libkernel32.XInitializeCriticalSection(tls, uintptr(unsafe.Pointer(&_globalLock)))
+		libc.XInitializeCriticalSection(tls, uintptr(unsafe.Pointer(&_joinLock)))
+		libc.XInitializeCriticalSection(tls, uintptr(unsafe.Pointer(&_initLock)))
+		libc.XInitializeCriticalSection(tls, uintptr(unsafe.Pointer(&_globalLock)))
 	}
-	libkernel32.XEnterCriticalSection(tls, uintptr(unsafe.Pointer(&_globalLock)))
+	libc.XEnterCriticalSection(tls, uintptr(unsafe.Pointer(&_globalLock)))
 }
 
 /*
@@ -377397,7 +377391,7 @@ func XTclpGlobalLock(tls *libc.TLS) {
  */
 
 func XTclpGlobalUnlock(tls *libc.TLS) {
-	libkernel32.XLeaveCriticalSection(tls, uintptr(unsafe.Pointer(&_globalLock)))
+	libc.XLeaveCriticalSection(tls, uintptr(unsafe.Pointer(&_globalLock)))
 }
 
 /*
@@ -377443,17 +377437,17 @@ func XTcl_GetAllocMutex(tls *libc.TLS) (r uintptr) {
 
 func XTclFinalizeLock(tls *libc.TLS) {
 	XTclpGlobalLock(tls)
-	libkernel32.XDeleteCriticalSection(tls, uintptr(unsafe.Pointer(&_joinLock)))
+	libc.XDeleteCriticalSection(tls, uintptr(unsafe.Pointer(&_joinLock)))
 	/*
 	 * Destroy the critical section that we are holding!
 	 */
-	libkernel32.XDeleteCriticalSection(tls, uintptr(unsafe.Pointer(&_globalLock)))
+	libc.XDeleteCriticalSection(tls, uintptr(unsafe.Pointer(&_globalLock)))
 	_init = 0
-	libkernel32.XLeaveCriticalSection(tls, uintptr(unsafe.Pointer(&_initLock)))
+	libc.XLeaveCriticalSection(tls, uintptr(unsafe.Pointer(&_initLock)))
 	/*
 	 * Destroy the critical section that we were holding.
 	 */
-	libkernel32.XDeleteCriticalSection(tls, uintptr(unsafe.Pointer(&_initLock)))
+	libc.XDeleteCriticalSection(tls, uintptr(unsafe.Pointer(&_initLock)))
 }
 
 const m_INFINITE5 = 4294967295
@@ -377681,7 +377675,7 @@ func XTclpGetWideClicks(tls *libc.TLS) (r TTcl_WideInt) {
 		 * is consistent across all processors. Therefore, the frequency need
 		 * only be queried upon application initialization.
 		 */
-		if libkernel32.XQueryPerformanceFrequency(tls, bp+8) != 0 {
+		if libc.XQueryPerformanceFrequency(tls, bp+8) != 0 {
 			_wideClick.FperfCounter = int32(1)
 			_wideClick.FmicrosecsScale = float64(1e+06) / float64(*(*TLONGLONG)(unsafe.Pointer(bp + 8)))
 		} else {
@@ -377692,7 +377686,7 @@ func XTclpGetWideClicks(tls *libc.TLS) (r TTcl_WideInt) {
 		_wideClick.Finitialized = int32(1)
 	}
 	if _wideClick.FperfCounter != 0 {
-		if libkernel32.XQueryPerformanceCounter(tls, bp) != 0 {
+		if libc.XQueryPerformanceCounter(tls, bp) != 0 {
 			return *(*TLONGLONG)(unsafe.Pointer(bp))
 		}
 		/* fallback using microseconds */
@@ -377877,7 +377871,7 @@ func _NativeGetMicroseconds(tls *libc.TLS) (r TTcl_WideInt) {
 		if !(_timeInfo.Finitialized != 0) {
 			*(*TDWORD)(unsafe.Pointer(uintptr(unsafe.Pointer(&_timeInfo)) + 112)) = uint32(0xD53E8000)
 			*(*TLONG)(unsafe.Pointer(uintptr(unsafe.Pointer(&_timeInfo)) + 112 + 4)) = int32(0x019DB1DE)
-			_timeInfo.FperfCounterAvailable = libkernel32.XQueryPerformanceFrequency(tls, uintptr(unsafe.Pointer(&_timeInfo))+80)
+			_timeInfo.FperfCounterAvailable = libc.XQueryPerformanceFrequency(tls, uintptr(unsafe.Pointer(&_timeInfo))+80)
 			/*
 			 * Some hardware abstraction layers use the CPU clock in place of
 			 * the real-time clock as a performance counter reference. This
@@ -377909,18 +377903,18 @@ func _NativeGetMicroseconds(tls *libc.TLS) (r TTcl_WideInt) {
 			 * calibrate it.
 			 */
 			if _timeInfo.FperfCounterAvailable != 0 {
-				libkernel32.XInitializeCriticalSection(tls, uintptr(unsafe.Pointer(&_timeInfo)))
-				_timeInfo.FreadyEvent = libkernel32.XCreateEventW(tls, libc.UintptrFromInt32(0), m_FALSE, m_FALSE, libc.UintptrFromInt32(0))
-				_timeInfo.FexitEvent = libkernel32.XCreateEventW(tls, libc.UintptrFromInt32(0), m_FALSE, m_FALSE, libc.UintptrFromInt32(0))
-				_timeInfo.FcalibrationThread = libkernel32.XCreateThread(tls, libc.UintptrFromInt32(0), uint64(256), __ccgo_fp(_CalibrationThread), libc.UintptrFromInt32(0), uint32(0), bp)
-				libkernel32.XSetThreadPriority(tls, _timeInfo.FcalibrationThread, int32(m_THREAD_BASE_PRIORITY_MAX))
+				libc.XInitializeCriticalSection(tls, uintptr(unsafe.Pointer(&_timeInfo)))
+				_timeInfo.FreadyEvent = libc.XCreateEventW(tls, libc.UintptrFromInt32(0), m_FALSE, m_FALSE, libc.UintptrFromInt32(0))
+				_timeInfo.FexitEvent = libc.XCreateEventW(tls, libc.UintptrFromInt32(0), m_FALSE, m_FALSE, libc.UintptrFromInt32(0))
+				_timeInfo.FcalibrationThread = libc.XCreateThread(tls, libc.UintptrFromInt32(0), uint64(256), __ccgo_fp(_CalibrationThread), libc.UintptrFromInt32(0), uint32(0), bp)
+				libc.XSetThreadPriority(tls, _timeInfo.FcalibrationThread, int32(m_THREAD_BASE_PRIORITY_MAX))
 				/*
 				 * Wait for the thread just launched to start running, and
 				 * create an exit handler that kills it so that it doesn't
 				 * outlive unloading tclXX.dll
 				 */
-				libkernel32.XWaitForSingleObject(tls, _timeInfo.FreadyEvent, uint32(m_INFINITE5))
-				libkernel32.XCloseHandle(tls, _timeInfo.FreadyEvent)
+				libc.XWaitForSingleObject(tls, _timeInfo.FreadyEvent, uint32(m_INFINITE5))
+				libc.XCloseHandle(tls, _timeInfo.FreadyEvent)
 				XTcl_CreateExitHandler(tls, __ccgo_fp(_StopCalibration), libc.UintptrFromInt32(0))
 			}
 			_timeInfo.Finitialized = int32(m_TRUE)
@@ -377929,15 +377923,15 @@ func _NativeGetMicroseconds(tls *libc.TLS) (r TTcl_WideInt) {
 	}
 	if _timeInfo.FperfCounterAvailable != 0 && *(*TLONGLONG)(unsafe.Pointer(uintptr(unsafe.Pointer(&_timeInfo)) + 104)) != 0 {
 		/* Current performance counter. */
-		libkernel32.XQueryPerformanceCounter(tls, bp+8)
+		libc.XQueryPerformanceCounter(tls, bp+8)
 		/*
 		 * Hold time section locked as short as possible
 		 */
-		libkernel32.XEnterCriticalSection(tls, uintptr(unsafe.Pointer(&_timeInfo)))
+		libc.XEnterCriticalSection(tls, uintptr(unsafe.Pointer(&_timeInfo)))
 		fileTimeLastCall = *(*TULONGLONG)(unsafe.Pointer(uintptr(unsafe.Pointer(&_timeInfo)) + 88))
 		perfCounterLastCall = *(*TLONGLONG)(unsafe.Pointer(uintptr(unsafe.Pointer(&_timeInfo)) + 96))
 		curCounterFreq = *(*TLONGLONG)(unsafe.Pointer(uintptr(unsafe.Pointer(&_timeInfo)) + 104))
-		libkernel32.XLeaveCriticalSection(tls, uintptr(unsafe.Pointer(&_timeInfo)))
+		libc.XLeaveCriticalSection(tls, uintptr(unsafe.Pointer(&_timeInfo)))
 		/*
 		 * If calibration cycle occurred after we get curCounter
 		 */
@@ -378007,14 +378001,14 @@ func _NativeGetTime(tls *libc.TLS, timePtr uintptr, clientData TClientData) {
 
 func _StopCalibration(tls *libc.TLS, unused TClientData) {
 	/* Client data is unused */
-	libkernel32.XSetEvent(tls, _timeInfo.FexitEvent)
+	libc.XSetEvent(tls, _timeInfo.FexitEvent)
 	/*
 	 * If Tcl_Finalize was called from DllMain, the calibration thread is in a
 	 * paused state so we need to timeout and continue.
 	 */
-	libkernel32.XWaitForSingleObject(tls, _timeInfo.FcalibrationThread, uint32(100))
-	libkernel32.XCloseHandle(tls, _timeInfo.FexitEvent)
-	libkernel32.XCloseHandle(tls, _timeInfo.FcalibrationThread)
+	libc.XWaitForSingleObject(tls, _timeInfo.FcalibrationThread, uint32(100))
+	libc.XCloseHandle(tls, _timeInfo.FexitEvent)
+	libc.XCloseHandle(tls, _timeInfo.FcalibrationThread)
 }
 
 /*
@@ -378248,9 +378242,9 @@ func _CalibrationThread(tls *libc.TLS, arg TLPVOID) (r TDWORD) {
 	/*
 	 * Get initial system time and performance counter.
 	 */
-	libkernel32.XGetSystemTimeAsFileTime(tls, bp)
-	libkernel32.XQueryPerformanceCounter(tls, uintptr(unsafe.Pointer(&_timeInfo))+96)
-	libkernel32.XQueryPerformanceFrequency(tls, uintptr(unsafe.Pointer(&_timeInfo))+104)
+	libc.XGetSystemTimeAsFileTime(tls, bp)
+	libc.XQueryPerformanceCounter(tls, uintptr(unsafe.Pointer(&_timeInfo))+96)
+	libc.XQueryPerformanceFrequency(tls, uintptr(unsafe.Pointer(&_timeInfo))+104)
 	*(*TDWORD)(unsafe.Pointer(uintptr(unsafe.Pointer(&_timeInfo)) + 88)) = (*(*TFILETIME)(unsafe.Pointer(bp))).FdwLowDateTime
 	*(*TDWORD)(unsafe.Pointer(uintptr(unsafe.Pointer(&_timeInfo)) + 88 + 4)) = (*(*TFILETIME)(unsafe.Pointer(bp))).FdwHighDateTime
 	/* Calibrated file-time will be saved from posix in 100-ns ticks */
@@ -378260,7 +378254,7 @@ func _CalibrationThread(tls *libc.TLS, arg TLPVOID) (r TDWORD) {
 	 * Wake up the calling thread. When it wakes up, it will release the
 	 * initialization lock.
 	 */
-	libkernel32.XSetEvent(tls, _timeInfo.FreadyEvent)
+	libc.XSetEvent(tls, _timeInfo.FreadyEvent)
 	/*
 	 * Run the calibration once a second.
 	 */
@@ -378268,7 +378262,7 @@ func _CalibrationThread(tls *libc.TLS, arg TLPVOID) (r TDWORD) {
 		/*
 		 * If the exitEvent is set, break out of the loop.
 		 */
-		waitResult = libkernel32.XWaitForSingleObjectEx(tls, _timeInfo.FexitEvent, uint32(1000), m_FALSE)
+		waitResult = libc.XWaitForSingleObjectEx(tls, _timeInfo.FexitEvent, uint32(1000), m_FALSE)
 		if waitResult == libc.Uint32FromInt32(0x00000000)+libc.Uint32FromInt32(0) {
 			break
 		}
@@ -378309,7 +378303,7 @@ func _UpdateTimeEachSecond(tls *libc.TLS) {
 	/*
 	 * Sample performance counter and system time (from posix epoch).
 	 */
-	libkernel32.XGetSystemTimeAsFileTime(tls, bp+8)
+	libc.XGetSystemTimeAsFileTime(tls, bp+8)
 	*(*TDWORD)(unsafe.Pointer(&*(*TLARGE_INTEGER)(unsafe.Pointer(bp + 16)))) = (*(*TFILETIME)(unsafe.Pointer(bp + 8))).FdwLowDateTime
 	*(*TLONG)(unsafe.Add(unsafe.Pointer(&*(*TLARGE_INTEGER)(unsafe.Pointer(bp + 16))), 4)) = int32((*(*TFILETIME)(unsafe.Pointer(bp + 8))).FdwHighDateTime)
 	*(*TLONGLONG)(unsafe.Pointer(bp + 16)) -= *(*TLONGLONG)(unsafe.Pointer(uintptr(unsafe.Pointer(&_timeInfo)) + 112))
@@ -378318,7 +378312,7 @@ func _UpdateTimeEachSecond(tls *libc.TLS) {
 		/* again in next one second */
 		return
 	}
-	libkernel32.XQueryPerformanceCounter(tls, bp)
+	libc.XQueryPerformanceCounter(tls, bp)
 	*(*TLONGLONG)(unsafe.Pointer(uintptr(unsafe.Pointer(&_lastFileTime)))) = *(*TLONGLONG)(unsafe.Pointer(bp + 16))
 	/*
 	 * We devide by timeInfo.curCounterFreq.QuadPart in several places. That
@@ -378398,7 +378392,7 @@ func _UpdateTimeEachSecond(tls *libc.TLS) {
 			vt0 = *(*TLONGLONG)(unsafe.Pointer(bp + 16))
 		} else {
 			if vt0 != *(*TLONGLONG)(unsafe.Pointer(bp + 16)) {
-				libkernel32.XQueryPerformanceCounter(tls, bp+24)
+				libc.XQueryPerformanceCounter(tls, bp+24)
 				nt0 = _NativeCalc100NsTicks(tls, *(*TULONGLONG)(unsafe.Pointer(uintptr(unsafe.Pointer(&_timeInfo)) + 88)), *(*TLONGLONG)(unsafe.Pointer(uintptr(unsafe.Pointer(&_timeInfo)) + 96)), *(*TLONGLONG)(unsafe.Pointer(uintptr(unsafe.Pointer(&_timeInfo)) + 104)), *(*TLONGLONG)(unsafe.Pointer(bp + 24)))
 				nt1 = _NativeCalc100NsTicks(tls, uint64(uint64(vt0)), *(*TLONGLONG)(unsafe.Pointer(bp)), estFreq, *(*TLONGLONG)(unsafe.Pointer(bp + 24)))
 				if nt0 > nt1 { /* drifted backwards, try to compensate with new base */
@@ -378415,7 +378409,7 @@ func _UpdateTimeEachSecond(tls *libc.TLS) {
 		}
 	}
 	/* In lock commit new values to timeInfo (hold lock as short as possible) */
-	libkernel32.XEnterCriticalSection(tls, uintptr(unsafe.Pointer(&_timeInfo)))
+	libc.XEnterCriticalSection(tls, uintptr(unsafe.Pointer(&_timeInfo)))
 	/* grow calibration interval up to 10 seconds (if still precise enough) */
 	if tdiff < int64(-int32(100000)) || tdiff > int64(100000) {
 		/* too long drift - reset calibration interval to 1000 second */
@@ -378428,7 +378422,7 @@ func _UpdateTimeEachSecond(tls *libc.TLS) {
 	*(*TULONGLONG)(unsafe.Pointer(uintptr(unsafe.Pointer(&_timeInfo)) + 88)) = uint64(uint64(vt0))
 	*(*TLONGLONG)(unsafe.Pointer(uintptr(unsafe.Pointer(&_timeInfo)) + 104)) = estFreq
 	*(*TLONGLONG)(unsafe.Pointer(uintptr(unsafe.Pointer(&_timeInfo)) + 96)) = *(*TLONGLONG)(unsafe.Pointer(bp))
-	libkernel32.XLeaveCriticalSection(tls, uintptr(unsafe.Pointer(&_timeInfo)))
+	libc.XLeaveCriticalSection(tls, uintptr(unsafe.Pointer(&_timeInfo)))
 }
 
 var _lastFileTime TLARGE_INTEGER /* Frequency needed to drift virtual time into
@@ -405767,7 +405761,7 @@ func _Initialize(tls *libc.TLS) {
 	 */
 	if _ddeInstance == uint32(0) {
 		if _ddeInstance == uint32(0) {
-			if libuser32.XDdeInitializeW(tls, uintptr(unsafe.Pointer(&_ddeInstance)), __ccgo_fp(_DdeServerProc), uint32(libc.Int32FromInt32(m_CBF_SKIP_REGISTRATIONS)|libc.Int32FromInt32(m_CBF_SKIP_UNREGISTRATIONS)|libc.Int32FromInt32(m_CBF_FAIL_POKES)), uint32(0)) != uint32(m_DMLERR_NO_ERROR) {
+			if libc.XDdeInitializeW(tls, uintptr(unsafe.Pointer(&_ddeInstance)), __ccgo_fp(_DdeServerProc), uint32(libc.Int32FromInt32(m_CBF_SKIP_REGISTRATIONS)|libc.Int32FromInt32(m_CBF_SKIP_UNREGISTRATIONS)|libc.Int32FromInt32(m_CBF_FAIL_POKES)), uint32(0)) != uint32(m_DMLERR_NO_ERROR) {
 				_ddeInstance = uint32(0)
 			}
 		}
@@ -405776,8 +405770,8 @@ func _Initialize(tls *libc.TLS) {
 		if _ddeServiceGlobal == uintptr(0) && nameFound != 0 {
 			_ddeIsServer = int32(1)
 			(*(*func(*libc.TLS, uintptr, TClientData))(unsafe.Pointer(&struct{ uintptr }{(*TTclStubs)(unsafe.Pointer(XtclStubsPtr)).Ftcl_CreateExitHandler})))(tls, __ccgo_fp(_DdeExitProc), libc.UintptrFromInt32(0))
-			_ddeServiceGlobal = libuser32.XDdeCreateStringHandleW(tls, _ddeInstance, __ccgo_ts+72651, int32(m_CP_WINUNICODE))
-			libuser32.XDdeNameService(tls, _ddeInstance, _ddeServiceGlobal, uintptr(0), uint32(m_DNS_REGISTER))
+			_ddeServiceGlobal = libc.XDdeCreateStringHandleW(tls, _ddeInstance, __ccgo_ts+72651, int32(m_CP_WINUNICODE))
+			libc.XDdeNameService(tls, _ddeInstance, _ddeServiceGlobal, uintptr(0), uint32(m_DNS_REGISTER))
 		} else {
 			_ddeIsServer = 0
 		}
@@ -405882,7 +405876,7 @@ func _DdeSetServerName(tls *libc.TLS, interp uintptr, name uintptr, flags int32,
 		}
 		if r != m_TCL_OK {
 			(*(*func(*libc.TLS, uintptr))(unsafe.Pointer(&struct{ uintptr }{(*TTclStubs)(unsafe.Pointer(XtclStubsPtr)).Ftcl_DStringInit})))(tls, bp)
-			libkernel32.XOutputDebugStringW(tls, (*(*func(*libc.TLS, uintptr, int32, uintptr) uintptr)(unsafe.Pointer(&struct{ uintptr }{(*TTclStubs)(unsafe.Pointer(XtclStubsPtr)).Ftcl_UtfToUniCharDString})))(tls, (*(*func(*libc.TLS, uintptr) uintptr)(unsafe.Pointer(&struct{ uintptr }{(*TTclStubs)(unsafe.Pointer(XtclStubsPtr)).Ftcl_GetString})))(tls, (*(*func(*libc.TLS, uintptr) uintptr)(unsafe.Pointer(&struct{ uintptr }{(*TTclStubs)(unsafe.Pointer(XtclStubsPtr)).Ftcl_GetObjResult})))(tls, interp)), -int32(1), bp))
+			libc.XOutputDebugStringW(tls, (*(*func(*libc.TLS, uintptr, int32, uintptr) uintptr)(unsafe.Pointer(&struct{ uintptr }{(*TTclStubs)(unsafe.Pointer(XtclStubsPtr)).Ftcl_UtfToUniCharDString})))(tls, (*(*func(*libc.TLS, uintptr) uintptr)(unsafe.Pointer(&struct{ uintptr }{(*TTclStubs)(unsafe.Pointer(XtclStubsPtr)).Ftcl_GetString})))(tls, (*(*func(*libc.TLS, uintptr) uintptr)(unsafe.Pointer(&struct{ uintptr }{(*TTclStubs)(unsafe.Pointer(XtclStubsPtr)).Ftcl_GetObjResult})))(tls, interp)), -int32(1), bp))
 			(*(*func(*libc.TLS, uintptr))(unsafe.Pointer(&struct{ uintptr }{(*TTclStubs)(unsafe.Pointer(XtclStubsPtr)).Ftcl_DStringFree})))(tls, bp)
 			return libc.UintptrFromInt32(0)
 		}
@@ -406177,11 +406171,11 @@ _1:
 	 * Dde is trying to initialize a conversation with us. Check and make
 	 * sure we have a valid topic.
 	 */
-	len1 = uint64(libuser32.XDdeQueryStringW(tls, _ddeInstance, ddeTopic, libc.UintptrFromInt32(0), uint32(0), int32(m_CP_WINUNICODE)))
+	len1 = uint64(libc.XDdeQueryStringW(tls, _ddeInstance, ddeTopic, libc.UintptrFromInt32(0), uint32(0), int32(m_CP_WINUNICODE)))
 	(*(*func(*libc.TLS, uintptr))(unsafe.Pointer(&struct{ uintptr }{(*TTclStubs)(unsafe.Pointer(XtclStubsPtr)).Ftcl_DStringInit})))(tls, bp)
 	(*(*func(*libc.TLS, uintptr, int32))(unsafe.Pointer(&struct{ uintptr }{(*TTclStubs)(unsafe.Pointer(XtclStubsPtr)).Ftcl_DStringSetLength})))(tls, bp, int32((len1+uint64(1))*uint64(2)-uint64(1)))
 	utilString = (*TTcl_DString)(unsafe.Pointer(bp)).Fstring1
-	libuser32.XDdeQueryStringW(tls, _ddeInstance, ddeTopic, utilString, uint32(uint32(len1))+uint32(1), int32(m_CP_WINUNICODE))
+	libc.XDdeQueryStringW(tls, _ddeInstance, ddeTopic, utilString, uint32(uint32(len1))+uint32(1), int32(m_CP_WINUNICODE))
 	riPtr = (*TThreadSpecificData20)(unsafe.Pointer(tsdPtr)).FinterpListPtr
 	for {
 		if !(riPtr != libc.UintptrFromInt32(0)) {
@@ -406205,11 +406199,11 @@ _2:
 	 * handle. We need to keep track of it so we know which execution
 	 * result to return in an XTYP_REQUEST.
 	 */
-	len1 = uint64(libuser32.XDdeQueryStringW(tls, _ddeInstance, ddeTopic, libc.UintptrFromInt32(0), uint32(0), int32(m_CP_WINUNICODE)))
+	len1 = uint64(libc.XDdeQueryStringW(tls, _ddeInstance, ddeTopic, libc.UintptrFromInt32(0), uint32(0), int32(m_CP_WINUNICODE)))
 	(*(*func(*libc.TLS, uintptr))(unsafe.Pointer(&struct{ uintptr }{(*TTclStubs)(unsafe.Pointer(XtclStubsPtr)).Ftcl_DStringInit})))(tls, bp)
 	(*(*func(*libc.TLS, uintptr, int32))(unsafe.Pointer(&struct{ uintptr }{(*TTclStubs)(unsafe.Pointer(XtclStubsPtr)).Ftcl_DStringSetLength})))(tls, bp, int32((len1+uint64(1))*uint64(2)-uint64(1)))
 	utilString = (*TTcl_DString)(unsafe.Pointer(bp)).Fstring1
-	libuser32.XDdeQueryStringW(tls, _ddeInstance, ddeTopic, utilString, uint32(uint32(len1))+uint32(1), int32(m_CP_WINUNICODE))
+	libc.XDdeQueryStringW(tls, _ddeInstance, ddeTopic, utilString, uint32(uint32(len1))+uint32(1), int32(m_CP_WINUNICODE))
 	riPtr = (*TThreadSpecificData20)(unsafe.Pointer(tsdPtr)).FinterpListPtr
 	for {
 		if !(riPtr != libc.UintptrFromInt32(0)) {
@@ -406297,12 +406291,12 @@ _4:
 		convPtr = (*TConversation)(unsafe.Pointer(convPtr)).FnextPtr
 	}
 	if convPtr != libc.UintptrFromInt32(0) {
-		len1 = uint64(libuser32.XDdeQueryStringW(tls, _ddeInstance, ddeItem, libc.UintptrFromInt32(0), uint32(0), int32(m_CP_WINUNICODE)))
+		len1 = uint64(libc.XDdeQueryStringW(tls, _ddeInstance, ddeItem, libc.UintptrFromInt32(0), uint32(0), int32(m_CP_WINUNICODE)))
 		(*(*func(*libc.TLS, uintptr))(unsafe.Pointer(&struct{ uintptr }{(*TTclStubs)(unsafe.Pointer(XtclStubsPtr)).Ftcl_DStringInit})))(tls, bp)
 		(*(*func(*libc.TLS, uintptr))(unsafe.Pointer(&struct{ uintptr }{(*TTclStubs)(unsafe.Pointer(XtclStubsPtr)).Ftcl_DStringInit})))(tls, bp+224)
 		(*(*func(*libc.TLS, uintptr, int32))(unsafe.Pointer(&struct{ uintptr }{(*TTclStubs)(unsafe.Pointer(XtclStubsPtr)).Ftcl_DStringSetLength})))(tls, bp, int32((len1+uint64(1))*uint64(2)-uint64(1)))
 		utilString = (*TTcl_DString)(unsafe.Pointer(bp)).Fstring1
-		libuser32.XDdeQueryStringW(tls, _ddeInstance, ddeItem, utilString, uint32(uint32(len1))+uint32(1), int32(m_CP_WINUNICODE))
+		libc.XDdeQueryStringW(tls, _ddeInstance, ddeItem, utilString, uint32(uint32(len1))+uint32(1), int32(m_CP_WINUNICODE))
 		if libc.X_wcsicmp(tls, utilString, __ccgo_ts+72778) == 0 {
 			returnString = (*(*func(*libc.TLS, uintptr) uintptr)(unsafe.Pointer(&struct{ uintptr }{(*TTclStubs)(unsafe.Pointer(XtclStubsPtr)).Ftcl_GetString})))(tls, (*TConversation)(unsafe.Pointer(convPtr)).FreturnPackagePtr)
 			len1 = uint64((*TTcl_Obj)(unsafe.Pointer((*TConversation)(unsafe.Pointer(convPtr)).FreturnPackagePtr)).Flength)
@@ -406312,7 +406306,7 @@ _4:
 				returnString = (*TTcl_DString)(unsafe.Pointer(bp + 224)).Fstring1
 				len1 = uint64((*TTcl_DString)(unsafe.Pointer(bp+224)).Flength) + uint64(2) - uint64(1)
 			}
-			ddeReturn = libuser32.XDdeCreateDataHandle(tls, _ddeInstance, returnString, uint32(uint32(len1))+uint32(1), uint32(0), ddeItem, uFmt, uint32(0))
+			ddeReturn = libc.XDdeCreateDataHandle(tls, _ddeInstance, returnString, uint32(uint32(len1))+uint32(1), uint32(0), ddeItem, uFmt, uint32(0))
 		} else {
 			if (*(*func(*libc.TLS, uintptr) int32)(unsafe.Pointer(&struct{ uintptr }{(*TTclStubs)(unsafe.Pointer(XtclStubsPtr)).Ftcl_IsSafe})))(tls, (*TRegisteredInterp)(unsafe.Pointer((*TConversation)(unsafe.Pointer(convPtr)).FriPtr)).Finterp) != 0 {
 				ddeReturn = libc.UintptrFromInt32(0)
@@ -406329,7 +406323,7 @@ _4:
 						returnString = (*TTcl_DString)(unsafe.Pointer(bp + 224)).Fstring1
 						len1 = uint64((*TTcl_DString)(unsafe.Pointer(bp+224)).Flength) + uint64(2) - uint64(1)
 					}
-					ddeReturn = libuser32.XDdeCreateDataHandle(tls, _ddeInstance, returnString, uint32(uint32(len1))+uint32(1), uint32(0), ddeItem, uFmt, uint32(0))
+					ddeReturn = libc.XDdeCreateDataHandle(tls, _ddeInstance, returnString, uint32(uint32(len1))+uint32(1), uint32(0), ddeItem, uFmt, uint32(0))
 				} else {
 					ddeReturn = libc.UintptrFromInt32(0)
 				}
@@ -406358,7 +406352,7 @@ _5:
 	if convPtr == libc.UintptrFromInt32(0) {
 		return libc.UintptrFromInt32(m_DDE_FNOTPROCESSED)
 	}
-	utilString = libuser32.XDdeAccessData(tls, hData, bp+216)
+	utilString = libc.XDdeAccessData(tls, hData, bp+216)
 	string1 = utilString
 	if !(*(*TDWORD)(unsafe.Pointer(bp + 216)) != 0) {
 		/* Empty binary array. */
@@ -406378,7 +406372,7 @@ _5:
 		}
 	}
 	(*TTcl_Obj)(unsafe.Pointer(ddeObjectPtr)).FrefCount++
-	libuser32.XDdeUnaccessData(tls, hData)
+	libc.XDdeUnaccessData(tls, hData)
 	if (*TConversation)(unsafe.Pointer(convPtr)).FreturnPackagePtr != libc.UintptrFromInt32(0) {
 		_objPtr1 = (*TConversation)(unsafe.Pointer(convPtr)).FreturnPackagePtr
 		v19 = _objPtr1
@@ -406445,8 +406439,8 @@ _6:
 		riPtr = (*TRegisteredInterp)(unsafe.Pointer(riPtr)).FnextPtr
 	}
 	numItems = i
-	ddeReturn = libuser32.XDdeCreateDataHandle(tls, _ddeInstance, libc.UintptrFromInt32(0), uint32(uint64(numItems+libc.Int32FromInt32(1))*uint64(16)), uint32(0), uintptr(0), uint32(0), uint32(0))
-	returnPtr = libuser32.XDdeAccessData(tls, ddeReturn, bp+216)
+	ddeReturn = libc.XDdeCreateDataHandle(tls, _ddeInstance, libc.UintptrFromInt32(0), uint32(uint64(numItems+libc.Int32FromInt32(1))*uint64(16)), uint32(0), uintptr(0), uint32(0), uint32(0))
+	returnPtr = libc.XDdeAccessData(tls, ddeReturn, bp+216)
 	len1 = uint64(*(*TDWORD)(unsafe.Pointer(bp + 216)))
 	i = 0
 	riPtr = (*TThreadSpecificData20)(unsafe.Pointer(tsdPtr)).FinterpListPtr
@@ -406454,8 +406448,8 @@ _6:
 		if !(i < numItems) {
 			break
 		}
-		(*(*THSZPAIR)(unsafe.Pointer(returnPtr + uintptr(i)*16))).FhszSvc = libuser32.XDdeCreateStringHandleW(tls, _ddeInstance, __ccgo_ts+72651, int32(m_CP_WINUNICODE))
-		(*(*THSZPAIR)(unsafe.Pointer(returnPtr + uintptr(i)*16))).FhszTopic = libuser32.XDdeCreateStringHandleW(tls, _ddeInstance, (*TRegisteredInterp)(unsafe.Pointer(riPtr)).Fname, int32(m_CP_WINUNICODE))
+		(*(*THSZPAIR)(unsafe.Pointer(returnPtr + uintptr(i)*16))).FhszSvc = libc.XDdeCreateStringHandleW(tls, _ddeInstance, __ccgo_ts+72651, int32(m_CP_WINUNICODE))
+		(*(*THSZPAIR)(unsafe.Pointer(returnPtr + uintptr(i)*16))).FhszTopic = libc.XDdeCreateStringHandleW(tls, _ddeInstance, (*TRegisteredInterp)(unsafe.Pointer(riPtr)).Fname, int32(m_CP_WINUNICODE))
 		goto _26
 	_26:
 		;
@@ -406464,7 +406458,7 @@ _6:
 	}
 	(*(*THSZPAIR)(unsafe.Pointer(returnPtr + uintptr(i)*16))).FhszSvc = libc.UintptrFromInt32(0)
 	(*(*THSZPAIR)(unsafe.Pointer(returnPtr + uintptr(i)*16))).FhszTopic = libc.UintptrFromInt32(0)
-	libuser32.XDdeUnaccessData(tls, ddeReturn)
+	libc.XDdeUnaccessData(tls, ddeReturn)
 	return ddeReturn
 _7:
 	;
@@ -406493,8 +406487,8 @@ _8:
 func _DdeExitProc(tls *libc.TLS, dummy uintptr) {
 	/* Not used. */
 	_ = dummy
-	libuser32.XDdeNameService(tls, _ddeInstance, libc.UintptrFromInt32(0), uintptr(0), uint32(m_DNS_UNREGISTER))
-	libuser32.XDdeUninitialize(tls, _ddeInstance)
+	libc.XDdeNameService(tls, _ddeInstance, libc.UintptrFromInt32(0), uintptr(0), uint32(m_DNS_UNREGISTER))
+	libc.XDdeUninitialize(tls, _ddeInstance)
 	_ddeInstance = uint32(0)
 }
 
@@ -406522,11 +406516,11 @@ func _MakeDdeConnection(tls *libc.TLS, interp uintptr, name uintptr, ddeConvPtr 
 	var ddeService, ddeTopic THSZ
 	var _ /* dString at bp+0 */ TTcl_DString
 	_, _, _ = ddeConv, ddeService, ddeTopic
-	ddeService = libuser32.XDdeCreateStringHandleW(tls, _ddeInstance, __ccgo_ts+72651, int32(m_CP_WINUNICODE))
-	ddeTopic = libuser32.XDdeCreateStringHandleW(tls, _ddeInstance, name, int32(m_CP_WINUNICODE))
-	ddeConv = libuser32.XDdeConnect(tls, _ddeInstance, ddeService, ddeTopic, libc.UintptrFromInt32(0))
-	libuser32.XDdeFreeStringHandle(tls, _ddeInstance, ddeService)
-	libuser32.XDdeFreeStringHandle(tls, _ddeInstance, ddeTopic)
+	ddeService = libc.XDdeCreateStringHandleW(tls, _ddeInstance, __ccgo_ts+72651, int32(m_CP_WINUNICODE))
+	ddeTopic = libc.XDdeCreateStringHandleW(tls, _ddeInstance, name, int32(m_CP_WINUNICODE))
+	ddeConv = libc.XDdeConnect(tls, _ddeInstance, ddeService, ddeTopic, libc.UintptrFromInt32(0))
+	libc.XDdeFreeStringHandle(tls, _ddeInstance, ddeService)
+	libc.XDdeFreeStringHandle(tls, _ddeInstance, ddeTopic)
 	if ddeConv == libc.UintptrFromInt32(0) {
 		if interp != libc.UintptrFromInt32(0) {
 			(*(*func(*libc.TLS, uintptr))(unsafe.Pointer(&struct{ uintptr }{(*TTclStubs)(unsafe.Pointer(XtclStubsPtr)).Ftcl_DStringInit})))(tls, bp)
@@ -406573,8 +406567,8 @@ func _DdeCreateClient(tls *libc.TLS, es uintptr) (r int32) {
 	/*
 	 * Register and create the callback window.
 	 */
-	libuser32.XRegisterClassExW(tls, bp)
-	(*TDdeEnumServices)(unsafe.Pointer(es)).Fhwnd = libuser32.XCreateWindowExW(tls, uint32(0), _szDdeClientClassName, _szDdeClientWindowName, uint32(0x80000000), 0, 0, 0, 0, libc.UintptrFromInt32(0), libc.UintptrFromInt32(0), libc.UintptrFromInt32(0), es)
+	libc.XRegisterClassExW(tls, bp)
+	(*TDdeEnumServices)(unsafe.Pointer(es)).Fhwnd = libc.XCreateWindowExW(tls, uint32(0), _szDdeClientClassName, _szDdeClientWindowName, uint32(0x80000000), 0, 0, 0, 0, libc.UintptrFromInt32(0), libc.UintptrFromInt32(0), libc.UintptrFromInt32(0), es)
 	return m_TCL_OK
 }
 
@@ -406591,12 +406585,12 @@ func _DdeClientWindowProc(tls *libc.TLS, hwnd THWND, uMsg TUINT, wParam TWPARAM,
 	case uint32(m_WM_CREATE3):
 		lpcs = uintptr(lParam)
 		es = (*TtagCREATESTRUCTA)(unsafe.Pointer(lpcs)).FlpCreateParams
-		libuser32.XSetWindowLongPtrW(tls, hwnd, -int32(21), int64(int64(es)))
+		libc.XSetWindowLongPtrW(tls, hwnd, -int32(21), int64(int64(es)))
 		return libc.Int64FromInt32(0)
 	case uint32(libc.Int32FromInt32(m_WM_DDE_FIRST) + libc.Int32FromInt32(4)):
 		return _DdeServicesOnAck(tls, hwnd, wParam, lParam)
 	default:
-		return libuser32.XDefWindowProcW(tls, hwnd, uMsg, wParam, lParam)
+		return libc.XDefWindowProcW(tls, hwnd, uMsg, wParam, lParam)
 	}
 	return r
 }
@@ -406613,16 +406607,16 @@ func _DdeServicesOnAck(tls *libc.TLS, hwnd THWND, wParam TWPARAM, lParam TLPARAM
 	hwndRemote = uintptr(wParam)
 	service = uint16(uint64(lParam) & libc.Uint64FromInt32(0xffff))
 	topic = uint16(uint64(lParam) >> libc.Int32FromInt32(16) & libc.Uint64FromInt32(0xffff))
-	es = uintptr(libuser32.XGetWindowLongPtrW(tls, hwnd, -int32(21)))
+	es = uintptr(libc.XGetWindowLongPtrW(tls, hwnd, -int32(21)))
 	if (int32((*TDdeEnumServices)(unsafe.Pointer(es)).Fservice) == int32(libc.Uint16FromInt32(0)) || int32((*TDdeEnumServices)(unsafe.Pointer(es)).Fservice) == int32(int32(service))) && (int32((*TDdeEnumServices)(unsafe.Pointer(es)).Ftopic) == int32(libc.Uint16FromInt32(0)) || int32((*TDdeEnumServices)(unsafe.Pointer(es)).Ftopic) == int32(int32(topic))) {
 		matchPtr = (*(*func(*libc.TLS, int32, uintptr) uintptr)(unsafe.Pointer(&struct{ uintptr }{(*TTclStubs)(unsafe.Pointer(XtclStubsPtr)).Ftcl_NewListObj})))(tls, 0, libc.UintptrFromInt32(0))
 		resultPtr = (*(*func(*libc.TLS, uintptr) uintptr)(unsafe.Pointer(&struct{ uintptr }{(*TTclStubs)(unsafe.Pointer(XtclStubsPtr)).Ftcl_GetObjResult})))(tls, (*TDdeEnumServices)(unsafe.Pointer(es)).Finterp)
-		libkernel32.XGlobalGetAtomNameW(tls, service, bp, int32(255))
+		libc.XGlobalGetAtomNameW(tls, service, bp, int32(255))
 		(*(*func(*libc.TLS, uintptr))(unsafe.Pointer(&struct{ uintptr }{(*TTclStubs)(unsafe.Pointer(XtclStubsPtr)).Ftcl_DStringInit})))(tls, bp+512)
 		(*(*func(*libc.TLS, uintptr, int32, uintptr) uintptr)(unsafe.Pointer(&struct{ uintptr }{(*TTclStubs)(unsafe.Pointer(XtclStubsPtr)).Ftcl_UniCharToUtfDString})))(tls, bp, int32(libc.Xwcslen(tls, bp)), bp+512)
 		(*(*func(*libc.TLS, uintptr, uintptr, uintptr) int32)(unsafe.Pointer(&struct{ uintptr }{(*TTclStubs)(unsafe.Pointer(XtclStubsPtr)).Ftcl_ListObjAppendElement})))(tls, libc.UintptrFromInt32(0), matchPtr, (*(*func(*libc.TLS, uintptr, int32) uintptr)(unsafe.Pointer(&struct{ uintptr }{(*TTclStubs)(unsafe.Pointer(XtclStubsPtr)).Ftcl_NewStringObj})))(tls, (*TTcl_DString)(unsafe.Pointer(bp+512)).Fstring1, -int32(1)))
 		(*(*func(*libc.TLS, uintptr))(unsafe.Pointer(&struct{ uintptr }{(*TTclStubs)(unsafe.Pointer(XtclStubsPtr)).Ftcl_DStringFree})))(tls, bp+512)
-		libkernel32.XGlobalGetAtomNameW(tls, topic, bp, int32(255))
+		libc.XGlobalGetAtomNameW(tls, topic, bp, int32(255))
 		(*(*func(*libc.TLS, uintptr))(unsafe.Pointer(&struct{ uintptr }{(*TTclStubs)(unsafe.Pointer(XtclStubsPtr)).Ftcl_DStringInit})))(tls, bp+512)
 		(*(*func(*libc.TLS, uintptr, int32, uintptr) uintptr)(unsafe.Pointer(&struct{ uintptr }{(*TTclStubs)(unsafe.Pointer(XtclStubsPtr)).Ftcl_UniCharToUtfDString})))(tls, bp, int32(libc.Xwcslen(tls, bp)), bp+512)
 		(*(*func(*libc.TLS, uintptr, uintptr, uintptr) int32)(unsafe.Pointer(&struct{ uintptr }{(*TTclStubs)(unsafe.Pointer(XtclStubsPtr)).Ftcl_ListObjAppendElement})))(tls, libc.UintptrFromInt32(0), matchPtr, (*(*func(*libc.TLS, uintptr, int32) uintptr)(unsafe.Pointer(&struct{ uintptr }{(*TTclStubs)(unsafe.Pointer(XtclStubsPtr)).Ftcl_NewStringObj})))(tls, (*TTcl_DString)(unsafe.Pointer(bp+512)).Fstring1, -int32(1)))
@@ -406647,7 +406641,7 @@ func _DdeServicesOnAck(tls *libc.TLS, hwnd THWND, wParam TWPARAM, lParam TLPARAM
 	/*
 	 * Tell the server we are no longer interested.
 	 */
-	libuser32.XPostMessageW(tls, hwndRemote, uint32(libc.Int32FromInt32(m_WM_DDE_FIRST)+libc.Int32FromInt32(1)), uint64(uint64(hwnd)), 0)
+	libc.XPostMessageW(tls, hwndRemote, uint32(libc.Int32FromInt32(m_WM_DDE_FIRST)+libc.Int32FromInt32(1)), uint64(uint64(hwnd)), 0)
 	return 0
 }
 
@@ -406659,7 +406653,7 @@ func _DdeEnumWindowsCallback(tls *libc.TLS, hwndTarget THWND, lParam TLPARAM) (r
 	_ = es
 	*(*TDWORD_PTR)(unsafe.Pointer(bp)) = uint64(0)
 	es = uintptr(lParam)
-	libuser32.XSendMessageTimeoutW(tls, hwndTarget, uint32(libc.Int32FromInt32(m_WM_DDE_FIRST)), uint64((*TDdeEnumServices)(unsafe.Pointer(es)).Fhwnd), int64(int32(uint32(uint16(uint64((*TDdeEnumServices)(unsafe.Pointer(es)).Fservice)&libc.Uint64FromInt32(0xffff)))|uint32(uint16(uint64((*TDdeEnumServices)(unsafe.Pointer(es)).Ftopic)&libc.Uint64FromInt32(0xffff)))<<libc.Int32FromInt32(16))), uint32(m_SMTO_ABORTIFHUNG1), uint32(1000), bp)
+	libc.XSendMessageTimeoutW(tls, hwndTarget, uint32(libc.Int32FromInt32(m_WM_DDE_FIRST)), uint64((*TDdeEnumServices)(unsafe.Pointer(es)).Fhwnd), int64(int32(uint32(uint16(uint64((*TDdeEnumServices)(unsafe.Pointer(es)).Fservice)&libc.Uint64FromInt32(0xffff)))|uint32(uint16(uint64((*TDdeEnumServices)(unsafe.Pointer(es)).Ftopic)&libc.Uint64FromInt32(0xffff)))<<libc.Int32FromInt32(16))), uint32(m_SMTO_ABORTIFHUNG1), uint32(1000), bp)
 	return int32(m_TRUE)
 }
 
@@ -406674,26 +406668,26 @@ func _DdeGetServicesList(tls *libc.TLS, interp uintptr, serviceName uintptr, top
 	if serviceName == libc.UintptrFromInt32(0) {
 		v1 = int32(libc.Uint16FromInt32(0))
 	} else {
-		v1 = int32(libkernel32.XGlobalAddAtomW(tls, serviceName))
+		v1 = int32(libc.XGlobalAddAtomW(tls, serviceName))
 	}
 	(*(*TDdeEnumServices)(unsafe.Pointer(bp))).Fservice = uint16(v1)
 	if topicName == libc.UintptrFromInt32(0) {
 		v2 = int32(libc.Uint16FromInt32(0))
 	} else {
-		v2 = int32(libkernel32.XGlobalAddAtomW(tls, topicName))
+		v2 = int32(libc.XGlobalAddAtomW(tls, topicName))
 	}
 	(*(*TDdeEnumServices)(unsafe.Pointer(bp))).Ftopic = uint16(v2)
 	(*(*func(*libc.TLS, uintptr))(unsafe.Pointer(&struct{ uintptr }{(*TTclStubs)(unsafe.Pointer(XtclStubsPtr)).Ftcl_ResetResult})))(tls, interp) /* our list is to be appended to result. */
 	_DdeCreateClient(tls, bp)
-	libuser32.XEnumWindows(tls, __ccgo_fp(_DdeEnumWindowsCallback), TLPARAM(bp))
-	if libuser32.XIsWindow(tls, (*(*TDdeEnumServices)(unsafe.Pointer(bp))).Fhwnd) != 0 {
-		libuser32.XDestroyWindow(tls, (*(*TDdeEnumServices)(unsafe.Pointer(bp))).Fhwnd)
+	libc.XEnumWindows(tls, __ccgo_fp(_DdeEnumWindowsCallback), TLPARAM(bp))
+	if libc.XIsWindow(tls, (*(*TDdeEnumServices)(unsafe.Pointer(bp))).Fhwnd) != 0 {
+		libc.XDestroyWindow(tls, (*(*TDdeEnumServices)(unsafe.Pointer(bp))).Fhwnd)
 	}
 	if int32((*(*TDdeEnumServices)(unsafe.Pointer(bp))).Fservice) != int32(libc.Uint16FromInt32(0)) {
-		libkernel32.XGlobalDeleteAtom(tls, (*(*TDdeEnumServices)(unsafe.Pointer(bp))).Fservice)
+		libc.XGlobalDeleteAtom(tls, (*(*TDdeEnumServices)(unsafe.Pointer(bp))).Fservice)
 	}
 	if int32((*(*TDdeEnumServices)(unsafe.Pointer(bp))).Ftopic) != int32(libc.Uint16FromInt32(0)) {
-		libkernel32.XGlobalDeleteAtom(tls, (*(*TDdeEnumServices)(unsafe.Pointer(bp))).Ftopic)
+		libc.XGlobalDeleteAtom(tls, (*(*TDdeEnumServices)(unsafe.Pointer(bp))).Ftopic)
 	}
 	return (*(*TDdeEnumServices)(unsafe.Pointer(bp))).Fresult
 }
@@ -406720,7 +406714,7 @@ func _SetDdeError(tls *libc.TLS, interp uintptr) {
 	defer tls.Free(48) /* The interp to put the message in. */
 	var errorCode, errorMessage uintptr
 	_, _ = errorCode, errorMessage
-	switch libuser32.XDdeGetLastError(tls, _ddeInstance) {
+	switch libc.XDdeGetLastError(tls, _ddeInstance) {
 	case uint32(m_DMLERR_DATAACKTIMEOUT):
 		fallthrough
 	case uint32(m_DMLERR_EXECACKTIMEOUT):
@@ -407006,7 +407000,7 @@ _7:
 		serviceName = libc.UintptrFromInt32(0)
 	} else {
 		if *(*int32)(unsafe.Pointer(bp)) != 0 && *(*int32)(unsafe.Pointer(bp)) != 5 {
-			ddeService = libuser32.XDdeCreateStringHandleW(tls, _ddeInstance, serviceName, int32(m_CP_WINUNICODE))
+			ddeService = libc.XDdeCreateStringHandleW(tls, _ddeInstance, serviceName, int32(m_CP_WINUNICODE))
 		}
 	}
 	if *(*int32)(unsafe.Pointer(bp)) != 0 && *(*int32)(unsafe.Pointer(bp)) != 5 {
@@ -407018,7 +407012,7 @@ _7:
 		if *(*Tsize_t)(unsafe.Pointer(bp + 8)) == uint64(0) {
 			topicName = libc.UintptrFromInt32(0)
 		} else {
-			ddeTopic = libuser32.XDdeCreateStringHandleW(tls, _ddeInstance, topicName, int32(m_CP_WINUNICODE))
+			ddeTopic = libc.XDdeCreateStringHandleW(tls, _ddeInstance, topicName, int32(m_CP_WINUNICODE))
 		}
 	}
 	switch *(*int32)(unsafe.Pointer(bp)) {
@@ -407067,9 +407061,9 @@ _17:
 		*(*int32)(unsafe.Pointer(bp + 16)) = int32(m_TCL_ERROR)
 		goto _22
 	}
-	*(*THCONV)(unsafe.Pointer(bp + 24)) = libuser32.XDdeConnect(tls, _ddeInstance, ddeService, ddeTopic, libc.UintptrFromInt32(0))
-	libuser32.XDdeFreeStringHandle(tls, _ddeInstance, ddeService)
-	libuser32.XDdeFreeStringHandle(tls, _ddeInstance, ddeTopic)
+	*(*THCONV)(unsafe.Pointer(bp + 24)) = libc.XDdeConnect(tls, _ddeInstance, ddeService, ddeTopic, libc.UintptrFromInt32(0))
+	libc.XDdeFreeStringHandle(tls, _ddeInstance, ddeService)
+	libc.XDdeFreeStringHandle(tls, _ddeInstance, ddeTopic)
 	if *(*THCONV)(unsafe.Pointer(bp + 24)) == libc.UintptrFromInt32(0) {
 		(*(*func(*libc.TLS, uintptr))(unsafe.Pointer(&struct{ uintptr }{(*TTclStubs)(unsafe.Pointer(XtclStubsPtr)).Ftcl_DStringFree})))(tls, bp+920)
 		_SetDdeError(tls, interp)
@@ -407081,7 +407075,7 @@ _17:
 	} else {
 		v23 = int32(m_CF_UNICODETEXT)
 	}
-	ddeData = libuser32.XDdeCreateDataHandle(tls, _ddeInstance, dataString, uint32(*(*Tsize_t)(unsafe.Pointer(bp + 912))), uint32(0), uintptr(0), uint32(v23), uint32(0))
+	ddeData = libc.XDdeCreateDataHandle(tls, _ddeInstance, dataString, uint32(*(*Tsize_t)(unsafe.Pointer(bp + 912))), uint32(0), uintptr(0), uint32(v23), uint32(0))
 	if ddeData != libc.UintptrFromInt32(0) {
 		if flags&int32(m_DDE_FLAG_ASYNC) != 0 {
 			if flags&int32(m_DDE_FLAG_BINARY) != 0 {
@@ -407089,21 +407083,21 @@ _17:
 			} else {
 				v24 = int32(m_CF_UNICODETEXT)
 			}
-			libuser32.XDdeClientTransaction(tls, ddeData, uint32(0xFFFFFFFF), *(*THCONV)(unsafe.Pointer(bp + 24)), uintptr(0), uint32(v24), uint32(libc.Int32FromInt32(0x0050)|libc.Int32FromInt32(m_XCLASS_FLAGS)), uint32(m_TIMEOUT_ASYNC), bp+32)
-			libuser32.XDdeAbandonTransaction(tls, _ddeInstance, *(*THCONV)(unsafe.Pointer(bp + 24)), *(*TDWORD)(unsafe.Pointer(bp + 32)))
+			libc.XDdeClientTransaction(tls, ddeData, uint32(0xFFFFFFFF), *(*THCONV)(unsafe.Pointer(bp + 24)), uintptr(0), uint32(v24), uint32(libc.Int32FromInt32(0x0050)|libc.Int32FromInt32(m_XCLASS_FLAGS)), uint32(m_TIMEOUT_ASYNC), bp+32)
+			libc.XDdeAbandonTransaction(tls, _ddeInstance, *(*THCONV)(unsafe.Pointer(bp + 24)), *(*TDWORD)(unsafe.Pointer(bp + 32)))
 		} else {
 			if flags&int32(m_DDE_FLAG_BINARY) != 0 {
 				v25 = int32(m_CF_TEXT)
 			} else {
 				v25 = int32(m_CF_UNICODETEXT)
 			}
-			ddeReturn = libuser32.XDdeClientTransaction(tls, ddeData, uint32(0xFFFFFFFF), *(*THCONV)(unsafe.Pointer(bp + 24)), uintptr(0), uint32(v25), uint32(libc.Int32FromInt32(0x0050)|libc.Int32FromInt32(m_XCLASS_FLAGS)), uint32(30000), libc.UintptrFromInt32(0))
+			ddeReturn = libc.XDdeClientTransaction(tls, ddeData, uint32(0xFFFFFFFF), *(*THCONV)(unsafe.Pointer(bp + 24)), uintptr(0), uint32(v25), uint32(libc.Int32FromInt32(0x0050)|libc.Int32FromInt32(m_XCLASS_FLAGS)), uint32(30000), libc.UintptrFromInt32(0))
 			if ddeReturn == uintptr(0) {
 				_SetDdeError(tls, interp)
 				*(*int32)(unsafe.Pointer(bp + 16)) = int32(m_TCL_ERROR)
 			}
 		}
-		libuser32.XDdeFreeDataHandle(tls, ddeData)
+		libc.XDdeFreeDataHandle(tls, ddeData)
 	} else {
 		_SetDdeError(tls, interp)
 		*(*int32)(unsafe.Pointer(bp + 16)) = int32(m_TCL_ERROR)
@@ -407123,26 +407117,26 @@ _18:
 		*(*int32)(unsafe.Pointer(bp + 16)) = int32(m_TCL_ERROR)
 		goto cleanup
 	}
-	*(*THCONV)(unsafe.Pointer(bp + 24)) = libuser32.XDdeConnect(tls, _ddeInstance, ddeService, ddeTopic, libc.UintptrFromInt32(0))
-	libuser32.XDdeFreeStringHandle(tls, _ddeInstance, ddeService)
-	libuser32.XDdeFreeStringHandle(tls, _ddeInstance, ddeTopic)
+	*(*THCONV)(unsafe.Pointer(bp + 24)) = libc.XDdeConnect(tls, _ddeInstance, ddeService, ddeTopic, libc.UintptrFromInt32(0))
+	libc.XDdeFreeStringHandle(tls, _ddeInstance, ddeService)
+	libc.XDdeFreeStringHandle(tls, _ddeInstance, ddeTopic)
 	if *(*THCONV)(unsafe.Pointer(bp + 24)) == libc.UintptrFromInt32(0) {
 		_SetDdeError(tls, interp)
 		*(*int32)(unsafe.Pointer(bp + 16)) = int32(m_TCL_ERROR)
 	} else {
-		ddeItem = libuser32.XDdeCreateStringHandleW(tls, _ddeInstance, itemString, int32(m_CP_WINUNICODE))
+		ddeItem = libc.XDdeCreateStringHandleW(tls, _ddeInstance, itemString, int32(m_CP_WINUNICODE))
 		if ddeItem != libc.UintptrFromInt32(0) {
 			if flags&int32(m_DDE_FLAG_BINARY) != 0 {
 				v26 = int32(m_CF_TEXT)
 			} else {
 				v26 = int32(m_CF_UNICODETEXT)
 			}
-			ddeData = libuser32.XDdeClientTransaction(tls, libc.UintptrFromInt32(0), uint32(0), *(*THCONV)(unsafe.Pointer(bp + 24)), ddeItem, uint32(v26), uint32(libc.Int32FromInt32(0x00B0)|libc.Int32FromInt32(m_XCLASS_DATA)), uint32(5000), libc.UintptrFromInt32(0))
+			ddeData = libc.XDdeClientTransaction(tls, libc.UintptrFromInt32(0), uint32(0), *(*THCONV)(unsafe.Pointer(bp + 24)), ddeItem, uint32(v26), uint32(libc.Int32FromInt32(0x00B0)|libc.Int32FromInt32(m_XCLASS_DATA)), uint32(5000), libc.UintptrFromInt32(0))
 			if ddeData == libc.UintptrFromInt32(0) {
 				_SetDdeError(tls, interp)
 				*(*int32)(unsafe.Pointer(bp + 16)) = int32(m_TCL_ERROR)
 			} else {
-				dataString1 = libuser32.XDdeAccessData(tls, ddeData, bp+1136)
+				dataString1 = libc.XDdeAccessData(tls, ddeData, bp+1136)
 				if flags&int32(m_DDE_FLAG_BINARY) != 0 {
 					returnObjPtr = (*(*func(*libc.TLS, uintptr, int32) uintptr)(unsafe.Pointer(&struct{ uintptr }{(*TTclStubs)(unsafe.Pointer(XtclStubsPtr)).Ftcl_NewByteArrayObj})))(tls, dataString1, int32(*(*TDWORD)(unsafe.Pointer(bp + 1136))))
 				} else {
@@ -407154,8 +407148,8 @@ _18:
 					returnObjPtr = (*(*func(*libc.TLS, uintptr, int32) uintptr)(unsafe.Pointer(&struct{ uintptr }{(*TTclStubs)(unsafe.Pointer(XtclStubsPtr)).Ftcl_NewStringObj})))(tls, (*TTcl_DString)(unsafe.Pointer(bp+1144)).Fstring1, (*TTcl_DString)(unsafe.Pointer(bp+1144)).Flength)
 					(*(*func(*libc.TLS, uintptr))(unsafe.Pointer(&struct{ uintptr }{(*TTclStubs)(unsafe.Pointer(XtclStubsPtr)).Ftcl_DStringFree})))(tls, bp+1144)
 				}
-				libuser32.XDdeUnaccessData(tls, ddeData)
-				libuser32.XDdeFreeDataHandle(tls, ddeData)
+				libc.XDdeUnaccessData(tls, ddeData)
+				libc.XDdeFreeDataHandle(tls, ddeData)
 				(*(*func(*libc.TLS, uintptr, uintptr))(unsafe.Pointer(&struct{ uintptr }{(*TTclStubs)(unsafe.Pointer(XtclStubsPtr)).Ftcl_SetObjResult})))(tls, interp, returnObjPtr)
 			}
 		} else {
@@ -407187,21 +407181,21 @@ _19:
 		dataString2 = (*(*func(*libc.TLS, uintptr, int32, uintptr) uintptr)(unsafe.Pointer(&struct{ uintptr }{(*TTclStubs)(unsafe.Pointer(XtclStubsPtr)).Ftcl_UtfToUniCharDString})))(tls, data, int32(*(*Tsize_t)(unsafe.Pointer(bp + 8))), bp+1360)
 		*(*Tsize_t)(unsafe.Pointer(bp + 8)) = uint64((*TTcl_DString)(unsafe.Pointer(bp+1360)).Flength) + uint64(2)
 	}
-	*(*THCONV)(unsafe.Pointer(bp + 24)) = libuser32.XDdeConnect(tls, _ddeInstance, ddeService, ddeTopic, libc.UintptrFromInt32(0))
-	libuser32.XDdeFreeStringHandle(tls, _ddeInstance, ddeService)
-	libuser32.XDdeFreeStringHandle(tls, _ddeInstance, ddeTopic)
+	*(*THCONV)(unsafe.Pointer(bp + 24)) = libc.XDdeConnect(tls, _ddeInstance, ddeService, ddeTopic, libc.UintptrFromInt32(0))
+	libc.XDdeFreeStringHandle(tls, _ddeInstance, ddeService)
+	libc.XDdeFreeStringHandle(tls, _ddeInstance, ddeTopic)
 	if *(*THCONV)(unsafe.Pointer(bp + 24)) == libc.UintptrFromInt32(0) {
 		_SetDdeError(tls, interp)
 		*(*int32)(unsafe.Pointer(bp + 16)) = int32(m_TCL_ERROR)
 	} else {
-		ddeItem = libuser32.XDdeCreateStringHandleW(tls, _ddeInstance, itemString1, int32(m_CP_WINUNICODE))
+		ddeItem = libc.XDdeCreateStringHandleW(tls, _ddeInstance, itemString1, int32(m_CP_WINUNICODE))
 		if ddeItem != libc.UintptrFromInt32(0) {
 			if flags&int32(m_DDE_FLAG_BINARY) != 0 {
 				v27 = int32(m_CF_TEXT)
 			} else {
 				v27 = int32(m_CF_UNICODETEXT)
 			}
-			ddeData = libuser32.XDdeClientTransaction(tls, dataString2, uint32(*(*Tsize_t)(unsafe.Pointer(bp + 8))), *(*THCONV)(unsafe.Pointer(bp + 24)), ddeItem, uint32(v27), uint32(libc.Int32FromInt32(0x0090)|libc.Int32FromInt32(m_XCLASS_FLAGS)), uint32(5000), libc.UintptrFromInt32(0))
+			ddeData = libc.XDdeClientTransaction(tls, dataString2, uint32(*(*Tsize_t)(unsafe.Pointer(bp + 8))), *(*THCONV)(unsafe.Pointer(bp + 24)), ddeItem, uint32(v27), uint32(libc.Int32FromInt32(0x0090)|libc.Int32FromInt32(m_XCLASS_FLAGS)), uint32(5000), libc.UintptrFromInt32(0))
 			if ddeData == libc.UintptrFromInt32(0) {
 				_SetDdeError(tls, interp)
 				*(*int32)(unsafe.Pointer(bp + 16)) = int32(m_TCL_ERROR)
@@ -407343,16 +407337,16 @@ _21:
 		(*(*func(*libc.TLS, uintptr, int32, uintptr) uintptr)(unsafe.Pointer(&struct{ uintptr }{(*TTclStubs)(unsafe.Pointer(XtclStubsPtr)).Ftcl_UtfToUniCharDString})))(tls, string1, int32(*(*Tsize_t)(unsafe.Pointer(bp + 8))), bp+1576)
 		string1 = (*TTcl_DString)(unsafe.Pointer(bp + 1576)).Fstring1
 		*(*Tsize_t)(unsafe.Pointer(bp + 8)) = uint64((*TTcl_DString)(unsafe.Pointer(bp+1576)).Flength) + uint64(2)
-		ddeItemData = libuser32.XDdeCreateDataHandle(tls, _ddeInstance, string1, uint32(*(*Tsize_t)(unsafe.Pointer(bp + 8))), uint32(0), uintptr(0), uint32(m_CF_UNICODETEXT), uint32(0))
+		ddeItemData = libc.XDdeCreateDataHandle(tls, _ddeInstance, string1, uint32(*(*Tsize_t)(unsafe.Pointer(bp + 8))), uint32(0), uintptr(0), uint32(m_CF_UNICODETEXT), uint32(0))
 		(*(*func(*libc.TLS, uintptr))(unsafe.Pointer(&struct{ uintptr }{(*TTclStubs)(unsafe.Pointer(XtclStubsPtr)).Ftcl_DStringFree})))(tls, bp+1576)
 		if flags&int32(m_DDE_FLAG_ASYNC) != 0 {
-			ddeData = libuser32.XDdeClientTransaction(tls, ddeItemData, uint32(0xFFFFFFFF), *(*THCONV)(unsafe.Pointer(bp + 24)), uintptr(0), uint32(m_CF_UNICODETEXT), uint32(libc.Int32FromInt32(0x0050)|libc.Int32FromInt32(m_XCLASS_FLAGS)), uint32(m_TIMEOUT_ASYNC), bp+32)
-			libuser32.XDdeAbandonTransaction(tls, _ddeInstance, *(*THCONV)(unsafe.Pointer(bp + 24)), *(*TDWORD)(unsafe.Pointer(bp + 32)))
+			ddeData = libc.XDdeClientTransaction(tls, ddeItemData, uint32(0xFFFFFFFF), *(*THCONV)(unsafe.Pointer(bp + 24)), uintptr(0), uint32(m_CF_UNICODETEXT), uint32(libc.Int32FromInt32(0x0050)|libc.Int32FromInt32(m_XCLASS_FLAGS)), uint32(m_TIMEOUT_ASYNC), bp+32)
+			libc.XDdeAbandonTransaction(tls, _ddeInstance, *(*THCONV)(unsafe.Pointer(bp + 24)), *(*TDWORD)(unsafe.Pointer(bp + 32)))
 		} else {
-			ddeData = libuser32.XDdeClientTransaction(tls, ddeItemData, uint32(0xFFFFFFFF), *(*THCONV)(unsafe.Pointer(bp + 24)), uintptr(0), uint32(m_CF_UNICODETEXT), uint32(libc.Int32FromInt32(0x0050)|libc.Int32FromInt32(m_XCLASS_FLAGS)), uint32(30000), libc.UintptrFromInt32(0))
+			ddeData = libc.XDdeClientTransaction(tls, ddeItemData, uint32(0xFFFFFFFF), *(*THCONV)(unsafe.Pointer(bp + 24)), uintptr(0), uint32(m_CF_UNICODETEXT), uint32(libc.Int32FromInt32(0x0050)|libc.Int32FromInt32(m_XCLASS_FLAGS)), uint32(30000), libc.UintptrFromInt32(0))
 			if ddeData != uintptr(0) {
-				ddeCookie = libuser32.XDdeCreateStringHandleW(tls, _ddeInstance, __ccgo_ts+72778, int32(m_CP_WINUNICODE))
-				ddeData = libuser32.XDdeClientTransaction(tls, libc.UintptrFromInt32(0), uint32(0), *(*THCONV)(unsafe.Pointer(bp + 24)), ddeCookie, uint32(m_CF_UNICODETEXT), uint32(libc.Int32FromInt32(0x00B0)|libc.Int32FromInt32(m_XCLASS_DATA)), uint32(30000), libc.UintptrFromInt32(0))
+				ddeCookie = libc.XDdeCreateStringHandleW(tls, _ddeInstance, __ccgo_ts+72778, int32(m_CP_WINUNICODE))
+				ddeData = libc.XDdeClientTransaction(tls, libc.UintptrFromInt32(0), uint32(0), *(*THCONV)(unsafe.Pointer(bp + 24)), ddeCookie, uint32(m_CF_UNICODETEXT), uint32(libc.Int32FromInt32(0x00B0)|libc.Int32FromInt32(m_XCLASS_DATA)), uint32(30000), libc.UintptrFromInt32(0))
 			}
 		}
 		_objPtr1 = *(*uintptr)(unsafe.Pointer(bp + 40))
@@ -407376,9 +407370,9 @@ _21:
 			 * variable "errorCode", and the fourth is the value of the
 			 * variable "errorInfo".
 			 */
-			*(*Tsize_t)(unsafe.Pointer(bp + 8)) = uint64(libuser32.XDdeGetData(tls, ddeData, libc.UintptrFromInt32(0), uint32(0), uint32(0)))
+			*(*Tsize_t)(unsafe.Pointer(bp + 8)) = uint64(libc.XDdeGetData(tls, ddeData, libc.UintptrFromInt32(0), uint32(0), uint32(0)))
 			ddeDataString = (*(*func(*libc.TLS, uint32) uintptr)(unsafe.Pointer(&struct{ uintptr }{(*TTclStubs)(unsafe.Pointer(XtclStubsPtr)).Ftcl_Alloc})))(tls, uint32(*(*Tsize_t)(unsafe.Pointer(bp + 8))))
-			libuser32.XDdeGetData(tls, ddeData, ddeDataString, uint32(*(*Tsize_t)(unsafe.Pointer(bp + 8))), uint32(0))
+			libc.XDdeGetData(tls, ddeData, ddeDataString, uint32(*(*Tsize_t)(unsafe.Pointer(bp + 8))), uint32(0))
 			if *(*Tsize_t)(unsafe.Pointer(bp + 8)) > uint64(2) {
 				*(*Tsize_t)(unsafe.Pointer(bp + 8)) -= uint64(2)
 			}
@@ -407449,19 +407443,19 @@ _22:
 cleanup:
 	;
 	if ddeCookie != libc.UintptrFromInt32(0) {
-		libuser32.XDdeFreeStringHandle(tls, _ddeInstance, ddeCookie)
+		libc.XDdeFreeStringHandle(tls, _ddeInstance, ddeCookie)
 	}
 	if ddeItem != libc.UintptrFromInt32(0) {
-		libuser32.XDdeFreeStringHandle(tls, _ddeInstance, ddeItem)
+		libc.XDdeFreeStringHandle(tls, _ddeInstance, ddeItem)
 	}
 	if ddeItemData != libc.UintptrFromInt32(0) {
-		libuser32.XDdeFreeDataHandle(tls, ddeItemData)
+		libc.XDdeFreeDataHandle(tls, ddeItemData)
 	}
 	if ddeData != libc.UintptrFromInt32(0) {
-		libuser32.XDdeFreeDataHandle(tls, ddeData)
+		libc.XDdeFreeDataHandle(tls, ddeData)
 	}
 	if *(*THCONV)(unsafe.Pointer(bp + 24)) != libc.UintptrFromInt32(0) {
-		libuser32.XDdeDisconnect(tls, *(*THCONV)(unsafe.Pointer(bp + 24)))
+		libc.XDdeDisconnect(tls, *(*THCONV)(unsafe.Pointer(bp + 24)))
 	}
 	(*(*func(*libc.TLS, uintptr))(unsafe.Pointer(&struct{ uintptr }{(*TTclStubs)(unsafe.Pointer(XtclStubsPtr)).Ftcl_DStringFree})))(tls, bp+480)
 	(*(*func(*libc.TLS, uintptr))(unsafe.Pointer(&struct{ uintptr }{(*TTclStubs)(unsafe.Pointer(XtclStubsPtr)).Ftcl_DStringFree})))(tls, bp+264)
@@ -407804,7 +407798,7 @@ _1:
 			if _OpenKey(tls, interp, *(*uintptr)(unsafe.Pointer(objv + uintptr(n)*8)), mode, int32(1), bp+8) != m_TCL_OK {
 				return int32(m_TCL_ERROR)
 			}
-			libadvapi32.XRegCloseKey(tls, *(*THKEY)(unsafe.Pointer(bp + 8)))
+			libc.XRegCloseKey(tls, *(*THKEY)(unsafe.Pointer(bp + 8)))
 			return m_TCL_OK
 		} else {
 			if argc == int32(3) {
@@ -407937,7 +407931,7 @@ func _DeleteKey(tls *libc.TLS, interp uintptr, keyNameObj uintptr, mode TREGSAM)
 	} else {
 		result = uint32(m_TCL_OK)
 	}
-	libadvapi32.XRegCloseKey(tls, *(*THKEY)(unsafe.Pointer(bp + 24)))
+	libc.XRegCloseKey(tls, *(*THKEY)(unsafe.Pointer(bp + 24)))
 	(*(*func(*libc.TLS, uintptr))(unsafe.Pointer(&struct{ uintptr }{(*TTclStubs)(unsafe.Pointer(XtclStubsPtr)).Ftcl_Free})))(tls, buffer)
 	return int32(int32(result))
 }
@@ -407976,7 +407970,7 @@ func _DeleteValue(tls *libc.TLS, interp uintptr, keyNameObj uintptr, valueNameOb
 	valueName = (*(*func(*libc.TLS, uintptr) uintptr)(unsafe.Pointer(&struct{ uintptr }{(*TTclStubs)(unsafe.Pointer(XtclStubsPtr)).Ftcl_GetString})))(tls, valueNameObj)
 	(*(*func(*libc.TLS, uintptr))(unsafe.Pointer(&struct{ uintptr }{(*TTclStubs)(unsafe.Pointer(XtclStubsPtr)).Ftcl_DStringInit})))(tls, bp+8)
 	(*(*func(*libc.TLS, uintptr, int32, uintptr) uintptr)(unsafe.Pointer(&struct{ uintptr }{(*TTclStubs)(unsafe.Pointer(XtclStubsPtr)).Ftcl_UtfToUniCharDString})))(tls, valueName, (*TTcl_Obj)(unsafe.Pointer(valueNameObj)).Flength, bp+8)
-	result = uint32(libadvapi32.XRegDeleteValueW(tls, *(*THKEY)(unsafe.Pointer(bp)), (*TTcl_DString)(unsafe.Pointer(bp+8)).Fstring1))
+	result = uint32(libc.XRegDeleteValueW(tls, *(*THKEY)(unsafe.Pointer(bp)), (*TTcl_DString)(unsafe.Pointer(bp+8)).Fstring1))
 	(*(*func(*libc.TLS, uintptr))(unsafe.Pointer(&struct{ uintptr }{(*TTclStubs)(unsafe.Pointer(XtclStubsPtr)).Ftcl_DStringFree})))(tls, bp+8)
 	if result != uint32(0) {
 		(*(*func(*libc.TLS, uintptr, uintptr))(unsafe.Pointer(&struct{ uintptr }{(*TTclStubs)(unsafe.Pointer(XtclStubsPtr)).Ftcl_SetObjResult})))(tls, interp, (*(*func(*libc.TLS, uintptr, uintptr) uintptr)(unsafe.Pointer(&struct{ uintptr }{(*TTclStubs)(unsafe.Pointer(XtclStubsPtr)).Ftcl_ObjPrintf})))(tls, __ccgo_ts+73967, libc.VaList(bp+232, (*(*func(*libc.TLS, uintptr) uintptr)(unsafe.Pointer(&struct{ uintptr }{(*TTclStubs)(unsafe.Pointer(XtclStubsPtr)).Ftcl_GetString})))(tls, valueNameObj), (*(*func(*libc.TLS, uintptr) uintptr)(unsafe.Pointer(&struct{ uintptr }{(*TTclStubs)(unsafe.Pointer(XtclStubsPtr)).Ftcl_GetString})))(tls, keyNameObj))))
@@ -407985,7 +407979,7 @@ func _DeleteValue(tls *libc.TLS, interp uintptr, keyNameObj uintptr, valueNameOb
 	} else {
 		result = uint32(m_TCL_OK)
 	}
-	libadvapi32.XRegCloseKey(tls, *(*THKEY)(unsafe.Pointer(bp)))
+	libc.XRegCloseKey(tls, *(*THKEY)(unsafe.Pointer(bp)))
 	return int32(int32(result))
 }
 
@@ -408039,7 +408033,7 @@ func _GetKeyNames(tls *libc.TLS, interp uintptr, keyNameObj uintptr, patternObj 
 	index = uint32(0)
 	for {
 		*(*TDWORD)(unsafe.Pointer(bp + 520)) = uint32(m_MAX_KEY_LENGTH)
-		result = int32(libadvapi32.XRegEnumKeyExW(tls, *(*THKEY)(unsafe.Pointer(bp)), index, bp+8, bp+520, libc.UintptrFromInt32(0), libc.UintptrFromInt32(0), libc.UintptrFromInt32(0), libc.UintptrFromInt32(0)))
+		result = int32(libc.XRegEnumKeyExW(tls, *(*THKEY)(unsafe.Pointer(bp)), index, bp+8, bp+520, libc.UintptrFromInt32(0), libc.UintptrFromInt32(0), libc.UintptrFromInt32(0), libc.UintptrFromInt32(0)))
 		if int32(int32(result)) != 0 {
 			if int32(int32(result)) == int32(259) {
 				result = m_TCL_OK
@@ -408077,7 +408071,7 @@ func _GetKeyNames(tls *libc.TLS, interp uintptr, keyNameObj uintptr, patternObj 
 			(*(*func(*libc.TLS, uintptr))(unsafe.Pointer(&struct{ uintptr }{(*TTclStubs)(unsafe.Pointer(XtclStubsPtr)).FtclFreeObj})))(tls, _objPtr)
 		} /* BUGFIX: Don't leak on failure. */
 	}
-	libadvapi32.XRegCloseKey(tls, *(*THKEY)(unsafe.Pointer(bp)))
+	libc.XRegCloseKey(tls, *(*THKEY)(unsafe.Pointer(bp)))
 	return result
 }
 
@@ -408120,9 +408114,9 @@ func _GetType(tls *libc.TLS, interp uintptr, keyNameObj uintptr, valueNameObj ui
 	valueName = (*(*func(*libc.TLS, uintptr) uintptr)(unsafe.Pointer(&struct{ uintptr }{(*TTclStubs)(unsafe.Pointer(XtclStubsPtr)).Ftcl_GetString})))(tls, valueNameObj)
 	(*(*func(*libc.TLS, uintptr))(unsafe.Pointer(&struct{ uintptr }{(*TTclStubs)(unsafe.Pointer(XtclStubsPtr)).Ftcl_DStringInit})))(tls, bp+16)
 	nativeValue = (*(*func(*libc.TLS, uintptr, int32, uintptr) uintptr)(unsafe.Pointer(&struct{ uintptr }{(*TTclStubs)(unsafe.Pointer(XtclStubsPtr)).Ftcl_UtfToUniCharDString})))(tls, valueName, (*TTcl_Obj)(unsafe.Pointer(valueNameObj)).Flength, bp+16)
-	result = uint32(libadvapi32.XRegQueryValueExW(tls, *(*THKEY)(unsafe.Pointer(bp)), nativeValue, libc.UintptrFromInt32(0), bp+8, libc.UintptrFromInt32(0), libc.UintptrFromInt32(0)))
+	result = uint32(libc.XRegQueryValueExW(tls, *(*THKEY)(unsafe.Pointer(bp)), nativeValue, libc.UintptrFromInt32(0), bp+8, libc.UintptrFromInt32(0), libc.UintptrFromInt32(0)))
 	(*(*func(*libc.TLS, uintptr))(unsafe.Pointer(&struct{ uintptr }{(*TTclStubs)(unsafe.Pointer(XtclStubsPtr)).Ftcl_DStringFree})))(tls, bp+16)
-	libadvapi32.XRegCloseKey(tls, *(*THKEY)(unsafe.Pointer(bp)))
+	libc.XRegCloseKey(tls, *(*THKEY)(unsafe.Pointer(bp)))
 	if result != uint32(0) {
 		(*(*func(*libc.TLS, uintptr, uintptr))(unsafe.Pointer(&struct{ uintptr }{(*TTclStubs)(unsafe.Pointer(XtclStubsPtr)).Ftcl_SetObjResult})))(tls, interp, (*(*func(*libc.TLS, uintptr, uintptr) uintptr)(unsafe.Pointer(&struct{ uintptr }{(*TTclStubs)(unsafe.Pointer(XtclStubsPtr)).Ftcl_ObjPrintf})))(tls, __ccgo_ts+74049, libc.VaList(bp+240, (*(*func(*libc.TLS, uintptr) uintptr)(unsafe.Pointer(&struct{ uintptr }{(*TTclStubs)(unsafe.Pointer(XtclStubsPtr)).Ftcl_GetString})))(tls, valueNameObj), (*(*func(*libc.TLS, uintptr) uintptr)(unsafe.Pointer(&struct{ uintptr }{(*TTclStubs)(unsafe.Pointer(XtclStubsPtr)).Ftcl_GetString})))(tls, keyNameObj))))
 		_AppendSystemError(tls, interp, result)
@@ -408190,7 +408184,7 @@ func _GetValue1(tls *libc.TLS, interp uintptr, keyNameObj uintptr, valueNameObj 
 	valueName = (*(*func(*libc.TLS, uintptr) uintptr)(unsafe.Pointer(&struct{ uintptr }{(*TTclStubs)(unsafe.Pointer(XtclStubsPtr)).Ftcl_GetString})))(tls, valueNameObj)
 	(*(*func(*libc.TLS, uintptr))(unsafe.Pointer(&struct{ uintptr }{(*TTclStubs)(unsafe.Pointer(XtclStubsPtr)).Ftcl_DStringInit})))(tls, bp+232)
 	nativeValue = (*(*func(*libc.TLS, uintptr, int32, uintptr) uintptr)(unsafe.Pointer(&struct{ uintptr }{(*TTclStubs)(unsafe.Pointer(XtclStubsPtr)).Ftcl_UtfToUniCharDString})))(tls, valueName, (*TTcl_Obj)(unsafe.Pointer(valueNameObj)).Flength, bp+232)
-	result = uint32(libadvapi32.XRegQueryValueExW(tls, *(*THKEY)(unsafe.Pointer(bp)), nativeValue, libc.UintptrFromInt32(0), bp+12, (*TTcl_DString)(unsafe.Pointer(bp+16)).Fstring1, bp+8))
+	result = uint32(libc.XRegQueryValueExW(tls, *(*THKEY)(unsafe.Pointer(bp)), nativeValue, libc.UintptrFromInt32(0), bp+12, (*TTcl_DString)(unsafe.Pointer(bp+16)).Fstring1, bp+8))
 	for result == uint32(234) {
 		/*
 		 * The Windows docs say that in this error case, we just need to
@@ -408199,10 +408193,10 @@ func _GetValue1(tls *libc.TLS, interp uintptr, keyNameObj uintptr, valueNameObj 
 		 */
 		*(*TDWORD)(unsafe.Pointer(bp + 8)) = uint32(uint64((*TTcl_DString)(unsafe.Pointer(bp+16)).Flength) * (libc.Uint64FromInt32(2) / libc.Uint64FromInt64(2)))
 		(*(*func(*libc.TLS, uintptr, int32))(unsafe.Pointer(&struct{ uintptr }{(*TTclStubs)(unsafe.Pointer(XtclStubsPtr)).Ftcl_DStringSetLength})))(tls, bp+16, int32(uint64(int32(*(*TDWORD)(unsafe.Pointer(bp + 8))))*uint64(2)))
-		result = uint32(libadvapi32.XRegQueryValueExW(tls, *(*THKEY)(unsafe.Pointer(bp)), nativeValue, libc.UintptrFromInt32(0), bp+12, (*TTcl_DString)(unsafe.Pointer(bp+16)).Fstring1, bp+8))
+		result = uint32(libc.XRegQueryValueExW(tls, *(*THKEY)(unsafe.Pointer(bp)), nativeValue, libc.UintptrFromInt32(0), bp+12, (*TTcl_DString)(unsafe.Pointer(bp+16)).Fstring1, bp+8))
 	}
 	(*(*func(*libc.TLS, uintptr))(unsafe.Pointer(&struct{ uintptr }{(*TTclStubs)(unsafe.Pointer(XtclStubsPtr)).Ftcl_DStringFree})))(tls, bp+232)
-	libadvapi32.XRegCloseKey(tls, *(*THKEY)(unsafe.Pointer(bp)))
+	libc.XRegCloseKey(tls, *(*THKEY)(unsafe.Pointer(bp)))
 	if result != uint32(0) {
 		(*(*func(*libc.TLS, uintptr, uintptr))(unsafe.Pointer(&struct{ uintptr }{(*TTclStubs)(unsafe.Pointer(XtclStubsPtr)).Ftcl_SetObjResult})))(tls, interp, (*(*func(*libc.TLS, uintptr, uintptr) uintptr)(unsafe.Pointer(&struct{ uintptr }{(*TTclStubs)(unsafe.Pointer(XtclStubsPtr)).Ftcl_ObjPrintf})))(tls, __ccgo_ts+74098, libc.VaList(bp+456, (*(*func(*libc.TLS, uintptr) uintptr)(unsafe.Pointer(&struct{ uintptr }{(*TTclStubs)(unsafe.Pointer(XtclStubsPtr)).Ftcl_GetString})))(tls, valueNameObj), (*(*func(*libc.TLS, uintptr) uintptr)(unsafe.Pointer(&struct{ uintptr }{(*TTclStubs)(unsafe.Pointer(XtclStubsPtr)).Ftcl_GetString})))(tls, keyNameObj))))
 		_AppendSystemError(tls, interp, result)
@@ -408313,7 +408307,7 @@ func _GetValueNames(tls *libc.TLS, interp uintptr, keyNameObj uintptr, patternOb
 	 * each iteration because RegEnumValue smashes the old value.
 	 */
 	*(*TDWORD)(unsafe.Pointer(bp + 8)) = uint32(m_MAX_KEY_LENGTH)
-	for libadvapi32.XRegEnumValueW(tls, *(*THKEY)(unsafe.Pointer(bp)), index, (*TTcl_DString)(unsafe.Pointer(bp+16)).Fstring1, bp+8, libc.UintptrFromInt32(0), libc.UintptrFromInt32(0), libc.UintptrFromInt32(0), libc.UintptrFromInt32(0)) == 0 {
+	for libc.XRegEnumValueW(tls, *(*THKEY)(unsafe.Pointer(bp)), index, (*TTcl_DString)(unsafe.Pointer(bp+16)).Fstring1, bp+8, libc.UintptrFromInt32(0), libc.UintptrFromInt32(0), libc.UintptrFromInt32(0), libc.UintptrFromInt32(0)) == 0 {
 		(*(*func(*libc.TLS, uintptr))(unsafe.Pointer(&struct{ uintptr }{(*TTclStubs)(unsafe.Pointer(XtclStubsPtr)).Ftcl_DStringInit})))(tls, bp+232)
 		(*(*func(*libc.TLS, uintptr, int32, uintptr) uintptr)(unsafe.Pointer(&struct{ uintptr }{(*TTclStubs)(unsafe.Pointer(XtclStubsPtr)).Ftcl_UniCharToUtfDString})))(tls, (*TTcl_DString)(unsafe.Pointer(bp+16)).Fstring1, int32(*(*TDWORD)(unsafe.Pointer(bp + 8))), bp+232)
 		name = (*TTcl_DString)(unsafe.Pointer(bp + 232)).Fstring1
@@ -408330,7 +408324,7 @@ func _GetValueNames(tls *libc.TLS, interp uintptr, keyNameObj uintptr, patternOb
 	}
 	(*(*func(*libc.TLS, uintptr, uintptr))(unsafe.Pointer(&struct{ uintptr }{(*TTclStubs)(unsafe.Pointer(XtclStubsPtr)).Ftcl_SetObjResult})))(tls, interp, resultPtr)
 	(*(*func(*libc.TLS, uintptr))(unsafe.Pointer(&struct{ uintptr }{(*TTclStubs)(unsafe.Pointer(XtclStubsPtr)).Ftcl_DStringFree})))(tls, bp+16)
-	libadvapi32.XRegCloseKey(tls, *(*THKEY)(unsafe.Pointer(bp)))
+	libc.XRegCloseKey(tls, *(*THKEY)(unsafe.Pointer(bp)))
 	return int32(int32(result))
 }
 
@@ -408410,7 +408404,7 @@ func _OpenSubKey(tls *libc.TLS, hostName uintptr, _rootKey THKEY, keyName uintpt
 	if hostName != 0 {
 		(*(*func(*libc.TLS, uintptr))(unsafe.Pointer(&struct{ uintptr }{(*TTclStubs)(unsafe.Pointer(XtclStubsPtr)).Ftcl_DStringInit})))(tls, bp+8)
 		hostName = (*(*func(*libc.TLS, uintptr, int32, uintptr) uintptr)(unsafe.Pointer(&struct{ uintptr }{(*TTclStubs)(unsafe.Pointer(XtclStubsPtr)).Ftcl_UtfToUniCharDString})))(tls, hostName, -int32(1), bp+8)
-		result = uint32(libadvapi32.XRegConnectRegistryW(tls, hostName, *(*THKEY)(unsafe.Pointer(bp)), bp))
+		result = uint32(libc.XRegConnectRegistryW(tls, hostName, *(*THKEY)(unsafe.Pointer(bp)), bp))
 		(*(*func(*libc.TLS, uintptr))(unsafe.Pointer(&struct{ uintptr }{(*TTclStubs)(unsafe.Pointer(XtclStubsPtr)).Ftcl_DStringFree})))(tls, bp+8)
 		if result != uint32(0) {
 			return result
@@ -408425,7 +408419,7 @@ func _OpenSubKey(tls *libc.TLS, hostName uintptr, _rootKey THKEY, keyName uintpt
 		keyName = (*(*func(*libc.TLS, uintptr, int32, uintptr) uintptr)(unsafe.Pointer(&struct{ uintptr }{(*TTclStubs)(unsafe.Pointer(XtclStubsPtr)).Ftcl_UtfToUniCharDString})))(tls, keyName, -int32(1), bp+8)
 	}
 	if flags&int32(m_REG_CREATE) != 0 {
-		result = uint32(libadvapi32.XRegCreateKeyExW(tls, *(*THKEY)(unsafe.Pointer(bp)), keyName, uint32(0), libc.UintptrFromInt32(0), uint32(libc.Int32FromInt32(0x00000000)), mode, libc.UintptrFromInt32(0), keyPtr, bp+224))
+		result = uint32(libc.XRegCreateKeyExW(tls, *(*THKEY)(unsafe.Pointer(bp)), keyName, uint32(0), libc.UintptrFromInt32(0), uint32(libc.Int32FromInt32(0x00000000)), mode, libc.UintptrFromInt32(0), keyPtr, bp+224))
 	} else {
 		if *(*THKEY)(unsafe.Pointer(bp)) == uintptr(uint64(libc.Int32FromUint32(0x80000004))) {
 			/*
@@ -408435,7 +408429,7 @@ func _OpenSubKey(tls *libc.TLS, hostName uintptr, _rootKey THKEY, keyName uintpt
 			*(*THKEY)(unsafe.Pointer(keyPtr)) = uintptr(uint64(libc.Int32FromUint32(0x80000004)))
 			result = uint32(0)
 		} else {
-			result = uint32(libadvapi32.XRegOpenKeyExW(tls, *(*THKEY)(unsafe.Pointer(bp)), keyName, uint32(0), mode, keyPtr))
+			result = uint32(libc.XRegOpenKeyExW(tls, *(*THKEY)(unsafe.Pointer(bp)), keyName, uint32(0), mode, keyPtr))
 		}
 	}
 	if keyName != 0 {
@@ -408445,7 +408439,7 @@ func _OpenSubKey(tls *libc.TLS, hostName uintptr, _rootKey THKEY, keyName uintpt
 	 * Be sure to close the root key since we are done with it now.
 	 */
 	if hostName != 0 {
-		libadvapi32.XRegCloseKey(tls, *(*THKEY)(unsafe.Pointer(bp)))
+		libc.XRegCloseKey(tls, *(*THKEY)(unsafe.Pointer(bp)))
 	}
 	return result
 }
@@ -408584,7 +408578,7 @@ func _RecursiveDeleteKey(tls *libc.TLS, startKey THKEY, keyName uintptr, mode TR
 		return uint32(1010)
 	}
 	mode |= uint32(int32(libc.Int32FromInt32(m_KEY_ENUMERATE_SUB_KEYS1)) | libc.Int32FromInt32(0x00010000) | int32(libc.Int32FromInt32(m_KEY_QUERY_VALUE1)))
-	result = uint32(libadvapi32.XRegOpenKeyExW(tls, startKey, keyName, uint32(0), mode, bp+224))
+	result = uint32(libc.XRegOpenKeyExW(tls, startKey, keyName, uint32(0), mode, bp+224))
 	if result != uint32(0) {
 		return result
 	}
@@ -408596,7 +408590,7 @@ func _RecursiveDeleteKey(tls *libc.TLS, startKey THKEY, keyName uintptr, mode TR
 		 * Always get index 0 because key deletion changes ordering.
 		 */
 		*(*TDWORD)(unsafe.Pointer(bp)) = uint32(m_MAX_KEY_LENGTH)
-		result = uint32(libadvapi32.XRegEnumKeyExW(tls, *(*THKEY)(unsafe.Pointer(bp + 224)), uint32(0), (*TTcl_DString)(unsafe.Pointer(bp+8)).Fstring1, bp, libc.UintptrFromInt32(0), libc.UintptrFromInt32(0), libc.UintptrFromInt32(0), libc.UintptrFromInt32(0)))
+		result = uint32(libc.XRegEnumKeyExW(tls, *(*THKEY)(unsafe.Pointer(bp + 224)), uint32(0), (*TTcl_DString)(unsafe.Pointer(bp+8)).Fstring1, bp, libc.UintptrFromInt32(0), libc.UintptrFromInt32(0), libc.UintptrFromInt32(0), libc.UintptrFromInt32(0)))
 		if result == uint32(259) {
 			/*
 			 * RegDeleteKeyEx doesn't exist on non-64bit XP platforms, so we
@@ -408605,13 +408599,13 @@ func _RecursiveDeleteKey(tls *libc.TLS, startKey THKEY, keyName uintptr, mode TR
 			 */
 			if mode != 0 && !(_checkExProc != 0) {
 				_checkExProc = int32(1)
-				handle = libkernel32.XGetModuleHandleW(tls, __ccgo_ts+74225)
-				_regDeleteKeyExProc = libkernel32.XGetProcAddress(tls, handle, __ccgo_ts+74243)
+				handle = libc.XGetModuleHandleW(tls, __ccgo_ts+74225)
+				_regDeleteKeyExProc = libc.XGetProcAddress(tls, handle, __ccgo_ts+74243)
 			}
 			if mode != 0 && _regDeleteKeyExProc != 0 {
 				result = uint32((*(*func(*libc.TLS, THKEY, TLPCWSTR, TREGSAM, TDWORD) TLONG)(unsafe.Pointer(&struct{ uintptr }{_regDeleteKeyExProc})))(tls, startKey, keyName, mode, uint32(0)))
 			} else {
-				result = uint32(libadvapi32.XRegDeleteKeyW(tls, startKey, keyName))
+				result = uint32(libc.XRegDeleteKeyW(tls, startKey, keyName))
 			}
 			break
 		} else {
@@ -408621,7 +408615,7 @@ func _RecursiveDeleteKey(tls *libc.TLS, startKey THKEY, keyName uintptr, mode TR
 		}
 	}
 	(*(*func(*libc.TLS, uintptr))(unsafe.Pointer(&struct{ uintptr }{(*TTclStubs)(unsafe.Pointer(XtclStubsPtr)).Ftcl_DStringFree})))(tls, bp+8)
-	libadvapi32.XRegCloseKey(tls, *(*THKEY)(unsafe.Pointer(bp + 224)))
+	libc.XRegCloseKey(tls, *(*THKEY)(unsafe.Pointer(bp + 224)))
 	return result
 }
 
@@ -408688,16 +408682,16 @@ func _SetValue(tls *libc.TLS, interp uintptr, keyNameObj uintptr, valueNameObj u
 	valueName = (*(*func(*libc.TLS, uintptr, int32, uintptr) uintptr)(unsafe.Pointer(&struct{ uintptr }{(*TTclStubs)(unsafe.Pointer(XtclStubsPtr)).Ftcl_UtfToUniCharDString})))(tls, valueName, (*TTcl_Obj)(unsafe.Pointer(valueNameObj)).Flength, bp+16)
 	if *(*int32)(unsafe.Pointer(bp)) == int32(m_REG_DWORD) || *(*int32)(unsafe.Pointer(bp)) == int32(m_REG_DWORD_BIG_ENDIAN) {
 		if (*(*func(*libc.TLS, uintptr, uintptr, uintptr) int32)(unsafe.Pointer(&struct{ uintptr }{(*TTclStubs)(unsafe.Pointer(XtclStubsPtr)).Ftcl_GetIntFromObj})))(tls, interp, dataObj, bp+232) != m_TCL_OK {
-			libadvapi32.XRegCloseKey(tls, *(*THKEY)(unsafe.Pointer(bp + 8)))
+			libc.XRegCloseKey(tls, *(*THKEY)(unsafe.Pointer(bp + 8)))
 			(*(*func(*libc.TLS, uintptr))(unsafe.Pointer(&struct{ uintptr }{(*TTclStubs)(unsafe.Pointer(XtclStubsPtr)).Ftcl_DStringFree})))(tls, bp+16)
 			return int32(m_TCL_ERROR)
 		}
 		*(*int32)(unsafe.Pointer(bp + 232)) = int32(_ConvertDWORD(tls, uint32(*(*int32)(unsafe.Pointer(bp))), uint32(*(*int32)(unsafe.Pointer(bp + 232)))))
-		result = uint32(libadvapi32.XRegSetValueExW(tls, *(*THKEY)(unsafe.Pointer(bp + 8)), valueName, uint32(0), uint32(*(*int32)(unsafe.Pointer(bp))), bp+232, uint32(4)))
+		result = uint32(libc.XRegSetValueExW(tls, *(*THKEY)(unsafe.Pointer(bp + 8)), valueName, uint32(0), uint32(*(*int32)(unsafe.Pointer(bp))), bp+232, uint32(4)))
 	} else {
 		if *(*int32)(unsafe.Pointer(bp)) == int32(m_REG_MULTI_SZ) {
 			if (*(*func(*libc.TLS, uintptr, uintptr, uintptr, uintptr) int32)(unsafe.Pointer(&struct{ uintptr }{(*TTclStubs)(unsafe.Pointer(XtclStubsPtr)).Ftcl_ListObjGetElements})))(tls, interp, dataObj, bp+672, bp+680) != m_TCL_OK {
-				libadvapi32.XRegCloseKey(tls, *(*THKEY)(unsafe.Pointer(bp + 8)))
+				libc.XRegCloseKey(tls, *(*THKEY)(unsafe.Pointer(bp + 8)))
 				(*(*func(*libc.TLS, uintptr))(unsafe.Pointer(&struct{ uintptr }{(*TTclStubs)(unsafe.Pointer(XtclStubsPtr)).Ftcl_DStringFree})))(tls, bp+16)
 				return int32(m_TCL_ERROR)
 			}
@@ -408725,7 +408719,7 @@ func _SetValue(tls *libc.TLS, interp uintptr, keyNameObj uintptr, valueNameObj u
 			}
 			(*(*func(*libc.TLS, uintptr))(unsafe.Pointer(&struct{ uintptr }{(*TTclStubs)(unsafe.Pointer(XtclStubsPtr)).Ftcl_DStringInit})))(tls, bp+456)
 			(*(*func(*libc.TLS, uintptr, int32, uintptr) uintptr)(unsafe.Pointer(&struct{ uintptr }{(*TTclStubs)(unsafe.Pointer(XtclStubsPtr)).Ftcl_UtfToUniCharDString})))(tls, (*TTcl_DString)(unsafe.Pointer(bp+240)).Fstring1, (*TTcl_DString)(unsafe.Pointer(bp+240)).Flength+int32(1), bp+456)
-			result = uint32(libadvapi32.XRegSetValueExW(tls, *(*THKEY)(unsafe.Pointer(bp + 8)), valueName, uint32(0), uint32(*(*int32)(unsafe.Pointer(bp))), (*TTcl_DString)(unsafe.Pointer(bp+456)).Fstring1, uint32((*TTcl_DString)(unsafe.Pointer(bp+456)).Flength)))
+			result = uint32(libc.XRegSetValueExW(tls, *(*THKEY)(unsafe.Pointer(bp + 8)), valueName, uint32(0), uint32(*(*int32)(unsafe.Pointer(bp))), (*TTcl_DString)(unsafe.Pointer(bp+456)).Fstring1, uint32((*TTcl_DString)(unsafe.Pointer(bp+456)).Flength)))
 			(*(*func(*libc.TLS, uintptr))(unsafe.Pointer(&struct{ uintptr }{(*TTclStubs)(unsafe.Pointer(XtclStubsPtr)).Ftcl_DStringFree})))(tls, bp+240)
 			(*(*func(*libc.TLS, uintptr))(unsafe.Pointer(&struct{ uintptr }{(*TTclStubs)(unsafe.Pointer(XtclStubsPtr)).Ftcl_DStringFree})))(tls, bp+456)
 		} else {
@@ -408737,19 +408731,19 @@ func _SetValue(tls *libc.TLS, interp uintptr, keyNameObj uintptr, valueNameObj u
 				 * Include the null in the length, padding if needed for WCHAR.
 				 */
 				(*(*func(*libc.TLS, uintptr, int32))(unsafe.Pointer(&struct{ uintptr }{(*TTclStubs)(unsafe.Pointer(XtclStubsPtr)).Ftcl_DStringSetLength})))(tls, bp+688, (*TTcl_DString)(unsafe.Pointer(bp+688)).Flength+int32(1))
-				result = uint32(libadvapi32.XRegSetValueExW(tls, *(*THKEY)(unsafe.Pointer(bp + 8)), valueName, uint32(0), uint32(*(*int32)(unsafe.Pointer(bp))), data1, uint32((*TTcl_DString)(unsafe.Pointer(bp+688)).Flength)+uint32(1)))
+				result = uint32(libc.XRegSetValueExW(tls, *(*THKEY)(unsafe.Pointer(bp + 8)), valueName, uint32(0), uint32(*(*int32)(unsafe.Pointer(bp))), data1, uint32((*TTcl_DString)(unsafe.Pointer(bp+688)).Flength)+uint32(1)))
 				(*(*func(*libc.TLS, uintptr))(unsafe.Pointer(&struct{ uintptr }{(*TTclStubs)(unsafe.Pointer(XtclStubsPtr)).Ftcl_DStringFree})))(tls, bp+688)
 			} else {
 				/*
 				 * Store binary data in the registry.
 				 */
 				data2 = _getByteArrayFromObj1(tls, dataObj, bp+904)
-				result = uint32(libadvapi32.XRegSetValueExW(tls, *(*THKEY)(unsafe.Pointer(bp + 8)), valueName, uint32(0), uint32(*(*int32)(unsafe.Pointer(bp))), data2, uint32(*(*Tsize_t)(unsafe.Pointer(bp + 904)))))
+				result = uint32(libc.XRegSetValueExW(tls, *(*THKEY)(unsafe.Pointer(bp + 8)), valueName, uint32(0), uint32(*(*int32)(unsafe.Pointer(bp))), data2, uint32(*(*Tsize_t)(unsafe.Pointer(bp + 904)))))
 			}
 		}
 	}
 	(*(*func(*libc.TLS, uintptr))(unsafe.Pointer(&struct{ uintptr }{(*TTclStubs)(unsafe.Pointer(XtclStubsPtr)).Ftcl_DStringFree})))(tls, bp+16)
-	libadvapi32.XRegCloseKey(tls, *(*THKEY)(unsafe.Pointer(bp + 8)))
+	libc.XRegCloseKey(tls, *(*THKEY)(unsafe.Pointer(bp + 8)))
 	if result != uint32(0) {
 		(*(*func(*libc.TLS, uintptr, uintptr))(unsafe.Pointer(&struct{ uintptr }{(*TTclStubs)(unsafe.Pointer(XtclStubsPtr)).Ftcl_SetObjResult})))(tls, interp, (*(*func(*libc.TLS, uintptr, int32) uintptr)(unsafe.Pointer(&struct{ uintptr }{(*TTclStubs)(unsafe.Pointer(XtclStubsPtr)).Ftcl_NewStringObj})))(tls, __ccgo_ts+74259, -int32(1)))
 		_AppendSystemError(tls, interp, result)
@@ -408805,7 +408799,7 @@ func _BroadcastValue(tls *libc.TLS, interp uintptr, objc int32, objv uintptr) (r
 	/*
 	 * Use the ignore the result.
 	 */
-	result = libuser32.XSendMessageTimeoutW(tls, libc.UintptrFromInt32(0xffff), uint32(m_WM_WININICHANGE1), libc.Uint64FromInt32(0), int64(int64(wstr)), uint32(m_SMTO_ABORTIFHUNG1), uint32(*(*int32)(unsafe.Pointer(bp + 8))), bp)
+	result = libc.XSendMessageTimeoutW(tls, libc.UintptrFromInt32(0xffff), uint32(m_WM_WININICHANGE1), libc.Uint64FromInt32(0), int64(int64(wstr)), uint32(m_SMTO_ABORTIFHUNG1), uint32(*(*int32)(unsafe.Pointer(bp + 8))), bp)
 	(*(*func(*libc.TLS, uintptr))(unsafe.Pointer(&struct{ uintptr }{(*TTclStubs)(unsafe.Pointer(XtclStubsPtr)).Ftcl_DStringFree})))(tls, bp+16)
 	objPtr = (*(*func(*libc.TLS) uintptr)(unsafe.Pointer(&struct{ uintptr }{(*TTclStubs)(unsafe.Pointer(XtclStubsPtr)).Ftcl_NewObj})))(tls)
 	(*(*func(*libc.TLS, uintptr, uintptr, uintptr) int32)(unsafe.Pointer(&struct{ uintptr }{(*TTclStubs)(unsafe.Pointer(XtclStubsPtr)).Ftcl_ListObjAppendElement})))(tls, libc.UintptrFromInt32(0), objPtr, (*(*func(*libc.TLS, TTcl_WideInt) uintptr)(unsafe.Pointer(&struct{ uintptr }{(*TTclStubs)(unsafe.Pointer(XtclStubsPtr)).Ftcl_NewWideIntObj})))(tls, result))
@@ -408846,14 +408840,14 @@ func _AppendSystemError(tls *libc.TLS, interp uintptr, error1 TDWORD) {
 	if (*TTcl_Obj)(unsafe.Pointer(resultPtr)).FrefCount > int32(1) {
 		resultPtr = (*(*func(*libc.TLS, uintptr) uintptr)(unsafe.Pointer(&struct{ uintptr }{(*TTclStubs)(unsafe.Pointer(XtclStubsPtr)).Ftcl_DuplicateObj})))(tls, resultPtr)
 	}
-	length = int32(libkernel32.XFormatMessageW(tls, uint32(libc.Int32FromInt32(m_FORMAT_MESSAGE_FROM_SYSTEM1)|libc.Int32FromInt32(m_FORMAT_MESSAGE_ALLOCATE_BUFFER1)), libc.UintptrFromInt32(0), error1, uint32(int32(uint16(libc.Int32FromInt32(m_SUBLANG_DEFAULT1)))<<libc.Int32FromInt32(10)|int32(uint16(libc.Int32FromInt32(m_LANG_NEUTRAL1)))), tMsgPtrPtr, uint32(0), libc.UintptrFromInt32(0)))
+	length = int32(libc.XFormatMessageW(tls, uint32(libc.Int32FromInt32(m_FORMAT_MESSAGE_FROM_SYSTEM1)|libc.Int32FromInt32(m_FORMAT_MESSAGE_ALLOCATE_BUFFER1)), libc.UintptrFromInt32(0), error1, uint32(int32(uint16(libc.Int32FromInt32(m_SUBLANG_DEFAULT1)))<<libc.Int32FromInt32(10)|int32(uint16(libc.Int32FromInt32(m_LANG_NEUTRAL1)))), tMsgPtrPtr, uint32(0), libc.UintptrFromInt32(0)))
 	if length == 0 {
 		libc.Xsprintf(tls, bp+32, __ccgo_ts+74281, libc.VaList(bp+304, error1))
 		msg = bp + 32
 	} else {
 		(*(*func(*libc.TLS, uintptr))(unsafe.Pointer(&struct{ uintptr }{(*TTclStubs)(unsafe.Pointer(XtclStubsPtr)).Ftcl_DStringInit})))(tls, bp+80)
 		(*(*func(*libc.TLS, uintptr, int32, uintptr) uintptr)(unsafe.Pointer(&struct{ uintptr }{(*TTclStubs)(unsafe.Pointer(XtclStubsPtr)).Ftcl_UniCharToUtfDString})))(tls, *(*uintptr)(unsafe.Pointer(bp)), int32(libc.Xwcslen(tls, *(*uintptr)(unsafe.Pointer(bp)))), bp+80)
-		libkernel32.XLocalFree(tls, *(*uintptr)(unsafe.Pointer(bp)))
+		libc.XLocalFree(tls, *(*uintptr)(unsafe.Pointer(bp)))
 		msgPtr = (*TTcl_DString)(unsafe.Pointer(bp + 80)).Fstring1
 		length = (*TTcl_DString)(unsafe.Pointer(bp + 80)).Flength
 		/*
@@ -410053,11 +410047,11 @@ var XtclArraySearchType = TTcl_ObjType{
 }
 
 var XtclBignumType = TTcl_ObjType{
-	Fname: __ccgo_ts + 53046,
+	Fname: __ccgo_ts + 53024,
 }
 
 var XtclBooleanType = TTcl_ObjType{
-	Fname: __ccgo_ts + 53016,
+	Fname: __ccgo_ts + 53031,
 }
 
 /*
@@ -410095,7 +410089,7 @@ var XtclByteArrayType = TTcl_ObjType{
  */
 
 var XtclByteCodeType = TTcl_ObjType{
-	Fname: __ccgo_ts + 19983,
+	Fname: __ccgo_ts + 20766,
 }
 
 /* Static assertion.  Requires support in the compiler.  */
@@ -410169,7 +410163,7 @@ var XtclCharTypeTable = [384]int8{
  */
 
 var XtclCmdNameType = TTcl_ObjType{
-	Fname: __ccgo_ts + 53038,
+	Fname: __ccgo_ts + 53045,
 }
 
 /*
@@ -410262,12 +410256,12 @@ var XtclIdentityEncoding TTcl_Encoding
 
 var XtclInstructionTable = [191]TInstructionDesc{
 	0: {
-		Fname:        __ccgo_ts + 19992,
+		Fname:        __ccgo_ts + 19983,
 		FnumBytes:    int32(1),
 		FstackEffect: -int32(1),
 	},
 	1: {
-		Fname:        __ccgo_ts + 19997,
+		Fname:        __ccgo_ts + 19988,
 		FnumBytes:    int32(2),
 		FstackEffect: +libc.Int32FromInt32(1),
 		FnumOperands: int32(1),
@@ -410276,7 +410270,7 @@ var XtclInstructionTable = [191]TInstructionDesc{
 		},
 	},
 	2: {
-		Fname:        __ccgo_ts + 20003,
+		Fname:        __ccgo_ts + 19994,
 		FnumBytes:    int32(5),
 		FstackEffect: +libc.Int32FromInt32(1),
 		FnumOperands: int32(1),
@@ -410304,7 +410298,7 @@ var XtclInstructionTable = [191]TInstructionDesc{
 		},
 	},
 	6: {
-		Fname:        __ccgo_ts + 20009,
+		Fname:        __ccgo_ts + 20000,
 		FnumBytes:    int32(2),
 		FstackEffect: -libc.Int32FromInt32(m___INT_MAX__) - libc.Int32FromInt32(1),
 		FnumOperands: int32(1),
@@ -410313,7 +410307,7 @@ var XtclInstructionTable = [191]TInstructionDesc{
 		},
 	},
 	7: {
-		Fname:        __ccgo_ts + 20020,
+		Fname:        __ccgo_ts + 20011,
 		FnumBytes:    int32(5),
 		FstackEffect: -libc.Int32FromInt32(m___INT_MAX__) - libc.Int32FromInt32(1),
 		FnumOperands: int32(1),
@@ -410330,7 +410324,7 @@ var XtclInstructionTable = [191]TInstructionDesc{
 		FnumBytes: int32(1),
 	},
 	10: {
-		Fname:        __ccgo_ts + 20031,
+		Fname:        __ccgo_ts + 20022,
 		FnumBytes:    int32(2),
 		FstackEffect: int32(1),
 		FnumOperands: int32(1),
@@ -410339,7 +410333,7 @@ var XtclInstructionTable = [191]TInstructionDesc{
 		},
 	},
 	11: {
-		Fname:        __ccgo_ts + 20043,
+		Fname:        __ccgo_ts + 20034,
 		FnumBytes:    int32(5),
 		FstackEffect: int32(1),
 		FnumOperands: int32(1),
@@ -410348,11 +410342,11 @@ var XtclInstructionTable = [191]TInstructionDesc{
 		},
 	},
 	12: {
-		Fname:     __ccgo_ts + 20055,
+		Fname:     __ccgo_ts + 20046,
 		FnumBytes: int32(1),
 	},
 	13: {
-		Fname:        __ccgo_ts + 20069,
+		Fname:        __ccgo_ts + 20060,
 		FnumBytes:    int32(2),
 		FnumOperands: int32(1),
 		FopTypes: [2]TInstOperandType{
@@ -410360,7 +410354,7 @@ var XtclInstructionTable = [191]TInstructionDesc{
 		},
 	},
 	14: {
-		Fname:        __ccgo_ts + 20080,
+		Fname:        __ccgo_ts + 20071,
 		FnumBytes:    int32(5),
 		FnumOperands: int32(1),
 		FopTypes: [2]TInstOperandType{
@@ -410377,7 +410371,7 @@ var XtclInstructionTable = [191]TInstructionDesc{
 		FnumBytes: int32(1),
 	},
 	17: {
-		Fname:        __ccgo_ts + 20091,
+		Fname:        __ccgo_ts + 20082,
 		FnumBytes:    int32(2),
 		FnumOperands: int32(1),
 		FopTypes: [2]TInstOperandType{
@@ -410385,7 +410379,7 @@ var XtclInstructionTable = [191]TInstructionDesc{
 		},
 	},
 	18: {
-		Fname:        __ccgo_ts + 20104,
+		Fname:        __ccgo_ts + 20095,
 		FnumBytes:    int32(5),
 		FnumOperands: int32(1),
 		FopTypes: [2]TInstOperandType{
@@ -410393,12 +410387,12 @@ var XtclInstructionTable = [191]TInstructionDesc{
 		},
 	},
 	19: {
-		Fname:        __ccgo_ts + 20117,
+		Fname:        __ccgo_ts + 20108,
 		FnumBytes:    int32(1),
 		FstackEffect: -int32(1),
 	},
 	20: {
-		Fname:        __ccgo_ts + 20132,
+		Fname:        __ccgo_ts + 20123,
 		FnumBytes:    int32(2),
 		FstackEffect: -int32(1),
 		FnumOperands: int32(1),
@@ -410407,7 +410401,7 @@ var XtclInstructionTable = [191]TInstructionDesc{
 		},
 	},
 	21: {
-		Fname:        __ccgo_ts + 20144,
+		Fname:        __ccgo_ts + 20135,
 		FnumBytes:    int32(5),
 		FstackEffect: -int32(1),
 		FnumOperands: int32(1),
@@ -410426,7 +410420,7 @@ var XtclInstructionTable = [191]TInstructionDesc{
 		FstackEffect: -int32(1),
 	},
 	24: {
-		Fname:        __ccgo_ts + 20156,
+		Fname:        __ccgo_ts + 20147,
 		FnumBytes:    int32(2),
 		FnumOperands: int32(1),
 		FopTypes: [2]TInstOperandType{
@@ -410434,12 +410428,12 @@ var XtclInstructionTable = [191]TInstructionDesc{
 		},
 	},
 	25: {
-		Fname:        __ccgo_ts + 20168,
+		Fname:        __ccgo_ts + 20159,
 		FnumBytes:    int32(1),
 		FstackEffect: -int32(1),
 	},
 	26: {
-		Fname:        __ccgo_ts + 20182,
+		Fname:        __ccgo_ts + 20173,
 		FnumBytes:    int32(2),
 		FstackEffect: -int32(1),
 		FnumOperands: int32(1),
@@ -410458,7 +410452,7 @@ var XtclInstructionTable = [191]TInstructionDesc{
 		FstackEffect: -int32(1),
 	},
 	29: {
-		Fname:        __ccgo_ts + 20193,
+		Fname:        __ccgo_ts + 20184,
 		FnumBytes:    int32(3),
 		FstackEffect: +libc.Int32FromInt32(1),
 		FnumOperands: int32(2),
@@ -410468,7 +410462,7 @@ var XtclInstructionTable = [191]TInstructionDesc{
 		},
 	},
 	30: {
-		Fname:        __ccgo_ts + 20208,
+		Fname:        __ccgo_ts + 20199,
 		FnumBytes:    int32(2),
 		FnumOperands: int32(1),
 		FopTypes: [2]TInstOperandType{
@@ -410476,7 +410470,7 @@ var XtclInstructionTable = [191]TInstructionDesc{
 		},
 	},
 	31: {
-		Fname:        __ccgo_ts + 20225,
+		Fname:        __ccgo_ts + 20216,
 		FnumBytes:    int32(3),
 		FnumOperands: int32(2),
 		FopTypes: [2]TInstOperandType{
@@ -410502,7 +410496,7 @@ var XtclInstructionTable = [191]TInstructionDesc{
 		},
 	},
 	34: {
-		Fname:        __ccgo_ts + 20239,
+		Fname:        __ccgo_ts + 20230,
 		FnumBytes:    int32(2),
 		FnumOperands: int32(1),
 		FopTypes: [2]TInstOperandType{
@@ -410518,7 +410512,7 @@ var XtclInstructionTable = [191]TInstructionDesc{
 		},
 	},
 	36: {
-		Fname:        __ccgo_ts + 20245,
+		Fname:        __ccgo_ts + 20236,
 		FnumBytes:    int32(2),
 		FstackEffect: -int32(1),
 		FnumOperands: int32(1),
@@ -410536,7 +410530,7 @@ var XtclInstructionTable = [191]TInstructionDesc{
 		},
 	},
 	38: {
-		Fname:        __ccgo_ts + 20255,
+		Fname:        __ccgo_ts + 20246,
 		FnumBytes:    int32(2),
 		FstackEffect: -int32(1),
 		FnumOperands: int32(1),
@@ -410660,7 +410654,7 @@ var XtclInstructionTable = [191]TInstructionDesc{
 		FnumBytes: int32(1),
 	},
 	62: {
-		Fname:        __ccgo_ts + 20266,
+		Fname:        __ccgo_ts + 20257,
 		FnumBytes:    int32(2),
 		FstackEffect: int32(1),
 		FnumOperands: int32(1),
@@ -410669,7 +410663,7 @@ var XtclInstructionTable = [191]TInstructionDesc{
 		},
 	},
 	63: {
-		Fname:        __ccgo_ts + 20283,
+		Fname:        __ccgo_ts + 20274,
 		FnumBytes:    int32(2),
 		FstackEffect: -libc.Int32FromInt32(m___INT_MAX__) - libc.Int32FromInt32(1),
 		FnumOperands: int32(1),
@@ -410690,7 +410684,7 @@ var XtclInstructionTable = [191]TInstructionDesc{
 		FnumBytes: int32(1),
 	},
 	67: {
-		Fname:        __ccgo_ts + 20293,
+		Fname:        __ccgo_ts + 20284,
 		FnumBytes:    int32(5),
 		FnumOperands: int32(1),
 		FopTypes: [2]TInstOperandType{
@@ -410698,7 +410692,7 @@ var XtclInstructionTable = [191]TInstructionDesc{
 		},
 	},
 	68: {
-		Fname:        __ccgo_ts + 20308,
+		Fname:        __ccgo_ts + 20299,
 		FnumBytes:    int32(5),
 		FstackEffect: +libc.Int32FromInt32(1),
 		FnumOperands: int32(1),
@@ -410707,7 +410701,7 @@ var XtclInstructionTable = [191]TInstructionDesc{
 		},
 	},
 	69: {
-		Fname:        __ccgo_ts + 20322,
+		Fname:        __ccgo_ts + 20313,
 		FnumBytes:    int32(5),
 		FnumOperands: int32(1),
 		FopTypes: [2]TInstOperandType{
@@ -410780,7 +410774,7 @@ var XtclInstructionTable = [191]TInstructionDesc{
 		FnumBytes: int32(1),
 	},
 	82: {
-		Fname:        __ccgo_ts + 20334,
+		Fname:        __ccgo_ts + 20325,
 		FnumBytes:    int32(2),
 		FnumOperands: int32(1),
 		FopTypes: [2]TInstOperandType{
@@ -410788,7 +410782,7 @@ var XtclInstructionTable = [191]TInstructionDesc{
 		},
 	},
 	83: {
-		Fname:        __ccgo_ts + 20348,
+		Fname:        __ccgo_ts + 20339,
 		FnumBytes:    int32(5),
 		FnumOperands: int32(1),
 		FopTypes: [2]TInstOperandType{
@@ -410796,7 +410790,7 @@ var XtclInstructionTable = [191]TInstructionDesc{
 		},
 	},
 	84: {
-		Fname:        __ccgo_ts + 20362,
+		Fname:        __ccgo_ts + 20353,
 		FnumBytes:    int32(2),
 		FstackEffect: -int32(1),
 		FnumOperands: int32(1),
@@ -410805,7 +410799,7 @@ var XtclInstructionTable = [191]TInstructionDesc{
 		},
 	},
 	85: {
-		Fname:        __ccgo_ts + 20375,
+		Fname:        __ccgo_ts + 20366,
 		FnumBytes:    int32(5),
 		FstackEffect: -int32(1),
 		FnumOperands: int32(1),
@@ -410824,7 +410818,7 @@ var XtclInstructionTable = [191]TInstructionDesc{
 		FstackEffect: -int32(1),
 	},
 	88: {
-		Fname:        __ccgo_ts + 20388,
+		Fname:        __ccgo_ts + 20379,
 		FnumBytes:    int32(2),
 		FnumOperands: int32(1),
 		FopTypes: [2]TInstOperandType{
@@ -410832,7 +410826,7 @@ var XtclInstructionTable = [191]TInstructionDesc{
 		},
 	},
 	89: {
-		Fname:        __ccgo_ts + 20403,
+		Fname:        __ccgo_ts + 20394,
 		FnumBytes:    int32(5),
 		FnumOperands: int32(1),
 		FopTypes: [2]TInstOperandType{
@@ -410840,7 +410834,7 @@ var XtclInstructionTable = [191]TInstructionDesc{
 		},
 	},
 	90: {
-		Fname:        __ccgo_ts + 20418,
+		Fname:        __ccgo_ts + 20409,
 		FnumBytes:    int32(2),
 		FstackEffect: -int32(1),
 		FnumOperands: int32(1),
@@ -410849,7 +410843,7 @@ var XtclInstructionTable = [191]TInstructionDesc{
 		},
 	},
 	91: {
-		Fname:        __ccgo_ts + 20432,
+		Fname:        __ccgo_ts + 20423,
 		FnumBytes:    int32(5),
 		FstackEffect: -int32(1),
 		FnumOperands: int32(1),
@@ -410900,7 +410894,7 @@ var XtclInstructionTable = [191]TInstructionDesc{
 		},
 	},
 	98: {
-		Fname:        __ccgo_ts + 20446,
+		Fname:        __ccgo_ts + 20437,
 		FnumBytes:    int32(9),
 		FstackEffect: -int32(1),
 		FnumOperands: int32(2),
@@ -410915,11 +410909,11 @@ var XtclInstructionTable = [191]TInstructionDesc{
 		FstackEffect: -int32(1),
 	},
 	100: {
-		Fname:     __ccgo_ts + 20456,
+		Fname:     __ccgo_ts + 20447,
 		FnumBytes: int32(1),
 	},
 	101: {
-		Fname:        __ccgo_ts + 20468,
+		Fname:        __ccgo_ts + 20459,
 		FnumBytes:    int32(5),
 		FnumOperands: int32(1),
 		FopTypes: [2]TInstOperandType{
@@ -410927,7 +410921,7 @@ var XtclInstructionTable = [191]TInstructionDesc{
 		},
 	},
 	102: {
-		Fname:     __ccgo_ts + 20481,
+		Fname:     __ccgo_ts + 20472,
 		FnumBytes: int32(1),
 	},
 	103: {
@@ -410939,7 +410933,7 @@ var XtclInstructionTable = [191]TInstructionDesc{
 		},
 	},
 	104: {
-		Fname:        __ccgo_ts + 20496,
+		Fname:        __ccgo_ts + 20487,
 		FnumBytes:    int32(9),
 		FnumOperands: int32(2),
 		FopTypes: [2]TInstOperandType{
@@ -410948,7 +410942,7 @@ var XtclInstructionTable = [191]TInstructionDesc{
 		},
 	},
 	105: {
-		Fname:        __ccgo_ts + 20509,
+		Fname:        __ccgo_ts + 20500,
 		FnumBytes:    int32(9),
 		FnumOperands: int32(2),
 		FopTypes: [2]TInstOperandType{
@@ -410972,7 +410966,7 @@ var XtclInstructionTable = [191]TInstructionDesc{
 		FstackEffect: +libc.Int32FromInt32(1),
 	},
 	109: {
-		Fname:        __ccgo_ts + 20522,
+		Fname:        __ccgo_ts + 20513,
 		FnumBytes:    int32(1),
 		FstackEffect: -int32(1),
 	},
@@ -411033,7 +411027,7 @@ var XtclInstructionTable = [191]TInstructionDesc{
 		},
 	},
 	116: {
-		Fname:        __ccgo_ts + 20532,
+		Fname:        __ccgo_ts + 20523,
 		FnumBytes:    int32(5),
 		FstackEffect: +libc.Int32FromInt32(2),
 		FnumOperands: int32(1),
@@ -411042,7 +411036,7 @@ var XtclInstructionTable = [191]TInstructionDesc{
 		},
 	},
 	117: {
-		Fname:        __ccgo_ts + 20542,
+		Fname:        __ccgo_ts + 20533,
 		FnumBytes:    int32(5),
 		FstackEffect: +libc.Int32FromInt32(3),
 		FnumOperands: int32(1),
@@ -411051,7 +411045,7 @@ var XtclInstructionTable = [191]TInstructionDesc{
 		},
 	},
 	118: {
-		Fname:        __ccgo_ts + 20551,
+		Fname:        __ccgo_ts + 20542,
 		FnumBytes:    int32(5),
 		FnumOperands: int32(1),
 		FopTypes: [2]TInstOperandType{
@@ -411059,7 +411053,7 @@ var XtclInstructionTable = [191]TInstructionDesc{
 		},
 	},
 	119: {
-		Fname:        __ccgo_ts + 20560,
+		Fname:        __ccgo_ts + 20551,
 		FnumBytes:    int32(9),
 		FnumOperands: int32(2),
 		FopTypes: [2]TInstOperandType{
@@ -411068,7 +411062,7 @@ var XtclInstructionTable = [191]TInstructionDesc{
 		},
 	},
 	120: {
-		Fname:        __ccgo_ts + 20576,
+		Fname:        __ccgo_ts + 20567,
 		FnumBytes:    int32(9),
 		FstackEffect: -int32(1),
 		FnumOperands: int32(2),
@@ -411114,7 +411108,7 @@ var XtclInstructionTable = [191]TInstructionDesc{
 		},
 	},
 	125: {
-		Fname:        __ccgo_ts + 20590,
+		Fname:        __ccgo_ts + 20581,
 		FnumBytes:    int32(9),
 		FstackEffect: -int32(1),
 		FnumOperands: int32(2),
@@ -411141,7 +411135,7 @@ var XtclInstructionTable = [191]TInstructionDesc{
 		},
 	},
 	128: {
-		Fname:        __ccgo_ts + 20597,
+		Fname:        __ccgo_ts + 20588,
 		FnumBytes:    int32(5),
 		FstackEffect: int32(1),
 		FnumOperands: int32(1),
@@ -411171,12 +411165,12 @@ var XtclInstructionTable = [191]TInstructionDesc{
 		FnumBytes: int32(1),
 	},
 	133: {
-		Fname:        __ccgo_ts + 20609,
+		Fname:        __ccgo_ts + 20600,
 		FnumBytes:    int32(1),
 		FstackEffect: -int32(1),
 	},
 	134: {
-		Fname:        __ccgo_ts + 20626,
+		Fname:        __ccgo_ts + 20617,
 		FnumBytes:    int32(6),
 		FnumOperands: int32(2),
 		FopTypes: [2]TInstOperandType{
@@ -411261,7 +411255,7 @@ var XtclInstructionTable = [191]TInstructionDesc{
 		FstackEffect: -int32(1),
 	},
 	146: {
-		Fname:        __ccgo_ts + 20638,
+		Fname:        __ccgo_ts + 20629,
 		FnumBytes:    int32(9),
 		FnumOperands: int32(2),
 		FopTypes: [2]TInstOperandType{
@@ -411354,7 +411348,7 @@ var XtclInstructionTable = [191]TInstructionDesc{
 		},
 	},
 	163: {
-		Fname:        __ccgo_ts + 20650,
+		Fname:        __ccgo_ts + 20641,
 		FnumBytes:    int32(6),
 		FstackEffect: -libc.Int32FromInt32(m___INT_MAX__) - libc.Int32FromInt32(1),
 		FnumOperands: int32(2),
@@ -411369,11 +411363,11 @@ var XtclInstructionTable = [191]TInstructionDesc{
 		FstackEffect: -int32(1),
 	},
 	165: {
-		Fname:     __ccgo_ts + 20664,
+		Fname:     __ccgo_ts + 20655,
 		FnumBytes: int32(1),
 	},
 	166: {
-		Fname:        __ccgo_ts + 20675,
+		Fname:        __ccgo_ts + 20666,
 		FnumBytes:    int32(5),
 		FstackEffect: +libc.Int32FromInt32(2),
 		FnumOperands: int32(1),
@@ -411382,15 +411376,15 @@ var XtclInstructionTable = [191]TInstructionDesc{
 		},
 	},
 	167: {
-		Fname:     __ccgo_ts + 20689,
+		Fname:     __ccgo_ts + 20680,
 		FnumBytes: int32(1),
 	},
 	168: {
-		Fname:     __ccgo_ts + 20702,
+		Fname:     __ccgo_ts + 20693,
 		FnumBytes: int32(1),
 	},
 	169: {
-		Fname:        __ccgo_ts + 20714,
+		Fname:        __ccgo_ts + 20705,
 		FnumBytes:    int32(1),
 		FstackEffect: -int32(1),
 	},
@@ -411440,7 +411434,7 @@ var XtclInstructionTable = [191]TInstructionDesc{
 		FnumBytes: int32(1),
 	},
 	179: {
-		Fname:        __ccgo_ts + 20727,
+		Fname:        __ccgo_ts + 20718,
 		FnumBytes:    int32(2),
 		FstackEffect: -libc.Int32FromInt32(m___INT_MAX__) - libc.Int32FromInt32(1),
 		FnumOperands: int32(1),
@@ -411449,7 +411443,7 @@ var XtclInstructionTable = [191]TInstructionDesc{
 		},
 	},
 	180: {
-		Fname:        __ccgo_ts + 20737,
+		Fname:        __ccgo_ts + 20728,
 		FnumBytes:    int32(2),
 		FstackEffect: -libc.Int32FromInt32(m___INT_MAX__) - libc.Int32FromInt32(1),
 		FnumOperands: int32(1),
@@ -411458,7 +411452,7 @@ var XtclInstructionTable = [191]TInstructionDesc{
 		},
 	},
 	181: {
-		Fname:     __ccgo_ts + 20752,
+		Fname:     __ccgo_ts + 20743,
 		FnumBytes: int32(1),
 	},
 	182: {
@@ -411471,7 +411465,7 @@ var XtclInstructionTable = [191]TInstructionDesc{
 		FstackEffect: +libc.Int32FromInt32(1),
 	},
 	184: {
-		Fname:        __ccgo_ts + 20766,
+		Fname:        __ccgo_ts + 20757,
 		FnumBytes:    int32(2),
 		FnumOperands: int32(1),
 		FopTypes: [2]TInstOperandType{
@@ -411721,7 +411715,7 @@ var XtclTomMathStubs = TTclTomMathStubs{
 var XtclTomMathStubsPtr uintptr
 
 var XtclWideIntType = TTcl_ObjType{
-	Fname: __ccgo_ts + 53030,
+	Fname: __ccgo_ts + 53016,
 }
 
 // C documentation
@@ -411771,4 +411765,4 @@ var Xz_errmsg = [10]uintptr{
 
 var __ccgo_ts = (*reflect.StringHeader)(unsafe.Pointer(&__ccgo_ts1)).Data
 
-var __ccgo_ts1 = "\n\n\n========= RAW ==========\n\x00\n\n\n========= TREE FIXED ==========\n\x00\n\n\n========= LA%d ==========\n\x00\n\n\n========= SEARCH ==========\n\x00\n\n\n========= TREE NODE %s ==========\n\x00null tree\n\x00%s. `%c'\x00 longest\x00 shortest\x00 hasmixed\x00 hascapture\x00 hasbackref\x00 UNUSED\x00 (#%d)\x00 {%d,\x00%d\x00}\x00 %ld-%ld\x00 L:%s\x00 R:%s\x00\n\x00unable\x00%p\x00\ninitial cleanup:\n\x00\nempties:\n\x00\nconstraints:\n\x00\nfinal cleanup:\n\x00NUL\x00SOH\x00STX\x00ETX\x00EOT\x00ENQ\x00ACK\x00BEL\x00alert\x00BS\x00backspace\x00HT\x00tab\x00LF\x00newline\x00VT\x00vertical-tab\x00FF\x00form-feed\x00CR\x00carriage-return\x00SO\x00SI\x00DLE\x00DC1\x00DC2\x00DC3\x00DC4\x00NAK\x00SYN\x00ETB\x00CAN\x00EM\x00SUB\x00ESC\x00IS4\x00FS\x00IS3\x00GS\x00IS2\x00RS\x00IS1\x00US\x00space\x00exclamation-mark\x00quotation-mark\x00number-sign\x00dollar-sign\x00percent-sign\x00ampersand\x00apostrophe\x00left-parenthesis\x00right-parenthesis\x00asterisk\x00plus-sign\x00comma\x00hyphen\x00hyphen-minus\x00period\x00full-stop\x00slash\x00solidus\x00zero\x00one\x00two\x00three\x00four\x00five\x00six\x00seven\x00eight\x00nine\x00colon\x00semicolon\x00less-than-sign\x00equals-sign\x00greater-than-sign\x00question-mark\x00commercial-at\x00left-square-bracket\x00backslash\x00reverse-solidus\x00right-square-bracket\x00circumflex\x00circumflex-accent\x00underscore\x00low-line\x00grave-accent\x00left-brace\x00left-curly-bracket\x00vertical-line\x00right-brace\x00right-curly-bracket\x00tilde\x00DEL\x00alnum\x00alpha\x00ascii\x00blank\x00cntrl\x00digit\x00graph\x00lower\x00print\x00punct\x00upper\x00xdigit\x00REG_OKAY\x00no errors detected\x00REG_NOMATCH\x00failed to match\x00REG_BADPAT\x00invalid regexp (reg version 0.8)\x00REG_ECOLLATE\x00invalid collating element\x00REG_ECTYPE\x00invalid character class\x00REG_EESCAPE\x00invalid escape \\ sequence\x00REG_ESUBREG\x00invalid backreference number\x00REG_EBRACK\x00brackets [] not balanced\x00REG_EPAREN\x00parentheses () not balanced\x00REG_EBRACE\x00braces {} not balanced\x00REG_BADBR\x00invalid repetition count(s)\x00REG_ERANGE\x00invalid character range\x00REG_ESPACE\x00out of memory\x00REG_BADRPT\x00quantifier operand invalid\x00REG_ASSERT\x00\"can't happen\" -- you found a bug\x00REG_INVARG\x00invalid argument to regex function\x00REG_MIXED\x00character widths of regex and string differ\x00REG_BADOPT\x00invalid embedded option\x00REG_ETOOBIG\x00regular expression is too complex\x00REG_ECOLORS\x00too many colors\x00\x00oops\x00REG_%u\x00assemblecode\x00push\x00add\x00append\x00appendArray\x00appendArrayStk\x00appendStk\x00arrayExistsImm\x00arrayExistsStk\x00arrayMakeImm\x00arrayMakeStk\x00beginCatch\x00bitand\x00bitnot\x00bitor\x00bitxor\x00clockRead\x00concat\x00concatStk\x00coroName\x00currentNamespace\x00dictAppend\x00dictExists\x00dictExpand\x00dictGet\x00dictIncrImm\x00dictLappend\x00dictRecombineStk\x00dictRecombineImm\x00dictSet\x00dictUnset\x00div\x00dup\x00endCatch\x00eq\x00eval\x00evalStk\x00exist\x00existArray\x00existArrayStk\x00existStk\x00expon\x00expr\x00exprStk\x00ge\x00gt\x00incr\x00incrArray\x00incrArrayImm\x00incrArrayStk\x00incrArrayStkImm\x00incrImm\x00incrStk\x00incrStkImm\x00infoLevelArgs\x00infoLevelNumber\x00invokeStk\x00jump\x00jump4\x00jumpFalse\x00jumpFalse4\x00jumpTable\x00jumpTrue\x00jumpTrue4\x00label\x00land\x00lappend\x00lappendArray\x00lappendArrayStk\x00lappendList\x00lappendListArray\x00lappendListArrayStk\x00lappendListStk\x00lappendStk\x00le\x00lindexMulti\x00list\x00listConcat\x00listIn\x00listIndex\x00listIndexImm\x00listLength\x00listNotIn\x00load\x00loadArray\x00loadArrayStk\x00loadStk\x00lor\x00lsetFlat\x00lsetList\x00lshift\x00lt\x00mod\x00mult\x00neq\x00nop\x00not\x00nsupvar\x00numericType\x00originCmd\x00over\x00pop\x00pushReturnCode\x00pushReturnOpts\x00pushResult\x00regexp\x00resolveCmd\x00reverse\x00rshift\x00store\x00storeArray\x00storeArrayStk\x00storeStk\x00strcaseLower\x00strcaseTitle\x00strcaseUpper\x00strcmp\x00strcat\x00streq\x00strfind\x00strindex\x00strlen\x00strmap\x00strmatch\x00strneq\x00strrange\x00strreplace\x00strrfind\x00strtrim\x00strtrimLeft\x00strtrimRight\x00sub\x00tclooClass\x00tclooIsObject\x00tclooNamespace\x00tclooSelf\x00tryCvtToBoolean\x00tryCvtToNumeric\x00uminus\x00unset\x00unsetArray\x00unsetArrayStk\x00unsetStk\x00uplus\x00upvar\x00variable\x00verifyDict\x00yield\x00bytecodeList\x00\n    (\"\x00\" body, line \x00)\x00\n    (\"%.*s\" body, line %d)\x00instruction\x00value\x00boolean\x00boolean varName\x00imm8\x00operand must be [0..3]\x00TCL\x00ASSEM\x00OPERAND<0,>3\x00count\x00count varName\x00script\x00expression\x00table\x00name\x00operand must be >=2\x00OPERAND>=2\x00varname\x00varName imm8\x00Instruction \"%s\" could not be found, can't happen\n\x00no ASSEM_EVAL case for %s (%d), can't happen\x00jump table must have an even number of list elements\x00BADJUMPTABLE\x00duplicate entry in jump table for \"%s\"\x00DUPJUMPTABLEENTRY\x00assembly code may not contain substitutions\x00NOSUBST\x00cannot use this instruction to create a variable in a non-proc context\x00LVT\x00variable \"%s\" is not local\x00NONLOCAL\x00operand does not fit in one byte\x001BYTE\x00operand must be nonnegative\x00NONNEGATIVE\x00operand must be positive\x00POSITIVE\x00duplicate definition of label \"%s\"\x00DUPLABEL\x00undefined label \"%s\"\x00NOLABEL\x00\"%s\" instruction may not appear in a context where an exception has been caught and not disposed of.\x00BADTHROW\x00inconsistent stack depths on two execution paths\x00BADSTACK\x00stack underflow\x00code pops stack below level of enclosing catch\x00BADSTACKINCATCH\x00stack is unbalanced on exit from the code (depth=%d)\x00execution reaches an instruction in inconsistent exception contexts\x00BADCATCH\x00endCatch without a corresponding beginCatch\x00BADENDCATCH\x00catch still active on exit from assembly code\x00UNCLOSEDCATCH\x00unclosed catch at end of code in tclAssembly.c:BuildExceptionRanges, can't happen\x00undefined label in tclAssembly.c:BuildExceptionRanges, can't happen\x00\n    in assembly code between lines \x00 and \x00end of assembly code\x00Tcl_AsyncDelete: async handler deleted by the wrong thread\x00Tcl_AsyncDelete: cannot find async handler\x00apply\x00break\x00case\x00catch\x00continue\x00coroutine\x00error\x00for\x00foreach\x00format\x00global\x00if\x00join\x00lassign\x00lindex\x00linsert\x00llength\x00lmap\x00lrange\x00lrepeat\x00lreplace\x00lreverse\x00lsearch\x00lset\x00lsort\x00package\x00proc\x00regsub\x00rename\x00return\x00scan\x00set\x00split\x00subst\x00switch\x00tailcall\x00throw\x00trace\x00try\x00uplevel\x00while\x00yieldto\x00after\x00cd\x00close\x00eof\x00exec\x00exit\x00fblocked\x00fconfigure\x00fcopy\x00fileevent\x00flush\x00gets\x00glob\x00open\x00pid\x00puts\x00pwd\x00read\x00seek\x00socket\x00source\x00tell\x00time\x00unload\x00update\x00vwait\x00abs\x00acos\x00asin\x00atan\x00atan2\x00bool\x00ceil\x00cos\x00cosh\x00double\x00entier\x00exp\x00floor\x00fmod\x00hypot\x00int\x00isqrt\x00log\x00log10\x00pow\x00rand\x00round\x00sin\x00sinh\x00sqrt\x00srand\x00tan\x00tanh\x00wide\x00~\x00integer\x00!\x00+\x00*\x00&\x00|\x00^\x00**\x00<<\x00integer shift\x00>>\x00%\x00integer integer\x00!=\x00value value\x00ne\x00in\x00value list\x00ni\x00-\x00value ?value ...?\x00/\x00<\x00<=\x00>\x00>=\x00==\x00Tcl_CallFrame must not be smaller than CallFrame\x00::errorInfo\x00UP\x00CALL\x00INNER\x00::errorCode\x00T\x00C\x00L\x00_\x00P\x00K\x00G\x00_\x00P\x00R\x00E\x00F\x00E\x00R\x00_\x00L\x00A\x00T\x00E\x00S\x00T\x00\x00\x00T\x00C\x00L\x00_\x00I\x00N\x00T\x00E\x00R\x00P\x00_\x00D\x00E\x00B\x00U\x00G\x00_\x00F\x00R\x00A\x00M\x00E\x00\x00\x00Tcl_CreateInterp: can't create global namespace\x00builtin command with NULL object command proc and a NULL compile proc\x00::tcl::Bgerror\x00::tcl::unsupported::disassemble\x00::tcl::unsupported::getbytecode\x00::tcl::unsupported::representation\x00::tcl::unsupported::assemble\x00::tcl::unsupported::inject\x00::tcl::unsupported::corotype\x00::tcl::unsupported::timerate\x00::tcl::unsupported\x00::tcl::mathfunc\x00Can't create math function namespace\x00::tcl::mathfunc::\x00::tcl::mathop\x00can't create math operator namespace\x00::tcl::mathop::\x00failed to create math operator %s\x00tcl_platform\x00engine\x00Tcl\x00littleEndian\x00bigEndian\x00byteOrder\x00wordSize\x00pointerSize\x00tcl_patchLevel\x008.6.13\x00tcl_version\x008.6\x00tcl_precision\x00%s\x00Assoc Data Key #%d\x00DeleteInterpProc called with active evals\x00DeleteInterpProc called on interpreter not marked deleted\x00DeleteInterpProc: popping rootCallFrame with other frames on top\x00Argument location tracking table not empty\x00::\x00cannot use namespace qualifiers in hidden command token (rename)\x00VALUE\x00HIDDENTOKEN\x00can only hide global namespace commands (use rename then hide)\x00HIDE\x00NON_GLOBAL\x00hidden command named \"%s\" already exists\x00ALREADY_HIDDEN\x00cannot expose to a namespace (use expose to toplevel, then rename)\x00EXPOSE\x00unknown hidden command \"%s\"\x00LOOKUP\x00trying to expose a non-global command namespace command\x00exposed command \"%s\" already exists\x00COMMAND_EXISTS\x00delete\x00can't %s \"%s\": command doesn't exist\x00COMMAND\x00can't rename to \"%s\": bad command name\x00can't rename to \"%s\": command already exists\x00OPERATION\x00RENAME\x00TARGET_EXISTS\x00argument to math function didn't have numeric value\x00tcl::mathfunc::\x00unknown math function \"%s\"\x00MATHFUNC\x00::info functions \x00attempt to call eval in deleted interpreter\x00IDELETE\x00too many nested evaluations (infinite loop?)\x00LIMIT\x00STACK\x00IUNWIND\x00eval unwound\x00ICANCEL\x00eval canceled\x00CANCEL\x00attempt to invoke a deleted command\x00EVAL\x00DELETEDCOMMAND\x00Tcl_EvalObjv: NULL global namespace pointer\x00::unknown\x00invalid command name \"%s\"\x00\n    (enter trace on \"\x00...\x00\")\x00\n    (leave trace on \"\x00\n    (expanding word %d)\x00TclArgumentBC Enter/Release Mismatch\x00invoked \"break\" outside of a loop\x00invoked \"continue\" outside of a loop\x00command returned bad code: %d\x00UNEXPECTED_RESULT_CODE\x00illegal argument vector\x00TclObjInvoke: called without TCL_INVOKE_HIDDEN\x00invalid hidden command name \"%s\"\x00NONE\x00square root of negative argument\x00ARITH\x00DOMAIN\x00domain error: argument not in valid range\x00not enough\x00too many\x00%s arguments for math function \"%s\"\x00WRONGARGS\x00tailcall cannot find the right splicing spot: should not happen!\x00?command? ?arg ...?\x00tailcall can only be called from a proc, lambda or method\x00TAILCALL\x00ILLEGAL\x00Adding a callback without an objProc?!\x00?returnValue?\x00yield can only be called in a coroutine\x00COROUTINE\x00ILLEGAL_YIELD\x00command ?arg ...?\x00yieldto can only be called in a coroutine\x00yieldto called in deleted namespace\x00YIELDTO_IN_DELETED\x00cannot yield: C stack busy\x00CANT_YIELD\x00Yield received an option which is not implemented\x00can only get coroutine type of a coroutine\x00active\x00unknown coroutine type\x00BAD_TYPE\x00coroName cmd ?arg1 arg2 ...?\x00can only inject a command into a coroutine\x00can only inject a command into a suspended coroutine\x00ACTIVE\x00coroutine \"%s\" is already running\x00BUSY\x00?arg?\x00wrong coro nargs; how did we get here? not implemented!\x00name cmd ?arg ...?\x00can't create procedure \"%s\": unknown namespace\x00NAMESPACE\x00can't create procedure \"%s\": bad procedure name\x00bytearray\x00encode\x00decode\x00hex\x00uuencode\x00base64\x00%s called with shared object\x00Tcl_SetByteArrayObj\x00Tcl_SetByteArrayLength\x00max size for a Tcl value (%d bytes) exceeded\x00TclAppendBytesToByteArray\x00%s must be called with definite number of bytes to append\x00binary\x00binary encode\x00binary decode\x00formatString ?arg ...?\x00number of elements in list does not match count\x00cannot use \"*\" in format string with \"x\"\x00hexadecimal\x00expected %s string but got \"%s\" instead\x00missing count for \"@\" field specifier\x00not enough arguments for all format specifiers\x00bad field specifier \"%s\"\x00value formatString ?varName ...?\x00unexpected fallthrough\x00data\x00-strict\x00?options? data\x00option\x00invalid hexadecimal digit \"%c\" at position %d\x00BINARY\x00DECODE\x00INVALID\x00-maxlen\x00-wrapchar\x00?-maxlen len? ?-wrapchar char? data\x00line length out of range\x00ENCODE\x00LINE_LENGTH\x00limit hit\x00invalid wrapchar; will defeat decoding\x00WRAPCHAR\x00short uuencode data\x00SHORT\x00invalid uuencode character \"%c\" at position %d\x00invalid base64 character \"%c\" at position %d\x00unable to alloc %u bytes\x00unable to alloc %u bytes, %s line %d\x00unable to realloc %u bytes\x00unable to realloc %u bytes, %s line %d\x00%a %b %d %H:%M:%S %Z %Y\x00BCE\x00C\x00cannot use -gmt and -timezone in same call\x00CE\x00dayOfMonth\x00dayOfWeek\x00dayOfYear\x00era\x00:GMT\x00gregorian\x00integer value too large to represent\x00iso8601Week\x00iso8601Year\x00julianDay\x00localSeconds\x00month\x00seconds\x00tzName\x00tzOffset\x00year\x00getenv\x00Oldscan\x00ConvertLocalToUTC\x00GetDateFields\x00GetJulianDayFromEraYearMonthDay\x00GetJulianDayFromEraYearWeekDay\x00ParseFormatArgs\x00clicks\x00microseconds\x00milliseconds\x00::tcl::clock::\x00clock\x00dict tzdata changeover\x00key \"localseconds\" not found in dictionary\x00seconds tzdata changeover\x00expected key(s) not found in dictionary\x00dict changeover\x00loop in ConvertLocalToUTCUsingTable\x00time value too large/small to represent\x00number too large to represent as a Posix time\x00CLOCK\x00argTooLarge\x00localtime failed (clock value may be too large/small to represent)\x00localtimeFailed\x00%02d\x00\x00\x00-milliseconds\x00-microseconds\x00?-switch?\x00-format\x00-gmt\x00-locale\x00-timezone\x00clock format clockval ?-format string? ?-gmt boolean? ?-locale LOCALE? ?-timezone ZONE?\x00wrongNumArgs\x00badOption\x00gmtWithTimezone\x00T\x00Z\x00\x00\x00string ?in? ?pattern body ...? ?default body?\x00extra case pattern with no body\x00default\x00\n    (\"%.50s\" arm line %d)\x00script ?resultVarName? ?optionVarName?\x00\n    (\"catch\" body line %d)\x00?dirName?\x00couldn't change working directory to \"%s\": %s\x00convertfrom\x00convertto\x00dirs\x00names\x00system\x00encoding\x00::tcl::encoding::\x00tcl:encoding:\x00___tmp\x00problem making 'encoding %s' safe: %s\x00problem making 'encoding' safe: %s\x00not allowed to invoke subcommand %s of encoding\x00SAFE\x00SUBCOMMAND\x00?encoding? data\x00?dirList?\x00expected directory list but got \"%s\"\x00ENCODING\x00BADPATH\x00?encoding?\x00message ?errorInfo? ?errorCode?\x00-code error -level 0\x00-errorinfo\x00-errorcode\x00\n    (\"eval\" body line %d)\x00arg ?arg ...?\x00?returnCode?\x00atime\x00attributes\x00channels\x00copy\x00dirname\x00executable\x00exists\x00extension\x00isdirectory\x00isfile\x00link\x00lstat\x00mtime\x00mkdir\x00nativename\x00normalize\x00owned\x00pathtype\x00readable\x00readlink\x00rootname\x00separator\x00size\x00stat\x00tail\x00tempfile\x00type\x00volumes\x00writable\x00file\x00::tcl::file::\x00tcl:file:\x00problem making 'file %s' safe: %s\x00problem making 'file' safe: %s\x00not allowed to invoke subcommand %s of file\x00name ?time?\x00could not get access time for file \"%s\"\x00could not set access time for file \"%s\": %s\x00could not get modification time for file \"%s\"\x00could not set modification time for file \"%s\": %s\x00name varName\x00unrecognised path\x00FILESYSTEM\x00name ?name ...?\x00could not read \"%s\": no such file or directory\x00PATHSPLIT\x00NONESUCH\x00absolute\x00relative\x00volumerelative\x00?name?\x00\\\x00could not read \"%s\": %s\x00dev\x00ino\x00nlink\x00uid\x00gid\x00ctime\x00mode\x00directory\x00characterSpecial\x00blockSpecial\x00fifo\x00unknown\x00start test next command\x00\n    (\"for\" body line %d)\x00\n    (\"for\" initial command)\x00\n    (\"for\" loop-end command)\x00varList list ?varList list ...? command\x00%s varlist is empty\x00LMAP\x00FOREACH\x00NEEDVARS\x00\n    (\"%s\" body line %d)\x00\n    (setting %s loop variable \"%s\")\x00args\x00body\x00cmdcount\x00commands\x00complete\x00errorstack\x00frame\x00functions\x00globals\x00hostname\x00level\x00library\x00loaded\x00locals\x00nameofexecutable\x00patchlevel\x00procs\x00sharedlibextension\x00tclversion\x00vars\x00wrong # args: no expression after \"%s\" argument\x00then\x00elseif\x00else\x00wrong # args: extra words after \"else\" clause in \"if\" command\x00wrong # args: no script following \"%s\" argument\x00varName ?increment?\x00info\x00procname\x00\"%s\" isn't a procedure\x00PROCEDURE\x00?pattern?\x00*[?\\\x00command\x00procname arg varname\x00procedure \"%s\" doesn't have an argument \"%s\"\x00ARGUMENT\x00?interp?\x00varName\x00?number?\x00Broken frame level calculation\x00bad level \"%s\"\x00LEVEL\x00precompiled\x00line\x00cmd\x00TCL_LOCATION_PROC found in standard frame\x00\t    ::apply [::list {{pattern *}} {\n\t\t::set cmds {}\n\t\t::foreach cmd [::info commands ::tcl::mathfunc::$pattern] {\n\t\t    ::lappend cmds [::namespace tail $cmd]\n\t\t}\n\t\t::foreach cmd [::info commands tcl::mathfunc::$pattern] {\n\t\t    ::set cmd [::namespace tail $cmd]\n\t\t    ::if {$cmd ni $cmds} {\n\t\t\t::lappend cmds $cmd\n\t\t    }\n\t\t}\n\t\t::return $cmds\n\t    } [::namespace current]] \x00unable to determine name of host\x00HOSTNAME\x00UNKNOWN\x00tcl_library\x00no library has been specified for Tcl\x00VARIABLE\x00?filename?\x00.dll\x00list ?joinString?\x00 \x00list ?varName ...?\x00list ?index ...?\x00list index ?element ...?\x00list first last\x00count ?value ...?\x00bad count \"%d\": must be integer >= 0\x00LREPEAT\x00NEGARG\x00max length of a Tcl list (%d elements) exceeded\x00MEMORY\x00list first last ?element ...?\x00-all\x00-ascii\x00-bisect\x00-decreasing\x00-dictionary\x00-exact\x00-glob\x00-increasing\x00-index\x00-inline\x00-integer\x00-nocase\x00-not\x00-real\x00-regexp\x00-sorted\x00-start\x00-subindices\x00?-option value ...? list pattern\x00missing starting index\x00MISSING\x00\"-index\" option must be followed by list index\x00index \"%s\" cannot select an element from any list\x00INDEXOUTOFRANGE\x00\n    (-index option item number %d)\x00-subindices cannot be used without -index option\x00LSEARCH\x00BAD_OPTION_MIX\x00-bisect is not compatible with -all or -not\x00listVar ?index? ?index ...? value\x00-command\x00-indices\x00-stride\x00-unique\x00?-option value ...? list\x00\"-command\" option must be followed by comparison command\x00\"-stride\" option must be followed by stride length\x00stride length must be at least 2\x00LSORT\x00BADSTRIDE\x00list size must be a multiple of the stride length\x00when used with \"-stride\", the leading \"-index\" value must be within the group\x00BADINDEX\x00no enough memory to proccess sort of %d items\x00\n    (-compare command)\x00-compare command returned non-integer result\x00COMPARISONFAILED\x00element %d missing from sublist \"%s\"\x00INDEXFAILED\x00-about\x00-expanded\x00-line\x00-linestop\x00-lineanchor\x00--\x00?-option ...? exp string ?matchVar? ?subMatchVar ...?\x00regexp match variables not allowed when using -inline\x00REGEXP\x00MIX_VAR_INLINE\x00?-option ...? exp string subSpec ?varName?\x00&\\\x00*+?{}()[].\\|^$\x00oldName newName\x00?-encoding name? fileName\x00-encoding\x00 \n\t\r\x00string ?splitChars?\x00needleString haystackString ?startIndex?\x00string charIndex\x00control\x00false\x00true\x00wideinteger\x00wordchar\x00-failindex\x00class ?-strict? ?-failindex var? str\x00class\x00?-strict? ?-failindex var? str\x00?-nocase? charMap string\x00bad option \"%s\": must be -nocase\x00INDEX\x00char map list unbalanced\x00MAP\x00UNBALANCED\x00?-nocase? pattern string\x00string first last\x00string count\x00result exceeds max size for a Tcl value (%d bytes)\x00string size overflow, out of memory allocating %u bytes\x00string first last ?string?\x00string\x00string index\x00?-nocase? ?-length int? string1 string2\x00-length\x00bad option \"%s\": must be -nocase or -length\x00string ?first? ?last?\x00string ?chars?\x00bytelength\x00cat\x00compare\x00equal\x00first\x00index\x00is\x00last\x00length\x00map\x00match\x00range\x00repeat\x00replace\x00tolower\x00toupper\x00totitle\x00trim\x00trimleft\x00trimright\x00wordend\x00wordstart\x00-nobackslashes\x00-nocommands\x00-novariables\x00Tcl_SubstObjCmd: bad option index to SubstOptions\x00?-nobackslashes? ?-nocommands? ?-novariables? string\x00-indexvar\x00-matchvar\x00bad option \"%s\": %s option already found\x00SWITCH\x00DOUBLEOPT\x00missing variable name argument to %s option\x00NOVAR\x00?-option ...? string ?pattern body ...? ?default body?\x00%s option requires -regexp option\x00MODERESTRICTION\x00?-option ...? string {?pattern body ...? ?default body?}\x00extra switch pattern with no body\x00BADARM\x00, this may be due to a comment incorrectly placed outside of a switch body - see the \"switch\" documentation\x00COMMENT?\x00no body specified for pattern \"%s\"\x00FALLTHROUGH\x00fall-out when searching for body to match pattern\x00\n    (\"%.*s%s\" arm line %d)\x00type message\x00type must be non-empty list\x00THROW\x00BADEXCEPTION\x00-code error -level 0 -errorcode\x00command ?count?\x00per\x00iteration\x00-direct\x00-overhead\x00-calibrate\x00?-direct? ?-calibrate? ?-overhead double? command ?time ?max-count??\x00µs/#-overhead\x00%.*f\x00%.3f\x00net-ms\x00µs/#\x00#\x00#/sec\x00finally\x00on\x00trap\x00body ?handler ...? ?finally script?\x00handler type\x00finally clause must be last\x00TRY\x00FINALLY\x00NONTERMINAL\x00wrong # args to finally clause: must be \"... finally script\"\x00wrong # args to on clause: must be \"... on code variableList script\"\x00ON\x00wrong # args to trap clause: must be \"... trap pattern variableList script\"\x00TRAP\x00bad prefix '%s': must be a list\x00EXNFORMAT\x00last non-finally clause must not have a body of \"-\"\x00BADFALLTHROUGH\x00-during\x00\n    (\"%s ... %s\" handler line %d)\x00\n    (\"%s ... finally\" body line %d)\x00test command\x00\n    (\"while\" body line %d)\x00ForeachInfo\x00NewForeachInfo\x00DictUpdateInfo\x000\x001\x00list must have an even number of elements\x00-errorcode {TCL ARGUMENT FORMAT}\x00bad stack depth computations: is %i, should be %i\x00TclCompileCatchCmd: bad jump distance %d\x00TclCompileDictCmd(update): bad jump distance %d\x00, \x00%%v%u\x00variables\x00data=[\x00], loop=%%v%u\x00,\x00\n\t\t it%%v%u\t[\x00]\x00jumpOffset=%+d, vars=\x00[\x00loop\x00assign\x00jumpOffset\x00TclCompileIfCmd: unexpected opcode \"%d\" updating ifFalse jump\x00object\x00::namespace inscope \x00::namespace\x00inscope\x00:\x002\x00end\x00-options\x00namespace\x00JumptableInfo\x00word\x003\x00TclCompileSubstCmd: bad start jump distance %d\x00unexpected token type in TclCompileSubstCmd: %d\x00TclCompileSubstCmd: bad break jump distance %d\x00TclCompileSubstCmd: bad continue jump distance %d\x00TclCompileSubstCmd: bad return jump distance %d\x00TclCompileSubstCmd: bad other jump distance %d\x00TclCompileSubstCmd: bad ok jump distance %d\x00TclCompileSubstCmd: bad end jump distance %d\x00unknown switch mode: %d\x00\n\t\t\x00\"%s\"->pc %d\x00mapping\x00-errorcode {TCL OPERATION THROW BADEXCEPTION}\x00-level 0 -code 0\x00-nocomplain\x00-1\x001.0\x00_@_\x00not enough memory to parse expression\x00NOMEM\x00invalid character \"%.*s\"\x00BADCHAR\x00incomplete operator \"%.*s\"\x00PARTOP\x00invalid bareword \"%.*s%s\"\x00should be \"$%.*s%s\" or \"{%.*s%s}\"\x00 or \"%.*s%s(...)\" or ...\x00BAREWORD\x00 (invalid binary number?)\x00BADNUMBER\x00 (invalid octal number?)\x00OCTAL\x00missing operator at %s\x00max # of tokens for a Tcl parse (%d) exceeded\x00invalid character \"$\"\x00missing close-bracket\x00empty subexpression at %s\x00EMPTY\x00unbalanced open paren\x00missing function argument at %s\x00empty expression\x00unbalanced close paren\x00missing operand at %s\x00missing operator \":\" at %s\x00unexpected operator \":\" without preceding \"?\"\x00SURPRISE\x00unexpected \",\" outside function argument list\x00\nin expression \"%s%.*s%.*s%s%s%.*s%s\"\x00;\n\x00\n    (parsing expression \"%.*s%s\")\x00PARSE\x00EXPR\x00bytecode\x00done\x00push1\x00push4\x00invokeStk1\x00invokeStk4\x00loadScalar1\x00loadScalar4\x00loadScalarStk\x00loadArray1\x00loadArray4\x00storeScalar1\x00storeScalar4\x00storeScalarStk\x00storeArray1\x00storeArray4\x00incrScalar1\x00incrScalarStk\x00incrArray1\x00incrScalar1Imm\x00incrScalarStkImm\x00incrArray1Imm\x00jump1\x00jumpTrue1\x00jumpFalse1\x00callBuiltinFunc1\x00callFunc1\x00foreach_start4\x00foreach_step4\x00beginCatch4\x00appendScalar1\x00appendScalar4\x00appendArray1\x00appendArray4\x00lappendScalar1\x00lappendScalar4\x00lappendArray1\x00lappendArray4\x00returnImm\x00expandStart\x00expandStkTop\x00invokeExpanded\x00listRangeImm\x00startCommand\x00returnStk\x00dictFirst\x00dictNext\x00dictDone\x00dictUpdateStart\x00dictUpdateEnd\x00syntax\x00existScalar\x00returnCodeBranch\x00unsetScalar\x00strrangeImm\x00invokeReplace\x00expandDrop\x00foreach_start\x00foreach_step\x00foreach_end\x00lmap_collect\x00tclooNext\x00tclooNextClass\x00yieldToInvoke\x00strclass\x00substcode\x00::tcl\x00::tcl::\x00TclCompileScript() called on uninitialized CompileEnv\x00too many nested compilations (infinite loop?)\x00Unexpected token type in TclCompileTokens: %d; %.*s\x00TclInitByteCodeObj() called on uninitialized CompileEnv\x00EnterCmdStartData: bad command index %d\x00EnterCmdStartData: cmd map not sorted by code offset\x00EnterCmdExtentData: bad command index %d\x00EnterCmdExtentData: missing start data for command %d\x00trying to add 'break' fixup to full exception range\x00trying to add 'continue' fixup to full exception range\x00trying to finalize a loop exception range\x00TclFixupForwardJump: bad ExceptionRange type %d\x00unexpected opcode\x00GetCmdLocEncodingSize: bad code offset\x00GetCmdLocEncodingSize: bad code length\x00GetCmdLocEncodingSize: bad source length\x00EncodeCmdLocMap: bad code offset\x00EncodeCmdLocMap: bad code length\x00EncodeCmdLocMap: bad source length\x00%s.\n%s: %s\x00Tcl_RegisterConfig\x00Unable to create namespace for package configuration.\x00::pkgconfig\x00%s: %s\x00Unable to create query command for package configuration\x00get\x00subcommand ?arg?\x00subcommand\x00package not known\x00FATAL\x00PKGCFG_BASE\x00key\x00key not known\x00CONFIG\x00insufficient memory to create list\x00QueryConfigObjCmd: Unknown subcommand to 'pkgconfig'. This can't happen\x00tclPackageAboutDict\x00Deleting\x00syntax error\x00Error: discarding\x00Error: popping\x00memory exhausted\x00Cleanup: discarding lookahead\x00Cleanup: popping\x00january\x00february\x00march\x00april\x00may\x00june\x00july\x00august\x00september\x00sept\x00october\x00november\x00december\x00sunday\x00monday\x00tuesday\x00tues\x00wednesday\x00wednes\x00thursday\x00thur\x00thurs\x00friday\x00saturday\x00fortnight\x00week\x00day\x00hour\x00minute\x00min\x00second\x00sec\x00tomorrow\x00yesterday\x00today\x00now\x00this\x00next\x00ago\x00epoch\x00stardate\x00gmt\x00ut\x00utc\x00uct\x00wet\x00bst\x00wat\x00at\x00nft\x00nst\x00ndt\x00ast\x00adt\x00est\x00edt\x00cst\x00cdt\x00mst\x00mdt\x00pst\x00pdt\x00yst\x00ydt\x00hst\x00hdt\x00ahst\x00nt\x00idlw\x00cet\x00cest\x00met\x00mewt\x00mest\x00swt\x00sst\x00fwt\x00fst\x00eet\x00bt\x00it\x00zp4\x00zp5\x00ist\x00zp6\x00wast\x00wadt\x00jt\x00cct\x00jst\x00jdt\x00kst\x00kdt\x00cast\x00cadt\x00east\x00eadt\x00gst\x00nzt\x00nzst\x00nzdt\x00idle\x00dst\x00a\x00b\x00c\x00d\x00e\x00f\x00g\x00h\x00i\x00k\x00l\x00m\x00n\x00o\x00p\x00q\x00r\x00s\x00t\x00u\x00v\x00w\x00x\x00y\x00z\x00 (characters \x00am\x00a.m.\x00pm\x00p.m.\x00stringToParse baseYear baseMonth baseDay\x00DATE\x00Unknown status returned from date parser. Please report this error as a bug in Tcl.\x00BUG\x00more than one date in string\x00MULTIPLE\x00more than one time of day in string\x00more than one time zone in string\x00more than one weekday in string\x00more than one ordinal month in string\x00dict\x00create\x00filter\x00keys\x00merge\x00remove\x00values\x00with\x00missing value to go with key\x00DICTIONARY\x00key \"%s\" not known in dictionary\x00DICT\x00Tcl_DictObjPut\x00Tcl_DictObjRemove\x00concurrent dictionary modification and search\x00Tcl_DictObjPutKeyList\x00%s called with empty key list\x00Tcl_DictObjRemoveKeyList\x00?key value ...?\x00dictionary ?key ...?\x00dictionary ?key value ...?\x00dictionary ?pattern?\x00dictionary\x00dictionary key ?key ...?\x00dictVarName key ?increment?\x00\n    (reading increment)\x00dictVarName key ?value ...?\x00{keyVarName valueVarName} dictionary script\x00must have exactly two variable names\x00SYNTAX\x00\n    (\"dict for\" body line %d)\x00\n    (\"dict map\" body line %d)\x00dictVarName key ?key ...? value\x00dictVarName key ?key ...?\x00dictionary filterType ?arg ...?\x00filterType\x00dictionary script {keyVarName valueVarName} filterScript\x00\n    (\"dict filter\" filter script key variable)\x00\n    (\"dict filter\" filter script value variable)\x00\n    (\"dict filter\" script line %d)\x00dictVarName key varName ?key varName ...? script\x00\n    (body of \"dict update\")\x00dictVarName ?key ...? script\x00\n    (body of \"dict with\")\x00instname\x00ByteCode 0x%s, refCt %u, epoch %u, interp 0x%s (epoch %u)\n\x00  Source \x00\n  File \"%s\" Line %d\x00\n  Cmds %d, src %d, inst %d, litObjs %u, aux %d, stkDepth %u, code/src %.2f\n\x00  Proc 0x%s, refCt %d, args %d, compiled locals %d\n\x00, scalar\x00, array\x00, link\x00, arg\x00, temp\x00, resolved\x00      slot %d%s%s%s%s%s%s\x00, \"%s\"\n\x00  Exception ranges %d, depth %d:\n\x00      %d: level %d, %s, pc %d-%d, \x00continue %d, break %d\n\x00catch %d\n\x00DisassembleByteCodeObj: bad ExceptionRange type %d\x00    \x00  Commands %d:\x00     \x00\n   \x00%s%4d: pc %d-%d, src %d-%d\x00  Command %d: \x00(%u) %s \x00%+d \x00%u \x00, %u cmds start here\x00pc %u\x00next cmd at pc %u\x00%d \x00end \x00end-%d \x00FormatInstruction: bad local var index %u (%u locals)\x00temp var %u\x00var \x00%%v%u \x00%s \x00\t# \x00\t# %s\x00\t\t[\x00]\n\x00InnerContext: bad tos -- appending null object\x00InnerContext: bad tos -- appending freed object %p\x00inst_%d\x00\"\"\x00\"\x00\\\"\x00\\f\x00\\n\x00\\r\x00\\t\x00\\v\x00\\U%08x\x00\\u%04x\x00%c\x00scalar\x00array\x00arg\x00temp\x00resolved\x00pc %d\x00@%d\x00%%%d\x00.%d\x00.end\x00.end-%d\x00?%d\x00=%s\x00opcode %d with more than zero 'no' operands\x00type %s level %d from %d to %d break %d continue %d\x00type %s level %d from %d to %d catch %d\x00codefrom\x00codeto\x00scriptfrom\x00scriptto\x00literals\x00exception\x00instructions\x00auxiliary\x00stackdepth\x00exceptdepth\x00initiallinenumber\x00sourcefile\x00constructor\x00destructor\x00lambda\x00method\x00objmethod\x00type ...\x00lambdaTerm\x00procName\x00PROC\x00className\x00\"%s\" is not a class\x00CLASS\x00\"%s\" has no defined constructor\x00DISASSEMBLE\x00CONSRUCTOR\x00body not available for this kind of constructor\x00METHODTYPE\x00body of constructor\x00\"%s\" has no defined destructor\x00DESRUCTOR\x00body not available for this kind of destructor\x00body of destructor\x00className methodName\x00objectName methodName\x00unknown method \"%s\"\x00METHOD\x00body not available for this kind of method\x00body of method\x00may not disassemble prebuilt bytecode\x00BYTECODE\x00*.enc\x00identity\x00utf-8\x00unicode\x00iso8859-1\x00FreeEncoding: refcount problem !!!\x00.enc\x00unknown encoding \"%s\"\x00invalid encoding file \"%s\"\x00init\x00final\x00EscapeToUtfProc: invalid sub table\x00configure\x00-map\x00-parameters\x00-prefixes\x00-subcommands\x00-unknown\x00-namespace\x00ensembleCommand\x00tried to manipulate ensemble of deleted namespace\x00ENSEMBLE\x00DEAD\x00subcommand ?arg ...?\x00?option value ...?\x00ensemble subcommand implementations must be non-empty lists\x00EMPTY_TARGET\x00cmdname\x00cmdname ?-option value ...? ?arg ...?\x00option -namespace is read-only\x00READ_ONLY\x00unexpected ensemble command\x00command is not an ensemble\x00NOT_ENSEMBLE\x00ensemble target is not a fully-qualified command\x00UNQUALIFIED_TARGET\x00\"%s\" is not an ensemble command\x00tcl:\x00invalid ensemble name '%s'\x00unable to find or create %s namespace!\x00ensemble activated for deleted namespace\x00full name %s not found in supposedly synchronized hash\x00unknown subcommand \"%s\": namespace %s does not export any commands\x00 or ambiguous\x00unknown%s subcommand \"%s\": must be \x00or %s\x00SpellFix: programming error\x00unknown subcommand handler deleted its ensemble\x00UNKNOWN_DELETED\x00\n    while parsing result of ensemble unknown subcommand handler\x00unknown subcommand handler returned bad code: \x00\n    result of ensemble unknown subcommand handler: \x00UNKNOWN_RESULT\x00\n    (ensemble unknown subcommand handler)\x00env\x00W\x00I\x00N\x00D\x00I\x00R\x00\x00\x00PATH\x00COMSPEC\x00HOME\x00no such variable\x00tclBgError\x00error in background error handler:\n\x00msg options\x00-level\x00missing return option \"-level\"\x00-code\x00missing return option \"-code\"\x00bgerror\x00errorInfo\x00bgerror failed to handle background error.\n\x00    Original error: \x00    Error in bgerror: \x00TclSetBgErrorHandler: NULL cmdPrefix argument\x00OS exit failed!\x00TclInitSubsystems called while exiting\x00exit handlers were created during Tcl_Finalize\x00limit exceeded\x00can't wait for variable \"%s\": would wait forever\x00EVENT\x00NO_SOURCES\x00idletasks\x00Tcl_UpdateObjCmd: bad option index to UpdateOptions\x00?idletasks?\x00||\x00&&\x00exprcode\x00dictIterator\x00freeing an execStack which is still in use\x00Deleting execEnv with pending TEOV callbacks!\x00Deleting execEnv with existing coroutine\x00STACK: Reallocating with no previous alloc\x00STACK: Stack after current is in use\x00STACK: Stack after current is not last\x00TclStackFree: incorrect freePtr (%p != %p). Call out of sequence?\x00TclStackRealloc: incorrect ptr. Call out of sequence?\x00Tcl_EvalObj: compiled script jumped interps\x00TclIncrObj\x00tailcall can only be called from a proc or lambda\x00TclNRExecuteByteCode: unrecognized builtin function code %d\x00\n    (reading value of variable to increment)\x00access\x00array set\x00variable isn't array\x00WRITE\x00ARRAY\x00STACK_LEVEL\x00self may only be called from inside a method\x00OO\x00CONTEXT_REQUIRED\x00nextto may only be called from inside a method\x00CLASS_REQUIRED\x00%s implementation by \"%s\" not reachable from here\x00CLASS_NOT_REACHABLE\x00%s has no non-filter implementation by \"%s\"\x00CLASS_NOT_THERE\x00next may only be called from inside a method\x00no next %s implementation\x00NOTHING_NEXT\x00negative shift argument\x00INST_RETURN_CODE_BRANCH: TOS not a return code!\x00INST_RETURN_CODE_BRANCH: TOS is TCL_OK!\x00Should not happen!\x00mis-issued dictFirst!\x00mis-issued dictNext!\x00dictUpdateStart argument length mismatch\x00clockRead instruction with unknown clock#\x00TclNRExecuteByteCode: unrecognized opCode %u\x00divide by zero\x00DIVZERO\x00exponentiation of zero by negative power\x00\nTclNRExecuteByteCode: abnormal return at pc %u: stack top %d < entry stack top %d\n\x00TclNRExecuteByteCode execution failure: end stack top < start stack top\x00exponent too large\x00unexpected number type\x00empty string\x00invalid octal number\x00non-numeric string\x00non-numeric floating-point value\x00floating-point value\x00(big) integer\x00can't use %s as operand of \"%s\"\x00LocSearch failure\x00floating-point value too small to represent\x00UNDERFLOW\x00floating-point value too large to represent\x00OVERFLOW\x00unknown floating-point error, errno = %d\x00?-option value ...? source ?source ...? target\x00copying\x00renaming\x00error %s: target \"%s\" is not a directory\x00can't create directory \"%s\": %s\x00error deleting \"%s\": directory not empty\x00error deleting unknown file: %s\x00error deleting \"%s\": %s\x00can't overwrite file \"%s\" with directory \"%s\"\x00can't overwrite directory \"%s\" with file \"%s\"\x00u+w\x00-permissions\x00error renaming \"%s\" to \"%s\": trying to rename a volume or move a directory into itself\x00::tcl::CopyDirectory\x00can't unlink \"%s\": %s\x00error %s \"%s\"\x00 to \"%s\"\x00: \"%s\"\x00: %s\x00-force\x00name ?-option value ...?\x00must not update objPtrRef's variable and return non-NULL\x00bad option \"%s\", there are no file attributes in this filesystem\x00FATTR\x00value for \"%s\" missing\x00NOVALUE\x00?-linktype? linkname ?target?\x00-symbolic\x00-hard\x00could not create new link \"%s\": that path already exists\x00could not create new link \"%s\": no such file or directory\x00could not create new link \"%s\": target \"%s\" doesn't exist\x00could not create new link \"%s\" pointing to \"%s\": %s\x00could not read link \"%s\": %s\x00?nameVar? ?template?\x00can't create temporary file: %s\x00//?/UNC/\x00//?/\x00//\x00./\x00/\\:\x00couldn't find HOME environment variable to expand path\x00FILENAME\x00NO_HOME\x00user \"%s\" doesn't exist\x00USER\x00-directory\x00-join\x00-path\x00-tails\x00-types\x00missing argument to \"-directory\"\x00\"-directory\" may only be used once\x00\"-directory\" cannot be used with \"-path\"\x00GLOB\x00BADOPTIONCOMBINATION\x00missing argument to \"-path\"\x00\"-path\" may only be used once\x00\"-path\" cannot be used with \"-dictionary\"\x00missing argument to \"-types\"\x00\"-tails\" must be used with either \"-directory\" or \"-path\"\x00\\/\x00\\[]*?{}\x00readonly\x00hidden\x00macintosh\x00creator\x00bad argument to \"-types\": %s\x00BAD\x00only one MacOS type or creator argument to \"-types\" allowed\x00no files matched glob pattern%s \"\x00%s%s\x00NOMATCH\x00/\\\x00Called TclGlob with TCL_GLOBMODE_TAILS and pathPrefix==NULL\x00.\x00unmatched open-brace in file name\x00BALANCE\x00unmatched close-brace in file name\x00*[]?\\\x00invalid sharing of Tcl_Obj on C stack\x00malformed bucket chain in Tcl_DeleteHashEntry\x00%d entries in table, %d buckets\n\x00number of buckets with %d entries: %d\n\x00number of buckets with %d or more entries: %d\n\x00average search distance for entry: %.1f\x00called %s on deleted table\x00Tcl_FindHashEntry\x00Tcl_CreateHashEntry\x00::tcl::HistoryObjs\x00::history\x00ambiguous \x00bad \x00 \"\x00\": no valid options\x00\": must be \x00 or \x00all\x00longest\x00::tcl::prefix\x00prefix\x00-error\x00-message\x00?options? table string\x00missing value for -message\x00NOARG\x00missing value for -error\x00error options must have an even number of elements\x00table string\x00 or \"\x00wrong # args: should be \"\x00ambiguous option \"%s\"\x00unrecognized argument \"%s\"\x00expected integer argument for \"%s\" but got \"%s\"\x00expected floating-point argument for \"%s\" but got \"%s\"\x00bad argument type %d in Tcl_ArgvInfo\x00\"%s\" option requires an additional argument\x00Command-specific options:\x00\n%s\x00\n %s:\x00\n\t\tDefault value: %d\x00\n\t\tDefault value: %g\x00\n\t\tDefault value: \"%s\"\x00ok\x00bad completion code \"%s\": must be ok, error, return, break, continue, or an integer\x00RESULT\x00ILLEGAL_CODE\x00if {[namespace which -command tclInit] eq \"\"} {\n  proc tclInit {} {\n    global tcl_libPath tcl_library env tclDefaultLibrary\n    rename tclInit {}\n    if {[info exists tcl_library]} {\n\tset scripts {{set tcl_library}}\n    } else {\n\tset scripts {}\n\tif {[info exists env(TCL_LIBRARY)] && ($env(TCL_LIBRARY) ne {})} {\n\t    lappend scripts {set env(TCL_LIBRARY)}\n\t    lappend scripts {\nif {[regexp ^tcl(.*)$ [file tail $env(TCL_LIBRARY)] -> tail] == 0} continue\nif {$tail eq [info tclversion]} continue\nfile join [file dirname $env(TCL_LIBRARY)] tcl[info tclversion]}\n\t}\n\tif {[info exists tclDefaultLibrary]} {\n\t    lappend scripts {set tclDefaultLibrary}\n\t} else {\n\t    lappend scripts {::tcl::pkgconfig get scriptdir,runtime}\n\t}\n\tlappend scripts {\nset parentDir [file dirname [file dirname [info nameofexecutable]]]\nset grandParentDir [file dirname $parentDir]\nfile join $parentDir lib tcl[info tclversion]} \\\n\t{file join $grandParentDir lib tcl[info tclversion]} \\\n\t{file join $parentDir library} \\\n\t{file join $grandParentDir library} \\\n\t{file join $grandParentDir tcl[info patchlevel] library} \\\n\t{\nfile join [file dirname $grandParentDir] tcl[info patchlevel] library}\n\tif {[info exists tcl_libPath]\n\t\t&& [catch {llength $tcl_libPath} len] == 0} {\n\t    for {set i 0} {$i < $len} {incr i} {\n\t\tlappend scripts [list lindex \\$tcl_libPath $i]\n\t    }\n\t}\n    }\n    set dirs {}\n    set errors {}\n    foreach script $scripts {\n\tlappend dirs [eval $script]\n\tset tcl_library [lindex $dirs end]\n\tset tclfile [file join $tcl_library init.tcl]\n\tif {[file exists $tclfile]} {\n\t    if {[catch {uplevel #0 [list source $tclfile]} msg opts]} {\n\t\tappend errors \"$tclfile: $msg\n\"\n\t\tappend errors \"[dict get $opts -errorinfo]\n\"\n\t\tcontinue\n\t    }\n\t    unset -nocomplain tclDefaultLibrary\n\t    return\n\t}\n    }\n    unset -nocomplain tclDefaultLibrary\n    set msg \"Can't find a usable init.tcl in the following directories: \n\"\n    append msg \"    $dirs\n\n\"\n    append msg \"$errors\n\n\"\n    append msg \"This probably means that Tcl wasn't installed properly.\n\"\n    error $msg\n  }\n}\ntclInit\x00interp\x00InterpInfoDeleteProc: still exist commands\x00InterpInfoDeleteProc: still exist aliases\x00alias\x00aliases\x00cancel\x00children\x00debug\x00expose\x00hide\x00issafe\x00invokehidden\x00limit\x00marktrusted\x00recursionlimit\x00slaves\x00share\x00target\x00transfer\x00cmd ?arg ...?\x00slavePath slaveCmd ?masterPath masterCmd? ?arg ...?\x00path ?cmdPrefix?\x00-unwind\x00?-unwind? ?--? ?path? ?result?\x00-safe\x00?-safe? ?--? ?path?\x00interp%d\x00path ?-frame ?bool??\x00cannot delete the current interpreter\x00INTERP\x00DELETESELF\x00path arg ?arg ...?\x00path hiddenCmdName ?cmdName?\x00path cmdName ?hiddenCmdName?\x00-global\x00path ?-namespace ns? ?-global? ?--? cmd ?arg ..?\x00path limitType ?-option value ...?\x00limit type\x00path\x00path ?newlimit?\x00srcPath channelId destPath\x00path alias\x00alias \"%s\" in path \"%s\" not found\x00ALIAS\x00target interpreter for alias \"%s\" in path \"%s\" is not my descendant\x00TARGETSHROUDED\x00?path?\x00alias \"%s\" not found\x00cannot define or rename alias \"%s\": interpreter deleted\x00cannot define or rename alias \"%s\": would create a loop\x00ALIASLOOP\x00could not find interpreter \"%s\"\x00cmdPrefix must be list of length >= 1\x00BGERRORFORMAT\x00interpreter named \"%s\" already exists, cannot create\x00tcl_interactive\x00ChildObjCmd: interpreter has been deleted\x00aliasName ?targetName? ?arg ...?\x00?cmdPrefix?\x00?-frame ?bool??\x00hiddenCmdName ?cmdName?\x00cmdName ?hiddenCmdName?\x00?-namespace ns? ?-global? ?--? cmd ?arg ..?\x00limitType ?-option value ...?\x00?newlimit?\x00-frame\x00debug option\x00permission denied: safe interpreter cannot expose commands\x00UNSAFE\x00permission denied: safe interpreters cannot change recursion limit\x00recursion limit must be > 0\x00BADLIMIT\x00falling back due to new recursion limit\x00RECURSION\x00permission denied: safe interpreter cannot hide commands\x00not allowed to invoke hidden commands from safe interpreter\x00permission denied: safe interpreter cannot mark trusted\x00namespace eval ::tcl {namespace eval mathfunc {}}\x00::tcl::mathfunc::min\x00::tcl::mathfunc::max\x00os\x00osVersion\x00machine\x00user\x00tclDefaultLibrary\x00tcl_pkgPath\x00command count limit exceeded\x00COMMANDS\x00time limit exceeded\x00TIME\x00unknown type of resource limit\x00\n    (while waiting for event)\x00limit granularity must be positive\x00installing limit callback to the limited interpreter\x00-granularity\x00-value\x00limits on current interpreter inaccessible\x00SELF\x00?-option value ...?\x00granularity must be at least 1\x00BADVALUE\x00command limit value must be at least 0\x00-seconds\x00milliseconds must be at least 0\x00seconds must be at least 0\x00may only set -milliseconds if -seconds is not also being reset\x00BADUSAGE\x00may only reset -milliseconds if -seconds is also being reset\x00channel\x00TCL_FLUSH_NONBLOCKING_ON_EXIT\x00-blocking\x00tclIO\x00Tcl_RegisterChannel: channel without name\x00Tcl_RegisterChannel: duplicate channel names\x00illegal recursive call to close through close-handler of channel\x00stdin\x00stdout\x00stderr\x00can not find channel named \"%s\"\x00CHANNEL\x00channel type %s must define closeProc\x00channel type %s must define inputProc when used for reader channel\x00channel type %s must define outputProc when used for writer channel\x00channel type %s must define watchProc\x00channel type %s must define seekProc if defining wideSeekProc\x00couldn't find state for channel \"%s\"\x00reading and writing both disallowed for channel \"%s\"\x00could not flush channel \"%s\"\x00Channel released more than preserved\x00channel \"%s\" does not support OS handles\x00Reuse of ChannelBuffer! %p\x00unable to access channel: invalid channel\x00TclFlush, closed channel: queued output left\x00FlushChannel: damaged channel list\x00SpliceChannel: trying to add channel used in different list\x00called Tcl_Close on channel with refCount > 0\x00double-close of channels not supported by %ss\x00half-close of channels not supported by %ss\x00half-close not applicable to stack of transformations\x00write\x00Half-close of %s-side not possible, side not opened or already closed\x00ClosechanHalf, closed write-side of channel: queued output left\x00unknown output translation requested\x00Tcl_GetsObj: gotEOL reached with bufPtr==NULL\x00TclGetsObjBinary: gotEOL reached with bufPtr==NULL\x00binary encoding is not available\x00Buffer Underflow, BUFFER_PADDING not enough\x00unknown input translation %d\x00blocking buffering buffersize encoding eofchar translation\x00malformed option list in channel driver\x00bad option \"%s\": should be one of \x00-%s, \x00or -%s\x00-buffering\x00none\x00full\x00-buffersize\x00-eofchar\x00-translation\x00auto\x00cr\x00crlf\x00lf\x00unable to set channel options: background copy in progress\x00bad value for -buffering: must be one of full, line, or none\x00bad value for -eofchar: must be non-NUL ASCII character\x00bad value for -eofchar: should be a list of zero, one, or two elements\x00bad value for -translation: must be a one or two element list\x00platform\x00bad value for -translation: must be one of auto, binary, cr, lf, crlf, or platform\x00tcp\x00channelId event ?script?\x00event name\x00channel is not %s\x00channel \"%s\" is busy\x00writ\x00error %sing \"%s\": %s\x00error reading \"\x00\": \x00error writing \"\x00error setting blocking mode: %s\x00Tcl_SetChannelError: bad syntax of message\x00Defined newlevel not used in rewrite\x00Defined newcode not used in rewrite\x00-nonewline\x00nonewline\x00?-nonewline? ?channelId? string\x00channel \"%s\" wasn't opened for writing\x00error writing \"%s\": %s\x00channelId\x00error flushing \"%s\": %s\x00channelId ?varName?\x00channel \"%s\" wasn't opened for reading\x00error reading \"%s\": %s\x00channelId ?numChars?\x00?-nonewline? channelId\x00expected non-negative integer but got \"%s\"\x00NUMBER\x00start\x00current\x00channelId offset ?origin?\x00origin\x00error during seek on \"%s\": %s\x00channelId ?direction?\x00direction\x00channelId ?-option value ...?\x00-ignorestderr\x00-keepnewline\x00?-option ...? arg ?arg ...?\x00error reading output from command: %s\x00fileName ?access? ?permissions?\x000o\x00Tcl_OpenCmd: invalid mode value\x00tclTCPAcceptCallbacks\x00RegisterTcpServerCleanup: damaged accept record table\x00-async\x00-myaddr\x00-myport\x00-server\x00cannot set -async option for server sockets\x00no argument given for -myaddr option\x00no argument given for -myport option\x00no argument given for -server option\x00Tcl_SocketObjCmd: bad option index to SocketOptions\x00option -myport is not valid for servers\x00?-myaddr addr? ?-myport myport? ?-async? host port\x00-server command ?-myaddr addr? port\x00-size\x00input output ?-size size? ?-command callback?\x00input\x00output\x00mode channelId\x00channelId ?length?\x00cannot truncate to negative length of file\x00could not determine current location in \"%s\": %s\x00error during truncate on \"%s\": %s\x00blocked\x00event\x00pending\x00pipe\x00postevent\x00truncate\x00::fconfigure\x00chan\x00transform\x00-command value is not a list\x00\nfailed to stack channel \"%s\"\x00create/write\x00create/read\x00delete/write\x00flush/write\x00flush/read\x00delete/read\x00query/maxRead\x00clear/read\x00tclrchannel\x00blocking\x00cget\x00cgetall\x00finalize\x00initialize\x00watch\x00{read delivered more than requested}\x00{write wrote more than requested}\x00{write wrote nothing}\x00{Tried to seek before origin}\x00{Owner lost}\x00-code 1 -level 0 -errorcode NONE -errorinfo {} -errorline 1 {Owner lost}\x00mode cmdprefix\x00chan handler \"%s initialize\" returned non-list: %s\x00chan handler \"\x00 initialize\" returned \x00chan handler \"%s\" does not support all required methods\x00chan handler \"%s\" lacks a \"read\" method\x00chan handler \"%s\" lacks a \"write\" method\x00chan handler \"%s\" supports \"cget\" but not \"cgetall\"\x00chan handler \"%s\" supports \"cgetall\" but not \"cget\"\x00TclChanCreateObjCmd: duplicate channel names\x00channel eventspec\x00can not find reflected channel named \"%s\"\x00TclChanPostEventObjCmd: channel is not a reflected channel\x00TclChanPostEventObjCmd: postevent accepted for call from outside interpreter\x00tried to post events channel \"%s\" is not interested in\x00TclChanCaughtErrorBypass: Bad syntax of caught result\x00Expected list with even number of elements, got %d element%s instead\x00bad %s list: is empty\x00read write\x00rc%lu\x00chan handler returned bad code: %d\x00\n    (chan handler subcommand \"%s\")\x00EAGAIN\x00ReflectedChannelMap\x00tclrtransform\x00clear\x00drain\x00limit?\x00{read not supported by Tcl driver}\x00{write not supported by Tcl driver}\x00channel cmdprefix\x00chan handler \"%s initialize\" returned %s\x00chan handler \"%s\" makes the channel inaccessible\x00chan handler \"%s\" supports \"drain\" but not \"read\"\x00chan handler \"%s\" supports \"flush\" but not \"write\"\x00TclChanPushObjCmd: duplicate transformation handle\x00rt%lu\x00ReflectedTransformMap\x00couldn't open socket: port number too high\x00::tcl::unsupported::socketAF\x00inet\x00inet6\x00native\x00glob couldn't determine the current working directory\x00illegal access mode \"%s\"\x00\n    while processing open access modes \"\x00RDONLY\x00WRONLY\x00RDWR\x00APPEND\x00CREAT\x00EXCL\x00NOCTTY\x00access mode \"%s\" not supported by this system\x00NONBLOCK\x00TRUNC\x00invalid access mode \"%s\": must be RDONLY, WRONLY, RDWR, APPEND, BINARY, CREAT, EXCL, NOCTTY, NONBLOCK, or TRUNC\x00access mode must include either RDONLY, WRONLY, or RDWR\x00couldn't read file \"%s\": %s\x00\x1a {}\x00\ufeff\x00\n    (file \"%.*s%s\" line %d)\x00POSIX\x00could not seek to end of file while opening \"%s\": %s\x00couldn't open \"%s\": %s\x00error getting working directory name: %s\x00T\x00C\x00L\x00_\x00T\x00E\x00M\x00P\x00L\x00O\x00A\x00D\x00_\x00N\x00O\x00_\x00U\x00N\x00L\x00I\x00N\x00K\x00\x00\x00couldn't load library \"%s\": %s\x00couldn't load from current filesystem\x00cannot unload: filesystem does not support unloading\x00wb\x00rb\x00Tcl_FSGetFileSystemForPath called with NULL object\x00Tcl_FSGetFileSystemForPath called with object with refCount == 0\x00variable '%s' is already linked\x00internal error: bad linked variable type\x00linked variable is read-only\x00internal error: linked variable couldn't be read\x00variable must have integer value\x00variable must have real value\x00variable must have boolean value\x00variable must have char value\x00variable must have unsigned char value\x00variable must have short value\x00variable must have unsigned short value\x00variable must have unsigned int value\x00variable must have long value\x00variable must have unsigned long value\x00variable must have unsigned wide int value\x00variable must have float value\x00NULL\x00??\x00invalidReal\x00xXbBoO\x00+-\x00max size of Tcl literal array (%d literals) exceeded\x00NewListInternalRep: expects postive element count\x00list creation failed: unable to alloc %u bytes\x00Tcl_SetListObj\x00Tcl_ListObjAppendList\x00Tcl_ListObjAppendElement\x00Tcl_ListObjReplace\x00list index out of range\x00LSET\x00TclListObjSetElement\x00-lazy\x00?-global? ?-lazy? ?--? fileName ?packageName? ?interp?\x00must specify either file name or package name\x00LOAD\x00NOLIBRARY\x00file \"%s\" is already loaded for package \"%s\"\x00SPLITPERSONALITY\x00tclLoad\x00package \"%s\" isn't loaded statically\x00NOTSTATIC\x00couldn't figure out package name for %s\x00WHATPACKAGE\x00_Init\x00_SafeInit\x00_Unload\x00_SafeUnload\x00can't use package in a safe interpreter: no %s_SafeInit procedure\x00can't attach package to interpreter: no %s_Init procedure\x00ENTRYPOINT\x00-keeplibrary\x00?-switch ...? fileName ?packageName? ?interp?\x00UNLOAD\x00package \"%s\" is loaded statically and cannot be unloaded\x00STATIC\x00file \"%s\" has never been loaded\x00NEVERLOADED\x00file \"%s\" has never been loaded in this interpreter\x00file \"%s\" cannot be unloaded under a safe interpreter\x00CANNOT\x00file \"%s\" cannot be unloaded under a trusted interpreter\x00tcl_rcFileName\x00-\x00e\x00n\x00c\x00o\x00d\x00i\x00n\x00g\x00\x00\x00argv0\x00argc\x00argv\x00application-specific initialization failed: \x00exit %d\x00TCL_FINALIZE_ON_EXIT\x00tcl_prompt2\x00tcl_prompt1\x00\n    (script that generates prompt)\x00nsName\x00code\x00ensemble\x00export\x00forget\x00import\x00parent\x00qualifiers\x00which\x00Trying to push call frame for dead namespace\x00errorCode\x00can't create namespace \"\": only global namespace can have empty name\x00CREATEGLOBAL\x00can't create namespace \"%s\": already exists\x00CREATEEXISTING\x00invalid export pattern \"%s\": pattern can't specify a namespace\x00EXPORT\x00auto_import\x00empty import pattern\x00IMPORT\x00unknown namespace in import pattern \"%s\"\x00no namespace specified in import pattern \"%s\"\x00ORIGIN\x00import pattern \"%s\" tries to import from namespace \"%s\" into itself\x00import pattern \"%s\" would create a loop containing command \"%s\"\x00LOOP\x00can't import command \"%s\": already exists\x00OVERWRITE\x00unknown namespace in namespace forget pattern \"%s\"\x00DeleteImportedCmd: did not find cmd in real cmd's list of import references\x00Could not create namespace '%s'\x00unknown namespace \"%s\"\x00unknown command \"%s\"\x00namespace \"%s\" not found\x00namespace \"%s\" not found in \"%s\"\x00?name? ?pattern?\x00?name name...?\x00unknown namespace \"%s\" in namespace delete command\x00name arg ?arg...?\x00\n    (in namespace %s \"%.*s%s\" script line %d)\x00?-clear? ?pattern pattern...?\x00-clear\x00?pattern pattern...?\x00?-force? ?pattern pattern...?\x00?pathList?\x00?script?\x00ns ?otherVar myVar ...?\x00-variable\x00?-command? ?-variable? name\x00while executing\x00invoked from within\x00\n    %s\n\"%.*s%s\"\x00deletemethod\x00forward\x00renamemethod\x00self\x00unexport\x00destroy\x00core method: \"destroy\"\x00core method: \"eval\"\x00core method: \"unknown\"\x00core method: \"variable\"\x00core method: \"varname\"\x00core method: \"create\"\x00new\x00core method: \"new\"\x00createWithNamespace\x00core method: \"createWithNamespace\"\x00oo::class constructor\x00::oo::define ::oo::Slot {\n    method Get {} {error unimplemented}\n    method Set list {error unimplemented}\n    method -set args {\n        uplevel 1 [list [namespace which my] Set $args]\n    }\n    method -append args {\n        uplevel 1 [list [namespace which my] Set [list                {*}[uplevel 1 [list [namespace which my] Get]] {*}$args]]\n    }\n    method -clear {} {uplevel 1 [list [namespace which my] Set {}]}\n    forward --default-operation my -append\n    method unknown {args} {\n        set def --default-operation\n        if {[llength $args] == 0} {\n            return [uplevel 1 [list [namespace which my] $def]]\n        } elseif {![string match -* [lindex $args 0]]} {\n            return [uplevel 1 [list [namespace which my] $def {*}$args]]\n        }\n        next {*}$args\n    }\n    export -set -append -clear\n    unexport unknown destroy\n}\n::oo::objdefine ::oo::define::superclass forward --default-operation my -set\n::oo::objdefine ::oo::define::mixin forward --default-operation my -set\n::oo::objdefine ::oo::objdefine::mixin forward --default-operation my -set\n\x00foreach p [info procs [info object namespace $originObject]::*] {    set args [info args $p];    set idx -1;    foreach a $args {        lset args [incr idx]             [if {[info default $p $a d]} {list $a $d} {list $a}]    };    set b [info body $p];    set p [namespace tail $p];    proc $p $args $b;};foreach v [info vars [info object namespace $originObject]::*] {    upvar 0 $v vOrigin;    namespace upvar [namespace current] [namespace tail $v] vNew;    if {[info exists vOrigin]} {        if {[array exists vOrigin]} {            array set vNew [array get vOrigin];        } else {            set vNew $vOrigin;        }    }}\x00TclOO\x001.1.0\x00::oo\x00[a-z]*\x00::oo::define\x00::oo::objdefine\x00::oo::Helpers\x00<constructor>\x00<destructor>\x00<cloned>\x00::oo::UnknownDefinition\x00::oo::define::\x00::oo::objdefine::\x00originObject\x00::oo::Helpers::next\x00::oo::Helpers::nextto\x00::oo::Helpers::self\x00::oo::copy\x00::oo::Obj%d\x00my\x00deleting class structure for non-deleted %s\x00::oo::class\x00::oo::object\x00can't create object \"%s\": command already exists with that name\x00OVERWRITE_OBJECT\x00object deleted in constructor\x00STILLBORN\x00may not clone the class of classes\x00CLONING_CLASS\x00\n    (while performing post-copy callback)\x00\n    (while mapping method name)\x00impossible to invoke method \"%s\": no defined method or unknown method\x00METHOD_MAPPED\x00no valid method implementation\x00%s does not refer to an object\x00OBJECT\x00?definitionScript?\x00object \"%s\" is not a class\x00INSTANTIATE_NONCLASS\x00objectName ?arg ...?\x00object name must not be empty\x00EMPTY_NAME\x00objectName namespaceName ?arg ...?\x00namespace name must not be empty\x00\n    (in \"%s eval\" script line %d)\x00method ?arg ...?\x00visible methods\x00methods\x00object \"%s\" has no %s\x00unknown method \"%s\": must be \x00?varName ...?\x00variable name \"%s\" illegal: must not contain namespace separator\x00UPVAR\x00INVERTED\x00define\x00name refers to an element in an array\x00LOCAL_ELEMENT\x00refer to\x00(\x00%s may only be called from inside a method\x00class ?arg...?\x00call\x00caller\x00method not defined by a class\x00UNMATCHED_CONTEXT\x00not inside a filtering context\x00caller is not an object\x00method without declarer!\x00filtering call chain without terminal non-filter\x00sourceName ?targetName? ?targetNamespace?\x00%s refers to an existing namespace\x00TclOO method name\x00::oo::define::filter\x00core method: define::filter Getter\x00core method: define::filter Setter\x00::oo::define::mixin\x00core method: define::mixin Getter\x00core method: define::mixin Setter\x00::oo::define::superclass\x00core method: define::superclass Getter\x00core method: define::superclass Setter\x00::oo::define::variable\x00core method: define::variable Getter\x00core method: define::variable Setter\x00::oo::objdefine::filter\x00core method: objdefine::filter Getter\x00core method: objdefine::filter Setter\x00::oo::objdefine::mixin\x00core method: objdefine::mixin Getter\x00core method: objdefine::mixin Setter\x00::oo::objdefine::variable\x00core method: objdefine::variable Getter\x00core method: objdefine::variable Setter\x00method %s does not exist\x00cannot rename method to itself\x00RENAME_TO_SELF\x00method called %s already exists\x00RENAME_OVER\x00bad call of unknown handler\x00BAD_UNKNOWN\x00cannot process definitions; support namespace deleted\x00MONKEY_BUSINESS\x00this command may only be called from within the context of an ::oo::define or ::oo::objdefine command\x00this command cannot be called when the object has been deleted\x00getting outer context when already in global context\x00\n    (in definition script for %s \"%.*s%s\" line %d)\x00className arg ?arg ...?\x00%s does not refer to a class\x00objectName arg ?arg ...?\x00class object\x00may not modify the class of the root object class\x00may not modify the class of the class of classes\x00the class of an object must be a class\x00may not change classes into an instance of themselves\x00arguments body\x00attempt to misuse API\x00name cmdName ?arg ...?\x00name args body\x00Get\x00Set\x00::oo::Slot\x00filterList\x00mixinList\x00may only mix in classes\x00may not mix a class into itself\x00SELF_MIXIN\x00superclassList\x00may not modify the superclass of the root object\x00only a class can be a superclass\x00class should only be a direct superclass once\x00REPETITIOUS\x00attempt to form circular dependency graph\x00CIRCULARITY\x00invalid declared variable name \"%s\": must not %s\x00contain namespace separators\x00BAD_DECLVAR\x00*(*)\x00refer to an array element\x00variableList\x00definition\x00filters\x00isa\x00methodtype\x00mixins\x00instances\x00subclasses\x00superclasses\x00::oo::InfoObject\x00::oo::InfoClass\x00objName ?className?\x00objName methodName\x00definition not available for this kind of method\x00objName\x00prefix argument list not available for this kind of method\x00metaclass\x00mixin\x00typeof\x00category objName ?arg ...?\x00category\x00objName className\x00-localprivate\x00-private\x00objName ?-option value ...?\x00objName ?pattern?\x00METHOD_TYPE\x00className ?pattern?\x00className ?-option value ...?\x00cannot construct any call chain\x00method not declared in class or object\x00\n    (%s \"%.*s%s\" method \"%.*s%s\" line %d)\x00\n    (%s \"%.*s%s\" constructor line %d)\x00\n    (%s \"%.*s%s\" destructor line %d)\x00method forward prefix must be non-empty\x00BAD_FORWARD\x00booleanString\x00wideInt\x00cmdName\x00bignum\x00Derived ICL data for object using offsets from before the script\x00can't convert value to type %s\x00API_ABUSE\x00TclSetDuplicateObj\x00UpdateStringProc should not be invoked for type %s\x00UpdateStringProc for type '%s' failed to create a valid string rep\x00Tcl_SetBooleanObj\x00boolean value\x00expected boolean value but got \"\x00BOOLEAN\x00yes\x00no\x00off\x00Tcl_SetDoubleObj\x00floating point value is Not a Number\x00DOUBLE\x00NAN\x00floating-point number\x00Tcl_SetIntObj\x00Tcl_SetLongObj\x00expected integer but got \"%s\"\x00INTEGER\x00IOVERFLOW\x00%I64d\x00Tcl_SetWideIntObj\x00initialization failure in DupBignum\x00radix size failure in UpdateStringOfBignum\x00UpdateStringOfBignum: string length limit exceeded\x00conversion failure in UpdateStringOfBignum\x00insufficient memory to unpack bignum\x00Tcl_SetBignumObj\x00number\x00pure string\x00value is a %s with a refcount of %d, object pointer at %s\x00%p:%p\x00, internal representation %s\x00, string representation \"\x00, no string representation\x00can't parse a NULL pointer\x00extra characters after close-quote\x00extra characters after close-brace\x00ParseTokens encountered unknown character\x00missing close-brace for variable name\x00missing )\x00$\x00missing close-brace\x00: possible unbalanced brace in comment\x00missing \"\x00TclSubstParse: programming error\x00bad parse in TclSubstParse: %c\x00unexpected token type in TclSubstTokens: %d\x00Bad portion to TclPathPart\x00can't find object string representation\x00WTF\x00HOMELESS\x00NOUSER\x00Called UpdateStringOfFsPath with invalid object\x00writing\x00reading\x00channel \"%s\" wasn't opened for %s\x00EXEC\x00BADCHAN\x00couldn't %s file \"%s\": %s\x00can't specify \"%s\" as last word in command\x00child process lost (is SIGCHLD ignored or trapped?)\x00error waiting for process to exit: %s\x00%lu\x00%u\x00CHILDSTATUS\x00CHILDKILLED\x00child killed: %s\n\x00CHILDSUSP\x00child suspended: %s\n\x00child wait status didn't make sense\n\x00ODDWAITRESULT\x00error reading stderr output file: %s\x00child process exited abnormally\x00illegal use of | or |& in command\x00PIPESYNTAX\x00must specify \"%s\" as last word in command\x00couldn't create input file for command: %s\x00couldn't create input pipe for command: %s\x00couldn't create output pipe for command: %s\x00couldn't create error file for command: %s\x00couldn't create pipe: %s\x00can't read output from command: standard output was redirected\x00BADREDIRECT\x00can't write input to command: standard input was redirected\x00pipe for command could not be created\x00NOPIPE\x00conflicting versions provided for package \"%s\": %s, then %s\x00PACKAGE\x00VERSIONCONFLICT\x00Cannot load package \"%s\" in standalone executable: This package is not compiled with stub support\x00UNSTUBBED\x00bad return code: %d\x00BADRESULT\x00\n    (\"package unknown\" script)\x00can't find package %s\x00UNFOUND\x00version conflict for package \"%s\": have %s, need\x00circular package dependency: attempt to provide %s %s requires %s\x00attempt to provide package %s %s failed: no version of package %s provided\x00UNPROVIDED\x00attempt to provide package %s %s failed: package %s %s provided instead\x00WRONGPROVIDE\x00attempt to provide package %s %s failed: bad return code: %s\x00\n    (\"package ifneeded %s %s\" script)\x00package %s %s is not present\x00package %s is not present\x00ifneeded\x00prefer\x00present\x00provide\x00require\x00vcompare\x00versions\x00vsatisfies\x00option ?arg ...?\x00package version ?script?\x00package ?version?\x00?-exact? package ?requirement ...?\x00?command?\x00latest\x00stable\x00?latest|stable?\x00preference\x00version1 version2\x00version ?requirement ...?\x00Tcl_PackageObjCmd: bad option index to pkgOptions\x00expected version number but got \"%s\"\x00VERSION\x00expected versionMin-versionMax but got \"%s\"\x00VERSIONRANGE\x00 exactly %s\x00 %s\x00 0-\x00 -2\x00threaded\x00profiled\x0064bit\x00optimized\x00mem_debug\x00compile_debug\x00compile_stats\x00libdir,runtime\x00/usr/local/lib\x00bindir,runtime\x00/usr/local/bin\x00scriptdir,runtime\x00/usr/local/lib/tcl8.6\x00includedir,runtime\x00/usr/local/include\x00docdir,runtime\x00/usr/local/man\x00libdir,install\x00bindir,install\x00scriptdir,install\x00includedir,install\x00docdir,install\x00tcl\x00cp1252\x00E2BIG\x00EACCES\x00EADDRINUSE\x00EADDRNOTAVAIL\x00EAFNOSUPPORT\x00EALREADY\x00EBADF\x00EBADMSG\x00ECANCELED\x00EBUSY\x00ECHILD\x00ECONNABORTED\x00ECONNREFUSED\x00ECONNRESET\x00EDEADLK\x00EDESTADDRREQ\x00EDOM\x00EDQUOT\x00EEXIST\x00EFAULT\x00EFBIG\x00EHOSTDOWN\x00EHOSTUNREACH\x00EIDRM\x00EILSEQ\x00EINPROGRESS\x00EINTR\x00EINVAL\x00EIO\x00EISCONN\x00EISDIR\x00ELOOP\x00EMFILE\x00EMLINK\x00EMSGSIZE\x00ENAMETOOLONG\x00ENETDOWN\x00ENETRESET\x00ENETUNREACH\x00ENFILE\x00ENOBUFS\x00ENODATA\x00ENODEV\x00ENOENT\x00ENOEXEC\x00ENOLCK\x00ENOLINK\x00ENOMEM\x00ENOMSG\x00ENOPROTOOPT\x00ENOSPC\x00ENOSR\x00ENOSTR\x00ENOSYS\x00ENOTCONN\x00ENOTRECOVERABLE\x00ENOTDIR\x00ENOTEMPTY\x00ENOTSOCK\x00ENOTSUP\x00ENOTTY\x00ENXIO\x00EOPNOTSUPP\x00EOTHER\x00EOVERFLOW\x00EOWNERDEAD\x00EPERM\x00EPFNOSUPPORT\x00EPIPE\x00EPROTO\x00EPROTONOSUPPORT\x00EPROTOTYPE\x00ERANGE\x00EREMOTE\x00EROFS\x00ESHUTDOWN\x00ESOCKTNOSUPPORT\x00ESPIPE\x00ESRCH\x00ESTALE\x00ETIME\x00ETIMEDOUT\x00ETOOMANYREFS\x00ETXTBSY\x00EUSERS\x00EWOULDBLOCK\x00EXDEV\x00unknown error\x00argument list too long\x00permission denied\x00address already in use\x00cannot assign requested address\x00address family not supported by protocol\x00resource temporarily unavailable\x00operation already in progress\x00bad file number\x00not a data message\x00operation canceled\x00file busy\x00no children\x00software caused connection abort\x00connection refused\x00connection reset by peer\x00resource deadlock avoided\x00destination address required\x00math argument out of range\x00disk quota exceeded\x00file already exists\x00bad address in system call argument\x00file too large\x00host is down\x00host is unreachable\x00identifier removed\x00illegal byte sequence\x00operation now in progress\x00interrupted system call\x00invalid argument\x00I/O error\x00socket is already connected\x00illegal operation on a directory\x00too many levels of symbolic links\x00too many open files\x00too many links\x00message too long\x00file name too long\x00network is down\x00network dropped connection on reset\x00network is unreachable\x00file table overflow\x00no buffer space available\x00no data available\x00no such device\x00no such file or directory\x00exec format error\x00no locks available\x00link has been severed\x00not enough memory\x00no message of desired type\x00bad protocol option\x00no space left on device\x00out of stream resources\x00not a stream device\x00function not implemented\x00socket is not connected\x00state not recoverable\x00not a directory\x00directory not empty\x00socket operation on non-socket\x00operation not supported\x00inappropriate device for ioctl\x00no such device or address\x00operation not supported on socket\x00other error\x00file too big\x00owner died\x00not owner\x00protocol family not supported\x00broken pipe\x00protocol error\x00protocol not supported\x00protocol wrong type for socket\x00math result unrepresentable\x00pathname hit remote file system\x00read-only file system\x00cannot send after socket shutdown\x00socket type not supported\x00invalid seek\x00no such process\x00stale remote file handle\x00timer expired\x00connection timed out\x00too many references: cannot splice\x00text file or pseudo-device busy\x00too many users\x00operation would block\x00cross-domain link\x00SIGABRT\x00SIGBUS\x00SIGFPE\x00SIGILL\x00SIGINT\x00SIGSEGV\x00SIGTERM\x00SIGTRAP\x00unknown signal\x00bus error\x00floating-point exception\x00illegal instruction\x00interrupt\x00segmentation violation\x00software termination signal\x00trace trap\x00Tcl_Release couldn't find reference for %p\x00Tcl_EventuallyFree called twice for %p\x00procbody\x00lambdaExpr\x00levelReference\x00\n    (creating proc \"\x00procedure \"%s\": arg list contains %d entries, precompiled header expects %d\x00BYTECODELIES\x00too many fields in argument specifier \"\x00FORMALARGUMENTFORMAT\x00argument with no name\x00formal parameter \"%s\" is an array element\x00formal parameter \"\x00\" is not a simple name\x00procedure \"%s\": formal parameter %d is inconsistent with precompiled body\x00procedure \"%s\": formal parameter \"\x00\" has default value inconsistent with precompiled body\x00STACKLEVEL\x00\n    (\"uplevel\" body line %d)\x00?level? command ?arg ...?\x00?\x00?arg ...?\x00body object for proc attached to frame is not a byte code type\x00body of lambda term\x00body of proc\x00invoked \"%s\" outside of a loop\x00UNEXPECTED\x00a precompiled script jumped interps\x00CROSSINTERPBYTECODE\x00\n    (procedure \"%.*s%s\" line %d)\x00TclUpdateReturnInfo: negative return level\x00can't interpret \"%s\" as a lambda expression\x00LAMBDA\x00\n    (parsing lambda expression \"%s\")\x00lambdaExpr ?arg ...?\x00\n    (lambda term \"%.*s%s\" line %d)\x00error while matching regular expression: \x00REG_UBACKREF\x00REG_ULOOKAHEAD\x00REG_UBOUNDS\x00REG_UBRACES\x00REG_UBSALNUM\x00REG_UPBOTCH\x00REG_UBBS\x00REG_UNONPOSIX\x00REG_UUNSPEC\x00REG_UUNPORT\x00REG_ULOCALE\x00REG_UEMPTYMATCH\x00REG_UIMPOSSIBLE\x00REG_USHORTEST\x00%s%s%s\x00couldn't compile regular expression pattern: \x00-errorline\x00-errorstack\x00bad %s value: expected dictionary but got \"%s\"\x00ILLEGAL_OPTIONS\x00bad -level value: expected non-negative integer but got \"%s\"\x00ILLEGAL_LEVEL\x00bad -errorcode value: expected a list but got \"%s\"\x00ILLEGAL_ERRORCODE\x00bad -errorstack value: expected a list but got \"%s\"\x00NONLIST_ERRORSTACK\x00forbidden odd-sized list for -errorstack: \"%s\"\x00ODDSIZEDLIST_ERRORSTACK\x00expected dict but got \"%s\"\x00cannot mix \"%\" and \"%n$\" conversion specifiers\x00FORMAT\x00MIXEDSPECTYPES\x00field width may not be specified in %c conversion\x00BADWIDTH\x00field size modifier may not be specified in %\x00 conversion\x00BADSIZE\x00unsigned bignum scans are invalid\x00BADUNSIGNED\x00unmatched [ in format string\x00BRACKET\x00bad scan conversion character \"\x00BADTYPE\x00variable is assigned by multiple \"%n$\" conversion specifiers\x00POLYASSIGNED\x00variable is not assigned by any conversion specifiers\x00UNASSIGNED\x00\"%n$\" argument index out of range\x00INDEXRANGE\x00different numbers of variable names and field specifiers\x00FIELDVARMISMATCH\x00string format ?varName ...?\x00Tcl_SetStringObj\x00Tcl_SetObjLength: negative length requested: %d (integer overflow?)\x00Tcl_SetObjLength\x00max length for a Tcl unicode value (%d chars) exceeded\x00Tcl_AttemptSetObjLength\x00Tcl_SetUnicodeObj\x00Tcl_AppendLimitedToObj\x00Tcl_AppendUnicodeToObj\x00Tcl_AppendStringsToObj\x00max size for a Tcl value exceeded\x00Tcl_AppendFormatToObj\x00format string ended in middle of field specifier\x00INCOMPLETE\x00unsigned bignum format is invalid\x000X\x000x\x000b\x00bad field specifier \"%c\"\x00Unable to format \"%s\" with supplied arguments: %s\x00TclParseNumber: bad acceptState %d parsing '%s'\x00TclParseNumber: state INITIAL can't happen here\x00expected %s but got \"\x00 (looks like invalid octal number)\x00Infinity\x00NaN\x00impossible conversion type in TclDoubleDigits\x00wrong digit!\x00in ShouldBankerRoundUp, trichotomy fails!\x00in ShouldBankerRoundUpToNext, trichotomy fails!\x00This code doesn't work on a decimal machine!\x00unknown floating point word order on this machine\x00(%I64x)\x00Tcl_GetMemoryInfo called when threaded memory allocator not in use\x00TclFinalizeThreadAlloc called when threaded memory allocator not in use\x00tclAfter\x00bad argument \"%s\": must be cancel, idle, info, or an integer\x00argument\x00after#%d\x00id|command\x00script ?script ...?\x00?id?\x00event \"%s\" doesn't exist\x00timer\x00Tcl_AfterObjCmd: bad subcommand index to afterSubCmds\x00after#\x00\n    (\"after\" script)\x00tcl::tommath\x00initialization failure in TclBNInitBignumFromLong\x00initialization failure in TclBNInitBignumFromWideUInt\x00execution\x00vdelete\x00vinfo\x00type ?arg ...?\x00type name\x00name ops command\x00bad operations \"%s\": should be one or more of rwua\x00TRACE\x00BADOPS\x00enter\x00leave\x00enterstep\x00leavestep\x00name opList command\x00bad operation list \"\": must be one or more of enter, leave, enterstep, or leavestep\x00NOOPS\x00operation\x00bad operation list \"\": must be one or more of delete or rename\x00bad operation list \"\": must be one or more of array, read, unset, or write\x00 rename\x00 delete\x00TraceExecutionProc: bad flag combination\x00 a\x00 r\x00 w\x00 u\x00 array\x00 read\x00 write\x00 unset\x00Cannot trace a variable with no name\x00trace array\x00\n    (%s trace on \"%s%s%s%s\")\x00bad result flag combination\x00end-offset\x00LIST\x00%s element in braces followed by \"%.*s\" instead of space\x00JUNK\x00%s element in quotes followed by \"%.*s\" instead of space\x00unmatched open brace in %s\x00BRACE\x00unmatched open quote in %s\x00QUOTE\x00internal error in Tcl_SplitList\x00INTERNAL\x00Tcl_SplitList\x00TclScanElement: string length overflow\x00Tcl_Merge called with negative argc (%d)\x00Tcl_Concat: max size of Tcl value exceeded\x00 \f\v\r\t\n\x00 {\x00{\x00-Inf\x00Inf\x00e%+d\x00e%+03d\x00can't modify precision from a safe interpreter\x00improper value for precision\x00bad index \"%s\": must be integer?[+-]integer? or end?[+-]integer?\x00end-\x00bad index \"%s\": must be end?[+-]integer?\x00PGV Initializer did not initialize\x00***=\x00invalid escape sequence\x00BADESCAPE\x00$ not anchor\x00NONANCHOR\x00unhandled RE special char\x00UNHANDLED\x00excessive recursive glob backtrack potential\x00OVERCOMPLEX\x00RE2GLOB\x00array search\x00localVarName\x00parsedVarName\x00\"%s\" isn't an array\x00VARNAME\x00ELEMENT\x00varPtr must not be NULL\x00part1Ptr must not be NULL\x00READ\x00varName ?newValue?\x00newValuePtr must not be NULL\x00UNSET\x00varName ?value ...?\x00arrayName\x00s-%d-%s\x00arrayName searchId\x00arrayName ?pattern?\x00arrayName ?mode? ?pattern?\x00exact matching shouldn't get here\x00arrayName list\x00error reading array statistics\x00anymore\x00donesearch\x00nextelement\x00startsearch\x00statistics\x00bad variable name \"%s\": can't create namespace variable that refers to procedure variable\x00ObjMakeUpvar called with an index outside from a proc\x00bad variable name \"%s\": can't create a scalar variable that looks like an array element\x00can't upvar from variable to itself\x00variable \"%s\" has traces: can't use for upvar\x00TRACED\x00variable \"%s\" already exists\x00EXISTS\x00?level? otherVar localVar ?otherVar localVar ...?\x00illegal search identifier \"%s\"\x00ARRAYSEARCH\x00search identifier \"%s\" isn't for variable \"%s\"\x00couldn't find search \"%s\"\x00invalid part1Ptr and invalid index together\x00can't %s \"%s%s%s%s\": %s\x00%s of type %s should not be called\x00updateStringProc\x00setFromAnyProc\x00scalar parsedVarName without a string rep\x00unknown variable \"%s\"\x00zlib\x00STREAM\x00DATA\x00MEM\x00BUF\x00NEED_DICT\x00unexpected zlib result in error handler: Z_OK\x00unexpected zlib result in error handler: Z_STREAM_END\x00ZLIB\x00text\x00no latin-1 encoding\x00comment\x00crc\x00filename\x00incorrect zlib data format, must be TCL_ZLIB_FORMAT_ZLIB, TCL_ZLIB_FORMAT_GZIP or TCL_ZLIB_FORMAT_RAW\x00compression level should be between 0 (no compression) and 9 (best compression) or -1 for default compression level\x00incorrect zlib data format, must be TCL_ZLIB_FORMAT_ZLIB, TCL_ZLIB_FORMAT_GZIP, TCL_ZLIB_FORMAT_RAW or TCL_ZLIB_FORMAT_AUTO\x00bad mode, must be TCL_ZLIB_STREAM_DEFLATE or TCL_ZLIB_STREAM_INFLATE\x001.3.1\x00::incr ::tcl::zlib::cmdcounter\x00::tcl::zlib::streamcmd_\x00BUG: Stream command name already exists\x00EXISTING_CMD\x00already past compressed stream end\x00ZIP\x00CLOSED\x00unexpected zlib internal state during decompression\x00STATE\x00incorrect zlib data format, must be TCL_ZLIB_FORMAT_ZLIB, TCL_ZLIB_FORMAT_GZIP or TCL_ZLIB_FORMAT_ZLIB\x00compression level should be between 0 (uncompressed) and 9 (best compression) or -1 for default compression level\x00adler32\x00compress\x00crc32\x00decompress\x00deflate\x00gunzip\x00gzip\x00inflate\x00stream\x00command arg ?...?\x00data ?startValue?\x00data ?level?\x00\n    (in -level option)\x00data ?-level level? ?-header header?\x00-header\x00data ?bufferSize?\x00data ?-headerVar varName?\x00-headerVar\x00level must be 0 to 9\x00COMPRESSIONLEVEL\x00buffer size must be %d to %d\x00BUFFERSIZE\x00mode ?-option value...?\x00should be unreachable\x00-limit\x00mode channel ?options...?\x00compression may only be applied to writable channels\x00UNWRITABLE\x00decompression may only be applied to readable channels\x00UNREADABLE\x00value missing for %s option\x00NOVAL\x00read ahead limit must be 1 to %d\x00a compression dictionary may not be set in the gzip format\x00BADOPT\x00\n    (in \x00 option)\x00checksum\x00fullflush\x00header\x00put\x00reset\x00option data ?...?\x00?count?\x00-buffer\x00-finalize\x00-flush\x00-fullflush\x00\"-buffer\" option must be followed by integer decompression buffersize\x00buffer size must be 1 to %d\x00\"-dictionary\" option must be followed by compression dictionary bytes\x00\"-flush\", \"-fullflush\" and \"-finalize\" options are mutually exclusive\x00EXCLUSIVE\x00only gunzip streams can produce header information\x00BADOP\x00error while finalizing file: %s\x00problem flushing channel: %s\x00dictionary flush\x00dictionary limit\x00flush limit\x00sync\x00unknown -flush type \"%s\": must be full or sync\x00FLUSH\x00-limit must be between 1 and 65536\x00READLIMIT\x00checksum dictionary\x00checksum dictionary limit\x00checksum header limit\x00-checksum\x00unknown mode: %d\x00bad format: %d\x00namespace eval ::tcl::zlib {variable cmdcounter 0}\x00zlibVersion\x002.0.1\x00Windows NT is the only supported platform\x00couldn't open \"\x00\": filename is invalid on this platform\x00TclpOpenFileChannel: invalid mode value\x00couldn't open serial \"\x00couldn't reopen serial \"%s\": %s\x00couldn't open \"%s\": bad file type\x00TclGetDefaultStdChannel: Unexpected channel type\x00file%Ix\x00file info ptr not on thread channel list\x00c\x00o\x00m\x00\x00\x00\\\x00\\\x00.\x00\\\x00c\x00o\x00m\x00\x00\x00console\x00cp%d\x00serial\x00RXOVER\x00OVERRUN\x00RXPARITY\x00FRAME\x00BREAK\x00TXFULL\x00TIMEOUT\x00CTS\x00DSR\x00RING\x00DCD\x00-mode\x00bad value \"%s\" for -mode: should be baud,parity,data,stop\x00SERIALMODE\x00-handshake\x00XONXOFF\x00RTSCTS\x00DTRDSR\x00bad value \"%s\" for -handshake: must be one of xonxoff, rtscts, dtrdsr or none\x00HANDSHAKE\x00-xchar\x00bad value for -xchar: should be a list of two elements with each a single character\x00XCHAR\x00-ttycontrol\x00bad value \"%s\" for -ttycontrol: should be a list of signal,value pairs\x00TTYCONTROL\x00DTR\x00can't set DTR signal\x00FCONFIGURE\x00TTY_SIGNAL\x00RTS\x00can't set RTS signal\x00can't set BREAK signal\x00bad signal name \"%s\" for -ttycontrol: must be DTR, RTS or BREAK\x00-sysbuffer\x00bad value \"%s\" for -sysbuffer: should be a list of one or two integers > 0\x00SYS_BUFFER\x00can't setup comm buffers: %s\x00-pollinterval\x00-timeout\x00can't set comm timeouts: %s\x00mode handshake pollinterval sysbuffer timeout ttycontrol xchar\x00can't get comm state: %s\x00can't set comm state: %s\x00noems\x001.5\x00%d,%c,%d,%s\x00-lasterror\x00-queue\x00-ttystatus\x00can't get tty status: %s\x00mode pollinterval lasterror queue sysbuffer ttystatus xchar\x00-archive\x00-hidden\x00-longname\x00-readonly\x00-shortname\x00-system\x00t\x00c\x00l\x00r\x00\x00\x00\\\x00*\x00.\x00*\x00\x00\x00\\\x00\x00\x00..\x00cannot set attribute \"%s\" for file \"%s\": attribute is readonly\x00\\\x00?\x00?\x00\\\x00\x00\x00\\\x00?\x00?\x00\\\x00V\x00o\x00l\x00u\x00m\x00e\x00{\x00\x00\x00\\\x00\\\x00?\x00\\\x00\x00\x00 \x00.\x00.\x00.\x00\x00\x00F\x00a\x00t\x00a\x00l\x00 \x00E\x00r\x00r\x00o\x00r\x00\x00\x00[]\\\x00*.*\x00couldn't read directory \"%s\": %s\x00prn\x00nul\x00aux\x00Password Lists\x00system.ini\x00e\x00x\x00e\x00\x00\x00c\x00m\x00d\x00\x00\x00b\x00a\x00t\x00\x00\x00/\x00\x00\x00\\??\\\x00\\\\?\\\x00\\\x00\\\x00?\x00\\\x00U\x00N\x00C\x00\x00\x00\"\x00*\x00:\x00<\x00>\x00?\x00|\x00\x00\x00intel\x00mips\x00ppc\x00shx\x00arm\x00ia64\x00alpha64\x00msil\x00amd64\x00ia32_on_win64\x00neutral\x00arm64\x00arm32_on_win64\x00ia32_on_arm64\x00K\x00E\x00R\x00N\x00E\x00L\x003\x002\x00\x00\x00CancelSynchronousIo\x00CreateSymbolicLinkW\x00lib/tcl%s\x00last character in lib cannot be '/'\x00no '/' character found in lib\x00T\x00C\x00L\x00_\x00L\x00I\x00B\x00R\x00A\x00R\x00Y\x00\x00\x00TCL_LIBRARY\x00../library\x00USERNAME\x00N\x00T\x00D\x00L\x00L\x00\x00\x00RtlGetVersion\x00windows\x00Windows NT\x00%d.%d\x00HOMEDRIVE\x00HOMEPATH\x00USERPROFILE\x00c:\\\x00pathSeparator\x00;\x00couldn't load library \"%s\": \x00WIN_LOAD\x00MOD_NOT_FOUND\x00DLL_NOT_FOUND\x00this library or a dependent library could not be found in library path\x00PROC_NOT_FOUND\x00A function specified in the import table could not be resolved by the system. Windows is not telling which one, I'm sorry.\x00INVALID_DLL\x00this library or a dependent library is damaged\x00DLL_INIT_FAILED\x00the library initialization routine failed\x00BAD_EXE_FORMAT\x00Bad exe format. Possibly a 32/64-bit mismatch.\x00_\x00cannot find symbol \"%s\"\x00LOAD_SYMBOL\x00couldn't create temporary directory: %s\x00T\x00C\x00L\x00X\x00X\x00X\x00X\x00X\x00X\x00X\x00X\x00\x00\x00%\x000\x008\x00x\x00\x00\x00Unable to register TclNotifier window class\x00T\x00C\x00L\x00\x00\x00\r\n\x00TclpCloseFile: unexpected file type\x00couldn't duplicate input handle: %s\x00N\x00U\x00L\x00:\x00\x00\x00couldn't duplicate output handle: %s\x00couldn't duplicate error handle: %s\x00cmd.exe /c\x00DOS application process not supported on this platform\x00DOS_APP\x00couldn't execute \"%s\": %s\x00C\x00O\x00N\x00O\x00U\x00T\x00$\x00\x00\x00.cmd\x00.bat\x00.com\x00\\\\\x00pipe creation failed: %s\x00?channelId?\x00%d.TMP\x00sockets are not available on this system\x00winsock is not initialized\x00-connecting\x00::tcl::unsupported::noReverseDNS\x00-peername\x00can't get peername: %s\x00-sockname\x00can't get sockname: %s\x00connecting peername sockname\x00couldn't open socket: %s\x00sock%p\x00auto crlf\x001.2.13\x00invalid block type\x00invalid stored block lengths\x00too many length or distance symbols\x00invalid code lengths set\x00invalid bit length repeat\x00invalid code -- missing end-of-block\x00invalid literal/lengths set\x00invalid distances set\x00invalid literal/length code\x00invalid distance code\x00invalid distance too far back\x00incorrect header check\x00unknown compression method\x00invalid window size\x00unknown header flags set\x00header crc mismatch\x00incorrect data check\x00incorrect length check\x00need dictionary\x00stream end\x00file error\x00stream error\x00data error\x00insufficient memory\x00buffer error\x00incompatible version\x000123456789ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz+/\x008.5\x00dde\x001.4.4\x00T\x00c\x00l\x00E\x00v\x00a\x00l\x00\x00\x00 \x00#\x00\x00\x00%\x00d\x00\x00\x00permission denied: a handler procedure must be defined for use in a safe interp\x00DDE\x00SECURITY_CHECK\x00$\x00T\x00C\x00L\x00E\x00V\x00A\x00L\x00$\x00E\x00X\x00E\x00C\x00U\x00T\x00E\x00$\x00R\x00E\x00S\x00U\x00L\x00T\x00\x00\x00no registered server named \"%s\"\x00NO_SERVER\x00T\x00c\x00l\x00E\x00v\x00a\x00l\x00 \x00c\x00l\x00i\x00e\x00n\x00t\x00 \x00c\x00l\x00a\x00s\x00s\x00\x00\x00T\x00c\x00l\x00E\x00v\x00a\x00l\x00 \x00c\x00l\x00i\x00e\x00n\x00t\x00 \x00w\x00i\x00n\x00d\x00o\x00w\x00\x00\x00remote interpreter did not respond\x00remote server is busy\x00remote server cannot handle this command\x00NOCANDO\x00dde command failed\x00FAILED\x00servername\x00execute\x00poke\x00request\x00services\x00-handler\x00-binary\x00?-force? ?-handler proc? ?--? ?serverName?\x00?-async? ?-binary? serviceName topicName value\x00?-binary? serviceName topicName item value\x00?-binary? serviceName topicName value\x00serviceName topicName\x00?-async? serviceName args\x00cannot execute null data\x00cannot request value of null data\x00cannot have a null item\x00invalid service name \"\"\x00invalid data returned from server\x00BAD_RESPONSE\x00HKEY_LOCAL_MACHINE\x00HKEY_USERS\x00HKEY_CLASSES_ROOT\x00HKEY_CURRENT_USER\x00HKEY_CURRENT_CONFIG\x00HKEY_PERFORMANCE_DATA\x00HKEY_DYN_DATA\x00sz\x00expand_sz\x00dword\x00dword_big_endian\x00multi_sz\x00resource_list\x00registry\x001.3.5\x00broadcast\x00-32bit\x00-64bit\x00?-32bit|-64bit? option ?arg ...?\x00keyName ?-timeout milliseconds?\x00keyName ?valueName?\x00keyName valueName\x00keyName ?pattern?\x00keyName ?valueName data ?type??\x00bad key: cannot delete root keys\x00WIN_REG\x00DEL_ROOT_KEY\x00unable to delete key: \x00unable to delete value \"%s\" from key \"%s\": \x00unable to enumerate subkeys of \"%s\": \x00unable to get type of value \"%s\" from key \"%s\": \x00unable to get value \"%s\" from key \"%s\": \x00unable to open key: \x00bad key \"%s\": must start with a valid root\x00NO_ROOT_KEY\x00root name\x00A\x00D\x00V\x00A\x00P\x00I\x003\x002\x00\x00\x00RegDeleteKeyExW\x00unable to set value: \x00unknown error: %ld\x00%ld\x00WINDOWS\x00interpreter uses an incompatible stubs mechanism\x00missing stub table pointer\x00epoch number mismatch\x00requires a later revision\x00Error loading \x00 (requested version \x00, actual version \x00): \x00"
+var __ccgo_ts1 = "\n\n\n========= RAW ==========\n\x00\n\n\n========= TREE FIXED ==========\n\x00\n\n\n========= LA%d ==========\n\x00\n\n\n========= SEARCH ==========\n\x00\n\n\n========= TREE NODE %s ==========\n\x00null tree\n\x00%s. `%c'\x00 longest\x00 shortest\x00 hasmixed\x00 hascapture\x00 hasbackref\x00 UNUSED\x00 (#%d)\x00 {%d,\x00%d\x00}\x00 %ld-%ld\x00 L:%s\x00 R:%s\x00\n\x00unable\x00%p\x00\ninitial cleanup:\n\x00\nempties:\n\x00\nconstraints:\n\x00\nfinal cleanup:\n\x00NUL\x00SOH\x00STX\x00ETX\x00EOT\x00ENQ\x00ACK\x00BEL\x00alert\x00BS\x00backspace\x00HT\x00tab\x00LF\x00newline\x00VT\x00vertical-tab\x00FF\x00form-feed\x00CR\x00carriage-return\x00SO\x00SI\x00DLE\x00DC1\x00DC2\x00DC3\x00DC4\x00NAK\x00SYN\x00ETB\x00CAN\x00EM\x00SUB\x00ESC\x00IS4\x00FS\x00IS3\x00GS\x00IS2\x00RS\x00IS1\x00US\x00space\x00exclamation-mark\x00quotation-mark\x00number-sign\x00dollar-sign\x00percent-sign\x00ampersand\x00apostrophe\x00left-parenthesis\x00right-parenthesis\x00asterisk\x00plus-sign\x00comma\x00hyphen\x00hyphen-minus\x00period\x00full-stop\x00slash\x00solidus\x00zero\x00one\x00two\x00three\x00four\x00five\x00six\x00seven\x00eight\x00nine\x00colon\x00semicolon\x00less-than-sign\x00equals-sign\x00greater-than-sign\x00question-mark\x00commercial-at\x00left-square-bracket\x00backslash\x00reverse-solidus\x00right-square-bracket\x00circumflex\x00circumflex-accent\x00underscore\x00low-line\x00grave-accent\x00left-brace\x00left-curly-bracket\x00vertical-line\x00right-brace\x00right-curly-bracket\x00tilde\x00DEL\x00alnum\x00alpha\x00ascii\x00blank\x00cntrl\x00digit\x00graph\x00lower\x00print\x00punct\x00upper\x00xdigit\x00REG_OKAY\x00no errors detected\x00REG_NOMATCH\x00failed to match\x00REG_BADPAT\x00invalid regexp (reg version 0.8)\x00REG_ECOLLATE\x00invalid collating element\x00REG_ECTYPE\x00invalid character class\x00REG_EESCAPE\x00invalid escape \\ sequence\x00REG_ESUBREG\x00invalid backreference number\x00REG_EBRACK\x00brackets [] not balanced\x00REG_EPAREN\x00parentheses () not balanced\x00REG_EBRACE\x00braces {} not balanced\x00REG_BADBR\x00invalid repetition count(s)\x00REG_ERANGE\x00invalid character range\x00REG_ESPACE\x00out of memory\x00REG_BADRPT\x00quantifier operand invalid\x00REG_ASSERT\x00\"can't happen\" -- you found a bug\x00REG_INVARG\x00invalid argument to regex function\x00REG_MIXED\x00character widths of regex and string differ\x00REG_BADOPT\x00invalid embedded option\x00REG_ETOOBIG\x00regular expression is too complex\x00REG_ECOLORS\x00too many colors\x00\x00oops\x00REG_%u\x00assemblecode\x00push\x00add\x00append\x00appendArray\x00appendArrayStk\x00appendStk\x00arrayExistsImm\x00arrayExistsStk\x00arrayMakeImm\x00arrayMakeStk\x00beginCatch\x00bitand\x00bitnot\x00bitor\x00bitxor\x00clockRead\x00concat\x00concatStk\x00coroName\x00currentNamespace\x00dictAppend\x00dictExists\x00dictExpand\x00dictGet\x00dictIncrImm\x00dictLappend\x00dictRecombineStk\x00dictRecombineImm\x00dictSet\x00dictUnset\x00div\x00dup\x00endCatch\x00eq\x00eval\x00evalStk\x00exist\x00existArray\x00existArrayStk\x00existStk\x00expon\x00expr\x00exprStk\x00ge\x00gt\x00incr\x00incrArray\x00incrArrayImm\x00incrArrayStk\x00incrArrayStkImm\x00incrImm\x00incrStk\x00incrStkImm\x00infoLevelArgs\x00infoLevelNumber\x00invokeStk\x00jump\x00jump4\x00jumpFalse\x00jumpFalse4\x00jumpTable\x00jumpTrue\x00jumpTrue4\x00label\x00land\x00lappend\x00lappendArray\x00lappendArrayStk\x00lappendList\x00lappendListArray\x00lappendListArrayStk\x00lappendListStk\x00lappendStk\x00le\x00lindexMulti\x00list\x00listConcat\x00listIn\x00listIndex\x00listIndexImm\x00listLength\x00listNotIn\x00load\x00loadArray\x00loadArrayStk\x00loadStk\x00lor\x00lsetFlat\x00lsetList\x00lshift\x00lt\x00mod\x00mult\x00neq\x00nop\x00not\x00nsupvar\x00numericType\x00originCmd\x00over\x00pop\x00pushReturnCode\x00pushReturnOpts\x00pushResult\x00regexp\x00resolveCmd\x00reverse\x00rshift\x00store\x00storeArray\x00storeArrayStk\x00storeStk\x00strcaseLower\x00strcaseTitle\x00strcaseUpper\x00strcmp\x00strcat\x00streq\x00strfind\x00strindex\x00strlen\x00strmap\x00strmatch\x00strneq\x00strrange\x00strreplace\x00strrfind\x00strtrim\x00strtrimLeft\x00strtrimRight\x00sub\x00tclooClass\x00tclooIsObject\x00tclooNamespace\x00tclooSelf\x00tryCvtToBoolean\x00tryCvtToNumeric\x00uminus\x00unset\x00unsetArray\x00unsetArrayStk\x00unsetStk\x00uplus\x00upvar\x00variable\x00verifyDict\x00yield\x00bytecodeList\x00\n    (\"\x00\" body, line \x00)\x00\n    (\"%.*s\" body, line %d)\x00instruction\x00value\x00boolean\x00boolean varName\x00imm8\x00operand must be [0..3]\x00TCL\x00ASSEM\x00OPERAND<0,>3\x00count\x00count varName\x00script\x00expression\x00table\x00name\x00operand must be >=2\x00OPERAND>=2\x00varname\x00varName imm8\x00Instruction \"%s\" could not be found, can't happen\n\x00no ASSEM_EVAL case for %s (%d), can't happen\x00jump table must have an even number of list elements\x00BADJUMPTABLE\x00duplicate entry in jump table for \"%s\"\x00DUPJUMPTABLEENTRY\x00assembly code may not contain substitutions\x00NOSUBST\x00cannot use this instruction to create a variable in a non-proc context\x00LVT\x00variable \"%s\" is not local\x00NONLOCAL\x00operand does not fit in one byte\x001BYTE\x00operand must be nonnegative\x00NONNEGATIVE\x00operand must be positive\x00POSITIVE\x00duplicate definition of label \"%s\"\x00DUPLABEL\x00undefined label \"%s\"\x00NOLABEL\x00\"%s\" instruction may not appear in a context where an exception has been caught and not disposed of.\x00BADTHROW\x00inconsistent stack depths on two execution paths\x00BADSTACK\x00stack underflow\x00code pops stack below level of enclosing catch\x00BADSTACKINCATCH\x00stack is unbalanced on exit from the code (depth=%d)\x00execution reaches an instruction in inconsistent exception contexts\x00BADCATCH\x00endCatch without a corresponding beginCatch\x00BADENDCATCH\x00catch still active on exit from assembly code\x00UNCLOSEDCATCH\x00unclosed catch at end of code in tclAssembly.c:BuildExceptionRanges, can't happen\x00undefined label in tclAssembly.c:BuildExceptionRanges, can't happen\x00\n    in assembly code between lines \x00 and \x00end of assembly code\x00Tcl_AsyncDelete: async handler deleted by the wrong thread\x00Tcl_AsyncDelete: cannot find async handler\x00apply\x00break\x00case\x00catch\x00continue\x00coroutine\x00error\x00for\x00foreach\x00format\x00global\x00if\x00join\x00lassign\x00lindex\x00linsert\x00llength\x00lmap\x00lrange\x00lrepeat\x00lreplace\x00lreverse\x00lsearch\x00lset\x00lsort\x00package\x00proc\x00regsub\x00rename\x00return\x00scan\x00set\x00split\x00subst\x00switch\x00tailcall\x00throw\x00trace\x00try\x00uplevel\x00while\x00yieldto\x00after\x00cd\x00close\x00eof\x00exec\x00exit\x00fblocked\x00fconfigure\x00fcopy\x00fileevent\x00flush\x00gets\x00glob\x00open\x00pid\x00puts\x00pwd\x00read\x00seek\x00socket\x00source\x00tell\x00time\x00unload\x00update\x00vwait\x00abs\x00acos\x00asin\x00atan\x00atan2\x00bool\x00ceil\x00cos\x00cosh\x00double\x00entier\x00exp\x00floor\x00fmod\x00hypot\x00int\x00isqrt\x00log\x00log10\x00pow\x00rand\x00round\x00sin\x00sinh\x00sqrt\x00srand\x00tan\x00tanh\x00wide\x00~\x00integer\x00!\x00+\x00*\x00&\x00|\x00^\x00**\x00<<\x00integer shift\x00>>\x00%\x00integer integer\x00!=\x00value value\x00ne\x00in\x00value list\x00ni\x00-\x00value ?value ...?\x00/\x00<\x00<=\x00>\x00>=\x00==\x00Tcl_CallFrame must not be smaller than CallFrame\x00::errorInfo\x00UP\x00CALL\x00INNER\x00::errorCode\x00T\x00C\x00L\x00_\x00P\x00K\x00G\x00_\x00P\x00R\x00E\x00F\x00E\x00R\x00_\x00L\x00A\x00T\x00E\x00S\x00T\x00\x00\x00T\x00C\x00L\x00_\x00I\x00N\x00T\x00E\x00R\x00P\x00_\x00D\x00E\x00B\x00U\x00G\x00_\x00F\x00R\x00A\x00M\x00E\x00\x00\x00Tcl_CreateInterp: can't create global namespace\x00builtin command with NULL object command proc and a NULL compile proc\x00::tcl::Bgerror\x00::tcl::unsupported::disassemble\x00::tcl::unsupported::getbytecode\x00::tcl::unsupported::representation\x00::tcl::unsupported::assemble\x00::tcl::unsupported::inject\x00::tcl::unsupported::corotype\x00::tcl::unsupported::timerate\x00::tcl::unsupported\x00::tcl::mathfunc\x00Can't create math function namespace\x00::tcl::mathfunc::\x00::tcl::mathop\x00can't create math operator namespace\x00::tcl::mathop::\x00failed to create math operator %s\x00tcl_platform\x00engine\x00Tcl\x00littleEndian\x00bigEndian\x00byteOrder\x00wordSize\x00pointerSize\x00tcl_patchLevel\x008.6.13\x00tcl_version\x008.6\x00tcl_precision\x00%s\x00Assoc Data Key #%d\x00DeleteInterpProc called with active evals\x00DeleteInterpProc called on interpreter not marked deleted\x00DeleteInterpProc: popping rootCallFrame with other frames on top\x00Argument location tracking table not empty\x00::\x00cannot use namespace qualifiers in hidden command token (rename)\x00VALUE\x00HIDDENTOKEN\x00can only hide global namespace commands (use rename then hide)\x00HIDE\x00NON_GLOBAL\x00hidden command named \"%s\" already exists\x00ALREADY_HIDDEN\x00cannot expose to a namespace (use expose to toplevel, then rename)\x00EXPOSE\x00unknown hidden command \"%s\"\x00LOOKUP\x00trying to expose a non-global command namespace command\x00exposed command \"%s\" already exists\x00COMMAND_EXISTS\x00delete\x00can't %s \"%s\": command doesn't exist\x00COMMAND\x00can't rename to \"%s\": bad command name\x00can't rename to \"%s\": command already exists\x00OPERATION\x00RENAME\x00TARGET_EXISTS\x00argument to math function didn't have numeric value\x00tcl::mathfunc::\x00unknown math function \"%s\"\x00MATHFUNC\x00::info functions \x00attempt to call eval in deleted interpreter\x00IDELETE\x00too many nested evaluations (infinite loop?)\x00LIMIT\x00STACK\x00IUNWIND\x00eval unwound\x00ICANCEL\x00eval canceled\x00CANCEL\x00attempt to invoke a deleted command\x00EVAL\x00DELETEDCOMMAND\x00Tcl_EvalObjv: NULL global namespace pointer\x00::unknown\x00invalid command name \"%s\"\x00\n    (enter trace on \"\x00...\x00\")\x00\n    (leave trace on \"\x00\n    (expanding word %d)\x00TclArgumentBC Enter/Release Mismatch\x00invoked \"break\" outside of a loop\x00invoked \"continue\" outside of a loop\x00command returned bad code: %d\x00UNEXPECTED_RESULT_CODE\x00illegal argument vector\x00TclObjInvoke: called without TCL_INVOKE_HIDDEN\x00invalid hidden command name \"%s\"\x00NONE\x00square root of negative argument\x00ARITH\x00DOMAIN\x00domain error: argument not in valid range\x00not enough\x00too many\x00%s arguments for math function \"%s\"\x00WRONGARGS\x00tailcall cannot find the right splicing spot: should not happen!\x00?command? ?arg ...?\x00tailcall can only be called from a proc, lambda or method\x00TAILCALL\x00ILLEGAL\x00Adding a callback without an objProc?!\x00?returnValue?\x00yield can only be called in a coroutine\x00COROUTINE\x00ILLEGAL_YIELD\x00command ?arg ...?\x00yieldto can only be called in a coroutine\x00yieldto called in deleted namespace\x00YIELDTO_IN_DELETED\x00cannot yield: C stack busy\x00CANT_YIELD\x00Yield received an option which is not implemented\x00can only get coroutine type of a coroutine\x00active\x00unknown coroutine type\x00BAD_TYPE\x00coroName cmd ?arg1 arg2 ...?\x00can only inject a command into a coroutine\x00can only inject a command into a suspended coroutine\x00ACTIVE\x00coroutine \"%s\" is already running\x00BUSY\x00?arg?\x00wrong coro nargs; how did we get here? not implemented!\x00name cmd ?arg ...?\x00can't create procedure \"%s\": unknown namespace\x00NAMESPACE\x00can't create procedure \"%s\": bad procedure name\x00bytearray\x00encode\x00decode\x00hex\x00uuencode\x00base64\x00%s called with shared object\x00Tcl_SetByteArrayObj\x00Tcl_SetByteArrayLength\x00max size for a Tcl value (%d bytes) exceeded\x00TclAppendBytesToByteArray\x00%s must be called with definite number of bytes to append\x00binary\x00binary encode\x00binary decode\x00formatString ?arg ...?\x00number of elements in list does not match count\x00cannot use \"*\" in format string with \"x\"\x00hexadecimal\x00expected %s string but got \"%s\" instead\x00missing count for \"@\" field specifier\x00not enough arguments for all format specifiers\x00bad field specifier \"%s\"\x00value formatString ?varName ...?\x00unexpected fallthrough\x00data\x00-strict\x00?options? data\x00option\x00invalid hexadecimal digit \"%c\" at position %d\x00BINARY\x00DECODE\x00INVALID\x00-maxlen\x00-wrapchar\x00?-maxlen len? ?-wrapchar char? data\x00line length out of range\x00ENCODE\x00LINE_LENGTH\x00limit hit\x00invalid wrapchar; will defeat decoding\x00WRAPCHAR\x00short uuencode data\x00SHORT\x00invalid uuencode character \"%c\" at position %d\x00invalid base64 character \"%c\" at position %d\x00unable to alloc %u bytes\x00unable to alloc %u bytes, %s line %d\x00unable to realloc %u bytes\x00unable to realloc %u bytes, %s line %d\x00%a %b %d %H:%M:%S %Z %Y\x00BCE\x00C\x00cannot use -gmt and -timezone in same call\x00CE\x00dayOfMonth\x00dayOfWeek\x00dayOfYear\x00era\x00:GMT\x00gregorian\x00integer value too large to represent\x00iso8601Week\x00iso8601Year\x00julianDay\x00localSeconds\x00month\x00seconds\x00tzName\x00tzOffset\x00year\x00getenv\x00Oldscan\x00ConvertLocalToUTC\x00GetDateFields\x00GetJulianDayFromEraYearMonthDay\x00GetJulianDayFromEraYearWeekDay\x00ParseFormatArgs\x00clicks\x00microseconds\x00milliseconds\x00::tcl::clock::\x00clock\x00dict tzdata changeover\x00key \"localseconds\" not found in dictionary\x00seconds tzdata changeover\x00expected key(s) not found in dictionary\x00dict changeover\x00loop in ConvertLocalToUTCUsingTable\x00time value too large/small to represent\x00number too large to represent as a Posix time\x00CLOCK\x00argTooLarge\x00localtime failed (clock value may be too large/small to represent)\x00localtimeFailed\x00%02d\x00\x00\x00-milliseconds\x00-microseconds\x00?-switch?\x00-format\x00-gmt\x00-locale\x00-timezone\x00clock format clockval ?-format string? ?-gmt boolean? ?-locale LOCALE? ?-timezone ZONE?\x00wrongNumArgs\x00badOption\x00gmtWithTimezone\x00T\x00Z\x00\x00\x00string ?in? ?pattern body ...? ?default body?\x00extra case pattern with no body\x00default\x00\n    (\"%.50s\" arm line %d)\x00script ?resultVarName? ?optionVarName?\x00\n    (\"catch\" body line %d)\x00?dirName?\x00couldn't change working directory to \"%s\": %s\x00convertfrom\x00convertto\x00dirs\x00names\x00system\x00encoding\x00::tcl::encoding::\x00tcl:encoding:\x00___tmp\x00problem making 'encoding %s' safe: %s\x00problem making 'encoding' safe: %s\x00not allowed to invoke subcommand %s of encoding\x00SAFE\x00SUBCOMMAND\x00?encoding? data\x00?dirList?\x00expected directory list but got \"%s\"\x00ENCODING\x00BADPATH\x00?encoding?\x00message ?errorInfo? ?errorCode?\x00-code error -level 0\x00-errorinfo\x00-errorcode\x00\n    (\"eval\" body line %d)\x00arg ?arg ...?\x00?returnCode?\x00atime\x00attributes\x00channels\x00copy\x00dirname\x00executable\x00exists\x00extension\x00isdirectory\x00isfile\x00link\x00lstat\x00mtime\x00mkdir\x00nativename\x00normalize\x00owned\x00pathtype\x00readable\x00readlink\x00rootname\x00separator\x00size\x00stat\x00tail\x00tempfile\x00type\x00volumes\x00writable\x00file\x00::tcl::file::\x00tcl:file:\x00problem making 'file %s' safe: %s\x00problem making 'file' safe: %s\x00not allowed to invoke subcommand %s of file\x00name ?time?\x00could not get access time for file \"%s\"\x00could not set access time for file \"%s\": %s\x00could not get modification time for file \"%s\"\x00could not set modification time for file \"%s\": %s\x00name varName\x00unrecognised path\x00FILESYSTEM\x00name ?name ...?\x00could not read \"%s\": no such file or directory\x00PATHSPLIT\x00NONESUCH\x00absolute\x00relative\x00volumerelative\x00?name?\x00\\\x00could not read \"%s\": %s\x00dev\x00ino\x00nlink\x00uid\x00gid\x00ctime\x00mode\x00directory\x00characterSpecial\x00blockSpecial\x00fifo\x00unknown\x00start test next command\x00\n    (\"for\" body line %d)\x00\n    (\"for\" initial command)\x00\n    (\"for\" loop-end command)\x00varList list ?varList list ...? command\x00%s varlist is empty\x00LMAP\x00FOREACH\x00NEEDVARS\x00\n    (\"%s\" body line %d)\x00\n    (setting %s loop variable \"%s\")\x00args\x00body\x00cmdcount\x00commands\x00complete\x00errorstack\x00frame\x00functions\x00globals\x00hostname\x00level\x00library\x00loaded\x00locals\x00nameofexecutable\x00patchlevel\x00procs\x00sharedlibextension\x00tclversion\x00vars\x00wrong # args: no expression after \"%s\" argument\x00then\x00elseif\x00else\x00wrong # args: extra words after \"else\" clause in \"if\" command\x00wrong # args: no script following \"%s\" argument\x00varName ?increment?\x00info\x00procname\x00\"%s\" isn't a procedure\x00PROCEDURE\x00?pattern?\x00*[?\\\x00command\x00procname arg varname\x00procedure \"%s\" doesn't have an argument \"%s\"\x00ARGUMENT\x00?interp?\x00varName\x00?number?\x00Broken frame level calculation\x00bad level \"%s\"\x00LEVEL\x00precompiled\x00line\x00cmd\x00TCL_LOCATION_PROC found in standard frame\x00\t    ::apply [::list {{pattern *}} {\n\t\t::set cmds {}\n\t\t::foreach cmd [::info commands ::tcl::mathfunc::$pattern] {\n\t\t    ::lappend cmds [::namespace tail $cmd]\n\t\t}\n\t\t::foreach cmd [::info commands tcl::mathfunc::$pattern] {\n\t\t    ::set cmd [::namespace tail $cmd]\n\t\t    ::if {$cmd ni $cmds} {\n\t\t\t::lappend cmds $cmd\n\t\t    }\n\t\t}\n\t\t::return $cmds\n\t    } [::namespace current]] \x00unable to determine name of host\x00HOSTNAME\x00UNKNOWN\x00tcl_library\x00no library has been specified for Tcl\x00VARIABLE\x00?filename?\x00.dll\x00list ?joinString?\x00 \x00list ?varName ...?\x00list ?index ...?\x00list index ?element ...?\x00list first last\x00count ?value ...?\x00bad count \"%d\": must be integer >= 0\x00LREPEAT\x00NEGARG\x00max length of a Tcl list (%d elements) exceeded\x00MEMORY\x00list first last ?element ...?\x00-all\x00-ascii\x00-bisect\x00-decreasing\x00-dictionary\x00-exact\x00-glob\x00-increasing\x00-index\x00-inline\x00-integer\x00-nocase\x00-not\x00-real\x00-regexp\x00-sorted\x00-start\x00-subindices\x00?-option value ...? list pattern\x00missing starting index\x00MISSING\x00\"-index\" option must be followed by list index\x00index \"%s\" cannot select an element from any list\x00INDEXOUTOFRANGE\x00\n    (-index option item number %d)\x00-subindices cannot be used without -index option\x00LSEARCH\x00BAD_OPTION_MIX\x00-bisect is not compatible with -all or -not\x00listVar ?index? ?index ...? value\x00-command\x00-indices\x00-stride\x00-unique\x00?-option value ...? list\x00\"-command\" option must be followed by comparison command\x00\"-stride\" option must be followed by stride length\x00stride length must be at least 2\x00LSORT\x00BADSTRIDE\x00list size must be a multiple of the stride length\x00when used with \"-stride\", the leading \"-index\" value must be within the group\x00BADINDEX\x00no enough memory to proccess sort of %d items\x00\n    (-compare command)\x00-compare command returned non-integer result\x00COMPARISONFAILED\x00element %d missing from sublist \"%s\"\x00INDEXFAILED\x00-about\x00-expanded\x00-line\x00-linestop\x00-lineanchor\x00--\x00?-option ...? exp string ?matchVar? ?subMatchVar ...?\x00regexp match variables not allowed when using -inline\x00REGEXP\x00MIX_VAR_INLINE\x00?-option ...? exp string subSpec ?varName?\x00&\\\x00*+?{}()[].\\|^$\x00oldName newName\x00?-encoding name? fileName\x00-encoding\x00 \n\t\r\x00string ?splitChars?\x00needleString haystackString ?startIndex?\x00string charIndex\x00control\x00false\x00true\x00wideinteger\x00wordchar\x00-failindex\x00class ?-strict? ?-failindex var? str\x00class\x00?-strict? ?-failindex var? str\x00?-nocase? charMap string\x00bad option \"%s\": must be -nocase\x00INDEX\x00char map list unbalanced\x00MAP\x00UNBALANCED\x00?-nocase? pattern string\x00string first last\x00string count\x00result exceeds max size for a Tcl value (%d bytes)\x00string size overflow, out of memory allocating %u bytes\x00string first last ?string?\x00string\x00string index\x00?-nocase? ?-length int? string1 string2\x00-length\x00bad option \"%s\": must be -nocase or -length\x00string ?first? ?last?\x00string ?chars?\x00bytelength\x00cat\x00compare\x00equal\x00first\x00index\x00is\x00last\x00length\x00map\x00match\x00range\x00repeat\x00replace\x00tolower\x00toupper\x00totitle\x00trim\x00trimleft\x00trimright\x00wordend\x00wordstart\x00-nobackslashes\x00-nocommands\x00-novariables\x00Tcl_SubstObjCmd: bad option index to SubstOptions\x00?-nobackslashes? ?-nocommands? ?-novariables? string\x00-indexvar\x00-matchvar\x00bad option \"%s\": %s option already found\x00SWITCH\x00DOUBLEOPT\x00missing variable name argument to %s option\x00NOVAR\x00?-option ...? string ?pattern body ...? ?default body?\x00%s option requires -regexp option\x00MODERESTRICTION\x00?-option ...? string {?pattern body ...? ?default body?}\x00extra switch pattern with no body\x00BADARM\x00, this may be due to a comment incorrectly placed outside of a switch body - see the \"switch\" documentation\x00COMMENT?\x00no body specified for pattern \"%s\"\x00FALLTHROUGH\x00fall-out when searching for body to match pattern\x00\n    (\"%.*s%s\" arm line %d)\x00type message\x00type must be non-empty list\x00THROW\x00BADEXCEPTION\x00-code error -level 0 -errorcode\x00command ?count?\x00per\x00iteration\x00-direct\x00-overhead\x00-calibrate\x00?-direct? ?-calibrate? ?-overhead double? command ?time ?max-count??\x00µs/#-overhead\x00%.*f\x00%.3f\x00net-ms\x00µs/#\x00#\x00#/sec\x00finally\x00on\x00trap\x00body ?handler ...? ?finally script?\x00handler type\x00finally clause must be last\x00TRY\x00FINALLY\x00NONTERMINAL\x00wrong # args to finally clause: must be \"... finally script\"\x00wrong # args to on clause: must be \"... on code variableList script\"\x00ON\x00wrong # args to trap clause: must be \"... trap pattern variableList script\"\x00TRAP\x00bad prefix '%s': must be a list\x00EXNFORMAT\x00last non-finally clause must not have a body of \"-\"\x00BADFALLTHROUGH\x00-during\x00\n    (\"%s ... %s\" handler line %d)\x00\n    (\"%s ... finally\" body line %d)\x00test command\x00\n    (\"while\" body line %d)\x00ForeachInfo\x00NewForeachInfo\x00DictUpdateInfo\x000\x001\x00list must have an even number of elements\x00-errorcode {TCL ARGUMENT FORMAT}\x00bad stack depth computations: is %i, should be %i\x00TclCompileCatchCmd: bad jump distance %d\x00TclCompileDictCmd(update): bad jump distance %d\x00, \x00%%v%u\x00variables\x00data=[\x00], loop=%%v%u\x00,\x00\n\t\t it%%v%u\t[\x00]\x00jumpOffset=%+d, vars=\x00[\x00loop\x00assign\x00jumpOffset\x00TclCompileIfCmd: unexpected opcode \"%d\" updating ifFalse jump\x00object\x00::namespace inscope \x00::namespace\x00inscope\x00:\x002\x00end\x00-options\x00namespace\x00JumptableInfo\x00word\x003\x00TclCompileSubstCmd: bad start jump distance %d\x00unexpected token type in TclCompileSubstCmd: %d\x00TclCompileSubstCmd: bad break jump distance %d\x00TclCompileSubstCmd: bad continue jump distance %d\x00TclCompileSubstCmd: bad return jump distance %d\x00TclCompileSubstCmd: bad other jump distance %d\x00TclCompileSubstCmd: bad ok jump distance %d\x00TclCompileSubstCmd: bad end jump distance %d\x00unknown switch mode: %d\x00\n\t\t\x00\"%s\"->pc %d\x00mapping\x00-errorcode {TCL OPERATION THROW BADEXCEPTION}\x00-level 0 -code 0\x00-nocomplain\x00-1\x001.0\x00_@_\x00not enough memory to parse expression\x00NOMEM\x00invalid character \"%.*s\"\x00BADCHAR\x00incomplete operator \"%.*s\"\x00PARTOP\x00invalid bareword \"%.*s%s\"\x00should be \"$%.*s%s\" or \"{%.*s%s}\"\x00 or \"%.*s%s(...)\" or ...\x00BAREWORD\x00 (invalid binary number?)\x00BADNUMBER\x00 (invalid octal number?)\x00OCTAL\x00missing operator at %s\x00max # of tokens for a Tcl parse (%d) exceeded\x00invalid character \"$\"\x00missing close-bracket\x00empty subexpression at %s\x00EMPTY\x00unbalanced open paren\x00missing function argument at %s\x00empty expression\x00unbalanced close paren\x00missing operand at %s\x00missing operator \":\" at %s\x00unexpected operator \":\" without preceding \"?\"\x00SURPRISE\x00unexpected \",\" outside function argument list\x00\nin expression \"%s%.*s%.*s%s%s%.*s%s\"\x00;\n\x00\n    (parsing expression \"%.*s%s\")\x00PARSE\x00EXPR\x00done\x00push1\x00push4\x00invokeStk1\x00invokeStk4\x00loadScalar1\x00loadScalar4\x00loadScalarStk\x00loadArray1\x00loadArray4\x00storeScalar1\x00storeScalar4\x00storeScalarStk\x00storeArray1\x00storeArray4\x00incrScalar1\x00incrScalarStk\x00incrArray1\x00incrScalar1Imm\x00incrScalarStkImm\x00incrArray1Imm\x00jump1\x00jumpTrue1\x00jumpFalse1\x00callBuiltinFunc1\x00callFunc1\x00foreach_start4\x00foreach_step4\x00beginCatch4\x00appendScalar1\x00appendScalar4\x00appendArray1\x00appendArray4\x00lappendScalar1\x00lappendScalar4\x00lappendArray1\x00lappendArray4\x00returnImm\x00expandStart\x00expandStkTop\x00invokeExpanded\x00listRangeImm\x00startCommand\x00returnStk\x00dictFirst\x00dictNext\x00dictDone\x00dictUpdateStart\x00dictUpdateEnd\x00syntax\x00existScalar\x00returnCodeBranch\x00unsetScalar\x00strrangeImm\x00invokeReplace\x00expandDrop\x00foreach_start\x00foreach_step\x00foreach_end\x00lmap_collect\x00tclooNext\x00tclooNextClass\x00yieldToInvoke\x00strclass\x00bytecode\x00substcode\x00::tcl\x00::tcl::\x00TclCompileScript() called on uninitialized CompileEnv\x00too many nested compilations (infinite loop?)\x00Unexpected token type in TclCompileTokens: %d; %.*s\x00TclInitByteCodeObj() called on uninitialized CompileEnv\x00EnterCmdStartData: bad command index %d\x00EnterCmdStartData: cmd map not sorted by code offset\x00EnterCmdExtentData: bad command index %d\x00EnterCmdExtentData: missing start data for command %d\x00trying to add 'break' fixup to full exception range\x00trying to add 'continue' fixup to full exception range\x00trying to finalize a loop exception range\x00TclFixupForwardJump: bad ExceptionRange type %d\x00unexpected opcode\x00GetCmdLocEncodingSize: bad code offset\x00GetCmdLocEncodingSize: bad code length\x00GetCmdLocEncodingSize: bad source length\x00EncodeCmdLocMap: bad code offset\x00EncodeCmdLocMap: bad code length\x00EncodeCmdLocMap: bad source length\x00%s.\n%s: %s\x00Tcl_RegisterConfig\x00Unable to create namespace for package configuration.\x00::pkgconfig\x00%s: %s\x00Unable to create query command for package configuration\x00get\x00subcommand ?arg?\x00subcommand\x00package not known\x00FATAL\x00PKGCFG_BASE\x00key\x00key not known\x00CONFIG\x00insufficient memory to create list\x00QueryConfigObjCmd: Unknown subcommand to 'pkgconfig'. This can't happen\x00tclPackageAboutDict\x00Deleting\x00syntax error\x00Error: discarding\x00Error: popping\x00memory exhausted\x00Cleanup: discarding lookahead\x00Cleanup: popping\x00january\x00february\x00march\x00april\x00may\x00june\x00july\x00august\x00september\x00sept\x00october\x00november\x00december\x00sunday\x00monday\x00tuesday\x00tues\x00wednesday\x00wednes\x00thursday\x00thur\x00thurs\x00friday\x00saturday\x00fortnight\x00week\x00day\x00hour\x00minute\x00min\x00second\x00sec\x00tomorrow\x00yesterday\x00today\x00now\x00this\x00next\x00ago\x00epoch\x00stardate\x00gmt\x00ut\x00utc\x00uct\x00wet\x00bst\x00wat\x00at\x00nft\x00nst\x00ndt\x00ast\x00adt\x00est\x00edt\x00cst\x00cdt\x00mst\x00mdt\x00pst\x00pdt\x00yst\x00ydt\x00hst\x00hdt\x00ahst\x00nt\x00idlw\x00cet\x00cest\x00met\x00mewt\x00mest\x00swt\x00sst\x00fwt\x00fst\x00eet\x00bt\x00it\x00zp4\x00zp5\x00ist\x00zp6\x00wast\x00wadt\x00jt\x00cct\x00jst\x00jdt\x00kst\x00kdt\x00cast\x00cadt\x00east\x00eadt\x00gst\x00nzt\x00nzst\x00nzdt\x00idle\x00dst\x00a\x00b\x00c\x00d\x00e\x00f\x00g\x00h\x00i\x00k\x00l\x00m\x00n\x00o\x00p\x00q\x00r\x00s\x00t\x00u\x00v\x00w\x00x\x00y\x00z\x00 (characters \x00am\x00a.m.\x00pm\x00p.m.\x00stringToParse baseYear baseMonth baseDay\x00DATE\x00Unknown status returned from date parser. Please report this error as a bug in Tcl.\x00BUG\x00more than one date in string\x00MULTIPLE\x00more than one time of day in string\x00more than one time zone in string\x00more than one weekday in string\x00more than one ordinal month in string\x00dict\x00create\x00filter\x00keys\x00merge\x00remove\x00values\x00with\x00missing value to go with key\x00DICTIONARY\x00key \"%s\" not known in dictionary\x00DICT\x00Tcl_DictObjPut\x00Tcl_DictObjRemove\x00concurrent dictionary modification and search\x00Tcl_DictObjPutKeyList\x00%s called with empty key list\x00Tcl_DictObjRemoveKeyList\x00?key value ...?\x00dictionary ?key ...?\x00dictionary ?key value ...?\x00dictionary ?pattern?\x00dictionary\x00dictionary key ?key ...?\x00dictVarName key ?increment?\x00\n    (reading increment)\x00dictVarName key ?value ...?\x00{keyVarName valueVarName} dictionary script\x00must have exactly two variable names\x00SYNTAX\x00\n    (\"dict for\" body line %d)\x00\n    (\"dict map\" body line %d)\x00dictVarName key ?key ...? value\x00dictVarName key ?key ...?\x00dictionary filterType ?arg ...?\x00filterType\x00dictionary script {keyVarName valueVarName} filterScript\x00\n    (\"dict filter\" filter script key variable)\x00\n    (\"dict filter\" filter script value variable)\x00\n    (\"dict filter\" script line %d)\x00dictVarName key varName ?key varName ...? script\x00\n    (body of \"dict update\")\x00dictVarName ?key ...? script\x00\n    (body of \"dict with\")\x00instname\x00ByteCode 0x%s, refCt %u, epoch %u, interp 0x%s (epoch %u)\n\x00  Source \x00\n  File \"%s\" Line %d\x00\n  Cmds %d, src %d, inst %d, litObjs %u, aux %d, stkDepth %u, code/src %.2f\n\x00  Proc 0x%s, refCt %d, args %d, compiled locals %d\n\x00, scalar\x00, array\x00, link\x00, arg\x00, temp\x00, resolved\x00      slot %d%s%s%s%s%s%s\x00, \"%s\"\n\x00  Exception ranges %d, depth %d:\n\x00      %d: level %d, %s, pc %d-%d, \x00continue %d, break %d\n\x00catch %d\n\x00DisassembleByteCodeObj: bad ExceptionRange type %d\x00    \x00  Commands %d:\x00     \x00\n   \x00%s%4d: pc %d-%d, src %d-%d\x00  Command %d: \x00(%u) %s \x00%+d \x00%u \x00, %u cmds start here\x00pc %u\x00next cmd at pc %u\x00%d \x00end \x00end-%d \x00FormatInstruction: bad local var index %u (%u locals)\x00temp var %u\x00var \x00%%v%u \x00%s \x00\t# \x00\t# %s\x00\t\t[\x00]\n\x00InnerContext: bad tos -- appending null object\x00InnerContext: bad tos -- appending freed object %p\x00inst_%d\x00\"\"\x00\"\x00\\\"\x00\\f\x00\\n\x00\\r\x00\\t\x00\\v\x00\\U%08x\x00\\u%04x\x00%c\x00scalar\x00array\x00arg\x00temp\x00resolved\x00pc %d\x00@%d\x00%%%d\x00.%d\x00.end\x00.end-%d\x00?%d\x00=%s\x00opcode %d with more than zero 'no' operands\x00type %s level %d from %d to %d break %d continue %d\x00type %s level %d from %d to %d catch %d\x00codefrom\x00codeto\x00scriptfrom\x00scriptto\x00literals\x00exception\x00instructions\x00auxiliary\x00stackdepth\x00exceptdepth\x00initiallinenumber\x00sourcefile\x00constructor\x00destructor\x00lambda\x00method\x00objmethod\x00type ...\x00lambdaTerm\x00procName\x00PROC\x00className\x00\"%s\" is not a class\x00CLASS\x00\"%s\" has no defined constructor\x00DISASSEMBLE\x00CONSRUCTOR\x00body not available for this kind of constructor\x00METHODTYPE\x00body of constructor\x00\"%s\" has no defined destructor\x00DESRUCTOR\x00body not available for this kind of destructor\x00body of destructor\x00className methodName\x00objectName methodName\x00unknown method \"%s\"\x00METHOD\x00body not available for this kind of method\x00body of method\x00may not disassemble prebuilt bytecode\x00BYTECODE\x00*.enc\x00identity\x00utf-8\x00unicode\x00iso8859-1\x00FreeEncoding: refcount problem !!!\x00.enc\x00unknown encoding \"%s\"\x00invalid encoding file \"%s\"\x00init\x00final\x00EscapeToUtfProc: invalid sub table\x00configure\x00-map\x00-parameters\x00-prefixes\x00-subcommands\x00-unknown\x00-namespace\x00ensembleCommand\x00tried to manipulate ensemble of deleted namespace\x00ENSEMBLE\x00DEAD\x00subcommand ?arg ...?\x00?option value ...?\x00ensemble subcommand implementations must be non-empty lists\x00EMPTY_TARGET\x00cmdname\x00cmdname ?-option value ...? ?arg ...?\x00option -namespace is read-only\x00READ_ONLY\x00unexpected ensemble command\x00command is not an ensemble\x00NOT_ENSEMBLE\x00ensemble target is not a fully-qualified command\x00UNQUALIFIED_TARGET\x00\"%s\" is not an ensemble command\x00tcl:\x00invalid ensemble name '%s'\x00unable to find or create %s namespace!\x00ensemble activated for deleted namespace\x00full name %s not found in supposedly synchronized hash\x00unknown subcommand \"%s\": namespace %s does not export any commands\x00 or ambiguous\x00unknown%s subcommand \"%s\": must be \x00or %s\x00SpellFix: programming error\x00unknown subcommand handler deleted its ensemble\x00UNKNOWN_DELETED\x00\n    while parsing result of ensemble unknown subcommand handler\x00unknown subcommand handler returned bad code: \x00\n    result of ensemble unknown subcommand handler: \x00UNKNOWN_RESULT\x00\n    (ensemble unknown subcommand handler)\x00env\x00W\x00I\x00N\x00D\x00I\x00R\x00\x00\x00PATH\x00COMSPEC\x00HOME\x00no such variable\x00tclBgError\x00error in background error handler:\n\x00msg options\x00-level\x00missing return option \"-level\"\x00-code\x00missing return option \"-code\"\x00bgerror\x00errorInfo\x00bgerror failed to handle background error.\n\x00    Original error: \x00    Error in bgerror: \x00TclSetBgErrorHandler: NULL cmdPrefix argument\x00OS exit failed!\x00TclInitSubsystems called while exiting\x00exit handlers were created during Tcl_Finalize\x00limit exceeded\x00can't wait for variable \"%s\": would wait forever\x00EVENT\x00NO_SOURCES\x00idletasks\x00Tcl_UpdateObjCmd: bad option index to UpdateOptions\x00?idletasks?\x00||\x00&&\x00exprcode\x00dictIterator\x00freeing an execStack which is still in use\x00Deleting execEnv with pending TEOV callbacks!\x00Deleting execEnv with existing coroutine\x00STACK: Reallocating with no previous alloc\x00STACK: Stack after current is in use\x00STACK: Stack after current is not last\x00TclStackFree: incorrect freePtr (%p != %p). Call out of sequence?\x00TclStackRealloc: incorrect ptr. Call out of sequence?\x00Tcl_EvalObj: compiled script jumped interps\x00TclIncrObj\x00tailcall can only be called from a proc or lambda\x00TclNRExecuteByteCode: unrecognized builtin function code %d\x00\n    (reading value of variable to increment)\x00access\x00array set\x00variable isn't array\x00WRITE\x00ARRAY\x00STACK_LEVEL\x00self may only be called from inside a method\x00OO\x00CONTEXT_REQUIRED\x00nextto may only be called from inside a method\x00CLASS_REQUIRED\x00%s implementation by \"%s\" not reachable from here\x00CLASS_NOT_REACHABLE\x00%s has no non-filter implementation by \"%s\"\x00CLASS_NOT_THERE\x00next may only be called from inside a method\x00no next %s implementation\x00NOTHING_NEXT\x00negative shift argument\x00INST_RETURN_CODE_BRANCH: TOS not a return code!\x00INST_RETURN_CODE_BRANCH: TOS is TCL_OK!\x00Should not happen!\x00mis-issued dictFirst!\x00mis-issued dictNext!\x00dictUpdateStart argument length mismatch\x00clockRead instruction with unknown clock#\x00TclNRExecuteByteCode: unrecognized opCode %u\x00divide by zero\x00DIVZERO\x00exponentiation of zero by negative power\x00\nTclNRExecuteByteCode: abnormal return at pc %u: stack top %d < entry stack top %d\n\x00TclNRExecuteByteCode execution failure: end stack top < start stack top\x00exponent too large\x00unexpected number type\x00empty string\x00invalid octal number\x00non-numeric string\x00non-numeric floating-point value\x00floating-point value\x00(big) integer\x00can't use %s as operand of \"%s\"\x00LocSearch failure\x00floating-point value too small to represent\x00UNDERFLOW\x00floating-point value too large to represent\x00OVERFLOW\x00unknown floating-point error, errno = %d\x00?-option value ...? source ?source ...? target\x00copying\x00renaming\x00error %s: target \"%s\" is not a directory\x00can't create directory \"%s\": %s\x00error deleting \"%s\": directory not empty\x00error deleting unknown file: %s\x00error deleting \"%s\": %s\x00can't overwrite file \"%s\" with directory \"%s\"\x00can't overwrite directory \"%s\" with file \"%s\"\x00u+w\x00-permissions\x00error renaming \"%s\" to \"%s\": trying to rename a volume or move a directory into itself\x00::tcl::CopyDirectory\x00can't unlink \"%s\": %s\x00error %s \"%s\"\x00 to \"%s\"\x00: \"%s\"\x00: %s\x00-force\x00name ?-option value ...?\x00must not update objPtrRef's variable and return non-NULL\x00bad option \"%s\", there are no file attributes in this filesystem\x00FATTR\x00value for \"%s\" missing\x00NOVALUE\x00?-linktype? linkname ?target?\x00-symbolic\x00-hard\x00could not create new link \"%s\": that path already exists\x00could not create new link \"%s\": no such file or directory\x00could not create new link \"%s\": target \"%s\" doesn't exist\x00could not create new link \"%s\" pointing to \"%s\": %s\x00could not read link \"%s\": %s\x00?nameVar? ?template?\x00can't create temporary file: %s\x00//?/UNC/\x00//?/\x00//\x00./\x00/\\:\x00couldn't find HOME environment variable to expand path\x00FILENAME\x00NO_HOME\x00user \"%s\" doesn't exist\x00USER\x00-directory\x00-join\x00-path\x00-tails\x00-types\x00missing argument to \"-directory\"\x00\"-directory\" may only be used once\x00\"-directory\" cannot be used with \"-path\"\x00GLOB\x00BADOPTIONCOMBINATION\x00missing argument to \"-path\"\x00\"-path\" may only be used once\x00\"-path\" cannot be used with \"-dictionary\"\x00missing argument to \"-types\"\x00\"-tails\" must be used with either \"-directory\" or \"-path\"\x00\\/\x00\\[]*?{}\x00readonly\x00hidden\x00macintosh\x00creator\x00bad argument to \"-types\": %s\x00BAD\x00only one MacOS type or creator argument to \"-types\" allowed\x00no files matched glob pattern%s \"\x00%s%s\x00NOMATCH\x00/\\\x00Called TclGlob with TCL_GLOBMODE_TAILS and pathPrefix==NULL\x00.\x00unmatched open-brace in file name\x00BALANCE\x00unmatched close-brace in file name\x00*[]?\\\x00invalid sharing of Tcl_Obj on C stack\x00malformed bucket chain in Tcl_DeleteHashEntry\x00%d entries in table, %d buckets\n\x00number of buckets with %d entries: %d\n\x00number of buckets with %d or more entries: %d\n\x00average search distance for entry: %.1f\x00called %s on deleted table\x00Tcl_FindHashEntry\x00Tcl_CreateHashEntry\x00::tcl::HistoryObjs\x00::history\x00ambiguous \x00bad \x00 \"\x00\": no valid options\x00\": must be \x00 or \x00all\x00longest\x00::tcl::prefix\x00prefix\x00-error\x00-message\x00?options? table string\x00missing value for -message\x00NOARG\x00missing value for -error\x00error options must have an even number of elements\x00table string\x00 or \"\x00wrong # args: should be \"\x00ambiguous option \"%s\"\x00unrecognized argument \"%s\"\x00expected integer argument for \"%s\" but got \"%s\"\x00expected floating-point argument for \"%s\" but got \"%s\"\x00bad argument type %d in Tcl_ArgvInfo\x00\"%s\" option requires an additional argument\x00Command-specific options:\x00\n%s\x00\n %s:\x00\n\t\tDefault value: %d\x00\n\t\tDefault value: %g\x00\n\t\tDefault value: \"%s\"\x00ok\x00bad completion code \"%s\": must be ok, error, return, break, continue, or an integer\x00RESULT\x00ILLEGAL_CODE\x00if {[namespace which -command tclInit] eq \"\"} {\n  proc tclInit {} {\n    global tcl_libPath tcl_library env tclDefaultLibrary\n    rename tclInit {}\n    if {[info exists tcl_library]} {\n\tset scripts {{set tcl_library}}\n    } else {\n\tset scripts {}\n\tif {[info exists env(TCL_LIBRARY)] && ($env(TCL_LIBRARY) ne {})} {\n\t    lappend scripts {set env(TCL_LIBRARY)}\n\t    lappend scripts {\nif {[regexp ^tcl(.*)$ [file tail $env(TCL_LIBRARY)] -> tail] == 0} continue\nif {$tail eq [info tclversion]} continue\nfile join [file dirname $env(TCL_LIBRARY)] tcl[info tclversion]}\n\t}\n\tif {[info exists tclDefaultLibrary]} {\n\t    lappend scripts {set tclDefaultLibrary}\n\t} else {\n\t    lappend scripts {::tcl::pkgconfig get scriptdir,runtime}\n\t}\n\tlappend scripts {\nset parentDir [file dirname [file dirname [info nameofexecutable]]]\nset grandParentDir [file dirname $parentDir]\nfile join $parentDir lib tcl[info tclversion]} \\\n\t{file join $grandParentDir lib tcl[info tclversion]} \\\n\t{file join $parentDir library} \\\n\t{file join $grandParentDir library} \\\n\t{file join $grandParentDir tcl[info patchlevel] library} \\\n\t{\nfile join [file dirname $grandParentDir] tcl[info patchlevel] library}\n\tif {[info exists tcl_libPath]\n\t\t&& [catch {llength $tcl_libPath} len] == 0} {\n\t    for {set i 0} {$i < $len} {incr i} {\n\t\tlappend scripts [list lindex \\$tcl_libPath $i]\n\t    }\n\t}\n    }\n    set dirs {}\n    set errors {}\n    foreach script $scripts {\n\tlappend dirs [eval $script]\n\tset tcl_library [lindex $dirs end]\n\tset tclfile [file join $tcl_library init.tcl]\n\tif {[file exists $tclfile]} {\n\t    if {[catch {uplevel #0 [list source $tclfile]} msg opts]} {\n\t\tappend errors \"$tclfile: $msg\n\"\n\t\tappend errors \"[dict get $opts -errorinfo]\n\"\n\t\tcontinue\n\t    }\n\t    unset -nocomplain tclDefaultLibrary\n\t    return\n\t}\n    }\n    unset -nocomplain tclDefaultLibrary\n    set msg \"Can't find a usable init.tcl in the following directories: \n\"\n    append msg \"    $dirs\n\n\"\n    append msg \"$errors\n\n\"\n    append msg \"This probably means that Tcl wasn't installed properly.\n\"\n    error $msg\n  }\n}\ntclInit\x00interp\x00InterpInfoDeleteProc: still exist commands\x00InterpInfoDeleteProc: still exist aliases\x00alias\x00aliases\x00cancel\x00children\x00debug\x00expose\x00hide\x00issafe\x00invokehidden\x00limit\x00marktrusted\x00recursionlimit\x00slaves\x00share\x00target\x00transfer\x00cmd ?arg ...?\x00slavePath slaveCmd ?masterPath masterCmd? ?arg ...?\x00path ?cmdPrefix?\x00-unwind\x00?-unwind? ?--? ?path? ?result?\x00-safe\x00?-safe? ?--? ?path?\x00interp%d\x00path ?-frame ?bool??\x00cannot delete the current interpreter\x00INTERP\x00DELETESELF\x00path arg ?arg ...?\x00path hiddenCmdName ?cmdName?\x00path cmdName ?hiddenCmdName?\x00-global\x00path ?-namespace ns? ?-global? ?--? cmd ?arg ..?\x00path limitType ?-option value ...?\x00limit type\x00path\x00path ?newlimit?\x00srcPath channelId destPath\x00path alias\x00alias \"%s\" in path \"%s\" not found\x00ALIAS\x00target interpreter for alias \"%s\" in path \"%s\" is not my descendant\x00TARGETSHROUDED\x00?path?\x00alias \"%s\" not found\x00cannot define or rename alias \"%s\": interpreter deleted\x00cannot define or rename alias \"%s\": would create a loop\x00ALIASLOOP\x00could not find interpreter \"%s\"\x00cmdPrefix must be list of length >= 1\x00BGERRORFORMAT\x00interpreter named \"%s\" already exists, cannot create\x00tcl_interactive\x00ChildObjCmd: interpreter has been deleted\x00aliasName ?targetName? ?arg ...?\x00?cmdPrefix?\x00?-frame ?bool??\x00hiddenCmdName ?cmdName?\x00cmdName ?hiddenCmdName?\x00?-namespace ns? ?-global? ?--? cmd ?arg ..?\x00limitType ?-option value ...?\x00?newlimit?\x00-frame\x00debug option\x00permission denied: safe interpreter cannot expose commands\x00UNSAFE\x00permission denied: safe interpreters cannot change recursion limit\x00recursion limit must be > 0\x00BADLIMIT\x00falling back due to new recursion limit\x00RECURSION\x00permission denied: safe interpreter cannot hide commands\x00not allowed to invoke hidden commands from safe interpreter\x00permission denied: safe interpreter cannot mark trusted\x00namespace eval ::tcl {namespace eval mathfunc {}}\x00::tcl::mathfunc::min\x00::tcl::mathfunc::max\x00os\x00osVersion\x00machine\x00user\x00tclDefaultLibrary\x00tcl_pkgPath\x00command count limit exceeded\x00COMMANDS\x00time limit exceeded\x00TIME\x00unknown type of resource limit\x00\n    (while waiting for event)\x00limit granularity must be positive\x00installing limit callback to the limited interpreter\x00-granularity\x00-value\x00limits on current interpreter inaccessible\x00SELF\x00?-option value ...?\x00granularity must be at least 1\x00BADVALUE\x00command limit value must be at least 0\x00-seconds\x00milliseconds must be at least 0\x00seconds must be at least 0\x00may only set -milliseconds if -seconds is not also being reset\x00BADUSAGE\x00may only reset -milliseconds if -seconds is also being reset\x00channel\x00TCL_FLUSH_NONBLOCKING_ON_EXIT\x00-blocking\x00tclIO\x00Tcl_RegisterChannel: channel without name\x00Tcl_RegisterChannel: duplicate channel names\x00illegal recursive call to close through close-handler of channel\x00stdin\x00stdout\x00stderr\x00can not find channel named \"%s\"\x00CHANNEL\x00channel type %s must define closeProc\x00channel type %s must define inputProc when used for reader channel\x00channel type %s must define outputProc when used for writer channel\x00channel type %s must define watchProc\x00channel type %s must define seekProc if defining wideSeekProc\x00couldn't find state for channel \"%s\"\x00reading and writing both disallowed for channel \"%s\"\x00could not flush channel \"%s\"\x00Channel released more than preserved\x00channel \"%s\" does not support OS handles\x00Reuse of ChannelBuffer! %p\x00unable to access channel: invalid channel\x00TclFlush, closed channel: queued output left\x00FlushChannel: damaged channel list\x00SpliceChannel: trying to add channel used in different list\x00called Tcl_Close on channel with refCount > 0\x00double-close of channels not supported by %ss\x00half-close of channels not supported by %ss\x00half-close not applicable to stack of transformations\x00write\x00Half-close of %s-side not possible, side not opened or already closed\x00ClosechanHalf, closed write-side of channel: queued output left\x00unknown output translation requested\x00Tcl_GetsObj: gotEOL reached with bufPtr==NULL\x00TclGetsObjBinary: gotEOL reached with bufPtr==NULL\x00binary encoding is not available\x00Buffer Underflow, BUFFER_PADDING not enough\x00unknown input translation %d\x00blocking buffering buffersize encoding eofchar translation\x00malformed option list in channel driver\x00bad option \"%s\": should be one of \x00-%s, \x00or -%s\x00-buffering\x00none\x00full\x00-buffersize\x00-eofchar\x00-translation\x00auto\x00cr\x00crlf\x00lf\x00unable to set channel options: background copy in progress\x00bad value for -buffering: must be one of full, line, or none\x00bad value for -eofchar: must be non-NUL ASCII character\x00bad value for -eofchar: should be a list of zero, one, or two elements\x00bad value for -translation: must be a one or two element list\x00platform\x00bad value for -translation: must be one of auto, binary, cr, lf, crlf, or platform\x00tcp\x00channelId event ?script?\x00event name\x00channel is not %s\x00channel \"%s\" is busy\x00writ\x00error %sing \"%s\": %s\x00error reading \"\x00\": \x00error writing \"\x00error setting blocking mode: %s\x00Tcl_SetChannelError: bad syntax of message\x00Defined newlevel not used in rewrite\x00Defined newcode not used in rewrite\x00-nonewline\x00nonewline\x00?-nonewline? ?channelId? string\x00channel \"%s\" wasn't opened for writing\x00error writing \"%s\": %s\x00channelId\x00error flushing \"%s\": %s\x00channelId ?varName?\x00channel \"%s\" wasn't opened for reading\x00error reading \"%s\": %s\x00channelId ?numChars?\x00?-nonewline? channelId\x00expected non-negative integer but got \"%s\"\x00NUMBER\x00start\x00current\x00channelId offset ?origin?\x00origin\x00error during seek on \"%s\": %s\x00channelId ?direction?\x00direction\x00channelId ?-option value ...?\x00-ignorestderr\x00-keepnewline\x00?-option ...? arg ?arg ...?\x00error reading output from command: %s\x00fileName ?access? ?permissions?\x000o\x00Tcl_OpenCmd: invalid mode value\x00tclTCPAcceptCallbacks\x00RegisterTcpServerCleanup: damaged accept record table\x00-async\x00-myaddr\x00-myport\x00-server\x00cannot set -async option for server sockets\x00no argument given for -myaddr option\x00no argument given for -myport option\x00no argument given for -server option\x00Tcl_SocketObjCmd: bad option index to SocketOptions\x00option -myport is not valid for servers\x00?-myaddr addr? ?-myport myport? ?-async? host port\x00-server command ?-myaddr addr? port\x00-size\x00input output ?-size size? ?-command callback?\x00input\x00output\x00mode channelId\x00channelId ?length?\x00cannot truncate to negative length of file\x00could not determine current location in \"%s\": %s\x00error during truncate on \"%s\": %s\x00blocked\x00event\x00pending\x00pipe\x00postevent\x00truncate\x00::fconfigure\x00chan\x00transform\x00-command value is not a list\x00\nfailed to stack channel \"%s\"\x00create/write\x00create/read\x00delete/write\x00flush/write\x00flush/read\x00delete/read\x00query/maxRead\x00clear/read\x00tclrchannel\x00blocking\x00cget\x00cgetall\x00finalize\x00initialize\x00watch\x00{read delivered more than requested}\x00{write wrote more than requested}\x00{write wrote nothing}\x00{Tried to seek before origin}\x00{Owner lost}\x00-code 1 -level 0 -errorcode NONE -errorinfo {} -errorline 1 {Owner lost}\x00mode cmdprefix\x00chan handler \"%s initialize\" returned non-list: %s\x00chan handler \"\x00 initialize\" returned \x00chan handler \"%s\" does not support all required methods\x00chan handler \"%s\" lacks a \"read\" method\x00chan handler \"%s\" lacks a \"write\" method\x00chan handler \"%s\" supports \"cget\" but not \"cgetall\"\x00chan handler \"%s\" supports \"cgetall\" but not \"cget\"\x00TclChanCreateObjCmd: duplicate channel names\x00channel eventspec\x00can not find reflected channel named \"%s\"\x00TclChanPostEventObjCmd: channel is not a reflected channel\x00TclChanPostEventObjCmd: postevent accepted for call from outside interpreter\x00tried to post events channel \"%s\" is not interested in\x00TclChanCaughtErrorBypass: Bad syntax of caught result\x00Expected list with even number of elements, got %d element%s instead\x00bad %s list: is empty\x00read write\x00rc%lu\x00chan handler returned bad code: %d\x00\n    (chan handler subcommand \"%s\")\x00EAGAIN\x00ReflectedChannelMap\x00tclrtransform\x00clear\x00drain\x00limit?\x00{read not supported by Tcl driver}\x00{write not supported by Tcl driver}\x00channel cmdprefix\x00chan handler \"%s initialize\" returned %s\x00chan handler \"%s\" makes the channel inaccessible\x00chan handler \"%s\" supports \"drain\" but not \"read\"\x00chan handler \"%s\" supports \"flush\" but not \"write\"\x00TclChanPushObjCmd: duplicate transformation handle\x00rt%lu\x00ReflectedTransformMap\x00couldn't open socket: port number too high\x00::tcl::unsupported::socketAF\x00inet\x00inet6\x00native\x00glob couldn't determine the current working directory\x00illegal access mode \"%s\"\x00\n    while processing open access modes \"\x00RDONLY\x00WRONLY\x00RDWR\x00APPEND\x00CREAT\x00EXCL\x00NOCTTY\x00access mode \"%s\" not supported by this system\x00NONBLOCK\x00TRUNC\x00invalid access mode \"%s\": must be RDONLY, WRONLY, RDWR, APPEND, BINARY, CREAT, EXCL, NOCTTY, NONBLOCK, or TRUNC\x00access mode must include either RDONLY, WRONLY, or RDWR\x00couldn't read file \"%s\": %s\x00\x1a {}\x00\ufeff\x00\n    (file \"%.*s%s\" line %d)\x00POSIX\x00could not seek to end of file while opening \"%s\": %s\x00couldn't open \"%s\": %s\x00error getting working directory name: %s\x00T\x00C\x00L\x00_\x00T\x00E\x00M\x00P\x00L\x00O\x00A\x00D\x00_\x00N\x00O\x00_\x00U\x00N\x00L\x00I\x00N\x00K\x00\x00\x00couldn't load library \"%s\": %s\x00couldn't load from current filesystem\x00cannot unload: filesystem does not support unloading\x00wb\x00rb\x00Tcl_FSGetFileSystemForPath called with NULL object\x00Tcl_FSGetFileSystemForPath called with object with refCount == 0\x00variable '%s' is already linked\x00internal error: bad linked variable type\x00linked variable is read-only\x00internal error: linked variable couldn't be read\x00variable must have integer value\x00variable must have real value\x00variable must have boolean value\x00variable must have char value\x00variable must have unsigned char value\x00variable must have short value\x00variable must have unsigned short value\x00variable must have unsigned int value\x00variable must have long value\x00variable must have unsigned long value\x00variable must have unsigned wide int value\x00variable must have float value\x00NULL\x00??\x00invalidReal\x00xXbBoO\x00+-\x00max size of Tcl literal array (%d literals) exceeded\x00NewListInternalRep: expects postive element count\x00list creation failed: unable to alloc %u bytes\x00Tcl_SetListObj\x00Tcl_ListObjAppendList\x00Tcl_ListObjAppendElement\x00Tcl_ListObjReplace\x00list index out of range\x00LSET\x00TclListObjSetElement\x00-lazy\x00?-global? ?-lazy? ?--? fileName ?packageName? ?interp?\x00must specify either file name or package name\x00LOAD\x00NOLIBRARY\x00file \"%s\" is already loaded for package \"%s\"\x00SPLITPERSONALITY\x00tclLoad\x00package \"%s\" isn't loaded statically\x00NOTSTATIC\x00couldn't figure out package name for %s\x00WHATPACKAGE\x00_Init\x00_SafeInit\x00_Unload\x00_SafeUnload\x00can't use package in a safe interpreter: no %s_SafeInit procedure\x00can't attach package to interpreter: no %s_Init procedure\x00ENTRYPOINT\x00-keeplibrary\x00?-switch ...? fileName ?packageName? ?interp?\x00UNLOAD\x00package \"%s\" is loaded statically and cannot be unloaded\x00STATIC\x00file \"%s\" has never been loaded\x00NEVERLOADED\x00file \"%s\" has never been loaded in this interpreter\x00file \"%s\" cannot be unloaded under a safe interpreter\x00CANNOT\x00file \"%s\" cannot be unloaded under a trusted interpreter\x00tcl_rcFileName\x00-\x00e\x00n\x00c\x00o\x00d\x00i\x00n\x00g\x00\x00\x00argv0\x00argc\x00argv\x00application-specific initialization failed: \x00exit %d\x00TCL_FINALIZE_ON_EXIT\x00tcl_prompt2\x00tcl_prompt1\x00\n    (script that generates prompt)\x00nsName\x00code\x00ensemble\x00export\x00forget\x00import\x00parent\x00qualifiers\x00which\x00Trying to push call frame for dead namespace\x00errorCode\x00can't create namespace \"\": only global namespace can have empty name\x00CREATEGLOBAL\x00can't create namespace \"%s\": already exists\x00CREATEEXISTING\x00invalid export pattern \"%s\": pattern can't specify a namespace\x00EXPORT\x00auto_import\x00empty import pattern\x00IMPORT\x00unknown namespace in import pattern \"%s\"\x00no namespace specified in import pattern \"%s\"\x00ORIGIN\x00import pattern \"%s\" tries to import from namespace \"%s\" into itself\x00import pattern \"%s\" would create a loop containing command \"%s\"\x00LOOP\x00can't import command \"%s\": already exists\x00OVERWRITE\x00unknown namespace in namespace forget pattern \"%s\"\x00DeleteImportedCmd: did not find cmd in real cmd's list of import references\x00Could not create namespace '%s'\x00unknown namespace \"%s\"\x00unknown command \"%s\"\x00namespace \"%s\" not found\x00namespace \"%s\" not found in \"%s\"\x00?name? ?pattern?\x00?name name...?\x00unknown namespace \"%s\" in namespace delete command\x00name arg ?arg...?\x00\n    (in namespace %s \"%.*s%s\" script line %d)\x00?-clear? ?pattern pattern...?\x00-clear\x00?pattern pattern...?\x00?-force? ?pattern pattern...?\x00?pathList?\x00?script?\x00ns ?otherVar myVar ...?\x00-variable\x00?-command? ?-variable? name\x00while executing\x00invoked from within\x00\n    %s\n\"%.*s%s\"\x00deletemethod\x00forward\x00renamemethod\x00self\x00unexport\x00destroy\x00core method: \"destroy\"\x00core method: \"eval\"\x00core method: \"unknown\"\x00core method: \"variable\"\x00core method: \"varname\"\x00core method: \"create\"\x00new\x00core method: \"new\"\x00createWithNamespace\x00core method: \"createWithNamespace\"\x00oo::class constructor\x00::oo::define ::oo::Slot {\n    method Get {} {error unimplemented}\n    method Set list {error unimplemented}\n    method -set args {\n        uplevel 1 [list [namespace which my] Set $args]\n    }\n    method -append args {\n        uplevel 1 [list [namespace which my] Set [list                {*}[uplevel 1 [list [namespace which my] Get]] {*}$args]]\n    }\n    method -clear {} {uplevel 1 [list [namespace which my] Set {}]}\n    forward --default-operation my -append\n    method unknown {args} {\n        set def --default-operation\n        if {[llength $args] == 0} {\n            return [uplevel 1 [list [namespace which my] $def]]\n        } elseif {![string match -* [lindex $args 0]]} {\n            return [uplevel 1 [list [namespace which my] $def {*}$args]]\n        }\n        next {*}$args\n    }\n    export -set -append -clear\n    unexport unknown destroy\n}\n::oo::objdefine ::oo::define::superclass forward --default-operation my -set\n::oo::objdefine ::oo::define::mixin forward --default-operation my -set\n::oo::objdefine ::oo::objdefine::mixin forward --default-operation my -set\n\x00foreach p [info procs [info object namespace $originObject]::*] {    set args [info args $p];    set idx -1;    foreach a $args {        lset args [incr idx]             [if {[info default $p $a d]} {list $a $d} {list $a}]    };    set b [info body $p];    set p [namespace tail $p];    proc $p $args $b;};foreach v [info vars [info object namespace $originObject]::*] {    upvar 0 $v vOrigin;    namespace upvar [namespace current] [namespace tail $v] vNew;    if {[info exists vOrigin]} {        if {[array exists vOrigin]} {            array set vNew [array get vOrigin];        } else {            set vNew $vOrigin;        }    }}\x00TclOO\x001.1.0\x00::oo\x00[a-z]*\x00::oo::define\x00::oo::objdefine\x00::oo::Helpers\x00<constructor>\x00<destructor>\x00<cloned>\x00::oo::UnknownDefinition\x00::oo::define::\x00::oo::objdefine::\x00originObject\x00::oo::Helpers::next\x00::oo::Helpers::nextto\x00::oo::Helpers::self\x00::oo::copy\x00::oo::Obj%d\x00my\x00deleting class structure for non-deleted %s\x00::oo::class\x00::oo::object\x00can't create object \"%s\": command already exists with that name\x00OVERWRITE_OBJECT\x00object deleted in constructor\x00STILLBORN\x00may not clone the class of classes\x00CLONING_CLASS\x00\n    (while performing post-copy callback)\x00\n    (while mapping method name)\x00impossible to invoke method \"%s\": no defined method or unknown method\x00METHOD_MAPPED\x00no valid method implementation\x00%s does not refer to an object\x00OBJECT\x00?definitionScript?\x00object \"%s\" is not a class\x00INSTANTIATE_NONCLASS\x00objectName ?arg ...?\x00object name must not be empty\x00EMPTY_NAME\x00objectName namespaceName ?arg ...?\x00namespace name must not be empty\x00\n    (in \"%s eval\" script line %d)\x00method ?arg ...?\x00visible methods\x00methods\x00object \"%s\" has no %s\x00unknown method \"%s\": must be \x00?varName ...?\x00variable name \"%s\" illegal: must not contain namespace separator\x00UPVAR\x00INVERTED\x00define\x00name refers to an element in an array\x00LOCAL_ELEMENT\x00refer to\x00(\x00%s may only be called from inside a method\x00class ?arg...?\x00call\x00caller\x00method not defined by a class\x00UNMATCHED_CONTEXT\x00not inside a filtering context\x00caller is not an object\x00method without declarer!\x00filtering call chain without terminal non-filter\x00sourceName ?targetName? ?targetNamespace?\x00%s refers to an existing namespace\x00TclOO method name\x00::oo::define::filter\x00core method: define::filter Getter\x00core method: define::filter Setter\x00::oo::define::mixin\x00core method: define::mixin Getter\x00core method: define::mixin Setter\x00::oo::define::superclass\x00core method: define::superclass Getter\x00core method: define::superclass Setter\x00::oo::define::variable\x00core method: define::variable Getter\x00core method: define::variable Setter\x00::oo::objdefine::filter\x00core method: objdefine::filter Getter\x00core method: objdefine::filter Setter\x00::oo::objdefine::mixin\x00core method: objdefine::mixin Getter\x00core method: objdefine::mixin Setter\x00::oo::objdefine::variable\x00core method: objdefine::variable Getter\x00core method: objdefine::variable Setter\x00method %s does not exist\x00cannot rename method to itself\x00RENAME_TO_SELF\x00method called %s already exists\x00RENAME_OVER\x00bad call of unknown handler\x00BAD_UNKNOWN\x00cannot process definitions; support namespace deleted\x00MONKEY_BUSINESS\x00this command may only be called from within the context of an ::oo::define or ::oo::objdefine command\x00this command cannot be called when the object has been deleted\x00getting outer context when already in global context\x00\n    (in definition script for %s \"%.*s%s\" line %d)\x00className arg ?arg ...?\x00%s does not refer to a class\x00objectName arg ?arg ...?\x00class object\x00may not modify the class of the root object class\x00may not modify the class of the class of classes\x00the class of an object must be a class\x00may not change classes into an instance of themselves\x00arguments body\x00attempt to misuse API\x00name cmdName ?arg ...?\x00name args body\x00Get\x00Set\x00::oo::Slot\x00filterList\x00mixinList\x00may only mix in classes\x00may not mix a class into itself\x00SELF_MIXIN\x00superclassList\x00may not modify the superclass of the root object\x00only a class can be a superclass\x00class should only be a direct superclass once\x00REPETITIOUS\x00attempt to form circular dependency graph\x00CIRCULARITY\x00invalid declared variable name \"%s\": must not %s\x00contain namespace separators\x00BAD_DECLVAR\x00*(*)\x00refer to an array element\x00variableList\x00definition\x00filters\x00isa\x00methodtype\x00mixins\x00instances\x00subclasses\x00superclasses\x00::oo::InfoObject\x00::oo::InfoClass\x00objName ?className?\x00objName methodName\x00definition not available for this kind of method\x00objName\x00prefix argument list not available for this kind of method\x00metaclass\x00mixin\x00typeof\x00category objName ?arg ...?\x00category\x00objName className\x00-localprivate\x00-private\x00objName ?-option value ...?\x00objName ?pattern?\x00METHOD_TYPE\x00className ?pattern?\x00className ?-option value ...?\x00cannot construct any call chain\x00method not declared in class or object\x00\n    (%s \"%.*s%s\" method \"%.*s%s\" line %d)\x00\n    (%s \"%.*s%s\" constructor line %d)\x00\n    (%s \"%.*s%s\" destructor line %d)\x00method forward prefix must be non-empty\x00BAD_FORWARD\x00wideInt\x00bignum\x00booleanString\x00cmdName\x00Derived ICL data for object using offsets from before the script\x00can't convert value to type %s\x00API_ABUSE\x00TclSetDuplicateObj\x00UpdateStringProc should not be invoked for type %s\x00UpdateStringProc for type '%s' failed to create a valid string rep\x00Tcl_SetBooleanObj\x00boolean value\x00expected boolean value but got \"\x00BOOLEAN\x00yes\x00no\x00off\x00Tcl_SetDoubleObj\x00floating point value is Not a Number\x00DOUBLE\x00NAN\x00floating-point number\x00Tcl_SetIntObj\x00Tcl_SetLongObj\x00expected integer but got \"%s\"\x00INTEGER\x00IOVERFLOW\x00%I64d\x00Tcl_SetWideIntObj\x00initialization failure in DupBignum\x00radix size failure in UpdateStringOfBignum\x00UpdateStringOfBignum: string length limit exceeded\x00conversion failure in UpdateStringOfBignum\x00insufficient memory to unpack bignum\x00Tcl_SetBignumObj\x00number\x00pure string\x00value is a %s with a refcount of %d, object pointer at %s\x00%p:%p\x00, internal representation %s\x00, string representation \"\x00, no string representation\x00can't parse a NULL pointer\x00extra characters after close-quote\x00extra characters after close-brace\x00ParseTokens encountered unknown character\x00missing close-brace for variable name\x00missing )\x00$\x00missing close-brace\x00: possible unbalanced brace in comment\x00missing \"\x00TclSubstParse: programming error\x00bad parse in TclSubstParse: %c\x00unexpected token type in TclSubstTokens: %d\x00Bad portion to TclPathPart\x00can't find object string representation\x00WTF\x00HOMELESS\x00NOUSER\x00Called UpdateStringOfFsPath with invalid object\x00writing\x00reading\x00channel \"%s\" wasn't opened for %s\x00EXEC\x00BADCHAN\x00couldn't %s file \"%s\": %s\x00can't specify \"%s\" as last word in command\x00child process lost (is SIGCHLD ignored or trapped?)\x00error waiting for process to exit: %s\x00%lu\x00%u\x00CHILDSTATUS\x00CHILDKILLED\x00child killed: %s\n\x00CHILDSUSP\x00child suspended: %s\n\x00child wait status didn't make sense\n\x00ODDWAITRESULT\x00error reading stderr output file: %s\x00child process exited abnormally\x00illegal use of | or |& in command\x00PIPESYNTAX\x00must specify \"%s\" as last word in command\x00couldn't create input file for command: %s\x00couldn't create input pipe for command: %s\x00couldn't create output pipe for command: %s\x00couldn't create error file for command: %s\x00couldn't create pipe: %s\x00can't read output from command: standard output was redirected\x00BADREDIRECT\x00can't write input to command: standard input was redirected\x00pipe for command could not be created\x00NOPIPE\x00conflicting versions provided for package \"%s\": %s, then %s\x00PACKAGE\x00VERSIONCONFLICT\x00Cannot load package \"%s\" in standalone executable: This package is not compiled with stub support\x00UNSTUBBED\x00bad return code: %d\x00BADRESULT\x00\n    (\"package unknown\" script)\x00can't find package %s\x00UNFOUND\x00version conflict for package \"%s\": have %s, need\x00circular package dependency: attempt to provide %s %s requires %s\x00attempt to provide package %s %s failed: no version of package %s provided\x00UNPROVIDED\x00attempt to provide package %s %s failed: package %s %s provided instead\x00WRONGPROVIDE\x00attempt to provide package %s %s failed: bad return code: %s\x00\n    (\"package ifneeded %s %s\" script)\x00package %s %s is not present\x00package %s is not present\x00ifneeded\x00prefer\x00present\x00provide\x00require\x00vcompare\x00versions\x00vsatisfies\x00option ?arg ...?\x00package version ?script?\x00package ?version?\x00?-exact? package ?requirement ...?\x00?command?\x00latest\x00stable\x00?latest|stable?\x00preference\x00version1 version2\x00version ?requirement ...?\x00Tcl_PackageObjCmd: bad option index to pkgOptions\x00expected version number but got \"%s\"\x00VERSION\x00expected versionMin-versionMax but got \"%s\"\x00VERSIONRANGE\x00 exactly %s\x00 %s\x00 0-\x00 -2\x00threaded\x00profiled\x0064bit\x00optimized\x00mem_debug\x00compile_debug\x00compile_stats\x00libdir,runtime\x00/usr/local/lib\x00bindir,runtime\x00/usr/local/bin\x00scriptdir,runtime\x00/usr/local/lib/tcl8.6\x00includedir,runtime\x00/usr/local/include\x00docdir,runtime\x00/usr/local/man\x00libdir,install\x00bindir,install\x00scriptdir,install\x00includedir,install\x00docdir,install\x00tcl\x00cp1252\x00E2BIG\x00EACCES\x00EADDRINUSE\x00EADDRNOTAVAIL\x00EAFNOSUPPORT\x00EALREADY\x00EBADF\x00EBADMSG\x00ECANCELED\x00EBUSY\x00ECHILD\x00ECONNABORTED\x00ECONNREFUSED\x00ECONNRESET\x00EDEADLK\x00EDESTADDRREQ\x00EDOM\x00EDQUOT\x00EEXIST\x00EFAULT\x00EFBIG\x00EHOSTDOWN\x00EHOSTUNREACH\x00EIDRM\x00EILSEQ\x00EINPROGRESS\x00EINTR\x00EINVAL\x00EIO\x00EISCONN\x00EISDIR\x00ELOOP\x00EMFILE\x00EMLINK\x00EMSGSIZE\x00ENAMETOOLONG\x00ENETDOWN\x00ENETRESET\x00ENETUNREACH\x00ENFILE\x00ENOBUFS\x00ENODATA\x00ENODEV\x00ENOENT\x00ENOEXEC\x00ENOLCK\x00ENOLINK\x00ENOMEM\x00ENOMSG\x00ENOPROTOOPT\x00ENOSPC\x00ENOSR\x00ENOSTR\x00ENOSYS\x00ENOTCONN\x00ENOTRECOVERABLE\x00ENOTDIR\x00ENOTEMPTY\x00ENOTSOCK\x00ENOTSUP\x00ENOTTY\x00ENXIO\x00EOPNOTSUPP\x00EOTHER\x00EOVERFLOW\x00EOWNERDEAD\x00EPERM\x00EPFNOSUPPORT\x00EPIPE\x00EPROTO\x00EPROTONOSUPPORT\x00EPROTOTYPE\x00ERANGE\x00EREMOTE\x00EROFS\x00ESHUTDOWN\x00ESOCKTNOSUPPORT\x00ESPIPE\x00ESRCH\x00ESTALE\x00ETIME\x00ETIMEDOUT\x00ETOOMANYREFS\x00ETXTBSY\x00EUSERS\x00EWOULDBLOCK\x00EXDEV\x00unknown error\x00argument list too long\x00permission denied\x00address already in use\x00cannot assign requested address\x00address family not supported by protocol\x00resource temporarily unavailable\x00operation already in progress\x00bad file number\x00not a data message\x00operation canceled\x00file busy\x00no children\x00software caused connection abort\x00connection refused\x00connection reset by peer\x00resource deadlock avoided\x00destination address required\x00math argument out of range\x00disk quota exceeded\x00file already exists\x00bad address in system call argument\x00file too large\x00host is down\x00host is unreachable\x00identifier removed\x00illegal byte sequence\x00operation now in progress\x00interrupted system call\x00invalid argument\x00I/O error\x00socket is already connected\x00illegal operation on a directory\x00too many levels of symbolic links\x00too many open files\x00too many links\x00message too long\x00file name too long\x00network is down\x00network dropped connection on reset\x00network is unreachable\x00file table overflow\x00no buffer space available\x00no data available\x00no such device\x00no such file or directory\x00exec format error\x00no locks available\x00link has been severed\x00not enough memory\x00no message of desired type\x00bad protocol option\x00no space left on device\x00out of stream resources\x00not a stream device\x00function not implemented\x00socket is not connected\x00state not recoverable\x00not a directory\x00directory not empty\x00socket operation on non-socket\x00operation not supported\x00inappropriate device for ioctl\x00no such device or address\x00operation not supported on socket\x00other error\x00file too big\x00owner died\x00not owner\x00protocol family not supported\x00broken pipe\x00protocol error\x00protocol not supported\x00protocol wrong type for socket\x00math result unrepresentable\x00pathname hit remote file system\x00read-only file system\x00cannot send after socket shutdown\x00socket type not supported\x00invalid seek\x00no such process\x00stale remote file handle\x00timer expired\x00connection timed out\x00too many references: cannot splice\x00text file or pseudo-device busy\x00too many users\x00operation would block\x00cross-domain link\x00SIGABRT\x00SIGBUS\x00SIGFPE\x00SIGILL\x00SIGINT\x00SIGSEGV\x00SIGTERM\x00SIGTRAP\x00unknown signal\x00bus error\x00floating-point exception\x00illegal instruction\x00interrupt\x00segmentation violation\x00software termination signal\x00trace trap\x00Tcl_Release couldn't find reference for %p\x00Tcl_EventuallyFree called twice for %p\x00procbody\x00lambdaExpr\x00levelReference\x00\n    (creating proc \"\x00procedure \"%s\": arg list contains %d entries, precompiled header expects %d\x00BYTECODELIES\x00too many fields in argument specifier \"\x00FORMALARGUMENTFORMAT\x00argument with no name\x00formal parameter \"%s\" is an array element\x00formal parameter \"\x00\" is not a simple name\x00procedure \"%s\": formal parameter %d is inconsistent with precompiled body\x00procedure \"%s\": formal parameter \"\x00\" has default value inconsistent with precompiled body\x00STACKLEVEL\x00\n    (\"uplevel\" body line %d)\x00?level? command ?arg ...?\x00?\x00?arg ...?\x00body object for proc attached to frame is not a byte code type\x00body of lambda term\x00body of proc\x00invoked \"%s\" outside of a loop\x00UNEXPECTED\x00a precompiled script jumped interps\x00CROSSINTERPBYTECODE\x00\n    (procedure \"%.*s%s\" line %d)\x00TclUpdateReturnInfo: negative return level\x00can't interpret \"%s\" as a lambda expression\x00LAMBDA\x00\n    (parsing lambda expression \"%s\")\x00lambdaExpr ?arg ...?\x00\n    (lambda term \"%.*s%s\" line %d)\x00error while matching regular expression: \x00REG_UBACKREF\x00REG_ULOOKAHEAD\x00REG_UBOUNDS\x00REG_UBRACES\x00REG_UBSALNUM\x00REG_UPBOTCH\x00REG_UBBS\x00REG_UNONPOSIX\x00REG_UUNSPEC\x00REG_UUNPORT\x00REG_ULOCALE\x00REG_UEMPTYMATCH\x00REG_UIMPOSSIBLE\x00REG_USHORTEST\x00%s%s%s\x00couldn't compile regular expression pattern: \x00-errorline\x00-errorstack\x00bad %s value: expected dictionary but got \"%s\"\x00ILLEGAL_OPTIONS\x00bad -level value: expected non-negative integer but got \"%s\"\x00ILLEGAL_LEVEL\x00bad -errorcode value: expected a list but got \"%s\"\x00ILLEGAL_ERRORCODE\x00bad -errorstack value: expected a list but got \"%s\"\x00NONLIST_ERRORSTACK\x00forbidden odd-sized list for -errorstack: \"%s\"\x00ODDSIZEDLIST_ERRORSTACK\x00expected dict but got \"%s\"\x00cannot mix \"%\" and \"%n$\" conversion specifiers\x00FORMAT\x00MIXEDSPECTYPES\x00field width may not be specified in %c conversion\x00BADWIDTH\x00field size modifier may not be specified in %\x00 conversion\x00BADSIZE\x00unsigned bignum scans are invalid\x00BADUNSIGNED\x00unmatched [ in format string\x00BRACKET\x00bad scan conversion character \"\x00BADTYPE\x00variable is assigned by multiple \"%n$\" conversion specifiers\x00POLYASSIGNED\x00variable is not assigned by any conversion specifiers\x00UNASSIGNED\x00\"%n$\" argument index out of range\x00INDEXRANGE\x00different numbers of variable names and field specifiers\x00FIELDVARMISMATCH\x00string format ?varName ...?\x00Tcl_SetStringObj\x00Tcl_SetObjLength: negative length requested: %d (integer overflow?)\x00Tcl_SetObjLength\x00max length for a Tcl unicode value (%d chars) exceeded\x00Tcl_AttemptSetObjLength\x00Tcl_SetUnicodeObj\x00Tcl_AppendLimitedToObj\x00Tcl_AppendUnicodeToObj\x00Tcl_AppendStringsToObj\x00max size for a Tcl value exceeded\x00Tcl_AppendFormatToObj\x00format string ended in middle of field specifier\x00INCOMPLETE\x00unsigned bignum format is invalid\x000X\x000x\x000b\x00bad field specifier \"%c\"\x00Unable to format \"%s\" with supplied arguments: %s\x00TclParseNumber: bad acceptState %d parsing '%s'\x00TclParseNumber: state INITIAL can't happen here\x00expected %s but got \"\x00 (looks like invalid octal number)\x00Infinity\x00NaN\x00impossible conversion type in TclDoubleDigits\x00wrong digit!\x00in ShouldBankerRoundUp, trichotomy fails!\x00in ShouldBankerRoundUpToNext, trichotomy fails!\x00This code doesn't work on a decimal machine!\x00unknown floating point word order on this machine\x00(%I64x)\x00Tcl_GetMemoryInfo called when threaded memory allocator not in use\x00TclFinalizeThreadAlloc called when threaded memory allocator not in use\x00tclAfter\x00bad argument \"%s\": must be cancel, idle, info, or an integer\x00argument\x00after#%d\x00id|command\x00script ?script ...?\x00?id?\x00event \"%s\" doesn't exist\x00timer\x00Tcl_AfterObjCmd: bad subcommand index to afterSubCmds\x00after#\x00\n    (\"after\" script)\x00tcl::tommath\x00initialization failure in TclBNInitBignumFromLong\x00initialization failure in TclBNInitBignumFromWideUInt\x00execution\x00vdelete\x00vinfo\x00type ?arg ...?\x00type name\x00name ops command\x00bad operations \"%s\": should be one or more of rwua\x00TRACE\x00BADOPS\x00enter\x00leave\x00enterstep\x00leavestep\x00name opList command\x00bad operation list \"\": must be one or more of enter, leave, enterstep, or leavestep\x00NOOPS\x00operation\x00bad operation list \"\": must be one or more of delete or rename\x00bad operation list \"\": must be one or more of array, read, unset, or write\x00 rename\x00 delete\x00TraceExecutionProc: bad flag combination\x00 a\x00 r\x00 w\x00 u\x00 array\x00 read\x00 write\x00 unset\x00Cannot trace a variable with no name\x00trace array\x00\n    (%s trace on \"%s%s%s%s\")\x00bad result flag combination\x00end-offset\x00LIST\x00%s element in braces followed by \"%.*s\" instead of space\x00JUNK\x00%s element in quotes followed by \"%.*s\" instead of space\x00unmatched open brace in %s\x00BRACE\x00unmatched open quote in %s\x00QUOTE\x00internal error in Tcl_SplitList\x00INTERNAL\x00Tcl_SplitList\x00TclScanElement: string length overflow\x00Tcl_Merge called with negative argc (%d)\x00Tcl_Concat: max size of Tcl value exceeded\x00 \f\v\r\t\n\x00 {\x00{\x00-Inf\x00Inf\x00e%+d\x00e%+03d\x00can't modify precision from a safe interpreter\x00improper value for precision\x00bad index \"%s\": must be integer?[+-]integer? or end?[+-]integer?\x00end-\x00bad index \"%s\": must be end?[+-]integer?\x00PGV Initializer did not initialize\x00***=\x00invalid escape sequence\x00BADESCAPE\x00$ not anchor\x00NONANCHOR\x00unhandled RE special char\x00UNHANDLED\x00excessive recursive glob backtrack potential\x00OVERCOMPLEX\x00RE2GLOB\x00array search\x00localVarName\x00parsedVarName\x00\"%s\" isn't an array\x00VARNAME\x00ELEMENT\x00varPtr must not be NULL\x00part1Ptr must not be NULL\x00READ\x00varName ?newValue?\x00newValuePtr must not be NULL\x00UNSET\x00varName ?value ...?\x00arrayName\x00s-%d-%s\x00arrayName searchId\x00arrayName ?pattern?\x00arrayName ?mode? ?pattern?\x00exact matching shouldn't get here\x00arrayName list\x00error reading array statistics\x00anymore\x00donesearch\x00nextelement\x00startsearch\x00statistics\x00bad variable name \"%s\": can't create namespace variable that refers to procedure variable\x00ObjMakeUpvar called with an index outside from a proc\x00bad variable name \"%s\": can't create a scalar variable that looks like an array element\x00can't upvar from variable to itself\x00variable \"%s\" has traces: can't use for upvar\x00TRACED\x00variable \"%s\" already exists\x00EXISTS\x00?level? otherVar localVar ?otherVar localVar ...?\x00illegal search identifier \"%s\"\x00ARRAYSEARCH\x00search identifier \"%s\" isn't for variable \"%s\"\x00couldn't find search \"%s\"\x00invalid part1Ptr and invalid index together\x00can't %s \"%s%s%s%s\": %s\x00%s of type %s should not be called\x00updateStringProc\x00setFromAnyProc\x00scalar parsedVarName without a string rep\x00unknown variable \"%s\"\x00zlib\x00STREAM\x00DATA\x00MEM\x00BUF\x00NEED_DICT\x00unexpected zlib result in error handler: Z_OK\x00unexpected zlib result in error handler: Z_STREAM_END\x00ZLIB\x00text\x00no latin-1 encoding\x00comment\x00crc\x00filename\x00incorrect zlib data format, must be TCL_ZLIB_FORMAT_ZLIB, TCL_ZLIB_FORMAT_GZIP or TCL_ZLIB_FORMAT_RAW\x00compression level should be between 0 (no compression) and 9 (best compression) or -1 for default compression level\x00incorrect zlib data format, must be TCL_ZLIB_FORMAT_ZLIB, TCL_ZLIB_FORMAT_GZIP, TCL_ZLIB_FORMAT_RAW or TCL_ZLIB_FORMAT_AUTO\x00bad mode, must be TCL_ZLIB_STREAM_DEFLATE or TCL_ZLIB_STREAM_INFLATE\x001.3.1\x00::incr ::tcl::zlib::cmdcounter\x00::tcl::zlib::streamcmd_\x00BUG: Stream command name already exists\x00EXISTING_CMD\x00already past compressed stream end\x00ZIP\x00CLOSED\x00unexpected zlib internal state during decompression\x00STATE\x00incorrect zlib data format, must be TCL_ZLIB_FORMAT_ZLIB, TCL_ZLIB_FORMAT_GZIP or TCL_ZLIB_FORMAT_ZLIB\x00compression level should be between 0 (uncompressed) and 9 (best compression) or -1 for default compression level\x00adler32\x00compress\x00crc32\x00decompress\x00deflate\x00gunzip\x00gzip\x00inflate\x00stream\x00command arg ?...?\x00data ?startValue?\x00data ?level?\x00\n    (in -level option)\x00data ?-level level? ?-header header?\x00-header\x00data ?bufferSize?\x00data ?-headerVar varName?\x00-headerVar\x00level must be 0 to 9\x00COMPRESSIONLEVEL\x00buffer size must be %d to %d\x00BUFFERSIZE\x00mode ?-option value...?\x00should be unreachable\x00-limit\x00mode channel ?options...?\x00compression may only be applied to writable channels\x00UNWRITABLE\x00decompression may only be applied to readable channels\x00UNREADABLE\x00value missing for %s option\x00NOVAL\x00read ahead limit must be 1 to %d\x00a compression dictionary may not be set in the gzip format\x00BADOPT\x00\n    (in \x00 option)\x00checksum\x00fullflush\x00header\x00put\x00reset\x00option data ?...?\x00?count?\x00-buffer\x00-finalize\x00-flush\x00-fullflush\x00\"-buffer\" option must be followed by integer decompression buffersize\x00buffer size must be 1 to %d\x00\"-dictionary\" option must be followed by compression dictionary bytes\x00\"-flush\", \"-fullflush\" and \"-finalize\" options are mutually exclusive\x00EXCLUSIVE\x00only gunzip streams can produce header information\x00BADOP\x00error while finalizing file: %s\x00problem flushing channel: %s\x00dictionary flush\x00dictionary limit\x00flush limit\x00sync\x00unknown -flush type \"%s\": must be full or sync\x00FLUSH\x00-limit must be between 1 and 65536\x00READLIMIT\x00checksum dictionary\x00checksum dictionary limit\x00checksum header limit\x00-checksum\x00unknown mode: %d\x00bad format: %d\x00namespace eval ::tcl::zlib {variable cmdcounter 0}\x00zlibVersion\x002.0.1\x00Windows NT is the only supported platform\x00couldn't open \"\x00\": filename is invalid on this platform\x00TclpOpenFileChannel: invalid mode value\x00couldn't open serial \"\x00couldn't reopen serial \"%s\": %s\x00couldn't open \"%s\": bad file type\x00TclGetDefaultStdChannel: Unexpected channel type\x00file%Ix\x00file info ptr not on thread channel list\x00c\x00o\x00m\x00\x00\x00\\\x00\\\x00.\x00\\\x00c\x00o\x00m\x00\x00\x00console\x00cp%d\x00serial\x00RXOVER\x00OVERRUN\x00RXPARITY\x00FRAME\x00BREAK\x00TXFULL\x00TIMEOUT\x00CTS\x00DSR\x00RING\x00DCD\x00-mode\x00bad value \"%s\" for -mode: should be baud,parity,data,stop\x00SERIALMODE\x00-handshake\x00XONXOFF\x00RTSCTS\x00DTRDSR\x00bad value \"%s\" for -handshake: must be one of xonxoff, rtscts, dtrdsr or none\x00HANDSHAKE\x00-xchar\x00bad value for -xchar: should be a list of two elements with each a single character\x00XCHAR\x00-ttycontrol\x00bad value \"%s\" for -ttycontrol: should be a list of signal,value pairs\x00TTYCONTROL\x00DTR\x00can't set DTR signal\x00FCONFIGURE\x00TTY_SIGNAL\x00RTS\x00can't set RTS signal\x00can't set BREAK signal\x00bad signal name \"%s\" for -ttycontrol: must be DTR, RTS or BREAK\x00-sysbuffer\x00bad value \"%s\" for -sysbuffer: should be a list of one or two integers > 0\x00SYS_BUFFER\x00can't setup comm buffers: %s\x00-pollinterval\x00-timeout\x00can't set comm timeouts: %s\x00mode handshake pollinterval sysbuffer timeout ttycontrol xchar\x00can't get comm state: %s\x00can't set comm state: %s\x00noems\x001.5\x00%d,%c,%d,%s\x00-lasterror\x00-queue\x00-ttystatus\x00can't get tty status: %s\x00mode pollinterval lasterror queue sysbuffer ttystatus xchar\x00-archive\x00-hidden\x00-longname\x00-readonly\x00-shortname\x00-system\x00t\x00c\x00l\x00r\x00\x00\x00\\\x00*\x00.\x00*\x00\x00\x00\\\x00\x00\x00..\x00cannot set attribute \"%s\" for file \"%s\": attribute is readonly\x00\\\x00?\x00?\x00\\\x00\x00\x00\\\x00?\x00?\x00\\\x00V\x00o\x00l\x00u\x00m\x00e\x00{\x00\x00\x00\\\x00\\\x00?\x00\\\x00\x00\x00 \x00.\x00.\x00.\x00\x00\x00F\x00a\x00t\x00a\x00l\x00 \x00E\x00r\x00r\x00o\x00r\x00\x00\x00[]\\\x00*.*\x00couldn't read directory \"%s\": %s\x00prn\x00nul\x00aux\x00Password Lists\x00system.ini\x00e\x00x\x00e\x00\x00\x00c\x00m\x00d\x00\x00\x00b\x00a\x00t\x00\x00\x00/\x00\x00\x00\\??\\\x00\\\\?\\\x00\\\x00\\\x00?\x00\\\x00U\x00N\x00C\x00\x00\x00\"\x00*\x00:\x00<\x00>\x00?\x00|\x00\x00\x00intel\x00mips\x00ppc\x00shx\x00arm\x00ia64\x00alpha64\x00msil\x00amd64\x00ia32_on_win64\x00neutral\x00arm64\x00arm32_on_win64\x00ia32_on_arm64\x00K\x00E\x00R\x00N\x00E\x00L\x003\x002\x00\x00\x00CancelSynchronousIo\x00CreateSymbolicLinkW\x00lib/tcl%s\x00last character in lib cannot be '/'\x00no '/' character found in lib\x00T\x00C\x00L\x00_\x00L\x00I\x00B\x00R\x00A\x00R\x00Y\x00\x00\x00TCL_LIBRARY\x00../library\x00USERNAME\x00N\x00T\x00D\x00L\x00L\x00\x00\x00RtlGetVersion\x00windows\x00Windows NT\x00%d.%d\x00HOMEDRIVE\x00HOMEPATH\x00USERPROFILE\x00c:\\\x00pathSeparator\x00;\x00couldn't load library \"%s\": \x00WIN_LOAD\x00MOD_NOT_FOUND\x00DLL_NOT_FOUND\x00this library or a dependent library could not be found in library path\x00PROC_NOT_FOUND\x00A function specified in the import table could not be resolved by the system. Windows is not telling which one, I'm sorry.\x00INVALID_DLL\x00this library or a dependent library is damaged\x00DLL_INIT_FAILED\x00the library initialization routine failed\x00BAD_EXE_FORMAT\x00Bad exe format. Possibly a 32/64-bit mismatch.\x00_\x00cannot find symbol \"%s\"\x00LOAD_SYMBOL\x00couldn't create temporary directory: %s\x00T\x00C\x00L\x00X\x00X\x00X\x00X\x00X\x00X\x00X\x00X\x00\x00\x00%\x000\x008\x00x\x00\x00\x00Unable to register TclNotifier window class\x00T\x00C\x00L\x00\x00\x00\r\n\x00TclpCloseFile: unexpected file type\x00couldn't duplicate input handle: %s\x00N\x00U\x00L\x00:\x00\x00\x00couldn't duplicate output handle: %s\x00couldn't duplicate error handle: %s\x00cmd.exe /c\x00DOS application process not supported on this platform\x00DOS_APP\x00couldn't execute \"%s\": %s\x00C\x00O\x00N\x00O\x00U\x00T\x00$\x00\x00\x00.cmd\x00.bat\x00.com\x00\\\\\x00pipe creation failed: %s\x00?channelId?\x00%d.TMP\x00sockets are not available on this system\x00winsock is not initialized\x00-connecting\x00::tcl::unsupported::noReverseDNS\x00-peername\x00can't get peername: %s\x00-sockname\x00can't get sockname: %s\x00connecting peername sockname\x00couldn't open socket: %s\x00sock%p\x00auto crlf\x001.2.13\x00invalid block type\x00invalid stored block lengths\x00too many length or distance symbols\x00invalid code lengths set\x00invalid bit length repeat\x00invalid code -- missing end-of-block\x00invalid literal/lengths set\x00invalid distances set\x00invalid literal/length code\x00invalid distance code\x00invalid distance too far back\x00incorrect header check\x00unknown compression method\x00invalid window size\x00unknown header flags set\x00header crc mismatch\x00incorrect data check\x00incorrect length check\x00need dictionary\x00stream end\x00file error\x00stream error\x00data error\x00insufficient memory\x00buffer error\x00incompatible version\x000123456789ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz+/\x008.5\x00dde\x001.4.4\x00T\x00c\x00l\x00E\x00v\x00a\x00l\x00\x00\x00 \x00#\x00\x00\x00%\x00d\x00\x00\x00permission denied: a handler procedure must be defined for use in a safe interp\x00DDE\x00SECURITY_CHECK\x00$\x00T\x00C\x00L\x00E\x00V\x00A\x00L\x00$\x00E\x00X\x00E\x00C\x00U\x00T\x00E\x00$\x00R\x00E\x00S\x00U\x00L\x00T\x00\x00\x00no registered server named \"%s\"\x00NO_SERVER\x00T\x00c\x00l\x00E\x00v\x00a\x00l\x00 \x00c\x00l\x00i\x00e\x00n\x00t\x00 \x00c\x00l\x00a\x00s\x00s\x00\x00\x00T\x00c\x00l\x00E\x00v\x00a\x00l\x00 \x00c\x00l\x00i\x00e\x00n\x00t\x00 \x00w\x00i\x00n\x00d\x00o\x00w\x00\x00\x00remote interpreter did not respond\x00remote server is busy\x00remote server cannot handle this command\x00NOCANDO\x00dde command failed\x00FAILED\x00servername\x00execute\x00poke\x00request\x00services\x00-handler\x00-binary\x00?-force? ?-handler proc? ?--? ?serverName?\x00?-async? ?-binary? serviceName topicName value\x00?-binary? serviceName topicName item value\x00?-binary? serviceName topicName value\x00serviceName topicName\x00?-async? serviceName args\x00cannot execute null data\x00cannot request value of null data\x00cannot have a null item\x00invalid service name \"\"\x00invalid data returned from server\x00BAD_RESPONSE\x00HKEY_LOCAL_MACHINE\x00HKEY_USERS\x00HKEY_CLASSES_ROOT\x00HKEY_CURRENT_USER\x00HKEY_CURRENT_CONFIG\x00HKEY_PERFORMANCE_DATA\x00HKEY_DYN_DATA\x00sz\x00expand_sz\x00dword\x00dword_big_endian\x00multi_sz\x00resource_list\x00registry\x001.3.5\x00broadcast\x00-32bit\x00-64bit\x00?-32bit|-64bit? option ?arg ...?\x00keyName ?-timeout milliseconds?\x00keyName ?valueName?\x00keyName valueName\x00keyName ?pattern?\x00keyName ?valueName data ?type??\x00bad key: cannot delete root keys\x00WIN_REG\x00DEL_ROOT_KEY\x00unable to delete key: \x00unable to delete value \"%s\" from key \"%s\": \x00unable to enumerate subkeys of \"%s\": \x00unable to get type of value \"%s\" from key \"%s\": \x00unable to get value \"%s\" from key \"%s\": \x00unable to open key: \x00bad key \"%s\": must start with a valid root\x00NO_ROOT_KEY\x00root name\x00A\x00D\x00V\x00A\x00P\x00I\x003\x002\x00\x00\x00RegDeleteKeyExW\x00unable to set value: \x00unknown error: %ld\x00%ld\x00WINDOWS\x00interpreter uses an incompatible stubs mechanism\x00missing stub table pointer\x00epoch number mismatch\x00requires a later revision\x00Error loading \x00 (requested version \x00, actual version \x00): \x00"
