@@ -1,6 +1,7 @@
-// Code generated for linux/riscv64 by 'gcc -hide TclpCreateProcess --prefix-enumerator=_ --prefix-external=x_ --prefix-field=F --prefix-macro=m_ --prefix-static-internal=_ --prefix-static-none=_ --prefix-tagged-enum=_ --prefix-tagged-struct=T --prefix-tagged-union=T --prefix-typename=T --prefix-undefined=_ -extended-errors -ignore-unsupported-alignment -I /home/jnml/src/modernc.org/builder/.exclude/modernc.org/libz/include/linux/riscv64 -O2 -DNDEBUG -UHAVE_COPYFILE -UHAVE_CPUID -UHAVE_FTS -UHAVE_TERMIOS_H tclTestInit.o.go tclTest.o.go tclTestObj.o.go tclTestProcBodyObj.o.go tclThreadTest.o.go tclUnixTest.o.go -L/tmp/libtcl8.6/tcl8.6.13/unix -ltcl8.6 libtclstub8.6.a -lz -lm -o tcltest.go', DO NOT EDIT.
+// Code generated for linux/riscv64 by 'gcc -hide TclpCreateProcess --prefix-enumerator=_ --prefix-external=x_ --prefix-field=F --prefix-macro=m_ --prefix-static-internal=_ --prefix-static-none=_ --prefix-tagged-enum=_ --prefix-tagged-struct=T --prefix-tagged-union=T --prefix-typename=T --prefix-undefined=_ -extended-errors -ignore-unsupported-alignment -I/tmp/libtcl8.6/tcl8.6.13/ccgo -O2 -DNDEBUG -UHAVE_COPYFILE -UHAVE_CPUID -UHAVE_FTS -UHAVE_TERMIOS_H tclTestInit.o.go tclTest.o.go tclTestObj.o.go tclTestProcBodyObj.o.go tclThreadTest.o.go tclUnixTest.o.go -L/tmp/libtcl8.6/tcl8.6.13/unix -ltcl8.6 libtclstub8.6.a -lz -lm -o tcltest.go', DO NOT EDIT.
 
 //go:build linux && riscv64
+// +build linux,riscv64
 
 package main
 
@@ -255,12 +256,14 @@ const m_Tcl_StaticLibrary = "Tcl_StaticPackage"
 const m_Tcl_ThreadCreateType = "void"
 const m_Tcl_TildeSubst = "Tcl_TranslateFileName"
 const m_VOID = "void"
+const m__BITS_STDIO2_H = 1
 const m__BITS_STDIO_H = 1
 const m__BITS_STDIO_LIM_H = 1
 const m__BITS_TIME64_H = 1
 const m__BITS_TYPESIZES_H = 1
 const m__BITS_TYPES_H = 1
 const m__FEATURES_H = 1
+const m__FORTIFY_SOURCE = 2
 const m__IOFBF = 0
 const m__IOLBF = 1
 const m__IONBF = 2
@@ -295,7 +298,7 @@ const m___DBL_DIG__ = 15
 const m___DBL_HAS_DENORM__ = 1
 const m___DBL_HAS_INFINITY__ = 1
 const m___DBL_HAS_QUIET_NAN__ = 1
-const m___DBL_IS_IEC_60559__ = 1
+const m___DBL_IS_IEC_60559__ = 2
 const m___DBL_MANT_DIG__ = 53
 const m___DBL_MAX_10_EXP__ = 308
 const m___DBL_MAX_EXP__ = 1024
@@ -314,27 +317,13 @@ const m___FLT128_EPSILON__ = 1.92592994438723585305597794258492732e-34
 const m___FLT128_HAS_DENORM__ = 1
 const m___FLT128_HAS_INFINITY__ = 1
 const m___FLT128_HAS_QUIET_NAN__ = 1
-const m___FLT128_IS_IEC_60559__ = 1
+const m___FLT128_IS_IEC_60559__ = 2
 const m___FLT128_MANT_DIG__ = 113
 const m___FLT128_MAX_10_EXP__ = 4932
 const m___FLT128_MAX_EXP__ = 16384
 const m___FLT128_MAX__ = "1.18973149535723176508575932662800702e+4932"
 const m___FLT128_MIN__ = 3.36210314311209350626267781732175260e-4932
 const m___FLT128_NORM_MAX__ = "1.18973149535723176508575932662800702e+4932"
-const m___FLT16_DECIMAL_DIG__ = 5
-const m___FLT16_DENORM_MIN__ = 5.96046447753906250000000000000000000e-8
-const m___FLT16_DIG__ = 3
-const m___FLT16_EPSILON__ = 9.76562500000000000000000000000000000e-4
-const m___FLT16_HAS_DENORM__ = 1
-const m___FLT16_HAS_INFINITY__ = 1
-const m___FLT16_HAS_QUIET_NAN__ = 1
-const m___FLT16_IS_IEC_60559__ = 1
-const m___FLT16_MANT_DIG__ = 11
-const m___FLT16_MAX_10_EXP__ = 4
-const m___FLT16_MAX_EXP__ = 16
-const m___FLT16_MAX__ = 6.55040000000000000000000000000000000e+4
-const m___FLT16_MIN__ = 6.10351562500000000000000000000000000e-5
-const m___FLT16_NORM_MAX__ = 6.55040000000000000000000000000000000e+4
 const m___FLT32X_DECIMAL_DIG__ = 17
 const m___FLT32X_DENORM_MIN__ = 4.94065645841246544176568792868221372e-324
 const m___FLT32X_DIG__ = 15
@@ -342,7 +331,7 @@ const m___FLT32X_EPSILON__ = 2.22044604925031308084726333618164062e-16
 const m___FLT32X_HAS_DENORM__ = 1
 const m___FLT32X_HAS_INFINITY__ = 1
 const m___FLT32X_HAS_QUIET_NAN__ = 1
-const m___FLT32X_IS_IEC_60559__ = 1
+const m___FLT32X_IS_IEC_60559__ = 2
 const m___FLT32X_MANT_DIG__ = 53
 const m___FLT32X_MAX_10_EXP__ = 308
 const m___FLT32X_MAX_EXP__ = 1024
@@ -356,7 +345,7 @@ const m___FLT32_EPSILON__ = 1.19209289550781250000000000000000000e-7
 const m___FLT32_HAS_DENORM__ = 1
 const m___FLT32_HAS_INFINITY__ = 1
 const m___FLT32_HAS_QUIET_NAN__ = 1
-const m___FLT32_IS_IEC_60559__ = 1
+const m___FLT32_IS_IEC_60559__ = 2
 const m___FLT32_MANT_DIG__ = 24
 const m___FLT32_MAX_10_EXP__ = 38
 const m___FLT32_MAX_EXP__ = 128
@@ -370,7 +359,7 @@ const m___FLT64X_EPSILON__ = 1.92592994438723585305597794258492732e-34
 const m___FLT64X_HAS_DENORM__ = 1
 const m___FLT64X_HAS_INFINITY__ = 1
 const m___FLT64X_HAS_QUIET_NAN__ = 1
-const m___FLT64X_IS_IEC_60559__ = 1
+const m___FLT64X_IS_IEC_60559__ = 2
 const m___FLT64X_MANT_DIG__ = 113
 const m___FLT64X_MAX_10_EXP__ = 4932
 const m___FLT64X_MAX_EXP__ = 16384
@@ -384,7 +373,7 @@ const m___FLT64_EPSILON__ = 2.22044604925031308084726333618164062e-16
 const m___FLT64_HAS_DENORM__ = 1
 const m___FLT64_HAS_INFINITY__ = 1
 const m___FLT64_HAS_QUIET_NAN__ = 1
-const m___FLT64_IS_IEC_60559__ = 1
+const m___FLT64_IS_IEC_60559__ = 2
 const m___FLT64_MANT_DIG__ = 53
 const m___FLT64_MAX_10_EXP__ = 308
 const m___FLT64_MAX_EXP__ = 1024
@@ -400,7 +389,7 @@ const m___FLT_EVAL_METHOD__ = 0
 const m___FLT_HAS_DENORM__ = 1
 const m___FLT_HAS_INFINITY__ = 1
 const m___FLT_HAS_QUIET_NAN__ = 1
-const m___FLT_IS_IEC_60559__ = 1
+const m___FLT_IS_IEC_60559__ = 2
 const m___FLT_MANT_DIG__ = 24
 const m___FLT_MAX_10_EXP__ = 38
 const m___FLT_MAX_EXP__ = 128
@@ -419,34 +408,31 @@ const m___FSFILCNT64_T_TYPE = "__UQUAD_TYPE"
 const m___FSFILCNT_T_TYPE = "__ULONGWORD_TYPE"
 const m___FSWORD_T_TYPE = "__SWORD_TYPE"
 const m___FUNCTION__ = "__func__"
-const m___GCC_ATOMIC_BOOL_LOCK_FREE = 2
-const m___GCC_ATOMIC_CHAR16_T_LOCK_FREE = 2
+const m___GCC_ATOMIC_BOOL_LOCK_FREE = 1
+const m___GCC_ATOMIC_CHAR16_T_LOCK_FREE = 1
 const m___GCC_ATOMIC_CHAR32_T_LOCK_FREE = 2
-const m___GCC_ATOMIC_CHAR_LOCK_FREE = 2
+const m___GCC_ATOMIC_CHAR_LOCK_FREE = 1
 const m___GCC_ATOMIC_INT_LOCK_FREE = 2
 const m___GCC_ATOMIC_LLONG_LOCK_FREE = 2
 const m___GCC_ATOMIC_LONG_LOCK_FREE = 2
 const m___GCC_ATOMIC_POINTER_LOCK_FREE = 2
-const m___GCC_ATOMIC_SHORT_LOCK_FREE = 2
+const m___GCC_ATOMIC_SHORT_LOCK_FREE = 1
 const m___GCC_ATOMIC_TEST_AND_SET_TRUEVAL = 1
 const m___GCC_ATOMIC_WCHAR_T_LOCK_FREE = 2
-const m___GCC_HAVE_DWARF2_CFI_ASM = 1
-const m___GCC_HAVE_SYNC_COMPARE_AND_SWAP_1 = 1
-const m___GCC_HAVE_SYNC_COMPARE_AND_SWAP_2 = 1
 const m___GCC_HAVE_SYNC_COMPARE_AND_SWAP_4 = 1
 const m___GCC_HAVE_SYNC_COMPARE_AND_SWAP_8 = 1
 const m___GCC_IEC_559 = 2
 const m___GCC_IEC_559_COMPLEX = 2
 const m___GID_T_TYPE = "__U32_TYPE"
-const m___GLIBC_MINOR__ = 38
+const m___GLIBC_MINOR__ = 34
 const m___GLIBC__ = 2
 const m___GNUC_EXECUTION_CHARSET_NAME = "UTF-8"
-const m___GNUC_MINOR__ = 3
+const m___GNUC_MINOR__ = 2
 const m___GNUC_PATCHLEVEL__ = 0
 const m___GNUC_STDC_INLINE__ = 1
 const m___GNUC_WIDE_EXECUTION_CHARSET_NAME = "UTF-32LE"
-const m___GNUC__ = 13
-const m___GXX_ABI_VERSION = 1018
+const m___GNUC__ = 11
+const m___GXX_ABI_VERSION = 1016
 const m___HAVE_DISTINCT_FLOAT128 = 0
 const m___HAVE_DISTINCT_FLOAT128X = "__HAVE_FLOAT128X"
 const m___HAVE_DISTINCT_FLOAT16 = "__HAVE_FLOAT16"
@@ -504,7 +490,7 @@ const m___LDBL_EPSILON__ = 1.92592994438723585305597794258492732e-34
 const m___LDBL_HAS_DENORM__ = 1
 const m___LDBL_HAS_INFINITY__ = 1
 const m___LDBL_HAS_QUIET_NAN__ = 1
-const m___LDBL_IS_IEC_60559__ = 1
+const m___LDBL_IS_IEC_60559__ = 2
 const m___LDBL_MANT_DIG__ = 113
 const m___LDBL_MAX_10_EXP__ = 4932
 const m___LDBL_MAX_EXP__ = 16384
@@ -533,8 +519,6 @@ const m___PRAGMA_REDEFINE_EXTNAME = 1
 const m___PRETTY_FUNCTION__ = "__func__"
 const m___PTRDIFF_MAX__ = 0x7fffffffffffffff
 const m___PTRDIFF_WIDTH__ = 64
-const m___REDIRECT_FORTIFY = "__REDIRECT"
-const m___REDIRECT_FORTIFY_NTH = "__REDIRECT_NTH"
 const m___RLIM64_T_TYPE = "__UQUAD_TYPE"
 const m___RLIM_T_MATCHES_RLIM64_T = 1
 const m___RLIM_T_TYPE = "__ULONGWORD_TYPE"
@@ -563,12 +547,11 @@ const m___SIZE_MAX__ = 0xffffffffffffffff
 const m___SIZE_WIDTH__ = 64
 const m___SLONG32_TYPE = "int"
 const m___SSIZE_T_TYPE = "__SWORD_TYPE"
+const m___SSP_STRONG__ = 3
 const m___STATFS_MATCHES_STATFS64 = 1
 const m___STDC_HOSTED__ = 1
 const m___STDC_IEC_559_COMPLEX__ = 1
 const m___STDC_IEC_559__ = 1
-const m___STDC_IEC_60559_BFP__ = 201404
-const m___STDC_IEC_60559_COMPLEX__ = 201404
 const m___STDC_ISO_10646__ = 201706
 const m___STDC_UTF_16__ = 1
 const m___STDC_UTF_32__ = 1
@@ -599,7 +582,7 @@ const m___UINT_LEAST8_MAX__ = 0xff
 const m___USECONDS_T_TYPE = "__U32_TYPE"
 const m___USE_EXTERN_INLINES = 1
 const m___USE_POSIX_IMPLICITLY = 1
-const m___VERSION__ = "13.3.0"
+const m___VERSION__ = "11.2.0"
 const m___WCHAR_MAX__ = 0x7fffffff
 const m___WCHAR_TYPE__ = "int"
 const m___WCHAR_WIDTH__ = 32
@@ -612,7 +595,6 @@ const m_____FILE_defined = 1
 const m______fpos64_t_defined = 1
 const m______fpos_t_defined = 1
 const m_____mbstate_t_defined = 1
-const m___cookie_io_functions_t_defined = 1
 const m___glibc_c99_flexarr_available = 1
 const m___gnu_linux__ = 1
 const m___linux = 1
@@ -620,20 +602,21 @@ const m___linux__ = 1
 const m___pic__ = 2
 const m___pie__ = 2
 const m___riscv = 1
-const m___riscv_a = 2001000
+const m___riscv_a = 2000000
 const m___riscv_arch_test = 1
 const m___riscv_atomic = 1
 const m___riscv_c = 2000000
 const m___riscv_cmodel_medany = 1
+const m___riscv_cmodel_pic = 1
 const m___riscv_compressed = 1
-const m___riscv_d = 2002000
+const m___riscv_d = 2000000
 const m___riscv_div = 1
-const m___riscv_f = 2002000
+const m___riscv_f = 2000000
 const m___riscv_fdiv = 1
 const m___riscv_flen = 64
 const m___riscv_float_abi_double = 1
 const m___riscv_fsqrt = 1
-const m___riscv_i = 2001000
+const m___riscv_i = 2000000
 const m___riscv_m = 2000000
 const m___riscv_mul = 1
 const m___riscv_muldiv = 1
@@ -643,6 +626,7 @@ const m___riscv_zifencei = 2000000
 const m___struct_FILE_defined = 1
 const m___unix = 1
 const m___unix__ = 1
+const m___wur = "__attribute_warn_unused_result__"
 const m_linux = 1
 const m_panic = "Tcl_Panic"
 const m_panicVA = "Tcl_PanicVA"
@@ -907,15 +891,6 @@ type TFILE = struct {
 }
 
 type T_IO_lock_t = struct{}
-
-type Tcookie_io_functions_t = struct {
-	Fread   uintptr
-	Fwrite  uintptr
-	Fseek   uintptr
-	Fclose1 uintptr
-}
-
-type T_IO_cookie_io_functions_t = Tcookie_io_functions_t
 
 type Tva_list = uintptr
 
@@ -2179,7 +2154,6 @@ const m_AF_KEY = "PF_KEY"
 const m_AF_LLC = "PF_LLC"
 const m_AF_LOCAL = "PF_LOCAL"
 const m_AF_MAX = "PF_MAX"
-const m_AF_MCTP = "PF_MCTP"
 const m_AF_MPLS = "PF_MPLS"
 const m_AF_NETBEUI = "PF_NETBEUI"
 const m_AF_NETLINK = "PF_NETLINK"
@@ -2422,7 +2396,7 @@ const m_F_DUPFD_CLOEXEC = 1030
 const m_F_EXLCK = 4
 const m_F_GETFD = 1
 const m_F_GETFL = 3
-const m_F_GETLK = "F_GETLK64"
+const m_F_GETLK = 5
 const m_F_GETLK64 = 5
 const m_F_GETOWN = "__F_GETOWN"
 const m_F_LOCK = 1
@@ -2430,9 +2404,9 @@ const m_F_OK = 0
 const m_F_RDLCK = 0
 const m_F_SETFD = 2
 const m_F_SETFL = 4
-const m_F_SETLK = "F_SETLK64"
+const m_F_SETLK = 6
 const m_F_SETLK64 = 6
-const m_F_SETLKW = "F_SETLKW64"
+const m_F_SETLKW = 7
 const m_F_SETLKW64 = 7
 const m_F_SETOWN = "__F_SETOWN"
 const m_F_SHLCK = 8
@@ -2548,7 +2522,6 @@ const m_IP_DROP_SOURCE_MEMBERSHIP = 40
 const m_IP_FREEBIND = 15
 const m_IP_HDRINCL = 3
 const m_IP_IPSEC_POLICY = 16
-const m_IP_LOCAL_PORT_RANGE = 51
 const m_IP_MAX_MEMBERSHIPS = 20
 const m_IP_MINTTL = 21
 const m_IP_MSFILTER = 41
@@ -2691,7 +2664,7 @@ const m_O_ACCMODE = 0003
 const m_O_APPEND = 02000
 const m_O_ASYNC = 020000
 const m_O_CLOEXEC = "__O_CLOEXEC"
-const m_O_CREAT = 0100
+const m_O_CREAT = 64
 const m_O_DIRECTORY = "__O_DIRECTORY"
 const m_O_DSYNC = "__O_DSYNC"
 const m_O_EXCL = 0200
@@ -2734,8 +2707,7 @@ const m_PF_KCM = 41
 const m_PF_KEY = 15
 const m_PF_LLC = 26
 const m_PF_LOCAL = 1
-const m_PF_MAX = 46
-const m_PF_MCTP = 45
+const m_PF_MAX = 45
 const m_PF_MPLS = 28
 const m_PF_NETBEUI = 13
 const m_PF_NETLINK = 16
@@ -3004,8 +2976,6 @@ const m_SOL_IRDA = 266
 const m_SOL_IUCV = 277
 const m_SOL_KCM = 281
 const m_SOL_LLC = 268
-const m_SOL_MCTP = 285
-const m_SOL_MPTCP = 284
 const m_SOL_NETBEUI = 267
 const m_SOL_NETLINK = 270
 const m_SOL_NFC = 280
@@ -3015,7 +2985,6 @@ const m_SOL_PPPOL2TP = 273
 const m_SOL_RAW = 255
 const m_SOL_RDS = 276
 const m_SOL_RXRPC = 272
-const m_SOL_SMC = 286
 const m_SOL_SOCKET = 1
 const m_SOL_TIPC = 271
 const m_SOL_TLS = 282
@@ -3032,7 +3001,6 @@ const m_SO_BINDTOIFINDEX = 62
 const m_SO_BPF_EXTENSIONS = 48
 const m_SO_BROADCAST = 6
 const m_SO_BSDCOMPAT = 14
-const m_SO_BUF_LOCK = 72
 const m_SO_BUSY_POLL = 46
 const m_SO_BUSY_POLL_BUDGET = 70
 const m_SO_CNX_ADVICE = 53
@@ -3058,13 +3026,11 @@ const m_SO_NOFCS = 43
 const m_SO_NO_CHECK = 11
 const m_SO_OOBINLINE = 10
 const m_SO_PASSCRED = 16
-const m_SO_PASSPIDFD = 76
 const m_SO_PASSSEC = 34
 const m_SO_PEEK_OFF = 42
 const m_SO_PEERCRED = 17
 const m_SO_PEERGROUPS = 59
 const m_SO_PEERNAME = 28
-const m_SO_PEERPIDFD = 77
 const m_SO_PEERSEC = 31
 const m_SO_PREFER_BUSY_POLL = 69
 const m_SO_PRIORITY = 12
@@ -3072,11 +3038,9 @@ const m_SO_PROTOCOL = 38
 const m_SO_RCVBUF = 8
 const m_SO_RCVBUFFORCE = 33
 const m_SO_RCVLOWAT = 18
-const m_SO_RCVMARK = 75
 const m_SO_RCVTIMEO = "SO_RCVTIMEO_OLD"
 const m_SO_RCVTIMEO_NEW = 66
 const m_SO_RCVTIMEO_OLD = 20
-const m_SO_RESERVE_MEM = 73
 const m_SO_REUSEADDR = 2
 const m_SO_REUSEPORT = 15
 const m_SO_RXQ_OVFL = 40
@@ -3099,7 +3063,6 @@ const m_SO_TIMESTAMPNS_NEW = 64
 const m_SO_TIMESTAMPNS_OLD = 35
 const m_SO_TIMESTAMP_NEW = 63
 const m_SO_TIMESTAMP_OLD = 29
-const m_SO_TXREHASH = 74
 const m_SO_TXTIME = 61
 const m_SO_TYPE = 3
 const m_SO_WIFI_STATUS = 41
@@ -3279,6 +3242,7 @@ const m__BITS_SS_FLAGS_H = 1
 const m__BITS_STAT_H = 1
 const m__BITS_STDINT_INTN_H = 1
 const m__BITS_STDINT_UINTN_H = 1
+const m__BITS_STRING_FORTIFIED_H = 1
 const m__BITS_STRUCT_STAT_H = 1
 const m__BITS_TIME_H = 1
 const m__BITS_TYPES_LOCALE_T_H = 1
@@ -3454,7 +3418,6 @@ const m__XOPEN_XPG2 = 1
 const m__XOPEN_XPG3 = 1
 const m__XOPEN_XPG4 = 1
 const m___BIG_ENDIAN = 4321
-const m___BITS_PER_LONG_LONG = 64
 const m___BIT_TYPES_DEFINED__ = 1
 const m___BYTE_ORDER = "__LITTLE_ENDIAN"
 const m___FLOAT_WORD_ORDER = "__BYTE_ORDER"
@@ -3484,7 +3447,7 @@ const m___LITTLE_ENDIAN = 1234
 const m___MATH_DECLARE_LDOUBLE = 1
 const m___O_CLOEXEC = 02000000
 const m___O_DIRECT = 040000
-const m___O_DIRECTORY = 0200000
+const m___O_DIRECTORY = 65536
 const m___O_DSYNC = 010000
 const m___O_LARGEFILE = 0
 const m___O_NOATIME = 01000000
@@ -3518,6 +3481,8 @@ const m___SI_CLOCK_T = "__clock_t"
 const m___SI_ERRNO_THEN_CODE = 1
 const m___SI_HAVE_SIGSYS = 1
 const m___SI_MAX_SIZE = 128
+const m___STDLIB_MB_LEN_MAX = 16
+const m___STRINGS_FORTIFIED = 1
 const m___S_IEXEC = 0100
 const m___S_IFBLK = 0060000
 const m___S_IFCHR = 0020000
@@ -3957,14 +3922,6 @@ type Tsigstack = struct {
 	Fss_onstack int32
 }
 
-type T__atomic_wide_counter = struct {
-	F__value32 [0]struct {
-		F__low  uint32
-		F__high uint32
-	}
-	F__value64 uint64
-}
-
 type T__pthread_list_t = struct {
 	F__prev uintptr
 	F__next uintptr
@@ -4003,8 +3960,20 @@ type T__pthread_rwlock_arch_t = struct {
 }
 
 type T__pthread_cond_s = struct {
-	F__wseq         T__atomic_wide_counter
-	F__g1_start     T__atomic_wide_counter
+	F__ccgo0_0 struct {
+		F__wseq32 [0]struct {
+			F__low  uint32
+			F__high uint32
+		}
+		F__wseq uint64
+	}
+	F__ccgo1_8 struct {
+		F__g1_start32 [0]struct {
+			F__low  uint32
+			F__high uint32
+		}
+		F__g1_start uint64
+	}
 	F__g_refs       [2]uint32
 	F__g_size       [2]uint32
 	F__g1_orig_size uint32
@@ -4259,7 +4228,6 @@ type Tidtype_t = int32
 const _P_ALL = 0
 const _P_PID = 1
 const _P_PGID = 2
-const _P_PIDFD = 3
 
 type Tuint8_t = uint8
 
@@ -4804,6 +4772,12 @@ type Tip_opts = struct {
 	Fip_opts [40]uint8
 }
 
+type Tip_mreqn = struct {
+	Fimr_multiaddr Tin_addr
+	Fimr_address   Tin_addr
+	Fimr_ifindex   int32
+}
+
 type Tin_pktinfo = struct {
 	Fipi_ifindex  int32
 	Fipi_spec_dst Tin_addr
@@ -4831,7 +4805,6 @@ const _IPPROTO_BEETPH = 94
 const _IPPROTO_ENCAP = 98
 const _IPPROTO_PIM = 103
 const _IPPROTO_COMP = 108
-const _IPPROTO_L2TP = 115
 const _IPPROTO_SCTP = 132
 const _IPPROTO_UDPLITE = 136
 const _IPPROTO_MPLS = 137
@@ -4902,12 +4875,6 @@ type Tsockaddr_in6 = struct {
 type Tip_mreq = struct {
 	Fimr_multiaddr Tin_addr
 	Fimr_interface Tin_addr
-}
-
-type Tip_mreqn = struct {
-	Fimr_multiaddr Tin_addr
-	Fimr_address   Tin_addr
-	Fimr_ifindex   int32
 }
 
 type Tip_mreq_source = struct {
@@ -39146,8 +39113,6 @@ of fpclassify in cmath (which undefines fpclassify).  */
 
 /* Some useful constants.  */
 
-/* GNU extension to provide float constants with similar names.  */
-
 /* The above constants are not adequate for computation using `long double's.
    Therefore we provide as an extension constants with similar names as a
    GNU extension.  Provide enough digits for the 128-bit IEEE quad.  */
@@ -39157,9 +39122,9 @@ of fpclassify in cmath (which undefines fpclassify).  */
    these operations.  Generic support in GCC for these as builtins went
    in 2.97, but not all cpus added their patterns until 3.1.  Therefore
    we enable the builtins from 3.1 onwards and use a generic implementation
-   otherwise.  */
+   othwerwise.  */
 
-/* Copyright (C) 1991-2023 Free Software Foundation, Inc.
+/* Copyright (C) 1991-2021 Free Software Foundation, Inc.
    This file is part of the GNU C Library.
 
    The GNU C Library is free software; you can redistribute it and/or
@@ -39180,7 +39145,7 @@ of fpclassify in cmath (which undefines fpclassify).  */
  *	ISO C99 Standard: 7.2 Diagnostics	<assert.h>
  */
 
-/* Copyright (C) 1991-2023 Free Software Foundation, Inc.
+/* Copyright (C) 1991-2021 Free Software Foundation, Inc.
    This file is part of the GNU C Library.
 
    The GNU C Library is free software; you can redistribute it and/or
@@ -153591,8 +153556,6 @@ of fpclassify in cmath (which undefines fpclassify).  */
 
 /* Some useful constants.  */
 
-/* GNU extension to provide float constants with similar names.  */
-
 /* The above constants are not adequate for computation using `long double's.
    Therefore we provide as an extension constants with similar names as a
    GNU extension.  Provide enough digits for the 128-bit IEEE quad.  */
@@ -153602,9 +153565,9 @@ of fpclassify in cmath (which undefines fpclassify).  */
    these operations.  Generic support in GCC for these as builtins went
    in 2.97, but not all cpus added their patterns until 3.1.  Therefore
    we enable the builtins from 3.1 onwards and use a generic implementation
-   otherwise.  */
+   othwerwise.  */
 
-/* Copyright (C) 1991-2023 Free Software Foundation, Inc.
+/* Copyright (C) 1991-2021 Free Software Foundation, Inc.
    This file is part of the GNU C Library.
 
    The GNU C Library is free software; you can redistribute it and/or
@@ -153625,7 +153588,7 @@ of fpclassify in cmath (which undefines fpclassify).  */
  *	ISO C99 Standard: 7.2 Diagnostics	<assert.h>
  */
 
-/* Copyright (C) 1991-2023 Free Software Foundation, Inc.
+/* Copyright (C) 1991-2021 Free Software Foundation, Inc.
    This file is part of the GNU C Library.
 
    The GNU C Library is free software; you can redistribute it and/or
@@ -186742,7 +186705,7 @@ const m___LONG_MAX__7 = 9223372036854775807
  * fill-column: 78
  * End:
  */
-/* Copyright (C) 1991-2023 Free Software Foundation, Inc.
+/* Copyright (C) 1991-2021 Free Software Foundation, Inc.
    This file is part of the GNU C Library.
 
    The GNU C Library is free software; you can redistribute it and/or
@@ -186763,7 +186726,7 @@ const m___LONG_MAX__7 = 9223372036854775807
  *	ISO C99 Standard: 7.2 Diagnostics	<assert.h>
  */
 
-/* Copyright (C) 1991-2023 Free Software Foundation, Inc.
+/* Copyright (C) 1991-2021 Free Software Foundation, Inc.
    This file is part of the GNU C Library.
 
    The GNU C Library is free software; you can redistribute it and/or
@@ -205319,7 +205282,6 @@ func x_TclCreateSocketAddress(tls *libc.TLS, interp uintptr, addrlist uintptr, h
 
 const m_AI_PASSIVE2 = 0x0001
 const m_O_APPEND1 = 1024
-const m_O_CREAT1 = 64
 const m_O_EXCL1 = 128
 const m_O_NOCTTY1 = 256
 const m_O_NONBLOCK3 = 2048
@@ -206760,13 +206722,13 @@ func x_TclGetOpenModeEx(tls *libc.TLS, interp uintptr, modeString uintptr, seekF
 		case int32('r'):
 			mode = m_O_RDONLY4
 		case int32('w'):
-			mode = libc.Int32FromInt32(m_O_WRONLY3) | libc.Int32FromInt32(m_O_CREAT1) | libc.Int32FromInt32(m_O_TRUNC1)
+			mode = libc.Int32FromInt32(m_O_WRONLY3) | libc.Int32FromInt32(m_O_CREAT) | libc.Int32FromInt32(m_O_TRUNC1)
 		case int32('a'):
 			/*
 			 * Added O_APPEND for proper automatic seek-to-end-on-write by the
 			 * OS. [Bug 680143]
 			 */
-			mode = libc.Int32FromInt32(m_O_WRONLY3) | libc.Int32FromInt32(m_O_CREAT1) | libc.Int32FromInt32(m_O_APPEND1)
+			mode = libc.Int32FromInt32(m_O_WRONLY3) | libc.Int32FromInt32(m_O_CREAT) | libc.Int32FromInt32(m_O_APPEND1)
 			*(*int32)(unsafe.Pointer(seekFlagPtr)) = int32(1)
 		default:
 			goto error
@@ -206846,7 +206808,7 @@ func x_TclGetOpenModeEx(tls *libc.TLS, interp uintptr, modeString uintptr, seekF
 						*(*int32)(unsafe.Pointer(seekFlagPtr)) = int32(1)
 					} else {
 						if c == int32('C') && libc.Xstrcmp(tls, flag, __ccgo_ts+53060) == 0 {
-							mode |= int32(m_O_CREAT1)
+							mode |= int32(m_O_CREAT)
 						} else {
 							if c == int32('E') && libc.Xstrcmp(tls, flag, __ccgo_ts+53066) == 0 {
 								mode |= int32(m_O_EXCL1)
@@ -209982,7 +209944,6 @@ type TFilesystemRecord1 = struct {
 const m_LINK_BEING_UPDATED = 2
 const m_LINK_READ_ONLY = 1
 const m_O_APPEND2 = 02000
-const m_O_CREAT2 = 0100
 const m_O_EXCL2 = 0200
 const m_O_NOCTTY2 = 0400
 const m_O_NONBLOCK4 = 04000
@@ -222382,8 +222343,6 @@ of fpclassify in cmath (which undefines fpclassify).  */
 
 /* Some useful constants.  */
 
-/* GNU extension to provide float constants with similar names.  */
-
 /* The above constants are not adequate for computation using `long double's.
    Therefore we provide as an extension constants with similar names as a
    GNU extension.  Provide enough digits for the 128-bit IEEE quad.  */
@@ -222393,7 +222352,7 @@ of fpclassify in cmath (which undefines fpclassify).  */
    these operations.  Generic support in GCC for these as builtins went
    in 2.97, but not all cpus added their patterns until 3.1.  Therefore
    we enable the builtins from 3.1 onwards and use a generic implementation
-   otherwise.  */
+   othwerwise.  */
 
 /*
  * Table of all object types.
@@ -232676,7 +232635,6 @@ func x_TclNativePathInFilesystem(tls *libc.TLS, pathPtr uintptr, clientDataPtr u
 }
 
 const m_O_APPEND3 = 1024
-const m_O_CREAT3 = 64
 const m_O_RDONLY6 = 0
 const m_O_TRUNC3 = 512
 const m_O_WRONLY5 = 1
@@ -233252,7 +233210,7 @@ func x_TclCreatePipeline(tls *libc.TLS, interp uintptr, argc int32, argv uintptr
 			}
 		case int32('>'):
 			atOK = int32(1)
-			flags = libc.Int32FromInt32(m_O_WRONLY5) | libc.Int32FromInt32(m_O_CREAT3) | libc.Int32FromInt32(m_O_TRUNC3)
+			flags = libc.Int32FromInt32(m_O_WRONLY5) | libc.Int32FromInt32(m_O_CREAT) | libc.Int32FromInt32(m_O_TRUNC3)
 			if int32(*(*uint8)(unsafe.Pointer(p))) == int32('>') {
 				p++
 				atOK = 0
@@ -233260,7 +233218,7 @@ func x_TclCreatePipeline(tls *libc.TLS, interp uintptr, argc int32, argv uintptr
 				 * Note that the O_APPEND flag only has an effect on POSIX
 				 * platforms. On Windows, we just have to carry on regardless.
 				 */
-				flags = libc.Int32FromInt32(m_O_WRONLY5) | libc.Int32FromInt32(m_O_CREAT3) | libc.Int32FromInt32(m_O_APPEND3)
+				flags = libc.Int32FromInt32(m_O_WRONLY5) | libc.Int32FromInt32(m_O_CREAT) | libc.Int32FromInt32(m_O_APPEND3)
 			}
 			if int32(*(*uint8)(unsafe.Pointer(p))) == int32('&') {
 				if *(*int32)(unsafe.Pointer(bp + 32)) != 0 {
@@ -233315,7 +233273,7 @@ func x_TclCreatePipeline(tls *libc.TLS, interp uintptr, argc int32, argv uintptr
 			}
 			p++
 			atOK = int32(1)
-			flags = libc.Int32FromInt32(m_O_WRONLY5) | libc.Int32FromInt32(m_O_CREAT3) | libc.Int32FromInt32(m_O_TRUNC3)
+			flags = libc.Int32FromInt32(m_O_WRONLY5) | libc.Int32FromInt32(m_O_CREAT) | libc.Int32FromInt32(m_O_TRUNC3)
 			if int32(*(*uint8)(unsafe.Pointer(p))) == int32('>') {
 				p++
 				atOK = 0
@@ -233323,7 +233281,7 @@ func x_TclCreatePipeline(tls *libc.TLS, interp uintptr, argc int32, argv uintptr
 				 * Note that the O_APPEND flag only has an effect on POSIX
 				 * platforms. On Windows, we just have to carry on regardless.
 				 */
-				flags = libc.Int32FromInt32(m_O_WRONLY5) | libc.Int32FromInt32(m_O_CREAT3) | libc.Int32FromInt32(m_O_APPEND3)
+				flags = libc.Int32FromInt32(m_O_WRONLY5) | libc.Int32FromInt32(m_O_CREAT) | libc.Int32FromInt32(m_O_APPEND3)
 			}
 			if *(*int32)(unsafe.Pointer(bp + 32)) != 0 {
 				*(*int32)(unsafe.Pointer(bp + 32)) = 0
@@ -233776,7 +233734,6 @@ error:
 }
 
 const m_O_APPEND4 = 02000
-const m_O_CREAT4 = 0100
 const m_O_RDONLY7 = 00
 const m_O_TRUNC4 = 01000
 const m_O_WRONLY6 = 01
@@ -249132,8 +249089,6 @@ of fpclassify in cmath (which undefines fpclassify).  */
 
 /* Some useful constants.  */
 
-/* GNU extension to provide float constants with similar names.  */
-
 /* The above constants are not adequate for computation using `long double's.
    Therefore we provide as an extension constants with similar names as a
    GNU extension.  Provide enough digits for the 128-bit IEEE quad.  */
@@ -249143,7 +249098,7 @@ of fpclassify in cmath (which undefines fpclassify).  */
    these operations.  Generic support in GCC for these as builtins went
    in 2.97, but not all cpus added their patterns until 3.1.  Therefore
    we enable the builtins from 3.1 onwards and use a generic implementation
-   otherwise.  */
+   othwerwise.  */
 
 /*
  * Define KILL_OCTAL to suppress interpretation of numbers with leading zero
@@ -274887,8 +274842,6 @@ of fpclassify in cmath (which undefines fpclassify).  */
 
 /* Some useful constants.  */
 
-/* GNU extension to provide float constants with similar names.  */
-
 /* The above constants are not adequate for computation using `long double's.
    Therefore we provide as an extension constants with similar names as a
    GNU extension.  Provide enough digits for the 128-bit IEEE quad.  */
@@ -274898,7 +274851,7 @@ of fpclassify in cmath (which undefines fpclassify).  */
    these operations.  Generic support in GCC for these as builtins went
    in 2.97, but not all cpus added their patterns until 3.1.  Therefore
    we enable the builtins from 3.1 onwards and use a generic implementation
-   otherwise.  */
+   othwerwise.  */
 
 /*
  * The absolute pathname of the executable in which this Tcl library is
@@ -291584,6 +291537,7 @@ func x_TclUnixWaitForFile(tls *libc.TLS, fd int32, mask int32, timeout int32) (r
 	 * at all, and a value of -1 means wait
 	 * forever. */
 	var __arr, __arr1, __arr2, timeoutPtr uintptr
+	var __d, __d1, __d2, __d3, __d4, __d5, v4, v5, v6, v7, v8, v9 int64
 	var __i, __i1, __i2 uint32
 	var abortTime TTcl_Time
 	var numFound, result int32
@@ -291592,7 +291546,7 @@ func x_TclUnixWaitForFile(tls *libc.TLS, fd int32, mask int32, timeout int32) (r
 	var _ /* now at bp+0 */ TTcl_Time
 	var _ /* readableMask at bp+32 */ Tfd_set
 	var _ /* writableMask at bp+160 */ Tfd_set
-	_, _, _, _, _, _, _, _, _, _ = __arr, __arr1, __arr2, __i, __i1, __i2, abortTime, numFound, result, timeoutPtr
+	_, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _ = __arr, __arr1, __arr2, __d, __d1, __d2, __d3, __d4, __d5, __i, __i1, __i2, abortTime, numFound, result, timeoutPtr, v4, v5, v6, v7, v8, v9
 	abortTime = TTcl_Time{}
 	result = 0
 	/*
@@ -291684,26 +291638,50 @@ func x_TclUnixWaitForFile(tls *libc.TLS, fd int32, mask int32, timeout int32) (r
 		 * Setup the select masks for the fd.
 		 */
 		if mask&(libc.Int32FromInt32(1)<<libc.Int32FromInt32(1)) != 0 {
-			*(*T__fd_mask)(unsafe.Pointer(bp + 32 + uintptr(fd/(libc.Int32FromInt32(8)*libc.Int32FromInt64(8)))*8)) |= int64(libc.Uint64FromUint64(1) << (fd % (libc.Int32FromInt32(8) * libc.Int32FromInt64(8))))
+			{
+				__d = int64(fd)
+				v4 = libc.X__fdelt_chk(tls, __d)
+			}
+			*(*T__fd_mask)(unsafe.Pointer(bp + 32 + uintptr(v4)*8)) |= int64(libc.Uint64FromUint64(1) << (fd % (libc.Int32FromInt32(8) * libc.Int32FromInt64(8))))
 		}
 		if mask&(libc.Int32FromInt32(1)<<libc.Int32FromInt32(2)) != 0 {
-			*(*T__fd_mask)(unsafe.Pointer(bp + 160 + uintptr(fd/(libc.Int32FromInt32(8)*libc.Int32FromInt64(8)))*8)) |= int64(libc.Uint64FromUint64(1) << (fd % (libc.Int32FromInt32(8) * libc.Int32FromInt64(8))))
+			{
+				__d1 = int64(fd)
+				v5 = libc.X__fdelt_chk(tls, __d1)
+			}
+			*(*T__fd_mask)(unsafe.Pointer(bp + 160 + uintptr(v5)*8)) |= int64(libc.Uint64FromUint64(1) << (fd % (libc.Int32FromInt32(8) * libc.Int32FromInt64(8))))
 		}
 		if mask&(libc.Int32FromInt32(1)<<libc.Int32FromInt32(3)) != 0 {
-			*(*T__fd_mask)(unsafe.Pointer(bp + 288 + uintptr(fd/(libc.Int32FromInt32(8)*libc.Int32FromInt64(8)))*8)) |= int64(libc.Uint64FromUint64(1) << (fd % (libc.Int32FromInt32(8) * libc.Int32FromInt64(8))))
+			{
+				__d2 = int64(fd)
+				v6 = libc.X__fdelt_chk(tls, __d2)
+			}
+			*(*T__fd_mask)(unsafe.Pointer(bp + 288 + uintptr(v6)*8)) |= int64(libc.Uint64FromUint64(1) << (fd % (libc.Int32FromInt32(8) * libc.Int32FromInt64(8))))
 		}
 		/*
 		 * Wait for the event or a timeout.
 		 */
 		numFound = libc.Xselect(tls, fd+int32(1), bp+32, bp+160, bp+288, timeoutPtr)
 		if numFound == int32(1) {
-			if *(*T__fd_mask)(unsafe.Pointer(bp + 32 + uintptr(fd/(libc.Int32FromInt32(8)*libc.Int32FromInt64(8)))*8))&int64(libc.Uint64FromUint64(1)<<(fd%(libc.Int32FromInt32(8)*libc.Int32FromInt64(8)))) != 0 {
+			{
+				__d3 = int64(fd)
+				v7 = libc.X__fdelt_chk(tls, __d3)
+			}
+			if *(*T__fd_mask)(unsafe.Pointer(bp + 32 + uintptr(v7)*8))&int64(libc.Uint64FromUint64(1)<<(fd%(libc.Int32FromInt32(8)*libc.Int32FromInt64(8)))) != 0 {
 				result |= libc.Int32FromInt32(1) << libc.Int32FromInt32(1)
 			}
-			if *(*T__fd_mask)(unsafe.Pointer(bp + 160 + uintptr(fd/(libc.Int32FromInt32(8)*libc.Int32FromInt64(8)))*8))&int64(libc.Uint64FromUint64(1)<<(fd%(libc.Int32FromInt32(8)*libc.Int32FromInt64(8)))) != 0 {
+			{
+				__d4 = int64(fd)
+				v8 = libc.X__fdelt_chk(tls, __d4)
+			}
+			if *(*T__fd_mask)(unsafe.Pointer(bp + 160 + uintptr(v8)*8))&int64(libc.Uint64FromUint64(1)<<(fd%(libc.Int32FromInt32(8)*libc.Int32FromInt64(8)))) != 0 {
 				result |= libc.Int32FromInt32(1) << libc.Int32FromInt32(2)
 			}
-			if *(*T__fd_mask)(unsafe.Pointer(bp + 288 + uintptr(fd/(libc.Int32FromInt32(8)*libc.Int32FromInt64(8)))*8))&int64(libc.Uint64FromUint64(1)<<(fd%(libc.Int32FromInt32(8)*libc.Int32FromInt64(8)))) != 0 {
+			{
+				__d5 = int64(fd)
+				v9 = libc.X__fdelt_chk(tls, __d5)
+			}
+			if *(*T__fd_mask)(unsafe.Pointer(bp + 288 + uintptr(v9)*8))&int64(libc.Uint64FromUint64(1)<<(fd%(libc.Int32FromInt32(8)*libc.Int32FromInt64(8)))) != 0 {
 				result |= libc.Int32FromInt32(1) << libc.Int32FromInt32(3)
 			}
 			result &= mask
@@ -291841,7 +291819,6 @@ const m_DOTREE_F = 3
 const m_DOTREE_POSTD = 2
 const m_DOTREE_PRED = 1
 const m_MAX_READDIR_UNLINK_THRESHOLD = 130
-const m_O_CREAT5 = 64
 const m_O_RDONLY10 = 0
 const m_O_TRUNC5 = 512
 const m_O_WRONLY9 = 1
@@ -292103,7 +292080,7 @@ func x_TclUnixCopyFile(tls *libc.TLS, src uintptr, dst uintptr, statBufPtr uintp
 	if v1 < 0 { /* INTL: Native */
 		return int32(m_TCL_ERROR)
 	}
-	dstFd = libc.Xopen(tls, dst, libc.Int32FromInt32(m_O_CREAT5)|libc.Int32FromInt32(m_O_TRUNC5)|libc.Int32FromInt32(m_O_WRONLY9), libc.VaList(bp+8, (*TTcl_StatBuf)(unsafe.Pointer(statBufPtr)).Fst_mode))
+	dstFd = libc.Xopen(tls, dst, libc.Int32FromInt32(m_O_CREAT)|libc.Int32FromInt32(m_O_TRUNC5)|libc.Int32FromInt32(m_O_WRONLY9), libc.VaList(bp+8, (*TTcl_StatBuf)(unsafe.Pointer(statBufPtr)).Fst_mode))
 	if dstFd < 0 {
 		libc.Xclose(tls, srcFd)
 		return int32(m_TCL_ERROR)
@@ -293624,7 +293601,6 @@ func _DefaultTempDir(tls *libc.TLS) (r uintptr) {
 	return __ccgo_ts + 74780
 }
 
-const m_O_CREAT6 = 0100
 const m_O_RDONLY11 = 00
 const m_O_TRUNC6 = 01000
 const m_O_WRONLY10 = 01
@@ -299439,7 +299415,7 @@ const m_O_NONBLOCK5 = 2048
  * fill-column: 78
  * End:
  */
-/* Copyright (C) 1991-2023 Free Software Foundation, Inc.
+/* Copyright (C) 1991-2021 Free Software Foundation, Inc.
    This file is part of the GNU C Library.
 
    The GNU C Library is free software; you can redistribute it and/or
@@ -299460,7 +299436,7 @@ const m_O_NONBLOCK5 = 2048
  *	POSIX Standard: 9.2.2 User Database Access	<pwd.h>
  */
 
-/* Copyright (C) 1991-2023 Free Software Foundation, Inc.
+/* Copyright (C) 1991-2021 Free Software Foundation, Inc.
    This file is part of the GNU C Library.
 
    The GNU C Library is free software; you can redistribute it and/or
@@ -299481,7 +299457,7 @@ const m_O_NONBLOCK5 = 2048
  *	POSIX Standard: 9.2.1 Group Database Access	<grp.h>
  */
 
-/* Copyright (C) 1991-2023 Free Software Foundation, Inc.
+/* Copyright (C) 1991-2021 Free Software Foundation, Inc.
    This file is part of the GNU C Library.
 
    The GNU C Library is free software; you can redistribute it and/or
@@ -299502,7 +299478,7 @@ const m_O_NONBLOCK5 = 2048
  *	ISO C99 Standard: 7.5 Errors	<errno.h>
  */
 
-/* Copyright (C) 1991-2023 Free Software Foundation, Inc.
+/* Copyright (C) 1991-2021 Free Software Foundation, Inc.
    This file is part of the GNU C Library.
 
    The GNU C Library is free software; you can redistribute it and/or
@@ -299855,7 +299831,7 @@ const m_RESET_ATFORK_MUTEX = 1
  * fill-column: 78
  * End:
  */
-/* Copyright (C) 1991-2023 Free Software Foundation, Inc.
+/* Copyright (C) 1991-2021 Free Software Foundation, Inc.
    This file is part of the GNU C Library.
 
    The GNU C Library is free software; you can redistribute it and/or
@@ -300089,8 +300065,9 @@ func x_Tcl_ServiceModeHook(tls *libc.TLS, mode int32) {
 
 func x_Tcl_CreateFileHandler(tls *libc.TLS, fd int32, mask int32, proc uintptr, clientData uintptr) {
 	/* Arbitrary data to pass to proc. */
+	var __d, __d1, __d2, __d3, __d4, __d5, v2, v3, v4, v5, v6, v7 int64
 	var filePtr, tsdPtr uintptr
-	_, _ = filePtr, tsdPtr
+	_, _, _, _, _, _, _, _, _, _, _, _, _, _ = __d, __d1, __d2, __d3, __d4, __d5, filePtr, tsdPtr, v2, v3, v4, v5, v6, v7
 	if x_tclNotifierHooks.FcreateFileHandlerProc != 0 {
 		(*(*func(*libc.TLS, int32, int32, uintptr, TClientData))(unsafe.Pointer(&struct{ uintptr }{x_tclNotifierHooks.FcreateFileHandlerProc})))(tls, fd, mask, proc, clientData)
 		return
@@ -300123,19 +300100,43 @@ func x_Tcl_CreateFileHandler(tls *libc.TLS, fd int32, mask int32, proc uintptr, 
 		 * Update the check masks for this file.
 		 */
 		if mask&(libc.Int32FromInt32(1)<<libc.Int32FromInt32(1)) != 0 {
-			*(*T__fd_mask)(unsafe.Pointer(tsdPtr + 8 + uintptr(fd/(libc.Int32FromInt32(8)*libc.Int32FromInt64(8)))*8)) |= int64(libc.Uint64FromUint64(1) << (fd % (libc.Int32FromInt32(8) * libc.Int32FromInt64(8))))
+			{
+				__d = int64(fd)
+				v2 = libc.X__fdelt_chk(tls, __d)
+			}
+			*(*T__fd_mask)(unsafe.Pointer(tsdPtr + 8 + uintptr(v2)*8)) |= int64(libc.Uint64FromUint64(1) << (fd % (libc.Int32FromInt32(8) * libc.Int32FromInt64(8))))
 		} else {
-			*(*T__fd_mask)(unsafe.Pointer(tsdPtr + 8 + uintptr(fd/(libc.Int32FromInt32(8)*libc.Int32FromInt64(8)))*8)) &= ^int64(libc.Uint64FromUint64(1) << (fd % (libc.Int32FromInt32(8) * libc.Int32FromInt64(8))))
+			{
+				__d1 = int64(fd)
+				v3 = libc.X__fdelt_chk(tls, __d1)
+			}
+			*(*T__fd_mask)(unsafe.Pointer(tsdPtr + 8 + uintptr(v3)*8)) &= ^int64(libc.Uint64FromUint64(1) << (fd % (libc.Int32FromInt32(8) * libc.Int32FromInt64(8))))
 		}
 		if mask&(libc.Int32FromInt32(1)<<libc.Int32FromInt32(2)) != 0 {
-			*(*T__fd_mask)(unsafe.Pointer(tsdPtr + 8 + 128 + uintptr(fd/(libc.Int32FromInt32(8)*libc.Int32FromInt64(8)))*8)) |= int64(libc.Uint64FromUint64(1) << (fd % (libc.Int32FromInt32(8) * libc.Int32FromInt64(8))))
+			{
+				__d2 = int64(fd)
+				v4 = libc.X__fdelt_chk(tls, __d2)
+			}
+			*(*T__fd_mask)(unsafe.Pointer(tsdPtr + 8 + 128 + uintptr(v4)*8)) |= int64(libc.Uint64FromUint64(1) << (fd % (libc.Int32FromInt32(8) * libc.Int32FromInt64(8))))
 		} else {
-			*(*T__fd_mask)(unsafe.Pointer(tsdPtr + 8 + 128 + uintptr(fd/(libc.Int32FromInt32(8)*libc.Int32FromInt64(8)))*8)) &= ^int64(libc.Uint64FromUint64(1) << (fd % (libc.Int32FromInt32(8) * libc.Int32FromInt64(8))))
+			{
+				__d3 = int64(fd)
+				v5 = libc.X__fdelt_chk(tls, __d3)
+			}
+			*(*T__fd_mask)(unsafe.Pointer(tsdPtr + 8 + 128 + uintptr(v5)*8)) &= ^int64(libc.Uint64FromUint64(1) << (fd % (libc.Int32FromInt32(8) * libc.Int32FromInt64(8))))
 		}
 		if mask&(libc.Int32FromInt32(1)<<libc.Int32FromInt32(3)) != 0 {
-			*(*T__fd_mask)(unsafe.Pointer(tsdPtr + 8 + 256 + uintptr(fd/(libc.Int32FromInt32(8)*libc.Int32FromInt64(8)))*8)) |= int64(libc.Uint64FromUint64(1) << (fd % (libc.Int32FromInt32(8) * libc.Int32FromInt64(8))))
+			{
+				__d4 = int64(fd)
+				v6 = libc.X__fdelt_chk(tls, __d4)
+			}
+			*(*T__fd_mask)(unsafe.Pointer(tsdPtr + 8 + 256 + uintptr(v6)*8)) |= int64(libc.Uint64FromUint64(1) << (fd % (libc.Int32FromInt32(8) * libc.Int32FromInt64(8))))
 		} else {
-			*(*T__fd_mask)(unsafe.Pointer(tsdPtr + 8 + 256 + uintptr(fd/(libc.Int32FromInt32(8)*libc.Int32FromInt64(8)))*8)) &= ^int64(libc.Uint64FromUint64(1) << (fd % (libc.Int32FromInt32(8) * libc.Int32FromInt64(8))))
+			{
+				__d5 = int64(fd)
+				v7 = libc.X__fdelt_chk(tls, __d5)
+			}
+			*(*T__fd_mask)(unsafe.Pointer(tsdPtr + 8 + 256 + uintptr(v7)*8)) &= ^int64(libc.Uint64FromUint64(1) << (fd % (libc.Int32FromInt32(8) * libc.Int32FromInt64(8))))
 		}
 		if (*TThreadSpecificData13)(unsafe.Pointer(tsdPtr)).FnumFdBits <= fd {
 			(*TThreadSpecificData13)(unsafe.Pointer(tsdPtr)).FnumFdBits = fd + int32(1)
@@ -300162,9 +300163,11 @@ func x_Tcl_CreateFileHandler(tls *libc.TLS, fd int32, mask int32, proc uintptr, 
 func x_Tcl_DeleteFileHandler(tls *libc.TLS, fd int32) {
 	/* Stream id for which to remove callback
 	 * function. */
+	var __d, __d1, __d2, __d3, __d4, __d5, v2, v3, v4, v6, v7, v9 int64
 	var filePtr, prevPtr, tsdPtr uintptr
 	var i, numFdBits int32
-	_, _, _, _, _ = filePtr, i, numFdBits, prevPtr, tsdPtr
+	var v10, v8 bool
+	_, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _ = __d, __d1, __d2, __d3, __d4, __d5, filePtr, i, numFdBits, prevPtr, tsdPtr, v10, v2, v3, v4, v6, v7, v8, v9
 	if x_tclNotifierHooks.FdeleteFileHandlerProc != 0 {
 		(*(*func(*libc.TLS, int32))(unsafe.Pointer(&struct{ uintptr }{x_tclNotifierHooks.FdeleteFileHandlerProc})))(tls, fd)
 		return
@@ -300192,13 +300195,25 @@ func x_Tcl_DeleteFileHandler(tls *libc.TLS, fd int32) {
 		 * Update the check masks for this file.
 		 */
 		if (*TFileHandler)(unsafe.Pointer(filePtr)).Fmask&(libc.Int32FromInt32(1)<<libc.Int32FromInt32(1)) != 0 {
-			*(*T__fd_mask)(unsafe.Pointer(tsdPtr + 8 + uintptr(fd/(libc.Int32FromInt32(8)*libc.Int32FromInt64(8)))*8)) &= ^int64(libc.Uint64FromUint64(1) << (fd % (libc.Int32FromInt32(8) * libc.Int32FromInt64(8))))
+			{
+				__d = int64(fd)
+				v2 = libc.X__fdelt_chk(tls, __d)
+			}
+			*(*T__fd_mask)(unsafe.Pointer(tsdPtr + 8 + uintptr(v2)*8)) &= ^int64(libc.Uint64FromUint64(1) << (fd % (libc.Int32FromInt32(8) * libc.Int32FromInt64(8))))
 		}
 		if (*TFileHandler)(unsafe.Pointer(filePtr)).Fmask&(libc.Int32FromInt32(1)<<libc.Int32FromInt32(2)) != 0 {
-			*(*T__fd_mask)(unsafe.Pointer(tsdPtr + 8 + 128 + uintptr(fd/(libc.Int32FromInt32(8)*libc.Int32FromInt64(8)))*8)) &= ^int64(libc.Uint64FromUint64(1) << (fd % (libc.Int32FromInt32(8) * libc.Int32FromInt64(8))))
+			{
+				__d1 = int64(fd)
+				v3 = libc.X__fdelt_chk(tls, __d1)
+			}
+			*(*T__fd_mask)(unsafe.Pointer(tsdPtr + 8 + 128 + uintptr(v3)*8)) &= ^int64(libc.Uint64FromUint64(1) << (fd % (libc.Int32FromInt32(8) * libc.Int32FromInt64(8))))
 		}
 		if (*TFileHandler)(unsafe.Pointer(filePtr)).Fmask&(libc.Int32FromInt32(1)<<libc.Int32FromInt32(3)) != 0 {
-			*(*T__fd_mask)(unsafe.Pointer(tsdPtr + 8 + 256 + uintptr(fd/(libc.Int32FromInt32(8)*libc.Int32FromInt64(8)))*8)) &= ^int64(libc.Uint64FromUint64(1) << (fd % (libc.Int32FromInt32(8) * libc.Int32FromInt64(8))))
+			{
+				__d2 = int64(fd)
+				v4 = libc.X__fdelt_chk(tls, __d2)
+			}
+			*(*T__fd_mask)(unsafe.Pointer(tsdPtr + 8 + 256 + uintptr(v4)*8)) &= ^int64(libc.Uint64FromUint64(1) << (fd % (libc.Int32FromInt32(8) * libc.Int32FromInt64(8))))
 		}
 		/*
 		 * Find current max fd.
@@ -300210,12 +300225,28 @@ func x_Tcl_DeleteFileHandler(tls *libc.TLS, fd int32) {
 				if !(i >= 0) {
 					break
 				}
-				if *(*T__fd_mask)(unsafe.Pointer(tsdPtr + 8 + uintptr(i/(libc.Int32FromInt32(8)*libc.Int32FromInt64(8)))*8))&int64(libc.Uint64FromUint64(1)<<(i%(libc.Int32FromInt32(8)*libc.Int32FromInt64(8)))) != 0 || *(*T__fd_mask)(unsafe.Pointer(tsdPtr + 8 + 128 + uintptr(i/(libc.Int32FromInt32(8)*libc.Int32FromInt64(8)))*8))&int64(libc.Uint64FromUint64(1)<<(i%(libc.Int32FromInt32(8)*libc.Int32FromInt64(8)))) != 0 || *(*T__fd_mask)(unsafe.Pointer(tsdPtr + 8 + 256 + uintptr(i/(libc.Int32FromInt32(8)*libc.Int32FromInt64(8)))*8))&int64(libc.Uint64FromUint64(1)<<(i%(libc.Int32FromInt32(8)*libc.Int32FromInt64(8)))) != 0 {
+				{
+					__d3 = int64(i)
+					v6 = libc.X__fdelt_chk(tls, __d3)
+				}
+				if v8 = *(*T__fd_mask)(unsafe.Pointer(tsdPtr + 8 + uintptr(v6)*8))&int64(libc.Uint64FromUint64(1)<<(i%(libc.Int32FromInt32(8)*libc.Int32FromInt64(8)))) != 0; !v8 {
+					{
+						__d4 = int64(i)
+						v7 = libc.X__fdelt_chk(tls, __d4)
+					}
+				}
+				if v10 = v8 || *(*T__fd_mask)(unsafe.Pointer(tsdPtr + 8 + 128 + uintptr(v7)*8))&int64(libc.Uint64FromUint64(1)<<(i%(libc.Int32FromInt32(8)*libc.Int32FromInt64(8)))) != 0; !v10 {
+					{
+						__d5 = int64(i)
+						v9 = libc.X__fdelt_chk(tls, __d5)
+					}
+				}
+				if v10 || *(*T__fd_mask)(unsafe.Pointer(tsdPtr + 8 + 256 + uintptr(v9)*8))&int64(libc.Uint64FromUint64(1)<<(i%(libc.Int32FromInt32(8)*libc.Int32FromInt64(8)))) != 0 {
 					numFdBits = i + int32(1)
 					break
 				}
-				goto _2
-			_2:
+				goto _5
+			_5:
 				;
 				i--
 			}
@@ -300327,11 +300358,12 @@ func x_Tcl_WaitForEvent(tls *libc.TLS, timePtr uintptr) (r int32) {
 	bp := tls.Alloc(32)
 	defer tls.Free(32) /* Maximum block time, or NULL. */
 	var __arr, __arr1, __arr2, fileEvPtr, filePtr, timeoutPtr, tsdPtr uintptr
+	var __d, __d1, __d2, v5, v6, v7 int64
 	var __i, __i1, __i2 uint32
 	var mask, numFound int32
 	var _ /* timeout at bp+16 */ Ttimeval
 	var _ /* vTime at bp+0 */ TTcl_Time
-	_, _, _, _, _, _, _, _, _, _, _, _ = __arr, __arr1, __arr2, __i, __i1, __i2, fileEvPtr, filePtr, mask, numFound, timeoutPtr, tsdPtr
+	_, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _ = __arr, __arr1, __arr2, __d, __d1, __d2, __i, __i1, __i2, fileEvPtr, filePtr, mask, numFound, timeoutPtr, tsdPtr, v5, v6, v7
 	if x_tclNotifierHooks.FwaitForEventProc != 0 {
 		return (*(*func(*libc.TLS, uintptr) int32)(unsafe.Pointer(&struct{ uintptr }{x_tclNotifierHooks.FwaitForEventProc})))(tls, timePtr)
 	} else {
@@ -300422,13 +300454,25 @@ func x_Tcl_WaitForEvent(tls *libc.TLS, timePtr uintptr) (r int32) {
 				break
 			}
 			mask = 0
-			if *(*T__fd_mask)(unsafe.Pointer(tsdPtr + 392 + uintptr((*TFileHandler)(unsafe.Pointer(filePtr)).Ffd/(libc.Int32FromInt32(8)*libc.Int32FromInt64(8)))*8))&int64(libc.Uint64FromUint64(1)<<((*TFileHandler)(unsafe.Pointer(filePtr)).Ffd%(libc.Int32FromInt32(8)*libc.Int32FromInt64(8)))) != 0 {
+			{
+				__d = int64((*TFileHandler)(unsafe.Pointer(filePtr)).Ffd)
+				v5 = libc.X__fdelt_chk(tls, __d)
+			}
+			if *(*T__fd_mask)(unsafe.Pointer(tsdPtr + 392 + uintptr(v5)*8))&int64(libc.Uint64FromUint64(1)<<((*TFileHandler)(unsafe.Pointer(filePtr)).Ffd%(libc.Int32FromInt32(8)*libc.Int32FromInt64(8)))) != 0 {
 				mask |= libc.Int32FromInt32(1) << libc.Int32FromInt32(1)
 			}
-			if *(*T__fd_mask)(unsafe.Pointer(tsdPtr + 392 + 128 + uintptr((*TFileHandler)(unsafe.Pointer(filePtr)).Ffd/(libc.Int32FromInt32(8)*libc.Int32FromInt64(8)))*8))&int64(libc.Uint64FromUint64(1)<<((*TFileHandler)(unsafe.Pointer(filePtr)).Ffd%(libc.Int32FromInt32(8)*libc.Int32FromInt64(8)))) != 0 {
+			{
+				__d1 = int64((*TFileHandler)(unsafe.Pointer(filePtr)).Ffd)
+				v6 = libc.X__fdelt_chk(tls, __d1)
+			}
+			if *(*T__fd_mask)(unsafe.Pointer(tsdPtr + 392 + 128 + uintptr(v6)*8))&int64(libc.Uint64FromUint64(1)<<((*TFileHandler)(unsafe.Pointer(filePtr)).Ffd%(libc.Int32FromInt32(8)*libc.Int32FromInt64(8)))) != 0 {
 				mask |= libc.Int32FromInt32(1) << libc.Int32FromInt32(2)
 			}
-			if *(*T__fd_mask)(unsafe.Pointer(tsdPtr + 392 + 256 + uintptr((*TFileHandler)(unsafe.Pointer(filePtr)).Ffd/(libc.Int32FromInt32(8)*libc.Int32FromInt64(8)))*8))&int64(libc.Uint64FromUint64(1)<<((*TFileHandler)(unsafe.Pointer(filePtr)).Ffd%(libc.Int32FromInt32(8)*libc.Int32FromInt64(8)))) != 0 {
+			{
+				__d2 = int64((*TFileHandler)(unsafe.Pointer(filePtr)).Ffd)
+				v7 = libc.X__fdelt_chk(tls, __d2)
+			}
+			if *(*T__fd_mask)(unsafe.Pointer(tsdPtr + 392 + 256 + uintptr(v7)*8))&int64(libc.Uint64FromUint64(1)<<((*TFileHandler)(unsafe.Pointer(filePtr)).Ffd%(libc.Int32FromInt32(8)*libc.Int32FromInt64(8)))) != 0 {
 				mask |= libc.Int32FromInt32(1) << libc.Int32FromInt32(3)
 			}
 			if !(mask != 0) {
@@ -315059,7 +315103,7 @@ func x_TclBN_mp_clear(tls *libc.TLS, a uintptr) {
 /* LibTomMath, multiple-precision integer library -- Tom St Denis */
 /* SPDX-License-Identifier: Unlicense */
 
-/* Copyright (C) 1989-2023 Free Software Foundation, Inc.
+/* Copyright (C) 1989-2021 Free Software Foundation, Inc.
 
 This file is part of GCC.
 
@@ -316104,7 +316148,7 @@ func x_TclBN_mp_init_copy(tls *libc.TLS, a uintptr, b uintptr) (r Tmp_err) {
 /* LibTomMath, multiple-precision integer library -- Tom St Denis */
 /* SPDX-License-Identifier: Unlicense */
 
-/* Copyright (C) 1989-2023 Free Software Foundation, Inc.
+/* Copyright (C) 1989-2021 Free Software Foundation, Inc.
 
 This file is part of GCC.
 
@@ -317721,8 +317765,6 @@ of fpclassify in cmath (which undefines fpclassify).  */
 
 /* Some useful constants.  */
 
-/* GNU extension to provide float constants with similar names.  */
-
 /* The above constants are not adequate for computation using `long double's.
    Therefore we provide as an extension constants with similar names as a
    GNU extension.  Provide enough digits for the 128-bit IEEE quad.  */
@@ -317732,7 +317774,7 @@ of fpclassify in cmath (which undefines fpclassify).  */
    these operations.  Generic support in GCC for these as builtins went
    in 2.97, but not all cpus added their patterns until 3.1.  Therefore
    we enable the builtins from 3.1 onwards and use a generic implementation
-   otherwise.  */
+   othwerwise.  */
 
 // C documentation
 //
@@ -319848,7 +319890,7 @@ var x_tclByteCodeType = TTcl_ObjType{
 	Fname: __ccgo_ts + 31190,
 }
 
-/* Copyright (C) 1991-2023 Free Software Foundation, Inc.
+/* Copyright (C) 1991-2021 Free Software Foundation, Inc.
    This file is part of the GNU C Library.
 
    The GNU C Library is free software; you can redistribute it and/or
@@ -319869,7 +319911,7 @@ var x_tclByteCodeType = TTcl_ObjType{
  *	ISO C99 Standard: 7.2 Diagnostics	<assert.h>
  */
 
-/* Copyright (C) 1991-2023 Free Software Foundation, Inc.
+/* Copyright (C) 1991-2021 Free Software Foundation, Inc.
    This file is part of the GNU C Library.
 
    The GNU C Library is free software; you can redistribute it and/or
@@ -320298,7 +320340,7 @@ var x_tclIdentityEncoding TTcl_Encoding
  * fill-column: 78
  * End:
  */
-/* Copyright (C) 1991-2023 Free Software Foundation, Inc.
+/* Copyright (C) 1991-2021 Free Software Foundation, Inc.
    This file is part of the GNU C Library.
 
    The GNU C Library is free software; you can redistribute it and/or
@@ -320319,7 +320361,7 @@ var x_tclIdentityEncoding TTcl_Encoding
  *	ISO C99 Standard: 7.2 Diagnostics	<assert.h>
  */
 
-/* Copyright (C) 1991-2023 Free Software Foundation, Inc.
+/* Copyright (C) 1991-2021 Free Software Foundation, Inc.
    This file is part of the GNU C Library.
 
    The GNU C Library is free software; you can redistribute it and/or
