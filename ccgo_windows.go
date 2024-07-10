@@ -1,6 +1,8 @@
-// Code generated for windows/amd64 by 'generator -mlong-double-64 --package-name libsqlite3 --prefix-enumerator=_ --prefix-external=x_ --prefix-field=F --prefix-static-internal=_ --prefix-static-none=_ --prefix-tagged-enum=_ --prefix-tagged-struct=T --prefix-tagged-union=T --prefix-typename=T --prefix-undefined=_ -ignore-unsupported-alignment -DHAVE_USLEEP -DLONGDOUBLE_TYPE=double -DNDEBUG -DSQLITE_DEFAULT_MEMSTATUS=0 -DSQLITE_ENABLE_COLUMN_METADATA -DSQLITE_ENABLE_DBSTAT_VTAB -DSQLITE_ENABLE_FTS5 -DSQLITE_ENABLE_GEOPOLY -DSQLITE_ENABLE_JSON1 -DSQLITE_ENABLE_MATH_FUNCTIONS -DSQLITE_ENABLE_MEMORY_MANAGEMENT -DSQLITE_ENABLE_OFFSET_SQL_FUNC -DSQLITE_ENABLE_PREUPDATE_HOOK -DSQLITE_ENABLE_RBU -DSQLITE_ENABLE_RTREE -DSQLITE_ENABLE_SESSION -DSQLITE_ENABLE_SNAPSHOT -DSQLITE_ENABLE_STAT4 -DSQLITE_ENABLE_UNLOCK_NOTIFY -DSQLITE_HAVE_ZLIB=1 -DSQLITE_LIKE_DOESNT_MATCH_BLOBS -DSQLITE_SOUNDEX -DSQLITE_THREADSAFE=1 -DSQLITE_WITHOUT_ZONEMALLOC -Dpread64=pread -Dpwrite64=pwrite -I /home/jnml/src/modernc.org/builder/.exclude/modernc.org/libz/include/windows/amd64 -I /home/jnml/src/modernc.org/builder/.exclude/modernc.org/libtcl8.6/include/windows/amd64 -extended-errors -o sqlite3.go sqlite3.c --cpp /usr/bin/x86_64-w64-mingw32-gcc --goarch amd64 --goos windows -DSQLITE_HAVE_C99_MATH_FUNCS=(1) -DSQLITE_OS_WIN=1 -DSQLITE_OMIT_SEH -build-lines \/\/go:build windows && (amd64 || arm64)\n -map gcc=x86_64-w64-mingw32-gcc -lkernel32 -eval-all-macros', DO NOT EDIT.
+// Code generated for windows/amd64 by 'generator -mlong-double-64 --package-name libsqlite3 --prefix-enumerator=_ --prefix-external=x_ --prefix-field=F --prefix-static-internal=_ --prefix-static-none=_ --prefix-tagged-enum=_ --prefix-tagged-struct=T --prefix-tagged-union=T --prefix-typename=T --prefix-undefined=_ -ignore-unsupported-alignment -DHAVE_USLEEP -DLONGDOUBLE_TYPE=double -DNDEBUG -DSQLITE_DEFAULT_MEMSTATUS=0 -DSQLITE_ENABLE_COLUMN_METADATA -DSQLITE_ENABLE_DBSTAT_VTAB -DSQLITE_ENABLE_FTS5 -DSQLITE_ENABLE_GEOPOLY -DSQLITE_ENABLE_JSON1 -DSQLITE_ENABLE_MATH_FUNCTIONS -DSQLITE_ENABLE_MEMORY_MANAGEMENT -DSQLITE_ENABLE_OFFSET_SQL_FUNC -DSQLITE_ENABLE_PREUPDATE_HOOK -DSQLITE_ENABLE_RBU -DSQLITE_ENABLE_RTREE -DSQLITE_ENABLE_SESSION -DSQLITE_ENABLE_SNAPSHOT -DSQLITE_ENABLE_STAT4 -DSQLITE_ENABLE_UNLOCK_NOTIFY -DSQLITE_HAVE_ZLIB=1 -DSQLITE_LIKE_DOESNT_MATCH_BLOBS -DSQLITE_SOUNDEX -DSQLITE_THREADSAFE=1 -DSQLITE_WITHOUT_ZONEMALLOC -Dpread64=pread -Dpwrite64=pwrite -I /home/jnml/src/modernc.org/builder/.exclude/modernc.org/libz/include/windows/amd64 -I /home/jnml/src/modernc.org/builder/.exclude/modernc.org/libtcl8.6/include/windows/amd64 -extended-errors -o sqlite3.go sqlite3.c --cpp /usr/bin/x86_64-w64-mingw32-gcc --goarch amd64 --goos windows -DSQLITE_HAVE_C99_MATH_FUNCS=(1) -DSQLITE_OS_WIN=1 -DSQLITE_OMIT_SEH -build-lines \/\/go:build windows && (amd64 || arm64)\n\/\/ \x2bbuild windows\n\/\/ \x2bbuild amd64 arm64 -map gcc=x86_64-w64-mingw32-gcc -eval-all-macros', DO NOT EDIT.
 
 //go:build windows && (amd64 || arm64)
+// +build windows
+// +build amd64 arm64
 
 package libsqlite3
 
@@ -9,7 +11,6 @@ import (
 	"unsafe"
 
 	"modernc.org/libc"
-	"modernc.org/libkernel32"
 )
 
 var (
@@ -26147,6 +26148,36 @@ type Toff64_t = int64
 type Toff_t = int64
 
 type Tfpos_t = int64
+
+/**
+ * This file has no copyright assigned and is placed in the Public Domain.
+ * This file is part of the mingw-w64 runtime package.
+ * No warranty is given; refer to the file DISCLAIMER.PD within this package.
+ */
+
+/**
+ * This file has no copyright assigned and is placed in the Public Domain.
+ * This file is part of the mingw-w64 runtime package.
+ * No warranty is given; refer to the file DISCLAIMER.PD within this package.
+ */
+func _vswprintf(tls *libc.TLS, __stream1 uintptr, __count Tsize_t, __format1 uintptr, __local_argv1 t__builtin_va_list) (r int32) {
+	var v1 int32
+	_ = v1
+	v1 = libc.X__mingw_vsnwprintf(tls, __stream1, __count, __format1, __local_argv1)
+	goto _2
+_2:
+	return v1
+}
+
+func _swprintf(tls *libc.TLS, __stream uintptr, __count Tsize_t, __format uintptr, va uintptr) (r int32) {
+	var __local_argv t__builtin_va_list
+	var __retval int32
+	_, _ = __local_argv, __retval
+	__local_argv = va
+	__retval = _vswprintf(tls, __stream, __count, __format, __local_argv)
+	_ = __local_argv
+	return __retval
+}
 
 type T_onexit_t = uintptr
 
@@ -75255,13 +75286,13 @@ func _winMutexInit(tls *libc.TLS) (r int32) {
 	var i int32
 	_ = i
 	/* The first to increment to 1 does actual initialization */
-	if libkernel32.X_InterlockedCompareExchange(tls, uintptr(unsafe.Pointer(&_winMutex_lock)), int32(1), 0) == 0 {
+	if libc.X_InterlockedCompareExchange(tls, uintptr(unsafe.Pointer(&_winMutex_lock)), int32(1), 0) == 0 {
 		i = 0
 		for {
 			if !(i < int32(libc.Uint64FromInt64(576)/libc.Uint64FromInt64(48))) {
 				break
 			}
-			libkernel32.XInitializeCriticalSection(tls, uintptr(unsafe.Pointer(&_winMutex_staticMutexes))+uintptr(i)*48)
+			libc.XInitializeCriticalSection(tls, uintptr(unsafe.Pointer(&_winMutex_staticMutexes))+uintptr(i)*48)
 			goto _1
 		_1:
 			;
@@ -75283,14 +75314,14 @@ func _winMutexEnd(tls *libc.TLS) (r int32) {
 	_ = i
 	/* The first to decrement to 0 does actual shutdown
 	 ** (which should be the last to shutdown.) */
-	if libkernel32.X_InterlockedCompareExchange(tls, uintptr(unsafe.Pointer(&_winMutex_lock)), 0, int32(1)) == int32(1) {
+	if libc.X_InterlockedCompareExchange(tls, uintptr(unsafe.Pointer(&_winMutex_lock)), 0, int32(1)) == int32(1) {
 		if _winMutex_isInit == int32(1) {
 			i = 0
 			for {
 				if !(i < int32(libc.Uint64FromInt64(576)/libc.Uint64FromInt64(48))) {
 					break
 				}
-				libkernel32.XDeleteCriticalSection(tls, uintptr(unsafe.Pointer(&_winMutex_staticMutexes))+uintptr(i)*48)
+				libc.XDeleteCriticalSection(tls, uintptr(unsafe.Pointer(&_winMutex_staticMutexes))+uintptr(i)*48)
 				goto _1
 			_1:
 				;
@@ -75362,7 +75393,7 @@ func _winMutexAlloc(tls *libc.TLS, iType int32) (r uintptr) {
 		p = _sqlite3MallocZero(tls, uint64(48))
 		if p != 0 {
 			(*Tsqlite3_mutex)(unsafe.Pointer(p)).Fid = iType
-			libkernel32.XInitializeCriticalSection(tls, p)
+			libc.XInitializeCriticalSection(tls, p)
 		}
 	default:
 		p = uintptr(unsafe.Pointer(&_winMutex_staticMutexes)) + uintptr(iType-int32(2))*48
@@ -75380,7 +75411,7 @@ func _winMutexAlloc(tls *libc.TLS, iType int32) (r uintptr) {
 //	*/
 func _winMutexFree(tls *libc.TLS, p uintptr) {
 	if (*Tsqlite3_mutex)(unsafe.Pointer(p)).Fid == SQLITE_MUTEX_FAST || (*Tsqlite3_mutex)(unsafe.Pointer(p)).Fid == int32(SQLITE_MUTEX_RECURSIVE) {
-		libkernel32.XDeleteCriticalSection(tls, p)
+		libc.XDeleteCriticalSection(tls, p)
 		Xsqlite3_free(tls, p)
 	} else {
 	}
@@ -75400,7 +75431,7 @@ func _winMutexFree(tls *libc.TLS, p uintptr) {
 //	** more than once, the behavior is undefined.
 //	*/
 func _winMutexEnter(tls *libc.TLS, p uintptr) {
-	libkernel32.XEnterCriticalSection(tls, p)
+	libc.XEnterCriticalSection(tls, p)
 }
 
 func _winMutexTry(tls *libc.TLS, p uintptr) (r int32) {
@@ -75421,7 +75452,7 @@ func _winMutexTry(tls *libc.TLS, p uintptr) (r int32) {
 	if _winMutex_isNt < 0 {
 		_winMutex_isNt = Xsqlite3_win32_is_nt(tls)
 	}
-	if _winMutex_isNt != 0 && libkernel32.XTryEnterCriticalSection(tls, p) != 0 {
+	if _winMutex_isNt != 0 && libc.XTryEnterCriticalSection(tls, p) != 0 {
 		rc = SQLITE_OK
 	}
 	return rc
@@ -75436,7 +75467,7 @@ func _winMutexTry(tls *libc.TLS, p uintptr) (r int32) {
 //	** is not currently allocated.  SQLite will never do either.
 //	*/
 func _winMutexLeave(tls *libc.TLS, p uintptr) {
-	libkernel32.XLeaveCriticalSection(tls, p)
+	libc.XLeaveCriticalSection(tls, p)
 }
 
 func _sqlite3DefaultMutex(tls *libc.TLS) (r uintptr) {
@@ -78833,7 +78864,7 @@ func _sqlite3ThreadCreate(tls *libc.TLS, ppThread uintptr, xTask uintptr, pIn ui
 		}
 	}
 	if (*TSQLiteThread)(unsafe.Pointer(p)).FxTask == uintptr(0) {
-		(*TSQLiteThread)(unsafe.Pointer(p)).Fid = uint32(libkernel32.XGetCurrentThreadId(tls))
+		(*TSQLiteThread)(unsafe.Pointer(p)).Fid = uint32(libc.XGetCurrentThreadId(tls))
 		(*TSQLiteThread)(unsafe.Pointer(p)).FpResult = (*(*func(*libc.TLS, uintptr) uintptr)(unsafe.Pointer(&struct{ uintptr }{xTask})))(tls, pIn)
 	}
 	*(*uintptr)(unsafe.Pointer(ppThread)) = p
@@ -78858,7 +78889,7 @@ func _sqlite3ThreadJoin(tls *libc.TLS, p uintptr, ppOut uintptr) (r int32) {
 		rc = libc.Uint32FromInt32(0x00000000) + libc.Uint32FromInt32(0)
 	} else {
 		rc = _sqlite3Win32Wait(tls, (*TSQLiteThread)(unsafe.Pointer(p)).Ftid)
-		bRc = libkernel32.XCloseHandle(tls, (*TSQLiteThread)(unsafe.Pointer(p)).Ftid)
+		bRc = libc.XCloseHandle(tls, (*TSQLiteThread)(unsafe.Pointer(p)).Ftid)
 	}
 	if rc == libc.Uint32FromInt32(0x00000000)+libc.Uint32FromInt32(0) {
 		*(*uintptr)(unsafe.Pointer(ppOut)) = (*TSQLiteThread)(unsafe.Pointer(p)).FpResult
@@ -82922,67 +82953,67 @@ var _aSyscall = [80]Twin_syscall{
 
 func init() {
 	p := unsafe.Pointer(&_aSyscall)
-	*(*uintptr)(unsafe.Add(p, 8)) = __ccgo_fp(libkernel32.XAreFileApisANSI)
-	*(*uintptr)(unsafe.Add(p, 80)) = __ccgo_fp(libkernel32.XCloseHandle)
-	*(*uintptr)(unsafe.Add(p, 104)) = __ccgo_fp(libkernel32.XCreateFileA)
-	*(*uintptr)(unsafe.Add(p, 128)) = __ccgo_fp(libkernel32.XCreateFileW)
-	*(*uintptr)(unsafe.Add(p, 176)) = __ccgo_fp(libkernel32.XCreateFileMappingW)
-	*(*uintptr)(unsafe.Add(p, 200)) = __ccgo_fp(libkernel32.XCreateMutexW)
-	*(*uintptr)(unsafe.Add(p, 224)) = __ccgo_fp(libkernel32.XDeleteFileA)
-	*(*uintptr)(unsafe.Add(p, 248)) = __ccgo_fp(libkernel32.XDeleteFileW)
-	*(*uintptr)(unsafe.Add(p, 320)) = __ccgo_fp(libkernel32.XFlushFileBuffers)
-	*(*uintptr)(unsafe.Add(p, 344)) = __ccgo_fp(libkernel32.XFormatMessageA)
-	*(*uintptr)(unsafe.Add(p, 368)) = __ccgo_fp(libkernel32.XFormatMessageW)
-	*(*uintptr)(unsafe.Add(p, 392)) = __ccgo_fp(libkernel32.XFreeLibrary)
-	*(*uintptr)(unsafe.Add(p, 416)) = __ccgo_fp(libkernel32.XGetCurrentProcessId)
-	*(*uintptr)(unsafe.Add(p, 440)) = __ccgo_fp(libkernel32.XGetDiskFreeSpaceA)
-	*(*uintptr)(unsafe.Add(p, 464)) = __ccgo_fp(libkernel32.XGetDiskFreeSpaceW)
-	*(*uintptr)(unsafe.Add(p, 488)) = __ccgo_fp(libkernel32.XGetFileAttributesA)
-	*(*uintptr)(unsafe.Add(p, 512)) = __ccgo_fp(libkernel32.XGetFileAttributesW)
-	*(*uintptr)(unsafe.Add(p, 536)) = __ccgo_fp(libkernel32.XGetFileAttributesExW)
-	*(*uintptr)(unsafe.Add(p, 560)) = __ccgo_fp(libkernel32.XGetFileSize)
-	*(*uintptr)(unsafe.Add(p, 584)) = __ccgo_fp(libkernel32.XGetFullPathNameA)
-	*(*uintptr)(unsafe.Add(p, 608)) = __ccgo_fp(libkernel32.XGetFullPathNameW)
-	*(*uintptr)(unsafe.Add(p, 632)) = __ccgo_fp(libkernel32.XGetLastError)
-	*(*uintptr)(unsafe.Add(p, 656)) = __ccgo_fp(libkernel32.XGetProcAddress)
-	*(*uintptr)(unsafe.Add(p, 680)) = __ccgo_fp(libkernel32.XGetSystemInfo)
-	*(*uintptr)(unsafe.Add(p, 704)) = __ccgo_fp(libkernel32.XGetSystemTime)
-	*(*uintptr)(unsafe.Add(p, 728)) = __ccgo_fp(libkernel32.XGetSystemTimeAsFileTime)
-	*(*uintptr)(unsafe.Add(p, 752)) = __ccgo_fp(libkernel32.XGetTempPathA)
-	*(*uintptr)(unsafe.Add(p, 776)) = __ccgo_fp(libkernel32.XGetTempPathW)
-	*(*uintptr)(unsafe.Add(p, 800)) = __ccgo_fp(libkernel32.XGetTickCount)
-	*(*uintptr)(unsafe.Add(p, 872)) = __ccgo_fp(libkernel32.XHeapAlloc)
-	*(*uintptr)(unsafe.Add(p, 896)) = __ccgo_fp(libkernel32.XHeapCreate)
-	*(*uintptr)(unsafe.Add(p, 920)) = __ccgo_fp(libkernel32.XHeapDestroy)
-	*(*uintptr)(unsafe.Add(p, 944)) = __ccgo_fp(libkernel32.XHeapFree)
-	*(*uintptr)(unsafe.Add(p, 968)) = __ccgo_fp(libkernel32.XHeapReAlloc)
-	*(*uintptr)(unsafe.Add(p, 992)) = __ccgo_fp(libkernel32.XHeapSize)
-	*(*uintptr)(unsafe.Add(p, 1016)) = __ccgo_fp(libkernel32.XHeapValidate)
-	*(*uintptr)(unsafe.Add(p, 1040)) = __ccgo_fp(libkernel32.XHeapCompact)
-	*(*uintptr)(unsafe.Add(p, 1064)) = __ccgo_fp(libkernel32.XLoadLibraryA)
-	*(*uintptr)(unsafe.Add(p, 1088)) = __ccgo_fp(libkernel32.XLoadLibraryW)
-	*(*uintptr)(unsafe.Add(p, 1112)) = __ccgo_fp(libkernel32.XLocalFree)
-	*(*uintptr)(unsafe.Add(p, 1136)) = __ccgo_fp(libkernel32.XLockFile)
-	*(*uintptr)(unsafe.Add(p, 1160)) = __ccgo_fp(libkernel32.XLockFileEx)
-	*(*uintptr)(unsafe.Add(p, 1184)) = __ccgo_fp(libkernel32.XMapViewOfFile)
-	*(*uintptr)(unsafe.Add(p, 1208)) = __ccgo_fp(libkernel32.XMultiByteToWideChar)
-	*(*uintptr)(unsafe.Add(p, 1232)) = __ccgo_fp(libkernel32.XQueryPerformanceCounter)
-	*(*uintptr)(unsafe.Add(p, 1256)) = __ccgo_fp(libkernel32.XReadFile)
-	*(*uintptr)(unsafe.Add(p, 1280)) = __ccgo_fp(libkernel32.XSetEndOfFile)
-	*(*uintptr)(unsafe.Add(p, 1304)) = __ccgo_fp(libkernel32.XSetFilePointer)
-	*(*uintptr)(unsafe.Add(p, 1328)) = __ccgo_fp(libkernel32.XSleep)
-	*(*uintptr)(unsafe.Add(p, 1352)) = __ccgo_fp(libkernel32.XSystemTimeToFileTime)
-	*(*uintptr)(unsafe.Add(p, 1376)) = __ccgo_fp(libkernel32.XUnlockFile)
-	*(*uintptr)(unsafe.Add(p, 1400)) = __ccgo_fp(libkernel32.XUnlockFileEx)
-	*(*uintptr)(unsafe.Add(p, 1424)) = __ccgo_fp(libkernel32.XUnmapViewOfFile)
-	*(*uintptr)(unsafe.Add(p, 1448)) = __ccgo_fp(libkernel32.XWideCharToMultiByte)
-	*(*uintptr)(unsafe.Add(p, 1472)) = __ccgo_fp(libkernel32.XWriteFile)
-	*(*uintptr)(unsafe.Add(p, 1520)) = __ccgo_fp(libkernel32.XWaitForSingleObject)
-	*(*uintptr)(unsafe.Add(p, 1544)) = __ccgo_fp(libkernel32.XWaitForSingleObjectEx)
-	*(*uintptr)(unsafe.Add(p, 1736)) = __ccgo_fp(libkernel32.XOutputDebugStringA)
-	*(*uintptr)(unsafe.Add(p, 1760)) = __ccgo_fp(libkernel32.XOutputDebugStringW)
-	*(*uintptr)(unsafe.Add(p, 1784)) = __ccgo_fp(libkernel32.XGetProcessHeap)
-	*(*uintptr)(unsafe.Add(p, 1904)) = __ccgo_fp(libkernel32.XFlushViewOfFile)
+	*(*uintptr)(unsafe.Add(p, 8)) = __ccgo_fp(libc.XAreFileApisANSI)
+	*(*uintptr)(unsafe.Add(p, 80)) = __ccgo_fp(libc.XCloseHandle)
+	*(*uintptr)(unsafe.Add(p, 104)) = __ccgo_fp(libc.XCreateFileA)
+	*(*uintptr)(unsafe.Add(p, 128)) = __ccgo_fp(libc.XCreateFileW)
+	*(*uintptr)(unsafe.Add(p, 176)) = __ccgo_fp(libc.XCreateFileMappingW)
+	*(*uintptr)(unsafe.Add(p, 200)) = __ccgo_fp(libc.XCreateMutexW)
+	*(*uintptr)(unsafe.Add(p, 224)) = __ccgo_fp(libc.XDeleteFileA)
+	*(*uintptr)(unsafe.Add(p, 248)) = __ccgo_fp(libc.XDeleteFileW)
+	*(*uintptr)(unsafe.Add(p, 320)) = __ccgo_fp(libc.XFlushFileBuffers)
+	*(*uintptr)(unsafe.Add(p, 344)) = __ccgo_fp(libc.XFormatMessageA)
+	*(*uintptr)(unsafe.Add(p, 368)) = __ccgo_fp(libc.XFormatMessageW)
+	*(*uintptr)(unsafe.Add(p, 392)) = __ccgo_fp(libc.XFreeLibrary)
+	*(*uintptr)(unsafe.Add(p, 416)) = __ccgo_fp(libc.XGetCurrentProcessId)
+	*(*uintptr)(unsafe.Add(p, 440)) = __ccgo_fp(libc.XGetDiskFreeSpaceA)
+	*(*uintptr)(unsafe.Add(p, 464)) = __ccgo_fp(libc.XGetDiskFreeSpaceW)
+	*(*uintptr)(unsafe.Add(p, 488)) = __ccgo_fp(libc.XGetFileAttributesA)
+	*(*uintptr)(unsafe.Add(p, 512)) = __ccgo_fp(libc.XGetFileAttributesW)
+	*(*uintptr)(unsafe.Add(p, 536)) = __ccgo_fp(libc.XGetFileAttributesExW)
+	*(*uintptr)(unsafe.Add(p, 560)) = __ccgo_fp(libc.XGetFileSize)
+	*(*uintptr)(unsafe.Add(p, 584)) = __ccgo_fp(libc.XGetFullPathNameA)
+	*(*uintptr)(unsafe.Add(p, 608)) = __ccgo_fp(libc.XGetFullPathNameW)
+	*(*uintptr)(unsafe.Add(p, 632)) = __ccgo_fp(libc.XGetLastError)
+	*(*uintptr)(unsafe.Add(p, 656)) = __ccgo_fp(libc.XGetProcAddress)
+	*(*uintptr)(unsafe.Add(p, 680)) = __ccgo_fp(libc.XGetSystemInfo)
+	*(*uintptr)(unsafe.Add(p, 704)) = __ccgo_fp(libc.XGetSystemTime)
+	*(*uintptr)(unsafe.Add(p, 728)) = __ccgo_fp(libc.XGetSystemTimeAsFileTime)
+	*(*uintptr)(unsafe.Add(p, 752)) = __ccgo_fp(libc.XGetTempPathA)
+	*(*uintptr)(unsafe.Add(p, 776)) = __ccgo_fp(libc.XGetTempPathW)
+	*(*uintptr)(unsafe.Add(p, 800)) = __ccgo_fp(libc.XGetTickCount)
+	*(*uintptr)(unsafe.Add(p, 872)) = __ccgo_fp(libc.XHeapAlloc)
+	*(*uintptr)(unsafe.Add(p, 896)) = __ccgo_fp(libc.XHeapCreate)
+	*(*uintptr)(unsafe.Add(p, 920)) = __ccgo_fp(libc.XHeapDestroy)
+	*(*uintptr)(unsafe.Add(p, 944)) = __ccgo_fp(libc.XHeapFree)
+	*(*uintptr)(unsafe.Add(p, 968)) = __ccgo_fp(libc.XHeapReAlloc)
+	*(*uintptr)(unsafe.Add(p, 992)) = __ccgo_fp(libc.XHeapSize)
+	*(*uintptr)(unsafe.Add(p, 1016)) = __ccgo_fp(libc.XHeapValidate)
+	*(*uintptr)(unsafe.Add(p, 1040)) = __ccgo_fp(libc.XHeapCompact)
+	*(*uintptr)(unsafe.Add(p, 1064)) = __ccgo_fp(libc.XLoadLibraryA)
+	*(*uintptr)(unsafe.Add(p, 1088)) = __ccgo_fp(libc.XLoadLibraryW)
+	*(*uintptr)(unsafe.Add(p, 1112)) = __ccgo_fp(libc.XLocalFree)
+	*(*uintptr)(unsafe.Add(p, 1136)) = __ccgo_fp(libc.XLockFile)
+	*(*uintptr)(unsafe.Add(p, 1160)) = __ccgo_fp(libc.XLockFileEx)
+	*(*uintptr)(unsafe.Add(p, 1184)) = __ccgo_fp(libc.XMapViewOfFile)
+	*(*uintptr)(unsafe.Add(p, 1208)) = __ccgo_fp(libc.XMultiByteToWideChar)
+	*(*uintptr)(unsafe.Add(p, 1232)) = __ccgo_fp(libc.XQueryPerformanceCounter)
+	*(*uintptr)(unsafe.Add(p, 1256)) = __ccgo_fp(libc.XReadFile)
+	*(*uintptr)(unsafe.Add(p, 1280)) = __ccgo_fp(libc.XSetEndOfFile)
+	*(*uintptr)(unsafe.Add(p, 1304)) = __ccgo_fp(libc.XSetFilePointer)
+	*(*uintptr)(unsafe.Add(p, 1328)) = __ccgo_fp(libc.XSleep)
+	*(*uintptr)(unsafe.Add(p, 1352)) = __ccgo_fp(libc.XSystemTimeToFileTime)
+	*(*uintptr)(unsafe.Add(p, 1376)) = __ccgo_fp(libc.XUnlockFile)
+	*(*uintptr)(unsafe.Add(p, 1400)) = __ccgo_fp(libc.XUnlockFileEx)
+	*(*uintptr)(unsafe.Add(p, 1424)) = __ccgo_fp(libc.XUnmapViewOfFile)
+	*(*uintptr)(unsafe.Add(p, 1448)) = __ccgo_fp(libc.XWideCharToMultiByte)
+	*(*uintptr)(unsafe.Add(p, 1472)) = __ccgo_fp(libc.XWriteFile)
+	*(*uintptr)(unsafe.Add(p, 1520)) = __ccgo_fp(libc.XWaitForSingleObject)
+	*(*uintptr)(unsafe.Add(p, 1544)) = __ccgo_fp(libc.XWaitForSingleObjectEx)
+	*(*uintptr)(unsafe.Add(p, 1736)) = __ccgo_fp(libc.XOutputDebugStringA)
+	*(*uintptr)(unsafe.Add(p, 1760)) = __ccgo_fp(libc.XOutputDebugStringW)
+	*(*uintptr)(unsafe.Add(p, 1784)) = __ccgo_fp(libc.XGetProcessHeap)
+	*(*uintptr)(unsafe.Add(p, 1904)) = __ccgo_fp(libc.XFlushViewOfFile)
 }
 
 /* End of the overrideable system calls */

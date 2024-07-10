@@ -1,6 +1,8 @@
-// Code generated for windows/amd64 by 'generator --cpp /usr/bin/x86_64-w64-mingw32-gcc --goarch amd64 --goos windows -DNDEBUG -DSQLITE_OMIT_SEH -DSQLITE_OS_WIN=1 -I /tmp/libsqlite3/sqlite-src-3460000 -build-lines \/\/go:build windows && (amd64 || arm64)\n -map gcc=x86_64-w64-mingw32-gcc -lkernel32 -o mptest/ccgo_windows.go /tmp/libsqlite3/sqlite-src-3460000/mptest/mptest.c -lsqlite3', DO NOT EDIT.
+// Code generated for windows/amd64 by 'generator --cpp /usr/bin/x86_64-w64-mingw32-gcc --goarch amd64 --goos windows -DNDEBUG -DSQLITE_OMIT_SEH -DSQLITE_OS_WIN=1 -I /tmp/libsqlite3/sqlite-src-3460000 -build-lines \/\/go:build windows && (amd64 || arm64)\n\/\/ \x2bbuild windows\n\/\/ \x2bbuild amd64 arm64 -map gcc=x86_64-w64-mingw32-gcc -o mptest/ccgo_windows.go /tmp/libsqlite3/sqlite-src-3460000/mptest/mptest.c -lsqlite3', DO NOT EDIT.
 
 //go:build windows && (amd64 || arm64)
+// +build windows
+// +build amd64 arm64
 
 package main
 
@@ -9,7 +11,6 @@ import (
 	"unsafe"
 
 	"modernc.org/libc"
-	"modernc.org/libkernel32"
 	"modernc.org/libsqlite3"
 )
 
@@ -9412,15 +9413,15 @@ const _mm512_undefined = "_mm512_undefined_ps"
 const _mm512_undefined_si512 = "_mm512_undefined_epi32"
 const _wP_tmpdir = "\\\\"
 const abnormal_termination = "_abnormal_termination"
-const environ = "_environ"
+const environ1 = "_environ"
 const exception_code = "_exception_code"
-const isascii = "__isascii"
+const isascii1 = "__isascii"
 const iscsym = "__iscsym"
 const iscsymf = "__iscsymf"
 const onexit_t = "_onexit_t"
-const pclose = "_pclose"
-const popen = "_popen"
-const strcasecmp = "_stricmp"
+const pclose1 = "_pclose"
+const popen1 = "_popen"
+const strcasecmp1 = "_stricmp"
 const strncasecmp = "_strnicmp"
 const sys_errlist = "_sys_errlist"
 const sys_nerr = "_sys_nerr"
@@ -10069,6 +10070,36 @@ type off64_t = int64
 type off_t = int32
 
 type fpos_t = int64
+
+/**
+ * This file has no copyright assigned and is placed in the Public Domain.
+ * This file is part of the mingw-w64 runtime package.
+ * No warranty is given; refer to the file DISCLAIMER.PD within this package.
+ */
+
+/**
+ * This file has no copyright assigned and is placed in the Public Domain.
+ * This file is part of the mingw-w64 runtime package.
+ * No warranty is given; refer to the file DISCLAIMER.PD within this package.
+ */
+func vswprintf(tls *libc.TLS, __stream1 uintptr, __count size_t, __format1 uintptr, __local_argv1 __builtin_va_list) (r int32) {
+	var v1 int32
+	_ = v1
+	v1 = libc.X__mingw_vsnwprintf(tls, __stream1, __count, __format1, __local_argv1)
+	goto _2
+_2:
+	return v1
+}
+
+func swprintf(tls *libc.TLS, __stream uintptr, __count size_t, __format uintptr, va uintptr) (r int32) {
+	var __local_argv __builtin_va_list
+	var __retval int32
+	_, _ = __local_argv, __retval
+	__local_argv = va
+	__retval = vswprintf(tls, __stream, __count, __format, __local_argv)
+	_ = __local_argv
+	return __retval
+}
 
 type _EXCEPTION_POINTERS = struct {
 	FExceptionRecord PEXCEPTION_RECORD
@@ -27517,12 +27548,12 @@ func startClient(tls *libc.TLS, iClient int32) {
 		libc.Xmemset(tls, bp, 0, uint64(104))
 		(*(*STARTUPINFOA)(unsafe.Pointer(bp))).Fcb = uint32(104)
 		libc.Xmemset(tls, bp+104, 0, uint64(24))
-		rc = libkernel32.XCreateProcessA(tls, libc.UintptrFromInt32(0), zSys, libc.UintptrFromInt32(0), libc.UintptrFromInt32(0), FALSE, uint32(0), libc.UintptrFromInt32(0), libc.UintptrFromInt32(0), bp, bp+104)
+		rc = libc.XCreateProcessA(tls, libc.UintptrFromInt32(0), zSys, libc.UintptrFromInt32(0), libc.UintptrFromInt32(0), FALSE, uint32(0), libc.UintptrFromInt32(0), libc.UintptrFromInt32(0), bp, bp+104)
 		if rc != 0 {
-			libkernel32.XCloseHandle(tls, (*(*PROCESS_INFORMATION)(unsafe.Pointer(bp + 104))).FhThread)
-			libkernel32.XCloseHandle(tls, (*(*PROCESS_INFORMATION)(unsafe.Pointer(bp + 104))).FhProcess)
+			libc.XCloseHandle(tls, (*(*PROCESS_INFORMATION)(unsafe.Pointer(bp + 104))).FhThread)
+			libc.XCloseHandle(tls, (*(*PROCESS_INFORMATION)(unsafe.Pointer(bp + 104))).FhProcess)
 		} else {
-			errorMessage(tls, __ccgo_ts+825, libc.VaList(bp+136, libkernel32.XGetLastError(tls)))
+			errorMessage(tls, __ccgo_ts+825, libc.VaList(bp+136, libc.XGetLastError(tls)))
 		}
 		libsqlite3.Xsqlite3_free(tls, zSys)
 	}
@@ -28428,7 +28459,7 @@ func main1(tls *libc.TLS, argc int32, argv uintptr) (r int32) {
 		libc.Xexit(tls, int32(1))
 	}
 	*(*int32)(unsafe.Pointer(bp + 288)) = argc - int32(2)
-	libsqlite3.Xsqlite3_snprintf(tls, int32(32), uintptr(unsafe.Pointer(&g))+64, __ccgo_ts+2479, libc.VaList(bp+328, int32(libkernel32.XGetCurrentProcessId(tls))))
+	libsqlite3.Xsqlite3_snprintf(tls, int32(32), uintptr(unsafe.Pointer(&g))+64, __ccgo_ts+2479, libc.VaList(bp+328, int32(libc.XGetCurrentProcessId(tls))))
 	zJMode = findOption(tls, argv+uintptr(2)*8, bp+288, __ccgo_ts+2491, int32(1))
 	zNRep = findOption(tls, argv+uintptr(2)*8, bp+288, __ccgo_ts+2503, int32(1))
 	if zNRep != 0 {
@@ -28470,7 +28501,7 @@ func main1(tls *libc.TLS, argc int32, argv uintptr) (r int32) {
 		if iClient < int32(1) {
 			fatalError(tls, __ccgo_ts+2568, libc.VaList(bp+328, iClient))
 		}
-		libsqlite3.Xsqlite3_snprintf(tls, int32(32), uintptr(unsafe.Pointer(&g))+64, __ccgo_ts+2595, libc.VaList(bp+328, int32(libkernel32.XGetCurrentProcessId(tls)), iClient))
+		libsqlite3.Xsqlite3_snprintf(tls, int32(32), uintptr(unsafe.Pointer(&g))+64, __ccgo_ts+2595, libc.VaList(bp+328, int32(libc.XGetCurrentProcessId(tls)), iClient))
 	} else {
 		nTry = 0
 		if g.FiTrace > 0 {

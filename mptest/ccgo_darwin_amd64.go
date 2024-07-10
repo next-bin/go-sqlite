@@ -1,6 +1,7 @@
 // Code generated for darwin/amd64 by 'generator -DNDEBUG -I /tmp/libsqlite3/sqlite-src-3460000 -ignore-unsupported-alignment -o mptest/ccgo_darwin_amd64.go /tmp/libsqlite3/sqlite-src-3460000/mptest/mptest.c -lsqlite3', DO NOT EDIT.
 
 //go:build darwin && amd64
+// +build darwin,amd64
 
 package main
 

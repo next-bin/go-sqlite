@@ -1,6 +1,7 @@
 // Code generated for freebsd/amd64 by 'generator -DNDEBUG -ignore-unsupported-alignment -o speedtest1/ccgo_freebsd_amd64.go -I /tmp/libsqlite3/sqlite-src-3460000 /tmp/libsqlite3/sqlite-src-3460000/test/speedtest1.c -lsqlite3', DO NOT EDIT.
 
 //go:build freebsd && amd64
+// +build freebsd,amd64
 
 package main
 

@@ -1,6 +1,7 @@
 // Code generated for linux/riscv64 by 'generator -DNDEBUG -I /tmp/libsqlite3/sqlite-src-3460000 -ignore-unsupported-alignment -o mptest/ccgo_linux_riscv64.go /tmp/libsqlite3/sqlite-src-3460000/mptest/mptest.c -lsqlite3', DO NOT EDIT.
 
 //go:build linux && riscv64
+// +build linux,riscv64
 
 package main
 
@@ -733,7 +734,7 @@ const __DBL_DIG__ = 15
 const __DBL_HAS_DENORM__ = 1
 const __DBL_HAS_INFINITY__ = 1
 const __DBL_HAS_QUIET_NAN__ = 1
-const __DBL_IS_IEC_60559__ = 1
+const __DBL_IS_IEC_60559__ = 2
 const __DBL_MANT_DIG__ = 53
 const __DBL_MAX_10_EXP__ = 308
 const __DBL_MAX_EXP__ = 1024
@@ -753,27 +754,13 @@ const __FLT128_EPSILON__ = 1.92592994438723585305597794258492732e-34
 const __FLT128_HAS_DENORM__ = 1
 const __FLT128_HAS_INFINITY__ = 1
 const __FLT128_HAS_QUIET_NAN__ = 1
-const __FLT128_IS_IEC_60559__ = 1
+const __FLT128_IS_IEC_60559__ = 2
 const __FLT128_MANT_DIG__ = 113
 const __FLT128_MAX_10_EXP__ = 4932
 const __FLT128_MAX_EXP__ = 16384
 const __FLT128_MAX__ = "1.18973149535723176508575932662800702e+4932"
 const __FLT128_MIN__ = 3.36210314311209350626267781732175260e-4932
 const __FLT128_NORM_MAX__ = "1.18973149535723176508575932662800702e+4932"
-const __FLT16_DECIMAL_DIG__ = 5
-const __FLT16_DENORM_MIN__ = 5.96046447753906250000000000000000000e-8
-const __FLT16_DIG__ = 3
-const __FLT16_EPSILON__ = 9.76562500000000000000000000000000000e-4
-const __FLT16_HAS_DENORM__ = 1
-const __FLT16_HAS_INFINITY__ = 1
-const __FLT16_HAS_QUIET_NAN__ = 1
-const __FLT16_IS_IEC_60559__ = 1
-const __FLT16_MANT_DIG__ = 11
-const __FLT16_MAX_10_EXP__ = 4
-const __FLT16_MAX_EXP__ = 16
-const __FLT16_MAX__ = 6.55040000000000000000000000000000000e+4
-const __FLT16_MIN__ = 6.10351562500000000000000000000000000e-5
-const __FLT16_NORM_MAX__ = 6.55040000000000000000000000000000000e+4
 const __FLT32X_DECIMAL_DIG__ = 17
 const __FLT32X_DENORM_MIN__ = 4.94065645841246544176568792868221372e-324
 const __FLT32X_DIG__ = 15
@@ -781,7 +768,7 @@ const __FLT32X_EPSILON__ = 2.22044604925031308084726333618164062e-16
 const __FLT32X_HAS_DENORM__ = 1
 const __FLT32X_HAS_INFINITY__ = 1
 const __FLT32X_HAS_QUIET_NAN__ = 1
-const __FLT32X_IS_IEC_60559__ = 1
+const __FLT32X_IS_IEC_60559__ = 2
 const __FLT32X_MANT_DIG__ = 53
 const __FLT32X_MAX_10_EXP__ = 308
 const __FLT32X_MAX_EXP__ = 1024
@@ -795,7 +782,7 @@ const __FLT32_EPSILON__ = 1.19209289550781250000000000000000000e-7
 const __FLT32_HAS_DENORM__ = 1
 const __FLT32_HAS_INFINITY__ = 1
 const __FLT32_HAS_QUIET_NAN__ = 1
-const __FLT32_IS_IEC_60559__ = 1
+const __FLT32_IS_IEC_60559__ = 2
 const __FLT32_MANT_DIG__ = 24
 const __FLT32_MAX_10_EXP__ = 38
 const __FLT32_MAX_EXP__ = 128
@@ -809,7 +796,7 @@ const __FLT64X_EPSILON__ = 1.92592994438723585305597794258492732e-34
 const __FLT64X_HAS_DENORM__ = 1
 const __FLT64X_HAS_INFINITY__ = 1
 const __FLT64X_HAS_QUIET_NAN__ = 1
-const __FLT64X_IS_IEC_60559__ = 1
+const __FLT64X_IS_IEC_60559__ = 2
 const __FLT64X_MANT_DIG__ = 113
 const __FLT64X_MAX_10_EXP__ = 4932
 const __FLT64X_MAX_EXP__ = 16384
@@ -823,7 +810,7 @@ const __FLT64_EPSILON__ = 2.22044604925031308084726333618164062e-16
 const __FLT64_HAS_DENORM__ = 1
 const __FLT64_HAS_INFINITY__ = 1
 const __FLT64_HAS_QUIET_NAN__ = 1
-const __FLT64_IS_IEC_60559__ = 1
+const __FLT64_IS_IEC_60559__ = 2
 const __FLT64_MANT_DIG__ = 53
 const __FLT64_MAX_10_EXP__ = 308
 const __FLT64_MAX_EXP__ = 1024
@@ -839,7 +826,7 @@ const __FLT_EVAL_METHOD__ = 0
 const __FLT_HAS_DENORM__ = 1
 const __FLT_HAS_INFINITY__ = 1
 const __FLT_HAS_QUIET_NAN__ = 1
-const __FLT_IS_IEC_60559__ = 1
+const __FLT_IS_IEC_60559__ = 2
 const __FLT_MANT_DIG__ = 24
 const __FLT_MAX_10_EXP__ = 38
 const __FLT_MAX_EXP__ = 128
@@ -858,34 +845,31 @@ const __FSFILCNT64_T_TYPE = "__UQUAD_TYPE"
 const __FSFILCNT_T_TYPE = "__ULONGWORD_TYPE"
 const __FSWORD_T_TYPE = "__SWORD_TYPE"
 const __FUNCTION__ = "__func__"
-const __GCC_ATOMIC_BOOL_LOCK_FREE = 2
-const __GCC_ATOMIC_CHAR16_T_LOCK_FREE = 2
+const __GCC_ATOMIC_BOOL_LOCK_FREE = 1
+const __GCC_ATOMIC_CHAR16_T_LOCK_FREE = 1
 const __GCC_ATOMIC_CHAR32_T_LOCK_FREE = 2
-const __GCC_ATOMIC_CHAR_LOCK_FREE = 2
+const __GCC_ATOMIC_CHAR_LOCK_FREE = 1
 const __GCC_ATOMIC_INT_LOCK_FREE = 2
 const __GCC_ATOMIC_LLONG_LOCK_FREE = 2
 const __GCC_ATOMIC_LONG_LOCK_FREE = 2
 const __GCC_ATOMIC_POINTER_LOCK_FREE = 2
-const __GCC_ATOMIC_SHORT_LOCK_FREE = 2
+const __GCC_ATOMIC_SHORT_LOCK_FREE = 1
 const __GCC_ATOMIC_TEST_AND_SET_TRUEVAL = 1
 const __GCC_ATOMIC_WCHAR_T_LOCK_FREE = 2
-const __GCC_HAVE_DWARF2_CFI_ASM = 1
-const __GCC_HAVE_SYNC_COMPARE_AND_SWAP_1 = 1
-const __GCC_HAVE_SYNC_COMPARE_AND_SWAP_2 = 1
 const __GCC_HAVE_SYNC_COMPARE_AND_SWAP_4 = 1
 const __GCC_HAVE_SYNC_COMPARE_AND_SWAP_8 = 1
 const __GCC_IEC_559 = 2
 const __GCC_IEC_559_COMPLEX = 2
 const __GID_T_TYPE = "__U32_TYPE"
-const __GLIBC_MINOR__ = 38
+const __GLIBC_MINOR__ = 34
 const __GLIBC__ = 2
 const __GNUC_EXECUTION_CHARSET_NAME = "UTF-8"
-const __GNUC_MINOR__ = 3
+const __GNUC_MINOR__ = 2
 const __GNUC_PATCHLEVEL__ = 0
 const __GNUC_STDC_INLINE__ = 1
 const __GNUC_WIDE_EXECUTION_CHARSET_NAME = "UTF-32LE"
-const __GNUC__ = 13
-const __GXX_ABI_VERSION = 1018
+const __GNUC__ = 11
+const __GXX_ABI_VERSION = 1016
 const __HAVE_DISTINCT_FLOAT128 = 0
 const __HAVE_DISTINCT_FLOAT128X = "__HAVE_FLOAT128X"
 const __HAVE_DISTINCT_FLOAT16 = "__HAVE_FLOAT16"
@@ -943,7 +927,7 @@ const __LDBL_EPSILON__ = 1.92592994438723585305597794258492732e-34
 const __LDBL_HAS_DENORM__ = 1
 const __LDBL_HAS_INFINITY__ = 1
 const __LDBL_HAS_QUIET_NAN__ = 1
-const __LDBL_IS_IEC_60559__ = 1
+const __LDBL_IS_IEC_60559__ = 2
 const __LDBL_MANT_DIG__ = 113
 const __LDBL_MAX_10_EXP__ = 4932
 const __LDBL_MAX_EXP__ = 16384
@@ -976,8 +960,6 @@ const __PRETTY_FUNCTION__ = "__func__"
 const __PTHREAD_MUTEX_HAVE_PREV = 1
 const __PTRDIFF_MAX__ = 0x7fffffffffffffff
 const __PTRDIFF_WIDTH__ = 64
-const __REDIRECT_FORTIFY = "__REDIRECT"
-const __REDIRECT_FORTIFY_NTH = "__REDIRECT_NTH"
 const __RLIM64_T_TYPE = "__UQUAD_TYPE"
 const __RLIM_T_MATCHES_RLIM64_T = 1
 const __RLIM_T_TYPE = "__ULONGWORD_TYPE"
@@ -1015,12 +997,11 @@ const __SIZE_MAX__ = 0xffffffffffffffff
 const __SIZE_WIDTH__ = 64
 const __SLONG32_TYPE = "int"
 const __SSIZE_T_TYPE = "__SWORD_TYPE"
+const __SSP_STRONG__ = 3
 const __STATFS_MATCHES_STATFS64 = 1
 const __STDC_HOSTED__ = 1
 const __STDC_IEC_559_COMPLEX__ = 1
 const __STDC_IEC_559__ = 1
-const __STDC_IEC_60559_BFP__ = 201404
-const __STDC_IEC_60559_COMPLEX__ = 201404
 const __STDC_ISO_10646__ = 201706
 const __STDC_UTF_16__ = 1
 const __STDC_UTF_32__ = 1
@@ -1050,7 +1031,7 @@ const __UINT_LEAST64_MAX__ = 0xffffffffffffffff
 const __UINT_LEAST8_MAX__ = 0xff
 const __USECONDS_T_TYPE = "__U32_TYPE"
 const __USE_POSIX_IMPLICITLY = 1
-const __VERSION__ = "13.3.0"
+const __VERSION__ = "11.2.0"
 const __WALL = 0x40000000
 const __WCHAR_MAX__ = 0x7fffffff
 const __WCHAR_TYPE__ = "int"
@@ -1070,7 +1051,6 @@ const _____fpos_t_defined = 1
 const ____mbstate_t_defined = 1
 const __clock_t_defined = 1
 const __clockid_t_defined = 1
-const __cookie_io_functions_t_defined = 1
 const __glibc_c99_flexarr_available = 1
 const __gnu_linux__ = 1
 const __have_pthread_attr_t = 1
@@ -1081,20 +1061,21 @@ const __lldiv_t_defined = 1
 const __pic__ = 2
 const __pie__ = 2
 const __riscv = 1
-const __riscv_a = 2001000
+const __riscv_a = 2000000
 const __riscv_arch_test = 1
 const __riscv_atomic = 1
 const __riscv_c = 2000000
 const __riscv_cmodel_medany = 1
+const __riscv_cmodel_pic = 1
 const __riscv_compressed = 1
-const __riscv_d = 2002000
+const __riscv_d = 2000000
 const __riscv_div = 1
-const __riscv_f = 2002000
+const __riscv_f = 2000000
 const __riscv_fdiv = 1
 const __riscv_flen = 64
 const __riscv_float_abi_double = 1
 const __riscv_fsqrt = 1
-const __riscv_i = 2001000
+const __riscv_i = 2000000
 const __riscv_m = 2000000
 const __riscv_mul = 1
 const __riscv_muldiv = 1
@@ -1863,15 +1844,6 @@ type FILE = struct {
 
 type _IO_lock_t = struct{}
 
-type cookie_io_functions_t = struct {
-	Fread   uintptr
-	Fwrite  uintptr
-	Fseek   uintptr
-	Fclose1 uintptr
-}
-
-type _IO_cookie_io_functions_t = cookie_io_functions_t
-
 type off_t = int64
 
 type ssize_t = int64
@@ -2315,14 +2287,6 @@ type fsblkcnt_t = uint64
 
 type fsfilcnt_t = uint64
 
-type __atomic_wide_counter = struct {
-	F__value32 [0]struct {
-		F__low  uint32
-		F__high uint32
-	}
-	F__value64 uint64
-}
-
 type __pthread_list_t = struct {
 	F__prev uintptr
 	F__next uintptr
@@ -2361,8 +2325,20 @@ type __pthread_rwlock_arch_t = struct {
 }
 
 type __pthread_cond_s = struct {
-	F__wseq         __atomic_wide_counter
-	F__g1_start     __atomic_wide_counter
+	F__ccgo0_0 struct {
+		F__wseq32 [0]struct {
+			F__low  uint32
+			F__high uint32
+		}
+		F__wseq uint64
+	}
+	F__ccgo1_8 struct {
+		F__g1_start32 [0]struct {
+			F__low  uint32
+			F__high uint32
+		}
+		F__g1_start uint64
+	}
 	F__g_refs       [2]uint32
 	F__g_size       [2]uint32
 	F__g1_orig_size uint32

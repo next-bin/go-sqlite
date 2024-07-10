@@ -20,11 +20,7 @@ import (
 
 	_ "modernc.org/ccgo/v4/lib"
 	util "modernc.org/fileutil/ccgo"
-	_ "modernc.org/libadvapi32"
-	_ "modernc.org/libkernel32"
 	"modernc.org/libtcl8.6/library"
-	_ "modernc.org/libuser32"
-	_ "modernc.org/libws2_32"
 )
 
 var (
@@ -234,8 +230,6 @@ func TestTclTest(t *testing.T) {
 		blacklist["bigsort.test"] = struct{}{}
 	case "linux/ppc64le":
 		knownCFailures["snapshot_fault-4.1.1"] = struct{}{}
-	case "windows/386":
-		blacklist["zipfile.test"] = struct{}{}
 	}
 
 	if err := setMaxOpenFiles(1024); err != nil { // Avoid misc7.test hanging for a long time.
@@ -261,9 +255,6 @@ func TestTclTest(t *testing.T) {
 	case goos == "windows":
 		bin += ".exe"
 		src = filepath.Join("internal", "testfixture", "ccgo_windows.go")
-		if goarch == "386" {
-			src = filepath.Join("internal", "testfixture", "ccgo_windows_386.go")
-		}
 		if out, err := util.Shell(nil, "go", "build", "-o", bin, "-tags="+*oXTags, src); err != nil {
 			t.Fatalf("%s\nFAIL: %v", out, err)
 		}
@@ -334,9 +325,9 @@ func TestTclTest(t *testing.T) {
 		if out, err = util.Shell(nil, bin, args...); err != nil {
 			switch err.Error() {
 			case "exit status 1":
-				t.Logf("fail: %v\n%s", err, out)
+				t.Logf("fail: %v", err)
 			default:
-				t.Errorf("fail: %v\n%s", err, out)
+				t.Errorf("fail: %v", err)
 			}
 		}
 		return nil

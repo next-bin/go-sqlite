@@ -1,6 +1,7 @@
 // Code generated for linux/s390x by 'generator -DNDEBUG -I /tmp/libsqlite3/sqlite-src-3460000 -ignore-unsupported-alignment -o mptest/ccgo_linux_s390x.go /tmp/libsqlite3/sqlite-src-3460000/mptest/mptest.c -lsqlite3', DO NOT EDIT.
 
 //go:build linux && s390x
+// +build linux,s390x
 
 package main
 

@@ -1,6 +1,8 @@
-// Code generated for windows/amd64 by 'generator --cpp /usr/bin/x86_64-w64-mingw32-gcc --goarch amd64 --goos windows -DNDEBUG -DSQLITE_OMIT_SEH -DSQLITE_OS_WIN=1 -I /tmp/libsqlite3/sqlite-src-3460000 -build-lines \/\/go:build windows && (amd64 || arm64)\n -map gcc=x86_64-w64-mingw32-gcc -o speedtest1/ccgo_windows.go /tmp/libsqlite3/sqlite-src-3460000/test/speedtest1.c -lsqlite3', DO NOT EDIT.
+// Code generated for windows/amd64 by 'generator --cpp /usr/bin/x86_64-w64-mingw32-gcc --goarch amd64 --goos windows -DNDEBUG -DSQLITE_OMIT_SEH -DSQLITE_OS_WIN=1 -I /tmp/libsqlite3/sqlite-src-3460000 -build-lines \/\/go:build windows && (amd64 || arm64)\n\/\/ \x2bbuild windows\n\/\/ \x2bbuild amd64 arm64 -map gcc=x86_64-w64-mingw32-gcc -o speedtest1/ccgo_windows.go /tmp/libsqlite3/sqlite-src-3460000/test/speedtest1.c -lsqlite3', DO NOT EDIT.
 
 //go:build windows && (amd64 || arm64)
+// +build windows
+// +build amd64 arm64
 
 package main
 
@@ -962,14 +964,14 @@ const _wfindfirst = "_wfindfirst64i32"
 const _wfindfirsti64 = "_wfindfirst64"
 const _wfindnext = "_wfindnext64i32"
 const _wfindnexti64 = "_wfindnext64"
-const environ = "_environ"
-const isascii = "__isascii"
+const environ1 = "_environ"
+const isascii1 = "__isascii"
 const iscsym = "__iscsym"
 const iscsymf = "__iscsymf"
 const onexit_t = "_onexit_t"
-const pclose = "_pclose"
-const popen = "_popen"
-const strcasecmp = "_stricmp"
+const pclose1 = "_pclose"
+const popen1 = "_popen"
+const strcasecmp1 = "_stricmp"
 const strncasecmp = "_strnicmp"
 const sys_errlist = "_sys_errlist"
 const sys_nerr = "_sys_nerr"
@@ -1622,6 +1624,36 @@ type off64_t = int64
 type off_t = int32
 
 type fpos_t = int64
+
+/**
+ * This file has no copyright assigned and is placed in the Public Domain.
+ * This file is part of the mingw-w64 runtime package.
+ * No warranty is given; refer to the file DISCLAIMER.PD within this package.
+ */
+
+/**
+ * This file has no copyright assigned and is placed in the Public Domain.
+ * This file is part of the mingw-w64 runtime package.
+ * No warranty is given; refer to the file DISCLAIMER.PD within this package.
+ */
+func vswprintf(tls *libc.TLS, __stream1 uintptr, __count size_t, __format1 uintptr, __local_argv1 __builtin_va_list) (r int32) {
+	var v1 int32
+	_ = v1
+	v1 = libc.X__mingw_vsnwprintf(tls, __stream1, __count, __format1, __local_argv1)
+	goto _2
+_2:
+	return v1
+}
+
+func swprintf(tls *libc.TLS, __stream uintptr, __count size_t, __format uintptr, va uintptr) (r int32) {
+	var __local_argv __builtin_va_list
+	var __retval int32
+	_, _ = __local_argv, __retval
+	__local_argv = va
+	__retval = vswprintf(tls, __stream, __count, __format, __local_argv)
+	_ = __local_argv
+	return __retval
+}
 
 type _onexit_t = uintptr
 

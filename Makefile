@@ -114,33 +114,6 @@ windows-dev: download
 	grep 'TRC\|TODO\|ERRORF\|FAIL' log-generate-errors || true
 	grep 'TRC\|TODO\|ERRORF\|FAIL' /tmp/ccgo.log || true
 
-windows_386: download
-	mkdir -p $(DIR) || true
-	rm -rf $(DIR)/*
-	echo -n > /tmp/ccgo.log
-	echo -n > log-generate
-	echo -n > log-generate-errors
-	GO_GENERATE_WIN32=1 GO_GENERATE_DIR=$(DIR) go run generator*.go 2>&1 | tee log-generate
-	GOOS=windows GOARCH=386 go build -v ./...  | tee -a log-generate
-	GOOS=windows GOARCH=386 go test -v -c -o /dev/null 2>&1 | tee -a log-generate
-	git status
-	grep 'TRC\|TODO\|ERRORF\|FAIL' log-generate || true
-	grep 'TRC\|TODO\|ERRORF\|FAIL' log-generate-errors || true
-
-windows_386-dev: download
-	mkdir -p $(DIR) || true
-	rm -rf $(DIR)/*
-	echo -n > /tmp/ccgo.log
-	echo -n > log-generate
-	echo -n > log-generate-errors
-	GO_GENERATE_WIN32=1 GO_GENERATE_DIR=$(DIR) GO_GENERATE_DEV=1 go run -tags=ccgo.dmesg,ccgo.assert generator*.go 2>&1 | tee log-generate
-	GOOS=windows GOARCH=386 go build -v ./...  | tee -a log-generate
-	GOOS=windows GOARCH=386 go test -v -c -o /dev/null 2>&1 | tee -a log-generate
-	git status
-	grep 'TRC\|TODO\|ERRORF\|FAIL' log-generate || true
-	grep 'TRC\|TODO\|ERRORF\|FAIL' log-generate-errors || true
-	grep 'TRC\|TODO\|ERRORF\|FAIL' /tmp/ccgo.log || true
-
 work:
 	rm -f go.work*
 	go work init
@@ -148,13 +121,8 @@ work:
 	go work use ../cc/v4
 	go work use ../ccgo/v3
 	go work use ../ccgo/v4
-	go work use ../libadvapi32
 	go work use ../libc
-	go work use ../libkernel32
-	go work use ../libnetapi32
 	go work use ../libtcl8.6
-	go work use ../libuser32
-	go work use ../libws2_32
 	go work use ../libz
 
 xtest:
