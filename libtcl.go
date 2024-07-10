@@ -11,6 +11,12 @@ import (
 	"modernc.org/libc"
 )
 
+const (
+	TCL_EVAL_DIRECT = m_TCL_EVAL_DIRECT
+	TCL_EVAL_GLOBAL = m_TCL_EVAL_GLOBAL
+	TCL_OK = m_TCL_OK
+)
+
 type in6_addr = struct {
 	F__in6_union struct {
 		F__s6_addr16 [0][8]uint16
